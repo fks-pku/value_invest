@@ -7,7 +7,7 @@ This is not an automated trading system. It does not place orders or issue final
 ## Current Status
 
 - Core scaffolding and validation are implemented.
-- CLI commands exist for stocks, events, SEC ingestion, price ingestion, memo updates, event research, and sector/theme research.
+- CLI commands exist for stocks, events, SEC ingestion, price ingestion, FengHe stock research, memo updates, event research, and sector/theme research.
 - The primary research framework is FengHe 3C3D5M3T: Cycle, Change, Certainty; D1/D2/D3 price drivers; M1-M5 value analysis; and T1/T2/T3 time frames.
 - Third-party integrations are optional. Core commands work without `openai`, `pyyaml`, or `yfinance`; integration commands report a clear install hint when their package is missing.
 - The repository includes sample AAPL, event, and sector research artifacts.
@@ -55,7 +55,10 @@ Examples:
 value-invest-research init-stock MSFT --company-name "Microsoft Corporation"
 value-invest-research init-event 2026-05-06 "US Iran Conflict"
 value-invest-research validate-evidence stocks/AAPL/evidence.jsonl
+value-invest-research research-stock AAPL --api-key $env:LLM_API_KEY
 ```
+
+`research-stock` writes a timestamped Markdown report and structured signal JSON under `stocks/<TICKER>/research_reports/`.
 
 ## Test
 

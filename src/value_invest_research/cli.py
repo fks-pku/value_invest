@@ -41,6 +41,12 @@ def build_parser() -> argparse.ArgumentParser:
     memo_parser.add_argument("--base-url", default="https://api.z.ai/api/coding/paas/v4")
     memo_parser.add_argument("--model", default="glm-5.1")
 
+    stock_research_parser = subparsers.add_parser("research-stock", help="Run full FengHe stock research")
+    stock_research_parser.add_argument("ticker")
+    stock_research_parser.add_argument("--api-key", default=None)
+    stock_research_parser.add_argument("--base-url", default="https://api.z.ai/api/coding/paas/v4")
+    stock_research_parser.add_argument("--model", default="glm-5.1")
+
     event_research_parser = subparsers.add_parser("research-event", help="Run LLM event research")
     event_research_parser.add_argument("event_date")
     event_research_parser.add_argument("event_name")
@@ -84,6 +90,8 @@ def main(argv: list[str] | None = None) -> int:
             return run_price_ingest(root, args.ticker, args.period)
         if args.command == "update-memo":
             return run_memo_update(root, args.ticker, args.api_key, args.base_url, args.model)
+        if args.command == "research-stock":
+            return run_stock_research_cmd(root, args)
         if args.command == "research-event":
             return run_event_research_cmd(root, args)
         if args.command == "research-sector":
@@ -186,6 +194,19 @@ def run_event_research_cmd(root: Path, args) -> int:
     )
     print(f"Event research saved: {result['analysis_path']}")
     print(f"Event: {result['event_name']}, Dir: {result['event_dir']}, Length: {result['response_length']} chars")
+    return 0
+
+
+def run_stock_research_cmd(root: Path, args) -> int:
+    from value_invest_research.stock_researcher import StockResearcher
+
+    client = _get_llm_client(args.api_key, args.base_url, args.model)
+    researcher = StockResearcher(client)
+
+    result = researcher.run_stock_research(root, args.ticker)
+    print(f"Stock research saved: {result['report_path']}")
+    print(f"Signal JSON saved: {result['signal_path']}")
+    print(f"Ticker: {result['ticker']}, Length: {result['response_length']} chars")
     return 0
 
 

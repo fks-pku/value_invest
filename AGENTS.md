@@ -28,6 +28,7 @@ Use FengHe 3C3D5M3T before generic investment language:
 python tools/run_tests.py
 $env:PYTHONPATH = "src"; python -m value_invest_research --help
 value-invest-research --help
+value-invest-research research-stock AAPL --api-key $env:LLM_API_KEY
 ```
 
 ## Key Constraints
