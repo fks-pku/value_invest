@@ -3,7 +3,7 @@ from pathlib import Path
 from unittest.mock import MagicMock
 
 from tests.helpers import project_tmp_dir
-from value_invest_research.event_researcher import EventResearcher, _build_user_prompt
+from value_invest_research.event_researcher import EventResearcher, _build_system_prompt, _build_user_prompt
 
 
 class EventResearcherTests(unittest.TestCase):
@@ -13,6 +13,12 @@ class EventResearcherTests(unittest.TestCase):
         self.assertIn("Transmission Map", prompt)
         self.assertIn("Candidate Screen", prompt)
         self.assertIn("Tier 1", prompt)
+        self.assertIn("3C", prompt)
+        self.assertIn("3D", prompt)
+
+    def test_system_prompt_uses_fenghe_framework(self):
+        prompt = _build_system_prompt()
+        self.assertIn("FengHe 3C3D5M3T Framework", prompt)
 
     def test_build_user_prompt_includes_playbook(self):
         playbook = {"first_questions": ["What happened?"], "transmission_channels": ["oil_prices"]}

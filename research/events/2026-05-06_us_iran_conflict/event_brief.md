@@ -2,12 +2,17 @@
 
 - Date Opened: 2026-05-06
 - Status: Active Research
-- Goal: Identify investable candidates for deeper stock-level research.
+- Goal: Identify FengHe candidates for deeper stock-level research.
 
 ## Confirmed Facts
 
 ## Unconfirmed Claims
 
-## Immediate Questions
+## FengHe 3C Event Read
+- Cycle context:
+- Change:
+- Certainty:
+
+## Transmission Questions
 
 ## Source Log

@@ -43,8 +43,10 @@ def _dump_context(data: dict[str, Any]) -> str:
 def _build_system_prompt() -> str:
     parts = [
         _load_skill_file("SKILL.md"),
+        _load_skill_file("frameworks/fenghe_3c3d5m3t.md"),
         _load_skill_file("frameworks/event_research.md"),
         _load_skill_file("checklists/evidence_quality.md"),
+        _load_skill_file("checklists/fenghe_research_review.md"),
     ]
     return "\n\n---\n\n".join(p for p in parts if p)
 
@@ -95,6 +97,8 @@ def _build_user_prompt(
         "### 3. Transmission Map",
         "Map how this event transmits through the economy:",
         "- Primary shock",
+        "- 3C: cycle context, marginal change, and certainty level",
+        "- 3D: whether candidates are driven by D1, D2, or D3",
         "- Transmission channels (commodities, supply chains, sentiment, policy, etc.)",
         "- Affected sectors (positive and negative)",
         "- Disconfirming paths (what would make this thesis wrong)",
@@ -112,6 +116,12 @@ def _build_user_prompt(
         "  tier: 1 | 2 | 3",
         "  direction: positive | negative",
         "  mechanism: ...",
+        "  fenghe_3c:",
+        "    cycle: ...",
+        "    change: ...",
+        "    certainty: low | medium | high",
+        "  dominant_driver: D1 | D2 | D3 | unclear",
+        "  time_frame: T1 | T2 | T3 | unclear",
         "  key_tests:",
         "    - ...",
         "  disconfirming_tests:",
@@ -128,6 +138,7 @@ def _build_user_prompt(
         "IMPORTANT RULES:",
         "- Separate confirmed facts from unconfirmed claims rigorously.",
         "- Every candidate must have a clear transmission mechanism.",
+        "- Every promoted candidate must include FengHe 3C, dominant 3D driver, and 3T time frame.",
         "- Include disconfirming tests for every candidate.",
         "- Do NOT promote candidates to Tier 1 without a plausible, specific mechanism.",
         "- If the event impact is unclear, say so rather than speculating.",

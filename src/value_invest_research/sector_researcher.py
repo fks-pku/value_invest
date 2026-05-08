@@ -21,8 +21,10 @@ def _load_skill_file(relative_path: str) -> str:
 def _build_system_prompt() -> str:
     parts = [
         _load_skill_file("SKILL.md"),
+        _load_skill_file("frameworks/fenghe_3c3d5m3t.md"),
         _load_skill_file("frameworks/sector_research.md"),
         _load_skill_file("checklists/evidence_quality.md"),
+        _load_skill_file("checklists/fenghe_research_review.md"),
     ]
     return "\n\n---\n\n".join(p for p in parts if p)
 
@@ -63,12 +65,12 @@ def _build_user_prompt(
         "",
         "### 1. Current Sector/Theme View",
         "- Attractiveness (high/medium/low)",
-        "- Cycle position",
-        "- Key thesis",
+        "- FengHe 3C: cycle position, marginal change, and certainty",
+        "- Key thesis in FengHe terms",
         "- Confidence level",
         "",
         "### 2. Industry Structure",
-        "- Value chain (upstream → midstream → downstream)",
+        "- Value chain (upstream -> midstream -> downstream)",
         "- Profit pools (where is value captured?)",
         "- Competitive dynamics",
         "- Barriers to entry",
@@ -86,9 +88,12 @@ def _build_user_prompt(
         "- **Niche Compounders**: Small but high-quality operators",
         "- **Cyclical Candidates**: Attractive at the right cycle point",
         "- **Avoid/Watch**: Overvalued, poor quality, or high risk",
+        "- For each important company, identify the dominant 3D driver and strongest/weakest 5M factor.",
         "",
         "### 5. Cross-Company Comparison",
         "Compare key companies on:",
+        "- 3C: cycle, change, certainty",
+        "- 5M: M1 market size, M2 share, M3 margin, M4 model, M5 management",
         "- Quality (margins, returns, cash conversion)",
         "- Growth (revenue, earnings trajectory)",
         "- Balance sheet (leverage, cash position)",
@@ -101,6 +106,10 @@ def _build_user_prompt(
         "  - ticker: ...",
         "    category: leader | challenger | niche_compounder | cyclical",
         "    reason: ...",
+        "    dominant_driver: D1 | D2 | D3 | unclear",
+        "    strongest_m: M1 | M2 | M3 | M4 | M5 | unclear",
+        "    weakest_m: M1 | M2 | M3 | M4 | M5 | unclear",
+        "    time_frame: T1 | T2 | T3 | unclear",
         "    key_research_questions:",
         "      - ...",
         "    priority: high | medium | low",
@@ -111,6 +120,7 @@ def _build_user_prompt(
         "",
         "IMPORTANT RULES:",
         "- Base analysis on verifiable industry structure, not predictions.",
+        "- Apply FengHe 3C3D5M3T strictly; generic quality/growth language is not enough.",
         "- Separate structural trends from cyclical effects.",
         "- Every candidate recommendation must cite a specific reason.",
         "- Include disconfirming evidence for bullish conclusions.",
@@ -133,12 +143,16 @@ def _ensure_sector_dir(root: Path, sector_type: str, sector_slug: str) -> Path:
         memo_path.write_text(
             f"# {sector_slug} {'Sector' if sector_type == 'sector' else 'Theme'} Memo\n\n"
             f"## 1. Current {'Sector' if sector_type == 'sector' else 'Theme'} View\n\n"
-            f"## 2. Industry Structure\n\n"
-            f"## 3. Demand Drivers\n\n"
-            f"## 4. Company Map\n\n"
-            f"## 5. Cross-Company Comparison\n\n"
-            f"## 6. Signals To Individual Stocks\n\n"
-            f"## 7. Evidence Log\n",
+            f"## 2. FengHe 3C\n"
+            f"- Cycle:\n"
+            f"- Change:\n"
+            f"- Certainty:\n\n"
+            f"## 3. Industry Structure\n\n"
+            f"## 4. Demand Drivers\n\n"
+            f"## 5. Company Map By 5M\n\n"
+            f"## 6. Cross-Company 3D/5M/3T Comparison\n\n"
+            f"## 7. Signals To Individual Stocks\n\n"
+            f"## 8. Evidence Log\n",
             encoding="utf-8",
         )
 

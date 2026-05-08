@@ -12,7 +12,7 @@ The system is not an automated trading system. It does not place orders, manage 
 
 The first version supports three research modes:
 
-1. Stock research: maintain a value-investing memo for each tracked company.
+1. Stock research: maintain a FengHe 3C3D5M3T memo for each tracked company.
 2. Sector and theme research: map industries, themes, value chains, key metrics, and candidate companies.
 3. Event research: rapidly analyze sudden market events, build transmission chains, and identify investable candidates for further stock-level research.
 
@@ -20,7 +20,7 @@ Initial constraints:
 
 - Market: US equities.
 - Stock universe: manually curated watchlist of 5-20 names.
-- Primary framework: value investing.
+- Primary framework: FengHe 3C3D5M3T.
 - Data ingestion: automatic, with human review gates for important thesis changes.
 - Storage model: files are the source of truth; structured JSON/CSV outputs are kept so a database can be added later.
 
@@ -41,11 +41,13 @@ value_invest/
     value_invest_research/
       SKILL.md
       frameworks/
+        fenghe_3c3d5m3t.md
         value_investing.md
         sector_research.md
         event_research.md
       checklists/
         evidence_quality.md
+        fenghe_research_review.md
         valuation_review.md
         disconfirming_evidence.md
       prompts/
@@ -176,35 +178,45 @@ Required sections:
 ```text
 # TICKER Investment Memo
 
-## 1. Current View
+## 0. Current View
 - View: Watch / Attractive / Expensive / Avoid / Needs Review
 - Confidence: Low / Medium / High
 - Last Updated:
-- Key Thesis:
+- FengHe Summary:
 - Most Important Uncertainty:
 
-## 2. Business Quality
-- Business model
-- Revenue drivers
-- Customer value proposition
-- Competitive advantage
-- Durability
+## 1. 3C Investment Philosophy
+- Cycle
+- Change
+- Certainty
 
-## 3. Financial Quality
-- Revenue growth
-- Margins
-- ROIC / ROE
-- Free cash flow
-- Balance sheet
-- Accounting quality
+## 2. 3D Price Drivers
+- D1 ROE / intrinsic value
+- D2 marginal change / catalyst
+- D3 sentiment / valuation
+- Dominant driver
 
-## 4. Management & Capital Allocation
-- Incentives
-- Buybacks and dividends
-- M&A
-- Shareholder communication
+## 3. 5M Value Analysis
+- M1 market size
+- M2 market share
+- M3 margin
+- M4 model
+- M5 management
+- Key value driver
+- Key defect risk
 
-## 5. Valuation
+## 4. 3T Time Frame
+- T1 0-3 months
+- T2 3-15 months
+- T3 15+ months
+- Active time frame
+
+## 5. Certainty, Risk, And Disconfirming Evidence
+- Evidence that supports certainty
+- Thesis breakers
+- Disconfirming tests
+
+## 6. Valuation And Risk/Reward
 - Normalized earnings or FCF
 - Conservative assumptions
 - Downside case
@@ -212,20 +224,13 @@ Required sections:
 - Upside case
 - Margin of safety
 
-## 6. Risks & Disconfirming Evidence
-- Thesis breakers
-- Competitive risks
-- Regulatory risks
-- Accounting concerns
-- Evidence that weakens the thesis
-
 ## 7. Evidence Log
 - New facts
 - Source IDs
 - Reliability
 - Impact on thesis
 
-## 8. Open Questions
+## 8. Human Review Questions
 - What needs more research
 - What would change the view
 ```

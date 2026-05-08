@@ -71,35 +71,45 @@ def init_event(root: Path, event_date: str, event_name: str) -> Path:
 def stock_memo_template(ticker: str) -> str:
     return f"""# {ticker} Investment Memo
 
-## 1. Current View
+## 0. Current View
 - View: Needs Review
 - Confidence: Low
 - Last Updated:
-- Key Thesis:
+- FengHe Summary:
 - Most Important Uncertainty:
 
-## 2. Business Quality
-- Business model:
-- Revenue drivers:
-- Customer value proposition:
-- Competitive advantage:
-- Durability:
+## 1. 3C Investment Philosophy
+- Cycle:
+- Change:
+- Certainty:
 
-## 3. Financial Quality
-- Revenue growth:
-- Margins:
-- ROIC / ROE:
-- Free cash flow:
-- Balance sheet:
-- Accounting quality:
+## 2. 3D Price Drivers
+- D1 ROE / intrinsic value:
+- D2 marginal change / catalyst:
+- D3 sentiment / valuation:
+- Dominant driver:
 
-## 4. Management & Capital Allocation
-- Incentives:
-- Buybacks and dividends:
-- M&A:
-- Shareholder communication:
+## 3. 5M Value Analysis
+- M1 market size:
+- M2 market share:
+- M3 margin:
+- M4 model:
+- M5 management:
+- Key value driver:
+- Key defect risk:
 
-## 5. Valuation
+## 4. 3T Time Frame
+- T1 0-3 months:
+- T2 3-15 months:
+- T3 15+ months:
+- Active time frame:
+
+## 5. Certainty, Risk, And Disconfirming Evidence
+- Evidence that supports certainty:
+- Thesis breakers:
+- Disconfirming tests:
+
+## 6. Valuation And Risk/Reward
 - Normalized earnings or FCF:
 - Conservative assumptions:
 - Downside case:
@@ -107,16 +117,9 @@ def stock_memo_template(ticker: str) -> str:
 - Upside case:
 - Margin of safety:
 
-## 6. Risks & Disconfirming Evidence
-- Thesis breakers:
-- Competitive risks:
-- Regulatory risks:
-- Accounting concerns:
-- Evidence that weakens the thesis:
-
 ## 7. Evidence Log
 
-## 8. Open Questions
+## 8. Human Review Questions
 """
 
 
@@ -125,13 +128,18 @@ def event_brief_template(event_date: str, event_name: str) -> str:
 
 - Date Opened: {event_date}
 - Status: Active Research
-- Goal: Identify investable candidates for deeper stock-level research.
+- Goal: Identify FengHe candidates for deeper stock-level research.
 
 ## Confirmed Facts
 
 ## Unconfirmed Claims
 
-## Immediate Questions
+## FengHe 3C Event Read
+- Cycle context:
+- Change:
+- Certainty:
+
+## Transmission Questions
 
 ## Source Log
 """
@@ -142,11 +150,18 @@ def transmission_map_template(event_name: str) -> str:
 
 ## Primary Shock
 
+## FengHe 3C
+- Cycle:
+- Change:
+- Certainty:
+
 ## Transmission Channels
 
 ## Affected Sectors
 
 ## Candidate Company Mechanisms
+
+## Dominant 3D Drivers
 
 ## Disconfirming Paths
 """
@@ -162,4 +177,13 @@ def candidate_screen_template(event_name: str) -> str:
 ## Tier 3: Evidence Too Weak
 
 ## Negative Watch
+
+## Candidate Fields
+- Ticker:
+- FengHe 3C:
+- Dominant 3D driver:
+- Strongest 5M factor:
+- Weakest 5M factor:
+- 3T time frame:
+- Disconfirming tests:
 """

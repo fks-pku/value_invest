@@ -1,34 +1,44 @@
 # AAPL Investment Memo
 
-## 1. Current View
+## 0. Current View
 - View: Needs Review
 - Confidence: Low
 - Last Updated:
-- Key Thesis:
+- FengHe Summary:
 - Most Important Uncertainty:
 
-## 2. Business Quality
-- Business model:
-- Revenue drivers:
-- Customer value proposition:
-- Competitive advantage:
-- Durability:
+## 1. 3C Investment Philosophy
+- Cycle:
+- Change:
+- Certainty:
 
-## 3. Financial Quality
-- Revenue growth:
-- Margins:
-- ROIC / ROE:
-- Free cash flow:
-- Balance sheet:
-- Accounting quality:
+## 2. 3D Price Drivers
+- D1 ROE / intrinsic value:
+- D2 marginal change / catalyst:
+- D3 sentiment / valuation:
+- Dominant driver:
 
-## 4. Management & Capital Allocation
-- Incentives:
-- Buybacks and dividends:
-- M&A:
-- Shareholder communication:
+## 3. 5M Value Analysis
+- M1 market size:
+- M2 market share:
+- M3 margin:
+- M4 model:
+- M5 management:
+- Key value driver:
+- Key defect risk:
 
-## 5. Valuation
+## 4. 3T Time Frame
+- T1 0-3 months:
+- T2 3-15 months:
+- T3 15+ months:
+- Active time frame:
+
+## 5. Certainty, Risk, And Disconfirming Evidence
+- Evidence that supports certainty:
+- Thesis breakers:
+- Disconfirming tests:
+
+## 6. Valuation And Risk/Reward
 - Normalized earnings or FCF:
 - Conservative assumptions:
 - Downside case:
@@ -36,13 +46,6 @@
 - Upside case:
 - Margin of safety:
 
-## 6. Risks & Disconfirming Evidence
-- Thesis breakers:
-- Competitive risks:
-- Regulatory risks:
-- Accounting concerns:
-- Evidence that weakens the thesis:
-
 ## 7. Evidence Log
 
-## 8. Open Questions
+## 8. Human Review Questions

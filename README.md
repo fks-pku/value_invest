@@ -1,6 +1,6 @@
 # Value Invest Research
 
-File-system-first investment research assistant for US equities. The project stores research objects as plain files, keeps structured evidence alongside memos, and provides CLI workflows for stock, event, sector, SEC, price, and LLM-assisted research.
+File-system-first FengHe-style investment research assistant for US equities. The project stores research objects as plain files, keeps structured evidence alongside memos, and provides CLI workflows for stock, event, sector, SEC, price, and LLM-assisted research.
 
 This is not an automated trading system. It does not place orders or issue final buy/sell instructions; it helps preserve evidence and produce auditable research drafts for human review.
 
@@ -8,6 +8,7 @@ This is not an automated trading system. It does not place orders or issue final
 
 - Core scaffolding and validation are implemented.
 - CLI commands exist for stocks, events, SEC ingestion, price ingestion, memo updates, event research, and sector/theme research.
+- The primary research framework is FengHe 3C3D5M3T: Cycle, Change, Certainty; D1/D2/D3 price drivers; M1-M5 value analysis; and T1/T2/T3 time frames.
 - Third-party integrations are optional. Core commands work without `openai`, `pyyaml`, or `yfinance`; integration commands report a clear install hint when their package is missing.
 - The repository includes sample AAPL, event, and sector research artifacts.
 
@@ -76,4 +77,4 @@ python tools/run_tests.py
 
 ## Boundaries
 
-Research outputs must separate facts, inferences, and judgments. Material claims should cite evidence IDs. Low-reliability sources can create research questions, but should not change a thesis by themselves.
+Research outputs must separate facts, inferences, and judgments. Material claims should cite evidence IDs. Low-reliability sources can create research questions, but should not change a thesis by themselves. Generic "good company" language is not enough: every stock view must state the cycle, marginal change, certainty, dominant D driver, 5M value/defect drivers, time frame, and disconfirming tests.

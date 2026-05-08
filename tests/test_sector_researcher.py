@@ -3,7 +3,7 @@ from pathlib import Path
 from unittest.mock import MagicMock
 
 from tests.helpers import project_tmp_dir
-from value_invest_research.sector_researcher import SectorResearcher, _build_user_prompt, _ensure_sector_dir
+from value_invest_research.sector_researcher import SectorResearcher, _build_system_prompt, _build_user_prompt, _ensure_sector_dir
 
 
 class SectorResearcherTests(unittest.TestCase):
@@ -12,6 +12,12 @@ class SectorResearcherTests(unittest.TestCase):
         self.assertIn("Semiconductors", prompt)
         self.assertIn("Value chain", prompt)
         self.assertIn("Company Map", prompt)
+        self.assertIn("3C", prompt)
+        self.assertIn("5M", prompt)
+
+    def test_system_prompt_uses_fenghe_framework(self):
+        prompt = _build_system_prompt()
+        self.assertIn("FengHe 3C3D5M3T Framework", prompt)
 
     def test_build_user_prompt_theme_type(self):
         prompt = _build_user_prompt("AI Infrastructure", "theme", "Data center buildout")

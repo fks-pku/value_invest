@@ -3,7 +3,7 @@ from pathlib import Path
 from unittest.mock import MagicMock, patch
 
 from tests.helpers import project_tmp_dir
-from value_invest_research.memo_updater import MemoUpdater, _build_user_prompt, _load_stock_context
+from value_invest_research.memo_updater import MemoUpdater, _build_system_prompt, _build_user_prompt, _load_stock_context
 
 
 class MemoUpdaterTests(unittest.TestCase):
@@ -24,6 +24,20 @@ class MemoUpdaterTests(unittest.TestCase):
         self.assertIn("AAPL", prompt)
         self.assertIn("Revenue", prompt)
         self.assertIn("Stock Signal", prompt)
+        self.assertIn("3C", prompt)
+        self.assertIn("3D", prompt)
+        self.assertIn("5M", prompt)
+        self.assertIn("3T", prompt)
+        self.assertIn("dominant_driver", prompt)
+        self.assertIn("disconfirming_tests", prompt)
+
+    def test_system_prompt_uses_fenghe_as_primary_framework(self):
+        prompt = _build_system_prompt()
+        self.assertIn("FengHe 3C3D5M3T Framework", prompt)
+        self.assertIn("Cycle", prompt)
+        self.assertIn("D1", prompt)
+        self.assertIn("M1", prompt)
+        self.assertIn("T1", prompt)
 
     def test_update_stock_memo_creates_proposal(self):
         with project_tmp_dir() as root:
