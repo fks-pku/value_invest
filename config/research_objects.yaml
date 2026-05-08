@@ -1,5 +1,8 @@
 stocks:
   - stocks/AAPL
-sectors: []
+sectors:
+  - research/sectors/semiconductors
 themes: []
-events: []
+events:
+  - research/events/2026-05-06_us_china_tariff_escalation
+  - research/events/2026-05-06_us_iran_conflict
