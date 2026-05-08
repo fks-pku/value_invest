@@ -44,6 +44,23 @@ class CliTests(unittest.TestCase):
             self.assertIn("Stock research saved", out.getvalue())
             self.assertIn("signal.json", out.getvalue())
 
+    def test_build_evidence_command_prints_record_counts(self):
+        with project_tmp_dir() as tmp:
+            stock_dir = Path(tmp) / "stocks" / "AAPL"
+            data_dir = stock_dir / "data"
+            data_dir.mkdir(parents=True)
+            (stock_dir / "logs").mkdir(parents=True)
+            (stock_dir / "evidence.jsonl").write_text("", encoding="utf-8")
+            (data_dir / "prices.csv").write_text("date,Close\n2026-05-05,204\n", encoding="utf-8")
+
+            out = StringIO()
+            with redirect_stdout(out):
+                exit_code = main(["--root", str(tmp), "build-evidence", "AAPL"])
+
+            self.assertEqual(exit_code, 0)
+            self.assertIn("Evidence built for AAPL", out.getvalue())
+            self.assertIn("records_new", out.getvalue())
+
 
 if __name__ == "__main__":
     unittest.main()

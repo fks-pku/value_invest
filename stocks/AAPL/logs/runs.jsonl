@@ -1,3 +1,4 @@
 {"timestamp": "2026-05-06T14:29:25.530765+00:00", "pipeline": "sec_submissions", "status": "success", "tickers": ["AAPL"], "records_fetched": 1001, "records_new": 1001}
 {"timestamp": "2026-05-06T14:29:26.671347+00:00", "pipeline": "sec_company_facts", "status": "success", "tickers": ["AAPL"], "records_fetched": 21670, "records_new": 21670}
 {"timestamp": "2026-05-06T15:48:13.510338+00:00", "pipeline": "memo_update", "status": "success", "tickers": ["AAPL"], "records_fetched": 1, "records_new": 1}
+{"timestamp": "2026-05-08T17:46:28.644468+00:00", "pipeline": "build_evidence", "status": "success", "tickers": ["AAPL"], "records_fetched": 8, "records_new": 8}

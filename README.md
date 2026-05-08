@@ -54,11 +54,13 @@ Examples:
 ```powershell
 value-invest-research init-stock MSFT --company-name "Microsoft Corporation"
 value-invest-research init-event 2026-05-06 "US Iran Conflict"
+value-invest-research build-evidence AAPL
 value-invest-research validate-evidence stocks/AAPL/evidence.jsonl
 value-invest-research research-stock AAPL --api-key $env:LLM_API_KEY
 ```
 
 `research-stock` writes a timestamped Markdown report and structured signal JSON under `stocks/<TICKER>/research_reports/`.
+`build-evidence` converts structured SEC facts and price CSV rows into stable evidence IDs under `stocks/<TICKER>/evidence.jsonl`.
 
 ## Test
 

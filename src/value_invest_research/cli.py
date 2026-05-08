@@ -25,6 +25,9 @@ def build_parser() -> argparse.ArgumentParser:
     evidence_parser = subparsers.add_parser("validate-evidence", help="Validate an evidence JSONL file")
     evidence_parser.add_argument("path")
 
+    build_evidence_parser = subparsers.add_parser("build-evidence", help="Build evidence records from structured stock data")
+    build_evidence_parser.add_argument("ticker")
+
     sec_parser = subparsers.add_parser("ingest-sec", help="Fetch SEC EDGAR data for a ticker")
     sec_parser.add_argument("ticker")
     sec_parser.add_argument("--user-agent", default="value-invest-research/0.1.0 research@example.com")
@@ -84,6 +87,8 @@ def main(argv: list[str] | None = None) -> int:
             return 0
         if args.command == "validate-evidence":
             return validate_evidence_file(Path(args.path))
+        if args.command == "build-evidence":
+            return run_build_evidence(root, args.ticker)
         if args.command == "ingest-sec":
             return run_sec_ingest(root, args.ticker, args.user_agent, args.include_facts)
         if args.command == "ingest-prices":
@@ -113,6 +118,19 @@ def validate_evidence_file(path: Path) -> int:
         except (json.JSONDecodeError, ValidationError) as exc:
             print(f"{path}:{line_number}: {exc}", file=sys.stderr)
             return 1
+    return 0
+
+
+def run_build_evidence(root: Path, ticker: str) -> int:
+    from value_invest_research.evidence_builder import build_stock_evidence
+
+    result = build_stock_evidence(root, ticker)
+    print(
+        f"Evidence built for {result['ticker']}: "
+        f"records_fetched={result['records_fetched']}, "
+        f"records_new={result['records_new']}, "
+        f"path={result['evidence_path']}"
+    )
     return 0
 
 
