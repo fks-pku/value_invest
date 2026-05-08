@@ -1,0 +1,5 @@
+market: US
+stocks:
+  - ticker: AAPL
+    company_name: Apple Inc.
+    status: research_seed

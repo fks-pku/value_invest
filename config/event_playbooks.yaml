@@ -1,0 +1,28 @@
+geopolitical_conflict:
+  first_questions:
+    - What happened, and what is confirmed?
+    - Which geographies, commodities, supply chains, or military systems are directly involved?
+    - What is the plausible duration and escalation path?
+  transmission_channels:
+    - energy_prices
+    - shipping_routes
+    - insurance_costs
+    - defense_spending
+    - inflation_expectations
+    - currency_safe_haven
+  affected_sectors:
+    potential_positive:
+      - energy_producers
+      - defense_contractors
+      - shipping
+      - commodity_infrastructure
+    potential_negative:
+      - airlines
+      - chemicals
+      - travel
+      - import_dependent_retail
+  mandatory_checks:
+    - Does the company have direct exposure?
+    - Is the impact material to earnings or free cash flow?
+    - Is the move already priced in?
+    - What evidence would falsify the event thesis?

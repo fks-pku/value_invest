@@ -1,0 +1,29 @@
+[project]
+name = "value-invest-research"
+version = "0.1.0"
+description = "File-system-first LLM investment research assistant foundation"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+value-invest-research = "value_invest_research.cli:main"
+
+[project.optional-dependencies]
+ingest = ["yfinance>=0.2.36"]
+llm = ["openai>=1.0.0"]
+research = ["pyyaml>=6.0"]
+all = [
+    "openai>=1.0.0",
+    "pyyaml>=6.0",
+    "yfinance>=0.2.36",
+]
+dev = [
+    "pytest>=8.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["src"]

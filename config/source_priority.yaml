@@ -1,0 +1,18 @@
+reliability:
+  primary:
+    - sec_filing
+    - company_ir
+    - official_transcript
+    - audited_financials
+  high:
+    - exchange_data
+    - established_market_data_provider
+    - reputable_financial_press
+  medium:
+    - specialist_blog
+    - expert_commentary
+    - industry_newsletter
+  low:
+    - social_media
+    - unattributed_rumor
+    - unsourced_summary
