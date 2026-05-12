@@ -29,6 +29,7 @@ python tools/run_tests.py
 $env:PYTHONPATH = "src"; python -m value_invest_research --help
 value-invest-research --help
 value-invest-research build-evidence AAPL
+value-invest-research build-research-graph AAPL
 value-invest-research research-stock AAPL --api-key $env:LLM_API_KEY
 ```
 
@@ -41,3 +42,4 @@ value-invest-research research-stock AAPL --api-key $env:LLM_API_KEY
 - Preserve existing research history; proposals are safer than silent memo overwrites.
 - Optional integrations must fail with clear install guidance when dependencies are missing.
 - Every thesis-strengthening output must include a dominant D driver, matching 3T time frame, and disconfirming tests.
+- Research graph outputs must preserve node/edge traceability from evidence to consensus, questions, hypotheses, assumption tests, and reports.

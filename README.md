@@ -8,6 +8,7 @@ This is not an automated trading system. It does not place orders or issue final
 
 - Core scaffolding and validation are implemented.
 - CLI commands exist for stocks, events, SEC ingestion, price ingestion, FengHe stock research, memo updates, event research, and sector/theme research.
+- A deterministic research graph pipeline exists for consensus baselines, 3T questions, hypotheses, assumption tests, and forward reports.
 - The primary research framework is FengHe 3C3D5M3T: Cycle, Change, Certainty; D1/D2/D3 price drivers; M1-M5 value analysis; and T1/T2/T3 time frames.
 - Third-party integrations are optional. Core commands work without `openai`, `pyyaml`, or `yfinance`; integration commands report a clear install hint when their package is missing.
 - The repository includes sample AAPL, event, and sector research artifacts.
@@ -55,12 +56,24 @@ Examples:
 value-invest-research init-stock MSFT --company-name "Microsoft Corporation"
 value-invest-research init-event 2026-05-06 "US Iran Conflict"
 value-invest-research build-evidence AAPL
+value-invest-research build-research-graph AAPL
 value-invest-research validate-evidence stocks/AAPL/evidence.jsonl
 value-invest-research research-stock AAPL --api-key $env:LLM_API_KEY
 ```
 
 `research-stock` writes a timestamped Markdown report and structured signal JSON under `stocks/<TICKER>/research_reports/`.
 `build-evidence` converts structured SEC facts and price CSV rows into stable evidence IDs under `stocks/<TICKER>/evidence.jsonl`.
+`build-research-graph` runs the full deterministic graph pipeline and writes `nodes.jsonl`, `edges.jsonl`, and `forward_report.html` under `stocks/<TICKER>/research_graph/`.
+
+Graph stages are also callable one by one:
+
+```powershell
+value-invest-research build-consensus AAPL
+value-invest-research generate-questions AAPL
+value-invest-research build-hypotheses AAPL
+value-invest-research test-hypotheses AAPL
+value-invest-research write-forward-report AAPL
+```
 
 ## Test
 
@@ -79,6 +92,19 @@ python tools/run_tests.py
 - `stocks/`: stock-level research objects.
 - `research/`: event, sector, and theme research objects.
 - `docs/superpowers/`: design specs and implementation plans.
+
+## Research Graph Pipeline
+
+The graph pipeline treats current facts and market consensus as the priced baseline. It then creates a local graph:
+
+- Evidence nodes: validated `EvidenceRecord` entries.
+- Framework nodes: FengHe 3C, 3D, 5M, and 3T concepts.
+- Consensus nodes: what the current local evidence can support as baseline.
+- Question nodes: what could change by T1/T2/T3.
+- Hypothesis nodes: mechanisms that could move D1/D2/D3.
+- Assumption-test nodes: what evidence would support or disconfirm each hypothesis.
+
+The forward report is an HTML synthesis of the graph, not a final trading instruction.
 
 ## Boundaries
 

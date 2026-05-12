@@ -28,6 +28,24 @@ def build_parser() -> argparse.ArgumentParser:
     build_evidence_parser = subparsers.add_parser("build-evidence", help="Build evidence records from structured stock data")
     build_evidence_parser.add_argument("ticker")
 
+    graph_parser = subparsers.add_parser("build-research-graph", help="Build the full FengHe research graph pipeline")
+    graph_parser.add_argument("ticker")
+
+    consensus_parser = subparsers.add_parser("build-consensus", help="Build priced-consensus baseline graph nodes")
+    consensus_parser.add_argument("ticker")
+
+    questions_parser = subparsers.add_parser("generate-questions", help="Generate FengHe 3T question graph nodes")
+    questions_parser.add_argument("ticker")
+
+    hypotheses_parser = subparsers.add_parser("build-hypotheses", help="Build hypothesis graph nodes from research questions")
+    hypotheses_parser.add_argument("ticker")
+
+    tests_parser = subparsers.add_parser("test-hypotheses", help="Build assumption-test graph nodes from hypotheses and evidence")
+    tests_parser.add_argument("ticker")
+
+    report_parser = subparsers.add_parser("write-forward-report", help="Write a forward research report from the graph")
+    report_parser.add_argument("ticker")
+
     sec_parser = subparsers.add_parser("ingest-sec", help="Fetch SEC EDGAR data for a ticker")
     sec_parser.add_argument("ticker")
     sec_parser.add_argument("--user-agent", default="value-invest-research/0.1.0 research@example.com")
@@ -89,6 +107,18 @@ def main(argv: list[str] | None = None) -> int:
             return validate_evidence_file(Path(args.path))
         if args.command == "build-evidence":
             return run_build_evidence(root, args.ticker)
+        if args.command == "build-research-graph":
+            return run_research_graph_cmd(root, args.ticker, "report")
+        if args.command == "build-consensus":
+            return run_research_graph_cmd(root, args.ticker, "consensus")
+        if args.command == "generate-questions":
+            return run_research_graph_cmd(root, args.ticker, "questions")
+        if args.command == "build-hypotheses":
+            return run_research_graph_cmd(root, args.ticker, "hypotheses")
+        if args.command == "test-hypotheses":
+            return run_research_graph_cmd(root, args.ticker, "tests")
+        if args.command == "write-forward-report":
+            return run_research_graph_cmd(root, args.ticker, "report")
         if args.command == "ingest-sec":
             return run_sec_ingest(root, args.ticker, args.user_agent, args.include_facts)
         if args.command == "ingest-prices":
@@ -131,6 +161,23 @@ def run_build_evidence(root: Path, ticker: str) -> int:
         f"records_new={result['records_new']}, "
         f"path={result['evidence_path']}"
     )
+    return 0
+
+
+def run_research_graph_cmd(root: Path, ticker: str, stage: str) -> int:
+    from value_invest_research.research_graph import run_research_graph_stage
+
+    result = run_research_graph_stage(root, ticker, stage)
+    print(
+        f"Research graph built for {result['ticker']}: "
+        f"stage={result['stage']}, "
+        f"nodes={result['nodes']}, "
+        f"edges={result['edges']}, "
+        f"nodes_path={result['nodes_path']}, "
+        f"edges_path={result['edges_path']}"
+    )
+    if result["report_path"]:
+        print(f"Forward report saved: {result['report_path']}")
     return 0
 
 

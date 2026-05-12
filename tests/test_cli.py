@@ -1,3 +1,4 @@
+import json
 import unittest
 from contextlib import redirect_stdout
 from io import StringIO
@@ -60,6 +61,40 @@ class CliTests(unittest.TestCase):
             self.assertEqual(exit_code, 0)
             self.assertIn("Evidence built for AAPL", out.getvalue())
             self.assertIn("records_new", out.getvalue())
+
+    def test_build_research_graph_command_prints_graph_paths(self):
+        with project_tmp_dir() as tmp:
+            stock_dir = Path(tmp) / "stocks" / "AAPL"
+            stock_dir.mkdir(parents=True)
+            (stock_dir / "logs").mkdir(parents=True)
+            (stock_dir / "evidence.jsonl").write_text(
+                json.dumps({
+                    "id": "ev_aapl_sec_revenue_20260328",
+                    "research_object": "stocks/AAPL",
+                    "source_type": "sec_fact",
+                    "source_name": "SEC XBRL Revenue",
+                    "url": "local://stocks/AAPL/data/sec_facts.json",
+                    "published_at": "2026-05-01T00:00:00Z",
+                    "fetched_at": "2026-05-08T17:46:28+00:00",
+                    "hash": "sha256:test",
+                    "tickers": ["AAPL"],
+                    "sectors": [],
+                    "themes": [],
+                    "summary": "Revenue was 111184000000 USD for period ending 2026-03-28 in 10-Q.",
+                    "reliability": "primary",
+                    "materiality": "medium",
+                    "used_in": [],
+                }) + "\n",
+                encoding="utf-8",
+            )
+
+            out = StringIO()
+            with redirect_stdout(out):
+                exit_code = main(["--root", str(tmp), "build-research-graph", "APPL"])
+
+            self.assertEqual(exit_code, 0)
+            self.assertIn("Research graph built for AAPL", out.getvalue())
+            self.assertIn("forward_report.html", out.getvalue())
 
 
 if __name__ == "__main__":
