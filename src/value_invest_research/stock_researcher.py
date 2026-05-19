@@ -13,7 +13,7 @@ from value_invest_research.runlog import RunLog, RunStatus
 
 def _build_user_prompt(ticker: str, context: dict[str, Any]) -> str:
     sections = [
-        f"# FengHe Stock Research: {ticker}",
+        f"# Foundation-First Stock Research: {ticker}",
         "",
         "## Current Investment Memo",
         context.get("memo", "(no existing memo)"),
@@ -40,25 +40,29 @@ def _build_user_prompt(ticker: str, context: dict[str, Any]) -> str:
     sections.extend([
         "## Instructions",
         "",
-        "Produce a complete FengHe Stock Research report. Do not update the memo directly.",
+        "Produce a complete foundation-first stock research report. Do not update the memo directly.",
+        "Analyze the company foundation before applying FengHe message-flow analysis.",
         "",
         "Required markdown sections:",
         "",
         "1. Executive conclusion",
-        "2. 3C: Cycle, Change, Certainty",
-        "3. 3D: D1 ROE/intrinsic value, D2 marginal change/catalyst, D3 sentiment/valuation, and dominant_driver",
-        "4. 5M: M1 market size, M2 market share, M3 margin, M4 model, M5 management",
-        "5. 3T: T1 0-3 months, T2 3-15 months, T3 15+ months, and active time frame",
-        "6. Disconfirming tests and thesis breakers",
-        "7. Human review actions",
+        "2. Company foundation analysis with all eight sections:",
+        "   source/origin; company history; current business; value chain position; competitive landscape; strategy; organization/culture/governance; risk sweep",
+        "3. Foundation evidence gaps and human verification needs",
+        "4. FengHe message-flow analysis after the foundation baseline:",
+        "   3C; 3D and dominant_driver; 5M change map; 3T active time frame",
+        "5. Disconfirming tests and thesis breakers",
+        "6. Human review actions",
         "",
-        "End the report with a fenced JSON block named `fenghe_signal` in this exact shape:",
+        "End the report with a fenced JSON block named `stock_research_signal` in this exact shape:",
         "",
         "```json",
         "{",
         '  "ticker": "...",',
         '  "view": "watch | attractive | expensive | avoid | needs_review",',
         '  "confidence": "low | medium | high",',
+        '  "foundation_status": "complete | incomplete | needs_review",',
+        '  "foundation_gaps": ["..."],',
         '  "cycle_state": "...",',
         '  "change_type": "structural | cyclical | mixed | unclear",',
         '  "certainty_level": "low | medium | high",',
@@ -78,6 +82,8 @@ def _build_user_prompt(ticker: str, context: dict[str, Any]) -> str:
         "",
         "Rules:",
         "- Every material claim MUST cite an evidence ID or data source.",
+        "- If the eight-section company foundation is incomplete, keep view as needs_review unless evidence strongly supports otherwise.",
+        "- FengHe is the message-flow layer; do not use it as a substitute for company foundation analysis.",
         "- If evidence is insufficient, use needs_review and explain what is missing.",
         "- Do not issue final trading instructions.",
     ])
@@ -120,7 +126,7 @@ class StockResearcher:
         report_dir = stock_dir / "research_reports"
         report_dir.mkdir(parents=True, exist_ok=True)
 
-        report_path = report_dir / f"{timestamp}_fenghe_research.md"
+        report_path = report_dir / f"{timestamp}_stock_research.md"
         report_path.write_text(response_text, encoding="utf-8")
 
         signal = _extract_signal_json(response_text)
@@ -129,11 +135,12 @@ class StockResearcher:
                 "ticker": normalized,
                 "view": "needs_review",
                 "confidence": "low",
-                "error": "No valid fenghe_signal JSON block found in LLM response.",
+                "foundation_status": "needs_review",
+                "error": "No valid stock_research_signal JSON block found in LLM response.",
             }
         signal.setdefault("ticker", normalized)
 
-        signal_path = report_dir / f"{timestamp}_fenghe_signal.json"
+        signal_path = report_dir / f"{timestamp}_stock_signal.json"
         signal_path.write_text(json.dumps(signal, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
         log.append("stock_research", RunStatus.SUCCESS, tickers=[normalized], records_fetched=1, records_new=1)

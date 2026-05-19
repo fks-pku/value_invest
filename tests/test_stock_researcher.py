@@ -12,7 +12,7 @@ from value_invest_research.stock_researcher import (
 
 
 class StockResearcherTests(unittest.TestCase):
-    def test_build_user_prompt_requires_full_fenghe_output(self):
+    def test_build_user_prompt_requires_foundation_first_output(self):
         context = {
             "memo": "# AAPL Memo",
             "key_financial_metrics": {
@@ -22,12 +22,20 @@ class StockResearcherTests(unittest.TestCase):
 
         prompt = _build_user_prompt("AAPL", context)
 
-        self.assertIn("FengHe Stock Research", prompt)
+        self.assertIn("Foundation-First Stock Research", prompt)
+        self.assertIn("Company foundation analysis", prompt)
+        self.assertIn("source/origin", prompt)
+        self.assertIn("value chain position", prompt)
+        self.assertIn("competitive landscape", prompt)
+        self.assertIn("organization/culture/governance", prompt)
+        self.assertIn("risk sweep", prompt)
+        self.assertIn("foundation_status", prompt)
+        self.assertIn("foundation_gaps", prompt)
         self.assertIn("3C", prompt)
         self.assertIn("3D", prompt)
         self.assertIn("5M", prompt)
         self.assertIn("3T", prompt)
-        self.assertIn("fenghe_signal", prompt)
+        self.assertIn("stock_research_signal", prompt)
         self.assertIn("dominant_driver", prompt)
         self.assertIn("disconfirming_tests", prompt)
 
@@ -52,13 +60,14 @@ class StockResearcherTests(unittest.TestCase):
             (stock_dir / "evidence.jsonl").write_text("", encoding="utf-8")
 
             mock_client = MagicMock()
-            mock_client.chat.return_value = """# AAPL FengHe Research
+            mock_client.chat.return_value = """# AAPL Foundation-First Research
 
-## 3C
+## Company Foundation
 
 ```json
 {
   "ticker": "AAPL",
+  "foundation_status": "complete",
   "cycle_state": "mature cycle",
   "change_type": "mixed",
   "certainty_level": "medium",
@@ -76,9 +85,12 @@ class StockResearcherTests(unittest.TestCase):
             signal_path = Path(result["signal_path"])
             self.assertTrue(report_path.exists())
             self.assertTrue(signal_path.exists())
-            self.assertIn("AAPL FengHe Research", report_path.read_text(encoding="utf-8"))
+            self.assertTrue(report_path.name.endswith("_stock_research.md"))
+            self.assertTrue(signal_path.name.endswith("_stock_signal.json"))
+            self.assertIn("AAPL Foundation-First Research", report_path.read_text(encoding="utf-8"))
             signal = json.loads(signal_path.read_text(encoding="utf-8"))
             self.assertEqual(signal["dominant_driver"], "D1")
+            self.assertEqual(signal["foundation_status"], "complete")
 
 
 if __name__ == "__main__":

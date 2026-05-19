@@ -1,8 +1,8 @@
 # Legacy Value Investing Notes
 
-This file is legacy context. The project primary framework is `frameworks/fenghe_3c3d5m3t.md`.
+This file is legacy context. For individual companies, the project primary baseline is `frameworks/company_foundation.md`.
 
-If these notes conflict with FengHe 3C3D5M3T, follow FengHe.
+If these notes conflict with the company foundation framework, follow company foundation. Use FengHe 3C3D5M3T after the baseline when analyzing message flow, catalysts, and time frames.
 
 Traditional value investing evaluates each company through:
 

@@ -1,6 +1,6 @@
 # FengHe 3C3D5M3T Framework
 
-This is the primary investment research framework for this project. Use it before any generic value-investing language.
+This is the message-flow and thesis-change framework for this project. For individual companies, use it after the company foundation baseline; for sectors and events, use it to organize cycle, change, certainty, drivers, and time frames.
 
 Source reference: https://xueqiu.com/5739488179/363268127
 
@@ -22,7 +22,7 @@ Every research conclusion must answer:
 - D2: External or marginal change. Inflection points, catalysts, share shifts, margin changes, and expectation revisions.
 - D3: Sentiment and valuation. Market emotion, valuation multiples, crowding, and price dislocation.
 
-Every stock view must identify the dominant current driver. Do not mix D1, D2, and D3 into vague language.
+Every message-flow stock view must identify the dominant current driver. Do not mix D1, D2, and D3 into vague language.
 
 ## 5M: Value Analysis
 
@@ -40,7 +40,7 @@ Use 5M to explain ROE. A strong claim about value must name which M drives it an
 - T2: 3-15 months. Earnings revision, cycle confirmation, margin/share inflection, or valuation normalization.
 - T3: 15+ months. Long-cycle value creation, business model proof, and durable ROE compounding.
 
-Every recommendation must state its time frame. A T1 idea cannot rely mainly on T3 evidence, and a T3 idea cannot depend on short-lived sentiment.
+Every thesis change must state its time frame. A T1 idea cannot rely mainly on T3 evidence, and a T3 idea cannot depend on short-lived sentiment.
 
 ## Output Discipline
 

@@ -28,13 +28,13 @@ def build_parser() -> argparse.ArgumentParser:
     build_evidence_parser = subparsers.add_parser("build-evidence", help="Build evidence records from structured stock data")
     build_evidence_parser.add_argument("ticker")
 
-    graph_parser = subparsers.add_parser("build-research-graph", help="Build the full FengHe research graph pipeline")
+    graph_parser = subparsers.add_parser("build-research-graph", help="Build the full message-flow research graph pipeline")
     graph_parser.add_argument("ticker")
 
     consensus_parser = subparsers.add_parser("build-consensus", help="Build priced-consensus baseline graph nodes")
     consensus_parser.add_argument("ticker")
 
-    questions_parser = subparsers.add_parser("generate-questions", help="Generate FengHe 3T question graph nodes")
+    questions_parser = subparsers.add_parser("generate-questions", help="Generate 3T message-flow question graph nodes")
     questions_parser.add_argument("ticker")
 
     hypotheses_parser = subparsers.add_parser("build-hypotheses", help="Build hypothesis graph nodes from research questions")
@@ -62,7 +62,7 @@ def build_parser() -> argparse.ArgumentParser:
     memo_parser.add_argument("--base-url", default="https://api.z.ai/api/coding/paas/v4")
     memo_parser.add_argument("--model", default="glm-5.1")
 
-    stock_research_parser = subparsers.add_parser("research-stock", help="Run full FengHe stock research")
+    stock_research_parser = subparsers.add_parser("research-stock", help="Run foundation-first stock research")
     stock_research_parser.add_argument("ticker")
     stock_research_parser.add_argument("--api-key", default=None)
     stock_research_parser.add_argument("--base-url", default="https://api.z.ai/api/coding/paas/v4")

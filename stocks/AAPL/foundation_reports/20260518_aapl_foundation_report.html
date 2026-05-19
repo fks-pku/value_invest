@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AAPL 专业基础分析报告</title>
+  <style>
+    :root {
+      --paper: #f6f3ee;
+      --ink: #1f2526;
+      --muted: #6f7778;
+      --panel: #fffdfa;
+      --line: #d9d1c5;
+      --deep: #083c3a;
+      --green: #117467;
+      --green-soft: #e4f0eb;
+      --amber: #8a5a16;
+      --amber-soft: #fff1d6;
+      --red: #a43a2d;
+      --red-soft: #fae9e5;
+      --blue: #245982;
+      --shadow: 0 10px 30px rgba(32, 36, 33, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        linear-gradient(90deg, rgba(8,60,58,.045) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(8,60,58,.035) 1px, transparent 1px),
+        var(--paper);
+      background-size: 28px 28px;
+      color: var(--ink);
+      font-family: "Avenir Next", "Gill Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.68;
+    }
+    main {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 34px 26px 78px;
+    }
+    header {
+      padding: 30px 0 24px;
+      border-bottom: 4px solid var(--deep);
+      margin-bottom: 18px;
+    }
+    .eyebrow, .meta, .pill, th, .tag, .evidence, .toc a, .score {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    .eyebrow {
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 10px 0 12px;
+      font-family: Georgia, "Songti SC", "Noto Serif CJK SC", serif;
+      font-size: clamp(30px, 4vw, 52px);
+      line-height: 1.08;
+      letter-spacing: 0;
+      max-width: 920px;
+    }
+    h2 {
+      margin: 0 0 14px;
+      font-family: Georgia, "Songti SC", "Noto Serif CJK SC", serif;
+      font-size: 24px;
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 18px 0 8px;
+      font-size: 16px;
+      line-height: 1.32;
+    }
+    p { margin: 8px 0; }
+    a { color: var(--blue); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .notice {
+      margin-top: 18px;
+      padding: 12px 14px;
+      border-left: 4px solid var(--red);
+      background: var(--red-soft);
+      color: #61261f;
+      border-radius: 0 6px 6px 0;
+      max-width: 980px;
+    }
+    .toc {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding: 10px 0;
+      background: rgba(246, 243, 238, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+    }
+    .toc a {
+      flex: 0 0 auto;
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--deep);
+      background: var(--panel);
+      font-size: 12px;
+      text-decoration: none;
+    }
+    section {
+      margin-top: 18px;
+      padding: 24px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 18px;
+      align-items: stretch;
+      margin-top: 18px;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 18px 0;
+    }
+    .metric {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 15px 14px;
+      min-height: 112px;
+      box-shadow: var(--shadow);
+    }
+    .metric strong {
+      display: block;
+      color: var(--deep);
+      font-size: 28px;
+      line-height: 1.08;
+      font-weight: 800;
+    }
+    .metric span {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .pill, .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--green-soft);
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .pill.warn, .tag.warn { background: var(--amber-soft); color: var(--amber); }
+    .pill.risk, .tag.risk { background: var(--red-soft); color: var(--red); }
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .three-col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 13px;
+    }
+    th, td {
+      border-top: 1px solid var(--line);
+      padding: 10px 9px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #eee8df;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    ul { margin: 8px 0 0; padding-left: 18px; }
+    li { margin: 5px 0; }
+    .evidence {
+      color: var(--green);
+      font-size: 11px;
+      white-space: nowrap;
+    }
+    .small { color: var(--muted); font-size: 12px; }
+    .bar-row {
+      display: grid;
+      grid-template-columns: 130px 1fr 72px;
+      gap: 10px;
+      align-items: center;
+      margin: 9px 0;
+      font-size: 13px;
+    }
+    .bar {
+      position: relative;
+      height: 12px;
+      background: #e8e0d6;
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .bar span {
+      display: block;
+      height: 100%;
+      width: var(--w);
+      background: linear-gradient(90deg, var(--green), #65a89d);
+    }
+    .matrix {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .score {
+      display: inline-block;
+      min-width: 48px;
+      text-align: center;
+      padding: 2px 6px;
+      border-radius: 5px;
+      background: #e8efe9;
+      color: var(--deep);
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .quote {
+      padding: 16px 18px;
+      border-left: 4px solid var(--deep);
+      background: #f5efe6;
+      border-radius: 0 8px 8px 0;
+      font-family: Georgia, "Songti SC", serif;
+      font-size: 16px;
+    }
+    @media (max-width: 920px) {
+      main { padding: 22px 14px 54px; }
+      .hero-grid, .two-col, .three-col, .matrix, .metric-grid { grid-template-columns: 1fr; }
+      table { display: block; overflow-x: auto; }
+    }
+    @media print {
+      body { background: white; }
+      main { max-width: none; padding: 18px; }
+      .toc { display: none; }
+      section, .panel, .metric { box-shadow: none; break-inside: avoid; }
+      a { color: var(--ink); }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">Professional Company Foundation Report</div>
+    <h1>AAPL 公司基础分析报告 - 专业版</h1>
+    <div class="meta">
+      <span>输入 ticker: APPL -> AAPL</span>
+      <span>生成日期: 2026-05-18</span>
+      <span>分析层级: 基础研究底座</span>
+      <span>不含交易建议</span>
+    </div>
+    <div class="notice">
+      本报告不构成买入、卖出或持有建议。它的目标是回答“Apple 到底是一门什么生意、权力在哪里、哪些假设会失效”。后续才进入 FengHe 消息流、预期差和估值分析。
+    </div>
+  </header>
+
+  <nav class="toc">
+    <a href="#summary">摘要</a>
+    <a href="#model">商业模型</a>
+    <a href="#segments">分部质量</a>
+    <a href="#chain">产业链</a>
+    <a href="#competition">竞争</a>
+    <a href="#strategy">战略</a>
+    <a href="#governance">治理</a>
+    <a href="#risks">风险</a>
+    <a href="#tests">反证清单</a>
+    <a href="#sources">来源</a>
+  </nav>
+
+  <div class="metric-grid">
+    <div class="metric"><strong>$111.2B</strong><span>FY2026 Q2 revenue, +17% YoY<br><span class="evidence">ev_aapl_sec_revenue_20260328</span></span></div>
+    <div class="metric"><strong>49.3%</strong><span>FY2026 Q2 gross margin<br><span class="evidence">ev_aapl_sec_gross_profit_20260328</span></span></div>
+    <div class="metric"><strong>43.4%</strong><span>Services share of Q2 gross profit, vs 27.9% of revenue</span></div>
+    <div class="metric"><strong>$82.6B</strong><span>FY2026 H1 operating cash flow from SEC XBRL</span></div>
+  </div>
+
+  <section id="summary">
+    <h2>0. 投研摘要</h2>
+    <div class="hero-grid">
+      <div class="panel">
+        <span class="pill warn">foundation_status: research_ready_with_specific_gaps</span>
+        <h3>核心判断</h3>
+        <p>Apple 不是单纯的 iPhone 公司，而是“高端设备入口 + 操作系统控制 + 服务货币化 + 资本回报”的复合现金流系统。iPhone 决定生态入口和短周期弹性，Services 决定利润质量，供应链和产品工程决定毛利率防线。</p>
+        <p>这份基础分析已经能支撑后续研究，但不能直接推出投资结论。缺口集中在三类：第三方市场份额序列、供应商/客户集中度、估值和预期差。</p>
+      </div>
+      <div class="panel">
+        <h3>三条最重要的研究问题</h3>
+        <ul>
+          <li>iPhone 17 周期是短期换机脉冲，还是会提升 2026-2027 年装机基数和服务变现？</li>
+          <li>Services 高毛利是否能抵消硬件毛利率、监管和区域竞争压力？</li>
+          <li>John Ternus 接任 CEO 后，Apple 的产品节奏、AI 路线和资本配置纪律是否延续？</li>
+        </ul>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th>结论层级</th><th>内容</th><th>证据强度</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>事实</td>
+          <td>FY2026 Q2 Apple 营收 $111.184B，净利润 $29.578B，经营利润 $35.885B；iPhone 和 Services 分别贡献 $56.994B 和 $30.976B 收入。</td>
+          <td><span class="tag">高</span> SEC 10-Q + 本地 evidence</td>
+        </tr>
+        <tr>
+          <td>推断</td>
+          <td>Apple 的利润质量越来越依赖服务和生态留存，而不是仅依赖硬件销量。Services 占 Q2 收入 27.9%，但贡献 43.4% 的毛利。</td>
+          <td><span class="tag">高</span> 可由分部收入与毛利直接计算</td>
+        </tr>
+        <tr>
+          <td>判断</td>
+          <td>Apple 的基础面关键不是“是否仍是好公司”，而是“当前价格是否已充分反映服务高毛利、iPhone 17 周期、管理层交接和监管压力”。</td>
+          <td><span class="tag warn">中</span> 需要后续估值和预期差分析</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="model">
+    <h2>1. 商业模型：Apple 的真实利润机器</h2>
+    <div class="quote">
+      研究 Apple 的起点不是产品清单，而是一个闭环：设备销量创造装机基数，装机基数创造服务收入，服务收入和品牌溢价支撑现金流，现金流反哺 R&D、供应链锁定和回购。
+    </div>
+    <div class="three-col">
+      <div>
+        <h3>设备入口</h3>
+        <p>iPhone 仍是入口资产。FY2026 Q2 iPhone 收入 $56.994B，占公司季度收入 51.3%，同比增长 22%。这说明 2026 年上半年 Apple 的短期增长仍然高度依赖 iPhone 17 周期。</p>
+      </div>
+      <div>
+        <h3>服务利润池</h3>
+        <p>Services 收入 $30.976B，占收入 27.9%，但毛利 $23.752B，占总毛利 43.4%。这解释了为什么 Apple 的估值不能只按硬件制造商处理。</p>
+      </div>
+      <div>
+        <h3>资本回报</h3>
+        <p>FY2026 H1 经营现金流 $82.627B，回购 $36.989B，分红 $7.743B。Apple 的现金流转换和股本收缩是每股价值的重要变量。</p>
+      </div>
+    </div>
+    <h3>Q2 收入结构</h3>
+    <div class="bar-row"><span>iPhone</span><div class="bar"><span style="--w:51.3%"></span></div><strong>51.3%</strong></div>
+    <div class="bar-row"><span>Services</span><div class="bar"><span style="--w:27.9%"></span></div><strong>27.9%</strong></div>
+    <div class="bar-row"><span>Mac</span><div class="bar"><span style="--w:7.6%"></span></div><strong>7.6%</strong></div>
+    <div class="bar-row"><span>Wearables/Home</span><div class="bar"><span style="--w:7.1%"></span></div><strong>7.1%</strong></div>
+    <div class="bar-row"><span>iPad</span><div class="bar"><span style="--w:6.2%"></span></div><strong>6.2%</strong></div>
+    <p class="small">收入结构由 FY2026 Q2 10-Q 产品收入表计算。</p>
+  </section>
+
+  <section id="segments">
+    <h2>2. 分部质量：增长、毛利和区域结构</h2>
+    <div class="two-col">
+      <div>
+        <h3>产品线收入</h3>
+        <table>
+          <thead><tr><th>业务</th><th>Q2 FY2026</th><th>YoY</th><th>研究含义</th></tr></thead>
+          <tbody>
+            <tr><td>iPhone</td><td>$56.994B</td><td>+22%</td><td>主增长来源，周期性和新品接受度必须单独追踪。</td></tr>
+            <tr><td>Services</td><td>$30.976B</td><td>+16%</td><td>高毛利、韧性强，但监管敏感度最高。</td></tr>
+            <tr><td>Mac</td><td>$8.399B</td><td>+6%</td><td>Q2 增长恢复，但 H1 仍基本持平，需要看 MacBook Neo 是否形成持续需求。</td></tr>
+            <tr><td>iPad</td><td>$6.914B</td><td>+8%</td><td>产品更新驱动，长期仍看教育、企业和内容消费场景。</td></tr>
+            <tr><td>Wearables/Home</td><td>$7.901B</td><td>+5%</td><td>增速较弱，但健康、耳机、配件可强化生态粘性。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h3>毛利质量</h3>
+        <table>
+          <thead><tr><th>项目</th><th>Q2 FY2026</th><th>Q2 FY2025</th><th>解读</th></tr></thead>
+          <tbody>
+            <tr><td>Products gross margin</td><td>38.7%</td><td>35.9%</td><td>产品组合和汇率改善抵消部分成本压力。</td></tr>
+            <tr><td>Services gross margin</td><td>76.7%</td><td>75.7%</td><td>服务结构和规模效应仍强。</td></tr>
+            <tr><td>Total gross margin</td><td>49.3%</td><td>47.1%</td><td>总利润质量改善，但 10-Q 明确提示未来毛利率仍可能波动和承压。</td></tr>
+            <tr><td>R&D / revenue</td><td>10.3%</td><td>9.0%</td><td>R&D 增速 34%，说明 AI、芯片、硬件平台投入正在加速。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <h3>区域收入和经营利润</h3>
+    <table>
+      <thead><tr><th>区域</th><th>Q2 FY2026 收入</th><th>YoY</th><th>经营利润率*</th><th>基础分析含义</th></tr></thead>
+      <tbody>
+        <tr><td>Americas</td><td>$45.093B</td><td>+11.9%</td><td>43.0%</td><td>最大区域，成熟市场韧性仍强。</td></tr>
+        <tr><td>Europe</td><td>$28.055B</td><td>+14.7%</td><td>46.5%</td><td>高利润区，但 DMA 监管压力直接影响 App Store 规则。</td></tr>
+        <tr><td>Greater China</td><td>$20.497B</td><td>+28.1%</td><td>44.8%</td><td>Q2 增长强，但本地竞争和政策风险仍是长期反证点。</td></tr>
+        <tr><td>Japan</td><td>$8.401B</td><td>+15.1%</td><td>45.7%</td><td>较高利润率，小区域但稳定。</td></tr>
+        <tr><td>Rest of Asia Pacific</td><td>$9.138B</td><td>+25.3%</td><td>45.2%</td><td>新兴高端需求和渠道扩张值得跟踪。</td></tr>
+      </tbody>
+    </table>
+    <p class="small">*区域经营利润率未分摊 corporate R&D、G&A 等费用，用于比较区域销售经济性，不等同公司整体利润率。</p>
+  </section>
+
+  <section id="chain">
+    <h2>3. 产业链定位：Apple 强在哪里，弱在哪里</h2>
+    <div class="matrix">
+      <div class="panel">
+        <h3>权力来源</h3>
+        <ul>
+          <li><strong>需求端:</strong> 2.5B+ 活跃设备安装基数提供服务收入、换机和配件需求。</li>
+          <li><strong>供应端:</strong> 规模采购、定制组件和长期供应链管理形成议价能力。</li>
+          <li><strong>生态端:</strong> iOS、App Store、支付、iCloud、AppleCare 和订阅服务构成用户路径控制。</li>
+          <li><strong>资本端:</strong> 强现金流允许 R&D、预付款、库存策略和回购并行。</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>脆弱点</h3>
+        <ul>
+          <li>10-K 披露部分关键组件来自单一或有限来源。</li>
+          <li>2026 Q2 10-Q 披露一年以上无条件采购义务 $27.691B。</li>
+          <li>监管可削弱 App Store 分发、支付和抽成规则。</li>
+          <li>高端定价对消费信心、汇率、关税和地区竞争敏感。</li>
+        </ul>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th>环节</th><th>Apple 权力</th><th>外部约束</th><th>研究判断</th></tr></thead>
+      <tbody>
+        <tr><td>核心芯片/组件</td><td><span class="score">高</span></td><td>DRAM/NAND、显示、摄像头、稀土、先进制程产能。</td><td>规模强，但不是无约束。内存紧缺会抬升 BOM 并影响低端需求。</td></tr>
+        <tr><td>组装制造</td><td><span class="score">中高</span></td><td>地缘、劳工、物流、区域产能迁移。</td><td>供应链管理能力是 Cook 时代核心资产，Ternus 时代需验证延续性。</td></tr>
+        <tr><td>渠道</td><td><span class="score">高</span></td><td>运营商补贴、经销商库存、区域政策。</td><td>直营 + 间接渠道组合降低单点渠道风险。</td></tr>
+        <tr><td>开发者生态</td><td><span class="score">高但受监管</span></td><td>DMA、DOJ、Epic Games、替代支付。</td><td>这是高毛利服务的核心敏感点，不是边缘法律噪音。</td></tr>
+        <tr><td>消费者</td><td><span class="score">高</span></td><td>换机周期拉长、竞品高端化、宏观消费。</td><td>品牌和生态留存强，但需求弹性仍由新品价值感决定。</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="competition">
+    <h2>4. 竞争格局：Apple 是高端利润池领导者，不是所有市场的绝对份额垄断者</h2>
+    <div class="two-col">
+      <div class="panel">
+        <h3>智能手机</h3>
+        <p>Counterpoint 估计 Q1 2026 全球智能手机出货同比下降 6%，Apple 以约 21% 份额首次在 Q1 领先。IDC 2026-05-12 口径则显示 Q1 2026 Samsung 21.2%、Apple 21.0%，两者接近。结论不是“Apple 绝对第一”，而是 Apple 和 Samsung 是内存紧缺周期中最能守住份额的两家。</p>
+        <p>Counterpoint 还称 iPhone 17 是 Q1 2026 全球最畅销机型，iPhone 17 系列占据前三名；这支持 iPhone 17 周期强，但仍需区分“新品热销”与“长期换机中枢上移”。</p>
+      </div>
+      <div class="panel">
+        <h3>PC / Mac</h3>
+        <p>Gartner 初步数据显示 Q1 2026 全球 PC 出货 62.8M 台，同比增长 4%；Apple 出货 6.684M 台，份额 10.6%，同比增长 12.7%，是主要厂商中增速最高。Gartner 同时提醒 Q1 增长受到渠道提前备货影响，不应机械外推。</p>
+      </div>
+    </div>
+    <h3>竞争结构判断</h3>
+    <table>
+      <thead><tr><th>市场</th><th>Apple 位置</th><th>竞争压力</th><th>需要验证的假设</th></tr></thead>
+      <tbody>
+        <tr><td>高端智能手机</td><td>强势，iPhone 17 周期领先。</td><td>Samsung、Huawei、其他中国高端品牌。</td><td>高端份额提升是否来自结构性转移，而非单季新品。</td></tr>
+        <tr><td>大众智能手机</td><td>主动参与较少。</td><td>Android 低成本结构和区域品牌。</td><td>是否需要更低价 iPhone 或延长旧机型销售。</td></tr>
+        <tr><td>PC</td><td>份额仍低，但增长快。</td><td>Lenovo、HP、Dell 的企业渠道强。</td><td>MacBook Neo 是否打开更大 TAM，还是短期价格/新品效应。</td></tr>
+        <tr><td>服务</td><td>高毛利生态层。</td><td>监管、开发者反弹、替代支付、云服务竞争。</td><td>App Store 经济模型是否被实质削弱。</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="strategy">
+    <h2>5. 战略：当前不是缺增长点，而是要证明增长质量</h2>
+    <table>
+      <thead><tr><th>战略层级</th><th>观察到的动作</th><th>专业判断</th><th>反证</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>总体战略</td>
+          <td>扩大装机基数，强化 Services，维持高端硬件入口。</td>
+          <td>正确，但对 iPhone 周期和监管敏感。</td>
+          <td>Services 增速放缓且毛利率下降；活跃设备增长停滞。</td>
+        </tr>
+        <tr>
+          <td>产品战略</td>
+          <td>iPhone 17 系列、iPhone 17e、M4 iPad Air、MacBook Neo 等新品。</td>
+          <td>2026 H1 新品接受度较强，尤其 iPhone 和入门 Mac。</td>
+          <td>Q3/Q4 新品需求无法延续，渠道库存上升。</td>
+        </tr>
+        <tr>
+          <td>研发战略</td>
+          <td>FY2026 Q2 R&D $11.419B，同比增长 34%。</td>
+          <td>投入强度上升，可能对应 AI、芯片、硬件平台和服务基础设施。</td>
+          <td>研发投入上升但没有转化为产品差异化或服务增长。</td>
+        </tr>
+        <tr>
+          <td>资本配置</td>
+          <td>FY2026 H1 回购 $36.989B，Q2 后新增最高 $100B 回购授权。</td>
+          <td>回购继续支撑 EPS 和每股现金流，但估值高低决定回购质量。</td>
+          <td>在高估值区间大额回购，或 FCF 被资本开支/监管成本侵蚀。</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="governance">
+    <h2>6. 组织、文化与治理：最大变量是接班，不是财报</h2>
+    <div class="two-col">
+      <div>
+        <h3>事实</h3>
+        <ul>
+          <li>Apple 官网列示现任执行团队包括 Tim Cook、Sabih Khan、Kevan Parekh、Eddy Cue、Craig Federighi、Johny Srouji、John Ternus 等。</li>
+          <li>2025 10-K 披露截至 2025-09-27 约 166,000 名全职等效员工。</li>
+          <li>Apple 宣布 John Ternus 将于 2026-09-01 接任 CEO，Tim Cook 转任执行董事长，Arthur Levinson 转为首席独立董事。</li>
+        </ul>
+      </div>
+      <div>
+        <h3>专业判断</h3>
+        <ul>
+          <li>Cook 时代的关键资产是供应链、全球化、资本回报和服务扩张。</li>
+          <li>Ternus 的硬件工程背景有利于产品线和设备体验，但市场会重新评估政策关系、资本配置和服务监管应对能力。</li>
+          <li>继任过程目前是“已披露、可跟踪”的治理变量，不是直接负面结论。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="risks">
+    <h2>7. 风险排雷：专业报告必须先写坏情景</h2>
+    <table>
+      <thead><tr><th>风险</th><th>为什么重要</th><th>证据状态</th><th>监控指标</th></tr></thead>
+      <tbody>
+        <tr><td>iPhone 集中度</td><td>Q2 收入 51.3% 来自 iPhone，增长高度依赖新品周期。</td><td><span class="tag">已证实</span></td><td>iPhone YoY、渠道库存、ASP、地区结构。</td></tr>
+        <tr><td>Services 监管</td><td>Services 贡献 43.4% 毛利，是估值核心；DMA、DOJ、Epic 可能影响分发和收费。</td><td><span class="tag">已证实</span></td><td>App Store 政策、佣金率、替代支付、欧盟罚款。</td></tr>
+        <tr><td>供应链/内存成本</td><td>组件短缺和价格上升可压缩产品毛利率；10-K 披露部分组件为单一或有限来源。</td><td><span class="tag">已证实</span></td><td>DRAM/NAND 价格、供应商交期、毛利率指引。</td></tr>
+        <tr><td>Greater China</td><td>Q2 增长强，但本地竞争、政策和消费波动都可能改变增长质量。</td><td><span class="tag warn">需补证</span></td><td>中国出货份额、渠道折扣、华为/小米高端机表现。</td></tr>
+        <tr><td>管理层交接</td><td>CEO 从 Cook 转向 Ternus，市场会重新评估执行和战略。</td><td><span class="tag">已披露</span></td><td>上任后产品路线、回购政策、组织稳定性。</td></tr>
+        <tr><td>估值和预期</td><td>基础面强不等于预期收益强；若价格已反映所有好消息，安全边际可能不足。</td><td><span class="tag risk">未分析</span></td><td>PE/FCF yield、增长预期、回购收益率、风险溢价。</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="tests">
+    <h2>8. 后续反证清单和研究任务</h2>
+    <div class="three-col">
+      <div class="panel">
+        <h3>基础假设 A：iPhone 17 是强周期</h3>
+        <ul>
+          <li>支持证据：Q2 iPhone +22%，Counterpoint 机型榜领先。</li>
+          <li>反证：Q3/Q4 iPhone 增速快速回落，渠道库存上升。</li>
+          <li>下一步：接入 IDC/Counterpoint 连续季度份额和区域数据。</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>基础假设 B：Services 维持高质量</h3>
+        <ul>
+          <li>支持证据：Q2 Services +16%，毛利率 76.7%。</li>
+          <li>反证：监管导致抽成下降，Services 毛利率或增速低于公司平均。</li>
+          <li>下一步：拆广告、App Store、云服务、AppleCare、订阅。</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>基础假设 C：接班不破坏执行</h3>
+        <ul>
+          <li>支持证据：Ternus 长期负责硬件工程，接班为长期规划。</li>
+          <li>反证：高管流失、产品延期、资本配置框架变化。</li>
+          <li>下一步：跟踪 2026-09-01 后首个完整季度电话会。</li>
+        </ul>
+      </div>
+    </div>
+    <h3>下一版报告应补充的数据</h3>
+    <table>
+      <thead><tr><th>优先级</th><th>数据</th><th>用途</th></tr></thead>
+      <tbody>
+        <tr><td>P0</td><td>连续 8 个季度产品线收入、毛利、区域收入</td><td>判断 iPhone 周期、服务韧性和区域质量。</td></tr>
+        <tr><td>P0</td><td>IDC/Counterpoint/Canalys 市场份额序列</td><td>区分单季度新品强势和结构性份额提升。</td></tr>
+        <tr><td>P1</td><td>供应商、组装、关键组件、内存价格数据</td><td>量化供应链压力对毛利率的传导。</td></tr>
+        <tr><td>P1</td><td>监管案件时间线和可能财务影响</td><td>估算 Services 估值折价。</td></tr>
+        <tr><td>P1</td><td>估值、FCF yield、回购收益率、情景模型</td><td>进入后续 FengHe D1/D3 和安全边际判断。</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="sources">
+    <h2>证据和来源</h2>
+    <table>
+      <thead><tr><th>来源</th><th>用途</th><th>链接</th></tr></thead>
+      <tbody>
+        <tr><td>本地 evidence.jsonl</td><td>FY2026 Q2 revenue, net income, operating income, gross profit, assets, liabilities, equity, cash。</td><td><span class="evidence">ev_aapl_sec_*_20260328</span></td></tr>
+        <tr><td>Apple FY2026 Q2 Form 10-Q</td><td>产品线收入、毛利率、区域分部、回购、采购义务、R&D、现金流。</td><td><a href="https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm">SEC filing</a></td></tr>
+        <tr><td>Apple FY2026 Q2 新闻稿</td><td>Q2 总结、经营现金流、回购授权、管理层口径。</td><td><a href="https://www.apple.com/li/newsroom/2026/04/apple-reports-second-quarter-results/">Apple Newsroom</a></td></tr>
+        <tr><td>Apple FY2025 Form 10-K</td><td>竞争、供应链、季节性、人力资本、法律和监管风险。</td><td><a href="https://s2.q4cdn.com/470004039/files/doc_financials/2025/ar/_10-K-2025-As-Filed.pdf">Apple 10-K PDF</a></td></tr>
+        <tr><td>Apple Leadership</td><td>当前管理团队和董事会。</td><td><a href="https://www.apple.com/leadership/">Apple Leadership</a></td></tr>
+        <tr><td>Apple CEO succession release</td><td>Tim Cook / John Ternus 交接事实、Ternus 背景、董事会变化。</td><td><a href="https://www.apple.com/newsroom/2026/04/tim-cook-to-become-apple-executive-chairman-john-ternus-to-become-apple-ceo/">Apple Newsroom</a></td></tr>
+        <tr><td>Counterpoint Research</td><td>Q1 2026 智能手机出货、iPhone 17 机型表现、行业收入口径。</td><td><a href="https://counterpointresearch.com/en/insights/global-smartphone-shipments-q1-2026">Smartphone shipments</a> / <a href="https://counterpointresearch.com/en/insights/iphone-17-global-best-selling-smartphone-in-q1-2026-top-10-take-25-percent-share">iPhone 17 ranking</a></td></tr>
+        <tr><td>IDC</td><td>Q1 2026 全球智能手机出货和 Samsung/Apple 份额交叉校验。</td><td><a href="https://www.idc.com/promo/smartphone-market-share/market-share/">IDC smartphone market insights</a></td></tr>
+        <tr><td>Gartner</td><td>Q1 2026 全球 PC 出货和 Apple Mac 份额。</td><td><a href="https://www.gartner.com/en/newsroom/press-releases/2026-4-10-gartner-says-worldwide-pc-shipments-increased-4-percent-in-first-quarter-of-2026">Gartner PC shipments</a></td></tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+</body>
+</html>

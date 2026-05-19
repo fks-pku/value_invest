@@ -19,9 +19,16 @@ class ScaffoldTests(unittest.TestCase):
             self.assertTrue((stock_dir / "data" / "fundamentals.json").exists())
             memo = (stock_dir / "investment_memo.md").read_text(encoding="utf-8")
             self.assertIn("Apple Inc.", (stock_dir / "company_profile.md").read_text(encoding="utf-8"))
-            self.assertIn("3C Investment Philosophy", memo)
+            self.assertIn("Company Foundation Analysis", memo)
+            self.assertIn("Source And Origin", memo)
+            self.assertIn("Current Business", memo)
+            self.assertIn("Value Chain Position", memo)
+            self.assertIn("Competitive Landscape", memo)
+            self.assertIn("Risk Sweep", memo)
+            self.assertIn("FengHe Message-Flow Analysis", memo)
+            self.assertIn("3C: Cycle, Change, Certainty", memo)
             self.assertIn("3D Price Drivers", memo)
-            self.assertIn("5M Value Analysis", memo)
+            self.assertIn("5M Change Map", memo)
             self.assertIn("3T Time Frame", memo)
 
     def test_init_event_creates_required_files(self):

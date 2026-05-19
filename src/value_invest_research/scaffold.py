@@ -13,7 +13,8 @@ def slugify(value: str) -> str:
 def _write_if_missing(path: Path, content: str) -> None:
     if not path.exists():
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(content, encoding="utf-8", newline="\n")
+        with path.open("w", encoding="utf-8", newline="\n") as file:
+            file.write(content)
 
 
 def init_stock(root: Path, ticker: str, company_name: str | None = None) -> Path:
@@ -75,21 +76,90 @@ def stock_memo_template(ticker: str) -> str:
 - View: Needs Review
 - Confidence: Low
 - Last Updated:
-- FengHe Summary:
+- Foundation Status: Not Started
+- Company Foundation Summary:
+- FengHe Message-Flow Summary:
 - Most Important Uncertainty:
 
-## 1. 3C Investment Philosophy
+## 1. Company Foundation Analysis
+
+### 1.1 Source And Origin
+- Founding context:
+- Original problem solved:
+- Early wedge:
+- Company DNA:
+
+### 1.2 Company History
+- Business milestones:
+- Governance milestones:
+- Financing and capital-allocation milestones:
+- M&A or restructuring history:
+
+### 1.3 Current Business
+- Business model:
+- Segments:
+- Customers:
+- Demand drivers:
+- Pricing:
+- Revenue quality:
+- Margin structure:
+- Cash conversion:
+
+### 1.4 Value Chain Position
+- Suppliers:
+- Channels:
+- Customers:
+- Substitutes:
+- Bargaining power:
+- Where economics are captured or lost:
+
+### 1.5 Competitive Landscape
+- Market structure:
+- Key peers:
+- Ranking or share:
+- Differentiation:
+- Barriers to entry:
+- Competition intensity:
+
+### 1.6 Strategy Analysis
+- Mission:
+- Corporate strategy:
+- Competitive strategy:
+- Functional strategy:
+- Resource allocation:
+
+### 1.7 Organization, Culture, And Governance
+- Leadership:
+- Incentives:
+- Ownership and control:
+- Board or governance quality:
+- Culture and execution system:
+
+### 1.8 Risk Sweep
+- Business risks:
+- Financial risks:
+- Accounting risks:
+- Legal and regulatory risks:
+- Customer or supplier concentration:
+- Technology or disruption risks:
+- Capital-allocation risks:
+- Governance risks:
+- Valuation risks:
+
+## 2. FengHe Message-Flow Analysis
+
+### 2.1 3C: Cycle, Change, Certainty
 - Cycle:
 - Change:
 - Certainty:
 
-## 2. 3D Price Drivers
+### 2.2 3D Price Drivers
 - D1 ROE / intrinsic value:
 - D2 marginal change / catalyst:
 - D3 sentiment / valuation:
 - Dominant driver:
 
-## 3. 5M Value Analysis
+### 2.3 5M Change Map
 - M1 market size:
 - M2 market share:
 - M3 margin:
@@ -98,18 +168,18 @@ def stock_memo_template(ticker: str) -> str:
 - Key value driver:
 - Key defect risk:
 
-## 4. 3T Time Frame
+### 2.4 3T Time Frame
 - T1 0-3 months:
 - T2 3-15 months:
 - T3 15+ months:
 - Active time frame:
 
-## 5. Certainty, Risk, And Disconfirming Evidence
+### 2.5 Certainty, Risk, And Disconfirming Evidence
 - Evidence that supports certainty:
 - Thesis breakers:
 - Disconfirming tests:
 
-## 6. Valuation And Risk/Reward
+## 3. Valuation And Risk/Reward
 - Normalized earnings or FCF:
 - Conservative assumptions:
 - Downside case:
@@ -117,9 +187,9 @@ def stock_memo_template(ticker: str) -> str:
 - Upside case:
 - Margin of safety:
 
-## 7. Evidence Log
+## 4. Evidence Log
 
-## 8. Human Review Questions
+## 5. Human Review Questions
 """
 
 
@@ -128,7 +198,7 @@ def event_brief_template(event_date: str, event_name: str) -> str:
 
 - Date Opened: {event_date}
 - Status: Active Research
-- Goal: Identify FengHe candidates for deeper stock-level research.
+- Goal: Identify candidates for foundation-first stock-level research.
 
 ## Confirmed Facts
 
@@ -180,7 +250,7 @@ def candidate_screen_template(event_name: str) -> str:
 
 ## Candidate Fields
 - Ticker:
-- FengHe 3C:
+- FengHe message-flow 3C:
 - Dominant 3D driver:
 - Strongest 5M factor:
 - Weakest 5M factor:

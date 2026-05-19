@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>小米集团基础分析报告</title>
+  <style>
+    :root {
+      --ink: #15191f;
+      --muted: #66707d;
+      --line: #d9dedf;
+      --paper: #fbfaf6;
+      --panel: #ffffff;
+      --amber: #f26b1d;
+      --teal: #117c82;
+      --blue: #2e5f9e;
+      --red: #b9423c;
+      --green: #2f7d4e;
+      --shadow: 0 18px 40px rgba(21, 25, 31, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(17, 124, 130, 0.06) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(17, 124, 130, 0.05) 1px, transparent 1px),
+        var(--paper);
+      background-size: 42px 42px;
+      font-family: Charter, "Songti SC", "Noto Serif CJK SC", Georgia, serif;
+      line-height: 1.62;
+    }
+
+    a { color: var(--blue); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+    header {
+      padding: 44px clamp(18px, 4vw, 56px) 26px;
+      background: #15191f;
+      color: #fff;
+      border-bottom: 8px solid var(--amber);
+    }
+
+    .kicker {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 26px;
+      font-family: "Avenir Next", "Gill Sans", "PingFang SC", sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #c9d3d6;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 9px;
+      border: 1px solid rgba(255,255,255,0.26);
+      border-radius: 999px;
+      color: #fff;
+      white-space: nowrap;
+    }
+
+    .pill.warn { background: rgba(242, 107, 29, 0.16); border-color: rgba(242, 107, 29, 0.65); }
+    .pill.good { background: rgba(47, 125, 78, 0.18); border-color: rgba(47, 125, 78, 0.65); }
+    .pill.dark { background: #eef3f2; color: var(--ink); border-color: #d2d9d9; }
+    .pill.alert { background: #fff1ef; color: var(--red); border-color: #efc5bf; }
+
+    h1 {
+      margin: 0;
+      max-width: 1120px;
+      font-size: clamp(38px, 6.2vw, 76px);
+      line-height: 0.96;
+      letter-spacing: 0;
+      font-weight: 760;
+    }
+
+    .subtitle {
+      max-width: 980px;
+      margin: 22px 0 0;
+      color: #dce4e5;
+      font-size: clamp(17px, 2vw, 22px);
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      padding: 10px clamp(14px, 4vw, 56px);
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      border-bottom: 1px solid var(--line);
+      background: rgba(251, 250, 246, 0.94);
+      backdrop-filter: blur(10px);
+      font-family: "Avenir Next", "PingFang SC", sans-serif;
+    }
+
+    nav a {
+      flex: 0 0 auto;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 13px;
+      padding: 7px 10px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+    }
+
+    nav a:hover { border-color: var(--line); background: #fff; }
+
+    main {
+      width: min(1180px, calc(100% - 28px));
+      margin: 28px auto 64px;
+    }
+
+    section {
+      margin: 18px 0;
+      padding: clamp(20px, 3vw, 34px);
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: clamp(24px, 3.2vw, 38px);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 22px 0 8px;
+      font-family: "Avenir Next", "PingFang SC", sans-serif;
+      font-size: 16px;
+      letter-spacing: 0;
+    }
+
+    p { margin: 0 0 12px; }
+
+    .note {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .grid.metrics { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .card {
+      padding: 16px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      min-width: 0;
+    }
+
+    .metric-label {
+      font-family: "Avenir Next", "PingFang SC", sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    .metric-value {
+      margin-top: 8px;
+      font-size: clamp(26px, 3.4vw, 42px);
+      line-height: 1;
+      font-weight: 780;
+      font-family: "Avenir Next", "PingFang SC", sans-serif;
+      letter-spacing: 0;
+    }
+
+    .metric-foot { margin-top: 8px; color: var(--muted); font-size: 13px; }
+
+    .callout {
+      margin-top: 16px;
+      padding: 18px;
+      border-left: 5px solid var(--amber);
+      background: #fff6ed;
+    }
+
+    .fact-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr 1fr;
+      gap: 10px;
+    }
+
+    .fact-grid > div {
+      padding: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      min-width: 0;
+    }
+
+    .label {
+      display: inline-flex;
+      margin-bottom: 7px;
+      font-family: "Avenir Next", "PingFang SC", sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    .evidence {
+      display: inline-flex;
+      align-items: center;
+      margin: 0 2px;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: #eef3f2;
+      color: #35515a;
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 4px;
+      font-size: 14px;
+      background: #fff;
+    }
+
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      padding: 10px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    th {
+      font-family: "Avenir Next", "PingFang SC", sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      background: #f4f7f6;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 185px 1fr 76px;
+      gap: 10px;
+      align-items: center;
+      margin: 9px 0;
+      font-family: "Avenir Next", "PingFang SC", sans-serif;
+      font-size: 13px;
+    }
+
+    .bar-track {
+      height: 12px;
+      background: #e8eded;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar {
+      height: 100%;
+      border-radius: 999px;
+      background: var(--teal);
+    }
+
+    .bar.orange { background: var(--amber); }
+    .bar.blue { background: var(--blue); }
+    .bar.green { background: var(--green); }
+    .bar.red { background: var(--red); }
+
+    .score {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 24px;
+      border-radius: 5px;
+      background: #eef3f2;
+      font-family: "Avenir Next", "PingFang SC", sans-serif;
+      font-weight: 700;
+    }
+
+    .risk-high { color: var(--red); font-weight: 700; }
+    .risk-med { color: #996018; font-weight: 700; }
+    .risk-low { color: var(--green); font-weight: 700; }
+
+    ul {
+      margin: 8px 0 0;
+      padding-left: 20px;
+    }
+
+    li { margin: 6px 0; }
+
+    .timeline {
+      display: grid;
+      gap: 10px;
+    }
+
+    .event {
+      display: grid;
+      grid-template-columns: 86px 1fr;
+      gap: 12px;
+      padding: 12px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .year {
+      font-family: "Avenir Next", "PingFang SC", sans-serif;
+      font-weight: 800;
+      color: var(--amber);
+    }
+
+    .footer-note {
+      padding: 18px;
+      color: var(--muted);
+      border: 1px dashed #b9c5c6;
+      background: #f7faf9;
+    }
+
+    @media (max-width: 920px) {
+      .grid.metrics, .grid.two, .grid.three { grid-template-columns: 1fr; }
+      .fact-grid { grid-template-columns: 1fr; }
+      .bar-row { grid-template-columns: 1fr; gap: 5px; }
+      table { font-size: 13px; }
+      th, td { padding: 8px; }
+      .event { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="kicker">
+    <span class="pill">1810.HK / 81810.HK</span>
+    <span class="pill">小米集团</span>
+    <span class="pill warn">截至 2026-05-18</span>
+    <span class="pill good">基础分析优先</span>
+  </div>
+  <h1>小米集团公司基础分析报告</h1>
+  <p class="subtitle">按八步基本面框架拆解小米：先判断公司是什么、钱从哪里来、权力在哪里、风险会在哪里暴露，再把后续消息流交给 FengHe 3C3D5M3T 处理。</p>
+</header>
+
+<nav>
+  <a href="#summary">摘要</a>
+  <a href="#origin">源头</a>
+  <a href="#history">历史</a>
+  <a href="#business">生意</a>
+  <a href="#chain">产业链</a>
+  <a href="#competition">竞争</a>
+  <a href="#strategy">战略</a>
+  <a href="#governance">治理</a>
+  <a href="#risk">风险</a>
+  <a href="#fenghe">消息流</a>
+  <a href="#sources">来源</a>
+</nav>
+
+<main>
+  <section id="summary">
+    <div class="kicker" style="color: var(--muted);">
+      <span class="pill dark">foundation_status: research_ready_with_specific_gaps</span>
+      <span class="pill dark">非交易建议</span>
+      <span class="pill dark">最新正式业绩: FY2025 / Q4 2025</span>
+    </div>
+    <h2>0. 投研摘要：小米不是单纯手机公司，已经变成“硬件入口 + IoT 网络 + 互联网利润池 + EV 制造平台”</h2>
+    <div class="grid metrics">
+      <div class="card">
+        <div class="metric-label">FY2025 Revenue</div>
+        <div class="metric-value">457.3B</div>
+        <div class="metric-foot">人民币，YoY +25.0% <span class="evidence">ev_xiaomi_2025_annual_report_20260428</span></div>
+      </div>
+      <div class="card">
+        <div class="metric-label">Adjusted Net Profit</div>
+        <div class="metric-value">39.2B</div>
+        <div class="metric-foot">人民币，YoY +43.8% <span class="evidence">ev_xiaomi_2025_annual_report_20260428</span></div>
+      </div>
+      <div class="card">
+        <div class="metric-label">EV / AI Revenue</div>
+        <div class="metric-value">106.1B</div>
+        <div class="metric-foot">占收入 23.2%，YoY +223.8% <span class="evidence">ev_xiaomi_2025_results_announcement_20260324</span></div>
+      </div>
+      <div class="card">
+        <div class="metric-label">Connected IoT Devices</div>
+        <div class="metric-value">1.079B</div>
+        <div class="metric-foot">不含手机、平板、笔记本 <span class="evidence">ev_xiaomi_2025_results_announcement_20260324</span></div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p><strong>核心判断：</strong>小米 2025 年的变化不是“手机公司多卖了一些车”，而是利润池结构发生重排。手机仍是最大入口，但毛利率降至 10.9%；IoT 和互联网服务贡献了更高质量毛利；EV/AI 新业务收入突破百亿人民币，且公司披露该分部首次实现经营口径正收入 0.9B。<span class="evidence">ev_xiaomi_2025_annual_report_20260428</span> <span class="evidence">ev_xiaomi_2025_results_announcement_20260324</span></p>
+      <p><strong>主要约束：</strong>截至 2026-05-18，小米 IR 季度业绩页尚未发布 2026 Q1 正式业绩，Q1 2026 的手机竞争变化只能作为行业跟踪，不应写成公司已披露业绩。<span class="evidence">ev_xiaomi_quarterly_results_page_20260518</span></p>
+    </div>
+
+    <div class="fact-grid">
+      <div>
+        <span class="label">事实</span>
+        <p>FY2025 收入 457.3B，毛利 101.8B，利润 41.6B，经营现金流 34.1B；现金资源 232.6B，净现金状态。<span class="evidence">ev_xiaomi_2025_annual_report_20260428</span></p>
+      </div>
+      <div>
+        <span class="label">推论</span>
+        <p>小米的估值叙事正在从“手机份额 + 互联网服务”转向“人车家全场景硬件规模 + 服务变现 + 自研技术栈”。这个推论依赖 EV 毛利、IoT 规模和 MAU 留存继续成立。</p>
+      </div>
+      <div>
+        <span class="label">判断</span>
+        <p>当前基础分析可进入消息流跟踪，但仍缺 2026 Q1 正式业绩、EV 单车盈利桥、核心零部件锁价能力、区域手机利润率和智能驾驶安全后续数据。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="origin">
+    <h2>1. 源头溯源：小米的 DNA 是“互联网效率改造消费硬件”</h2>
+    <div class="grid two">
+      <div class="card">
+        <h3>成立逻辑</h3>
+        <p>小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市。公司对自己的定义是“以手机和智能硬件为核心，由 IoT 平台连接的消费电子和智能制造公司”。<span class="evidence">ev_xiaomi_company_profile_20260518</span></p>
+        <p>IPO 招股书中，小米把自己表述为“不只是硬件公司，而是创新驱动的互联网公司”，使命是“感动人心、价格厚道”。这解释了小米早期能用高性价比、线上渠道和用户社区快速打开市场。<span class="evidence">ev_xiaomi_ipo_prospectus_20180625</span></p>
+      </div>
+      <div class="card">
+        <h3>创始人背景</h3>
+        <p>雷军是创始人、董事长兼 CEO，早年在金山任职并创办卓越网；林斌有 Google 和 Microsoft 工程背景；刘德早期负责供应链、工业设计和生态链业务。<span class="evidence">ev_xiaomi_management_20260518</span></p>
+        <p><strong>判断：</strong>小米的组织基因不是传统制造业，而是互联网产品经理、工程效率、供应链整合和用户运营的组合。这是进入手机和 IoT 的优势，但进入汽车后会遇到更高的安全、制造一致性和售后责任要求。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="history">
+    <h2>2. 历史传记：三次升级，决定今天的小米</h2>
+    <div class="timeline">
+      <div class="event">
+        <div class="year">2010-2018</div>
+        <div>
+          <strong>手机入口和互联网模型成型。</strong>公司从智能手机切入，以线上效率、性价比和用户社区建立品牌，再扩展到 IoT 和生活消费品。2018 年港股上市时即采用 WVR 架构。<span class="evidence">ev_xiaomi_ipo_prospectus_20180625</span>
+        </div>
+      </div>
+      <div class="event">
+        <div class="year">2019-2024</div>
+        <div>
+          <strong>全球化和 AIoT 规模化。</strong>截至 2025 年，公司产品进入全球 100 多个国家和地区，并连续进入 Fortune Global 500；AIoT 设备连接规模成为第二曲线的用户基础。<span class="evidence">ev_xiaomi_company_profile_20260518</span>
+        </div>
+      </div>
+      <div class="event">
+        <div class="year">2025</div>
+        <div>
+          <strong>EV 成为财务级增长曲线。</strong>2025 年 EV/AI/其他新业务收入 106.1B，EV 交付 411,082 台，分部毛利率 24.3%，首次实现经营口径正收入 0.9B。<span class="evidence">ev_xiaomi_2025_results_announcement_20260324</span> <span class="evidence">ev_xiaomi_2025_annual_report_20260428</span>
+        </div>
+      </div>
+      <div class="event">
+        <div class="year">2026</div>
+        <div>
+          <strong>需要从叙事兑现转向质量验证。</strong>2026 年 3 月公司披露 MiMo-V2-Pro、MiMo-V2-Omni、机器人 VLA 等 AI 进展，但这些更像战略资源投入，不能直接等同为短期利润。<span class="evidence">ev_xiaomi_2025_results_announcement_20260324</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="business">
+    <h2>3. 当下生意：四个利润层级，而不是一个手机收入表</h2>
+    <div class="grid two">
+      <div class="card">
+        <h3>收入结构</h3>
+        <div class="bar-row"><span>Smartphones</span><div class="bar-track"><div class="bar orange" style="width: 40.8%"></div></div><strong>40.8%</strong></div>
+        <div class="bar-row"><span>IoT and lifestyle</span><div class="bar-track"><div class="bar green" style="width: 26.9%"></div></div><strong>26.9%</strong></div>
+        <div class="bar-row"><span>Smart EV / AI / others</span><div class="bar-track"><div class="bar blue" style="width: 23.2%"></div></div><strong>23.2%</strong></div>
+        <div class="bar-row"><span>Internet services</span><div class="bar-track"><div class="bar" style="width: 8.2%"></div></div><strong>8.2%</strong></div>
+        <p class="note">口径：FY2025 占总收入比例。<span class="evidence">ev_xiaomi_2025_annual_report_20260428</span></p>
+      </div>
+      <div class="card">
+        <h3>毛利结构</h3>
+        <div class="bar-row"><span>Internet services</span><div class="bar-track"><div class="bar" style="width: 28.1%"></div></div><strong>28.1%</strong></div>
+        <div class="bar-row"><span>IoT and lifestyle</span><div class="bar-track"><div class="bar green" style="width: 27.9%"></div></div><strong>27.9%</strong></div>
+        <div class="bar-row"><span>Smart EV / AI / others</span><div class="bar-track"><div class="bar blue" style="width: 25.3%"></div></div><strong>25.3%</strong></div>
+        <div class="bar-row"><span>Smartphones</span><div class="bar-track"><div class="bar orange" style="width: 19.9%"></div></div><strong>19.9%</strong></div>
+        <p class="note">按 FY2025 总毛利 101.8B 估算。其他相关业务为负毛利，未单列。<span class="evidence">ev_xiaomi_2025_annual_report_20260428</span></p>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>业务线</th>
+          <th>FY2025 收入</th>
+          <th>毛利率</th>
+          <th>质量判断</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>智能手机</td>
+          <td>RMB186.4B，YoY -2.8%；出货 165.2M，YoY -2.0%；ASP RMB1,128.7，YoY -0.8%</td>
+          <td>10.9%，同比下降 1.7pct</td>
+          <td>规模仍大，但受内存成本、价格带和海外低 ASP 影响，是入口业务，不是高质量利润核心。</td>
+        </tr>
+        <tr>
+          <td>IoT 与生活消费品</td>
+          <td>RMB123.2B，YoY +18.3%</td>
+          <td>23.1%，同比提升 2.8pct</td>
+          <td>家电、平板、可穿戴拉动增长，毛利质量好于手机，是“人车家”横向扩品的主战场。</td>
+        </tr>
+        <tr>
+          <td>互联网服务</td>
+          <td>RMB37.4B，YoY +9.7%</td>
+          <td>76.5%</td>
+          <td>收入占比低但毛利贡献高，是用户规模变现的利润池。风险是广告周期、监管和海外变现效率。</td>
+        </tr>
+        <tr>
+          <td>Smart EV / AI / new initiatives</td>
+          <td>RMB106.1B，YoY +223.8%；EV 交付 411,082 台</td>
+          <td>24.3%</td>
+          <td>已经从概念变成财务分部，但资本开支、产能爬坡、安全质量和售后体系将决定长期 ROIC。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>现金转换和资本强度</h3>
+    <p>FY2025 经营现金流 34.1B，低于 2024 年 39.3B；公司解释经营现金流主要被库存增加 26.1B 部分抵消。资本开支 18.2B，其中 EV/AI/新业务 12.0B。<span class="evidence">ev_xiaomi_2025_annual_report_20260428</span></p>
+    <p><strong>判断：</strong>利润表显示高增长，但现金流已经开始暴露制造业扩张的占用。小米未来不能只看收入和毛利率，必须跟踪库存、应付、资本开支、订单等待周期和售后质量。</p>
+  </section>
+
+  <section id="chain">
+    <h2>4. 产业链定位：小米的权力来自用户入口和品类组织能力，脆弱点在核心部件与汽车安全责任</h2>
+    <div class="grid three">
+      <div class="card">
+        <h3>上游</h3>
+        <p>手机和智能硬件高度依赖 SoC、存储、屏幕、摄像、传感器和代工体系。IDC 指出 2026 Q1 内存供给和价格压力正在冲击出货和需求，小米作为中低价位敞口较高的厂商更敏感。<span class="evidence">ev_xiaomi_idc_q1_2026_smartphone_20260512</span></p>
+      </div>
+      <div class="card">
+        <h3>中游</h3>
+        <p>小米的中游能力是产品定义、供应链整合、渠道效率和软件系统连接。IoT 设备超过 10 亿台，给公司带来跨品类用户触点，但也放大质量一致性和售后复杂度。<span class="evidence">ev_xiaomi_2025_results_announcement_20260324</span></p>
+      </div>
+      <div class="card">
+        <h3>下游</h3>
+        <p>公司 2025 年中国大陆门店约 18,000 家，海外新零售门店约 450 家。EV 业务需要线下展示、交付、维修和事故响应能力，这比手机渠道更重。<span class="evidence">ev_xiaomi_2025_results_announcement_20260324</span></p>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>链条环节</th>
+          <th>小米位置</th>
+          <th>权力评分</th>
+          <th>关键观察</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>核心芯片 / 存储</td>
+          <td>大客户，但非绝对定价者</td>
+          <td><span class="score">2</span></td>
+          <td>XRING O1 等自研进展提高战略可选性，但短期仍受内存周期和旗舰 SoC 供应影响。</td>
+        </tr>
+        <tr>
+          <td>硬件设计与产品定义</td>
+          <td>强</td>
+          <td><span class="score">4</span></td>
+          <td>多品类产品定义、性价比和速度是核心优势，能把手机用户迁移到 IoT 和 EV 场景。</td>
+        </tr>
+        <tr>
+          <td>渠道和用户运营</td>
+          <td>强</td>
+          <td><span class="score">4</span></td>
+          <td>线上效率叠加线下门店扩张，利于新品放量；但汽车售后不是普通零售渠道可直接覆盖。</td>
+        </tr>
+        <tr>
+          <td>智能驾驶和车规安全</td>
+          <td>仍需验证</td>
+          <td><span class="score">2</span></td>
+          <td>SAMR 召回说明 L2 高速领航在极端场景识别、预警或处置可能不足，安全责任是 EV 扩张的硬约束。</td>
+        </tr>
+        <tr>
+          <td>互联网服务变现</td>
+          <td>较强</td>
+          <td><span class="score">4</span></td>
+          <td>754.1M MAU 提供广告、游戏和会员变现基础，但海外 ARPU 和合规仍需拆分验证。</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="competition">
+    <h2>5. 竞争格局：小米同时打三场仗，不能只拿手机份额判断公司</h2>
+    <div class="grid three">
+      <div class="card">
+        <h3>手机：第三名但压力最大</h3>
+        <p>2025 年小米全球手机出货 165.2M，Omdia 口径全球份额 13.3%，连续第五年排名前三。<span class="evidence">ev_xiaomi_2025_results_announcement_20260324</span></p>
+        <p>但 IDC 2026 Q1 显示，小米出货 33.8M、份额 11.5%、YoY -19.1%，在前五中跌幅最大。IDC 归因于内存供给约束、价格上涨压力和旧机型出货控制。<span class="evidence">ev_xiaomi_idc_q1_2026_smartphone_20260512</span></p>
+      </div>
+      <div class="card">
+        <h3>IoT：生态广，但需看质量</h3>
+        <p>IoT 连接设备 1.079B，五台及以上连接设备用户 22.7M，小米 Home App MAU 112.7M，小爱同学 MAU 159.9M。<span class="evidence">ev_xiaomi_2025_results_announcement_20260324</span></p>
+        <p>这说明小米在“家庭设备网络”有规模，但真正的护城河要看跨设备体验、复购、售后、海外渠道和服务变现。</p>
+      </div>
+      <div class="card">
+        <h3>EV：黑马，但不是领先者</h3>
+        <p>CnEVPost 引 CPCA 数据称，2025 年小米 EV 中国乘用 NEV 零售 411,837 台，排名第十，份额 3.2%；BYD 以 27.2% 领先，Tesla China 为 4.9%。<span class="evidence">ev_xiaomi_cnevpost_nev_share_20260112</span></p>
+        <p>小米 EV 的重要性在于新进入者速度和产品热度，不在于现阶段行业份额绝对领先。</p>
+      </div>
+    </div>
+
+    <h3>竞争结构判断</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>市场</th>
+          <th>主要对手</th>
+          <th>小米优势</th>
+          <th>小米劣势</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>全球手机</td>
+          <td>Apple, Samsung, OPPO, vivo, Honor, Transsion</td>
+          <td>规模、性价比、全球渠道、产品节奏、IoT 联动</td>
+          <td>高端定价权弱于 Apple/Samsung，低端受内存涨价和需求弹性挤压</td>
+        </tr>
+        <tr>
+          <td>中国智能家居</td>
+          <td>海尔、美的、格力、华为生态、传统家电渠道</td>
+          <td>手机入口、App 连接、智能硬件品类广</td>
+          <td>大家电制造深度、服务网络、线下渠道效率仍需验证</td>
+        </tr>
+        <tr>
+          <td>中国 EV</td>
+          <td>BYD, Tesla, Geely, HIMA, Li Auto, XPeng, NIO</td>
+          <td>品牌流量、软件体验、性价比、线上传播效率、产品定义</td>
+          <td>制造历史短，安全事故容错低，智能驾驶监管更严，售后体系仍在爬坡</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="strategy">
+    <h2>6. 战略分析：“人车家”是主线，AI 和自研技术是提高平台粘性的手段</h2>
+    <div class="grid two">
+      <div class="card">
+        <h3>公司战略</h3>
+        <p>小米明确推进 “Human x Car x Home” 战略。这个战略的本质不是多元化罗列，而是把手机、家庭设备、车和 AI 代理统一成用户入口网络。<span class="evidence">ev_xiaomi_2025_results_announcement_20260324</span></p>
+        <p>2026 年公司披露 MiMo-V2-Pro、MiMo-V2-Omni、miclaw、Miloco 和机器人 VLA 等进展。基础分析中应把它们视为战略资源投入，而不是立刻折现为利润。<span class="evidence">ev_xiaomi_2025_results_announcement_20260324</span></p>
+      </div>
+      <div class="card">
+        <h3>资源配置</h3>
+        <p>FY2025 R&D 费用 33.1B，YoY +37.8%；研发人员 25,457 人。公司预计 2026-2030 五年累计 R&D 费用超过 200B。<span class="evidence">ev_xiaomi_2025_annual_report_20260428</span></p>
+        <p>FY2025 EV/AI/新业务资本开支 12.0B，超过 Smartphone x AIoT 的 6.1B，说明资源已经明显向第二增长曲线倾斜。<span class="evidence">ev_xiaomi_2025_annual_report_20260428</span></p>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>战略层级</th>
+          <th>当前动作</th>
+          <th>质量判断</th>
+          <th>反证指标</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>企业战略</td>
+          <td>从手机公司升级为人车家全场景平台</td>
+          <td>方向清晰，和用户基础匹配</td>
+          <td>多业务之间不能形成复购和服务 ARPU，变成低毛利硬件堆叠</td>
+        </tr>
+        <tr>
+          <td>竞争战略</td>
+          <td>高性价比 + 快速迭代 + 高端化突破</td>
+          <td>手机高端化仍需证明，EV 高端定价阶段性有效</td>
+          <td>手机 ASP 持续下滑、EV 订单转化下降、促销强度上升</td>
+        </tr>
+        <tr>
+          <td>功能战略</td>
+          <td>加大 AI、芯片、智能驾驶、机器人、材料和制造研发</td>
+          <td>必要但资本强度上升，研发必须转化为产品差异化</td>
+          <td>R&D 增长但毛利、留存、事故率、售后满意度没有改善</td>
+        </tr>
+        <tr>
+          <td>资本配置</td>
+          <td>2025 配股融资、回购、EV/AI 资本开支增加</td>
+          <td>资金弹药充足，但需要防止摊薄和重资产回报不足</td>
+          <td>自由现金流承压、库存上升、EV 价格战导致 ROIC 低于资本成本</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="governance">
+    <h2>7. 组织、文化与治理：强创始人治理提升战略连续性，也带来控制权折价风险</h2>
+    <div class="grid two">
+      <div class="card">
+        <h3>管理层</h3>
+        <p>雷军同时担任创始人、董事长和 CEO；林斌为联合创始人、副董事长；卢伟冰为合伙人兼总裁，并负责智能手机部门。管理层覆盖手机、国际业务、中国区、财务、研发和技术委员会。<span class="evidence">ev_xiaomi_management_20260518</span></p>
+        <p><strong>判断：</strong>强创始人模式适合跨周期重投入，尤其是 EV 和 AI 这种需要长期组织动员的业务。但它也要求投资者额外关注资本配置纪律和治理制衡。</p>
+      </div>
+      <div class="card">
+        <h3>WVR 控制结构</h3>
+        <p>年报披露，小米为不同投票权控制公司：A 类股份每股 10 票，B 类股份每股 1 票。2025 年末，雷军对非保留事项约有 61.0% 投票权，林斌约 6.7%。<span class="evidence">ev_xiaomi_board_wvr_20260428</span></p>
+        <p><strong>判断：</strong>WVR 能保证创始人长期战略一致性，但少数股东不能用普通投票权有效改变重大方向。对 EV、AI 和自研芯片等重资产投入，治理风险必须进入折现。</p>
+      </div>
+    </div>
+
+    <h3>组织能力画像</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>能力</th>
+          <th>证据</th>
+          <th>短板</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>产品定义</td>
+          <td>手机、IoT、EV 多品类快速迭代，用户规模持续扩张</td>
+          <td>高端品牌心智和汽车安全信任需要时间沉淀</td>
+        </tr>
+        <tr>
+          <td>工程和研发</td>
+          <td>研发人员 25,457，R&D 费用 33.1B，并披露芯片、AI、机器人、智能驾驶项目</td>
+          <td>AI/芯片项目商业化贡献尚需验证</td>
+        </tr>
+        <tr>
+          <td>供应链和制造</td>
+          <td>手机和 IoT 规模长期存在，EV 交付速度快</td>
+          <td>汽车制造一致性、召回、事故响应和售后网络是新考验</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="risk">
+    <h2>8. 全维度风险排雷：小米最大的风险是“从轻资产叙事进入重资产责任”</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>风险</th>
+          <th>等级</th>
+          <th>证据 / 机制</th>
+          <th>需要怎么验证</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>手机基本盘下滑</td>
+          <td class="risk-high">高</td>
+          <td>IDC Q1 2026 显示小米出货 33.8M、YoY -19.1%，前五中跌幅最大。<span class="evidence">ev_xiaomi_idc_q1_2026_smartphone_20260512</span></td>
+          <td>2026 Q1/Q2 公司正式业绩中的手机收入、ASP、毛利率和区域份额。</td>
+        </tr>
+        <tr>
+          <td>内存和核心部件涨价</td>
+          <td class="risk-high">高</td>
+          <td>IDC 指出内存供给约束推高 BOM，价格敏感市场承压；小米手机毛利率 2025 已降至 10.9%。<span class="evidence">ev_xiaomi_2025_annual_report_20260428</span> <span class="evidence">ev_xiaomi_idc_q1_2026_smartphone_20260512</span></td>
+          <td>存货、应付、价格上调、低端机型出货和促销补贴。</td>
+        </tr>
+        <tr>
+          <td>EV 安全与监管</td>
+          <td class="risk-high">高</td>
+          <td>SAMR 2025-09-19 公告召回 116,887 辆 SU7 标准版，原因涉及 L2 高速领航辅助在极端场景识别、预警或处置不足。<span class="evidence">ev_xiaomi_samr_su7_recall_20250919</span></td>
+          <td>召回完成率、事故率、投诉、监管新规、保险费率和二手车残值。</td>
+        </tr>
+        <tr>
+          <td>现金流与资本强度</td>
+          <td class="risk-med">中高</td>
+          <td>FY2025 经营现金流 34.1B 低于 2024 年；资本开支 18.2B，其中 EV/AI/新业务 12.0B。<span class="evidence">ev_xiaomi_2025_annual_report_20260428</span></td>
+          <td>自由现金流、库存周转、EV 产能利用率、单车毛利和售后成本。</td>
+        </tr>
+        <tr>
+          <td>互联网服务监管和海外变现</td>
+          <td class="risk-med">中</td>
+          <td>互联网服务毛利率 76.5%，但依赖广告、游戏和增值服务，区域监管与应用分发政策会影响变现。</td>
+          <td>国内外 MAU、ARPU、广告收入结构和合规处罚。</td>
+        </tr>
+        <tr>
+          <td>WVR 治理</td>
+          <td class="risk-med">中</td>
+          <td>雷军和林斌通过 A 类股份掌握多数投票权，少数股东对资本配置和战略方向制衡较弱。<span class="evidence">ev_xiaomi_board_wvr_20260428</span></td>
+          <td>独董有效性、关联交易、重大投资、配股和回购节奏。</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="fenghe">
+    <h2>9. 后续消息流入口：基础分析完成后，FengHe 应该盯这三件事</h2>
+    <div class="grid three">
+      <div class="card">
+        <h3>3C</h3>
+        <p><strong>Cycle：</strong>手机进入内存涨价和需求承压周期，EV 仍处于放量周期。</p>
+        <p><strong>Change：</strong>EV/AI 从概念投入变成收入和毛利贡献，手机份额短期出现压力。</p>
+        <p><strong>Certainty：</strong>FY2025 财务数据确定性高，2026 Q1 公司层面仍缺正式业绩。</p>
+      </div>
+      <div class="card">
+        <h3>3D</h3>
+        <p><strong>D1 ROE / 内在价值：</strong>取决于 EV 和 IoT 能否在不牺牲现金流的前提下提高集团利润质量。</p>
+        <p><strong>D2 边际变化：</strong>当前主导驱动是 EV 放量与手机成本压力的对冲。</p>
+        <p><strong>D3 情绪 / 估值：</strong>市场容易把小米按 EV 或 AI 重新定价，但基础数据需要跟上。</p>
+      </div>
+      <div class="card">
+        <h3>3T</h3>
+        <p><strong>T1 0-3 个月：</strong>等待 2026 Q1 正式业绩，验证手机和 EV 毛利。</p>
+        <p><strong>T2 3-15 个月：</strong>看 EV 交付、召回后安全口碑、库存和现金流。</p>
+        <p><strong>T3 15+ 个月：</strong>验证 AI、芯片和人车家生态是否提升服务收入和用户粘性。</p>
+      </div>
+    </div>
+
+    <h3>关键反证清单</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>假设</th>
+          <th>支持证据</th>
+          <th>反证信号</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>EV 能成为第二利润池</td>
+          <td>FY2025 EV/AI/新业务收入 106.1B，毛利率 24.3%，经营口径正收入 0.9B。</td>
+          <td>单车毛利下滑、订单等待缩短但交付不增、召回和事故成本上升、售后投诉扩大。</td>
+        </tr>
+        <tr>
+          <td>IoT 能承接手机入口价值</td>
+          <td>IoT 收入 123.2B，毛利率 23.1%，连接设备 1.079B。</td>
+          <td>IoT 毛利回落、大家电补贴退坡后增长放缓、海外渠道扩张低效。</td>
+        </tr>
+        <tr>
+          <td>手机基本盘不会明显失速</td>
+          <td>2025 全年仍为全球前三，出货 165.2M。</td>
+          <td>IDC Q1 2026 出货下滑继续延续到公司正式业绩，ASP 和毛利率同时下降。</td>
+        </tr>
+        <tr>
+          <td>AI 和自研技术提升生态粘性</td>
+          <td>公司披露 MiMo、miclaw、Miloco、VLA、XRING O1 等研发成果。</td>
+          <td>AI 功能不能提升设备复购、服务 ARPU 或 EV 智驾安全表现。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="footer-note">
+      <strong>研究结论边界：</strong>本报告是公司基础分析，不包含目标价、买入、卖出或仓位建议。下一步应在 2026 Q1 正式业绩发布后，用 FengHe 消息流框架更新“边际变化、确定性和时间框架”。
+    </div>
+  </section>
+
+  <section id="sources">
+    <h2>10. 来源与证据映射</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>证据 ID</th>
+          <th>来源</th>
+          <th>用途</th>
+          <th>链接</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="evidence">ev_xiaomi_company_profile_20260518</span></td>
+          <td>Xiaomi IR Company Profile</td>
+          <td>成立、上市、公司定位、全球覆盖和 AIoT 规模。</td>
+          <td><a href="https://ir.mi.com/corporate-information/company-profile">Company Profile</a></td>
+        </tr>
+        <tr>
+          <td><span class="evidence">ev_xiaomi_2025_annual_report_20260428</span></td>
+          <td>Xiaomi 2025 Annual Report</td>
+          <td>财务、分部、现金流、资本开支、员工、治理和 WVR。</td>
+          <td><a href="https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/04/28/5-29-08/Xiaomi%202025%20AR_EN.pdf">Annual Report PDF</a></td>
+        </tr>
+        <tr>
+          <td><span class="evidence">ev_xiaomi_2025_results_announcement_20260324</span></td>
+          <td>Xiaomi 2025 Annual Results Announcement</td>
+          <td>年度摘要、业务回顾、智能手机、IoT、互联网服务和 EV 数据。</td>
+          <td><a href="https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/03/24/5-35-03/25Q4%20EN%20AC%20Xiaomi.pdf">Results Announcement PDF</a></td>
+        </tr>
+        <tr>
+          <td><span class="evidence">ev_xiaomi_ipo_prospectus_20180625</span></td>
+          <td>Xiaomi 2018 Global Offering Prospectus</td>
+          <td>源头、使命、早期商业模型、IPO 和 WVR 风险。</td>
+          <td><a href="https://cnbj1.fds.api.xiaomi.com/company/financial/en-US/IPO.pdf">IPO Prospectus PDF</a></td>
+        </tr>
+        <tr>
+          <td><span class="evidence">ev_xiaomi_management_20260518</span></td>
+          <td>Xiaomi IR Management</td>
+          <td>管理层背景和分工。</td>
+          <td><a href="https://ir.mi.com/corporate-information/management">Management</a></td>
+        </tr>
+        <tr>
+          <td><span class="evidence">ev_xiaomi_board_wvr_20260428</span></td>
+          <td>Annual Report WVR Disclosure</td>
+          <td>不同投票权结构、雷军和林斌投票权。</td>
+          <td><a href="https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/04/28/5-29-08/Xiaomi%202025%20AR_EN.pdf">WVR Disclosure</a></td>
+        </tr>
+        <tr>
+          <td><span class="evidence">ev_xiaomi_quarterly_results_page_20260518</span></td>
+          <td>Xiaomi Quarterly Results Page</td>
+          <td>确认截至 2026-05-18 尚未发布 2026 Q1 正式业绩。</td>
+          <td><a href="https://ir.mi.com/financial-information/quarterly-results">Quarterly Results</a></td>
+        </tr>
+        <tr>
+          <td><span class="evidence">ev_xiaomi_idc_q1_2026_smartphone_20260512</span></td>
+          <td>IDC Smartphone Market Insights</td>
+          <td>Q1 2026 全球手机出货、份额和内存约束。</td>
+          <td><a href="https://www.idc.com/promo/smartphone-market-share/market-share/">IDC Market Share</a></td>
+        </tr>
+        <tr>
+          <td><span class="evidence">ev_xiaomi_counterpoint_q1_2026_smartphone_20260410</span></td>
+          <td>Counterpoint via Gadgets360</td>
+          <td>交叉验证 Q1 2026 手机市场下滑和小米第三名位置。</td>
+          <td><a href="https://www.gadgets360.com/mobiles/news/global-smartphone-shipments-decline-apple-samsung-xiaomi-oppo-vivo-yoy-counterpoint-11339687">Counterpoint Coverage</a></td>
+        </tr>
+        <tr>
+          <td><span class="evidence">ev_xiaomi_cnevpost_nev_share_20260112</span></td>
+          <td>CnEVPost / CPCA</td>
+          <td>2025 中国 NEV 竞争份额和小米 EV 排名。</td>
+          <td><a href="https://cnevpost.com/2026/01/12/automakers-share-china-nev-market-2025/">China NEV Share</a></td>
+        </tr>
+        <tr>
+          <td><span class="evidence">ev_xiaomi_samr_su7_recall_20250919</span></td>
+          <td>国家市场监督管理总局</td>
+          <td>SU7 标准版召回、安全风险和智能驾驶监管观察。</td>
+          <td><a href="https://www.samr.gov.cn/zw/zh/art/2025/art_2152a981c72a430b9d10d6ef5cd9c09b.html">SAMR Recall Notice</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+</body>
+</html>

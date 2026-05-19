@@ -24,6 +24,9 @@ class MemoUpdaterTests(unittest.TestCase):
         self.assertIn("AAPL", prompt)
         self.assertIn("Revenue", prompt)
         self.assertIn("Stock Signal", prompt)
+        self.assertIn("Foundation Baseline Impact", prompt)
+        self.assertIn("foundation_status", prompt)
+        self.assertIn("foundation_gaps", prompt)
         self.assertIn("3C", prompt)
         self.assertIn("3D", prompt)
         self.assertIn("5M", prompt)
@@ -31,8 +34,11 @@ class MemoUpdaterTests(unittest.TestCase):
         self.assertIn("dominant_driver", prompt)
         self.assertIn("disconfirming_tests", prompt)
 
-    def test_system_prompt_uses_fenghe_as_primary_framework(self):
+    def test_system_prompt_uses_foundation_before_fenghe(self):
         prompt = _build_system_prompt()
+        self.assertIn("Company Foundation Analysis Framework", prompt)
+        self.assertIn("Eight Required Sections", prompt)
+        self.assertIn("Risk sweep", prompt)
         self.assertIn("FengHe 3C3D5M3T Framework", prompt)
         self.assertIn("Cycle", prompt)
         self.assertIn("D1", prompt)

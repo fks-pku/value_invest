@@ -1,7 +1,7 @@
 [project]
 name = "value-invest-research"
 version = "0.1.0"
-description = "File-system-first LLM investment research assistant foundation"
+description = "Foundation-first LLM investment research assistant"
 requires-python = ">=3.11"
 dependencies = []
 

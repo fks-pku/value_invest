@@ -10,11 +10,23 @@ Inputs:
 Output:
 
 1. Memo update summary.
-2. Proposed markdown patch by FengHe memo section.
-3. FengHe stock signal YAML.
-4. Human review actions and disconfirming tests.
+2. Foundation baseline impact across the eight company-foundation sections.
+3. Proposed markdown patch by memo section.
+4. Stock signal YAML with foundation status and FengHe message-flow fields.
+5. Human review actions and disconfirming tests.
 
-Required FengHe sections:
+Required company foundation sections:
+
+- Source and origin.
+- Company history.
+- Current business.
+- Value chain position.
+- Competitive landscape.
+- Strategy analysis.
+- Organization, culture, and governance.
+- Risk sweep.
+
+Required FengHe message-flow sections:
 
 - 3C: Cycle, Change, Certainty.
 - 3D: D1 ROE/intrinsic value, D2 marginal change/catalyst, D3 sentiment/valuation.
@@ -24,6 +36,6 @@ Required FengHe sections:
 Required checks:
 
 - Every material claim cites evidence IDs.
-- Current view changes require at least one primary or high-reliability evidence item and a named FengHe driver.
+- Current view changes require at least one primary or high-reliability evidence item, a foundation baseline check, and a named FengHe driver.
 - Low-reliability evidence creates open questions only.
 - The output must state the dominant D driver, the time frame, and disconfirming tests.

@@ -1,15 +1,17 @@
 # Value Invest Research
 
-File-system-first FengHe-style investment research assistant for US equities. The project stores research objects as plain files, keeps structured evidence alongside memos, and provides CLI workflows for stock, event, sector, SEC, price, and LLM-assisted research.
+File-system-first investment research assistant for US equities. The project stores research objects as plain files, keeps structured evidence alongside memos, and provides CLI workflows for stock, event, sector, SEC, price, and LLM-assisted research.
+
+The stock workflow is foundation-first: every company should first get an eight-section company foundation analysis. FengHe 3C3D5M3T is then used as the downstream message-flow layer for events, catalysts, marginal changes, time frames, and thesis updates.
 
 This is not an automated trading system. It does not place orders or issue final buy/sell instructions; it helps preserve evidence and produce auditable research drafts for human review.
 
 ## Current Status
 
 - Core scaffolding and validation are implemented.
-- CLI commands exist for stocks, events, SEC ingestion, price ingestion, FengHe stock research, memo updates, event research, and sector/theme research.
+- CLI commands exist for stocks, events, SEC ingestion, price ingestion, foundation-first stock research, memo updates, event research, and sector/theme research.
 - A deterministic research graph pipeline exists for consensus baselines, 3T questions, hypotheses, assumption tests, and forward reports.
-- The primary research framework is FengHe 3C3D5M3T: Cycle, Change, Certainty; D1/D2/D3 price drivers; M1-M5 value analysis; and T1/T2/T3 time frames.
+- The primary stock research sequence is company foundation first, then FengHe message-flow analysis.
 - Third-party integrations are optional. Core commands work without `openai`, `pyyaml`, or `yfinance`; integration commands report a clear install hint when their package is missing.
 - The repository includes sample AAPL, event, and sector research artifacts.
 
@@ -93,12 +95,27 @@ python tools/run_tests.py
 - `research/`: event, sector, and theme research objects.
 - `docs/superpowers/`: design specs and implementation plans.
 
+## Company Foundation Analysis
+
+Each company memo starts with an eight-section baseline:
+
+1. Source and origin.
+2. Company history.
+3. Current business.
+4. Value chain position.
+5. Competitive landscape.
+6. Strategy analysis.
+7. Organization, culture, and governance.
+8. Risk sweep.
+
+This baseline answers "what is this company?" before asking what new information changes the thesis.
+
 ## Research Graph Pipeline
 
-The graph pipeline treats current facts and market consensus as the priced baseline. It then creates a local graph:
+The graph pipeline is the message-flow layer. It treats current facts and market consensus as the priced baseline after company foundation work exists. It then creates a local graph:
 
 - Evidence nodes: validated `EvidenceRecord` entries.
-- Framework nodes: FengHe 3C, 3D, 5M, and 3T concepts.
+- Framework nodes: FengHe 3C, 3D, 5M, and 3T concepts for message-flow analysis.
 - Consensus nodes: what the current local evidence can support as baseline.
 - Question nodes: what could change by T1/T2/T3.
 - Hypothesis nodes: mechanisms that could move D1/D2/D3.
@@ -108,4 +125,4 @@ The forward report is an HTML synthesis of the graph, not a final trading instru
 
 ## Boundaries
 
-Research outputs must separate facts, inferences, and judgments. Material claims should cite evidence IDs. Low-reliability sources can create research questions, but should not change a thesis by themselves. Generic "good company" language is not enough: every stock view must state the cycle, marginal change, certainty, dominant D driver, 5M value/defect drivers, time frame, and disconfirming tests.
+Research outputs must separate facts, inferences, and judgments. Material claims should cite evidence IDs. Low-reliability sources can create research questions, but should not change a thesis by themselves. Generic "good company" language is not enough: every stock view must state foundation status and gaps first, then cycle, marginal change, certainty, dominant D driver, 5M value/defect drivers, time frame, and disconfirming tests when analyzing message flow.

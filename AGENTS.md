@@ -1,6 +1,6 @@
 # Value Invest Research
 
-File-system-first US equity research assistant built around the FengHe 3C3D5M3T framework. Plain files are the source of truth; Python code validates contracts, scaffolds research objects, ingests public data, and creates LLM research drafts.
+File-system-first US equity research assistant built around company foundation analysis first, then FengHe 3C3D5M3T message-flow analysis. Plain files are the source of truth; Python code validates contracts, scaffolds research objects, ingests public data, and creates LLM research drafts.
 
 ## Module Index
 
@@ -13,9 +13,20 @@ File-system-first US equity research assistant built around the FengHe 3C3D5M3T 
 | Stock objects | `stocks/` | Stock memos, evidence logs, structured data, run logs, and proposals. |
 | Research objects | `research/` | Sector/theme/event memos, evidence, candidate screens, and run logs. |
 
-## Primary Framework
+## Research Sequence
 
-Use FengHe 3C3D5M3T before generic investment language:
+For individual companies, complete a foundation analysis before using FengHe:
+
+- Source and origin: company gene, founding context, original problem solved.
+- Company history: business, governance, financing, M&A, restructuring, and capital allocation.
+- Current business: business model, customers, demand, pricing, profitability, and cash conversion.
+- Value chain position: supplier/channel/customer power and where economics are captured or lost.
+- Competitive landscape: peers, market structure, ranking, share trend, and competition intensity.
+- Strategy analysis: mission, corporate strategy, competitive strategy, functional strategy.
+- Organization, culture, and governance: leadership, incentives, ownership, control, board, culture.
+- Risk sweep: business, financial, accounting, legal, regulatory, technology, governance, and valuation risks.
+
+Use FengHe 3C3D5M3T after that foundation baseline for message flow, events, catalysts, and thesis changes:
 
 - 3C: Cycle, Change, Certainty.
 - 3D: D1 ROE/intrinsic value, D2 marginal change/catalyst, D3 sentiment/valuation.
@@ -41,5 +52,6 @@ value-invest-research research-stock AAPL --api-key $env:LLM_API_KEY
 - Keep low-reliability evidence as research leads only.
 - Preserve existing research history; proposals are safer than silent memo overwrites.
 - Optional integrations must fail with clear install guidance when dependencies are missing.
+- Every stock-level output must state company foundation status and material foundation gaps.
 - Every thesis-strengthening output must include a dominant D driver, matching 3T time frame, and disconfirming tests.
 - Research graph outputs must preserve node/edge traceability from evidence to consensus, questions, hypotheses, assumption tests, and reports.

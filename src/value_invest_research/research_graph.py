@@ -41,7 +41,7 @@ DIMENSIONS = [
         "label": "Change",
         "driver": "D2",
         "probe": "a marginal operating or industry change becomes observable",
-        "why": "FengHe research starts with observable change.",
+        "why": "Message-flow research starts with observable change.",
     },
     {
         "id": "3c_certainty",
@@ -310,7 +310,8 @@ def _load_evidence(stock_dir: Path) -> list[EvidenceRecord]:
 
 
 def _write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
-    path.write_text("".join(json.dumps(row, sort_keys=True) + "\n" for row in rows), encoding="utf-8", newline="\n")
+    with path.open("w", encoding="utf-8", newline="\n") as file:
+        file.write("".join(json.dumps(row, sort_keys=True) + "\n" for row in rows))
 
 
 def _stock_node_id(ticker: str) -> str:
@@ -697,7 +698,8 @@ def _write_forward_report(
         primary_evidence_count=primary_evidence_count,
         metrics=metrics,
     )
-    report_path.write_text(html, encoding="utf-8", newline="\n")
+    with report_path.open("w", encoding="utf-8", newline="\n") as file:
+        file.write(html)
     return report_path
 
 
@@ -828,12 +830,12 @@ def _render_forward_report_html(
 
     consensus_synthesis = f"""
         <div class="panel">
-          <h2>锋和研究综合</h2>
+          <h2>消息流研究综合</h2>
           <ul>
             <li><strong>3C · 周期：</strong>{escape(syn_cycle)}</li>
             <li><strong>3C · 变化：</strong>{escape(syn_change)}</li>
             <li><strong>3C · 确定性：</strong>{escape(syn_certainty)}</li>
-            <li><strong>主导 D 驱动：</strong>{escape(syn_driver)}</li>
+            <li><strong>主导 D 驱动 / Dominant D driver：</strong>{escape(syn_driver)}</li>
             <li><strong>5M 关键焦点：</strong>{escape(syn_5m)}</li>
             <li><strong>活跃 3T 时间框架：</strong>{escape(syn_3t)}</li>
             <li><strong>证据库：</strong>{escape(syn_evidence)}</li>
@@ -1186,14 +1188,14 @@ def _render_forward_report_html(
 <body>
   <main>
     <section class="hero">
-      <div class="eyebrow">锋和研究图谱</div>
+      <div class="eyebrow">消息流研究图谱</div>
       <h1>{escape(ticker)} 前瞻研究图谱报告</h1>
       <div class="meta">
         <span>生成时间：{escape(generated_at)}</span>
         <span>输出：HTML</span>
         <span>数据：nodes.jsonl + edges.jsonl</span>
       </div>
-      <div class="notice">本报告不构成交易指令。基本规则：已知事实和市场共识已反映在价格中，只有通过证据检验的变化假设才能推翻这一前提。</div>
+      <div class="notice">本报告不构成交易指令。Do not treat this as a trading instruction. 基本规则：已知事实和市场共识已反映在价格中，只有通过证据检验的变化假设才能推翻这一前提。</div>
     </section>
 
     <section class="metrics">
