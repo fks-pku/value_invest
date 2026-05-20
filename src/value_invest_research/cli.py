@@ -46,6 +46,12 @@ def build_parser() -> argparse.ArgumentParser:
     report_parser = subparsers.add_parser("write-forward-report", help="Write a forward research report from the graph")
     report_parser.add_argument("ticker")
 
+    research_system_parser = subparsers.add_parser(
+        "build-research-system",
+        help="Build foundation graph, question graph, message flow, and research dashboard",
+    )
+    research_system_parser.add_argument("ticker")
+
     sec_parser = subparsers.add_parser("ingest-sec", help="Fetch SEC EDGAR data for a ticker")
     sec_parser.add_argument("ticker")
     sec_parser.add_argument("--user-agent", default="value-invest-research/0.1.0 research@example.com")
@@ -119,6 +125,8 @@ def main(argv: list[str] | None = None) -> int:
             return run_research_graph_cmd(root, args.ticker, "tests")
         if args.command == "write-forward-report":
             return run_research_graph_cmd(root, args.ticker, "report")
+        if args.command == "build-research-system":
+            return run_research_system_cmd(root, args.ticker)
         if args.command == "ingest-sec":
             return run_sec_ingest(root, args.ticker, args.user_agent, args.include_facts)
         if args.command == "ingest-prices":
@@ -178,6 +186,21 @@ def run_research_graph_cmd(root: Path, ticker: str, stage: str) -> int:
     )
     if result["report_path"]:
         print(f"Forward report saved: {result['report_path']}")
+    return 0
+
+
+def run_research_system_cmd(root: Path, ticker: str) -> int:
+    from value_invest_research.research_system import build_research_system
+
+    result = build_research_system(root, ticker)
+    print(
+        f"Research system built for {result['ticker']}: "
+        f"foundation_status={result['foundation_status']}, "
+        f"sections_covered={result['sections_covered']}, "
+        f"questions={result['questions']}, "
+        f"messages={result['messages']}, "
+        f"dashboard={result['dashboard_path']}"
+    )
     return 0
 
 

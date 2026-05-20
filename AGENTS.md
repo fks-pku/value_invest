@@ -1,12 +1,12 @@
 # Value Invest Research
 
-File-system-first US equity research assistant built around company foundation analysis first, then FengHe 3C3D5M3T message-flow analysis. Plain files are the source of truth; Python code validates contracts, scaffolds research objects, ingests public data, and creates LLM research drafts.
+File-system-first equity research assistant built around company foundation analysis first, structured question/message-flow research systems second, then FengHe 3C3D5M3T thesis-change analysis. Plain files are the source of truth; Python code validates contracts, scaffolds research objects, ingests public data, and creates LLM research drafts.
 
 ## Module Index
 
 | Module | Path | Purpose |
 |------|------|------|
-| Core package | `src/value_invest_research/` | CLI, schemas, scaffolding, ingestion, run logs, and LLM research workflows. |
+| Core package | `src/value_invest_research/` | CLI, schemas, scaffolding, ingestion, research-system generation, run logs, and LLM research workflows. |
 | Tests | `tests/` | unittest coverage for schemas, CLI, scaffolding, ingestion, and research workflow prompt/output behavior. |
 | Research skill | `skills/value_invest_research/` | Operating protocol, frameworks, prompts, and evidence checklists. |
 | Config | `config/` | Watchlist, source priority, research object registry, and event playbooks. |
@@ -40,6 +40,7 @@ python tools/run_tests.py
 $env:PYTHONPATH = "src"; python -m value_invest_research --help
 value-invest-research --help
 value-invest-research build-evidence AAPL
+value-invest-research build-research-system AAPL
 value-invest-research build-research-graph AAPL
 value-invest-research research-stock AAPL --api-key $env:LLM_API_KEY
 ```
@@ -53,5 +54,6 @@ value-invest-research research-stock AAPL --api-key $env:LLM_API_KEY
 - Preserve existing research history; proposals are safer than silent memo overwrites.
 - Optional integrations must fail with clear install guidance when dependencies are missing.
 - Every stock-level output must state company foundation status and material foundation gaps.
+- Professional stock work should preserve a structured research system: foundation graph, question graph, message-flow impact log, and dashboard before polished prose.
 - Every thesis-strengthening output must include a dominant D driver, matching 3T time frame, and disconfirming tests.
 - Research graph outputs must preserve node/edge traceability from evidence to consensus, questions, hypotheses, assumption tests, and reports.

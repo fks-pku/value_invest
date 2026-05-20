@@ -1,0 +1,1243 @@
+{
+  "assumptions": [
+    {
+      "disconfirming_signals": [
+        "Share losses persist for two or more quarters",
+        "ASP and gross margin decline together",
+        "Inventory builds while shipments fall"
+      ],
+      "id": "assumption_smartphone_001",
+      "linked_business_node_ids": [
+        "smartphone"
+      ],
+      "linked_foundation_sections": [
+        "current_business",
+        "competition",
+        "value_chain"
+      ],
+      "statement": "The smartphone platform remains stable enough to anchor users, channels, and downstream monetization.",
+      "status": "open",
+      "supporting_evidence_ids": [
+        "ev_xiaomi_company_profile_20260518",
+        "ev_xiaomi_2025_results_announcement_20260324",
+        "ev_xiaomi_management_20260518",
+        "ev_xiaomi_idc_q1_2026_smartphone_20260512",
+        "ev_xiaomi_counterpoint_q1_2026_smartphone_20260410"
+      ],
+      "ticker": "XIAOMI"
+    },
+    {
+      "disconfirming_signals": [
+        "Growth requires discounts",
+        "Gross margin falls as scale rises",
+        "Connected-device users do not improve service monetization"
+      ],
+      "id": "assumption_iot_001",
+      "linked_business_node_ids": [
+        "iot"
+      ],
+      "linked_foundation_sections": [
+        "current_business",
+        "value_chain",
+        "strategy"
+      ],
+      "statement": "IoT scale creates repeat purchase and ecosystem lock-in rather than only low-margin hardware volume.",
+      "status": "open",
+      "supporting_evidence_ids": [
+        "ev_xiaomi_company_profile_20260518",
+        "ev_xiaomi_2025_results_announcement_20260324",
+        "ev_xiaomi_ipo_prospectus_20180625",
+        "ev_xiaomi_jingzhun_deep_report_20181105",
+        "ev_xiaomi_guosheng_deep_report_20211117"
+      ],
+      "ticker": "XIAOMI"
+    },
+    {
+      "disconfirming_signals": [
+        "MAU growth slows while monetization falls",
+        "Regulatory changes reduce ads or app distribution economics",
+        "High-margin revenue mix shrinks"
+      ],
+      "id": "assumption_services_001",
+      "linked_business_node_ids": [
+        "services"
+      ],
+      "linked_foundation_sections": [
+        "current_business",
+        "strategy",
+        "risk_sweep"
+      ],
+      "statement": "Service monetization is durable after platform, regulatory, and ad-cycle effects.",
+      "status": "open",
+      "supporting_evidence_ids": [
+        "ev_xiaomi_2025_results_announcement_20260324"
+      ],
+      "ticker": "XIAOMI"
+    },
+    {
+      "disconfirming_signals": [
+        "Vehicle gross margin falls after launch cycle",
+        "Price cuts outpace cost-down",
+        "Recall, warranty, or safety costs rise faster than deliveries"
+      ],
+      "id": "assumption_smart_ev_001",
+      "linked_business_node_ids": [
+        "smart_ev"
+      ],
+      "linked_foundation_sections": [
+        "current_business",
+        "value_chain",
+        "competition",
+        "strategy",
+        "risk_sweep"
+      ],
+      "statement": "Smart EV can become a repeatable profit pool after capex, warranty, safety, and price competition.",
+      "status": "open",
+      "supporting_evidence_ids": [
+        "ev_xiaomi_2025_annual_report_20260428",
+        "ev_xiaomi_2025_results_announcement_20260324",
+        "ev_xiaomi_counterpoint_q1_2026_smartphone_20260410",
+        "ev_xiaomi_cnevpost_nev_share_20260112",
+        "ev_xiaomi_samr_su7_recall_20250919"
+      ],
+      "ticker": "XIAOMI"
+    },
+    {
+      "disconfirming_signals": [
+        "BOM inflation cannot be passed through",
+        "Supply constraints reduce high-margin mix",
+        "Quality incidents rise with production scale"
+      ],
+      "id": "assumption_supply_chain_001",
+      "linked_business_node_ids": [
+        "supply_chain"
+      ],
+      "linked_foundation_sections": [
+        "value_chain",
+        "risk_sweep"
+      ],
+      "statement": "The company can manage component inflation, supply constraints, and manufacturing quality without destroying margins.",
+      "status": "open",
+      "supporting_evidence_ids": [
+        "ev_xiaomi_company_profile_20260518",
+        "ev_xiaomi_idc_q1_2026_smartphone_20260512",
+        "ev_xiaomi_counterpoint_q1_2026_smartphone_20260410"
+      ],
+      "ticker": "XIAOMI"
+    },
+    {
+      "disconfirming_signals": [
+        "Free cash flow weakens despite reported profit",
+        "Capex rises without operating leverage",
+        "Financing dilutes while returns remain unproven"
+      ],
+      "id": "assumption_capital_allocation_001",
+      "linked_business_node_ids": [
+        "capital_allocation"
+      ],
+      "linked_foundation_sections": [
+        "current_business",
+        "strategy",
+        "risk_sweep"
+      ],
+      "statement": "Cash generation and balance-sheet strength can fund reinvestment without weakening shareholder economics.",
+      "status": "open",
+      "supporting_evidence_ids": [
+        "ev_xiaomi_2025_annual_report_20260428"
+      ],
+      "ticker": "XIAOMI"
+    },
+    {
+      "disconfirming_signals": [
+        "Major capital allocation lacks minority-shareholder discipline",
+        "Related-party risk increases",
+        "Board independence weakens"
+      ],
+      "id": "assumption_governance_control_001",
+      "linked_business_node_ids": [
+        "governance_control"
+      ],
+      "linked_foundation_sections": [
+        "governance",
+        "risk_sweep"
+      ],
+      "statement": "Control structure and leadership quality improve long-term execution more than they raise minority-shareholder risk.",
+      "status": "open",
+      "supporting_evidence_ids": [
+        "ev_xiaomi_2025_annual_report_20260428",
+        "ev_xiaomi_management_20260518",
+        "ev_xiaomi_board_wvr_20260428",
+        "ev_xiaomi_ipo_prospectus_20180625"
+      ],
+      "ticker": "XIAOMI"
+    },
+    {
+      "disconfirming_signals": [
+        "Revenue grows while cash conversion and margin quality weaken",
+        "One segment masks deterioration elsewhere"
+      ],
+      "id": "assumption_group_financials_001",
+      "linked_business_node_ids": [
+        "group_financials"
+      ],
+      "linked_foundation_sections": [
+        "current_business",
+        "risk_sweep"
+      ],
+      "statement": "Reported growth converts into durable margin and cash-flow quality.",
+      "status": "open",
+      "supporting_evidence_ids": [
+        "ev_xiaomi_2025_annual_report_20260428",
+        "ev_xiaomi_2025_results_announcement_20260324"
+      ],
+      "ticker": "XIAOMI"
+    }
+  ],
+  "business_nodes": [
+    {
+      "evidence_ids": [
+        "ev_xiaomi_company_profile_20260518",
+        "ev_xiaomi_2025_results_announcement_20260324",
+        "ev_xiaomi_management_20260518",
+        "ev_xiaomi_idc_q1_2026_smartphone_20260512",
+        "ev_xiaomi_counterpoint_q1_2026_smartphone_20260410",
+        "ev_xiaomi_ipo_prospectus_20180625",
+        "ev_xiaomi_mi1_launch_transcript_20110816"
+      ],
+      "id": "smartphone",
+      "key_kpis": [
+        "shipments",
+        "ASP",
+        "share",
+        "gross margin",
+        "replacement cycle"
+      ],
+      "label": "Smartphone platform",
+      "open_question": "Is the smartphone baseline stable, or is share/margin deterioration changing the platform thesis?",
+      "role": "User acquisition and ecosystem anchor",
+      "status": "active"
+    },
+    {
+      "evidence_ids": [
+        "ev_xiaomi_company_profile_20260518",
+        "ev_xiaomi_2025_results_announcement_20260324",
+        "ev_xiaomi_ipo_prospectus_20180625",
+        "ev_xiaomi_jingzhun_deep_report_20181105",
+        "ev_xiaomi_guosheng_deep_report_20211117",
+        "ev_xiaomi_yongxing_deep_report_20250228"
+      ],
+      "id": "iot",
+      "key_kpis": [
+        "connected devices",
+        "multi-device users",
+        "gross margin",
+        "repeat purchase"
+      ],
+      "label": "IoT and connected devices",
+      "open_question": "Does IoT create real ecosystem lock-in and profit quality, or only hardware volume?",
+      "role": "Cross-category expansion and ecosystem lock-in",
+      "status": "active"
+    },
+    {
+      "evidence_ids": [
+        "ev_xiaomi_2025_results_announcement_20260324"
+      ],
+      "id": "services",
+      "key_kpis": [
+        "MAU",
+        "ARPU",
+        "gross margin",
+        "take rate",
+        "retention"
+      ],
+      "label": "Internet and services profit pool",
+      "open_question": "Is the service profit pool durable, or exposed to platform, traffic, and regulatory pressure?",
+      "role": "High-margin monetization layer",
+      "status": "active"
+    },
+    {
+      "evidence_ids": [
+        "ev_xiaomi_2025_annual_report_20260428",
+        "ev_xiaomi_2025_results_announcement_20260324",
+        "ev_xiaomi_counterpoint_q1_2026_smartphone_20260410",
+        "ev_xiaomi_cnevpost_nev_share_20260112",
+        "ev_xiaomi_samr_su7_recall_20250919",
+        "ev_xiaomi_yongxing_deep_report_20250228"
+      ],
+      "id": "smart_ev",
+      "key_kpis": [
+        "deliveries",
+        "ASP",
+        "vehicle gross margin",
+        "capex",
+        "warranty cost",
+        "recalls"
+      ],
+      "label": "Smart EV and mobility platform",
+      "open_question": "Can Smart EV become a repeatable profit pool after safety, warranty, capex, and price competition?",
+      "role": "Second growth curve with manufacturing and safety obligations",
+      "status": "active"
+    },
+    {
+      "evidence_ids": [
+        "ev_xiaomi_company_profile_20260518",
+        "ev_xiaomi_idc_q1_2026_smartphone_20260512",
+        "ev_xiaomi_counterpoint_q1_2026_smartphone_20260410"
+      ],
+      "id": "supply_chain",
+      "key_kpis": [
+        "inventory days",
+        "BOM inflation",
+        "capacity utilization",
+        "quality cost"
+      ],
+      "label": "Supply chain and manufacturing system",
+      "open_question": "Can the company pass through component inflation and preserve quality while scaling?",
+      "role": "Cost, availability, and quality-control constraint",
+      "status": "active"
+    },
+    {
+      "evidence_ids": [
+        "ev_xiaomi_2025_annual_report_20260428"
+      ],
+      "id": "capital_allocation",
+      "key_kpis": [
+        "operating cash flow",
+        "free cash flow",
+        "net cash",
+        "capex",
+        "ROIC"
+      ],
+      "label": "Capital allocation and cash engine",
+      "open_question": "Can cash flows fund the next growth curve without weakening returns or minority-shareholder economics?",
+      "role": "Funds reinvestment, buybacks, dividends, and balance-sheet resilience",
+      "status": "active"
+    },
+    {
+      "evidence_ids": [
+        "ev_xiaomi_2025_annual_report_20260428",
+        "ev_xiaomi_management_20260518",
+        "ev_xiaomi_board_wvr_20260428",
+        "ev_xiaomi_ipo_prospectus_20180625"
+      ],
+      "id": "governance_control",
+      "key_kpis": [
+        "voting control",
+        "incentives",
+        "related-party risk",
+        "capital-allocation discipline"
+      ],
+      "label": "Governance and control structure",
+      "open_question": "Does founder/control structure improve long-term execution or create governance discount risk?",
+      "role": "Management quality, incentives, and minority-shareholder constraint",
+      "status": "active"
+    },
+    {
+      "evidence_ids": [
+        "ev_xiaomi_2025_annual_report_20260428",
+        "ev_xiaomi_2025_results_announcement_20260324"
+      ],
+      "id": "group_financials",
+      "key_kpis": [
+        "revenue",
+        "gross margin",
+        "operating margin",
+        "net profit",
+        "cash conversion"
+      ],
+      "label": "Group financial model",
+      "open_question": "Which segment is actually driving gross profit, cash conversion, and durable value creation?",
+      "role": "Revenue quality, margin structure, cash conversion, and balance sheet",
+      "status": "active"
+    }
+  ],
+  "coverage": {
+    "sections_evidenced": 8,
+    "sections_missing": 0,
+    "sections_partial": 0,
+    "sections_total": 8
+  },
+  "foundation_status": "complete",
+  "generated_at": "2026-05-20T03:52:19.862360+00:00",
+  "kpis": [
+    {
+      "business_node_ids": [
+        "smartphone",
+        "iot",
+        "supply_chain"
+      ],
+      "evidence_id": "ev_xiaomi_company_profile_20260518",
+      "id": "kpi_ev_xiaomi_company_profile_20260518_1",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "Xiaomi was founded in April 2010, listed on HKEX on July 9, 2018, and desc",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "smartphone",
+        "iot",
+        "supply_chain"
+      ],
+      "evidence_id": "ev_xiaomi_company_profile_20260518",
+      "id": "kpi_ev_xiaomi_company_profile_20260518_2",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "ded in April 2010, listed on HKEX on July 9, 2018, and describes itself as a consumer",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "smartphone",
+        "iot",
+        "supply_chain"
+      ],
+      "evidence_id": "ev_xiaomi_company_profile_20260518",
+      "id": "kpi_ev_xiaomi_company_profile_20260518_3",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "in April 2010, listed on HKEX on July 9, 2018, and describes itself as a consumer elect",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "smart_ev",
+        "capital_allocation",
+        "governance_control",
+        "group_financials"
+      ],
+      "evidence_id": "ev_xiaomi_2025_annual_report_20260428",
+      "id": "kpi_ev_xiaomi_2025_annual_report_20260428_1",
+      "label": "Revenue",
+      "reliability": "primary",
+      "value_snippet": "FY2025 revenue was RMB457.3B, gross profit RMB101",
+      "why_it_matters": "Cash conversion determines whether growth can fund itself."
+    },
+    {
+      "business_node_ids": [
+        "smart_ev",
+        "capital_allocation",
+        "governance_control",
+        "group_financials"
+      ],
+      "evidence_id": "ev_xiaomi_2025_annual_report_20260428",
+      "id": "kpi_ev_xiaomi_2025_annual_report_20260428_2",
+      "label": "Revenue",
+      "reliability": "primary",
+      "value_snippet": "FY2025 revenue was RMB457.3B, gross profit RMB101.8B, profit for the y",
+      "why_it_matters": "Cash conversion determines whether growth can fund itself."
+    },
+    {
+      "business_node_ids": [
+        "smart_ev",
+        "capital_allocation",
+        "governance_control",
+        "group_financials"
+      ],
+      "evidence_id": "ev_xiaomi_2025_annual_report_20260428",
+      "id": "kpi_ev_xiaomi_2025_annual_report_20260428_3",
+      "label": "Revenue",
+      "reliability": "primary",
+      "value_snippet": "Y2025 revenue was RMB457.3B, gross profit RMB101.8B, profit for the year RMB41.6B, adjusted n",
+      "why_it_matters": "Cash conversion determines whether growth can fund itself."
+    },
+    {
+      "business_node_ids": [
+        "smart_ev",
+        "capital_allocation",
+        "governance_control",
+        "group_financials"
+      ],
+      "evidence_id": "ev_xiaomi_2025_annual_report_20260428",
+      "id": "kpi_ev_xiaomi_2025_annual_report_20260428_4",
+      "label": "Revenue",
+      "reliability": "primary",
+      "value_snippet": "oss profit RMB101.8B, profit for the year RMB41.6B, adjusted net profit RMB39.2B, total asse",
+      "why_it_matters": "Cash conversion determines whether growth can fund itself."
+    },
+    {
+      "business_node_ids": [
+        "smartphone",
+        "iot",
+        "services",
+        "smart_ev",
+        "group_financials"
+      ],
+      "evidence_id": "ev_xiaomi_2025_results_announcement_20260324",
+      "id": "kpi_ev_xiaomi_2025_results_announcement_20260324_1",
+      "label": "Revenue",
+      "reliability": "primary",
+      "value_snippet": "The FY2025 announcement provides segment data: Smartp",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "smartphone",
+        "iot",
+        "services",
+        "smart_ev",
+        "group_financials"
+      ],
+      "evidence_id": "ev_xiaomi_2025_results_announcement_20260324",
+      "id": "kpi_ev_xiaomi_2025_results_announcement_20260324_2",
+      "label": "Revenue",
+      "reliability": "primary",
+      "value_snippet": "s segment data: Smartphone x AIoT revenue RMB351.2B, Smart EV/AI/new initiatives revenue RMB1",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "smartphone",
+        "iot",
+        "services",
+        "smart_ev",
+        "group_financials"
+      ],
+      "evidence_id": "ev_xiaomi_2025_results_announcement_20260324",
+      "id": "kpi_ev_xiaomi_2025_results_announcement_20260324_3",
+      "label": "Revenue",
+      "reliability": "primary",
+      "value_snippet": "1.2B, Smart EV/AI/new initiatives revenue RMB106.1B, smartphone shipments 165.2M, global MAU",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "smartphone",
+        "iot",
+        "services",
+        "smart_ev",
+        "group_financials"
+      ],
+      "evidence_id": "ev_xiaomi_2025_results_announcement_20260324",
+      "id": "kpi_ev_xiaomi_2025_results_announcement_20260324_4",
+      "label": "Revenue",
+      "reliability": "primary",
+      "value_snippet": "s revenue RMB106.1B, smartphone shipments 165.2M, global MAU 754.1M, connected IoT devices",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "governance_control"
+      ],
+      "evidence_id": "ev_xiaomi_board_wvr_20260428",
+      "id": "kpi_ev_xiaomi_board_wvr_20260428_1",
+      "label": "Market share / shipments",
+      "reliability": "primary",
+      "value_snippet": "ted voting rights: each Class A share has 10 votes and each Class B share has one vote",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "governance_control"
+      ],
+      "evidence_id": "ev_xiaomi_board_wvr_20260428",
+      "id": "kpi_ev_xiaomi_board_wvr_20260428_2",
+      "label": "Market share / shipments",
+      "reliability": "primary",
+      "value_snippet": "B share has one vote; Lei Jun held about 61.0% of voting rights and Lin Bin about 6.7% f",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "governance_control"
+      ],
+      "evidence_id": "ev_xiaomi_board_wvr_20260428",
+      "id": "kpi_ev_xiaomi_board_wvr_20260428_3",
+      "label": "Market share / shipments",
+      "reliability": "primary",
+      "value_snippet": "61.0% of voting rights and Lin Bin about 6.7% for non-reserved matters as of December 3",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "governance_control"
+      ],
+      "evidence_id": "ev_xiaomi_board_wvr_20260428",
+      "id": "kpi_ev_xiaomi_board_wvr_20260428_4",
+      "label": "Market share / shipments",
+      "reliability": "primary",
+      "value_snippet": "% for non-reserved matters as of December 31, 2025",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [],
+      "evidence_id": "ev_xiaomi_quarterly_results_page_20260518",
+      "id": "kpi_ev_xiaomi_quarterly_results_page_20260518_1",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "As of May 18, 2026, Xiaomi's quarterly results page sh",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [],
+      "evidence_id": "ev_xiaomi_quarterly_results_page_20260518",
+      "id": "kpi_ev_xiaomi_quarterly_results_page_20260518_2",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "As of May 18, 2026, Xiaomi's quarterly results page shows 20",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [],
+      "evidence_id": "ev_xiaomi_quarterly_results_page_20260518",
+      "id": "kpi_ev_xiaomi_quarterly_results_page_20260518_3",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "26, Xiaomi's quarterly results page shows 2025 Q1-Q4 results and does not yet show a 2026",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [],
+      "evidence_id": "ev_xiaomi_quarterly_results_page_20260518",
+      "id": "kpi_ev_xiaomi_quarterly_results_page_20260518_4",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "aomi's quarterly results page shows 2025 Q1-Q4 results and does not yet show a 2026 Q",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "smartphone",
+        "supply_chain"
+      ],
+      "evidence_id": "ev_xiaomi_idc_q1_2026_smartphone_20260512",
+      "id": "kpi_ev_xiaomi_idc_q1_2026_smartphone_20260512_1",
+      "label": "Market share / shipments",
+      "reliability": "high",
+      "value_snippet": "IDC preliminary Q1 2026 data shows global smartphone shipment",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "smartphone",
+        "supply_chain"
+      ],
+      "evidence_id": "ev_xiaomi_idc_q1_2026_smartphone_20260512",
+      "id": "kpi_ev_xiaomi_idc_q1_2026_smartphone_20260512_2",
+      "label": "Market share / shipments",
+      "reliability": "high",
+      "value_snippet": "IDC preliminary Q1 2026 data shows global smartphone shipments dow",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "smartphone",
+        "supply_chain"
+      ],
+      "evidence_id": "ev_xiaomi_idc_q1_2026_smartphone_20260512",
+      "id": "kpi_ev_xiaomi_idc_q1_2026_smartphone_20260512_3",
+      "label": "Market share / shipments",
+      "reliability": "high",
+      "value_snippet": "ta shows global smartphone shipments down 2.9% YoY to 293.8M units; Xiaomi shipped 33.8M",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "smartphone",
+        "supply_chain"
+      ],
+      "evidence_id": "ev_xiaomi_idc_q1_2026_smartphone_20260512",
+      "id": "kpi_ev_xiaomi_idc_q1_2026_smartphone_20260512_4",
+      "label": "Market share / shipments",
+      "reliability": "high",
+      "value_snippet": "bal smartphone shipments down 2.9% YoY to 293.8M units; Xiaomi shipped 33.8M units, held 1",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "smartphone",
+        "smart_ev",
+        "supply_chain"
+      ],
+      "evidence_id": "ev_xiaomi_counterpoint_q1_2026_smartphone_20260410",
+      "id": "kpi_ev_xiaomi_counterpoint_q1_2026_smartphone_20260410_1",
+      "label": "Market share / shipments",
+      "reliability": "medium",
+      "value_snippet": "Counterpoint's Q1 2026 smartphone monitor, as reported by Ga",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "smartphone",
+        "smart_ev",
+        "supply_chain"
+      ],
+      "evidence_id": "ev_xiaomi_counterpoint_q1_2026_smartphone_20260410",
+      "id": "kpi_ev_xiaomi_counterpoint_q1_2026_smartphone_20260410_2",
+      "label": "Market share / shipments",
+      "reliability": "medium",
+      "value_snippet": "Counterpoint's Q1 2026 smartphone monitor, as reported by Gadgets",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "smartphone",
+        "smart_ev",
+        "supply_chain"
+      ],
+      "evidence_id": "ev_xiaomi_counterpoint_q1_2026_smartphone_20260410",
+      "id": "kpi_ev_xiaomi_counterpoint_q1_2026_smartphone_20260410_3",
+      "label": "Market share / shipments",
+      "reliability": "medium",
+      "value_snippet": "smartphone monitor, as reported by Gadgets360, estimated global smartphone shipments fe",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "smartphone",
+        "smart_ev",
+        "supply_chain"
+      ],
+      "evidence_id": "ev_xiaomi_counterpoint_q1_2026_smartphone_20260410",
+      "id": "kpi_ev_xiaomi_counterpoint_q1_2026_smartphone_20260410_4",
+      "label": "Market share / shipments",
+      "reliability": "medium",
+      "value_snippet": "stimated global smartphone shipments fell 6% YoY and Xiaomi retained third place with",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "smart_ev"
+      ],
+      "evidence_id": "ev_xiaomi_cnevpost_nev_share_20260112",
+      "id": "kpi_ev_xiaomi_cnevpost_nev_share_20260112_1",
+      "label": "Market share / shipments",
+      "reliability": "medium",
+      "value_snippet": "CnEVPost, citing CPCA, reports Xiaomi EV 2025 China passenger NEV retail sales of 411,83",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "smart_ev"
+      ],
+      "evidence_id": "ev_xiaomi_cnevpost_nev_share_20260112",
+      "id": "kpi_ev_xiaomi_cnevpost_nev_share_20260112_2",
+      "label": "Market share / shipments",
+      "reliability": "medium",
+      "value_snippet": "2025 China passenger NEV retail sales of 411,837 units, ranking tenth with 3.2% share; BYD led w",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "smart_ev"
+      ],
+      "evidence_id": "ev_xiaomi_cnevpost_nev_share_20260112",
+      "id": "kpi_ev_xiaomi_cnevpost_nev_share_20260112_3",
+      "label": "Market share / shipments",
+      "reliability": "medium",
+      "value_snippet": "ales of 411,837 units, ranking tenth with 3.2% share; BYD led with 27.2% and Tesla China",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "smart_ev"
+      ],
+      "evidence_id": "ev_xiaomi_cnevpost_nev_share_20260112",
+      "id": "kpi_ev_xiaomi_cnevpost_nev_share_20260112_4",
+      "label": "Market share / shipments",
+      "reliability": "medium",
+      "value_snippet": "nking tenth with 3.2% share; BYD led with 27.2% and Tesla China ranked fifth with 4.9%",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "smart_ev"
+      ],
+      "evidence_id": "ev_xiaomi_samr_su7_recall_20250919",
+      "id": "kpi_ev_xiaomi_samr_su7_recall_20250919_1",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "SAMR notice states Xiaomi Auto recalled 116,887 SU7 Standard EVs produced from February 6,",
+      "why_it_matters": "EV metrics test whether the second curve is financially repeatable."
+    },
+    {
+      "business_node_ids": [
+        "smart_ev"
+      ],
+      "evidence_id": "ev_xiaomi_samr_su7_recall_20250919",
+      "id": "kpi_ev_xiaomi_samr_su7_recall_20250919_2",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "ice states Xiaomi Auto recalled 116,887 SU7 Standard EVs produced from February 6, 202",
+      "why_it_matters": "EV metrics test whether the second curve is financially repeatable."
+    },
+    {
+      "business_node_ids": [
+        "smart_ev"
+      ],
+      "evidence_id": "ev_xiaomi_samr_su7_recall_20250919",
+      "id": "kpi_ev_xiaomi_samr_su7_recall_20250919_3",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "7 SU7 Standard EVs produced from February 6, 2024 to August 30, 2025 because L2 highw",
+      "why_it_matters": "EV metrics test whether the second curve is financially repeatable."
+    },
+    {
+      "business_node_ids": [
+        "smart_ev"
+      ],
+      "evidence_id": "ev_xiaomi_samr_su7_recall_20250919",
+      "id": "kpi_ev_xiaomi_samr_su7_recall_20250919_4",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "U7 Standard EVs produced from February 6, 2024 to August 30, 2025 because L2 highway assi",
+      "why_it_matters": "EV metrics test whether the second curve is financially repeatable."
+    },
+    {
+      "business_node_ids": [
+        "smartphone",
+        "iot",
+        "governance_control"
+      ],
+      "evidence_id": "ev_xiaomi_ipo_prospectus_20180625",
+      "id": "kpi_ev_xiaomi_ipo_prospectus_20180625_1",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "The 2018 prospectus describes Xiaomi's mission, int",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "smartphone",
+        "iot",
+        "governance_control"
+      ],
+      "evidence_id": "ev_xiaomi_ipo_prospectus_20180625",
+      "id": "kpi_ev_xiaomi_ipo_prospectus_20180625_2",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": ", internet-company self-definition, April 2010 founding, Hong Kong offering timetable, WV",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "smartphone"
+      ],
+      "evidence_id": "ev_xiaomi_mi1_launch_transcript_20110816",
+      "id": "kpi_ev_xiaomi_mi1_launch_transcript_20110816_1",
+      "label": "Evidence metric",
+      "reliability": "medium",
+      "value_snippet": "2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "smartphone"
+      ],
+      "evidence_id": "ev_xiaomi_mi1_launch_transcript_20110816",
+      "id": "kpi_ev_xiaomi_mi1_launch_transcript_20110816_2",
+      "label": "Evidence metric",
+      "reliability": "medium",
+      "value_snippet": "小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和用户口碑。该来源是早期媒体实录，适合验证原始产品",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "iot"
+      ],
+      "evidence_id": "ev_xiaomi_jingzhun_deep_report_20181105",
+      "id": "kpi_ev_xiaomi_jingzhun_deep_report_20181105_1",
+      "label": "Evidence metric",
+      "reliability": "medium",
+      "value_snippet": "精准研究 2018 年小米深度报告采用“发展历程、业务布局、商业模式、公司本质”的结构写源头，把 MIU",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "iot"
+      ],
+      "evidence_id": "ev_xiaomi_guosheng_deep_report_20211117",
+      "id": "kpi_ev_xiaomi_guosheng_deep_report_20211117_1",
+      "label": "Evidence metric",
+      "reliability": "medium",
+      "value_snippet": "国盛证券 2021 年小米深度报告将公司源头写成阶段化演进：2010 年创立、2011 年发布小米手机、",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "iot"
+      ],
+      "evidence_id": "ev_xiaomi_guosheng_deep_report_20211117",
+      "id": "kpi_ev_xiaomi_guosheng_deep_report_20211117_2",
+      "label": "Evidence metric",
+      "reliability": "medium",
+      "value_snippet": "国盛证券 2021 年小米深度报告将公司源头写成阶段化演进：2010 年创立、2011 年发布小米手机、2013 年布局 IoT、2021 年进入智能电动",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "iot"
+      ],
+      "evidence_id": "ev_xiaomi_guosheng_deep_report_20211117",
+      "id": "kpi_ev_xiaomi_guosheng_deep_report_20211117_3",
+      "label": "Evidence metric",
+      "reliability": "medium",
+      "value_snippet": "国盛证券 2021 年小米深度报告将公司源头写成阶段化演进：2010 年创立、2011 年发布小米手机、2013 年布局 IoT、2021 年进入智能电动车，并把历史节点连",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "iot"
+      ],
+      "evidence_id": "ev_xiaomi_guosheng_deep_report_20211117",
+      "id": "kpi_ev_xiaomi_guosheng_deep_report_20211117_4",
+      "label": "Evidence metric",
+      "reliability": "medium",
+      "value_snippet": "年小米深度报告将公司源头写成阶段化演进：2010 年创立、2011 年发布小米手机、2013 年布局 IoT、2021 年进入智能电动车，并把历史节点连接到手机 x AIoT 与",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "iot",
+        "smart_ev"
+      ],
+      "evidence_id": "ev_xiaomi_yongxing_deep_report_20250228",
+      "id": "kpi_ev_xiaomi_yongxing_deep_report_20250228_1",
+      "label": "Evidence metric",
+      "reliability": "medium",
+      "value_snippet": "甬兴证券 2025 年小米深度报告以公司概览、发展历程、业务构成和人车家生态展开，把早期手机/AIoT",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    }
+  ],
+  "research_boundary": "Foundation graph is not a trading instruction. Message-flow work must test marginal change against this baseline.",
+  "risks": [
+    {
+      "evidence_id": "ev_xiaomi_idc_q1_2026_smartphone_20260512",
+      "id": "risk_ev_xiaomi_idc_q1_2026_smartphone_20260512",
+      "linked_business_node_ids": [
+        "smartphone",
+        "supply_chain"
+      ],
+      "monitoring_tests": [
+        "Next period same KPI",
+        "Management explanation",
+        "Peer trend",
+        "Pricing and inventory evidence"
+      ],
+      "severity": "high",
+      "statement": "IDC Smartphone Market Insights Q1 2026: IDC preliminary Q1 2026 data shows global smartphone shipments down 2.9% YoY to 293.8M units; Xiaomi shipped 33.8M units, held 11.5% share, ranked third, and declined 19.1% YoY amid memory constraints and portfolio actions."
+    },
+    {
+      "evidence_id": "ev_xiaomi_samr_su7_recall_20250919",
+      "id": "risk_ev_xiaomi_samr_su7_recall_20250919",
+      "linked_business_node_ids": [
+        "smart_ev"
+      ],
+      "monitoring_tests": [
+        "Recall completion",
+        "New regulator notices",
+        "Warranty and insurance costs",
+        "Customer complaints"
+      ],
+      "severity": "high",
+      "statement": "SAMR Xiaomi SU7 Recall Notice: SAMR notice states Xiaomi Auto recalled 116,887 SU7 Standard EVs produced from February 6, 2024 to August 30, 2025 because L2 highway assisted driving could be insufficient in recognizing, warning or handling extreme scenarios, increasing collision risk if drivers do not intervene promptly."
+    },
+    {
+      "evidence_id": "ev_xiaomi_ipo_prospectus_20180625",
+      "id": "risk_ev_xiaomi_ipo_prospectus_20180625",
+      "linked_business_node_ids": [
+        "smartphone",
+        "iot",
+        "governance_control"
+      ],
+      "monitoring_tests": [
+        "Primary follow-up evidence",
+        "Peer comparison",
+        "Management commentary"
+      ],
+      "severity": "medium",
+      "statement": "Xiaomi Corporation 2018 Global Offering Prospectus: The 2018 prospectus describes Xiaomi's mission, internet-company self-definition, April 2010 founding, Hong Kong offering timetable, WVR risks, and original model centered on smartphones and smart hardware connected by an IoT platform."
+    }
+  ],
+  "schema_version": "1.0",
+  "sections": [
+    {
+      "evidence_ids": [
+        "ev_xiaomi_company_profile_20260518",
+        "ev_xiaomi_management_20260518",
+        "ev_xiaomi_ipo_prospectus_20180625",
+        "ev_xiaomi_mi1_launch_transcript_20110816",
+        "ev_xiaomi_jingzhun_deep_report_20181105",
+        "ev_xiaomi_guosheng_deep_report_20211117",
+        "ev_xiaomi_yongxing_deep_report_20250228",
+        "ev_xiaomi_shenwan_deep_report_20241118"
+      ],
+      "facts": [
+        {
+          "evidence_id": "ev_xiaomi_company_profile_20260518",
+          "statement": "Xiaomi was founded in April 2010, listed on HKEX on July 9, 2018, and describes itself as a consumer electronics and smart manufacturing company centered on smartphones and smart hardware connected by an IoT platform."
+        },
+        {
+          "evidence_id": "ev_xiaomi_management_20260518",
+          "statement": "Management page identifies Lei Jun as founder, chairman and CEO; Lin Bin as co-founder and vice chairman; Lu Weibing as partner and president; and lists senior executives across smartphone, international, China region, finance, R&D and technology committee roles."
+        },
+        {
+          "evidence_id": "ev_xiaomi_ipo_prospectus_20180625",
+          "statement": "The 2018 prospectus describes Xiaomi's mission, internet-company self-definition, April 2010 founding, Hong Kong offering timetable, WVR risks, and original model centered on smartphones and smart hardware connected by an IoT platform."
+        },
+        {
+          "evidence_id": "ev_xiaomi_mi1_launch_transcript_20110816",
+          "statement": "2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和用户口碑。该来源是早期媒体实录，适合验证原始产品切口和用户楔子。"
+        }
+      ],
+      "gaps": [],
+      "id": "source_origin",
+      "inferences": [
+        "Source and origin has a local evidence baseline, but any thesis change still requires message-flow testing."
+      ],
+      "judgments": [
+        "Treat source and origin as well evidenced for baseline work."
+      ],
+      "label": "Source and origin",
+      "status": "evidenced"
+    },
+    {
+      "evidence_ids": [
+        "ev_xiaomi_ipo_prospectus_20180625",
+        "ev_xiaomi_guosheng_deep_report_20211117",
+        "ev_xiaomi_shenwan_deep_report_20241118"
+      ],
+      "facts": [
+        {
+          "evidence_id": "ev_xiaomi_ipo_prospectus_20180625",
+          "statement": "The 2018 prospectus describes Xiaomi's mission, internet-company self-definition, April 2010 founding, Hong Kong offering timetable, WVR risks, and original model centered on smartphones and smart hardware connected by an IoT platform."
+        },
+        {
+          "evidence_id": "ev_xiaomi_guosheng_deep_report_20211117",
+          "statement": "国盛证券 2021 年小米深度报告将公司源头写成阶段化演进：2010 年创立、2011 年发布小米手机、2013 年布局 IoT、2021 年进入智能电动车，并把历史节点连接到手机 x AIoT 与下一增长曲线。该来源用于参考专业报告的阶段复盘写法。"
+        },
+        {
+          "evidence_id": "ev_xiaomi_shenwan_deep_report_20241118",
+          "statement": "申万宏源小米深度报告摘要将公司历程拆成不同发展阶段，并把阶段变化与技术趋势、产品扩张、组织和商业模型升级相连。该来源是报告摘要，可靠性低于原始研报，只作为写法参考和研究线索。"
+        }
+      ],
+      "gaps": [],
+      "id": "history",
+      "inferences": [
+        "Company history has a local evidence baseline, but any thesis change still requires message-flow testing."
+      ],
+      "judgments": [
+        "Treat company history as well evidenced for baseline work."
+      ],
+      "label": "Company history",
+      "status": "evidenced"
+    },
+    {
+      "evidence_ids": [
+        "ev_xiaomi_2025_annual_report_20260428",
+        "ev_xiaomi_2025_results_announcement_20260324",
+        "ev_xiaomi_idc_q1_2026_smartphone_20260512",
+        "ev_xiaomi_counterpoint_q1_2026_smartphone_20260410"
+      ],
+      "facts": [
+        {
+          "evidence_id": "ev_xiaomi_2025_annual_report_20260428",
+          "statement": "FY2025 revenue was RMB457.3B, gross profit RMB101.8B, profit for the year RMB41.6B, adjusted net profit RMB39.2B, total assets RMB508.1B, total equity RMB266.3B, operating cash flow RMB34.1B, and cash resources RMB232.6B."
+        },
+        {
+          "evidence_id": "ev_xiaomi_2025_results_announcement_20260324",
+          "statement": "The FY2025 announcement provides segment data: Smartphone x AIoT revenue RMB351.2B, Smart EV/AI/new initiatives revenue RMB106.1B, smartphone shipments 165.2M, global MAU 754.1M, connected IoT devices 1,079.2M, and EV deliveries 411,082."
+        },
+        {
+          "evidence_id": "ev_xiaomi_idc_q1_2026_smartphone_20260512",
+          "statement": "IDC preliminary Q1 2026 data shows global smartphone shipments down 2.9% YoY to 293.8M units; Xiaomi shipped 33.8M units, held 11.5% share, ranked third, and declined 19.1% YoY amid memory constraints and portfolio actions."
+        },
+        {
+          "evidence_id": "ev_xiaomi_counterpoint_q1_2026_smartphone_20260410",
+          "statement": "Counterpoint's Q1 2026 smartphone monitor, as reported by Gadgets360, estimated global smartphone shipments fell 6% YoY and Xiaomi retained third place with about 12% share, pressured by memory shortages and entry-level exposure."
+        }
+      ],
+      "gaps": [],
+      "id": "current_business",
+      "inferences": [
+        "Current business has a local evidence baseline, but any thesis change still requires message-flow testing."
+      ],
+      "judgments": [
+        "Treat current business as well evidenced for baseline work."
+      ],
+      "label": "Current business",
+      "status": "evidenced"
+    },
+    {
+      "evidence_ids": [
+        "ev_xiaomi_company_profile_20260518",
+        "ev_xiaomi_idc_q1_2026_smartphone_20260512",
+        "ev_xiaomi_counterpoint_q1_2026_smartphone_20260410"
+      ],
+      "facts": [
+        {
+          "evidence_id": "ev_xiaomi_company_profile_20260518",
+          "statement": "Xiaomi was founded in April 2010, listed on HKEX on July 9, 2018, and describes itself as a consumer electronics and smart manufacturing company centered on smartphones and smart hardware connected by an IoT platform."
+        },
+        {
+          "evidence_id": "ev_xiaomi_idc_q1_2026_smartphone_20260512",
+          "statement": "IDC preliminary Q1 2026 data shows global smartphone shipments down 2.9% YoY to 293.8M units; Xiaomi shipped 33.8M units, held 11.5% share, ranked third, and declined 19.1% YoY amid memory constraints and portfolio actions."
+        },
+        {
+          "evidence_id": "ev_xiaomi_counterpoint_q1_2026_smartphone_20260410",
+          "statement": "Counterpoint's Q1 2026 smartphone monitor, as reported by Gadgets360, estimated global smartphone shipments fell 6% YoY and Xiaomi retained third place with about 12% share, pressured by memory shortages and entry-level exposure."
+        }
+      ],
+      "gaps": [],
+      "id": "value_chain",
+      "inferences": [
+        "Value chain position has a local evidence baseline, but any thesis change still requires message-flow testing."
+      ],
+      "judgments": [
+        "Treat value chain position as well evidenced for baseline work."
+      ],
+      "label": "Value chain position",
+      "status": "evidenced"
+    },
+    {
+      "evidence_ids": [
+        "ev_xiaomi_company_profile_20260518",
+        "ev_xiaomi_2025_results_announcement_20260324",
+        "ev_xiaomi_management_20260518",
+        "ev_xiaomi_board_wvr_20260428",
+        "ev_xiaomi_idc_q1_2026_smartphone_20260512",
+        "ev_xiaomi_counterpoint_q1_2026_smartphone_20260410",
+        "ev_xiaomi_cnevpost_nev_share_20260112",
+        "ev_xiaomi_ipo_prospectus_20180625"
+      ],
+      "facts": [
+        {
+          "evidence_id": "ev_xiaomi_company_profile_20260518",
+          "statement": "Xiaomi was founded in April 2010, listed on HKEX on July 9, 2018, and describes itself as a consumer electronics and smart manufacturing company centered on smartphones and smart hardware connected by an IoT platform."
+        },
+        {
+          "evidence_id": "ev_xiaomi_2025_results_announcement_20260324",
+          "statement": "The FY2025 announcement provides segment data: Smartphone x AIoT revenue RMB351.2B, Smart EV/AI/new initiatives revenue RMB106.1B, smartphone shipments 165.2M, global MAU 754.1M, connected IoT devices 1,079.2M, and EV deliveries 411,082."
+        },
+        {
+          "evidence_id": "ev_xiaomi_management_20260518",
+          "statement": "Management page identifies Lei Jun as founder, chairman and CEO; Lin Bin as co-founder and vice chairman; Lu Weibing as partner and president; and lists senior executives across smartphone, international, China region, finance, R&D and technology committee roles."
+        },
+        {
+          "evidence_id": "ev_xiaomi_board_wvr_20260428",
+          "statement": "The annual report states Xiaomi is controlled through weighted voting rights: each Class A share has 10 votes and each Class B share has one vote; Lei Jun held about 61.0% of voting rights and Lin Bin about 6.7% for non-reserved matters as of December 31, 2025."
+        }
+      ],
+      "gaps": [],
+      "id": "competition",
+      "inferences": [
+        "Competitive landscape has a local evidence baseline, but any thesis change still requires message-flow testing."
+      ],
+      "judgments": [
+        "Treat competitive landscape as well evidenced for baseline work."
+      ],
+      "label": "Competitive landscape",
+      "status": "evidenced"
+    },
+    {
+      "evidence_ids": [
+        "ev_xiaomi_2025_annual_report_20260428",
+        "ev_xiaomi_2025_results_announcement_20260324",
+        "ev_xiaomi_management_20260518",
+        "ev_xiaomi_idc_q1_2026_smartphone_20260512",
+        "ev_xiaomi_counterpoint_q1_2026_smartphone_20260410",
+        "ev_xiaomi_cnevpost_nev_share_20260112",
+        "ev_xiaomi_samr_su7_recall_20250919",
+        "ev_xiaomi_guosheng_deep_report_20211117",
+        "ev_xiaomi_yongxing_deep_report_20250228",
+        "ev_xiaomi_shenwan_deep_report_20241118"
+      ],
+      "facts": [
+        {
+          "evidence_id": "ev_xiaomi_2025_annual_report_20260428",
+          "statement": "FY2025 revenue was RMB457.3B, gross profit RMB101.8B, profit for the year RMB41.6B, adjusted net profit RMB39.2B, total assets RMB508.1B, total equity RMB266.3B, operating cash flow RMB34.1B, and cash resources RMB232.6B."
+        },
+        {
+          "evidence_id": "ev_xiaomi_2025_results_announcement_20260324",
+          "statement": "The FY2025 announcement provides segment data: Smartphone x AIoT revenue RMB351.2B, Smart EV/AI/new initiatives revenue RMB106.1B, smartphone shipments 165.2M, global MAU 754.1M, connected IoT devices 1,079.2M, and EV deliveries 411,082."
+        },
+        {
+          "evidence_id": "ev_xiaomi_management_20260518",
+          "statement": "Management page identifies Lei Jun as founder, chairman and CEO; Lin Bin as co-founder and vice chairman; Lu Weibing as partner and president; and lists senior executives across smartphone, international, China region, finance, R&D and technology committee roles."
+        },
+        {
+          "evidence_id": "ev_xiaomi_idc_q1_2026_smartphone_20260512",
+          "statement": "IDC preliminary Q1 2026 data shows global smartphone shipments down 2.9% YoY to 293.8M units; Xiaomi shipped 33.8M units, held 11.5% share, ranked third, and declined 19.1% YoY amid memory constraints and portfolio actions."
+        }
+      ],
+      "gaps": [],
+      "id": "strategy",
+      "inferences": [
+        "Strategy analysis has a local evidence baseline, but any thesis change still requires message-flow testing."
+      ],
+      "judgments": [
+        "Treat strategy analysis as well evidenced for baseline work."
+      ],
+      "label": "Strategy analysis",
+      "status": "evidenced"
+    },
+    {
+      "evidence_ids": [
+        "ev_xiaomi_2025_annual_report_20260428",
+        "ev_xiaomi_management_20260518",
+        "ev_xiaomi_board_wvr_20260428",
+        "ev_xiaomi_ipo_prospectus_20180625"
+      ],
+      "facts": [
+        {
+          "evidence_id": "ev_xiaomi_2025_annual_report_20260428",
+          "statement": "FY2025 revenue was RMB457.3B, gross profit RMB101.8B, profit for the year RMB41.6B, adjusted net profit RMB39.2B, total assets RMB508.1B, total equity RMB266.3B, operating cash flow RMB34.1B, and cash resources RMB232.6B."
+        },
+        {
+          "evidence_id": "ev_xiaomi_management_20260518",
+          "statement": "Management page identifies Lei Jun as founder, chairman and CEO; Lin Bin as co-founder and vice chairman; Lu Weibing as partner and president; and lists senior executives across smartphone, international, China region, finance, R&D and technology committee roles."
+        },
+        {
+          "evidence_id": "ev_xiaomi_board_wvr_20260428",
+          "statement": "The annual report states Xiaomi is controlled through weighted voting rights: each Class A share has 10 votes and each Class B share has one vote; Lei Jun held about 61.0% of voting rights and Lin Bin about 6.7% for non-reserved matters as of December 31, 2025."
+        },
+        {
+          "evidence_id": "ev_xiaomi_ipo_prospectus_20180625",
+          "statement": "The 2018 prospectus describes Xiaomi's mission, internet-company self-definition, April 2010 founding, Hong Kong offering timetable, WVR risks, and original model centered on smartphones and smart hardware connected by an IoT platform."
+        }
+      ],
+      "gaps": [],
+      "id": "governance",
+      "inferences": [
+        "Organization, culture, and governance has a local evidence baseline, but any thesis change still requires message-flow testing."
+      ],
+      "judgments": [
+        "Treat organization, culture, and governance as well evidenced for baseline work."
+      ],
+      "label": "Organization, culture, and governance",
+      "status": "evidenced"
+    },
+    {
+      "evidence_ids": [
+        "ev_xiaomi_idc_q1_2026_smartphone_20260512",
+        "ev_xiaomi_samr_su7_recall_20250919",
+        "ev_xiaomi_ipo_prospectus_20180625"
+      ],
+      "facts": [
+        {
+          "evidence_id": "ev_xiaomi_idc_q1_2026_smartphone_20260512",
+          "statement": "IDC preliminary Q1 2026 data shows global smartphone shipments down 2.9% YoY to 293.8M units; Xiaomi shipped 33.8M units, held 11.5% share, ranked third, and declined 19.1% YoY amid memory constraints and portfolio actions."
+        },
+        {
+          "evidence_id": "ev_xiaomi_samr_su7_recall_20250919",
+          "statement": "SAMR notice states Xiaomi Auto recalled 116,887 SU7 Standard EVs produced from February 6, 2024 to August 30, 2025 because L2 highway assisted driving could be insufficient in recognizing, warning or handling extreme scenarios, increasing collision risk if drivers do not intervene promptly."
+        },
+        {
+          "evidence_id": "ev_xiaomi_ipo_prospectus_20180625",
+          "statement": "The 2018 prospectus describes Xiaomi's mission, internet-company self-definition, April 2010 founding, Hong Kong offering timetable, WVR risks, and original model centered on smartphones and smart hardware connected by an IoT platform."
+        }
+      ],
+      "gaps": [],
+      "id": "risk_sweep",
+      "inferences": [
+        "Risk sweep has a local evidence baseline, but any thesis change still requires message-flow testing."
+      ],
+      "judgments": [
+        "Treat risk sweep as well evidenced for baseline work."
+      ],
+      "label": "Risk sweep",
+      "status": "evidenced"
+    }
+  ],
+  "ticker": "XIAOMI"
+}

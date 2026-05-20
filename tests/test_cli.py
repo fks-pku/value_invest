@@ -96,6 +96,40 @@ class CliTests(unittest.TestCase):
             self.assertIn("Research graph built for AAPL", out.getvalue())
             self.assertIn("forward_report.html", out.getvalue())
 
+    def test_build_research_system_command_prints_dashboard_path(self):
+        with project_tmp_dir() as tmp:
+            stock_dir = Path(tmp) / "stocks" / "AAPL"
+            stock_dir.mkdir(parents=True)
+            (stock_dir / "logs").mkdir(parents=True)
+            (stock_dir / "evidence.jsonl").write_text(
+                json.dumps({
+                    "id": "ev_aapl_sec_revenue_20260328",
+                    "research_object": "stocks/AAPL",
+                    "source_type": "sec_fact",
+                    "source_name": "SEC XBRL Revenue",
+                    "url": "local://stocks/AAPL/data/sec_facts.json",
+                    "published_at": "2026-05-01T00:00:00Z",
+                    "fetched_at": "2026-05-08T17:46:28+00:00",
+                    "hash": "sha256:test",
+                    "tickers": ["AAPL"],
+                    "sectors": [],
+                    "themes": [],
+                    "summary": "Revenue was 111184000000 USD for period ending 2026-03-28 in 10-Q.",
+                    "reliability": "primary",
+                    "materiality": "medium",
+                    "used_in": [],
+                }) + "\n",
+                encoding="utf-8",
+            )
+
+            out = StringIO()
+            with redirect_stdout(out):
+                exit_code = main(["--root", str(tmp), "build-research-system", "APPL"])
+
+            self.assertEqual(exit_code, 0)
+            self.assertIn("Research system built for AAPL", out.getvalue())
+            self.assertIn("research_dashboard.html", out.getvalue())
+
 
 if __name__ == "__main__":
     unittest.main()

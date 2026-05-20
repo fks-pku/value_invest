@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>XIAOMI 源头溯源</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #62707c;
+      --paper: #f6f3ea;
+      --panel: #fffdfa;
+      --line: #d9ded8;
+      --green: #1f7a5c;
+      --amber: #b66a18;
+      --red: #b2473e;
+      --blue: #2d5d8f;
+      --charcoal: #121a22;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(18,26,34,.045) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(18,26,34,.035) 1px, transparent 1px),
+        var(--paper);
+      background-size: 36px 36px;
+      font-family: "Avenir Next", "Gill Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.62;
+    }
+    header {
+      padding: 34px clamp(18px, 5vw, 64px) 26px;
+      color: #fff;
+      background: var(--charcoal);
+      border-bottom: 7px solid var(--green);
+    }
+    .eyebrow { margin: 0 0 8px; color: #a7c8bd; font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(34px, 5.4vw, 62px); line-height: 1; letter-spacing: 0; }
+    h2 { margin: 0 0 12px; font-size: clamp(22px, 3vw, 34px); letter-spacing: 0; }
+    h3 { margin: 0 0 8px; font-size: 18px; }
+    p { margin: 0 0 10px; }
+    a { color: var(--blue); }
+    .subtitle { max-width: 980px; margin-top: 14px; color: #d8e1dd; font-size: 17px; }
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 10px clamp(14px, 4vw, 54px);
+      background: rgba(246,243,234,.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+    .nav a {
+      flex: 0 0 auto;
+      padding: 7px 10px;
+      color: var(--ink);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main { width: min(1160px, calc(100% - 28px)); margin: 22px auto 58px; }
+    section { margin: 16px 0; padding: clamp(18px, 3vw, 30px); background: rgba(255,253,250,.95); border: 1px solid var(--line); }
+    .summary-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 18px; }
+    .metric { padding: 14px; background: #fff; border: 1px solid var(--line); min-width: 0; }
+    .metric span { display: block; color: var(--muted); font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+    .metric strong { display: block; margin-top: 6px; font-size: clamp(21px, 2.4vw, 32px); line-height: 1.08; }
+    .lead-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: 14px; align-items: start; }
+    .question-list { margin: 0; padding-left: 20px; }
+    .question-list li { margin: 7px 0; }
+    .evidence-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .evidence-card { padding: 16px; background: #fff; border: 1px solid var(--line); border-left: 5px solid var(--green); min-width: 0; }
+    .evidence-card p { color: var(--muted); }
+    .field { margin-top: 12px; }
+    .field b { display: block; margin-bottom: 4px; color: var(--muted); font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+    .note { color: var(--muted); font-size: 13px; }
+    .chip { display: inline-flex; max-width: 100%; margin: 2px 4px 2px 0; padding: 2px 7px; border-radius: 999px; background: #edf3f1; color: #2a5146; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; overflow-wrap: anywhere; }
+    .status-evidenced { color: var(--green); font-weight: 800; }
+    .status-partial { color: var(--amber); font-weight: 800; }
+    .status-missing { color: var(--red); font-weight: 800; }
+    table { width: 100%; border-collapse: collapse; background: #fff; font-size: 14px; }
+    th, td { padding: 10px; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; }
+    th { color: var(--muted); font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; background: #eef2ee; }
+    .thesis-card { padding: 18px; background: #111820; color: #fff; border-left: 7px solid var(--green); }
+    .thesis-card p { color: #d8e1dd; }
+    .reference-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .reference-card { padding: 15px; background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--blue); }
+    .reference-card p { color: var(--muted); }
+    .stage { color: var(--green); font-weight: 800; white-space: nowrap; }
+    ul { margin: 8px 0 0; padding-left: 20px; }
+    li { margin: 5px 0; }
+    .rule-box { padding: 16px; background: #f0f4f1; border-left: 5px solid var(--blue); }
+    @media (max-width: 880px) {
+      .summary-strip, .lead-grid, .evidence-grid, .reference-grid { grid-template-columns: 1fr; }
+      table { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">八步框架 / 第一步</p>
+    <h1>XIAOMI 源头溯源</h1>
+    <p class="subtitle">这一页只解决“公司从哪里来、为什么能起来、哪些基因还能解释今天”这组问题。它不是公司历史流水账，也不是创始人故事；它是后续生意、战略、竞争和消息流分析的边界条件。</p>
+    <div class="summary-strip">
+      <div class="metric"><span>本节状态</span><strong class="status-evidenced">证据充分</strong></div>
+      <div class="metric"><span>证据数量</span><strong>8</strong></div>
+      <div class="metric"><span>输出要求</span><strong>事实 / 推论 / 判断 / 缺口</strong></div>
+      <div class="metric"><span>生成时间</span><strong>2026-05-20</strong></div>
+    </div>
+  </header>
+  <nav class="nav">
+    <a href="../research_dashboard.html#foundation">返回总览</a>
+    <a href="#calibration">专业写法</a>
+    <a href="#thesis">源头结论</a>
+    <a href="#phases">阶段复盘</a>
+    <a href="#mechanism">机制拆解</a>
+    <a href="#questions">要回答什么</a>
+    <a href="#granularity">回答粒度</a>
+    <a href="#evidence">当前证据</a>
+    <a href="#judgment">当前判断</a>
+    <a href="#gaps">缺口</a>
+  </nav>
+  <main>
+    <section id="calibration">
+      <h2>专业报告写法校准</h2>
+      <p>我重新按公开深度报告的写法整理本页：源头不是“公司简介”，而是要解释一个投资命题的起点。专业报告通常先给阶段化历史，再抽出产品楔子、用户/渠道机制、商业模型闭环，最后说明这些早期基因怎样影响今天。</p>
+      <div class="reference-grid"><article class="reference-card"><h3>精准研究小米 2018 深度报告</h3><p>精准研究 2018 年小米深度报告采用“发展历程、业务布局、商业模式、公司本质”的结构写源头，把 MIUI 用户参与、手机硬件放量、IoT 生态和互联网变现放在同一商业模型里分析。该来源用于学习专业报告写法和补充第三方研究视角。</p><p><span class="chip">ev_xiaomi_jingzhun_deep_report_20181105</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP201903041302343751_1.pdf">打开来源</a></p></article>
+<article class="reference-card"><h3>国盛证券小米 2021 深度报告</h3><p>国盛证券 2021 年小米深度报告将公司源头写成阶段化演进：2010 年创立、2011 年发布小米手机、2013 年布局 IoT、2021 年进入智能电动车，并把历史节点连接到手机 x AIoT 与下一增长曲线。该来源用于参考专业报告的阶段复盘写法。</p><p><span class="chip">ev_xiaomi_guosheng_deep_report_20211117</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP202111181530843075_1.pdf">打开来源</a></p></article>
+<article class="reference-card"><h3>甬兴证券小米 2025 深度报告</h3><p>甬兴证券 2025 年小米深度报告以公司概览、发展历程、业务构成和人车家生态展开，把早期手机/AIoT 基因与汽车、IoT、互联网服务的当前结构相连接。该来源用于校准“源头必须解释今天业务结构”的写法。</p><p><span class="chip">ev_xiaomi_yongxing_deep_report_20250228</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP202502281643062470_1.pdf">打开来源</a></p></article>
+<article class="reference-card"><h3>申万宏源小米 2024 深度报告摘要</h3><p>申万宏源小米深度报告摘要将公司历程拆成不同发展阶段，并把阶段变化与技术趋势、产品扩张、组织和商业模型升级相连。该来源是报告摘要，可靠性低于原始研报，只作为写法参考和研究线索。</p><p><span class="chip">ev_xiaomi_shenwan_deep_report_20241118</span> <a href="https://www.baogaobox.com/insights/241123000003814.html">打开来源</a></p></article></div>
+    </section>
+
+    <section id="thesis">
+      <h2>小米源头结论</h2>
+      <div class="thesis-card"><h3>源头不是“硬件公司成立”，而是“用户参与的软件入口 + 高效率硬件放大 + 生态服务变现”的组合。</h3><p>小米最早的有效切口是 MIUI 和发烧友用户参与，随后用高性价比手机把用户规模做大，再把手机作为智能硬件、IoT 和互联网服务的入口。这个源头解释了小米长期的优势：产品定义快、渠道效率高、用户反馈强、生态扩展能力强；也解释了它的边界：硬件利润率天然受价格承诺约束，业务越往汽车和智能制造延伸，质量、安全、售后和资本开支就越不能再按轻互联网模型外推。</p><p><span class="chip">ev_xiaomi_ipo_prospectus_20180625</span> <span class="chip">ev_xiaomi_mi1_launch_transcript_20110816</span> <span class="chip">ev_xiaomi_jingzhun_deep_report_20181105</span> <span class="chip">ev_xiaomi_2025_results_announcement_20260324</span> <span class="chip">ev_xiaomi_samr_su7_recall_20250919</span></p></div>
+    </section>
+
+    <section id="phases">
+      <h2>阶段复盘：把历史写成因果链</h2>
+      <table>
+        <thead><tr><th>阶段</th><th>发生了什么</th><th>投研含义</th><th>证据</th></tr></thead>
+        <tbody><tr><td><span class="stage">2010-2011</span></td><td>从 MIUI 和发烧友用户切入，再发布小米手机。</td><td>第一步不是泛硬件铺货，而是先用软件迭代和用户参与找到高信任用户，再用手机硬件放大入口。</td><td><span class="chip">ev_xiaomi_mi1_launch_transcript_20110816</span> <span class="chip">ev_xiaomi_ipo_prospectus_20180625</span></td></tr>
+<tr><td><span class="stage">2012-2018</span></td><td>手机规模化后，扩展到智能硬件、IoT 生态和互联网服务，并在 2018 年港股上市。</td><td>源头飞轮开始成形：手机获客，硬件扩品类，IoT 增加触点，互联网服务尝试把用户规模变成利润池。</td><td><span class="chip">ev_xiaomi_jingzhun_deep_report_20181105</span> <span class="chip">ev_xiaomi_ipo_prospectus_20180625</span></td></tr>
+<tr><td><span class="stage">2019-2023</span></td><td>手机 x AIoT 和高端化成为核心命题，渠道、供应链、品牌和组织能力被持续补课。</td><td>这阶段决定早期“性价比效率”能否升级为中高端品牌力和全球化经营能力。</td><td><span class="chip">ev_xiaomi_guosheng_deep_report_20211117</span> <span class="chip">ev_xiaomi_yongxing_deep_report_20250228</span></td></tr>
+<tr><td><span class="stage">2024-2026</span></td><td>人车家生态和智能 EV 成为财务级增长曲线，同时引入制造、安全、质保和售后责任。</td><td>早期互联网/手机能力能迁移到 EV 的用户体验和生态入口，但不能自动迁移到汽车安全、产能、召回和生命周期成本。</td><td><span class="chip">ev_xiaomi_2025_results_announcement_20260324</span> <span class="chip">ev_xiaomi_samr_su7_recall_20250919</span> <span class="chip">ev_xiaomi_yongxing_deep_report_20250228</span></td></tr></tbody>
+      </table>
+    </section>
+
+    <section id="mechanism">
+      <h2>机制拆解：源头如何影响今天</h2>
+      <table>
+        <thead><tr><th>问题</th><th>当前回答</th><th>为什么重要</th><th>证据 / 下一步</th></tr></thead>
+        <tbody><tr><td><strong>原始痛点是什么？</strong></td><td>智能手机普及早期，用户需要更好用、更快迭代且价格可承受的软硬件体验。</td><td>这决定小米不是从单一硬件利润池出发，而是从用户入口和效率差出发。</td><td><span class="chip">ev_xiaomi_mi1_launch_transcript_20110816</span> <span class="chip">ev_xiaomi_jingzhun_deep_report_20181105</span></td></tr>
+<tr><td><strong>第一产品楔子是什么？</strong></td><td>先用 MIUI 和发烧友共创建立产品反馈闭环，再用小米手机放大用户规模。</td><td>源头能力是产品迭代和用户组织，不只是低价硬件。</td><td><span class="chip">ev_xiaomi_mi1_launch_transcript_20110816</span> <span class="chip">ev_xiaomi_management_20260518</span></td></tr>
+<tr><td><strong>原始飞轮如何运转？</strong></td><td>手机入口带来用户规模，智能硬件和 IoT 增加触点，互联网服务承担高毛利变现层。</td><td>后续所有业务分析都要拆开验证：用户规模、硬件毛利、服务变现和生态留存是否互相加强。</td><td><span class="chip">ev_xiaomi_ipo_prospectus_20180625</span> <span class="chip">ev_xiaomi_2025_results_announcement_20260324</span></td></tr>
+<tr><td><strong>哪些基因可以迁移？</strong></td><td>用户体验、产品定义、供应链组织和生态连接能力可以迁移到人车家场景。</td><td>这解释 EV/AI 为什么能成为第二曲线的研究问题，但不能直接证明利润可持续。</td><td><span class="chip">ev_xiaomi_yongxing_deep_report_20250228</span> <span class="chip">ev_xiaomi_2025_results_announcement_20260324</span></td></tr>
+<tr><td><strong>哪些基因不能直接迁移？</strong></td><td>汽车业务需要安全冗余、监管响应、售后体系、召回成本和产能质量管理。</td><td>这是源头页必须留下的反证边界：互联网效率不能替代汽车工业责任。</td><td><span class="chip">ev_xiaomi_samr_su7_recall_20250919</span></td></tr></tbody>
+      </table>
+    </section>
+
+    <section id="questions">
+      <div class="lead-grid">
+        <div>
+          <h2>这一页要回答什么</h2>
+          <p>源头溯源的目的，是把公司最早的“问题-能力-模型”找清楚。后续任何关于护城河、管理层、第二曲线或估值弹性的讨论，都应先回到这里校验。</p>
+        </div>
+        <ol class="question-list"><li>公司为什么会在那个时间点出现？当时的技术、渠道、用户和成本条件是什么？</li><li>公司最早解决的原始痛点是什么？第一批用户为什么愿意迁移？</li><li>最初的产品切口、渠道切口和价格切口分别是什么？</li><li>创始团队的能力结构为什么适合这个问题？哪些能力是后来可迁移的？</li><li>早期商业模型如何形成飞轮：获客、复购、生态扩展、利润池各自在哪里？</li><li>这些早期基因今天仍是优势，还是已经变成组织、治理或业务边界约束？</li></ol>
+      </div>
+    </section>
+
+    <section id="granularity">
+      <h2>回答到什么粒度</h2>
+      <table>
+        <thead><tr><th>层级</th><th>需要回答到的深度</th><th>最低证据要求</th><th>什么不够</th></tr></thead>
+        <tbody><tr><td><strong>事实层</strong></td><td>精确到日期、主体、产品、渠道、融资/上市文件和一手出处。</td><td>创立时间、创始人/联合创始人、早期产品、公司自我定义、招股书/年报/IR 页面。</td><td>只写“公司成立于某年”不够，必须能回到证据 ID。</td></tr><tr><td><strong>机制层</strong></td><td>把事实连成因果链，而不是堆公司历史。</td><td>原始痛点 -&gt; 产品切口 -&gt; 获客方式 -&gt; 成本/价格优势 -&gt; 可扩展利润池。</td><td>只写使命、口号、创始人履历不够，要说明为什么这套机制成立。</td></tr><tr><td><strong>迁移层</strong></td><td>判断早期能力能否迁移到今天的新业务。</td><td>手机入口、IoT 连接、互联网服务、智能制造、EV 安全责任之间的能力迁移和断点。</td><td>不能直接把早期成功外推到 EV、AI 或其他新业务。</td></tr><tr><td><strong>边界层</strong></td><td>明确哪些问题还不能回答，以及后续消息流要验证什么。</td><td>缺失的一手访谈、早期用户数据、早期毛利/现金流、组织激励、质量事件和售后成本。</td><td>缺口要进入问题树，而不是在报告里用模糊措辞掩盖。</td></tr></tbody>
+      </table>
+    </section>
+
+    <section id="evidence">
+      <h2>小米当前证据</h2>
+      <div class="evidence-grid"><article class="evidence-card"><h3>创立时点与公司定位</h3><p>确认公司从哪里来、最初把自己定义成什么、上市文件如何描述原始业务模型。</p><div><span class="chip">ev_xiaomi_company_profile_20260518</span> <span class="chip">ev_xiaomi_management_20260518</span> <span class="chip">ev_xiaomi_ipo_prospectus_20180625</span> <span class="chip">ev_xiaomi_mi1_launch_transcript_20110816</span></div><ul><li>小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司。</li><li>管理层页面显示，雷军为创始人、董事长兼 CEO；林斌为联合创始人、副董事长；卢伟冰为合伙人兼总裁；高管团队覆盖手机、国际业务、中国区、财务、研发和技术委员会等职能。</li><li>2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型。</li></ul></article>
+<article class="evidence-card"><h3>第一产品楔子</h3><p>专业报告不会只写创始人履历，而会追问最早凭什么获得用户：产品体验、价格、渠道、社区还是供给变化。</p><div><span class="chip">ev_xiaomi_mi1_launch_transcript_20110816</span> <span class="chip">ev_xiaomi_jingzhun_deep_report_20181105</span></div><ul><li>2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和用户口碑。该来源是早期媒体实录，适合验证原始产品切口和用户楔子。</li><li>精准研究 2018 年小米深度报告采用“发展历程、业务布局、商业模式、公司本质”的结构写源头，把 MIUI 用户参与、手机硬件放量、IoT 生态和互联网变现放在同一商业模型里分析。该来源用于学习专业报告写法和补充第三方研究视角。</li></ul></article>
+<article class="evidence-card"><h3>原始模型与飞轮</h3><p>把早期手机、智能硬件、IoT 平台和互联网服务放在同一机制里看，判断其是否形成可复用增长逻辑。</p><div><span class="chip">ev_xiaomi_company_profile_20260518</span> <span class="chip">ev_xiaomi_ipo_prospectus_20180625</span> <span class="chip">ev_xiaomi_jingzhun_deep_report_20181105</span> <span class="chip">ev_xiaomi_yongxing_deep_report_20250228</span></div><ul><li>小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司。</li><li>2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型。</li><li>精准研究 2018 年小米深度报告采用“发展历程、业务布局、商业模式、公司本质”的结构写源头，把 MIUI 用户参与、手机硬件放量、IoT 生态和互联网变现放在同一商业模型里分析。该来源用于学习专业报告写法和补充第三方研究视角。</li></ul></article>
+<article class="evidence-card"><h3>今日延伸与边界</h3><p>检验早期效率、用户和生态基因延伸到智能制造、EV 和 AI 时，是否遇到安全、资本开支、质量控制和售后责任的新边界。</p><div><span class="chip">ev_xiaomi_company_profile_20260518</span> <span class="chip">ev_xiaomi_2025_results_announcement_20260324</span> <span class="chip">ev_xiaomi_samr_su7_recall_20250919</span> <span class="chip">ev_xiaomi_yongxing_deep_report_20250228</span></div><ul><li>小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司。</li><li>FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连接 IoT 设备 10.792 亿台，EV 交付 411,082 辆。</li><li>国家市场监督管理总局公告显示，小米汽车召回 116,887 辆 2024 年 2 月 6 日至 2025 年 8 月 30 日生产的 SU7 标准版，原因是 L2 高速领航辅助驾驶在极端场景识别、预警或处置上可能不足，如驾驶员未及时干预会增加碰撞风险。</li></ul></article></div>
+    </section>
+
+    <section id="judgment">
+      <h2>当前判断</h2>
+      <div class="lead-grid">
+        <div>
+          <div class="field"><b>事实</b><ul><li>小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司。 [ev_xiaomi_company_profile_20260518]</li><li>管理层页面显示，雷军为创始人、董事长兼 CEO；林斌为联合创始人、副董事长；卢伟冰为合伙人兼总裁；高管团队覆盖手机、国际业务、中国区、财务、研发和技术委员会等职能。 [ev_xiaomi_management_20260518]</li><li>2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型。 [ev_xiaomi_ipo_prospectus_20180625]</li><li>2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和用户口碑。该来源是早期媒体实录，适合验证原始产品切口和用户楔子。 [ev_xiaomi_mi1_launch_transcript_20110816]</li></ul></div>
+          <div class="field"><b>推论</b><ul><li>源头溯源已有本地证据基线，但任何结论变化仍需经过消息流检验。</li></ul></div>
+        </div>
+        <div>
+          <div class="field"><b>判断</b><ul><li>源头溯源可作为证据较充分的基线使用。</li></ul></div>
+          <div class="field"><b>缺口</b><ul><li>补充早期 MIUI / 社区 / 首批用户资料，验证最初获客不是事后叙事。</li><li>补充早期硬件毛利、互联网服务变现和现金转换资料，判断原始模型的经济性。</li><li>把早期互联网效率基因与今天 EV 的制造、安全、售后责任分开验证。</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gaps">
+      <h2>下一步下钻</h2>
+      <div class="rule-box">
+        <p><strong>研究规则：</strong>源头溯源页不直接输出投资结论。它只定义基础画像的第一层边界：哪些事实已被证据支持，哪些推论仍需验证，哪些早期基因可以迁移，哪些不能迁移。后续消息流必须挂到具体问题、假设和业务节点上。</p>
+        <p class="note">如果只有创立日期、公司口号或创始人履历，本节仍应维持“部分证据”或“缺证据”状态。</p>
+      </div>
+    </section>
+
+    <section id="records">
+      <h2>证据索引</h2>
+      <table>
+        <thead><tr><th>证据 ID</th><th>来源</th><th>日期</th><th>可靠性 / 重要性</th><th>摘要</th></tr></thead>
+        <tbody><tr><td><span class="chip">ev_xiaomi_company_profile_20260518</span></td><td><a href="https://ir.mi.com/corporate-information/company-profile">小米 IR 公司简介</a></td><td>抓取 2026-05-18</td><td>一手 / 高</td><td>小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司。</td></tr>
+<tr><td><span class="chip">ev_xiaomi_management_20260518</span></td><td><a href="https://ir.mi.com/corporate-information/management">小米 IR 管理层</a></td><td>抓取 2026-05-18</td><td>一手 / 中</td><td>管理层页面显示，雷军为创始人、董事长兼 CEO；林斌为联合创始人、副董事长；卢伟冰为合伙人兼总裁；高管团队覆盖手机、国际业务、中国区、财务、研发和技术委员会等职能。</td></tr>
+<tr><td><span class="chip">ev_xiaomi_ipo_prospectus_20180625</span></td><td><a href="https://cnbj1.fds.api.xiaomi.com/company/financial/en-US/IPO.pdf">小米集团 2018 全球发售招股书</a></td><td>2018-06-25</td><td>一手 / 中</td><td>2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型。</td></tr>
+<tr><td><span class="chip">ev_xiaomi_mi1_launch_transcript_20110816</span></td><td><a href="https://tech.sina.com.cn/t/2011-08-16/14305927089.shtml">新浪科技小米手机发布会实录</a></td><td>2011-08-16</td><td>中 / 中</td><td>2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和用户口碑。该来源是早期媒体实录，适合验证原始产品切口和用户楔子。</td></tr>
+<tr><td><span class="chip">ev_xiaomi_jingzhun_deep_report_20181105</span></td><td><a href="https://pdf.dfcfw.com/pdf/H3_AP201903041302343751_1.pdf">精准研究小米 2018 深度报告</a></td><td>2018-11-05</td><td>中 / 中</td><td>精准研究 2018 年小米深度报告采用“发展历程、业务布局、商业模式、公司本质”的结构写源头，把 MIUI 用户参与、手机硬件放量、IoT 生态和互联网变现放在同一商业模型里分析。该来源用于学习专业报告写法和补充第三方研究视角。</td></tr>
+<tr><td><span class="chip">ev_xiaomi_guosheng_deep_report_20211117</span></td><td><a href="https://pdf.dfcfw.com/pdf/H3_AP202111181530843075_1.pdf">国盛证券小米 2021 深度报告</a></td><td>2021-11-17</td><td>中 / 中</td><td>国盛证券 2021 年小米深度报告将公司源头写成阶段化演进：2010 年创立、2011 年发布小米手机、2013 年布局 IoT、2021 年进入智能电动车，并把历史节点连接到手机 x AIoT 与下一增长曲线。该来源用于参考专业报告的阶段复盘写法。</td></tr>
+<tr><td><span class="chip">ev_xiaomi_yongxing_deep_report_20250228</span></td><td><a href="https://pdf.dfcfw.com/pdf/H3_AP202502281643062470_1.pdf">甬兴证券小米 2025 深度报告</a></td><td>2025-02-28</td><td>中 / 中</td><td>甬兴证券 2025 年小米深度报告以公司概览、发展历程、业务构成和人车家生态展开，把早期手机/AIoT 基因与汽车、IoT、互联网服务的当前结构相连接。该来源用于校准“源头必须解释今天业务结构”的写法。</td></tr>
+<tr><td><span class="chip">ev_xiaomi_shenwan_deep_report_20241118</span></td><td><a href="https://www.baogaobox.com/insights/241123000003814.html">申万宏源小米 2024 深度报告摘要</a></td><td>2024-11-18</td><td>低 / 中</td><td>申万宏源小米深度报告摘要将公司历程拆成不同发展阶段，并把阶段变化与技术趋势、产品扩张、组织和商业模型升级相连。该来源是报告摘要，可靠性低于原始研报，只作为写法参考和研究线索。</td></tr></tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>

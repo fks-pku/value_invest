@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AAPL 四层投研工作台</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #66717d;
+      --line: #d8ddd8;
+      --paper: #f7f5ee;
+      --panel: #ffffff;
+      --green: #1f7a5c;
+      --amber: #b66a18;
+      --red: #b2473e;
+      --blue: #2d5d8f;
+      --charcoal: #111820;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(23,32,42,.05) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(23,32,42,.04) 1px, transparent 1px),
+        var(--paper);
+      background-size: 38px 38px;
+      font-family: "Avenir Next", "Gill Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.55;
+    }
+    header {
+      padding: 42px clamp(18px, 5vw, 62px) 28px;
+      color: #fff;
+      background: var(--charcoal);
+      border-bottom: 7px solid var(--green);
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 5.8vw, 68px);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+    h2 { margin: 0 0 14px; font-size: clamp(22px, 3vw, 34px); letter-spacing: 0; }
+    h3 { margin: 0 0 8px; font-size: 16px; }
+    .subtitle { max-width: 980px; color: #d6dedc; font-size: 18px; }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 10px clamp(14px, 4vw, 54px);
+      background: rgba(247,245,238,.95);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+    nav a {
+      flex: 0 0 auto;
+      padding: 7px 10px;
+      color: var(--ink);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      font-size: 13px;
+    }
+    main { width: min(1200px, calc(100% - 28px)); margin: 22px auto 58px; }
+    section { margin: 16px 0; padding: clamp(18px, 3vw, 30px); background: rgba(255,255,255,.93); border: 1px solid var(--line); }
+    .layer-label { color: var(--green); font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+    .summary-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+    .summary-card { padding: 16px; border: 1px solid var(--line); background: var(--panel); min-width: 0; }
+    .summary-card span { display: block; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+    .summary-card strong { display: block; margin-top: 7px; font-size: clamp(22px, 2.6vw, 34px); line-height: 1.05; }
+    .summary-card p { margin: 9px 0 0; color: var(--muted); font-size: 13px; }
+    .committee {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .committee-panel { padding: 18px; background: #fff; border: 1px solid var(--line); }
+    .committee-panel strong { color: var(--ink); }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .card { padding: 14px; border: 1px solid var(--line); background: #fff; }
+    .foundation-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .foundation-card { padding: 16px; border: 1px solid var(--line); background: #fff; border-left: 5px solid var(--green); min-width: 0; }
+    .foundation-card.partial { border-left-color: var(--amber); }
+    .foundation-card.missing { border-left-color: var(--red); }
+    .field { margin-top: 9px; }
+    .field b { display: block; margin-bottom: 3px; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+    .field p { margin: 0; }
+    table { width: 100%; border-collapse: collapse; background: #fff; font-size: 14px; }
+    th, td { padding: 10px; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; }
+    th { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; background: #f0f3f0; }
+    .chip { display: inline-flex; padding: 2px 7px; border-radius: 999px; background: #edf3f1; color: #2a5146; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; }
+    .status-evidenced { color: var(--green); font-weight: 700; }
+    .status-partial { color: var(--amber); font-weight: 700; }
+    .status-missing, .impact-weakening { color: var(--red); font-weight: 700; }
+    .impact-strengthening { color: var(--green); font-weight: 700; }
+    .impact-research_lead { color: var(--amber); font-weight: 700; }
+    .question { border-left: 5px solid var(--blue); }
+    .question h3 { font-size: 18px; }
+    .note { color: var(--muted); font-size: 13px; }
+    ul { margin: 8px 0 0; padding-left: 20px; }
+    li { margin: 5px 0; }
+    @media (max-width: 880px) {
+      .summary-grid, .grid, .foundation-grid, .committee { grid-template-columns: 1fr; }
+      table { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AAPL 四层投研工作台</h1>
+    <p class="subtitle">投委会摘要、公司基础画像、关键问题下钻、消息流更新区。每个判断都回到证据、假设和反证条件，而不是停留在静态报告段落。</p>
+  </header>
+  <nav>
+    <a href="#committee">投委会摘要</a>
+    <a href="#foundation">公司基础画像</a>
+    <a href="#questions">关键问题下钻</a>
+    <a href="#message-flow">消息流更新区</a>
+  </nav>
+  <main>
+    <section id="committee">
+      <div class="layer-label">第一层</div>
+      <h2>一页投委会摘要</h2>
+      <div class="summary-grid"><div class="summary-card"><span>基础画像状态</span><strong>未完成</strong><p>消息流分析前的公司基础画像质量。</p></div>
+<div class="summary-card"><span>八步覆盖度</span><strong>1/8</strong><p>八步框架中已有本地证据覆盖的部分。</p></div>
+<div class="summary-card"><span>P0 问题</span><strong>4</strong><p>下一轮证据搜索应优先围绕这些问题展开。</p></div>
+<div class="summary-card"><span>消息风险</span><strong>0 条削弱</strong><p>0 条研究线索仍需确认。</p></div></div>
+      <div class="committee">
+        <div class="committee-panel">
+          <h3>最关键结论</h3>
+          <p>AAPL 的公司基础画像尚未完成，当前不能进入强化结论阶段。</p>
+        </div>
+        <div class="committee-panel">
+          <h3>最大不确定性</h3>
+          <p><strong>智能 EV 在安全、质保、资本开支和价格竞争之后，能否成为可重复利润池？</strong></p>
+          <p class="note">该问题必须先下钻，不能被总量收入或单条新闻掩盖。</p>
+        </div>
+        <div class="committee-panel">
+          <h3>主驱动</h3>
+          <p>D1：当前消息流主要集中在这个驱动上；在新证据改变结构前，将其视为活跃主驱动。</p>
+        </div>
+        <div class="committee-panel">
+          <h3>反证条件</h3>
+          <ul><li>上市初期后整车毛利率下降</li>
+<li>降价幅度超过降本幅度</li>
+<li>召回、质保或安全成本增速快于交付</li>
+<li>交付增加但毛利率下降</li>
+<li>召回或质保成本增速快于收入</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="foundation">
+      <div class="layer-label">第二层</div>
+      <h2>公司基础画像：八步框架，每节拆成事实、推论、判断、缺口</h2>
+      <div class="foundation-grid"><article class="foundation-card missing"><h3>源头溯源 <span class="status-missing">缺证据</span></h3><p><span class="note">未映射证据</span></p><div class="field"><b>事实</b><p class="note">当前没有映射到本节的本地事实证据。</p></div><div class="field"><b>推论</b><p class="note">补充证据前不做推论。</p></div><div class="field"><b>判断</b><ul><li>在补充一手或高可靠证据前，本节不能用于强化结论。</li></ul></div><div class="field"><b>缺口</b><ul><li>需要一手资料说明创立背景、原始客户切口和公司基因。</li></ul></div></article>
+<article class="foundation-card missing"><h3>公司历史 <span class="status-missing">缺证据</span></h3><p><span class="note">未映射证据</span></p><div class="field"><b>事实</b><p class="note">当前没有映射到本节的本地事实证据。</p></div><div class="field"><b>推论</b><p class="note">补充证据前不做推论。</p></div><div class="field"><b>判断</b><ul><li>在补充一手或高可靠证据前，本节不能用于强化结论。</li></ul></div><div class="field"><b>缺口</b><ul><li>需要带日期的业务、治理、融资、并购和资本配置里程碑。</li></ul></div></article>
+<article class="foundation-card evidenced"><h3>当下生意 <span class="status-evidenced">证据充分</span></h3><p><span class="chip">ev_aapl_sec_revenue_20260328</span> <span class="chip">ev_aapl_sec_net_income_20260328</span> <span class="chip">ev_aapl_sec_operating_income_20260328</span> <span class="chip">ev_aapl_sec_gross_profit_20260328</span></p><div class="field"><b>事实</b><ul><li>收入为 111184000000 美元，期间截止日 2026-03-28 ，来自 10-Q。 [ev_aapl_sec_revenue_20260328]</li><li>净利润为 29578000000 美元，期间截止日 2026-03-28 ，来自 10-Q。 [ev_aapl_sec_net_income_20260328]</li><li>经营利润为 35885000000 美元，期间截止日 2026-03-28 ，来自 10-Q。 [ev_aapl_sec_operating_income_20260328]</li></ul></div><div class="field"><b>推论</b><ul><li>当下生意已有本地证据基线，但任何结论变化仍需经过消息流检验。</li></ul></div><div class="field"><b>判断</b><ul><li>当下生意可作为证据较充分的基线使用。</li></ul></div><div class="field"><b>缺口</b><p class="note">当前未标记重大缺口。</p></div></article>
+<article class="foundation-card missing"><h3>产业链定位 <span class="status-missing">缺证据</span></h3><p><span class="note">未映射证据</span></p><div class="field"><b>事实</b><p class="note">当前没有映射到本节的本地事实证据。</p></div><div class="field"><b>推论</b><p class="note">补充证据前不做推论。</p></div><div class="field"><b>判断</b><ul><li>在补充一手或高可靠证据前，本节不能用于强化结论。</li></ul></div><div class="field"><b>缺口</b><ul><li>需要供应商、渠道、客户、替代品和议价权证据。</li></ul></div></article>
+<article class="foundation-card missing"><h3>竞争格局 <span class="status-missing">缺证据</span></h3><p><span class="note">未映射证据</span></p><div class="field"><b>事实</b><p class="note">当前没有映射到本节的本地事实证据。</p></div><div class="field"><b>推论</b><p class="note">补充证据前不做推论。</p></div><div class="field"><b>判断</b><ul><li>在补充一手或高可靠证据前，本节不能用于强化结论。</li></ul></div><div class="field"><b>缺口</b><ul><li>需要同行排名、份额趋势、市场结构和竞争强度证据。</li></ul></div></article>
+<article class="foundation-card partial"><h3>战略分析 <span class="status-partial">部分证据</span></h3><p><span class="chip">ev_aapl_sec_revenue_20260328</span></p><div class="field"><b>事实</b><ul><li>收入为 111184000000 美元，期间截止日 2026-03-28 ，来自 10-Q。 [ev_aapl_sec_revenue_20260328]</li></ul></div><div class="field"><b>推论</b><ul><li>战略分析已有本地证据基线，但任何结论变化仍需经过消息流检验。</li></ul></div><div class="field"><b>判断</b><ul><li>战略分析可作为部分证据基线使用。</li></ul></div><div class="field"><b>缺口</b><ul><li>为战略分析至少补充一个独立来源。</li></ul></div></article>
+<article class="foundation-card missing"><h3>组织、文化与治理 <span class="status-missing">缺证据</span></h3><p><span class="note">未映射证据</span></p><div class="field"><b>事实</b><p class="note">当前没有映射到本节的本地事实证据。</p></div><div class="field"><b>推论</b><p class="note">补充证据前不做推论。</p></div><div class="field"><b>判断</b><ul><li>在补充一手或高可靠证据前，本节不能用于强化结论。</li></ul></div><div class="field"><b>缺口</b><ul><li>需要领导层、激励、所有权/控制权、董事会质量和文化证据。</li></ul></div></article>
+<article class="foundation-card missing"><h3>风险排雷 <span class="status-missing">缺证据</span></h3><p><span class="note">未映射证据</span></p><div class="field"><b>事实</b><p class="note">当前没有映射到本节的本地事实证据。</p></div><div class="field"><b>推论</b><p class="note">补充证据前不做推论。</p></div><div class="field"><b>判断</b><ul><li>在补充一手或高可靠证据前，本节不能用于强化结论。</li></ul></div><div class="field"><b>缺口</b><ul><li>需要业务、财务、会计、法律、技术、资本配置、治理和估值风险证据。</li></ul></div></article></div>
+    </section>
+
+    <section id="questions">
+      <div class="layer-label">第三层</div>
+      <h2>关键问题下钻：问题树</h2>
+      <div class="grid"><div class="card question"><h3>问题：智能 EV 在安全、质保、资本开支和价格竞争之后，能否成为可重复利润池？</h3><p class="note">P0 · T2/T3 · EV 既可能推动重估，也可能消耗现金并引入安全责任。</p><div class="field"><b>当前判断</b><p>需要验证；已有证据足以提出问题，但不足以关闭问题。</p></div><div class="field"><b>支持证据</b><p><span class="chip">ev_aapl_sec_revenue_20260328</span></p></div><div class="field"><b>反证证据 / 条件</b><ul><li>上市初期后整车毛利率下降</li><li>降价幅度超过降本幅度</li><li>召回、质保或安全成本增速快于交付</li></ul></div><div class="field"><b>下一步数据</b><ul><li>交付、订单积压和等待周期</li><li>整车毛利率桥接</li><li>质保、召回、安全和服务成本数据</li></ul></div><div class="field"><b>更新触发器</b><ul><li>Q1/Q2 业绩</li><li>月度交付和订单等待周期</li><li>监管公告和召回进展</li><li>价格调整和促销强度</li></ul></div></div>
+<div class="card question"><h3>问题：剔除上市初期 mix、价格竞争、质保、召回和服务成本后，整车毛利是否可持续？</h3><p class="note">P0 · T2 · EV 增长是否创造价值，取决于上市初期之后的单车经济性。</p><div class="field"><b>当前判断</b><p>需要验证；已有证据足以提出问题，但不足以关闭问题。</p></div><div class="field"><b>支持证据</b><p><span class="chip">ev_aapl_sec_revenue_20260328</span></p></div><div class="field"><b>反证证据 / 条件</b><ul><li>交付增加但毛利率下降</li><li>召回或质保成本增速快于收入</li></ul></div><div class="field"><b>下一步数据</b><ul><li>整车毛利率桥接</li><li>质保计提</li><li>召回成本</li><li>价格变化</li></ul></div><div class="field"><b>更新触发器</b><ul><li>Q1/Q2 业绩</li><li>月度交付和订单等待周期</li><li>监管公告和召回进展</li><li>价格调整和促销强度</li></ul></div></div>
+<div class="card question"><h3>问题：现金流能否支持下一增长曲线，同时不削弱回报和少数股东利益？</h3><p class="note">P0 · T2/T3 · 资本配置决定增长能否转化为每股价值。</p><div class="field"><b>当前判断</b><p>需要验证；已有证据足以提出问题，但不足以关闭问题。</p></div><div class="field"><b>支持证据</b><p><span class="chip">ev_aapl_sec_equity_20260328</span> <span class="chip">ev_aapl_sec_cash_20260328</span></p></div><div class="field"><b>反证证据 / 条件</b><ul><li>会计利润增长但自由现金流转弱</li><li>资本开支上升但经营杠杆没有兑现</li><li>融资带来摊薄，但回报尚未证明</li></ul></div><div class="field"><b>下一步数据</b><ul><li>经营现金流</li><li>分业务资本开支</li><li>回购、分红和融资决策</li></ul></div><div class="field"><b>更新触发器</b><ul><li>公司正式业绩</li><li>管理层指引</li><li>高可靠行业数据</li><li>监管公告</li></ul></div></div>
+<div class="card question"><h3>问题：到底哪个分部在驱动毛利、现金转化和可持续价值创造？</h3><p class="note">P0 · T3 · 分部结构可能掩盖增长是在提升还是稀释长期回报。</p><div class="field"><b>当前判断</b><p>需要验证；已有证据足以提出问题，但不足以关闭问题。</p></div><div class="field"><b>支持证据</b><p><span class="chip">ev_aapl_sec_revenue_20260328</span> <span class="chip">ev_aapl_sec_net_income_20260328</span> <span class="chip">ev_aapl_sec_operating_income_20260328</span> <span class="chip">ev_aapl_sec_gross_profit_20260328</span></p></div><div class="field"><b>反证证据 / 条件</b><ul><li>收入增长但现金转化和毛利质量下降</li><li>单一分部增长掩盖其他业务恶化</li></ul></div><div class="field"><b>下一步数据</b><ul><li>分部收入</li><li>分部毛利</li><li>经营现金流和营运资本桥接</li></ul></div><div class="field"><b>更新触发器</b><ul><li>公司正式业绩</li><li>管理层指引</li><li>高可靠行业数据</li><li>监管公告</li></ul></div></div></div>
+    </section>
+
+    <section id="message-flow">
+      <div class="layer-label">第四层</div>
+      <h2>消息流更新区：消息流冲击分析挂到问题、假设和业务节点</h2>
+      <table>
+        <thead><tr><th>消息 / 证据</th><th>影响</th><th>挂载节点</th><th>关联问题</th><th>边际变化</th></tr></thead>
+        <tbody><tr><td><span class="chip">ev_aapl_sec_revenue_20260328</span><br><strong>SEC XBRL 收入</strong><br><span class="note">收入为 111184000000 美元，期间截止日 2026-03-28 ，来自 10-Q。</span></td><td class="impact-baseline_update">基线更新<br><span class="note">主驱动 D2 · 5M M3/M4/M5 · 时间框架 T1/T2</span></td><td><strong>业务节点</strong><br>智能 EV、集团财务模型<br><strong>假设</strong><br>智能 EV 利润池假设、集团财务模型假设</td><td>智能 EV 在安全、质保、资本开支和价格竞争之后，能否成为可重复利润池？<br>剔除上市初期 mix、价格竞争、质保、召回和服务成本后，整车毛利是否可持续？<br>安全和辅助驾驶表现是否会改变用户信任或监管成本？</td><td>该证据用于播种或刷新基线；改变结论前，需要与上一期数据和市场预期比较。</td></tr>
+<tr><td><span class="chip">ev_aapl_sec_net_income_20260328</span><br><strong>SEC XBRL 净利润</strong><br><span class="note">净利润为 29578000000 美元，期间截止日 2026-03-28 ，来自 10-Q。</span></td><td class="impact-baseline_update">基线更新<br><span class="note">主驱动 D1 · 5M M4 · 时间框架 T2</span></td><td><strong>业务节点</strong><br>集团财务模型<br><strong>假设</strong><br>集团财务模型假设</td><td>智能 EV 在安全、质保、资本开支和价格竞争之后，能否成为可重复利润池？<br>剔除上市初期 mix、价格竞争、质保、召回和服务成本后，整车毛利是否可持续？<br>现金流能否支持下一增长曲线，同时不削弱回报和少数股东利益？</td><td>该证据用于播种或刷新基线；改变结论前，需要与上一期数据和市场预期比较。</td></tr>
+<tr><td><span class="chip">ev_aapl_sec_operating_income_20260328</span><br><strong>SEC XBRL 经营利润</strong><br><span class="note">经营利润为 35885000000 美元，期间截止日 2026-03-28 ，来自 10-Q。</span></td><td class="impact-baseline_update">基线更新<br><span class="note">主驱动 D1 · 5M M4 · 时间框架 T2</span></td><td><strong>业务节点</strong><br>集团财务模型<br><strong>假设</strong><br>集团财务模型假设</td><td>智能 EV 在安全、质保、资本开支和价格竞争之后，能否成为可重复利润池？<br>剔除上市初期 mix、价格竞争、质保、召回和服务成本后，整车毛利是否可持续？<br>现金流能否支持下一增长曲线，同时不削弱回报和少数股东利益？</td><td>该证据用于播种或刷新基线；改变结论前，需要与上一期数据和市场预期比较。</td></tr>
+<tr><td><span class="chip">ev_aapl_sec_gross_profit_20260328</span><br><strong>SEC XBRL 毛利</strong><br><span class="note">毛利为 54781000000 美元，期间截止日 2026-03-28 ，来自 10-Q。</span></td><td class="impact-strengthening">强化线索<br><span class="note">主驱动 D1 · 5M M4 · 时间框架 T2</span></td><td><strong>业务节点</strong><br>集团财务模型<br><strong>假设</strong><br>集团财务模型假设</td><td>智能 EV 在安全、质保、资本开支和价格竞争之后，能否成为可重复利润池？<br>剔除上市初期 mix、价格竞争、质保、召回和服务成本后，整车毛利是否可持续？<br>现金流能否支持下一增长曲线，同时不削弱回报和少数股东利益？</td><td>该证据用于播种或刷新基线；改变结论前，需要与上一期数据和市场预期比较。</td></tr>
+<tr><td><span class="chip">ev_aapl_sec_assets_20260328</span><br><strong>SEC XBRL 资产</strong><br><span class="note">资产为 371082000000 美元，期间截止日 2026-03-28 ，来自 10-Q。</span></td><td class="impact-baseline_update">基线更新<br><span class="note">主驱动 D1 · 5M M4 · 时间框架 T2</span></td><td><strong>业务节点</strong><br>集团财务模型<br><strong>假设</strong><br>集团财务模型假设</td><td>到底哪个分部在驱动毛利、现金转化和可持续价值创造？<br>哪类新增证据能最快证伪当前基线？</td><td>该证据用于播种或刷新基线；改变结论前，需要与上一期数据和市场预期比较。</td></tr>
+<tr><td><span class="chip">ev_aapl_sec_liabilities_20260328</span><br><strong>SEC XBRL 负债</strong><br><span class="note">负债为 264591000000 美元，期间截止日 2026-03-28 ，来自 10-Q。</span></td><td class="impact-baseline_update">基线更新<br><span class="note">主驱动 D1 · 5M M4 · 时间框架 T2</span></td><td><strong>业务节点</strong><br>集团财务模型<br><strong>假设</strong><br>未关联假设</td><td>到底哪个分部在驱动毛利、现金转化和可持续价值创造？<br>哪类新增证据能最快证伪当前基线？</td><td>该证据用于播种或刷新基线；改变结论前，需要与上一期数据和市场预期比较。</td></tr>
+<tr><td><span class="chip">ev_aapl_sec_equity_20260328</span><br><strong>SEC XBRL 股东权益</strong><br><span class="note">股东权益为 106491000000 美元，期间截止日 2026-03-28 ，来自 10-Q。</span></td><td class="impact-baseline_update">基线更新<br><span class="note">主驱动 D1 · 5M M4 · 时间框架 T2</span></td><td><strong>业务节点</strong><br>资本配置、集团财务模型<br><strong>假设</strong><br>资本配置假设</td><td>现金流能否支持下一增长曲线，同时不削弱回报和少数股东利益？<br>考虑资本开支、营运资本和摊薄后，再投资回报是否足够？<br>到底哪个分部在驱动毛利、现金转化和可持续价值创造？</td><td>该证据用于播种或刷新基线；改变结论前，需要与上一期数据和市场预期比较。</td></tr>
+<tr><td><span class="chip">ev_aapl_sec_cash_20260328</span><br><strong>SEC XBRL 现金及现金等价物</strong><br><span class="note">现金及现金等价物为 45572000000 美元，期间截止日 2026-03-28 ，来自 10-Q。</span></td><td class="impact-baseline_update">基线更新<br><span class="note">主驱动 D1 · 5M M4 · 时间框架 T2</span></td><td><strong>业务节点</strong><br>资本配置<br><strong>假设</strong><br>资本配置假设</td><td>现金流能否支持下一增长曲线，同时不削弱回报和少数股东利益？<br>考虑资本开支、营运资本和摊薄后，再投资回报是否足够？</td><td>该证据用于播种或刷新基线；改变结论前，需要与上一期数据和市场预期比较。</td></tr></tbody>
+      </table>
+      <p class="note">边界：该页面不是交易指令。低可靠证据只生成研究线索；任何强化结论的输出仍需说明主导 D 驱动、3T 时间框架和反证测试。</p>
+    </section>
+  </main>
+</body>
+</html>

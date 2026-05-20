@@ -1,0 +1,800 @@
+{
+  "assumptions": [
+    {
+      "disconfirming_signals": [
+        "Vehicle gross margin falls after launch cycle",
+        "Price cuts outpace cost-down",
+        "Recall, warranty, or safety costs rise faster than deliveries"
+      ],
+      "id": "assumption_smart_ev_001",
+      "linked_business_node_ids": [
+        "smart_ev"
+      ],
+      "linked_foundation_sections": [
+        "current_business",
+        "value_chain",
+        "competition",
+        "strategy",
+        "risk_sweep"
+      ],
+      "statement": "Smart EV can become a repeatable profit pool after capex, warranty, safety, and price competition.",
+      "status": "open",
+      "supporting_evidence_ids": [
+        "ev_aapl_sec_revenue_20260328"
+      ],
+      "ticker": "AAPL"
+    },
+    {
+      "disconfirming_signals": [
+        "Free cash flow weakens despite reported profit",
+        "Capex rises without operating leverage",
+        "Financing dilutes while returns remain unproven"
+      ],
+      "id": "assumption_capital_allocation_001",
+      "linked_business_node_ids": [
+        "capital_allocation"
+      ],
+      "linked_foundation_sections": [
+        "current_business",
+        "strategy",
+        "risk_sweep"
+      ],
+      "statement": "Cash generation and balance-sheet strength can fund reinvestment without weakening shareholder economics.",
+      "status": "open",
+      "supporting_evidence_ids": [
+        "ev_aapl_sec_equity_20260328",
+        "ev_aapl_sec_cash_20260328"
+      ],
+      "ticker": "AAPL"
+    },
+    {
+      "disconfirming_signals": [
+        "Revenue grows while cash conversion and margin quality weaken",
+        "One segment masks deterioration elsewhere"
+      ],
+      "id": "assumption_group_financials_001",
+      "linked_business_node_ids": [
+        "group_financials"
+      ],
+      "linked_foundation_sections": [
+        "current_business",
+        "risk_sweep"
+      ],
+      "statement": "Reported growth converts into durable margin and cash-flow quality.",
+      "status": "open",
+      "supporting_evidence_ids": [
+        "ev_aapl_sec_revenue_20260328",
+        "ev_aapl_sec_net_income_20260328",
+        "ev_aapl_sec_operating_income_20260328",
+        "ev_aapl_sec_gross_profit_20260328",
+        "ev_aapl_sec_assets_20260328"
+      ],
+      "ticker": "AAPL"
+    },
+    {
+      "disconfirming_signals": [
+        "Need primary sources for founding context, original customer wedge, and company DNA."
+      ],
+      "id": "assumption_gap_source_origin",
+      "linked_business_node_ids": [],
+      "linked_foundation_sections": [
+        "source_origin"
+      ],
+      "statement": "Source and origin is not research-ready because local evidence is missing.",
+      "status": "needs_data",
+      "supporting_evidence_ids": [],
+      "ticker": "AAPL"
+    },
+    {
+      "disconfirming_signals": [
+        "Need dated milestones for business, governance, financing, M&A, and capital allocation."
+      ],
+      "id": "assumption_gap_history",
+      "linked_business_node_ids": [],
+      "linked_foundation_sections": [
+        "history"
+      ],
+      "statement": "Company history is not research-ready because local evidence is missing.",
+      "status": "needs_data",
+      "supporting_evidence_ids": [],
+      "ticker": "AAPL"
+    },
+    {
+      "disconfirming_signals": [
+        "Need supplier, channel, customer, substitute, and bargaining-power evidence."
+      ],
+      "id": "assumption_gap_value_chain",
+      "linked_business_node_ids": [],
+      "linked_foundation_sections": [
+        "value_chain"
+      ],
+      "statement": "Value chain position is not research-ready because local evidence is missing.",
+      "status": "needs_data",
+      "supporting_evidence_ids": [],
+      "ticker": "AAPL"
+    },
+    {
+      "disconfirming_signals": [
+        "Need peer ranking, share trend, market structure, and competition-intensity evidence."
+      ],
+      "id": "assumption_gap_competition",
+      "linked_business_node_ids": [],
+      "linked_foundation_sections": [
+        "competition"
+      ],
+      "statement": "Competitive landscape is not research-ready because local evidence is missing.",
+      "status": "needs_data",
+      "supporting_evidence_ids": [],
+      "ticker": "AAPL"
+    },
+    {
+      "disconfirming_signals": [
+        "Need leadership, incentives, ownership/control, board quality, and culture evidence."
+      ],
+      "id": "assumption_gap_governance",
+      "linked_business_node_ids": [],
+      "linked_foundation_sections": [
+        "governance"
+      ],
+      "statement": "Organization, culture, and governance is not research-ready because local evidence is missing.",
+      "status": "needs_data",
+      "supporting_evidence_ids": [],
+      "ticker": "AAPL"
+    },
+    {
+      "disconfirming_signals": [
+        "Need business, financial, accounting, legal, technology, capital-allocation, governance, and valuation risks."
+      ],
+      "id": "assumption_gap_risk_sweep",
+      "linked_business_node_ids": [],
+      "linked_foundation_sections": [
+        "risk_sweep"
+      ],
+      "statement": "Risk sweep is not research-ready because local evidence is missing.",
+      "status": "needs_data",
+      "supporting_evidence_ids": [],
+      "ticker": "AAPL"
+    }
+  ],
+  "business_nodes": [
+    {
+      "evidence_ids": [
+        "ev_aapl_sec_revenue_20260328"
+      ],
+      "id": "smart_ev",
+      "key_kpis": [
+        "deliveries",
+        "ASP",
+        "vehicle gross margin",
+        "capex",
+        "warranty cost",
+        "recalls"
+      ],
+      "label": "Smart EV and mobility platform",
+      "open_question": "Can Smart EV become a repeatable profit pool after safety, warranty, capex, and price competition?",
+      "role": "Second growth curve with manufacturing and safety obligations",
+      "status": "active"
+    },
+    {
+      "evidence_ids": [
+        "ev_aapl_sec_equity_20260328",
+        "ev_aapl_sec_cash_20260328"
+      ],
+      "id": "capital_allocation",
+      "key_kpis": [
+        "operating cash flow",
+        "free cash flow",
+        "net cash",
+        "capex",
+        "ROIC"
+      ],
+      "label": "Capital allocation and cash engine",
+      "open_question": "Can cash flows fund the next growth curve without weakening returns or minority-shareholder economics?",
+      "role": "Funds reinvestment, buybacks, dividends, and balance-sheet resilience",
+      "status": "active"
+    },
+    {
+      "evidence_ids": [
+        "ev_aapl_sec_revenue_20260328",
+        "ev_aapl_sec_net_income_20260328",
+        "ev_aapl_sec_operating_income_20260328",
+        "ev_aapl_sec_gross_profit_20260328",
+        "ev_aapl_sec_assets_20260328",
+        "ev_aapl_sec_liabilities_20260328",
+        "ev_aapl_sec_equity_20260328"
+      ],
+      "id": "group_financials",
+      "key_kpis": [
+        "revenue",
+        "gross margin",
+        "operating margin",
+        "net profit",
+        "cash conversion"
+      ],
+      "label": "Group financial model",
+      "open_question": "Which segment is actually driving gross profit, cash conversion, and durable value creation?",
+      "role": "Revenue quality, margin structure, cash conversion, and balance sheet",
+      "status": "active"
+    }
+  ],
+  "coverage": {
+    "sections_evidenced": 1,
+    "sections_missing": 6,
+    "sections_partial": 1,
+    "sections_total": 8
+  },
+  "foundation_status": "incomplete",
+  "generated_at": "2026-05-20T02:41:11.383241+00:00",
+  "kpis": [
+    {
+      "business_node_ids": [
+        "smart_ev",
+        "group_financials"
+      ],
+      "evidence_id": "ev_aapl_sec_revenue_20260328",
+      "id": "kpi_ev_aapl_sec_revenue_20260328_1",
+      "label": "Revenue",
+      "reliability": "primary",
+      "value_snippet": "Revenue was 111184000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "EV metrics test whether the second curve is financially repeatable."
+    },
+    {
+      "business_node_ids": [
+        "smart_ev",
+        "group_financials"
+      ],
+      "evidence_id": "ev_aapl_sec_revenue_20260328",
+      "id": "kpi_ev_aapl_sec_revenue_20260328_2",
+      "label": "Revenue",
+      "reliability": "primary",
+      "value_snippet": "ue was 111184000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "EV metrics test whether the second curve is financially repeatable."
+    },
+    {
+      "business_node_ids": [
+        "smart_ev",
+        "group_financials"
+      ],
+      "evidence_id": "ev_aapl_sec_revenue_20260328",
+      "id": "kpi_ev_aapl_sec_revenue_20260328_3",
+      "label": "Revenue",
+      "reliability": "primary",
+      "value_snippet": "s 111184000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "EV metrics test whether the second curve is financially repeatable."
+    },
+    {
+      "business_node_ids": [
+        "smart_ev",
+        "group_financials"
+      ],
+      "evidence_id": "ev_aapl_sec_revenue_20260328",
+      "id": "kpi_ev_aapl_sec_revenue_20260328_4",
+      "label": "Revenue",
+      "reliability": "primary",
+      "value_snippet": "11184000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "EV metrics test whether the second curve is financially repeatable."
+    },
+    {
+      "business_node_ids": [
+        "group_financials"
+      ],
+      "evidence_id": "ev_aapl_sec_net_income_20260328",
+      "id": "kpi_ev_aapl_sec_net_income_20260328_1",
+      "label": "Profitability",
+      "reliability": "primary",
+      "value_snippet": "Net income was 29578000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "group_financials"
+      ],
+      "evidence_id": "ev_aapl_sec_net_income_20260328",
+      "id": "kpi_ev_aapl_sec_net_income_20260328_2",
+      "label": "Profitability",
+      "reliability": "primary",
+      "value_snippet": "ome was 29578000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "group_financials"
+      ],
+      "evidence_id": "ev_aapl_sec_net_income_20260328",
+      "id": "kpi_ev_aapl_sec_net_income_20260328_3",
+      "label": "Profitability",
+      "reliability": "primary",
+      "value_snippet": "as 29578000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "group_financials"
+      ],
+      "evidence_id": "ev_aapl_sec_net_income_20260328",
+      "id": "kpi_ev_aapl_sec_net_income_20260328_4",
+      "label": "Profitability",
+      "reliability": "primary",
+      "value_snippet": "29578000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "group_financials"
+      ],
+      "evidence_id": "ev_aapl_sec_operating_income_20260328",
+      "id": "kpi_ev_aapl_sec_operating_income_20260328_1",
+      "label": "Profitability",
+      "reliability": "primary",
+      "value_snippet": "Operating income was 35885000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "group_financials"
+      ],
+      "evidence_id": "ev_aapl_sec_operating_income_20260328",
+      "id": "kpi_ev_aapl_sec_operating_income_20260328_2",
+      "label": "Profitability",
+      "reliability": "primary",
+      "value_snippet": "ome was 35885000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "group_financials"
+      ],
+      "evidence_id": "ev_aapl_sec_operating_income_20260328",
+      "id": "kpi_ev_aapl_sec_operating_income_20260328_3",
+      "label": "Profitability",
+      "reliability": "primary",
+      "value_snippet": "as 35885000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "group_financials"
+      ],
+      "evidence_id": "ev_aapl_sec_operating_income_20260328",
+      "id": "kpi_ev_aapl_sec_operating_income_20260328_4",
+      "label": "Profitability",
+      "reliability": "primary",
+      "value_snippet": "35885000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "group_financials"
+      ],
+      "evidence_id": "ev_aapl_sec_gross_profit_20260328",
+      "id": "kpi_ev_aapl_sec_gross_profit_20260328_1",
+      "label": "Margin / gross profit",
+      "reliability": "primary",
+      "value_snippet": "Gross profit was 54781000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "Margins translate operating change into earnings revisions."
+    },
+    {
+      "business_node_ids": [
+        "group_financials"
+      ],
+      "evidence_id": "ev_aapl_sec_gross_profit_20260328",
+      "id": "kpi_ev_aapl_sec_gross_profit_20260328_2",
+      "label": "Margin / gross profit",
+      "reliability": "primary",
+      "value_snippet": "fit was 54781000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "Margins translate operating change into earnings revisions."
+    },
+    {
+      "business_node_ids": [
+        "group_financials"
+      ],
+      "evidence_id": "ev_aapl_sec_gross_profit_20260328",
+      "id": "kpi_ev_aapl_sec_gross_profit_20260328_3",
+      "label": "Margin / gross profit",
+      "reliability": "primary",
+      "value_snippet": "as 54781000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "Margins translate operating change into earnings revisions."
+    },
+    {
+      "business_node_ids": [
+        "group_financials"
+      ],
+      "evidence_id": "ev_aapl_sec_gross_profit_20260328",
+      "id": "kpi_ev_aapl_sec_gross_profit_20260328_4",
+      "label": "Margin / gross profit",
+      "reliability": "primary",
+      "value_snippet": "54781000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "Margins translate operating change into earnings revisions."
+    },
+    {
+      "business_node_ids": [
+        "group_financials"
+      ],
+      "evidence_id": "ev_aapl_sec_assets_20260328",
+      "id": "kpi_ev_aapl_sec_assets_20260328_1",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "Assets was 371082000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "group_financials"
+      ],
+      "evidence_id": "ev_aapl_sec_assets_20260328",
+      "id": "kpi_ev_aapl_sec_assets_20260328_2",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "ts was 371082000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "group_financials"
+      ],
+      "evidence_id": "ev_aapl_sec_assets_20260328",
+      "id": "kpi_ev_aapl_sec_assets_20260328_3",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "s 371082000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "group_financials"
+      ],
+      "evidence_id": "ev_aapl_sec_assets_20260328",
+      "id": "kpi_ev_aapl_sec_assets_20260328_4",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "71082000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "group_financials"
+      ],
+      "evidence_id": "ev_aapl_sec_liabilities_20260328",
+      "id": "kpi_ev_aapl_sec_liabilities_20260328_1",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "Liabilities was 264591000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "group_financials"
+      ],
+      "evidence_id": "ev_aapl_sec_liabilities_20260328",
+      "id": "kpi_ev_aapl_sec_liabilities_20260328_2",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "es was 264591000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "group_financials"
+      ],
+      "evidence_id": "ev_aapl_sec_liabilities_20260328",
+      "id": "kpi_ev_aapl_sec_liabilities_20260328_3",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "s 264591000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "group_financials"
+      ],
+      "evidence_id": "ev_aapl_sec_liabilities_20260328",
+      "id": "kpi_ev_aapl_sec_liabilities_20260328_4",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "64591000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "capital_allocation",
+        "group_financials"
+      ],
+      "evidence_id": "ev_aapl_sec_equity_20260328",
+      "id": "kpi_ev_aapl_sec_equity_20260328_1",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "Stockholders equity was 106491000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "capital_allocation",
+        "group_financials"
+      ],
+      "evidence_id": "ev_aapl_sec_equity_20260328",
+      "id": "kpi_ev_aapl_sec_equity_20260328_2",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "ty was 106491000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "capital_allocation",
+        "group_financials"
+      ],
+      "evidence_id": "ev_aapl_sec_equity_20260328",
+      "id": "kpi_ev_aapl_sec_equity_20260328_3",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "s 106491000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "capital_allocation",
+        "group_financials"
+      ],
+      "evidence_id": "ev_aapl_sec_equity_20260328",
+      "id": "kpi_ev_aapl_sec_equity_20260328_4",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "06491000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "capital_allocation"
+      ],
+      "evidence_id": "ev_aapl_sec_cash_20260328",
+      "id": "kpi_ev_aapl_sec_cash_20260328_1",
+      "label": "Cash flow / liquidity",
+      "reliability": "primary",
+      "value_snippet": "Cash and cash equivalents was 45572000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "Cash conversion determines whether growth can fund itself."
+    },
+    {
+      "business_node_ids": [
+        "capital_allocation"
+      ],
+      "evidence_id": "ev_aapl_sec_cash_20260328",
+      "id": "kpi_ev_aapl_sec_cash_20260328_2",
+      "label": "Cash flow / liquidity",
+      "reliability": "primary",
+      "value_snippet": "nts was 45572000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "Cash conversion determines whether growth can fund itself."
+    },
+    {
+      "business_node_ids": [
+        "capital_allocation"
+      ],
+      "evidence_id": "ev_aapl_sec_cash_20260328",
+      "id": "kpi_ev_aapl_sec_cash_20260328_3",
+      "label": "Cash flow / liquidity",
+      "reliability": "primary",
+      "value_snippet": "as 45572000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "Cash conversion determines whether growth can fund itself."
+    },
+    {
+      "business_node_ids": [
+        "capital_allocation"
+      ],
+      "evidence_id": "ev_aapl_sec_cash_20260328",
+      "id": "kpi_ev_aapl_sec_cash_20260328_4",
+      "label": "Cash flow / liquidity",
+      "reliability": "primary",
+      "value_snippet": "45572000000 USD for period ending 2026-03-28 in 10-Q",
+      "why_it_matters": "Cash conversion determines whether growth can fund itself."
+    }
+  ],
+  "research_boundary": "Foundation graph is not a trading instruction. Message-flow work must test marginal change against this baseline.",
+  "risks": [
+    {
+      "evidence_id": null,
+      "id": "risk_missing_source_origin",
+      "linked_business_node_ids": [],
+      "monitoring_tests": [
+        "Need primary sources for founding context, original customer wedge, and company DNA."
+      ],
+      "severity": "medium",
+      "statement": "Source and origin lacks local evidence; conclusions that depend on it should stay needs_review."
+    },
+    {
+      "evidence_id": null,
+      "id": "risk_missing_history",
+      "linked_business_node_ids": [],
+      "monitoring_tests": [
+        "Need dated milestones for business, governance, financing, M&A, and capital allocation."
+      ],
+      "severity": "medium",
+      "statement": "Company history lacks local evidence; conclusions that depend on it should stay needs_review."
+    },
+    {
+      "evidence_id": null,
+      "id": "risk_missing_value_chain",
+      "linked_business_node_ids": [],
+      "monitoring_tests": [
+        "Need supplier, channel, customer, substitute, and bargaining-power evidence."
+      ],
+      "severity": "medium",
+      "statement": "Value chain position lacks local evidence; conclusions that depend on it should stay needs_review."
+    },
+    {
+      "evidence_id": null,
+      "id": "risk_missing_competition",
+      "linked_business_node_ids": [],
+      "monitoring_tests": [
+        "Need peer ranking, share trend, market structure, and competition-intensity evidence."
+      ],
+      "severity": "medium",
+      "statement": "Competitive landscape lacks local evidence; conclusions that depend on it should stay needs_review."
+    },
+    {
+      "evidence_id": null,
+      "id": "risk_missing_governance",
+      "linked_business_node_ids": [],
+      "monitoring_tests": [
+        "Need leadership, incentives, ownership/control, board quality, and culture evidence."
+      ],
+      "severity": "medium",
+      "statement": "Organization, culture, and governance lacks local evidence; conclusions that depend on it should stay needs_review."
+    },
+    {
+      "evidence_id": null,
+      "id": "risk_missing_risk_sweep",
+      "linked_business_node_ids": [],
+      "monitoring_tests": [
+        "Need business, financial, accounting, legal, technology, capital-allocation, governance, and valuation risks."
+      ],
+      "severity": "medium",
+      "statement": "Risk sweep lacks local evidence; conclusions that depend on it should stay needs_review."
+    }
+  ],
+  "schema_version": "1.0",
+  "sections": [
+    {
+      "evidence_ids": [],
+      "facts": [],
+      "gaps": [
+        "Need primary sources for founding context, original customer wedge, and company DNA."
+      ],
+      "id": "source_origin",
+      "inferences": [],
+      "judgments": [
+        "Do not use this section to strengthen a thesis until primary or high-reliability evidence is added."
+      ],
+      "label": "Source and origin",
+      "status": "missing"
+    },
+    {
+      "evidence_ids": [],
+      "facts": [],
+      "gaps": [
+        "Need dated milestones for business, governance, financing, M&A, and capital allocation."
+      ],
+      "id": "history",
+      "inferences": [],
+      "judgments": [
+        "Do not use this section to strengthen a thesis until primary or high-reliability evidence is added."
+      ],
+      "label": "Company history",
+      "status": "missing"
+    },
+    {
+      "evidence_ids": [
+        "ev_aapl_sec_revenue_20260328",
+        "ev_aapl_sec_net_income_20260328",
+        "ev_aapl_sec_operating_income_20260328",
+        "ev_aapl_sec_gross_profit_20260328"
+      ],
+      "facts": [
+        {
+          "evidence_id": "ev_aapl_sec_revenue_20260328",
+          "statement": "Revenue was 111184000000 USD for period ending 2026-03-28 in 10-Q."
+        },
+        {
+          "evidence_id": "ev_aapl_sec_net_income_20260328",
+          "statement": "Net income was 29578000000 USD for period ending 2026-03-28 in 10-Q."
+        },
+        {
+          "evidence_id": "ev_aapl_sec_operating_income_20260328",
+          "statement": "Operating income was 35885000000 USD for period ending 2026-03-28 in 10-Q."
+        },
+        {
+          "evidence_id": "ev_aapl_sec_gross_profit_20260328",
+          "statement": "Gross profit was 54781000000 USD for period ending 2026-03-28 in 10-Q."
+        }
+      ],
+      "gaps": [],
+      "id": "current_business",
+      "inferences": [
+        "Current business has a local evidence baseline, but any thesis change still requires message-flow testing."
+      ],
+      "judgments": [
+        "Treat current business as well evidenced for baseline work."
+      ],
+      "label": "Current business",
+      "status": "evidenced"
+    },
+    {
+      "evidence_ids": [],
+      "facts": [],
+      "gaps": [
+        "Need supplier, channel, customer, substitute, and bargaining-power evidence."
+      ],
+      "id": "value_chain",
+      "inferences": [],
+      "judgments": [
+        "Do not use this section to strengthen a thesis until primary or high-reliability evidence is added."
+      ],
+      "label": "Value chain position",
+      "status": "missing"
+    },
+    {
+      "evidence_ids": [],
+      "facts": [],
+      "gaps": [
+        "Need peer ranking, share trend, market structure, and competition-intensity evidence."
+      ],
+      "id": "competition",
+      "inferences": [],
+      "judgments": [
+        "Do not use this section to strengthen a thesis until primary or high-reliability evidence is added."
+      ],
+      "label": "Competitive landscape",
+      "status": "missing"
+    },
+    {
+      "evidence_ids": [
+        "ev_aapl_sec_revenue_20260328"
+      ],
+      "facts": [
+        {
+          "evidence_id": "ev_aapl_sec_revenue_20260328",
+          "statement": "Revenue was 111184000000 USD for period ending 2026-03-28 in 10-Q."
+        }
+      ],
+      "gaps": [
+        "Add at least one more independent source for strategy analysis."
+      ],
+      "id": "strategy",
+      "inferences": [
+        "Strategy analysis has a local evidence baseline, but any thesis change still requires message-flow testing."
+      ],
+      "judgments": [
+        "Treat strategy analysis as partially evidenced for baseline work."
+      ],
+      "label": "Strategy analysis",
+      "status": "partial"
+    },
+    {
+      "evidence_ids": [],
+      "facts": [],
+      "gaps": [
+        "Need leadership, incentives, ownership/control, board quality, and culture evidence."
+      ],
+      "id": "governance",
+      "inferences": [],
+      "judgments": [
+        "Do not use this section to strengthen a thesis until primary or high-reliability evidence is added."
+      ],
+      "label": "Organization, culture, and governance",
+      "status": "missing"
+    },
+    {
+      "evidence_ids": [],
+      "facts": [],
+      "gaps": [
+        "Need business, financial, accounting, legal, technology, capital-allocation, governance, and valuation risks."
+      ],
+      "id": "risk_sweep",
+      "inferences": [],
+      "judgments": [
+        "Do not use this section to strengthen a thesis until primary or high-reliability evidence is added."
+      ],
+      "label": "Risk sweep",
+      "status": "missing"
+    }
+  ],
+  "ticker": "AAPL"
+}

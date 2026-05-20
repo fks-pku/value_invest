@@ -17,6 +17,8 @@ class ScaffoldTests(unittest.TestCase):
             self.assertTrue((stock_dir / "investment_memo.md").exists())
             self.assertTrue((stock_dir / "evidence.jsonl").exists())
             self.assertTrue((stock_dir / "data" / "fundamentals.json").exists())
+            self.assertTrue((stock_dir / "research_system" / "question_graph.jsonl").exists())
+            self.assertTrue((stock_dir / "research_system" / "message_flow.jsonl").exists())
             memo = (stock_dir / "investment_memo.md").read_text(encoding="utf-8")
             self.assertIn("Apple Inc.", (stock_dir / "company_profile.md").read_text(encoding="utf-8"))
             self.assertIn("Company Foundation Analysis", memo)

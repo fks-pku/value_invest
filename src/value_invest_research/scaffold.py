@@ -29,6 +29,7 @@ def init_stock(root: Path, ticker: str, company_name: str | None = None) -> Path
         stock_dir / "raw" / "sec",
         stock_dir / "raw" / "earnings_calls",
         stock_dir / "raw" / "news",
+        stock_dir / "research_system",
         stock_dir / "logs",
     ]:
         subdir.mkdir(parents=True, exist_ok=True)
@@ -41,6 +42,8 @@ def init_stock(root: Path, ticker: str, company_name: str | None = None) -> Path
     _write_if_missing(stock_dir / "hypotheses.md", f"# {normalized_ticker} Hypotheses\n\n## Active Hypotheses\n\n## Retired Hypotheses\n")
     _write_if_missing(stock_dir / "signals.md", f"# {normalized_ticker} Research Signals\n\n")
     _write_if_missing(stock_dir / "evidence.jsonl", "")
+    _write_if_missing(stock_dir / "research_system" / "question_graph.jsonl", "")
+    _write_if_missing(stock_dir / "research_system" / "message_flow.jsonl", "")
     _write_if_missing(stock_dir / "logs" / "runs.jsonl", "")
     _write_if_missing(stock_dir / "data" / "fundamentals.json", json.dumps({}, indent=2) + "\n")
     _write_if_missing(stock_dir / "data" / "sec_filings.json", json.dumps([], indent=2) + "\n")

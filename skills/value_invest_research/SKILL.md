@@ -5,7 +5,7 @@ description: Use for US equity investment research workflows that collect eviden
 
 # Value Invest Research Skill
 
-This Skill turns heterogeneous market information into auditable research artifacts. For individual companies, the primary sequence is company foundation first, then FengHe message-flow analysis. It supports three workflows:
+This Skill turns heterogeneous market information into auditable research artifacts. For individual companies, the primary sequence is company foundation first, structured research-system generation second, then FengHe message-flow analysis. It supports three workflows:
 
 1. `update_stock_memo`: update one company memo by checking the company foundation baseline before applying 3C, 3D, 5M, and 3T to the new information flow.
 2. `run_sector_or_theme_research`: map cycles, marginal changes, 5M company differences, and candidates worth stock-level research.
@@ -21,6 +21,8 @@ This Skill turns heterogeneous market information into auditable research artifa
 - Preserve prior thesis history when updating a memo.
 - Mark uncertainty directly instead of hiding it.
 - For individual companies, complete or explicitly gap the eight-section company foundation before applying FengHe.
+- Before polished prose, prefer building the structured research-system layer: `foundation_graph.json`, `question_graph.jsonl`, `message_flow.jsonl`, and `research_dashboard.html`.
+- Professional stock work must include targeted question drilling: each P0 question needs required evidence, disconfirming signals, linked assumptions, and a decision rule.
 - Use FengHe for message flow, catalysts, marginal change, and time-frame framing after the foundation baseline is stated.
 - Do not call a company "good" without naming the M driver and the M defect risk.
 - Do not promote an idea without a time frame and disconfirming tests.
@@ -31,6 +33,7 @@ Before analysis, load the relevant research object folder:
 
 - Canonical memo.
 - `evidence.jsonl`.
+- `research_system/` artifacts when present.
 - Structured files under `data/`.
 - Latest run logs under `logs/`.
 - Related stock, sector, theme, or event objects named in the task.

@@ -18,3 +18,12 @@
 {"timestamp": "2026-05-12T09:08:54.995651+00:00", "pipeline": "research_graph_report", "status": "success", "tickers": ["AAPL"], "records_fetched": 8, "records_new": 136}
 {"timestamp": "2026-05-12T09:18:39.405018+00:00", "pipeline": "research_graph_report", "status": "success", "tickers": ["AAPL"], "records_fetched": 8, "records_new": 136}
 {"timestamp": "2026-05-12T09:19:32.083460+00:00", "pipeline": "research_graph_report", "status": "success", "tickers": ["AAPL"], "records_fetched": 8, "records_new": 136}
+{"timestamp": "2026-05-20T02:12:26.692042+00:00", "pipeline": "research_system", "status": "success", "tickers": ["AAPL"], "records_fetched": 8, "records_new": 29}
+{"timestamp": "2026-05-20T02:12:57.469470+00:00", "pipeline": "research_system", "status": "success", "tickers": ["AAPL"], "records_fetched": 8, "records_new": 29}
+{"timestamp": "2026-05-20T02:15:11.881198+00:00", "pipeline": "research_system", "status": "success", "tickers": ["AAPL"], "records_fetched": 8, "records_new": 29}
+{"timestamp": "2026-05-20T02:25:51.674350+00:00", "pipeline": "research_system", "status": "success", "tickers": ["AAPL"], "records_fetched": 8, "records_new": 29}
+{"timestamp": "2026-05-20T02:26:23.443249+00:00", "pipeline": "research_system", "status": "success", "tickers": ["AAPL"], "records_fetched": 8, "records_new": 29}
+{"timestamp": "2026-05-20T02:27:10.948147+00:00", "pipeline": "research_system", "status": "success", "tickers": ["AAPL"], "records_fetched": 8, "records_new": 29}
+{"timestamp": "2026-05-20T02:40:01.162832+00:00", "pipeline": "research_system", "status": "success", "tickers": ["AAPL"], "records_fetched": 8, "records_new": 29}
+{"timestamp": "2026-05-20T02:40:38.273870+00:00", "pipeline": "research_system", "status": "success", "tickers": ["AAPL"], "records_fetched": 8, "records_new": 29}
+{"timestamp": "2026-05-20T02:41:11.393965+00:00", "pipeline": "research_system", "status": "success", "tickers": ["AAPL"], "records_fetched": 8, "records_new": 29}

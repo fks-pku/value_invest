@@ -9,8 +9,9 @@ This is not an automated trading system. It does not place orders or issue final
 ## Current Status
 
 - Core scaffolding and validation are implemented.
-- CLI commands exist for stocks, events, SEC ingestion, price ingestion, foundation-first stock research, memo updates, event research, and sector/theme research.
-- A deterministic research graph pipeline exists for consensus baselines, 3T questions, hypotheses, assumption tests, and forward reports.
+- CLI commands exist for stocks, events, SEC ingestion, price ingestion, foundation-first stock research, structured research-system generation, memo updates, event research, and sector/theme research.
+- A structured research-system layer exists for foundation coverage, business nodes, KPI snippets, assumptions, risk monitors, targeted question trees, message-flow impact analysis, and research dashboards.
+- A deterministic research graph pipeline exists for FengHe consensus baselines, 3T questions, hypotheses, assumption tests, and forward reports.
 - The primary stock research sequence is company foundation first, then FengHe message-flow analysis.
 - Third-party integrations are optional. Core commands work without `openai`, `pyyaml`, or `yfinance`; integration commands report a clear install hint when their package is missing.
 - The repository includes sample AAPL, event, and sector research artifacts.
@@ -58,6 +59,7 @@ Examples:
 value-invest-research init-stock MSFT --company-name "Microsoft Corporation"
 value-invest-research init-event 2026-05-06 "US Iran Conflict"
 value-invest-research build-evidence AAPL
+value-invest-research build-research-system AAPL
 value-invest-research build-research-graph AAPL
 value-invest-research validate-evidence stocks/AAPL/evidence.jsonl
 value-invest-research research-stock AAPL --api-key $env:LLM_API_KEY
@@ -65,6 +67,7 @@ value-invest-research research-stock AAPL --api-key $env:LLM_API_KEY
 
 `research-stock` writes a timestamped Markdown report and structured signal JSON under `stocks/<TICKER>/research_reports/`.
 `build-evidence` converts structured SEC facts and price CSV rows into stable evidence IDs under `stocks/<TICKER>/evidence.jsonl`.
+`build-research-system` converts local evidence into the professional research operating layer under `stocks/<TICKER>/research_system/`: `foundation_graph.json`, `question_graph.jsonl`, `message_flow.jsonl`, and `research_dashboard.html`.
 `build-research-graph` runs the full deterministic graph pipeline and writes `nodes.jsonl`, `edges.jsonl`, and `forward_report.html` under `stocks/<TICKER>/research_graph/`.
 
 Graph stages are also callable one by one:
@@ -110,9 +113,20 @@ Each company memo starts with an eight-section baseline:
 
 This baseline answers "what is this company?" before asking what new information changes the thesis.
 
+## Research System Layer
+
+The research-system layer is the professional stock workspace between raw evidence and final reports. It is designed to prevent shallow "framework-only" output by forcing each company into four auditable files:
+
+- `foundation_graph.json`: eight-section foundation coverage, facts, inferences, judgments, gaps, business nodes, KPIs, assumptions, and risks.
+- `question_graph.jsonl`: P0/P1 research questions with parent-child structure, required evidence, disconfirming signals, decision rules, linked business nodes, and linked assumptions.
+- `message_flow.jsonl`: one message-impact analysis per evidence item, including prior baseline, marginal change, affected assumptions, FengHe 3C/3D/5M/3T classification, certainty, impact, and follow-up questions.
+- `research_dashboard.html`: a readable operating dashboard for foundation coverage, P0 issue tree, KPI snippets, message-flow impacts, and risk monitors.
+
+This layer should be built before writing polished reports. Reports are outputs; the durable research asset is the structured evidence-to-question-to-hypothesis chain.
+
 ## Research Graph Pipeline
 
-The graph pipeline is the message-flow layer. It treats current facts and market consensus as the priced baseline after company foundation work exists. It then creates a local graph:
+The graph pipeline is the FengHe message-flow graph. It treats current facts and market consensus as the priced baseline after company foundation work exists. It then creates a local graph:
 
 - Evidence nodes: validated `EvidenceRecord` entries.
 - Framework nodes: FengHe 3C, 3D, 5M, and 3T concepts for message-flow analysis.
