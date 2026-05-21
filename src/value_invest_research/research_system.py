@@ -331,8 +331,98 @@ SECTION_LABEL_ZH = {
     "Risk sweep": "风险排雷",
 }
 
+SECTION_ID_TO_PAGE = {
+    "source_origin": "source_origin.html",
+    "history": "history.html",
+    "current_business": "current_business.html",
+    "value_chain": "value_chain.html",
+    "competition": "competition.html",
+    "strategy": "strategy.html",
+    "governance": "governance.html",
+    "risk_sweep": "risk_sweep.html",
+}
+
+INFO_CATEGORY_ORDER = ["evidence", "research_report", "opinion", "message"]
+SOURCE_ORIGIN_INFO_ORDER = ["evidence", "research_report", "message", "opinion"]
+INFO_CATEGORY_LABEL_ZH = {
+    "evidence": "证据",
+    "research_report": "研报",
+    "opinion": "观点",
+    "message": "消息",
+}
+INFO_CATEGORY_EXPLANATION_ZH = {
+    "evidence": "官方文件、财报、公告、监管文件等一手或准一手资料。",
+    "research_report": "第三方研究报告、行业数据和结构化研究材料。",
+    "opinion": "网上或特定个体观点，只能作为待验证角度。",
+    "message": "公开发布但未证实或未充分交叉验证的信息。",
+}
+STANCE_LABEL_ZH = {
+    "support": "支撑",
+    "refute": "反证",
+    "context": "补充背景",
+    "lead": "研究线索",
+}
+
+SECTION_KEY_QUESTIONS = {
+    "source_origin": [
+        "公司为什么在那个时间点出现，原始痛点是什么？",
+        "第一产品楔子、第一批用户和渠道切口是什么？",
+        "创始团队的能力能否解释原始模型形成？",
+        "早期基因今天是优势、约束，还是需要重新验证？",
+    ],
+    "history": [
+        "公司历史中哪些节点真正改变了商业模型或资本配置？",
+        "增长主要来自内生能力、并购扩张，还是周期/融资环境？",
+        "历史上的战略转折有没有留下治理、财务或组织约束？",
+    ],
+    "current_business": [
+        "当前收入、毛利、现金流分别由哪些业务驱动？",
+        "客户是谁，需求来自刚需、替换、生态绑定还是促销？",
+        "利润质量是否能转化为现金和可重复回报？",
+    ],
+    "value_chain": [
+        "公司在产业链中掌握哪一段价值，哪一段被供应商/渠道/客户拿走？",
+        "上游供给、关键部件和产能是否会改变毛利与交付？",
+        "渠道和售后体系是否足以支撑当前业务复杂度？",
+    ],
+    "competition": [
+        "公司真实竞争对手是谁，竞争发生在价格、产品、渠道还是生态？",
+        "份额变化是结构性优势、周期波动，还是补贴/价格战结果？",
+        "竞争强度是否会侵蚀毛利、现金流或品牌定位？",
+    ],
+    "strategy": [
+        "公司战略是否从源头能力自然延伸，还是跨越了能力边界？",
+        "资源配置是否与最重要利润池和风险点匹配？",
+        "战略投入能否被 KPI 和阶段性证据验证？",
+    ],
+    "governance": [
+        "创始人、控制权和管理层结构是否提升长期执行？",
+        "激励、董事会和少数股东保护是否足以约束资本配置？",
+        "组织文化是复利资产，还是会放大盲区和路径依赖？",
+    ],
+    "risk_sweep": [
+        "哪些风险足以改变公司基础画像，而不只是短期噪音？",
+        "财务、会计、法律、监管、技术和治理风险分别如何验证？",
+        "哪类新增证据能最快证伪当前判断？",
+    ],
+}
+
+L1_FRAMEWORK_QUESTIONS = {
+    "source_origin": "源头溯源：公司是怎么来的",
+    "history": "发展历史：公司的发展关键节点是什么",
+    "current_business": "当下的生意：当前业务板块下探",
+    "value_chain": "产业链定位：上下游分析",
+    "competition": "竞争格局：真实竞争对手和竞争强度是什么",
+    "strategy": "战略分析：过去、现在、未来",
+    "governance": "组织管理：管理层、治理和组织能力分析",
+    "risk_sweep": "风险暴露：哪些风险会改变基础画像",
+}
+
 SOURCE_NAME_ZH = {
     "Xiaomi IR Company Profile": "小米 IR 公司简介",
+    "Xiaomi Global IR Prospectus Overview": "小米全球 IR 招股概要",
+    "WIPO Xiaomi IP Advantage Case": "WIPO 小米创新案例",
+    "Xiaomi 2021 Annual Report Hardware Margin Pledge": "小米 2021 年报硬件净利率承诺",
     "Xiaomi Corporation 2025 Annual Report": "小米集团 2025 年报",
     "Xiaomi Corporation 2025 Annual Results Announcement": "小米集团 2025 年度业绩公告",
     "Xiaomi IR Management": "小米 IR 管理层",
@@ -363,6 +453,7 @@ SOURCE_NAME_ZH = {
 class ResearchSystemResult:
     ticker: str
     foundation_graph_path: str
+    qa_tree_path: str
     question_graph_path: str
     message_flow_path: str
     dashboard_path: str
@@ -375,6 +466,7 @@ class ResearchSystemResult:
         return {
             "ticker": self.ticker,
             "foundation_graph_path": self.foundation_graph_path,
+            "qa_tree_path": self.qa_tree_path,
             "question_graph_path": self.question_graph_path,
             "message_flow_path": self.message_flow_path,
             "dashboard_path": self.dashboard_path,
@@ -397,10 +489,12 @@ def build_research_system(root: Path, ticker: str) -> dict[str, Any]:
     research_dir.mkdir(parents=True, exist_ok=True)
 
     foundation_graph = _build_foundation_graph(normalized, evidence)
-    question_rows = _build_question_graph(normalized, foundation_graph)
-    message_rows = _build_message_flow(normalized, evidence, foundation_graph, question_rows)
+    qa_tree = _build_qa_tree(normalized, foundation_graph, evidence)
+    question_rows: list[dict[str, Any]] = []
+    message_rows: list[dict[str, Any]] = []
 
     foundation_path = research_dir / "foundation_graph.json"
+    qa_tree_path = research_dir / "qa_tree.json"
     question_path = research_dir / "question_graph.jsonl"
     message_path = research_dir / "message_flow.jsonl"
     dashboard_path = research_dir / "research_dashboard.html"
@@ -408,10 +502,18 @@ def build_research_system(root: Path, ticker: str) -> dict[str, Any]:
     pages_dir.mkdir(parents=True, exist_ok=True)
 
     _write_json(foundation_path, foundation_graph)
+    _write_json(qa_tree_path, qa_tree)
     _write_jsonl(question_path, question_rows)
     _write_jsonl(message_path, message_rows)
-    _write_text(dashboard_path, _render_dashboard(normalized, foundation_graph, question_rows, message_rows))
-    _write_text(pages_dir / "source_origin.html", _render_source_origin_page(normalized, foundation_graph, evidence))
+    _write_text(dashboard_path, _render_dashboard(normalized, foundation_graph, question_rows, message_rows, qa_tree))
+    for section in foundation_graph["sections"]:
+        page_name = SECTION_ID_TO_PAGE.get(section["id"], f"{section['id']}.html")
+        page_html = _render_foundation_qa_page(normalized, foundation_graph, evidence, section["id"])
+        _write_text(pages_dir / page_name, page_html)
+        for node in _l2_nodes_for_section(qa_tree, section["id"]):
+            l2_path = pages_dir / _l2_question_page_path(section["id"], node["id"])
+            l2_path.parent.mkdir(parents=True, exist_ok=True)
+            _write_text(l2_path, _render_l2_question_page(normalized, section, node, qa_tree, evidence))
 
     covered = sum(1 for section in foundation_graph["sections"] if section["status"] != "missing")
     RunLog(stock_dir / "logs").append(
@@ -419,12 +521,13 @@ def build_research_system(root: Path, ticker: str) -> dict[str, Any]:
         RunStatus.SUCCESS,
         tickers=[normalized],
         records_fetched=len(evidence),
-        records_new=len(question_rows) + len(message_rows) + len(foundation_graph["sections"]),
+        records_new=len(foundation_graph["sections"]),
     )
 
     return ResearchSystemResult(
         ticker=normalized,
         foundation_graph_path=str(foundation_path),
+        qa_tree_path=str(qa_tree_path),
         question_graph_path=str(question_path),
         message_flow_path=str(message_path),
         dashboard_path=str(dashboard_path),
@@ -492,10 +595,582 @@ def _build_foundation_graph(ticker: str, evidence: list[EvidenceRecord]) -> dict
     }
 
 
+def _build_qa_tree(ticker: str, foundation_graph: dict[str, Any], evidence: list[EvidenceRecord]) -> dict[str, Any]:
+    """Build the interactive question tree used by foundation drill-down pages."""
+    root_id = "company.foundation"
+    section_question_nodes: list[dict[str, Any]] = []
+    section_child_ids: dict[str, list[str]] = {}
+    for section in foundation_graph.get("sections", []):
+        child_nodes = _qa_nodes_for_section(ticker, section, evidence)
+        section_question_nodes.extend(child_nodes)
+        section_child_ids[section.get("id", "")] = [
+            node["id"]
+            for node in child_nodes
+            if node.get("parent_id") == f"foundation.{section.get('id', '')}"
+        ]
+
+    section_nodes: list[dict[str, Any]] = []
+    for section in foundation_graph.get("sections", []):
+        section_id = section.get("id", "")
+        node_id = f"foundation.{section_id}"
+        section_nodes.append(
+            {
+                "id": node_id,
+                "level": 1,
+                "parent_id": root_id,
+                "section_id": section_id,
+                "question": _foundation_section_question(section),
+                "current_answer": _foundation_section_answer(section),
+                "evidence_buckets": _qa_buckets_from_section(section),
+                "synthesis": _qa_synthesis_from_section(section),
+                "rollup_to_parent": _foundation_section_rollup(section),
+                "next_question_ids": section_child_ids.get(section_id, []),
+                "status": section.get("status", "missing"),
+            }
+        )
+
+    nodes = [
+        {
+            "id": root_id,
+            "level": 0,
+            "parent_id": None,
+            "section_id": "foundation",
+            "question": "这家公司应该先用哪组基础问题建立认知？",
+            "current_answer": "先用八步框架建立公司基础画像，再对每个板块逐层下钻；所有结论必须能回到证据、研报、消息和观点四类信息。",
+            "evidence_buckets": _qa_empty_buckets(),
+            "synthesis": {
+                "facts": [],
+                "inferences": ["八步框架是最外层问题集合，不是最终报告结构。"],
+                "judgment": "当前系统默认用三层问题树承载研究：八步框架、板块重点问题、进一步下钻问题。",
+                "gaps": ["交互追问目前先作为本地问题节点草稿，后续需要接入证据搜索和持久化更新。"],
+                "confidence": "medium",
+            },
+            "rollup_to_parent": "",
+            "next_question_ids": [node["id"] for node in section_nodes],
+            "status": foundation_graph.get("foundation_status", "incomplete"),
+        },
+        *section_nodes,
+        *section_question_nodes,
+    ]
+    return {
+        "schema_version": "1.0",
+        "ticker": ticker,
+        "generated_at": foundation_graph.get("generated_at"),
+        "default_depth": 3,
+        "default_active_node_id": "foundation.history",
+        "interaction_contract": {
+            "node_model": "Every research step is a question node with parent, level, evidence buckets, synthesis, rollup, and next questions.",
+            "information_categories": SOURCE_ORIGIN_INFO_ORDER,
+            "new_question_behavior": "Attach a new question to the active node, then search evidence and update synthesis before rolling conclusions up to the parent.",
+        },
+        "nodes": nodes,
+    }
+
+
+def _l2_nodes_for_section(qa_tree: dict[str, Any], section_id: str) -> list[dict[str, Any]]:
+    parent_id = f"foundation.{section_id}"
+    return [
+        node
+        for node in qa_tree.get("nodes", [])
+        if node.get("section_id") == section_id and node.get("parent_id") == parent_id and node.get("level") == 2
+    ]
+
+
+def _l2_question_page_path(section_id: str, node_id: str) -> Path:
+    return Path(section_id) / f"{_safe_id(node_id)}.html"
+
+
+def _l2_question_href(section_id: str, node_id: str) -> str:
+    return str(_l2_question_page_path(section_id, node_id)).replace("\\", "/")
+
+
+SECTION_QA_PARENT_IDS = {
+    "current_business": ["profit-cash", "customer-demand", "profit-quality"],
+    "value_chain": ["value-capture", "supply-constraint", "channel-service"],
+    "competition": ["real-peers", "share-quality", "competition-intensity"],
+    "strategy": ["capability-boundary", "resource-allocation", "kpi-validation"],
+    "governance": ["founder-control", "capital-discipline", "culture-blindspot"],
+    "risk_sweep": ["material-risk", "risk-verification", "falsification-trigger"],
+}
+
+SECTION_QA_DRILLDOWNS = {
+    "current_business": {
+        "profit-cash": [
+            ("segment-profit-pool", "哪个业务真正贡献毛利和现金，而不只是贡献收入？", "需要分部毛利、费用分摊、经营现金流和营运资本桥接。"),
+            ("ev-unit-economics", "EV/AI 新业务的单车经济是否已经足以单独成立？", "需要单车收入、单车毛利、质保计提、售后成本和价格调整。"),
+        ],
+        "customer-demand": [
+            ("demand-source", "需求来自真实替换/生态绑定，还是促销与新品周期？", "需要订单、等待周期、库存、价格变化和用户留存数据。"),
+            ("user-entry", "手机入口变化是否影响 IoT 和互联网服务变现？", "需要手机份额、MIUI MAU、多设备用户和服务 ARPU。"),
+        ],
+        "profit-quality": [
+            ("cash-conversion", "利润能否稳定转化为现金？", "需要经营现金流、应收应付、库存和资本开支桥接。"),
+            ("margin-sustainability", "高毛利业务的持续性来自结构优势还是阶段性周期？", "需要分业务毛利率、价格、成本和行业周期对照。"),
+        ],
+    },
+    "value_chain": {
+        "value-capture": [
+            ("supplier-power", "上游供应商是否拿走关键经济性？", "需要关键部件价格、供应商集中度、账期和采购承诺。"),
+            ("customer-channel-power", "渠道、客户和售后体系是否侵蚀利润？", "需要渠道结构、营销费用、售后网络和退换/维修成本。"),
+        ],
+        "supply-constraint": [
+            ("component-bottleneck", "关键部件短缺或涨价会不会改变交付和毛利？", "需要内存、芯片、电池、座舱和智能驾驶硬件价格数据。"),
+            ("capacity-quality", "产能爬坡是否会带来质量和成本压力？", "需要产能利用率、交付周期、缺陷率、召回和质保数据。"),
+        ],
+        "channel-service": [
+            ("offline-service", "线下渠道和售后能力是否匹配汽车业务复杂度？", "需要门店、服务中心、维修能力和用户投诉数据。"),
+            ("inventory-risk", "库存和渠道压货是否会掩盖真实需求？", "需要库存天数、渠道库存、价格折扣和出货/零售差异。"),
+        ],
+    },
+    "competition": {
+        "real-peers": [
+            ("phone-peer-map", "手机业务到底和谁竞争，竞争维度是什么？", "需要全球和区域份额、价格带、产品周期和渠道数据。"),
+            ("ev-peer-map", "EV 业务的真实竞品是传统车企、新势力还是生态型科技公司？", "需要价格带、车型定位、交付、毛利和智能化能力对照。"),
+        ],
+        "share-quality": [
+            ("share-vs-profit", "份额增长是否伴随利润质量改善？", "需要份额、ASP、毛利率、补贴和库存数据。"),
+            ("regional-mix", "份额变化来自区域结构、产品结构还是真实竞争力？", "需要中国、印度、欧洲等区域拆分和价格带数据。"),
+        ],
+        "competition-intensity": [
+            ("price-war", "价格战是否会持续压缩毛利和现金流？", "需要竞品价格、促销、BOM 成本和毛利弹性。"),
+            ("brand-position", "品牌定位能否支撑中高端化，而不是只靠性价比？", "需要高端机占比、复购、用户画像和价格带份额。"),
+        ],
+    },
+    "strategy": {
+        "capability-boundary": [
+            ("transferable-capability", "哪些能力能从手机/AIoT 迁移到汽车？", "需要用户体验、软件、生态连接、渠道和品牌流量证据。"),
+            ("new-capability", "哪些能力必须重新建设，不能从旧业务外推？", "需要制造、质量、安全、售后、监管和供应链证据。"),
+        ],
+        "resource-allocation": [
+            ("capital-priority", "资源是否投向最重要利润池和最大约束点？", "需要研发、资本开支、人员、产能和营销投入拆分。"),
+            ("cash-discipline", "战略投入是否会削弱现金回报和少数股东经济性？", "需要自由现金流、回购/分红、融资和股权激励数据。"),
+        ],
+        "kpi-validation": [
+            ("stage-kpi", "每个战略阶段应该用哪些 KPI 验证？", "需要交付、毛利、MAU、多设备用户、服务 ARPU 和质量成本。"),
+            ("trigger-map", "什么数据触发战略判断上修或下修？", "需要季度业绩、交付、价格调整、监管公告和份额变化。"),
+        ],
+    },
+    "governance": {
+        "founder-control": [
+            ("patient-capital", "创始人控制权是否带来长期战略耐心？", "需要长期投入、产品周期、研发和重大项目复盘。"),
+            ("minority-risk", "控制权是否放大少数股东治理折价？", "需要 WVR、董事会、关联交易和重大投资披露。"),
+        ],
+        "capital-discipline": [
+            ("approval-constraint", "重大资本配置是否有足够约束？", "需要董事会审批、投资回报披露、回购分红和融资记录。"),
+            ("incentive-alignment", "激励机制是否和每股价值创造一致？", "需要股权激励、考核指标、摊薄和管理层持股。"),
+        ],
+        "culture-blindspot": [
+            ("complexity-management", "组织是否能处理手机、IoT、服务和汽车的复杂度？", "需要管理层分工、汽车团队、质量体系和跨业务协同。"),
+            ("path-dependence", "早期互联网效率文化是否会在汽车业务上形成盲区？", "需要安全、质量、售后和监管响应案例。"),
+        ],
+    },
+    "risk_sweep": {
+        "material-risk": [
+            ("phone-base-risk", "手机基本盘弱化是否会改变整个生态基础？", "需要连续季度份额、出货、ASP、毛利和库存。"),
+            ("ev-safety-risk", "EV 安全、召回和质保风险是否会改变转型质量？", "需要召回、事故、投诉、质保计提和保险成本。"),
+        ],
+        "risk-verification": [
+            ("financial-risk", "资本开支和营运资本是否会压低现金回报？", "需要自由现金流、现金资源、债务、资本开支和库存。"),
+            ("regulatory-risk", "监管、数据、安全和产品责任风险如何验证？", "需要监管公告、诉讼、召回、处罚和整改进度。"),
+        ],
+        "falsification-trigger": [
+            ("fastest-trigger", "哪类新增证据最快证伪当前基础判断？", "需要价格、份额、交付、毛利、召回和现金流触发器。"),
+            ("monitoring-cadence", "这些风险应该按什么频率更新？", "需要季度业绩、月度交付、监管公告和行业数据更新节奏。"),
+        ],
+    },
+}
+
+
+def _qa_nodes_for_section(ticker: str, section: dict[str, Any], evidence: list[EvidenceRecord]) -> list[dict[str, Any]]:
+    section_id = section.get("id", "")
+    parent_node_id = f"foundation.{section_id}"
+    questions = _qa_parent_questions_for_section(ticker, section)
+    drilldowns = _qa_drilldowns_for_section(ticker, section, questions)
+    nodes: list[dict[str, Any]] = []
+    for question in questions:
+        node_id = f"{section_id}.{question['id']}"
+        child_ids = [f"{node_id}.{child['id']}" for child in drilldowns.get(question["id"], [])]
+        nodes.append(_qa_node_from_question(node_id, 2, parent_node_id, section_id, question, evidence, child_ids))
+        for child in drilldowns.get(question["id"], []):
+            child_node_id = f"{node_id}.{child['id']}"
+            nodes.append(_qa_node_from_question(child_node_id, 3, node_id, section_id, child, evidence, []))
+    return nodes
+
+
+def _qa_parent_questions_for_section(ticker: str, section: dict[str, Any]) -> list[dict[str, Any]]:
+    section_id = section.get("id", "")
+    if section_id == "source_origin":
+        return _source_origin_questions(ticker)
+    if section_id == "history":
+        return _history_questions(ticker)
+
+    questions: list[dict[str, Any]] = []
+    ids = SECTION_QA_PARENT_IDS.get(section_id, [])
+    for index, question_text in enumerate(section.get("key_questions", []), start=1):
+        question_id = ids[index - 1] if index <= len(ids) else f"q{index}"
+        rows = _section_rows_for_question(section, question_text)
+        info = _info_from_section_rows(rows)
+        questions.append(
+            {
+                "id": question_id,
+                "question": question_text,
+                "answer": _section_question_answer(section, question_text, rows),
+                "gap": _section_question_gap(section, question_text, rows),
+                "rollup": _section_question_rollup(section, rows),
+                "confidence": _section_question_confidence(rows),
+                "status": "open" if rows else "needs_data",
+                "info": info,
+            }
+        )
+    return questions
+
+
+def _qa_drilldowns_for_section(
+    ticker: str,
+    section: dict[str, Any],
+    questions: list[dict[str, Any]],
+) -> dict[str, list[dict[str, Any]]]:
+    section_id = section.get("id", "")
+    if section_id == "history":
+        return _history_drilldown_questions(ticker)
+    if section_id == "source_origin":
+        return _source_origin_drilldown_questions(ticker, questions)
+
+    drilldowns: dict[str, list[dict[str, Any]]] = {}
+    blueprints = SECTION_QA_DRILLDOWNS.get(section_id, {})
+    for question in questions:
+        parent_info = question.get("info", _qa_empty_buckets())
+        rows = []
+        for category in SOURCE_ORIGIN_INFO_ORDER:
+            rows.extend(parent_info.get(category, []))
+        child_questions: list[dict[str, Any]] = []
+        for child_id, child_question, child_gap in blueprints.get(question["id"], []):
+            child_questions.append(
+                {
+                    "id": child_id,
+                    "question": child_question,
+                    "answer": _child_question_answer(question, child_question, rows),
+                    "gap": child_gap,
+                    "rollup": _child_question_rollup(child_question),
+                    "confidence": "medium" if rows else "low",
+                    "status": "open" if rows else "needs_data",
+                    "info": parent_info,
+                }
+            )
+        drilldowns[question["id"]] = child_questions
+    return drilldowns
+
+
+def _source_origin_drilldown_questions(ticker: str, questions: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
+    drilldowns: dict[str, list[dict[str, Any]]] = {}
+    for question in questions:
+        proof_rollup = _source_origin_primary_proof_rollup(question)
+        boundary_rollup = _source_origin_boundary_rollup(question)
+        drilldowns[question["id"]] = [
+            {
+                "id": "primary-proof",
+                "question": "这个回答最需要哪条一手证据验证？",
+                "answer": proof_rollup,
+                "gap": question.get("gap", "需要补充一手证据。"),
+                "rollup": proof_rollup,
+                "confidence": question.get("confidence", "medium"),
+                "status": "open",
+                "info": question.get("info", _qa_empty_buckets()),
+            },
+            {
+                "id": "today-boundary",
+                "question": "这个源头基因今天还能解释什么，不能解释什么？",
+                "answer": boundary_rollup,
+                "gap": "需要把早期能力逐项映射到今天的业务节点和反证条件。",
+                "rollup": boundary_rollup,
+                "confidence": "medium",
+                "status": "open",
+                "info": question.get("info", _qa_empty_buckets()),
+            },
+        ]
+    return drilldowns
+
+
+def _source_origin_primary_proof_rollup(question: dict[str, Any]) -> str:
+    ids = _question_info_ids(question, ("evidence", "message"))
+    if ids:
+        return f"当前回答优先由 {', '.join(ids[:3])} 验证；仍需确认这些材料能直接证明问题起点，而不是事后叙事。"
+    return "当前回答还没有一手证据锚定，不能向上形成稳定公司基因判断。"
+
+
+def _source_origin_boundary_rollup(question: dict[str, Any]) -> str:
+    answer = _truncate_text(question.get("answer", ""), 100)
+    if answer:
+        return f"该源头问题向上提供的能力边界是：{answer}"
+    return "源头溯源的输出不是故事，而是后续业务分析的能力边界。"
+
+
+def _question_info_ids(question: dict[str, Any], categories: tuple[str, ...]) -> list[str]:
+    ids: list[str] = []
+    for category in categories:
+        for item in question.get("info", {}).get(category, []):
+            evidence_id = item.get("evidence_id", "")
+            if evidence_id and evidence_id not in ids:
+                ids.append(evidence_id)
+    return ids
+
+
+def _section_rows_for_question(section: dict[str, Any], question_text: str) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for category in SOURCE_ORIGIN_INFO_ORDER:
+        for row in section.get("information_by_category", {}).get(category, []):
+            if row.get("linked_question") == question_text:
+                rows.append(row)
+    if rows:
+        return rows
+
+    for category in SOURCE_ORIGIN_INFO_ORDER:
+        rows.extend(section.get("information_by_category", {}).get(category, []))
+    return rows[:4]
+
+
+def _info_from_section_rows(rows: list[dict[str, Any]]) -> dict[str, list[dict[str, str]]]:
+    info: dict[str, list[dict[str, str]]] = _qa_empty_buckets()
+    for row in rows:
+        category = row.get("source_category") or row.get("information_category")
+        if category not in info:
+            category = row.get("category")
+        if category not in info:
+            category = "evidence"
+        info[category].append(
+            _foundation_info(
+                row.get("evidence_id", ""),
+                STANCE_LABEL_ZH.get(row.get("stance", ""), row.get("stance", "信息")),
+                _section_row_point(row),
+            )
+        )
+    return info
+
+
+def _section_row_point(row: dict[str, Any]) -> str:
+    point = row.get("claim") or row.get("summary", "")
+    for prefix in ("支撑：", "反证：", "待验证线索：", "补充背景："):
+        if point.startswith(prefix):
+            return point[len(prefix) :]
+    return point
+
+
+def _section_question_answer(section: dict[str, Any], question_text: str, rows: list[dict[str, Any]]) -> str:
+    if not rows:
+        return "当前证据不足，先保持开放问题，不向上一层输出稳定判断。"
+    support = [row for row in rows if row.get("stance") == "support"]
+    refute = [row for row in rows if row.get("stance") == "refute"]
+    leads = [row for row in rows if row.get("stance") == "lead"]
+    first = rows[0]
+    evidence_phrase = f"当前已映射 {len(rows)} 条信息"
+    if refute:
+        return f"{evidence_phrase}，其中存在反证或边界条件；本问题不能只按正向叙事处理，需要优先验证：{_zh_text(refute[0].get('summary', refute[0].get('claim', '')))}"
+    if support:
+        return f"{evidence_phrase}，正向证据主要支持该问题已有基础判断；但仍需把事实拆到具体 KPI 和业务节点。核心证据是：{_zh_text(first.get('summary', first.get('claim', '')))}"
+    if leads:
+        return f"{evidence_phrase}，但主要是研究线索，不能单独强化结论；需要寻找一手或高可靠证据确认。"
+    return f"{evidence_phrase}，可作为背景信息，但还不足以形成强判断。"
+
+
+def _section_question_gap(section: dict[str, Any], question_text: str, rows: list[dict[str, Any]]) -> str:
+    if not rows:
+        return section.get("gaps", [f"需要补充能直接回答“{question_text}”的一手资料。"])[0]
+    if any(row.get("stance") == "refute" for row in rows):
+        return "需要补充反证后的量化影响、持续时间、管理层应对和后续更新触发器。"
+    if any(row.get("stance") == "lead" for row in rows):
+        return "需要把研究线索升级为一手证据或高可靠第三方数据。"
+    return "需要补充时间序列、同业对照和分业务 KPI，避免只停留在单点事实。"
+
+
+def _section_question_rollup(section: dict[str, Any], rows: list[dict[str, Any]]) -> str:
+    section_label = SECTION_LABEL_ZH.get(section.get("label", ""), section.get("label", "本板块"))
+    if not rows:
+        return f"{section_label}还不能向上一层输出稳定结论。"
+    if any(row.get("stance") == "refute" for row in rows):
+        return f"{section_label}存在需要优先处理的反证或边界条件。"
+    return f"{section_label}已有可用研究起点，但上抛结论仍需经过下钻问题验证。"
+
+
+def _section_question_confidence(rows: list[dict[str, Any]]) -> str:
+    if not rows:
+        return "low"
+    if any(row.get("reliability") in {"primary", "high"} for row in rows):
+        return "medium"
+    return "low"
+
+
+def _child_question_answer(parent: dict[str, Any], child_question: str, rows: list[dict[str, Any]]) -> str:
+    if rows:
+        return f"该问题从父节点证据出发继续下钻。当前不能直接合并为结论，需要单独补充能回答“{child_question}”的数据。"
+    return "该下钻问题还没有专门证据，先作为下一轮信息搜集任务。"
+
+
+def _child_question_rollup(child_question: str) -> str:
+    return f"完成“{child_question}”后，再决定是否修正父问题判断。"
+
+
+def _foundation_section_question(section: dict[str, Any]) -> str:
+    labels = {
+        "source_origin": "源头溯源：公司为什么出现，原始问题是什么？",
+        "history": "公司历史：哪些节点真正改变了商业模型、治理或资本配置？",
+        "current_business": "当下生意：公司今天靠什么赚钱，利润和现金流质量如何？",
+        "value_chain": "产业链定位：公司在哪些环节捕获或丢失经济性？",
+        "competition": "竞争格局：公司真实竞争地位和竞争强度如何？",
+        "strategy": "战略分析：战略是否沿着能力边界扩展，并能被数据验证？",
+        "governance": "组织、文化与治理：控制权、激励和组织能力是否支持长期复利？",
+        "risk_sweep": "风险排雷：哪些风险足以改变公司基础画像？",
+    }
+    return labels.get(section.get("id", ""), SECTION_LABEL_ZH.get(section.get("label", ""), section.get("label", "")))
+
+
+def _foundation_section_answer(section: dict[str, Any]) -> str:
+    facts = section.get("facts", [])
+    if facts:
+        return _zh_text(facts[0].get("statement", ""))
+    gaps = section.get("gaps", [])
+    if gaps:
+        return _zh_text(gaps[0])
+    return "当前证据不足，需要先补充一手或高可靠信息。"
+
+
+def _foundation_section_rollup(section: dict[str, Any]) -> str:
+    facts = [
+        _zh_text(fact.get("statement", ""))
+        for fact in section.get("facts", [])
+        if fact.get("statement")
+    ]
+    if facts:
+        return "；".join(_truncate_text(fact, 110) for fact in facts[:2])
+    inferences = [_zh_text(item) for item in section.get("inferences", []) if item]
+    if inferences:
+        return "；".join(_truncate_text(item, 110) for item in inferences[:2])
+    judgments = section.get("judgments", [])
+    if judgments:
+        return _zh_text(judgments[0])
+    return "该板块尚不能向上一层输出稳定结论。"
+
+
+def _qa_synthesis_from_section(section: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "facts": [
+            f"{_zh_text(fact.get('statement', ''))} [{fact.get('evidence_id', '')}]"
+            for fact in section.get("facts", [])
+        ],
+        "inferences": [_zh_text(item) for item in section.get("inferences", [])],
+        "judgment": _zh_text(section.get("judgments", [""])[0]) if section.get("judgments") else "",
+        "gaps": [_zh_text(item) for item in section.get("gaps", [])],
+        "confidence": "high" if section.get("status") == "evidenced" else "medium" if section.get("status") == "partial" else "low",
+    }
+
+
+def _qa_buckets_from_section(section: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:
+    buckets = _qa_empty_buckets()
+    groups = section.get("information_by_category", {})
+    for category in SOURCE_ORIGIN_INFO_ORDER:
+        for row in groups.get(category, []):
+            buckets[category].append(
+                {
+                    "evidence_id": row.get("evidence_id", ""),
+                    "relation": STANCE_LABEL_ZH.get(row.get("stance", ""), row.get("stance", "")),
+                    "point": row.get("claim", ""),
+                    "source_name": SOURCE_NAME_ZH.get(row.get("source_name", ""), row.get("source_name", "")),
+                    "url": row.get("url", ""),
+                    "summary": _zh_text(row.get("summary", "")),
+                    "reliability": row.get("reliability", ""),
+                    "materiality": row.get("materiality", ""),
+                }
+            )
+    return buckets
+
+
+def _qa_node_from_question(
+    node_id: str,
+    level: int,
+    parent_id: str,
+    section_id: str,
+    question: dict[str, Any],
+    evidence: list[EvidenceRecord],
+    child_ids: list[str],
+) -> dict[str, Any]:
+    facts = _qa_fact_lines(question)
+    return {
+        "id": node_id,
+        "level": level,
+        "parent_id": parent_id,
+        "section_id": section_id,
+        "question": question["question"],
+        "current_answer": question["answer"],
+        "evidence_buckets": _qa_buckets_from_question(question, evidence),
+        "synthesis": {
+            "facts": facts,
+            "inferences": [question["answer"]],
+            "judgment": question.get("rollup", question["answer"]),
+            "gaps": [question["gap"]],
+            "confidence": question.get("confidence", "medium"),
+        },
+        "rollup_to_parent": question.get("rollup", question["answer"]),
+        "next_question_ids": child_ids,
+        "status": question.get("status", "open"),
+    }
+
+
+def _qa_fact_lines(question: dict[str, Any]) -> list[str]:
+    lines: list[str] = []
+    for items in question.get("info", {}).values():
+        for item in items:
+            lines.append(f"{item.get('relation', '信息')}：{item.get('point', '')} [{item.get('evidence_id', '')}]")
+    return lines
+
+
+def _qa_buckets_from_question(question: dict[str, Any], evidence: list[EvidenceRecord]) -> dict[str, list[dict[str, Any]]]:
+    buckets = _qa_empty_buckets()
+    by_id = {record.id: record for record in evidence}
+    for category in SOURCE_ORIGIN_INFO_ORDER:
+        for item in question.get("info", {}).get(category, []):
+            record = by_id.get(item.get("evidence_id", ""))
+            if record is None:
+                buckets[category].append(_unresolved_question_info_item(item))
+            else:
+                buckets[category].append(
+                    {
+                        "evidence_id": record.id,
+                        "relation": item.get("relation", ""),
+                        "point": item.get("point", ""),
+                        "source_name": SOURCE_NAME_ZH.get(record.source_name, record.source_name),
+                        "url": record.url,
+                        "summary": _zh_text(record.summary),
+                        "reliability": record.reliability,
+                        "materiality": record.materiality,
+                        "missing_record": False,
+                    }
+                )
+    return buckets
+
+
+def _qa_empty_buckets() -> dict[str, list[dict[str, Any]]]:
+    return {category: [] for category in SOURCE_ORIGIN_INFO_ORDER}
+
+
+def _unresolved_question_info_item(item: dict[str, Any]) -> dict[str, Any]:
+    evidence_id = item.get("evidence_id", "")
+    return {
+        "evidence_id": evidence_id,
+        "relation": item.get("relation", ""),
+        "point": item.get("point", ""),
+        "source_name": f"待补入库：{evidence_id}" if evidence_id else "待补入库",
+        "url": "",
+        "summary": "该信息索引已在研究问题中声明，但本地 evidence.jsonl 尚未找到完整来源记录。",
+        "reliability": "unresolved",
+        "materiality": "unknown",
+        "missing_record": True,
+    }
+
+
 def _build_section(section_rule: dict[str, Any], evidence: list[EvidenceRecord]) -> dict[str, Any]:
     evidence_ids = _evidence_ids_for_keywords(evidence, section_rule["keywords"])
     status = _coverage_status(evidence_ids)
     summaries = _summaries_for_ids(evidence, evidence_ids, limit=4)
+    key_questions = SECTION_KEY_QUESTIONS.get(section_rule["id"], [])
     facts = [
         {
             "statement": summary,
@@ -516,11 +1191,15 @@ def _build_section(section_rule: dict[str, Any], evidence: list[EvidenceRecord])
         ]
         gaps = [] if status == "evidenced" else [f"Add at least one more independent source for {section_rule['label'].lower()}."]
 
+    page_name = SECTION_ID_TO_PAGE.get(section_rule["id"], f"{section_rule['id']}.html")
     return {
         "id": section_rule["id"],
         "label": section_rule["label"],
         "status": status,
         "evidence_ids": evidence_ids,
+        "detail_page": f"pages/{page_name}",
+        "key_questions": key_questions,
+        "information_by_category": _section_information_by_category(section_rule, evidence, evidence_ids, key_questions),
         "facts": facts,
         "inferences": inferences,
         "judgments": judgments,
@@ -534,6 +1213,89 @@ def _coverage_status(evidence_ids: list[str]) -> str:
     if len(evidence_ids) == 1:
         return "partial"
     return "missing"
+
+
+def _section_information_by_category(
+    section_rule: dict[str, Any],
+    evidence: list[EvidenceRecord],
+    evidence_ids: list[str],
+    key_questions: list[str],
+) -> dict[str, list[dict[str, Any]]]:
+    by_id = {record.id: record for record in evidence}
+    rows: dict[str, list[dict[str, Any]]] = {category: [] for category in INFO_CATEGORY_ORDER}
+    for evidence_id in evidence_ids:
+        record = by_id.get(evidence_id)
+        if record is None:
+            continue
+        category = record.information_category
+        rows.setdefault(category, []).append(
+            {
+                "evidence_id": record.id,
+                "information_category": category,
+                "source_name": record.source_name,
+                "source_type": record.source_type,
+                "url": record.url,
+                "summary": record.summary,
+                "reliability": record.reliability,
+                "materiality": record.materiality,
+                "stance": _information_stance(record),
+                "linked_question": _linked_section_question(section_rule["id"], record, key_questions),
+                "claim": _section_claim(section_rule["id"], record),
+                "explanation": _information_explanation(section_rule["id"], record),
+            }
+        )
+    return rows
+
+
+def _information_stance(record: EvidenceRecord) -> str:
+    text = _record_text(record)
+    if record.information_category in {"opinion", "message"} or record.reliability == "low":
+        return "lead"
+    if _matches_any(text, ["recall", "decline", "decrease", "loss", "risk", "safety", "liability", "pressure", "shortage"]):
+        return "refute"
+    if record.information_category in {"evidence", "research_report"}:
+        return "support"
+    return "context"
+
+
+def _linked_section_question(section_id: str, record: EvidenceRecord, key_questions: list[str]) -> str:
+    if not key_questions:
+        return "该板块需要先定义关键问题。"
+    text = _record_text(record)
+    if section_id == "risk_sweep":
+        return key_questions[-1]
+    if _matches_any(text, ["recall", "risk", "safety", "governance", "wvr", "control"]):
+        return key_questions[-1]
+    if _matches_any(text, ["revenue", "gross profit", "cash", "margin", "profit"]):
+        return key_questions[0]
+    if len(key_questions) > 1 and _matches_any(text, ["share", "rank", "competition", "shipment", "peer"]):
+        return key_questions[1]
+    return key_questions[0]
+
+
+def _section_claim(section_id: str, record: EvidenceRecord) -> str:
+    claims = {
+        "source_origin": "公司源头基因是否能解释今天的业务结构和能力边界。",
+        "history": "关键历史节点是否改变了公司的商业模型、治理结构或资本配置。",
+        "current_business": "当前生意是否具备可重复的收入、利润和现金转化质量。",
+        "value_chain": "公司是否在产业链中占据能持续捕获经济性的环节。",
+        "competition": "竞争地位是否足以抵抗价格战、份额流失和利润率压缩。",
+        "strategy": "战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。",
+        "governance": "管理层、控制权和激励结构是否提升长期复利而非放大治理折价。",
+        "risk_sweep": "当前风险是否足以改变基础画像或成为反证条件。",
+    }
+    base_claim = claims.get(section_id, "该信息是否改变本板块的基础判断。")
+    if _information_stance(record) == "refute":
+        return f"反证：{base_claim}"
+    if _information_stance(record) == "lead":
+        return f"待验证线索：{base_claim}"
+    return f"支撑：{base_claim}"
+
+
+def _information_explanation(section_id: str, record: EvidenceRecord) -> str:
+    category = INFO_CATEGORY_LABEL_ZH.get(record.information_category, record.information_category)
+    stance = STANCE_LABEL_ZH.get(_information_stance(record), _information_stance(record))
+    return f"{category}信息当前被标记为“{stance}”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。"
 
 
 def _detect_business_nodes(evidence: list[EvidenceRecord]) -> list[dict[str, Any]]:
@@ -772,6 +1534,7 @@ def _build_message_flow(
                 "message_fact": record.summary,
                 "source_name": record.source_name,
                 "source_type": record.source_type,
+                "information_category": record.information_category,
                 "reliability": record.reliability,
                 "materiality": record.materiality,
                 "prior_baseline": _prior_baseline(record, affected_nodes, affected_sections),
@@ -1198,29 +1961,622 @@ def _write_text(path: Path, text: str) -> None:
         file.write(text)
 
 
+def _apple_research_css() -> str:
+    return """
+    :root {
+      --ink: #1d1d1f;
+      --muted: #6e6e73;
+      --paper: #f5f5f7;
+      --panel: #ffffff;
+      --panel-soft: #fbfbfd;
+      --line: #d2d2d7;
+      --blue: #0066cc;
+      --green: #248a3d;
+      --amber: #a86600;
+      --red: #d70015;
+      --shadow: 0 18px 50px rgba(0, 0, 0, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.55;
+    }
+    header {
+      padding: clamp(52px, 8vw, 104px) clamp(20px, 6vw, 86px) 34px;
+      color: var(--ink);
+      background: linear-gradient(180deg, #fff 0%, #f8f8fa 72%, var(--paper) 100%);
+      border-bottom: 1px solid rgba(0, 0, 0, .06);
+    }
+    h1 { max-width: 1080px; margin: 0; font-size: clamp(44px, 7vw, 86px); font-weight: 700; line-height: .98; letter-spacing: 0; }
+    h2 { margin: 0 0 12px; font-size: clamp(28px, 4vw, 48px); font-weight: 700; letter-spacing: 0; }
+    h3 { margin: 0 0 10px; font-size: clamp(21px, 2.2vw, 29px); font-weight: 700; letter-spacing: 0; }
+    p { margin: 0 0 10px; }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .subtitle { max-width: 940px; margin-top: 18px; color: var(--muted); font-size: clamp(18px, 2.1vw, 24px); line-height: 1.45; }
+    .nav, nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 11px clamp(16px, 5vw, 70px);
+      background: rgba(245, 245, 247, .82);
+      border-bottom: 1px solid rgba(0, 0, 0, .08);
+      backdrop-filter: saturate(180%) blur(20px);
+    }
+    .nav a, nav a {
+      flex: 0 0 auto;
+      padding: 7px 12px;
+      color: var(--ink);
+      text-decoration: none;
+      border: 1px solid rgba(0, 0, 0, .08);
+      background: rgba(255, 255, 255, .74);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    main { width: min(1180px, calc(100% - 32px)); margin: 26px auto 72px; }
+    section {
+      margin: 18px 0;
+      padding: clamp(24px, 4vw, 44px);
+      background: rgba(255, 255, 255, .9);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, .7) inset;
+    }
+    .layer-label, .eyebrow { margin: 0 0 12px; color: var(--blue); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .summary-grid, .summary-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+    .summary-card, .metric {
+      padding: 16px;
+      background: rgba(255, 255, 255, .88);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      min-width: 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
+      color: var(--ink);
+    }
+    .summary-card span, .metric span { display: block; color: var(--muted); font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: none; }
+    .summary-card strong, .metric strong { display: block; margin-top: 8px; font-size: clamp(20px, 2.2vw, 30px); font-weight: 700; line-height: 1.1; overflow-wrap: anywhere; }
+    .summary-card p { margin: 9px 0 0; color: var(--muted); font-size: 13px; }
+    .foundation-grid, .grid, .lead-grid, .info-grid, .reference-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-items: start; }
+    .foundation-card, .card, .question-card, .history-card {
+      padding: clamp(18px, 3vw, 28px);
+      background: var(--panel);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      min-width: 0;
+      box-shadow: var(--shadow);
+    }
+    .foundation-card { border-left: 0; }
+    .foundation-card.partial, .foundation-card.missing { border-left: 0; }
+    .detail-link {
+      display: inline-flex;
+      margin-top: 12px;
+      padding: 8px 13px;
+      color: #fff;
+      background: var(--blue);
+      text-decoration: none;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .detail-link:hover { background: #005bb5; text-decoration: none; }
+    .answer-box, .rule-box {
+      padding: 16px;
+      background: #f5f8ff;
+      border: 1px solid #d6e6ff;
+      border-radius: 8px;
+      margin: 14px 0 16px;
+    }
+    .info-box {
+      padding: 14px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: var(--panel-soft);
+      min-width: 0;
+    }
+    .info-box h4 { margin: 0 0 10px; font-size: 13px; font-weight: 700; color: var(--muted); letter-spacing: .04em; }
+    .info-box ul { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+    .info-box li { margin: 0; padding-top: 12px; border-top: 1px solid rgba(0, 0, 0, .07); }
+    .info-box li:first-child { padding-top: 0; border-top: 0; }
+    .info-box.evidence { background: #f5f9ff; }
+    .info-box.research_report { background: #f4fbf7; }
+    .info-box.message { background: #fff9ef; }
+    .info-box.opinion { background: #f6f6f7; }
+    .timeline { display: grid; gap: 12px; margin-top: 16px; }
+    .timeline-row { display: grid; grid-template-columns: 120px 1fr; gap: 16px; padding: 16px; border: 1px solid rgba(0, 0, 0, .08); border-radius: 8px; background: var(--panel); }
+    .timeline-year { color: var(--blue); font-weight: 700; }
+    .field { margin-top: 12px; }
+    .field b { display: block; margin-bottom: 5px; color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: none; }
+    .note { color: var(--muted); font-size: 13px; }
+    .chip {
+      display: inline-flex;
+      max-width: 100%;
+      margin: 0 4px 7px 0;
+      padding: 3px 7px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .76);
+      color: #424245;
+      font-family: "SF Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 11px;
+      overflow-wrap: anywhere;
+    }
+    .status-evidenced { color: var(--green); font-weight: 800; }
+    .status-partial { color: var(--amber); font-weight: 800; }
+    .status-missing, .impact-weakening { color: var(--red); font-weight: 800; }
+    .impact-strengthening { color: var(--green); font-weight: 800; }
+    .impact-research_lead { color: var(--amber); font-weight: 800; }
+    table { width: 100%; border-collapse: separate; border-spacing: 0; background: #fff; font-size: 14px; border: 1px solid rgba(0, 0, 0, .08); border-radius: 8px; overflow: hidden; }
+    th, td { padding: 13px; border-bottom: 1px solid rgba(0, 0, 0, .08); vertical-align: top; text-align: left; }
+    tr:last-child td { border-bottom: 0; }
+    th { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .04em; background: #f5f5f7; text-transform: none; }
+    ul { margin: 8px 0 0; padding-left: 20px; }
+    li { margin: 5px 0; }
+    @media (max-width: 880px) {
+      .summary-grid, .summary-strip, .foundation-grid, .grid, .lead-grid, .info-grid, .reference-grid, .timeline-row { grid-template-columns: 1fr; }
+      table { font-size: 13px; }
+      header { padding-top: 42px; }
+    }
+    """
+
+
+def _qa_explorer_css() -> str:
+    return """
+    .qa-shell {
+      display: grid;
+      grid-template-columns: minmax(230px, .78fr) minmax(0, 1.45fr) minmax(300px, .95fr);
+      gap: 16px;
+      align-items: start;
+    }
+    .qa-full-research {
+      width: min(1180px, calc(100% - 32px));
+      margin: 26px auto 24px;
+    }
+    .qa-full-research .thesis-card {
+      margin: 14px 0 16px;
+      border-radius: 8px;
+      border-left: 0;
+      background: #111820;
+      box-shadow: var(--shadow);
+    }
+    .qa-full-research table {
+      margin: 12px 0 24px;
+    }
+    .qa-full-research .question-card {
+      margin: 16px 0;
+    }
+    .level-frame {
+      scroll-margin-top: 70px;
+    }
+    .l2-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .l2-card {
+      padding: clamp(18px, 2.5vw, 26px);
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      min-width: 0;
+    }
+    .l2-card h3 {
+      font-size: clamp(20px, 2vw, 27px);
+    }
+    .research-unit-card {
+      display: grid;
+      gap: 12px;
+    }
+    .decision-panel {
+      margin-top: 12px;
+      padding: 14px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8f8fa 100%);
+    }
+    .decision-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .decision-head b {
+      color: var(--ink);
+      font-size: 13px;
+      letter-spacing: .04em;
+    }
+    .decision-head span {
+      flex: 0 0 auto;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #eef5ff;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .decision-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .decision-box {
+      min-width: 0;
+      padding: 12px;
+      border: 1px solid rgba(0, 0, 0, .07);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .84);
+    }
+    .decision-box.judgment {
+      background: #111820;
+      color: #fff;
+    }
+    .decision-box.judgment h4,
+    .decision-box.judgment p {
+      color: #fff;
+    }
+    .decision-box h4,
+    .next-step-box b {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .decision-box ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .decision-box li {
+      margin: 4px 0;
+      font-size: 13px;
+    }
+    .evidence-score strong {
+      font-size: 20px;
+      color: var(--ink);
+    }
+    .next-step-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .next-step-box {
+      min-width: 0;
+      padding: 12px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #fff9ef;
+    }
+    .next-step-box p {
+      margin: 0;
+      font-size: 13px;
+    }
+    .l3-info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .l3-info-box {
+      min-width: 0;
+      padding: 10px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: var(--panel-soft);
+    }
+    .l3-info-box.evidence { background: #f5f9ff; }
+    .l3-info-box.research_report { background: #f4fbf7; }
+    .l3-info-box.message { background: #fff9ef; }
+    .l3-info-box.opinion { background: #f6f6f7; }
+    .l3-info-box h4 {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .l3-info-box ul {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .l3-info-box li {
+      margin: 0;
+      padding: 9px 0 0 10px;
+      border-top: 1px solid rgba(0, 0, 0, .07);
+      border-left: 3px solid #8e8e93;
+    }
+    .l3-info-box li:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+    .l3-info-box li.stance-support { border-left-color: var(--green); }
+    .l3-info-box li.stance-refute { border-left-color: var(--red); }
+    .l3-info-box li.stance-lead { border-left-color: var(--amber); }
+    .stance-pill,
+    .quality-pill {
+      display: inline-flex;
+      margin: 0 5px 7px 0;
+      padding: 3px 7px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .stance-pill {
+      background: #f5f5f7;
+      color: var(--ink);
+    }
+    .quality-pill {
+      background: #eef5ff;
+      color: var(--blue);
+    }
+    .qa-panel {
+      min-width: 0;
+      background: rgba(255, 255, 255, .92);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+    .qa-tree-panel, .qa-evidence-panel {
+      position: sticky;
+      top: 62px;
+      max-height: calc(100vh - 84px);
+      overflow: auto;
+      padding: 16px;
+    }
+    .qa-main-panel { padding: clamp(22px, 3vw, 34px); }
+    .qa-kicker {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      margin-bottom: 10px;
+    }
+    .qa-tree-group { margin: 0 0 16px; }
+    .qa-tree-title {
+      margin: 12px 0 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .qa-node-button {
+      width: 100%;
+      display: block;
+      margin: 5px 0;
+      padding: 9px 10px;
+      color: var(--ink);
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      text-align: left;
+      font: inherit;
+      cursor: pointer;
+    }
+    .qa-node-button:hover { background: #f5f5f7; }
+    .qa-node-button.active {
+      background: #f5f8ff;
+      border-color: #c9ddff;
+      color: var(--blue);
+      font-weight: 700;
+    }
+    .qa-node-level {
+      display: inline-flex;
+      margin-right: 6px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .qa-level-2 { padding-left: 20px; }
+    .qa-level-3 { padding-left: 36px; }
+    .qa-level-4 { padding-left: 52px; }
+    .qa-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .qa-badge {
+      display: inline-flex;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #f5f5f7;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .qa-question-title { margin-bottom: 14px; }
+    .qa-rollup {
+      margin: 14px 0;
+      padding: 14px;
+      border: 1px solid #d6e6ff;
+      border-radius: 8px;
+      background: #f5f8ff;
+    }
+    .qa-rollup strong { color: var(--blue); }
+    .qa-synthesis-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .qa-synthesis-box {
+      padding: 14px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: var(--panel-soft);
+    }
+    .qa-synthesis-box h4, .qa-child-list h4, .qa-bucket h4 {
+      margin: 0 0 9px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .qa-child-list { margin-top: 16px; }
+    .qa-child-list button {
+      display: block;
+      width: 100%;
+      margin: 7px 0;
+      padding: 11px 12px;
+      text-align: left;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      font: inherit;
+      cursor: pointer;
+    }
+    .qa-child-list button:hover { border-color: #c9ddff; color: var(--blue); }
+    .qa-bucket {
+      margin-bottom: 12px;
+      padding: 14px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: var(--panel-soft);
+    }
+    .qa-bucket.evidence { background: #f5f9ff; }
+    .qa-bucket.research_report { background: #f4fbf7; }
+    .qa-bucket.message { background: #fff9ef; }
+    .qa-bucket.opinion { background: #f6f6f7; }
+    .qa-evidence-item {
+      padding: 11px 0;
+      border-top: 1px solid rgba(0, 0, 0, .07);
+    }
+    .qa-evidence-item:first-of-type { border-top: 0; padding-top: 0; }
+    .qa-empty { color: var(--muted); font-size: 13px; }
+    .qa-ask textarea {
+      width: 100%;
+      min-height: 92px;
+      resize: vertical;
+      padding: 12px;
+      border: 1px solid rgba(0, 0, 0, .12);
+      border-radius: 8px;
+      font: inherit;
+      background: #fff;
+    }
+    .draft-question textarea {
+      width: 100%;
+      min-height: 92px;
+      resize: vertical;
+      padding: 12px;
+      border: 1px solid rgba(0, 0, 0, .12);
+      border-radius: 8px;
+      font: inherit;
+      background: #fff;
+    }
+    .qa-ask-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .qa-ask button {
+      padding: 8px 12px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 999px;
+      font: inherit;
+      cursor: pointer;
+      background: #fff;
+    }
+    .qa-ask button.primary {
+      color: #fff;
+      background: var(--blue);
+      border-color: var(--blue);
+      font-weight: 700;
+    }
+    .draft-question button {
+      padding: 8px 12px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 999px;
+      font: inherit;
+      cursor: pointer;
+      background: #fff;
+    }
+    .draft-question button.primary {
+      color: #fff;
+      background: var(--blue);
+      border-color: var(--blue);
+      font-weight: 700;
+    }
+    .qa-static-index {
+      width: min(1180px, calc(100% - 32px));
+      margin: 22px auto 72px;
+    }
+    .qa-static-card {
+      margin: 12px 0;
+      padding: 16px;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
+    }
+    .qa-static-card h3 {
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+      margin-bottom: 8px;
+      font-size: 19px;
+    }
+    .qa-static-card span {
+      flex: 0 0 auto;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .qa-static-card ul {
+      display: grid;
+      gap: 6px;
+      margin-top: 10px;
+      padding-left: 0;
+      list-style: none;
+    }
+    .qa-static-card li {
+      display: flex;
+      gap: 8px;
+      margin: 0;
+      padding: 8px 10px;
+      background: #f5f5f7;
+      border-radius: 8px;
+    }
+    @media (max-width: 1080px) {
+      .qa-shell { grid-template-columns: 1fr; }
+      .l2-grid, .l3-info-grid, .decision-grid, .next-step-grid { grid-template-columns: 1fr; }
+      .qa-tree-panel, .qa-evidence-panel { position: static; max-height: none; }
+      .qa-synthesis-grid { grid-template-columns: 1fr; }
+    }
+    """
+
+
 def _render_dashboard(
     ticker: str,
     foundation_graph: dict[str, Any],
     questions: list[dict[str, Any]],
     messages: list[dict[str, Any]],
+    qa_tree: dict[str, Any],
 ) -> str:
-    p0_questions = [question for question in questions if question["priority"] == "P0"]
-    section_cards = "\n".join(_render_foundation_section_card(section) for section in foundation_graph["sections"])
-    question_cards = "\n".join(_render_question_card(question) for question in p0_questions[:10])
-    message_rows = "\n".join(_render_message_row(message) for message in messages[:14])
-    summary = _committee_summary(ticker, foundation_graph, p0_questions, messages)
-    summary_cards = "\n".join(
-        f"<div class=\"summary-card\"><span>{escape(_zh_text(item['label']))}</span><strong>{escape(_zh_text(item['value']))}</strong><p>{escape(_zh_text(item['detail']))}</p></div>"
-        for item in summary["cards"]
-    )
-    disconfirming_items = "\n".join(f"<li>{escape(item)}</li>" for item in summary["disconfirming"])
+    section_cards = "\n".join(_render_l0_framework_card(section, qa_tree) for section in foundation_graph["sections"])
+    current_question = "公司基础框架：这家公司应该先用哪组基础问题建立认知？"
+    l0_summary = _foundation_l0_summary(ticker, foundation_graph)
+    add_question_box = _render_add_question_box(f"{ticker}:l0", "L0 公司基础框架")
 
     return f"""<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{escape(ticker)} 四层投研工作台</title>
+  <title>{escape(ticker)} 公司基础画像</title>
   <style>
     :root {{
       --ink: #17202a;
@@ -1329,69 +2685,1476 @@ def _render_dashboard(
       table {{ font-size: 13px; }}
     }}
   </style>
+  <style>{_apple_research_css()}</style>
 </head>
 <body>
   <header>
-    <h1>{escape(ticker)} 四层投研工作台</h1>
-    <p class="subtitle">投委会摘要、公司基础画像、关键问题下钻、消息流更新区。每个判断都回到证据、假设和反证条件，而不是停留在静态报告段落。</p>
+    <p class="eyebrow">L0 / 公司基础框架</p>
+    <h1>{escape(ticker)} 公司基础框架</h1>
+    <p class="subtitle">当前页面只保留问题结构：当前要研究的问题、L1 子问题、子结构汇总结论和详情页跳转。</p>
   </header>
   <nav>
-    <a href="#committee">投委会摘要</a>
-    <a href="#foundation">公司基础画像</a>
-    <a href="#questions">关键问题下钻</a>
-    <a href="#message-flow">消息流更新区</a>
+    <a href="#current-question">当前问题</a>
+    <a href="#foundation">子问题</a>
+    <a href="#add-question">新增问题</a>
   </nav>
   <main>
-    <section id="committee">
-      <div class="layer-label">第一层</div>
-      <h2>一页投委会摘要</h2>
-      <div class="summary-grid">{summary_cards}</div>
-      <div class="committee">
-        <div class="committee-panel">
-          <h3>最关键结论</h3>
-          <p>{escape(summary["key_conclusion"])}</p>
-        </div>
-        <div class="committee-panel">
-          <h3>最大不确定性</h3>
-          <p><strong>{escape(summary["max_uncertainty"])}</strong></p>
-          <p class="note">该问题必须先下钻，不能被总量收入或单条新闻掩盖。</p>
-        </div>
-        <div class="committee-panel">
-          <h3>主驱动</h3>
-          <p>{escape(summary["dominant_driver"])}</p>
-        </div>
-        <div class="committee-panel">
-          <h3>反证条件</h3>
-          <ul>{disconfirming_items}</ul>
-        </div>
-      </div>
+    <section id="current-question">
+      <div class="layer-label">当前要研究的问题</div>
+      <h2>{escape(current_question)}</h2>
+      <div class="rule-box"><p>{escape(l0_summary)}</p></div>
     </section>
 
     <section id="foundation">
-      <div class="layer-label">第二层</div>
-      <h2>公司基础画像：八步框架，每节拆成事实、推论、判断、缺口</h2>
+      <div class="layer-label">子问题列表</div>
+      <h2>L1 子问题</h2>
       <div class="foundation-grid">{section_cards}</div>
     </section>
 
-    <section id="questions">
-      <div class="layer-label">第三层</div>
-      <h2>关键问题下钻：问题树</h2>
-      <div class="grid">{question_cards}</div>
-    </section>
+    {add_question_box}
+  </main>
+  <script>{_draft_question_js()}</script>
+</body>
+</html>
+"""
 
-    <section id="message-flow">
-      <div class="layer-label">第四层</div>
-      <h2>消息流更新区：消息流冲击分析挂到问题、假设和业务节点</h2>
+
+def _render_foundation_detail_page(
+    ticker: str,
+    section: dict[str, Any],
+    evidence: list[EvidenceRecord],
+) -> str:
+    section_label = SECTION_LABEL_ZH.get(section["label"], section["label"])
+    status_label = _zh_text(section["status"])
+    key_questions = _render_statement_list(section.get("key_questions", []), "尚未定义本板块关键问题。")
+    facts = _render_statement_list(
+        [
+            f"{_zh_text(fact['statement'])} [{fact['evidence_id']}]"
+            for fact in section.get("facts", [])
+        ],
+        "No local fact evidence yet.",
+    )
+    inferences = _render_statement_list(section.get("inferences", []), "No inference until evidence is added.")
+    judgments = _render_statement_list(section.get("judgments", []), "No judgment until evidence is added.")
+    gaps = _render_statement_list(section.get("gaps", []), "No material gap flagged.")
+    information_tables = _render_information_category_tables(section)
+    evidence_records = _records_for_ids(evidence, section.get("evidence_ids", []))
+    evidence_rows = "\n".join(_render_evidence_record_row(record) for record in evidence_records)
+    evidence_rows = evidence_rows or '<tr><td colspan="6" class="note">当前没有可展示证据。</td></tr>'
+
+    return f"""<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{escape(ticker)} {escape(section_label)}</title>
+  <style>
+    :root {{
+      --ink: #17202a;
+      --muted: #62707c;
+      --paper: #f6f3ea;
+      --panel: #fffdfa;
+      --line: #d9ded8;
+      --green: #1f7a5c;
+      --amber: #b66a18;
+      --red: #b2473e;
+      --blue: #2d5d8f;
+      --charcoal: #121a22;
+    }}
+    * {{ box-sizing: border-box; }}
+    body {{ margin: 0; color: var(--ink); background: var(--paper); font-family: "Avenir Next", "Gill Sans", "PingFang SC", "Microsoft YaHei", sans-serif; line-height: 1.62; }}
+    header {{ padding: 34px clamp(18px, 5vw, 64px) 26px; color: #fff; background: var(--charcoal); border-bottom: 7px solid var(--green); }}
+    h1 {{ margin: 0; font-size: clamp(34px, 5.4vw, 62px); line-height: 1; letter-spacing: 0; }}
+    h2 {{ margin: 0 0 12px; font-size: clamp(22px, 3vw, 34px); letter-spacing: 0; }}
+    h3 {{ margin: 0 0 8px; font-size: 18px; }}
+    p {{ margin: 0 0 10px; }}
+    a {{ color: var(--blue); }}
+    .subtitle {{ max-width: 980px; margin-top: 14px; color: #d8e1dd; font-size: 17px; }}
+    .nav {{ position: sticky; top: 0; z-index: 10; display: flex; gap: 8px; overflow-x: auto; padding: 10px clamp(14px, 4vw, 54px); background: rgba(246,243,234,.96); border-bottom: 1px solid var(--line); backdrop-filter: blur(10px); }}
+    .nav a {{ flex: 0 0 auto; padding: 7px 10px; color: var(--ink); text-decoration: none; border: 1px solid var(--line); background: #fff; border-radius: 999px; font-size: 13px; font-weight: 700; }}
+    main {{ width: min(1160px, calc(100% - 28px)); margin: 22px auto 58px; }}
+    section {{ margin: 16px 0; padding: clamp(18px, 3vw, 30px); background: rgba(255,253,250,.95); border: 1px solid var(--line); }}
+    .summary-strip {{ display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 18px; }}
+    .metric {{ padding: 14px; background: #fff; border: 1px solid var(--line); min-width: 0; color: var(--ink); }}
+    .metric span {{ display: block; color: var(--muted); font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }}
+    .metric strong {{ display: block; margin-top: 6px; font-size: clamp(21px, 2.4vw, 32px); line-height: 1.08; }}
+    .lead-grid {{ display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }}
+    .field {{ margin-top: 12px; }}
+    .field b {{ display: block; margin-bottom: 4px; color: var(--muted); font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }}
+    .note {{ color: var(--muted); font-size: 13px; }}
+    .chip {{ display: inline-flex; max-width: 100%; margin: 2px 4px 2px 0; padding: 2px 7px; border-radius: 999px; background: #edf3f1; color: #2a5146; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; overflow-wrap: anywhere; }}
+    .status-evidenced {{ color: var(--green); font-weight: 800; }}
+    .status-partial {{ color: var(--amber); font-weight: 800; }}
+    .status-missing {{ color: var(--red); font-weight: 800; }}
+    table {{ width: 100%; border-collapse: collapse; background: #fff; font-size: 14px; margin-bottom: 16px; }}
+    th, td {{ padding: 10px; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; }}
+    th {{ color: var(--muted); font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; background: #eef2ee; }}
+    ul {{ margin: 8px 0 0; padding-left: 20px; }}
+    li {{ margin: 5px 0; }}
+    @media (max-width: 880px) {{ .summary-strip, .lead-grid {{ grid-template-columns: 1fr; }} table {{ font-size: 13px; }} }}
+  </style>
+  <style>{_apple_research_css()}</style>
+</head>
+<body>
+  <header>
+    <h1>{escape(ticker)} {escape(section_label)}</h1>
+    <p class="subtitle">该页是八步框架的独立研究单元：先定义关键问题，再把证据、研报、观点和消息分别映射到支撑/反证关系。</p>
+    <div class="summary-strip">
+      <div class="metric"><span>本节状态</span><strong class="status-{escape(section['status'])}">{escape(status_label)}</strong></div>
+      <div class="metric"><span>关键问题</span><strong>{len(section.get("key_questions", []))}</strong></div>
+      <div class="metric"><span>信息条目</span><strong>{len(section.get("evidence_ids", []))}</strong></div>
+    </div>
+  </header>
+  <nav class="nav">
+    <a href="../research_dashboard.html#foundation">返回总览</a>
+    <a href="#questions">关键问题</a>
+    <a href="#info-map">四类信息</a>
+    <a href="#judgment">判断与缺口</a>
+    <a href="#records">信息索引</a>
+  </nav>
+  <main>
+    <section id="questions">
+      <h2>这个子板块最关键的问题</h2>
+      {key_questions}
+    </section>
+    <section id="info-map">
+      <h2>四类信息如何支撑或反证论点</h2>
+      {information_tables}
+    </section>
+    <section id="judgment">
+      <h2>事实、推论、判断、缺口</h2>
+      <div class="lead-grid">
+        <div>
+          <div class="field"><b>事实</b>{facts}</div>
+          <div class="field"><b>推论</b>{inferences}</div>
+        </div>
+        <div>
+          <div class="field"><b>判断</b>{judgments}</div>
+          <div class="field"><b>缺口</b>{gaps}</div>
+        </div>
+      </div>
+    </section>
+    <section id="records">
+      <h2>信息索引</h2>
       <table>
-        <thead><tr><th>消息 / 证据</th><th>影响</th><th>挂载节点</th><th>关联问题</th><th>边际变化</th></tr></thead>
-        <tbody>{message_rows}</tbody>
+        <thead><tr><th>信息 ID</th><th>类别</th><th>来源</th><th>日期</th><th>可靠性 / 重要性</th><th>摘要</th></tr></thead>
+        <tbody>{evidence_rows}</tbody>
       </table>
-      <p class="note">边界：该页面不是交易指令。低可靠证据只生成研究线索；任何强化结论的输出仍需说明主导 D 驱动、3T 时间框架和反证测试。</p>
     </section>
   </main>
 </body>
 </html>
 """
+
+
+def _render_foundation_qa_page(
+    ticker: str,
+    foundation_graph: dict[str, Any],
+    evidence: list[EvidenceRecord],
+    section_id: str,
+) -> str:
+    section = _foundation_section_by_id(foundation_graph, section_id)
+    section_label = SECTION_LABEL_ZH.get(section["label"], section["label"])
+    qa_tree = _build_qa_tree(ticker, foundation_graph, evidence)
+    section_node_count = sum(1 for node in qa_tree["nodes"] if node.get("section_id") == section_id)
+    status_label = _zh_text(section["status"])
+    step_index = next(
+        (index for index, rule in enumerate(FOUNDATION_SECTIONS, start=1) if rule["id"] == section_id),
+        0,
+    )
+    current_question = _foundation_section_question(section)
+    current_summary = _foundation_section_rollup(section)
+    l1_overview = _render_l1_overview(section, qa_tree)
+    add_question_box = _render_add_question_box(f"{ticker}:l1:{section_id}", f"L1 {section_label}")
+
+    return f"""<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{escape(ticker)} {escape(section_label)} QA Explorer</title>
+  <style>{_apple_research_css()}{_qa_explorer_css()}</style>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">L1 子页面 / 八步框架第 {step_index} 步</p>
+    <h1>{escape(ticker)} L1：{escape(section_label)}</h1>
+    <p class="subtitle">本页只保留当前问题、L2 子问题汇总结论、子问题列表、详情页跳转和新增问题框。</p>
+    <div class="summary-strip">
+      <div class="metric"><span>本节状态</span><strong class="status-{escape(section['status'])}">{escape(status_label)}</strong></div>
+      <div class="metric"><span>当前层级</span><strong>L1</strong></div>
+      <div class="metric"><span>问题节点</span><strong>{section_node_count}</strong></div>
+      <div class="metric"><span>子页面</span><strong>L2</strong></div>
+    </div>
+  </header>
+  <nav class="nav">
+    <a href="../research_dashboard.html#foundation">返回总览</a>
+    <a href="#current-question">当前问题</a>
+    <a href="#l1-questions">子问题</a>
+    <a href="#add-question">新增问题</a>
+  </nav>
+  <main class="qa-full-research">
+    <section id="current-question" class="level-frame">
+      <p class="eyebrow">当前要研究的问题</p>
+      <h2>{escape(current_question)}</h2>
+      <div class="rule-box"><p>{escape(_zh_text(current_summary))}</p></div>
+    </section>
+    {l1_overview}
+    {add_question_box}
+  </main>
+  <script>{_draft_question_js()}</script>
+</body>
+</html>
+"""
+
+
+def _render_l1_overview(section: dict[str, Any], qa_tree: dict[str, Any]) -> str:
+    section_id = section.get("id", "")
+    section_label = SECTION_LABEL_ZH.get(section.get("label", ""), section.get("label", ""))
+    l2_nodes = _l2_nodes_for_section(qa_tree, section_id)
+    nodes_by_id = {node.get("id"): node for node in qa_tree.get("nodes", [])}
+    l2_cards = "\n".join(_render_l2_entry_card(section_id, node, nodes_by_id) for node in l2_nodes)
+    if not l2_cards:
+        l2_cards = '<p class="qa-empty">当前板块尚未生成 L2 问题。</p>'
+    return f"""
+  <section id="l1-questions" class="qa-full-research level-frame">
+    <p class="eyebrow">子问题列表 / {escape(section_label)}</p>
+    <h2>L2 子问题</h2>
+    <div class="l2-grid">{l2_cards}</div>
+  </section>
+"""
+
+
+def _render_l2_entry_card(section_id: str, node: dict[str, Any], nodes_by_id: dict[str, dict[str, Any]]) -> str:
+    href = _l2_question_href(section_id, node.get("id", "question"))
+    child_nodes = [nodes_by_id[child_id] for child_id in node.get("next_question_ids", []) if child_id in nodes_by_id]
+    summary = _truncate_text(_children_summary(child_nodes, nodes_by_id) or _node_summary(node), 230)
+    child_items = _render_child_question_list(node, nodes_by_id)
+    gap_items = _render_child_gap_list(child_nodes)
+    return (
+        '<article class="l2-card">'
+        '<p class="eyebrow">L2 问题</p>'
+        f"<h3>{escape(node.get('question', ''))}</h3>"
+        f"<div class=\"field\"><b>子结构汇总结论</b><p>{escape(summary)}</p></div>"
+        f"<div class=\"field\"><b>子问题列表</b>{child_items}</div>"
+        f"<div class=\"field\"><b>高优先级缺口</b>{gap_items}</div>"
+        f"<a class=\"detail-link\" href=\"{escape(href)}\">打开 L2 问题页</a>"
+        "</article>"
+    )
+
+
+def _node_summary(node: dict[str, Any]) -> str:
+    rollup = _zh_text(node.get("rollup_to_parent", ""))
+    answer = _zh_text(node.get("current_answer", ""))
+    return rollup or answer or "当前没有形成汇总结论。"
+
+
+def _children_summary(children: list[dict[str, Any]], nodes_by_id: dict[str, dict[str, Any]]) -> str:
+    del nodes_by_id
+    summaries: list[str] = []
+    for child in children:
+        summary = _node_summary(child)
+        if not summary or summary == "当前没有形成汇总结论。":
+            continue
+        question = _truncate_text(child.get("question", ""), 34)
+        item = f"{question}：{summary}" if question else summary
+        if item not in summaries:
+            summaries.append(item)
+    return "；".join(_truncate_text(summary, 90) for summary in summaries[:3])
+
+
+def _render_child_gap_list(children: list[dict[str, Any]]) -> str:
+    gaps: list[str] = []
+    for child in children:
+        for gap in child.get("synthesis", {}).get("gaps", []):
+            text = _truncate_text(_zh_text(gap), 82)
+            if text and text not in gaps:
+                gaps.append(text)
+    if not gaps:
+        return '<p class="note">暂无明确缺口。</p>'
+    return "<ul>" + "".join(f"<li>{escape(gap)}</li>" for gap in gaps[:3]) + "</ul>"
+
+
+def _section_evidence_summary(section: dict[str, Any]) -> str:
+    facts = [
+        _zh_text(fact.get("statement", ""))
+        for fact in section.get("facts", [])
+        if fact.get("statement")
+    ]
+    if facts:
+        return "；".join(_truncate_text(fact, 110) for fact in facts[:2])
+    inferences = [_zh_text(item) for item in section.get("inferences", []) if item]
+    if inferences:
+        return "；".join(_truncate_text(item, 110) for item in inferences[:2])
+    return _zh_text(_foundation_section_rollup(section))
+
+
+def _render_child_question_list(node: dict[str, Any], nodes_by_id: dict[str, dict[str, Any]] | None = None) -> str:
+    child_ids = node.get("next_question_ids", [])
+    if not child_ids:
+        return '<p class="note">暂无子问题，可在下方新增问题。</p>'
+    items = []
+    for child_id in child_ids:
+        child = nodes_by_id.get(child_id) if nodes_by_id else None
+        question = child.get("question", child_id) if child else child_id.split(".")[-1]
+        items.append(f"<li>{escape(question)}</li>")
+    return "<ul>" + "".join(items) + "</ul>"
+
+
+def _truncate_text(value: str, limit: int) -> str:
+    return value if len(value) <= limit else value[: limit - 1] + "…"
+
+
+def _same_research_text(left: str, right: str) -> bool:
+    return re.sub(r"\s+", "", _zh_text(left or "")) == re.sub(r"\s+", "", _zh_text(right or ""))
+
+
+def _rollup_box_html(label: str, answer: str, rollup: str) -> str:
+    if not rollup or _same_research_text(answer, rollup):
+        return ""
+    return f"<div class=\"qa-rollup\"><strong>{escape(label)}</strong><p>{escape(_zh_text(rollup))}</p></div>"
+
+
+def _render_l2_question_page(
+    ticker: str,
+    section: dict[str, Any],
+    node: dict[str, Any],
+    qa_tree: dict[str, Any],
+    evidence: list[EvidenceRecord],
+) -> str:
+    del evidence
+    section_id = section.get("id", "")
+    section_label = SECTION_LABEL_ZH.get(section.get("label", ""), section.get("label", ""))
+    nodes_by_id = {item.get("id"): item for item in qa_tree.get("nodes", [])}
+    l3_nodes = [nodes_by_id[node_id] for node_id in node.get("next_question_ids", []) if node_id in nodes_by_id]
+    l3_cards = "\n".join(_render_l3_question_card(child) for child in l3_nodes)
+    if not l3_cards:
+        l3_cards = '<p class="qa-empty">当前 L2 问题尚未生成 L3 追问。</p>'
+    synthesis = node.get("synthesis", {})
+    summary = _node_summary(node)
+    decision_panel = _render_node_decision_panel(node, title="本层研究判断")
+    gap_panel = _render_node_next_steps(node)
+    add_question_box = _render_add_question_box(f"{ticker}:l2:{node.get('id', '')}", "L2 问题")
+    section_page = f"../{SECTION_ID_TO_PAGE.get(section_id, f'{section_id}.html')}"
+    return f"""<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{escape(ticker)} L2 {escape(node.get("question", ""))}</title>
+  <style>{_apple_research_css()}{_qa_explorer_css()}</style>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">L2 问题展开 / {escape(section_label)}</p>
+    <h1>{escape(node.get("question", ""))}</h1>
+    <p class="subtitle">本页按投研下钻单元展示：当前判断、事实依据、推导逻辑、反证边界、下一步数据和 L3 追问。</p>
+    <div class="summary-strip">
+      <div class="metric"><span>所属 L1</span><strong>{escape(section_label)}</strong></div>
+      <div class="metric"><span>L3 追问</span><strong>{len(l3_nodes)}</strong></div>
+      <div class="metric"><span>节点状态</span><strong>{escape(node.get("status", "open"))}</strong></div>
+      <div class="metric"><span>置信度</span><strong>{escape(synthesis.get("confidence", "unknown"))}</strong></div>
+    </div>
+  </header>
+  <nav class="nav">
+    <a href="../../research_dashboard.html#foundation">返回 L0</a>
+    <a href="{escape(section_page)}#l1-questions">返回 L1</a>
+    <a href="#current-question">当前问题</a>
+    <a href="#l3">子问题</a>
+    <a href="#add-question">新增问题</a>
+  </nav>
+  <main class="qa-full-research">
+    <section id="current-question" class="level-frame">
+      <p class="eyebrow">当前要研究的问题</p>
+      <h2>{escape(node.get("question", ""))}</h2>
+      <div class="rule-box"><p>{escape(summary)}</p></div>
+      {decision_panel}
+      {gap_panel}
+    </section>
+    <section id="l3" class="level-frame">
+      <p class="eyebrow">子问题列表</p>
+      <h2>L3 子问题</h2>
+      <div class="l2-grid">{l3_cards}</div>
+    </section>
+    {add_question_box}
+  </main>
+  <script>{_draft_question_js()}</script>
+</body>
+</html>
+"""
+
+
+def _render_l2_information_bucket(category: str, items: list[dict[str, Any]]) -> str:
+    label = INFO_CATEGORY_LABEL_ZH.get(category, category)
+    if not items:
+        body = '<p class="qa-empty">暂无映射信息。</p>'
+    else:
+        rows = []
+        for item in items:
+            link = ""
+            if item.get("url"):
+                link = f"<p><a href=\"{escape(item.get('url', ''))}\">{escape(item.get('source_name', '打开来源'))}</a></p>"
+            rows.append(
+                "<div class=\"qa-evidence-item\">"
+                f"<span class=\"chip\">{escape(item.get('evidence_id', ''))}</span>"
+                f"<p><strong>{escape(item.get('relation', '信息'))}：</strong>{escape(item.get('point', ''))}</p>"
+                f"{link}"
+                f"<p class=\"note\">{escape(_zh_text(item.get('summary', '')))}</p>"
+                "</div>"
+            )
+        body = "".join(rows)
+    return f"<div class=\"qa-bucket {escape(category)}\"><h4>{escape(label)}</h4>{body}</div>"
+
+
+def _render_l3_question_card(node: dict[str, Any]) -> str:
+    summary = _truncate_text(_node_summary(node), 180)
+    decision_panel = _render_node_decision_panel(node, title="研究判断")
+    next_steps = _render_node_next_steps(node)
+    info_index = _render_l3_information_index(node)
+    return (
+        '<article class="l2-card research-unit-card">'
+        '<p class="eyebrow">L3 子问题</p>'
+        f"<h3>{escape(node.get('question', ''))}</h3>"
+        f"<div class=\"field\"><b>子结构汇总结论</b><p>{escape(summary)}</p></div>"
+        f"{decision_panel}"
+        f"{next_steps}"
+        f"<div class=\"field\"><b>四类信息索引 / 证据矩阵</b>{info_index}</div>"
+        "</article>"
+    )
+
+
+def _render_l3_information_index(node: dict[str, Any]) -> str:
+    buckets = node.get("evidence_buckets", {})
+    boxes = []
+    for category in SOURCE_ORIGIN_INFO_ORDER:
+        label = INFO_CATEGORY_LABEL_ZH.get(category, category)
+        items = buckets.get(category, [])
+        if not items:
+            body = '<p class="note">暂无，不能用这一类信息强化判断。</p>'
+        else:
+            rows = []
+            for item in items[:4]:
+                point = _truncate_text(item.get("point", ""), 78)
+                source_name = _truncate_text(item.get("source_name", "打开来源"), 34)
+                link = (
+                    f"<a href=\"{escape(item.get('url', ''))}\">{escape(source_name)}</a>"
+                    if item.get("url")
+                    else escape(source_name)
+                )
+                missing_note = '<p class="note">来源记录未入库，先作为待补索引保留。</p>' if item.get("missing_record") else ""
+                relation = item.get("relation", "信息")
+                stance_class = _evidence_stance_class(relation)
+                quality = _evidence_quality_label(item)
+                rows.append(
+                    f"<li class=\"stance-{escape(stance_class)}\">"
+                    f"<span class=\"chip\">{escape(item.get('evidence_id', ''))}</span>"
+                    f"<span class=\"stance-pill\">{escape(relation)}</span>"
+                    f"<span class=\"quality-pill\">{escape(quality)}</span>"
+                    f"<p>{escape(point)}</p>"
+                    f"<p class=\"note\">{link}</p>"
+                    f"{missing_note}"
+                    "</li>"
+                )
+            body = "<ul>" + "".join(rows) + "</ul>"
+        boxes.append(f"<div class=\"l3-info-box {escape(category)}\"><h4>{escape(label)}</h4>{body}</div>")
+    return f"<div class=\"l3-info-grid\">{''.join(boxes)}</div>"
+
+
+def _render_node_decision_panel(node: dict[str, Any], title: str) -> str:
+    synthesis = node.get("synthesis", {})
+    facts = _render_research_list(synthesis.get("facts", []), "暂无关键事实。", limit=3)
+    inference = _render_research_list(synthesis.get("inferences", []), "暂无推导逻辑。", limit=2)
+    judgment = _zh_text(synthesis.get("judgment", "")) or _node_summary(node)
+    confidence = synthesis.get("confidence", "unknown")
+    support_count, refute_count, lead_count = _node_evidence_counts(node)
+    return (
+        '<div class="decision-panel">'
+        f"<div class=\"decision-head\"><b>{escape(title)}</b><span>{escape(_confidence_label(confidence))}</span></div>"
+        '<div class="decision-grid">'
+        f"<div class=\"decision-box judgment\"><h4>当前判断</h4><p>{escape(judgment)}</p></div>"
+        f"<div class=\"decision-box\"><h4>关键事实</h4>{facts}</div>"
+        f"<div class=\"decision-box\"><h4>推导逻辑</h4>{inference}</div>"
+        '<div class="decision-box evidence-score">'
+        "<h4>证据结构</h4>"
+        f"<p><strong>{support_count}</strong> 支持 / <strong>{refute_count}</strong> 反证 / <strong>{lead_count}</strong> 线索</p>"
+        "</div>"
+        "</div>"
+        "</div>"
+    )
+
+
+def _render_node_next_steps(node: dict[str, Any]) -> str:
+    gaps = node.get("synthesis", {}).get("gaps", [])
+    gap_text = _zh_text(gaps[0]) if gaps else "暂无明确缺口。"
+    next_data = _normalize_next_data(gap_text)
+    triggers = _node_update_triggers(node)
+    return (
+        '<div class="next-step-grid">'
+        f"<div class=\"next-step-box\"><b>最大缺口</b><p>{escape(gap_text)}</p></div>"
+        f"<div class=\"next-step-box\"><b>下一步数据</b><p>{escape(next_data)}</p></div>"
+        f"<div class=\"next-step-box\"><b>更新触发器</b><p>{escape(triggers)}</p></div>"
+        "</div>"
+    )
+
+
+def _render_research_list(items: list[str], empty: str, limit: int) -> str:
+    values = [_truncate_text(_zh_text(item), 120) for item in items if item]
+    if not values:
+        return f"<p class=\"note\">{escape(empty)}</p>"
+    return "<ul>" + "".join(f"<li>{escape(value)}</li>" for value in values[:limit]) + "</ul>"
+
+
+def _node_evidence_counts(node: dict[str, Any]) -> tuple[int, int, int]:
+    support = refute = lead = 0
+    for items in node.get("evidence_buckets", {}).values():
+        for item in items:
+            relation = item.get("relation", "")
+            stance = _evidence_stance_class(relation)
+            if stance == "refute":
+                refute += 1
+            elif stance == "lead":
+                lead += 1
+            else:
+                support += 1
+    return support, refute, lead
+
+
+def _evidence_stance_class(relation: str) -> str:
+    if any(token in relation for token in ("反证", "边界", "约束")):
+        return "refute"
+    if any(token in relation for token in ("线索", "待验证")):
+        return "lead"
+    return "support"
+
+
+def _evidence_quality_label(item: dict[str, Any]) -> str:
+    if item.get("missing_record"):
+        return "待补来源"
+    reliability = _zh_text(item.get("reliability", "")) or "未标可靠性"
+    materiality = _zh_text(item.get("materiality", "")) or "未标重要性"
+    return f"{reliability} / {materiality}"
+
+
+def _confidence_label(confidence: str) -> str:
+    labels = {"high": "高置信", "medium": "中置信", "low": "低置信", "unknown": "未评级"}
+    return labels.get(confidence, confidence)
+
+
+def _normalize_next_data(gap_text: str) -> str:
+    text = gap_text.strip()
+    for prefix in ("需要补充", "需要补", "需要"):
+        if text.startswith(prefix):
+            text = text[len(prefix) :].strip("：:，,。 ")
+            break
+    return text or "等待进一步证据。"
+
+
+def _node_update_triggers(node: dict[str, Any]) -> str:
+    text = f"{node.get('section_id', '')} {node.get('question', '')} {_node_summary(node)}"
+    if any(token in text for token in ("EV", "汽车", "交付", "单车", "召回", "安全")):
+        return "季度业绩、月度交付、价格调整、召回/监管公告、质保和售后成本披露。"
+    if any(token in text for token in ("手机", "MAU", "IoT", "用户", "服务")):
+        return "季度业绩、手机份额/出货、MIUI MAU、多设备用户、互联网服务 ARPU。"
+    if any(token in text for token in ("治理", "控制权", "管理层", "资本配置", "董事会")):
+        return "年报、董事会/股权激励公告、回购分红、重大投资和关联交易披露。"
+    if any(token in text for token in ("竞争", "份额", "价格战", "毛利")):
+        return "同行业绩、行业份额、价格带变化、促销强度和分业务毛利率。"
+    return "季度业绩、重大公告、行业数据、监管公告和高可靠第三方研究更新。"
+
+
+def _render_add_question_box(scope_id: str, label: str) -> str:
+    return f"""
+    <section id="add-question" class="level-frame draft-question" data-question-scope="{escape(scope_id)}">
+      <p class="eyebrow">可交互 / 新增问题</p>
+      <h2>新增下钻问题</h2>
+      <form class="draft-question-form">
+        <textarea class="draft-question-input" placeholder="输入一个新的下钻问题"></textarea>
+        <div class="qa-ask-actions">
+          <button class="primary" type="submit">加入本层问题列表</button>
+          <button class="draft-question-clear" type="button">清空本层新增</button>
+        </div>
+      </form>
+      <div class="field"><b>{escape(label)}新增问题</b><ul class="draft-question-list"></ul></div>
+    </section>
+"""
+
+
+def _draft_question_js() -> str:
+    return r"""
+    (() => {
+      function esc(value) {
+        return String(value == null ? "" : value).replace(/[&<>"']/g, (char) => ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;",
+        }[char]));
+      }
+      function read(key) {
+        try {
+          return JSON.parse(localStorage.getItem(key) || "[]");
+        } catch (_error) {
+          return [];
+        }
+      }
+      function write(key, value) {
+        try {
+          localStorage.setItem(key, JSON.stringify(value));
+        } catch (_error) {
+        }
+      }
+      document.querySelectorAll("[data-question-scope]").forEach((box) => {
+        const key = `draft-layer-questions:${box.dataset.questionScope || "default"}`;
+        const form = box.querySelector(".draft-question-form");
+        const input = box.querySelector(".draft-question-input");
+        const list = box.querySelector(".draft-question-list");
+        const clear = box.querySelector(".draft-question-clear");
+        const render = () => {
+          const items = read(key);
+          list.innerHTML = items.length
+            ? items.map((item) => `<li>${esc(item)}</li>`).join("")
+            : '<li class="note">暂无新增问题。</li>';
+        };
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          const value = input.value.trim();
+          if (!value) return;
+          write(key, [...read(key), value]);
+          input.value = "";
+          render();
+        });
+        clear.addEventListener("click", () => {
+          write(key, []);
+          render();
+        });
+        render();
+      });
+    })();
+    """
+
+
+def _render_foundation_complete_research(ticker: str, section: dict[str, Any], evidence: list[EvidenceRecord]) -> str:
+    section_id = section.get("id", "")
+    if section_id == "source_origin":
+        return _render_source_origin_complete_research(ticker, evidence)
+    return _render_section_complete_research(ticker, section, evidence)
+
+
+def _render_section_complete_research(ticker: str, section: dict[str, Any], evidence: list[EvidenceRecord]) -> str:
+    section_label = SECTION_LABEL_ZH.get(section.get("label", ""), section.get("label", ""))
+    facts = _render_statement_list(
+        [
+            f"{_zh_text(fact.get('statement', ''))} [{fact.get('evidence_id', '')}]"
+            for fact in section.get("facts", [])
+        ],
+        "当前没有足够事实证据。",
+    )
+    inferences = _render_statement_list(section.get("inferences", []), "当前不输出推论。")
+    judgments = _render_statement_list(section.get("judgments", []), "当前不输出判断。")
+    gaps = _render_statement_list(section.get("gaps", []), "当前没有记录重大缺口。")
+    questions = _qa_parent_questions_for_section(ticker, section)
+    question_cards = "\n".join(_render_foundation_research_question_card(question, evidence) for question in questions)
+    information_tables = _render_information_category_tables(section)
+    history_block = ""
+    if section.get("id") == "history":
+        history_block = f"""
+    <h2>关键历史阶段</h2>
+    <div class="timeline">{_render_history_timeline(ticker, evidence)}</div>
+"""
+    return f"""
+  <section id="full-research" class="qa-full-research">
+    <p class="eyebrow">完整研究 / {escape(section_label)}</p>
+    <h2>{escape(section_label)}：先给出可上抛结论，再保留证据缺口。</h2>
+    <div class="lead-grid">
+      <div>
+        <div class="field"><b>事实</b>{facts}</div>
+        <div class="field"><b>推论</b>{inferences}</div>
+      </div>
+      <div>
+        <div class="field"><b>判断</b>{judgments}</div>
+        <div class="field"><b>缺口</b>{gaps}</div>
+      </div>
+    </div>
+    {history_block}
+    <h2>本板块关键问题</h2>
+    <p class="note">每个问题均按四类信息映射到证据、研报、消息和观点；无法被信息支撑的问题保留为待验证项。</p>
+    {question_cards}
+    <h2>四类信息映射</h2>
+    {information_tables}
+  </section>
+"""
+
+
+def _render_foundation_research_question_card(question: dict[str, Any], evidence: list[EvidenceRecord]) -> str:
+    bucket_html = "\n".join(
+        _render_foundation_info_bucket(category, question.get("info", {}).get(category, []), evidence)
+        for category in SOURCE_ORIGIN_INFO_ORDER
+    )
+    return (
+        f"<article class=\"question-card\" id=\"complete-{escape(question['id'])}\">"
+        f"<h3>{escape(question['question'])}</h3>"
+        f"<div class=\"answer-box\"><strong>当前回答</strong><p>{escape(question['answer'])}</p></div>"
+        f"<div class=\"info-grid\">{bucket_html}</div>"
+        f"<p class=\"note\"><strong>待验证：</strong>{escape(question['gap'])}</p>"
+        "</article>"
+    )
+
+
+def _render_source_origin_complete_research(ticker: str, evidence: list[EvidenceRecord]) -> str:
+    if ticker != "XIAOMI":
+        return ""
+    question_cards_html = _render_source_origin_question_cards(ticker, evidence)
+    phase_rows = _render_source_origin_phase_rows(ticker, evidence)
+    mechanism_rows = _render_source_origin_mechanism_rows(ticker, evidence)
+    return f"""
+  <section id="full-research" class="qa-full-research">
+    <p class="eyebrow">完整研究 / 源头溯源</p>
+    <h2>小米的源头不是“硬件公司成立”，而是用户参与的软件入口、低毛利硬件放大和生态服务变现的组合。</h2>
+    {_render_source_origin_thesis(ticker, evidence)}
+    <div class="lead-grid">
+      <div class="rule-box">
+        <h3>当前核心判断</h3>
+        <ul>
+          <li>事实层：小米 2010 年成立，早期先有 MIUI 私测和米粉社区，再以手机硬件放大用户入口；招股概要把模型拆成硬件、新零售、互联网服务三支柱。</li>
+          <li>推论层：小米最初解决的不是单一低价问题，而是“体验、迭代、渠道效率、价格可承受”同时不够好的结构性问题。</li>
+          <li>判断层：源头能力可以解释用户体验、产品定义、渠道效率、IoT 生态扩张，但不能直接证明 EV 毛利和安全责任可持续。</li>
+        </ul>
+      </div>
+      <div class="rule-box">
+        <h3>主要反证边界</h3>
+        <ul>
+          <li>硬件净利率承诺说明硬件是获客与信任机制，不应被直接视为高利润池。</li>
+          <li>手机基本盘、MIUI/用户规模和互联网服务变现如果持续弱化，源头飞轮会被削弱。</li>
+          <li>汽车业务的安全、质量、召回、售后和资本开支责任，需要独立证据，不能由手机时代效率外推。</li>
+        </ul>
+      </div>
+    </div>
+    <h2>源头因果链</h2>
+    <table>
+      <thead><tr><th>阶段</th><th>事实</th><th>研究含义</th><th>证据</th></tr></thead>
+      <tbody>{phase_rows}</tbody>
+    </table>
+    <h2>研究机制拆解</h2>
+    <table>
+      <thead><tr><th>问题</th><th>当前回答</th><th>为什么重要</th><th>证据</th></tr></thead>
+      <tbody>{mechanism_rows}</tbody>
+    </table>
+    <h2>八个问题的完整研究卡片</h2>
+    <p class="note">每张卡片都按“问题、当前回答、证据/研报/消息/观点、待验证缺口”组织；低可靠来源只作为研究线索，不单独强化结论。</p>
+    {question_cards_html}
+  </section>
+"""
+
+
+def _render_qa_static_index(qa_tree: dict[str, Any], root_node_id: str) -> str:
+    nodes = {node["id"]: node for node in qa_tree.get("nodes", [])}
+    root = nodes.get(root_node_id)
+    if root is None:
+        return '<p class="qa-empty">当前板块没有生成子层级。</p>'
+
+    cards: list[str] = []
+    for child_id in root.get("next_question_ids", []):
+        child = nodes.get(child_id)
+        if child is None:
+            continue
+        grandchildren = [nodes[grand_id] for grand_id in child.get("next_question_ids", []) if grand_id in nodes]
+        grandchild_items = "".join(
+            f"<li><span>L3</span>{escape(grandchild.get('question', ''))}</li>"
+            for grandchild in grandchildren
+        )
+        if not grandchild_items:
+            grandchild_items = '<li><span>L3</span>暂无下钻问题。</li>'
+        cards.append(
+            '<article class="qa-static-card">'
+            f"<h3><span>L2</span>{escape(child.get('question', ''))}</h3>"
+            f"<p>{escape(child.get('current_answer', ''))}</p>"
+            f"<ul>{grandchild_items}</ul>"
+            "</article>"
+        )
+    if not cards:
+        return '<p class="qa-empty">当前板块没有生成子层级。</p>'
+    return "\n".join(cards)
+
+
+def _render_history_page(
+    ticker: str,
+    foundation_graph: dict[str, Any],
+    evidence: list[EvidenceRecord],
+) -> str:
+    return _render_foundation_qa_page(ticker, foundation_graph, evidence, "history")
+
+
+def _json_for_script(data: dict[str, Any]) -> str:
+    return json.dumps(data, ensure_ascii=False, sort_keys=True).replace("</", "<\\/")
+
+
+def _qa_explorer_js() -> str:
+    return r"""
+    (() => {
+      const categoryLabels = { evidence: "证据", research_report: "研报", message: "消息", opinion: "观点" };
+      const baseTree = JSON.parse(document.getElementById("qa-data").textContent);
+      const configElement = document.getElementById("qa-page-config");
+      const pageConfig = JSON.parse(configElement ? configElement.textContent : "{}");
+      const pageSectionId = pageConfig.section_id || "history";
+      const pageRootId = pageConfig.root_node_id || `foundation.${pageSectionId}`;
+      const storageKey = `qa-tree:${baseTree.ticker}:${pageSectionId}`;
+      let tree = loadTree();
+      let activeId = initialActiveId();
+
+      function cloneBaseTree() {
+        return typeof structuredClone === "function" ? structuredClone(baseTree) : JSON.parse(JSON.stringify(baseTree));
+      }
+
+      function storageGet() {
+        try {
+          return localStorage.getItem(storageKey);
+        } catch (_error) {
+          return null;
+        }
+      }
+
+      function storageSet(value) {
+        try {
+          localStorage.setItem(storageKey, value);
+        } catch (_error) {
+        }
+      }
+
+      function storageRemove() {
+        try {
+          localStorage.removeItem(storageKey);
+        } catch (_error) {
+        }
+      }
+
+      function loadTree() {
+        try {
+          const saved = JSON.parse(storageGet() || "null");
+          if (
+            saved &&
+            Array.isArray(saved.nodes) &&
+            saved.generated_at === baseTree.generated_at &&
+            saved.schema_version === baseTree.schema_version &&
+            saved.nodes.some((node) => node.id === pageRootId)
+          ) {
+            return saved;
+          }
+        } catch (_error) {
+        }
+        storageRemove();
+        return cloneBaseTree();
+      }
+
+      function saveTree() {
+        storageSet(JSON.stringify(tree));
+      }
+
+      function initialActiveId() {
+        const hash = decodeURIComponent(window.location.hash || "");
+        if (hash.startsWith("#node=")) return hash.slice(6);
+        return pageConfig.default_active_node_id || pageRootId || tree.default_active_node_id || "foundation.history";
+      }
+
+      function nodeById(id) {
+        return tree.nodes.find((node) => node.id === id);
+      }
+
+      function childrenOf(id) {
+        const node = nodeById(id);
+        const ids = node && Array.isArray(node.next_question_ids) ? node.next_question_ids : [];
+        return ids.map(nodeById).filter(Boolean);
+      }
+
+      function descendantsOf(id) {
+        const result = [];
+        const walk = (nodeId) => {
+          childrenOf(nodeId).forEach((child) => {
+            result.push(child);
+            walk(child.id);
+          });
+        };
+        walk(id);
+        return result;
+      }
+
+      function esc(value) {
+        return String(value == null ? "" : value).replace(/[&<>"']/g, (char) => ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;",
+        }[char]));
+      }
+
+      function setActive(id, updateHash = true) {
+        if (!nodeById(id)) id = pageConfig.default_active_node_id || pageRootId || tree.default_active_node_id || "foundation.history";
+        activeId = id;
+        if (updateHash) history.replaceState(null, "", `#node=${encodeURIComponent(id)}`);
+        render();
+      }
+
+      function renderTreeButtons(container, nodes) {
+        container.innerHTML = nodes.map((node) => {
+          const activeClass = node.id === activeId ? " active" : "";
+          const levelClass = ` qa-level-${Math.min(node.level, 4)}`;
+          return `<button class="qa-node-button${activeClass}${levelClass}" data-node-id="${esc(node.id)}"><span class="qa-node-level">L${esc(node.level)}</span>${esc(node.question)}</button>`;
+        }).join("");
+        container.querySelectorAll("button[data-node-id]").forEach((button) => {
+          button.addEventListener("click", () => setActive(button.dataset.nodeId));
+        });
+      }
+
+      function renderTree() {
+        renderTreeButtons(
+          document.getElementById("framework-tree"),
+          tree.nodes.filter((node) => node.level === 1)
+        );
+        renderTreeButtons(
+          document.getElementById("section-tree"),
+          [nodeById(pageRootId), ...descendantsOf(pageRootId)].filter(Boolean)
+        );
+      }
+
+      function renderList(items, emptyText) {
+        if (!items || !items.length) return `<p class="qa-empty">${esc(emptyText)}</p>`;
+        return `<ul>${items.map((item) => `<li>${esc(item)}</li>`).join("")}</ul>`;
+      }
+
+      function renderSynthesis(node) {
+        const synthesis = node.synthesis || {};
+        const boxes = [
+          ["事实", synthesis.facts || [], "暂无事实。"],
+          ["推论", synthesis.inferences || [], "暂无推论。"],
+          ["判断", synthesis.judgment ? [synthesis.judgment] : [], "暂无判断。"],
+          ["缺口", synthesis.gaps || [], "暂无缺口。"],
+        ];
+        document.getElementById("active-synthesis").innerHTML = boxes.map(([title, items, emptyText]) => (
+          `<div class="qa-synthesis-box"><h4>${esc(title)}</h4>${renderList(items, emptyText)}</div>`
+        )).join("");
+      }
+
+      function renderChildren(node) {
+        const children = childrenOf(node.id);
+        const container = document.getElementById("active-children");
+        if (!children.length) {
+          container.innerHTML = '<p class="qa-empty">暂无下钻问题。可以在右侧继续追问。</p>';
+          return;
+        }
+        container.innerHTML = children.map((child) => (
+          `<button data-node-id="${esc(child.id)}"><span class="qa-node-level">L${esc(child.level)}</span>${esc(child.question)}</button>`
+        )).join("");
+        container.querySelectorAll("button[data-node-id]").forEach((button) => {
+          button.addEventListener("click", () => setActive(button.dataset.nodeId));
+        });
+      }
+
+      function renderBuckets(node) {
+        const buckets = node.evidence_buckets || {};
+        const order = (tree.interaction_contract && tree.interaction_contract.information_categories) || ["evidence", "research_report", "message", "opinion"];
+        document.getElementById("active-buckets").innerHTML = order.map((category) => {
+          const items = buckets[category] || [];
+          const body = items.length ? items.map((item) => (
+            `<div class="qa-evidence-item">
+              <span class="chip">${esc(item.evidence_id)}</span>
+              <p><strong>${esc(item.relation || "信息")}：</strong>${esc(item.point || "")}</p>
+              ${item.url ? `<p><a href="${esc(item.url)}">${esc(item.source_name || "打开来源")}</a></p>` : ""}
+              <p class="note">${esc(item.summary || "")}</p>
+            </div>`
+          )).join("") : '<p class="qa-empty">暂无映射信息。</p>';
+          return `<div class="qa-bucket ${esc(category)}"><h4>${esc(categoryLabels[category] || category)}</h4>${body}</div>`;
+        }).join("");
+      }
+
+      function renderActive() {
+        const node = nodeById(activeId) || nodeById(pageRootId) || nodeById(tree.default_active_node_id);
+        if (!node) return;
+        document.getElementById("active-level").textContent = `L${node.level}`;
+        document.getElementById("active-status").textContent = node.status || "open";
+        document.getElementById("active-question").textContent = node.question;
+        document.getElementById("active-answer").textContent = node.current_answer || "待研究。";
+        document.getElementById("active-rollup").textContent = node.rollup_to_parent || "当前节点尚未形成可上抛结论。";
+        renderSynthesis(node);
+        renderChildren(node);
+        renderBuckets(node);
+      }
+
+      function render() {
+        renderTree();
+        renderActive();
+      }
+
+      document.getElementById("ask-form").addEventListener("submit", (event) => {
+        event.preventDefault();
+        const input = document.getElementById("ask-input");
+        const question = input.value.trim();
+        if (!question) return;
+        const parent = nodeById(activeId) || nodeById(tree.default_active_node_id);
+        const id = `draft.${parent.id}.${Date.now()}`;
+        const node = {
+          id,
+          level: parent.level + 1,
+          parent_id: parent.id,
+          section_id: parent.section_id || "history",
+          question,
+          current_answer: "待研究：需要先搜集四类信息，再形成事实、推论、判断和缺口。",
+          evidence_buckets: { evidence: [], research_report: [], message: [], opinion: [] },
+          synthesis: {
+            facts: [],
+            inferences: [],
+            judgment: "本地追问草稿，尚未形成判断。",
+            gaps: ["需要补充证据、研报、消息或观点后再上抛结论。"],
+            confidence: "low"
+          },
+          rollup_to_parent: "待上抛：该追问尚未完成信息搜集。",
+          next_question_ids: [],
+          status: "draft"
+        };
+        parent.next_question_ids = Array.from(new Set([...(parent.next_question_ids || []), id]));
+        tree.nodes.push(node);
+        input.value = "";
+        saveTree();
+        setActive(id);
+      });
+
+      document.getElementById("clear-drafts").addEventListener("click", () => {
+        storageRemove();
+        tree = cloneBaseTree();
+        activeId = pageConfig.default_active_node_id || pageRootId || tree.default_active_node_id || "foundation.history";
+        history.replaceState(null, "", "#workspace");
+        render();
+      });
+
+      render();
+    })();
+    """
+
+
+def _render_history_timeline(ticker: str, evidence: list[EvidenceRecord]) -> str:
+    rows = _history_timeline_rows(ticker)
+    return "\n".join(
+        '<div class="timeline-row">'
+        f'<div class="timeline-year">{escape(row["period"])}</div>'
+        "<div>"
+        f'<h3>{escape(row["title"])}</h3>'
+        f'<p>{escape(row["meaning"])}</p>'
+        f'<p>{_chips(row["evidence_ids"], evidence)}</p>'
+        "</div>"
+        "</div>"
+        for row in rows
+    )
+
+
+def _history_timeline_rows(ticker: str) -> list[dict[str, Any]]:
+    if ticker == "XIAOMI":
+        return [
+            {
+                "period": "2010-2011",
+                "title": "创立、MIUI 与第一代小米手机",
+                "meaning": "历史起点是软件体验、用户参与和线上高性价比硬件的组合，而不是单纯硬件制造。",
+                "evidence_ids": ["ev_xiaomi_company_profile_20260518", "ev_xiaomi_profile", "ev_xiaomi_mi1_launch_transcript_20110816"],
+            },
+            {
+                "period": "2013-2018",
+                "title": "手机规模化、IoT 生态与港股上市",
+                "meaning": "手机入口开始外溢为智能硬件、IoT 平台和互联网服务，并在 2018 年上市时固化为公开公司叙事和 WVR 治理结构。",
+                "evidence_ids": ["ev_xiaomi_ipo_prospectus_20180625", "ev_xiaomi_jingzhun_deep_report_20181105"],
+            },
+            {
+                "period": "2019-2021",
+                "title": "手机 x AIoT 与智能电动车战略启动",
+                "meaning": "公司从消费电子平台向更复杂的智能制造和长期资本投入方向延伸，历史问题转向能力迁移是否成立。",
+                "evidence_ids": ["ev_xiaomi_guosheng_deep_report_20211117", "ev_xiaomi_yongxing_deep_report_20250228"],
+            },
+            {
+                "period": "2024-2025",
+                "title": "EV 进入交付和财务报表",
+                "meaning": "智能 EV 不再只是战略叙事，而开始影响收入结构、毛利结构、资本开支和风险责任。",
+                "evidence_ids": ["ev_xiaomi_2025_results_announcement_20260324", "ev_xiaomi_segments", "ev_xiaomi_cnevpost_nev_share_20260112"],
+            },
+            {
+                "period": "2025-2026",
+                "title": "集团规模扩大，手机基本盘承压",
+                "meaning": "历史主线需要同时看第二曲线和基本盘：EV 放量不能掩盖手机出货、份额、毛利与服务入口的变化。",
+                "evidence_ids": ["ev_xiaomi_2025_annual_report_20260428", "ev_xiaomi_idc_q1_2026_smartphone_20260512", "ev_xiaomi_smartphone_share"],
+            },
+            {
+                "period": "2025",
+                "title": "SU7 召回暴露新业务责任边界",
+                "meaning": "汽车业务把公司带入安全、监管、质保、售后和召回成本的历史阶段，不能再按轻互联网逻辑外推。",
+                "evidence_ids": ["ev_xiaomi_samr_su7_recall_20250919", "ev_xiaomi_recall"],
+            },
+        ]
+    return [
+        {
+            "period": "待补",
+            "title": "尚未形成可验证历史阶段",
+            "meaning": "需要先补充创立、融资、上市、业务转型和重大资本配置证据。",
+            "evidence_ids": [],
+        }
+    ]
+
+
+def _render_history_question_cards(ticker: str, evidence: list[EvidenceRecord]) -> str:
+    return "\n".join(_render_history_question_card(question, evidence) for question in _history_questions(ticker))
+
+
+def _render_history_question_card(question: dict[str, Any], evidence: list[EvidenceRecord]) -> str:
+    bucket_html = "\n".join(
+        _render_foundation_info_bucket(category, question.get("info", {}).get(category, []), evidence)
+        for category in SOURCE_ORIGIN_INFO_ORDER
+    )
+    return (
+        f"<article class=\"history-card question-card\" id=\"{escape(question['id'])}\">"
+        f"<h3>{escape(question['question'])}</h3>"
+        f"<div class=\"answer-box\"><strong>当前回答</strong><p>{escape(question['answer'])}</p></div>"
+        f"<div class=\"info-grid\">{bucket_html}</div>"
+        f"<p class=\"note\"><strong>待验证：</strong>{escape(question['gap'])}</p>"
+        "</article>"
+    )
+
+
+def _history_questions(ticker: str) -> list[dict[str, Any]]:
+    if ticker == "XIAOMI":
+        return [
+            {
+                "id": "h1-model-shift",
+                "question": "哪些历史节点真正改变了商业模型？",
+                "answer": "当前可识别的模型拐点是：MIUI/手机入口、IoT 生态、互联网服务变现、智能 EV。每个节点都应验证是否改变利润池，而不是只看收入规模。",
+                "gap": "需要补每个阶段的分部收入、毛利、用户规模、现金流和再投资数据。",
+                "info": {
+                    "evidence": [
+                        _foundation_info("ev_xiaomi_ipo_prospectus_20180625", "支撑", "招股书定义手机、智能硬件和 IoT 平台连接的原始模型。"),
+                        _foundation_info("ev_xiaomi_2025_results_announcement_20260324", "支撑", "FY2025 业绩公告显示手机 x AIoT 与 EV/AI 新业务已经分部化。"),
+                        _foundation_info("ev_xiaomi_segments", "支撑", "测试样本：提供手机、IoT、服务和 EV 规模数据。"),
+                    ],
+                    "research_report": [
+                        _foundation_info("ev_xiaomi_jingzhun_deep_report_20181105", "支撑", "研报把手机硬件、IoT 生态和互联网变现放在同一模型里。"),
+                        _foundation_info("ev_xiaomi_yongxing_deep_report_20250228", "支撑", "研报把人车家生态连接到当前业务构成。"),
+                    ],
+                    "message": [
+                        _foundation_info("ev_xiaomi_mi1_launch_transcript_20110816", "支撑", "早期发布会实录可验证第一产品阶段。"),
+                    ],
+                    "opinion": [],
+                },
+            },
+            {
+                "id": "h2-growth-source",
+                "question": "历史增长主要来自内生能力、融资环境，还是跨品类扩张？",
+                "answer": "当前判断是三者叠加：早期依靠产品和渠道效率，上市后通过公开资本市场和生态扩品类增强资源，2021 年后 EV 使增长更多依赖长期资本投入和制造执行。",
+                "gap": "需要补融资节奏、现金资源、资本开支、研发投入、回购/分红和 EV 投入回报序列。",
+                "info": {
+                    "evidence": [
+                        _foundation_info("ev_xiaomi_ipo_prospectus_20180625", "支撑", "招股书确认上市融资和 WVR 风险披露。"),
+                        _foundation_info("ev_xiaomi_2025_annual_report_20260428", "支撑", "年报提供 FY2025 收入、利润、现金资源和经营现金流。"),
+                        _foundation_info("ev_xiaomi_annual", "支撑", "测试样本：提供收入、利润、现金流和资本开支。"),
+                    ],
+                    "research_report": [
+                        _foundation_info("ev_xiaomi_guosheng_deep_report_20211117", "支撑", "研报将 2021 年进入智能电动车纳入阶段化演进。"),
+                        _foundation_info("ev_xiaomi_yongxing_deep_report_20250228", "支撑", "研报把新业务与当前生态结构连接。"),
+                    ],
+                    "message": [],
+                    "opinion": [],
+                },
+            },
+            {
+                "id": "h3-governance-capital",
+                "question": "治理结构如何影响历史资本配置？",
+                "answer": "小米历史上采用不同投票权结构，创始人控制权提高战略耐心，但也要求投资者持续验证重大投入是否受足够约束，尤其是 EV 这类高资本强度业务。",
+                "gap": "需要补董事会变化、股权激励、回购分红、重大投资审批和少数股东保护资料。",
+                "info": {
+                    "evidence": [
+                        _foundation_info("ev_xiaomi_board_wvr_20260428", "支撑/约束", "年报披露 WVR 和雷军投票权。"),
+                        _foundation_info("ev_xiaomi_governance", "支撑/约束", "测试样本：披露雷军投票权和少数股东治理风险。"),
+                        _foundation_info("ev_xiaomi_management_20260518", "支撑", "管理层页面确认核心创始人与高管结构。"),
+                    ],
+                    "research_report": [
+                        _foundation_info("ev_xiaomi_guosheng_deep_report_20211117", "研究线索", "研报阶段复盘可辅助定位治理与战略转向节点。"),
+                    ],
+                    "message": [],
+                    "opinion": [],
+                },
+            },
+            {
+                "id": "h4-ev-transition",
+                "question": "EV 转型是能力延伸，还是能力跃迁？",
+                "answer": "EV 是从手机/AIoT 用户体验和生态能力出发的延伸，但在制造、质量、安全、售后和监管责任上属于能力跃迁，不能用早期互联网效率直接证明。",
+                "gap": "需要补 EV 研发投入、产能爬坡、单车经济、售后成本、质保计提和召回成本。",
+                "info": {
+                    "evidence": [
+                        _foundation_info("ev_xiaomi_2025_results_announcement_20260324", "支撑", "业绩公告显示 EV 已进入收入和交付结构。"),
+                        _foundation_info("ev_xiaomi_samr_su7_recall_20250919", "反证/边界", "召回公告验证 EV 安全和监管责任边界。"),
+                        _foundation_info("ev_xiaomi_recall", "反证/边界", "测试样本：召回信息验证新业务风险边界。"),
+                    ],
+                    "research_report": [
+                        _foundation_info("ev_xiaomi_yongxing_deep_report_20250228", "支撑", "研报把早期手机/AIoT 基因与 EV 和人车家生态连接。"),
+                    ],
+                    "message": [],
+                    "opinion": [],
+                },
+            },
+            {
+                "id": "h5-disconfirming-history",
+                "question": "哪些历史风险会反证当前叙事？",
+                "answer": "需要重点盯三类反证：手机基本盘持续弱化、EV 放量但单车经济和安全成本恶化、控制权结构导致资本配置缺乏约束。",
+                "gap": "需要把季度手机份额、EV 交付/毛利、召回/质保、现金流和资本开支串成持续监控表。",
+                "info": {
+                    "evidence": [
+                        _foundation_info("ev_xiaomi_idc_q1_2026_smartphone_20260512", "反证/边界", "IDC 数据显示 Q1 2026 手机出货和份额承压。"),
+                        _foundation_info("ev_xiaomi_smartphone_share", "反证/边界", "测试样本：显示手机出货同比下滑。"),
+                        _foundation_info("ev_xiaomi_samr_su7_recall_20250919", "反证/边界", "召回公告提示 EV 安全成本可能改变历史叙事。"),
+                        _foundation_info("ev_xiaomi_board_wvr_20260428", "约束", "控制权结构要求持续验证资本配置纪律。"),
+                    ],
+                    "research_report": [
+                        _foundation_info("ev_xiaomi_shenwan_deep_report_20241118", "研究线索", "低可靠报告摘要只能提示阶段变化，不能作为结论证据。"),
+                    ],
+                    "message": [],
+                    "opinion": [],
+                },
+            },
+        ]
+    return [
+        {
+            "id": "h1-model-shift",
+            "question": "哪些历史节点真正改变了商业模型？",
+            "answer": "当前证据不足。需要先补齐创立、融资、上市、业务转型和重大资本配置证据。",
+            "gap": "补充公司年报、招股书、重大公告、研报和行业数据。",
+            "info": {"evidence": [], "research_report": [], "message": [], "opinion": []},
+        }
+    ]
+
+
+def _history_drilldown_questions(ticker: str) -> dict[str, list[dict[str, Any]]]:
+    if ticker != "XIAOMI":
+        return {}
+    return {
+        "h1-model-shift": [
+            {
+                "id": "profit-pool",
+                "question": "每次历史转型是否真的改变利润池？",
+                "answer": "手机和 IoT 更像用户入口与生态扩张，互联网服务承担高毛利变现，EV 仍需验证上市初期之后的单车经济。",
+                "gap": "需要按阶段补分部毛利、互联网服务收入结构、EV 单车毛利和售后成本。",
+                "rollup": "历史转型不能只看收入规模，必须验证利润池是否迁移。",
+                "info": {
+                    "evidence": [
+                        _foundation_info("ev_xiaomi_2025_results_announcement_20260324", "支撑", "业绩公告提供手机、IoT、MAU、EV 交付和新业务收入。"),
+                        _foundation_info("ev_xiaomi_segments", "支撑", "测试样本：提供手机、IoT、互联网服务和 EV 规模指标。"),
+                    ],
+                    "research_report": [
+                        _foundation_info("ev_xiaomi_jingzhun_deep_report_20181105", "支撑", "研报把硬件放量、IoT 生态和互联网变现放在同一模型里。"),
+                    ],
+                    "message": [],
+                    "opinion": [],
+                },
+            },
+            {
+                "id": "model-breakpoints",
+                "question": "哪些节点只是规模扩大，哪些节点是模型切换？",
+                "answer": "MIUI/手机、IoT、互联网服务、EV 是模型相关节点；单纯销量、发布会或短期热点不能自动视为模型切换。",
+                "gap": "需要建立事件到业务模型的映射表，剔除不改变经济性的事件。",
+                "rollup": "历史节点需要按模型影响分级，而不是按新闻热度排序。",
+                "info": {
+                    "evidence": [
+                        _foundation_info("ev_xiaomi_ipo_prospectus_20180625", "支撑", "招股书定义原始模型。"),
+                    ],
+                    "research_report": [
+                        _foundation_info("ev_xiaomi_yongxing_deep_report_20250228", "支撑", "研报把当前人车家生态连接到业务构成。"),
+                    ],
+                    "message": [
+                        _foundation_info("ev_xiaomi_mi1_launch_transcript_20110816", "支撑", "早期发布会验证第一产品节点。"),
+                    ],
+                    "opinion": [],
+                },
+            },
+        ],
+        "h2-growth-source": [
+            {
+                "id": "capital-allocation",
+                "question": "历史增长消耗了多少资本，回报是否足够？",
+                "answer": "现有年报能看到集团现金和利润，但还不足以判断 EV 及新业务投入的长期回报。",
+                "gap": "需要补分业务资本开支、研发投入、经营现金流桥接、回购分红和新业务亏损/毛利。",
+                "rollup": "增长质量必须从资本消耗和回报验证，不能只看收入增速。",
+                "info": {
+                    "evidence": [
+                        _foundation_info("ev_xiaomi_2025_annual_report_20260428", "支撑", "年报提供集团收入、利润、现金资源和经营现金流。"),
+                        _foundation_info("ev_xiaomi_annual", "支撑", "测试样本：提供资本开支线索。"),
+                    ],
+                    "research_report": [
+                        _foundation_info("ev_xiaomi_yongxing_deep_report_20250228", "研究线索", "研报提示新业务和人车家生态扩张。"),
+                    ],
+                    "message": [],
+                    "opinion": [],
+                },
+            },
+            {
+                "id": "internal-vs-external",
+                "question": "增长来自公司能力，还是行业周期和融资窗口？",
+                "answer": "早期更依赖产品和渠道效率，上市后资本市场资源增强，EV 阶段更受行业竞争、资本开支和制造能力约束。",
+                "gap": "需要加入行业周期、同行份额、融资环境和资本成本的对照。",
+                "rollup": "历史增长来源应拆为内生能力、外部窗口和资本投入三部分。",
+                "info": {
+                    "evidence": [
+                        _foundation_info("ev_xiaomi_ipo_prospectus_20180625", "支撑", "招股书确认上市窗口与原始业务模型。"),
+                    ],
+                    "research_report": [
+                        _foundation_info("ev_xiaomi_guosheng_deep_report_20211117", "支撑", "研报将 2021 年进入智能电动车纳入阶段化演进。"),
+                    ],
+                    "message": [],
+                    "opinion": [],
+                },
+            },
+        ],
+        "h3-governance-capital": [
+            {
+                "id": "control-discipline",
+                "question": "创始人控制权提高战略耐心，还是放大资本配置风险？",
+                "answer": "WVR 结构能支持长期投入，但对少数股东而言，关键在重大资本配置是否有足够披露、约束和回报验证。",
+                "gap": "需要补董事会独立性、重大投资审批、股权激励、回购分红和关联交易历史。",
+                "rollup": "治理结构本身不是结论，必须落到资本配置纪律上验证。",
+                "info": {
+                    "evidence": [
+                        _foundation_info("ev_xiaomi_board_wvr_20260428", "支撑/约束", "年报披露 WVR 与雷军投票权。"),
+                        _foundation_info("ev_xiaomi_governance", "支撑/约束", "测试样本：披露少数股东治理风险。"),
+                    ],
+                    "research_report": [],
+                    "message": [],
+                    "opinion": [],
+                },
+            },
+            {
+                "id": "management-evolution",
+                "question": "管理层演进是否匹配业务复杂度上升？",
+                "answer": "管理层已覆盖手机、国际、中国区、财务、研发和技术委员会等职能，但 EV 后还需要验证汽车制造和安全管理能力。",
+                "gap": "需要补汽车业务核心团队、质量管理、售后体系和激励机制资料。",
+                "rollup": "组织能力是否升级，要与业务复杂度同步验证。",
+                "info": {
+                    "evidence": [
+                        _foundation_info("ev_xiaomi_management_20260518", "支撑", "管理层页面确认高管结构。"),
+                    ],
+                    "research_report": [
+                        _foundation_info("ev_xiaomi_yongxing_deep_report_20250228", "研究线索", "研报提示人车家生态对组织能力的要求。"),
+                    ],
+                    "message": [],
+                    "opinion": [],
+                },
+            },
+        ],
+        "h4-ev-transition": [
+            {
+                "id": "transferable-capabilities",
+                "question": "手机/AIoT 的哪些能力可以迁移到 EV？",
+                "answer": "用户体验、生态连接、软件迭代、品牌流量和供应链组织可以部分迁移，但只能解释获客和体验，不能直接证明汽车利润。",
+                "gap": "需要补订单结构、用户来源、软件使用、渠道触点和复购/转介绍证据。",
+                "rollup": "EV 可迁移能力主要在用户体验和生态入口，不等于制造能力已验证。",
+                "info": {
+                    "evidence": [
+                        _foundation_info("ev_xiaomi_2025_results_announcement_20260324", "支撑", "业绩公告显示 EV 已形成交付规模。"),
+                    ],
+                    "research_report": [
+                        _foundation_info("ev_xiaomi_yongxing_deep_report_20250228", "支撑", "研报连接手机/AIoT 基因与人车家生态。"),
+                    ],
+                    "message": [],
+                    "opinion": [],
+                },
+            },
+            {
+                "id": "non-transferable-capabilities",
+                "question": "哪些能力不能从手机时代直接迁移？",
+                "answer": "汽车安全、质量冗余、售后服务、召回处置和监管响应不能从互联网效率直接迁移，必须重新建立证据。",
+                "gap": "需要补质量事故、召回成本、售后网络、质保计提和监管公告序列。",
+                "rollup": "EV 的不可迁移能力是历史分析中的关键反证边界。",
+                "info": {
+                    "evidence": [
+                        _foundation_info("ev_xiaomi_samr_su7_recall_20250919", "反证/边界", "召回公告验证安全和监管责任边界。"),
+                        _foundation_info("ev_xiaomi_recall", "反证/边界", "测试样本：召回信息验证新业务风险边界。"),
+                    ],
+                    "research_report": [],
+                    "message": [],
+                    "opinion": [],
+                },
+            },
+            {
+                "id": "unit-economics",
+                "question": "EV 单车经济是否已经证明模型成立？",
+                "answer": "当前只能证明 EV 已经进入收入和交付结构，不能证明上市初期之后单车毛利、质保和售后成本可持续。",
+                "gap": "需要补单车收入、单车毛利、价格调整、订单等待周期、产能利用率和售后成本。",
+                "rollup": "EV 历史转型要等单车经济穿越初期交付阶段后再判断。",
+                "info": {
+                    "evidence": [
+                        _foundation_info("ev_xiaomi_2025_results_announcement_20260324", "支撑", "业绩公告提供 EV 收入和交付规模。"),
+                    ],
+                    "research_report": [
+                        _foundation_info("ev_xiaomi_yongxing_deep_report_20250228", "研究线索", "研报提示 EV 与人车家生态的连接。"),
+                    ],
+                    "message": [],
+                    "opinion": [],
+                },
+            },
+        ],
+        "h5-disconfirming-history": [
+            {
+                "id": "phone-base",
+                "question": "手机基本盘弱化会不会反证生态叙事？",
+                "answer": "如果手机份额、出货和毛利持续承压，用户入口和服务变现基础可能弱化，需要作为历史叙事的反证。",
+                "gap": "需要连续季度手机出货、份额、ASP、毛利、库存和服务 MAU/ARPU 数据。",
+                "rollup": "手机基本盘仍是历史叙事的关键底座。",
+                "info": {
+                    "evidence": [
+                        _foundation_info("ev_xiaomi_idc_q1_2026_smartphone_20260512", "反证/边界", "IDC 数据显示 Q1 2026 手机出货和份额承压。"),
+                        _foundation_info("ev_xiaomi_smartphone_share", "反证/边界", "测试样本：显示手机出货同比下滑。"),
+                    ],
+                    "research_report": [],
+                    "message": [],
+                    "opinion": [],
+                },
+            },
+            {
+                "id": "safety-cost",
+                "question": "召回和安全成本是否会改变 EV 历史叙事？",
+                "answer": "召回本身不一定否定 EV 转型，但如果质保、召回、保险和品牌信任成本随交付放大，会改变转型质量。",
+                "gap": "需要补召回完成率、成本计提、事故/投诉、保险费用和用户满意度。",
+                "rollup": "安全成本是 EV 转型能否成为正向历史节点的关键反证条件。",
+                "info": {
+                    "evidence": [
+                        _foundation_info("ev_xiaomi_samr_su7_recall_20250919", "反证/边界", "召回公告提示安全和监管成本。"),
+                    ],
+                    "research_report": [],
+                    "message": [],
+                    "opinion": [],
+                },
+            },
+        ],
+    }
+
+
+def _history_evidence_ids(ticker: str) -> list[str]:
+    if ticker == "XIAOMI":
+        return [
+            "ev_xiaomi_company_profile_20260518",
+            "ev_xiaomi_profile",
+            "ev_xiaomi_ipo_prospectus_20180625",
+            "ev_xiaomi_mi1_launch_transcript_20110816",
+            "ev_xiaomi_jingzhun_deep_report_20181105",
+            "ev_xiaomi_guosheng_deep_report_20211117",
+            "ev_xiaomi_yongxing_deep_report_20250228",
+            "ev_xiaomi_shenwan_deep_report_20241118",
+            "ev_xiaomi_2025_annual_report_20260428",
+            "ev_xiaomi_annual",
+            "ev_xiaomi_2025_results_announcement_20260324",
+            "ev_xiaomi_segments",
+            "ev_xiaomi_board_wvr_20260428",
+            "ev_xiaomi_governance",
+            "ev_xiaomi_idc_q1_2026_smartphone_20260512",
+            "ev_xiaomi_smartphone_share",
+            "ev_xiaomi_samr_su7_recall_20250919",
+            "ev_xiaomi_recall",
+        ]
+    return []
+
+
+def _foundation_info(evidence_id: str, relation: str, point: str) -> dict[str, str]:
+    return {"evidence_id": evidence_id, "relation": relation, "point": point}
 
 
 def _render_source_origin_page(
@@ -1404,82 +4167,7 @@ def _render_source_origin_page(
     section_records = [evidence_by_id[eid] for eid in section.get("evidence_ids", []) if eid in evidence_by_id]
     primary_records = section_records or evidence[:4]
     company_name = "小米" if ticker == "XIAOMI" else ticker
-    professional_records = _records_matching(evidence, ["professional_report", "sell_side_report", "sell_side_report_summary"], 6)
-    professional_cards_html = _render_professional_report_cards(professional_records)
-    thesis_html = _render_source_origin_thesis(ticker, evidence)
-    phase_rows = _render_source_origin_phase_rows(ticker, evidence)
-    mechanism_rows = _render_source_origin_mechanism_rows(ticker, evidence)
-
-    question_items = [
-        "公司为什么会在那个时间点出现？当时的技术、渠道、用户和成本条件是什么？",
-        "公司最早解决的原始痛点是什么？第一批用户为什么愿意迁移？",
-        "最初的产品切口、渠道切口和价格切口分别是什么？",
-        "创始团队的能力结构为什么适合这个问题？哪些能力是后来可迁移的？",
-        "早期商业模型如何形成飞轮：获客、复购、生态扩展、利润池各自在哪里？",
-        "这些早期基因今天仍是优势，还是已经变成组织、治理或业务边界约束？",
-    ]
-    question_html = "".join(f"<li>{escape(item)}</li>" for item in question_items)
-
-    granularity_rows = [
-        (
-            "事实层",
-            "精确到日期、主体、产品、渠道、融资/上市文件和一手出处。",
-            "创立时间、创始人/联合创始人、早期产品、公司自我定义、招股书/年报/IR 页面。",
-            "只写“公司成立于某年”不够，必须能回到证据 ID。",
-        ),
-        (
-            "机制层",
-            "把事实连成因果链，而不是堆公司历史。",
-            "原始痛点 -> 产品切口 -> 获客方式 -> 成本/价格优势 -> 可扩展利润池。",
-            "只写使命、口号、创始人履历不够，要说明为什么这套机制成立。",
-        ),
-        (
-            "迁移层",
-            "判断早期能力能否迁移到今天的新业务。",
-            "手机入口、IoT 连接、互联网服务、智能制造、EV 安全责任之间的能力迁移和断点。",
-            "不能直接把早期成功外推到 EV、AI 或其他新业务。",
-        ),
-        (
-            "边界层",
-            "明确哪些问题还不能回答，以及后续消息流要验证什么。",
-            "缺失的一手访谈、早期用户数据、早期毛利/现金流、组织激励、质量事件和售后成本。",
-            "缺口要进入问题树，而不是在报告里用模糊措辞掩盖。",
-        ),
-    ]
-    granularity_html = "".join(
-        "<tr>"
-        f"<td><strong>{escape(level)}</strong></td>"
-        f"<td>{escape(answer_depth)}</td>"
-        f"<td>{escape(evidence_need)}</td>"
-        f"<td>{escape(not_enough)}</td>"
-        "</tr>"
-        for level, answer_depth, evidence_need, not_enough in granularity_rows
-    )
-
-    evidence_cards = [
-        _render_source_origin_evidence_card(
-            "创立时点与公司定位",
-            "确认公司从哪里来、最初把自己定义成什么、上市文件如何描述原始业务模型。",
-            _records_matching(evidence, ["found", "founded", "profile", "prospectus", "ipo", "mission", "launch"], 5) or primary_records[:2],
-        ),
-        _render_source_origin_evidence_card(
-            "第一产品楔子",
-            "专业报告不会只写创始人履历，而会追问最早凭什么获得用户：产品体验、价格、渠道、社区还是供给变化。",
-            _records_matching(evidence, ["miui", "xiaomi phone", "launch", "first users", "wedge", "founding_context"], 5),
-        ),
-        _render_source_origin_evidence_card(
-            "原始模型与飞轮",
-            "把早期手机、智能硬件、IoT 平台和互联网服务放在同一机制里看，判断其是否形成可复用增长逻辑。",
-            _records_matching(evidence, ["prospectus", "business_model", "original model", "smart hardware connected", "iot platform", "internet-company"], 5),
-        ),
-        _render_source_origin_evidence_card(
-            "今日延伸与边界",
-            "检验早期效率、用户和生态基因延伸到智能制造、EV 和 AI 时，是否遇到安全、资本开支、质量控制和售后责任的新边界。",
-            _records_matching(evidence, ["smart ev", "vehicle", "auto", "recall", "safety", "capex", "manufacturing", "new initiatives", "human_car_home"], 5),
-        ),
-    ]
-    evidence_cards_html = "\n".join(evidence_cards)
-
+    question_cards_html = _render_source_origin_question_cards(ticker, evidence)
     fact_items = [
         f"{_zh_text(fact['statement'])} [{fact['evidence_id']}]"
         for fact in section.get("facts", [])
@@ -1497,7 +4185,7 @@ def _render_source_origin_page(
         "No material gap flagged.",
     )
     evidence_rows = "\n".join(_render_evidence_record_row(record) for record in primary_records)
-    evidence_rows = evidence_rows or '<tr><td colspan="5" class="note">当前没有可展示证据。</td></tr>'
+    evidence_rows = evidence_rows or '<tr><td colspan="6" class="note">当前没有可展示证据。</td></tr>'
 
     status_label = _zh_text(section["status"])
     evidence_count = len(section.get("evidence_ids", []))
@@ -1511,42 +4199,42 @@ def _render_source_origin_page(
   <title>{escape(ticker)} 源头溯源</title>
   <style>
     :root {{
-      --ink: #17202a;
-      --muted: #62707c;
-      --paper: #f6f3ea;
-      --panel: #fffdfa;
-      --line: #d9ded8;
-      --green: #1f7a5c;
-      --amber: #b66a18;
-      --red: #b2473e;
-      --blue: #2d5d8f;
-      --charcoal: #121a22;
+      --ink: #1d1d1f;
+      --muted: #6e6e73;
+      --paper: #f5f5f7;
+      --panel: #ffffff;
+      --panel-soft: #fbfbfd;
+      --line: #d2d2d7;
+      --blue: #0066cc;
+      --green: #248a3d;
+      --amber: #a86600;
+      --red: #d70015;
+      --shadow: 0 18px 50px rgba(0, 0, 0, .08);
     }}
     * {{ box-sizing: border-box; }}
+    html {{ scroll-behavior: smooth; }}
     body {{
       margin: 0;
       color: var(--ink);
-      background:
-        linear-gradient(90deg, rgba(18,26,34,.045) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(18,26,34,.035) 1px, transparent 1px),
-        var(--paper);
-      background-size: 36px 36px;
-      font-family: "Avenir Next", "Gill Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
-      line-height: 1.62;
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.55;
     }}
     header {{
-      padding: 34px clamp(18px, 5vw, 64px) 26px;
-      color: #fff;
-      background: var(--charcoal);
-      border-bottom: 7px solid var(--green);
+      padding: clamp(52px, 8vw, 104px) clamp(20px, 6vw, 86px) 34px;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, #fff 0%, #f8f8fa 72%, var(--paper) 100%);
+      border-bottom: 1px solid rgba(0, 0, 0, .06);
     }}
-    .eyebrow {{ margin: 0 0 8px; color: #a7c8bd; font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }}
-    h1 {{ margin: 0; font-size: clamp(34px, 5.4vw, 62px); line-height: 1; letter-spacing: 0; }}
-    h2 {{ margin: 0 0 12px; font-size: clamp(22px, 3vw, 34px); letter-spacing: 0; }}
-    h3 {{ margin: 0 0 8px; font-size: 18px; }}
+    .eyebrow {{ margin: 0 0 12px; color: var(--blue); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }}
+    h1 {{ max-width: 980px; margin: 0; font-size: clamp(46px, 7vw, 86px); font-weight: 700; line-height: .98; letter-spacing: 0; }}
+    h2 {{ margin: 0 0 12px; font-size: clamp(28px, 4vw, 48px); font-weight: 700; letter-spacing: 0; }}
+    h3 {{ margin: 0 0 10px; font-size: clamp(22px, 2.3vw, 30px); font-weight: 700; letter-spacing: 0; }}
     p {{ margin: 0 0 10px; }}
-    a {{ color: var(--blue); }}
-    .subtitle {{ max-width: 980px; margin-top: 14px; color: #d8e1dd; font-size: 17px; }}
+    a {{ color: var(--blue); text-decoration: none; }}
+    a:hover {{ text-decoration: underline; }}
+    .subtitle {{ max-width: 900px; margin-top: 18px; color: var(--muted); font-size: clamp(18px, 2.1vw, 24px); line-height: 1.45; }}
     .nav {{
       position: sticky;
       top: 0;
@@ -1554,44 +4242,95 @@ def _render_source_origin_page(
       display: flex;
       gap: 8px;
       overflow-x: auto;
-      padding: 10px clamp(14px, 4vw, 54px);
-      background: rgba(246,243,234,.96);
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(10px);
+      padding: 11px clamp(16px, 5vw, 70px);
+      background: rgba(245, 245, 247, .82);
+      border-bottom: 1px solid rgba(0, 0, 0, .08);
+      backdrop-filter: saturate(180%) blur(20px);
     }}
     .nav a {{
       flex: 0 0 auto;
-      padding: 7px 10px;
+      padding: 7px 12px;
       color: var(--ink);
       text-decoration: none;
-      border: 1px solid var(--line);
-      background: #fff;
+      border: 1px solid rgba(0, 0, 0, .08);
+      background: rgba(255, 255, 255, .74);
       border-radius: 999px;
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 500;
     }}
-    main {{ width: min(1160px, calc(100% - 28px)); margin: 22px auto 58px; }}
-    section {{ margin: 16px 0; padding: clamp(18px, 3vw, 30px); background: rgba(255,253,250,.95); border: 1px solid var(--line); }}
-    .summary-strip {{ display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 18px; }}
-    .metric {{ padding: 14px; background: #fff; border: 1px solid var(--line); min-width: 0; }}
-    .metric span {{ display: block; color: var(--muted); font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }}
-    .metric strong {{ display: block; margin-top: 6px; font-size: clamp(21px, 2.4vw, 32px); line-height: 1.08; }}
-    .lead-grid {{ display: grid; grid-template-columns: .95fr 1.05fr; gap: 14px; align-items: start; }}
+    main {{ width: min(1180px, calc(100% - 32px)); margin: 26px auto 72px; }}
+    section {{
+      margin: 18px 0;
+      padding: clamp(24px, 4vw, 44px);
+      background: rgba(255, 255, 255, .9);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, .7) inset;
+    }}
+    .summary-strip {{ display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 30px; max-width: 1040px; }}
+    .metric {{ padding: 16px; background: rgba(255, 255, 255, .86); border: 1px solid rgba(0, 0, 0, .08); border-radius: 8px; min-width: 0; box-shadow: 0 10px 30px rgba(0, 0, 0, .05); }}
+    .metric span {{ display: block; color: var(--muted); font-size: 12px; font-weight: 600; letter-spacing: .04em; }}
+    .metric strong {{ display: block; margin-top: 8px; font-size: clamp(20px, 2.2vw, 30px); font-weight: 700; line-height: 1.1; overflow-wrap: anywhere; }}
+    .lead-grid {{ display: grid; grid-template-columns: .95fr 1.05fr; gap: 16px; align-items: start; }}
     .question-list {{ margin: 0; padding-left: 20px; }}
     .question-list li {{ margin: 7px 0; }}
-    .evidence-grid {{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }}
-    .evidence-card {{ padding: 16px; background: #fff; border: 1px solid var(--line); border-left: 5px solid var(--green); min-width: 0; }}
-    .evidence-card p {{ color: var(--muted); }}
-    .field {{ margin-top: 12px; }}
-    .field b {{ display: block; margin-bottom: 4px; color: var(--muted); font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }}
+    .question-card {{
+      position: relative;
+      padding: clamp(22px, 3vw, 32px);
+      background: var(--panel);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      margin: 16px 0;
+      box-shadow: var(--shadow);
+    }}
+    .question-card h3 {{ padding-right: 52px; }}
+    .question-card::before {{
+      content: "";
+      position: absolute;
+      top: 26px;
+      right: 26px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 0 7px rgba(0, 102, 204, .1);
+    }}
+    .answer-box {{ padding: 16px; background: #f5f8ff; border: 1px solid #d6e6ff; border-radius: 8px; margin: 14px 0 16px; }}
+    .answer-box strong {{ display: block; margin-bottom: 6px; color: var(--blue); font-size: 13px; font-weight: 700; letter-spacing: .04em; }}
+    .answer-box p {{ margin-bottom: 0; font-size: 16px; }}
+    .info-grid {{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }}
+    .info-box {{ padding: 14px; border: 1px solid rgba(0, 0, 0, .08); border-radius: 8px; background: var(--panel-soft); min-width: 0; }}
+    .info-box h4 {{ margin: 0 0 10px; font-size: 13px; font-weight: 700; color: var(--muted); letter-spacing: .04em; }}
+    .info-box ul {{ display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }}
+    .info-box li {{ margin: 0; padding-top: 12px; border-top: 1px solid rgba(0, 0, 0, .07); }}
+    .info-box li:first-child {{ padding-top: 0; border-top: 0; }}
+    .info-box.evidence {{ background: #f5f9ff; }}
+    .info-box.research_report {{ background: #f4fbf7; }}
+    .info-box.message {{ background: #fff9ef; }}
+    .info-box.opinion {{ background: #f6f6f7; }}
+    .field {{ margin-top: 14px; }}
+    .field b {{ display: block; margin-bottom: 6px; color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .04em; }}
     .note {{ color: var(--muted); font-size: 13px; }}
-    .chip {{ display: inline-flex; max-width: 100%; margin: 2px 4px 2px 0; padding: 2px 7px; border-radius: 999px; background: #edf3f1; color: #2a5146; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; overflow-wrap: anywhere; }}
+    .chip {{
+      display: inline-flex;
+      max-width: 100%;
+      margin: 0 4px 7px 0;
+      padding: 3px 7px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .76);
+      color: #424245;
+      font-family: "SF Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 11px;
+      overflow-wrap: anywhere;
+    }}
     .status-evidenced {{ color: var(--green); font-weight: 800; }}
     .status-partial {{ color: var(--amber); font-weight: 800; }}
     .status-missing {{ color: var(--red); font-weight: 800; }}
-    table {{ width: 100%; border-collapse: collapse; background: #fff; font-size: 14px; }}
-    th, td {{ padding: 10px; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; }}
-    th {{ color: var(--muted); font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; background: #eef2ee; }}
+    table {{ width: 100%; border-collapse: separate; border-spacing: 0; background: #fff; font-size: 14px; border: 1px solid rgba(0, 0, 0, .08); border-radius: 8px; overflow: hidden; }}
+    th, td {{ padding: 13px; border-bottom: 1px solid rgba(0, 0, 0, .08); vertical-align: top; text-align: left; }}
+    tr:last-child td {{ border-bottom: 0; }}
+    th {{ color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .04em; background: #f5f5f7; }}
     .thesis-card {{ padding: 18px; background: #111820; color: #fff; border-left: 7px solid var(--green); }}
     .thesis-card p {{ color: #d8e1dd; }}
     .reference-grid {{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }}
@@ -1600,10 +4339,13 @@ def _render_source_origin_page(
     .stage {{ color: var(--green); font-weight: 800; white-space: nowrap; }}
     ul {{ margin: 8px 0 0; padding-left: 20px; }}
     li {{ margin: 5px 0; }}
-    .rule-box {{ padding: 16px; background: #f0f4f1; border-left: 5px solid var(--blue); }}
+    .rule-box {{ padding: 18px; background: #f5f8ff; border: 1px solid #d6e6ff; border-radius: 8px; }}
     @media (max-width: 880px) {{
-      .summary-strip, .lead-grid, .evidence-grid, .reference-grid {{ grid-template-columns: 1fr; }}
+      .summary-strip, .lead-grid, .info-grid, .reference-grid {{ grid-template-columns: 1fr; }}
       table {{ font-size: 13px; }}
+      header {{ padding-top: 42px; }}
+      .question-card h3 {{ padding-right: 34px; }}
+      .question-card::before {{ right: 20px; }}
     }}
   </style>
 </head>
@@ -1621,65 +4363,15 @@ def _render_source_origin_page(
   </header>
   <nav class="nav">
     <a href="../research_dashboard.html#foundation">返回总览</a>
-    <a href="#calibration">专业写法</a>
-    <a href="#thesis">源头结论</a>
-    <a href="#phases">阶段复盘</a>
-    <a href="#mechanism">机制拆解</a>
-    <a href="#questions">要回答什么</a>
-    <a href="#granularity">回答粒度</a>
-    <a href="#evidence">当前证据</a>
+    <a href="#question-map">8 个问题</a>
     <a href="#judgment">当前判断</a>
-    <a href="#gaps">缺口</a>
+    <a href="#records">信息索引</a>
   </nav>
   <main>
-    <section id="calibration">
-      <h2>专业报告写法校准</h2>
-      <p>我重新按公开深度报告的写法整理本页：源头不是“公司简介”，而是要解释一个投资命题的起点。专业报告通常先给阶段化历史，再抽出产品楔子、用户/渠道机制、商业模型闭环，最后说明这些早期基因怎样影响今天。</p>
-      <div class="reference-grid">{professional_cards_html}</div>
-    </section>
-
-    <section id="thesis">
-      <h2>{escape(company_name)}源头结论</h2>
-      {thesis_html}
-    </section>
-
-    <section id="phases">
-      <h2>阶段复盘：把历史写成因果链</h2>
-      <table>
-        <thead><tr><th>阶段</th><th>发生了什么</th><th>投研含义</th><th>证据</th></tr></thead>
-        <tbody>{phase_rows}</tbody>
-      </table>
-    </section>
-
-    <section id="mechanism">
-      <h2>机制拆解：源头如何影响今天</h2>
-      <table>
-        <thead><tr><th>问题</th><th>当前回答</th><th>为什么重要</th><th>证据 / 下一步</th></tr></thead>
-        <tbody>{mechanism_rows}</tbody>
-      </table>
-    </section>
-
-    <section id="questions">
-      <div class="lead-grid">
-        <div>
-          <h2>这一页要回答什么</h2>
-          <p>源头溯源的目的，是把公司最早的“问题-能力-模型”找清楚。后续任何关于护城河、管理层、第二曲线或估值弹性的讨论，都应先回到这里校验。</p>
-        </div>
-        <ol class="question-list">{question_html}</ol>
-      </div>
-    </section>
-
-    <section id="granularity">
-      <h2>回答到什么粒度</h2>
-      <table>
-        <thead><tr><th>层级</th><th>需要回答到的深度</th><th>最低证据要求</th><th>什么不够</th></tr></thead>
-        <tbody>{granularity_html}</tbody>
-      </table>
-    </section>
-
-    <section id="evidence">
-      <h2>{escape(company_name)}当前证据</h2>
-      <div class="evidence-grid">{evidence_cards_html}</div>
+    <section id="question-map">
+      <h2>{escape(company_name)}源头溯源：8 个核心问题</h2>
+      <p class="note">阅读顺序固定为：先看问题，再看当前回答，最后看四类信息如何支撑或反证。这里的“证据”指官方文件、财报、招股书、监管公告等一手材料。</p>
+      {question_cards_html}
     </section>
 
     <section id="judgment">
@@ -1705,9 +4397,9 @@ def _render_source_origin_page(
     </section>
 
     <section id="records">
-      <h2>证据索引</h2>
+      <h2>信息索引</h2>
       <table>
-        <thead><tr><th>证据 ID</th><th>来源</th><th>日期</th><th>可靠性 / 重要性</th><th>摘要</th></tr></thead>
+        <thead><tr><th>信息 ID</th><th>类别</th><th>来源</th><th>日期</th><th>可靠性 / 重要性</th><th>摘要</th></tr></thead>
         <tbody>{evidence_rows}</tbody>
       </table>
     </section>
@@ -1715,6 +4407,291 @@ def _render_source_origin_page(
 </body>
 </html>
 """
+
+
+def _render_source_origin_question_cards(ticker: str, evidence: list[EvidenceRecord]) -> str:
+    questions = _source_origin_questions(ticker)
+    return "\n".join(_render_source_origin_question_card(question, evidence) for question in questions)
+
+
+def _source_origin_questions(ticker: str) -> list[dict[str, Any]]:
+    if ticker == "XIAOMI":
+        return [
+            {
+                "id": "q1-era",
+                "question": "时代背景是什么？",
+                "answer": "小米出现于智能手机和移动互联网快速普及窗口，早期机会不是单纯卖硬件，而是在用户体验、系统迭代、线上渠道和硬件效率之间寻找结构性差异。",
+                "gap": "还需要补充 2010-2012 年中国智能手机渗透率、安卓生态成熟度、运营商渠道和线上零售变化的数据。",
+                "info": {
+                    "evidence": [
+                        _source_origin_info("ev_xiaomi_company_profile_20260518", "支撑", "确认 2010 年成立、智能手机和 IoT 平台定位。"),
+                        _source_origin_info("ev_xiaomi_global_ir_triathlon_20180503", "支撑", "招股概要直接把公司定义为互联网公司，并披露 MIUI、米粉和 IoT 平台早期数据。"),
+                        _source_origin_info("ev_xiaomi_profile", "支撑", "测试样本：确认成立时间和公司定位。"),
+                        _source_origin_info("ev_xiaomi_ipo_prospectus_20180625", "支撑", "招股书给出早期使命、自我定义和原始业务模型。"),
+                    ],
+                    "research_report": [
+                        _source_origin_info("ev_xiaomi_wipo_origin_miui_20211101", "支撑", "WIPO 资料确认 2010 年 8 月 MIUI 私测这一软件入口。"),
+                        _source_origin_info("ev_xiaomi_jingzhun_deep_report_20181105", "支撑", "第三方报告把 MIUI、手机硬件、IoT 与互联网变现放在同一模型里分析。"),
+                        _source_origin_info("ev_xiaomi_guosheng_deep_report_20211117", "支撑", "第三方报告按阶段写出 2010-2021 年业务演进。"),
+                    ],
+                    "message": [
+                        _source_origin_info("ev_xiaomi_mi1_launch_transcript_20110816", "支撑", "早期发布会实录可作为原始产品切口的一手近似材料。"),
+                    ],
+                    "opinion": [],
+                },
+            },
+            {
+                "id": "q2-original-problem",
+                "question": "原始问题是什么？",
+                "answer": "原始问题可以概括为：用户需要更好用、更快迭代、价格可承受的智能手机体验；小米用软件体验和用户参与先建立信任，再用硬件放大用户入口。",
+                "gap": "需要补早期用户反馈、MIUI 活跃社区数据、首批用户画像和竞品体验差距，避免把后来的成功倒推成起点。",
+                "info": {
+                    "evidence": [
+                        _source_origin_info("ev_xiaomi_ipo_prospectus_20180625", "支撑", "招股书描述使命、互联网公司自我定义与智能手机/智能硬件模型。"),
+                        _source_origin_info("ev_xiaomi_global_ir_triathlon_20180503", "支撑", "招股概要把用户、硬件、新零售和互联网服务放进同一个商业模型。"),
+                    ],
+                    "research_report": [
+                        _source_origin_info("ev_xiaomi_wipo_origin_miui_20211101", "支撑", "WIPO 资料确认 MIUI 是手机硬件前的早期软件入口。"),
+                        _source_origin_info("ev_xiaomi_jingzhun_deep_report_20181105", "支撑", "研报把用户参与和硬件放量作为商业模型的源头机制。"),
+                    ],
+                    "message": [
+                        _source_origin_info("ev_xiaomi_mi1_launch_transcript_20110816", "支撑", "发布会实录显示 MIUI、发烧友、1999 元手机和线上销售是早期表达。"),
+                    ],
+                    "opinion": [],
+                },
+            },
+            {
+                "id": "q3-incumbent-gap",
+                "question": "旧方案为什么不够好？",
+                "answer": "旧方案的弱点不是单一价格高，而是软硬件体验、迭代速度、渠道效率和用户参与不足。小米早期切入点是把这些差异合成一个高性价比和高反馈速度的产品体系。",
+                "gap": "需要竞品同期价格、配置、渠道加价、系统更新频率和用户满意度对比，才能把“旧方案不足”从叙事变成证据。",
+                "info": {
+                    "evidence": [
+                        _source_origin_info("ev_xiaomi_ipo_prospectus_20180625", "支撑", "招股书可验证小米对自身互联网效率和硬件平台的定义。"),
+                        _source_origin_info("ev_xiaomi_hardware_margin_pledge_2021_ar", "支撑/边界", "硬件净利率承诺说明“诚实定价”既是获客机制，也是硬件利润率约束。"),
+                    ],
+                    "research_report": [
+                        _source_origin_info("ev_xiaomi_jingzhun_deep_report_20181105", "支撑", "研报提供商业模式和效率差的第三方归纳。"),
+                        _source_origin_info("ev_xiaomi_shenwan_deep_report_20241118", "研究线索", "低可靠报告摘要可作为阶段写法参考，不能单独强化判断。"),
+                    ],
+                    "message": [
+                        _source_origin_info("ev_xiaomi_mi1_launch_transcript_20110816", "支撑", "早期公开表达可验证当时强调的产品、价格和渠道差异。"),
+                    ],
+                    "opinion": [],
+                },
+            },
+            {
+                "id": "q4-product-wedge",
+                "question": "第一产品楔子是什么？",
+                "answer": "第一产品楔子不是孤立的手机硬件，而是 MIUI 社区迭代形成的用户信任，加上 1999 元小米手机把这种信任放大为可规模化入口。",
+                "gap": "需要补 MIUI 版本节奏、论坛用户增长、首批销量、供货节奏和退换货/口碑数据。",
+                "info": {
+                    "evidence": [
+                        _source_origin_info("ev_xiaomi_ipo_prospectus_20180625", "支撑", "招股书确认早期模型以智能手机和智能硬件为核心。"),
+                        _source_origin_info("ev_xiaomi_global_ir_triathlon_20180503", "支撑", "招股概要披露 MIUI 月活、论坛月活和多设备用户，能验证用户楔子。"),
+                        _source_origin_info("ev_xiaomi_management_20260518", "支撑", "管理层页面确认创始团队和产品/技术相关组织角色。"),
+                    ],
+                    "research_report": [
+                        _source_origin_info("ev_xiaomi_wipo_origin_miui_20211101", "支撑", "WIPO 资料确认 MIUI 私测时间点早于手机硬件放量。"),
+                        _source_origin_info("ev_xiaomi_jingzhun_deep_report_20181105", "支撑", "研报把 MIUI 用户参与和手机放量作为同一源头模型。"),
+                    ],
+                    "message": [
+                        _source_origin_info("ev_xiaomi_mi1_launch_transcript_20110816", "支撑", "发布会实录直接对应 MIUI、发烧友和 1999 元手机。"),
+                    ],
+                    "opinion": [],
+                },
+            },
+            {
+                "id": "q5-first-customers",
+                "question": "第一批客户是谁？",
+                "answer": "当前判断是：早期核心客户更接近对体验敏感、愿意参与反馈、同时重视价格性能比的手机发烧友和线上用户，而不是泛化大众客群。",
+                "gap": "需要补首批预约用户、论坛用户画像、地域和渠道结构、复购与口碑传播证据。",
+                "info": {
+                    "evidence": [
+                        _source_origin_info("ev_xiaomi_ipo_prospectus_20180625", "支撑", "招股书可验证原始用户入口和平台模型。"),
+                        _source_origin_info("ev_xiaomi_global_ir_triathlon_20180503", "支撑", "招股概要披露米粉、MIUI 论坛和多设备用户，能具体化早期用户。"),
+                    ],
+                    "research_report": [
+                        _source_origin_info("ev_xiaomi_jingzhun_deep_report_20181105", "支撑", "研报将发烧友用户参与纳入商业模型源头。"),
+                    ],
+                    "message": [
+                        _source_origin_info("ev_xiaomi_mi1_launch_transcript_20110816", "支撑", "早期发布会材料直接指向发烧友和线上用户切口。"),
+                    ],
+                    "opinion": [],
+                },
+            },
+            {
+                "id": "q6-early-advantage",
+                "question": "早期优势来自哪里？",
+                "answer": "早期优势来自产品定义、快速迭代、用户组织、供应链整合和线上渠道效率的组合，而不是单一低价。这个判断会影响后续分析：优势能否跨品类迁移，必须拆成能力项验证。",
+                "gap": "需要补早期组织分工、供应链账期、渠道费用率、硬件毛利和研发投入资料。",
+                "info": {
+                    "evidence": [
+                        _source_origin_info("ev_xiaomi_global_ir_triathlon_20180503", "支撑", "招股概要将早期优势拆成创新、效率、新零售、IoT 和互联网服务。"),
+                        _source_origin_info("ev_xiaomi_hardware_margin_pledge_2021_ar", "支撑/边界", "硬件净利率承诺验证低硬件利润与用户信任之间的制度化绑定。"),
+                        _source_origin_info("ev_xiaomi_management_20260518", "支撑", "管理层资料帮助验证创始团队和职能能力结构。"),
+                        _source_origin_info("ev_xiaomi_ipo_prospectus_20180625", "支撑", "招股书是检验原始模型和业务结构的核心证据。"),
+                    ],
+                    "research_report": [
+                        _source_origin_info("ev_xiaomi_guosheng_deep_report_20211117", "支撑", "研报提供阶段化能力演进视角。"),
+                        _source_origin_info("ev_xiaomi_yongxing_deep_report_20250228", "支撑", "研报把早期手机/AIoT 基因连接到当前人车家生态。"),
+                    ],
+                    "message": [
+                        _source_origin_info("ev_xiaomi_mi1_launch_transcript_20110816", "支撑", "早期公开材料可验证当时强调的产品和渠道打法。"),
+                    ],
+                    "opinion": [],
+                },
+            },
+            {
+                "id": "q7-flywheel",
+                "question": "早期飞轮如何形成？",
+                "answer": "可工作的飞轮应是：手机入口积累用户规模，IoT 和智能硬件增加触点，互联网服务承担较高毛利变现层，再反哺生态扩张。每一环都要用分部收入、毛利、用户规模和现金流验证。",
+                "gap": "需要补早期到当前的用户规模、IoT 连接设备、多设备用户、互联网服务毛利和硬件利润率序列。",
+                "info": {
+                    "evidence": [
+                        _source_origin_info("ev_xiaomi_ipo_prospectus_20180625", "支撑", "招股书描述手机、智能硬件和 IoT 平台连接的原始模型。"),
+                        _source_origin_info("ev_xiaomi_global_ir_triathlon_20180503", "支撑", "招股概要明确三支柱模型：硬件、新零售、互联网服务。"),
+                        _source_origin_info("ev_xiaomi_hardware_margin_pledge_2021_ar", "支撑/边界", "硬件净利率上限解释硬件负责获客、服务负责利润质量的模型边界。"),
+                        _source_origin_info("ev_xiaomi_2025_results_announcement_20260324", "支撑", "FY2025 业绩公告提供手机、IoT、MAU 和 EV 的现阶段规模数据。"),
+                        _source_origin_info("ev_xiaomi_segments", "支撑", "测试样本：提供手机、IoT、服务和 EV 规模数据。"),
+                    ],
+                    "research_report": [
+                        _source_origin_info("ev_xiaomi_jingzhun_deep_report_20181105", "支撑", "研报把硬件放量、IoT 生态和互联网变现放在一个商业模型里。"),
+                        _source_origin_info("ev_xiaomi_yongxing_deep_report_20250228", "支撑", "研报将源头模型延展到人车家生态。"),
+                    ],
+                    "message": [],
+                    "opinion": [],
+                },
+            },
+            {
+                "id": "q8-dna-today",
+                "question": "源头基因今天是否仍有效？",
+                "answer": "源头基因仍能解释小米在用户体验、生态连接和多品类扩张上的优势，但不能直接证明 EV 利润可持续。汽车业务引入制造质量、安全冗余、质保、召回和售后责任，必须单独验证。",
+                "gap": "需要补 EV 单车收入、单车毛利、订单等待周期、产能利用率、质保计提、召回成本和用户满意度。",
+                "info": {
+                    "evidence": [
+                        _source_origin_info("ev_xiaomi_global_ir_triathlon_20180503", "支撑", "招股概要中的三支柱模型仍能解释今天的人车家生态入口。"),
+                        _source_origin_info("ev_xiaomi_2025_results_announcement_20260324", "支撑", "业绩公告显示 EV 已进入财务级业务结构。"),
+                        _source_origin_info("ev_xiaomi_segments", "支撑", "测试样本：提供 EV 和手机/IoT 规模数据。"),
+                        _source_origin_info("ev_xiaomi_hardware_margin_pledge_2021_ar", "反证/边界", "硬件净利率承诺提示硬件规模并不等于高利润池。"),
+                        _source_origin_info("ev_xiaomi_samr_su7_recall_20250919", "反证/边界", "召回公告提醒汽车安全和监管责任不能由互联网效率直接外推。"),
+                        _source_origin_info("ev_xiaomi_recall", "反证/边界", "测试样本：召回信息验证 EV 风险边界。"),
+                    ],
+                    "research_report": [
+                        _source_origin_info("ev_xiaomi_yongxing_deep_report_20250228", "支撑", "研报把手机/AIoT 基因与汽车、IoT、互联网服务当前结构相连接。"),
+                        _source_origin_info("ev_xiaomi_shenwan_deep_report_20241118", "研究线索", "低可靠报告摘要只能用于提示进一步验证方向。"),
+                    ],
+                    "message": [],
+                    "opinion": [],
+                },
+            },
+        ]
+    return [
+        {
+            "id": "q1-era",
+            "question": "时代背景是什么？",
+            "answer": "当前证据不足。需要先确认公司创立时的技术、需求、供给、渠道和资本市场环境。",
+            "gap": "补充创立年份前后的行业数据、招股书、创始人公开材料和早期产品发布材料。",
+            "info": {"evidence": [], "research_report": [], "message": [], "opinion": []},
+        },
+        {
+            "id": "q2-original-problem",
+            "question": "原始问题是什么？",
+            "answer": "当前证据不足。需要定义公司最早解决了哪个客户问题，而不是只写公司成立经过。",
+            "gap": "补充第一产品、第一客户、早期替代方案和用户痛点证据。",
+            "info": {"evidence": [], "research_report": [], "message": [], "opinion": []},
+        },
+        {
+            "id": "q3-incumbent-gap",
+            "question": "旧方案为什么不够好？",
+            "answer": "当前证据不足。需要说明公司替代了什么旧方案，以及旧方案的成本、体验、效率或供给缺陷。",
+            "gap": "补充竞品同期产品、价格、渠道、性能、客户满意度或监管变化资料。",
+            "info": {"evidence": [], "research_report": [], "message": [], "opinion": []},
+        },
+        {
+            "id": "q4-product-wedge",
+            "question": "第一产品楔子是什么？",
+            "answer": "当前证据不足。需要确认公司最早靠什么产品、渠道或场景进入客户心智。",
+            "gap": "补充首款产品资料、发布材料、销售/用户增长和渠道切口。",
+            "info": {"evidence": [], "research_report": [], "message": [], "opinion": []},
+        },
+        {
+            "id": "q5-first-customers",
+            "question": "第一批客户是谁？",
+            "answer": "当前证据不足。需要把早期客户具体到人群、场景、渠道和购买理由。",
+            "gap": "补充客户画像、早期订单、用户社区、渠道分布和复购数据。",
+            "info": {"evidence": [], "research_report": [], "message": [], "opinion": []},
+        },
+        {
+            "id": "q6-early-advantage",
+            "question": "早期优势来自哪里？",
+            "answer": "当前证据不足。需要拆分技术、产品、渠道、成本、组织和资本等能力来源。",
+            "gap": "补充早期团队、技术路线、供应链、渠道、单位经济和竞争对比。",
+            "info": {"evidence": [], "research_report": [], "message": [], "opinion": []},
+        },
+        {
+            "id": "q7-flywheel",
+            "question": "早期飞轮如何形成？",
+            "answer": "当前证据不足。需要说明获客、留存、复购、利润和再投资之间是否形成闭环。",
+            "gap": "补充用户增长、留存、毛利、现金流和再投资数据。",
+            "info": {"evidence": [], "research_report": [], "message": [], "opinion": []},
+        },
+        {
+            "id": "q8-dna-today",
+            "question": "源头基因今天是否仍有效？",
+            "answer": "当前证据不足。需要验证早期能力哪些能迁移到今天，哪些已经成为路径依赖或风险边界。",
+            "gap": "补充当前业务分部、竞争格局、管理层策略和风险事件证据。",
+            "info": {"evidence": [], "research_report": [], "message": [], "opinion": []},
+        },
+    ]
+
+
+def _source_origin_info(evidence_id: str, relation: str, point: str) -> dict[str, str]:
+    return {"evidence_id": evidence_id, "relation": relation, "point": point}
+
+
+def _render_source_origin_question_card(question: dict[str, Any], evidence: list[EvidenceRecord]) -> str:
+    bucket_html = "\n".join(
+        _render_foundation_info_bucket(category, question.get("info", {}).get(category, []), evidence)
+        for category in SOURCE_ORIGIN_INFO_ORDER
+    )
+    return (
+        f"<article class=\"question-card\" id=\"{escape(question['id'])}\">"
+        f"<h3>{escape(question['question'])}</h3>"
+        f"<div class=\"answer-box\"><strong>当前回答</strong><p>{escape(question['answer'])}</p></div>"
+        f"<div class=\"info-grid\">{bucket_html}</div>"
+        f"<p class=\"note\"><strong>待验证：</strong>{escape(question['gap'])}</p>"
+        "</article>"
+    )
+
+
+def _render_foundation_info_bucket(
+    category: str,
+    items: list[dict[str, str]],
+    evidence: list[EvidenceRecord],
+) -> str:
+    label = INFO_CATEGORY_LABEL_ZH.get(category, category)
+    by_id = {record.id: record for record in evidence}
+    rows: list[str] = []
+    for item in items:
+        record = by_id.get(item["evidence_id"])
+        if record is None:
+            continue
+        source_name = SOURCE_NAME_ZH.get(record.source_name, record.source_name)
+        summary = _zh_text(record.summary)
+        if len(summary) > 115:
+            summary = summary[:112] + "..."
+        rows.append(
+            "<li>"
+            f"<span class=\"chip\">{escape(record.id)}</span>"
+            f"<div><strong>{escape(item['relation'])}：</strong>{escape(item['point'])}</div>"
+            f"<div><a href=\"{escape(record.url)}\">{escape(source_name)}</a></div>"
+            f"<div class=\"note\">{escape(summary)}</div>"
+            "</li>"
+        )
+    if not rows:
+        rows.append("<li class=\"note\">暂无映射信息；不能用这一类材料强化当前回答。</li>")
+    return f"<div class=\"info-box {escape(category)}\"><h4>{escape(label)}</h4><ul>{''.join(rows)}</ul></div>"
 
 
 def _render_professional_report_cards(records: list[EvidenceRecord]) -> str:
@@ -1936,13 +4913,59 @@ def _render_source_origin_evidence_card(title: str, purpose: str, records: list[
     )
 
 
+def _render_information_category_tables(section: dict[str, Any]) -> str:
+    groups = section.get("information_by_category", {})
+    tables: list[str] = []
+    for category in INFO_CATEGORY_ORDER:
+        rows = groups.get(category, [])
+        label = INFO_CATEGORY_LABEL_ZH.get(category, category)
+        explanation = INFO_CATEGORY_EXPLANATION_ZH.get(category, "")
+        if not rows:
+            body = '<tr><td colspan="5" class="note">当前没有映射信息。</td></tr>'
+        else:
+            body = "\n".join(_render_information_map_row(row) for row in rows)
+        tables.append(
+            f"<h3>{escape(label)}</h3>"
+            f"<p class=\"note\">{escape(explanation)}</p>"
+            "<table>"
+            "<thead><tr><th>信息</th><th>关系</th><th>对应问题</th><th>支撑 / 反证的论点</th><th>说明</th></tr></thead>"
+            f"<tbody>{body}</tbody>"
+            "</table>"
+        )
+    return "\n".join(tables)
+
+
+def _render_information_map_row(row: dict[str, Any]) -> str:
+    source_name = SOURCE_NAME_ZH.get(row.get("source_name", ""), row.get("source_name", ""))
+    stance = STANCE_LABEL_ZH.get(row.get("stance", ""), row.get("stance", ""))
+    summary = _zh_text(row.get("summary", ""))
+    if len(summary) > 130:
+        summary = summary[:127] + "..."
+    return (
+        "<tr>"
+        f"<td><span class=\"chip\">{escape(row.get('evidence_id', ''))}</span><br><a href=\"{escape(row.get('url', ''))}\">{escape(source_name)}</a><br><span class=\"note\">{escape(summary)}</span></td>"
+        f"<td>{escape(stance)}</td>"
+        f"<td>{escape(row.get('linked_question', ''))}</td>"
+        f"<td>{escape(row.get('claim', ''))}</td>"
+        f"<td>{escape(row.get('explanation', ''))}</td>"
+        "</tr>"
+    )
+
+
+def _records_for_ids(evidence: list[EvidenceRecord], evidence_ids: list[str]) -> list[EvidenceRecord]:
+    by_id = {record.id: record for record in evidence}
+    return [by_id[evidence_id] for evidence_id in evidence_ids if evidence_id in by_id]
+
+
 def _render_evidence_record_row(record: EvidenceRecord) -> str:
     source_name = SOURCE_NAME_ZH.get(record.source_name, record.source_name)
     date = record.published_at[:10] if record.published_at else f"抓取 {record.fetched_at[:10]}"
     reliability = f"{_zh_text(record.reliability)} / {_zh_text(record.materiality)}"
+    category = INFO_CATEGORY_LABEL_ZH.get(record.information_category, record.information_category)
     return (
         "<tr>"
         f"<td><span class=\"chip\">{escape(record.id)}</span></td>"
+        f"<td>{escape(category)}</td>"
         f"<td><a href=\"{escape(record.url)}\">{escape(source_name)}</a></td>"
         f"<td>{escape(date)}</td>"
         f"<td>{escape(reliability)}</td>"
@@ -2044,13 +5067,14 @@ def _render_foundation_section_card(section: dict[str, Any]) -> str:
     card_class = f"foundation-card {escape(section['status'])}"
     section_label = SECTION_LABEL_ZH.get(section["label"], section["label"])
     status_label = _zh_text(section["status"])
-    detail_link = ""
-    if section.get("id") == "source_origin":
-        detail_link = '<a class="detail-link" href="pages/source_origin.html">打开详情页</a>'
+    detail_page = section.get("detail_page", f"pages/{section.get('id', 'section')}.html")
+    detail_link = f'<a class="detail-link" href="{escape(detail_page)}">打开详情页</a>'
+    questions = _render_statement_list(section.get("key_questions", [])[:2], "尚未定义本板块关键问题。")
     return (
         f"<article class=\"{card_class}\">"
         f"<h3>{escape(section_label)} <span class=\"status-{escape(section['status'])}\">{escape(status_label)}</span></h3>"
         f"<p>{evidence_html}</p>"
+        f"<div class=\"field\"><b>关键问题</b>{questions}</div>"
         f"<div class=\"field\"><b>事实</b>{facts}</div>"
         f"<div class=\"field\"><b>推论</b>{inferences}</div>"
         f"<div class=\"field\"><b>判断</b>{judgments}</div>"
@@ -2058,6 +5082,45 @@ def _render_foundation_section_card(section: dict[str, Any]) -> str:
         f"{detail_link}"
         "</article>"
     )
+
+
+def _render_l0_framework_card(section: dict[str, Any], qa_tree: dict[str, Any]) -> str:
+    section_id = section.get("id", "")
+    section_label = SECTION_LABEL_ZH.get(section.get("label", ""), section.get("label", ""))
+    l1_question = L1_FRAMEWORK_QUESTIONS.get(section_id, _foundation_section_question(section))
+    status_label = _zh_text(section.get("status", "missing"))
+    detail_page = section.get("detail_page", f"pages/{section_id}.html")
+    nodes_by_id = {node.get("id"): node for node in qa_tree.get("nodes", [])}
+    l2_nodes = _l2_nodes_for_section(qa_tree, section_id)
+    rollup = _children_summary(l2_nodes, nodes_by_id) or _section_evidence_summary(section)
+    child_items = _render_statement_list(section.get("key_questions", []), "暂无子问题。")
+    gap_items = _render_child_gap_list(l2_nodes)
+    return (
+        f"<article class=\"foundation-card {escape(section.get('status', 'missing'))}\">"
+        f"<p class=\"eyebrow\">L1 / {escape(section_label)}</p>"
+        f"<h3>{escape(l1_question)}</h3>"
+        f"<div class=\"field\"><b>子结构汇总结论</b><p>{escape(_zh_text(rollup))}</p></div>"
+        f"<div class=\"field\"><b>子问题列表</b>{child_items}</div>"
+        f"<div class=\"field\"><b>高优先级缺口</b>{gap_items}</div>"
+        f"<a class=\"detail-link\" href=\"{escape(detail_page)}\">进入 L1 子页面</a>"
+        f"<p class=\"note\">状态：<span class=\"status-{escape(section.get('status', 'missing'))}\">{escape(status_label)}</span></p>"
+        "</article>"
+    )
+
+
+def _foundation_l0_summary(ticker: str, foundation_graph: dict[str, Any]) -> str:
+    if ticker == "XIAOMI":
+        return (
+            "小米当前基础画像的主线是：源头来自 MIUI/手机用户入口和高效率硬件放大，发展历史从手机、AIoT 延伸到智能 EV，"
+            "当下核心研究矛盾集中在手机基本盘、IoT/互联网服务变现、EV 单车经济和汽车安全/售后责任。"
+            "因此后续下钻优先级应放在 EV 毛利与质量成本、手机份额与 MAU、硬件低利润承诺对利润池的约束，以及创始人控制权下的资本配置纪律。"
+        )
+    rollups = []
+    for section in foundation_graph.get("sections", []):
+        rollup = _foundation_section_rollup(section)
+        if rollup and rollup not in rollups:
+            rollups.append(_zh_text(rollup))
+    return "；".join(rollups[:4]) or "当前基础框架还没有足够证据形成上抛总结。"
 
 
 def _render_statement_list(items: list[str], empty: str) -> str:
@@ -2223,9 +5286,10 @@ def _render_message_row(message: dict[str, Any]) -> str:
         message_fact = message_fact[:207] + "..."
     source_name = SOURCE_NAME_ZH.get(message["source_name"], message["source_name"])
     research_action = _zh_text(message["research_action"])
+    category = INFO_CATEGORY_LABEL_ZH.get(message.get("information_category", ""), message.get("information_category", ""))
     return (
         "<tr>"
-        f"<td><span class=\"chip\">{escape(message['evidence_id'])}</span><br><strong>{escape(source_name)}</strong><br><span class=\"note\">{escape(message_fact)}</span></td>"
+        f"<td><span class=\"chip\">{escape(message['evidence_id'])}</span><br><strong>{escape(source_name)}</strong><br><span class=\"note\">{escape(category)} · {escape(message_fact)}</span></td>"
         f"<td class=\"{impact_class}\">{escape(_zh_text(message['impact']))}<br><span class=\"note\">{escape(fenghe_text)}</span></td>"
         f"<td><strong>业务节点</strong><br>{escape(nodes)}<br><strong>假设</strong><br>{escape(assumptions)}</td>"
         f"<td>{questions or escape(research_action)}</td>"

@@ -1,6 +1,6 @@
 # Value Invest Research
 
-File-system-first equity research assistant built around company foundation analysis first, structured question/message-flow research systems second, then FengHe 3C3D5M3T thesis-change analysis. Plain files are the source of truth; Python code validates contracts, scaffolds research objects, ingests public data, and creates LLM research drafts.
+File-system-first equity research assistant currently focused on company foundation analysis first. FengHe 3C3D5M3T remains the downstream thesis-change framework, but the active research-system generator is foundation-only until the baseline is stable. Plain files are the source of truth; Python code validates contracts, scaffolds research objects, ingests public data, and creates LLM research drafts.
 
 ## Module Index
 
@@ -50,10 +50,13 @@ value-invest-research research-stock AAPL --api-key $env:LLM_API_KEY
 - Do not issue final trading instructions.
 - Keep material claims tied to evidence IDs.
 - Separate facts, inferences, and judgments.
+- Classify every research input into one of four information buckets: evidence, research_report, opinion, or message.
 - Keep low-reliability evidence as research leads only.
 - Preserve existing research history; proposals are safer than silent memo overwrites.
 - Optional integrations must fail with clear install guidance when dependencies are missing.
 - Every stock-level output must state company foundation status and material foundation gaps.
-- Professional stock work should preserve a structured research system: foundation graph, question graph, message-flow impact log, and dashboard before polished prose.
+- Professional stock work should first preserve a structured foundation system: foundation graph, eight section detail pages, and a foundation dashboard before polished prose.
+- Each foundation section should expose key questions and map every information bucket to support/refute/lead relationships with source links.
+- All generated HTML research pages should use an Apple-inspired visual style: white/light-gray surfaces, SF-system typography, restrained borders, clean spacing, and low-noise cards.
 - Every thesis-strengthening output must include a dominant D driver, matching 3T time frame, and disconfirming tests.
 - Research graph outputs must preserve node/edge traceability from evidence to consensus, questions, hypotheses, assumption tests, and reports.

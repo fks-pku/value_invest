@@ -48,7 +48,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     research_system_parser = subparsers.add_parser(
         "build-research-system",
-        help="Build foundation graph, question graph, message flow, and research dashboard",
+        help="Build the foundation-only company profile dashboard",
     )
     research_system_parser.add_argument("ticker")
 

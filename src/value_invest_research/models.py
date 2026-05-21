@@ -11,8 +11,38 @@ class ValidationError(ValueError):
 
 RELIABILITY_LEVELS = {"primary", "high", "medium", "low"}
 MATERIALITY_LEVELS = {"low", "medium", "high", "thesis_change"}
+INFORMATION_CATEGORIES = {"evidence", "research_report", "opinion", "message"}
 VIEWS = {"watch", "attractive", "expensive", "avoid", "needs_review"}
 CONFIDENCE_LEVELS = {"low", "medium", "high"}
+
+
+OFFICIAL_SOURCE_TYPES = {
+    "annual_report",
+    "company_ir",
+    "ipo_prospectus",
+    "regulator_notice",
+    "results_announcement",
+    "sec_fact",
+    "sec_filing",
+}
+RESEARCH_REPORT_SOURCE_TYPES = {
+    "industry_data",
+    "sell_side_report",
+    "sell_side_report_summary",
+}
+OPINION_SOURCE_TYPES = {
+    "blog",
+    "expert_call",
+    "interview",
+    "opinion",
+    "social_media",
+}
+MESSAGE_SOURCE_TYPES = {
+    "media",
+    "media_transcript",
+    "news",
+    "rumor",
+}
 
 
 def _require_string(data: dict[str, Any], key: str) -> str:
@@ -42,6 +72,24 @@ def _validate_datetime(value: str | None, key: str) -> str | None:
     return value
 
 
+def infer_information_category(source_type: str, reliability: str) -> str:
+    """Map source metadata into the four research information buckets."""
+    normalized = source_type.strip().lower()
+    if normalized in OFFICIAL_SOURCE_TYPES:
+        return "evidence"
+    if normalized in RESEARCH_REPORT_SOURCE_TYPES:
+        return "research_report"
+    if normalized in OPINION_SOURCE_TYPES:
+        return "opinion"
+    if normalized in MESSAGE_SOURCE_TYPES:
+        return "message"
+    if reliability == "primary":
+        return "evidence"
+    if reliability == "low":
+        return "message"
+    return "research_report"
+
+
 @dataclass(frozen=True)
 class EvidenceRecord:
     id: str
@@ -58,6 +106,7 @@ class EvidenceRecord:
     summary: str = ""
     reliability: str = "medium"
     materiality: str = "low"
+    information_category: str = "message"
     used_in: list[str] = field(default_factory=list)
 
     @classmethod
@@ -71,6 +120,12 @@ class EvidenceRecord:
             raise ValidationError(f"materiality must be one of {sorted(MATERIALITY_LEVELS)}")
         if reliability == "low" and materiality == "thesis_change":
             raise ValidationError("low-reliability evidence cannot trigger a thesis_change")
+
+        information_category = data.get("information_category")
+        if information_category is None:
+            information_category = infer_information_category(_require_string(data, "source_type"), reliability)
+        elif not isinstance(information_category, str) or information_category not in INFORMATION_CATEGORIES:
+            raise ValidationError(f"information_category must be one of {sorted(INFORMATION_CATEGORIES)}")
 
         return cls(
             id=_require_string(data, "id"),
@@ -87,6 +142,7 @@ class EvidenceRecord:
             summary=_require_string(data, "summary"),
             reliability=reliability,
             materiality=materiality,
+            information_category=information_category,
             used_in=_string_list(data, "used_in"),
         )
 
@@ -106,6 +162,7 @@ class EvidenceRecord:
             "summary": self.summary,
             "reliability": self.reliability,
             "materiality": self.materiality,
+            "information_category": self.information_category,
             "used_in": list(self.used_in),
         }
 

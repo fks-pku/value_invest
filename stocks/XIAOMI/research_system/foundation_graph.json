@@ -188,7 +188,8 @@
       "status": "open",
       "supporting_evidence_ids": [
         "ev_xiaomi_2025_annual_report_20260428",
-        "ev_xiaomi_2025_results_announcement_20260324"
+        "ev_xiaomi_2025_results_announcement_20260324",
+        "ev_xiaomi_hardware_margin_pledge_2021_ar"
       ],
       "ticker": "XIAOMI"
     }
@@ -224,7 +225,10 @@
         "ev_xiaomi_ipo_prospectus_20180625",
         "ev_xiaomi_jingzhun_deep_report_20181105",
         "ev_xiaomi_guosheng_deep_report_20211117",
-        "ev_xiaomi_yongxing_deep_report_20250228"
+        "ev_xiaomi_yongxing_deep_report_20250228",
+        "ev_xiaomi_global_ir_triathlon_20180503",
+        "ev_xiaomi_wipo_origin_miui_20211101",
+        "ev_xiaomi_hardware_margin_pledge_2021_ar"
       ],
       "id": "iot",
       "key_kpis": [
@@ -335,7 +339,8 @@
     {
       "evidence_ids": [
         "ev_xiaomi_2025_annual_report_20260428",
-        "ev_xiaomi_2025_results_announcement_20260324"
+        "ev_xiaomi_2025_results_announcement_20260324",
+        "ev_xiaomi_hardware_margin_pledge_2021_ar"
       ],
       "id": "group_financials",
       "key_kpis": [
@@ -358,7 +363,7 @@
     "sections_total": 8
   },
   "foundation_status": "complete",
-  "generated_at": "2026-05-20T03:52:19.862360+00:00",
+  "generated_at": "2026-05-21T09:55:55.645813+00:00",
   "kpis": [
     {
       "business_node_ids": [
@@ -897,6 +902,142 @@
       "reliability": "medium",
       "value_snippet": "甬兴证券 2025 年小米深度报告以公司概览、发展历程、业务构成和人车家生态展开，把早期手机/AIoT",
       "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "iot"
+      ],
+      "evidence_id": "ev_xiaomi_global_ir_triathlon_20180503",
+      "id": "kpi_ev_xiaomi_global_ir_triathlon_20180503_1",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "招股概要将公司定义为以智能手机和智能硬件连接 IoT 平台为核心的互联网公司；披露 2018 年 3 月 MIUI 月活约 1.9 亿、MIUI 论坛月活超过 900 万、超过",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "iot"
+      ],
+      "evidence_id": "ev_xiaomi_global_ir_triathlon_20180503",
+      "id": "kpi_ev_xiaomi_global_ir_triathlon_20180503_2",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "定义为以智能手机和智能硬件连接 IoT 平台为核心的互联网公司；披露 2018 年 3 月 MIUI 月活约 1.9 亿、MIUI 论坛月活超过 900 万、超过 140",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "iot"
+      ],
+      "evidence_id": "ev_xiaomi_global_ir_triathlon_20180503",
+      "id": "kpi_ev_xiaomi_global_ir_triathlon_20180503_3",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "连接 IoT 平台为核心的互联网公司；披露 2018 年 3 月 MIUI 月活约 1.9 亿、MIUI 论坛月活超过 900 万、超过 140 万用户连接 5 台以上小米产品",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "iot"
+      ],
+      "evidence_id": "ev_xiaomi_global_ir_triathlon_20180503",
+      "id": "kpi_ev_xiaomi_global_ir_triathlon_20180503_4",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "；披露 2018 年 3 月 MIUI 月活约 1.9 亿、MIUI 论坛月活超过 900 万、超过 140 万用户连接 5 台以上小米产品，并把商业模型拆成硬件、新零售和互联",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "iot"
+      ],
+      "evidence_id": "ev_xiaomi_wipo_origin_miui_20211101",
+      "id": "kpi_ev_xiaomi_wipo_origin_miui_20211101_1",
+      "label": "Evidence metric",
+      "reliability": "high",
+      "value_snippet": "WIPO 案例资料显示，小米成立于 2010 年 4 月，并于 2010 年 8 月推出基于 Android 的 MIUI 私测版",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "iot"
+      ],
+      "evidence_id": "ev_xiaomi_wipo_origin_miui_20211101",
+      "id": "kpi_ev_xiaomi_wipo_origin_miui_20211101_2",
+      "label": "Evidence metric",
+      "reliability": "high",
+      "value_snippet": "WIPO 案例资料显示，小米成立于 2010 年 4 月，并于 2010 年 8 月推出基于 Android 的 MIUI 私测版本；该资",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "iot"
+      ],
+      "evidence_id": "ev_xiaomi_wipo_origin_miui_20211101",
+      "id": "kpi_ev_xiaomi_wipo_origin_miui_20211101_3",
+      "label": "Evidence metric",
+      "reliability": "high",
+      "value_snippet": "WIPO 案例资料显示，小米成立于 2010 年 4 月，并于 2010 年 8 月推出基于 Android 的 MIUI 私测版本；该资料把小米早期发展放在",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "iot"
+      ],
+      "evidence_id": "ev_xiaomi_wipo_origin_miui_20211101",
+      "id": "kpi_ev_xiaomi_wipo_origin_miui_20211101_4",
+      "label": "Evidence metric",
+      "reliability": "high",
+      "value_snippet": "WIPO 案例资料显示，小米成立于 2010 年 4 月，并于 2010 年 8 月推出基于 Android 的 MIUI 私测版本；该资料把小米早期发展放在移动互联",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "iot",
+        "group_financials"
+      ],
+      "evidence_id": "ev_xiaomi_hardware_margin_pledge_2021_ar",
+      "id": "kpi_ev_xiaomi_hardware_margin_pledge_2021_ar_1",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "小米 2021 年报披露，公司自 2018 年起承诺硬件业务（智能手机、IoT 与生活消费产品）整体",
+      "why_it_matters": "Margins translate operating change into earnings revisions."
+    },
+    {
+      "business_node_ids": [
+        "iot",
+        "group_financials"
+      ],
+      "evidence_id": "ev_xiaomi_hardware_margin_pledge_2021_ar",
+      "id": "kpi_ev_xiaomi_hardware_margin_pledge_2021_ar_2",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "小米 2021 年报披露，公司自 2018 年起承诺硬件业务（智能手机、IoT 与生活消费产品）整体净利率每年不超过 5.0%，",
+      "why_it_matters": "Margins translate operating change into earnings revisions."
+    },
+    {
+      "business_node_ids": [
+        "iot",
+        "group_financials"
+      ],
+      "evidence_id": "ev_xiaomi_hardware_margin_pledge_2021_ar",
+      "id": "kpi_ev_xiaomi_hardware_margin_pledge_2021_ar_3",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "2018 年起承诺硬件业务（智能手机、IoT 与生活消费产品）整体净利率每年不超过 5.0%，若超过则向用户返还超出部分；2021 年硬件业务整体净利率低于 2.0%。",
+      "why_it_matters": "Margins translate operating change into earnings revisions."
+    },
+    {
+      "business_node_ids": [
+        "iot",
+        "group_financials"
+      ],
+      "evidence_id": "ev_xiaomi_hardware_margin_pledge_2021_ar",
+      "id": "kpi_ev_xiaomi_hardware_margin_pledge_2021_ar_4",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "IoT 与生活消费产品）整体净利率每年不超过 5.0%，若超过则向用户返还超出部分；2021 年硬件业务整体净利率低于 2.0%。",
+      "why_it_matters": "Margins translate operating change into earnings revisions."
     }
   ],
   "research_boundary": "Foundation graph is not a trading instruction. Message-flow work must test marginal change against this baseline.",
@@ -952,6 +1093,7 @@
   "schema_version": "1.0",
   "sections": [
     {
+      "detail_page": "pages/source_origin.html",
       "evidence_ids": [
         "ev_xiaomi_company_profile_20260518",
         "ev_xiaomi_management_20260518",
@@ -960,7 +1102,10 @@
         "ev_xiaomi_jingzhun_deep_report_20181105",
         "ev_xiaomi_guosheng_deep_report_20211117",
         "ev_xiaomi_yongxing_deep_report_20250228",
-        "ev_xiaomi_shenwan_deep_report_20241118"
+        "ev_xiaomi_shenwan_deep_report_20241118",
+        "ev_xiaomi_global_ir_triathlon_20180503",
+        "ev_xiaomi_wipo_origin_miui_20211101",
+        "ev_xiaomi_hardware_margin_pledge_2021_ar"
       ],
       "facts": [
         {
@@ -985,17 +1130,188 @@
       "inferences": [
         "Source and origin has a local evidence baseline, but any thesis change still requires message-flow testing."
       ],
+      "information_by_category": {
+        "evidence": [
+          {
+            "claim": "支撑：公司源头基因是否能解释今天的业务结构和能力边界。",
+            "evidence_id": "ev_xiaomi_company_profile_20260518",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "公司为什么在那个时间点出现，原始痛点是什么？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Xiaomi IR Company Profile",
+            "source_type": "company_ir",
+            "stance": "support",
+            "summary": "Xiaomi was founded in April 2010, listed on HKEX on July 9, 2018, and describes itself as a consumer electronics and smart manufacturing company centered on smartphones and smart hardware connected by an IoT platform.",
+            "url": "https://ir.mi.com/corporate-information/company-profile"
+          },
+          {
+            "claim": "支撑：公司源头基因是否能解释今天的业务结构和能力边界。",
+            "evidence_id": "ev_xiaomi_management_20260518",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "公司为什么在那个时间点出现，原始痛点是什么？",
+            "materiality": "medium",
+            "reliability": "primary",
+            "source_name": "Xiaomi IR Management",
+            "source_type": "company_ir",
+            "stance": "support",
+            "summary": "Management page identifies Lei Jun as founder, chairman and CEO; Lin Bin as co-founder and vice chairman; Lu Weibing as partner and president; and lists senior executives across smartphone, international, China region, finance, R&D and technology committee roles.",
+            "url": "https://ir.mi.com/corporate-information/management"
+          },
+          {
+            "claim": "反证：公司源头基因是否能解释今天的业务结构和能力边界。",
+            "evidence_id": "ev_xiaomi_ipo_prospectus_20180625",
+            "explanation": "证据信息当前被标记为“反证”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "早期基因今天是优势、约束，还是需要重新验证？",
+            "materiality": "medium",
+            "reliability": "primary",
+            "source_name": "Xiaomi Corporation 2018 Global Offering Prospectus",
+            "source_type": "ipo_prospectus",
+            "stance": "refute",
+            "summary": "The 2018 prospectus describes Xiaomi's mission, internet-company self-definition, April 2010 founding, Hong Kong offering timetable, WVR risks, and original model centered on smartphones and smart hardware connected by an IoT platform.",
+            "url": "https://cnbj1.fds.api.xiaomi.com/company/financial/en-US/IPO.pdf"
+          },
+          {
+            "claim": "支撑：公司源头基因是否能解释今天的业务结构和能力边界。",
+            "evidence_id": "ev_xiaomi_global_ir_triathlon_20180503",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "公司为什么在那个时间点出现，原始痛点是什么？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Xiaomi Global IR Prospectus Overview",
+            "source_type": "company_ir",
+            "stance": "support",
+            "summary": "小米全球 IR 招股概要将公司定义为以智能手机和智能硬件连接 IoT 平台为核心的互联网公司；披露 2018 年 3 月 MIUI 月活约 1.9 亿、MIUI 论坛月活超过 900 万、超过 140 万用户连接 5 台以上小米产品，并把商业模型拆成硬件、新零售和互联网服务三支柱。",
+            "url": "https://www.mi.com/global/ir/?mod=article_inline"
+          },
+          {
+            "claim": "支撑：公司源头基因是否能解释今天的业务结构和能力边界。",
+            "evidence_id": "ev_xiaomi_hardware_margin_pledge_2021_ar",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "公司为什么在那个时间点出现，原始痛点是什么？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Xiaomi 2021 Annual Report Hardware Margin Pledge",
+            "source_type": "annual_report",
+            "stance": "support",
+            "summary": "小米 2021 年报披露，公司自 2018 年起承诺硬件业务（智能手机、IoT 与生活消费产品）整体净利率每年不超过 5.0%，若超过则向用户返还超出部分；2021 年硬件业务整体净利率低于 2.0%。",
+            "url": "https://xiaomi.gcs-web.com/static-files/b85f34c0-0010-4a8c-94b9-269d8cd4eca4"
+          }
+        ],
+        "message": [
+          {
+            "claim": "待验证线索：公司源头基因是否能解释今天的业务结构和能力边界。",
+            "evidence_id": "ev_xiaomi_mi1_launch_transcript_20110816",
+            "explanation": "消息信息当前被标记为“研究线索”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "message",
+            "linked_question": "公司为什么在那个时间点出现，原始痛点是什么？",
+            "materiality": "medium",
+            "reliability": "medium",
+            "source_name": "Sina Xiaomi Phone Launch Transcript",
+            "source_type": "media_transcript",
+            "stance": "lead",
+            "summary": "2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和用户口碑。该来源是早期媒体实录，适合验证原始产品切口和用户楔子。",
+            "url": "https://tech.sina.com.cn/t/2011-08-16/14305927089.shtml"
+          }
+        ],
+        "opinion": [],
+        "research_report": [
+          {
+            "claim": "支撑：公司源头基因是否能解释今天的业务结构和能力边界。",
+            "evidence_id": "ev_xiaomi_jingzhun_deep_report_20181105",
+            "explanation": "研报信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "research_report",
+            "linked_question": "公司为什么在那个时间点出现，原始痛点是什么？",
+            "materiality": "medium",
+            "reliability": "medium",
+            "source_name": "Jingzhun Research Xiaomi Deep Report 2018",
+            "source_type": "sell_side_report",
+            "stance": "support",
+            "summary": "精准研究 2018 年小米深度报告采用“发展历程、业务布局、商业模式、公司本质”的结构写源头，把 MIUI 用户参与、手机硬件放量、IoT 生态和互联网变现放在同一商业模型里分析。该来源用于学习专业报告写法和补充第三方研究视角。",
+            "url": "https://pdf.dfcfw.com/pdf/H3_AP201903041302343751_1.pdf"
+          },
+          {
+            "claim": "支撑：公司源头基因是否能解释今天的业务结构和能力边界。",
+            "evidence_id": "ev_xiaomi_guosheng_deep_report_20211117",
+            "explanation": "研报信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "research_report",
+            "linked_question": "公司为什么在那个时间点出现，原始痛点是什么？",
+            "materiality": "medium",
+            "reliability": "medium",
+            "source_name": "Guosheng Securities Xiaomi Deep Report 2021",
+            "source_type": "sell_side_report",
+            "stance": "support",
+            "summary": "国盛证券 2021 年小米深度报告将公司源头写成阶段化演进：2010 年创立、2011 年发布小米手机、2013 年布局 IoT、2021 年进入智能电动车，并把历史节点连接到手机 x AIoT 与下一增长曲线。该来源用于参考专业报告的阶段复盘写法。",
+            "url": "https://pdf.dfcfw.com/pdf/H3_AP202111181530843075_1.pdf"
+          },
+          {
+            "claim": "支撑：公司源头基因是否能解释今天的业务结构和能力边界。",
+            "evidence_id": "ev_xiaomi_yongxing_deep_report_20250228",
+            "explanation": "研报信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "research_report",
+            "linked_question": "公司为什么在那个时间点出现，原始痛点是什么？",
+            "materiality": "medium",
+            "reliability": "medium",
+            "source_name": "Yongxing Securities Xiaomi Deep Report 2025",
+            "source_type": "sell_side_report",
+            "stance": "support",
+            "summary": "甬兴证券 2025 年小米深度报告以公司概览、发展历程、业务构成和人车家生态展开，把早期手机/AIoT 基因与汽车、IoT、互联网服务的当前结构相连接。该来源用于校准“源头必须解释今天业务结构”的写法。",
+            "url": "https://pdf.dfcfw.com/pdf/H3_AP202502281643062470_1.pdf"
+          },
+          {
+            "claim": "待验证线索：公司源头基因是否能解释今天的业务结构和能力边界。",
+            "evidence_id": "ev_xiaomi_shenwan_deep_report_20241118",
+            "explanation": "研报信息当前被标记为“研究线索”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "research_report",
+            "linked_question": "公司为什么在那个时间点出现，原始痛点是什么？",
+            "materiality": "medium",
+            "reliability": "low",
+            "source_name": "Shenwan Hongyuan Xiaomi Deep Report Summary 2024",
+            "source_type": "sell_side_report_summary",
+            "stance": "lead",
+            "summary": "申万宏源小米深度报告摘要将公司历程拆成不同发展阶段，并把阶段变化与技术趋势、产品扩张、组织和商业模型升级相连。该来源是报告摘要，可靠性低于原始研报，只作为写法参考和研究线索。",
+            "url": "https://www.baogaobox.com/insights/241123000003814.html"
+          },
+          {
+            "claim": "支撑：公司源头基因是否能解释今天的业务结构和能力边界。",
+            "evidence_id": "ev_xiaomi_wipo_origin_miui_20211101",
+            "explanation": "研报信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "research_report",
+            "linked_question": "公司为什么在那个时间点出现，原始痛点是什么？",
+            "materiality": "medium",
+            "reliability": "high",
+            "source_name": "WIPO Xiaomi IP Advantage Case",
+            "source_type": "industry_data",
+            "stance": "support",
+            "summary": "WIPO 案例资料显示，小米成立于 2010 年 4 月，并于 2010 年 8 月推出基于 Android 的 MIUI 私测版本；该资料把小米早期发展放在移动互联网、AIoT 和创新技术普及的语境中。",
+            "url": "https://www.wipo.int/en/web/ip-advantage/w/stories/xiaomi-corporation-promoting-a-better-life-through-innovative-technology"
+          }
+        ]
+      },
       "judgments": [
         "Treat source and origin as well evidenced for baseline work."
+      ],
+      "key_questions": [
+        "公司为什么在那个时间点出现，原始痛点是什么？",
+        "第一产品楔子、第一批用户和渠道切口是什么？",
+        "创始团队的能力能否解释原始模型形成？",
+        "早期基因今天是优势、约束，还是需要重新验证？"
       ],
       "label": "Source and origin",
       "status": "evidenced"
     },
     {
+      "detail_page": "pages/history.html",
       "evidence_ids": [
         "ev_xiaomi_ipo_prospectus_20180625",
         "ev_xiaomi_guosheng_deep_report_20211117",
-        "ev_xiaomi_shenwan_deep_report_20241118"
+        "ev_xiaomi_shenwan_deep_report_20241118",
+        "ev_xiaomi_wipo_origin_miui_20211101"
       ],
       "facts": [
         {
@@ -1009,6 +1325,10 @@
         {
           "evidence_id": "ev_xiaomi_shenwan_deep_report_20241118",
           "statement": "申万宏源小米深度报告摘要将公司历程拆成不同发展阶段，并把阶段变化与技术趋势、产品扩张、组织和商业模型升级相连。该来源是报告摘要，可靠性低于原始研报，只作为写法参考和研究线索。"
+        },
+        {
+          "evidence_id": "ev_xiaomi_wipo_origin_miui_20211101",
+          "statement": "WIPO 案例资料显示，小米成立于 2010 年 4 月，并于 2010 年 8 月推出基于 Android 的 MIUI 私测版本；该资料把小米早期发展放在移动互联网、AIoT 和创新技术普及的语境中。"
         }
       ],
       "gaps": [],
@@ -1016,18 +1336,89 @@
       "inferences": [
         "Company history has a local evidence baseline, but any thesis change still requires message-flow testing."
       ],
+      "information_by_category": {
+        "evidence": [
+          {
+            "claim": "反证：关键历史节点是否改变了公司的商业模型、治理结构或资本配置。",
+            "evidence_id": "ev_xiaomi_ipo_prospectus_20180625",
+            "explanation": "证据信息当前被标记为“反证”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "历史上的战略转折有没有留下治理、财务或组织约束？",
+            "materiality": "medium",
+            "reliability": "primary",
+            "source_name": "Xiaomi Corporation 2018 Global Offering Prospectus",
+            "source_type": "ipo_prospectus",
+            "stance": "refute",
+            "summary": "The 2018 prospectus describes Xiaomi's mission, internet-company self-definition, April 2010 founding, Hong Kong offering timetable, WVR risks, and original model centered on smartphones and smart hardware connected by an IoT platform.",
+            "url": "https://cnbj1.fds.api.xiaomi.com/company/financial/en-US/IPO.pdf"
+          }
+        ],
+        "message": [],
+        "opinion": [],
+        "research_report": [
+          {
+            "claim": "支撑：关键历史节点是否改变了公司的商业模型、治理结构或资本配置。",
+            "evidence_id": "ev_xiaomi_guosheng_deep_report_20211117",
+            "explanation": "研报信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "research_report",
+            "linked_question": "公司历史中哪些节点真正改变了商业模型或资本配置？",
+            "materiality": "medium",
+            "reliability": "medium",
+            "source_name": "Guosheng Securities Xiaomi Deep Report 2021",
+            "source_type": "sell_side_report",
+            "stance": "support",
+            "summary": "国盛证券 2021 年小米深度报告将公司源头写成阶段化演进：2010 年创立、2011 年发布小米手机、2013 年布局 IoT、2021 年进入智能电动车，并把历史节点连接到手机 x AIoT 与下一增长曲线。该来源用于参考专业报告的阶段复盘写法。",
+            "url": "https://pdf.dfcfw.com/pdf/H3_AP202111181530843075_1.pdf"
+          },
+          {
+            "claim": "待验证线索：关键历史节点是否改变了公司的商业模型、治理结构或资本配置。",
+            "evidence_id": "ev_xiaomi_shenwan_deep_report_20241118",
+            "explanation": "研报信息当前被标记为“研究线索”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "research_report",
+            "linked_question": "公司历史中哪些节点真正改变了商业模型或资本配置？",
+            "materiality": "medium",
+            "reliability": "low",
+            "source_name": "Shenwan Hongyuan Xiaomi Deep Report Summary 2024",
+            "source_type": "sell_side_report_summary",
+            "stance": "lead",
+            "summary": "申万宏源小米深度报告摘要将公司历程拆成不同发展阶段，并把阶段变化与技术趋势、产品扩张、组织和商业模型升级相连。该来源是报告摘要，可靠性低于原始研报，只作为写法参考和研究线索。",
+            "url": "https://www.baogaobox.com/insights/241123000003814.html"
+          },
+          {
+            "claim": "支撑：关键历史节点是否改变了公司的商业模型、治理结构或资本配置。",
+            "evidence_id": "ev_xiaomi_wipo_origin_miui_20211101",
+            "explanation": "研报信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "research_report",
+            "linked_question": "公司历史中哪些节点真正改变了商业模型或资本配置？",
+            "materiality": "medium",
+            "reliability": "high",
+            "source_name": "WIPO Xiaomi IP Advantage Case",
+            "source_type": "industry_data",
+            "stance": "support",
+            "summary": "WIPO 案例资料显示，小米成立于 2010 年 4 月，并于 2010 年 8 月推出基于 Android 的 MIUI 私测版本；该资料把小米早期发展放在移动互联网、AIoT 和创新技术普及的语境中。",
+            "url": "https://www.wipo.int/en/web/ip-advantage/w/stories/xiaomi-corporation-promoting-a-better-life-through-innovative-technology"
+          }
+        ]
+      },
       "judgments": [
         "Treat company history as well evidenced for baseline work."
+      ],
+      "key_questions": [
+        "公司历史中哪些节点真正改变了商业模型或资本配置？",
+        "增长主要来自内生能力、并购扩张，还是周期/融资环境？",
+        "历史上的战略转折有没有留下治理、财务或组织约束？"
       ],
       "label": "Company history",
       "status": "evidenced"
     },
     {
+      "detail_page": "pages/current_business.html",
       "evidence_ids": [
         "ev_xiaomi_2025_annual_report_20260428",
         "ev_xiaomi_2025_results_announcement_20260324",
         "ev_xiaomi_idc_q1_2026_smartphone_20260512",
-        "ev_xiaomi_counterpoint_q1_2026_smartphone_20260410"
+        "ev_xiaomi_counterpoint_q1_2026_smartphone_20260410",
+        "ev_xiaomi_hardware_margin_pledge_2021_ar"
       ],
       "facts": [
         {
@@ -1052,13 +1443,97 @@
       "inferences": [
         "Current business has a local evidence baseline, but any thesis change still requires message-flow testing."
       ],
+      "information_by_category": {
+        "evidence": [
+          {
+            "claim": "支撑：当前生意是否具备可重复的收入、利润和现金转化质量。",
+            "evidence_id": "ev_xiaomi_2025_annual_report_20260428",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "利润质量是否能转化为现金和可重复回报？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Xiaomi Corporation 2025 Annual Report",
+            "source_type": "annual_report",
+            "stance": "support",
+            "summary": "FY2025 revenue was RMB457.3B, gross profit RMB101.8B, profit for the year RMB41.6B, adjusted net profit RMB39.2B, total assets RMB508.1B, total equity RMB266.3B, operating cash flow RMB34.1B, and cash resources RMB232.6B.",
+            "url": "https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/04/28/5-29-08/Xiaomi%202025%20AR_EN.pdf"
+          },
+          {
+            "claim": "支撑：当前生意是否具备可重复的收入、利润和现金转化质量。",
+            "evidence_id": "ev_xiaomi_2025_results_announcement_20260324",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "当前收入、毛利、现金流分别由哪些业务驱动？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Xiaomi Corporation 2025 Annual Results Announcement",
+            "source_type": "results_announcement",
+            "stance": "support",
+            "summary": "The FY2025 announcement provides segment data: Smartphone x AIoT revenue RMB351.2B, Smart EV/AI/new initiatives revenue RMB106.1B, smartphone shipments 165.2M, global MAU 754.1M, connected IoT devices 1,079.2M, and EV deliveries 411,082.",
+            "url": "https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/03/24/5-35-03/25Q4%20EN%20AC%20Xiaomi.pdf"
+          },
+          {
+            "claim": "支撑：当前生意是否具备可重复的收入、利润和现金转化质量。",
+            "evidence_id": "ev_xiaomi_hardware_margin_pledge_2021_ar",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "当前收入、毛利、现金流分别由哪些业务驱动？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Xiaomi 2021 Annual Report Hardware Margin Pledge",
+            "source_type": "annual_report",
+            "stance": "support",
+            "summary": "小米 2021 年报披露，公司自 2018 年起承诺硬件业务（智能手机、IoT 与生活消费产品）整体净利率每年不超过 5.0%，若超过则向用户返还超出部分；2021 年硬件业务整体净利率低于 2.0%。",
+            "url": "https://xiaomi.gcs-web.com/static-files/b85f34c0-0010-4a8c-94b9-269d8cd4eca4"
+          }
+        ],
+        "message": [],
+        "opinion": [],
+        "research_report": [
+          {
+            "claim": "反证：当前生意是否具备可重复的收入、利润和现金转化质量。",
+            "evidence_id": "ev_xiaomi_idc_q1_2026_smartphone_20260512",
+            "explanation": "研报信息当前被标记为“反证”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "research_report",
+            "linked_question": "客户是谁，需求来自刚需、替换、生态绑定还是促销？",
+            "materiality": "high",
+            "reliability": "high",
+            "source_name": "IDC Smartphone Market Insights Q1 2026",
+            "source_type": "industry_data",
+            "stance": "refute",
+            "summary": "IDC preliminary Q1 2026 data shows global smartphone shipments down 2.9% YoY to 293.8M units; Xiaomi shipped 33.8M units, held 11.5% share, ranked third, and declined 19.1% YoY amid memory constraints and portfolio actions.",
+            "url": "https://www.idc.com/promo/smartphone-market-share/market-share/"
+          },
+          {
+            "claim": "反证：当前生意是否具备可重复的收入、利润和现金转化质量。",
+            "evidence_id": "ev_xiaomi_counterpoint_q1_2026_smartphone_20260410",
+            "explanation": "研报信息当前被标记为“反证”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "research_report",
+            "linked_question": "客户是谁，需求来自刚需、替换、生态绑定还是促销？",
+            "materiality": "medium",
+            "reliability": "medium",
+            "source_name": "Counterpoint Q1 2026 Smartphone Shipment Monitor via Gadgets360",
+            "source_type": "industry_data",
+            "stance": "refute",
+            "summary": "Counterpoint's Q1 2026 smartphone monitor, as reported by Gadgets360, estimated global smartphone shipments fell 6% YoY and Xiaomi retained third place with about 12% share, pressured by memory shortages and entry-level exposure.",
+            "url": "https://www.gadgets360.com/mobiles/news/global-smartphone-shipments-decline-apple-samsung-xiaomi-oppo-vivo-yoy-counterpoint-11339687"
+          }
+        ]
+      },
       "judgments": [
         "Treat current business as well evidenced for baseline work."
+      ],
+      "key_questions": [
+        "当前收入、毛利、现金流分别由哪些业务驱动？",
+        "客户是谁，需求来自刚需、替换、生态绑定还是促销？",
+        "利润质量是否能转化为现金和可重复回报？"
       ],
       "label": "Current business",
       "status": "evidenced"
     },
     {
+      "detail_page": "pages/value_chain.html",
       "evidence_ids": [
         "ev_xiaomi_company_profile_20260518",
         "ev_xiaomi_idc_q1_2026_smartphone_20260512",
@@ -1083,13 +1558,69 @@
       "inferences": [
         "Value chain position has a local evidence baseline, but any thesis change still requires message-flow testing."
       ],
+      "information_by_category": {
+        "evidence": [
+          {
+            "claim": "支撑：公司是否在产业链中占据能持续捕获经济性的环节。",
+            "evidence_id": "ev_xiaomi_company_profile_20260518",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "公司在产业链中掌握哪一段价值，哪一段被供应商/渠道/客户拿走？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Xiaomi IR Company Profile",
+            "source_type": "company_ir",
+            "stance": "support",
+            "summary": "Xiaomi was founded in April 2010, listed on HKEX on July 9, 2018, and describes itself as a consumer electronics and smart manufacturing company centered on smartphones and smart hardware connected by an IoT platform.",
+            "url": "https://ir.mi.com/corporate-information/company-profile"
+          }
+        ],
+        "message": [],
+        "opinion": [],
+        "research_report": [
+          {
+            "claim": "反证：公司是否在产业链中占据能持续捕获经济性的环节。",
+            "evidence_id": "ev_xiaomi_idc_q1_2026_smartphone_20260512",
+            "explanation": "研报信息当前被标记为“反证”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "research_report",
+            "linked_question": "上游供给、关键部件和产能是否会改变毛利与交付？",
+            "materiality": "high",
+            "reliability": "high",
+            "source_name": "IDC Smartphone Market Insights Q1 2026",
+            "source_type": "industry_data",
+            "stance": "refute",
+            "summary": "IDC preliminary Q1 2026 data shows global smartphone shipments down 2.9% YoY to 293.8M units; Xiaomi shipped 33.8M units, held 11.5% share, ranked third, and declined 19.1% YoY amid memory constraints and portfolio actions.",
+            "url": "https://www.idc.com/promo/smartphone-market-share/market-share/"
+          },
+          {
+            "claim": "反证：公司是否在产业链中占据能持续捕获经济性的环节。",
+            "evidence_id": "ev_xiaomi_counterpoint_q1_2026_smartphone_20260410",
+            "explanation": "研报信息当前被标记为“反证”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "research_report",
+            "linked_question": "上游供给、关键部件和产能是否会改变毛利与交付？",
+            "materiality": "medium",
+            "reliability": "medium",
+            "source_name": "Counterpoint Q1 2026 Smartphone Shipment Monitor via Gadgets360",
+            "source_type": "industry_data",
+            "stance": "refute",
+            "summary": "Counterpoint's Q1 2026 smartphone monitor, as reported by Gadgets360, estimated global smartphone shipments fell 6% YoY and Xiaomi retained third place with about 12% share, pressured by memory shortages and entry-level exposure.",
+            "url": "https://www.gadgets360.com/mobiles/news/global-smartphone-shipments-decline-apple-samsung-xiaomi-oppo-vivo-yoy-counterpoint-11339687"
+          }
+        ]
+      },
       "judgments": [
         "Treat value chain position as well evidenced for baseline work."
+      ],
+      "key_questions": [
+        "公司在产业链中掌握哪一段价值，哪一段被供应商/渠道/客户拿走？",
+        "上游供给、关键部件和产能是否会改变毛利与交付？",
+        "渠道和售后体系是否足以支撑当前业务复杂度？"
       ],
       "label": "Value chain position",
       "status": "evidenced"
     },
     {
+      "detail_page": "pages/competition.html",
       "evidence_ids": [
         "ev_xiaomi_company_profile_20260518",
         "ev_xiaomi_2025_results_announcement_20260324",
@@ -1123,13 +1654,139 @@
       "inferences": [
         "Competitive landscape has a local evidence baseline, but any thesis change still requires message-flow testing."
       ],
+      "information_by_category": {
+        "evidence": [
+          {
+            "claim": "支撑：竞争地位是否足以抵抗价格战、份额流失和利润率压缩。",
+            "evidence_id": "ev_xiaomi_company_profile_20260518",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "公司真实竞争对手是谁，竞争发生在价格、产品、渠道还是生态？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Xiaomi IR Company Profile",
+            "source_type": "company_ir",
+            "stance": "support",
+            "summary": "Xiaomi was founded in April 2010, listed on HKEX on July 9, 2018, and describes itself as a consumer electronics and smart manufacturing company centered on smartphones and smart hardware connected by an IoT platform.",
+            "url": "https://ir.mi.com/corporate-information/company-profile"
+          },
+          {
+            "claim": "支撑：竞争地位是否足以抵抗价格战、份额流失和利润率压缩。",
+            "evidence_id": "ev_xiaomi_2025_results_announcement_20260324",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "公司真实竞争对手是谁，竞争发生在价格、产品、渠道还是生态？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Xiaomi Corporation 2025 Annual Results Announcement",
+            "source_type": "results_announcement",
+            "stance": "support",
+            "summary": "The FY2025 announcement provides segment data: Smartphone x AIoT revenue RMB351.2B, Smart EV/AI/new initiatives revenue RMB106.1B, smartphone shipments 165.2M, global MAU 754.1M, connected IoT devices 1,079.2M, and EV deliveries 411,082.",
+            "url": "https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/03/24/5-35-03/25Q4%20EN%20AC%20Xiaomi.pdf"
+          },
+          {
+            "claim": "支撑：竞争地位是否足以抵抗价格战、份额流失和利润率压缩。",
+            "evidence_id": "ev_xiaomi_management_20260518",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "公司真实竞争对手是谁，竞争发生在价格、产品、渠道还是生态？",
+            "materiality": "medium",
+            "reliability": "primary",
+            "source_name": "Xiaomi IR Management",
+            "source_type": "company_ir",
+            "stance": "support",
+            "summary": "Management page identifies Lei Jun as founder, chairman and CEO; Lin Bin as co-founder and vice chairman; Lu Weibing as partner and president; and lists senior executives across smartphone, international, China region, finance, R&D and technology committee roles.",
+            "url": "https://ir.mi.com/corporate-information/management"
+          },
+          {
+            "claim": "支撑：竞争地位是否足以抵抗价格战、份额流失和利润率压缩。",
+            "evidence_id": "ev_xiaomi_board_wvr_20260428",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "竞争强度是否会侵蚀毛利、现金流或品牌定位？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Xiaomi 2025 Annual Report WVR and Board Disclosure",
+            "source_type": "annual_report",
+            "stance": "support",
+            "summary": "The annual report states Xiaomi is controlled through weighted voting rights: each Class A share has 10 votes and each Class B share has one vote; Lei Jun held about 61.0% of voting rights and Lin Bin about 6.7% for non-reserved matters as of December 31, 2025.",
+            "url": "https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/04/28/5-29-08/Xiaomi%202025%20AR_EN.pdf"
+          },
+          {
+            "claim": "反证：竞争地位是否足以抵抗价格战、份额流失和利润率压缩。",
+            "evidence_id": "ev_xiaomi_ipo_prospectus_20180625",
+            "explanation": "证据信息当前被标记为“反证”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "竞争强度是否会侵蚀毛利、现金流或品牌定位？",
+            "materiality": "medium",
+            "reliability": "primary",
+            "source_name": "Xiaomi Corporation 2018 Global Offering Prospectus",
+            "source_type": "ipo_prospectus",
+            "stance": "refute",
+            "summary": "The 2018 prospectus describes Xiaomi's mission, internet-company self-definition, April 2010 founding, Hong Kong offering timetable, WVR risks, and original model centered on smartphones and smart hardware connected by an IoT platform.",
+            "url": "https://cnbj1.fds.api.xiaomi.com/company/financial/en-US/IPO.pdf"
+          }
+        ],
+        "message": [],
+        "opinion": [],
+        "research_report": [
+          {
+            "claim": "反证：竞争地位是否足以抵抗价格战、份额流失和利润率压缩。",
+            "evidence_id": "ev_xiaomi_idc_q1_2026_smartphone_20260512",
+            "explanation": "研报信息当前被标记为“反证”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "research_report",
+            "linked_question": "份额变化是结构性优势、周期波动，还是补贴/价格战结果？",
+            "materiality": "high",
+            "reliability": "high",
+            "source_name": "IDC Smartphone Market Insights Q1 2026",
+            "source_type": "industry_data",
+            "stance": "refute",
+            "summary": "IDC preliminary Q1 2026 data shows global smartphone shipments down 2.9% YoY to 293.8M units; Xiaomi shipped 33.8M units, held 11.5% share, ranked third, and declined 19.1% YoY amid memory constraints and portfolio actions.",
+            "url": "https://www.idc.com/promo/smartphone-market-share/market-share/"
+          },
+          {
+            "claim": "反证：竞争地位是否足以抵抗价格战、份额流失和利润率压缩。",
+            "evidence_id": "ev_xiaomi_counterpoint_q1_2026_smartphone_20260410",
+            "explanation": "研报信息当前被标记为“反证”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "research_report",
+            "linked_question": "份额变化是结构性优势、周期波动，还是补贴/价格战结果？",
+            "materiality": "medium",
+            "reliability": "medium",
+            "source_name": "Counterpoint Q1 2026 Smartphone Shipment Monitor via Gadgets360",
+            "source_type": "industry_data",
+            "stance": "refute",
+            "summary": "Counterpoint's Q1 2026 smartphone monitor, as reported by Gadgets360, estimated global smartphone shipments fell 6% YoY and Xiaomi retained third place with about 12% share, pressured by memory shortages and entry-level exposure.",
+            "url": "https://www.gadgets360.com/mobiles/news/global-smartphone-shipments-decline-apple-samsung-xiaomi-oppo-vivo-yoy-counterpoint-11339687"
+          },
+          {
+            "claim": "支撑：竞争地位是否足以抵抗价格战、份额流失和利润率压缩。",
+            "evidence_id": "ev_xiaomi_cnevpost_nev_share_20260112",
+            "explanation": "研报信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "research_report",
+            "linked_question": "份额变化是结构性优势、周期波动，还是补贴/价格战结果？",
+            "materiality": "medium",
+            "reliability": "medium",
+            "source_name": "CnEVPost CPCA 2025 China NEV Share",
+            "source_type": "industry_data",
+            "stance": "support",
+            "summary": "CnEVPost, citing CPCA, reports Xiaomi EV 2025 China passenger NEV retail sales of 411,837 units, ranking tenth with 3.2% share; BYD led with 27.2% and Tesla China ranked fifth with 4.9%.",
+            "url": "https://cnevpost.com/2026/01/12/automakers-share-china-nev-market-2025/"
+          }
+        ]
+      },
       "judgments": [
         "Treat competitive landscape as well evidenced for baseline work."
+      ],
+      "key_questions": [
+        "公司真实竞争对手是谁，竞争发生在价格、产品、渠道还是生态？",
+        "份额变化是结构性优势、周期波动，还是补贴/价格战结果？",
+        "竞争强度是否会侵蚀毛利、现金流或品牌定位？"
       ],
       "label": "Competitive landscape",
       "status": "evidenced"
     },
     {
+      "detail_page": "pages/strategy.html",
       "evidence_ids": [
         "ev_xiaomi_2025_annual_report_20260428",
         "ev_xiaomi_2025_results_announcement_20260324",
@@ -1140,7 +1797,9 @@
         "ev_xiaomi_samr_su7_recall_20250919",
         "ev_xiaomi_guosheng_deep_report_20211117",
         "ev_xiaomi_yongxing_deep_report_20250228",
-        "ev_xiaomi_shenwan_deep_report_20241118"
+        "ev_xiaomi_shenwan_deep_report_20241118",
+        "ev_xiaomi_global_ir_triathlon_20180503",
+        "ev_xiaomi_wipo_origin_miui_20211101"
       ],
       "facts": [
         {
@@ -1165,13 +1824,195 @@
       "inferences": [
         "Strategy analysis has a local evidence baseline, but any thesis change still requires message-flow testing."
       ],
+      "information_by_category": {
+        "evidence": [
+          {
+            "claim": "支撑：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。",
+            "evidence_id": "ev_xiaomi_2025_annual_report_20260428",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "战略投入能否被 KPI 和阶段性证据验证？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Xiaomi Corporation 2025 Annual Report",
+            "source_type": "annual_report",
+            "stance": "support",
+            "summary": "FY2025 revenue was RMB457.3B, gross profit RMB101.8B, profit for the year RMB41.6B, adjusted net profit RMB39.2B, total assets RMB508.1B, total equity RMB266.3B, operating cash flow RMB34.1B, and cash resources RMB232.6B.",
+            "url": "https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/04/28/5-29-08/Xiaomi%202025%20AR_EN.pdf"
+          },
+          {
+            "claim": "支撑：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。",
+            "evidence_id": "ev_xiaomi_2025_results_announcement_20260324",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "公司战略是否从源头能力自然延伸，还是跨越了能力边界？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Xiaomi Corporation 2025 Annual Results Announcement",
+            "source_type": "results_announcement",
+            "stance": "support",
+            "summary": "The FY2025 announcement provides segment data: Smartphone x AIoT revenue RMB351.2B, Smart EV/AI/new initiatives revenue RMB106.1B, smartphone shipments 165.2M, global MAU 754.1M, connected IoT devices 1,079.2M, and EV deliveries 411,082.",
+            "url": "https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/03/24/5-35-03/25Q4%20EN%20AC%20Xiaomi.pdf"
+          },
+          {
+            "claim": "支撑：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。",
+            "evidence_id": "ev_xiaomi_management_20260518",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "公司战略是否从源头能力自然延伸，还是跨越了能力边界？",
+            "materiality": "medium",
+            "reliability": "primary",
+            "source_name": "Xiaomi IR Management",
+            "source_type": "company_ir",
+            "stance": "support",
+            "summary": "Management page identifies Lei Jun as founder, chairman and CEO; Lin Bin as co-founder and vice chairman; Lu Weibing as partner and president; and lists senior executives across smartphone, international, China region, finance, R&D and technology committee roles.",
+            "url": "https://ir.mi.com/corporate-information/management"
+          },
+          {
+            "claim": "反证：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。",
+            "evidence_id": "ev_xiaomi_samr_su7_recall_20250919",
+            "explanation": "证据信息当前被标记为“反证”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "战略投入能否被 KPI 和阶段性证据验证？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "SAMR Xiaomi SU7 Recall Notice",
+            "source_type": "regulator_notice",
+            "stance": "refute",
+            "summary": "SAMR notice states Xiaomi Auto recalled 116,887 SU7 Standard EVs produced from February 6, 2024 to August 30, 2025 because L2 highway assisted driving could be insufficient in recognizing, warning or handling extreme scenarios, increasing collision risk if drivers do not intervene promptly.",
+            "url": "https://www.samr.gov.cn/zw/zh/art/2025/art_2152a981c72a430b9d10d6ef5cd9c09b.html"
+          },
+          {
+            "claim": "支撑：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。",
+            "evidence_id": "ev_xiaomi_global_ir_triathlon_20180503",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "公司战略是否从源头能力自然延伸，还是跨越了能力边界？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Xiaomi Global IR Prospectus Overview",
+            "source_type": "company_ir",
+            "stance": "support",
+            "summary": "小米全球 IR 招股概要将公司定义为以智能手机和智能硬件连接 IoT 平台为核心的互联网公司；披露 2018 年 3 月 MIUI 月活约 1.9 亿、MIUI 论坛月活超过 900 万、超过 140 万用户连接 5 台以上小米产品，并把商业模型拆成硬件、新零售和互联网服务三支柱。",
+            "url": "https://www.mi.com/global/ir/?mod=article_inline"
+          }
+        ],
+        "message": [],
+        "opinion": [],
+        "research_report": [
+          {
+            "claim": "反证：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。",
+            "evidence_id": "ev_xiaomi_idc_q1_2026_smartphone_20260512",
+            "explanation": "研报信息当前被标记为“反证”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "research_report",
+            "linked_question": "资源配置是否与最重要利润池和风险点匹配？",
+            "materiality": "high",
+            "reliability": "high",
+            "source_name": "IDC Smartphone Market Insights Q1 2026",
+            "source_type": "industry_data",
+            "stance": "refute",
+            "summary": "IDC preliminary Q1 2026 data shows global smartphone shipments down 2.9% YoY to 293.8M units; Xiaomi shipped 33.8M units, held 11.5% share, ranked third, and declined 19.1% YoY amid memory constraints and portfolio actions.",
+            "url": "https://www.idc.com/promo/smartphone-market-share/market-share/"
+          },
+          {
+            "claim": "反证：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。",
+            "evidence_id": "ev_xiaomi_counterpoint_q1_2026_smartphone_20260410",
+            "explanation": "研报信息当前被标记为“反证”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "research_report",
+            "linked_question": "资源配置是否与最重要利润池和风险点匹配？",
+            "materiality": "medium",
+            "reliability": "medium",
+            "source_name": "Counterpoint Q1 2026 Smartphone Shipment Monitor via Gadgets360",
+            "source_type": "industry_data",
+            "stance": "refute",
+            "summary": "Counterpoint's Q1 2026 smartphone monitor, as reported by Gadgets360, estimated global smartphone shipments fell 6% YoY and Xiaomi retained third place with about 12% share, pressured by memory shortages and entry-level exposure.",
+            "url": "https://www.gadgets360.com/mobiles/news/global-smartphone-shipments-decline-apple-samsung-xiaomi-oppo-vivo-yoy-counterpoint-11339687"
+          },
+          {
+            "claim": "支撑：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。",
+            "evidence_id": "ev_xiaomi_cnevpost_nev_share_20260112",
+            "explanation": "研报信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "research_report",
+            "linked_question": "资源配置是否与最重要利润池和风险点匹配？",
+            "materiality": "medium",
+            "reliability": "medium",
+            "source_name": "CnEVPost CPCA 2025 China NEV Share",
+            "source_type": "industry_data",
+            "stance": "support",
+            "summary": "CnEVPost, citing CPCA, reports Xiaomi EV 2025 China passenger NEV retail sales of 411,837 units, ranking tenth with 3.2% share; BYD led with 27.2% and Tesla China ranked fifth with 4.9%.",
+            "url": "https://cnevpost.com/2026/01/12/automakers-share-china-nev-market-2025/"
+          },
+          {
+            "claim": "支撑：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。",
+            "evidence_id": "ev_xiaomi_guosheng_deep_report_20211117",
+            "explanation": "研报信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "research_report",
+            "linked_question": "公司战略是否从源头能力自然延伸，还是跨越了能力边界？",
+            "materiality": "medium",
+            "reliability": "medium",
+            "source_name": "Guosheng Securities Xiaomi Deep Report 2021",
+            "source_type": "sell_side_report",
+            "stance": "support",
+            "summary": "国盛证券 2021 年小米深度报告将公司源头写成阶段化演进：2010 年创立、2011 年发布小米手机、2013 年布局 IoT、2021 年进入智能电动车，并把历史节点连接到手机 x AIoT 与下一增长曲线。该来源用于参考专业报告的阶段复盘写法。",
+            "url": "https://pdf.dfcfw.com/pdf/H3_AP202111181530843075_1.pdf"
+          },
+          {
+            "claim": "支撑：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。",
+            "evidence_id": "ev_xiaomi_yongxing_deep_report_20250228",
+            "explanation": "研报信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "research_report",
+            "linked_question": "公司战略是否从源头能力自然延伸，还是跨越了能力边界？",
+            "materiality": "medium",
+            "reliability": "medium",
+            "source_name": "Yongxing Securities Xiaomi Deep Report 2025",
+            "source_type": "sell_side_report",
+            "stance": "support",
+            "summary": "甬兴证券 2025 年小米深度报告以公司概览、发展历程、业务构成和人车家生态展开，把早期手机/AIoT 基因与汽车、IoT、互联网服务的当前结构相连接。该来源用于校准“源头必须解释今天业务结构”的写法。",
+            "url": "https://pdf.dfcfw.com/pdf/H3_AP202502281643062470_1.pdf"
+          },
+          {
+            "claim": "待验证线索：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。",
+            "evidence_id": "ev_xiaomi_shenwan_deep_report_20241118",
+            "explanation": "研报信息当前被标记为“研究线索”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "research_report",
+            "linked_question": "公司战略是否从源头能力自然延伸，还是跨越了能力边界？",
+            "materiality": "medium",
+            "reliability": "low",
+            "source_name": "Shenwan Hongyuan Xiaomi Deep Report Summary 2024",
+            "source_type": "sell_side_report_summary",
+            "stance": "lead",
+            "summary": "申万宏源小米深度报告摘要将公司历程拆成不同发展阶段，并把阶段变化与技术趋势、产品扩张、组织和商业模型升级相连。该来源是报告摘要，可靠性低于原始研报，只作为写法参考和研究线索。",
+            "url": "https://www.baogaobox.com/insights/241123000003814.html"
+          },
+          {
+            "claim": "支撑：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。",
+            "evidence_id": "ev_xiaomi_wipo_origin_miui_20211101",
+            "explanation": "研报信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "research_report",
+            "linked_question": "公司战略是否从源头能力自然延伸，还是跨越了能力边界？",
+            "materiality": "medium",
+            "reliability": "high",
+            "source_name": "WIPO Xiaomi IP Advantage Case",
+            "source_type": "industry_data",
+            "stance": "support",
+            "summary": "WIPO 案例资料显示，小米成立于 2010 年 4 月，并于 2010 年 8 月推出基于 Android 的 MIUI 私测版本；该资料把小米早期发展放在移动互联网、AIoT 和创新技术普及的语境中。",
+            "url": "https://www.wipo.int/en/web/ip-advantage/w/stories/xiaomi-corporation-promoting-a-better-life-through-innovative-technology"
+          }
+        ]
+      },
       "judgments": [
         "Treat strategy analysis as well evidenced for baseline work."
+      ],
+      "key_questions": [
+        "公司战略是否从源头能力自然延伸，还是跨越了能力边界？",
+        "资源配置是否与最重要利润池和风险点匹配？",
+        "战略投入能否被 KPI 和阶段性证据验证？"
       ],
       "label": "Strategy analysis",
       "status": "evidenced"
     },
     {
+      "detail_page": "pages/governance.html",
       "evidence_ids": [
         "ev_xiaomi_2025_annual_report_20260428",
         "ev_xiaomi_management_20260518",
@@ -1201,13 +2042,82 @@
       "inferences": [
         "Organization, culture, and governance has a local evidence baseline, but any thesis change still requires message-flow testing."
       ],
+      "information_by_category": {
+        "evidence": [
+          {
+            "claim": "支撑：管理层、控制权和激励结构是否提升长期复利而非放大治理折价。",
+            "evidence_id": "ev_xiaomi_2025_annual_report_20260428",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "组织文化是复利资产，还是会放大盲区和路径依赖？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Xiaomi Corporation 2025 Annual Report",
+            "source_type": "annual_report",
+            "stance": "support",
+            "summary": "FY2025 revenue was RMB457.3B, gross profit RMB101.8B, profit for the year RMB41.6B, adjusted net profit RMB39.2B, total assets RMB508.1B, total equity RMB266.3B, operating cash flow RMB34.1B, and cash resources RMB232.6B.",
+            "url": "https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/04/28/5-29-08/Xiaomi%202025%20AR_EN.pdf"
+          },
+          {
+            "claim": "支撑：管理层、控制权和激励结构是否提升长期复利而非放大治理折价。",
+            "evidence_id": "ev_xiaomi_management_20260518",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "创始人、控制权和管理层结构是否提升长期执行？",
+            "materiality": "medium",
+            "reliability": "primary",
+            "source_name": "Xiaomi IR Management",
+            "source_type": "company_ir",
+            "stance": "support",
+            "summary": "Management page identifies Lei Jun as founder, chairman and CEO; Lin Bin as co-founder and vice chairman; Lu Weibing as partner and president; and lists senior executives across smartphone, international, China region, finance, R&D and technology committee roles.",
+            "url": "https://ir.mi.com/corporate-information/management"
+          },
+          {
+            "claim": "支撑：管理层、控制权和激励结构是否提升长期复利而非放大治理折价。",
+            "evidence_id": "ev_xiaomi_board_wvr_20260428",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "组织文化是复利资产，还是会放大盲区和路径依赖？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Xiaomi 2025 Annual Report WVR and Board Disclosure",
+            "source_type": "annual_report",
+            "stance": "support",
+            "summary": "The annual report states Xiaomi is controlled through weighted voting rights: each Class A share has 10 votes and each Class B share has one vote; Lei Jun held about 61.0% of voting rights and Lin Bin about 6.7% for non-reserved matters as of December 31, 2025.",
+            "url": "https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/04/28/5-29-08/Xiaomi%202025%20AR_EN.pdf"
+          },
+          {
+            "claim": "反证：管理层、控制权和激励结构是否提升长期复利而非放大治理折价。",
+            "evidence_id": "ev_xiaomi_ipo_prospectus_20180625",
+            "explanation": "证据信息当前被标记为“反证”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "组织文化是复利资产，还是会放大盲区和路径依赖？",
+            "materiality": "medium",
+            "reliability": "primary",
+            "source_name": "Xiaomi Corporation 2018 Global Offering Prospectus",
+            "source_type": "ipo_prospectus",
+            "stance": "refute",
+            "summary": "The 2018 prospectus describes Xiaomi's mission, internet-company self-definition, April 2010 founding, Hong Kong offering timetable, WVR risks, and original model centered on smartphones and smart hardware connected by an IoT platform.",
+            "url": "https://cnbj1.fds.api.xiaomi.com/company/financial/en-US/IPO.pdf"
+          }
+        ],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
       "judgments": [
         "Treat organization, culture, and governance as well evidenced for baseline work."
+      ],
+      "key_questions": [
+        "创始人、控制权和管理层结构是否提升长期执行？",
+        "激励、董事会和少数股东保护是否足以约束资本配置？",
+        "组织文化是复利资产，还是会放大盲区和路径依赖？"
       ],
       "label": "Organization, culture, and governance",
       "status": "evidenced"
     },
     {
+      "detail_page": "pages/risk_sweep.html",
       "evidence_ids": [
         "ev_xiaomi_idc_q1_2026_smartphone_20260512",
         "ev_xiaomi_samr_su7_recall_20250919",
@@ -1232,8 +2142,63 @@
       "inferences": [
         "Risk sweep has a local evidence baseline, but any thesis change still requires message-flow testing."
       ],
+      "information_by_category": {
+        "evidence": [
+          {
+            "claim": "反证：当前风险是否足以改变基础画像或成为反证条件。",
+            "evidence_id": "ev_xiaomi_samr_su7_recall_20250919",
+            "explanation": "证据信息当前被标记为“反证”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "哪类新增证据能最快证伪当前判断？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "SAMR Xiaomi SU7 Recall Notice",
+            "source_type": "regulator_notice",
+            "stance": "refute",
+            "summary": "SAMR notice states Xiaomi Auto recalled 116,887 SU7 Standard EVs produced from February 6, 2024 to August 30, 2025 because L2 highway assisted driving could be insufficient in recognizing, warning or handling extreme scenarios, increasing collision risk if drivers do not intervene promptly.",
+            "url": "https://www.samr.gov.cn/zw/zh/art/2025/art_2152a981c72a430b9d10d6ef5cd9c09b.html"
+          },
+          {
+            "claim": "反证：当前风险是否足以改变基础画像或成为反证条件。",
+            "evidence_id": "ev_xiaomi_ipo_prospectus_20180625",
+            "explanation": "证据信息当前被标记为“反证”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "哪类新增证据能最快证伪当前判断？",
+            "materiality": "medium",
+            "reliability": "primary",
+            "source_name": "Xiaomi Corporation 2018 Global Offering Prospectus",
+            "source_type": "ipo_prospectus",
+            "stance": "refute",
+            "summary": "The 2018 prospectus describes Xiaomi's mission, internet-company self-definition, April 2010 founding, Hong Kong offering timetable, WVR risks, and original model centered on smartphones and smart hardware connected by an IoT platform.",
+            "url": "https://cnbj1.fds.api.xiaomi.com/company/financial/en-US/IPO.pdf"
+          }
+        ],
+        "message": [],
+        "opinion": [],
+        "research_report": [
+          {
+            "claim": "反证：当前风险是否足以改变基础画像或成为反证条件。",
+            "evidence_id": "ev_xiaomi_idc_q1_2026_smartphone_20260512",
+            "explanation": "研报信息当前被标记为“反证”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "research_report",
+            "linked_question": "哪类新增证据能最快证伪当前判断？",
+            "materiality": "high",
+            "reliability": "high",
+            "source_name": "IDC Smartphone Market Insights Q1 2026",
+            "source_type": "industry_data",
+            "stance": "refute",
+            "summary": "IDC preliminary Q1 2026 data shows global smartphone shipments down 2.9% YoY to 293.8M units; Xiaomi shipped 33.8M units, held 11.5% share, ranked third, and declined 19.1% YoY amid memory constraints and portfolio actions.",
+            "url": "https://www.idc.com/promo/smartphone-market-share/market-share/"
+          }
+        ]
+      },
       "judgments": [
         "Treat risk sweep as well evidenced for baseline work."
+      ],
+      "key_questions": [
+        "哪些风险足以改变公司基础画像，而不只是短期噪音？",
+        "财务、会计、法律、监管、技术和治理风险分别如何验证？",
+        "哪类新增证据能最快证伪当前判断？"
       ],
       "label": "Risk sweep",
       "status": "evidenced"
