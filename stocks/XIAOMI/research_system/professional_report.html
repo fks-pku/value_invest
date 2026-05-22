@@ -1,0 +1,1133 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>XIAOMI 专业投研报告</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --muted: #6e6e73;
+      --paper: #f5f5f7;
+      --panel: #ffffff;
+      --panel-soft: #fbfbfd;
+      --line: #d2d2d7;
+      --blue: #0066cc;
+      --green: #248a3d;
+      --amber: #a86600;
+      --red: #d70015;
+      --shadow: 0 18px 50px rgba(0, 0, 0, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.55;
+    }
+    header {
+      padding: clamp(52px, 8vw, 104px) clamp(20px, 6vw, 86px) 34px;
+      color: var(--ink);
+      background: linear-gradient(180deg, #fff 0%, #f8f8fa 72%, var(--paper) 100%);
+      border-bottom: 1px solid rgba(0, 0, 0, .06);
+    }
+    h1 { max-width: 1080px; margin: 0; font-size: clamp(44px, 7vw, 86px); font-weight: 700; line-height: .98; letter-spacing: 0; }
+    h2 { margin: 0 0 12px; font-size: clamp(28px, 4vw, 48px); font-weight: 700; letter-spacing: 0; }
+    h3 { margin: 0 0 10px; font-size: clamp(21px, 2.2vw, 29px); font-weight: 700; letter-spacing: 0; }
+    p { margin: 0 0 10px; }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .subtitle { max-width: 940px; margin-top: 18px; color: var(--muted); font-size: clamp(18px, 2.1vw, 24px); line-height: 1.45; }
+    .nav, nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 11px clamp(16px, 5vw, 70px);
+      background: rgba(245, 245, 247, .82);
+      border-bottom: 1px solid rgba(0, 0, 0, .08);
+      backdrop-filter: saturate(180%) blur(20px);
+    }
+    .nav a, nav a {
+      flex: 0 0 auto;
+      padding: 7px 12px;
+      color: var(--ink);
+      text-decoration: none;
+      border: 1px solid rgba(0, 0, 0, .08);
+      background: rgba(255, 255, 255, .74);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    main { width: min(1180px, calc(100% - 32px)); margin: 26px auto 72px; }
+    section {
+      margin: 18px 0;
+      padding: clamp(24px, 4vw, 44px);
+      background: rgba(255, 255, 255, .9);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, .7) inset;
+    }
+    .layer-label, .eyebrow { margin: 0 0 12px; color: var(--blue); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .summary-grid, .summary-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+    .summary-card, .metric {
+      padding: 16px;
+      background: rgba(255, 255, 255, .88);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      min-width: 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
+      color: var(--ink);
+    }
+    .summary-card span, .metric span { display: block; color: var(--muted); font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: none; }
+    .summary-card strong, .metric strong { display: block; margin-top: 8px; font-size: clamp(20px, 2.2vw, 30px); font-weight: 700; line-height: 1.1; overflow-wrap: anywhere; }
+    .summary-card p { margin: 9px 0 0; color: var(--muted); font-size: 13px; }
+    .foundation-grid, .grid, .lead-grid, .info-grid, .reference-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-items: start; }
+    .foundation-card, .card, .question-card, .history-card {
+      padding: clamp(18px, 3vw, 28px);
+      background: var(--panel);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      min-width: 0;
+      box-shadow: var(--shadow);
+    }
+    .foundation-card { border-left: 0; }
+    .foundation-card.partial, .foundation-card.missing { border-left: 0; }
+    .detail-link {
+      display: inline-flex;
+      margin-top: 12px;
+      padding: 8px 13px;
+      color: #fff;
+      background: var(--blue);
+      text-decoration: none;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .detail-link:hover { background: #005bb5; text-decoration: none; }
+    .answer-box, .rule-box {
+      padding: 16px;
+      background: #f5f8ff;
+      border: 1px solid #d6e6ff;
+      border-radius: 8px;
+      margin: 14px 0 16px;
+    }
+    .info-box {
+      padding: 14px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: var(--panel-soft);
+      min-width: 0;
+    }
+    .info-box h4 { margin: 0 0 10px; font-size: 13px; font-weight: 700; color: var(--muted); letter-spacing: .04em; }
+    .info-box ul { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+    .info-box li { margin: 0; padding-top: 12px; border-top: 1px solid rgba(0, 0, 0, .07); }
+    .info-box li:first-child { padding-top: 0; border-top: 0; }
+    .info-box.evidence { background: #f5f9ff; }
+    .info-box.research_report { background: #f4fbf7; }
+    .info-box.message { background: #fff9ef; }
+    .info-box.opinion { background: #f6f6f7; }
+    .timeline { display: grid; gap: 12px; margin-top: 16px; }
+    .timeline-row { display: grid; grid-template-columns: 120px 1fr; gap: 16px; padding: 16px; border: 1px solid rgba(0, 0, 0, .08); border-radius: 8px; background: var(--panel); }
+    .timeline-year { color: var(--blue); font-weight: 700; }
+    .field { margin-top: 12px; }
+    .field b { display: block; margin-bottom: 5px; color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: none; }
+    .note { color: var(--muted); font-size: 13px; }
+    .compact-question-list {
+      display: grid;
+      gap: 8px;
+      margin: 8px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .compact-question-list li {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: center;
+      margin: 0;
+      padding: 9px 10px;
+      border: 1px solid rgba(0, 0, 0, .07);
+      border-radius: 8px;
+      background: #f8f8fa;
+    }
+    .compact-question-list .question-text {
+      min-width: 0;
+      overflow-wrap: anywhere;
+      color: var(--ink);
+    }
+    .mix-badge {
+      display: inline-grid;
+      grid-template-columns: auto auto;
+      gap: 6px;
+      align-items: baseline;
+      white-space: nowrap;
+      padding: 4px 7px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, .08);
+      color: var(--muted);
+      font-size: 11px;
+    }
+    .mix-badge strong {
+      color: var(--blue);
+      font-family: "SF Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 11px;
+    }
+    .chip {
+      display: inline-flex;
+      max-width: 100%;
+      margin: 0 4px 7px 0;
+      padding: 3px 7px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .76);
+      color: #424245;
+      font-family: "SF Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 11px;
+      overflow-wrap: anywhere;
+    }
+    .status-evidenced { color: var(--green); font-weight: 800; }
+    .status-partial { color: var(--amber); font-weight: 800; }
+    .status-missing, .impact-weakening { color: var(--red); font-weight: 800; }
+    .impact-strengthening { color: var(--green); font-weight: 800; }
+    .impact-research_lead { color: var(--amber); font-weight: 800; }
+    table { width: 100%; border-collapse: separate; border-spacing: 0; background: #fff; font-size: 14px; border: 1px solid rgba(0, 0, 0, .08); border-radius: 8px; overflow: hidden; }
+    th, td { padding: 13px; border-bottom: 1px solid rgba(0, 0, 0, .08); vertical-align: top; text-align: left; }
+    tr:last-child td { border-bottom: 0; }
+    th { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .04em; background: #f5f5f7; text-transform: none; }
+    ul { margin: 8px 0 0; padding-left: 20px; }
+    li { margin: 5px 0; }
+    @media (max-width: 880px) {
+      .summary-grid, .summary-strip, .foundation-grid, .grid, .lead-grid, .info-grid, .reference-grid, .timeline-row { grid-template-columns: 1fr; }
+      .compact-question-list li { grid-template-columns: 1fr; }
+      .mix-badge { justify-self: start; }
+      table { font-size: 13px; }
+      header { padding-top: 42px; }
+    }
+    
+    .qa-shell {
+      display: grid;
+      grid-template-columns: minmax(230px, .78fr) minmax(0, 1.45fr) minmax(300px, .95fr);
+      gap: 16px;
+      align-items: start;
+    }
+    .qa-full-research {
+      width: min(1180px, calc(100% - 32px));
+      margin: 26px auto 24px;
+    }
+    .qa-full-research .thesis-card {
+      margin: 14px 0 16px;
+      border-radius: 8px;
+      border-left: 0;
+      background: #111820;
+      box-shadow: var(--shadow);
+    }
+    .qa-full-research table {
+      margin: 12px 0 24px;
+    }
+    .qa-full-research .question-card {
+      margin: 16px 0;
+    }
+    .level-frame {
+      scroll-margin-top: 70px;
+    }
+    .l2-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .l2-card {
+      padding: clamp(18px, 2.5vw, 26px);
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      min-width: 0;
+    }
+    .l2-card h3 {
+      font-size: clamp(20px, 2vw, 27px);
+    }
+    .node-brief-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) repeat(3, minmax(0, .88fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .node-brief-card {
+      min-width: 0;
+      padding: 15px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .88);
+    }
+    .node-brief-card.primary {
+      background: #111820;
+      color: #fff;
+    }
+    .node-brief-card.primary b,
+    .node-brief-card.primary p {
+      color: #fff;
+    }
+    .node-brief-card b {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .node-brief-card p {
+      margin: 0;
+      font-size: 13px;
+    }
+    .category-meter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .category-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 8px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 999px;
+      background: #f5f5f7;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .category-pill.filled {
+      color: var(--blue);
+      background: #eef5ff;
+      border-color: #c9ddff;
+    }
+    .category-pill.warning {
+      color: var(--amber);
+      background: #fff8eb;
+      border-color: #f1d49b;
+    }
+    .research-path {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 0;
+    }
+    .research-path span {
+      display: inline-flex;
+      padding: 4px 8px;
+      border-radius: 999px;
+      color: var(--muted);
+      background: #f5f5f7;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .research-path span.active {
+      color: var(--blue);
+      background: #eef5ff;
+    }
+    .source-coverage-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .coverage-item {
+      min-width: 0;
+      padding: 9px 10px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #f5f5f7;
+    }
+    .coverage-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .coverage-item strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 18px;
+      line-height: 1;
+    }
+    .coverage-item.support strong { color: var(--green); }
+    .coverage-item.refute strong { color: var(--red); }
+    .coverage-item.lead strong { color: var(--amber); }
+    .coverage-item.total strong { color: var(--blue); }
+    .handoff-table {
+      margin-top: 14px;
+    }
+    .handoff-table td:first-child {
+      width: 28%;
+      font-weight: 700;
+    }
+    .handoff-table .mini-meter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .handoff-table .mini-meter span {
+      display: inline-flex;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: #f5f5f7;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .research-unit-card {
+      display: grid;
+      gap: 12px;
+    }
+    .decision-panel {
+      margin-top: 12px;
+      padding: 14px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8f8fa 100%);
+    }
+    .decision-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .decision-head b {
+      color: var(--ink);
+      font-size: 13px;
+      letter-spacing: .04em;
+    }
+    .decision-head span {
+      flex: 0 0 auto;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #eef5ff;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .decision-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .decision-box {
+      min-width: 0;
+      padding: 12px;
+      border: 1px solid rgba(0, 0, 0, .07);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .84);
+    }
+    .decision-box.judgment {
+      background: #111820;
+      color: #fff;
+    }
+    .decision-box.judgment h4,
+    .decision-box.judgment p {
+      color: #fff;
+    }
+    .decision-box h4,
+    .next-step-box b {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .decision-box ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .decision-box li {
+      margin: 4px 0;
+      font-size: 13px;
+    }
+    .evidence-score strong {
+      font-size: 20px;
+      color: var(--ink);
+    }
+    .next-step-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .next-step-box {
+      min-width: 0;
+      padding: 12px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #fff9ef;
+    }
+    .next-step-box p {
+      margin: 0;
+      font-size: 13px;
+    }
+    .collection-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .collection-box {
+      min-width: 0;
+      padding: 10px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #f7fbff;
+    }
+    .collection-box b {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .04em;
+    }
+    .collection-box p {
+      margin: 0 0 5px;
+      font-size: 13px;
+    }
+    .collection-status {
+      color: var(--blue);
+      font-weight: 800;
+    }
+    .l3-info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .l3-info-box {
+      min-width: 0;
+      padding: 10px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: var(--panel-soft);
+    }
+    .l3-info-box.evidence { background: #f5f9ff; }
+    .l3-info-box.research_report { background: #f4fbf7; }
+    .l3-info-box.message { background: #fff9ef; }
+    .l3-info-box.opinion { background: #f6f6f7; }
+    .l3-info-box h4 {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .l3-info-box ul {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .l3-info-box li {
+      margin: 0;
+      padding: 9px 0 0 10px;
+      border-top: 1px solid rgba(0, 0, 0, .07);
+      border-left: 3px solid #8e8e93;
+    }
+    .l3-info-box li:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+    .l3-info-box li.stance-support { border-left-color: var(--green); }
+    .l3-info-box li.stance-refute { border-left-color: var(--red); }
+    .l3-info-box li.stance-lead { border-left-color: var(--amber); }
+    .stance-pill,
+    .quality-pill {
+      display: inline-flex;
+      margin: 0 5px 7px 0;
+      padding: 3px 7px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .stance-pill {
+      background: #f5f5f7;
+      color: var(--ink);
+    }
+    .quality-pill {
+      background: #eef5ff;
+      color: var(--blue);
+    }
+    .qa-panel {
+      min-width: 0;
+      background: rgba(255, 255, 255, .92);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+    .qa-tree-panel, .qa-evidence-panel {
+      position: sticky;
+      top: 62px;
+      max-height: calc(100vh - 84px);
+      overflow: auto;
+      padding: 16px;
+    }
+    .qa-main-panel { padding: clamp(22px, 3vw, 34px); }
+    .qa-kicker {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      margin-bottom: 10px;
+    }
+    .qa-tree-group { margin: 0 0 16px; }
+    .qa-tree-title {
+      margin: 12px 0 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .qa-node-button {
+      width: 100%;
+      display: block;
+      margin: 5px 0;
+      padding: 9px 10px;
+      color: var(--ink);
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      text-align: left;
+      font: inherit;
+      cursor: pointer;
+    }
+    .qa-node-button:hover { background: #f5f5f7; }
+    .qa-node-button.active {
+      background: #f5f8ff;
+      border-color: #c9ddff;
+      color: var(--blue);
+      font-weight: 700;
+    }
+    .qa-node-level {
+      display: inline-flex;
+      margin-right: 6px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .qa-level-2 { padding-left: 20px; }
+    .qa-level-3 { padding-left: 36px; }
+    .qa-level-4 { padding-left: 52px; }
+    .qa-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .qa-badge {
+      display: inline-flex;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #f5f5f7;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .qa-question-title { margin-bottom: 14px; }
+    .qa-rollup {
+      margin: 14px 0;
+      padding: 14px;
+      border: 1px solid #d6e6ff;
+      border-radius: 8px;
+      background: #f5f8ff;
+    }
+    .qa-rollup strong { color: var(--blue); }
+    .qa-synthesis-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .qa-synthesis-box {
+      padding: 14px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: var(--panel-soft);
+    }
+    .qa-synthesis-box h4, .qa-child-list h4, .qa-bucket h4 {
+      margin: 0 0 9px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .qa-child-list { margin-top: 16px; }
+    .qa-child-list button {
+      display: block;
+      width: 100%;
+      margin: 7px 0;
+      padding: 11px 12px;
+      text-align: left;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      font: inherit;
+      cursor: pointer;
+    }
+    .qa-child-list button:hover { border-color: #c9ddff; color: var(--blue); }
+    .qa-bucket {
+      margin-bottom: 12px;
+      padding: 14px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: var(--panel-soft);
+    }
+    .qa-bucket.evidence { background: #f5f9ff; }
+    .qa-bucket.research_report { background: #f4fbf7; }
+    .qa-bucket.message { background: #fff9ef; }
+    .qa-bucket.opinion { background: #f6f6f7; }
+    .qa-evidence-item {
+      padding: 11px 0;
+      border-top: 1px solid rgba(0, 0, 0, .07);
+    }
+    .qa-evidence-item:first-of-type { border-top: 0; padding-top: 0; }
+    .qa-empty { color: var(--muted); font-size: 13px; }
+    .qa-ask textarea {
+      width: 100%;
+      min-height: 92px;
+      resize: vertical;
+      padding: 12px;
+      border: 1px solid rgba(0, 0, 0, .12);
+      border-radius: 8px;
+      font: inherit;
+      background: #fff;
+    }
+    .draft-question textarea {
+      width: 100%;
+      min-height: 92px;
+      resize: vertical;
+      padding: 12px;
+      border: 1px solid rgba(0, 0, 0, .12);
+      border-radius: 8px;
+      font: inherit;
+      background: #fff;
+    }
+    .draft-question-output {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .draft-question-output textarea {
+      min-height: 118px;
+      font-family: "SF Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .qa-ask-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .qa-ask button {
+      padding: 8px 12px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 999px;
+      font: inherit;
+      cursor: pointer;
+      background: #fff;
+    }
+    .qa-ask button.primary {
+      color: #fff;
+      background: var(--blue);
+      border-color: var(--blue);
+      font-weight: 700;
+    }
+    .draft-question button {
+      padding: 8px 12px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 999px;
+      font: inherit;
+      cursor: pointer;
+      background: #fff;
+    }
+    .draft-question button.primary {
+      color: #fff;
+      background: var(--blue);
+      border-color: var(--blue);
+      font-weight: 700;
+    }
+    .qa-static-index {
+      width: min(1180px, calc(100% - 32px));
+      margin: 22px auto 72px;
+    }
+    .qa-static-card {
+      margin: 12px 0;
+      padding: 16px;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
+    }
+    .qa-static-card h3 {
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+      margin-bottom: 8px;
+      font-size: 19px;
+    }
+    .qa-static-card span {
+      flex: 0 0 auto;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .qa-static-card ul {
+      display: grid;
+      gap: 6px;
+      margin-top: 10px;
+      padding-left: 0;
+      list-style: none;
+    }
+    .qa-static-card li {
+      display: flex;
+      gap: 8px;
+      margin: 0;
+      padding: 8px 10px;
+      background: #f5f5f7;
+      border-radius: 8px;
+    }
+    @media (max-width: 1080px) {
+      .qa-shell { grid-template-columns: 1fr; }
+      .node-brief-grid, .l2-grid, .l3-info-grid, .decision-grid, .next-step-grid, .collection-grid, .source-coverage-strip, .draft-question-output { grid-template-columns: 1fr; }
+      .qa-tree-panel, .qa-evidence-panel { position: static; max-height: none; }
+      .qa-synthesis-grid { grid-template-columns: 1fr; }
+    }
+    </style>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">Professional Research Report</p>
+    <h1>XIAOMI 专业投研报告</h1>
+    <p class="subtitle">由层级 QA 树、四类信息索引和节点答案收敛生成；不是交易建议。</p>
+  </header>
+  <main class="qa-full-research">
+    <section class="level-frame markdown-report">
+      <h2>XIAOMI 专业投研报告</h2>
+<h3>研究问题</h3>
+<p>这家公司应该先用哪组基础问题建立认知？</p>
+<h3>投研摘要</h3>
+<ul>
+<li>源头溯源：公司为什么出现，原始问题是什么？：已有资料显示，小米 IR 公司简介：小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司。 [ev_xiaomi_company_profile_20260518]；小米全球 IR 招股概要：小米全球 IR 招股概要将公司定义为以智能手机和智能硬件连接 IoT 平台为核心的互联网公司；披露 2018 年 3 月 MIUI 月活...</li>
+<li>公司历史：哪些节点真正改变了商业模型、治理或资本配置？：已有资料显示，小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连接 IoT 设备 10.792 亿台，EV 交付 411,082 辆。 [ev_xiaomi_2025_results_announc...；小米集团 2018 全球发售招股书：2018 年招股书描述...</li>
+<li>当下生意：公司今天靠什么赚钱，利润和现金流质量如何？：已有资料显示，小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连接 IoT 设备 10.792 亿台，EV 交付 411,082 辆。 [ev_xiaomi_2025_results_announc...；小米 2021 年报硬件净利率承诺：小米 2021 年报披...</li>
+<li>产业链定位：公司在哪些环节捕获或丢失经济性？：已有资料显示，小米 IR 公司简介：小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司。 [ev_xiaomi_company_profile_20260518]；IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 ...</li>
+<li>竞争格局：公司真实竞争地位和竞争强度如何？：已有资料显示，小米 IR 公司简介：小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司。 [ev_xiaomi_company_profile_20260518]；小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能...</li>
+</ul>
+<h3>证据结构</h3>
+<ul>
+<li>问题节点：104</li>
+<li>叶子问题：64</li>
+<li>证据：245</li>
+<li>研究报告：160</li>
+<li>消息：39</li>
+<li>观点：0</li>
+</ul>
+<h3>关键判断</h3>
+<h4>源头溯源：公司为什么出现，原始问题是什么？</h4>
+<p>结论：已有资料显示，小米 IR 公司简介：小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司。 [ev_xiaomi_company_profile_20260518]；小米全球 IR 招股概要：小米全球 IR 招股概要将公司定义为以智能手机和智能硬件连接 IoT 平台为核心的互联网公司；披露 2018 年 3 月 MIUI 月活约 1.9 亿、MIUI 论坛月活超过 900 万、超过 140 万用户连接 5 台以上小米产品，并把商业模型拆成硬件、新零售和互联网服务三支柱。 [ev_xiaomi_global_ir_tri...。主要约束是：新浪科技小米手机发布会实录：早期发布会实录可作为原始产品切口的一手近似材料。 [ev_xiaomi_mi1_launch_transcript_20110816]</p>
+<p>事实依据：</p>
+<ul>
+<li>小米 IR 公司简介：小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司。 [ev_xiaomi_company_profile_20260518]</li>
+<li>小米全球 IR 招股概要：小米全球 IR 招股概要将公司定义为以智能手机和智能硬件连接 IoT 平台为核心的互联网公司；披露 2018 年 3 月 MIUI 月活约 1.9 亿、MIUI 论坛月活超过 900 万、超过 140 万用户连接 5 台以上小米产品，并把商业模型拆成硬件、新零售和互联网服务三支柱。 [ev_xiaomi_global_ir_tri...</li>
+<li>小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型。 [ev_xiaomi_ipo_prospectus_20180625]</li>
+<li>WIPO 小米创新案例：WIPO 案例资料显示，小米成立于 2010 年 4 月，并于 2010 年 8 月推出基于 Android 的 MIUI 私测版本；该资料把小米早期发展放在移动互联网、AIoT 和创新技术普及的语境中。 [ev_xiaomi_wipo_origin_miui_20211101]</li>
+<li>精准研究小米 2018 深度报告：精准研究 2018 年小米深度报告采用“发展历程、业务布局、商业模式、公司本质”的结构写源头，把 MIUI 用户参与、手机硬件放量、IoT 生态和互联网变现放在同一商业模型里分析。该来源用于学习专业报告写法和补充第三方研究视角。 [ev_xiaomi_jingzhun_deep_report_20181105]</li>
+<li>国盛证券小米 2021 深度报告：国盛证券 2021 年小米深度报告将公司源头写成阶段化演进：2010 年创立、2011 年发布小米手机、2013 年布局 IoT、2021 年进入智能电动车，并把历史节点连接到手机 x AIoT 与下一增长曲线。该来源用于参考专业报告的阶段复盘写法。 [ev_xiaomi_guosheng_deep_report_2021...</li>
+</ul>
+<p>推论：</p>
+<ul>
+<li>反证信息会降低结论强度，应优先定义可量化的证伪阈值</li>
+</ul>
+<p>关键子问题回答：</p>
+<ul>
+<li>这个回答最需要哪条一手证据验证？：确认 2010 年成立、智能手机和 IoT 平台定位。 [ev_xiaomi_company_profile_20260518]</li>
+<li>这个源头基因今天还能解释什么，不能解释什么？：确认 2010 年成立、智能手机和 IoT 平台定位。 [ev_xiaomi_company_profile_20260518]</li>
+<li>这个回答最需要哪条一手证据验证？：招股书描述使命、互联网公司自我定义与智能手机/智能硬件模型。 [ev_xiaomi_ipo_prospectus_20180625]</li>
+<li>这个源头基因今天还能解释什么，不能解释什么？：招股书描述使命、互联网公司自我定义与智能手机/智能硬件模型。 [ev_xiaomi_ipo_prospectus_20180625]</li>
+<li>这个回答最需要哪条一手证据验证？：招股书可验证小米对自身互联网效率和硬件平台的定义。 [ev_xiaomi_ipo_prospectus_20180625]</li>
+<li>这个源头基因今天还能解释什么，不能解释什么？：招股书可验证小米对自身互联网效率和硬件平台的定义。 [ev_xiaomi_ipo_prospectus_20180625]</li>
+</ul>
+<p>反证与约束：</p>
+<ul>
+<li>新浪科技小米手机发布会实录：早期发布会实录可作为原始产品切口的一手近似材料。 [ev_xiaomi_mi1_launch_transcript_20110816]</li>
+<li>新浪科技小米手机发布会实录：发布会实录显示 MIUI、发烧友、1999 元手机和线上销售是早期表达。 [ev_xiaomi_mi1_launch_transcript_20110816]</li>
+<li>支撑/边界：硬件净利率承诺说明“诚实定价”既是获客机制，也是硬件利润率约束。（小米 2021 年报硬件净利率承诺，ev_xiaomi_hardware_margin_pledge_2021_ar）</li>
+<li>申万宏源小米 2024 深度报告摘要：低可靠报告摘要可作为阶段写法参考，不能单独强化判断。 [ev_xiaomi_shenwan_deep_report_20241118]</li>
+</ul>
+<p>待验证缺口：</p>
+<ul>
+<li>还需要补充 2010-2012 年中国智能手机渗透率、安卓生态成熟度、运营商渠道和线上零售变化的数据</li>
+<li>需要把早期能力逐项映射到今天的业务节点和反证条件</li>
+<li>需要补早期用户反馈、MIUI 活跃社区数据、首批用户画像和竞品体验差距，避免把后来的成功倒推成起点</li>
+<li>需要竞品同期价格、配置、渠道加价、系统更新频率和用户满意度对比，才能把“旧方案不足”从叙事变成证据</li>
+</ul>
+<h4>公司历史：哪些节点真正改变了商业模型、治理或资本配置？</h4>
+<p>结论：已有资料显示，小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连接 IoT 设备 10.792 亿台，EV 交付 411,082 辆。 [ev_xiaomi_2025_results_announc...；小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型。 [ev_xiaomi_ipo_prospectus_20180625]。主要约束是：小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型。 [ev_xiaomi_ipo_prospectus_20180625]</p>
+<p>事实依据：</p>
+<ul>
+<li>小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连接 IoT 设备 10.792 亿台，EV 交付 411,082 辆。 [ev_xiaomi_2025_results_announc...</li>
+<li>小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型。 [ev_xiaomi_ipo_prospectus_20180625]</li>
+<li>精准研究小米 2018 深度报告：精准研究 2018 年小米深度报告采用“发展历程、业务布局、商业模式、公司本质”的结构写源头，把 MIUI 用户参与、手机硬件放量、IoT 生态和互联网变现放在同一商业模型里分析。该来源用于学习专业报告写法和补充第三方研究视角。 [ev_xiaomi_jingzhun_deep_report_20181105]</li>
+<li>甬兴证券小米 2025 深度报告：甬兴证券 2025 年小米深度报告以公司概览、发展历程、业务构成和人车家生态展开，把早期手机/AIoT 基因与汽车、IoT、互联网服务的当前结构相连接。该来源用于校准“源头必须解释今天业务结构”的写法。 [ev_xiaomi_yongxing_deep_report_20250228]</li>
+<li>新浪科技小米手机发布会实录：2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和用户口碑。该来源是早期媒体实录，适合验证原始产品切口和用户楔子。 [ev_xiaomi_mi1_launch_transcript_20110816]</li>
+<li>小米集团 2025 年报：FY2025 收入为人民币 4573 亿元，毛利为 1018 亿元，年度利润为 416 亿元，经调整净利润为 392 亿元，总资产为 5081 亿元，总权益为 2663 亿元，经营现金流为 341 亿元，现金资源为 2326 亿元。 [ev_xiaomi_2025_annual_report_20260428]</li>
+</ul>
+<p>推论：</p>
+<ul>
+<li>反证信息会降低结论强度，应优先定义可量化的证伪阈值</li>
+</ul>
+<p>关键子问题回答：</p>
+<ul>
+<li>每次历史转型是否真的改变利润池？：业绩公告提供手机、IoT、MAU、EV 交付和新业务收入。 [ev_xiaomi_2025_results_announcement_20260324]</li>
+<li>哪些节点只是规模扩大，哪些节点是模型切换？：招股书定义原始模型。 [ev_xiaomi_ipo_prospectus_20180625]</li>
+<li>历史增长消耗了多少资本，回报是否足够？：年报提供集团收入、利润、现金资源和经营现金流。 [ev_xiaomi_2025_annual_report_20260428]</li>
+<li>增长来自公司能力，还是行业周期和融资窗口？：招股书确认上市窗口与原始业务模型。 [ev_xiaomi_ipo_prospectus_20180625]</li>
+<li>创始人控制权提高战略耐心，还是放大资本配置风险？：年报披露 WVR 与雷军投票权。 [ev_xiaomi_board_wvr_20260428]</li>
+<li>管理层演进是否匹配业务复杂度上升？：管理层页面确认高管结构。 [ev_xiaomi_management_20260518]</li>
+</ul>
+<p>反证与约束：</p>
+<ul>
+<li>小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型。 [ev_xiaomi_ipo_prospectus_20180625]</li>
+<li>新浪科技小米手机发布会实录：早期发布会验证第一产品节点。 [ev_xiaomi_mi1_launch_transcript_20110816]</li>
+<li>甬兴证券小米 2025 深度报告：研报提示新业务和人车家生态扩张。 [ev_xiaomi_yongxing_deep_report_20250228]</li>
+<li>新浪科技小米手机发布会实录：2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和用户口碑。该来源是早期媒体实录，适合验证原始产品… [ev_xiaomi_mi1_launch_transcript_20110816]</li>
+</ul>
+<p>待验证缺口：</p>
+<ul>
+<li>需要按阶段补分部毛利、互联网服务收入结构、EV 单车毛利和售后成本</li>
+<li>需要建立事件到业务模型的映射表，剔除不改变经济性的事件</li>
+<li>需要补分业务资本开支、研发投入、经营现金流桥接、回购分红和新业务亏损/毛利</li>
+<li>需要加入行业周期、同行份额、融资环境和资本成本的对照</li>
+</ul>
+<h4>当下生意：公司今天靠什么赚钱，利润和现金流质量如何？</h4>
+<p>结论：已有资料显示，小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连接 IoT 设备 10.792 亿台，EV 交付 411,082 辆。 [ev_xiaomi_2025_results_announc...；小米 2021 年报硬件净利率承诺：小米 2021 年报披露，公司自 2018 年起承诺硬件业务（智能手机、IoT 与生活消费产品）整体净利率每年不超过 5.0%，若超过则向用户返还超出部分；2021 年硬件业务整体净利率低于 2.0%。 [ev_xiaomi_hardware_margin_pledge_2021_ar]。主要约束是：新浪科技小米手机发布会实录：2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和用户口碑。该来源是早期媒体实录，适合验证原始产品… [ev_xiaomi_mi1_launch_transcript_20110816]</p>
+<p>事实依据：</p>
+<ul>
+<li>小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连接 IoT 设备 10.792 亿台，EV 交付 411,082 辆。 [ev_xiaomi_2025_results_announc...</li>
+<li>小米 2021 年报硬件净利率承诺：小米 2021 年报披露，公司自 2018 年起承诺硬件业务（智能手机、IoT 与生活消费产品）整体净利率每年不超过 5.0%，若超过则向用户返还超出部分；2021 年硬件业务整体净利率低于 2.0%。 [ev_xiaomi_hardware_margin_pledge_2021_ar]</li>
+<li>精准研究小米 2018 深度报告：精准研究 2018 年小米深度报告采用“发展历程、业务布局、商业模式、公司本质”的结构写源头，把 MIUI 用户参与、手机硬件放量、IoT 生态和互联网变现放在同一商业模型里分析。该来源用于学习专业报告写法和补充第三方研究视角。 [ev_xiaomi_jingzhun_deep_report_20181105]</li>
+<li>甬兴证券小米 2025 深度报告：甬兴证券 2025 年小米深度报告以公司概览、发展历程、业务构成和人车家生态展开，把早期手机/AIoT 基因与汽车、IoT、互联网服务的当前结构相连接。该来源用于校准“源头必须解释今天业务结构”的写法。 [ev_xiaomi_yongxing_deep_report_20250228]</li>
+<li>IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第三，并在内存约束和产品组合调整下同比下降 19.1%。 [ev_xiaomi_idc_q1_2026_smartphone_20260512]</li>
+<li>Counterpoint 2026 Q1 智能手机出货跟踪：Gadgets360 引述 Counterpoint 2026 年 Q1 智能手机监测称，全球智能手机出货同比下降 6%，小米以约 12% 份额保持第三名，但受内存短缺和入门价位敞口影响承压。 [ev_xiaomi_counterpoint_q1_2026_smartphone_20260410]</li>
+</ul>
+<p>推论：</p>
+<ul>
+<li>反证信息会降低结论强度，应优先定义可量化的证伪阈值</li>
+</ul>
+<p>关键子问题回答：</p>
+<ul>
+<li>哪个业务真正贡献毛利和现金，而不只是贡献收入？：精准研究 2018 年小米深度报告采用“发展历程、业务布局、商业模式、公司本质”的结构写源头，把 MIUI 用户参与、手机硬件放量、IoT 生态和互联网变现放在同一商业模型里分析。该来源用于… [ev_xiaomi_jingzhun_deep_report_20181105]</li>
+<li>EV/AI 新业务的单车经济是否已经足以单独成立？：甬兴证券 2025 年小米深度报告以公司概览、发展历程、业务构成和人车家生态展开，把早期手机/AIoT 基因与汽车、IoT、互联网服务的当前结构相连接。该来源用于校准“源头必须解释今天业务结… [ev_xiaomi_yongxing_deep_report_20250228]</li>
+<li>手机入口变化是否影响 IoT 和互联网服务变现？：小米全球 IR 招股概要将公司定义为以智能手机和智能硬件连接 IoT 平台为核心的互联网公司；披露 2018 年 3 月 MIUI 月活约 1.9 亿、MIUI 论坛月活超过 900 万、超… [ev_xiaomi_global_ir_triathlon_20180503]</li>
+<li>高毛利业务的持续性来自结构优势还是阶段性周期？：甬兴证券 2025 年小米深度报告以公司概览、发展历程、业务构成和人车家生态展开，把早期手机/AIoT 基因与汽车、IoT、互联网服务的当前结构相连接。该来源用于校准“源头必须解释今天业务结… [ev_xiaomi_yongxing_deep_report_20250228]</li>
+</ul>
+<p>反证与约束：</p>
+<ul>
+<li>新浪科技小米手机发布会实录：2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和用户口碑。该来源是早期媒体实录，适合验证原始产品… [ev_xiaomi_mi1_launch_transcript_20110816]</li>
+</ul>
+<p>待验证缺口：</p>
+<ul>
+<li>需要分部毛利、费用分摊、经营现金流和营运资本桥接</li>
+<li>需要单车收入、单车毛利、质保计提、售后成本和价格调整</li>
+<li>需要订单、等待周期、库存、价格变化和用户留存数据</li>
+<li>围绕“需求来自真实替换/生态绑定，还是促销与新品周期？”补充公司公告、财报、监管文件或官方数据</li>
+</ul>
+<h4>产业链定位：公司在哪些环节捕获或丢失经济性？</h4>
+<p>结论：已有资料显示，小米 IR 公司简介：小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司。 [ev_xiaomi_company_profile_20260518]；IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第三，并在内存约束和产品组合调整下同比下降 19.1%。 [ev_xiaomi_idc_q1_2026_smartphone_20260512]。</p>
+<p>事实依据：</p>
+<ul>
+<li>小米 IR 公司简介：小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司。 [ev_xiaomi_company_profile_20260518]</li>
+<li>IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第三，并在内存约束和产品组合调整下同比下降 19.1%。 [ev_xiaomi_idc_q1_2026_smartphone_20260512]</li>
+<li>Counterpoint 2026 Q1 智能手机出货跟踪：Gadgets360 引述 Counterpoint 2026 年 Q1 智能手机监测称，全球智能手机出货同比下降 6%，小米以约 12% 份额保持第三名，但受内存短缺和入门价位敞口影响承压。 [ev_xiaomi_counterpoint_q1_2026_smartphone_20260410]</li>
+</ul>
+<p>推论：</p>
+<ul>
+<li>反证信息会降低结论强度，应优先定义可量化的证伪阈值</li>
+</ul>
+<p>关键子问题回答：</p>
+<ul>
+<li>暂无可引用的子问题答案。</li>
+</ul>
+<p>反证与约束：</p>
+<ul>
+<li>暂未发现明确反证，但不能把未发现反证等同于已证实。</li>
+</ul>
+<p>待验证缺口：</p>
+<ul>
+<li>需要关键部件价格、供应商集中度、账期和采购承诺</li>
+<li>补充覆盖“上游供应商是否拿走关键经济性？”的卖方深度、行业专题或第三方数据库</li>
+<li>需要渠道结构、营销费用、售后网络和退换/维修成本</li>
+<li>补充覆盖“渠道、客户和售后体系是否侵蚀利润？”的卖方深度、行业专题或第三方数据库</li>
+</ul>
+<h4>竞争格局：公司真实竞争地位和竞争强度如何？</h4>
+<p>结论：已有资料显示，小米 IR 公司简介：小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司。 [ev_xiaomi_company_profile_20260518]；小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连接 IoT 设备 10.792 亿台，EV 交付 411,082 辆。 [ev_xiaomi_2025_results_announc...。主要约束是：IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第三，并在内存约束和产品组合调整下同比下降… [ev_xiaomi_idc_q1_2026_smartphone_20260512]</p>
+<p>事实依据：</p>
+<ul>
+<li>小米 IR 公司简介：小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司。 [ev_xiaomi_company_profile_20260518]</li>
+<li>小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连接 IoT 设备 10.792 亿台，EV 交付 411,082 辆。 [ev_xiaomi_2025_results_announc...</li>
+<li>小米 IR 管理层：管理层页面显示，雷军为创始人、董事长兼 CEO；林斌为联合创始人、副董事长；卢伟冰为合伙人兼总裁；高管团队覆盖手机、国际业务、中国区、财务、研发和技术委员会等职能。 [ev_xiaomi_management_20260518]</li>
+<li>IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第三，并在内存约束和产品组合调整下同比下降 19.1%。 [ev_xiaomi_idc_q1_2026_smartphone_20260512]</li>
+<li>新浪科技小米手机发布会实录：2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和用户口碑。该来源是早期媒体实录，适合验证原始产品切口和用户楔子。 [ev_xiaomi_mi1_launch_transcript_20110816]</li>
+<li>甬兴证券小米 2025 深度报告：甬兴证券 2025 年小米深度报告以公司概览、发展历程、业务构成和人车家生态展开，把早期手机/AIoT 基因与汽车、IoT、互联网服务的当前结构相连接。该来源用于校准“源头必须解释今天业务结构”的写法。 [ev_xiaomi_yongxing_deep_report_20250228]</li>
+</ul>
+<p>推论：</p>
+<ul>
+<li>反证信息会降低结论强度，应优先定义可量化的证伪阈值</li>
+</ul>
+<p>关键子问题回答：</p>
+<ul>
+<li>手机业务到底和谁竞争，竞争维度是什么？：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第三，并在内存约束和产品组合调整下同比下降… [ev_xiaomi_idc_q1_2026_smartphone_20260512]</li>
+<li>EV 业务的真实竞品是传统车企、新势力还是生态型科技公司？：甬兴证券 2025 年小米深度报告以公司概览、发展历程、业务构成和人车家生态展开，把早期手机/AIoT 基因与汽车、IoT、互联网服务的当前结构相连接。该来源用于校准“源头必须解释今天业务结… [ev_xiaomi_yongxing_deep_report_20250228]</li>
+<li>份额变化来自区域结构、产品结构还是真实竞争力？：小米 2021 年报披露，公司自 2018 年起承诺硬件业务（智能手机、IoT 与生活消费产品）整体净利率每年不超过 5.0%，若超过则向用户返还超出部分；2021 年硬件业务整体净利率低于… [ev_xiaomi_hardware_margin_pledge_2021_ar]</li>
+<li>价格战是否会持续压缩毛利和现金流？：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第三，并在内存约束和产品组合调整下同比下降… [ev_xiaomi_idc_q1_2026_smartphone_20260512]</li>
+<li>品牌定位能否支撑中高端化，而不是只靠性价比？：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第三，并在内存约束和产品组合调整下同比下降… [ev_xiaomi_idc_q1_2026_smartphone_20260512]</li>
+</ul>
+<p>反证与约束：</p>
+<ul>
+<li>IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第三，并在内存约束和产品组合调整下同比下降… [ev_xiaomi_idc_q1_2026_smartphone_20260512]</li>
+<li>新浪科技小米手机发布会实录：2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和用户口碑。该来源是早期媒体实录，适合验证原始产品… [ev_xiaomi_mi1_launch_transcript_20110816]</li>
+</ul>
+<p>待验证缺口：</p>
+<ul>
+<li>需要全球和区域份额、价格带、产品周期和渠道数据</li>
+<li>需要量化反证信息对结论的影响阈值和触发条件</li>
+<li>需要价格带、车型定位、交付、毛利和智能化能力对照</li>
+<li>需要份额、ASP、毛利率、补贴和库存数据</li>
+</ul>
+<h4>战略分析：战略是否沿着能力边界扩展，并能被数据验证？</h4>
+<p>结论：已有资料显示，小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连接 IoT 设备 10.792 亿台，EV 交付 411,082 辆。 [ev_xiaomi_2025_results_announc...；小米 IR 管理层：管理层页面显示，雷军为创始人、董事长兼 CEO；林斌为联合创始人、副董事长；卢伟冰为合伙人兼总裁；高管团队覆盖手机、国际业务、中国区、财务、研发和技术委员会等职能。 [ev_xiaomi_management_20260518]。主要约束是：申万宏源小米 2024 深度报告摘要：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。 [ev_xiaomi_shenwan_deep_report_20241118]</p>
+<p>事实依据：</p>
+<ul>
+<li>小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连接 IoT 设备 10.792 亿台，EV 交付 411,082 辆。 [ev_xiaomi_2025_results_announc...</li>
+<li>小米 IR 管理层：管理层页面显示，雷军为创始人、董事长兼 CEO；林斌为联合创始人、副董事长；卢伟冰为合伙人兼总裁；高管团队覆盖手机、国际业务、中国区、财务、研发和技术委员会等职能。 [ev_xiaomi_management_20260518]</li>
+<li>小米全球 IR 招股概要：小米全球 IR 招股概要将公司定义为以智能手机和智能硬件连接 IoT 平台为核心的互联网公司；披露 2018 年 3 月 MIUI 月活约 1.9 亿、MIUI 论坛月活超过 900 万、超过 140 万用户连接 5 台以上小米产品，并把商业模型拆成硬件、新零售和互联网服务三支柱。 [ev_xiaomi_global_ir_tri...</li>
+<li>国盛证券小米 2021 深度报告：国盛证券 2021 年小米深度报告将公司源头写成阶段化演进：2010 年创立、2011 年发布小米手机、2013 年布局 IoT、2021 年进入智能电动车，并把历史节点连接到手机 x AIoT 与下一增长曲线。该来源用于参考专业报告的阶段复盘写法。 [ev_xiaomi_guosheng_deep_report_2021...</li>
+<li>甬兴证券小米 2025 深度报告：甬兴证券 2025 年小米深度报告以公司概览、发展历程、业务构成和人车家生态展开，把早期手机/AIoT 基因与汽车、IoT、互联网服务的当前结构相连接。该来源用于校准“源头必须解释今天业务结构”的写法。 [ev_xiaomi_yongxing_deep_report_20250228]</li>
+<li>申万宏源小米 2024 深度报告摘要：申万宏源小米深度报告摘要将公司历程拆成不同发展阶段，并把阶段变化与技术趋势、产品扩张、组织和商业模型升级相连。该来源是报告摘要，可靠性低于原始研报，只作为写法参考和研究线索。 [ev_xiaomi_shenwan_deep_report_20241118]</li>
+</ul>
+<p>推论：</p>
+<ul>
+<li>反证信息会降低结论强度，应优先定义可量化的证伪阈值</li>
+</ul>
+<p>关键子问题回答：</p>
+<ul>
+<li>哪些能力能从手机/AIoT 迁移到汽车？：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。 [ev_xiaomi_2025_results_announcement_20260324]</li>
+<li>哪些能力必须重新建设，不能从旧业务外推？：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。 [ev_xiaomi_2025_results_announcement_20260324]</li>
+<li>资源是否投向最重要利润池和最大约束点？：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连… [ev_xiaomi_2025_results_announcement_20260324]</li>
+<li>战略投入是否会削弱现金回报和少数股东经济性？：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连… [ev_xiaomi_2025_results_announcement_20260324]</li>
+<li>每个战略阶段应该用哪些 KPI 验证？：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。 [ev_xiaomi_2025_annual_report_20260428]</li>
+<li>什么数据触发战略判断上修或下修？：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。 [ev_xiaomi_2025_annual_report_20260428]</li>
+</ul>
+<p>反证与约束：</p>
+<ul>
+<li>申万宏源小米 2024 深度报告摘要：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。 [ev_xiaomi_shenwan_deep_report_20241118]</li>
+<li>新浪科技小米手机发布会实录：2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和用户口碑。该来源是早期媒体实录，适合验证原始产品… [ev_xiaomi_mi1_launch_transcript_20110816]</li>
+<li>IDC 2026 Q1 智能手机市场数据：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。 [ev_xiaomi_idc_q1_2026_smartphone_20260512]</li>
+<li>Counterpoint 2026 Q1 智能手机出货跟踪：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。 [ev_xiaomi_counterpoint_q1_2026_smartphone_20260410]</li>
+</ul>
+<p>待验证缺口：</p>
+<ul>
+<li>需要用户体验、软件、生态连接、渠道和品牌流量证据</li>
+<li>需要制造、质量、安全、售后、监管和供应链证据</li>
+<li>需要研发、资本开支、人员、产能和营销投入拆分</li>
+<li>需要量化反证信息对结论的影响阈值和触发条件</li>
+</ul>
+<h4>组织、文化与治理：控制权、激励和组织能力是否支持长期复利？</h4>
+<p>结论：已有资料显示，小米 IR 管理层：管理层页面显示，雷军为创始人、董事长兼 CEO；林斌为联合创始人、副董事长；卢伟冰为合伙人兼总裁；高管团队覆盖手机、国际业务、中国区、财务、研发和技术委员会等职能。 [ev_xiaomi_management_20260518]；小米集团 2025 年报：FY2025 收入为人民币 4573 亿元，毛利为 1018 亿元，年度利润为 416 亿元，经调整净利润为 392 亿元，总资产为 5081 亿元，总权益为 2663 亿元，经营现金流为 341 亿元，现金资源为 2326 亿元。 [ev_xiaomi_2025_annual_report_20260428]。主要约束是：小米集团 2018 全球发售招股书：管理层、控制权和激励结构是否提升长期复利而非放大治理折价。 [ev_xiaomi_ipo_prospectus_20180625]</p>
+<p>事实依据：</p>
+<ul>
+<li>小米 IR 管理层：管理层页面显示，雷军为创始人、董事长兼 CEO；林斌为联合创始人、副董事长；卢伟冰为合伙人兼总裁；高管团队覆盖手机、国际业务、中国区、财务、研发和技术委员会等职能。 [ev_xiaomi_management_20260518]</li>
+<li>小米集团 2025 年报：FY2025 收入为人民币 4573 亿元，毛利为 1018 亿元，年度利润为 416 亿元，经调整净利润为 392 亿元，总资产为 5081 亿元，总权益为 2663 亿元，经营现金流为 341 亿元，现金资源为 2326 亿元。 [ev_xiaomi_2025_annual_report_20260428]</li>
+<li>小米 2025 年报不同投票权与董事会披露：年报显示，小米采用不同投票权结构：每股 A 类股份有 10 票，每股 B 类股份有 1 票；截至 2025 年 12 月 31 日，雷军对非保留事项拥有约 61.0% 投票权，林斌拥有约 6.7%。 [ev_xiaomi_board_wvr_20260428]</li>
+<li>小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型。 [ev_xiaomi_ipo_prospectus_20180625]</li>
+<li>新浪科技小米手机发布会实录：2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和用户口碑。该来源是早期媒体实录，适合验证原始产品切口和用户楔子。 [ev_xiaomi_mi1_launch_transcript_20110816]</li>
+<li>甬兴证券小米 2025 深度报告：甬兴证券 2025 年小米深度报告以公司概览、发展历程、业务构成和人车家生态展开，把早期手机/AIoT 基因与汽车、IoT、互联网服务的当前结构相连接。该来源用于校准“源头必须解释今天业务结构”的写法。 [ev_xiaomi_yongxing_deep_report_20250228]</li>
+</ul>
+<p>推论：</p>
+<ul>
+<li>反证信息会降低结论强度，应优先定义可量化的证伪阈值</li>
+</ul>
+<p>关键子问题回答：</p>
+<ul>
+<li>创始人控制权是否带来长期战略耐心？：管理层、控制权和激励结构是否提升长期复利而非放大治理折价。 [ev_xiaomi_management_20260518]</li>
+<li>控制权是否放大少数股东治理折价？：管理层、控制权和激励结构是否提升长期复利而非放大治理折价。 [ev_xiaomi_management_20260518]</li>
+<li>重大资本配置是否有足够约束？：管理层、控制权和激励结构是否提升长期复利而非放大治理折价。 [ev_xiaomi_2025_annual_report_20260428]</li>
+<li>激励机制是否和每股价值创造一致？：管理层、控制权和激励结构是否提升长期复利而非放大治理折价。 [ev_xiaomi_2025_annual_report_20260428]</li>
+<li>组织是否能处理手机、IoT、服务和汽车的复杂度？：管理层、控制权和激励结构是否提升长期复利而非放大治理折价。 [ev_xiaomi_2025_annual_report_20260428]</li>
+<li>早期互联网效率文化是否会在汽车业务上形成盲区？：管理层、控制权和激励结构是否提升长期复利而非放大治理折价。 [ev_xiaomi_2025_annual_report_20260428]</li>
+</ul>
+<p>反证与约束：</p>
+<ul>
+<li>小米集团 2018 全球发售招股书：管理层、控制权和激励结构是否提升长期复利而非放大治理折价。 [ev_xiaomi_ipo_prospectus_20180625]</li>
+<li>新浪科技小米手机发布会实录：2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和用户口碑。该来源是早期媒体实录，适合验证原始产品… [ev_xiaomi_mi1_launch_transcript_20110816]</li>
+</ul>
+<p>待验证缺口：</p>
+<ul>
+<li>需要长期投入、产品周期、研发和重大项目复盘</li>
+<li>补充覆盖“创始人控制权是否带来长期战略耐心？”的卖方深度、行业专题或第三方数据库</li>
+<li>需要 WVR、董事会、关联交易和重大投资披露</li>
+<li>补充覆盖“控制权是否放大少数股东治理折价？”的卖方深度、行业专题或第三方数据库</li>
+</ul>
+<h4>风险排雷：哪些风险足以改变公司基础画像？</h4>
+<p>结论：已有资料显示，国家市场监督管理总局小米 SU7 召回公告：国家市场监督管理总局公告显示，小米汽车召回 116,887 辆 2024 年 2 月 6 日至 2025 年 8 月 30 日生产的 SU7 标准版，原因是 L2 高速领航辅助驾驶在极端场景识别、预警或处置上可能不足，如驾驶员未及时干预会增加碰撞风险。 [ev_xiaomi_samr_su7_recall_202...；小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型。 [ev_xiaomi_ipo_prospectus_20180625]。主要约束是：新浪科技小米手机发布会实录：2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和用户口碑。该来源是早期媒体实录，适合验证原始产品… [ev_xiaomi_mi1_launch_transcript_20110816]</p>
+<p>事实依据：</p>
+<ul>
+<li>国家市场监督管理总局小米 SU7 召回公告：国家市场监督管理总局公告显示，小米汽车召回 116,887 辆 2024 年 2 月 6 日至 2025 年 8 月 30 日生产的 SU7 标准版，原因是 L2 高速领航辅助驾驶在极端场景识别、预警或处置上可能不足，如驾驶员未及时干预会增加碰撞风险。 [ev_xiaomi_samr_su7_recall_202...</li>
+<li>小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型。 [ev_xiaomi_ipo_prospectus_20180625]</li>
+<li>IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第三，并在内存约束和产品组合调整下同比下降 19.1%。 [ev_xiaomi_idc_q1_2026_smartphone_20260512]</li>
+<li>新浪科技小米手机发布会实录：2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和用户口碑。该来源是早期媒体实录，适合验证原始产品切口和用户楔子。 [ev_xiaomi_mi1_launch_transcript_20110816]</li>
+<li>2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和用户口碑。该来源是早期媒体实录，适合验证原始产品… [ev_xiaomi_mi1_launch_transcript_20110816]</li>
+</ul>
+<p>推论：</p>
+<ul>
+<li>反证信息会降低结论强度，应优先定义可量化的证伪阈值</li>
+</ul>
+<p>关键子问题回答：</p>
+<ul>
+<li>手机基本盘弱化是否会改变整个生态基础？：2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和用户口碑。该来源是早期媒体实录，适合验证原始产品… [ev_xiaomi_mi1_launch_transcript_20110816]</li>
+<li>监管、数据、安全和产品责任风险如何验证？：2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和用户口碑。该来源是早期媒体实录，适合验证原始产品… [ev_xiaomi_mi1_launch_transcript_20110816]</li>
+</ul>
+<p>反证与约束：</p>
+<ul>
+<li>新浪科技小米手机发布会实录：2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和用户口碑。该来源是早期媒体实录，适合验证原始产品… [ev_xiaomi_mi1_launch_transcript_20110816]</li>
+</ul>
+<p>待验证缺口：</p>
+<ul>
+<li>需要连续季度份额、出货、ASP、毛利和库存</li>
+<li>需要量化反证信息对结论的影响阈值和触发条件</li>
+<li>需要召回、事故、投诉、质保计提和保险成本</li>
+<li>需要自由现金流、现金资源、债务、资本开支和库存</li>
+</ul>
+<h3>关键缺口和下一步</h3>
+<ul>
+<li>这个回答最需要哪条一手证据验证？：还需要补充 2010-2012 年中国智能手机渗透率、安卓生态成熟度、运营商渠道和线上零售变化的数据。</li>
+<li>这个回答最需要哪条一手证据验证？：需要补充能直接回答“这个回答最需要哪条一手证据验证？”的观点。</li>
+<li>这个回答最需要哪条一手证据验证？：缺少观点类信息，当前结论不能完整闭环。</li>
+<li>这个源头基因今天还能解释什么，不能解释什么？：需要把早期能力逐项映射到今天的业务节点和反证条件。</li>
+<li>这个源头基因今天还能解释什么，不能解释什么？：需要补充能直接回答“这个源头基因今天还能解释什么，不能解释什么？”的观点。</li>
+<li>这个源头基因今天还能解释什么，不能解释什么？：缺少观点类信息，当前结论不能完整闭环。</li>
+<li>这个回答最需要哪条一手证据验证？：需要补早期用户反馈、MIUI 活跃社区数据、首批用户画像和竞品体验差距，避免把后来的成功倒推成起点。</li>
+<li>这个回答最需要哪条一手证据验证？：需要竞品同期价格、配置、渠道加价、系统更新频率和用户满意度对比，才能把“旧方案不足”从叙事变成证据。</li>
+</ul>
+<h3>使用边界</h3>
+<p>本报告由层级 QA 系统生成，用于组织研究问题、证据结构、反证条件和下一步数据需求，不构成交易建议。</p>
+    </section>
+  </main>
+</body>
+</html>

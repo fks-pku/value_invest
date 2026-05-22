@@ -1,0 +1,3893 @@
+{
+  "default_depth": 3,
+  "generated_at": "2026-05-22T07:59:49.555093+00:00",
+  "interaction_contract": {
+    "information_categories": [
+      "evidence",
+      "research_report",
+      "message",
+      "opinion"
+    ],
+    "new_question_behavior": "Add a question at any level, collect four-bucket information, update the node answer, then rebuild the report.",
+    "node_model": "Every node is a question with evidence buckets, synthesis, rollup, and child links."
+  },
+  "meta_question": "了解智能电动车行业是否有长期投资价值",
+  "nodes": [
+    {
+      "current_answer": "智能电动车的需求、空间和增长质量是否足够支撑长期投资价值？：已由 2 个子问题形成初步收敛。；智能电动车产业链中利润池在哪里，经济性如何分配？：已由 2 个子问题形成初步收敛。；智能电动车竞争格局会改善，还是被价格战和产能扩张稀释？：已由 2 个子问题形成初步收敛。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "meta.root",
+      "level": 0,
+      "metadata": {
+        "planner_rationale": "围绕“了解智能电动车行业是否有长期投资价值”，系统先识别研究对象“智能电动车”和信号“smart_ev、ai、long_term_value”，再把问题拆成事实基础、经济性/传导机制、竞争或情景、风险和反证四类主线；默认三层下钻后进入四类信息搜集。",
+        "planning_mode": "deterministic_rule_based"
+      },
+      "next_question_ids": [
+        "l1.demand",
+        "l1.value_chain",
+        "l1.competition",
+        "l1.risk_trigger"
+      ],
+      "parent_id": null,
+      "question": "了解智能电动车行业是否有长期投资价值",
+      "rollup_to_parent": "了解智能电动车行业是否有长期投资价值：已由 4 个子问题形成初步收敛。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "low",
+        "facts": [
+          "智能电动车的需求、空间和增长质量是否足够支撑长期投资价值？：智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：已由 2 个子问题形成初步收敛。；智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：已由 2 个子问题形成初步收敛。",
+          "智能电动车产业链中利润池在哪里，经济性如何分配？：智能电动车：哪一段产业链获得主要利润和现金流？：已由 2 个子问题形成初步收敛。；智能电动车：供应商、渠道、客户和监管如何分配经济性？：已由 2 个子问题形成初步收敛。",
+          "智能电动车竞争格局会改善，还是被价格战和产能扩张稀释？：智能电动车：行业集中度、进入壁垒和替代品压力如何？：已由 2 个子问题形成初步收敛。；智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：已由 2 个子问题形成初步收敛。",
+          "哪些政策、技术、成本或反证信号会重塑智能电动车判断？：AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：已由 2 个子问题形成初步收敛。；智能电动车：什么信号会反证当前行业结论？：已由 2 个子问题形成初步收敛。"
+        ],
+        "gaps": [
+          "需要补齐叶子问题的四类信息，尤其是一手或高可靠来源。"
+        ],
+        "inferences": [
+          "元问题需要先结构化，不直接写成静态文章。"
+        ],
+        "judgment": "了解智能电动车行业是否有长期投资价值：已由 4 个子问题形成初步收敛。"
+      }
+    },
+    {
+      "current_answer": "智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：已由 2 个子问题形成初步收敛。；智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：已由 2 个子问题形成初步收敛。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.demand",
+      "level": 1,
+      "metadata": {
+        "information_focus": {},
+        "planner_rationale": "先确认事实、需求和基础边界，避免直接跳到结论。",
+        "should_collect_information": false,
+        "should_drill_down": true,
+        "terminal_reason": ""
+      },
+      "next_question_ids": [
+        "l1.demand.market_size",
+        "l1.demand.demand_quality"
+      ],
+      "parent_id": "meta.root",
+      "professional_answer": {
+        "answer": "当前还不能回答“智能电动车的需求、空间和增长质量是否足够支撑长期投资价值？”。该问题缺少可核验的信息，不能向上层报告输出判断。",
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车的需求、空间和增长质量是否足够支撑长期投资价值？”的证据、研报、消息、观点。"
+        ],
+        "inferences": [
+          "“智能电动车的需求、空间和增长质量是否足够支撑长期投资价值？”还不能上抛结论，必须先补来源。"
+        ],
+        "judgment": "未形成判断。",
+        "next_data": [
+          "补充证据来源",
+          "补充研报来源",
+          "补充消息来源",
+          "补充观点来源"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "“智能电动车的需求、空间和增长质量是否足够支撑长期投资价值？”尚未形成可上抛结论。",
+        "source_balance": "信息结构：证据 0 / 研报 0 / 消息 0 / 观点 0；立场结构：支撑 0 / 反证 0 / 线索 0。",
+        "supporting_evidence": []
+      },
+      "question": "智能电动车的需求、空间和增长质量是否足够支撑长期投资价值？",
+      "rollup_to_parent": "智能电动车的需求、空间和增长质量是否足够支撑长期投资价值？：已由 2 个子问题形成初步收敛。",
+      "status": "needs_data",
+      "synthesis": {
+        "confidence": "low",
+        "facts": [
+          "智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。；智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：哪…",
+          "智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。；智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱…"
+        ],
+        "gaps": [
+          "需要补充能直接回答“智能电动车的需求、空间和增长质量是否足够支撑长期投资价值？”的证据、研报、消息、观点。"
+        ],
+        "inferences": [
+          "“智能电动车的需求、空间和增长质量是否足够支撑长期投资价值？”还不能上抛结论，必须先补来源。"
+        ],
+        "judgment": "智能电动车的需求、空间和增长质量是否足够支撑长期投资价值？：已由 2 个子问题形成初步收敛。"
+      }
+    },
+    {
+      "current_answer": "智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。；智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：哪些信息会支撑或反证当前判断？：当前只能形成研究假设，尚不能输出强判断。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.demand.market_size",
+      "level": 2,
+      "metadata": {
+        "information_focus": {},
+        "planner_rationale": "先确认事实、需求和基础边界，避免直接跳到结论。",
+        "should_collect_information": false,
+        "should_drill_down": true,
+        "terminal_reason": ""
+      },
+      "next_question_ids": [
+        "l1.demand.market_size.evidence_map",
+        "l1.demand.market_size.disconfirming_test"
+      ],
+      "parent_id": "l1.demand",
+      "professional_answer": {
+        "answer": "当前还不能回答“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？”。该问题缺少可核验的信息，不能向上层报告输出判断。",
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？”的证据、研报、消息、观点。"
+        ],
+        "inferences": [
+          "“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？”还不能上抛结论，必须先补来源。"
+        ],
+        "judgment": "未形成判断。",
+        "next_data": [
+          "补充证据来源",
+          "补充研报来源",
+          "补充消息来源",
+          "补充观点来源"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？”尚未形成可上抛结论。",
+        "source_balance": "信息结构：证据 0 / 研报 0 / 消息 0 / 观点 0；立场结构：支撑 0 / 反证 0 / 线索 0。",
+        "supporting_evidence": []
+      },
+      "question": "智能电动车：行业空间来自真实需求、价格、渗透率还是周期？",
+      "rollup_to_parent": "智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：已由 2 个子问题形成初步收敛。",
+      "status": "needs_data",
+      "synthesis": {
+        "confidence": "low",
+        "facts": [
+          "智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：这个问题最需要哪些事实证据直接回答？：专业回答：围绕“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：这个问题最需要哪些事实证据直接回答？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠…",
+          "智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：哪些信息会支撑或反证当前判断？：专业回答：围绕“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：哪些信息会支撑或反证当前判断？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作…"
+        ],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？”的证据、研报、消息、观点。"
+        ],
+        "inferences": [
+          "“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？”还不能上抛结论，必须先补来源。"
+        ],
+        "judgment": "智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：已由 2 个子问题形成初步收敛。"
+      }
+    },
+    {
+      "current_answer": "专业回答：围绕“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：这个问题最需要哪些事实证据直接回答？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：这个问题最需要哪些事实证据直接回答？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.demand.market_size.evidence_map",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "优先补公告、年报、监管文件、官方数据或可验证事实。",
+          "node_id": "l1.demand.market_size.evidence_map",
+          "parent_id": "l1.demand.market_size",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "智能电动车 智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：这个问题最需要哪些事实证据直接回答？ 公告 年报 官方 数据 事实",
+          "status": "missing"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补公开消息，但只作为线索，不直接强化结论。",
+          "node_id": "l1.demand.market_size.evidence_map",
+          "parent_id": "l1.demand.market_size",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "智能电动车 智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：这个问题最需要哪些事实证据直接回答？ 新闻 消息 进展 未证实",
+          "status": "missing"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.demand.market_size.evidence_map",
+          "parent_id": "l1.demand.market_size",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "智能电动车 智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：这个问题最需要哪些事实证据直接回答？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补商业研报、卖方报告、行业研究和结构化第三方数据。",
+          "node_id": "l1.demand.market_size.evidence_map",
+          "parent_id": "l1.demand.market_size",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "智能电动车 智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：这个问题最需要哪些事实证据直接回答？ 研报 深度报告 行业研究",
+          "status": "missing"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "智能电动车与“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？”的线索。",
+          "opinion": "专家、产业人士或投资者对“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？”的机制解释和反证提醒。",
+          "research_report": "第三方对智能电动车中“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-22T07:33:38.474520+00:00",
+          "source": "deterministic_batch_synthesis"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.demand.market_size",
+      "professional_answer": {
+        "answer": "专业回答：围绕“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：这个问题最需要哪些事实证据直接回答？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：这个问题最需要哪些事实证据直接回答？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：这个问题最需要哪些事实证据直接回答？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。",
+        "next_data": [
+          "围绕“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：这个问题最需要哪些事实证据直接回答？”补充公司公告、财报、监管文件或官方数据。",
+          "补充覆盖“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：这个问题最需要哪些事实证据直接回答？”的卖方深度、行业专题或第三方数据库。",
+          "围绕缺口补充数据：需要补充能直接回答“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：这个问题最需要哪些事实证据直接回答？”的证据、研报、消息、观点。",
+          "围绕缺口补充数据：缺少证据类信息，当前结论不能完整闭环。"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。",
+        "source_balance": "证据 0 / 研报 0 / 消息 0 / 观点 0；关系结构 0 支撑 / 0 反证 / 0 线索。",
+        "supporting_evidence": []
+      },
+      "question": "智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：这个问题最需要哪些事实证据直接回答？",
+      "rollup_to_parent": "智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：这个问题最需要哪些事实证据直接回答？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。"
+      }
+    },
+    {
+      "current_answer": "专业回答：围绕“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：哪些信息会支撑或反证当前判断？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：哪些信息会支撑或反证当前判断？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.demand.market_size.disconfirming_test",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "优先补公告、年报、监管文件、官方数据或可验证事实。",
+          "node_id": "l1.demand.market_size.disconfirming_test",
+          "parent_id": "l1.demand.market_size",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "智能电动车 智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：哪些信息会支撑或反证当前判断？ 公告 年报 官方 数据 事实",
+          "status": "missing"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补公开消息，但只作为线索，不直接强化结论。",
+          "node_id": "l1.demand.market_size.disconfirming_test",
+          "parent_id": "l1.demand.market_size",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "智能电动车 智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：哪些信息会支撑或反证当前判断？ 新闻 消息 进展 未证实",
+          "status": "missing"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.demand.market_size.disconfirming_test",
+          "parent_id": "l1.demand.market_size",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "智能电动车 智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：哪些信息会支撑或反证当前判断？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补商业研报、卖方报告、行业研究和结构化第三方数据。",
+          "node_id": "l1.demand.market_size.disconfirming_test",
+          "parent_id": "l1.demand.market_size",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "智能电动车 智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：哪些信息会支撑或反证当前判断？ 研报 深度报告 行业研究",
+          "status": "missing"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "智能电动车与“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？”的线索。",
+          "opinion": "专家、产业人士或投资者对“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？”的机制解释和反证提醒。",
+          "research_report": "第三方对智能电动车中“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-22T07:33:38.474532+00:00",
+          "source": "deterministic_batch_synthesis"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.demand.market_size",
+      "professional_answer": {
+        "answer": "专业回答：围绕“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：哪些信息会支撑或反证当前判断？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：哪些信息会支撑或反证当前判断？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：哪些信息会支撑或反证当前判断？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。",
+        "next_data": [
+          "围绕“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：哪些信息会支撑或反证当前判断？”补充公司公告、财报、监管文件或官方数据。",
+          "补充覆盖“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：哪些信息会支撑或反证当前判断？”的卖方深度、行业专题或第三方数据库。",
+          "围绕缺口补充数据：需要补充能直接回答“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：哪些信息会支撑或反证当前判断？”的证据、研报、消息、观点。",
+          "围绕缺口补充数据：缺少证据类信息，当前结论不能完整闭环。"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：哪些信息会支撑或反证当前判断？：当前只能形成研究假设，尚不能输出强判断。",
+        "source_balance": "证据 0 / 研报 0 / 消息 0 / 观点 0；关系结构 0 支撑 / 0 反证 / 0 线索。",
+        "supporting_evidence": []
+      },
+      "question": "智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：哪些信息会支撑或反证当前判断？",
+      "rollup_to_parent": "智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：哪些信息会支撑或反证当前判断？：当前只能形成研究假设，尚不能输出强判断。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：哪些信息会支撑或反证当前判断？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。"
+      }
+    },
+    {
+      "current_answer": "智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。；智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：哪些信息会支撑或反证当前判断？：当前只能形成研究假设，尚不能输出强判断。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.demand.demand_quality",
+      "level": 2,
+      "metadata": {
+        "information_focus": {},
+        "planner_rationale": "先确认事实、需求和基础边界，避免直接跳到结论。",
+        "should_collect_information": false,
+        "should_drill_down": true,
+        "terminal_reason": ""
+      },
+      "next_question_ids": [
+        "l1.demand.demand_quality.evidence_map",
+        "l1.demand.demand_quality.disconfirming_test"
+      ],
+      "parent_id": "l1.demand",
+      "professional_answer": {
+        "answer": "当前还不能回答“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？”。该问题缺少可核验的信息，不能向上层报告输出判断。",
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？”的证据、研报、消息、观点。"
+        ],
+        "inferences": [
+          "“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？”还不能上抛结论，必须先补来源。"
+        ],
+        "judgment": "未形成判断。",
+        "next_data": [
+          "补充证据来源",
+          "补充研报来源",
+          "补充消息来源",
+          "补充观点来源"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？”尚未形成可上抛结论。",
+        "source_balance": "信息结构：证据 0 / 研报 0 / 消息 0 / 观点 0；立场结构：支撑 0 / 反证 0 / 线索 0。",
+        "supporting_evidence": []
+      },
+      "question": "智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？",
+      "rollup_to_parent": "智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：已由 2 个子问题形成初步收敛。",
+      "status": "needs_data",
+      "synthesis": {
+        "confidence": "low",
+        "facts": [
+          "智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：这个问题最需要哪些事实证据直接回答？：专业回答：围绕“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：这个问题最需要哪些事实证据直接回答？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高…",
+          "智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：哪些信息会支撑或反证当前判断？：专业回答：围绕“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：哪些信息会支撑或反证当前判断？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研…"
+        ],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？”的证据、研报、消息、观点。"
+        ],
+        "inferences": [
+          "“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？”还不能上抛结论，必须先补来源。"
+        ],
+        "judgment": "智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：已由 2 个子问题形成初步收敛。"
+      }
+    },
+    {
+      "current_answer": "专业回答：围绕“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：这个问题最需要哪些事实证据直接回答？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：这个问题最需要哪些事实证据直接回答？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.demand.demand_quality.evidence_map",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "优先补公告、年报、监管文件、官方数据或可验证事实。",
+          "node_id": "l1.demand.demand_quality.evidence_map",
+          "parent_id": "l1.demand.demand_quality",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "智能电动车 智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：这个问题最需要哪些事实证据直接回答？ 公告 年报 官方 数据 事实",
+          "status": "missing"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补公开消息，但只作为线索，不直接强化结论。",
+          "node_id": "l1.demand.demand_quality.evidence_map",
+          "parent_id": "l1.demand.demand_quality",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "智能电动车 智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：这个问题最需要哪些事实证据直接回答？ 新闻 消息 进展 未证实",
+          "status": "missing"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.demand.demand_quality.evidence_map",
+          "parent_id": "l1.demand.demand_quality",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "智能电动车 智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：这个问题最需要哪些事实证据直接回答？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补商业研报、卖方报告、行业研究和结构化第三方数据。",
+          "node_id": "l1.demand.demand_quality.evidence_map",
+          "parent_id": "l1.demand.demand_quality",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "智能电动车 智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：这个问题最需要哪些事实证据直接回答？ 研报 深度报告 行业研究",
+          "status": "missing"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "智能电动车与“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？”的线索。",
+          "opinion": "专家、产业人士或投资者对“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？”的机制解释和反证提醒。",
+          "research_report": "第三方对智能电动车中“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-22T07:33:38.474538+00:00",
+          "source": "deterministic_batch_synthesis"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.demand.demand_quality",
+      "professional_answer": {
+        "answer": "专业回答：围绕“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：这个问题最需要哪些事实证据直接回答？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：这个问题最需要哪些事实证据直接回答？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：这个问题最需要哪些事实证据直接回答？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。",
+        "next_data": [
+          "围绕“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：这个问题最需要哪些事实证据直接回答？”补充公司公告、财报、监管文件或官方数据。",
+          "补充覆盖“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：这个问题最需要哪些事实证据直接回答？”的卖方深度、行业专题或第三方数据库。",
+          "围绕缺口补充数据：需要补充能直接回答“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：这个问题最需要哪些事实证据直接回答？”的证据、研报、消息、观点。",
+          "围绕缺口补充数据：缺少证据类信息，当前结论不能完整闭环。"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。",
+        "source_balance": "证据 0 / 研报 0 / 消息 0 / 观点 0；关系结构 0 支撑 / 0 反证 / 0 线索。",
+        "supporting_evidence": []
+      },
+      "question": "智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：这个问题最需要哪些事实证据直接回答？",
+      "rollup_to_parent": "智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：这个问题最需要哪些事实证据直接回答？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。"
+      }
+    },
+    {
+      "current_answer": "专业回答：围绕“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：哪些信息会支撑或反证当前判断？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：哪些信息会支撑或反证当前判断？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.demand.demand_quality.disconfirming_test",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "优先补公告、年报、监管文件、官方数据或可验证事实。",
+          "node_id": "l1.demand.demand_quality.disconfirming_test",
+          "parent_id": "l1.demand.demand_quality",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "智能电动车 智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：哪些信息会支撑或反证当前判断？ 公告 年报 官方 数据 事实",
+          "status": "missing"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补公开消息，但只作为线索，不直接强化结论。",
+          "node_id": "l1.demand.demand_quality.disconfirming_test",
+          "parent_id": "l1.demand.demand_quality",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "智能电动车 智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：哪些信息会支撑或反证当前判断？ 新闻 消息 进展 未证实",
+          "status": "missing"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.demand.demand_quality.disconfirming_test",
+          "parent_id": "l1.demand.demand_quality",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "智能电动车 智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：哪些信息会支撑或反证当前判断？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补商业研报、卖方报告、行业研究和结构化第三方数据。",
+          "node_id": "l1.demand.demand_quality.disconfirming_test",
+          "parent_id": "l1.demand.demand_quality",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "智能电动车 智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：哪些信息会支撑或反证当前判断？ 研报 深度报告 行业研究",
+          "status": "missing"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "智能电动车与“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？”的线索。",
+          "opinion": "专家、产业人士或投资者对“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？”的机制解释和反证提醒。",
+          "research_report": "第三方对智能电动车中“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-22T07:33:38.474542+00:00",
+          "source": "deterministic_batch_synthesis"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.demand.demand_quality",
+      "professional_answer": {
+        "answer": "专业回答：围绕“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：哪些信息会支撑或反证当前判断？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：哪些信息会支撑或反证当前判断？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：哪些信息会支撑或反证当前判断？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。",
+        "next_data": [
+          "围绕“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：哪些信息会支撑或反证当前判断？”补充公司公告、财报、监管文件或官方数据。",
+          "补充覆盖“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：哪些信息会支撑或反证当前判断？”的卖方深度、行业专题或第三方数据库。",
+          "围绕缺口补充数据：需要补充能直接回答“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：哪些信息会支撑或反证当前判断？”的证据、研报、消息、观点。",
+          "围绕缺口补充数据：缺少证据类信息，当前结论不能完整闭环。"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：哪些信息会支撑或反证当前判断？：当前只能形成研究假设，尚不能输出强判断。",
+        "source_balance": "证据 0 / 研报 0 / 消息 0 / 观点 0；关系结构 0 支撑 / 0 反证 / 0 线索。",
+        "supporting_evidence": []
+      },
+      "question": "智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：哪些信息会支撑或反证当前判断？",
+      "rollup_to_parent": "智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：哪些信息会支撑或反证当前判断？：当前只能形成研究假设，尚不能输出强判断。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：哪些信息会支撑或反证当前判断？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。"
+      }
+    },
+    {
+      "current_answer": "智能电动车：哪一段产业链获得主要利润和现金流？：已由 2 个子问题形成初步收敛。；智能电动车：供应商、渠道、客户和监管如何分配经济性？：已由 2 个子问题形成初步收敛。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.value_chain",
+      "level": 1,
+      "metadata": {
+        "information_focus": {},
+        "planner_rationale": "再确认价值链、利润池或事件传导机制，判断影响路径是否真实。",
+        "should_collect_information": false,
+        "should_drill_down": true,
+        "terminal_reason": ""
+      },
+      "next_question_ids": [
+        "l1.value_chain.profit_pool",
+        "l1.value_chain.bargaining_power"
+      ],
+      "parent_id": "meta.root",
+      "professional_answer": {
+        "answer": "当前还不能回答“智能电动车产业链中利润池在哪里，经济性如何分配？”。该问题缺少可核验的信息，不能向上层报告输出判断。",
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车产业链中利润池在哪里，经济性如何分配？”的证据、研报、消息、观点。"
+        ],
+        "inferences": [
+          "“智能电动车产业链中利润池在哪里，经济性如何分配？”还不能上抛结论，必须先补来源。"
+        ],
+        "judgment": "未形成判断。",
+        "next_data": [
+          "补充证据来源",
+          "补充研报来源",
+          "补充消息来源",
+          "补充观点来源"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "“智能电动车产业链中利润池在哪里，经济性如何分配？”尚未形成可上抛结论。",
+        "source_balance": "信息结构：证据 0 / 研报 0 / 消息 0 / 观点 0；立场结构：支撑 0 / 反证 0 / 线索 0。",
+        "supporting_evidence": []
+      },
+      "question": "智能电动车产业链中利润池在哪里，经济性如何分配？",
+      "rollup_to_parent": "智能电动车产业链中利润池在哪里，经济性如何分配？：已由 2 个子问题形成初步收敛。",
+      "status": "needs_data",
+      "synthesis": {
+        "confidence": "low",
+        "facts": [
+          "智能电动车：哪一段产业链获得主要利润和现金流？：智能电动车：哪一段产业链获得主要利润和现金流？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。；智能电动车：哪一段产业链获得主要利润和现金流？：哪些信息会支撑或反证当…",
+          "智能电动车：供应商、渠道、客户和监管如何分配经济性？：智能电动车：供应商、渠道、客户和监管如何分配经济性？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。；智能电动车：供应商、渠道、客户和监管如何分配经济性？：哪些信息会…"
+        ],
+        "gaps": [
+          "需要补充能直接回答“智能电动车产业链中利润池在哪里，经济性如何分配？”的证据、研报、消息、观点。"
+        ],
+        "inferences": [
+          "“智能电动车产业链中利润池在哪里，经济性如何分配？”还不能上抛结论，必须先补来源。"
+        ],
+        "judgment": "智能电动车产业链中利润池在哪里，经济性如何分配？：已由 2 个子问题形成初步收敛。"
+      }
+    },
+    {
+      "current_answer": "智能电动车：哪一段产业链获得主要利润和现金流？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。；智能电动车：哪一段产业链获得主要利润和现金流？：哪些信息会支撑或反证当前判断？：当前只能形成研究假设，尚不能输出强判断。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.value_chain.profit_pool",
+      "level": 2,
+      "metadata": {
+        "information_focus": {},
+        "planner_rationale": "再确认价值链、利润池或事件传导机制，判断影响路径是否真实。",
+        "should_collect_information": false,
+        "should_drill_down": true,
+        "terminal_reason": ""
+      },
+      "next_question_ids": [
+        "l1.value_chain.profit_pool.evidence_map",
+        "l1.value_chain.profit_pool.disconfirming_test"
+      ],
+      "parent_id": "l1.value_chain",
+      "professional_answer": {
+        "answer": "当前还不能回答“智能电动车：哪一段产业链获得主要利润和现金流？”。该问题缺少可核验的信息，不能向上层报告输出判断。",
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：哪一段产业链获得主要利润和现金流？”的证据、研报、消息、观点。"
+        ],
+        "inferences": [
+          "“智能电动车：哪一段产业链获得主要利润和现金流？”还不能上抛结论，必须先补来源。"
+        ],
+        "judgment": "未形成判断。",
+        "next_data": [
+          "补充证据来源",
+          "补充研报来源",
+          "补充消息来源",
+          "补充观点来源"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "“智能电动车：哪一段产业链获得主要利润和现金流？”尚未形成可上抛结论。",
+        "source_balance": "信息结构：证据 0 / 研报 0 / 消息 0 / 观点 0；立场结构：支撑 0 / 反证 0 / 线索 0。",
+        "supporting_evidence": []
+      },
+      "question": "智能电动车：哪一段产业链获得主要利润和现金流？",
+      "rollup_to_parent": "智能电动车：哪一段产业链获得主要利润和现金流？：已由 2 个子问题形成初步收敛。",
+      "status": "needs_data",
+      "synthesis": {
+        "confidence": "low",
+        "facts": [
+          "智能电动车：哪一段产业链获得主要利润和现金流？：这个问题最需要哪些事实证据直接回答？：专业回答：围绕“智能电动车：哪一段产业链获得主要利润和现金流？：这个问题最需要哪些事实证据直接回答？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主…",
+          "智能电动车：哪一段产业链获得主要利润和现金流？：哪些信息会支撑或反证当前判断？：专业回答：围绕“智能电动车：哪一段产业链获得主要利润和现金流？：哪些信息会支撑或反证当前判断？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。…"
+        ],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：哪一段产业链获得主要利润和现金流？”的证据、研报、消息、观点。"
+        ],
+        "inferences": [
+          "“智能电动车：哪一段产业链获得主要利润和现金流？”还不能上抛结论，必须先补来源。"
+        ],
+        "judgment": "智能电动车：哪一段产业链获得主要利润和现金流？：已由 2 个子问题形成初步收敛。"
+      }
+    },
+    {
+      "current_answer": "专业回答：围绕“智能电动车：哪一段产业链获得主要利润和现金流？：这个问题最需要哪些事实证据直接回答？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“智能电动车：哪一段产业链获得主要利润和现金流？：这个问题最需要哪些事实证据直接回答？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.value_chain.profit_pool.evidence_map",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "优先补公告、年报、监管文件、官方数据或可验证事实。",
+          "node_id": "l1.value_chain.profit_pool.evidence_map",
+          "parent_id": "l1.value_chain.profit_pool",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：哪一段产业链获得主要利润和现金流？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "智能电动车 智能电动车：哪一段产业链获得主要利润和现金流？：这个问题最需要哪些事实证据直接回答？ 公告 年报 官方 数据 事实",
+          "status": "missing"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补公开消息，但只作为线索，不直接强化结论。",
+          "node_id": "l1.value_chain.profit_pool.evidence_map",
+          "parent_id": "l1.value_chain.profit_pool",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：哪一段产业链获得主要利润和现金流？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "智能电动车 智能电动车：哪一段产业链获得主要利润和现金流？：这个问题最需要哪些事实证据直接回答？ 新闻 消息 进展 未证实",
+          "status": "missing"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.value_chain.profit_pool.evidence_map",
+          "parent_id": "l1.value_chain.profit_pool",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：哪一段产业链获得主要利润和现金流？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "智能电动车 智能电动车：哪一段产业链获得主要利润和现金流？：这个问题最需要哪些事实证据直接回答？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补商业研报、卖方报告、行业研究和结构化第三方数据。",
+          "node_id": "l1.value_chain.profit_pool.evidence_map",
+          "parent_id": "l1.value_chain.profit_pool",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：哪一段产业链获得主要利润和现金流？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "智能电动车 智能电动车：哪一段产业链获得主要利润和现金流？：这个问题最需要哪些事实证据直接回答？ 研报 深度报告 行业研究",
+          "status": "missing"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "智能电动车与“智能电动车：哪一段产业链获得主要利润和现金流？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“智能电动车：哪一段产业链获得主要利润和现金流？”的线索。",
+          "opinion": "专家、产业人士或投资者对“智能电动车：哪一段产业链获得主要利润和现金流？”的机制解释和反证提醒。",
+          "research_report": "第三方对智能电动车中“智能电动车：哪一段产业链获得主要利润和现金流？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-22T07:33:38.474546+00:00",
+          "source": "deterministic_batch_synthesis"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.value_chain.profit_pool",
+      "professional_answer": {
+        "answer": "专业回答：围绕“智能电动车：哪一段产业链获得主要利润和现金流？：这个问题最需要哪些事实证据直接回答？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“智能电动车：哪一段产业链获得主要利润和现金流？：这个问题最需要哪些事实证据直接回答？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：哪一段产业链获得主要利润和现金流？：这个问题最需要哪些事实证据直接回答？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。",
+        "next_data": [
+          "围绕“智能电动车：哪一段产业链获得主要利润和现金流？：这个问题最需要哪些事实证据直接回答？”补充公司公告、财报、监管文件或官方数据。",
+          "补充覆盖“智能电动车：哪一段产业链获得主要利润和现金流？：这个问题最需要哪些事实证据直接回答？”的卖方深度、行业专题或第三方数据库。",
+          "围绕缺口补充数据：需要补充能直接回答“智能电动车：哪一段产业链获得主要利润和现金流？：这个问题最需要哪些事实证据直接回答？”的证据、研报、消息、观点。",
+          "围绕缺口补充数据：缺少证据类信息，当前结论不能完整闭环。"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "智能电动车：哪一段产业链获得主要利润和现金流？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。",
+        "source_balance": "证据 0 / 研报 0 / 消息 0 / 观点 0；关系结构 0 支撑 / 0 反证 / 0 线索。",
+        "supporting_evidence": []
+      },
+      "question": "智能电动车：哪一段产业链获得主要利润和现金流？：这个问题最需要哪些事实证据直接回答？",
+      "rollup_to_parent": "智能电动车：哪一段产业链获得主要利润和现金流？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：哪一段产业链获得主要利润和现金流？：这个问题最需要哪些事实证据直接回答？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。"
+      }
+    },
+    {
+      "current_answer": "专业回答：围绕“智能电动车：哪一段产业链获得主要利润和现金流？：哪些信息会支撑或反证当前判断？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“智能电动车：哪一段产业链获得主要利润和现金流？：哪些信息会支撑或反证当前判断？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.value_chain.profit_pool.disconfirming_test",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "优先补公告、年报、监管文件、官方数据或可验证事实。",
+          "node_id": "l1.value_chain.profit_pool.disconfirming_test",
+          "parent_id": "l1.value_chain.profit_pool",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：哪一段产业链获得主要利润和现金流？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "智能电动车 智能电动车：哪一段产业链获得主要利润和现金流？：哪些信息会支撑或反证当前判断？ 公告 年报 官方 数据 事实",
+          "status": "missing"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补公开消息，但只作为线索，不直接强化结论。",
+          "node_id": "l1.value_chain.profit_pool.disconfirming_test",
+          "parent_id": "l1.value_chain.profit_pool",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：哪一段产业链获得主要利润和现金流？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "智能电动车 智能电动车：哪一段产业链获得主要利润和现金流？：哪些信息会支撑或反证当前判断？ 新闻 消息 进展 未证实",
+          "status": "missing"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.value_chain.profit_pool.disconfirming_test",
+          "parent_id": "l1.value_chain.profit_pool",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：哪一段产业链获得主要利润和现金流？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "智能电动车 智能电动车：哪一段产业链获得主要利润和现金流？：哪些信息会支撑或反证当前判断？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补商业研报、卖方报告、行业研究和结构化第三方数据。",
+          "node_id": "l1.value_chain.profit_pool.disconfirming_test",
+          "parent_id": "l1.value_chain.profit_pool",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：哪一段产业链获得主要利润和现金流？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "智能电动车 智能电动车：哪一段产业链获得主要利润和现金流？：哪些信息会支撑或反证当前判断？ 研报 深度报告 行业研究",
+          "status": "missing"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "智能电动车与“智能电动车：哪一段产业链获得主要利润和现金流？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“智能电动车：哪一段产业链获得主要利润和现金流？”的线索。",
+          "opinion": "专家、产业人士或投资者对“智能电动车：哪一段产业链获得主要利润和现金流？”的机制解释和反证提醒。",
+          "research_report": "第三方对智能电动车中“智能电动车：哪一段产业链获得主要利润和现金流？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-22T07:33:38.474551+00:00",
+          "source": "deterministic_batch_synthesis"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.value_chain.profit_pool",
+      "professional_answer": {
+        "answer": "专业回答：围绕“智能电动车：哪一段产业链获得主要利润和现金流？：哪些信息会支撑或反证当前判断？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“智能电动车：哪一段产业链获得主要利润和现金流？：哪些信息会支撑或反证当前判断？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：哪一段产业链获得主要利润和现金流？：哪些信息会支撑或反证当前判断？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。",
+        "next_data": [
+          "围绕“智能电动车：哪一段产业链获得主要利润和现金流？：哪些信息会支撑或反证当前判断？”补充公司公告、财报、监管文件或官方数据。",
+          "补充覆盖“智能电动车：哪一段产业链获得主要利润和现金流？：哪些信息会支撑或反证当前判断？”的卖方深度、行业专题或第三方数据库。",
+          "围绕缺口补充数据：需要补充能直接回答“智能电动车：哪一段产业链获得主要利润和现金流？：哪些信息会支撑或反证当前判断？”的证据、研报、消息、观点。",
+          "围绕缺口补充数据：缺少证据类信息，当前结论不能完整闭环。"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "智能电动车：哪一段产业链获得主要利润和现金流？：哪些信息会支撑或反证当前判断？：当前只能形成研究假设，尚不能输出强判断。",
+        "source_balance": "证据 0 / 研报 0 / 消息 0 / 观点 0；关系结构 0 支撑 / 0 反证 / 0 线索。",
+        "supporting_evidence": []
+      },
+      "question": "智能电动车：哪一段产业链获得主要利润和现金流？：哪些信息会支撑或反证当前判断？",
+      "rollup_to_parent": "智能电动车：哪一段产业链获得主要利润和现金流？：哪些信息会支撑或反证当前判断？：当前只能形成研究假设，尚不能输出强判断。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：哪一段产业链获得主要利润和现金流？：哪些信息会支撑或反证当前判断？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。"
+      }
+    },
+    {
+      "current_answer": "智能电动车：供应商、渠道、客户和监管如何分配经济性？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。；智能电动车：供应商、渠道、客户和监管如何分配经济性？：哪些信息会支撑或反证当前判断？：当前只能形成研究假设，尚不能输出强判断。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.value_chain.bargaining_power",
+      "level": 2,
+      "metadata": {
+        "information_focus": {},
+        "planner_rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+        "should_collect_information": false,
+        "should_drill_down": true,
+        "terminal_reason": ""
+      },
+      "next_question_ids": [
+        "l1.value_chain.bargaining_power.evidence_map",
+        "l1.value_chain.bargaining_power.disconfirming_test"
+      ],
+      "parent_id": "l1.value_chain",
+      "professional_answer": {
+        "answer": "当前还不能回答“智能电动车：供应商、渠道、客户和监管如何分配经济性？”。该问题缺少可核验的信息，不能向上层报告输出判断。",
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：供应商、渠道、客户和监管如何分配经济性？”的证据、研报、消息、观点。"
+        ],
+        "inferences": [
+          "“智能电动车：供应商、渠道、客户和监管如何分配经济性？”还不能上抛结论，必须先补来源。"
+        ],
+        "judgment": "未形成判断。",
+        "next_data": [
+          "补充证据来源",
+          "补充研报来源",
+          "补充消息来源",
+          "补充观点来源"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "“智能电动车：供应商、渠道、客户和监管如何分配经济性？”尚未形成可上抛结论。",
+        "source_balance": "信息结构：证据 0 / 研报 0 / 消息 0 / 观点 0；立场结构：支撑 0 / 反证 0 / 线索 0。",
+        "supporting_evidence": []
+      },
+      "question": "智能电动车：供应商、渠道、客户和监管如何分配经济性？",
+      "rollup_to_parent": "智能电动车：供应商、渠道、客户和监管如何分配经济性？：已由 2 个子问题形成初步收敛。",
+      "status": "needs_data",
+      "synthesis": {
+        "confidence": "low",
+        "facts": [
+          "智能电动车：供应商、渠道、客户和监管如何分配经济性？：这个问题最需要哪些事实证据直接回答？：专业回答：围绕“智能电动车：供应商、渠道、客户和监管如何分配经济性？：这个问题最需要哪些事实证据直接回答？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报…",
+          "智能电动车：供应商、渠道、客户和监管如何分配经济性？：哪些信息会支撑或反证当前判断？：专业回答：围绕“智能电动车：供应商、渠道、客户和监管如何分配经济性？：哪些信息会支撑或反证当前判断？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主…"
+        ],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：供应商、渠道、客户和监管如何分配经济性？”的证据、研报、消息、观点。"
+        ],
+        "inferences": [
+          "“智能电动车：供应商、渠道、客户和监管如何分配经济性？”还不能上抛结论，必须先补来源。"
+        ],
+        "judgment": "智能电动车：供应商、渠道、客户和监管如何分配经济性？：已由 2 个子问题形成初步收敛。"
+      }
+    },
+    {
+      "current_answer": "专业回答：围绕“智能电动车：供应商、渠道、客户和监管如何分配经济性？：这个问题最需要哪些事实证据直接回答？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“智能电动车：供应商、渠道、客户和监管如何分配经济性？：这个问题最需要哪些事实证据直接回答？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.value_chain.bargaining_power.evidence_map",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "优先补公告、年报、监管文件、官方数据或可验证事实。",
+          "node_id": "l1.value_chain.bargaining_power.evidence_map",
+          "parent_id": "l1.value_chain.bargaining_power",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：供应商、渠道、客户和监管如何分配经济性？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "智能电动车 智能电动车：供应商、渠道、客户和监管如何分配经济性？：这个问题最需要哪些事实证据直接回答？ 公告 年报 官方 数据 事实",
+          "status": "missing"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补公开消息，但只作为线索，不直接强化结论。",
+          "node_id": "l1.value_chain.bargaining_power.evidence_map",
+          "parent_id": "l1.value_chain.bargaining_power",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：供应商、渠道、客户和监管如何分配经济性？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "智能电动车 智能电动车：供应商、渠道、客户和监管如何分配经济性？：这个问题最需要哪些事实证据直接回答？ 新闻 消息 进展 未证实",
+          "status": "missing"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.value_chain.bargaining_power.evidence_map",
+          "parent_id": "l1.value_chain.bargaining_power",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：供应商、渠道、客户和监管如何分配经济性？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "智能电动车 智能电动车：供应商、渠道、客户和监管如何分配经济性？：这个问题最需要哪些事实证据直接回答？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补商业研报、卖方报告、行业研究和结构化第三方数据。",
+          "node_id": "l1.value_chain.bargaining_power.evidence_map",
+          "parent_id": "l1.value_chain.bargaining_power",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：供应商、渠道、客户和监管如何分配经济性？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "智能电动车 智能电动车：供应商、渠道、客户和监管如何分配经济性？：这个问题最需要哪些事实证据直接回答？ 研报 深度报告 行业研究",
+          "status": "missing"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "智能电动车与“智能电动车：供应商、渠道、客户和监管如何分配经济性？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“智能电动车：供应商、渠道、客户和监管如何分配经济性？”的线索。",
+          "opinion": "专家、产业人士或投资者对“智能电动车：供应商、渠道、客户和监管如何分配经济性？”的机制解释和反证提醒。",
+          "research_report": "第三方对智能电动车中“智能电动车：供应商、渠道、客户和监管如何分配经济性？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-22T07:33:38.474555+00:00",
+          "source": "deterministic_batch_synthesis"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.value_chain.bargaining_power",
+      "professional_answer": {
+        "answer": "专业回答：围绕“智能电动车：供应商、渠道、客户和监管如何分配经济性？：这个问题最需要哪些事实证据直接回答？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“智能电动车：供应商、渠道、客户和监管如何分配经济性？：这个问题最需要哪些事实证据直接回答？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：供应商、渠道、客户和监管如何分配经济性？：这个问题最需要哪些事实证据直接回答？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。",
+        "next_data": [
+          "围绕“智能电动车：供应商、渠道、客户和监管如何分配经济性？：这个问题最需要哪些事实证据直接回答？”补充公司公告、财报、监管文件或官方数据。",
+          "补充覆盖“智能电动车：供应商、渠道、客户和监管如何分配经济性？：这个问题最需要哪些事实证据直接回答？”的卖方深度、行业专题或第三方数据库。",
+          "围绕缺口补充数据：需要补充能直接回答“智能电动车：供应商、渠道、客户和监管如何分配经济性？：这个问题最需要哪些事实证据直接回答？”的证据、研报、消息、观点。",
+          "围绕缺口补充数据：缺少证据类信息，当前结论不能完整闭环。"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "智能电动车：供应商、渠道、客户和监管如何分配经济性？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。",
+        "source_balance": "证据 0 / 研报 0 / 消息 0 / 观点 0；关系结构 0 支撑 / 0 反证 / 0 线索。",
+        "supporting_evidence": []
+      },
+      "question": "智能电动车：供应商、渠道、客户和监管如何分配经济性？：这个问题最需要哪些事实证据直接回答？",
+      "rollup_to_parent": "智能电动车：供应商、渠道、客户和监管如何分配经济性？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：供应商、渠道、客户和监管如何分配经济性？：这个问题最需要哪些事实证据直接回答？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。"
+      }
+    },
+    {
+      "current_answer": "专业回答：围绕“智能电动车：供应商、渠道、客户和监管如何分配经济性？：哪些信息会支撑或反证当前判断？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“智能电动车：供应商、渠道、客户和监管如何分配经济性？：哪些信息会支撑或反证当前判断？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.value_chain.bargaining_power.disconfirming_test",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "优先补公告、年报、监管文件、官方数据或可验证事实。",
+          "node_id": "l1.value_chain.bargaining_power.disconfirming_test",
+          "parent_id": "l1.value_chain.bargaining_power",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：供应商、渠道、客户和监管如何分配经济性？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "智能电动车 智能电动车：供应商、渠道、客户和监管如何分配经济性？：哪些信息会支撑或反证当前判断？ 公告 年报 官方 数据 事实",
+          "status": "missing"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补公开消息，但只作为线索，不直接强化结论。",
+          "node_id": "l1.value_chain.bargaining_power.disconfirming_test",
+          "parent_id": "l1.value_chain.bargaining_power",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：供应商、渠道、客户和监管如何分配经济性？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "智能电动车 智能电动车：供应商、渠道、客户和监管如何分配经济性？：哪些信息会支撑或反证当前判断？ 新闻 消息 进展 未证实",
+          "status": "missing"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.value_chain.bargaining_power.disconfirming_test",
+          "parent_id": "l1.value_chain.bargaining_power",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：供应商、渠道、客户和监管如何分配经济性？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "智能电动车 智能电动车：供应商、渠道、客户和监管如何分配经济性？：哪些信息会支撑或反证当前判断？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补商业研报、卖方报告、行业研究和结构化第三方数据。",
+          "node_id": "l1.value_chain.bargaining_power.disconfirming_test",
+          "parent_id": "l1.value_chain.bargaining_power",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：供应商、渠道、客户和监管如何分配经济性？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "智能电动车 智能电动车：供应商、渠道、客户和监管如何分配经济性？：哪些信息会支撑或反证当前判断？ 研报 深度报告 行业研究",
+          "status": "missing"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "智能电动车与“智能电动车：供应商、渠道、客户和监管如何分配经济性？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“智能电动车：供应商、渠道、客户和监管如何分配经济性？”的线索。",
+          "opinion": "专家、产业人士或投资者对“智能电动车：供应商、渠道、客户和监管如何分配经济性？”的机制解释和反证提醒。",
+          "research_report": "第三方对智能电动车中“智能电动车：供应商、渠道、客户和监管如何分配经济性？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-22T07:33:38.474560+00:00",
+          "source": "deterministic_batch_synthesis"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.value_chain.bargaining_power",
+      "professional_answer": {
+        "answer": "专业回答：围绕“智能电动车：供应商、渠道、客户和监管如何分配经济性？：哪些信息会支撑或反证当前判断？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“智能电动车：供应商、渠道、客户和监管如何分配经济性？：哪些信息会支撑或反证当前判断？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：供应商、渠道、客户和监管如何分配经济性？：哪些信息会支撑或反证当前判断？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。",
+        "next_data": [
+          "围绕“智能电动车：供应商、渠道、客户和监管如何分配经济性？：哪些信息会支撑或反证当前判断？”补充公司公告、财报、监管文件或官方数据。",
+          "补充覆盖“智能电动车：供应商、渠道、客户和监管如何分配经济性？：哪些信息会支撑或反证当前判断？”的卖方深度、行业专题或第三方数据库。",
+          "围绕缺口补充数据：需要补充能直接回答“智能电动车：供应商、渠道、客户和监管如何分配经济性？：哪些信息会支撑或反证当前判断？”的证据、研报、消息、观点。",
+          "围绕缺口补充数据：缺少证据类信息，当前结论不能完整闭环。"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "智能电动车：供应商、渠道、客户和监管如何分配经济性？：哪些信息会支撑或反证当前判断？：当前只能形成研究假设，尚不能输出强判断。",
+        "source_balance": "证据 0 / 研报 0 / 消息 0 / 观点 0；关系结构 0 支撑 / 0 反证 / 0 线索。",
+        "supporting_evidence": []
+      },
+      "question": "智能电动车：供应商、渠道、客户和监管如何分配经济性？：哪些信息会支撑或反证当前判断？",
+      "rollup_to_parent": "智能电动车：供应商、渠道、客户和监管如何分配经济性？：哪些信息会支撑或反证当前判断？：当前只能形成研究假设，尚不能输出强判断。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：供应商、渠道、客户和监管如何分配经济性？：哪些信息会支撑或反证当前判断？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。"
+      }
+    },
+    {
+      "current_answer": "智能电动车：行业集中度、进入壁垒和替代品压力如何？：已由 2 个子问题形成初步收敛。；智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：已由 2 个子问题形成初步收敛。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.competition",
+      "level": 1,
+      "metadata": {
+        "information_focus": {},
+        "planner_rationale": "继续拆竞争、战略或情景，识别结构性变化和可验证假设。",
+        "should_collect_information": false,
+        "should_drill_down": true,
+        "terminal_reason": ""
+      },
+      "next_question_ids": [
+        "l1.competition.structure",
+        "l1.competition.price_competition"
+      ],
+      "parent_id": "meta.root",
+      "professional_answer": {
+        "answer": "当前还不能回答“智能电动车竞争格局会改善，还是被价格战和产能扩张稀释？”。该问题缺少可核验的信息，不能向上层报告输出判断。",
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车竞争格局会改善，还是被价格战和产能扩张稀释？”的证据、研报、消息、观点。"
+        ],
+        "inferences": [
+          "“智能电动车竞争格局会改善，还是被价格战和产能扩张稀释？”还不能上抛结论，必须先补来源。"
+        ],
+        "judgment": "未形成判断。",
+        "next_data": [
+          "补充证据来源",
+          "补充研报来源",
+          "补充消息来源",
+          "补充观点来源"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "“智能电动车竞争格局会改善，还是被价格战和产能扩张稀释？”尚未形成可上抛结论。",
+        "source_balance": "信息结构：证据 0 / 研报 0 / 消息 0 / 观点 0；立场结构：支撑 0 / 反证 0 / 线索 0。",
+        "supporting_evidence": []
+      },
+      "question": "智能电动车竞争格局会改善，还是被价格战和产能扩张稀释？",
+      "rollup_to_parent": "智能电动车竞争格局会改善，还是被价格战和产能扩张稀释？：已由 2 个子问题形成初步收敛。",
+      "status": "needs_data",
+      "synthesis": {
+        "confidence": "low",
+        "facts": [
+          "智能电动车：行业集中度、进入壁垒和替代品压力如何？：智能电动车：行业集中度、进入壁垒和替代品压力如何？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。；智能电动车：行业集中度、进入壁垒和替代品压力如何？：哪些信息会支撑…",
+          "智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。；智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：哪…"
+        ],
+        "gaps": [
+          "需要补充能直接回答“智能电动车竞争格局会改善，还是被价格战和产能扩张稀释？”的证据、研报、消息、观点。"
+        ],
+        "inferences": [
+          "“智能电动车竞争格局会改善，还是被价格战和产能扩张稀释？”还不能上抛结论，必须先补来源。"
+        ],
+        "judgment": "智能电动车竞争格局会改善，还是被价格战和产能扩张稀释？：已由 2 个子问题形成初步收敛。"
+      }
+    },
+    {
+      "current_answer": "智能电动车：行业集中度、进入壁垒和替代品压力如何？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。；智能电动车：行业集中度、进入壁垒和替代品压力如何？：哪些信息会支撑或反证当前判断？：当前只能形成研究假设，尚不能输出强判断。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.competition.structure",
+      "level": 2,
+      "metadata": {
+        "information_focus": {},
+        "planner_rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+        "should_collect_information": false,
+        "should_drill_down": true,
+        "terminal_reason": ""
+      },
+      "next_question_ids": [
+        "l1.competition.structure.evidence_map",
+        "l1.competition.structure.disconfirming_test"
+      ],
+      "parent_id": "l1.competition",
+      "professional_answer": {
+        "answer": "当前还不能回答“智能电动车：行业集中度、进入壁垒和替代品压力如何？”。该问题缺少可核验的信息，不能向上层报告输出判断。",
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：行业集中度、进入壁垒和替代品压力如何？”的证据、研报、消息、观点。"
+        ],
+        "inferences": [
+          "“智能电动车：行业集中度、进入壁垒和替代品压力如何？”还不能上抛结论，必须先补来源。"
+        ],
+        "judgment": "未形成判断。",
+        "next_data": [
+          "补充证据来源",
+          "补充研报来源",
+          "补充消息来源",
+          "补充观点来源"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "“智能电动车：行业集中度、进入壁垒和替代品压力如何？”尚未形成可上抛结论。",
+        "source_balance": "信息结构：证据 0 / 研报 0 / 消息 0 / 观点 0；立场结构：支撑 0 / 反证 0 / 线索 0。",
+        "supporting_evidence": []
+      },
+      "question": "智能电动车：行业集中度、进入壁垒和替代品压力如何？",
+      "rollup_to_parent": "智能电动车：行业集中度、进入壁垒和替代品压力如何？：已由 2 个子问题形成初步收敛。",
+      "status": "needs_data",
+      "synthesis": {
+        "confidence": "low",
+        "facts": [
+          "智能电动车：行业集中度、进入壁垒和替代品压力如何？：这个问题最需要哪些事实证据直接回答？：专业回答：围绕“智能电动车：行业集中度、进入壁垒和替代品压力如何？：这个问题最需要哪些事实证据直接回答？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作…",
+          "智能电动车：行业集中度、进入壁垒和替代品压力如何？：哪些信息会支撑或反证当前判断？：专业回答：围绕“智能电动车：行业集中度、进入壁垒和替代品压力如何？：哪些信息会支撑或反证当前判断？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支…"
+        ],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：行业集中度、进入壁垒和替代品压力如何？”的证据、研报、消息、观点。"
+        ],
+        "inferences": [
+          "“智能电动车：行业集中度、进入壁垒和替代品压力如何？”还不能上抛结论，必须先补来源。"
+        ],
+        "judgment": "智能电动车：行业集中度、进入壁垒和替代品压力如何？：已由 2 个子问题形成初步收敛。"
+      }
+    },
+    {
+      "current_answer": "专业回答：围绕“智能电动车：行业集中度、进入壁垒和替代品压力如何？：这个问题最需要哪些事实证据直接回答？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“智能电动车：行业集中度、进入壁垒和替代品压力如何？：这个问题最需要哪些事实证据直接回答？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.competition.structure.evidence_map",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "优先补公告、年报、监管文件、官方数据或可验证事实。",
+          "node_id": "l1.competition.structure.evidence_map",
+          "parent_id": "l1.competition.structure",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：行业集中度、进入壁垒和替代品压力如何？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "智能电动车 智能电动车：行业集中度、进入壁垒和替代品压力如何？：这个问题最需要哪些事实证据直接回答？ 公告 年报 官方 数据 事实",
+          "status": "missing"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补公开消息，但只作为线索，不直接强化结论。",
+          "node_id": "l1.competition.structure.evidence_map",
+          "parent_id": "l1.competition.structure",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：行业集中度、进入壁垒和替代品压力如何？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "智能电动车 智能电动车：行业集中度、进入壁垒和替代品压力如何？：这个问题最需要哪些事实证据直接回答？ 新闻 消息 进展 未证实",
+          "status": "missing"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.competition.structure.evidence_map",
+          "parent_id": "l1.competition.structure",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：行业集中度、进入壁垒和替代品压力如何？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "智能电动车 智能电动车：行业集中度、进入壁垒和替代品压力如何？：这个问题最需要哪些事实证据直接回答？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补商业研报、卖方报告、行业研究和结构化第三方数据。",
+          "node_id": "l1.competition.structure.evidence_map",
+          "parent_id": "l1.competition.structure",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：行业集中度、进入壁垒和替代品压力如何？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "智能电动车 智能电动车：行业集中度、进入壁垒和替代品压力如何？：这个问题最需要哪些事实证据直接回答？ 研报 深度报告 行业研究",
+          "status": "missing"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "智能电动车与“智能电动车：行业集中度、进入壁垒和替代品压力如何？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“智能电动车：行业集中度、进入壁垒和替代品压力如何？”的线索。",
+          "opinion": "专家、产业人士或投资者对“智能电动车：行业集中度、进入壁垒和替代品压力如何？”的机制解释和反证提醒。",
+          "research_report": "第三方对智能电动车中“智能电动车：行业集中度、进入壁垒和替代品压力如何？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-22T07:33:38.474564+00:00",
+          "source": "deterministic_batch_synthesis"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.competition.structure",
+      "professional_answer": {
+        "answer": "专业回答：围绕“智能电动车：行业集中度、进入壁垒和替代品压力如何？：这个问题最需要哪些事实证据直接回答？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“智能电动车：行业集中度、进入壁垒和替代品压力如何？：这个问题最需要哪些事实证据直接回答？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：行业集中度、进入壁垒和替代品压力如何？：这个问题最需要哪些事实证据直接回答？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。",
+        "next_data": [
+          "围绕“智能电动车：行业集中度、进入壁垒和替代品压力如何？：这个问题最需要哪些事实证据直接回答？”补充公司公告、财报、监管文件或官方数据。",
+          "补充覆盖“智能电动车：行业集中度、进入壁垒和替代品压力如何？：这个问题最需要哪些事实证据直接回答？”的卖方深度、行业专题或第三方数据库。",
+          "围绕缺口补充数据：需要补充能直接回答“智能电动车：行业集中度、进入壁垒和替代品压力如何？：这个问题最需要哪些事实证据直接回答？”的证据、研报、消息、观点。",
+          "围绕缺口补充数据：缺少证据类信息，当前结论不能完整闭环。"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "智能电动车：行业集中度、进入壁垒和替代品压力如何？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。",
+        "source_balance": "证据 0 / 研报 0 / 消息 0 / 观点 0；关系结构 0 支撑 / 0 反证 / 0 线索。",
+        "supporting_evidence": []
+      },
+      "question": "智能电动车：行业集中度、进入壁垒和替代品压力如何？：这个问题最需要哪些事实证据直接回答？",
+      "rollup_to_parent": "智能电动车：行业集中度、进入壁垒和替代品压力如何？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：行业集中度、进入壁垒和替代品压力如何？：这个问题最需要哪些事实证据直接回答？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。"
+      }
+    },
+    {
+      "current_answer": "专业回答：围绕“智能电动车：行业集中度、进入壁垒和替代品压力如何？：哪些信息会支撑或反证当前判断？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“智能电动车：行业集中度、进入壁垒和替代品压力如何？：哪些信息会支撑或反证当前判断？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.competition.structure.disconfirming_test",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "优先补公告、年报、监管文件、官方数据或可验证事实。",
+          "node_id": "l1.competition.structure.disconfirming_test",
+          "parent_id": "l1.competition.structure",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：行业集中度、进入壁垒和替代品压力如何？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "智能电动车 智能电动车：行业集中度、进入壁垒和替代品压力如何？：哪些信息会支撑或反证当前判断？ 公告 年报 官方 数据 事实",
+          "status": "missing"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补公开消息，但只作为线索，不直接强化结论。",
+          "node_id": "l1.competition.structure.disconfirming_test",
+          "parent_id": "l1.competition.structure",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：行业集中度、进入壁垒和替代品压力如何？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "智能电动车 智能电动车：行业集中度、进入壁垒和替代品压力如何？：哪些信息会支撑或反证当前判断？ 新闻 消息 进展 未证实",
+          "status": "missing"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.competition.structure.disconfirming_test",
+          "parent_id": "l1.competition.structure",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：行业集中度、进入壁垒和替代品压力如何？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "智能电动车 智能电动车：行业集中度、进入壁垒和替代品压力如何？：哪些信息会支撑或反证当前判断？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补商业研报、卖方报告、行业研究和结构化第三方数据。",
+          "node_id": "l1.competition.structure.disconfirming_test",
+          "parent_id": "l1.competition.structure",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：行业集中度、进入壁垒和替代品压力如何？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "智能电动车 智能电动车：行业集中度、进入壁垒和替代品压力如何？：哪些信息会支撑或反证当前判断？ 研报 深度报告 行业研究",
+          "status": "missing"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "智能电动车与“智能电动车：行业集中度、进入壁垒和替代品压力如何？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“智能电动车：行业集中度、进入壁垒和替代品压力如何？”的线索。",
+          "opinion": "专家、产业人士或投资者对“智能电动车：行业集中度、进入壁垒和替代品压力如何？”的机制解释和反证提醒。",
+          "research_report": "第三方对智能电动车中“智能电动车：行业集中度、进入壁垒和替代品压力如何？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-22T07:33:38.474569+00:00",
+          "source": "deterministic_batch_synthesis"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.competition.structure",
+      "professional_answer": {
+        "answer": "专业回答：围绕“智能电动车：行业集中度、进入壁垒和替代品压力如何？：哪些信息会支撑或反证当前判断？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“智能电动车：行业集中度、进入壁垒和替代品压力如何？：哪些信息会支撑或反证当前判断？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：行业集中度、进入壁垒和替代品压力如何？：哪些信息会支撑或反证当前判断？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。",
+        "next_data": [
+          "围绕“智能电动车：行业集中度、进入壁垒和替代品压力如何？：哪些信息会支撑或反证当前判断？”补充公司公告、财报、监管文件或官方数据。",
+          "补充覆盖“智能电动车：行业集中度、进入壁垒和替代品压力如何？：哪些信息会支撑或反证当前判断？”的卖方深度、行业专题或第三方数据库。",
+          "围绕缺口补充数据：需要补充能直接回答“智能电动车：行业集中度、进入壁垒和替代品压力如何？：哪些信息会支撑或反证当前判断？”的证据、研报、消息、观点。",
+          "围绕缺口补充数据：缺少证据类信息，当前结论不能完整闭环。"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "智能电动车：行业集中度、进入壁垒和替代品压力如何？：哪些信息会支撑或反证当前判断？：当前只能形成研究假设，尚不能输出强判断。",
+        "source_balance": "证据 0 / 研报 0 / 消息 0 / 观点 0；关系结构 0 支撑 / 0 反证 / 0 线索。",
+        "supporting_evidence": []
+      },
+      "question": "智能电动车：行业集中度、进入壁垒和替代品压力如何？：哪些信息会支撑或反证当前判断？",
+      "rollup_to_parent": "智能电动车：行业集中度、进入壁垒和替代品压力如何？：哪些信息会支撑或反证当前判断？：当前只能形成研究假设，尚不能输出强判断。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：行业集中度、进入壁垒和替代品压力如何？：哪些信息会支撑或反证当前判断？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。"
+      }
+    },
+    {
+      "current_answer": "智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。；智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：哪些信息会支撑或反证当前判断？：当前只能形成研究假设，尚不能输出强判断。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.competition.price_competition",
+      "level": 2,
+      "metadata": {
+        "information_focus": {},
+        "planner_rationale": "继续拆竞争、战略或情景，识别结构性变化和可验证假设。",
+        "should_collect_information": false,
+        "should_drill_down": true,
+        "terminal_reason": ""
+      },
+      "next_question_ids": [
+        "l1.competition.price_competition.evidence_map",
+        "l1.competition.price_competition.disconfirming_test"
+      ],
+      "parent_id": "l1.competition",
+      "professional_answer": {
+        "answer": "当前还不能回答“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？”。该问题缺少可核验的信息，不能向上层报告输出判断。",
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？”的证据、研报、消息、观点。"
+        ],
+        "inferences": [
+          "“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？”还不能上抛结论，必须先补来源。"
+        ],
+        "judgment": "未形成判断。",
+        "next_data": [
+          "补充证据来源",
+          "补充研报来源",
+          "补充消息来源",
+          "补充观点来源"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？”尚未形成可上抛结论。",
+        "source_balance": "信息结构：证据 0 / 研报 0 / 消息 0 / 观点 0；立场结构：支撑 0 / 反证 0 / 线索 0。",
+        "supporting_evidence": []
+      },
+      "question": "智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？",
+      "rollup_to_parent": "智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：已由 2 个子问题形成初步收敛。",
+      "status": "needs_data",
+      "synthesis": {
+        "confidence": "low",
+        "facts": [
+          "智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：这个问题最需要哪些事实证据直接回答？：专业回答：围绕“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：这个问题最需要哪些事实证据直接回答？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠…",
+          "智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：哪些信息会支撑或反证当前判断？：专业回答：围绕“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：哪些信息会支撑或反证当前判断？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作…"
+        ],
+        "gaps": [
+          "需要补充能直接回答“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？”的证据、研报、消息、观点。"
+        ],
+        "inferences": [
+          "“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？”还不能上抛结论，必须先补来源。"
+        ],
+        "judgment": "智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：已由 2 个子问题形成初步收敛。"
+      }
+    },
+    {
+      "current_answer": "专业回答：围绕“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：这个问题最需要哪些事实证据直接回答？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：这个问题最需要哪些事实证据直接回答？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.competition.price_competition.evidence_map",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "优先补公告、年报、监管文件、官方数据或可验证事实。",
+          "node_id": "l1.competition.price_competition.evidence_map",
+          "parent_id": "l1.competition.price_competition",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "智能电动车 智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：这个问题最需要哪些事实证据直接回答？ 公告 年报 官方 数据 事实",
+          "status": "missing"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补公开消息，但只作为线索，不直接强化结论。",
+          "node_id": "l1.competition.price_competition.evidence_map",
+          "parent_id": "l1.competition.price_competition",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "智能电动车 智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：这个问题最需要哪些事实证据直接回答？ 新闻 消息 进展 未证实",
+          "status": "missing"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.competition.price_competition.evidence_map",
+          "parent_id": "l1.competition.price_competition",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "智能电动车 智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：这个问题最需要哪些事实证据直接回答？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补商业研报、卖方报告、行业研究和结构化第三方数据。",
+          "node_id": "l1.competition.price_competition.evidence_map",
+          "parent_id": "l1.competition.price_competition",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "智能电动车 智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：这个问题最需要哪些事实证据直接回答？ 研报 深度报告 行业研究",
+          "status": "missing"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "智能电动车与“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？”的线索。",
+          "opinion": "专家、产业人士或投资者对“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？”的机制解释和反证提醒。",
+          "research_report": "第三方对智能电动车中“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-22T07:33:38.474573+00:00",
+          "source": "deterministic_batch_synthesis"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.competition.price_competition",
+      "professional_answer": {
+        "answer": "专业回答：围绕“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：这个问题最需要哪些事实证据直接回答？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：这个问题最需要哪些事实证据直接回答？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：这个问题最需要哪些事实证据直接回答？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。",
+        "next_data": [
+          "围绕“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：这个问题最需要哪些事实证据直接回答？”补充公司公告、财报、监管文件或官方数据。",
+          "补充覆盖“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：这个问题最需要哪些事实证据直接回答？”的卖方深度、行业专题或第三方数据库。",
+          "围绕缺口补充数据：需要补充能直接回答“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：这个问题最需要哪些事实证据直接回答？”的证据、研报、消息、观点。",
+          "围绕缺口补充数据：缺少证据类信息，当前结论不能完整闭环。"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。",
+        "source_balance": "证据 0 / 研报 0 / 消息 0 / 观点 0；关系结构 0 支撑 / 0 反证 / 0 线索。",
+        "supporting_evidence": []
+      },
+      "question": "智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：这个问题最需要哪些事实证据直接回答？",
+      "rollup_to_parent": "智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：这个问题最需要哪些事实证据直接回答？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。"
+      }
+    },
+    {
+      "current_answer": "专业回答：围绕“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：哪些信息会支撑或反证当前判断？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：哪些信息会支撑或反证当前判断？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.competition.price_competition.disconfirming_test",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "优先补公告、年报、监管文件、官方数据或可验证事实。",
+          "node_id": "l1.competition.price_competition.disconfirming_test",
+          "parent_id": "l1.competition.price_competition",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "智能电动车 智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：哪些信息会支撑或反证当前判断？ 公告 年报 官方 数据 事实",
+          "status": "missing"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补公开消息，但只作为线索，不直接强化结论。",
+          "node_id": "l1.competition.price_competition.disconfirming_test",
+          "parent_id": "l1.competition.price_competition",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "智能电动车 智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：哪些信息会支撑或反证当前判断？ 新闻 消息 进展 未证实",
+          "status": "missing"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.competition.price_competition.disconfirming_test",
+          "parent_id": "l1.competition.price_competition",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "智能电动车 智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：哪些信息会支撑或反证当前判断？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补商业研报、卖方报告、行业研究和结构化第三方数据。",
+          "node_id": "l1.competition.price_competition.disconfirming_test",
+          "parent_id": "l1.competition.price_competition",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "智能电动车 智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：哪些信息会支撑或反证当前判断？ 研报 深度报告 行业研究",
+          "status": "missing"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "智能电动车与“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？”的线索。",
+          "opinion": "专家、产业人士或投资者对“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？”的机制解释和反证提醒。",
+          "research_report": "第三方对智能电动车中“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-22T07:33:38.474577+00:00",
+          "source": "deterministic_batch_synthesis"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.competition.price_competition",
+      "professional_answer": {
+        "answer": "专业回答：围绕“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：哪些信息会支撑或反证当前判断？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：哪些信息会支撑或反证当前判断？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：哪些信息会支撑或反证当前判断？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。",
+        "next_data": [
+          "围绕“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：哪些信息会支撑或反证当前判断？”补充公司公告、财报、监管文件或官方数据。",
+          "补充覆盖“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：哪些信息会支撑或反证当前判断？”的卖方深度、行业专题或第三方数据库。",
+          "围绕缺口补充数据：需要补充能直接回答“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：哪些信息会支撑或反证当前判断？”的证据、研报、消息、观点。",
+          "围绕缺口补充数据：缺少证据类信息，当前结论不能完整闭环。"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：哪些信息会支撑或反证当前判断？：当前只能形成研究假设，尚不能输出强判断。",
+        "source_balance": "证据 0 / 研报 0 / 消息 0 / 观点 0；关系结构 0 支撑 / 0 反证 / 0 线索。",
+        "supporting_evidence": []
+      },
+      "question": "智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：哪些信息会支撑或反证当前判断？",
+      "rollup_to_parent": "智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：哪些信息会支撑或反证当前判断？：当前只能形成研究假设，尚不能输出强判断。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：哪些信息会支撑或反证当前判断？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。"
+      }
+    },
+    {
+      "current_answer": "AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：已由 2 个子问题形成初步收敛。；智能电动车：什么信号会反证当前行业结论？：已由 2 个子问题形成初步收敛。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.risk_trigger",
+      "level": 1,
+      "metadata": {
+        "information_focus": {},
+        "planner_rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+        "should_collect_information": false,
+        "should_drill_down": true,
+        "terminal_reason": ""
+      },
+      "next_question_ids": [
+        "l1.risk_trigger.policy_technology",
+        "l1.risk_trigger.disconfirming_signal"
+      ],
+      "parent_id": "meta.root",
+      "professional_answer": {
+        "answer": "当前还不能回答“哪些政策、技术、成本或反证信号会重塑智能电动车判断？”。该问题缺少可核验的信息，不能向上层报告输出判断。",
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“哪些政策、技术、成本或反证信号会重塑智能电动车判断？”的证据、研报、消息、观点。"
+        ],
+        "inferences": [
+          "“哪些政策、技术、成本或反证信号会重塑智能电动车判断？”还不能上抛结论，必须先补来源。"
+        ],
+        "judgment": "未形成判断。",
+        "next_data": [
+          "补充证据来源",
+          "补充研报来源",
+          "补充消息来源",
+          "补充观点来源"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "“哪些政策、技术、成本或反证信号会重塑智能电动车判断？”尚未形成可上抛结论。",
+        "source_balance": "信息结构：证据 0 / 研报 0 / 消息 0 / 观点 0；立场结构：支撑 0 / 反证 0 / 线索 0。",
+        "supporting_evidence": []
+      },
+      "question": "哪些政策、技术、成本或反证信号会重塑智能电动车判断？",
+      "rollup_to_parent": "哪些政策、技术、成本或反证信号会重塑智能电动车判断？：已由 2 个子问题形成初步收敛。",
+      "status": "needs_data",
+      "synthesis": {
+        "confidence": "low",
+        "facts": [
+          "AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。；AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：哪…",
+          "智能电动车：什么信号会反证当前行业结论？：智能电动车：什么信号会反证当前行业结论？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。；智能电动车：什么信号会反证当前行业结论？：哪些信息会支撑或反证当前判断？：当…"
+        ],
+        "gaps": [
+          "需要补充能直接回答“哪些政策、技术、成本或反证信号会重塑智能电动车判断？”的证据、研报、消息、观点。"
+        ],
+        "inferences": [
+          "“哪些政策、技术、成本或反证信号会重塑智能电动车判断？”还不能上抛结论，必须先补来源。"
+        ],
+        "judgment": "哪些政策、技术、成本或反证信号会重塑智能电动车判断？：已由 2 个子问题形成初步收敛。"
+      }
+    },
+    {
+      "current_answer": "AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。；AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：哪些信息会支撑或反证当前判断？：当前只能形成研究假设，尚不能输出强判断。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.risk_trigger.policy_technology",
+      "level": 2,
+      "metadata": {
+        "information_focus": {},
+        "planner_rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+        "should_collect_information": false,
+        "should_drill_down": true,
+        "terminal_reason": ""
+      },
+      "next_question_ids": [
+        "l1.risk_trigger.policy_technology.evidence_map",
+        "l1.risk_trigger.policy_technology.disconfirming_test"
+      ],
+      "parent_id": "l1.risk_trigger",
+      "professional_answer": {
+        "answer": "当前还不能回答“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？”。该问题缺少可核验的信息，不能向上层报告输出判断。",
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？”的证据、研报、消息、观点。"
+        ],
+        "inferences": [
+          "“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？”还不能上抛结论，必须先补来源。"
+        ],
+        "judgment": "未形成判断。",
+        "next_data": [
+          "补充证据来源",
+          "补充研报来源",
+          "补充消息来源",
+          "补充观点来源"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？”尚未形成可上抛结论。",
+        "source_balance": "信息结构：证据 0 / 研报 0 / 消息 0 / 观点 0；立场结构：支撑 0 / 反证 0 / 线索 0。",
+        "supporting_evidence": []
+      },
+      "question": "AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？",
+      "rollup_to_parent": "AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：已由 2 个子问题形成初步收敛。",
+      "status": "needs_data",
+      "synthesis": {
+        "confidence": "low",
+        "facts": [
+          "AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：这个问题最需要哪些事实证据直接回答？：专业回答：围绕“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：这个问题最需要哪些事实证据直接回答？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠…",
+          "AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：哪些信息会支撑或反证当前判断？：专业回答：围绕“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：哪些信息会支撑或反证当前判断？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作…"
+        ],
+        "gaps": [
+          "需要补充能直接回答“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？”的证据、研报、消息、观点。"
+        ],
+        "inferences": [
+          "“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？”还不能上抛结论，必须先补来源。"
+        ],
+        "judgment": "AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：已由 2 个子问题形成初步收敛。"
+      }
+    },
+    {
+      "current_answer": "专业回答：围绕“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：这个问题最需要哪些事实证据直接回答？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：这个问题最需要哪些事实证据直接回答？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.risk_trigger.policy_technology.evidence_map",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "优先补公告、年报、监管文件、官方数据或可验证事实。",
+          "node_id": "l1.risk_trigger.policy_technology.evidence_map",
+          "parent_id": "l1.risk_trigger.policy_technology",
+          "project_id": "smart_ev_demo",
+          "question": "AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "智能电动车 AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：这个问题最需要哪些事实证据直接回答？ 公告 年报 官方 数据 事实",
+          "status": "missing"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补公开消息，但只作为线索，不直接强化结论。",
+          "node_id": "l1.risk_trigger.policy_technology.evidence_map",
+          "parent_id": "l1.risk_trigger.policy_technology",
+          "project_id": "smart_ev_demo",
+          "question": "AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "智能电动车 AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：这个问题最需要哪些事实证据直接回答？ 新闻 消息 进展 未证实",
+          "status": "missing"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.risk_trigger.policy_technology.evidence_map",
+          "parent_id": "l1.risk_trigger.policy_technology",
+          "project_id": "smart_ev_demo",
+          "question": "AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "智能电动车 AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：这个问题最需要哪些事实证据直接回答？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补商业研报、卖方报告、行业研究和结构化第三方数据。",
+          "node_id": "l1.risk_trigger.policy_technology.evidence_map",
+          "parent_id": "l1.risk_trigger.policy_technology",
+          "project_id": "smart_ev_demo",
+          "question": "AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "智能电动车 AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：这个问题最需要哪些事实证据直接回答？ 研报 深度报告 行业研究",
+          "status": "missing"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "智能电动车与“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？”的线索。",
+          "opinion": "专家、产业人士或投资者对“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？”的机制解释和反证提醒。",
+          "research_report": "第三方对智能电动车中“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-22T07:33:38.474581+00:00",
+          "source": "deterministic_batch_synthesis"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.risk_trigger.policy_technology",
+      "professional_answer": {
+        "answer": "专业回答：围绕“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：这个问题最需要哪些事实证据直接回答？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：这个问题最需要哪些事实证据直接回答？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：这个问题最需要哪些事实证据直接回答？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。",
+        "next_data": [
+          "围绕“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：这个问题最需要哪些事实证据直接回答？”补充公司公告、财报、监管文件或官方数据。",
+          "补充覆盖“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：这个问题最需要哪些事实证据直接回答？”的卖方深度、行业专题或第三方数据库。",
+          "围绕缺口补充数据：需要补充能直接回答“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：这个问题最需要哪些事实证据直接回答？”的证据、研报、消息、观点。",
+          "围绕缺口补充数据：缺少证据类信息，当前结论不能完整闭环。"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。",
+        "source_balance": "证据 0 / 研报 0 / 消息 0 / 观点 0；关系结构 0 支撑 / 0 反证 / 0 线索。",
+        "supporting_evidence": []
+      },
+      "question": "AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：这个问题最需要哪些事实证据直接回答？",
+      "rollup_to_parent": "AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：这个问题最需要哪些事实证据直接回答？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。"
+      }
+    },
+    {
+      "current_answer": "专业回答：围绕“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：哪些信息会支撑或反证当前判断？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：哪些信息会支撑或反证当前判断？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.risk_trigger.policy_technology.disconfirming_test",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "优先补公告、年报、监管文件、官方数据或可验证事实。",
+          "node_id": "l1.risk_trigger.policy_technology.disconfirming_test",
+          "parent_id": "l1.risk_trigger.policy_technology",
+          "project_id": "smart_ev_demo",
+          "question": "AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "智能电动车 AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：哪些信息会支撑或反证当前判断？ 公告 年报 官方 数据 事实",
+          "status": "missing"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补公开消息，但只作为线索，不直接强化结论。",
+          "node_id": "l1.risk_trigger.policy_technology.disconfirming_test",
+          "parent_id": "l1.risk_trigger.policy_technology",
+          "project_id": "smart_ev_demo",
+          "question": "AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "智能电动车 AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：哪些信息会支撑或反证当前判断？ 新闻 消息 进展 未证实",
+          "status": "missing"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.risk_trigger.policy_technology.disconfirming_test",
+          "parent_id": "l1.risk_trigger.policy_technology",
+          "project_id": "smart_ev_demo",
+          "question": "AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "智能电动车 AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：哪些信息会支撑或反证当前判断？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补商业研报、卖方报告、行业研究和结构化第三方数据。",
+          "node_id": "l1.risk_trigger.policy_technology.disconfirming_test",
+          "parent_id": "l1.risk_trigger.policy_technology",
+          "project_id": "smart_ev_demo",
+          "question": "AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "智能电动车 AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：哪些信息会支撑或反证当前判断？ 研报 深度报告 行业研究",
+          "status": "missing"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "智能电动车与“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？”的线索。",
+          "opinion": "专家、产业人士或投资者对“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？”的机制解释和反证提醒。",
+          "research_report": "第三方对智能电动车中“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-22T07:33:38.474586+00:00",
+          "source": "deterministic_batch_synthesis"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.risk_trigger.policy_technology",
+      "professional_answer": {
+        "answer": "专业回答：围绕“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：哪些信息会支撑或反证当前判断？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：哪些信息会支撑或反证当前判断？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：哪些信息会支撑或反证当前判断？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。",
+        "next_data": [
+          "围绕“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：哪些信息会支撑或反证当前判断？”补充公司公告、财报、监管文件或官方数据。",
+          "补充覆盖“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：哪些信息会支撑或反证当前判断？”的卖方深度、行业专题或第三方数据库。",
+          "围绕缺口补充数据：需要补充能直接回答“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：哪些信息会支撑或反证当前判断？”的证据、研报、消息、观点。",
+          "围绕缺口补充数据：缺少证据类信息，当前结论不能完整闭环。"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：哪些信息会支撑或反证当前判断？：当前只能形成研究假设，尚不能输出强判断。",
+        "source_balance": "证据 0 / 研报 0 / 消息 0 / 观点 0；关系结构 0 支撑 / 0 反证 / 0 线索。",
+        "supporting_evidence": []
+      },
+      "question": "AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：哪些信息会支撑或反证当前判断？",
+      "rollup_to_parent": "AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：哪些信息会支撑或反证当前判断？：当前只能形成研究假设，尚不能输出强判断。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：哪些信息会支撑或反证当前判断？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。"
+      }
+    },
+    {
+      "current_answer": "智能电动车：什么信号会反证当前行业结论？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。；智能电动车：什么信号会反证当前行业结论？：哪些信息会支撑或反证当前判断？：当前只能形成研究假设，尚不能输出强判断。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.risk_trigger.disconfirming_signal",
+      "level": 2,
+      "metadata": {
+        "information_focus": {},
+        "planner_rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+        "should_collect_information": false,
+        "should_drill_down": true,
+        "terminal_reason": ""
+      },
+      "next_question_ids": [
+        "l1.risk_trigger.disconfirming_signal.evidence_map",
+        "l1.risk_trigger.disconfirming_signal.disconfirming_test"
+      ],
+      "parent_id": "l1.risk_trigger",
+      "professional_answer": {
+        "answer": "当前还不能回答“智能电动车：什么信号会反证当前行业结论？”。该问题缺少可核验的信息，不能向上层报告输出判断。",
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：什么信号会反证当前行业结论？”的证据、研报、消息、观点。"
+        ],
+        "inferences": [
+          "“智能电动车：什么信号会反证当前行业结论？”还不能上抛结论，必须先补来源。"
+        ],
+        "judgment": "未形成判断。",
+        "next_data": [
+          "补充证据来源",
+          "补充研报来源",
+          "补充消息来源",
+          "补充观点来源"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "“智能电动车：什么信号会反证当前行业结论？”尚未形成可上抛结论。",
+        "source_balance": "信息结构：证据 0 / 研报 0 / 消息 0 / 观点 0；立场结构：支撑 0 / 反证 0 / 线索 0。",
+        "supporting_evidence": []
+      },
+      "question": "智能电动车：什么信号会反证当前行业结论？",
+      "rollup_to_parent": "智能电动车：什么信号会反证当前行业结论？：已由 2 个子问题形成初步收敛。",
+      "status": "needs_data",
+      "synthesis": {
+        "confidence": "low",
+        "facts": [
+          "智能电动车：什么信号会反证当前行业结论？：这个问题最需要哪些事实证据直接回答？：专业回答：围绕“智能电动车：什么信号会反证当前行业结论？：这个问题最需要哪些事实证据直接回答？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。…",
+          "智能电动车：什么信号会反证当前行业结论？：哪些信息会支撑或反证当前判断？：专业回答：围绕“智能电动车：什么信号会反证当前行业结论？：哪些信息会支撑或反证当前判断？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约…"
+        ],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：什么信号会反证当前行业结论？”的证据、研报、消息、观点。"
+        ],
+        "inferences": [
+          "“智能电动车：什么信号会反证当前行业结论？”还不能上抛结论，必须先补来源。"
+        ],
+        "judgment": "智能电动车：什么信号会反证当前行业结论？：已由 2 个子问题形成初步收敛。"
+      }
+    },
+    {
+      "current_answer": "专业回答：围绕“智能电动车：什么信号会反证当前行业结论？：这个问题最需要哪些事实证据直接回答？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“智能电动车：什么信号会反证当前行业结论？：这个问题最需要哪些事实证据直接回答？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.risk_trigger.disconfirming_signal.evidence_map",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "优先补公告、年报、监管文件、官方数据或可验证事实。",
+          "node_id": "l1.risk_trigger.disconfirming_signal.evidence_map",
+          "parent_id": "l1.risk_trigger.disconfirming_signal",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：什么信号会反证当前行业结论？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "智能电动车 智能电动车：什么信号会反证当前行业结论？：这个问题最需要哪些事实证据直接回答？ 公告 年报 官方 数据 事实",
+          "status": "missing"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补公开消息，但只作为线索，不直接强化结论。",
+          "node_id": "l1.risk_trigger.disconfirming_signal.evidence_map",
+          "parent_id": "l1.risk_trigger.disconfirming_signal",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：什么信号会反证当前行业结论？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "智能电动车 智能电动车：什么信号会反证当前行业结论？：这个问题最需要哪些事实证据直接回答？ 新闻 消息 进展 未证实",
+          "status": "missing"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.risk_trigger.disconfirming_signal.evidence_map",
+          "parent_id": "l1.risk_trigger.disconfirming_signal",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：什么信号会反证当前行业结论？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "智能电动车 智能电动车：什么信号会反证当前行业结论？：这个问题最需要哪些事实证据直接回答？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补商业研报、卖方报告、行业研究和结构化第三方数据。",
+          "node_id": "l1.risk_trigger.disconfirming_signal.evidence_map",
+          "parent_id": "l1.risk_trigger.disconfirming_signal",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：什么信号会反证当前行业结论？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "智能电动车 智能电动车：什么信号会反证当前行业结论？：这个问题最需要哪些事实证据直接回答？ 研报 深度报告 行业研究",
+          "status": "missing"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "智能电动车与“智能电动车：什么信号会反证当前行业结论？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“智能电动车：什么信号会反证当前行业结论？”的线索。",
+          "opinion": "专家、产业人士或投资者对“智能电动车：什么信号会反证当前行业结论？”的机制解释和反证提醒。",
+          "research_report": "第三方对智能电动车中“智能电动车：什么信号会反证当前行业结论？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-22T07:33:38.474590+00:00",
+          "source": "deterministic_batch_synthesis"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.risk_trigger.disconfirming_signal",
+      "professional_answer": {
+        "answer": "专业回答：围绕“智能电动车：什么信号会反证当前行业结论？：这个问题最需要哪些事实证据直接回答？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“智能电动车：什么信号会反证当前行业结论？：这个问题最需要哪些事实证据直接回答？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：什么信号会反证当前行业结论？：这个问题最需要哪些事实证据直接回答？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。",
+        "next_data": [
+          "围绕“智能电动车：什么信号会反证当前行业结论？：这个问题最需要哪些事实证据直接回答？”补充公司公告、财报、监管文件或官方数据。",
+          "补充覆盖“智能电动车：什么信号会反证当前行业结论？：这个问题最需要哪些事实证据直接回答？”的卖方深度、行业专题或第三方数据库。",
+          "围绕缺口补充数据：需要补充能直接回答“智能电动车：什么信号会反证当前行业结论？：这个问题最需要哪些事实证据直接回答？”的证据、研报、消息、观点。",
+          "围绕缺口补充数据：缺少证据类信息，当前结论不能完整闭环。"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "智能电动车：什么信号会反证当前行业结论？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。",
+        "source_balance": "证据 0 / 研报 0 / 消息 0 / 观点 0；关系结构 0 支撑 / 0 反证 / 0 线索。",
+        "supporting_evidence": []
+      },
+      "question": "智能电动车：什么信号会反证当前行业结论？：这个问题最需要哪些事实证据直接回答？",
+      "rollup_to_parent": "智能电动车：什么信号会反证当前行业结论？：这个问题最需要哪些事实证据直接回答？：当前只能形成研究假设，尚不能输出强判断。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：什么信号会反证当前行业结论？：这个问题最需要哪些事实证据直接回答？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。"
+      }
+    },
+    {
+      "current_answer": "专业回答：围绕“智能电动车：什么信号会反证当前行业结论？：哪些信息会支撑或反证当前判断？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“智能电动车：什么信号会反证当前行业结论？：哪些信息会支撑或反证当前判断？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.risk_trigger.disconfirming_signal.disconfirming_test",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "优先补公告、年报、监管文件、官方数据或可验证事实。",
+          "node_id": "l1.risk_trigger.disconfirming_signal.disconfirming_test",
+          "parent_id": "l1.risk_trigger.disconfirming_signal",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：什么信号会反证当前行业结论？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "智能电动车 智能电动车：什么信号会反证当前行业结论？：哪些信息会支撑或反证当前判断？ 公告 年报 官方 数据 事实",
+          "status": "missing"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补公开消息，但只作为线索，不直接强化结论。",
+          "node_id": "l1.risk_trigger.disconfirming_signal.disconfirming_test",
+          "parent_id": "l1.risk_trigger.disconfirming_signal",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：什么信号会反证当前行业结论？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "智能电动车 智能电动车：什么信号会反证当前行业结论？：哪些信息会支撑或反证当前判断？ 新闻 消息 进展 未证实",
+          "status": "missing"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.risk_trigger.disconfirming_signal.disconfirming_test",
+          "parent_id": "l1.risk_trigger.disconfirming_signal",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：什么信号会反证当前行业结论？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "智能电动车 智能电动车：什么信号会反证当前行业结论？：哪些信息会支撑或反证当前判断？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补商业研报、卖方报告、行业研究和结构化第三方数据。",
+          "node_id": "l1.risk_trigger.disconfirming_signal.disconfirming_test",
+          "parent_id": "l1.risk_trigger.disconfirming_signal",
+          "project_id": "smart_ev_demo",
+          "question": "智能电动车：什么信号会反证当前行业结论？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "智能电动车 智能电动车：什么信号会反证当前行业结论？：哪些信息会支撑或反证当前判断？ 研报 深度报告 行业研究",
+          "status": "missing"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "智能电动车与“智能电动车：什么信号会反证当前行业结论？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“智能电动车：什么信号会反证当前行业结论？”的线索。",
+          "opinion": "专家、产业人士或投资者对“智能电动车：什么信号会反证当前行业结论？”的机制解释和反证提醒。",
+          "research_report": "第三方对智能电动车中“智能电动车：什么信号会反证当前行业结论？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-22T07:33:38.474594+00:00",
+          "source": "deterministic_batch_synthesis"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.risk_trigger.disconfirming_signal",
+      "professional_answer": {
+        "answer": "专业回答：围绕“智能电动车：什么信号会反证当前行业结论？：哪些信息会支撑或反证当前判断？”，当前只能形成研究假设，尚不能输出强判断。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕“智能电动车：什么信号会反证当前行业结论？：哪些信息会支撑或反证当前判断？”补充公司公告、财报、监管文件或官方数据。。当前置信度为低。",
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：什么信号会反证当前行业结论？：哪些信息会支撑或反证当前判断？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。",
+        "next_data": [
+          "围绕“智能电动车：什么信号会反证当前行业结论？：哪些信息会支撑或反证当前判断？”补充公司公告、财报、监管文件或官方数据。",
+          "补充覆盖“智能电动车：什么信号会反证当前行业结论？：哪些信息会支撑或反证当前判断？”的卖方深度、行业专题或第三方数据库。",
+          "围绕缺口补充数据：需要补充能直接回答“智能电动车：什么信号会反证当前行业结论？：哪些信息会支撑或反证当前判断？”的证据、研报、消息、观点。",
+          "围绕缺口补充数据：缺少证据类信息，当前结论不能完整闭环。"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "智能电动车：什么信号会反证当前行业结论？：哪些信息会支撑或反证当前判断？：当前只能形成研究假设，尚不能输出强判断。",
+        "source_balance": "证据 0 / 研报 0 / 消息 0 / 观点 0；关系结构 0 支撑 / 0 反证 / 0 线索。",
+        "supporting_evidence": []
+      },
+      "question": "智能电动车：什么信号会反证当前行业结论？：哪些信息会支撑或反证当前判断？",
+      "rollup_to_parent": "智能电动车：什么信号会反证当前行业结论？：哪些信息会支撑或反证当前判断？：当前只能形成研究假设，尚不能输出强判断。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "low",
+        "facts": [],
+        "gaps": [
+          "需要补充能直接回答“智能电动车：什么信号会反证当前行业结论？：哪些信息会支撑或反证当前判断？”的证据、研报、消息、观点。",
+          "缺少证据类信息，当前结论不能完整闭环。",
+          "缺少研报类信息，当前结论不能完整闭环。",
+          "缺少消息类信息，当前结论不能完整闭环。",
+          "缺少观点类信息，当前结论不能完整闭环。"
+        ],
+        "inferences": [
+          "当前信息覆盖不足，不能把问题答案写成确定结论。",
+          "信息结构缺口集中在：证据、研报、消息、观点。"
+        ],
+        "judgment": "当前只能形成研究假设，尚不能输出强判断。"
+      }
+    }
+  ],
+  "object_id": "智能电动车",
+  "object_type": "industry",
+  "project_id": "smart_ev_demo",
+  "question_plan": {
+    "detected_signals": [
+      "smart_ev",
+      "ai",
+      "long_term_value"
+    ],
+    "generated_at": "2026-05-22T07:12:33.296288+00:00",
+    "l1": [
+      {
+        "id": "demand",
+        "l2": [
+          {
+            "id": "market_size",
+            "l3": [
+              {
+                "id": "evidence_map",
+                "information_focus": {
+                  "evidence": "智能电动车与“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？”的机制解释和反证提醒。",
+                  "research_report": "第三方对智能电动车中“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？”的模型、数据和关键假设。"
+                },
+                "question": "智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：这个问题最需要哪些事实证据直接回答？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              },
+              {
+                "id": "disconfirming_test",
+                "information_focus": {
+                  "evidence": "智能电动车与“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？”的机制解释和反证提醒。",
+                  "research_report": "第三方对智能电动车中“智能电动车：行业空间来自真实需求、价格、渗透率还是周期？”的模型、数据和关键假设。"
+                },
+                "question": "智能电动车：行业空间来自真实需求、价格、渗透率还是周期？：哪些信息会支撑或反证当前判断？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              }
+            ],
+            "question": "智能电动车：行业空间来自真实需求、价格、渗透率还是周期？",
+            "rationale": "先确认事实、需求和基础边界，避免直接跳到结论。",
+            "should_drill_down": true,
+            "terminal_reason": ""
+          },
+          {
+            "id": "demand_quality",
+            "l3": [
+              {
+                "id": "evidence_map",
+                "information_focus": {
+                  "evidence": "智能电动车与“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？”的机制解释和反证提醒。",
+                  "research_report": "第三方对智能电动车中“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？”的模型、数据和关键假设。"
+                },
+                "question": "智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：这个问题最需要哪些事实证据直接回答？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              },
+              {
+                "id": "disconfirming_test",
+                "information_focus": {
+                  "evidence": "智能电动车与“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？”的机制解释和反证提醒。",
+                  "research_report": "第三方对智能电动车中“智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？”的模型、数据和关键假设。"
+                },
+                "question": "智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？：哪些信息会支撑或反证当前判断？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              }
+            ],
+            "question": "智能电动车：需求是否可持续，还是由补贴、库存或短期周期驱动？",
+            "rationale": "先确认事实、需求和基础边界，避免直接跳到结论。",
+            "should_drill_down": true,
+            "terminal_reason": ""
+          }
+        ],
+        "question": "智能电动车的需求、空间和增长质量是否足够支撑长期投资价值？",
+        "rationale": "先确认事实、需求和基础边界，避免直接跳到结论。",
+        "should_drill_down": true,
+        "terminal_reason": ""
+      },
+      {
+        "id": "value_chain",
+        "l2": [
+          {
+            "id": "profit_pool",
+            "l3": [
+              {
+                "id": "evidence_map",
+                "information_focus": {
+                  "evidence": "智能电动车与“智能电动车：哪一段产业链获得主要利润和现金流？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“智能电动车：哪一段产业链获得主要利润和现金流？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“智能电动车：哪一段产业链获得主要利润和现金流？”的机制解释和反证提醒。",
+                  "research_report": "第三方对智能电动车中“智能电动车：哪一段产业链获得主要利润和现金流？”的模型、数据和关键假设。"
+                },
+                "question": "智能电动车：哪一段产业链获得主要利润和现金流？：这个问题最需要哪些事实证据直接回答？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              },
+              {
+                "id": "disconfirming_test",
+                "information_focus": {
+                  "evidence": "智能电动车与“智能电动车：哪一段产业链获得主要利润和现金流？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“智能电动车：哪一段产业链获得主要利润和现金流？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“智能电动车：哪一段产业链获得主要利润和现金流？”的机制解释和反证提醒。",
+                  "research_report": "第三方对智能电动车中“智能电动车：哪一段产业链获得主要利润和现金流？”的模型、数据和关键假设。"
+                },
+                "question": "智能电动车：哪一段产业链获得主要利润和现金流？：哪些信息会支撑或反证当前判断？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              }
+            ],
+            "question": "智能电动车：哪一段产业链获得主要利润和现金流？",
+            "rationale": "再确认价值链、利润池或事件传导机制，判断影响路径是否真实。",
+            "should_drill_down": true,
+            "terminal_reason": ""
+          },
+          {
+            "id": "bargaining_power",
+            "l3": [
+              {
+                "id": "evidence_map",
+                "information_focus": {
+                  "evidence": "智能电动车与“智能电动车：供应商、渠道、客户和监管如何分配经济性？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“智能电动车：供应商、渠道、客户和监管如何分配经济性？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“智能电动车：供应商、渠道、客户和监管如何分配经济性？”的机制解释和反证提醒。",
+                  "research_report": "第三方对智能电动车中“智能电动车：供应商、渠道、客户和监管如何分配经济性？”的模型、数据和关键假设。"
+                },
+                "question": "智能电动车：供应商、渠道、客户和监管如何分配经济性？：这个问题最需要哪些事实证据直接回答？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              },
+              {
+                "id": "disconfirming_test",
+                "information_focus": {
+                  "evidence": "智能电动车与“智能电动车：供应商、渠道、客户和监管如何分配经济性？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“智能电动车：供应商、渠道、客户和监管如何分配经济性？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“智能电动车：供应商、渠道、客户和监管如何分配经济性？”的机制解释和反证提醒。",
+                  "research_report": "第三方对智能电动车中“智能电动车：供应商、渠道、客户和监管如何分配经济性？”的模型、数据和关键假设。"
+                },
+                "question": "智能电动车：供应商、渠道、客户和监管如何分配经济性？：哪些信息会支撑或反证当前判断？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              }
+            ],
+            "question": "智能电动车：供应商、渠道、客户和监管如何分配经济性？",
+            "rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+            "should_drill_down": true,
+            "terminal_reason": ""
+          }
+        ],
+        "question": "智能电动车产业链中利润池在哪里，经济性如何分配？",
+        "rationale": "再确认价值链、利润池或事件传导机制，判断影响路径是否真实。",
+        "should_drill_down": true,
+        "terminal_reason": ""
+      },
+      {
+        "id": "competition",
+        "l2": [
+          {
+            "id": "structure",
+            "l3": [
+              {
+                "id": "evidence_map",
+                "information_focus": {
+                  "evidence": "智能电动车与“智能电动车：行业集中度、进入壁垒和替代品压力如何？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“智能电动车：行业集中度、进入壁垒和替代品压力如何？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“智能电动车：行业集中度、进入壁垒和替代品压力如何？”的机制解释和反证提醒。",
+                  "research_report": "第三方对智能电动车中“智能电动车：行业集中度、进入壁垒和替代品压力如何？”的模型、数据和关键假设。"
+                },
+                "question": "智能电动车：行业集中度、进入壁垒和替代品压力如何？：这个问题最需要哪些事实证据直接回答？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              },
+              {
+                "id": "disconfirming_test",
+                "information_focus": {
+                  "evidence": "智能电动车与“智能电动车：行业集中度、进入壁垒和替代品压力如何？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“智能电动车：行业集中度、进入壁垒和替代品压力如何？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“智能电动车：行业集中度、进入壁垒和替代品压力如何？”的机制解释和反证提醒。",
+                  "research_report": "第三方对智能电动车中“智能电动车：行业集中度、进入壁垒和替代品压力如何？”的模型、数据和关键假设。"
+                },
+                "question": "智能电动车：行业集中度、进入壁垒和替代品压力如何？：哪些信息会支撑或反证当前判断？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              }
+            ],
+            "question": "智能电动车：行业集中度、进入壁垒和替代品压力如何？",
+            "rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+            "should_drill_down": true,
+            "terminal_reason": ""
+          },
+          {
+            "id": "price_competition",
+            "l3": [
+              {
+                "id": "evidence_map",
+                "information_focus": {
+                  "evidence": "智能电动车与“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？”的机制解释和反证提醒。",
+                  "research_report": "第三方对智能电动车中“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？”的模型、数据和关键假设。"
+                },
+                "question": "智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：这个问题最需要哪些事实证据直接回答？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              },
+              {
+                "id": "disconfirming_test",
+                "information_focus": {
+                  "evidence": "智能电动车与“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？”的机制解释和反证提醒。",
+                  "research_report": "第三方对智能电动车中“智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？”的模型、数据和关键假设。"
+                },
+                "question": "智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？：哪些信息会支撑或反证当前判断？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              }
+            ],
+            "question": "智能电动车竞争会不会演化为价格战、补贴竞争和利润率下行？",
+            "rationale": "继续拆竞争、战略或情景，识别结构性变化和可验证假设。",
+            "should_drill_down": true,
+            "terminal_reason": ""
+          }
+        ],
+        "question": "智能电动车竞争格局会改善，还是被价格战和产能扩张稀释？",
+        "rationale": "继续拆竞争、战略或情景，识别结构性变化和可验证假设。",
+        "should_drill_down": true,
+        "terminal_reason": ""
+      },
+      {
+        "id": "risk_trigger",
+        "l2": [
+          {
+            "id": "policy_technology",
+            "l3": [
+              {
+                "id": "evidence_map",
+                "information_focus": {
+                  "evidence": "智能电动车与“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？”的机制解释和反证提醒。",
+                  "research_report": "第三方对智能电动车中“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？”的模型、数据和关键假设。"
+                },
+                "question": "AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：这个问题最需要哪些事实证据直接回答？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              },
+              {
+                "id": "disconfirming_test",
+                "information_focus": {
+                  "evidence": "智能电动车与“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？”的机制解释和反证提醒。",
+                  "research_report": "第三方对智能电动车中“AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？”的模型、数据和关键假设。"
+                },
+                "question": "AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？：哪些信息会支撑或反证当前判断？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              }
+            ],
+            "question": "AI、算法、芯片和数据能力如何改变智能电动车的竞争结构？",
+            "rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+            "should_drill_down": true,
+            "terminal_reason": ""
+          },
+          {
+            "id": "disconfirming_signal",
+            "l3": [
+              {
+                "id": "evidence_map",
+                "information_focus": {
+                  "evidence": "智能电动车与“智能电动车：什么信号会反证当前行业结论？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“智能电动车：什么信号会反证当前行业结论？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“智能电动车：什么信号会反证当前行业结论？”的机制解释和反证提醒。",
+                  "research_report": "第三方对智能电动车中“智能电动车：什么信号会反证当前行业结论？”的模型、数据和关键假设。"
+                },
+                "question": "智能电动车：什么信号会反证当前行业结论？：这个问题最需要哪些事实证据直接回答？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              },
+              {
+                "id": "disconfirming_test",
+                "information_focus": {
+                  "evidence": "智能电动车与“智能电动车：什么信号会反证当前行业结论？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“智能电动车：什么信号会反证当前行业结论？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“智能电动车：什么信号会反证当前行业结论？”的机制解释和反证提醒。",
+                  "research_report": "第三方对智能电动车中“智能电动车：什么信号会反证当前行业结论？”的模型、数据和关键假设。"
+                },
+                "question": "智能电动车：什么信号会反证当前行业结论？：哪些信息会支撑或反证当前判断？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              }
+            ],
+            "question": "智能电动车：什么信号会反证当前行业结论？",
+            "rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+            "should_drill_down": true,
+            "terminal_reason": ""
+          }
+        ],
+        "question": "哪些政策、技术、成本或反证信号会重塑智能电动车判断？",
+        "rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+        "should_drill_down": true,
+        "terminal_reason": ""
+      }
+    ],
+    "max_depth": 3,
+    "meta_question": "了解智能电动车行业是否有长期投资价值",
+    "object_id": "智能电动车",
+    "object_type": "industry",
+    "planner_rationale": "围绕“了解智能电动车行业是否有长期投资价值”，系统先识别研究对象“智能电动车”和信号“smart_ev、ai、long_term_value”，再把问题拆成事实基础、经济性/传导机制、竞争或情景、风险和反证四类主线；默认三层下钻后进入四类信息搜集。",
+    "planning_mode": "deterministic_rule_based",
+    "project_id": "smart_ev_demo",
+    "schema_version": "1.0"
+  },
+  "schema_version": "1.0",
+  "synthesis_overrides": {
+    "applied": 16,
+    "loaded": 16,
+    "source": "synthesis_overrides.jsonl"
+  }
+}

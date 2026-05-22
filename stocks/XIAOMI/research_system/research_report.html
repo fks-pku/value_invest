@@ -1,0 +1,1049 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>XIAOMI 层级 QA 聚合研究报告</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --muted: #6e6e73;
+      --paper: #f5f5f7;
+      --panel: #ffffff;
+      --panel-soft: #fbfbfd;
+      --line: #d2d2d7;
+      --blue: #0066cc;
+      --green: #248a3d;
+      --amber: #a86600;
+      --red: #d70015;
+      --shadow: 0 18px 50px rgba(0, 0, 0, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.55;
+    }
+    header {
+      padding: clamp(52px, 8vw, 104px) clamp(20px, 6vw, 86px) 34px;
+      color: var(--ink);
+      background: linear-gradient(180deg, #fff 0%, #f8f8fa 72%, var(--paper) 100%);
+      border-bottom: 1px solid rgba(0, 0, 0, .06);
+    }
+    h1 { max-width: 1080px; margin: 0; font-size: clamp(44px, 7vw, 86px); font-weight: 700; line-height: .98; letter-spacing: 0; }
+    h2 { margin: 0 0 12px; font-size: clamp(28px, 4vw, 48px); font-weight: 700; letter-spacing: 0; }
+    h3 { margin: 0 0 10px; font-size: clamp(21px, 2.2vw, 29px); font-weight: 700; letter-spacing: 0; }
+    p { margin: 0 0 10px; }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .subtitle { max-width: 940px; margin-top: 18px; color: var(--muted); font-size: clamp(18px, 2.1vw, 24px); line-height: 1.45; }
+    .nav, nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 11px clamp(16px, 5vw, 70px);
+      background: rgba(245, 245, 247, .82);
+      border-bottom: 1px solid rgba(0, 0, 0, .08);
+      backdrop-filter: saturate(180%) blur(20px);
+    }
+    .nav a, nav a {
+      flex: 0 0 auto;
+      padding: 7px 12px;
+      color: var(--ink);
+      text-decoration: none;
+      border: 1px solid rgba(0, 0, 0, .08);
+      background: rgba(255, 255, 255, .74);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    main { width: min(1180px, calc(100% - 32px)); margin: 26px auto 72px; }
+    section {
+      margin: 18px 0;
+      padding: clamp(24px, 4vw, 44px);
+      background: rgba(255, 255, 255, .9);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, .7) inset;
+    }
+    .layer-label, .eyebrow { margin: 0 0 12px; color: var(--blue); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .summary-grid, .summary-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+    .summary-card, .metric {
+      padding: 16px;
+      background: rgba(255, 255, 255, .88);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      min-width: 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
+      color: var(--ink);
+    }
+    .summary-card span, .metric span { display: block; color: var(--muted); font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: none; }
+    .summary-card strong, .metric strong { display: block; margin-top: 8px; font-size: clamp(20px, 2.2vw, 30px); font-weight: 700; line-height: 1.1; overflow-wrap: anywhere; }
+    .summary-card p { margin: 9px 0 0; color: var(--muted); font-size: 13px; }
+    .foundation-grid, .grid, .lead-grid, .info-grid, .reference-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-items: start; }
+    .foundation-card, .card, .question-card, .history-card {
+      padding: clamp(18px, 3vw, 28px);
+      background: var(--panel);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      min-width: 0;
+      box-shadow: var(--shadow);
+    }
+    .foundation-card { border-left: 0; }
+    .foundation-card.partial, .foundation-card.missing { border-left: 0; }
+    .detail-link {
+      display: inline-flex;
+      margin-top: 12px;
+      padding: 8px 13px;
+      color: #fff;
+      background: var(--blue);
+      text-decoration: none;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .detail-link:hover { background: #005bb5; text-decoration: none; }
+    .answer-box, .rule-box {
+      padding: 16px;
+      background: #f5f8ff;
+      border: 1px solid #d6e6ff;
+      border-radius: 8px;
+      margin: 14px 0 16px;
+    }
+    .info-box {
+      padding: 14px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: var(--panel-soft);
+      min-width: 0;
+    }
+    .info-box h4 { margin: 0 0 10px; font-size: 13px; font-weight: 700; color: var(--muted); letter-spacing: .04em; }
+    .info-box ul { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+    .info-box li { margin: 0; padding-top: 12px; border-top: 1px solid rgba(0, 0, 0, .07); }
+    .info-box li:first-child { padding-top: 0; border-top: 0; }
+    .info-box.evidence { background: #f5f9ff; }
+    .info-box.research_report { background: #f4fbf7; }
+    .info-box.message { background: #fff9ef; }
+    .info-box.opinion { background: #f6f6f7; }
+    .timeline { display: grid; gap: 12px; margin-top: 16px; }
+    .timeline-row { display: grid; grid-template-columns: 120px 1fr; gap: 16px; padding: 16px; border: 1px solid rgba(0, 0, 0, .08); border-radius: 8px; background: var(--panel); }
+    .timeline-year { color: var(--blue); font-weight: 700; }
+    .field { margin-top: 12px; }
+    .field b { display: block; margin-bottom: 5px; color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: none; }
+    .note { color: var(--muted); font-size: 13px; }
+    .compact-question-list {
+      display: grid;
+      gap: 8px;
+      margin: 8px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .compact-question-list li {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: center;
+      margin: 0;
+      padding: 9px 10px;
+      border: 1px solid rgba(0, 0, 0, .07);
+      border-radius: 8px;
+      background: #f8f8fa;
+    }
+    .compact-question-list .question-text {
+      min-width: 0;
+      overflow-wrap: anywhere;
+      color: var(--ink);
+    }
+    .mix-badge {
+      display: inline-grid;
+      grid-template-columns: auto auto;
+      gap: 6px;
+      align-items: baseline;
+      white-space: nowrap;
+      padding: 4px 7px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, .08);
+      color: var(--muted);
+      font-size: 11px;
+    }
+    .mix-badge strong {
+      color: var(--blue);
+      font-family: "SF Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 11px;
+    }
+    .chip {
+      display: inline-flex;
+      max-width: 100%;
+      margin: 0 4px 7px 0;
+      padding: 3px 7px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .76);
+      color: #424245;
+      font-family: "SF Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 11px;
+      overflow-wrap: anywhere;
+    }
+    .status-evidenced { color: var(--green); font-weight: 800; }
+    .status-partial { color: var(--amber); font-weight: 800; }
+    .status-missing, .impact-weakening { color: var(--red); font-weight: 800; }
+    .impact-strengthening { color: var(--green); font-weight: 800; }
+    .impact-research_lead { color: var(--amber); font-weight: 800; }
+    table { width: 100%; border-collapse: separate; border-spacing: 0; background: #fff; font-size: 14px; border: 1px solid rgba(0, 0, 0, .08); border-radius: 8px; overflow: hidden; }
+    th, td { padding: 13px; border-bottom: 1px solid rgba(0, 0, 0, .08); vertical-align: top; text-align: left; }
+    tr:last-child td { border-bottom: 0; }
+    th { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .04em; background: #f5f5f7; text-transform: none; }
+    ul { margin: 8px 0 0; padding-left: 20px; }
+    li { margin: 5px 0; }
+    @media (max-width: 880px) {
+      .summary-grid, .summary-strip, .foundation-grid, .grid, .lead-grid, .info-grid, .reference-grid, .timeline-row { grid-template-columns: 1fr; }
+      .compact-question-list li { grid-template-columns: 1fr; }
+      .mix-badge { justify-self: start; }
+      table { font-size: 13px; }
+      header { padding-top: 42px; }
+    }
+    
+    .qa-shell {
+      display: grid;
+      grid-template-columns: minmax(230px, .78fr) minmax(0, 1.45fr) minmax(300px, .95fr);
+      gap: 16px;
+      align-items: start;
+    }
+    .qa-full-research {
+      width: min(1180px, calc(100% - 32px));
+      margin: 26px auto 24px;
+    }
+    .qa-full-research .thesis-card {
+      margin: 14px 0 16px;
+      border-radius: 8px;
+      border-left: 0;
+      background: #111820;
+      box-shadow: var(--shadow);
+    }
+    .qa-full-research table {
+      margin: 12px 0 24px;
+    }
+    .qa-full-research .question-card {
+      margin: 16px 0;
+    }
+    .level-frame {
+      scroll-margin-top: 70px;
+    }
+    .l2-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .l2-card {
+      padding: clamp(18px, 2.5vw, 26px);
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      min-width: 0;
+    }
+    .l2-card h3 {
+      font-size: clamp(20px, 2vw, 27px);
+    }
+    .node-brief-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) repeat(3, minmax(0, .88fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .node-brief-card {
+      min-width: 0;
+      padding: 15px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .88);
+    }
+    .node-brief-card.primary {
+      background: #111820;
+      color: #fff;
+    }
+    .node-brief-card.primary b,
+    .node-brief-card.primary p {
+      color: #fff;
+    }
+    .node-brief-card b {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .node-brief-card p {
+      margin: 0;
+      font-size: 13px;
+    }
+    .category-meter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .category-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 8px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 999px;
+      background: #f5f5f7;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .category-pill.filled {
+      color: var(--blue);
+      background: #eef5ff;
+      border-color: #c9ddff;
+    }
+    .category-pill.warning {
+      color: var(--amber);
+      background: #fff8eb;
+      border-color: #f1d49b;
+    }
+    .research-path {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 0;
+    }
+    .research-path span {
+      display: inline-flex;
+      padding: 4px 8px;
+      border-radius: 999px;
+      color: var(--muted);
+      background: #f5f5f7;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .research-path span.active {
+      color: var(--blue);
+      background: #eef5ff;
+    }
+    .source-coverage-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .coverage-item {
+      min-width: 0;
+      padding: 9px 10px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #f5f5f7;
+    }
+    .coverage-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .coverage-item strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 18px;
+      line-height: 1;
+    }
+    .coverage-item.support strong { color: var(--green); }
+    .coverage-item.refute strong { color: var(--red); }
+    .coverage-item.lead strong { color: var(--amber); }
+    .coverage-item.total strong { color: var(--blue); }
+    .handoff-table {
+      margin-top: 14px;
+    }
+    .handoff-table td:first-child {
+      width: 28%;
+      font-weight: 700;
+    }
+    .handoff-table .mini-meter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .handoff-table .mini-meter span {
+      display: inline-flex;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: #f5f5f7;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .research-unit-card {
+      display: grid;
+      gap: 12px;
+    }
+    .decision-panel {
+      margin-top: 12px;
+      padding: 14px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8f8fa 100%);
+    }
+    .decision-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .decision-head b {
+      color: var(--ink);
+      font-size: 13px;
+      letter-spacing: .04em;
+    }
+    .decision-head span {
+      flex: 0 0 auto;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #eef5ff;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .decision-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .decision-box {
+      min-width: 0;
+      padding: 12px;
+      border: 1px solid rgba(0, 0, 0, .07);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .84);
+    }
+    .decision-box.judgment {
+      background: #111820;
+      color: #fff;
+    }
+    .decision-box.judgment h4,
+    .decision-box.judgment p {
+      color: #fff;
+    }
+    .decision-box h4,
+    .next-step-box b {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .decision-box ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .decision-box li {
+      margin: 4px 0;
+      font-size: 13px;
+    }
+    .evidence-score strong {
+      font-size: 20px;
+      color: var(--ink);
+    }
+    .next-step-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .next-step-box {
+      min-width: 0;
+      padding: 12px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #fff9ef;
+    }
+    .next-step-box p {
+      margin: 0;
+      font-size: 13px;
+    }
+    .collection-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .collection-box {
+      min-width: 0;
+      padding: 10px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #f7fbff;
+    }
+    .collection-box b {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .04em;
+    }
+    .collection-box p {
+      margin: 0 0 5px;
+      font-size: 13px;
+    }
+    .collection-status {
+      color: var(--blue);
+      font-weight: 800;
+    }
+    .l3-info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .l3-info-box {
+      min-width: 0;
+      padding: 10px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: var(--panel-soft);
+    }
+    .l3-info-box.evidence { background: #f5f9ff; }
+    .l3-info-box.research_report { background: #f4fbf7; }
+    .l3-info-box.message { background: #fff9ef; }
+    .l3-info-box.opinion { background: #f6f6f7; }
+    .l3-info-box h4 {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .l3-info-box ul {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .l3-info-box li {
+      margin: 0;
+      padding: 9px 0 0 10px;
+      border-top: 1px solid rgba(0, 0, 0, .07);
+      border-left: 3px solid #8e8e93;
+    }
+    .l3-info-box li:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+    .l3-info-box li.stance-support { border-left-color: var(--green); }
+    .l3-info-box li.stance-refute { border-left-color: var(--red); }
+    .l3-info-box li.stance-lead { border-left-color: var(--amber); }
+    .l3-detail-page {
+      max-width: 1240px;
+    }
+    .l3-answer-section h2 {
+      max-width: 960px;
+    }
+    .l3-answer-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr);
+      gap: 14px;
+      align-items: stretch;
+      margin-top: 16px;
+    }
+    .l3-answer-main,
+    .l3-answer-metrics,
+    .analysis-metric {
+      min-width: 0;
+      padding: clamp(16px, 2.5vw, 22px);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
+    }
+    .l3-answer-main {
+      background: #111820;
+      color: #fff;
+    }
+    .l3-answer-main b,
+    .l3-answer-main p {
+      color: #fff;
+    }
+    .l3-answer-main b {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 12px;
+      letter-spacing: .06em;
+    }
+    .l3-answer-main p {
+      margin: 0;
+      font-size: clamp(16px, 1.8vw, 21px);
+      line-height: 1.7;
+    }
+    .l3-answer-metrics {
+      display: grid;
+      gap: 10px;
+      background: #f5f5f7;
+    }
+    .l3-answer-metrics div {
+      padding: 10px 0;
+      border-top: 1px solid rgba(0, 0, 0, .08);
+    }
+    .l3-answer-metrics div:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+    .l3-answer-metrics span,
+    .analysis-metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .l3-answer-metrics strong,
+    .analysis-metric strong {
+      display: block;
+      margin-top: 6px;
+      color: var(--ink);
+      font-size: clamp(22px, 2.2vw, 32px);
+      line-height: 1.1;
+    }
+    .l3-answer-metrics p,
+    .analysis-metric p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .analysis-metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 14px 0;
+    }
+    .analysis-table td:first-child {
+      width: 18%;
+    }
+    .bar-stack {
+      display: grid;
+      gap: 10px;
+      margin: 16px 0;
+      padding: 16px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .bar-row {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr) 150px;
+      gap: 12px;
+      align-items: center;
+      min-width: 0;
+      font-size: 13px;
+    }
+    .bar-row span {
+      color: var(--ink);
+      font-weight: 700;
+    }
+    .bar-row b {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-align: right;
+    }
+    .bar-track {
+      height: 12px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e8e8ed;
+    }
+    .bar-fill {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+    }
+    .bar-fill.blue { background: var(--blue); }
+    .bar-fill.green { background: var(--green); }
+    .l3-reasoning-list {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .l3-reasoning-list article {
+      min-width: 0;
+      padding: 16px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .l3-reasoning-list span {
+      display: inline-flex;
+      margin-bottom: 10px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      color: var(--blue);
+      background: #eef5ff;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .l3-reasoning-list p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+    .stance-pill,
+    .quality-pill {
+      display: inline-flex;
+      margin: 0 5px 7px 0;
+      padding: 3px 7px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .stance-pill {
+      background: #f5f5f7;
+      color: var(--ink);
+    }
+    .quality-pill {
+      background: #eef5ff;
+      color: var(--blue);
+    }
+    .qa-panel {
+      min-width: 0;
+      background: rgba(255, 255, 255, .92);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+    .qa-tree-panel, .qa-evidence-panel {
+      position: sticky;
+      top: 62px;
+      max-height: calc(100vh - 84px);
+      overflow: auto;
+      padding: 16px;
+    }
+    .qa-main-panel { padding: clamp(22px, 3vw, 34px); }
+    .qa-kicker {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      margin-bottom: 10px;
+    }
+    .qa-tree-group { margin: 0 0 16px; }
+    .qa-tree-title {
+      margin: 12px 0 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .qa-node-button {
+      width: 100%;
+      display: block;
+      margin: 5px 0;
+      padding: 9px 10px;
+      color: var(--ink);
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      text-align: left;
+      font: inherit;
+      cursor: pointer;
+    }
+    .qa-node-button:hover { background: #f5f5f7; }
+    .qa-node-button.active {
+      background: #f5f8ff;
+      border-color: #c9ddff;
+      color: var(--blue);
+      font-weight: 700;
+    }
+    .qa-node-level {
+      display: inline-flex;
+      margin-right: 6px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .qa-level-2 { padding-left: 20px; }
+    .qa-level-3 { padding-left: 36px; }
+    .qa-level-4 { padding-left: 52px; }
+    .qa-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .qa-badge {
+      display: inline-flex;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #f5f5f7;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .qa-question-title { margin-bottom: 14px; }
+    .qa-rollup {
+      margin: 14px 0;
+      padding: 14px;
+      border: 1px solid #d6e6ff;
+      border-radius: 8px;
+      background: #f5f8ff;
+    }
+    .qa-rollup strong { color: var(--blue); }
+    .qa-synthesis-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .qa-synthesis-box {
+      padding: 14px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: var(--panel-soft);
+    }
+    .qa-synthesis-box h4, .qa-child-list h4, .qa-bucket h4 {
+      margin: 0 0 9px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .qa-child-list { margin-top: 16px; }
+    .qa-child-list button {
+      display: block;
+      width: 100%;
+      margin: 7px 0;
+      padding: 11px 12px;
+      text-align: left;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      font: inherit;
+      cursor: pointer;
+    }
+    .qa-child-list button:hover { border-color: #c9ddff; color: var(--blue); }
+    .qa-bucket {
+      margin-bottom: 12px;
+      padding: 14px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: var(--panel-soft);
+    }
+    .qa-bucket.evidence { background: #f5f9ff; }
+    .qa-bucket.research_report { background: #f4fbf7; }
+    .qa-bucket.message { background: #fff9ef; }
+    .qa-bucket.opinion { background: #f6f6f7; }
+    .qa-evidence-item {
+      padding: 11px 0;
+      border-top: 1px solid rgba(0, 0, 0, .07);
+    }
+    .qa-evidence-item:first-of-type { border-top: 0; padding-top: 0; }
+    .qa-empty { color: var(--muted); font-size: 13px; }
+    .qa-ask textarea {
+      width: 100%;
+      min-height: 92px;
+      resize: vertical;
+      padding: 12px;
+      border: 1px solid rgba(0, 0, 0, .12);
+      border-radius: 8px;
+      font: inherit;
+      background: #fff;
+    }
+    .draft-question textarea {
+      width: 100%;
+      min-height: 92px;
+      resize: vertical;
+      padding: 12px;
+      border: 1px solid rgba(0, 0, 0, .12);
+      border-radius: 8px;
+      font: inherit;
+      background: #fff;
+    }
+    .draft-question-output {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .draft-question-output textarea {
+      min-height: 118px;
+      font-family: "SF Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .qa-ask-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .qa-ask button {
+      padding: 8px 12px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 999px;
+      font: inherit;
+      cursor: pointer;
+      background: #fff;
+    }
+    .qa-ask button.primary {
+      color: #fff;
+      background: var(--blue);
+      border-color: var(--blue);
+      font-weight: 700;
+    }
+    .draft-question button {
+      padding: 8px 12px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 999px;
+      font: inherit;
+      cursor: pointer;
+      background: #fff;
+    }
+    .draft-question button.primary {
+      color: #fff;
+      background: var(--blue);
+      border-color: var(--blue);
+      font-weight: 700;
+    }
+    .qa-static-index {
+      width: min(1180px, calc(100% - 32px));
+      margin: 22px auto 72px;
+    }
+    .qa-static-card {
+      margin: 12px 0;
+      padding: 16px;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
+    }
+    .qa-static-card h3 {
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+      margin-bottom: 8px;
+      font-size: 19px;
+    }
+    .qa-static-card span {
+      flex: 0 0 auto;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .qa-static-card ul {
+      display: grid;
+      gap: 6px;
+      margin-top: 10px;
+      padding-left: 0;
+      list-style: none;
+    }
+    .qa-static-card li {
+      display: flex;
+      gap: 8px;
+      margin: 0;
+      padding: 8px 10px;
+      background: #f5f5f7;
+      border-radius: 8px;
+    }
+    @media (max-width: 1080px) {
+      .qa-shell { grid-template-columns: 1fr; }
+      .node-brief-grid, .l2-grid, .l3-info-grid, .decision-grid, .next-step-grid, .collection-grid, .source-coverage-strip, .draft-question-output, .l3-answer-layout, .analysis-metric-grid, .l3-reasoning-list { grid-template-columns: 1fr; }
+      .qa-tree-panel, .qa-evidence-panel { position: static; max-height: none; }
+      .qa-synthesis-grid { grid-template-columns: 1fr; }
+      .bar-row { grid-template-columns: 1fr; }
+      .bar-row b { text-align: left; }
+    }
+    </style>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">Layered QA Research Report</p>
+    <h1>XIAOMI 层级 QA 聚合研究报告</h1>
+    <p class="subtitle">本报告由 L0 元问题、L1 八步框架、L2 重点问题和 L3 研究单元自动收敛生成。它不是交易建议，而是下一轮投研工作的结构化基线。</p>
+    <div class="summary-strip">
+      <div class="metric"><span>L1 板块</span><strong>8</strong></div>
+      <div class="metric"><span>L2 问题</span><strong>31</strong></div>
+      <div class="metric"><span>L3 研究单元</span><strong>64</strong></div>
+      <div class="metric"><span>证据结构</span><strong>282/128/36</strong><p>支持 / 反证 / 线索</p></div>
+    </div>
+  </header>
+  <nav class="nav">
+    <a href="research_dashboard.html#foundation">返回 L0</a>
+    <a href="#executive-summary">摘要</a>
+    <a href="#priority-gaps">关键缺口</a>
+    <a href="#section-rollup">板块收敛</a>
+  </nav>
+  <main class="qa-full-research">
+    <section id="executive-summary" class="level-frame">
+      <p class="eyebrow">一页摘要</p>
+      <h2>从问题树收敛出的当前判断</h2>
+      <div class="rule-box"><p>小米当前基础画像的主线是：源头来自 MIUI/手机用户入口和高效率硬件放大，发展历史从手机、AIoT 延伸到智能 EV，当下核心研究矛盾集中在手机基本盘、IoT/互联网服务变现、EV 单车经济和汽车安全/售后责任。因此后续下钻优先级应放在 EV 毛利与质量成本、手机份额与 MAU、硬件低利润承诺对利润池的约束，以及创始人控制权下的资本配置纪律。</p></div>
+      <div class="next-step-grid">
+        <div class="next-step-box"><b>系统边界</b><p>当前报告基于本地证据库和预设 QA 树生成，低可靠消息只能作为研究线索。</p></div>
+        <div class="next-step-box"><b>更新方式</b><p>新增问题应挂到对应层级，完成信息搜集和回答后再向上修正父节点结论。</p></div>
+        <div class="next-step-box"><b>下一步</b><p>优先补齐高影响缺口，再生成下一版报告并比较结论变化。</p></div>
+      </div>
+    </section>
+
+    <section id="priority-gaps" class="level-frame">
+      <p class="eyebrow">关键缺口</p>
+      <h2>最需要优先验证的问题</h2>
+      <div class="l2-grid"><article class="l2-card"><p class="eyebrow">优先验证</p><h3>这个回答最需要哪条一手证据验证？</h3><div class="field"><b>当前判断</b><p>当前可形成受约束判断，但反证信息要求继续验证边界条件</p></div><div class="field"><b>最大缺口</b><ul><li>需要补 EV 单车收入、单车毛利、订单等待周期、产能利用率、质保计提、召回成本和用户满意度。</li></ul></div><div class="field"><b>证据结构</b><p><strong>4</strong> 支持 / <strong>3</strong> 反证 / <strong>2</strong> 线索</p></div></article>
+<article class="l2-card"><p class="eyebrow">优先验证</p><h3>这个源头基因今天还能解释什么，不能解释什么？</h3><div class="field"><b>当前判断</b><p>当前可形成受约束判断，但反证信息要求继续验证边界条件</p></div><div class="field"><b>最大缺口</b><ul><li>需要把早期能力逐项映射到今天的业务节点和反证条件。</li></ul></div><div class="field"><b>证据结构</b><p><strong>4</strong> 支持 / <strong>3</strong> 反证 / <strong>1</strong> 线索</p></div></article>
+<article class="l2-card"><p class="eyebrow">优先验证</p><h3>哪些能力不能从手机时代直接迁移？</h3><div class="field"><b>当前判断</b><p>当前可形成受约束判断，但反证信息要求继续验证边界条件</p></div><div class="field"><b>最大缺口</b><ul><li>需要补质量事故、召回成本、售后网络、质保计提和监管公告序列。</li></ul></div><div class="field"><b>证据结构</b><p><strong>3</strong> 支持 / <strong>3</strong> 反证 / <strong>1</strong> 线索</p></div></article>
+<article class="l2-card"><p class="eyebrow">优先验证</p><h3>手机基本盘弱化会不会反证生态叙事？</h3><div class="field"><b>当前判断</b><p>当前可形成受约束判断，但反证信息要求继续验证边界条件</p></div><div class="field"><b>最大缺口</b><ul><li>需要连续季度手机出货、份额、ASP、毛利、库存和服务 MAU/ARPU 数据。</li></ul></div><div class="field"><b>证据结构</b><p><strong>3</strong> 支持 / <strong>3</strong> 反证 / <strong>1</strong> 线索</p></div></article>
+<article class="l2-card"><p class="eyebrow">优先验证</p><h3>创始人控制权提高战略耐心，还是放大资本配置风险？</h3><div class="field"><b>当前判断</b><p>当前可形成受约束判断，但反证信息要求继续验证边界条件</p></div><div class="field"><b>最大缺口</b><ul><li>需要补董事会独立性、重大投资审批、股权激励、回购分红和关联交易历史。</li></ul></div><div class="field"><b>证据结构</b><p><strong>1</strong> 支持 / <strong>3</strong> 反证 / <strong>1</strong> 线索</p></div></article>
+<article class="l2-card"><p class="eyebrow">优先验证</p><h3>手机基本盘弱化是否会改变整个生态基础？</h3><div class="field"><b>当前判断</b><p>当前可形成受约束判断，但反证信息要求继续验证边界条件</p></div><div class="field"><b>最大缺口</b><ul><li>需要连续季度份额、出货、ASP、毛利和库存。</li></ul></div><div class="field"><b>证据结构</b><p><strong>0</strong> 支持 / <strong>3</strong> 反证 / <strong>1</strong> 线索</p></div></article></div>
+    </section>
+
+    
+
+    <section id="section-rollup" class="level-frame">
+      <p class="eyebrow">板块收敛</p>
+      <h2>八步框架到 L3 研究单元的收敛结果</h2>
+      <article class="qa-static-card report-section-card"><p class="eyebrow">L1 / 源头溯源</p><h3>源头溯源：公司为什么出现，原始问题是什么？</h3><div class="field"><b>上抛结论</b><p>综合子问题信息，本层结论是：小米 IR 公司简介：小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司；小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型；小米全球 IR 招股概要将公司定义为以智能手机和智能硬件连接 IoT 平台为核心的互联网公司；披露 2018 年 3 月 MIUI 月活约 1.9 亿、MIUI 论坛月活超过 900 万、超过 140 万用户连接 5 台以上小米产品，并把…；小米 IR 管理层：管理层页面显示，雷军为创始人、董事长兼 CEO；林斌为联合创始人、副董事长；卢伟冰为合伙人兼总裁；高管团队覆盖手机、国际业务、中国区、财务、研发和技术…</p></div><div class="field"><b>高优先级缺口</b><ul><li>还需要补充 2010-2012 年中国智能手机渗透率、安卓生态成熟度、运营商渠道和线上零售变化的数据。</li><li>需要补充能直接回答“这个回答最需要哪条一手证据验证？”的观点。</li><li>缺少观点类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/source_origin.html">打开 L1 工作页</a><div class="l2-grid report-l2-grid"><article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>时代背景是什么？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：小米 IR 公司简介：小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司；小米全球 IR 招股概要将公司定义为以智能手机和智能硬件连接 IoT 平台为核心的互联网公司；披露 2018 年 3 月 MIUI 月活约 1.9 亿、MIUI 论坛月活超过 900 万、超过 140 万用户连接 5 台以上小米产品，并把…；小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型；WIPO 小米创新案例：WIPO 案例资料显示，小米成立于 2010 年 4 月，并于 2010 年 8 月推出基于 Android 的 MIUI 私测版本；该资料把小米…</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：小米 IR 公司简介：小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司。尚未闭合的是：还需要补充 2010-2012 年中国智能手机渗透率、安卓生态成熟度、运营商渠道和线上零售变化的数据。。</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>这个回答最需要哪条一手证据验证？</strong><p>专业回答：围绕“这个回答最需要哪条一手证据验证？”，当前信息足以形成较强的阶段性判断，但仍需跟踪后续更新触发器。主要支撑来自：小米 IR 公司简介：确认 2010 年成立、智能手机和 IoT 平台定位。 [ev_xiaomi_company_profile_20260518]。主要约束是：暂未形成明确反证，但不能因此视为已证实；新浪科技小米手机发布会实录：早期发布会实录可作为…</p><p class="note">置信度：高置信</p></li><li><strong>这个源头基因今天还能解释什么，不能解释什么？</strong><p>专业回答：围绕“这个源头基因今天还能解释什么，不能解释什么？”，当前信息足以形成较强的阶段性判断，但仍需跟踪后续更新触发器。主要支撑来自：小米 IR 公司简介：确认 2010 年成立、智能手机和 IoT 平台定位。 [ev_xiaomi_company_profile_20260518]。主要约束是：暂未形成明确反证，但不能因此视为已证实；新浪科技小米手机发布会实录：早期发布…</p><p class="note">置信度：高置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>8</strong> 支持 / <strong>0</strong> 反证 / <strong>0</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">证据</span> <a href="https://ir.mi.com/corporate-information/company-profile">小米 IR 公司简介</a> <span class="chip">ev_xiaomi_company_profile_20260518</span><p class="note">确认 2010 年成立、智能手机和 IoT 平台定位。</p></li><li><span class="chip">证据</span> <a href="https://www.mi.com/global/ir/?mod=article_inline">小米全球 IR 招股概要</a> <span class="chip">ev_xiaomi_global_ir_triathlon_20180503</span><p class="note">招股概要直接把公司定义为互联网公司，并披露 MIUI、米粉和 IoT 平台早期数据。</p></li><li><span class="chip">研报</span> <a href="https://www.wipo.int/en/web/ip-advantage/w/stories/xiaomi-corporation-promoting-a-better-life-through-innovative-technology">WIPO 小米创新案例</a> <span class="chip">ev_xiaomi_wipo_origin_miui_20211101</span><p class="note">WIPO 资料确认 2010 年 8 月 MIUI 私测这一软件入口。</p></li><li><span class="chip">研报</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP201903041302343751_1.pdf">精准研究小米 2018 深度报告</a> <span class="chip">ev_xiaomi_jingzhun_deep_report_20181105</span><p class="note">第三方报告把 MIUI、手机硬件、IoT 与互联网变现放在同一模型里分析。</p></li><li><span class="chip">消息</span> <a href="https://tech.sina.com.cn/t/2011-08-16/14305927089.shtml">新浪科技小米手机发布会实录</a> <span class="chip">ev_xiaomi_mi1_launch_transcript_20110816</span><p class="note">早期发布会实录可作为原始产品切口的一手近似材料。</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>还需要补充 2010-2012 年中国智能手机渗透率、安卓生态成熟度、运营商渠道和线上零售变化的数据。</li><li>需要补充能直接回答“这个回答最需要哪条一手证据验证？”的观点。</li><li>缺少观点类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/source_origin/source_origin_q1_era.html">打开 L2 下钻页</a></article>
+<article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>原始问题是什么？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型；小米全球 IR 招股概要将公司定义为以智能手机和智能硬件连接 IoT 平台为核心的互联网公司；披露 2018 年 3 月 MIUI 月活约 1.9 亿、MIUI 论坛月活超过 900 万、超过 140 万用户连接 5 台以上小米产品，并把…；WIPO 小米创新案例：WIPO 案例资料显示，小米成立于 2010 年 4 月，并于 2010 年 8 月推出基于 Android 的 MIUI 私测版本；该资料把小米早期发展放在移动互联网、AIoT 和创新技术普及的语境中；精准研究小米 2018 深度报告：精准研究 2018 年小米深度报告采用“发展历程、业务布局、商业模式、公司本质”的结构写源头，…</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型。尚未闭合的是：需要补早期用户反馈、MIUI 活跃社区数据、首批用户画像和竞品体验差距，避免把后来的成功倒推成起点。。</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>这个回答最需要哪条一手证据验证？</strong><p>专业回答：围绕“这个回答最需要哪条一手证据验证？”，当前信息足以形成较强的阶段性判断，但仍需跟踪后续更新触发器。主要支撑来自：小米集团 2018 全球发售招股书：招股书描述使命、互联网公司自我定义与智能手机/智能硬件模型。 [ev_xiaomi_ipo_prospectus_20180625]。主要约束是：暂未形成明确反证，但不能因此视为已证实；新浪科技小米手机发布会实录：发…</p><p class="note">置信度：高置信</p></li><li><strong>这个源头基因今天还能解释什么，不能解释什么？</strong><p>专业回答：围绕“这个源头基因今天还能解释什么，不能解释什么？”，当前信息足以形成较强的阶段性判断，但仍需跟踪后续更新触发器。主要支撑来自：小米集团 2018 全球发售招股书：招股书描述使命、互联网公司自我定义与智能手机/智能硬件模型。 [ev_xiaomi_ipo_prospectus_20180625]。主要约束是：暂未形成明确反证，但不能因此视为已证实；新浪科技小米手机发…</p><p class="note">置信度：高置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>5</strong> 支持 / <strong>0</strong> 反证 / <strong>0</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">证据</span> <a href="https://cnbj1.fds.api.xiaomi.com/company/financial/en-US/IPO.pdf">小米集团 2018 全球发售招股书</a> <span class="chip">ev_xiaomi_ipo_prospectus_20180625</span><p class="note">招股书描述使命、互联网公司自我定义与智能手机/智能硬件模型。</p></li><li><span class="chip">证据</span> <a href="https://www.mi.com/global/ir/?mod=article_inline">小米全球 IR 招股概要</a> <span class="chip">ev_xiaomi_global_ir_triathlon_20180503</span><p class="note">招股概要把用户、硬件、新零售和互联网服务放进同一个商业模型。</p></li><li><span class="chip">研报</span> <a href="https://www.wipo.int/en/web/ip-advantage/w/stories/xiaomi-corporation-promoting-a-better-life-through-innovative-technology">WIPO 小米创新案例</a> <span class="chip">ev_xiaomi_wipo_origin_miui_20211101</span><p class="note">WIPO 资料确认 MIUI 是手机硬件前的早期软件入口。</p></li><li><span class="chip">研报</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP201903041302343751_1.pdf">精准研究小米 2018 深度报告</a> <span class="chip">ev_xiaomi_jingzhun_deep_report_20181105</span><p class="note">研报把用户参与和硬件放量作为商业模型的源头机制。</p></li><li><span class="chip">消息</span> <a href="https://tech.sina.com.cn/t/2011-08-16/14305927089.shtml">新浪科技小米手机发布会实录</a> <span class="chip">ev_xiaomi_mi1_launch_transcript_20110816</span><p class="note">发布会实录显示 MIUI、发烧友、1999 元手机和线上销售是早期表达。</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要补早期用户反馈、MIUI 活跃社区数据、首批用户画像和竞品体验差距，避免把后来的成功倒推成起点。</li><li>需要补充能直接回答“这个回答最需要哪条一手证据验证？”的观点。</li><li>缺少观点类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/source_origin/source_origin_q2_original_problem.html">打开 L2 下钻页</a></article>
+<article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>旧方案为什么不够好？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型；小米 2021 年报硬件净利率承诺：小米 2021 年报披露，公司自 2018 年起承诺硬件业务（智能手机、IoT 与生活消费产品）整体净利率每年不超过 5.0%，若超过则向用户返还超出部分；2021 年硬件业务整体净利率低于 2.0%；精准研究小米 2018 深度报告：精准研究 2018 年小米深度报告采用“发展历程、业务布局、商业模式、公司本质”的结构写源头，把 MIUI 用户参与、手机硬件放量、IoT 生态和互联网变现放在同一商业模型里分析。该来源用于学习专业报告写…；申万宏源小米 2024 深度报告摘要：申万宏源小米深度报告摘要将公司历程拆成不同发展阶段，并把阶段变化与技术趋势、产品…</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型。主要边界是：小米 2021 年报硬件净利率承诺：小米 2021 年报披露，公司自 2018 年起承诺硬件业务（智能手机、IoT 与生活消费产品）整体净利率每年不超过 5.0%，若…</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>这个回答最需要哪条一手证据验证？</strong><p>专业回答：围绕“这个回答最需要哪条一手证据验证？”，当前信息足以形成较强的阶段性判断，但仍需跟踪后续更新触发器。主要支撑来自：小米集团 2018 全球发售招股书：招股书可验证小米对自身互联网效率和硬件平台的定义。 [ev_xiaomi_ipo_prospectus_20180625]。主要约束是：暂未形成明确反证，但不能因此视为已证实；申万宏源小米 2024 深度报告摘要：低…</p><p class="note">置信度：高置信</p></li><li><strong>这个源头基因今天还能解释什么，不能解释什么？</strong><p>专业回答：围绕“这个源头基因今天还能解释什么，不能解释什么？”，当前信息足以形成较强的阶段性判断，但仍需跟踪后续更新触发器。主要支撑来自：小米集团 2018 全球发售招股书：招股书可验证小米对自身互联网效率和硬件平台的定义。 [ev_xiaomi_ipo_prospectus_20180625]。主要约束是：暂未形成明确反证，但不能因此视为已证实；申万宏源小米 2024 深度…</p><p class="note">置信度：高置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>3</strong> 支持 / <strong>1</strong> 反证 / <strong>1</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">证据</span> <a href="https://cnbj1.fds.api.xiaomi.com/company/financial/en-US/IPO.pdf">小米集团 2018 全球发售招股书</a> <span class="chip">ev_xiaomi_ipo_prospectus_20180625</span><p class="note">招股书可验证小米对自身互联网效率和硬件平台的定义。</p></li><li><span class="chip">证据</span> <a href="https://xiaomi.gcs-web.com/static-files/b85f34c0-0010-4a8c-94b9-269d8cd4eca4">小米 2021 年报硬件净利率承诺</a> <span class="chip">ev_xiaomi_hardware_margin_pledge_2021_ar</span><p class="note">硬件净利率承诺说明“诚实定价”既是获客机制，也是硬件利润率约束。</p></li><li><span class="chip">研报</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP201903041302343751_1.pdf">精准研究小米 2018 深度报告</a> <span class="chip">ev_xiaomi_jingzhun_deep_report_20181105</span><p class="note">研报提供商业模式和效率差的第三方归纳。</p></li><li><span class="chip">研报</span> <a href="https://www.baogaobox.com/insights/241123000003814.html">申万宏源小米 2024 深度报告摘要</a> <span class="chip">ev_xiaomi_shenwan_deep_report_20241118</span><p class="note">低可靠报告摘要可作为阶段写法参考，不能单独强化判断。</p></li><li><span class="chip">消息</span> <a href="https://tech.sina.com.cn/t/2011-08-16/14305927089.shtml">新浪科技小米手机发布会实录</a> <span class="chip">ev_xiaomi_mi1_launch_transcript_20110816</span><p class="note">早期公开表达可验证当时强调的产品、价格和渠道差异。</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要竞品同期价格、配置、渠道加价、系统更新频率和用户满意度对比，才能把“旧方案不足”从叙事变成证据。</li><li>需要补充能直接回答“这个回答最需要哪条一手证据验证？”的观点。</li><li>缺少观点类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/source_origin/source_origin_q3_incumbent_gap.html">打开 L2 下钻页</a></article>
+<article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>第一产品楔子是什么？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型；小米全球 IR 招股概要将公司定义为以智能手机和智能硬件连接 IoT 平台为核心的互联网公司；披露 2018 年 3 月 MIUI 月活约 1.9 亿、MIUI 论坛月活超过 900 万、超过 140 万用户连接 5 台以上小米产品，并把…；小米 IR 管理层：管理层页面显示，雷军为创始人、董事长兼 CEO；林斌为联合创始人、副董事长；卢伟冰为合伙人兼总裁；高管团队覆盖手机、国际业务、中国区、财务、研发和技术委员会等职能；WIPO 小米创新案例：WIPO 案例资料显示，小米成立于 2010 年 4 月，并于 2010 年 8 月推出基于 Android 的 MIUI 私测版本；该资料把小米早…</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型。尚未闭合的是：需要补 MIUI 版本节奏、论坛用户增长、首批销量、供货节奏和退换货/口碑数据。。</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>这个回答最需要哪条一手证据验证？</strong><p>专业回答：围绕“这个回答最需要哪条一手证据验证？”，当前信息足以形成较强的阶段性判断，但仍需跟踪后续更新触发器。主要支撑来自：小米集团 2018 全球发售招股书：招股书确认早期模型以智能手机和智能硬件为核心。 [ev_xiaomi_ipo_prospectus_20180625]。主要约束是：暂未形成明确反证，但不能因此视为已证实；新浪科技小米手机发布会实录：发布会实录直接对…</p><p class="note">置信度：高置信</p></li><li><strong>这个源头基因今天还能解释什么，不能解释什么？</strong><p>专业回答：围绕“这个源头基因今天还能解释什么，不能解释什么？”，当前信息足以形成较强的阶段性判断，但仍需跟踪后续更新触发器。主要支撑来自：小米集团 2018 全球发售招股书：招股书确认早期模型以智能手机和智能硬件为核心。 [ev_xiaomi_ipo_prospectus_20180625]。主要约束是：暂未形成明确反证，但不能因此视为已证实；新浪科技小米手机发布会实录：发布…</p><p class="note">置信度：高置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>6</strong> 支持 / <strong>0</strong> 反证 / <strong>0</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">证据</span> <a href="https://cnbj1.fds.api.xiaomi.com/company/financial/en-US/IPO.pdf">小米集团 2018 全球发售招股书</a> <span class="chip">ev_xiaomi_ipo_prospectus_20180625</span><p class="note">招股书确认早期模型以智能手机和智能硬件为核心。</p></li><li><span class="chip">证据</span> <a href="https://www.mi.com/global/ir/?mod=article_inline">小米全球 IR 招股概要</a> <span class="chip">ev_xiaomi_global_ir_triathlon_20180503</span><p class="note">招股概要披露 MIUI 月活、论坛月活和多设备用户，能验证用户楔子。</p></li><li><span class="chip">研报</span> <a href="https://www.wipo.int/en/web/ip-advantage/w/stories/xiaomi-corporation-promoting-a-better-life-through-innovative-technology">WIPO 小米创新案例</a> <span class="chip">ev_xiaomi_wipo_origin_miui_20211101</span><p class="note">WIPO 资料确认 MIUI 私测时间点早于手机硬件放量。</p></li><li><span class="chip">研报</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP201903041302343751_1.pdf">精准研究小米 2018 深度报告</a> <span class="chip">ev_xiaomi_jingzhun_deep_report_20181105</span><p class="note">研报把 MIUI 用户参与和手机放量作为同一源头模型。</p></li><li><span class="chip">消息</span> <a href="https://tech.sina.com.cn/t/2011-08-16/14305927089.shtml">新浪科技小米手机发布会实录</a> <span class="chip">ev_xiaomi_mi1_launch_transcript_20110816</span><p class="note">发布会实录直接对应 MIUI、发烧友和 1999 元手机。</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要补 MIUI 版本节奏、论坛用户增长、首批销量、供货节奏和退换货/口碑数据。</li><li>需要补充能直接回答“这个回答最需要哪条一手证据验证？”的观点。</li><li>缺少观点类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/source_origin/source_origin_q4_product_wedge.html">打开 L2 下钻页</a></article>
+<article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>第一批客户是谁？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型；小米全球 IR 招股概要将公司定义为以智能手机和智能硬件连接 IoT 平台为核心的互联网公司；披露 2018 年 3 月 MIUI 月活约 1.9 亿、MIUI 论坛月活超过 900 万、超过 140 万用户连接 5 台以上小米产品，并把…；精准研究小米 2018 深度报告：精准研究 2018 年小米深度报告采用“发展历程、业务布局、商业模式、公司本质”的结构写源头，把 MIUI 用户参与、手机硬件放量、IoT 生态和互联网变现放在同一商业模型里分析。该来源用于学习专业报告写…；新浪科技小米手机发布会实录：2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代…</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型。尚未闭合的是：需要补首批预约用户、论坛用户画像、地域和渠道结构、复购与口碑传播证据。。</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>这个回答最需要哪条一手证据验证？</strong><p>专业回答：围绕“这个回答最需要哪条一手证据验证？”，当前信息足以形成较强的阶段性判断，但仍需跟踪后续更新触发器。主要支撑来自：小米集团 2018 全球发售招股书：招股书可验证原始用户入口和平台模型。 [ev_xiaomi_ipo_prospectus_20180625]。主要约束是：暂未形成明确反证，但不能因此视为已证实；新浪科技小米手机发布会实录：早期发布会材料直接指向发烧…</p><p class="note">置信度：高置信</p></li><li><strong>这个源头基因今天还能解释什么，不能解释什么？</strong><p>专业回答：围绕“这个源头基因今天还能解释什么，不能解释什么？”，当前信息足以形成较强的阶段性判断，但仍需跟踪后续更新触发器。主要支撑来自：小米集团 2018 全球发售招股书：招股书可验证原始用户入口和平台模型。 [ev_xiaomi_ipo_prospectus_20180625]。主要约束是：暂未形成明确反证，但不能因此视为已证实；新浪科技小米手机发布会实录：早期发布会材料…</p><p class="note">置信度：高置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>4</strong> 支持 / <strong>0</strong> 反证 / <strong>0</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">证据</span> <a href="https://cnbj1.fds.api.xiaomi.com/company/financial/en-US/IPO.pdf">小米集团 2018 全球发售招股书</a> <span class="chip">ev_xiaomi_ipo_prospectus_20180625</span><p class="note">招股书可验证原始用户入口和平台模型。</p></li><li><span class="chip">证据</span> <a href="https://www.mi.com/global/ir/?mod=article_inline">小米全球 IR 招股概要</a> <span class="chip">ev_xiaomi_global_ir_triathlon_20180503</span><p class="note">招股概要披露米粉、MIUI 论坛和多设备用户，能具体化早期用户。</p></li><li><span class="chip">研报</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP201903041302343751_1.pdf">精准研究小米 2018 深度报告</a> <span class="chip">ev_xiaomi_jingzhun_deep_report_20181105</span><p class="note">研报将发烧友用户参与纳入商业模型源头。</p></li><li><span class="chip">消息</span> <a href="https://tech.sina.com.cn/t/2011-08-16/14305927089.shtml">新浪科技小米手机发布会实录</a> <span class="chip">ev_xiaomi_mi1_launch_transcript_20110816</span><p class="note">早期发布会材料直接指向发烧友和线上用户切口。</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要补首批预约用户、论坛用户画像、地域和渠道结构、复购与口碑传播证据。</li><li>需要补充能直接回答“这个回答最需要哪条一手证据验证？”的观点。</li><li>缺少观点类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/source_origin/source_origin_q5_first_customers.html">打开 L2 下钻页</a></article>
+<article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>早期优势来自哪里？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：小米全球 IR 招股概要将公司定义为以智能手机和智能硬件连接 IoT 平台为核心的互联网公司；披露 2018 年 3 月 MIUI 月活约 1.9 亿、MIUI 论坛月活超过 900 万、超过 140 万用户连接 5 台以上小米产品，并把…；小米 2021 年报硬件净利率承诺：小米 2021 年报披露，公司自 2018 年起承诺硬件业务（智能手机、IoT 与生活消费产品）整体净利率每年不超过 5.0%，若超过则向用户返还超出部分；2021 年硬件业务整体净利率低于 2.0%；小米 IR 管理层：管理层页面显示，雷军为创始人、董事长兼 CEO；林斌为联合创始人、副董事长；卢伟冰为合伙人兼总裁；高管团队覆盖手机、国际业务、中国区、财务、研发和技术委员会等职能；小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险…</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：小米全球 IR 招股概要将公司定义为以智能手机和智能硬件连接 IoT 平台为核心的互联网公司；披露 2018 年 3 月 MIUI 月活约 1.9 亿、MIUI 论坛月活超过 900 万、超过 140 万用户连接 5 台以上小米产品，并把…。主要边界是：小米 2021 年报硬件净利率承诺：小米 2021 年报披露，公司自 2018 年起承诺硬件业务（智能手机、IoT 与生活消费产品）整体…</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>这个回答最需要哪条一手证据验证？</strong><p>专业回答：围绕“这个回答最需要哪条一手证据验证？”，当前信息足以形成较强的阶段性判断，但仍需跟踪后续更新触发器。主要支撑来自：小米全球 IR 招股概要：招股概要将早期优势拆成创新、效率、新零售、IoT 和互联网服务。 [ev_xiaomi_global_ir_triathlon_20180503]。主要约束是：暂未形成明确反证，但不能因此视为已证实；新浪科技小米手机发布会实录…</p><p class="note">置信度：高置信</p></li><li><strong>这个源头基因今天还能解释什么，不能解释什么？</strong><p>专业回答：围绕“这个源头基因今天还能解释什么，不能解释什么？”，当前信息足以形成较强的阶段性判断，但仍需跟踪后续更新触发器。主要支撑来自：小米全球 IR 招股概要：招股概要将早期优势拆成创新、效率、新零售、IoT 和互联网服务。 [ev_xiaomi_global_ir_triathlon_20180503]。主要约束是：暂未形成明确反证，但不能因此视为已证实；新浪科技小米手…</p><p class="note">置信度：高置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>6</strong> 支持 / <strong>1</strong> 反证 / <strong>0</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">证据</span> <a href="https://www.mi.com/global/ir/?mod=article_inline">小米全球 IR 招股概要</a> <span class="chip">ev_xiaomi_global_ir_triathlon_20180503</span><p class="note">招股概要将早期优势拆成创新、效率、新零售、IoT 和互联网服务。</p></li><li><span class="chip">证据</span> <a href="https://xiaomi.gcs-web.com/static-files/b85f34c0-0010-4a8c-94b9-269d8cd4eca4">小米 2021 年报硬件净利率承诺</a> <span class="chip">ev_xiaomi_hardware_margin_pledge_2021_ar</span><p class="note">硬件净利率承诺验证低硬件利润与用户信任之间的制度化绑定。</p></li><li><span class="chip">研报</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP202111181530843075_1.pdf">国盛证券小米 2021 深度报告</a> <span class="chip">ev_xiaomi_guosheng_deep_report_20211117</span><p class="note">研报提供阶段化能力演进视角。</p></li><li><span class="chip">研报</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP202502281643062470_1.pdf">甬兴证券小米 2025 深度报告</a> <span class="chip">ev_xiaomi_yongxing_deep_report_20250228</span><p class="note">研报把早期手机/AIoT 基因连接到当前人车家生态。</p></li><li><span class="chip">消息</span> <a href="https://tech.sina.com.cn/t/2011-08-16/14305927089.shtml">新浪科技小米手机发布会实录</a> <span class="chip">ev_xiaomi_mi1_launch_transcript_20110816</span><p class="note">早期公开材料可验证当时强调的产品和渠道打法。</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要补早期组织分工、供应链账期、渠道费用率、硬件毛利和研发投入资料。</li><li>需要补充能直接回答“这个回答最需要哪条一手证据验证？”的观点。</li><li>缺少观点类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/source_origin/source_origin_q6_early_advantage.html">打开 L2 下钻页</a></article>
+<article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>早期飞轮如何形成？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型；小米全球 IR 招股概要将公司定义为以智能手机和智能硬件连接 IoT 平台为核心的互联网公司；披露 2018 年 3 月 MIUI 月活约 1.9 亿、MIUI 论坛月活超过 900 万、超过 140 万用户连接 5 台以上小米产品，并把…；小米 2021 年报硬件净利率承诺：小米 2021 年报披露，公司自 2018 年起承诺硬件业务（智能手机、IoT 与生活消费产品）整体净利率每年不超过 5.0%，若超过则向用户返还超出部分；2021 年硬件业务整体净利率低于 2.0%；小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 …</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型。主要边界是：小米 2021 年报硬件净利率承诺：小米 2021 年报披露，公司自 2018 年起承诺硬件业务（智能手机、IoT 与生活消费产品）整体净利率每年不超过 5.0%，若…</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>这个回答最需要哪条一手证据验证？</strong><p>专业回答：围绕“这个回答最需要哪条一手证据验证？”，当前信息足以形成较强的阶段性判断，但仍需跟踪后续更新触发器。主要支撑来自：小米集团 2018 全球发售招股书：招股书描述手机、智能硬件和 IoT 平台连接的原始模型。 [ev_xiaomi_ipo_prospectus_20180625]。主要约束是：暂未形成明确反证，但不能因此视为已证实；新浪科技小米手机发布会实录：201…</p><p class="note">置信度：高置信</p></li><li><strong>这个源头基因今天还能解释什么，不能解释什么？</strong><p>专业回答：围绕“这个源头基因今天还能解释什么，不能解释什么？”，当前信息足以形成较强的阶段性判断，但仍需跟踪后续更新触发器。主要支撑来自：小米集团 2018 全球发售招股书：招股书描述手机、智能硬件和 IoT 平台连接的原始模型。 [ev_xiaomi_ipo_prospectus_20180625]。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下…</p><p class="note">置信度：高置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>6</strong> 支持 / <strong>1</strong> 反证 / <strong>0</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">证据</span> <a href="https://cnbj1.fds.api.xiaomi.com/company/financial/en-US/IPO.pdf">小米集团 2018 全球发售招股书</a> <span class="chip">ev_xiaomi_ipo_prospectus_20180625</span><p class="note">招股书描述手机、智能硬件和 IoT 平台连接的原始模型。</p></li><li><span class="chip">证据</span> <a href="https://www.mi.com/global/ir/?mod=article_inline">小米全球 IR 招股概要</a> <span class="chip">ev_xiaomi_global_ir_triathlon_20180503</span><p class="note">招股概要明确三支柱模型：硬件、新零售、互联网服务。</p></li><li><span class="chip">研报</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP201903041302343751_1.pdf">精准研究小米 2018 深度报告</a> <span class="chip">ev_xiaomi_jingzhun_deep_report_20181105</span><p class="note">研报把硬件放量、IoT 生态和互联网变现放在一个商业模型里。</p></li><li><span class="chip">研报</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP202502281643062470_1.pdf">甬兴证券小米 2025 深度报告</a> <span class="chip">ev_xiaomi_yongxing_deep_report_20250228</span><p class="note">研报将源头模型延展到人车家生态。</p></li><li><span class="chip">消息</span> <a href="https://tech.sina.com.cn/t/2011-08-16/14305927089.shtml">新浪科技小米手机发布会实录</a> <span class="chip">ev_xiaomi_mi1_launch_transcript_20110816</span><p class="note">2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和…</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要补早期到当前的用户规模、IoT 连接设备、多设备用户、互联网服务毛利和硬件利润率序列。</li><li>需要补充能直接回答“这个回答最需要哪条一手证据验证？”的观点。</li><li>缺少观点类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/source_origin/source_origin_q7_flywheel.html">打开 L2 下钻页</a></article>
+<article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>源头基因今天是否仍有效？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：小米全球 IR 招股概要将公司定义为以智能手机和智能硬件连接 IoT 平台为核心的互联网公司；披露 2018 年 3 月 MIUI 月活约 1.9 亿、MIUI 论坛月活超过 900 万、超过 140 万用户连接 5 台以上小米产品，并把…；小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连接 IoT 设…；小米 2021 年报硬件净利率承诺：小米 2021 年报披露，公司自 2018 年起承诺硬件业务（智能手机、IoT 与生活消费产品）整体净利率每年不超过 5.0%，若超过则向用户返还超出部分；2021 年硬件业务整体净利率低于 2.0%；国家市场监督管理总局小米 SU7 召回公告：国家市场监督管理总局公告显示，小米汽车召回 …</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：小米全球 IR 招股概要将公司定义为以智能手机和智能硬件连接 IoT 平台为核心的互联网公司；披露 2018 年 3 月 MIUI 月活约 1.9 亿、MIUI 论坛月活超过 900 万、超过 140 万用户连接 5 台以上小米产品，并把…。主要边界是：小米 2021 年报硬件净利率承诺：小米 2021 年报披露，公司自 2018 年起承诺硬件业务（智能手机、IoT 与生活消费产品）整体…</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>这个回答最需要哪条一手证据验证？</strong><p>专业回答：围绕“这个回答最需要哪条一手证据验证？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：小米全球 IR 招股概要：招股概要中的三支柱模型仍能解释今天的人车家生态入口。 [ev_xiaomi_global_ir_triathlon_20180503]。主要约束是：小米 2021 年报硬件净利率承诺：硬件净利率承诺提示硬件规模并不等于高利润池。 […</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li><li><strong>这个源头基因今天还能解释什么，不能解释什么？</strong><p>专业回答：围绕“这个源头基因今天还能解释什么，不能解释什么？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：小米全球 IR 招股概要：招股概要中的三支柱模型仍能解释今天的人车家生态入口。 [ev_xiaomi_global_ir_triathlon_20180503]。主要约束是：小米 2021 年报硬件净利率承诺：硬件净利率承诺提示硬件规模并不等于高…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>4</strong> 支持 / <strong>3</strong> 反证 / <strong>1</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">证据</span> <a href="https://www.mi.com/global/ir/?mod=article_inline">小米全球 IR 招股概要</a> <span class="chip">ev_xiaomi_global_ir_triathlon_20180503</span><p class="note">招股概要中的三支柱模型仍能解释今天的人车家生态入口。</p></li><li><span class="chip">证据</span> <a href="https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/03/24/5-35-03/25Q4%20EN%20AC%20Xiaomi.pdf">小米集团 2025 年度业绩公告</a> <span class="chip">ev_xiaomi_2025_results_announcement_20260324</span><p class="note">业绩公告显示 EV 已进入财务级业务结构。</p></li><li><span class="chip">研报</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP202502281643062470_1.pdf">甬兴证券小米 2025 深度报告</a> <span class="chip">ev_xiaomi_yongxing_deep_report_20250228</span><p class="note">研报把手机/AIoT 基因与汽车、IoT、互联网服务当前结构相连接。</p></li><li><span class="chip">研报</span> <a href="https://www.baogaobox.com/insights/241123000003814.html">申万宏源小米 2024 深度报告摘要</a> <span class="chip">ev_xiaomi_shenwan_deep_report_20241118</span><p class="note">低可靠报告摘要只能用于提示进一步验证方向。</p></li><li><span class="chip">消息</span> <a href="https://tech.sina.com.cn/t/2011-08-16/14305927089.shtml">新浪科技小米手机发布会实录</a> <span class="chip">ev_xiaomi_mi1_launch_transcript_20110816</span><p class="note">2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和…</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要补 EV 单车收入、单车毛利、订单等待周期、产能利用率、质保计提、召回成本和用户满意度。</li><li>需要补充能直接回答“这个回答最需要哪条一手证据验证？”的观点。</li><li>缺少观点类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/source_origin/source_origin_q8_dna_today.html">打开 L2 下钻页</a></article></div></article>
+<article class="qa-static-card report-section-card"><p class="eyebrow">L1 / 公司历史</p><h3>公司历史：哪些节点真正改变了商业模型、治理或资本配置？</h3><div class="field"><b>上抛结论</b><p>综合子问题信息，本层结论是：小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型；历史增长主要来自内生能力、融资环境，还是跨品类扩张：小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 I…；小米 2025 年报不同投票权与董事会披露：年报显示，小米采用不同投票权结构：每股 A 类股份有 10 票，每股 B 类股份有 1 票；截至 2025 年 12 月 31 日，雷军对非保留事项拥有约 61.0% 投票权，林斌拥有约 6.7%；EV 转型是能力延伸，还是能力跃迁：小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x…</p></div><div class="field"><b>高优先级缺口</b><ul><li>需要按阶段补分部毛利、互联网服务收入结构、EV 单车毛利和售后成本。</li><li>需要补充能直接回答“每次历史转型是否真的改变利润池？”的消息、观点。</li><li>缺少消息类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/history.html">打开 L1 工作页</a><div class="l2-grid report-l2-grid"><article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>哪些历史节点真正改变了商业模型？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连接 IoT 设…；小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型；精准研究小米 2018 深度报告：精准研究 2018 年小米深度报告采用“发展历程、业务布局、商业模式、公司本质”的结构写源头，把 MIUI 用户参与、手机硬件放量、IoT 生态和互联网变现放在同一商业模型里分析。该来源用于学习专业报告写…；甬兴证券小米 2025 深度报告：甬兴证券 2025 年小米深度报告以公司概览、发展历程、业务构成和人车家生态展开…</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连接 IoT 设…；小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，…</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>每次历史转型是否真的改变利润池？</strong><p>专业回答：围绕“每次历史转型是否真的改变利润池？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：小米集团 2025 年度业绩公告：业绩公告提供手机、IoT、MAU、EV 交付和新业务收入。 [ev_xiaomi_2025_results_announcement_20260324]。主要约束是：小米集团 2018 全球发售招股书：2018 年招股书描述…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li><li><strong>哪些节点只是规模扩大，哪些节点是模型切换？</strong><p>专业回答：围绕“哪些节点只是规模扩大，哪些节点是模型切换？”，当前可形成初步判断，结论强度取决于后续一手证据和高可靠研报补充。主要支撑来自：小米集团 2018 全球发售招股书：招股书定义原始模型。 [ev_xiaomi_ipo_prospectus_20180625]。主要约束是：暂未形成明确反证，但不能因此视为已证实；新浪科技小米手机发布会实录：早期发布会验证第一产品节点。…</p><p class="note">置信度：中置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>6</strong> 支持 / <strong>0</strong> 反证 / <strong>0</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">证据</span> <a href="https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/03/24/5-35-03/25Q4%20EN%20AC%20Xiaomi.pdf">小米集团 2025 年度业绩公告</a> <span class="chip">ev_xiaomi_2025_results_announcement_20260324</span><p class="note">业绩公告提供手机、IoT、MAU、EV 交付和新业务收入。</p></li><li><span class="chip">证据</span> 待补入库：ev_xiaomi_segments <span class="chip">ev_xiaomi_segments</span><p class="note">测试样本：提供手机、IoT、互联网服务和 EV 规模指标。</p></li><li><span class="chip">研报</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP201903041302343751_1.pdf">精准研究小米 2018 深度报告</a> <span class="chip">ev_xiaomi_jingzhun_deep_report_20181105</span><p class="note">研报把硬件放量、IoT 生态和互联网变现放在同一模型里。</p></li><li><span class="chip">证据</span> <a href="https://cnbj1.fds.api.xiaomi.com/company/financial/en-US/IPO.pdf">小米集团 2018 全球发售招股书</a> <span class="chip">ev_xiaomi_ipo_prospectus_20180625</span><p class="note">招股书定义原始模型。</p></li><li><span class="chip">研报</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP202502281643062470_1.pdf">甬兴证券小米 2025 深度报告</a> <span class="chip">ev_xiaomi_yongxing_deep_report_20250228</span><p class="note">研报把当前人车家生态连接到业务构成。</p></li><li><span class="chip">消息</span> <a href="https://tech.sina.com.cn/t/2011-08-16/14305927089.shtml">新浪科技小米手机发布会实录</a> <span class="chip">ev_xiaomi_mi1_launch_transcript_20110816</span><p class="note">早期发布会验证第一产品节点。</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要按阶段补分部毛利、互联网服务收入结构、EV 单车毛利和售后成本。</li><li>需要补充能直接回答“每次历史转型是否真的改变利润池？”的消息、观点。</li><li>缺少消息类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/history/history_h1_model_shift.html">打开 L2 下钻页</a></article>
+<article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>历史增长主要来自内生能力、融资环境，还是跨品类扩张？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：小米集团 2025 年报：FY2025 收入为人民币 4573 亿元，毛利为 1018 亿元，年度利润为 416 亿元，经调整净利润为 392 亿元，总资产为 5081 亿元，总权益为 2663 亿元，经营现金流为 341 亿元，现金资源…；增长来自公司能力，还是行业周期和融资窗口：小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台…；小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型；国盛证券小米 2021 深度报告：国盛证券 2021 年小米深度报告将公司源头写成阶段化演进：2010 年创立、2…</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：小米集团 2025 年报：FY2025 收入为人民币 4573 亿元，毛利为 1018 亿元，年度利润为 416 亿元，经调整净利润为 392 亿元，总资产为 5081 亿元，总权益为 2663 亿元，经营现金流为 341 亿元，现金资源…；增长来自公司能力，还是行业周期和融资窗口：小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 …</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>历史增长消耗了多少资本，回报是否足够？</strong><p>专业回答：围绕“历史增长消耗了多少资本，回报是否足够？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：小米集团 2025 年报：年报提供集团收入、利润、现金资源和经营现金流。 [ev_xiaomi_2025_annual_report_20260428]。主要约束是：小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li><li><strong>增长来自公司能力，还是行业周期和融资窗口？</strong><p>专业回答：围绕“增长来自公司能力，还是行业周期和融资窗口？”，当前可形成初步判断，结论强度取决于后续一手证据和高可靠研报补充。主要支撑来自：小米集团 2018 全球发售招股书：招股书确认上市窗口与原始业务模型。 [ev_xiaomi_ipo_prospectus_20180625]。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：围绕…</p><p class="note">置信度：中置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>5</strong> 支持 / <strong>0</strong> 反证 / <strong>0</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">证据</span> <a href="https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/04/28/5-29-08/Xiaomi%202025%20AR_EN.pdf">小米集团 2025 年报</a> <span class="chip">ev_xiaomi_2025_annual_report_20260428</span><p class="note">年报提供集团收入、利润、现金资源和经营现金流。</p></li><li><span class="chip">证据</span> 待补入库：ev_xiaomi_annual <span class="chip">ev_xiaomi_annual</span><p class="note">测试样本：提供资本开支线索。</p></li><li><span class="chip">研报</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP202502281643062470_1.pdf">甬兴证券小米 2025 深度报告</a> <span class="chip">ev_xiaomi_yongxing_deep_report_20250228</span><p class="note">研报提示新业务和人车家生态扩张。</p></li><li><span class="chip">证据</span> <a href="https://cnbj1.fds.api.xiaomi.com/company/financial/en-US/IPO.pdf">小米集团 2018 全球发售招股书</a> <span class="chip">ev_xiaomi_ipo_prospectus_20180625</span><p class="note">招股书确认上市窗口与原始业务模型。</p></li><li><span class="chip">研报</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP202111181530843075_1.pdf">国盛证券小米 2021 深度报告</a> <span class="chip">ev_xiaomi_guosheng_deep_report_20211117</span><p class="note">研报将 2021 年进入智能电动车纳入阶段化演进。</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要补分业务资本开支、研发投入、经营现金流桥接、回购分红和新业务亏损/毛利。</li><li>需要补充能直接回答“历史增长消耗了多少资本，回报是否足够？”的消息、观点。</li><li>缺少消息类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/history/history_h2_growth_source.html">打开 L2 下钻页</a></article>
+<article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>治理结构如何影响历史资本配置？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：创始人控制权提高战略耐心，还是放大资本配置风险：小米 2025 年报不同投票权与董事会披露：年报显示，小米采用不同投票权结构：每股 A 类股份有 10 票，每股 B 类股份有 1 票；截至 2025 年 12 月 31 日，雷军对非保留事…；小米 IR 管理层：管理层页面显示，雷军为创始人、董事长兼 CEO；林斌为联合创始人、副董事长；卢伟冰为合伙人兼总裁；高管团队覆盖手机、国际业务、中国区、财务、研发和技术委员会等职能；小米 2025 年报不同投票权与董事会披露：年报显示，小米采用不同投票权结构：每股 A 类股份有 10 票，每股 B 类股份有 1 票；截至 2025 年 12 月 31 日，雷军对非保留事项拥有约 61.0% 投票权，林斌拥有约 6.7%；国盛证券小米 2021 深度报告：国盛证券 2021 年小米深度报告将公司源头写成阶段化演进：2010 年创立、2011 年发布小米手机、20…</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：创始人控制权提高战略耐心，还是放大资本配置风险：小米 2025 年报不同投票权与董事会披露：年报显示，小米采用不同投票权结构：每股 A 类股份有 10 票，每股 B 类股份有 1 票；截至 2025 年 12 月 31 日，雷军对非保留事…；小米 IR 管理层：管理层页面显示，雷军为创始人、董事长兼 CEO；林斌为联合创始人、副董事长；卢伟冰为合伙人兼总裁；高管团队覆盖手机、国际业务、中…</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>创始人控制权提高战略耐心，还是放大资本配置风险？</strong><p>专业回答：围绕“创始人控制权提高战略耐心，还是放大资本配置风险？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：小米 2025 年报不同投票权与董事会披露：年报披露 WVR 与雷军投票权。 [ev_xiaomi_board_wvr_20260428]。主要约束是：小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li><li><strong>管理层演进是否匹配业务复杂度上升？</strong><p>专业回答：围绕“管理层演进是否匹配业务复杂度上升？”，当前可形成初步判断，结论强度取决于后续一手证据和高可靠研报补充。主要支撑来自：小米 IR 管理层：管理层页面确认高管结构。 [ev_xiaomi_management_20260518]。主要约束是：暂未形成明确反证，但不能因此视为已证实；甬兴证券小米 2025 深度报告：研报提示人车家生态对组织能力的要求。 [ev_xi…</p><p class="note">置信度：中置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>1</strong> 支持 / <strong>2</strong> 反证 / <strong>1</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">证据</span> <a href="https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/04/28/5-29-08/Xiaomi%202025%20AR_EN.pdf">小米 2025 年报不同投票权与董事会披露</a> <span class="chip">ev_xiaomi_board_wvr_20260428</span><p class="note">年报披露 WVR 与雷军投票权。</p></li><li><span class="chip">证据</span> 待补入库：ev_xiaomi_governance <span class="chip">ev_xiaomi_governance</span><p class="note">测试样本：披露少数股东治理风险。</p></li><li><span class="chip">研报</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP202111181530843075_1.pdf">国盛证券小米 2021 深度报告</a> <span class="chip">ev_xiaomi_guosheng_deep_report_20211117</span><p class="note">国盛证券 2021 年小米深度报告将公司源头写成阶段化演进：2010 年创立、2011 年发布小米手机、2013 年布局 IoT、2021 年…</p></li><li><span class="chip">消息</span> <a href="https://tech.sina.com.cn/t/2011-08-16/14305927089.shtml">新浪科技小米手机发布会实录</a> <span class="chip">ev_xiaomi_mi1_launch_transcript_20110816</span><p class="note">2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和…</p></li><li><span class="chip">证据</span> <a href="https://ir.mi.com/corporate-information/management">小米 IR 管理层</a> <span class="chip">ev_xiaomi_management_20260518</span><p class="note">管理层页面确认高管结构。</p></li><li><span class="chip">研报</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP202502281643062470_1.pdf">甬兴证券小米 2025 深度报告</a> <span class="chip">ev_xiaomi_yongxing_deep_report_20250228</span><p class="note">研报提示人车家生态对组织能力的要求。</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要补董事会独立性、重大投资审批、股权激励、回购分红和关联交易历史。</li><li>需要补充能直接回答“创始人控制权提高战略耐心，还是放大资本配置风险？”的观点。</li><li>缺少观点类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/history/history_h3_governance_capital.html">打开 L2 下钻页</a></article>
+<article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>EV 转型是能力延伸，还是能力跃迁？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连接 IoT 设…；国家市场监督管理总局小米 SU7 召回公告：国家市场监督管理总局公告显示，小米汽车召回 116,887 辆 2024 年 2 月 6 日至 2025 年 8 月 30 日生产的 SU7 标准版，原因是 L2 高速领航辅助驾驶在极端场景识别…；甬兴证券小米 2025 深度报告：甬兴证券 2025 年小米深度报告以公司概览、发展历程、业务构成和人车家生态展开，把早期手机/AIoT 基因与汽车、IoT、互联网服务的当前结构相连接。该来源用于校准“源头必须解释今天业务结构”的写法；业绩公告显示 EV 已进入收入和交付结构。主要边界是：国家市场监督管理总局小米 SU7 召…</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连接 IoT 设…；国家市场监督管理总局小米 SU7 召回公告：国家市场监督管理总局公告显示，小米汽车召回 116,887 辆 2024 年 2 月 6 日至 2025…</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>手机/AIoT 的哪些能力可以迁移到 EV？</strong><p>专业回答：围绕“手机/AIoT 的哪些能力可以迁移到 EV？”，当前可形成初步判断，结论强度取决于后续一手证据和高可靠研报补充。主要支撑来自：小米集团 2025 年度业绩公告：业绩公告显示 EV 已形成交付规模。 [ev_xiaomi_2025_results_announcement_20260324]。主要约束是：暂未形成明确反证，但不能因此视为已证实；新浪科技小米手机发…</p><p class="note">置信度：中置信</p></li><li><strong>哪些能力不能从手机时代直接迁移？</strong><p>专业回答：围绕“哪些能力不能从手机时代直接迁移？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：小米全球 IR 招股概要：小米全球 IR 招股概要将公司定义为以智能手机和智能硬件连接 IoT 平台为核心的互联网公司；披露 2018 年 3 月 MIUI 月活约 1.9 亿、MIUI 论坛月活超过 900 万、超… [ev_xiaomi_global_i…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li><li><strong>EV 单车经济是否已经证明模型成立？</strong><p>专业回答：围绕“EV 单车经济是否已经证明模型成立？”，当前可形成初步判断，结论强度取决于后续一手证据和高可靠研报补充。主要支撑来自：小米集团 2025 年度业绩公告：业绩公告提供 EV 收入和交付规模。 [ev_xiaomi_2025_results_announcement_20260324]。主要约束是：暂未形成明确反证，但不能因此视为已证实；甬兴证券小米 2025 深…</p><p class="note">置信度：中置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>2</strong> 支持 / <strong>2</strong> 反证 / <strong>0</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">证据</span> <a href="https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/03/24/5-35-03/25Q4%20EN%20AC%20Xiaomi.pdf">小米集团 2025 年度业绩公告</a> <span class="chip">ev_xiaomi_2025_results_announcement_20260324</span><p class="note">业绩公告显示 EV 已形成交付规模。</p></li><li><span class="chip">研报</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP202502281643062470_1.pdf">甬兴证券小米 2025 深度报告</a> <span class="chip">ev_xiaomi_yongxing_deep_report_20250228</span><p class="note">研报连接手机/AIoT 基因与人车家生态。</p></li><li><span class="chip">消息</span> <a href="https://tech.sina.com.cn/t/2011-08-16/14305927089.shtml">新浪科技小米手机发布会实录</a> <span class="chip">ev_xiaomi_mi1_launch_transcript_20110816</span><p class="note">2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和…</p></li><li><span class="chip">证据</span> <a href="https://www.samr.gov.cn/zw/zh/art/2025/art_2152a981c72a430b9d10d6ef5cd9c09b.html">国家市场监督管理总局小米 SU7 召回公告</a> <span class="chip">ev_xiaomi_samr_su7_recall_20250919</span><p class="note">召回公告验证安全和监管责任边界。</p></li><li><span class="chip">证据</span> 待补入库：ev_xiaomi_recall <span class="chip">ev_xiaomi_recall</span><p class="note">测试样本：召回信息验证新业务风险边界。</p></li><li><span class="chip">研报</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP202111181530843075_1.pdf">国盛证券小米 2021 深度报告</a> <span class="chip">ev_xiaomi_guosheng_deep_report_20211117</span><p class="note">国盛证券 2021 年小米深度报告将公司源头写成阶段化演进：2010 年创立、2011 年发布小米手机、2013 年布局 IoT、2021 年…</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要补订单结构、用户来源、软件使用、渠道触点和复购/转介绍证据。</li><li>需要补充能直接回答“手机/AIoT 的哪些能力可以迁移到 EV？”的观点。</li><li>缺少观点类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/history/history_h4_ev_transition.html">打开 L2 下钻页</a></article>
+<article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>哪些历史风险会反证当前叙事？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：手机基本盘弱化会不会反证生态叙事：IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第三，并在内存…；国家市场监督管理总局小米 SU7 召回公告：国家市场监督管理总局公告显示，小米汽车召回 116,887 辆 2024 年 2 月 6 日至 2025 年 8 月 30 日生产的 SU7 标准版，原因是 L2 高速领航辅助驾驶在极端场景识别…；IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第三，并在内存约束和产品组合调整下同比下降 19…；小米 2025 年报不同投票权与董事会披露：年报显示，小米采用不同投票权结构：每股 …</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：手机基本盘弱化会不会反证生态叙事：IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第三，并在内存…；国家市场监督管理总局小米 SU7 召回公告：国家市场监督管理总局公告显示，小米汽车召回 116,887 辆 2024 年 2 月 6 日至 2025…</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>手机基本盘弱化会不会反证生态叙事？</strong><p>专业回答：围绕“手机基本盘弱化会不会反证生态叙事？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：小米全球 IR 招股概要：小米全球 IR 招股概要将公司定义为以智能手机和智能硬件连接 IoT 平台为核心的互联网公司；披露 2018 年 3 月 MIUI 月活约 1.9 亿、MIUI 论坛月活超过 900 万、超… [ev_xiaomi_global_…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li><li><strong>召回和安全成本是否会改变 EV 历史叙事？</strong><p>专业回答：围绕“召回和安全成本是否会改变 EV 历史叙事？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：国盛证券小米 2021 深度报告：国盛证券 2021 年小米深度报告将公司源头写成阶段化演进：2010 年创立、2011 年发布小米手机、2013 年布局 IoT、2021 年进入智能电动车，并把历史节点连接到手机 x AI… [ev_xiaomi…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>0</strong> 支持 / <strong>4</strong> 反证 / <strong>1</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">证据</span> <a href="https://www.idc.com/promo/smartphone-market-share/market-share/">IDC 2026 Q1 智能手机市场数据</a> <span class="chip">ev_xiaomi_idc_q1_2026_smartphone_20260512</span><p class="note">IDC 数据显示 Q1 2026 手机出货和份额承压。</p></li><li><span class="chip">证据</span> 待补入库：ev_xiaomi_smartphone_share <span class="chip">ev_xiaomi_smartphone_share</span><p class="note">测试样本：显示手机出货同比下滑。</p></li><li><span class="chip">研报</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP202111181530843075_1.pdf">国盛证券小米 2021 深度报告</a> <span class="chip">ev_xiaomi_guosheng_deep_report_20211117</span><p class="note">国盛证券 2021 年小米深度报告将公司源头写成阶段化演进：2010 年创立、2011 年发布小米手机、2013 年布局 IoT、2021 年…</p></li><li><span class="chip">消息</span> <a href="https://tech.sina.com.cn/t/2011-08-16/14305927089.shtml">新浪科技小米手机发布会实录</a> <span class="chip">ev_xiaomi_mi1_launch_transcript_20110816</span><p class="note">2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和…</p></li><li><span class="chip">证据</span> <a href="https://www.samr.gov.cn/zw/zh/art/2025/art_2152a981c72a430b9d10d6ef5cd9c09b.html">国家市场监督管理总局小米 SU7 召回公告</a> <span class="chip">ev_xiaomi_samr_su7_recall_20250919</span><p class="note">召回公告提示安全和监管成本。</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要连续季度手机出货、份额、ASP、毛利、库存和服务 MAU/ARPU 数据。</li><li>需要补充能直接回答“手机基本盘弱化会不会反证生态叙事？”的观点。</li><li>缺少观点类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/history/history_h5_disconfirming_history.html">打开 L2 下钻页</a></article></div></article>
+<article class="qa-static-card report-section-card"><p class="eyebrow">L1 / 当下生意</p><h3>当下生意：公司今天靠什么赚钱，利润和现金流质量如何？</h3><div class="field"><b>上抛结论</b><p>综合子问题信息，本层结论是：小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连接 IoT 设…；IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第三，并在内存约束和产品组合调整下同比下降 19…；小米集团 2025 年报：FY2025 收入为人民币 4573 亿元，毛利为 1018 亿元，年度利润为 416 亿元，经调整净利润为 392 亿元，总资产为 5081 亿元，总权益为 2663 亿元，经营现金流为 341 亿元，现金资源…；小米 2021 年报硬件净利率承诺：小米 2021 年报披露，公司自 2018 年起…</p></div><div class="field"><b>高优先级缺口</b><ul><li>需要分部毛利、费用分摊、经营现金流和营运资本桥接。</li><li>需要补充能直接回答“哪个业务真正贡献毛利和现金，而不只是贡献收入？”的消息、观点。</li><li>缺少消息类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/current_business.html">打开 L1 工作页</a><div class="l2-grid report-l2-grid"><article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>当前收入、毛利、现金流分别由哪些业务驱动？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连接 IoT 设…；小米 2021 年报硬件净利率承诺：小米 2021 年报披露，公司自 2018 年起承诺硬件业务（智能手机、IoT 与生活消费产品）整体净利率每年不超过 5.0%，若超过则向用户返还超出部分；2021 年硬件业务整体净利率低于 2.0%；当前生意是否具备可重复的收入、利润和现金转化质量；当前生意是否具备可重复的收入、利润和现金转化质量。（小米集团 2025 年度业绩公告，ev_xiaomi_2025_results_announcement_20260324）。尚未闭合的是：需要分部毛利、费用分摊、经营现金流和营运资本桥接</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连接 IoT 设…。尚未闭合的是：需要分部毛利、费用分摊、经营现金流和营运资本桥接。。</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>哪个业务真正贡献毛利和现金，而不只是贡献收入？</strong><p>专业回答：围绕“哪个业务真正贡献毛利和现金，而不只是贡献收入？”，当前信息足以形成较强的阶段性判断，但仍需跟踪后续更新触发器。主要支撑来自：小米集团 2025 年度业绩公告：当前生意是否具备可重复的收入、利润和现金转化质量。 [ev_xiaomi_2025_results_announcement_20260324]。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和…</p><p class="note">置信度：高置信</p></li><li><strong>EV/AI 新业务的单车经济是否已经足以单独成立？</strong><p>专业回答：围绕“EV/AI 新业务的单车经济是否已经足以单独成立？”，当前信息足以形成较强的阶段性判断，但仍需跟踪后续更新触发器。主要支撑来自：小米集团 2025 年度业绩公告：当前生意是否具备可重复的收入、利润和现金转化质量。 [ev_xiaomi_2025_results_announcement_20260324]。主要约束是：暂未形成明确反证，但不能因此视为已证实；消…</p><p class="note">置信度：高置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>2</strong> 支持 / <strong>0</strong> 反证 / <strong>0</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">证据</span> <a href="https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/03/24/5-35-03/25Q4%20EN%20AC%20Xiaomi.pdf">小米集团 2025 年度业绩公告</a> <span class="chip">ev_xiaomi_2025_results_announcement_20260324</span><p class="note">当前生意是否具备可重复的收入、利润和现金转化质量。</p></li><li><span class="chip">证据</span> <a href="https://xiaomi.gcs-web.com/static-files/b85f34c0-0010-4a8c-94b9-269d8cd4eca4">小米 2021 年报硬件净利率承诺</a> <span class="chip">ev_xiaomi_hardware_margin_pledge_2021_ar</span><p class="note">当前生意是否具备可重复的收入、利润和现金转化质量。</p></li><li><span class="chip">研报</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP201903041302343751_1.pdf">精准研究小米 2018 深度报告</a> <span class="chip">ev_xiaomi_jingzhun_deep_report_20181105</span><p class="note">精准研究 2018 年小米深度报告采用“发展历程、业务布局、商业模式、公司本质”的结构写源头，把 MIUI 用户参与、手机硬件放量、IoT 生…</p></li><li><span class="chip">研报</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP202502281643062470_1.pdf">甬兴证券小米 2025 深度报告</a> <span class="chip">ev_xiaomi_yongxing_deep_report_20250228</span><p class="note">甬兴证券 2025 年小米深度报告以公司概览、发展历程、业务构成和人车家生态展开，把早期手机/AIoT 基因与汽车、IoT、互联网服务的当前结…</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要分部毛利、费用分摊、经营现金流和营运资本桥接。</li><li>需要补充能直接回答“哪个业务真正贡献毛利和现金，而不只是贡献收入？”的消息、观点。</li><li>缺少消息类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/current_business/current_business_profit_cash.html">打开 L2 下钻页</a></article>
+<article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>客户是谁，需求来自刚需、替换、生态绑定还是促销？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：需求来自真实替换/生态绑定，还是促销与新品周期：IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名…；小米全球 IR 招股概要将公司定义为以智能手机和智能硬件连接 IoT 平台为核心的互联网公司；披露 2018 年 3 月 MIUI 月活约 1.9 亿、MIUI 论坛月活超过 900 万、超过 140 万用户连接 5 台以上小米产品，并把…；IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第三，并在内存约束和产品组合调整下同比下降 19…；Counterpoint 2026 Q1 智能手机出货跟踪：Gadgets360 引…</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：需求来自真实替换/生态绑定，还是促销与新品周期：IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名…；小米全球 IR 招股概要将公司定义为以智能手机和智能硬件连接 IoT 平台为核心的互联网公司；披露 2018 年 3 月 MIUI 月活约 1.9 …</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>需求来自真实替换/生态绑定，还是促销与新品周期？</strong><p>专业回答：围绕“需求来自真实替换/生态绑定，还是促销与新品周期？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：IDC 2026 Q1 智能手机市场数据：当前生意是否具备可重复的收入、利润和现金转化质量。 [ev_xiaomi_idc_q1_2026_smartphone_20260512]；消…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li><li><strong>手机入口变化是否影响 IoT 和互联网服务变现？</strong><p>专业回答：围绕“手机入口变化是否影响 IoT 和互联网服务变现？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：小米全球 IR 招股概要：小米全球 IR 招股概要将公司定义为以智能手机和智能硬件连接 IoT 平台为核心的互联网公司；披露 2018 年 3 月 MIUI 月活约 1.9 亿、MIUI 论坛月活超过 900 万、超… [ev_xiaomi_…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>0</strong> 支持 / <strong>2</strong> 反证 / <strong>0</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">研报</span> <a href="https://www.idc.com/promo/smartphone-market-share/market-share/">IDC 2026 Q1 智能手机市场数据</a> <span class="chip">ev_xiaomi_idc_q1_2026_smartphone_20260512</span><p class="note">当前生意是否具备可重复的收入、利润和现金转化质量。</p></li><li><span class="chip">研报</span> <a href="https://www.gadgets360.com/mobiles/news/global-smartphone-shipments-decline-apple-samsung-xiaomi-oppo-vivo-yoy-counterpoint-11339687">Counterpoint 2026 Q1 智能手机出货跟踪</a> <span class="chip">ev_xiaomi_counterpoint_q1_2026_smartphone_20260410</span><p class="note">当前生意是否具备可重复的收入、利润和现金转化质量。</p></li><li><span class="chip">证据</span> <a href="https://www.mi.com/global/ir/?mod=article_inline">小米全球 IR 招股概要</a> <span class="chip">ev_xiaomi_global_ir_triathlon_20180503</span><p class="note">小米全球 IR 招股概要将公司定义为以智能手机和智能硬件连接 IoT 平台为核心的互联网公司；披露 2018 年 3 月 MIUI 月活约 1…</p></li><li><span class="chip">消息</span> <a href="https://tech.sina.com.cn/t/2011-08-16/14305927089.shtml">新浪科技小米手机发布会实录</a> <span class="chip">ev_xiaomi_mi1_launch_transcript_20110816</span><p class="note">2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和…</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要订单、等待周期、库存、价格变化和用户留存数据。</li><li>需要补充能直接回答“需求来自真实替换/生态绑定，还是促销与新品周期？”的证据、消息、观点。</li><li>缺少证据类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/current_business/current_business_customer_demand.html">打开 L2 下钻页</a></article>
+<article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>利润质量是否能转化为现金和可重复回报？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：小米集团 2025 年报：FY2025 收入为人民币 4573 亿元，毛利为 1018 亿元，年度利润为 416 亿元，经调整净利润为 392 亿元，总资产为 5081 亿元，总权益为 2663 亿元，经营现金流为 341 亿元，现金资源…；高毛利业务的持续性来自结构优势还是阶段性周期：小米集团 2025 年报：FY2025 收入为人民币 4573 亿元，毛利为 1018 亿元，年度利润为 416 亿元，经调整净利润为 392 亿元，总资产为 5081 亿元，总权益为 266…；当前生意是否具备可重复的收入、利润和现金转化质量；当前生意是否具备可重复的收入、利润和现金转化质量。（小米集团 2025 年报，ev_xiaomi_2025_annual_report_20260428）。尚未闭合的是：需要经营现金流、应收应付、库存和资本开支桥接</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：小米集团 2025 年报：FY2025 收入为人民币 4573 亿元，毛利为 1018 亿元，年度利润为 416 亿元，经调整净利润为 392 亿元，总资产为 5081 亿元，总权益为 2663 亿元，经营现金流为 341 亿元，现金资源…；高毛利业务的持续性来自结构优势还是阶段性周期：小米集团 2025 年报：FY2025 收入为人民币 4573 亿元，毛利为 1018 亿元，年度利润…</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>利润能否稳定转化为现金？</strong><p>专业回答：围绕“利润能否稳定转化为现金？”，当前可形成初步判断，结论强度取决于后续一手证据和高可靠研报补充。主要支撑来自：小米集团 2025 年报：当前生意是否具备可重复的收入、利润和现金转化质量。 [ev_xiaomi_2025_annual_report_20260428]。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：补充覆盖…</p><p class="note">置信度：中置信</p></li><li><strong>高毛利业务的持续性来自结构优势还是阶段性周期？</strong><p>专业回答：围绕“高毛利业务的持续性来自结构优势还是阶段性周期？”，当前可形成初步判断，结论强度取决于后续一手证据和高可靠研报补充。主要支撑来自：小米集团 2025 年报：当前生意是否具备可重复的收入、利润和现金转化质量。 [ev_xiaomi_2025_annual_report_20260428]。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一…</p><p class="note">置信度：中置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>1</strong> 支持 / <strong>0</strong> 反证 / <strong>0</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">证据</span> <a href="https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/04/28/5-29-08/Xiaomi%202025%20AR_EN.pdf">小米集团 2025 年报</a> <span class="chip">ev_xiaomi_2025_annual_report_20260428</span><p class="note">当前生意是否具备可重复的收入、利润和现金转化质量。</p></li><li><span class="chip">研报</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP202502281643062470_1.pdf">甬兴证券小米 2025 深度报告</a> <span class="chip">ev_xiaomi_yongxing_deep_report_20250228</span><p class="note">甬兴证券 2025 年小米深度报告以公司概览、发展历程、业务构成和人车家生态展开，把早期手机/AIoT 基因与汽车、IoT、互联网服务的当前结…</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要经营现金流、应收应付、库存和资本开支桥接。</li><li>需要补充能直接回答“利润能否稳定转化为现金？”的研报、消息、观点。</li><li>缺少研报类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/current_business/current_business_profit_quality.html">打开 L2 下钻页</a></article></div></article>
+<article class="qa-static-card report-section-card"><p class="eyebrow">L1 / 产业链定位</p><h3>产业链定位：公司在哪些环节捕获或丢失经济性？</h3><div class="field"><b>上抛结论</b><p>综合子问题信息，本层结论是：公司在产业链中掌握哪一段价值，哪一段被供应商/渠道…：小米 IR 公司简介：小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司；IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第三，并在内存约束和产品组合调整下同比下降 19…；小米 IR 公司简介：小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司；Counterpoint 2026 Q1 智能手机出货跟踪：Gadgets360 引述 Counterpoint 2026 年 Q1 智能手机…</p></div><div class="field"><b>高优先级缺口</b><ul><li>需要关键部件价格、供应商集中度、账期和采购承诺。</li><li>需要补充能直接回答“上游供应商是否拿走关键经济性？”的研报、消息、观点。</li><li>缺少研报类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/value_chain.html">打开 L1 工作页</a><div class="l2-grid report-l2-grid"><article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>公司在产业链中掌握哪一段价值，哪一段被供应商/渠道/客户拿走？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：小米 IR 公司简介：小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司；公司是否在产业链中占据能持续捕获经济性的环节；公司是否在产业链中占据能持续捕获经济性的环节。（小米 IR 公司简介，ev_xiaomi_company_profile_20260518）；产业链定位已有可用研究起点，但上抛结论仍需经过下钻问题验证。尚未闭合的是：需要关键部件价格、供应商集中度、账期和采购承诺</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：小米 IR 公司简介：小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司。尚未闭合的是：需要关键部件价格、供应商集中度、账期和采购承诺。。</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>上游供应商是否拿走关键经济性？</strong><p>专业回答：围绕“上游供应商是否拿走关键经济性？”，当前可形成初步判断，结论强度取决于后续一手证据和高可靠研报补充。主要支撑来自：小米 IR 公司简介：公司是否在产业链中占据能持续捕获经济性的环节。 [ev_xiaomi_company_profile_20260518]。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：补充覆盖“上游供…</p><p class="note">置信度：中置信</p></li><li><strong>渠道、客户和售后体系是否侵蚀利润？</strong><p>专业回答：围绕“渠道、客户和售后体系是否侵蚀利润？”，当前可形成初步判断，结论强度取决于后续一手证据和高可靠研报补充。主要支撑来自：小米 IR 公司简介：公司是否在产业链中占据能持续捕获经济性的环节。 [ev_xiaomi_company_profile_20260518]。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：补充覆盖“渠…</p><p class="note">置信度：中置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>1</strong> 支持 / <strong>0</strong> 反证 / <strong>0</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">证据</span> <a href="https://ir.mi.com/corporate-information/company-profile">小米 IR 公司简介</a> <span class="chip">ev_xiaomi_company_profile_20260518</span><p class="note">公司是否在产业链中占据能持续捕获经济性的环节。</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要关键部件价格、供应商集中度、账期和采购承诺。</li><li>需要补充能直接回答“上游供应商是否拿走关键经济性？”的研报、消息、观点。</li><li>缺少研报类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/value_chain/value_chain_value_capture.html">打开 L2 下钻页</a></article>
+<article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>上游供给、关键部件和产能是否会改变毛利与交付？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：关键部件短缺或涨价会不会改变交付和毛利：IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第三，并…；IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第三，并在内存约束和产品组合调整下同比下降 19…；Counterpoint 2026 Q1 智能手机出货跟踪：Gadgets360 引述 Counterpoint 2026 年 Q1 智能手机监测称，全球智能手机出货同比下降 6%，小米以约 12% 份额保持第三名，但受内存短缺和入门价位…；公司是否在产业链中占据能持续捕获经济性的环节。主要边界是：IDC 2026 Q1 智…</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：关键部件短缺或涨价会不会改变交付和毛利：IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第三，并…；IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出…</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>关键部件短缺或涨价会不会改变交付和毛利？</strong><p>专业回答：围绕“关键部件短缺或涨价会不会改变交付和毛利？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：IDC 2026 Q1 智能手机市场数据：公司是否在产业链中占据能持续捕获经济性的环节。 [ev_xiaomi_idc_q1_2026_smartphone_20260512]；消息和观点线索…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li><li><strong>产能爬坡是否会带来质量和成本压力？</strong><p>专业回答：围绕“产能爬坡是否会带来质量和成本压力？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：IDC 2026 Q1 智能手机市场数据：公司是否在产业链中占据能持续捕获经济性的环节。 [ev_xiaomi_idc_q1_2026_smartphone_20260512]；消息和观点线索不足。…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>0</strong> 支持 / <strong>2</strong> 反证 / <strong>0</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">研报</span> <a href="https://www.idc.com/promo/smartphone-market-share/market-share/">IDC 2026 Q1 智能手机市场数据</a> <span class="chip">ev_xiaomi_idc_q1_2026_smartphone_20260512</span><p class="note">公司是否在产业链中占据能持续捕获经济性的环节。</p></li><li><span class="chip">研报</span> <a href="https://www.gadgets360.com/mobiles/news/global-smartphone-shipments-decline-apple-samsung-xiaomi-oppo-vivo-yoy-counterpoint-11339687">Counterpoint 2026 Q1 智能手机出货跟踪</a> <span class="chip">ev_xiaomi_counterpoint_q1_2026_smartphone_20260410</span><p class="note">公司是否在产业链中占据能持续捕获经济性的环节。</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要内存、芯片、电池、座舱和智能驾驶硬件价格数据。</li><li>需要补充能直接回答“关键部件短缺或涨价会不会改变交付和毛利？”的证据、消息、观点。</li><li>缺少证据类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/value_chain/value_chain_supply_constraint.html">打开 L2 下钻页</a></article>
+<article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>渠道和售后体系是否足以支撑当前业务复杂度？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：小米 IR 公司简介：小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司；IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第三，并在内存约束和产品组合调整下同比下降 19…；Counterpoint 2026 Q1 智能手机出货跟踪：Gadgets360 引述 Counterpoint 2026 年 Q1 智能手机监测称，全球智能手机出货同比下降 6%，小米以约 12% 份额保持第三名，但受内存短缺和入门价位…；公司是否在产业链中占据能持续捕获经济性的环节。主要边界是：IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示…</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：小米 IR 公司简介：小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司。主要边界是：IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第…</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>线下渠道和售后能力是否匹配汽车业务复杂度？</strong><p>专业回答：围绕“线下渠道和售后能力是否匹配汽车业务复杂度？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：小米 IR 公司简介：公司是否在产业链中占据能持续捕获经济性的环节。 [ev_xiaomi_company_profile_20260518]。主要约束是：IDC 2026 Q1 智能手机市场数据：公司是否在产业链中占据能持续捕获经济性的环节。 […</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li><li><strong>库存和渠道压货是否会掩盖真实需求？</strong><p>专业回答：围绕“库存和渠道压货是否会掩盖真实需求？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：小米 IR 公司简介：公司是否在产业链中占据能持续捕获经济性的环节。 [ev_xiaomi_company_profile_20260518]。主要约束是：IDC 2026 Q1 智能手机市场数据：公司是否在产业链中占据能持续捕获经济性的环节。 [ev_x…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>1</strong> 支持 / <strong>2</strong> 反证 / <strong>0</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">证据</span> <a href="https://ir.mi.com/corporate-information/company-profile">小米 IR 公司简介</a> <span class="chip">ev_xiaomi_company_profile_20260518</span><p class="note">公司是否在产业链中占据能持续捕获经济性的环节。</p></li><li><span class="chip">研报</span> <a href="https://www.idc.com/promo/smartphone-market-share/market-share/">IDC 2026 Q1 智能手机市场数据</a> <span class="chip">ev_xiaomi_idc_q1_2026_smartphone_20260512</span><p class="note">公司是否在产业链中占据能持续捕获经济性的环节。</p></li><li><span class="chip">研报</span> <a href="https://www.gadgets360.com/mobiles/news/global-smartphone-shipments-decline-apple-samsung-xiaomi-oppo-vivo-yoy-counterpoint-11339687">Counterpoint 2026 Q1 智能手机出货跟踪</a> <span class="chip">ev_xiaomi_counterpoint_q1_2026_smartphone_20260410</span><p class="note">公司是否在产业链中占据能持续捕获经济性的环节。</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要门店、服务中心、维修能力和用户投诉数据。</li><li>需要补充能直接回答“线下渠道和售后能力是否匹配汽车业务复杂度？”的消息、观点。</li><li>缺少消息类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/value_chain/value_chain_channel_service.html">打开 L2 下钻页</a></article></div></article>
+<article class="qa-static-card report-section-card"><p class="eyebrow">L1 / 竞争格局</p><h3>竞争格局：公司真实竞争地位和竞争强度如何？</h3><div class="field"><b>上抛结论</b><p>综合子问题信息，本层结论是：小米 IR 公司简介：小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司；份额变化是结构性优势、周期波动，还是补贴/价格战结果：IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%…；小米 2025 年报不同投票权与董事会披露：年报显示，小米采用不同投票权结构：每股 A 类股份有 10 票，每股 B 类股份有 1 票；截至 2025 年 12 月 31 日，雷军对非保留事项拥有约 61.0% 投票权，林斌拥有约 6.7%；小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入…</p></div><div class="field"><b>高优先级缺口</b><ul><li>需要全球和区域份额、价格带、产品周期和渠道数据。</li><li>需要补充能直接回答“手机业务到底和谁竞争，竞争维度是什么？”的观点。</li><li>缺少观点类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/competition.html">打开 L1 工作页</a><div class="l2-grid report-l2-grid"><article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>公司真实竞争对手是谁，竞争发生在价格、产品、渠道还是生态？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：小米 IR 公司简介：小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司；EV 业务的真实竞品是传统车企、新势力还是生态型科…：小米 IR 公司简介：小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司；小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连接 IoT 设…；小米 IR 管理层：管理层页面显示，雷军为创始人、董事长兼 CEO；林斌为联合创始人、副董事长；卢伟冰为合伙人兼总裁；高管团队覆盖手机、国际业…</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：小米 IR 公司简介：小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司；EV 业务的真实竞品是传统车企、新势力还是生态型科…：小米 IR 公司简介：小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT…</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>手机业务到底和谁竞争，竞争维度是什么？</strong><p>专业回答：围绕“手机业务到底和谁竞争，竞争维度是什么？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：小米 IR 公司简介：竞争地位是否足以抵抗价格战、份额流失和利润率压缩。 [ev_xiaomi_company_profile_20260518]。主要约束是：IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li><li><strong>EV 业务的真实竞品是传统车企、新势力还是生态型科技公司？</strong><p>专业回答：围绕“EV 业务的真实竞品是传统车企、新势力还是生态型科技公司？”，当前信息足以形成较强的阶段性判断，但仍需跟踪后续更新触发器。主要支撑来自：小米 IR 公司简介：竞争地位是否足以抵抗价格战、份额流失和利润率压缩。 [ev_xiaomi_company_profile_20260518]。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步…</p><p class="note">置信度：高置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>3</strong> 支持 / <strong>0</strong> 反证 / <strong>0</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">证据</span> <a href="https://ir.mi.com/corporate-information/company-profile">小米 IR 公司简介</a> <span class="chip">ev_xiaomi_company_profile_20260518</span><p class="note">竞争地位是否足以抵抗价格战、份额流失和利润率压缩。</p></li><li><span class="chip">证据</span> <a href="https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/03/24/5-35-03/25Q4%20EN%20AC%20Xiaomi.pdf">小米集团 2025 年度业绩公告</a> <span class="chip">ev_xiaomi_2025_results_announcement_20260324</span><p class="note">竞争地位是否足以抵抗价格战、份额流失和利润率压缩。</p></li><li><span class="chip">研报</span> <a href="https://www.idc.com/promo/smartphone-market-share/market-share/">IDC 2026 Q1 智能手机市场数据</a> <span class="chip">ev_xiaomi_idc_q1_2026_smartphone_20260512</span><p class="note">IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%…</p></li><li><span class="chip">消息</span> <a href="https://tech.sina.com.cn/t/2011-08-16/14305927089.shtml">新浪科技小米手机发布会实录</a> <span class="chip">ev_xiaomi_mi1_launch_transcript_20110816</span><p class="note">2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和…</p></li><li><span class="chip">研报</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP202502281643062470_1.pdf">甬兴证券小米 2025 深度报告</a> <span class="chip">ev_xiaomi_yongxing_deep_report_20250228</span><p class="note">甬兴证券 2025 年小米深度报告以公司概览、发展历程、业务构成和人车家生态展开，把早期手机/AIoT 基因与汽车、IoT、互联网服务的当前结…</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要全球和区域份额、价格带、产品周期和渠道数据。</li><li>需要补充能直接回答“手机业务到底和谁竞争，竞争维度是什么？”的观点。</li><li>缺少观点类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/competition/competition_real_peers.html">打开 L2 下钻页</a></article>
+<article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>份额变化是结构性优势、周期波动，还是补贴/价格战结果？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第三，并在内存约束和产品组合调整下同比下降 19…；份额变化来自区域结构、产品结构还是真实竞争力：小米 2021 年报硬件净利率承诺：小米 2021 年报披露，公司自 2018 年起承诺硬件业务（智能手机、IoT 与生活消费产品）整体净利率每年不超过 5.0%，若超过则向用户返还超出部分；…；Counterpoint 2026 Q1 智能手机出货跟踪：Gadgets360 引述 Counterpoint 2026 年 Q1 智能手机监测称，全球智能手机出货同比下降 6%，小米以约 12% 份额保持第三名，但受内存短缺和入门价位…；CnEVPost / 乘联会 2025 中国新能源车份额：CnEVPost 引述乘联…</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第三，并在内存约束和产品组合调整下同比下降 19…；份额变化来自区域结构、产品结构还是真实竞争力：小米 2021 年报硬件净利率承诺：小米 2021 年报披露，公司自 2018 年起承诺硬件业务（智能…</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>份额增长是否伴随利润质量改善？</strong><p>专业回答：围绕“份额增长是否伴随利润质量改善？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：CnEVPost / 乘联会 2025 中国新能源车份额：竞争地位是否足以抵抗价格战、份额流失和利润率压缩。 [ev_xiaomi_cnevpost_nev_share_20260112]。主要约束是：IDC 2026 Q1 智能手机市场数据：竞争地位是否足以…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li><li><strong>份额变化来自区域结构、产品结构还是真实竞争力？</strong><p>专业回答：围绕“份额变化来自区域结构、产品结构还是真实竞争力？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：小米 2021 年报硬件净利率承诺：小米 2021 年报披露，公司自 2018 年起承诺硬件业务（智能手机、IoT 与生活消费产品）整体净利率每年不超过 5.0%，若超过则向用户返还超出部分；2021 年硬件业务整体净利率低于… [ev_xia…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>1</strong> 支持 / <strong>2</strong> 反证 / <strong>0</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">研报</span> <a href="https://www.idc.com/promo/smartphone-market-share/market-share/">IDC 2026 Q1 智能手机市场数据</a> <span class="chip">ev_xiaomi_idc_q1_2026_smartphone_20260512</span><p class="note">竞争地位是否足以抵抗价格战、份额流失和利润率压缩。</p></li><li><span class="chip">研报</span> <a href="https://www.gadgets360.com/mobiles/news/global-smartphone-shipments-decline-apple-samsung-xiaomi-oppo-vivo-yoy-counterpoint-11339687">Counterpoint 2026 Q1 智能手机出货跟踪</a> <span class="chip">ev_xiaomi_counterpoint_q1_2026_smartphone_20260410</span><p class="note">竞争地位是否足以抵抗价格战、份额流失和利润率压缩。</p></li><li><span class="chip">证据</span> <a href="https://xiaomi.gcs-web.com/static-files/b85f34c0-0010-4a8c-94b9-269d8cd4eca4">小米 2021 年报硬件净利率承诺</a> <span class="chip">ev_xiaomi_hardware_margin_pledge_2021_ar</span><p class="note">小米 2021 年报披露，公司自 2018 年起承诺硬件业务（智能手机、IoT 与生活消费产品）整体净利率每年不超过 5.0%，若超过则向用户…</p></li><li><span class="chip">消息</span> <a href="https://tech.sina.com.cn/t/2011-08-16/14305927089.shtml">新浪科技小米手机发布会实录</a> <span class="chip">ev_xiaomi_mi1_launch_transcript_20110816</span><p class="note">2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和…</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要份额、ASP、毛利率、补贴和库存数据。</li><li>需要补充能直接回答“份额增长是否伴随利润质量改善？”的证据、消息、观点。</li><li>缺少证据类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/competition/competition_share_quality.html">打开 L2 下钻页</a></article>
+<article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>竞争强度是否会侵蚀毛利、现金流或品牌定位？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：小米 2025 年报不同投票权与董事会披露：年报显示，小米采用不同投票权结构：每股 A 类股份有 10 票，每股 B 类股份有 1 票；截至 2025 年 12 月 31 日，雷军对非保留事项拥有约 61.0% 投票权，林斌拥有约 6.7%；小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型；竞争地位是否足以抵抗价格战、份额流失和利润率压缩；“竞争强度是否会侵蚀毛利、现金流或品牌定位？”的正向叙事需要先解释反证和边界条件。主要边界是：小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：小米 2025 年报不同投票权与董事会披露：年报显示，小米采用不同投票权结构：每股 A 类股份有 10 票，每股 B 类股份有 1 票；截至 2025 年 12 月 31 日，雷军对非保留事项拥有约 61.0% 投票权，林斌拥有约 6.7%。主要边界是：小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同…</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>价格战是否会持续压缩毛利和现金流？</strong><p>专业回答：围绕“价格战是否会持续压缩毛利和现金流？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：小米 2025 年报不同投票权与董事会披露：竞争地位是否足以抵抗价格战、份额流失和利润率压缩。 [ev_xiaomi_board_wvr_20260428]。主要约束是：小米集团 2018 全球发售招股书：竞争地位是否足以抵抗价格战、份额流失和利润率压缩。…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li><li><strong>品牌定位能否支撑中高端化，而不是只靠性价比？</strong><p>专业回答：围绕“品牌定位能否支撑中高端化，而不是只靠性价比？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：小米 2025 年报不同投票权与董事会披露：竞争地位是否足以抵抗价格战、份额流失和利润率压缩。 [ev_xiaomi_board_wvr_20260428]。主要约束是：小米集团 2018 全球发售招股书：竞争地位是否足以抵抗价格战、份额流失和利…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>1</strong> 支持 / <strong>1</strong> 反证 / <strong>0</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">证据</span> <a href="https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/04/28/5-29-08/Xiaomi%202025%20AR_EN.pdf">小米 2025 年报不同投票权与董事会披露</a> <span class="chip">ev_xiaomi_board_wvr_20260428</span><p class="note">竞争地位是否足以抵抗价格战、份额流失和利润率压缩。</p></li><li><span class="chip">证据</span> <a href="https://cnbj1.fds.api.xiaomi.com/company/financial/en-US/IPO.pdf">小米集团 2018 全球发售招股书</a> <span class="chip">ev_xiaomi_ipo_prospectus_20180625</span><p class="note">竞争地位是否足以抵抗价格战、份额流失和利润率压缩。</p></li><li><span class="chip">研报</span> <a href="https://www.idc.com/promo/smartphone-market-share/market-share/">IDC 2026 Q1 智能手机市场数据</a> <span class="chip">ev_xiaomi_idc_q1_2026_smartphone_20260512</span><p class="note">IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%…</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要竞品价格、促销、BOM 成本和毛利弹性。</li><li>需要补充能直接回答“价格战是否会持续压缩毛利和现金流？”的消息、观点。</li><li>缺少消息类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/competition/competition_competition_intensity.html">打开 L2 下钻页</a></article></div></article>
+<article class="qa-static-card report-section-card"><p class="eyebrow">L1 / 战略分析</p><h3>战略分析：战略是否沿着能力边界扩展，并能被数据验证？</h3><div class="field"><b>上抛结论</b><p>综合子问题信息，本层结论是：小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连接 IoT 设…；IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第三，并在内存约束和产品组合调整下同比下降 19…；小米集团 2025 年报：FY2025 收入为人民币 4573 亿元，毛利为 1018 亿元，年度利润为 416 亿元，经调整净利润为 392 亿元，总资产为 5081 亿元，总权益为 2663 亿元，经营现金流为 341 亿元，现金资源…；小米 IR 管理层：管理层页面显示，雷军为创始人、董事长兼 CEO；林斌为联合创始人…</p></div><div class="field"><b>高优先级缺口</b><ul><li>需要用户体验、软件、生态连接、渠道和品牌流量证据。</li><li>需要补充能直接回答“哪些能力能从手机/AIoT 迁移到汽车？”的观点。</li><li>缺少观点类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/strategy.html">打开 L1 工作页</a><div class="l2-grid report-l2-grid"><article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>公司战略是否从源头能力自然延伸，还是跨越了能力边界？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连接 IoT 设…；小米 IR 管理层：管理层页面显示，雷军为创始人、董事长兼 CEO；林斌为联合创始人、副董事长；卢伟冰为合伙人兼总裁；高管团队覆盖手机、国际业务、中国区、财务、研发和技术委员会等职能；小米全球 IR 招股概要将公司定义为以智能手机和智能硬件连接 IoT 平台为核心的互联网公司；披露 2018 年 3 月 MIUI 月活约 1.9 亿、MIUI 论坛月活超过 900 万、超过 140 万用户连接 5 台以上小米产品，并把…；国盛证券小米 2021 深度报告：国盛证券 2021 年小米深度报告将公司源头写成阶段化演进：2010 年创立、2011 年发布小米手机、20…</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连接 IoT 设…。尚未闭合的是：需要用户体验、软件、生态连接、渠道和品牌流量证据。。</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>哪些能力能从手机/AIoT 迁移到汽车？</strong><p>专业回答：围绕“哪些能力能从手机/AIoT 迁移到汽车？”，当前信息足以形成较强的阶段性判断，但仍需跟踪后续更新触发器。主要支撑来自：小米集团 2025 年度业绩公告：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。 [ev_xiaomi_2025_results_announcement_20260324]。主要约束是：暂未形成明确反证，但不能因此视为已证实；申万宏…</p><p class="note">置信度：高置信</p></li><li><strong>哪些能力必须重新建设，不能从旧业务外推？</strong><p>专业回答：围绕“哪些能力必须重新建设，不能从旧业务外推？”，当前信息足以形成较强的阶段性判断，但仍需跟踪后续更新触发器。主要支撑来自：小米集团 2025 年度业绩公告：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。 [ev_xiaomi_2025_results_announcement_20260324]。主要约束是：暂未形成明确反证，但不能因此视为已证实；申万宏…</p><p class="note">置信度：高置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>6</strong> 支持 / <strong>0</strong> 反证 / <strong>1</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">证据</span> <a href="https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/03/24/5-35-03/25Q4%20EN%20AC%20Xiaomi.pdf">小米集团 2025 年度业绩公告</a> <span class="chip">ev_xiaomi_2025_results_announcement_20260324</span><p class="note">战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。</p></li><li><span class="chip">证据</span> <a href="https://ir.mi.com/corporate-information/management">小米 IR 管理层</a> <span class="chip">ev_xiaomi_management_20260518</span><p class="note">战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。</p></li><li><span class="chip">研报</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP202111181530843075_1.pdf">国盛证券小米 2021 深度报告</a> <span class="chip">ev_xiaomi_guosheng_deep_report_20211117</span><p class="note">战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。</p></li><li><span class="chip">研报</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP202502281643062470_1.pdf">甬兴证券小米 2025 深度报告</a> <span class="chip">ev_xiaomi_yongxing_deep_report_20250228</span><p class="note">战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。</p></li><li><span class="chip">消息</span> <a href="https://tech.sina.com.cn/t/2011-08-16/14305927089.shtml">新浪科技小米手机发布会实录</a> <span class="chip">ev_xiaomi_mi1_launch_transcript_20110816</span><p class="note">2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和…</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要用户体验、软件、生态连接、渠道和品牌流量证据。</li><li>需要补充能直接回答“哪些能力能从手机/AIoT 迁移到汽车？”的观点。</li><li>缺少观点类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/strategy/strategy_capability_boundary.html">打开 L2 下钻页</a></article>
+<article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>资源配置是否与最重要利润池和风险点匹配？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连接 IoT 设…；IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第三，并在内存约束和产品组合调整下同比下降 19…；Counterpoint 2026 Q1 智能手机出货跟踪：Gadgets360 引述 Counterpoint 2026 年 Q1 智能手机监测称，全球智能手机出货同比下降 6%，小米以约 12% 份额保持第三名，但受内存短缺和入门价位…；CnEVPost / 乘联会 2025 中国新能源车份额：CnEVPost 引述乘联…</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连接 IoT 设…。主要边界是：IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 …</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>资源是否投向最重要利润池和最大约束点？</strong><p>专业回答：围绕“资源是否投向最重要利润池和最大约束点？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连… [ev_xiaomi_2…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li><li><strong>战略投入是否会削弱现金回报和少数股东经济性？</strong><p>专业回答：围绕“战略投入是否会削弱现金回报和少数股东经济性？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连… [ev_xiaom…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>1</strong> 支持 / <strong>2</strong> 反证 / <strong>0</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">证据</span> <a href="https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/03/24/5-35-03/25Q4%20EN%20AC%20Xiaomi.pdf">小米集团 2025 年度业绩公告</a> <span class="chip">ev_xiaomi_2025_results_announcement_20260324</span><p class="note">FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.…</p></li><li><span class="chip">研报</span> <a href="https://www.idc.com/promo/smartphone-market-share/market-share/">IDC 2026 Q1 智能手机市场数据</a> <span class="chip">ev_xiaomi_idc_q1_2026_smartphone_20260512</span><p class="note">战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。</p></li><li><span class="chip">研报</span> <a href="https://www.gadgets360.com/mobiles/news/global-smartphone-shipments-decline-apple-samsung-xiaomi-oppo-vivo-yoy-counterpoint-11339687">Counterpoint 2026 Q1 智能手机出货跟踪</a> <span class="chip">ev_xiaomi_counterpoint_q1_2026_smartphone_20260410</span><p class="note">战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。</p></li><li><span class="chip">消息</span> <a href="https://tech.sina.com.cn/t/2011-08-16/14305927089.shtml">新浪科技小米手机发布会实录</a> <span class="chip">ev_xiaomi_mi1_launch_transcript_20110816</span><p class="note">2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和…</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要研发、资本开支、人员、产能和营销投入拆分。</li><li>需要补充能直接回答“资源是否投向最重要利润池和最大约束点？”的观点。</li><li>缺少观点类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/strategy/strategy_resource_allocation.html">打开 L2 下钻页</a></article>
+<article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>战略投入能否被 KPI 和阶段性证据验证？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：小米集团 2025 年报：FY2025 收入为人民币 4573 亿元，毛利为 1018 亿元，年度利润为 416 亿元，经调整净利润为 392 亿元，总资产为 5081 亿元，总权益为 2663 亿元，经营现金流为 341 亿元，现金资源…；国家市场监督管理总局小米 SU7 召回公告：国家市场监督管理总局公告显示，小米汽车召回 116,887 辆 2024 年 2 月 6 日至 2025 年 8 月 30 日生产的 SU7 标准版，原因是 L2 高速领航辅助驾驶在极端场景识别…；战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证；“战略投入能否被 KPI 和阶段性证据验证？”的正向叙事需要先解释反证和边界条件。主要边界是：国家市场监督管理总局小米 SU7 召回公告：国家市场监督管理总局公告显示，小米汽车召回 116,887 辆 2024 年 2 月 6 日至 2025 年 8 月 30 日生产的…</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：小米集团 2025 年报：FY2025 收入为人民币 4573 亿元，毛利为 1018 亿元，年度利润为 416 亿元，经调整净利润为 392 亿元，总资产为 5081 亿元，总权益为 2663 亿元，经营现金流为 341 亿元，现金资源…。主要边界是：国家市场监督管理总局小米 SU7 召回公告：国家市场监督管理总局公告显示，小米汽车召回 116,887 辆 2024 年 2 月 6 日…</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>每个战略阶段应该用哪些 KPI 验证？</strong><p>专业回答：围绕“每个战略阶段应该用哪些 KPI 验证？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：小米集团 2025 年报：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。 [ev_xiaomi_2025_annual_report_20260428]。主要约束是：国家市场监督管理总局小米 SU7 召回公告：战略投入是否沿着公司能力边界扩展…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li><li><strong>什么数据触发战略判断上修或下修？</strong><p>专业回答：围绕“什么数据触发战略判断上修或下修？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：小米集团 2025 年报：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。 [ev_xiaomi_2025_annual_report_20260428]。主要约束是：国家市场监督管理总局小米 SU7 召回公告：战略投入是否沿着公司能力边界扩展，并能…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>1</strong> 支持 / <strong>1</strong> 反证 / <strong>0</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">证据</span> <a href="https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/04/28/5-29-08/Xiaomi%202025%20AR_EN.pdf">小米集团 2025 年报</a> <span class="chip">ev_xiaomi_2025_annual_report_20260428</span><p class="note">战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。</p></li><li><span class="chip">证据</span> <a href="https://www.samr.gov.cn/zw/zh/art/2025/art_2152a981c72a430b9d10d6ef5cd9c09b.html">国家市场监督管理总局小米 SU7 召回公告</a> <span class="chip">ev_xiaomi_samr_su7_recall_20250919</span><p class="note">战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。</p></li><li><span class="chip">研报</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP202111181530843075_1.pdf">国盛证券小米 2021 深度报告</a> <span class="chip">ev_xiaomi_guosheng_deep_report_20211117</span><p class="note">国盛证券 2021 年小米深度报告将公司源头写成阶段化演进：2010 年创立、2011 年发布小米手机、2013 年布局 IoT、2021 年…</p></li><li><span class="chip">消息</span> <a href="https://tech.sina.com.cn/t/2011-08-16/14305927089.shtml">新浪科技小米手机发布会实录</a> <span class="chip">ev_xiaomi_mi1_launch_transcript_20110816</span><p class="note">2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和…</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要交付、毛利、MAU、多设备用户、服务 ARPU 和质量成本。</li><li>需要补充能直接回答“每个战略阶段应该用哪些 KPI 验证？”的观点。</li><li>缺少观点类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/strategy/strategy_kpi_validation.html">打开 L2 下钻页</a></article></div></article>
+<article class="qa-static-card report-section-card"><p class="eyebrow">L1 / 组织、文化与治理</p><h3>组织、文化与治理：控制权、激励和组织能力是否支持长期复利？</h3><div class="field"><b>上抛结论</b><p>综合子问题信息，本层结论是：小米 IR 管理层：管理层页面显示，雷军为创始人、董事长兼 CEO；林斌为联合创始人、副董事长；卢伟冰为合伙人兼总裁；高管团队覆盖手机、国际业务、中国区、财务、研发和技术委员会等职能；小米集团 2025 年报：FY2025 收入为人民币 4573 亿元，毛利为 1018 亿元，年度利润为 416 亿元，经调整净利润为 392 亿元，总资产为 5081 亿元，总权益为 2663 亿元，经营现金流为 341 亿元，现金资源…；组织文化是复利资产，还是会放大盲区和路径依赖：小米集团 2025 年报：FY2025 收入为人民币 4573 亿元，毛利为 1018 亿元，年度利润为 416 亿元，经调整净利润为 392 亿元，总资产为 5081 亿元，总权益为 266…；小米 2025 年报不同投票权与董事会披露：年报显示，小米采用不同投票权结构：每股 A 类股份有 10 票，每股 B 类股份有 1 票；截至 …</p></div><div class="field"><b>高优先级缺口</b><ul><li>需要长期投入、产品周期、研发和重大项目复盘。</li><li>需要补充能直接回答“创始人控制权是否带来长期战略耐心？”的研报、消息、观点。</li><li>缺少研报类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/governance.html">打开 L1 工作页</a><div class="l2-grid report-l2-grid"><article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>创始人、控制权和管理层结构是否提升长期执行？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：小米 IR 管理层：管理层页面显示，雷军为创始人、董事长兼 CEO；林斌为联合创始人、副董事长；卢伟冰为合伙人兼总裁；高管团队覆盖手机、国际业务、中国区、财务、研发和技术委员会等职能；管理层、控制权和激励结构是否提升长期复利而非放大治理折价；管理层、控制权和激励结构是否提升长期复利而非放大治理折价。（小米 IR 管理层，ev_xiaomi_management_20260518）；组织、文化与治理已有可用研究起点，但上抛结论仍需经过下钻问题验证。尚未闭合的是：需要长期投入、产品周期、研发和重大项目复盘</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：小米 IR 管理层：管理层页面显示，雷军为创始人、董事长兼 CEO；林斌为联合创始人、副董事长；卢伟冰为合伙人兼总裁；高管团队覆盖手机、国际业务、中国区、财务、研发和技术委员会等职能。尚未闭合的是：需要长期投入、产品周期、研发和重大项目复盘。。</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>创始人控制权是否带来长期战略耐心？</strong><p>专业回答：围绕“创始人控制权是否带来长期战略耐心？”，当前可形成初步判断，结论强度取决于后续一手证据和高可靠研报补充。主要支撑来自：小米 IR 管理层：管理层、控制权和激励结构是否提升长期复利而非放大治理折价。 [ev_xiaomi_management_20260518]。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：补充覆盖“创…</p><p class="note">置信度：中置信</p></li><li><strong>控制权是否放大少数股东治理折价？</strong><p>专业回答：围绕“控制权是否放大少数股东治理折价？”，当前可形成初步判断，结论强度取决于后续一手证据和高可靠研报补充。主要支撑来自：小米 IR 管理层：管理层、控制权和激励结构是否提升长期复利而非放大治理折价。 [ev_xiaomi_management_20260518]。主要约束是：暂未形成明确反证，但不能因此视为已证实；消息和观点线索不足。下一步应优先验证：补充覆盖“控制…</p><p class="note">置信度：中置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>1</strong> 支持 / <strong>0</strong> 反证 / <strong>0</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">证据</span> <a href="https://ir.mi.com/corporate-information/management">小米 IR 管理层</a> <span class="chip">ev_xiaomi_management_20260518</span><p class="note">管理层、控制权和激励结构是否提升长期复利而非放大治理折价。</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要长期投入、产品周期、研发和重大项目复盘。</li><li>需要补充能直接回答“创始人控制权是否带来长期战略耐心？”的研报、消息、观点。</li><li>缺少研报类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/governance/governance_founder_control.html">打开 L2 下钻页</a></article>
+<article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>激励、董事会和少数股东保护是否足以约束资本配置？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：小米集团 2025 年报：FY2025 收入为人民币 4573 亿元，毛利为 1018 亿元，年度利润为 416 亿元，经调整净利润为 392 亿元，总资产为 5081 亿元，总权益为 2663 亿元，经营现金流为 341 亿元，现金资源…；小米 IR 管理层：管理层页面显示，雷军为创始人、董事长兼 CEO；林斌为联合创始人、副董事长；卢伟冰为合伙人兼总裁；高管团队覆盖手机、国际业务、中国区、财务、研发和技术委员会等职能；小米 2025 年报不同投票权与董事会披露：年报显示，小米采用不同投票权结构：每股 A 类股份有 10 票，每股 B 类股份有 1 票；截至 2025 年 12 月 31 日，雷军对非保留事项拥有约 61.0% 投票权，林斌拥有约 6.7%；小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权…</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：小米集团 2025 年报：FY2025 收入为人民币 4573 亿元，毛利为 1018 亿元，年度利润为 416 亿元，经调整净利润为 392 亿元，总资产为 5081 亿元，总权益为 2663 亿元，经营现金流为 341 亿元，现金资源…。主要边界是：小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同…</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>重大资本配置是否有足够约束？</strong><p>专业回答：围绕“重大资本配置是否有足够约束？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：小米集团 2025 年报：管理层、控制权和激励结构是否提升长期复利而非放大治理折价。 [ev_xiaomi_2025_annual_report_20260428]。主要约束是：小米集团 2018 全球发售招股书：管理层、控制权和激励结构是否提升长期复利而非放大…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li><li><strong>激励机制是否和每股价值创造一致？</strong><p>专业回答：围绕“激励机制是否和每股价值创造一致？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：小米集团 2025 年报：管理层、控制权和激励结构是否提升长期复利而非放大治理折价。 [ev_xiaomi_2025_annual_report_20260428]。主要约束是：小米集团 2018 全球发售招股书：管理层、控制权和激励结构是否提升长期复利而非…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>3</strong> 支持 / <strong>1</strong> 反证 / <strong>0</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">证据</span> <a href="https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/04/28/5-29-08/Xiaomi%202025%20AR_EN.pdf">小米集团 2025 年报</a> <span class="chip">ev_xiaomi_2025_annual_report_20260428</span><p class="note">管理层、控制权和激励结构是否提升长期复利而非放大治理折价。</p></li><li><span class="chip">证据</span> <a href="https://ir.mi.com/corporate-information/management">小米 IR 管理层</a> <span class="chip">ev_xiaomi_management_20260518</span><p class="note">管理层、控制权和激励结构是否提升长期复利而非放大治理折价。</p></li><li><span class="chip">消息</span> <a href="https://tech.sina.com.cn/t/2011-08-16/14305927089.shtml">新浪科技小米手机发布会实录</a> <span class="chip">ev_xiaomi_mi1_launch_transcript_20110816</span><p class="note">2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和…</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要董事会审批、投资回报披露、回购分红和融资记录。</li><li>需要补充能直接回答“重大资本配置是否有足够约束？”的研报、观点。</li><li>缺少研报类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/governance/governance_capital_discipline.html">打开 L2 下钻页</a></article>
+<article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>组织文化是复利资产，还是会放大盲区和路径依赖？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：小米集团 2025 年报：FY2025 收入为人民币 4573 亿元，毛利为 1018 亿元，年度利润为 416 亿元，经调整净利润为 392 亿元，总资产为 5081 亿元，总权益为 2663 亿元，经营现金流为 341 亿元，现金资源…；小米 2025 年报不同投票权与董事会披露：年报显示，小米采用不同投票权结构：每股 A 类股份有 10 票，每股 B 类股份有 1 票；截至 2025 年 12 月 31 日，雷军对非保留事项拥有约 61.0% 投票权，林斌拥有约 6.7%；小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型；管理层、控制权和激励结构是否提升长期复利而非放大治理折价。主要边界是：小米集团 2018 全球发售招股书：2018…</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：小米集团 2025 年报：FY2025 收入为人民币 4573 亿元，毛利为 1018 亿元，年度利润为 416 亿元，经调整净利润为 392 亿元，总资产为 5081 亿元，总权益为 2663 亿元，经营现金流为 341 亿元，现金资源…。主要边界是：小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同…</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>组织是否能处理手机、IoT、服务和汽车的复杂度？</strong><p>专业回答：围绕“组织是否能处理手机、IoT、服务和汽车的复杂度？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：小米集团 2025 年报：管理层、控制权和激励结构是否提升长期复利而非放大治理折价。 [ev_xiaomi_2025_annual_report_20260428]。主要约束是：小米集团 2018 全球发售招股书：管理层、控制权和激励结构是否…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li><li><strong>早期互联网效率文化是否会在汽车业务上形成盲区？</strong><p>专业回答：围绕“早期互联网效率文化是否会在汽车业务上形成盲区？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：小米集团 2025 年报：管理层、控制权和激励结构是否提升长期复利而非放大治理折价。 [ev_xiaomi_2025_annual_report_20260428]。主要约束是：小米集团 2018 全球发售招股书：管理层、控制权和激励结构是否提…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>2</strong> 支持 / <strong>1</strong> 反证 / <strong>0</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">证据</span> <a href="https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/04/28/5-29-08/Xiaomi%202025%20AR_EN.pdf">小米集团 2025 年报</a> <span class="chip">ev_xiaomi_2025_annual_report_20260428</span><p class="note">管理层、控制权和激励结构是否提升长期复利而非放大治理折价。</p></li><li><span class="chip">证据</span> <a href="https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/04/28/5-29-08/Xiaomi%202025%20AR_EN.pdf">小米 2025 年报不同投票权与董事会披露</a> <span class="chip">ev_xiaomi_board_wvr_20260428</span><p class="note">管理层、控制权和激励结构是否提升长期复利而非放大治理折价。</p></li><li><span class="chip">研报</span> <a href="https://pdf.dfcfw.com/pdf/H3_AP202502281643062470_1.pdf">甬兴证券小米 2025 深度报告</a> <span class="chip">ev_xiaomi_yongxing_deep_report_20250228</span><p class="note">甬兴证券 2025 年小米深度报告以公司概览、发展历程、业务构成和人车家生态展开，把早期手机/AIoT 基因与汽车、IoT、互联网服务的当前结…</p></li><li><span class="chip">消息</span> <a href="https://tech.sina.com.cn/t/2011-08-16/14305927089.shtml">新浪科技小米手机发布会实录</a> <span class="chip">ev_xiaomi_mi1_launch_transcript_20110816</span><p class="note">2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和…</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要管理层分工、汽车团队、质量体系和跨业务协同。</li><li>需要补充能直接回答“组织是否能处理手机、IoT、服务和汽车的复杂度？”的观点。</li><li>缺少观点类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/governance/governance_culture_blindspot.html">打开 L2 下钻页</a></article></div></article>
+<article class="qa-static-card report-section-card"><p class="eyebrow">L1 / 风险排雷</p><h3>风险排雷：哪些风险足以改变公司基础画像？</h3><div class="field"><b>上抛结论</b><p>综合子问题信息，本层结论是：国家市场监督管理总局小米 SU7 召回公告：国家市场监督管理总局公告显示，小米汽车召回 116,887 辆 2024 年 2 月 6 日至 2025 年 8 月 30 日生产的 SU7 标准版，原因是 L2 高速领航辅助驾驶在极端场景识别…；哪类新增证据能最快证伪当前判断：国家市场监督管理总局小米 SU7 召回公告：国家市场监督管理总局公告显示，小米汽车召回 116,887 辆 2024 年 2 月 6 日至 2025 年 8 月 30 日生产的 SU7 标准版，原因是 L2…；小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型；IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.…</p></div><div class="field"><b>高优先级缺口</b><ul><li>需要连续季度份额、出货、ASP、毛利和库存。</li><li>需要补充能直接回答“手机基本盘弱化是否会改变整个生态基础？”的观点。</li><li>缺少观点类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/risk_sweep.html">打开 L1 工作页</a><div class="l2-grid report-l2-grid"><article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>哪些风险足以改变公司基础画像，而不只是短期噪音？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：国家市场监督管理总局小米 SU7 召回公告：国家市场监督管理总局公告显示，小米汽车召回 116,887 辆 2024 年 2 月 6 日至 2025 年 8 月 30 日生产的 SU7 标准版，原因是 L2 高速领航辅助驾驶在极端场景识别…；小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型；IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第三，并在内存约束和产品组合调整下同比下降 19…；当前风险是否足以改变基础画像或成为反证条件。主要边界是：国家市场监督管理总局小米 SU7 召回公告：国家市场监督管…</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：国家市场监督管理总局小米 SU7 召回公告：国家市场监督管理总局公告显示，小米汽车召回 116,887 辆 2024 年 2 月 6 日至 2025 年 8 月 30 日生产的 SU7 标准版，原因是 L2 高速领航辅助驾驶在极端场景识别…。主要边界是：国家市场监督管理总局小米 SU7 召回公告：国家市场监督管理总局公告显示，小米汽车召回 116,887 辆 2024 年 2 月 6 日…</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>手机基本盘弱化是否会改变整个生态基础？</strong><p>专业回答：围绕“手机基本盘弱化是否会改变整个生态基础？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：国家市场监督管理总局小米 SU7 召回公告：当前风险是否足以改变基础画像或成为反证条件。 [ev_xiaomi_samr_su7_recall_20250919]；新浪科技小米手机发布会实录：2…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li><li><strong>EV 安全、召回和质保风险是否会改变转型质量？</strong><p>专业回答：围绕“EV 安全、召回和质保风险是否会改变转型质量？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：国家市场监督管理总局小米 SU7 召回公告：当前风险是否足以改变基础画像或成为反证条件。 [ev_xiaomi_samr_su7_recall_20250919]；消息和观点线索不足。下…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>0</strong> 支持 / <strong>3</strong> 反证 / <strong>0</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">证据</span> <a href="https://www.samr.gov.cn/zw/zh/art/2025/art_2152a981c72a430b9d10d6ef5cd9c09b.html">国家市场监督管理总局小米 SU7 召回公告</a> <span class="chip">ev_xiaomi_samr_su7_recall_20250919</span><p class="note">当前风险是否足以改变基础画像或成为反证条件。</p></li><li><span class="chip">证据</span> <a href="https://cnbj1.fds.api.xiaomi.com/company/financial/en-US/IPO.pdf">小米集团 2018 全球发售招股书</a> <span class="chip">ev_xiaomi_ipo_prospectus_20180625</span><p class="note">当前风险是否足以改变基础画像或成为反证条件。</p></li><li><span class="chip">研报</span> <a href="https://www.idc.com/promo/smartphone-market-share/market-share/">IDC 2026 Q1 智能手机市场数据</a> <span class="chip">ev_xiaomi_idc_q1_2026_smartphone_20260512</span><p class="note">当前风险是否足以改变基础画像或成为反证条件。</p></li><li><span class="chip">消息</span> <a href="https://tech.sina.com.cn/t/2011-08-16/14305927089.shtml">新浪科技小米手机发布会实录</a> <span class="chip">ev_xiaomi_mi1_launch_transcript_20110816</span><p class="note">2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和…</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要连续季度份额、出货、ASP、毛利和库存。</li><li>需要补充能直接回答“手机基本盘弱化是否会改变整个生态基础？”的观点。</li><li>缺少观点类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/risk_sweep/risk_sweep_material_risk.html">打开 L2 下钻页</a></article>
+<article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>财务、会计、法律、监管、技术和治理风险分别如何验证？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：国家市场监督管理总局小米 SU7 召回公告：国家市场监督管理总局公告显示，小米汽车召回 116,887 辆 2024 年 2 月 6 日至 2025 年 8 月 30 日生产的 SU7 标准版，原因是 L2 高速领航辅助驾驶在极端场景识别…；小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型；IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第三，并在内存约束和产品组合调整下同比下降 19…；当前风险是否足以改变基础画像或成为反证条件。主要边界是：国家市场监督管理总局小米 SU7 召回公告：国家市场监督管…</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：国家市场监督管理总局小米 SU7 召回公告：国家市场监督管理总局公告显示，小米汽车召回 116,887 辆 2024 年 2 月 6 日至 2025 年 8 月 30 日生产的 SU7 标准版，原因是 L2 高速领航辅助驾驶在极端场景识别…。主要边界是：国家市场监督管理总局小米 SU7 召回公告：国家市场监督管理总局公告显示，小米汽车召回 116,887 辆 2024 年 2 月 6 日…</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>资本开支和营运资本是否会压低现金回报？</strong><p>专业回答：围绕“资本开支和营运资本是否会压低现金回报？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：国家市场监督管理总局小米 SU7 召回公告：当前风险是否足以改变基础画像或成为反证条件。 [ev_xiaomi_samr_su7_recall_20250919]；消息和观点线索不足。下一步应优…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li><li><strong>监管、数据、安全和产品责任风险如何验证？</strong><p>专业回答：围绕“监管、数据、安全和产品责任风险如何验证？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：国家市场监督管理总局小米 SU7 召回公告：当前风险是否足以改变基础画像或成为反证条件。 [ev_xiaomi_samr_su7_recall_20250919]；新浪科技小米手机发布会实录：…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>0</strong> 支持 / <strong>3</strong> 反证 / <strong>0</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">证据</span> <a href="https://www.samr.gov.cn/zw/zh/art/2025/art_2152a981c72a430b9d10d6ef5cd9c09b.html">国家市场监督管理总局小米 SU7 召回公告</a> <span class="chip">ev_xiaomi_samr_su7_recall_20250919</span><p class="note">当前风险是否足以改变基础画像或成为反证条件。</p></li><li><span class="chip">证据</span> <a href="https://cnbj1.fds.api.xiaomi.com/company/financial/en-US/IPO.pdf">小米集团 2018 全球发售招股书</a> <span class="chip">ev_xiaomi_ipo_prospectus_20180625</span><p class="note">当前风险是否足以改变基础画像或成为反证条件。</p></li><li><span class="chip">研报</span> <a href="https://www.idc.com/promo/smartphone-market-share/market-share/">IDC 2026 Q1 智能手机市场数据</a> <span class="chip">ev_xiaomi_idc_q1_2026_smartphone_20260512</span><p class="note">当前风险是否足以改变基础画像或成为反证条件。</p></li><li><span class="chip">消息</span> <a href="https://tech.sina.com.cn/t/2011-08-16/14305927089.shtml">新浪科技小米手机发布会实录</a> <span class="chip">ev_xiaomi_mi1_launch_transcript_20110816</span><p class="note">2011 年小米手机发布会实录显示，小米从 MIUI 切入，先找发烧友用户参与系统迭代，再推出 1999 元小米手机并强调线上销售、硬件配置和…</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要自由现金流、现金资源、债务、资本开支和库存。</li><li>需要补充能直接回答“资本开支和营运资本是否会压低现金回报？”的消息、观点。</li><li>缺少消息类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/risk_sweep/risk_sweep_risk_verification.html">打开 L2 下钻页</a></article>
+<article class="l2-card report-l2-card"><p class="eyebrow">L2 收敛</p><h3>哪类新增证据能最快证伪当前判断？</h3><div class="field"><b>当前判断</b><p>综合子问题信息，本层结论是：哪类新增证据最快证伪当前基础判断：国家市场监督管理总局小米 SU7 召回公告：国家市场监督管理总局公告显示，小米汽车召回 116,887 辆 2024 年 2 月 6 日至 2025 年 8 月 30 日生产的 SU7 标准版，原因是 L…；国家市场监督管理总局小米 SU7 召回公告：国家市场监督管理总局公告显示，小米汽车召回 116,887 辆 2024 年 2 月 6 日至 2025 年 8 月 30 日生产的 SU7 标准版，原因是 L2 高速领航辅助驾驶在极端场景识别…；小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型；IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.…</p></div><div class="field"><b>L3 子结构汇总</b><p>综合子问题信息，本层结论是：哪类新增证据最快证伪当前基础判断：国家市场监督管理总局小米 SU7 召回公告：国家市场监督管理总局公告显示，小米汽车召回 116,887 辆 2024 年 2 月 6 日至 2025 年 8 月 30 日生产的 SU7 标准版，原因是 L…；国家市场监督管理总局小米 SU7 召回公告：国家市场监督管理总局公告显示，小米汽车召回 116,887 辆 2024 年 2 月 6 日至 2025…</p></div><div class="field"><b>L3 专业回答</b><ul><li><strong>哪类新增证据最快证伪当前基础判断？</strong><p>专业回答：围绕“哪类新增证据最快证伪当前基础判断？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：国家市场监督管理总局小米 SU7 召回公告：当前风险是否足以改变基础画像或成为反证条件。 [ev_xiaomi_samr_su7_recall_20250919]；消息和观点线索不足。下一步应优先验…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li><li><strong>这些风险应该按什么频率更新？</strong><p>专业回答：围绕“这些风险应该按什么频率更新？”，当前可形成受约束判断，但反证信息要求继续验证边界条件。主要支撑来自：尚未找到足够的一手证据或高可靠研报作为主支撑。主要约束是：国家市场监督管理总局小米 SU7 召回公告：当前风险是否足以改变基础画像或成为反证条件。 [ev_xiaomi_samr_su7_recall_20250919]；消息和观点线索不足。下一步应优先验证：围…</p><p class="note">上抛：当前可形成受约束判断，但反证信息要求继续验证边界条件</p><p class="note">置信度：中置信</p></li></ul></div><div class="field"><b>证据结构</b><p><strong>0</strong> 支持 / <strong>3</strong> 反证 / <strong>0</strong> 线索</p></div><div class="field"><b>来源索引</b><ul><li><span class="chip">证据</span> <a href="https://www.samr.gov.cn/zw/zh/art/2025/art_2152a981c72a430b9d10d6ef5cd9c09b.html">国家市场监督管理总局小米 SU7 召回公告</a> <span class="chip">ev_xiaomi_samr_su7_recall_20250919</span><p class="note">当前风险是否足以改变基础画像或成为反证条件。</p></li><li><span class="chip">证据</span> <a href="https://cnbj1.fds.api.xiaomi.com/company/financial/en-US/IPO.pdf">小米集团 2018 全球发售招股书</a> <span class="chip">ev_xiaomi_ipo_prospectus_20180625</span><p class="note">当前风险是否足以改变基础画像或成为反证条件。</p></li><li><span class="chip">研报</span> <a href="https://www.idc.com/promo/smartphone-market-share/market-share/">IDC 2026 Q1 智能手机市场数据</a> <span class="chip">ev_xiaomi_idc_q1_2026_smartphone_20260512</span><p class="note">当前风险是否足以改变基础画像或成为反证条件。</p></li></ul></div><div class="field"><b>关键缺口</b><ul><li>需要价格、份额、交付、毛利、召回和现金流触发器。</li><li>需要补充能直接回答“哪类新增证据最快证伪当前基础判断？”的消息、观点。</li><li>缺少消息类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/risk_sweep/risk_sweep_falsification_trigger.html">打开 L2 下钻页</a></article></div></article>
+    </section>
+  </main>
+</body>
+</html>

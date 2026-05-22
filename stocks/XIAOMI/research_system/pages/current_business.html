@@ -137,6 +137,47 @@
     .field { margin-top: 12px; }
     .field b { display: block; margin-bottom: 5px; color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: none; }
     .note { color: var(--muted); font-size: 13px; }
+    .compact-question-list {
+      display: grid;
+      gap: 8px;
+      margin: 8px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .compact-question-list li {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: center;
+      margin: 0;
+      padding: 9px 10px;
+      border: 1px solid rgba(0, 0, 0, .07);
+      border-radius: 8px;
+      background: #f8f8fa;
+    }
+    .compact-question-list .question-text {
+      min-width: 0;
+      overflow-wrap: anywhere;
+      color: var(--ink);
+    }
+    .mix-badge {
+      display: inline-grid;
+      grid-template-columns: auto auto;
+      gap: 6px;
+      align-items: baseline;
+      white-space: nowrap;
+      padding: 4px 7px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, .08);
+      color: var(--muted);
+      font-size: 11px;
+    }
+    .mix-badge strong {
+      color: var(--blue);
+      font-family: "SF Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 11px;
+    }
     .chip {
       display: inline-flex;
       max-width: 100%;
@@ -163,6 +204,8 @@
     li { margin: 5px 0; }
     @media (max-width: 880px) {
       .summary-grid, .summary-strip, .foundation-grid, .grid, .lead-grid, .info-grid, .reference-grid, .timeline-row { grid-template-columns: 1fr; }
+      .compact-question-list li { grid-template-columns: 1fr; }
+      .mix-badge { justify-self: start; }
       table { font-size: 13px; }
       header { padding-top: 42px; }
     }
@@ -209,6 +252,137 @@
     }
     .l2-card h3 {
       font-size: clamp(20px, 2vw, 27px);
+    }
+    .node-brief-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) repeat(3, minmax(0, .88fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .node-brief-card {
+      min-width: 0;
+      padding: 15px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .88);
+    }
+    .node-brief-card.primary {
+      background: #111820;
+      color: #fff;
+    }
+    .node-brief-card.primary b,
+    .node-brief-card.primary p {
+      color: #fff;
+    }
+    .node-brief-card b {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .node-brief-card p {
+      margin: 0;
+      font-size: 13px;
+    }
+    .category-meter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .category-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 8px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 999px;
+      background: #f5f5f7;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .category-pill.filled {
+      color: var(--blue);
+      background: #eef5ff;
+      border-color: #c9ddff;
+    }
+    .category-pill.warning {
+      color: var(--amber);
+      background: #fff8eb;
+      border-color: #f1d49b;
+    }
+    .research-path {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 0;
+    }
+    .research-path span {
+      display: inline-flex;
+      padding: 4px 8px;
+      border-radius: 999px;
+      color: var(--muted);
+      background: #f5f5f7;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .research-path span.active {
+      color: var(--blue);
+      background: #eef5ff;
+    }
+    .source-coverage-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .coverage-item {
+      min-width: 0;
+      padding: 9px 10px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #f5f5f7;
+    }
+    .coverage-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .coverage-item strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 18px;
+      line-height: 1;
+    }
+    .coverage-item.support strong { color: var(--green); }
+    .coverage-item.refute strong { color: var(--red); }
+    .coverage-item.lead strong { color: var(--amber); }
+    .coverage-item.total strong { color: var(--blue); }
+    .handoff-table {
+      margin-top: 14px;
+    }
+    .handoff-table td:first-child {
+      width: 28%;
+      font-weight: 700;
+    }
+    .handoff-table .mini-meter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .handoff-table .mini-meter span {
+      display: inline-flex;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: #f5f5f7;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
     }
     .research-unit-card {
       display: grid;
@@ -299,6 +473,34 @@
       margin: 0;
       font-size: 13px;
     }
+    .collection-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .collection-box {
+      min-width: 0;
+      padding: 10px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #f7fbff;
+    }
+    .collection-box b {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .04em;
+    }
+    .collection-box p {
+      margin: 0 0 5px;
+      font-size: 13px;
+    }
+    .collection-status {
+      color: var(--blue);
+      font-weight: 800;
+    }
     .l3-info-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -343,6 +545,160 @@
     .l3-info-box li.stance-support { border-left-color: var(--green); }
     .l3-info-box li.stance-refute { border-left-color: var(--red); }
     .l3-info-box li.stance-lead { border-left-color: var(--amber); }
+    .l3-detail-page {
+      max-width: 1240px;
+    }
+    .l3-answer-section h2 {
+      max-width: 960px;
+    }
+    .l3-answer-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr);
+      gap: 14px;
+      align-items: stretch;
+      margin-top: 16px;
+    }
+    .l3-answer-main,
+    .l3-answer-metrics,
+    .analysis-metric {
+      min-width: 0;
+      padding: clamp(16px, 2.5vw, 22px);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
+    }
+    .l3-answer-main {
+      background: #111820;
+      color: #fff;
+    }
+    .l3-answer-main b,
+    .l3-answer-main p {
+      color: #fff;
+    }
+    .l3-answer-main b {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 12px;
+      letter-spacing: .06em;
+    }
+    .l3-answer-main p {
+      margin: 0;
+      font-size: clamp(16px, 1.8vw, 21px);
+      line-height: 1.7;
+    }
+    .l3-answer-metrics {
+      display: grid;
+      gap: 10px;
+      background: #f5f5f7;
+    }
+    .l3-answer-metrics div {
+      padding: 10px 0;
+      border-top: 1px solid rgba(0, 0, 0, .08);
+    }
+    .l3-answer-metrics div:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+    .l3-answer-metrics span,
+    .analysis-metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .l3-answer-metrics strong,
+    .analysis-metric strong {
+      display: block;
+      margin-top: 6px;
+      color: var(--ink);
+      font-size: clamp(22px, 2.2vw, 32px);
+      line-height: 1.1;
+    }
+    .l3-answer-metrics p,
+    .analysis-metric p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .analysis-metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 14px 0;
+    }
+    .analysis-table td:first-child {
+      width: 18%;
+    }
+    .bar-stack {
+      display: grid;
+      gap: 10px;
+      margin: 16px 0;
+      padding: 16px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .bar-row {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr) 150px;
+      gap: 12px;
+      align-items: center;
+      min-width: 0;
+      font-size: 13px;
+    }
+    .bar-row span {
+      color: var(--ink);
+      font-weight: 700;
+    }
+    .bar-row b {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-align: right;
+    }
+    .bar-track {
+      height: 12px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e8e8ed;
+    }
+    .bar-fill {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+    }
+    .bar-fill.blue { background: var(--blue); }
+    .bar-fill.green { background: var(--green); }
+    .l3-reasoning-list {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .l3-reasoning-list article {
+      min-width: 0;
+      padding: 16px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .l3-reasoning-list span {
+      display: inline-flex;
+      margin-bottom: 10px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      color: var(--blue);
+      background: #eef5ff;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .l3-reasoning-list p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.65;
+    }
     .stance-pill,
     .quality-pill {
       display: inline-flex;
@@ -515,6 +871,18 @@
       font: inherit;
       background: #fff;
     }
+    .draft-question-output {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .draft-question-output textarea {
+      min-height: 118px;
+      font-family: "SF Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 12px;
+      line-height: 1.45;
+    }
     .qa-ask-actions {
       display: flex;
       gap: 8px;
@@ -590,9 +958,11 @@
     }
     @media (max-width: 1080px) {
       .qa-shell { grid-template-columns: 1fr; }
-      .l2-grid, .l3-info-grid, .decision-grid, .next-step-grid { grid-template-columns: 1fr; }
+      .node-brief-grid, .l2-grid, .l3-info-grid, .decision-grid, .next-step-grid, .collection-grid, .source-coverage-strip, .draft-question-output, .l3-answer-layout, .analysis-metric-grid, .l3-reasoning-list { grid-template-columns: 1fr; }
       .qa-tree-panel, .qa-evidence-panel { position: static; max-height: none; }
       .qa-synthesis-grid { grid-template-columns: 1fr; }
+      .bar-row { grid-template-columns: 1fr; }
+      .bar-row b { text-align: left; }
     }
     </style>
 </head>
@@ -624,23 +994,28 @@
   <section id="l1-questions" class="qa-full-research level-frame">
     <p class="eyebrow">子问题列表 / 当下生意</p>
     <h2>L2 子问题</h2>
-    <div class="l2-grid"><article class="l2-card"><p class="eyebrow">L2 问题</p><h3>当前收入、毛利、现金流分别由哪些业务驱动？</h3><div class="field"><b>子结构汇总结论</b><p>哪个业务真正贡献毛利和现金，而不只是贡献收入？：完成“哪个业务真正贡献毛利和现金，而不只是贡献收入？”后，再决定是否修正父问题判断。；EV/AI 新业务的单车经济是否已经足以单独成立？：完成“EV/AI 新业务的单车经济是否已经足以单独成立？”后，再决定是否修正父问题判断。</p></div><div class="field"><b>子问题列表</b><ul><li>哪个业务真正贡献毛利和现金，而不只是贡献收入？</li><li>EV/AI 新业务的单车经济是否已经足以单独成立？</li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>需要分部毛利、费用分摊、经营现金流和营运资本桥接。</li><li>需要单车收入、单车毛利、质保计提、售后成本和价格调整。</li></ul></div><a class="detail-link" href="current_business/current_business_profit_cash.html">打开 L2 问题页</a></article>
-<article class="l2-card"><p class="eyebrow">L2 问题</p><h3>客户是谁，需求来自刚需、替换、生态绑定还是促销？</h3><div class="field"><b>子结构汇总结论</b><p>需求来自真实替换/生态绑定，还是促销与新品周期？：完成“需求来自真实替换/生态绑定，还是促销与新品周期？”后，再决定是否修正父问题判断。；手机入口变化是否影响 IoT 和互联网服务变现？：完成“手机入口变化是否影响 IoT 和互联网服务变现？”后，再决定是否修正父问题判断。</p></div><div class="field"><b>子问题列表</b><ul><li>需求来自真实替换/生态绑定，还是促销与新品周期？</li><li>手机入口变化是否影响 IoT 和互联网服务变现？</li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>需要订单、等待周期、库存、价格变化和用户留存数据。</li><li>需要手机份额、MIUI MAU、多设备用户和服务 ARPU。</li></ul></div><a class="detail-link" href="current_business/current_business_customer_demand.html">打开 L2 问题页</a></article>
-<article class="l2-card"><p class="eyebrow">L2 问题</p><h3>利润质量是否能转化为现金和可重复回报？</h3><div class="field"><b>子结构汇总结论</b><p>利润能否稳定转化为现金？：完成“利润能否稳定转化为现金？”后，再决定是否修正父问题判断。；高毛利业务的持续性来自结构优势还是阶段性周期？：完成“高毛利业务的持续性来自结构优势还是阶段性周期？”后，再决定是否修正父问题判断。</p></div><div class="field"><b>子问题列表</b><ul><li>利润能否稳定转化为现金？</li><li>高毛利业务的持续性来自结构优势还是阶段性周期？</li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>需要经营现金流、应收应付、库存和资本开支桥接。</li><li>需要分业务毛利率、价格、成本和行业周期对照。</li></ul></div><a class="detail-link" href="current_business/current_business_profit_quality.html">打开 L2 问题页</a></article></div>
+    <div class="l2-grid"><article class="l2-card"><p class="eyebrow">L2 问题</p><h3>当前收入、毛利、现金流分别由哪些业务驱动？</h3><div class="field"><b>子结构汇总结论</b><p>综合子问题信息，本层结论是：小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连接 IoT 设…；小米 2021 年报硬件净利率承诺：小米 2021 年报披露，公司自 2018 年起承诺硬件业务（智能手机、IoT 与生活消费产品）整体净利率每年不超过 5.0%，若超过则向用户返还超出部分；2021 年硬件业务整体净利率低于 2.0%；当前生意是否具备可重复的收入、利润和现金转化质量；FY2025 收入为人民币 4573 亿元，毛利为 1018 亿元，年度利润为 …</p></div><div class="field"><b>子问题列表</b><ul class="compact-question-list"><li><span class="question-text">哪个业务真正贡献毛利和现金，而不只是贡献收入？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>3/1/0/0</strong></span></li><li><span class="question-text">EV/AI 新业务的单车经济是否已经足以单独成立？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>3/1/0/0</strong></span></li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>需要分部毛利、费用分摊、经营现金流和营运资本桥接。</li><li>需要补充能直接回答“哪个业务真正贡献毛利和现金，而不只是贡献收入？”的消息、观点。</li><li>需要单车收入、单车毛利、质保计提、售后成本和价格调整。</li></ul></div><a class="detail-link" href="current_business/current_business_profit_cash.html">打开 L2 问题页</a></article>
+<article class="l2-card"><p class="eyebrow">L2 问题</p><h3>客户是谁，需求来自刚需、替换、生态绑定还是促销？</h3><div class="field"><b>子结构汇总结论</b><p>综合子问题信息，本层结论是：需求来自真实替换/生态绑定，还是促销与新品周期：IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名…；小米全球 IR 招股概要将公司定义为以智能手机和智能硬件连接 IoT 平台为核心的互联网公司；披露 2018 年 3 月 MIUI 月活约 1.9 亿、MIUI 论坛月活超过 900 万、超过 140 万用户连接 5 台以上小米产品，并把…；IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2…</p></div><div class="field"><b>子问题列表</b><ul class="compact-question-list"><li><span class="question-text">需求来自真实替换/生态绑定，还是促销与新品周期？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>0/2/0/0</strong></span></li><li><span class="question-text">手机入口变化是否影响 IoT 和互联网服务变现？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>1/2/1/0</strong></span></li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>需要订单、等待周期、库存、价格变化和用户留存数据。</li><li>需要补充能直接回答“需求来自真实替换/生态绑定，还是促销与新品周期？”的证据、消息、观点。</li><li>需要手机份额、MIUI MAU、多设备用户和服务 ARPU。</li></ul></div><a class="detail-link" href="current_business/current_business_customer_demand.html">打开 L2 问题页</a></article>
+<article class="l2-card"><p class="eyebrow">L2 问题</p><h3>利润质量是否能转化为现金和可重复回报？</h3><div class="field"><b>子结构汇总结论</b><p>综合子问题信息，本层结论是：小米集团 2025 年报：FY2025 收入为人民币 4573 亿元，毛利为 1018 亿元，年度利润为 416 亿元，经调整净利润为 392 亿元，总资产为 5081 亿元，总权益为 2663 亿元，经营现金流为 341 亿元，现金资源…；高毛利业务的持续性来自结构优势还是阶段性周期：小米集团 2025 年报：FY2025 收入为人民币 4573 亿元，毛利为 1018 亿元，年度利润为 416 亿元，经调整净利润为 392 亿元，总资产为 5081 亿元，总权益为 266…；当前生意是否具备可重复的收入、利润和现金转化质量；甬兴证券 2025 年小米深度报告以公司概览、发展历程、业务构成和人车家生态…</p></div><div class="field"><b>子问题列表</b><ul class="compact-question-list"><li><span class="question-text">利润能否稳定转化为现金？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>1/0/0/0</strong></span></li><li><span class="question-text">高毛利业务的持续性来自结构优势还是阶段性周期？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>1/1/0/0</strong></span></li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>需要经营现金流、应收应付、库存和资本开支桥接。</li><li>需要补充能直接回答“利润能否稳定转化为现金？”的研报、消息、观点。</li><li>需要分业务毛利率、价格、成本和行业周期对照。</li></ul></div><a class="detail-link" href="current_business/current_business_profit_quality.html">打开 L2 问题页</a></article></div>
   </section>
 
     
-    <section id="add-question" class="level-frame draft-question" data-question-scope="XIAOMI:l1:current_business">
+    <section id="add-question" class="level-frame draft-question" data-question-scope="XIAOMI:l1:current_business" data-parent-id="foundation.current_business" data-queue-command="value-invest-research apply-question-queue XIAOMI --path queued_questions.jsonl">
       <p class="eyebrow">可交互 / 新增问题</p>
       <h2>新增下钻问题</h2>
       <form class="draft-question-form">
         <textarea class="draft-question-input" placeholder="输入一个新的下钻问题"></textarea>
+        <label class="note"><input class="draft-question-terminal" type="checkbox"> 这个问题已到可回答粒度，直接进入四类信息搜集</label>
         <div class="qa-ask-actions">
           <button class="primary" type="submit">加入本层问题列表</button>
           <button class="draft-question-clear" type="button">清空本层新增</button>
         </div>
       </form>
       <div class="field"><b>L1 当下生意新增问题</b><ul class="draft-question-list"></ul></div>
+      <div class="draft-question-output">
+        <div class="field"><b>队列 JSONL</b><textarea class="draft-question-jsonl" readonly></textarea></div>
+        <div class="field"><b>应用命令</b><textarea class="draft-question-command" readonly></textarea></div>
+      </div>
     </section>
 
   </main>
@@ -672,20 +1047,32 @@
         const key = `draft-layer-questions:${box.dataset.questionScope || "default"}`;
         const form = box.querySelector(".draft-question-form");
         const input = box.querySelector(".draft-question-input");
+        const terminal = box.querySelector(".draft-question-terminal");
         const list = box.querySelector(".draft-question-list");
         const clear = box.querySelector(".draft-question-clear");
+        const jsonl = box.querySelector(".draft-question-jsonl");
+        const command = box.querySelector(".draft-question-command");
+        const parentId = box.dataset.parentId || "";
+        const queueCommand = box.dataset.queueCommand || "";
+        const normalizeItem = (item) => {
+          if (typeof item === "string") return { question: item, terminal: false };
+          return { question: item.question || "", terminal: Boolean(item.terminal) };
+        };
         const render = () => {
-          const items = read(key);
+          const items = read(key).map(normalizeItem).filter((item) => item.question);
           list.innerHTML = items.length
-            ? items.map((item) => `<li>${esc(item)}</li>`).join("")
+            ? items.map((item) => `<li>${esc(item.question)}${item.terminal ? ' <span class="chip">终端问题</span>' : ""}</li>`).join("")
             : '<li class="note">暂无新增问题。</li>';
+          jsonl.value = items.map((item) => JSON.stringify({ parent_id: parentId, question: item.question, terminal: item.terminal })).join("\n");
+          command.value = queueCommand;
         };
         form.addEventListener("submit", (event) => {
           event.preventDefault();
           const value = input.value.trim();
           if (!value) return;
-          write(key, [...read(key), value]);
+          write(key, [...read(key).map(normalizeItem), { question: value, terminal: Boolean(terminal && terminal.checked) }]);
           input.value = "";
+          if (terminal) terminal.checked = false;
           render();
         });
         clear.addEventListener("click", () => {

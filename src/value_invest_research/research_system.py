@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 from dataclasses import dataclass, field
@@ -8,6 +9,7 @@ from html import escape
 from pathlib import Path
 from typing import Any
 
+from value_invest_research.answer_synthesis import apply_synthesis_overrides, load_synthesis_overrides
 from value_invest_research.models import EvidenceRecord, ValidationError
 from value_invest_research.runlog import RunLog, RunStatus
 
@@ -197,6 +199,9 @@ DISPLAY_TRANSLATIONS = {
     "missing": "缺证据",
     "open": "开放",
     "needs_data": "需要补数据",
+    "user_added": "用户新增",
+    "auto_drilldown": "自动下钻",
+    "draft": "草稿",
     "primary": "一手",
     "baseline_update": "基线更新",
     "strengthening": "强化线索",
@@ -454,9 +459,11 @@ class ResearchSystemResult:
     ticker: str
     foundation_graph_path: str
     qa_tree_path: str
+    information_collection_path: str
     question_graph_path: str
     message_flow_path: str
     dashboard_path: str
+    report_path: str
     foundation_status: str
     sections_covered: int
     questions: int
@@ -467,9 +474,11 @@ class ResearchSystemResult:
             "ticker": self.ticker,
             "foundation_graph_path": self.foundation_graph_path,
             "qa_tree_path": self.qa_tree_path,
+            "information_collection_path": self.information_collection_path,
             "question_graph_path": self.question_graph_path,
             "message_flow_path": self.message_flow_path,
             "dashboard_path": self.dashboard_path,
+            "report_path": self.report_path,
             "foundation_status": self.foundation_status,
             "sections_covered": self.sections_covered,
             "questions": self.questions,
@@ -489,23 +498,31 @@ def build_research_system(root: Path, ticker: str) -> dict[str, Any]:
     research_dir.mkdir(parents=True, exist_ok=True)
 
     foundation_graph = _build_foundation_graph(normalized, evidence)
-    qa_tree = _build_qa_tree(normalized, foundation_graph, evidence)
+    custom_questions = _load_custom_questions(research_dir)
+    synthesis_overrides = load_synthesis_overrides(research_dir)
+    qa_tree = _build_qa_tree(normalized, foundation_graph, evidence, custom_questions, synthesis_overrides)
+    information_rows = _attach_information_collection(qa_tree)
     question_rows: list[dict[str, Any]] = []
     message_rows: list[dict[str, Any]] = []
 
     foundation_path = research_dir / "foundation_graph.json"
     qa_tree_path = research_dir / "qa_tree.json"
+    information_path = research_dir / "information_collection.jsonl"
     question_path = research_dir / "question_graph.jsonl"
     message_path = research_dir / "message_flow.jsonl"
     dashboard_path = research_dir / "research_dashboard.html"
+    report_path = research_dir / "research_report.html"
     pages_dir = research_dir / "pages"
     pages_dir.mkdir(parents=True, exist_ok=True)
 
     _write_json(foundation_path, foundation_graph)
     _write_json(qa_tree_path, qa_tree)
+    _write_jsonl(information_path, information_rows)
     _write_jsonl(question_path, question_rows)
     _write_jsonl(message_path, message_rows)
     _write_text(dashboard_path, _render_dashboard(normalized, foundation_graph, question_rows, message_rows, qa_tree))
+    _write_text(report_path, _render_layered_research_report(normalized, foundation_graph, qa_tree))
+    nodes_by_id = {node.get("id"): node for node in qa_tree.get("nodes", [])}
     for section in foundation_graph["sections"]:
         page_name = SECTION_ID_TO_PAGE.get(section["id"], f"{section['id']}.html")
         page_html = _render_foundation_qa_page(normalized, foundation_graph, evidence, section["id"])
@@ -514,6 +531,13 @@ def build_research_system(root: Path, ticker: str) -> dict[str, Any]:
             l2_path = pages_dir / _l2_question_page_path(section["id"], node["id"])
             l2_path.parent.mkdir(parents=True, exist_ok=True)
             _write_text(l2_path, _render_l2_question_page(normalized, section, node, qa_tree, evidence))
+            for child_id in node.get("next_question_ids", []):
+                child = nodes_by_id.get(child_id)
+                if not child or int(child.get("level", 0)) != 3:
+                    continue
+                l3_path = pages_dir / _l3_question_page_path(section["id"], child["id"])
+                l3_path.parent.mkdir(parents=True, exist_ok=True)
+                _write_text(l3_path, _render_l3_question_page(normalized, section, node, child, qa_tree, evidence))
 
     covered = sum(1 for section in foundation_graph["sections"] if section["status"] != "missing")
     RunLog(stock_dir / "logs").append(
@@ -528,14 +552,140 @@ def build_research_system(root: Path, ticker: str) -> dict[str, Any]:
         ticker=normalized,
         foundation_graph_path=str(foundation_path),
         qa_tree_path=str(qa_tree_path),
+        information_collection_path=str(information_path),
         question_graph_path=str(question_path),
         message_flow_path=str(message_path),
         dashboard_path=str(dashboard_path),
+        report_path=str(report_path),
         foundation_status=foundation_graph["foundation_status"],
         sections_covered=covered,
         questions=len(question_rows),
         messages=len(message_rows),
     ).to_dict()
+
+
+def add_research_question(root: Path, ticker: str, parent_id: str, question: str, terminal: bool = False) -> dict[str, Any]:
+    """Persist a user-added QA node and rebuild the research system."""
+    normalized = normalize_ticker(ticker)
+    stock_dir = root / "stocks" / normalized
+    if not stock_dir.exists():
+        raise ValueError(f"stock folder not found: {stock_dir}")
+
+    cleaned_question = question.strip()
+    if not cleaned_question:
+        raise ValueError("question cannot be empty")
+
+    evidence = _load_evidence(stock_dir)
+    research_dir = stock_dir / "research_system"
+    research_dir.mkdir(parents=True, exist_ok=True)
+    custom_path = research_dir / "custom_questions.jsonl"
+    custom_questions = _load_custom_questions(research_dir)
+
+    foundation_graph = _build_foundation_graph(normalized, evidence)
+    qa_tree = _build_qa_tree(normalized, foundation_graph, evidence, custom_questions)
+    nodes_by_id = {node.get("id"): node for node in qa_tree.get("nodes", [])}
+    if parent_id not in nodes_by_id:
+        raise ValueError(f"parent question not found: {parent_id}")
+
+    parent = nodes_by_id[parent_id]
+    actual_parent = _custom_actual_parent(parent, nodes_by_id)
+    existing = _matching_custom_question(custom_questions, parent_id, cleaned_question)
+    if existing:
+        build_result = build_research_system(root, normalized)
+        return {
+            **build_result,
+            "question_id": existing["id"],
+            "parent_id": existing.get("parent_id", actual_parent.get("id", "")),
+            "requested_parent_id": parent_id,
+            "custom_questions_path": str(custom_path),
+            "created": False,
+        }
+
+    existing_ids = {node.get("id", "") for node in qa_tree.get("nodes", [])}
+    question_id = _custom_question_id(actual_parent.get("id", ""), cleaned_question, existing_ids)
+    row = {
+        "id": question_id,
+        "requested_parent_id": parent_id,
+        "parent_id": actual_parent.get("id", ""),
+        "section_id": actual_parent.get("section_id", "custom"),
+        "level": min(int(actual_parent.get("level", 0)) + 1, 3),
+        "question": cleaned_question,
+        "terminal": bool(terminal),
+        "created_at": datetime.now(timezone.utc).isoformat(),
+        "status": "user_added",
+    }
+    with custom_path.open("a", encoding="utf-8", newline="\n") as file:
+        file.write(json.dumps(row, ensure_ascii=False, sort_keys=True) + "\n")
+
+    build_result = build_research_system(root, normalized)
+    return {
+        **build_result,
+        "question_id": question_id,
+        "parent_id": row["parent_id"],
+        "requested_parent_id": parent_id,
+        "custom_questions_path": str(custom_path),
+        "created": True,
+    }
+
+
+def record_question_information(
+    root: Path,
+    ticker: str,
+    node_id: str,
+    category: str,
+    source_type: str,
+    source_name: str,
+    url: str,
+    summary: str,
+    reliability: str = "medium",
+    materiality: str = "medium",
+    published_at: str | None = None,
+) -> dict[str, Any]:
+    """Attach a collected source to one QA node and rebuild the research system."""
+    normalized = normalize_ticker(ticker)
+    stock_dir = root / "stocks" / normalized
+    if not stock_dir.exists():
+        raise ValueError(f"stock folder not found: {stock_dir}")
+
+    cleaned_node_id = node_id.strip()
+    if not cleaned_node_id:
+        raise ValueError("node_id cannot be empty")
+    if category not in SOURCE_ORIGIN_INFO_ORDER:
+        raise ValueError(f"category must be one of {SOURCE_ORIGIN_INFO_ORDER}")
+
+    evidence = _load_evidence(stock_dir)
+    research_dir = stock_dir / "research_system"
+    research_dir.mkdir(parents=True, exist_ok=True)
+    foundation_graph = _build_foundation_graph(normalized, evidence)
+    qa_tree = _build_qa_tree(normalized, foundation_graph, evidence, _load_custom_questions(research_dir))
+    nodes_by_id = {node.get("id"): node for node in qa_tree.get("nodes", [])}
+    if cleaned_node_id not in nodes_by_id:
+        raise ValueError(f"question node not found: {cleaned_node_id}")
+
+    record = _question_information_record(
+        ticker=normalized,
+        node_id=cleaned_node_id,
+        category=category,
+        source_type=source_type,
+        source_name=source_name,
+        url=url,
+        summary=summary,
+        reliability=reliability,
+        materiality=materiality,
+        published_at=published_at,
+    )
+    evidence_path = stock_dir / "evidence.jsonl"
+    upsert_result = _upsert_question_information_record(evidence_path, record, cleaned_node_id)
+    build_result = build_research_system(root, normalized)
+    return {
+        **build_result,
+        "node_id": cleaned_node_id,
+        "category": category,
+        "evidence_id": upsert_result["evidence_id"],
+        "evidence_path": str(evidence_path),
+        "created": upsert_result["created"],
+        "updated": upsert_result["updated"],
+    }
 
 
 def normalize_ticker(ticker: str) -> str:
@@ -557,6 +707,91 @@ def _load_evidence(stock_dir: Path) -> list[EvidenceRecord]:
         except (json.JSONDecodeError, ValidationError) as exc:
             raise ValueError(f"{evidence_path}:{line_number}: {exc}") from exc
     return records
+
+
+def _question_information_record(
+    ticker: str,
+    node_id: str,
+    category: str,
+    source_type: str,
+    source_name: str,
+    url: str,
+    summary: str,
+    reliability: str,
+    materiality: str,
+    published_at: str | None,
+) -> EvidenceRecord:
+    cleaned_url = url.strip()
+    cleaned_summary = summary.strip()
+    digest = hashlib.sha1(
+        f"{ticker}\n{node_id}\n{category}\n{cleaned_url}\n{cleaned_summary}".encode("utf-8")
+    ).hexdigest()
+    row = {
+        "id": f"ev_{ticker.lower()}_qa_{digest[:12]}",
+        "research_object": f"stocks/{ticker}",
+        "source_type": source_type.strip(),
+        "source_name": source_name.strip(),
+        "url": cleaned_url,
+        "published_at": published_at,
+        "fetched_at": datetime.now(timezone.utc).isoformat(),
+        "hash": f"sha256:{digest}",
+        "tickers": [ticker],
+        "sectors": [],
+        "themes": ["research_system", "qa_node", category],
+        "summary": cleaned_summary,
+        "reliability": reliability,
+        "materiality": materiality,
+        "information_category": category,
+        "used_in": [f"research_system:{node_id}"],
+    }
+    return EvidenceRecord.from_dict(row)
+
+
+def _upsert_question_information_record(
+    evidence_path: Path,
+    record: EvidenceRecord,
+    node_id: str,
+) -> dict[str, Any]:
+    evidence_path.parent.mkdir(parents=True, exist_ok=True)
+    link = f"research_system:{node_id}"
+    if not evidence_path.exists():
+        _write_jsonl(evidence_path, [record.to_dict()])
+        return {"evidence_id": record.id, "created": True, "updated": False}
+
+    rows: list[dict[str, Any]] = []
+    matched_index: int | None = None
+    for line_number, line in enumerate(evidence_path.read_text(encoding="utf-8").splitlines(), start=1):
+        if not line.strip():
+            continue
+        try:
+            row = json.loads(line)
+            EvidenceRecord.from_dict(row)
+        except (json.JSONDecodeError, ValidationError) as exc:
+            raise ValueError(f"{evidence_path}:{line_number}: {exc}") from exc
+        if row.get("id") == record.id or (
+            row.get("url") == record.url and row.get("summary") == record.summary
+        ):
+            matched_index = len(rows)
+        rows.append(row)
+
+    if matched_index is None:
+        with evidence_path.open("a", encoding="utf-8", newline="\n") as file:
+            file.write(json.dumps(record.to_dict(), ensure_ascii=False, sort_keys=True) + "\n")
+        return {"evidence_id": record.id, "created": True, "updated": False}
+
+    existing = rows[matched_index]
+    used_in = list(existing.get("used_in", []))
+    updated = False
+    if link not in used_in:
+        used_in.append(link)
+        existing["used_in"] = used_in
+        updated = True
+    if existing.get("information_category") != record.information_category:
+        existing["information_category"] = record.information_category
+        updated = True
+    if updated:
+        _write_jsonl(evidence_path, rows)
+    return {"evidence_id": existing.get("id", record.id), "created": False, "updated": updated}
 
 
 def _build_foundation_graph(ticker: str, evidence: list[EvidenceRecord]) -> dict[str, Any]:
@@ -595,7 +830,13 @@ def _build_foundation_graph(ticker: str, evidence: list[EvidenceRecord]) -> dict
     }
 
 
-def _build_qa_tree(ticker: str, foundation_graph: dict[str, Any], evidence: list[EvidenceRecord]) -> dict[str, Any]:
+def _build_qa_tree(
+    ticker: str,
+    foundation_graph: dict[str, Any],
+    evidence: list[EvidenceRecord],
+    custom_questions: list[dict[str, Any]] | None = None,
+    synthesis_overrides: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
     """Build the interactive question tree used by foundation drill-down pages."""
     root_id = "company.foundation"
     section_question_nodes: list[dict[str, Any]] = []
@@ -652,7 +893,7 @@ def _build_qa_tree(ticker: str, foundation_graph: dict[str, Any], evidence: list
         *section_nodes,
         *section_question_nodes,
     ]
-    return {
+    tree = {
         "schema_version": "1.0",
         "ticker": ticker,
         "generated_at": foundation_graph.get("generated_at"),
@@ -665,6 +906,812 @@ def _build_qa_tree(ticker: str, foundation_graph: dict[str, Any], evidence: list
         },
         "nodes": nodes,
     }
+    _apply_custom_questions(tree, custom_questions or [], evidence)
+    _apply_node_linked_evidence(tree, evidence)
+    _apply_analysis_specific_evidence(ticker, tree, evidence)
+    apply_synthesis_overrides(tree, synthesis_overrides or [])
+    _rollup_qa_tree(tree)
+    apply_synthesis_overrides(tree, synthesis_overrides or [])
+    return tree
+
+
+def _load_custom_questions(research_dir: Path) -> list[dict[str, Any]]:
+    path = research_dir / "custom_questions.jsonl"
+    if not path.exists():
+        return []
+    rows: list[dict[str, Any]] = []
+    for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+        if not line.strip():
+            continue
+        try:
+            row = json.loads(line)
+        except json.JSONDecodeError as exc:
+            raise ValueError(f"{path}:{line_number}: {exc}") from exc
+        if not isinstance(row, dict):
+            raise ValueError(f"{path}:{line_number}: custom question must be an object")
+        rows.append(row)
+    return rows
+
+
+def _matching_custom_question(custom_questions: list[dict[str, Any]], requested_parent_id: str, question: str) -> dict[str, Any] | None:
+    for row in custom_questions:
+        if row.get("requested_parent_id") == requested_parent_id and row.get("question", "").strip() == question:
+            return row
+    return None
+
+
+def _custom_actual_parent(parent: dict[str, Any], nodes_by_id: dict[str, dict[str, Any]]) -> dict[str, Any]:
+    if int(parent.get("level", 0)) < 3:
+        return parent
+    parent_id = parent.get("parent_id")
+    if parent_id and parent_id in nodes_by_id:
+        return nodes_by_id[parent_id]
+    return parent
+
+
+def _custom_question_id(parent_id: str, question: str, existing_ids: set[str]) -> str:
+    digest = hashlib.sha1(f"{parent_id}\n{question}".encode("utf-8")).hexdigest()[:10]
+    base = f"{parent_id}.custom_{digest}" if parent_id else f"custom_{digest}"
+    question_id = base
+    index = 2
+    while question_id in existing_ids:
+        question_id = f"{base}_{index}"
+        index += 1
+    return question_id
+
+
+def _apply_custom_questions(qa_tree: dict[str, Any], custom_questions: list[dict[str, Any]], evidence: list[EvidenceRecord]) -> None:
+    nodes = qa_tree.get("nodes", [])
+    nodes_by_id = {node.get("id"): node for node in nodes}
+    for row in custom_questions:
+        parent_id = row.get("parent_id") or row.get("requested_parent_id")
+        if parent_id not in nodes_by_id:
+            continue
+        parent = nodes_by_id[parent_id]
+        node_id = row.get("id") or _custom_question_id(parent_id, row.get("question", ""), set(nodes_by_id))
+        if node_id in nodes_by_id:
+            continue
+        level = min(int(parent.get("level", 0)) + 1, 3)
+        node = _custom_qa_node(row, node_id, level, parent, evidence)
+        terminal = bool(row.get("terminal"))
+        if level < 3 and not terminal:
+            node["next_question_ids"] = _custom_child_ids(node_id)
+        if terminal:
+            node["metadata"]["should_drill_down"] = False
+            node["metadata"]["should_collect_information"] = True
+            node["metadata"]["terminal_reason"] = "用户标记为终端问题，本层直接进入四类信息搜集。"
+        nodes.append(node)
+        nodes_by_id[node_id] = node
+        parent.setdefault("next_question_ids", [])
+        if node_id not in parent["next_question_ids"]:
+            parent["next_question_ids"].append(node_id)
+        if level < 3 and not terminal:
+            _append_custom_child_nodes(node, nodes, nodes_by_id, evidence)
+
+
+def _append_custom_child_nodes(
+    parent: dict[str, Any],
+    nodes: list[dict[str, Any]],
+    nodes_by_id: dict[str, dict[str, Any]],
+    evidence: list[EvidenceRecord],
+) -> None:
+    if int(parent.get("level", 0)) >= 3:
+        return
+    for child in _custom_child_nodes(parent, evidence):
+        if child["id"] in nodes_by_id:
+            continue
+        nodes.append(child)
+        nodes_by_id[child["id"]] = child
+        parent.setdefault("next_question_ids", [])
+        if child["id"] not in parent["next_question_ids"]:
+            parent["next_question_ids"].append(child["id"])
+        _append_custom_child_nodes(child, nodes, nodes_by_id, evidence)
+
+
+def _apply_node_linked_evidence(qa_tree: dict[str, Any], evidence: list[EvidenceRecord]) -> None:
+    nodes_by_id = {node.get("id"): node for node in qa_tree.get("nodes", [])}
+    for record in evidence:
+        for node_id in _research_system_node_links(record):
+            node = nodes_by_id.get(node_id)
+            if node is None:
+                continue
+            _append_record_to_qa_node(node, record)
+
+
+def _research_system_node_links(record: EvidenceRecord) -> list[str]:
+    prefix = "research_system:"
+    node_ids: list[str] = []
+    for link in record.used_in:
+        if link.startswith(prefix):
+            node_id = link[len(prefix) :].strip()
+            if node_id and node_id not in node_ids:
+                node_ids.append(node_id)
+    return node_ids
+
+
+ANALYSIS_SPECIFIC_NODE_EVIDENCE = {
+    "XIAOMI": {
+        "current_business.profit-cash.segment-profit-pool": [
+            "ev_xiaomi_2025_annual_report_20260428",
+            "ev_xiaomi_annual",
+            "ev_xiaomi_segments",
+        ],
+        "current_business.profit-cash.ev-unit-economics": [
+            "ev_xiaomi_2025_annual_report_20260428",
+            "ev_xiaomi_annual",
+            "ev_xiaomi_segments",
+        ],
+        "current_business.profit-quality.cash-conversion": [
+            "ev_xiaomi_2025_annual_report_20260428",
+            "ev_xiaomi_annual",
+        ],
+    }
+}
+
+
+def _apply_analysis_specific_evidence(ticker: str, qa_tree: dict[str, Any], evidence: list[EvidenceRecord]) -> None:
+    """Attach deterministic evidence needed for numerical L3 analysis pages."""
+    node_links = ANALYSIS_SPECIFIC_NODE_EVIDENCE.get(ticker, {})
+    if not node_links:
+        return
+    nodes_by_id = {node.get("id"): node for node in qa_tree.get("nodes", [])}
+    evidence_by_id = {record.id: record for record in evidence}
+    for node_id, evidence_ids in node_links.items():
+        node = nodes_by_id.get(node_id)
+        if node is None:
+            continue
+        for evidence_id in evidence_ids:
+            record = evidence_by_id.get(evidence_id)
+            if record is not None:
+                _append_record_to_qa_node(node, record)
+
+
+def _append_record_to_qa_node(node: dict[str, Any], record: EvidenceRecord) -> None:
+    buckets = node.setdefault("evidence_buckets", _qa_empty_buckets())
+    category = record.information_category if record.information_category in buckets else "evidence"
+    existing_ids = {item.get("evidence_id") for item in buckets.get(category, [])}
+    if record.id in existing_ids:
+        return
+
+    relation = STANCE_LABEL_ZH.get(_information_stance(record), _information_stance(record))
+    item = {
+        "evidence_id": record.id,
+        "relation": relation,
+        "point": _custom_record_point(record),
+        "source_name": SOURCE_NAME_ZH.get(record.source_name, record.source_name),
+        "url": record.url,
+        "summary": _zh_text(record.summary),
+        "reliability": record.reliability,
+        "materiality": record.materiality,
+        "missing_record": False,
+    }
+    buckets.setdefault(category, []).append(item)
+
+    synthesis = node.setdefault("synthesis", {})
+    facts = synthesis.setdefault("facts", [])
+    fact_line = f"{relation}：{_custom_record_point(record)} [{record.id}]"
+    if fact_line not in facts:
+        facts.append(fact_line)
+    professional = _professional_answer_for_node(
+        node.get("question", ""),
+        buckets,
+        node.get("current_answer", ""),
+        _node_gap_text(node),
+        node.get("rollup_to_parent", ""),
+    )
+    node["professional_answer"] = professional
+    node["current_answer"] = professional["answer"]
+    synthesis["facts"] = professional["facts"]
+    synthesis["inferences"] = professional["inferences"]
+    synthesis["judgment"] = professional["judgment"]
+    synthesis["gaps"] = professional["gaps"]
+    synthesis["confidence"] = professional["confidence"]
+    node["rollup_to_parent"] = professional["rollup"]
+    if node.get("status") == "needs_data":
+        node["status"] = "open"
+
+    metadata = node.setdefault("metadata", {})
+    linked_ids = metadata.setdefault("linked_evidence_ids", [])
+    if record.id not in linked_ids:
+        linked_ids.append(record.id)
+    if metadata.get("source") == "user":
+        count = len(linked_ids)
+        professional["answer"] = f"{professional['answer']} 当前该新增问题已显式绑定 {count} 条信息。"
+        node["current_answer"] = professional["answer"]
+        node["rollup_to_parent"] = professional["rollup"]
+
+
+def _rollup_qa_tree(qa_tree: dict[str, Any]) -> None:
+    nodes_by_id = {node.get("id"): node for node in qa_tree.get("nodes", [])}
+    for node in sorted(qa_tree.get("nodes", []), key=lambda item: int(item.get("level", 0)), reverse=True):
+        child_nodes = [
+            nodes_by_id[child_id]
+            for child_id in node.get("next_question_ids", [])
+            if child_id in nodes_by_id
+        ]
+        if not child_nodes:
+            continue
+        summary = _child_rollup_summary(node, child_nodes)
+        gaps = _unique_child_gaps(child_nodes)
+        support_count, refute_count, lead_count = _aggregate_child_evidence_counts(child_nodes)
+        has_child_information = any(_node_has_information(child) for child in child_nodes)
+
+        node["child_rollup_summary"] = summary
+        node["current_answer"] = summary
+        node["rollup_to_parent"] = summary
+        synthesis = node.setdefault("synthesis", {})
+        synthesis["facts"] = _child_fact_lines(child_nodes)
+        synthesis["inferences"] = [summary]
+        synthesis["judgment"] = summary
+        synthesis["gaps"] = gaps or synthesis.get("gaps", []) or ["子问题尚未形成明确缺口。"]
+        synthesis["confidence"] = "medium" if has_child_information else "low"
+        node["professional_answer"] = {
+            "answer": summary,
+            "facts": synthesis["facts"],
+            "inferences": synthesis["inferences"],
+            "supporting_evidence": _child_answer_lines(child_nodes, "support"),
+            "refuting_evidence": _child_answer_lines(child_nodes, "refute"),
+            "research_leads": _child_answer_lines(child_nodes, "lead"),
+            "judgment": summary,
+            "gaps": synthesis["gaps"],
+            "next_data": _unique_next_data(child_nodes) or [_normalize_next_data(synthesis["gaps"][0])],
+            "source_balance": f"子问题证据结构：{support_count} 支持 / {refute_count} 反证 / {lead_count} 线索。",
+            "confidence": synthesis["confidence"],
+            "rollup": summary,
+        }
+
+
+def _child_rollup_summary(node: dict[str, Any], child_nodes: list[dict[str, Any]]) -> str:
+    answered_children = [child for child in child_nodes if _node_has_information(child)]
+    if not answered_children:
+        return (
+            f"“{node.get('question', '')}”下有 {len(child_nodes)} 个子问题，但尚未形成可核验信息闭环；"
+            "本层只能作为问题索引，不能向上输出强结论。"
+        )
+    return _hierarchy_content_summary(node, child_nodes)
+
+
+STRUCTURE_SUMMARY_MARKERS = (
+    "当前已覆盖",
+    "当前已回答",
+    "信息结构为",
+    "四类来源覆盖",
+    "核心判断是",
+    "子问题证据结构",
+    "当前结论是：该板块",
+)
+
+GENERIC_RESEARCH_MARKERS = (
+    "当前信息足以形成较强的阶段性判断",
+    "仍需跟踪后续更新触发器",
+    "当前回答优先由",
+    "已有可用支撑信息",
+    "可形成初步判断",
+    "只能作为研究线索",
+    "未形成判断",
+    "不能上抛为判断",
+)
+
+
+def _hierarchy_content_summary(
+    node: dict[str, Any],
+    child_nodes: list[dict[str, Any]] | None = None,
+    nodes_by_id: dict[str, dict[str, Any]] | None = None,
+    *,
+    max_lines: int = 4,
+    max_chars: int = 420,
+) -> str:
+    children = child_nodes if child_nodes is not None else _child_nodes_for_node(node, nodes_by_id)
+    lines = _rollup_content_lines(node, children, nodes_by_id, max_lines=max_lines)
+    if not lines:
+        return (
+            f"“{node.get('question', '')}”尚未沉淀出可核验事实，当前只能保留为待研究问题；"
+            "下一步应先补一手证据、高可靠研报和反证来源。"
+        )
+    evidence_text = "；".join(lines)
+    boundary = _rollup_boundary_line(children or [node], nodes_by_id)
+    gap = _first_child_gap(children) if children else _node_gap_text(node)
+    parts = [f"综合子问题信息，本层结论是：{evidence_text}。"]
+    if boundary:
+        parts.append(f"主要边界是：{boundary}。")
+    elif gap and gap != "暂无明确缺口。":
+        parts.append(f"尚未闭合的是：{_truncate_text(gap, 96)}。")
+    else:
+        parts.append("后续需要用时间序列、同业对照和反证阈值继续校准。")
+    return _truncate_text("".join(parts), max_chars)
+
+
+def _child_nodes_for_node(
+    node: dict[str, Any],
+    nodes_by_id: dict[str, dict[str, Any]] | None,
+) -> list[dict[str, Any]]:
+    if not nodes_by_id:
+        return []
+    return [
+        nodes_by_id[child_id]
+        for child_id in node.get("next_question_ids", [])
+        if child_id in nodes_by_id
+    ]
+
+
+def _rollup_content_lines(
+    node: dict[str, Any],
+    child_nodes: list[dict[str, Any]],
+    nodes_by_id: dict[str, dict[str, Any]] | None,
+    *,
+    max_lines: int,
+) -> list[str]:
+    lines: list[str] = []
+    if child_nodes:
+        for child in child_nodes:
+            line = _best_child_content_line(child, nodes_by_id)
+            if not line:
+                continue
+            prefix = _short_question_prefix(child.get("question", ""))
+            _append_unique_line(lines, f"{prefix}：{line}" if prefix else line)
+            if len(lines) >= max_lines:
+                return lines
+    for line in _node_content_lines(node, limit=max_lines):
+        _append_unique_line(lines, line)
+        if len(lines) >= max_lines:
+            return lines
+    return lines
+
+
+def _best_child_content_line(
+    child: dict[str, Any],
+    nodes_by_id: dict[str, dict[str, Any]] | None,
+) -> str:
+    descendant_nodes = _child_nodes_for_node(child, nodes_by_id)
+    for descendant in descendant_nodes:
+        lines = _node_content_lines(descendant, limit=1)
+        if lines:
+            return lines[0]
+    lines = _node_content_lines(child, limit=1)
+    if lines:
+        return lines[0]
+    summary = _clean_research_line(_node_summary(child))
+    return summary if summary and not _is_structure_summary(summary) else ""
+
+
+def _node_content_lines(node: dict[str, Any], *, limit: int) -> list[str]:
+    lines: list[str] = []
+    if _should_prioritize_synthesis_override(node):
+        for candidate in (
+            node.get("professional_answer", {}).get("answer", ""),
+            node.get("rollup_to_parent", ""),
+            node.get("current_answer", ""),
+        ):
+            line = _clean_research_line(candidate)
+            _append_unique_line(lines, line)
+            if len(lines) >= limit:
+                return lines
+    for category in SOURCE_ORIGIN_INFO_ORDER:
+        for item in node.get("evidence_buckets", {}).get(category, []):
+            line = _source_item_summary_line(item)
+            _append_unique_line(lines, line)
+            if len(lines) >= limit:
+                return lines
+    synthesis = node.get("synthesis", {})
+    for field in ("facts", "inferences"):
+        for item in synthesis.get(field, []):
+            line = _clean_research_line(item)
+            _append_unique_line(lines, line)
+            if len(lines) >= limit:
+                return lines
+    professional = node.get("professional_answer", {})
+    for field in ("supporting_evidence", "refuting_evidence", "research_leads"):
+        for item in professional.get(field, []):
+            line = _clean_research_line(item)
+            _append_unique_line(lines, line)
+            if len(lines) >= limit:
+                return lines
+    summary = _clean_research_line(node.get("rollup_to_parent", "") or node.get("current_answer", ""))
+    _append_unique_line(lines, summary)
+    return lines[:limit]
+
+
+def _should_prioritize_synthesis_override(node: dict[str, Any]) -> bool:
+    override = node.get("metadata", {}).get("synthesis_override", {})
+    source = override.get("source", "")
+    return bool(source and source != "deterministic_batch_synthesis")
+
+
+def _source_item_summary_line(item: dict[str, Any]) -> str:
+    if item.get("missing_record"):
+        return ""
+    text = _clean_research_line(item.get("summary", "") or item.get("point", ""))
+    if not text:
+        return ""
+    source_name = _clean_research_line(item.get("source_name", ""))
+    if source_name and source_name not in text[:24]:
+        return f"{source_name}：{text}"
+    return text
+
+
+def _rollup_boundary_line(
+    nodes: list[dict[str, Any]],
+    nodes_by_id: dict[str, dict[str, Any]] | None,
+) -> str:
+    candidates: list[dict[str, Any]] = []
+    for node in nodes:
+        candidates.append(node)
+        candidates.extend(_child_nodes_for_node(node, nodes_by_id))
+    for candidate in candidates:
+        for items in candidate.get("evidence_buckets", {}).values():
+            for item in items:
+                if _evidence_stance_class(item.get("relation", "")) != "refute":
+                    continue
+                line = _source_item_summary_line(item)
+                if line:
+                    return _truncate_text(line, 120)
+    return ""
+
+
+def _append_unique_line(lines: list[str], line: str) -> None:
+    cleaned = _clean_research_line(line)
+    if not cleaned:
+        return
+    key = re.sub(r"\s+", "", cleaned)
+    if any(re.sub(r"\s+", "", existing) == key for existing in lines):
+        return
+    lines.append(_truncate_text(cleaned, 120))
+
+
+def _clean_research_line(value: Any) -> str:
+    text = _zh_text(str(value or ""))
+    text = re.sub(r"\s+", " ", text).strip()
+    text = re.sub(r"\s*\[[^\]]*ev_[^\]]+\]", "", text)
+    text = re.sub(r"^(专业回答|当前回答|支撑|反证|研究线索|证据|研报|消息|观点)[：:]\s*", "", text)
+    for _ in range(3):
+        head, sep, tail = text.partition("：")
+        if not sep:
+            break
+        if _looks_like_question_prefix(head) or head in {"证据", "研报", "消息", "观点", "支撑", "反证", "研究线索"}:
+            text = tail.strip()
+            continue
+        break
+    text = _strip_terminal_punctuation(text)
+    if not text or _is_structure_summary(text) or _is_generic_research_line(text):
+        return ""
+    return text
+
+
+def _looks_like_question_prefix(text: str) -> bool:
+    value = _zh_text(text)
+    if len(value) > 60:
+        return False
+    return any(token in value for token in ("？", "?", "什么", "哪些", "如何", "为什么", "是否", "能否", "谁", "哪里", "哪个"))
+
+
+def _short_question_prefix(question: str) -> str:
+    text = _strip_terminal_punctuation(_zh_text(question)).replace("？", "").replace("?", "")
+    text = re.sub(r"^(这个回答最需要哪条一手证据验证|这个源头基因今天还能解释什么，不能解释什么)$", "", text)
+    return _truncate_text(text, 26)
+
+
+def _is_structure_summary(text: str) -> bool:
+    value = _zh_text(text)
+    return any(marker in value for marker in STRUCTURE_SUMMARY_MARKERS)
+
+
+def _is_generic_research_line(text: str) -> bool:
+    value = _zh_text(text)
+    return any(marker in value for marker in GENERIC_RESEARCH_MARKERS)
+
+
+def _child_category_coverage(child_nodes: list[dict[str, Any]]) -> str:
+    counts = {category: 0 for category in SOURCE_ORIGIN_INFO_ORDER}
+    for child in child_nodes:
+        child_counts = _node_category_counts(child)
+        for category in SOURCE_ORIGIN_INFO_ORDER:
+            counts[category] += child_counts.get(category, 0)
+    return " / ".join(
+        f"{INFO_CATEGORY_LABEL_ZH.get(category, category)} {counts[category]}"
+        for category in SOURCE_ORIGIN_INFO_ORDER
+    )
+
+
+def _aggregate_child_evidence_counts(child_nodes: list[dict[str, Any]]) -> tuple[int, int, int]:
+    support = refute = lead = 0
+    for child in child_nodes:
+        child_support, child_refute, child_lead = _node_evidence_counts(child)
+        support += child_support
+        refute += child_refute
+        lead += child_lead
+    return support, refute, lead
+
+
+def _unique_child_gaps(child_nodes: list[dict[str, Any]]) -> list[str]:
+    gaps: list[str] = []
+    for child in child_nodes:
+        for gap in child.get("synthesis", {}).get("gaps", []):
+            text = _zh_text(gap)
+            if text and text not in gaps:
+                gaps.append(text)
+    return gaps[:4]
+
+
+def _child_fact_lines(child_nodes: list[dict[str, Any]]) -> list[str]:
+    lines: list[str] = []
+    for child in child_nodes:
+        for fact in child.get("synthesis", {}).get("facts", []):
+            line = f"{child.get('question', '')}：{fact}"
+            if line not in lines:
+                lines.append(line)
+    if lines:
+        return lines[:6]
+    return [
+        f"{child.get('question', '')}：{_truncate_text(_node_summary(child), 100)}"
+        for child in child_nodes[:4]
+    ]
+
+
+def _child_answer_lines(child_nodes: list[dict[str, Any]], stance: str) -> list[str]:
+    field = {
+        "support": "supporting_evidence",
+        "refute": "refuting_evidence",
+        "lead": "research_leads",
+    }[stance]
+    lines: list[str] = []
+    for child in child_nodes:
+        for item in child.get("professional_answer", {}).get(field, []):
+            text = f"{_truncate_text(child.get('question', ''), 28)}：{item}"
+            if text not in lines:
+                lines.append(text)
+    return lines[:4]
+
+
+def _unique_next_data(child_nodes: list[dict[str, Any]]) -> list[str]:
+    values: list[str] = []
+    for child in child_nodes:
+        for item in child.get("professional_answer", {}).get("next_data", []):
+            text = _zh_text(item)
+            if text and text not in values:
+                values.append(text)
+    return values[:4]
+
+
+def _custom_child_ids(node_id: str) -> list[str]:
+    return [f"{node_id}.evidence_map", f"{node_id}.disconfirming_test"]
+
+
+def _custom_child_nodes(parent: dict[str, Any], evidence: list[EvidenceRecord]) -> list[dict[str, Any]]:
+    question = parent.get("question", "")
+    child_specs = [
+        (
+            "evidence_map",
+            f"回答“{question}”最需要哪些一手证据和高可靠研报？",
+            f"先确认“{question}”的关键事实、口径、时间序列和可交叉验证来源。",
+            f"需要围绕“{question}”补充公告、财报、行业数据和可复核研报。",
+            "证据地图决定该新增问题能否进入上层结论。",
+        ),
+        (
+            "disconfirming_test",
+            f"什么信息会反证“{question}”的当前判断？",
+            f"优先寻找会削弱“{question}”的反向证据、边界条件和关键触发器。",
+            f"需要为“{question}”定义反证阈值、更新频率和触发信息源。",
+            "反证测试决定该新增问题对父节点判断的风险权重。",
+        ),
+    ]
+    children = []
+    for suffix, child_question, answer, gap, rollup in child_specs:
+        row = {
+            "id": f"{parent['id']}.{suffix}",
+            "parent_id": parent["id"],
+            "section_id": parent.get("section_id", "custom"),
+            "question": child_question,
+            "status": "auto_drilldown",
+        }
+        child = _custom_qa_node(row, row["id"], min(int(parent.get("level", 1)) + 1, 3), parent, evidence)
+        child["current_answer"] = answer
+        child["synthesis"]["inferences"] = [answer]
+        child["synthesis"]["judgment"] = rollup
+        child["synthesis"]["gaps"] = [gap]
+        child["rollup_to_parent"] = rollup
+        child["next_question_ids"] = []
+        children.append(child)
+    return children
+
+
+def _custom_qa_node(
+    row: dict[str, Any],
+    node_id: str,
+    level: int,
+    parent: dict[str, Any],
+    evidence: list[EvidenceRecord],
+) -> dict[str, Any]:
+    question = row.get("question", "")
+    info = _info_for_custom_question(question, parent, evidence)
+    buckets = _qa_buckets_from_question({"info": info}, evidence)
+    fallback_answer = (
+        f"这是用户新增问题。当前已从相关本地信息建立待验证研究单元；"
+        f"在补齐一手证据、研报、观点和消息前，不直接改写父节点结论。"
+    )
+    gap = f"需要围绕“{question}”补充四类信息，并验证它对父问题“{parent.get('question', '')}”的影响。"
+    professional = _professional_answer_for_node(question, buckets, fallback_answer, gap)
+    return {
+        "id": node_id,
+        "level": level,
+        "parent_id": parent.get("id"),
+        "requested_parent_id": row.get("requested_parent_id", parent.get("id")),
+        "section_id": row.get("section_id") or parent.get("section_id", "custom"),
+        "question": question,
+        "current_answer": professional["answer"],
+        "evidence_buckets": buckets,
+        "professional_answer": professional,
+        "synthesis": {
+            "facts": professional["facts"],
+            "inferences": professional["inferences"],
+            "judgment": professional["judgment"],
+            "gaps": professional["gaps"],
+            "confidence": professional["confidence"],
+        },
+        "rollup_to_parent": professional["rollup"],
+        "next_question_ids": [],
+        "status": row.get("status", "user_added"),
+        "metadata": {
+            "source": "user",
+            "created_at": row.get("created_at", ""),
+            "should_drill_down": not bool(row.get("terminal")),
+            "should_collect_information": bool(row.get("terminal")) or level >= 3,
+            "terminal_reason": "用户标记为终端问题，本层直接进入四类信息搜集。" if row.get("terminal") else "",
+        },
+    }
+
+
+def _info_for_custom_question(question: str, parent: dict[str, Any], evidence: list[EvidenceRecord]) -> dict[str, list[dict[str, str]]]:
+    info = _qa_empty_buckets()
+    records = _matching_records_for_question(question, evidence)
+    if not records:
+        return _info_from_parent_buckets(parent)
+    for record in records[:6]:
+        category = record.information_category if record.information_category in info else "evidence"
+        info[category].append(
+            _foundation_info(
+                record.id,
+                STANCE_LABEL_ZH.get(_information_stance(record), _information_stance(record)),
+                _custom_record_point(record),
+            )
+        )
+    return info
+
+
+def _matching_records_for_question(question: str, evidence: list[EvidenceRecord]) -> list[EvidenceRecord]:
+    terms = _custom_question_terms(question)
+    scored: list[tuple[int, EvidenceRecord]] = []
+    for record in evidence:
+        text = _record_text(record).lower()
+        score = sum(1 for term in terms if term and term.lower() in text)
+        if score:
+            scored.append((score, record))
+    scored.sort(key=lambda item: (item[0], item[1].materiality, item[1].reliability), reverse=True)
+    return [record for _score, record in scored]
+
+
+def _custom_question_terms(question: str) -> list[str]:
+    terms = [term for term in re.split(r"[\s,，。？?、/]+", question) if len(term) >= 2]
+    lower = question.lower()
+    expansions = {
+        "ev": ["ev", "vehicle", "deliver", "auto", "su7", "car"],
+        "汽车": ["ev", "vehicle", "auto", "su7", "deliver", "recall"],
+        "单车": ["ev", "vehicle", "deliver", "revenue", "gross margin"],
+        "手机": ["smartphone", "shipment", "miui", "mau"],
+        "iot": ["iot", "connected", "device"],
+        "治理": ["governance", "wvr", "voting", "lei jun"],
+        "风险": ["risk", "recall", "safety", "decline", "pressure"],
+        "毛利": ["gross profit", "gross margin", "margin"],
+        "现金": ["cash", "operating cash flow", "capex"],
+    }
+    for key, values in expansions.items():
+        if key in question or key in lower:
+            terms.extend(values)
+    return list(dict.fromkeys(terms))
+
+
+def _info_from_parent_buckets(parent: dict[str, Any]) -> dict[str, list[dict[str, str]]]:
+    info = _qa_empty_buckets()
+    for category in SOURCE_ORIGIN_INFO_ORDER:
+        for item in parent.get("evidence_buckets", {}).get(category, [])[:2]:
+            info[category].append(
+                _foundation_info(
+                    item.get("evidence_id", ""),
+                    item.get("relation", "研究线索"),
+                    item.get("point", "父节点相关信息，需继续验证。"),
+                )
+            )
+    return info
+
+
+def _custom_record_point(record: EvidenceRecord) -> str:
+    summary = _zh_text(record.summary)
+    return _truncate_text(summary, 96)
+
+
+def _attach_information_collection(qa_tree: dict[str, Any]) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for node in qa_tree.get("nodes", []):
+        if not _is_terminal_qa_node(qa_tree, node):
+            continue
+        collection: dict[str, dict[str, Any]] = {}
+        for category in SOURCE_ORIGIN_INFO_ORDER:
+            row = _information_collection_row(qa_tree, node, category)
+            rows.append(row)
+            collection[category] = row
+        node["information_collection"] = collection
+    return rows
+
+
+def _is_terminal_qa_node(qa_tree: dict[str, Any], node: dict[str, Any]) -> bool:
+    return int(node.get("level", 0) or 0) >= int(qa_tree.get("default_depth", 3) or 3) or not node.get("next_question_ids")
+
+
+def _information_collection_row(qa_tree: dict[str, Any], node: dict[str, Any], category: str) -> dict[str, Any]:
+    items = node.get("evidence_buckets", {}).get(category, [])
+    matched_ids = [item.get("evidence_id", "") for item in items if item.get("evidence_id")]
+    unresolved = any(item.get("missing_record") for item in items)
+    status = "matched" if items and not unresolved else "needs_source_record" if items else "missing"
+    return {
+        "node_id": node.get("id", ""),
+        "parent_id": node.get("parent_id", ""),
+        "section_id": node.get("section_id", ""),
+        "question": node.get("question", ""),
+        "category": category,
+        "category_label": INFO_CATEGORY_LABEL_ZH.get(category, category),
+        "status": status,
+        "matched_evidence_ids": matched_ids,
+        "matched_count": len(items),
+        "search_query": _collection_search_query(qa_tree.get("ticker", ""), node, category),
+        "next_action": _collection_next_action(category, status),
+        "recommended_sources": _collection_recommended_sources(category),
+        "acceptance_criteria": _collection_acceptance_criteria(category),
+    }
+
+
+def _collection_search_query(ticker: str, node: dict[str, Any], category: str) -> str:
+    company = ticker or "公司"
+    question = node.get("question", "")
+    if category == "evidence":
+        return f"{company} {question} 年报 公告 招股书 监管 披露"
+    if category == "research_report":
+        return f"{company} {question} 深度报告 行业研究 证券研究"
+    if category == "opinion":
+        return f"{company} {question} 专家 访谈 投资者 观点"
+    return f"{company} {question} 新闻 消息 传闻 进展"
+
+
+def _collection_next_action(category: str, status: str) -> str:
+    if status == "matched":
+        return "已匹配本地信息，下一步验证口径和更新频率。"
+    if status == "needs_source_record":
+        return "已有索引但来源记录未完整入库，下一步补齐 URL、摘要、可靠性和重要性。"
+    if category == "evidence":
+        return "优先补一手公告、财报、招股书、监管文件或公司 IR 材料。"
+    if category == "research_report":
+        return "补第三方深度研报、行业数据和可复核的商业研究材料。"
+    if category == "opinion":
+        return "补专家、产业人士或高质量投资者观点，并保持低权重。"
+    return "补公开消息和新闻进展，只作为研究线索，不直接强化结论。"
+
+
+def _collection_recommended_sources(category: str) -> list[str]:
+    sources = {
+        "evidence": ["公司公告/财报/招股书", "交易所或监管文件", "公司 IR 或正式新闻稿"],
+        "research_report": ["卖方深度报告", "行业专题或数据库", "可复核第三方份额/价格/出货数据"],
+        "message": ["主流财经媒体", "监管/交易所动态", "公司或渠道公开进展"],
+        "opinion": ["专家访谈", "产业人士观点", "高质量投资者或专业社区观点"],
+    }
+    return sources.get(category, [])
+
+
+def _collection_acceptance_criteria(category: str) -> list[str]:
+    criteria = {
+        "evidence": ["能定位原始来源", "记录报告期或发布日期", "摘要提取可验证事实或指标"],
+        "research_report": ["记录机构/作者/日期", "区分事实、模型和判断", "不能单独替代一手证据"],
+        "message": ["标注未证实边界", "说明影响的业务节点或假设", "只作为研究线索"],
+        "opinion": ["说明观点来源身份", "提炼可检验机制", "配套下一步验证数据"],
+    }
+    return criteria.get(category, [])
 
 
 def _l2_nodes_for_section(qa_tree: dict[str, Any], section_id: str) -> list[dict[str, Any]]:
@@ -682,6 +1729,14 @@ def _l2_question_page_path(section_id: str, node_id: str) -> Path:
 
 def _l2_question_href(section_id: str, node_id: str) -> str:
     return str(_l2_question_page_path(section_id, node_id)).replace("\\", "/")
+
+
+def _l3_question_page_path(section_id: str, node_id: str) -> Path:
+    return Path(section_id) / "l3" / f"{_safe_id(node_id)}.html"
+
+
+def _l3_question_href(section_id: str, node_id: str) -> str:
+    return str(Path("l3") / f"{_safe_id(node_id)}.html").replace("\\", "/")
 
 
 SECTION_QA_PARENT_IDS = {
@@ -851,7 +1906,7 @@ def _qa_drilldowns_for_section(
                     "question": child_question,
                     "answer": _child_question_answer(question, child_question, rows),
                     "gap": child_gap,
-                    "rollup": _child_question_rollup(child_question),
+                    "rollup": _child_question_rollup(child_question, rows),
                     "confidence": "medium" if rows else "low",
                     "status": "open" if rows else "needs_data",
                     "info": parent_info,
@@ -1001,12 +2056,51 @@ def _section_question_confidence(rows: list[dict[str, Any]]) -> str:
 
 def _child_question_answer(parent: dict[str, Any], child_question: str, rows: list[dict[str, Any]]) -> str:
     if rows:
-        return f"该问题从父节点证据出发继续下钻。当前不能直接合并为结论，需要单独补充能回答“{child_question}”的数据。"
+        support = [row for row in rows if _research_row_stance(row) == "support"]
+        refute = [row for row in rows if _research_row_stance(row) == "refute"]
+        leads = [row for row in rows if _research_row_stance(row) == "lead"]
+        first = _strip_terminal_punctuation(_zh_text(_research_row_point((refute or support or leads or rows)[0])))
+        if refute:
+            return (
+                f"围绕“{child_question}”，现有信息已经出现边界或反证：{first}"
+                "。当前不能按父问题的正向叙事直接上抛，需要补量化影响和持续性。"
+            )
+        if support:
+            return (
+                f"围绕“{child_question}”，现有信息提供初步支撑：{first}"
+                "。但它仍是从父问题继承的信息，下一步要补本问题专属数据。"
+            )
+        if leads:
+            return (
+                f"围绕“{child_question}”，现有信息主要是待验证线索：{first}"
+                "。该问题只能进入搜集队列，不能直接改写父节点判断。"
+            )
+        return f"围绕“{child_question}”，已有背景信息可作为起点，但还不足以形成强判断。"
     return "该下钻问题还没有专门证据，先作为下一轮信息搜集任务。"
 
 
-def _child_question_rollup(child_question: str) -> str:
-    return f"完成“{child_question}”后，再决定是否修正父问题判断。"
+def _child_question_rollup(child_question: str, rows: list[dict[str, Any]]) -> str:
+    if not rows:
+        return f"“{child_question}”尚未形成可上抛结论。"
+    support = sum(1 for row in rows if _research_row_stance(row) == "support")
+    refute = sum(1 for row in rows if _research_row_stance(row) == "refute")
+    lead = sum(1 for row in rows if _research_row_stance(row) == "lead")
+    if refute:
+        return f"“{child_question}”已出现 {refute} 条反证/边界条件，父问题上抛必须保留该约束。"
+    if support:
+        return f"“{child_question}”已有 {support} 条支撑信息，可作为父问题的初步验证分支。"
+    return f"“{child_question}”目前只有 {lead} 条线索，不能作为强结论上抛。"
+
+
+def _research_row_stance(row: dict[str, Any]) -> str:
+    stance = row.get("stance", "")
+    if stance in {"support", "refute", "lead"}:
+        return stance
+    return _evidence_stance_class(row.get("relation", ""))
+
+
+def _research_row_point(row: dict[str, Any]) -> str:
+    return row.get("point") or _section_row_point(row)
 
 
 def _foundation_section_question(section: dict[str, Any]) -> str:
@@ -1092,23 +2186,31 @@ def _qa_node_from_question(
     evidence: list[EvidenceRecord],
     child_ids: list[str],
 ) -> dict[str, Any]:
-    facts = _qa_fact_lines(question)
+    buckets = _qa_buckets_from_question(question, evidence)
+    professional = _professional_answer_for_node(
+        question["question"],
+        buckets,
+        question["answer"],
+        question["gap"],
+        question.get("rollup", ""),
+    )
     return {
         "id": node_id,
         "level": level,
         "parent_id": parent_id,
         "section_id": section_id,
         "question": question["question"],
-        "current_answer": question["answer"],
-        "evidence_buckets": _qa_buckets_from_question(question, evidence),
+        "current_answer": professional["answer"],
+        "evidence_buckets": buckets,
+        "professional_answer": professional,
         "synthesis": {
-            "facts": facts,
-            "inferences": [question["answer"]],
-            "judgment": question.get("rollup", question["answer"]),
-            "gaps": [question["gap"]],
-            "confidence": question.get("confidence", "medium"),
+            "facts": professional["facts"],
+            "inferences": professional["inferences"],
+            "judgment": professional["judgment"],
+            "gaps": professional["gaps"],
+            "confidence": professional["confidence"],
         },
-        "rollup_to_parent": question.get("rollup", question["answer"]),
+        "rollup_to_parent": professional["rollup"],
         "next_question_ids": child_ids,
         "status": question.get("status", "open"),
     }
@@ -1120,6 +2222,245 @@ def _qa_fact_lines(question: dict[str, Any]) -> list[str]:
         for item in items:
             lines.append(f"{item.get('relation', '信息')}：{item.get('point', '')} [{item.get('evidence_id', '')}]")
     return lines
+
+
+def _professional_answer_for_node(
+    question: str,
+    buckets: dict[str, list[dict[str, Any]]],
+    fallback_answer: str,
+    gap: str,
+    fallback_rollup: str = "",
+) -> dict[str, Any]:
+    support_items, refute_items, lead_items = _bucket_items_by_stance(buckets)
+    counts = _bucket_category_counts(buckets)
+    total = sum(counts.values())
+    facts = _bucket_fact_lines(buckets)
+    answer = _professional_current_answer(question, fallback_answer, total, counts, support_items, refute_items, lead_items)
+    rollup = _professional_rollup(question, fallback_rollup, answer, total, support_items, refute_items, lead_items)
+    gaps = _professional_gaps(question, buckets, gap)
+    return {
+        "answer": answer,
+        "facts": facts[:6],
+        "inferences": [_professional_inference(question, total, support_items, refute_items, lead_items)],
+        "supporting_evidence": [_answer_item_line(item) for item in support_items[:4]],
+        "refuting_evidence": [_answer_item_line(item) for item in refute_items[:4]],
+        "research_leads": [_answer_item_line(item) for item in lead_items[:4]],
+        "judgment": _professional_judgment(question, total, support_items, refute_items, lead_items),
+        "gaps": gaps,
+        "next_data": _professional_next_data(question, gap, buckets),
+        "source_balance": (
+            f"信息结构：证据 {counts['evidence']} / 研报 {counts['research_report']} / "
+            f"消息 {counts['message']} / 观点 {counts['opinion']}；"
+            f"立场结构：支撑 {len(support_items)} / 反证 {len(refute_items)} / 线索 {len(lead_items)}。"
+        ),
+        "confidence": _professional_confidence(counts, support_items, refute_items),
+        "rollup": rollup,
+    }
+
+
+def _bucket_items_by_stance(
+    buckets: dict[str, list[dict[str, Any]]],
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]]:
+    support: list[dict[str, Any]] = []
+    refute: list[dict[str, Any]] = []
+    lead: list[dict[str, Any]] = []
+    for items in buckets.values():
+        for item in items:
+            stance = _evidence_stance_class(item.get("relation", ""))
+            if stance == "refute":
+                refute.append(item)
+            elif stance == "lead":
+                lead.append(item)
+            else:
+                support.append(item)
+    return support, refute, lead
+
+
+def _bucket_category_counts(buckets: dict[str, list[dict[str, Any]]]) -> dict[str, int]:
+    return {category: len(buckets.get(category, [])) for category in SOURCE_ORIGIN_INFO_ORDER}
+
+
+def _bucket_fact_lines(buckets: dict[str, list[dict[str, Any]]]) -> list[str]:
+    facts: list[str] = []
+    for items in buckets.values():
+        for item in items:
+            facts.append(f"{item.get('relation', '信息')}：{item.get('point', '')} [{item.get('evidence_id', '')}]")
+    return facts
+
+
+def _professional_current_answer(
+    question: str,
+    fallback_answer: str,
+    total: int,
+    counts: dict[str, int],
+    support_items: list[dict[str, Any]],
+    refute_items: list[dict[str, Any]],
+    lead_items: list[dict[str, Any]],
+) -> str:
+    clean_fallback = _zh_text(fallback_answer)
+    if total == 0:
+        return f"当前不能回答“{question}”。{clean_fallback} 该问题缺少可核验来源，不能上抛为判断。"
+    base = _current_answer_prefix(clean_fallback)
+    first = _strip_terminal_punctuation(_truncate_text(_first_bucket_point(support_items + refute_items + lead_items), 92))
+    if refute_items:
+        return (
+            f"{base}。但该判断存在明确边界或反证，核心约束是：{first}。"
+            "因此本节点只能形成受约束的阶段性判断。"
+        )
+    if counts["evidence"] or counts["research_report"]:
+        return (
+            f"{base}。已映射 {total} 条信息，其中证据 {counts['evidence']} 条、"
+            f"研报 {counts['research_report']} 条。核心支撑是：{first}。"
+        )
+    return (
+        f"{base}。但现有来源主要是消息或观点，核心线索是：{first}。"
+        "该节点需要补一手证据或高可靠研报后才能强化。"
+    )
+
+
+def _current_answer_prefix(text: str) -> str:
+    cleaned = _strip_prior_answer_suffix(_strip_terminal_punctuation(_zh_text(text)))
+    if cleaned.startswith("当前回答"):
+        return cleaned
+    return f"当前回答：{cleaned}"
+
+
+def _strip_prior_answer_suffix(text: str) -> str:
+    markers = [
+        "。但该判断存在明确边界或反证",
+        "。已映射 ",
+        "。但现有来源主要是消息或观点",
+        " 当前该新增问题已显式绑定 ",
+    ]
+    cleaned = text
+    for marker in markers:
+        index = cleaned.find(marker)
+        if index >= 0:
+            cleaned = cleaned[:index]
+    return _strip_terminal_punctuation(cleaned)
+
+
+def _strip_terminal_punctuation(text: str) -> str:
+    return text.rstrip("。；;，, ")
+
+
+def _professional_rollup(
+    question: str,
+    fallback_rollup: str,
+    answer: str,
+    total: int,
+    support_items: list[dict[str, Any]],
+    refute_items: list[dict[str, Any]],
+    lead_items: list[dict[str, Any]],
+) -> str:
+    base = _zh_text(fallback_rollup) or _truncate_text(answer, 150)
+    if total == 0:
+        return f"“{question}”尚未形成可上抛结论。"
+    if refute_items:
+        if any(token in base for token in ("反证", "边界", "约束")):
+            return base
+        return f"{base}；但上抛时必须保留 {len(refute_items)} 条反证/边界条件。"
+    if lead_items and not support_items:
+        return f"{base}；目前只适合作为研究线索上抛。"
+    return base
+
+
+def _professional_inference(
+    question: str,
+    total: int,
+    support_items: list[dict[str, Any]],
+    refute_items: list[dict[str, Any]],
+    lead_items: list[dict[str, Any]],
+) -> str:
+    del support_items
+    if total == 0:
+        return f"“{question}”仍处于待搜集状态。"
+    if refute_items:
+        return f"“{question}”的正向叙事需要先解释反证和边界条件。"
+    if lead_items:
+        return f"“{question}”已有线索，但低可靠来源不能单独改变父节点判断。"
+    return f"“{question}”已有可用支撑信息，下一步应补时间序列、同业对照和反证阈值。"
+
+
+def _professional_judgment(
+    question: str,
+    total: int,
+    support_items: list[dict[str, Any]],
+    refute_items: list[dict[str, Any]],
+    lead_items: list[dict[str, Any]],
+) -> str:
+    if total == 0:
+        return "未形成判断。"
+    if refute_items:
+        return f"“{question}”当前是受反证约束的开放判断。"
+    if support_items:
+        return f"“{question}”可形成初步判断，但置信度取决于后续数据和反证测试。"
+    if lead_items:
+        return f"“{question}”只能作为研究线索。"
+    return "未形成判断。"
+
+
+def _professional_gaps(question: str, buckets: dict[str, list[dict[str, Any]]], gap: str) -> list[str]:
+    counts = _bucket_category_counts(buckets)
+    missing = [INFO_CATEGORY_LABEL_ZH[category] for category, count in counts.items() if count == 0]
+    gaps = []
+    if gap:
+        gaps.append(_zh_text(gap))
+    if missing:
+        gaps.append(f"需要补充能直接回答“{question}”的{ '、'.join(missing) }。")
+    if not gaps:
+        gaps.append("需要补时间序列、同业对照、反证阈值和更新触发器。")
+    return gaps[:3]
+
+
+def _professional_next_data(question: str, gap: str, buckets: dict[str, list[dict[str, Any]]]) -> list[str]:
+    counts = _bucket_category_counts(buckets)
+    missing = [INFO_CATEGORY_LABEL_ZH[category] for category, count in counts.items() if count == 0]
+    values: list[str] = []
+    if gap:
+        values.append(_normalize_next_data(gap))
+    values.extend(f"补充{label}来源" for label in missing[:3])
+    if any(token in question for token in ("EV", "汽车", "单车", "交付", "召回")):
+        values.extend(["单车收入/毛利", "订单等待周期", "质保和召回成本"])
+    elif any(token in question for token in ("手机", "IoT", "MAU", "服务")):
+        values.extend(["分业务收入和毛利", "MAU/ARPU", "用户留存和多设备数据"])
+    else:
+        values.extend(["时间序列", "同业对照", "反证阈值"])
+    result: list[str] = []
+    for value in values:
+        if value and value not in result:
+            result.append(value)
+    return result[:4]
+
+
+def _professional_confidence(
+    counts: dict[str, int],
+    support_items: list[dict[str, Any]],
+    refute_items: list[dict[str, Any]],
+) -> str:
+    if sum(counts.values()) == 0 or refute_items:
+        return "low"
+    if counts["evidence"] and counts["research_report"] and len(support_items) >= 2:
+        return "medium"
+    if counts["evidence"] or counts["research_report"]:
+        return "medium"
+    return "low"
+
+
+def _first_bucket_point(items: list[dict[str, Any]]) -> str:
+    for item in items:
+        point = _zh_text(item.get("point", "") or item.get("summary", ""))
+        if point:
+            return point
+    return "暂无可摘要事实"
+
+
+def _answer_item_line(item: dict[str, Any]) -> str:
+    source = item.get("source_name", "") or item.get("evidence_id", "")
+    relation = item.get("relation", "信息")
+    point = _truncate_text(_zh_text(item.get("point", "")), 104)
+    evidence_id = item.get("evidence_id", "")
+    return f"{relation}：{point}（{source}，{evidence_id}）"
 
 
 def _qa_buckets_from_question(question: dict[str, Any], evidence: list[EvidenceRecord]) -> dict[str, list[dict[str, Any]]]:
@@ -2095,6 +3436,47 @@ def _apple_research_css() -> str:
     .field { margin-top: 12px; }
     .field b { display: block; margin-bottom: 5px; color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: none; }
     .note { color: var(--muted); font-size: 13px; }
+    .compact-question-list {
+      display: grid;
+      gap: 8px;
+      margin: 8px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .compact-question-list li {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: center;
+      margin: 0;
+      padding: 9px 10px;
+      border: 1px solid rgba(0, 0, 0, .07);
+      border-radius: 8px;
+      background: #f8f8fa;
+    }
+    .compact-question-list .question-text {
+      min-width: 0;
+      overflow-wrap: anywhere;
+      color: var(--ink);
+    }
+    .mix-badge {
+      display: inline-grid;
+      grid-template-columns: auto auto;
+      gap: 6px;
+      align-items: baseline;
+      white-space: nowrap;
+      padding: 4px 7px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, .08);
+      color: var(--muted);
+      font-size: 11px;
+    }
+    .mix-badge strong {
+      color: var(--blue);
+      font-family: "SF Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 11px;
+    }
     .chip {
       display: inline-flex;
       max-width: 100%;
@@ -2121,6 +3503,8 @@ def _apple_research_css() -> str:
     li { margin: 5px 0; }
     @media (max-width: 880px) {
       .summary-grid, .summary-strip, .foundation-grid, .grid, .lead-grid, .info-grid, .reference-grid, .timeline-row { grid-template-columns: 1fr; }
+      .compact-question-list li { grid-template-columns: 1fr; }
+      .mix-badge { justify-self: start; }
       table { font-size: 13px; }
       header { padding-top: 42px; }
     }
@@ -2171,6 +3555,137 @@ def _qa_explorer_css() -> str:
     }
     .l2-card h3 {
       font-size: clamp(20px, 2vw, 27px);
+    }
+    .node-brief-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) repeat(3, minmax(0, .88fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .node-brief-card {
+      min-width: 0;
+      padding: 15px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .88);
+    }
+    .node-brief-card.primary {
+      background: #111820;
+      color: #fff;
+    }
+    .node-brief-card.primary b,
+    .node-brief-card.primary p {
+      color: #fff;
+    }
+    .node-brief-card b {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .node-brief-card p {
+      margin: 0;
+      font-size: 13px;
+    }
+    .category-meter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .category-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 8px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 999px;
+      background: #f5f5f7;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .category-pill.filled {
+      color: var(--blue);
+      background: #eef5ff;
+      border-color: #c9ddff;
+    }
+    .category-pill.warning {
+      color: var(--amber);
+      background: #fff8eb;
+      border-color: #f1d49b;
+    }
+    .research-path {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 0;
+    }
+    .research-path span {
+      display: inline-flex;
+      padding: 4px 8px;
+      border-radius: 999px;
+      color: var(--muted);
+      background: #f5f5f7;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .research-path span.active {
+      color: var(--blue);
+      background: #eef5ff;
+    }
+    .source-coverage-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .coverage-item {
+      min-width: 0;
+      padding: 9px 10px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #f5f5f7;
+    }
+    .coverage-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .coverage-item strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 18px;
+      line-height: 1;
+    }
+    .coverage-item.support strong { color: var(--green); }
+    .coverage-item.refute strong { color: var(--red); }
+    .coverage-item.lead strong { color: var(--amber); }
+    .coverage-item.total strong { color: var(--blue); }
+    .handoff-table {
+      margin-top: 14px;
+    }
+    .handoff-table td:first-child {
+      width: 28%;
+      font-weight: 700;
+    }
+    .handoff-table .mini-meter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .handoff-table .mini-meter span {
+      display: inline-flex;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: #f5f5f7;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
     }
     .research-unit-card {
       display: grid;
@@ -2261,6 +3776,34 @@ def _qa_explorer_css() -> str:
       margin: 0;
       font-size: 13px;
     }
+    .collection-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .collection-box {
+      min-width: 0;
+      padding: 10px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #f7fbff;
+    }
+    .collection-box b {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .04em;
+    }
+    .collection-box p {
+      margin: 0 0 5px;
+      font-size: 13px;
+    }
+    .collection-status {
+      color: var(--blue);
+      font-weight: 800;
+    }
     .l3-info-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2305,6 +3848,160 @@ def _qa_explorer_css() -> str:
     .l3-info-box li.stance-support { border-left-color: var(--green); }
     .l3-info-box li.stance-refute { border-left-color: var(--red); }
     .l3-info-box li.stance-lead { border-left-color: var(--amber); }
+    .l3-detail-page {
+      max-width: 1240px;
+    }
+    .l3-answer-section h2 {
+      max-width: 960px;
+    }
+    .l3-answer-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr);
+      gap: 14px;
+      align-items: stretch;
+      margin-top: 16px;
+    }
+    .l3-answer-main,
+    .l3-answer-metrics,
+    .analysis-metric {
+      min-width: 0;
+      padding: clamp(16px, 2.5vw, 22px);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
+    }
+    .l3-answer-main {
+      background: #111820;
+      color: #fff;
+    }
+    .l3-answer-main b,
+    .l3-answer-main p {
+      color: #fff;
+    }
+    .l3-answer-main b {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 12px;
+      letter-spacing: .06em;
+    }
+    .l3-answer-main p {
+      margin: 0;
+      font-size: clamp(16px, 1.8vw, 21px);
+      line-height: 1.7;
+    }
+    .l3-answer-metrics {
+      display: grid;
+      gap: 10px;
+      background: #f5f5f7;
+    }
+    .l3-answer-metrics div {
+      padding: 10px 0;
+      border-top: 1px solid rgba(0, 0, 0, .08);
+    }
+    .l3-answer-metrics div:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+    .l3-answer-metrics span,
+    .analysis-metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .l3-answer-metrics strong,
+    .analysis-metric strong {
+      display: block;
+      margin-top: 6px;
+      color: var(--ink);
+      font-size: clamp(22px, 2.2vw, 32px);
+      line-height: 1.1;
+    }
+    .l3-answer-metrics p,
+    .analysis-metric p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .analysis-metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 14px 0;
+    }
+    .analysis-table td:first-child {
+      width: 18%;
+    }
+    .bar-stack {
+      display: grid;
+      gap: 10px;
+      margin: 16px 0;
+      padding: 16px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .bar-row {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr) 150px;
+      gap: 12px;
+      align-items: center;
+      min-width: 0;
+      font-size: 13px;
+    }
+    .bar-row span {
+      color: var(--ink);
+      font-weight: 700;
+    }
+    .bar-row b {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-align: right;
+    }
+    .bar-track {
+      height: 12px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e8e8ed;
+    }
+    .bar-fill {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+    }
+    .bar-fill.blue { background: var(--blue); }
+    .bar-fill.green { background: var(--green); }
+    .l3-reasoning-list {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .l3-reasoning-list article {
+      min-width: 0;
+      padding: 16px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .l3-reasoning-list span {
+      display: inline-flex;
+      margin-bottom: 10px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      color: var(--blue);
+      background: #eef5ff;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .l3-reasoning-list p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.65;
+    }
     .stance-pill,
     .quality-pill {
       display: inline-flex;
@@ -2477,6 +4174,18 @@ def _qa_explorer_css() -> str:
       font: inherit;
       background: #fff;
     }
+    .draft-question-output {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .draft-question-output textarea {
+      min-height: 118px;
+      font-family: "SF Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 12px;
+      line-height: 1.45;
+    }
     .qa-ask-actions {
       display: flex;
       gap: 8px;
@@ -2552,9 +4261,11 @@ def _qa_explorer_css() -> str:
     }
     @media (max-width: 1080px) {
       .qa-shell { grid-template-columns: 1fr; }
-      .l2-grid, .l3-info-grid, .decision-grid, .next-step-grid { grid-template-columns: 1fr; }
+      .node-brief-grid, .l2-grid, .l3-info-grid, .decision-grid, .next-step-grid, .collection-grid, .source-coverage-strip, .draft-question-output, .l3-answer-layout, .analysis-metric-grid, .l3-reasoning-list { grid-template-columns: 1fr; }
       .qa-tree-panel, .qa-evidence-panel { position: static; max-height: none; }
       .qa-synthesis-grid { grid-template-columns: 1fr; }
+      .bar-row { grid-template-columns: 1fr; }
+      .bar-row b { text-align: left; }
     }
     """
 
@@ -2569,7 +4280,8 @@ def _render_dashboard(
     section_cards = "\n".join(_render_l0_framework_card(section, qa_tree) for section in foundation_graph["sections"])
     current_question = "公司基础框架：这家公司应该先用哪组基础问题建立认知？"
     l0_summary = _foundation_l0_summary(ticker, foundation_graph)
-    add_question_box = _render_add_question_box(f"{ticker}:l0", "L0 公司基础框架")
+    add_question_box = _render_add_question_box(f"{ticker}:l0", "L0 公司基础框架", "company.foundation")
+    custom_overview = _render_custom_question_overview(qa_tree)
 
     return f"""<!doctype html>
 <html lang="zh-CN">
@@ -2696,6 +4408,7 @@ def _render_dashboard(
   <nav>
     <a href="#current-question">当前问题</a>
     <a href="#foundation">子问题</a>
+    <a href="research_report.html">聚合报告</a>
     <a href="#add-question">新增问题</a>
   </nav>
   <main>
@@ -2711,12 +4424,286 @@ def _render_dashboard(
       <div class="foundation-grid">{section_cards}</div>
     </section>
 
-    {add_question_box}
+    {custom_overview}
+{add_question_box}
   </main>
   <script>{_draft_question_js()}</script>
 </body>
 </html>
 """
+
+
+def _render_custom_question_overview(qa_tree: dict[str, Any]) -> str:
+    custom_nodes = [
+        node
+        for node in qa_tree.get("nodes", [])
+        if node.get("metadata", {}).get("source") == "user" and node.get("status") == "user_added"
+    ]
+    if not custom_nodes:
+        return ""
+    cards = []
+    for node in custom_nodes[:12]:
+        support_count, refute_count, lead_count = _node_evidence_counts(node)
+        cards.append(
+            '<article class="foundation-card partial">'
+            f"<p class=\"eyebrow\">新增问题 / L{escape(str(node.get('level', '')))}</p>"
+            f"<h3>{escape(node.get('question', ''))}</h3>"
+            f"<div class=\"field\"><b>当前状态</b><p>{escape(_node_summary(node))}</p></div>"
+            f"<div class=\"field\"><b>证据结构</b><p>{support_count} 支持 / {refute_count} 反证 / {lead_count} 线索</p></div>"
+            f"<div class=\"field\"><b>挂载父节点</b><p><span class=\"chip\">{escape(node.get('parent_id', ''))}</span></p></div>"
+            "</article>"
+        )
+    return f"""
+    <section id="custom-questions">
+      <div class="layer-label">持久化新增问题</div>
+      <h2>用户新增问题</h2>
+      <div class="foundation-grid">{''.join(cards)}</div>
+    </section>
+"""
+
+
+def _render_layered_research_report(
+    ticker: str,
+    foundation_graph: dict[str, Any],
+    qa_tree: dict[str, Any],
+) -> str:
+    nodes = qa_tree.get("nodes", [])
+    nodes_by_id = {node.get("id"): node for node in nodes}
+    l1_count = sum(1 for node in nodes if node.get("level") == 1)
+    l2_count = sum(1 for node in nodes if node.get("level") == 2)
+    l3_count = sum(1 for node in nodes if node.get("level") == 3)
+    support_count, refute_count, lead_count = _qa_tree_evidence_counts(qa_tree)
+    report_sections = "\n".join(
+        _render_report_section(section, qa_tree, nodes_by_id)
+        for section in foundation_graph.get("sections", [])
+    )
+    priority_items = _render_report_priority_items(qa_tree)
+    custom_questions = _render_report_custom_questions(qa_tree)
+    l0_summary = _foundation_l0_summary(ticker, foundation_graph)
+    return f"""<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{escape(ticker)} 层级 QA 聚合研究报告</title>
+  <style>{_apple_research_css()}{_qa_explorer_css()}</style>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">Layered QA Research Report</p>
+    <h1>{escape(ticker)} 层级 QA 聚合研究报告</h1>
+    <p class="subtitle">本报告由 L0 元问题、L1 八步框架、L2 重点问题和 L3 研究单元自动收敛生成。它不是交易建议，而是下一轮投研工作的结构化基线。</p>
+    <div class="summary-strip">
+      <div class="metric"><span>L1 板块</span><strong>{l1_count}</strong></div>
+      <div class="metric"><span>L2 问题</span><strong>{l2_count}</strong></div>
+      <div class="metric"><span>L3 研究单元</span><strong>{l3_count}</strong></div>
+      <div class="metric"><span>证据结构</span><strong>{support_count}/{refute_count}/{lead_count}</strong><p>支持 / 反证 / 线索</p></div>
+    </div>
+  </header>
+  <nav class="nav">
+    <a href="research_dashboard.html#foundation">返回 L0</a>
+    <a href="#executive-summary">摘要</a>
+    <a href="#priority-gaps">关键缺口</a>
+    <a href="#section-rollup">板块收敛</a>
+  </nav>
+  <main class="qa-full-research">
+    <section id="executive-summary" class="level-frame">
+      <p class="eyebrow">一页摘要</p>
+      <h2>从问题树收敛出的当前判断</h2>
+      <div class="rule-box"><p>{escape(l0_summary)}</p></div>
+      <div class="next-step-grid">
+        <div class="next-step-box"><b>系统边界</b><p>当前报告基于本地证据库和预设 QA 树生成，低可靠消息只能作为研究线索。</p></div>
+        <div class="next-step-box"><b>更新方式</b><p>新增问题应挂到对应层级，完成信息搜集和回答后再向上修正父节点结论。</p></div>
+        <div class="next-step-box"><b>下一步</b><p>优先补齐高影响缺口，再生成下一版报告并比较结论变化。</p></div>
+      </div>
+    </section>
+
+    <section id="priority-gaps" class="level-frame">
+      <p class="eyebrow">关键缺口</p>
+      <h2>最需要优先验证的问题</h2>
+      <div class="l2-grid">{priority_items}</div>
+    </section>
+
+    {custom_questions}
+
+    <section id="section-rollup" class="level-frame">
+      <p class="eyebrow">板块收敛</p>
+      <h2>八步框架到 L3 研究单元的收敛结果</h2>
+      {report_sections}
+    </section>
+  </main>
+</body>
+</html>
+"""
+
+
+def _render_report_section(
+    section: dict[str, Any],
+    qa_tree: dict[str, Any],
+    nodes_by_id: dict[str, dict[str, Any]],
+) -> str:
+    section_id = section.get("id", "")
+    section_label = SECTION_LABEL_ZH.get(section.get("label", ""), section.get("label", ""))
+    section_node = nodes_by_id.get(f"foundation.{section_id}", {})
+    l2_nodes = _l2_nodes_for_section(qa_tree, section_id)
+    l2_cards = "\n".join(_render_report_l2_card(section_id, node, nodes_by_id) for node in l2_nodes)
+    if not l2_cards:
+        l2_cards = '<p class="qa-empty">当前板块尚未生成可收敛的问题。</p>'
+    section_href = f"pages/{SECTION_ID_TO_PAGE.get(section_id, f'{section_id}.html')}"
+    return (
+        '<article class="qa-static-card report-section-card">'
+        f"<p class=\"eyebrow\">L1 / {escape(section_label)}</p>"
+        f"<h3>{escape(_foundation_section_question(section))}</h3>"
+        f"<div class=\"field\"><b>上抛结论</b><p>{escape(_node_summary(section_node) if section_node else _section_evidence_summary(section))}</p></div>"
+        f"<div class=\"field\"><b>高优先级缺口</b>{_render_child_gap_list(l2_nodes)}</div>"
+        f"<a class=\"detail-link\" href=\"{escape(section_href)}\">打开 L1 工作页</a>"
+        f"<div class=\"l2-grid report-l2-grid\">{l2_cards}</div>"
+        "</article>"
+    )
+
+
+def _render_report_l2_card(
+    section_id: str,
+    node: dict[str, Any],
+    nodes_by_id: dict[str, dict[str, Any]],
+) -> str:
+    child_nodes = [nodes_by_id[child_id] for child_id in node.get("next_question_ids", []) if child_id in nodes_by_id]
+    support_count, refute_count, lead_count = _node_evidence_counts(node)
+    child_summary = _children_summary(child_nodes, nodes_by_id) or _node_summary(node)
+    href = f"pages/{_l2_question_href(section_id, node.get('id', 'question'))}"
+    return (
+        '<article class="l2-card report-l2-card">'
+        '<p class="eyebrow">L2 收敛</p>'
+        f"<h3>{escape(node.get('question', ''))}</h3>"
+        f"<div class=\"field\"><b>当前判断</b><p>{escape(_node_summary(node))}</p></div>"
+        f"<div class=\"field\"><b>L3 子结构汇总</b><p>{escape(_truncate_text(child_summary, 210))}</p></div>"
+        f"{_render_report_l3_answer_snippets(child_nodes)}"
+        '<div class="field"><b>证据结构</b>'
+        f"<p><strong>{support_count}</strong> 支持 / <strong>{refute_count}</strong> 反证 / <strong>{lead_count}</strong> 线索</p></div>"
+        f"{_render_report_source_refs(child_nodes or [node])}"
+        f"<div class=\"field\"><b>关键缺口</b>{_render_child_gap_list(child_nodes or [node])}</div>"
+        f"<a class=\"detail-link\" href=\"{escape(href)}\">打开 L2 下钻页</a>"
+        "</article>"
+    )
+
+
+def _render_report_l3_answer_snippets(child_nodes: list[dict[str, Any]]) -> str:
+    items: list[str] = []
+    for child in child_nodes[:3]:
+        professional = child.get("professional_answer", {})
+        answer = professional.get("answer") or child.get("current_answer", "")
+        if not answer:
+            continue
+        rollup = _clean_research_line(professional.get("rollup", ""))
+        rollup_html = f"<p class=\"note\">上抛：{escape(_truncate_text(rollup, 160))}</p>" if rollup else ""
+        confidence = professional.get("confidence", child.get("synthesis", {}).get("confidence", ""))
+        items.append(
+            "<li>"
+            f"<strong>{escape(child.get('question', ''))}</strong>"
+            f"<p>{escape(_truncate_text(answer, 190))}</p>"
+            f"{rollup_html}"
+            f"<p class=\"note\">置信度：{escape(_confidence_label(confidence))}</p>"
+            "</li>"
+        )
+    if not items:
+        return ""
+    return f"<div class=\"field\"><b>L3 专业回答</b><ul>{''.join(items)}</ul></div>"
+
+
+def _render_report_source_refs(nodes: list[dict[str, Any]]) -> str:
+    refs: list[str] = []
+    seen: set[tuple[str, str]] = set()
+    for node in nodes:
+        for category in SOURCE_ORIGIN_INFO_ORDER:
+            label = INFO_CATEGORY_LABEL_ZH.get(category, category)
+            for item in node.get("evidence_buckets", {}).get(category, [])[:2]:
+                source_name = item.get("source_name", "") or item.get("evidence_id", "")
+                evidence_id = item.get("evidence_id", "")
+                summary = _truncate_text(item.get("point", "") or item.get("summary", ""), 72)
+                if not source_name and not evidence_id:
+                    continue
+                key = (category, evidence_id or source_name)
+                if key in seen:
+                    continue
+                seen.add(key)
+                if item.get("url"):
+                    source = f'<a href="{escape(item.get("url", ""))}">{escape(source_name)}</a>'
+                else:
+                    source = escape(source_name)
+                refs.append(
+                    f"<li><span class=\"chip\">{escape(label)}</span> {source} "
+                    f"<span class=\"chip\">{escape(evidence_id)}</span><p class=\"note\">{escape(summary)}</p></li>"
+                )
+    if not refs:
+        return ""
+    return f"<div class=\"field\"><b>来源索引</b><ul>{''.join(refs[:6])}</ul></div>"
+
+
+def _render_report_priority_items(qa_tree: dict[str, Any]) -> str:
+    nodes = [node for node in qa_tree.get("nodes", []) if node.get("level") == 3]
+    ranked = sorted(
+        nodes,
+        key=lambda node: (
+            _node_evidence_counts(node)[1],
+            bool(node.get("synthesis", {}).get("gaps")),
+            sum(_node_evidence_counts(node)),
+        ),
+        reverse=True,
+    )
+    cards = []
+    for node in ranked[:6]:
+        support_count, refute_count, lead_count = _node_evidence_counts(node)
+        cards.append(
+            '<article class="l2-card">'
+            '<p class="eyebrow">优先验证</p>'
+            f"<h3>{escape(node.get('question', ''))}</h3>"
+            f"<div class=\"field\"><b>当前判断</b><p>{escape(_node_summary(node))}</p></div>"
+            f"<div class=\"field\"><b>最大缺口</b>{_render_research_list(node.get('synthesis', {}).get('gaps', []), '暂无明确缺口。', limit=1)}</div>"
+            '<div class="field"><b>证据结构</b>'
+            f"<p><strong>{support_count}</strong> 支持 / <strong>{refute_count}</strong> 反证 / <strong>{lead_count}</strong> 线索</p></div>"
+            "</article>"
+        )
+    return "\n".join(cards) or '<p class="qa-empty">当前没有可排序的 L3 研究单元。</p>'
+
+
+def _render_report_custom_questions(qa_tree: dict[str, Any]) -> str:
+    custom_nodes = [
+        node
+        for node in qa_tree.get("nodes", [])
+        if node.get("metadata", {}).get("source") == "user" and node.get("status") == "user_added"
+    ]
+    if not custom_nodes:
+        return ""
+    cards = []
+    for node in custom_nodes:
+        support_count, refute_count, lead_count = _node_evidence_counts(node)
+        cards.append(
+            '<article class="l2-card">'
+            '<p class="eyebrow">用户新增</p>'
+            f"<h3>{escape(node.get('question', ''))}</h3>"
+            f"<div class=\"field\"><b>父节点</b><p><span class=\"chip\">{escape(node.get('parent_id', ''))}</span></p></div>"
+            f"<div class=\"field\"><b>当前判断</b><p>{escape(_node_summary(node))}</p></div>"
+            f"<div class=\"field\"><b>最大缺口</b>{_render_research_list(node.get('synthesis', {}).get('gaps', []), '暂无明确缺口。', limit=1)}</div>"
+            f"<div class=\"field\"><b>证据结构</b><p><strong>{support_count}</strong> 支持 / <strong>{refute_count}</strong> 反证 / <strong>{lead_count}</strong> 线索</p></div>"
+            "</article>"
+        )
+    return f"""
+    <section id="custom-questions" class="level-frame">
+      <p class="eyebrow">用户新增问题</p>
+      <h2>新增问题对报告的影响</h2>
+      <div class="l2-grid">{''.join(cards)}</div>
+    </section>
+"""
+
+
+def _qa_tree_evidence_counts(qa_tree: dict[str, Any]) -> tuple[int, int, int]:
+    support = refute = lead = 0
+    for node in qa_tree.get("nodes", []):
+        node_support, node_refute, node_lead = _node_evidence_counts(node)
+        support += node_support
+        refute += node_refute
+        lead += node_lead
+    return support, refute, lead
 
 
 def _render_foundation_detail_page(
@@ -2865,7 +4852,7 @@ def _render_foundation_qa_page(
     current_question = _foundation_section_question(section)
     current_summary = _foundation_section_rollup(section)
     l1_overview = _render_l1_overview(section, qa_tree)
-    add_question_box = _render_add_question_box(f"{ticker}:l1:{section_id}", f"L1 {section_label}")
+    add_question_box = _render_add_question_box(f"{ticker}:l1:{section_id}", f"L1 {section_label}", f"foundation.{section_id}")
 
     return f"""<!doctype html>
 <html lang="zh-CN">
@@ -2928,7 +4915,7 @@ def _render_l1_overview(section: dict[str, Any], qa_tree: dict[str, Any]) -> str
 def _render_l2_entry_card(section_id: str, node: dict[str, Any], nodes_by_id: dict[str, dict[str, Any]]) -> str:
     href = _l2_question_href(section_id, node.get("id", "question"))
     child_nodes = [nodes_by_id[child_id] for child_id in node.get("next_question_ids", []) if child_id in nodes_by_id]
-    summary = _truncate_text(_children_summary(child_nodes, nodes_by_id) or _node_summary(node), 230)
+    summary = _truncate_text(_hierarchy_content_summary(node, child_nodes, nodes_by_id, max_chars=360), 320)
     child_items = _render_child_question_list(node, nodes_by_id)
     gap_items = _render_child_gap_list(child_nodes)
     return (
@@ -2944,23 +4931,35 @@ def _render_l2_entry_card(section_id: str, node: dict[str, Any], nodes_by_id: di
 
 
 def _node_summary(node: dict[str, Any]) -> str:
-    rollup = _zh_text(node.get("rollup_to_parent", ""))
-    answer = _zh_text(node.get("current_answer", ""))
-    return rollup or answer or "当前没有形成汇总结论。"
+    for candidate in (
+        node.get("rollup_to_parent", ""),
+        node.get("current_answer", ""),
+        node.get("professional_answer", {}).get("answer", ""),
+        node.get("synthesis", {}).get("judgment", ""),
+    ):
+        clean = _clean_research_line(candidate)
+        if clean:
+            return clean
+    content_lines = _node_content_lines(node, limit=1)
+    return content_lines[0] if content_lines else "当前没有形成汇总结论。"
 
 
 def _children_summary(children: list[dict[str, Any]], nodes_by_id: dict[str, dict[str, Any]]) -> str:
-    del nodes_by_id
-    summaries: list[str] = []
+    if not children:
+        return ""
+    answered_children = [child for child in children if _node_has_information(child)]
+    if not answered_children:
+        return f"当前有 {len(children)} 个子问题，但缺少可核验信息，暂不能形成强结论。"
+    return _hierarchy_content_summary({"question": "子问题汇总"}, children, nodes_by_id)
+
+
+def _first_child_gap(children: list[dict[str, Any]]) -> str:
     for child in children:
-        summary = _node_summary(child)
-        if not summary or summary == "当前没有形成汇总结论。":
-            continue
-        question = _truncate_text(child.get("question", ""), 34)
-        item = f"{question}：{summary}" if question else summary
-        if item not in summaries:
-            summaries.append(item)
-    return "；".join(_truncate_text(summary, 90) for summary in summaries[:3])
+        for gap in child.get("synthesis", {}).get("gaps", []):
+            text = _zh_text(gap)
+            if text:
+                return _truncate_text(text, 96)
+    return ""
 
 
 def _render_child_gap_list(children: list[dict[str, Any]]) -> str:
@@ -2997,8 +4996,19 @@ def _render_child_question_list(node: dict[str, Any], nodes_by_id: dict[str, dic
     for child_id in child_ids:
         child = nodes_by_id.get(child_id) if nodes_by_id else None
         question = child.get("question", child_id) if child else child_id.split(".")[-1]
-        items.append(f"<li>{escape(question)}</li>")
-    return "<ul>" + "".join(items) + "</ul>"
+        badge = _category_mix_badge(child) if child else ""
+        items.append(f"<li><span class=\"question-text\">{escape(question)}</span>{badge}</li>")
+    return "<ul class=\"compact-question-list\">" + "".join(items) + "</ul>"
+
+
+def _category_mix_badge(node: dict[str, Any]) -> str:
+    counts = _node_category_counts(node)
+    values = [str(counts.get(category, 0)) for category in SOURCE_ORIGIN_INFO_ORDER]
+    return (
+        "<span class=\"mix-badge\" title=\"证据 / 研报 / 消息 / 观点\">"
+        f"<span>证/研/消/观</span><strong>{escape('/'.join(values))}</strong>"
+        "</span>"
+    )
 
 
 def _truncate_text(value: str, limit: int) -> str:
@@ -3015,6 +5025,76 @@ def _rollup_box_html(label: str, answer: str, rollup: str) -> str:
     return f"<div class=\"qa-rollup\"><strong>{escape(label)}</strong><p>{escape(_zh_text(rollup))}</p></div>"
 
 
+def _render_node_brief(
+    node: dict[str, Any],
+    child_nodes: list[dict[str, Any]],
+    summary_override: str = "",
+) -> str:
+    summary_source = summary_override or (_hierarchy_content_summary(node, child_nodes, max_chars=220) if child_nodes else _node_summary(node))
+    summary = _truncate_text(summary_source, 170)
+    gap_text = _truncate_text(_node_gap_text(node), 96)
+    child_count = len(child_nodes)
+    child_done = sum(1 for child in child_nodes if _node_has_information(child))
+    child_label = f"{child_done}/{child_count}" if child_count else "0"
+    return (
+        '<div class="node-brief-grid">'
+        f"<article class=\"node-brief-card primary\"><b>本层结论</b><p>{escape(summary)}</p></article>"
+        "<article class=\"node-brief-card\"><b>信息覆盖</b>"
+        f"{_render_category_meter(node)}"
+        "</article>"
+        f"<article class=\"node-brief-card\"><b>子问题覆盖</b><p>{escape(child_label)} 个子问题已有信息支撑。</p></article>"
+        f"<article class=\"node-brief-card\"><b>下一步缺口</b><p>{escape(gap_text)}</p></article>"
+        "</div>"
+    )
+
+
+def _render_node_source_state(node: dict[str, Any]) -> str:
+    support, refute, lead = _node_evidence_counts(node)
+    total = support + refute + lead
+    counts = _node_category_counts(node)
+    category_text = " / ".join(
+        f"{INFO_CATEGORY_LABEL_ZH.get(category, category)} {counts.get(category, 0)}"
+        for category in SOURCE_ORIGIN_INFO_ORDER
+    )
+    return (
+        '<div class="source-coverage-strip">'
+        f"<div class=\"coverage-item total\"><span>信息总数</span><strong>{escape(str(total))}</strong></div>"
+        f"<div class=\"coverage-item support\"><span>支持</span><strong>{escape(str(support))}</strong></div>"
+        f"<div class=\"coverage-item refute\"><span>反证</span><strong>{escape(str(refute))}</strong></div>"
+        f"<div class=\"coverage-item lead\"><span>四类覆盖</span><strong>{escape(category_text)}</strong></div>"
+        "</div>"
+    )
+
+
+def _node_gap_text(node: dict[str, Any]) -> str:
+    gaps = node.get("synthesis", {}).get("gaps", [])
+    return _zh_text(gaps[0]) if gaps else "暂无明确缺口。"
+
+
+def _node_has_information(node: dict[str, Any]) -> bool:
+    return any(node.get("evidence_buckets", {}).get(category) for category in SOURCE_ORIGIN_INFO_ORDER)
+
+
+def _render_category_meter(node: dict[str, Any]) -> str:
+    counts = _node_category_counts(node)
+    pills = []
+    for category in SOURCE_ORIGIN_INFO_ORDER:
+        count = counts.get(category, 0)
+        label = INFO_CATEGORY_LABEL_ZH.get(category, category)
+        css = "filled" if count else "warning" if category == "evidence" else ""
+        pills.append(
+            f"<span class=\"category-pill {escape(css)}\">{escape(label)} <strong>{escape(str(count))}</strong></span>"
+        )
+    return f"<div class=\"category-meter\">{''.join(pills)}</div>"
+
+
+def _node_category_counts(node: dict[str, Any]) -> dict[str, int]:
+    return {
+        category: len(node.get("evidence_buckets", {}).get(category, []))
+        for category in SOURCE_ORIGIN_INFO_ORDER
+    }
+
+
 def _render_l2_question_page(
     ticker: str,
     section: dict[str, Any],
@@ -3022,19 +5102,20 @@ def _render_l2_question_page(
     qa_tree: dict[str, Any],
     evidence: list[EvidenceRecord],
 ) -> str:
-    del evidence
     section_id = section.get("id", "")
     section_label = SECTION_LABEL_ZH.get(section.get("label", ""), section.get("label", ""))
     nodes_by_id = {item.get("id"): item for item in qa_tree.get("nodes", [])}
     l3_nodes = [nodes_by_id[node_id] for node_id in node.get("next_question_ids", []) if node_id in nodes_by_id]
-    l3_cards = "\n".join(_render_l3_question_card(child) for child in l3_nodes)
+    l3_cards = "\n".join(_render_l3_question_card(ticker, section_id, child, evidence) for child in l3_nodes)
     if not l3_cards:
         l3_cards = '<p class="qa-empty">当前 L2 问题尚未生成 L3 追问。</p>'
     synthesis = node.get("synthesis", {})
-    summary = _node_summary(node)
-    decision_panel = _render_node_decision_panel(node, title="本层研究判断")
+    l2_summary = _l2_analytical_summary(ticker, node, l3_nodes, evidence)
+    node_brief = _render_node_brief(node, l3_nodes, l2_summary)
+    decision_panel = _render_node_decision_panel(node, title="本层研究判断", judgment_override=l2_summary)
     gap_panel = _render_node_next_steps(node)
-    add_question_box = _render_add_question_box(f"{ticker}:l2:{node.get('id', '')}", "L2 问题")
+    handoff_table = _render_child_handoff_table(ticker, l3_nodes, evidence)
+    add_question_box = _render_add_question_box(f"{ticker}:l2:{node.get('id', '')}", "L2 问题", node.get("id", ""))
     section_page = f"../{SECTION_ID_TO_PAGE.get(section_id, f'{section_id}.html')}"
     return f"""<!doctype html>
 <html lang="zh-CN">
@@ -3052,14 +5133,15 @@ def _render_l2_question_page(
     <div class="summary-strip">
       <div class="metric"><span>所属 L1</span><strong>{escape(section_label)}</strong></div>
       <div class="metric"><span>L3 追问</span><strong>{len(l3_nodes)}</strong></div>
-      <div class="metric"><span>节点状态</span><strong>{escape(node.get("status", "open"))}</strong></div>
-      <div class="metric"><span>置信度</span><strong>{escape(synthesis.get("confidence", "unknown"))}</strong></div>
+      <div class="metric"><span>节点状态</span><strong>{escape(_zh_text(node.get("status", "open")))}</strong></div>
+      <div class="metric"><span>置信度</span><strong>{escape(_confidence_label(synthesis.get("confidence", "unknown")))}</strong></div>
     </div>
   </header>
   <nav class="nav">
     <a href="../../research_dashboard.html#foundation">返回 L0</a>
     <a href="{escape(section_page)}#l1-questions">返回 L1</a>
     <a href="#current-question">当前问题</a>
+    <a href="#handoff">承接表</a>
     <a href="#l3">子问题</a>
     <a href="#add-question">新增问题</a>
   </nav>
@@ -3067,9 +5149,20 @@ def _render_l2_question_page(
     <section id="current-question" class="level-frame">
       <p class="eyebrow">当前要研究的问题</p>
       <h2>{escape(node.get("question", ""))}</h2>
-      <div class="rule-box"><p>{escape(summary)}</p></div>
+      <div class="research-path">
+        <span>L0 公司基础框架</span>
+        <span>{escape(section_label)}</span>
+        <span class="active">当前 L2</span>
+        <span>L3 下钻</span>
+      </div>
+      {node_brief}
       {decision_panel}
       {gap_panel}
+    </section>
+    <section id="handoff" class="level-frame">
+      <p class="eyebrow">子结构如何上抛</p>
+      <h2>子问题承接表</h2>
+      {handoff_table}
     </section>
     <section id="l3" class="level-frame">
       <p class="eyebrow">子问题列表</p>
@@ -3082,6 +5175,435 @@ def _render_l2_question_page(
 </body>
 </html>
 """
+
+
+def _l2_analytical_summary(
+    ticker: str,
+    node: dict[str, Any],
+    child_nodes: list[dict[str, Any]],
+    evidence: list[EvidenceRecord],
+) -> str:
+    node_id = node.get("id", "")
+    if ticker == "XIAOMI" and node_id == "current_business.profit-cash":
+        return (
+            "综合两个 L3 问题，当前结论是：小米 FY2025 收入仍以手机 x AIoT 为基本盘，"
+            "该分部收入 3512 亿元，约占已披露分部收入 76.8%；EV/AI/新业务收入 1061 亿元，约占 23.2%，"
+            "说明第二曲线已经进入报表，但还不能直接证明利润和现金贡献。"
+            "利润判断应拆成三层：手机 x AIoT 负责收入规模和现金周转，互联网服务/生态变现更可能贡献高毛利，"
+            "EV 负责收入增量和长期期权；真正的待验证点是分业务毛利、经营利润、费用分摊、质保售后和营运资本桥接。"
+        )
+    if ticker == "XIAOMI" and node_id == "current_business.profit-quality":
+        return (
+            "当前只能确认集团层面 FY2025 现金转化不弱，经调整净利润 392 亿元、经营现金流 341 亿元，约 87% 转化为经营现金流；"
+            "但分业务现金来源尚未闭合，尤其需要拆开手机/IoT、互联网服务和 EV 的毛利、库存、应收应付和资本开支。"
+        )
+    if child_nodes:
+        child_summaries = [_l3_analytical_answer(ticker, child, evidence) for child in child_nodes[:2]]
+        if child_summaries:
+            return "综合子问题信息，本层结论是：" + "；".join(_truncate_text(item, 150) for item in child_summaries)
+    return _node_summary(node)
+
+
+def _render_l3_question_page(
+    ticker: str,
+    section: dict[str, Any],
+    parent_node: dict[str, Any],
+    node: dict[str, Any],
+    qa_tree: dict[str, Any],
+    evidence: list[EvidenceRecord],
+) -> str:
+    del qa_tree
+    section_id = section.get("id", "")
+    section_label = SECTION_LABEL_ZH.get(section.get("label", ""), section.get("label", ""))
+    question = node.get("question", "")
+    synthesis = node.get("synthesis", {})
+    answer = _l3_analytical_answer(ticker, node, evidence)
+    data_view = _render_l3_data_view(ticker, node, evidence)
+    reasoning_path = _render_l3_reasoning_path(ticker, node, evidence)
+    validation_tests = _render_l3_validation_tests(ticker, node)
+    evidence_index = _render_l3_information_index(node)
+    collection_status = _render_information_collection_status(node)
+    add_question_box = _render_add_question_box(f"{ticker}:l3:{node.get('id', '')}", "L3 问题", node.get("id", ""))
+    l2_href = f"../{_safe_id(parent_node.get('id', ''))}.html"
+    section_page = f"../../{SECTION_ID_TO_PAGE.get(section_id, f'{section_id}.html')}"
+    return f"""<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{escape(ticker)} L3 {escape(question)}</title>
+  <style>{_apple_research_css()}{_qa_explorer_css()}</style>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">L3 详细分析 / {escape(section_label)}</p>
+    <h1>{escape(question)}</h1>
+    <p class="subtitle">本页只回答一个下钻问题：先给结论，再展示数据拆解、推导路径、证据来源和下一步验证。</p>
+    <div class="summary-strip">
+      <div class="metric"><span>所属 L1</span><strong>{escape(section_label)}</strong></div>
+      <div class="metric"><span>所属 L2</span><strong>{escape(_truncate_text(parent_node.get("question", ""), 36))}</strong></div>
+      <div class="metric"><span>节点状态</span><strong>{escape(_zh_text(node.get("status", "open")))}</strong></div>
+      <div class="metric"><span>置信度</span><strong>{escape(_confidence_label(synthesis.get("confidence", "unknown")))}</strong></div>
+    </div>
+  </header>
+  <nav class="nav">
+    <a href="../../../research_dashboard.html#foundation">返回 L0</a>
+    <a href="{escape(section_page)}#l1-questions">返回 L1</a>
+    <a href="{escape(l2_href)}#l3">返回 L2</a>
+    <a href="#answer">结论</a>
+    <a href="#data">数据拆解</a>
+    <a href="#logic">判断路径</a>
+    <a href="#evidence">证据索引</a>
+    <a href="#verification">验证</a>
+  </nav>
+  <main class="qa-full-research l3-detail-page">
+    <section id="answer" class="level-frame l3-answer-section">
+      <p class="eyebrow">当前要研究的问题</p>
+      <h2>{escape(question)}</h2>
+      <div class="research-path">
+        <span>L0 公司基础框架</span>
+        <span>{escape(section_label)}</span>
+        <span>{escape(_truncate_text(parent_node.get("question", ""), 28))}</span>
+        <span class="active">当前 L3</span>
+      </div>
+      <div class="l3-answer-layout">
+        <article class="l3-answer-main">
+          <b>本问题结论</b>
+          <p>{escape(answer)}</p>
+        </article>
+        {_render_l3_metric_summary(node)}
+      </div>
+    </section>
+    <section id="data" class="level-frame">
+      <p class="eyebrow">数据拆解</p>
+      <h2>把结论拆到业务和指标</h2>
+      {data_view}
+    </section>
+    <section id="logic" class="level-frame">
+      <p class="eyebrow">判断路径</p>
+      <h2>事实、推论、判断、边界</h2>
+      {reasoning_path}
+    </section>
+    <section id="evidence" class="level-frame">
+      <p class="eyebrow">证据与反证</p>
+      <h2>四类信息索引</h2>
+      {evidence_index}
+      {collection_status}
+    </section>
+    <section id="verification" class="level-frame">
+      <p class="eyebrow">下一步验证</p>
+      <h2>把缺口变成可检查任务</h2>
+      {validation_tests}
+    </section>
+    {add_question_box}
+  </main>
+  <script>{_draft_question_js()}</script>
+</body>
+</html>
+"""
+
+
+def _render_l3_metric_summary(node: dict[str, Any]) -> str:
+    support, refute, lead = _node_evidence_counts(node)
+    counts = _node_category_counts(node)
+    source_text = " / ".join(
+        f"{INFO_CATEGORY_LABEL_ZH.get(category, category)} {counts.get(category, 0)}"
+        for category in SOURCE_ORIGIN_INFO_ORDER
+    )
+    total = support + refute + lead
+    confidence = node.get("professional_answer", {}).get("confidence") or node.get("synthesis", {}).get("confidence", "unknown")
+    return (
+        '<aside class="l3-answer-metrics">'
+        f"<div><span>信息总数</span><strong>{escape(str(total))}</strong><p>{escape(source_text)}</p></div>"
+        f"<div><span>支持 / 反证 / 线索</span><strong>{escape(f'{support}/{refute}/{lead}')}</strong><p>关系结构</p></div>"
+        f"<div><span>研究判断</span><strong>{escape(_confidence_label(confidence))}</strong><p>来自当前证据闭合度</p></div>"
+        "</aside>"
+    )
+
+
+def _l3_analytical_answer(ticker: str, node: dict[str, Any], evidence: list[EvidenceRecord]) -> str:
+    del evidence
+    node_id = node.get("id", "")
+    if _should_prioritize_synthesis_override(node):
+        for candidate in (
+            node.get("professional_answer", {}).get("answer", ""),
+            node.get("rollup_to_parent", ""),
+            node.get("current_answer", ""),
+        ):
+            answer = _clean_research_line(candidate)
+            if answer:
+                return answer
+    if ticker == "XIAOMI" and node_id == "current_business.profit-cash.segment-profit-pool":
+        return (
+            "结论：FY2025 小米的收入基本盘仍是手机 x AIoT，收入 3512 亿元，约占已披露分部收入的 76.8%；"
+            "智能 EV/AI/新业务收入 1061 亿元，约占 23.2%，已经是重要增量，但不能直接等同于利润和现金贡献。"
+            "利润层面，硬件净利率承诺限制手机与 IoT 硬件利润弹性，因此真正的利润弹性更可能来自互联网服务、生态变现和集团运营效率；"
+            "EV 当前能证明收入和交付规模，尚不能证明扣除研发、渠道、质保、售后和营运资本后的现金利润。"
+            "集团 FY2025 毛利 1018 亿元、经调整净利润 392 亿元、经营现金流 341 亿元，现金转化约 87%；"
+            "但这些是集团口径，尚未分摊到各业务。当前应把手机 x AIoT 视为收入和现金周转底座，把互联网服务/生态变现视为高毛利利润层，把 EV 视为第二增长曲线和待验证利润池。"
+        )
+    if ticker == "XIAOMI" and node_id == "current_business.profit-cash.ev-unit-economics":
+        return (
+            "结论：EV/AI 新业务已经具备规模验证，但单车经济尚未闭合。FY2025 该分部收入 1061 亿元、EV 交付 411,082 辆，说明需求和制造交付已经进入报表；"
+            "但现有本地证据没有把 EV 单车收入、单车毛利、研发和销售费用分摊、质保/售后/召回成本、营运资本占用拆出来。"
+            "因此现在只能判断“收入曲线成立”，不能判断“独立现金利润模型成立”。"
+        )
+    if ticker == "XIAOMI" and node_id == "current_business.profit-quality.cash-conversion":
+        return (
+            "结论：集团层面 FY2025 现金转化看起来不弱，经调整净利润 392 亿元、经营现金流 341 亿元，约 87% 转化为经营现金流；"
+            "但该口径没有回答现金来自手机、IoT、互联网服务还是 EV，也没有解释库存、应收应付、预收和资本开支。"
+            "因此现金质量可以作为集团层面的正向信号，不能直接上抛为每个业务都具备稳定现金创造能力。"
+        )
+    support, refute, lead = _node_evidence_counts(node)
+    gap = _node_gap_text(node)
+    if support and not refute:
+        return (
+            f"当前可形成受约束判断：这个问题已有 {support} 条支撑信息，但仍需要把信息拆到指标、时间范围和业务节点。"
+            f"在补齐“{gap}”之前，结论只能作为阶段性判断，不能视为完全闭合。"
+        )
+    if refute:
+        return (
+            f"当前判断必须保留反证边界：本问题已有 {refute} 条反证或约束信息，不能只按正向叙事上抛。"
+            f"下一步应优先量化反证影响，并验证“{gap}”。"
+        )
+    if lead:
+        return (
+            f"当前主要是研究线索：已有 {lead} 条线索，但还不足以形成稳定判断。"
+            f"需要先补一手证据或高可靠研报，尤其是“{gap}”。"
+        )
+    return f"当前还没有足够信息回答该问题。下一步先补“{gap}”，再形成事实、推论和判断。"
+
+
+def _render_l3_data_view(ticker: str, node: dict[str, Any], evidence: list[EvidenceRecord]) -> str:
+    del evidence
+    node_id = node.get("id", "")
+    if ticker == "XIAOMI" and node_id == "current_business.profit-cash.segment-profit-pool":
+        return _render_xiaomi_profit_pool_data_view()
+    if ticker == "XIAOMI" and node_id == "current_business.profit-cash.ev-unit-economics":
+        return _render_xiaomi_ev_unit_data_view()
+    if ticker == "XIAOMI" and node_id == "current_business.profit-quality.cash-conversion":
+        return _render_xiaomi_cash_conversion_data_view()
+    return _render_generic_l3_data_view(node)
+
+
+def _render_xiaomi_profit_pool_data_view() -> str:
+    rows = [
+        {
+            "business": "手机 x AIoT",
+            "revenue": "3512 亿元",
+            "share": "76.8%",
+            "known": "智能手机出货 1.652 亿台，IoT 连接设备 10.792 亿台，全球 MAU 7.541 亿。",
+            "judgment": "收入和现金周转底座；硬件净利率承诺限制硬件利润弹性，利润需要看互联网服务与生态变现。",
+        },
+        {
+            "business": "智能 EV/AI/新业务",
+            "revenue": "1061 亿元",
+            "share": "23.2%",
+            "known": "EV 交付 411,082 辆，已经进入收入和交付结构。",
+            "judgment": "收入增量明确；缺少单车毛利、费用分摊、质保/售后和营运资本数据，现金贡献尚未证明。",
+        },
+        {
+            "business": "互联网服务/生态变现",
+            "revenue": "本节点未披露",
+            "share": "待补",
+            "known": "早期研报把 MIUI、IoT 生态和互联网变现放在同一商业模型中。",
+            "judgment": "更可能承担高毛利利润层，但必须补分部收入、毛利率、ARPU 和广告/游戏/金融等结构。",
+        },
+        {
+            "business": "集团现金池",
+            "revenue": "4573 亿元",
+            "share": "集团口径",
+            "known": "毛利 1018 亿元、经调整净利润 392 亿元、经营现金流 341 亿元、现金资源 2326 亿元。",
+            "judgment": "现金转化约 87%，集团层面可用；但不能直接分配到 EV 或手机单一业务。",
+        },
+    ]
+    table_rows = "".join(
+        "<tr>"
+        f"<td><strong>{escape(row['business'])}</strong></td>"
+        f"<td>{escape(row['revenue'])}</td>"
+        f"<td>{escape(row['share'])}</td>"
+        f"<td>{escape(row['known'])}</td>"
+        f"<td>{escape(row['judgment'])}</td>"
+        "</tr>"
+        for row in rows
+    )
+    return (
+        '<div class="analysis-metric-grid">'
+        '<div class="analysis-metric"><span>FY2025 收入</span><strong>4573 亿元</strong><p>手机 x AIoT + EV/AI/新业务分部收入合计。</p></div>'
+        '<div class="analysis-metric"><span>集团毛利</span><strong>1018 亿元</strong><p>集团毛利率约 22.3%，但未按本问题拆分利润池。</p></div>'
+        '<div class="analysis-metric"><span>经营现金流</span><strong>341 亿元</strong><p>约等于经调整净利润 392 亿元的 87%。</p></div>'
+        '<div class="analysis-metric"><span>EV 粗略收入/交付</span><strong>25.8 万元</strong><p>用 EV/AI/新业务收入除以交付量，仅作上限口径，不是披露 ASP。</p></div>'
+        '</div>'
+        '<div class="bar-stack">'
+        '<div class="bar-row"><span>手机 x AIoT</span><div class="bar-track"><i class="bar-fill blue" style="width: 76.8%"></i></div><b>3512 亿元 / 76.8%</b></div>'
+        '<div class="bar-row"><span>智能 EV/AI/新业务</span><div class="bar-track"><i class="bar-fill green" style="width: 23.2%"></i></div><b>1061 亿元 / 23.2%</b></div>'
+        '</div>'
+        '<table class="analysis-table">'
+        '<thead><tr><th>业务层</th><th>收入贡献</th><th>收入占比</th><th>已知事实</th><th>利润/现金判断</th></tr></thead>'
+        f"<tbody>{table_rows}</tbody>"
+        '</table>'
+        '<p class="note">主要来源：FY2025 业绩公告、FY2025 年报、硬件净利率承诺、2018 年小米深度报告。需要继续补入分业务毛利、经营利润和现金流桥接。</p>'
+    )
+
+
+def _render_xiaomi_ev_unit_data_view() -> str:
+    rows = [
+        ("收入规模", "1061 亿元", "EV/AI/新业务分部已形成报表收入，证明第二曲线不是纯战略叙事。"),
+        ("交付规模", "411,082 辆", "交付规模可验证需求和制造组织能力，但不能直接验证利润。"),
+        ("粗略收入/交付", "约 25.8 万元/辆", "用分部收入除以 EV 交付量，因分部包含 AI/新业务，只能作粗略上限口径。"),
+        ("未闭合项目", "单车毛利、费用、质保、售后、召回、营运资本", "这些项目决定 EV 是否能独立贡献现金，而不只是贡献收入。"),
+    ]
+    table_rows = "".join(
+        f"<tr><td><strong>{escape(label)}</strong></td><td>{escape(value)}</td><td>{escape(read)}</td></tr>"
+        for label, value, read in rows
+    )
+    return (
+        '<div class="analysis-metric-grid">'
+        '<div class="analysis-metric"><span>分部收入</span><strong>1061 亿元</strong><p>收入曲线已进入报表。</p></div>'
+        '<div class="analysis-metric"><span>EV 交付</span><strong>411,082 辆</strong><p>规模验证成立。</p></div>'
+        '<div class="analysis-metric"><span>当前判断</span><strong>未闭合</strong><p>不能仅凭收入判断单车经济。</p></div>'
+        '</div>'
+        '<table class="analysis-table">'
+        '<thead><tr><th>指标</th><th>当前口径</th><th>投研解读</th></tr></thead>'
+        f"<tbody>{table_rows}</tbody>"
+        '</table>'
+    )
+
+
+def _render_xiaomi_cash_conversion_data_view() -> str:
+    rows = [
+        ("收入", "4573 亿元", "集团规模口径。"),
+        ("毛利", "1018 亿元", "集团毛利率约 22.3%。"),
+        ("经调整净利润", "392 亿元", "用于观察经营结果。"),
+        ("经营现金流", "341 亿元", "现金转化约 87%，但仍需拆分营运资本来源。"),
+    ]
+    table_rows = "".join(
+        f"<tr><td><strong>{escape(label)}</strong></td><td>{escape(value)}</td><td>{escape(read)}</td></tr>"
+        for label, value, read in rows
+    )
+    return (
+        '<table class="analysis-table">'
+        '<thead><tr><th>指标</th><th>FY2025</th><th>解读</th></tr></thead>'
+        f"<tbody>{table_rows}</tbody>"
+        '</table>'
+        '<p class="note">关键缺口：需要把经营现金流拆成净利润、折旧摊销、库存、应收、应付、预收、资本开支和分业务贡献。</p>'
+    )
+
+
+def _render_generic_l3_data_view(node: dict[str, Any]) -> str:
+    rows = []
+    for category in SOURCE_ORIGIN_INFO_ORDER:
+        items = node.get("evidence_buckets", {}).get(category, [])
+        support = sum(1 for item in items if _evidence_stance_class(item.get("relation", "")) == "support")
+        refute = sum(1 for item in items if _evidence_stance_class(item.get("relation", "")) == "refute")
+        lead = sum(1 for item in items if _evidence_stance_class(item.get("relation", "")) == "lead")
+        first = items[0] if items else {}
+        key_info = _truncate_text(_zh_text(first.get("summary") or first.get("point") or "暂无该类信息。"), 140)
+        contribution = _generic_l3_contribution(category, support, refute, lead)
+        rows.append(
+            "<tr>"
+            f"<td><strong>{escape(INFO_CATEGORY_LABEL_ZH.get(category, category))}</strong></td>"
+            f"<td>{escape(f'{support}/{refute}/{lead}')}</td>"
+            f"<td>{escape(key_info)}</td>"
+            f"<td>{escape(contribution)}</td>"
+            "</tr>"
+        )
+    return (
+        '<table class="analysis-table">'
+        '<thead><tr><th>信息类别</th><th>支撑/反证/线索</th><th>核心信息</th><th>对结论的作用</th></tr></thead>'
+        f"<tbody>{''.join(rows)}</tbody>"
+        '</table>'
+    )
+
+
+def _generic_l3_contribution(category: str, support: int, refute: int, lead: int) -> str:
+    label = INFO_CATEGORY_LABEL_ZH.get(category, category)
+    if refute:
+        return f"{label}中存在反证，结论必须降级并等待量化验证。"
+    if support:
+        return f"{label}提供正向支撑，但仍要检查口径、时间范围和是否直接回答问题。"
+    if lead:
+        return f"{label}目前只是线索，不能单独强化结论。"
+    return f"{label}缺失，当前结论存在覆盖缺口。"
+
+
+def _render_l3_reasoning_path(ticker: str, node: dict[str, Any], evidence: list[EvidenceRecord]) -> str:
+    del evidence
+    node_id = node.get("id", "")
+    if ticker == "XIAOMI" and node_id == "current_business.profit-cash.segment-profit-pool":
+        steps = [
+            ("事实", "FY2025 手机 x AIoT 收入 3512 亿元，EV/AI/新业务收入 1061 亿元，收入占比分别约 76.8% 和 23.2%。"),
+            ("推论", "收入贡献已经从单一手机/IoT 基本盘扩展到 EV 第二曲线，但收入占比不能直接代表利润占比。"),
+            ("判断", "手机 x AIoT 仍是收入与现金周转底座；互联网服务/生态变现更可能是利润弹性来源；EV 仍是待验证利润池。"),
+            ("边界", "缺少分部毛利、经营利润、费用分摊、质保/售后和营运资本桥接，不能把 EV 收入直接当成现金利润。"),
+        ]
+    elif ticker == "XIAOMI" and node_id == "current_business.profit-cash.ev-unit-economics":
+        steps = [
+            ("事实", "EV/AI 新业务收入 1061 亿元，EV 交付 411,082 辆。"),
+            ("推论", "规模端已经成立，但单车经济仍取决于售价、毛利、费用、质保、售后和资本开支。"),
+            ("判断", "现阶段只能证明收入曲线，不能证明独立现金利润模型。"),
+            ("边界", "如果后续披露的单车毛利被价格战、召回、售后或产能爬坡成本吞噬，则 EV 贡献应降级。"),
+        ]
+    else:
+        lines = _node_content_lines(node, limit=3)
+        steps = [
+            ("事实", lines[0] if lines else "当前缺少可以直接回答问题的事实。"),
+            ("推论", "现有信息需要先映射到业务节点、指标口径和时间范围，不能停留在来源罗列。"),
+            ("判断", _l3_analytical_answer(ticker, node, [])),
+            ("边界", _node_gap_text(node)),
+        ]
+    return (
+        '<div class="l3-reasoning-list">'
+        + "".join(
+            f"<article><span>{escape(label)}</span><p>{escape(text)}</p></article>"
+            for label, text in steps
+        )
+        + "</div>"
+    )
+
+
+def _render_l3_validation_tests(ticker: str, node: dict[str, Any]) -> str:
+    node_id = node.get("id", "")
+    if ticker == "XIAOMI" and node_id == "current_business.profit-cash.segment-profit-pool":
+        rows = [
+            ("分业务毛利和经营利润", "验证收入贡献是否真的转化为利润池。", "年报/业绩会分部披露，季度业绩更新。"),
+            ("互联网服务收入、毛利率、ARPU", "验证高毛利利润层是否足以支撑硬件低净利率模型。", "季度收入结构、MAU、广告/游戏/金融服务披露。"),
+            ("EV 单车收入、毛利、费用分摊", "验证 EV 是收入增量还是利润增量。", "交付数据、价格调整、分部毛利率、研发和销售费用。"),
+            ("质保、售后、召回和营运资本", "验证汽车业务是否吞噬现金流。", "监管公告、召回成本、库存、应收应付、现金流量表。"),
+            ("手机份额、ASP、库存和毛利", "验证基本盘是否还能支撑现金周转和用户入口。", "IDC/Counterpoint、公司出货和库存披露。"),
+        ]
+    elif ticker == "XIAOMI" and node_id == "current_business.profit-cash.ev-unit-economics":
+        rows = [
+            ("EV 单车收入和单车毛利", "确认交付规模是否带来正向单位经济。", "季度业绩、业绩会问答、分部毛利率。"),
+            ("价格调整和订单等待周期", "判断需求是否需要降价换量。", "官网价格、交付周期、订单和退订线索。"),
+            ("质保、售后、召回成本", "检验毛利是否会被后续责任成本回吐。", "监管公告、召回公告、费用计提。"),
+            ("产能利用率和资本开支", "确认规模爬坡是否摊薄固定成本。", "产能公告、资本开支、折旧摊销。"),
+        ]
+    else:
+        professional_next = node.get("professional_answer", {}).get("next_data", [])
+        gaps = professional_next or node.get("synthesis", {}).get("gaps", []) or [_node_gap_text(node)]
+        rows = [
+            (
+                _truncate_text(_zh_text(item), 56),
+                "把当前缺口转成可验证数据，避免只停留在文字判断。",
+                _node_update_triggers(node),
+            )
+            for item in gaps[:5]
+        ]
+    table_rows = "".join(
+        "<tr>"
+        f"<td><strong>{escape(data)}</strong></td>"
+        f"<td>{escape(why)}</td>"
+        f"<td>{escape(trigger)}</td>"
+        "</tr>"
+        for data, why, trigger in rows
+    )
+    return (
+        '<table class="analysis-table">'
+        '<thead><tr><th>下一步数据</th><th>为什么关键</th><th>更新触发器</th></tr></thead>'
+        f"<tbody>{table_rows}</tbody>"
+        '</table>'
+    )
 
 
 def _render_l2_information_bucket(category: str, items: list[dict[str, Any]]) -> str:
@@ -3106,20 +5628,54 @@ def _render_l2_information_bucket(category: str, items: list[dict[str, Any]]) ->
     return f"<div class=\"qa-bucket {escape(category)}\"><h4>{escape(label)}</h4>{body}</div>"
 
 
-def _render_l3_question_card(node: dict[str, Any]) -> str:
-    summary = _truncate_text(_node_summary(node), 180)
-    decision_panel = _render_node_decision_panel(node, title="研究判断")
+def _render_l3_question_card(ticker: str, section_id: str, node: dict[str, Any], evidence: list[EvidenceRecord]) -> str:
+    analytical_answer = _l3_analytical_answer(ticker, node, evidence)
+    summary = _truncate_text(analytical_answer, 220)
+    decision_panel = _render_node_decision_panel(node, title="研究判断", judgment_override=analytical_answer)
     next_steps = _render_node_next_steps(node)
+    collection_status = _render_information_collection_status(node)
     info_index = _render_l3_information_index(node)
+    detail_href = _l3_question_href(section_id, node.get("id", ""))
     return (
         '<article class="l2-card research-unit-card">'
         '<p class="eyebrow">L3 子问题</p>'
         f"<h3>{escape(node.get('question', ''))}</h3>"
-        f"<div class=\"field\"><b>子结构汇总结论</b><p>{escape(summary)}</p></div>"
+        f"<div class=\"field\"><b>本问题结论</b><p>{escape(summary)}</p>{_render_category_meter(node)}{_render_node_source_state(node)}</div>"
+        f"<a class=\"detail-link\" href=\"{escape(detail_href)}\">打开 L3 详细分析</a>"
         f"{decision_panel}"
         f"{next_steps}"
+        f"{collection_status}"
         f"<div class=\"field\"><b>四类信息索引 / 证据矩阵</b>{info_index}</div>"
         "</article>"
+    )
+
+
+def _render_child_handoff_table(ticker: str, child_nodes: list[dict[str, Any]], evidence: list[EvidenceRecord]) -> str:
+    if not child_nodes:
+        return '<p class="qa-empty">当前没有可上抛的子问题。</p>'
+    rows = []
+    for child in child_nodes:
+        summary = _truncate_text(_l3_analytical_answer(ticker, child, evidence), 150)
+        gap = _truncate_text(_node_gap_text(child), 92)
+        support, refute, lead = _node_evidence_counts(child)
+        counts = _node_category_counts(child)
+        mini_meter = "".join(
+            f"<span>{escape(INFO_CATEGORY_LABEL_ZH.get(category, category))} {escape(str(counts.get(category, 0)))}</span>"
+            for category in SOURCE_ORIGIN_INFO_ORDER
+        )
+        rows.append(
+            "<tr>"
+            f"<td>{escape(child.get('question', ''))}</td>"
+            f"<td>{escape(summary)}</td>"
+            f"<td><div class=\"mini-meter\">{mini_meter}<span>支持 {escape(str(support))}</span><span>反证 {escape(str(refute))}</span><span>线索 {escape(str(lead))}</span></div></td>"
+            f"<td>{escape(gap)}</td>"
+            "</tr>"
+        )
+    return (
+        '<table class="handoff-table">'
+        "<thead><tr><th>L3 问题</th><th>上抛结论</th><th>信息结构</th><th>下一步缺口</th></tr></thead>"
+        f"<tbody>{''.join(rows)}</tbody>"
+        "</table>"
     )
 
 
@@ -3160,23 +5716,39 @@ def _render_l3_information_index(node: dict[str, Any]) -> str:
     return f"<div class=\"l3-info-grid\">{''.join(boxes)}</div>"
 
 
-def _render_node_decision_panel(node: dict[str, Any], title: str) -> str:
+def _render_node_decision_panel(node: dict[str, Any], title: str, judgment_override: str = "") -> str:
     synthesis = node.get("synthesis", {})
-    facts = _render_research_list(synthesis.get("facts", []), "暂无关键事实。", limit=3)
-    inference = _render_research_list(synthesis.get("inferences", []), "暂无推导逻辑。", limit=2)
-    judgment = _zh_text(synthesis.get("judgment", "")) or _node_summary(node)
-    confidence = synthesis.get("confidence", "unknown")
+    professional = node.get("professional_answer", {})
+    facts = _render_research_list(
+        professional.get("supporting_evidence", []) or synthesis.get("facts", []),
+        "暂无关键事实。",
+        limit=3,
+    )
+    counter_items = professional.get("refuting_evidence", []) or professional.get("research_leads", [])
+    inference = _render_research_list(
+        counter_items or synthesis.get("inferences", []),
+        "暂无推导逻辑。",
+        limit=2,
+    )
+    judgment = judgment_override or (
+        _clean_research_line(professional.get("answer", ""))
+        or _clean_research_line(synthesis.get("judgment", ""))
+        or _node_summary(node)
+    )
+    confidence = professional.get("confidence") or synthesis.get("confidence", "unknown")
     support_count, refute_count, lead_count = _node_evidence_counts(node)
+    source_balance = _zh_text(professional.get("source_balance", ""))
     return (
         '<div class="decision-panel">'
         f"<div class=\"decision-head\"><b>{escape(title)}</b><span>{escape(_confidence_label(confidence))}</span></div>"
         '<div class="decision-grid">'
         f"<div class=\"decision-box judgment\"><h4>当前判断</h4><p>{escape(judgment)}</p></div>"
-        f"<div class=\"decision-box\"><h4>关键事实</h4>{facts}</div>"
-        f"<div class=\"decision-box\"><h4>推导逻辑</h4>{inference}</div>"
+        f"<div class=\"decision-box\"><h4>支撑信息 / 关键事实</h4>{facts}</div>"
+        f"<div class=\"decision-box\"><h4>反证/线索 / 推导逻辑</h4>{inference}</div>"
         '<div class="decision-box evidence-score">'
         "<h4>证据结构</h4>"
         f"<p><strong>{support_count}</strong> 支持 / <strong>{refute_count}</strong> 反证 / <strong>{lead_count}</strong> 线索</p>"
+        f"<p class=\"note\">{escape(source_balance)}</p>"
         "</div>"
         "</div>"
         "</div>"
@@ -3186,7 +5758,8 @@ def _render_node_decision_panel(node: dict[str, Any], title: str) -> str:
 def _render_node_next_steps(node: dict[str, Any]) -> str:
     gaps = node.get("synthesis", {}).get("gaps", [])
     gap_text = _zh_text(gaps[0]) if gaps else "暂无明确缺口。"
-    next_data = _normalize_next_data(gap_text)
+    professional_next = node.get("professional_answer", {}).get("next_data", [])
+    next_data = "；".join(_truncate_text(_zh_text(item), 38) for item in professional_next[:3]) if professional_next else _normalize_next_data(gap_text)
     triggers = _node_update_triggers(node)
     return (
         '<div class="next-step-grid">'
@@ -3195,6 +5768,47 @@ def _render_node_next_steps(node: dict[str, Any]) -> str:
         f"<div class=\"next-step-box\"><b>更新触发器</b><p>{escape(triggers)}</p></div>"
         "</div>"
     )
+
+
+def _render_information_collection_status(node: dict[str, Any]) -> str:
+    collection = node.get("information_collection", {})
+    if not collection:
+        return ""
+    items = []
+    for category in SOURCE_ORIGIN_INFO_ORDER:
+        row = collection.get(category, {})
+        label = row.get("category_label", INFO_CATEGORY_LABEL_ZH.get(category, category))
+        status = _collection_status_label(row.get("status", "missing"))
+        count = row.get("matched_count", 0)
+        query = row.get("search_query", "")
+        action = row.get("next_action", "")
+        sources = "；".join(row.get("recommended_sources", [])[:3])
+        criteria = "；".join(row.get("acceptance_criteria", [])[:3])
+        items.append(
+            '<div class="collection-box">'
+            f"<b>{escape(label)}</b>"
+            f"<p><span class=\"collection-status\">{escape(status)}</span> · 已匹配 {escape(str(count))} 条</p>"
+            f"<p class=\"note\">检索式：{escape(query)}</p>"
+            f"<p class=\"note\">建议来源：{escape(sources)}</p>"
+            f"<p class=\"note\">验收标准：{escape(criteria)}</p>"
+            f"<p class=\"note\">下一步：{escape(action)}</p>"
+            "</div>"
+        )
+    return (
+        '<div class="field">'
+        '<b>信息搜集状态</b>'
+        f"<div class=\"collection-grid\">{''.join(items)}</div>"
+        "</div>"
+    )
+
+
+def _collection_status_label(status: str) -> str:
+    labels = {
+        "matched": "已匹配",
+        "needs_source_record": "待补来源记录",
+        "missing": "待搜集",
+    }
+    return labels.get(status, status)
 
 
 def _render_research_list(items: list[str], empty: str, limit: int) -> str:
@@ -3262,19 +5876,32 @@ def _node_update_triggers(node: dict[str, Any]) -> str:
     return "季度业绩、重大公告、行业数据、监管公告和高可靠第三方研究更新。"
 
 
-def _render_add_question_box(scope_id: str, label: str) -> str:
+def _queue_command_for_scope(scope_id: str) -> str:
+    if ":" not in scope_id:
+        return f"value-invest-research apply-meta-qa-question-queue --project-id {scope_id} --path queued_questions.jsonl"
+    ticker = scope_id.split(":", 1)[0]
+    return f"value-invest-research apply-question-queue {ticker} --path queued_questions.jsonl"
+
+
+def _render_add_question_box(scope_id: str, label: str, parent_id: str = "") -> str:
+    queue_command = _queue_command_for_scope(scope_id)
     return f"""
-    <section id="add-question" class="level-frame draft-question" data-question-scope="{escape(scope_id)}">
+    <section id="add-question" class="level-frame draft-question" data-question-scope="{escape(scope_id)}" data-parent-id="{escape(parent_id)}" data-queue-command="{escape(queue_command)}">
       <p class="eyebrow">可交互 / 新增问题</p>
       <h2>新增下钻问题</h2>
       <form class="draft-question-form">
         <textarea class="draft-question-input" placeholder="输入一个新的下钻问题"></textarea>
+        <label class="note"><input class="draft-question-terminal" type="checkbox"> 这个问题已到可回答粒度，直接进入四类信息搜集</label>
         <div class="qa-ask-actions">
           <button class="primary" type="submit">加入本层问题列表</button>
           <button class="draft-question-clear" type="button">清空本层新增</button>
         </div>
       </form>
       <div class="field"><b>{escape(label)}新增问题</b><ul class="draft-question-list"></ul></div>
+      <div class="draft-question-output">
+        <div class="field"><b>队列 JSONL</b><textarea class="draft-question-jsonl" readonly></textarea></div>
+        <div class="field"><b>应用命令</b><textarea class="draft-question-command" readonly></textarea></div>
+      </div>
     </section>
 """
 
@@ -3308,20 +5935,32 @@ def _draft_question_js() -> str:
         const key = `draft-layer-questions:${box.dataset.questionScope || "default"}`;
         const form = box.querySelector(".draft-question-form");
         const input = box.querySelector(".draft-question-input");
+        const terminal = box.querySelector(".draft-question-terminal");
         const list = box.querySelector(".draft-question-list");
         const clear = box.querySelector(".draft-question-clear");
+        const jsonl = box.querySelector(".draft-question-jsonl");
+        const command = box.querySelector(".draft-question-command");
+        const parentId = box.dataset.parentId || "";
+        const queueCommand = box.dataset.queueCommand || "";
+        const normalizeItem = (item) => {
+          if (typeof item === "string") return { question: item, terminal: false };
+          return { question: item.question || "", terminal: Boolean(item.terminal) };
+        };
         const render = () => {
-          const items = read(key);
+          const items = read(key).map(normalizeItem).filter((item) => item.question);
           list.innerHTML = items.length
-            ? items.map((item) => `<li>${esc(item)}</li>`).join("")
+            ? items.map((item) => `<li>${esc(item.question)}${item.terminal ? ' <span class="chip">终端问题</span>' : ""}</li>`).join("")
             : '<li class="note">暂无新增问题。</li>';
+          jsonl.value = items.map((item) => JSON.stringify({ parent_id: parentId, question: item.question, terminal: item.terminal })).join("\n");
+          command.value = queueCommand;
         };
         form.addEventListener("submit", (event) => {
           event.preventDefault();
           const value = input.value.trim();
           if (!value) return;
-          write(key, [...read(key), value]);
+          write(key, [...read(key).map(normalizeItem), { question: value, terminal: Boolean(terminal && terminal.checked) }]);
           input.value = "";
+          if (terminal) terminal.checked = false;
           render();
         });
         clear.addEventListener("click", () => {
@@ -5092,8 +7731,11 @@ def _render_l0_framework_card(section: dict[str, Any], qa_tree: dict[str, Any]) 
     detail_page = section.get("detail_page", f"pages/{section_id}.html")
     nodes_by_id = {node.get("id"): node for node in qa_tree.get("nodes", [])}
     l2_nodes = _l2_nodes_for_section(qa_tree, section_id)
-    rollup = _children_summary(l2_nodes, nodes_by_id) or _section_evidence_summary(section)
-    child_items = _render_statement_list(section.get("key_questions", []), "暂无子问题。")
+    rollup = _hierarchy_content_summary({"question": l1_question}, l2_nodes, nodes_by_id, max_chars=380) or _section_evidence_summary(section)
+    child_items = _render_child_question_list(
+        {"next_question_ids": [node.get("id", "") for node in l2_nodes]},
+        nodes_by_id,
+    )
     gap_items = _render_child_gap_list(l2_nodes)
     return (
         f"<article class=\"foundation-card {escape(section.get('status', 'missing'))}\">"

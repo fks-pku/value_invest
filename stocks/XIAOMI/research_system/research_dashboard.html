@@ -245,6 +245,47 @@
     .field { margin-top: 12px; }
     .field b { display: block; margin-bottom: 5px; color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: none; }
     .note { color: var(--muted); font-size: 13px; }
+    .compact-question-list {
+      display: grid;
+      gap: 8px;
+      margin: 8px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .compact-question-list li {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: center;
+      margin: 0;
+      padding: 9px 10px;
+      border: 1px solid rgba(0, 0, 0, .07);
+      border-radius: 8px;
+      background: #f8f8fa;
+    }
+    .compact-question-list .question-text {
+      min-width: 0;
+      overflow-wrap: anywhere;
+      color: var(--ink);
+    }
+    .mix-badge {
+      display: inline-grid;
+      grid-template-columns: auto auto;
+      gap: 6px;
+      align-items: baseline;
+      white-space: nowrap;
+      padding: 4px 7px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, .08);
+      color: var(--muted);
+      font-size: 11px;
+    }
+    .mix-badge strong {
+      color: var(--blue);
+      font-family: "SF Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 11px;
+    }
     .chip {
       display: inline-flex;
       max-width: 100%;
@@ -271,6 +312,8 @@
     li { margin: 5px 0; }
     @media (max-width: 880px) {
       .summary-grid, .summary-strip, .foundation-grid, .grid, .lead-grid, .info-grid, .reference-grid, .timeline-row { grid-template-columns: 1fr; }
+      .compact-question-list li { grid-template-columns: 1fr; }
+      .mix-badge { justify-self: start; }
       table { font-size: 13px; }
       header { padding-top: 42px; }
     }
@@ -285,6 +328,7 @@
   <nav>
     <a href="#current-question">当前问题</a>
     <a href="#foundation">子问题</a>
+    <a href="research_report.html">聚合报告</a>
     <a href="#add-question">新增问题</a>
   </nav>
   <main>
@@ -297,28 +341,34 @@
     <section id="foundation">
       <div class="layer-label">子问题列表</div>
       <h2>L1 子问题</h2>
-      <div class="foundation-grid"><article class="foundation-card evidenced"><p class="eyebrow">L1 / 源头溯源</p><h3>源头溯源：公司是怎么来的</h3><div class="field"><b>子结构汇总结论</b><p>时代背景是什么？：小米出现于智能手机和移动互联网快速普及窗口，早期机会不是单纯卖硬件，而是在用户体验、系统迭代、线上渠道和硬件效率之间寻找结构性差异。；原始问题是什么？：原始问题可以概括为：用户需要更好用、更快迭代、价格可承受的智能手机体验；小米用软件体验和用户参与先建立信任，再用硬件放大用户入口。；旧方案为什么不够好？：旧方案的弱点不是单一价格高，而是软硬件体验、迭代速度、渠道效率和用户参与不足。小米早期切入点是把这些差异合成一个高性价比和高反馈速度的产品体系。</p></div><div class="field"><b>子问题列表</b><ul><li>公司为什么在那个时间点出现，原始痛点是什么？</li><li>第一产品楔子、第一批用户和渠道切口是什么？</li><li>创始团队的能力能否解释原始模型形成？</li><li>早期基因今天是优势、约束，还是需要重新验证？</li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>还需要补充 2010-2012 年中国智能手机渗透率、安卓生态成熟度、运营商渠道和线上零售变化的数据。</li><li>需要补早期用户反馈、MIUI 活跃社区数据、首批用户画像和竞品体验差距，避免把后来的成功倒推成起点。</li><li>需要竞品同期价格、配置、渠道加价、系统更新频率和用户满意度对比，才能把“旧方案不足”从叙事变成证据。</li></ul></div><a class="detail-link" href="pages/source_origin.html">进入 L1 子页面</a><p class="note">状态：<span class="status-evidenced">证据充分</span></p></article>
-<article class="foundation-card evidenced"><p class="eyebrow">L1 / 公司历史</p><h3>发展历史：公司的发展关键节点是什么</h3><div class="field"><b>子结构汇总结论</b><p>哪些历史节点真正改变了商业模型？：当前可识别的模型拐点是：MIUI/手机入口、IoT 生态、互联网服务变现、智能 EV。每个节点都应验证是否改变利润池，而不是只看收入规模。；历史增长主要来自内生能力、融资环境，还是跨品类扩张？：当前判断是三者叠加：早期依靠产品和渠道效率，上市后通过公开资本市场和生态扩品类增强资源，2021 年后 EV 使增长更多依赖…；治理结构如何影响历史资本配置？：小米历史上采用不同投票权结构，创始人控制权提高战略耐心，但也要求投资者持续验证重大投入是否受足够约束，尤其是 EV 这类高资本强度业务。</p></div><div class="field"><b>子问题列表</b><ul><li>公司历史中哪些节点真正改变了商业模型或资本配置？</li><li>增长主要来自内生能力、并购扩张，还是周期/融资环境？</li><li>历史上的战略转折有没有留下治理、财务或组织约束？</li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>需要补每个阶段的分部收入、毛利、用户规模、现金流和再投资数据。</li><li>需要补融资节奏、现金资源、资本开支、研发投入、回购/分红和 EV 投入回报序列。</li><li>需要补董事会变化、股权激励、回购分红、重大投资审批和少数股东保护资料。</li></ul></div><a class="detail-link" href="pages/history.html">进入 L1 子页面</a><p class="note">状态：<span class="status-evidenced">证据充分</span></p></article>
-<article class="foundation-card evidenced"><p class="eyebrow">L1 / 当下生意</p><h3>当下的生意：当前业务板块下探</h3><div class="field"><b>子结构汇总结论</b><p>当前收入、毛利、现金流分别由哪些业务驱动？：当下生意已有可用研究起点，但上抛结论仍需经过下钻问题验证。；客户是谁，需求来自刚需、替换、生态绑定还是促销？：当下生意存在需要优先处理的反证或边界条件。；利润质量是否能转化为现金和可重复回报？：当下生意已有可用研究起点，但上抛结论仍需经过下钻问题验证。</p></div><div class="field"><b>子问题列表</b><ul><li>当前收入、毛利、现金流分别由哪些业务驱动？</li><li>客户是谁，需求来自刚需、替换、生态绑定还是促销？</li><li>利润质量是否能转化为现金和可重复回报？</li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>需要补充时间序列、同业对照和分业务 KPI，避免只停留在单点事实。</li><li>需要补充反证后的量化影响、持续时间、管理层应对和后续更新触发器。</li></ul></div><a class="detail-link" href="pages/current_business.html">进入 L1 子页面</a><p class="note">状态：<span class="status-evidenced">证据充分</span></p></article>
-<article class="foundation-card evidenced"><p class="eyebrow">L1 / 产业链定位</p><h3>产业链定位：上下游分析</h3><div class="field"><b>子结构汇总结论</b><p>公司在产业链中掌握哪一段价值，哪一段被供应商/渠道/客户拿走？：产业链定位已有可用研究起点，但上抛结论仍需经过下钻问题验证。；上游供给、关键部件和产能是否会改变毛利与交付？：产业链定位存在需要优先处理的反证或边界条件。；渠道和售后体系是否足以支撑当前业务复杂度？：产业链定位存在需要优先处理的反证或边界条件。</p></div><div class="field"><b>子问题列表</b><ul><li>公司在产业链中掌握哪一段价值，哪一段被供应商/渠道/客户拿走？</li><li>上游供给、关键部件和产能是否会改变毛利与交付？</li><li>渠道和售后体系是否足以支撑当前业务复杂度？</li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>需要补充时间序列、同业对照和分业务 KPI，避免只停留在单点事实。</li><li>需要补充反证后的量化影响、持续时间、管理层应对和后续更新触发器。</li></ul></div><a class="detail-link" href="pages/value_chain.html">进入 L1 子页面</a><p class="note">状态：<span class="status-evidenced">证据充分</span></p></article>
-<article class="foundation-card evidenced"><p class="eyebrow">L1 / 竞争格局</p><h3>竞争格局：真实竞争对手和竞争强度是什么</h3><div class="field"><b>子结构汇总结论</b><p>公司真实竞争对手是谁，竞争发生在价格、产品、渠道还是生态？：竞争格局已有可用研究起点，但上抛结论仍需经过下钻问题验证。；份额变化是结构性优势、周期波动，还是补贴/价格战结果？：竞争格局存在需要优先处理的反证或边界条件。；竞争强度是否会侵蚀毛利、现金流或品牌定位？：竞争格局存在需要优先处理的反证或边界条件。</p></div><div class="field"><b>子问题列表</b><ul><li>公司真实竞争对手是谁，竞争发生在价格、产品、渠道还是生态？</li><li>份额变化是结构性优势、周期波动，还是补贴/价格战结果？</li><li>竞争强度是否会侵蚀毛利、现金流或品牌定位？</li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>需要补充时间序列、同业对照和分业务 KPI，避免只停留在单点事实。</li><li>需要补充反证后的量化影响、持续时间、管理层应对和后续更新触发器。</li></ul></div><a class="detail-link" href="pages/competition.html">进入 L1 子页面</a><p class="note">状态：<span class="status-evidenced">证据充分</span></p></article>
-<article class="foundation-card evidenced"><p class="eyebrow">L1 / 战略分析</p><h3>战略分析：过去、现在、未来</h3><div class="field"><b>子结构汇总结论</b><p>公司战略是否从源头能力自然延伸，还是跨越了能力边界？：战略分析已有可用研究起点，但上抛结论仍需经过下钻问题验证。；资源配置是否与最重要利润池和风险点匹配？：战略分析存在需要优先处理的反证或边界条件。；战略投入能否被 KPI 和阶段性证据验证？：战略分析存在需要优先处理的反证或边界条件。</p></div><div class="field"><b>子问题列表</b><ul><li>公司战略是否从源头能力自然延伸，还是跨越了能力边界？</li><li>资源配置是否与最重要利润池和风险点匹配？</li><li>战略投入能否被 KPI 和阶段性证据验证？</li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>需要把研究线索升级为一手证据或高可靠第三方数据。</li><li>需要补充反证后的量化影响、持续时间、管理层应对和后续更新触发器。</li></ul></div><a class="detail-link" href="pages/strategy.html">进入 L1 子页面</a><p class="note">状态：<span class="status-evidenced">证据充分</span></p></article>
-<article class="foundation-card evidenced"><p class="eyebrow">L1 / 组织、文化与治理</p><h3>组织管理：管理层、治理和组织能力分析</h3><div class="field"><b>子结构汇总结论</b><p>创始人、控制权和管理层结构是否提升长期执行？：组织、文化与治理已有可用研究起点，但上抛结论仍需经过下钻问题验证。；激励、董事会和少数股东保护是否足以约束资本配置？：组织、文化与治理存在需要优先处理的反证或边界条件。；组织文化是复利资产，还是会放大盲区和路径依赖？：组织、文化与治理存在需要优先处理的反证或边界条件。</p></div><div class="field"><b>子问题列表</b><ul><li>创始人、控制权和管理层结构是否提升长期执行？</li><li>激励、董事会和少数股东保护是否足以约束资本配置？</li><li>组织文化是复利资产，还是会放大盲区和路径依赖？</li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>需要补充时间序列、同业对照和分业务 KPI，避免只停留在单点事实。</li><li>需要补充反证后的量化影响、持续时间、管理层应对和后续更新触发器。</li></ul></div><a class="detail-link" href="pages/governance.html">进入 L1 子页面</a><p class="note">状态：<span class="status-evidenced">证据充分</span></p></article>
-<article class="foundation-card evidenced"><p class="eyebrow">L1 / 风险排雷</p><h3>风险暴露：哪些风险会改变基础画像</h3><div class="field"><b>子结构汇总结论</b><p>哪些风险足以改变公司基础画像，而不只是短期噪音？：风险排雷存在需要优先处理的反证或边界条件。；财务、会计、法律、监管、技术和治理风险分别如何验证？：风险排雷存在需要优先处理的反证或边界条件。；哪类新增证据能最快证伪当前判断？：风险排雷存在需要优先处理的反证或边界条件。</p></div><div class="field"><b>子问题列表</b><ul><li>哪些风险足以改变公司基础画像，而不只是短期噪音？</li><li>财务、会计、法律、监管、技术和治理风险分别如何验证？</li><li>哪类新增证据能最快证伪当前判断？</li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>需要补充反证后的量化影响、持续时间、管理层应对和后续更新触发器。</li></ul></div><a class="detail-link" href="pages/risk_sweep.html">进入 L1 子页面</a><p class="note">状态：<span class="status-evidenced">证据充分</span></p></article></div>
+      <div class="foundation-grid"><article class="foundation-card evidenced"><p class="eyebrow">L1 / 源头溯源</p><h3>源头溯源：公司是怎么来的</h3><div class="field"><b>子结构汇总结论</b><p>综合子问题信息，本层结论是：小米 IR 公司简介：小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司；小米集团 2018 全球发售招股书：2018 年招股书描述了小米的使命、互联网公司自我定义、2010 年 4 月创立、香港发行安排、不同投票权风险，以及以智能手机和智能硬件为核心并由 IoT 平台连接的原始模型；小米全球 IR 招股概要将公司定义为以智能手机和智能硬件连接 IoT 平台为核心的互联网公司；披露 2018 年 3 月 MIUI 月活约 1.9 亿、MIUI 论坛月活超过 900 万、超过 140 万用户连接 5 台以上小米产品，并把…。主要边界是：小米 2021 年报硬件净利率承诺：小米 2021 年报披露，公司自 2018…</p></div><div class="field"><b>子问题列表</b><ul class="compact-question-list"><li><span class="question-text">时代背景是什么？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>4/3/1/0</strong></span></li><li><span class="question-text">原始问题是什么？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>2/2/1/0</strong></span></li><li><span class="question-text">旧方案为什么不够好？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>2/2/1/0</strong></span></li><li><span class="question-text">第一产品楔子是什么？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>3/2/1/0</strong></span></li><li><span class="question-text">第一批客户是谁？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>2/1/1/0</strong></span></li><li><span class="question-text">早期优势来自哪里？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>4/2/1/0</strong></span></li><li><span class="question-text">早期飞轮如何形成？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>5/2/0/0</strong></span></li><li><span class="question-text">源头基因今天是否仍有效？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>6/2/0/0</strong></span></li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>还需要补充 2010-2012 年中国智能手机渗透率、安卓生态成熟度、运营商渠道和线上零售变化的数据。</li><li>需要补充能直接回答“这个回答最需要哪条一手证据验证？”的观点。</li><li>缺少观点类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/source_origin.html">进入 L1 子页面</a><p class="note">状态：<span class="status-evidenced">证据充分</span></p></article>
+<article class="foundation-card evidenced"><p class="eyebrow">L1 / 公司历史</p><h3>发展历史：公司的发展关键节点是什么</h3><div class="field"><b>子结构汇总结论</b><p>综合子问题信息，本层结论是：小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连接 IoT 设…；历史增长主要来自内生能力、融资环境，还是跨品类扩张：小米集团 2025 年报：FY2025 收入为人民币 4573 亿元，毛利为 1018 亿元，年度利润为 416 亿元，经调整净利润为 392 亿元，总资产为 5081 亿元，总权益为 …；小米 2025 年报不同投票权与董事会披露：年报显示，小米采用不同投票权结构：每股 A 类股份有 10 票，每股 B 类股份有 1 票；截至 2025 年 12 月 31 日，雷军对非保留事项拥有约 61.0% 投票权，林斌拥有约 6.7%；EV…</p></div><div class="field"><b>子问题列表</b><ul class="compact-question-list"><li><span class="question-text">哪些历史节点真正改变了商业模型？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>3/2/1/0</strong></span></li><li><span class="question-text">历史增长主要来自内生能力、融资环境，还是跨品类扩张？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>3/2/0/0</strong></span></li><li><span class="question-text">治理结构如何影响历史资本配置？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>3/1/0/0</strong></span></li><li><span class="question-text">EV 转型是能力延伸，还是能力跃迁？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>3/1/0/0</strong></span></li><li><span class="question-text">哪些历史风险会反证当前叙事？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>4/1/0/0</strong></span></li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>需要按阶段补分部毛利、互联网服务收入结构、EV 单车毛利和售后成本。</li><li>需要补充能直接回答“每次历史转型是否真的改变利润池？”的消息、观点。</li><li>缺少消息类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/history.html">进入 L1 子页面</a><p class="note">状态：<span class="status-evidenced">证据充分</span></p></article>
+<article class="foundation-card evidenced"><p class="eyebrow">L1 / 当下生意</p><h3>当下的生意：当前业务板块下探</h3><div class="field"><b>子结构汇总结论</b><p>综合子问题信息，本层结论是：小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连接 IoT 设…；IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第三，并在内存约束和产品组合调整下同比下降 19…；小米集团 2025 年报：FY2025 收入为人民币 4573 亿元，毛利为 1018 亿元，年度利润为 416 亿元，经调整净利润为 392 亿元，总资产为 5081 亿元，总权益为 2663 亿元，经营现金流为 341 亿元，现金资源…。主要…</p></div><div class="field"><b>子问题列表</b><ul class="compact-question-list"><li><span class="question-text">当前收入、毛利、现金流分别由哪些业务驱动？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>2/0/0/0</strong></span></li><li><span class="question-text">客户是谁，需求来自刚需、替换、生态绑定还是促销？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>0/2/0/0</strong></span></li><li><span class="question-text">利润质量是否能转化为现金和可重复回报？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>1/0/0/0</strong></span></li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>需要分部毛利、费用分摊、经营现金流和营运资本桥接。</li><li>需要补充能直接回答“哪个业务真正贡献毛利和现金，而不只是贡献收入？”的消息、观点。</li><li>缺少消息类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/current_business.html">进入 L1 子页面</a><p class="note">状态：<span class="status-evidenced">证据充分</span></p></article>
+<article class="foundation-card evidenced"><p class="eyebrow">L1 / 产业链定位</p><h3>产业链定位：上下游分析</h3><div class="field"><b>子结构汇总结论</b><p>综合子问题信息，本层结论是：公司在产业链中掌握哪一段价值，哪一段被供应商/渠道…：小米 IR 公司简介：小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司；IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第三，并在内存约束和产品组合调整下同比下降 19…；小米 IR 公司简介：小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司。主要边界是：IDC 2026 Q1 智能手机市场数据：IDC …</p></div><div class="field"><b>子问题列表</b><ul class="compact-question-list"><li><span class="question-text">公司在产业链中掌握哪一段价值，哪一段被供应商/渠道/客户拿走？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>1/0/0/0</strong></span></li><li><span class="question-text">上游供给、关键部件和产能是否会改变毛利与交付？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>0/2/0/0</strong></span></li><li><span class="question-text">渠道和售后体系是否足以支撑当前业务复杂度？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>1/2/0/0</strong></span></li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>需要关键部件价格、供应商集中度、账期和采购承诺。</li><li>需要补充能直接回答“上游供应商是否拿走关键经济性？”的研报、消息、观点。</li><li>缺少研报类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/value_chain.html">进入 L1 子页面</a><p class="note">状态：<span class="status-evidenced">证据充分</span></p></article>
+<article class="foundation-card evidenced"><p class="eyebrow">L1 / 竞争格局</p><h3>竞争格局：真实竞争对手和竞争强度是什么</h3><div class="field"><b>子结构汇总结论</b><p>综合子问题信息，本层结论是：小米 IR 公司简介：小米成立于 2010 年 4 月，2018 年 7 月 9 日在港交所上市，并将自身定位为以智能手机和智能硬件为核心、由 IoT 平台连接的消费电子与智能制造公司；份额变化是结构性优势、周期波动，还是补贴/价格战结果：IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%…；小米 2025 年报不同投票权与董事会披露：年报显示，小米采用不同投票权结构：每股 A 类股份有 10 票，每股 B 类股份有 1 票；截至 2025 年 12 月 31 日，雷军对非保留事项拥有约 61.0% 投票权，林斌拥有约 6.7%。主要边界是：IDC 2026 Q1 智能手机市场数据：IDC…</p></div><div class="field"><b>子问题列表</b><ul class="compact-question-list"><li><span class="question-text">公司真实竞争对手是谁，竞争发生在价格、产品、渠道还是生态？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>3/0/0/0</strong></span></li><li><span class="question-text">份额变化是结构性优势、周期波动，还是补贴/价格战结果？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>0/3/0/0</strong></span></li><li><span class="question-text">竞争强度是否会侵蚀毛利、现金流或品牌定位？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>2/0/0/0</strong></span></li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>需要全球和区域份额、价格带、产品周期和渠道数据。</li><li>需要补充能直接回答“手机业务到底和谁竞争，竞争维度是什么？”的观点。</li><li>缺少观点类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/competition.html">进入 L1 子页面</a><p class="note">状态：<span class="status-evidenced">证据充分</span></p></article>
+<article class="foundation-card evidenced"><p class="eyebrow">L1 / 战略分析</p><h3>战略分析：过去、现在、未来</h3><div class="field"><b>子结构汇总结论</b><p>综合子问题信息，本层结论是：小米集团 2025 年度业绩公告：FY2025 业绩公告披露分部数据：手机 x AIoT 收入 3512 亿元，智能 EV/AI/新业务收入 1061 亿元，智能手机出货 1.652 亿台，全球 MAU 7.541 亿，已连接 IoT 设…；小米集团 2025 年报：FY2025 收入为人民币 4573 亿元，毛利为 1018 亿元，年度利润为 416 亿元，经调整净利润为 392 亿元，总资产为 5081 亿元，总权益为 2663 亿元，经营现金流为 341 亿元，现金资源…。主要边界是：IDC 2026 Q1 智能手机市场数据：IDC 2026 年 Q1 初步数据显示，全球智能手机出货同比下降 2.9% 至 2.938 亿台；小米出货 3380 万台，份额 11.5%，排名第三，并在内存约束和产品组合调整下同比下降 …</p></div><div class="field"><b>子问题列表</b><ul class="compact-question-list"><li><span class="question-text">公司战略是否从源头能力自然延伸，还是跨越了能力边界？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>3/4/0/0</strong></span></li><li><span class="question-text">资源配置是否与最重要利润池和风险点匹配？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>0/3/0/0</strong></span></li><li><span class="question-text">战略投入能否被 KPI 和阶段性证据验证？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>2/0/0/0</strong></span></li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>需要用户体验、软件、生态连接、渠道和品牌流量证据。</li><li>需要补充能直接回答“哪些能力能从手机/AIoT 迁移到汽车？”的观点。</li><li>缺少观点类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/strategy.html">进入 L1 子页面</a><p class="note">状态：<span class="status-evidenced">证据充分</span></p></article>
+<article class="foundation-card evidenced"><p class="eyebrow">L1 / 组织、文化与治理</p><h3>组织管理：管理层、治理和组织能力分析</h3><div class="field"><b>子结构汇总结论</b><p>综合子问题信息，本层结论是：小米 IR 管理层：管理层页面显示，雷军为创始人、董事长兼 CEO；林斌为联合创始人、副董事长；卢伟冰为合伙人兼总裁；高管团队覆盖手机、国际业务、中国区、财务、研发和技术委员会等职能；小米集团 2025 年报：FY2025 收入为人民币 4573 亿元，毛利为 1018 亿元，年度利润为 416 亿元，经调整净利润为 392 亿元，总资产为 5081 亿元，总权益为 2663 亿元，经营现金流为 341 亿元，现金资源…；组织文化是复利资产，还是会放大盲区和路径依赖：小米集团 2025 年报：FY2025 收入为人民币 4573 亿元，毛利为 1018 亿元，年度利润为 416 亿元，经调整净利润为 392 亿元，总资产为 5081 亿元，总权益为 266…。主要边界是：小米集团 2018 全球发售招股书：2018 年招…</p></div><div class="field"><b>子问题列表</b><ul class="compact-question-list"><li><span class="question-text">创始人、控制权和管理层结构是否提升长期执行？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>1/0/0/0</strong></span></li><li><span class="question-text">激励、董事会和少数股东保护是否足以约束资本配置？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>4/0/0/0</strong></span></li><li><span class="question-text">组织文化是复利资产，还是会放大盲区和路径依赖？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>3/0/0/0</strong></span></li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>需要长期投入、产品周期、研发和重大项目复盘。</li><li>需要补充能直接回答“创始人控制权是否带来长期战略耐心？”的研报、消息、观点。</li><li>缺少研报类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/governance.html">进入 L1 子页面</a><p class="note">状态：<span class="status-evidenced">证据充分</span></p></article>
+<article class="foundation-card evidenced"><p class="eyebrow">L1 / 风险排雷</p><h3>风险暴露：哪些风险会改变基础画像</h3><div class="field"><b>子结构汇总结论</b><p>综合子问题信息，本层结论是：国家市场监督管理总局小米 SU7 召回公告：国家市场监督管理总局公告显示，小米汽车召回 116,887 辆 2024 年 2 月 6 日至 2025 年 8 月 30 日生产的 SU7 标准版，原因是 L2 高速领航辅助驾驶在极端场景识别…；哪类新增证据能最快证伪当前判断：国家市场监督管理总局小米 SU7 召回公告：国家市场监督管理总局公告显示，小米汽车召回 116,887 辆 2024 年 2 月 6 日至 2025 年 8 月 30 日生产的 SU7 标准版，原因是 L2…。主要边界是：国家市场监督管理总局小米 SU7 召回公告：国家市场监督管理总局公告显示，小米汽车召回 116,887 辆 2024 年 2 月 6 日至 2025 年 8 月 30 日生产的 SU7 标准版，原因是 L2 高速领航辅助驾驶在极端场景…</p></div><div class="field"><b>子问题列表</b><ul class="compact-question-list"><li><span class="question-text">哪些风险足以改变公司基础画像，而不只是短期噪音？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>2/1/0/0</strong></span></li><li><span class="question-text">财务、会计、法律、监管、技术和治理风险分别如何验证？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>2/1/0/0</strong></span></li><li><span class="question-text">哪类新增证据能最快证伪当前判断？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>2/1/0/0</strong></span></li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>需要连续季度份额、出货、ASP、毛利和库存。</li><li>需要补充能直接回答“手机基本盘弱化是否会改变整个生态基础？”的观点。</li><li>缺少观点类信息，当前结论不能完整闭环。</li></ul></div><a class="detail-link" href="pages/risk_sweep.html">进入 L1 子页面</a><p class="note">状态：<span class="status-evidenced">证据充分</span></p></article></div>
     </section>
 
     
-    <section id="add-question" class="level-frame draft-question" data-question-scope="XIAOMI:l0">
+
+    <section id="add-question" class="level-frame draft-question" data-question-scope="XIAOMI:l0" data-parent-id="company.foundation" data-queue-command="value-invest-research apply-question-queue XIAOMI --path queued_questions.jsonl">
       <p class="eyebrow">可交互 / 新增问题</p>
       <h2>新增下钻问题</h2>
       <form class="draft-question-form">
         <textarea class="draft-question-input" placeholder="输入一个新的下钻问题"></textarea>
+        <label class="note"><input class="draft-question-terminal" type="checkbox"> 这个问题已到可回答粒度，直接进入四类信息搜集</label>
         <div class="qa-ask-actions">
           <button class="primary" type="submit">加入本层问题列表</button>
           <button class="draft-question-clear" type="button">清空本层新增</button>
         </div>
       </form>
       <div class="field"><b>L0 公司基础框架新增问题</b><ul class="draft-question-list"></ul></div>
+      <div class="draft-question-output">
+        <div class="field"><b>队列 JSONL</b><textarea class="draft-question-jsonl" readonly></textarea></div>
+        <div class="field"><b>应用命令</b><textarea class="draft-question-command" readonly></textarea></div>
+      </div>
     </section>
 
   </main>
@@ -350,20 +400,32 @@
         const key = `draft-layer-questions:${box.dataset.questionScope || "default"}`;
         const form = box.querySelector(".draft-question-form");
         const input = box.querySelector(".draft-question-input");
+        const terminal = box.querySelector(".draft-question-terminal");
         const list = box.querySelector(".draft-question-list");
         const clear = box.querySelector(".draft-question-clear");
+        const jsonl = box.querySelector(".draft-question-jsonl");
+        const command = box.querySelector(".draft-question-command");
+        const parentId = box.dataset.parentId || "";
+        const queueCommand = box.dataset.queueCommand || "";
+        const normalizeItem = (item) => {
+          if (typeof item === "string") return { question: item, terminal: false };
+          return { question: item.question || "", terminal: Boolean(item.terminal) };
+        };
         const render = () => {
-          const items = read(key);
+          const items = read(key).map(normalizeItem).filter((item) => item.question);
           list.innerHTML = items.length
-            ? items.map((item) => `<li>${esc(item)}</li>`).join("")
+            ? items.map((item) => `<li>${esc(item.question)}${item.terminal ? ' <span class="chip">终端问题</span>' : ""}</li>`).join("")
             : '<li class="note">暂无新增问题。</li>';
+          jsonl.value = items.map((item) => JSON.stringify({ parent_id: parentId, question: item.question, terminal: item.terminal })).join("\n");
+          command.value = queueCommand;
         };
         form.addEventListener("submit", (event) => {
           event.preventDefault();
           const value = input.value.trim();
           if (!value) return;
-          write(key, [...read(key), value]);
+          write(key, [...read(key).map(normalizeItem), { question: value, terminal: Boolean(terminal && terminal.checked) }]);
           input.value = "";
+          if (terminal) terminal.checked = false;
           render();
         });
         clear.addEventListener("click", () => {
