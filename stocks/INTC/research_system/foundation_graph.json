@@ -1,0 +1,1863 @@
+{
+  "assumptions": [
+    {
+      "disconfirming_signals": [
+        "Revenue grows but share or ASP falls",
+        "Customer concentration worsens",
+        "Gross margin weakens despite demand"
+      ],
+      "id": "assumption_core_products_001",
+      "linked_business_node_ids": [
+        "core_products"
+      ],
+      "linked_foundation_sections": [
+        "current_business",
+        "competition",
+        "value_chain"
+      ],
+      "statement": "Core products retain customer relevance, pricing power, and enough margin to support the company baseline.",
+      "status": "open",
+      "supporting_evidence_ids": [
+        "ev_intc_2025_10k_business_segments_20260122",
+        "ev_intc_us_doc_equity_20250822",
+        "ev_intc_doc_closing_20250827",
+        "ev_intc_nvidia_collaboration_20250918",
+        "ev_intc_gartner_semiconductor_2025_20260112"
+      ],
+      "ticker": "INTC"
+    },
+    {
+      "disconfirming_signals": [
+        "Attach rate stalls",
+        "Recurring revenue grows without margin improvement",
+        "Retention weakens"
+      ],
+      "id": "assumption_software_services_001",
+      "linked_business_node_ids": [
+        "software_services"
+      ],
+      "linked_foundation_sections": [
+        "current_business",
+        "strategy",
+        "risk_sweep"
+      ],
+      "statement": "Software, services, or ecosystem monetization adds durability rather than only attaching low-quality revenue.",
+      "status": "open",
+      "supporting_evidence_ids": [
+        "ev_intc_nvidia_collaboration_20250918"
+      ],
+      "ticker": "INTC"
+    },
+    {
+      "disconfirming_signals": [
+        "Capex rises without utilization",
+        "Yield or quality issues persist",
+        "External customer proof remains immaterial"
+      ],
+      "id": "assumption_manufacturing_system_001",
+      "linked_business_node_ids": [
+        "manufacturing_system"
+      ],
+      "linked_foundation_sections": [
+        "value_chain",
+        "strategy",
+        "risk_sweep"
+      ],
+      "statement": "Manufacturing, foundry, or supply capabilities can improve cost, quality, and availability without destroying returns.",
+      "status": "open",
+      "supporting_evidence_ids": [
+        "ev_intc_2025_10k_business_segments_20260122",
+        "ev_intc_2025_10k_foundry_loss_drivers_20260122",
+        "ev_intc_q1_2026_results_20260423",
+        "ev_intc_lipbu_tan_ceo_20250312",
+        "ev_intc_us_doc_equity_20250822"
+      ],
+      "ticker": "INTC"
+    },
+    {
+      "disconfirming_signals": [
+        "Milestones slip",
+        "Capital consumed rises faster than proof",
+        "Customer wins do not convert to revenue"
+      ],
+      "id": "assumption_growth_initiatives_001",
+      "linked_business_node_ids": [
+        "growth_initiatives"
+      ],
+      "linked_foundation_sections": [
+        "history",
+        "strategy",
+        "current_business",
+        "risk_sweep"
+      ],
+      "statement": "New growth initiatives extend existing capabilities and can reach milestone evidence before consuming excessive capital.",
+      "status": "open",
+      "supporting_evidence_ids": [
+        "ev_intc_founding_19680718",
+        "ev_intc_2025_10k_business_segments_20260122",
+        "ev_intc_q1_2026_results_20260423",
+        "ev_intc_altera_silverlake_20250414",
+        "ev_intc_doc_closing_20250827"
+      ],
+      "ticker": "INTC"
+    },
+    {
+      "disconfirming_signals": [
+        "Free cash flow weakens despite reported profit",
+        "Capex rises without operating leverage",
+        "Financing dilutes while returns remain unproven"
+      ],
+      "id": "assumption_capital_allocation_001",
+      "linked_business_node_ids": [
+        "capital_allocation"
+      ],
+      "linked_foundation_sections": [
+        "current_business",
+        "strategy",
+        "risk_sweep"
+      ],
+      "statement": "Cash generation and balance-sheet strength can fund reinvestment without weakening shareholder economics.",
+      "status": "open",
+      "supporting_evidence_ids": [
+        "ev_intc_2025_10k_foundry_loss_drivers_20260122",
+        "ev_intc_q1_2026_results_20260423",
+        "ev_intc_doc_closing_20250827",
+        "ev_intc_2025_10k_risk_factors_20260122",
+        "ev_intc_2025_10k_cash_capex_debt_20260122"
+      ],
+      "ticker": "INTC"
+    },
+    {
+      "disconfirming_signals": [
+        "Major capital allocation lacks minority-shareholder discipline",
+        "Related-party risk increases",
+        "Board independence weakens"
+      ],
+      "id": "assumption_governance_control_001",
+      "linked_business_node_ids": [
+        "governance_control"
+      ],
+      "linked_foundation_sections": [
+        "governance",
+        "risk_sweep"
+      ],
+      "statement": "Control structure and leadership quality improve long-term execution more than they raise minority-shareholder risk.",
+      "status": "open",
+      "supporting_evidence_ids": [
+        "ev_intc_lipbu_tan_ceo_20250312",
+        "ev_intc_doc_closing_20250827"
+      ],
+      "ticker": "INTC"
+    },
+    {
+      "disconfirming_signals": [
+        "Revenue grows while cash conversion and margin quality weaken",
+        "One segment masks deterioration elsewhere"
+      ],
+      "id": "assumption_group_financials_001",
+      "linked_business_node_ids": [
+        "group_financials"
+      ],
+      "linked_foundation_sections": [
+        "current_business",
+        "risk_sweep"
+      ],
+      "statement": "Reported growth converts into durable margin and cash-flow quality.",
+      "status": "open",
+      "supporting_evidence_ids": [
+        "ev_intc_gartner_semiconductor_2025_20260112",
+        "ev_intc_2025_10k_risk_factors_20260122"
+      ],
+      "ticker": "INTC"
+    }
+  ],
+  "business_nodes": [
+    {
+      "evidence_ids": [
+        "ev_intc_2025_10k_business_segments_20260122",
+        "ev_intc_us_doc_equity_20250822",
+        "ev_intc_doc_closing_20250827",
+        "ev_intc_nvidia_collaboration_20250918",
+        "ev_intc_gartner_semiconductor_2025_20260112",
+        "ev_intc_mercury_x86_share_q1_2026_20260514",
+        "ev_intc_2025_10k_risk_factors_20260122",
+        "ev_intc_2025_10k_restructuring_history_20260122"
+      ],
+      "id": "core_products",
+      "key_kpis": [
+        "segment revenue",
+        "market share",
+        "ASP",
+        "gross margin",
+        "customer concentration"
+      ],
+      "label": "Core products and customer platform",
+      "open_question": "Are core products gaining durable demand, pricing power, and customer relevance?",
+      "role": "Primary revenue engine and customer demand surface",
+      "status": "active"
+    },
+    {
+      "evidence_ids": [
+        "ev_intc_nvidia_collaboration_20250918"
+      ],
+      "id": "software_services",
+      "key_kpis": [
+        "recurring revenue",
+        "attach rate",
+        "gross margin",
+        "retention",
+        "ecosystem participation"
+      ],
+      "label": "Software, services, and ecosystem layer",
+      "open_question": "Do software, services, or ecosystem layers improve repeatability and margin quality?",
+      "role": "Recurring monetization, attach rate, and ecosystem leverage",
+      "status": "active"
+    },
+    {
+      "evidence_ids": [
+        "ev_intc_2025_10k_business_segments_20260122",
+        "ev_intc_2025_10k_foundry_loss_drivers_20260122",
+        "ev_intc_q1_2026_results_20260423",
+        "ev_intc_lipbu_tan_ceo_20250312",
+        "ev_intc_us_doc_equity_20250822",
+        "ev_intc_2025_10k_risk_factors_20260122",
+        "ev_intc_2025_10k_cash_capex_debt_20260122"
+      ],
+      "id": "manufacturing_system",
+      "key_kpis": [
+        "capacity utilization",
+        "yield",
+        "external customer revenue",
+        "capex",
+        "inventory reserves"
+      ],
+      "label": "Manufacturing, foundry, and supply system",
+      "open_question": "Can manufacturing and supply capabilities improve cost, quality, capacity, and customer trust?",
+      "role": "Capacity, cost, quality, and technology-execution constraint",
+      "status": "active"
+    },
+    {
+      "evidence_ids": [
+        "ev_intc_founding_19680718",
+        "ev_intc_2025_10k_business_segments_20260122",
+        "ev_intc_q1_2026_results_20260423",
+        "ev_intc_altera_silverlake_20250414",
+        "ev_intc_doc_closing_20250827",
+        "ev_intc_softbank_investment_20250818",
+        "ev_intc_nvidia_collaboration_20250918",
+        "ev_intc_gartner_semiconductor_2025_20260112",
+        "ev_intc_mercury_x86_share_q1_2026_20260514",
+        "ev_intc_2025_10k_risk_factors_20260122",
+        "ev_intc_2025_10k_cash_capex_debt_20260122",
+        "ev_intc_2025_10k_restructuring_history_20260122"
+      ],
+      "id": "growth_initiatives",
+      "key_kpis": [
+        "partner revenue",
+        "new product ramp",
+        "milestone delivery",
+        "investment return",
+        "cash burn"
+      ],
+      "label": "Growth initiatives and strategic partnerships",
+      "open_question": "Are growth initiatives creating a real second profit pool or only adding capital intensity?",
+      "role": "New profit pools, capability extension, and capital-allocation pressure",
+      "status": "active"
+    },
+    {
+      "evidence_ids": [
+        "ev_intc_2025_10k_foundry_loss_drivers_20260122",
+        "ev_intc_q1_2026_results_20260423",
+        "ev_intc_doc_closing_20250827",
+        "ev_intc_2025_10k_risk_factors_20260122",
+        "ev_intc_2025_10k_cash_capex_debt_20260122"
+      ],
+      "id": "capital_allocation",
+      "key_kpis": [
+        "operating cash flow",
+        "free cash flow",
+        "net cash/debt",
+        "capex",
+        "ROIC"
+      ],
+      "label": "Capital allocation and cash engine",
+      "open_question": "Can cash flows fund the next growth curve without weakening returns or minority-shareholder economics?",
+      "role": "Funds reinvestment, buybacks, dividends, and balance-sheet resilience",
+      "status": "active"
+    },
+    {
+      "evidence_ids": [
+        "ev_intc_lipbu_tan_ceo_20250312",
+        "ev_intc_doc_closing_20250827"
+      ],
+      "id": "governance_control",
+      "key_kpis": [
+        "leadership continuity",
+        "incentives",
+        "board independence",
+        "capital-allocation discipline"
+      ],
+      "label": "Governance and leadership system",
+      "open_question": "Does founder/control structure improve long-term execution or create governance discount risk?",
+      "role": "Management quality, incentives, board oversight, and execution accountability",
+      "status": "active"
+    },
+    {
+      "evidence_ids": [
+        "ev_intc_gartner_semiconductor_2025_20260112",
+        "ev_intc_2025_10k_risk_factors_20260122"
+      ],
+      "id": "group_financials",
+      "key_kpis": [
+        "revenue",
+        "gross margin",
+        "operating margin",
+        "net profit",
+        "cash conversion"
+      ],
+      "label": "Group financial model",
+      "open_question": "Which segment is actually driving gross profit, cash conversion, and durable value creation?",
+      "role": "Revenue quality, margin structure, cash conversion, and balance sheet",
+      "status": "active"
+    }
+  ],
+  "coverage": {
+    "sections_evidenced": 8,
+    "sections_missing": 0,
+    "sections_partial": 0,
+    "sections_total": 8
+  },
+  "foundation_status": "complete",
+  "generated_at": "2026-05-22T17:56:56.315948+00:00",
+  "kpis": [
+    {
+      "business_node_ids": [
+        "growth_initiatives"
+      ],
+      "evidence_id": "ev_intc_founding_19680718",
+      "id": "kpi_ev_intc_founding_19680718_1",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "事实：Intel 于 1968 年 7 月 18 日由 Robert Noyce 和 Gordon Moore 创立",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "growth_initiatives"
+      ],
+      "evidence_id": "ev_intc_founding_19680718",
+      "id": "kpi_ev_intc_founding_19680718_2",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "事实：Intel 于 1968 年 7 月 18 日由 Robert Noyce 和 Gordon Moore 创立，起点来",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "growth_initiatives"
+      ],
+      "evidence_id": "ev_intc_founding_19680718",
+      "id": "kpi_ev_intc_founding_19680718_3",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "事实：Intel 于 1968 年 7 月 18 日由 Robert Noyce 和 Gordon Moore 创立，起点来自 Fai",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "core_products",
+        "manufacturing_system",
+        "growth_initiatives"
+      ],
+      "evidence_id": "ev_intc_2025_10k_business_segments_20260122",
+      "id": "kpi_ev_intc_2025_10k_business_segments_20260122_1",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "事实：Intel 在 FY2025 10-K 中按 CCG、DCAI、Intel Foundry 等口径披露业务。Int",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "core_products",
+        "manufacturing_system",
+        "growth_initiatives"
+      ],
+      "evidence_id": "ev_intc_2025_10k_business_segments_20260122",
+      "id": "kpi_ev_intc_2025_10k_business_segments_20260122_2",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "事实：Intel 在 FY2025 10-K 中按 CCG、DCAI、Intel Foundry 等口径披露业务。Intel",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "core_products",
+        "manufacturing_system",
+        "growth_initiatives"
+      ],
+      "evidence_id": "ev_intc_2025_10k_business_segments_20260122",
+      "id": "kpi_ev_intc_2025_10k_business_segments_20260122_3",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "、DCAI、Intel Foundry 等口径披露业务。Intel Foundry 2025 年收入约 178 亿美元，其中外部收入仅约 3.07 亿美元，绝大部分为内部/分部间",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "core_products",
+        "manufacturing_system",
+        "growth_initiatives"
+      ],
+      "evidence_id": "ev_intc_2025_10k_business_segments_20260122",
+      "id": "kpi_ev_intc_2025_10k_business_segments_20260122_4",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "l Foundry 等口径披露业务。Intel Foundry 2025 年收入约 178 亿美元，其中外部收入仅约 3.07 亿美元，绝大部分为内部/分部间收入；Foundr",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "manufacturing_system",
+        "capital_allocation"
+      ],
+      "evidence_id": "ev_intc_2025_10k_foundry_loss_drivers_20260122",
+      "id": "kpi_ev_intc_2025_10k_foundry_loss_drivers_20260122_1",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "事实：10-K 披露 Intel Foundry 2025 年亏损改善主要来自资产减值和加速折",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "manufacturing_system",
+        "capital_allocation"
+      ],
+      "evidence_id": "ev_intc_2025_10k_foundry_loss_drivers_20260122",
+      "id": "kpi_ev_intc_2025_10k_foundry_loss_drivers_20260122_2",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "事实：10-K 披露 Intel Foundry 2025 年亏损改善主要来自资产减值和加速折旧下降、裁员和成本削减，但同时受到 Intel 1",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "manufacturing_system",
+        "capital_allocation"
+      ],
+      "evidence_id": "ev_intc_2025_10k_foundry_loss_drivers_20260122",
+      "id": "kpi_ev_intc_2025_10k_foundry_loss_drivers_20260122_3",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "年亏损改善主要来自资产减值和加速折旧下降、裁员和成本削减，但同时受到 Intel 18A 早期爬坡产品的存货可变现净值调整等影响。判断：Foundry 的核心证据链应跟踪",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "manufacturing_system",
+        "growth_initiatives",
+        "capital_allocation"
+      ],
+      "evidence_id": "ev_intc_q1_2026_results_20260423",
+      "id": "kpi_ev_intc_q1_2026_results_20260423_1",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "事实：Intel 2026 Q1 营收 136 亿美元，同比 +7%；GAAP EPS 为 -0.73 美元，n",
+      "why_it_matters": "Cash conversion determines whether growth can fund itself."
+    },
+    {
+      "business_node_ids": [
+        "manufacturing_system",
+        "growth_initiatives",
+        "capital_allocation"
+      ],
+      "evidence_id": "ev_intc_q1_2026_results_20260423",
+      "id": "kpi_ev_intc_q1_2026_results_20260423_2",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "事实：Intel 2026 Q1 营收 136 亿美元，同比 +7%；GAAP EPS 为 -0.73 美元，non-",
+      "why_it_matters": "Cash conversion determines whether growth can fund itself."
+    },
+    {
+      "business_node_ids": [
+        "manufacturing_system",
+        "growth_initiatives",
+        "capital_allocation"
+      ],
+      "evidence_id": "ev_intc_q1_2026_results_20260423",
+      "id": "kpi_ev_intc_q1_2026_results_20260423_3",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "事实：Intel 2026 Q1 营收 136 亿美元，同比 +7%；GAAP EPS 为 -0.73 美元，non-GAAP EP",
+      "why_it_matters": "Cash conversion determines whether growth can fund itself."
+    },
+    {
+      "business_node_ids": [
+        "manufacturing_system",
+        "growth_initiatives",
+        "capital_allocation"
+      ],
+      "evidence_id": "ev_intc_q1_2026_results_20260423",
+      "id": "kpi_ev_intc_q1_2026_results_20260423_4",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "事实：Intel 2026 Q1 营收 136 亿美元，同比 +7%；GAAP EPS 为 -0.73 美元，non-GAAP EPS 为 0.29 美",
+      "why_it_matters": "Cash conversion determines whether growth can fund itself."
+    },
+    {
+      "business_node_ids": [
+        "manufacturing_system",
+        "governance_control"
+      ],
+      "evidence_id": "ev_intc_lipbu_tan_ceo_20250312",
+      "id": "kpi_ev_intc_lipbu_tan_ceo_20250312_1",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "事实：Intel 董事会任命 Lip-Bu Tan 为 CEO，2025 年 3 月 18 日生效，并重返董事会；官方强调其半导体生态关系、客户导向、Cade",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "manufacturing_system",
+        "governance_control"
+      ],
+      "evidence_id": "ev_intc_lipbu_tan_ceo_20250312",
+      "id": "kpi_ev_intc_lipbu_tan_ceo_20250312_2",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "事实：Intel 董事会任命 Lip-Bu Tan 为 CEO，2025 年 3 月 18 日生效，并重返董事会；官方强调其半导体生态关系、客户导向、Cadence",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "manufacturing_system",
+        "governance_control"
+      ],
+      "evidence_id": "ev_intc_lipbu_tan_ceo_20250312",
+      "id": "kpi_ev_intc_lipbu_tan_ceo_20250312_3",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "实：Intel 董事会任命 Lip-Bu Tan 为 CEO，2025 年 3 月 18 日生效，并重返董事会；官方强调其半导体生态关系、客户导向、Cadence 转型经验，",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "growth_initiatives"
+      ],
+      "evidence_id": "ev_intc_altera_silverlake_20250414",
+      "id": "kpi_ev_intc_altera_silverlake_20250414_1",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "事实：Intel 同意向 Silver Lake 出售 Altera 51% 股权，交易对 Altera 的企业价值定为 87.5 亿美元，Intel 保留 4",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "growth_initiatives"
+      ],
+      "evidence_id": "ev_intc_altera_silverlake_20250414",
+      "id": "kpi_ev_intc_altera_silverlake_20250414_2",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "Lake 出售 Altera 51% 股权，交易对 Altera 的企业价值定为 87.5 亿美元，Intel 保留 49%；公司称此举用于聚焦核心业务并强化财务状况。推论：这",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "growth_initiatives"
+      ],
+      "evidence_id": "ev_intc_altera_silverlake_20250414",
+      "id": "kpi_ev_intc_altera_silverlake_20250414_3",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "% 股权，交易对 Altera 的企业价值定为 87.5 亿美元，Intel 保留 49%；公司称此举用于聚焦核心业务并强化财务状况。推论：这是资本配置从多元化扩张转向资产瘦",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "core_products",
+        "manufacturing_system"
+      ],
+      "evidence_id": "ev_intc_us_doc_equity_20250822",
+      "id": "kpi_ev_intc_us_doc_equity_20250822_1",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "事实：Intel 与美国商务部达成协议，美国政府同意向 Intel 支付约 88.698 亿美元款项，包括约 56.95 亿美元加速拨款和约 31.748 亿美元 Secur",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "core_products",
+        "manufacturing_system"
+      ],
+      "evidence_id": "ev_intc_us_doc_equity_20250822",
+      "id": "kpi_ev_intc_us_doc_equity_20250822_2",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "务部达成协议，美国政府同意向 Intel 支付约 88.698 亿美元款项，包括约 56.95 亿美元加速拨款和约 31.748 亿美元 Secure Enclave 款项；作为条",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "core_products",
+        "manufacturing_system"
+      ],
+      "evidence_id": "ev_intc_us_doc_equity_20250822",
+      "id": "kpi_ev_intc_us_doc_equity_20250822_3",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "ntel 支付约 88.698 亿美元款项，包括约 56.95 亿美元加速拨款和约 31.748 亿美元 Secure Enclave 款项；作为条件，Intel 同意向 DOC 发",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "core_products",
+        "manufacturing_system"
+      ],
+      "evidence_id": "ev_intc_us_doc_equity_20250822",
+      "id": "kpi_ev_intc_us_doc_equity_20250822_4",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "Secure Enclave 款项；作为条件，Intel 同意向 DOC 发行最多 4.33323 亿股普通股，并发行最多 2.4051615 亿股认股权证，若 Intel 不再直接或",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "core_products",
+        "growth_initiatives",
+        "capital_allocation",
+        "governance_control"
+      ],
+      "evidence_id": "ev_intc_doc_closing_20250827",
+      "id": "kpi_ev_intc_doc_closing_20250827_1",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "事实：2025 年 8 月 27 日 Intel 收到 56.95 亿美元加速拨款，向 DOC 发行",
+      "why_it_matters": "Cash conversion determines whether growth can fund itself."
+    },
+    {
+      "business_node_ids": [
+        "core_products",
+        "growth_initiatives",
+        "capital_allocation",
+        "governance_control"
+      ],
+      "evidence_id": "ev_intc_doc_closing_20250827",
+      "id": "kpi_ev_intc_doc_closing_20250827_2",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "事实：2025 年 8 月 27 日 Intel 收到 56.95 亿美元加速拨款，向 DOC 发行 2.7",
+      "why_it_matters": "Cash conversion determines whether growth can fund itself."
+    },
+    {
+      "business_node_ids": [
+        "core_products",
+        "growth_initiatives",
+        "capital_allocation",
+        "governance_control"
+      ],
+      "evidence_id": "ev_intc_doc_closing_20250827",
+      "id": "kpi_ev_intc_doc_closing_20250827_3",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "事实：2025 年 8 月 27 日 Intel 收到 56.95 亿美元加速拨款，向 DOC 发行 2.74583",
+      "why_it_matters": "Cash conversion determines whether growth can fund itself."
+    },
+    {
+      "business_node_ids": [
+        "core_products",
+        "growth_initiatives",
+        "capital_allocation",
+        "governance_control"
+      ],
+      "evidence_id": "ev_intc_doc_closing_20250827",
+      "id": "kpi_ev_intc_doc_closing_20250827_4",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "事实：2025 年 8 月 27 日 Intel 收到 56.95 亿美元加速拨款，向 DOC 发行 2.74583 亿股普通股和最多 2.405161",
+      "why_it_matters": "Cash conversion determines whether growth can fund itself."
+    },
+    {
+      "business_node_ids": [
+        "growth_initiatives"
+      ],
+      "evidence_id": "ev_intc_softbank_investment_20250818",
+      "id": "kpi_ev_intc_softbank_investment_20250818_1",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "事实：SoftBank 与 Intel 签署 20 亿美元普通股投资协议，价格为每股 23 美元，双方将其描述为对美国先进半导体制造和",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "growth_initiatives"
+      ],
+      "evidence_id": "ev_intc_softbank_investment_20250818",
+      "id": "kpi_ev_intc_softbank_investment_20250818_2",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "实：SoftBank 与 Intel 签署 20 亿美元普通股投资协议，价格为每股 23 美元，双方将其描述为对美国先进半导体制造和 AI 相关基础设施的承诺。推论：外部战略",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "core_products",
+        "software_services",
+        "growth_initiatives"
+      ],
+      "evidence_id": "ev_intc_nvidia_collaboration_20250918",
+      "id": "kpi_ev_intc_nvidia_collaboration_20250918_1",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "据中心和 PC 产品，Intel 将为 NVIDIA AI 基础设施平台构建定制 x86 CPU，并为 PC 市场提供集成 NVIDIA RTX GPU chiplets 的",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "core_products",
+        "software_services",
+        "growth_initiatives"
+      ],
+      "evidence_id": "ev_intc_nvidia_collaboration_20250918",
+      "id": "kpi_ev_intc_nvidia_collaboration_20250918_2",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "U，并为 PC 市场提供集成 NVIDIA RTX GPU chiplets 的 x86 SoC；NVIDIA 将以每股 23.28 美元投资 50 亿美元 Intel 普通",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "core_products",
+        "software_services",
+        "growth_initiatives"
+      ],
+      "evidence_id": "ev_intc_nvidia_collaboration_20250918",
+      "id": "kpi_ev_intc_nvidia_collaboration_20250918_3",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "IA RTX GPU chiplets 的 x86 SoC；NVIDIA 将以每股 23.28 美元投资 50 亿美元 Intel 普通股。推论：这增强了 x86 在 AI 基础设",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "core_products",
+        "software_services",
+        "growth_initiatives"
+      ],
+      "evidence_id": "ev_intc_nvidia_collaboration_20250918",
+      "id": "kpi_ev_intc_nvidia_collaboration_20250918_4",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "chiplets 的 x86 SoC；NVIDIA 将以每股 23.28 美元投资 50 亿美元 Intel 普通股。推论：这增强了 x86 在 AI 基础设施中的相关性叙事",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "core_products",
+        "growth_initiatives",
+        "group_financials"
+      ],
+      "evidence_id": "ev_intc_gartner_semiconductor_2025_20260112",
+      "id": "kpi_ev_intc_gartner_semiconductor_2025_20260112_1",
+      "label": "Revenue",
+      "reliability": "high",
+      "value_snippet": "事实：Gartner 估算 2025 年全球半导体收入 7934 亿美元，同比 +21%；NVIDIA 以 1257 亿美",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "core_products",
+        "growth_initiatives",
+        "group_financials"
+      ],
+      "evidence_id": "ev_intc_gartner_semiconductor_2025_20260112",
+      "id": "kpi_ev_intc_gartner_semiconductor_2025_20260112_2",
+      "label": "Revenue",
+      "reliability": "high",
+      "value_snippet": "事实：Gartner 估算 2025 年全球半导体收入 7934 亿美元，同比 +21%；NVIDIA 以 1257 亿美元、15.8% 份额居首，I",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "core_products",
+        "growth_initiatives",
+        "group_financials"
+      ],
+      "evidence_id": "ev_intc_gartner_semiconductor_2025_20260112",
+      "id": "kpi_ev_intc_gartner_semiconductor_2025_20260112_3",
+      "label": "Revenue",
+      "reliability": "high",
+      "value_snippet": "事实：Gartner 估算 2025 年全球半导体收入 7934 亿美元，同比 +21%；NVIDIA 以 1257 亿美元、15.8% 份额居首，Intel 以 478",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "core_products",
+        "growth_initiatives",
+        "group_financials"
+      ],
+      "evidence_id": "ev_intc_gartner_semiconductor_2025_20260112",
+      "id": "kpi_ev_intc_gartner_semiconductor_2025_20260112_4",
+      "label": "Revenue",
+      "reliability": "high",
+      "value_snippet": "算 2025 年全球半导体收入 7934 亿美元，同比 +21%；NVIDIA 以 1257 亿美元、15.8% 份额居首，Intel 以 478.83 亿美元、6.0% 份额排",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "core_products",
+        "growth_initiatives"
+      ],
+      "evidence_id": "ev_intc_mercury_x86_share_q1_2026_20260514",
+      "id": "kpi_ev_intc_mercury_x86_share_q1_2026_20260514_1",
+      "label": "Evidence metric",
+      "reliability": "medium",
+      "value_snippet": "事实：Tom's Hardware 根据 Mercury Research 数据称，2026 Q1 AMD 在 x86 服务器 CPU 收入份额达到 46.2%，Intel 仍有",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "core_products",
+        "growth_initiatives"
+      ],
+      "evidence_id": "ev_intc_mercury_x86_share_q1_2026_20260514",
+      "id": "kpi_ev_intc_mercury_x86_share_q1_2026_20260514_2",
+      "label": "Evidence metric",
+      "reliability": "medium",
+      "value_snippet": "'s Hardware 根据 Mercury Research 数据称，2026 Q1 AMD 在 x86 服务器 CPU 收入份额达到 46.2%，Intel 仍有约 5",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "core_products",
+        "growth_initiatives"
+      ],
+      "evidence_id": "ev_intc_mercury_x86_share_q1_2026_20260514",
+      "id": "kpi_ev_intc_mercury_x86_share_q1_2026_20260514_3",
+      "label": "Evidence metric",
+      "reliability": "medium",
+      "value_snippet": "re 根据 Mercury Research 数据称，2026 Q1 AMD 在 x86 服务器 CPU 收入份额达到 46.2%，Intel 仍有约 53.8%；Intel",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "core_products",
+        "growth_initiatives"
+      ],
+      "evidence_id": "ev_intc_mercury_x86_share_q1_2026_20260514",
+      "id": "kpi_ev_intc_mercury_x86_share_q1_2026_20260514_4",
+      "label": "Evidence metric",
+      "reliability": "medium",
+      "value_snippet": "arch 数据称，2026 Q1 AMD 在 x86 服务器 CPU 收入份额达到 46.2%，Intel 仍有约 53.8%；Intel 在客户端 CPU 单位份额仍约 70",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "core_products",
+        "manufacturing_system",
+        "growth_initiatives",
+        "capital_allocation",
+        "group_financials"
+      ],
+      "evidence_id": "ev_intc_2025_10k_risk_factors_20260122",
+      "id": "kpi_ev_intc_2025_10k_risk_factors_20260122_1",
+      "label": "Evidence metric",
+      "reliability": "primary",
+      "value_snippet": "事实：10-K Risk Factors 明确提示 Intel 所处行业高度竞争且快速变化，技",
+      "why_it_matters": "The metric helps convert narrative evidence into a testable baseline."
+    },
+    {
+      "business_node_ids": [
+        "manufacturing_system",
+        "growth_initiatives",
+        "capital_allocation"
+      ],
+      "evidence_id": "ev_intc_2025_10k_cash_capex_debt_20260122",
+      "id": "kpi_ev_intc_2025_10k_cash_capex_debt_20260122_1",
+      "label": "Cash flow / liquidity",
+      "reliability": "primary",
+      "value_snippet": "事实：10-K 披露 2025 年经营现金流约 96.97 亿美元，投资现金流流出约 148",
+      "why_it_matters": "Cash conversion determines whether growth can fund itself."
+    },
+    {
+      "business_node_ids": [
+        "manufacturing_system",
+        "growth_initiatives",
+        "capital_allocation"
+      ],
+      "evidence_id": "ev_intc_2025_10k_cash_capex_debt_20260122",
+      "id": "kpi_ev_intc_2025_10k_cash_capex_debt_20260122_2",
+      "label": "Cash flow / liquidity",
+      "reliability": "primary",
+      "value_snippet": "事实：10-K 披露 2025 年经营现金流约 96.97 亿美元，投资现金流流出约 148.21 亿美元，融资现金",
+      "why_it_matters": "Cash conversion determines whether growth can fund itself."
+    },
+    {
+      "business_node_ids": [
+        "manufacturing_system",
+        "growth_initiatives",
+        "capital_allocation"
+      ],
+      "evidence_id": "ev_intc_2025_10k_cash_capex_debt_20260122",
+      "id": "kpi_ev_intc_2025_10k_cash_capex_debt_20260122_3",
+      "label": "Cash flow / liquidity",
+      "reliability": "primary",
+      "value_snippet": "事实：10-K 披露 2025 年经营现金流约 96.97 亿美元，投资现金流流出约 148.21 亿美元，融资现金流流入约 115.87 亿美",
+      "why_it_matters": "Cash conversion determines whether growth can fund itself."
+    },
+    {
+      "business_node_ids": [
+        "manufacturing_system",
+        "growth_initiatives",
+        "capital_allocation"
+      ],
+      "evidence_id": "ev_intc_2025_10k_cash_capex_debt_20260122",
+      "id": "kpi_ev_intc_2025_10k_cash_capex_debt_20260122_4",
+      "label": "Cash flow / liquidity",
+      "reliability": "primary",
+      "value_snippet": "实：10-K 披露 2025 年经营现金流约 96.97 亿美元，投资现金流流出约 148.21 亿美元，融资现金流流入约 115.87 亿美元；公司称投资现金流改善主要来自较低资本",
+      "why_it_matters": "Cash conversion determines whether growth can fund itself."
+    },
+    {
+      "business_node_ids": [
+        "core_products",
+        "growth_initiatives"
+      ],
+      "evidence_id": "ev_intc_2025_10k_restructuring_history_20260122",
+      "id": "kpi_ev_intc_2025_10k_restructuring_history_20260122_1",
+      "label": "Market share / shipments",
+      "reliability": "primary",
+      "value_snippet": "事实：FY2025 10-K 将 2025 和 2024 Restructuring Plans、Alt",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "core_products",
+        "growth_initiatives"
+      ],
+      "evidence_id": "ev_intc_2025_10k_restructuring_history_20260122",
+      "id": "kpi_ev_intc_2025_10k_restructuring_history_20260122_2",
+      "label": "Market share / shipments",
+      "reliability": "primary",
+      "value_snippet": "事实：FY2025 10-K 将 2025 和 2024 Restructuring Plans、Alter",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "core_products",
+        "growth_initiatives"
+      ],
+      "evidence_id": "ev_intc_2025_10k_restructuring_history_20260122",
+      "id": "kpi_ev_intc_2025_10k_restructuring_history_20260122_3",
+      "label": "Market share / shipments",
+      "reliability": "primary",
+      "value_snippet": "事实：FY2025 10-K 将 2025 和 2024 Restructuring Plans、Altera deconsol",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    },
+    {
+      "business_node_ids": [
+        "core_products",
+        "growth_initiatives"
+      ],
+      "evidence_id": "ev_intc_2025_10k_restructuring_history_20260122",
+      "id": "kpi_ev_intc_2025_10k_restructuring_history_20260122_4",
+      "label": "Market share / shipments",
+      "reliability": "primary",
+      "value_snippet": "事实：FY2025 10-K 将 2025 和 2024 Restructuring Plans、Altera deconsolidation",
+      "why_it_matters": "Share and shipment trends test competitive position and demand quality."
+    }
+  ],
+  "research_boundary": "Foundation graph is not a trading instruction. Message-flow work must test marginal change against this baseline.",
+  "risks": [
+    {
+      "evidence_id": "ev_intc_2025_10k_risk_factors_20260122",
+      "id": "risk_ev_intc_2025_10k_risk_factors_20260122",
+      "linked_business_node_ids": [
+        "core_products",
+        "manufacturing_system",
+        "growth_initiatives",
+        "capital_allocation",
+        "group_financials"
+      ],
+      "monitoring_tests": [
+        "Net cash/debt",
+        "Interest coverage",
+        "Maturity schedule",
+        "Operating cash flow"
+      ],
+      "severity": "high",
+      "statement": "Intel FY2025 Form 10-K - Risk Factors: 事实：10-K Risk Factors 明确提示 Intel 所处行业高度竞争且快速变化，技术、地缘政治、市场需求、客户偏好和产品迭代都可能削弱竞争地位；同一文件还披露 loss contingencies、legal and regulatory proceedings、product defects liabilities、market risk、interest-rate risk、inventory risk 和 asset impairment risk。判断：Intel 风险不是单点坏消息，而是制程执行、产品竞争、资本负担、监管/政府约束、会计减值和法律责任的组合。"
+    },
+    {
+      "evidence_id": "ev_intc_2025_10k_cash_capex_debt_20260122",
+      "id": "risk_ev_intc_2025_10k_cash_capex_debt_20260122",
+      "linked_business_node_ids": [
+        "manufacturing_system",
+        "growth_initiatives",
+        "capital_allocation"
+      ],
+      "monitoring_tests": [
+        "Net cash/debt",
+        "Interest coverage",
+        "Maturity schedule",
+        "Operating cash flow"
+      ],
+      "severity": "high",
+      "statement": "Intel FY2025 Form 10-K - Cash Flow, Capex and Debt: 事实：10-K 披露 2025 年经营现金流约 96.97 亿美元，投资现金流流出约 148.21 亿美元，融资现金流流入约 115.87 亿美元；公司称投资现金流改善主要来自较低资本开支、Altera 和 NAND divestitures 的更高处置收入等，融资现金流则受美国政府、NVIDIA、SoftBank 资金影响。推论：价值链上，制造资产和先进制程仍是核心供给能力；财务上，Intel 的转型依赖外部资金、资本开支纪律和现金流恢复共同成立。"
+    }
+  ],
+  "schema_version": "1.0",
+  "sections": [
+    {
+      "detail_page": "pages/source_origin.html",
+      "evidence_ids": [
+        "ev_intc_founding_19680718",
+        "ev_intc_2025_10k_business_segments_20260122",
+        "ev_intc_2025_10k_foundry_loss_drivers_20260122",
+        "ev_intc_q1_2026_results_20260423",
+        "ev_intc_lipbu_tan_ceo_20250312",
+        "ev_intc_us_doc_equity_20250822"
+      ],
+      "facts": [
+        {
+          "evidence_id": "ev_intc_founding_19680718",
+          "statement": "事实：Intel 于 1968 年 7 月 18 日由 Robert Noyce 和 Gordon Moore 创立，起点来自 Fairchild 之后对持续创新和高强度研发投入的追求；早期先做存储器与集成电子技术，随后在微处理器上形成长期身份。推论：Intel 的公司基因是工程、制程、研发和平台生态，而不是单纯销售芯片。"
+        },
+        {
+          "evidence_id": "ev_intc_2025_10k_business_segments_20260122",
+          "statement": "事实：Intel 在 FY2025 10-K 中按 CCG、DCAI、Intel Foundry 等口径披露业务。Intel Foundry 2025 年收入约 178 亿美元，其中外部收入仅约 3.07 亿美元，绝大部分为内部/分部间收入；Foundry 2025 年经营亏损约 103 亿美元，虽较 2024 年亏损 133 亿美元收窄，但仍是公司利润表的核心拖累。推论：当前 Intel 的基础画像不是纯产品公司，而是产品现金流支撑制造/代工再投入的 IDM 转型体。"
+        },
+        {
+          "evidence_id": "ev_intc_2025_10k_foundry_loss_drivers_20260122",
+          "statement": "事实：10-K 披露 Intel Foundry 2025 年亏损改善主要来自资产减值和加速折旧下降、裁员和成本削减，但同时受到 Intel 18A 早期爬坡产品的存货可变现净值调整等影响。判断：Foundry 的核心证据链应跟踪先进制程良率、产能利用率、外部客户收入、内部产品竞争力和资本开支纪律，而不是只看收入增长。"
+        },
+        {
+          "evidence_id": "ev_intc_q1_2026_results_20260423",
+          "statement": "事实：Intel 2026 Q1 营收 136 亿美元，同比 +7%；GAAP EPS 为 -0.73 美元，non-GAAP EPS 为 0.29 美元；经营现金流 11 亿美元，调整后自由现金流为 -20 亿美元。业务上，CCG 收入 77 亿美元，同比 +1%；DCAI 收入 51 亿美元，同比 +22%；Intel Foundry 收入 54 亿美元，同比 +16%。公司指引 2026 Q2 营收 138-148 亿美元。推论：产品端出现比 2025 基线更好的需求和供给修复信号，但现金流仍受资本开支和重组/制造投入约束。"
+        }
+      ],
+      "gaps": [],
+      "id": "source_origin",
+      "inferences": [
+        "Source and origin has a local evidence baseline, but any thesis change still requires message-flow testing."
+      ],
+      "information_by_category": {
+        "evidence": [
+          {
+            "claim": "支撑：公司源头基因是否能解释今天的业务结构和能力边界。",
+            "evidence_id": "ev_intc_founding_19680718",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "公司为什么在那个时间点出现，原始痛点是什么？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Intel Official History - Intel's Founding",
+            "source_type": "company_ir",
+            "stance": "support",
+            "summary": "事实：Intel 于 1968 年 7 月 18 日由 Robert Noyce 和 Gordon Moore 创立，起点来自 Fairchild 之后对持续创新和高强度研发投入的追求；早期先做存储器与集成电子技术，随后在微处理器上形成长期身份。推论：Intel 的公司基因是工程、制程、研发和平台生态，而不是单纯销售芯片。",
+            "url": "https://www.intel.com/content/www/us/en/history/virtual-vault/articles/intels-founding.html"
+          },
+          {
+            "claim": "支撑：公司源头基因是否能解释今天的业务结构和能力边界。",
+            "evidence_id": "ev_intc_2025_10k_business_segments_20260122",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "公司为什么在那个时间点出现，原始痛点是什么？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Intel FY2025 Form 10-K",
+            "source_type": "annual_report",
+            "stance": "support",
+            "summary": "事实：Intel 在 FY2025 10-K 中按 CCG、DCAI、Intel Foundry 等口径披露业务。Intel Foundry 2025 年收入约 178 亿美元，其中外部收入仅约 3.07 亿美元，绝大部分为内部/分部间收入；Foundry 2025 年经营亏损约 103 亿美元，虽较 2024 年亏损 133 亿美元收窄，但仍是公司利润表的核心拖累。推论：当前 Intel 的基础画像不是纯产品公司，而是产品现金流支撑制造/代工再投入的 IDM 转型体。",
+            "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000011/intc-20251227.htm"
+          },
+          {
+            "claim": "支撑：公司源头基因是否能解释今天的业务结构和能力边界。",
+            "evidence_id": "ev_intc_2025_10k_foundry_loss_drivers_20260122",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "公司为什么在那个时间点出现，原始痛点是什么？",
+            "materiality": "thesis_change",
+            "reliability": "primary",
+            "source_name": "Intel FY2025 Form 10-K - Foundry MD&A",
+            "source_type": "annual_report",
+            "stance": "support",
+            "summary": "事实：10-K 披露 Intel Foundry 2025 年亏损改善主要来自资产减值和加速折旧下降、裁员和成本削减，但同时受到 Intel 18A 早期爬坡产品的存货可变现净值调整等影响。判断：Foundry 的核心证据链应跟踪先进制程良率、产能利用率、外部客户收入、内部产品竞争力和资本开支纪律，而不是只看收入增长。",
+            "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000011/intc-20251227.htm"
+          },
+          {
+            "claim": "支撑：公司源头基因是否能解释今天的业务结构和能力边界。",
+            "evidence_id": "ev_intc_q1_2026_results_20260423",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "公司为什么在那个时间点出现，原始痛点是什么？",
+            "materiality": "thesis_change",
+            "reliability": "primary",
+            "source_name": "Intel Q1 2026 Financial Results",
+            "source_type": "results_announcement",
+            "stance": "support",
+            "summary": "事实：Intel 2026 Q1 营收 136 亿美元，同比 +7%；GAAP EPS 为 -0.73 美元，non-GAAP EPS 为 0.29 美元；经营现金流 11 亿美元，调整后自由现金流为 -20 亿美元。业务上，CCG 收入 77 亿美元，同比 +1%；DCAI 收入 51 亿美元，同比 +22%；Intel Foundry 收入 54 亿美元，同比 +16%。公司指引 2026 Q2 营收 138-148 亿美元。推论：产品端出现比 2025 基线更好的需求和供给修复信号，但现金流仍受资本开支和重组/制造投入约束。",
+            "url": "https://www.intc.com/news-events/press-releases/detail/1767/intel-reports-first-quarter-2026-financial-results?cs=1"
+          },
+          {
+            "claim": "支撑：公司源头基因是否能解释今天的业务结构和能力边界。",
+            "evidence_id": "ev_intc_lipbu_tan_ceo_20250312",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "早期基因今天是优势、约束，还是需要重新验证？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Intel Appoints Lip-Bu Tan as Chief Executive Officer",
+            "source_type": "company_ir",
+            "stance": "support",
+            "summary": "事实：Intel 董事会任命 Lip-Bu Tan 为 CEO，2025 年 3 月 18 日生效，并重返董事会；官方强调其半导体生态关系、客户导向、Cadence 转型经验，以及重建执行、产品领导力、foundry 战略和投资者信心。推论：这是一条治理与文化重置证据，后续要用组织结构、资本配置、客户赢单和研发路线兑现来验证。",
+            "url": "https://newsroom.intel.com/corporate/intel-appoints-lip-bu-tan-chief-executive-officer"
+          },
+          {
+            "claim": "支撑：公司源头基因是否能解释今天的业务结构和能力边界。",
+            "evidence_id": "ev_intc_us_doc_equity_20250822",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "公司为什么在那个时间点出现，原始痛点是什么？",
+            "materiality": "thesis_change",
+            "reliability": "primary",
+            "source_name": "Intel Form 8-K - US Department of Commerce Warrant and Common Stock Agreement",
+            "source_type": "sec_filing",
+            "stance": "support",
+            "summary": "事实：Intel 与美国商务部达成协议，美国政府同意向 Intel 支付约 88.698 亿美元款项，包括约 56.95 亿美元加速拨款和约 31.748 亿美元 Secure Enclave 款项；作为条件，Intel 同意向 DOC 发行最多 4.33323 亿股普通股，并发行最多 2.4051615 亿股认股权证，若 Intel 不再直接或间接持有至少 51% foundry 业务，认股权证可行权。判断：Foundry 已具有产业政策和资本结构双重属性，拆分/融资选择会受政府条款约束。",
+            "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086325000129/intc-20250822.htm"
+          }
+        ],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "judgments": [
+        "Treat source and origin as well evidenced for baseline work."
+      ],
+      "key_questions": [
+        "公司为什么在那个时间点出现，原始痛点是什么？",
+        "第一产品楔子、第一批用户和渠道切口是什么？",
+        "创始团队的能力能否解释原始模型形成？",
+        "早期基因今天是优势、约束，还是需要重新验证？"
+      ],
+      "label": "Source and origin",
+      "status": "evidenced"
+    },
+    {
+      "detail_page": "pages/history.html",
+      "evidence_ids": [
+        "ev_intc_founding_19680718",
+        "ev_intc_2025_10k_restructuring_history_20260122"
+      ],
+      "facts": [
+        {
+          "evidence_id": "ev_intc_founding_19680718",
+          "statement": "事实：Intel 于 1968 年 7 月 18 日由 Robert Noyce 和 Gordon Moore 创立，起点来自 Fairchild 之后对持续创新和高强度研发投入的追求；早期先做存储器与集成电子技术，随后在微处理器上形成长期身份。推论：Intel 的公司基因是工程、制程、研发和平台生态，而不是单纯销售芯片。"
+        },
+        {
+          "evidence_id": "ev_intc_2025_10k_restructuring_history_20260122",
+          "statement": "事实：FY2025 10-K 将 2025 和 2024 Restructuring Plans、Altera deconsolidation、NAND memory business divestiture、Mobileye share sale、NVIDIA/SoftBank 私募和政府资金列入公司经营与融资变化。推论：Intel 近年公司史的主线已经从扩张型 IDM 叙事转为资产组合收缩、制造能力再押注和资本结构重构。"
+        }
+      ],
+      "gaps": [],
+      "id": "history",
+      "inferences": [
+        "Company history has a local evidence baseline, but any thesis change still requires message-flow testing."
+      ],
+      "information_by_category": {
+        "evidence": [
+          {
+            "claim": "支撑：关键历史节点是否改变了公司的商业模型、治理结构或资本配置。",
+            "evidence_id": "ev_intc_founding_19680718",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "公司历史中哪些节点真正改变了商业模型或资本配置？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Intel Official History - Intel's Founding",
+            "source_type": "company_ir",
+            "stance": "support",
+            "summary": "事实：Intel 于 1968 年 7 月 18 日由 Robert Noyce 和 Gordon Moore 创立，起点来自 Fairchild 之后对持续创新和高强度研发投入的追求；早期先做存储器与集成电子技术，随后在微处理器上形成长期身份。推论：Intel 的公司基因是工程、制程、研发和平台生态，而不是单纯销售芯片。",
+            "url": "https://www.intel.com/content/www/us/en/history/virtual-vault/articles/intels-founding.html"
+          },
+          {
+            "claim": "支撑：关键历史节点是否改变了公司的商业模型、治理结构或资本配置。",
+            "evidence_id": "ev_intc_2025_10k_restructuring_history_20260122",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "增长主要来自内生能力、并购扩张，还是周期/融资环境？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Intel FY2025 Form 10-K - Restructuring and Divestitures",
+            "source_type": "annual_report",
+            "stance": "support",
+            "summary": "事实：FY2025 10-K 将 2025 和 2024 Restructuring Plans、Altera deconsolidation、NAND memory business divestiture、Mobileye share sale、NVIDIA/SoftBank 私募和政府资金列入公司经营与融资变化。推论：Intel 近年公司史的主线已经从扩张型 IDM 叙事转为资产组合收缩、制造能力再押注和资本结构重构。",
+            "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000011/intc-20251227.htm"
+          }
+        ],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "judgments": [
+        "Treat company history as well evidenced for baseline work."
+      ],
+      "key_questions": [
+        "公司历史中哪些节点真正改变了商业模型或资本配置？",
+        "增长主要来自内生能力、并购扩张，还是周期/融资环境？",
+        "历史上的战略转折有没有留下治理、财务或组织约束？"
+      ],
+      "label": "Company history",
+      "status": "evidenced"
+    },
+    {
+      "detail_page": "pages/current_business.html",
+      "evidence_ids": [
+        "ev_intc_2025_10k_business_segments_20260122",
+        "ev_intc_gartner_semiconductor_2025_20260112",
+        "ev_intc_mercury_x86_share_q1_2026_20260514",
+        "ev_intc_2025_10k_cash_capex_debt_20260122"
+      ],
+      "facts": [
+        {
+          "evidence_id": "ev_intc_2025_10k_business_segments_20260122",
+          "statement": "事实：Intel 在 FY2025 10-K 中按 CCG、DCAI、Intel Foundry 等口径披露业务。Intel Foundry 2025 年收入约 178 亿美元，其中外部收入仅约 3.07 亿美元，绝大部分为内部/分部间收入；Foundry 2025 年经营亏损约 103 亿美元，虽较 2024 年亏损 133 亿美元收窄，但仍是公司利润表的核心拖累。推论：当前 Intel 的基础画像不是纯产品公司，而是产品现金流支撑制造/代工再投入的 IDM 转型体。"
+        },
+        {
+          "evidence_id": "ev_intc_gartner_semiconductor_2025_20260112",
+          "statement": "事实：Gartner 估算 2025 年全球半导体收入 7934 亿美元，同比 +21%；NVIDIA 以 1257 亿美元、15.8% 份额居首，Intel 以 478.83 亿美元、6.0% 份额排名第四，收入同比 -3.9%；Gartner 指出 AI 半导体推动行业增长，Intel 市占率下降。推论：行业利润池正在向 AI 加速器、HBM、网络和生态控制方迁移，Intel 的竞争问题不只是周期，而是结构性价值池错位。"
+        },
+        {
+          "evidence_id": "ev_intc_mercury_x86_share_q1_2026_20260514",
+          "statement": "事实：Tom's Hardware 根据 Mercury Research 数据称，2026 Q1 AMD 在 x86 服务器 CPU 收入份额达到 46.2%，Intel 仍有约 53.8%；Intel 在客户端 CPU 单位份额仍约 70.4%，但较 2025 Q1 约 75.9% 下降。判断：Intel 的客户端基本盘仍大，但高价值服务器 CPU 竞争压力显著，DCAI 恢复必须与份额和 ASP 变化一起验证。"
+        },
+        {
+          "evidence_id": "ev_intc_2025_10k_cash_capex_debt_20260122",
+          "statement": "事实：10-K 披露 2025 年经营现金流约 96.97 亿美元，投资现金流流出约 148.21 亿美元，融资现金流流入约 115.87 亿美元；公司称投资现金流改善主要来自较低资本开支、Altera 和 NAND divestitures 的更高处置收入等，融资现金流则受美国政府、NVIDIA、SoftBank 资金影响。推论：价值链上，制造资产和先进制程仍是核心供给能力；财务上，Intel 的转型依赖外部资金、资本开支纪律和现金流恢复共同成立。"
+        }
+      ],
+      "gaps": [],
+      "id": "current_business",
+      "inferences": [
+        "Current business has a local evidence baseline, but any thesis change still requires message-flow testing."
+      ],
+      "information_by_category": {
+        "evidence": [
+          {
+            "claim": "支撑：当前生意是否具备可重复的收入、利润和现金转化质量。",
+            "evidence_id": "ev_intc_2025_10k_business_segments_20260122",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "当前收入、毛利、现金流分别由哪些业务驱动？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Intel FY2025 Form 10-K",
+            "source_type": "annual_report",
+            "stance": "support",
+            "summary": "事实：Intel 在 FY2025 10-K 中按 CCG、DCAI、Intel Foundry 等口径披露业务。Intel Foundry 2025 年收入约 178 亿美元，其中外部收入仅约 3.07 亿美元，绝大部分为内部/分部间收入；Foundry 2025 年经营亏损约 103 亿美元，虽较 2024 年亏损 133 亿美元收窄，但仍是公司利润表的核心拖累。推论：当前 Intel 的基础画像不是纯产品公司，而是产品现金流支撑制造/代工再投入的 IDM 转型体。",
+            "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000011/intc-20251227.htm"
+          },
+          {
+            "claim": "反证：当前生意是否具备可重复的收入、利润和现金转化质量。",
+            "evidence_id": "ev_intc_2025_10k_cash_capex_debt_20260122",
+            "explanation": "证据信息当前被标记为“反证”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "利润质量是否能转化为现金和可重复回报？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Intel FY2025 Form 10-K - Cash Flow, Capex and Debt",
+            "source_type": "annual_report",
+            "stance": "refute",
+            "summary": "事实：10-K 披露 2025 年经营现金流约 96.97 亿美元，投资现金流流出约 148.21 亿美元，融资现金流流入约 115.87 亿美元；公司称投资现金流改善主要来自较低资本开支、Altera 和 NAND divestitures 的更高处置收入等，融资现金流则受美国政府、NVIDIA、SoftBank 资金影响。推论：价值链上，制造资产和先进制程仍是核心供给能力；财务上，Intel 的转型依赖外部资金、资本开支纪律和现金流恢复共同成立。",
+            "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000011/intc-20251227.htm"
+          }
+        ],
+        "message": [],
+        "opinion": [],
+        "research_report": [
+          {
+            "claim": "支撑：当前生意是否具备可重复的收入、利润和现金转化质量。",
+            "evidence_id": "ev_intc_gartner_semiconductor_2025_20260112",
+            "explanation": "研报信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "research_report",
+            "linked_question": "当前收入、毛利、现金流分别由哪些业务驱动？",
+            "materiality": "high",
+            "reliability": "high",
+            "source_name": "Gartner Preliminary 2025 Worldwide Semiconductor Revenue Ranking",
+            "source_type": "industry_data",
+            "stance": "support",
+            "summary": "事实：Gartner 估算 2025 年全球半导体收入 7934 亿美元，同比 +21%；NVIDIA 以 1257 亿美元、15.8% 份额居首，Intel 以 478.83 亿美元、6.0% 份额排名第四，收入同比 -3.9%；Gartner 指出 AI 半导体推动行业增长，Intel 市占率下降。推论：行业利润池正在向 AI 加速器、HBM、网络和生态控制方迁移，Intel 的竞争问题不只是周期，而是结构性价值池错位。",
+            "url": "https://www.gartner.com/en/newsroom/press-releases/2026-01-12-gartner-says-worldwide-semiconductor-revenue-grew-21-percent-in-2025"
+          },
+          {
+            "claim": "支撑：当前生意是否具备可重复的收入、利润和现金转化质量。",
+            "evidence_id": "ev_intc_mercury_x86_share_q1_2026_20260514",
+            "explanation": "研报信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "research_report",
+            "linked_question": "客户是谁，需求来自刚需、替换、生态绑定还是促销？",
+            "materiality": "high",
+            "reliability": "medium",
+            "source_name": "Tom's Hardware summary of Mercury Research Q1 2026 x86 CPU share",
+            "source_type": "industry_data",
+            "stance": "support",
+            "summary": "事实：Tom's Hardware 根据 Mercury Research 数据称，2026 Q1 AMD 在 x86 服务器 CPU 收入份额达到 46.2%，Intel 仍有约 53.8%；Intel 在客户端 CPU 单位份额仍约 70.4%，但较 2025 Q1 约 75.9% 下降。判断：Intel 的客户端基本盘仍大，但高价值服务器 CPU 竞争压力显著，DCAI 恢复必须与份额和 ASP 变化一起验证。",
+            "url": "https://www.tomshardware.com/pc-components/cpus/amd-reaches-46-percent-of-server-x86-cpu-revenue-intel-still-controls-70-percent-of-the-consumer-pc-market-share"
+          }
+        ]
+      },
+      "judgments": [
+        "Treat current business as well evidenced for baseline work."
+      ],
+      "key_questions": [
+        "当前收入、毛利、现金流分别由哪些业务驱动？",
+        "客户是谁，需求来自刚需、替换、生态绑定还是促销？",
+        "利润质量是否能转化为现金和可重复回报？"
+      ],
+      "label": "Current business",
+      "status": "evidenced"
+    },
+    {
+      "detail_page": "pages/value_chain.html",
+      "evidence_ids": [
+        "ev_intc_2025_10k_foundry_loss_drivers_20260122",
+        "ev_intc_2025_10k_risk_factors_20260122",
+        "ev_intc_2025_10k_cash_capex_debt_20260122",
+        "ev_intc_2025_10k_restructuring_history_20260122"
+      ],
+      "facts": [
+        {
+          "evidence_id": "ev_intc_2025_10k_foundry_loss_drivers_20260122",
+          "statement": "事实：10-K 披露 Intel Foundry 2025 年亏损改善主要来自资产减值和加速折旧下降、裁员和成本削减，但同时受到 Intel 18A 早期爬坡产品的存货可变现净值调整等影响。判断：Foundry 的核心证据链应跟踪先进制程良率、产能利用率、外部客户收入、内部产品竞争力和资本开支纪律，而不是只看收入增长。"
+        },
+        {
+          "evidence_id": "ev_intc_2025_10k_risk_factors_20260122",
+          "statement": "事实：10-K Risk Factors 明确提示 Intel 所处行业高度竞争且快速变化，技术、地缘政治、市场需求、客户偏好和产品迭代都可能削弱竞争地位；同一文件还披露 loss contingencies、legal and regulatory proceedings、product defects liabilities、market risk、interest-rate risk、inventory risk 和 asset impairment risk。判断：Intel 风险不是单点坏消息，而是制程执行、产品竞争、资本负担、监管/政府约束、会计减值和法律责任的组合。"
+        },
+        {
+          "evidence_id": "ev_intc_2025_10k_cash_capex_debt_20260122",
+          "statement": "事实：10-K 披露 2025 年经营现金流约 96.97 亿美元，投资现金流流出约 148.21 亿美元，融资现金流流入约 115.87 亿美元；公司称投资现金流改善主要来自较低资本开支、Altera 和 NAND divestitures 的更高处置收入等，融资现金流则受美国政府、NVIDIA、SoftBank 资金影响。推论：价值链上，制造资产和先进制程仍是核心供给能力；财务上，Intel 的转型依赖外部资金、资本开支纪律和现金流恢复共同成立。"
+        },
+        {
+          "evidence_id": "ev_intc_2025_10k_restructuring_history_20260122",
+          "statement": "事实：FY2025 10-K 将 2025 和 2024 Restructuring Plans、Altera deconsolidation、NAND memory business divestiture、Mobileye share sale、NVIDIA/SoftBank 私募和政府资金列入公司经营与融资变化。推论：Intel 近年公司史的主线已经从扩张型 IDM 叙事转为资产组合收缩、制造能力再押注和资本结构重构。"
+        }
+      ],
+      "gaps": [],
+      "id": "value_chain",
+      "inferences": [
+        "Value chain position has a local evidence baseline, but any thesis change still requires message-flow testing."
+      ],
+      "information_by_category": {
+        "evidence": [
+          {
+            "claim": "支撑：公司是否在产业链中占据能持续捕获经济性的环节。",
+            "evidence_id": "ev_intc_2025_10k_foundry_loss_drivers_20260122",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "公司在产业链中掌握哪一段价值，哪一段被供应商/渠道/客户拿走？",
+            "materiality": "thesis_change",
+            "reliability": "primary",
+            "source_name": "Intel FY2025 Form 10-K - Foundry MD&A",
+            "source_type": "annual_report",
+            "stance": "support",
+            "summary": "事实：10-K 披露 Intel Foundry 2025 年亏损改善主要来自资产减值和加速折旧下降、裁员和成本削减，但同时受到 Intel 18A 早期爬坡产品的存货可变现净值调整等影响。判断：Foundry 的核心证据链应跟踪先进制程良率、产能利用率、外部客户收入、内部产品竞争力和资本开支纪律，而不是只看收入增长。",
+            "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000011/intc-20251227.htm"
+          },
+          {
+            "claim": "反证：公司是否在产业链中占据能持续捕获经济性的环节。",
+            "evidence_id": "ev_intc_2025_10k_risk_factors_20260122",
+            "explanation": "证据信息当前被标记为“反证”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "渠道和售后体系是否足以支撑当前业务复杂度？",
+            "materiality": "thesis_change",
+            "reliability": "primary",
+            "source_name": "Intel FY2025 Form 10-K - Risk Factors",
+            "source_type": "annual_report",
+            "stance": "refute",
+            "summary": "事实：10-K Risk Factors 明确提示 Intel 所处行业高度竞争且快速变化，技术、地缘政治、市场需求、客户偏好和产品迭代都可能削弱竞争地位；同一文件还披露 loss contingencies、legal and regulatory proceedings、product defects liabilities、market risk、interest-rate risk、inventory risk 和 asset impairment risk。判断：Intel 风险不是单点坏消息，而是制程执行、产品竞争、资本负担、监管/政府约束、会计减值和法律责任的组合。",
+            "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000011/intc-20251227.htm"
+          },
+          {
+            "claim": "反证：公司是否在产业链中占据能持续捕获经济性的环节。",
+            "evidence_id": "ev_intc_2025_10k_cash_capex_debt_20260122",
+            "explanation": "证据信息当前被标记为“反证”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "渠道和售后体系是否足以支撑当前业务复杂度？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Intel FY2025 Form 10-K - Cash Flow, Capex and Debt",
+            "source_type": "annual_report",
+            "stance": "refute",
+            "summary": "事实：10-K 披露 2025 年经营现金流约 96.97 亿美元，投资现金流流出约 148.21 亿美元，融资现金流流入约 115.87 亿美元；公司称投资现金流改善主要来自较低资本开支、Altera 和 NAND divestitures 的更高处置收入等，融资现金流则受美国政府、NVIDIA、SoftBank 资金影响。推论：价值链上，制造资产和先进制程仍是核心供给能力；财务上，Intel 的转型依赖外部资金、资本开支纪律和现金流恢复共同成立。",
+            "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000011/intc-20251227.htm"
+          },
+          {
+            "claim": "支撑：公司是否在产业链中占据能持续捕获经济性的环节。",
+            "evidence_id": "ev_intc_2025_10k_restructuring_history_20260122",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "上游供给、关键部件和产能是否会改变毛利与交付？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Intel FY2025 Form 10-K - Restructuring and Divestitures",
+            "source_type": "annual_report",
+            "stance": "support",
+            "summary": "事实：FY2025 10-K 将 2025 和 2024 Restructuring Plans、Altera deconsolidation、NAND memory business divestiture、Mobileye share sale、NVIDIA/SoftBank 私募和政府资金列入公司经营与融资变化。推论：Intel 近年公司史的主线已经从扩张型 IDM 叙事转为资产组合收缩、制造能力再押注和资本结构重构。",
+            "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000011/intc-20251227.htm"
+          }
+        ],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "judgments": [
+        "Treat value chain position as well evidenced for baseline work."
+      ],
+      "key_questions": [
+        "公司在产业链中掌握哪一段价值，哪一段被供应商/渠道/客户拿走？",
+        "上游供给、关键部件和产能是否会改变毛利与交付？",
+        "渠道和售后体系是否足以支撑当前业务复杂度？"
+      ],
+      "label": "Value chain position",
+      "status": "evidenced"
+    },
+    {
+      "detail_page": "pages/competition.html",
+      "evidence_ids": [
+        "ev_intc_gartner_semiconductor_2025_20260112",
+        "ev_intc_mercury_x86_share_q1_2026_20260514",
+        "ev_intc_2025_10k_risk_factors_20260122",
+        "ev_intc_2025_10k_restructuring_history_20260122"
+      ],
+      "facts": [
+        {
+          "evidence_id": "ev_intc_gartner_semiconductor_2025_20260112",
+          "statement": "事实：Gartner 估算 2025 年全球半导体收入 7934 亿美元，同比 +21%；NVIDIA 以 1257 亿美元、15.8% 份额居首，Intel 以 478.83 亿美元、6.0% 份额排名第四，收入同比 -3.9%；Gartner 指出 AI 半导体推动行业增长，Intel 市占率下降。推论：行业利润池正在向 AI 加速器、HBM、网络和生态控制方迁移，Intel 的竞争问题不只是周期，而是结构性价值池错位。"
+        },
+        {
+          "evidence_id": "ev_intc_mercury_x86_share_q1_2026_20260514",
+          "statement": "事实：Tom's Hardware 根据 Mercury Research 数据称，2026 Q1 AMD 在 x86 服务器 CPU 收入份额达到 46.2%，Intel 仍有约 53.8%；Intel 在客户端 CPU 单位份额仍约 70.4%，但较 2025 Q1 约 75.9% 下降。判断：Intel 的客户端基本盘仍大，但高价值服务器 CPU 竞争压力显著，DCAI 恢复必须与份额和 ASP 变化一起验证。"
+        },
+        {
+          "evidence_id": "ev_intc_2025_10k_risk_factors_20260122",
+          "statement": "事实：10-K Risk Factors 明确提示 Intel 所处行业高度竞争且快速变化，技术、地缘政治、市场需求、客户偏好和产品迭代都可能削弱竞争地位；同一文件还披露 loss contingencies、legal and regulatory proceedings、product defects liabilities、market risk、interest-rate risk、inventory risk 和 asset impairment risk。判断：Intel 风险不是单点坏消息，而是制程执行、产品竞争、资本负担、监管/政府约束、会计减值和法律责任的组合。"
+        },
+        {
+          "evidence_id": "ev_intc_2025_10k_restructuring_history_20260122",
+          "statement": "事实：FY2025 10-K 将 2025 和 2024 Restructuring Plans、Altera deconsolidation、NAND memory business divestiture、Mobileye share sale、NVIDIA/SoftBank 私募和政府资金列入公司经营与融资变化。推论：Intel 近年公司史的主线已经从扩张型 IDM 叙事转为资产组合收缩、制造能力再押注和资本结构重构。"
+        }
+      ],
+      "gaps": [],
+      "id": "competition",
+      "inferences": [
+        "Competitive landscape has a local evidence baseline, but any thesis change still requires message-flow testing."
+      ],
+      "information_by_category": {
+        "evidence": [
+          {
+            "claim": "反证：竞争地位是否足以抵抗价格战、份额流失和利润率压缩。",
+            "evidence_id": "ev_intc_2025_10k_risk_factors_20260122",
+            "explanation": "证据信息当前被标记为“反证”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "竞争强度是否会侵蚀毛利、现金流或品牌定位？",
+            "materiality": "thesis_change",
+            "reliability": "primary",
+            "source_name": "Intel FY2025 Form 10-K - Risk Factors",
+            "source_type": "annual_report",
+            "stance": "refute",
+            "summary": "事实：10-K Risk Factors 明确提示 Intel 所处行业高度竞争且快速变化，技术、地缘政治、市场需求、客户偏好和产品迭代都可能削弱竞争地位；同一文件还披露 loss contingencies、legal and regulatory proceedings、product defects liabilities、market risk、interest-rate risk、inventory risk 和 asset impairment risk。判断：Intel 风险不是单点坏消息，而是制程执行、产品竞争、资本负担、监管/政府约束、会计减值和法律责任的组合。",
+            "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000011/intc-20251227.htm"
+          },
+          {
+            "claim": "支撑：竞争地位是否足以抵抗价格战、份额流失和利润率压缩。",
+            "evidence_id": "ev_intc_2025_10k_restructuring_history_20260122",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "份额变化是结构性优势、周期波动，还是补贴/价格战结果？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Intel FY2025 Form 10-K - Restructuring and Divestitures",
+            "source_type": "annual_report",
+            "stance": "support",
+            "summary": "事实：FY2025 10-K 将 2025 和 2024 Restructuring Plans、Altera deconsolidation、NAND memory business divestiture、Mobileye share sale、NVIDIA/SoftBank 私募和政府资金列入公司经营与融资变化。推论：Intel 近年公司史的主线已经从扩张型 IDM 叙事转为资产组合收缩、制造能力再押注和资本结构重构。",
+            "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000011/intc-20251227.htm"
+          }
+        ],
+        "message": [],
+        "opinion": [],
+        "research_report": [
+          {
+            "claim": "支撑：竞争地位是否足以抵抗价格战、份额流失和利润率压缩。",
+            "evidence_id": "ev_intc_gartner_semiconductor_2025_20260112",
+            "explanation": "研报信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "research_report",
+            "linked_question": "公司真实竞争对手是谁，竞争发生在价格、产品、渠道还是生态？",
+            "materiality": "high",
+            "reliability": "high",
+            "source_name": "Gartner Preliminary 2025 Worldwide Semiconductor Revenue Ranking",
+            "source_type": "industry_data",
+            "stance": "support",
+            "summary": "事实：Gartner 估算 2025 年全球半导体收入 7934 亿美元，同比 +21%；NVIDIA 以 1257 亿美元、15.8% 份额居首，Intel 以 478.83 亿美元、6.0% 份额排名第四，收入同比 -3.9%；Gartner 指出 AI 半导体推动行业增长，Intel 市占率下降。推论：行业利润池正在向 AI 加速器、HBM、网络和生态控制方迁移，Intel 的竞争问题不只是周期，而是结构性价值池错位。",
+            "url": "https://www.gartner.com/en/newsroom/press-releases/2026-01-12-gartner-says-worldwide-semiconductor-revenue-grew-21-percent-in-2025"
+          },
+          {
+            "claim": "支撑：竞争地位是否足以抵抗价格战、份额流失和利润率压缩。",
+            "evidence_id": "ev_intc_mercury_x86_share_q1_2026_20260514",
+            "explanation": "研报信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "research_report",
+            "linked_question": "份额变化是结构性优势、周期波动，还是补贴/价格战结果？",
+            "materiality": "high",
+            "reliability": "medium",
+            "source_name": "Tom's Hardware summary of Mercury Research Q1 2026 x86 CPU share",
+            "source_type": "industry_data",
+            "stance": "support",
+            "summary": "事实：Tom's Hardware 根据 Mercury Research 数据称，2026 Q1 AMD 在 x86 服务器 CPU 收入份额达到 46.2%，Intel 仍有约 53.8%；Intel 在客户端 CPU 单位份额仍约 70.4%，但较 2025 Q1 约 75.9% 下降。判断：Intel 的客户端基本盘仍大，但高价值服务器 CPU 竞争压力显著，DCAI 恢复必须与份额和 ASP 变化一起验证。",
+            "url": "https://www.tomshardware.com/pc-components/cpus/amd-reaches-46-percent-of-server-x86-cpu-revenue-intel-still-controls-70-percent-of-the-consumer-pc-market-share"
+          }
+        ]
+      },
+      "judgments": [
+        "Treat competitive landscape as well evidenced for baseline work."
+      ],
+      "key_questions": [
+        "公司真实竞争对手是谁，竞争发生在价格、产品、渠道还是生态？",
+        "份额变化是结构性优势、周期波动，还是补贴/价格战结果？",
+        "竞争强度是否会侵蚀毛利、现金流或品牌定位？"
+      ],
+      "label": "Competitive landscape",
+      "status": "evidenced"
+    },
+    {
+      "detail_page": "pages/strategy.html",
+      "evidence_ids": [
+        "ev_intc_founding_19680718",
+        "ev_intc_2025_10k_business_segments_20260122",
+        "ev_intc_q1_2026_results_20260423",
+        "ev_intc_us_doc_equity_20250822",
+        "ev_intc_doc_closing_20250827",
+        "ev_intc_softbank_investment_20250818",
+        "ev_intc_nvidia_collaboration_20250918",
+        "ev_intc_gartner_semiconductor_2025_20260112",
+        "ev_intc_mercury_x86_share_q1_2026_20260514",
+        "ev_intc_2025_10k_risk_factors_20260122"
+      ],
+      "facts": [
+        {
+          "evidence_id": "ev_intc_founding_19680718",
+          "statement": "事实：Intel 于 1968 年 7 月 18 日由 Robert Noyce 和 Gordon Moore 创立，起点来自 Fairchild 之后对持续创新和高强度研发投入的追求；早期先做存储器与集成电子技术，随后在微处理器上形成长期身份。推论：Intel 的公司基因是工程、制程、研发和平台生态，而不是单纯销售芯片。"
+        },
+        {
+          "evidence_id": "ev_intc_2025_10k_business_segments_20260122",
+          "statement": "事实：Intel 在 FY2025 10-K 中按 CCG、DCAI、Intel Foundry 等口径披露业务。Intel Foundry 2025 年收入约 178 亿美元，其中外部收入仅约 3.07 亿美元，绝大部分为内部/分部间收入；Foundry 2025 年经营亏损约 103 亿美元，虽较 2024 年亏损 133 亿美元收窄，但仍是公司利润表的核心拖累。推论：当前 Intel 的基础画像不是纯产品公司，而是产品现金流支撑制造/代工再投入的 IDM 转型体。"
+        },
+        {
+          "evidence_id": "ev_intc_q1_2026_results_20260423",
+          "statement": "事实：Intel 2026 Q1 营收 136 亿美元，同比 +7%；GAAP EPS 为 -0.73 美元，non-GAAP EPS 为 0.29 美元；经营现金流 11 亿美元，调整后自由现金流为 -20 亿美元。业务上，CCG 收入 77 亿美元，同比 +1%；DCAI 收入 51 亿美元，同比 +22%；Intel Foundry 收入 54 亿美元，同比 +16%。公司指引 2026 Q2 营收 138-148 亿美元。推论：产品端出现比 2025 基线更好的需求和供给修复信号，但现金流仍受资本开支和重组/制造投入约束。"
+        },
+        {
+          "evidence_id": "ev_intc_us_doc_equity_20250822",
+          "statement": "事实：Intel 与美国商务部达成协议，美国政府同意向 Intel 支付约 88.698 亿美元款项，包括约 56.95 亿美元加速拨款和约 31.748 亿美元 Secure Enclave 款项；作为条件，Intel 同意向 DOC 发行最多 4.33323 亿股普通股，并发行最多 2.4051615 亿股认股权证，若 Intel 不再直接或间接持有至少 51% foundry 业务，认股权证可行权。判断：Foundry 已具有产业政策和资本结构双重属性，拆分/融资选择会受政府条款约束。"
+        }
+      ],
+      "gaps": [],
+      "id": "strategy",
+      "inferences": [
+        "Strategy analysis has a local evidence baseline, but any thesis change still requires message-flow testing."
+      ],
+      "information_by_category": {
+        "evidence": [
+          {
+            "claim": "支撑：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。",
+            "evidence_id": "ev_intc_founding_19680718",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "公司战略是否从源头能力自然延伸，还是跨越了能力边界？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Intel Official History - Intel's Founding",
+            "source_type": "company_ir",
+            "stance": "support",
+            "summary": "事实：Intel 于 1968 年 7 月 18 日由 Robert Noyce 和 Gordon Moore 创立，起点来自 Fairchild 之后对持续创新和高强度研发投入的追求；早期先做存储器与集成电子技术，随后在微处理器上形成长期身份。推论：Intel 的公司基因是工程、制程、研发和平台生态，而不是单纯销售芯片。",
+            "url": "https://www.intel.com/content/www/us/en/history/virtual-vault/articles/intels-founding.html"
+          },
+          {
+            "claim": "支撑：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。",
+            "evidence_id": "ev_intc_2025_10k_business_segments_20260122",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "公司战略是否从源头能力自然延伸，还是跨越了能力边界？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Intel FY2025 Form 10-K",
+            "source_type": "annual_report",
+            "stance": "support",
+            "summary": "事实：Intel 在 FY2025 10-K 中按 CCG、DCAI、Intel Foundry 等口径披露业务。Intel Foundry 2025 年收入约 178 亿美元，其中外部收入仅约 3.07 亿美元，绝大部分为内部/分部间收入；Foundry 2025 年经营亏损约 103 亿美元，虽较 2024 年亏损 133 亿美元收窄，但仍是公司利润表的核心拖累。推论：当前 Intel 的基础画像不是纯产品公司，而是产品现金流支撑制造/代工再投入的 IDM 转型体。",
+            "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000011/intc-20251227.htm"
+          },
+          {
+            "claim": "支撑：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。",
+            "evidence_id": "ev_intc_q1_2026_results_20260423",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "公司战略是否从源头能力自然延伸，还是跨越了能力边界？",
+            "materiality": "thesis_change",
+            "reliability": "primary",
+            "source_name": "Intel Q1 2026 Financial Results",
+            "source_type": "results_announcement",
+            "stance": "support",
+            "summary": "事实：Intel 2026 Q1 营收 136 亿美元，同比 +7%；GAAP EPS 为 -0.73 美元，non-GAAP EPS 为 0.29 美元；经营现金流 11 亿美元，调整后自由现金流为 -20 亿美元。业务上，CCG 收入 77 亿美元，同比 +1%；DCAI 收入 51 亿美元，同比 +22%；Intel Foundry 收入 54 亿美元，同比 +16%。公司指引 2026 Q2 营收 138-148 亿美元。推论：产品端出现比 2025 基线更好的需求和供给修复信号，但现金流仍受资本开支和重组/制造投入约束。",
+            "url": "https://www.intc.com/news-events/press-releases/detail/1767/intel-reports-first-quarter-2026-financial-results?cs=1"
+          },
+          {
+            "claim": "支撑：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。",
+            "evidence_id": "ev_intc_us_doc_equity_20250822",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "公司战略是否从源头能力自然延伸，还是跨越了能力边界？",
+            "materiality": "thesis_change",
+            "reliability": "primary",
+            "source_name": "Intel Form 8-K - US Department of Commerce Warrant and Common Stock Agreement",
+            "source_type": "sec_filing",
+            "stance": "support",
+            "summary": "事实：Intel 与美国商务部达成协议，美国政府同意向 Intel 支付约 88.698 亿美元款项，包括约 56.95 亿美元加速拨款和约 31.748 亿美元 Secure Enclave 款项；作为条件，Intel 同意向 DOC 发行最多 4.33323 亿股普通股，并发行最多 2.4051615 亿股认股权证，若 Intel 不再直接或间接持有至少 51% foundry 业务，认股权证可行权。判断：Foundry 已具有产业政策和资本结构双重属性，拆分/融资选择会受政府条款约束。",
+            "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086325000129/intc-20250822.htm"
+          },
+          {
+            "claim": "支撑：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。",
+            "evidence_id": "ev_intc_doc_closing_20250827",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "战略投入能否被 KPI 和阶段性证据验证？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Intel Form 8-K - Closing of DOC Agreement and DFA Amendment",
+            "source_type": "sec_filing",
+            "stance": "support",
+            "summary": "事实：2025 年 8 月 27 日 Intel 收到 56.95 亿美元加速拨款，向 DOC 发行 2.74583 亿股普通股和最多 2.4051615 亿股认股权证，并将 1.5874 亿股普通股放入 escrow；修订后的 DFA 删除部分项目里程碑、自由现金流分享和 workforce 条件，但保留 CHIPS Act 关于境外扩产、联合研发/授权、资金用途等限制。推论：政府资金缓解短期资本压力，但也把 Intel 的制造战略纳入更强政策约束。",
+            "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086325000135/intc-20250827.htm"
+          },
+          {
+            "claim": "支撑：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。",
+            "evidence_id": "ev_intc_softbank_investment_20250818",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "公司战略是否从源头能力自然延伸，还是跨越了能力边界？",
+            "materiality": "medium",
+            "reliability": "primary",
+            "source_name": "SoftBank Group and Intel Corporation Sign $2B Investment Agreement",
+            "source_type": "company_ir",
+            "stance": "support",
+            "summary": "事实：SoftBank 与 Intel 签署 20 亿美元普通股投资协议，价格为每股 23 美元，双方将其描述为对美国先进半导体制造和 AI 相关基础设施的承诺。推论：外部战略资本是 Intel 转型融资链条的一部分，但应与业务订单、客户承诺和稀释影响分开评估。",
+            "url": "https://newsroom.intel.com/corporate/softbank-group-and-intel-corporation-sign-2b-investment-agreement"
+          },
+          {
+            "claim": "反证：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。",
+            "evidence_id": "ev_intc_2025_10k_risk_factors_20260122",
+            "explanation": "证据信息当前被标记为“反证”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "战略投入能否被 KPI 和阶段性证据验证？",
+            "materiality": "thesis_change",
+            "reliability": "primary",
+            "source_name": "Intel FY2025 Form 10-K - Risk Factors",
+            "source_type": "annual_report",
+            "stance": "refute",
+            "summary": "事实：10-K Risk Factors 明确提示 Intel 所处行业高度竞争且快速变化，技术、地缘政治、市场需求、客户偏好和产品迭代都可能削弱竞争地位；同一文件还披露 loss contingencies、legal and regulatory proceedings、product defects liabilities、market risk、interest-rate risk、inventory risk 和 asset impairment risk。判断：Intel 风险不是单点坏消息，而是制程执行、产品竞争、资本负担、监管/政府约束、会计减值和法律责任的组合。",
+            "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000011/intc-20251227.htm"
+          }
+        ],
+        "message": [
+          {
+            "claim": "待验证线索：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。",
+            "evidence_id": "ev_intc_nvidia_collaboration_20250918",
+            "explanation": "消息信息当前被标记为“研究线索”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "message",
+            "linked_question": "公司战略是否从源头能力自然延伸，还是跨越了能力边界？",
+            "materiality": "thesis_change",
+            "reliability": "primary",
+            "source_name": "NVIDIA and Intel to Develop AI Infrastructure and Personal Computing Products",
+            "source_type": "company_ir",
+            "stance": "lead",
+            "summary": "事实：NVIDIA 与 Intel 宣布合作开发多代数据中心和 PC 产品，Intel 将为 NVIDIA AI 基础设施平台构建定制 x86 CPU，并为 PC 市场提供集成 NVIDIA RTX GPU chiplets 的 x86 SoC；NVIDIA 将以每股 23.28 美元投资 50 亿美元 Intel 普通股。推论：这增强了 x86 在 AI 基础设施中的相关性叙事，但要验证产品时间表、实际收入、制造归属和毛利结构。",
+            "url": "https://www.intc.com/news-events/press-releases/detail/1750/nvidia-and-intel-to-develop-ai-infrastructure-and-personal"
+          }
+        ],
+        "opinion": [],
+        "research_report": [
+          {
+            "claim": "支撑：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。",
+            "evidence_id": "ev_intc_gartner_semiconductor_2025_20260112",
+            "explanation": "研报信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "research_report",
+            "linked_question": "公司战略是否从源头能力自然延伸，还是跨越了能力边界？",
+            "materiality": "high",
+            "reliability": "high",
+            "source_name": "Gartner Preliminary 2025 Worldwide Semiconductor Revenue Ranking",
+            "source_type": "industry_data",
+            "stance": "support",
+            "summary": "事实：Gartner 估算 2025 年全球半导体收入 7934 亿美元，同比 +21%；NVIDIA 以 1257 亿美元、15.8% 份额居首，Intel 以 478.83 亿美元、6.0% 份额排名第四，收入同比 -3.9%；Gartner 指出 AI 半导体推动行业增长，Intel 市占率下降。推论：行业利润池正在向 AI 加速器、HBM、网络和生态控制方迁移，Intel 的竞争问题不只是周期，而是结构性价值池错位。",
+            "url": "https://www.gartner.com/en/newsroom/press-releases/2026-01-12-gartner-says-worldwide-semiconductor-revenue-grew-21-percent-in-2025"
+          },
+          {
+            "claim": "支撑：战略投入是否沿着公司能力边界扩展，并能被阶段性数据验证。",
+            "evidence_id": "ev_intc_mercury_x86_share_q1_2026_20260514",
+            "explanation": "研报信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "research_report",
+            "linked_question": "资源配置是否与最重要利润池和风险点匹配？",
+            "materiality": "high",
+            "reliability": "medium",
+            "source_name": "Tom's Hardware summary of Mercury Research Q1 2026 x86 CPU share",
+            "source_type": "industry_data",
+            "stance": "support",
+            "summary": "事实：Tom's Hardware 根据 Mercury Research 数据称，2026 Q1 AMD 在 x86 服务器 CPU 收入份额达到 46.2%，Intel 仍有约 53.8%；Intel 在客户端 CPU 单位份额仍约 70.4%，但较 2025 Q1 约 75.9% 下降。判断：Intel 的客户端基本盘仍大，但高价值服务器 CPU 竞争压力显著，DCAI 恢复必须与份额和 ASP 变化一起验证。",
+            "url": "https://www.tomshardware.com/pc-components/cpus/amd-reaches-46-percent-of-server-x86-cpu-revenue-intel-still-controls-70-percent-of-the-consumer-pc-market-share"
+          }
+        ]
+      },
+      "judgments": [
+        "Treat strategy analysis as well evidenced for baseline work."
+      ],
+      "key_questions": [
+        "公司战略是否从源头能力自然延伸，还是跨越了能力边界？",
+        "资源配置是否与最重要利润池和风险点匹配？",
+        "战略投入能否被 KPI 和阶段性证据验证？"
+      ],
+      "label": "Strategy analysis",
+      "status": "evidenced"
+    },
+    {
+      "detail_page": "pages/governance.html",
+      "evidence_ids": [
+        "ev_intc_lipbu_tan_ceo_20250312",
+        "ev_intc_doc_closing_20250827"
+      ],
+      "facts": [
+        {
+          "evidence_id": "ev_intc_lipbu_tan_ceo_20250312",
+          "statement": "事实：Intel 董事会任命 Lip-Bu Tan 为 CEO，2025 年 3 月 18 日生效，并重返董事会；官方强调其半导体生态关系、客户导向、Cadence 转型经验，以及重建执行、产品领导力、foundry 战略和投资者信心。推论：这是一条治理与文化重置证据，后续要用组织结构、资本配置、客户赢单和研发路线兑现来验证。"
+        },
+        {
+          "evidence_id": "ev_intc_doc_closing_20250827",
+          "statement": "事实：2025 年 8 月 27 日 Intel 收到 56.95 亿美元加速拨款，向 DOC 发行 2.74583 亿股普通股和最多 2.4051615 亿股认股权证，并将 1.5874 亿股普通股放入 escrow；修订后的 DFA 删除部分项目里程碑、自由现金流分享和 workforce 条件，但保留 CHIPS Act 关于境外扩产、联合研发/授权、资金用途等限制。推论：政府资金缓解短期资本压力，但也把 Intel 的制造战略纳入更强政策约束。"
+        }
+      ],
+      "gaps": [],
+      "id": "governance",
+      "inferences": [
+        "Organization, culture, and governance has a local evidence baseline, but any thesis change still requires message-flow testing."
+      ],
+      "information_by_category": {
+        "evidence": [
+          {
+            "claim": "支撑：管理层、控制权和激励结构是否提升长期复利而非放大治理折价。",
+            "evidence_id": "ev_intc_lipbu_tan_ceo_20250312",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "组织文化是复利资产，还是会放大盲区和路径依赖？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Intel Appoints Lip-Bu Tan as Chief Executive Officer",
+            "source_type": "company_ir",
+            "stance": "support",
+            "summary": "事实：Intel 董事会任命 Lip-Bu Tan 为 CEO，2025 年 3 月 18 日生效，并重返董事会；官方强调其半导体生态关系、客户导向、Cadence 转型经验，以及重建执行、产品领导力、foundry 战略和投资者信心。推论：这是一条治理与文化重置证据，后续要用组织结构、资本配置、客户赢单和研发路线兑现来验证。",
+            "url": "https://newsroom.intel.com/corporate/intel-appoints-lip-bu-tan-chief-executive-officer"
+          },
+          {
+            "claim": "支撑：管理层、控制权和激励结构是否提升长期复利而非放大治理折价。",
+            "evidence_id": "ev_intc_doc_closing_20250827",
+            "explanation": "证据信息当前被标记为“支撑”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "组织文化是复利资产，还是会放大盲区和路径依赖？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Intel Form 8-K - Closing of DOC Agreement and DFA Amendment",
+            "source_type": "sec_filing",
+            "stance": "support",
+            "summary": "事实：2025 年 8 月 27 日 Intel 收到 56.95 亿美元加速拨款，向 DOC 发行 2.74583 亿股普通股和最多 2.4051615 亿股认股权证，并将 1.5874 亿股普通股放入 escrow；修订后的 DFA 删除部分项目里程碑、自由现金流分享和 workforce 条件，但保留 CHIPS Act 关于境外扩产、联合研发/授权、资金用途等限制。推论：政府资金缓解短期资本压力，但也把 Intel 的制造战略纳入更强政策约束。",
+            "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086325000135/intc-20250827.htm"
+          }
+        ],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "judgments": [
+        "Treat organization, culture, and governance as well evidenced for baseline work."
+      ],
+      "key_questions": [
+        "创始人、控制权和管理层结构是否提升长期执行？",
+        "激励、董事会和少数股东保护是否足以约束资本配置？",
+        "组织文化是复利资产，还是会放大盲区和路径依赖？"
+      ],
+      "label": "Organization, culture, and governance",
+      "status": "evidenced"
+    },
+    {
+      "detail_page": "pages/risk_sweep.html",
+      "evidence_ids": [
+        "ev_intc_2025_10k_risk_factors_20260122",
+        "ev_intc_2025_10k_cash_capex_debt_20260122"
+      ],
+      "facts": [
+        {
+          "evidence_id": "ev_intc_2025_10k_risk_factors_20260122",
+          "statement": "事实：10-K Risk Factors 明确提示 Intel 所处行业高度竞争且快速变化，技术、地缘政治、市场需求、客户偏好和产品迭代都可能削弱竞争地位；同一文件还披露 loss contingencies、legal and regulatory proceedings、product defects liabilities、market risk、interest-rate risk、inventory risk 和 asset impairment risk。判断：Intel 风险不是单点坏消息，而是制程执行、产品竞争、资本负担、监管/政府约束、会计减值和法律责任的组合。"
+        },
+        {
+          "evidence_id": "ev_intc_2025_10k_cash_capex_debt_20260122",
+          "statement": "事实：10-K 披露 2025 年经营现金流约 96.97 亿美元，投资现金流流出约 148.21 亿美元，融资现金流流入约 115.87 亿美元；公司称投资现金流改善主要来自较低资本开支、Altera 和 NAND divestitures 的更高处置收入等，融资现金流则受美国政府、NVIDIA、SoftBank 资金影响。推论：价值链上，制造资产和先进制程仍是核心供给能力；财务上，Intel 的转型依赖外部资金、资本开支纪律和现金流恢复共同成立。"
+        }
+      ],
+      "gaps": [],
+      "id": "risk_sweep",
+      "inferences": [
+        "Risk sweep has a local evidence baseline, but any thesis change still requires message-flow testing."
+      ],
+      "information_by_category": {
+        "evidence": [
+          {
+            "claim": "反证：当前风险是否足以改变基础画像或成为反证条件。",
+            "evidence_id": "ev_intc_2025_10k_risk_factors_20260122",
+            "explanation": "证据信息当前被标记为“反证”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "哪类新增证据能最快证伪当前判断？",
+            "materiality": "thesis_change",
+            "reliability": "primary",
+            "source_name": "Intel FY2025 Form 10-K - Risk Factors",
+            "source_type": "annual_report",
+            "stance": "refute",
+            "summary": "事实：10-K Risk Factors 明确提示 Intel 所处行业高度竞争且快速变化，技术、地缘政治、市场需求、客户偏好和产品迭代都可能削弱竞争地位；同一文件还披露 loss contingencies、legal and regulatory proceedings、product defects liabilities、market risk、interest-rate risk、inventory risk 和 asset impairment risk。判断：Intel 风险不是单点坏消息，而是制程执行、产品竞争、资本负担、监管/政府约束、会计减值和法律责任的组合。",
+            "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000011/intc-20251227.htm"
+          },
+          {
+            "claim": "反证：当前风险是否足以改变基础画像或成为反证条件。",
+            "evidence_id": "ev_intc_2025_10k_cash_capex_debt_20260122",
+            "explanation": "证据信息当前被标记为“反证”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。",
+            "information_category": "evidence",
+            "linked_question": "哪类新增证据能最快证伪当前判断？",
+            "materiality": "high",
+            "reliability": "primary",
+            "source_name": "Intel FY2025 Form 10-K - Cash Flow, Capex and Debt",
+            "source_type": "annual_report",
+            "stance": "refute",
+            "summary": "事实：10-K 披露 2025 年经营现金流约 96.97 亿美元，投资现金流流出约 148.21 亿美元，融资现金流流入约 115.87 亿美元；公司称投资现金流改善主要来自较低资本开支、Altera 和 NAND divestitures 的更高处置收入等，融资现金流则受美国政府、NVIDIA、SoftBank 资金影响。推论：价值链上，制造资产和先进制程仍是核心供给能力；财务上，Intel 的转型依赖外部资金、资本开支纪律和现金流恢复共同成立。",
+            "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000011/intc-20251227.htm"
+          }
+        ],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "judgments": [
+        "Treat risk sweep as well evidenced for baseline work."
+      ],
+      "key_questions": [
+        "哪些风险足以改变公司基础画像，而不只是短期噪音？",
+        "财务、会计、法律、监管、技术和治理风险分别如何验证？",
+        "哪类新增证据能最快证伪当前判断？"
+      ],
+      "label": "Risk sweep",
+      "status": "evidenced"
+    }
+  ],
+  "ticker": "INTC"
+}

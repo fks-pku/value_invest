@@ -83,6 +83,9 @@ def build_parser() -> argparse.ArgumentParser:
     stock_pipeline_parser.add_argument("--professional-report-api-key", default=None)
     stock_pipeline_parser.add_argument("--professional-report-base-url", default="https://api.z.ai/api/coding/paas/v4")
     stock_pipeline_parser.add_argument("--professional-report-model", default="glm-5.1")
+    stock_pipeline_parser.add_argument("--leaf-research-provider", default=None, choices=["mock", "manual", "perplexity", "openai_compatible"])
+    stock_pipeline_parser.add_argument("--leaf-research-input", default=None)
+    stock_pipeline_parser.add_argument("--leaf-research-limit", type=int, default=None)
     stock_pipeline_parser.add_argument("--timeout", type=int, default=10)
 
     add_question_parser = subparsers.add_parser(
@@ -189,6 +192,42 @@ def build_parser() -> argparse.ArgumentParser:
     run_stock_synthesis_parser.add_argument("--api-key", default=None)
     run_stock_synthesis_parser.add_argument("--base-url", default="https://api.z.ai/api/coding/paas/v4")
     run_stock_synthesis_parser.add_argument("--model", default="glm-5.1")
+
+    leaf_tasks_parser = subparsers.add_parser(
+        "build-leaf-research-tasks",
+        help="Build provider-agnostic leaf research tasks for terminal stock QA nodes",
+    )
+    leaf_tasks_parser.add_argument("ticker")
+    leaf_tasks_parser.add_argument("--limit", type=int, default=None)
+    leaf_tasks_parser.add_argument("--include-completed", action="store_true")
+
+    run_leaf_parser = subparsers.add_parser(
+        "run-leaf-research",
+        help="Run leaf research tasks through a provider adapter",
+    )
+    run_leaf_parser.add_argument("ticker")
+    run_leaf_parser.add_argument("--provider", default="mock", choices=["mock", "manual", "perplexity", "openai_compatible"])
+    run_leaf_parser.add_argument("--input", default=None)
+    run_leaf_parser.add_argument("--limit", type=int, default=None)
+
+    import_leaf_parser = subparsers.add_parser(
+        "import-leaf-research-results",
+        help="Import provider-agnostic leaf research results from JSONL",
+    )
+    import_leaf_parser.add_argument("ticker")
+    import_leaf_parser.add_argument("--path", required=True)
+
+    leaf_answers_parser = subparsers.add_parser(
+        "synthesize-leaf-answers",
+        help="Write detailed leaf answers from normalized provider results",
+    )
+    leaf_answers_parser.add_argument("ticker")
+
+    leaf_rollup_parser = subparsers.add_parser(
+        "rollup-research-answers",
+        help="Persist parent rollups after leaf answers are applied",
+    )
+    leaf_rollup_parser.add_argument("ticker")
 
     stock_professional_report_parser = subparsers.add_parser(
         "write-professional-report",
@@ -568,6 +607,16 @@ def main(argv: list[str] | None = None) -> int:
             return run_import_answer_synthesis_cmd(root, args)
         if args.command == "run-answer-synthesis":
             return run_answer_synthesis_cmd(root, args)
+        if args.command == "build-leaf-research-tasks":
+            return run_build_leaf_research_tasks_cmd(root, args)
+        if args.command == "run-leaf-research":
+            return run_leaf_research_cmd(root, args)
+        if args.command == "import-leaf-research-results":
+            return run_import_leaf_research_results_cmd(root, args)
+        if args.command == "synthesize-leaf-answers":
+            return run_synthesize_leaf_answers_cmd(root, args)
+        if args.command == "rollup-research-answers":
+            return run_rollup_research_answers_cmd(root, args)
         if args.command == "write-professional-report":
             return run_write_professional_report_cmd(root, args)
         if args.command == "apply-question-queue":
@@ -728,6 +777,9 @@ def run_stock_qa_pipeline_cmd(root: Path, args) -> int:
         synthesis_client=synthesis_client,
         write_professional_report=args.write_professional_report,
         professional_report_client=professional_report_client,
+        leaf_research_provider=args.leaf_research_provider,
+        leaf_research_input=Path(args.leaf_research_input) if args.leaf_research_input else None,
+        leaf_research_limit=args.leaf_research_limit,
         timeout=args.timeout,
     )
     final = result["final"]
@@ -738,6 +790,9 @@ def run_stock_qa_pipeline_cmd(root: Path, args) -> int:
         f"tasks={final['task_path']}, "
         f"synthesis_tasks={final['synthesis_task_path']}, "
         f"synthesis_mode={final['synthesis_mode']}, "
+        f"leaf_results={final['leaf_research_result_path']}, "
+        f"leaf_answers={final['leaf_answer_path']}, "
+        f"leaf_rollups={final['rollup_answer_path']}, "
         f"professional_report={final['professional_report_path']}, "
         f"candidates={final['candidate_path']}, "
         f"run={Path(final['report_path']).parent / 'pipeline_run.json'}"
@@ -957,6 +1012,87 @@ def run_answer_synthesis_cmd(root: Path, args) -> int:
         f"applied_nodes={result['applied_nodes']}, "
         f"answers_path={result['synthesized_answer_path']}, "
         f"tasks={result['synthesis_task_path']}, "
+        f"report={result['report_path']}"
+    )
+    return 0
+
+
+def run_build_leaf_research_tasks_cmd(root: Path, args) -> int:
+    from value_invest_research.leaf_research import build_leaf_research_tasks
+
+    result = build_leaf_research_tasks(
+        root,
+        args.ticker,
+        limit=args.limit,
+        include_completed=args.include_completed,
+    )
+    print(
+        f"Leaf research tasks built for {result['ticker']}: "
+        f"tasks={result['tasks']}, "
+        f"leaf_questions={result['leaf_questions']}, "
+        f"path={result['task_path']}, "
+        f"report={result['report_path']}"
+    )
+    return 0
+
+
+def run_leaf_research_cmd(root: Path, args) -> int:
+    from value_invest_research.leaf_research import run_leaf_research
+
+    result = run_leaf_research(
+        root,
+        args.ticker,
+        provider=args.provider,
+        input_path=Path(args.input) if args.input else None,
+        limit=args.limit,
+    )
+    print(
+        f"Leaf research run for {result['ticker']}: "
+        f"provider={result['provider']}, "
+        f"results={result['results']}, "
+        f"sources={result['sources']}, "
+        f"results_path={result['result_path']}, "
+        f"sources_path={result['source_path']}"
+    )
+    return 0
+
+
+def run_import_leaf_research_results_cmd(root: Path, args) -> int:
+    from value_invest_research.leaf_research import import_leaf_research_results
+
+    result = import_leaf_research_results(root, args.ticker, Path(args.path))
+    print(
+        f"Leaf research results imported for {result['ticker']}: "
+        f"records={result['records']}, "
+        f"sources={result['sources']}, "
+        f"results_path={result['result_path']}, "
+        f"sources_path={result['source_path']}"
+    )
+    return 0
+
+
+def run_synthesize_leaf_answers_cmd(root: Path, args) -> int:
+    from value_invest_research.leaf_research import synthesize_leaf_answers
+
+    result = synthesize_leaf_answers(root, args.ticker)
+    print(
+        f"Leaf answers synthesized for {result['ticker']}: "
+        f"answers={result['answers']}, "
+        f"answers_path={result['answer_path']}, "
+        f"source_results={result['source_result_path']}, "
+        f"report={result['report_path']}"
+    )
+    return 0
+
+
+def run_rollup_research_answers_cmd(root: Path, args) -> int:
+    from value_invest_research.leaf_research import rollup_research_answers
+
+    result = rollup_research_answers(root, args.ticker)
+    print(
+        f"Leaf research rollups written for {result['ticker']}: "
+        f"rollups={result['rollups']}, "
+        f"path={result['rollup_path']}, "
         f"report={result['report_path']}"
     )
     return 0

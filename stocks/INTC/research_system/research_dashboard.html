@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>INTC 公司基础画像</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #66717d;
+      --line: #d8ddd8;
+      --paper: #f7f5ee;
+      --panel: #ffffff;
+      --green: #1f7a5c;
+      --amber: #b66a18;
+      --red: #b2473e;
+      --blue: #2d5d8f;
+      --charcoal: #111820;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(23,32,42,.05) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(23,32,42,.04) 1px, transparent 1px),
+        var(--paper);
+      background-size: 38px 38px;
+      font-family: "Avenir Next", "Gill Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.55;
+    }
+    header {
+      padding: 42px clamp(18px, 5vw, 62px) 28px;
+      color: #fff;
+      background: var(--charcoal);
+      border-bottom: 7px solid var(--green);
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 5.8vw, 68px);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+    h2 { margin: 0 0 14px; font-size: clamp(22px, 3vw, 34px); letter-spacing: 0; }
+    h3 { margin: 0 0 8px; font-size: 16px; }
+    .subtitle { max-width: 980px; color: #d6dedc; font-size: 18px; }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 10px clamp(14px, 4vw, 54px);
+      background: rgba(247,245,238,.95);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+    nav a {
+      flex: 0 0 auto;
+      padding: 7px 10px;
+      color: var(--ink);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      font-size: 13px;
+    }
+    main { width: min(1200px, calc(100% - 28px)); margin: 22px auto 58px; }
+    section { margin: 16px 0; padding: clamp(18px, 3vw, 30px); background: rgba(255,255,255,.93); border: 1px solid var(--line); }
+    .layer-label { color: var(--green); font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+    .summary-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+    .summary-card { padding: 16px; border: 1px solid var(--line); background: var(--panel); min-width: 0; }
+    .summary-card span { display: block; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+    .summary-card strong { display: block; margin-top: 7px; font-size: clamp(22px, 2.6vw, 34px); line-height: 1.05; }
+    .summary-card p { margin: 9px 0 0; color: var(--muted); font-size: 13px; }
+    .committee {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .committee-panel { padding: 18px; background: #fff; border: 1px solid var(--line); }
+    .committee-panel strong { color: var(--ink); }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .card { padding: 14px; border: 1px solid var(--line); background: #fff; }
+    .foundation-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .foundation-card { padding: 16px; border: 1px solid var(--line); background: #fff; border-left: 5px solid var(--green); min-width: 0; }
+    .foundation-card.partial { border-left-color: var(--amber); }
+    .foundation-card.missing { border-left-color: var(--red); }
+    .field { margin-top: 9px; }
+    .field b { display: block; margin-bottom: 3px; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+    .field p { margin: 0; }
+    table { width: 100%; border-collapse: collapse; background: #fff; font-size: 14px; }
+    th, td { padding: 10px; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; }
+    th { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; background: #f0f3f0; }
+    .chip { display: inline-flex; padding: 2px 7px; border-radius: 999px; background: #edf3f1; color: #2a5146; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; }
+    .detail-link { display: inline-flex; margin-top: 8px; padding: 7px 10px; color: #fff; background: var(--charcoal); text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 700; }
+    .detail-link:hover { background: var(--green); }
+    .status-evidenced { color: var(--green); font-weight: 700; }
+    .status-partial { color: var(--amber); font-weight: 700; }
+    .status-missing, .impact-weakening { color: var(--red); font-weight: 700; }
+    .impact-strengthening { color: var(--green); font-weight: 700; }
+    .impact-research_lead { color: var(--amber); font-weight: 700; }
+    .question { border-left: 5px solid var(--blue); }
+    .question h3 { font-size: 18px; }
+    .note { color: var(--muted); font-size: 13px; }
+    ul { margin: 8px 0 0; padding-left: 20px; }
+    li { margin: 5px 0; }
+    @media (max-width: 880px) {
+      .summary-grid, .grid, .foundation-grid, .committee { grid-template-columns: 1fr; }
+      table { font-size: 13px; }
+    }
+  </style>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --muted: #6e6e73;
+      --paper: #f5f5f7;
+      --panel: #ffffff;
+      --panel-soft: #fbfbfd;
+      --line: #d2d2d7;
+      --blue: #0066cc;
+      --green: #248a3d;
+      --amber: #a86600;
+      --red: #d70015;
+      --shadow: 0 18px 50px rgba(0, 0, 0, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.55;
+    }
+    header {
+      padding: clamp(52px, 8vw, 104px) clamp(20px, 6vw, 86px) 34px;
+      color: var(--ink);
+      background: linear-gradient(180deg, #fff 0%, #f8f8fa 72%, var(--paper) 100%);
+      border-bottom: 1px solid rgba(0, 0, 0, .06);
+    }
+    h1 { max-width: 1080px; margin: 0; font-size: clamp(44px, 7vw, 86px); font-weight: 700; line-height: .98; letter-spacing: 0; }
+    h2 { margin: 0 0 12px; font-size: clamp(28px, 4vw, 48px); font-weight: 700; letter-spacing: 0; }
+    h3 { margin: 0 0 10px; font-size: clamp(21px, 2.2vw, 29px); font-weight: 700; letter-spacing: 0; }
+    p { margin: 0 0 10px; }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .subtitle { max-width: 940px; margin-top: 18px; color: var(--muted); font-size: clamp(18px, 2.1vw, 24px); line-height: 1.45; }
+    .nav, nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 11px clamp(16px, 5vw, 70px);
+      background: rgba(245, 245, 247, .82);
+      border-bottom: 1px solid rgba(0, 0, 0, .08);
+      backdrop-filter: saturate(180%) blur(20px);
+    }
+    .nav a, nav a {
+      flex: 0 0 auto;
+      padding: 7px 12px;
+      color: var(--ink);
+      text-decoration: none;
+      border: 1px solid rgba(0, 0, 0, .08);
+      background: rgba(255, 255, 255, .74);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    main { width: min(1180px, calc(100% - 32px)); margin: 26px auto 72px; }
+    section {
+      margin: 18px 0;
+      padding: clamp(24px, 4vw, 44px);
+      background: rgba(255, 255, 255, .9);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, .7) inset;
+    }
+    .layer-label, .eyebrow { margin: 0 0 12px; color: var(--blue); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .summary-grid, .summary-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+    .summary-card, .metric {
+      padding: 16px;
+      background: rgba(255, 255, 255, .88);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      min-width: 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
+      color: var(--ink);
+    }
+    .summary-card span, .metric span { display: block; color: var(--muted); font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: none; }
+    .summary-card strong, .metric strong { display: block; margin-top: 8px; font-size: clamp(20px, 2.2vw, 30px); font-weight: 700; line-height: 1.1; overflow-wrap: anywhere; }
+    .summary-card p { margin: 9px 0 0; color: var(--muted); font-size: 13px; }
+    .foundation-grid, .grid, .lead-grid, .info-grid, .reference-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-items: start; }
+    .foundation-card, .card, .question-card, .history-card {
+      padding: clamp(18px, 3vw, 28px);
+      background: var(--panel);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      min-width: 0;
+      box-shadow: var(--shadow);
+    }
+    .foundation-card { border-left: 0; }
+    .foundation-card.partial, .foundation-card.missing { border-left: 0; }
+    .detail-link {
+      display: inline-flex;
+      margin-top: 12px;
+      padding: 8px 13px;
+      color: #fff;
+      background: var(--blue);
+      text-decoration: none;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .detail-link:hover { background: #005bb5; text-decoration: none; }
+    .answer-box, .rule-box {
+      padding: 16px;
+      background: #f5f8ff;
+      border: 1px solid #d6e6ff;
+      border-radius: 8px;
+      margin: 14px 0 16px;
+    }
+    .info-box {
+      padding: 14px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: var(--panel-soft);
+      min-width: 0;
+    }
+    .info-box h4 { margin: 0 0 10px; font-size: 13px; font-weight: 700; color: var(--muted); letter-spacing: .04em; }
+    .info-box ul { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+    .info-box li { margin: 0; padding-top: 12px; border-top: 1px solid rgba(0, 0, 0, .07); }
+    .info-box li:first-child { padding-top: 0; border-top: 0; }
+    .info-box.evidence { background: #f5f9ff; }
+    .info-box.research_report { background: #f4fbf7; }
+    .info-box.message { background: #fff9ef; }
+    .info-box.opinion { background: #f6f6f7; }
+    .timeline { display: grid; gap: 12px; margin-top: 16px; }
+    .timeline-row { display: grid; grid-template-columns: 120px 1fr; gap: 16px; padding: 16px; border: 1px solid rgba(0, 0, 0, .08); border-radius: 8px; background: var(--panel); }
+    .timeline-year { color: var(--blue); font-weight: 700; }
+    .field { margin-top: 12px; }
+    .field b { display: block; margin-bottom: 5px; color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: none; }
+    .note { color: var(--muted); font-size: 13px; }
+    .compact-question-list {
+      display: grid;
+      gap: 8px;
+      margin: 8px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .compact-question-list li {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: center;
+      margin: 0;
+      padding: 9px 10px;
+      border: 1px solid rgba(0, 0, 0, .07);
+      border-radius: 8px;
+      background: #f8f8fa;
+    }
+    .compact-question-list .question-text {
+      min-width: 0;
+      overflow-wrap: anywhere;
+      color: var(--ink);
+    }
+    .mix-badge {
+      display: inline-grid;
+      grid-template-columns: auto auto;
+      gap: 6px;
+      align-items: baseline;
+      white-space: nowrap;
+      padding: 4px 7px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, .08);
+      color: var(--muted);
+      font-size: 11px;
+    }
+    .mix-badge strong {
+      color: var(--blue);
+      font-family: "SF Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 11px;
+    }
+    .chip {
+      display: inline-flex;
+      max-width: 100%;
+      margin: 0 4px 7px 0;
+      padding: 3px 7px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .76);
+      color: #424245;
+      font-family: "SF Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 11px;
+      overflow-wrap: anywhere;
+    }
+    .status-evidenced { color: var(--green); font-weight: 800; }
+    .status-partial { color: var(--amber); font-weight: 800; }
+    .status-missing, .impact-weakening { color: var(--red); font-weight: 800; }
+    .impact-strengthening { color: var(--green); font-weight: 800; }
+    .impact-research_lead { color: var(--amber); font-weight: 800; }
+    table { width: 100%; border-collapse: separate; border-spacing: 0; background: #fff; font-size: 14px; border: 1px solid rgba(0, 0, 0, .08); border-radius: 8px; overflow: hidden; }
+    th, td { padding: 13px; border-bottom: 1px solid rgba(0, 0, 0, .08); vertical-align: top; text-align: left; }
+    tr:last-child td { border-bottom: 0; }
+    th { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .04em; background: #f5f5f7; text-transform: none; }
+    ul { margin: 8px 0 0; padding-left: 20px; }
+    li { margin: 5px 0; }
+    @media (max-width: 880px) {
+      .summary-grid, .summary-strip, .foundation-grid, .grid, .lead-grid, .info-grid, .reference-grid, .timeline-row { grid-template-columns: 1fr; }
+      .compact-question-list li { grid-template-columns: 1fr; }
+      .mix-badge { justify-self: start; }
+      table { font-size: 13px; }
+      header { padding-top: 42px; }
+    }
+    </style>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">L0 / 公司基础框架</p>
+    <h1>INTC 公司基础框架</h1>
+    <p class="subtitle">当前页面只保留问题结构：当前要研究的问题、L1 子问题、子结构汇总结论和详情页跳转。</p>
+  </header>
+  <nav>
+    <a href="#current-question">当前问题</a>
+    <a href="#foundation">子问题</a>
+    <a href="research_report.html">聚合报告</a>
+    <a href="#add-question">新增问题</a>
+  </nav>
+  <main>
+    <section id="current-question">
+      <div class="layer-label">当前要研究的问题</div>
+      <h2>公司基础框架：这家公司应该先用哪组基础问题建立认知？</h2>
+      <div class="rule-box"><p>事实：Intel 于 1968 年 7 月 18 日由 Robert Noyce 和 Gordon Moore 创立，起点来自 Fairchild 之后对持续创新和高强度研发投入的追求；早期先做存储器与集成电子技术，随…；事实：Intel 在 FY2025 10-K 中按 CCG、DCAI、Intel Foundry 等口径披露业务。Intel Foundry 2025 年收入约 178 亿美元，其中外部收入仅约 3.07 亿美元，绝大…；事实：Intel 于 1968 年 7 月 18 日由 Robert Noyce 和 Gordon Moore 创立，起点来自 Fairchild 之后对持续创新和高强度研发投入的追求；早期先做存储器与集成电子技术，随…；事实：FY2025 10-K 将 2025 和 2024 Restructuring Plans、Altera deconsolidation、NAND memory business divestiture、Mobi…；事实：Intel 在 FY2025 10-K 中按 CCG、DCAI、Intel Foundry 等口径披露业务。Intel Foundry 2025 年收入约 178 亿美元，其中外部收入仅约 3.07 亿美元，绝大…；事实：Gartner 估算 2025 年全球半导体收入 7934 亿美元，同比 +21%；NVIDIA 以 1257 亿美元、15.8% 份额居首，Intel 以 478.83 亿美元、6.0% 份额排名第四，收入同比…；事实：10-K 披露 Intel Foundry 2025 年亏损改善主要来自资产减值和加速折旧下降、裁员和成本削减，但同时受到 Intel 18A 早期爬坡产品的存货可变现净值调整等影响。判断：Foundry 的核心…；事实：10-K Risk Factors 明确提示 Intel 所处行业高度竞争且快速变化，技术、地缘政治、市场需求、客户偏好和产品迭代都可能削弱竞争地位；同一文件还披露 loss contingencies、lega…</p></div>
+    </section>
+
+    <section id="foundation">
+      <div class="layer-label">子问题列表</div>
+      <h2>L1 子问题</h2>
+      <div class="foundation-grid"><article class="foundation-card evidenced"><p class="eyebrow">L1 / 源头溯源</p><h3>源头溯源：公司是怎么来的</h3><div class="field"><b>子结构汇总结论</b><p>综合子问题信息，本层结论是：最关键的一手证据是 Intel 官方历史页：它把公司源头明确绑定到 1968 年 Noyce/Moore 离开 Fairchild、追求持续创新和高强度研发再投入。这个证据能验证“工程、制程、研发、平台生态”是 Intel 的源头基因，而…。尚未闭合的是：能定位原始来源。</p></div><div class="field"><b>子问题列表</b><ul class="compact-question-list"><li><span class="question-text">时代背景是什么？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>0/0/0/0</strong></span></li><li><span class="question-text">原始问题是什么？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>0/0/0/0</strong></span></li><li><span class="question-text">旧方案为什么不够好？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>0/0/0/0</strong></span></li><li><span class="question-text">第一产品楔子是什么？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>0/0/0/0</strong></span></li><li><span class="question-text">第一批客户是谁？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>0/0/0/0</strong></span></li><li><span class="question-text">早期优势来自哪里？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>0/0/0/0</strong></span></li><li><span class="question-text">早期飞轮如何形成？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>0/0/0/0</strong></span></li><li><span class="question-text">源头基因今天是否仍有效？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>0/0/0/0</strong></span></li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>能定位原始来源</li><li>记录报告期或发布日期</li><li>需要后续季度数据验证该 leaf 判断是否变化。</li></ul></div><a class="detail-link" href="pages/source_origin.html">进入 L1 子页面</a><p class="note">状态：<span class="status-evidenced">证据充分</span></p></article>
+<article class="foundation-card evidenced"><p class="eyebrow">L1 / 公司历史</p><h3>发展历史：公司的发展关键节点是什么</h3><div class="field"><b>子结构汇总结论</b><p>综合子问题信息，本层结论是：真正改变商业模型的节点不是单一产品，而是三条线叠加：早期从存储到微处理器形成 x86 平台身份；近年从“内部产品制造”转向“产品现金流+外部 foundry+政府/战略资本”的重构；2025 年后通过 Altera 部分出售、DOC/So…。尚未闭合的是：能定位原始来源。</p></div><div class="field"><b>子问题列表</b><ul class="compact-question-list"><li><span class="question-text">哪些历史节点真正改变了商业模型？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>1/0/0/0</strong></span></li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>能定位原始来源</li><li>记录报告期或发布日期</li><li>需要后续季度数据验证该 leaf 判断是否变化。</li></ul></div><a class="detail-link" href="pages/history.html">进入 L1 子页面</a><p class="note">状态：<span class="status-evidenced">证据充分</span></p></article>
+<article class="foundation-card evidenced"><p class="eyebrow">L1 / 当下生意</p><h3>当下的生意：当前业务板块下探</h3><div class="field"><b>子结构汇总结论</b><p>综合子问题信息，本层结论是：当前业务仍由 CCG 和 DCAI 产品现金流支撑，Intel Foundry 是战略资产但也是利润拖累。Q1 2026 显示产品需求和供给修复，尤其 DCAI；但公司整体现金回报仍受 foundry、capex、重组和资产负债表约束；当前需求更像真实产品/供给修复叠加周期，而不是单纯促销。Q1 2026 DCAI +22%、管理层称 Xeon server CPU 需求超过供给，PC 端也受 Windows 10 EOS、AI PC、老设备替换支撑；但客户端 CCG …；利润尚未稳定转化为自由现金。Q1 2026 经营现金流为正，但调整后自由现金流仍为负；2025 年经营现金流不足以覆盖制造资本支出和转型投入，外部融资、政府资金和资产出售仍是资本结构的重要组成。主要边界是：Intel FY2025 Form 10-K …</p></div><div class="field"><b>子问题列表</b><ul class="compact-question-list"><li><span class="question-text">当前收入、毛利、现金流分别由哪些业务驱动？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>1/1/0/0</strong></span></li><li><span class="question-text">客户是谁，需求来自刚需、替换、生态绑定还是促销？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>0/1/0/0</strong></span></li><li><span class="question-text">利润质量是否能转化为现金和可重复回报？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>1/0/0/0</strong></span></li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>能定位原始来源</li><li>记录报告期或发布日期</li><li>需要后续季度数据验证该 leaf 判断是否变化。</li></ul></div><a class="detail-link" href="pages/current_business.html">进入 L1 子页面</a><p class="note">状态：<span class="status-evidenced">证据充分</span></p></article>
+<article class="foundation-card evidenced"><p class="eyebrow">L1 / 产业链定位</p><h3>产业链定位：上下游分析</h3><div class="field"><b>子结构汇总结论</b><p>综合子问题信息，本层结论是：公司在产业链中掌握哪一段价值，哪一段被供应商/渠道…：上游关键经济性主要被 EUV/先进设备、EDA/IP、材料和先进封装生态吸收；Intel 通过自有制造拿回战略控制权，但也承担固定资产、良率和利用率风险。真正的价值捕获要看 18A/1…；关键瓶颈是先进制程良率、18A/14A ramp、先进封装产能、工厂利用率和供应链资本。Q1 管理层称需求超过供给，说明短期交付约束真实存在；但供给释放后如果客户需求或价格不及预期，瓶颈会转成闲置产能风险；销售、交付和服务体系必须同时服务产品客户、云客户、foundry 客户和政策资金方，复杂度明显上升。Intel 的组织重置和 foundry customer-centric process 是必要条件，但尚非充分条件。主要边界是：Intel FY2025 Form 10-K - …</p></div><div class="field"><b>子问题列表</b><ul class="compact-question-list"><li><span class="question-text">公司在产业链中掌握哪一段价值，哪一段被供应商/渠道/客户拿走？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>1/0/0/0</strong></span></li><li><span class="question-text">上游供给、关键部件和产能是否会改变毛利与交付？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>1/0/0/0</strong></span></li><li><span class="question-text">渠道和售后体系是否足以支撑当前业务复杂度？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>2/0/0/0</strong></span></li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>能定位原始来源</li><li>记录报告期或发布日期</li><li>需要后续季度数据验证该 leaf 判断是否变化。</li></ul></div><a class="detail-link" href="pages/value_chain.html">进入 L1 子页面</a><p class="note">状态：<span class="status-evidenced">证据充分</span></p></article>
+<article class="foundation-card evidenced"><p class="eyebrow">L1 / 竞争格局</p><h3>竞争格局：真实竞争对手和竞争强度是什么</h3><div class="field"><b>子结构汇总结论</b><p>综合子问题信息，本层结论是：Intel 的真实竞争不是单一 AMD：客户端 x86 主要对 AMD，同时面对 Apple/Qualcomm/MediaTek 的 ARM 替代；数据中心 CPU 对 AMD 和 Arm-based cloud chips；AI 价值池…；份额变化是结构性优势、周期波动，还是补贴/价格战结果：份额变化尚未证明利润质量改善。Mercury 数据显示 Intel 客户端仍有大份额，但服务器收入份额压力显著；Q1 DCAI 增长和毛利改善是正信号，但 Foundry 亏损和竞争定…；价格竞争会持续压缩毛利，尤其客户端 PC 和服务器 CPU。Intel 的缓冲来自 x86 软件生态、供应能力和平台伙伴，但 AMD/ARM/客户自研会限制定价权；若供给紧缺缓解后 ASP 下滑，毛利修复会被证伪。主要边界是：Intel FY20…</p></div><div class="field"><b>子问题列表</b><ul class="compact-question-list"><li><span class="question-text">公司真实竞争对手是谁，竞争发生在价格、产品、渠道还是生态？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>0/1/0/0</strong></span></li><li><span class="question-text">份额变化是结构性优势、周期波动，还是补贴/价格战结果？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>1/1/0/0</strong></span></li><li><span class="question-text">竞争强度是否会侵蚀毛利、现金流或品牌定位？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>1/0/0/0</strong></span></li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>能定位原始来源</li><li>记录报告期或发布日期</li><li>需要后续季度数据验证该 leaf 判断是否变化。</li></ul></div><a class="detail-link" href="pages/competition.html">进入 L1 子页面</a><p class="note">状态：<span class="status-evidenced">证据充分</span></p></article>
+<article class="foundation-card evidenced"><p class="eyebrow">L1 / 战略分析</p><h3>战略分析：过去、现在、未来</h3><div class="field"><b>子结构汇总结论</b><p>综合子问题信息，本层结论是：可迁移能力包括 x86 平台生态、CPU 设计、先进封装、制造工程、美国本土战略产能和大客户关系。这些能力可以迁移到 AI inference、edge AI、custom ASIC/IPU 和 foundry services；资源配置正从扩张型资产组合转向核心约束：18A/14A、x86/DCAI、advanced packaging、foundry 外部客户和现金纪律。Altera 出售、政府/战略融资和重组显示管理层在压缩非核心资产、为制造战略续命；阶段 KPI 应分三层：产品端看 DCAI/CCG revenue、ASP、share、gross margin；制造端看 18A/14A yield、utilization、external foundry revenue、custom…。主要边界是：Intel F…</p></div><div class="field"><b>子问题列表</b><ul class="compact-question-list"><li><span class="question-text">公司战略是否从源头能力自然延伸，还是跨越了能力边界？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>5/1/1/0</strong></span></li><li><span class="question-text">资源配置是否与最重要利润池和风险点匹配？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>0/1/0/0</strong></span></li><li><span class="question-text">战略投入能否被 KPI 和阶段性证据验证？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>2/0/0/0</strong></span></li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>能定位原始来源</li><li>记录报告期或发布日期</li><li>需要后续季度数据验证该 leaf 判断是否变化。</li></ul></div><a class="detail-link" href="pages/strategy.html">进入 L1 子页面</a><p class="note">状态：<span class="status-evidenced">证据充分</span></p></article>
+<article class="foundation-card evidenced"><p class="eyebrow">L1 / 组织、文化与治理</p><h3>组织管理：管理层、治理和组织能力分析</h3><div class="field"><b>子结构汇总结论</b><p>综合子问题信息，本层结论是：Lip-Bu Tan 上任提高了客户导向、半导体生态和工程执行的治理可信度，但领导层稳定性仍需通过组织简化、产品准时交付和资本纪律证明。CFO 与 Intel Products CEO 留任有连续性，但也意味着新旧组织需要磨合；重大资本配置有更强外部约束：政府资金、SCIP、战略投资者和董事会 CEO 重置都形成监督；但这些约束未必完全等同于每股价值最大化，可能优先服务国家安全、供应链和战略产能；组织文化是复利资产，还是会放大盲区和路径依赖：组织复杂度显著上升：Intel 同时经营产品、foundry、advanced packaging、外部战略合作、政策资金和资产重组。Tan 的扁平化、工程导向和客户导向能降低复杂度，但执行负…。尚未闭合的是：能定位原始来源。</p></div><div class="field"><b>子问题列表</b><ul class="compact-question-list"><li><span class="question-text">创始人、控制权和管理层结构是否提升长期执行？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>2/0/0/0</strong></span></li><li><span class="question-text">激励、董事会和少数股东保护是否足以约束资本配置？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>2/0/0/0</strong></span></li><li><span class="question-text">组织文化是复利资产，还是会放大盲区和路径依赖？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>2/0/0/0</strong></span></li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>能定位原始来源</li><li>记录报告期或发布日期</li><li>需要后续季度数据验证该 leaf 判断是否变化。</li></ul></div><a class="detail-link" href="pages/governance.html">进入 L1 子页面</a><p class="note">状态：<span class="status-evidenced">证据充分</span></p></article>
+<article class="foundation-card evidenced"><p class="eyebrow">L1 / 风险排雷</p><h3>风险暴露：哪些风险会改变基础画像</h3><div class="field"><b>子结构汇总结论</b><p>综合子问题信息，本层结论是：核心业务弱化会改变整个基础画像。若 CCG 继续份额/ASP 下滑、DCAI 无法抵御 AMD/ARM/AI accelerator 替代，产品现金流将不足以支撑 Foundry 转型；财务风险验证看四组数据：OCF/FCF、capex 与折旧、债务和利息、股权稀释/非控股权益。Q1 有现金和投资余额支撑，但 debt 仍约 430 亿美元，外部融资和政府资金说明内生现金流尚未完全覆盖战略投入；哪类新增证据能最快证伪当前判断：最快证伪当前基础判断的证据包括：14A 无 significant external customer、18A ramp 延误或库存/良率问题、DCAI 份额继续流失、Foundry 外部收入停滞、FCF …。主要边界是：Intel FY2025 Form 10-K - Risk Factors：事…</p></div><div class="field"><b>子问题列表</b><ul class="compact-question-list"><li><span class="question-text">哪些风险足以改变公司基础画像，而不只是短期噪音？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>2/0/0/0</strong></span></li><li><span class="question-text">财务、会计、法律、监管、技术和治理风险分别如何验证？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>2/0/0/0</strong></span></li><li><span class="question-text">哪类新增证据能最快证伪当前判断？</span><span class="mix-badge" title="证据 / 研报 / 消息 / 观点"><span>证/研/消/观</span><strong>2/0/0/0</strong></span></li></ul></div><div class="field"><b>高优先级缺口</b><ul><li>能定位原始来源</li><li>记录报告期或发布日期</li><li>需要后续季度数据验证该 leaf 判断是否变化。</li></ul></div><a class="detail-link" href="pages/risk_sweep.html">进入 L1 子页面</a><p class="note">状态：<span class="status-evidenced">证据充分</span></p></article></div>
+    </section>
+
+    
+
+    <section id="add-question" class="level-frame draft-question" data-question-scope="INTC:l0" data-parent-id="company.foundation" data-queue-command="value-invest-research apply-question-queue INTC --path queued_questions.jsonl">
+      <p class="eyebrow">可交互 / 新增问题</p>
+      <h2>新增下钻问题</h2>
+      <form class="draft-question-form">
+        <textarea class="draft-question-input" placeholder="输入一个新的下钻问题"></textarea>
+        <label class="note"><input class="draft-question-terminal" type="checkbox"> 这个问题已到可回答粒度，直接进入四类信息搜集</label>
+        <div class="qa-ask-actions">
+          <button class="primary" type="submit">加入本层问题列表</button>
+          <button class="draft-question-clear" type="button">清空本层新增</button>
+        </div>
+      </form>
+      <div class="field"><b>L0 公司基础框架新增问题</b><ul class="draft-question-list"></ul></div>
+      <div class="draft-question-output">
+        <div class="field"><b>队列 JSONL</b><textarea class="draft-question-jsonl" readonly></textarea></div>
+        <div class="field"><b>应用命令</b><textarea class="draft-question-command" readonly></textarea></div>
+      </div>
+    </section>
+
+  </main>
+  <script>
+    (() => {
+      function esc(value) {
+        return String(value == null ? "" : value).replace(/[&<>"']/g, (char) => ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;",
+        }[char]));
+      }
+      function read(key) {
+        try {
+          return JSON.parse(localStorage.getItem(key) || "[]");
+        } catch (_error) {
+          return [];
+        }
+      }
+      function write(key, value) {
+        try {
+          localStorage.setItem(key, JSON.stringify(value));
+        } catch (_error) {
+        }
+      }
+      document.querySelectorAll("[data-question-scope]").forEach((box) => {
+        const key = `draft-layer-questions:${box.dataset.questionScope || "default"}`;
+        const form = box.querySelector(".draft-question-form");
+        const input = box.querySelector(".draft-question-input");
+        const terminal = box.querySelector(".draft-question-terminal");
+        const list = box.querySelector(".draft-question-list");
+        const clear = box.querySelector(".draft-question-clear");
+        const jsonl = box.querySelector(".draft-question-jsonl");
+        const command = box.querySelector(".draft-question-command");
+        const parentId = box.dataset.parentId || "";
+        const queueCommand = box.dataset.queueCommand || "";
+        const normalizeItem = (item) => {
+          if (typeof item === "string") return { question: item, terminal: false };
+          return { question: item.question || "", terminal: Boolean(item.terminal) };
+        };
+        const render = () => {
+          const items = read(key).map(normalizeItem).filter((item) => item.question);
+          list.innerHTML = items.length
+            ? items.map((item) => `<li>${esc(item.question)}${item.terminal ? ' <span class="chip">终端问题</span>' : ""}</li>`).join("")
+            : '<li class="note">暂无新增问题。</li>';
+          jsonl.value = items.map((item) => JSON.stringify({ parent_id: parentId, question: item.question, terminal: item.terminal })).join("\n");
+          command.value = queueCommand;
+        };
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          const value = input.value.trim();
+          if (!value) return;
+          write(key, [...read(key).map(normalizeItem), { question: value, terminal: Boolean(terminal && terminal.checked) }]);
+          input.value = "";
+          if (terminal) terminal.checked = false;
+          render();
+        });
+        clear.addEventListener("click", () => {
+          write(key, []);
+          render();
+        });
+        render();
+      });
+    })();
+    </script>
+</body>
+</html>

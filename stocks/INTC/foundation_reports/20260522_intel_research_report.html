@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Intel Corporation 基础研究报告 | 2026-05-22</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f5f7;
+      --surface: #ffffff;
+      --surface-2: #fbfbfd;
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --line: rgba(0, 0, 0, .09);
+      --blue: #0066cc;
+      --green: #0a7f49;
+      --amber: #9a6700;
+      --red: #b42318;
+      --shadow: 0 18px 60px rgba(0, 0, 0, .07);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      line-height: 1.62;
+      letter-spacing: 0;
+    }
+
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 42px 0 72px;
+    }
+
+    header {
+      padding: 42px 0 26px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 900px;
+      font-size: clamp(36px, 5vw, 72px);
+      line-height: .98;
+      letter-spacing: 0;
+      font-weight: 800;
+    }
+
+    .subtitle {
+      max-width: 860px;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 26px 0 0;
+    }
+
+    .metric, .card, .section, .note-box {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .metric {
+      padding: 16px;
+      min-height: 112px;
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 12px;
+      font-size: 24px;
+      line-height: 1.1;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      margin: 18px 0 28px;
+      padding: 10px;
+      background: rgba(245, 245, 247, .88);
+      backdrop-filter: blur(18px);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 8px;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .section {
+      margin: 18px 0;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .section h2 {
+      margin: 0 0 16px;
+      font-size: 26px;
+      line-height: 1.2;
+    }
+
+    .section h3 {
+      margin: 22px 0 10px;
+      font-size: 17px;
+    }
+
+    .twocol {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .card {
+      padding: 18px;
+      background: var(--surface-2);
+    }
+
+    .card h3 { margin-top: 0; }
+    ul { margin: 10px 0 0; padding-left: 20px; }
+    li { margin: 8px 0; }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: #eef5ff;
+      color: #064f9e;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .tag.green { background: #eaf7ef; color: var(--green); }
+    .tag.amber { background: #fff6df; color: var(--amber); }
+    .tag.red { background: #fff0ef; color: var(--red); }
+
+    .evidence {
+      display: inline-flex;
+      align-items: center;
+      padding: 1px 7px;
+      border-radius: 999px;
+      background: #f2f2f7;
+      color: #3a3a3c;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .facts, .inference, .judgment {
+      border-left: 3px solid var(--line);
+      padding-left: 14px;
+      margin-top: 12px;
+    }
+
+    .facts { border-left-color: var(--blue); }
+    .inference { border-left-color: var(--amber); }
+    .judgment { border-left-color: var(--green); }
+
+    .table-wrap { overflow-x: auto; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      margin-top: 12px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+    th {
+      color: var(--muted);
+      background: #f5f5f7;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    tr:last-child td { border-bottom: 0; }
+
+    .note-box {
+      padding: 18px;
+      margin-top: 16px;
+      background: #fff;
+    }
+
+    .source-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .source {
+      padding: 14px;
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    footer {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 860px) {
+      .meta-grid, .twocol, .source-list { grid-template-columns: 1fr; }
+      .section { padding: 20px; }
+      nav { position: static; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <p class="eyebrow">Foundation Research / INTC / 2026-05-22</p>
+      <h1>Intel Corporation 基础研究报告</h1>
+      <p class="subtitle">
+        本报告按最新基础研究框架写成：先建立公司源头、历史、当前业务、产业链、竞争、战略、治理和风险八个板块的事实底座，再把推论与待验证假设分开。报告不构成交易指令。
+      </p>
+      <div class="meta-grid">
+        <div class="metric"><span>基础状态</span><strong>Complete 8/8</strong></div>
+        <div class="metric"><span>证据底座</span><strong>15 records</strong></div>
+        <div class="metric"><span>公司画像</span><strong>IDM 转型体</strong></div>
+        <div class="metric"><span>核心矛盾</span><strong>产品现金流 vs Foundry 投入</strong></div>
+      </div>
+    </header>
+
+    <nav aria-label="report navigation">
+      <a href="#snapshot">结论快照</a>
+      <a href="#sections">八步基础研究</a>
+      <a href="#forward">前瞻问题</a>
+      <a href="#watchlist">监控表</a>
+      <a href="#sources">证据来源</a>
+      <a href="../research_system/research_dashboard.html">Dashboard</a>
+    </nav>
+
+    <section id="snapshot" class="section">
+      <h2>结论快照</h2>
+      <div class="twocol">
+        <div>
+          <div class="facts">
+            <h3>事实</h3>
+            <ul>
+              <li>Intel 的历史基因来自 1968 年创立时的持续创新、研发投入和半导体工程能力 <span class="evidence">ev_intc_founding_19680718</span>。</li>
+              <li>2026 Q1 公司营收 136 亿美元，同比 +7%；CCG 77 亿美元，同比 +1%；DCAI 51 亿美元，同比 +22%；Intel Foundry 54 亿美元，同比 +16% <span class="evidence">ev_intc_q1_2026_results_20260423</span>。</li>
+              <li>FY2025 Intel Foundry 收入约 178 亿美元，但外部收入约 3.07 亿美元，经营亏损约 103 亿美元 <span class="evidence">ev_intc_2025_10k_business_segments_20260122</span>。</li>
+              <li>2025 年公司引入政府、SoftBank、NVIDIA 等外部资本与战略关系，并出售 Altera 51% 股权给 Silver Lake <span class="evidence">ev_intc_us_doc_equity_20250822</span> <span class="evidence">ev_intc_nvidia_collaboration_20250918</span> <span class="evidence">ev_intc_altera_silverlake_20250414</span>。</li>
+            </ul>
+          </div>
+          <div class="inference">
+            <h3>推论</h3>
+            <p>Intel 现在不是单纯的 CPU 产品公司，而是“产品现金流 + 制造/代工再投入 + 国家产业政策 + 战略伙伴”的复合转型体。市场已知的信息里，产品端需求修复和外部资本支持是正向因素；Foundry 亏损、外部客户收入仍小、AI 利润池外移是约束。</p>
+          </div>
+          <div class="judgment">
+            <h3>判断</h3>
+            <p>基础研究结论是：Intel 可以进入持续跟踪池，但当前关键不是“便宜或不便宜”，而是验证 Foundry 亏损收窄、产品端现金流恢复、DCAI 份额/ASP 改善、NVIDIA 合作落地和资本结构摊薄之间是否能形成正循环。</p>
+          </div>
+        </div>
+        <aside class="card">
+          <h3>最核心的假设链</h3>
+          <ul>
+            <li>假设 1：CCG 和 DCAI 能维持足够现金流，支撑制造端爬坡。</li>
+            <li>假设 2：Intel Foundry 亏损主要是爬坡和利用率问题，而不是结构性竞争劣势。</li>
+            <li>假设 3：NVIDIA/SoftBank/美国政府资本不是替代经营改善，而是为经营改善争取时间。</li>
+            <li>假设 4：AI 推理和定制 CPU 需求能让 Intel 重新进入高价值服务器/AI 基础设施链条。</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag green">Dominant D: D2</span>
+            <span class="tag">3T: T2</span>
+            <span class="tag amber">主验证期: 3-15 个月</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="sections" class="section">
+      <h2>八步基础研究</h2>
+
+      <h3>1. 源头与基因</h3>
+      <p><b>事实：</b>Intel 由 Robert Noyce 和 Gordon Moore 于 1968 年创立，早期追求的是持续创新、研发投入和“integrated electronics”的技术路线 <span class="evidence">ev_intc_founding_19680718</span>。</p>
+      <p><b>推论：</b>Intel 的源头优势是工程密度、制程理解、平台生态和高强度研发，而不是轻资产产品营销。今天的 Foundry 重启和 x86 平台合作，本质上是在重新证明这个源头能力是否仍有效。</p>
+
+      <h3>2. 公司历史</h3>
+      <p><b>事实：</b>近年历史节点集中在重组和资产组合收缩：Altera 51% 股权出售，NAND/Altera/ Mobileye 相关资产处置，政府、NVIDIA、SoftBank 资本进入，以及 2025/2024 重组计划 <span class="evidence">ev_intc_altera_silverlake_20250414</span> <span class="evidence">ev_intc_2025_10k_restructuring_history_20260122</span>。</p>
+      <p><b>判断：</b>历史主线已经从“扩张型 IDM”转为“聚焦核心、重塑制造、修复资产负担”。这意味着历史分析要看资本配置纪律，而不只看技术路线。</p>
+
+      <h3>3. 当前业务</h3>
+      <p><b>事实：</b>2026 Q1 产品端有改善：CCG 同比 +1%，DCAI 同比 +22%；但 GAAP 净亏损 37 亿美元，调整后自由现金流为 -20 亿美元 <span class="evidence">ev_intc_q1_2026_results_20260423</span>。</p>
+      <p><b>判断：</b>当前业务质量的关键分裂是：产品端正在恢复，Foundry 仍吞噬利润和现金。短期不能只看收入增速，应看经营现金流、资本开支、Foundry 亏损和 DCAI 份额。</p>
+
+      <h3>4. 产业链位置</h3>
+      <p><b>事实：</b>Foundry 2025 年外部收入约 3.07 亿美元，而大部分收入为分部间收入；制造资产、capex、制程节点和先进封装构成价值链核心约束 <span class="evidence">ev_intc_2025_10k_business_segments_20260122</span> <span class="evidence">ev_intc_2025_10k_cash_capex_debt_20260122</span>。</p>
+      <p><b>推论：</b>Intel 当前仍主要在 x86 产品和内部制造之间循环捕获经济性，尚未证明能够像独立 foundry 一样从外部客户捕获大规模经济性。</p>
+
+      <h3>5. 竞争格局</h3>
+      <p><b>事实：</b>Gartner 估算 2025 年全球半导体收入 7934 亿美元，同比 +21%；NVIDIA 以 1257 亿美元居首，Intel 约 478.83 亿美元、6.0% 份额、同比 -3.9% <span class="evidence">ev_intc_gartner_semiconductor_2025_20260112</span>。Mercury Research 经媒体整理显示，2026 Q1 AMD x86 服务器 CPU 收入份额约 46.2%，Intel 仍约 53.8%；客户端单位份额 Intel 约 70.4% <span class="evidence">ev_intc_mercury_x86_share_q1_2026_20260514</span>。</p>
+      <p><b>判断：</b>Intel 仍有 x86 规模和客户端基本盘，但利润池的边际权力已经向 NVIDIA、HBM、网络、TSMC/Samsung foundry 和高端服务器 CPU 迁移。竞争问题是结构性的，不只是半导体周期。</p>
+
+      <h3>6. 战略分析</h3>
+      <p><b>事实：</b>Lip-Bu Tan 2025 年出任 CEO，官方强调客户导向、半导体生态关系、执行力、产品领导力和 foundry 战略 <span class="evidence">ev_intc_lipbu_tan_ceo_20250312</span>。NVIDIA 与 Intel 宣布多代数据中心和 PC 产品合作，并计划投资 50 亿美元 <span class="evidence">ev_intc_nvidia_collaboration_20250918</span>。</p>
+      <p><b>推论：</b>战略正在从“独自重建一切”转向“用资本和伙伴关系换取转型窗口”。这更现实，但也要求验证合作是否变成产品、订单和毛利，而不是停留在叙事。</p>
+
+      <h3>7. 组织、文化与治理</h3>
+      <p><b>事实：</b>CEO 变更带来治理重置；美国商务部资金协议带来普通股、认股权证和 foundry 所有权约束，且修订后的 CHIPS Act 义务仍限制部分资金用途和境外扩产/合作 <span class="evidence">ev_intc_lipbu_tan_ceo_20250312</span> <span class="evidence">ev_intc_us_doc_equity_20250822</span> <span class="evidence">ev_intc_doc_closing_20250827</span>。</p>
+      <p><b>判断：</b>治理现在既有专业半导体 CEO 的执行修复机会，也有政府/战略投资者资金条款带来的约束。应继续补充管理层激励、董事会监督和重大资本配置审批证据。</p>
+
+      <h3>8. 风险排雷</h3>
+      <p><b>事实：</b>10-K 风险因子强调行业高度竞争和快速变化，技术、地缘政治、市场需求、客户偏好、产品迭代都可能削弱竞争地位；同时有 loss contingencies、法律监管、产品缺陷、库存、减值和利率风险 <span class="evidence">ev_intc_2025_10k_risk_factors_20260122</span>。</p>
+      <p><b>判断：</b>最重要风险不是单一坏消息，而是多条线同时失效：DCAI/CCG 恢复不足，Foundry 亏损继续，外部 foundry 客户不成规模，资本开支和摊薄继续上升。</p>
+    </section>
+
+    <section id="forward" class="section">
+      <h2>前瞻问题</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>时间框架</th>
+              <th>核心问题</th>
+              <th>需要的证据</th>
+              <th>反证触发器</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>T1 0-3 个月</td>
+              <td>2026 Q2 是否延续 Q1 的产品端修复，同时不扩大现金流压力？</td>
+              <td>Q2 营收、毛利率、经营现金流、调整后 FCF、CCG/DCAI/Foundry 分部数据。</td>
+              <td>收入达标但 FCF 恶化、Foundry 亏损不收窄、库存/减值继续增加。</td>
+            </tr>
+            <tr>
+              <td>T2 3-15 个月</td>
+              <td>Foundry 和 NVIDIA 合作是否出现可验证的客户、产品和经济性证据？</td>
+              <td>外部 foundry 收入、客户公告、工艺节点爬坡、定制 x86 CPU/RTX SoC 里程碑、毛利结构。</td>
+              <td>外部收入仍极小，节点/产品延期，合作只停留在资本或 PR 层面。</td>
+            </tr>
+            <tr>
+              <td>T3 15+ 个月</td>
+              <td>Intel 是否能从国家战略资产回到高 ROIC 半导体公司？</td>
+              <td>长期 FCF、ROIC、capex intensity、DCAI 份额、Foundry 外部客户规模、政府/战略投资者条款变化。</td>
+              <td>产品现金流无法覆盖制造投入，政府/股权融资继续摊薄，Foundry 无法证明商业独立性。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note-box">
+        <b>若要上修基础判断：</b>主导驱动应是 D2 边际变化，时间框架以 T2 为主。必要条件是 DCAI/CCG 需求与毛利改善、Foundry 亏损收窄、外部客户证据出现、NVIDIA 合作进入产品/收入阶段。反证测试是 FCF 继续为负且 Foundry 外部收入仍无规模。
+      </div>
+    </section>
+
+    <section id="watchlist" class="section">
+      <h2>监控表</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>监控维度</th>
+              <th>关键指标</th>
+              <th>解释方式</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>产品现金流</td>
+              <td>CCG/DCAI 收入、毛利、经营利润、客户/云厂商需求。</td>
+              <td>验证产品端是否足以为 Foundry 和 capex 提供时间。</td>
+            </tr>
+            <tr>
+              <td>Foundry</td>
+              <td>外部收入、经营亏损、利用率、良率、库存/减值、客户公告。</td>
+              <td>区分“爬坡期亏损”与“结构性商业模式问题”。</td>
+            </tr>
+            <tr>
+              <td>竞争</td>
+              <td>AMD x86 服务器份额、NVIDIA AI 数据中心生态、TSMC/Samsung 先进制程客户。</td>
+              <td>判断 Intel 是否夺回高价值利润池，而不是只保住单位出货。</td>
+            </tr>
+            <tr>
+              <td>资本结构</td>
+              <td>政府资金释放、认股权证条件、NVIDIA/SoftBank 股权、债务、股本摊薄。</td>
+              <td>验证外部资本是转型桥梁，还是低回报投入的融资替代。</td>
+            </tr>
+            <tr>
+              <td>治理执行</td>
+              <td>CEO 战略执行、组织简化、激励、资产处置、重大投资审批。</td>
+              <td>判断 Lip-Bu Tan 的治理重置是否改变执行文化。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="sources" class="section">
+      <h2>证据来源</h2>
+      <p>本报告的材料已同步进入 <code>stocks/INTC/evidence.jsonl</code>，信息类别包括 evidence、research_report 和 message。</p>
+      <div class="source-list">
+        <div class="source"><b>ev_intc_founding_19680718</b><br><a href="https://www.intel.com/content/www/us/en/history/virtual-vault/articles/intels-founding.html">Intel Official History - Intel's Founding</a></div>
+        <div class="source"><b>ev_intc_2025_10k_business_segments_20260122</b><br><a href="https://www.sec.gov/Archives/edgar/data/50863/000005086326000011/intc-20251227.htm">Intel FY2025 Form 10-K</a></div>
+        <div class="source"><b>ev_intc_q1_2026_results_20260423</b><br><a href="https://www.intc.com/news-events/press-releases/detail/1767/intel-reports-first-quarter-2026-financial-results?cs=1">Intel Q1 2026 Financial Results</a></div>
+        <div class="source"><b>ev_intc_lipbu_tan_ceo_20250312</b><br><a href="https://newsroom.intel.com/corporate/intel-appoints-lip-bu-tan-chief-executive-officer">Intel Appoints Lip-Bu Tan as CEO</a></div>
+        <div class="source"><b>ev_intc_altera_silverlake_20250414</b><br><a href="https://www.intc.com/news-events/press-releases/detail/1736/intel-announces-strategic-investment-by-silver-lake-in">Intel Announces Silver Lake Investment in Altera</a></div>
+        <div class="source"><b>ev_intc_us_doc_equity_20250822</b><br><a href="https://www.sec.gov/Archives/edgar/data/50863/000005086325000129/intc-20250822.htm">Intel 8-K: DOC Warrant and Common Stock Agreement</a></div>
+        <div class="source"><b>ev_intc_doc_closing_20250827</b><br><a href="https://www.sec.gov/Archives/edgar/data/50863/000005086325000135/intc-20250827.htm">Intel 8-K: DOC Closing and DFA Amendment</a></div>
+        <div class="source"><b>ev_intc_nvidia_collaboration_20250918</b><br><a href="https://www.intc.com/news-events/press-releases/detail/1750/nvidia-and-intel-to-develop-ai-infrastructure-and-personal">NVIDIA and Intel Collaboration</a></div>
+        <div class="source"><b>ev_intc_softbank_investment_20250818</b><br><a href="https://newsroom.intel.com/corporate/softbank-group-and-intel-corporation-sign-2b-investment-agreement">SoftBank Group and Intel $2B Agreement</a></div>
+        <div class="source"><b>ev_intc_gartner_semiconductor_2025_20260112</b><br><a href="https://www.gartner.com/en/newsroom/press-releases/2026-01-12-gartner-says-worldwide-semiconductor-revenue-grew-21-percent-in-2025">Gartner 2025 Semiconductor Revenue Ranking</a></div>
+        <div class="source"><b>ev_intc_mercury_x86_share_q1_2026_20260514</b><br><a href="https://www.tomshardware.com/pc-components/cpus/amd-reaches-46-percent-of-server-x86-cpu-revenue-intel-still-controls-70-percent-of-the-consumer-pc-market-share">Tom's Hardware / Mercury Research Q1 2026 x86 Share</a></div>
+      </div>
+    </section>
+
+    <footer>
+      Generated from local evidence and research-system artifacts. Material claims are tied to evidence IDs. This report separates facts, inferences, judgments, and verification gaps.
+    </footer>
+  </main>
+</body>
+</html>

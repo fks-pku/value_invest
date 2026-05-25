@@ -215,6 +215,53 @@ class ResearchPipelineTests(unittest.TestCase):
             self.assertTrue(result["final"]["synthesized_answer_path"].endswith("synthesized_answers.jsonl"))
             self.assertIn("专业回答：围绕", report)
 
+    def test_stock_qa_pipeline_can_run_leaf_first_research(self):
+        with project_tmp_dir() as tmp:
+            stock_dir = init_stock(tmp, "AAPL", "Apple Inc.")
+            (stock_dir / "evidence.jsonl").write_text(
+                json.dumps({
+                    "id": "ev_aapl_sec_revenue_20260328",
+                    "research_object": "stocks/AAPL",
+                    "source_type": "sec_fact",
+                    "source_name": "SEC XBRL Revenue",
+                    "url": "local://stocks/AAPL/data/sec_facts.json",
+                    "published_at": "2026-05-01T00:00:00Z",
+                    "fetched_at": "2026-05-08T17:46:28+00:00",
+                    "hash": "sha256:test",
+                    "tickers": ["AAPL"],
+                    "sectors": [],
+                    "themes": [],
+                    "summary": "Revenue was 111184000000 USD and gross profit was 51200000000 USD.",
+                    "reliability": "primary",
+                    "materiality": "medium",
+                    "used_in": [],
+                }) + "\n",
+                encoding="utf-8",
+            )
+
+            result = run_stock_qa_pipeline(
+                tmp,
+                "AAPL",
+                task_limit=2,
+                leaf_research_provider="mock",
+                leaf_research_limit=1,
+            )
+
+            research_dir = stock_dir / "research_system"
+            current = json.loads((research_dir / "pipeline_run.json").read_text(encoding="utf-8"))
+            stage_names = [stage["name"] for stage in current["stages"]]
+            self.assertIn("run_leaf_research", stage_names)
+            self.assertIn("synthesize_leaf_answers", stage_names)
+            self.assertIn("rollup_research_answers", stage_names)
+            self.assertTrue((research_dir / "leaf_research_tasks.jsonl").exists())
+            self.assertTrue((research_dir / "leaf_research_results.jsonl").exists())
+            self.assertTrue((research_dir / "leaf_answers.jsonl").exists())
+            self.assertTrue((research_dir / "rollup_answers.jsonl").exists())
+            self.assertEqual(result["final"]["leaf_research_provider"], "mock")
+            self.assertTrue(result["final"]["leaf_research_result_path"].endswith("leaf_research_results.jsonl"))
+            self.assertTrue(result["final"]["leaf_answer_path"].endswith("leaf_answers.jsonl"))
+            self.assertTrue(result["final"]["rollup_answer_path"].endswith("rollup_answers.jsonl"))
+
     def test_stock_qa_pipeline_can_use_llm_answer_synthesis(self):
         with project_tmp_dir() as tmp:
             stock_dir = init_stock(tmp, "AAPL", "Apple Inc.")

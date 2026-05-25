@@ -21,6 +21,11 @@ from value_invest_research.information_collection import (
     run_meta_qa_collection_tasks,
     run_research_collection_tasks,
 )
+from value_invest_research.leaf_research import (
+    rollup_research_answers,
+    run_leaf_research,
+    synthesize_leaf_answers,
+)
 from value_invest_research.meta_qa_research import build_meta_qa_research
 from value_invest_research.report_synthesis import write_meta_qa_professional_report, write_stock_professional_report
 from value_invest_research.research_system import build_research_system, normalize_ticker
@@ -43,6 +48,9 @@ def run_stock_qa_pipeline(
     synthesis_client: Any | None = None,
     write_professional_report: bool = False,
     professional_report_client: Any | None = None,
+    leaf_research_provider: str | None = None,
+    leaf_research_input: Path | None = None,
+    leaf_research_limit: int | None = None,
     timeout: int = 10,
 ) -> dict[str, Any]:
     """Run the stock foundation QA workflow from object to report artifacts."""
@@ -90,6 +98,25 @@ def run_stock_qa_pipeline(
         build_result = build_research_system(root, normalized)
         stages.append(_stage("refresh_report_after_candidates", build_result))
 
+    leaf_research_result: dict[str, Any] = {}
+    leaf_answer_result: dict[str, Any] = {}
+    rollup_result: dict[str, Any] = {}
+    if leaf_research_provider:
+        leaf_limit = leaf_research_limit if leaf_research_limit is not None else task_limit
+        leaf_research_result = run_leaf_research(
+            root,
+            normalized,
+            provider=leaf_research_provider,
+            input_path=leaf_research_input,
+            limit=leaf_limit,
+        )
+        stages.append(_stage("run_leaf_research", leaf_research_result))
+        leaf_answer_result = synthesize_leaf_answers(root, normalized)
+        stages.append(_stage("synthesize_leaf_answers", leaf_answer_result))
+        rollup_result = rollup_research_answers(root, normalized)
+        stages.append(_stage("rollup_research_answers", rollup_result))
+        build_result = {**build_result, **_report_paths(rollup_result)}
+
     synthesis_result: dict[str, Any] = {}
     if synthesize_answers:
         synthesis_result = run_stock_answer_synthesis(root, normalized, limit=task_limit, apply=True, client=synthesis_client)
@@ -126,6 +153,12 @@ def run_stock_qa_pipeline(
             "professional_report_md_path": professional_report_result.get("professional_report_md_path", ""),
             "professional_report_mode": professional_report_result.get("report_mode", ""),
             "candidate_path": str(active_candidate_path or ""),
+            "leaf_research_provider": leaf_research_result.get("provider", ""),
+            "leaf_research_task_path": leaf_research_result.get("task_path", ""),
+            "leaf_research_result_path": leaf_research_result.get("result_path", ""),
+            "leaf_research_source_path": leaf_research_result.get("source_path", ""),
+            "leaf_answer_path": leaf_answer_result.get("answer_path", ""),
+            "rollup_answer_path": rollup_result.get("rollup_path", ""),
         },
     )
     _write_pipeline_manifest(research_dir, manifest)

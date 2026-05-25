@@ -1,6 +1,6 @@
 import json
 import unittest
-from contextlib import redirect_stdout
+from contextlib import redirect_stderr, redirect_stdout
 from io import StringIO
 from pathlib import Path
 from unittest.mock import MagicMock, patch
@@ -258,12 +258,18 @@ class CliTests(unittest.TestCase):
                     "APPL",
                     "--task-limit",
                     "3",
+                    "--leaf-research-provider",
+                    "mock",
+                    "--leaf-research-limit",
+                    "1",
                 ])
 
             self.assertEqual(exit_code, 0)
             self.assertIn("Stock QA pipeline completed for AAPL", out.getvalue())
             self.assertIn("pipeline_run.json", out.getvalue())
+            self.assertIn("leaf_research_results.jsonl", out.getvalue())
             self.assertTrue((stock_dir / "research_system" / "pipeline_run.json").exists())
+            self.assertTrue((stock_dir / "research_system" / "leaf_answers.jsonl").exists())
 
     def test_add_research_question_command_prints_paths(self):
         with project_tmp_dir() as tmp:
@@ -642,6 +648,178 @@ class CliTests(unittest.TestCase):
             self.assertEqual(exit_code, 0)
             self.assertIn("Stock QA validation OK", out.getvalue())
             self.assertIn("professional_report.html", out.getvalue())
+
+    def test_leaf_research_commands_print_paths(self):
+        with project_tmp_dir() as tmp:
+            stock_dir = Path(tmp) / "stocks" / "XIAOMI"
+            stock_dir.mkdir(parents=True)
+            (stock_dir / "logs").mkdir(parents=True)
+            (stock_dir / "company_profile.md").write_text(
+                "# XIAOMI Company Profile\n\n- Company: Xiaomi Corporation\n- Ticker: XIAOMI\n",
+                encoding="utf-8",
+            )
+            (stock_dir / "evidence.jsonl").write_text(
+                json.dumps({
+                    "id": "ev_xiaomi_cli_foundation",
+                    "research_object": "stocks/XIAOMI",
+                    "source_type": "annual_report",
+                    "source_name": "Xiaomi Annual Report",
+                    "url": "https://example.com/xiaomi/annual",
+                    "published_at": "2026-04-28T00:00:00Z",
+                    "fetched_at": "2026-05-23T00:00:00+08:00",
+                    "hash": "sha256:ev_xiaomi_cli_foundation",
+                    "tickers": ["XIAOMI"],
+                    "sectors": [],
+                    "themes": [],
+                    "summary": "Xiaomi disclosed revenue, gross margin, cash flow, smartphone shipments, IoT, internet services, and EV progress.",
+                    "reliability": "primary",
+                    "materiality": "high",
+                    "used_in": [],
+                }, ensure_ascii=False) + "\n",
+                encoding="utf-8",
+            )
+
+            out = StringIO()
+            with redirect_stdout(out):
+                exit_code = main([
+                    "--root",
+                    str(tmp),
+                    "build-leaf-research-tasks",
+                    "XIAOMI",
+                    "--limit",
+                    "2",
+                ])
+            self.assertEqual(exit_code, 0)
+            self.assertIn("Leaf research tasks built for XIAOMI", out.getvalue())
+            self.assertIn("leaf_research_tasks.jsonl", out.getvalue())
+
+            out = StringIO()
+            with redirect_stdout(out):
+                exit_code = main([
+                    "--root",
+                    str(tmp),
+                    "run-leaf-research",
+                    "XIAOMI",
+                    "--provider",
+                    "mock",
+                    "--limit",
+                    "1",
+                ])
+            self.assertEqual(exit_code, 0)
+            self.assertIn("Leaf research run for XIAOMI", out.getvalue())
+            self.assertIn("leaf_research_results.jsonl", out.getvalue())
+            self.assertTrue((stock_dir / "research_system" / "leaf_research_sources.jsonl").exists())
+
+            out = StringIO()
+            with redirect_stdout(out):
+                exit_code = main([
+                    "--root",
+                    str(tmp),
+                    "synthesize-leaf-answers",
+                    "XIAOMI",
+                ])
+            self.assertEqual(exit_code, 0)
+            self.assertIn("Leaf answers synthesized for XIAOMI", out.getvalue())
+            self.assertIn("leaf_answers.jsonl", out.getvalue())
+
+            out = StringIO()
+            with redirect_stdout(out):
+                exit_code = main([
+                    "--root",
+                    str(tmp),
+                    "rollup-research-answers",
+                    "XIAOMI",
+                ])
+            self.assertEqual(exit_code, 0)
+            self.assertIn("Leaf research rollups written for XIAOMI", out.getvalue())
+            self.assertIn("rollup_answers.jsonl", out.getvalue())
+
+    def test_perplexity_leaf_research_cli_reports_missing_api_key(self):
+        with project_tmp_dir() as tmp:
+            stock_dir = Path(tmp) / "stocks" / "XIAOMI"
+            stock_dir.mkdir(parents=True)
+            (stock_dir / "logs").mkdir(parents=True)
+            (stock_dir / "evidence.jsonl").write_text(
+                json.dumps({
+                    "id": "ev_xiaomi_cli_foundation",
+                    "research_object": "stocks/XIAOMI",
+                    "source_type": "annual_report",
+                    "source_name": "Xiaomi Annual Report",
+                    "url": "https://example.com/xiaomi/annual",
+                    "published_at": "2026-04-28T00:00:00Z",
+                    "fetched_at": "2026-05-23T00:00:00+08:00",
+                    "hash": "sha256:ev_xiaomi_cli_foundation",
+                    "tickers": ["XIAOMI"],
+                    "sectors": [],
+                    "themes": [],
+                    "summary": "Xiaomi disclosed revenue, gross margin, cash flow, smartphone shipments, IoT, internet services, and EV progress.",
+                    "reliability": "primary",
+                    "materiality": "high",
+                    "used_in": [],
+                }, ensure_ascii=False) + "\n",
+                encoding="utf-8",
+            )
+
+            out = StringIO()
+            err = StringIO()
+            with patch.dict("os.environ", {}, clear=True):
+                with redirect_stdout(out), redirect_stderr(err):
+                    exit_code = main([
+                        "--root",
+                        str(tmp),
+                        "run-leaf-research",
+                        "XIAOMI",
+                        "--provider",
+                        "perplexity",
+                        "--limit",
+                        "1",
+                    ])
+
+            self.assertEqual(exit_code, 2)
+            self.assertIn("PERPLEXITY_API_KEY", err.getvalue())
+
+    def test_openai_compatible_leaf_research_cli_reports_missing_api_key(self):
+        with project_tmp_dir() as tmp:
+            stock_dir = Path(tmp) / "stocks" / "XIAOMI"
+            stock_dir.mkdir(parents=True)
+            (stock_dir / "logs").mkdir(parents=True)
+            (stock_dir / "evidence.jsonl").write_text(
+                json.dumps({
+                    "id": "ev_xiaomi_cli_foundation",
+                    "research_object": "stocks/XIAOMI",
+                    "source_type": "annual_report",
+                    "source_name": "Xiaomi Annual Report",
+                    "url": "https://example.com/xiaomi/annual",
+                    "published_at": "2026-04-28T00:00:00Z",
+                    "fetched_at": "2026-05-23T00:00:00+08:00",
+                    "hash": "sha256:ev_xiaomi_cli_foundation",
+                    "tickers": ["XIAOMI"],
+                    "sectors": [],
+                    "themes": [],
+                    "summary": "Xiaomi disclosed revenue, gross margin, cash flow, smartphone shipments, IoT, internet services, and EV progress.",
+                    "reliability": "primary",
+                    "materiality": "high",
+                    "used_in": [],
+                }, ensure_ascii=False) + "\n",
+                encoding="utf-8",
+            )
+
+            err = StringIO()
+            with patch.dict("os.environ", {}, clear=True):
+                with redirect_stderr(err):
+                    exit_code = main([
+                        "--root",
+                        str(tmp),
+                        "run-leaf-research",
+                        "XIAOMI",
+                        "--provider",
+                        "openai_compatible",
+                        "--limit",
+                        "1",
+                    ])
+
+            self.assertEqual(exit_code, 2)
+            self.assertIn("LEAF_RESEARCH_API_KEY", err.getvalue())
 
     def test_fetch_question_information_url_command_prints_paths(self):
         with project_tmp_dir() as tmp:

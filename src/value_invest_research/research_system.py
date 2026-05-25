@@ -170,6 +170,58 @@ BUSINESS_NODE_RULES = [
     },
 ]
 
+GENERIC_BUSINESS_NODE_RULES = [
+    {
+        "id": "core_products",
+        "label": "Core products and customer platform",
+        "role": "Primary revenue engine and customer demand surface",
+        "keywords": ["product", "platform", "customer", "client", "data center", "datacenter", "cpu", "gpu", "processor", "chip", "segment", "revenue", "share", "asp"],
+        "kpis": ["segment revenue", "market share", "ASP", "gross margin", "customer concentration"],
+    },
+    {
+        "id": "software_services",
+        "label": "Software, services, and ecosystem layer",
+        "role": "Recurring monetization, attach rate, and ecosystem leverage",
+        "keywords": ["software", "service", "services", "subscription", "ecosystem", "developer", "platform", "license", "support"],
+        "kpis": ["recurring revenue", "attach rate", "gross margin", "retention", "ecosystem participation"],
+    },
+    {
+        "id": "manufacturing_system",
+        "label": "Manufacturing, foundry, and supply system",
+        "role": "Capacity, cost, quality, and technology-execution constraint",
+        "keywords": ["manufacturing", "foundry", "factory", "fab", "wafer", "process", "node", "packaging", "capacity", "capex", "supply", "inventory"],
+        "kpis": ["capacity utilization", "yield", "external customer revenue", "capex", "inventory reserves"],
+    },
+    {
+        "id": "growth_initiatives",
+        "label": "Growth initiatives and strategic partnerships",
+        "role": "New profit pools, capability extension, and capital-allocation pressure",
+        "keywords": ["growth", "initiative", "strategy", "strategic", "partnership", "collaboration", "custom", "ai", "investment", "divestiture", "restructuring"],
+        "kpis": ["partner revenue", "new product ramp", "milestone delivery", "investment return", "cash burn"],
+    },
+    {
+        "id": "capital_allocation",
+        "label": "Capital allocation and cash engine",
+        "role": "Funds reinvestment, buybacks, dividends, and balance-sheet resilience",
+        "keywords": ["cash", "operating cash", "free cash", "buyback", "repurchase", "dividend", "capex", "equity", "debt", "financing"],
+        "kpis": ["operating cash flow", "free cash flow", "net cash/debt", "capex", "ROIC"],
+    },
+    {
+        "id": "governance_control",
+        "label": "Governance and leadership system",
+        "role": "Management quality, incentives, board oversight, and execution accountability",
+        "keywords": ["management", "board", "governance", "voting", "control", "founder", "ceo", "chairman", "incentive", "leadership"],
+        "kpis": ["leadership continuity", "incentives", "board independence", "capital-allocation discipline"],
+    },
+    {
+        "id": "group_financials",
+        "label": "Group financial model",
+        "role": "Revenue quality, margin structure, cash conversion, and balance sheet",
+        "keywords": ["revenue", "gross profit", "income", "profit", "assets", "liabilities", "equity", "margin", "loss"],
+        "kpis": ["revenue", "gross margin", "operating margin", "net profit", "cash conversion"],
+    },
+]
+
 QUESTION_TRANSLATIONS = {
     "Is the smartphone baseline stable, or is share/margin deterioration changing the platform thesis?": "手机基本盘是否稳定，还是份额/毛利恶化正在改变平台逻辑？",
     "Is shipment weakness active portfolio control, component shortage, price elasticity, or real demand loss?": "出货疲弱到底是主动控货、部件短缺、价格弹性，还是需求真实下滑？",
@@ -500,7 +552,8 @@ def build_research_system(root: Path, ticker: str) -> dict[str, Any]:
     foundation_graph = _build_foundation_graph(normalized, evidence)
     custom_questions = _load_custom_questions(research_dir)
     synthesis_overrides = load_synthesis_overrides(research_dir)
-    qa_tree = _build_qa_tree(normalized, foundation_graph, evidence, custom_questions, synthesis_overrides)
+    leaf_answer_overrides = _load_leaf_answer_overrides(research_dir)
+    qa_tree = _build_qa_tree(normalized, foundation_graph, evidence, custom_questions, synthesis_overrides + leaf_answer_overrides)
     information_rows = _attach_information_collection(qa_tree)
     question_rows: list[dict[str, Any]] = []
     message_rows: list[dict[str, Any]] = []
@@ -796,7 +849,7 @@ def _upsert_question_information_record(
 
 def _build_foundation_graph(ticker: str, evidence: list[EvidenceRecord]) -> dict[str, Any]:
     sections = [_build_section(section, evidence) for section in FOUNDATION_SECTIONS]
-    business_nodes = _detect_business_nodes(evidence)
+    business_nodes = _detect_business_nodes(ticker, evidence)
     kpis = _build_kpis(evidence, business_nodes)
     assumptions = _build_assumptions(ticker, business_nodes, sections)
     risks = _build_risks(evidence, business_nodes, sections)
@@ -930,6 +983,16 @@ def _load_custom_questions(research_dir: Path) -> list[dict[str, Any]]:
         if not isinstance(row, dict):
             raise ValueError(f"{path}:{line_number}: custom question must be an object")
         rows.append(row)
+    return rows
+
+
+def _load_leaf_answer_overrides(research_dir: Path) -> list[dict[str, Any]]:
+    """Load provider-backed leaf answers as synthesis overrides."""
+    rows: list[dict[str, Any]] = []
+    for row in _read_jsonl(research_dir / "leaf_answers.jsonl"):
+        normalized = dict(row)
+        normalized["synthesis_source"] = row.get("synthesis_source") or row.get("source") or "leaf_research"
+        rows.append(normalized)
     return rows
 
 
@@ -1135,6 +1198,7 @@ def _rollup_qa_tree(qa_tree: dict[str, Any]) -> None:
         gaps = _unique_child_gaps(child_nodes)
         support_count, refute_count, lead_count = _aggregate_child_evidence_counts(child_nodes)
         has_child_information = any(_node_has_information(child) for child in child_nodes)
+        rollup_sources = _child_rollup_sources(child_nodes)
 
         node["child_rollup_summary"] = summary
         node["current_answer"] = summary
@@ -1159,6 +1223,21 @@ def _rollup_qa_tree(qa_tree: dict[str, Any]) -> None:
             "confidence": synthesis["confidence"],
             "rollup": summary,
         }
+        if rollup_sources:
+            metadata = node.setdefault("metadata", {})
+            metadata["rollup_sources"] = rollup_sources
+
+
+def _child_rollup_sources(child_nodes: list[dict[str, Any]]) -> list[str]:
+    sources: list[str] = []
+    for child in child_nodes:
+        source = child.get("metadata", {}).get("synthesis_override", {}).get("source", "")
+        if source and source not in sources:
+            sources.append(source)
+        for nested in child.get("metadata", {}).get("rollup_sources", []) or []:
+            if nested and nested not in sources:
+                sources.append(nested)
+    return sources
 
 
 def _child_rollup_summary(node: dict[str, Any], child_nodes: list[dict[str, Any]]) -> str:
@@ -1835,6 +1914,93 @@ SECTION_QA_DRILLDOWNS = {
     },
 }
 
+GENERIC_SECTION_QA_DRILLDOWNS = {
+    "current_business": {
+        "profit-cash": [
+            ("segment-profit-pool", "哪个业务真正贡献毛利和现金，而不只是贡献收入？", "需要分部毛利、费用分摊、经营现金流和营运资本桥接。"),
+            ("unit-economics", "新增或成长业务的单位经济是否已经能独立成立？", "需要单位收入、单位成本、毛利、客户获取成本、售后/支持成本和价格调整。"),
+        ],
+        "customer-demand": [
+            ("demand-source", "需求来自真实刚需/替换/效率提升，还是促销与周期？", "需要订单、库存、价格、客户留存、使用强度和行业周期数据。"),
+            ("customer-concentration", "客户结构是否带来议价权、集中度或需求波动风险？", "需要大客户占比、渠道结构、续约/复购和客户预算周期。"),
+        ],
+        "profit-quality": [
+            ("cash-conversion", "利润能否稳定转化为现金？", "需要经营现金流、应收应付、库存、递延收入和资本开支桥接。"),
+            ("margin-sustainability", "高毛利业务的持续性来自结构优势还是阶段性周期？", "需要分业务毛利率、价格、成本、利用率和行业周期对照。"),
+        ],
+    },
+    "value_chain": {
+        "value-capture": [
+            ("supplier-power", "上游供应商或关键资源是否拿走核心经济性？", "需要关键投入价格、供应商集中度、采购承诺、账期和替代方案。"),
+            ("customer-channel-power", "渠道、客户和生态伙伴是否侵蚀利润？", "需要渠道结构、客户议价权、销售费用、售后/支持成本和分成机制。"),
+        ],
+        "supply-constraint": [
+            ("input-bottleneck", "关键投入、产能或技术瓶颈会不会改变交付和毛利？", "需要产能利用率、交付周期、良率、关键材料/部件价格和供应承诺。"),
+            ("capacity-quality", "规模爬坡是否会带来质量、成本或服务压力？", "需要产能爬坡、缺陷率、退货/赔付、客户投诉和质量成本数据。"),
+        ],
+        "channel-service": [
+            ("go-to-market-fit", "销售、交付和服务体系是否匹配业务复杂度？", "需要销售渠道、交付能力、支持网络、服务 SLA 和客户满意度。"),
+            ("inventory-risk", "库存、在制品或渠道压货是否会掩盖真实需求？", "需要库存天数、渠道库存、价格折扣、出货/消耗差异和存货减值。"),
+        ],
+    },
+    "competition": {
+        "real-peers": [
+            ("peer-map", "真实竞争对手是谁，竞争维度是什么？", "需要同行收入、份额、产品路线、价格带、客户重叠和渠道对照。"),
+            ("substitution-map", "替代技术或客户自研是否会削弱公司价值链位置？", "需要替代方案成本、性能、客户采用、迁移成本和生态约束。"),
+        ],
+        "share-quality": [
+            ("share-vs-profit", "份额变化是否伴随利润质量改善？", "需要份额、ASP、毛利率、补贴/折扣、利用率和库存数据。"),
+            ("mix-quality", "份额变化来自区域/客户/产品结构，还是真实竞争力？", "需要区域、客户类型、产品线、价格带和毛利拆分。"),
+        ],
+        "competition-intensity": [
+            ("price-war", "价格竞争是否会持续压缩毛利和现金流？", "需要竞品价格、折扣、成本曲线、合同条款和毛利弹性。"),
+            ("differentiation", "公司差异化能否支撑定价权，而不是只靠规模或补贴？", "需要性能、可靠性、生态、服务、品牌和客户留存证据。"),
+        ],
+    },
+    "strategy": {
+        "capability-boundary": [
+            ("transferable-capability", "哪些能力可以从既有业务迁移到新增长点？", "需要技术、客户、渠道、生态、制造或数据能力的可迁移证据。"),
+            ("new-capability", "哪些能力必须重新建设，不能从旧业务外推？", "需要新技术、新客户、新组织、新监管和新资本强度证据。"),
+        ],
+        "resource-allocation": [
+            ("capital-priority", "资源是否投向最重要利润池和最大约束点？", "需要研发、资本开支、人员、产能、销售投入和机会成本拆分。"),
+            ("cash-discipline", "战略投入是否会削弱现金回报和股东经济性？", "需要自由现金流、融资、摊薄、回购/分红和投资回报数据。"),
+        ],
+        "kpi-validation": [
+            ("stage-kpi", "每个战略阶段应该用哪些 KPI 验证？", "需要阶段性收入、毛利、客户采用、产能、质量和现金流指标。"),
+            ("trigger-map", "什么数据触发战略判断上修或下修？", "需要季度业绩、客户赢单、价格、份额、监管和资本开支变化。"),
+        ],
+    },
+    "governance": {
+        "founder-control": [
+            ("leadership-continuity", "领导层结构是否带来长期执行力和战略耐心？", "需要管理层履历、职责分工、继任安排、重大项目复盘和组织调整。"),
+            ("minority-risk", "控制权或外部约束是否放大少数股东治理风险？", "需要投票权、董事会、关联交易、政府/战略投资者条款和重大投资披露。"),
+        ],
+        "capital-discipline": [
+            ("approval-constraint", "重大资本配置是否有足够约束？", "需要董事会审批、投资回报披露、融资条款、回购分红和资产处置记录。"),
+            ("incentive-alignment", "激励机制是否和每股价值创造一致？", "需要股权激励、考核指标、摊薄、管理层持股和资本回报指标。"),
+        ],
+        "culture-blindspot": [
+            ("complexity-management", "组织是否能处理业务复杂度上升？", "需要管理层分工、流程再造、质量体系、客户响应和跨业务协同证据。"),
+            ("path-dependence", "历史成功经验是否可能形成路径依赖或盲区？", "需要失败项目复盘、技术路线调整、客户流失和监管/质量响应案例。"),
+        ],
+    },
+    "risk_sweep": {
+        "material-risk": [
+            ("core-business-risk", "核心业务弱化是否会改变整个基础画像？", "需要连续季度份额、收入、ASP、毛利、客户流失和库存数据。"),
+            ("transition-risk", "转型项目是否会引入新的质量、监管、资本或执行风险？", "需要项目里程碑、成本、客户验收、监管公告、赔付/减值和现金消耗。"),
+        ],
+        "risk-verification": [
+            ("financial-risk", "财务、会计和资本结构风险如何验证？", "需要自由现金流、现金资源、债务期限、利息成本、减值和营运资本。"),
+            ("regulatory-risk", "法律、监管、技术和产品责任风险如何验证？", "需要监管公告、诉讼、处罚、整改进度、产品缺陷和安全/合规事件。"),
+        ],
+        "falsification-trigger": [
+            ("fastest-trigger", "哪类新增证据最快证伪当前基础判断？", "需要价格、份额、客户赢单、毛利、现金流、减值和监管触发器。"),
+            ("monitoring-cadence", "这些风险应该按什么频率更新？", "需要季度业绩、月度行业数据、重大公告、监管文件和客户/竞品跟踪节奏。"),
+        ],
+    },
+}
+
 
 def _qa_nodes_for_section(ticker: str, section: dict[str, Any], evidence: list[EvidenceRecord]) -> list[dict[str, Any]]:
     section_id = section.get("id", "")
@@ -1892,7 +2058,8 @@ def _qa_drilldowns_for_section(
         return _source_origin_drilldown_questions(ticker, questions)
 
     drilldowns: dict[str, list[dict[str, Any]]] = {}
-    blueprints = SECTION_QA_DRILLDOWNS.get(section_id, {})
+    blueprint_source = SECTION_QA_DRILLDOWNS if ticker == "XIAOMI" else GENERIC_SECTION_QA_DRILLDOWNS
+    blueprints = blueprint_source.get(section_id, {})
     for question in questions:
         parent_info = question.get("info", _qa_empty_buckets())
         rows = []
@@ -2639,9 +2806,10 @@ def _information_explanation(section_id: str, record: EvidenceRecord) -> str:
     return f"{category}信息当前被标记为“{stance}”，用于回答本板块问题；改变判断前仍需回到原文链接和证据质量。"
 
 
-def _detect_business_nodes(evidence: list[EvidenceRecord]) -> list[dict[str, Any]]:
+def _detect_business_nodes(ticker: str, evidence: list[EvidenceRecord]) -> list[dict[str, Any]]:
     nodes: list[dict[str, Any]] = []
-    for rule in BUSINESS_NODE_RULES:
+    rules = BUSINESS_NODE_RULES if ticker == "XIAOMI" else GENERIC_BUSINESS_NODE_RULES
+    for rule in rules:
         evidence_ids = _evidence_ids_for_keywords(evidence, rule["keywords"])
         if not evidence_ids:
             continue
@@ -2964,13 +3132,17 @@ def _kpi_why(record: EvidenceRecord) -> str:
         return "Share and shipment trends test competitive position and demand quality."
     if "margin" in text or "gross profit" in text:
         return "Margins translate operating change into earnings revisions."
-    if "ev" in text or "vehicle" in text or "auto" in text:
-        return "EV metrics test whether the second curve is financially repeatable."
+    if "vehicle" in text or "automotive" in text or "auto " in text:
+        return "New-growth metrics test whether the second curve is financially repeatable."
     return "The metric helps convert narrative evidence into a testable baseline."
 
 
 def _assumption_for_node(node_id: str, label: str) -> str:
     assumptions = {
+        "core_products": "Core products retain customer relevance, pricing power, and enough margin to support the company baseline.",
+        "software_services": "Software, services, or ecosystem monetization adds durability rather than only attaching low-quality revenue.",
+        "manufacturing_system": "Manufacturing, foundry, or supply capabilities can improve cost, quality, and availability without destroying returns.",
+        "growth_initiatives": "New growth initiatives extend existing capabilities and can reach milestone evidence before consuming excessive capital.",
         "smartphone": "The smartphone platform remains stable enough to anchor users, channels, and downstream monetization.",
         "iot": "IoT scale creates repeat purchase and ecosystem lock-in rather than only low-margin hardware volume.",
         "services": "Service monetization is durable after platform, regulatory, and ad-cycle effects.",
@@ -2985,6 +3157,10 @@ def _assumption_for_node(node_id: str, label: str) -> str:
 
 def _main_question_for_node(node_id: str, label: str) -> str:
     questions = {
+        "core_products": "Are core products gaining durable demand, pricing power, and customer relevance?",
+        "software_services": "Do software, services, or ecosystem layers improve repeatability and margin quality?",
+        "manufacturing_system": "Can manufacturing and supply capabilities improve cost, quality, capacity, and customer trust?",
+        "growth_initiatives": "Are growth initiatives creating a real second profit pool or only adding capital intensity?",
         "smartphone": "Is the smartphone baseline stable, or is share/margin deterioration changing the platform thesis?",
         "iot": "Does IoT create real ecosystem lock-in and profit quality, or only hardware volume?",
         "services": "Is the service profit pool durable, or exposed to platform, traffic, and regulatory pressure?",
@@ -2999,6 +3175,10 @@ def _main_question_for_node(node_id: str, label: str) -> str:
 
 def _why_question_matters(node_id: str) -> str:
     reasons = {
+        "core_products": "Core products define the current cash engine, customer relevance, and competitive baseline.",
+        "software_services": "Software and services can make revenue more recurring, but only if attach and retention are real.",
+        "manufacturing_system": "Manufacturing and supply execution can be a moat or a capital-intensive drag.",
+        "growth_initiatives": "Growth initiatives can re-rate the company or absorb capital before proof arrives.",
         "smartphone": "The phone base often feeds user scale, channels, services, and ecosystem attachment.",
         "iot": "IoT can be either a durable ecosystem layer or a capital-light-looking but low-return hardware mix.",
         "services": "Service margins can dominate profit quality even when revenue share is small.",
@@ -3013,6 +3193,10 @@ def _why_question_matters(node_id: str) -> str:
 
 def _sections_for_node(node_id: str) -> list[str]:
     mapping = {
+        "core_products": ["current_business", "competition", "value_chain"],
+        "software_services": ["current_business", "strategy", "risk_sweep"],
+        "manufacturing_system": ["value_chain", "strategy", "risk_sweep"],
+        "growth_initiatives": ["history", "strategy", "current_business", "risk_sweep"],
         "smartphone": ["current_business", "competition", "value_chain"],
         "iot": ["current_business", "value_chain", "strategy"],
         "services": ["current_business", "strategy", "risk_sweep"],
@@ -3026,15 +3210,19 @@ def _sections_for_node(node_id: str) -> list[str]:
 
 
 def _time_frame_for_node(node_id: str) -> str:
-    if node_id in {"smartphone", "supply_chain"}:
+    if node_id in {"smartphone", "supply_chain", "core_products", "manufacturing_system"}:
         return "T1/T2"
-    if node_id in {"smart_ev", "iot", "services", "capital_allocation"}:
+    if node_id in {"smart_ev", "iot", "services", "capital_allocation", "software_services", "growth_initiatives"}:
         return "T2/T3"
     return "T3"
 
 
 def _required_evidence_for_node(node_id: str) -> list[str]:
     mapping = {
+        "core_products": ["Segment revenue", "Gross margin bridge", "Customer demand indicators", "Market share and ASP"],
+        "software_services": ["Recurring revenue", "Attach rate", "Retention", "Software/services gross margin"],
+        "manufacturing_system": ["Capacity utilization", "Yield or quality metrics", "Capex by project", "External customer or supply evidence"],
+        "growth_initiatives": ["Milestone delivery", "Customer wins", "Unit/project economics", "Capital consumed and expected return"],
         "smartphone": ["Quarterly shipments by region", "ASP and gross margin bridge", "Channel inventory and component-cost commentary"],
         "iot": ["Category revenue and gross margin", "Multi-device user cohort retention", "Attach-rate and repeat-purchase data"],
         "services": ["MAU by region", "ARPU and ad/gaming/service mix", "Regulatory and platform policy updates"],
@@ -3049,6 +3237,10 @@ def _required_evidence_for_node(node_id: str) -> list[str]:
 
 def _disconfirming_signals_for_node(node_id: str) -> list[str]:
     mapping = {
+        "core_products": ["Revenue grows but share or ASP falls", "Customer concentration worsens", "Gross margin weakens despite demand"],
+        "software_services": ["Attach rate stalls", "Recurring revenue grows without margin improvement", "Retention weakens"],
+        "manufacturing_system": ["Capex rises without utilization", "Yield or quality issues persist", "External customer proof remains immaterial"],
+        "growth_initiatives": ["Milestones slip", "Capital consumed rises faster than proof", "Customer wins do not convert to revenue"],
         "smartphone": ["Share losses persist for two or more quarters", "ASP and gross margin decline together", "Inventory builds while shipments fall"],
         "iot": ["Growth requires discounts", "Gross margin falls as scale rises", "Connected-device users do not improve service monetization"],
         "services": ["MAU growth slows while monetization falls", "Regulatory changes reduce ads or app distribution economics", "High-margin revenue mix shrinks"],
@@ -3063,6 +3255,10 @@ def _disconfirming_signals_for_node(node_id: str) -> list[str]:
 
 def _decision_rule_for_node(node_id: str) -> str:
     mapping = {
+        "core_products": "Upgrade the baseline only when demand, pricing, share, and margin evidence improve together.",
+        "software_services": "Treat services as durable only when recurring revenue, retention, and margin all support repeatability.",
+        "manufacturing_system": "Treat manufacturing as an advantage only when utilization, quality, cost, and customer evidence improve together.",
+        "growth_initiatives": "Do not strengthen growth claims until milestone evidence links to revenue, margin, or strategic control.",
         "smartphone": "Upgrade the baseline only if share, ASP, margin, and inventory evidence improve together; otherwise keep the issue open.",
         "iot": "Treat IoT as a quality profit pool only if scale comes with stable margins and measurable ecosystem retention.",
         "services": "Treat services as durable only if MAU, ARPU, and regulatory evidence support repeatability.",
@@ -3085,6 +3281,79 @@ def _child_questions_for_node(node_id: str) -> list[dict[str, Any]]:
         "decision_rule": "Do not close the question until at least one primary or high-reliability source tests it.",
     }
     templates: dict[str, list[dict[str, Any]]] = {
+        "core_products": [
+            {
+                **common,
+                "priority": "P0",
+                "question": "Is product demand improving because of structural customer pull or temporary cycle strength?",
+                "why_it_matters": "The same revenue growth can mean very different things depending on demand source, price, and mix.",
+                "sections": ["current_business", "competition"],
+                "required_evidence": ["Segment revenue", "ASP", "Market share", "Customer backlog or usage", "Gross margin bridge"],
+                "disconfirming_signals": ["Revenue grows while share or ASP falls", "Backlog fades after one cycle"],
+                "decision_rule": "Separate structural demand from inventory, pricing, and cycle effects before updating the baseline.",
+            },
+            {
+                **common,
+                "question": "Which customer segment or use case is actually driving profit quality?",
+                "why_it_matters": "Profit pools often concentrate in a narrower customer segment than reported revenue suggests.",
+                "sections": ["current_business", "value_chain"],
+                "required_evidence": ["Customer mix", "Use-case mix", "Segment margin", "Customer concentration"],
+                "disconfirming_signals": ["High-growth customers carry lower margin", "Customer concentration weakens bargaining power"],
+                "decision_rule": "Prefer margin and cash evidence by customer/use case over aggregate revenue growth.",
+            },
+        ],
+        "software_services": [
+            {
+                **common,
+                "question": "Is software or services revenue recurring and margin-accretive?",
+                "why_it_matters": "Recurring high-margin layers can improve business quality, but weak attach only adds narrative.",
+                "sections": ["current_business", "strategy"],
+                "required_evidence": ["Recurring revenue", "Retention", "Attach rate", "Gross margin", "Support cost"],
+                "disconfirming_signals": ["Services revenue grows but retention or margin weakens"],
+                "decision_rule": "Require repeatability and margin proof before calling software/services a quality layer.",
+            }
+        ],
+        "manufacturing_system": [
+            {
+                **common,
+                "priority": "P0",
+                "question": "Do capacity, yield, and utilization data show manufacturing is becoming an advantage?",
+                "why_it_matters": "Manufacturing scale compounds only if utilization and quality rise faster than capex burden.",
+                "sections": ["value_chain", "risk_sweep"],
+                "required_evidence": ["Capacity utilization", "Yield", "Capex by node/project", "Quality cost", "Customer commitments"],
+                "disconfirming_signals": ["Capex rises without utilization", "Inventory reserves or impairments recur"],
+                "decision_rule": "Treat manufacturing as a moat only when cost, quality, utilization, and customer proof align.",
+            },
+            {
+                **common,
+                "question": "Are external customers or internal products validating the manufacturing roadmap?",
+                "why_it_matters": "Roadmap credibility needs customer, product, and economic validation rather than only management targets.",
+                "sections": ["strategy", "competition"],
+                "required_evidence": ["External customer revenue", "Product ramp", "Process-node milestones", "Packaging wins"],
+                "disconfirming_signals": ["Customer revenue stays immaterial", "Product ramps slip"],
+                "decision_rule": "Keep roadmap claims provisional until customer and product evidence arrives.",
+            },
+        ],
+        "growth_initiatives": [
+            {
+                **common,
+                "question": "Do partnerships and new initiatives translate into products, revenue, or strategic control?",
+                "why_it_matters": "Partnership announcements often arrive before economic proof.",
+                "sections": ["strategy", "current_business"],
+                "required_evidence": ["Product milestones", "Customer wins", "Revenue timing", "Margin structure", "Deal terms"],
+                "disconfirming_signals": ["Milestones slip", "Partner activity does not convert into revenue"],
+                "decision_rule": "Do not strengthen the thesis until partnership evidence appears in operating metrics.",
+            },
+            {
+                **common,
+                "question": "Is the new initiative funded by surplus cash generation or by dilution and balance-sheet risk?",
+                "why_it_matters": "A second curve can destroy per-share value if proof arrives after heavy financing.",
+                "sections": ["capital_allocation", "risk_sweep"],
+                "required_evidence": ["Free cash flow", "Equity issuance", "Debt maturity", "Capex", "Project-level returns"],
+                "disconfirming_signals": ["Financing rises while returns remain unproven", "Cash flow weakens after new investments"],
+                "decision_rule": "Tie new-growth claims to funding source and return evidence.",
+            },
+        ],
         "smartphone": [
             {
                 **common,
@@ -3221,8 +3490,8 @@ def _fenghe_classification(record: EvidenceRecord, affected_nodes: list[str]) ->
         return {"cycle": "management and capital-allocation cycle", "change": "control, incentive, or governance evidence", "certainty": _message_certainty(record), "dominant_d": "D1", "five_m": "M5", "time_frame": "T3"}
     if record.source_type in {"company_ir", "ipo_prospectus"}:
         return {"cycle": "company foundation baseline", "change": "origin, model, or strategic-positioning evidence", "certainty": _message_certainty(record), "dominant_d": "D1", "five_m": "M4", "time_frame": "T3"}
-    if "smart_ev" in affected_nodes or _matches_any(text, ["ev", "vehicle", "recall", "assisted driving"]):
-        return {"cycle": "EV adoption / safety validation cycle", "change": "new manufacturing or safety evidence", "certainty": _message_certainty(record), "dominant_d": "D2", "five_m": "M3/M4/M5", "time_frame": "T1/T2"}
+    if "smart_ev" in affected_nodes or _matches_any(text, ["vehicle", "automotive", "assisted driving"]):
+        return {"cycle": "new growth / safety validation cycle", "change": "new manufacturing or safety evidence", "certainty": _message_certainty(record), "dominant_d": "D2", "five_m": "M3/M4/M5", "time_frame": "T1/T2"}
     if "smartphone" in affected_nodes or _matches_any(text, ["smartphone", "shipment", "share"]):
         return {"cycle": "device replacement and component-cost cycle", "change": "share, shipment, or pricing evidence", "certainty": _message_certainty(record), "dominant_d": "D2", "five_m": "M2/M3", "time_frame": "T1/T2"}
     if "services" in affected_nodes:
@@ -3295,6 +3564,23 @@ def _write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
     with path.open("w", encoding="utf-8", newline="\n") as file:
         for row in rows:
             file.write(json.dumps(row, ensure_ascii=False, sort_keys=True) + "\n")
+
+
+def _read_jsonl(path: Path) -> list[dict[str, Any]]:
+    if not path.exists():
+        return []
+    rows: list[dict[str, Any]] = []
+    for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+        if not line.strip():
+            continue
+        try:
+            row = json.loads(line)
+        except json.JSONDecodeError as exc:
+            raise ValueError(f"{path}:{line_number}: {exc}") from exc
+        if not isinstance(row, dict):
+            raise ValueError(f"{path}:{line_number}: JSONL row must be an object")
+        rows.append(row)
+    return rows
 
 
 def _write_text(path: Path, text: str) -> None:
@@ -5222,6 +5508,7 @@ def _render_l3_question_page(
     reasoning_path = _render_l3_reasoning_path(ticker, node, evidence)
     validation_tests = _render_l3_validation_tests(ticker, node)
     evidence_index = _render_l3_information_index(node)
+    leaf_source_index = _render_leaf_research_sources(node)
     collection_status = _render_information_collection_status(node)
     add_question_box = _render_add_question_box(f"{ticker}:l3:{node.get('id', '')}", "L3 问题", node.get("id", ""))
     l2_href = f"../{_safe_id(parent_node.get('id', ''))}.html"
@@ -5288,6 +5575,7 @@ def _render_l3_question_page(
       <p class="eyebrow">证据与反证</p>
       <h2>四类信息索引</h2>
       {evidence_index}
+      {leaf_source_index}
       {collection_status}
     </section>
     <section id="verification" class="level-frame">
@@ -5714,6 +6002,43 @@ def _render_l3_information_index(node: dict[str, Any]) -> str:
             body = "<ul>" + "".join(rows) + "</ul>"
         boxes.append(f"<div class=\"l3-info-box {escape(category)}\"><h4>{escape(label)}</h4>{body}</div>")
     return f"<div class=\"l3-info-grid\">{''.join(boxes)}</div>"
+
+
+def _render_leaf_research_sources(node: dict[str, Any]) -> str:
+    sources = node.get("professional_answer", {}).get("leaf_sources", []) or []
+    if not sources:
+        return ""
+    rows = []
+    for source in sources[:8]:
+        title = _truncate_text(source.get("title") or source.get("url") or "来源", 46)
+        url = source.get("url", "")
+        link = f"<a href=\"{escape(url)}\">{escape(title)}</a>" if url else escape(title)
+        category = INFO_CATEGORY_LABEL_ZH.get(source.get("information_category", ""), source.get("information_category", ""))
+        quality = " / ".join(
+            part
+            for part in [
+                source.get("reliability", ""),
+                source.get("materiality", ""),
+            ]
+            if part
+        )
+        rows.append(
+            "<tr>"
+            f"<td>{link}<p class=\"note\">{escape(source.get('publisher', ''))}</p></td>"
+            f"<td>{escape(category)}</td>"
+            f"<td>{escape(quality)}</td>"
+            f"<td>{escape(_truncate_text(source.get('summary', ''), 140))}</td>"
+            "</tr>"
+        )
+    return (
+        '<div class="field leaf-source-index">'
+        "<b>Leaf 深研来源</b>"
+        '<table class="analysis-table">'
+        "<thead><tr><th>来源</th><th>信息桶</th><th>质量</th><th>摘要</th></tr></thead>"
+        f"<tbody>{''.join(rows)}</tbody>"
+        "</table>"
+        "</div>"
+    )
 
 
 def _render_node_decision_panel(node: dict[str, Any], title: str, judgment_override: str = "") -> str:

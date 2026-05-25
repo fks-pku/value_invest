@@ -667,7 +667,9 @@ def _apply_override_to_node(node: dict[str, Any], override: dict[str, Any]) -> N
     refuting = override["refuting_evidence"] or current_professional.get("refuting_evidence", [])
     leads = override["research_leads"] or current_professional.get("research_leads", [])
     source_balance = override["source_balance"] or current_professional.get("source_balance", "")
+    leaf_sources = override.get("leaf_sources") or override.get("source_index") or current_professional.get("leaf_sources", [])
     professional_answer = {
+        "source": override.get("synthesis_source", "imported"),
         "answer": override["answer"],
         "facts": facts,
         "inferences": inferences,
@@ -680,6 +682,7 @@ def _apply_override_to_node(node: dict[str, Any], override: dict[str, Any]) -> N
         "source_balance": source_balance,
         "confidence": override["confidence"],
         "rollup": override["rollup"],
+        "leaf_sources": leaf_sources,
     }
     node["professional_answer"] = professional_answer
     node["current_answer"] = override["answer"]

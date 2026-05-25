@@ -1,0 +1,1099 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>INTC L2 旧方案为什么不够好？</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --muted: #6e6e73;
+      --paper: #f5f5f7;
+      --panel: #ffffff;
+      --panel-soft: #fbfbfd;
+      --line: #d2d2d7;
+      --blue: #0066cc;
+      --green: #248a3d;
+      --amber: #a86600;
+      --red: #d70015;
+      --shadow: 0 18px 50px rgba(0, 0, 0, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.55;
+    }
+    header {
+      padding: clamp(52px, 8vw, 104px) clamp(20px, 6vw, 86px) 34px;
+      color: var(--ink);
+      background: linear-gradient(180deg, #fff 0%, #f8f8fa 72%, var(--paper) 100%);
+      border-bottom: 1px solid rgba(0, 0, 0, .06);
+    }
+    h1 { max-width: 1080px; margin: 0; font-size: clamp(44px, 7vw, 86px); font-weight: 700; line-height: .98; letter-spacing: 0; }
+    h2 { margin: 0 0 12px; font-size: clamp(28px, 4vw, 48px); font-weight: 700; letter-spacing: 0; }
+    h3 { margin: 0 0 10px; font-size: clamp(21px, 2.2vw, 29px); font-weight: 700; letter-spacing: 0; }
+    p { margin: 0 0 10px; }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .subtitle { max-width: 940px; margin-top: 18px; color: var(--muted); font-size: clamp(18px, 2.1vw, 24px); line-height: 1.45; }
+    .nav, nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 11px clamp(16px, 5vw, 70px);
+      background: rgba(245, 245, 247, .82);
+      border-bottom: 1px solid rgba(0, 0, 0, .08);
+      backdrop-filter: saturate(180%) blur(20px);
+    }
+    .nav a, nav a {
+      flex: 0 0 auto;
+      padding: 7px 12px;
+      color: var(--ink);
+      text-decoration: none;
+      border: 1px solid rgba(0, 0, 0, .08);
+      background: rgba(255, 255, 255, .74);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    main { width: min(1180px, calc(100% - 32px)); margin: 26px auto 72px; }
+    section {
+      margin: 18px 0;
+      padding: clamp(24px, 4vw, 44px);
+      background: rgba(255, 255, 255, .9);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, .7) inset;
+    }
+    .layer-label, .eyebrow { margin: 0 0 12px; color: var(--blue); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .summary-grid, .summary-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+    .summary-card, .metric {
+      padding: 16px;
+      background: rgba(255, 255, 255, .88);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      min-width: 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
+      color: var(--ink);
+    }
+    .summary-card span, .metric span { display: block; color: var(--muted); font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: none; }
+    .summary-card strong, .metric strong { display: block; margin-top: 8px; font-size: clamp(20px, 2.2vw, 30px); font-weight: 700; line-height: 1.1; overflow-wrap: anywhere; }
+    .summary-card p { margin: 9px 0 0; color: var(--muted); font-size: 13px; }
+    .foundation-grid, .grid, .lead-grid, .info-grid, .reference-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-items: start; }
+    .foundation-card, .card, .question-card, .history-card {
+      padding: clamp(18px, 3vw, 28px);
+      background: var(--panel);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      min-width: 0;
+      box-shadow: var(--shadow);
+    }
+    .foundation-card { border-left: 0; }
+    .foundation-card.partial, .foundation-card.missing { border-left: 0; }
+    .detail-link {
+      display: inline-flex;
+      margin-top: 12px;
+      padding: 8px 13px;
+      color: #fff;
+      background: var(--blue);
+      text-decoration: none;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .detail-link:hover { background: #005bb5; text-decoration: none; }
+    .answer-box, .rule-box {
+      padding: 16px;
+      background: #f5f8ff;
+      border: 1px solid #d6e6ff;
+      border-radius: 8px;
+      margin: 14px 0 16px;
+    }
+    .info-box {
+      padding: 14px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: var(--panel-soft);
+      min-width: 0;
+    }
+    .info-box h4 { margin: 0 0 10px; font-size: 13px; font-weight: 700; color: var(--muted); letter-spacing: .04em; }
+    .info-box ul { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+    .info-box li { margin: 0; padding-top: 12px; border-top: 1px solid rgba(0, 0, 0, .07); }
+    .info-box li:first-child { padding-top: 0; border-top: 0; }
+    .info-box.evidence { background: #f5f9ff; }
+    .info-box.research_report { background: #f4fbf7; }
+    .info-box.message { background: #fff9ef; }
+    .info-box.opinion { background: #f6f6f7; }
+    .timeline { display: grid; gap: 12px; margin-top: 16px; }
+    .timeline-row { display: grid; grid-template-columns: 120px 1fr; gap: 16px; padding: 16px; border: 1px solid rgba(0, 0, 0, .08); border-radius: 8px; background: var(--panel); }
+    .timeline-year { color: var(--blue); font-weight: 700; }
+    .field { margin-top: 12px; }
+    .field b { display: block; margin-bottom: 5px; color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: none; }
+    .note { color: var(--muted); font-size: 13px; }
+    .compact-question-list {
+      display: grid;
+      gap: 8px;
+      margin: 8px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .compact-question-list li {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: center;
+      margin: 0;
+      padding: 9px 10px;
+      border: 1px solid rgba(0, 0, 0, .07);
+      border-radius: 8px;
+      background: #f8f8fa;
+    }
+    .compact-question-list .question-text {
+      min-width: 0;
+      overflow-wrap: anywhere;
+      color: var(--ink);
+    }
+    .mix-badge {
+      display: inline-grid;
+      grid-template-columns: auto auto;
+      gap: 6px;
+      align-items: baseline;
+      white-space: nowrap;
+      padding: 4px 7px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, .08);
+      color: var(--muted);
+      font-size: 11px;
+    }
+    .mix-badge strong {
+      color: var(--blue);
+      font-family: "SF Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 11px;
+    }
+    .chip {
+      display: inline-flex;
+      max-width: 100%;
+      margin: 0 4px 7px 0;
+      padding: 3px 7px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .76);
+      color: #424245;
+      font-family: "SF Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 11px;
+      overflow-wrap: anywhere;
+    }
+    .status-evidenced { color: var(--green); font-weight: 800; }
+    .status-partial { color: var(--amber); font-weight: 800; }
+    .status-missing, .impact-weakening { color: var(--red); font-weight: 800; }
+    .impact-strengthening { color: var(--green); font-weight: 800; }
+    .impact-research_lead { color: var(--amber); font-weight: 800; }
+    table { width: 100%; border-collapse: separate; border-spacing: 0; background: #fff; font-size: 14px; border: 1px solid rgba(0, 0, 0, .08); border-radius: 8px; overflow: hidden; }
+    th, td { padding: 13px; border-bottom: 1px solid rgba(0, 0, 0, .08); vertical-align: top; text-align: left; }
+    tr:last-child td { border-bottom: 0; }
+    th { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .04em; background: #f5f5f7; text-transform: none; }
+    ul { margin: 8px 0 0; padding-left: 20px; }
+    li { margin: 5px 0; }
+    @media (max-width: 880px) {
+      .summary-grid, .summary-strip, .foundation-grid, .grid, .lead-grid, .info-grid, .reference-grid, .timeline-row { grid-template-columns: 1fr; }
+      .compact-question-list li { grid-template-columns: 1fr; }
+      .mix-badge { justify-self: start; }
+      table { font-size: 13px; }
+      header { padding-top: 42px; }
+    }
+    
+    .qa-shell {
+      display: grid;
+      grid-template-columns: minmax(230px, .78fr) minmax(0, 1.45fr) minmax(300px, .95fr);
+      gap: 16px;
+      align-items: start;
+    }
+    .qa-full-research {
+      width: min(1180px, calc(100% - 32px));
+      margin: 26px auto 24px;
+    }
+    .qa-full-research .thesis-card {
+      margin: 14px 0 16px;
+      border-radius: 8px;
+      border-left: 0;
+      background: #111820;
+      box-shadow: var(--shadow);
+    }
+    .qa-full-research table {
+      margin: 12px 0 24px;
+    }
+    .qa-full-research .question-card {
+      margin: 16px 0;
+    }
+    .level-frame {
+      scroll-margin-top: 70px;
+    }
+    .l2-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .l2-card {
+      padding: clamp(18px, 2.5vw, 26px);
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      min-width: 0;
+    }
+    .l2-card h3 {
+      font-size: clamp(20px, 2vw, 27px);
+    }
+    .node-brief-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) repeat(3, minmax(0, .88fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .node-brief-card {
+      min-width: 0;
+      padding: 15px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .88);
+    }
+    .node-brief-card.primary {
+      background: #111820;
+      color: #fff;
+    }
+    .node-brief-card.primary b,
+    .node-brief-card.primary p {
+      color: #fff;
+    }
+    .node-brief-card b {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .node-brief-card p {
+      margin: 0;
+      font-size: 13px;
+    }
+    .category-meter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .category-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 8px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 999px;
+      background: #f5f5f7;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .category-pill.filled {
+      color: var(--blue);
+      background: #eef5ff;
+      border-color: #c9ddff;
+    }
+    .category-pill.warning {
+      color: var(--amber);
+      background: #fff8eb;
+      border-color: #f1d49b;
+    }
+    .research-path {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 0;
+    }
+    .research-path span {
+      display: inline-flex;
+      padding: 4px 8px;
+      border-radius: 999px;
+      color: var(--muted);
+      background: #f5f5f7;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .research-path span.active {
+      color: var(--blue);
+      background: #eef5ff;
+    }
+    .source-coverage-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .coverage-item {
+      min-width: 0;
+      padding: 9px 10px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #f5f5f7;
+    }
+    .coverage-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .coverage-item strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 18px;
+      line-height: 1;
+    }
+    .coverage-item.support strong { color: var(--green); }
+    .coverage-item.refute strong { color: var(--red); }
+    .coverage-item.lead strong { color: var(--amber); }
+    .coverage-item.total strong { color: var(--blue); }
+    .handoff-table {
+      margin-top: 14px;
+    }
+    .handoff-table td:first-child {
+      width: 28%;
+      font-weight: 700;
+    }
+    .handoff-table .mini-meter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .handoff-table .mini-meter span {
+      display: inline-flex;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: #f5f5f7;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .research-unit-card {
+      display: grid;
+      gap: 12px;
+    }
+    .decision-panel {
+      margin-top: 12px;
+      padding: 14px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8f8fa 100%);
+    }
+    .decision-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .decision-head b {
+      color: var(--ink);
+      font-size: 13px;
+      letter-spacing: .04em;
+    }
+    .decision-head span {
+      flex: 0 0 auto;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #eef5ff;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .decision-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .decision-box {
+      min-width: 0;
+      padding: 12px;
+      border: 1px solid rgba(0, 0, 0, .07);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .84);
+    }
+    .decision-box.judgment {
+      background: #111820;
+      color: #fff;
+    }
+    .decision-box.judgment h4,
+    .decision-box.judgment p {
+      color: #fff;
+    }
+    .decision-box h4,
+    .next-step-box b {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .decision-box ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .decision-box li {
+      margin: 4px 0;
+      font-size: 13px;
+    }
+    .evidence-score strong {
+      font-size: 20px;
+      color: var(--ink);
+    }
+    .next-step-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .next-step-box {
+      min-width: 0;
+      padding: 12px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #fff9ef;
+    }
+    .next-step-box p {
+      margin: 0;
+      font-size: 13px;
+    }
+    .collection-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .collection-box {
+      min-width: 0;
+      padding: 10px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #f7fbff;
+    }
+    .collection-box b {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .04em;
+    }
+    .collection-box p {
+      margin: 0 0 5px;
+      font-size: 13px;
+    }
+    .collection-status {
+      color: var(--blue);
+      font-weight: 800;
+    }
+    .l3-info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .l3-info-box {
+      min-width: 0;
+      padding: 10px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: var(--panel-soft);
+    }
+    .l3-info-box.evidence { background: #f5f9ff; }
+    .l3-info-box.research_report { background: #f4fbf7; }
+    .l3-info-box.message { background: #fff9ef; }
+    .l3-info-box.opinion { background: #f6f6f7; }
+    .l3-info-box h4 {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .l3-info-box ul {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .l3-info-box li {
+      margin: 0;
+      padding: 9px 0 0 10px;
+      border-top: 1px solid rgba(0, 0, 0, .07);
+      border-left: 3px solid #8e8e93;
+    }
+    .l3-info-box li:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+    .l3-info-box li.stance-support { border-left-color: var(--green); }
+    .l3-info-box li.stance-refute { border-left-color: var(--red); }
+    .l3-info-box li.stance-lead { border-left-color: var(--amber); }
+    .l3-detail-page {
+      max-width: 1240px;
+    }
+    .l3-answer-section h2 {
+      max-width: 960px;
+    }
+    .l3-answer-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr);
+      gap: 14px;
+      align-items: stretch;
+      margin-top: 16px;
+    }
+    .l3-answer-main,
+    .l3-answer-metrics,
+    .analysis-metric {
+      min-width: 0;
+      padding: clamp(16px, 2.5vw, 22px);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
+    }
+    .l3-answer-main {
+      background: #111820;
+      color: #fff;
+    }
+    .l3-answer-main b,
+    .l3-answer-main p {
+      color: #fff;
+    }
+    .l3-answer-main b {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 12px;
+      letter-spacing: .06em;
+    }
+    .l3-answer-main p {
+      margin: 0;
+      font-size: clamp(16px, 1.8vw, 21px);
+      line-height: 1.7;
+    }
+    .l3-answer-metrics {
+      display: grid;
+      gap: 10px;
+      background: #f5f5f7;
+    }
+    .l3-answer-metrics div {
+      padding: 10px 0;
+      border-top: 1px solid rgba(0, 0, 0, .08);
+    }
+    .l3-answer-metrics div:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+    .l3-answer-metrics span,
+    .analysis-metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .l3-answer-metrics strong,
+    .analysis-metric strong {
+      display: block;
+      margin-top: 6px;
+      color: var(--ink);
+      font-size: clamp(22px, 2.2vw, 32px);
+      line-height: 1.1;
+    }
+    .l3-answer-metrics p,
+    .analysis-metric p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .analysis-metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 14px 0;
+    }
+    .analysis-table td:first-child {
+      width: 18%;
+    }
+    .bar-stack {
+      display: grid;
+      gap: 10px;
+      margin: 16px 0;
+      padding: 16px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .bar-row {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr) 150px;
+      gap: 12px;
+      align-items: center;
+      min-width: 0;
+      font-size: 13px;
+    }
+    .bar-row span {
+      color: var(--ink);
+      font-weight: 700;
+    }
+    .bar-row b {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-align: right;
+    }
+    .bar-track {
+      height: 12px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e8e8ed;
+    }
+    .bar-fill {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+    }
+    .bar-fill.blue { background: var(--blue); }
+    .bar-fill.green { background: var(--green); }
+    .l3-reasoning-list {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .l3-reasoning-list article {
+      min-width: 0;
+      padding: 16px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .l3-reasoning-list span {
+      display: inline-flex;
+      margin-bottom: 10px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      color: var(--blue);
+      background: #eef5ff;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .l3-reasoning-list p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+    .stance-pill,
+    .quality-pill {
+      display: inline-flex;
+      margin: 0 5px 7px 0;
+      padding: 3px 7px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .stance-pill {
+      background: #f5f5f7;
+      color: var(--ink);
+    }
+    .quality-pill {
+      background: #eef5ff;
+      color: var(--blue);
+    }
+    .qa-panel {
+      min-width: 0;
+      background: rgba(255, 255, 255, .92);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+    .qa-tree-panel, .qa-evidence-panel {
+      position: sticky;
+      top: 62px;
+      max-height: calc(100vh - 84px);
+      overflow: auto;
+      padding: 16px;
+    }
+    .qa-main-panel { padding: clamp(22px, 3vw, 34px); }
+    .qa-kicker {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      margin-bottom: 10px;
+    }
+    .qa-tree-group { margin: 0 0 16px; }
+    .qa-tree-title {
+      margin: 12px 0 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .qa-node-button {
+      width: 100%;
+      display: block;
+      margin: 5px 0;
+      padding: 9px 10px;
+      color: var(--ink);
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      text-align: left;
+      font: inherit;
+      cursor: pointer;
+    }
+    .qa-node-button:hover { background: #f5f5f7; }
+    .qa-node-button.active {
+      background: #f5f8ff;
+      border-color: #c9ddff;
+      color: var(--blue);
+      font-weight: 700;
+    }
+    .qa-node-level {
+      display: inline-flex;
+      margin-right: 6px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .qa-level-2 { padding-left: 20px; }
+    .qa-level-3 { padding-left: 36px; }
+    .qa-level-4 { padding-left: 52px; }
+    .qa-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .qa-badge {
+      display: inline-flex;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #f5f5f7;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .qa-question-title { margin-bottom: 14px; }
+    .qa-rollup {
+      margin: 14px 0;
+      padding: 14px;
+      border: 1px solid #d6e6ff;
+      border-radius: 8px;
+      background: #f5f8ff;
+    }
+    .qa-rollup strong { color: var(--blue); }
+    .qa-synthesis-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .qa-synthesis-box {
+      padding: 14px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: var(--panel-soft);
+    }
+    .qa-synthesis-box h4, .qa-child-list h4, .qa-bucket h4 {
+      margin: 0 0 9px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .qa-child-list { margin-top: 16px; }
+    .qa-child-list button {
+      display: block;
+      width: 100%;
+      margin: 7px 0;
+      padding: 11px 12px;
+      text-align: left;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      font: inherit;
+      cursor: pointer;
+    }
+    .qa-child-list button:hover { border-color: #c9ddff; color: var(--blue); }
+    .qa-bucket {
+      margin-bottom: 12px;
+      padding: 14px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: var(--panel-soft);
+    }
+    .qa-bucket.evidence { background: #f5f9ff; }
+    .qa-bucket.research_report { background: #f4fbf7; }
+    .qa-bucket.message { background: #fff9ef; }
+    .qa-bucket.opinion { background: #f6f6f7; }
+    .qa-evidence-item {
+      padding: 11px 0;
+      border-top: 1px solid rgba(0, 0, 0, .07);
+    }
+    .qa-evidence-item:first-of-type { border-top: 0; padding-top: 0; }
+    .qa-empty { color: var(--muted); font-size: 13px; }
+    .qa-ask textarea {
+      width: 100%;
+      min-height: 92px;
+      resize: vertical;
+      padding: 12px;
+      border: 1px solid rgba(0, 0, 0, .12);
+      border-radius: 8px;
+      font: inherit;
+      background: #fff;
+    }
+    .draft-question textarea {
+      width: 100%;
+      min-height: 92px;
+      resize: vertical;
+      padding: 12px;
+      border: 1px solid rgba(0, 0, 0, .12);
+      border-radius: 8px;
+      font: inherit;
+      background: #fff;
+    }
+    .draft-question-output {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .draft-question-output textarea {
+      min-height: 118px;
+      font-family: "SF Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .qa-ask-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .qa-ask button {
+      padding: 8px 12px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 999px;
+      font: inherit;
+      cursor: pointer;
+      background: #fff;
+    }
+    .qa-ask button.primary {
+      color: #fff;
+      background: var(--blue);
+      border-color: var(--blue);
+      font-weight: 700;
+    }
+    .draft-question button {
+      padding: 8px 12px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 999px;
+      font: inherit;
+      cursor: pointer;
+      background: #fff;
+    }
+    .draft-question button.primary {
+      color: #fff;
+      background: var(--blue);
+      border-color: var(--blue);
+      font-weight: 700;
+    }
+    .qa-static-index {
+      width: min(1180px, calc(100% - 32px));
+      margin: 22px auto 72px;
+    }
+    .qa-static-card {
+      margin: 12px 0;
+      padding: 16px;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
+    }
+    .qa-static-card h3 {
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+      margin-bottom: 8px;
+      font-size: 19px;
+    }
+    .qa-static-card span {
+      flex: 0 0 auto;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .qa-static-card ul {
+      display: grid;
+      gap: 6px;
+      margin-top: 10px;
+      padding-left: 0;
+      list-style: none;
+    }
+    .qa-static-card li {
+      display: flex;
+      gap: 8px;
+      margin: 0;
+      padding: 8px 10px;
+      background: #f5f5f7;
+      border-radius: 8px;
+    }
+    @media (max-width: 1080px) {
+      .qa-shell { grid-template-columns: 1fr; }
+      .node-brief-grid, .l2-grid, .l3-info-grid, .decision-grid, .next-step-grid, .collection-grid, .source-coverage-strip, .draft-question-output, .l3-answer-layout, .analysis-metric-grid, .l3-reasoning-list { grid-template-columns: 1fr; }
+      .qa-tree-panel, .qa-evidence-panel { position: static; max-height: none; }
+      .qa-synthesis-grid { grid-template-columns: 1fr; }
+      .bar-row { grid-template-columns: 1fr; }
+      .bar-row b { text-align: left; }
+    }
+    </style>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">L2 问题展开 / 源头溯源</p>
+    <h1>旧方案为什么不够好？</h1>
+    <p class="subtitle">本页按投研下钻单元展示：当前判断、事实依据、推导逻辑、反证边界、下一步数据和 L3 追问。</p>
+    <div class="summary-strip">
+      <div class="metric"><span>所属 L1</span><strong>源头溯源</strong></div>
+      <div class="metric"><span>L3 追问</span><strong>2</strong></div>
+      <div class="metric"><span>节点状态</span><strong>开放</strong></div>
+      <div class="metric"><span>置信度</span><strong>中置信</strong></div>
+    </div>
+  </header>
+  <nav class="nav">
+    <a href="../../research_dashboard.html#foundation">返回 L0</a>
+    <a href="../source_origin.html#l1-questions">返回 L1</a>
+    <a href="#current-question">当前问题</a>
+    <a href="#handoff">承接表</a>
+    <a href="#l3">子问题</a>
+    <a href="#add-question">新增问题</a>
+  </nav>
+  <main class="qa-full-research">
+    <section id="current-question" class="level-frame">
+      <p class="eyebrow">当前要研究的问题</p>
+      <h2>旧方案为什么不够好？</h2>
+      <div class="research-path">
+        <span>L0 公司基础框架</span>
+        <span>源头溯源</span>
+        <span class="active">当前 L2</span>
+        <span>L3 下钻</span>
+      </div>
+      <div class="node-brief-grid"><article class="node-brief-card primary"><b>本层结论</b><p>综合子问题信息，本层结论是：最关键的一手证据是 Intel 官方历史页：它把公司源头明确绑定到 1968 年 Noyce/Moore 离开 Fairchild、追求持续创新和高强度研发再投入。这个证据能验证“工程、制程、研发、平台生态”是 Intel 的源头基因，而不是后来的口号；源头基因今天仍能解释 Intel 为什么持续押注自有制程…</p></article><article class="node-brief-card"><b>信息覆盖</b><div class="category-meter"><span class="category-pill warning">证据 <strong>0</strong></span><span class="category-pill ">研报 <strong>0</strong></span><span class="category-pill ">消息 <strong>0</strong></span><span class="category-pill ">观点 <strong>0</strong></span></div></article><article class="node-brief-card"><b>子问题覆盖</b><p>2/2 个子问题已有信息支撑。</p></article><article class="node-brief-card"><b>下一步缺口</b><p>能定位原始来源</p></article></div>
+      <div class="decision-panel"><div class="decision-head"><b>本层研究判断</b><span>中置信</span></div><div class="decision-grid"><div class="decision-box judgment"><h4>当前判断</h4><p>综合子问题信息，本层结论是：最关键的一手证据是 Intel 官方历史页：它把公司源头明确绑定到 1968 年 Noyce/Moore 离开 Fairchild、追求持续创新和高强度研发再投入。这个证据能验证“工程、制程、研发、平台生态”是 Intel 的源头基因，而不是后来的口号；源头基因今天仍能解释 Intel 为什么持续押注自有制程、先进封装、x86 生态和高研发强度；不能解释的是外部 foundry 客户获取、14A 经济性、AI 加速器价值池错位和资本结构压力。今天的判断必须把“历史工程基因”和“当前商业兑现”拆开</p></div><div class="decision-box"><h4>支撑信息 / 关键事实</h4><ul><li>这个回答最需要哪条一手证据验证？：Intel Official History - Intel&#x27;s Founding：事实：Intel 于 1968 年 7 月 18 日由 Robert Noyce 和 Gordon Moore 创立，起…</li><li>这个回答最需要哪条一手证据验证？：Intel&#x27;s Founding：Intel 官方历史页说明：Noyce 与 Moore 于 1968 年创立 Intel，源于对持续创新、研发再投入与 integrated electronics 的追…</li><li>这个回答最需要哪条一手证据验证？：Intel Official History - Intel&#x27;s Founding：事实：Intel 于 1968 年 7 月 18 日由 Robert Noyce 和 Gordon Moore 创立，起…</li></ul></div><div class="decision-box"><h4>反证/线索 / 推导逻辑</h4><ul><li>这个回答最需要哪条一手证据验证？：继续补充下一期 10-Q、earnings call、客户设计赢单、外部 foundry revenue、Mercury/Gartner/IDC 等第三方份额数据。</li><li>这个源头基因今天还能解释什么，不能解释什么？：继续补充下一期 10-Q、earnings call、客户设计赢单、外部 foundry revenue、Mercury/Gartner/IDC 等第三方份额数据。</li></ul></div><div class="decision-box evidence-score"><h4>证据结构</h4><p><strong>0</strong> 支持 / <strong>0</strong> 反证 / <strong>0</strong> 线索</p><p class="note">子问题证据结构：3 支持 / 0 反证 / 1 线索。</p></div></div></div>
+      <div class="next-step-grid"><div class="next-step-box"><b>最大缺口</b><p>能定位原始来源</p></div><div class="next-step-box"><b>下一步数据</b><p>能定位原始来源；记录报告期或发布日期；需要后续季度数据验证该 leaf 判断是否变化。</p></div><div class="next-step-box"><b>更新触发器</b><p>季度业绩、重大公告、行业数据、监管公告和高可靠第三方研究更新。</p></div></div>
+    </section>
+    <section id="handoff" class="level-frame">
+      <p class="eyebrow">子结构如何上抛</p>
+      <h2>子问题承接表</h2>
+      <table class="handoff-table"><thead><tr><th>L3 问题</th><th>上抛结论</th><th>信息结构</th><th>下一步缺口</th></tr></thead><tbody><tr><td>这个回答最需要哪条一手证据验证？</td><td>最关键的一手证据是 Intel 官方历史页：它把公司源头明确绑定到 1968 年 Noyce/Moore 离开 Fairchild、追求持续创新和高强度研发再投入。这个证据能验证“工程、制程、研发、平台生态”是 Intel 的源头基因，而不是后来的口号</td><td><div class="mini-meter"><span>证据 1</span><span>研报 1</span><span>消息 1</span><span>观点 0</span><span>支持 2</span><span>反证 0</span><span>线索 1</span></div></td><td>能定位原始来源</td></tr><tr><td>这个源头基因今天还能解释什么，不能解释什么？</td><td>源头基因今天仍能解释 Intel 为什么持续押注自有制程、先进封装、x86 生态和高研发强度；不能解释的是外部 foundry 客户获取、14A 经济性、AI 加速器价值池错位和资本结构压力。今天的判断必须把“历史工程基因”和“当前商业兑现”拆开</td><td><div class="mini-meter"><span>证据 1</span><span>研报 0</span><span>消息 0</span><span>观点 0</span><span>支持 1</span><span>反证 0</span><span>线索 0</span></div></td><td>能定位原始来源</td></tr></tbody></table>
+    </section>
+    <section id="l3" class="level-frame">
+      <p class="eyebrow">子问题列表</p>
+      <h2>L3 子问题</h2>
+      <div class="l2-grid"><article class="l2-card research-unit-card"><p class="eyebrow">L3 子问题</p><h3>这个回答最需要哪条一手证据验证？</h3><div class="field"><b>本问题结论</b><p>最关键的一手证据是 Intel 官方历史页：它把公司源头明确绑定到 1968 年 Noyce/Moore 离开 Fairchild、追求持续创新和高强度研发再投入。这个证据能验证“工程、制程、研发、平台生态”是 Intel 的源头基因，而不是后来的口号</p><div class="category-meter"><span class="category-pill filled">证据 <strong>1</strong></span><span class="category-pill filled">研报 <strong>1</strong></span><span class="category-pill filled">消息 <strong>1</strong></span><span class="category-pill ">观点 <strong>0</strong></span></div><div class="source-coverage-strip"><div class="coverage-item total"><span>信息总数</span><strong>3</strong></div><div class="coverage-item support"><span>支持</span><strong>2</strong></div><div class="coverage-item refute"><span>反证</span><strong>0</strong></div><div class="coverage-item lead"><span>四类覆盖</span><strong>证据 1 / 研报 1 / 消息 1 / 观点 0</strong></div></div></div><a class="detail-link" href="l3/source_origin_q3_incumbent_gap_primary_proof.html">打开 L3 详细分析</a><div class="decision-panel"><div class="decision-head"><b>研究判断</b><span>高置信</span></div><div class="decision-grid"><div class="decision-box judgment"><h4>当前判断</h4><p>最关键的一手证据是 Intel 官方历史页：它把公司源头明确绑定到 1968 年 Noyce/Moore 离开 Fairchild、追求持续创新和高强度研发再投入。这个证据能验证“工程、制程、研发、平台生态”是 Intel 的源头基因，而不是后来的口号</p></div><div class="decision-box"><h4>支撑信息 / 关键事实</h4><ul><li>Intel Official History - Intel&#x27;s Founding：事实：Intel 于 1968 年 7 月 18 日由 Robert Noyce 和 Gordon Moore 创立，起点来自 Fairchild 之后对…</li><li>Intel&#x27;s Founding：Intel 官方历史页说明：Noyce 与 Moore 于 1968 年创立 Intel，源于对持续创新、研发再投入与 integrated electronics 的追求；Intel 早期先以研发和存储…</li><li>Intel Official History - Intel&#x27;s Founding：事实：Intel 于 1968 年 7 月 18 日由 Robert Noyce 和 Gordon Moore 创立，起点来自 Fairchild 之后对…</li></ul></div><div class="decision-box"><h4>反证/线索 / 推导逻辑</h4><ul><li>继续补充下一期 10-Q、earnings call、客户设计赢单、外部 foundry revenue、Mercury/Gartner/IDC 等第三方份额数据。</li></ul></div><div class="decision-box evidence-score"><h4>证据结构</h4><p><strong>2</strong> 支持 / <strong>0</strong> 反证 / <strong>1</strong> 线索</p><p class="note">证据 2 / 研报 0 / 消息 0 / 观点 0</p></div></div></div><div class="next-step-grid"><div class="next-step-box"><b>最大缺口</b><p>能定位原始来源</p></div><div class="next-step-box"><b>下一步数据</b><p>能定位原始来源；记录报告期或发布日期；需要后续季度数据验证该 leaf 判断是否变化。</p></div><div class="next-step-box"><b>更新触发器</b><p>季度业绩、重大公告、行业数据、监管公告和高可靠第三方研究更新。</p></div></div><div class="field"><b>信息搜集状态</b><div class="collection-grid"><div class="collection-box"><b>证据</b><p><span class="collection-status">已匹配</span> · 已匹配 1 条</p><p class="note">检索式：INTC 这个回答最需要哪条一手证据验证？ 年报 公告 招股书 监管 披露</p><p class="note">建议来源：公司公告/财报/招股书；交易所或监管文件；公司 IR 或正式新闻稿</p><p class="note">验收标准：能定位原始来源；记录报告期或发布日期；摘要提取可验证事实或指标</p><p class="note">下一步：已匹配本地信息，下一步验证口径和更新频率。</p></div><div class="collection-box"><b>研报</b><p><span class="collection-status">已匹配</span> · 已匹配 1 条</p><p class="note">检索式：INTC 这个回答最需要哪条一手证据验证？ 深度报告 行业研究 证券研究</p><p class="note">建议来源：卖方深度报告；行业专题或数据库；可复核第三方份额/价格/出货数据</p><p class="note">验收标准：记录机构/作者/日期；区分事实、模型和判断；不能单独替代一手证据</p><p class="note">下一步：已匹配本地信息，下一步验证口径和更新频率。</p></div><div class="collection-box"><b>消息</b><p><span class="collection-status">已匹配</span> · 已匹配 1 条</p><p class="note">检索式：INTC 这个回答最需要哪条一手证据验证？ 新闻 消息 传闻 进展</p><p class="note">建议来源：主流财经媒体；监管/交易所动态；公司或渠道公开进展</p><p class="note">验收标准：标注未证实边界；说明影响的业务节点或假设；只作为研究线索</p><p class="note">下一步：已匹配本地信息，下一步验证口径和更新频率。</p></div><div class="collection-box"><b>观点</b><p><span class="collection-status">待搜集</span> · 已匹配 0 条</p><p class="note">检索式：INTC 这个回答最需要哪条一手证据验证？ 专家 访谈 投资者 观点</p><p class="note">建议来源：专家访谈；产业人士观点；高质量投资者或专业社区观点</p><p class="note">验收标准：说明观点来源身份；提炼可检验机制；配套下一步验证数据</p><p class="note">下一步：补专家、产业人士或高质量投资者观点，并保持低权重。</p></div></div></div><div class="field"><b>四类信息索引 / 证据矩阵</b><div class="l3-info-grid"><div class="l3-info-box evidence"><h4>证据</h4><ul><li class="stance-support"><span class="chip">ev_intc_lipbu_tan_ceo_20250312</span><span class="stance-pill">支撑</span><span class="quality-pill">一手 / 高</span><p>事实：Intel 董事会任命 Lip-Bu Tan 为 CEO，2025 年 3 月 18 日生效，并重返董事会；官方强调其半导体生态关系、客户导向、Ca…</p><p class="note"><a href="https://newsroom.intel.com/corporate/intel-appoints-lip-bu-tan-chief-executive-officer">Intel Appoints Lip-Bu Tan as Chie…</a></p></li></ul></div><div class="l3-info-box research_report"><h4>研报</h4><ul><li class="stance-support"><span class="chip">ev_intc_mercury_x86_share_q1_2026_20260514</span><span class="stance-pill">支撑</span><span class="quality-pill">中 / 高</span><p>事实：Tom&#x27;s Hardware 根据 Mercury Research 数据称，2026 Q1 AMD 在 x86 服务器 CPU 收入份额达到 46…</p><p class="note"><a href="https://www.tomshardware.com/pc-components/cpus/amd-reaches-46-percent-of-server-x86-cpu-revenue-intel-still-controls-70-percent-of-the-consumer-pc-market-share">Tom&#x27;s Hardware summary of Mercury…</a></p></li></ul></div><div class="l3-info-box message"><h4>消息</h4><ul><li class="stance-lead"><span class="chip">ev_intc_nvidia_collaboration_20250918</span><span class="stance-pill">研究线索</span><span class="quality-pill">一手 / thesis_change</span><p>事实：NVIDIA 与 Intel 宣布合作开发多代数据中心和 PC 产品，Intel 将为 NVIDIA AI 基础设施平台构建定制 x86 CPU，并…</p><p class="note"><a href="https://www.intc.com/news-events/press-releases/detail/1750/nvidia-and-intel-to-develop-ai-infrastructure-and-personal">NVIDIA and Intel to Develop AI In…</a></p></li></ul></div><div class="l3-info-box opinion"><h4>观点</h4><p class="note">暂无，不能用这一类信息强化判断。</p></div></div></div></article>
+<article class="l2-card research-unit-card"><p class="eyebrow">L3 子问题</p><h3>这个源头基因今天还能解释什么，不能解释什么？</h3><div class="field"><b>本问题结论</b><p>源头基因今天仍能解释 Intel 为什么持续押注自有制程、先进封装、x86 生态和高研发强度；不能解释的是外部 foundry 客户获取、14A 经济性、AI 加速器价值池错位和资本结构压力。今天的判断必须把“历史工程基因”和“当前商业兑现”拆开</p><div class="category-meter"><span class="category-pill filled">证据 <strong>1</strong></span><span class="category-pill ">研报 <strong>0</strong></span><span class="category-pill ">消息 <strong>0</strong></span><span class="category-pill ">观点 <strong>0</strong></span></div><div class="source-coverage-strip"><div class="coverage-item total"><span>信息总数</span><strong>1</strong></div><div class="coverage-item support"><span>支持</span><strong>1</strong></div><div class="coverage-item refute"><span>反证</span><strong>0</strong></div><div class="coverage-item lead"><span>四类覆盖</span><strong>证据 1 / 研报 0 / 消息 0 / 观点 0</strong></div></div></div><a class="detail-link" href="l3/source_origin_q3_incumbent_gap_today_boundary.html">打开 L3 详细分析</a><div class="decision-panel"><div class="decision-head"><b>研究判断</b><span>高置信</span></div><div class="decision-grid"><div class="decision-box judgment"><h4>当前判断</h4><p>源头基因今天仍能解释 Intel 为什么持续押注自有制程、先进封装、x86 生态和高研发强度；不能解释的是外部 foundry 客户获取、14A 经济性、AI 加速器价值池错位和资本结构压力。今天的判断必须把“历史工程基因”和“当前商业兑现”拆开</p></div><div class="decision-box"><h4>支撑信息 / 关键事实</h4><ul><li>Intel Official History - Intel&#x27;s Founding：事实：Intel 于 1968 年 7 月 18 日由 Robert Noyce 和 Gordon Moore 创立，起点来自 Fairchild 之后对…</li><li>Intel FY2025 Form 10-K：事实：Intel 在 FY2025 10-K 中按 CCG、DCAI、Intel Foundry 等口径披露业务。Intel Foundry 2025 年收入约 178 亿美元，其中外部收入仅…</li><li>Intel Q1 2026 Financial Results：事实：Intel 2026 Q1 营收 136 亿美元，同比 +7%；GAAP EPS 为 -0.73 美元，non-GAAP EPS 为 0.29 美元；经营现金流 11 …</li></ul></div><div class="decision-box"><h4>反证/线索 / 推导逻辑</h4><ul><li>继续补充下一期 10-Q、earnings call、客户设计赢单、外部 foundry revenue、Mercury/Gartner/IDC 等第三方份额数据。</li></ul></div><div class="decision-box evidence-score"><h4>证据结构</h4><p><strong>1</strong> 支持 / <strong>0</strong> 反证 / <strong>0</strong> 线索</p><p class="note">证据 5 / 研报 0 / 消息 0 / 观点 0</p></div></div></div><div class="next-step-grid"><div class="next-step-box"><b>最大缺口</b><p>能定位原始来源</p></div><div class="next-step-box"><b>下一步数据</b><p>能定位原始来源；记录报告期或发布日期；需要后续季度数据验证该 leaf 判断是否变化。</p></div><div class="next-step-box"><b>更新触发器</b><p>同行业绩、行业份额、价格带变化、促销强度和分业务毛利率。</p></div></div><div class="field"><b>信息搜集状态</b><div class="collection-grid"><div class="collection-box"><b>证据</b><p><span class="collection-status">已匹配</span> · 已匹配 1 条</p><p class="note">检索式：INTC 这个源头基因今天还能解释什么，不能解释什么？ 年报 公告 招股书 监管 披露</p><p class="note">建议来源：公司公告/财报/招股书；交易所或监管文件；公司 IR 或正式新闻稿</p><p class="note">验收标准：能定位原始来源；记录报告期或发布日期；摘要提取可验证事实或指标</p><p class="note">下一步：已匹配本地信息，下一步验证口径和更新频率。</p></div><div class="collection-box"><b>研报</b><p><span class="collection-status">待搜集</span> · 已匹配 0 条</p><p class="note">检索式：INTC 这个源头基因今天还能解释什么，不能解释什么？ 深度报告 行业研究 证券研究</p><p class="note">建议来源：卖方深度报告；行业专题或数据库；可复核第三方份额/价格/出货数据</p><p class="note">验收标准：记录机构/作者/日期；区分事实、模型和判断；不能单独替代一手证据</p><p class="note">下一步：补第三方深度研报、行业数据和可复核的商业研究材料。</p></div><div class="collection-box"><b>消息</b><p><span class="collection-status">待搜集</span> · 已匹配 0 条</p><p class="note">检索式：INTC 这个源头基因今天还能解释什么，不能解释什么？ 新闻 消息 传闻 进展</p><p class="note">建议来源：主流财经媒体；监管/交易所动态；公司或渠道公开进展</p><p class="note">验收标准：标注未证实边界；说明影响的业务节点或假设；只作为研究线索</p><p class="note">下一步：补公开消息和新闻进展，只作为研究线索，不直接强化结论。</p></div><div class="collection-box"><b>观点</b><p><span class="collection-status">待搜集</span> · 已匹配 0 条</p><p class="note">检索式：INTC 这个源头基因今天还能解释什么，不能解释什么？ 专家 访谈 投资者 观点</p><p class="note">建议来源：专家访谈；产业人士观点；高质量投资者或专业社区观点</p><p class="note">验收标准：说明观点来源身份；提炼可检验机制；配套下一步验证数据</p><p class="note">下一步：补专家、产业人士或高质量投资者观点，并保持低权重。</p></div></div></div><div class="field"><b>四类信息索引 / 证据矩阵</b><div class="l3-info-grid"><div class="l3-info-box evidence"><h4>证据</h4><ul><li class="stance-support"><span class="chip">ev_intc_founding_19680718</span><span class="stance-pill">支撑</span><span class="quality-pill">一手 / 高</span><p>事实：Intel 于 1968 年 7 月 18 日由 Robert Noyce 和 Gordon Moore 创立，起点来自 Fairchild 之后对…</p><p class="note"><a href="https://www.intel.com/content/www/us/en/history/virtual-vault/articles/intels-founding.html">Intel Official History - Intel&#x27;s …</a></p></li></ul></div><div class="l3-info-box research_report"><h4>研报</h4><p class="note">暂无，不能用这一类信息强化判断。</p></div><div class="l3-info-box message"><h4>消息</h4><p class="note">暂无，不能用这一类信息强化判断。</p></div><div class="l3-info-box opinion"><h4>观点</h4><p class="note">暂无，不能用这一类信息强化判断。</p></div></div></div></article></div>
+    </section>
+    
+    <section id="add-question" class="level-frame draft-question" data-question-scope="INTC:l2:source_origin.q3-incumbent-gap" data-parent-id="source_origin.q3-incumbent-gap" data-queue-command="value-invest-research apply-question-queue INTC --path queued_questions.jsonl">
+      <p class="eyebrow">可交互 / 新增问题</p>
+      <h2>新增下钻问题</h2>
+      <form class="draft-question-form">
+        <textarea class="draft-question-input" placeholder="输入一个新的下钻问题"></textarea>
+        <label class="note"><input class="draft-question-terminal" type="checkbox"> 这个问题已到可回答粒度，直接进入四类信息搜集</label>
+        <div class="qa-ask-actions">
+          <button class="primary" type="submit">加入本层问题列表</button>
+          <button class="draft-question-clear" type="button">清空本层新增</button>
+        </div>
+      </form>
+      <div class="field"><b>L2 问题新增问题</b><ul class="draft-question-list"></ul></div>
+      <div class="draft-question-output">
+        <div class="field"><b>队列 JSONL</b><textarea class="draft-question-jsonl" readonly></textarea></div>
+        <div class="field"><b>应用命令</b><textarea class="draft-question-command" readonly></textarea></div>
+      </div>
+    </section>
+
+  </main>
+  <script>
+    (() => {
+      function esc(value) {
+        return String(value == null ? "" : value).replace(/[&<>"']/g, (char) => ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;",
+        }[char]));
+      }
+      function read(key) {
+        try {
+          return JSON.parse(localStorage.getItem(key) || "[]");
+        } catch (_error) {
+          return [];
+        }
+      }
+      function write(key, value) {
+        try {
+          localStorage.setItem(key, JSON.stringify(value));
+        } catch (_error) {
+        }
+      }
+      document.querySelectorAll("[data-question-scope]").forEach((box) => {
+        const key = `draft-layer-questions:${box.dataset.questionScope || "default"}`;
+        const form = box.querySelector(".draft-question-form");
+        const input = box.querySelector(".draft-question-input");
+        const terminal = box.querySelector(".draft-question-terminal");
+        const list = box.querySelector(".draft-question-list");
+        const clear = box.querySelector(".draft-question-clear");
+        const jsonl = box.querySelector(".draft-question-jsonl");
+        const command = box.querySelector(".draft-question-command");
+        const parentId = box.dataset.parentId || "";
+        const queueCommand = box.dataset.queueCommand || "";
+        const normalizeItem = (item) => {
+          if (typeof item === "string") return { question: item, terminal: false };
+          return { question: item.question || "", terminal: Boolean(item.terminal) };
+        };
+        const render = () => {
+          const items = read(key).map(normalizeItem).filter((item) => item.question);
+          list.innerHTML = items.length
+            ? items.map((item) => `<li>${esc(item.question)}${item.terminal ? ' <span class="chip">终端问题</span>' : ""}</li>`).join("")
+            : '<li class="note">暂无新增问题。</li>';
+          jsonl.value = items.map((item) => JSON.stringify({ parent_id: parentId, question: item.question, terminal: item.terminal })).join("\n");
+          command.value = queueCommand;
+        };
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          const value = input.value.trim();
+          if (!value) return;
+          write(key, [...read(key).map(normalizeItem), { question: value, terminal: Boolean(terminal && terminal.checked) }]);
+          input.value = "";
+          if (terminal) terminal.checked = false;
+          render();
+        });
+        clear.addEventListener("click", () => {
+          write(key, []);
+          render();
+        });
+        render();
+      });
+    })();
+    </script>
+</body>
+</html>
