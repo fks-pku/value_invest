@@ -1,0 +1,1014 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>huawei_tau_law 专业研究报告</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --muted: #6e6e73;
+      --paper: #f5f5f7;
+      --panel: #ffffff;
+      --panel-soft: #fbfbfd;
+      --line: #d2d2d7;
+      --blue: #0066cc;
+      --green: #248a3d;
+      --amber: #a86600;
+      --red: #d70015;
+      --shadow: 0 18px 50px rgba(0, 0, 0, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.55;
+    }
+    header {
+      padding: clamp(52px, 8vw, 104px) clamp(20px, 6vw, 86px) 34px;
+      color: var(--ink);
+      background: linear-gradient(180deg, #fff 0%, #f8f8fa 72%, var(--paper) 100%);
+      border-bottom: 1px solid rgba(0, 0, 0, .06);
+    }
+    h1 { max-width: 1080px; margin: 0; font-size: clamp(44px, 7vw, 86px); font-weight: 700; line-height: .98; letter-spacing: 0; }
+    h2 { margin: 0 0 12px; font-size: clamp(28px, 4vw, 48px); font-weight: 700; letter-spacing: 0; }
+    h3 { margin: 0 0 10px; font-size: clamp(21px, 2.2vw, 29px); font-weight: 700; letter-spacing: 0; }
+    p { margin: 0 0 10px; }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .subtitle { max-width: 940px; margin-top: 18px; color: var(--muted); font-size: clamp(18px, 2.1vw, 24px); line-height: 1.45; }
+    .nav, nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 11px clamp(16px, 5vw, 70px);
+      background: rgba(245, 245, 247, .82);
+      border-bottom: 1px solid rgba(0, 0, 0, .08);
+      backdrop-filter: saturate(180%) blur(20px);
+    }
+    .nav a, nav a {
+      flex: 0 0 auto;
+      padding: 7px 12px;
+      color: var(--ink);
+      text-decoration: none;
+      border: 1px solid rgba(0, 0, 0, .08);
+      background: rgba(255, 255, 255, .74);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    main { width: min(1180px, calc(100% - 32px)); margin: 26px auto 72px; }
+    section {
+      margin: 18px 0;
+      padding: clamp(24px, 4vw, 44px);
+      background: rgba(255, 255, 255, .9);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, .7) inset;
+    }
+    .layer-label, .eyebrow { margin: 0 0 12px; color: var(--blue); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .summary-grid, .summary-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+    .summary-card, .metric {
+      padding: 16px;
+      background: rgba(255, 255, 255, .88);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      min-width: 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
+      color: var(--ink);
+    }
+    .summary-card span, .metric span { display: block; color: var(--muted); font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: none; }
+    .summary-card strong, .metric strong { display: block; margin-top: 8px; font-size: clamp(20px, 2.2vw, 30px); font-weight: 700; line-height: 1.1; overflow-wrap: anywhere; }
+    .summary-card p { margin: 9px 0 0; color: var(--muted); font-size: 13px; }
+    .foundation-grid, .grid, .lead-grid, .info-grid, .reference-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-items: start; }
+    .foundation-card, .card, .question-card, .history-card {
+      padding: clamp(18px, 3vw, 28px);
+      background: var(--panel);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      min-width: 0;
+      box-shadow: var(--shadow);
+    }
+    .foundation-card { border-left: 0; }
+    .foundation-card.partial, .foundation-card.missing { border-left: 0; }
+    .detail-link {
+      display: inline-flex;
+      margin-top: 12px;
+      padding: 8px 13px;
+      color: #fff;
+      background: var(--blue);
+      text-decoration: none;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .detail-link:hover { background: #005bb5; text-decoration: none; }
+    .answer-box, .rule-box {
+      padding: 16px;
+      background: #f5f8ff;
+      border: 1px solid #d6e6ff;
+      border-radius: 8px;
+      margin: 14px 0 16px;
+    }
+    .info-box {
+      padding: 14px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: var(--panel-soft);
+      min-width: 0;
+    }
+    .info-box h4 { margin: 0 0 10px; font-size: 13px; font-weight: 700; color: var(--muted); letter-spacing: .04em; }
+    .info-box ul { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+    .info-box li { margin: 0; padding-top: 12px; border-top: 1px solid rgba(0, 0, 0, .07); }
+    .info-box li:first-child { padding-top: 0; border-top: 0; }
+    .info-box.evidence { background: #f5f9ff; }
+    .info-box.research_report { background: #f4fbf7; }
+    .info-box.message { background: #fff9ef; }
+    .info-box.opinion { background: #f6f6f7; }
+    .timeline { display: grid; gap: 12px; margin-top: 16px; }
+    .timeline-row { display: grid; grid-template-columns: 120px 1fr; gap: 16px; padding: 16px; border: 1px solid rgba(0, 0, 0, .08); border-radius: 8px; background: var(--panel); }
+    .timeline-year { color: var(--blue); font-weight: 700; }
+    .field { margin-top: 12px; }
+    .field b { display: block; margin-bottom: 5px; color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: none; }
+    .note { color: var(--muted); font-size: 13px; }
+    .compact-question-list {
+      display: grid;
+      gap: 8px;
+      margin: 8px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .compact-question-list li {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: center;
+      margin: 0;
+      padding: 9px 10px;
+      border: 1px solid rgba(0, 0, 0, .07);
+      border-radius: 8px;
+      background: #f8f8fa;
+    }
+    .compact-question-list .question-text {
+      min-width: 0;
+      overflow-wrap: anywhere;
+      color: var(--ink);
+    }
+    .mix-badge {
+      display: inline-grid;
+      grid-template-columns: auto auto;
+      gap: 6px;
+      align-items: baseline;
+      white-space: nowrap;
+      padding: 4px 7px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, .08);
+      color: var(--muted);
+      font-size: 11px;
+    }
+    .mix-badge strong {
+      color: var(--blue);
+      font-family: "SF Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 11px;
+    }
+    .chip {
+      display: inline-flex;
+      max-width: 100%;
+      margin: 0 4px 7px 0;
+      padding: 3px 7px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .76);
+      color: #424245;
+      font-family: "SF Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 11px;
+      overflow-wrap: anywhere;
+    }
+    .status-evidenced { color: var(--green); font-weight: 800; }
+    .status-partial { color: var(--amber); font-weight: 800; }
+    .status-missing, .impact-weakening { color: var(--red); font-weight: 800; }
+    .impact-strengthening { color: var(--green); font-weight: 800; }
+    .impact-research_lead { color: var(--amber); font-weight: 800; }
+    table { width: 100%; border-collapse: separate; border-spacing: 0; background: #fff; font-size: 14px; border: 1px solid rgba(0, 0, 0, .08); border-radius: 8px; overflow: hidden; }
+    th, td { padding: 13px; border-bottom: 1px solid rgba(0, 0, 0, .08); vertical-align: top; text-align: left; }
+    tr:last-child td { border-bottom: 0; }
+    th { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .04em; background: #f5f5f7; text-transform: none; }
+    ul { margin: 8px 0 0; padding-left: 20px; }
+    li { margin: 5px 0; }
+    @media (max-width: 880px) {
+      .summary-grid, .summary-strip, .foundation-grid, .grid, .lead-grid, .info-grid, .reference-grid, .timeline-row { grid-template-columns: 1fr; }
+      .compact-question-list li { grid-template-columns: 1fr; }
+      .mix-badge { justify-self: start; }
+      table { font-size: 13px; }
+      header { padding-top: 42px; }
+    }
+    
+    .qa-shell {
+      display: grid;
+      grid-template-columns: minmax(230px, .78fr) minmax(0, 1.45fr) minmax(300px, .95fr);
+      gap: 16px;
+      align-items: start;
+    }
+    .qa-full-research {
+      width: min(1180px, calc(100% - 32px));
+      margin: 26px auto 24px;
+    }
+    .qa-full-research .thesis-card {
+      margin: 14px 0 16px;
+      border-radius: 8px;
+      border-left: 0;
+      background: #111820;
+      box-shadow: var(--shadow);
+    }
+    .qa-full-research table {
+      margin: 12px 0 24px;
+    }
+    .qa-full-research .question-card {
+      margin: 16px 0;
+    }
+    .level-frame {
+      scroll-margin-top: 70px;
+    }
+    .l2-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .l2-card {
+      padding: clamp(18px, 2.5vw, 26px);
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      min-width: 0;
+    }
+    .l2-card h3 {
+      font-size: clamp(20px, 2vw, 27px);
+    }
+    .node-brief-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) repeat(3, minmax(0, .88fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .node-brief-card {
+      min-width: 0;
+      padding: 15px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .88);
+    }
+    .node-brief-card.primary {
+      background: #111820;
+      color: #fff;
+    }
+    .node-brief-card.primary b,
+    .node-brief-card.primary p {
+      color: #fff;
+    }
+    .node-brief-card b {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .node-brief-card p {
+      margin: 0;
+      font-size: 13px;
+    }
+    .category-meter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .category-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 8px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 999px;
+      background: #f5f5f7;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .category-pill.filled {
+      color: var(--blue);
+      background: #eef5ff;
+      border-color: #c9ddff;
+    }
+    .category-pill.warning {
+      color: var(--amber);
+      background: #fff8eb;
+      border-color: #f1d49b;
+    }
+    .research-path {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 0;
+    }
+    .research-path span {
+      display: inline-flex;
+      padding: 4px 8px;
+      border-radius: 999px;
+      color: var(--muted);
+      background: #f5f5f7;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .research-path span.active {
+      color: var(--blue);
+      background: #eef5ff;
+    }
+    .source-coverage-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .coverage-item {
+      min-width: 0;
+      padding: 9px 10px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #f5f5f7;
+    }
+    .coverage-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .coverage-item strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 18px;
+      line-height: 1;
+    }
+    .coverage-item.support strong { color: var(--green); }
+    .coverage-item.refute strong { color: var(--red); }
+    .coverage-item.lead strong { color: var(--amber); }
+    .coverage-item.total strong { color: var(--blue); }
+    .handoff-table {
+      margin-top: 14px;
+    }
+    .handoff-table td:first-child {
+      width: 28%;
+      font-weight: 700;
+    }
+    .handoff-table .mini-meter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .handoff-table .mini-meter span {
+      display: inline-flex;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: #f5f5f7;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .research-unit-card {
+      display: grid;
+      gap: 12px;
+    }
+    .decision-panel {
+      margin-top: 12px;
+      padding: 14px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8f8fa 100%);
+    }
+    .decision-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .decision-head b {
+      color: var(--ink);
+      font-size: 13px;
+      letter-spacing: .04em;
+    }
+    .decision-head span {
+      flex: 0 0 auto;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #eef5ff;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .decision-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .decision-box {
+      min-width: 0;
+      padding: 12px;
+      border: 1px solid rgba(0, 0, 0, .07);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .84);
+    }
+    .decision-box.judgment {
+      background: #111820;
+      color: #fff;
+    }
+    .decision-box.judgment h4,
+    .decision-box.judgment p {
+      color: #fff;
+    }
+    .decision-box h4,
+    .next-step-box b {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .decision-box ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .decision-box li {
+      margin: 4px 0;
+      font-size: 13px;
+    }
+    .evidence-score strong {
+      font-size: 20px;
+      color: var(--ink);
+    }
+    .next-step-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .next-step-box {
+      min-width: 0;
+      padding: 12px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #fff9ef;
+    }
+    .next-step-box p {
+      margin: 0;
+      font-size: 13px;
+    }
+    .collection-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .collection-box {
+      min-width: 0;
+      padding: 10px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #f7fbff;
+    }
+    .collection-box b {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .04em;
+    }
+    .collection-box p {
+      margin: 0 0 5px;
+      font-size: 13px;
+    }
+    .collection-status {
+      color: var(--blue);
+      font-weight: 800;
+    }
+    .l3-info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .l3-info-box {
+      min-width: 0;
+      padding: 10px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: var(--panel-soft);
+    }
+    .l3-info-box.evidence { background: #f5f9ff; }
+    .l3-info-box.research_report { background: #f4fbf7; }
+    .l3-info-box.message { background: #fff9ef; }
+    .l3-info-box.opinion { background: #f6f6f7; }
+    .l3-info-box h4 {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .l3-info-box ul {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .l3-info-box li {
+      margin: 0;
+      padding: 9px 0 0 10px;
+      border-top: 1px solid rgba(0, 0, 0, .07);
+      border-left: 3px solid #8e8e93;
+    }
+    .l3-info-box li:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+    .l3-info-box li.stance-support { border-left-color: var(--green); }
+    .l3-info-box li.stance-refute { border-left-color: var(--red); }
+    .l3-info-box li.stance-lead { border-left-color: var(--amber); }
+    .l3-detail-page {
+      max-width: 1240px;
+    }
+    .l3-answer-section h2 {
+      max-width: 960px;
+    }
+    .l3-answer-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr);
+      gap: 14px;
+      align-items: stretch;
+      margin-top: 16px;
+    }
+    .l3-answer-main,
+    .l3-answer-metrics,
+    .analysis-metric {
+      min-width: 0;
+      padding: clamp(16px, 2.5vw, 22px);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
+    }
+    .l3-answer-main {
+      background: #111820;
+      color: #fff;
+    }
+    .l3-answer-main b,
+    .l3-answer-main p {
+      color: #fff;
+    }
+    .l3-answer-main b {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 12px;
+      letter-spacing: .06em;
+    }
+    .l3-answer-main p {
+      margin: 0;
+      font-size: clamp(16px, 1.8vw, 21px);
+      line-height: 1.7;
+    }
+    .l3-answer-metrics {
+      display: grid;
+      gap: 10px;
+      background: #f5f5f7;
+    }
+    .l3-answer-metrics div {
+      padding: 10px 0;
+      border-top: 1px solid rgba(0, 0, 0, .08);
+    }
+    .l3-answer-metrics div:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+    .l3-answer-metrics span,
+    .analysis-metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .l3-answer-metrics strong,
+    .analysis-metric strong {
+      display: block;
+      margin-top: 6px;
+      color: var(--ink);
+      font-size: clamp(22px, 2.2vw, 32px);
+      line-height: 1.1;
+    }
+    .l3-answer-metrics p,
+    .analysis-metric p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .analysis-metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 14px 0;
+    }
+    .analysis-table td:first-child {
+      width: 18%;
+    }
+    .bar-stack {
+      display: grid;
+      gap: 10px;
+      margin: 16px 0;
+      padding: 16px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .bar-row {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr) 150px;
+      gap: 12px;
+      align-items: center;
+      min-width: 0;
+      font-size: 13px;
+    }
+    .bar-row span {
+      color: var(--ink);
+      font-weight: 700;
+    }
+    .bar-row b {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-align: right;
+    }
+    .bar-track {
+      height: 12px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e8e8ed;
+    }
+    .bar-fill {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+    }
+    .bar-fill.blue { background: var(--blue); }
+    .bar-fill.green { background: var(--green); }
+    .l3-reasoning-list {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .l3-reasoning-list article {
+      min-width: 0;
+      padding: 16px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .l3-reasoning-list span {
+      display: inline-flex;
+      margin-bottom: 10px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      color: var(--blue);
+      background: #eef5ff;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .l3-reasoning-list p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+    .stance-pill,
+    .quality-pill {
+      display: inline-flex;
+      margin: 0 5px 7px 0;
+      padding: 3px 7px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .stance-pill {
+      background: #f5f5f7;
+      color: var(--ink);
+    }
+    .quality-pill {
+      background: #eef5ff;
+      color: var(--blue);
+    }
+    .qa-panel {
+      min-width: 0;
+      background: rgba(255, 255, 255, .92);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+    .qa-tree-panel, .qa-evidence-panel {
+      position: sticky;
+      top: 62px;
+      max-height: calc(100vh - 84px);
+      overflow: auto;
+      padding: 16px;
+    }
+    .qa-main-panel { padding: clamp(22px, 3vw, 34px); }
+    .qa-kicker {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      margin-bottom: 10px;
+    }
+    .qa-tree-group { margin: 0 0 16px; }
+    .qa-tree-title {
+      margin: 12px 0 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .qa-node-button {
+      width: 100%;
+      display: block;
+      margin: 5px 0;
+      padding: 9px 10px;
+      color: var(--ink);
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      text-align: left;
+      font: inherit;
+      cursor: pointer;
+    }
+    .qa-node-button:hover { background: #f5f5f7; }
+    .qa-node-button.active {
+      background: #f5f8ff;
+      border-color: #c9ddff;
+      color: var(--blue);
+      font-weight: 700;
+    }
+    .qa-node-level {
+      display: inline-flex;
+      margin-right: 6px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .qa-level-2 { padding-left: 20px; }
+    .qa-level-3 { padding-left: 36px; }
+    .qa-level-4 { padding-left: 52px; }
+    .qa-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .qa-badge {
+      display: inline-flex;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #f5f5f7;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .qa-question-title { margin-bottom: 14px; }
+    .qa-rollup {
+      margin: 14px 0;
+      padding: 14px;
+      border: 1px solid #d6e6ff;
+      border-radius: 8px;
+      background: #f5f8ff;
+    }
+    .qa-rollup strong { color: var(--blue); }
+    .qa-synthesis-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .qa-synthesis-box {
+      padding: 14px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: var(--panel-soft);
+    }
+    .qa-synthesis-box h4, .qa-child-list h4, .qa-bucket h4 {
+      margin: 0 0 9px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .qa-child-list { margin-top: 16px; }
+    .qa-child-list button {
+      display: block;
+      width: 100%;
+      margin: 7px 0;
+      padding: 11px 12px;
+      text-align: left;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      font: inherit;
+      cursor: pointer;
+    }
+    .qa-child-list button:hover { border-color: #c9ddff; color: var(--blue); }
+    .qa-bucket {
+      margin-bottom: 12px;
+      padding: 14px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      background: var(--panel-soft);
+    }
+    .qa-bucket.evidence { background: #f5f9ff; }
+    .qa-bucket.research_report { background: #f4fbf7; }
+    .qa-bucket.message { background: #fff9ef; }
+    .qa-bucket.opinion { background: #f6f6f7; }
+    .qa-evidence-item {
+      padding: 11px 0;
+      border-top: 1px solid rgba(0, 0, 0, .07);
+    }
+    .qa-evidence-item:first-of-type { border-top: 0; padding-top: 0; }
+    .qa-empty { color: var(--muted); font-size: 13px; }
+    .qa-ask textarea {
+      width: 100%;
+      min-height: 92px;
+      resize: vertical;
+      padding: 12px;
+      border: 1px solid rgba(0, 0, 0, .12);
+      border-radius: 8px;
+      font: inherit;
+      background: #fff;
+    }
+    .draft-question textarea {
+      width: 100%;
+      min-height: 92px;
+      resize: vertical;
+      padding: 12px;
+      border: 1px solid rgba(0, 0, 0, .12);
+      border-radius: 8px;
+      font: inherit;
+      background: #fff;
+    }
+    .draft-question-output {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .draft-question-output textarea {
+      min-height: 118px;
+      font-family: "SF Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .qa-ask-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .qa-ask button {
+      padding: 8px 12px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 999px;
+      font: inherit;
+      cursor: pointer;
+      background: #fff;
+    }
+    .qa-ask button.primary {
+      color: #fff;
+      background: var(--blue);
+      border-color: var(--blue);
+      font-weight: 700;
+    }
+    .draft-question button {
+      padding: 8px 12px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 999px;
+      font: inherit;
+      cursor: pointer;
+      background: #fff;
+    }
+    .draft-question button.primary {
+      color: #fff;
+      background: var(--blue);
+      border-color: var(--blue);
+      font-weight: 700;
+    }
+    .qa-static-index {
+      width: min(1180px, calc(100% - 32px));
+      margin: 22px auto 72px;
+    }
+    .qa-static-card {
+      margin: 12px 0;
+      padding: 16px;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
+    }
+    .qa-static-card h3 {
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+      margin-bottom: 8px;
+      font-size: 19px;
+    }
+    .qa-static-card span {
+      flex: 0 0 auto;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .qa-static-card ul {
+      display: grid;
+      gap: 6px;
+      margin-top: 10px;
+      padding-left: 0;
+      list-style: none;
+    }
+    .qa-static-card li {
+      display: flex;
+      gap: 8px;
+      margin: 0;
+      padding: 8px 10px;
+      background: #f5f5f7;
+      border-radius: 8px;
+    }
+    @media (max-width: 1080px) {
+      .qa-shell { grid-template-columns: 1fr; }
+      .node-brief-grid, .l2-grid, .l3-info-grid, .decision-grid, .next-step-grid, .collection-grid, .source-coverage-strip, .draft-question-output, .l3-answer-layout, .analysis-metric-grid, .l3-reasoning-list { grid-template-columns: 1fr; }
+      .qa-tree-panel, .qa-evidence-panel { position: static; max-height: none; }
+      .qa-synthesis-grid { grid-template-columns: 1fr; }
+      .bar-row { grid-template-columns: 1fr; }
+      .bar-row b { text-align: left; }
+    }
+    </style>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">PROFESSIONAL QA REPORT</p>
+    <h1>华为提出的韬（τ）定律是什么，它对半导体产业链、华为技术路线和投资研究意味着什么？</h1>
+    <p class="subtitle">本报告由层级 QA 树收敛生成。结论只来自已映射的信息和显式缺口，不构成交易指令。</p>
+  </header>
+  <nav class="nav">
+    <a href="research_dashboard.html">返回工作台</a>
+    <a href="#summary">摘要</a>
+    <a href="#plan">问题规划</a>
+    <a href="#priority">优先补证</a>
+    <a href="#sections">逐层收敛</a>
+  </nav>
+  <main class="qa-full-research">
+    <section id="summary">
+      <p class="eyebrow">一页摘要</p>
+      <h2>当前结论</h2>
+      <div class="rule-box"><p>韬（τ）定律目前更应被定义为华为提出的一套后摩尔时代系统优化方法论，而不是已经被产业共同验证的新“自然规律”。它的核心变量从几何尺寸转向时间常数τ：通过逻辑折叠、软硬芯协同、统一总线、近封装光I/O和3D集成，降低器件、电路、芯片、系统各层的数据传播与同步时间。投研上，它的主影响不是短期立刻改写晶圆制造利润池，而是把关注点推向先进封装、HBM/存储、光互连、EDA、系统互联和国产AI算力架构。当前结论置信度为中等：华为官网和ChinaXiv提供了一手事实，但独立评测、量产良率、工具链开放程度、能耗约束和供应链订单尚未闭环。</p></div>
+      <div class="summary-strip">
+        <div class="metric"><span>对象类型</span><strong>事件</strong></div>
+        <div class="metric"><span>问题节点</span><strong>29</strong></div>
+        <div class="metric"><span>叶子问题</span><strong>16</strong></div>
+        <div class="metric"><span>信息覆盖</span><strong>16/16</strong></div>
+      </div>
+    </section>
+    <section id="plan">
+      <p class="eyebrow">问题规划</p>
+      <h2>从元问题到子问题的拆解依据</h2>
+      <div class="rule-box"><p>围绕“华为提出的韬（τ）定律是什么，它对半导体产业链、华为技术路线和投资研究意味着什么？”，系统先识别研究对象“huawei_tau_law”和信号“supply_chain”，再把问题拆成事实基础、经济性/传导机制、竞争或情景、风险和反证四类主线；默认三层下钻后进入四类信息搜集。</p><p class="note">规划模式：deterministic_rule_based · 识别信号：supply_chain</p></div><div class="field"><b>L1 规划结果</b><ul><li><strong>huawei_tau_law的事实边界、时间线和未确认点是什么？</strong><p class="note">先确认事实、需求和基础边界，避免直接跳到结论。 · L2 2 个 · 叶子问题 4 个</p></li><li><strong>huawei_tau_law通过哪些路径影响资产和公司基本面？</strong><p class="note">再确认价值链、利润池或事件传导机制，判断影响路径是否真实。 · L2 2 个 · 叶子问题 4 个</p></li><li><strong>huawei_tau_law当前可能已经被市场定价了什么？</strong><p class="note">先确认事实、需求和基础边界，避免直接跳到结论。 · L2 2 个 · 叶子问题 4 个</p></li><li><strong>huawei_tau_law后续最重要的跟踪和反证条件是什么？</strong><p class="note">最后设置风险、触发器和反证条件，保证结论可被更新。 · L2 2 个 · 叶子问题 4 个</p></li></ul></div>
+    </section>
+    <section id="priority">
+      <p class="eyebrow">下一步数据</p>
+      <h2>最需要优先验证的问题</h2>
+      <div class="l2-grid"><article class="l2-card"><p class="eyebrow">L3 待验证</p><h3>huawei_tau_law：事件发生了什么，哪些事实已经被确认？：哪些信息会支撑或反证当前判断？</h3><div class="decision-panel"><div class="decision-head"><b>专业回答</b><span>高置信</span></div><div class="decision-grid"><div class="decision-box judgment"><h4>当前回答</h4><p>对事实线的反证不是“没发生”，而是“不能把提出等同于证明”。ChinaXiv论文自身列出Open Challenges，说明工具链、工艺偏差、垂直互连、能耗和基准测试仍未完全解决。如果后续拿不到正式论文、产品测试、量产良率和能耗数据，那么事实层只能停留在“华为提出并声称已有实践”，不能升级为“产业已验证的新定律”。</p></div><div class="decision-box"><h4>支撑信息</h4><ul><li>ChinaXiv Open Challenges</li></ul></div><div class="decision-box"><h4>反证/线索</h4><ul><li>每日经济新闻技术挑战梳理</li></ul></div><div class="decision-box"><h4>下一步数据</h4><ul><li>跟踪华为后续方法论细节公开。</li><li>跟踪第三方拆解和评测。</li></ul><p class="note">证据 1 / 研报 1 / 消息 0 / 观点 0；关系结构 1 支撑 / 1 反证 / 0 线索。</p></div></div></div><div class="field"><b>缺口</b><p>缺少量产良率、成本和可靠性数据。</p></div><div class="category-meter"><span class="category-pill filled">证据 <strong>1</strong></span><span class="category-pill ">研报 <strong>0</strong></span><span class="category-pill ">消息 <strong>0</strong></span><span class="category-pill ">观点 <strong>0</strong></span></div></article><article class="l2-card"><p class="eyebrow">L3 待验证</p><h3>huawei_tau_law：哪些事实仍未确认或存在冲突口径？：这个问题最需要哪些事实证据直接回答？</h3><div class="decision-panel"><div class="decision-head"><b>专业回答</b><span>中置信</span></div><div class="decision-grid"><div class="decision-box judgment"><h4>当前回答</h4><p>本节点的直接答案是：现阶段能确认“提出、论文、路径、部分内部指标”，但不能确认“行业普遍适用、外部可复制、经济性优于先进制程”。每经对论文披露的整理尤其有用，因为它同时呈现了实践数据和开放问题。研究中应把口径拆为事实、推论和判断：事实是华为提出并披露示例；推论是系统级优化可能缓解制程受限；判断则需等第三方验证。</p></div><div class="decision-box"><h4>支撑信息</h4><ul><li>每日经济新闻</li></ul></div><div class="decision-box"><h4>反证/线索</h4><p class="note">暂无反证或线索。</p></div><div class="decision-box"><h4>下一步数据</h4><ul><li>补充论文PDF表格。</li><li>补充独立评测。</li></ul><p class="note">证据 0 / 研报 1 / 消息 0 / 观点 0；关系结构 1 支撑 / 0 反证 / 0 线索。</p></div></div></div><div class="field"><b>缺口</b><p>缺少原始数据表和产品级复测。</p></div><div class="category-meter"><span class="category-pill warning">证据 <strong>0</strong></span><span class="category-pill filled">研报 <strong>1</strong></span><span class="category-pill ">消息 <strong>0</strong></span><span class="category-pill ">观点 <strong>0</strong></span></div></article><article class="l2-card"><p class="eyebrow">L3 待验证</p><h3>huawei_tau_law：哪些事实仍未确认或存在冲突口径？：哪些信息会支撑或反证当前判断？</h3><div class="decision-panel"><div class="decision-head"><b>专业回答</b><span>中置信</span></div><div class="decision-grid"><div class="decision-box judgment"><h4>当前回答</h4><p>最强反证来自专家观点和论文自身限制：先进工艺不是可被设计优化完全替代的变量，LogicFolding也不是无成本收益。若华为后续产品仍主要依赖旧节点，且性能、功耗和成本没有明显优于同节点竞品，则“韬定律”只能算架构优化叙事；若能在固定节点持续带来可复测的密度和能效提升，则才有机会升级为强产业命题。</p></div><div class="decision-box"><h4>支撑信息</h4><p class="note">暂无支撑证据。</p></div><div class="decision-box"><h4>反证/线索</h4><ul><li>品利基金陈启观点</li><li>ChinaXiv Open Challenges</li></ul></div><div class="decision-box"><h4>下一步数据</h4><ul><li>同节点性能/功耗/成本横向对比。</li></ul><p class="note">证据 1 / 研报 0 / 消息 0 / 观点 1；关系结构 0 支撑 / 2 反证 / 0 线索。</p></div></div></div><div class="field"><b>缺口</b><p>缺少同节点竞品比较。</p></div><div class="category-meter"><span class="category-pill warning">证据 <strong>0</strong></span><span class="category-pill ">研报 <strong>0</strong></span><span class="category-pill ">消息 <strong>0</strong></span><span class="category-pill filled">观点 <strong>1</strong></span></div></article><article class="l2-card"><p class="eyebrow">L3 待验证</p><h3>huawei_tau_law：哪些公司、行业或地区会最先受到影响？：哪些信息会支撑或反证当前判断？</h3><div class="decision-panel"><div class="decision-head"><b>专业回答</b><span>中置信</span></div><div class="decision-grid"><div class="decision-box judgment"><h4>当前回答</h4><p>对受影响对象的反证是：工艺和供应链瓶颈仍然存在。若先进制造、封装良率、材料设备、EDA工具和热管理无法同步推进，韬定律不会自动给所有国产半导体资产带来收入。每经指出华为与台积电先进制程仍有差距，这意味着“成熟工艺+系统创新”是补偿而非完全替代。</p></div><div class="decision-box"><h4>支撑信息</h4><p class="note">暂无支撑证据。</p></div><div class="decision-box"><h4>反证/线索</h4><ul><li>每日经济新闻先进制程差距</li><li>ChinaXiv Open Challenges</li></ul></div><div class="decision-box"><h4>下一步数据</h4><ul><li>制造、封装和EDA的实际投入。</li></ul><p class="note">证据 1 / 研报 1 / 消息 0 / 观点 0；关系结构 0 支撑 / 2 反证 / 0 线索。</p></div></div></div><div class="field"><b>缺口</b><p>缺少良率和产能数据。</p></div><div class="category-meter"><span class="category-pill warning">证据 <strong>0</strong></span><span class="category-pill filled">研报 <strong>1</strong></span><span class="category-pill ">消息 <strong>0</strong></span><span class="category-pill ">观点 <strong>0</strong></span></div></article><article class="l2-card"><p class="eyebrow">L3 待验证</p><h3>huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？：哪些信息会支撑或反证当前判断？</h3><div class="decision-panel"><div class="decision-head"><b>专业回答</b><span>中置信</span></div><div class="decision-grid"><div class="decision-box judgment"><h4>当前回答</h4><p>价格层面的反证条件是：板块快速上涨但没有后续基本面支撑。若ETF溢价、交易拥挤和主题轮动先行，而上市公司没有订单、资本开支、供应链进入或业绩指引变化，则说明韬定律被市场过度提前定价。</p></div><div class="decision-box"><h4>支撑信息</h4><p class="note">暂无支撑证据。</p></div><div class="decision-box"><h4>反证/线索</h4><ul><li>新浪财经高溢价风险</li><li>财联社高位分化提示</li></ul></div><div class="decision-box"><h4>下一步数据</h4><ul><li>ETF溢价率、换手率、资金净流入、估值分位。</li></ul><p class="note">证据 0 / 研报 0 / 消息 2 / 观点 0；关系结构 0 支撑 / 2 反证 / 0 线索。</p></div></div></div><div class="field"><b>缺口</b><p>缺少资金流分项与估值分位。</p></div><div class="category-meter"><span class="category-pill warning">证据 <strong>0</strong></span><span class="category-pill ">研报 <strong>0</strong></span><span class="category-pill filled">消息 <strong>1</strong></span><span class="category-pill ">观点 <strong>0</strong></span></div></article><article class="l2-card"><p class="eyebrow">L3 待验证</p><h3>huawei_tau_law：什么信息会构成超预期或低于预期？：哪些信息会支撑或反证当前判断？</h3><div class="decision-panel"><div class="decision-head"><b>专业回答</b><span>中置信</span></div><div class="decision-grid"><div class="decision-box judgment"><h4>当前回答</h4><p>如果后续产品只是同方向架构优化，没有显著优于行业已有DTCO、Chiplet、3D堆叠、先进封装和光互联路线，那么“韬定律”的超预期会降低。专家观点提示行业已在推进类似方向，因此华为必须证明的不只是方向正确，而是它的跨层组织能力能带来更高净收益。</p></div><div class="decision-box"><h4>支撑信息</h4><p class="note">暂无支撑证据。</p></div><div class="decision-box"><h4>反证/线索</h4><ul><li>品利基金陈启观点</li></ul></div><div class="decision-box"><h4>下一步数据</h4><ul><li>对比台积电、AMD、英伟达、苹果等系统优化路径。</li></ul><p class="note">证据 0 / 研报 0 / 消息 0 / 观点 1；关系结构 0 支撑 / 1 反证 / 0 线索。</p></div></div></div><div class="field"><b>缺口</b><p>缺少与海外龙头同口径比较。</p></div><div class="category-meter"><span class="category-pill warning">证据 <strong>0</strong></span><span class="category-pill ">研报 <strong>0</strong></span><span class="category-pill ">消息 <strong>0</strong></span><span class="category-pill filled">观点 <strong>1</strong></span></div></article></div>
+    </section>
+    <section id="sections">
+      <p class="eyebrow">逐层收敛</p>
+      <h2>L1 到叶子问题</h2>
+      <section class="level-frame"><p class="eyebrow">L1 收敛</p><h2>huawei_tau_law的事实边界、时间线和未确认点是什么？</h2><div class="field"><b>规划依据</b><p>先确认事实、需求和基础边界，避免直接跳到结论。</p></div><div class="rule-box"><p>事实层面已经可以确认三件事：第一，韬（τ）定律由华为何庭波在2026年5月25日ISCAS 2026主旨演讲中正式提出；第二，ChinaXiv同日出现署名Tingbo He的论文，给出“time scaling”的理论化表述；第三，华为把落地路径拆成器件、电路、芯片、系统四层，并宣称已有381款芯片实践和Kirin 2026逻辑折叠节点。需要保留的事实边界是：这些数据主要来自华为和作者论文，尚未看到第三方可复测基准、量产成本、良率和能耗数据。</p></div><div class="l2-grid"><article class="l2-card"><h3>huawei_tau_law：事件发生了什么，哪些事实已经被确认？</h3><div class="field"><b>L2 收敛</b><p>时间线并不复杂：2026-05-25，华为在上海ISCAS 2026发布韬（τ）定律；同日，ChinaXiv披露英文预印本；随后行业媒体围绕逻辑折叠、381款芯片、Kirin 2026、2031年等效1.4nm密度目标扩散。研究重点应从“新闻发生”转向“哪些节点能验证发布口径”：2026年秋季麒麟芯片、未来数月方法论细节、2030年前后昇腾引入LogicF…</p></div><div class="field"><b>L3 叶子问题</b><ul><li><strong>huawei_tau_law：事件发生了什么，哪些事实已经被确认？：这个问题最需要哪些事实证据直接回答？</strong><div class="decision-panel"><div class="decision-head"><b>专业回答</b><span>高置信</span></div><div class="decision-grid"><div class="decision-box judgment"><h4>当前回答</h4><p>本节点回答“事件发生了什么”：一手证据显示，2026年5月25日华为何庭波在ISCAS 2026提出韬（τ）定律，并在ChinaXiv发布/提交英文论文。核心定义是把半导体演进的主优化目标从几何尺寸改成特征时间常数τ，通过减少信号传播、数据访问和系统同步时间来继续提升性能。华为官方口径还包括四层路径和产品实践：器件降RC，电路逻辑折叠，芯片软硬芯协同，系统统一内存语义和灵衢总线。</p></div><div class="decision-box"><h4>支撑信息</h4><ul><li>华为官网</li><li>ChinaXiv</li></ul></div><div class="decision-box"><h4>反证/线索</h4><ul><li>C114通信网</li></ul></div><div class="decision-box"><h4>下一步数据</h4><ul><li>ISCAS 2026官方资料。</li><li>Kirin 2026公开评测。</li></ul><p class="note">证据 2 / 研报 0 / 消息 1 / 观点 0；关系结构 2 支撑 / 0 反证 / 1 线索。</p></div></div></div><div class="category-meter"><span class="category-pill filled">证据 <strong>2</strong></span><span class="category-pill ">研报 <strong>0</strong></span><span class="category-pill filled">消息 <strong>1</strong></span><span class="category-pill ">观点 <strong>0</strong></span></div><p class="note">来源：华为官网：华为发表韬(τ)定律，实现晶体管密度与系统性能突破 [ev_huawei_tau_law_70731ee18f]；ChinaXiv：A Time Scaling Theory for Multi-Layer Electronic Systems [ev_huawei_tau_law_31f0751d77]；C114通信网：9千字论文！何庭波署名详解韬（τ）定律 [ev_huawei_tau_law_ac3a1537b0]</p></li><li><strong>huawei_tau_law：事件发生了什么，哪些事实已经被确认？：哪些信息会支撑或反证当前判断？</strong><div class="decision-panel"><div class="decision-head"><b>专业回答</b><span>高置信</span></div><div class="decision-grid"><div class="decision-box judgment"><h4>当前回答</h4><p>对事实线的反证不是“没发生”，而是“不能把提出等同于证明”。ChinaXiv论文自身列出Open Challenges，说明工具链、工艺偏差、垂直互连、能耗和基准测试仍未完全解决。如果后续拿不到正式论文、产品测试、量产良率和能耗数据，那么事实层只能停留在“华为提出并声称已有实践”，不能升级为“产业已验证的新定律”。</p></div><div class="decision-box"><h4>支撑信息</h4><ul><li>ChinaXiv Open Challenges</li></ul></div><div class="decision-box"><h4>反证/线索</h4><ul><li>每日经济新闻技术挑战梳理</li></ul></div><div class="decision-box"><h4>下一步数据</h4><ul><li>跟踪华为后续方法论细节公开。</li><li>跟踪第三方拆解和评测。</li></ul><p class="note">证据 1 / 研报 1 / 消息 0 / 观点 0；关系结构 1 支撑 / 1 反证 / 0 线索。</p></div></div></div><div class="category-meter"><span class="category-pill filled">证据 <strong>1</strong></span><span class="category-pill ">研报 <strong>0</strong></span><span class="category-pill ">消息 <strong>0</strong></span><span class="category-pill ">观点 <strong>0</strong></span></div><p class="note">来源：ChinaXiv：A Time Scaling Theory for Multi-Layer Electronic Systems - Open Challenges [ev_huawei_tau_law_ddde2ce703]</p></li></ul></div></article><article class="l2-card"><h3>huawei_tau_law：哪些事实仍未确认或存在冲突口径？</h3><div class="field"><b>L2 收敛</b><p>未确认点主要有五类：第一，LogicFolding是否能在更多芯片上规模复制；第二，固定节点下密度、能效、主频提升是否经第三方复测；第三，多晶圆键合的良率和成本是否可控；第四，系统级统一总线、Hi-ONE和3D Folding是否能在AI集群真实负载中兑现；第五，先进制程差距能被缩小多少。当前不能把“成熟工艺+系统级优化”理解成完全替代先进制程，更合理的判…</p></div><div class="field"><b>L3 叶子问题</b><ul><li><strong>huawei_tau_law：哪些事实仍未确认或存在冲突口径？：这个问题最需要哪些事实证据直接回答？</strong><div class="decision-panel"><div class="decision-head"><b>专业回答</b><span>中置信</span></div><div class="decision-grid"><div class="decision-box judgment"><h4>当前回答</h4><p>本节点的直接答案是：现阶段能确认“提出、论文、路径、部分内部指标”，但不能确认“行业普遍适用、外部可复制、经济性优于先进制程”。每经对论文披露的整理尤其有用，因为它同时呈现了实践数据和开放问题。研究中应把口径拆为事实、推论和判断：事实是华为提出并披露示例；推论是系统级优化可能缓解制程受限；判断则需等第三方验证。</p></div><div class="decision-box"><h4>支撑信息</h4><ul><li>每日经济新闻</li></ul></div><div class="decision-box"><h4>反证/线索</h4><p class="note">暂无反证或线索。</p></div><div class="decision-box"><h4>下一步数据</h4><ul><li>补充论文PDF表格。</li><li>补充独立评测。</li></ul><p class="note">证据 0 / 研报 1 / 消息 0 / 观点 0；关系结构 1 支撑 / 0 反证 / 0 线索。</p></div></div></div><div class="category-meter"><span class="category-pill warning">证据 <strong>0</strong></span><span class="category-pill filled">研报 <strong>1</strong></span><span class="category-pill ">消息 <strong>0</strong></span><span class="category-pill ">观点 <strong>0</strong></span></div><p class="note">来源：每日经济新闻：华为何庭波论文对外披露 [ev_huawei_tau_law_f3adac9172]</p></li><li><strong>huawei_tau_law：哪些事实仍未确认或存在冲突口径？：哪些信息会支撑或反证当前判断？</strong><div class="decision-panel"><div class="decision-head"><b>专业回答</b><span>中置信</span></div><div class="decision-grid"><div class="decision-box judgment"><h4>当前回答</h4><p>最强反证来自专家观点和论文自身限制：先进工艺不是可被设计优化完全替代的变量，LogicFolding也不是无成本收益。若华为后续产品仍主要依赖旧节点，且性能、功耗和成本没有明显优于同节点竞品，则“韬定律”只能算架构优化叙事；若能在固定节点持续带来可复测的密度和能效提升，则才有机会升级为强产业命题。</p></div><div class="decision-box"><h4>支撑信息</h4><p class="note">暂无支撑证据。</p></div><div class="decision-box"><h4>反证/线索</h4><ul><li>品利基金陈启观点</li><li>ChinaXiv Open Challenges</li></ul></div><div class="decision-box"><h4>下一步数据</h4><ul><li>同节点性能/功耗/成本横向对比。</li></ul><p class="note">证据 1 / 研报 0 / 消息 0 / 观点 1；关系结构 0 支撑 / 2 反证 / 0 线索。</p></div></div></div><div class="category-meter"><span class="category-pill warning">证据 <strong>0</strong></span><span class="category-pill ">研报 <strong>0</strong></span><span class="category-pill ">消息 <strong>0</strong></span><span class="category-pill filled">观点 <strong>1</strong></span></div><p class="note">来源：每日经济新闻采访：品利基金半导体产业投资经理陈启 [ev_huawei_tau_law_fc1728243a]</p></li></ul></div></article></div></section>
+<section class="level-frame"><p class="eyebrow">L1 收敛</p><h2>huawei_tau_law通过哪些路径影响资产和公司基本面？</h2><div class="field"><b>规划依据</b><p>再确认价值链、利润池或事件传导机制，判断影响路径是否真实。</p></div><div class="rule-box"><p>传导路径可以分为三条：产品路径，先看Kirin 2026和华为移动SoC是否在固定节点下改善密度、能效和主频；系统路径，看Ascend/AI集群是否通过统一总线、近封装光I/O和3D Folding降低通信瓶颈；产业链路径，看先进封装、HBM/存储、光互连、EDA和测试基准是否得到更多订单、资本开支或生态合作。最弱的传导是简单推演到所有芯片股，因为韬定律真正强化的是“跨层系统能力”，而不是单一环节景气。</p></div><div class="l2-grid"><article class="l2-card"><h3>huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？</h3><div class="field"><b>L2 收敛</b><p>韬定律的机制不是“绕开物理规律”，而是改变优化目标：在器件层降寄生RC，在电路层通过垂直拓扑缩短关键路径，在芯片层按实际工作负载做软硬芯协同，在系统层减少协议转换和远程内存访问延迟。对于投研，这意味着要把传统“制程节点-晶体管密度”的单线框架改成“时间常数-数据移动-系统吞吐-能耗约束”的框架。</p></div><div class="field"><b>L3 叶子问题</b><ul><li><strong>huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？：这个问题最需要哪些事实证据直接回答？</strong><div class="decision-panel"><div class="decision-head"><b>专业回答</b><span>中置信</span></div><div class="decision-grid"><div class="decision-box judgment"><h4>当前回答</h4><p>本节点回答传导机制的支撑信息：华为官方把路径拆成四层，ChinaXiv把两类示例放在移动SoC和AI系统。移动SoC侧，LogicFolding通过多层有源结构缩短关键路径；AI系统侧，统一总线减少协议转换，Hi-ONE把光I/O推到近封装，3D Folding解决2.5D边缘带宽和供电只能随周长增长的问题。这些机制共同指向一个判断：受影响的不是单一制程节点，而是围绕数据移动和垂直集成的一整套架构链。</p></div><div class="decision-box"><h4>支撑信息</h4><ul><li>华为官网</li><li>ChinaXiv</li></ul></div><div class="decision-box"><h4>反证/线索</h4><ul><li>反证：每经指出华为公开已知且经过市场验证的先进芯片制造能力仍主要停留在7纳米级别，与台积电先进制程、良率和成本控制存在差距；这是对相关设备、材料和代工资产过度外推的risk约束。（每日经济新闻：先进制程差距与能力边界，ev_huawei_…</li></ul></div><div class="decision-box"><h4>下一步数据</h4><ul><li>供应链订单和BOM变化。</li></ul><p class="note">证据 2 / 研报 1 / 消息 0 / 观点 0；关系结构 3 支撑 / 0 反证 / 0 线索。</p></div></div></div><div class="category-meter"><span class="category-pill filled">证据 <strong>2</strong></span><span class="category-pill filled">研报 <strong>2</strong></span><span class="category-pill ">消息 <strong>0</strong></span><span class="category-pill ">观点 <strong>0</strong></span></div><p class="note">来源：华为官网：四层级协同优化路径 [ev_huawei_tau_law_825fa5dc45]；ChinaXiv：移动SoC与AI系统两个示例 [ev_huawei_tau_law_31b3f90219]；每日经济新闻：先进制程差距与能力边界 [ev_huawei_tau_law_16aec5bf07]；电子创新网：如何理解华为发表的韬定律 [ev_huawei_tau_law_b9285902c3]</p></li><li><strong>huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？：哪些信息会支撑或反证当前判断？</strong><div class="decision-panel"><div class="decision-head"><b>专业回答</b><span>高置信</span></div><div class="decision-grid"><div class="decision-box judgment"><h4>当前回答</h4><p>机制的核心反证是“收益是否被成本吃掉”。逻辑折叠会引入混合键合、TSV、层间RC、工艺偏差和热管理问题；统一总线和光I/O会引入协议、可靠性、功耗和生态适配问题。若这些新增复杂度导致良率下降、成本上升或功耗过高，则τ下降未必转化为可售产品经济性。</p></div><div class="decision-box"><h4>支撑信息</h4><p class="note">暂无支撑证据。</p></div><div class="decision-box"><h4>反证/线索</h4><ul><li>ChinaXiv能耗和垂直互连约束</li><li>每日经济新闻技术挑战</li></ul></div><div class="decision-box"><h4>下一步数据</h4><ul><li>量产良率、封装成本、散热方案和功耗曲线。</li></ul><p class="note">证据 1 / 研报 1 / 消息 0 / 观点 0；关系结构 0 支撑 / 2 反证 / 0 线索。</p></div></div></div><div class="category-meter"><span class="category-pill filled">证据 <strong>1</strong></span><span class="category-pill filled">研报 <strong>2</strong></span><span class="category-pill ">消息 <strong>0</strong></span><span class="category-pill ">观点 <strong>0</strong></span></div><p class="note">来源：ChinaXiv：能耗和垂直互连约束 [ev_huawei_tau_law_28eb43d5e9]；每日经济新闻：先进制程差距与能力边界 [ev_huawei_tau_law_16aec5bf07]；每日经济新闻：技术挑战与待解难题 [ev_huawei_tau_law_6717b89b71]</p></li></ul></div></article><article class="l2-card"><h3>huawei_tau_law：哪些公司、行业或地区会最先受到影响？</h3><div class="field"><b>L2 收敛</b><p>受影响对象要按“能力栈”而非“概念股”拆分。第一层是华为内部芯片和系统产品：麒麟、昇腾、鲲鹏、超节点。第二层是实现韬定律的关键供给：先进封装/混合键合、存储/HBM、光互连、EDA、测试与可靠性工具。第三层是受竞争压力影响的外部路径：先进制程、传统2.5D封装和通用互联协议。最值得跟踪的是能否出现订单、合作、产能或工具链投入，而不是媒体标题。</p></div><div class="field"><b>L3 叶子问题</b><ul><li><strong>huawei_tau_law：哪些公司、行业或地区会最先受到影响？：这个问题最需要哪些事实证据直接回答？</strong><div class="decision-panel"><div class="decision-head"><b>专业回答</b><span>中置信</span></div><div class="decision-grid"><div class="decision-box judgment"><h4>当前回答</h4><p>证据指向的受影响对象并不是“全部半导体”，而是几类具体环节：先进封装和混合键合承担逻辑折叠；HBM、SRAM和存储接口承担逻辑-内存重新融合；光互连和系统总线承担AI集群低时延；EDA和测试工具承担3D原生设计、时序收敛和可靠性。行业周报中的华为昇腾/鲲鹏路线图可作为背景，说明华为算力产品线正好是该方法论的承载平台。</p></div><div class="decision-box"><h4>支撑信息</h4><ul><li>ChinaXiv供应链经济性迁移</li><li>电子行业周报</li></ul></div><div class="decision-box"><h4>反证/线索</h4><p class="note">暂无反证或线索。</p></div><div class="decision-box"><h4>下一步数据</h4><ul><li>供应链订单、客户认证、收入弹性。</li></ul><p class="note">证据 1 / 研报 1 / 消息 0 / 观点 0；关系结构 2 支撑 / 0 反证 / 0 线索。</p></div></div></div><div class="category-meter"><span class="category-pill filled">证据 <strong>1</strong></span><span class="category-pill filled">研报 <strong>1</strong></span><span class="category-pill ">消息 <strong>0</strong></span><span class="category-pill ">观点 <strong>0</strong></span></div><p class="note">来源：ChinaXiv：供应链经济性迁移判断 [ev_huawei_tau_law_74db086d81]；电子行业周报：华为公布昇腾AI芯片及鲲鹏CPU路线图 [ev_huawei_tau_law_7afd803163]</p></li><li><strong>huawei_tau_law：哪些公司、行业或地区会最先受到影响？：哪些信息会支撑或反证当前判断？</strong><div class="decision-panel"><div class="decision-head"><b>专业回答</b><span>中置信</span></div><div class="decision-grid"><div class="decision-box judgment"><h4>当前回答</h4><p>对受影响对象的反证是：工艺和供应链瓶颈仍然存在。若先进制造、封装良率、材料设备、EDA工具和热管理无法同步推进，韬定律不会自动给所有国产半导体资产带来收入。每经指出华为与台积电先进制程仍有差距，这意味着“成熟工艺+系统创新”是补偿而非完全替代。</p></div><div class="decision-box"><h4>支撑信息</h4><p class="note">暂无支撑证据。</p></div><div class="decision-box"><h4>反证/线索</h4><ul><li>每日经济新闻先进制程差距</li><li>ChinaXiv Open Challenges</li></ul></div><div class="decision-box"><h4>下一步数据</h4><ul><li>制造、封装和EDA的实际投入。</li></ul><p class="note">证据 1 / 研报 1 / 消息 0 / 观点 0；关系结构 0 支撑 / 2 反证 / 0 线索。</p></div></div></div><div class="category-meter"><span class="category-pill warning">证据 <strong>0</strong></span><span class="category-pill filled">研报 <strong>1</strong></span><span class="category-pill ">消息 <strong>0</strong></span><span class="category-pill ">观点 <strong>0</strong></span></div><p class="note">来源：每日经济新闻：先进制程差距与能力边界 [ev_huawei_tau_law_16aec5bf07]</p></li></ul></div></article></div></section>
+<section class="level-frame"><p class="eyebrow">L1 收敛</p><h2>huawei_tau_law当前可能已经被市场定价了什么？</h2><div class="field"><b>规划依据</b><p>先确认事实、需求和基础边界，避免直接跳到结论。</p></div><div class="rule-box"><p>市场已经在短期交易“国产半导体换道超车”的叙事：A股/H股半导体和相关ETF在事件发布后出现明显异动。需要区分两层定价：第一层是情绪和政策/国产替代想象，已经较快反映；第二层是基本面兑现，包括产品性能、订单、产能、利润率和产业标准，尚未反映充分。当前更适合把韬定律看作催化剂和研究线索，而不是即刻可折现的盈利增量。</p></div><div class="l2-grid"><article class="l2-card"><h3>huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？</h3><div class="field"><b>L2 收敛</b><p>当前可能已被定价的是“国产半导体技术路线突破”的情绪溢价，而不是可量化盈利。ETF和半导体指数的快速反应说明事件已进入交易视野；但价格反应主要基于叙事强度、国产替代、AI算力瓶颈和后摩尔焦虑。若后续没有产品数据，这部分定价容易回撤。</p></div><div class="field"><b>L3 叶子问题</b><ul><li><strong>huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？：这个问题最需要哪些事实证据直接回答？</strong><div class="decision-panel"><div class="decision-head"><b>专业回答</b><span>中置信</span></div><div class="decision-grid"><div class="decision-box judgment"><h4>当前回答</h4><p>支撑信息显示，发布当天及次日半导体资产有明显反应。这个反应说明市场将韬定律理解为国产半导体、先进封装、AI算力和后摩尔路线的共振信号。但这类消息属于市场观察，不是基本面证据；它只说明“预期已升温”，不能说明公司利润已改善。</p></div><div class="decision-box"><h4>支撑信息</h4><p class="note">暂无支撑证据。</p></div><div class="decision-box"><h4>反证/线索</h4><ul><li>每经网科创芯片ETF上涨</li><li>财联社</li></ul></div><div class="decision-box"><h4>下一步数据</h4><ul><li>跟踪上市公司公告。</li></ul><p class="note">证据 0 / 研报 0 / 消息 2 / 观点 0；关系结构 0 支撑 / 0 反证 / 2 线索。</p></div></div></div><div class="category-meter"><span class="category-pill warning">证据 <strong>0</strong></span><span class="category-pill ">研报 <strong>0</strong></span><span class="category-pill filled">消息 <strong>2</strong></span><span class="category-pill ">观点 <strong>0</strong></span></div><p class="note">来源：每经网：科创芯片ETF上涨3.06% [ev_huawei_tau_law_62ce4a5dc7]；财联社：华为新技术催化半导体爆发 [ev_huawei_tau_law_288ccbd697]</p></li><li><strong>huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？：哪些信息会支撑或反证当前判断？</strong><div class="decision-panel"><div class="decision-head"><b>专业回答</b><span>中置信</span></div><div class="decision-grid"><div class="decision-box judgment"><h4>当前回答</h4><p>价格层面的反证条件是：板块快速上涨但没有后续基本面支撑。若ETF溢价、交易拥挤和主题轮动先行，而上市公司没有订单、资本开支、供应链进入或业绩指引变化，则说明韬定律被市场过度提前定价。</p></div><div class="decision-box"><h4>支撑信息</h4><p class="note">暂无支撑证据。</p></div><div class="decision-box"><h4>反证/线索</h4><ul><li>新浪财经高溢价风险</li><li>财联社高位分化提示</li></ul></div><div class="decision-box"><h4>下一步数据</h4><ul><li>ETF溢价率、换手率、资金净流入、估值分位。</li></ul><p class="note">证据 0 / 研报 0 / 消息 2 / 观点 0；关系结构 0 支撑 / 2 反证 / 0 线索。</p></div></div></div><div class="category-meter"><span class="category-pill warning">证据 <strong>0</strong></span><span class="category-pill ">研报 <strong>0</strong></span><span class="category-pill filled">消息 <strong>1</strong></span><span class="category-pill ">观点 <strong>0</strong></span></div><p class="note">来源：新浪财经：注意高溢价风险，华为韬定律引爆ETF [ev_huawei_tau_law_dd8efe3cd3]</p></li></ul></div></article><article class="l2-card"><h3>huawei_tau_law：什么信息会构成超预期或低于预期？</h3><div class="field"><b>L2 收敛</b><p>真正构成超预期的信息不是“又有媒体报道”，而是可复测数据：Kirin 2026是否在固定节点下达到论文披露的密度、能效和频率改善；统一总线和Hi-ONE是否把AI集群远端访问延迟、能耗和TCO显著降低；3D Folding是否解决2.5D边缘带宽瓶颈；相关供应链是否出现订单和资本开支。低于预期则是产品延期、性能不达标、功耗过高、良率成本不可控或生态没有跟随。</p></div><div class="field"><b>L3 叶子问题</b><ul><li><strong>huawei_tau_law：什么信息会构成超预期或低于预期？：这个问题最需要哪些事实证据直接回答？</strong><div class="decision-panel"><div class="decision-head"><b>专业回答</b><span>中置信</span></div><div class="decision-grid"><div class="decision-box judgment"><h4>当前回答</h4><p>可验证的超预期指标包括：移动SoC侧密度、主频、能效和热表现；AI系统侧远端访问延迟、带宽、pJ/bit、集群利用率和TCO；产业链侧混合键合、光I/O、HBM/存储和EDA订单。论文和每经报道都给了指标方向，但指标需要第三方复测。</p></div><div class="decision-box"><h4>支撑信息</h4><ul><li>ChinaXiv</li><li>每日经济新闻</li></ul></div><div class="decision-box"><h4>反证/线索</h4><p class="note">暂无反证或线索。</p></div><div class="decision-box"><h4>下一步数据</h4><ul><li>公开benchmark和拆解。</li></ul><p class="note">证据 1 / 研报 1 / 消息 0 / 观点 0；关系结构 2 支撑 / 0 反证 / 0 线索。</p></div></div></div><div class="category-meter"><span class="category-pill filled">证据 <strong>1</strong></span><span class="category-pill filled">研报 <strong>1</strong></span><span class="category-pill ">消息 <strong>0</strong></span><span class="category-pill ">观点 <strong>0</strong></span></div><p class="note">来源：ChinaXiv：Kirin 2026与AI系统路线图 [ev_huawei_tau_law_addf79112a]；每日经济新闻：论文细节与实测数据 [ev_huawei_tau_law_d8914597c7]</p></li><li><strong>huawei_tau_law：什么信息会构成超预期或低于预期？：哪些信息会支撑或反证当前判断？</strong><div class="decision-panel"><div class="decision-head"><b>专业回答</b><span>中置信</span></div><div class="decision-grid"><div class="decision-box judgment"><h4>当前回答</h4><p>如果后续产品只是同方向架构优化，没有显著优于行业已有DTCO、Chiplet、3D堆叠、先进封装和光互联路线，那么“韬定律”的超预期会降低。专家观点提示行业已在推进类似方向，因此华为必须证明的不只是方向正确，而是它的跨层组织能力能带来更高净收益。</p></div><div class="decision-box"><h4>支撑信息</h4><p class="note">暂无支撑证据。</p></div><div class="decision-box"><h4>反证/线索</h4><ul><li>品利基金陈启观点</li></ul></div><div class="decision-box"><h4>下一步数据</h4><ul><li>对比台积电、AMD、英伟达、苹果等系统优化路径。</li></ul><p class="note">证据 0 / 研报 0 / 消息 0 / 观点 1；关系结构 0 支撑 / 1 反证 / 0 线索。</p></div></div></div><div class="category-meter"><span class="category-pill warning">证据 <strong>0</strong></span><span class="category-pill ">研报 <strong>0</strong></span><span class="category-pill ">消息 <strong>0</strong></span><span class="category-pill filled">观点 <strong>1</strong></span></div><p class="note">来源：每日经济新闻采访：品利基金半导体产业投资经理陈启 [ev_huawei_tau_law_ab1b49bbce]</p></li></ul></div></article></div></section>
+<section class="level-frame"><p class="eyebrow">L1 收敛</p><h2>huawei_tau_law后续最重要的跟踪和反证条件是什么？</h2><div class="field"><b>规划依据</b><p>最后设置风险、触发器和反证条件，保证结论可被更新。</p></div><div class="rule-box"><p>后续跟踪应固定成四类触发器：产品触发器，看Kirin 2026和后续昇腾是否兑现论文指标；工程触发器，看3D原生EDA、混合键合、TSV、热管理、profile benchmark是否公开；产业触发器，看封装、存储、光互联和EDA供应链是否出现订单或资本开支；市场触发器，看主题行情是否由消息驱动转向公司基本面驱动。反证条件也要明确：产品不达标、功耗过高、良率成本不经济、供应链无订单、行业没有跟随。</p></div><div class="l2-grid"><article class="l2-card"><h3>huawei_tau_law：哪些公告、数据或行为会触发判断更新？</h3><div class="field"><b>L2 收敛</b><p>更新触发器按优先级排序：1）2026年秋季麒麟芯片是否实际采用逻辑折叠以及第三方评测结果；2）华为是否公开多层设计工具链、混合键合良率、TSV和热管理细节；3）昇腾/超节点是否在统一总线、Hi-ONE和3D Folding上给出真实负载benchmark；4）相关封装、存储、光互联、EDA供应链是否有订单或收入指引。</p></div><div class="field"><b>L3 叶子问题</b><ul><li><strong>huawei_tau_law：哪些公告、数据或行为会触发判断更新？：这个问题最需要哪些事实证据直接回答？</strong><div class="decision-panel"><div class="decision-head"><b>专业回答</b><span>中置信</span></div><div class="decision-grid"><div class="decision-box judgment"><h4>当前回答</h4><p>一手证据已经给出清晰跟踪点：华为官网给出381款芯片、2026年秋季麒麟、2031年等效1.4nm密度；ChinaXiv给出未来数月工具链方法细节、2030年前后Ascend引入LogicFolding、2035硬件集成增长设想。这些节点可以直接转成日历化跟踪清单。</p></div><div class="decision-box"><h4>支撑信息</h4><ul><li>华为官网</li><li>ChinaXiv</li></ul></div><div class="decision-box"><h4>反证/线索</h4><p class="note">暂无反证或线索。</p></div><div class="decision-box"><h4>下一步数据</h4><ul><li>华为秋季发布会信息。</li></ul><p class="note">证据 2 / 研报 0 / 消息 0 / 观点 0；关系结构 2 支撑 / 0 反证 / 0 线索。</p></div></div></div><div class="category-meter"><span class="category-pill filled">证据 <strong>2</strong></span><span class="category-pill ">研报 <strong>0</strong></span><span class="category-pill ">消息 <strong>0</strong></span><span class="category-pill ">观点 <strong>0</strong></span></div><p class="note">来源：华为官网：381款芯片和麒麟2026商业化节点 [ev_huawei_tau_law_124bc650ff]；ChinaXiv：方法论细节将在未来公布 [ev_huawei_tau_law_957c3e840c]</p></li><li><strong>huawei_tau_law：哪些公告、数据或行为会触发判断更新？：哪些信息会支撑或反证当前判断？</strong><div class="decision-panel"><div class="decision-head"><b>专业回答</b><span>高置信</span></div><div class="decision-grid"><div class="decision-box judgment"><h4>当前回答</h4><p>跟踪触发器的反证是：华为只发布概念但不发布可复测benchmark，或产品发布后评测显示性能提升被功耗、散热和成本抵消。ChinaXiv明确说现有Linpack、MLPerf、SPEC等基准不足以暴露各层τ瓶颈，这意味着华为还需要说服产业接受新的profile benchmark；如果没有这一套，投资研究无法确认其系统收益。</p></div><div class="decision-box"><h4>支撑信息</h4><ul><li>支撑：论文提出现有Linpack、MLPerf、SPEC等基准不足以暴露各层τ瓶颈，并承认需要能耗伴随约束；如果后续没有profile benchmark、能耗/散热数据和第三方复测，韬定律的可投…（ChinaXiv：基准测试与能耗约束，…</li></ul></div><div class="decision-box"><h4>反证/线索</h4><ul><li>ChinaXiv基准测试与能耗约束</li></ul></div><div class="decision-box"><h4>下一步数据</h4><ul><li>华为或行业组织发布的新基准。</li></ul><p class="note">证据 1 / 研报 0 / 消息 0 / 观点 0；关系结构 0 支撑 / 1 反证 / 0 线索。</p></div></div></div><div class="category-meter"><span class="category-pill filled">证据 <strong>1</strong></span><span class="category-pill ">研报 <strong>0</strong></span><span class="category-pill ">消息 <strong>0</strong></span><span class="category-pill ">观点 <strong>0</strong></span></div><p class="note">来源：ChinaXiv：基准测试与能耗约束 [ev_huawei_tau_law_1f61ce3e4f]</p></li></ul></div></article><article class="l2-card"><h3>huawei_tau_law：什么信息会证明事件影响被高估或低估？</h3><div class="field"><b>L2 收敛</b><p>证明影响被高估的信号包括：产品发布延期或性能不达标；同节点下能效提升不显著；混合键合良率和TSV开销导致成本过高；AI系统统一总线无法兼容生态或可靠性不足；相关供应链没有订单确认；市场先出现高溢价后分化。证明影响被低估的信号则相反：第三方评测复现密度/能效提升，供应链订单出现，行业标准或外部伙伴开始跟随。</p></div><div class="field"><b>L3 叶子问题</b><ul><li><strong>huawei_tau_law：什么信息会证明事件影响被高估或低估？：这个问题最需要哪些事实证据直接回答？</strong><div class="decision-panel"><div class="decision-head"><b>专业回答</b><span>中置信</span></div><div class="decision-grid"><div class="decision-box judgment"><h4>当前回答</h4><p>本节点将反证信号落到可观察信息：EDA工具链是否能支持多层cell级设计、跨晶圆时序是否稳定、混合键合和TSV是否导致良率/面积损失、功耗是否随速度提升同步上升、供应链是否没有收入确认。每经对这些难题的整理可作为反证清单起点。</p></div><div class="decision-box"><h4>支撑信息</h4><ul><li>支撑：每经总结的主要反证信号包括：EDA工具无法适配多层逻辑折叠、晶圆间工艺偏差影响时钟和保持时间、速度提升带来同步功耗上升。任一难题长期无解，都会削弱产业化判断。（每日经济新闻：工具链、工艺偏差、能耗三类难题，ev_huawei_tau…</li></ul></div><div class="decision-box"><h4>反证/线索</h4><ul><li>每日经济新闻工具链/工艺/能耗难题</li></ul></div><div class="decision-box"><h4>下一步数据</h4><ul><li>EDA、良率、功耗、成本阈值。</li></ul><p class="note">证据 0 / 研报 1 / 消息 0 / 观点 0；关系结构 0 支撑 / 1 反证 / 0 线索。</p></div></div></div><div class="category-meter"><span class="category-pill warning">证据 <strong>0</strong></span><span class="category-pill filled">研报 <strong>1</strong></span><span class="category-pill ">消息 <strong>0</strong></span><span class="category-pill ">观点 <strong>0</strong></span></div><p class="note">来源：每日经济新闻：工具链、工艺偏差、能耗三类难题 [ev_huawei_tau_law_9dcecb0b1d]</p></li><li><strong>huawei_tau_law：什么信息会证明事件影响被高估或低估？：哪些信息会支撑或反证当前判断？</strong><div class="decision-panel"><div class="decision-head"><b>专业回答</b><span>中置信</span></div><div class="decision-grid"><div class="decision-box judgment"><h4>当前回答</h4><p>市场层面的反证测试是：事件带来短期上涨，但板块很快高位分化，同时没有产品评测或订单接力。财联社的报道已经提示这一风险。研究上应把市场信号降权：上涨只能说明关注度提高，分化则提示资金开始筛选基本面，真正有效的是后续公司公告和产业数据。</p></div><div class="decision-box"><h4>支撑信息</h4><p class="note">暂无支撑证据。</p></div><div class="decision-box"><h4>反证/线索</h4><ul><li>财联社高位分化提示</li></ul></div><div class="decision-box"><h4>下一步数据</h4><ul><li>ETF溢价率、成交额、公司公告。</li></ul><p class="note">证据 0 / 研报 0 / 消息 1 / 观点 0；关系结构 0 支撑 / 1 反证 / 0 线索。</p></div></div></div><div class="category-meter"><span class="category-pill warning">证据 <strong>0</strong></span><span class="category-pill ">研报 <strong>0</strong></span><span class="category-pill filled">消息 <strong>1</strong></span><span class="category-pill ">观点 <strong>0</strong></span></div><p class="note">来源：财联社：短期冲高动能与高位分化提示 [ev_huawei_tau_law_f742e0d965]</p></li></ul></div></article></div></section>
+    </section>
+  </main>
+</body>
+</html>

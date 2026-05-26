@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>华为韬（τ）定律｜提问框架审计</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #1d1d1f;
+      --muted: #6e6e73;
+      --soft: #f5f5f7;
+      --panel: rgba(255, 255, 255, 0.86);
+      --line: rgba(0, 0, 0, 0.09);
+      --blue: #0066cc;
+      --green: #248a3d;
+      --orange: #bf5b00;
+      --red: #c9332b;
+      --shadow: 0 18px 46px rgba(0, 0, 0, 0.08);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.95), rgba(245,245,247,0.98) 38%, #fff 100%),
+        var(--soft);
+      letter-spacing: 0;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .shell {
+      width: min(1180px, calc(100vw - 36px));
+      margin: 0 auto;
+      padding: 34px 0 72px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px 0 12px;
+      background: rgba(245, 245, 247, 0.78);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-width: 0;
+    }
+
+    .brand b {
+      font-size: 15px;
+      font-weight: 650;
+      white-space: nowrap;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    button,
+    .link-button {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.82);
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 13px;
+      line-height: 1;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+    }
+
+    button:hover,
+    .link-button:hover {
+      transform: translateY(-1px);
+      background: #fff;
+      border-color: rgba(0,0,0,0.18);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+      gap: 22px;
+      align-items: stretch;
+      padding: 38px 0 24px;
+    }
+
+    .hero-copy {
+      padding: 34px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 860px;
+      font-size: clamp(34px, 5vw, 64px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .summary {
+      margin: 20px 0 0;
+      max-width: 760px;
+      color: #424245;
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    .domain-card {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+    }
+
+    .domain-card h2,
+    .section h2 {
+      margin: 0 0 14px;
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+
+    .domain-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .domain-row {
+      padding: 12px;
+      background: var(--soft);
+      border-radius: var(--radius);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .domain-row strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 13px;
+    }
+
+    .domain-row p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 999px;
+      background: #fff;
+      padding: 6px 9px;
+      color: #424245;
+      font-size: 12px;
+    }
+
+    .section {
+      margin-top: 22px;
+      padding: 26px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.92);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.045);
+    }
+
+    .root-question {
+      margin: 0;
+      padding: 18px 20px;
+      border-radius: var(--radius);
+      background: #111;
+      color: #fff;
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .progress {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      white-space: nowrap;
+    }
+
+    .tree {
+      display: grid;
+      gap: 14px;
+    }
+
+    .l1-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .l1-panel-trigger {
+      width: 100%;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: center;
+      padding: 18px 20px;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      text-align: left;
+      line-height: normal;
+    }
+
+    .l1-panel-trigger:hover {
+      transform: none;
+      background: #fbfbfd;
+      border-color: transparent;
+    }
+
+    .l1-card.is-open .l1-panel-trigger {
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .index {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--ink);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .panel-title h3 {
+      margin: 0 0 8px;
+      font-size: 21px;
+      letter-spacing: 0;
+    }
+
+    .panel-title p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .panel-meta {
+      display: grid;
+      justify-items: end;
+      gap: 7px;
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .panel-state {
+      min-width: 54px;
+      padding: 6px 9px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--soft);
+      color: var(--blue);
+      text-align: center;
+      font-weight: 650;
+    }
+
+    .panel-body {
+      display: none;
+      gap: 16px;
+      padding: 16px 20px 20px;
+    }
+
+    .l1-card.is-open .panel-body {
+      display: grid;
+    }
+
+    .audit {
+      min-width: 232px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .panel-audit {
+      min-width: 0;
+      padding: 14px;
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: var(--radius);
+      background: var(--soft);
+    }
+
+    .audit-options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      overflow: hidden;
+      background: var(--soft);
+    }
+
+    .audit-options label {
+      position: relative;
+      cursor: pointer;
+      text-align: center;
+      padding: 7px 8px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .audit-options input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .audit-options label:has(input:checked) {
+      color: #fff;
+      background: var(--blue);
+      font-weight: 650;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 64px;
+      resize: vertical;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 10px;
+      color: var(--ink);
+      background: #fff;
+      font: inherit;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .l2-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    details {
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: var(--radius);
+      background: #fbfbfd;
+      overflow: hidden;
+    }
+
+    summary {
+      cursor: pointer;
+      padding: 14px 16px;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary strong {
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    summary span {
+      color: var(--blue);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .l3-list {
+      margin: 0;
+      padding: 0 16px 16px 34px;
+      color: #424245;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .l3-list li + li {
+      margin-top: 8px;
+    }
+
+    .export-box {
+      margin-top: 14px;
+      display: none;
+    }
+
+    .export-box textarea {
+      min-height: 180px;
+      font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+      font-size: 12px;
+    }
+
+    @media (max-width: 860px) {
+      .shell {
+        width: min(100vw - 24px, 1180px);
+        padding-top: 18px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy,
+      .domain-card,
+      .section {
+        padding: 20px;
+      }
+
+      .topbar,
+      .toolbar {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .actions {
+        justify-content: flex-start;
+      }
+
+      .l1-panel-trigger {
+        grid-template-columns: auto minmax(0, 1fr);
+      }
+
+      .panel-meta,
+      .audit {
+        grid-column: 1 / -1;
+        justify-items: start;
+        min-width: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <nav class="topbar">
+      <div class="brand">
+        <b>提问框架审计</b>
+        <span>先定义问题，再决定是否研究</span>
+      </div>
+      <div class="actions">
+        <a class="link-button" href="./professional_report.html">专业报告</a>
+        <a class="link-button" href="./research_dashboard.html">研究看板</a>
+        <button id="expand-all" type="button">展开全部</button>
+        <button id="export-audit" type="button">导出审计</button>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">TOPIC / HUAWEI TAU LAW</p>
+        <h1>华为韬（τ）定律：先审问题，不急着下结论</h1>
+        <p class="summary">本页只用于审计提问框架。流程从领域归类开始，再把专业技术问题翻译成投资研究问题，最多三层。你可以先标记每个一级问题是否保留，再决定下一步采集哪些证据。</p>
+      </div>
+      <aside class="domain-card">
+        <h2>领域判断</h2>
+        <div class="domain-grid">
+          <div class="domain-row">
+            <strong>主领域</strong>
+            <p id="primary-domain"></p>
+          </div>
+          <div class="domain-row">
+            <strong>投资问题类型</strong>
+            <p id="investment-type"></p>
+          </div>
+          <div class="domain-row">
+            <strong>相邻领域</strong>
+            <div class="chips" id="adjacent-domains"></div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section">
+      <h2>L0 元问题</h2>
+      <p class="root-question" id="root-question"></p>
+    </section>
+
+    <section class="section">
+      <div class="toolbar">
+        <h2>问题面板</h2>
+        <div class="progress" id="progress"></div>
+      </div>
+      <div class="tree" id="question-tree"></div>
+      <div class="export-box" id="export-box">
+        <textarea id="export-output" readonly></textarea>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const framework = {
+      projectId: "huawei_tau_law",
+      topic: "华为韬（τ）定律",
+      domain: {
+        primary: "半导体与计算系统架构",
+        investmentType: "技术路线发布引发的产业链利润池、竞争格局与市场预期重估",
+        adjacent: ["先进封装", "EDA 与设计方法学", "AI 算力系统", "光互连与数据中心互联", "国产半导体供应链", "二级市场主题定价"]
+      },
+      rootQuestion: "韬（τ）定律是否构成一条可验证、可产业化、可投资映射的半导体系统级演进路线？",
+      l1: [
+        {
+          id: "domain_boundary",
+          title: "领域归类与问题边界",
+          question: "韬（τ）定律到底应该被当作什么问题来研究？",
+          investmentAngle: "先避免把技术概念、产业路线和市场叙事混为一谈，确定后续研究对象和资产映射边界。",
+          l2: [
+            { question: "它是科学定律、工程方法论、产品路线图，还是产业叙事？", l3: ["是否有清晰的一手定义、公式、适用范围和反例边界？", "它与摩尔定律、Dennard Scaling、DTCO、Chiplet、3D 封装的本质差异是什么？", "它的命名是否大于实质，还是确实提供了新的统一优化变量？"] },
+            { question: "投资研究对象应该落在哪些层级？", l3: ["这是研究华为自身技术能力，还是研究 A/H 半导体供应链的利润弹性？", "哪些上市公司可能有真实基本面映射，哪些只属于主题情绪映射？", "哪些问题必须留在技术验证层，不能提前外推到收入和利润？"] }
+          ]
+        },
+        {
+          id: "technical_feasibility",
+          title: "技术机制与工程可行性",
+          question: "韬（τ）定律在技术上是否真的能带来可重复的系统收益？",
+          investmentAngle: "技术方向正确不等于商业价值成立，需要判断收益是否能穿过良率、成本、功耗和工具链约束。",
+          l2: [
+            { question: "τ 具体在哪些层级被压缩？", l3: ["器件、互连、电路、芯片、系统层分别对应什么可观测指标？", "压缩的是开关时间、线延迟、内存访问、协议转换，还是端到端任务时延？", "这些指标最终如何转化为性能、功耗、面积、成本或 TCO 改善？"] },
+            { question: "LogicFolding、统一总线、Hi-ONE、3D Folding 能否稳定工程化？", l3: ["关键瓶颈是 EDA、混合键合、TSV、热管理、工艺偏差，还是可靠性测试？", "这些瓶颈是否需要新的设备、材料、工艺或行业标准？", "华为内部可用的工程能力能否迁移到外部产业链？"] },
+            { question: "技术收益是否是净收益，而不是把复杂度转移到别处？", l3: ["性能提升是否被功耗、散热、良率、封装成本或设计周期抵消？", "应使用哪些对照组：同节点、同功耗、同面积、同成本，还是同工作负载？", "有没有第三方可复测 benchmark，而不是只看发布会指标？"] }
+          ]
+        },
+        {
+          id: "product_commercialization",
+          title: "产品化与商业化证据",
+          question: "哪些产品能证明韬（τ）定律不是概念，而是可商业化路线？",
+          investmentAngle: "只有进入产品、客户、订单和成本结构，技术路线才可能转化为基本面。",
+          l2: [
+            { question: "最先承载该路线的产品是什么？", l3: ["Kirin、Ascend、Kunpeng、超节点、AI 集群中，哪个产品最能验证该路线？", "每个产品应该观察哪些指标：主频、能效、延迟、带宽、利用率、成本，还是出货？", "哪些指标必须由第三方评测、客户验证或拆解报告确认？"] },
+            { question: "时间表是否可信？", l3: ["2026 年、2030 年、2031 年、2035 年分别对应哪些可验证里程碑？", "近期可验证节点是否足够支撑远期叙事？", "如果某个节点延期，应该如何降低判断置信度？"] },
+            { question: "客户是否会为该路线付费？", l3: ["它解决的是终端体验、训练成本、推理成本、供应安全，还是国产替代约束？", "客户采购决策看重性能、能耗、生态兼容、供货安全还是价格？", "软件生态和迁移成本是否会限制产品扩散？"] }
+          ]
+        },
+        {
+          id: "value_chain_competition",
+          title: "产业链利润池与竞争格局",
+          question: "如果韬（τ）定律成立，半导体产业链的利润池会如何重新分配？",
+          investmentAngle: "投资价值不只来自技术突破，还来自谁能捕获新增经济性、谁被削弱、谁只是成本承担者。",
+          l2: [
+            { question: "哪些环节最可能捕获经济性？", l3: ["先进封装、HBM/存储、光互连、EDA、测试、材料、设备中，哪类环节最关键？", "利润池是向设计公司、封装厂、存储厂、设备材料厂，还是系统厂商集中？", "哪些环节议价权提高，哪些环节只是跟随扩产？"] },
+            { question: "全球竞争对手会如何响应？", l3: ["台积电、英伟达、AMD、苹果、英特尔已有的系统级优化路线与它有何重叠？", "它是差异化路线，还是对既有行业趋势的重新命名？", "如果海外龙头也能快速采用类似方法，国内资产的超额收益还剩多少？"] },
+            { question: "国内供应链的关键瓶颈在哪里？", l3: ["瓶颈在先进制造、键合设备、EDA、材料、良率控制、光器件，还是系统软件？", "哪些瓶颈有国产替代机会，哪些瓶颈可能长期限制产业化？", "政策、资本开支和产业联盟能否缩短瓶颈突破时间？"] }
+          ]
+        },
+        {
+          id: "listed_company_transmission",
+          title: "上市公司基本面传导",
+          question: "该事件如何从技术路线传导到上市公司的收入、利润和估值？",
+          investmentAngle: "把技术问题翻译成可跟踪的财务变量，避免只停留在概念和题材。",
+          l2: [
+            { question: "哪些公司有真实敞口？", l3: ["公司是否已进入华为或相关算力链条，还是只是业务名称相似？", "相关业务收入占比、客户认证、订单能见度和毛利率弹性分别是多少？", "是否存在单一客户依赖、价格压制或产能利用率风险？"] },
+            { question: "哪些财务指标应该发生变化？", l3: ["应观察新增订单、合同负债、存货、资本开支、研发费用、毛利率还是分部收入？", "该路线带来的是一次性设备需求，还是持续耗材、服务和升级需求？", "收入确认周期与市场交易周期是否错配？"] },
+            { question: "基本面兑现的时间尺度是什么？", l3: ["0-3 个月只是事件催化，还是会出现订单公告？", "3-15 个月能否看到产品发布、客户验证和收入指引？", "15 个月以上是否需要重新评估产业标准和利润池迁移？"] }
+          ]
+        },
+        {
+          id: "market_expectation",
+          title: "市场预期、估值与反证",
+          question: "市场已经定价了什么，什么信息会改变赔率？",
+          investmentAngle: "技术事件的投资价值取决于预期差，而不是事件本身是否热。",
+          l2: [
+            { question: "当前价格已经隐含了哪些判断？", l3: ["板块涨幅、估值分位、成交拥挤度和资金流是否已经反映乐观预期？", "市场是在交易技术验证、国产替代、AI 算力，还是单纯主题轮动？", "哪些资产已经涨到需要基本面马上接力？"] },
+            { question: "什么信息构成超预期或低于预期？", l3: ["超预期信息是第三方 benchmark、产品量产、客户订单、供应链扩产，还是行业标准跟随？", "低于预期信息是产品延期、功耗过高、良率不经济、订单缺失，还是市场快速分化？", "哪些指标变化足以从主题催化升级为基本面重估？"] },
+            { question: "反证测试应该如何设置？", l3: ["如果核心产品没有独立评测或评测不及预期，应该下调哪个层级的判断？", "如果供应链没有订单或收入弹性，应该如何切断资产映射？", "如果市场高位分化而基本面无进展，是否说明事件影响被高估？"] }
+          ]
+        }
+      ]
+    };
+
+    const auditKey = `question-framework-audit:${framework.projectId}`;
+    const auditState = JSON.parse(localStorage.getItem(auditKey) || "{}");
+
+    function saveAudit() {
+      localStorage.setItem(auditKey, JSON.stringify(auditState));
+      updateProgress();
+    }
+
+    function render() {
+      document.getElementById("primary-domain").textContent = framework.domain.primary;
+      document.getElementById("investment-type").textContent = framework.domain.investmentType;
+      document.getElementById("root-question").textContent = framework.rootQuestion;
+      document.getElementById("adjacent-domains").innerHTML = framework.domain.adjacent.map(item => `<span class="chip">${item}</span>`).join("");
+
+      const tree = document.getElementById("question-tree");
+      tree.innerHTML = framework.l1.map((node, index) => {
+        const status = auditState[node.id]?.status || "";
+        const note = auditState[node.id]?.note || "";
+        const l3Count = node.l2.reduce((total, child) => total + child.l3.length, 0);
+        const isOpen = index === 0;
+        const l2 = node.l2.map((child, childIndex) => `
+          <details>
+            <summary><strong>L2.${childIndex + 1} ${child.question}</strong><span>${child.l3.length} 个 L3</span></summary>
+            <ol class="l3-list">
+              ${child.l3.map(item => `<li>${item}</li>`).join("")}
+            </ol>
+          </details>
+        `).join("");
+        return `
+          <article class="l1-card ${isOpen ? "is-open" : ""}" data-node-id="${node.id}">
+            <button class="l1-panel-trigger" type="button" aria-expanded="${isOpen ? "true" : "false"}">
+              <div class="index">L1.${index + 1}</div>
+              <div class="panel-title">
+                <h3>${node.title}</h3>
+                <p><strong>${node.question}</strong></p>
+                <p>${node.investmentAngle}</p>
+              </div>
+              <div class="panel-meta">
+                <span>${node.l2.length} 个 L2 / ${l3Count} 个 L3</span>
+                <span class="panel-state">${isOpen ? "收起" : "展开"}</span>
+              </div>
+            </button>
+            <div class="panel-body">
+              <div class="audit panel-audit">
+                <div class="audit-options" role="radiogroup" aria-label="${node.title}审计状态">
+                  <label><input type="radio" name="${node.id}" value="keep" ${status === "keep" ? "checked" : ""}>保留</label>
+                  <label><input type="radio" name="${node.id}" value="revise" ${status === "revise" ? "checked" : ""}>修改</label>
+                  <label><input type="radio" name="${node.id}" value="remove" ${status === "remove" ? "checked" : ""}>删除</label>
+                </div>
+                <textarea placeholder="审计意见：哪里要删、哪里要补、问题是否太宽？">${note}</textarea>
+              </div>
+              <div class="l2-list">${l2}</div>
+            </div>
+          </article>
+        `;
+      }).join("");
+
+      tree.querySelectorAll(".l1-card").forEach(card => {
+        const id = card.dataset.nodeId;
+        const trigger = card.querySelector(".l1-panel-trigger");
+        trigger.addEventListener("click", () => {
+          const isOpen = card.classList.toggle("is-open");
+          trigger.setAttribute("aria-expanded", isOpen ? "true" : "false");
+          card.querySelector(".panel-state").textContent = isOpen ? "收起" : "展开";
+        });
+        card.querySelectorAll("input[type='radio']").forEach(input => {
+          input.addEventListener("change", () => {
+            auditState[id] = { ...(auditState[id] || {}), status: input.value };
+            saveAudit();
+          });
+        });
+        card.querySelector("textarea").addEventListener("input", event => {
+          auditState[id] = { ...(auditState[id] || {}), note: event.target.value };
+          saveAudit();
+        });
+      });
+
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const statuses = framework.l1.map(node => auditState[node.id]?.status || "pending");
+      const count = key => statuses.filter(item => item === key).length;
+      document.getElementById("progress").innerHTML = [
+        `<span class="badge">L1 ${framework.l1.length}</span>`,
+        `<span class="badge">保留 ${count("keep")}</span>`,
+        `<span class="badge">修改 ${count("revise")}</span>`,
+        `<span class="badge">删除 ${count("remove")}</span>`,
+        `<span class="badge">未审 ${count("pending")}</span>`
+      ].join("");
+    }
+
+    document.getElementById("expand-all").addEventListener("click", () => {
+      const cards = Array.from(document.querySelectorAll(".l1-card"));
+      const details = Array.from(document.querySelectorAll("details"));
+      const shouldOpen = cards.some(item => !item.classList.contains("is-open"));
+      cards.forEach(card => {
+        card.classList.toggle("is-open", shouldOpen);
+        card.querySelector(".l1-panel-trigger").setAttribute("aria-expanded", shouldOpen ? "true" : "false");
+        card.querySelector(".panel-state").textContent = shouldOpen ? "收起" : "展开";
+      });
+      details.forEach(item => { item.open = shouldOpen; });
+      document.getElementById("expand-all").textContent = shouldOpen ? "收起全部" : "展开全部";
+    });
+
+    document.getElementById("export-audit").addEventListener("click", () => {
+      const output = {
+        project_id: framework.projectId,
+        topic: framework.topic,
+        root_question: framework.rootQuestion,
+        audit: auditState,
+        exported_at: new Date().toISOString()
+      };
+      const box = document.getElementById("export-box");
+      const textarea = document.getElementById("export-output");
+      textarea.value = JSON.stringify(output, null, 2);
+      box.style.display = "block";
+      textarea.focus();
+      textarea.select();
+    });
+
+    render();
+  </script>
+</body>
+</html>

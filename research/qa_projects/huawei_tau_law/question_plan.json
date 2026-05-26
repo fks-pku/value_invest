@@ -1,0 +1,348 @@
+{
+  "detected_signals": [
+    "supply_chain"
+  ],
+  "generated_at": "2026-05-26T08:35:57.275264+00:00",
+  "l1": [
+    {
+      "id": "facts",
+      "l2": [
+        {
+          "id": "timeline",
+          "l3": [
+            {
+              "id": "evidence_map",
+              "information_focus": {
+                "evidence": "huawei_tau_law与“huawei_tau_law：事件发生了什么，哪些事实已经被确认？”相关的公告、监管文件、官方数据和可验证事实。",
+                "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：事件发生了什么，哪些事实已经被确认？”的线索。",
+                "opinion": "专家、产业人士或投资者对“huawei_tau_law：事件发生了什么，哪些事实已经被确认？”的机制解释和反证提醒。",
+                "research_report": "第三方对huawei_tau_law中“huawei_tau_law：事件发生了什么，哪些事实已经被确认？”的模型、数据和关键假设。"
+              },
+              "question": "huawei_tau_law：事件发生了什么，哪些事实已经被确认？：这个问题最需要哪些事实证据直接回答？",
+              "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+              "should_collect_information": true,
+              "should_drill_down": false,
+              "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+            },
+            {
+              "id": "disconfirming_test",
+              "information_focus": {
+                "evidence": "huawei_tau_law与“huawei_tau_law：事件发生了什么，哪些事实已经被确认？”相关的公告、监管文件、官方数据和可验证事实。",
+                "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：事件发生了什么，哪些事实已经被确认？”的线索。",
+                "opinion": "专家、产业人士或投资者对“huawei_tau_law：事件发生了什么，哪些事实已经被确认？”的机制解释和反证提醒。",
+                "research_report": "第三方对huawei_tau_law中“huawei_tau_law：事件发生了什么，哪些事实已经被确认？”的模型、数据和关键假设。"
+              },
+              "question": "huawei_tau_law：事件发生了什么，哪些事实已经被确认？：哪些信息会支撑或反证当前判断？",
+              "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+              "should_collect_information": true,
+              "should_drill_down": false,
+              "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+            }
+          ],
+          "question": "huawei_tau_law：事件发生了什么，哪些事实已经被确认？",
+          "rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+          "should_drill_down": true,
+          "terminal_reason": ""
+        },
+        {
+          "id": "uncertainty",
+          "l3": [
+            {
+              "id": "evidence_map",
+              "information_focus": {
+                "evidence": "huawei_tau_law与“huawei_tau_law：哪些事实仍未确认或存在冲突口径？”相关的公告、监管文件、官方数据和可验证事实。",
+                "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：哪些事实仍未确认或存在冲突口径？”的线索。",
+                "opinion": "专家、产业人士或投资者对“huawei_tau_law：哪些事实仍未确认或存在冲突口径？”的机制解释和反证提醒。",
+                "research_report": "第三方对huawei_tau_law中“huawei_tau_law：哪些事实仍未确认或存在冲突口径？”的模型、数据和关键假设。"
+              },
+              "question": "huawei_tau_law：哪些事实仍未确认或存在冲突口径？：这个问题最需要哪些事实证据直接回答？",
+              "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+              "should_collect_information": true,
+              "should_drill_down": false,
+              "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+            },
+            {
+              "id": "disconfirming_test",
+              "information_focus": {
+                "evidence": "huawei_tau_law与“huawei_tau_law：哪些事实仍未确认或存在冲突口径？”相关的公告、监管文件、官方数据和可验证事实。",
+                "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：哪些事实仍未确认或存在冲突口径？”的线索。",
+                "opinion": "专家、产业人士或投资者对“huawei_tau_law：哪些事实仍未确认或存在冲突口径？”的机制解释和反证提醒。",
+                "research_report": "第三方对huawei_tau_law中“huawei_tau_law：哪些事实仍未确认或存在冲突口径？”的模型、数据和关键假设。"
+              },
+              "question": "huawei_tau_law：哪些事实仍未确认或存在冲突口径？：哪些信息会支撑或反证当前判断？",
+              "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+              "should_collect_information": true,
+              "should_drill_down": false,
+              "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+            }
+          ],
+          "question": "huawei_tau_law：哪些事实仍未确认或存在冲突口径？",
+          "rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+          "should_drill_down": true,
+          "terminal_reason": ""
+        }
+      ],
+      "question": "huawei_tau_law的事实边界、时间线和未确认点是什么？",
+      "rationale": "先确认事实、需求和基础边界，避免直接跳到结论。",
+      "should_drill_down": true,
+      "terminal_reason": ""
+    },
+    {
+      "id": "transmission",
+      "l2": [
+        {
+          "id": "channels",
+          "l3": [
+            {
+              "id": "evidence_map",
+              "information_focus": {
+                "evidence": "huawei_tau_law与“huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？”相关的公告、监管文件、官方数据和可验证事实。",
+                "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？”的线索。",
+                "opinion": "专家、产业人士或投资者对“huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？”的机制解释和反证提醒。",
+                "research_report": "第三方对huawei_tau_law中“huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？”的模型、数据和关键假设。"
+              },
+              "question": "huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？：这个问题最需要哪些事实证据直接回答？",
+              "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+              "should_collect_information": true,
+              "should_drill_down": false,
+              "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+            },
+            {
+              "id": "disconfirming_test",
+              "information_focus": {
+                "evidence": "huawei_tau_law与“huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？”相关的公告、监管文件、官方数据和可验证事实。",
+                "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？”的线索。",
+                "opinion": "专家、产业人士或投资者对“huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？”的机制解释和反证提醒。",
+                "research_report": "第三方对huawei_tau_law中“huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？”的模型、数据和关键假设。"
+              },
+              "question": "huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？：哪些信息会支撑或反证当前判断？",
+              "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+              "should_collect_information": true,
+              "should_drill_down": false,
+              "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+            }
+          ],
+          "question": "huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？",
+          "rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+          "should_drill_down": true,
+          "terminal_reason": ""
+        },
+        {
+          "id": "affected_objects",
+          "l3": [
+            {
+              "id": "evidence_map",
+              "information_focus": {
+                "evidence": "huawei_tau_law与“huawei_tau_law：哪些公司、行业或地区会最先受到影响？”相关的公告、监管文件、官方数据和可验证事实。",
+                "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：哪些公司、行业或地区会最先受到影响？”的线索。",
+                "opinion": "专家、产业人士或投资者对“huawei_tau_law：哪些公司、行业或地区会最先受到影响？”的机制解释和反证提醒。",
+                "research_report": "第三方对huawei_tau_law中“huawei_tau_law：哪些公司、行业或地区会最先受到影响？”的模型、数据和关键假设。"
+              },
+              "question": "huawei_tau_law：哪些公司、行业或地区会最先受到影响？：这个问题最需要哪些事实证据直接回答？",
+              "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+              "should_collect_information": true,
+              "should_drill_down": false,
+              "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+            },
+            {
+              "id": "disconfirming_test",
+              "information_focus": {
+                "evidence": "huawei_tau_law与“huawei_tau_law：哪些公司、行业或地区会最先受到影响？”相关的公告、监管文件、官方数据和可验证事实。",
+                "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：哪些公司、行业或地区会最先受到影响？”的线索。",
+                "opinion": "专家、产业人士或投资者对“huawei_tau_law：哪些公司、行业或地区会最先受到影响？”的机制解释和反证提醒。",
+                "research_report": "第三方对huawei_tau_law中“huawei_tau_law：哪些公司、行业或地区会最先受到影响？”的模型、数据和关键假设。"
+              },
+              "question": "huawei_tau_law：哪些公司、行业或地区会最先受到影响？：哪些信息会支撑或反证当前判断？",
+              "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+              "should_collect_information": true,
+              "should_drill_down": false,
+              "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+            }
+          ],
+          "question": "huawei_tau_law：哪些公司、行业或地区会最先受到影响？",
+          "rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+          "should_drill_down": true,
+          "terminal_reason": ""
+        }
+      ],
+      "question": "huawei_tau_law通过哪些路径影响资产和公司基本面？",
+      "rationale": "再确认价值链、利润池或事件传导机制，判断影响路径是否真实。",
+      "should_drill_down": true,
+      "terminal_reason": ""
+    },
+    {
+      "id": "market_baseline",
+      "l2": [
+        {
+          "id": "priced_in",
+          "l3": [
+            {
+              "id": "evidence_map",
+              "information_focus": {
+                "evidence": "huawei_tau_law与“huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？”相关的公告、监管文件、官方数据和可验证事实。",
+                "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？”的线索。",
+                "opinion": "专家、产业人士或投资者对“huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？”的机制解释和反证提醒。",
+                "research_report": "第三方对huawei_tau_law中“huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？”的模型、数据和关键假设。"
+              },
+              "question": "huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？：这个问题最需要哪些事实证据直接回答？",
+              "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+              "should_collect_information": true,
+              "should_drill_down": false,
+              "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+            },
+            {
+              "id": "disconfirming_test",
+              "information_focus": {
+                "evidence": "huawei_tau_law与“huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？”相关的公告、监管文件、官方数据和可验证事实。",
+                "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？”的线索。",
+                "opinion": "专家、产业人士或投资者对“huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？”的机制解释和反证提醒。",
+                "research_report": "第三方对huawei_tau_law中“huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？”的模型、数据和关键假设。"
+              },
+              "question": "huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？：哪些信息会支撑或反证当前判断？",
+              "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+              "should_collect_information": true,
+              "should_drill_down": false,
+              "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+            }
+          ],
+          "question": "huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？",
+          "rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+          "should_drill_down": true,
+          "terminal_reason": ""
+        },
+        {
+          "id": "surprise",
+          "l3": [
+            {
+              "id": "evidence_map",
+              "information_focus": {
+                "evidence": "huawei_tau_law与“huawei_tau_law：什么信息会构成超预期或低于预期？”相关的公告、监管文件、官方数据和可验证事实。",
+                "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：什么信息会构成超预期或低于预期？”的线索。",
+                "opinion": "专家、产业人士或投资者对“huawei_tau_law：什么信息会构成超预期或低于预期？”的机制解释和反证提醒。",
+                "research_report": "第三方对huawei_tau_law中“huawei_tau_law：什么信息会构成超预期或低于预期？”的模型、数据和关键假设。"
+              },
+              "question": "huawei_tau_law：什么信息会构成超预期或低于预期？：这个问题最需要哪些事实证据直接回答？",
+              "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+              "should_collect_information": true,
+              "should_drill_down": false,
+              "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+            },
+            {
+              "id": "disconfirming_test",
+              "information_focus": {
+                "evidence": "huawei_tau_law与“huawei_tau_law：什么信息会构成超预期或低于预期？”相关的公告、监管文件、官方数据和可验证事实。",
+                "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：什么信息会构成超预期或低于预期？”的线索。",
+                "opinion": "专家、产业人士或投资者对“huawei_tau_law：什么信息会构成超预期或低于预期？”的机制解释和反证提醒。",
+                "research_report": "第三方对huawei_tau_law中“huawei_tau_law：什么信息会构成超预期或低于预期？”的模型、数据和关键假设。"
+              },
+              "question": "huawei_tau_law：什么信息会构成超预期或低于预期？：哪些信息会支撑或反证当前判断？",
+              "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+              "should_collect_information": true,
+              "should_drill_down": false,
+              "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+            }
+          ],
+          "question": "huawei_tau_law：什么信息会构成超预期或低于预期？",
+          "rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+          "should_drill_down": true,
+          "terminal_reason": ""
+        }
+      ],
+      "question": "huawei_tau_law当前可能已经被市场定价了什么？",
+      "rationale": "先确认事实、需求和基础边界，避免直接跳到结论。",
+      "should_drill_down": true,
+      "terminal_reason": ""
+    },
+    {
+      "id": "follow_up",
+      "l2": [
+        {
+          "id": "triggers",
+          "l3": [
+            {
+              "id": "evidence_map",
+              "information_focus": {
+                "evidence": "huawei_tau_law与“huawei_tau_law：哪些公告、数据或行为会触发判断更新？”相关的公告、监管文件、官方数据和可验证事实。",
+                "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：哪些公告、数据或行为会触发判断更新？”的线索。",
+                "opinion": "专家、产业人士或投资者对“huawei_tau_law：哪些公告、数据或行为会触发判断更新？”的机制解释和反证提醒。",
+                "research_report": "第三方对huawei_tau_law中“huawei_tau_law：哪些公告、数据或行为会触发判断更新？”的模型、数据和关键假设。"
+              },
+              "question": "huawei_tau_law：哪些公告、数据或行为会触发判断更新？：这个问题最需要哪些事实证据直接回答？",
+              "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+              "should_collect_information": true,
+              "should_drill_down": false,
+              "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+            },
+            {
+              "id": "disconfirming_test",
+              "information_focus": {
+                "evidence": "huawei_tau_law与“huawei_tau_law：哪些公告、数据或行为会触发判断更新？”相关的公告、监管文件、官方数据和可验证事实。",
+                "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：哪些公告、数据或行为会触发判断更新？”的线索。",
+                "opinion": "专家、产业人士或投资者对“huawei_tau_law：哪些公告、数据或行为会触发判断更新？”的机制解释和反证提醒。",
+                "research_report": "第三方对huawei_tau_law中“huawei_tau_law：哪些公告、数据或行为会触发判断更新？”的模型、数据和关键假设。"
+              },
+              "question": "huawei_tau_law：哪些公告、数据或行为会触发判断更新？：哪些信息会支撑或反证当前判断？",
+              "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+              "should_collect_information": true,
+              "should_drill_down": false,
+              "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+            }
+          ],
+          "question": "huawei_tau_law：哪些公告、数据或行为会触发判断更新？",
+          "rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+          "should_drill_down": true,
+          "terminal_reason": ""
+        },
+        {
+          "id": "disconfirming_signal",
+          "l3": [
+            {
+              "id": "evidence_map",
+              "information_focus": {
+                "evidence": "huawei_tau_law与“huawei_tau_law：什么信息会证明事件影响被高估或低估？”相关的公告、监管文件、官方数据和可验证事实。",
+                "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：什么信息会证明事件影响被高估或低估？”的线索。",
+                "opinion": "专家、产业人士或投资者对“huawei_tau_law：什么信息会证明事件影响被高估或低估？”的机制解释和反证提醒。",
+                "research_report": "第三方对huawei_tau_law中“huawei_tau_law：什么信息会证明事件影响被高估或低估？”的模型、数据和关键假设。"
+              },
+              "question": "huawei_tau_law：什么信息会证明事件影响被高估或低估？：这个问题最需要哪些事实证据直接回答？",
+              "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+              "should_collect_information": true,
+              "should_drill_down": false,
+              "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+            },
+            {
+              "id": "disconfirming_test",
+              "information_focus": {
+                "evidence": "huawei_tau_law与“huawei_tau_law：什么信息会证明事件影响被高估或低估？”相关的公告、监管文件、官方数据和可验证事实。",
+                "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：什么信息会证明事件影响被高估或低估？”的线索。",
+                "opinion": "专家、产业人士或投资者对“huawei_tau_law：什么信息会证明事件影响被高估或低估？”的机制解释和反证提醒。",
+                "research_report": "第三方对huawei_tau_law中“huawei_tau_law：什么信息会证明事件影响被高估或低估？”的模型、数据和关键假设。"
+              },
+              "question": "huawei_tau_law：什么信息会证明事件影响被高估或低估？：哪些信息会支撑或反证当前判断？",
+              "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+              "should_collect_information": true,
+              "should_drill_down": false,
+              "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+            }
+          ],
+          "question": "huawei_tau_law：什么信息会证明事件影响被高估或低估？",
+          "rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+          "should_drill_down": true,
+          "terminal_reason": ""
+        }
+      ],
+      "question": "huawei_tau_law后续最重要的跟踪和反证条件是什么？",
+      "rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+      "should_drill_down": true,
+      "terminal_reason": ""
+    }
+  ],
+  "max_depth": 3,
+  "meta_question": "华为提出的韬（τ）定律是什么，它对半导体产业链、华为技术路线和投资研究意味着什么？",
+  "object_id": "huawei_tau_law",
+  "object_type": "event",
+  "planner_rationale": "围绕“华为提出的韬（τ）定律是什么，它对半导体产业链、华为技术路线和投资研究意味着什么？”，系统先识别研究对象“huawei_tau_law”和信号“supply_chain”，再把问题拆成事实基础、经济性/传导机制、竞争或情景、风险和反证四类主线；默认三层下钻后进入四类信息搜集。",
+  "planning_mode": "deterministic_rule_based",
+  "project_id": "huawei_tau_law",
+  "schema_version": "1.0"
+}

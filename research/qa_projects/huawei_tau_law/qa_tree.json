@@ -1,0 +1,4585 @@
+{
+  "default_depth": 3,
+  "generated_at": "2026-05-26T08:48:46.979988+00:00",
+  "interaction_contract": {
+    "information_categories": [
+      "evidence",
+      "research_report",
+      "message",
+      "opinion"
+    ],
+    "new_question_behavior": "Add a question at any level, collect four-bucket information, update the node answer, then rebuild the report.",
+    "node_model": "Every node is a question with evidence buckets, synthesis, rollup, and child links."
+  },
+  "meta_question": "华为提出的韬（τ）定律是什么，它对半导体产业链、华为技术路线和投资研究意味着什么？",
+  "nodes": [
+    {
+      "current_answer": "韬（τ）定律目前更应被定义为华为提出的一套后摩尔时代系统优化方法论，而不是已经被产业共同验证的新“自然规律”。它的核心变量从几何尺寸转向时间常数τ：通过逻辑折叠、软硬芯协同、统一总线、近封装光I/O和3D集成，降低器件、电路、芯片、系统各层的数据传播与同步时间。投研上，它的主影响不是短期立刻改写晶圆制造利润池，而是把关注点推向先进封装、HBM/存储、光互连、EDA、系统互联和国产AI算力架构。当前结论置信度为中等：华为官网和ChinaXiv提供了一手事实，但独立评测、量产良率、工具链开放程度、能耗约束和供应链订单尚未闭环。",
+      "evidence_buckets": {
+        "evidence": [
+          {
+            "evidence_id": "ev_huawei_tau_law_927e57e6d5",
+            "materiality": "high",
+            "point": "用于元问题总览：华为官方确认韬(τ)定律的发布时间、发布场景、四层技术路径、381款芯片实践、Kirin 2026和2031年等效1.4纳米密度目标。",
+            "relation": "支撑",
+            "reliability": "primary",
+            "source_name": "华为官网：韬(τ)定律官方发布",
+            "summary": "用于元问题总览：华为官方确认韬(τ)定律的发布时间、发布场景、四层技术路径、381款芯片实践、Kirin 2026和2031年等效1.4纳米密度目标。",
+            "url": "https://www.huawei.com/cn/news/2026/5/ieee-iscas-tau-scaling"
+          },
+          {
+            "evidence_id": "ev_huawei_tau_law_b272d0894b",
+            "materiality": "high",
+            "point": "用于元问题总览：论文把τ作为跨器件、电路、芯片、系统的统一优化目标，并提供移动SoC、AI系统、供应链迁移和开放挑战等核心材料。",
+            "relation": "支撑",
+            "reliability": "primary",
+            "source_name": "ChinaXiv：韬定律论文",
+            "summary": "用于元问题总览：论文把τ作为跨器件、电路、芯片、系统的统一优化目标，并提供移动SoC、AI系统、供应链迁移和开放挑战等核心材料。",
+            "url": "https://chinarxiv.org/items/chinaxiv-202605.00224"
+          }
+        ],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "meta.root",
+      "level": 0,
+      "metadata": {
+        "planner_rationale": "围绕“华为提出的韬（τ）定律是什么，它对半导体产业链、华为技术路线和投资研究意味着什么？”，系统先识别研究对象“huawei_tau_law”和信号“supply_chain”，再把问题拆成事实基础、经济性/传导机制、竞争或情景、风险和反证四类主线；默认三层下钻后进入四类信息搜集。",
+        "planning_mode": "deterministic_rule_based",
+        "synthesis_override": {
+          "imported_at": "2026-05-26T08:47:11.708163+00:00",
+          "source": "imported"
+        }
+      },
+      "next_question_ids": [
+        "l1.facts",
+        "l1.transmission",
+        "l1.market_baseline",
+        "l1.follow_up"
+      ],
+      "parent_id": null,
+      "professional_answer": {
+        "answer": "韬（τ）定律目前更应被定义为华为提出的一套后摩尔时代系统优化方法论，而不是已经被产业共同验证的新“自然规律”。它的核心变量从几何尺寸转向时间常数τ：通过逻辑折叠、软硬芯协同、统一总线、近封装光I/O和3D集成，降低器件、电路、芯片、系统各层的数据传播与同步时间。投研上，它的主影响不是短期立刻改写晶圆制造利润池，而是把关注点推向先进封装、HBM/存储、光互连、EDA、系统互联和国产AI算力架构。当前结论置信度为中等：华为官网和ChinaXiv提供了一手事实，但独立评测、量产良率、工具链开放程度、能耗约束和供应链订单尚未闭环。",
+        "confidence": "medium",
+        "facts": [
+          "华为官网确认何庭波于2026-05-25在IEEE ISCAS 2026发表韬(τ)定律，并给出器件、电路、芯片、系统四层路径。",
+          "ChinaXiv论文A Time Scaling Theory for Multi-Layer Electronic Systems于2026-05-25提交，提出以时间常数τ作为跨层优化目标。",
+          "论文称Kirin 2026示例中LogicFolding带来密度、能效和频率改善，并提出AI系统侧统一总线、Hi-ONE和3D Folding路线。",
+          "论文同时承认EDA工具链、晶圆间工艺偏差、垂直互连开销、能耗和基准测试仍是开放挑战。"
+        ],
+        "gaps": [
+          "缺少Kirin 2026独立评测、拆解和同节点对照数据。",
+          "缺少LogicFolding良率、成本、热管理、量产节拍与供应商订单。",
+          "缺少第三方论文引用、IEEE正式论文集、EDA工具链细节和行业标准进展。"
+        ],
+        "inferences": [
+          "这不是单点制程突破，而是系统级补偿路径：用拓扑、封装、互联和软件协同弥补先进制程受限。",
+          "产业链传导优先看先进封装、存储/内存墙、光互连、EDA和系统架构，而不是简单外推为所有半导体资产受益。",
+          "短期市场已经部分交易国产半导体叙事，后续需要产品和供应链数据验证。"
+        ],
+        "judgment": "中期方向有产业研究价值，但短期只能作为技术路线和事件催化，不能直接视作盈利兑现。",
+        "next_data": [
+          "跟踪2026年秋季麒麟新品发布与第三方评测。",
+          "跟踪华为是否公布3D原生EDA、profile benchmark和能耗/散热数据。",
+          "跟踪先进封装、HBM、光互连、EDA供应链订单或资本开支变化。"
+        ],
+        "refuting_evidence": [
+          "ChinaXiv：Open Challenges",
+          "每日经济新闻：技术挑战与待解难题"
+        ],
+        "research_leads": [
+          "财联社：华为新技术催化半导体爆发",
+          "每经网：科创芯片ETF上涨3.06%"
+        ],
+        "rollup": "韬定律是华为围绕时间缩微提出的系统级半导体演进框架，当前更像技术路线与产业催化，尚需产品、良率、能耗和供应链数据验证。",
+        "source_balance": "证据 8 / 研报 6 / 消息 5 / 观点 2；关系结构以支撑为主，但存在明确反证和研究线索。",
+        "supporting_evidence": [
+          "华为官网：华为发表韬(τ)定律，实现晶体管密度与系统性能突破",
+          "ChinaXiv：A Time Scaling Theory for Multi-Layer Electronic Systems"
+        ]
+      },
+      "question": "华为提出的韬（τ）定律是什么，它对半导体产业链、华为技术路线和投资研究意味着什么？",
+      "rollup_to_parent": "韬定律是华为围绕时间缩微提出的系统级半导体演进框架，当前更像技术路线与产业催化，尚需产品、良率、能耗和供应链数据验证。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "medium",
+        "facts": [
+          "华为官网确认何庭波于2026-05-25在IEEE ISCAS 2026发表韬(τ)定律，并给出器件、电路、芯片、系统四层路径。",
+          "ChinaXiv论文A Time Scaling Theory for Multi-Layer Electronic Systems于2026-05-25提交，提出以时间常数τ作为跨层优化目标。",
+          "论文称Kirin 2026示例中LogicFolding带来密度、能效和频率改善，并提出AI系统侧统一总线、Hi-ONE和3D Folding路线。",
+          "论文同时承认EDA工具链、晶圆间工艺偏差、垂直互连开销、能耗和基准测试仍是开放挑战。"
+        ],
+        "gaps": [
+          "缺少Kirin 2026独立评测、拆解和同节点对照数据。",
+          "缺少LogicFolding良率、成本、热管理、量产节拍与供应商订单。",
+          "缺少第三方论文引用、IEEE正式论文集、EDA工具链细节和行业标准进展。"
+        ],
+        "inferences": [
+          "这不是单点制程突破，而是系统级补偿路径：用拓扑、封装、互联和软件协同弥补先进制程受限。",
+          "产业链传导优先看先进封装、存储/内存墙、光互连、EDA和系统架构，而不是简单外推为所有半导体资产受益。",
+          "短期市场已经部分交易国产半导体叙事，后续需要产品和供应链数据验证。"
+        ],
+        "judgment": "中期方向有产业研究价值，但短期只能作为技术路线和事件催化，不能直接视作盈利兑现。"
+      }
+    },
+    {
+      "current_answer": "事实层面已经可以确认三件事：第一，韬（τ）定律由华为何庭波在2026年5月25日ISCAS 2026主旨演讲中正式提出；第二，ChinaXiv同日出现署名Tingbo He的论文，给出“time scaling”的理论化表述；第三，华为把落地路径拆成器件、电路、芯片、系统四层，并宣称已有381款芯片实践和Kirin 2026逻辑折叠节点。需要保留的事实边界是：这些数据主要来自华为和作者论文，尚未看到第三方可复测基准、量产成本、良率和能耗数据。",
+      "evidence_buckets": {
+        "evidence": [
+          {
+            "evidence_id": "ev_huawei_tau_law_863c5c6ae3",
+            "materiality": "high",
+            "point": "用于事实边界节点：华为官网确认何庭波在ISCAS 2026发布韬(τ)定律，并描述以时间缩微替代几何缩微。",
+            "relation": "支撑",
+            "reliability": "primary",
+            "source_name": "华为官网：发布事实边界",
+            "summary": "用于事实边界节点：华为官网确认何庭波在ISCAS 2026发布韬(τ)定律，并描述以时间缩微替代几何缩微。",
+            "url": "https://www.huawei.com/cn/news/2026/5/ieee-iscas-tau-scaling"
+          }
+        ],
+        "message": [],
+        "opinion": [],
+        "research_report": [
+          {
+            "evidence_id": "ev_huawei_tau_law_b7b232e274",
+            "materiality": "medium",
+            "point": "用于事实边界节点：每经整理论文披露细节、技术短板和外界关注问题，帮助区分已确认事实与仍需验证的产业化问题。",
+            "relation": "支撑",
+            "reliability": "high",
+            "source_name": "每日经济新闻：事实与未确认点整理",
+            "summary": "用于事实边界节点：每经整理论文披露细节、技术短板和外界关注问题，帮助区分已确认事实与仍需验证的产业化问题。",
+            "url": "https://www.nbd.com.cn/articles/2026-05-25/4408154.html"
+          }
+        ]
+      },
+      "id": "l1.facts",
+      "level": 1,
+      "metadata": {
+        "information_focus": {},
+        "planner_rationale": "先确认事实、需求和基础边界，避免直接跳到结论。",
+        "should_collect_information": false,
+        "should_drill_down": true,
+        "synthesis_override": {
+          "imported_at": "2026-05-26T08:47:11.708175+00:00",
+          "source": "imported"
+        },
+        "terminal_reason": ""
+      },
+      "next_question_ids": [
+        "l1.facts.timeline",
+        "l1.facts.uncertainty"
+      ],
+      "parent_id": "meta.root",
+      "professional_answer": {
+        "answer": "事实层面已经可以确认三件事：第一，韬（τ）定律由华为何庭波在2026年5月25日ISCAS 2026主旨演讲中正式提出；第二，ChinaXiv同日出现署名Tingbo He的论文，给出“time scaling”的理论化表述；第三，华为把落地路径拆成器件、电路、芯片、系统四层，并宣称已有381款芯片实践和Kirin 2026逻辑折叠节点。需要保留的事实边界是：这些数据主要来自华为和作者论文，尚未看到第三方可复测基准、量产成本、良率和能耗数据。",
+        "confidence": "medium",
+        "facts": [
+          "华为官网确认发布会时间、地点、演讲人和核心定义。",
+          "ChinaXiv确认论文题名、作者和提交时间。",
+          "每经和C114均为二次报道，不能替代一手证据。",
+          "论文自述Open Challenges，说明该体系仍在工程化和标准化过程中。"
+        ],
+        "gaps": [
+          "缺少IEEE正式论文集链接和演讲完整视频/幻灯片。",
+          "缺少第三方实验室或终端评测数据。"
+        ],
+        "inferences": [
+          "事实强度足以确认“提出了什么”，但不足以确认“产业已经普遍验证”。",
+          "应将韬定律拆成理论定义、产品验证、产业化验证三个层次分别跟踪。"
+        ],
+        "judgment": "事实边界清楚，但验证边界还不充分。",
+        "next_data": [
+          "补充ISCAS 2026官方议程、论文集和视频。",
+          "补充Kirin 2026上市后的拆解与跑分。"
+        ],
+        "refuting_evidence": [
+          "ChinaXiv Open Challenges",
+          "每日经济新闻技术挑战梳理"
+        ],
+        "research_leads": [
+          "C114通信网报道"
+        ],
+        "rollup": "事实层可确认“华为提出了韬定律”，但不能确认它已成为被外部充分验证的产业定律。",
+        "source_balance": "证据 4 / 研报 2 / 消息 1 / 观点 1；关系结构 5 支撑 / 2 反证 / 1 线索。",
+        "supporting_evidence": [
+          "华为官网",
+          "ChinaXiv论文"
+        ]
+      },
+      "question": "huawei_tau_law的事实边界、时间线和未确认点是什么？",
+      "rollup_to_parent": "事实层可确认“华为提出了韬定律”，但不能确认它已成为被外部充分验证的产业定律。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "medium",
+        "facts": [
+          "华为官网确认发布会时间、地点、演讲人和核心定义。",
+          "ChinaXiv确认论文题名、作者和提交时间。",
+          "每经和C114均为二次报道，不能替代一手证据。",
+          "论文自述Open Challenges，说明该体系仍在工程化和标准化过程中。"
+        ],
+        "gaps": [
+          "缺少IEEE正式论文集链接和演讲完整视频/幻灯片。",
+          "缺少第三方实验室或终端评测数据。"
+        ],
+        "inferences": [
+          "事实强度足以确认“提出了什么”，但不足以确认“产业已经普遍验证”。",
+          "应将韬定律拆成理论定义、产品验证、产业化验证三个层次分别跟踪。"
+        ],
+        "judgment": "事实边界清楚，但验证边界还不充分。"
+      }
+    },
+    {
+      "current_answer": "时间线并不复杂：2026-05-25，华为在上海ISCAS 2026发布韬（τ）定律；同日，ChinaXiv披露英文预印本；随后行业媒体围绕逻辑折叠、381款芯片、Kirin 2026、2031年等效1.4nm密度目标扩散。研究重点应从“新闻发生”转向“哪些节点能验证发布口径”：2026年秋季麒麟芯片、未来数月方法论细节、2030年前后昇腾引入LogicFolding、2031/2035远期密度和集成度目标。",
+      "evidence_buckets": {
+        "evidence": [
+          {
+            "evidence_id": "ev_huawei_tau_law_13b59475b9",
+            "materiality": "high",
+            "point": "用于时间线节点：ChinaXiv显示论文题名、作者Tingbo He和2026-05-25提交时间，可与华为官网发布稿交叉验证。",
+            "relation": "支撑",
+            "reliability": "primary",
+            "source_name": "ChinaXiv：提交时间和论文题名",
+            "summary": "用于时间线节点：ChinaXiv显示论文题名、作者Tingbo He和2026-05-25提交时间，可与华为官网发布稿交叉验证。",
+            "url": "https://chinarxiv.org/items/chinaxiv-202605.00224"
+          }
+        ],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.facts.timeline",
+      "level": 2,
+      "metadata": {
+        "information_focus": {},
+        "planner_rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+        "should_collect_information": false,
+        "should_drill_down": true,
+        "synthesis_override": {
+          "imported_at": "2026-05-26T08:47:11.708181+00:00",
+          "source": "imported"
+        },
+        "terminal_reason": ""
+      },
+      "next_question_ids": [
+        "l1.facts.timeline.evidence_map",
+        "l1.facts.timeline.disconfirming_test"
+      ],
+      "parent_id": "l1.facts",
+      "professional_answer": {
+        "answer": "时间线并不复杂：2026-05-25，华为在上海ISCAS 2026发布韬（τ）定律；同日，ChinaXiv披露英文预印本；随后行业媒体围绕逻辑折叠、381款芯片、Kirin 2026、2031年等效1.4nm密度目标扩散。研究重点应从“新闻发生”转向“哪些节点能验证发布口径”：2026年秋季麒麟芯片、未来数月方法论细节、2030年前后昇腾引入LogicFolding、2031/2035远期密度和集成度目标。",
+        "confidence": "medium",
+        "facts": [
+          "华为官网和ChinaXiv均指向2026-05-25。",
+          "论文声称研究来自2020年5月至2026年5月的381款量产芯片经验。",
+          "媒体报道强调2026年秋季麒麟芯片是逻辑折叠商业化节点。"
+        ],
+        "gaps": [
+          "缺少发布会原始PPT。",
+          "缺少381款芯片清单和分类。"
+        ],
+        "inferences": [
+          "时间线上的近期可验证节点集中在2026年下半年，而非2031或2035远期口径。"
+        ],
+        "judgment": "近期验证应优先盯Kirin 2026和方法论公开，而不是远期1.4nm等效目标。",
+        "next_data": [
+          "获取演讲原文或视频。",
+          "跟踪麒麟2026发布与第三方评测。"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [
+          "C114通信网"
+        ],
+        "rollup": "时间线显示这是刚发布的技术路线，近期关键验证点是2026年秋季产品和方法论细节。",
+        "source_balance": "证据 2 / 研报 0 / 消息 1 / 观点 0；关系结构 2 支撑 / 0 反证 / 1 线索。",
+        "supporting_evidence": [
+          "华为官网",
+          "ChinaXiv"
+        ]
+      },
+      "question": "huawei_tau_law：事件发生了什么，哪些事实已经被确认？",
+      "rollup_to_parent": "时间线显示这是刚发布的技术路线，近期关键验证点是2026年秋季产品和方法论细节。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "medium",
+        "facts": [
+          "华为官网和ChinaXiv均指向2026-05-25。",
+          "论文声称研究来自2020年5月至2026年5月的381款量产芯片经验。",
+          "媒体报道强调2026年秋季麒麟芯片是逻辑折叠商业化节点。"
+        ],
+        "gaps": [
+          "缺少发布会原始PPT。",
+          "缺少381款芯片清单和分类。"
+        ],
+        "inferences": [
+          "时间线上的近期可验证节点集中在2026年下半年，而非2031或2035远期口径。"
+        ],
+        "judgment": "近期验证应优先盯Kirin 2026和方法论公开，而不是远期1.4nm等效目标。"
+      }
+    },
+    {
+      "current_answer": "本节点回答“事件发生了什么”：一手证据显示，2026年5月25日华为何庭波在ISCAS 2026提出韬（τ）定律，并在ChinaXiv发布/提交英文论文。核心定义是把半导体演进的主优化目标从几何尺寸改成特征时间常数τ，通过减少信号传播、数据访问和系统同步时间来继续提升性能。华为官方口径还包括四层路径和产品实践：器件降RC，电路逻辑折叠，芯片软硬芯协同，系统统一内存语义和灵衢总线。",
+      "evidence_buckets": {
+        "evidence": [
+          {
+            "evidence_id": "ev_huawei_tau_law_70731ee18f",
+            "materiality": "high",
+            "point": "华为官网确认：2026年5月25日，何庭波在IEEE ISCAS 2026主旨演讲中发表韬(τ)定律，核心是以时间(τ)缩微替代几何缩微，通过逻辑折叠等方式压缩信号传播时延，并声称该路径已应…",
+            "relation": "支撑",
+            "reliability": "primary",
+            "source_name": "华为官网：华为发表韬(τ)定律，实现晶体管密度与系统性能突破",
+            "summary": "华为官网确认：2026年5月25日，何庭波在IEEE ISCAS 2026主旨演讲中发表韬(τ)定律，核心是以时间(τ)缩微替代几何缩微，通过逻辑折叠等方式压缩信号传播时延，并声称该路径已应用到智能手机和AI计算实践。",
+            "url": "https://www.huawei.com/cn/news/2026/5/ieee-iscas-tau-scaling"
+          },
+          {
+            "evidence_id": "ev_huawei_tau_law_31f0751d77",
+            "materiality": "high",
+            "point": "ChinaXiv页面显示论文题名为A Time Scaling Theory for Multi-Layer Electronic Systems，作者Tingbo He，提交日期为2026…",
+            "relation": "支撑",
+            "reliability": "primary",
+            "source_name": "ChinaXiv：A Time Scaling Theory for Multi-Layer Electronic Systems",
+            "summary": "ChinaXiv页面显示论文题名为A Time Scaling Theory for Multi-Layer Electronic Systems，作者Tingbo He，提交日期为2026-05-25。摘要提出把时间常数τ作为半导体演进主指标，并给出移动SoC与AI系统两个生产规模示例。",
+            "url": "https://chinarxiv.org/items/chinaxiv-202605.00224"
+          }
+        ],
+        "message": [
+          {
+            "evidence_id": "ev_huawei_tau_law_ac3a1537b0",
+            "materiality": "medium",
+            "point": "C114跟进报道将韬定律概括为以时间缩微替代几何缩微，通过逻辑折叠等技术压缩信号传播时延，属于对华为发布会和论文的二次整理，适合作为传播口径线索。",
+            "relation": "研究线索",
+            "reliability": "medium",
+            "source_name": "C114通信网：9千字论文！何庭波署名详解韬（τ）定律",
+            "summary": "C114跟进报道将韬定律概括为以时间缩微替代几何缩微，通过逻辑折叠等技术压缩信号传播时延，属于对华为发布会和论文的二次整理，适合作为传播口径线索。",
+            "url": "https://www.c114.com.cn/news/6541/a1311076.html"
+          }
+        ],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.facts.timeline.evidence_map",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 2,
+          "matched_evidence_ids": [
+            "ev_huawei_tau_law_70731ee18f",
+            "ev_huawei_tau_law_31f0751d77"
+          ],
+          "next_action": "已匹配本地信息，下一步验证来源质量、口径和反证条件。",
+          "node_id": "l1.facts.timeline.evidence_map",
+          "parent_id": "l1.facts.timeline",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：事件发生了什么，哪些事实已经被确认？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：事件发生了什么，哪些事实已经被确认？：这个问题最需要哪些事实证据直接回答？ 公告 年报 官方 数据 事实",
+          "status": "matched"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 1,
+          "matched_evidence_ids": [
+            "ev_huawei_tau_law_ac3a1537b0"
+          ],
+          "next_action": "已匹配本地信息，下一步验证来源质量、口径和反证条件。",
+          "node_id": "l1.facts.timeline.evidence_map",
+          "parent_id": "l1.facts.timeline",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：事件发生了什么，哪些事实已经被确认？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：事件发生了什么，哪些事实已经被确认？：这个问题最需要哪些事实证据直接回答？ 新闻 消息 进展 未证实",
+          "status": "matched"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.facts.timeline.evidence_map",
+          "parent_id": "l1.facts.timeline",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：事件发生了什么，哪些事实已经被确认？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：事件发生了什么，哪些事实已经被确认？：这个问题最需要哪些事实证据直接回答？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补商业研报、卖方报告、行业研究和结构化第三方数据。",
+          "node_id": "l1.facts.timeline.evidence_map",
+          "parent_id": "l1.facts.timeline",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：事件发生了什么，哪些事实已经被确认？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：事件发生了什么，哪些事实已经被确认？：这个问题最需要哪些事实证据直接回答？ 研报 深度报告 行业研究",
+          "status": "missing"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "huawei_tau_law与“huawei_tau_law：事件发生了什么，哪些事实已经被确认？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：事件发生了什么，哪些事实已经被确认？”的线索。",
+          "opinion": "专家、产业人士或投资者对“huawei_tau_law：事件发生了什么，哪些事实已经被确认？”的机制解释和反证提醒。",
+          "research_report": "第三方对huawei_tau_law中“huawei_tau_law：事件发生了什么，哪些事实已经被确认？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-26T08:47:11.708186+00:00",
+          "source": "imported"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.facts.timeline",
+      "professional_answer": {
+        "answer": "本节点回答“事件发生了什么”：一手证据显示，2026年5月25日华为何庭波在ISCAS 2026提出韬（τ）定律，并在ChinaXiv发布/提交英文论文。核心定义是把半导体演进的主优化目标从几何尺寸改成特征时间常数τ，通过减少信号传播、数据访问和系统同步时间来继续提升性能。华为官方口径还包括四层路径和产品实践：器件降RC，电路逻辑折叠，芯片软硬芯协同，系统统一内存语义和灵衢总线。",
+        "confidence": "high",
+        "facts": [
+          "华为官网：2026-05-25，何庭波在ISCAS 2026发表韬(τ)定律。",
+          "ChinaXiv：A Time Scaling Theory for Multi-Layer Electronic Systems，作者Tingbo He，Submitted 2026-05-25。",
+          "C114：将论文和发布会扩散为行业新闻线索。"
+        ],
+        "gaps": [
+          "缺少IEEE正式收录信息和演讲全文。",
+          "缺少第三方测试报告。"
+        ],
+        "inferences": [
+          "事实确认度高，但目前主要来自发布主体和预印本平台。",
+          "事件性质是技术路线发布，不是监管公告或财务事件。"
+        ],
+        "judgment": "事件真实发生，定义清楚；但验证层级仍停留在发布和论文阶段。",
+        "next_data": [
+          "ISCAS 2026官方资料。",
+          "Kirin 2026公开评测。"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [
+          "C114通信网"
+        ],
+        "rollup": "可确认韬定律于2026-05-25被华为正式提出，核心是以τ时间缩微替代几何缩微。",
+        "source_balance": "证据 2 / 研报 0 / 消息 1 / 观点 0；关系结构 2 支撑 / 0 反证 / 1 线索。",
+        "supporting_evidence": [
+          "华为官网",
+          "ChinaXiv"
+        ]
+      },
+      "question": "huawei_tau_law：事件发生了什么，哪些事实已经被确认？：这个问题最需要哪些事实证据直接回答？",
+      "rollup_to_parent": "可确认韬定律于2026-05-25被华为正式提出，核心是以τ时间缩微替代几何缩微。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "high",
+        "facts": [
+          "华为官网：2026-05-25，何庭波在ISCAS 2026发表韬(τ)定律。",
+          "ChinaXiv：A Time Scaling Theory for Multi-Layer Electronic Systems，作者Tingbo He，Submitted 2026-05-25。",
+          "C114：将论文和发布会扩散为行业新闻线索。"
+        ],
+        "gaps": [
+          "缺少IEEE正式收录信息和演讲全文。",
+          "缺少第三方测试报告。"
+        ],
+        "inferences": [
+          "事实确认度高，但目前主要来自发布主体和预印本平台。",
+          "事件性质是技术路线发布，不是监管公告或财务事件。"
+        ],
+        "judgment": "事件真实发生，定义清楚；但验证层级仍停留在发布和论文阶段。"
+      }
+    },
+    {
+      "current_answer": "对事实线的反证不是“没发生”，而是“不能把提出等同于证明”。ChinaXiv论文自身列出Open Challenges，说明工具链、工艺偏差、垂直互连、能耗和基准测试仍未完全解决。如果后续拿不到正式论文、产品测试、量产良率和能耗数据，那么事实层只能停留在“华为提出并声称已有实践”，不能升级为“产业已验证的新定律”。",
+      "evidence_buckets": {
+        "evidence": [
+          {
+            "evidence_id": "ev_huawei_tau_law_ddde2ce703",
+            "materiality": "high",
+            "point": "论文在Open Challenges部分明确提示该体系不是完成态，存在EDA工具链、多晶圆工艺偏差、垂直互连开销、能耗约束和新基准测试缺口等risk，因此不能把发布会口径直接等同为全产业可复…",
+            "relation": "反证",
+            "reliability": "primary",
+            "source_name": "ChinaXiv：A Time Scaling Theory for Multi-Layer Electronic Systems - Open Challenges",
+            "summary": "论文在Open Challenges部分明确提示该体系不是完成态，存在EDA工具链、多晶圆工艺偏差、垂直互连开销、能耗约束和新基准测试缺口等risk，因此不能把发布会口径直接等同为全产业可复制的成熟定律。",
+            "url": "https://chinarxiv.org/items/chinaxiv-202605.00224"
+          }
+        ],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.facts.timeline.disconfirming_test",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 1,
+          "matched_evidence_ids": [
+            "ev_huawei_tau_law_ddde2ce703"
+          ],
+          "next_action": "已匹配本地信息，下一步验证来源质量、口径和反证条件。",
+          "node_id": "l1.facts.timeline.disconfirming_test",
+          "parent_id": "l1.facts.timeline",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：事件发生了什么，哪些事实已经被确认？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：事件发生了什么，哪些事实已经被确认？：哪些信息会支撑或反证当前判断？ 公告 年报 官方 数据 事实",
+          "status": "matched"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补公开消息，但只作为线索，不直接强化结论。",
+          "node_id": "l1.facts.timeline.disconfirming_test",
+          "parent_id": "l1.facts.timeline",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：事件发生了什么，哪些事实已经被确认？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：事件发生了什么，哪些事实已经被确认？：哪些信息会支撑或反证当前判断？ 新闻 消息 进展 未证实",
+          "status": "missing"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.facts.timeline.disconfirming_test",
+          "parent_id": "l1.facts.timeline",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：事件发生了什么，哪些事实已经被确认？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：事件发生了什么，哪些事实已经被确认？：哪些信息会支撑或反证当前判断？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补商业研报、卖方报告、行业研究和结构化第三方数据。",
+          "node_id": "l1.facts.timeline.disconfirming_test",
+          "parent_id": "l1.facts.timeline",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：事件发生了什么，哪些事实已经被确认？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：事件发生了什么，哪些事实已经被确认？：哪些信息会支撑或反证当前判断？ 研报 深度报告 行业研究",
+          "status": "missing"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "huawei_tau_law与“huawei_tau_law：事件发生了什么，哪些事实已经被确认？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：事件发生了什么，哪些事实已经被确认？”的线索。",
+          "opinion": "专家、产业人士或投资者对“huawei_tau_law：事件发生了什么，哪些事实已经被确认？”的机制解释和反证提醒。",
+          "research_report": "第三方对huawei_tau_law中“huawei_tau_law：事件发生了什么，哪些事实已经被确认？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-26T08:47:11.708191+00:00",
+          "source": "imported"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.facts.timeline",
+      "professional_answer": {
+        "answer": "对事实线的反证不是“没发生”，而是“不能把提出等同于证明”。ChinaXiv论文自身列出Open Challenges，说明工具链、工艺偏差、垂直互连、能耗和基准测试仍未完全解决。如果后续拿不到正式论文、产品测试、量产良率和能耗数据，那么事实层只能停留在“华为提出并声称已有实践”，不能升级为“产业已验证的新定律”。",
+        "confidence": "high",
+        "facts": [
+          "ChinaXiv论文列出EDA工具链、多晶圆工艺偏差、垂直互连开销、能耗和基准测试等开放挑战。",
+          "每经梳理称全行业协同仍然必要。"
+        ],
+        "gaps": [
+          "缺少量产良率、成本和可靠性数据。"
+        ],
+        "inferences": [
+          "挑战来自论文自身，反证权重高于一般媒体质疑。",
+          "反证条件应聚焦工程化可复制性，而不是概念是否新颖。"
+        ],
+        "judgment": "事实存在，但成熟度不能过度上抛。",
+        "next_data": [
+          "跟踪华为后续方法论细节公开。",
+          "跟踪第三方拆解和评测。"
+        ],
+        "refuting_evidence": [
+          "每日经济新闻技术挑战梳理"
+        ],
+        "research_leads": [],
+        "rollup": "事实反证点集中在成熟度，而不是事件真实性。",
+        "source_balance": "证据 1 / 研报 1 / 消息 0 / 观点 0；关系结构 1 支撑 / 1 反证 / 0 线索。",
+        "supporting_evidence": [
+          "ChinaXiv Open Challenges"
+        ]
+      },
+      "question": "huawei_tau_law：事件发生了什么，哪些事实已经被确认？：哪些信息会支撑或反证当前判断？",
+      "rollup_to_parent": "事实反证点集中在成熟度，而不是事件真实性。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "high",
+        "facts": [
+          "ChinaXiv论文列出EDA工具链、多晶圆工艺偏差、垂直互连开销、能耗和基准测试等开放挑战。",
+          "每经梳理称全行业协同仍然必要。"
+        ],
+        "gaps": [
+          "缺少量产良率、成本和可靠性数据。"
+        ],
+        "inferences": [
+          "挑战来自论文自身，反证权重高于一般媒体质疑。",
+          "反证条件应聚焦工程化可复制性，而不是概念是否新颖。"
+        ],
+        "judgment": "事实存在，但成熟度不能过度上抛。"
+      }
+    },
+    {
+      "current_answer": "未确认点主要有五类：第一，LogicFolding是否能在更多芯片上规模复制；第二，固定节点下密度、能效、主频提升是否经第三方复测；第三，多晶圆键合的良率和成本是否可控；第四，系统级统一总线、Hi-ONE和3D Folding是否能在AI集群真实负载中兑现；第五，先进制程差距能被缩小多少。当前不能把“成熟工艺+系统级优化”理解成完全替代先进制程，更合理的判断是补偿路径。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [
+          {
+            "evidence_id": "ev_huawei_tau_law_241c24baf4",
+            "materiality": "medium",
+            "point": "用于不确定性节点：受访半导体投资经理认为先进工艺仍需继续追求，设计优化不能完全抹平工艺差距。",
+            "relation": "研究线索",
+            "reliability": "medium",
+            "source_name": "每日经济新闻采访：先进工艺仍需追求",
+            "summary": "用于不确定性节点：受访半导体投资经理认为先进工艺仍需继续追求，设计优化不能完全抹平工艺差距。",
+            "url": "https://www.nbd.com.cn/articles/2026-05-25/4408154.html"
+          }
+        ],
+        "research_report": []
+      },
+      "id": "l1.facts.uncertainty",
+      "level": 2,
+      "metadata": {
+        "information_focus": {},
+        "planner_rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+        "should_collect_information": false,
+        "should_drill_down": true,
+        "synthesis_override": {
+          "imported_at": "2026-05-26T08:47:11.708196+00:00",
+          "source": "imported"
+        },
+        "terminal_reason": ""
+      },
+      "next_question_ids": [
+        "l1.facts.uncertainty.evidence_map",
+        "l1.facts.uncertainty.disconfirming_test"
+      ],
+      "parent_id": "l1.facts",
+      "professional_answer": {
+        "answer": "未确认点主要有五类：第一，LogicFolding是否能在更多芯片上规模复制；第二，固定节点下密度、能效、主频提升是否经第三方复测；第三，多晶圆键合的良率和成本是否可控；第四，系统级统一总线、Hi-ONE和3D Folding是否能在AI集群真实负载中兑现；第五，先进制程差距能被缩小多少。当前不能把“成熟工艺+系统级优化”理解成完全替代先进制程，更合理的判断是补偿路径。",
+        "confidence": "medium",
+        "facts": [
+          "论文和媒体均提到工具链、能耗、标准和基准缺口。",
+          "专家观点提示先进工艺仍需追求。",
+          "每经指出华为公开验证的先进制造能力与台积电仍有差距。"
+        ],
+        "gaps": [
+          "缺少成本、良率和供应链订单数据。"
+        ],
+        "inferences": [
+          "韬定律的强弱取决于工程化边界，而不是概念表述。",
+          "对投资研究而言，关键是判断补偿幅度和可复制性。"
+        ],
+        "judgment": "不确定性集中在产业化复制和经济性。",
+        "next_data": [
+          "Kirin 2026成本/热表现。",
+          "先进封装和EDA合作方进展。"
+        ],
+        "refuting_evidence": [
+          "品利基金陈启观点"
+        ],
+        "research_leads": [
+          "研究线索：用于不确定性节点：受访半导体投资经理认为先进工艺仍需继续追求，设计优化不能完全抹平工艺差距。（每日经济新闻采访：先进工艺仍需追求，ev_huawei_tau_law_241c24baf4）"
+        ],
+        "rollup": "最大未确认点是韬定律能否从华为内部实践扩展为可复制产业能力。",
+        "source_balance": "证据 1 / 研报 2 / 消息 0 / 观点 1；关系结构 2 支撑 / 2 反证 / 0 线索。",
+        "supporting_evidence": [
+          "ChinaXiv",
+          "每日经济新闻"
+        ]
+      },
+      "question": "huawei_tau_law：哪些事实仍未确认或存在冲突口径？",
+      "rollup_to_parent": "最大未确认点是韬定律能否从华为内部实践扩展为可复制产业能力。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "medium",
+        "facts": [
+          "论文和媒体均提到工具链、能耗、标准和基准缺口。",
+          "专家观点提示先进工艺仍需追求。",
+          "每经指出华为公开验证的先进制造能力与台积电仍有差距。"
+        ],
+        "gaps": [
+          "缺少成本、良率和供应链订单数据。"
+        ],
+        "inferences": [
+          "韬定律的强弱取决于工程化边界，而不是概念表述。",
+          "对投资研究而言，关键是判断补偿幅度和可复制性。"
+        ],
+        "judgment": "不确定性集中在产业化复制和经济性。"
+      }
+    },
+    {
+      "current_answer": "本节点的直接答案是：现阶段能确认“提出、论文、路径、部分内部指标”，但不能确认“行业普遍适用、外部可复制、经济性优于先进制程”。每经对论文披露的整理尤其有用，因为它同时呈现了实践数据和开放问题。研究中应把口径拆为事实、推论和判断：事实是华为提出并披露示例；推论是系统级优化可能缓解制程受限；判断则需等第三方验证。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": [
+          {
+            "evidence_id": "ev_huawei_tau_law_f3adac9172",
+            "materiality": "medium",
+            "point": "每经基于发布会与论文整理出关键未确认点：韬定律有量产案例和路线图，但工具链、行业标准、基准测试、器件物理和产业经济模型仍需全行业协同，现阶段应作为技术路线而非已充分验证的行业定律。",
+            "relation": "支撑",
+            "reliability": "high",
+            "source_name": "每日经济新闻：华为何庭波论文对外披露",
+            "summary": "每经基于发布会与论文整理出关键未确认点：韬定律有量产案例和路线图，但工具链、行业标准、基准测试、器件物理和产业经济模型仍需全行业协同，现阶段应作为技术路线而非已充分验证的行业定律。",
+            "url": "https://www.nbd.com.cn/articles/2026-05-25/4408154.html"
+          }
+        ]
+      },
+      "id": "l1.facts.uncertainty.evidence_map",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "优先补公告、年报、监管文件、官方数据或可验证事实。",
+          "node_id": "l1.facts.uncertainty.evidence_map",
+          "parent_id": "l1.facts.uncertainty",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：哪些事实仍未确认或存在冲突口径？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：哪些事实仍未确认或存在冲突口径？：这个问题最需要哪些事实证据直接回答？ 公告 年报 官方 数据 事实",
+          "status": "missing"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补公开消息，但只作为线索，不直接强化结论。",
+          "node_id": "l1.facts.uncertainty.evidence_map",
+          "parent_id": "l1.facts.uncertainty",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：哪些事实仍未确认或存在冲突口径？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：哪些事实仍未确认或存在冲突口径？：这个问题最需要哪些事实证据直接回答？ 新闻 消息 进展 未证实",
+          "status": "missing"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.facts.uncertainty.evidence_map",
+          "parent_id": "l1.facts.uncertainty",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：哪些事实仍未确认或存在冲突口径？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：哪些事实仍未确认或存在冲突口径？：这个问题最需要哪些事实证据直接回答？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 1,
+          "matched_evidence_ids": [
+            "ev_huawei_tau_law_f3adac9172"
+          ],
+          "next_action": "已匹配本地信息，下一步验证来源质量、口径和反证条件。",
+          "node_id": "l1.facts.uncertainty.evidence_map",
+          "parent_id": "l1.facts.uncertainty",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：哪些事实仍未确认或存在冲突口径？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：哪些事实仍未确认或存在冲突口径？：这个问题最需要哪些事实证据直接回答？ 研报 深度报告 行业研究",
+          "status": "matched"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "huawei_tau_law与“huawei_tau_law：哪些事实仍未确认或存在冲突口径？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：哪些事实仍未确认或存在冲突口径？”的线索。",
+          "opinion": "专家、产业人士或投资者对“huawei_tau_law：哪些事实仍未确认或存在冲突口径？”的机制解释和反证提醒。",
+          "research_report": "第三方对huawei_tau_law中“huawei_tau_law：哪些事实仍未确认或存在冲突口径？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-26T08:47:11.708200+00:00",
+          "source": "imported"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.facts.uncertainty",
+      "professional_answer": {
+        "answer": "本节点的直接答案是：现阶段能确认“提出、论文、路径、部分内部指标”，但不能确认“行业普遍适用、外部可复制、经济性优于先进制程”。每经对论文披露的整理尤其有用，因为它同时呈现了实践数据和开放问题。研究中应把口径拆为事实、推论和判断：事实是华为提出并披露示例；推论是系统级优化可能缓解制程受限；判断则需等第三方验证。",
+        "confidence": "medium",
+        "facts": [
+          "每经：论文披露逻辑折叠、时间缩微、技术短板等细节。",
+          "每经：工具链、行业标准、基准测试、器件物理和产业经济模型仍需协同。"
+        ],
+        "gaps": [
+          "缺少原始数据表和产品级复测。"
+        ],
+        "inferences": [
+          "二次报道补足中文解释，但不能替代华为/论文一手来源。"
+        ],
+        "judgment": "未确认点已基本定位，但需要进一步证据闭环。",
+        "next_data": [
+          "补充论文PDF表格。",
+          "补充独立评测。"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "未确认点集中在可复制性、经济性和外部验证。",
+        "source_balance": "证据 0 / 研报 1 / 消息 0 / 观点 0；关系结构 1 支撑 / 0 反证 / 0 线索。",
+        "supporting_evidence": [
+          "每日经济新闻"
+        ]
+      },
+      "question": "huawei_tau_law：哪些事实仍未确认或存在冲突口径？：这个问题最需要哪些事实证据直接回答？",
+      "rollup_to_parent": "未确认点集中在可复制性、经济性和外部验证。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "medium",
+        "facts": [
+          "每经：论文披露逻辑折叠、时间缩微、技术短板等细节。",
+          "每经：工具链、行业标准、基准测试、器件物理和产业经济模型仍需协同。"
+        ],
+        "gaps": [
+          "缺少原始数据表和产品级复测。"
+        ],
+        "inferences": [
+          "二次报道补足中文解释，但不能替代华为/论文一手来源。"
+        ],
+        "judgment": "未确认点已基本定位，但需要进一步证据闭环。"
+      }
+    },
+    {
+      "current_answer": "最强反证来自专家观点和论文自身限制：先进工艺不是可被设计优化完全替代的变量，LogicFolding也不是无成本收益。若华为后续产品仍主要依赖旧节点，且性能、功耗和成本没有明显优于同节点竞品，则“韬定律”只能算架构优化叙事；若能在固定节点持续带来可复测的密度和能效提升，则才有机会升级为强产业命题。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [
+          {
+            "evidence_id": "ev_huawei_tau_law_fc1728243a",
+            "materiality": "medium",
+            "point": "陈启认为先进工艺仍必须继续追求，不能完全依靠设计优化抹平工艺差距；该观点构成对“韬定律可替代先进制程”的反证线索，也提示应区分补偿路径和替代路径。",
+            "relation": "研究线索",
+            "reliability": "medium",
+            "source_name": "每日经济新闻采访：品利基金半导体产业投资经理陈启",
+            "summary": "陈启认为先进工艺仍必须继续追求，不能完全依靠设计优化抹平工艺差距；该观点构成对“韬定律可替代先进制程”的反证线索，也提示应区分补偿路径和替代路径。",
+            "url": "https://www.nbd.com.cn/articles/2026-05-25/4408154.html"
+          }
+        ],
+        "research_report": []
+      },
+      "id": "l1.facts.uncertainty.disconfirming_test",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "优先补公告、年报、监管文件、官方数据或可验证事实。",
+          "node_id": "l1.facts.uncertainty.disconfirming_test",
+          "parent_id": "l1.facts.uncertainty",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：哪些事实仍未确认或存在冲突口径？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：哪些事实仍未确认或存在冲突口径？：哪些信息会支撑或反证当前判断？ 公告 年报 官方 数据 事实",
+          "status": "missing"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补公开消息，但只作为线索，不直接强化结论。",
+          "node_id": "l1.facts.uncertainty.disconfirming_test",
+          "parent_id": "l1.facts.uncertainty",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：哪些事实仍未确认或存在冲突口径？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：哪些事实仍未确认或存在冲突口径？：哪些信息会支撑或反证当前判断？ 新闻 消息 进展 未证实",
+          "status": "missing"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 1,
+          "matched_evidence_ids": [
+            "ev_huawei_tau_law_fc1728243a"
+          ],
+          "next_action": "已匹配本地信息，下一步验证来源质量、口径和反证条件。",
+          "node_id": "l1.facts.uncertainty.disconfirming_test",
+          "parent_id": "l1.facts.uncertainty",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：哪些事实仍未确认或存在冲突口径？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：哪些事实仍未确认或存在冲突口径？：哪些信息会支撑或反证当前判断？ 专家 观点 访谈 大V",
+          "status": "matched"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补商业研报、卖方报告、行业研究和结构化第三方数据。",
+          "node_id": "l1.facts.uncertainty.disconfirming_test",
+          "parent_id": "l1.facts.uncertainty",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：哪些事实仍未确认或存在冲突口径？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：哪些事实仍未确认或存在冲突口径？：哪些信息会支撑或反证当前判断？ 研报 深度报告 行业研究",
+          "status": "missing"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "huawei_tau_law与“huawei_tau_law：哪些事实仍未确认或存在冲突口径？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：哪些事实仍未确认或存在冲突口径？”的线索。",
+          "opinion": "专家、产业人士或投资者对“huawei_tau_law：哪些事实仍未确认或存在冲突口径？”的机制解释和反证提醒。",
+          "research_report": "第三方对huawei_tau_law中“huawei_tau_law：哪些事实仍未确认或存在冲突口径？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-26T08:47:11.708205+00:00",
+          "source": "imported"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.facts.uncertainty",
+      "professional_answer": {
+        "answer": "最强反证来自专家观点和论文自身限制：先进工艺不是可被设计优化完全替代的变量，LogicFolding也不是无成本收益。若华为后续产品仍主要依赖旧节点，且性能、功耗和成本没有明显优于同节点竞品，则“韬定律”只能算架构优化叙事；若能在固定节点持续带来可复测的密度和能效提升，则才有机会升级为强产业命题。",
+        "confidence": "medium",
+        "facts": [
+          "陈启观点：不能完全靠设计优化抹平工艺差距。",
+          "论文承认能耗、工具链和工艺偏差仍需解决。"
+        ],
+        "gaps": [
+          "缺少同节点竞品比较。"
+        ],
+        "inferences": [
+          "反证阈值应使用同节点、同功耗、同成本对比，而不是只看绝对性能。"
+        ],
+        "judgment": "反证条件清晰：无法复测、无法量产、无法控制能耗即削弱结论。",
+        "next_data": [
+          "同节点性能/功耗/成本横向对比。"
+        ],
+        "refuting_evidence": [
+          "品利基金陈启观点",
+          "ChinaXiv Open Challenges"
+        ],
+        "research_leads": [
+          "研究线索：陈启认为先进工艺仍必须继续追求，不能完全依靠设计优化抹平工艺差距；该观点构成对“韬定律可替代先进制程”的反证线索，也提示应区分补偿路径和替代路径。（每日经济新闻采访：品利基金半导体产业投资经理陈启，ev_huawei_tau_law_fc1728243a）"
+        ],
+        "rollup": "反证重点是不要把系统优化误读为先进制程替代。",
+        "source_balance": "证据 1 / 研报 0 / 消息 0 / 观点 1；关系结构 0 支撑 / 2 反证 / 0 线索。",
+        "supporting_evidence": []
+      },
+      "question": "huawei_tau_law：哪些事实仍未确认或存在冲突口径？：哪些信息会支撑或反证当前判断？",
+      "rollup_to_parent": "反证重点是不要把系统优化误读为先进制程替代。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "medium",
+        "facts": [
+          "陈启观点：不能完全靠设计优化抹平工艺差距。",
+          "论文承认能耗、工具链和工艺偏差仍需解决。"
+        ],
+        "gaps": [
+          "缺少同节点竞品比较。"
+        ],
+        "inferences": [
+          "反证阈值应使用同节点、同功耗、同成本对比，而不是只看绝对性能。"
+        ],
+        "judgment": "反证条件清晰：无法复测、无法量产、无法控制能耗即削弱结论。"
+      }
+    },
+    {
+      "current_answer": "传导路径可以分为三条：产品路径，先看Kirin 2026和华为移动SoC是否在固定节点下改善密度、能效和主频；系统路径，看Ascend/AI集群是否通过统一总线、近封装光I/O和3D Folding降低通信瓶颈；产业链路径，看先进封装、HBM/存储、光互连、EDA和测试基准是否得到更多订单、资本开支或生态合作。最弱的传导是简单推演到所有芯片股，因为韬定律真正强化的是“跨层系统能力”，而不是单一环节景气。",
+      "evidence_buckets": {
+        "evidence": [
+          {
+            "evidence_id": "ev_huawei_tau_law_a98cc3b742",
+            "materiality": "high",
+            "point": "用于传导路径节点：论文把韬定律落到移动SoC的LogicFolding和AI系统的统一总线、Hi-ONE、3D Folding，支撑产品和产业链传导分析。",
+            "relation": "支撑",
+            "reliability": "primary",
+            "source_name": "ChinaXiv：移动SoC和AI系统传导路径",
+            "summary": "用于传导路径节点：论文把韬定律落到移动SoC的LogicFolding和AI系统的统一总线、Hi-ONE、3D Folding，支撑产品和产业链传导分析。",
+            "url": "https://chinarxiv.org/items/chinaxiv-202605.00224"
+          }
+        ],
+        "message": [],
+        "opinion": [],
+        "research_report": [
+          {
+            "evidence_id": "ev_huawei_tau_law_85189fa8f1",
+            "materiality": "medium",
+            "point": "用于传导路径节点：电子创新网按器件、电路、芯片、系统四层解释韬定律，补充第三方产业解读。",
+            "relation": "支撑",
+            "reliability": "medium",
+            "source_name": "电子创新网：四层级路径解读",
+            "summary": "用于传导路径节点：电子创新网按器件、电路、芯片、系统四层解释韬定律，补充第三方产业解读。",
+            "url": "https://www.eetrend.com/content/2026/100601319.html"
+          }
+        ]
+      },
+      "id": "l1.transmission",
+      "level": 1,
+      "metadata": {
+        "information_focus": {},
+        "planner_rationale": "再确认价值链、利润池或事件传导机制，判断影响路径是否真实。",
+        "should_collect_information": false,
+        "should_drill_down": true,
+        "synthesis_override": {
+          "imported_at": "2026-05-26T08:47:11.708209+00:00",
+          "source": "imported"
+        },
+        "terminal_reason": ""
+      },
+      "next_question_ids": [
+        "l1.transmission.channels",
+        "l1.transmission.affected_objects"
+      ],
+      "parent_id": "meta.root",
+      "professional_answer": {
+        "answer": "传导路径可以分为三条：产品路径，先看Kirin 2026和华为移动SoC是否在固定节点下改善密度、能效和主频；系统路径，看Ascend/AI集群是否通过统一总线、近封装光I/O和3D Folding降低通信瓶颈；产业链路径，看先进封装、HBM/存储、光互连、EDA和测试基准是否得到更多订单、资本开支或生态合作。最弱的传导是简单推演到所有芯片股，因为韬定律真正强化的是“跨层系统能力”，而不是单一环节景气。",
+        "confidence": "medium",
+        "facts": [
+          "华为官网给出四层协同路径。",
+          "ChinaXiv给出移动SoC与AI系统两类示例。",
+          "论文称供应链影响力会向内存和封装迁移。"
+        ],
+        "gaps": [
+          "缺少供应商名单和订单数据。"
+        ],
+        "inferences": [
+          "这是系统工程传导，不是单一设备替代逻辑。",
+          "最先受益的应是能参与华为体系内先进封装、存储、互联、EDA和系统软件的环节。"
+        ],
+        "judgment": "产业传导存在，但需要用订单和产品指标验证。",
+        "next_data": [
+          "先进封装、HBM、光模块、EDA公司订单/收入指引。"
+        ],
+        "refuting_evidence": [
+          "ChinaXiv能耗和垂直互连约束"
+        ],
+        "research_leads": [],
+        "rollup": "传导主线是从制程节点竞争转向系统级架构、封装、存储和互联能力竞争。",
+        "source_balance": "证据 4 / 研报 3 / 消息 0 / 观点 0；关系结构 5 支撑 / 2 反证 / 0 线索。",
+        "supporting_evidence": [
+          "华为官网四层路径",
+          "ChinaXiv AI系统路线"
+        ]
+      },
+      "question": "huawei_tau_law通过哪些路径影响资产和公司基本面？",
+      "rollup_to_parent": "传导主线是从制程节点竞争转向系统级架构、封装、存储和互联能力竞争。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "medium",
+        "facts": [
+          "华为官网给出四层协同路径。",
+          "ChinaXiv给出移动SoC与AI系统两类示例。",
+          "论文称供应链影响力会向内存和封装迁移。"
+        ],
+        "gaps": [
+          "缺少供应商名单和订单数据。"
+        ],
+        "inferences": [
+          "这是系统工程传导，不是单一设备替代逻辑。",
+          "最先受益的应是能参与华为体系内先进封装、存储、互联、EDA和系统软件的环节。"
+        ],
+        "judgment": "产业传导存在，但需要用订单和产品指标验证。"
+      }
+    },
+    {
+      "current_answer": "韬定律的机制不是“绕开物理规律”，而是改变优化目标：在器件层降寄生RC，在电路层通过垂直拓扑缩短关键路径，在芯片层按实际工作负载做软硬芯协同，在系统层减少协议转换和远程内存访问延迟。对于投研，这意味着要把传统“制程节点-晶体管密度”的单线框架改成“时间常数-数据移动-系统吞吐-能耗约束”的框架。",
+      "evidence_buckets": {
+        "evidence": [
+          {
+            "evidence_id": "ev_huawei_tau_law_495892fc8a",
+            "materiality": "high",
+            "point": "用于传导机制节点：官方列出器件降RC、电路逻辑折叠、芯片全栈协同、系统灵衢总线四条机制。",
+            "relation": "支撑",
+            "reliability": "primary",
+            "source_name": "华为官网：四层协同路径",
+            "summary": "用于传导机制节点：官方列出器件降RC、电路逻辑折叠、芯片全栈协同、系统灵衢总线四条机制。",
+            "url": "https://www.huawei.com/cn/news/2026/5/ieee-iscas-tau-scaling"
+          }
+        ],
+        "message": [],
+        "opinion": [],
+        "research_report": [
+          {
+            "evidence_id": "ev_huawei_tau_law_16aec5bf07",
+            "materiality": "medium",
+            "point": "每经指出华为公开已知且经过市场验证的先进芯片制造能力仍主要停留在7纳米级别，与台积电先进制程、良率和成本控制存在差距；这是对相关设备、材料和代工资产过度外推的risk约束。",
+            "relation": "反证",
+            "reliability": "high",
+            "source_name": "每日经济新闻：先进制程差距与能力边界",
+            "summary": "每经指出华为公开已知且经过市场验证的先进芯片制造能力仍主要停留在7纳米级别，与台积电先进制程、良率和成本控制存在差距；这是对相关设备、材料和代工资产过度外推的risk约束。",
+            "url": "https://www.nbd.com.cn/articles/2026-05-25/4408154.html"
+          }
+        ]
+      },
+      "id": "l1.transmission.channels",
+      "level": 2,
+      "metadata": {
+        "information_focus": {},
+        "planner_rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+        "should_collect_information": false,
+        "should_drill_down": true,
+        "synthesis_override": {
+          "imported_at": "2026-05-26T08:47:11.708214+00:00",
+          "source": "imported"
+        },
+        "terminal_reason": ""
+      },
+      "next_question_ids": [
+        "l1.transmission.channels.evidence_map",
+        "l1.transmission.channels.disconfirming_test"
+      ],
+      "parent_id": "l1.transmission",
+      "professional_answer": {
+        "answer": "韬定律的机制不是“绕开物理规律”，而是改变优化目标：在器件层降寄生RC，在电路层通过垂直拓扑缩短关键路径，在芯片层按实际工作负载做软硬芯协同，在系统层减少协议转换和远程内存访问延迟。对于投研，这意味着要把传统“制程节点-晶体管密度”的单线框架改成“时间常数-数据移动-系统吞吐-能耗约束”的框架。",
+        "confidence": "medium",
+        "facts": [
+          "华为官网列出器件、电路、芯片、系统四层。",
+          "ChinaXiv描述LogicFolding、Unified Bus、Hi-ONE、3D Folding。"
+        ],
+        "gaps": [
+          "缺少可复核的benchmark矩阵。"
+        ],
+        "inferences": [
+          "机制核心在通信和同步成本下降。",
+          "指标应从单点算力扩展到端到端延迟、pJ/bit、集群利用率和内存访问延迟。"
+        ],
+        "judgment": "机制上成立的前提是跨层协同收益超过垂直互连、能耗和工具链成本。",
+        "next_data": [
+          "profile benchmark、功耗曲线、总拥有成本。"
+        ],
+        "refuting_evidence": [
+          "反证：每经指出华为公开已知且经过市场验证的先进芯片制造能力仍主要停留在7纳米级别，与台积电先进制程、良率和成本控制存在差距；这是对相关设备、材料和代工资产过度外推的risk约束。（每日经济新闻：先进制程差距与能力边界，ev_huawei_tau_law_16aec5bf07）"
+        ],
+        "research_leads": [],
+        "rollup": "机制是跨层降低τ，核心指标应转向端到端时延和数据移动成本。",
+        "source_balance": "证据 2 / 研报 1 / 消息 0 / 观点 0；关系结构 3 支撑 / 0 反证 / 0 线索。",
+        "supporting_evidence": [
+          "华为官网四层路径",
+          "ChinaXiv移动SoC与AI示例"
+        ]
+      },
+      "question": "huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？",
+      "rollup_to_parent": "机制是跨层降低τ，核心指标应转向端到端时延和数据移动成本。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "medium",
+        "facts": [
+          "华为官网列出器件、电路、芯片、系统四层。",
+          "ChinaXiv描述LogicFolding、Unified Bus、Hi-ONE、3D Folding。"
+        ],
+        "gaps": [
+          "缺少可复核的benchmark矩阵。"
+        ],
+        "inferences": [
+          "机制核心在通信和同步成本下降。",
+          "指标应从单点算力扩展到端到端延迟、pJ/bit、集群利用率和内存访问延迟。"
+        ],
+        "judgment": "机制上成立的前提是跨层协同收益超过垂直互连、能耗和工具链成本。"
+      }
+    },
+    {
+      "current_answer": "本节点回答传导机制的支撑信息：华为官方把路径拆成四层，ChinaXiv把两类示例放在移动SoC和AI系统。移动SoC侧，LogicFolding通过多层有源结构缩短关键路径；AI系统侧，统一总线减少协议转换，Hi-ONE把光I/O推到近封装，3D Folding解决2.5D边缘带宽和供电只能随周长增长的问题。这些机制共同指向一个判断：受影响的不是单一制程节点，而是围绕数据移动和垂直集成的一整套架构链。",
+      "evidence_buckets": {
+        "evidence": [
+          {
+            "evidence_id": "ev_huawei_tau_law_825fa5dc45",
+            "materiality": "high",
+            "point": "华为把韬定律拆为器件、电路、芯片、系统四层：器件降RC与器件级τ，电路用逻辑折叠缩短关键路径，芯片做软件架构芯片协同，系统用灵衢总线/统一内存语义降低通信时延。",
+            "relation": "支撑",
+            "reliability": "primary",
+            "source_name": "华为官网：四层级协同优化路径",
+            "summary": "华为把韬定律拆为器件、电路、芯片、系统四层：器件降RC与器件级τ，电路用逻辑折叠缩短关键路径，芯片做软件架构芯片协同，系统用灵衢总线/统一内存语义降低通信时延。",
+            "url": "https://www.huawei.com/cn/news/2026/5/ieee-iscas-tau-scaling"
+          },
+          {
+            "evidence_id": "ev_huawei_tau_law_31b3f90219",
+            "materiality": "high",
+            "point": "论文声称移动SoC端LogicFolding在固定节点实现晶体管密度55%阶跃提升和功耗效率41%提升；AI系统端通过统一总线、近封装光I/O和3D Folding，指向2035年前后硬件集…",
+            "relation": "支撑",
+            "reliability": "primary",
+            "source_name": "ChinaXiv：移动SoC与AI系统两个示例",
+            "summary": "论文声称移动SoC端LogicFolding在固定节点实现晶体管密度55%阶跃提升和功耗效率41%提升；AI系统端通过统一总线、近封装光I/O和3D Folding，指向2035年前后硬件集成度显著提高。",
+            "url": "https://chinarxiv.org/items/chinaxiv-202605.00224"
+          }
+        ],
+        "message": [],
+        "opinion": [],
+        "research_report": [
+          {
+            "evidence_id": "ev_huawei_tau_law_16aec5bf07",
+            "materiality": "medium",
+            "point": "每经指出华为公开已知且经过市场验证的先进芯片制造能力仍主要停留在7纳米级别，与台积电先进制程、良率和成本控制存在差距；这是对相关设备、材料和代工资产过度外推的risk约束。",
+            "relation": "反证",
+            "reliability": "high",
+            "source_name": "每日经济新闻：先进制程差距与能力边界",
+            "summary": "每经指出华为公开已知且经过市场验证的先进芯片制造能力仍主要停留在7纳米级别，与台积电先进制程、良率和成本控制存在差距；这是对相关设备、材料和代工资产过度外推的risk约束。",
+            "url": "https://www.nbd.com.cn/articles/2026-05-25/4408154.html"
+          },
+          {
+            "evidence_id": "ev_huawei_tau_law_b9285902c3",
+            "materiality": "medium",
+            "point": "电子创新网将韬定律解释为跨器件、电路、芯片和系统的协同优化体系，强调逻辑折叠、全栈软硬芯协同、灵衢总线和统一内存编址，适合作为产业链传导路径的第三方整理。",
+            "relation": "支撑",
+            "reliability": "medium",
+            "source_name": "电子创新网：如何理解华为发表的韬定律",
+            "summary": "电子创新网将韬定律解释为跨器件、电路、芯片和系统的协同优化体系，强调逻辑折叠、全栈软硬芯协同、灵衢总线和统一内存编址，适合作为产业链传导路径的第三方整理。",
+            "url": "https://www.eetrend.com/content/2026/100601319.html"
+          }
+        ]
+      },
+      "id": "l1.transmission.channels.evidence_map",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 2,
+          "matched_evidence_ids": [
+            "ev_huawei_tau_law_825fa5dc45",
+            "ev_huawei_tau_law_31b3f90219"
+          ],
+          "next_action": "已匹配本地信息，下一步验证来源质量、口径和反证条件。",
+          "node_id": "l1.transmission.channels.evidence_map",
+          "parent_id": "l1.transmission.channels",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？：这个问题最需要哪些事实证据直接回答？ 公告 年报 官方 数据 事实",
+          "status": "matched"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补公开消息，但只作为线索，不直接强化结论。",
+          "node_id": "l1.transmission.channels.evidence_map",
+          "parent_id": "l1.transmission.channels",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？：这个问题最需要哪些事实证据直接回答？ 新闻 消息 进展 未证实",
+          "status": "missing"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.transmission.channels.evidence_map",
+          "parent_id": "l1.transmission.channels",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？：这个问题最需要哪些事实证据直接回答？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 2,
+          "matched_evidence_ids": [
+            "ev_huawei_tau_law_16aec5bf07",
+            "ev_huawei_tau_law_b9285902c3"
+          ],
+          "next_action": "已匹配本地信息，下一步验证来源质量、口径和反证条件。",
+          "node_id": "l1.transmission.channels.evidence_map",
+          "parent_id": "l1.transmission.channels",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？：这个问题最需要哪些事实证据直接回答？ 研报 深度报告 行业研究",
+          "status": "matched"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "huawei_tau_law与“huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？”的线索。",
+          "opinion": "专家、产业人士或投资者对“huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？”的机制解释和反证提醒。",
+          "research_report": "第三方对huawei_tau_law中“huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-26T08:47:11.708219+00:00",
+          "source": "imported"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.transmission.channels",
+      "professional_answer": {
+        "answer": "本节点回答传导机制的支撑信息：华为官方把路径拆成四层，ChinaXiv把两类示例放在移动SoC和AI系统。移动SoC侧，LogicFolding通过多层有源结构缩短关键路径；AI系统侧，统一总线减少协议转换，Hi-ONE把光I/O推到近封装，3D Folding解决2.5D边缘带宽和供电只能随周长增长的问题。这些机制共同指向一个判断：受影响的不是单一制程节点，而是围绕数据移动和垂直集成的一整套架构链。",
+        "confidence": "medium",
+        "facts": [
+          "华为官网：器件、电路、芯片、系统四层。",
+          "ChinaXiv：移动SoC LogicFolding与AI系统统一总线、Hi-ONE、3D Folding。",
+          "电子创新网：第三方整理同样指向多层级协同。"
+        ],
+        "gaps": [
+          "缺少供应商和成本拆分。"
+        ],
+        "inferences": [
+          "如果机制兑现，先进封装、光互连和存储接口的重要性上升。"
+        ],
+        "judgment": "支撑信息足以建立传导假设，但仍需产品级验证。",
+        "next_data": [
+          "供应链订单和BOM变化。"
+        ],
+        "refuting_evidence": [
+          "反证：每经指出华为公开已知且经过市场验证的先进芯片制造能力仍主要停留在7纳米级别，与台积电先进制程、良率和成本控制存在差距；这是对相关设备、材料和代工资产过度外推的risk约束。（每日经济新闻：先进制程差距与能力边界，ev_huawei_tau_law_16aec5bf07）"
+        ],
+        "research_leads": [],
+        "rollup": "支撑信息显示传导路径从逻辑折叠扩展到AI系统互联与存储融合。",
+        "source_balance": "证据 2 / 研报 1 / 消息 0 / 观点 0；关系结构 3 支撑 / 0 反证 / 0 线索。",
+        "supporting_evidence": [
+          "华为官网",
+          "ChinaXiv",
+          "电子创新网"
+        ]
+      },
+      "question": "huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？：这个问题最需要哪些事实证据直接回答？",
+      "rollup_to_parent": "支撑信息显示传导路径从逻辑折叠扩展到AI系统互联与存储融合。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "medium",
+        "facts": [
+          "华为官网：器件、电路、芯片、系统四层。",
+          "ChinaXiv：移动SoC LogicFolding与AI系统统一总线、Hi-ONE、3D Folding。",
+          "电子创新网：第三方整理同样指向多层级协同。"
+        ],
+        "gaps": [
+          "缺少供应商和成本拆分。"
+        ],
+        "inferences": [
+          "如果机制兑现，先进封装、光互连和存储接口的重要性上升。"
+        ],
+        "judgment": "支撑信息足以建立传导假设，但仍需产品级验证。"
+      }
+    },
+    {
+      "current_answer": "机制的核心反证是“收益是否被成本吃掉”。逻辑折叠会引入混合键合、TSV、层间RC、工艺偏差和热管理问题；统一总线和光I/O会引入协议、可靠性、功耗和生态适配问题。若这些新增复杂度导致良率下降、成本上升或功耗过高，则τ下降未必转化为可售产品经济性。",
+      "evidence_buckets": {
+        "evidence": [
+          {
+            "evidence_id": "ev_huawei_tau_law_28eb43d5e9",
+            "materiality": "high",
+            "point": "论文承认τ缩放是时间法则而非能耗法则，若超节点速度提升同时带来同幅度功耗提升，将超过电网和散热承载能力；垂直互连和TSV也会带来RC与面积惩罚，属于关键risk。",
+            "relation": "反证",
+            "reliability": "primary",
+            "source_name": "ChinaXiv：能耗和垂直互连约束",
+            "summary": "论文承认τ缩放是时间法则而非能耗法则，若超节点速度提升同时带来同幅度功耗提升，将超过电网和散热承载能力；垂直互连和TSV也会带来RC与面积惩罚，属于关键risk。",
+            "url": "https://chinarxiv.org/items/chinaxiv-202605.00224"
+          }
+        ],
+        "message": [],
+        "opinion": [],
+        "research_report": [
+          {
+            "evidence_id": "ev_huawei_tau_law_16aec5bf07",
+            "materiality": "medium",
+            "point": "每经指出华为公开已知且经过市场验证的先进芯片制造能力仍主要停留在7纳米级别，与台积电先进制程、良率和成本控制存在差距；这是对相关设备、材料和代工资产过度外推的risk约束。",
+            "relation": "反证",
+            "reliability": "high",
+            "source_name": "每日经济新闻：先进制程差距与能力边界",
+            "summary": "每经指出华为公开已知且经过市场验证的先进芯片制造能力仍主要停留在7纳米级别，与台积电先进制程、良率和成本控制存在差距；这是对相关设备、材料和代工资产过度外推的risk约束。",
+            "url": "https://www.nbd.com.cn/articles/2026-05-25/4408154.html"
+          },
+          {
+            "evidence_id": "ev_huawei_tau_law_6717b89b71",
+            "materiality": "medium",
+            "point": "每经梳理论文难点：全尺寸逻辑折叠需要新EDA工具链，多晶圆键合会放大阈值电压、驱动电流和互连RC差异；如果这些risk无法工程化收敛，传导路径将停留在局部优化。",
+            "relation": "反证",
+            "reliability": "high",
+            "source_name": "每日经济新闻：技术挑战与待解难题",
+            "summary": "每经梳理论文难点：全尺寸逻辑折叠需要新EDA工具链，多晶圆键合会放大阈值电压、驱动电流和互连RC差异；如果这些risk无法工程化收敛，传导路径将停留在局部优化。",
+            "url": "https://www.nbd.com.cn/articles/2026-05-25/4408154.html"
+          }
+        ]
+      },
+      "id": "l1.transmission.channels.disconfirming_test",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 1,
+          "matched_evidence_ids": [
+            "ev_huawei_tau_law_28eb43d5e9"
+          ],
+          "next_action": "已匹配本地信息，下一步验证来源质量、口径和反证条件。",
+          "node_id": "l1.transmission.channels.disconfirming_test",
+          "parent_id": "l1.transmission.channels",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？：哪些信息会支撑或反证当前判断？ 公告 年报 官方 数据 事实",
+          "status": "matched"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补公开消息，但只作为线索，不直接强化结论。",
+          "node_id": "l1.transmission.channels.disconfirming_test",
+          "parent_id": "l1.transmission.channels",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？：哪些信息会支撑或反证当前判断？ 新闻 消息 进展 未证实",
+          "status": "missing"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.transmission.channels.disconfirming_test",
+          "parent_id": "l1.transmission.channels",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？：哪些信息会支撑或反证当前判断？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 2,
+          "matched_evidence_ids": [
+            "ev_huawei_tau_law_16aec5bf07",
+            "ev_huawei_tau_law_6717b89b71"
+          ],
+          "next_action": "已匹配本地信息，下一步验证来源质量、口径和反证条件。",
+          "node_id": "l1.transmission.channels.disconfirming_test",
+          "parent_id": "l1.transmission.channels",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？：哪些信息会支撑或反证当前判断？ 研报 深度报告 行业研究",
+          "status": "matched"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "huawei_tau_law与“huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？”的线索。",
+          "opinion": "专家、产业人士或投资者对“huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？”的机制解释和反证提醒。",
+          "research_report": "第三方对huawei_tau_law中“huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-26T08:47:11.708223+00:00",
+          "source": "imported"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.transmission.channels",
+      "professional_answer": {
+        "answer": "机制的核心反证是“收益是否被成本吃掉”。逻辑折叠会引入混合键合、TSV、层间RC、工艺偏差和热管理问题；统一总线和光I/O会引入协议、可靠性、功耗和生态适配问题。若这些新增复杂度导致良率下降、成本上升或功耗过高，则τ下降未必转化为可售产品经济性。",
+        "confidence": "high",
+        "facts": [
+          "ChinaXiv承认τ缩放不是能耗法则。",
+          "ChinaXiv列出垂直互连开销和晶圆间工艺偏差。",
+          "每经梳理EDA和能耗约束。"
+        ],
+        "gaps": [
+          "缺少良率、成本、热设计功耗。"
+        ],
+        "inferences": [
+          "投研中要把技术收益和新增复杂度做净额评估。"
+        ],
+        "judgment": "传导机制需要通过净收益而非毛收益验证。",
+        "next_data": [
+          "量产良率、封装成本、散热方案和功耗曲线。"
+        ],
+        "refuting_evidence": [
+          "ChinaXiv能耗和垂直互连约束",
+          "每日经济新闻技术挑战"
+        ],
+        "research_leads": [],
+        "rollup": "机制反证是新增复杂度是否抵消时间缩微收益。",
+        "source_balance": "证据 1 / 研报 1 / 消息 0 / 观点 0；关系结构 0 支撑 / 2 反证 / 0 线索。",
+        "supporting_evidence": []
+      },
+      "question": "huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？：哪些信息会支撑或反证当前判断？",
+      "rollup_to_parent": "机制反证是新增复杂度是否抵消时间缩微收益。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "high",
+        "facts": [
+          "ChinaXiv承认τ缩放不是能耗法则。",
+          "ChinaXiv列出垂直互连开销和晶圆间工艺偏差。",
+          "每经梳理EDA和能耗约束。"
+        ],
+        "gaps": [
+          "缺少良率、成本、热设计功耗。"
+        ],
+        "inferences": [
+          "投研中要把技术收益和新增复杂度做净额评估。"
+        ],
+        "judgment": "传导机制需要通过净收益而非毛收益验证。"
+      }
+    },
+    {
+      "current_answer": "受影响对象要按“能力栈”而非“概念股”拆分。第一层是华为内部芯片和系统产品：麒麟、昇腾、鲲鹏、超节点。第二层是实现韬定律的关键供给：先进封装/混合键合、存储/HBM、光互连、EDA、测试与可靠性工具。第三层是受竞争压力影响的外部路径：先进制程、传统2.5D封装和通用互联协议。最值得跟踪的是能否出现订单、合作、产能或工具链投入，而不是媒体标题。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": [
+          {
+            "evidence_id": "ev_huawei_tau_law_c64f7dcfa4",
+            "materiality": "medium",
+            "point": "用于受影响对象节点：该行业周报记录华为昇腾、鲲鹏、互联带宽、自研HBM和超节点路线，可作为韬定律产业承载平台的背景材料。",
+            "relation": "支撑",
+            "reliability": "high",
+            "source_name": "电子行业周报：华为算力路线图背景",
+            "summary": "用于受影响对象节点：该行业周报记录华为昇腾、鲲鹏、互联带宽、自研HBM和超节点路线，可作为韬定律产业承载平台的背景材料。",
+            "url": "https://pdf.dfcfw.com/pdf/H3_AP202509221748428871_1.pdf?1758549745000.pdf="
+          }
+        ]
+      },
+      "id": "l1.transmission.affected_objects",
+      "level": 2,
+      "metadata": {
+        "information_focus": {},
+        "planner_rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+        "should_collect_information": false,
+        "should_drill_down": true,
+        "synthesis_override": {
+          "imported_at": "2026-05-26T08:47:11.708228+00:00",
+          "source": "imported"
+        },
+        "terminal_reason": ""
+      },
+      "next_question_ids": [
+        "l1.transmission.affected_objects.evidence_map",
+        "l1.transmission.affected_objects.disconfirming_test"
+      ],
+      "parent_id": "l1.transmission",
+      "professional_answer": {
+        "answer": "受影响对象要按“能力栈”而非“概念股”拆分。第一层是华为内部芯片和系统产品：麒麟、昇腾、鲲鹏、超节点。第二层是实现韬定律的关键供给：先进封装/混合键合、存储/HBM、光互连、EDA、测试与可靠性工具。第三层是受竞争压力影响的外部路径：先进制程、传统2.5D封装和通用互联协议。最值得跟踪的是能否出现订单、合作、产能或工具链投入，而不是媒体标题。",
+        "confidence": "medium",
+        "facts": [
+          "论文提出供应链影响力向内存和封装厂商迁移。",
+          "行业周报提供华为昇腾/鲲鹏路线图背景。",
+          "华为官网指向麒麟2026和AI计算实践。"
+        ],
+        "gaps": [
+          "缺少华为供应商映射。"
+        ],
+        "inferences": [
+          "产业链映射应优先看参与华为算力和封装生态的公司。",
+          "非华为供应链公司只有在技术路线共振时才有间接受益。"
+        ],
+        "judgment": "影响范围较广，但强弱取决于是否进入华为体系或通用产业标准。",
+        "next_data": [
+          "供应商招标、产能扩张、资本开支、订单确认。"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "受影响对象集中在华为芯片系统、先进封装、存储、光互联和EDA。",
+        "source_balance": "证据 2 / 研报 1 / 消息 0 / 观点 0；关系结构 3 支撑 / 0 反证 / 0 线索。",
+        "supporting_evidence": [
+          "ChinaXiv供应链经济性迁移",
+          "电子行业周报"
+        ]
+      },
+      "question": "huawei_tau_law：哪些公司、行业或地区会最先受到影响？",
+      "rollup_to_parent": "受影响对象集中在华为芯片系统、先进封装、存储、光互联和EDA。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "medium",
+        "facts": [
+          "论文提出供应链影响力向内存和封装厂商迁移。",
+          "行业周报提供华为昇腾/鲲鹏路线图背景。",
+          "华为官网指向麒麟2026和AI计算实践。"
+        ],
+        "gaps": [
+          "缺少华为供应商映射。"
+        ],
+        "inferences": [
+          "产业链映射应优先看参与华为算力和封装生态的公司。",
+          "非华为供应链公司只有在技术路线共振时才有间接受益。"
+        ],
+        "judgment": "影响范围较广，但强弱取决于是否进入华为体系或通用产业标准。"
+      }
+    },
+    {
+      "current_answer": "证据指向的受影响对象并不是“全部半导体”，而是几类具体环节：先进封装和混合键合承担逻辑折叠；HBM、SRAM和存储接口承担逻辑-内存重新融合；光互连和系统总线承担AI集群低时延；EDA和测试工具承担3D原生设计、时序收敛和可靠性。行业周报中的华为昇腾/鲲鹏路线图可作为背景，说明华为算力产品线正好是该方法论的承载平台。",
+      "evidence_buckets": {
+        "evidence": [
+          {
+            "evidence_id": "ev_huawei_tau_law_74db086d81",
+            "materiality": "high",
+            "point": "论文提出AI硬件时代逻辑与内存重新融合，供应链影响力会向内存和封装供应商迁移；这意味着受影响对象不是单一晶圆制造，而是先进封装、HBM/存储、光互连、系统总线和3D集成链条。",
+            "relation": "支撑",
+            "reliability": "primary",
+            "source_name": "ChinaXiv：供应链经济性迁移判断",
+            "summary": "论文提出AI硬件时代逻辑与内存重新融合，供应链影响力会向内存和封装供应商迁移；这意味着受影响对象不是单一晶圆制造，而是先进封装、HBM/存储、光互连、系统总线和3D集成链条。",
+            "url": "https://chinarxiv.org/items/chinaxiv-202605.00224"
+          }
+        ],
+        "message": [],
+        "opinion": [],
+        "research_report": [
+          {
+            "evidence_id": "ev_huawei_tau_law_7afd803163",
+            "materiality": "medium",
+            "point": "该行业周报记录华为昇腾、鲲鹏路线图，以及自研HBM、互联带宽、超节点等方向；虽然不是韬定律研报，但可作为判断受影响资产范围的背景材料，指向AI服务器、存储、互联和国产算力链条。",
+            "relation": "支撑",
+            "reliability": "high",
+            "source_name": "电子行业周报：华为公布昇腾AI芯片及鲲鹏CPU路线图",
+            "summary": "该行业周报记录华为昇腾、鲲鹏路线图，以及自研HBM、互联带宽、超节点等方向；虽然不是韬定律研报，但可作为判断受影响资产范围的背景材料，指向AI服务器、存储、互联和国产算力链条。",
+            "url": "https://pdf.dfcfw.com/pdf/H3_AP202509221748428871_1.pdf?1758549745000.pdf="
+          }
+        ]
+      },
+      "id": "l1.transmission.affected_objects.evidence_map",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 1,
+          "matched_evidence_ids": [
+            "ev_huawei_tau_law_74db086d81"
+          ],
+          "next_action": "已匹配本地信息，下一步验证来源质量、口径和反证条件。",
+          "node_id": "l1.transmission.affected_objects.evidence_map",
+          "parent_id": "l1.transmission.affected_objects",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：哪些公司、行业或地区会最先受到影响？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：哪些公司、行业或地区会最先受到影响？：这个问题最需要哪些事实证据直接回答？ 公告 年报 官方 数据 事实",
+          "status": "matched"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补公开消息，但只作为线索，不直接强化结论。",
+          "node_id": "l1.transmission.affected_objects.evidence_map",
+          "parent_id": "l1.transmission.affected_objects",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：哪些公司、行业或地区会最先受到影响？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：哪些公司、行业或地区会最先受到影响？：这个问题最需要哪些事实证据直接回答？ 新闻 消息 进展 未证实",
+          "status": "missing"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.transmission.affected_objects.evidence_map",
+          "parent_id": "l1.transmission.affected_objects",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：哪些公司、行业或地区会最先受到影响？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：哪些公司、行业或地区会最先受到影响？：这个问题最需要哪些事实证据直接回答？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 1,
+          "matched_evidence_ids": [
+            "ev_huawei_tau_law_7afd803163"
+          ],
+          "next_action": "已匹配本地信息，下一步验证来源质量、口径和反证条件。",
+          "node_id": "l1.transmission.affected_objects.evidence_map",
+          "parent_id": "l1.transmission.affected_objects",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：哪些公司、行业或地区会最先受到影响？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：哪些公司、行业或地区会最先受到影响？：这个问题最需要哪些事实证据直接回答？ 研报 深度报告 行业研究",
+          "status": "matched"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "huawei_tau_law与“huawei_tau_law：哪些公司、行业或地区会最先受到影响？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：哪些公司、行业或地区会最先受到影响？”的线索。",
+          "opinion": "专家、产业人士或投资者对“huawei_tau_law：哪些公司、行业或地区会最先受到影响？”的机制解释和反证提醒。",
+          "research_report": "第三方对huawei_tau_law中“huawei_tau_law：哪些公司、行业或地区会最先受到影响？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-26T08:47:11.708232+00:00",
+          "source": "imported"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.transmission.affected_objects",
+      "professional_answer": {
+        "answer": "证据指向的受影响对象并不是“全部半导体”，而是几类具体环节：先进封装和混合键合承担逻辑折叠；HBM、SRAM和存储接口承担逻辑-内存重新融合；光互连和系统总线承担AI集群低时延；EDA和测试工具承担3D原生设计、时序收敛和可靠性。行业周报中的华为昇腾/鲲鹏路线图可作为背景，说明华为算力产品线正好是该方法论的承载平台。",
+        "confidence": "medium",
+        "facts": [
+          "ChinaXiv：逻辑与内存融合使供应链影响力向内存和封装转移。",
+          "电子行业周报：华为昇腾、鲲鹏路线图涉及互联带宽、自研HBM和超节点。"
+        ],
+        "gaps": [
+          "缺少公开供应商名单。"
+        ],
+        "inferences": [
+          "应建立受益映射表：封装/存储/光互联/EDA/系统软件。"
+        ],
+        "judgment": "受影响资产有明确方向，但个股层面必须等订单。",
+        "next_data": [
+          "供应链订单、客户认证、收入弹性。"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "受影响对象应优先映射到封装、存储、光互联、EDA和华为算力平台。",
+        "source_balance": "证据 1 / 研报 1 / 消息 0 / 观点 0；关系结构 2 支撑 / 0 反证 / 0 线索。",
+        "supporting_evidence": [
+          "ChinaXiv供应链经济性迁移",
+          "电子行业周报"
+        ]
+      },
+      "question": "huawei_tau_law：哪些公司、行业或地区会最先受到影响？：这个问题最需要哪些事实证据直接回答？",
+      "rollup_to_parent": "受影响对象应优先映射到封装、存储、光互联、EDA和华为算力平台。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "medium",
+        "facts": [
+          "ChinaXiv：逻辑与内存融合使供应链影响力向内存和封装转移。",
+          "电子行业周报：华为昇腾、鲲鹏路线图涉及互联带宽、自研HBM和超节点。"
+        ],
+        "gaps": [
+          "缺少公开供应商名单。"
+        ],
+        "inferences": [
+          "应建立受益映射表：封装/存储/光互联/EDA/系统软件。"
+        ],
+        "judgment": "受影响资产有明确方向，但个股层面必须等订单。"
+      }
+    },
+    {
+      "current_answer": "对受影响对象的反证是：工艺和供应链瓶颈仍然存在。若先进制造、封装良率、材料设备、EDA工具和热管理无法同步推进，韬定律不会自动给所有国产半导体资产带来收入。每经指出华为与台积电先进制程仍有差距，这意味着“成熟工艺+系统创新”是补偿而非完全替代。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": [
+          {
+            "evidence_id": "ev_huawei_tau_law_16aec5bf07",
+            "materiality": "medium",
+            "point": "每经指出华为公开已知且经过市场验证的先进芯片制造能力仍主要停留在7纳米级别，与台积电先进制程、良率和成本控制存在差距；这是对相关设备、材料和代工资产过度外推的risk约束。",
+            "relation": "反证",
+            "reliability": "high",
+            "source_name": "每日经济新闻：先进制程差距与能力边界",
+            "summary": "每经指出华为公开已知且经过市场验证的先进芯片制造能力仍主要停留在7纳米级别，与台积电先进制程、良率和成本控制存在差距；这是对相关设备、材料和代工资产过度外推的risk约束。",
+            "url": "https://www.nbd.com.cn/articles/2026-05-25/4408154.html"
+          }
+        ]
+      },
+      "id": "l1.transmission.affected_objects.disconfirming_test",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "优先补公告、年报、监管文件、官方数据或可验证事实。",
+          "node_id": "l1.transmission.affected_objects.disconfirming_test",
+          "parent_id": "l1.transmission.affected_objects",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：哪些公司、行业或地区会最先受到影响？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：哪些公司、行业或地区会最先受到影响？：哪些信息会支撑或反证当前判断？ 公告 年报 官方 数据 事实",
+          "status": "missing"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补公开消息，但只作为线索，不直接强化结论。",
+          "node_id": "l1.transmission.affected_objects.disconfirming_test",
+          "parent_id": "l1.transmission.affected_objects",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：哪些公司、行业或地区会最先受到影响？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：哪些公司、行业或地区会最先受到影响？：哪些信息会支撑或反证当前判断？ 新闻 消息 进展 未证实",
+          "status": "missing"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.transmission.affected_objects.disconfirming_test",
+          "parent_id": "l1.transmission.affected_objects",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：哪些公司、行业或地区会最先受到影响？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：哪些公司、行业或地区会最先受到影响？：哪些信息会支撑或反证当前判断？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 1,
+          "matched_evidence_ids": [
+            "ev_huawei_tau_law_16aec5bf07"
+          ],
+          "next_action": "已匹配本地信息，下一步验证来源质量、口径和反证条件。",
+          "node_id": "l1.transmission.affected_objects.disconfirming_test",
+          "parent_id": "l1.transmission.affected_objects",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：哪些公司、行业或地区会最先受到影响？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：哪些公司、行业或地区会最先受到影响？：哪些信息会支撑或反证当前判断？ 研报 深度报告 行业研究",
+          "status": "matched"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "huawei_tau_law与“huawei_tau_law：哪些公司、行业或地区会最先受到影响？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：哪些公司、行业或地区会最先受到影响？”的线索。",
+          "opinion": "专家、产业人士或投资者对“huawei_tau_law：哪些公司、行业或地区会最先受到影响？”的机制解释和反证提醒。",
+          "research_report": "第三方对huawei_tau_law中“huawei_tau_law：哪些公司、行业或地区会最先受到影响？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-26T08:47:11.708236+00:00",
+          "source": "imported"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.transmission.affected_objects",
+      "professional_answer": {
+        "answer": "对受影响对象的反证是：工艺和供应链瓶颈仍然存在。若先进制造、封装良率、材料设备、EDA工具和热管理无法同步推进，韬定律不会自动给所有国产半导体资产带来收入。每经指出华为与台积电先进制程仍有差距，这意味着“成熟工艺+系统创新”是补偿而非完全替代。",
+        "confidence": "medium",
+        "facts": [
+          "每经：华为公开验证的先进制造能力与台积电仍有差距。",
+          "ChinaXiv：工具链和工艺偏差是开放挑战。"
+        ],
+        "gaps": [
+          "缺少良率和产能数据。"
+        ],
+        "inferences": [
+          "受益需要产业协同，不是概念扩散。"
+        ],
+        "judgment": "外推到资产时必须加入能力边界折扣。",
+        "next_data": [
+          "制造、封装和EDA的实际投入。"
+        ],
+        "refuting_evidence": [
+          "每日经济新闻先进制程差距",
+          "ChinaXiv Open Challenges"
+        ],
+        "research_leads": [],
+        "rollup": "资产映射必须打折，不能把技术路线直接等同为全链条收入兑现。",
+        "source_balance": "证据 1 / 研报 1 / 消息 0 / 观点 0；关系结构 0 支撑 / 2 反证 / 0 线索。",
+        "supporting_evidence": []
+      },
+      "question": "huawei_tau_law：哪些公司、行业或地区会最先受到影响？：哪些信息会支撑或反证当前判断？",
+      "rollup_to_parent": "资产映射必须打折，不能把技术路线直接等同为全链条收入兑现。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "medium",
+        "facts": [
+          "每经：华为公开验证的先进制造能力与台积电仍有差距。",
+          "ChinaXiv：工具链和工艺偏差是开放挑战。"
+        ],
+        "gaps": [
+          "缺少良率和产能数据。"
+        ],
+        "inferences": [
+          "受益需要产业协同，不是概念扩散。"
+        ],
+        "judgment": "外推到资产时必须加入能力边界折扣。"
+      }
+    },
+    {
+      "current_answer": "市场已经在短期交易“国产半导体换道超车”的叙事：A股/H股半导体和相关ETF在事件发布后出现明显异动。需要区分两层定价：第一层是情绪和政策/国产替代想象，已经较快反映；第二层是基本面兑现，包括产品性能、订单、产能、利润率和产业标准，尚未反映充分。当前更适合把韬定律看作催化剂和研究线索，而不是即刻可折现的盈利增量。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [
+          {
+            "evidence_id": "ev_huawei_tau_law_c189691dea",
+            "materiality": "medium",
+            "point": "用于市场定价节点：消息显示韬定律发布后芯片ETF上涨，说明短期市场已交易国产半导体技术突破叙事。",
+            "relation": "研究线索",
+            "reliability": "medium",
+            "source_name": "每经网：科创芯片ETF上涨",
+            "summary": "用于市场定价节点：消息显示韬定律发布后芯片ETF上涨，说明短期市场已交易国产半导体技术突破叙事。",
+            "url": "https://www.nbd.com.cn/rss/sohu/articles/4406948.html"
+          },
+          {
+            "evidence_id": "ev_huawei_tau_law_fc171eb75d",
+            "materiality": "medium",
+            "point": "用于市场定价节点：新浪财经提示ETF高溢价和主题交易risk，构成对市场过度定价的反证线索。",
+            "relation": "研究线索",
+            "reliability": "medium",
+            "source_name": "新浪财经：高溢价风险提示",
+            "summary": "用于市场定价节点：新浪财经提示ETF高溢价和主题交易risk，构成对市场过度定价的反证线索。",
+            "url": "https://finance.sina.com.cn/money/fund/etf/2026-05-25/doc-inhzchzm2829790.shtml"
+          }
+        ],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.market_baseline",
+      "level": 1,
+      "metadata": {
+        "information_focus": {},
+        "planner_rationale": "先确认事实、需求和基础边界，避免直接跳到结论。",
+        "should_collect_information": false,
+        "should_drill_down": true,
+        "synthesis_override": {
+          "imported_at": "2026-05-26T08:47:11.708241+00:00",
+          "source": "imported"
+        },
+        "terminal_reason": ""
+      },
+      "next_question_ids": [
+        "l1.market_baseline.priced_in",
+        "l1.market_baseline.surprise"
+      ],
+      "parent_id": "meta.root",
+      "professional_answer": {
+        "answer": "市场已经在短期交易“国产半导体换道超车”的叙事：A股/H股半导体和相关ETF在事件发布后出现明显异动。需要区分两层定价：第一层是情绪和政策/国产替代想象，已经较快反映；第二层是基本面兑现，包括产品性能、订单、产能、利润率和产业标准，尚未反映充分。当前更适合把韬定律看作催化剂和研究线索，而不是即刻可折现的盈利增量。",
+        "confidence": "medium",
+        "facts": [
+          "每经、财联社、界面等报道半导体板块和ETF上涨。",
+          "新浪财经提示ETF高溢价风险。"
+        ],
+        "gaps": [
+          "缺少相关公司订单和盈利弹性。"
+        ],
+        "inferences": [
+          "短期定价强于基本面验证。",
+          "后续超预期必须从产品和供应链数据产生。"
+        ],
+        "judgment": "事件已部分被市场交易，后续需要验证兑现。",
+        "next_data": [
+          "板块成交结构、资金流、公司公告、订单披露。"
+        ],
+        "refuting_evidence": [
+          "新浪财经高溢价风险"
+        ],
+        "research_leads": [
+          "半导体ETF资金流"
+        ],
+        "rollup": "市场短期已快速交易叙事，基本面验证仍滞后。",
+        "source_balance": "证据 0 / 研报 1 / 消息 4 / 观点 1；关系结构 1 支撑 / 2 反证 / 2 线索。",
+        "supporting_evidence": [
+          "每经网科创芯片ETF上涨",
+          "财联社市场消息"
+        ]
+      },
+      "question": "huawei_tau_law当前可能已经被市场定价了什么？",
+      "rollup_to_parent": "市场短期已快速交易叙事，基本面验证仍滞后。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "medium",
+        "facts": [
+          "每经、财联社、界面等报道半导体板块和ETF上涨。",
+          "新浪财经提示ETF高溢价风险。"
+        ],
+        "gaps": [
+          "缺少相关公司订单和盈利弹性。"
+        ],
+        "inferences": [
+          "短期定价强于基本面验证。",
+          "后续超预期必须从产品和供应链数据产生。"
+        ],
+        "judgment": "事件已部分被市场交易，后续需要验证兑现。"
+      }
+    },
+    {
+      "current_answer": "当前可能已被定价的是“国产半导体技术路线突破”的情绪溢价，而不是可量化盈利。ETF和半导体指数的快速反应说明事件已进入交易视野；但价格反应主要基于叙事强度、国产替代、AI算力瓶颈和后摩尔焦虑。若后续没有产品数据，这部分定价容易回撤。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [
+          {
+            "evidence_id": "ev_huawei_tau_law_3da8a637df",
+            "materiality": "medium",
+            "point": "用于已定价节点：财联社报道韬定律带动半导体走强，但同时提示高位分化，说明价格已经反映部分技术叙事。",
+            "relation": "研究线索",
+            "reliability": "medium",
+            "source_name": "财联社：新技术催化半导体走强",
+            "summary": "用于已定价节点：财联社报道韬定律带动半导体走强，但同时提示高位分化，说明价格已经反映部分技术叙事。",
+            "url": "https://www.cls.cn/detail/2381259"
+          }
+        ],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.market_baseline.priced_in",
+      "level": 2,
+      "metadata": {
+        "information_focus": {},
+        "planner_rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+        "should_collect_information": false,
+        "should_drill_down": true,
+        "synthesis_override": {
+          "imported_at": "2026-05-26T08:47:11.708246+00:00",
+          "source": "imported"
+        },
+        "terminal_reason": ""
+      },
+      "next_question_ids": [
+        "l1.market_baseline.priced_in.evidence_map",
+        "l1.market_baseline.priced_in.disconfirming_test"
+      ],
+      "parent_id": "l1.market_baseline",
+      "professional_answer": {
+        "answer": "当前可能已被定价的是“国产半导体技术路线突破”的情绪溢价，而不是可量化盈利。ETF和半导体指数的快速反应说明事件已进入交易视野；但价格反应主要基于叙事强度、国产替代、AI算力瓶颈和后摩尔焦虑。若后续没有产品数据，这部分定价容易回撤。",
+        "confidence": "medium",
+        "facts": [
+          "每经报道科创芯片ETF上涨。",
+          "财联社提示半导体板块受华为韬定律催化。",
+          "新浪财经提示高溢价风险。"
+        ],
+        "gaps": [
+          "缺少公司公告确认的收入影响。"
+        ],
+        "inferences": [
+          "价格先于验证。",
+          "定价中包含政策与情绪成分。"
+        ],
+        "judgment": "已定价部分主要是事件催化，尚非盈利兑现。",
+        "next_data": [
+          "资金流与公告验证。"
+        ],
+        "refuting_evidence": [
+          "新浪财经高溢价风险"
+        ],
+        "research_leads": [
+          "ETF资金流"
+        ],
+        "rollup": "市场已定价技术叙事和情绪，但未验证盈利。",
+        "source_balance": "证据 0 / 研报 0 / 消息 3 / 观点 0；关系结构 0 支撑 / 1 反证 / 2 线索。",
+        "supporting_evidence": [
+          "每经网",
+          "财联社"
+        ]
+      },
+      "question": "huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？",
+      "rollup_to_parent": "市场已定价技术叙事和情绪，但未验证盈利。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "medium",
+        "facts": [
+          "每经报道科创芯片ETF上涨。",
+          "财联社提示半导体板块受华为韬定律催化。",
+          "新浪财经提示高溢价风险。"
+        ],
+        "gaps": [
+          "缺少公司公告确认的收入影响。"
+        ],
+        "inferences": [
+          "价格先于验证。",
+          "定价中包含政策与情绪成分。"
+        ],
+        "judgment": "已定价部分主要是事件催化，尚非盈利兑现。"
+      }
+    },
+    {
+      "current_answer": "支撑信息显示，发布当天及次日半导体资产有明显反应。这个反应说明市场将韬定律理解为国产半导体、先进封装、AI算力和后摩尔路线的共振信号。但这类消息属于市场观察，不是基本面证据；它只说明“预期已升温”，不能说明公司利润已改善。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [
+          {
+            "evidence_id": "ev_huawei_tau_law_62ce4a5dc7",
+            "materiality": "medium",
+            "point": "每经消息显示，华为发表韬定律后，科创芯片ETF出现明显上涨，并把消息面与半导体产业链预期联系起来；该信息只能说明短期情绪和定价反应，不能直接证明基本面兑现。",
+            "relation": "研究线索",
+            "reliability": "medium",
+            "source_name": "每经网：科创芯片ETF上涨3.06%",
+            "summary": "每经消息显示，华为发表韬定律后，科创芯片ETF出现明显上涨，并把消息面与半导体产业链预期联系起来；该信息只能说明短期情绪和定价反应，不能直接证明基本面兑现。",
+            "url": "https://www.nbd.com.cn/rss/sohu/articles/4406948.html"
+          },
+          {
+            "evidence_id": "ev_huawei_tau_law_288ccbd697",
+            "materiality": "medium",
+            "point": "财联社报道认为韬定律带动半导体板块情绪，但也提示短期冲高后需警惕高位分化；这表明市场已在对国产半导体技术叙事进行快速定价。",
+            "relation": "研究线索",
+            "reliability": "medium",
+            "source_name": "财联社：华为新技术催化半导体爆发",
+            "summary": "财联社报道认为韬定律带动半导体板块情绪，但也提示短期冲高后需警惕高位分化；这表明市场已在对国产半导体技术叙事进行快速定价。",
+            "url": "https://www.cls.cn/detail/2381259"
+          }
+        ],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.market_baseline.priced_in.evidence_map",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "优先补公告、年报、监管文件、官方数据或可验证事实。",
+          "node_id": "l1.market_baseline.priced_in.evidence_map",
+          "parent_id": "l1.market_baseline.priced_in",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？：这个问题最需要哪些事实证据直接回答？ 公告 年报 官方 数据 事实",
+          "status": "missing"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 2,
+          "matched_evidence_ids": [
+            "ev_huawei_tau_law_62ce4a5dc7",
+            "ev_huawei_tau_law_288ccbd697"
+          ],
+          "next_action": "已匹配本地信息，下一步验证来源质量、口径和反证条件。",
+          "node_id": "l1.market_baseline.priced_in.evidence_map",
+          "parent_id": "l1.market_baseline.priced_in",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？：这个问题最需要哪些事实证据直接回答？ 新闻 消息 进展 未证实",
+          "status": "matched"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.market_baseline.priced_in.evidence_map",
+          "parent_id": "l1.market_baseline.priced_in",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？：这个问题最需要哪些事实证据直接回答？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补商业研报、卖方报告、行业研究和结构化第三方数据。",
+          "node_id": "l1.market_baseline.priced_in.evidence_map",
+          "parent_id": "l1.market_baseline.priced_in",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？：这个问题最需要哪些事实证据直接回答？ 研报 深度报告 行业研究",
+          "status": "missing"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "huawei_tau_law与“huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？”的线索。",
+          "opinion": "专家、产业人士或投资者对“huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？”的机制解释和反证提醒。",
+          "research_report": "第三方对huawei_tau_law中“huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-26T08:47:11.708250+00:00",
+          "source": "imported"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.market_baseline.priced_in",
+      "professional_answer": {
+        "answer": "支撑信息显示，发布当天及次日半导体资产有明显反应。这个反应说明市场将韬定律理解为国产半导体、先进封装、AI算力和后摩尔路线的共振信号。但这类消息属于市场观察，不是基本面证据；它只说明“预期已升温”，不能说明公司利润已改善。",
+        "confidence": "medium",
+        "facts": [
+          "每经：科创芯片ETF上涨。",
+          "财联社：华为新技术催化半导体板块。"
+        ],
+        "gaps": [
+          "缺少盈利和订单确认。"
+        ],
+        "inferences": [
+          "价格反应是研究线索。"
+        ],
+        "judgment": "市场已部分定价事件催化。",
+        "next_data": [
+          "跟踪上市公司公告。"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [
+          "每经网科创芯片ETF上涨",
+          "财联社"
+        ],
+        "rollup": "市场交易层面已经对韬定律作出正向反应。",
+        "source_balance": "证据 0 / 研报 0 / 消息 2 / 观点 0；关系结构 0 支撑 / 0 反证 / 2 线索。",
+        "supporting_evidence": []
+      },
+      "question": "huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？：这个问题最需要哪些事实证据直接回答？",
+      "rollup_to_parent": "市场交易层面已经对韬定律作出正向反应。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "medium",
+        "facts": [
+          "每经：科创芯片ETF上涨。",
+          "财联社：华为新技术催化半导体板块。"
+        ],
+        "gaps": [
+          "缺少盈利和订单确认。"
+        ],
+        "inferences": [
+          "价格反应是研究线索。"
+        ],
+        "judgment": "市场已部分定价事件催化。"
+      }
+    },
+    {
+      "current_answer": "价格层面的反证条件是：板块快速上涨但没有后续基本面支撑。若ETF溢价、交易拥挤和主题轮动先行，而上市公司没有订单、资本开支、供应链进入或业绩指引变化，则说明韬定律被市场过度提前定价。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [
+          {
+            "evidence_id": "ev_huawei_tau_law_dd8efe3cd3",
+            "materiality": "medium",
+            "point": "新浪财经报道半导体ETF显著上涨并提示高溢价risk，说明事件可能已被交易层面快速反映，后续若缺少产品、订单和可复测性能数据，股价反应可能先于基本面。",
+            "relation": "研究线索",
+            "reliability": "medium",
+            "source_name": "新浪财经：注意高溢价风险，华为韬定律引爆ETF",
+            "summary": "新浪财经报道半导体ETF显著上涨并提示高溢价risk，说明事件可能已被交易层面快速反映，后续若缺少产品、订单和可复测性能数据，股价反应可能先于基本面。",
+            "url": "https://finance.sina.com.cn/money/fund/etf/2026-05-25/doc-inhzchzm2829790.shtml"
+          }
+        ],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.market_baseline.priced_in.disconfirming_test",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "优先补公告、年报、监管文件、官方数据或可验证事实。",
+          "node_id": "l1.market_baseline.priced_in.disconfirming_test",
+          "parent_id": "l1.market_baseline.priced_in",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？：哪些信息会支撑或反证当前判断？ 公告 年报 官方 数据 事实",
+          "status": "missing"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 1,
+          "matched_evidence_ids": [
+            "ev_huawei_tau_law_dd8efe3cd3"
+          ],
+          "next_action": "已匹配本地信息，下一步验证来源质量、口径和反证条件。",
+          "node_id": "l1.market_baseline.priced_in.disconfirming_test",
+          "parent_id": "l1.market_baseline.priced_in",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？：哪些信息会支撑或反证当前判断？ 新闻 消息 进展 未证实",
+          "status": "matched"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.market_baseline.priced_in.disconfirming_test",
+          "parent_id": "l1.market_baseline.priced_in",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？：哪些信息会支撑或反证当前判断？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补商业研报、卖方报告、行业研究和结构化第三方数据。",
+          "node_id": "l1.market_baseline.priced_in.disconfirming_test",
+          "parent_id": "l1.market_baseline.priced_in",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？：哪些信息会支撑或反证当前判断？ 研报 深度报告 行业研究",
+          "status": "missing"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "huawei_tau_law与“huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？”的线索。",
+          "opinion": "专家、产业人士或投资者对“huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？”的机制解释和反证提醒。",
+          "research_report": "第三方对huawei_tau_law中“huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-26T08:47:11.708255+00:00",
+          "source": "imported"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.market_baseline.priced_in",
+      "professional_answer": {
+        "answer": "价格层面的反证条件是：板块快速上涨但没有后续基本面支撑。若ETF溢价、交易拥挤和主题轮动先行，而上市公司没有订单、资本开支、供应链进入或业绩指引变化，则说明韬定律被市场过度提前定价。",
+        "confidence": "medium",
+        "facts": [
+          "新浪财经报道半导体ETF显著上涨并提示高溢价风险。",
+          "财联社提示短期高位分化风险。"
+        ],
+        "gaps": [
+          "缺少资金流分项与估值分位。"
+        ],
+        "inferences": [
+          "交易拥挤本身会降低事件后续赔率。"
+        ],
+        "judgment": "高溢价和高位分化是短期反证信号。",
+        "next_data": [
+          "ETF溢价率、换手率、资金净流入、估值分位。"
+        ],
+        "refuting_evidence": [
+          "新浪财经高溢价风险",
+          "财联社高位分化提示"
+        ],
+        "research_leads": [
+          "研究线索：新浪财经报道半导体ETF显著上涨并提示高溢价risk，说明事件可能已被交易层面快速反映，后续若缺少产品、订单和可复测性能数据，股价反应可能先于基本面。（新浪财经：注意高溢价风险，华为韬定律引爆ETF，ev_huawei_tau_law_dd8efe3cd3）"
+        ],
+        "rollup": "短期最大风险是主题定价快于基本面。",
+        "source_balance": "证据 0 / 研报 0 / 消息 2 / 观点 0；关系结构 0 支撑 / 2 反证 / 0 线索。",
+        "supporting_evidence": []
+      },
+      "question": "huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？：哪些信息会支撑或反证当前判断？",
+      "rollup_to_parent": "短期最大风险是主题定价快于基本面。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "medium",
+        "facts": [
+          "新浪财经报道半导体ETF显著上涨并提示高溢价风险。",
+          "财联社提示短期高位分化风险。"
+        ],
+        "gaps": [
+          "缺少资金流分项与估值分位。"
+        ],
+        "inferences": [
+          "交易拥挤本身会降低事件后续赔率。"
+        ],
+        "judgment": "高溢价和高位分化是短期反证信号。"
+      }
+    },
+    {
+      "current_answer": "真正构成超预期的信息不是“又有媒体报道”，而是可复测数据：Kirin 2026是否在固定节点下达到论文披露的密度、能效和频率改善；统一总线和Hi-ONE是否把AI集群远端访问延迟、能耗和TCO显著降低；3D Folding是否解决2.5D边缘带宽瓶颈；相关供应链是否出现订单和资本开支。低于预期则是产品延期、性能不达标、功耗过高、良率成本不可控或生态没有跟随。",
+      "evidence_buckets": {
+        "evidence": [
+          {
+            "evidence_id": "ev_huawei_tau_law_c1da6025bd",
+            "materiality": "high",
+            "point": "用于超预期节点：论文给出Kirin 2026密度、能效、频率和AI系统延迟、带宽、集成度等可验证指标。",
+            "relation": "支撑",
+            "reliability": "primary",
+            "source_name": "ChinaXiv：Kirin与AI系统量化指标",
+            "summary": "用于超预期节点：论文给出Kirin 2026密度、能效、频率和AI系统延迟、带宽、集成度等可验证指标。",
+            "url": "https://chinarxiv.org/items/chinaxiv-202605.00224"
+          }
+        ],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.market_baseline.surprise",
+      "level": 2,
+      "metadata": {
+        "information_focus": {},
+        "planner_rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+        "should_collect_information": false,
+        "should_drill_down": true,
+        "synthesis_override": {
+          "imported_at": "2026-05-26T08:47:11.708259+00:00",
+          "source": "imported"
+        },
+        "terminal_reason": ""
+      },
+      "next_question_ids": [
+        "l1.market_baseline.surprise.evidence_map",
+        "l1.market_baseline.surprise.disconfirming_test"
+      ],
+      "parent_id": "l1.market_baseline",
+      "professional_answer": {
+        "answer": "真正构成超预期的信息不是“又有媒体报道”，而是可复测数据：Kirin 2026是否在固定节点下达到论文披露的密度、能效和频率改善；统一总线和Hi-ONE是否把AI集群远端访问延迟、能耗和TCO显著降低；3D Folding是否解决2.5D边缘带宽瓶颈；相关供应链是否出现订单和资本开支。低于预期则是产品延期、性能不达标、功耗过高、良率成本不可控或生态没有跟随。",
+        "confidence": "medium",
+        "facts": [
+          "论文给出Kirin 2026、统一总线、Hi-ONE和2030/2035路线图。",
+          "每经整理了密度、能效、主频等可验证指标。"
+        ],
+        "gaps": [
+          "缺少独立测试和订单验证。"
+        ],
+        "inferences": [
+          "超预期必须转化为数据和订单。"
+        ],
+        "judgment": "后续超预期空间取决于产品验证而非概念传播。",
+        "next_data": [
+          "Kirin 2026评测，AI集群benchmarks，供应链订单。"
+        ],
+        "refuting_evidence": [
+          "专家观点：行业也在推进类似方向"
+        ],
+        "research_leads": [],
+        "rollup": "超预期来自可复测产品数据和订单，而不是发布会本身。",
+        "source_balance": "证据 1 / 研报 1 / 消息 0 / 观点 1；关系结构 2 支撑 / 1 反证 / 0 线索。",
+        "supporting_evidence": [
+          "ChinaXiv Kirin 2026与AI系统路线图",
+          "每日经济新闻论文细节"
+        ]
+      },
+      "question": "huawei_tau_law：什么信息会构成超预期或低于预期？",
+      "rollup_to_parent": "超预期来自可复测产品数据和订单，而不是发布会本身。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "medium",
+        "facts": [
+          "论文给出Kirin 2026、统一总线、Hi-ONE和2030/2035路线图。",
+          "每经整理了密度、能效、主频等可验证指标。"
+        ],
+        "gaps": [
+          "缺少独立测试和订单验证。"
+        ],
+        "inferences": [
+          "超预期必须转化为数据和订单。"
+        ],
+        "judgment": "后续超预期空间取决于产品验证而非概念传播。"
+      }
+    },
+    {
+      "current_answer": "可验证的超预期指标包括：移动SoC侧密度、主频、能效和热表现；AI系统侧远端访问延迟、带宽、pJ/bit、集群利用率和TCO；产业链侧混合键合、光I/O、HBM/存储和EDA订单。论文和每经报道都给了指标方向，但指标需要第三方复测。",
+      "evidence_buckets": {
+        "evidence": [
+          {
+            "evidence_id": "ev_huawei_tau_law_addf79112a",
+            "materiality": "high",
+            "point": "论文给出可成为超预期的量化验证点：Kirin 2026的密度、能效、主频，统一总线远端访问延迟，Hi-ONE光I/O带宽，以及2030年前后昇腾引入LogicFolding的时间表。",
+            "relation": "支撑",
+            "reliability": "primary",
+            "source_name": "ChinaXiv：Kirin 2026与AI系统路线图",
+            "summary": "论文给出可成为超预期的量化验证点：Kirin 2026的密度、能效、主频，统一总线远端访问延迟，Hi-ONE光I/O带宽，以及2030年前后昇腾引入LogicFolding的时间表。",
+            "url": "https://chinarxiv.org/items/chinaxiv-202605.00224"
+          }
+        ],
+        "message": [],
+        "opinion": [],
+        "research_report": [
+          {
+            "evidence_id": "ev_huawei_tau_law_d8914597c7",
+            "materiality": "medium",
+            "point": "每经整理论文数据称单代产品晶体管密度从155 MTr/mm²提升至238 MTr/mm²，SoC性能核心能效提升41%、最高主频近13%；这些指标若被独立评测验证，将构成超预期证据。",
+            "relation": "支撑",
+            "reliability": "high",
+            "source_name": "每日经济新闻：论文细节与实测数据",
+            "summary": "每经整理论文数据称单代产品晶体管密度从155 MTr/mm²提升至238 MTr/mm²，SoC性能核心能效提升41%、最高主频近13%；这些指标若被独立评测验证，将构成超预期证据。",
+            "url": "https://www.nbd.com.cn/articles/2026-05-25/4408154.html"
+          }
+        ]
+      },
+      "id": "l1.market_baseline.surprise.evidence_map",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 1,
+          "matched_evidence_ids": [
+            "ev_huawei_tau_law_addf79112a"
+          ],
+          "next_action": "已匹配本地信息，下一步验证来源质量、口径和反证条件。",
+          "node_id": "l1.market_baseline.surprise.evidence_map",
+          "parent_id": "l1.market_baseline.surprise",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：什么信息会构成超预期或低于预期？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：什么信息会构成超预期或低于预期？：这个问题最需要哪些事实证据直接回答？ 公告 年报 官方 数据 事实",
+          "status": "matched"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补公开消息，但只作为线索，不直接强化结论。",
+          "node_id": "l1.market_baseline.surprise.evidence_map",
+          "parent_id": "l1.market_baseline.surprise",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：什么信息会构成超预期或低于预期？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：什么信息会构成超预期或低于预期？：这个问题最需要哪些事实证据直接回答？ 新闻 消息 进展 未证实",
+          "status": "missing"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.market_baseline.surprise.evidence_map",
+          "parent_id": "l1.market_baseline.surprise",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：什么信息会构成超预期或低于预期？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：什么信息会构成超预期或低于预期？：这个问题最需要哪些事实证据直接回答？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 1,
+          "matched_evidence_ids": [
+            "ev_huawei_tau_law_d8914597c7"
+          ],
+          "next_action": "已匹配本地信息，下一步验证来源质量、口径和反证条件。",
+          "node_id": "l1.market_baseline.surprise.evidence_map",
+          "parent_id": "l1.market_baseline.surprise",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：什么信息会构成超预期或低于预期？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：什么信息会构成超预期或低于预期？：这个问题最需要哪些事实证据直接回答？ 研报 深度报告 行业研究",
+          "status": "matched"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "huawei_tau_law与“huawei_tau_law：什么信息会构成超预期或低于预期？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：什么信息会构成超预期或低于预期？”的线索。",
+          "opinion": "专家、产业人士或投资者对“huawei_tau_law：什么信息会构成超预期或低于预期？”的机制解释和反证提醒。",
+          "research_report": "第三方对huawei_tau_law中“huawei_tau_law：什么信息会构成超预期或低于预期？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-26T08:47:11.708264+00:00",
+          "source": "imported"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.market_baseline.surprise",
+      "professional_answer": {
+        "answer": "可验证的超预期指标包括：移动SoC侧密度、主频、能效和热表现；AI系统侧远端访问延迟、带宽、pJ/bit、集群利用率和TCO；产业链侧混合键合、光I/O、HBM/存储和EDA订单。论文和每经报道都给了指标方向，但指标需要第三方复测。",
+        "confidence": "medium",
+        "facts": [
+          "ChinaXiv：Kirin 2026和AI系统路线图。",
+          "每经：密度155到238 MTr/mm²、能效提升41%、最高主频近13%。"
+        ],
+        "gaps": [
+          "缺少第三方测试。"
+        ],
+        "inferences": [
+          "指标方向明确，验证主体缺失。"
+        ],
+        "judgment": "超预期证据框架已经形成。",
+        "next_data": [
+          "公开benchmark和拆解。"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "超预期指标应落在密度、能效、主频、延迟、带宽和TCO。",
+        "source_balance": "证据 1 / 研报 1 / 消息 0 / 观点 0；关系结构 2 支撑 / 0 反证 / 0 线索。",
+        "supporting_evidence": [
+          "ChinaXiv",
+          "每日经济新闻"
+        ]
+      },
+      "question": "huawei_tau_law：什么信息会构成超预期或低于预期？：这个问题最需要哪些事实证据直接回答？",
+      "rollup_to_parent": "超预期指标应落在密度、能效、主频、延迟、带宽和TCO。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "medium",
+        "facts": [
+          "ChinaXiv：Kirin 2026和AI系统路线图。",
+          "每经：密度155到238 MTr/mm²、能效提升41%、最高主频近13%。"
+        ],
+        "gaps": [
+          "缺少第三方测试。"
+        ],
+        "inferences": [
+          "指标方向明确，验证主体缺失。"
+        ],
+        "judgment": "超预期证据框架已经形成。"
+      }
+    },
+    {
+      "current_answer": "如果后续产品只是同方向架构优化，没有显著优于行业已有DTCO、Chiplet、3D堆叠、先进封装和光互联路线，那么“韬定律”的超预期会降低。专家观点提示行业已在推进类似方向，因此华为必须证明的不只是方向正确，而是它的跨层组织能力能带来更高净收益。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [
+          {
+            "evidence_id": "ev_huawei_tau_law_ab1b49bbce",
+            "materiality": "medium",
+            "point": "专家观点认为行业本身也在推进DTCO、系统级协同和先进封装，华为是把该路线做得更极致；因此真正的超预期应来自可复测产品差异，而不是概念本身。",
+            "relation": "研究线索",
+            "reliability": "medium",
+            "source_name": "每日经济新闻采访：品利基金半导体产业投资经理陈启",
+            "summary": "专家观点认为行业本身也在推进DTCO、系统级协同和先进封装，华为是把该路线做得更极致；因此真正的超预期应来自可复测产品差异，而不是概念本身。",
+            "url": "https://www.nbd.com.cn/articles/2026-05-25/4408154.html"
+          }
+        ],
+        "research_report": []
+      },
+      "id": "l1.market_baseline.surprise.disconfirming_test",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "优先补公告、年报、监管文件、官方数据或可验证事实。",
+          "node_id": "l1.market_baseline.surprise.disconfirming_test",
+          "parent_id": "l1.market_baseline.surprise",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：什么信息会构成超预期或低于预期？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：什么信息会构成超预期或低于预期？：哪些信息会支撑或反证当前判断？ 公告 年报 官方 数据 事实",
+          "status": "missing"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补公开消息，但只作为线索，不直接强化结论。",
+          "node_id": "l1.market_baseline.surprise.disconfirming_test",
+          "parent_id": "l1.market_baseline.surprise",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：什么信息会构成超预期或低于预期？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：什么信息会构成超预期或低于预期？：哪些信息会支撑或反证当前判断？ 新闻 消息 进展 未证实",
+          "status": "missing"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 1,
+          "matched_evidence_ids": [
+            "ev_huawei_tau_law_ab1b49bbce"
+          ],
+          "next_action": "已匹配本地信息，下一步验证来源质量、口径和反证条件。",
+          "node_id": "l1.market_baseline.surprise.disconfirming_test",
+          "parent_id": "l1.market_baseline.surprise",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：什么信息会构成超预期或低于预期？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：什么信息会构成超预期或低于预期？：哪些信息会支撑或反证当前判断？ 专家 观点 访谈 大V",
+          "status": "matched"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补商业研报、卖方报告、行业研究和结构化第三方数据。",
+          "node_id": "l1.market_baseline.surprise.disconfirming_test",
+          "parent_id": "l1.market_baseline.surprise",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：什么信息会构成超预期或低于预期？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：什么信息会构成超预期或低于预期？：哪些信息会支撑或反证当前判断？ 研报 深度报告 行业研究",
+          "status": "missing"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "huawei_tau_law与“huawei_tau_law：什么信息会构成超预期或低于预期？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：什么信息会构成超预期或低于预期？”的线索。",
+          "opinion": "专家、产业人士或投资者对“huawei_tau_law：什么信息会构成超预期或低于预期？”的机制解释和反证提醒。",
+          "research_report": "第三方对huawei_tau_law中“huawei_tau_law：什么信息会构成超预期或低于预期？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-26T08:47:11.708269+00:00",
+          "source": "imported"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.market_baseline.surprise",
+      "professional_answer": {
+        "answer": "如果后续产品只是同方向架构优化，没有显著优于行业已有DTCO、Chiplet、3D堆叠、先进封装和光互联路线，那么“韬定律”的超预期会降低。专家观点提示行业已在推进类似方向，因此华为必须证明的不只是方向正确，而是它的跨层组织能力能带来更高净收益。",
+        "confidence": "medium",
+        "facts": [
+          "陈启认为整个行业也在推进DTCO和系统级协同。",
+          "每经指出先进工艺仍不可忽视。"
+        ],
+        "gaps": [
+          "缺少与海外龙头同口径比较。"
+        ],
+        "inferences": [
+          "差异化必须来自工程效果和生态组织能力。"
+        ],
+        "judgment": "低于预期的关键是同质化和缺少净收益。",
+        "next_data": [
+          "对比台积电、AMD、英伟达、苹果等系统优化路径。"
+        ],
+        "refuting_evidence": [
+          "品利基金陈启观点"
+        ],
+        "research_leads": [
+          "研究线索：专家观点认为行业本身也在推进DTCO、系统级协同和先进封装，华为是把该路线做得更极致；因此真正的超预期应来自可复测产品差异，而不是概念本身。（每日经济新闻采访：品利基金半导体产业投资经理陈启，ev_huawei_tau_law_ab1b49bbce）"
+        ],
+        "rollup": "超预期必须证明华为路径相对行业已有优化有额外净收益。",
+        "source_balance": "证据 0 / 研报 0 / 消息 0 / 观点 1；关系结构 0 支撑 / 1 反证 / 0 线索。",
+        "supporting_evidence": []
+      },
+      "question": "huawei_tau_law：什么信息会构成超预期或低于预期？：哪些信息会支撑或反证当前判断？",
+      "rollup_to_parent": "超预期必须证明华为路径相对行业已有优化有额外净收益。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "medium",
+        "facts": [
+          "陈启认为整个行业也在推进DTCO和系统级协同。",
+          "每经指出先进工艺仍不可忽视。"
+        ],
+        "gaps": [
+          "缺少与海外龙头同口径比较。"
+        ],
+        "inferences": [
+          "差异化必须来自工程效果和生态组织能力。"
+        ],
+        "judgment": "低于预期的关键是同质化和缺少净收益。"
+      }
+    },
+    {
+      "current_answer": "后续跟踪应固定成四类触发器：产品触发器，看Kirin 2026和后续昇腾是否兑现论文指标；工程触发器，看3D原生EDA、混合键合、TSV、热管理、profile benchmark是否公开；产业触发器，看封装、存储、光互联和EDA供应链是否出现订单或资本开支；市场触发器，看主题行情是否由消息驱动转向公司基本面驱动。反证条件也要明确：产品不达标、功耗过高、良率成本不经济、供应链无订单、行业没有跟随。",
+      "evidence_buckets": {
+        "evidence": [
+          {
+            "evidence_id": "ev_huawei_tau_law_b602ae6740",
+            "materiality": "high",
+            "point": "用于后续跟踪节点：官方口径提供Kirin 2026、2031等效1.4纳米密度和开放合作等后续验证方向。",
+            "relation": "支撑",
+            "reliability": "primary",
+            "source_name": "华为官网：后续产品节点",
+            "summary": "用于后续跟踪节点：官方口径提供Kirin 2026、2031等效1.4纳米密度和开放合作等后续验证方向。",
+            "url": "https://www.huawei.com/cn/news/2026/5/ieee-iscas-tau-scaling"
+          }
+        ],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.follow_up",
+      "level": 1,
+      "metadata": {
+        "information_focus": {},
+        "planner_rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+        "should_collect_information": false,
+        "should_drill_down": true,
+        "synthesis_override": {
+          "imported_at": "2026-05-26T08:47:11.708274+00:00",
+          "source": "imported"
+        },
+        "terminal_reason": ""
+      },
+      "next_question_ids": [
+        "l1.follow_up.triggers",
+        "l1.follow_up.disconfirming_signal"
+      ],
+      "parent_id": "meta.root",
+      "professional_answer": {
+        "answer": "后续跟踪应固定成四类触发器：产品触发器，看Kirin 2026和后续昇腾是否兑现论文指标；工程触发器，看3D原生EDA、混合键合、TSV、热管理、profile benchmark是否公开；产业触发器，看封装、存储、光互联和EDA供应链是否出现订单或资本开支；市场触发器，看主题行情是否由消息驱动转向公司基本面驱动。反证条件也要明确：产品不达标、功耗过高、良率成本不经济、供应链无订单、行业没有跟随。",
+        "confidence": "medium",
+        "facts": [
+          "华为官网给出Kirin 2026和2031节点。",
+          "ChinaXiv给出未来数月方法论细节、2030/2035路线和开放挑战。",
+          "市场消息提示短期板块已快速反应。"
+        ],
+        "gaps": [
+          "缺少跟踪模板和指标表。"
+        ],
+        "inferences": [
+          "跟踪体系应从新闻流改成验证流。"
+        ],
+        "judgment": "下一阶段核心不是继续收集观点，而是等待可验证数据。",
+        "next_data": [
+          "产品评测、供应链订单、工具链公开、标准/论文引用。"
+        ],
+        "refuting_evidence": [
+          "ChinaXiv Open Challenges",
+          "财联社高位分化提示"
+        ],
+        "research_leads": [],
+        "rollup": "后续跟踪要围绕产品、工程、产业和市场四类触发器。",
+        "source_balance": "证据 3 / 研报 1 / 消息 1 / 观点 0；关系结构 3 支撑 / 2 反证 / 0 线索。",
+        "supporting_evidence": [
+          "华为官网",
+          "ChinaXiv"
+        ]
+      },
+      "question": "huawei_tau_law后续最重要的跟踪和反证条件是什么？",
+      "rollup_to_parent": "后续跟踪要围绕产品、工程、产业和市场四类触发器。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "medium",
+        "facts": [
+          "华为官网给出Kirin 2026和2031节点。",
+          "ChinaXiv给出未来数月方法论细节、2030/2035路线和开放挑战。",
+          "市场消息提示短期板块已快速反应。"
+        ],
+        "gaps": [
+          "缺少跟踪模板和指标表。"
+        ],
+        "inferences": [
+          "跟踪体系应从新闻流改成验证流。"
+        ],
+        "judgment": "下一阶段核心不是继续收集观点，而是等待可验证数据。"
+      }
+    },
+    {
+      "current_answer": "更新触发器按优先级排序：1）2026年秋季麒麟芯片是否实际采用逻辑折叠以及第三方评测结果；2）华为是否公开多层设计工具链、混合键合良率、TSV和热管理细节；3）昇腾/超节点是否在统一总线、Hi-ONE和3D Folding上给出真实负载benchmark；4）相关封装、存储、光互联、EDA供应链是否有订单或收入指引。",
+      "evidence_buckets": {
+        "evidence": [
+          {
+            "evidence_id": "ev_huawei_tau_law_eabcb026f1",
+            "materiality": "high",
+            "point": "用于触发器节点：论文提到未来公布方法论细节、LogicFolding在移动和AI系统中的路线图、以及2035硬件集成增长设想。",
+            "relation": "支撑",
+            "reliability": "primary",
+            "source_name": "ChinaXiv：后续方法论和路线图触发器",
+            "summary": "用于触发器节点：论文提到未来公布方法论细节、LogicFolding在移动和AI系统中的路线图、以及2035硬件集成增长设想。",
+            "url": "https://chinarxiv.org/items/chinaxiv-202605.00224"
+          }
+        ],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.follow_up.triggers",
+      "level": 2,
+      "metadata": {
+        "information_focus": {},
+        "planner_rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+        "should_collect_information": false,
+        "should_drill_down": true,
+        "synthesis_override": {
+          "imported_at": "2026-05-26T08:47:11.708278+00:00",
+          "source": "imported"
+        },
+        "terminal_reason": ""
+      },
+      "next_question_ids": [
+        "l1.follow_up.triggers.evidence_map",
+        "l1.follow_up.triggers.disconfirming_test"
+      ],
+      "parent_id": "l1.follow_up",
+      "professional_answer": {
+        "answer": "更新触发器按优先级排序：1）2026年秋季麒麟芯片是否实际采用逻辑折叠以及第三方评测结果；2）华为是否公开多层设计工具链、混合键合良率、TSV和热管理细节；3）昇腾/超节点是否在统一总线、Hi-ONE和3D Folding上给出真实负载benchmark；4）相关封装、存储、光互联、EDA供应链是否有订单或收入指引。",
+        "confidence": "medium",
+        "facts": [
+          "华为官网提到Kirin 2026、381款芯片和2031目标。",
+          "ChinaXiv提到方法论细节未来公布，以及AI路线图。"
+        ],
+        "gaps": [
+          "缺少官方后续发布日程。"
+        ],
+        "inferences": [
+          "近期触发器主要是2026年下半年产品和工具链，不是远期口号。"
+        ],
+        "judgment": "触发器明确且可跟踪。",
+        "next_data": [
+          "华为发布会、评测、供应链公告。"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "近期最重要触发器是Kirin 2026和工具链/benchmark公开。",
+        "source_balance": "证据 2 / 研报 0 / 消息 0 / 观点 0；关系结构 2 支撑 / 0 反证 / 0 线索。",
+        "supporting_evidence": [
+          "华为官网",
+          "ChinaXiv"
+        ]
+      },
+      "question": "huawei_tau_law：哪些公告、数据或行为会触发判断更新？",
+      "rollup_to_parent": "近期最重要触发器是Kirin 2026和工具链/benchmark公开。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "medium",
+        "facts": [
+          "华为官网提到Kirin 2026、381款芯片和2031目标。",
+          "ChinaXiv提到方法论细节未来公布，以及AI路线图。"
+        ],
+        "gaps": [
+          "缺少官方后续发布日程。"
+        ],
+        "inferences": [
+          "近期触发器主要是2026年下半年产品和工具链，不是远期口号。"
+        ],
+        "judgment": "触发器明确且可跟踪。"
+      }
+    },
+    {
+      "current_answer": "一手证据已经给出清晰跟踪点：华为官网给出381款芯片、2026年秋季麒麟、2031年等效1.4nm密度；ChinaXiv给出未来数月工具链方法细节、2030年前后Ascend引入LogicFolding、2035硬件集成增长设想。这些节点可以直接转成日历化跟踪清单。",
+      "evidence_buckets": {
+        "evidence": [
+          {
+            "evidence_id": "ev_huawei_tau_law_124bc650ff",
+            "materiality": "high",
+            "point": "华为披露过去六年基于韬定律成功设计并量产381款芯片，2026年秋季麒麟芯片将率先采用逻辑折叠，2031年高端芯片晶体管密度预计达到1.4纳米制程同等水平；这些时间点是后续跟踪触发器。",
+            "relation": "支撑",
+            "reliability": "primary",
+            "source_name": "华为官网：381款芯片和麒麟2026商业化节点",
+            "summary": "华为披露过去六年基于韬定律成功设计并量产381款芯片，2026年秋季麒麟芯片将率先采用逻辑折叠，2031年高端芯片晶体管密度预计达到1.4纳米制程同等水平；这些时间点是后续跟踪触发器。",
+            "url": "https://www.huawei.com/cn/news/2026/5/ieee-iscas-tau-scaling"
+          },
+          {
+            "evidence_id": "ev_huawei_tau_law_957c3e840c",
+            "materiality": "high",
+            "point": "论文称已有初步内部工具产生有用结果，方法论细节将在未来数月公布；后续若公开3D原生EDA、基准测试和工艺可靠性数据，将显著提高结论置信度。",
+            "relation": "支撑",
+            "reliability": "primary",
+            "source_name": "ChinaXiv：方法论细节将在未来公布",
+            "summary": "论文称已有初步内部工具产生有用结果，方法论细节将在未来数月公布；后续若公开3D原生EDA、基准测试和工艺可靠性数据，将显著提高结论置信度。",
+            "url": "https://chinarxiv.org/items/chinaxiv-202605.00224"
+          }
+        ],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.follow_up.triggers.evidence_map",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 2,
+          "matched_evidence_ids": [
+            "ev_huawei_tau_law_124bc650ff",
+            "ev_huawei_tau_law_957c3e840c"
+          ],
+          "next_action": "已匹配本地信息，下一步验证来源质量、口径和反证条件。",
+          "node_id": "l1.follow_up.triggers.evidence_map",
+          "parent_id": "l1.follow_up.triggers",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：哪些公告、数据或行为会触发判断更新？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：哪些公告、数据或行为会触发判断更新？：这个问题最需要哪些事实证据直接回答？ 公告 年报 官方 数据 事实",
+          "status": "matched"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补公开消息，但只作为线索，不直接强化结论。",
+          "node_id": "l1.follow_up.triggers.evidence_map",
+          "parent_id": "l1.follow_up.triggers",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：哪些公告、数据或行为会触发判断更新？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：哪些公告、数据或行为会触发判断更新？：这个问题最需要哪些事实证据直接回答？ 新闻 消息 进展 未证实",
+          "status": "missing"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.follow_up.triggers.evidence_map",
+          "parent_id": "l1.follow_up.triggers",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：哪些公告、数据或行为会触发判断更新？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：哪些公告、数据或行为会触发判断更新？：这个问题最需要哪些事实证据直接回答？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补商业研报、卖方报告、行业研究和结构化第三方数据。",
+          "node_id": "l1.follow_up.triggers.evidence_map",
+          "parent_id": "l1.follow_up.triggers",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：哪些公告、数据或行为会触发判断更新？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：哪些公告、数据或行为会触发判断更新？：这个问题最需要哪些事实证据直接回答？ 研报 深度报告 行业研究",
+          "status": "missing"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "huawei_tau_law与“huawei_tau_law：哪些公告、数据或行为会触发判断更新？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：哪些公告、数据或行为会触发判断更新？”的线索。",
+          "opinion": "专家、产业人士或投资者对“huawei_tau_law：哪些公告、数据或行为会触发判断更新？”的机制解释和反证提醒。",
+          "research_report": "第三方对huawei_tau_law中“huawei_tau_law：哪些公告、数据或行为会触发判断更新？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-26T08:47:11.708282+00:00",
+          "source": "imported"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.follow_up.triggers",
+      "professional_answer": {
+        "answer": "一手证据已经给出清晰跟踪点：华为官网给出381款芯片、2026年秋季麒麟、2031年等效1.4nm密度；ChinaXiv给出未来数月工具链方法细节、2030年前后Ascend引入LogicFolding、2035硬件集成增长设想。这些节点可以直接转成日历化跟踪清单。",
+        "confidence": "medium",
+        "facts": [
+          "华为官网：381款芯片、Kirin 2026、2031目标。",
+          "ChinaXiv：方法论细节、2030/2035 AI系统路线。"
+        ],
+        "gaps": [
+          "缺少具体发布日期和产品型号细节。"
+        ],
+        "inferences": [
+          "跟踪清单应从官方承诺倒推。"
+        ],
+        "judgment": "已有足够触发器建立后续监控。",
+        "next_data": [
+          "华为秋季发布会信息。"
+        ],
+        "refuting_evidence": [],
+        "research_leads": [],
+        "rollup": "触发器以Kirin 2026、工具链公开、AI系统benchmark为主。",
+        "source_balance": "证据 2 / 研报 0 / 消息 0 / 观点 0；关系结构 2 支撑 / 0 反证 / 0 线索。",
+        "supporting_evidence": [
+          "华为官网",
+          "ChinaXiv"
+        ]
+      },
+      "question": "huawei_tau_law：哪些公告、数据或行为会触发判断更新？：这个问题最需要哪些事实证据直接回答？",
+      "rollup_to_parent": "触发器以Kirin 2026、工具链公开、AI系统benchmark为主。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "medium",
+        "facts": [
+          "华为官网：381款芯片、Kirin 2026、2031目标。",
+          "ChinaXiv：方法论细节、2030/2035 AI系统路线。"
+        ],
+        "gaps": [
+          "缺少具体发布日期和产品型号细节。"
+        ],
+        "inferences": [
+          "跟踪清单应从官方承诺倒推。"
+        ],
+        "judgment": "已有足够触发器建立后续监控。"
+      }
+    },
+    {
+      "current_answer": "跟踪触发器的反证是：华为只发布概念但不发布可复测benchmark，或产品发布后评测显示性能提升被功耗、散热和成本抵消。ChinaXiv明确说现有Linpack、MLPerf、SPEC等基准不足以暴露各层τ瓶颈，这意味着华为还需要说服产业接受新的profile benchmark；如果没有这一套，投资研究无法确认其系统收益。",
+      "evidence_buckets": {
+        "evidence": [
+          {
+            "evidence_id": "ev_huawei_tau_law_1f61ce3e4f",
+            "materiality": "high",
+            "point": "论文提出现有Linpack、MLPerf、SPEC等基准不足以暴露各层τ瓶颈，并承认需要能耗伴随约束；如果后续没有profile benchmark、能耗/散热数据和第三方复测，韬定律的可投…",
+            "relation": "支撑",
+            "reliability": "primary",
+            "source_name": "ChinaXiv：基准测试与能耗约束",
+            "summary": "论文提出现有Linpack、MLPerf、SPEC等基准不足以暴露各层τ瓶颈，并承认需要能耗伴随约束；如果后续没有profile benchmark、能耗/散热数据和第三方复测，韬定律的可投资性会被削弱。",
+            "url": "https://chinarxiv.org/items/chinaxiv-202605.00224"
+          }
+        ],
+        "message": [],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.follow_up.triggers.disconfirming_test",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 1,
+          "matched_evidence_ids": [
+            "ev_huawei_tau_law_1f61ce3e4f"
+          ],
+          "next_action": "已匹配本地信息，下一步验证来源质量、口径和反证条件。",
+          "node_id": "l1.follow_up.triggers.disconfirming_test",
+          "parent_id": "l1.follow_up.triggers",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：哪些公告、数据或行为会触发判断更新？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：哪些公告、数据或行为会触发判断更新？：哪些信息会支撑或反证当前判断？ 公告 年报 官方 数据 事实",
+          "status": "matched"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补公开消息，但只作为线索，不直接强化结论。",
+          "node_id": "l1.follow_up.triggers.disconfirming_test",
+          "parent_id": "l1.follow_up.triggers",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：哪些公告、数据或行为会触发判断更新？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：哪些公告、数据或行为会触发判断更新？：哪些信息会支撑或反证当前判断？ 新闻 消息 进展 未证实",
+          "status": "missing"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.follow_up.triggers.disconfirming_test",
+          "parent_id": "l1.follow_up.triggers",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：哪些公告、数据或行为会触发判断更新？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：哪些公告、数据或行为会触发判断更新？：哪些信息会支撑或反证当前判断？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补商业研报、卖方报告、行业研究和结构化第三方数据。",
+          "node_id": "l1.follow_up.triggers.disconfirming_test",
+          "parent_id": "l1.follow_up.triggers",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：哪些公告、数据或行为会触发判断更新？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：哪些公告、数据或行为会触发判断更新？：哪些信息会支撑或反证当前判断？ 研报 深度报告 行业研究",
+          "status": "missing"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "huawei_tau_law与“huawei_tau_law：哪些公告、数据或行为会触发判断更新？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：哪些公告、数据或行为会触发判断更新？”的线索。",
+          "opinion": "专家、产业人士或投资者对“huawei_tau_law：哪些公告、数据或行为会触发判断更新？”的机制解释和反证提醒。",
+          "research_report": "第三方对huawei_tau_law中“huawei_tau_law：哪些公告、数据或行为会触发判断更新？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-26T08:47:11.708286+00:00",
+          "source": "imported"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.follow_up.triggers",
+      "professional_answer": {
+        "answer": "跟踪触发器的反证是：华为只发布概念但不发布可复测benchmark，或产品发布后评测显示性能提升被功耗、散热和成本抵消。ChinaXiv明确说现有Linpack、MLPerf、SPEC等基准不足以暴露各层τ瓶颈，这意味着华为还需要说服产业接受新的profile benchmark；如果没有这一套，投资研究无法确认其系统收益。",
+        "confidence": "high",
+        "facts": [
+          "ChinaXiv：现有基准不足以描述各层τ瓶颈。",
+          "ChinaXiv：能耗需要伴随约束。"
+        ],
+        "gaps": [
+          "缺少profile benchmark标准。"
+        ],
+        "inferences": [
+          "缺少benchmark会让结论无法被市场稳定定价。"
+        ],
+        "judgment": "benchmark和能耗数据是关键反证测试。",
+        "next_data": [
+          "华为或行业组织发布的新基准。"
+        ],
+        "refuting_evidence": [
+          "ChinaXiv基准测试与能耗约束"
+        ],
+        "research_leads": [],
+        "rollup": "没有可复测benchmark和能耗约束，韬定律难以从叙事升级为投资结论。",
+        "source_balance": "证据 1 / 研报 0 / 消息 0 / 观点 0；关系结构 0 支撑 / 1 反证 / 0 线索。",
+        "supporting_evidence": [
+          "支撑：论文提出现有Linpack、MLPerf、SPEC等基准不足以暴露各层τ瓶颈，并承认需要能耗伴随约束；如果后续没有profile benchmark、能耗/散热数据和第三方复测，韬定律的可投…（ChinaXiv：基准测试与能耗约束，ev_huawei_tau_law_1f61ce3e4f）"
+        ]
+      },
+      "question": "huawei_tau_law：哪些公告、数据或行为会触发判断更新？：哪些信息会支撑或反证当前判断？",
+      "rollup_to_parent": "没有可复测benchmark和能耗约束，韬定律难以从叙事升级为投资结论。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "high",
+        "facts": [
+          "ChinaXiv：现有基准不足以描述各层τ瓶颈。",
+          "ChinaXiv：能耗需要伴随约束。"
+        ],
+        "gaps": [
+          "缺少profile benchmark标准。"
+        ],
+        "inferences": [
+          "缺少benchmark会让结论无法被市场稳定定价。"
+        ],
+        "judgment": "benchmark和能耗数据是关键反证测试。"
+      }
+    },
+    {
+      "current_answer": "证明影响被高估的信号包括：产品发布延期或性能不达标；同节点下能效提升不显著；混合键合良率和TSV开销导致成本过高；AI系统统一总线无法兼容生态或可靠性不足；相关供应链没有订单确认；市场先出现高溢价后分化。证明影响被低估的信号则相反：第三方评测复现密度/能效提升，供应链订单出现，行业标准或外部伙伴开始跟随。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": [
+          {
+            "evidence_id": "ev_huawei_tau_law_753684c1d8",
+            "materiality": "medium",
+            "point": "用于反证信号节点：每经整理EDA工具链、晶圆间工艺偏差和能耗约束，适合作为后续反证信号清单。",
+            "relation": "支撑",
+            "reliability": "high",
+            "source_name": "每日经济新闻：反证信号清单",
+            "summary": "用于反证信号节点：每经整理EDA工具链、晶圆间工艺偏差和能耗约束，适合作为后续反证信号清单。",
+            "url": "https://www.nbd.com.cn/articles/2026-05-25/4408154.html"
+          }
+        ]
+      },
+      "id": "l1.follow_up.disconfirming_signal",
+      "level": 2,
+      "metadata": {
+        "information_focus": {},
+        "planner_rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+        "should_collect_information": false,
+        "should_drill_down": true,
+        "synthesis_override": {
+          "imported_at": "2026-05-26T08:47:11.708298+00:00",
+          "source": "imported"
+        },
+        "terminal_reason": ""
+      },
+      "next_question_ids": [
+        "l1.follow_up.disconfirming_signal.evidence_map",
+        "l1.follow_up.disconfirming_signal.disconfirming_test"
+      ],
+      "parent_id": "l1.follow_up",
+      "professional_answer": {
+        "answer": "证明影响被高估的信号包括：产品发布延期或性能不达标；同节点下能效提升不显著；混合键合良率和TSV开销导致成本过高；AI系统统一总线无法兼容生态或可靠性不足；相关供应链没有订单确认；市场先出现高溢价后分化。证明影响被低估的信号则相反：第三方评测复现密度/能效提升，供应链订单出现，行业标准或外部伙伴开始跟随。",
+        "confidence": "medium",
+        "facts": [
+          "每经梳理工具链、工艺偏差和能耗难题。",
+          "财联社提示市场高位分化可能。"
+        ],
+        "gaps": [
+          "缺少供应链和评测实时数据。"
+        ],
+        "inferences": [
+          "反证信号要同时看工程、产业和市场三层。"
+        ],
+        "judgment": "当前反证框架比收益框架更应优先建立。",
+        "next_data": [
+          "第三方评测、订单、ETF溢价和资金流。"
+        ],
+        "refuting_evidence": [
+          "每日经济新闻工具链/工艺/能耗难题",
+          "财联社高位分化提示"
+        ],
+        "research_leads": [],
+        "rollup": "反证信号应覆盖工程不可行、产业无订单和市场先行透支三类。",
+        "source_balance": "证据 0 / 研报 1 / 消息 1 / 观点 0；关系结构 0 支撑 / 2 反证 / 0 线索。",
+        "supporting_evidence": [
+          "支撑：用于反证信号节点：每经整理EDA工具链、晶圆间工艺偏差和能耗约束，适合作为后续反证信号清单。（每日经济新闻：反证信号清单，ev_huawei_tau_law_753684c1d8）"
+        ]
+      },
+      "question": "huawei_tau_law：什么信息会证明事件影响被高估或低估？",
+      "rollup_to_parent": "反证信号应覆盖工程不可行、产业无订单和市场先行透支三类。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "medium",
+        "facts": [
+          "每经梳理工具链、工艺偏差和能耗难题。",
+          "财联社提示市场高位分化可能。"
+        ],
+        "gaps": [
+          "缺少供应链和评测实时数据。"
+        ],
+        "inferences": [
+          "反证信号要同时看工程、产业和市场三层。"
+        ],
+        "judgment": "当前反证框架比收益框架更应优先建立。"
+      }
+    },
+    {
+      "current_answer": "本节点将反证信号落到可观察信息：EDA工具链是否能支持多层cell级设计、跨晶圆时序是否稳定、混合键合和TSV是否导致良率/面积损失、功耗是否随速度提升同步上升、供应链是否没有收入确认。每经对这些难题的整理可作为反证清单起点。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [],
+        "opinion": [],
+        "research_report": [
+          {
+            "evidence_id": "ev_huawei_tau_law_9dcecb0b1d",
+            "materiality": "medium",
+            "point": "每经总结的主要反证信号包括：EDA工具无法适配多层逻辑折叠、晶圆间工艺偏差影响时钟和保持时间、速度提升带来同步功耗上升。任一难题长期无解，都会削弱产业化判断。",
+            "relation": "支撑",
+            "reliability": "high",
+            "source_name": "每日经济新闻：工具链、工艺偏差、能耗三类难题",
+            "summary": "每经总结的主要反证信号包括：EDA工具无法适配多层逻辑折叠、晶圆间工艺偏差影响时钟和保持时间、速度提升带来同步功耗上升。任一难题长期无解，都会削弱产业化判断。",
+            "url": "https://www.nbd.com.cn/articles/2026-05-25/4408154.html"
+          }
+        ]
+      },
+      "id": "l1.follow_up.disconfirming_signal.evidence_map",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "优先补公告、年报、监管文件、官方数据或可验证事实。",
+          "node_id": "l1.follow_up.disconfirming_signal.evidence_map",
+          "parent_id": "l1.follow_up.disconfirming_signal",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：什么信息会证明事件影响被高估或低估？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：什么信息会证明事件影响被高估或低估？：这个问题最需要哪些事实证据直接回答？ 公告 年报 官方 数据 事实",
+          "status": "missing"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补公开消息，但只作为线索，不直接强化结论。",
+          "node_id": "l1.follow_up.disconfirming_signal.evidence_map",
+          "parent_id": "l1.follow_up.disconfirming_signal",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：什么信息会证明事件影响被高估或低估？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：什么信息会证明事件影响被高估或低估？：这个问题最需要哪些事实证据直接回答？ 新闻 消息 进展 未证实",
+          "status": "missing"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.follow_up.disconfirming_signal.evidence_map",
+          "parent_id": "l1.follow_up.disconfirming_signal",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：什么信息会证明事件影响被高估或低估？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：什么信息会证明事件影响被高估或低估？：这个问题最需要哪些事实证据直接回答？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 1,
+          "matched_evidence_ids": [
+            "ev_huawei_tau_law_9dcecb0b1d"
+          ],
+          "next_action": "已匹配本地信息，下一步验证来源质量、口径和反证条件。",
+          "node_id": "l1.follow_up.disconfirming_signal.evidence_map",
+          "parent_id": "l1.follow_up.disconfirming_signal",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：什么信息会证明事件影响被高估或低估？：这个问题最需要哪些事实证据直接回答？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：什么信息会证明事件影响被高估或低估？：这个问题最需要哪些事实证据直接回答？ 研报 深度报告 行业研究",
+          "status": "matched"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "huawei_tau_law与“huawei_tau_law：什么信息会证明事件影响被高估或低估？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：什么信息会证明事件影响被高估或低估？”的线索。",
+          "opinion": "专家、产业人士或投资者对“huawei_tau_law：什么信息会证明事件影响被高估或低估？”的机制解释和反证提醒。",
+          "research_report": "第三方对huawei_tau_law中“huawei_tau_law：什么信息会证明事件影响被高估或低估？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-26T08:47:11.708302+00:00",
+          "source": "imported"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.follow_up.disconfirming_signal",
+      "professional_answer": {
+        "answer": "本节点将反证信号落到可观察信息：EDA工具链是否能支持多层cell级设计、跨晶圆时序是否稳定、混合键合和TSV是否导致良率/面积损失、功耗是否随速度提升同步上升、供应链是否没有收入确认。每经对这些难题的整理可作为反证清单起点。",
+        "confidence": "medium",
+        "facts": [
+          "每经：EDA工具链、多晶圆工艺偏差、能耗约束是主要难题。"
+        ],
+        "gaps": [
+          "缺少每个难题的量化阈值。"
+        ],
+        "inferences": [
+          "每个难题都可转化为后续跟踪字段。"
+        ],
+        "judgment": "反证信号可操作。",
+        "next_data": [
+          "EDA、良率、功耗、成本阈值。"
+        ],
+        "refuting_evidence": [
+          "每日经济新闻工具链/工艺/能耗难题"
+        ],
+        "research_leads": [],
+        "rollup": "反证信号从工具链、良率、功耗和成本四个字段落地。",
+        "source_balance": "证据 0 / 研报 1 / 消息 0 / 观点 0；关系结构 0 支撑 / 1 反证 / 0 线索。",
+        "supporting_evidence": [
+          "支撑：每经总结的主要反证信号包括：EDA工具无法适配多层逻辑折叠、晶圆间工艺偏差影响时钟和保持时间、速度提升带来同步功耗上升。任一难题长期无解，都会削弱产业化判断。（每日经济新闻：工具链、工艺偏差、能耗三类难题，ev_huawei_tau_law_9dcecb0b1d）"
+        ]
+      },
+      "question": "huawei_tau_law：什么信息会证明事件影响被高估或低估？：这个问题最需要哪些事实证据直接回答？",
+      "rollup_to_parent": "反证信号从工具链、良率、功耗和成本四个字段落地。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "medium",
+        "facts": [
+          "每经：EDA工具链、多晶圆工艺偏差、能耗约束是主要难题。"
+        ],
+        "gaps": [
+          "缺少每个难题的量化阈值。"
+        ],
+        "inferences": [
+          "每个难题都可转化为后续跟踪字段。"
+        ],
+        "judgment": "反证信号可操作。"
+      }
+    },
+    {
+      "current_answer": "市场层面的反证测试是：事件带来短期上涨，但板块很快高位分化，同时没有产品评测或订单接力。财联社的报道已经提示这一风险。研究上应把市场信号降权：上涨只能说明关注度提高，分化则提示资金开始筛选基本面，真正有效的是后续公司公告和产业数据。",
+      "evidence_buckets": {
+        "evidence": [],
+        "message": [
+          {
+            "evidence_id": "ev_huawei_tau_law_f742e0d965",
+            "materiality": "medium",
+            "point": "财联社报道提示半导体板块在韬定律催化后短期仍有冲高动能但需警惕高位分化；市场层面若先涨后分化，而产业数据未跟上，将成为事件影响被高估的线索。",
+            "relation": "研究线索",
+            "reliability": "medium",
+            "source_name": "财联社：短期冲高动能与高位分化提示",
+            "summary": "财联社报道提示半导体板块在韬定律催化后短期仍有冲高动能但需警惕高位分化；市场层面若先涨后分化，而产业数据未跟上，将成为事件影响被高估的线索。",
+            "url": "https://www.cls.cn/detail/2381259"
+          }
+        ],
+        "opinion": [],
+        "research_report": []
+      },
+      "id": "l1.follow_up.disconfirming_signal.disconfirming_test",
+      "information_collection": {
+        "evidence": {
+          "acceptance_criteria": [
+            "能定位原始来源",
+            "记录报告期或发布日期",
+            "摘要提取可验证事实或指标"
+          ],
+          "category": "evidence",
+          "category_label": "证据",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "优先补公告、年报、监管文件、官方数据或可验证事实。",
+          "node_id": "l1.follow_up.disconfirming_signal.disconfirming_test",
+          "parent_id": "l1.follow_up.disconfirming_signal",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：什么信息会证明事件影响被高估或低估？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "公司公告/财报/招股书",
+            "交易所或监管文件",
+            "公司 IR 或正式新闻稿"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：什么信息会证明事件影响被高估或低估？：哪些信息会支撑或反证当前判断？ 公告 年报 官方 数据 事实",
+          "status": "missing"
+        },
+        "message": {
+          "acceptance_criteria": [
+            "标注未证实边界",
+            "说明影响的业务节点或假设",
+            "只作为研究线索"
+          ],
+          "category": "message",
+          "category_label": "消息",
+          "matched_count": 1,
+          "matched_evidence_ids": [
+            "ev_huawei_tau_law_f742e0d965"
+          ],
+          "next_action": "已匹配本地信息，下一步验证来源质量、口径和反证条件。",
+          "node_id": "l1.follow_up.disconfirming_signal.disconfirming_test",
+          "parent_id": "l1.follow_up.disconfirming_signal",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：什么信息会证明事件影响被高估或低估？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "主流财经媒体",
+            "监管/交易所动态",
+            "公司或渠道公开进展"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：什么信息会证明事件影响被高估或低估？：哪些信息会支撑或反证当前判断？ 新闻 消息 进展 未证实",
+          "status": "matched"
+        },
+        "opinion": {
+          "acceptance_criteria": [
+            "说明观点来源身份",
+            "提炼可检验机制",
+            "配套下一步验证数据"
+          ],
+          "category": "opinion",
+          "category_label": "观点",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补专家、产业人士或高质量投资者观点，并保持低权重。",
+          "node_id": "l1.follow_up.disconfirming_signal.disconfirming_test",
+          "parent_id": "l1.follow_up.disconfirming_signal",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：什么信息会证明事件影响被高估或低估？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "专家访谈",
+            "产业人士观点",
+            "高质量投资者或专业社区观点"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：什么信息会证明事件影响被高估或低估？：哪些信息会支撑或反证当前判断？ 专家 观点 访谈 大V",
+          "status": "missing"
+        },
+        "research_report": {
+          "acceptance_criteria": [
+            "记录机构/作者/日期",
+            "区分事实、模型和判断",
+            "不能单独替代一手证据"
+          ],
+          "category": "research_report",
+          "category_label": "研报",
+          "matched_count": 0,
+          "matched_evidence_ids": [],
+          "next_action": "补商业研报、卖方报告、行业研究和结构化第三方数据。",
+          "node_id": "l1.follow_up.disconfirming_signal.disconfirming_test",
+          "parent_id": "l1.follow_up.disconfirming_signal",
+          "project_id": "huawei_tau_law",
+          "question": "huawei_tau_law：什么信息会证明事件影响被高估或低估？：哪些信息会支撑或反证当前判断？",
+          "recommended_sources": [
+            "卖方深度报告",
+            "行业专题或数据库",
+            "可复核第三方份额/价格/出货数据"
+          ],
+          "search_query": "huawei_tau_law huawei_tau_law：什么信息会证明事件影响被高估或低估？：哪些信息会支撑或反证当前判断？ 研报 深度报告 行业研究",
+          "status": "missing"
+        }
+      },
+      "level": 3,
+      "metadata": {
+        "information_focus": {
+          "evidence": "huawei_tau_law与“huawei_tau_law：什么信息会证明事件影响被高估或低估？”相关的公告、监管文件、官方数据和可验证事实。",
+          "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：什么信息会证明事件影响被高估或低估？”的线索。",
+          "opinion": "专家、产业人士或投资者对“huawei_tau_law：什么信息会证明事件影响被高估或低估？”的机制解释和反证提醒。",
+          "research_report": "第三方对huawei_tau_law中“huawei_tau_law：什么信息会证明事件影响被高估或低估？”的模型、数据和关键假设。"
+        },
+        "planner_rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+        "should_collect_information": true,
+        "should_drill_down": false,
+        "synthesis_override": {
+          "imported_at": "2026-05-26T08:47:11.708307+00:00",
+          "source": "imported"
+        },
+        "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+      },
+      "next_question_ids": [],
+      "parent_id": "l1.follow_up.disconfirming_signal",
+      "professional_answer": {
+        "answer": "市场层面的反证测试是：事件带来短期上涨，但板块很快高位分化，同时没有产品评测或订单接力。财联社的报道已经提示这一风险。研究上应把市场信号降权：上涨只能说明关注度提高，分化则提示资金开始筛选基本面，真正有效的是后续公司公告和产业数据。",
+        "confidence": "medium",
+        "facts": [
+          "财联社提示短期冲高动能和高位分化风险。"
+        ],
+        "gaps": [
+          "缺少逐日资金和估值数据。"
+        ],
+        "inferences": [
+          "市场反应不能替代基本面验证。"
+        ],
+        "judgment": "若无基本面接力，事件影响容易被高估。",
+        "next_data": [
+          "ETF溢价率、成交额、公司公告。"
+        ],
+        "refuting_evidence": [
+          "财联社高位分化提示"
+        ],
+        "research_leads": [
+          "研究线索：财联社报道提示半导体板块在韬定律催化后短期仍有冲高动能但需警惕高位分化；市场层面若先涨后分化，而产业数据未跟上，将成为事件影响被高估的线索。（财联社：短期冲高动能与高位分化提示，ev_huawei_tau_law_f742e0d965）"
+        ],
+        "rollup": "市场高位分化且无基本面接力，是事件被高估的明确信号。",
+        "source_balance": "证据 0 / 研报 0 / 消息 1 / 观点 0；关系结构 0 支撑 / 1 反证 / 0 线索。",
+        "supporting_evidence": []
+      },
+      "question": "huawei_tau_law：什么信息会证明事件影响被高估或低估？：哪些信息会支撑或反证当前判断？",
+      "rollup_to_parent": "市场高位分化且无基本面接力，是事件被高估的明确信号。",
+      "status": "open",
+      "synthesis": {
+        "confidence": "medium",
+        "facts": [
+          "财联社提示短期冲高动能和高位分化风险。"
+        ],
+        "gaps": [
+          "缺少逐日资金和估值数据。"
+        ],
+        "inferences": [
+          "市场反应不能替代基本面验证。"
+        ],
+        "judgment": "若无基本面接力，事件影响容易被高估。"
+      }
+    }
+  ],
+  "object_id": "huawei_tau_law",
+  "object_type": "event",
+  "project_id": "huawei_tau_law",
+  "question_plan": {
+    "detected_signals": [
+      "supply_chain"
+    ],
+    "generated_at": "2026-05-26T08:35:57.275264+00:00",
+    "l1": [
+      {
+        "id": "facts",
+        "l2": [
+          {
+            "id": "timeline",
+            "l3": [
+              {
+                "id": "evidence_map",
+                "information_focus": {
+                  "evidence": "huawei_tau_law与“huawei_tau_law：事件发生了什么，哪些事实已经被确认？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：事件发生了什么，哪些事实已经被确认？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“huawei_tau_law：事件发生了什么，哪些事实已经被确认？”的机制解释和反证提醒。",
+                  "research_report": "第三方对huawei_tau_law中“huawei_tau_law：事件发生了什么，哪些事实已经被确认？”的模型、数据和关键假设。"
+                },
+                "question": "huawei_tau_law：事件发生了什么，哪些事实已经被确认？：这个问题最需要哪些事实证据直接回答？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              },
+              {
+                "id": "disconfirming_test",
+                "information_focus": {
+                  "evidence": "huawei_tau_law与“huawei_tau_law：事件发生了什么，哪些事实已经被确认？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：事件发生了什么，哪些事实已经被确认？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“huawei_tau_law：事件发生了什么，哪些事实已经被确认？”的机制解释和反证提醒。",
+                  "research_report": "第三方对huawei_tau_law中“huawei_tau_law：事件发生了什么，哪些事实已经被确认？”的模型、数据和关键假设。"
+                },
+                "question": "huawei_tau_law：事件发生了什么，哪些事实已经被确认？：哪些信息会支撑或反证当前判断？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              }
+            ],
+            "question": "huawei_tau_law：事件发生了什么，哪些事实已经被确认？",
+            "rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+            "should_drill_down": true,
+            "terminal_reason": ""
+          },
+          {
+            "id": "uncertainty",
+            "l3": [
+              {
+                "id": "evidence_map",
+                "information_focus": {
+                  "evidence": "huawei_tau_law与“huawei_tau_law：哪些事实仍未确认或存在冲突口径？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：哪些事实仍未确认或存在冲突口径？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“huawei_tau_law：哪些事实仍未确认或存在冲突口径？”的机制解释和反证提醒。",
+                  "research_report": "第三方对huawei_tau_law中“huawei_tau_law：哪些事实仍未确认或存在冲突口径？”的模型、数据和关键假设。"
+                },
+                "question": "huawei_tau_law：哪些事实仍未确认或存在冲突口径？：这个问题最需要哪些事实证据直接回答？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              },
+              {
+                "id": "disconfirming_test",
+                "information_focus": {
+                  "evidence": "huawei_tau_law与“huawei_tau_law：哪些事实仍未确认或存在冲突口径？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：哪些事实仍未确认或存在冲突口径？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“huawei_tau_law：哪些事实仍未确认或存在冲突口径？”的机制解释和反证提醒。",
+                  "research_report": "第三方对huawei_tau_law中“huawei_tau_law：哪些事实仍未确认或存在冲突口径？”的模型、数据和关键假设。"
+                },
+                "question": "huawei_tau_law：哪些事实仍未确认或存在冲突口径？：哪些信息会支撑或反证当前判断？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              }
+            ],
+            "question": "huawei_tau_law：哪些事实仍未确认或存在冲突口径？",
+            "rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+            "should_drill_down": true,
+            "terminal_reason": ""
+          }
+        ],
+        "question": "huawei_tau_law的事实边界、时间线和未确认点是什么？",
+        "rationale": "先确认事实、需求和基础边界，避免直接跳到结论。",
+        "should_drill_down": true,
+        "terminal_reason": ""
+      },
+      {
+        "id": "transmission",
+        "l2": [
+          {
+            "id": "channels",
+            "l3": [
+              {
+                "id": "evidence_map",
+                "information_focus": {
+                  "evidence": "huawei_tau_law与“huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？”的机制解释和反证提醒。",
+                  "research_report": "第三方对huawei_tau_law中“huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？”的模型、数据和关键假设。"
+                },
+                "question": "huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？：这个问题最需要哪些事实证据直接回答？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              },
+              {
+                "id": "disconfirming_test",
+                "information_focus": {
+                  "evidence": "huawei_tau_law与“huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？”的机制解释和反证提醒。",
+                  "research_report": "第三方对huawei_tau_law中“huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？”的模型、数据和关键假设。"
+                },
+                "question": "huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？：哪些信息会支撑或反证当前判断？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              }
+            ],
+            "question": "huawei_tau_law：事件的价格、需求、成本、政策和情绪传导路径是什么？",
+            "rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+            "should_drill_down": true,
+            "terminal_reason": ""
+          },
+          {
+            "id": "affected_objects",
+            "l3": [
+              {
+                "id": "evidence_map",
+                "information_focus": {
+                  "evidence": "huawei_tau_law与“huawei_tau_law：哪些公司、行业或地区会最先受到影响？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：哪些公司、行业或地区会最先受到影响？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“huawei_tau_law：哪些公司、行业或地区会最先受到影响？”的机制解释和反证提醒。",
+                  "research_report": "第三方对huawei_tau_law中“huawei_tau_law：哪些公司、行业或地区会最先受到影响？”的模型、数据和关键假设。"
+                },
+                "question": "huawei_tau_law：哪些公司、行业或地区会最先受到影响？：这个问题最需要哪些事实证据直接回答？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              },
+              {
+                "id": "disconfirming_test",
+                "information_focus": {
+                  "evidence": "huawei_tau_law与“huawei_tau_law：哪些公司、行业或地区会最先受到影响？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：哪些公司、行业或地区会最先受到影响？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“huawei_tau_law：哪些公司、行业或地区会最先受到影响？”的机制解释和反证提醒。",
+                  "research_report": "第三方对huawei_tau_law中“huawei_tau_law：哪些公司、行业或地区会最先受到影响？”的模型、数据和关键假设。"
+                },
+                "question": "huawei_tau_law：哪些公司、行业或地区会最先受到影响？：哪些信息会支撑或反证当前判断？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              }
+            ],
+            "question": "huawei_tau_law：哪些公司、行业或地区会最先受到影响？",
+            "rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+            "should_drill_down": true,
+            "terminal_reason": ""
+          }
+        ],
+        "question": "huawei_tau_law通过哪些路径影响资产和公司基本面？",
+        "rationale": "再确认价值链、利润池或事件传导机制，判断影响路径是否真实。",
+        "should_drill_down": true,
+        "terminal_reason": ""
+      },
+      {
+        "id": "market_baseline",
+        "l2": [
+          {
+            "id": "priced_in",
+            "l3": [
+              {
+                "id": "evidence_map",
+                "information_focus": {
+                  "evidence": "huawei_tau_law与“huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？”的机制解释和反证提醒。",
+                  "research_report": "第三方对huawei_tau_law中“huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？”的模型、数据和关键假设。"
+                },
+                "question": "huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？：这个问题最需要哪些事实证据直接回答？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              },
+              {
+                "id": "disconfirming_test",
+                "information_focus": {
+                  "evidence": "huawei_tau_law与“huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？”的机制解释和反证提醒。",
+                  "research_report": "第三方对huawei_tau_law中“huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？”的模型、数据和关键假设。"
+                },
+                "question": "huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？：哪些信息会支撑或反证当前判断？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              }
+            ],
+            "question": "huawei_tau_law：市场价格、预期和共识可能隐含了哪些判断？",
+            "rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+            "should_drill_down": true,
+            "terminal_reason": ""
+          },
+          {
+            "id": "surprise",
+            "l3": [
+              {
+                "id": "evidence_map",
+                "information_focus": {
+                  "evidence": "huawei_tau_law与“huawei_tau_law：什么信息会构成超预期或低于预期？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：什么信息会构成超预期或低于预期？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“huawei_tau_law：什么信息会构成超预期或低于预期？”的机制解释和反证提醒。",
+                  "research_report": "第三方对huawei_tau_law中“huawei_tau_law：什么信息会构成超预期或低于预期？”的模型、数据和关键假设。"
+                },
+                "question": "huawei_tau_law：什么信息会构成超预期或低于预期？：这个问题最需要哪些事实证据直接回答？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              },
+              {
+                "id": "disconfirming_test",
+                "information_focus": {
+                  "evidence": "huawei_tau_law与“huawei_tau_law：什么信息会构成超预期或低于预期？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：什么信息会构成超预期或低于预期？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“huawei_tau_law：什么信息会构成超预期或低于预期？”的机制解释和反证提醒。",
+                  "research_report": "第三方对huawei_tau_law中“huawei_tau_law：什么信息会构成超预期或低于预期？”的模型、数据和关键假设。"
+                },
+                "question": "huawei_tau_law：什么信息会构成超预期或低于预期？：哪些信息会支撑或反证当前判断？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              }
+            ],
+            "question": "huawei_tau_law：什么信息会构成超预期或低于预期？",
+            "rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+            "should_drill_down": true,
+            "terminal_reason": ""
+          }
+        ],
+        "question": "huawei_tau_law当前可能已经被市场定价了什么？",
+        "rationale": "先确认事实、需求和基础边界，避免直接跳到结论。",
+        "should_drill_down": true,
+        "terminal_reason": ""
+      },
+      {
+        "id": "follow_up",
+        "l2": [
+          {
+            "id": "triggers",
+            "l3": [
+              {
+                "id": "evidence_map",
+                "information_focus": {
+                  "evidence": "huawei_tau_law与“huawei_tau_law：哪些公告、数据或行为会触发判断更新？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：哪些公告、数据或行为会触发判断更新？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“huawei_tau_law：哪些公告、数据或行为会触发判断更新？”的机制解释和反证提醒。",
+                  "research_report": "第三方对huawei_tau_law中“huawei_tau_law：哪些公告、数据或行为会触发判断更新？”的模型、数据和关键假设。"
+                },
+                "question": "huawei_tau_law：哪些公告、数据或行为会触发判断更新？：这个问题最需要哪些事实证据直接回答？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              },
+              {
+                "id": "disconfirming_test",
+                "information_focus": {
+                  "evidence": "huawei_tau_law与“huawei_tau_law：哪些公告、数据或行为会触发判断更新？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：哪些公告、数据或行为会触发判断更新？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“huawei_tau_law：哪些公告、数据或行为会触发判断更新？”的机制解释和反证提醒。",
+                  "research_report": "第三方对huawei_tau_law中“huawei_tau_law：哪些公告、数据或行为会触发判断更新？”的模型、数据和关键假设。"
+                },
+                "question": "huawei_tau_law：哪些公告、数据或行为会触发判断更新？：哪些信息会支撑或反证当前判断？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              }
+            ],
+            "question": "huawei_tau_law：哪些公告、数据或行为会触发判断更新？",
+            "rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+            "should_drill_down": true,
+            "terminal_reason": ""
+          },
+          {
+            "id": "disconfirming_signal",
+            "l3": [
+              {
+                "id": "evidence_map",
+                "information_focus": {
+                  "evidence": "huawei_tau_law与“huawei_tau_law：什么信息会证明事件影响被高估或低估？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：什么信息会证明事件影响被高估或低估？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“huawei_tau_law：什么信息会证明事件影响被高估或低估？”的机制解释和反证提醒。",
+                  "research_report": "第三方对huawei_tau_law中“huawei_tau_law：什么信息会证明事件影响被高估或低估？”的模型、数据和关键假设。"
+                },
+                "question": "huawei_tau_law：什么信息会证明事件影响被高估或低估？：这个问题最需要哪些事实证据直接回答？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              },
+              {
+                "id": "disconfirming_test",
+                "information_focus": {
+                  "evidence": "huawei_tau_law与“huawei_tau_law：什么信息会证明事件影响被高估或低估？”相关的公告、监管文件、官方数据和可验证事实。",
+                  "message": "公开新闻、产业链进展和未完全确认但可能影响“huawei_tau_law：什么信息会证明事件影响被高估或低估？”的线索。",
+                  "opinion": "专家、产业人士或投资者对“huawei_tau_law：什么信息会证明事件影响被高估或低估？”的机制解释和反证提醒。",
+                  "research_report": "第三方对huawei_tau_law中“huawei_tau_law：什么信息会证明事件影响被高估或低估？”的模型、数据和关键假设。"
+                },
+                "question": "huawei_tau_law：什么信息会证明事件影响被高估或低估？：哪些信息会支撑或反证当前判断？",
+                "rationale": "叶子问题用于进入四类信息搜集，并形成可上抛的专业回答。",
+                "should_collect_information": true,
+                "should_drill_down": false,
+                "terminal_reason": "默认三层下钻已到达叶子层，开始按四类信息搜集。"
+              }
+            ],
+            "question": "huawei_tau_law：什么信息会证明事件影响被高估或低估？",
+            "rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+            "should_drill_down": true,
+            "terminal_reason": ""
+          }
+        ],
+        "question": "huawei_tau_law后续最重要的跟踪和反证条件是什么？",
+        "rationale": "最后设置风险、触发器和反证条件，保证结论可被更新。",
+        "should_drill_down": true,
+        "terminal_reason": ""
+      }
+    ],
+    "max_depth": 3,
+    "meta_question": "华为提出的韬（τ）定律是什么，它对半导体产业链、华为技术路线和投资研究意味着什么？",
+    "object_id": "huawei_tau_law",
+    "object_type": "event",
+    "planner_rationale": "围绕“华为提出的韬（τ）定律是什么，它对半导体产业链、华为技术路线和投资研究意味着什么？”，系统先识别研究对象“huawei_tau_law”和信号“supply_chain”，再把问题拆成事实基础、经济性/传导机制、竞争或情景、风险和反证四类主线；默认三层下钻后进入四类信息搜集。",
+    "planning_mode": "deterministic_rule_based",
+    "project_id": "huawei_tau_law",
+    "schema_version": "1.0"
+  },
+  "schema_version": "1.0",
+  "synthesis_overrides": {
+    "applied": 29,
+    "loaded": 29,
+    "source": "synthesis_overrides.jsonl"
+  }
+}
