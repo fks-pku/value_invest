@@ -21,10 +21,7 @@ def _load_skill_file(relative_path: str) -> str:
 def _build_system_prompt() -> str:
     parts = [
         _load_skill_file("SKILL.md"),
-        _load_skill_file("frameworks/fenghe_3c3d5m3t.md"),
-        _load_skill_file("frameworks/sector_research.md"),
-        _load_skill_file("checklists/evidence_quality.md"),
-        _load_skill_file("checklists/fenghe_research_review.md"),
+        _load_skill_file("frameworks/research_goal_qa.md"),
     ]
     return "\n\n---\n\n".join(p for p in parts if p)
 
@@ -61,69 +58,49 @@ def _build_user_prompt(
     sections.extend([
         "## Instructions",
         "",
-        f"Analyze this {sector_type} and produce ALL of the following:",
+        f"Analyze this {sector_type} with the single Research Goal QA framework and produce ALL of the following:",
         "",
-        "### 1. Current Sector/Theme View",
-        "- Attractiveness (high/medium/low)",
-        "- FengHe 3C: cycle position, marginal change, and certainty",
-        "- Key thesis in FengHe terms",
-        "- Confidence level",
+        "### 1. Current Research Goal",
+        "- Research object, investment relevance, time frame, decision boundary, current constrained judgment, and biggest uncertainty.",
         "",
-        "### 2. Industry Structure",
-        "- Value chain (upstream -> midstream -> downstream)",
-        "- Profit pools (where is value captured?)",
-        "- Competitive dynamics",
-        "- Barriers to entry",
+        "### 2. Research Execution Plan",
+        "- For L0/L1/L2/L3, state what questions to ask, how to collect information, how to connect information into reasoning, and how to present it.",
         "",
-        "### 3. Demand Drivers",
-        "- End markets",
-        "- Secular growth trends",
-        "- Cyclical factors",
-        "- Key metrics to watch",
+        "### 3. QA Drilldown",
+        "- Use at most three layers: Q1, Q1.1, Q1.1.1.",
+        "- Each L3 must include fact, inference, judgment, gap, trigger, and source links.",
         "",
-        "### 4. Company Map",
-        "Categorize companies into:",
-        "- **Leaders**: Dominant market position, competitive advantage",
-        "- **Challengers**: Growing share, credible threat",
-        "- **Niche Compounders**: Small but high-quality operators",
-        "- **Cyclical Candidates**: Attractive at the right cycle point",
-        "- **Avoid/Watch**: Overvalued, poor quality, or high risk",
-        "- For each important company, identify the dominant 3D driver and strongest/weakest 5M factor.",
+        "### 4. Four-Bucket Information Table",
+        "- Classify every input as evidence, research_report, opinion, or message.",
+        "- Mark support/refute/lead and attach links.",
         "",
-        "### 5. Cross-Company Comparison",
-        "Compare key companies on:",
-        "- 3C: cycle, change, certainty",
-        "- 5M: M1 market size, M2 share, M3 margin, M4 model, M5 management",
-        "- Quality (margins, returns, cash conversion)",
-        "- Growth (revenue, earnings trajectory)",
-        "- Balance sheet (leverage, cash position)",
-        "- Valuation (relative, not absolute)",
-        "- Key risks",
-        "",
-        "### 6. Candidate Companies for Stock-Level Research",
+        "### 5. Specific Target Observation List",
+        "Map conclusions to specific securities or assets:",
         "```yaml",
-        "candidates:",
+        "targets:",
         "  - ticker: ...",
-        "    category: leader | challenger | niche_compounder | cyclical",
+        "    name: ...",
+        "    bottleneck_or_thesis_node: ...",
         "    reason: ...",
-        "    dominant_driver: D1 | D2 | D3 | unclear",
-        "    strongest_m: M1 | M2 | M3 | M4 | M5 | unclear",
-        "    weakest_m: M1 | M2 | M3 | M4 | M5 | unclear",
-        "    time_frame: T1 | T2 | T3 | unclear",
-        "    key_research_questions:",
+        "    strength: A | B | C | D",
+        "    required_verification_data:",
         "      - ...",
-        "    priority: high | medium | low",
+        "    catalysts:",
+        "      - ...",
+        "    risks:",
+        "      - ...",
+        "    source_links:",
+        "      - ...",
         "```",
         "",
-        "### 7. Human Review Actions",
+        "### 6. Human Review Actions",
         "List specific actions for the human reviewer.",
         "",
         "IMPORTANT RULES:",
-        "- Base analysis on verifiable industry structure, not predictions.",
-        "- Apply FengHe 3C3D5M3T strictly; generic quality/growth language is not enough.",
-        "- Separate structural trends from cyclical effects.",
-        "- Every candidate recommendation must cite a specific reason.",
-        "- Include disconfirming evidence for bullish conclusions.",
+        "- Separate facts, inferences, judgments, and gaps.",
+        "- Low-reliability messages are research leads only.",
+        "- Do not issue buy/sell instructions.",
+        "- Every target must include ticker/name, thesis node, reason, strength, verification data, catalysts, risks, and source links.",
         "- If data is insufficient for a conclusion, explicitly state the gap.",
     ])
 
@@ -142,17 +119,12 @@ def _ensure_sector_dir(root: Path, sector_type: str, sector_slug: str) -> Path:
     if not memo_path.exists():
         memo_path.write_text(
             f"# {sector_slug} {'Sector' if sector_type == 'sector' else 'Theme'} Memo\n\n"
-            f"## 1. Current {'Sector' if sector_type == 'sector' else 'Theme'} View\n\n"
-            f"## 2. FengHe 3C\n"
-            f"- Cycle:\n"
-            f"- Change:\n"
-            f"- Certainty:\n\n"
-            f"## 3. Industry Structure\n\n"
-            f"## 4. Demand Drivers\n\n"
-            f"## 5. Company Map By 5M\n\n"
-            f"## 6. Cross-Company 3D/5M/3T Comparison\n\n"
-            f"## 7. Signals To Individual Stocks\n\n"
-            f"## 8. Evidence Log\n",
+            f"## 1. Current Research Goal\n\n"
+            f"## 2. Research Execution Plan\n\n"
+            f"## 3. QA Drilldown\n\n"
+            f"## 4. Four-Bucket Information Table\n\n"
+            f"## 5. Evidence-Linked Synthesis\n\n"
+            f"## 6. Specific Target Observation List\n\n",
             encoding="utf-8",
         )
 

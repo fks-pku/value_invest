@@ -10,14 +10,14 @@ class SectorResearcherTests(unittest.TestCase):
     def test_build_user_prompt_includes_value_chain(self):
         prompt = _build_user_prompt("Semiconductors", "sector", "AI chip demand and supply chain")
         self.assertIn("Semiconductors", prompt)
-        self.assertIn("Value chain", prompt)
-        self.assertIn("Company Map", prompt)
-        self.assertIn("3C", prompt)
-        self.assertIn("5M", prompt)
+        self.assertIn("Current Research Goal", prompt)
+        self.assertIn("Research Execution Plan", prompt)
+        self.assertIn("QA Drilldown", prompt)
+        self.assertIn("Specific Target Observation List", prompt)
 
-    def test_system_prompt_uses_fenghe_framework(self):
+    def test_system_prompt_uses_research_goal_qa_framework(self):
         prompt = _build_system_prompt()
-        self.assertIn("FengHe 3C3D5M3T Framework", prompt)
+        self.assertIn("Research Goal QA Framework", prompt)
 
     def test_build_user_prompt_theme_type(self):
         prompt = _build_user_prompt("AI Infrastructure", "theme", "Data center buildout")

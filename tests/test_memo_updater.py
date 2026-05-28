@@ -23,27 +23,17 @@ class MemoUpdaterTests(unittest.TestCase):
         prompt = _build_user_prompt("AAPL", context)
         self.assertIn("AAPL", prompt)
         self.assertIn("Revenue", prompt)
-        self.assertIn("Stock Signal", prompt)
-        self.assertIn("Foundation Baseline Impact", prompt)
-        self.assertIn("foundation_status", prompt)
-        self.assertIn("foundation_gaps", prompt)
-        self.assertIn("3C", prompt)
-        self.assertIn("3D", prompt)
-        self.assertIn("5M", prompt)
-        self.assertIn("3T", prompt)
-        self.assertIn("dominant_driver", prompt)
-        self.assertIn("disconfirming_tests", prompt)
+        self.assertIn("Current Research Goal", prompt)
+        self.assertIn("Research Execution Plan", prompt)
+        self.assertIn("QA Drilldown", prompt)
+        self.assertIn("Specific Target Observation", prompt)
+        self.assertIn("bottleneck_or_thesis_node", prompt)
+        self.assertIn("required_verification_data", prompt)
+        self.assertIn("risks", prompt)
 
-    def test_system_prompt_uses_foundation_before_fenghe(self):
+    def test_system_prompt_uses_research_goal_qa_framework(self):
         prompt = _build_system_prompt()
-        self.assertIn("Company Foundation Analysis Framework", prompt)
-        self.assertIn("Eight Required Sections", prompt)
-        self.assertIn("Risk sweep", prompt)
-        self.assertIn("FengHe 3C3D5M3T Framework", prompt)
-        self.assertIn("Cycle", prompt)
-        self.assertIn("D1", prompt)
-        self.assertIn("M1", prompt)
-        self.assertIn("T1", prompt)
+        self.assertIn("Research Goal QA Framework", prompt)
 
     def test_update_stock_memo_creates_proposal(self):
         with project_tmp_dir() as root:

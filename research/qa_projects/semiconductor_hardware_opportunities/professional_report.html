@@ -1,0 +1,2982 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>半导体硬件领域投资机会研究</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --muted: #6e6e73;
+      --paper: #f5f5f7;
+      --panel: #ffffff;
+      --panel-soft: #fbfbfd;
+      --line: rgba(0, 0, 0, .10);
+      --line-strong: rgba(0, 0, 0, .16);
+      --blue: #0066cc;
+      --blue-soft: rgba(0, 102, 204, .08);
+      --green: #1f8a3b;
+      --amber: #a86600;
+      --red: #d70015;
+      --shadow: 0 18px 48px rgba(0, 0, 0, .07);
+      --shadow-soft: 0 10px 30px rgba(0, 0, 0, .045);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, .64), rgba(245, 245, 247, 0) 360px),
+        var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.58;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header {
+      padding: clamp(56px, 8vw, 104px) clamp(20px, 6vw, 88px) 38px;
+      background:
+        radial-gradient(circle at 12% 0%, rgba(0, 102, 204, .09), transparent 34%),
+        linear-gradient(180deg, #fff 0%, #fbfbfd 68%, var(--paper) 100%);
+      border-bottom: 1px solid rgba(0, 0, 0, .06);
+    }
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 1040px;
+      margin: 0;
+      font-size: clamp(42px, 7vw, 82px);
+      line-height: 1;
+      font-weight: 750;
+      letter-spacing: 0;
+    }
+    .subtitle {
+      max-width: 980px;
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: clamp(18px, 2.1vw, 24px);
+      line-height: 1.45;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 11px clamp(16px, 5vw, 72px);
+      background: rgba(245, 245, 247, .86);
+      backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(0, 0, 0, .08);
+      scrollbar-width: none;
+    }
+    nav::-webkit-scrollbar { display: none; }
+    nav a {
+      flex: 0 0 auto;
+      padding: 7px 13px;
+      color: var(--ink);
+      background: rgba(255, 255, 255, .78);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 550;
+    }
+    nav a:hover {
+      color: var(--blue);
+      border-color: rgba(0, 102, 204, .22);
+      background: rgba(255, 255, 255, .94);
+      text-decoration: none;
+    }
+    main {
+      width: min(1180px, calc(100% - 32px));
+      margin: 28px auto 76px;
+    }
+    section {
+      margin: 22px 0;
+      padding: clamp(24px, 4vw, 46px);
+      background: rgba(255, 255, 255, .92);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, .7) inset, 0 22px 70px rgba(0, 0, 0, .035);
+    }
+    h2 {
+      margin: 0 0 13px;
+      font-size: clamp(30px, 4.4vw, 52px);
+      font-weight: 740;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 9px;
+      font-size: clamp(21px, 2.2vw, 30px);
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+    h4 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      line-height: 1.25;
+    }
+    p { margin: 0 0 10px; }
+    .lead {
+      max-width: 920px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 22px;
+    }
+    .metric {
+      min-width: 0;
+      padding: 17px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow-soft);
+    }
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 650;
+      letter-spacing: .04em;
+    }
+    .metric strong {
+      display: block;
+      margin-top: 8px;
+      font-size: clamp(23px, 2.8vw, 34px);
+      line-height: 1.08;
+      font-weight: 760;
+      overflow-wrap: anywhere;
+    }
+    .metric small {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .callout {
+      margin-top: 18px;
+      padding: 18px 20px;
+      background: #f8fbff;
+      border: 1px solid rgba(0, 102, 204, .18);
+      border-radius: 8px;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, .9) inset;
+    }
+    .callout strong { color: var(--ink); }
+    .plan-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .plan-card,
+    .node-card,
+    .source-card {
+      padding: 19px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow-soft);
+      min-width: 0;
+    }
+    .plan-card .step {
+      display: inline-flex;
+      align-items: center;
+      height: 26px;
+      padding: 0 9px;
+      color: var(--blue);
+      background: var(--blue-soft);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .node-link {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 10px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .scorecard-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .score-card {
+      min-width: 0;
+      padding: 19px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+    .score-card-head {
+      display: flex;
+      gap: 12px;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .score-total {
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      min-width: 64px;
+      height: 64px;
+      color: #fff;
+      background: var(--ink);
+      border-radius: 50%;
+      font-size: 19px;
+      font-weight: 760;
+    }
+    .score-total.a { background: var(--green); }
+    .score-total.b { background: var(--blue); }
+    .score-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .score-lines {
+      display: grid;
+      gap: 9px;
+      margin-top: 14px;
+    }
+    .score-line {
+      display: grid;
+      grid-template-columns: 74px 1fr 34px;
+      gap: 8px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 650;
+    }
+    .mini-bar {
+      height: 7px;
+      background: #e8e8ed;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .mini-bar i {
+      display: block;
+      width: var(--w);
+      height: 100%;
+      background: linear-gradient(90deg, #0071e3, #34c759);
+      border-radius: inherit;
+    }
+    details {
+      margin-top: 12px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+    #qa > details {
+      margin-top: 18px;
+      border-color: var(--line-strong);
+      box-shadow: 0 22px 60px rgba(0, 0, 0, .055);
+    }
+    details details {
+      margin-top: 14px;
+      background: #fbfbfd;
+      box-shadow: none;
+    }
+    details details details {
+      background: #fff;
+      border-left: 3px solid rgba(0, 102, 204, .22);
+    }
+    summary {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      cursor: pointer;
+      list-style: none;
+      padding: 20px 22px;
+      transition: background .18s ease, border-color .18s ease;
+    }
+    summary:hover { background: rgba(0, 102, 204, .035); }
+    details[open] > summary {
+      border-bottom: 1px solid rgba(0, 0, 0, .07);
+      background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(251,251,253,.88));
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary h3, summary h4 { margin: 0; }
+    #qa > details > summary h3 {
+      font-size: clamp(23px, 2.8vw, 34px);
+      line-height: 1.16;
+      font-weight: 760;
+    }
+    details details > summary h4 {
+      font-size: 18px;
+      line-height: 1.28;
+    }
+    details details details > summary h4 {
+      font-size: 16px;
+      font-weight: 720;
+    }
+    .chevron {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--blue);
+      background: var(--blue-soft);
+      transition: transform .18s ease;
+      font-weight: 700;
+    }
+    details[open] > summary .chevron { transform: rotate(90deg); }
+    .details-body {
+      padding: 18px 22px 22px;
+      color: var(--ink);
+    }
+    .details-body > p {
+      color: #424245;
+      max-width: 980px;
+    }
+    .qa-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0 14px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 25px;
+      padding: 4px 9px;
+      color: var(--muted);
+      background: var(--panel-soft);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 650;
+      white-space: nowrap;
+    }
+    .pill.green { color: var(--green); background: rgba(31, 138, 59, .08); border-color: rgba(31, 138, 59, .18); }
+    .pill.amber { color: var(--amber); background: rgba(168, 102, 0, .08); border-color: rgba(168, 102, 0, .18); }
+    .pill.red { color: var(--red); background: rgba(215, 0, 21, .07); border-color: rgba(215, 0, 21, .16); }
+    .fact-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .fact {
+      min-width: 0;
+      padding: 13px;
+      background: var(--panel-soft);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    .fact b {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+    .fact span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .research-note {
+      margin: 14px 0;
+      padding: 16px 18px;
+      background: linear-gradient(180deg, #fff, #fbfbfd);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    .research-note h4 {
+      margin: 0 0 7px;
+      font-size: 17px;
+    }
+    .research-note p {
+      color: #424245;
+      font-size: 14px;
+    }
+    .matrix-title {
+      margin: 22px 0 6px;
+      font-size: 16px;
+      font-weight: 760;
+    }
+    .source-chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 23px;
+      margin: 0 5px 5px 0;
+      padding: 3px 8px;
+      border: 1px solid rgba(0, 102, 204, .18);
+      border-radius: 999px;
+      background: rgba(0, 102, 204, .07);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .judgment-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .judgment-card {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-soft);
+    }
+    .judgment-card b {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 13px;
+      letter-spacing: .04em;
+      color: var(--muted);
+    }
+    .judgment-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 21px;
+      line-height: 1.15;
+    }
+    .judgment-card span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: 0 1px 0 rgba(255, 255, 255, .86) inset;
+    }
+    .table-wrap::-webkit-scrollbar { height: 10px; }
+    .table-wrap::-webkit-scrollbar-track { background: #f5f5f7; }
+    .table-wrap::-webkit-scrollbar-thumb {
+      background: #d2d2d7;
+      border: 2px solid #f5f5f7;
+      border-radius: 999px;
+    }
+    table {
+      width: 100%;
+      min-width: 920px;
+      border-collapse: collapse;
+    }
+    .compact-table table { min-width: 760px; }
+    .compact-table th,
+    .compact-table td { font-size: 13px; }
+    th, td {
+      padding: 14px 15px;
+      border-bottom: 1px solid rgba(0, 0, 0, .07);
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+    th {
+      color: var(--muted);
+      background: #fbfbfd;
+      font-size: 12px;
+      font-weight: 760;
+      letter-spacing: .04em;
+      white-space: nowrap;
+    }
+    tbody tr:nth-child(even) td { background: rgba(245, 245, 247, .42); }
+    td:first-child {
+      color: var(--ink);
+      font-weight: 560;
+    }
+    td a {
+      color: var(--blue);
+      font-weight: 620;
+    }
+    tr:last-child td { border-bottom: 0; }
+    .rating {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 34px;
+      height: 26px;
+      padding: 0 8px;
+      color: #fff;
+      background: var(--ink);
+      border-radius: 999px;
+      font-weight: 760;
+      font-size: 12px;
+    }
+    .rating.a { background: var(--green); }
+    .rating.b { background: var(--blue); }
+    .rating.c { background: var(--amber); }
+    .signal {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 42px;
+      height: 24px;
+      padding: 0 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 760;
+      white-space: nowrap;
+    }
+    .signal.green { color: var(--green); background: rgba(31, 138, 59, .09); border: 1px solid rgba(31, 138, 59, .2); }
+    .signal.amber { color: var(--amber); background: rgba(168, 102, 0, .09); border: 1px solid rgba(168, 102, 0, .2); }
+    .signal.red { color: var(--red); background: rgba(215, 0, 21, .08); border: 1px solid rgba(215, 0, 21, .18); }
+    ul.clean {
+      margin: 12px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+    ul.clean li { margin: 6px 0; }
+    .source-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .source-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .source-card .kind {
+      display: inline-block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    footer {
+      width: min(1180px, calc(100% - 32px));
+      margin: -44px auto 60px;
+      color: var(--muted);
+      font-size: 13px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(0, 0, 0, .08);
+    }
+    @media (max-width: 920px) {
+      .summary-grid, .plan-grid, .source-grid, .scorecard-grid { grid-template-columns: 1fr; }
+      .judgment-grid { grid-template-columns: 1fr; }
+      .fact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      summary { grid-template-columns: 1fr auto; padding: 18px; }
+      .details-body { padding: 0 18px 18px; }
+    }
+    @media (max-width: 560px) {
+      .fact-grid { grid-template-columns: 1fr; }
+      main { width: min(100% - 22px, 1180px); }
+      section { padding: 22px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">Research Goal QA · Semiconductor Hardware</p>
+    <h1>半导体硬件领域投资机会研究</h1>
+    <p class="subtitle">从 AI 基础设施需求出发，沿产业链瓶颈、财务敞口、定价风险和反证条件下钻，形成可跟踪的具体标的观察清单。</p>
+  </header>
+
+  <nav>
+    <a href="#goal">研究目标</a>
+    <a href="#plan">执行计划</a>
+    <a href="#q1">Q1 需求</a>
+    <a href="#q2">Q2 瓶颈</a>
+    <a href="#q3">Q3 反证</a>
+    <a href="#q4">Q4 标的</a>
+    <a href="#sources">来源索引</a>
+  </nav>
+
+  <main>
+    <section id="goal">
+      <p class="eyebrow">L0 / Current Research Goal</p>
+      <h2>当前研究目标</h2>
+      <p class="lead">研究对象是 2026-2028 年半导体硬件产业链的可投资机会。决策边界不是直接给交易指令，而是判断哪些节点值得进入观察清单、下一步需要验证什么数据、什么证据会让机会降级。</p>
+      <div class="summary-grid">
+        <div class="metric">
+          <span>当前方向</span>
+          <strong>AI 硬件链</strong>
+          <small>加速器、ASIC、HBM、封装、设备</small>
+        </div>
+        <div class="metric">
+          <span>已精读来源</span>
+          <strong>41 条</strong>
+          <small>官方公告 / 行业数据 / 估值快照</small>
+        </div>
+        <div class="metric">
+          <span>观察标的</span>
+          <strong>13 行</strong>
+          <small>全球 9 行，中国 4 个</small>
+        </div>
+        <div class="metric">
+          <span>最大不确定性</span>
+          <strong>capex ROI</strong>
+          <small>叠加出口管制、存储周期和估值</small>
+        </div>
+      </div>
+      <div class="callout">
+        <p><strong>当前约束判断：</strong>半导体硬件机会仍然存在，但应从“泛半导体”收敛到 AI 算力硬件链条中的窄瓶颈。第一优先级是 AI 加速器/custom ASIC、HBM/高端存储、先进制程与先进封装、关键设备；中国链条重点看设备国产替代、先进封装和内存接口。最大风险是需求真实但赔率不佳，或者供给瓶颈被快速扩产稀释。</p>
+      </div>
+    </section>
+
+    <section id="plan">
+      <p class="eyebrow">Method / Execution Plan</p>
+      <h2>研究执行计划</h2>
+      <p class="lead">每一层先提问，再搜集四类信息，然后把信息串成事实、推论、判断、缺口和触发器。父层只汇总子层结论，不直接跳到标的。</p>
+      <div class="callout">
+        <p><strong>L3 执行协议：</strong>GPT 决定每个 L3 问题要搜索和阅读哪些材料，并定义提取 schema；DeepSeek MCP 负责逐条精读这些具体材料，产出 L3 阅读答案草稿，包括事实、推论、初步判断、缺口、触发器、来源链接和支撑/反证/线索关系；GPT 再验证来源、处理冲突并写入最终 L3 答案和上抛结论。本版已对 Gartner、SEMI、NVIDIA、Broadcom、TSMC、Micron、ASML、中国链条、capex/ROI、估值快照，Samsung/TrendForce/Micron HBM4、TSMC CoWoS/CoPoS、AMAT/LRCX/KLAC 设备链，Meta/Marvell capex 与 AI networking/custom silicon，以及 Alphabet/Oracle 云收入、RPO 和客户预付款材料完成 L3 精读或初读，并把结论压回 Q1/Q2/Q3/Q4 节点。</p>
+      </div>
+      <div class="plan-grid">
+        <div class="plan-card">
+          <span class="step">Q1</span>
+          <h3>确认需求</h3>
+          <p>先看行业规模、公司收入、云厂 capex、Cloud/RPO/backlog、客户预付款和设备支出，而不是看主题热度。核心资料来自 Gartner、SEMI、NVIDIA、Broadcom、Marvell、Microsoft、Amazon、Meta、Alphabet、Oracle、TSMC、Micron、SK hynix。</p>
+          <a class="node-link" href="#q1">展开需求 QA</a>
+        </div>
+        <div class="plan-card">
+          <span class="step">Q2</span>
+          <h3>定位瓶颈</h3>
+          <p>把 AI capex 拆到 GPU/ASIC、网络、HBM、先进封装、代工、设备、内存接口，判断谁控制稀缺供给和利润池。</p>
+          <a class="node-link" href="#q2">展开瓶颈 QA</a>
+        </div>
+        <div class="plan-card">
+          <span class="step">Q3</span>
+          <h3>绑定反证</h3>
+          <p>每个机会必须有降级条件：capex 下修、HBM 价格反转、设备订单走弱、出口限制升级、估值无法由财报兑现。</p>
+          <a class="node-link" href="#q3">展开反证 QA</a>
+        </div>
+        <div class="plan-card">
+          <span class="step">Q4</span>
+          <h3>标的建议及理由</h3>
+          <p>把已验证的瓶颈映射到具体证券，保留理由、强度、必查数据、催化剂和风险提示，不输出交易指令。</p>
+          <a class="node-link" href="#q4">展开标的 QA</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="qa">
+      <p class="eyebrow">QA Drilldown</p>
+      <h2>QA 下钻研究</h2>
+      <p class="lead">下面只按 Q1-Q4 的问题树展开。评分卡、反证清单和标的表都不是独立模块，而是对应问题得到答案后的呈现形式；能放在本层的问题直接展开，过长的节点用详情页跳转。</p>
+
+      <details id="q1" open>
+        <summary>
+          <h3>Q1 需求：AI 基础设施是否仍在真实拉动半导体硬件需求？</h3>
+          <span class="chevron">›</span>
+        </summary>
+        <div class="details-body">
+          <div class="qa-meta">
+            <span class="pill green">结论：仍在兑现</span>
+            <span class="pill">证据 8</span>
+            <span class="pill">研报 1</span>
+            <span class="pill red">主要反证：capex ROI</span>
+          </div>
+          <p>AI 硬件需求不是单点 GPU 叙事，而是沿加速器、custom ASIC、网络、HBM、服务器/数据中心、先进代工、先进封装和设备资本开支扩散。最强证据来自公司收入、云厂 capex 口径、Cloud/RPO/backlog、客户预付款和指引，其次才是行业预测。</p>
+
+          <details>
+            <summary>
+              <h4>Q1.1 AI capex 如何传导到芯片、存储、网络和设备？</h4>
+              <span class="chevron">›</span>
+            </summary>
+            <div class="details-body">
+              <p>传导链条是：云厂商与模型公司扩大 AI 基础设施支出，先拉动 GPU/ASIC 和网络芯片，再拉动 HBM、eSSD、先进封装、先进代工，最后传导到设备和材料资本开支。</p>
+
+              <details>
+                <summary>
+                  <h4>Q1.1.1 哪些公司公告能证明 AI 硬件收入仍在兑现？</h4>
+                  <span class="chevron">›</span>
+                </summary>
+                <div class="details-body">
+                  <div class="research-note">
+                    <h4>本问题结论</h4>
+                    <p>需求侧已经不是“AI 主题热度”层面的推论，而是被多个财报口径同时验证：NVIDIA 证明 GPU/网络正在兑现，Broadcom 证明 custom ASIC 和 AI networking 正在兑现，Micron 证明数据中心内存和云内存进入高毛利周期，TSMC/ASML 证明需求继续向先进制程、先进封装和设备扩产传导。</p>
+                  </div>
+                  <div class="fact-grid">
+                    <div class="fact"><b>事实</b><span>NVIDIA FY2027 Q1 收入 816.15 亿美元，同比增长 85%；Data Center 收入 752 亿美元，同比增长 92%。</span></div>
+                    <div class="fact"><b>事实</b><span>Broadcom FY2026 Q1 AI revenue 84 亿美元，同比增长 106%；Q2 AI semiconductor revenue 指引 107 亿美元。</span></div>
+                    <div class="fact"><b>事实</b><span>Micron FY2026 Q2 收入 238.6 亿美元，GAAP 毛利率 74.4%，Cloud Memory 和 Core Data Center BU 毛利率均为 74%。</span></div>
+                    <div class="fact"><b>推论</b><span>AI capex 已经沿 GPU/ASIC、网络、内存、先进代工和设备链条扩散，不是单一 GPU 需求。</span></div>
+                    <div class="fact"><b>判断</b><span>需求主线成立，但应继续用云厂商 capex、订单、交期、价格和毛利率复核可持续性。</span></div>
+                  </div>
+                  <h4 class="matrix-title">证据链矩阵</h4>
+                  <div class="table-wrap">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>来源</th>
+                          <th>直接事实</th>
+                          <th>说明什么</th>
+                          <th>仍需跟踪</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><a href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-First-Quarter-Fiscal-2027/default.aspx">NVIDIA FY2027 Q1</a></td>
+                          <td>收入 816.15 亿美元；Data Center 752 亿美元；compute 604 亿美元；networking 148 亿美元。</td>
+                          <td>GPU 和网络都在兑现，网络同比增速更高，说明 AI 集群瓶颈已从单卡扩散到系统互联。</td>
+                          <td>Q2 指引不假设中国 Data Center compute 收入，需跟踪出口限制和非中国需求是否足够填补。</td>
+                        </tr>
+                        <tr>
+                          <td><a href="https://www.sec.gov/Archives/edgar/data/1730168/000173016826000011/avgo-02012026x8kxex99.htm">Broadcom FY2026 Q1 8-K</a></td>
+                          <td>AI revenue 84 亿美元，同比增长 106%；Q2 AI semiconductor revenue 指引 107 亿美元。</td>
+                          <td>GPU 之外的 custom accelerator 与 AI networking 是第二条可验证需求线。</td>
+                          <td>客户集中度、项目交付节奏、自研 ASIC 是否压缩 NVIDIA 或扩大 Broadcom 敞口。</td>
+                        </tr>
+                        <tr>
+                          <td><a href="https://investors.micron.com/news-releases/news-release-details/micron-technology-inc-reports-results-second-quarter-fiscal-2026">Micron FY2026 Q2</a></td>
+                          <td>收入 238.6 亿美元；GAAP 毛利率 74.4%；经营现金流 119 亿美元；Q3 指引收入 335 亿美元。</td>
+                          <td>内存不再只是周期修复，AI/数据中心相关 BU 已体现高毛利和现金流弹性。</td>
+                          <td>HBM/DRAM 供给释放后，ASP 和毛利率是否提前见顶。</td>
+                        </tr>
+                        <tr>
+                          <td><a href="https://investor.tsmc.com/english/quarterly-results/2026/q1">TSMC 2026Q1</a></td>
+                          <td>1Q26 revenue 359 亿美元，gross margin 66.2%；2Q revenue 指引 390-402 亿美元。</td>
+                          <td>先进制程/封装的下游需求仍强，代工端未显示需求塌陷。</td>
+                          <td>HPC/AI 收入占比、CoWoS 产能和客户 capex 回报。</td>
+                        </tr>
+                        <tr>
+                          <td><a href="https://ourbrand.asml.com/asset/8e1f7393-33dd-4737-a436-cfe1b68cc577/2026_04_15-ASML-Transcript-investor-call-Q1-2026.pdf">ASML Q1 2026 call</a></td>
+                          <td>客户增加资本开支、加速扩产；先进节点供应限制预计延续到 2026 年以后。</td>
+                          <td>需求已传导到设备和先进节点产能，且扩产仍在追赶需求。</td>
+                          <td>订单、交付节奏、出口管制和设备利用率。</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </details>
+
+              <details>
+                <summary>
+                  <h4>Q1.1.2 云厂 capex 到底买了什么，能否证明真实硬件需求？</h4>
+                  <span class="chevron">›</span>
+                </summary>
+                <div class="details-body">
+                  <div class="research-note">
+                    <h4>本问题结论</h4>
+                    <p>云厂 capex 不是一个可直接等同于半导体收入的单一数字。更合理的拆法是：GPU/ASIC 和网络芯片是最直接的半导体需求，服务器、存储、数据中心和电力建设是配套基础设施，组件涨价会抬高名义 capex 但不一定代表等量算力出货。当前 Microsoft、Amazon、Meta、Alphabet、Oracle、NVIDIA、Broadcom、Marvell 的交叉证据支持“真实硬件需求仍在扩张”：Alphabet 把 capex 与 Google Cloud 收入、利润和基础设施约束连起来，Oracle 把 RPO、客户预付款和 GPU 采购连起来。但 Q3 必须继续验证 ROI、自由现金流、RPO 转收入速度和客户集中度。</p>
+                  </div>
+                  <div class="fact-grid">
+                    <div class="fact"><b>事实</b><span>Microsoft 预计 calendar 2026 capex 约 1,900 亿美元，其中约 250 亿美元来自组件价格上涨，并预计至少到 2026 年仍保持 capacity constrained。</span></div>
+                    <div class="fact"><b>事实</b><span>Amazon 过去 12 个月部署 210 万颗以上 AI chips，其中超过一半为 Trainium，并宣布从 2026 年开始部署 100 万颗以上 NVIDIA GPUs。</span></div>
+                    <div class="fact"><b>事实</b><span>Meta Q1 2026 capex 198.4 亿美元，主要投向 servers、data centers 和 network infrastructure；全年 capex 指引上调至 1,250-1,450 亿美元。</span></div>
+                    <div class="fact"><b>事实</b><span>Alphabet Q1 2026 Google Cloud 收入 200.28 亿美元，Cloud operating income 65.98 亿美元；FY2026 capex 指引上调至 1,800-1,900 亿美元，且 Cloud 增长仍受基础设施容量约束。</span></div>
+                    <div class="fact"><b>事实</b><span>Oracle Q3 FY2026 RPO 5,530 亿美元，同比增长 325%；Cloud Infrastructure 收入 49 亿美元，同比增长 84%；大规模 AI 合同中多数设备由客户预付款帮助 Oracle 购买 GPU，或客户自购 GPU 并提供给 Oracle。</span></div>
+                    <div class="fact"><b>事实</b><span>Marvell FY2026 收入 81.95 亿美元，同比增长 42%；Q4 data center revenue 16.51 亿美元，占收入约 74%，说明 AI data center interconnect/custom silicon 已开始入账。</span></div>
+                    <div class="fact"><b>推论</b><span>capex 传导链不是“云厂商花钱 -> 所有半导体受益”，而是先落到 GPU/ASIC/网络/高端存储，再传到代工、封装和设备。</span></div>
+                    <div class="fact"><b>判断</b><span>需求仍为真，但必须剔除组件涨价和数据中心土建对 capex 的放大效应，避免把名义支出误读成等量芯片出货；Cloud/RPO/backlog 和客户预付款应成为比 capex 总额更高优先级的验证指标。</span></div>
+                  </div>
+                  <h4 class="matrix-title">capex 拆分验证表</h4>
+                  <div class="table-wrap">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>capex 去向</th>
+                          <th>对应证据</th>
+                          <th>能支持的半导体结论</th>
+                          <th>不能直接证明什么</th>
+                          <th>下一步数据</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>GPU / 加速器</td>
+                          <td><a href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-First-Quarter-Fiscal-2027/default.aspx">NVIDIA Data Center 收入 752 亿美元</a>；Amazon 宣布 2026 年起部署 100 万颗以上 NVIDIA GPUs。</td>
+                          <td>外购 GPU 仍是 AI 基础设施的核心支出项，且短期订单可见度较高。</td>
+                          <td>不能证明 GPU 需求会无限期加速，也不能证明估值仍有足够安全边际。</td>
+                          <td>Blackwell/Rubin 交付、客户采购承诺、交期、gross margin。</td>
+                        </tr>
+                        <tr>
+                          <td>自研 ASIC / custom silicon</td>
+                          <td><a href="https://www.sec.gov/Archives/edgar/data/1730168/000173016826000011/avgo-02012026x8kxex99.htm">Broadcom AI revenue 84 亿美元</a>；Amazon Trainium 部署超过 AI chips 的一半；Marvell data center revenue 占 Q4 收入约 74%。</td>
+                          <td>GPU 之外的 custom accelerator、ASIC、interconnect 和 networking 已经形成第二条需求线。</td>
+                          <td>不能直接证明每个 ASIC 设计服务商都能获得同等利润池，客户集中和项目节奏很关键。</td>
+                          <td>客户项目数、design win、订单、数据中心收入占比、客户集中度。</td>
+                        </tr>
+                        <tr>
+                          <td>网络 / 互联</td>
+                          <td>NVIDIA networking 收入 148 亿美元，同比增长 199%；Broadcom 与 Marvell 均暴露于 AI networking/interconnect。</td>
+                          <td>AI 集群瓶颈从单卡扩展到 scale-up/scale-out 网络，网络芯片和互联成为独立验证点。</td>
+                          <td>不能证明网络设备供应商都具备半导体级别利润率，需分清芯片、模块和系统设备。</td>
+                          <td>networking 收入、交换芯片/光互联订单、客户项目、毛利率。</td>
+                        </tr>
+                        <tr>
+                          <td>服务器、数据中心和组件涨价</td>
+                          <td><a href="https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q3">Microsoft 披露约 250 亿美元 capex 来自组件价格上涨</a>；<a href="https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-First-Quarter-2026-Results/">Meta 上调 capex 主要因组件涨价和数据中心成本</a>。</td>
+                          <td>HBM、网络、服务器零部件和数据中心建设存在价格/供给压力。</td>
+                          <td>名义 capex 增长不能直接等同于芯片数量增长，必须拆出 price 与 volume。</td>
+                          <td>单位服务器成本、GPU/ASIC 出货、HBM ASP、数据中心建设进度。</td>
+                        </tr>
+                        <tr>
+                          <td>Cloud 收入和容量约束</td>
+                          <td><a href="https://s206.q4cdn.com/479360582/files/doc_financials/2026/q1/2026q1-alphabet-earnings-release.pdf">Alphabet Q1 2026 Google Cloud 收入 200.28 亿美元</a>；<a href="https://www.spglobal.com/market-intelligence/en/news-insights/research/2026/05/alphabet-postq-snapshot-ai-momentum-drives-cloud-surge-capex-outlook-rises1">Visible Alpha 指出 Cloud 增长受 AI infrastructure、训练和推理需求支撑</a>。</td>
+                          <td>capex 不是孤立支出，已经部分转化为云收入和利润；基础设施约束说明供给仍限制需求释放。</td>
+                          <td>不能证明所有 capex 都产生同等 ROI，也不能证明 2027 年继续扩张不会稀释 FCF。</td>
+                          <td>Cloud revenue、Cloud margin、AI workload 收入、利用率、capex intensity。</td>
+                        </tr>
+                        <tr>
+                          <td>RPO / backlog / 客户预付款</td>
+                          <td><a href="https://www.oracle.com/news/announcement/q3fy26-earnings-release-2026-03-10/">Oracle Q3 FY2026 RPO 5,530 亿美元</a>，大规模 AI 合同中多数设备由客户预付款帮助采购 GPU，或客户自购 GPU 提供给 Oracle。</td>
+                          <td>客户愿意提前锁定 AI 云容量，是比云厂 capex 总额更强的需求质量信号，并直接指向 GPU 采购。</td>
+                          <td>不能证明 RPO 会按预期转成收入，也不能消除 GPU sourcing、数据中心交付和硬件配置风险。</td>
+                          <td>RPO 转收入速度、客户预付款余额、GPU 交付、数据中心容量、合同取消或延后。</td>
+                        </tr>
+                        <tr>
+                          <td>现金流约束</td>
+                          <td><a href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-First-Quarter-Results/default.aspx">Amazon TTM FCF 降至 12 亿美元</a>，PPE 购买净额同比增加 593 亿美元，主要反映 AI 投资。</td>
+                          <td>AI 投资是真实现金支出，硬件订单并非空转叙事。</td>
+                          <td>不能证明客户愿意长期不计回报扩张；FCF 压力会成为后续订单下修触发器。</td>
+                          <td>云厂 FCF、AI 收入、利用率、backlog、capex 指引。</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="callout">
+                    <p><strong>上抛到 Q1 的判断：</strong>AI 硬件需求仍在兑现，而且证据强度已经从“capex 上修”升级到“Cloud 收入增长 + RPO/backlog + 客户预付款 + 供给约束”。但 Q1 的“需求成立”只能作为进入研究的门槛，不能直接上抛为买入结论。真正决定机会强度的是 Q2 的瓶颈、Q3 的 ROI/估值反证和 Q4 的标的财务敞口。</p>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </details>
+        </div>
+      </details>
+
+      <details id="q2" open>
+        <summary>
+          <h3>Q2 瓶颈：产业链哪些环节最可能捕获增量利润？</h3>
+          <span class="chevron">›</span>
+        </summary>
+        <div class="details-body">
+          <div class="qa-meta">
+            <span class="pill green">结论：优先看窄瓶颈</span>
+            <span class="pill">证据 18</span>
+            <span class="pill">研报 1</span>
+            <span class="pill amber">缺口：订单和良率</span>
+          </div>
+          <p>不是所有半导体公司都能捕获增量利润。优先级取决于稀缺供给、客户认证周期、技术不可替代性、收入占比和毛利弹性。当前排序为：AI 加速器/custom ASIC/networking、HBM、先进代工与封装、光刻/刻蚀/量测设备、国产设备、服务器内存接口。本轮新增的深挖重点是：前端算力链内部如何在 GPU、custom ASIC 和 networking 之间分化；中国设备国产替代到底是真瓶颈还是政策主题；内存接口/CXL/PCIe 是否已从产品线索进入财务兑现。</p>
+
+          <details open>
+            <summary>
+              <h4>Q2.1 哪些节点有瓶颈属性和财务敞口？</h4>
+              <span class="chevron">›</span>
+            </summary>
+            <div class="details-body">
+          <h3>Q2.1 回答呈现：瓶颈评分卡</h3>
+          <p class="lead">评分卡是 Q2.1 的答案呈现，不是独立研究步骤。它把产业链节点按需求传导、供给稀缺、替代难度、议价能力、财务敞口、证据强度和风险扣分排序；节点过长时，点击详情页继续展开。</p>
+          <div class="scorecard-grid">
+            <div class="score-card">
+              <div class="score-card-head">
+                <div>
+                  <h3>AI 加速器 / custom ASIC / 网络</h3>
+                  <p>最前端的需求确认层。平台绑定、客户设计周期和系统网络协同使其具备强瓶颈属性。</p>
+                </div>
+                <div class="score-total a">85</div>
+              </div>
+              <div class="qa-meta">
+                <span class="pill green">强度 A</span>
+                <span class="pill">NVDA</span>
+                <span class="pill">AVGO</span>
+                <span class="pill">MRVL</span>
+                <span class="pill red">风险：估值 / 客户集中</span>
+              </div>
+              <div class="score-lines">
+                <div class="score-line"><span>需求</span><div class="mini-bar"><i style="--w:100%"></i></div><b>20</b></div>
+                <div class="score-line"><span>稀缺</span><div class="mini-bar"><i style="--w:80%"></i></div><b>16</b></div>
+                <div class="score-line"><span>财务</span><div class="mini-bar"><i style="--w:100%"></i></div><b>15</b></div>
+              </div>
+              <a class="node-link" href="bottlenecks/ai_accelerator_asic_network.html">打开节点详情</a>
+            </div>
+
+            <div class="score-card">
+              <div class="score-card-head">
+                <div>
+                  <h3>HBM / 高端存储</h3>
+                  <p>AI 加速器出货受带宽、堆叠、封装和良率约束，HBM 是最直接的供给瓶颈之一。</p>
+                </div>
+                <div class="score-total a">84</div>
+              </div>
+              <div class="qa-meta">
+                <span class="pill green">强度 A-</span>
+                <span class="pill">SK hynix</span>
+                <span class="pill">Micron</span>
+                <span class="pill red">风险：存储周期</span>
+              </div>
+              <div class="score-lines">
+                <div class="score-line"><span>需求</span><div class="mini-bar"><i style="--w:95%"></i></div><b>19</b></div>
+                <div class="score-line"><span>稀缺</span><div class="mini-bar"><i style="--w:90%"></i></div><b>18</b></div>
+                <div class="score-line"><span>财务</span><div class="mini-bar"><i style="--w:93%"></i></div><b>14</b></div>
+              </div>
+              <a class="node-link" href="bottlenecks/hbm_memory.html">打开节点详情</a>
+            </div>
+
+            <div class="score-card">
+              <div class="score-card-head">
+                <div>
+                  <h3>先进制程 / 先进封装</h3>
+                  <p>AI 芯片设计最终落到先进节点、CoWoS/先进封装和高良率交付能力。</p>
+                </div>
+                <div class="score-total a">82</div>
+              </div>
+              <div class="qa-meta">
+                <span class="pill green">强度 A-</span>
+                <span class="pill">TSMC</span>
+                <span class="pill">长电科技</span>
+                <span class="pill red">风险：扩产后议价权</span>
+              </div>
+              <div class="score-lines">
+                <div class="score-line"><span>需求</span><div class="mini-bar"><i style="--w:90%"></i></div><b>18</b></div>
+                <div class="score-line"><span>稀缺</span><div class="mini-bar"><i style="--w:90%"></i></div><b>18</b></div>
+                <div class="score-line"><span>财务</span><div class="mini-bar"><i style="--w:93%"></i></div><b>14</b></div>
+              </div>
+              <a class="node-link" href="bottlenecks/foundry_packaging.html">打开节点详情</a>
+            </div>
+
+            <div class="score-card">
+              <div class="score-card-head">
+                <div>
+                  <h3>半导体设备</h3>
+                  <p>先进逻辑、存储和本地化扩产共同拉动设备，但设备订单天然受 capex 周期影响。</p>
+                </div>
+                <div class="score-total b">76</div>
+              </div>
+              <div class="qa-meta">
+                <span class="pill">强度 B+</span>
+                <span class="pill">ASML</span>
+                <span class="pill">AMAT/LRCX/KLAC</span>
+                <span class="pill red">风险：出口管制</span>
+              </div>
+              <div class="score-lines">
+                <div class="score-line"><span>需求</span><div class="mini-bar"><i style="--w:80%"></i></div><b>16</b></div>
+                <div class="score-line"><span>稀缺</span><div class="mini-bar"><i style="--w:85%"></i></div><b>17</b></div>
+                <div class="score-line"><span>财务</span><div class="mini-bar"><i style="--w:87%"></i></div><b>13</b></div>
+              </div>
+              <a class="node-link" href="bottlenecks/equipment.html">打开节点详情</a>
+            </div>
+
+            <div class="score-card">
+              <div class="score-card-head">
+                <div>
+                  <h3>中国设备国产替代</h3>
+                  <p>外部限制和本地扩产提升替代必要性，但必须用收入、利润弹性、合同负债、存货和客户量产证明真实财务敞口。</p>
+                </div>
+                <div class="score-total b">74</div>
+              </div>
+              <div class="qa-meta">
+                <span class="pill">强度 B+</span>
+                <span class="pill">北方华创</span>
+                <span class="pill">中微公司</span>
+                <span class="pill red">风险：高端验证</span>
+              </div>
+              <div class="score-lines">
+                <div class="score-line"><span>需求</span><div class="mini-bar"><i style="--w:75%"></i></div><b>15</b></div>
+                <div class="score-line"><span>稀缺</span><div class="mini-bar"><i style="--w:80%"></i></div><b>16</b></div>
+                <div class="score-line"><span>财务</span><div class="mini-bar"><i style="--w:87%"></i></div><b>13</b></div>
+              </div>
+              <a class="node-link" href="bottlenecks/china_equipment_localization.html">打开节点详情</a>
+            </div>
+
+            <div class="score-card">
+              <div class="score-card-head">
+                <div>
+                  <h3>内存接口 / CXL / PCIe</h3>
+                  <p>服务器平台升级带来接口芯片增量；澜起新产品收入和毛利率已有兑现，但 CXL/MRCD/MDB 仍处规模试用到量产的过渡期。</p>
+                </div>
+                <div class="score-total b">70</div>
+              </div>
+              <div class="qa-meta">
+                <span class="pill">强度 B+</span>
+                <span class="pill">澜起科技</span>
+                <span class="pill amber">验证型瓶颈</span>
+              </div>
+              <div class="score-lines">
+                <div class="score-line"><span>需求</span><div class="mini-bar"><i style="--w:70%"></i></div><b>14</b></div>
+                <div class="score-line"><span>稀缺</span><div class="mini-bar"><i style="--w:60%"></i></div><b>12</b></div>
+                <div class="score-line"><span>财务</span><div class="mini-bar"><i style="--w:80%"></i></div><b>12</b></div>
+              </div>
+              <a class="node-link" href="bottlenecks/memory_interface_cxl.html">打开节点详情</a>
+            </div>
+          </div>
+
+              <div class="judgment-grid">
+                <div class="judgment-card">
+                  <b>最硬瓶颈</b>
+                  <strong>GPU / ASIC / 网络</strong>
+                  <span>NVIDIA、Broadcom 和 Marvell 都给出可量化证据，说明前端瓶颈正在拆成 GPU 绝对利润池、ASIC 增量替代和网络互联边际短板。</span>
+                </div>
+                <div class="judgment-card">
+                  <b>利润弹性</b>
+                  <strong>HBM / 数据中心内存</strong>
+                  <span>Micron 的毛利率和现金流改善显示内存瓶颈能快速转化为利润。</span>
+                </div>
+                <div class="judgment-card">
+                  <b>供给约束</b>
+                  <strong>先进制程 / 设备</strong>
+                  <span>TSMC 指引和 ASML 法说共同指向先进节点与光刻供给仍然偏紧。</span>
+                </div>
+              </div>
+
+              <h4 class="matrix-title">瓶颈评分拆解</h4>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>节点</th>
+                      <th>瓶颈原因</th>
+                      <th>可观察标的</th>
+                      <th>财务敞口证据</th>
+                      <th>降级触发器</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>AI 加速器 / custom ASIC / 网络</td>
+                      <td>系统架构绑定、客户设计周期长、供应链认证复杂。</td>
+                      <td>NVIDIA、Broadcom、Marvell</td>
+                      <td>NVIDIA Data Center 752 亿美元，其中 compute 604 亿美元、networking 148 亿美元；Broadcom AI revenue 84 亿美元；Marvell FY2026 收入 81.95 亿美元。</td>
+                      <td>云厂商 capex 下修、ASIC 项目延期、networking 增速回落、客户集中度上升、出口限制扩大。</td>
+                    </tr>
+                    <tr>
+                      <td>HBM / 高端存储</td>
+                      <td>AI 加速器出货受带宽、封装和良率约束。</td>
+                      <td>SK hynix、Micron</td>
+                      <td>Micron Cloud Memory BU 77.49 亿美元、Core Data Center BU 56.87 亿美元，毛利率均 74%。</td>
+                      <td>HBM 供给释放、DRAM/NAND 价格反转、客户认证不及预期。</td>
+                    </tr>
+                    <tr>
+                      <td>先进制程 / 先进封装</td>
+                      <td>AI 芯片设计最终落到先进节点和 CoWoS/封装产能。</td>
+                      <td>TSMC、长电科技</td>
+                      <td>TSMC 1Q26 revenue 359 亿美元，2Q26 指引 390-402 亿美元，毛利率指引 65.5%-67.5%。</td>
+                      <td>CoWoS 扩产快于订单、AI 芯片客户延后 tape-out、封测议价权不足。</td>
+                    </tr>
+                    <tr>
+                      <td>半导体设备</td>
+                      <td>先进逻辑、存储和本地化扩产共同拉动设备。</td>
+                      <td>ASML、AMAT/LRCX/KLAC、北方华创、中微公司</td>
+                      <td>SEMI 预计 2026/2027 设备支出 1430.6/1593.2 亿美元；ASML 指引 2026 收入 360-400 亿欧元。</td>
+                      <td>设备订单下滑、交付节奏后移、出口许可收紧、晶圆厂 capex 下修。</td>
+                    </tr>
+                    <tr>
+                      <td>内存接口 / CXL / PCIe</td>
+                      <td>AI 服务器升级需要更高内存带宽和低延迟互连。</td>
+                      <td>澜起科技</td>
+                      <td>澜起 2026Q1 互连类芯片收入 14.17 亿元，新产品合计收入 2.69 亿元，占比 19.0%，互连毛利率 71.5%。</td>
+                      <td>规模试用不能转量产、CXL 渗透不及预期、互连毛利率回落、海外竞争压缩毛利。</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <details>
+                <summary>
+                  <h4>Q2.1.1 这些节点分别如何验证？</h4>
+                  <span class="chevron">›</span>
+                </summary>
+                <div class="details-body">
+                  <div class="research-note">
+                    <h4>本问题结论</h4>
+                    <p>验证瓶颈不能只看“行业需求强”，必须看每个节点是否有三个条件：需求传导可量化、供给约束可观察、公司能把约束转成收入/毛利/现金流。按这个标准，GPU/ASIC、HBM、先进代工/封装和光刻设备证据较强；中国设备与接口芯片仍属于需要继续验证的弹性节点。</p>
+                  </div>
+                  <div class="fact-grid">
+                    <div class="fact"><b>事实</b><span>SEMI 预计全球设备支出 2026 年 1430.6 亿美元，2027 年 1593.2 亿美元。</span></div>
+                    <div class="fact"><b>事实</b><span>ASML 明确提到先进节点供给限制将延续到 2026 年以后，客户增加 capex 并加速扩产。</span></div>
+                    <div class="fact"><b>事实</b><span>Gartner 预计 2026 年 DRAM/NAND 价格分别上涨 125%/234%，说明内存供需高度偏紧。</span></div>
+                    <div class="fact"><b>判断</b><span>瓶颈排序的关键不是主题热度，而是“瓶颈是否能直接落到财务科目”。</span></div>
+                    <div class="fact"><b>缺口</b><span>中国设备、封测、接口芯片需要补订单、客户导入、高端产品收入占比和毛利弹性。</span></div>
+                  </div>
+                  <h4 class="matrix-title">L3 验证清单</h4>
+                  <div class="table-wrap">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>瓶颈节点</th>
+                          <th>已经确认的信息</th>
+                          <th>下一条必须验证的数据</th>
+                          <th>结论强度</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>GPU / ASIC / 网络</td>
+                          <td>NVIDIA Data Center 与 Broadcom AI revenue 均给出高增长和下季指引；网络收入增速显示集群互联正在成为瓶颈。</td>
+                          <td>NVIDIA hyperscaler/ACIE 拆分、Broadcom 客户项目数、主要云厂商 capex。</td>
+                          <td><span class="rating a">A</span></td>
+                        </tr>
+                        <tr>
+                          <td>HBM / 数据中心内存</td>
+                          <td>Micron 数据中心相关 BU 毛利率达到 74%，Q3 毛利率指引约 81%，说明价格和供给紧张能传导到利润。</td>
+                          <td>HBM 出货、ASP、供给释放节奏、SK hynix/Samsung/Micron 份额变化。</td>
+                          <td><span class="rating a">A-</span></td>
+                        </tr>
+                        <tr>
+                          <td>先进制程 / 先进封装</td>
+                          <td>TSMC Q2 指引收入和毛利率继续上行，证明先进制程需求尚未减弱。</td>
+                          <td>HPC/AI 收入占比、CoWoS 产能、先进封装收入占比、客户预付款和 capex。</td>
+                          <td><span class="rating a">A-</span></td>
+                        </tr>
+                        <tr>
+                          <td>光刻 / 关键设备</td>
+                          <td>ASML 指出先进节点供给限制延续、EUV/immersion DUV 需求上升，并上调 2026 年收入指引。</td>
+                          <td>订单、backlog、系统交付、出口许可和中国收入占比。</td>
+                          <td><span class="rating b">B+</span></td>
+                        </tr>
+                        <tr>
+                          <td>国产设备 / 接口芯片</td>
+                          <td>北方华创 2025 年营收 393.53 亿元、集成电路设备营收同比超 50%；中微公司营收 123.85 亿元、薄膜设备累计出货突破 300 个反应台；长电科技先进封装相关收入 270 亿元；澜起科技已有 PCIe/CXL/DDR5 新品线索。</td>
+                          <td>高端产品收入占比、客户验证、订单、毛利率、存货和合同负债变化。</td>
+                          <td><span class="rating b">B</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <details>
+                    <summary>
+                      <h4>Q2.1.2 HBM/高端存储是否仍是硬瓶颈？</h4>
+                      <span class="chevron">›</span>
+                    </summary>
+                    <div class="details-body">
+                      <div class="research-note">
+                        <h4>本问题结论</h4>
+                    <p>HBM 不是简单的“存储周期上行”，而是 AI 加速器平台交付的直接约束。Samsung、Micron 和 TrendForce 的材料共同指向：供给仍集中在少数供应商，HBM4/HBM4E 验证窗口集中在 2026Q2-H2，短期内难以由单一供应商完全满足 NVIDIA Rubin 等下一代平台需求。Micron 已经开始为 NVIDIA Vera Rubin 批量出货 HBM4 36GB 12H，并出货 HBM4 48GB 16H 样品，说明瓶颈已经从“有没有 HBM”进入“带宽、容量、能效、封装和平台认证”的竞争。投资判断上，HBM 需要同时看价格、良率、客户认证和份额迁移，而不能只看 DRAM 价格。</p>
+                      </div>
+                      <div class="fact-grid">
+                        <div class="fact"><b>事实</b><span>Samsung Q1 2026 DS 部门收入 81.7 万亿韩元、营业利润 53.7 万亿韩元；Memory Business 因 AI 高附加值需求、ASP 上升和供给有限创纪录。</span></div>
+                        <div class="fact"><b>事实</b><span>Samsung 已开始 HBM4 和 SOCAMM2 面向 NVIDIA Vera Rubin 平台的量产销售，并计划在 Q2 交付首批 HBM4E 样品。</span></div>
+                        <div class="fact"><b>事实</b><span>Micron FY2026 Q2 Cloud Memory 和 Core Data Center BU 毛利率均为 74%，Q3 毛利率指引约 81%。</span></div>
+                        <div class="fact"><b>事实</b><span>Micron 已在 2026 年一季度开始批量出货 HBM4 36GB 12H，带宽超过 2.8TB/s，较 HBM3E 带宽提升 2.3 倍、能效提升超过 20%。</span></div>
+                        <div class="fact"><b>推论</b><span>AI 内存利润弹性已经从“收入增长”进入“价格和毛利率兑现”阶段，但传统 DRAM 涨价会削弱 HBM 的相对利润优势。</span></div>
+                        <div class="fact"><b>判断</b><span>HBM 仍是硬瓶颈，但下一轮胜负会从“有没有产能”转向“HBM4/HBM4E 验证、份额和良率”。</span></div>
+                      </div>
+                      <div class="table-wrap">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>验证点</th>
+                              <th>当前证据</th>
+                              <th>投资含义</th>
+                              <th>降级触发器</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>供给集中度</td>
+                              <td>TrendForce 指出 HBM4 需要 Samsung、SK hynix、Micron 三家共同供应，单一供应商无法满足 Rubin 需求。</td>
+                              <td>供应商份额变化会直接影响 SK hynix、Samsung、Micron 的盈利弹性。</td>
+                              <td>三家验证同时顺利、供给释放快于 Rubin/后续平台需求。</td>
+                            </tr>
+                            <tr>
+                              <td>毛利兑现</td>
+                              <td>Micron 数据中心相关 BU 毛利率 74%，Q3 公司毛利率指引约 81%。</td>
+                              <td>HBM/数据中心内存已经能把供给紧张落到利润科目。</td>
+                              <td>HBM ASP 下行、传统 DRAM 价格转弱、库存重建过快。</td>
+                            </tr>
+                            <tr>
+                              <td>平台绑定</td>
+                              <td>Samsung 与 Micron 均披露围绕 NVIDIA Vera Rubin 的 HBM4/SOCAMM2/HBM4 volume shipment 或量产销售进展；Micron 同时出货 HBM4 48GB 16H 样品。</td>
+                              <td>客户认证和平台绑定提高短期替代难度。</td>
+                              <td>NVIDIA 平台延后、客户认证失败、良率低于预期。</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <p>来源：<a href="https://news.samsung.com/global/samsung-electronics-announces-first-quarter-2026-results">Samsung Q1 2026 results</a>、<a href="https://micron.gcs-web.com/news-releases/news-release-details/micron-technology-inc-reports-results-second-quarter-fiscal-2026">Micron FY2026 Q2 results</a>、<a href="https://investors.micron.com/node/50236/pdf">Micron HBM4 for NVIDIA Vera Rubin</a>、<a href="https://www.trendforce.com/presscenter/news/20260213-12929.html">TrendForce HBM4 validation note</a>。</p>
+                    </div>
+                  </details>
+
+                  <details>
+                    <summary>
+                      <h4>Q2.1.3 先进封装/CoWoS 的瓶颈到底在哪里？</h4>
+                      <span class="chevron">›</span>
+                    </summary>
+                    <div class="details-body">
+                      <div class="research-note">
+                        <h4>本问题结论</h4>
+                        <p>先进封装瓶颈不是“有没有封测产能”，而是大尺寸 CoWoS、reticle size、良率、客户协同和资本开支节奏。TSMC 仍是最直接的瓶颈承接方，长电科技是中国链条的验证型敞口。当前主供给仍是 large-sized CoWoS，very large reticle packaging 和 CoPoS 仍处于演进阶段；TSMC 同时强调先进封装产能非常紧、需要与 OSAT 伙伴扩产，并且大尺寸封装存在机械应力、翘曲和热限制，因此短期瓶颈没有被解除。</p>
+                      </div>
+                      <div class="fact-grid">
+                        <div class="fact"><b>事实</b><span>TSMC Q1 2026 法说称当前主供给仍是 large-sized CoWoS，同时开发 very large reticle size packaging 和 CoPoS。</span></div>
+                        <div class="fact"><b>事实</b><span>TSMC 2026 年 capex 接近 560 亿美元高端，未来三年 capex 将显著高于过去三年 1010 亿美元。</span></div>
+                        <div class="fact"><b>事实</b><span>TSMC 称先进封装产能也非常紧，需要与 OSAT 伙伴合作扩产；技术挑战包括 mechanical stress、warpage 和 thermal limitation。</span></div>
+                        <div class="fact"><b>推论</b><span>AI 芯片需求不仅拉动 wafer，还拉动封装面积、互连密度和良率管理。</span></div>
+                        <div class="fact"><b>判断</b><span>CoWoS 是系统级瓶颈，不能只用传统封测收入判断；需要看客户预付款、封装产能、良率、OSAT 分工和高端封装毛利。</span></div>
+                      </div>
+                      <div class="table-wrap">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>瓶颈位置</th>
+                              <th>为什么卡住</th>
+                              <th>对应标的</th>
+                              <th>下一步数据</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>大尺寸 CoWoS</td>
+                              <td>AI accelerator 需要更大封装面积和更复杂互连，当前主供给仍依赖 TSMC large-sized CoWoS。</td>
+                              <td>TSMC</td>
+                              <td>CoWoS 月产能、先进封装收入、客户预付款、capex 分配。</td>
+                            </tr>
+                            <tr>
+                              <td>新封装路线</td>
+                              <td>TSMC 正开发 very large reticle packaging 和 CoPoS，说明现有 2.5D 方案仍需升级。</td>
+                              <td>TSMC、设备链</td>
+                              <td>CoPoS pilot line、量产时间、良率、设备需求。</td>
+                            </tr>
+                            <tr>
+                              <td>工程物理约束</td>
+                              <td>大尺寸封装带来 mechanical stress、warpage 和 thermal limitation，产能扩张不是简单堆设备。</td>
+                              <td>TSMC、OSAT、先进封装设备链</td>
+                              <td>良率、热管理方案、OSAT 分工、客户认证周期。</td>
+                            </tr>
+                            <tr>
+                              <td>中国先进封装</td>
+                              <td>长电科技有先进封装收入体量，但全球高端 AI 封装议价权仍需验证。</td>
+                              <td>长电科技</td>
+                              <td>AI/HPC 客户、高端先进封装收入占比、毛利率和 capex 回报。</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <p>来源：<a href="https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-04/3cef85204275f94fd111485cfdf4adb3c0263c45/TSMC%201Q26%20Transcript.pdf">TSMC Q1 2026 transcript</a>、<a href="https://www.prnasia.com/story/528551-1.shtml">长电科技 2025 年度业绩新闻稿</a>。</p>
+                    </div>
+                  </details>
+
+                  <details>
+                    <summary>
+                      <h4>Q2.1.4 设备链是瓶颈还是滞后受益？</h4>
+                      <span class="chevron">›</span>
+                    </summary>
+                    <div class="details-body">
+                      <div class="research-note">
+                        <h4>本问题结论</h4>
+                        <p>设备链不是一个同质板块。AMAT 更偏材料工程、沉积和先进封装；LRCX 偏刻蚀/沉积；KLAC 偏过程控制和量测；ASML 偏光刻。设备链已经有收入、毛利和指引支撑，但它捕获的是扩产周期利润，必须用订单、backlog、地域收入、服务收入和出口许可跟踪，不能只用“AI capex 上行”直接推导估值扩张。</p>
+                      </div>
+                      <div class="table-wrap">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>公司/节点</th>
+                              <th>已确认事实</th>
+                              <th>支持的瓶颈判断</th>
+                              <th>反证数据</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>AMAT</td>
+                              <td>FY2026 Q2 收入 79.1 亿美元、GAAP 毛利率 49.9%；预计 calendar 2026 半导体设备业务增长超过 30%。</td>
+                              <td>AI、leading-edge logic、DRAM、advanced packaging 同时拉动材料工程设备。</td>
+                              <td>订单、库存、build plan 是否转向消化，先进封装设备需求是否延续。</td>
+                            </tr>
+                            <tr>
+                              <td>LRCX</td>
+                              <td>2026 年 3 月季收入 58.41 亿美元、毛利率 49.8%；6 月季收入指引 66 亿美元正负 4 亿美元。</td>
+                              <td>刻蚀/沉积设备受先进逻辑、存储和本地扩产拉动。</td>
+                              <td>China revenue 34% 的政策敏感性、韩国/台湾存储和代工 capex 变化。</td>
+                            </tr>
+                            <tr>
+                              <td>KLAC</td>
+                              <td>FY2026 Q3 收入 34.15 亿美元，其中 Semiconductor Process Control 收入 30.84 亿美元。</td>
+                              <td>先进节点、HBM、先进封装提升过程控制和量测价值量。</td>
+                              <td>过程控制订单、服务收入、先进封装相关需求是否持续。</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="callout">
+                        <p><strong>上抛到 Q2 的判断：</strong>2026 年上半年瓶颈已经从单一 HBM 扩展为“存储、封装、设备”三重约束。Q2 的下一步不是继续增加相关公司，而是按节点补订单、产能、良率、毛利和估值容错率。</p>
+                      </div>
+                      <p>来源：<a href="https://ir.appliedmaterials.com/news-releases/news-release-details/applied-materials-announces-second-quarter-2026-results">Applied Materials FY2026 Q2 results</a>、<a href="https://investor.lamresearch.com/2026-04-22-Lam-Research-Corporation-Reports-Financial-Results-for-the-Quarter-Ended-March-29%2C-2026?asPDF=">Lam Research March 2026 quarter results</a>、<a href="https://ir.kla.com/news-events/press-releases/detail/514/kla-corporation-reports-fiscal-2026-third-quarter-results">KLA FY2026 Q3 results</a>。</p>
+                    </div>
+                  </details>
+
+                  <details>
+                    <summary>
+                      <h4>Q2.1.5 AI 加速器、custom ASIC 和 networking 谁在捕获最前端瓶颈利润？</h4>
+                      <span class="chevron">›</span>
+                    </summary>
+                    <div class="details-body">
+                      <div class="research-note">
+                        <h4>本问题结论</h4>
+                        <p>前端算力链不能再只写成“GPU 需求强”。当前更准确的拆法是：GPU 仍是绝对利润池，custom ASIC 是 hyperscaler 自研和定制化的增量利润池，networking/interconnect 是边际增长最快的短板。NVIDIA 的 Data Center compute 规模仍远大于其他前端链条，但 networking 的同比和环比增速明显更快；Broadcom 已经把 custom AI accelerators 和 AI networking 做成可量化收入；Marvell 则补上 data center interconnect/custom silicon 的第二验证点。上抛到 Q2 的判断是：前端瓶颈仍属第一梯队，但必须用 compute/networking 拆分、ASIC 客户项目、bookings、客户集中度和 CSP capex 结构持续验证。</p>
+                      </div>
+                      <div class="fact-grid">
+                        <div class="fact"><b>事实</b><span>NVIDIA FY2027 Q1 Data Center 收入 752 亿美元，同比增长 92%；旧口径下 compute 收入 604 亿美元，同比增长 77%，networking 收入 148 亿美元，同比增长 199%。</span></div>
+                        <div class="fact"><b>事实</b><span>Broadcom FY2026 Q1 AI revenue 84 亿美元，同比增长 106%，由 custom AI accelerators 和 AI networking 驱动，并指引 Q2 AI semiconductor revenue 107 亿美元。</span></div>
+                        <div class="fact"><b>事实</b><span>Marvell FY2026 收入 81.95 亿美元，同比增长 42%，管理层预计 FY2027 同比收入增速逐季加快，data center bookings 继续创纪录。</span></div>
+                        <div class="fact"><b>事实</b><span>Meta 将 2026 capex 指引上调至 1250-1450 亿美元，部分来自更高组件定价和额外数据中心成本。</span></div>
+                        <div class="fact"><b>推论</b><span>GPU 是最大利润池，networking 是边际短板，ASIC 是定制化替代和大客户绑定的第二曲线。</span></div>
+                        <div class="fact"><b>判断</b><span>最强机会不在“选一个方向”，而在识别三条链各自的利润捕获条件和反证条件。</span></div>
+                      </div>
+                      <h4 class="matrix-title">前端瓶颈拆分</h4>
+                      <div class="table-wrap">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>链条</th>
+                              <th>当前证据</th>
+                              <th>利润捕获条件</th>
+                              <th>主要反证</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>GPU / 系统平台</td>
+                              <td>NVIDIA Data Center compute 604 亿美元，同比增长 77%；Q2 收入指引 910 亿美元且不含中国 Data Center compute 收入。</td>
+                              <td>中国以外需求继续填补限制缺口，Blackwell/Rubin 平台保持供给紧张，gross margin 维持高位。</td>
+                              <td>compute 环比转弱、毛利率下修、云厂从 capacity constrained 转向利用率优化、ASIC 替代加速。</td>
+                            </tr>
+                            <tr>
+                              <td>custom ASIC</td>
+                              <td>Broadcom AI revenue 84 亿美元，同比增长 106%；Marvell FY2026 收入 81.95 亿美元，同比增长 42%，data center bookings 创纪录。</td>
+                              <td>hyperscaler 继续扩大定制芯片项目，外部设计服务商保持 design win、IP、封装和制造协同优势。</td>
+                              <td>大客户完全内部自研、订单取消/延期、客户集中度上升、第三方 IP 或供应链依赖导致交付延误。</td>
+                            </tr>
+                            <tr>
+                              <td>networking / interconnect</td>
+                              <td>NVIDIA Data Center networking 148 亿美元，同比增长 199%、环比增长 35%；Broadcom 将 AI networking 列为 AI revenue 驱动。</td>
+                              <td>集群规模扩大带动 scale-up/scale-out 网络、交换芯片、光/电互联和 silicon photonics 升级。</td>
+                              <td>networking 增速回落至 compute 以下、CSP 网络预算被压缩、一次性升级结束后进入消化。</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <h4 class="matrix-title">下一步数据清单</h4>
+                      <div class="table-wrap compact-table">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>要补的数据</th>
+                              <th>为什么重要</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>NVIDIA Hyperscale / ACIE、compute / networking 客户拆分</td>
+                              <td>判断 GPU 和 networking 是否来自同一批客户的捆绑采购，还是网络成为独立短板。</td>
+                            </tr>
+                            <tr>
+                              <td>Broadcom AI accelerator 与 AI networking 分项收入、毛利率</td>
+                              <td>判断 ASIC 与 networking 谁贡献利润弹性，而不是只看合并 AI revenue。</td>
+                            </tr>
+                            <tr>
+                              <td>Marvell data center 产品拆分、bookings、客户集中度</td>
+                              <td>判断 Marvell 是持续加入 custom silicon/networking 利润池，还是被少数客户项目放大。</td>
+                            </tr>
+                            <tr>
+                              <td>CSP capex 在 GPU、ASIC、networking 和 data center construction 的分配</td>
+                              <td>避免把组件涨价和土建成本误判成芯片出货增长。</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="callout">
+                        <p><strong>上抛到 Q2 的判断：</strong>Q2 的第一梯队应保留 AI 加速器/custom ASIC/networking，但内部排序要动态化：GPU 看绝对规模和平台绑定，networking 看边际短缺，ASIC 看客户项目和外部设计服务商是否能持续捕获利润。</p>
+                      </div>
+                      <p>来源：<a href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-First-Quarter-Fiscal-2027/default.aspx">NVIDIA FY2027 Q1 results</a>、<a href="https://investors.broadcom.com/node/63976/pdf">Broadcom FY2026 Q1 results</a>、<a href="https://www.sec.gov/Archives/edgar/data/1835632/000183563226000006/q426_8kx1312026ex-991.htm">Marvell FY2026 results</a>、<a href="https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-First-Quarter-2026-Results/">Meta Q1 2026 results</a>。</p>
+                    </div>
+                  </details>
+
+                  <details>
+                    <summary>
+                      <h4>Q2.1.6 中国设备国产替代是真瓶颈，还是政策主题？</h4>
+                      <span class="chevron">›</span>
+                    </summary>
+                    <div class="details-body">
+                      <div class="research-note">
+                        <h4>本问题结论</h4>
+                        <p>中国设备国产替代不是纯政策主题，但也不能直接等同于全球 AI 链的硬瓶颈。北方华创和中微公司已经有收入规模、研发投入、客户产线和现金流/扣非利润证据，说明国产设备正在进入真实财务科目；但北方华创 Q1 利润增速明显弱于收入，中微经营现金流转负，说明高端设备导入仍伴随研发、备货、交付和价格压力。上抛到 Q2 的判断是：国产设备是“验证型真瓶颈”，强度要由订单质量和利润弹性决定，而不是由政策叙事决定。</p>
+                      </div>
+                      <div class="fact-grid">
+                        <div class="fact"><b>事实</b><span>北方华创 2025 年收入 393.53 亿元，同比增长 30.85%；集成电路设备收入同比超过 50%；研发费用 54.35 亿元；经营现金流净额 21.33 亿元。</span></div>
+                        <div class="fact"><b>事实</b><span>北方华创 2026Q1 收入 103.23 亿元，同比增长 25.80%，但归母净利润仅增长 3.42%；合同负债约 42.03 亿元，存货约 286.03 亿元。</span></div>
+                        <div class="fact"><b>事实</b><span>中微公司 2025 年收入 123.85 亿元，同比增长 36.62%；薄膜设备累计出货突破 300 个反应台，新品进入客户量产验证。</span></div>
+                        <div class="fact"><b>事实</b><span>中微公司 2026Q1 收入 29.15 亿元，同比增长 34.13%；扣非净利润增长 60.09%；经营现金流 -1.59 亿元；研发投入占收入 31.14%；超过 8300 个反应台在 180 余条客户产线量产。</span></div>
+                        <div class="fact"><b>推论</b><span>收入和客户产线证明国产设备不是概念映射；利润弹性和现金流背离说明瓶颈利润仍在验证阶段。</span></div>
+                        <div class="fact"><b>判断</b><span>维持 B+，但不能上调到 A；后续必须用订单、合同负债、存货周转、毛利率和高端客户重复采购验证。</span></div>
+                      </div>
+                      <h4 class="matrix-title">国产设备验证表</h4>
+                      <div class="table-wrap">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>公司</th>
+                              <th>支持瓶颈的证据</th>
+                              <th>反证/边界</th>
+                              <th>下一步数据</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>北方华创</td>
+                              <td>平台型设备收入规模最大，集成电路设备收入高增，经营现金流改善。</td>
+                              <td>Q1 利润增速仅约 3%，存货和合同负债规模大，收入兑现和利润弹性需要拆开看。</td>
+                              <td>分设备线收入、合同负债转收入、存货库龄、毛利率、先进客户导入。</td>
+                            </tr>
+                            <tr>
+                              <td>中微公司</td>
+                              <td>刻蚀、薄膜和 MOCVD 具备关键工艺属性，反应台量产规模和扣非利润增长较强。</td>
+                              <td>Q1 经营现金流转负，高研发强度和新品验证期可能拖累现金转换。</td>
+                              <td>新设备重复订单、客户量产线占比、现金流修复、研发资本化/费用化影响。</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="callout">
+                        <p><strong>上抛到 Q2 的判断：</strong>中国设备可以作为国产替代链条中的真瓶颈继续跟踪，但它的强度来自“高端设备量产验证 + 订单质量 + 利润弹性”，不是来自政策叙事本身。</p>
+                      </div>
+                      <p>来源：<a href="https://static.cninfo.com.cn/finalpage/2026-04-18/1225122918.PDF">北方华创 2025 年报</a>、<a href="https://disc.static.szse.cn/disc/disk03/finalpage/2026-04-30/3d01114e-ca67-4e90-bad2-9534360f2db3.PDF">北方华创 2026Q1</a>、<a href="https://static.cninfo.com.cn/finalpage/2026-03-31/1225062430.PDF">中微公司 2025 年报摘要</a>、<a href="https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-28/688012_20260428_O2GX.pdf">中微公司 2026Q1</a>。</p>
+                    </div>
+                  </details>
+
+                  <details>
+                    <summary>
+                      <h4>Q2.1.7 内存接口 / CXL / PCIe 能否从验证型瓶颈升级为可财务兑现的瓶颈？</h4>
+                      <span class="chevron">›</span>
+                    </summary>
+                    <div class="details-body">
+                      <div class="research-note">
+                        <h4>本问题结论</h4>
+                        <p>内存接口/CXL/PCIe 已经从“产品线索”进入“部分财务兑现”，但还没有达到 HBM 或 CoWoS 的硬瓶颈强度。澜起科技 2026Q1 互连类芯片收入 14.17 亿元，新产品合计收入 2.69 亿元，占互连收入 19.0%，互连毛利率 71.5%；这些数据说明 DDR5、MRCD/MDB、CKD、PCIe Retimer 和 CXL MXC 正在改善收入结构和毛利率。但第二子代 MRCD/MDB 与 CXL MXC 仍有产品处于规模试用阶段，PCIe Switch 仍待工程样片流片，CXL 商用化还需要量产订单验证。上抛到 Q2 的处理是：该节点从 B 调整为 B+ 验证型瓶颈，短期看 DDR5/CKD/MRCD/MDB，弹性看 CXL MXC 与 PCIe Retimer 量产。</p>
+                      </div>
+                      <div class="fact-grid">
+                        <div class="fact"><b>事实</b><span>2025 年公司第二子代 MRCD/MDB 支持 12800MT/s，较第一子代提升 45%，Q4 出货显著提升；新一代 CKD 支持 9200MT/s，出货快速增长。</span></div>
+                        <div class="fact"><b>事实</b><span>PCIe 6.x/CXL 3.x Retimer 已送样，CXL 3.1 MXC 已开始向主要客户送样测试；2025 年互连类芯片毛利率 65.6%，Q4 达 67.8%。</span></div>
+                        <div class="fact"><b>事实</b><span>2026Q1 互连类芯片收入 14.17 亿元，同比增长 24.4%；MRCD/MDB、PCIe Retimer、CKD、CXL MXC 四款新产品合计收入 2.69 亿元，同比增长 93.8%。</span></div>
+                        <div class="fact"><b>事实</b><span>2026Q1 互连类芯片毛利率 71.5%，同比提升 7.0 个百分点；时钟发生器芯片已收到海外重要客户量产订单，PCIe Switch 计划年内完成工程样片流片。</span></div>
+                        <div class="fact"><b>推论</b><span>新产品收入占比提升和毛利率上行说明接口/CXL/PCIe 已经开始财务兑现；规模试用阶段说明尚未完全证明持续性。</span></div>
+                        <div class="fact"><b>判断</b><span>该节点比原来更强，但仍是验证型：需要 CXL MXC、Retimer 和 PCIe Switch 从样片/试用转为量产订单。</span></div>
+                      </div>
+                      <h4 class="matrix-title">接口芯片兑现路径</h4>
+                      <div class="table-wrap">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>产品线</th>
+                              <th>当前阶段</th>
+                              <th>财务含义</th>
+                              <th>升级/降级触发器</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>DDR5 RCD / MRCD / MDB / CKD</td>
+                              <td>新子代出货提升，四款新产品已贡献 2.69 亿元收入。</td>
+                              <td>短期收入和毛利率的主支撑。</td>
+                              <td>新产品占比突破 25%-30%、互连毛利率维持 70% 以上；若出货增速回落则降级。</td>
+                            </tr>
+                            <tr>
+                              <td>PCIe Retimer / AEC</td>
+                              <td>PCIe 6.x/CXL 3.x Retimer 送样，AEC 方案完成系统验证和互操作测试。</td>
+                              <td>从内存接口延伸到数据中心高速互连。</td>
+                              <td>客户平台量产导入；若长期只停留在送样和验证则降级。</td>
+                            </tr>
+                            <tr>
+                              <td>CXL MXC</td>
+                              <td>CXL 3.1 MXC 向主要客户送样测试，部分产品仍处规模试用。</td>
+                              <td>中期弹性，取决于 CXL 内存扩展和池化商业化节奏。</td>
+                              <td>获得量产订单、收入单列披露；若 CXL 商业化延后则降级。</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="callout">
+                        <p><strong>上抛到 Q2 的判断：</strong>内存接口/CXL/PCIe 不再只是远期概念，已经有新产品收入和毛利率证据；但它仍需证明规模试用能转成量产订单，因此强度低于 HBM 和 CoWoS。</p>
+                      </div>
+                      <p>来源：<a href="https://dataclouds.cninfo.com.cn/shgonggao/investor/2026/20260403/940ac707ca6245e8b792a0f2b9d58a40.PDF">澜起科技 2025 年度投资者活动记录</a>、<a href="https://sns.sseinfo.com/resources/images/upload/202604/202604301735012391174673.pdf">澜起科技 2026Q1 投资者活动记录</a>、<a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-28/688008_20260428_JP30.pdf">澜起科技 2026Q1</a>。</p>
+                    </div>
+                  </details>
+
+                  <details>
+                    <summary>
+                      <h4>Q2.1.8 如何把 Q3 季度信号回写到瓶颈评分？</h4>
+                      <span class="chevron">›</span>
+                    </summary>
+                    <div class="details-body">
+                      <div class="research-note">
+                        <h4>本问题结论</h4>
+                        <p>瓶颈评分不能只停留在静态打分。每次季度更新应先填 Q3 底稿，再把信号回写到 Q2 的需求传导、供给稀缺、财务兑现和风险扣分四个维度。绿灯只允许小幅上调或维持，黄灯冻结上调并要求补证据，红灯优先增加风险扣分；如果红灯只来自估值，则只下调赔率强度，不直接否定产业瓶颈。</p>
+                      </div>
+                      <h4 class="matrix-title">瓶颈评分回写规则</h4>
+                      <div class="table-wrap">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>Q2 瓶颈节点</th>
+                              <th>当前分 / 强度</th>
+                              <th>回写信号</th>
+                              <th>绿灯处理</th>
+                              <th>黄灯处理</th>
+                              <th>红灯处理</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>AI 加速器 / custom ASIC / 网络</td>
+                              <td>85 / A</td>
+                              <td>云厂 capex、Data Center 指引、ASIC 项目数、networking 增速、客户集中度。</td>
+                              <td>需求和财务分维持高位；若 EPS/FCF 同步上修，可提高研究优先级。</td>
+                              <td>不再上调，等待 bookings、客户项目和 capex 分项。</td>
+                              <td>若订单/指引红灯，风险扣分 +2 至 +4；若仅估值红灯，只下调赔率强度。</td>
+                            </tr>
+                            <tr>
+                              <td>HBM / 高端存储</td>
+                              <td>84 / A-</td>
+                              <td>HBM ASP、HBM4 认证、毛利率、库存周转、经营现金流。</td>
+                              <td>维持硬瓶颈，若 ASP 和 FCF 同步改善，可提高财务兑现分。</td>
+                              <td>维持 A-，但暂停上调，重点补 ASP 和库存。</td>
+                              <td>若 ASP/库存/认证红灯，至少下调至 B+，从瓶颈利润改为周期弹性。</td>
+                            </tr>
+                            <tr>
+                              <td>先进制程 / 先进封装</td>
+                              <td>82 / A-</td>
+                              <td>CoWoS 产能吸收、HPC/AI 收入、客户预付款、封装毛利率。</td>
+                              <td>维持 A-，若产能仍供不应求且毛利稳定，可小幅上调供给稀缺分。</td>
+                              <td>保留评分，但要求区分 TSMC 与 OSAT 的利润捕获。</td>
+                              <td>若 CoWoS 扩产快于订单或毛利下行，下调供给稀缺和议价能力分。</td>
+                            </tr>
+                            <tr>
+                              <td>全球设备链</td>
+                              <td>76 / B+</td>
+                              <td>WFE 指引、订单/backlog、服务收入、China exposure、出口许可。</td>
+                              <td>只有订单/backlog 同步改善才允许上调，不因收入强单独上调。</td>
+                              <td>维持 B+，但标记为滞后兑现，等待订单数据。</td>
+                              <td>若订单连续转弱或许可影响交付，下调至 B 或 B-。</td>
+                            </tr>
+                            <tr>
+                              <td>中国设备国产替代</td>
+                              <td>74 / B+</td>
+                              <td>合同负债、存货、经营现金流、扣非利润、高端设备验证、中标。</td>
+                              <td>收入、现金流、合同负债同步改善时，维持真瓶颈并可上调财务兑现分。</td>
+                              <td>保持验证型，要求补合同负债明细和存货库龄。</td>
+                              <td>若现金流持续背离利润或高端验证停滞，降为政策主题验证中。</td>
+                            </tr>
+                            <tr>
+                              <td>内存接口 / CXL / PCIe</td>
+                              <td>70 / B+</td>
+                              <td>新品收入占比、互连毛利率、CXL MXC 量产订单、Retimer/AEC 导入。</td>
+                              <td>新品占比 25%-30% 以上且毛利率 70% 以上时，考虑从验证型上调。</td>
+                              <td>维持 B+，等待 CXL/Retimer 量产订单。</td>
+                              <td>若新品占比或毛利率跌破阈值，降为产品线索型跟踪。</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <h4 class="matrix-title">本期评分变化表</h4>
+                      <div class="table-wrap">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>Q2 瓶颈节点</th>
+                              <th>上一版口径</th>
+                              <th>本期评分</th>
+                              <th>本期动作</th>
+                              <th>改动依据</th>
+                              <th>下次更新优先项</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>AI 加速器 / custom ASIC / 网络</td>
+                              <td>A，前端算力合并处理</td>
+                              <td>85 / A</td>
+                              <td><span class="signal green">维持核心</span></td>
+                              <td>NVIDIA、Broadcom、Marvell 已把 GPU、custom ASIC 和 networking 拆成可量化收入链条；Q3 capex/RPO 仍支撑需求。</td>
+                              <td>NVIDIA compute/networking 拆分、Broadcom AI 客户数、Marvell bookings/backlog。</td>
+                            </tr>
+                            <tr>
+                              <td>HBM / 高端存储</td>
+                              <td>A-，硬瓶颈</td>
+                              <td>84 / A-</td>
+                              <td><span class="signal green">维持核心</span></td>
+                              <td>Micron 和 Samsung 已验证毛利与利润弹性，但 HBM4 份额、ASP 和库存仍需下一季验证。</td>
+                              <td>HBM ASP、HBM4/HBM4E 认证、三大厂份额、经营现金流。</td>
+                            </tr>
+                            <tr>
+                              <td>先进制程 / 先进封装</td>
+                              <td>A-，CoWoS/先进节点瓶颈</td>
+                              <td>82 / A-</td>
+                              <td><span class="signal green">维持核心</span></td>
+                              <td>TSMC 法说继续支持 CoWoS 和先进封装供给紧张，但高 capex 后的吸收能力仍是反证。</td>
+                              <td>CoWoS 月产能、客户预付款、先进封装毛利、OSAT 分工。</td>
+                            </tr>
+                            <tr>
+                              <td>全球设备链</td>
+                              <td>B+，扩产周期受益</td>
+                              <td>76 / B+</td>
+                              <td><span class="signal amber">冻结上调</span></td>
+                              <td>AMAT/Lam/KLA 收入和毛利较强，但 Q3 底稿将设备订单列为基准黄灯，不能只因收入强而加分。</td>
+                              <td>ASML 新订单、AMAT/LRCX/KLAC backlog、服务收入、WFE 指引。</td>
+                            </tr>
+                            <tr>
+                              <td>中国设备国产替代</td>
+                              <td>B+，国产替代验证</td>
+                              <td>74 / B+</td>
+                              <td><span class="signal amber">维持验证</span></td>
+                              <td>北方华创收入和现金流较好，中微扣非利润较强，但利润弹性、现金流和存货仍给出边界。</td>
+                              <td>合同负债、存货库龄、新签订单、高端设备客户验证。</td>
+                            </tr>
+                            <tr>
+                              <td>内存接口 / CXL / PCIe</td>
+                              <td>B，产品线索</td>
+                              <td>70 / B+</td>
+                              <td><span class="signal green">上调一级</span></td>
+                              <td>澜起新产品收入占比 19.0%、互连毛利率 71.5%，说明已从产品线索进入部分财务兑现。</td>
+                              <td>新品收入占比 25%-30%、CXL MXC 量产订单、Retimer/AEC 客户导入。</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="callout">
+                        <p><strong>上抛到 Q2 的判断：</strong>Q2 评分现在具备动态更新逻辑：产业瓶颈分由订单、价格、毛利和现金流决定，赔率强度由估值和 EPS/FCF 修正决定。后续季度更新时，不能只改 Q4 标的强度，也要同步回写 Q2 节点评分。</p>
+                      </div>
+                    </div>
+                  </details>
+
+                  <h4 class="matrix-title">中国链条二次验证</h4>
+                  <div class="table-wrap">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>公司</th>
+                          <th>已确认财务/产品事实</th>
+                          <th>支持什么瓶颈判断</th>
+                          <th>边界与反证</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>北方华创</td>
+                          <td>2025 年营收 393.53 亿元，同比增长 30.85%；集成电路设备营收同比超 50%；经营现金流净额 21.33 亿元，同比增长 37.48%。</td>
+                          <td>国产设备平台已形成财务规模，刻蚀、薄膜、炉管、湿法清洗等多设备线受益于本地扩产和国产替代。</td>
+                          <td>存货 286.27 亿元、合同负债 42.91 亿元，需要继续判断订单质量、交付节奏和价格竞争。</td>
+                        </tr>
+                        <tr>
+                          <td>中微公司</td>
+                          <td>2025 年营收 123.85 亿元，同比增长 36.62%；薄膜设备累计出货突破 300 个反应台；EPI、Micro-LED、GaN MOCVD 进入客户验证。</td>
+                          <td>刻蚀和薄膜沉积在先进逻辑、3D NAND、高深宽比结构中重要性提升，国产关键工艺设备逻辑更清晰。</td>
+                          <td>新设备仍处客户验证和导入期，需区分“产品送样/验证”和“规模收入兑现”。</td>
+                        </tr>
+                        <tr>
+                          <td>长电科技</td>
+                          <td>2025 年营收 388.7 亿元，同比增长 8.1%；先进封装相关收入 270 亿元；运算电子收入同比增长 42.6%。</td>
+                          <td>先进封装与 AI/HPC、存储、CPO 等需求有明确业务敞口。</td>
+                          <td>归母净利润 15.7 亿元，仍需跟踪先进封装高投入对毛利和现金流的影响。</td>
+                        </tr>
+                        <tr>
+                          <td>澜起科技</td>
+                          <td>2026Q1 互连类芯片收入 14.17 亿元，MRCD/MDB、PCIe Retimer、CKD、CXL MXC 新产品合计收入 2.69 亿元，互连毛利率 71.5%。</td>
+                          <td>AI 服务器平台升级下的接口、互连和内存扩展方向已经有初步财务兑现。</td>
+                          <td>仍需验证 CXL MXC、Retimer 和 PCIe Switch 从送样/规模试用转为量产订单。</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <p>来源：<a href="https://www.semi.org/en/products-services/market-data/world-fab-forecast">SEMI World Fab Forecast</a>、<a href="https://ourbrand.asml.com/asset/8e1f7393-33dd-4737-a436-cfe1b68cc577/2026_04_15-ASML-Transcript-investor-call-Q1-2026.pdf">ASML Q1 2026 transcript</a>、<a href="https://www.gartner.com/en/newsroom/press-releases/2026-04-08-gartner-forecasts-worldwide-semiconductor-revenue-to-exceed-us-dollars-one-point-3-trillion-in-2026">Gartner 2026 semiconductor forecast</a>、<a href="https://investor.tsmc.com/english/quarterly-results/2026/q1">TSMC Q1 2026</a>、<a href="https://www.cninfo.com.cn/new/disclosure/stock?stockCode=002371&amp;orgId=9900004797">北方华创公告</a>、<a href="https://www.sse.com.cn/assortment/stock/list/info/announcement/index.shtml?productId=688012">中微公司公告</a>、<a href="https://www.sse.com.cn/assortment/stock/list/info/announcement/index.shtml?productId=600584">长电科技公告</a>、<a href="https://dataclouds.cninfo.com.cn/shgonggao/investor/2026/20260403/940ac707ca6245e8b792a0f2b9d58a40.PDF">澜起 2025 投资者活动记录</a>、<a href="https://sns.sseinfo.com/resources/images/upload/202604/202604301735012391174673.pdf">澜起 2026Q1 投资者活动记录</a>。</p>
+                </div>
+              </details>
+            </div>
+          </details>
+        </div>
+      </details>
+
+      <details id="q3" open>
+        <summary>
+          <h3>Q3 绑定反证：市场是否已经把机会打满，哪些风险会证伪？</h3>
+          <span class="chevron">›</span>
+        </summary>
+        <div class="details-body">
+          <div class="qa-meta">
+            <span class="pill amber">结论：趋势强，不等于赔率好</span>
+            <span class="pill">证据 20</span>
+            <span class="pill red">反证优先</span>
+          </div>
+          <p>半导体硬件的产业趋势可以很强，但投资赔率可能被估值提前消耗。当前必须把“产业链继续增长”和“标的还能否提供超额收益”分开处理。本轮新增 capex/ROI 与估值兑现二次验证：大型 CSP 资本开支仍在上修，短期支撑 GPU、ASIC、网络、HBM 和设备需求；Alphabet 和 Oracle 进一步证明 Cloud/RPO/backlog 与客户预付款正在支撑 AI 硬件采购；但自由现金流、回收期、组件涨价、客户集中度、RPO 转收入和远期估值会决定硬件订单能否延续到 2027 年以后。Q3 的最终用途不是列风险，而是给 Q2 的瓶颈评分和 Q4 的标的强度提供降级规则。</p>
+
+          <details>
+            <summary>
+              <h4>Q3.1 主要反证来自 AI capex、存储周期、出口管制还是估值拥挤？</h4>
+              <span class="chevron">›</span>
+            </summary>
+            <div class="details-body">
+              <div class="research-note">
+                <h4>本问题结论</h4>
+                <p>短期最敏感的是估值和 AI capex 预期，中期最敏感的是 HBM/DRAM 供需和设备订单，长期最敏感的是出口管制、地缘政治和技术替代。反证不能停留在“宏观风险”，必须绑定到具体公司、具体瓶颈和具体数据触发器；对 AI capex 来说，Cloud revenue、RPO/backlog、客户预付款、GPU 供给和 FCF 是同一条验证链。</p>
+              </div>
+              <div class="fact-grid">
+                <div class="fact"><b>出口管制</b><span>NVIDIA Q2 指引未假设中国 Data Center compute 收入；ASML 把出口管制作为指引情景。</span></div>
+                <div class="fact"><b>供给反转</b><span>HBM/DRAM 价格和毛利率若在扩产后提前见顶，内存瓶颈结论会降级。</span></div>
+                <div class="fact"><b>订单周期</b><span>设备链景气必须用订单、backlog 和交付节奏验证，不能只看长期设备支出预测。</span></div>
+                <div class="fact"><b>capex ROI</b><span>如果云厂商 AI capex 放缓或推理 ROI 不达预期，GPU/ASIC 主线会先降级。</span></div>
+                <div class="fact"><b>估值拥挤</b><span>产业逻辑强不等于赔率好，需要额外补估值分位和盈利上修空间。</span></div>
+              </div>
+              <p>来源：<a href="https://www.bis.gov/press-release/commerce-strengthens-export-controls-restrict-chinas-ability-purchase-and-manufacture">U.S. BIS export controls</a>、<a href="https://www.asml.com/en/investors/financial-results/q1-2026">ASML Q1 2026</a>、<a href="https://investors.micron.com/news-releases/news-release-details/micron-technology-inc-reports-results-second-quarter-fiscal-2026">Micron FY2026 Q2</a>、<a href="https://www.trendforce.com/presscenter/news/20260506-13033.html">TrendForce CSP capex forecast</a>、<a href="https://www.wellsfargomedia.com/im/ps/research/wfii/wfii_reports/investment_strategy/globalinvestmentstrategy051826.pdf?cid=WFA2300032987">Wells Fargo AI ROI note</a>、<a href="https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q3">Microsoft FY26 Q3 call</a>、<a href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-First-Quarter-Results/default.aspx">Amazon Q1 2026 results</a>、<a href="https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-First-Quarter-2026-Results/">Meta Q1 2026 results</a>、<a href="https://s206.q4cdn.com/479360582/files/doc_financials/2026/q1/2026q1-alphabet-earnings-release.pdf">Alphabet Q1 2026 results</a>、<a href="https://www.spglobal.com/market-intelligence/en/news-insights/research/2026/05/alphabet-postq-snapshot-ai-momentum-drives-cloud-surge-capex-outlook-rises1">S&amp;P / Visible Alpha Alphabet note</a>、<a href="https://www.oracle.com/news/announcement/q3fy26-earnings-release-2026-03-10/">Oracle FY2026 Q3 results</a>、<a href="https://www.sec.gov/Archives/edgar/data/1835632/000183563226000006/q426_8kx1312026ex-991.htm">Marvell FY2026 results</a>。</p>
+
+              <details>
+                <summary>
+                  <h4>Q3.1.1 哪些 capex/ROI 触发器会使当前机会降级？</h4>
+                  <span class="chevron">›</span>
+                </summary>
+                <div class="details-body">
+                  <div class="research-note">
+                    <h4>本问题结论</h4>
+                    <p>当前 capex 证据仍然支持半导体硬件需求，但它不是无条件利好。需要把 capex 分成五类：真实新增算力需求、组件价格上涨导致的名义支出、尚未货币化的前置投资、已经转成 Cloud/RPO/backlog 的有效需求、以及客户预付款或客户自供 GPU 锁定的需求。只要云厂商从“产能不足”转向“消化产能”、Cloud/RPO 转收入放慢、客户预付款退潮，或自由现金流压力迫使 capex 下修，GPU/ASIC、HBM、先进封装和设备链都要同步降级。</p>
+                  </div>
+                  <div class="fact-grid">
+                    <div class="fact"><b>CSP capex 上修</b><span>TrendForce 将九大 CSP 2026 年 capex 预测上调至约 8,300 亿美元，年增率从 61% 上调到 79%。</span></div>
+                    <div class="fact"><b>四大云厂商</b><span>Wells Fargo 统计四大 hyperscaler 2026 年 capex 预计超过 6,500 亿美元，约同比翻倍，2027 年共识仍增长 19%。</span></div>
+                    <div class="fact"><b>组件成本</b><span>Microsoft 预计 2026 年 capex 约 1,900 亿美元，其中约 250 亿美元来自组件价格上涨。</span></div>
+                    <div class="fact"><b>产能约束</b><span>Microsoft 表示即使加快 GPU、CPU 和存储上线，预计至少到 2026 年仍处于 capacity constrained 状态。</span></div>
+                    <div class="fact"><b>Cloud 兑现</b><span>Alphabet Q1 Google Cloud 收入 200.28 亿美元、Cloud operating income 65.98 亿美元，Cloud 增长由 AI infrastructure、训练和推理需求支撑。</span></div>
+                    <div class="fact"><b>RPO 锁定</b><span>Oracle Q3 RPO 5,530 亿美元，同比增长 325%；大规模 AI 合同中多数设备由客户预付款或客户自供 GPU 支撑。</span></div>
+                    <div class="fact"><b>FCF 压力</b><span>Amazon Q1 2026 披露 TTM free cash flow 降至 12 亿美元，同比下降 95%，主要受 AI 相关 PPE 购买增加拖累。</span></div>
+                  </div>
+                  <h4 class="matrix-title">capex/ROI 反证矩阵</h4>
+                  <div class="table-wrap">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>观察问题</th>
+                          <th>已验证信息</th>
+                          <th>支持什么</th>
+                          <th>反证触发器</th>
+                          <th>影响标的</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>CSP capex 是否仍在上修？</td>
+                          <td>TrendForce 预计九大 CSP 2026 年合计 capex 约 8,300 亿美元；Microsoft、Google、Meta、AWS 均上修或维持高强度投入。</td>
+                          <td>短期支撑 GPU、ASIC、网络、HBM、先进封装、设备和电力散热需求。</td>
+                          <td>任一大型 CSP 下修全年 capex 指引，或 2027 年共识从增长转为持平/下降。</td>
+                          <td>NVDA、AVGO、TSM、ASML、MU、SK hynix、设备链。</td>
+                        </tr>
+                        <tr>
+                          <td>capex 增长是算力增量还是成本通胀？</td>
+                          <td>Microsoft 披露 2026 年 capex 中约 250 亿美元来自组件价格上涨，这意味着名义 capex 的一部分不是等量新增服务器/GPU 数量。</td>
+                          <td>高端内存、GPU、网络和服务器零部件仍具备价格传导能力。</td>
+                          <td>若 capex 上修主要来自组件涨价，而单位 GPU/ASIC/server 出货不增，需求强度应下调。</td>
+                          <td>HBM、GPU、网络芯片、服务器 ODM、设备链。</td>
+                        </tr>
+                        <tr>
+                          <td>投资回收是否能被收入和使用量解释？</td>
+                          <td>Wells Fargo 指出市场焦点已从支出规模转向 ROI 可见度、回收期、商业化路径和自由现金流韧性。</td>
+                          <td>硬件链条仍比 hyperscaler 本身更容易受益于建设期订单。</td>
+                          <td>AI 收入增速、云 backlog 或利用率无法解释 capex 强度；管理层开始强调削减、延后或优化投资。</td>
+                          <td>优先影响估值最高且客户集中度最高的 NVDA/AVGO，再传导到 HBM 和设备。</td>
+                        </tr>
+                        <tr>
+                          <td>Cloud 收入是否跟上基础设施投资？</td>
+                          <td>Alphabet Q1 Google Cloud 收入 200.28 亿美元、Cloud operating income 65.98 亿美元；Visible Alpha 指出 Cloud 增长由 AI infrastructure、训练、推理和数据分析工作负载支撑。</td>
+                          <td>AI 基础设施支出已经部分转成收入和利润，需求质量强于单纯 capex 上修。</td>
+                          <td>若 Cloud 增速放缓、Cloud margin 回落，或 capex intensity 继续上升但收入不跟，硬件订单持续性应下调。</td>
+                          <td>NVDA、AVGO、MRVL、HBM、TSMC、设备链。</td>
+                        </tr>
+                        <tr>
+                          <td>RPO/backlog 是否能转成 GPU 和云收入？</td>
+                          <td>Oracle Q3 RPO 5,530 亿美元，同比增长 325%，大规模 AI 合同中多数设备由客户预付款帮助采购 GPU，或客户自供 GPU。</td>
+                          <td>客户愿意预付款或自供 GPU，说明 AI 云容量仍稀缺，且需求直接指向硬件采购。</td>
+                          <td>若客户预付款退潮、RPO 转收入放慢、GPU sourcing 或数据中心容量导致交付延迟，AI 硬件需求质量应下修。</td>
+                          <td>NVDA、AVGO、MRVL、HBM、服务器供应链、设备链。</td>
+                        </tr>
+                        <tr>
+                          <td>FCF 压力是否逼近投资约束？</td>
+                          <td>Amazon Q1 2026 TTM operating cash flow 增至 1,485 亿美元，但 TTM FCF 降至 12 亿美元，PPE 购买净额 TTM 达 1,473 亿美元。</td>
+                          <td>说明 AI 基础设施建设是真实现金支出，不只是会计或口径变化。</td>
+                          <td>若 FCF 转负且客户承诺无法快速转化为收入，AWS 及同类 CSP 可能延后服务器、GPU 或网络采购。</td>
+                          <td>AMZN 不是本报告主要标的，但其 capex 是 NVDA、AVGO、HBM、设备链需求源之一。</td>
+                        </tr>
+                        <tr>
+                          <td>需求叙事是否仍是“产能不足”？</td>
+                          <td>Microsoft 表示即使继续加快 GPU、CPU 和 storage capacity 上线，至少到 2026 年仍会受产能约束。</td>
+                          <td>只要客户仍受产能约束，AI 硬件订单的短期可见度较高。</td>
+                          <td>管理层措辞从 capacity constrained 转向 utilization、optimization 或 digestion，说明硬件短缺叙事可能进入后段。</td>
+                          <td>全链条，尤其 GPU/ASIC、HBM、CoWoS/先进封装和设备。</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="callout">
+                    <p><strong>上抛到 Q3 的判断：</strong>capex 上修仍是硬件链的正证据，但本报告不能把 capex 数字直接等同于投资机会。Q3 的核心跟踪应从“有没有需求”升级为“需求是否足以覆盖组件涨价、FCF 压力、RPO 转收入和回收期不确定性”。</p>
+                  </div>
+                </div>
+              </details>
+
+              <details>
+                <summary>
+                  <h4>Q3.1.2 估值和盈利兑现压力如何影响赔率？</h4>
+                  <span class="chevron">›</span>
+                </summary>
+                <div class="details-body">
+                  <div class="research-note">
+                    <h4>本问题结论</h4>
+                    <p>当前半导体硬件主线的核心风险不是“需求不存在”，而是“需求存在但市场已经要求连续超预期兑现”。StockAnalysis 快照显示，多数全球核心标的 forward PE 已在 20-40 倍区间、FCF yield 多数低于 2.5%。在这种赔率结构下，收入继续增长只是维持强度的必要条件；真正的升级需要 EPS/FCF 上修快于估值扩张，降级则来自 capex 下修、订单延期、毛利率回落或客户自研替代。</p>
+                  </div>
+                  <div class="fact-grid">
+                    <div class="fact"><b>估值事实</b><span>NVDA Forward PE 21.32、FCF yield 2.31%；TSM Forward PE 22.12、FCF yield 1.77%，基本面强但仍需要盈利继续上修。</span></div>
+                    <div class="fact"><b>估值事实</b><span>AVGO Forward PE 31.53、FCF yield 1.45%；ASML Forward PE 40.51、FCF yield 1.69%；LRCX/KLAC forward PE 约 43/41.50。</span></div>
+                    <div class="fact"><b>兑现压力</b><span>NVIDIA Q2 指引 910 亿美元且不假设中国 Data Center compute 收入，说明非中国需求必须继续承接高增长预期。</span></div>
+                    <div class="fact"><b>客户集中</b><span>Marvell 明确披露客户集中、客户自研或垂直整合、订单取消或延期等风险，这也是 custom silicon 链条的共性反证。</span></div>
+                    <div class="fact"><b>判断</b><span>高景气资产要用“盈利修正速度”而不是“产业趋势强弱”判断赔率；低 forward PE 的 MU 也必须折扣存储周期和现金流转换。</span></div>
+                  </div>
+                  <h4 class="matrix-title">赔率压力矩阵</h4>
+                  <div class="table-wrap">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>压力来源</th>
+                          <th>当前证据</th>
+                          <th>主要影响</th>
+                          <th>降级触发器</th>
+                          <th>升级触发器</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>估值已前置增长</td>
+                          <td><a href="https://stockanalysis.com/stocks/nvda/financials/ratios/">NVDA</a>、<a href="https://stockanalysis.com/stocks/tsm/financials/ratios/">TSM</a> forward PE 约 21-22；<a href="https://stockanalysis.com/quote/ams/ASML/financials/ratios/">ASML</a>、<a href="https://stockanalysis.com/stocks/lrcx/financials/ratios/">LRCX</a>、<a href="https://stockanalysis.com/stocks/klac/financials/ratios/">KLAC</a> forward PE 约 40 以上。</td>
+                          <td>市场已经提前要求未来几季订单、收入和毛利继续兑现。</td>
+                          <td>EPS 上修停止但估值不回落；FCF yield 继续偏低；财报只符合预期但不再超预期。</td>
+                          <td>收入和 FCF 连续超预期，使 forward PE 被动下降，估值被盈利消化。</td>
+                        </tr>
+                        <tr>
+                          <td>客户 capex 兑现压力</td>
+                          <td>Microsoft、Amazon、Meta 均维持或上修 AI infrastructure capex，但 Amazon FCF 压力和 Microsoft/Meta 组件涨价说明 ROI 压力同步上升。</td>
+                          <td>硬件公司短期拿订单，云厂长期要证明投资回报，否则 2027 年以后订单能见度会下降。</td>
+                          <td>云厂从 capacity constrained 转向 utilization/optimization；全年 capex 指引下调。</td>
+                          <td>AI 收入、云 backlog、推理使用量和 FCF 同时改善，证明投资回收路径成立。</td>
+                        </tr>
+                        <tr>
+                          <td>custom silicon 项目波动</td>
+                          <td><a href="https://www.sec.gov/Archives/edgar/data/1835632/000183563226000006/q426_8kx1312026ex-991.htm">Marvell</a> 数据中心收入占 Q4 收入约 74%，但风险披露集中在客户集中、客户自研/垂直整合和订单延期。</td>
+                          <td>MRVL/AVGO 受益于自研 ASIC，但订单呈项目制，单一客户或项目变化会放大盈利波动。</td>
+                          <td>主要客户延后 tape-out、取消订单、自研替代供应商，或 Broadcom/Marvell 数据中心指引低于预期。</td>
+                          <td>新客户数量增加、data center revenue 占比提升且毛利率稳定，客户集中度下降。</td>
+                        </tr>
+                        <tr>
+                          <td>存储周期反转</td>
+                          <td>MU Forward PE 低但 FCF yield 仅 0.98%，HBM/DRAM 高毛利需要持续供需紧张才能兑现。</td>
+                          <td>HBM 是硬瓶颈，但存储公司估值会同时受周期库存和价格预期影响。</td>
+                          <td>HBM/DRAM ASP 连续回落，客户认证延迟，库存周转恶化。</td>
+                          <td>HBM4/HBM4E 验证顺利、ASP 稳定、现金流跟上利润。</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="callout">
+                    <p><strong>上抛到 Q3 的判断：</strong>当前赔率不是全面否定，而是要从“趋势判断”升级到“盈利修正监控”。Q4 标的强度应动态跟随三类数据调整：云厂 capex/ROI、公司订单与毛利率、forward PE 与 FCF yield 是否被盈利兑现消化。</p>
+                  </div>
+                </div>
+              </details>
+
+              <details>
+                <summary>
+                  <h4>Q3.1.3 反证如何绑定到具体瓶颈节点和标的？</h4>
+                  <span class="chevron">›</span>
+                </summary>
+                <div class="details-body">
+                  <div class="research-note">
+                    <h4>本问题结论</h4>
+                    <p>Q3 的反证现在应按节点执行，而不是按主题泛泛列风险。每一个 Q2 瓶颈都要有对应的降级数据、影响标的和强度修正规则：前端算力看 capex 分项、客户项目和 data center 指引；HBM 看 ASP、认证和库存；先进封装看 CoWoS 扩产、客户预付款和毛利；设备看订单/backlog、China exposure 和服务收入；中国设备看合同负债、存货、现金流和高端验证；CXL/PCIe 看新品收入占比、毛利率和规模试用转量产。</p>
+                  </div>
+                  <h4 class="matrix-title">节点级反证绑定矩阵</h4>
+                  <div class="table-wrap">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>瓶颈节点</th>
+                          <th>影响标的</th>
+                          <th>主要正证据</th>
+                          <th>降级/反证触发器</th>
+                          <th>跟踪数据</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>AI 加速器 / custom ASIC / networking</td>
+                          <td>NVDA、AVGO、MRVL</td>
+                          <td><a href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-First-Quarter-Fiscal-2027/default.aspx">NVIDIA Data Center 收入 752 亿美元</a>；<a href="https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-first-quarter-fiscal-year-2026-financial">Broadcom Q2 AI semiconductor 指引 107 亿美元</a>；<a href="https://www.sec.gov/Archives/edgar/data/1835632/000183563226000006/q426_8kx1312026ex-991.htm">Marvell data center revenue 占 Q4 收入约 74%</a>。</td>
+                          <td>云厂 capex 下修；ASIC 项目延期或取消；networking 增速低于 compute；客户集中度上升；gross margin 或 FCF 转弱。</td>
+                          <td>Data Center compute/networking 拆分、ASIC 项目数、bookings、客户集中度、CSP capex 分项。</td>
+                        </tr>
+                        <tr>
+                          <td>云厂 capex / ROI 源头需求</td>
+                          <td>全硬件链，优先影响 NVDA、AVGO、MRVL、HBM、TSMC、设备链</td>
+                          <td><a href="https://www.trendforce.com/presscenter/news/20260506-13033.html">九大 CSP 2026 capex 约 8,300 亿美元</a>；<a href="https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q3">Microsoft 预计 calendar 2026 capex 约 1,900 亿美元</a>；<a href="https://www.oracle.com/news/announcement/q3fy26-earnings-release-2026-03-10/">Oracle RPO 5,530 亿美元</a>。</td>
+                          <td>Cloud/RPO 转收入放慢；客户预付款退潮；管理层从 capacity constrained 转为 utilization/optimization；FCF 压力迫使 capex 延后。</td>
+                          <td>Cloud revenue/margin、RPO 转收入、客户预付款、AI workload 利用率、FCF 与 PPE 购买。</td>
+                        </tr>
+                        <tr>
+                          <td>HBM / 高端存储</td>
+                          <td>SK hynix、Samsung、Micron</td>
+                          <td><a href="https://investors.micron.com/news-releases/news-release-details/micron-technology-inc-reports-results-second-quarter-fiscal-2026">Micron Cloud Memory 和 Core Data Center BU 毛利率均为 74%</a>；Samsung Q1 2026 DS 部门收入 81.7 万亿韩元、营业利润 53.7 万亿韩元；<a href="https://www.trendforce.com/presscenter/news/20260213-12918.html">TrendForce 指出 HBM4 需要三大厂共同供应</a>。</td>
+                          <td>HBM/DRAM ASP 回落；HBM4/HBM4E 认证延迟；库存周转恶化；传统 DRAM 利润挤压 HBM 产能配置；FCF 跟不上利润。</td>
+                          <td>HBM ASP、HBM4 认证、客户份额、产能释放、库存周转、经营现金流。</td>
+                        </tr>
+                        <tr>
+                          <td>先进制程 / CoWoS / 先进封装</td>
+                          <td>TSMC、ASML、长电科技</td>
+                          <td><a href="https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-04/3cef85204275f94fd111485cfdf4adb3c0263c45/TSMC%201Q26%20Transcript.pdf">TSMC 强调先进封装产能紧张、CoWoS 仍为主供给并开发 very large reticle packaging 和 CoPoS</a>；2026 capex 接近 560 亿美元高端。</td>
+                          <td>CoWoS 扩产快于订单；先进封装毛利下降；客户预付款或产能预订转弱；OSAT 分工稀释议价权；大尺寸封装良率/热/翘曲问题影响交付。</td>
+                          <td>CoWoS 月产能、HPC/AI 收入、客户预付款、先进封装毛利率、长电先进封装收入占比。</td>
+                        </tr>
+                        <tr>
+                          <td>全球设备链</td>
+                          <td>ASML、AMAT、LRCX、KLAC</td>
+                          <td><a href="https://ir.appliedmaterials.com/news-releases/news-release-details/applied-materials-announces-second-quarter-2026-results">AMAT FY2026 Q2 收入 79.1 亿美元、毛利率 49.9%</a>；<a href="https://investor.lamresearch.com/2026-04-22-Lam-Research-Corporation-Reports-Financial-Results-for-the-Quarter-Ended-March-29%2C-2026?asPDF=">Lam March 2026 quarter 收入 58.41 亿美元</a>；<a href="https://ir.kla.com/news-events/press-releases/detail/514/kla-corporation-reports-fiscal-2026-third-quarter-results">KLA FY2026 Q3 收入 34.15 亿美元</a>。</td>
+                          <td>晶圆厂 capex 延后；新增订单/backlog 弱于收入；China exposure 受出口许可影响；服务收入或毛利率转弱。</td>
+                          <td>订单、backlog、区域收入、服务收入、WFE 指引、出口许可说明。</td>
+                        </tr>
+                        <tr>
+                          <td>中国设备国产替代</td>
+                          <td>北方华创、中微公司</td>
+                          <td><a href="https://disc.static.szse.cn/disc/disk03/finalpage/2026-04-30/3d01114e-ca67-4e90-bad2-9534360f2db3.PDF">北方华创 2026Q1 收入 103.23 亿元、经营现金流 7.48 亿元</a>；<a href="https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-28/688012_20260428_O2GX.pdf">中微公司 2026Q1 收入 29.15 亿元、扣非净利润同比增长 60.09%</a>。</td>
+                          <td>合同负债下降；存货周转恶化；收入增长不转化为扣非利润或现金流；高端设备验证慢于预期；本地晶圆厂 capex 放缓。</td>
+                          <td>合同负债、存货、经营现金流、扣非利润率、关键设备客户验证、中标数据。</td>
+                        </tr>
+                        <tr>
+                          <td>内存接口 / CXL / PCIe</td>
+                          <td>澜起科技</td>
+                          <td><a href="https://sns.sseinfo.com/resources/images/upload/202604/202604301735012391174673.pdf">澜起科技 2026Q1 互连类收入 14.17 亿元，新品收入 2.69 亿元、同比增长 93.8%，互连毛利率 71.5%</a>。</td>
+                          <td>第二代 MRCD/MDB 或 CXL MXC 规模试用迟迟不能转量产；新品收入占比不能继续提升；互连毛利率跌回 70% 以下；海外客户订单不及预期。</td>
+                          <td>四款新品分项收入、新品收入占比、CXL MXC 量产订单、PCIe Retimer/AEC 客户导入、互连毛利率。</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="callout">
+                    <p><strong>上抛到 Q3 的判断：</strong>这张表把 Q3 从“风险提醒”变成了“节点级降级规则”。后续更新时，不应先问半导体硬件整体还能不能看，而应先看是哪一个瓶颈节点被证伪，再同步修正 Q2 瓶颈评分和 Q4 对应标的强度。</p>
+                  </div>
+                </div>
+              </details>
+
+              <details>
+                <summary>
+                  <h4>Q3.1.4 哪些反证触发器应该量化成季度监控阈值？</h4>
+                  <span class="chevron">›</span>
+                </summary>
+                <div class="details-body">
+                  <div class="research-note">
+                    <h4>本问题结论</h4>
+                    <p>第一版阈值先采用绿/黄/红灯框架，不直接转成交易动作。绿灯表示节点强度维持或可上调，黄灯表示暂停上调并等待下一季验证，红灯表示对应 Q2 瓶颈分和 Q4 标的强度需要下修。阈值当前是研究监控口径，后续要用历史分位、连续披露和同行比较校准。</p>
+                  </div>
+                  <h4 class="matrix-title">季度触发器阈值表</h4>
+                  <div class="table-wrap">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>监控变量</th>
+                          <th>当前基准</th>
+                          <th><span class="signal green">绿灯</span></th>
+                          <th><span class="signal amber">黄灯</span></th>
+                          <th><span class="signal red">红灯</span></th>
+                          <th>强度修正</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>云厂 capex 与需求质量</td>
+                          <td>TrendForce 预计九大 CSP 2026 capex 约 8,300 亿美元；Microsoft、Alphabet、Meta、Oracle 仍显示高强度 AI 基础设施投入。</td>
+                          <td>核心 CSP 维持或上修 capex，且 Cloud 收入、RPO/backlog 或客户预付款同步改善。</td>
+                          <td>capex 仍高，但增长主要来自组件涨价或数据中心土建，Cloud/RPO 兑现速度放慢。</td>
+                          <td>两个以上核心 CSP 下修全年 capex，或管理层从 capacity constrained 转为 digestion/optimization。</td>
+                          <td>红灯时先下修前端算力、HBM、CoWoS 和设备链研究强度。</td>
+                        </tr>
+                        <tr>
+                          <td>前端算力订单与客户项目</td>
+                          <td>NVIDIA Data Center 收入 752 亿美元；Broadcom AI revenue 84 亿美元；Marvell Q4 data center revenue 占比约 74%。</td>
+                          <td>Data Center 指引继续上修，ASIC 项目数或 networking 收入继续增长，客户集中度未恶化。</td>
+                          <td>收入增长仍在，但 bookings、客户项目或 networking 增速开始放缓。</td>
+                          <td>主要 ASIC 项目延期/取消，Broadcom 或 Marvell data center 指引低于预期，或 NVIDIA gross margin/非中国需求承接转弱。</td>
+                          <td>红灯时下修 NVDA/AVGO/MRVL 对应节点，不直接否定 HBM/设备，需要看传导滞后。</td>
+                        </tr>
+                        <tr>
+                          <td>HBM / 高端存储瓶颈利润</td>
+                          <td>Micron 数据中心相关 BU 毛利率 74%，Q3 毛利率指引约 81%；Samsung DS 利润和 HBM4/SOCAMM2 进展验证 AI memory 弹性。</td>
+                          <td>HBM4/HBM4E 认证顺利，ASP 稳定或继续上行，毛利率和现金流同步改善。</td>
+                          <td>毛利率仍高但 ASP 上行放缓，库存或产能释放数据开始走弱。</td>
+                          <td>HBM/DRAM ASP 连续两个季度下行，认证延迟，库存周转恶化，或经营现金流跟不上利润。</td>
+                          <td>红灯时把 HBM 从“瓶颈利润”降级为“周期弹性”，同步下修 MU/Samsung/SK hynix 强度。</td>
+                        </tr>
+                        <tr>
+                          <td>CoWoS / 先进封装吸收能力</td>
+                          <td>TSMC 表示先进封装产能紧张，CoWoS 仍为主供给，并开发 very large reticle packaging 和 CoPoS。</td>
+                          <td>CoWoS 产能扩张被客户订单吸收，HPC/AI 收入、预付款和封装毛利率维持强势。</td>
+                          <td>产能扩张继续，但客户预付款、封装毛利率或交付周期开始边际走弱。</td>
+                          <td>CoWoS 扩产快于订单，价格/毛利下行，或大尺寸封装良率、热、翘曲问题影响交付。</td>
+                          <td>红灯时下修 TSMC/先进封装节点，并检查是否传导到设备订单。</td>
+                        </tr>
+                        <tr>
+                          <td>全球设备订单与出口约束</td>
+                          <td>AMAT、Lam、KLA 已有收入、毛利和指引支撑；ASML 把出口管制纳入指引情景。</td>
+                          <td>订单/backlog、服务收入和 WFE 指引继续改善，区域收入未因许可明显受限。</td>
+                          <td>收入仍强，但订单/backlog 先于收入放缓，China exposure 或出口许可不确定性上升。</td>
+                          <td>WFE 指引下修，新增订单连续两个季度转弱，或出口许可直接影响交付。</td>
+                          <td>红灯时优先下修 ASML/AMAT/LRCX/KLAC；若中国替代受益，也需同时检查国产设备订单质量。</td>
+                        </tr>
+                        <tr>
+                          <td>中国设备财务兑现</td>
+                          <td>北方华创 2026Q1 收入 103.23 亿元、经营现金流 7.48 亿元；中微公司扣非净利润同比增长 60.09% 但经营现金流为负。</td>
+                          <td>收入、合同负债、扣非利润和经营现金流同步改善，存货周转没有恶化，高端验证继续推进。</td>
+                          <td>收入增长仍在，但合同负债下降、存货上升或现金流与利润背离。</td>
+                          <td>连续两个季度出现合同负债下降、存货周转恶化、经营现金流为负，且高端验证无新增进展。</td>
+                          <td>红灯时把国产设备从“真瓶颈”降为“政策主题验证中”，下修北方华创/中微强度。</td>
+                        </tr>
+                        <tr>
+                          <td>内存接口 / CXL / PCIe 量产兑现</td>
+                          <td>澜起科技 2026Q1 四款新品收入 2.69 亿元，占互连收入 19.0%，互连毛利率 71.5%。</td>
+                          <td>新品收入占比升至 25%-30% 以上，互连毛利率维持 70% 以上，CXL MXC 或 Retimer 获得量产订单。</td>
+                          <td>新品收入占比维持 15%-25%，毛利率仍高，但 CXL/PCIe 仍以送样、试用为主。</td>
+                          <td>新品收入占比跌破 15%，互连毛利率跌破 65%，或 CXL MXC 迟迟不能从规模试用转量产。</td>
+                          <td>红灯时把澜起/CXL 节点降为产品线索；绿灯时可从 B+ 验证型上调。</td>
+                        </tr>
+                        <tr>
+                          <td>估值与盈利修正</td>
+                          <td>多数全球核心标的 forward PE 在 20-40 倍区间，部分标的 FCF yield 低于 2.5%；中国设备和接口芯片估值容错率偏低。</td>
+                          <td>EPS/FCF 上修快于股价，forward PE 被动下降，FCF yield 改善。</td>
+                          <td>股价和估值先涨，EPS 上修有限，FCF yield 仍低。</td>
+                          <td>EPS 上修停止或下修，同时 forward PE 继续扩张，FCF yield 继续低于 1.5% 或现金流恶化。</td>
+                          <td>红灯时即使产业趋势仍强，也只能下调赔率强度，不能提高观察等级。</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="callout">
+                    <p><strong>上抛到 Q3 的判断：</strong>本表把反证从“知道有哪些风险”推进到“每季如何更新”。任一红灯连续两个季度出现，或两个以上核心节点同季转红，应把本报告整体观察强度降一级；若三个以上核心节点维持绿灯且 EPS/FCF 同步上修，则提高对应节点的研究优先级。</p>
+                  </div>
+                </div>
+              </details>
+
+              <details>
+                <summary>
+                  <h4>Q3.1.5 季度更新时应该如何填报和上抛结论？</h4>
+                  <span class="chevron">›</span>
+                </summary>
+                <div class="details-body">
+                  <div class="research-note">
+                    <h4>本问题结论</h4>
+                    <p>季度更新不能先改结论再找证据，应先填 Q3 底稿，再决定是否调整 Q2 瓶颈分和 Q4 标的强度。每个红灯或黄灯必须追溯到财报、公告、法说或行业数据，并明确它影响的是基本面强度、赔率强度，还是只是需要补证据。</p>
+                  </div>
+                  <h4 class="matrix-title">季度更新底稿模板</h4>
+                  <div class="table-wrap">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>监控变量</th>
+                          <th>当前基准读数</th>
+                          <th>本期信号</th>
+                          <th>证据链接/来源</th>
+                          <th>影响节点</th>
+                          <th>上抛动作</th>
+                          <th>待补数据</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>云厂 capex 与需求质量</td>
+                          <td>九大 CSP 2026 capex 约 8,300 亿美元；Microsoft/Alphabet/Oracle 仍显示 AI 基础设施约束和 RPO 支撑。</td>
+                          <td><span class="signal green">基准绿</span></td>
+                          <td><a href="https://www.trendforce.com/presscenter/news/20260506-13033.html">TrendForce</a>、<a href="https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q3">Microsoft</a>、<a href="https://www.oracle.com/news/announcement/q3fy26-earnings-release-2026-03-10/">Oracle</a></td>
+                          <td>Q1 需求、Q2 前端算力/HBM/设备、Q4 全球链条</td>
+                          <td>维持需求主线，但继续要求 Cloud/RPO/FCF 共同验证。</td>
+                          <td>2026Q2/Q3 capex 指引、AI 收入、RPO 转收入、客户预付款。</td>
+                        </tr>
+                        <tr>
+                          <td>前端算力订单与客户项目</td>
+                          <td>NVIDIA Data Center 752 亿美元；Broadcom AI revenue 84 亿美元；Marvell Q4 data center revenue 16.51 亿美元。</td>
+                          <td><span class="signal green">基准绿</span></td>
+                          <td><a href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-First-Quarter-Fiscal-2027/default.aspx">NVIDIA</a>、<a href="https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-first-quarter-fiscal-year-2026-financial">Broadcom</a>、<a href="https://www.sec.gov/Archives/edgar/data/1835632/000183563226000006/q426_8kx1312026ex-991.htm">Marvell</a></td>
+                          <td>Q2.1.5、Q4.1.5</td>
+                          <td>维持 NVDA/AVGO/MRVL 前端链条优先级，MRVL 受估值和 FCF 约束。</td>
+                          <td>NVIDIA compute/networking 拆分、Broadcom AI 客户数、Marvell bookings/backlog。</td>
+                        </tr>
+                        <tr>
+                          <td>HBM / 高端存储</td>
+                          <td>Micron 数据中心相关 BU 毛利率 74%，Q3 毛利率指引约 81%；Samsung DS 利润强。</td>
+                          <td><span class="signal green">基准绿</span></td>
+                          <td><a href="https://investors.micron.com/news-releases/news-release-details/micron-technology-inc-reports-results-second-quarter-fiscal-2026">Micron</a>、Samsung Q1 2026、<a href="https://www.trendforce.com/presscenter/news/20260213-12918.html">TrendForce HBM4</a></td>
+                          <td>Q2.1.2、Q4 HBM 组合</td>
+                          <td>维持 HBM 瓶颈利润判断，但用 ASP/库存/FCF 防止误判周期高点。</td>
+                          <td>HBM ASP、HBM4/HBM4E 认证、三大厂客户份额、库存周转。</td>
+                        </tr>
+                        <tr>
+                          <td>CoWoS / 先进封装</td>
+                          <td>TSMC 表示 CoWoS 仍为主供给且先进封装产能紧张；2026 capex 接近 560 亿美元高端。</td>
+                          <td><span class="signal green">基准绿</span></td>
+                          <td><a href="https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-04/3cef85204275f94fd111485cfdf4adb3c0263c45/TSMC%201Q26%20Transcript.pdf">TSMC Q1 2026 transcript</a></td>
+                          <td>Q2.1.3、TSM/长电</td>
+                          <td>维持先进封装为硬瓶颈，但长电仍只按验证型处理。</td>
+                          <td>CoWoS 月产能、先进封装毛利、客户预付款、长电先进封装收入。</td>
+                        </tr>
+                        <tr>
+                          <td>全球设备订单</td>
+                          <td>AMAT/Lam/KLA 收入和毛利强，但设备订单天然滞后于晶圆厂 capex 周期。</td>
+                          <td><span class="signal amber">基准黄</span></td>
+                          <td><a href="https://ir.appliedmaterials.com/news-releases/news-release-details/applied-materials-announces-second-quarter-2026-results">AMAT</a>、<a href="https://investor.lamresearch.com/2026-04-22-Lam-Research-Corporation-Reports-Financial-Results-for-the-Quarter-Ended-March-29%2C-2026?asPDF=">Lam</a>、<a href="https://ir.kla.com/news-events/press-releases/detail/514/kla-corporation-reports-fiscal-2026-third-quarter-results">KLA</a></td>
+                          <td>Q2.1.4、设备组合</td>
+                          <td>维持设备链 B+，但不因收入强直接上调，等待订单/backlog。</td>
+                          <td>ASML 新订单、AMAT/LRCX/KLAC backlog、服务收入、WFE 指引。</td>
+                        </tr>
+                        <tr>
+                          <td>中国设备财务兑现</td>
+                          <td>北方华创收入和现金流较强；中微扣非利润强但经营现金流为负。</td>
+                          <td><span class="signal amber">基准黄</span></td>
+                          <td><a href="https://disc.static.szse.cn/disc/disk03/finalpage/2026-04-30/3d01114e-ca67-4e90-bad2-9534360f2db3.PDF">北方华创</a>、<a href="https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-28/688012_20260428_O2GX.pdf">中微公司</a></td>
+                          <td>Q2.1.6、Q4 中国设备</td>
+                          <td>保持 B+ 验证型，不因国产替代叙事上调。</td>
+                          <td>合同负债、存货库龄、新签订单、高端设备客户验证、经营现金流。</td>
+                        </tr>
+                        <tr>
+                          <td>内存接口 / CXL / PCIe</td>
+                          <td>澜起四款新品收入 2.69 亿元、占互连收入 19.0%，互连毛利率 71.5%。</td>
+                          <td><span class="signal amber">基准黄</span></td>
+                          <td><a href="https://sns.sseinfo.com/resources/images/upload/202604/202604301735012391174673.pdf">澜起 2026Q1 投资者活动记录</a></td>
+                          <td>Q2.1.7、澜起科技</td>
+                          <td>维持 B+ 验证型，等待 CXL/Retimer 从试用转量产。</td>
+                          <td>四款新品分项收入、CXL MXC 量产订单、Retimer/AEC 客户导入。</td>
+                        </tr>
+                        <tr>
+                          <td>估值与盈利修正</td>
+                          <td>多数核心标的估值不低，部分 FCF yield 低于 2.5%；中国设备/接口芯片估值容错率偏低。</td>
+                          <td><span class="signal amber">基准黄</span></td>
+                          <td><a href="https://stockanalysis.com/stocks/nvda/financials/ratios/">StockAnalysis</a>、A 股估值快照</td>
+                          <td>Q3.1.2、Q4.1.3、Q4.1.5</td>
+                          <td>强度上调必须同时有 EPS/FCF 上修，不能只看产业趋势。</td>
+                          <td>一致预期 EPS 修正、历史估值分位、FCF yield、订单与收入 beat/miss。</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="callout">
+                    <p><strong>填报规则：</strong>每次季度更新先填本表，再更新 Q2 瓶颈分和 Q4 标的强度。红灯必须写明证据链接、影响节点和动作性质；黄灯必须写清下一季需要补的关键数据；绿灯只提高研究优先级，不自动生成交易结论。</p>
+                  </div>
+                </div>
+              </details>
+
+              <h4>Q3.1 回答呈现：反证清单</h4>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>反证问题</th>
+                      <th>触发数据</th>
+                      <th>影响节点</th>
+                      <th>动作含义</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>AI capex 是否开始放缓？</td>
+                      <td>Microsoft/Amazon/Google/Meta capex 指引、NVIDIA Q2/Q3 指引和订单口径。</td>
+                      <td>GPU、ASIC、网络、HBM、先进封装。</td>
+                      <td>若 capex 指引下修，应先降级最高估值和客户集中度最高的标的。</td>
+                    </tr>
+                    <tr>
+                      <td>HBM/DRAM 供需是否反转？</td>
+                      <td>HBM ASP、DRAM/NAND 价格、Micron 毛利率指引、SK hynix/Samsung 扩产节奏。</td>
+                      <td>Micron、SK hynix、HBM 供应链。</td>
+                      <td>若价格或毛利率连续走弱，内存节点从“瓶颈利润”降级为“周期高点”。</td>
+                    </tr>
+                    <tr>
+                      <td>设备订单是否低于扩产叙事？</td>
+                      <td>ASML 订单/backlog、AMAT/LRCX/KLAC 新增订单、SEMI 设备支出更新。</td>
+                      <td>ASML、过程设备、中国设备。</td>
+                      <td>若订单先于收入转弱，设备链优先降级。</td>
+                    </tr>
+                    <tr>
+                      <td>出口限制是否扩大？</td>
+                      <td>BIS 新规、NVIDIA 中国收入口径、ASML 中国订单/交付和许可说明。</td>
+                      <td>NVIDIA、ASML、中国设备国产替代。</td>
+                      <td>海外收入受限与中国替代加速会同时发生，不能单向解释。</td>
+                    </tr>
+                    <tr>
+                      <td>估值是否已经透支？</td>
+                      <td>未来 12 个月 EPS 上修幅度、EV/EBITDA 或 PE 分位、自由现金流收益率。</td>
+                      <td>全部标的。</td>
+                      <td>产业趋势继续强，但若盈利上修追不上估值，观察强度要下调。</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="callout">
+                <p><strong>下一步优先补的数据：</strong>实时估值分位、订单/backlog、HBM ASP、CoWoS/先进封装产能、云厂商 capex、国产设备中标、接口芯片客户导入和毛利率变化。</p>
+              </div>
+            </div>
+          </details>
+        </div>
+      </details>
+
+      <details id="q4" open>
+        <summary>
+          <h3>Q4 标的建议及理由：哪些具体证券应进入观察清单？</h3>
+          <span class="chevron">›</span>
+        </summary>
+        <div class="details-body">
+          <div class="qa-meta">
+            <span class="pill green">结论：具体标的清单已形成</span>
+            <span class="pill">全球 9 行</span>
+            <span class="pill">中国 4 个</span>
+            <span class="pill amber">非交易指令</span>
+          </div>
+          <p>全球标的按真实收入、全球瓶颈和估值赔率共同排序；中国标的按国产替代、客户导入、收入占比、订单质量、现金流和估值容错率排序。强度最高的不是涨幅最大者，而是瓶颈地位、财务敞口、订单能见度、反证清晰度和赔率约束同时较强者。</p>
+          <details open>
+            <summary>
+              <h4>Q4.1 哪些具体证券应进入观察清单，理由和风险是什么？</h4>
+              <span class="chevron">›</span>
+            </summary>
+            <div class="details-body">
+          <h4>Q4.1 回答呈现：标的建议及理由表格</h4>
+          <p class="lead">这个表格是 Q4.1 的答案呈现，不是买卖指令。每一行都必须回到对应瓶颈节点，并继续用财报、订单、客户、毛利率和估值验证。</p>
+          <div class="research-note">
+            <h4>标的映射原则</h4>
+            <p>标的进入观察清单必须满足三层映射：产业瓶颈能被验证，公司财务科目能承接该瓶颈，反证数据能被定期跟踪。本轮新增 capex/ROI、估值敏感性和中国 Q1 财务质量约束后，NVDA、AVGO、MRVL、TSM、ASML、HBM 和设备链的强度不再只看收入增速，还必须看 hyperscaler capex 是否能被 AI 收入、利用率、backlog、自由现金流和客户集中度解释。中国链条也不能只按国产替代给强度，必须看合同负债、存货、现金流、扣非利润、分产品收入和估值容错率。</p>
+          </div>
+          <div class="judgment-grid">
+            <div class="judgment-card">
+              <b>强证据组合</b>
+              <strong>NVDA / AVGO / MRVL / TSM</strong>
+              <span>收入、毛利或指引已直接体现 AI 基础设施需求。</span>
+            </div>
+            <div class="judgment-card">
+              <b>利润弹性组合</b>
+              <strong>MU / SK hynix</strong>
+              <span>内存供需偏紧能快速传导到毛利率和现金流，但周期反转风险也最大。</span>
+            </div>
+            <div class="judgment-card">
+              <b>验证型组合</b>
+              <strong>中国设备 / 封装 / 接口</strong>
+              <span>方向成立，但下一步必须补客户、订单、高端收入占比和毛利率证据。</span>
+            </div>
+          </div>
+          <details>
+            <summary>
+              <h4>Q4.1.1 估值/赔率是否支持当前观察强度？</h4>
+              <span class="chevron">›</span>
+            </summary>
+            <div class="details-body">
+              <div class="research-note">
+                <h4>本问题结论</h4>
+                <p>估值层会明显改变观察顺序。NVDA 和 TSM 的基本面最强，远期 PE 已被盈利增长部分消化，赔率仍可跟踪；AVGO、ASML、LRCX、KLAC 的瓶颈地位很强，但当前估值对订单延续和盈利兑现要求更高；MU 的远期 PE 最低，但 FCF yield 偏低且存储周期反转风险大，不能只按低 forward PE 判断便宜。中国链条已补初步估值快照，但不同平台口径差异较大，只用于约束赔率：北方华创、中微公司和澜起科技估值容错率偏低，长电科技估值低于设备/接口芯片但需要证明收入重新增长。</p>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>标的</th>
+                      <th>估值快照</th>
+                      <th>基本面证据</th>
+                      <th>赔率修正</th>
+                      <th>降级触发器</th>
+                      <th>来源</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><b>NVIDIA</b><br>NVDA</td>
+                      <td>市值约 5.15 万亿美元；PE 32.56；Forward PE 21.32；FCF yield 2.31%。</td>
+                      <td>TTM 收入 2,534.9 亿美元，同比增长 70.7%；TTM 净利润 1,596.1 亿美元，同比增长 107.9%。</td>
+                      <td>基本面 A，赔率 B+。估值不低，但盈利增速已经显著压低远期倍数，仍需观察盈利上修能否继续。</td>
+                      <td>云厂商 capex 下修、Blackwell/后续平台交付放缓、gross margin 下行、ASIC 替代扩大。</td>
+                      <td><a href="https://stockanalysis.com/stocks/nvda/">overview</a> / <a href="https://stockanalysis.com/stocks/nvda/financials/ratios/">ratios</a></td>
+                    </tr>
+                    <tr>
+                      <td><b>Broadcom</b><br>AVGO</td>
+                      <td>市值约 2.00 万亿美元；PE 82.22；Forward PE 31.53；EV/EBITDA 55.06；FCF yield 1.45%。</td>
+                      <td>AI ASIC 与 networking 收入强，但当前市值要求 AI 项目和 VMware 协同持续兑现。</td>
+                      <td>基本面 A-，赔率 B。forward PE 下降说明市场预期盈利跳升，但 FCF yield 低，容错率不高。</td>
+                      <td>大客户 ASIC 项目延后、AI networking 增速低于预期、VMware 协同或杠杆改善不及预期。</td>
+                      <td><a href="https://stockanalysis.com/stocks/avgo/financials/ratios/">ratios</a></td>
+                    </tr>
+                    <tr>
+                      <td><b>TSMC</b><br>TSM / 2330.TW</td>
+                      <td>市值约 1.90 万亿美元；PE 31.81；Forward PE 22.12；FCF yield 1.77%。</td>
+                      <td>TTM 收入 1,283.3 亿美元，同比增长 30.7%；TTM 净利润 596.8 亿美元，同比增长 47.4%。</td>
+                      <td>基本面 A，赔率 B+。估值相对 NVDA/设备链更可解释，但高 capex 和地缘折价仍会压制 FCF。</td>
+                      <td>CoWoS/先进封装扩产后议价权下降、海外厂成本超预期、地缘风险或大客户转单。</td>
+                      <td><a href="https://stockanalysis.com/stocks/tsm/">overview</a> / <a href="https://stockanalysis.com/stocks/tsm/financials/ratios/">ratios</a></td>
+                    </tr>
+                    <tr>
+                      <td><b>ASML</b></td>
+                      <td>阿姆斯特丹口径市值约 5,296 亿欧元；PE 53.23；Forward PE 40.51；FCF yield 1.69%；ROIC 74.16%。</td>
+                      <td>EUV/High-NA 稀缺性和 ROIC 极强，但订单周期和出口管制会放大估值风险。</td>
+                      <td>基本面 A-，赔率 B-。垄断质量高，但估值已经要求先进节点设备订单长期顺滑。</td>
+                      <td>新增订单或 backlog 低于预期、中国限制扩大、客户 capex 延后、High-NA 交付不及预期。</td>
+                      <td><a href="https://stockanalysis.com/quote/ams/ASML/financials/ratios/">ratios</a></td>
+                    </tr>
+                    <tr>
+                      <td><b>Micron</b><br>MU</td>
+                      <td>市值约 1.05 万亿美元；PE 43.67；Forward PE 9.85；EV/EBITDA 28.29；FCF yield 0.98%。</td>
+                      <td>HBM/数据中心内存推动盈利弹性，但当前 FCF yield 仍低，说明利润兑现和现金转换并不同步。</td>
+                      <td>基本面 B+，赔率 B+。低 forward PE 提供弹性，但必须折扣存储周期和 HBM 份额不确定性。</td>
+                      <td>HBM ASP 下行、DRAM/NAND 价格反转、库存重建过快、客户认证或份额低于预期。</td>
+                      <td><a href="https://stockanalysis.com/stocks/mu/financials/ratios/">ratios</a></td>
+                    </tr>
+                    <tr>
+                      <td><b>AMAT</b><br>设备组合</td>
+                      <td>市值约 3,557 亿美元；PE 42.16；Forward PE 30.60；FCF yield 1.50%。</td>
+                      <td>TTM 收入 290.2 亿美元，同比增长 3.3%；净利润 85.1 亿美元，同比增长 25.9%。</td>
+                      <td>基本面 B+，赔率 B-。估值已经显著前置设备周期改善，收入增速与估值不完全匹配。</td>
+                      <td>晶圆厂 capex 延后、过程设备订单弱于预期、中国收入受限、服务收入不及预期。</td>
+                      <td><a href="https://stockanalysis.com/stocks/amat/">overview</a> / <a href="https://stockanalysis.com/stocks/amat/financials/ratios/">ratios</a></td>
+                    </tr>
+                    <tr>
+                      <td><b>Lam Research</b><br>LRCX</td>
+                      <td>市值约 3,988 亿美元；PE 约 60；Forward PE 约 43；FCF yield 1.50%；目标价较当前价约 -2%。</td>
+                      <td>TTM 收入 216.8 亿美元，同比增长 26.5%；净利润 67.1 亿美元，同比增长 44.0%。</td>
+                      <td>基本面 B+，赔率 C+。增长不错，但估值和目标价已经显示订单兑现压力很高。</td>
+                      <td>存储/先进逻辑设备订单降温、客户 capex 延后、毛利率下行、出口管制扩大。</td>
+                      <td><a href="https://stockanalysis.com/stocks/lrcx/">overview</a> / <a href="https://stockanalysis.com/stocks/lrcx/financials/ratios/">ratios</a></td>
+                    </tr>
+                    <tr>
+                      <td><b>KLA</b><br>KLAC</td>
+                      <td>市值约 2,557 亿美元；PE 55.40；Forward PE 41.50；FCF yield 1.57%；ROIC 42.10%。</td>
+                      <td>量测/过程控制质量高，ROIC 强，但当前估值对先进制程投资延续要求很高。</td>
+                      <td>基本面 B+，赔率 B-。质量溢价合理，但安全边际有限。</td>
+                      <td>订单低于预期、先进节点 capex 放缓、客户集中或中国限制影响收入。</td>
+                      <td><a href="https://stockanalysis.com/stocks/klac/financials/ratios/">ratios</a></td>
+                    </tr>
+                    <tr>
+                      <td><b>中国链条</b><br>002371 / 688012 / 600584 / 688008</td>
+                      <td>北方华创 PE 约 69.8x、PB 约 9.9x；中微公司静态 PE 约 146x、PB 约 12.59x；长电科技 PE TTM 约 50-53x；澜起科技静态 PE 约 148.62x、PB 约 15.94x。</td>
+                      <td>Q1 数据显示中国链条已进入财务分化：设备龙头增长仍在，但利润、现金流、合同负债和存货给出不同信号。</td>
+                      <td>整体维持验证型。北方华创/中微/澜起估值容错率偏低，长电估值相对低但收入没有增长。</td>
+                      <td>合同负债下降、存货周转恶化、扣非利润回落、CXL/先进封装收入不兑现。</td>
+                      <td><a href="https://www.futunn.com/stock/688012-SH/financials-income-statement">valuation snapshot</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="callout">
+                <p><strong>上抛到 Q4 的判断：</strong>观察清单应分成“基本面强度”和“赔率强度”两列。当前最适合继续跟踪的是 NVDA、TSM、MU；AVGO、ASML 和设备组合需要用订单、盈利上修和 FCF 继续证明估值，不能只靠瓶颈地位强化。中国链条不再只用“缺估值”处理，而是按财务质量和估值容错率进一步拆分，保留验证型强度。</p>
+              </div>
+            </div>
+          </details>
+          <details>
+            <summary>
+              <h4>Q4.1.2 标的档案如何从 Q2 瓶颈上抛？</h4>
+              <span class="chevron">›</span>
+            </summary>
+            <div class="details-body">
+              <div class="research-note">
+                <h4>本问题结论</h4>
+                <p>标的清单不能只按“是否相关 AI”排序，而要从 Q2 的瓶颈节点逐层上抛。全球链条里，NVDA/AVGO/MRVL 负责算力芯片、custom silicon、互联和网络，TSMC/ASML 负责先进制造和封装，SK hynix/Samsung/MU 负责 HBM 与数据中心内存，AMAT/LRCX/KLAC 负责扩产设备；中国链条里，北方华创/中微公司是国产设备映射，长电科技/澜起科技是先进封装和接口/CXL 映射。强度排序必须同时考虑财务敞口、订单质量、现金流、估值赔率和反证清晰度。</p>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>标的组合</th>
+                      <th>对应 Q2 瓶颈</th>
+                      <th>当前处理</th>
+                      <th>必须继续验证</th>
+                      <th>降级条件</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>NVDA / AVGO / MRVL</td>
+                      <td>AI 加速器、custom ASIC、网络</td>
+                      <td>强证据核心链，但必须用 capex ROI 和客户集中度修正。</td>
+                      <td>Data Center 收入拆分、ASIC 项目数、data center revenue、云厂商 capex、gross margin。</td>
+                      <td>云厂商 capex 下修、ASIC 项目延期、Blackwell/Rubin 交付放缓。</td>
+                    </tr>
+                    <tr>
+                      <td>TSM / ASML</td>
+                      <td>先进制程、CoWoS、EUV/DUV</td>
+                      <td>瓶颈质量强，但 capex 和订单周期会影响赔率。</td>
+                      <td>CoWoS 产能、先进节点需求、ASML order/backlog、出口许可。</td>
+                      <td>订单弱化、出口管制扩大、客户 capex 延后。</td>
+                    </tr>
+                    <tr>
+                      <td>SK hynix / Samsung / MU</td>
+                      <td>HBM、数据中心内存、eSSD</td>
+                      <td>短期利润弹性最直接，但周期反转风险最高。</td>
+                      <td>HBM4/HBM4E 验证、ASP、供给释放、客户份额、库存。</td>
+                      <td>HBM ASP 见顶、三大厂扩产过快、客户认证低于预期。</td>
+                    </tr>
+                    <tr>
+                      <td>AMAT / LRCX / KLAC</td>
+                      <td>沉积、刻蚀、量测、过程控制</td>
+                      <td>扩产周期受益组合，但估值要求订单继续兑现。</td>
+                      <td>WFE 指引、订单、区域收入、服务收入、China exposure。</td>
+                      <td>晶圆厂 capex 下修、设备订单转弱、出口许可收紧。</td>
+                    </tr>
+                    <tr>
+                      <td>北方华创 / 中微公司</td>
+                      <td>国产设备</td>
+                      <td>中国链条最清晰的国产替代映射，但必须拆分收入兑现、扣非利润和现金流质量。</td>
+                      <td>高端设备收入、新签订单、客户导入、存货、合同负债、经营现金流。</td>
+                      <td>合同负债下降、存货周转恶化、扣非利润回落、客户 capex 放缓。</td>
+                    </tr>
+                    <tr>
+                      <td>长电科技 / 澜起科技</td>
+                      <td>先进封装、内存接口/CXL</td>
+                      <td>验证型机会，长电看先进封装能否重新拉动收入，澜起看 DDR5/CXL 新品能否持续放量。</td>
+                      <td>AI/HPC 客户、先进封装毛利、CXL/DDR5 收入、平台导入、产品结构。</td>
+                      <td>收入兑现弱、毛利率下行、平台升级节奏放缓、估值高于盈利兑现速度。</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </details>
+          <details>
+            <summary>
+              <h4>Q4.1.3 估值、EPS 和 FCF 敏感性会如何改变标的强度？</h4>
+              <span class="chevron">›</span>
+            </summary>
+            <div class="details-body">
+              <div class="research-note">
+                <h4>本问题结论</h4>
+                <p>Q4 不能只按产业地位排序，还要把每个标的拆成三列：趋势强度、财务兑现强度、赔率强度。MRVL 的 AI data center 敞口变强，但估值已经明显前置，后续需要 data center revenue、bookings、客户项目和 FCF 转换继续超预期；Samsung 和 SK hynix 的 forward PE 看起来更低，但不能直接等同于低估，因为市场正在用 HBM 周期高点给利润定价。最终观察强度应随 EPS 上修、FCF yield、订单/backlog 和 HBM ASP 动态调整。</p>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>标的/组合</th>
+                      <th>赔率证据</th>
+                      <th>需要兑现什么</th>
+                      <th>升级条件</th>
+                      <th>降级条件</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><b>MRVL</b></td>
+                      <td>PE 68.64；Forward PE 45.50；P/FCF 104.33；FCF yield 0.96%；EV/FCF 105.00。</td>
+                      <td>data center revenue、bookings、custom silicon 客户项目和 FCF 转换必须继续超预期。</td>
+                      <td>FY2027 data center 指引继续上修，客户项目增加，FCF yield 改善。</td>
+                      <td>bookings 放缓、订单延期、客户自研替代、FCF yield 继续低于 1%。</td>
+                    </tr>
+                    <tr>
+                      <td><b>Samsung</b><br>005930.KS</td>
+                      <td>PE 24.64；Forward PE 6.08；P/FCF 34.50；FCF yield 2.90%；EV/EBITDA 12.91。</td>
+                      <td>HBM4/HBM4E 认证、NVIDIA/Rubin 份额、foundry 利用率和 FCF 改善。</td>
+                      <td>HBM4E 样品顺利转量产，foundry 亏损收窄，FCF yield 继续改善。</td>
+                      <td>HBM4 认证低于预期，foundry 拖累扩大，传统 DRAM ASP 见顶。</td>
+                    </tr>
+                    <tr>
+                      <td><b>SK hynix</b><br>000660.KS</td>
+                      <td>Stockopedia 12m forecast PE 约 6.1、P/FCF 33.68、EV/EBITDA 14.61；QuarterChart Forward P/E 约 5.87、P/FCF 38.82。</td>
+                      <td>HBM ASP、客户份额、产能释放和 FCF 需要支撑低 forward PE 的持续性。</td>
+                      <td>HBM 份额维持领先，ASP 稳定，FCF 转换跟上利润。</td>
+                      <td>HBM 供给释放快于需求，客户份额被 Samsung/Micron 侵蚀，P/FCF 继续高位。</td>
+                    </tr>
+                    <tr>
+                      <td><b>MU</b></td>
+                      <td>Forward PE 9.85，FCF yield 0.98%。</td>
+                      <td>HBM4 出货、Cloud Memory/Core Data Center BU 毛利率和经营现金流必须持续。</td>
+                      <td>HBM4 份额提升，毛利率保持高位，FCF yield 上行。</td>
+                      <td>存储价格反转，库存重建过快，HBM 份额不及预期。</td>
+                    </tr>
+                    <tr>
+                      <td><b>NVDA / TSM</b></td>
+                      <td>NVDA Forward PE 21.32、FCF yield 2.31%；TSM Forward PE 22.12、FCF yield 1.77%。</td>
+                      <td>作为核心链，必须继续用收入、毛利率、capex 回报和 EPS/FCF 上修证明赔率。</td>
+                      <td>EPS/FCF 上修快于股价，forward PE 被动下降。</td>
+                      <td>云厂 capex 放缓，毛利率下修，CoWoS/先进节点产能进入消化阶段。</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>来源：<a href="https://stockanalysis.com/stocks/mrvl/financials/ratios/">MRVL ratios</a>、<a href="https://stockanalysis.com/quote/krx/005930/financials/ratios/">Samsung KRX ratios</a>、<a href="https://www.stockopedia.com/share-prices/sk-hynix-KRX%3A000660/">SK hynix Stockopedia</a>、<a href="https://quarterchart.com/info/000660.KS">SK hynix QuarterChart</a>、<a href="https://stockanalysis.com/stocks/nvda/financials/ratios/">NVDA ratios</a>、<a href="https://stockanalysis.com/stocks/tsm/financials/ratios/">TSM ratios</a>。</p>
+              <div class="callout">
+                <p><strong>上抛到 Q4 的判断：</strong>当前清单应从“产业链强弱排序”升级为“产业链强度 + 盈利兑现 + 赔率容错率”。MRVL、AVGO、ASML、设备链属于高质量但低容错率；Samsung/SK hynix/MU 属于低 forward PE 但高周期反证；NVDA/TSM 是基本面质量最强但仍需 EPS/FCF 上修延续。</p>
+              </div>
+            </div>
+          </details>
+          <details>
+            <summary>
+              <h4>Q4.1.4 中国链条的财务兑现、订单质量和估值容错率如何修正强度？</h4>
+              <span class="chevron">›</span>
+            </summary>
+            <div class="details-body">
+              <div class="research-note">
+                <h4>本问题结论</h4>
+                <p>中国链条不能只用“国产替代”作为强度来源。北方华创和中微公司是国产设备主线，但一个问题是利润弹性弱于收入，另一个问题是经营现金流与利润背离；长电科技是先进封装验证线，但 Q1 收入没有增长，利润更多来自产能利用率和产品结构修复；澜起科技是 DDR5/CXL 接口芯片验证线，毛利率和产品结构最强，但估值容错率最低。上抛到 Q4 的处理是：全部保留观察，但强度由“国产替代方向”改为“财务兑现 + 订单质量 + 估值容错率”的动态排序。</p>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>标的</th>
+                      <th>Q1 财务兑现</th>
+                      <th>订单/运营质量</th>
+                      <th>估值容错率</th>
+                      <th>观察强度修正</th>
+                      <th>下一步触发器</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><b>北方华创</b><br>002371.SZ</td>
+                      <td>2026Q1 收入 103.23 亿元，同比 +25.80%；归母净利润 16.35 亿元，同比 +3.42%；扣非净利润 16.27 亿元，同比 +3.60%。</td>
+                      <td>经营现金流净额 7.48 亿元、同比转正；合同负债约 42.03 亿元，存货约 286.03 亿元。</td>
+                      <td>PE 约 69.8x、PB 约 9.9x。收入增长能解释部分溢价，但个位数利润增长压低容错率。</td>
+                      <td>B+ 维持，但从“国产设备平台龙头”下钻为“利润弹性待验证”。</td>
+                      <td>合同负债恢复增长、利润增速追上收入、存货周转改善；若合同负债连续下降或毛利/净利率下滑则降级。</td>
+                    </tr>
+                    <tr>
+                      <td><b>中微公司</b><br>688012.SH</td>
+                      <td>2026Q1 收入 29.15 亿元，同比 +34.13%；归母净利润 9.30 亿元，同比 +197.20%；扣非净利润 4.78 亿元，同比 +60.09%。</td>
+                      <td>经营现金流净额 -1.59 亿元，去年同期 3.77 亿元；研发投入 9.08 亿元，占收入 31.14%；累计超过 8300 个反应台量产。</td>
+                      <td>静态 PE 约 146x、PB 约 12.59x。扣非增长强，但估值要求高增长和现金流改善同时兑现。</td>
+                      <td>B+ 维持，质量高于普通国产替代，但高估值和现金流背离使强度不能上调。</td>
+                      <td>经营现金流转正、合同负债/新签订单增长、扣非利润高增延续；若投资收益占比高或现金流持续为负则降级。</td>
+                    </tr>
+                    <tr>
+                      <td><b>长电科技</b><br>600584.SH</td>
+                      <td>2026Q1 收入 91.71 亿元，同比 -1.76%；归母净利润 2.90 亿元，同比 +42.74%。</td>
+                      <td>公司称成熟工厂订单较饱满、产能利用率维持高位；Q1 末存货 44.08 亿元，较 2025 年末 38.11 亿元上升。</td>
+                      <td>PE TTM 约 50-53x。相对设备/接口芯片便宜，但对于收入未增长的封测公司并不低。</td>
+                      <td>B 维持，当前更像利润率修复，不是先进封装需求已全面放量。</td>
+                      <td>收入恢复增长、先进封装收入占比提升、毛利率稳定；若存货继续上升或产能利用率回落则降级。</td>
+                    </tr>
+                    <tr>
+                      <td><b>澜起科技</b><br>688008.SH</td>
+                      <td>2026Q1 收入 14.61 亿元，同比 +19.5%；毛利率 69.8%，同比 +9.3pct；归母净利润 8.47 亿元，同比 +61.3%；扣非净利润 6.04 亿元，同比 +20.1%。</td>
+                      <td>DDR5 RCD 第三/第四子代出货占比提升；MRCD/MDB、PCIe Retimer、CKD、CXL MXC 等互连类芯片收入显著增长。</td>
+                      <td>静态 PE 约 148.62x、PB 约 15.94x。产品质量强，但估值已经要求新品持续高增长。</td>
+                      <td>B+ 维持，接口/CXL 方向证据增强，但赔率约束明显。</td>
+                      <td>CXL/PCIe/DDR5 新品收入继续高增、毛利率维持；若扣非增速停留在 20% 左右而估值不消化则降级。</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>来源：<a href="https://disc.static.szse.cn/disc/disk03/finalpage/2026-04-30/3d01114e-ca67-4e90-bad2-9534360f2db3.PDF">北方华创 2026Q1</a>、<a href="https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-28/688012_20260428_O2GX.pdf">中微公司 2026Q1</a>、<a href="https://static.cninfo.com.cn/finalpage/2026-04-29/1225224901.PDF">长电科技 2026Q1</a>、<a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-28/688008_20260428_JP30.pdf">澜起科技 2026Q1</a>、<a href="https://www.futunn.com/stock/688012-SH/financials-income-statement">A 股估值快照</a>。</p>
+              <div class="callout">
+                <p><strong>上抛到 Q4 的判断：</strong>中国链条不再按一个篮子处理。北方华创和中微公司仍是国产设备主线，但需要订单和现金流继续证明；澜起科技的产品结构证据更强，但估值容错率最低；长电科技必须先证明先进封装能够重新拉动收入。</p>
+              </div>
+            </div>
+          </details>
+          <details>
+            <summary>
+              <h4>Q4.1.5 如何把 Q3 红黄绿信号转成标的观察强度调整？</h4>
+              <span class="chevron">›</span>
+            </summary>
+            <div class="details-body">
+              <div class="research-note">
+                <h4>本问题结论</h4>
+                <p>Q4 的标的表不能是静态名单。每个标的组合都要绑定 Q3 的红黄绿触发器：绿灯只提高研究优先级，不等于交易指令；黄灯维持但不加分；红灯触发强度下修和证据复核。若某一标的组合对应的两个核心信号同季红灯，观察强度下修一级；若两个季度连续红灯，下修两级或移出核心观察。</p>
+              </div>
+              <h4 class="matrix-title">标的强度动态调整表</h4>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>标的组合</th>
+                      <th>当前强度</th>
+                      <th>绑定 Q3 信号</th>
+                      <th><span class="signal green">上调条件</span></th>
+                      <th><span class="signal red">下调条件</span></th>
+                      <th>下一步动作</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>NVDA / AVGO / MRVL</td>
+                      <td>A / A- / B+</td>
+                      <td>云厂 capex、前端算力订单、ASIC 项目、networking 增速、估值与 FCF。</td>
+                      <td>Data Center 指引继续上修，ASIC 项目数增加，networking 增速维持，EPS/FCF 上修消化估值。</td>
+                      <td>两个以上 CSP 下修 capex，ASIC 项目延期或取消，Broadcom/Marvell data center 指引弱于预期，FCF yield 继续恶化。</td>
+                      <td>NVDA 保持核心，AVGO/MRVL 用项目和 FCF 决定是否从高质量低容错降为观察型。</td>
+                    </tr>
+                    <tr>
+                      <td>TSM / ASML</td>
+                      <td>A / A-</td>
+                      <td>CoWoS 吸收能力、先进节点需求、EUV/DUV 订单、出口许可、客户 capex。</td>
+                      <td>CoWoS 产能被客户订单吸收，HPC/AI 收入占比继续提高，ASML 订单/backlog 改善。</td>
+                      <td>CoWoS 扩产快于订单，先进封装毛利下行，ASML 新订单转弱或出口许可影响交付。</td>
+                      <td>TSM 看封装与先进节点双瓶颈，ASML 看订单周期；红灯时先下修赔率，不直接否定长期质量。</td>
+                    </tr>
+                    <tr>
+                      <td>SK hynix / Samsung / MU</td>
+                      <td>A- / A- / B+</td>
+                      <td>HBM ASP、HBM4/HBM4E 认证、客户份额、库存、经营现金流。</td>
+                      <td>HBM4 认证顺利，ASP 稳定，毛利率和 FCF 同步改善，库存周转稳定。</td>
+                      <td>HBM/DRAM ASP 连续两个季度下行，库存恶化，认证延迟，FCF 跟不上利润。</td>
+                      <td>绿灯时保留利润弹性组合；红灯时从瓶颈利润降为存储周期弹性，强度优先下修。</td>
+                    </tr>
+                    <tr>
+                      <td>AMAT / LRCX / KLAC</td>
+                      <td>B+</td>
+                      <td>WFE 指引、订单/backlog、区域收入、服务收入、出口限制。</td>
+                      <td>订单/backlog 和服务收入继续改善，先进逻辑与存储扩产同时支撑设备需求。</td>
+                      <td>WFE 指引下修，订单连续两个季度转弱，China exposure 受许可限制，毛利率回落。</td>
+                      <td>设备组合只在订单确认时上调；若收入强但订单弱，视为滞后兑现而非新增机会。</td>
+                    </tr>
+                    <tr>
+                      <td>北方华创 / 中微公司</td>
+                      <td>B+</td>
+                      <td>合同负债、存货、经营现金流、扣非利润、高端设备验证、中标数据。</td>
+                      <td>收入、合同负债、扣非利润和经营现金流同步改善，高端设备验证推进。</td>
+                      <td>合同负债下降、存货周转恶化、现金流持续背离利润，高端验证无新增进展。</td>
+                      <td>绿灯时维持国产设备真瓶颈；红灯时降为政策主题验证中，不因国产替代叙事自动加分。</td>
+                    </tr>
+                    <tr>
+                      <td>长电科技 / 澜起科技</td>
+                      <td>B / B+</td>
+                      <td>先进封装收入、AI/HPC 客户、DDR5/CXL/PCIe 新品收入、毛利率、估值消化。</td>
+                      <td>长电先进封装重新拉动收入；澜起新品收入占比升至 25%-30% 以上且互连毛利率维持 70% 以上。</td>
+                      <td>长电收入继续不增长或存货上升；澜起新品占比跌破 15%、互连毛利率跌破 65% 或 CXL 量产延后。</td>
+                      <td>长电先看收入修复，澜起先看新品兑现；两者红灯都应从验证型机会降为线索型跟踪。</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="callout">
+                <p><strong>上抛到 Q4 的判断：</strong>Q4 现在不只是给出标的清单，而是给出一套动态调仓前的研究强度调整机制。本报告仍不输出交易指令，但可以明确哪些数据会让某个标的组合升级、维持或降级。</p>
+              </div>
+            </div>
+          </details>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>标的</th>
+                  <th>瓶颈节点</th>
+                  <th>强度</th>
+                  <th>进入清单理由</th>
+                  <th>必查数据</th>
+                  <th>核心风险</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>NVIDIA</b><br>NVDA</td>
+                  <td>AI 加速器、系统平台、数据中心网络</td>
+                  <td><span class="rating a">A</span></td>
+                  <td>Data Center 752 亿美元、compute 604 亿美元、networking 148 亿美元，说明 GPU 与网络同时兑现。</td>
+                  <td>Blackwell 交付、Data Center compute/networking 拆分、hyperscaler capex、非中国需求承接。</td>
+                  <td>估值、出口限制、客户 capex ROI、ASIC 替代。</td>
+                </tr>
+                <tr>
+                  <td><b>Broadcom</b><br>AVGO</td>
+                  <td>custom AI ASIC、AI networking</td>
+                  <td><span class="rating a">A-</span></td>
+                  <td>AI revenue 84 亿美元，同比增长 106%，Q2 AI semiconductor revenue 指引 107 亿美元。</td>
+                  <td>AI 客户项目数量、custom accelerator 订单、networking 增速、客户集中度。</td>
+                  <td>客户集中、项目型收入波动、云厂商自研节奏。</td>
+                </tr>
+                <tr>
+                  <td><b>Marvell</b><br>MRVL</td>
+                  <td>custom silicon、AI data center interconnect、networking</td>
+                  <td><span class="rating b">B+</span></td>
+                  <td>FY2026 收入 81.95 亿美元，同比增长 42%；Q4 data center revenue 16.51 亿美元，占收入约 74%，验证 AI data center 敞口。</td>
+                  <td>数据中心收入、bookings、custom silicon 客户、光互联/互连产品、客户集中度。</td>
+                  <td>客户集中、客户自研或垂直整合、订单取消/延期、制造测试封装依赖第三方。</td>
+                </tr>
+                <tr>
+                  <td><b>TSMC</b><br>TSM / 2330.TW</td>
+                  <td>先进制程、CoWoS/先进封装</td>
+                  <td><span class="rating a">A</span></td>
+                  <td>1Q26 revenue 359 亿美元、gross margin 66.2%，2Q revenue 指引 390-402 亿美元。</td>
+                  <td>HPC/AI 收入占比、CoWoS 扩产、先进节点产能、capex 和客户预付款。</td>
+                  <td>地缘政治、客户集中、capex 回报、封装扩产后议价权变化。</td>
+                </tr>
+                <tr>
+                  <td><b>ASML</b></td>
+                  <td>EUV/DUV 光刻设备</td>
+                  <td><span class="rating a">A-</span></td>
+                  <td>ASML 指出先进节点供给限制延续到 2026 年后，2026 revenue 指引上调至 360-400 亿欧元。</td>
+                  <td>新增订单、backlog、EUV/DUV 交付、中国收入占比、出口许可。</td>
+                  <td>出口管制、订单周期、先进客户 capex 延后。</td>
+                </tr>
+                <tr>
+                  <td><b>SK hynix</b><br>000660.KS</td>
+                  <td>HBM、高端 DRAM</td>
+                  <td><span class="rating a">A-</span></td>
+                  <td>HBM 是 AI 加速器出货核心约束之一，客户绑定和供给节奏具备较强证据。</td>
+                  <td>HBM 出货和 ASP、客户份额、良率、扩产。</td>
+                  <td>供给释放、Samsung/Micron 竞争、存储周期反转。</td>
+                </tr>
+                <tr>
+                  <td><b>Samsung Electronics</b><br>005930.KS</td>
+                  <td>HBM4、SOCAMM2、AI memory、foundry base-die</td>
+                  <td><span class="rating a">A-</span></td>
+                  <td>Q1 2026 DS 部门收入 81.7 万亿韩元、营业利润 53.7 万亿韩元，并开始面向 NVIDIA Vera Rubin 的 HBM4/SOCAMM2 量产销售。</td>
+                  <td>HBM4/HBM4E 验证、NVIDIA 份额、foundry advanced-node utilization、DRAM ASP。</td>
+                  <td>HBM4 验证不及预期、foundry 业务拖累、与 SK hynix/Micron 竞争、存储价格反转。</td>
+                </tr>
+                <tr>
+                  <td><b>Micron</b><br>MU</td>
+                  <td>HBM、数据中心 DRAM/eSSD</td>
+                  <td><span class="rating b">B+</span></td>
+                  <td>FQ2 收入 238.6 亿美元、GAAP 毛利率 74.4%、经营现金流 119 亿美元，Q3 毛利率指引约 81%。</td>
+                  <td>HBM 收入、DRAM/NAND 价格、Cloud Memory 与 Core Data Center BU 毛利率。</td>
+                  <td>存储周期、HBM 份额、库存重建过快。</td>
+                </tr>
+                <tr>
+                  <td><b>AMAT / LRCX / KLAC</b></td>
+                  <td>沉积、刻蚀、量测和过程控制设备</td>
+                  <td><span class="rating b">B+</span></td>
+                  <td>若晶圆厂设备支出继续扩张，过程设备和量测控制受益。</td>
+                  <td>订单、backlog、中国收入占比、先进逻辑/存储 capex。</td>
+                  <td>capex 周期、出口限制、中国设备国产替代。</td>
+                </tr>
+                <tr>
+                  <td><b>北方华创</b><br>002371.SZ</td>
+                  <td>国产半导体设备平台</td>
+                  <td><span class="rating b">B+</span></td>
+                  <td>2026Q1 收入 103.23 亿元，同比 +25.80%；经营现金流转正至 7.48 亿元，但归母净利润仅同比 +3.42%。</td>
+                  <td>半导体设备收入、新签订单、客户结构、高端设备验证、存货 286.03 亿元、合同负债 42.03 亿元。</td>
+                  <td>PE 约 69.8x 下利润弹性不足；合同负债下降、存货周转恶化、高端突破慢、客户 capex 放缓。</td>
+                </tr>
+                <tr>
+                  <td><b>中微公司</b><br>688012.SH</td>
+                  <td>刻蚀、薄膜沉积和 MOCVD</td>
+                  <td><span class="rating b">B+</span></td>
+                  <td>2026Q1 收入 29.15 亿元，同比 +34.13%；扣非净利润 4.78 亿元，同比 +60.09%；累计超过 8300 个反应台量产。</td>
+                  <td>刻蚀设备收入、薄膜设备收入、先进客户验证、新设备批量订单、研发投入 9.08 亿元、经营现金流。</td>
+                  <td>静态 PE 约 146x，经营现金流 -1.59 亿元；新设备验证不及预期、价格竞争、晶圆厂 capex 波动。</td>
+                </tr>
+                <tr>
+                  <td><b>长电科技</b><br>600584.SH</td>
+                  <td>封测与先进封装</td>
+                  <td><span class="rating b">B</span></td>
+                  <td>2026Q1 收入 91.71 亿元，同比 -1.76%；归母净利润 2.90 亿元，同比 +42.74%，主要成熟工厂订单较饱满。</td>
+                  <td>先进封装收入、AI/HPC 客户、CPO/垂直供电模组导入、capex、毛利率、存货 44.08 亿元。</td>
+                  <td>PE TTM 约 50-53x，收入未增长；高端先进封装投入压制利润、封测议价权弱、存货继续上升。</td>
+                </tr>
+                <tr>
+                  <td><b>澜起科技</b><br>688008.SH</td>
+                  <td>DDR5、PCIe/CXL、服务器接口</td>
+                  <td><span class="rating b">B+</span></td>
+                  <td>2026Q1 收入 14.61 亿元，同比 +19.5%；毛利率 69.8%；DDR5 RCD、MRCD/MDB、PCIe Retimer、CKD、CXL MXC 放量。</td>
+                  <td>DDR5 收入、PCIe/CXL 产品进展、服务器客户导入、单品毛利、新品收入持续性。</td>
+                  <td>静态 PE 约 148.62x、PB 约 15.94x；平台周期、海外竞争、客户导入和扣非增速不及估值要求。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+            </div>
+          </details>
+        </div>
+      </details>
+    </section>
+
+    <section id="sources">
+      <p class="eyebrow">Evidence Index</p>
+      <h2>来源索引</h2>
+      <p class="lead">材料按四类信息分类：证据、研报、消息、观点。观点类中的 DeepSeek 记录仅为整理痕迹，不用于强化结论。</p>
+      <div class="source-grid">
+        <div class="source-card">
+          <span class="kind">研报 / 行业数据</span>
+          <h4><a href="https://www.gartner.com/en/newsroom/press-releases/2026-04-08-gartner-forecasts-worldwide-semiconductor-revenue-to-exceed-us-dollars-one-point-3-trillion-in-2026">Gartner 2026 半导体收入预测</a></h4>
+          <p>用于确认行业需求背景和 AI 对芯片收入结构的拉动。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">研报 / 行业数据</span>
+          <h4><a href="https://www.semi.org/en/products-services/market-data/world-fab-forecast">SEMI World Fab Forecast</a></h4>
+          <p>用于验证设备链景气和资本开支方向。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">研报 / 行业数据</span>
+          <h4><a href="https://www.trendforce.com/presscenter/news/20260506-13033.html">TrendForce CSP capex forecast</a></h4>
+          <p>用于验证九大 CSP 2026 年资本开支上修和 GPU/ASIC/数据中心传导。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">研报 / 策略研究</span>
+          <h4><a href="https://www.wellsfargomedia.com/im/ps/research/wfii/wfii_reports/investment_strategy/globalinvestmentstrategy051826.pdf?cid=WFA2300032987">Wells Fargo AI ROI note</a></h4>
+          <p>用于把 capex 上修和 ROI、回收期、自由现金流压力绑定为反证触发器。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">证据 / 公司公告</span>
+          <h4><a href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-First-Quarter-Fiscal-2027/">NVIDIA FY2027 Q1 results</a></h4>
+          <p>用于验证 AI 加速器、数据中心网络和系统平台需求。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">证据 / 公司法说</span>
+          <h4><a href="https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q3">Microsoft FY26 Q3 call</a></h4>
+          <p>用于验证云厂商 capex 上修、组件成本和 2026 年产能约束。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">证据 / 公司公告</span>
+          <h4><a href="https://s2.q4cdn.com/299287126/files/doc_earnings/2026/q1/earnings-result/AMZN-Q1-2026-Earnings-Release.pdf">Amazon Q1 2026 results</a></h4>
+          <p>用于验证 AI 基础设施投资对自由现金流和 PPE 购买的压力。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">证据 / 公司公告</span>
+          <h4><a href="https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-First-Quarter-2026-Results/">Meta Q1 2026 results</a></h4>
+          <p>用于验证 AI capex 上调、服务器/数据中心/网络基础设施投入和组件涨价压力。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">证据 / 公司公告</span>
+          <h4><a href="https://s206.q4cdn.com/479360582/files/doc_financials/2026/q1/2026q1-alphabet-earnings-release.pdf">Alphabet Q1 2026 results</a></h4>
+          <p>用于验证 Google Cloud 收入、Cloud operating income、AI 共享研发和基础设施投入。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">研报 / 公司快照</span>
+          <h4><a href="https://www.spglobal.com/market-intelligence/en/news-insights/research/2026/05/alphabet-postq-snapshot-ai-momentum-drives-cloud-surge-capex-outlook-rises1">S&amp;P / Visible Alpha Alphabet postQ snapshot</a></h4>
+          <p>用于验证 Alphabet FY2026 capex 指引上调、Cloud AI 工作负载和基础设施容量约束。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">证据 / 公司公告</span>
+          <h4><a href="https://www.oracle.com/news/announcement/q3fy26-earnings-release-2026-03-10/">Oracle FY2026 Q3 results</a></h4>
+          <p>用于验证 AI 云 RPO、客户预付款、GPU 采购和数据中心容量约束。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">证据 / 公司公告</span>
+          <h4><a href="https://www.broadcom.com/company/news/financial-releases/63976">Broadcom FY2026 Q1 results</a></h4>
+          <p>用于验证 custom AI ASIC 和 networking 需求。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">证据 / 公司公告</span>
+          <h4><a href="https://www.sec.gov/Archives/edgar/data/1835632/000183563226000006/q426_8kx1312026ex-991.htm">Marvell FY2026 results</a></h4>
+          <p>用于验证 custom silicon、data center interconnect、AI networking 和客户集中风险。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">证据 / 公司公告</span>
+          <h4><a href="https://investor.tsmc.com/english/quarterly-results/2026/q1">TSMC Q1 2026 results</a></h4>
+          <p>用于定位先进代工、先进封装和 AI 客户需求。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">证据 / 公司公告</span>
+          <h4><a href="https://www.asml.com/en/investors/financial-results/q1-2026">ASML Q1 2026 results</a></h4>
+          <p>用于验证光刻设备瓶颈、订单周期和出口管制影响。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">证据 / 公司公告</span>
+          <h4><a href="https://investors.micron.com/news-releases/news-release-details/micron-technology-inc-reports-results-second-quarter-fiscal-2026">Micron FY2026 Q2 results</a></h4>
+          <p>用于验证 HBM、数据中心 DRAM 和 eSSD 需求。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">证据 / 产品公告</span>
+          <h4><a href="https://investors.micron.com/node/50236/pdf">Micron HBM4 for NVIDIA Vera Rubin</a></h4>
+          <p>用于验证 HBM4 平台认证、带宽、容量、能效和 SOCAMM2 对 AI 平台的绑定。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">证据 / 公司公告</span>
+          <h4><a href="https://news.skhynix.com/q1-2026-business-results/">SK hynix Q1 2026 results</a></h4>
+          <p>用于验证 HBM 和 AI server memory 需求。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">证据 / 公司公告</span>
+          <h4><a href="https://news.samsung.com/global/samsung-electronics-announces-first-quarter-2026-results">Samsung Q1 2026 results</a></h4>
+          <p>用于验证 HBM4、SOCAMM2、AI memory 供给和 Samsung 对 HBM4 竞争格局的影响。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">研报 / 行业数据</span>
+          <h4><a href="https://www.trendforce.com/presscenter/news/20260213-12929.html">TrendForce HBM4 validation note</a></h4>
+          <p>用于验证三大 HBM 供应商、NVIDIA Rubin 供应链和 HBM4 验证节奏。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">证据 / 公司法说</span>
+          <h4><a href="https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-04/3cef85204275f94fd111485cfdf4adb3c0263c45/TSMC%201Q26%20Transcript.pdf">TSMC Q1 2026 transcript</a></h4>
+          <p>用于验证 large-sized CoWoS、very large reticle packaging、CoPoS 和 capex 节奏。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">证据 / 公司公告</span>
+          <h4><a href="https://ir.appliedmaterials.com/news-releases/news-release-details/applied-materials-announces-second-quarter-2026-results">Applied Materials FY2026 Q2 results</a></h4>
+          <p>用于验证材料工程、DRAM、先进封装和 WFE 设备链需求。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">证据 / 公司公告</span>
+          <h4><a href="https://investor.lamresearch.com/2026-04-22-Lam-Research-Corporation-Reports-Financial-Results-for-the-Quarter-Ended-March-29%2C-2026?asPDF=">Lam Research March 2026 quarter results</a></h4>
+          <p>用于验证刻蚀/沉积设备收入、指引和 China/Korea/Taiwan 地域敞口。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">证据 / 公司公告</span>
+          <h4><a href="https://ir.kla.com/news-events/press-releases/detail/514/kla-corporation-reports-fiscal-2026-third-quarter-results">KLA FY2026 Q3 results</a></h4>
+          <p>用于验证过程控制、量测设备和先进封装/存储/逻辑的设备敞口。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">研报 / 市场数据</span>
+          <h4><a href="https://stockanalysis.com/stocks/nvda/financials/ratios/">StockAnalysis 估值快照</a></h4>
+          <p>用于 Q4 标的估值/赔率修正；具体标的页面链接已放入估值表。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">研报 / 市场数据</span>
+          <h4><a href="https://stockanalysis.com/stocks/mrvl/financials/ratios/">MRVL ratios</a></h4>
+          <p>用于 Q4.1.3 判断 Marvell 的 forward PE、FCF yield 和 EV/FCF 容错率。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">研报 / 市场数据</span>
+          <h4><a href="https://stockanalysis.com/quote/krx/005930/financials/ratios/">Samsung KRX ratios</a></h4>
+          <p>用于 Q4.1.3 判断 Samsung 的 forward PE、FCF yield 和 HBM4 重估条件。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">研报 / 市场数据</span>
+          <h4><a href="https://www.stockopedia.com/share-prices/sk-hynix-KRX%3A000660/">SK hynix valuation snapshot</a></h4>
+          <p>用于 Q4.1.3 判断 SK hynix 的 forward PE、P/FCF、EV/EBITDA 和 HBM 周期反证。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">证据 / 监管</span>
+          <h4><a href="https://www.bis.gov/press-release/commerce-strengthens-export-controls-restrict-chinas-ability-purchase-and-manufacture">U.S. BIS export controls</a></h4>
+          <p>用于验证出口管制风险和中国国产替代催化。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">证据 / 季报</span>
+          <h4><a href="https://disc.static.szse.cn/disc/disk03/finalpage/2026-04-30/3d01114e-ca67-4e90-bad2-9534360f2db3.PDF">北方华创 2026Q1</a></h4>
+          <p>用于把设备国产替代从主题判断压入收入增速、利润弹性、经营现金流、合同负债和存货验证。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">证据 / 季报</span>
+          <h4><a href="https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-28/688012_20260428_O2GX.pdf">中微公司 2026Q1</a></h4>
+          <p>用于验证刻蚀/薄膜设备收入增长、扣非利润、研发强度、经营现金流和量产反应台规模。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">证据 / 季报</span>
+          <h4><a href="https://static.cninfo.com.cn/finalpage/2026-04-29/1225224901.PDF">长电科技 2026Q1</a></h4>
+          <p>用于验证封测/先进封装标的的利润修复、收入增长缺口、产能利用率和存货变化。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">证据 / 季报</span>
+          <h4><a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-28/688008_20260428_JP30.pdf">澜起科技 2026Q1</a></h4>
+          <p>用于验证 DDR5、PCIe Retimer、CKD、CXL MXC 等互连芯片的收入兑现、毛利率和扣非利润质量。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">证据 / 投资者活动</span>
+          <h4><a href="https://dataclouds.cninfo.com.cn/shgonggao/investor/2026/20260403/940ac707ca6245e8b792a0f2b9d58a40.PDF">澜起科技 2025 年度投资者活动记录</a></h4>
+          <p>用于验证 MRCD/MDB、CKD、PCIe Retimer、CXL MXC 的产品阶段、客户送样和互连毛利率。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">证据 / 投资者活动</span>
+          <h4><a href="https://sns.sseinfo.com/resources/images/upload/202604/202604301735012391174673.pdf">澜起科技 2026Q1 投资者活动记录</a></h4>
+          <p>用于把接口/CXL 节点压入新产品收入、互连毛利率、量产订单和规模试用阶段验证。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">研报 / 市场数据</span>
+          <h4><a href="https://www.futunn.com/stock/688012-SH/financials-income-statement">A 股半导体估值快照</a></h4>
+          <p>用于 Q4.1.4 约束中国链条赔率；因不同平台口径存在差异，只作为估值容错率线索。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">证据 / 年报</span>
+          <h4><a href="https://www.cninfo.com.cn/new/disclosure/stock?stockCode=002371&amp;orgId=9900004797">北方华创公告</a></h4>
+          <p>用于中国半导体设备平台研究。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">证据 / 年报</span>
+          <h4><a href="https://www.sse.com.cn/assortment/stock/list/info/announcement/index.shtml?productId=688012">中微公司公告</a></h4>
+          <p>用于刻蚀、薄膜沉积和 MOCVD 设备研究。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">证据 / 年报</span>
+          <h4><a href="https://www.sse.com.cn/assortment/stock/list/info/announcement/index.shtml?productId=600584">长电科技公告</a></h4>
+          <p>用于封测与先进封装研究。</p>
+        </div>
+        <div class="source-card">
+          <span class="kind">证据 / 年报</span>
+          <h4><a href="https://www.sse.com.cn/assortment/stock/list/info/announcement/index.shtml?productId=688008">澜起科技公告</a></h4>
+          <p>用于 DDR5、PCIe/CXL 和服务器接口芯片研究。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>生成时间：2026-05-28。DeepSeek MCP 用于 Gartner、SEMI、NVIDIA、Broadcom、TSMC、Micron、ASML、中国链条资料，TrendForce/Wells Fargo/Microsoft/Amazon capex/ROI 材料，Samsung/TrendForce/Micron HBM4、TSMC CoWoS/CoPoS、AMAT/LRCX/KLAC 设备链，Meta/Marvell capex 与 AI networking/custom silicon，Alphabet/Oracle 云收入、RPO 和客户预付款材料，北方华创/中微公司/长电科技/澜起科技 2026Q1 与 A 股估值快照，以及澜起科技 2025/2026 投资者活动记录摘录的 L3 初步解析；Q4.1.3 的 MRVL、Samsung、SK hynix 估值敏感性、Q3.1.4 的季度阈值表、Q3.1.5 的季度更新底稿和 Q4.1.5 的动态强度调整表由 GPT 基于已核验来源直接写入，最终判断均由 GPT 校验来源后完成。本报告不构成交易建议。</p>
+  </footer>
+</body>
+</html>

@@ -7,18 +7,17 @@ from value_invest_research.event_researcher import EventResearcher, _build_syste
 
 
 class EventResearcherTests(unittest.TestCase):
-    def test_build_user_prompt_includes_transmission_map(self):
+    def test_build_user_prompt_includes_research_goal_qa(self):
         prompt = _build_user_prompt("US-Iran Conflict", "2026-05-06", "Military escalation in the Persian Gulf")
         self.assertIn("US-Iran Conflict", prompt)
-        self.assertIn("Transmission Map", prompt)
-        self.assertIn("Candidate Screen", prompt)
-        self.assertIn("Tier 1", prompt)
-        self.assertIn("3C", prompt)
-        self.assertIn("3D", prompt)
+        self.assertIn("Current Research Goal", prompt)
+        self.assertIn("Research Execution Plan", prompt)
+        self.assertIn("QA Drilldown", prompt)
+        self.assertIn("Specific Target Observation List", prompt)
 
-    def test_system_prompt_uses_fenghe_framework(self):
+    def test_system_prompt_uses_research_goal_qa_framework(self):
         prompt = _build_system_prompt()
-        self.assertIn("FengHe 3C3D5M3T Framework", prompt)
+        self.assertIn("Research Goal QA Framework", prompt)
 
     def test_build_user_prompt_includes_playbook(self):
         playbook = {"first_questions": ["What happened?"], "transmission_channels": ["oil_prices"]}

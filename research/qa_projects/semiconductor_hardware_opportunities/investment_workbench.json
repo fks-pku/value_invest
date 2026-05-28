@@ -1,0 +1,835 @@
+{
+  "boundary": "本清单是研究观察清单，不构成买卖建议。强度代表研究优先级和证据质量，不代表收益承诺。",
+  "l3_execution_protocol": {
+    "gpt_role": [
+      "定义 L3 问题对应的材料搜索清单和优先级。",
+      "确定资料提取 schema、可靠性要求和反证方向。",
+      "验证 DeepSeek 阅读答案，处理来源冲突，修正 unsupported claims。",
+      "写入最终 L3 答案和父层 rollup。"
+    ],
+    "deepseek_mcp_role": [
+      "逐条精读 GPT 指定的研报、消息、财报、年报、公告、访谈或材料摘录。",
+      "为每个 L3 问题产出结构化阅读答案：fact、inference、preliminary_judgment、gap、trigger、source_links、support/refute/lead。",
+      "只做材料阅读和 L3 初稿，不做最终投资判断、标的强度排序或交易建议。"
+    ],
+    "status_for_this_report": "本报告已对 Gartner、SEMI、NVIDIA、Broadcom、TSMC、Micron、ASML 等 7 组材料完成第一轮 DeepSeek L3 解析，并由 GPT 验证后压回 Q1/Q2/Q3/Q4。第二轮已补中国链条：北方华创、中微公司、长电科技、澜起科技；DeepSeek 返回不完整，GPT 基于官方/公司来源摘录完成校验和写入。第三轮已补 capex/ROI 反证：TrendForce、Wells Fargo、Microsoft、Amazon；DeepSeek 完成 L3 初读，GPT 用原始来源校验后写入 Q3.1.1。第四轮已补 Q4 估值/赔率快照：StockAnalysis 多标的估值数据；DeepSeek 完成初读，GPT 校验并写入 Q4.1.1。第五轮已补 Q2 瓶颈深挖和 Q4 标的档案：Samsung/TrendForce HBM、TSMC CoWoS、AMAT/LRCX/KLAC 设备链；DeepSeek 初读一次失败一次成功，GPT 用原始来源校验后写入 Q2.1.2-Q2.1.4 和 Q4.1.2。第六轮已补 Q1 需求质量和 Q3 赔率反证：Microsoft/Amazon/Meta/NVIDIA/Broadcom/Marvell/StockAnalysis 摘录由 DeepSeek 初读，GPT 校验后写入 Q1.1.2、Q3.1.2，并把 MRVL 纳入 Q4 观察清单。第七轮已补 Q2 HBM/CoWoS 二次深化：Micron HBM4 for NVIDIA Vera Rubin、Samsung Q1、TrendForce HBM4、TSMC CoWoS/CoPoS 法说摘录由 DeepSeek 初读，GPT 校验后重写 Q2.1.2、Q2.1.3 与对应详情页。第八轮已补 Q4 赔率敏感性：MRVL、Samsung、SK hynix 估值快照由 GPT 直接核验并写入 Q4.1.3，DeepSeek 未参与最终财务判断。第九轮已补 Q1/Q3 需求质量和反证链：Alphabet Q1、S&P/Visible Alpha Alphabet snapshot、Oracle Q3 由 DeepSeek 基于摘录初读，GPT 用原始来源校验后写入 Q1.1.2 和 Q3.1.1。第十轮已补 Q4 中国链条财务兑现、订单质量和估值容错率：北方华创/中微/长电/澜起 2026Q1 与 A 股估值快照由 DeepSeek 基于摘录初读，GPT 用原始来源校验后写入 Q4.1.4。第十一轮已补 Q2 前端算力链结构分化：NVIDIA、Broadcom、Marvell、Meta 摘录由 DeepSeek 初读，GPT 用官方来源校验后新增 Q2.1.5，并把 GPU、custom ASIC、networking 拆成独立利润捕获条件和降级触发器。第十二轮已补 Q2 中国设备与内存接口/CXL：北方华创/中微公司财务与订单质量、澜起科技 2025/2026 投资者活动记录由 DeepSeek 初读，GPT 校验后新增 Q2.1.6、Q2.1.7。第十三轮已补 Q3 节点级反证绑定矩阵：DeepSeek 本轮未返回有效内容，GPT 使用已核验来源把反证触发器绑定到 Q2 瓶颈节点和 Q4 标的强度修正规则。第十四轮已补 Q3 季度触发器阈值表：本轮不新增资料精读，GPT 基于已核验证据把反证变量转成绿/黄/红灯监控口径。第十五轮已补 Q4 标的强度动态调整表：GPT 将 Q3 红黄绿信号映射到各标的组合的上调/下调条件。第十六轮已补 Q3 季度更新底稿：GPT 将阈值表落成可填报模板，规定每季先填证据、信号和上抛动作，再调整 Q2/Q4。第十七轮已补 Q2 瓶颈评分回写规则：GPT 将 Q3 底稿信号映射到 Q2 评分维度和强度档调整规则。"
+  },
+  "l3_deepening_round_1": {
+    "parsed_by_deepseek_mcp": true,
+    "gpt_verified_and_used": true,
+    "materials": [
+      "Gartner 2026 semiconductor forecast",
+      "SEMI World Fab Forecast Q1 2026",
+      "NVIDIA FY2027 Q1 results",
+      "Broadcom FY2026 Q1 8-K",
+      "TSMC 2026Q1 financial results",
+      "Micron FY2026 Q2 results",
+      "ASML Q1 2026 investor call"
+    ],
+    "qa_nodes_updated": [
+      "Q1.1.1 demand evidence chain",
+      "Q2.1 bottleneck scorecard and financial exposure",
+      "Q2.1.1 bottleneck validation checklist",
+      "Q3.1 disconfirming trigger matrix",
+      "Q4.1 target mapping notes"
+    ],
+    "remaining_gaps": [
+      "中国设备、先进封装、接口芯片需要逐条精读年报和公告。",
+      "需要补实时估值分位、盈利上修幅度和自由现金流收益率。",
+      "需要补云厂商 capex 和 AI ROI 数据，验证需求可持续性。"
+    ]
+  },
+  "l3_deepening_round_2": {
+    "focus": "中国设备、先进封装和内存接口链条",
+    "parsed_by_deepseek_mcp": "attempted_but_incomplete",
+    "gpt_verified_and_used": true,
+    "materials": [
+      "北方华创 2025 年年度报告",
+      "中微公司 2025 年年度报告摘要",
+      "长电科技 2025 年年度报告新闻稿",
+      "澜起科技 2025 年半年度报告与新闻中心"
+    ],
+    "qa_nodes_updated": [
+      "Q2.1.1 中国链条二次验证",
+      "Q4.1 中国标的映射",
+      "中国设备国产替代详情页",
+      "先进制程/先进封装详情页",
+      "内存接口/CXL/PCIe 详情页"
+    ],
+    "key_additions": [
+      "北方华创 2025 年营收 393.53 亿元，集成电路设备营收同比超 50%，经营现金流净额 21.33 亿元。",
+      "中微公司 2025 年营收 123.85 亿元，薄膜设备累计出货突破 300 个反应台，新品进入客户量产验证。",
+      "长电科技 2025 年营收 388.7 亿元，先进封装相关收入 270 亿元，运算电子收入同比增长 42.6%。",
+      "澜起科技 CXL 3.x MXC 工程设计并流片，PCIe/CXL 和 DDR5 产品线提供接口链验证线索。"
+    ],
+    "remaining_gaps": [
+      "需要补中国标的正式年报中的毛利率、分产品收入和现金流细项。",
+      "需要补实时估值分位、盈利上修幅度和自由现金流收益率。",
+      "需要补云厂商 capex 和 AI ROI 数据，验证需求可持续性。"
+    ]
+  },
+  "l3_deepening_round_3": {
+    "focus": "capex/ROI 反证与需求可持续性",
+    "parsed_by_deepseek_mcp": true,
+    "gpt_verified_and_used": true,
+    "materials": [
+      "TrendForce 2026-05-06 九大 CSP capex forecast",
+      "Wells Fargo Investment Institute 2026-05-18 AI ROI strategy note",
+      "Microsoft FY26 Q3 earnings call",
+      "Amazon Q1 2026 results and 2025 annual report capex discussion"
+    ],
+    "qa_nodes_updated": [
+      "Q3.1.1 capex/ROI disconfirming triggers",
+      "Q3.1 disconfirming trigger matrix",
+      "Q1 demand sustainability caveat",
+      "Q4 target downgrade conditions"
+    ],
+    "key_additions": [
+      "TrendForce 预计九大 CSP 2026 年 capex 约 8,300 亿美元，年增率从 61% 上调至 79%。",
+      "Wells Fargo 指出四大 hyperscaler 2026 年 capex 预计超过 6,500 亿美元，市场焦点已转向 ROI、回收期、商业化路径、自由现金流和资本效率。",
+      "Microsoft 预计 2026 年 capex 约 1,900 亿美元，其中约 250 亿美元来自组件价格上涨，并预计至少到 2026 年仍受 GPU/CPU/storage capacity 约束。",
+      "Amazon Q1 2026 TTM free cash flow 降至 12 亿美元，PPE 购买净额 TTM 达 1,473 亿美元，说明 AI 基础设施投资正在消耗自由现金流。"
+    ],
+    "remaining_gaps": [
+      "仍需要接入实时估值分位、盈利上修幅度和自由现金流收益率。",
+      "需要逐季跟踪 hyperscaler AI 收入、backlog、利用率和 capex 指引变化。",
+      "需要把 capex 指引拆成单位服务器/GPU/ASIC 出货、组件价格和数据中心土建电力投资。"
+    ]
+  },
+  "l3_deepening_round_4": {
+    "focus": "Q4 标的估值/赔率修正",
+    "parsed_by_deepseek_mcp": true,
+    "gpt_verified_and_used": true,
+    "materials": [
+      "StockAnalysis NVDA overview and ratios",
+      "StockAnalysis AVGO ratios",
+      "StockAnalysis TSM overview and ratios",
+      "StockAnalysis ASML Amsterdam ratios",
+      "StockAnalysis MU ratios",
+      "StockAnalysis AMAT overview and ratios",
+      "StockAnalysis LRCX overview and ratios",
+      "StockAnalysis KLAC ratios"
+    ],
+    "qa_nodes_updated": [
+      "Q4.1.1 valuation/odds snapshot",
+      "Q4.1 target mapping principles",
+      "Q4 target observation strength"
+    ],
+    "key_additions": [
+      "NVDA：PE 32.56，Forward PE 21.32，FCF yield 2.31%，基本面 A、赔率 B+。",
+      "AVGO：PE 82.22，Forward PE 31.53，FCF yield 1.45%，基本面 A-、赔率 B。",
+      "TSM：PE 31.81，Forward PE 22.12，FCF yield 1.77%，基本面 A、赔率 B+。",
+      "ASML：PE 53.23，Forward PE 40.51，FCF yield 1.69%，基本面 A-、赔率 B-。",
+      "MU：Forward PE 9.85，但 FCF yield 0.98%，基本面 B+、赔率 B+，需折扣存储周期。",
+      "AMAT/LRCX/KLAC：设备链 forward PE 约 30.60/43/41.50，FCF yield 约 1.5%，估值对订单兑现要求较高。"
+    ],
+    "remaining_gaps": [
+      "中国 A 股标的缺少同口径实时估值数据，当前不使用估值强化结论。",
+      "需要补卖方一致预期 EPS 修正、收入修正和目标价变化时间序列。",
+      "需要补订单/backlog 与估值倍数之间的敏感性表。"
+    ]
+  },
+  "l3_deepening_round_5": {
+    "focus": "Q2 瓶颈节点深挖与 Q4 标的档案上抛",
+    "parsed_by_deepseek_mcp": "retried_after_empty_response",
+    "gpt_verified_and_used": true,
+    "materials": [
+      "Samsung Electronics Q1 2026 results",
+      "TrendForce 2026-02-13 HBM4 validation note",
+      "TSMC Q1 2026 earnings call transcript",
+      "Applied Materials FY2026 Q2 results",
+      "Lam Research March 2026 quarter results",
+      "KLA FY2026 Q3 results"
+    ],
+    "qa_nodes_updated": [
+      "Q2.1.2 HBM/高端存储是否仍是硬瓶颈",
+      "Q2.1.3 先进封装/CoWoS 的瓶颈到底在哪里",
+      "Q2.1.4 设备链是瓶颈还是滞后受益",
+      "Q4.1.2 标的档案如何从 Q2 瓶颈上抛"
+    ],
+    "key_additions": [
+      "Samsung Q1 2026 DS 部门收入 81.7 万亿韩元、营业利润 53.7 万亿韩元，Memory Business 因 AI 高附加值需求、ASP 上升和供给有限创纪录。",
+      "TrendForce 指出 NVIDIA Rubin 的 HBM4 需求无法由单一供应商完全满足，三大供应商预计 2026Q2 完成验证。",
+      "TSMC 当前主供给仍是 large-sized CoWoS，并开发 very large reticle packaging 和 CoPoS；2026 capex 接近 560 亿美元高端。",
+      "AMAT 预计 calendar 2026 半导体设备业务增长超过 30%；Lam 和 KLA 提供刻蚀/沉积/量测设备收入和指引验证。"
+    ],
+    "remaining_gaps": [
+      "HBM 仍需补 ASP、出货、良率、客户认证和三大厂份额。",
+      "先进封装仍需补 CoWoS 月产能、客户预付款、良率和高端封装毛利。",
+      "设备链仍需补订单、backlog、区域收入、服务收入和出口许可。",
+      "Q4 仍需补中国标的实时估值和全球标的一致预期 EPS 修正。"
+    ]
+  },
+  "l3_deepening_round_6": {
+    "focus": "Q1 需求质量拆分、Q3 估值/盈利兑现压力、MRVL 标的映射",
+    "parsed_by_deepseek_mcp": true,
+    "gpt_verified_and_used": true,
+    "materials": [
+      "Microsoft FY26 Q3 earnings call",
+      "Amazon Q1 2026 results",
+      "Meta Q1 2026 results",
+      "NVIDIA FY2027 Q1 results",
+      "Broadcom FY2026 Q1 results",
+      "Marvell FY2026 Q4/FY2026 results",
+      "StockAnalysis valuation snapshot"
+    ],
+    "qa_nodes_updated": [
+      "Q1.1.2 云厂 capex 到底买了什么，能否证明真实硬件需求",
+      "Q3.1.2 估值和盈利兑现压力如何影响赔率",
+      "Q4 标的观察清单加入 Marvell / MRVL"
+    ],
+    "key_additions": [
+      "把云厂 capex 拆为 GPU/加速器、自研 ASIC/custom silicon、网络/互联、服务器/数据中心/组件涨价四类，避免把名义 capex 直接等同于芯片出货。",
+      "Meta Q1 2026 capex 198.4 亿美元，2026 capex 指引上调至 1,250-1,450 亿美元，主要投向服务器、数据中心和网络基础设施。",
+      "Marvell FY2026 收入 81.95 亿美元，同比增长 42%；Q4 data center revenue 16.51 亿美元，占收入约 74%，用于补充 Broadcom 之外的 custom silicon/interconnect 敞口。",
+      "Q3 新增估值与盈利兑现矩阵：高景气资产必须用 EPS/FCF 上修速度验证赔率，不能只用产业趋势强化结论。"
+    ],
+    "remaining_gaps": [
+      "仍需补 MRVL 同口径估值快照、客户项目和 data center backlog。",
+      "仍需补云厂 capex 的 GPU/ASIC/server/network/storage 精确拆分。",
+      "仍需补全球标的一致预期 EPS 修正、历史估值分位和订单敏感性。"
+    ]
+  },
+  "l3_deepening_round_7": {
+    "focus": "Q2 HBM/高端存储与先进封装/CoWoS 二次深化",
+    "parsed_by_deepseek_mcp": true,
+    "gpt_verified_and_used": true,
+    "materials": [
+      "Micron FY2026 Q2 results",
+      "Micron HBM4 for NVIDIA Vera Rubin product announcement",
+      "Samsung Electronics Q1 2026 results",
+      "TrendForce 2026-02-13 HBM4 validation note",
+      "TSMC Q1 2026 results",
+      "TSMC Q1 2026 earnings call transcript"
+    ],
+    "qa_nodes_updated": [
+      "Q2.1.2 HBM/高端存储是否仍是硬瓶颈",
+      "Q2.1.3 先进封装/CoWoS 的瓶颈到底在哪里",
+      "HBM/高端存储详情页",
+      "先进制程/先进封装详情页"
+    ],
+    "key_additions": [
+      "Micron 已在 2026 年一季度开始批量出货为 NVIDIA Vera Rubin 设计的 HBM4 36GB 12H，带宽超过 2.8TB/s，并出货 HBM4 48GB 16H 样品。",
+      "HBM 判断从普通存储周期升级为 HBM4/HBM4E 平台认证、带宽、容量、能效、良率和三家供应商份额迁移问题。",
+      "TSMC 称先进封装产能也非常紧，需要与 OSAT 伙伴扩产；大尺寸封装挑战包括 mechanical stress、warpage 和 thermal limitation。",
+      "CoWoS 判断从封测产能升级为大尺寸封装、reticle size、良率、热管理、客户协同和 capex 回报问题。"
+    ],
+    "remaining_gaps": [
+      "HBM 仍需补 HBM ASP、实际出货、良率、NVIDIA/Rubin 客户份额和三大厂产能释放节奏。",
+      "CoWoS 仍需补月产能、先进封装收入占比、客户预付款、OSAT 分工、高端封装毛利和 capex 回报。",
+      "Q4 仍需把 HBM/CoWoS 的新验证项进一步压入单个标的 EPS/FCF 敏感性表。"
+    ]
+  },
+  "l3_deepening_round_8": {
+    "focus": "Q4 标的赔率敏感性、EPS/FCF 兑现压力",
+    "parsed_by_deepseek_mcp": false,
+    "gpt_verified_and_used": true,
+    "materials": [
+      "StockAnalysis MRVL financial ratios snapshot",
+      "StockAnalysis Samsung Electronics KRX ratios snapshot",
+      "Stockopedia SK hynix valuation snapshot",
+      "QuarterChart SK hynix valuation snapshot",
+      "Existing StockAnalysis NVDA/TSM/MU valuation snapshot"
+    ],
+    "qa_nodes_updated": [
+      "Q4.1.3 估值、EPS 和 FCF 敏感性会如何改变标的强度",
+      "Q4 标的观察清单的赔率约束",
+      "Q4.1 全球/中国标的筛选的上抛结论"
+    ],
+    "key_additions": [
+      "MRVL PE 68.64、Forward PE 45.50、FCF yield 0.96%、EV/FCF 105.00，说明 custom silicon/interconnect 逻辑已被高强度定价。",
+      "Samsung KRX 口径 Forward PE 6.08、FCF yield 2.90%，赔率低于多数美国 AI 半导体标的，但需要 HBM4/HBM4E 和 foundry 利用率验证。",
+      "SK hynix 12m forecast PE 约 6.1、Forward P/E 约 5.87，但 P/FCF 约 33.68-38.82，说明低 PE 仍需 FCF 和 HBM ASP 验证。",
+      "Q4 从产业链强弱排序升级为产业链强度 + 盈利兑现 + 赔率容错率。"
+    ],
+    "remaining_gaps": [
+      "仍需补所有全球标的的一致预期 EPS 修正时间序列。",
+      "仍需补 MRVL/SK hynix/Samsung 的订单、backlog、分产品毛利和历史估值分位。",
+      "仍需补中国 A 股标的同口径估值、盈利修正和订单敏感性。"
+    ]
+  },
+  "l3_deepening_round_9": {
+    "focus": "Q1 需求质量、Cloud/RPO/backlog 和 Q3 capex/ROI 反证链深化",
+    "parsed_by_deepseek_mcp": true,
+    "gpt_verified_and_used": true,
+    "materials": [
+      "Alphabet Q1 2026 earnings release",
+      "S&P Global / Visible Alpha Alphabet postQ snapshot",
+      "Oracle FY2026 Q3 earnings release"
+    ],
+    "qa_nodes_updated": [
+      "Q1 需求上抛结论",
+      "Q1.1 AI capex 传导链",
+      "Q1.1.2 云厂 capex 到底买了什么",
+      "Q3 绑定反证",
+      "Q3.1.1 capex/ROI 触发器"
+    ],
+    "key_additions": [
+      "Alphabet Q1 2026 Google Cloud 收入 200.28 亿美元、Cloud operating income 65.98 亿美元，说明 AI 基础设施支出已有收入和利润承接。",
+      "S&P/Visible Alpha 指出 Alphabet FY2026 capex 指引上调至 1800-1900 亿美元，Cloud 增长由 AI infrastructure、training、inferencing 和 data analytics 工作负载支撑。",
+      "Oracle Q3 FY2026 RPO 5530 亿美元，同比增长 325%，多数大规模 AI 合同设备由客户预付款帮助采购 GPU，或由客户自购 GPU 提供给 Oracle。",
+      "Q1 的需求证据从 capex 金额升级为 Cloud 收入增长 + RPO/backlog + 客户预付款 + 供给约束；Q3 的反证从 capex 下修扩展到 RPO 转收入、客户预付款退潮和 Cloud margin 回落。"
+    ],
+    "remaining_gaps": [
+      "仍需补 Google、Oracle、Microsoft、Amazon、Meta 的 capex 中 GPU/ASIC/network/storage/data center construction 精确拆分。",
+      "仍需补 RPO 转收入速度、客户预付款余额、GPU 交付和合同取消/延后数据。",
+      "仍需补 hyperscaler AI 收入、利用率、云毛利率和 FCF 与硬件订单之间的季度联动表。"
+    ]
+  },
+  "l3_deepening_round_10": {
+    "focus": "Q4 中国链条财务兑现、订单质量和估值容错率",
+    "parsed_by_deepseek_mcp": true,
+    "gpt_verified_and_used": true,
+    "materials": [
+      "北方华创 2026 年第一季度报告",
+      "中微公司 2026 年第一季度报告",
+      "长电科技 2026 年第一季度报告",
+      "澜起科技 2026 年第一季度报告",
+      "A 股半导体硬件标的估值快照"
+    ],
+    "qa_nodes_updated": [
+      "Q4 标的建议及理由表格",
+      "Q4.1 全球/中国标的如何筛选",
+      "Q4.1.1 第一批观察清单",
+      "Q4.1.2 标的档案如何从 Q2 瓶颈上抛",
+      "Q4.1.4 中国链条的财务兑现、订单质量和估值容错率如何修正强度",
+      "最终标的推荐表"
+    ],
+    "key_additions": [
+      "北方华创 Q1 收入 103.23 亿元、经营现金流转正，但归母净利润仅增长 3.42%，说明收入兑现和利润弹性需要分开判断。",
+      "中微公司 Q1 收入增长 34.13%、扣非净利润增长 60.09%，但经营现金流转负，研发强度高，强度修正必须纳入现金流和订单质量。",
+      "长电科技 Q1 收入同比下降 1.76%、利润增长 42.74%，当前更像效率修复，先进封装是否重新拉动收入仍需验证。",
+      "澜起科技 Q1 毛利率 69.8%、扣非净利润增长 20.1%，DDR5/CXL 互连芯片兑现较清晰，但估值容错率偏低。",
+      "中国链条从“国产替代篮子”拆成设备平台、刻蚀/薄膜设备、先进封装利润修复、DDR5/CXL 接口芯片四类验证。"
+    ],
+    "remaining_gaps": [
+      "需要同口径估值分位和一致预期 EPS 修正。",
+      "需要合同负债明细、订单/中标节奏、客户导入和库存库龄。",
+      "需要分产品收入、分产品毛利、经营现金流与利润背离原因。",
+      "需要把中国链条单独做季度跟踪表，观察是否真的从主题机会进入财务兑现。"
+    ]
+  },
+  "l3_deepening_round_11": {
+    "focus": "Q2 前端算力链结构分化：GPU、custom ASIC、networking/interconnect",
+    "parsed_by_deepseek_mcp": true,
+    "gpt_verified_and_used": true,
+    "materials": [
+      "NVIDIA FY2027 Q1 results",
+      "Broadcom FY2026 Q1 results",
+      "Marvell FY2026 Q4 and FY2026 results",
+      "Meta Q1 2026 results"
+    ],
+    "qa_nodes_updated": [
+      "Q2 瓶颈上抛结论",
+      "Q2.1 哪些节点有瓶颈属性和财务敞口",
+      "Q2.1.5 AI 加速器、custom ASIC 和 networking 谁在捕获最前端瓶颈利润",
+      "Q2.1 瓶颈评分卡"
+    ],
+    "key_additions": [
+      "把前端算力链从单一 GPU 叙事拆成 GPU 绝对利润池、custom ASIC 增量替代和 networking/interconnect 边际短板。",
+      "NVIDIA Data Center compute 604 亿美元、networking 148 亿美元，networking 同比和环比增速显著高于 compute。",
+      "Broadcom AI revenue 84 亿美元、Q2 AI semiconductor revenue 指引 107 亿美元，验证 custom AI accelerator 和 AI networking 的可量化收入。",
+      "Marvell FY2026 收入 81.95 亿美元、bookings 继续创纪录，同时暴露客户集中、客户自研/垂直整合和订单延期风险。",
+      "Meta capex 上调说明前端组件仍有价格/供给压力，但也要求把 price 与 volume 分开。"
+    ],
+    "remaining_gaps": [
+      "需要 NVIDIA Hyperscale/ACIE 与 compute/networking 客户拆分。",
+      "需要 Broadcom AI accelerator 与 AI networking 分项收入和毛利率。",
+      "需要 Marvell data center 产品拆分、客户集中度、bookings 和 backlog。",
+      "需要 CSP capex 在 GPU、ASIC、networking 和 data center construction 之间的分配。"
+    ]
+  },
+  "l3_deepening_round_12": {
+    "focus": "Q2 中国设备国产替代与内存接口/CXL 财务兑现",
+    "parsed_by_deepseek_mcp": true,
+    "gpt_verified_and_used": true,
+    "materials": [
+      "北方华创 2025 年年度报告",
+      "北方华创 2026 年第一季度报告",
+      "中微公司 2025 年年度报告摘要",
+      "中微公司 2026 年第一季度报告",
+      "澜起科技 2025 年度投资者活动记录",
+      "澜起科技 2026Q1 投资者活动记录",
+      "澜起科技 2026Q1 报告"
+    ],
+    "qa_nodes_updated": [
+      "Q2 瓶颈上抛结论",
+      "Q2.1 哪些节点有瓶颈属性和财务敞口",
+      "Q2.1.6 中国设备国产替代是真瓶颈，还是政策主题",
+      "Q2.1.7 内存接口 / CXL / PCIe 能否从验证型瓶颈升级为可财务兑现的瓶颈",
+      "Q2.1 瓶颈评分卡"
+    ],
+    "key_additions": [
+      "中国设备不再只按政策主题处理，而是用收入、合同负债、存货、研发强度、利润弹性和现金流验证。",
+      "北方华创收入和现金流证明平台型设备已财务兑现，但 Q1 利润弹性弱于收入，强度不能直接上调。",
+      "中微公司扣非利润和反应台量产规模较强，但经营现金流转负，需继续验证订单质量和现金转换。",
+      "澜起科技互连类芯片 2026Q1 收入 14.17 亿元，新产品合计 2.69 亿元，占比 19.0%，互连毛利率 71.5%。",
+      "内存接口/CXL 从 B 调整为 B+ 验证型瓶颈，但 CXL MXC、Retimer 和 PCIe Switch 仍需从送样/试用转向量产订单。"
+    ],
+    "remaining_gaps": [
+      "中国设备仍需分设备线收入、高端客户导入、订单/中标、合同负债明细、存货库龄和毛利率。",
+      "CXL/PCIe 仍需四款新产品分项收入、CXL MXC 量产订单、Retimer/AEC 客户导入、时钟发生器订单规模和 PCIe Switch 流片结果。",
+      "需要把 Q2 节点评分与 Q4 标的强度联动成季度跟踪表。"
+    ]
+  },
+  "l3_deepening_round_13": {
+    "focus": "Q3 节点级反证绑定矩阵",
+    "parsed_by_deepseek_mcp": "attempted_but_empty",
+    "gpt_verified_and_used": true,
+    "materials": [
+      "NVIDIA/Broadcom/Marvell AI 加速器、custom ASIC、networking 已核验来源",
+      "TrendForce/Microsoft/Amazon/Alphabet/Oracle capex、Cloud、RPO、FCF 已核验来源",
+      "Samsung/Micron/TrendForce HBM 与高端存储已核验来源",
+      "TSMC CoWoS/CoPoS、AMAT/LRCX/KLAC 设备链已核验来源",
+      "北方华创/中微公司/澜起科技 2026Q1 与投资者活动记录"
+    ],
+    "qa_nodes_updated": [
+      "Q3 定价与风险上抛结论",
+      "Q3.1 主要反证来自 AI capex、存储周期、出口管制还是估值拥挤",
+      "Q3.1.3 反证如何绑定到具体瓶颈节点和标的",
+      "Q3.1 回答呈现：反证清单"
+    ],
+    "key_additions": [
+      "反证从泛风险清单升级为节点级降级规则。",
+      "前端算力、云厂 capex、HBM、先进制程/封装、全球设备、中国设备、CXL/PCIe 均绑定到具体影响标的。",
+      "每个节点补充正证据、降级触发器和后续跟踪数据。",
+      "Q3 与 Q2 瓶颈评分、Q4 标的强度建立直接联动。"
+    ],
+    "remaining_gaps": [
+      "需要把节点级触发器接入季度更新表。",
+      "需要补实时订单、历史估值分位、HBM ASP、CoWoS 月产能和国产设备中标数据。",
+      "需要把每个触发器设定为可量化阈值，而不是只有方向性描述。"
+    ]
+  },
+  "l3_deepening_round_14": {
+    "focus": "Q3 反证触发器量化阈值与季度监控表",
+    "parsed_by_deepseek_mcp": false,
+    "gpt_verified_and_used": true,
+    "materials": [
+      "已核验 capex、Cloud/RPO、FCF、前端算力、HBM、CoWoS、设备、中国设备、CXL/PCIe 和估值来源"
+    ],
+    "qa_nodes_updated": [
+      "Q3.1 主要反证来自 AI capex、存储周期、出口管制还是估值拥挤",
+      "Q3.1.4 哪些反证触发器应该量化成季度监控阈值"
+    ],
+    "key_additions": [
+      "新增绿/黄/红灯季度阈值表。",
+      "把云厂 capex、前端算力、HBM、CoWoS、设备、中国设备、CXL/PCIe、估值与盈利修正分别设定监控口径。",
+      "把红灯与 Q2 瓶颈分、Q4 标的观察强度的修正动作绑定。",
+      "明确阈值为第一版研究监控口径，后续需要历史分位和连续披露校准。"
+    ],
+    "remaining_gaps": [
+      "需要用历史分位校准红黄绿阈值。",
+      "需要把阈值变化自动回写到代码化瓶颈评分和标的强度表。"
+    ]
+  },
+  "l3_deepening_round_15": {
+    "focus": "Q4 标的强度动态调整规则",
+    "parsed_by_deepseek_mcp": false,
+    "gpt_verified_and_used": true,
+    "materials": [
+      "Q3 红黄绿触发器阈值表",
+      "Q4 标的观察清单、估值敏感性、中国链条验证表"
+    ],
+    "qa_nodes_updated": [
+      "Q4.1 全球瓶颈龙头和中国国产替代标的分别如何筛选",
+      "Q4.1.5 如何把 Q3 红黄绿信号转成标的观察强度调整"
+    ],
+    "key_additions": [
+      "新增标的组合动态强度调整表。",
+      "把 NVDA/AVGO/MRVL、TSM/ASML、HBM 组合、设备组合、中国设备、长电/澜起分别绑定 Q3 信号。",
+      "明确绿灯、黄灯、红灯对观察强度的含义，不输出交易指令。",
+      "形成 Q3 反证到 Q4 标的强度的闭环。"
+    ],
+    "remaining_gaps": [
+      "需要建立真实季度填报表。",
+      "需要把标的强度更新同步回 HTML 总表的评级列。",
+      "需要继续补每个标的的最新一致预期 EPS 修正和订单数据。"
+    ]
+  },
+  "l3_deepening_round_16": {
+    "focus": "Q3 季度更新底稿模板",
+    "parsed_by_deepseek_mcp": false,
+    "gpt_verified_and_used": true,
+    "materials": [
+      "Q3.1.4 绿/黄/红灯阈值表",
+      "已核验的 2026Q1/FY2026 基准来源"
+    ],
+    "qa_nodes_updated": [
+      "Q3.1 主要反证来自 AI capex、存储周期、出口管制还是估值拥挤",
+      "Q3.1.5 季度更新时应该如何填报和上抛结论"
+    ],
+    "key_additions": [
+      "新增季度更新底稿模板。",
+      "为每个监控变量设置当前基准读数、本期信号、证据链接、影响节点、上抛动作和待补数据。",
+      "明确季度更新顺序：先填 Q3 底稿，再更新 Q2 瓶颈分和 Q4 标的强度。",
+      "标明当前基准绿/黄信号，避免把初始状态误读为交易结论。"
+    ],
+    "remaining_gaps": [
+      "需要用后续季度真实数据替换当前基准读数。",
+      "需要继续补历史分位、订单/backlog、HBM ASP、CoWoS 月产能和一致预期 EPS 修正。",
+      "需要自动把底稿信号同步回 Q2 瓶颈评分和 Q4 强度总表。"
+    ]
+  },
+  "l3_deepening_round_17": {
+    "focus": "Q2 瓶颈评分回写规则",
+    "parsed_by_deepseek_mcp": false,
+    "gpt_verified_and_used": true,
+    "materials": [
+      "Q2 瓶颈评分卡",
+      "Q3 季度更新底稿",
+      "Q4 标的强度动态调整表"
+    ],
+    "qa_nodes_updated": [
+      "Q2.1 哪些节点有瓶颈属性和财务敞口",
+      "Q2.1.8 如何把 Q3 季度信号回写到瓶颈评分"
+    ],
+    "key_additions": [
+      "新增瓶颈评分回写规则表。",
+      "新增本期评分变化表，标出维持核心、冻结上调、维持验证和上调一级。",
+      "把每个 Q2 节点绑定到 Q3 信号和绿/黄/红处理方式。",
+      "区分产业瓶颈分与赔率强度，避免估值红灯直接否定产业位置。",
+      "形成 Q3 底稿 -> Q2 评分 -> Q4 标的强度的研究闭环。"
+    ],
+    "remaining_gaps": [
+      "需要把手工回写规则代码化。",
+      "需要把每次季度信号持久化为历史序列。",
+      "需要在 HTML 总表中显示本期评分变化和上期对比。"
+    ]
+  },
+  "research_execution_plan": [
+    {
+      "question_id": "Q1",
+      "name": "确认需求",
+      "qa_root": "q1.demand",
+      "ask": "AI 基础设施是否仍在真实拉动芯片、存储、网络和设备需求？",
+      "collect": "收集行业规模、公司收入、产品结构、客户 capex、设备支出等一手证据和高质量行业数据。",
+      "connect": "把云厂商 capex 传导到 GPU/ASIC、网络、HBM、先进封装、代工和设备。",
+      "present": "在 Q1/Q1.1/Q1.1.1 内展示需求证据链、事实、推论、判断、缺口和触发器。"
+    },
+    {
+      "question_id": "Q2",
+      "name": "定位瓶颈",
+      "qa_root": "q2.bottleneck",
+      "ask": "产业链哪些环节最可能捕获增量利润，哪些只是相关但不赚钱？",
+      "collect": "按节点收集供需、良率、客户认证、收入占比、毛利弹性、订单和资本开支证据。",
+      "connect": "用需求传导、供给稀缺、替代难度、议价能力、财务敞口、证据强度和风险扣分形成瓶颈评分。",
+      "present": "在 Q2.1 内把瓶颈评分卡作为答案呈现，并附对应瓶颈详情页链接。"
+    },
+    {
+      "question_id": "Q3",
+      "name": "绑定反证",
+      "qa_root": "q3.pricing_risk",
+      "ask": "哪些信息会让当前机会降级或证伪？",
+      "collect": "收集 capex 下修、HBM/DRAM 价格、设备订单、出口管制、库存和估值拥挤证据。",
+      "connect": "把风险绑定到具体瓶颈和标的，而不是泛泛列风险。",
+      "present": "在 Q3.1 内把反证触发器、节点级反证绑定矩阵和季度阈值表作为答案呈现。"
+    },
+    {
+      "question_id": "Q4",
+      "name": "标的建议及理由表格",
+      "qa_root": "q4.targets",
+      "ask": "哪些具体证券应进入观察清单，理由、强度、验证数据和风险是什么？",
+      "collect": "基于 Q1-Q3 的需求、瓶颈和反证结果，收集公司公告、财报、年报、订单和客户证据。",
+      "connect": "每个标的必须回到对应瓶颈节点，并绑定验证数据、催化剂和降级条件。",
+      "present": "在 Q4.1 内把标的建议及理由表格、估值敏感性、中国链条验证和动态强度调整规则作为答案呈现，不作为交易指令。"
+    }
+  ],
+  "bottleneck_scorecard": [
+    {
+      "id": "ai_accelerator_asic_network",
+      "node": "AI 加速器 / custom ASIC / 网络",
+      "score": 85,
+      "strength": "A",
+      "detail_page": "bottlenecks/ai_accelerator_asic_network.html",
+      "scoring": {
+        "demand_transmission": 20,
+        "supply_scarcity": 16,
+        "substitution_barrier": 13,
+        "pricing_power": 13,
+        "financial_exposure": 15,
+        "evidence_strength": 15,
+        "risk_deduction": 7
+      },
+      "why_bottleneck": "AI 集群性能首先受加速器、ASIC、网络拓扑和系统软件协同约束。平台绑定、客户设计周期和供应链认证提高替代成本。",
+      "targets": ["NVDA", "AVGO", "MRVL"],
+      "required_verification_data": ["数据中心收入", "AI 半导体收入", "网络收入", "data center interconnect 收入", "客户项目数量", "云厂商 capex"],
+      "downgrade_triggers": ["云厂商 capex 下修", "Blackwell 或 ASIC 项目延迟", "客户集中风险上升", "订单取消或延期", "出口限制扩大"],
+      "source_ids": ["ev_semi_hw_nvda_q1fy27", "ev_semi_hw_avgo_q1fy26_ai", "ev_semi_hw_mrvl_fy2026_ai_dc"]
+    },
+    {
+      "id": "hbm_memory",
+      "node": "HBM / 高端存储",
+      "score": 84,
+      "strength": "A-",
+      "detail_page": "bottlenecks/hbm_memory.html",
+      "scoring": {
+        "demand_transmission": 19,
+        "supply_scarcity": 18,
+        "substitution_barrier": 13,
+        "pricing_power": 13,
+        "financial_exposure": 14,
+        "evidence_strength": 14,
+        "risk_deduction": 7
+      },
+      "why_bottleneck": "AI 加速器需要高带宽、低功耗、封装协同的内存系统。HBM 供给受良率、堆叠、客户认证和产能扩张约束。",
+      "targets": ["000660.KS", "MU"],
+      "required_verification_data": ["HBM 出货", "HBM ASP", "客户份额", "良率", "扩产进度", "DRAM 周期"],
+      "downgrade_triggers": ["HBM 供给快速释放", "价格下行", "客户认证不及预期", "存储周期反转"],
+      "source_ids": ["ev_semi_hw_skhynix_q1_2026", "ev_semi_hw_mu_fq2_2026"]
+    },
+    {
+      "id": "foundry_packaging",
+      "node": "先进制程 / 先进封装",
+      "score": 82,
+      "strength": "A-",
+      "detail_page": "bottlenecks/foundry_packaging.html",
+      "scoring": {
+        "demand_transmission": 18,
+        "supply_scarcity": 18,
+        "substitution_barrier": 14,
+        "pricing_power": 14,
+        "financial_exposure": 14,
+        "evidence_strength": 13,
+        "risk_deduction": 9
+      },
+      "why_bottleneck": "AI 芯片设计需求最终落到先进节点、CoWoS/先进封装和高良率交付能力，设计需求如果没有封装产能支撑无法转成出货。",
+      "targets": ["TSM", "2330.TW", "600584.SH"],
+      "required_verification_data": ["HPC 收入", "CoWoS 扩产", "先进节点产能", "先进封装收入占比", "资本开支"],
+      "downgrade_triggers": ["先进封装扩产过快", "客户订单延后", "封测 capex 回报低于预期", "地缘风险扰动"],
+      "source_ids": ["ev_semi_hw_tsmc_q1_2026", "ev_semi_hw_jcet_2025_ar"]
+    },
+    {
+      "id": "equipment",
+      "node": "半导体设备",
+      "score": 76,
+      "strength": "B+",
+      "detail_page": "bottlenecks/equipment.html",
+      "scoring": {
+        "demand_transmission": 16,
+        "supply_scarcity": 17,
+        "substitution_barrier": 14,
+        "pricing_power": 13,
+        "financial_exposure": 13,
+        "evidence_strength": 13,
+        "risk_deduction": 10
+      },
+      "why_bottleneck": "先进逻辑、HBM、先进封装和本地化扩产共同拉动工艺设备、光刻、刻蚀、沉积、量测和过程控制。",
+      "targets": ["ASML", "AMAT", "LRCX", "KLAC", "002371.SZ", "688012.SH"],
+      "required_verification_data": ["新增订单", "backlog", "EUV/High-NA 交付", "先进逻辑/存储 capex", "出口许可"],
+      "downgrade_triggers": ["设备订单低于预期", "晶圆厂 capex 延后", "出口限制升级", "中国收入承压"],
+      "source_ids": ["ev_semi_hw_semi_fab_spend", "ev_semi_hw_asml_q1_2026", "ev_semi_hw_bis_export_controls"]
+    },
+    {
+      "id": "china_equipment_localization",
+      "node": "中国设备国产替代",
+      "score": 74,
+      "strength": "B+",
+      "detail_page": "bottlenecks/china_equipment_localization.html",
+      "scoring": {
+        "demand_transmission": 15,
+        "supply_scarcity": 16,
+        "substitution_barrier": 12,
+        "pricing_power": 11,
+        "financial_exposure": 13,
+        "evidence_strength": 12,
+        "risk_deduction": 5
+      },
+      "why_bottleneck": "外部管制和本地晶圆厂扩产提升国产设备替代必要性，但高端设备验证、良率、客户结构和估值是主要约束。",
+      "targets": ["002371.SZ", "688012.SH"],
+      "required_verification_data": ["半导体设备收入", "新签订单", "先进客户验证", "高端设备导入", "毛利率"],
+      "downgrade_triggers": ["客户 capex 放缓", "高端验证不及预期", "价格竞争压低毛利", "估值已反映过高预期"],
+      "source_ids": ["ev_semi_hw_naura_2025_ar", "ev_semi_hw_amec_2025_ar", "ev_semi_hw_bis_export_controls"]
+    },
+    {
+      "id": "memory_interface_cxl",
+      "node": "内存接口 / CXL / PCIe",
+      "score": 67,
+      "strength": "B",
+      "detail_page": "bottlenecks/memory_interface_cxl.html",
+      "scoring": {
+        "demand_transmission": 14,
+        "supply_scarcity": 12,
+        "substitution_barrier": 11,
+        "pricing_power": 11,
+        "financial_exposure": 10,
+        "evidence_strength": 10,
+        "risk_deduction": 1
+      },
+      "why_bottleneck": "AI 服务器内存带宽、缓存一致性和低延迟互连需求提升，DDR5、PCIe 和 CXL 相关芯片会随平台升级产生增量。",
+      "targets": ["688008.SH"],
+      "required_verification_data": ["DDR5 收入", "PCIe/CXL 产品进展", "服务器客户导入", "库存水平", "平台周期"],
+      "downgrade_triggers": ["服务器平台升级慢于预期", "CXL 商业化延后", "海外竞争加剧", "客户导入不及预期"],
+      "source_ids": ["ev_semi_hw_montage_2025_ar"]
+    }
+  ],
+  "specific_targets": [
+    {
+      "ticker": "NVDA",
+      "name": "NVIDIA",
+      "market": "US",
+      "bottleneck": "AI 加速器、GPU 系统平台、数据中心网络",
+      "strength": "A",
+      "reason": "AI 硬件收入已经在财报中兑现，平台从 GPU 延伸到网络、系统和软件生态，处于需求传导链最前端。",
+      "required_verification_data": ["Blackwell 交付节奏", "数据中心收入和网络收入增速", "hyperscaler capex 指引", "中国限制对收入影响"],
+      "catalysts": ["季度财报和指引", "新一代 GPU/系统交付", "云厂商 capex 上修"],
+      "risks": ["估值拥挤", "客户 capex ROI 下降", "出口限制", "ASIC 替代部分训练/推理场景"],
+      "sources": ["ev_semi_hw_nvda_q1fy27"]
+    },
+    {
+      "ticker": "AVGO",
+      "name": "Broadcom",
+      "market": "US",
+      "bottleneck": "custom AI ASIC、AI networking",
+      "strength": "A-",
+      "reason": "custom AI accelerators 和网络芯片能承接 hyperscaler 自研 ASIC 趋势，是 GPU 之外的第二条 AI silicon 主线。",
+      "required_verification_data": ["AI 半导体收入", "主要客户数量和项目阶段", "网络芯片增长", "订单能见度"],
+      "catalysts": ["AI 客户项目放量", "网络芯片升级周期", "新客户导入"],
+      "risks": ["客户集中", "项目型收入波动", "云厂商自研节奏低于预期"],
+      "sources": ["ev_semi_hw_avgo_q1fy26_ai"]
+    },
+    {
+      "ticker": "MRVL",
+      "name": "Marvell Technology",
+      "market": "US",
+      "bottleneck": "custom silicon、AI data center interconnect、networking",
+      "strength": "B+",
+      "reason": "FY2026 收入 81.95 亿美元，同比增长 42%；Q4 data center revenue 16.51 亿美元，占收入约 74%，补充验证 Broadcom 之外的 custom silicon 和 data center interconnect 敞口。",
+      "required_verification_data": ["data center revenue", "bookings", "custom silicon 客户项目", "光互联/互连产品收入", "客户集中度", "同口径估值快照"],
+      "catalysts": ["hyperscaler custom silicon 项目放量", "AI networking/interconnect 需求增加", "新客户导入"],
+      "risks": ["客户集中", "客户自研或垂直整合", "订单取消或延期", "制造测试封装和第三方 IP 依赖"],
+      "sources": ["ev_semi_hw_mrvl_fy2026_ai_dc"]
+    },
+    {
+      "ticker": "TSM / 2330.TW",
+      "name": "台积电",
+      "market": "US/TW",
+      "bottleneck": "先进制程、CoWoS/先进封装、AI 芯片代工",
+      "strength": "A",
+      "reason": "AI 芯片设计公司扩张最终落到先进制程和先进封装产能；TSMC 是全球最关键的供给瓶颈之一。",
+      "required_verification_data": ["HPC 收入占比", "先进节点产能", "CoWoS 扩产进度", "资本开支和客户结构"],
+      "catalysts": ["先进封装产能上调", "AI 客户订单延长", "先进节点良率改善"],
+      "risks": ["地缘政治", "资本开支过重", "客户集中", "先进封装扩产后议价权下降"],
+      "sources": ["ev_semi_hw_tsmc_q1_2026", "ev_semi_hw_tsmc_q1_2026_transcript"]
+    },
+    {
+      "ticker": "ASML",
+      "name": "ASML",
+      "market": "EU/US",
+      "bottleneck": "EUV/DUV 光刻设备",
+      "strength": "A-",
+      "reason": "先进制程扩张离不开光刻设备，ASML 的设备稀缺性强；但出口管制和中国订单结构是重要变量。",
+      "required_verification_data": ["新增订单", "EUV/High-NA 交付", "中国收入占比", "出口许可变化"],
+      "catalysts": ["先进逻辑/存储资本开支上修", "High-NA 导入", "订单恢复"],
+      "risks": ["出口管制", "订单周期波动", "先进制程客户 capex 延后"],
+      "sources": ["ev_semi_hw_asml_q1_2026", "ev_semi_hw_bis_export_controls"]
+    },
+    {
+      "ticker": "000660.KS",
+      "name": "SK hynix",
+      "market": "KR",
+      "bottleneck": "HBM、高端 DRAM、AI server memory",
+      "strength": "A-",
+      "reason": "HBM 是 AI 加速器出货的核心约束之一，SK hynix 在 HBM 客户绑定和供给节奏上具备较强证据。",
+      "required_verification_data": ["HBM 出货和 ASP", "主要客户份额", "良率和扩产进度", "DRAM 周期变化"],
+      "catalysts": ["HBM 供需继续偏紧", "新一代 HBM 导入", "客户订单延长"],
+      "risks": ["HBM 供给过快释放", "Samsung/Micron 竞争", "存储价格周期反转"],
+      "sources": ["ev_semi_hw_skhynix_q1_2026", "ev_semi_hw_samsung_q1_2026", "ev_semi_hw_trendforce_hbm4_20260213"]
+    },
+    {
+      "ticker": "005930.KS",
+      "name": "Samsung Electronics",
+      "market": "KR",
+      "bottleneck": "HBM4、SOCAMM2、AI memory、foundry base-die",
+      "strength": "A-",
+      "reason": "Samsung Q1 2026 DS 部门利润和 HBM4/SOCAMM2 进展验证 AI memory 弹性，并可能改变 HBM4 供应格局。",
+      "required_verification_data": ["HBM4/HBM4E 验证", "NVIDIA 份额", "foundry advanced-node utilization", "DRAM ASP"],
+      "catalysts": ["HBM4E 样品交付", "Rubin 平台导入", "服务器内存需求延续"],
+      "risks": ["HBM4 验证不及预期", "foundry 业务拖累", "SK hynix/Micron 竞争", "存储价格反转"],
+      "sources": ["ev_semi_hw_samsung_q1_2026", "ev_semi_hw_trendforce_hbm4_20260213"]
+    },
+    {
+      "ticker": "MU",
+      "name": "Micron",
+      "market": "US",
+      "bottleneck": "HBM、数据中心 DRAM、eSSD",
+      "strength": "B+",
+      "reason": "数据中心存储和 HBM 推动盈利修复，弹性强；但需要验证 HBM 份额和竞争力能否持续提升。",
+      "required_verification_data": ["HBM 收入和客户认证", "DRAM/NAND 价格", "数据中心收入结构", "毛利率趋势"],
+      "catalysts": ["HBM 出货放量", "存储价格上行", "美国 AI 基础设施投资"],
+      "risks": ["存储周期反转", "HBM 技术和份额落后", "库存重建过快"],
+      "sources": ["ev_semi_hw_mu_fq2_2026", "ev_semi_hw_samsung_q1_2026", "ev_semi_hw_trendforce_hbm4_20260213"]
+    },
+    {
+      "ticker": "AMAT / LRCX / KLAC",
+      "name": "应用材料 / 泛林 / 科磊",
+      "market": "US",
+      "bottleneck": "沉积、刻蚀、量测和过程控制设备组合",
+      "strength": "B+",
+      "reason": "若 SEMI 预测的晶圆厂设备支出继续扩张，过程设备和量测控制是更宽的设备受益篮子。",
+      "required_verification_data": ["订单和 backlog", "中国收入占比", "先进逻辑/存储 capex", "毛利率和服务收入"],
+      "catalysts": ["设备订单上修", "先进逻辑和 HBM 相关扩产", "过程控制需求提升"],
+      "risks": ["capex 周期", "出口限制", "中国设备国产替代"],
+      "sources": ["ev_semi_hw_semi_fab_spend", "ev_semi_hw_amat_q2_fy2026", "ev_semi_hw_lrcx_mar_2026", "ev_semi_hw_klac_fy26q3", "ev_semi_hw_bis_export_controls"]
+    },
+    {
+      "ticker": "002371.SZ",
+      "name": "北方华创",
+      "market": "CN",
+      "bottleneck": "国产半导体设备平台",
+      "strength": "B+",
+      "reason": "中国设备国产替代的核心平台型公司，受益于出口限制和本地晶圆厂扩产；需看收入结构、订单质量和毛利率。",
+      "required_verification_data": ["半导体设备收入", "新签订单", "客户结构", "高端设备验证进度"],
+      "catalysts": ["国产设备中标", "先进产线导入", "政策和本地扩产"],
+      "risks": ["估值拥挤", "高端设备突破慢于预期", "客户 capex 放缓"],
+      "sources": ["ev_semi_hw_naura_2025_ar", "ev_semi_hw_bis_export_controls"]
+    },
+    {
+      "ticker": "688012.SH",
+      "name": "中微公司",
+      "market": "CN",
+      "bottleneck": "刻蚀、薄膜沉积和 MOCVD 设备",
+      "strength": "B+",
+      "reason": "刻蚀等关键工艺设备是国产替代核心环节，具备供应链瓶颈属性；需验证高端节点客户导入和订单兑现。",
+      "required_verification_data": ["刻蚀设备收入", "新增订单", "先进客户验证", "研发投入和毛利率"],
+      "catalysts": ["先进产线验证", "设备订单放量", "本地替代率提升"],
+      "risks": ["海外设备差距", "价格竞争", "晶圆厂 capex 波动"],
+      "sources": ["ev_semi_hw_amec_2025_ar", "ev_semi_hw_bis_export_controls"]
+    },
+    {
+      "ticker": "600584.SH",
+      "name": "长电科技",
+      "market": "CN",
+      "bottleneck": "封测与先进封装",
+      "strength": "B",
+      "reason": "先进封装是 AI 芯片链条约束之一，长电有封测平台基础；但国内高端先进封装的真实收入弹性需要进一步验证。",
+      "required_verification_data": ["先进封装收入占比", "AI/HPC 客户", "资本开支", "毛利率改善"],
+      "catalysts": ["先进封装客户导入", "高端封测订单", "本地算力链扩产"],
+      "risks": ["封测议价权弱", "资本开支回报不确定", "全球 OSAT 竞争"],
+      "sources": ["ev_semi_hw_jcet_2025_ar"]
+    },
+    {
+      "ticker": "688008.SH",
+      "name": "澜起科技",
+      "market": "CN",
+      "bottleneck": "DDR5 内存接口、PCIe/CXL、服务器平台芯片",
+      "strength": "B+",
+      "reason": "AI 服务器和高端内存带宽需求提升，内存接口和 CXL/PCIe 连接芯片具备服务器平台升级敞口。",
+      "required_verification_data": ["DDR5 相关收入", "PCIe/CXL 产品进展", "服务器客户导入", "库存和价格"],
+      "catalysts": ["DDR5 渗透率提升", "CXL/PCIe 新品导入", "AI 服务器平台升级"],
+      "risks": ["平台周期", "海外竞争", "客户导入不及预期"],
+      "sources": ["ev_semi_hw_montage_2025_ar"]
+    }
+  ],
+  "disconfirming_tests": [
+    "大型云厂商资本开支下修，或 AI 推理 ROI 无法支撑继续扩张。",
+    "HBM/DRAM 供给快速释放，价格和毛利率提前见顶。",
+    "先进封装扩产后瓶颈缓解，封测环节议价权弱化。",
+    "设备订单低于预期，或出口管制导致核心设备和中国需求双向受限。",
+    "标的估值已经包含 2-3 年高增长，后续财报无法兑现。"
+  ],
+  "delegation_trace": {
+    "deepseek_delegate_used": true,
+    "role": "仅用于已给定来源要点的初步归类和草稿整理；最终问题设计、来源验证、标的强度和报告写作由 GPT 完成。"
+  }
+}

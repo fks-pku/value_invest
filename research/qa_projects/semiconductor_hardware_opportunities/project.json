@@ -1,0 +1,10 @@
+{
+  "project_id": "semiconductor_hardware_opportunities",
+  "object_type": "industry",
+  "object_id": "semiconductor_hardware",
+  "meta_question": "半导体硬件领域在 2026-2028 年有哪些值得跟踪的投资机会，机会应如何沿产业链瓶颈、财务敞口和反证条件筛选？",
+  "max_depth": 3,
+  "created_at": "2026-05-28T00:00:00+08:00",
+  "framework": "research_goal_qa",
+  "boundary": "研究观察清单，不构成买卖建议。"
+}
