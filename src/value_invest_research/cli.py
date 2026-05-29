@@ -284,7 +284,8 @@ def build_parser() -> argparse.ArgumentParser:
         "build-meta-qa",
         help="Build a generic layered QA research project from one meta-question",
     )
-    meta_qa_parser.add_argument("--object-type", required=True, choices=["company", "industry", "event", "custom"])
+    meta_qa_object_types = ["company", "industry", "event", "technology", "target_update", "custom"]
+    meta_qa_parser.add_argument("--object-type", required=True, choices=meta_qa_object_types)
     meta_qa_parser.add_argument("--object-id", default="")
     meta_qa_parser.add_argument("--meta-question", required=True)
     meta_qa_parser.add_argument("--project-id", default=None)
@@ -299,7 +300,7 @@ def build_parser() -> argparse.ArgumentParser:
         "run-meta-qa-pipeline",
         help="Run a generic layered QA workflow from one meta-question to report",
     )
-    meta_qa_pipeline_parser.add_argument("--object-type", required=True, choices=["company", "industry", "event", "custom"])
+    meta_qa_pipeline_parser.add_argument("--object-type", required=True, choices=meta_qa_object_types)
     meta_qa_pipeline_parser.add_argument("--object-id", default="")
     meta_qa_pipeline_parser.add_argument("--meta-question", required=True)
     meta_qa_pipeline_parser.add_argument("--project-id", default=None)
@@ -334,7 +335,7 @@ def build_parser() -> argparse.ArgumentParser:
         "plan-meta-qa",
         help="Create or refresh the auditable question plan for a generic QA project",
     )
-    plan_meta_qa_parser.add_argument("--object-type", required=True, choices=["company", "industry", "event", "custom"])
+    plan_meta_qa_parser.add_argument("--object-type", required=True, choices=meta_qa_object_types)
     plan_meta_qa_parser.add_argument("--object-id", default="")
     plan_meta_qa_parser.add_argument("--meta-question", required=True)
     plan_meta_qa_parser.add_argument("--project-id", default=None)

@@ -1,0 +1,611 @@
+{
+  "ai_application_opportunities_round_1": {
+    "focus": "按新公共契约生成 AI 应用领域投资机会研究报告",
+    "completed_at": "2026-05-29T16:55:00+08:00",
+    "research_type": "industry/theme opportunity",
+    "domain_playbook": "AI application layer",
+    "parsed_by_deepseek_mcp": true,
+    "gpt_verified_and_used": true,
+    "deepseek_scope": "基于 GPT 提供的来源摘录做一轮事实提取，不做最终投资判断。",
+    "updated_files": [
+      "project.json",
+      "question_plan.json",
+      "qa_tree.json",
+      "evidence.jsonl",
+      "professional_report.md",
+      "professional_report.html",
+      "investment_workbench.json"
+    ],
+    "qa_structure": {
+      "1": 4,
+      "2": 13,
+      "3": 37
+    },
+    "sources": {
+      "evidence": 12,
+      "research_report": 2,
+      "message": 4,
+      "opinion": 0
+    },
+    "target_rows": 10,
+    "validation_pending": [
+      "html_static_contract_check"
+    ]
+  },
+  "ai_application_opportunities_quality_round_2": {
+    "focus": "按默认 Research Goal QA 契约重跑 AI 应用投资机会研究",
+    "completed_at": "2026-05-29T17:45:00+08:00",
+    "research_type": "industry/theme opportunity",
+    "domain_playbook": "AI application layer: demand reality, application chokepoints, disconfirming tests, ranked target observations",
+    "chokepoint_score_schema": [
+      {
+        "label": "需求流入",
+        "key": "demand_flow",
+        "weight": 15,
+        "definition": "增量预算是否真实流向该节点。"
+      },
+      {
+        "label": "不可替代性",
+        "key": "irreplaceability",
+        "weight": 15,
+        "definition": "客户是否难以绕开该节点或迁移到低成本替代。"
+      },
+      {
+        "label": "供给/访问约束",
+        "key": "supply_access_constraint",
+        "weight": 15,
+        "definition": "是否控制数据、权限、流程、分发、合规或生态入口。"
+      },
+      {
+        "label": "定价权",
+        "key": "pricing_power",
+        "weight": 15,
+        "definition": "能否转化为价格、take rate、ARPU、续约或更强毛利。"
+      },
+      {
+        "label": "财务转化",
+        "key": "financial_conversion",
+        "weight": 15,
+        "definition": "是否已经体现在收入、ARR、RPO、FCF 或经营杠杆。"
+      },
+      {
+        "label": "市场定价",
+        "key": "market_pricing",
+        "weight": 10,
+        "definition": "当前估值是否仍有容错，分数越高表示越未被充分计价。"
+      },
+      {
+        "label": "证据质量",
+        "key": "evidence_quality",
+        "weight": 10,
+        "definition": "一手证据、连续性和可追踪性。"
+      },
+      {
+        "label": "反证韧性",
+        "key": "disconfirming_resilience",
+        "weight": 5,
+        "definition": "面对 ROI、毛利、替代和监管反证时的韧性。"
+      }
+    ],
+    "application_chokepoint_scorecard": [
+      {
+        "node": "企业工作流 / system-of-record agent",
+        "mapped_targets": "MSFT / NOW / CRM",
+        "score": {
+          "demand_flow": 14,
+          "irreplaceability": 14,
+          "supply_access_constraint": 14,
+          "pricing_power": 13,
+          "financial_conversion": 13,
+          "market_pricing": 8,
+          "evidence_quality": 9,
+          "disconfirming_resilience": 4
+        },
+        "judgment": "最接近应用层真实瓶颈：AI 不只是功能，而是嵌入权限、数据、流程和日常工作入口。NOW 与 MSFT 胜率更高，CRM 赔率更依赖 Agentforce 拉动整体增长再加速。",
+        "trigger": "Copilot paid seats、Now Assist 大客户、Agentforce ARR/AWU 若连续两个季度失速，评分下调。",
+        "total": 89
+      },
+      {
+        "node": "专有数据 + 高信任垂直决策",
+        "mapped_targets": "PLTR / INTU / AXON",
+        "score": {
+          "demand_flow": 13,
+          "irreplaceability": 15,
+          "supply_access_constraint": 14,
+          "pricing_power": 12,
+          "financial_conversion": 14,
+          "market_pricing": 6,
+          "evidence_quality": 8,
+          "disconfirming_resilience": 4
+        },
+        "judgment": "价值密度高，尤其 PLTR 已把 AIP 转成美国商业收入和 FCF；INTU 更稳但弹性较低；AXON 场景强但 AI 产品独立披露不足。",
+        "trigger": "PLTR 美国商业 RDV/TCV 或 FCF margin 下滑；INTU/Axon 若无法披露 AI attach rate 和软件毛利，评分不提升。",
+        "total": 86
+      },
+      {
+        "node": "分发入口 + 数据反馈循环",
+        "mapped_targets": "GOOGL / META / ADBE",
+        "score": {
+          "demand_flow": 14,
+          "irreplaceability": 13,
+          "supply_access_constraint": 13,
+          "pricing_power": 14,
+          "financial_conversion": 14,
+          "market_pricing": 7,
+          "evidence_quality": 8,
+          "disconfirming_resilience": 4
+        },
+        "judgment": "分发和反馈循环可以把 AI 功能放大成广告、搜索、创作或云收入，但 capex、搜索替代和 AI-native 工具会压低确定性。GOOGL 胜率最高，ADBE 赔率取决于 AI-first ARR 是否转成核心增长。",
+        "trigger": "搜索收入/广告价格、Cloud backlog、AI-first ARR、capex/FCF 任一链条断裂，需重新评估。",
+        "total": 87
+      },
+      {
+        "node": "算法 ROI / 广告投放优化",
+        "mapped_targets": "APP / META / GOOGL",
+        "score": {
+          "demand_flow": 13,
+          "irreplaceability": 13,
+          "supply_access_constraint": 13,
+          "pricing_power": 14,
+          "financial_conversion": 15,
+          "market_pricing": 6,
+          "evidence_quality": 8,
+          "disconfirming_resilience": 3
+        },
+        "judgment": "ROI 可量化，财务转化快。APP 证明了高利润率，但估值和平台质量风险较高；META/GOOGL 受益更稳但不完全是纯应用层标的。",
+        "trigger": "广告主留存、ROAS、平台开放后的广告质量、监管/反作弊数据是核心复盘项。",
+        "total": 85
+      },
+      {
+        "node": "垂直合规 / 高信任流程",
+        "mapped_targets": "INTU / AXON / PLTR",
+        "score": {
+          "demand_flow": 11,
+          "irreplaceability": 14,
+          "supply_access_constraint": 13,
+          "pricing_power": 12,
+          "financial_conversion": 11,
+          "market_pricing": 5,
+          "evidence_quality": 6,
+          "disconfirming_resilience": 3
+        },
+        "judgment": "长期可能形成坚固护城河，但当前披露不如平台型和 AI-native 标的完整。适合跟踪，不适合只凭主题提高强度。",
+        "trigger": "需要 AI 产品收入、attach rate、续约率、软件毛利或监管采购节奏。",
+        "total": 75
+      },
+      {
+        "node": "创作 / 客户触点应用",
+        "mapped_targets": "ADBE / CRM / DUOL",
+        "score": {
+          "demand_flow": 11,
+          "irreplaceability": 10,
+          "supply_access_constraint": 9,
+          "pricing_power": 10,
+          "financial_conversion": 10,
+          "market_pricing": 8,
+          "evidence_quality": 7,
+          "disconfirming_resilience": 3
+        },
+        "judgment": "用户价值清晰但替代压力也高。Adobe 的赔率好，但需要证明 AI 不是防守性功能；Duolingo 当前证据不足，只能作为线索。",
+        "trigger": "AI-native 竞争、付费转化、ARPU 和核心订阅增长决定是否升级。",
+        "total": 68
+      }
+    ],
+    "target_observation_score_schema": [
+      {
+        "label": "瓶颈强度",
+        "key": "chokepoint_strength",
+        "weight": 30
+      },
+      {
+        "label": "未来空间",
+        "key": "future_space",
+        "weight": 20
+      },
+      {
+        "label": "估值赔率",
+        "key": "valuation_odds",
+        "weight": 15
+      },
+      {
+        "label": "证据质量",
+        "key": "evidence_quality",
+        "weight": 15
+      },
+      {
+        "label": "反证控制",
+        "key": "risk_control",
+        "weight": 10
+      },
+      {
+        "label": "可监控性",
+        "key": "monitorability",
+        "weight": 10
+      }
+    ],
+    "target_score_breakdown_rows": [
+      {
+        "rank": 1,
+        "ticker": "MSFT",
+        "name": "Microsoft",
+        "class": "核心平台观察",
+        "node": "企业工作流 / system-of-record agent",
+        "breakdown": {
+          "chokepoint_strength": 27,
+          "future_space": 17,
+          "valuation_odds": 9,
+          "evidence_quality": 14,
+          "risk_control": 7,
+          "monitorability": 10
+        },
+        "win_probability": "70%",
+        "payoff_odds": "中等",
+        "strength": "高",
+        "rationale": "Copilot、GitHub、Foundry、Security 与 M365/Azure 分发结合，AI ARR 和 paid seats 已验证需求；短板是 capex 与 AI usage 对毛利的压力。",
+        "future_space": "企业办公、开发者、安全、云和 agent 平台的横向渗透，空间大但体量已大。",
+        "valuation": "forward PE 23.10、P/FCF 43.50，市场已给平台溢价，赔率主要来自 AI ARPU 和 Azure/应用双兑现。",
+        "odds": "隐含预期是 AI 继续支撑双位数收入和经营利润增长；基准路径是 Copilot seats 与 AI ARR 持续上行；乐观路径是 usage-based 收费拉高 ARPU；悲观路径是 capex/毛利拖累抵消收入增量。",
+        "downgrade": "Copilot paid seats 或 AI ARR 连续失速，AI gross margin 继续下滑且 FCF 无法跟上 capex。",
+        "next_data": "Copilot paid seats、ARPU、AI gross margin、Azure AI 消费、capex/FCF。",
+        "sources": [
+          "src_microsoft_fy26q3_call",
+          "src_microsoft_fy26q3_release",
+          "src_msft_valuation_stockanalysis_20260529"
+        ],
+        "total": 84
+      },
+      {
+        "rank": 2,
+        "ticker": "NOW",
+        "name": "ServiceNow",
+        "class": "核心平台观察",
+        "node": "企业工作流 / system-of-record agent",
+        "breakdown": {
+          "chokepoint_strength": 27,
+          "future_space": 16,
+          "valuation_odds": 11,
+          "evidence_quality": 13,
+          "risk_control": 8,
+          "monitorability": 9
+        },
+        "win_probability": "68%",
+        "payoff_odds": "中高",
+        "strength": "高",
+        "rationale": "工作流控制权强，订阅、cRPO 和 Now Assist 大客户均有一手证据；估值较历史回落后，胜率/赔率组合更均衡。",
+        "future_space": "IT、员工、客服、行业 workflow agent 可沿现有平台扩展。",
+        "valuation": "forward PE 25.08、P/FCF 24.20、FCF yield 4.13%，相对高质量 SaaS 更有赔率，但需消化 Armis 整合影响。",
+        "odds": "隐含预期是 20% 左右订阅/cRPO 增长维持；基准路径是 Now Assist attach rate 上升；乐观路径是 agent 成为平台 ARPU 增量；悲观路径是 cRPO 放缓或并购压低利润率。",
+        "downgrade": "cRPO 低于指引、Now Assist 大客户放缓、Armis 整合导致 FY27 margin 修复失败。",
+        "next_data": "Now Assist ARR/attach rate、cRPO、net expansion、FY27 margin。",
+        "sources": [
+          "src_servicenow_q1_2026",
+          "src_now_valuation_stockanalysis_20260529"
+        ],
+        "total": 84
+      },
+      {
+        "rank": 3,
+        "ticker": "GOOGL",
+        "name": "Alphabet",
+        "class": "核心平台观察",
+        "node": "分发入口 + 数据反馈循环",
+        "breakdown": {
+          "chokepoint_strength": 25,
+          "future_space": 18,
+          "valuation_odds": 8,
+          "evidence_quality": 13,
+          "risk_control": 7,
+          "monitorability": 9
+        },
+        "win_probability": "66%",
+        "payoff_odds": "中等",
+        "strength": "中高",
+        "rationale": "Search、Gemini、Cloud、广告和数据栈形成完整 AI 分发闭环；Cloud backlog 与 Gemini usage 是强证据。主要约束是估值回升和 capex。",
+        "future_space": "搜索重构、Gemini Enterprise、AI Cloud、广告模型优化共同提供空间。",
+        "valuation": "forward PE 31.17、P/FCF 73.36，过去一年涨幅大，赔率要求 Cloud/AI 和搜索货币化继续兑现。",
+        "odds": "隐含预期是 AI 不破坏搜索且 Cloud 高增长持续；基准路径是 Search 与 Cloud 共振；乐观路径是 Gemini 订阅和企业 AI 显著货币化；悲观路径是 capex 抬升、搜索点击生态被侵蚀。",
+        "downgrade": "Search 增速/价格弱化、Cloud backlog 转收入慢、capex 继续上修但 FCF 不改善。",
+        "next_data": "Search revenue、Gemini paid MAU、Cloud backlog 转化、capex/FCF。",
+        "sources": [
+          "src_alphabet_q1_2026",
+          "src_google_ceo_ai_remarks_2026q1",
+          "src_googl_valuation_stockanalysis_20260529"
+        ],
+        "total": 80
+      },
+      {
+        "rank": 4,
+        "ticker": "CRM",
+        "name": "Salesforce",
+        "class": "赔率修复观察",
+        "node": "企业工作流 / system-of-record agent",
+        "breakdown": {
+          "chokepoint_strength": 22,
+          "future_space": 15,
+          "valuation_odds": 14,
+          "evidence_quality": 13,
+          "risk_control": 6,
+          "monitorability": 9
+        },
+        "win_probability": "62%",
+        "payoff_odds": "中高",
+        "strength": "中高",
+        "rationale": "Agentforce/Data 360 指标强，但公司整体收入和 FCF 指引尚未同步加速。赔率来自低估值和 AI 指标向整体增长转化。",
+        "future_space": "CRM、客服、销售、Slack 与数据平台里的 agent 工作量。",
+        "valuation": "forward PE 12.66、P/FCF 9.84，估值给出修复空间，但需要剔除 Informatica 后验证有机增长。",
+        "odds": "隐含预期偏低，要求 Agentforce 不能只停留在 ARR 指标；基准路径是 FY27 下半年有机增长加速；乐观路径是 Agentforce premium SKU 拉动 ARPU；悲观路径是 AI 热度高但整体增长仍低双位数。",
+        "downgrade": "Agentforce ARR/AWU 不能转成 subscription growth、FCF 指引继续低迷、Informatica 稀释有机增长。",
+        "next_data": "Agentforce ARR、AWU、organic subscription growth、net retention、FCF growth。",
+        "sources": [
+          "src_salesforce_q1fy27",
+          "src_crm_valuation_stockanalysis_20260529"
+        ],
+        "total": 79
+      },
+      {
+        "rank": 5,
+        "ticker": "PLTR",
+        "name": "Palantir",
+        "class": "高弹性观察",
+        "node": "专有数据 + 高信任垂直决策",
+        "breakdown": {
+          "chokepoint_strength": 28,
+          "future_space": 19,
+          "valuation_odds": 3,
+          "evidence_quality": 14,
+          "risk_control": 4,
+          "monitorability": 9
+        },
+        "win_probability": "58%",
+        "payoff_odds": "高但估值拥挤",
+        "strength": "中高",
+        "rationale": "AIP 商业化和 FCF 兑现最强之一，美国商业增长和 FCF margin 都很突出；但估值容错极低，排序被赔率扣分。",
+        "future_space": "政府/商业复杂决策和高信任数据操作系统。",
+        "valuation": "forward PE 90.96、P/FCF 127.83，要求高增长和高 margin 长期持续。",
+        "odds": "隐含预期是 2026 指引后仍能高增长；基准路径是美国商业继续 >100% 附近扩张；乐观路径是国际商业复制；悲观路径是 TCV/RDV 放缓或 FCF margin 回落。",
+        "downgrade": "美国商业收入、TCV、RDV 或 adjusted FCF margin 任一核心指标连续降速。",
+        "next_data": "U.S. commercial revenue、TCV/RDV、customer count、FCF margin、政府订单质量。",
+        "sources": [
+          "src_palantir_q1_2026",
+          "src_pltr_valuation_stockanalysis_20260529"
+        ],
+        "total": 77
+      },
+      {
+        "rank": 6,
+        "ticker": "APP",
+        "name": "AppLovin",
+        "class": "高弹性观察",
+        "node": "算法 ROI / 广告投放优化",
+        "breakdown": {
+          "chokepoint_strength": 27,
+          "future_space": 18,
+          "valuation_odds": 5,
+          "evidence_quality": 13,
+          "risk_control": 5,
+          "monitorability": 8
+        },
+        "win_probability": "57%",
+        "payoff_odds": "高但波动大",
+        "strength": "中高",
+        "rationale": "Axon 将 AI 直接映射到广告 ROI，收入和 EBITDA margin 极强；但估值、平台开放后的广告质量和监管风险需要严格跟踪。",
+        "future_space": "移动游戏之外的更大广告主预算、consumer vertical、self-serve 平台。",
+        "valuation": "forward PE 34.49、P/FCF 45.40，仍需要高增速和高 margin 维持。",
+        "odds": "隐含预期是 50%+ 增长和 80%+ EBITDA margin 持续；基准路径是 Q2 指引兑现；乐观路径是 non-gaming 成功扩展；悲观路径是广告质量、监管或竞争导致 ROAS 下降。",
+        "downgrade": "Q2/Q3 guide 降速、EBITDA margin 跌破高位区间、广告主留存或质量争议恶化。",
+        "next_data": "Q2 revenue/EBITDA、advertiser retention、Axon platform adoption、监管/诉讼风险。",
+        "sources": [
+          "src_applovin_q1_2026",
+          "src_app_valuation_stockanalysis_20260529"
+        ],
+        "total": 76
+      },
+      {
+        "rank": 7,
+        "ticker": "ADBE",
+        "name": "Adobe",
+        "class": "赔率修复观察",
+        "node": "创作 / 客户触点应用",
+        "breakdown": {
+          "chokepoint_strength": 20,
+          "future_space": 14,
+          "valuation_odds": 14,
+          "evidence_quality": 11,
+          "risk_control": 7,
+          "monitorability": 8
+        },
+        "win_probability": "55%",
+        "payoff_odds": "中高",
+        "strength": "中",
+        "rationale": "估值和现金流赔率好，AI-first ARR 高增是线索；核心问题是 AI 到底是防守性功能还是能拉动 Creative/Document 再加速。",
+        "future_space": "创意、文档、营销内容生产和 AI 工作流。",
+        "valuation": "forward PE 10.02、P/FCF 9.46，市场预期低，赔率更来自预期修复。",
+        "odds": "隐含预期偏谨慎；基准路径是 AI-first ARR 继续高增但整体收入温和；乐观路径是 Firefly/AI credits 带动 ARPU；悲观路径是 AI-native 工具持续分流。",
+        "downgrade": "AI-first ARR 不能转成净新增 ARR、Creative 增速继续放缓、CEO 交接导致执行不稳。",
+        "next_data": "AI-first ARR 绝对额、Firefly monetization、Creative ARR、CEO 交接节奏。",
+        "sources": [
+          "src_adobe_q1fy26",
+          "src_adbe_valuation_stockanalysis_20260529"
+        ],
+        "total": 74
+      },
+      {
+        "rank": 8,
+        "ticker": "META",
+        "name": "Meta Platforms",
+        "class": "广告 AI 效率观察",
+        "node": "分发入口 + 数据反馈循环",
+        "breakdown": {
+          "chokepoint_strength": 22,
+          "future_space": 17,
+          "valuation_odds": 8,
+          "evidence_quality": 13,
+          "risk_control": 4,
+          "monitorability": 9
+        },
+        "win_probability": "56%",
+        "payoff_odds": "中等",
+        "strength": "中",
+        "rationale": "广告 AI 效率已体现在收入、展示量和单价，但不是纯应用软件标的；capex 和监管会显著影响赔率。",
+        "future_space": "广告投放、推荐、商务、创作者工具和消费者 AI 入口。",
+        "valuation": "forward PE 19.35、P/FCF 33.42，估值不极端但 capex 会压低 FCF 质量。",
+        "odds": "隐含预期是广告 AI 效率抵消 capex；基准路径是广告价格和展示量保持；乐观路径是 AI assistant/商业化增量；悲观路径是 capex 上修或监管压制。",
+        "downgrade": "ad price/impression 走弱、capex 超预期、AI 消费产品不能货币化。",
+        "next_data": "ad price、impressions、capex/FCF、AI assistant usage、监管进展。",
+        "sources": [
+          "src_meta_q1_2026",
+          "src_meta_valuation_stockanalysis_20260529"
+        ],
+        "total": 73
+      },
+      {
+        "rank": 9,
+        "ticker": "INTU",
+        "name": "Intuit",
+        "class": "稳健垂直观察",
+        "node": "垂直合规 / 高信任流程",
+        "breakdown": {
+          "chokepoint_strength": 21,
+          "future_space": 13,
+          "valuation_odds": 13,
+          "evidence_quality": 10,
+          "risk_control": 7,
+          "monitorability": 8
+        },
+        "win_probability": "54%",
+        "payoff_odds": "中等",
+        "strength": "中",
+        "rationale": "财税数据和专家网络适合 AI，但增长弹性不如 PLTR/APP；当前更像稳健复利和垂直 AI 验证。",
+        "future_space": "税务、SMB 财务、专家服务自动化和个性化理财。",
+        "valuation": "forward PE 11.69、P/FCF 11.04，估值修复空间存在，但需要 AI 产品独立指标。",
+        "odds": "隐含预期不高；基准路径是 TurboTax Live/Online Ecosystem 稳定增长；乐观路径是 AI expert platform 提升 ARPU；悲观路径是税务周期或监管压低增长。",
+        "downgrade": "TurboTax Live、Online Ecosystem 或 AI attach rate 不达预期。",
+        "next_data": "Intuit Assist usage、TurboTax Live unit economics、SMB retention、AI fraud/risk controls。",
+        "sources": [
+          "src_intuit_q3fy26",
+          "src_intu_valuation_stockanalysis_20260529"
+        ],
+        "total": 72
+      },
+      {
+        "rank": 10,
+        "ticker": "AXON",
+        "name": "Axon Enterprise",
+        "class": "验证型观察",
+        "node": "垂直合规 / 高信任流程",
+        "breakdown": {
+          "chokepoint_strength": 21,
+          "future_space": 14,
+          "valuation_odds": 3,
+          "evidence_quality": 8,
+          "risk_control": 6,
+          "monitorability": 8
+        },
+        "win_probability": "45%",
+        "payoff_odds": "待验证",
+        "strength": "观察",
+        "rationale": "公共安全 AI 场景高信任、垂直性强，但当前估值和现金流口径不支持提高强度，AI Era Plan 还需要更多披露。",
+        "future_space": "执法记录、证据管理、报告自动化、公共安全 workflow。",
+        "valuation": "forward PE 52.59、P/FCF 1815.25，赔率必须等现金流和 AI 软件收入验证。",
+        "odds": "隐含预期已经很高；基准路径是收入继续高增但现金流修复慢；乐观路径是 AI Era Plan 转为 ARR/软件毛利；悲观路径是高估值遇到 FCF 不兑现。",
+        "downgrade": "AI Era Plan 没有收入化披露、FCF 持续弱、估值继续扩张。",
+        "next_data": "AI Era Plan revenue、ARR、software gross margin、FCF、政府采购周期。",
+        "sources": [
+          "src_axon_q1_2026",
+          "src_axon_valuation_stockanalysis_20260529"
+        ],
+        "total": 60
+      }
+    ],
+    "prediction_review_register": [
+      {
+        "target": "MSFT",
+        "initial_claim": "Copilot、GitHub、Foundry、Security 与 M365/Azure 分发结合，AI ARR 和 paid seats 已验证需求；短板是 capex 与 AI usage 对毛利的压力。",
+        "validation_horizon": "未来 2-4 个季度",
+        "required_evidence": "Copilot paid seats、ARPU、AI gross margin、Azure AI 消费、capex/FCF。",
+        "current_status": "待季度复盘",
+        "next_review_trigger": "Copilot paid seats 或 AI ARR 连续失速，AI gross margin 继续下滑且 FCF 无法跟上 capex。"
+      },
+      {
+        "target": "NOW",
+        "initial_claim": "工作流控制权强，订阅、cRPO 和 Now Assist 大客户均有一手证据；估值较历史回落后，胜率/赔率组合更均衡。",
+        "validation_horizon": "未来 2-4 个季度",
+        "required_evidence": "Now Assist ARR/attach rate、cRPO、net expansion、FY27 margin。",
+        "current_status": "待季度复盘",
+        "next_review_trigger": "cRPO 低于指引、Now Assist 大客户放缓、Armis 整合导致 FY27 margin 修复失败。"
+      },
+      {
+        "target": "GOOGL",
+        "initial_claim": "Search、Gemini、Cloud、广告和数据栈形成完整 AI 分发闭环；Cloud backlog 与 Gemini usage 是强证据。主要约束是估值回升和 capex。",
+        "validation_horizon": "未来 2-4 个季度",
+        "required_evidence": "Search revenue、Gemini paid MAU、Cloud backlog 转化、capex/FCF。",
+        "current_status": "待季度复盘",
+        "next_review_trigger": "Search 增速/价格弱化、Cloud backlog 转收入慢、capex 继续上修但 FCF 不改善。"
+      },
+      {
+        "target": "CRM",
+        "initial_claim": "Agentforce/Data 360 指标强，但公司整体收入和 FCF 指引尚未同步加速。赔率来自低估值和 AI 指标向整体增长转化。",
+        "validation_horizon": "未来 2-4 个季度",
+        "required_evidence": "Agentforce ARR、AWU、organic subscription growth、net retention、FCF growth。",
+        "current_status": "待季度复盘",
+        "next_review_trigger": "Agentforce ARR/AWU 不能转成 subscription growth、FCF 指引继续低迷、Informatica 稀释有机增长。"
+      },
+      {
+        "target": "PLTR",
+        "initial_claim": "AIP 商业化和 FCF 兑现最强之一，美国商业增长和 FCF margin 都很突出；但估值容错极低，排序被赔率扣分。",
+        "validation_horizon": "未来 2-4 个季度",
+        "required_evidence": "U.S. commercial revenue、TCV/RDV、customer count、FCF margin、政府订单质量。",
+        "current_status": "待季度复盘",
+        "next_review_trigger": "美国商业收入、TCV、RDV 或 adjusted FCF margin 任一核心指标连续降速。"
+      },
+      {
+        "target": "APP",
+        "initial_claim": "Axon 将 AI 直接映射到广告 ROI，收入和 EBITDA margin 极强；但估值、平台开放后的广告质量和监管风险需要严格跟踪。",
+        "validation_horizon": "未来 2-4 个季度",
+        "required_evidence": "Q2 revenue/EBITDA、advertiser retention、Axon platform adoption、监管/诉讼风险。",
+        "current_status": "待季度复盘",
+        "next_review_trigger": "Q2/Q3 guide 降速、EBITDA margin 跌破高位区间、广告主留存或质量争议恶化。"
+      },
+      {
+        "target": "ADBE",
+        "initial_claim": "估值和现金流赔率好，AI-first ARR 高增是线索；核心问题是 AI 到底是防守性功能还是能拉动 Creative/Document 再加速。",
+        "validation_horizon": "未来 2-4 个季度",
+        "required_evidence": "AI-first ARR 绝对额、Firefly monetization、Creative ARR、CEO 交接节奏。",
+        "current_status": "待季度复盘",
+        "next_review_trigger": "AI-first ARR 不能转成净新增 ARR、Creative 增速继续放缓、CEO 交接导致执行不稳。"
+      },
+      {
+        "target": "META",
+        "initial_claim": "广告 AI 效率已体现在收入、展示量和单价，但不是纯应用软件标的；capex 和监管会显著影响赔率。",
+        "validation_horizon": "未来 2-4 个季度",
+        "required_evidence": "ad price、impressions、capex/FCF、AI assistant usage、监管进展。",
+        "current_status": "待季度复盘",
+        "next_review_trigger": "ad price/impression 走弱、capex 超预期、AI 消费产品不能货币化。"
+      },
+      {
+        "target": "INTU",
+        "initial_claim": "财税数据和专家网络适合 AI，但增长弹性不如 PLTR/APP；当前更像稳健复利和垂直 AI 验证。",
+        "validation_horizon": "未来 2-4 个季度",
+        "required_evidence": "Intuit Assist usage、TurboTax Live unit economics、SMB retention、AI fraud/risk controls。",
+        "current_status": "待季度复盘",
+        "next_review_trigger": "TurboTax Live、Online Ecosystem 或 AI attach rate 不达预期。"
+      },
+      {
+        "target": "AXON",
+        "initial_claim": "公共安全 AI 场景高信任、垂直性强，但当前估值和现金流口径不支持提高强度，AI Era Plan 还需要更多披露。",
+        "validation_horizon": "未来 2-4 个季度",
+        "required_evidence": "AI Era Plan revenue、ARR、software gross margin、FCF、政府采购周期。",
+        "current_status": "待季度复盘",
+        "next_review_trigger": "AI Era Plan 没有收入化披露、FCF 持续弱、估值继续扩张。"
+      }
+    ],
+    "qa_structure": {
+      "l1": 4,
+      "l2": 13,
+      "l3": 37
+    },
+    "source_count": 28,
+    "target_rows": 10,
+    "internal_tooling_note": "GPT 负责架构、验证、合成与最终判断；外部辅助仅用于已选材料初读，未在最终 HTML 中展示。"
+  }
+}

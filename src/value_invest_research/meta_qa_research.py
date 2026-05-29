@@ -32,75 +32,80 @@ from value_invest_research.research_system import (
 from value_invest_research.scaffold import slugify
 
 
-META_QA_OBJECT_TYPES = {"company", "industry", "event", "custom"}
+META_QA_OBJECT_TYPES = {"company", "industry", "event", "technology", "target_update", "custom"}
 
 
 META_QA_BLUEPRINTS: dict[str, list[dict[str, Any]]] = {
     "company": [
         {
-            "id": "baseline",
-            "question": "这个公司的基础画像是什么？",
+            "id": "growth",
+            "question": "公司未来增长由什么驱动，空间和持续性如何？",
             "l2": [
-                ("origin_model", "公司如何形成，最早解决什么问题？"),
-                ("business_model", "公司今天靠什么业务、客户和利润池运转？"),
+                ("growth_driver", "增长来自市场扩张、份额提升、价格、产品周期还是新业务？"),
+                ("future_space", "公司可捕获的未来空间有多大，增长期限和约束是什么？"),
             ],
         },
         {
-            "id": "economics",
-            "question": "公司的经济性和价值链位置是否足够好？",
+            "id": "value_capture",
+            "question": "公司是否具备护城河、单位经济和价值捕获能力？",
             "l2": [
-                ("profit_cash", "收入、毛利和现金流由哪些业务驱动？"),
-                ("value_chain", "公司在哪些环节捕获或丢失经济性？"),
+                ("unit_economics", "收入、毛利、费用、现金流和资本开支如何构成单位经济？"),
+                ("value_chain", "公司在产业链中靠什么议价权捕获或丢失利润？"),
             ],
         },
         {
-            "id": "competition_strategy",
-            "question": "竞争格局和战略路径是否支持长期优势？",
+            "id": "financial_valuation",
+            "question": "财务质量、估值赔率和反证条件是否支持继续跟踪？",
             "l2": [
-                ("competition", "真实竞争对手是谁，竞争强度如何？"),
-                ("strategy", "战略是否沿着能力边界扩展，并能被数据验证？"),
+                ("financial_quality", "利润、现金流、资产负债和会计质量是否匹配业务叙事？"),
+                ("valuation_odds", "当前估值隐含了什么增长、利润率和现金流假设？"),
+                ("disconfirming_tests", "哪些事实会最快证伪公司增长、护城河或估值判断？"),
             ],
         },
         {
-            "id": "risk_disconfirm",
-            "question": "哪些风险和反证条件会改变基础判断？",
+            "id": "observation_decision",
+            "question": "应如何形成具体观察结论和后续监控清单？",
             "l2": [
-                ("governance", "治理、组织和资本配置是否会放大风险？"),
-                ("falsification", "什么新增信息会最快证伪当前判断？"),
+                ("target_strength", "当前研究证据支持什么观察强度，为什么？"),
+                ("monitoring_plan", "后续应跟踪哪些季度数据、催化剂和降级触发器？"),
             ],
         },
     ],
     "industry": [
         {
             "id": "demand",
-            "question": "这个行业的需求、规模和增长质量如何？",
+            "question": "行业需求是否真实，未来空间来自哪里？",
             "l2": [
                 ("market_size", "行业空间来自真实需求、价格、渗透率还是周期？"),
                 ("demand_quality", "需求是否可持续，还是由补贴、库存或短期周期驱动？"),
+                ("future_space", "未来空间应拆成总需求、瓶颈节点和公司可捕获空间中的哪几部分？"),
             ],
         },
         {
-            "id": "value_chain",
-            "question": "行业价值链中利润池在哪里？",
+            "id": "bottleneck",
+            "question": "产业链哪些瓶颈最可能捕获增量利润？",
             "l2": [
                 ("profit_pool", "哪一段产业链获得主要利润和现金流？"),
-                ("bargaining_power", "供应商、渠道、客户和监管如何分配经济性？"),
+                ("bottleneck_nodes", "哪些环节受产能、技术、客户认证或资本开支约束？"),
+                ("value_capture", "哪些公司能把瓶颈转化为收入、毛利和现金流？"),
             ],
         },
         {
-            "id": "competition",
-            "question": "行业竞争格局是否会改善或恶化？",
+            "id": "disconfirming",
+            "question": "哪些反证和市场定价会削弱当前机会？",
             "l2": [
-                ("structure", "行业集中度、进入壁垒和替代品压力如何？"),
                 ("price_competition", "竞争会不会把增长转化为价格战和利润率下行？"),
+                ("priced_in_risk", "市场价格和估值是否已经透支未来增长？"),
+                ("disconfirming_signal", "什么数据会证明需求、瓶颈或利润池被高估？"),
             ],
         },
         {
-            "id": "risk_trigger",
-            "question": "哪些变量会重塑行业判断？",
+            "id": "targets",
+            "question": "哪些具体标的值得进入观察清单，理由和强度是什么？",
             "l2": [
-                ("policy_technology", "政策、技术和成本曲线如何改变行业结构？"),
-                ("disconfirming_signal", "什么信号会反证当前行业结论？"),
+                ("target_mapping", "哪些证券直接映射到已验证瓶颈或利润池？"),
+                ("target_strength", "每个标的的未来空间、估值赔率、证据质量和风险如何排序？"),
+                ("monitoring_data", "后续哪些数据会触发标的强度上调或下调？"),
             ],
         },
     ],
@@ -135,6 +140,74 @@ META_QA_BLUEPRINTS: dict[str, list[dict[str, Any]]] = {
             "l2": [
                 ("triggers", "哪些公告、数据或行为会触发判断更新？"),
                 ("disconfirming_signal", "什么信息会证明事件影响被高估或低估？"),
+            ],
+        },
+    ],
+    "technology": [
+        {
+            "id": "feasibility_demand",
+            "question": "技术路线是否可行，采用需求是否真实？",
+            "l2": [
+                ("technical_feasibility", "关键性能、成本、良率和可靠性是否达到采用门槛？"),
+                ("adoption_demand", "客户为什么需要这条技术路线，替代旧方案的收益是什么？"),
+            ],
+        },
+        {
+            "id": "ecosystem_bottleneck",
+            "question": "生态和产业链瓶颈在哪里？",
+            "l2": [
+                ("supply_chain_readiness", "上游材料、设备、工艺、软件和客户认证是否准备好？"),
+                ("bottleneck_nodes", "哪些环节最稀缺且最可能捕获利润？"),
+            ],
+        },
+        {
+            "id": "commercialization_competition",
+            "question": "商业化、竞争和反证条件如何影响机会？",
+            "l2": [
+                ("commercial_timing", "商业化节奏、价格曲线和成本下降路径是否清晰？"),
+                ("competing_routes", "替代路线、现有方案和客户自研会如何压制空间？"),
+            ],
+        },
+        {
+            "id": "exposed_assets",
+            "question": "哪些资产暴露于这条技术路线，如何跟踪？",
+            "l2": [
+                ("target_mapping", "哪些公司或资产能直接捕获这条技术路线的增量利润？"),
+                ("monitoring_data", "哪些技术、订单、财务和估值数据决定观察强度？"),
+            ],
+        },
+    ],
+    "target_update": [
+        {
+            "id": "change",
+            "question": "这个标的或资产发生了什么关键变化？",
+            "l2": [
+                ("fact_change", "新增事实是什么，和上次判断相比变在哪里？"),
+                ("source_quality", "新增信息来自官方证据、研报、消息还是观点？"),
+            ],
+        },
+        {
+            "id": "thesis_node",
+            "question": "变化影响了哪一个原始 thesis node？",
+            "l2": [
+                ("fundamental_node", "变化影响需求、利润池、财务质量、管理层还是风险？"),
+                ("mechanism_change", "变化通过什么机制改变收入、利润、现金流或估值？"),
+            ],
+        },
+        {
+            "id": "odds_change",
+            "question": "价格、估值和风险回报是否改变？",
+            "l2": [
+                ("valuation_reset", "当前估值隐含假设是否发生变化？"),
+                ("disconfirming_signal", "什么信息会证明本次变化被市场高估或低估？"),
+            ],
+        },
+        {
+            "id": "observation_update",
+            "question": "观察强度和后续监控应如何调整？",
+            "l2": [
+                ("strength_change", "应上调、下调还是维持观察强度，证据是什么？"),
+                ("monitoring_plan", "下一次更新必须检查哪些数据和触发器？"),
             ],
         },
     ],
@@ -176,8 +249,8 @@ META_QA_BLUEPRINTS: dict[str, list[dict[str, Any]]] = {
 
 
 L3_DRILLDOWNS = [
-    ("evidence_map", "这个问题最需要哪些事实证据直接回答？"),
-    ("disconfirming_test", "哪些信息会支撑或反证当前判断？"),
+    ("evidence_map", "哪些关键材料能直接回答这个问题，并改变上层结论或标的强度？"),
+    ("disconfirming_test", "哪些证据、数据或价格信号会支撑、反证或限制当前判断？"),
 ]
 
 
@@ -537,10 +610,11 @@ def _planner_user_prompt(project: dict[str, Any], fallback: dict[str, Any]) -> s
             json.dumps(contract, ensure_ascii=False, indent=2, sort_keys=True),
             "",
             "约束：",
-            "- L1 建议 3-5 个，每个问题要覆盖事实边界、机制/经济性、竞争/情景、风险/反证中的关键部分。",
+            "- L1 建议 4 个，按研究类型覆盖增长/需求、瓶颈/价值捕获、反证/估值赔率、具体标的或监控结论。",
             "- L2 每个 L1 建议 1-3 个；L3 每个 L2 建议 1-3 个。",
             "- 若 max_depth 小于 3，按 max_depth 截断，不要强行生成更深层。",
-            "- 叶子问题必须能直接进入四类信息搜集，并写清 information_focus。",
+            "- 叶子问题必须能直接进入资料规划和四类信息搜集，并写清 information_focus。",
+            "- 每个叶子问题都要能影响上层结论、标的强度、估值赔率或风险控制；不能只问背景介绍。",
             "- question 必须是中文投研问题，避免空泛标题。",
             "- id 使用英文 snake_case，短而稳定。",
             "",
@@ -787,18 +861,18 @@ def _tailored_l1_question(project: dict[str, Any], subject: str, l1_id: str, fal
     object_type = project["object_type"]
     if object_type == "industry":
         mapping = {
-            "demand": f"{subject}的需求、空间和增长质量是否足够支撑长期投资价值？",
-            "value_chain": f"{subject}产业链中利润池在哪里，经济性如何分配？",
-            "competition": f"{subject}竞争格局会改善，还是被价格战和产能扩张稀释？",
-            "risk_trigger": f"哪些政策、技术、成本或反证信号会重塑{subject}判断？",
+            "demand": f"{subject}的需求是否真实，未来空间来自哪里？",
+            "bottleneck": f"{subject}产业链哪些瓶颈最可能捕获增量利润？",
+            "disconfirming": f"哪些反证和市场定价会削弱{subject}机会？",
+            "targets": f"{subject}哪些具体标的值得进入观察清单，理由和强度是什么？",
         }
         return mapping.get(l1_id, fallback)
     if object_type == "company":
         mapping = {
-            "baseline": f"{subject}的公司基础画像是什么？",
-            "economics": f"{subject}的经济性、利润池和现金质量是否足够好？",
-            "competition_strategy": f"{subject}的竞争格局和战略路径是否支持长期优势？",
-            "risk_disconfirm": f"哪些风险和反证条件会改变对{subject}的基础判断？",
+            "growth": f"{subject}未来增长由什么驱动，空间和持续性如何？",
+            "value_capture": f"{subject}是否具备护城河、单位经济和价值捕获能力？",
+            "financial_valuation": f"{subject}财务质量、估值赔率和反证条件是否支持继续跟踪？",
+            "observation_decision": f"{subject}应如何形成具体观察结论和后续监控清单？",
         }
         return mapping.get(l1_id, fallback)
     if object_type == "event":
@@ -807,6 +881,22 @@ def _tailored_l1_question(project: dict[str, Any], subject: str, l1_id: str, fal
             "transmission": f"{subject}通过哪些路径影响资产和公司基本面？",
             "market_baseline": f"{subject}当前可能已经被市场定价了什么？",
             "follow_up": f"{subject}后续最重要的跟踪和反证条件是什么？",
+        }
+        return mapping.get(l1_id, fallback)
+    if object_type == "technology":
+        mapping = {
+            "feasibility_demand": f"{subject}技术路线是否可行，采用需求是否真实？",
+            "ecosystem_bottleneck": f"{subject}生态和产业链瓶颈在哪里？",
+            "commercialization_competition": f"{subject}商业化、竞争和反证条件如何影响机会？",
+            "exposed_assets": f"哪些资产暴露于{subject}，如何跟踪？",
+        }
+        return mapping.get(l1_id, fallback)
+    if object_type == "target_update":
+        mapping = {
+            "change": f"{subject}发生了什么关键变化？",
+            "thesis_node": f"{subject}变化影响了哪一个原始 thesis node？",
+            "odds_change": f"{subject}价格、估值和风险回报是否改变？",
+            "observation_update": f"{subject}观察强度和后续监控应如何调整？",
         }
         return mapping.get(l1_id, fallback)
     return _subject_prefixed_question(subject, fallback)
@@ -822,11 +912,11 @@ def _tailored_l2_question(
 ) -> str:
     if "smart_ev" in signals and l2_id == "price_competition":
         return f"{subject}竞争会不会演化为价格战、补贴竞争和利润率下行？"
-    if "ai" in signals and l2_id in {"policy_technology", "drivers"}:
+    if "ai" in signals and l2_id in {"policy_technology", "drivers", "bottleneck_nodes", "future_space"}:
         return f"AI、算法、芯片和数据能力如何改变{subject}的竞争结构？"
     if "policy" in signals and l2_id in {"policy_technology", "channels"}:
         return f"政策、监管和补贴变化如何影响{subject}的需求、成本和竞争？"
-    if "supply_chain" in signals and l2_id in {"value_chain", "bargaining_power"}:
+    if "supply_chain" in signals and l2_id in {"value_chain", "bargaining_power", "bottleneck_nodes", "supply_chain_readiness"}:
         return f"{subject}供应链瓶颈、关键零部件和渠道议价权如何分配经济性？"
     return _subject_prefixed_question(subject, question)
 
@@ -853,19 +943,21 @@ def _planner_rationale(project: dict[str, Any], signals: list[str]) -> str:
     signal_text = "、".join(signals)
     return (
         f"围绕“{project['meta_question']}”，系统先识别研究对象“{subject}”和信号“{signal_text}”，"
-        "再把问题拆成事实基础、经济性/传导机制、竞争或情景、风险和反证四类主线；"
-        "默认三层下钻后进入四类信息搜集。"
+        "再按研究类型拆成 Q1-Q4：需求/增长、瓶颈/价值捕获、反证/估值赔率、具体标的或监控结论；"
+        "默认三层下钻后进入资料规划、专业解析、GPT 验证和上层汇总。"
     )
 
 
 def _plan_node_rationale(project: dict[str, Any], node_id: str, signals: list[str]) -> str:
-    if any(token in node_id for token in ("demand", "market", "baseline", "facts")):
-        return "先确认事实、需求和基础边界，避免直接跳到结论。"
-    if any(token in node_id for token in ("value", "profit", "economics", "transmission")):
-        return "再确认价值链、利润池或事件传导机制，判断影响路径是否真实。"
-    if any(token in node_id for token in ("competition", "strategy", "scenario")):
-        return "继续拆竞争、战略或情景，识别结构性变化和可验证假设。"
-    return "最后设置风险、触发器和反证条件，保证结论可被更新。"
+    if any(token in node_id for token in ("demand", "market", "growth", "future", "facts", "change")):
+        return "先确认事实、需求、增长空间和基础边界，避免直接跳到标的。"
+    if any(token in node_id for token in ("value", "profit", "economics", "transmission", "bottleneck", "moat", "unit")):
+        return "再确认价值链、瓶颈、利润池或事件传导机制，判断谁能真实捕获经济性。"
+    if any(token in node_id for token in ("valuation", "priced", "risk", "disconfirm", "competition", "scenario", "odds")):
+        return "继续拆估值赔率、竞争和反证，识别当前价格是否已经打满。"
+    if any(token in node_id for token in ("target", "monitor", "observation", "strength")):
+        return "最后映射到具体标的、观察强度、催化剂、风险和跟踪数据。"
+    return "设置可验证的问题、触发器和反证条件，保证结论可被更新。"
 
 
 def _information_focus(
@@ -875,10 +967,10 @@ def _information_focus(
     signals: list[str],
 ) -> dict[str, str]:
     return {
-        "evidence": f"{subject}与“{parent_question}”相关的公告、监管文件、官方数据和可验证事实。",
-        "research_report": f"第三方对{subject}中“{parent_question}”的模型、数据和关键假设。",
-        "message": f"公开新闻、产业链进展和未完全确认但可能影响“{parent_question}”的线索。",
-        "opinion": f"专家、产业人士或投资者对“{parent_question}”的机制解释和反证提醒。",
+        "evidence": f"{subject}与“{parent_question}”相关的公告、财报/季报、法说、监管文件、官方数据、订单/backlog/RPO、现金流、估值基础数据和可验证事实。",
+        "research_report": f"第三方对{subject}中“{parent_question}”的市场空间、供需、价格、利润池、竞争格局、估值假设和关键模型。",
+        "message": f"公开新闻、产业链进展、政策更新、产品/订单/扩产消息，以及未完全确认但可能影响“{parent_question}”的线索。",
+        "opinion": f"专家、产业人士或投资者对“{parent_question}”的机制解释、变体认知、反方质询和需要验证的假设。",
     }
 
 
@@ -1020,6 +1112,9 @@ def _node(
     professional_answer = _professional_answer(question, buckets)
     answer = professional_answer["answer"]
     plan_node = plan_node or {}
+    task_family = _meta_task_family(question, plan_node)
+    selected_skill = _meta_selected_skill(task_family)
+    source_plan = _meta_source_plan(question, plan_node, task_family)
     return {
         "id": node_id,
         "level": level,
@@ -1044,8 +1139,99 @@ def _node(
             "should_collect_information": bool(plan_node.get("should_collect_information", level >= project["max_depth"])),
             "terminal_reason": plan_node.get("terminal_reason", ""),
             "information_focus": plan_node.get("information_focus", {}),
+            "materiality": _meta_materiality(question, selected_skill),
+            "task_family": task_family,
+            "selected_skill": selected_skill,
+            "source_plan": source_plan,
+            "extraction_schema": _meta_extraction_schema(task_family),
+            "skill_dispatch_trace": {
+                "task_family": task_family,
+                "selected_skill": selected_skill,
+                "concrete_materials": [item["source_type"] for item in source_plan],
+                "skill_output_status": "pending" if level >= project["max_depth"] else "rollup",
+                "fallback_used": "",
+                "gpt_verification_status": "pending",
+            },
         },
     }
+
+
+def _meta_task_family(question: str, plan_node: dict[str, Any]) -> str:
+    text = f"{question} {json.dumps(plan_node.get('information_focus', {}), ensure_ascii=False)}".lower()
+    if any(token in text for token in ["估值", "赔率", "pe", "fcf", "dcf", "倍", "市值", "valuation"]):
+        return "valuation"
+    if any(token in text for token in ["财报", "季报", "年报", "现金流", "毛利", "capex", "rpo", "backlog", "合同负债", "库存", "分部"]):
+        return "financial_statement"
+    if any(token in text for token in ["研报", "行业报告", "市场空间", "tam", "供需", "价格", "cagr", "第三方"]):
+        return "industry_report"
+    if any(token in text for token in ["新闻", "消息", "政策", "监管", "事件", "订单", "扩产"]):
+        return "news_event"
+    if any(token in text for token in ["观点", "专家", "投资者", "访谈", "社媒"]):
+        return "opinion"
+    if any(token in text for token in ["标的", "证券", "观察清单", "强度", "推荐"]):
+        return "target_recommendation"
+    return "leaf_research"
+
+
+def _meta_selected_skill(task_family: str) -> str:
+    return {
+        "financial_statement": "financial-statement-analysis",
+        "valuation": "valuation-analysis",
+        "industry_report": "industry-report-analysis",
+        "news_event": "news-event-analysis",
+        "opinion": "opinion-analysis",
+        "target_recommendation": "target-recommendation-analysis",
+        "leaf_research": "leaf-research-deepseek",
+    }.get(task_family, "leaf-research-deepseek")
+
+
+def _meta_source_plan(question: str, plan_node: dict[str, Any], task_family: str) -> list[dict[str, str]]:
+    focus = plan_node.get("information_focus", {}) if isinstance(plan_node.get("information_focus"), dict) else {}
+    preferred = _meta_selected_skill(task_family)
+    return [
+        {
+            "source_bucket": "evidence",
+            "source_type": "official filing / earnings release / regulator or exchange document",
+            "why_needed": focus.get("evidence", f"用一手证据直接验证“{question}”。"),
+            "preferred_skill": preferred if task_family in {"financial_statement", "valuation", "target_recommendation"} else "leaf-research-deepseek",
+        },
+        {
+            "source_bucket": "research_report",
+            "source_type": "industry report / sell-side report / third-party dataset",
+            "why_needed": focus.get("research_report", f"用第三方模型和数据校验“{question}”。"),
+            "preferred_skill": preferred if task_family in {"industry_report", "valuation"} else "industry-report-analysis",
+        },
+        {
+            "source_bucket": "message",
+            "source_type": "news / policy update / supply-chain message",
+            "why_needed": focus.get("message", f"用消息捕捉“{question}”的最新线索和触发器。"),
+            "preferred_skill": "news-event-analysis",
+        },
+        {
+            "source_bucket": "opinion",
+            "source_type": "expert view / investor view / interview",
+            "why_needed": focus.get("opinion", f"用观点提炼“{question}”的反方质询和待验证假设。"),
+            "preferred_skill": "opinion-analysis",
+        },
+    ]
+
+
+def _meta_extraction_schema(task_family: str) -> dict[str, Any]:
+    common = ["fact", "inference", "judgment", "gap", "trigger", "source_links", "support_refute_or_lead"]
+    family_fields = {
+        "financial_statement": ["period", "segment_data", "margin", "cash_flow", "capex", "inventory", "backlog_or_rpo"],
+        "valuation": ["future_space", "market_snapshot", "priced_in_assumptions", "scenario_table", "valuation_odds"],
+        "industry_report": ["market_size", "supply_demand", "price_assumptions", "methodology", "assumptions_to_verify"],
+        "news_event": ["event_type", "claim_status", "affected_node", "verification_source", "trigger"],
+        "opinion": ["core_claim", "argument_chain", "implicit_assumptions", "counterquestion"],
+        "target_recommendation": ["ticker", "thesis_node", "future_space", "valuation_odds", "strength", "downgrade_triggers"],
+        "leaf_research": ["selected_materials", "investment_relevance", "uncertainties", "follow_up_data"],
+    }.get(task_family, [])
+    return {"common_fields": common, "family_specific_fields": family_fields}
+
+
+def _meta_materiality(question: str, selected_skill: str) -> str:
+    return f"本问题必须说明其如何影响上层结论、估值赔率、风险控制或具体标的强度；默认使用 {selected_skill} 进行叶子材料解析。"
 
 
 def _buckets_for_question(
@@ -1747,7 +1933,7 @@ def _render_report_l1_section(node: dict[str, Any], nodes_by_id: dict[str, dict[
             continue
         leaves = [nodes_by_id[leaf_id] for leaf_id in child.get("next_question_ids", []) if leaf_id in nodes_by_id]
         leaf_items = "".join(
-            f"<li><strong>{escape(leaf['question'])}</strong>{_render_professional_answer_summary(leaf)}{_category_meter(leaf)}{_leaf_source_refs(leaf)}</li>"
+            f"<li><strong>{escape(leaf['question'])}</strong>{_leaf_quality_trace(leaf)}{_render_professional_answer_summary(leaf)}{_category_meter(leaf)}{_leaf_source_refs(leaf)}</li>"
             for leaf in leaves
         )
         l2_cards.append(
@@ -1765,6 +1951,28 @@ def _render_report_l1_section(node: dict[str, Any], nodes_by_id: dict[str, dict[
         f"<div class=\"l2-grid\">{''.join(l2_cards)}</div>"
         "</section>"
     )
+
+
+def _leaf_quality_trace(node: dict[str, Any]) -> str:
+    metadata = node.get("metadata", {}) or {}
+    selected_skill = metadata.get("selected_skill", "")
+    materiality = metadata.get("materiality", "")
+    source_plan = metadata.get("source_plan", []) if isinstance(metadata.get("source_plan"), list) else []
+    source_labels = [
+        f"{item.get('source_bucket', '')}:{item.get('preferred_skill', '')}"
+        for item in source_plan[:4]
+        if isinstance(item, dict)
+    ]
+    parts = []
+    if selected_skill:
+        parts.append(f"解析 skill：{selected_skill}")
+    if source_labels:
+        parts.append("资料规划：" + " / ".join(source_labels))
+    if materiality:
+        parts.append(f"重要性：{_truncate_text(materiality, 110)}")
+    if not parts:
+        return ""
+    return "<p class=\"note\">" + escape("；".join(parts)) + "</p>"
 
 
 def _leaf_source_refs(node: dict[str, Any]) -> str:

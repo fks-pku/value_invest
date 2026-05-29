@@ -4,17 +4,24 @@ This is the only active research framework for this project.
 
 Use it whenever the user proposes a research goal, topic, company, sector, event, concept, or investment question.
 
+Final report presentation is governed by `research_report_contract.md`. Follow that contract for all future user-facing HTML reports unless the user explicitly asks to iterate on the framework.
+
 ## Output Order
 
-1. Current research goal
-2. Research type adaptation layer
-3. Research execution plan
-4. QA drilldown sections
-5. Specialty skill dispatch for L3 leaf tasks
-6. Evidence-linked synthesis inside each QA node
-7. Specific target observation list inside the target-selection QA node
+Final user-facing HTML reports must use exactly this top-level order:
+
+1. Current research goal.
+2. Question drilldown.
+3. Final target recommendation.
+4. Source index.
+
+The final target recommendation is a research conclusion section. It must synthesize all QA evidence into a ranked observation list with specific targets, win probability, payoff odds, rationale, required verification data, and downgrade triggers. It must not issue buy/sell/hold instructions.
+
+Research type adaptation, question architecture, source planning, specialty parsing, GPT verification, tool attribution, and iteration notes are internal process artifacts. Store them in workbench JSON, logs, or internal files; do not render them as top-level HTML report sections unless the user explicitly asks to inspect process.
 
 Do not append a generic full report, workbench appendix, or any other research template.
+
+Do not compress away QA depth when refreshing a report. Preserve the full available QA tree and all answered questions unless the user explicitly asks for an executive version.
 
 ## Persistent Framework Changes
 
@@ -45,6 +52,8 @@ The L0 answer must be short and directional. It should define the research objec
 
 Before building Q1-Q4, classify the research type and adapt the QA directions. The QA tree remains the universal shape, but the meaning of each Q direction should fit the research object.
 
+After classifying the type, select or synthesize a domain playbook. The playbook owns concrete L2 mechanism buckets, L3 questions, source plans, parsing schemas, domain metrics, tracking indicators, and threshold rules. The public report contract owns only the hierarchy and display order.
+
 Default research types:
 
 | Type | Q1 | Q2 | Q3 | Q4 |
@@ -66,7 +75,20 @@ For every level, explicitly state:
 - How to connect the information into reasoning.
 - How to present the output.
 
-The execution plan is part of the research output. It should make the method auditable before the system starts collecting more detail.
+The execution plan is part of the internal workbench output, not the final user-facing HTML by default. It should make the method auditable before the system starts collecting more detail, but the final report should stay research-first and only show the current goal, QA drilldown, final target recommendation, and source index.
+
+Before evidence collection, run two quality-control passes:
+
+1. Question architecture pass
+   - Use `investment-question-architect`.
+   - Each L3 question must state decision use, materiality, required materials, support evidence, refuting evidence, target implications, and preferred specialty skill.
+   - Delete or rewrite questions that cannot change a parent conclusion, target strength, valuation odds, or risk controls.
+
+2. Source planning pass
+   - Use `research-source-planner`.
+   - Each L3 question must have a concrete source plan across evidence, research_report, message, and opinion where relevant.
+   - Each supporting source plan must have a refuting or boundary-check source plan.
+   - The source plan must name the preferred parser skill and whether DeepSeek MCP should do first-pass reading.
 
 Default QA directions for industry/theme opportunity:
 
@@ -77,6 +99,34 @@ Default QA directions for industry/theme opportunity:
 
 For other research types, use the adapted Q1-Q4 map. Each Q direction should state its own sub-plan and then run the corresponding QA subtree.
 
+## Chokepoint Evaluation Protocol
+
+For industry/theme opportunity and technology/product-route research, the domain playbook must add a chokepoint evaluation whenever value capture depends on scarce supply, workflow control, proprietary data, distribution, trust, regulation, or another hard-to-bypass constraint.
+
+The chokepoint scorecard belongs inside the relevant Q2 bottleneck node, usually Q2.1. It must not become a top-level appendix or a component parallel to the QA tree.
+
+Each scorecard must declare a score schema with dimension weights, scoring definitions, and downgrade rules. Do not use unexplained qualitative labels as the only score basis. If one dimension lacks evidence, score it conservatively and list the missing data.
+
+Each chokepoint node should answer:
+
+- Demand flow: what incremental demand reaches this node?
+- Irreplaceability: can buyers bypass or substitute this node?
+- Supply/access constraint: what scarce capacity, data, trust, distribution, compliance, or ecosystem access controls the node?
+- Pricing power: can the node raise price, take rate, margin, or backlog quality?
+- Financial conversion: does the bottleneck show up in revenue, gross margin, RPO/backlog, FCF, or capex efficiency?
+- Market pricing: is the bottleneck already fully priced in?
+- Disconfirming trigger: what data would prove this is not a real bottleneck?
+
+Q4 target observation lists must use Q2 chokepoint evaluation as an input to ranking. A target cannot receive high strength from theme exposure alone; it must reconcile chokepoint score or score drivers with future space, valuation odds, evidence quality, and Q3 downgrade tests.
+
+Q4 target observation lists must also include:
+
+- Score breakdown: chokepoint strength, future space, valuation odds, evidence quality, disconfirming-risk control, and monitorability.
+- Simplified odds model: implied expectation, base path, bull path, bear path, and upgrade/downgrade data.
+- Prediction review fields: initial claim, validation horizon, required evidence, current status, and next review trigger.
+
+The simplified odds model is not a price target or trading instruction. If current valuation data is stale, incomplete, or source quality is weak, mark odds as unverified and do not raise target strength.
+
 ## QA Drilldown
 
 Use at most three layers by default:
@@ -84,6 +134,8 @@ Use at most three layers by default:
 - Q1: main research direction.
 - Q1.1: mechanism question.
 - Q1.1.1: evidence-collection unit.
+
+Do not put too many unrelated L3 leaves under one catch-all L2. L2 should group L3 leaves into mechanism buckets selected by the research-type adapter and domain playbook. If an L1 has only one L2 but many L3 leaves, split the L2 layer before polishing the report.
 
 The report must proceed through the QA tree directly:
 
@@ -93,6 +145,16 @@ The report must proceed through the QA tree directly:
 - Q4 owns target observation tables, monitoring lists, decision updates, or the adapted fourth direction.
 
 Details, scorecards, tables, and jump pages must live inside the QA layer whose question they answer. Do not place them as Q-parallel components or unrelated top-level appendices.
+
+Every QA layer must present information in this order:
+
+1. Current conclusion: the shortest defensible rollup of facts, inference, judgment, and uncertainty.
+2. Question expansion: child QA nodes or the tables/cards that directly answer that node.
+3. Remaining questions: specific missing data, next evidence to collect, or disconfirming tests.
+
+Parent-level answer artifacts such as `回答呈现`, scorecards,反证清单, target tables, and summary matrices belong under the current-conclusion section, before child QA expansion.
+
+Do not duplicate the same conclusion, child-QA list, or pending-question text in both a generated summary card and the body; use one sequential presentation.
 
 Presentation artifacts are answer formats, not structural peers:
 
@@ -104,6 +166,9 @@ Every parent answer must roll up only from child answers and auditable sources.
 
 L3 is the smallest research unit. Each L3 answer must include:
 
+- Materiality.
+- Source plan.
+- Skill dispatch trace.
 - Fact.
 - Inference.
 - Judgment.
@@ -127,6 +192,7 @@ Every L3 answer must preserve this dispatch trace:
 - `selected_skill`
 - `concrete_materials`
 - `extraction_schema`
+- `source_plan`
 - `skill_output_status`
 - `fallback_used`
 - `gpt_verification_status`
@@ -139,11 +205,17 @@ Before running an L3 task, classify it into one or more task families:
 
 | Task family | Preferred skill | Use for | Required output discipline |
 |---|---|---|---|
+| Question architecture | `investment-question-architect` | Research type classification, Q1-Q4 map, L1/L2/L3 question design | decision-use questions, materiality, support/refute tests, target implications |
+| Source planning | `research-source-planner` | Material selection before source reading | source priority, concrete sources/searches, extraction schema, refuting-source plan |
 | Financial statement / filing parsing | `financial-statement-analysis` | 10-K, 10-Q, 20-F, annual reports, quarterly reports, earnings releases, segment data, capex, inventory, RPO/backlog, cash-flow quality | normalized financial facts, earnings-quality view, gaps, triggers |
 | Valuation / priced-in expectations | `valuation-analysis` | multiples, FCF yield, reverse DCF, peer comparison, valuation sensitivity, margin of safety, market-implied growth/margins | market facts, implied assumptions, scenario table, odds judgment, disconfirming tests |
+| Industry report / dataset parsing | `industry-report-analysis` | sell-side reports, industry reports, TAM, supply-demand, price forecasts, competitive maps, third-party datasets | assumptions, methodology, estimates, verification needs, disagreement points |
+| News / message parsing | `news-event-analysis` | public news, policy updates, supply-chain reports, product launches, unverified market messages | lead classification, affected hypothesis, verification source, near-term trigger |
+| Opinion parsing | `opinion-analysis` | expert views, investor opinions, interviews, conference notes, social posts | argument chain, assumptions, fact/opinion separation, counterquestions |
 | Long source reading / first L3 draft | `leaf-research-deepseek` plus DeepSeek MCP | long reports, transcripts, filings, policy documents, expert interviews, extracted passages | source extraction with fact/inference/judgment/gap/trigger |
 | Quantitative strategy / backtest | `quant-research-fks` or `quantitative-research` | factors, timing rules, systematic screens, backtests, walk-forward validation | hypothesis, data, implementation, backtest, risk limits |
 | HTML/report interface | `frontend-design` | HTML dashboard, report readability, visual hierarchy, sticky metadata, table ergonomics | working HTML/CSS with verification |
+| Target observation / recommendation | `target-recommendation-analysis` | Q4 specific securities/assets, strength scoring, future space, valuation odds, catalysts, risks | specific targets, no trading instructions, upgrade/downgrade triggers, required data |
 
 When one leaf question spans multiple task families, chain skills in the natural order instead of forcing a single skill. For example, parse filings or earnings releases with `financial-statement-analysis`, verify the extracted facts, then pass only those verified facts into `valuation-analysis` for implied-expectation work.
 
@@ -229,10 +301,14 @@ For every target, include:
 - Bottleneck or thesis node.
 - Reason.
 - Strength.
+- Future space.
+- Current valuation odds or explicit valuation-data gap.
 - Required verification data.
 - Catalysts.
 - Risks.
 - Source links.
+- Downgrade triggers.
+- Monitorability.
 
 This section is a research observation list, not a buy/sell instruction.
 
@@ -246,13 +322,19 @@ Use Apple-inspired presentation:
 - Clean spacing.
 - Low-noise cards.
 - Blue links for concrete sources.
+- Final HTML must use exactly four top-level sections: `当前研究目标`, `问题下钻`, `最终标的推荐`, `来源索引`.
+- The final target recommendation section must rank specific targets by synthesized win probability and payoff odds, while keeping Q4 as the auditable QA source of the target logic.
+- Do not render process metadata, iteration diffs, execution traces, quality-framework explanations, tool/delegation attribution, or workbench appendices in final HTML.
+- Preserve full QA depth in the final report; do not replace the QA tree with a compressed Q1-Q4 summary unless the user explicitly requests a brief version.
+- Inside every QA card/details node, use a consistent three-part display: `1. 当前结论呈现`, `2. 问题展开（子 QA）`, `3. 待补充的问题`.
+- If child QA nodes are rendered inline as expandable cards, do not also render a separate child-question list with the same titles. The question expansion section should contain either jump links or inline child cards, not both.
+- Put answer-presentation artifacts under `当前结论呈现` before child QA expansion.
+- Keep source indexes collapsed by default unless the user explicitly asks to inspect sources.
+- Use the canonical frontend component family defined in `research_report_contract.md` for refreshed reports: `qa-card`, `artifact-card`, `target-section` + `target-table`, and one collapsed `source-collapse`. Do not introduce visually divergent component families unless the user explicitly asks for a frontend redesign.
 
 Default page order:
 
 1. Current research goal.
-2. Research type adaptation and execution plan.
-3. QA drilldown: Q1, using the adapted meaning for the selected research type.
-4. QA drilldown: Q2, with scorecards, financial tables, event maps, or detail links nested under the relevant question.
-5. QA drilldown: Q3, with disconfirming tests, valuation checks, risk triggers, or policy/technical failure tests nested under the relevant question.
-6. QA drilldown: Q4, with target observation lists, monitoring lists, or decision updates nested under the relevant question.
-7. Specialty skill trace and source index.
+2. Question drilldown: Q1-Q4 as top-level QA cards, with all scorecards, risk tests, target tables, and supporting details nested under the relevant question.
+3. Final target recommendation, synthesized from Q1-Q4.
+4. Source index, collapsed by default.
