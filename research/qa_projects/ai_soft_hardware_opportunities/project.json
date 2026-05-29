@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "project_id": "ai_soft_hardware_opportunities",
+  "object_id": "AI软硬件产业投资机会",
+  "object_type": "theme",
+  "meta_question": "AI软硬件产业链的投资机会在哪里：哪些环节能持续捕获 AI 资本开支与生产力扩散的经济性，哪些只是已经被价格充分反映的共识？",
+  "max_depth": 3,
+  "created_at": "2026-05-27T12:33:23.503930+00:00",
+  "updated_at": "2026-05-27T12:33:23.503930+00:00",
+  "language": "zh-CN",
+  "output_policy": "html_first",
+  "framework": "QA-led investment research",
+  "canonical_sections": [
+    "研究目标",
+    "问题拆分",
+    "标的推荐"
+  ]
+}

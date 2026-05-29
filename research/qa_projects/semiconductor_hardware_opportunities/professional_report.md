@@ -306,3 +306,68 @@ capex 上修仍然是硬件链正证据，但不能直接等同于可投资赔�
 ## 来源
 
 核心来源见 `evidence.jsonl`；HTML 报告中每个 QA 节点附有蓝色源链接。
+
+## 本轮深化补充：TODO 四个核心节点
+
+### Q4.1.6 标的研究优先级矩阵
+
+这是研究覆盖优先级，不是买卖建议。排序依据是瓶颈暴露、财务兑现证据、赔率约束、主要反证和下一季必查数据。
+
+| 覆盖优先级 | 标的/组合 | 瓶颈暴露 | 财务兑现证据 | 赔率约束 | 主要反证 | 下一季必查数据 |
+|---|---|---|---|---|---|---|
+| 核心跟踪 | NVDA、TSM | GPU/AI networking、先进制程、CoWoS/先进封装 | NVDA Data Center 收入、TSMC HPC/先进封装供给约束 | 估值、客户集中、CoWoS 扩产吸收、EPS/FCF 修正速度 | 云厂 capex 下修、CoWoS 毛利下行、Data Center 指引不及预期 | compute/networking 拆分、Blackwell/Rubin 交付、CoWoS 产能和 HPC/AI 收入占比 |
+| 高优先级 | AVGO、ASML、HBM 组合 | custom ASIC、AI networking、光刻设备、HBM/HBM4 | AVGO AI revenue、ASML backlog、HBM 认证和毛利弹性 | 客户集中、订单波动、HBM ASP 和库存周期 | ASIC 项目延期、设备订单转弱、HBM ASP 连续下行 | AVGO AI 客户数、ASML net bookings、HBM ASP/份额/库存 |
+| 验证型 | MRVL、AMAT/LRCX/KLAC、中国设备链、澜起科技 | AI interconnect、WFE、国产设备、DDR5/CXL/PCIe | MRVL data center 占比、设备收入与毛利、中国设备现金流、澜起新品收入 | 订单滞后、国产设备订单质量、澜起估值容错率 | backlog 不跟、现金流背离利润、CXL 量产延后 | MRVL bookings、设备 backlog、合同负债/存货库龄、CXL/Retimer 量产订单 |
+| 线索型 | 长电科技 | 先进封装/OSAT | 产业位置成立，但近期收入和增长证据不足 | 收入修复、毛利率、客户结构 | 先进封装收入不放量、存货上升、毛利率承压 | AI/HPC 客户、先进封装订单、产能利用率和分项收入 |
+
+### Q1.1.3 capex 质量拆分
+
+| capex 类型 | 当前证据 | 对半导体硬件的含义 | 不能证明什么 | 下一季必查数据 |
+|---|---|---|---|---|
+| 真实算力硬件 | NVIDIA、Broadcom、Marvell、Oracle RPO/预付款 | 直接支撑 GPU、ASIC、networking、HBM、先进制程和封装需求 | 不能证明所有供应商利润率同步扩张，也不能证明估值合理 | GPU/ASIC 出货、AI 客户项目、RPO 转收入、客户预付款 |
+| 组件涨价 | Microsoft 约 250 亿美元 capex 来自组件价格上涨，Meta 披露组件涨价压力 | 说明 HBM、服务器零部件和网络设备仍有供需紧张 | 名义 capex 增长不能等同于芯片数量增长 | price/volume 拆分、HBM ASP、GPU/ASIC 单价和出货量 |
+| 数据中心土建/电力网络 | Meta servers/data centers/network infrastructure，Alphabet Cloud 容量约束 | 支持 AI 基础设施建设，但半导体弹性需二次拆分 | 不能直接证明 GPU/ASIC/HBM 收入同步增长 | 完工节奏、设备装机率、功率利用率和芯片配置 |
+| RPO/backlog/客户预付款 | Oracle RPO 与 AI 合同采购 GPU 机制 | 比 capex 总额更接近真实需求质量 | RPO 仍需转收入，采购和交付存在风险 | RPO 转收入、预付款余额、GPU sourcing、合同延后 |
+| 现金流压力 | Amazon FCF 压力和 PPE 购买净额增加 | AI 投资是真实现金支出 | 不能证明客户会长期不计 ROI 扩张 | FCF、capex intensity、AI 收入、利用率 |
+
+### Q2.1.9 瓶颈节点详情页补强
+
+| 节点 | 产业链位置 | 约束变量 | 谁捕获利润 | 财务科目映射 | 降级触发器 | 待补数据 |
+|---|---|---|---|---|---|---|
+| AI 加速器 / custom ASIC / networking | 算力集群前端芯片、ASIC、交换和互联 | GPU 供应、ASIC 客户项目、AI networking、封装产能 | NVDA、AVGO、MRVL | Data Center revenue、AI semiconductor revenue、bookings/backlog、gross margin | capex 下修、ASIC 延期、networking 放缓、客户集中恶化 | compute/networking 拆分、ASIC 项目数、客户订单和 backlog |
+| HBM / 高端存储 | GPU/ASIC 配套高带宽内存 | HBM4/HBM4E 认证、良率、ASP、客户份额 | SK hynix、Samsung、Micron | HBM/DRAM revenue、gross margin、inventory、OCF | ASP 下行、库存恶化、认证延迟、FCF 跟不上利润 | HBM ASP、客户份额、库存周转、认证节奏 |
+| CoWoS / 先进封装 | 先进代工和异构集成封装瓶颈 | CoWoS 月产能、客户预付款、良率和毛利 | TSM 为主，OSAT 单独验证 | HPC/AI revenue、advanced packaging capex、客户预付款、gross margin | 扩产快于订单、封装毛利下行、OSAT 收入不增长 | CoWoS 产能、客户吸收率、长电先进封装收入 |
+| 全球设备链 | 光刻、刻蚀、沉积、量测检测 | WFE、订单/backlog、出口许可、先进节点扩产 | ASML、AMAT、LRCX、KLAC | equipment revenue、orders/backlog、service revenue、gross margin | 订单连续转弱、许可影响交付、收入强但 backlog 不跟 | ASML net bookings、设备 backlog、WFE 指引 |
+| 中国设备 | 国产设备替代 | 客户验证、中标、新签订单、合同负债和存货 | 北方华创、中微公司 | 收入、扣非利润、合同负债、经营现金流、存货 | 现金流背离利润、合同负债下降、高端验证停滞 | 订单结构、合同负债明细、存货库龄、高端验证 |
+| 内存接口 / CXL / PCIe | DDR5、MRCD/MDB、Retimer、CXL MXC | 平台认证、量产订单、客户导入、CXL 商业化 | 澜起科技 | 新品收入占比、互连毛利率、分项订单 | 新品占比回落、毛利率跌破阈值、CXL 量产延后 | CXL/Retimer 量产订单、四款新品分项收入 |
+
+### Q3.1.6 反证执行清单
+
+| 审计项 | 数据来源 | 绿灯标准 | 黄灯标准 | 红灯标准 | 影响 Q2 节点 | 影响 Q4 标的 |
+|---|---|---|---|---|---|---|
+| 云厂 capex 质量 | CSP 财报、法说、RPO、Cloud revenue、FCF | capex、Cloud/RPO、FCF 或收入转化同向改善 | capex 上修但 FCF 或 RPO 转化偏弱 | capex 下修或 RPO/Cloud 增长明显放缓 | 前端算力、HBM、CoWoS、设备 | NVDA、AVGO、MRVL、TSM、HBM 组合 |
+| HBM ASP / 库存 | Micron、Samsung、SK hynix、TrendForce | ASP 稳定或上行，库存健康，认证推进 | ASP 边际转弱但认证仍推进 | ASP 连续下行、库存恶化或认证延迟 | HBM/高端存储 | HBM 组合 |
+| 设备订单 / backlog | ASML、AMAT、LRCX、KLAC | 订单/backlog 与收入同步改善 | 收入强但订单弱 | 订单连续两季转弱或许可影响交付 | 全球设备链 | ASML、AMAT/LRCX/KLAC |
+| 估值与 EPS/FCF 修正 | StockAnalysis、公司财报、卖方一致预期 | EPS/FCF 上修快于股价，估值被动消化 | 股价先涨，EPS 上修有限 | EPS 下修且估值扩张，FCF yield 继续偏低 | 赔率约束，不直接否定产业瓶颈 | 所有高估值观察标的 |
+| 出口管制变更 | BIS、公司风险披露、许可和区域收入 | 限制未新增且替代需求可承接 | 限制增强但收入影响可控 | 新增限制直接影响核心产品交付 | 全球设备、GPU、中国设备 | ASML、NVDA、中国设备链 |
+| 中国设备财务质量 | 公司季报、合同负债、存货、经营现金流 | 收入、扣非利润、现金流、合同负债同步改善 | 利润强但现金流或合同负债偏弱 | 现金流背离利润，合同负债下降，存货恶化 | 中国设备国产替代 | 北方华创、中微公司 |
+
+## 本轮证据增强与交互优化验收
+
+### 新增证据增强包
+
+| evidence id | 类型 | 来源 | 绑定节点 | 用途 |
+|---|---|---|---|---|
+| ev_semi_hw_nvda_fy26q3_10q_compute_networking_customer_concentration | evidence / 10-Q | NVIDIA FY2026 Q3 10-Q | Q1.1.3、Q2.1.9、Q3.1.6、Q4.1.6 | 拆 compute/networking，并把客户集中度压入反证 |
+| ev_semi_hw_semi_300mm_fab_outlook_20260401 | research_report / industry_data | SEMI 300mm Fab Outlook | Q2.1.9、Q3.1.6、Q4.1.6 | 验证设备链 capex 周期，并要求用订单/backlog 反证 |
+| ev_semi_hw_mu_fq2_2026_business_unit_margin | evidence / results | Micron FY2026 Q2 | Q2.1.9、Q3.1.6、Q4.1.6 | 把 HBM/高端存储压入 BU 收入、毛利率和下一季指引 |
+| ev_semi_hw_samsung_1q26_ai_memory_presentation | evidence / presentation | Samsung 1Q26 presentation | Q2.1.9、Q3.1.6、Q4.1.6 | 验证 HBM4/SOCAMM2、AI memory 和 foundry base-die 约束 |
+| ev_semi_hw_bis_202601_advanced_computing_license_policy | evidence / regulation | BIS / Federal Register | Q3.1.6、Q4.1.6 | 把出口管制从方向性风险变成可执行审计项 |
+| ev_semi_hw_asml_financial_results_monitor_20260415 | evidence / monitor lead | ASML financial results hub | Q2.1.9、Q3.1.6、Q4.1.6 | 作为 net bookings、backlog、EUV/DUV 交付和出口许可复核入口 |
+
+### 视觉与交互优化
+
+- L3 节点顶部 qa-meta 统一展示结论、证据数量、反证/触发器和下一步数据。
+- qa-meta 设置为 sticky，在长表滚动时保持可见。
+- HTML 来源索引新增“本轮证据增强包”表格。
+- 关键表格继续保留横向滚动；过长表格仍归属对应 QA 节点，不作为独立 appendix。

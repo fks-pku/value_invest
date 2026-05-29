@@ -26,12 +26,22 @@ Framework changes are persistent by default:
    - Define the object, time frame, investment relevance, and decision boundary.
    - Output one constrained current judgment and the biggest uncertainty.
 
-2. Research execution plan
+2. Research type adaptation layer
+   - Before building Q1-Q4, classify the research type: industry/theme opportunity, single company, event/policy, technology/product route, target update, or other user-defined type.
+   - Keep the QA skeleton, but adapt the meaning of Q1-Q4 to the research type. Do not force every topic into demand/bottleneck/target wording.
+   - Default mappings:
+     - Industry/theme opportunity: Q1 demand reality, Q2 value-capture bottlenecks, Q3 disconfirming tests and priced-in risk, Q4 target observation list.
+     - Single company: Q1 growth drivers, Q2 moat/unit economics/value capture, Q3 financial quality/valuation/disconfirming tests, Q4 observation decision and monitoring list.
+     - Event/policy: Q1 event facts and scope, Q2 transmission mechanism, Q3 beneficiaries/losers and second-order effects, Q4 disconfirming tests and watchlist.
+     - Technology/product route: Q1 technical feasibility and adoption demand, Q2 bottlenecks and ecosystem readiness, Q3 commercialization/competition/disconfirming tests, Q4 exposed assets and monitoring list.
+   - If the type does not fit a default mapping, define a custom Q1-Q4 map in the execution plan before collecting evidence.
+
+3. Research execution plan
    - Present the execution plan before research output.
-   - Use QA directions as the primary structure, not step components: Q1 confirm demand, Q2 locate bottlenecks, Q3 bind disconfirming tests, Q4 target observation list with reasons.
+   - Use QA directions as the primary structure, not step components. For industry/theme opportunity, default to Q1 confirm demand, Q2 locate bottlenecks, Q3 bind disconfirming tests, Q4 target observation list with reasons. For other research types, use the adapted Q1-Q4 map defined above.
    - For each Q direction, state what questions to ask, how to collect information, how to connect the information into reasoning, and how to present it.
 
-3. QA drilldown
+4. QA drilldown
    - Research must proceed through the QA tree directly.
    - Use at most three layers inside each Q direction: Q1, Q1.1, Q1.1.1.
    - Details, scorecards, tables, and jump pages must live inside the QA layer whose question they answer. Do not put them as Q-parallel components or unrelated top-level appendices.
@@ -44,12 +54,25 @@ Framework changes are persistent by default:
    - DeepSeek should produce the first structured L3 reading answer from those materials: fact, inference, preliminary judgment, gap, trigger, source links, and support/refute/lead stance.
    - GPT must then verify DeepSeek's L3 answer against source links or local files, resolve conflicts, correct unsupported claims, and write the final L3 answer and parent rollup.
 
-4. Information buckets
+5. Information buckets
    - Classify every input as evidence, research_report, opinion, or message.
    - Mark each item as support, refute, or lead.
    - Attach source links for concrete information.
 
-5. DeepSeek delegation
+6. Specialty skill dispatch
+   - Before assigning an L3 task, classify its task family and route it to the most relevant specialized skill when available.
+   - Default task families:
+     - Financial statement or filing parsing -> `financial-statement-analysis`.
+     - Valuation, priced-in expectations, multiples, reverse DCF, margin of safety -> `valuation-analysis`.
+     - Large source reading, long report/transcript extraction, first-pass L3 drafting -> `leaf-research-deepseek` plus DeepSeek MCP.
+     - Quantitative strategy, factor, backtest, or systematic signal -> `quant-research-fks` or `quantitative-research`.
+     - HTML/report presentation design -> `frontend-design`.
+   - Every L3 answer must keep a skill dispatch trace: task family, selected skill, concrete materials, extraction schema, output status, fallback used if any, and GPT verification status.
+   - When one leaf task spans multiple families, chain skills in the natural order. Example: financial-statement-analysis normalizes filings first, then valuation-analysis turns verified financial facts into priced-in expectations.
+   - Specialized skills are assistants for leaf-level processing, not final judges. GPT remains responsible for research type selection, question design, source priority, verification, synthesis, target strength, and final user-facing conclusions.
+   - If a needed specialized skill is unavailable, record the task family and use the closest auditable fallback: primary source parsing by GPT, DeepSeek source extraction, or a local deterministic script.
+
+7. DeepSeek delegation
    - DeepSeek's primary research role is parsing concrete source materials: research reports, news/messages, earnings releases, annual reports, filings, transcripts, expert interviews, and other single-source documents.
    - Delegate a source to DeepSeek only after GPT has defined the research question, source priority, and extraction schema.
    - DeepSeek should return structured extraction: key facts, numbers, dates, source bucket, support/refute/lead stance, affected QA node, uncertainty, and follow-up data needs.
@@ -59,15 +82,15 @@ Framework changes are persistent by default:
    - The main model must verify and synthesize all material conclusions against auditable sources.
    - GPT remains responsible for source selection, source reliability checks, cross-source conflict resolution, reasoning synthesis, target strength, final report language, and all user-facing conclusions.
 
-6. Final target observation list
+8. Final target observation list
    - If the research has investment implications, map conclusions to specific securities or assets, not only broad directions.
    - For every target, include ticker/name, bottleneck or thesis node, reason, strength, required verification data, catalysts, risks, and source links.
    - This is a research observation list, not a buy/sell instruction.
 
-7. HTML presentation
+9. HTML presentation
    - Use Apple-inspired visual style: white/light-gray surfaces, SF-system typography, restrained borders, clean spacing, and low-noise cards.
-   - Page order should be: current research goal, execution plan, QA drilldown sections, source index.
-   - QA drilldown should show Q1-Q4 as the top-level sections.
+   - Page order should be: current research goal, research type adaptation and execution plan, QA drilldown sections, specialty skill trace when relevant, source index.
+   - QA drilldown should show Q1-Q4 as the top-level sections, using the adapted Q meanings for the selected research type.
    - Visual artifacts are answer formats inside QA nodes, not standalone siblings: scorecards inside the bottleneck Q node, risk triggers inside the disconfirming-test Q node, and target tables inside the target-selection Q node.
    - Avoid appending a generic full report or workbench appendix unless explicitly requested.
 

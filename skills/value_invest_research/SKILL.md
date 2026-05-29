@@ -5,14 +5,16 @@ description: Use for investment research workflows that start from a user resear
 
 # Value Invest Research Skill
 
-This Skill turns heterogeneous market information into auditable research artifacts. The default sequence is a single research-goal QA framework:
+This Skill turns heterogeneous market information into auditable research artifacts. The default sequence is a single research-goal QA framework with a research-type adapter and specialty skill dispatch:
 
 1. Current research goal.
-2. Research execution plan.
-3. Three-layer QA drilldown.
-4. Four-bucket information collection.
-5. Evidence-linked synthesis.
-6. Specific target observation list.
+2. Research type adaptation layer.
+3. Research execution plan.
+4. Three-layer QA drilldown.
+5. Specialty skill dispatch for L3 leaf tasks.
+6. Four-bucket information collection.
+7. Evidence-linked synthesis.
+8. Specific target observation list.
 
 ## Non-Negotiable Rules
 
@@ -25,9 +27,11 @@ This Skill turns heterogeneous market information into auditable research artifa
 - Mark uncertainty directly instead of hiding it.
 - Use the canonical research-goal QA framework by default for every new research goal, topic, company, sector, event, or concept.
 - Do not combine multiple templates.
+- Before building Q1-Q4, classify the research type and adapt the meaning of Q1-Q4. Do not force every topic into demand/bottleneck/target wording.
+- Default research types are industry/theme opportunity, single company, event/policy, technology/product route, target update, and custom user-defined type.
 - When the user changes a report structure, interaction pattern, section order, or presentation logic, treat that change as a persistent default research-system requirement unless the user explicitly says it is one-off.
 - In the same change, update `AGENTS.md`, this `SKILL.md`, and `frameworks/research_goal_qa.md` so future reports follow the new structure.
-- Research output must be organized by QA directions, not standalone step components: Q1 confirm demand, Q2 locate bottlenecks, Q3 bind disconfirming tests, Q4 target observation list with reasons.
+- Research output must be organized by QA directions, not standalone step components. For industry/theme opportunity, default to Q1 confirm demand, Q2 locate bottlenecks, Q3 bind disconfirming tests, Q4 target observation list with reasons. For other research types, first define the adapted Q1-Q4 map in the execution plan.
 - Every level must state what questions to ask, how to collect information, how to connect information into reasoning, and how to present the output.
 - Use at most three QA layers by default: Q1, Q1.1, Q1.1.1.
 - Details, scorecards, tables, and jump pages must be nested under the QA layer whose question they answer, not placed as Q-parallel components or unrelated top-level appendices.
@@ -37,6 +41,9 @@ This Skill turns heterogeneous market information into auditable research artifa
 - Each layer may only roll up conclusions from its child answers and auditable sources.
 - L3 answers must separate fact, inference, judgment, gap, and trigger.
 - For every L3 question, GPT must decide which materials to search or read, define the extraction schema, and assign those concrete materials to DeepSeek MCP for careful reading.
+- Before assigning an L3 question, classify its task family and use the most relevant specialized skill when available: `financial-statement-analysis` for filings/financial statements, `valuation-analysis` for valuation/priced-in expectations, `leaf-research-deepseek` for long source parsing, `quant-research-fks` or `quantitative-research` for systematic strategy questions, and `frontend-design` for HTML/report interface work.
+- Every L3 answer must include a skill dispatch trace: task family, selected skill, concrete materials, extraction schema, output status, fallback used if any, and GPT verification status.
+- If one L3 question requires multiple skills, chain them rather than flattening them. Use financial-statement-analysis before valuation-analysis when valuation depends on freshly parsed filings or earnings releases.
 - DeepSeek should produce the first structured L3 reading answer from those materials: fact, inference, preliminary judgment, gap, trigger, source links, and support/refute/lead stance.
 - GPT must verify DeepSeek's L3 answer against source links or local files, resolve conflicts, correct unsupported claims, and write the final L3 answer and parent rollup.
 - If investment implications exist, final output must map to specific securities or assets with ticker/name, bottleneck or thesis node, reason, strength, required verification data, catalysts, risks, and source links.
@@ -99,3 +106,5 @@ Before analysis, load the relevant research object folder:
 
 - Default for any user-proposed research goal: use `frameworks/research_goal_qa.md`.
 - No other framework, prompt, or checklist file is part of the active skill.
+- Within that framework, route each L3 leaf task through the specialty skill dispatch layer when a relevant skill exists. Specialized skills support extraction and analysis; GPT remains the final research director and verifier.
+- Preserve the dispatch trace in generated workbench/report artifacts so the user can see which skill handled each concrete problem and how GPT verified it.

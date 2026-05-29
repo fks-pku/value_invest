@@ -1,0 +1,144 @@
+{
+  "schema_version": "1.0",
+  "project_id": "ai_soft_hardware_opportunities",
+  "as_of": "2026-05-27",
+  "boundary": "本文件只保存 QA 框架第三部分：标的观察池。它不构成买卖建议。",
+  "target_mapping": [
+    {
+      "tier": "A",
+      "target_type": "NVIDIA / NVDA",
+      "mapping_logic": "AI GPU 平台和数据中心计算主线。",
+      "required_data": [
+        "Blackwell/Rubin 供需",
+        "数据中心毛利率",
+        "订单交期",
+        "客户集中度"
+      ],
+      "disconfirming_tests": [
+        "订单交期缩短",
+        "渠道价格松动",
+        "CSP ASIC 侵蚀通用推理份额"
+      ],
+      "evidence_ids": [
+        "E002",
+        "E015"
+      ]
+    },
+    {
+      "tier": "A",
+      "target_type": "Broadcom / AVGO",
+      "mapping_logic": "定制 ASIC 与 AI 网络链条，代表 GPU 之外的二阶扩散。",
+      "required_data": [
+        "AI 半导体订单",
+        "ASIC pipeline",
+        "网络芯片毛利率"
+      ],
+      "disconfirming_tests": [
+        "客户项目延期",
+        "GPU 软件生态继续压制 ASIC 使用率"
+      ],
+      "evidence_ids": [
+        "E003",
+        "E007",
+        "E015"
+      ]
+    },
+    {
+      "tier": "A",
+      "target_type": "TSMC / TSM",
+      "mapping_logic": "先进制程和先进封装核心供给节点。",
+      "required_data": [
+        "先进节点利用率",
+        "先进封装扩产",
+        "毛利率",
+        "客户预付款"
+      ],
+      "disconfirming_tests": [
+        "先进封装利用率回落",
+        "客户议价增强"
+      ],
+      "evidence_ids": [
+        "E004",
+        "E002",
+        "E003"
+      ]
+    },
+    {
+      "tier": "A-",
+      "target_type": "Arista / ANET",
+      "mapping_logic": "AI 数据中心网络和高速互连观察对象。",
+      "required_data": [
+        "AI 网络客户订单",
+        "高速交换产品占比",
+        "毛利率"
+      ],
+      "disconfirming_tests": [
+        "收入增长但毛利率下行",
+        "价值被白盒或芯片供应商夺走"
+      ],
+      "evidence_ids": [
+        "E016"
+      ]
+    },
+    {
+      "tier": "A-",
+      "target_type": "Vertiv / VRT",
+      "mapping_logic": "数据中心电力、冷却和交付能力观察对象。",
+      "required_data": [
+        "订单积压",
+        "有机增长",
+        "液冷/电源方案利润率",
+        "项目交付周期"
+      ],
+      "disconfirming_tests": [
+        "电力接入延迟导致项目后移",
+        "产能扩张后毛利率下降"
+      ],
+      "evidence_ids": [
+        "E017",
+        "E009",
+        "E010"
+      ]
+    },
+    {
+      "tier": "B+",
+      "target_type": "MSFT / AMZN / GOOGL",
+      "mapping_logic": "云平台 AI ROIC 观察篮子。",
+      "required_data": [
+        "云 AI 收入",
+        "RPO",
+        "GPU/ASIC 利用率",
+        "自由现金流"
+      ],
+      "disconfirming_tests": [
+        "AI API 降价快于成本下降",
+        "capex 吞噬现金流"
+      ],
+      "evidence_ids": [
+        "E005",
+        "E007",
+        "E008"
+      ]
+    },
+    {
+      "tier": "B+",
+      "target_type": "NOW / CRM",
+      "mapping_logic": "企业 Agent 与工作流软件观察篮子。",
+      "required_data": [
+        "AI ARR",
+        "NRR",
+        "投产账户",
+        "客户 ROI",
+        "销售效率"
+      ],
+      "disconfirming_tests": [
+        "AI 功能变成套餐标配",
+        "使用量增长但续费和总收入不加速"
+      ],
+      "evidence_ids": [
+        "E011",
+        "E012"
+      ]
+    }
+  ]
+}

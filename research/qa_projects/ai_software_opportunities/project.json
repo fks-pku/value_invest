@@ -1,0 +1,11 @@
+{
+  "project_id": "ai_software_opportunities",
+  "object_type": "industry_theme",
+  "object_id": "ai_software",
+  "meta_question": "AI 软件方向在 2026-2028 年有哪些值得持续跟踪的投资机会，机会应如何沿需求兑现、价值捕获、反证条件和估值赔率筛选？",
+  "max_depth": 3,
+  "created_at": "2026-05-29T00:00:00+08:00",
+  "framework": "research_goal_qa",
+  "research_type": "industry/theme opportunity",
+  "boundary": "研究观察清单，不构成买卖建议。"
+}
