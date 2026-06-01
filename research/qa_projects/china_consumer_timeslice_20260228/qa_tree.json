@@ -1,0 +1,1649 @@
+{
+  "as_of_date": "2026-02-28",
+  "nodes": [
+    {
+      "id": "Q1",
+      "level": 1,
+      "parent_id": null,
+      "question": "需求是否真实且足够大？",
+      "conclusion": "需求真实但分化，必须从总盘转向可变现的结构性需求。",
+      "gaps": "需要更多分部数据、估值快照和现金流验证。",
+      "next_question_ids": [
+        "Q1.1",
+        "Q1.2"
+      ],
+      "materiality": "改变父节点结论、标的强度或风险控制。",
+      "source_plan": "使用 cutoff 前官方披露、统计数据和公司 IR，并保留反证。",
+      "skill_dispatch": "research-source-planner -> financial-statement-analysis / valuation-analysis -> GPT verification",
+      "fact": "需求真实但分化，必须从总盘转向可变现的结构性需求。",
+      "inference": "需求真实但分化，必须从总盘转向可变现的结构性需求。",
+      "judgment": "需求真实但分化，必须从总盘转向可变现的结构性需求。",
+      "gap": "需要更多分部数据、估值快照和现金流验证。",
+      "trigger": "需要更多分部数据、估值快照和现金流验证。",
+      "source_links": []
+    },
+    {
+      "id": "Q2",
+      "level": 1,
+      "parent_id": null,
+      "question": "谁拥有不可替代的价值捕获瓶颈？",
+      "conclusion": "稀缺性只在系统入口、数据/工作流、品牌/IP、供应链或网络密度中成立。",
+      "gaps": "需要更多分部数据、估值快照和现金流验证。",
+      "next_question_ids": [
+        "Q2.1",
+        "Q2.2"
+      ],
+      "materiality": "改变父节点结论、标的强度或风险控制。",
+      "source_plan": "使用 cutoff 前官方披露、统计数据和公司 IR，并保留反证。",
+      "skill_dispatch": "research-source-planner -> financial-statement-analysis / valuation-analysis -> GPT verification",
+      "fact": "稀缺性只在系统入口、数据/工作流、品牌/IP、供应链或网络密度中成立。",
+      "inference": "稀缺性只在系统入口、数据/工作流、品牌/IP、供应链或网络密度中成立。",
+      "judgment": "稀缺性只在系统入口、数据/工作流、品牌/IP、供应链或网络密度中成立。",
+      "gap": "需要更多分部数据、估值快照和现金流验证。",
+      "trigger": "需要更多分部数据、估值快照和现金流验证。",
+      "source_links": []
+    },
+    {
+      "id": "Q3",
+      "level": 1,
+      "parent_id": null,
+      "question": "哪些反证足以压低胜率和赔率？",
+      "conclusion": "估值、竞争、披露不足和宏观周期都可能让好公司不是好机会。",
+      "gaps": "需要更多分部数据、估值快照和现金流验证。",
+      "next_question_ids": [
+        "Q3.1",
+        "Q3.2"
+      ],
+      "materiality": "改变父节点结论、标的强度或风险控制。",
+      "source_plan": "使用 cutoff 前官方披露、统计数据和公司 IR，并保留反证。",
+      "skill_dispatch": "research-source-planner -> financial-statement-analysis / valuation-analysis -> GPT verification",
+      "fact": "估值、竞争、披露不足和宏观周期都可能让好公司不是好机会。",
+      "inference": "估值、竞争、披露不足和宏观周期都可能让好公司不是好机会。",
+      "judgment": "估值、竞争、披露不足和宏观周期都可能让好公司不是好机会。",
+      "gap": "需要更多分部数据、估值快照和现金流验证。",
+      "trigger": "需要更多分部数据、估值快照和现金流验证。",
+      "source_links": []
+    },
+    {
+      "id": "Q4",
+      "level": 1,
+      "parent_id": null,
+      "question": "冻结时点如何形成标的观察名单？",
+      "conclusion": "默认不行动，只有需求、稀缺性、未充分定价同时成立才提高动作状态。",
+      "gaps": "需要更多分部数据、估值快照和现金流验证。",
+      "next_question_ids": [
+        "Q4.1",
+        "Q4.2"
+      ],
+      "materiality": "改变父节点结论、标的强度或风险控制。",
+      "source_plan": "使用 cutoff 前官方披露、统计数据和公司 IR，并保留反证。",
+      "skill_dispatch": "research-source-planner -> financial-statement-analysis / valuation-analysis -> GPT verification",
+      "fact": "默认不行动，只有需求、稀缺性、未充分定价同时成立才提高动作状态。",
+      "inference": "默认不行动，只有需求、稀缺性、未充分定价同时成立才提高动作状态。",
+      "judgment": "默认不行动，只有需求、稀缺性、未充分定价同时成立才提高动作状态。",
+      "gap": "需要更多分部数据、估值快照和现金流验证。",
+      "trigger": "需要更多分部数据、估值快照和现金流验证。",
+      "source_links": []
+    },
+    {
+      "id": "Q1.1",
+      "level": 2,
+      "parent_id": "Q1",
+      "question": "总需求与结构需求",
+      "conclusion": "先确认市场是否有足够空间。",
+      "gaps": "需要更多同口径指标。",
+      "next_question_ids": [
+        "Q1.1.1",
+        "Q1.1.2"
+      ],
+      "materiality": "改变父节点结论、标的强度或风险控制。",
+      "source_plan": "使用 cutoff 前官方披露、统计数据和公司 IR，并保留反证。",
+      "skill_dispatch": "research-source-planner -> financial-statement-analysis / valuation-analysis -> GPT verification",
+      "fact": "先确认市场是否有足够空间。",
+      "inference": "先确认市场是否有足够空间。",
+      "judgment": "先确认市场是否有足够空间。",
+      "gap": "需要更多同口径指标。",
+      "trigger": "需要更多同口径指标。",
+      "source_links": []
+    },
+    {
+      "id": "Q1.2",
+      "level": 2,
+      "parent_id": "Q1",
+      "question": "高增量子场景",
+      "conclusion": "再找更快、更稀缺的需求流。",
+      "gaps": "需要更多同口径指标。",
+      "next_question_ids": [
+        "Q1.2.1",
+        "Q1.2.2"
+      ],
+      "materiality": "改变父节点结论、标的强度或风险控制。",
+      "source_plan": "使用 cutoff 前官方披露、统计数据和公司 IR，并保留反证。",
+      "skill_dispatch": "research-source-planner -> financial-statement-analysis / valuation-analysis -> GPT verification",
+      "fact": "再找更快、更稀缺的需求流。",
+      "inference": "再找更快、更稀缺的需求流。",
+      "judgment": "再找更快、更稀缺的需求流。",
+      "gap": "需要更多同口径指标。",
+      "trigger": "需要更多同口径指标。",
+      "source_links": []
+    },
+    {
+      "id": "Q2.1",
+      "level": 2,
+      "parent_id": "Q2",
+      "question": "入口和网络效应",
+      "conclusion": "判断谁能让需求流入自己。",
+      "gaps": "需要更多同口径指标。",
+      "next_question_ids": [
+        "Q2.1.1",
+        "Q2.1.2"
+      ],
+      "materiality": "改变父节点结论、标的强度或风险控制。",
+      "source_plan": "使用 cutoff 前官方披露、统计数据和公司 IR，并保留反证。",
+      "skill_dispatch": "research-source-planner -> financial-statement-analysis / valuation-analysis -> GPT verification",
+      "fact": "判断谁能让需求流入自己。",
+      "inference": "判断谁能让需求流入自己。",
+      "judgment": "判断谁能让需求流入自己。",
+      "gap": "需要更多同口径指标。",
+      "trigger": "需要更多同口径指标。",
+      "source_links": []
+    },
+    {
+      "id": "Q2.2",
+      "level": 2,
+      "parent_id": "Q2",
+      "question": "产品/供给/数据壁垒",
+      "conclusion": "判断谁能把需求转为金融价值。",
+      "gaps": "需要更多同口径指标。",
+      "next_question_ids": [
+        "Q2.2.1",
+        "Q2.2.2"
+      ],
+      "materiality": "改变父节点结论、标的强度或风险控制。",
+      "source_plan": "使用 cutoff 前官方披露、统计数据和公司 IR，并保留反证。",
+      "skill_dispatch": "research-source-planner -> financial-statement-analysis / valuation-analysis -> GPT verification",
+      "fact": "判断谁能把需求转为金融价值。",
+      "inference": "判断谁能把需求转为金融价值。",
+      "judgment": "判断谁能把需求转为金融价值。",
+      "gap": "需要更多同口径指标。",
+      "trigger": "需要更多同口径指标。",
+      "source_links": []
+    },
+    {
+      "id": "Q3.1",
+      "level": 2,
+      "parent_id": "Q3",
+      "question": "估值与竞争反证",
+      "conclusion": "判断叙事是否已经定价。",
+      "gaps": "需要更多同口径指标。",
+      "next_question_ids": [
+        "Q3.1.1",
+        "Q3.1.2"
+      ],
+      "materiality": "改变父节点结论、标的强度或风险控制。",
+      "source_plan": "使用 cutoff 前官方披露、统计数据和公司 IR，并保留反证。",
+      "skill_dispatch": "research-source-planner -> financial-statement-analysis / valuation-analysis -> GPT verification",
+      "fact": "判断叙事是否已经定价。",
+      "inference": "判断叙事是否已经定价。",
+      "judgment": "判断叙事是否已经定价。",
+      "gap": "需要更多同口径指标。",
+      "trigger": "需要更多同口径指标。",
+      "source_links": []
+    },
+    {
+      "id": "Q3.2",
+      "level": 2,
+      "parent_id": "Q3",
+      "question": "现金流与周期反证",
+      "conclusion": "判断增长质量和下行控制。",
+      "gaps": "需要更多同口径指标。",
+      "next_question_ids": [
+        "Q3.2.1",
+        "Q3.2.2"
+      ],
+      "materiality": "改变父节点结论、标的强度或风险控制。",
+      "source_plan": "使用 cutoff 前官方披露、统计数据和公司 IR，并保留反证。",
+      "skill_dispatch": "research-source-planner -> financial-statement-analysis / valuation-analysis -> GPT verification",
+      "fact": "判断增长质量和下行控制。",
+      "inference": "判断增长质量和下行控制。",
+      "judgment": "判断增长质量和下行控制。",
+      "gap": "需要更多同口径指标。",
+      "trigger": "需要更多同口径指标。",
+      "source_links": []
+    },
+    {
+      "id": "Q4.1",
+      "level": 2,
+      "parent_id": "Q4",
+      "question": "目标排序",
+      "conclusion": "冻结目标列表，不使用后验价格。",
+      "gaps": "需要更多同口径指标。",
+      "next_question_ids": [
+        "Q4.1.1",
+        "Q4.1.2"
+      ],
+      "materiality": "改变父节点结论、标的强度或风险控制。",
+      "source_plan": "使用 cutoff 前官方披露、统计数据和公司 IR，并保留反证。",
+      "skill_dispatch": "research-source-planner -> financial-statement-analysis / valuation-analysis -> GPT verification",
+      "fact": "冻结目标列表，不使用后验价格。",
+      "inference": "冻结目标列表，不使用后验价格。",
+      "judgment": "冻结目标列表，不使用后验价格。",
+      "gap": "需要更多同口径指标。",
+      "trigger": "需要更多同口径指标。",
+      "source_links": []
+    },
+    {
+      "id": "Q4.2",
+      "level": 2,
+      "parent_id": "Q4",
+      "question": "升级/降级触发器",
+      "conclusion": "保留后续复盘信号。",
+      "gaps": "需要更多同口径指标。",
+      "next_question_ids": [
+        "Q4.2.1",
+        "Q4.2.2"
+      ],
+      "materiality": "改变父节点结论、标的强度或风险控制。",
+      "source_plan": "使用 cutoff 前官方披露、统计数据和公司 IR，并保留反证。",
+      "skill_dispatch": "research-source-planner -> financial-statement-analysis / valuation-analysis -> GPT verification",
+      "fact": "保留后续复盘信号。",
+      "inference": "保留后续复盘信号。",
+      "judgment": "保留后续复盘信号。",
+      "gap": "需要更多同口径指标。",
+      "trigger": "需要更多同口径指标。",
+      "source_links": []
+    },
+    {
+      "id": "Q1.1.1",
+      "level": 3,
+      "parent_id": "Q1.1",
+      "question": "中国消费总盘是否支持普遍多头？",
+      "conclusion": "社零 +3.7% 表明总盘不弱但不构成普遍高增长，必须找结构性品类和稀缺品牌。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 future_space、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 future_space 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-NBS-COMMUNIQUE-2025 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "future_space",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-NBS-COMMUNIQUE-2025",
+          "source_visible_at": "2026-02-28",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "leaf-research-deepseek",
+          "expected_fields": [
+            "key_fact",
+            "number",
+            "date",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "source_extraction",
+        "selected_skill": "leaf-research-deepseek",
+        "concrete_materials": [
+          "SRC-NBS-COMMUNIQUE-2025"
+        ],
+        "extraction_schema": [
+          "key_fact",
+          "number",
+          "date",
+          "support_or_refute",
+          "uncertainty",
+          "follow_up_data"
+        ],
+        "source_extraction_ids": [
+          "se-q1-1-1-src-nbs-communique-2025"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q1-1-1-src-nbs-communique-2025"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-NBS-COMMUNIQUE-2025: 2025 total retail sales RMB50.1202tn +3.7%; gold/jewelry +12.8%, sports/recreation +15.7%, food +9.3%.",
+      "inference": "基于上述 cutoff 前材料对“中国消费总盘是否支持普遍多头？”的推理：社零 +3.7% 表明总盘不弱但不构成普遍高增长，必须找结构性品类和稀缺品牌。",
+      "judgment": "决策影响：该叶子进入 future_space，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：社零 +3.7% 表明总盘不弱但不构成普遍高增长，必须找结构性品类和稀缺品牌。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-NBS-COMMUNIQUE-2025"
+      ]
+    },
+    {
+      "id": "Q1.1.2",
+      "level": 3,
+      "parent_id": "Q1.1",
+      "question": "哪些品类增速更有结构机会？",
+      "conclusion": "体育娱乐、金银珠宝、食品和线上食品相对更强，服装、饮料、烟酒增速偏弱。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 future_space、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 future_space 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-NBS-ONLINE-2025 支持或界定该问题的事实基础。",
+        "SRC-NBS-COMMUNIQUE-2025 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "future_space",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-NBS-ONLINE-2025",
+          "source_visible_at": "2026-01-20",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "leaf-research-deepseek",
+          "expected_fields": [
+            "key_fact",
+            "number",
+            "date",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ]
+        },
+        {
+          "source_id": "SRC-NBS-COMMUNIQUE-2025",
+          "source_visible_at": "2026-02-28",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "leaf-research-deepseek",
+          "expected_fields": [
+            "key_fact",
+            "number",
+            "date",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "source_extraction",
+        "selected_skill": "leaf-research-deepseek",
+        "concrete_materials": [
+          "SRC-NBS-ONLINE-2025",
+          "SRC-NBS-COMMUNIQUE-2025"
+        ],
+        "extraction_schema": [
+          "key_fact",
+          "number",
+          "date",
+          "support_or_refute",
+          "uncertainty",
+          "follow_up_data"
+        ],
+        "source_extraction_ids": [
+          "se-q1-1-2-src-nbs-online-2025",
+          "se-q1-1-2-src-nbs-communique-2025"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q1-1-2-src-nbs-online-2025",
+          "review-se-q1-1-2-src-nbs-communique-2025"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-NBS-ONLINE-2025: 2025 online retail sales RMB15,972.2bn +8.6%; physical-goods online retail +5.2%; online food +14.5%. SRC-NBS-COMMUNIQUE-2025: 2025 total retail sales RMB50.1202tn +3.7%; gold/jewelry +12.8%, sports/recreation +15.7%, food +9.3%.",
+      "inference": "基于上述 cutoff 前材料对“哪些品类增速更有结构机会？”的推理：体育娱乐、金银珠宝、食品和线上食品相对更强，服装、饮料、烟酒增速偏弱。",
+      "judgment": "决策影响：该叶子进入 future_space，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：体育娱乐、金银珠宝、食品和线上食品相对更强，服装、饮料、烟酒增速偏弱。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-NBS-ONLINE-2025",
+        "SRC-NBS-COMMUNIQUE-2025"
+      ]
+    },
+    {
+      "id": "Q1.2.1",
+      "level": 3,
+      "parent_id": "Q1.2",
+      "question": "情绪消费/IP 消费是否是高增量？",
+      "conclusion": "Pop Mart H1 增长极强，IP 情绪消费与海外扩张是真实结构性需求。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 future_space、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 future_space 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-POPMART-H1-2025 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "future_space",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-POPMART-H1-2025",
+          "source_visible_at": "2025-08-19",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "leaf-research-deepseek",
+          "expected_fields": [
+            "key_fact",
+            "number",
+            "date",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "source_extraction",
+        "selected_skill": "leaf-research-deepseek",
+        "concrete_materials": [
+          "SRC-POPMART-H1-2025"
+        ],
+        "extraction_schema": [
+          "key_fact",
+          "number",
+          "date",
+          "support_or_refute",
+          "uncertainty",
+          "follow_up_data"
+        ],
+        "source_extraction_ids": [
+          "se-q1-2-1-src-popmart-h1-2025"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q1-2-1-src-popmart-h1-2025"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-POPMART-H1-2025: H1 revenue RMB13.876bn +204.4%; shareholder profit RMB4.574bn +396.5%; IP and overseas expansion are key leads.",
+      "inference": "基于上述 cutoff 前材料对“情绪消费/IP 消费是否是高增量？”的推理：Pop Mart H1 增长极强，IP 情绪消费与海外扩张是真实结构性需求。",
+      "judgment": "决策影响：该叶子进入 future_space，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：Pop Mart H1 增长极强，IP 情绪消费与海外扩张是真实结构性需求。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-POPMART-H1-2025"
+      ]
+    },
+    {
+      "id": "Q1.2.2",
+      "level": 3,
+      "parent_id": "Q1.2",
+      "question": "服务消费和旅行是否提供更高弹性？",
+      "conclusion": "Trip.com 住宿收入增长显示旅行服务修复，但周期性和可选消费属性仍强。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 future_space、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 future_space 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-TRIP-Q4-2025 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "future_space",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-TRIP-Q4-2025",
+          "source_visible_at": "2026-02-25",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "leaf-research-deepseek",
+          "expected_fields": [
+            "key_fact",
+            "number",
+            "date",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "source_extraction",
+        "selected_skill": "leaf-research-deepseek",
+        "concrete_materials": [
+          "SRC-TRIP-Q4-2025"
+        ],
+        "extraction_schema": [
+          "key_fact",
+          "number",
+          "date",
+          "support_or_refute",
+          "uncertainty",
+          "follow_up_data"
+        ],
+        "source_extraction_ids": [
+          "se-q1-2-2-src-trip-q4-2025"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q1-2-2-src-trip-q4-2025"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-TRIP-Q4-2025: Q4 accommodation revenue RMB6.3bn +21%; FY attributable net income RMB33.3bn.",
+      "inference": "基于上述 cutoff 前材料对“服务消费和旅行是否提供更高弹性？”的推理：Trip.com 住宿收入增长显示旅行服务修复，但周期性和可选消费属性仍强。",
+      "judgment": "决策影响：该叶子进入 future_space，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：Trip.com 住宿收入增长显示旅行服务修复，但周期性和可选消费属性仍强。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-TRIP-Q4-2025"
+      ]
+    },
+    {
+      "id": "Q2.1.1",
+      "level": 3,
+      "parent_id": "Q2.1",
+      "question": "Pop Mart 的 IP 是否构成稀缺瓶颈？",
+      "conclusion": "强 IP、盲盒/潮玩心智和海外扩张构成最强稀缺性，但单 IP 热度风险必须封顶。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 chokepoint_strength、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 chokepoint_strength 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-POPMART-H1-2025 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "chokepoint_strength",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-POPMART-H1-2025",
+          "source_visible_at": "2025-08-19",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "leaf-research-deepseek",
+          "expected_fields": [
+            "key_fact",
+            "number",
+            "date",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "source_extraction",
+        "selected_skill": "leaf-research-deepseek",
+        "concrete_materials": [
+          "SRC-POPMART-H1-2025"
+        ],
+        "extraction_schema": [
+          "key_fact",
+          "number",
+          "date",
+          "support_or_refute",
+          "uncertainty",
+          "follow_up_data"
+        ],
+        "source_extraction_ids": [
+          "se-q2-1-1-src-popmart-h1-2025"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q2-1-1-src-popmart-h1-2025"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-POPMART-H1-2025: H1 revenue RMB13.876bn +204.4%; shareholder profit RMB4.574bn +396.5%; IP and overseas expansion are key leads.",
+      "inference": "基于上述 cutoff 前材料对“Pop Mart 的 IP 是否构成稀缺瓶颈？”的推理：强 IP、盲盒/潮玩心智和海外扩张构成最强稀缺性，但单 IP 热度风险必须封顶。",
+      "judgment": "决策影响：该叶子进入 chokepoint_strength，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：强 IP、盲盒/潮玩心智和海外扩张构成最强稀缺性，但单 IP 热度风险必须封顶。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-POPMART-H1-2025"
+      ]
+    },
+    {
+      "id": "Q2.1.2",
+      "level": 3,
+      "parent_id": "Q2.1",
+      "question": "茅台品牌稀缺性是否仍能转为增长？",
+      "conclusion": "茅台品牌稀缺性强，但白酒行业需求和渠道价格约束使其更偏防守质量。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 chokepoint_strength、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 chokepoint_strength 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-MOUTAI-Q3-2025 支持或界定该问题的事实基础。",
+        "SRC-NBS-COMMUNIQUE-2025 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "chokepoint_strength",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-MOUTAI-Q3-2025",
+          "source_visible_at": "2025-10-30",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "leaf-research-deepseek",
+          "expected_fields": [
+            "key_fact",
+            "number",
+            "date",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ]
+        },
+        {
+          "source_id": "SRC-NBS-COMMUNIQUE-2025",
+          "source_visible_at": "2026-02-28",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "leaf-research-deepseek",
+          "expected_fields": [
+            "key_fact",
+            "number",
+            "date",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "source_extraction",
+        "selected_skill": "leaf-research-deepseek",
+        "concrete_materials": [
+          "SRC-MOUTAI-Q3-2025",
+          "SRC-NBS-COMMUNIQUE-2025"
+        ],
+        "extraction_schema": [
+          "key_fact",
+          "number",
+          "date",
+          "support_or_refute",
+          "uncertainty",
+          "follow_up_data"
+        ],
+        "source_extraction_ids": [
+          "se-q2-1-2-src-moutai-q3-2025",
+          "se-q2-1-2-src-nbs-communique-2025"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q2-1-2-src-moutai-q3-2025",
+          "review-se-q2-1-2-src-nbs-communique-2025"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-MOUTAI-Q3-2025: Moutai remains brand-scarce, but alcohol category growth and channel price are key boundaries. SRC-NBS-COMMUNIQUE-2025: 2025 total retail sales RMB50.1202tn +3.7%; gold/jewelry +12.8%, sports/recreation +15.7%, food +9.3%.",
+      "inference": "基于上述 cutoff 前材料对“茅台品牌稀缺性是否仍能转为增长？”的推理：茅台品牌稀缺性强，但白酒行业需求和渠道价格约束使其更偏防守质量。",
+      "judgment": "决策影响：该叶子进入 chokepoint_strength，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：茅台品牌稀缺性强，但白酒行业需求和渠道价格约束使其更偏防守质量。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-MOUTAI-Q3-2025",
+        "SRC-NBS-COMMUNIQUE-2025"
+      ]
+    },
+    {
+      "id": "Q2.2.1",
+      "level": 3,
+      "parent_id": "Q2.2",
+      "question": "安踏多品牌运动户外是否是结构性瓶颈？",
+      "conclusion": "多品牌和专业户外线索成立，但主品牌/FILA 增速有限，需看其他品牌能否规模化。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 chokepoint_strength、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 chokepoint_strength 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-ANTA-H1-2025 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "chokepoint_strength",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-ANTA-H1-2025",
+          "source_visible_at": "2025-08-27",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "leaf-research-deepseek",
+          "expected_fields": [
+            "key_fact",
+            "number",
+            "date",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "source_extraction",
+        "selected_skill": "leaf-research-deepseek",
+        "concrete_materials": [
+          "SRC-ANTA-H1-2025"
+        ],
+        "extraction_schema": [
+          "key_fact",
+          "number",
+          "date",
+          "support_or_refute",
+          "uncertainty",
+          "follow_up_data"
+        ],
+        "source_extraction_ids": [
+          "se-q2-2-1-src-anta-h1-2025"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q2-2-1-src-anta-h1-2025"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-ANTA-H1-2025: Operating margin 26.3%; other brands outgrew core brands; multi-brand sports/outdoor platform lead.",
+      "inference": "基于上述 cutoff 前材料对“安踏多品牌运动户外是否是结构性瓶颈？”的推理：多品牌和专业户外线索成立，但主品牌/FILA 增速有限，需看其他品牌能否规模化。",
+      "judgment": "决策影响：该叶子进入 chokepoint_strength，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：多品牌和专业户外线索成立，但主品牌/FILA 增速有限，需看其他品牌能否规模化。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-ANTA-H1-2025"
+      ]
+    },
+    {
+      "id": "Q2.2.2",
+      "level": 3,
+      "parent_id": "Q2.2",
+      "question": "百胜中国的供应链/门店网络是否不可替代？",
+      "conclusion": "供应链、规模和加盟扩张强，但餐饮竞争和单店增长限制稀缺性。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 chokepoint_strength、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 chokepoint_strength 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-YUMC-Q4-2025 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "chokepoint_strength",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-YUMC-Q4-2025",
+          "source_visible_at": "2026-02-04",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "news-event-analysis",
+          "expected_fields": [
+            "event_date",
+            "event_scope",
+            "affected_company",
+            "transmission_path",
+            "reliability",
+            "follow_up_trigger"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "news_event",
+        "selected_skill": "news-event-analysis",
+        "concrete_materials": [
+          "SRC-YUMC-Q4-2025"
+        ],
+        "extraction_schema": [
+          "event_date",
+          "event_scope",
+          "affected_company",
+          "transmission_path",
+          "reliability",
+          "follow_up_trigger"
+        ],
+        "source_extraction_ids": [
+          "se-q2-2-2-src-yumc-q4-2025"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q2-2-2-src-yumc-q4-2025"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-YUMC-Q4-2025: Q4 system sales +7%, same-store sales +3%, operating profit +25%; store count 18,101 and 2026 target >20,000.",
+      "inference": "基于上述 cutoff 前材料对“百胜中国的供应链/门店网络是否不可替代？”的推理：供应链、规模和加盟扩张强，但餐饮竞争和单店增长限制稀缺性。",
+      "judgment": "决策影响：该叶子进入 chokepoint_strength，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：供应链、规模和加盟扩张强，但餐饮竞争和单店增长限制稀缺性。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-YUMC-Q4-2025"
+      ]
+    },
+    {
+      "id": "Q3.1.1",
+      "level": 3,
+      "parent_id": "Q3.1",
+      "question": "宏观消费疲弱是否压低胜率？",
+      "conclusion": "总消费增长低个位，白酒/服装/饮料等品类缺乏强 beta，不能广泛看多。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 disconfirming_risk_control、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 disconfirming_risk_control 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-NBS-COMMUNIQUE-2025 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "disconfirming_risk_control",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-NBS-COMMUNIQUE-2025",
+          "source_visible_at": "2026-02-28",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "leaf-research-deepseek",
+          "expected_fields": [
+            "key_fact",
+            "number",
+            "date",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "source_extraction",
+        "selected_skill": "leaf-research-deepseek",
+        "concrete_materials": [
+          "SRC-NBS-COMMUNIQUE-2025"
+        ],
+        "extraction_schema": [
+          "key_fact",
+          "number",
+          "date",
+          "support_or_refute",
+          "uncertainty",
+          "follow_up_data"
+        ],
+        "source_extraction_ids": [
+          "se-q3-1-1-src-nbs-communique-2025"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q3-1-1-src-nbs-communique-2025"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-NBS-COMMUNIQUE-2025: 2025 total retail sales RMB50.1202tn +3.7%; gold/jewelry +12.8%, sports/recreation +15.7%, food +9.3%.",
+      "inference": "基于上述 cutoff 前材料对“宏观消费疲弱是否压低胜率？”的推理：总消费增长低个位，白酒/服装/饮料等品类缺乏强 beta，不能广泛看多。",
+      "judgment": "决策影响：该叶子进入 disconfirming_risk_control，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：总消费增长低个位，白酒/服装/饮料等品类缺乏强 beta，不能广泛看多。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-NBS-COMMUNIQUE-2025"
+      ]
+    },
+    {
+      "id": "Q3.1.2",
+      "level": 3,
+      "parent_id": "Q3.1",
+      "question": "高估值和热度是否压低 Pop Mart 赔率？",
+      "conclusion": "Pop Mart 增速极强但市场关注度和估值也高，单 IP 热度和供给风险压低赔率。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 valuation_odds、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 valuation_odds 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-POPMART-H1-2025 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "valuation_odds",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-POPMART-H1-2025",
+          "source_visible_at": "2025-08-19",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "valuation-analysis",
+          "expected_fields": [
+            "priced_in_expectation",
+            "multiple",
+            "base_case",
+            "bull_case",
+            "bear_case",
+            "margin_of_safety"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "valuation",
+        "selected_skill": "valuation-analysis",
+        "concrete_materials": [
+          "SRC-POPMART-H1-2025"
+        ],
+        "extraction_schema": [
+          "priced_in_expectation",
+          "multiple",
+          "base_case",
+          "bull_case",
+          "bear_case",
+          "margin_of_safety"
+        ],
+        "source_extraction_ids": [
+          "se-q3-1-2-src-popmart-h1-2025"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q3-1-2-src-popmart-h1-2025"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-POPMART-H1-2025: H1 revenue RMB13.876bn +204.4%; shareholder profit RMB4.574bn +396.5%; IP and overseas expansion are key leads.",
+      "inference": "基于上述 cutoff 前材料对“高估值和热度是否压低 Pop Mart 赔率？”的推理：Pop Mart 增速极强但市场关注度和估值也高，单 IP 热度和供给风险压低赔率。",
+      "judgment": "决策影响：该叶子进入 valuation_odds，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：Pop Mart 增速极强但市场关注度和估值也高，单 IP 热度和供给风险压低赔率。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-POPMART-H1-2025"
+      ]
+    },
+    {
+      "id": "Q3.2.1",
+      "level": 3,
+      "parent_id": "Q3.2",
+      "question": "餐饮/旅行的周期性是否限制分数？",
+      "conclusion": "Yum China 和 Trip.com 质量较好，但宏观、价格竞争、旅行周期让分数不能过高。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 disconfirming_risk_control、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 disconfirming_risk_control 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-YUMC-Q4-2025 支持或界定该问题的事实基础。",
+        "SRC-TRIP-Q4-2025 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "disconfirming_risk_control",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-YUMC-Q4-2025",
+          "source_visible_at": "2026-02-04",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "leaf-research-deepseek",
+          "expected_fields": [
+            "key_fact",
+            "number",
+            "date",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ]
+        },
+        {
+          "source_id": "SRC-TRIP-Q4-2025",
+          "source_visible_at": "2026-02-25",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "leaf-research-deepseek",
+          "expected_fields": [
+            "key_fact",
+            "number",
+            "date",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "source_extraction",
+        "selected_skill": "leaf-research-deepseek",
+        "concrete_materials": [
+          "SRC-YUMC-Q4-2025",
+          "SRC-TRIP-Q4-2025"
+        ],
+        "extraction_schema": [
+          "key_fact",
+          "number",
+          "date",
+          "support_or_refute",
+          "uncertainty",
+          "follow_up_data"
+        ],
+        "source_extraction_ids": [
+          "se-q3-2-1-src-yumc-q4-2025",
+          "se-q3-2-1-src-trip-q4-2025"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q3-2-1-src-yumc-q4-2025",
+          "review-se-q3-2-1-src-trip-q4-2025"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-YUMC-Q4-2025: Q4 system sales +7%, same-store sales +3%, operating profit +25%; store count 18,101 and 2026 target >20,000. SRC-TRIP-Q4-2025: Q4 accommodation revenue RMB6.3bn +21%; FY attributable net income RMB33.3bn.",
+      "inference": "基于上述 cutoff 前材料对“餐饮/旅行的周期性是否限制分数？”的推理：Yum China 和 Trip.com 质量较好，但宏观、价格竞争、旅行周期让分数不能过高。",
+      "judgment": "决策影响：该叶子进入 disconfirming_risk_control，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：Yum China 和 Trip.com 质量较好，但宏观、价格竞争、旅行周期让分数不能过高。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-YUMC-Q4-2025",
+        "SRC-TRIP-Q4-2025"
+      ]
+    },
+    {
+      "id": "Q3.2.2",
+      "level": 3,
+      "parent_id": "Q3.2",
+      "question": "防守品牌是否有足够赔率？",
+      "conclusion": "茅台和安踏品牌强，但增长速度与估值赔率不足以自动行动。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 valuation_odds、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 valuation_odds 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-MOUTAI-Q3-2025 支持或界定该问题的事实基础。",
+        "SRC-ANTA-H1-2025 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "valuation_odds",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-MOUTAI-Q3-2025",
+          "source_visible_at": "2025-10-30",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "valuation-analysis",
+          "expected_fields": [
+            "priced_in_expectation",
+            "multiple",
+            "base_case",
+            "bull_case",
+            "bear_case",
+            "margin_of_safety"
+          ]
+        },
+        {
+          "source_id": "SRC-ANTA-H1-2025",
+          "source_visible_at": "2025-08-27",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "valuation-analysis",
+          "expected_fields": [
+            "priced_in_expectation",
+            "multiple",
+            "base_case",
+            "bull_case",
+            "bear_case",
+            "margin_of_safety"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "valuation",
+        "selected_skill": "valuation-analysis",
+        "concrete_materials": [
+          "SRC-MOUTAI-Q3-2025",
+          "SRC-ANTA-H1-2025"
+        ],
+        "extraction_schema": [
+          "priced_in_expectation",
+          "multiple",
+          "base_case",
+          "bull_case",
+          "bear_case",
+          "margin_of_safety"
+        ],
+        "source_extraction_ids": [
+          "se-q3-2-2-src-moutai-q3-2025",
+          "se-q3-2-2-src-anta-h1-2025"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q3-2-2-src-moutai-q3-2025",
+          "review-se-q3-2-2-src-anta-h1-2025"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-MOUTAI-Q3-2025: Moutai remains brand-scarce, but alcohol category growth and channel price are key boundaries. SRC-ANTA-H1-2025: Operating margin 26.3%; other brands outgrew core brands; multi-brand sports/outdoor platform lead.",
+      "inference": "基于上述 cutoff 前材料对“防守品牌是否有足够赔率？”的推理：茅台和安踏品牌强，但增长速度与估值赔率不足以自动行动。",
+      "judgment": "决策影响：该叶子进入 valuation_odds，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：茅台和安踏品牌强，但增长速度与估值赔率不足以自动行动。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-MOUTAI-Q3-2025",
+        "SRC-ANTA-H1-2025"
+      ]
+    },
+    {
+      "id": "Q4.1.1",
+      "level": 3,
+      "parent_id": "Q4.1",
+      "question": "谁进入行动/观察名单？",
+      "conclusion": "Pop Mart 稀缺性最高但风险高；Yum China、Trip.com、Anta、Moutai 观察；Haidilao/Nongfu 证据不足。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 target_ranking、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 target_ranking 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-POPMART-H1-2025 支持或界定该问题的事实基础。",
+        "SRC-YUMC-Q4-2025 支持或界定该问题的事实基础。",
+        "SRC-TRIP-Q4-2025 支持或界定该问题的事实基础。",
+        "SRC-ANTA-H1-2025 支持或界定该问题的事实基础。",
+        "SRC-MOUTAI-Q3-2025 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "target_ranking",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-POPMART-H1-2025",
+          "source_visible_at": "2025-08-19",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "target",
+            "thesis_node",
+            "score_driver",
+            "action_state",
+            "upgrade_trigger",
+            "downgrade_trigger"
+          ]
+        },
+        {
+          "source_id": "SRC-YUMC-Q4-2025",
+          "source_visible_at": "2026-02-04",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "target",
+            "thesis_node",
+            "score_driver",
+            "action_state",
+            "upgrade_trigger",
+            "downgrade_trigger"
+          ]
+        },
+        {
+          "source_id": "SRC-TRIP-Q4-2025",
+          "source_visible_at": "2026-02-25",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "target",
+            "thesis_node",
+            "score_driver",
+            "action_state",
+            "upgrade_trigger",
+            "downgrade_trigger"
+          ]
+        },
+        {
+          "source_id": "SRC-ANTA-H1-2025",
+          "source_visible_at": "2025-08-27",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "target",
+            "thesis_node",
+            "score_driver",
+            "action_state",
+            "upgrade_trigger",
+            "downgrade_trigger"
+          ]
+        },
+        {
+          "source_id": "SRC-MOUTAI-Q3-2025",
+          "source_visible_at": "2025-10-30",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "target",
+            "thesis_node",
+            "score_driver",
+            "action_state",
+            "upgrade_trigger",
+            "downgrade_trigger"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "target_recommendation",
+        "selected_skill": "target-recommendation-analysis",
+        "concrete_materials": [
+          "SRC-POPMART-H1-2025",
+          "SRC-YUMC-Q4-2025",
+          "SRC-TRIP-Q4-2025",
+          "SRC-ANTA-H1-2025",
+          "SRC-MOUTAI-Q3-2025"
+        ],
+        "extraction_schema": [
+          "target",
+          "thesis_node",
+          "score_driver",
+          "action_state",
+          "upgrade_trigger",
+          "downgrade_trigger"
+        ],
+        "source_extraction_ids": [
+          "se-q4-1-1-src-popmart-h1-2025",
+          "se-q4-1-1-src-yumc-q4-2025",
+          "se-q4-1-1-src-trip-q4-2025",
+          "se-q4-1-1-src-anta-h1-2025",
+          "se-q4-1-1-src-moutai-q3-2025"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q4-1-1-src-popmart-h1-2025",
+          "review-se-q4-1-1-src-yumc-q4-2025",
+          "review-se-q4-1-1-src-trip-q4-2025",
+          "review-se-q4-1-1-src-anta-h1-2025",
+          "review-se-q4-1-1-src-moutai-q3-2025"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-POPMART-H1-2025: H1 revenue RMB13.876bn +204.4%; shareholder profit RMB4.574bn +396.5%; IP and overseas expansion are key leads. SRC-YUMC-Q4-2025: Q4 system sales +7%, same-store sales +3%, operating profit +25%; store count 18,101 and 2026 target >20,000. SRC-TRIP-Q4-2025: Q4 accommodation revenue RMB6.3bn +21%; FY attributable net income RMB33.3bn. SRC-ANTA-H1-2025: Operating margin 26.3%; other brands outgrew core brands; multi-brand sports/outdoor platform lead. SRC-MOUTAI-Q3-2025: Moutai remains brand-scarce, but alcohol category growth and channel price are key boundaries.",
+      "inference": "基于上述 cutoff 前材料对“谁进入行动/观察名单？”的推理：Pop Mart 稀缺性最高但风险高；Yum China、Trip.com、Anta、Moutai 观察；Haidilao/Nongfu 证据不足。",
+      "judgment": "决策影响：该叶子进入 target_ranking，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：Pop Mart 稀缺性最高但风险高；Yum China、Trip.com、Anta、Moutai 观察；Haidilao/Nongfu 证据不足。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-POPMART-H1-2025",
+        "SRC-YUMC-Q4-2025",
+        "SRC-TRIP-Q4-2025",
+        "SRC-ANTA-H1-2025",
+        "SRC-MOUTAI-Q3-2025"
+      ]
+    },
+    {
+      "id": "Q4.1.2",
+      "level": 3,
+      "parent_id": "Q4.1",
+      "question": "哪些标的必须不行动？",
+      "conclusion": "Haidilao/Nongfu 缺少足够稀缺性和赔率数据；茅台虽稀缺但高端酒需求边界明显。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 target_ranking、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 target_ranking 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-NBS-COMMUNIQUE-2025 支持或界定该问题的事实基础。",
+        "SRC-MOUTAI-Q3-2025 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "target_ranking",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-NBS-COMMUNIQUE-2025",
+          "source_visible_at": "2026-02-28",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "target",
+            "thesis_node",
+            "score_driver",
+            "action_state",
+            "upgrade_trigger",
+            "downgrade_trigger"
+          ]
+        },
+        {
+          "source_id": "SRC-MOUTAI-Q3-2025",
+          "source_visible_at": "2025-10-30",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "target",
+            "thesis_node",
+            "score_driver",
+            "action_state",
+            "upgrade_trigger",
+            "downgrade_trigger"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "target_recommendation",
+        "selected_skill": "target-recommendation-analysis",
+        "concrete_materials": [
+          "SRC-NBS-COMMUNIQUE-2025",
+          "SRC-MOUTAI-Q3-2025"
+        ],
+        "extraction_schema": [
+          "target",
+          "thesis_node",
+          "score_driver",
+          "action_state",
+          "upgrade_trigger",
+          "downgrade_trigger"
+        ],
+        "source_extraction_ids": [
+          "se-q4-1-2-src-nbs-communique-2025",
+          "se-q4-1-2-src-moutai-q3-2025"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q4-1-2-src-nbs-communique-2025",
+          "review-se-q4-1-2-src-moutai-q3-2025"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-NBS-COMMUNIQUE-2025: 2025 total retail sales RMB50.1202tn +3.7%; gold/jewelry +12.8%, sports/recreation +15.7%, food +9.3%. SRC-MOUTAI-Q3-2025: Moutai remains brand-scarce, but alcohol category growth and channel price are key boundaries.",
+      "inference": "基于上述 cutoff 前材料对“哪些标的必须不行动？”的推理：Haidilao/Nongfu 缺少足够稀缺性和赔率数据；茅台虽稀缺但高端酒需求边界明显。",
+      "judgment": "决策影响：该叶子进入 target_ranking，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：Haidilao/Nongfu 缺少足够稀缺性和赔率数据；茅台虽稀缺但高端酒需求边界明显。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-NBS-COMMUNIQUE-2025",
+        "SRC-MOUTAI-Q3-2025"
+      ]
+    },
+    {
+      "id": "Q4.2.1",
+      "level": 3,
+      "parent_id": "Q4.2",
+      "question": "升级触发器是什么？",
+      "conclusion": "海外增长可持续、IP 矩阵扩散、同店恢复、利润率稳定、渠道价格改善。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 target_ranking、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 target_ranking 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-POPMART-H1-2025 支持或界定该问题的事实基础。",
+        "SRC-YUMC-Q4-2025 支持或界定该问题的事实基础。",
+        "SRC-MOUTAI-Q3-2025 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "target_ranking",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-POPMART-H1-2025",
+          "source_visible_at": "2025-08-19",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "target",
+            "thesis_node",
+            "score_driver",
+            "action_state",
+            "upgrade_trigger",
+            "downgrade_trigger"
+          ]
+        },
+        {
+          "source_id": "SRC-YUMC-Q4-2025",
+          "source_visible_at": "2026-02-04",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "target",
+            "thesis_node",
+            "score_driver",
+            "action_state",
+            "upgrade_trigger",
+            "downgrade_trigger"
+          ]
+        },
+        {
+          "source_id": "SRC-MOUTAI-Q3-2025",
+          "source_visible_at": "2025-10-30",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "target",
+            "thesis_node",
+            "score_driver",
+            "action_state",
+            "upgrade_trigger",
+            "downgrade_trigger"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "target_recommendation",
+        "selected_skill": "target-recommendation-analysis",
+        "concrete_materials": [
+          "SRC-POPMART-H1-2025",
+          "SRC-YUMC-Q4-2025",
+          "SRC-MOUTAI-Q3-2025"
+        ],
+        "extraction_schema": [
+          "target",
+          "thesis_node",
+          "score_driver",
+          "action_state",
+          "upgrade_trigger",
+          "downgrade_trigger"
+        ],
+        "source_extraction_ids": [
+          "se-q4-2-1-src-popmart-h1-2025",
+          "se-q4-2-1-src-yumc-q4-2025",
+          "se-q4-2-1-src-moutai-q3-2025"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q4-2-1-src-popmart-h1-2025",
+          "review-se-q4-2-1-src-yumc-q4-2025",
+          "review-se-q4-2-1-src-moutai-q3-2025"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-POPMART-H1-2025: H1 revenue RMB13.876bn +204.4%; shareholder profit RMB4.574bn +396.5%; IP and overseas expansion are key leads. SRC-YUMC-Q4-2025: Q4 system sales +7%, same-store sales +3%, operating profit +25%; store count 18,101 and 2026 target >20,000. SRC-MOUTAI-Q3-2025: Moutai remains brand-scarce, but alcohol category growth and channel price are key boundaries.",
+      "inference": "基于上述 cutoff 前材料对“升级触发器是什么？”的推理：海外增长可持续、IP 矩阵扩散、同店恢复、利润率稳定、渠道价格改善。",
+      "judgment": "决策影响：该叶子进入 target_ranking，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：海外增长可持续、IP 矩阵扩散、同店恢复、利润率稳定、渠道价格改善。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-POPMART-H1-2025",
+        "SRC-YUMC-Q4-2025",
+        "SRC-MOUTAI-Q3-2025"
+      ]
+    },
+    {
+      "id": "Q4.2.2",
+      "level": 3,
+      "parent_id": "Q4.2",
+      "question": "降级触发器是什么？",
+      "conclusion": "单 IP 热度回落、消费品类增速下滑、餐饮价格战、白酒渠道价继续走弱。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 disconfirming_risk_control、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 disconfirming_risk_control 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-NBS-COMMUNIQUE-2025 支持或界定该问题的事实基础。",
+        "SRC-POPMART-H1-2025 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "disconfirming_risk_control",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-NBS-COMMUNIQUE-2025",
+          "source_visible_at": "2026-02-28",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "target",
+            "thesis_node",
+            "score_driver",
+            "action_state",
+            "upgrade_trigger",
+            "downgrade_trigger"
+          ]
+        },
+        {
+          "source_id": "SRC-POPMART-H1-2025",
+          "source_visible_at": "2025-08-19",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "target",
+            "thesis_node",
+            "score_driver",
+            "action_state",
+            "upgrade_trigger",
+            "downgrade_trigger"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "target_recommendation",
+        "selected_skill": "target-recommendation-analysis",
+        "concrete_materials": [
+          "SRC-NBS-COMMUNIQUE-2025",
+          "SRC-POPMART-H1-2025"
+        ],
+        "extraction_schema": [
+          "target",
+          "thesis_node",
+          "score_driver",
+          "action_state",
+          "upgrade_trigger",
+          "downgrade_trigger"
+        ],
+        "source_extraction_ids": [
+          "se-q4-2-2-src-nbs-communique-2025",
+          "se-q4-2-2-src-popmart-h1-2025"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q4-2-2-src-nbs-communique-2025",
+          "review-se-q4-2-2-src-popmart-h1-2025"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-NBS-COMMUNIQUE-2025: 2025 total retail sales RMB50.1202tn +3.7%; gold/jewelry +12.8%, sports/recreation +15.7%, food +9.3%. SRC-POPMART-H1-2025: H1 revenue RMB13.876bn +204.4%; shareholder profit RMB4.574bn +396.5%; IP and overseas expansion are key leads.",
+      "inference": "基于上述 cutoff 前材料对“降级触发器是什么？”的推理：单 IP 热度回落、消费品类增速下滑、餐饮价格战、白酒渠道价继续走弱。",
+      "judgment": "决策影响：该叶子进入 disconfirming_risk_control，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：单 IP 热度回落、消费品类增速下滑、餐饮价格战、白酒渠道价继续走弱。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-NBS-COMMUNIQUE-2025",
+        "SRC-POPMART-H1-2025"
+      ]
+    }
+  ]
+}

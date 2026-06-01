@@ -1,0 +1,298 @@
+{
+  "generated_at": "2026-05-29T00:00:00+08:00",
+  "project": {
+    "project_id": "pop_mart_related_opportunities",
+    "object_type": "industry_theme",
+    "object_id": "pop_mart_related_companies",
+    "meta_question": "泡泡玛特相关公司在 2026-2028 年有哪些值得跟踪的投资机会？",
+    "framework": "research_goal_qa",
+    "report_contract": "research_report_contract",
+    "research_type": "industry/theme opportunity",
+    "created_at": "2026-05-29T00:00:00+08:00",
+    "boundary": "研究观察清单，不构成买卖建议。"
+  },
+  "research_type_adaptation": {
+    "selected_type": "industry/theme opportunity",
+    "reason": "用户询问泡泡玛特相关公司投资机会，属于 IP/潮玩主题的相关标的研究，而非单家公司更新。",
+    "q_map": {
+      "Q1": "需求真实度：泡泡玛特热度是否代表可持续 IP 消费赛道",
+      "Q2": "价值捕获瓶颈：原创 IP、渠道、供应链、授权/内容化谁留住利润",
+      "Q3": "反证和赔率：Labubu 集中、海外、盗版、库存和估值如何证伪",
+      "Q4": "标的观察清单：具体证券的强度、赔率、验证数据和降级触发器"
+    }
+  },
+  "score_schema": {
+    "total": 100,
+    "dimensions": [
+      [
+        "demand_flow",
+        "需求流入",
+        18
+      ],
+      [
+        "ip_control",
+        "IP 控制/不可替代",
+        20
+      ],
+      [
+        "distribution",
+        "渠道与全球化触达",
+        14
+      ],
+      [
+        "product_supply",
+        "产品迭代与供应链",
+        12
+      ],
+      [
+        "financial_conversion",
+        "财务转化",
+        16
+      ],
+      [
+        "valuation_odds",
+        "估值赔率",
+        12
+      ],
+      [
+        "monitorability",
+        "可跟踪性/反证清晰度",
+        8
+      ]
+    ],
+    "downgrade_rules": [
+      "单一 IP 收入占比继续上升但新 IP 无法接力：IP 控制分不升反降。",
+      "海外增长环比或同店连续转弱：渠道全球化分下调。",
+      "毛利率/经营利润率连续两个季度下行且收入仍高增：财务转化分下调。",
+      "第三方估值数据未统一口径：估值赔率不得上调为强。"
+    ]
+  },
+  "chokepoint_scorecard": [
+    [
+      "原创 IP 运营",
+      "9992.HK, 8136.T",
+      88,
+      "角色心智、社群、稀缺发售、跨品类复购",
+      "THE MONSTERS 占比高，热度周期和盗版风险"
+    ],
+    [
+      "全球 DTC 与零售渠道",
+      "9992.HK, MNSO/9896.HK",
+      78,
+      "门店/线上/海外渠道能把 IP 热度转成收入",
+      "海外用户沉淀不足、关税和本地竞争"
+    ],
+    [
+      "授权 IP 与标准化积木/玩具系统",
+      "0325.HK, 7832.T",
+      72,
+      "授权 IP + 产品系统降低单一原创 IP 风险",
+      "授权成本、IP 到期、差异化弱于原创角色"
+    ],
+    [
+      "毛绒/手办供应链",
+      "1126.HK",
+      54,
+      "直接承接 plush/figure 需求",
+      "客户集中、毛利率下行、议价权弱"
+    ],
+    [
+      "内容化与影视授权",
+      "9992.HK, SONY, DIS, 7832.T",
+      62,
+      "角色从玩具走向内容可延长生命周期",
+      "项目不确定、财务贡献滞后、内容成功率低"
+    ]
+  ],
+  "target_observation_list": [
+    {
+      "rank": 1,
+      "ticker": "9992.HK",
+      "name": "泡泡玛特",
+      "class": "核心原创 IP 平台",
+      "node": "原创 IP 运营 + 全球渠道 + 产品供应",
+      "chokepoint_score": 86,
+      "win_probability": "中高",
+      "payoff_odds": "中高但波动大",
+      "strength": "A-/B+",
+      "score": "IP 19/20, 需求 18/18, 渠道 12/14, 财务 15/16, 估值 9/12",
+      "odds_model": "隐含预期：市场相信 Labubu 后仍有 IP 接力。Base：收入高增放缓但利润率维持；Bull：海外复购和新 IP 接力；Bear：THE MONSTERS 热度回落且海外环比走弱。",
+      "rationale": "最直接的受益标的，拥有原创角色、稀缺发售、DTC 渠道和高毛利财务转化。2025 年增长和利润质量极强，但单一 IP 贡献和海外持续性是核心折扣。",
+      "downgrade": "THE MONSTERS 占比继续上升但新 IP 不接力；海外季度环比/同店转弱；毛利或经营利润率被促销、渠道、盗版治理拖累。",
+      "next_data": "2026 半年报分 IP/区域/渠道收入、海外同店、会员复购、库存、毛利率、经营利润率。",
+      "source_ids": [
+        "ev_pop_2025_annual_results",
+        "ev_pop_2025_ip_region_mix",
+        "ev_pop_q1_2026_update",
+        "ev_valuation_snapshot_pop_related"
+      ]
+    },
+    {
+      "rank": 2,
+      "ticker": "8136.T",
+      "name": "Sanrio",
+      "class": "多角色授权 IP 对照",
+      "node": "角色授权 + 全球化",
+      "chokepoint_score": 82,
+      "win_probability": "中高",
+      "payoff_odds": "未统一估值，暂中性",
+      "strength": "B+",
+      "score": "IP 20/20, 需求 15/18, 渠道 11/14, 财务 14/16, 估值 6/12",
+      "odds_model": "隐含预期：多角色授权增长可持续。Base：授权和海外增长维持；Bull：角色组合继续扩张；Bear：估值过高或授权热度降温。",
+      "rationale": "Sanrio 是最好的“泡泡玛特未来形态”参照：多角色、授权、全球化、轻资产利润。但它不是 Labubu 链条直接受益，需要按独立 IP 公司估值。",
+      "downgrade": "角色热度下降、授权收入增速放缓、官方年报不支持第三方快照增长。",
+      "next_data": "FY2026 官方年报、区域授权收入、商品化授权利润率、估值分位。",
+      "source_ids": [
+        "ev_sanrio_financial_snapshot",
+        "ev_valuation_snapshot_pop_related"
+      ]
+    },
+    {
+      "rank": 3,
+      "ticker": "MNSO / 9896.HK",
+      "name": "名创优品 / TOP TOY",
+      "class": "渠道型潮玩零售",
+      "node": "全球零售渠道 + 潮玩品类",
+      "chokepoint_score": 73,
+      "win_probability": "中",
+      "payoff_odds": "中",
+      "strength": "B+",
+      "score": "IP 9/20, 需求 15/18, 渠道 14/14, 财务 12/16, 估值 8/12",
+      "odds_model": "隐含预期：TOP TOY 高增能与名创全球渠道协同。Base：TOP TOY 继续高增但占比仍小；Bull：自有/授权 IP 出圈；Bear：只成为渠道流量而非 IP 资产。",
+      "rationale": "TOP TOY 证明相邻潮玩需求存在，名创渠道强，但 IP 控制力弱于泡泡玛特。适合作为相关消费/渠道标的，而不是原创 IP 替代。",
+      "downgrade": "TOP TOY 增速放缓、毛利率下行、海外门店扩张带不来同店增长。",
+      "next_data": "TOP TOY 单独门店数、同店、毛利率、自有 IP 占比、海外扩张。",
+      "source_ids": [
+        "ev_miniso_2025_annual",
+        "ev_miniso_q1_2026"
+      ]
+    },
+    {
+      "rank": 4,
+      "ticker": "0325.HK",
+      "name": "布鲁可",
+      "class": "授权 IP 拼搭玩具",
+      "node": "授权 IP + 标准化产品系统",
+      "chokepoint_score": 69,
+      "win_probability": "中",
+      "payoff_odds": "中性偏观察",
+      "strength": "B",
+      "score": "IP 11/20, 需求 13/18, 渠道 9/14, 财务 12/16, 估值 8/12",
+      "odds_model": "隐含预期：授权角色积木化增长可持续。Base：收入保持中高增；Bull：Bloks System 形成平台；Bear：授权费用和同质化压缩利润。",
+      "rationale": "和泡泡玛特同属角色玩具消费，但路径是授权 IP + 标准化积木系统。财务已转正，适合观察中国潮玩/积木化需求扩散。",
+      "downgrade": "授权 IP 成本上升、核心 IP 到期、增长低于估值要求。",
+      "next_data": "IP 授权结构、复购、渠道库存、毛利率、现金流和估值口径。",
+      "source_ids": [
+        "ev_bloks_2025_annual",
+        "ev_valuation_snapshot_pop_related"
+      ]
+    },
+    {
+      "rank": 5,
+      "ticker": "7832.T",
+      "name": "Bandai Namco",
+      "class": "成熟 IP 协同平台",
+      "node": "IP synergy + 玩具/模型/娱乐",
+      "chokepoint_score": 74,
+      "win_probability": "中高",
+      "payoff_odds": "未统一估值",
+      "strength": "B",
+      "score": "IP 18/20, 需求 13/18, 渠道 10/14, 财务 13/16, 估值 5/12",
+      "odds_model": "隐含预期：成熟 IP 组合稳健增长。Base：模型/卡牌/玩具维持；Bull：新内容周期；Bear：老 IP 增长放缓。",
+      "rationale": "更像成熟参照和分散型 IP 标的，不是泡泡玛特主题的直接弹性标的。",
+      "downgrade": "核心 IP 周期走弱、玩具/爱好业务利润率下滑。",
+      "next_data": "FY2026 分部收入利润、Gundam/卡牌/模型增长、估值分位。",
+      "source_ids": [
+        "ev_bandai_ip_synergy"
+      ]
+    },
+    {
+      "rank": 6,
+      "ticker": "1126.HK",
+      "name": "Dream International",
+      "class": "OEM/供应链线索",
+      "node": "毛绒/手办制造",
+      "chokepoint_score": 54,
+      "win_probability": "中",
+      "payoff_odds": "低到中",
+      "strength": "B-/Lead",
+      "score": "IP 3/20, 需求 11/18, 渠道 3/14, 财务 8/16, 估值 8/12",
+      "odds_model": "隐含预期：毛绒/手办需求带动订单。Base：收入增长但毛利承压；Bull：大客户订单放量；Bear：客户集中和价格压力继续侵蚀利润。",
+      "rationale": "能承接行业订单，但议价权弱。2025 年 plush 增长但毛利率下降，说明供应链不是主要价值捕获者。",
+      "downgrade": "毛利率继续下行、大客户集中度升高、应收/库存恶化。",
+      "next_data": "客户结构、订单能见度、越南/印尼产能、毛利率和现金流。",
+      "source_ids": [
+        "ev_dream_2025_annual"
+      ]
+    },
+    {
+      "rank": 7,
+      "ticker": "FNKO",
+      "name": "Funko",
+      "class": "反面样本/低优先线索",
+      "node": "授权收藏玩具",
+      "chokepoint_score": 45,
+      "win_probability": "低到中",
+      "payoff_odds": "高波动",
+      "strength": "C/Lead",
+      "score": "IP 6/20, 需求 5/18, 渠道 8/14, 财务 4/16, 估值 7/12",
+      "odds_model": "隐含预期：库存和需求修复。Base：2026 低个位数增长；Bull：周转改善；Bear：收藏热度继续退潮。",
+      "rationale": "Funko 更重要的价值是提醒：授权收藏玩具可以很快从热潮变成库存和亏损问题。",
+      "downgrade": "收入继续下降、毛利率不修复、库存和现金流恶化。",
+      "next_data": "2026 net sales、gross margin、inventory、EBITDA。",
+      "source_ids": [
+        "ev_funko_2025_results",
+        "ev_valuation_snapshot_pop_related"
+      ]
+    }
+  ],
+  "source_parsing_pipeline": {
+    "source_extractions_path": "source_extractions.jsonl",
+    "leaf_source_reviews_path": "leaf_source_reviews.jsonl",
+    "extraction_count": 5,
+    "review_count": 5,
+    "default_parser": "deepseek_delegate",
+    "rule": "DeepSeek/source parsers read small source-L3 bundles first; GPT verifies and writes final QA answers."
+  },
+  "specialty_skill_trace": [
+    {
+      "task_family": "question architecture",
+      "selected_skill": "investment-question-architect",
+      "status": "used as framework protocol"
+    },
+    {
+      "task_family": "source planning",
+      "selected_skill": "research-source-planner",
+      "status": "used as framework protocol"
+    },
+    {
+      "task_family": "financial parsing",
+      "selected_skill": "financial-statement-analysis",
+      "status": "used as protocol"
+    },
+    {
+      "task_family": "valuation",
+      "selected_skill": "valuation-analysis",
+      "status": "used as protocol; third-party data marked lead"
+    },
+    {
+      "task_family": "long source reading",
+      "selected_skill": "leaf-research-deepseek",
+      "status": "initial large bundle returned empty; small source-L3 extraction succeeded"
+    },
+    {
+      "task_family": "target ranking",
+      "selected_skill": "target-recommendation-analysis",
+      "status": "used as protocol"
+    },
+    {
+      "task_family": "HTML",
+      "selected_skill": "frontend-design",
+      "status": "used as protocol with canonical report contract"
+    }
+  ],
+  "deepseek_attempt": {
+    "status": "initial_empty_then_small_chunk_success",
+    "note": "The first large bundle prompt returned an empty response. The pipeline was upgraded to small L3/source parsing jobs and produced persisted records in source_extractions.jsonl, with GPT reviews in leaf_source_reviews.jsonl."
+  }
+}

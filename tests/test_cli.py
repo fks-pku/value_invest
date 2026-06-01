@@ -223,6 +223,208 @@ class CliTests(unittest.TestCase):
             self.assertIn("research_report.html", out.getvalue())
             self.assertIn("information_collection.jsonl", out.getvalue())
 
+    def test_framework_contract_commands_print_validation_results(self):
+        with project_tmp_dir() as tmp:
+            report_path = Path(tmp) / "professional_report.html"
+            report_path.write_text(
+                """
+                <section><h2>当前研究目标</h2></section>
+                <section><h2>问题下钻</h2>
+                  <details class="qa-card level-1" id="q1" open>
+                    <summary><span>Q1</span><span class="qa-count">1</span><span class="chevron">&gt;</span></summary>
+                    <h4>1. 当前结论呈现</h4><h4>2. 问题展开（子 QA）</h4><h4>3. 待补充的问题</h4>
+                    <details class="qa-card level-2" open>
+                      <summary><span>Q1.1</span><span class="qa-count">1</span><span class="chevron">&gt;</span></summary>
+                      <details class="qa-card level-3" open>
+                        <summary><span>Q1.1.1</span><span class="qa-count">0</span><span class="chevron">&gt;</span></summary>
+                        <div class="l3-meta">
+                          <span class="l3-skill">financial-statement-analysis</span>
+                          <span class="l3-execution-status">deepseek_mcp_completed</span>
+                          <span class="l3-score-component">future_space</span>
+                          <span class="l3-decision-use">changes target ranking</span>
+                        </div>
+                      </details>
+                    </details>
+                  </details>
+                  <details class="qa-card level-1" id="q4" open>
+                    <summary><span>Q4</span><span class="qa-count">1</span><span class="chevron">&gt;</span></summary>
+                    <details class="qa-card level-2" open>
+                      <summary><span>Q4.1</span><span class="qa-count">1</span><span class="chevron">&gt;</span></summary>
+                      <details class="qa-card level-3" open>
+                        <summary><span>Q4.1.1</span><span class="qa-count">0</span><span class="chevron">&gt;</span></summary>
+                        <div class="l3-meta">
+                          <span class="l3-skill">target-recommendation-analysis</span>
+                          <span class="l3-execution-status">deepseek_mcp_completed</span>
+                          <span class="l3-score-component">target_ranking</span>
+                          <span class="l3-decision-use">changes action state</span>
+                        </div>
+                      </details>
+                    </details>
+                  </details>
+                </section>
+                <section class="target-section"><h2>最终标的推荐</h2><table class="target-table"><tr><td>forward_3m_return</td></tr></table></section>
+                <details class="source-collapse"><summary><h2>来源索引</h2></summary></details>
+                """,
+                encoding="utf-8",
+            )
+
+            out = StringIO()
+            with redirect_stdout(out):
+                exit_code = main([
+                    "--root",
+                    str(tmp),
+                    "validate-report-contract",
+                    str(report_path),
+                    "--mode",
+                    "historical_backtest",
+                    "--require-l3",
+                ])
+
+            self.assertEqual(exit_code, 0)
+            self.assertIn("Report contract validation OK", out.getvalue())
+            self.assertIn("level3_cards=2", out.getvalue())
+
+            source_path = Path(tmp) / "sources.jsonl"
+            source_path.write_text(
+                json.dumps(
+                    {
+                        "source_id": "future",
+                        "source_visible_at": "2026-04-01",
+                        "allowed_usage": "thesis",
+                        "used_in": ["q4"],
+                    },
+                    ensure_ascii=False,
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            out = StringIO()
+            with redirect_stdout(out):
+                exit_code = main([
+                    "--root",
+                    str(tmp),
+                    "audit-time-slice",
+                    str(source_path),
+                    "--as-of-date",
+                    "2026-02-28",
+                ])
+
+            self.assertEqual(exit_code, 1)
+            self.assertIn("Time-slice audit FAILED", out.getvalue())
+            self.assertIn("post_cutoff_non_label_count=1", out.getvalue())
+
+            project_dir = Path(tmp) / "research" / "qa_projects" / "demo"
+            project_dir.mkdir(parents=True)
+            qa_tree = {
+                "nodes": [
+                    {"id": "q1", "level": 1, "parent_id": None, "next_question_ids": ["q1-1"]},
+                    {"id": "q1-1", "level": 2, "parent_id": "q1", "next_question_ids": ["q1-1-1"]},
+                    {
+                        "id": "q1-1-1",
+                        "level": 3,
+                        "parent_id": "q1-1",
+                        "question": "Is demand visible?",
+                        "conclusion": "Demand evidence is visible.",
+                        "decision_use": "changes target rank",
+                        "materiality": "changes score",
+                        "support_evidence": ["ev1"],
+                        "refute_evidence": ["capacity cuts"],
+                        "target_implications": "raises future_space if verified",
+                        "score_component": "future_space",
+                        "minimum_evidence_gate": "one primary source",
+                        "refuting_source_plan": ["negative source"],
+                        "source_plan": [
+                            {
+                                "source_id": "ev1",
+                                "expected_fields": ["revenue"],
+                                "source_bucket": "evidence",
+                                "source_visible_at": "2026-02-20",
+                                "cutoff_status": "visible_on_or_before_as_of_date",
+                                "allowed_usage": "thesis",
+                                "preferred_skill": "financial-statement-analysis",
+                            }
+                        ],
+                        "skill_dispatch": {
+                            "task_family": "financial_statement",
+                            "selected_skill": "financial-statement-analysis",
+                            "concrete_materials": ["ev1"],
+                            "extraction_schema": ["revenue"],
+                            "source_extraction_ids": ["se-q1-1-1-ev1"],
+                            "leaf_source_review_ids": ["review-se-q1-1-1-ev1"],
+                            "skill_output_status": "deepseek_mcp_completed",
+                            "fallback_used": False,
+                            "gpt_verification_status": "verified",
+                        },
+                        "fact": "Revenue source was visible before cutoff.",
+                        "inference": "Visible revenue supports demand.",
+                        "judgment": "Future-space score can be considered.",
+                        "gap": "Need more segment detail.",
+                        "trigger": "Downgrade if revenue reverses.",
+                        "source_links": ["https://example.com/ev1"],
+                    },
+                ]
+            }
+            components = [
+                "chokepoint_strength",
+                "future_space",
+                "valuation_odds",
+                "evidence_quality",
+                "disconfirming_risk_control",
+                "monitorability",
+                "payoff_convexity",
+            ]
+            subcomponents = {
+                component: [{"name": "base", "score": 4, "weight": 1, "evidence_ids": ["ev1"]}]
+                for component in components
+            }
+            (project_dir / "qa_tree.json").write_text(json.dumps(qa_tree), encoding="utf-8")
+            (project_dir / "source_extractions.jsonl").write_text(
+                json.dumps(
+                    {
+                        "extraction_id": "se-q1-1-1-ev1",
+                        "l3_question_id": "q1-1-1",
+                        "source_id": "ev1",
+                        "parser_status": "ok",
+                        "schema_fields": {"revenue": {"value": "visible revenue", "evidence_ids": ["ev1"]}},
+                    }
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            (project_dir / "investment_workbench.json").write_text(
+                json.dumps(
+                    {
+                        "scoring_worksheet": [
+                            {
+                                "ticker": "DEMO",
+                                "score": {"action_state": "actionable_long", "score_subcomponents": subcomponents},
+                                "thesis_kill_tests": [
+                                    {
+                                        "test": "revenue reverses",
+                                        "evidence_needed": "next report",
+                                        "downgrade_action": "cap to watch_only",
+                                        "source_plan": ["ev1"],
+                                    }
+                                ],
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            out = StringIO()
+            with redirect_stdout(out):
+                exit_code = main([
+                    "--root",
+                    str(tmp),
+                    "validate-research-artifacts",
+                    str(project_dir),
+                    "--require-l3",
+                ])
+
+            self.assertEqual(exit_code, 0)
+            self.assertIn("Research artifact validation OK", out.getvalue())
+
     def test_stock_qa_pipeline_command_prints_run_manifest(self):
         with project_tmp_dir() as tmp:
             stock_dir = Path(tmp) / "stocks" / "AAPL"

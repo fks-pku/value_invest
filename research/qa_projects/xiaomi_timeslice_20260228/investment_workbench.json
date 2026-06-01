@@ -1,0 +1,118 @@
+{
+  "as_of_date": "2026-02-28",
+  "scoring_worksheet": [
+    {
+      "rank": 1,
+      "ticker": "1810.HK",
+      "name": "Xiaomi Corporation",
+      "thesis_node": "EV + Human x Car x Home ecosystem",
+      "rationale": "EV 增长、IoT/互联网服务和研发投入都是真实线索，但截至冻结时点不可替代性与未充分定价不足，默认不行动。",
+      "downgrade_risk": "EV gross margin, monthly deliveries, FCF conversion, smartphone margin, store productivity, valuation reset",
+      "next_verification_data": "EV gross margin, monthly deliveries, FCF conversion, smartphone margin, store productivity, valuation reset",
+      "odds_model": "Base: 稀缺性维持；Bull: 需求和现金流同时上修；Bear: 估值或竞争吞噬收益。",
+      "review_trigger": "EV gross margin, monthly deliveries, FCF conversion, smartphone margin, store productivity, valuation reset",
+      "source_ids": [
+        "SRC-XIAOMI-H1-2025",
+        "SRC-XIAOMI-Q3-2025",
+        "SRC-GASGOO-XIAOMI-JAN-2026"
+      ],
+      "score_input": {
+        "chokepoint_strength": 3.4,
+        "future_space": 4.1,
+        "valuation_odds": 2.8,
+        "evidence_quality": 3.8,
+        "disconfirming_risk_control": 2.8,
+        "monitorability": 4,
+        "payoff_convexity": 3.4,
+        "demand_visibility": 4,
+        "irreplaceability": 3.4,
+        "market_underpricing": 2.8,
+        "valuation_tolerance": 2.8,
+        "downside_fragility": 2.2,
+        "catalyst_proximity": 3.4,
+        "expected_excess_return": 0,
+        "valuation_status": "verified"
+      },
+      "score": {
+        "score_components": {
+          "chokepoint_strength": 3.4,
+          "future_space": 4.1,
+          "valuation_odds": 2.8,
+          "evidence_quality": 3.8,
+          "disconfirming_risk_control": 2.8,
+          "monitorability": 4,
+          "payoff_convexity": 3.4
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "raw_total_score": 3.444,
+        "total_score": 2.69,
+        "thesis_confidence": 3.485,
+        "payoff_convexity": 3.36,
+        "opportunity_fit": 3.4,
+        "action_state": "no_action",
+        "gate_reasons": [
+          "scarcity below gate",
+          "underpricing below gate",
+          "expected return not positive"
+        ],
+        "strength": "D"
+      },
+      "action_state": "no_action",
+      "strength": "D",
+      "label": {
+        "as_of_cutoff": "2026-02-28",
+        "evaluation_date": "2026-05-29",
+        "label_window": "2026-02-27 to 2026-05-29",
+        "currency": "HKD",
+        "start_price": 34.9,
+        "end_price": 28.04,
+        "forward_3m_return": -19.66,
+        "benchmark_return": "",
+        "excess_return": "",
+        "price_source": "StockAnalysis HKG 1810",
+        "label_status": "close_price_not_total_return_adjusted"
+      }
+    }
+  ],
+  "label_attach": [
+    {
+      "ticker": "1810.HK",
+      "label": {
+        "as_of_cutoff": "2026-02-28",
+        "evaluation_date": "2026-05-29",
+        "label_window": "2026-02-27 to 2026-05-29",
+        "currency": "HKD",
+        "start_price": 34.9,
+        "end_price": 28.04,
+        "forward_3m_return": -19.66,
+        "benchmark_return": "",
+        "excess_return": "",
+        "price_source": "StockAnalysis HKG 1810",
+        "label_status": "close_price_not_total_return_adjusted"
+      }
+    }
+  ],
+  "rejected_future_sources": [
+    {
+      "source_id": "LBL-STOCKANALYSIS-XIAOMI",
+      "title": "StockAnalysis HKG 1810 close-price label",
+      "url": "https://stockanalysis.com/quote/hkg/1810/history/",
+      "source_visible_at": "2026-05-29",
+      "source_bucket": "evidence",
+      "support_refute_or_lead": "lead",
+      "allowed_usage": "label_only",
+      "used_in": [
+        "final_label"
+      ],
+      "summary": "Close-price data used only for final target label columns."
+    }
+  ]
+}

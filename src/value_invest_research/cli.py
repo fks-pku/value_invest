@@ -4,6 +4,7 @@ import argparse
 import json
 import sys
 from pathlib import Path
+from typing import Any
 
 from value_invest_research.models import EvidenceRecord, ValidationError
 from value_invest_research.scaffold import init_event, init_stock
@@ -58,6 +59,28 @@ def build_parser() -> argparse.ArgumentParser:
     )
     validate_qa_system_parser.add_argument("ticker")
     validate_qa_system_parser.add_argument("--require-professional-report", action="store_true")
+
+    report_contract_parser = subparsers.add_parser(
+        "validate-report-contract",
+        help="Validate a final HTML report against the locked research report contract",
+    )
+    report_contract_parser.add_argument("path")
+    report_contract_parser.add_argument("--mode", choices=["live_prediction", "historical_backtest"], default="live_prediction")
+    report_contract_parser.add_argument("--require-l3", action="store_true")
+
+    time_slice_parser = subparsers.add_parser(
+        "audit-time-slice",
+        help="Audit source visibility against a historical backtest as-of date",
+    )
+    time_slice_parser.add_argument("path")
+    time_slice_parser.add_argument("--as-of-date", required=True)
+
+    research_artifacts_parser = subparsers.add_parser(
+        "validate-research-artifacts",
+        help="Validate QA, source-extraction, and target-observation internal contracts for a research project",
+    )
+    research_artifacts_parser.add_argument("project_dir")
+    research_artifacts_parser.add_argument("--require-l3", action="store_true")
 
     stock_pipeline_parser = subparsers.add_parser(
         "run-stock-qa-pipeline",
@@ -586,6 +609,12 @@ def main(argv: list[str] | None = None) -> int:
             return run_research_system_cmd(root, args.ticker)
         if args.command == "validate-qa-system":
             return run_validate_qa_system_cmd(root, args)
+        if args.command == "validate-report-contract":
+            return run_validate_report_contract_cmd(root, args)
+        if args.command == "audit-time-slice":
+            return run_audit_time_slice_cmd(root, args)
+        if args.command == "validate-research-artifacts":
+            return run_validate_research_artifacts_cmd(root, args)
         if args.command == "run-stock-qa-pipeline":
             return run_stock_qa_pipeline_cmd(root, args)
         if args.command == "add-research-question":
@@ -688,6 +717,135 @@ def validate_evidence_file(path: Path) -> int:
             print(f"{path}:{line_number}: {exc}", file=sys.stderr)
             return 1
     return 0
+
+
+def run_validate_report_contract_cmd(root: Path, args) -> int:
+    from value_invest_research.framework_contracts import validate_report_contract_html
+
+    path = _resolve_cli_path(root, args.path)
+    result = validate_report_contract_html(
+        path.read_text(encoding="utf-8"),
+        mode=args.mode,
+        require_l3=args.require_l3,
+    )
+    summary = result.get("summary", {})
+    status = "OK" if result.get("ok") else "FAILED"
+    print(
+        f"Report contract validation {status}: "
+        f"path={path}, "
+        f"mode={summary.get('mode', '')}, "
+        f"level1_cards={summary.get('level1_cards', 0)}, "
+        f"level2_cards={summary.get('level2_cards', 0)}, "
+        f"level3_cards={summary.get('level3_cards', 0)}, "
+        f"issues={len(result.get('issues', []))}"
+    )
+    for issue in result.get("issues", [])[:10]:
+        print(f"{issue.get('severity', 'error')}:{issue.get('code', '')}: {issue.get('message', '')}")
+    return 0 if result.get("ok") else 1
+
+
+def run_audit_time_slice_cmd(root: Path, args) -> int:
+    from value_invest_research.framework_contracts import audit_time_slice_sources
+
+    path = _resolve_cli_path(root, args.path)
+    rows = _read_jsonl(path)
+    result = audit_time_slice_sources(rows, as_of_date=args.as_of_date)
+    summary = result.get("summary", {})
+    status = "OK" if result.get("ok") else "FAILED"
+    print(
+        f"Time-slice audit {status}: "
+        f"path={path}, "
+        f"as_of_date={summary.get('as_of_date', '')}, "
+        f"sources={summary.get('sources', 0)}, "
+        f"post_cutoff_non_label_count={summary.get('post_cutoff_non_label_count', 0)}, "
+        f"label_only_count={summary.get('label_only_count', 0)}, "
+        f"quarantined_count={summary.get('quarantined_count', 0)}, "
+        f"issues={len(result.get('issues', []))}"
+    )
+    for issue in result.get("issues", [])[:10]:
+        print(f"{issue.get('severity', 'error')}:{issue.get('code', '')}: {issue.get('message', '')}")
+    return 0 if result.get("ok") else 1
+
+
+def run_validate_research_artifacts_cmd(root: Path, args) -> int:
+    from value_invest_research.framework_contracts import (
+        validate_qa_tree_schema,
+        validate_source_extraction_schema,
+        validate_target_observation_contract,
+    )
+
+    project_dir = _resolve_cli_path(root, args.project_dir)
+    qa_path = project_dir / "qa_tree.json"
+    source_extractions_path = project_dir / "source_extractions.jsonl"
+    workbench_path = project_dir / "investment_workbench.json"
+
+    issues: list[dict[str, str]] = []
+    qa_tree: dict[str, Any] = {}
+    source_extractions: list[dict[str, Any]] = []
+    targets: list[dict[str, Any]] = []
+
+    if qa_path.exists():
+        qa_tree = json.loads(qa_path.read_text(encoding="utf-8"))
+    else:
+        issues.append({"severity": "error", "code": "missing_qa_tree", "message": f"{qa_path} does not exist"})
+
+    if source_extractions_path.exists():
+        source_extractions = _read_jsonl(source_extractions_path)
+    else:
+        issues.append({
+            "severity": "error",
+            "code": "missing_source_extractions",
+            "message": f"{source_extractions_path} does not exist",
+        })
+
+    if workbench_path.exists():
+        workbench = json.loads(workbench_path.read_text(encoding="utf-8"))
+        targets = workbench.get("scoring_worksheet") or workbench.get("targets") or []
+    else:
+        issues.append({"severity": "error", "code": "missing_workbench", "message": f"{workbench_path} does not exist"})
+
+    qa_result = validate_qa_tree_schema(qa_tree, require_l3=args.require_l3) if qa_tree else {"ok": False, "issues": []}
+    extraction_result = (
+        validate_source_extraction_schema(source_extractions, qa_tree)
+        if qa_tree and source_extractions
+        else {"ok": False, "issues": []}
+    )
+    target_result = validate_target_observation_contract(targets) if targets else {"ok": False, "issues": []}
+
+    all_issues = issues + qa_result.get("issues", []) + extraction_result.get("issues", []) + target_result.get("issues", [])
+    ok = not any(issue.get("severity") == "error" for issue in all_issues)
+    status = "OK" if ok else "FAILED"
+    print(
+        f"Research artifact validation {status}: "
+        f"project_dir={project_dir}, "
+        f"qa_nodes={qa_result.get('summary', {}).get('nodes', 0)}, "
+        f"source_extractions={extraction_result.get('summary', {}).get('source_extractions', 0)}, "
+        f"targets={target_result.get('summary', {}).get('targets', 0)}, "
+        f"issues={len(all_issues)}"
+    )
+    for issue in all_issues[:10]:
+        print(f"{issue.get('severity', 'error')}:{issue.get('code', '')}: {issue.get('message', '')}")
+    return 0 if ok else 1
+
+
+def _resolve_cli_path(root: Path, path_text: str) -> Path:
+    path = Path(path_text)
+    return path if path.is_absolute() else root / path
+
+
+def _read_jsonl(path: Path) -> list[dict]:
+    rows: list[dict] = []
+    for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+        if not line.strip():
+            continue
+        try:
+            row = json.loads(line)
+        except json.JSONDecodeError as exc:
+            raise ValueError(f"{path}:{line_number}: {exc}") from exc
+        if not isinstance(row, dict):
+            raise ValueError(f"{path}:{line_number}: JSONL rows must be objects")
+        rows.append(row)
+    return rows
 
 
 def run_build_evidence(root: Path, ticker: str) -> int:

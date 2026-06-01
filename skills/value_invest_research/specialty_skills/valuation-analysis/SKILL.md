@@ -23,6 +23,7 @@ Use verified inputs only:
 - `valuation_snapshot`: market cap, EV, PE, EV/EBITDA, EV/Sales, P/FCF, FCF yield, or relevant local metrics.
 - `future_space`: TAM, node profit pool, company capture rate, growth duration, margin potential.
 - `priced_in_assumptions`: what revenue growth, margin, or FCF conversion the current price appears to require.
+- `market_pricing_bridge`: multiples, FCF yield, implied cyclicality discount, risk premium or discount-rate assumption when relevant, and what would justify rerating or derating.
 - `scenario_table`: bear/base/bull with drivers, numbers, and probability if defensible.
 - `upside_drivers`
 - `downside_drivers`
@@ -36,6 +37,7 @@ Use verified inputs only:
 
 - Do not use valuation multiples without explaining what they imply.
 - Do not call a stock cheap or expensive without naming the growth/margin assumptions.
+- When the thesis is a category rerating, separate fundamental improvement from multiple/risk-premium compression. A low multiple is not favorable odds unless the driver tree can justify why the market's discount should narrow.
 - Separate industry future space from company-capturable future space.
 - Treat high-quality fundamentals and attractive odds as different conclusions.
 - If current price data is stale or missing, mark valuation as unverified and list what to fetch.

@@ -1,0 +1,1737 @@
+{
+  "as_of_date": "2026-02-28",
+  "nodes": [
+    {
+      "id": "Q1",
+      "level": 1,
+      "parent_id": null,
+      "question": "老铺黄金的增长驱动是否真实且可持续？",
+      "conclusion": "增长真实，但不是普通黄金零售 beta：已披露数据更像高端品牌、稀缺商场渠道和线上破圈共同推动；可持续性仍取决于同店、门店优化和海外复制。",
+      "gaps": "需要由下级问题继续验证。",
+      "next_question_ids": [
+        "Q1.1",
+        "Q1.2"
+      ]
+    },
+    {
+      "id": "Q2",
+      "level": 1,
+      "parent_id": null,
+      "question": "公司的价值捕获瓶颈和稀缺性在哪里？",
+      "conclusion": "稀缺性集中在高端古法黄金品牌心智、顶级商场准入、设计工艺和高净值客群重合；但黄金原材料不是稀缺壁垒，必须防止把金价上涨误判成品牌定价权。",
+      "gaps": "需要由下级问题继续验证。",
+      "next_question_ids": [
+        "Q2.1",
+        "Q2.2"
+      ]
+    },
+    {
+      "id": "Q3",
+      "level": 1,
+      "parent_id": null,
+      "question": "财务质量、估值赔率和反证风险如何约束分数？",
+      "conclusion": "财务增长强，但营运资金占用、存货、短借和估值已经反映部分乐观预期，导致未充分定价证据不够硬，动作状态需要封顶。",
+      "gaps": "需要由下级问题继续验证。",
+      "next_question_ids": [
+        "Q3.1",
+        "Q3.2"
+      ]
+    },
+    {
+      "id": "Q4",
+      "level": 1,
+      "parent_id": null,
+      "question": "冻结时点如何形成老铺黄金观察状态？",
+      "conclusion": "6181.HK 可以进入高优先级观察名单，但默认不把强品牌叙事直接等同于 actionable_long；需要等 2025 全年、现金流和提价后需求韧性验证。",
+      "gaps": "需要由下级问题继续验证。",
+      "next_question_ids": [
+        "Q4.1",
+        "Q4.2"
+      ]
+    },
+    {
+      "id": "Q1.1",
+      "level": 2,
+      "parent_id": "Q1",
+      "question": "财务增长和销售动能",
+      "conclusion": "先判断收入、利润和线上线下销售动能是否真实进入报表。",
+      "gaps": "需要由下级问题继续验证。",
+      "next_question_ids": [
+        "Q1.1.1",
+        "Q1.1.2"
+      ]
+    },
+    {
+      "id": "Q1.2",
+      "level": 2,
+      "parent_id": "Q1",
+      "question": "门店、线上和海外增长空间",
+      "conclusion": "再判断增长是否仍有可复制 runway，而不是一次性抢购或金价驱动。",
+      "gaps": "需要由下级问题继续验证。",
+      "next_question_ids": [
+        "Q1.2.1",
+        "Q1.2.2"
+      ]
+    },
+    {
+      "id": "Q2.1",
+      "level": 2,
+      "parent_id": "Q2",
+      "question": "品牌和渠道稀缺性",
+      "conclusion": "检验老铺是否拥有难替代的高端品牌和商场渠道入口。",
+      "gaps": "需要由下级问题继续验证。",
+      "next_question_ids": [
+        "Q2.1.1",
+        "Q2.1.2"
+      ]
+    },
+    {
+      "id": "Q2.2",
+      "level": 2,
+      "parent_id": "Q2",
+      "question": "定价权与产品结构",
+      "conclusion": "检验金价波动下公司是否有产品和价格能力保护毛利。",
+      "gaps": "需要由下级问题继续验证。",
+      "next_question_ids": [
+        "Q2.2.1",
+        "Q2.2.2"
+      ]
+    },
+    {
+      "id": "Q3.1",
+      "level": 2,
+      "parent_id": "Q3",
+      "question": "财务质量与现金转换",
+      "conclusion": "把利润增长和营运资金、库存、借款、分红放在一起检验质量。",
+      "gaps": "需要由下级问题继续验证。",
+      "next_question_ids": [
+        "Q3.1.1",
+        "Q3.1.2"
+      ]
+    },
+    {
+      "id": "Q3.2",
+      "level": 2,
+      "parent_id": "Q3",
+      "question": "估值赔率和反证清单",
+      "conclusion": "判断市场是否已经充分定价品牌稀缺性，并绑定降级条件。",
+      "gaps": "需要由下级问题继续验证。",
+      "next_question_ids": [
+        "Q3.2.1",
+        "Q3.2.2"
+      ]
+    },
+    {
+      "id": "Q4.1",
+      "level": 2,
+      "parent_id": "Q4",
+      "question": "目标观察状态",
+      "conclusion": "把 Q1-Q3 结论映射到具体证券的 action_state。",
+      "gaps": "需要由下级问题继续验证。",
+      "next_question_ids": [
+        "Q4.1.1",
+        "Q4.1.2"
+      ]
+    },
+    {
+      "id": "Q4.2",
+      "level": 2,
+      "parent_id": "Q4",
+      "question": "升级和降级触发器",
+      "conclusion": "定义后续复盘时需要验证的数据，不用后验价格重写当时判断。",
+      "gaps": "需要由下级问题继续验证。",
+      "next_question_ids": [
+        "Q4.2.1",
+        "Q4.2.2"
+      ]
+    },
+    {
+      "id": "Q1.1.1",
+      "level": 3,
+      "parent_id": "Q1.1",
+      "question": "2024 到 2025H1 的增长是否已经进入收入和利润表？",
+      "conclusion": "收入和利润增长已经进入官方报表，且增速远高于普通珠宝零售。",
+      "gaps": "等待更细颗粒度披露和反证验证。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 future_space、目标强度、风险封顶或 action_state。",
+      "decision_use": "用于判断 future_space 是否足以支撑老铺黄金的观察状态。",
+      "support_evidence": [
+        "SRC-LPG-2024-RESULTS 支持或界定该问题。",
+        "SRC-LPG-2025H1-RESULTS 支持或界定该问题。"
+      ],
+      "refute_evidence": [
+        "同店、毛利、现金流、存货、估值或海外复制数据与当前结论相反时，应降低强度。"
+      ],
+      "target_implications": "影响 6181.HK 的分数、门槛、升级/降级触发器和最终 action_state。",
+      "score_component": "future_space",
+      "minimum_evidence_gate": "至少一项冻结日前可见的官方披露或研究数据，并保留边界/反证来源。",
+      "refuting_source_plan": [
+        "检查金价波动、消费疲弱、产品推新失败、现金流恶化和估值透支证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-LPG-2024-RESULTS",
+          "source_visible_at": "2025-03-31",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2025-03-31",
+            "proof_url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0331/2025033101661.pdf"
+          },
+          "expected_fields": [
+            "revenue",
+            "profit",
+            "margin",
+            "cash_flow",
+            "working_capital",
+            "accounting_risk"
+          ],
+          "preferred_parser_skill": "financial-statement-analysis"
+        },
+        {
+          "source_id": "SRC-LPG-2025H1-RESULTS",
+          "source_visible_at": "2025-08-20",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2025-08-20",
+            "proof_url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0820/2025082000247.pdf"
+          },
+          "expected_fields": [
+            "revenue",
+            "profit",
+            "margin",
+            "cash_flow",
+            "working_capital",
+            "accounting_risk"
+          ],
+          "preferred_parser_skill": "financial-statement-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "financial_statement",
+        "selected_skill": "financial-statement-analysis",
+        "concrete_materials": [
+          "SRC-LPG-2024-RESULTS",
+          "SRC-LPG-2025H1-RESULTS"
+        ],
+        "extraction_schema": [
+          "revenue",
+          "profit",
+          "margin",
+          "cash_flow",
+          "working_capital",
+          "accounting_risk"
+        ],
+        "source_extraction_ids": [
+          "se-q1-1-1-src-lpg-2024-results",
+          "se-q1-1-1-src-lpg-2025h1-results"
+        ],
+        "leaf_source_review_ids": [
+          "review-q1-1-1-src-lpg-2024-results",
+          "review-q1-1-1-src-lpg-2025h1-results"
+        ],
+        "skill_output_status": "deepseek_mcp_completed_gpt_verified",
+        "fallback_used": false,
+        "gpt_verification_status": "verified_after_deepseek_source_parser"
+      },
+      "fact": "2024 收入 RMB8.506B、净利润 RMB1.473B；2025H1 收入 RMB12.354B、净利润 RMB2.268B，均为港交所公告披露。",
+      "inference": "增长不是只有媒体热度，而是已在收入、毛利和净利润三张核心指标上同步体现。",
+      "judgment": "该叶子支持提高 future_space 和 evidence_quality，但仍不能单独证明未来三年持续性。",
+      "gap": "需要更细的同店、常态线上、海外店效、毛利桥、存货周转和现金流数据。",
+      "trigger": "若后续披露显示增长无法转成现金流、品牌溢价被金价吞噬、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-LPG-2024-RESULTS",
+        "SRC-LPG-2025H1-RESULTS"
+      ]
+    },
+    {
+      "id": "Q1.1.2",
+      "level": 3,
+      "parent_id": "Q1.1",
+      "question": "线上破圈和高端客群是否扩大需求来源？",
+      "conclusion": "线上和高端客群均提供增量需求线索，但仍需跟踪复购和非大促贡献。",
+      "gaps": "等待更细颗粒度披露和反证验证。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 future_space、目标强度、风险封顶或 action_state。",
+      "decision_use": "用于判断 future_space 是否足以支撑老铺黄金的观察状态。",
+      "support_evidence": [
+        "SRC-LPG-2025H1-RESULTS 支持或界定该问题。"
+      ],
+      "refute_evidence": [
+        "同店、毛利、现金流、存货、估值或海外复制数据与当前结论相反时，应降低强度。"
+      ],
+      "target_implications": "影响 6181.HK 的分数、门槛、升级/降级触发器和最终 action_state。",
+      "score_component": "future_space",
+      "minimum_evidence_gate": "至少一项冻结日前可见的官方披露或研究数据，并保留边界/反证来源。",
+      "refuting_source_plan": [
+        "检查金价波动、消费疲弱、产品推新失败、现金流恶化和估值透支证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-LPG-2025H1-RESULTS",
+          "source_visible_at": "2025-08-20",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2025-08-20",
+            "proof_url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0820/2025082000247.pdf"
+          },
+          "expected_fields": [
+            "market_size",
+            "growth_driver",
+            "source_boundary",
+            "uncertainty",
+            "follow_up_data"
+          ],
+          "preferred_parser_skill": "industry-report-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "industry_report",
+        "selected_skill": "industry-report-analysis",
+        "concrete_materials": [
+          "SRC-LPG-2025H1-RESULTS"
+        ],
+        "extraction_schema": [
+          "market_size",
+          "growth_driver",
+          "source_boundary",
+          "uncertainty",
+          "follow_up_data"
+        ],
+        "source_extraction_ids": [
+          "se-q1-1-2-src-lpg-2025h1-results"
+        ],
+        "leaf_source_review_ids": [
+          "review-q1-1-2-src-lpg-2025h1-results"
+        ],
+        "skill_output_status": "deepseek_mcp_completed_gpt_verified",
+        "fallback_used": false,
+        "gpt_verification_status": "verified_after_deepseek_source_parser"
+      },
+      "fact": "2025H1 天猫 618 黄金类目成交额超过 RMB1B 并排名第一；公司披露与五大国际奢侈品牌客户平均重合率约 77.3%。",
+      "inference": "高端客群重合和线上破圈说明老铺不是只吃线下小众客流，但大促数据可能包含提前购买。",
+      "judgment": "支持需求真实存在，但对长期增长只给中高置信度。",
+      "gap": "需要更细的同店、常态线上、海外店效、毛利桥、存货周转和现金流数据。",
+      "trigger": "若后续披露显示增长无法转成现金流、品牌溢价被金价吞噬、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-LPG-2025H1-RESULTS"
+      ]
+    },
+    {
+      "id": "Q1.2.1",
+      "level": 3,
+      "parent_id": "Q1.2",
+      "question": "顶级商场门店扩张还有没有空间？",
+      "conclusion": "门店仍有优化和扩张空间，但核心高端商场资源并非无限。",
+      "gaps": "等待更细颗粒度披露和反证验证。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 future_space、目标强度、风险封顶或 action_state。",
+      "decision_use": "用于判断 future_space 是否足以支撑老铺黄金的观察状态。",
+      "support_evidence": [
+        "SRC-LPG-2025H1-RESULTS 支持或界定该问题。",
+        "SRC-LPG-CINDA-20250827 支持或界定该问题。"
+      ],
+      "refute_evidence": [
+        "同店、毛利、现金流、存货、估值或海外复制数据与当前结论相反时，应降低强度。"
+      ],
+      "target_implications": "影响 6181.HK 的分数、门槛、升级/降级触发器和最终 action_state。",
+      "score_component": "future_space",
+      "minimum_evidence_gate": "至少一项冻结日前可见的官方披露或研究数据，并保留边界/反证来源。",
+      "refuting_source_plan": [
+        "检查金价波动、消费疲弱、产品推新失败、现金流恶化和估值透支证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-LPG-2025H1-RESULTS",
+          "source_visible_at": "2025-08-20",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2025-08-20",
+            "proof_url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0820/2025082000247.pdf"
+          },
+          "expected_fields": [
+            "market_size",
+            "growth_driver",
+            "source_boundary",
+            "uncertainty",
+            "follow_up_data"
+          ],
+          "preferred_parser_skill": "industry-report-analysis"
+        },
+        {
+          "source_id": "SRC-LPG-CINDA-20250827",
+          "source_visible_at": "2025-08-27",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2025-08-27",
+            "proof_url": "https://pdf.dfcfw.com/pdf/H3_AP202508271735559502_1.pdf"
+          },
+          "expected_fields": [
+            "market_size",
+            "growth_driver",
+            "source_boundary",
+            "uncertainty",
+            "follow_up_data"
+          ],
+          "preferred_parser_skill": "industry-report-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "industry_report",
+        "selected_skill": "industry-report-analysis",
+        "concrete_materials": [
+          "SRC-LPG-2025H1-RESULTS",
+          "SRC-LPG-CINDA-20250827"
+        ],
+        "extraction_schema": [
+          "market_size",
+          "growth_driver",
+          "source_boundary",
+          "uncertainty",
+          "follow_up_data"
+        ],
+        "source_extraction_ids": [
+          "se-q1-2-1-src-lpg-2025h1-results",
+          "se-q1-2-1-src-lpg-cinda-20250827"
+        ],
+        "leaf_source_review_ids": [
+          "review-q1-2-1-src-lpg-2025h1-results",
+          "review-q1-2-1-src-lpg-cinda-20250827"
+        ],
+        "skill_output_status": "deepseek_mcp_completed_gpt_verified",
+        "fallback_used": false,
+        "gpt_verification_status": "verified_after_deepseek_source_parser"
+      },
+      "fact": "截至 2025H1，公司在 16 城有 41 家自营店，进入 29 个高端商业体，包括 SKP 和万象城体系，并在上海港汇恒隆、上海 IFC 等新开店或扩容。",
+      "inference": "高端商场集中带来强坪效和品牌背书，也意味着下一阶段增长更依赖单店扩容、位置优化和少数新增商场。",
+      "judgment": "增长 runway 存在，但不能按普通连锁零售无限外推。",
+      "gap": "需要更细的同店、常态线上、海外店效、毛利桥、存货周转和现金流数据。",
+      "trigger": "若后续披露显示增长无法转成现金流、品牌溢价被金价吞噬、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-LPG-2025H1-RESULTS",
+        "SRC-LPG-CINDA-20250827"
+      ]
+    },
+    {
+      "id": "Q1.2.2",
+      "level": 3,
+      "parent_id": "Q1.2",
+      "question": "海外首店和线上渠道是否构成第二曲线？",
+      "conclusion": "海外和线上是第二曲线线索，尚未达到独立证明长期空间的证据强度。",
+      "gaps": "等待更细颗粒度披露和反证验证。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 future_space、目标强度、风险封顶或 action_state。",
+      "decision_use": "用于判断 future_space 是否足以支撑老铺黄金的观察状态。",
+      "support_evidence": [
+        "SRC-LPG-2025H1-RESULTS 支持或界定该问题。",
+        "SRC-LPG-CINDA-20250827 支持或界定该问题。"
+      ],
+      "refute_evidence": [
+        "同店、毛利、现金流、存货、估值或海外复制数据与当前结论相反时，应降低强度。"
+      ],
+      "target_implications": "影响 6181.HK 的分数、门槛、升级/降级触发器和最终 action_state。",
+      "score_component": "future_space",
+      "minimum_evidence_gate": "至少一项冻结日前可见的官方披露或研究数据，并保留边界/反证来源。",
+      "refuting_source_plan": [
+        "检查金价波动、消费疲弱、产品推新失败、现金流恶化和估值透支证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-LPG-2025H1-RESULTS",
+          "source_visible_at": "2025-08-20",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2025-08-20",
+            "proof_url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0820/2025082000247.pdf"
+          },
+          "expected_fields": [
+            "event_date",
+            "event_fact",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ],
+          "preferred_parser_skill": "news-event-analysis"
+        },
+        {
+          "source_id": "SRC-LPG-CINDA-20250827",
+          "source_visible_at": "2025-08-27",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2025-08-27",
+            "proof_url": "https://pdf.dfcfw.com/pdf/H3_AP202508271735559502_1.pdf"
+          },
+          "expected_fields": [
+            "event_date",
+            "event_fact",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ],
+          "preferred_parser_skill": "news-event-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "news_event",
+        "selected_skill": "news-event-analysis",
+        "concrete_materials": [
+          "SRC-LPG-2025H1-RESULTS",
+          "SRC-LPG-CINDA-20250827"
+        ],
+        "extraction_schema": [
+          "event_date",
+          "event_fact",
+          "support_or_refute",
+          "uncertainty",
+          "follow_up_data"
+        ],
+        "source_extraction_ids": [
+          "se-q1-2-2-src-lpg-2025h1-results",
+          "se-q1-2-2-src-lpg-cinda-20250827"
+        ],
+        "leaf_source_review_ids": [
+          "review-q1-2-2-src-lpg-2025h1-results",
+          "review-q1-2-2-src-lpg-cinda-20250827"
+        ],
+        "skill_output_status": "deepseek_mcp_completed_gpt_verified",
+        "fallback_used": false,
+        "gpt_verification_status": "verified_after_deepseek_source_parser"
+      },
+      "fact": "公司 2025-06-21 在新加坡滨海湾金沙开出首家海外门店；中期公告披露线上销售表现显著。",
+      "inference": "海外高端商场验证有价值，但样本仍小；线上有放大能力，但需要拆分大促和常态销售。",
+      "judgment": "该叶子支持观察，但不单独把总分推到高确信。",
+      "gap": "需要更细的同店、常态线上、海外店效、毛利桥、存货周转和现金流数据。",
+      "trigger": "若后续披露显示增长无法转成现金流、品牌溢价被金价吞噬、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-LPG-2025H1-RESULTS",
+        "SRC-LPG-CINDA-20250827"
+      ]
+    },
+    {
+      "id": "Q2.1.1",
+      "level": 3,
+      "parent_id": "Q2.1",
+      "question": "高端古法黄金品牌是否构成难替代心智？",
+      "conclusion": "品牌心智是主要稀缺点，强于普通黄金零售的金价敞口。",
+      "gaps": "等待更细颗粒度披露和反证验证。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 chokepoint_strength、目标强度、风险封顶或 action_state。",
+      "decision_use": "用于判断 chokepoint_strength 是否足以支撑老铺黄金的观察状态。",
+      "support_evidence": [
+        "SRC-LPG-2024-RESULTS 支持或界定该问题。",
+        "SRC-LPG-2025H1-RESULTS 支持或界定该问题。"
+      ],
+      "refute_evidence": [
+        "同店、毛利、现金流、存货、估值或海外复制数据与当前结论相反时，应降低强度。"
+      ],
+      "target_implications": "影响 6181.HK 的分数、门槛、升级/降级触发器和最终 action_state。",
+      "score_component": "chokepoint_strength",
+      "minimum_evidence_gate": "至少一项冻结日前可见的官方披露或研究数据，并保留边界/反证来源。",
+      "refuting_source_plan": [
+        "检查金价波动、消费疲弱、产品推新失败、现金流恶化和估值透支证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-LPG-2024-RESULTS",
+          "source_visible_at": "2025-03-31",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2025-03-31",
+            "proof_url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0331/2025033101661.pdf"
+          },
+          "expected_fields": [
+            "brand_scarcity",
+            "channel_constraint",
+            "pricing_power",
+            "substitution_risk"
+          ],
+          "preferred_parser_skill": "industry-report-analysis"
+        },
+        {
+          "source_id": "SRC-LPG-2025H1-RESULTS",
+          "source_visible_at": "2025-08-20",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2025-08-20",
+            "proof_url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0820/2025082000247.pdf"
+          },
+          "expected_fields": [
+            "brand_scarcity",
+            "channel_constraint",
+            "pricing_power",
+            "substitution_risk"
+          ],
+          "preferred_parser_skill": "industry-report-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "industry_report",
+        "selected_skill": "industry-report-analysis",
+        "concrete_materials": [
+          "SRC-LPG-2024-RESULTS",
+          "SRC-LPG-2025H1-RESULTS"
+        ],
+        "extraction_schema": [
+          "brand_scarcity",
+          "channel_constraint",
+          "pricing_power",
+          "substitution_risk"
+        ],
+        "source_extraction_ids": [
+          "se-q2-1-1-src-lpg-2024-results",
+          "se-q2-1-1-src-lpg-2025h1-results"
+        ],
+        "leaf_source_review_ids": [
+          "review-q2-1-1-src-lpg-2024-results",
+          "review-q2-1-1-src-lpg-2025h1-results"
+        ],
+        "skill_output_status": "deepseek_mcp_completed_gpt_verified",
+        "fallback_used": false,
+        "gpt_verification_status": "verified_after_deepseek_source_parser"
+      },
+      "fact": "公司将增长归因于品牌影响力、产品优化迭代和门店扩张；2025H1 披露高端奢侈品牌客群重合率较高。",
+      "inference": "消费者愿意为设计、场景和品牌支付金价之外溢价，说明价值捕获点不只是黄金库存。",
+      "judgment": "提高 chokepoint_strength，但需要防止品牌热度和短期抢购被过度资本化。",
+      "gap": "需要更细的同店、常态线上、海外店效、毛利桥、存货周转和现金流数据。",
+      "trigger": "若后续披露显示增长无法转成现金流、品牌溢价被金价吞噬、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-LPG-2024-RESULTS",
+        "SRC-LPG-2025H1-RESULTS"
+      ]
+    },
+    {
+      "id": "Q2.1.2",
+      "level": 3,
+      "parent_id": "Q2.1",
+      "question": "顶级商场准入是否形成稀缺渠道入口？",
+      "conclusion": "顶级商场准入形成稀缺入口，是老铺区别于大众黄金品牌的关键。",
+      "gaps": "等待更细颗粒度披露和反证验证。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 chokepoint_strength、目标强度、风险封顶或 action_state。",
+      "decision_use": "用于判断 chokepoint_strength 是否足以支撑老铺黄金的观察状态。",
+      "support_evidence": [
+        "SRC-LPG-2025H1-RESULTS 支持或界定该问题。",
+        "SRC-LPG-CINDA-20250827 支持或界定该问题。"
+      ],
+      "refute_evidence": [
+        "同店、毛利、现金流、存货、估值或海外复制数据与当前结论相反时，应降低强度。"
+      ],
+      "target_implications": "影响 6181.HK 的分数、门槛、升级/降级触发器和最终 action_state。",
+      "score_component": "chokepoint_strength",
+      "minimum_evidence_gate": "至少一项冻结日前可见的官方披露或研究数据，并保留边界/反证来源。",
+      "refuting_source_plan": [
+        "检查金价波动、消费疲弱、产品推新失败、现金流恶化和估值透支证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-LPG-2025H1-RESULTS",
+          "source_visible_at": "2025-08-20",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2025-08-20",
+            "proof_url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0820/2025082000247.pdf"
+          },
+          "expected_fields": [
+            "brand_scarcity",
+            "channel_constraint",
+            "pricing_power",
+            "substitution_risk"
+          ],
+          "preferred_parser_skill": "industry-report-analysis"
+        },
+        {
+          "source_id": "SRC-LPG-CINDA-20250827",
+          "source_visible_at": "2025-08-27",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2025-08-27",
+            "proof_url": "https://pdf.dfcfw.com/pdf/H3_AP202508271735559502_1.pdf"
+          },
+          "expected_fields": [
+            "brand_scarcity",
+            "channel_constraint",
+            "pricing_power",
+            "substitution_risk"
+          ],
+          "preferred_parser_skill": "industry-report-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "industry_report",
+        "selected_skill": "industry-report-analysis",
+        "concrete_materials": [
+          "SRC-LPG-2025H1-RESULTS",
+          "SRC-LPG-CINDA-20250827"
+        ],
+        "extraction_schema": [
+          "brand_scarcity",
+          "channel_constraint",
+          "pricing_power",
+          "substitution_risk"
+        ],
+        "source_extraction_ids": [
+          "se-q2-1-2-src-lpg-2025h1-results",
+          "se-q2-1-2-src-lpg-cinda-20250827"
+        ],
+        "leaf_source_review_ids": [
+          "review-q2-1-2-src-lpg-2025h1-results",
+          "review-q2-1-2-src-lpg-cinda-20250827"
+        ],
+        "skill_output_status": "deepseek_mcp_completed_gpt_verified",
+        "fallback_used": false,
+        "gpt_verification_status": "verified_after_deepseek_source_parser"
+      },
+      "fact": "公司进入 29 个知名高端商业中心，包含 6 家 SKP 系和 11 家万象城系门店。",
+      "inference": "高端商场对品牌、坪效和客群要求高，渠道入口强化品牌定位并降低低端价格战干扰。",
+      "judgment": "该叶子明显支持稀缺性评分。",
+      "gap": "需要更细的同店、常态线上、海外店效、毛利桥、存货周转和现金流数据。",
+      "trigger": "若后续披露显示增长无法转成现金流、品牌溢价被金价吞噬、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-LPG-2025H1-RESULTS",
+        "SRC-LPG-CINDA-20250827"
+      ]
+    },
+    {
+      "id": "Q2.2.1",
+      "level": 3,
+      "parent_id": "Q2.2",
+      "question": "金价上涨时毛利率是否能守住？",
+      "conclusion": "毛利率仍高但已受金价和备货影响，需要保守处理。",
+      "gaps": "等待更细颗粒度披露和反证验证。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 disconfirming_risk_control、目标强度、风险封顶或 action_state。",
+      "decision_use": "用于判断 disconfirming_risk_control 是否足以支撑老铺黄金的观察状态。",
+      "support_evidence": [
+        "SRC-LPG-2024-RESULTS 支持或界定该问题。",
+        "SRC-LPG-2025H1-RESULTS 支持或界定该问题。"
+      ],
+      "refute_evidence": [
+        "同店、毛利、现金流、存货、估值或海外复制数据与当前结论相反时，应降低强度。"
+      ],
+      "target_implications": "影响 6181.HK 的分数、门槛、升级/降级触发器和最终 action_state。",
+      "score_component": "disconfirming_risk_control",
+      "minimum_evidence_gate": "至少一项冻结日前可见的官方披露或研究数据，并保留边界/反证来源。",
+      "refuting_source_plan": [
+        "检查金价波动、消费疲弱、产品推新失败、现金流恶化和估值透支证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-LPG-2024-RESULTS",
+          "source_visible_at": "2025-03-31",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2025-03-31",
+            "proof_url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0331/2025033101661.pdf"
+          },
+          "expected_fields": [
+            "revenue",
+            "profit",
+            "margin",
+            "cash_flow",
+            "working_capital",
+            "accounting_risk"
+          ],
+          "preferred_parser_skill": "financial-statement-analysis"
+        },
+        {
+          "source_id": "SRC-LPG-2025H1-RESULTS",
+          "source_visible_at": "2025-08-20",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2025-08-20",
+            "proof_url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0820/2025082000247.pdf"
+          },
+          "expected_fields": [
+            "revenue",
+            "profit",
+            "margin",
+            "cash_flow",
+            "working_capital",
+            "accounting_risk"
+          ],
+          "preferred_parser_skill": "financial-statement-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "financial_statement",
+        "selected_skill": "financial-statement-analysis",
+        "concrete_materials": [
+          "SRC-LPG-2024-RESULTS",
+          "SRC-LPG-2025H1-RESULTS"
+        ],
+        "extraction_schema": [
+          "revenue",
+          "profit",
+          "margin",
+          "cash_flow",
+          "working_capital",
+          "accounting_risk"
+        ],
+        "source_extraction_ids": [
+          "se-q2-2-1-src-lpg-2024-results",
+          "se-q2-2-1-src-lpg-2025h1-results"
+        ],
+        "leaf_source_review_ids": [
+          "review-q2-2-1-src-lpg-2024-results",
+          "review-q2-2-1-src-lpg-2025h1-results"
+        ],
+        "skill_output_status": "deepseek_mcp_completed_gpt_verified",
+        "fallback_used": false,
+        "gpt_verification_status": "verified_after_deepseek_source_parser"
+      },
+      "fact": "2024 毛利率约 41.2%；2025H1 毛利率降至 38.1%，公司称受金价短期波动影响。",
+      "inference": "老铺有一定品牌加价能力，但金价快速上行会压缩毛利或推迟价格传导。",
+      "judgment": "该叶子压低风险控制分，要求后续验证提价后销量和毛利。",
+      "gap": "需要更细的同店、常态线上、海外店效、毛利桥、存货周转和现金流数据。",
+      "trigger": "若后续披露显示增长无法转成现金流、品牌溢价被金价吞噬、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-LPG-2024-RESULTS",
+        "SRC-LPG-2025H1-RESULTS"
+      ]
+    },
+    {
+      "id": "Q2.2.2",
+      "level": 3,
+      "parent_id": "Q2.2",
+      "question": "原创设计、专利和产品结构能否保护溢价？",
+      "conclusion": "设计和工艺资产支持溢价，但仍需要持续爆品和复购证明。",
+      "gaps": "等待更细颗粒度披露和反证验证。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 chokepoint_strength、目标强度、风险封顶或 action_state。",
+      "decision_use": "用于判断 chokepoint_strength 是否足以支撑老铺黄金的观察状态。",
+      "support_evidence": [
+        "SRC-LPG-2025H1-RESULTS 支持或界定该问题。"
+      ],
+      "refute_evidence": [
+        "同店、毛利、现金流、存货、估值或海外复制数据与当前结论相反时，应降低强度。"
+      ],
+      "target_implications": "影响 6181.HK 的分数、门槛、升级/降级触发器和最终 action_state。",
+      "score_component": "chokepoint_strength",
+      "minimum_evidence_gate": "至少一项冻结日前可见的官方披露或研究数据，并保留边界/反证来源。",
+      "refuting_source_plan": [
+        "检查金价波动、消费疲弱、产品推新失败、现金流恶化和估值透支证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-LPG-2025H1-RESULTS",
+          "source_visible_at": "2025-08-20",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2025-08-20",
+            "proof_url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0820/2025082000247.pdf"
+          },
+          "expected_fields": [
+            "brand_scarcity",
+            "channel_constraint",
+            "pricing_power",
+            "substitution_risk"
+          ],
+          "preferred_parser_skill": "industry-report-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "industry_report",
+        "selected_skill": "industry-report-analysis",
+        "concrete_materials": [
+          "SRC-LPG-2025H1-RESULTS"
+        ],
+        "extraction_schema": [
+          "brand_scarcity",
+          "channel_constraint",
+          "pricing_power",
+          "substitution_risk"
+        ],
+        "source_extraction_ids": [
+          "se-q2-2-2-src-lpg-2025h1-results"
+        ],
+        "leaf_source_review_ids": [
+          "review-q2-2-2-src-lpg-2025h1-results"
+        ],
+        "skill_output_status": "deepseek_mcp_completed_gpt_verified",
+        "fallback_used": false,
+        "gpt_verification_status": "verified_after_deepseek_source_parser"
+      },
+      "fact": "截至 2025H1，公司披露超过 2,100 款原创设计、273 项境内专利、1,505 项作品著作权和 246 项境外专利。",
+      "inference": "设计和知识产权提高模仿门槛，也帮助把黄金从材料消费升级为品牌消费。",
+      "judgment": "支持稀缺性，但不是绝对垄断。",
+      "gap": "需要更细的同店、常态线上、海外店效、毛利桥、存货周转和现金流数据。",
+      "trigger": "若后续披露显示增长无法转成现金流、品牌溢价被金价吞噬、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-LPG-2025H1-RESULTS"
+      ]
+    },
+    {
+      "id": "Q3.1.1",
+      "level": 3,
+      "parent_id": "Q3.1",
+      "question": "利润增长是否同步转化为经营现金流？",
+      "conclusion": "现金转换是最大质量瑕疵之一，不能只看净利润增速。",
+      "gaps": "等待更细颗粒度披露和反证验证。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 evidence_quality、目标强度、风险封顶或 action_state。",
+      "decision_use": "用于判断 evidence_quality 是否足以支撑老铺黄金的观察状态。",
+      "support_evidence": [
+        "SRC-LPG-2025H1-RESULTS 支持或界定该问题。"
+      ],
+      "refute_evidence": [
+        "同店、毛利、现金流、存货、估值或海外复制数据与当前结论相反时，应降低强度。"
+      ],
+      "target_implications": "影响 6181.HK 的分数、门槛、升级/降级触发器和最终 action_state。",
+      "score_component": "evidence_quality",
+      "minimum_evidence_gate": "至少一项冻结日前可见的官方披露或研究数据，并保留边界/反证来源。",
+      "refuting_source_plan": [
+        "检查金价波动、消费疲弱、产品推新失败、现金流恶化和估值透支证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-LPG-2025H1-RESULTS",
+          "source_visible_at": "2025-08-20",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2025-08-20",
+            "proof_url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0820/2025082000247.pdf"
+          },
+          "expected_fields": [
+            "revenue",
+            "profit",
+            "margin",
+            "cash_flow",
+            "working_capital",
+            "accounting_risk"
+          ],
+          "preferred_parser_skill": "financial-statement-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "financial_statement",
+        "selected_skill": "financial-statement-analysis",
+        "concrete_materials": [
+          "SRC-LPG-2025H1-RESULTS"
+        ],
+        "extraction_schema": [
+          "revenue",
+          "profit",
+          "margin",
+          "cash_flow",
+          "working_capital",
+          "accounting_risk"
+        ],
+        "source_extraction_ids": [
+          "se-q3-1-1-src-lpg-2025h1-results"
+        ],
+        "leaf_source_review_ids": [
+          "review-q3-1-1-src-lpg-2025h1-results"
+        ],
+        "skill_output_status": "deepseek_mcp_completed_gpt_verified",
+        "fallback_used": false,
+        "gpt_verification_status": "verified_after_deepseek_source_parser"
+      },
+      "fact": "2025H1 存货增至 RMB8.685B，短期借款增至 RMB3.183B；经营净现金流出 RMB2.215B，扣除用于黄金原材料采购的配售资金影响后为净流入 RMB154M。",
+      "inference": "高增长阶段需要大量备货，利润质量并非完全低风险现金流模型。",
+      "judgment": "压低 evidence_quality 和 disconfirming_risk_control，并要求年度现金流验证。",
+      "gap": "需要更细的同店、常态线上、海外店效、毛利桥、存货周转和现金流数据。",
+      "trigger": "若后续披露显示增长无法转成现金流、品牌溢价被金价吞噬、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-LPG-2025H1-RESULTS"
+      ]
+    },
+    {
+      "id": "Q3.1.2",
+      "level": 3,
+      "parent_id": "Q3.1",
+      "question": "高分红是否足以证明资本回报质量？",
+      "conclusion": "高分红是正面信号，但不能抵消存货和借款风险。",
+      "gaps": "等待更细颗粒度披露和反证验证。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 monitorability、目标强度、风险封顶或 action_state。",
+      "decision_use": "用于判断 monitorability 是否足以支撑老铺黄金的观察状态。",
+      "support_evidence": [
+        "SRC-LPG-2024-RESULTS 支持或界定该问题。",
+        "SRC-LPG-2025H1-RESULTS 支持或界定该问题。"
+      ],
+      "refute_evidence": [
+        "同店、毛利、现金流、存货、估值或海外复制数据与当前结论相反时，应降低强度。"
+      ],
+      "target_implications": "影响 6181.HK 的分数、门槛、升级/降级触发器和最终 action_state。",
+      "score_component": "monitorability",
+      "minimum_evidence_gate": "至少一项冻结日前可见的官方披露或研究数据，并保留边界/反证来源。",
+      "refuting_source_plan": [
+        "检查金价波动、消费疲弱、产品推新失败、现金流恶化和估值透支证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-LPG-2024-RESULTS",
+          "source_visible_at": "2025-03-31",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2025-03-31",
+            "proof_url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0331/2025033101661.pdf"
+          },
+          "expected_fields": [
+            "revenue",
+            "profit",
+            "margin",
+            "cash_flow",
+            "working_capital",
+            "accounting_risk"
+          ],
+          "preferred_parser_skill": "financial-statement-analysis"
+        },
+        {
+          "source_id": "SRC-LPG-2025H1-RESULTS",
+          "source_visible_at": "2025-08-20",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2025-08-20",
+            "proof_url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0820/2025082000247.pdf"
+          },
+          "expected_fields": [
+            "revenue",
+            "profit",
+            "margin",
+            "cash_flow",
+            "working_capital",
+            "accounting_risk"
+          ],
+          "preferred_parser_skill": "financial-statement-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "financial_statement",
+        "selected_skill": "financial-statement-analysis",
+        "concrete_materials": [
+          "SRC-LPG-2024-RESULTS",
+          "SRC-LPG-2025H1-RESULTS"
+        ],
+        "extraction_schema": [
+          "revenue",
+          "profit",
+          "margin",
+          "cash_flow",
+          "working_capital",
+          "accounting_risk"
+        ],
+        "source_extraction_ids": [
+          "se-q3-1-2-src-lpg-2024-results",
+          "se-q3-1-2-src-lpg-2025h1-results"
+        ],
+        "leaf_source_review_ids": [
+          "review-q3-1-2-src-lpg-2024-results",
+          "review-q3-1-2-src-lpg-2025h1-results"
+        ],
+        "skill_output_status": "deepseek_mcp_completed_gpt_verified",
+        "fallback_used": false,
+        "gpt_verification_status": "verified_after_deepseek_source_parser"
+      },
+      "fact": "公司 2024 年建议每股 RMB6.35 股息，2025H1 建议每股 RMB9.59 中期股息。",
+      "inference": "分红显示管理层回报股东意愿，但在高备货和高借款背景下需要同时看现金流。",
+      "judgment": "提高 monitorability，不能提高 valuation_odds。",
+      "gap": "需要更细的同店、常态线上、海外店效、毛利桥、存货周转和现金流数据。",
+      "trigger": "若后续披露显示增长无法转成现金流、品牌溢价被金价吞噬、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-LPG-2024-RESULTS",
+        "SRC-LPG-2025H1-RESULTS"
+      ]
+    },
+    {
+      "id": "Q3.2.1",
+      "level": 3,
+      "parent_id": "Q3.2",
+      "question": "冻结时点估值是否仍有未充分定价空间？",
+      "conclusion": "估值并不离谱，但未充分定价证据不够硬。",
+      "gaps": "等待更细颗粒度披露和反证验证。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 valuation_odds、目标强度、风险封顶或 action_state。",
+      "decision_use": "用于判断 valuation_odds 是否足以支撑老铺黄金的观察状态。",
+      "support_evidence": [
+        "SRC-LPG-CMBC-20251215 支持或界定该问题。",
+        "SRC-LPG-CINDA-20250827 支持或界定该问题。",
+        "SRC-HSI-20260213 支持或界定该问题。"
+      ],
+      "refute_evidence": [
+        "同店、毛利、现金流、存货、估值或海外复制数据与当前结论相反时，应降低强度。"
+      ],
+      "target_implications": "影响 6181.HK 的分数、门槛、升级/降级触发器和最终 action_state。",
+      "score_component": "valuation_odds",
+      "minimum_evidence_gate": "至少一项冻结日前可见的官方披露或研究数据，并保留边界/反证来源。",
+      "refuting_source_plan": [
+        "检查金价波动、消费疲弱、产品推新失败、现金流恶化和估值透支证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-LPG-CMBC-20251215",
+          "source_visible_at": "2025-12-15",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2025-12-15",
+            "proof_url": "https://www.cmbccap.com/capwebsit-app/capwebsit/downloadFile.download?fileId=ef30326a509c46e4ae0327968091ba93&moduleNo=CAP"
+          },
+          "expected_fields": [
+            "market_price",
+            "forward_profit",
+            "multiple",
+            "priced_in_expectation",
+            "base_case",
+            "risk_case"
+          ],
+          "preferred_parser_skill": "valuation-analysis"
+        },
+        {
+          "source_id": "SRC-LPG-CINDA-20250827",
+          "source_visible_at": "2025-08-27",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2025-08-27",
+            "proof_url": "https://pdf.dfcfw.com/pdf/H3_AP202508271735559502_1.pdf"
+          },
+          "expected_fields": [
+            "market_price",
+            "forward_profit",
+            "multiple",
+            "priced_in_expectation",
+            "base_case",
+            "risk_case"
+          ],
+          "preferred_parser_skill": "valuation-analysis"
+        },
+        {
+          "source_id": "SRC-HSI-20260213",
+          "source_visible_at": "2026-02-13",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2026-02-13",
+            "proof_url": "https://www.hsi.com.hk/static/uploads/contents/en/news/pressRelease/20260213T174500.pdf"
+          },
+          "expected_fields": [
+            "market_price",
+            "forward_profit",
+            "multiple",
+            "priced_in_expectation",
+            "base_case",
+            "risk_case"
+          ],
+          "preferred_parser_skill": "valuation-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "valuation",
+        "selected_skill": "valuation-analysis",
+        "concrete_materials": [
+          "SRC-LPG-CMBC-20251215",
+          "SRC-LPG-CINDA-20250827",
+          "SRC-HSI-20260213"
+        ],
+        "extraction_schema": [
+          "market_price",
+          "forward_profit",
+          "multiple",
+          "priced_in_expectation",
+          "base_case",
+          "risk_case"
+        ],
+        "source_extraction_ids": [
+          "se-q3-2-1-src-lpg-cmbc-20251215",
+          "se-q3-2-1-src-lpg-cinda-20250827",
+          "se-q3-2-1-src-hsi-20260213"
+        ],
+        "leaf_source_review_ids": [
+          "review-q3-2-1-src-lpg-cmbc-20251215",
+          "review-q3-2-1-src-lpg-cinda-20250827",
+          "review-q3-2-1-src-hsi-20260213"
+        ],
+        "skill_output_status": "deepseek_mcp_completed_gpt_verified",
+        "fallback_used": false,
+        "gpt_verification_status": "verified_after_deepseek_source_parser"
+      },
+      "fact": "2025-12-15 估值表显示老铺在 HKD662.50 对应 2026E PE 约 17x；2 月冻结日前市场已可见高增长预测和恒指纳入线索。",
+      "inference": "若 2026E 利润预测兑现，估值相对成长性不贵；但市场已认识到品牌稀缺性和指数流动性。",
+      "judgment": "valuation_odds 给中性偏正，但低于 actionable_long 门槛。",
+      "gap": "需要更细的同店、常态线上、海外店效、毛利桥、存货周转和现金流数据。",
+      "trigger": "若后续披露显示增长无法转成现金流、品牌溢价被金价吞噬、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-LPG-CMBC-20251215",
+        "SRC-LPG-CINDA-20250827",
+        "SRC-HSI-20260213"
+      ]
+    },
+    {
+      "id": "Q3.2.2",
+      "level": 3,
+      "parent_id": "Q3.2",
+      "question": "哪些反证会打破高端品牌叙事？",
+      "conclusion": "金价、产品推新、消费疲弱、解禁/配售和海外复制失败都足以降级。",
+      "gaps": "等待更细颗粒度披露和反证验证。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 disconfirming_risk_control、目标强度、风险封顶或 action_state。",
+      "decision_use": "用于判断 disconfirming_risk_control 是否足以支撑老铺黄金的观察状态。",
+      "support_evidence": [
+        "SRC-LPG-CINDA-20250827 支持或界定该问题。",
+        "SRC-LPG-CMBC-20251215 支持或界定该问题。"
+      ],
+      "refute_evidence": [
+        "同店、毛利、现金流、存货、估值或海外复制数据与当前结论相反时，应降低强度。"
+      ],
+      "target_implications": "影响 6181.HK 的分数、门槛、升级/降级触发器和最终 action_state。",
+      "score_component": "disconfirming_risk_control",
+      "minimum_evidence_gate": "至少一项冻结日前可见的官方披露或研究数据，并保留边界/反证来源。",
+      "refuting_source_plan": [
+        "检查金价波动、消费疲弱、产品推新失败、现金流恶化和估值透支证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-LPG-CINDA-20250827",
+          "source_visible_at": "2025-08-27",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2025-08-27",
+            "proof_url": "https://pdf.dfcfw.com/pdf/H3_AP202508271735559502_1.pdf"
+          },
+          "expected_fields": [
+            "market_price",
+            "forward_profit",
+            "multiple",
+            "priced_in_expectation",
+            "base_case",
+            "risk_case"
+          ],
+          "preferred_parser_skill": "valuation-analysis"
+        },
+        {
+          "source_id": "SRC-LPG-CMBC-20251215",
+          "source_visible_at": "2025-12-15",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2025-12-15",
+            "proof_url": "https://www.cmbccap.com/capwebsit-app/capwebsit/downloadFile.download?fileId=ef30326a509c46e4ae0327968091ba93&moduleNo=CAP"
+          },
+          "expected_fields": [
+            "market_price",
+            "forward_profit",
+            "multiple",
+            "priced_in_expectation",
+            "base_case",
+            "risk_case"
+          ],
+          "preferred_parser_skill": "valuation-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "valuation",
+        "selected_skill": "valuation-analysis",
+        "concrete_materials": [
+          "SRC-LPG-CINDA-20250827",
+          "SRC-LPG-CMBC-20251215"
+        ],
+        "extraction_schema": [
+          "market_price",
+          "forward_profit",
+          "multiple",
+          "priced_in_expectation",
+          "base_case",
+          "risk_case"
+        ],
+        "source_extraction_ids": [
+          "se-q3-2-2-src-lpg-cinda-20250827",
+          "se-q3-2-2-src-lpg-cmbc-20251215"
+        ],
+        "leaf_source_review_ids": [
+          "review-q3-2-2-src-lpg-cinda-20250827",
+          "review-q3-2-2-src-lpg-cmbc-20251215"
+        ],
+        "skill_output_status": "deepseek_mcp_completed_gpt_verified",
+        "fallback_used": false,
+        "gpt_verification_status": "verified_after_deepseek_source_parser"
+      },
+      "fact": "券商风险提示包含金价剧烈波动、产品推新不及预期、海外环境不确定、消费需求疲软和大股东解禁。",
+      "inference": "老铺的高估值容忍度来自增长和品牌心智，一旦同店或毛利走弱，估值会迅速重定价。",
+      "judgment": "必须以硬触发器封顶 action_state。",
+      "gap": "需要更细的同店、常态线上、海外店效、毛利桥、存货周转和现金流数据。",
+      "trigger": "若后续披露显示增长无法转成现金流、品牌溢价被金价吞噬、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-LPG-CINDA-20250827",
+        "SRC-LPG-CMBC-20251215"
+      ]
+    },
+    {
+      "id": "Q4.1.1",
+      "level": 3,
+      "parent_id": "Q4.1",
+      "question": "6181.HK 是否进入 actionable_long？",
+      "conclusion": "进入高优先级观察，但不进入 actionable_long。",
+      "gaps": "等待更细颗粒度披露和反证验证。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 target_ranking、目标强度、风险封顶或 action_state。",
+      "decision_use": "用于判断 target_ranking 是否足以支撑老铺黄金的观察状态。",
+      "support_evidence": [
+        "SRC-LPG-2025H1-RESULTS 支持或界定该问题。",
+        "SRC-LPG-CMBC-20251215 支持或界定该问题。",
+        "SRC-HSI-20260213 支持或界定该问题。"
+      ],
+      "refute_evidence": [
+        "同店、毛利、现金流、存货、估值或海外复制数据与当前结论相反时，应降低强度。"
+      ],
+      "target_implications": "影响 6181.HK 的分数、门槛、升级/降级触发器和最终 action_state。",
+      "score_component": "target_ranking",
+      "minimum_evidence_gate": "至少一项冻结日前可见的官方披露或研究数据，并保留边界/反证来源。",
+      "refuting_source_plan": [
+        "检查金价波动、消费疲弱、产品推新失败、现金流恶化和估值透支证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-LPG-2025H1-RESULTS",
+          "source_visible_at": "2025-08-20",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2025-08-20",
+            "proof_url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0820/2025082000247.pdf"
+          },
+          "expected_fields": [
+            "target",
+            "thesis_node",
+            "score_driver",
+            "action_state",
+            "upgrade_trigger",
+            "downgrade_trigger"
+          ],
+          "preferred_parser_skill": "target-recommendation-analysis"
+        },
+        {
+          "source_id": "SRC-LPG-CMBC-20251215",
+          "source_visible_at": "2025-12-15",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2025-12-15",
+            "proof_url": "https://www.cmbccap.com/capwebsit-app/capwebsit/downloadFile.download?fileId=ef30326a509c46e4ae0327968091ba93&moduleNo=CAP"
+          },
+          "expected_fields": [
+            "target",
+            "thesis_node",
+            "score_driver",
+            "action_state",
+            "upgrade_trigger",
+            "downgrade_trigger"
+          ],
+          "preferred_parser_skill": "target-recommendation-analysis"
+        },
+        {
+          "source_id": "SRC-HSI-20260213",
+          "source_visible_at": "2026-02-13",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2026-02-13",
+            "proof_url": "https://www.hsi.com.hk/static/uploads/contents/en/news/pressRelease/20260213T174500.pdf"
+          },
+          "expected_fields": [
+            "target",
+            "thesis_node",
+            "score_driver",
+            "action_state",
+            "upgrade_trigger",
+            "downgrade_trigger"
+          ],
+          "preferred_parser_skill": "target-recommendation-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "target_recommendation",
+        "selected_skill": "target-recommendation-analysis",
+        "concrete_materials": [
+          "SRC-LPG-2025H1-RESULTS",
+          "SRC-LPG-CMBC-20251215",
+          "SRC-HSI-20260213"
+        ],
+        "extraction_schema": [
+          "target",
+          "thesis_node",
+          "score_driver",
+          "action_state",
+          "upgrade_trigger",
+          "downgrade_trigger"
+        ],
+        "source_extraction_ids": [
+          "se-q4-1-1-src-lpg-2025h1-results",
+          "se-q4-1-1-src-lpg-cmbc-20251215",
+          "se-q4-1-1-src-hsi-20260213"
+        ],
+        "leaf_source_review_ids": [
+          "review-q4-1-1-src-lpg-2025h1-results",
+          "review-q4-1-1-src-lpg-cmbc-20251215",
+          "review-q4-1-1-src-hsi-20260213"
+        ],
+        "skill_output_status": "deepseek_mcp_completed_gpt_verified",
+        "fallback_used": false,
+        "gpt_verification_status": "verified_after_deepseek_source_parser"
+      },
+      "fact": "冻结日前可见证据显示高增长、高端渠道和 2026E PE 约 17x；同时 2025 全年正式业绩、提价后需求和现金流尚未披露。",
+      "inference": "巨大需求和稀缺性成立概率较高，未充分定价只达到中性偏正，不足以越过三重门槛。",
+      "judgment": "action_state 设为 watch_only，等待年度业绩和现金流验证。",
+      "gap": "需要更细的同店、常态线上、海外店效、毛利桥、存货周转和现金流数据。",
+      "trigger": "若后续披露显示增长无法转成现金流、品牌溢价被金价吞噬、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-LPG-2025H1-RESULTS",
+        "SRC-LPG-CMBC-20251215",
+        "SRC-HSI-20260213"
+      ]
+    },
+    {
+      "id": "Q4.1.2",
+      "level": 3,
+      "parent_id": "Q4.1",
+      "question": "是否需要用同行替代或分散表达？",
+      "conclusion": "单公司研究不替换标的，但同行估值只作为赔率边界。",
+      "gaps": "等待更细颗粒度披露和反证验证。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 target_ranking、目标强度、风险封顶或 action_state。",
+      "decision_use": "用于判断 target_ranking 是否足以支撑老铺黄金的观察状态。",
+      "support_evidence": [
+        "SRC-LPG-CMBC-20251215 支持或界定该问题。"
+      ],
+      "refute_evidence": [
+        "同店、毛利、现金流、存货、估值或海外复制数据与当前结论相反时，应降低强度。"
+      ],
+      "target_implications": "影响 6181.HK 的分数、门槛、升级/降级触发器和最终 action_state。",
+      "score_component": "target_ranking",
+      "minimum_evidence_gate": "至少一项冻结日前可见的官方披露或研究数据，并保留边界/反证来源。",
+      "refuting_source_plan": [
+        "检查金价波动、消费疲弱、产品推新失败、现金流恶化和估值透支证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-LPG-CMBC-20251215",
+          "source_visible_at": "2025-12-15",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2025-12-15",
+            "proof_url": "https://www.cmbccap.com/capwebsit-app/capwebsit/downloadFile.download?fileId=ef30326a509c46e4ae0327968091ba93&moduleNo=CAP"
+          },
+          "expected_fields": [
+            "target",
+            "thesis_node",
+            "score_driver",
+            "action_state",
+            "upgrade_trigger",
+            "downgrade_trigger"
+          ],
+          "preferred_parser_skill": "target-recommendation-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "target_recommendation",
+        "selected_skill": "target-recommendation-analysis",
+        "concrete_materials": [
+          "SRC-LPG-CMBC-20251215"
+        ],
+        "extraction_schema": [
+          "target",
+          "thesis_node",
+          "score_driver",
+          "action_state",
+          "upgrade_trigger",
+          "downgrade_trigger"
+        ],
+        "source_extraction_ids": [
+          "se-q4-1-2-src-lpg-cmbc-20251215"
+        ],
+        "leaf_source_review_ids": [
+          "review-q4-1-2-src-lpg-cmbc-20251215"
+        ],
+        "skill_output_status": "deepseek_mcp_completed_gpt_verified",
+        "fallback_used": false,
+        "gpt_verification_status": "verified_after_deepseek_source_parser"
+      },
+      "fact": "估值表中周大福、老凤祥、周六福、潮宏基等同业增速和 PE 明显分化。",
+      "inference": "老铺的品牌稀缺性强于大众黄金饰品，但同业提供了估值压缩的参照。",
+      "judgment": "最终名单保留 6181.HK 一个观察标的，不用低质量替代品稀释结论。",
+      "gap": "需要更细的同店、常态线上、海外店效、毛利桥、存货周转和现金流数据。",
+      "trigger": "若后续披露显示增长无法转成现金流、品牌溢价被金价吞噬、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-LPG-CMBC-20251215"
+      ]
+    },
+    {
+      "id": "Q4.2.1",
+      "level": 3,
+      "parent_id": "Q4.2",
+      "question": "升级触发器是什么？",
+      "conclusion": "升级需要年度利润、现金流、毛利和同店同时验证。",
+      "gaps": "等待更细颗粒度披露和反证验证。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 action_state、目标强度、风险封顶或 action_state。",
+      "decision_use": "用于判断 action_state 是否足以支撑老铺黄金的观察状态。",
+      "support_evidence": [
+        "SRC-LPG-2025H1-RESULTS 支持或界定该问题。",
+        "SRC-LPG-CMBC-20251215 支持或界定该问题。"
+      ],
+      "refute_evidence": [
+        "同店、毛利、现金流、存货、估值或海外复制数据与当前结论相反时，应降低强度。"
+      ],
+      "target_implications": "影响 6181.HK 的分数、门槛、升级/降级触发器和最终 action_state。",
+      "score_component": "action_state",
+      "minimum_evidence_gate": "至少一项冻结日前可见的官方披露或研究数据，并保留边界/反证来源。",
+      "refuting_source_plan": [
+        "检查金价波动、消费疲弱、产品推新失败、现金流恶化和估值透支证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-LPG-2025H1-RESULTS",
+          "source_visible_at": "2025-08-20",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2025-08-20",
+            "proof_url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0820/2025082000247.pdf"
+          },
+          "expected_fields": [
+            "target",
+            "thesis_node",
+            "score_driver",
+            "action_state",
+            "upgrade_trigger",
+            "downgrade_trigger"
+          ],
+          "preferred_parser_skill": "target-recommendation-analysis"
+        },
+        {
+          "source_id": "SRC-LPG-CMBC-20251215",
+          "source_visible_at": "2025-12-15",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2025-12-15",
+            "proof_url": "https://www.cmbccap.com/capwebsit-app/capwebsit/downloadFile.download?fileId=ef30326a509c46e4ae0327968091ba93&moduleNo=CAP"
+          },
+          "expected_fields": [
+            "target",
+            "thesis_node",
+            "score_driver",
+            "action_state",
+            "upgrade_trigger",
+            "downgrade_trigger"
+          ],
+          "preferred_parser_skill": "target-recommendation-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "target_recommendation",
+        "selected_skill": "target-recommendation-analysis",
+        "concrete_materials": [
+          "SRC-LPG-2025H1-RESULTS",
+          "SRC-LPG-CMBC-20251215"
+        ],
+        "extraction_schema": [
+          "target",
+          "thesis_node",
+          "score_driver",
+          "action_state",
+          "upgrade_trigger",
+          "downgrade_trigger"
+        ],
+        "source_extraction_ids": [
+          "se-q4-2-1-src-lpg-2025h1-results",
+          "se-q4-2-1-src-lpg-cmbc-20251215"
+        ],
+        "leaf_source_review_ids": [
+          "review-q4-2-1-src-lpg-2025h1-results",
+          "review-q4-2-1-src-lpg-cmbc-20251215"
+        ],
+        "skill_output_status": "deepseek_mcp_completed_gpt_verified",
+        "fallback_used": false,
+        "gpt_verification_status": "verified_after_deepseek_source_parser"
+      },
+      "fact": "截至冻结日，2025 全年正式结果和 2026 开年经营数据尚不可见。",
+      "inference": "只有当强增长不再依赖备货和借款、且估值仍未充分反映，才可升级。",
+      "judgment": "后续看 2025 年度公告、同店、毛利、经营现金流和海外店效。",
+      "gap": "需要更细的同店、常态线上、海外店效、毛利桥、存货周转和现金流数据。",
+      "trigger": "若后续披露显示增长无法转成现金流、品牌溢价被金价吞噬、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-LPG-2025H1-RESULTS",
+        "SRC-LPG-CMBC-20251215"
+      ]
+    },
+    {
+      "id": "Q4.2.2",
+      "level": 3,
+      "parent_id": "Q4.2",
+      "question": "降级触发器是什么？",
+      "conclusion": "若现金流恶化或提价后销量走弱，应从 watch_only 降到 no_action。",
+      "gaps": "等待更细颗粒度披露和反证验证。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 action_state、目标强度、风险封顶或 action_state。",
+      "decision_use": "用于判断 action_state 是否足以支撑老铺黄金的观察状态。",
+      "support_evidence": [
+        "SRC-LPG-2025H1-RESULTS 支持或界定该问题。",
+        "SRC-LPG-CINDA-20250827 支持或界定该问题。"
+      ],
+      "refute_evidence": [
+        "同店、毛利、现金流、存货、估值或海外复制数据与当前结论相反时，应降低强度。"
+      ],
+      "target_implications": "影响 6181.HK 的分数、门槛、升级/降级触发器和最终 action_state。",
+      "score_component": "action_state",
+      "minimum_evidence_gate": "至少一项冻结日前可见的官方披露或研究数据，并保留边界/反证来源。",
+      "refuting_source_plan": [
+        "检查金价波动、消费疲弱、产品推新失败、现金流恶化和估值透支证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-LPG-2025H1-RESULTS",
+          "source_visible_at": "2025-08-20",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2025-08-20",
+            "proof_url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0820/2025082000247.pdf"
+          },
+          "expected_fields": [
+            "target",
+            "thesis_node",
+            "score_driver",
+            "action_state",
+            "upgrade_trigger",
+            "downgrade_trigger"
+          ],
+          "preferred_parser_skill": "target-recommendation-analysis"
+        },
+        {
+          "source_id": "SRC-LPG-CINDA-20250827",
+          "source_visible_at": "2025-08-27",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "availability_proof": {
+            "proof_type": "publisher_or_report_date",
+            "proof_value": "2025-08-27",
+            "proof_url": "https://pdf.dfcfw.com/pdf/H3_AP202508271735559502_1.pdf"
+          },
+          "expected_fields": [
+            "target",
+            "thesis_node",
+            "score_driver",
+            "action_state",
+            "upgrade_trigger",
+            "downgrade_trigger"
+          ],
+          "preferred_parser_skill": "target-recommendation-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "target_recommendation",
+        "selected_skill": "target-recommendation-analysis",
+        "concrete_materials": [
+          "SRC-LPG-2025H1-RESULTS",
+          "SRC-LPG-CINDA-20250827"
+        ],
+        "extraction_schema": [
+          "target",
+          "thesis_node",
+          "score_driver",
+          "action_state",
+          "upgrade_trigger",
+          "downgrade_trigger"
+        ],
+        "source_extraction_ids": [
+          "se-q4-2-2-src-lpg-2025h1-results",
+          "se-q4-2-2-src-lpg-cinda-20250827"
+        ],
+        "leaf_source_review_ids": [
+          "review-q4-2-2-src-lpg-2025h1-results",
+          "review-q4-2-2-src-lpg-cinda-20250827"
+        ],
+        "skill_output_status": "deepseek_mcp_completed_gpt_verified",
+        "fallback_used": false,
+        "gpt_verification_status": "verified_after_deepseek_source_parser"
+      },
+      "fact": "2025H1 已出现存货、短借和经营现金流压力；券商风险提示包括金价和消费需求。",
+      "inference": "这些风险一旦从可能性变成数据事实，品牌稀缺性也无法支撑高赔率。",
+      "judgment": "把经营现金流、存货周转、毛利和同店增速作为硬降级条件。",
+      "gap": "需要更细的同店、常态线上、海外店效、毛利桥、存货周转和现金流数据。",
+      "trigger": "若后续披露显示增长无法转成现金流、品牌溢价被金价吞噬、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-LPG-2025H1-RESULTS",
+        "SRC-LPG-CINDA-20250827"
+      ]
+    }
+  ]
+}

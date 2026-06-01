@@ -1,0 +1,8 @@
+{
+  "project_id": "xiaomi_timeslice_20260228",
+  "title": "小米集团单公司投资机会回测研究",
+  "mode": "historical_backtest",
+  "as_of_date": "2026-02-28",
+  "report_date": "2026-05-30",
+  "report_path": "professional_report.html"
+}

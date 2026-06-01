@@ -20,6 +20,15 @@ Before using this skill, GPT must define:
 
 ## DeepSeek Prompt Contract
 
+Call DeepSeek with a large input context and output budget for formal investment source parsing:
+
+- Treat input context separately from `max_tokens`. When the MCP server/model supports very large context, keep a complete filing, transcript, report, or coherent source bundle together if source integrity matters, up to the server-supported context limit.
+- Use `max_tokens` 32000-64000 for long-source extraction.
+- Use at least `max_tokens` 24000 for multi-source L3 first drafts.
+- Use at least `max_tokens` 12000 for ordinary single-source parsing.
+- Keep each call narrow even with the larger budget: prefer one complete source or coherent source bundle for one L3 question and one extraction schema.
+- If output is truncated, malformed, empty, or stops mid-field, set `parser_status` to `incomplete`; do not use it for conclusions. Retry with a smaller source chunk or fall back to GPT-verified direct parsing.
+
 Ask DeepSeek to return:
 
 - `l3_question`
@@ -37,6 +46,42 @@ Ask DeepSeek to return:
 - `trigger`
 - `follow_up_data`
 - `source_links`
+- `schema_fields`: a map for every requested extraction-schema field, each with value, source anchor when available, uncertainty/status, and evidence/review trace placeholders.
+
+## Persisted Artifacts
+
+Write every successful parser result to `source_extractions.jsonl` as one JSON object:
+
+- `extraction_id`
+- `l3_question_id`
+- `source_id`
+- `source_title`
+- `source_bucket`
+- `parser`: `deepseek_delegate` or another parser name
+- `parser_status`: `ok`, `empty_response`, `fallback_gpt_direct_parse`, or `discarded`
+- `key_facts`
+- `schema_fields`
+- `inference`
+- `support_refute_or_lead`
+- `uncertainties`
+- `follow_up_data`
+- `created_at`
+
+Then write GPT's review to `leaf_source_reviews.jsonl`:
+
+- `review_id`
+- `extraction_id`
+- `l3_question_id`
+- `source_id`
+- `gpt_verification_status`
+- `adopted_facts`
+- `corrections`
+- `rejected_claims`
+- `final_bucket`
+- `final_support_refute_or_lead`
+- `allowed_to_strengthen_conclusion`
+
+Final L3 answers may only use adopted facts from reviewed extractions or GPT-recorded direct parses. A successful parser result for refreshed canonical reports must fill the L3 extraction schema in `schema_fields`; generic summaries without schema-field mapping are incomplete until GPT maps and verifies them.
 
 ## GPT Verification Checklist
 

@@ -1,0 +1,1749 @@
+{
+  "as_of_date": "2026-02-28",
+  "nodes": [
+    {
+      "id": "Q1",
+      "level": 1,
+      "parent_id": null,
+      "question": "小米的增长驱动是否真实且可持续？",
+      "conclusion": "增长驱动真实，但主要来自 EV 与生态扩张；手机 x AIoT 基盘更像稳定器而不是高弹性来源。",
+      "gaps": "需要更多分部数据、估值快照和现金流验证。",
+      "next_question_ids": [
+        "Q1.1",
+        "Q1.2"
+      ],
+      "materiality": "改变父节点结论、标的强度或风险控制。",
+      "source_plan": "使用 cutoff 前官方披露、统计数据和公司 IR，并保留反证。",
+      "skill_dispatch": "research-source-planner -> financial-statement-analysis / valuation-analysis -> GPT verification",
+      "fact": "增长驱动真实，但主要来自 EV 与生态扩张；手机 x AIoT 基盘更像稳定器而不是高弹性来源。",
+      "inference": "增长驱动真实，但主要来自 EV 与生态扩张；手机 x AIoT 基盘更像稳定器而不是高弹性来源。",
+      "judgment": "增长驱动真实，但主要来自 EV 与生态扩张；手机 x AIoT 基盘更像稳定器而不是高弹性来源。",
+      "gap": "需要更多分部数据、估值快照和现金流验证。",
+      "trigger": "需要更多分部数据、估值快照和现金流验证。",
+      "source_links": []
+    },
+    {
+      "id": "Q2",
+      "level": 1,
+      "parent_id": null,
+      "question": "小米的价值捕获瓶颈在哪里？",
+      "conclusion": "价值捕获来自品牌、渠道、用户生态、车家互联和局部技术自研，但不可替代性还没有达到平台级垄断。",
+      "gaps": "需要更多分部数据、估值快照和现金流验证。",
+      "next_question_ids": [
+        "Q2.1",
+        "Q2.2"
+      ],
+      "materiality": "改变父节点结论、标的强度或风险控制。",
+      "source_plan": "使用 cutoff 前官方披露、统计数据和公司 IR，并保留反证。",
+      "skill_dispatch": "research-source-planner -> financial-statement-analysis / valuation-analysis -> GPT verification",
+      "fact": "价值捕获来自品牌、渠道、用户生态、车家互联和局部技术自研，但不可替代性还没有达到平台级垄断。",
+      "inference": "价值捕获来自品牌、渠道、用户生态、车家互联和局部技术自研，但不可替代性还没有达到平台级垄断。",
+      "judgment": "价值捕获来自品牌、渠道、用户生态、车家互联和局部技术自研，但不可替代性还没有达到平台级垄断。",
+      "gap": "需要更多分部数据、估值快照和现金流验证。",
+      "trigger": "需要更多分部数据、估值快照和现金流验证。",
+      "source_links": []
+    },
+    {
+      "id": "Q3",
+      "level": 1,
+      "parent_id": null,
+      "question": "哪些反证会压低胜率和赔率？",
+      "conclusion": "估值预期、EV 竞争、补贴退坡、研发/销售费用和手机毛利压力，都足以限制行动分数。",
+      "gaps": "需要更多分部数据、估值快照和现金流验证。",
+      "next_question_ids": [
+        "Q3.1",
+        "Q3.2"
+      ],
+      "materiality": "改变父节点结论、标的强度或风险控制。",
+      "source_plan": "使用 cutoff 前官方披露、统计数据和公司 IR，并保留反证。",
+      "skill_dispatch": "research-source-planner -> financial-statement-analysis / valuation-analysis -> GPT verification",
+      "fact": "估值预期、EV 竞争、补贴退坡、研发/销售费用和手机毛利压力，都足以限制行动分数。",
+      "inference": "估值预期、EV 竞争、补贴退坡、研发/销售费用和手机毛利压力，都足以限制行动分数。",
+      "judgment": "估值预期、EV 竞争、补贴退坡、研发/销售费用和手机毛利压力，都足以限制行动分数。",
+      "gap": "需要更多分部数据、估值快照和现金流验证。",
+      "trigger": "需要更多分部数据、估值快照和现金流验证。",
+      "source_links": []
+    },
+    {
+      "id": "Q4",
+      "level": 1,
+      "parent_id": null,
+      "question": "冻结时点如何形成小米观察结论？",
+      "conclusion": "默认不行动；除非 EV 利润、现金流和市场未充分定价同时过门槛，否则只保留观察。",
+      "gaps": "需要更多分部数据、估值快照和现金流验证。",
+      "next_question_ids": [
+        "Q4.1",
+        "Q4.2"
+      ],
+      "materiality": "改变父节点结论、标的强度或风险控制。",
+      "source_plan": "使用 cutoff 前官方披露、统计数据和公司 IR，并保留反证。",
+      "skill_dispatch": "research-source-planner -> financial-statement-analysis / valuation-analysis -> GPT verification",
+      "fact": "默认不行动；除非 EV 利润、现金流和市场未充分定价同时过门槛，否则只保留观察。",
+      "inference": "默认不行动；除非 EV 利润、现金流和市场未充分定价同时过门槛，否则只保留观察。",
+      "judgment": "默认不行动；除非 EV 利润、现金流和市场未充分定价同时过门槛，否则只保留观察。",
+      "gap": "需要更多分部数据、估值快照和现金流验证。",
+      "trigger": "需要更多分部数据、估值快照和现金流验证。",
+      "source_links": []
+    },
+    {
+      "id": "Q1.1",
+      "level": 2,
+      "parent_id": "Q1",
+      "question": "核心增长现实",
+      "conclusion": "先确认 EV 与手机 x AIoT 是否共同支撑增长。",
+      "gaps": "需要更多同口径指标。",
+      "next_question_ids": [
+        "Q1.1.1",
+        "Q1.1.2"
+      ],
+      "materiality": "改变父节点结论、标的强度或风险控制。",
+      "source_plan": "使用 cutoff 前官方披露、统计数据和公司 IR，并保留反证。",
+      "skill_dispatch": "research-source-planner -> financial-statement-analysis / valuation-analysis -> GPT verification",
+      "fact": "先确认 EV 与手机 x AIoT 是否共同支撑增长。",
+      "inference": "先确认 EV 与手机 x AIoT 是否共同支撑增长。",
+      "judgment": "先确认 EV 与手机 x AIoT 是否共同支撑增长。",
+      "gap": "需要更多同口径指标。",
+      "trigger": "需要更多同口径指标。",
+      "source_links": []
+    },
+    {
+      "id": "Q1.2",
+      "level": 2,
+      "parent_id": "Q1",
+      "question": "规模化与生态迁移",
+      "conclusion": "再判断 EV 和 Human x Car x Home 是否在财务上被验证。",
+      "gaps": "需要更多同口径指标。",
+      "next_question_ids": [
+        "Q1.2.1",
+        "Q1.2.2"
+      ],
+      "materiality": "改变父节点结论、标的强度或风险控制。",
+      "source_plan": "使用 cutoff 前官方披露、统计数据和公司 IR，并保留反证。",
+      "skill_dispatch": "research-source-planner -> financial-statement-analysis / valuation-analysis -> GPT verification",
+      "fact": "再判断 EV 和 Human x Car x Home 是否在财务上被验证。",
+      "inference": "再判断 EV 和 Human x Car x Home 是否在财务上被验证。",
+      "judgment": "再判断 EV 和 Human x Car x Home 是否在财务上被验证。",
+      "gap": "需要更多同口径指标。",
+      "trigger": "需要更多同口径指标。",
+      "source_links": []
+    },
+    {
+      "id": "Q2.1",
+      "level": 2,
+      "parent_id": "Q2",
+      "question": "品牌、渠道与技术壁垒",
+      "conclusion": "判断小米的稀缺性来自哪里。",
+      "gaps": "需要更多同口径指标。",
+      "next_question_ids": [
+        "Q2.1.1",
+        "Q2.1.2"
+      ],
+      "materiality": "改变父节点结论、标的强度或风险控制。",
+      "source_plan": "使用 cutoff 前官方披露、统计数据和公司 IR，并保留反证。",
+      "skill_dispatch": "research-source-planner -> financial-statement-analysis / valuation-analysis -> GPT verification",
+      "fact": "判断小米的稀缺性来自哪里。",
+      "inference": "判断小米的稀缺性来自哪里。",
+      "judgment": "判断小米的稀缺性来自哪里。",
+      "gap": "需要更多同口径指标。",
+      "trigger": "需要更多同口径指标。",
+      "source_links": []
+    },
+    {
+      "id": "Q2.2",
+      "level": 2,
+      "parent_id": "Q2",
+      "question": "利润池与缓冲层",
+      "conclusion": "判断 EV、IoT、互联网服务是否能共同提供价值捕获。",
+      "gaps": "需要更多同口径指标。",
+      "next_question_ids": [
+        "Q2.2.1",
+        "Q2.2.2"
+      ],
+      "materiality": "改变父节点结论、标的强度或风险控制。",
+      "source_plan": "使用 cutoff 前官方披露、统计数据和公司 IR，并保留反证。",
+      "skill_dispatch": "research-source-planner -> financial-statement-analysis / valuation-analysis -> GPT verification",
+      "fact": "判断 EV、IoT、互联网服务是否能共同提供价值捕获。",
+      "inference": "判断 EV、IoT、互联网服务是否能共同提供价值捕获。",
+      "judgment": "判断 EV、IoT、互联网服务是否能共同提供价值捕获。",
+      "gap": "需要更多同口径指标。",
+      "trigger": "需要更多同口径指标。",
+      "source_links": []
+    },
+    {
+      "id": "Q3.1",
+      "level": 2,
+      "parent_id": "Q3",
+      "question": "估值与竞争反证",
+      "conclusion": "判断好公司是否已经被充分定价。",
+      "gaps": "需要更多同口径指标。",
+      "next_question_ids": [
+        "Q3.1.1",
+        "Q3.1.2"
+      ],
+      "materiality": "改变父节点结论、标的强度或风险控制。",
+      "source_plan": "使用 cutoff 前官方披露、统计数据和公司 IR，并保留反证。",
+      "skill_dispatch": "research-source-planner -> financial-statement-analysis / valuation-analysis -> GPT verification",
+      "fact": "判断好公司是否已经被充分定价。",
+      "inference": "判断好公司是否已经被充分定价。",
+      "judgment": "判断好公司是否已经被充分定价。",
+      "gap": "需要更多同口径指标。",
+      "trigger": "需要更多同口径指标。",
+      "source_links": []
+    },
+    {
+      "id": "Q3.2",
+      "level": 2,
+      "parent_id": "Q3",
+      "question": "财务质量与周期反证",
+      "conclusion": "判断增长质量和下行控制。",
+      "gaps": "需要更多同口径指标。",
+      "next_question_ids": [
+        "Q3.2.1",
+        "Q3.2.2"
+      ],
+      "materiality": "改变父节点结论、标的强度或风险控制。",
+      "source_plan": "使用 cutoff 前官方披露、统计数据和公司 IR，并保留反证。",
+      "skill_dispatch": "research-source-planner -> financial-statement-analysis / valuation-analysis -> GPT verification",
+      "fact": "判断增长质量和下行控制。",
+      "inference": "判断增长质量和下行控制。",
+      "judgment": "判断增长质量和下行控制。",
+      "gap": "需要更多同口径指标。",
+      "trigger": "需要更多同口径指标。",
+      "source_links": []
+    },
+    {
+      "id": "Q4.1",
+      "level": 2,
+      "parent_id": "Q4",
+      "question": "目标观察状态",
+      "conclusion": "形成单一证券的冻结观察状态。",
+      "gaps": "需要更多同口径指标。",
+      "next_question_ids": [
+        "Q4.1.1",
+        "Q4.1.2"
+      ],
+      "materiality": "改变父节点结论、标的强度或风险控制。",
+      "source_plan": "使用 cutoff 前官方披露、统计数据和公司 IR，并保留反证。",
+      "skill_dispatch": "research-source-planner -> financial-statement-analysis / valuation-analysis -> GPT verification",
+      "fact": "形成单一证券的冻结观察状态。",
+      "inference": "形成单一证券的冻结观察状态。",
+      "judgment": "形成单一证券的冻结观察状态。",
+      "gap": "需要更多同口径指标。",
+      "trigger": "需要更多同口径指标。",
+      "source_links": []
+    },
+    {
+      "id": "Q4.2",
+      "level": 2,
+      "parent_id": "Q4",
+      "question": "升级/降级触发器",
+      "conclusion": "保留后续复盘信号。",
+      "gaps": "需要更多同口径指标。",
+      "next_question_ids": [
+        "Q4.2.1",
+        "Q4.2.2"
+      ],
+      "materiality": "改变父节点结论、标的强度或风险控制。",
+      "source_plan": "使用 cutoff 前官方披露、统计数据和公司 IR，并保留反证。",
+      "skill_dispatch": "research-source-planner -> financial-statement-analysis / valuation-analysis -> GPT verification",
+      "fact": "保留后续复盘信号。",
+      "inference": "保留后续复盘信号。",
+      "judgment": "保留后续复盘信号。",
+      "gap": "需要更多同口径指标。",
+      "trigger": "需要更多同口径指标。",
+      "source_links": []
+    },
+    {
+      "id": "Q1.1.1",
+      "level": 3,
+      "parent_id": "Q1.1",
+      "question": "EV 需求是否真实且可持续？",
+      "conclusion": "EV 需求真实，H1 交付 157,171、Q3 交付 108,796、2026 年 1 月交付超过 39,000；但春节、补贴退坡和前置需求显示节奏仍需检验。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 future_space、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 future_space 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-XIAOMI-H1-2025 支持或界定该问题的事实基础。",
+        "SRC-XIAOMI-Q3-2025 支持或界定该问题的事实基础。",
+        "SRC-GASGOO-XIAOMI-JAN-2026 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "future_space",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-XIAOMI-H1-2025",
+          "source_visible_at": "2025-08-19",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "leaf-research-deepseek",
+          "expected_fields": [
+            "key_fact",
+            "number",
+            "date",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ]
+        },
+        {
+          "source_id": "SRC-XIAOMI-Q3-2025",
+          "source_visible_at": "2025-11-18",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "leaf-research-deepseek",
+          "expected_fields": [
+            "key_fact",
+            "number",
+            "date",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ]
+        },
+        {
+          "source_id": "SRC-GASGOO-XIAOMI-JAN-2026",
+          "source_visible_at": "2026-02-02",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "leaf-research-deepseek",
+          "expected_fields": [
+            "key_fact",
+            "number",
+            "date",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "source_extraction",
+        "selected_skill": "leaf-research-deepseek",
+        "concrete_materials": [
+          "SRC-XIAOMI-H1-2025",
+          "SRC-XIAOMI-Q3-2025",
+          "SRC-GASGOO-XIAOMI-JAN-2026"
+        ],
+        "extraction_schema": [
+          "key_fact",
+          "number",
+          "date",
+          "support_or_refute",
+          "uncertainty",
+          "follow_up_data"
+        ],
+        "source_extraction_ids": [
+          "se-q1-1-1-src-xiaomi-h1-2025",
+          "se-q1-1-1-src-xiaomi-q3-2025",
+          "se-q1-1-1-src-gasgoo-xiaomi-jan-2026"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q1-1-1-src-xiaomi-h1-2025",
+          "review-se-q1-1-1-src-xiaomi-q3-2025",
+          "review-se-q1-1-1-src-gasgoo-xiaomi-jan-2026"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-XIAOMI-H1-2025: H1 2025 revenue RMB227.2494bn +38.2%; adjusted net profit RMB21.5063bn +69.8%; smartphone x AIoT revenue RMB187.4bn; smart EV/AI/new initiatives revenue RMB39.8bn; smart EV deliveries 157,171; connected IoT devices 989.1m; global MAU 731.2m; R&D expense RMB14.5bn. SRC-XIAOMI-Q3-2025: Q3 revenue RMB113.1bn +22.3%; adjusted net profit RMB11.3bn +80.9%; smart EV/AI/new initiatives revenue RMB29.0bn +199.2%; smart EV deliveries 108,796 +173.4%; ASP RMB260,053; EV/AI/new initiatives gross margin 25.5%; smartphone gross margin 11.1%. SRC-GASGOO-XIAOMI-JAN-2026: January 2026 Xiaomi EV deliveries exceeded 39,000 units, +70.33% YoY and -22.33% MoM; YU7 was the primary driver; 2026 delivery target 550,000; Beijing plant capacity above 40,000/month; sales stores 484 by end January.",
+      "inference": "基于上述 cutoff 前材料对“EV 需求是否真实且可持续？”的推理：EV 需求真实，H1 交付 157,171、Q3 交付 108,796、2026 年 1 月交付超过 39,000；但春节、补贴退坡和前置需求显示节奏仍需检验。",
+      "judgment": "决策影响：该叶子进入 future_space，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：EV 需求真实，H1 交付 157,171、Q3 交付 108,796、2026 年 1 月交付超过 39,000；但春节、补贴退坡和前置需求显示节奏仍需检验。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-XIAOMI-H1-2025",
+        "SRC-XIAOMI-Q3-2025",
+        "SRC-GASGOO-XIAOMI-JAN-2026"
+      ]
+    },
+    {
+      "id": "Q1.1.2",
+      "level": 3,
+      "parent_id": "Q1.1",
+      "question": "手机 x AIoT 基盘是否稳住？",
+      "conclusion": "手机 x AIoT 基盘稳住但弹性有限：H1 收入 RMB187.4bn，Q3 手机出货仅小幅增长，手机毛利率仍低于 IoT 和互联网服务。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 future_space、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 future_space 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-XIAOMI-H1-2025 支持或界定该问题的事实基础。",
+        "SRC-XIAOMI-Q3-2025 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "future_space",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-XIAOMI-H1-2025",
+          "source_visible_at": "2025-08-19",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "leaf-research-deepseek",
+          "expected_fields": [
+            "key_fact",
+            "number",
+            "date",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ]
+        },
+        {
+          "source_id": "SRC-XIAOMI-Q3-2025",
+          "source_visible_at": "2025-11-18",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "leaf-research-deepseek",
+          "expected_fields": [
+            "key_fact",
+            "number",
+            "date",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "source_extraction",
+        "selected_skill": "leaf-research-deepseek",
+        "concrete_materials": [
+          "SRC-XIAOMI-H1-2025",
+          "SRC-XIAOMI-Q3-2025"
+        ],
+        "extraction_schema": [
+          "key_fact",
+          "number",
+          "date",
+          "support_or_refute",
+          "uncertainty",
+          "follow_up_data"
+        ],
+        "source_extraction_ids": [
+          "se-q1-1-2-src-xiaomi-h1-2025",
+          "se-q1-1-2-src-xiaomi-q3-2025"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q1-1-2-src-xiaomi-h1-2025",
+          "review-se-q1-1-2-src-xiaomi-q3-2025"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-XIAOMI-H1-2025: H1 2025 revenue RMB227.2494bn +38.2%; adjusted net profit RMB21.5063bn +69.8%; smartphone x AIoT revenue RMB187.4bn; smart EV/AI/new initiatives revenue RMB39.8bn; smart EV deliveries 157,171; connected IoT devices 989.1m; global MAU 731.2m; R&D expense RMB14.5bn. SRC-XIAOMI-Q3-2025: Q3 revenue RMB113.1bn +22.3%; adjusted net profit RMB11.3bn +80.9%; smart EV/AI/new initiatives revenue RMB29.0bn +199.2%; smart EV deliveries 108,796 +173.4%; ASP RMB260,053; EV/AI/new initiatives gross margin 25.5%; smartphone gross margin 11.1%.",
+      "inference": "基于上述 cutoff 前材料对“手机 x AIoT 基盘是否稳住？”的推理：手机 x AIoT 基盘稳住但弹性有限：H1 收入 RMB187.4bn，Q3 手机出货仅小幅增长，手机毛利率仍低于 IoT 和互联网服务。",
+      "judgment": "决策影响：该叶子进入 future_space，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：手机 x AIoT 基盘稳住但弹性有限：H1 收入 RMB187.4bn，Q3 手机出货仅小幅增长，手机毛利率仍低于 IoT 和互联网服务。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-XIAOMI-H1-2025",
+        "SRC-XIAOMI-Q3-2025"
+      ]
+    },
+    {
+      "id": "Q1.2.1",
+      "level": 3,
+      "parent_id": "Q1.2",
+      "question": "EV 是否已从烧钱期进入规模化验证？",
+      "conclusion": "EV 规模化验证正在发生：Q3 EV/AI/new initiatives 毛利率 25.5%，交付和 ASP 同时提升；但费用投入大，不能只看毛利率。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 future_space、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 future_space 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-XIAOMI-Q3-2025 支持或界定该问题的事实基础。",
+        "SRC-GASGOO-XIAOMI-JAN-2026 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "future_space",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-XIAOMI-Q3-2025",
+          "source_visible_at": "2025-11-18",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "leaf-research-deepseek",
+          "expected_fields": [
+            "key_fact",
+            "number",
+            "date",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ]
+        },
+        {
+          "source_id": "SRC-GASGOO-XIAOMI-JAN-2026",
+          "source_visible_at": "2026-02-02",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "leaf-research-deepseek",
+          "expected_fields": [
+            "key_fact",
+            "number",
+            "date",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "source_extraction",
+        "selected_skill": "leaf-research-deepseek",
+        "concrete_materials": [
+          "SRC-XIAOMI-Q3-2025",
+          "SRC-GASGOO-XIAOMI-JAN-2026"
+        ],
+        "extraction_schema": [
+          "key_fact",
+          "number",
+          "date",
+          "support_or_refute",
+          "uncertainty",
+          "follow_up_data"
+        ],
+        "source_extraction_ids": [
+          "se-q1-2-1-src-xiaomi-q3-2025",
+          "se-q1-2-1-src-gasgoo-xiaomi-jan-2026"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q1-2-1-src-xiaomi-q3-2025",
+          "review-se-q1-2-1-src-gasgoo-xiaomi-jan-2026"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-XIAOMI-Q3-2025: Q3 revenue RMB113.1bn +22.3%; adjusted net profit RMB11.3bn +80.9%; smart EV/AI/new initiatives revenue RMB29.0bn +199.2%; smart EV deliveries 108,796 +173.4%; ASP RMB260,053; EV/AI/new initiatives gross margin 25.5%; smartphone gross margin 11.1%. SRC-GASGOO-XIAOMI-JAN-2026: January 2026 Xiaomi EV deliveries exceeded 39,000 units, +70.33% YoY and -22.33% MoM; YU7 was the primary driver; 2026 delivery target 550,000; Beijing plant capacity above 40,000/month; sales stores 484 by end January.",
+      "inference": "基于上述 cutoff 前材料对“EV 是否已从烧钱期进入规模化验证？”的推理：EV 规模化验证正在发生：Q3 EV/AI/new initiatives 毛利率 25.5%，交付和 ASP 同时提升；但费用投入大，不能只看毛利率。",
+      "judgment": "决策影响：该叶子进入 future_space，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：EV 规模化验证正在发生：Q3 EV/AI/new initiatives 毛利率 25.5%，交付和 ASP 同时提升；但费用投入大，不能只看毛利率。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-XIAOMI-Q3-2025",
+        "SRC-GASGOO-XIAOMI-JAN-2026"
+      ]
+    },
+    {
+      "id": "Q1.2.2",
+      "level": 3,
+      "parent_id": "Q1.2",
+      "question": "Human x Car x Home 是否能带来生态入口？",
+      "conclusion": "用户、IoT 设备和汽车交付共同扩大入口，但交叉销售和软件化收入尚未被充分量化，仍是 lead 而非强证据。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 future_space、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 future_space 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-XIAOMI-H1-2025 支持或界定该问题的事实基础。",
+        "SRC-XIAOMI-Q3-2025 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "future_space",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-XIAOMI-H1-2025",
+          "source_visible_at": "2025-08-19",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "leaf-research-deepseek",
+          "expected_fields": [
+            "key_fact",
+            "number",
+            "date",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ]
+        },
+        {
+          "source_id": "SRC-XIAOMI-Q3-2025",
+          "source_visible_at": "2025-11-18",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "leaf-research-deepseek",
+          "expected_fields": [
+            "key_fact",
+            "number",
+            "date",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "source_extraction",
+        "selected_skill": "leaf-research-deepseek",
+        "concrete_materials": [
+          "SRC-XIAOMI-H1-2025",
+          "SRC-XIAOMI-Q3-2025"
+        ],
+        "extraction_schema": [
+          "key_fact",
+          "number",
+          "date",
+          "support_or_refute",
+          "uncertainty",
+          "follow_up_data"
+        ],
+        "source_extraction_ids": [
+          "se-q1-2-2-src-xiaomi-h1-2025",
+          "se-q1-2-2-src-xiaomi-q3-2025"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q1-2-2-src-xiaomi-h1-2025",
+          "review-se-q1-2-2-src-xiaomi-q3-2025"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-XIAOMI-H1-2025: H1 2025 revenue RMB227.2494bn +38.2%; adjusted net profit RMB21.5063bn +69.8%; smartphone x AIoT revenue RMB187.4bn; smart EV/AI/new initiatives revenue RMB39.8bn; smart EV deliveries 157,171; connected IoT devices 989.1m; global MAU 731.2m; R&D expense RMB14.5bn. SRC-XIAOMI-Q3-2025: Q3 revenue RMB113.1bn +22.3%; adjusted net profit RMB11.3bn +80.9%; smart EV/AI/new initiatives revenue RMB29.0bn +199.2%; smart EV deliveries 108,796 +173.4%; ASP RMB260,053; EV/AI/new initiatives gross margin 25.5%; smartphone gross margin 11.1%.",
+      "inference": "基于上述 cutoff 前材料对“Human x Car x Home 是否能带来生态入口？”的推理：用户、IoT 设备和汽车交付共同扩大入口，但交叉销售和软件化收入尚未被充分量化，仍是 lead 而非强证据。",
+      "judgment": "决策影响：该叶子进入 future_space，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：用户、IoT 设备和汽车交付共同扩大入口，但交叉销售和软件化收入尚未被充分量化，仍是 lead 而非强证据。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-XIAOMI-H1-2025",
+        "SRC-XIAOMI-Q3-2025"
+      ]
+    },
+    {
+      "id": "Q2.1.1",
+      "level": 3,
+      "parent_id": "Q2.1",
+      "question": "小米的不可替代性来自品牌、渠道、生态还是制造？",
+      "conclusion": "小米的稀缺性是复合型：品牌性价比、线下门店、手机用户、IoT 设备和 EV 产能共同作用；但每一项都存在可替代竞争。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 chokepoint_strength、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 chokepoint_strength 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-XIAOMI-H1-2025 支持或界定该问题的事实基础。",
+        "SRC-GASGOO-XIAOMI-JAN-2026 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "chokepoint_strength",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-XIAOMI-H1-2025",
+          "source_visible_at": "2025-08-19",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "leaf-research-deepseek",
+          "expected_fields": [
+            "key_fact",
+            "number",
+            "date",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ]
+        },
+        {
+          "source_id": "SRC-GASGOO-XIAOMI-JAN-2026",
+          "source_visible_at": "2026-02-02",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "leaf-research-deepseek",
+          "expected_fields": [
+            "key_fact",
+            "number",
+            "date",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "source_extraction",
+        "selected_skill": "leaf-research-deepseek",
+        "concrete_materials": [
+          "SRC-XIAOMI-H1-2025",
+          "SRC-GASGOO-XIAOMI-JAN-2026"
+        ],
+        "extraction_schema": [
+          "key_fact",
+          "number",
+          "date",
+          "support_or_refute",
+          "uncertainty",
+          "follow_up_data"
+        ],
+        "source_extraction_ids": [
+          "se-q2-1-1-src-xiaomi-h1-2025",
+          "se-q2-1-1-src-gasgoo-xiaomi-jan-2026"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q2-1-1-src-xiaomi-h1-2025",
+          "review-se-q2-1-1-src-gasgoo-xiaomi-jan-2026"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-XIAOMI-H1-2025: H1 2025 revenue RMB227.2494bn +38.2%; adjusted net profit RMB21.5063bn +69.8%; smartphone x AIoT revenue RMB187.4bn; smart EV/AI/new initiatives revenue RMB39.8bn; smart EV deliveries 157,171; connected IoT devices 989.1m; global MAU 731.2m; R&D expense RMB14.5bn. SRC-GASGOO-XIAOMI-JAN-2026: January 2026 Xiaomi EV deliveries exceeded 39,000 units, +70.33% YoY and -22.33% MoM; YU7 was the primary driver; 2026 delivery target 550,000; Beijing plant capacity above 40,000/month; sales stores 484 by end January.",
+      "inference": "基于上述 cutoff 前材料对“小米的不可替代性来自品牌、渠道、生态还是制造？”的推理：小米的稀缺性是复合型：品牌性价比、线下门店、手机用户、IoT 设备和 EV 产能共同作用；但每一项都存在可替代竞争。",
+      "judgment": "决策影响：该叶子进入 chokepoint_strength，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：小米的稀缺性是复合型：品牌性价比、线下门店、手机用户、IoT 设备和 EV 产能共同作用；但每一项都存在可替代竞争。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-XIAOMI-H1-2025",
+        "SRC-GASGOO-XIAOMI-JAN-2026"
+      ]
+    },
+    {
+      "id": "Q2.1.2",
+      "level": 3,
+      "parent_id": "Q2.1",
+      "question": "自研芯片与 AI 能否构成长期技术壁垒？",
+      "conclusion": "XRING O1、MiMo 与 AI 研发说明技术投入真实，但截至冻结时点仍缺少独立收入、成本节省或用户留存贡献，不能高估壁垒。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 chokepoint_strength、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 chokepoint_strength 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-XIAOMI-H1-2025 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "chokepoint_strength",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-XIAOMI-H1-2025",
+          "source_visible_at": "2025-08-19",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "leaf-research-deepseek",
+          "expected_fields": [
+            "key_fact",
+            "number",
+            "date",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "source_extraction",
+        "selected_skill": "leaf-research-deepseek",
+        "concrete_materials": [
+          "SRC-XIAOMI-H1-2025"
+        ],
+        "extraction_schema": [
+          "key_fact",
+          "number",
+          "date",
+          "support_or_refute",
+          "uncertainty",
+          "follow_up_data"
+        ],
+        "source_extraction_ids": [
+          "se-q2-1-2-src-xiaomi-h1-2025"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q2-1-2-src-xiaomi-h1-2025"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-XIAOMI-H1-2025: H1 2025 revenue RMB227.2494bn +38.2%; adjusted net profit RMB21.5063bn +69.8%; smartphone x AIoT revenue RMB187.4bn; smart EV/AI/new initiatives revenue RMB39.8bn; smart EV deliveries 157,171; connected IoT devices 989.1m; global MAU 731.2m; R&D expense RMB14.5bn.",
+      "inference": "基于上述 cutoff 前材料对“自研芯片与 AI 能否构成长期技术壁垒？”的推理：XRING O1、MiMo 与 AI 研发说明技术投入真实，但截至冻结时点仍缺少独立收入、成本节省或用户留存贡献，不能高估壁垒。",
+      "judgment": "决策影响：该叶子进入 chokepoint_strength，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：XRING O1、MiMo 与 AI 研发说明技术投入真实，但截至冻结时点仍缺少独立收入、成本节省或用户留存贡献，不能高估壁垒。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-XIAOMI-H1-2025"
+      ]
+    },
+    {
+      "id": "Q2.2.1",
+      "level": 3,
+      "parent_id": "Q2.2",
+      "question": "EV 价值捕获是否强于传统手机硬件？",
+      "conclusion": "EV 毛利率和 ASP 好于传统手机硬件，且交付增长快；但汽车行业资本开支、竞争和售后网络会消耗利润。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 chokepoint_strength、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 chokepoint_strength 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-XIAOMI-Q3-2025 支持或界定该问题的事实基础。",
+        "SRC-GASGOO-XIAOMI-JAN-2026 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "chokepoint_strength",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-XIAOMI-Q3-2025",
+          "source_visible_at": "2025-11-18",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "leaf-research-deepseek",
+          "expected_fields": [
+            "key_fact",
+            "number",
+            "date",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ]
+        },
+        {
+          "source_id": "SRC-GASGOO-XIAOMI-JAN-2026",
+          "source_visible_at": "2026-02-02",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "leaf-research-deepseek",
+          "expected_fields": [
+            "key_fact",
+            "number",
+            "date",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "source_extraction",
+        "selected_skill": "leaf-research-deepseek",
+        "concrete_materials": [
+          "SRC-XIAOMI-Q3-2025",
+          "SRC-GASGOO-XIAOMI-JAN-2026"
+        ],
+        "extraction_schema": [
+          "key_fact",
+          "number",
+          "date",
+          "support_or_refute",
+          "uncertainty",
+          "follow_up_data"
+        ],
+        "source_extraction_ids": [
+          "se-q2-2-1-src-xiaomi-q3-2025",
+          "se-q2-2-1-src-gasgoo-xiaomi-jan-2026"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q2-2-1-src-xiaomi-q3-2025",
+          "review-se-q2-2-1-src-gasgoo-xiaomi-jan-2026"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-XIAOMI-Q3-2025: Q3 revenue RMB113.1bn +22.3%; adjusted net profit RMB11.3bn +80.9%; smart EV/AI/new initiatives revenue RMB29.0bn +199.2%; smart EV deliveries 108,796 +173.4%; ASP RMB260,053; EV/AI/new initiatives gross margin 25.5%; smartphone gross margin 11.1%. SRC-GASGOO-XIAOMI-JAN-2026: January 2026 Xiaomi EV deliveries exceeded 39,000 units, +70.33% YoY and -22.33% MoM; YU7 was the primary driver; 2026 delivery target 550,000; Beijing plant capacity above 40,000/month; sales stores 484 by end January.",
+      "inference": "基于上述 cutoff 前材料对“EV 价值捕获是否强于传统手机硬件？”的推理：EV 毛利率和 ASP 好于传统手机硬件，且交付增长快；但汽车行业资本开支、竞争和售后网络会消耗利润。",
+      "judgment": "决策影响：该叶子进入 chokepoint_strength，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：EV 毛利率和 ASP 好于传统手机硬件，且交付增长快；但汽车行业资本开支、竞争和售后网络会消耗利润。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-XIAOMI-Q3-2025",
+        "SRC-GASGOO-XIAOMI-JAN-2026"
+      ]
+    },
+    {
+      "id": "Q2.2.2",
+      "level": 3,
+      "parent_id": "Q2.2",
+      "question": "互联网服务和 IoT 是否提供高毛利缓冲？",
+      "conclusion": "互联网服务毛利率高，IoT 毛利率改善，是手机/EV 周期外的缓冲层；但规模相对手机和 EV 仍有限。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 chokepoint_strength、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 chokepoint_strength 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-XIAOMI-H1-2025 支持或界定该问题的事实基础。",
+        "SRC-XIAOMI-Q3-2025 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "chokepoint_strength",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-XIAOMI-H1-2025",
+          "source_visible_at": "2025-08-19",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "financial-statement-analysis",
+          "expected_fields": [
+            "revenue",
+            "margin",
+            "cash_flow",
+            "backlog",
+            "segment_disclosure",
+            "accounting_risk"
+          ]
+        },
+        {
+          "source_id": "SRC-XIAOMI-Q3-2025",
+          "source_visible_at": "2025-11-18",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "financial-statement-analysis",
+          "expected_fields": [
+            "revenue",
+            "margin",
+            "cash_flow",
+            "backlog",
+            "segment_disclosure",
+            "accounting_risk"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "financial_statement",
+        "selected_skill": "financial-statement-analysis",
+        "concrete_materials": [
+          "SRC-XIAOMI-H1-2025",
+          "SRC-XIAOMI-Q3-2025"
+        ],
+        "extraction_schema": [
+          "revenue",
+          "margin",
+          "cash_flow",
+          "backlog",
+          "segment_disclosure",
+          "accounting_risk"
+        ],
+        "source_extraction_ids": [
+          "se-q2-2-2-src-xiaomi-h1-2025",
+          "se-q2-2-2-src-xiaomi-q3-2025"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q2-2-2-src-xiaomi-h1-2025",
+          "review-se-q2-2-2-src-xiaomi-q3-2025"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-XIAOMI-H1-2025: H1 2025 revenue RMB227.2494bn +38.2%; adjusted net profit RMB21.5063bn +69.8%; smartphone x AIoT revenue RMB187.4bn; smart EV/AI/new initiatives revenue RMB39.8bn; smart EV deliveries 157,171; connected IoT devices 989.1m; global MAU 731.2m; R&D expense RMB14.5bn. SRC-XIAOMI-Q3-2025: Q3 revenue RMB113.1bn +22.3%; adjusted net profit RMB11.3bn +80.9%; smart EV/AI/new initiatives revenue RMB29.0bn +199.2%; smart EV deliveries 108,796 +173.4%; ASP RMB260,053; EV/AI/new initiatives gross margin 25.5%; smartphone gross margin 11.1%.",
+      "inference": "基于上述 cutoff 前材料对“互联网服务和 IoT 是否提供高毛利缓冲？”的推理：互联网服务毛利率高，IoT 毛利率改善，是手机/EV 周期外的缓冲层；但规模相对手机和 EV 仍有限。",
+      "judgment": "决策影响：该叶子进入 chokepoint_strength，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：互联网服务毛利率高，IoT 毛利率改善，是手机/EV 周期外的缓冲层；但规模相对手机和 EV 仍有限。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-XIAOMI-H1-2025",
+        "SRC-XIAOMI-Q3-2025"
+      ]
+    },
+    {
+      "id": "Q3.1.1",
+      "level": 3,
+      "parent_id": "Q3.1",
+      "question": "估值和市场预期是否已经过高？",
+      "conclusion": "冻结时点股价已包含明显 EV/AI 叙事，市场未充分定价证据不足；质量提升不自动等于高赔率。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 valuation_odds、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 valuation_odds 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-XIAOMI-Q3-2025 支持或界定该问题的事实基础。",
+        "SRC-GASGOO-XIAOMI-JAN-2026 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "valuation_odds",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-XIAOMI-Q3-2025",
+          "source_visible_at": "2025-11-18",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "valuation-analysis",
+          "expected_fields": [
+            "priced_in_expectation",
+            "multiple",
+            "base_case",
+            "bull_case",
+            "bear_case",
+            "margin_of_safety"
+          ]
+        },
+        {
+          "source_id": "SRC-GASGOO-XIAOMI-JAN-2026",
+          "source_visible_at": "2026-02-02",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "valuation-analysis",
+          "expected_fields": [
+            "priced_in_expectation",
+            "multiple",
+            "base_case",
+            "bull_case",
+            "bear_case",
+            "margin_of_safety"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "valuation",
+        "selected_skill": "valuation-analysis",
+        "concrete_materials": [
+          "SRC-XIAOMI-Q3-2025",
+          "SRC-GASGOO-XIAOMI-JAN-2026"
+        ],
+        "extraction_schema": [
+          "priced_in_expectation",
+          "multiple",
+          "base_case",
+          "bull_case",
+          "bear_case",
+          "margin_of_safety"
+        ],
+        "source_extraction_ids": [
+          "se-q3-1-1-src-xiaomi-q3-2025",
+          "se-q3-1-1-src-gasgoo-xiaomi-jan-2026"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q3-1-1-src-xiaomi-q3-2025",
+          "review-se-q3-1-1-src-gasgoo-xiaomi-jan-2026"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-XIAOMI-Q3-2025: Q3 revenue RMB113.1bn +22.3%; adjusted net profit RMB11.3bn +80.9%; smart EV/AI/new initiatives revenue RMB29.0bn +199.2%; smart EV deliveries 108,796 +173.4%; ASP RMB260,053; EV/AI/new initiatives gross margin 25.5%; smartphone gross margin 11.1%. SRC-GASGOO-XIAOMI-JAN-2026: January 2026 Xiaomi EV deliveries exceeded 39,000 units, +70.33% YoY and -22.33% MoM; YU7 was the primary driver; 2026 delivery target 550,000; Beijing plant capacity above 40,000/month; sales stores 484 by end January.",
+      "inference": "基于上述 cutoff 前材料对“估值和市场预期是否已经过高？”的推理：冻结时点股价已包含明显 EV/AI 叙事，市场未充分定价证据不足；质量提升不自动等于高赔率。",
+      "judgment": "决策影响：该叶子进入 valuation_odds，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：冻结时点股价已包含明显 EV/AI 叙事，市场未充分定价证据不足；质量提升不自动等于高赔率。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-XIAOMI-Q3-2025",
+        "SRC-GASGOO-XIAOMI-JAN-2026"
+      ]
+    },
+    {
+      "id": "Q3.1.2",
+      "level": 3,
+      "parent_id": "Q3.1",
+      "question": "EV 竞争、补贴和交付节奏有哪些反证？",
+      "conclusion": "1 月交付环比下滑、补贴退坡和春节因素提示交付节奏可能波动；中国 EV 竞争会压低可持续毛利率。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 disconfirming_risk_control、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 disconfirming_risk_control 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-GASGOO-XIAOMI-JAN-2026 支持或界定该问题的事实基础。",
+        "SRC-XIAOMI-Q3-2025 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "disconfirming_risk_control",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-GASGOO-XIAOMI-JAN-2026",
+          "source_visible_at": "2026-02-02",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "news-event-analysis",
+          "expected_fields": [
+            "event_date",
+            "event_scope",
+            "affected_company",
+            "transmission_path",
+            "reliability",
+            "follow_up_trigger"
+          ]
+        },
+        {
+          "source_id": "SRC-XIAOMI-Q3-2025",
+          "source_visible_at": "2025-11-18",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "news-event-analysis",
+          "expected_fields": [
+            "event_date",
+            "event_scope",
+            "affected_company",
+            "transmission_path",
+            "reliability",
+            "follow_up_trigger"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "news_event",
+        "selected_skill": "news-event-analysis",
+        "concrete_materials": [
+          "SRC-GASGOO-XIAOMI-JAN-2026",
+          "SRC-XIAOMI-Q3-2025"
+        ],
+        "extraction_schema": [
+          "event_date",
+          "event_scope",
+          "affected_company",
+          "transmission_path",
+          "reliability",
+          "follow_up_trigger"
+        ],
+        "source_extraction_ids": [
+          "se-q3-1-2-src-gasgoo-xiaomi-jan-2026",
+          "se-q3-1-2-src-xiaomi-q3-2025"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q3-1-2-src-gasgoo-xiaomi-jan-2026",
+          "review-se-q3-1-2-src-xiaomi-q3-2025"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-GASGOO-XIAOMI-JAN-2026: January 2026 Xiaomi EV deliveries exceeded 39,000 units, +70.33% YoY and -22.33% MoM; YU7 was the primary driver; 2026 delivery target 550,000; Beijing plant capacity above 40,000/month; sales stores 484 by end January. SRC-XIAOMI-Q3-2025: Q3 revenue RMB113.1bn +22.3%; adjusted net profit RMB11.3bn +80.9%; smart EV/AI/new initiatives revenue RMB29.0bn +199.2%; smart EV deliveries 108,796 +173.4%; ASP RMB260,053; EV/AI/new initiatives gross margin 25.5%; smartphone gross margin 11.1%.",
+      "inference": "基于上述 cutoff 前材料对“EV 竞争、补贴和交付节奏有哪些反证？”的推理：1 月交付环比下滑、补贴退坡和春节因素提示交付节奏可能波动；中国 EV 竞争会压低可持续毛利率。",
+      "judgment": "决策影响：该叶子进入 disconfirming_risk_control，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：1 月交付环比下滑、补贴退坡和春节因素提示交付节奏可能波动；中国 EV 竞争会压低可持续毛利率。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-GASGOO-XIAOMI-JAN-2026",
+        "SRC-XIAOMI-Q3-2025"
+      ]
+    },
+    {
+      "id": "Q3.2.1",
+      "level": 3,
+      "parent_id": "Q3.2",
+      "question": "费用投入和研发投入有哪些质量风险？",
+      "conclusion": "R&D 与销售费用快速上升，说明公司在建设长期能力，但若 EV 和 AI 无法转化为经营利润，会稀释当前盈利质量。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 disconfirming_risk_control、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 disconfirming_risk_control 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-XIAOMI-H1-2025 支持或界定该问题的事实基础。",
+        "SRC-XIAOMI-Q3-2025 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "disconfirming_risk_control",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-XIAOMI-H1-2025",
+          "source_visible_at": "2025-08-19",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "financial-statement-analysis",
+          "expected_fields": [
+            "revenue",
+            "margin",
+            "cash_flow",
+            "backlog",
+            "segment_disclosure",
+            "accounting_risk"
+          ]
+        },
+        {
+          "source_id": "SRC-XIAOMI-Q3-2025",
+          "source_visible_at": "2025-11-18",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "financial-statement-analysis",
+          "expected_fields": [
+            "revenue",
+            "margin",
+            "cash_flow",
+            "backlog",
+            "segment_disclosure",
+            "accounting_risk"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "financial_statement",
+        "selected_skill": "financial-statement-analysis",
+        "concrete_materials": [
+          "SRC-XIAOMI-H1-2025",
+          "SRC-XIAOMI-Q3-2025"
+        ],
+        "extraction_schema": [
+          "revenue",
+          "margin",
+          "cash_flow",
+          "backlog",
+          "segment_disclosure",
+          "accounting_risk"
+        ],
+        "source_extraction_ids": [
+          "se-q3-2-1-src-xiaomi-h1-2025",
+          "se-q3-2-1-src-xiaomi-q3-2025"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q3-2-1-src-xiaomi-h1-2025",
+          "review-se-q3-2-1-src-xiaomi-q3-2025"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-XIAOMI-H1-2025: H1 2025 revenue RMB227.2494bn +38.2%; adjusted net profit RMB21.5063bn +69.8%; smartphone x AIoT revenue RMB187.4bn; smart EV/AI/new initiatives revenue RMB39.8bn; smart EV deliveries 157,171; connected IoT devices 989.1m; global MAU 731.2m; R&D expense RMB14.5bn. SRC-XIAOMI-Q3-2025: Q3 revenue RMB113.1bn +22.3%; adjusted net profit RMB11.3bn +80.9%; smart EV/AI/new initiatives revenue RMB29.0bn +199.2%; smart EV deliveries 108,796 +173.4%; ASP RMB260,053; EV/AI/new initiatives gross margin 25.5%; smartphone gross margin 11.1%.",
+      "inference": "基于上述 cutoff 前材料对“费用投入和研发投入有哪些质量风险？”的推理：R&D 与销售费用快速上升，说明公司在建设长期能力，但若 EV 和 AI 无法转化为经营利润，会稀释当前盈利质量。",
+      "judgment": "决策影响：该叶子进入 disconfirming_risk_control，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：R&D 与销售费用快速上升，说明公司在建设长期能力，但若 EV 和 AI 无法转化为经营利润，会稀释当前盈利质量。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-XIAOMI-H1-2025",
+        "SRC-XIAOMI-Q3-2025"
+      ]
+    },
+    {
+      "id": "Q3.2.2",
+      "level": 3,
+      "parent_id": "Q3.2",
+      "question": "手机与 IoT 周期是否拖累公司整体？",
+      "conclusion": "手机毛利率低且竞争激烈，IoT 部分受补贴和品类季节影响；基盘稳定但不应给过高增长倍数。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 disconfirming_risk_control、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 disconfirming_risk_control 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-XIAOMI-H1-2025 支持或界定该问题的事实基础。",
+        "SRC-XIAOMI-Q3-2025 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "disconfirming_risk_control",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-XIAOMI-H1-2025",
+          "source_visible_at": "2025-08-19",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "leaf-research-deepseek",
+          "expected_fields": [
+            "key_fact",
+            "number",
+            "date",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ]
+        },
+        {
+          "source_id": "SRC-XIAOMI-Q3-2025",
+          "source_visible_at": "2025-11-18",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "leaf-research-deepseek",
+          "expected_fields": [
+            "key_fact",
+            "number",
+            "date",
+            "support_or_refute",
+            "uncertainty",
+            "follow_up_data"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "source_extraction",
+        "selected_skill": "leaf-research-deepseek",
+        "concrete_materials": [
+          "SRC-XIAOMI-H1-2025",
+          "SRC-XIAOMI-Q3-2025"
+        ],
+        "extraction_schema": [
+          "key_fact",
+          "number",
+          "date",
+          "support_or_refute",
+          "uncertainty",
+          "follow_up_data"
+        ],
+        "source_extraction_ids": [
+          "se-q3-2-2-src-xiaomi-h1-2025",
+          "se-q3-2-2-src-xiaomi-q3-2025"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q3-2-2-src-xiaomi-h1-2025",
+          "review-se-q3-2-2-src-xiaomi-q3-2025"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-XIAOMI-H1-2025: H1 2025 revenue RMB227.2494bn +38.2%; adjusted net profit RMB21.5063bn +69.8%; smartphone x AIoT revenue RMB187.4bn; smart EV/AI/new initiatives revenue RMB39.8bn; smart EV deliveries 157,171; connected IoT devices 989.1m; global MAU 731.2m; R&D expense RMB14.5bn. SRC-XIAOMI-Q3-2025: Q3 revenue RMB113.1bn +22.3%; adjusted net profit RMB11.3bn +80.9%; smart EV/AI/new initiatives revenue RMB29.0bn +199.2%; smart EV deliveries 108,796 +173.4%; ASP RMB260,053; EV/AI/new initiatives gross margin 25.5%; smartphone gross margin 11.1%.",
+      "inference": "基于上述 cutoff 前材料对“手机与 IoT 周期是否拖累公司整体？”的推理：手机毛利率低且竞争激烈，IoT 部分受补贴和品类季节影响；基盘稳定但不应给过高增长倍数。",
+      "judgment": "决策影响：该叶子进入 disconfirming_risk_control，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：手机毛利率低且竞争激烈，IoT 部分受补贴和品类季节影响；基盘稳定但不应给过高增长倍数。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-XIAOMI-H1-2025",
+        "SRC-XIAOMI-Q3-2025"
+      ]
+    },
+    {
+      "id": "Q4.1.1",
+      "level": 3,
+      "parent_id": "Q4.1",
+      "question": "1810.HK 是否进入可行动名单？",
+      "conclusion": "1810.HK 进入高质量观察，但不进入 actionable_long：需求强，证据质量尚可，稀缺性和未充分定价不足。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 target_ranking、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 target_ranking 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-XIAOMI-H1-2025 支持或界定该问题的事实基础。",
+        "SRC-XIAOMI-Q3-2025 支持或界定该问题的事实基础。",
+        "SRC-GASGOO-XIAOMI-JAN-2026 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "target_ranking",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-XIAOMI-H1-2025",
+          "source_visible_at": "2025-08-19",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "target",
+            "thesis_node",
+            "score_driver",
+            "action_state",
+            "upgrade_trigger",
+            "downgrade_trigger"
+          ]
+        },
+        {
+          "source_id": "SRC-XIAOMI-Q3-2025",
+          "source_visible_at": "2025-11-18",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "target",
+            "thesis_node",
+            "score_driver",
+            "action_state",
+            "upgrade_trigger",
+            "downgrade_trigger"
+          ]
+        },
+        {
+          "source_id": "SRC-GASGOO-XIAOMI-JAN-2026",
+          "source_visible_at": "2026-02-02",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "target",
+            "thesis_node",
+            "score_driver",
+            "action_state",
+            "upgrade_trigger",
+            "downgrade_trigger"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "target_recommendation",
+        "selected_skill": "target-recommendation-analysis",
+        "concrete_materials": [
+          "SRC-XIAOMI-H1-2025",
+          "SRC-XIAOMI-Q3-2025",
+          "SRC-GASGOO-XIAOMI-JAN-2026"
+        ],
+        "extraction_schema": [
+          "target",
+          "thesis_node",
+          "score_driver",
+          "action_state",
+          "upgrade_trigger",
+          "downgrade_trigger"
+        ],
+        "source_extraction_ids": [
+          "se-q4-1-1-src-xiaomi-h1-2025",
+          "se-q4-1-1-src-xiaomi-q3-2025",
+          "se-q4-1-1-src-gasgoo-xiaomi-jan-2026"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q4-1-1-src-xiaomi-h1-2025",
+          "review-se-q4-1-1-src-xiaomi-q3-2025",
+          "review-se-q4-1-1-src-gasgoo-xiaomi-jan-2026"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-XIAOMI-H1-2025: H1 2025 revenue RMB227.2494bn +38.2%; adjusted net profit RMB21.5063bn +69.8%; smartphone x AIoT revenue RMB187.4bn; smart EV/AI/new initiatives revenue RMB39.8bn; smart EV deliveries 157,171; connected IoT devices 989.1m; global MAU 731.2m; R&D expense RMB14.5bn. SRC-XIAOMI-Q3-2025: Q3 revenue RMB113.1bn +22.3%; adjusted net profit RMB11.3bn +80.9%; smart EV/AI/new initiatives revenue RMB29.0bn +199.2%; smart EV deliveries 108,796 +173.4%; ASP RMB260,053; EV/AI/new initiatives gross margin 25.5%; smartphone gross margin 11.1%. SRC-GASGOO-XIAOMI-JAN-2026: January 2026 Xiaomi EV deliveries exceeded 39,000 units, +70.33% YoY and -22.33% MoM; YU7 was the primary driver; 2026 delivery target 550,000; Beijing plant capacity above 40,000/month; sales stores 484 by end January.",
+      "inference": "基于上述 cutoff 前材料对“1810.HK 是否进入可行动名单？”的推理：1810.HK 进入高质量观察，但不进入 actionable_long：需求强，证据质量尚可，稀缺性和未充分定价不足。",
+      "judgment": "决策影响：该叶子进入 target_ranking，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：1810.HK 进入高质量观察，但不进入 actionable_long：需求强，证据质量尚可，稀缺性和未充分定价不足。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-XIAOMI-H1-2025",
+        "SRC-XIAOMI-Q3-2025",
+        "SRC-GASGOO-XIAOMI-JAN-2026"
+      ]
+    },
+    {
+      "id": "Q4.1.2",
+      "level": 3,
+      "parent_id": "Q4.1",
+      "question": "为什么需要分数封顶？",
+      "conclusion": "EV/AI 叙事强但并非未被市场发现；手机硬件低毛利、EV 竞争和费用投入要求分数封顶。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 target_ranking、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 target_ranking 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-XIAOMI-Q3-2025 支持或界定该问题的事实基础。",
+        "SRC-GASGOO-XIAOMI-JAN-2026 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "target_ranking",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-XIAOMI-Q3-2025",
+          "source_visible_at": "2025-11-18",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "target",
+            "thesis_node",
+            "score_driver",
+            "action_state",
+            "upgrade_trigger",
+            "downgrade_trigger"
+          ]
+        },
+        {
+          "source_id": "SRC-GASGOO-XIAOMI-JAN-2026",
+          "source_visible_at": "2026-02-02",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "target",
+            "thesis_node",
+            "score_driver",
+            "action_state",
+            "upgrade_trigger",
+            "downgrade_trigger"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "target_recommendation",
+        "selected_skill": "target-recommendation-analysis",
+        "concrete_materials": [
+          "SRC-XIAOMI-Q3-2025",
+          "SRC-GASGOO-XIAOMI-JAN-2026"
+        ],
+        "extraction_schema": [
+          "target",
+          "thesis_node",
+          "score_driver",
+          "action_state",
+          "upgrade_trigger",
+          "downgrade_trigger"
+        ],
+        "source_extraction_ids": [
+          "se-q4-1-2-src-xiaomi-q3-2025",
+          "se-q4-1-2-src-gasgoo-xiaomi-jan-2026"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q4-1-2-src-xiaomi-q3-2025",
+          "review-se-q4-1-2-src-gasgoo-xiaomi-jan-2026"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-XIAOMI-Q3-2025: Q3 revenue RMB113.1bn +22.3%; adjusted net profit RMB11.3bn +80.9%; smart EV/AI/new initiatives revenue RMB29.0bn +199.2%; smart EV deliveries 108,796 +173.4%; ASP RMB260,053; EV/AI/new initiatives gross margin 25.5%; smartphone gross margin 11.1%. SRC-GASGOO-XIAOMI-JAN-2026: January 2026 Xiaomi EV deliveries exceeded 39,000 units, +70.33% YoY and -22.33% MoM; YU7 was the primary driver; 2026 delivery target 550,000; Beijing plant capacity above 40,000/month; sales stores 484 by end January.",
+      "inference": "基于上述 cutoff 前材料对“为什么需要分数封顶？”的推理：EV/AI 叙事强但并非未被市场发现；手机硬件低毛利、EV 竞争和费用投入要求分数封顶。",
+      "judgment": "决策影响：该叶子进入 target_ranking，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：EV/AI 叙事强但并非未被市场发现；手机硬件低毛利、EV 竞争和费用投入要求分数封顶。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-XIAOMI-Q3-2025",
+        "SRC-GASGOO-XIAOMI-JAN-2026"
+      ]
+    },
+    {
+      "id": "Q4.2.1",
+      "level": 3,
+      "parent_id": "Q4.2",
+      "question": "升级触发器是什么？",
+      "conclusion": "EV 经营利润持续为正、交付不依赖补贴、自由现金流改善、互联网/IoT 与车端协同收入被量化、估值回到更低预期。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 target_ranking、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 target_ranking 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-XIAOMI-Q3-2025 支持或界定该问题的事实基础。",
+        "SRC-GASGOO-XIAOMI-JAN-2026 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "target_ranking",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-XIAOMI-Q3-2025",
+          "source_visible_at": "2025-11-18",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "target",
+            "thesis_node",
+            "score_driver",
+            "action_state",
+            "upgrade_trigger",
+            "downgrade_trigger"
+          ]
+        },
+        {
+          "source_id": "SRC-GASGOO-XIAOMI-JAN-2026",
+          "source_visible_at": "2026-02-02",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "target",
+            "thesis_node",
+            "score_driver",
+            "action_state",
+            "upgrade_trigger",
+            "downgrade_trigger"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "target_recommendation",
+        "selected_skill": "target-recommendation-analysis",
+        "concrete_materials": [
+          "SRC-XIAOMI-Q3-2025",
+          "SRC-GASGOO-XIAOMI-JAN-2026"
+        ],
+        "extraction_schema": [
+          "target",
+          "thesis_node",
+          "score_driver",
+          "action_state",
+          "upgrade_trigger",
+          "downgrade_trigger"
+        ],
+        "source_extraction_ids": [
+          "se-q4-2-1-src-xiaomi-q3-2025",
+          "se-q4-2-1-src-gasgoo-xiaomi-jan-2026"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q4-2-1-src-xiaomi-q3-2025",
+          "review-se-q4-2-1-src-gasgoo-xiaomi-jan-2026"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-XIAOMI-Q3-2025: Q3 revenue RMB113.1bn +22.3%; adjusted net profit RMB11.3bn +80.9%; smart EV/AI/new initiatives revenue RMB29.0bn +199.2%; smart EV deliveries 108,796 +173.4%; ASP RMB260,053; EV/AI/new initiatives gross margin 25.5%; smartphone gross margin 11.1%. SRC-GASGOO-XIAOMI-JAN-2026: January 2026 Xiaomi EV deliveries exceeded 39,000 units, +70.33% YoY and -22.33% MoM; YU7 was the primary driver; 2026 delivery target 550,000; Beijing plant capacity above 40,000/month; sales stores 484 by end January.",
+      "inference": "基于上述 cutoff 前材料对“升级触发器是什么？”的推理：EV 经营利润持续为正、交付不依赖补贴、自由现金流改善、互联网/IoT 与车端协同收入被量化、估值回到更低预期。",
+      "judgment": "决策影响：该叶子进入 target_ranking，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：EV 经营利润持续为正、交付不依赖补贴、自由现金流改善、互联网/IoT 与车端协同收入被量化、估值回到更低预期。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-XIAOMI-Q3-2025",
+        "SRC-GASGOO-XIAOMI-JAN-2026"
+      ]
+    },
+    {
+      "id": "Q4.2.2",
+      "level": 3,
+      "parent_id": "Q4.2",
+      "question": "降级触发器是什么？",
+      "conclusion": "EV 毛利率回落、交付低于产能、手机毛利继续下滑、R&D/销售费用吞噬利润、股价继续透支未验证 AI/EV 叙事。",
+      "gaps": "缺少更细分的经营披露、估值同口径数据或反向验证材料。",
+      "next_question_ids": [],
+      "materiality": "该叶子会改变 disconfirming_risk_control、目标排序、动作状态或风险封顶。",
+      "decision_use": "用于判断 disconfirming_risk_control 是否足以支撑父节点结论和最终标的 action_state。",
+      "support_evidence": [
+        "SRC-XIAOMI-H1-2025 支持或界定该问题的事实基础。",
+        "SRC-XIAOMI-Q3-2025 支持或界定该问题的事实基础。"
+      ],
+      "refute_evidence": [
+        "若同口径经营、估值、竞争或需求数据与当前结论相反，则降低该节点强度。"
+      ],
+      "target_implications": "影响最终标的排序、分数封顶、观察状态和升级/降级触发器。",
+      "score_component": "disconfirming_risk_control",
+      "minimum_evidence_gate": "至少一项 cutoff 前可见的主材料，并保留一条反向或边界检查路径；后验价格不得进入推理。",
+      "refuting_source_plan": [
+        "查找 cutoff 前可见的负向披露、竞争反证、估值透支、需求放缓或现金流恶化证据。"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-XIAOMI-H1-2025",
+          "source_visible_at": "2025-08-19",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "target",
+            "thesis_node",
+            "score_driver",
+            "action_state",
+            "upgrade_trigger",
+            "downgrade_trigger"
+          ]
+        },
+        {
+          "source_id": "SRC-XIAOMI-Q3-2025",
+          "source_visible_at": "2025-11-18",
+          "source_bucket": "evidence",
+          "allowed_usage": "thesis",
+          "preferred_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "target",
+            "thesis_node",
+            "score_driver",
+            "action_state",
+            "upgrade_trigger",
+            "downgrade_trigger"
+          ]
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "target_recommendation",
+        "selected_skill": "target-recommendation-analysis",
+        "concrete_materials": [
+          "SRC-XIAOMI-H1-2025",
+          "SRC-XIAOMI-Q3-2025"
+        ],
+        "extraction_schema": [
+          "target",
+          "thesis_node",
+          "score_driver",
+          "action_state",
+          "upgrade_trigger",
+          "downgrade_trigger"
+        ],
+        "source_extraction_ids": [
+          "se-q4-2-2-src-xiaomi-h1-2025",
+          "se-q4-2-2-src-xiaomi-q3-2025"
+        ],
+        "leaf_source_review_ids": [
+          "review-se-q4-2-2-src-xiaomi-h1-2025",
+          "review-se-q4-2-2-src-xiaomi-q3-2025"
+        ],
+        "skill_output_status": "fallback_gpt_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified"
+      },
+      "fact": "SRC-XIAOMI-H1-2025: H1 2025 revenue RMB227.2494bn +38.2%; adjusted net profit RMB21.5063bn +69.8%; smartphone x AIoT revenue RMB187.4bn; smart EV/AI/new initiatives revenue RMB39.8bn; smart EV deliveries 157,171; connected IoT devices 989.1m; global MAU 731.2m; R&D expense RMB14.5bn. SRC-XIAOMI-Q3-2025: Q3 revenue RMB113.1bn +22.3%; adjusted net profit RMB11.3bn +80.9%; smart EV/AI/new initiatives revenue RMB29.0bn +199.2%; smart EV deliveries 108,796 +173.4%; ASP RMB260,053; EV/AI/new initiatives gross margin 25.5%; smartphone gross margin 11.1%.",
+      "inference": "基于上述 cutoff 前材料对“降级触发器是什么？”的推理：EV 毛利率回落、交付低于产能、手机毛利继续下滑、R&D/销售费用吞噬利润、股价继续透支未验证 AI/EV 叙事。",
+      "judgment": "决策影响：该叶子进入 disconfirming_risk_control，会调整父节点结论、目标强度、action_state 或分数封顶；当前判断为：EV 毛利率回落、交付低于产能、手机毛利继续下滑、R&D/销售费用吞噬利润、股价继续透支未验证 AI/EV 叙事。",
+      "gap": "缺少更细分披露或可交叉验证数据。",
+      "trigger": "若后续披露证明需求无法转为现金流、稀缺性减弱、估值已透支或反证恶化，重新评分。",
+      "source_links": [
+        "SRC-XIAOMI-H1-2025",
+        "SRC-XIAOMI-Q3-2025"
+      ]
+    }
+  ]
+}

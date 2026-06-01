@@ -25,11 +25,22 @@ This skill turns third-party research into auditable assumptions and evidence le
 - `where_the_report_could_be_wrong`
 - `source_links`
 
+For model-driven reports or spreadsheets, also extract structured model blocks when present:
+
+- `demand_driver_tree`: end need/workload/customer, product mapping, volume, price, mix, duration, multiplier, period, unit.
+- `supply_response_model`: capacity, utilization, inventory, ramp timing, capex, lead time, qualification, supply additions, period, unit.
+- `unit_economics_bridge`: ASP/take rate, cost, gross margin, operating margin, FCF, capex intensity, working capital, source formula.
+- `company_value_capture`: company/asset, exposed product or node, revenue/profit capture mechanism, substitutes, customer qualification, share assumptions.
+- `market_pricing_bridge`: market cap/EV, multiples, implied growth/margin, risk premium or discount-rate assumptions, rerating path.
+- `capital_chain_transmission`: whether high returns lead to capex, equipment/materials orders, infrastructure demand, or other second-order beneficiaries.
+- `model_reconciliation`: competing source/model, metric, period, value, unit, scope, formula, difference, and adoption/rejection rationale.
+
 ## Rules
 
 - Treat industry reports as research_report, not primary evidence.
 - Separate reported data, model estimates, and analyst opinions.
 - Extract base assumptions before quoting headline TAM or CAGR.
+- Do not accept a third-party model's final conclusion until the driver rows, units, periods, formulas, and口径 caveats are separated from analyst judgment.
 - Identify whether growth is volume, price, mix, penetration, replacement cycle, or inventory rebuild.
 - Cross-check third-party claims with primary company filings when possible.
 - Use reports to generate questions and triangulate, not to close high-confidence conclusions alone.

@@ -1,0 +1,1273 @@
+{
+  "as_of_date": "2026-02-28",
+  "scoring_worksheet": [
+    {
+      "ticker": "0700.HK",
+      "rank": 1,
+      "score_input": {
+        "chokepoint_strength": 4.4,
+        "future_space": 3.8,
+        "valuation_odds": 3.4,
+        "evidence_quality": 4.2,
+        "disconfirming_risk_control": 3.2,
+        "monitorability": 4.5,
+        "payoff_convexity": 3.4,
+        "demand_visibility": 4,
+        "irreplaceability": 4.5,
+        "market_underpricing": 3.3,
+        "valuation_tolerance": 3.2,
+        "downside_fragility": 2.8,
+        "catalyst_proximity": 3.4,
+        "expected_excess_return": 0.08,
+        "valuation_status": "verified"
+      },
+      "score": {
+        "score_components": {
+          "chokepoint_strength": 4.4,
+          "future_space": 3.8,
+          "valuation_odds": 3.4,
+          "evidence_quality": 4.2,
+          "disconfirming_risk_control": 3.2,
+          "monitorability": 4.5,
+          "payoff_convexity": 3.4
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "raw_total_score": 3.879,
+        "total_score": 3.879,
+        "thesis_confidence": 3.985,
+        "payoff_convexity": 3.32,
+        "opportunity_fit": 3.99,
+        "action_state": "actionable_long",
+        "gate_reasons": [],
+        "strength": "B"
+      },
+      "rationale": "多业务线增长和社交入口稀缺性同时成立，是唯一越过行动门槛的观察项。",
+      "downgrade_risk": "广告 ROI、游戏 pipeline、监管与估值安全边际",
+      "source_ids": [
+        "SRC-TENCENT-Q3-2025"
+      ]
+    },
+    {
+      "ticker": "BABA",
+      "rank": 2,
+      "score_input": {
+        "chokepoint_strength": 3.6,
+        "future_space": 4,
+        "valuation_odds": 3.5,
+        "evidence_quality": 3.4,
+        "disconfirming_risk_control": 2.9,
+        "monitorability": 4,
+        "payoff_convexity": 3.8,
+        "demand_visibility": 4.1,
+        "irreplaceability": 3.6,
+        "market_underpricing": 3.6,
+        "valuation_tolerance": 3.5,
+        "downside_fragility": 3.2,
+        "catalyst_proximity": 3.2,
+        "expected_excess_return": 0.05,
+        "valuation_status": "verified"
+      },
+      "score": {
+        "score_components": {
+          "chokepoint_strength": 3.6,
+          "future_space": 4,
+          "valuation_odds": 3.5,
+          "evidence_quality": 3.4,
+          "disconfirming_risk_control": 2.9,
+          "monitorability": 4,
+          "payoff_convexity": 3.8
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "raw_total_score": 3.594,
+        "total_score": 3.49,
+        "thesis_confidence": 3.515,
+        "payoff_convexity": 3.45,
+        "opportunity_fit": 3.75,
+        "action_state": "watch_only",
+        "gate_reasons": [
+          "scarcity_or_irreplaceability_below_gate"
+        ],
+        "strength": "C"
+      },
+      "rationale": "云和消费生态有期权，但电商竞争和 AI 回报不确定使稀缺性未过门槛。",
+      "downgrade_risk": "AI 云毛利、淘天份额、即时商业投入回报",
+      "source_ids": [
+        "SRC-ALIBABA-SEP-2025"
+      ]
+    },
+    {
+      "ticker": "TCOM",
+      "rank": 3,
+      "score_input": {
+        "chokepoint_strength": 3.8,
+        "future_space": 3.7,
+        "valuation_odds": 3.1,
+        "evidence_quality": 3.7,
+        "disconfirming_risk_control": 3,
+        "monitorability": 3.7,
+        "payoff_convexity": 3.2,
+        "demand_visibility": 3.8,
+        "irreplaceability": 3.8,
+        "market_underpricing": 3.1,
+        "valuation_tolerance": 3,
+        "downside_fragility": 3,
+        "catalyst_proximity": 3.1,
+        "expected_excess_return": 0.03,
+        "valuation_status": "verified"
+      },
+      "score": {
+        "score_components": {
+          "chokepoint_strength": 3.8,
+          "future_space": 3.7,
+          "valuation_odds": 3.1,
+          "evidence_quality": 3.7,
+          "disconfirming_risk_control": 3,
+          "monitorability": 3.7,
+          "payoff_convexity": 3.2
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "raw_total_score": 3.503,
+        "total_score": 3.49,
+        "thesis_confidence": 3.565,
+        "payoff_convexity": 3.105,
+        "opportunity_fit": 3.59,
+        "action_state": "watch_only",
+        "gate_reasons": [
+          "market_underpricing_below_gate"
+        ],
+        "strength": "C"
+      },
+      "rationale": "服务消费和出行复苏质量较好，但赔率和周期风险不足以直接行动。",
+      "downgrade_risk": "出境供给、住宿增速、营销费用和 take-rate",
+      "source_ids": [
+        "SRC-TRIP-Q4-2025"
+      ]
+    },
+    {
+      "ticker": "JD",
+      "rank": 4,
+      "score_input": {
+        "chokepoint_strength": 3.4,
+        "future_space": 3.4,
+        "valuation_odds": 3.5,
+        "evidence_quality": 3.6,
+        "disconfirming_risk_control": 2.8,
+        "monitorability": 3.9,
+        "payoff_convexity": 3,
+        "demand_visibility": 3.5,
+        "irreplaceability": 3.2,
+        "market_underpricing": 3.5,
+        "valuation_tolerance": 3.6,
+        "downside_fragility": 3.3,
+        "catalyst_proximity": 2.8,
+        "expected_excess_return": 0.04,
+        "valuation_status": "verified"
+      },
+      "score": {
+        "score_components": {
+          "chokepoint_strength": 3.4,
+          "future_space": 3.4,
+          "valuation_odds": 3.5,
+          "evidence_quality": 3.6,
+          "disconfirming_risk_control": 2.8,
+          "monitorability": 3.9,
+          "payoff_convexity": 3
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "raw_total_score": 3.375,
+        "total_score": 3.375,
+        "thesis_confidence": 3.395,
+        "payoff_convexity": 3.03,
+        "opportunity_fit": 3.38,
+        "action_state": "watch_only",
+        "gate_reasons": [
+          "scarcity_or_irreplaceability_below_gate"
+        ],
+        "strength": "C"
+      },
+      "rationale": "履约和零售质量存在，但新业务投入压制集团赔率，稀缺性不足。",
+      "downgrade_risk": "新业务 unit economics、零售利润率、服务收入增长",
+      "source_ids": [
+        "SRC-JD-Q3-2025"
+      ]
+    },
+    {
+      "ticker": "NTES",
+      "rank": 5,
+      "score_input": {
+        "chokepoint_strength": 3.6,
+        "future_space": 3,
+        "valuation_odds": 3.3,
+        "evidence_quality": 3.8,
+        "disconfirming_risk_control": 3.1,
+        "monitorability": 3.6,
+        "payoff_convexity": 2.9,
+        "demand_visibility": 3,
+        "irreplaceability": 3.6,
+        "market_underpricing": 3.3,
+        "valuation_tolerance": 3.4,
+        "downside_fragility": 3,
+        "catalyst_proximity": 2.8,
+        "expected_excess_return": 0.03,
+        "valuation_status": "verified"
+      },
+      "score": {
+        "score_components": {
+          "chokepoint_strength": 3.6,
+          "future_space": 3,
+          "valuation_odds": 3.3,
+          "evidence_quality": 3.8,
+          "disconfirming_risk_control": 3.1,
+          "monitorability": 3.6,
+          "payoff_convexity": 2.9
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "raw_total_score": 3.353,
+        "total_score": 3.353,
+        "thesis_confidence": 3.455,
+        "payoff_convexity": 3.005,
+        "opportunity_fit": 3.33,
+        "action_state": "watch_only",
+        "gate_reasons": [
+          "future_demand_below_gate",
+          "scarcity_or_irreplaceability_below_gate"
+        ],
+        "strength": "C"
+      },
+      "rationale": "现金流和游戏能力可观察，但未来空间不够大，适合防守观察。",
+      "downgrade_risk": "新游戏 pipeline、版号、游戏收入增速",
+      "source_ids": [
+        "SRC-NETEASE-Q4-2025"
+      ]
+    },
+    {
+      "ticker": "PDD",
+      "rank": 6,
+      "score_input": {
+        "chokepoint_strength": 2.8,
+        "future_space": 3.8,
+        "valuation_odds": 3,
+        "evidence_quality": 3.3,
+        "disconfirming_risk_control": 2.4,
+        "monitorability": 2.7,
+        "payoff_convexity": 3.6,
+        "demand_visibility": 3.8,
+        "irreplaceability": 2.8,
+        "market_underpricing": 3,
+        "valuation_tolerance": 3.1,
+        "downside_fragility": 3.8,
+        "catalyst_proximity": 2.8,
+        "expected_excess_return": 0,
+        "valuation_status": "verified"
+      },
+      "score": {
+        "score_components": {
+          "chokepoint_strength": 2.8,
+          "future_space": 3.8,
+          "valuation_odds": 3,
+          "evidence_quality": 3.3,
+          "disconfirming_risk_control": 2.4,
+          "monitorability": 2.7,
+          "payoff_convexity": 3.6
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "raw_total_score": 3.113,
+        "total_score": 2.69,
+        "thesis_confidence": 3.03,
+        "payoff_convexity": 3.1,
+        "opportunity_fit": 3.16,
+        "action_state": "no_action",
+        "gate_reasons": [
+          "scarcity_or_irreplaceability_below_gate",
+          "market_underpricing_below_gate",
+          "disconfirming_risk_control_below_gate",
+          "expected_excess_return_not_positive"
+        ],
+        "strength": "D"
+      },
+      "rationale": "利润强但管理层已提示增速放缓与竞争外部不确定；稀缺性不足。",
+      "downgrade_risk": "商家支持投入、跨境监管、收入增速和现金转化",
+      "source_ids": [
+        "SRC-PDD-Q3-2025"
+      ]
+    },
+    {
+      "ticker": "BIDU",
+      "rank": 7,
+      "score_input": {
+        "chokepoint_strength": 3,
+        "future_space": 3.7,
+        "valuation_odds": 3.2,
+        "evidence_quality": 3.5,
+        "disconfirming_risk_control": 2.3,
+        "monitorability": 3.1,
+        "payoff_convexity": 3.4,
+        "demand_visibility": 3.7,
+        "irreplaceability": 3,
+        "market_underpricing": 3.2,
+        "valuation_tolerance": 3.2,
+        "downside_fragility": 3.7,
+        "catalyst_proximity": 3,
+        "expected_excess_return": 0,
+        "valuation_status": "verified"
+      },
+      "score": {
+        "score_components": {
+          "chokepoint_strength": 3,
+          "future_space": 3.7,
+          "valuation_odds": 3.2,
+          "evidence_quality": 3.5,
+          "disconfirming_risk_control": 2.3,
+          "monitorability": 3.1,
+          "payoff_convexity": 3.4
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "raw_total_score": 3.203,
+        "total_score": 2.69,
+        "thesis_confidence": 3.15,
+        "payoff_convexity": 3.08,
+        "opportunity_fit": 3.27,
+        "action_state": "no_action",
+        "gate_reasons": [
+          "scarcity_or_irreplaceability_below_gate",
+          "disconfirming_risk_control_below_gate",
+          "expected_excess_return_not_positive"
+        ],
+        "strength": "D"
+      },
+      "rationale": "AI Infra 增速亮眼，但 legacy 业务和资产减值削弱胜率。",
+      "downgrade_risk": "AI 云毛利、legacy 下滑、Apollo Go 商业化",
+      "source_ids": [
+        "SRC-BAIDU-Q4-2025"
+      ]
+    },
+    {
+      "ticker": "3690.HK",
+      "rank": 8,
+      "score_input": {
+        "chokepoint_strength": 3.4,
+        "future_space": 3.7,
+        "valuation_odds": 2.9,
+        "evidence_quality": 3.2,
+        "disconfirming_risk_control": 2.4,
+        "monitorability": 3,
+        "payoff_convexity": 3.1,
+        "demand_visibility": 3.7,
+        "irreplaceability": 3.4,
+        "market_underpricing": 2.9,
+        "valuation_tolerance": 2.9,
+        "downside_fragility": 3.9,
+        "catalyst_proximity": 2.8,
+        "expected_excess_return": 0,
+        "valuation_status": "verified"
+      },
+      "score": {
+        "score_components": {
+          "chokepoint_strength": 3.4,
+          "future_space": 3.7,
+          "valuation_odds": 2.9,
+          "evidence_quality": 3.2,
+          "disconfirming_risk_control": 2.4,
+          "monitorability": 3,
+          "payoff_convexity": 3.1
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "raw_total_score": 3.189,
+        "total_score": 2.69,
+        "thesis_confidence": 3.175,
+        "payoff_convexity": 2.815,
+        "opportunity_fit": 3.34,
+        "action_state": "no_action",
+        "gate_reasons": [
+          "scarcity_or_irreplaceability_below_gate",
+          "market_underpricing_below_gate",
+          "disconfirming_risk_control_below_gate",
+          "expected_excess_return_not_positive"
+        ],
+        "strength": "D"
+      },
+      "rationale": "用户和履约密度强，但竞争投入和本地生活价格战使赔率不足。",
+      "downgrade_risk": "外卖/即时零售补贴、订单利润、商户 ROI",
+      "source_ids": [
+        "SRC-MEITUAN-Q3-2025"
+      ]
+    },
+    {
+      "ticker": "1024.HK",
+      "rank": 9,
+      "score_input": {
+        "chokepoint_strength": 3.1,
+        "future_space": 3.4,
+        "valuation_odds": 2.8,
+        "evidence_quality": 3.3,
+        "disconfirming_risk_control": 2.6,
+        "monitorability": 3.1,
+        "payoff_convexity": 3.4,
+        "demand_visibility": 3.4,
+        "irreplaceability": 3.1,
+        "market_underpricing": 2.8,
+        "valuation_tolerance": 2.9,
+        "downside_fragility": 3.8,
+        "catalyst_proximity": 3,
+        "expected_excess_return": 0,
+        "valuation_status": "verified"
+      },
+      "score": {
+        "score_components": {
+          "chokepoint_strength": 3.1,
+          "future_space": 3.4,
+          "valuation_odds": 2.8,
+          "evidence_quality": 3.3,
+          "disconfirming_risk_control": 2.6,
+          "monitorability": 3.1,
+          "payoff_convexity": 3.4
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "raw_total_score": 3.105,
+        "total_score": 2.69,
+        "thesis_confidence": 3.09,
+        "payoff_convexity": 3,
+        "opportunity_fit": 3.1,
+        "action_state": "no_action",
+        "gate_reasons": [
+          "future_demand_below_gate",
+          "scarcity_or_irreplaceability_below_gate",
+          "market_underpricing_below_gate",
+          "expected_excess_return_not_positive"
+        ],
+        "strength": "D"
+      },
+      "rationale": "经营改善可见，但内容流量和电商供给替代性较高，尚不是未定价稀缺机会。",
+      "downgrade_risk": "DAU/MAU、GMV 增速、Kling AI 变现、广告 ROI",
+      "source_ids": [
+        "SRC-KUAISHOU-Q3-2025"
+      ]
+    }
+  ],
+  "frozen_recommendations": [
+    {
+      "rank": 1,
+      "ticker": "0700.HK",
+      "name": "Tencent",
+      "thesis_node": "微信生态 + 游戏/广告/支付复合入口",
+      "score_input": {
+        "chokepoint_strength": 4.4,
+        "future_space": 3.8,
+        "valuation_odds": 3.4,
+        "evidence_quality": 4.2,
+        "disconfirming_risk_control": 3.2,
+        "monitorability": 4.5,
+        "payoff_convexity": 3.4,
+        "demand_visibility": 4,
+        "irreplaceability": 4.5,
+        "market_underpricing": 3.3,
+        "valuation_tolerance": 3.2,
+        "downside_fragility": 2.8,
+        "catalyst_proximity": 3.4,
+        "expected_excess_return": 0.08,
+        "valuation_status": "verified"
+      },
+      "rationale": "多业务线增长和社交入口稀缺性同时成立，是唯一越过行动门槛的观察项。",
+      "downgrade_risk": "广告 ROI、游戏 pipeline、监管与估值安全边际",
+      "source_ids": [
+        "SRC-TENCENT-Q3-2025"
+      ],
+      "next_verification_data": "广告 ROI、游戏 pipeline、监管与估值安全边际",
+      "odds_model": "Base: 需求与稀缺性维持；Bull: 价值捕获效率提升且估值未充分反映；Bear: 竞争/投入吞噬现金流。",
+      "review_trigger": "广告 ROI、游戏 pipeline、监管与估值安全边际",
+      "score": {
+        "score_components": {
+          "chokepoint_strength": 4.4,
+          "future_space": 3.8,
+          "valuation_odds": 3.4,
+          "evidence_quality": 4.2,
+          "disconfirming_risk_control": 3.2,
+          "monitorability": 4.5,
+          "payoff_convexity": 3.4
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "raw_total_score": 3.879,
+        "total_score": 3.879,
+        "thesis_confidence": 3.985,
+        "payoff_convexity": 3.32,
+        "opportunity_fit": 3.99,
+        "action_state": "actionable_long",
+        "gate_reasons": [],
+        "strength": "B"
+      },
+      "action_state": "actionable_long",
+      "strength": "B"
+    },
+    {
+      "rank": 2,
+      "ticker": "BABA",
+      "name": "Alibaba",
+      "thesis_node": "AI Cloud + 电商生态组合",
+      "score_input": {
+        "chokepoint_strength": 3.6,
+        "future_space": 4,
+        "valuation_odds": 3.5,
+        "evidence_quality": 3.4,
+        "disconfirming_risk_control": 2.9,
+        "monitorability": 4,
+        "payoff_convexity": 3.8,
+        "demand_visibility": 4.1,
+        "irreplaceability": 3.6,
+        "market_underpricing": 3.6,
+        "valuation_tolerance": 3.5,
+        "downside_fragility": 3.2,
+        "catalyst_proximity": 3.2,
+        "expected_excess_return": 0.05,
+        "valuation_status": "verified"
+      },
+      "rationale": "云和消费生态有期权，但电商竞争和 AI 回报不确定使稀缺性未过门槛。",
+      "downgrade_risk": "AI 云毛利、淘天份额、即时商业投入回报",
+      "source_ids": [
+        "SRC-ALIBABA-SEP-2025"
+      ],
+      "next_verification_data": "AI 云毛利、淘天份额、即时商业投入回报",
+      "odds_model": "Base: 需求与稀缺性维持；Bull: 价值捕获效率提升且估值未充分反映；Bear: 竞争/投入吞噬现金流。",
+      "review_trigger": "AI 云毛利、淘天份额、即时商业投入回报",
+      "score": {
+        "score_components": {
+          "chokepoint_strength": 3.6,
+          "future_space": 4,
+          "valuation_odds": 3.5,
+          "evidence_quality": 3.4,
+          "disconfirming_risk_control": 2.9,
+          "monitorability": 4,
+          "payoff_convexity": 3.8
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "raw_total_score": 3.594,
+        "total_score": 3.49,
+        "thesis_confidence": 3.515,
+        "payoff_convexity": 3.45,
+        "opportunity_fit": 3.75,
+        "action_state": "watch_only",
+        "gate_reasons": [
+          "scarcity_or_irreplaceability_below_gate"
+        ],
+        "strength": "C"
+      },
+      "action_state": "watch_only",
+      "strength": "C"
+    },
+    {
+      "rank": 3,
+      "ticker": "TCOM",
+      "name": "Trip.com",
+      "thesis_node": "旅行供给网络与品牌信任",
+      "score_input": {
+        "chokepoint_strength": 3.8,
+        "future_space": 3.7,
+        "valuation_odds": 3.1,
+        "evidence_quality": 3.7,
+        "disconfirming_risk_control": 3,
+        "monitorability": 3.7,
+        "payoff_convexity": 3.2,
+        "demand_visibility": 3.8,
+        "irreplaceability": 3.8,
+        "market_underpricing": 3.1,
+        "valuation_tolerance": 3,
+        "downside_fragility": 3,
+        "catalyst_proximity": 3.1,
+        "expected_excess_return": 0.03,
+        "valuation_status": "verified"
+      },
+      "rationale": "服务消费和出行复苏质量较好，但赔率和周期风险不足以直接行动。",
+      "downgrade_risk": "出境供给、住宿增速、营销费用和 take-rate",
+      "source_ids": [
+        "SRC-TRIP-Q4-2025"
+      ],
+      "next_verification_data": "出境供给、住宿增速、营销费用和 take-rate",
+      "odds_model": "Base: 需求与稀缺性维持；Bull: 价值捕获效率提升且估值未充分反映；Bear: 竞争/投入吞噬现金流。",
+      "review_trigger": "出境供给、住宿增速、营销费用和 take-rate",
+      "score": {
+        "score_components": {
+          "chokepoint_strength": 3.8,
+          "future_space": 3.7,
+          "valuation_odds": 3.1,
+          "evidence_quality": 3.7,
+          "disconfirming_risk_control": 3,
+          "monitorability": 3.7,
+          "payoff_convexity": 3.2
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "raw_total_score": 3.503,
+        "total_score": 3.49,
+        "thesis_confidence": 3.565,
+        "payoff_convexity": 3.105,
+        "opportunity_fit": 3.59,
+        "action_state": "watch_only",
+        "gate_reasons": [
+          "market_underpricing_below_gate"
+        ],
+        "strength": "C"
+      },
+      "action_state": "watch_only",
+      "strength": "C"
+    },
+    {
+      "rank": 4,
+      "ticker": "JD",
+      "name": "JD.com",
+      "thesis_node": "自营零售 + 供应链履约",
+      "score_input": {
+        "chokepoint_strength": 3.4,
+        "future_space": 3.4,
+        "valuation_odds": 3.5,
+        "evidence_quality": 3.6,
+        "disconfirming_risk_control": 2.8,
+        "monitorability": 3.9,
+        "payoff_convexity": 3,
+        "demand_visibility": 3.5,
+        "irreplaceability": 3.2,
+        "market_underpricing": 3.5,
+        "valuation_tolerance": 3.6,
+        "downside_fragility": 3.3,
+        "catalyst_proximity": 2.8,
+        "expected_excess_return": 0.04,
+        "valuation_status": "verified"
+      },
+      "rationale": "履约和零售质量存在，但新业务投入压制集团赔率，稀缺性不足。",
+      "downgrade_risk": "新业务 unit economics、零售利润率、服务收入增长",
+      "source_ids": [
+        "SRC-JD-Q3-2025"
+      ],
+      "next_verification_data": "新业务 unit economics、零售利润率、服务收入增长",
+      "odds_model": "Base: 需求与稀缺性维持；Bull: 价值捕获效率提升且估值未充分反映；Bear: 竞争/投入吞噬现金流。",
+      "review_trigger": "新业务 unit economics、零售利润率、服务收入增长",
+      "score": {
+        "score_components": {
+          "chokepoint_strength": 3.4,
+          "future_space": 3.4,
+          "valuation_odds": 3.5,
+          "evidence_quality": 3.6,
+          "disconfirming_risk_control": 2.8,
+          "monitorability": 3.9,
+          "payoff_convexity": 3
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "raw_total_score": 3.375,
+        "total_score": 3.375,
+        "thesis_confidence": 3.395,
+        "payoff_convexity": 3.03,
+        "opportunity_fit": 3.38,
+        "action_state": "watch_only",
+        "gate_reasons": [
+          "scarcity_or_irreplaceability_below_gate"
+        ],
+        "strength": "C"
+      },
+      "action_state": "watch_only",
+      "strength": "C"
+    },
+    {
+      "rank": 5,
+      "ticker": "NTES",
+      "name": "NetEase",
+      "thesis_node": "游戏 IP 与内容研发",
+      "score_input": {
+        "chokepoint_strength": 3.6,
+        "future_space": 3,
+        "valuation_odds": 3.3,
+        "evidence_quality": 3.8,
+        "disconfirming_risk_control": 3.1,
+        "monitorability": 3.6,
+        "payoff_convexity": 2.9,
+        "demand_visibility": 3,
+        "irreplaceability": 3.6,
+        "market_underpricing": 3.3,
+        "valuation_tolerance": 3.4,
+        "downside_fragility": 3,
+        "catalyst_proximity": 2.8,
+        "expected_excess_return": 0.03,
+        "valuation_status": "verified"
+      },
+      "rationale": "现金流和游戏能力可观察，但未来空间不够大，适合防守观察。",
+      "downgrade_risk": "新游戏 pipeline、版号、游戏收入增速",
+      "source_ids": [
+        "SRC-NETEASE-Q4-2025"
+      ],
+      "next_verification_data": "新游戏 pipeline、版号、游戏收入增速",
+      "odds_model": "Base: 需求与稀缺性维持；Bull: 价值捕获效率提升且估值未充分反映；Bear: 竞争/投入吞噬现金流。",
+      "review_trigger": "新游戏 pipeline、版号、游戏收入增速",
+      "score": {
+        "score_components": {
+          "chokepoint_strength": 3.6,
+          "future_space": 3,
+          "valuation_odds": 3.3,
+          "evidence_quality": 3.8,
+          "disconfirming_risk_control": 3.1,
+          "monitorability": 3.6,
+          "payoff_convexity": 2.9
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "raw_total_score": 3.353,
+        "total_score": 3.353,
+        "thesis_confidence": 3.455,
+        "payoff_convexity": 3.005,
+        "opportunity_fit": 3.33,
+        "action_state": "watch_only",
+        "gate_reasons": [
+          "future_demand_below_gate",
+          "scarcity_or_irreplaceability_below_gate"
+        ],
+        "strength": "C"
+      },
+      "action_state": "watch_only",
+      "strength": "C"
+    },
+    {
+      "rank": 6,
+      "ticker": "PDD",
+      "name": "PDD Holdings",
+      "thesis_node": "低价电商 + 跨境平台",
+      "score_input": {
+        "chokepoint_strength": 2.8,
+        "future_space": 3.8,
+        "valuation_odds": 3,
+        "evidence_quality": 3.3,
+        "disconfirming_risk_control": 2.4,
+        "monitorability": 2.7,
+        "payoff_convexity": 3.6,
+        "demand_visibility": 3.8,
+        "irreplaceability": 2.8,
+        "market_underpricing": 3,
+        "valuation_tolerance": 3.1,
+        "downside_fragility": 3.8,
+        "catalyst_proximity": 2.8,
+        "expected_excess_return": 0,
+        "valuation_status": "verified"
+      },
+      "rationale": "利润强但管理层已提示增速放缓与竞争外部不确定；稀缺性不足。",
+      "downgrade_risk": "商家支持投入、跨境监管、收入增速和现金转化",
+      "source_ids": [
+        "SRC-PDD-Q3-2025"
+      ],
+      "next_verification_data": "商家支持投入、跨境监管、收入增速和现金转化",
+      "odds_model": "Base: 需求与稀缺性维持；Bull: 价值捕获效率提升且估值未充分反映；Bear: 竞争/投入吞噬现金流。",
+      "review_trigger": "商家支持投入、跨境监管、收入增速和现金转化",
+      "score": {
+        "score_components": {
+          "chokepoint_strength": 2.8,
+          "future_space": 3.8,
+          "valuation_odds": 3,
+          "evidence_quality": 3.3,
+          "disconfirming_risk_control": 2.4,
+          "monitorability": 2.7,
+          "payoff_convexity": 3.6
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "raw_total_score": 3.113,
+        "total_score": 2.69,
+        "thesis_confidence": 3.03,
+        "payoff_convexity": 3.1,
+        "opportunity_fit": 3.16,
+        "action_state": "no_action",
+        "gate_reasons": [
+          "scarcity_or_irreplaceability_below_gate",
+          "market_underpricing_below_gate",
+          "disconfirming_risk_control_below_gate",
+          "expected_excess_return_not_positive"
+        ],
+        "strength": "D"
+      },
+      "action_state": "no_action",
+      "strength": "D"
+    },
+    {
+      "rank": 7,
+      "ticker": "BIDU",
+      "name": "Baidu",
+      "thesis_node": "AI Infra + 搜索/自动驾驶",
+      "score_input": {
+        "chokepoint_strength": 3,
+        "future_space": 3.7,
+        "valuation_odds": 3.2,
+        "evidence_quality": 3.5,
+        "disconfirming_risk_control": 2.3,
+        "monitorability": 3.1,
+        "payoff_convexity": 3.4,
+        "demand_visibility": 3.7,
+        "irreplaceability": 3,
+        "market_underpricing": 3.2,
+        "valuation_tolerance": 3.2,
+        "downside_fragility": 3.7,
+        "catalyst_proximity": 3,
+        "expected_excess_return": 0,
+        "valuation_status": "verified"
+      },
+      "rationale": "AI Infra 增速亮眼，但 legacy 业务和资产减值削弱胜率。",
+      "downgrade_risk": "AI 云毛利、legacy 下滑、Apollo Go 商业化",
+      "source_ids": [
+        "SRC-BAIDU-Q4-2025"
+      ],
+      "next_verification_data": "AI 云毛利、legacy 下滑、Apollo Go 商业化",
+      "odds_model": "Base: 需求与稀缺性维持；Bull: 价值捕获效率提升且估值未充分反映；Bear: 竞争/投入吞噬现金流。",
+      "review_trigger": "AI 云毛利、legacy 下滑、Apollo Go 商业化",
+      "score": {
+        "score_components": {
+          "chokepoint_strength": 3,
+          "future_space": 3.7,
+          "valuation_odds": 3.2,
+          "evidence_quality": 3.5,
+          "disconfirming_risk_control": 2.3,
+          "monitorability": 3.1,
+          "payoff_convexity": 3.4
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "raw_total_score": 3.203,
+        "total_score": 2.69,
+        "thesis_confidence": 3.15,
+        "payoff_convexity": 3.08,
+        "opportunity_fit": 3.27,
+        "action_state": "no_action",
+        "gate_reasons": [
+          "scarcity_or_irreplaceability_below_gate",
+          "disconfirming_risk_control_below_gate",
+          "expected_excess_return_not_positive"
+        ],
+        "strength": "D"
+      },
+      "action_state": "no_action",
+      "strength": "D"
+    },
+    {
+      "rank": 8,
+      "ticker": "3690.HK",
+      "name": "Meituan",
+      "thesis_node": "本地生活履约网络",
+      "score_input": {
+        "chokepoint_strength": 3.4,
+        "future_space": 3.7,
+        "valuation_odds": 2.9,
+        "evidence_quality": 3.2,
+        "disconfirming_risk_control": 2.4,
+        "monitorability": 3,
+        "payoff_convexity": 3.1,
+        "demand_visibility": 3.7,
+        "irreplaceability": 3.4,
+        "market_underpricing": 2.9,
+        "valuation_tolerance": 2.9,
+        "downside_fragility": 3.9,
+        "catalyst_proximity": 2.8,
+        "expected_excess_return": 0,
+        "valuation_status": "verified"
+      },
+      "rationale": "用户和履约密度强，但竞争投入和本地生活价格战使赔率不足。",
+      "downgrade_risk": "外卖/即时零售补贴、订单利润、商户 ROI",
+      "source_ids": [
+        "SRC-MEITUAN-Q3-2025"
+      ],
+      "next_verification_data": "外卖/即时零售补贴、订单利润、商户 ROI",
+      "odds_model": "Base: 需求与稀缺性维持；Bull: 价值捕获效率提升且估值未充分反映；Bear: 竞争/投入吞噬现金流。",
+      "review_trigger": "外卖/即时零售补贴、订单利润、商户 ROI",
+      "score": {
+        "score_components": {
+          "chokepoint_strength": 3.4,
+          "future_space": 3.7,
+          "valuation_odds": 2.9,
+          "evidence_quality": 3.2,
+          "disconfirming_risk_control": 2.4,
+          "monitorability": 3,
+          "payoff_convexity": 3.1
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "raw_total_score": 3.189,
+        "total_score": 2.69,
+        "thesis_confidence": 3.175,
+        "payoff_convexity": 2.815,
+        "opportunity_fit": 3.34,
+        "action_state": "no_action",
+        "gate_reasons": [
+          "scarcity_or_irreplaceability_below_gate",
+          "market_underpricing_below_gate",
+          "disconfirming_risk_control_below_gate",
+          "expected_excess_return_not_positive"
+        ],
+        "strength": "D"
+      },
+      "action_state": "no_action",
+      "strength": "D"
+    },
+    {
+      "rank": 9,
+      "ticker": "1024.HK",
+      "name": "Kuaishou",
+      "thesis_node": "短视频社区 + 电商 + Kling AI",
+      "score_input": {
+        "chokepoint_strength": 3.1,
+        "future_space": 3.4,
+        "valuation_odds": 2.8,
+        "evidence_quality": 3.3,
+        "disconfirming_risk_control": 2.6,
+        "monitorability": 3.1,
+        "payoff_convexity": 3.4,
+        "demand_visibility": 3.4,
+        "irreplaceability": 3.1,
+        "market_underpricing": 2.8,
+        "valuation_tolerance": 2.9,
+        "downside_fragility": 3.8,
+        "catalyst_proximity": 3,
+        "expected_excess_return": 0,
+        "valuation_status": "verified"
+      },
+      "rationale": "经营改善可见，但内容流量和电商供给替代性较高，尚不是未定价稀缺机会。",
+      "downgrade_risk": "DAU/MAU、GMV 增速、Kling AI 变现、广告 ROI",
+      "source_ids": [
+        "SRC-KUAISHOU-Q3-2025"
+      ],
+      "next_verification_data": "DAU/MAU、GMV 增速、Kling AI 变现、广告 ROI",
+      "odds_model": "Base: 需求与稀缺性维持；Bull: 价值捕获效率提升且估值未充分反映；Bear: 竞争/投入吞噬现金流。",
+      "review_trigger": "DAU/MAU、GMV 增速、Kling AI 变现、广告 ROI",
+      "score": {
+        "score_components": {
+          "chokepoint_strength": 3.1,
+          "future_space": 3.4,
+          "valuation_odds": 2.8,
+          "evidence_quality": 3.3,
+          "disconfirming_risk_control": 2.6,
+          "monitorability": 3.1,
+          "payoff_convexity": 3.4
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "raw_total_score": 3.105,
+        "total_score": 2.69,
+        "thesis_confidence": 3.09,
+        "payoff_convexity": 3,
+        "opportunity_fit": 3.1,
+        "action_state": "no_action",
+        "gate_reasons": [
+          "future_demand_below_gate",
+          "scarcity_or_irreplaceability_below_gate",
+          "market_underpricing_below_gate",
+          "expected_excess_return_not_positive"
+        ],
+        "strength": "D"
+      },
+      "action_state": "no_action",
+      "strength": "D"
+    }
+  ],
+  "label_attach": [
+    {
+      "ticker": "0700.HK",
+      "label": {
+        "as_of_cutoff": "2026-02-28",
+        "evaluation_date": "2026-05-29",
+        "label_window": "2026-02-27 to 2026-05-29",
+        "currency": "HKD",
+        "start_price": 518,
+        "end_price": 427.2,
+        "forward_3m_return": -17.53,
+        "benchmark_return": "",
+        "excess_return": "",
+        "price_source": "StockAnalysis HKG 0700",
+        "label_status": "close_price_not_total_return_adjusted"
+      }
+    },
+    {
+      "ticker": "BABA",
+      "label": {
+        "as_of_cutoff": "2026-02-28",
+        "evaluation_date": "2026-05-28",
+        "label_window": "2026-02-27 to 2026-05-28",
+        "currency": "USD",
+        "start_price": 144.11,
+        "end_price": 126.16,
+        "forward_3m_return": -12.46,
+        "benchmark_return": "",
+        "excess_return": "",
+        "price_source": "Nasdaq BABA",
+        "label_status": "close_price_not_total_return_adjusted"
+      }
+    },
+    {
+      "ticker": "TCOM",
+      "label": {
+        "as_of_cutoff": "2026-02-28",
+        "evaluation_date": "2026-05-28",
+        "label_window": "2026-02-27 to 2026-05-28",
+        "currency": "USD",
+        "start_price": 52.62,
+        "end_price": 47.08,
+        "forward_3m_return": -10.53,
+        "benchmark_return": "",
+        "excess_return": "",
+        "price_source": "Nasdaq TCOM",
+        "label_status": "close_price_not_total_return_adjusted"
+      }
+    },
+    {
+      "ticker": "JD",
+      "label": {
+        "as_of_cutoff": "2026-02-28",
+        "evaluation_date": "2026-05-28",
+        "label_window": "2026-02-27 to 2026-05-28",
+        "currency": "USD",
+        "start_price": 26.53,
+        "end_price": 29.14,
+        "forward_3m_return": 9.84,
+        "benchmark_return": "",
+        "excess_return": "",
+        "price_source": "Nasdaq JD",
+        "label_status": "close_price_not_total_return_adjusted"
+      }
+    },
+    {
+      "ticker": "NTES",
+      "label": {
+        "as_of_cutoff": "2026-02-28",
+        "evaluation_date": "2026-05-28",
+        "label_window": "2026-02-27 to 2026-05-28",
+        "currency": "USD",
+        "start_price": 114.97,
+        "end_price": 124.02,
+        "forward_3m_return": 7.87,
+        "benchmark_return": "",
+        "excess_return": "",
+        "price_source": "Nasdaq NTES",
+        "label_status": "close_price_not_total_return_adjusted"
+      }
+    },
+    {
+      "ticker": "PDD",
+      "label": {
+        "as_of_cutoff": "2026-02-28",
+        "evaluation_date": "2026-05-28",
+        "label_window": "2026-02-27 to 2026-05-28",
+        "currency": "USD",
+        "start_price": 103.73,
+        "end_price": 83.03,
+        "forward_3m_return": -19.96,
+        "benchmark_return": "",
+        "excess_return": "",
+        "price_source": "Nasdaq PDD",
+        "label_status": "close_price_not_total_return_adjusted"
+      }
+    },
+    {
+      "ticker": "BIDU",
+      "label": {
+        "as_of_cutoff": "2026-02-28",
+        "evaluation_date": "2026-05-28",
+        "label_window": "2026-02-27 to 2026-05-28",
+        "currency": "USD",
+        "start_price": 124.44,
+        "end_price": 132.05,
+        "forward_3m_return": 6.12,
+        "benchmark_return": "",
+        "excess_return": "",
+        "price_source": "Nasdaq BIDU",
+        "label_status": "close_price_not_total_return_adjusted"
+      }
+    },
+    {
+      "ticker": "3690.HK",
+      "label": {
+        "as_of_cutoff": "2026-02-28",
+        "evaluation_date": "2026-05-29",
+        "label_window": "2026-02-27 to 2026-05-29",
+        "currency": "HKD",
+        "start_price": 81.15,
+        "end_price": 73.45,
+        "forward_3m_return": -9.49,
+        "benchmark_return": "",
+        "excess_return": "",
+        "price_source": "StockAnalysis HKG 3690",
+        "label_status": "close_price_not_total_return_adjusted"
+      }
+    },
+    {
+      "ticker": "1024.HK",
+      "label": {
+        "as_of_cutoff": "2026-02-28",
+        "evaluation_date": "2026-05-29",
+        "label_window": "2026-02-27 to 2026-05-29",
+        "currency": "HKD",
+        "start_price": 62.85,
+        "end_price": 45.54,
+        "forward_3m_return": -27.54,
+        "benchmark_return": "",
+        "excess_return": "",
+        "price_source": "StockAnalysis HKG 1024",
+        "label_status": "close_price_not_total_return_adjusted"
+      }
+    }
+  ],
+  "rejected_future_sources": [
+    {
+      "source_id": "LBL-NASDAQ-ADR",
+      "title": "Nasdaq historical quote API for ADR close prices",
+      "url": "https://api.nasdaq.com/api/quote/BABA/historical?assetclass=stocks&fromdate=2026-02-25&todate=2026-05-30&limit=9999",
+      "source_visible_at": "2026-05-28",
+      "source_bucket": "evidence",
+      "support_refute_or_lead": "lead",
+      "allowed_usage": "label_only",
+      "used_in": [
+        "final_label"
+      ],
+      "summary": "Close-price data used only for final outcome columns."
+    },
+    {
+      "source_id": "LBL-STOCKANALYSIS-HK",
+      "title": "StockAnalysis historical pages for Hong Kong close prices",
+      "url": "https://stockanalysis.com/quote/hkg/0700/history/",
+      "source_visible_at": "2026-05-29",
+      "source_bucket": "evidence",
+      "support_refute_or_lead": "lead",
+      "allowed_usage": "label_only",
+      "used_in": [
+        "final_label"
+      ],
+      "summary": "Close-price data used only for final outcome columns."
+    }
+  ],
+  "deepseek_note": "DeepSeek parsed provided source snippets only; GPT verified and synthesized final judgments."
+}

@@ -25,6 +25,7 @@ Return:
 - `revenue_bridge`
 - `gross_margin_bridge`
 - `operating_margin_bridge`
+- `unit_economics_or_product_bridge`
 - `cash_flow_bridge`
 - `capex_and_capacity`
 - `inventory_and_working_capital`
@@ -42,8 +43,10 @@ Return:
 
 - Distinguish reported numbers, adjusted numbers, and management commentary.
 - Separate growth from price, volume, mix, FX, and accounting reclassification when possible.
+- For product-cycle industries, explicitly bridge revenue and margin into volume/shipments, ASP, mix, utilization, cost, inventory, and capacity whenever disclosures allow it.
 - Treat segment data as more decision-useful than group revenue when the question is about value capture.
 - For cash quality, reconcile profit, operating cash flow, capex, free cash flow, inventory, receivables, payables, and contract liabilities.
+- If the thesis depends on capital intensity or supply response, connect capex, depreciation, capacity additions, and expected FCF conversion instead of treating capex as a standalone line item.
 - For backlog/RPO/order data, state whether it is binding, cancellable, timing-sensitive, or only directional.
 - Always state the missing denominator if a company gives a numerator but hides volume, ASP, units, or margin.
 

@@ -1,0 +1,672 @@
+{
+  "as_of_date": "2026-02-28",
+  "scoring_worksheet": [
+    {
+      "rank": 1,
+      "ticker": "SNOW",
+      "name": "Snowflake",
+      "thesis_node": "AI Data Cloud / Cortex",
+      "rationale": "数据云可能成为企业 AI 应用前置瓶颈，赔率相对更凸；但 AI workload 收入披露不足。",
+      "downgrade_risk": "Cortex adoption、consumption growth、FCF margin",
+      "next_verification_data": "Cortex adoption、consumption growth、FCF margin",
+      "odds_model": "Base: 稀缺性维持；Bull: 需求和现金流同时上修；Bear: 估值或竞争吞噬收益。",
+      "review_trigger": "Cortex adoption、consumption growth、FCF margin",
+      "source_ids": [
+        "SRC-SNOW-Q3-FY26"
+      ],
+      "score_input": {
+        "chokepoint_strength": 3.9,
+        "future_space": 4.1,
+        "valuation_odds": 3.4,
+        "evidence_quality": 3.6,
+        "disconfirming_risk_control": 2.9,
+        "monitorability": 3.8,
+        "payoff_convexity": 4.1,
+        "demand_visibility": 4.1,
+        "irreplaceability": 3.9,
+        "market_underpricing": 3.4,
+        "valuation_tolerance": 3.4,
+        "downside_fragility": 2.1,
+        "catalyst_proximity": 4.1,
+        "expected_excess_return": 0.03,
+        "valuation_status": "verified"
+      },
+      "score": {
+        "score_components": {
+          "chokepoint_strength": 3.9,
+          "future_space": 4.1,
+          "valuation_odds": 3.4,
+          "evidence_quality": 3.6,
+          "disconfirming_risk_control": 2.9,
+          "monitorability": 3.8,
+          "payoff_convexity": 4.1
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "raw_total_score": 3.717,
+        "total_score": 3.717,
+        "thesis_confidence": 3.65,
+        "payoff_convexity": 3.92,
+        "opportunity_fit": 3.81,
+        "action_state": "actionable_long",
+        "gate_reasons": [],
+        "strength": "B"
+      },
+      "action_state": "actionable_long",
+      "strength": "B",
+      "label": {
+        "as_of_cutoff": "2026-02-28",
+        "evaluation_date": "2026-05-28",
+        "label_window": "2026-02-27 to 2026-05-28",
+        "currency": "USD",
+        "start_price": 168.41,
+        "end_price": 239.2,
+        "forward_3m_return": 42.03,
+        "benchmark_return": "",
+        "excess_return": "",
+        "price_source": "Nasdaq SNOW",
+        "label_status": "close_price_not_total_return_adjusted"
+      }
+    },
+    {
+      "rank": 2,
+      "ticker": "APP",
+      "name": "AppLovin",
+      "thesis_node": "AXON 广告 AI 优化",
+      "rationale": "AI 广告商业化最直接，但客户集中、广告周期和监管使风险控制不足。",
+      "downgrade_risk": "广告主 ROI、客户集中、平台政策、margin",
+      "next_verification_data": "广告主 ROI、客户集中、平台政策、margin",
+      "odds_model": "Base: 稀缺性维持；Bull: 需求和现金流同时上修；Bear: 估值或竞争吞噬收益。",
+      "review_trigger": "广告主 ROI、客户集中、平台政策、margin",
+      "source_ids": [
+        "SRC-APP-Q4-2025"
+      ],
+      "score_input": {
+        "chokepoint_strength": 3.5,
+        "future_space": 4,
+        "valuation_odds": 3.6,
+        "evidence_quality": 3.2,
+        "disconfirming_risk_control": 2.5,
+        "monitorability": 3,
+        "payoff_convexity": 4.2,
+        "demand_visibility": 4,
+        "irreplaceability": 3.4,
+        "market_underpricing": 3.5,
+        "valuation_tolerance": 3.6,
+        "downside_fragility": 2.5,
+        "catalyst_proximity": 4.2,
+        "expected_excess_return": 0.03,
+        "valuation_status": "verified"
+      },
+      "score": {
+        "score_components": {
+          "chokepoint_strength": 3.5,
+          "future_space": 4,
+          "valuation_odds": 3.6,
+          "evidence_quality": 3.2,
+          "disconfirming_risk_control": 2.5,
+          "monitorability": 3,
+          "payoff_convexity": 4.2
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "raw_total_score": 3.504,
+        "total_score": 3.49,
+        "thesis_confidence": 3.335,
+        "payoff_convexity": 3.94,
+        "opportunity_fit": 3.61,
+        "action_state": "watch_only",
+        "gate_reasons": [
+          "scarcity below gate"
+        ],
+        "strength": "C"
+      },
+      "action_state": "watch_only",
+      "strength": "C",
+      "label": {
+        "as_of_cutoff": "2026-02-28",
+        "evaluation_date": "2026-05-28",
+        "label_window": "2026-02-27 to 2026-05-28",
+        "currency": "USD",
+        "start_price": 434.77,
+        "end_price": 599.89,
+        "forward_3m_return": 37.98,
+        "benchmark_return": "",
+        "excess_return": "",
+        "price_source": "Nasdaq APP",
+        "label_status": "close_price_not_total_return_adjusted"
+      }
+    },
+    {
+      "rank": 3,
+      "ticker": "NOW",
+      "name": "ServiceNow",
+      "thesis_node": "企业工作流 AI control tower",
+      "rationale": "稀缺性和证据质量高，但估值未必给出足够赔率。",
+      "downgrade_risk": "Now Assist ACV、cRPO、renewal、估值",
+      "next_verification_data": "Now Assist ACV、cRPO、renewal、估值",
+      "odds_model": "Base: 稀缺性维持；Bull: 需求和现金流同时上修；Bear: 估值或竞争吞噬收益。",
+      "review_trigger": "Now Assist ACV、cRPO、renewal、估值",
+      "source_ids": [
+        "SRC-NOW-Q4-2025"
+      ],
+      "score_input": {
+        "chokepoint_strength": 4.1,
+        "future_space": 3.8,
+        "valuation_odds": 2.9,
+        "evidence_quality": 4,
+        "disconfirming_risk_control": 3.3,
+        "monitorability": 4.4,
+        "payoff_convexity": 3,
+        "demand_visibility": 3.8,
+        "irreplaceability": 4.2,
+        "market_underpricing": 2.9,
+        "valuation_tolerance": 2.9,
+        "downside_fragility": 1.7000000000000002,
+        "catalyst_proximity": 3,
+        "expected_excess_return": 0,
+        "valuation_status": "verified"
+      },
+      "score": {
+        "score_components": {
+          "chokepoint_strength": 4.1,
+          "future_space": 3.8,
+          "valuation_odds": 2.9,
+          "evidence_quality": 4,
+          "disconfirming_risk_control": 3.3,
+          "monitorability": 4.4,
+          "payoff_convexity": 3
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "raw_total_score": 3.652,
+        "total_score": 2.69,
+        "thesis_confidence": 3.805,
+        "payoff_convexity": 3.24,
+        "opportunity_fit": 3.69,
+        "action_state": "no_action",
+        "gate_reasons": [
+          "underpricing below gate",
+          "expected return not positive"
+        ],
+        "strength": "D"
+      },
+      "action_state": "no_action",
+      "strength": "D",
+      "label": {
+        "as_of_cutoff": "2026-02-28",
+        "evaluation_date": "2026-05-28",
+        "label_window": "2026-02-27 to 2026-05-28",
+        "currency": "USD",
+        "start_price": 108.01,
+        "end_price": 108.73,
+        "forward_3m_return": 0.67,
+        "benchmark_return": "",
+        "excess_return": "",
+        "price_source": "Nasdaq NOW",
+        "label_status": "close_price_not_total_return_adjusted"
+      }
+    },
+    {
+      "rank": 4,
+      "ticker": "MSFT",
+      "name": "Microsoft",
+      "thesis_node": "Copilot + Azure + enterprise distribution",
+      "rationale": "分发稀缺性强，但体量大且 capex 高，AI 应用增量不够纯。",
+      "downgrade_risk": "Copilot monetization、Azure AI margin、capex/FCF",
+      "next_verification_data": "Copilot monetization、Azure AI margin、capex/FCF",
+      "odds_model": "Base: 稀缺性维持；Bull: 需求和现金流同时上修；Bear: 估值或竞争吞噬收益。",
+      "review_trigger": "Copilot monetization、Azure AI margin、capex/FCF",
+      "source_ids": [
+        "SRC-MSFT-FY26-Q2"
+      ],
+      "score_input": {
+        "chokepoint_strength": 4.2,
+        "future_space": 3.6,
+        "valuation_odds": 2.8,
+        "evidence_quality": 4.2,
+        "disconfirming_risk_control": 3.2,
+        "monitorability": 4.6,
+        "payoff_convexity": 2.8,
+        "demand_visibility": 3.8,
+        "irreplaceability": 4.4,
+        "market_underpricing": 2.8,
+        "valuation_tolerance": 2.8,
+        "downside_fragility": 1.7999999999999998,
+        "catalyst_proximity": 2.8,
+        "expected_excess_return": 0,
+        "valuation_status": "verified"
+      },
+      "score": {
+        "score_components": {
+          "chokepoint_strength": 4.2,
+          "future_space": 3.6,
+          "valuation_odds": 2.8,
+          "evidence_quality": 4.2,
+          "disconfirming_risk_control": 3.2,
+          "monitorability": 4.6,
+          "payoff_convexity": 2.8
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "raw_total_score": 3.634,
+        "total_score": 2.69,
+        "thesis_confidence": 3.84,
+        "payoff_convexity": 3.08,
+        "opportunity_fit": 3.74,
+        "action_state": "no_action",
+        "gate_reasons": [
+          "underpricing below gate",
+          "expected return not positive"
+        ],
+        "strength": "D"
+      },
+      "action_state": "no_action",
+      "strength": "D",
+      "label": {
+        "as_of_cutoff": "2026-02-28",
+        "evaluation_date": "2026-05-28",
+        "label_window": "2026-02-27 to 2026-05-28",
+        "currency": "USD",
+        "start_price": 392.74,
+        "end_price": 426.99,
+        "forward_3m_return": 8.72,
+        "benchmark_return": "",
+        "excess_return": "",
+        "price_source": "Nasdaq MSFT",
+        "label_status": "close_price_not_total_return_adjusted"
+      }
+    },
+    {
+      "rank": 5,
+      "ticker": "PLTR",
+      "name": "Palantir",
+      "thesis_node": "Operational AI / AIP",
+      "rationale": "AIP 稀缺性强，但市场预期极高，赔率未过门槛。",
+      "downgrade_risk": "commercial customer growth、contract duration、valuation",
+      "next_verification_data": "commercial customer growth、contract duration、valuation",
+      "odds_model": "Base: 稀缺性维持；Bull: 需求和现金流同时上修；Bear: 估值或竞争吞噬收益。",
+      "review_trigger": "commercial customer growth、contract duration、valuation",
+      "source_ids": [
+        "SRC-PLTR-Q4-2025"
+      ],
+      "score_input": {
+        "chokepoint_strength": 4,
+        "future_space": 4.2,
+        "valuation_odds": 2.3,
+        "evidence_quality": 3.7,
+        "disconfirming_risk_control": 2.8,
+        "monitorability": 3.6,
+        "payoff_convexity": 3.4,
+        "demand_visibility": 4.2,
+        "irreplaceability": 4.1,
+        "market_underpricing": 2.2,
+        "valuation_tolerance": 2.3,
+        "downside_fragility": 2.2,
+        "catalyst_proximity": 3.4,
+        "expected_excess_return": 0,
+        "valuation_status": "verified"
+      },
+      "score": {
+        "score_components": {
+          "chokepoint_strength": 4,
+          "future_space": 4.2,
+          "valuation_odds": 2.3,
+          "evidence_quality": 3.7,
+          "disconfirming_risk_control": 2.8,
+          "monitorability": 3.6,
+          "payoff_convexity": 3.4
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "raw_total_score": 3.494,
+        "total_score": 2.69,
+        "thesis_confidence": 3.585,
+        "payoff_convexity": 3.26,
+        "opportunity_fit": 3.56,
+        "action_state": "no_action",
+        "gate_reasons": [
+          "underpricing below gate",
+          "expected return not positive"
+        ],
+        "strength": "D"
+      },
+      "action_state": "no_action",
+      "strength": "D",
+      "label": {
+        "as_of_cutoff": "2026-02-28",
+        "evaluation_date": "2026-05-28",
+        "label_window": "2026-02-27 to 2026-05-28",
+        "currency": "USD",
+        "start_price": 137.19,
+        "end_price": 143.34,
+        "forward_3m_return": 4.48,
+        "benchmark_return": "",
+        "excess_return": "",
+        "price_source": "Nasdaq PLTR",
+        "label_status": "close_price_not_total_return_adjusted"
+      }
+    },
+    {
+      "rank": 6,
+      "ticker": "CRM",
+      "name": "Salesforce",
+      "thesis_node": "Agentforce + Data 360",
+      "rationale": "AI CRM 线索真实，但核心增长仍中个位到低双位，AI 增量需证明。",
+      "downgrade_risk": "Agentforce paid deals、ARR、RPO、FCF",
+      "next_verification_data": "Agentforce paid deals、ARR、RPO、FCF",
+      "odds_model": "Base: 稀缺性维持；Bull: 需求和现金流同时上修；Bear: 估值或竞争吞噬收益。",
+      "review_trigger": "Agentforce paid deals、ARR、RPO、FCF",
+      "source_ids": [
+        "SRC-CRM-Q3-FY26"
+      ],
+      "score_input": {
+        "chokepoint_strength": 3.5,
+        "future_space": 3.4,
+        "valuation_odds": 3.1,
+        "evidence_quality": 3.7,
+        "disconfirming_risk_control": 3,
+        "monitorability": 4.1,
+        "payoff_convexity": 2.8,
+        "demand_visibility": 3.5,
+        "irreplaceability": 3.5,
+        "market_underpricing": 3.1,
+        "valuation_tolerance": 3.1,
+        "downside_fragility": 2,
+        "catalyst_proximity": 2.8,
+        "expected_excess_return": 0,
+        "valuation_status": "verified"
+      },
+      "score": {
+        "score_components": {
+          "chokepoint_strength": 3.5,
+          "future_space": 3.4,
+          "valuation_odds": 3.1,
+          "evidence_quality": 3.7,
+          "disconfirming_risk_control": 3,
+          "monitorability": 4.1,
+          "payoff_convexity": 2.8
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "raw_total_score": 3.355,
+        "total_score": 2.69,
+        "thesis_confidence": 3.45,
+        "payoff_convexity": 3.1,
+        "opportunity_fit": 3.38,
+        "action_state": "no_action",
+        "gate_reasons": [
+          "scarcity below gate",
+          "underpricing below gate",
+          "expected return not positive"
+        ],
+        "strength": "D"
+      },
+      "action_state": "no_action",
+      "strength": "D",
+      "label": {
+        "as_of_cutoff": "2026-02-28",
+        "evaluation_date": "2026-05-28",
+        "label_window": "2026-02-27 to 2026-05-28",
+        "currency": "USD",
+        "start_price": 194.79,
+        "end_price": 176.17,
+        "forward_3m_return": -9.56,
+        "benchmark_return": "",
+        "excess_return": "",
+        "price_source": "Nasdaq CRM",
+        "label_status": "close_price_not_total_return_adjusted"
+      }
+    },
+    {
+      "rank": 7,
+      "ticker": "ADBE",
+      "name": "Adobe",
+      "thesis_node": "Firefly / Creative AI",
+      "rationale": "创意资产和工具链强，但 AI 是否带来净新增收入仍未充分验证。",
+      "downgrade_risk": "AI ARR、Digital Media ARR、价格/留存",
+      "next_verification_data": "AI ARR、Digital Media ARR、价格/留存",
+      "odds_model": "Base: 稀缺性维持；Bull: 需求和现金流同时上修；Bear: 估值或竞争吞噬收益。",
+      "review_trigger": "AI ARR、Digital Media ARR、价格/留存",
+      "source_ids": [
+        "SRC-ADBE-Q4-2025"
+      ],
+      "score_input": {
+        "chokepoint_strength": 3.4,
+        "future_space": 3.2,
+        "valuation_odds": 3,
+        "evidence_quality": 3.6,
+        "disconfirming_risk_control": 2.9,
+        "monitorability": 3.8,
+        "payoff_convexity": 2.7,
+        "demand_visibility": 3.2,
+        "irreplaceability": 3.4,
+        "market_underpricing": 3,
+        "valuation_tolerance": 3,
+        "downside_fragility": 2.1,
+        "catalyst_proximity": 2.7,
+        "expected_excess_return": 0,
+        "valuation_status": "verified"
+      },
+      "score": {
+        "score_components": {
+          "chokepoint_strength": 3.4,
+          "future_space": 3.2,
+          "valuation_odds": 3,
+          "evidence_quality": 3.6,
+          "disconfirming_risk_control": 2.9,
+          "monitorability": 3.8,
+          "payoff_convexity": 2.7
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "raw_total_score": 3.227,
+        "total_score": 2.69,
+        "thesis_confidence": 3.325,
+        "payoff_convexity": 3,
+        "opportunity_fit": 3.22,
+        "action_state": "no_action",
+        "gate_reasons": [
+          "future demand below gate",
+          "scarcity below gate",
+          "underpricing below gate",
+          "expected return not positive"
+        ],
+        "strength": "D"
+      },
+      "action_state": "no_action",
+      "strength": "D",
+      "label": {
+        "as_of_cutoff": "2026-02-28",
+        "evaluation_date": "2026-05-28",
+        "label_window": "2026-02-27 to 2026-05-28",
+        "currency": "USD",
+        "start_price": 262.41,
+        "end_price": 241.44,
+        "forward_3m_return": -7.99,
+        "benchmark_return": "",
+        "excess_return": "",
+        "price_source": "Nasdaq ADBE",
+        "label_status": "close_price_not_total_return_adjusted"
+      }
+    }
+  ],
+  "label_attach": [
+    {
+      "ticker": "SNOW",
+      "label": {
+        "as_of_cutoff": "2026-02-28",
+        "evaluation_date": "2026-05-28",
+        "label_window": "2026-02-27 to 2026-05-28",
+        "currency": "USD",
+        "start_price": 168.41,
+        "end_price": 239.2,
+        "forward_3m_return": 42.03,
+        "benchmark_return": "",
+        "excess_return": "",
+        "price_source": "Nasdaq SNOW",
+        "label_status": "close_price_not_total_return_adjusted"
+      }
+    },
+    {
+      "ticker": "APP",
+      "label": {
+        "as_of_cutoff": "2026-02-28",
+        "evaluation_date": "2026-05-28",
+        "label_window": "2026-02-27 to 2026-05-28",
+        "currency": "USD",
+        "start_price": 434.77,
+        "end_price": 599.89,
+        "forward_3m_return": 37.98,
+        "benchmark_return": "",
+        "excess_return": "",
+        "price_source": "Nasdaq APP",
+        "label_status": "close_price_not_total_return_adjusted"
+      }
+    },
+    {
+      "ticker": "NOW",
+      "label": {
+        "as_of_cutoff": "2026-02-28",
+        "evaluation_date": "2026-05-28",
+        "label_window": "2026-02-27 to 2026-05-28",
+        "currency": "USD",
+        "start_price": 108.01,
+        "end_price": 108.73,
+        "forward_3m_return": 0.67,
+        "benchmark_return": "",
+        "excess_return": "",
+        "price_source": "Nasdaq NOW",
+        "label_status": "close_price_not_total_return_adjusted"
+      }
+    },
+    {
+      "ticker": "MSFT",
+      "label": {
+        "as_of_cutoff": "2026-02-28",
+        "evaluation_date": "2026-05-28",
+        "label_window": "2026-02-27 to 2026-05-28",
+        "currency": "USD",
+        "start_price": 392.74,
+        "end_price": 426.99,
+        "forward_3m_return": 8.72,
+        "benchmark_return": "",
+        "excess_return": "",
+        "price_source": "Nasdaq MSFT",
+        "label_status": "close_price_not_total_return_adjusted"
+      }
+    },
+    {
+      "ticker": "PLTR",
+      "label": {
+        "as_of_cutoff": "2026-02-28",
+        "evaluation_date": "2026-05-28",
+        "label_window": "2026-02-27 to 2026-05-28",
+        "currency": "USD",
+        "start_price": 137.19,
+        "end_price": 143.34,
+        "forward_3m_return": 4.48,
+        "benchmark_return": "",
+        "excess_return": "",
+        "price_source": "Nasdaq PLTR",
+        "label_status": "close_price_not_total_return_adjusted"
+      }
+    },
+    {
+      "ticker": "CRM",
+      "label": {
+        "as_of_cutoff": "2026-02-28",
+        "evaluation_date": "2026-05-28",
+        "label_window": "2026-02-27 to 2026-05-28",
+        "currency": "USD",
+        "start_price": 194.79,
+        "end_price": 176.17,
+        "forward_3m_return": -9.56,
+        "benchmark_return": "",
+        "excess_return": "",
+        "price_source": "Nasdaq CRM",
+        "label_status": "close_price_not_total_return_adjusted"
+      }
+    },
+    {
+      "ticker": "ADBE",
+      "label": {
+        "as_of_cutoff": "2026-02-28",
+        "evaluation_date": "2026-05-28",
+        "label_window": "2026-02-27 to 2026-05-28",
+        "currency": "USD",
+        "start_price": 262.41,
+        "end_price": 241.44,
+        "forward_3m_return": -7.99,
+        "benchmark_return": "",
+        "excess_return": "",
+        "price_source": "Nasdaq ADBE",
+        "label_status": "close_price_not_total_return_adjusted"
+      }
+    }
+  ],
+  "rejected_future_sources": [
+    {
+      "source_id": "LBL-NASDAQ-AI",
+      "title": "Nasdaq historical quote API for AI software close prices",
+      "url": "https://api.nasdaq.com/api/quote/MSFT/historical?assetclass=stocks&fromdate=2026-02-25&todate=2026-05-30&limit=9999",
+      "source_visible_at": "2026-05-28",
+      "source_bucket": "evidence",
+      "support_refute_or_lead": "lead",
+      "allowed_usage": "label_only",
+      "used_in": [
+        "final_label"
+      ],
+      "summary": "Close-price data used only for final target label columns."
+    }
+  ]
+}

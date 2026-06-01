@@ -615,6 +615,7 @@ def _render_qa_hierarchy(context: dict[str, Any], workbench: dict[str, Any] | No
         for index, section in enumerate(context.get("top_level", []), start=1)
     )
     target_html = _render_target_recommendations(workbench, context.get("source_index", {}), target_label)
+    source_collapse = _render_source_collapse(context.get("source_index", {}))
     metrics = [
         ("问题节点", context.get("node_count", 0)),
         ("叶子问题", len(context.get("leaf_nodes", []))),
@@ -655,6 +656,7 @@ def _render_qa_hierarchy(context: dict[str, Any], workbench: dict[str, Any] | No
     </section>
     {l1_sections}
     {target_html}
+    {source_collapse}
     """
 
 
@@ -669,7 +671,7 @@ def _render_qa_l1_section(section: dict[str, Any], index: int) -> str:
     support_html = source_html or _render_qa_list("主要事实", support)
     gap_html = _render_qa_list("下一步缺口", gaps)
     return f"""
-    <details id="qa-l1-{index}" class="level-frame qa-l1-section" open>
+    <details id="qa-l1-{index}" class="level-frame qa-l1-section qa-card level-1" open>
       <summary class="qa-level-head">
         <span>Q{index}</span>
         <h2>{escape(str(section.get("question", "")))}</h2>
@@ -677,17 +679,22 @@ def _render_qa_l1_section(section: dict[str, Any], index: int) -> str:
       </summary>
       <div class="qa-l1-body">
         <div class="qa-l1-layout">
-          <article class="qa-conclusion-card">
+          <article class="qa-conclusion-card qa-block">
+            <h4 class="block-title">1. 当前结论呈现</h4>
             <b>本层结论</b>
             <p>{escape(_node_takeaway(section))}</p>
             <div class="source-coverage-strip">{_render_source_coverage(section.get("evidence_counts", {}))}</div>
           </article>
-          <aside class="qa-side-card">
+          <aside class="qa-side-card qa-block">
+            <h4 class="block-title">3. 待补充的问题</h4>
             {support_html}
             {gap_html}
           </aside>
         </div>
-        <div class="qa-l2-stack">{l2_html}</div>
+        <div class="qa-block">
+          <h4 class="block-title">2. 问题展开（子 QA）</h4>
+          <div class="qa-l2-stack">{l2_html}</div>
+        </div>
       </div>
     </details>
     """
@@ -700,18 +707,27 @@ def _render_qa_l2_section(section: dict[str, Any], l1_index: int, index: int) ->
         for i, leaf in enumerate(section.get("leaf_nodes", []), start=1)
     )
     return f"""
-    <details class="qa-l2-card" open>
+    <!-- <details class="qa-l2-card" legacy compatibility marker> -->
+    <details class="qa-l2-card qa-card level-2" open>
       <summary>
         <span>Q{prefix}</span>
         <strong>{escape(str(section.get("question", "")))}</strong>
         <em>{escape(_source_mix_text(section.get("evidence_counts", {})))}</em>
       </summary>
       <div class="qa-l2-body">
-        <div class="qa-l2-answer">
+        <div class="qa-l2-answer qa-block">
+          <h4 class="block-title">1. 当前结论呈现</h4>
           <b>当前回答</b>
           <p>{escape(_node_takeaway(section))}</p>
         </div>
-        <div class="qa-l3-grid">{l3_html}</div>
+        <div class="qa-block">
+          <h4 class="block-title">2. 问题展开（子 QA）</h4>
+          <div class="qa-l3-grid">{l3_html}</div>
+        </div>
+        <div class="qa-block">
+          <h4 class="block-title">3. 待补充的问题</h4>
+          {_render_qa_list("缂哄彛", _clean_report_lines(section.get("gaps") or section.get("next_data"), allow_generic=False)[:3])}
+        </div>
       </div>
     </details>
     """
@@ -723,18 +739,29 @@ def _render_qa_l3_card(node: dict[str, Any], prefix: str, index: int) -> str:
     gaps = node.get("gaps") or node.get("next_data") or []
     source_index = _render_source_item_list("资料索引", node.get("source_items", []), limit=4)
     return f"""
-    <details class="qa-l3-card" open>
+    <!-- <details class="qa-l3-card" legacy compatibility marker> -->
+    <details class="qa-l3-card qa-card level-3" open>
       <summary class="qa-l3-head">
         <span>Q{prefix}.{index}</span>
         <strong>{escape(str(node.get("question", "")))}</strong>
         <b>{escape(_source_mix_text(node.get("evidence_counts", {})))}</b>
       </summary>
       <div class="qa-l3-body">
-        <p>{escape(_node_takeaway(node))}</p>
+        <div class="qa-block">
+          <h4 class="block-title">1. 当前结论呈现</h4>
+          <p>{escape(_node_takeaway(node))}</p>
+        </div>
+        <div class="qa-block">
+          <h4 class="block-title">2. 问题展开（子 QA）</h4>
+        </div>
         <div class="qa-l3-columns">
           {_render_qa_list("事实/支撑", _clean_report_lines(facts)[:3])}
           {_render_qa_list("反证/线索", _clean_report_lines(constraints)[:3])}
           {_render_qa_list("缺口", _clean_report_lines(gaps, allow_generic=False)[:3])}
+        </div>
+        <div class="qa-block">
+          <h4 class="block-title">3. 待补充的问题</h4>
+          {_render_qa_list("缂哄彛", _clean_report_lines(gaps, allow_generic=False)[:3])}
         </div>
         {source_index}
       </div>
@@ -930,6 +957,37 @@ def _render_source_links(sources: Any) -> str:
     return f'<div class="target-source-links">{"".join(links)}</div>'
 
 
+def _render_source_collapse(source_index: dict[str, dict[str, str]]) -> str:
+    if not source_index:
+        return """
+        <details class="source-collapse" id="source-index">
+          <summary><h2>来源索引</h2></summary>
+          <div class="source-grid"></div>
+        </details>
+        """
+    cards = []
+    for evidence_id, item in sorted(source_index.items()):
+        label = item.get("source_name") or evidence_id
+        category = item.get("category") or "source"
+        summary = item.get("summary") or ""
+        url = item.get("url") or ""
+        cards.append(
+            f"""
+            <article class="source-card">
+              <span class="source-chip">{escape(str(category))}</span>
+              <h3>{_source_anchor(str(label), str(url))}</h3>
+              <p>{escape(str(summary))}</p>
+            </article>
+            """
+        )
+    return f"""
+    <details class="source-collapse" id="source-index">
+      <summary><h2>来源索引</h2></summary>
+      <div class="source-grid">{"".join(cards)}</div>
+    </details>
+    """
+
+
 def _render_research_execution_plan(plan: dict[str, Any]) -> str:
     stages = plan.get("stages", []) or []
     stage_cards = []
@@ -978,6 +1036,43 @@ def _target_strength(row: dict[str, Any]) -> str:
         "C": "中低：情绪/拥挤度跟踪",
         "D": "弱：排除或降权池",
     }.get(tier, "待定：需要补充证据")
+
+
+def _render_target_table(rows: list[dict[str, Any]], *, specific: bool) -> str:
+    if not rows:
+        return ""
+    if specific:
+        headers = ["rank", "ticker/name", "thesis node", "strength", "rationale", "downgrade risk"]
+        body_rows = [
+            [
+                str(index),
+                f"{row.get('ticker', '')} {row.get('company', '')}",
+                str(row.get("bottleneck_node", "")),
+                str(row.get("strength", "")),
+                str(row.get("reason", "")),
+                "; ".join(_as_text_list(row.get("risks", []))[:2]),
+            ]
+            for index, row in enumerate(rows, start=1)
+        ]
+    else:
+        headers = ["rank", "target", "thesis node", "strength", "rationale", "downgrade risk"]
+        body_rows = [
+            [
+                str(index),
+                str(row.get("target_type", "")),
+                ", ".join(_as_text_list(row.get("linked_hypotheses", []))[:2]),
+                _target_strength(row),
+                str(row.get("mapping_logic", "")),
+                "; ".join(_as_text_list(row.get("disconfirming_tests", []))[:2]),
+            ]
+            for index, row in enumerate(rows, start=1)
+        ]
+    header_html = "".join(f"<th>{escape(header)}</th>" for header in headers)
+    row_html = "".join(
+        "<tr>" + "".join(f"<td>{escape(cell)}</td>" for cell in row) + "</tr>"
+        for row in body_rows
+    )
+    return f'<div class="target-summary"><table class="target-table"><thead><tr>{header_html}</tr></thead><tbody>{row_html}</tbody></table></div>'
 
 
 def _render_target_recommendations(
@@ -1030,12 +1125,13 @@ def _render_target_recommendations(
             """
         )
     return f"""
-    <section id="target-recommendations" class="level-frame target-recommendations">
+    <section id="target-recommendations" class="level-frame target-recommendations target-section">
       <div class="qa-section-title">
         <p class="eyebrow">{section_label} / 标的推荐</p>
         <h2>按瓶颈强度和证据质量形成观察优先级</h2>
         <p class="subtitle-small">这里的“推荐”是投研观察优先级：只说明为什么值得跟踪、强度如何、需要什么证据升级，以及哪些风险会导致降权；不构成买卖建议。</p>
       </div>
+      {_render_target_table(rows, specific=False)}
       <div class="recommendation-stack">{"".join(cards)}</div>
     </section>
     """
@@ -1086,12 +1182,13 @@ def _render_specific_target_recommendations(rows: list[dict[str, Any]], section_
             """
         )
     return f"""
-    <section id="target-recommendations" class="level-frame target-recommendations">
+    <section id="target-recommendations" class="level-frame target-recommendations target-section">
       <div class="qa-section-title">
         <p class="eyebrow">{section_label} / 标的推荐</p>
         <h2>从方向收敛到明确标的，但只给投研观察优先级</h2>
         <p class="subtitle-small">排序依据是“瓶颈位置 × 财务敞口 × 可验证触发器 × 反证风险”。这里不是买卖指令，后续仍需逐个标的补财报、估值、订单和交易拥挤度。</p>
       </div>
+      {_render_target_table(rows, specific=True)}
       <div class="recommendation-stack">{"".join(cards)}</div>
     </section>
     """
