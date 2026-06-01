@@ -1,0 +1,4525 @@
+{
+  "project_id": "gtc_2026_opportunities_live_20260601",
+  "run_mode": "live_prediction",
+  "report_date": "2026-06-01",
+  "review_horizon": "2026-09-01",
+  "l1_questions": [
+    {
+      "id": "Q1",
+      "level": 1,
+      "question": "GTC 2026 到底给了哪些可投资信号，哪些只是发布会热度？",
+      "conclusion": "GTC 2026 的核心信号是 AI 工厂从 GPU 走向整机柜、网络、存储、电力冷却和软件生态；GTC Taipei 又把 Vera/Rubin 量产和 RTX Spark 个人 AI PC 加进当前信息集。但多数线索仍需要订单、毛利和估值验证。",
+      "children": [
+        {
+          "id": "Q1.1",
+          "level": 2,
+          "question": "大会事实和信号边界",
+          "conclusion": "GTC 2026 已经给出多个可验证产品和合作信号，但投资上必须区分已宣布、已量产、已被客户采用和已转化为财务弹性。",
+          "children": [
+            {
+              "id": "Q1.1.1",
+              "parent": "Q1.1",
+              "level": 3,
+              "question": "GTC 2026 的主线公告到底是什么？",
+              "conclusion": "Q1 可以确认 GTC 是产业链事件，不是单品发布会。",
+              "skill": "news-event-analysis",
+              "score_component": "evidence_quality",
+              "scoreComponent": "evidence_quality",
+              "decision_use": "决定研究是否从单 GPU 主题升级为 AI 工厂产业链主题。",
+              "materiality": "决定研究是否从单 GPU 主题升级为 AI 工厂产业链主题。",
+              "support_evidence": [
+                "SRC-NV-GTC-OVERVIEW supports GTC 2026 的主线公告到底是什么？",
+                "SRC-NV-VERA-RUBIN supports GTC 2026 的主线公告到底是什么？",
+                "SRC-NV-VERA-CPU supports GTC 2026 的主线公告到底是什么？"
+              ],
+              "refute_evidence": [
+                "Post-GTC order, margin or adoption data contradicting GTC 2026 的主线公告到底是什么？"
+              ],
+              "target_implications": "Affects evidence_quality and target action_state.",
+              "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+              "refuting_source_plan": [
+                "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+              ],
+              "source_plan": [
+                {
+                  "source_id": "SRC-NV-GTC-OVERVIEW",
+                  "source_visible_at": "2026-03-03",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "news-event-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-NV-VERA-RUBIN",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "news-event-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-NV-VERA-CPU",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "news-event-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                }
+              ],
+              "skill_dispatch": {
+                "task_family": "news-event",
+                "selected_skill": "news-event-analysis",
+                "concrete_materials": [
+                  "SRC-NV-GTC-OVERVIEW",
+                  "SRC-NV-VERA-RUBIN",
+                  "SRC-NV-VERA-CPU"
+                ],
+                "extraction_schema": [
+                  "key_facts",
+                  "numbers_dates",
+                  "investment_relevance",
+                  "support_refute_or_lead",
+                  "uncertainties"
+                ],
+                "source_extraction_ids": [
+                  "EXT-Q1-1-1-NV-GTC-OVERVIEW",
+                  "EXT-Q1-1-1-NV-VERA-RUBIN",
+                  "EXT-Q1-1-1-NV-VERA-CPU"
+                ],
+                "leaf_source_review_ids": [
+                  "REV-Q1-1-1-NV-GTC-OVERVIEW",
+                  "REV-Q1-1-1-NV-VERA-RUBIN",
+                  "REV-Q1-1-1-NV-VERA-CPU"
+                ],
+                "skill_output_status": "gpt_verified_direct_parse",
+                "fallback_used": true,
+                "gpt_verification_status": "verified_against_public_sources"
+              },
+              "fact": "GTC 2026 官方信息覆盖 AI 工厂、Vera Rubin 平台、Vera CPU、网络、存储、机器人和应用生态。",
+              "inference": "这说明主线不只是 GPU 换代，而是 rack-scale AI factory 的系统化扩张。",
+              "judgment": "Q1 可以确认 GTC 是产业链事件，不是单品发布会。",
+              "gap": "仍需把发布会口径和真实订单分开。",
+              "trigger": "若客户实例、量产时间和出货数据继续落地，提高 evidence_quality。",
+              "sourceIds": [
+                "SRC-NV-GTC-OVERVIEW",
+                "SRC-NV-VERA-RUBIN",
+                "SRC-NV-VERA-CPU"
+              ],
+              "source_links": [
+                "https://nvidianews.nvidia.com/news/nvidia-ceo-jensen-huang-and-global-technology-leaders-to-showcase-age-of-ai-at-gtc-2026",
+                "https://nvidianews.nvidia.com/news/nvidia-vera-rubin-platform",
+                "https://nvidianews.nvidia.com/news/nvidia-launches-vera-cpu-purpose-built-for-agentic-ai"
+              ],
+              "answerArtifact": {
+                "title": "GTC 主线拆解",
+                "columns": [
+                  "主线",
+                  "证据",
+                  "投资含义"
+                ],
+                "rows": [
+                  [
+                    "AI 工厂",
+                    "Vera Rubin + DSX + STX",
+                    "基础设施链条扩张"
+                  ],
+                  [
+                    "agentic AI",
+                    "Vera CPU / BlueField STX",
+                    "推理和长上下文需求"
+                  ],
+                  [
+                    "physical AI",
+                    "Cosmos/Isaac/GR00T",
+                    "机器人应用期权"
+                  ],
+                  [
+                    "personal AI",
+                    "RTX Spark Windows PC",
+                    "终端换机期权"
+                  ]
+                ]
+              }
+            },
+            {
+              "id": "Q1.1.2",
+              "parent": "Q1.1",
+              "level": 3,
+              "question": "哪些信号已经接近量产或客户采用？",
+              "conclusion": "可提高 AI factory 主线可信度，但对第三方标的仍需订单和毛利验证。",
+              "skill": "news-event-analysis",
+              "score_component": "evidence_quality",
+              "scoreComponent": "evidence_quality",
+              "decision_use": "防止把路线图、合作意向和收入确认混为一谈。",
+              "materiality": "防止把路线图、合作意向和收入确认混为一谈。",
+              "support_evidence": [
+                "SRC-NV-GTC-TAIPEI-VERA supports 哪些信号已经接近量产或客户采用？",
+                "SRC-NV-VERA-CPU supports 哪些信号已经接近量产或客户采用？",
+                "SRC-DELL-AI-FACTORY supports 哪些信号已经接近量产或客户采用？"
+              ],
+              "refute_evidence": [
+                "Post-GTC order, margin or adoption data contradicting 哪些信号已经接近量产或客户采用？"
+              ],
+              "target_implications": "Affects evidence_quality and target action_state.",
+              "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+              "refuting_source_plan": [
+                "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+              ],
+              "source_plan": [
+                {
+                  "source_id": "SRC-NV-GTC-TAIPEI-VERA",
+                  "source_visible_at": "2026-05-31",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "news-event-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-NV-VERA-CPU",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "news-event-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-DELL-AI-FACTORY",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "news-event-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                }
+              ],
+              "skill_dispatch": {
+                "task_family": "news-event",
+                "selected_skill": "news-event-analysis",
+                "concrete_materials": [
+                  "SRC-NV-GTC-TAIPEI-VERA",
+                  "SRC-NV-VERA-CPU",
+                  "SRC-DELL-AI-FACTORY"
+                ],
+                "extraction_schema": [
+                  "key_facts",
+                  "numbers_dates",
+                  "investment_relevance",
+                  "support_refute_or_lead",
+                  "uncertainties"
+                ],
+                "source_extraction_ids": [
+                  "EXT-Q1-1-2-NV-GTC-TAIPEI-VERA",
+                  "EXT-Q1-1-2-NV-VERA-CPU",
+                  "EXT-Q1-1-2-DELL-AI-FACTORY"
+                ],
+                "leaf_source_review_ids": [
+                  "REV-Q1-1-2-NV-GTC-TAIPEI-VERA",
+                  "REV-Q1-1-2-NV-VERA-CPU",
+                  "REV-Q1-1-2-DELL-AI-FACTORY"
+                ],
+                "skill_output_status": "gpt_verified_direct_parse",
+                "fallback_used": true,
+                "gpt_verification_status": "verified_against_public_sources"
+              },
+              "fact": "NVIDIA 5 月底进一步强调 Vera Rubin ramp/full production，并列出系统制造商、云厂商和 AI factory 采用线索。",
+              "inference": "量产/采用信号比单纯路线图更强，但仍不等于每个供应链标的都能确认收入。",
+              "judgment": "可提高 AI factory 主线可信度，但对第三方标的仍需订单和毛利验证。",
+              "gap": "缺少逐家公司订单规模、交付节奏和利润率。",
+              "trigger": "若 OEM/云厂商披露 Vera Rubin 订单和收入贡献，升级相关目标。",
+              "sourceIds": [
+                "SRC-NV-GTC-TAIPEI-VERA",
+                "SRC-NV-VERA-CPU",
+                "SRC-DELL-AI-FACTORY"
+              ],
+              "source_links": [
+                "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Vera-Rubin-Ramps-Into-Full-Production-to-Power-Agentic-AI-Factories-Worldwide/default.aspx",
+                "https://nvidianews.nvidia.com/news/nvidia-launches-vera-cpu-purpose-built-for-agentic-ai",
+                "https://investors.delltechnologies.com/node/19336/pdf"
+              ],
+              "answerArtifact": {
+                "title": "信号强度分层",
+                "columns": [
+                  "层级",
+                  "当前证据",
+                  "使用方式"
+                ],
+                "rows": [
+                  [
+                    "发布会方向",
+                    "GTC overview",
+                    "只作主题线索"
+                  ],
+                  [
+                    "产品平台",
+                    "Vera/Rubin/Vera CPU/STX",
+                    "可进入 Q2 卡点评估"
+                  ],
+                  [
+                    "客户采用",
+                    "云厂商/制造商名单",
+                    "仍需订单规模"
+                  ],
+                  [
+                    "财务兑现",
+                    "尚未完整披露",
+                    "不能直接高行动状态"
+                  ]
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "Q1.2",
+          "level": 2,
+          "question": "需求是否能从 AI 工厂扩到终端应用",
+          "conclusion": "AI 工厂是主线，个人 AI PC、机器人和自动驾驶是增量期权；它们能否兑现取决于使用量、订单和单位经济性。",
+          "children": [
+            {
+              "id": "Q1.2.1",
+              "parent": "Q1.2",
+              "level": 3,
+              "question": "AI 工厂需求能否支撑多环节投资机会？",
+              "conclusion": "Q1.2 支持建立跨环节观察池，但不能假设每个环节都有超额收益。",
+              "skill": "industry-report-analysis",
+              "score_component": "future_space",
+              "scoreComponent": "future_space",
+              "decision_use": "决定是否只研究 NVDA，还是扩展到电力、连接、系统和制造链。",
+              "materiality": "决定是否只研究 NVDA，还是扩展到电力、连接、系统和制造链。",
+              "support_evidence": [
+                "SRC-NV-GTC-OVERVIEW supports AI 工厂需求能否支撑多环节投资机会？",
+                "SRC-NV-VERA-RUBIN supports AI 工厂需求能否支撑多环节投资机会？",
+                "SRC-VRT-DSX supports AI 工厂需求能否支撑多环节投资机会？"
+              ],
+              "refute_evidence": [
+                "Post-GTC order, margin or adoption data contradicting AI 工厂需求能否支撑多环节投资机会？"
+              ],
+              "target_implications": "Affects future_space and target action_state.",
+              "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+              "refuting_source_plan": [
+                "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+              ],
+              "source_plan": [
+                {
+                  "source_id": "SRC-NV-GTC-OVERVIEW",
+                  "source_visible_at": "2026-03-03",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "industry-report-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-NV-VERA-RUBIN",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "industry-report-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-VRT-DSX",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "industry-report-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                }
+              ],
+              "skill_dispatch": {
+                "task_family": "industry-report",
+                "selected_skill": "industry-report-analysis",
+                "concrete_materials": [
+                  "SRC-NV-GTC-OVERVIEW",
+                  "SRC-NV-VERA-RUBIN",
+                  "SRC-VRT-DSX"
+                ],
+                "extraction_schema": [
+                  "key_facts",
+                  "numbers_dates",
+                  "investment_relevance",
+                  "support_refute_or_lead",
+                  "uncertainties"
+                ],
+                "source_extraction_ids": [
+                  "EXT-Q1-2-1-NV-GTC-OVERVIEW",
+                  "EXT-Q1-2-1-NV-VERA-RUBIN",
+                  "EXT-Q1-2-1-VRT-DSX"
+                ],
+                "leaf_source_review_ids": [
+                  "REV-Q1-2-1-NV-GTC-OVERVIEW",
+                  "REV-Q1-2-1-NV-VERA-RUBIN",
+                  "REV-Q1-2-1-VRT-DSX"
+                ],
+                "skill_output_status": "gpt_verified_direct_parse",
+                "fallback_used": true,
+                "gpt_verification_status": "verified_against_public_sources"
+              },
+              "fact": "GTC 把 AI stack 描述为能源、芯片、基础设施、模型和应用五层，并把 Vera Rubin/DSX 与数据中心部署联系起来。",
+              "inference": "如果 AI factory 是基础设施扩张，价值会外溢到电力冷却、机柜、网络、存储和系统交付。",
+              "judgment": "Q1.2 支持建立跨环节观察池，但不能假设每个环节都有超额收益。",
+              "gap": "缺少客户 capex ROI、项目电力约束和毛利分解。",
+              "trigger": "若云厂商维持/上调 AI capex 且订单进入电力/液冷/系统商，升级 future_space。",
+              "sourceIds": [
+                "SRC-NV-GTC-OVERVIEW",
+                "SRC-NV-VERA-RUBIN",
+                "SRC-VRT-DSX"
+              ],
+              "source_links": [
+                "https://nvidianews.nvidia.com/news/nvidia-ceo-jensen-huang-and-global-technology-leaders-to-showcase-age-of-ai-at-gtc-2026",
+                "https://nvidianews.nvidia.com/news/nvidia-vera-rubin-platform",
+                "https://investors.vertiv.com/news/news-details/2026/Vertiv-Brings-Converged-Physical-Infrastructure-to-NVIDIA-Vera-Rubin-DSX-AI-Factories/default.aspx"
+              ],
+              "answerArtifact": {
+                "title": "AI 工厂需求传导",
+                "columns": [
+                  "需求",
+                  "传导环节",
+                  "可观察数据"
+                ],
+                "rows": [
+                  [
+                    "更多 token",
+                    "GPU/CPU/DPU/网络",
+                    "云厂商 capex"
+                  ],
+                  [
+                    "更长上下文",
+                    "STX 存储/内存",
+                    "存储订单和吞吐指标"
+                  ],
+                  [
+                    "机柜部署",
+                    "电力/液冷/系统",
+                    "backlog 和毛利"
+                  ],
+                  [
+                    "企业 AI",
+                    "Dell/系统商",
+                    "订单和服务收入"
+                  ]
+                ]
+              }
+            },
+            {
+              "id": "Q1.2.2",
+              "parent": "Q1.2",
+              "level": 3,
+              "question": "RTX Spark、机器人和自动驾驶是不是可投资主线？",
+              "conclusion": "将 RTX Spark/机器人/自动驾驶作为期权，而不是当前最高优先级投资结论。",
+              "skill": "news-event-analysis",
+              "score_component": "payoff_convexity",
+              "scoreComponent": "payoff_convexity",
+              "decision_use": "判断 GTC 下游应用是当前利润池还是远期期权。",
+              "materiality": "判断 GTC 下游应用是当前利润池还是远期期权。",
+              "support_evidence": [
+                "SRC-NV-RTX-SPARK supports RTX Spark、机器人和自动驾驶是不是可投资主线？",
+                "SRC-MS-RTX-SPARK supports RTX Spark、机器人和自动驾驶是不是可投资主线？",
+                "SRC-NV-ROBOTICS supports RTX Spark、机器人和自动驾驶是不是可投资主线？",
+                "SRC-NV-DRIVE supports RTX Spark、机器人和自动驾驶是不是可投资主线？"
+              ],
+              "refute_evidence": [
+                "Post-GTC order, margin or adoption data contradicting RTX Spark、机器人和自动驾驶是不是可投资主线？"
+              ],
+              "target_implications": "Affects payoff_convexity and target action_state.",
+              "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+              "refuting_source_plan": [
+                "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+              ],
+              "source_plan": [
+                {
+                  "source_id": "SRC-NV-RTX-SPARK",
+                  "source_visible_at": "2026-06-01",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "news-event-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-MS-RTX-SPARK",
+                  "source_visible_at": "2026-05-31",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "news-event-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-NV-ROBOTICS",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "news-event-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-NV-DRIVE",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "news-event-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                }
+              ],
+              "skill_dispatch": {
+                "task_family": "news-event",
+                "selected_skill": "news-event-analysis",
+                "concrete_materials": [
+                  "SRC-NV-RTX-SPARK",
+                  "SRC-MS-RTX-SPARK",
+                  "SRC-NV-ROBOTICS",
+                  "SRC-NV-DRIVE"
+                ],
+                "extraction_schema": [
+                  "key_facts",
+                  "numbers_dates",
+                  "investment_relevance",
+                  "support_refute_or_lead",
+                  "uncertainties"
+                ],
+                "source_extraction_ids": [
+                  "EXT-Q1-2-2-NV-RTX-SPARK",
+                  "EXT-Q1-2-2-MS-RTX-SPARK",
+                  "EXT-Q1-2-2-NV-ROBOTICS",
+                  "EXT-Q1-2-2-NV-DRIVE"
+                ],
+                "leaf_source_review_ids": [
+                  "REV-Q1-2-2-NV-RTX-SPARK",
+                  "REV-Q1-2-2-MS-RTX-SPARK",
+                  "REV-Q1-2-2-NV-ROBOTICS",
+                  "REV-Q1-2-2-NV-DRIVE"
+                ],
+                "skill_output_status": "gpt_verified_direct_parse",
+                "fallback_used": true,
+                "gpt_verification_status": "verified_against_public_sources"
+              },
+              "fact": "RTX Spark 有官方 Windows/OEM 时间表，机器人和 DRIVE Hyperion 有生态伙伴，但大多仍需出货或部署验证。",
+              "inference": "下游应用扩大未来空间，但短期财务弹性低于 AI factory 主线。",
+              "judgment": "将 RTX Spark/机器人/自动驾驶作为期权，而不是当前最高优先级投资结论。",
+              "gap": "缺少 RTX Spark SKU 价格、出货、应用使用量和机器人订单。",
+              "trigger": "若秋季 OEM 上市后出现高 ASP/销量或机器人量产订单，再提高 payoff_convexity。",
+              "sourceIds": [
+                "SRC-NV-RTX-SPARK",
+                "SRC-MS-RTX-SPARK",
+                "SRC-NV-ROBOTICS",
+                "SRC-NV-DRIVE"
+              ],
+              "source_links": [
+                "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-Microsoft-Reinvent-Windows-PCs-for-the-Age-of-Personal-AI/default.aspx",
+                "https://blogs.windows.com/windowsexperience/2026/05/31/introducing-a-powerful-new-chapter-for-windows-pcs-accelerated-by-nvidia-rtx-spark/",
+                "https://nvidianews.nvidia.com/news/nvidia-and-global-robotics-leaders-take-physical-ai-to-the-real-world",
+                "https://nvidianews.nvidia.com/news/drive-hyperion-level-4"
+              ],
+              "answerArtifact": {
+                "title": "下游期权分类",
+                "columns": [
+                  "方向",
+                  "当前证据",
+                  "投资处理"
+                ],
+                "rows": [
+                  [
+                    "RTX Spark PC",
+                    "OEM fall availability",
+                    "关注 ARM/MSFT/DELL/HP/Lenovo 链"
+                  ],
+                  [
+                    "机器人",
+                    "NVIDIA ecosystem partnerships",
+                    "等待订单和量产"
+                  ],
+                  [
+                    "自动驾驶",
+                    "BYD/Geely 等 DRIVE adoption",
+                    "偏长期验证"
+                  ],
+                  [
+                    "企业 agent",
+                    "Vera/Windows/DGX Station",
+                    "关注企业部署"
+                  ]
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Q2",
+      "level": 1,
+      "question": "产业链里真正稀缺、能捕获价值的卡点在哪里？",
+      "conclusion": "最高确定性的稀缺点仍在 NVIDIA 平台控制，其次是先进制造/HBM、机柜级连接、电力冷却和 AI Factory 系统交付。第三方标的必须证明自己不是普通配套，而是难替代瓶颈。",
+      "children": [
+        {
+          "id": "Q2.1",
+          "level": 2,
+          "question": "平台、制造、连接和存储卡点",
+          "conclusion": "Vera Rubin 把计算、CPU、网络、DPU、存储和软件绑成平台，连接和制造约束决定第三方标的价值。",
+          "children": [
+            {
+              "id": "Q2.1.1",
+              "parent": "Q2.1",
+              "level": 3,
+              "question": "Vera Rubin 平台里最难替代的硬件卡点是什么？",
+              "conclusion": "NVDA/TSM/HBM/连接链应优先分析，但第三方必须证明不可替代和财务弹性。",
+              "skill": "industry-report-analysis",
+              "score_component": "chokepoint_strength",
+              "scoreComponent": "chokepoint_strength",
+              "decision_use": "决定 Q4 是否优先平台控制、先进制造、内存和连接，而不是普通系统集成。",
+              "materiality": "决定 Q4 是否优先平台控制、先进制造、内存和连接，而不是普通系统集成。",
+              "support_evidence": [
+                "SRC-NV-VERA-RUBIN supports Vera Rubin 平台里最难替代的硬件卡点是什么？",
+                "SRC-NV-VERA-CPU supports Vera Rubin 平台里最难替代的硬件卡点是什么？",
+                "SRC-NV-GTC-TAIPEI-VERA supports Vera Rubin 平台里最难替代的硬件卡点是什么？"
+              ],
+              "refute_evidence": [
+                "Post-GTC order, margin or adoption data contradicting Vera Rubin 平台里最难替代的硬件卡点是什么？"
+              ],
+              "target_implications": "Affects chokepoint_strength and target action_state.",
+              "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+              "refuting_source_plan": [
+                "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+              ],
+              "source_plan": [
+                {
+                  "source_id": "SRC-NV-VERA-RUBIN",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "industry-report-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-NV-VERA-CPU",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "industry-report-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-NV-GTC-TAIPEI-VERA",
+                  "source_visible_at": "2026-05-31",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "industry-report-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                }
+              ],
+              "skill_dispatch": {
+                "task_family": "industry-report",
+                "selected_skill": "industry-report-analysis",
+                "concrete_materials": [
+                  "SRC-NV-VERA-RUBIN",
+                  "SRC-NV-VERA-CPU",
+                  "SRC-NV-GTC-TAIPEI-VERA"
+                ],
+                "extraction_schema": [
+                  "key_facts",
+                  "numbers_dates",
+                  "investment_relevance",
+                  "support_refute_or_lead",
+                  "uncertainties"
+                ],
+                "source_extraction_ids": [
+                  "EXT-Q2-1-1-NV-VERA-RUBIN",
+                  "EXT-Q2-1-1-NV-VERA-CPU",
+                  "EXT-Q2-1-1-NV-GTC-TAIPEI-VERA"
+                ],
+                "leaf_source_review_ids": [
+                  "REV-Q2-1-1-NV-VERA-RUBIN",
+                  "REV-Q2-1-1-NV-VERA-CPU",
+                  "REV-Q2-1-1-NV-GTC-TAIPEI-VERA"
+                ],
+                "skill_output_status": "gpt_verified_direct_parse",
+                "fallback_used": true,
+                "gpt_verification_status": "verified_against_public_sources"
+              },
+              "fact": "Vera Rubin 把 CPU、GPU、NVLink、DPU、SuperNIC、Spectrum-X 和软件栈整合成 AI supercomputer。",
+              "inference": "整机柜协同提升 NVIDIA 平台控制，也让先进制造、HBM/内存和高带宽互联成为关键约束。",
+              "judgment": "NVDA/TSM/HBM/连接链应优先分析，但第三方必须证明不可替代和财务弹性。",
+              "gap": "缺少每个供应商的 BoM、ASP 和产能分配。",
+              "trigger": "若供应商披露 Rubin/HBM/封装相关订单和毛利，提升相关 chokepoint。",
+              "sourceIds": [
+                "SRC-NV-VERA-RUBIN",
+                "SRC-NV-VERA-CPU",
+                "SRC-NV-GTC-TAIPEI-VERA"
+              ],
+              "source_links": [
+                "https://nvidianews.nvidia.com/news/nvidia-vera-rubin-platform",
+                "https://nvidianews.nvidia.com/news/nvidia-launches-vera-cpu-purpose-built-for-agentic-ai",
+                "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Vera-Rubin-Ramps-Into-Full-Production-to-Power-Agentic-AI-Factories-Worldwide/default.aspx"
+              ],
+              "answerArtifact": {
+                "title": "硬件卡点",
+                "columns": [
+                  "节点",
+                  "稀缺原因",
+                  "潜在标的"
+                ],
+                "rows": [
+                  [
+                    "平台控制",
+                    "系统级协同和 CUDA 生态",
+                    "NVDA"
+                  ],
+                  [
+                    "先进制造",
+                    "制程/封装/产能",
+                    "TSM"
+                  ],
+                  [
+                    "HBM/内存",
+                    "高带宽和长上下文",
+                    "MU/韩系存储"
+                  ],
+                  [
+                    "连接",
+                    "低延迟和机柜级扩展",
+                    "ALAB/AVGO/ANET/MRVL"
+                  ]
+                ]
+              }
+            },
+            {
+              "id": "Q2.1.2",
+              "parent": "Q2.1",
+              "level": 3,
+              "question": "网络、存储和连接链是否比普通服务器更有价值？",
+              "conclusion": "ALAB 等进入高优先级观察，但需要控估值和客户集中；AVGO/ANET/MRVL 要区分互补与竞争。",
+              "skill": "industry-report-analysis",
+              "score_component": "chokepoint_strength",
+              "scoreComponent": "chokepoint_strength",
+              "decision_use": "判断 ALAB、AVGO、ANET、MRVL、存储厂商是否有真正卡点。",
+              "materiality": "判断 ALAB、AVGO、ANET、MRVL、存储厂商是否有真正卡点。",
+              "support_evidence": [
+                "SRC-NV-STX supports 网络、存储和连接链是否比普通服务器更有价值？",
+                "SRC-ASTERA-GTC supports 网络、存储和连接链是否比普通服务器更有价值？",
+                "SRC-NV-GTC-TAIPEI-VERA supports 网络、存储和连接链是否比普通服务器更有价值？"
+              ],
+              "refute_evidence": [
+                "Post-GTC order, margin or adoption data contradicting 网络、存储和连接链是否比普通服务器更有价值？"
+              ],
+              "target_implications": "Affects chokepoint_strength and target action_state.",
+              "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+              "refuting_source_plan": [
+                "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+              ],
+              "source_plan": [
+                {
+                  "source_id": "SRC-NV-STX",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "industry-report-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-ASTERA-GTC",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "industry-report-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-NV-GTC-TAIPEI-VERA",
+                  "source_visible_at": "2026-05-31",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "industry-report-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                }
+              ],
+              "skill_dispatch": {
+                "task_family": "industry-report",
+                "selected_skill": "industry-report-analysis",
+                "concrete_materials": [
+                  "SRC-NV-STX",
+                  "SRC-ASTERA-GTC",
+                  "SRC-NV-GTC-TAIPEI-VERA"
+                ],
+                "extraction_schema": [
+                  "key_facts",
+                  "numbers_dates",
+                  "investment_relevance",
+                  "support_refute_or_lead",
+                  "uncertainties"
+                ],
+                "source_extraction_ids": [
+                  "EXT-Q2-1-2-NV-STX",
+                  "EXT-Q2-1-2-ASTERA-GTC",
+                  "EXT-Q2-1-2-NV-GTC-TAIPEI-VERA"
+                ],
+                "leaf_source_review_ids": [
+                  "REV-Q2-1-2-NV-STX",
+                  "REV-Q2-1-2-ASTERA-GTC",
+                  "REV-Q2-1-2-NV-GTC-TAIPEI-VERA"
+                ],
+                "skill_output_status": "gpt_verified_direct_parse",
+                "fallback_used": true,
+                "gpt_verification_status": "verified_against_public_sources"
+              },
+              "fact": "NVIDIA STX、Spectrum-X Photonics 和 Astera GTC 内容都指向 AI rack connectivity、context memory storage 和 optical/PCIe/CXL 扩展。",
+              "inference": "连接和存储确实是 agentic AI 的系统瓶颈，但 NVIDIA 自有方案可能改变第三方价值分配。",
+              "judgment": "ALAB 等进入高优先级观察，但需要控估值和客户集中；AVGO/ANET/MRVL 要区分互补与竞争。",
+              "gap": "缺少第三方在 Rubin/DSX 的明确单机价值和份额。",
+              "trigger": "若第三方连接芯片进入 Rubin/DSX 标准配置并披露营收，升级。",
+              "sourceIds": [
+                "SRC-NV-STX",
+                "SRC-ASTERA-GTC",
+                "SRC-NV-GTC-TAIPEI-VERA"
+              ],
+              "source_links": [
+                "https://nvidianews.nvidia.com/news/nvidia-launches-bluefield-4-stx-storage-architecture-with-broad-industry-adoption",
+                "https://www.asteralabs.com/about/events/gtc2026/",
+                "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Vera-Rubin-Ramps-Into-Full-Production-to-Power-Agentic-AI-Factories-Worldwide/default.aspx"
+              ],
+              "answerArtifact": {
+                "title": "网络/存储卡点",
+                "columns": [
+                  "问题",
+                  "支持证据",
+                  "风险"
+                ],
+                "rows": [
+                  [
+                    "长上下文推理",
+                    "BlueField STX / CMX",
+                    "存储架构是否标准化"
+                  ],
+                  [
+                    "百万 GPU 连接",
+                    "Spectrum-X Photonics/CPO",
+                    "NVIDIA 自供比例"
+                  ],
+                  [
+                    "PCIe/CXL/retimer",
+                    "Astera GTC 主题",
+                    "估值和客户集中"
+                  ],
+                  [
+                    "Ethernet 生态",
+                    "AVGO/ANET/MRVL",
+                    "与 Spectrum-X 竞争"
+                  ]
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "Q2.2",
+          "level": 2,
+          "question": "电力冷却、系统交付和软件生态",
+          "conclusion": "AI 工厂落地离不开电力、液冷、机柜、系统商和数字孪生参考设计；应用软件生态可以扩大 TAM，但不一定形成上市标的稀缺性。",
+          "children": [
+            {
+              "id": "Q2.2.1",
+              "parent": "Q2.2",
+              "level": 3,
+              "question": "电力冷却和系统交付是不是更清晰的瓶颈？",
+              "conclusion": "VRT/DELL 进入高优先级观察，SMCI 因执行和治理风险需更保守。",
+              "skill": "financial-statement-analysis",
+              "score_component": "chokepoint_strength",
+              "scoreComponent": "chokepoint_strength",
+              "decision_use": "决定 VRT、DELL、SMCI 等是否比纯主题标的更可跟踪。",
+              "materiality": "决定 VRT、DELL、SMCI 等是否比纯主题标的更可跟踪。",
+              "support_evidence": [
+                "SRC-VRT-DSX supports 电力冷却和系统交付是不是更清晰的瓶颈？",
+                "SRC-DELL-AI-FACTORY supports 电力冷却和系统交付是不是更清晰的瓶颈？",
+                "SRC-NV-VERA-CPU supports 电力冷却和系统交付是不是更清晰的瓶颈？"
+              ],
+              "refute_evidence": [
+                "Post-GTC order, margin or adoption data contradicting 电力冷却和系统交付是不是更清晰的瓶颈？"
+              ],
+              "target_implications": "Affects chokepoint_strength and target action_state.",
+              "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+              "refuting_source_plan": [
+                "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+              ],
+              "source_plan": [
+                {
+                  "source_id": "SRC-VRT-DSX",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "financial-statement-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-DELL-AI-FACTORY",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "financial-statement-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-NV-VERA-CPU",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "financial-statement-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                }
+              ],
+              "skill_dispatch": {
+                "task_family": "financial-statement",
+                "selected_skill": "financial-statement-analysis",
+                "concrete_materials": [
+                  "SRC-VRT-DSX",
+                  "SRC-DELL-AI-FACTORY",
+                  "SRC-NV-VERA-CPU"
+                ],
+                "extraction_schema": [
+                  "key_facts",
+                  "numbers_dates",
+                  "investment_relevance",
+                  "support_refute_or_lead",
+                  "uncertainties"
+                ],
+                "source_extraction_ids": [
+                  "EXT-Q2-2-1-VRT-DSX",
+                  "EXT-Q2-2-1-DELL-AI-FACTORY",
+                  "EXT-Q2-2-1-NV-VERA-CPU"
+                ],
+                "leaf_source_review_ids": [
+                  "REV-Q2-2-1-VRT-DSX",
+                  "REV-Q2-2-1-DELL-AI-FACTORY",
+                  "REV-Q2-2-1-NV-VERA-CPU"
+                ],
+                "skill_output_status": "gpt_verified_direct_parse",
+                "fallback_used": true,
+                "gpt_verification_status": "verified_against_public_sources"
+              },
+              "fact": "Vertiv 参与 Vera Rubin DSX 物理基础设施设计；Dell AI Factory 与 NVIDIA 深度绑定；NVIDIA 列出多家系统制造商采用 Vera CPU。",
+              "inference": "AI factory 落地需要电力、液冷、机柜和系统交付，物理瓶颈比很多应用叙事更可验证。",
+              "judgment": "VRT/DELL 进入高优先级观察，SMCI 因执行和治理风险需更保守。",
+              "gap": "缺少 DSX 订单金额、毛利、交付周期和客户集中度。",
+              "trigger": "若 VRT/DELL 披露与 NVIDIA AI factory 相关 backlog 和毛利质量，升级。",
+              "sourceIds": [
+                "SRC-VRT-DSX",
+                "SRC-DELL-AI-FACTORY",
+                "SRC-NV-VERA-CPU"
+              ],
+              "source_links": [
+                "https://investors.vertiv.com/news/news-details/2026/Vertiv-Brings-Converged-Physical-Infrastructure-to-NVIDIA-Vera-Rubin-DSX-AI-Factories/default.aspx",
+                "https://investors.delltechnologies.com/node/19336/pdf",
+                "https://nvidianews.nvidia.com/news/nvidia-launches-vera-cpu-purpose-built-for-agentic-ai"
+              ],
+              "answerArtifact": {
+                "title": "物理基础设施卡点",
+                "columns": [
+                  "节点",
+                  "价值",
+                  "标的处理"
+                ],
+                "rows": [
+                  [
+                    "电力/液冷",
+                    "高功率机柜必需",
+                    "VRT watch_only"
+                  ],
+                  [
+                    "企业 AI Factory",
+                    "系统集成和服务",
+                    "DELL watch_only"
+                  ],
+                  [
+                    "白牌/服务器",
+                    "交付弹性大",
+                    "SMCI 因风险 no_action"
+                  ],
+                  [
+                    "ODM",
+                    "订单弹性",
+                    "多数非美股/标签需另查"
+                  ]
+                ]
+              }
+            },
+            {
+              "id": "Q2.2.2",
+              "parent": "Q2.2",
+              "level": 3,
+              "question": "软件、EDA、机器人生态能不能形成稀缺收益？",
+              "conclusion": "SNPS/CDNS/机器人链可列入跟踪，但本报告不把它们排在高行动状态。",
+              "skill": "industry-report-analysis",
+              "score_component": "future_space",
+              "scoreComponent": "future_space",
+              "decision_use": "判断 GTC 软件生态是应用空间还是可投资卡点。",
+              "materiality": "判断 GTC 软件生态是应用空间还是可投资卡点。",
+              "support_evidence": [
+                "SRC-NV-ROBOTICS supports 软件、EDA、机器人生态能不能形成稀缺收益？",
+                "SRC-NV-DRIVE supports 软件、EDA、机器人生态能不能形成稀缺收益？",
+                "SRC-SNPS-GTC supports 软件、EDA、机器人生态能不能形成稀缺收益？"
+              ],
+              "refute_evidence": [
+                "Post-GTC order, margin or adoption data contradicting 软件、EDA、机器人生态能不能形成稀缺收益？"
+              ],
+              "target_implications": "Affects future_space and target action_state.",
+              "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+              "refuting_source_plan": [
+                "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+              ],
+              "source_plan": [
+                {
+                  "source_id": "SRC-NV-ROBOTICS",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "industry-report-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-NV-DRIVE",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "industry-report-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-SNPS-GTC",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "industry-report-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                }
+              ],
+              "skill_dispatch": {
+                "task_family": "industry-report",
+                "selected_skill": "industry-report-analysis",
+                "concrete_materials": [
+                  "SRC-NV-ROBOTICS",
+                  "SRC-NV-DRIVE",
+                  "SRC-SNPS-GTC"
+                ],
+                "extraction_schema": [
+                  "key_facts",
+                  "numbers_dates",
+                  "investment_relevance",
+                  "support_refute_or_lead",
+                  "uncertainties"
+                ],
+                "source_extraction_ids": [
+                  "EXT-Q2-2-2-NV-ROBOTICS",
+                  "EXT-Q2-2-2-NV-DRIVE",
+                  "EXT-Q2-2-2-SNPS-GTC"
+                ],
+                "leaf_source_review_ids": [
+                  "REV-Q2-2-2-NV-ROBOTICS",
+                  "REV-Q2-2-2-NV-DRIVE",
+                  "REV-Q2-2-2-SNPS-GTC"
+                ],
+                "skill_output_status": "gpt_verified_direct_parse",
+                "fallback_used": true,
+                "gpt_verification_status": "verified_against_public_sources"
+              },
+              "fact": "NVIDIA 发布 physical AI 模型/框架并与机器人、车企、EDA 生态合作；Synopsys 展示 NVIDIA partnership。",
+              "inference": "软件生态扩大 NVIDIA 平台黏性，但独立上市标的的财务捕获路径不如硬件/基础设施清晰。",
+              "judgment": "SNPS/CDNS/机器人链可列入跟踪，但本报告不把它们排在高行动状态。",
+              "gap": "缺少软件授权收入、机器人量产订单和 EDA AI 工作流商业化数据。",
+              "trigger": "若 EDA/机器人公司披露与 NVIDIA 模型/仿真的收入贡献，再提高。",
+              "sourceIds": [
+                "SRC-NV-ROBOTICS",
+                "SRC-NV-DRIVE",
+                "SRC-SNPS-GTC"
+              ],
+              "source_links": [
+                "https://nvidianews.nvidia.com/news/nvidia-and-global-robotics-leaders-take-physical-ai-to-the-real-world",
+                "https://nvidianews.nvidia.com/news/drive-hyperion-level-4",
+                "https://news.synopsys.com/2026-03-16-Synopsys-Showcases-NVIDIA-Partnership-Impact-and-Ecosystem-Innovation-at-GTC-2026?asPDF=1"
+              ],
+              "answerArtifact": {
+                "title": "软件生态价值",
+                "columns": [
+                  "生态",
+                  "当前作用",
+                  "投资处理"
+                ],
+                "rows": [
+                  [
+                    "EDA",
+                    "加速设计和仿真",
+                    "SNPS/CDNS 观察"
+                  ],
+                  [
+                    "机器人",
+                    "Cosmos/Isaac/GR00T",
+                    "等待量产订单"
+                  ],
+                  [
+                    "自动驾驶",
+                    "DRIVE Hyperion",
+                    "长期验证"
+                  ],
+                  [
+                    "企业 agent",
+                    "模型和工具链",
+                    "主要强化 NVDA 平台"
+                  ]
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Q3",
+      "level": 1,
+      "question": "哪些反证会让 GTC 主题无法转化为好投资？",
+      "conclusion": "最大风险是市场已经把 AI 基建高增长提前定价，同时客户 capex、供电、液冷、交付和 AI ROI 任一环节走弱都会压低胜率；终端 AI PC/机器人也可能停留在概念期。",
+      "children": [
+        {
+          "id": "Q3.1",
+          "level": 2,
+          "question": "估值和 capex/ROI 反证",
+          "conclusion": "强技术信号并不等于低估。当前关键是市场隐含增长是否过高，以及客户是否能持续用 AI 服务赚钱。",
+          "children": [
+            {
+              "id": "Q3.1.1",
+              "parent": "Q3.1",
+              "level": 3,
+              "question": "市场是否已经充分定价 GTC 主题？",
+              "conclusion": "没有低估证据前，绝大多数标的 action_state 保持 watch_only/no_action。",
+              "skill": "valuation-analysis",
+              "score_component": "valuation_odds",
+              "scoreComponent": "valuation_odds",
+              "decision_use": "防止因为技术强就给高行动状态。",
+              "materiality": "防止因为技术强就给高行动状态。",
+              "support_evidence": [
+                "SRC-FINANCE-SNAPSHOT supports 市场是否已经充分定价 GTC 主题？",
+                "SRC-NV-GTC-OVERVIEW supports 市场是否已经充分定价 GTC 主题？",
+                "SRC-NV-GTC-TAIPEI-VERA supports 市场是否已经充分定价 GTC 主题？"
+              ],
+              "refute_evidence": [
+                "Post-GTC order, margin or adoption data contradicting 市场是否已经充分定价 GTC 主题？"
+              ],
+              "target_implications": "Affects valuation_odds and target action_state.",
+              "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+              "refuting_source_plan": [
+                "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+              ],
+              "source_plan": [
+                {
+                  "source_id": "SRC-FINANCE-SNAPSHOT",
+                  "source_visible_at": "2026-06-01",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "valuation-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-NV-GTC-OVERVIEW",
+                  "source_visible_at": "2026-03-03",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "valuation-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-NV-GTC-TAIPEI-VERA",
+                  "source_visible_at": "2026-05-31",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "valuation-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                }
+              ],
+              "skill_dispatch": {
+                "task_family": "valuation",
+                "selected_skill": "valuation-analysis",
+                "concrete_materials": [
+                  "SRC-FINANCE-SNAPSHOT",
+                  "SRC-NV-GTC-OVERVIEW",
+                  "SRC-NV-GTC-TAIPEI-VERA"
+                ],
+                "extraction_schema": [
+                  "key_facts",
+                  "numbers_dates",
+                  "investment_relevance",
+                  "support_refute_or_lead",
+                  "uncertainties"
+                ],
+                "source_extraction_ids": [
+                  "EXT-Q3-1-1-FINANCE-SNAPSHOT",
+                  "EXT-Q3-1-1-NV-GTC-OVERVIEW",
+                  "EXT-Q3-1-1-NV-GTC-TAIPEI-VERA"
+                ],
+                "leaf_source_review_ids": [
+                  "REV-Q3-1-1-FINANCE-SNAPSHOT",
+                  "REV-Q3-1-1-NV-GTC-OVERVIEW",
+                  "REV-Q3-1-1-NV-GTC-TAIPEI-VERA"
+                ],
+                "skill_output_status": "gpt_verified_direct_parse",
+                "fallback_used": true,
+                "gpt_verification_status": "verified_against_public_sources"
+              },
+              "fact": "当前 AI 基建相关公司普遍被市场关注，NVDA、VRT、ALAB、ARM 等主题曝光度很高；完整 reverse DCF 尚未完成。",
+              "inference": "GTC 证据提高基本面可信度，但不自动提高估值赔率。",
+              "judgment": "没有低估证据前，绝大多数标的 action_state 保持 watch_only/no_action。",
+              "gap": "缺少统一口径的 EV/FCF、隐含增长、毛利和下行情景。",
+              "trigger": "只有当市场隐含预期低于可验证订单/利润路径时，才升级 mispricing。",
+              "sourceIds": [
+                "SRC-FINANCE-SNAPSHOT",
+                "SRC-NV-GTC-OVERVIEW",
+                "SRC-NV-GTC-TAIPEI-VERA"
+              ],
+              "source_links": [
+                "https://finance.yahoo.com/",
+                "https://nvidianews.nvidia.com/news/nvidia-ceo-jensen-huang-and-global-technology-leaders-to-showcase-age-of-ai-at-gtc-2026",
+                "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Vera-Rubin-Ramps-Into-Full-Production-to-Power-Agentic-AI-Factories-Worldwide/default.aspx"
+              ],
+              "answerArtifact": {
+                "title": "估值闸门",
+                "columns": [
+                  "条件",
+                  "当前判断",
+                  "动作"
+                ],
+                "rows": [
+                  [
+                    "技术确定性",
+                    "较强",
+                    "提高研究优先级"
+                  ],
+                  [
+                    "低估证据",
+                    "不足",
+                    "封顶 action_state"
+                  ],
+                  [
+                    "财务弹性",
+                    "部分环节可验证",
+                    "看订单和毛利"
+                  ],
+                  [
+                    "下行保护",
+                    "需补数据",
+                    "不做强多头"
+                  ]
+                ]
+              }
+            },
+            {
+              "id": "Q3.1.2",
+              "parent": "Q3.1",
+              "level": 3,
+              "question": "客户 capex、AI ROI 和电力约束会不会打断链条？",
+              "conclusion": "Q3.1 的风险控制要求把订单质量和部署约束作为核心 kill tests。",
+              "skill": "news-event-analysis",
+              "score_component": "disconfirming_risk_control",
+              "scoreComponent": "disconfirming_risk_control",
+              "decision_use": "定义最重要的反证源。",
+              "materiality": "定义最重要的反证源。",
+              "support_evidence": [
+                "SRC-NV-GTC-OVERVIEW supports 客户 capex、AI ROI 和电力约束会不会打断链条？",
+                "SRC-VRT-DSX supports 客户 capex、AI ROI 和电力约束会不会打断链条？",
+                "SRC-DELL-AI-FACTORY supports 客户 capex、AI ROI 和电力约束会不会打断链条？"
+              ],
+              "refute_evidence": [
+                "Post-GTC order, margin or adoption data contradicting 客户 capex、AI ROI 和电力约束会不会打断链条？"
+              ],
+              "target_implications": "Affects disconfirming_risk_control and target action_state.",
+              "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+              "refuting_source_plan": [
+                "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+              ],
+              "source_plan": [
+                {
+                  "source_id": "SRC-NV-GTC-OVERVIEW",
+                  "source_visible_at": "2026-03-03",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "news-event-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-VRT-DSX",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "news-event-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-DELL-AI-FACTORY",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "news-event-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                }
+              ],
+              "skill_dispatch": {
+                "task_family": "news-event",
+                "selected_skill": "news-event-analysis",
+                "concrete_materials": [
+                  "SRC-NV-GTC-OVERVIEW",
+                  "SRC-VRT-DSX",
+                  "SRC-DELL-AI-FACTORY"
+                ],
+                "extraction_schema": [
+                  "key_facts",
+                  "numbers_dates",
+                  "investment_relevance",
+                  "support_refute_or_lead",
+                  "uncertainties"
+                ],
+                "source_extraction_ids": [
+                  "EXT-Q3-1-2-NV-GTC-OVERVIEW",
+                  "EXT-Q3-1-2-VRT-DSX",
+                  "EXT-Q3-1-2-DELL-AI-FACTORY"
+                ],
+                "leaf_source_review_ids": [
+                  "REV-Q3-1-2-NV-GTC-OVERVIEW",
+                  "REV-Q3-1-2-VRT-DSX",
+                  "REV-Q3-1-2-DELL-AI-FACTORY"
+                ],
+                "skill_output_status": "gpt_verified_direct_parse",
+                "fallback_used": true,
+                "gpt_verification_status": "verified_against_public_sources"
+              },
+              "fact": "GTC 将 AI 描述为基础设施，但 AI factory 的落地仍依赖客户 capex、供电、液冷、机房建设和模型收入。",
+              "inference": "如果 capex 放缓或电力/部署瓶颈导致交付延期，多数供应链标的会被同时压估值。",
+              "judgment": "Q3.1 的风险控制要求把订单质量和部署约束作为核心 kill tests。",
+              "gap": "缺少云厂商逐季 AI capex ROI 和供电项目数据。",
+              "trigger": "若 hyperscaler 下修 capex 或 VRT/DELL backlog 质量下降，下调相关标的。",
+              "sourceIds": [
+                "SRC-NV-GTC-OVERVIEW",
+                "SRC-VRT-DSX",
+                "SRC-DELL-AI-FACTORY"
+              ],
+              "source_links": [
+                "https://nvidianews.nvidia.com/news/nvidia-ceo-jensen-huang-and-global-technology-leaders-to-showcase-age-of-ai-at-gtc-2026",
+                "https://investors.vertiv.com/news/news-details/2026/Vertiv-Brings-Converged-Physical-Infrastructure-to-NVIDIA-Vera-Rubin-DSX-AI-Factories/default.aspx",
+                "https://investors.delltechnologies.com/node/19336/pdf"
+              ],
+              "answerArtifact": {
+                "title": "capex/ROI 反证",
+                "columns": [
+                  "反证",
+                  "影响链条",
+                  "降级动作"
+                ],
+                "rows": [
+                  [
+                    "AI capex 放缓",
+                    "NVDA/TSM/HBM/系统商",
+                    "整体降分"
+                  ],
+                  [
+                    "电力接入延迟",
+                    "VRT/DELL/SMCI",
+                    "压低交付弹性"
+                  ],
+                  [
+                    "token 收入不足",
+                    "AI 工厂需求",
+                    "降低 future_space"
+                  ],
+                  [
+                    "毛利下滑",
+                    "系统/基础设施",
+                    "降低 risk_control"
+                  ]
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "Q3.2",
+          "level": 2,
+          "question": "供应链替代、执行和终端采用风险",
+          "conclusion": "NVIDIA 的纵向整合可能压缩第三方网络/系统标的弹性；终端 AI PC 和机器人若无出货/使用量，就不能给高分。",
+          "children": [
+            {
+              "id": "Q3.2.1",
+              "parent": "Q3.2",
+              "level": 3,
+              "question": "NVIDIA 纵向整合会不会压缩第三方受益？",
+              "conclusion": "第三方网络/连接标的必须有明确 design-in、份额和毛利证据。",
+              "skill": "industry-report-analysis",
+              "score_component": "disconfirming_risk_control",
+              "scoreComponent": "disconfirming_risk_control",
+              "decision_use": "避免把所有 AI 网络/系统公司都当作 GTC 受益者。",
+              "materiality": "避免把所有 AI 网络/系统公司都当作 GTC 受益者。",
+              "support_evidence": [
+                "SRC-NV-STX supports NVIDIA 纵向整合会不会压缩第三方受益？",
+                "SRC-NV-GTC-TAIPEI-VERA supports NVIDIA 纵向整合会不会压缩第三方受益？",
+                "SRC-ASTERA-GTC supports NVIDIA 纵向整合会不会压缩第三方受益？"
+              ],
+              "refute_evidence": [
+                "Post-GTC order, margin or adoption data contradicting NVIDIA 纵向整合会不会压缩第三方受益？"
+              ],
+              "target_implications": "Affects disconfirming_risk_control and target action_state.",
+              "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+              "refuting_source_plan": [
+                "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+              ],
+              "source_plan": [
+                {
+                  "source_id": "SRC-NV-STX",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "industry-report-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-NV-GTC-TAIPEI-VERA",
+                  "source_visible_at": "2026-05-31",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "industry-report-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-ASTERA-GTC",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "industry-report-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                }
+              ],
+              "skill_dispatch": {
+                "task_family": "industry-report",
+                "selected_skill": "industry-report-analysis",
+                "concrete_materials": [
+                  "SRC-NV-STX",
+                  "SRC-NV-GTC-TAIPEI-VERA",
+                  "SRC-ASTERA-GTC"
+                ],
+                "extraction_schema": [
+                  "key_facts",
+                  "numbers_dates",
+                  "investment_relevance",
+                  "support_refute_or_lead",
+                  "uncertainties"
+                ],
+                "source_extraction_ids": [
+                  "EXT-Q3-2-1-NV-STX",
+                  "EXT-Q3-2-1-NV-GTC-TAIPEI-VERA",
+                  "EXT-Q3-2-1-ASTERA-GTC"
+                ],
+                "leaf_source_review_ids": [
+                  "REV-Q3-2-1-NV-STX",
+                  "REV-Q3-2-1-NV-GTC-TAIPEI-VERA",
+                  "REV-Q3-2-1-ASTERA-GTC"
+                ],
+                "skill_output_status": "gpt_verified_direct_parse",
+                "fallback_used": true,
+                "gpt_verification_status": "verified_against_public_sources"
+              },
+              "fact": "NVIDIA 在网络、DPU、STX 存储、Spectrum-X Photonics 和参考设计上持续加深整合。",
+              "inference": "平台整合提高 NVIDIA 自身护城河，但可能让部分第三方只获得有限配套利润或面临替代。",
+              "judgment": "第三方网络/连接标的必须有明确 design-in、份额和毛利证据。",
+              "gap": "缺少 DSX/Rubin 的第三方 BoM 份额。",
+              "trigger": "若 NVIDIA 自有方案替代第三方，降级 AVGO/ANET/MRVL/ALAB 中缺证据者。",
+              "sourceIds": [
+                "SRC-NV-STX",
+                "SRC-NV-GTC-TAIPEI-VERA",
+                "SRC-ASTERA-GTC"
+              ],
+              "source_links": [
+                "https://nvidianews.nvidia.com/news/nvidia-launches-bluefield-4-stx-storage-architecture-with-broad-industry-adoption",
+                "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Vera-Rubin-Ramps-Into-Full-Production-to-Power-Agentic-AI-Factories-Worldwide/default.aspx",
+                "https://www.asteralabs.com/about/events/gtc2026/"
+              ],
+              "answerArtifact": {
+                "title": "纵向整合风险",
+                "columns": [
+                  "对象",
+                  "正面",
+                  "负面"
+                ],
+                "rows": [
+                  [
+                    "NVDA",
+                    "平台控制增强",
+                    "估值已反映"
+                  ],
+                  [
+                    "ALAB",
+                    "rack connectivity 需求",
+                    "客户/平台依赖"
+                  ],
+                  [
+                    "AVGO/ANET/MRVL",
+                    "AI networking 大空间",
+                    "Spectrum-X 竞争"
+                  ],
+                  [
+                    "系统商",
+                    "参考设计加快部署",
+                    "标准化压缩差异化"
+                  ]
+                ]
+              }
+            },
+            {
+              "id": "Q3.2.2",
+              "parent": "Q3.2",
+              "level": 3,
+              "question": "RTX Spark、机器人和 DRIVE 会不会停留在概念期？",
+              "conclusion": "RTX Spark/机器人/DRIVE 对主线是加分项，但不足以单独推高多数标的。",
+              "skill": "news-event-analysis",
+              "score_component": "risk_control",
+              "scoreComponent": "risk_control",
+              "decision_use": "控制终端应用期权的分数上限。",
+              "materiality": "控制终端应用期权的分数上限。",
+              "support_evidence": [
+                "SRC-NV-RTX-SPARK supports RTX Spark、机器人和 DRIVE 会不会停留在概念期？",
+                "SRC-MS-RTX-SPARK supports RTX Spark、机器人和 DRIVE 会不会停留在概念期？",
+                "SRC-NV-ROBOTICS supports RTX Spark、机器人和 DRIVE 会不会停留在概念期？",
+                "SRC-NV-DRIVE supports RTX Spark、机器人和 DRIVE 会不会停留在概念期？"
+              ],
+              "refute_evidence": [
+                "Post-GTC order, margin or adoption data contradicting RTX Spark、机器人和 DRIVE 会不会停留在概念期？"
+              ],
+              "target_implications": "Affects risk_control and target action_state.",
+              "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+              "refuting_source_plan": [
+                "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+              ],
+              "source_plan": [
+                {
+                  "source_id": "SRC-NV-RTX-SPARK",
+                  "source_visible_at": "2026-06-01",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "news-event-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-MS-RTX-SPARK",
+                  "source_visible_at": "2026-05-31",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "news-event-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-NV-ROBOTICS",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "news-event-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-NV-DRIVE",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "news-event-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                }
+              ],
+              "skill_dispatch": {
+                "task_family": "news-event",
+                "selected_skill": "news-event-analysis",
+                "concrete_materials": [
+                  "SRC-NV-RTX-SPARK",
+                  "SRC-MS-RTX-SPARK",
+                  "SRC-NV-ROBOTICS",
+                  "SRC-NV-DRIVE"
+                ],
+                "extraction_schema": [
+                  "key_facts",
+                  "numbers_dates",
+                  "investment_relevance",
+                  "support_refute_or_lead",
+                  "uncertainties"
+                ],
+                "source_extraction_ids": [
+                  "EXT-Q3-2-2-NV-RTX-SPARK",
+                  "EXT-Q3-2-2-MS-RTX-SPARK",
+                  "EXT-Q3-2-2-NV-ROBOTICS",
+                  "EXT-Q3-2-2-NV-DRIVE"
+                ],
+                "leaf_source_review_ids": [
+                  "REV-Q3-2-2-NV-RTX-SPARK",
+                  "REV-Q3-2-2-MS-RTX-SPARK",
+                  "REV-Q3-2-2-NV-ROBOTICS",
+                  "REV-Q3-2-2-NV-DRIVE"
+                ],
+                "skill_output_status": "gpt_verified_direct_parse",
+                "fallback_used": true,
+                "gpt_verification_status": "verified_against_public_sources"
+              },
+              "fact": "RTX Spark 有 OEM 时间表，机器人/自动驾驶有生态合作，但出货、价格、企业采用和盈利模式仍未充分披露。",
+              "inference": "终端应用可能扩大 TAM，也可能因为应用不足、价格高或采购慢而难以兑现。",
+              "judgment": "RTX Spark/机器人/DRIVE 对主线是加分项，但不足以单独推高多数标的。",
+              "gap": "缺少出货、渠道库存、应用使用量和机器人交付收入。",
+              "trigger": "若 fall 2026 RTX Spark SKU 销量不佳或机器人订单不落地，降低 payoff_convexity。",
+              "sourceIds": [
+                "SRC-NV-RTX-SPARK",
+                "SRC-MS-RTX-SPARK",
+                "SRC-NV-ROBOTICS",
+                "SRC-NV-DRIVE"
+              ],
+              "source_links": [
+                "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-Microsoft-Reinvent-Windows-PCs-for-the-Age-of-Personal-AI/default.aspx",
+                "https://blogs.windows.com/windowsexperience/2026/05/31/introducing-a-powerful-new-chapter-for-windows-pcs-accelerated-by-nvidia-rtx-spark/",
+                "https://nvidianews.nvidia.com/news/nvidia-and-global-robotics-leaders-take-physical-ai-to-the-real-world",
+                "https://nvidianews.nvidia.com/news/drive-hyperion-level-4"
+              ],
+              "answerArtifact": {
+                "title": "终端期权风险",
+                "columns": [
+                  "方向",
+                  "需要验证",
+                  "分数处理"
+                ],
+                "rows": [
+                  [
+                    "RTX Spark",
+                    "SKU/价格/销量/应用",
+                    "watch"
+                  ],
+                  [
+                    "机器人",
+                    "量产订单和客户 ROI",
+                    "低权重"
+                  ],
+                  [
+                    "DRIVE",
+                    "车型量产和软件收入",
+                    "长期验证"
+                  ],
+                  [
+                    "企业本地 agent",
+                    "采购和续费",
+                    "待证实"
+                  ]
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Q4",
+      "level": 1,
+      "question": "按当前证据，哪些标的进入观察池，行动状态如何？",
+      "conclusion": "当前没有足够证据给出高确定性 actionable_long。较值得观察的是 VRT、ALAB、NVDA、DELL、ARM 和 TSM/MU 等，但大多因为估值、验证不足或平台替代风险维持 watch_only 或 no_action。",
+      "children": [
+        {
+          "id": "Q4.1",
+          "level": 2,
+          "question": "目标池和排序规则",
+          "conclusion": "目标池从价值捕获节点出发，不从发布会曝光度出发；高主题热度但缺低估证据的标的必须控分。",
+          "children": [
+            {
+              "id": "Q4.1.1",
+              "parent": "Q4.1",
+              "level": 3,
+              "question": "哪些证券是真正的价值捕获载体？",
+              "conclusion": "最终表保留 watch_only/no_action，避免强行做多。",
+              "skill": "target-recommendation-analysis",
+              "score_component": "target_ranking",
+              "scoreComponent": "target_ranking",
+              "decision_use": "建立目标池，不按发布会曝光度或交易便利性收缩。",
+              "materiality": "建立目标池，不按发布会曝光度或交易便利性收缩。",
+              "support_evidence": [
+                "SRC-NV-VERA-RUBIN supports 哪些证券是真正的价值捕获载体？",
+                "SRC-VRT-DSX supports 哪些证券是真正的价值捕获载体？",
+                "SRC-DELL-AI-FACTORY supports 哪些证券是真正的价值捕获载体？",
+                "SRC-ASTERA-GTC supports 哪些证券是真正的价值捕获载体？",
+                "SRC-NV-RTX-SPARK supports 哪些证券是真正的价值捕获载体？"
+              ],
+              "refute_evidence": [
+                "Post-GTC order, margin or adoption data contradicting 哪些证券是真正的价值捕获载体？"
+              ],
+              "target_implications": "Affects target_ranking and target action_state.",
+              "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+              "refuting_source_plan": [
+                "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+              ],
+              "source_plan": [
+                {
+                  "source_id": "SRC-NV-VERA-RUBIN",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "target-recommendation-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-VRT-DSX",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "target-recommendation-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-DELL-AI-FACTORY",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "target-recommendation-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-ASTERA-GTC",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "target-recommendation-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-NV-RTX-SPARK",
+                  "source_visible_at": "2026-06-01",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "target-recommendation-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                }
+              ],
+              "skill_dispatch": {
+                "task_family": "target-recommendation",
+                "selected_skill": "target-recommendation-analysis",
+                "concrete_materials": [
+                  "SRC-NV-VERA-RUBIN",
+                  "SRC-VRT-DSX",
+                  "SRC-DELL-AI-FACTORY",
+                  "SRC-ASTERA-GTC",
+                  "SRC-NV-RTX-SPARK"
+                ],
+                "extraction_schema": [
+                  "key_facts",
+                  "numbers_dates",
+                  "investment_relevance",
+                  "support_refute_or_lead",
+                  "uncertainties"
+                ],
+                "source_extraction_ids": [
+                  "EXT-Q4-1-1-NV-VERA-RUBIN",
+                  "EXT-Q4-1-1-VRT-DSX",
+                  "EXT-Q4-1-1-DELL-AI-FACTORY",
+                  "EXT-Q4-1-1-ASTERA-GTC",
+                  "EXT-Q4-1-1-NV-RTX-SPARK"
+                ],
+                "leaf_source_review_ids": [
+                  "REV-Q4-1-1-NV-VERA-RUBIN",
+                  "REV-Q4-1-1-VRT-DSX",
+                  "REV-Q4-1-1-DELL-AI-FACTORY",
+                  "REV-Q4-1-1-ASTERA-GTC",
+                  "REV-Q4-1-1-NV-RTX-SPARK"
+                ],
+                "skill_output_status": "gpt_verified_direct_parse",
+                "fallback_used": true,
+                "gpt_verification_status": "verified_against_public_sources"
+              },
+              "fact": "价值捕获载体包括 NVDA、VRT、ALAB、DELL、ARM、TSM、MU、AVGO/ANET/MRVL 和 SMCI，但质量差异很大。",
+              "inference": "目标池应从卡点映射而来，而不是从热门 ticker 出发。",
+              "judgment": "最终表保留 watch_only/no_action，避免强行做多。",
+              "gap": "缺少跨市场同口径估值和订单证据。",
+              "trigger": "补齐估值和订单后再调整 action_state。",
+              "sourceIds": [
+                "SRC-NV-VERA-RUBIN",
+                "SRC-VRT-DSX",
+                "SRC-DELL-AI-FACTORY",
+                "SRC-ASTERA-GTC",
+                "SRC-NV-RTX-SPARK"
+              ],
+              "source_links": [
+                "https://nvidianews.nvidia.com/news/nvidia-vera-rubin-platform",
+                "https://investors.vertiv.com/news/news-details/2026/Vertiv-Brings-Converged-Physical-Infrastructure-to-NVIDIA-Vera-Rubin-DSX-AI-Factories/default.aspx",
+                "https://investors.delltechnologies.com/node/19336/pdf",
+                "https://www.asteralabs.com/about/events/gtc2026/",
+                "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-Microsoft-Reinvent-Windows-PCs-for-the-Age-of-Personal-AI/default.aspx"
+              ],
+              "answerArtifact": {
+                "title": "目标池映射",
+                "columns": [
+                  "标的",
+                  "链条节点",
+                  "当前处理"
+                ],
+                "rows": [
+                  [
+                    "NVDA",
+                    "平台控制",
+                    "watch_only"
+                  ],
+                  [
+                    "VRT",
+                    "电力/液冷",
+                    "watch_only"
+                  ],
+                  [
+                    "ALAB",
+                    "连接芯片",
+                    "watch_only"
+                  ],
+                  [
+                    "DELL",
+                    "AI Factory 系统",
+                    "watch_only"
+                  ],
+                  [
+                    "ARM/TSM/MU",
+                    "IP/制造/内存",
+                    "watch_only"
+                  ],
+                  [
+                    "AVGO/ANET/MRVL/SMCI",
+                    "网络/系统",
+                    "no_action/watch"
+                  ]
+                ]
+              }
+            },
+            {
+              "id": "Q4.1.2",
+              "parent": "Q4.1",
+              "level": 3,
+              "question": "排序如何由分数而不是叙事产生？",
+              "conclusion": "排序以 watch_only 为主，no_action 用于证据或风险不足的方向。",
+              "skill": "target-recommendation-analysis",
+              "score_component": "action_state",
+              "scoreComponent": "action_state",
+              "decision_use": "确保高分必须同时满足稀缺、低估、弹性和风险控制。",
+              "materiality": "确保高分必须同时满足稀缺、低估、弹性和风险控制。",
+              "support_evidence": [
+                "SRC-FINANCE-SNAPSHOT supports 排序如何由分数而不是叙事产生？",
+                "SRC-VRT-DSX supports 排序如何由分数而不是叙事产生？",
+                "SRC-ASTERA-GTC supports 排序如何由分数而不是叙事产生？",
+                "SRC-NV-VERA-RUBIN supports 排序如何由分数而不是叙事产生？"
+              ],
+              "refute_evidence": [
+                "Post-GTC order, margin or adoption data contradicting 排序如何由分数而不是叙事产生？"
+              ],
+              "target_implications": "Affects action_state and target action_state.",
+              "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+              "refuting_source_plan": [
+                "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+              ],
+              "source_plan": [
+                {
+                  "source_id": "SRC-FINANCE-SNAPSHOT",
+                  "source_visible_at": "2026-06-01",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "target-recommendation-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-VRT-DSX",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "target-recommendation-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-ASTERA-GTC",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "target-recommendation-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-NV-VERA-RUBIN",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "target-recommendation-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                }
+              ],
+              "skill_dispatch": {
+                "task_family": "target-recommendation",
+                "selected_skill": "target-recommendation-analysis",
+                "concrete_materials": [
+                  "SRC-FINANCE-SNAPSHOT",
+                  "SRC-VRT-DSX",
+                  "SRC-ASTERA-GTC",
+                  "SRC-NV-VERA-RUBIN"
+                ],
+                "extraction_schema": [
+                  "key_facts",
+                  "numbers_dates",
+                  "investment_relevance",
+                  "support_refute_or_lead",
+                  "uncertainties"
+                ],
+                "source_extraction_ids": [
+                  "EXT-Q4-1-2-FINANCE-SNAPSHOT",
+                  "EXT-Q4-1-2-VRT-DSX",
+                  "EXT-Q4-1-2-ASTERA-GTC",
+                  "EXT-Q4-1-2-NV-VERA-RUBIN"
+                ],
+                "leaf_source_review_ids": [
+                  "REV-Q4-1-2-FINANCE-SNAPSHOT",
+                  "REV-Q4-1-2-VRT-DSX",
+                  "REV-Q4-1-2-ASTERA-GTC",
+                  "REV-Q4-1-2-NV-VERA-RUBIN"
+                ],
+                "skill_output_status": "gpt_verified_direct_parse",
+                "fallback_used": true,
+                "gpt_verification_status": "verified_against_public_sources"
+              },
+              "fact": "目标分数由 chokepoint、future space、valuation odds、evidence quality、risk control、monitorability 和 payoff convexity 组成，并汇总到四个核心维度。",
+              "inference": "当前多数标的的 scarcity/future_space 强，但 mispricing 未验证，因此不能升级 actionable_long。",
+              "judgment": "排序以 watch_only 为主，no_action 用于证据或风险不足的方向。",
+              "gap": "缺少完整 reverse DCF 和订单毛利模型。",
+              "trigger": "只有四个维度都增强才升级。",
+              "sourceIds": [
+                "SRC-FINANCE-SNAPSHOT",
+                "SRC-VRT-DSX",
+                "SRC-ASTERA-GTC",
+                "SRC-NV-VERA-RUBIN"
+              ],
+              "source_links": [
+                "https://finance.yahoo.com/",
+                "https://investors.vertiv.com/news/news-details/2026/Vertiv-Brings-Converged-Physical-Infrastructure-to-NVIDIA-Vera-Rubin-DSX-AI-Factories/default.aspx",
+                "https://www.asteralabs.com/about/events/gtc2026/",
+                "https://nvidianews.nvidia.com/news/nvidia-vera-rubin-platform"
+              ],
+              "answerArtifact": {
+                "title": "行动状态闸门",
+                "columns": [
+                  "维度",
+                  "要求",
+                  "当前状态"
+                ],
+                "rows": [
+                  [
+                    "scarcity_or_monopoly",
+                    "卡点清晰",
+                    "部分强"
+                  ],
+                  [
+                    "mispricing",
+                    "未充分定价",
+                    "普遍不足"
+                  ],
+                  [
+                    "earnings_elasticity",
+                    "订单到利润弹性",
+                    "需验证"
+                  ],
+                  [
+                    "risk_control",
+                    "反证可控",
+                    "分化明显"
+                  ]
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "Q4.2",
+          "level": 2,
+          "question": "三个月验证触发器",
+          "conclusion": "live 模式用 2026-09-01 作为复核窗口，关注订单、capex、供电液冷项目、RTX Spark SKU/出货和 AI Factory 毛利验证。",
+          "children": [
+            {
+              "id": "Q4.2.1",
+              "parent": "Q4.2",
+              "level": 3,
+              "question": "未来三个月哪些数据能升级观察强度？",
+              "conclusion": "复核窗口设为 2026-09-01。",
+              "skill": "target-recommendation-analysis",
+              "score_component": "monitorability",
+              "scoreComponent": "monitorability",
+              "decision_use": "定义 live 研究的复核指标。",
+              "materiality": "定义 live 研究的复核指标。",
+              "support_evidence": [
+                "SRC-NV-GTC-TAIPEI-VERA supports 未来三个月哪些数据能升级观察强度？",
+                "SRC-NV-RTX-SPARK supports 未来三个月哪些数据能升级观察强度？",
+                "SRC-VRT-DSX supports 未来三个月哪些数据能升级观察强度？",
+                "SRC-DELL-AI-FACTORY supports 未来三个月哪些数据能升级观察强度？"
+              ],
+              "refute_evidence": [
+                "Post-GTC order, margin or adoption data contradicting 未来三个月哪些数据能升级观察强度？"
+              ],
+              "target_implications": "Affects monitorability and target action_state.",
+              "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+              "refuting_source_plan": [
+                "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+              ],
+              "source_plan": [
+                {
+                  "source_id": "SRC-NV-GTC-TAIPEI-VERA",
+                  "source_visible_at": "2026-05-31",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "target-recommendation-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-NV-RTX-SPARK",
+                  "source_visible_at": "2026-06-01",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "target-recommendation-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-VRT-DSX",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "target-recommendation-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-DELL-AI-FACTORY",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "target-recommendation-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                }
+              ],
+              "skill_dispatch": {
+                "task_family": "target-recommendation",
+                "selected_skill": "target-recommendation-analysis",
+                "concrete_materials": [
+                  "SRC-NV-GTC-TAIPEI-VERA",
+                  "SRC-NV-RTX-SPARK",
+                  "SRC-VRT-DSX",
+                  "SRC-DELL-AI-FACTORY"
+                ],
+                "extraction_schema": [
+                  "key_facts",
+                  "numbers_dates",
+                  "investment_relevance",
+                  "support_refute_or_lead",
+                  "uncertainties"
+                ],
+                "source_extraction_ids": [
+                  "EXT-Q4-2-1-NV-GTC-TAIPEI-VERA",
+                  "EXT-Q4-2-1-NV-RTX-SPARK",
+                  "EXT-Q4-2-1-VRT-DSX",
+                  "EXT-Q4-2-1-DELL-AI-FACTORY"
+                ],
+                "leaf_source_review_ids": [
+                  "REV-Q4-2-1-NV-GTC-TAIPEI-VERA",
+                  "REV-Q4-2-1-NV-RTX-SPARK",
+                  "REV-Q4-2-1-VRT-DSX",
+                  "REV-Q4-2-1-DELL-AI-FACTORY"
+                ],
+                "skill_output_status": "gpt_verified_direct_parse",
+                "fallback_used": true,
+                "gpt_verification_status": "verified_against_public_sources"
+              },
+              "fact": "最有用的升级数据包括 Vera/Rubin 订单、AI factory backlog、VRT/DELL 毛利、ALAB design-in、RTX Spark SKU 和出货。",
+              "inference": "这些指标能直接验证 future_space、financial conversion 和 valuation odds。",
+              "judgment": "复核窗口设为 2026-09-01。",
+              "gap": "需要自动跟踪官方公告、财报和渠道数据。",
+              "trigger": "若订单、毛利和估值同时改善，升级强度。",
+              "sourceIds": [
+                "SRC-NV-GTC-TAIPEI-VERA",
+                "SRC-NV-RTX-SPARK",
+                "SRC-VRT-DSX",
+                "SRC-DELL-AI-FACTORY"
+              ],
+              "source_links": [
+                "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Vera-Rubin-Ramps-Into-Full-Production-to-Power-Agentic-AI-Factories-Worldwide/default.aspx",
+                "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-Microsoft-Reinvent-Windows-PCs-for-the-Age-of-Personal-AI/default.aspx",
+                "https://investors.vertiv.com/news/news-details/2026/Vertiv-Brings-Converged-Physical-Infrastructure-to-NVIDIA-Vera-Rubin-DSX-AI-Factories/default.aspx",
+                "https://investors.delltechnologies.com/node/19336/pdf"
+              ],
+              "answerArtifact": {
+                "title": "升级触发器",
+                "columns": [
+                  "节点",
+                  "升级数据"
+                ],
+                "rows": [
+                  [
+                    "NVDA/TSM/MU",
+                    "Rubin 出货/HBM/封装订单"
+                  ],
+                  [
+                    "VRT/DELL",
+                    "AI factory backlog 和毛利"
+                  ],
+                  [
+                    "ALAB",
+                    "Rubin/Blackwell design-in 收入"
+                  ],
+                  [
+                    "RTX Spark",
+                    "OEM SKU、价格、销量"
+                  ],
+                  [
+                    "机器人/DRIVE",
+                    "量产订单和客户部署"
+                  ]
+                ]
+              }
+            },
+            {
+              "id": "Q4.2.2",
+              "parent": "Q4.2",
+              "level": 3,
+              "question": "哪些 kill tests 会撤销 GTC 主题高分？",
+              "conclusion": "任何目标若触发核心 kill test，应降级到 no_action。",
+              "skill": "target-recommendation-analysis",
+              "score_component": "risk_control",
+              "scoreComponent": "risk_control",
+              "decision_use": "给每个高关注方向设置硬降级条件。",
+              "materiality": "给每个高关注方向设置硬降级条件。",
+              "support_evidence": [
+                "SRC-FINANCE-SNAPSHOT supports 哪些 kill tests 会撤销 GTC 主题高分？",
+                "SRC-NV-STX supports 哪些 kill tests 会撤销 GTC 主题高分？",
+                "SRC-NV-RTX-SPARK supports 哪些 kill tests 会撤销 GTC 主题高分？",
+                "SRC-VRT-DSX supports 哪些 kill tests 会撤销 GTC 主题高分？"
+              ],
+              "refute_evidence": [
+                "Post-GTC order, margin or adoption data contradicting 哪些 kill tests 会撤销 GTC 主题高分？"
+              ],
+              "target_implications": "Affects risk_control and target action_state.",
+              "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+              "refuting_source_plan": [
+                "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+              ],
+              "source_plan": [
+                {
+                  "source_id": "SRC-FINANCE-SNAPSHOT",
+                  "source_visible_at": "2026-06-01",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "target-recommendation-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-NV-STX",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "target-recommendation-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-NV-RTX-SPARK",
+                  "source_visible_at": "2026-06-01",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "target-recommendation-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                },
+                {
+                  "source_id": "SRC-VRT-DSX",
+                  "source_visible_at": "2026-03-16",
+                  "allowed_usage": "live_thesis",
+                  "preferred_parser_skill": "target-recommendation-analysis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties"
+                  ],
+                  "availability_proof": "publisher date / official release page"
+                }
+              ],
+              "skill_dispatch": {
+                "task_family": "target-recommendation",
+                "selected_skill": "target-recommendation-analysis",
+                "concrete_materials": [
+                  "SRC-FINANCE-SNAPSHOT",
+                  "SRC-NV-STX",
+                  "SRC-NV-RTX-SPARK",
+                  "SRC-VRT-DSX"
+                ],
+                "extraction_schema": [
+                  "key_facts",
+                  "numbers_dates",
+                  "investment_relevance",
+                  "support_refute_or_lead",
+                  "uncertainties"
+                ],
+                "source_extraction_ids": [
+                  "EXT-Q4-2-2-FINANCE-SNAPSHOT",
+                  "EXT-Q4-2-2-NV-STX",
+                  "EXT-Q4-2-2-NV-RTX-SPARK",
+                  "EXT-Q4-2-2-VRT-DSX"
+                ],
+                "leaf_source_review_ids": [
+                  "REV-Q4-2-2-FINANCE-SNAPSHOT",
+                  "REV-Q4-2-2-NV-STX",
+                  "REV-Q4-2-2-NV-RTX-SPARK",
+                  "REV-Q4-2-2-VRT-DSX"
+                ],
+                "skill_output_status": "gpt_verified_direct_parse",
+                "fallback_used": true,
+                "gpt_verification_status": "verified_against_public_sources"
+              },
+              "fact": "关键 kill tests 包括 AI capex 下修、Vera/Rubin 延迟、VRT/DELL 毛利恶化、第三方连接被 NVIDIA 替代、RTX Spark 出货不佳。",
+              "inference": "这些反证会分别攻击 future_space、chokepoint_strength、payoff 和 risk_control。",
+              "judgment": "任何目标若触发核心 kill test，应降级到 no_action。",
+              "gap": "需要持续收集订单、财报、渠道和供应链数据。",
+              "trigger": "官方财报或客户 capex 指引确认任一 kill test 时降级。",
+              "sourceIds": [
+                "SRC-FINANCE-SNAPSHOT",
+                "SRC-NV-STX",
+                "SRC-NV-RTX-SPARK",
+                "SRC-VRT-DSX"
+              ],
+              "source_links": [
+                "https://finance.yahoo.com/",
+                "https://nvidianews.nvidia.com/news/nvidia-launches-bluefield-4-stx-storage-architecture-with-broad-industry-adoption",
+                "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-Microsoft-Reinvent-Windows-PCs-for-the-Age-of-Personal-AI/default.aspx",
+                "https://investors.vertiv.com/news/news-details/2026/Vertiv-Brings-Converged-Physical-Infrastructure-to-NVIDIA-Vera-Rubin-DSX-AI-Factories/default.aspx"
+              ],
+              "answerArtifact": {
+                "title": "Kill tests",
+                "columns": [
+                  "Kill test",
+                  "影响",
+                  "动作"
+                ],
+                "rows": [
+                  [
+                    "AI capex 下修",
+                    "全链条",
+                    "整体降分"
+                  ],
+                  [
+                    "Rubin/STX 延迟",
+                    "NVDA/系统/连接",
+                    "降低 future_space"
+                  ],
+                  [
+                    "第三方连接被替代",
+                    "ALAB/AVGO/ANET/MRVL",
+                    "降为 no_action"
+                  ],
+                  [
+                    "电力液冷毛利差",
+                    "VRT/DELL/SMCI",
+                    "降低 risk_control"
+                  ],
+                  [
+                    "RTX Spark 销量弱",
+                    "ARM/OEM/PC 链",
+                    "降低 payoff"
+                  ]
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "Q1",
+      "level": 1,
+      "parent_id": null,
+      "question": "GTC 2026 到底给了哪些可投资信号，哪些只是发布会热度？",
+      "current_conclusion": "GTC 2026 的核心信号是 AI 工厂从 GPU 走向整机柜、网络、存储、电力冷却和软件生态；GTC Taipei 又把 Vera/Rubin 量产和 RTX Spark 个人 AI PC 加进当前信息集。但多数线索仍需要订单、毛利和估值验证。",
+      "next_question_ids": [
+        "Q1.1",
+        "Q1.2"
+      ]
+    },
+    {
+      "id": "Q1.1",
+      "level": 2,
+      "parent_id": "Q1",
+      "question": "大会事实和信号边界",
+      "current_conclusion": "GTC 2026 已经给出多个可验证产品和合作信号，但投资上必须区分已宣布、已量产、已被客户采用和已转化为财务弹性。",
+      "next_question_ids": [
+        "Q1.1.1",
+        "Q1.1.2"
+      ]
+    },
+    {
+      "id": "Q1.1.1",
+      "level": 3,
+      "parent_id": "Q1.1",
+      "question": "GTC 2026 的主线公告到底是什么？",
+      "current_conclusion": "Q1 可以确认 GTC 是产业链事件，不是单品发布会。",
+      "next_question_ids": [],
+      "materiality": "决定研究是否从单 GPU 主题升级为 AI 工厂产业链主题。",
+      "decision_use": "决定研究是否从单 GPU 主题升级为 AI 工厂产业链主题。",
+      "support_evidence": [
+        "SRC-NV-GTC-OVERVIEW supports GTC 2026 的主线公告到底是什么？",
+        "SRC-NV-VERA-RUBIN supports GTC 2026 的主线公告到底是什么？",
+        "SRC-NV-VERA-CPU supports GTC 2026 的主线公告到底是什么？"
+      ],
+      "refute_evidence": [
+        "Post-GTC order, margin or adoption data contradicting GTC 2026 的主线公告到底是什么？"
+      ],
+      "target_implications": "Affects evidence_quality and target action_state.",
+      "score_component": "evidence_quality",
+      "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+      "refuting_source_plan": [
+        "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-NV-GTC-OVERVIEW",
+          "source_visible_at": "2026-03-03",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "news-event-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-NV-VERA-RUBIN",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "news-event-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-NV-VERA-CPU",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "news-event-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "news-event",
+        "selected_skill": "news-event-analysis",
+        "concrete_materials": [
+          "SRC-NV-GTC-OVERVIEW",
+          "SRC-NV-VERA-RUBIN",
+          "SRC-NV-VERA-CPU"
+        ],
+        "extraction_schema": [
+          "key_facts",
+          "numbers_dates",
+          "investment_relevance",
+          "support_refute_or_lead",
+          "uncertainties"
+        ],
+        "source_extraction_ids": [
+          "EXT-Q1-1-1-NV-GTC-OVERVIEW",
+          "EXT-Q1-1-1-NV-VERA-RUBIN",
+          "EXT-Q1-1-1-NV-VERA-CPU"
+        ],
+        "leaf_source_review_ids": [
+          "REV-Q1-1-1-NV-GTC-OVERVIEW",
+          "REV-Q1-1-1-NV-VERA-RUBIN",
+          "REV-Q1-1-1-NV-VERA-CPU"
+        ],
+        "skill_output_status": "gpt_verified_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified_against_public_sources"
+      },
+      "fact": "GTC 2026 官方信息覆盖 AI 工厂、Vera Rubin 平台、Vera CPU、网络、存储、机器人和应用生态。",
+      "inference": "这说明主线不只是 GPU 换代，而是 rack-scale AI factory 的系统化扩张。",
+      "judgment": "Q1 可以确认 GTC 是产业链事件，不是单品发布会。",
+      "gap": "仍需把发布会口径和真实订单分开。",
+      "trigger": "若客户实例、量产时间和出货数据继续落地，提高 evidence_quality。",
+      "source_links": [
+        "https://nvidianews.nvidia.com/news/nvidia-ceo-jensen-huang-and-global-technology-leaders-to-showcase-age-of-ai-at-gtc-2026",
+        "https://nvidianews.nvidia.com/news/nvidia-vera-rubin-platform",
+        "https://nvidianews.nvidia.com/news/nvidia-launches-vera-cpu-purpose-built-for-agentic-ai"
+      ]
+    },
+    {
+      "id": "Q1.1.2",
+      "level": 3,
+      "parent_id": "Q1.1",
+      "question": "哪些信号已经接近量产或客户采用？",
+      "current_conclusion": "可提高 AI factory 主线可信度，但对第三方标的仍需订单和毛利验证。",
+      "next_question_ids": [],
+      "materiality": "防止把路线图、合作意向和收入确认混为一谈。",
+      "decision_use": "防止把路线图、合作意向和收入确认混为一谈。",
+      "support_evidence": [
+        "SRC-NV-GTC-TAIPEI-VERA supports 哪些信号已经接近量产或客户采用？",
+        "SRC-NV-VERA-CPU supports 哪些信号已经接近量产或客户采用？",
+        "SRC-DELL-AI-FACTORY supports 哪些信号已经接近量产或客户采用？"
+      ],
+      "refute_evidence": [
+        "Post-GTC order, margin or adoption data contradicting 哪些信号已经接近量产或客户采用？"
+      ],
+      "target_implications": "Affects evidence_quality and target action_state.",
+      "score_component": "evidence_quality",
+      "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+      "refuting_source_plan": [
+        "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-NV-GTC-TAIPEI-VERA",
+          "source_visible_at": "2026-05-31",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "news-event-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-NV-VERA-CPU",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "news-event-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-DELL-AI-FACTORY",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "news-event-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "news-event",
+        "selected_skill": "news-event-analysis",
+        "concrete_materials": [
+          "SRC-NV-GTC-TAIPEI-VERA",
+          "SRC-NV-VERA-CPU",
+          "SRC-DELL-AI-FACTORY"
+        ],
+        "extraction_schema": [
+          "key_facts",
+          "numbers_dates",
+          "investment_relevance",
+          "support_refute_or_lead",
+          "uncertainties"
+        ],
+        "source_extraction_ids": [
+          "EXT-Q1-1-2-NV-GTC-TAIPEI-VERA",
+          "EXT-Q1-1-2-NV-VERA-CPU",
+          "EXT-Q1-1-2-DELL-AI-FACTORY"
+        ],
+        "leaf_source_review_ids": [
+          "REV-Q1-1-2-NV-GTC-TAIPEI-VERA",
+          "REV-Q1-1-2-NV-VERA-CPU",
+          "REV-Q1-1-2-DELL-AI-FACTORY"
+        ],
+        "skill_output_status": "gpt_verified_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified_against_public_sources"
+      },
+      "fact": "NVIDIA 5 月底进一步强调 Vera Rubin ramp/full production，并列出系统制造商、云厂商和 AI factory 采用线索。",
+      "inference": "量产/采用信号比单纯路线图更强，但仍不等于每个供应链标的都能确认收入。",
+      "judgment": "可提高 AI factory 主线可信度，但对第三方标的仍需订单和毛利验证。",
+      "gap": "缺少逐家公司订单规模、交付节奏和利润率。",
+      "trigger": "若 OEM/云厂商披露 Vera Rubin 订单和收入贡献，升级相关目标。",
+      "source_links": [
+        "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Vera-Rubin-Ramps-Into-Full-Production-to-Power-Agentic-AI-Factories-Worldwide/default.aspx",
+        "https://nvidianews.nvidia.com/news/nvidia-launches-vera-cpu-purpose-built-for-agentic-ai",
+        "https://investors.delltechnologies.com/node/19336/pdf"
+      ]
+    },
+    {
+      "id": "Q1.2",
+      "level": 2,
+      "parent_id": "Q1",
+      "question": "需求是否能从 AI 工厂扩到终端应用",
+      "current_conclusion": "AI 工厂是主线，个人 AI PC、机器人和自动驾驶是增量期权；它们能否兑现取决于使用量、订单和单位经济性。",
+      "next_question_ids": [
+        "Q1.2.1",
+        "Q1.2.2"
+      ]
+    },
+    {
+      "id": "Q1.2.1",
+      "level": 3,
+      "parent_id": "Q1.2",
+      "question": "AI 工厂需求能否支撑多环节投资机会？",
+      "current_conclusion": "Q1.2 支持建立跨环节观察池，但不能假设每个环节都有超额收益。",
+      "next_question_ids": [],
+      "materiality": "决定是否只研究 NVDA，还是扩展到电力、连接、系统和制造链。",
+      "decision_use": "决定是否只研究 NVDA，还是扩展到电力、连接、系统和制造链。",
+      "support_evidence": [
+        "SRC-NV-GTC-OVERVIEW supports AI 工厂需求能否支撑多环节投资机会？",
+        "SRC-NV-VERA-RUBIN supports AI 工厂需求能否支撑多环节投资机会？",
+        "SRC-VRT-DSX supports AI 工厂需求能否支撑多环节投资机会？"
+      ],
+      "refute_evidence": [
+        "Post-GTC order, margin or adoption data contradicting AI 工厂需求能否支撑多环节投资机会？"
+      ],
+      "target_implications": "Affects future_space and target action_state.",
+      "score_component": "future_space",
+      "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+      "refuting_source_plan": [
+        "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-NV-GTC-OVERVIEW",
+          "source_visible_at": "2026-03-03",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "industry-report-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-NV-VERA-RUBIN",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "industry-report-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-VRT-DSX",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "industry-report-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "industry-report",
+        "selected_skill": "industry-report-analysis",
+        "concrete_materials": [
+          "SRC-NV-GTC-OVERVIEW",
+          "SRC-NV-VERA-RUBIN",
+          "SRC-VRT-DSX"
+        ],
+        "extraction_schema": [
+          "key_facts",
+          "numbers_dates",
+          "investment_relevance",
+          "support_refute_or_lead",
+          "uncertainties"
+        ],
+        "source_extraction_ids": [
+          "EXT-Q1-2-1-NV-GTC-OVERVIEW",
+          "EXT-Q1-2-1-NV-VERA-RUBIN",
+          "EXT-Q1-2-1-VRT-DSX"
+        ],
+        "leaf_source_review_ids": [
+          "REV-Q1-2-1-NV-GTC-OVERVIEW",
+          "REV-Q1-2-1-NV-VERA-RUBIN",
+          "REV-Q1-2-1-VRT-DSX"
+        ],
+        "skill_output_status": "gpt_verified_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified_against_public_sources"
+      },
+      "fact": "GTC 把 AI stack 描述为能源、芯片、基础设施、模型和应用五层，并把 Vera Rubin/DSX 与数据中心部署联系起来。",
+      "inference": "如果 AI factory 是基础设施扩张，价值会外溢到电力冷却、机柜、网络、存储和系统交付。",
+      "judgment": "Q1.2 支持建立跨环节观察池，但不能假设每个环节都有超额收益。",
+      "gap": "缺少客户 capex ROI、项目电力约束和毛利分解。",
+      "trigger": "若云厂商维持/上调 AI capex 且订单进入电力/液冷/系统商，升级 future_space。",
+      "source_links": [
+        "https://nvidianews.nvidia.com/news/nvidia-ceo-jensen-huang-and-global-technology-leaders-to-showcase-age-of-ai-at-gtc-2026",
+        "https://nvidianews.nvidia.com/news/nvidia-vera-rubin-platform",
+        "https://investors.vertiv.com/news/news-details/2026/Vertiv-Brings-Converged-Physical-Infrastructure-to-NVIDIA-Vera-Rubin-DSX-AI-Factories/default.aspx"
+      ]
+    },
+    {
+      "id": "Q1.2.2",
+      "level": 3,
+      "parent_id": "Q1.2",
+      "question": "RTX Spark、机器人和自动驾驶是不是可投资主线？",
+      "current_conclusion": "将 RTX Spark/机器人/自动驾驶作为期权，而不是当前最高优先级投资结论。",
+      "next_question_ids": [],
+      "materiality": "判断 GTC 下游应用是当前利润池还是远期期权。",
+      "decision_use": "判断 GTC 下游应用是当前利润池还是远期期权。",
+      "support_evidence": [
+        "SRC-NV-RTX-SPARK supports RTX Spark、机器人和自动驾驶是不是可投资主线？",
+        "SRC-MS-RTX-SPARK supports RTX Spark、机器人和自动驾驶是不是可投资主线？",
+        "SRC-NV-ROBOTICS supports RTX Spark、机器人和自动驾驶是不是可投资主线？",
+        "SRC-NV-DRIVE supports RTX Spark、机器人和自动驾驶是不是可投资主线？"
+      ],
+      "refute_evidence": [
+        "Post-GTC order, margin or adoption data contradicting RTX Spark、机器人和自动驾驶是不是可投资主线？"
+      ],
+      "target_implications": "Affects payoff_convexity and target action_state.",
+      "score_component": "payoff_convexity",
+      "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+      "refuting_source_plan": [
+        "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-NV-RTX-SPARK",
+          "source_visible_at": "2026-06-01",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "news-event-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-MS-RTX-SPARK",
+          "source_visible_at": "2026-05-31",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "news-event-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-NV-ROBOTICS",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "news-event-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-NV-DRIVE",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "news-event-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "news-event",
+        "selected_skill": "news-event-analysis",
+        "concrete_materials": [
+          "SRC-NV-RTX-SPARK",
+          "SRC-MS-RTX-SPARK",
+          "SRC-NV-ROBOTICS",
+          "SRC-NV-DRIVE"
+        ],
+        "extraction_schema": [
+          "key_facts",
+          "numbers_dates",
+          "investment_relevance",
+          "support_refute_or_lead",
+          "uncertainties"
+        ],
+        "source_extraction_ids": [
+          "EXT-Q1-2-2-NV-RTX-SPARK",
+          "EXT-Q1-2-2-MS-RTX-SPARK",
+          "EXT-Q1-2-2-NV-ROBOTICS",
+          "EXT-Q1-2-2-NV-DRIVE"
+        ],
+        "leaf_source_review_ids": [
+          "REV-Q1-2-2-NV-RTX-SPARK",
+          "REV-Q1-2-2-MS-RTX-SPARK",
+          "REV-Q1-2-2-NV-ROBOTICS",
+          "REV-Q1-2-2-NV-DRIVE"
+        ],
+        "skill_output_status": "gpt_verified_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified_against_public_sources"
+      },
+      "fact": "RTX Spark 有官方 Windows/OEM 时间表，机器人和 DRIVE Hyperion 有生态伙伴，但大多仍需出货或部署验证。",
+      "inference": "下游应用扩大未来空间，但短期财务弹性低于 AI factory 主线。",
+      "judgment": "将 RTX Spark/机器人/自动驾驶作为期权，而不是当前最高优先级投资结论。",
+      "gap": "缺少 RTX Spark SKU 价格、出货、应用使用量和机器人订单。",
+      "trigger": "若秋季 OEM 上市后出现高 ASP/销量或机器人量产订单，再提高 payoff_convexity。",
+      "source_links": [
+        "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-Microsoft-Reinvent-Windows-PCs-for-the-Age-of-Personal-AI/default.aspx",
+        "https://blogs.windows.com/windowsexperience/2026/05/31/introducing-a-powerful-new-chapter-for-windows-pcs-accelerated-by-nvidia-rtx-spark/",
+        "https://nvidianews.nvidia.com/news/nvidia-and-global-robotics-leaders-take-physical-ai-to-the-real-world",
+        "https://nvidianews.nvidia.com/news/drive-hyperion-level-4"
+      ]
+    },
+    {
+      "id": "Q2",
+      "level": 1,
+      "parent_id": null,
+      "question": "产业链里真正稀缺、能捕获价值的卡点在哪里？",
+      "current_conclusion": "最高确定性的稀缺点仍在 NVIDIA 平台控制，其次是先进制造/HBM、机柜级连接、电力冷却和 AI Factory 系统交付。第三方标的必须证明自己不是普通配套，而是难替代瓶颈。",
+      "next_question_ids": [
+        "Q2.1",
+        "Q2.2"
+      ]
+    },
+    {
+      "id": "Q2.1",
+      "level": 2,
+      "parent_id": "Q2",
+      "question": "平台、制造、连接和存储卡点",
+      "current_conclusion": "Vera Rubin 把计算、CPU、网络、DPU、存储和软件绑成平台，连接和制造约束决定第三方标的价值。",
+      "next_question_ids": [
+        "Q2.1.1",
+        "Q2.1.2"
+      ]
+    },
+    {
+      "id": "Q2.1.1",
+      "level": 3,
+      "parent_id": "Q2.1",
+      "question": "Vera Rubin 平台里最难替代的硬件卡点是什么？",
+      "current_conclusion": "NVDA/TSM/HBM/连接链应优先分析，但第三方必须证明不可替代和财务弹性。",
+      "next_question_ids": [],
+      "materiality": "决定 Q4 是否优先平台控制、先进制造、内存和连接，而不是普通系统集成。",
+      "decision_use": "决定 Q4 是否优先平台控制、先进制造、内存和连接，而不是普通系统集成。",
+      "support_evidence": [
+        "SRC-NV-VERA-RUBIN supports Vera Rubin 平台里最难替代的硬件卡点是什么？",
+        "SRC-NV-VERA-CPU supports Vera Rubin 平台里最难替代的硬件卡点是什么？",
+        "SRC-NV-GTC-TAIPEI-VERA supports Vera Rubin 平台里最难替代的硬件卡点是什么？"
+      ],
+      "refute_evidence": [
+        "Post-GTC order, margin or adoption data contradicting Vera Rubin 平台里最难替代的硬件卡点是什么？"
+      ],
+      "target_implications": "Affects chokepoint_strength and target action_state.",
+      "score_component": "chokepoint_strength",
+      "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+      "refuting_source_plan": [
+        "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-NV-VERA-RUBIN",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "industry-report-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-NV-VERA-CPU",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "industry-report-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-NV-GTC-TAIPEI-VERA",
+          "source_visible_at": "2026-05-31",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "industry-report-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "industry-report",
+        "selected_skill": "industry-report-analysis",
+        "concrete_materials": [
+          "SRC-NV-VERA-RUBIN",
+          "SRC-NV-VERA-CPU",
+          "SRC-NV-GTC-TAIPEI-VERA"
+        ],
+        "extraction_schema": [
+          "key_facts",
+          "numbers_dates",
+          "investment_relevance",
+          "support_refute_or_lead",
+          "uncertainties"
+        ],
+        "source_extraction_ids": [
+          "EXT-Q2-1-1-NV-VERA-RUBIN",
+          "EXT-Q2-1-1-NV-VERA-CPU",
+          "EXT-Q2-1-1-NV-GTC-TAIPEI-VERA"
+        ],
+        "leaf_source_review_ids": [
+          "REV-Q2-1-1-NV-VERA-RUBIN",
+          "REV-Q2-1-1-NV-VERA-CPU",
+          "REV-Q2-1-1-NV-GTC-TAIPEI-VERA"
+        ],
+        "skill_output_status": "gpt_verified_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified_against_public_sources"
+      },
+      "fact": "Vera Rubin 把 CPU、GPU、NVLink、DPU、SuperNIC、Spectrum-X 和软件栈整合成 AI supercomputer。",
+      "inference": "整机柜协同提升 NVIDIA 平台控制，也让先进制造、HBM/内存和高带宽互联成为关键约束。",
+      "judgment": "NVDA/TSM/HBM/连接链应优先分析，但第三方必须证明不可替代和财务弹性。",
+      "gap": "缺少每个供应商的 BoM、ASP 和产能分配。",
+      "trigger": "若供应商披露 Rubin/HBM/封装相关订单和毛利，提升相关 chokepoint。",
+      "source_links": [
+        "https://nvidianews.nvidia.com/news/nvidia-vera-rubin-platform",
+        "https://nvidianews.nvidia.com/news/nvidia-launches-vera-cpu-purpose-built-for-agentic-ai",
+        "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Vera-Rubin-Ramps-Into-Full-Production-to-Power-Agentic-AI-Factories-Worldwide/default.aspx"
+      ]
+    },
+    {
+      "id": "Q2.1.2",
+      "level": 3,
+      "parent_id": "Q2.1",
+      "question": "网络、存储和连接链是否比普通服务器更有价值？",
+      "current_conclusion": "ALAB 等进入高优先级观察，但需要控估值和客户集中；AVGO/ANET/MRVL 要区分互补与竞争。",
+      "next_question_ids": [],
+      "materiality": "判断 ALAB、AVGO、ANET、MRVL、存储厂商是否有真正卡点。",
+      "decision_use": "判断 ALAB、AVGO、ANET、MRVL、存储厂商是否有真正卡点。",
+      "support_evidence": [
+        "SRC-NV-STX supports 网络、存储和连接链是否比普通服务器更有价值？",
+        "SRC-ASTERA-GTC supports 网络、存储和连接链是否比普通服务器更有价值？",
+        "SRC-NV-GTC-TAIPEI-VERA supports 网络、存储和连接链是否比普通服务器更有价值？"
+      ],
+      "refute_evidence": [
+        "Post-GTC order, margin or adoption data contradicting 网络、存储和连接链是否比普通服务器更有价值？"
+      ],
+      "target_implications": "Affects chokepoint_strength and target action_state.",
+      "score_component": "chokepoint_strength",
+      "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+      "refuting_source_plan": [
+        "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-NV-STX",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "industry-report-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-ASTERA-GTC",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "industry-report-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-NV-GTC-TAIPEI-VERA",
+          "source_visible_at": "2026-05-31",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "industry-report-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "industry-report",
+        "selected_skill": "industry-report-analysis",
+        "concrete_materials": [
+          "SRC-NV-STX",
+          "SRC-ASTERA-GTC",
+          "SRC-NV-GTC-TAIPEI-VERA"
+        ],
+        "extraction_schema": [
+          "key_facts",
+          "numbers_dates",
+          "investment_relevance",
+          "support_refute_or_lead",
+          "uncertainties"
+        ],
+        "source_extraction_ids": [
+          "EXT-Q2-1-2-NV-STX",
+          "EXT-Q2-1-2-ASTERA-GTC",
+          "EXT-Q2-1-2-NV-GTC-TAIPEI-VERA"
+        ],
+        "leaf_source_review_ids": [
+          "REV-Q2-1-2-NV-STX",
+          "REV-Q2-1-2-ASTERA-GTC",
+          "REV-Q2-1-2-NV-GTC-TAIPEI-VERA"
+        ],
+        "skill_output_status": "gpt_verified_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified_against_public_sources"
+      },
+      "fact": "NVIDIA STX、Spectrum-X Photonics 和 Astera GTC 内容都指向 AI rack connectivity、context memory storage 和 optical/PCIe/CXL 扩展。",
+      "inference": "连接和存储确实是 agentic AI 的系统瓶颈，但 NVIDIA 自有方案可能改变第三方价值分配。",
+      "judgment": "ALAB 等进入高优先级观察，但需要控估值和客户集中；AVGO/ANET/MRVL 要区分互补与竞争。",
+      "gap": "缺少第三方在 Rubin/DSX 的明确单机价值和份额。",
+      "trigger": "若第三方连接芯片进入 Rubin/DSX 标准配置并披露营收，升级。",
+      "source_links": [
+        "https://nvidianews.nvidia.com/news/nvidia-launches-bluefield-4-stx-storage-architecture-with-broad-industry-adoption",
+        "https://www.asteralabs.com/about/events/gtc2026/",
+        "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Vera-Rubin-Ramps-Into-Full-Production-to-Power-Agentic-AI-Factories-Worldwide/default.aspx"
+      ]
+    },
+    {
+      "id": "Q2.2",
+      "level": 2,
+      "parent_id": "Q2",
+      "question": "电力冷却、系统交付和软件生态",
+      "current_conclusion": "AI 工厂落地离不开电力、液冷、机柜、系统商和数字孪生参考设计；应用软件生态可以扩大 TAM，但不一定形成上市标的稀缺性。",
+      "next_question_ids": [
+        "Q2.2.1",
+        "Q2.2.2"
+      ]
+    },
+    {
+      "id": "Q2.2.1",
+      "level": 3,
+      "parent_id": "Q2.2",
+      "question": "电力冷却和系统交付是不是更清晰的瓶颈？",
+      "current_conclusion": "VRT/DELL 进入高优先级观察，SMCI 因执行和治理风险需更保守。",
+      "next_question_ids": [],
+      "materiality": "决定 VRT、DELL、SMCI 等是否比纯主题标的更可跟踪。",
+      "decision_use": "决定 VRT、DELL、SMCI 等是否比纯主题标的更可跟踪。",
+      "support_evidence": [
+        "SRC-VRT-DSX supports 电力冷却和系统交付是不是更清晰的瓶颈？",
+        "SRC-DELL-AI-FACTORY supports 电力冷却和系统交付是不是更清晰的瓶颈？",
+        "SRC-NV-VERA-CPU supports 电力冷却和系统交付是不是更清晰的瓶颈？"
+      ],
+      "refute_evidence": [
+        "Post-GTC order, margin or adoption data contradicting 电力冷却和系统交付是不是更清晰的瓶颈？"
+      ],
+      "target_implications": "Affects chokepoint_strength and target action_state.",
+      "score_component": "chokepoint_strength",
+      "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+      "refuting_source_plan": [
+        "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-VRT-DSX",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "financial-statement-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-DELL-AI-FACTORY",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "financial-statement-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-NV-VERA-CPU",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "financial-statement-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "financial-statement",
+        "selected_skill": "financial-statement-analysis",
+        "concrete_materials": [
+          "SRC-VRT-DSX",
+          "SRC-DELL-AI-FACTORY",
+          "SRC-NV-VERA-CPU"
+        ],
+        "extraction_schema": [
+          "key_facts",
+          "numbers_dates",
+          "investment_relevance",
+          "support_refute_or_lead",
+          "uncertainties"
+        ],
+        "source_extraction_ids": [
+          "EXT-Q2-2-1-VRT-DSX",
+          "EXT-Q2-2-1-DELL-AI-FACTORY",
+          "EXT-Q2-2-1-NV-VERA-CPU"
+        ],
+        "leaf_source_review_ids": [
+          "REV-Q2-2-1-VRT-DSX",
+          "REV-Q2-2-1-DELL-AI-FACTORY",
+          "REV-Q2-2-1-NV-VERA-CPU"
+        ],
+        "skill_output_status": "gpt_verified_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified_against_public_sources"
+      },
+      "fact": "Vertiv 参与 Vera Rubin DSX 物理基础设施设计；Dell AI Factory 与 NVIDIA 深度绑定；NVIDIA 列出多家系统制造商采用 Vera CPU。",
+      "inference": "AI factory 落地需要电力、液冷、机柜和系统交付，物理瓶颈比很多应用叙事更可验证。",
+      "judgment": "VRT/DELL 进入高优先级观察，SMCI 因执行和治理风险需更保守。",
+      "gap": "缺少 DSX 订单金额、毛利、交付周期和客户集中度。",
+      "trigger": "若 VRT/DELL 披露与 NVIDIA AI factory 相关 backlog 和毛利质量，升级。",
+      "source_links": [
+        "https://investors.vertiv.com/news/news-details/2026/Vertiv-Brings-Converged-Physical-Infrastructure-to-NVIDIA-Vera-Rubin-DSX-AI-Factories/default.aspx",
+        "https://investors.delltechnologies.com/node/19336/pdf",
+        "https://nvidianews.nvidia.com/news/nvidia-launches-vera-cpu-purpose-built-for-agentic-ai"
+      ]
+    },
+    {
+      "id": "Q2.2.2",
+      "level": 3,
+      "parent_id": "Q2.2",
+      "question": "软件、EDA、机器人生态能不能形成稀缺收益？",
+      "current_conclusion": "SNPS/CDNS/机器人链可列入跟踪，但本报告不把它们排在高行动状态。",
+      "next_question_ids": [],
+      "materiality": "判断 GTC 软件生态是应用空间还是可投资卡点。",
+      "decision_use": "判断 GTC 软件生态是应用空间还是可投资卡点。",
+      "support_evidence": [
+        "SRC-NV-ROBOTICS supports 软件、EDA、机器人生态能不能形成稀缺收益？",
+        "SRC-NV-DRIVE supports 软件、EDA、机器人生态能不能形成稀缺收益？",
+        "SRC-SNPS-GTC supports 软件、EDA、机器人生态能不能形成稀缺收益？"
+      ],
+      "refute_evidence": [
+        "Post-GTC order, margin or adoption data contradicting 软件、EDA、机器人生态能不能形成稀缺收益？"
+      ],
+      "target_implications": "Affects future_space and target action_state.",
+      "score_component": "future_space",
+      "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+      "refuting_source_plan": [
+        "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-NV-ROBOTICS",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "industry-report-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-NV-DRIVE",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "industry-report-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-SNPS-GTC",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "industry-report-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "industry-report",
+        "selected_skill": "industry-report-analysis",
+        "concrete_materials": [
+          "SRC-NV-ROBOTICS",
+          "SRC-NV-DRIVE",
+          "SRC-SNPS-GTC"
+        ],
+        "extraction_schema": [
+          "key_facts",
+          "numbers_dates",
+          "investment_relevance",
+          "support_refute_or_lead",
+          "uncertainties"
+        ],
+        "source_extraction_ids": [
+          "EXT-Q2-2-2-NV-ROBOTICS",
+          "EXT-Q2-2-2-NV-DRIVE",
+          "EXT-Q2-2-2-SNPS-GTC"
+        ],
+        "leaf_source_review_ids": [
+          "REV-Q2-2-2-NV-ROBOTICS",
+          "REV-Q2-2-2-NV-DRIVE",
+          "REV-Q2-2-2-SNPS-GTC"
+        ],
+        "skill_output_status": "gpt_verified_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified_against_public_sources"
+      },
+      "fact": "NVIDIA 发布 physical AI 模型/框架并与机器人、车企、EDA 生态合作；Synopsys 展示 NVIDIA partnership。",
+      "inference": "软件生态扩大 NVIDIA 平台黏性，但独立上市标的的财务捕获路径不如硬件/基础设施清晰。",
+      "judgment": "SNPS/CDNS/机器人链可列入跟踪，但本报告不把它们排在高行动状态。",
+      "gap": "缺少软件授权收入、机器人量产订单和 EDA AI 工作流商业化数据。",
+      "trigger": "若 EDA/机器人公司披露与 NVIDIA 模型/仿真的收入贡献，再提高。",
+      "source_links": [
+        "https://nvidianews.nvidia.com/news/nvidia-and-global-robotics-leaders-take-physical-ai-to-the-real-world",
+        "https://nvidianews.nvidia.com/news/drive-hyperion-level-4",
+        "https://news.synopsys.com/2026-03-16-Synopsys-Showcases-NVIDIA-Partnership-Impact-and-Ecosystem-Innovation-at-GTC-2026?asPDF=1"
+      ]
+    },
+    {
+      "id": "Q3",
+      "level": 1,
+      "parent_id": null,
+      "question": "哪些反证会让 GTC 主题无法转化为好投资？",
+      "current_conclusion": "最大风险是市场已经把 AI 基建高增长提前定价，同时客户 capex、供电、液冷、交付和 AI ROI 任一环节走弱都会压低胜率；终端 AI PC/机器人也可能停留在概念期。",
+      "next_question_ids": [
+        "Q3.1",
+        "Q3.2"
+      ]
+    },
+    {
+      "id": "Q3.1",
+      "level": 2,
+      "parent_id": "Q3",
+      "question": "估值和 capex/ROI 反证",
+      "current_conclusion": "强技术信号并不等于低估。当前关键是市场隐含增长是否过高，以及客户是否能持续用 AI 服务赚钱。",
+      "next_question_ids": [
+        "Q3.1.1",
+        "Q3.1.2"
+      ]
+    },
+    {
+      "id": "Q3.1.1",
+      "level": 3,
+      "parent_id": "Q3.1",
+      "question": "市场是否已经充分定价 GTC 主题？",
+      "current_conclusion": "没有低估证据前，绝大多数标的 action_state 保持 watch_only/no_action。",
+      "next_question_ids": [],
+      "materiality": "防止因为技术强就给高行动状态。",
+      "decision_use": "防止因为技术强就给高行动状态。",
+      "support_evidence": [
+        "SRC-FINANCE-SNAPSHOT supports 市场是否已经充分定价 GTC 主题？",
+        "SRC-NV-GTC-OVERVIEW supports 市场是否已经充分定价 GTC 主题？",
+        "SRC-NV-GTC-TAIPEI-VERA supports 市场是否已经充分定价 GTC 主题？"
+      ],
+      "refute_evidence": [
+        "Post-GTC order, margin or adoption data contradicting 市场是否已经充分定价 GTC 主题？"
+      ],
+      "target_implications": "Affects valuation_odds and target action_state.",
+      "score_component": "valuation_odds",
+      "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+      "refuting_source_plan": [
+        "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-FINANCE-SNAPSHOT",
+          "source_visible_at": "2026-06-01",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "valuation-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-NV-GTC-OVERVIEW",
+          "source_visible_at": "2026-03-03",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "valuation-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-NV-GTC-TAIPEI-VERA",
+          "source_visible_at": "2026-05-31",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "valuation-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "valuation",
+        "selected_skill": "valuation-analysis",
+        "concrete_materials": [
+          "SRC-FINANCE-SNAPSHOT",
+          "SRC-NV-GTC-OVERVIEW",
+          "SRC-NV-GTC-TAIPEI-VERA"
+        ],
+        "extraction_schema": [
+          "key_facts",
+          "numbers_dates",
+          "investment_relevance",
+          "support_refute_or_lead",
+          "uncertainties"
+        ],
+        "source_extraction_ids": [
+          "EXT-Q3-1-1-FINANCE-SNAPSHOT",
+          "EXT-Q3-1-1-NV-GTC-OVERVIEW",
+          "EXT-Q3-1-1-NV-GTC-TAIPEI-VERA"
+        ],
+        "leaf_source_review_ids": [
+          "REV-Q3-1-1-FINANCE-SNAPSHOT",
+          "REV-Q3-1-1-NV-GTC-OVERVIEW",
+          "REV-Q3-1-1-NV-GTC-TAIPEI-VERA"
+        ],
+        "skill_output_status": "gpt_verified_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified_against_public_sources"
+      },
+      "fact": "当前 AI 基建相关公司普遍被市场关注，NVDA、VRT、ALAB、ARM 等主题曝光度很高；完整 reverse DCF 尚未完成。",
+      "inference": "GTC 证据提高基本面可信度，但不自动提高估值赔率。",
+      "judgment": "没有低估证据前，绝大多数标的 action_state 保持 watch_only/no_action。",
+      "gap": "缺少统一口径的 EV/FCF、隐含增长、毛利和下行情景。",
+      "trigger": "只有当市场隐含预期低于可验证订单/利润路径时，才升级 mispricing。",
+      "source_links": [
+        "https://finance.yahoo.com/",
+        "https://nvidianews.nvidia.com/news/nvidia-ceo-jensen-huang-and-global-technology-leaders-to-showcase-age-of-ai-at-gtc-2026",
+        "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Vera-Rubin-Ramps-Into-Full-Production-to-Power-Agentic-AI-Factories-Worldwide/default.aspx"
+      ]
+    },
+    {
+      "id": "Q3.1.2",
+      "level": 3,
+      "parent_id": "Q3.1",
+      "question": "客户 capex、AI ROI 和电力约束会不会打断链条？",
+      "current_conclusion": "Q3.1 的风险控制要求把订单质量和部署约束作为核心 kill tests。",
+      "next_question_ids": [],
+      "materiality": "定义最重要的反证源。",
+      "decision_use": "定义最重要的反证源。",
+      "support_evidence": [
+        "SRC-NV-GTC-OVERVIEW supports 客户 capex、AI ROI 和电力约束会不会打断链条？",
+        "SRC-VRT-DSX supports 客户 capex、AI ROI 和电力约束会不会打断链条？",
+        "SRC-DELL-AI-FACTORY supports 客户 capex、AI ROI 和电力约束会不会打断链条？"
+      ],
+      "refute_evidence": [
+        "Post-GTC order, margin or adoption data contradicting 客户 capex、AI ROI 和电力约束会不会打断链条？"
+      ],
+      "target_implications": "Affects disconfirming_risk_control and target action_state.",
+      "score_component": "disconfirming_risk_control",
+      "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+      "refuting_source_plan": [
+        "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-NV-GTC-OVERVIEW",
+          "source_visible_at": "2026-03-03",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "news-event-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-VRT-DSX",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "news-event-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-DELL-AI-FACTORY",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "news-event-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "news-event",
+        "selected_skill": "news-event-analysis",
+        "concrete_materials": [
+          "SRC-NV-GTC-OVERVIEW",
+          "SRC-VRT-DSX",
+          "SRC-DELL-AI-FACTORY"
+        ],
+        "extraction_schema": [
+          "key_facts",
+          "numbers_dates",
+          "investment_relevance",
+          "support_refute_or_lead",
+          "uncertainties"
+        ],
+        "source_extraction_ids": [
+          "EXT-Q3-1-2-NV-GTC-OVERVIEW",
+          "EXT-Q3-1-2-VRT-DSX",
+          "EXT-Q3-1-2-DELL-AI-FACTORY"
+        ],
+        "leaf_source_review_ids": [
+          "REV-Q3-1-2-NV-GTC-OVERVIEW",
+          "REV-Q3-1-2-VRT-DSX",
+          "REV-Q3-1-2-DELL-AI-FACTORY"
+        ],
+        "skill_output_status": "gpt_verified_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified_against_public_sources"
+      },
+      "fact": "GTC 将 AI 描述为基础设施，但 AI factory 的落地仍依赖客户 capex、供电、液冷、机房建设和模型收入。",
+      "inference": "如果 capex 放缓或电力/部署瓶颈导致交付延期，多数供应链标的会被同时压估值。",
+      "judgment": "Q3.1 的风险控制要求把订单质量和部署约束作为核心 kill tests。",
+      "gap": "缺少云厂商逐季 AI capex ROI 和供电项目数据。",
+      "trigger": "若 hyperscaler 下修 capex 或 VRT/DELL backlog 质量下降，下调相关标的。",
+      "source_links": [
+        "https://nvidianews.nvidia.com/news/nvidia-ceo-jensen-huang-and-global-technology-leaders-to-showcase-age-of-ai-at-gtc-2026",
+        "https://investors.vertiv.com/news/news-details/2026/Vertiv-Brings-Converged-Physical-Infrastructure-to-NVIDIA-Vera-Rubin-DSX-AI-Factories/default.aspx",
+        "https://investors.delltechnologies.com/node/19336/pdf"
+      ]
+    },
+    {
+      "id": "Q3.2",
+      "level": 2,
+      "parent_id": "Q3",
+      "question": "供应链替代、执行和终端采用风险",
+      "current_conclusion": "NVIDIA 的纵向整合可能压缩第三方网络/系统标的弹性；终端 AI PC 和机器人若无出货/使用量，就不能给高分。",
+      "next_question_ids": [
+        "Q3.2.1",
+        "Q3.2.2"
+      ]
+    },
+    {
+      "id": "Q3.2.1",
+      "level": 3,
+      "parent_id": "Q3.2",
+      "question": "NVIDIA 纵向整合会不会压缩第三方受益？",
+      "current_conclusion": "第三方网络/连接标的必须有明确 design-in、份额和毛利证据。",
+      "next_question_ids": [],
+      "materiality": "避免把所有 AI 网络/系统公司都当作 GTC 受益者。",
+      "decision_use": "避免把所有 AI 网络/系统公司都当作 GTC 受益者。",
+      "support_evidence": [
+        "SRC-NV-STX supports NVIDIA 纵向整合会不会压缩第三方受益？",
+        "SRC-NV-GTC-TAIPEI-VERA supports NVIDIA 纵向整合会不会压缩第三方受益？",
+        "SRC-ASTERA-GTC supports NVIDIA 纵向整合会不会压缩第三方受益？"
+      ],
+      "refute_evidence": [
+        "Post-GTC order, margin or adoption data contradicting NVIDIA 纵向整合会不会压缩第三方受益？"
+      ],
+      "target_implications": "Affects disconfirming_risk_control and target action_state.",
+      "score_component": "disconfirming_risk_control",
+      "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+      "refuting_source_plan": [
+        "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-NV-STX",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "industry-report-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-NV-GTC-TAIPEI-VERA",
+          "source_visible_at": "2026-05-31",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "industry-report-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-ASTERA-GTC",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "industry-report-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "industry-report",
+        "selected_skill": "industry-report-analysis",
+        "concrete_materials": [
+          "SRC-NV-STX",
+          "SRC-NV-GTC-TAIPEI-VERA",
+          "SRC-ASTERA-GTC"
+        ],
+        "extraction_schema": [
+          "key_facts",
+          "numbers_dates",
+          "investment_relevance",
+          "support_refute_or_lead",
+          "uncertainties"
+        ],
+        "source_extraction_ids": [
+          "EXT-Q3-2-1-NV-STX",
+          "EXT-Q3-2-1-NV-GTC-TAIPEI-VERA",
+          "EXT-Q3-2-1-ASTERA-GTC"
+        ],
+        "leaf_source_review_ids": [
+          "REV-Q3-2-1-NV-STX",
+          "REV-Q3-2-1-NV-GTC-TAIPEI-VERA",
+          "REV-Q3-2-1-ASTERA-GTC"
+        ],
+        "skill_output_status": "gpt_verified_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified_against_public_sources"
+      },
+      "fact": "NVIDIA 在网络、DPU、STX 存储、Spectrum-X Photonics 和参考设计上持续加深整合。",
+      "inference": "平台整合提高 NVIDIA 自身护城河，但可能让部分第三方只获得有限配套利润或面临替代。",
+      "judgment": "第三方网络/连接标的必须有明确 design-in、份额和毛利证据。",
+      "gap": "缺少 DSX/Rubin 的第三方 BoM 份额。",
+      "trigger": "若 NVIDIA 自有方案替代第三方，降级 AVGO/ANET/MRVL/ALAB 中缺证据者。",
+      "source_links": [
+        "https://nvidianews.nvidia.com/news/nvidia-launches-bluefield-4-stx-storage-architecture-with-broad-industry-adoption",
+        "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Vera-Rubin-Ramps-Into-Full-Production-to-Power-Agentic-AI-Factories-Worldwide/default.aspx",
+        "https://www.asteralabs.com/about/events/gtc2026/"
+      ]
+    },
+    {
+      "id": "Q3.2.2",
+      "level": 3,
+      "parent_id": "Q3.2",
+      "question": "RTX Spark、机器人和 DRIVE 会不会停留在概念期？",
+      "current_conclusion": "RTX Spark/机器人/DRIVE 对主线是加分项，但不足以单独推高多数标的。",
+      "next_question_ids": [],
+      "materiality": "控制终端应用期权的分数上限。",
+      "decision_use": "控制终端应用期权的分数上限。",
+      "support_evidence": [
+        "SRC-NV-RTX-SPARK supports RTX Spark、机器人和 DRIVE 会不会停留在概念期？",
+        "SRC-MS-RTX-SPARK supports RTX Spark、机器人和 DRIVE 会不会停留在概念期？",
+        "SRC-NV-ROBOTICS supports RTX Spark、机器人和 DRIVE 会不会停留在概念期？",
+        "SRC-NV-DRIVE supports RTX Spark、机器人和 DRIVE 会不会停留在概念期？"
+      ],
+      "refute_evidence": [
+        "Post-GTC order, margin or adoption data contradicting RTX Spark、机器人和 DRIVE 会不会停留在概念期？"
+      ],
+      "target_implications": "Affects risk_control and target action_state.",
+      "score_component": "risk_control",
+      "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+      "refuting_source_plan": [
+        "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-NV-RTX-SPARK",
+          "source_visible_at": "2026-06-01",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "news-event-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-MS-RTX-SPARK",
+          "source_visible_at": "2026-05-31",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "news-event-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-NV-ROBOTICS",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "news-event-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-NV-DRIVE",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "news-event-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "news-event",
+        "selected_skill": "news-event-analysis",
+        "concrete_materials": [
+          "SRC-NV-RTX-SPARK",
+          "SRC-MS-RTX-SPARK",
+          "SRC-NV-ROBOTICS",
+          "SRC-NV-DRIVE"
+        ],
+        "extraction_schema": [
+          "key_facts",
+          "numbers_dates",
+          "investment_relevance",
+          "support_refute_or_lead",
+          "uncertainties"
+        ],
+        "source_extraction_ids": [
+          "EXT-Q3-2-2-NV-RTX-SPARK",
+          "EXT-Q3-2-2-MS-RTX-SPARK",
+          "EXT-Q3-2-2-NV-ROBOTICS",
+          "EXT-Q3-2-2-NV-DRIVE"
+        ],
+        "leaf_source_review_ids": [
+          "REV-Q3-2-2-NV-RTX-SPARK",
+          "REV-Q3-2-2-MS-RTX-SPARK",
+          "REV-Q3-2-2-NV-ROBOTICS",
+          "REV-Q3-2-2-NV-DRIVE"
+        ],
+        "skill_output_status": "gpt_verified_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified_against_public_sources"
+      },
+      "fact": "RTX Spark 有 OEM 时间表，机器人/自动驾驶有生态合作，但出货、价格、企业采用和盈利模式仍未充分披露。",
+      "inference": "终端应用可能扩大 TAM，也可能因为应用不足、价格高或采购慢而难以兑现。",
+      "judgment": "RTX Spark/机器人/DRIVE 对主线是加分项，但不足以单独推高多数标的。",
+      "gap": "缺少出货、渠道库存、应用使用量和机器人交付收入。",
+      "trigger": "若 fall 2026 RTX Spark SKU 销量不佳或机器人订单不落地，降低 payoff_convexity。",
+      "source_links": [
+        "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-Microsoft-Reinvent-Windows-PCs-for-the-Age-of-Personal-AI/default.aspx",
+        "https://blogs.windows.com/windowsexperience/2026/05/31/introducing-a-powerful-new-chapter-for-windows-pcs-accelerated-by-nvidia-rtx-spark/",
+        "https://nvidianews.nvidia.com/news/nvidia-and-global-robotics-leaders-take-physical-ai-to-the-real-world",
+        "https://nvidianews.nvidia.com/news/drive-hyperion-level-4"
+      ]
+    },
+    {
+      "id": "Q4",
+      "level": 1,
+      "parent_id": null,
+      "question": "按当前证据，哪些标的进入观察池，行动状态如何？",
+      "current_conclusion": "当前没有足够证据给出高确定性 actionable_long。较值得观察的是 VRT、ALAB、NVDA、DELL、ARM 和 TSM/MU 等，但大多因为估值、验证不足或平台替代风险维持 watch_only 或 no_action。",
+      "next_question_ids": [
+        "Q4.1",
+        "Q4.2"
+      ]
+    },
+    {
+      "id": "Q4.1",
+      "level": 2,
+      "parent_id": "Q4",
+      "question": "目标池和排序规则",
+      "current_conclusion": "目标池从价值捕获节点出发，不从发布会曝光度出发；高主题热度但缺低估证据的标的必须控分。",
+      "next_question_ids": [
+        "Q4.1.1",
+        "Q4.1.2"
+      ]
+    },
+    {
+      "id": "Q4.1.1",
+      "level": 3,
+      "parent_id": "Q4.1",
+      "question": "哪些证券是真正的价值捕获载体？",
+      "current_conclusion": "最终表保留 watch_only/no_action，避免强行做多。",
+      "next_question_ids": [],
+      "materiality": "建立目标池，不按发布会曝光度或交易便利性收缩。",
+      "decision_use": "建立目标池，不按发布会曝光度或交易便利性收缩。",
+      "support_evidence": [
+        "SRC-NV-VERA-RUBIN supports 哪些证券是真正的价值捕获载体？",
+        "SRC-VRT-DSX supports 哪些证券是真正的价值捕获载体？",
+        "SRC-DELL-AI-FACTORY supports 哪些证券是真正的价值捕获载体？",
+        "SRC-ASTERA-GTC supports 哪些证券是真正的价值捕获载体？",
+        "SRC-NV-RTX-SPARK supports 哪些证券是真正的价值捕获载体？"
+      ],
+      "refute_evidence": [
+        "Post-GTC order, margin or adoption data contradicting 哪些证券是真正的价值捕获载体？"
+      ],
+      "target_implications": "Affects target_ranking and target action_state.",
+      "score_component": "target_ranking",
+      "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+      "refuting_source_plan": [
+        "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-NV-VERA-RUBIN",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-VRT-DSX",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-DELL-AI-FACTORY",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-ASTERA-GTC",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-NV-RTX-SPARK",
+          "source_visible_at": "2026-06-01",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "target-recommendation",
+        "selected_skill": "target-recommendation-analysis",
+        "concrete_materials": [
+          "SRC-NV-VERA-RUBIN",
+          "SRC-VRT-DSX",
+          "SRC-DELL-AI-FACTORY",
+          "SRC-ASTERA-GTC",
+          "SRC-NV-RTX-SPARK"
+        ],
+        "extraction_schema": [
+          "key_facts",
+          "numbers_dates",
+          "investment_relevance",
+          "support_refute_or_lead",
+          "uncertainties"
+        ],
+        "source_extraction_ids": [
+          "EXT-Q4-1-1-NV-VERA-RUBIN",
+          "EXT-Q4-1-1-VRT-DSX",
+          "EXT-Q4-1-1-DELL-AI-FACTORY",
+          "EXT-Q4-1-1-ASTERA-GTC",
+          "EXT-Q4-1-1-NV-RTX-SPARK"
+        ],
+        "leaf_source_review_ids": [
+          "REV-Q4-1-1-NV-VERA-RUBIN",
+          "REV-Q4-1-1-VRT-DSX",
+          "REV-Q4-1-1-DELL-AI-FACTORY",
+          "REV-Q4-1-1-ASTERA-GTC",
+          "REV-Q4-1-1-NV-RTX-SPARK"
+        ],
+        "skill_output_status": "gpt_verified_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified_against_public_sources"
+      },
+      "fact": "价值捕获载体包括 NVDA、VRT、ALAB、DELL、ARM、TSM、MU、AVGO/ANET/MRVL 和 SMCI，但质量差异很大。",
+      "inference": "目标池应从卡点映射而来，而不是从热门 ticker 出发。",
+      "judgment": "最终表保留 watch_only/no_action，避免强行做多。",
+      "gap": "缺少跨市场同口径估值和订单证据。",
+      "trigger": "补齐估值和订单后再调整 action_state。",
+      "source_links": [
+        "https://nvidianews.nvidia.com/news/nvidia-vera-rubin-platform",
+        "https://investors.vertiv.com/news/news-details/2026/Vertiv-Brings-Converged-Physical-Infrastructure-to-NVIDIA-Vera-Rubin-DSX-AI-Factories/default.aspx",
+        "https://investors.delltechnologies.com/node/19336/pdf",
+        "https://www.asteralabs.com/about/events/gtc2026/",
+        "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-Microsoft-Reinvent-Windows-PCs-for-the-Age-of-Personal-AI/default.aspx"
+      ]
+    },
+    {
+      "id": "Q4.1.2",
+      "level": 3,
+      "parent_id": "Q4.1",
+      "question": "排序如何由分数而不是叙事产生？",
+      "current_conclusion": "排序以 watch_only 为主，no_action 用于证据或风险不足的方向。",
+      "next_question_ids": [],
+      "materiality": "确保高分必须同时满足稀缺、低估、弹性和风险控制。",
+      "decision_use": "确保高分必须同时满足稀缺、低估、弹性和风险控制。",
+      "support_evidence": [
+        "SRC-FINANCE-SNAPSHOT supports 排序如何由分数而不是叙事产生？",
+        "SRC-VRT-DSX supports 排序如何由分数而不是叙事产生？",
+        "SRC-ASTERA-GTC supports 排序如何由分数而不是叙事产生？",
+        "SRC-NV-VERA-RUBIN supports 排序如何由分数而不是叙事产生？"
+      ],
+      "refute_evidence": [
+        "Post-GTC order, margin or adoption data contradicting 排序如何由分数而不是叙事产生？"
+      ],
+      "target_implications": "Affects action_state and target action_state.",
+      "score_component": "action_state",
+      "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+      "refuting_source_plan": [
+        "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-FINANCE-SNAPSHOT",
+          "source_visible_at": "2026-06-01",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-VRT-DSX",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-ASTERA-GTC",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-NV-VERA-RUBIN",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "target-recommendation",
+        "selected_skill": "target-recommendation-analysis",
+        "concrete_materials": [
+          "SRC-FINANCE-SNAPSHOT",
+          "SRC-VRT-DSX",
+          "SRC-ASTERA-GTC",
+          "SRC-NV-VERA-RUBIN"
+        ],
+        "extraction_schema": [
+          "key_facts",
+          "numbers_dates",
+          "investment_relevance",
+          "support_refute_or_lead",
+          "uncertainties"
+        ],
+        "source_extraction_ids": [
+          "EXT-Q4-1-2-FINANCE-SNAPSHOT",
+          "EXT-Q4-1-2-VRT-DSX",
+          "EXT-Q4-1-2-ASTERA-GTC",
+          "EXT-Q4-1-2-NV-VERA-RUBIN"
+        ],
+        "leaf_source_review_ids": [
+          "REV-Q4-1-2-FINANCE-SNAPSHOT",
+          "REV-Q4-1-2-VRT-DSX",
+          "REV-Q4-1-2-ASTERA-GTC",
+          "REV-Q4-1-2-NV-VERA-RUBIN"
+        ],
+        "skill_output_status": "gpt_verified_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified_against_public_sources"
+      },
+      "fact": "目标分数由 chokepoint、future space、valuation odds、evidence quality、risk control、monitorability 和 payoff convexity 组成，并汇总到四个核心维度。",
+      "inference": "当前多数标的的 scarcity/future_space 强，但 mispricing 未验证，因此不能升级 actionable_long。",
+      "judgment": "排序以 watch_only 为主，no_action 用于证据或风险不足的方向。",
+      "gap": "缺少完整 reverse DCF 和订单毛利模型。",
+      "trigger": "只有四个维度都增强才升级。",
+      "source_links": [
+        "https://finance.yahoo.com/",
+        "https://investors.vertiv.com/news/news-details/2026/Vertiv-Brings-Converged-Physical-Infrastructure-to-NVIDIA-Vera-Rubin-DSX-AI-Factories/default.aspx",
+        "https://www.asteralabs.com/about/events/gtc2026/",
+        "https://nvidianews.nvidia.com/news/nvidia-vera-rubin-platform"
+      ]
+    },
+    {
+      "id": "Q4.2",
+      "level": 2,
+      "parent_id": "Q4",
+      "question": "三个月验证触发器",
+      "current_conclusion": "live 模式用 2026-09-01 作为复核窗口，关注订单、capex、供电液冷项目、RTX Spark SKU/出货和 AI Factory 毛利验证。",
+      "next_question_ids": [
+        "Q4.2.1",
+        "Q4.2.2"
+      ]
+    },
+    {
+      "id": "Q4.2.1",
+      "level": 3,
+      "parent_id": "Q4.2",
+      "question": "未来三个月哪些数据能升级观察强度？",
+      "current_conclusion": "复核窗口设为 2026-09-01。",
+      "next_question_ids": [],
+      "materiality": "定义 live 研究的复核指标。",
+      "decision_use": "定义 live 研究的复核指标。",
+      "support_evidence": [
+        "SRC-NV-GTC-TAIPEI-VERA supports 未来三个月哪些数据能升级观察强度？",
+        "SRC-NV-RTX-SPARK supports 未来三个月哪些数据能升级观察强度？",
+        "SRC-VRT-DSX supports 未来三个月哪些数据能升级观察强度？",
+        "SRC-DELL-AI-FACTORY supports 未来三个月哪些数据能升级观察强度？"
+      ],
+      "refute_evidence": [
+        "Post-GTC order, margin or adoption data contradicting 未来三个月哪些数据能升级观察强度？"
+      ],
+      "target_implications": "Affects monitorability and target action_state.",
+      "score_component": "monitorability",
+      "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+      "refuting_source_plan": [
+        "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-NV-GTC-TAIPEI-VERA",
+          "source_visible_at": "2026-05-31",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-NV-RTX-SPARK",
+          "source_visible_at": "2026-06-01",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-VRT-DSX",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-DELL-AI-FACTORY",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "target-recommendation",
+        "selected_skill": "target-recommendation-analysis",
+        "concrete_materials": [
+          "SRC-NV-GTC-TAIPEI-VERA",
+          "SRC-NV-RTX-SPARK",
+          "SRC-VRT-DSX",
+          "SRC-DELL-AI-FACTORY"
+        ],
+        "extraction_schema": [
+          "key_facts",
+          "numbers_dates",
+          "investment_relevance",
+          "support_refute_or_lead",
+          "uncertainties"
+        ],
+        "source_extraction_ids": [
+          "EXT-Q4-2-1-NV-GTC-TAIPEI-VERA",
+          "EXT-Q4-2-1-NV-RTX-SPARK",
+          "EXT-Q4-2-1-VRT-DSX",
+          "EXT-Q4-2-1-DELL-AI-FACTORY"
+        ],
+        "leaf_source_review_ids": [
+          "REV-Q4-2-1-NV-GTC-TAIPEI-VERA",
+          "REV-Q4-2-1-NV-RTX-SPARK",
+          "REV-Q4-2-1-VRT-DSX",
+          "REV-Q4-2-1-DELL-AI-FACTORY"
+        ],
+        "skill_output_status": "gpt_verified_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified_against_public_sources"
+      },
+      "fact": "最有用的升级数据包括 Vera/Rubin 订单、AI factory backlog、VRT/DELL 毛利、ALAB design-in、RTX Spark SKU 和出货。",
+      "inference": "这些指标能直接验证 future_space、financial conversion 和 valuation odds。",
+      "judgment": "复核窗口设为 2026-09-01。",
+      "gap": "需要自动跟踪官方公告、财报和渠道数据。",
+      "trigger": "若订单、毛利和估值同时改善，升级强度。",
+      "source_links": [
+        "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Vera-Rubin-Ramps-Into-Full-Production-to-Power-Agentic-AI-Factories-Worldwide/default.aspx",
+        "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-Microsoft-Reinvent-Windows-PCs-for-the-Age-of-Personal-AI/default.aspx",
+        "https://investors.vertiv.com/news/news-details/2026/Vertiv-Brings-Converged-Physical-Infrastructure-to-NVIDIA-Vera-Rubin-DSX-AI-Factories/default.aspx",
+        "https://investors.delltechnologies.com/node/19336/pdf"
+      ]
+    },
+    {
+      "id": "Q4.2.2",
+      "level": 3,
+      "parent_id": "Q4.2",
+      "question": "哪些 kill tests 会撤销 GTC 主题高分？",
+      "current_conclusion": "任何目标若触发核心 kill test，应降级到 no_action。",
+      "next_question_ids": [],
+      "materiality": "给每个高关注方向设置硬降级条件。",
+      "decision_use": "给每个高关注方向设置硬降级条件。",
+      "support_evidence": [
+        "SRC-FINANCE-SNAPSHOT supports 哪些 kill tests 会撤销 GTC 主题高分？",
+        "SRC-NV-STX supports 哪些 kill tests 会撤销 GTC 主题高分？",
+        "SRC-NV-RTX-SPARK supports 哪些 kill tests 会撤销 GTC 主题高分？",
+        "SRC-VRT-DSX supports 哪些 kill tests 会撤销 GTC 主题高分？"
+      ],
+      "refute_evidence": [
+        "Post-GTC order, margin or adoption data contradicting 哪些 kill tests 会撤销 GTC 主题高分？"
+      ],
+      "target_implications": "Affects risk_control and target action_state.",
+      "score_component": "risk_control",
+      "minimum_evidence_gate": "At least one public source visible before report date plus GPT verification.",
+      "refuting_source_plan": [
+        "Check company filings, customer capex guidance, order/margin updates and competing architecture evidence."
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-FINANCE-SNAPSHOT",
+          "source_visible_at": "2026-06-01",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-NV-STX",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-NV-RTX-SPARK",
+          "source_visible_at": "2026-06-01",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        },
+        {
+          "source_id": "SRC-VRT-DSX",
+          "source_visible_at": "2026-03-16",
+          "allowed_usage": "live_thesis",
+          "preferred_parser_skill": "target-recommendation-analysis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties"
+          ],
+          "availability_proof": "publisher date / official release page"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "target-recommendation",
+        "selected_skill": "target-recommendation-analysis",
+        "concrete_materials": [
+          "SRC-FINANCE-SNAPSHOT",
+          "SRC-NV-STX",
+          "SRC-NV-RTX-SPARK",
+          "SRC-VRT-DSX"
+        ],
+        "extraction_schema": [
+          "key_facts",
+          "numbers_dates",
+          "investment_relevance",
+          "support_refute_or_lead",
+          "uncertainties"
+        ],
+        "source_extraction_ids": [
+          "EXT-Q4-2-2-FINANCE-SNAPSHOT",
+          "EXT-Q4-2-2-NV-STX",
+          "EXT-Q4-2-2-NV-RTX-SPARK",
+          "EXT-Q4-2-2-VRT-DSX"
+        ],
+        "leaf_source_review_ids": [
+          "REV-Q4-2-2-FINANCE-SNAPSHOT",
+          "REV-Q4-2-2-NV-STX",
+          "REV-Q4-2-2-NV-RTX-SPARK",
+          "REV-Q4-2-2-VRT-DSX"
+        ],
+        "skill_output_status": "gpt_verified_direct_parse",
+        "fallback_used": true,
+        "gpt_verification_status": "verified_against_public_sources"
+      },
+      "fact": "关键 kill tests 包括 AI capex 下修、Vera/Rubin 延迟、VRT/DELL 毛利恶化、第三方连接被 NVIDIA 替代、RTX Spark 出货不佳。",
+      "inference": "这些反证会分别攻击 future_space、chokepoint_strength、payoff 和 risk_control。",
+      "judgment": "任何目标若触发核心 kill test，应降级到 no_action。",
+      "gap": "需要持续收集订单、财报、渠道和供应链数据。",
+      "trigger": "官方财报或客户 capex 指引确认任一 kill test 时降级。",
+      "source_links": [
+        "https://finance.yahoo.com/",
+        "https://nvidianews.nvidia.com/news/nvidia-launches-bluefield-4-stx-storage-architecture-with-broad-industry-adoption",
+        "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-Microsoft-Reinvent-Windows-PCs-for-the-Age-of-Personal-AI/default.aspx",
+        "https://investors.vertiv.com/news/news-details/2026/Vertiv-Brings-Converged-Physical-Infrastructure-to-NVIDIA-Vera-Rubin-DSX-AI-Factories/default.aspx"
+      ]
+    }
+  ]
+}
