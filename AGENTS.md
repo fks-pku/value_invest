@@ -96,6 +96,8 @@ The forward return label is evaluation metadata only. It must never be used to j
 
 Label availability must not define the investment universe. In historical training/backtest mode, target selection and ranking must start from the economically relevant securities or assets across exchanges. If a non-US or otherwise hard-to-label target lacks a verified price label, keep the target in the frozen observation list with `label_status: label_unverified_*` rather than replacing it with a US/Nasdaq proxy.
 
+Historical backtest anti-leakage controls are mandatory. The system cannot guarantee that a current LLM has no post-cutoff background priors, so backtest conclusions must be source-pack grounded: model priors may frame hypotheses only and must never strengthen facts, scores, target ranking, or action state. Every historical QA tree must declare `anti_leakage_controls`; every L3 leaf must declare `backtest_grounding` with its exact cutoff source IDs and an empty `non_source_claims` list. Target score subcomponents must reference cutoff-visible source IDs or GPT-verified leaf review IDs. Framework/playbook, supply-chain, and model knowledge that cannot be traced to cutoff sources must remain a pending hypothesis, not a scored conclusion.
+
 ## Research Quality Pipeline
 
 The framework optimizes research quality before report polish. Run these passes in order:
@@ -157,6 +159,7 @@ The framework optimizes research quality before report polish. Run these passes 
    - Run `value-invest-research validate-report-contract <professional_report.html> --mode historical_backtest --require-l3` after refreshed canonical reports.
    - Run `value-invest-research validate-research-artifacts <project_dir> --require-l3` after refreshed canonical reports. This validates the QA tree, source-parser records, GPT review records, target score subcomponents, score dimensions, and kill tests.
    - Run `value-invest-research audit-time-slice <sources.jsonl> --as-of-date YYYY-MM-DD` before using historical-mode sources for QA, scoring, odds, or ranking.
+   - In historical mode, `validate-research-artifacts` must also pass the anti-leakage gate: `anti_leakage_controls`, L3 `backtest_grounding`, cutoff-only source parsing, and target score references to cutoff sources or GPT-verified reviews.
 
 1. Current research goal
    - Define the object, time frame, investment relevance, and decision boundary.

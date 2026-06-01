@@ -17,6 +17,7 @@ from value_invest_research.framework_contracts import (
     rank_target_observations,
     score_target_observation,
     validate_leaf_source_review_schema,
+    validate_backtest_leakage_controls,
     validate_source_extraction_schema,
     validate_qa_tree_schema,
     validate_report_contract_html,
@@ -173,6 +174,18 @@ class FrameworkContractsTests(unittest.TestCase):
 
     def test_qa_schema_time_slice_scoring_freeze_labels_samples_and_review(self):
         qa_tree = {
+            "run_mode": "historical_backtest",
+            "as_of_date": "2026-02-28",
+            "anti_leakage_controls": {
+                "anti_leakage_level": "source_pack_grounded",
+                "as_of_date": "2026-02-28",
+                "cutoff_source_pack_policy": "all_thesis_sources_visible_on_or_before_as_of_date",
+                "llm_prior_policy": "model_prior_is_not_evidence",
+                "question_tree_policy": "questions_may_use_playbook_but_strength_requires_cutoff_sources",
+                "supply_chain_policy": "supply_chain_claims_require_cutoff_source_ids",
+                "scoring_policy": "target_scores_require_verified_leaf_reviews_or_cutoff_sources",
+                "label_isolation_policy": "labels_attached_after_frozen_recommendations_only",
+            },
             "nodes": [
                 {"id": "root", "level": 0, "question": "Research AI hardware", "next_question_ids": ["q1"]},
                 {"id": "q1", "level": 1, "question": "Q1 demand", "parent_id": "root", "next_question_ids": ["q1-1"]},
@@ -213,7 +226,13 @@ class FrameworkContractsTests(unittest.TestCase):
                     "judgment": "support",
                     "gap": ["customer ROI"],
                     "trigger": ["capex cuts"],
-                    "source_links": ["https://example.com/visible"],
+                    "source_links": ["ev1"],
+                    "backtest_grounding": {
+                        "allowed_source_ids": ["ev1"],
+                        "model_prior_policy": "hypothesis_only_not_scoring_evidence",
+                        "post_cutoff_knowledge_policy": "forbidden_except_final_label",
+                        "non_source_claims": [],
+                    },
                 },
             ]
         }
@@ -465,6 +484,41 @@ class FrameworkContractsTests(unittest.TestCase):
             ]
         )
         self.assertTrue(target_contract["ok"], target_contract["issues"])
+
+        leakage_result = validate_backtest_leakage_controls(
+            qa_tree,
+            [
+                {
+                    "extraction_id": "se-q1-1-1-ev1",
+                    "l3_question_id": "q1-1-1",
+                    "source_id": "ev1",
+                }
+            ],
+            [
+                {
+                    "review_id": "review-q1-1-1-ev1",
+                    "extraction_id": "se-q1-1-1-ev1",
+                    "l3_question_id": "q1-1-1",
+                    "source_id": "ev1",
+                    "allowed_to_strengthen_conclusion": True,
+                }
+            ],
+            [
+                {
+                    "ticker": "ACTION",
+                    "score": scarce_underpriced_score,
+                    "score_subcomponents": scarce_underpriced_score["score_subcomponents"],
+                }
+            ],
+            sources[:2],
+        )
+        self.assertTrue(leakage_result["ok"], leakage_result["issues"])
+
+        leaky_tree = deepcopy(qa_tree)
+        leaky_tree["nodes"][-1]["backtest_grounding"]["non_source_claims"] = ["post-cutoff winner knowledge"]
+        leaky_result = validate_backtest_leakage_controls(leaky_tree, [], [], [], sources[:2])
+        self.assertFalse(leaky_result["ok"])
+        self.assertIn("l3_backtest_has_non_source_claims", {issue["code"] for issue in leaky_result["issues"]})
 
         weak_score = deepcopy(scarce_underpriced_score)
         weak_score.pop("score_subcomponents", None)

@@ -66,6 +66,9 @@ Historical training/backtest mode must prevent look-ahead bias:
 
 - Each L3 source plan records `as_of_date`, `source_visible_at`, and cutoff status.
 - Materials visible after `as_of_date` are rejected or quarantined as look-ahead data.
+- The current LLM's background knowledge is not evidence. It may help generate hypotheses, but it may not strengthen facts, scores, target ranking, or action state unless the claim is grounded in cutoff-visible source IDs.
+- `qa_tree.json` must include `anti_leakage_controls` with the as-of date, cutoff source-pack rule, LLM-prior rule, question-tree rule, supply-chain rule, scoring rule, and label isolation rule.
+- Every L3 node must include `backtest_grounding`: `allowed_source_ids`, `model_prior_policy`, `post_cutoff_knowledge_policy`, and `non_source_claims`. `non_source_claims` must be empty for conclusions and scores.
 - Price data after `as_of_date` is allowed only after the target list and ranking are frozen, and only for the ex-post label.
 - The ex-post label must not change source selection, QA answers, target strength, target rank, score weights, or narrative wording that should have been known as of the cutoff.
 - Public backtest reports must read as if written by the system on the `as_of_date`. QA conclusions, target rationale, score explanations, odds models, downgrade triggers, and summary prose must not discuss ex-post winners, losers, realized returns, calibration lessons, or later price action.
@@ -103,6 +106,7 @@ Use `src/value_invest_research/framework_contracts.py` to turn the written frame
 - Training samples and prediction reviews: export machine-readable backtest samples and later review scaffolds so the system can learn from both correct and incorrect calls.
 - Internal workbench separation: keep parser outputs, GPT reviews, validator output, rejected future sources, scoring worksheets, freeze metadata, and label attach metadata out of the public HTML unless the user asks to inspect them.
 - Public no-changelog separation: keep framework-change notes, upgrade summaries, "what changed in this run" text, mechanism-depth maps, and "本轮如何落实" tables out of public HTML. They may live in workbench JSON, logs, or chat responses only.
+- Anti-leakage validation: in historical mode, reject reports where L3 reasoning lacks source-pack grounding, source parsing uses label-only or post-cutoff sources, or target score subcomponents reference unverified reviews, post-cutoff evidence, or label fields.
 
 ## L0: Current Research Goal
 

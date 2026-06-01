@@ -21,10 +21,12 @@ class FileSystemResearchArtifactRepository:
         qa_path = self.project_dir / "qa_tree.json"
         source_extractions_path = self.project_dir / "source_extractions.jsonl"
         leaf_source_reviews_path = self.project_dir / "leaf_source_reviews.jsonl"
+        sources_path = self.project_dir / "sources.jsonl"
         workbench_path = self.project_dir / "investment_workbench.json"
 
         issues: list[Issue] = []
         qa_tree: dict[str, Any] = {}
+        sources: list[dict[str, Any]] = []
         source_extractions: list[dict[str, Any]] = []
         leaf_source_reviews: list[dict[str, Any]] = []
         targets: list[dict[str, Any]] = []
@@ -43,6 +45,9 @@ class FileSystemResearchArtifactRepository:
                 "message": f"{source_extractions_path} does not exist",
             })
 
+        if sources_path.exists():
+            sources = _read_jsonl(sources_path)
+
         if leaf_source_reviews_path.exists():
             leaf_source_reviews = _read_jsonl(leaf_source_reviews_path)
         else:
@@ -60,6 +65,7 @@ class FileSystemResearchArtifactRepository:
 
         return ResearchArtifacts(
             qa_tree=qa_tree,
+            sources=sources,
             source_extractions=source_extractions,
             leaf_source_reviews=leaf_source_reviews,
             targets=targets,

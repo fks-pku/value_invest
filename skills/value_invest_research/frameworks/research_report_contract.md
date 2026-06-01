@@ -84,8 +84,11 @@ The time-slice rule is asymmetric by design:
 
 - Allowed before the frozen recommendation: only source materials, filings, reports, messages, prices, and market context visible on or before `as_of_date`.
 - Forbidden before the frozen recommendation: post-cutoff facts, later price action, later revisions, later analyst reports, current knowledge about winners/losers, and any wording that explains the as-of thesis using post-cutoff outcomes.
+- Model-time leakage rule: the current LLM's background knowledge is not evidence. Historical reports must be grounded in a cutoff source pack. Framework/playbook and supply-chain priors may structure hypotheses, but scored conclusions require cutoff-visible source IDs or GPT-verified leaf review IDs.
 - Allowed after the frozen recommendation: one current-time label dataset for the final targets only, normally measuring the forward three-month price change from the as-of price date to the evaluation price date.
 - Required separation: the label must be stored and rendered as evaluation metadata, not as evidence, score input, odds input, source material, or target-rationale text.
+
+Historical project artifacts must include an internal anti-leakage declaration, but final HTML should stay research-first. Store `anti_leakage_controls` in `qa_tree.json` and `backtest_grounding` on each L3 node. The public page should show the as-of cutoff and label fields, not an execution appendix, unless the user explicitly asks to inspect process.
 
 ## QA Hierarchy Contract
 

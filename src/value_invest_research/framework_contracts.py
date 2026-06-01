@@ -119,6 +119,24 @@ LEAF_SOURCE_REVIEW_REQUIRED_FIELDS = [
     "allowed_to_strengthen_conclusion",
 ]
 
+BACKTEST_ANTI_LEAKAGE_REQUIRED_FIELDS = [
+    "anti_leakage_level",
+    "as_of_date",
+    "cutoff_source_pack_policy",
+    "llm_prior_policy",
+    "question_tree_policy",
+    "supply_chain_policy",
+    "scoring_policy",
+    "label_isolation_policy",
+]
+
+L3_BACKTEST_GROUNDING_REQUIRED_FIELDS = [
+    "allowed_source_ids",
+    "model_prior_policy",
+    "post_cutoff_knowledge_policy",
+    "non_source_claims",
+]
+
 KNOWN_SPECIALTY_SKILLS = {
     "investment-question-architect",
     "research-source-planner",
@@ -1074,6 +1092,212 @@ def validate_target_observation_contract(targets: list[dict[str, Any]]) -> dict[
     }
 
 
+def validate_backtest_leakage_controls(
+    qa_tree: dict[str, Any],
+    source_extractions: list[dict[str, Any]],
+    leaf_source_reviews: list[dict[str, Any]],
+    targets: list[dict[str, Any]],
+    sources: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    """Validate controls that reduce model-time and framework-time leakage in backtests."""
+    issues: list[dict[str, str]] = []
+    if str(qa_tree.get("run_mode") or "") != "historical_backtest":
+        return {"ok": True, "summary": {"mode": qa_tree.get("run_mode", "")}, "issues": issues}
+
+    as_of_date = str(qa_tree.get("as_of_date") or "")
+    controls = qa_tree.get("anti_leakage_controls")
+    if not isinstance(controls, dict):
+        _issue(
+            issues,
+            "error",
+            "missing_backtest_anti_leakage_controls",
+            "historical backtests must declare anti_leakage_controls before QA, scoring, and labels are trusted",
+        )
+        controls = {}
+    for field in BACKTEST_ANTI_LEAKAGE_REQUIRED_FIELDS:
+        if _is_empty(controls.get(field)):
+            _issue(
+                issues,
+                "error",
+                "backtest_anti_leakage_control_missing_field",
+                f"anti_leakage_controls is missing {field}",
+            )
+    if as_of_date and controls.get("as_of_date") and str(controls.get("as_of_date")) != as_of_date:
+        _issue(
+            issues,
+            "error",
+            "backtest_anti_leakage_as_of_mismatch",
+            "anti_leakage_controls.as_of_date must match qa_tree.as_of_date",
+        )
+    if str(controls.get("llm_prior_policy") or "") != "model_prior_is_not_evidence":
+        _issue(
+            issues,
+            "error",
+            "backtest_llm_prior_policy_not_strict",
+            "LLM prior knowledge must be explicitly marked as non-evidence in historical backtests",
+        )
+    if str(controls.get("label_isolation_policy") or "") != "labels_attached_after_frozen_recommendations_only":
+        _issue(
+            issues,
+            "error",
+            "backtest_label_policy_not_strict",
+            "labels must be attached only after frozen recommendations and must not feed scoring",
+        )
+
+    thesis_source_ids = _cutoff_thesis_source_ids(sources or [], as_of_date)
+    label_source_ids = {
+        str(source.get("source_id") or source.get("id") or "")
+        for source in (sources or [])
+        if str(source.get("allowed_usage") or "") == "label_only"
+    }
+    review_by_id = {
+        str(review.get("review_id")): review
+        for review in leaf_source_reviews
+        if isinstance(review, dict) and review.get("review_id")
+    }
+    extraction_by_id = {
+        str(extraction.get("extraction_id")): extraction
+        for extraction in source_extractions
+        if isinstance(extraction, dict) and extraction.get("extraction_id")
+    }
+    source_ids = thesis_source_ids | label_source_ids
+
+    for node in qa_tree.get("nodes", []) or []:
+        if _level_number(node.get("level")) != 3:
+            continue
+        node_id = str(node.get("id") or "")
+        grounding = node.get("backtest_grounding")
+        if not isinstance(grounding, dict):
+            _issue(
+                issues,
+                "error",
+                "l3_missing_backtest_grounding",
+                f"{node_id} must declare backtest_grounding for source-pack-only reasoning",
+            )
+            continue
+        for field in L3_BACKTEST_GROUNDING_REQUIRED_FIELDS:
+            if _is_empty(grounding.get(field)) and field != "non_source_claims":
+                _issue(
+                    issues,
+                    "error",
+                    "l3_backtest_grounding_missing_field",
+                    f"{node_id} backtest_grounding is missing {field}",
+                )
+        if grounding.get("non_source_claims") not in ([], (), None):
+            _issue(
+                issues,
+                "error",
+                "l3_backtest_has_non_source_claims",
+                f"{node_id} has non-source claims in a historical backtest",
+            )
+        if str(grounding.get("model_prior_policy") or "") != "hypothesis_only_not_scoring_evidence":
+            _issue(
+                issues,
+                "error",
+                "l3_model_prior_policy_not_strict",
+                f"{node_id} model prior may not strengthen conclusions or scores",
+            )
+        allowed = {str(item) for item in grounding.get("allowed_source_ids", []) or [] if str(item)}
+        node_sources = {str(item) for item in node.get("source_links", []) or [] if str(item)}
+        if allowed != node_sources:
+            _issue(
+                issues,
+                "error",
+                "l3_grounding_source_mismatch",
+                f"{node_id} backtest_grounding.allowed_source_ids must match source_links",
+            )
+        if label_source_ids & node_sources:
+            _issue(
+                issues,
+                "error",
+                "l3_uses_label_source",
+                f"{node_id} must not use label-only sources in QA reasoning",
+            )
+        if thesis_source_ids and not node_sources <= thesis_source_ids:
+            _issue(
+                issues,
+                "error",
+                "l3_uses_non_cutoff_source",
+                f"{node_id} source_links must be cutoff-visible thesis sources only",
+            )
+
+    for extraction_id, extraction in extraction_by_id.items():
+        source_id = str(extraction.get("source_id") or "")
+        if label_source_ids and source_id in label_source_ids:
+            _issue(
+                issues,
+                "error",
+                "source_extraction_uses_label_source",
+                f"{extraction_id} must not parse label-only sources for L3 reasoning",
+            )
+        if thesis_source_ids and source_id not in thesis_source_ids:
+            _issue(
+                issues,
+                "error",
+                "source_extraction_uses_non_cutoff_source",
+                f"{extraction_id} must use a cutoff-visible thesis source",
+            )
+
+    for target in targets:
+        ticker = str(target.get("ticker") or target.get("name") or "")
+        score = target.get("score") if isinstance(target.get("score"), dict) else {}
+        subcomponents = target.get("score_subcomponents") or score.get("score_subcomponents") or {}
+        if not isinstance(subcomponents, dict):
+            continue
+        for component, rows in subcomponents.items():
+            for row in rows or []:
+                if not isinstance(row, dict):
+                    continue
+                row_review_ids = [str(item) for item in row.get("review_ids", []) or [] if str(item)]
+                row_evidence_ids = [str(item) for item in row.get("evidence_ids", []) or [] if str(item)]
+                if not row_review_ids and not row_evidence_ids:
+                    continue
+                for review_id in row_review_ids:
+                    review = review_by_id.get(review_id)
+                    if review is None:
+                        _issue(
+                            issues,
+                            "error",
+                            "target_score_unknown_review_id",
+                            f"{ticker} {component} references unknown review_id {review_id}",
+                        )
+                    elif review.get("allowed_to_strengthen_conclusion") is not True:
+                        _issue(
+                            issues,
+                            "error",
+                            "target_score_uses_unapproved_review",
+                            f"{ticker} {component} uses review_id {review_id} that was not approved by GPT verification",
+                        )
+                if thesis_source_ids:
+                    for evidence_id in row_evidence_ids:
+                        if evidence_id not in thesis_source_ids:
+                            _issue(
+                                issues,
+                                "error",
+                                "target_score_uses_non_cutoff_evidence",
+                                f"{ticker} {component} evidence_id {evidence_id} is not a cutoff-visible thesis source",
+                            )
+                for forbidden in ("forward_3m_return", "label_status", "end_price", "excess_return"):
+                    if forbidden in str(row.get("rationale") or ""):
+                        _issue(
+                            issues,
+                            "error",
+                            "target_score_mentions_label_data",
+                            f"{ticker} {component} score rationale must not mention label data",
+                        )
+
+    return {
+        "ok": not any(issue["severity"] == "error" for issue in issues),
+        "summary": {
+            "mode": "historical_backtest",
+            "thesis_sources": len(thesis_source_ids),
+            "label_sources": len(label_source_ids),
+            "targets": len(targets),
+        },
+        "issues": issues,
+    }
+
+
 def freeze_recommendations(
     recommendations: list[dict[str, Any]],
     *,
@@ -1310,6 +1534,22 @@ def _normalized_logic_text(value: Any) -> str:
         text = str(value or "")
     text = unescape(text).lower()
     return re.sub(r"\s+", " ", text).strip()
+
+
+def _cutoff_thesis_source_ids(sources: list[dict[str, Any]], as_of_date: str) -> set[str]:
+    cutoff = _parse_date(as_of_date)
+    source_ids: set[str] = set()
+    for source in sources:
+        source_id = str(source.get("source_id") or source.get("id") or "")
+        if not source_id:
+            continue
+        if str(source.get("allowed_usage") or "thesis") in {"label_only", "quarantined"}:
+            continue
+        visible_at = _parse_date(str(source.get("source_visible_at") or source.get("published_at") or ""))
+        if cutoff and visible_at and visible_at > cutoff:
+            continue
+        source_ids.add(source_id)
+    return source_ids
 
 
 def _validate_l3_source_plan(node: dict[str, Any], node_id: str, issues: list[dict[str, str]]) -> None:

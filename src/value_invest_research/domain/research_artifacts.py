@@ -12,6 +12,7 @@ class ResearchArtifacts:
     """Structured artifacts needed to validate a complete research project."""
 
     qa_tree: dict[str, Any] = field(default_factory=dict)
+    sources: list[dict[str, Any]] = field(default_factory=list)
     source_extractions: list[dict[str, Any]] = field(default_factory=list)
     leaf_source_reviews: list[dict[str, Any]] = field(default_factory=list)
     targets: list[dict[str, Any]] = field(default_factory=list)

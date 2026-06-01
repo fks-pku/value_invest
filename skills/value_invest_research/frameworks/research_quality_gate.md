@@ -64,6 +64,18 @@ Fact, inference, and judgment must be differentiated. A source list without a ma
 
 Only verified or verified-with-caveats records may strengthen a final L3 answer. Rejected or needs-review records can remain in the audit trail, but they cannot support parent conclusions.
 
+## Historical Backtest Anti-Leakage Gate
+
+Historical backtests must reduce both source-time leakage and model-time leakage:
+
+- `qa_tree.json` must include `anti_leakage_controls` with `as_of_date`, cutoff source-pack policy, LLM prior policy, question-tree policy, supply-chain policy, scoring policy, and label isolation policy.
+- Every L3 node must include `backtest_grounding` with exact `allowed_source_ids`, `model_prior_policy`, `post_cutoff_knowledge_policy`, and empty `non_source_claims`.
+- Source parser records must not use label-only or post-cutoff thesis sources.
+- Target score subcomponents must reference cutoff-visible source IDs or GPT-approved leaf review IDs.
+- Label fields such as `forward_3m_return`, `end_price`, `label_status`, and `excess_return` must not appear in score rationale or QA reasoning.
+
+The current LLM's background knowledge is not evidence. It may frame hypotheses, but it cannot strengthen facts, scores, ranking, or action state without cutoff-source grounding.
+
 ## Target Score Gate
 
 Every target in `investment_workbench.json` must preserve:
