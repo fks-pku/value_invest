@@ -1,0 +1,4755 @@
+{
+  "project_id": "optical_module_opportunities_backtest_20260601",
+  "run_mode": "historical_backtest",
+  "as_of_date": "2026-03-01",
+  "evaluation_date": "2026-06-01",
+  "frozen_recommendations": {
+    "as_of_date": "2026-03-01",
+    "frozen_at": "2026-06-01T00:00:00+08:00",
+    "targets": [
+      {
+        "ticker": "300308.SZ",
+        "name": "中际旭创",
+        "market": "A股",
+        "thesis_node": "高速光模块龙头",
+        "chokepoint_node": "800G/1.6T 模块集成、客户认证和交付",
+        "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+        "future_space": "AI 端口扩张和 1.6T 产品 mix 是主要空间。",
+        "risks": "客户集中、ASP 下行、扩产后毛利回落、贸易限制。",
+        "valuation_odds": 3.6,
+        "demand_visibility": 4.4,
+        "irreplaceability": 4.3,
+        "market_underpricing": 3.5,
+        "valuation_status": "verified",
+        "expected_excess_return": 0.12,
+        "valuation_tolerance": 3.4,
+        "downside_fragility": 3.2,
+        "catalyst_proximity": 3.8,
+        "thesis_kill_tests": [
+          {
+            "test": "800G/1.6T ASP 与毛利率同步下滑",
+            "evidence_needed": "季度产品 ASP、毛利率、库存和订单",
+            "downgrade_action": "从 actionable_long 降为 watch_only",
+            "source_plan": "2026Q1/Q2 财报、投资者问答、客户 capex 更新"
+          },
+          {
+            "test": "核心客户订单或认证份额丢失",
+            "evidence_needed": "客户订单、认证、出货份额和交付周期",
+            "downgrade_action": "重新评分稀缺性和风险控制",
+            "source_plan": "公司公告、产业链跟踪、客户平台更新"
+          }
+        ],
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength",
+              "score": 4.5,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-INNOLIGHT-Q3-20251031",
+                "SRC-INNOLIGHT-VAL-20251120",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-2-1-1",
+                "RV-BT-Q3-3-1-1",
+                "RV-BT-Q4-2-1-1"
+              ],
+              "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space",
+              "score": 4.4,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-INNOLIGHT-Q3-20251031",
+                "SRC-INNOLIGHT-VAL-20251120",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-2-1-1",
+                "RV-BT-Q3-3-1-1",
+                "RV-BT-Q4-2-1-1"
+              ],
+              "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds",
+              "score": 3.6,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-INNOLIGHT-Q3-20251031",
+                "SRC-INNOLIGHT-VAL-20251120",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-2-1-1",
+                "RV-BT-Q3-3-1-1",
+                "RV-BT-Q4-2-1-1"
+              ],
+              "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality",
+              "score": 4.2,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-INNOLIGHT-Q3-20251031",
+                "SRC-INNOLIGHT-VAL-20251120",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-2-1-1",
+                "RV-BT-Q3-3-1-1",
+                "RV-BT-Q4-2-1-1"
+              ],
+              "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control",
+              "score": 3.4,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-INNOLIGHT-Q3-20251031",
+                "SRC-INNOLIGHT-VAL-20251120",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-2-1-1",
+                "RV-BT-Q3-3-1-1",
+                "RV-BT-Q4-2-1-1"
+              ],
+              "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability",
+              "score": 3.8,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-INNOLIGHT-Q3-20251031",
+                "SRC-INNOLIGHT-VAL-20251120",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-2-1-1",
+                "RV-BT-Q3-3-1-1",
+                "RV-BT-Q4-2-1-1"
+              ],
+              "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity",
+              "score": 4.1,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-INNOLIGHT-Q3-20251031",
+                "SRC-INNOLIGHT-VAL-20251120",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-2-1-1",
+                "RV-BT-Q3-3-1-1",
+                "RV-BT-Q4-2-1-1"
+              ],
+              "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        },
+        "chokepoint_strength": 4.5,
+        "evidence_quality": 4.2,
+        "disconfirming_risk_control": 3.4,
+        "monitorability": 3.8,
+        "payoff_convexity": 4.1,
+        "score": {
+          "ticker": "300308.SZ",
+          "score_components": {
+            "chokepoint_strength": 4.5,
+            "future_space": 4.4,
+            "valuation_odds": 3.6,
+            "evidence_quality": 4.2,
+            "disconfirming_risk_control": 3.4,
+            "monitorability": 3.8,
+            "payoff_convexity": 4.1
+          },
+          "score_dimensions": {
+            "scarcity_or_monopoly": 4.44,
+            "mispricing": 3.57,
+            "earnings_elasticity": 4.16,
+            "risk_control": 3.78
+          },
+          "score_subcomponents": {
+            "chokepoint_strength": [
+              {
+                "name": "chokepoint_strength",
+                "score": 4.5,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-INNOLIGHT-Q3-20251031",
+                  "SRC-INNOLIGHT-VAL-20251120",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-2-1-1",
+                  "RV-BT-Q3-3-1-1",
+                  "RV-BT-Q4-2-1-1"
+                ],
+                "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "future_space": [
+              {
+                "name": "future_space",
+                "score": 4.4,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-INNOLIGHT-Q3-20251031",
+                  "SRC-INNOLIGHT-VAL-20251120",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-2-1-1",
+                  "RV-BT-Q3-3-1-1",
+                  "RV-BT-Q4-2-1-1"
+                ],
+                "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "valuation_odds": [
+              {
+                "name": "valuation_odds",
+                "score": 3.6,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-INNOLIGHT-Q3-20251031",
+                  "SRC-INNOLIGHT-VAL-20251120",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-2-1-1",
+                  "RV-BT-Q3-3-1-1",
+                  "RV-BT-Q4-2-1-1"
+                ],
+                "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "evidence_quality": [
+              {
+                "name": "evidence_quality",
+                "score": 4.2,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-INNOLIGHT-Q3-20251031",
+                  "SRC-INNOLIGHT-VAL-20251120",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-2-1-1",
+                  "RV-BT-Q3-3-1-1",
+                  "RV-BT-Q4-2-1-1"
+                ],
+                "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "disconfirming_risk_control": [
+              {
+                "name": "disconfirming_risk_control",
+                "score": 3.4,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-INNOLIGHT-Q3-20251031",
+                  "SRC-INNOLIGHT-VAL-20251120",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-2-1-1",
+                  "RV-BT-Q3-3-1-1",
+                  "RV-BT-Q4-2-1-1"
+                ],
+                "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "monitorability": [
+              {
+                "name": "monitorability",
+                "score": 3.8,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-INNOLIGHT-Q3-20251031",
+                  "SRC-INNOLIGHT-VAL-20251120",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-2-1-1",
+                  "RV-BT-Q3-3-1-1",
+                  "RV-BT-Q4-2-1-1"
+                ],
+                "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "payoff_convexity": [
+              {
+                "name": "payoff_convexity",
+                "score": 4.1,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-INNOLIGHT-Q3-20251031",
+                  "SRC-INNOLIGHT-VAL-20251120",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-2-1-1",
+                  "RV-BT-Q3-3-1-1",
+                  "RV-BT-Q4-2-1-1"
+                ],
+                "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+                "status": "verified_with_caveats"
+              }
+            ]
+          },
+          "weights": {
+            "chokepoint_strength": 0.26,
+            "future_space": 0.18,
+            "valuation_odds": 0.18,
+            "evidence_quality": 0.14,
+            "disconfirming_risk_control": 0.1,
+            "monitorability": 0.05,
+            "payoff_convexity": 0.09
+          },
+          "dimension_weights": {
+            "scarcity_or_monopoly": 0.35,
+            "mispricing": 0.25,
+            "earnings_elasticity": 0.25,
+            "risk_control": 0.15
+          },
+          "raw_total_score": 4.053,
+          "total_score": 4.053,
+          "thesis_confidence": 4.12,
+          "payoff_convexity": 3.655,
+          "opportunity_fit": 4.09,
+          "action_state": "actionable_long",
+          "gate_reasons": [],
+          "strength": "B"
+        },
+        "action_state": "actionable_long",
+        "strength": "B",
+        "label": {
+          "start_date": "2026-03-02",
+          "end_date": "2026-06-01",
+          "start_price": 569.9055786132812,
+          "end_price": 1130.0,
+          "forward_3m_return": 0.9827845917030056,
+          "label_status": "verified",
+          "price_source": "yfinance auto_adjust close",
+          "as_of_date": "2026-03-01",
+          "evaluation_date": "2026-06-01",
+          "label_window": "three_month_forward",
+          "benchmark_return": null,
+          "excess_return": null
+        },
+        "rank": 1
+      },
+      {
+        "ticker": "300502.SZ",
+        "name": "新易盛",
+        "market": "A股",
+        "thesis_node": "高速光模块第二龙头",
+        "chokepoint_node": "800G/1.6T 模块交付和盈利弹性",
+        "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+        "future_space": "1.6T 放量可带来利润弹性。",
+        "risks": "客户集中、库存周期、估值波动、ASP 下行。",
+        "valuation_odds": 3.4,
+        "demand_visibility": 4.1,
+        "irreplaceability": 4.0,
+        "market_underpricing": 3.2,
+        "valuation_status": "verified",
+        "expected_excess_return": 0.08,
+        "valuation_tolerance": 3.1,
+        "downside_fragility": 3.5,
+        "catalyst_proximity": 3.7,
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength",
+              "score": 4.0,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-EOPTOLINK-Q3-20251030",
+                "SRC-EOPTOLINK-VAL-20251029",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-3-1-2",
+                "RV-BT-Q3-3-1-2",
+                "RV-BT-Q4-2-1-2"
+              ],
+              "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space",
+              "score": 4.2,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-EOPTOLINK-Q3-20251030",
+                "SRC-EOPTOLINK-VAL-20251029",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-3-1-2",
+                "RV-BT-Q3-3-1-2",
+                "RV-BT-Q4-2-1-2"
+              ],
+              "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds",
+              "score": 3.4,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-EOPTOLINK-Q3-20251030",
+                "SRC-EOPTOLINK-VAL-20251029",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-3-1-2",
+                "RV-BT-Q3-3-1-2",
+                "RV-BT-Q4-2-1-2"
+              ],
+              "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality",
+              "score": 3.9,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-EOPTOLINK-Q3-20251030",
+                "SRC-EOPTOLINK-VAL-20251029",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-3-1-2",
+                "RV-BT-Q3-3-1-2",
+                "RV-BT-Q4-2-1-2"
+              ],
+              "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control",
+              "score": 3.1,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-EOPTOLINK-Q3-20251030",
+                "SRC-EOPTOLINK-VAL-20251029",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-3-1-2",
+                "RV-BT-Q3-3-1-2",
+                "RV-BT-Q4-2-1-2"
+              ],
+              "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability",
+              "score": 3.6,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-EOPTOLINK-Q3-20251030",
+                "SRC-EOPTOLINK-VAL-20251029",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-3-1-2",
+                "RV-BT-Q3-3-1-2",
+                "RV-BT-Q4-2-1-2"
+              ],
+              "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity",
+              "score": 4.0,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-EOPTOLINK-Q3-20251030",
+                "SRC-EOPTOLINK-VAL-20251029",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-3-1-2",
+                "RV-BT-Q3-3-1-2",
+                "RV-BT-Q4-2-1-2"
+              ],
+              "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        },
+        "chokepoint_strength": 4.0,
+        "evidence_quality": 3.9,
+        "disconfirming_risk_control": 3.1,
+        "monitorability": 3.6,
+        "payoff_convexity": 4.0,
+        "score": {
+          "ticker": "300502.SZ",
+          "score_components": {
+            "chokepoint_strength": 4.0,
+            "future_space": 4.2,
+            "valuation_odds": 3.4,
+            "evidence_quality": 3.9,
+            "disconfirming_risk_control": 3.1,
+            "monitorability": 3.6,
+            "payoff_convexity": 4.0
+          },
+          "score_dimensions": {
+            "scarcity_or_monopoly": 4.0,
+            "mispricing": 3.34,
+            "earnings_elasticity": 4.02,
+            "risk_control": 3.505
+          },
+          "score_subcomponents": {
+            "chokepoint_strength": [
+              {
+                "name": "chokepoint_strength",
+                "score": 4.0,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-EOPTOLINK-Q3-20251030",
+                  "SRC-EOPTOLINK-VAL-20251029",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-3-1-2",
+                  "RV-BT-Q3-3-1-2",
+                  "RV-BT-Q4-2-1-2"
+                ],
+                "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "future_space": [
+              {
+                "name": "future_space",
+                "score": 4.2,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-EOPTOLINK-Q3-20251030",
+                  "SRC-EOPTOLINK-VAL-20251029",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-3-1-2",
+                  "RV-BT-Q3-3-1-2",
+                  "RV-BT-Q4-2-1-2"
+                ],
+                "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "valuation_odds": [
+              {
+                "name": "valuation_odds",
+                "score": 3.4,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-EOPTOLINK-Q3-20251030",
+                  "SRC-EOPTOLINK-VAL-20251029",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-3-1-2",
+                  "RV-BT-Q3-3-1-2",
+                  "RV-BT-Q4-2-1-2"
+                ],
+                "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "evidence_quality": [
+              {
+                "name": "evidence_quality",
+                "score": 3.9,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-EOPTOLINK-Q3-20251030",
+                  "SRC-EOPTOLINK-VAL-20251029",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-3-1-2",
+                  "RV-BT-Q3-3-1-2",
+                  "RV-BT-Q4-2-1-2"
+                ],
+                "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "disconfirming_risk_control": [
+              {
+                "name": "disconfirming_risk_control",
+                "score": 3.1,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-EOPTOLINK-Q3-20251030",
+                  "SRC-EOPTOLINK-VAL-20251029",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-3-1-2",
+                  "RV-BT-Q3-3-1-2",
+                  "RV-BT-Q4-2-1-2"
+                ],
+                "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "monitorability": [
+              {
+                "name": "monitorability",
+                "score": 3.6,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-EOPTOLINK-Q3-20251030",
+                  "SRC-EOPTOLINK-VAL-20251029",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-3-1-2",
+                  "RV-BT-Q3-3-1-2",
+                  "RV-BT-Q4-2-1-2"
+                ],
+                "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "payoff_convexity": [
+              {
+                "name": "payoff_convexity",
+                "score": 4.0,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-EOPTOLINK-Q3-20251030",
+                  "SRC-EOPTOLINK-VAL-20251029",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-3-1-2",
+                  "RV-BT-Q3-3-1-2",
+                  "RV-BT-Q4-2-1-2"
+                ],
+                "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+                "status": "verified_with_caveats"
+              }
+            ]
+          },
+          "weights": {
+            "chokepoint_strength": 0.26,
+            "future_space": 0.18,
+            "valuation_odds": 0.18,
+            "evidence_quality": 0.14,
+            "disconfirming_risk_control": 0.1,
+            "monitorability": 0.05,
+            "payoff_convexity": 0.09
+          },
+          "dimension_weights": {
+            "scarcity_or_monopoly": 0.35,
+            "mispricing": 0.25,
+            "earnings_elasticity": 0.25,
+            "risk_control": 0.15
+          },
+          "raw_total_score": 3.766,
+          "total_score": 3.766,
+          "thesis_confidence": 3.79,
+          "payoff_convexity": 3.475,
+          "opportunity_fit": 3.79,
+          "action_state": "watch_only",
+          "gate_reasons": [],
+          "strength": "B"
+        },
+        "action_state": "watch_only",
+        "strength": "B",
+        "label": {
+          "start_date": "2026-03-02",
+          "end_date": "2026-06-01",
+          "start_price": 381.0,
+          "end_price": 679.8200073242188,
+          "forward_3m_return": 0.7843044811659285,
+          "label_status": "verified",
+          "price_source": "yfinance auto_adjust close",
+          "as_of_date": "2026-03-01",
+          "evaluation_date": "2026-06-01",
+          "label_window": "three_month_forward",
+          "benchmark_return": null,
+          "excess_return": null
+        },
+        "rank": 2
+      },
+      {
+        "ticker": "LITE",
+        "name": "Lumentum",
+        "market": "NASDAQ",
+        "thesis_node": "激光器和光子组件瓶颈",
+        "chokepoint_node": "laser / photonics components / CPO-OCS option value",
+        "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+        "future_space": "激光器短缺和 CPO/OCS 提供中长期空间。",
+        "risks": "高估值、客户集中、CPO 商用节奏不确定。",
+        "valuation_odds": 2.8,
+        "demand_visibility": 4.1,
+        "irreplaceability": 4.1,
+        "market_underpricing": 2.8,
+        "valuation_status": "verified",
+        "expected_excess_return": 0.03,
+        "valuation_tolerance": 2.6,
+        "downside_fragility": 3.7,
+        "catalyst_proximity": 3.5,
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength",
+              "score": 4.2,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-LITE-Q2FY26-20260203",
+                "SRC-LITE-VAL-20260220",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-2",
+                "RV-BT-Q3-3-1-3",
+                "RV-BT-Q4-2-1-3"
+              ],
+              "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space",
+              "score": 4.0,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-LITE-Q2FY26-20260203",
+                "SRC-LITE-VAL-20260220",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-2",
+                "RV-BT-Q3-3-1-3",
+                "RV-BT-Q4-2-1-3"
+              ],
+              "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds",
+              "score": 2.8,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-LITE-Q2FY26-20260203",
+                "SRC-LITE-VAL-20260220",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-2",
+                "RV-BT-Q3-3-1-3",
+                "RV-BT-Q4-2-1-3"
+              ],
+              "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality",
+              "score": 3.9,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-LITE-Q2FY26-20260203",
+                "SRC-LITE-VAL-20260220",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-2",
+                "RV-BT-Q3-3-1-3",
+                "RV-BT-Q4-2-1-3"
+              ],
+              "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control",
+              "score": 3.1,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-LITE-Q2FY26-20260203",
+                "SRC-LITE-VAL-20260220",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-2",
+                "RV-BT-Q3-3-1-3",
+                "RV-BT-Q4-2-1-3"
+              ],
+              "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability",
+              "score": 3.5,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-LITE-Q2FY26-20260203",
+                "SRC-LITE-VAL-20260220",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-2",
+                "RV-BT-Q3-3-1-3",
+                "RV-BT-Q4-2-1-3"
+              ],
+              "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity",
+              "score": 3.7,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-LITE-Q2FY26-20260203",
+                "SRC-LITE-VAL-20260220",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-2",
+                "RV-BT-Q3-3-1-3",
+                "RV-BT-Q4-2-1-3"
+              ],
+              "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        },
+        "chokepoint_strength": 4.2,
+        "evidence_quality": 3.9,
+        "disconfirming_risk_control": 3.1,
+        "monitorability": 3.5,
+        "payoff_convexity": 3.7,
+        "score": {
+          "ticker": "LITE",
+          "score_components": {
+            "chokepoint_strength": 4.2,
+            "future_space": 4.0,
+            "valuation_odds": 2.8,
+            "evidence_quality": 3.9,
+            "disconfirming_risk_control": 3.1,
+            "monitorability": 3.5,
+            "payoff_convexity": 3.7
+          },
+          "score_dimensions": {
+            "scarcity_or_monopoly": 4.17,
+            "mispricing": 2.8,
+            "earnings_elasticity": 3.78,
+            "risk_control": 3.48
+          },
+          "score_subcomponents": {
+            "chokepoint_strength": [
+              {
+                "name": "chokepoint_strength",
+                "score": 4.2,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-LITE-Q2FY26-20260203",
+                  "SRC-LITE-VAL-20260220",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-1-1-2",
+                  "RV-BT-Q3-3-1-3",
+                  "RV-BT-Q4-2-1-3"
+                ],
+                "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "future_space": [
+              {
+                "name": "future_space",
+                "score": 4.0,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-LITE-Q2FY26-20260203",
+                  "SRC-LITE-VAL-20260220",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-1-1-2",
+                  "RV-BT-Q3-3-1-3",
+                  "RV-BT-Q4-2-1-3"
+                ],
+                "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "valuation_odds": [
+              {
+                "name": "valuation_odds",
+                "score": 2.8,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-LITE-Q2FY26-20260203",
+                  "SRC-LITE-VAL-20260220",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-1-1-2",
+                  "RV-BT-Q3-3-1-3",
+                  "RV-BT-Q4-2-1-3"
+                ],
+                "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "evidence_quality": [
+              {
+                "name": "evidence_quality",
+                "score": 3.9,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-LITE-Q2FY26-20260203",
+                  "SRC-LITE-VAL-20260220",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-1-1-2",
+                  "RV-BT-Q3-3-1-3",
+                  "RV-BT-Q4-2-1-3"
+                ],
+                "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "disconfirming_risk_control": [
+              {
+                "name": "disconfirming_risk_control",
+                "score": 3.1,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-LITE-Q2FY26-20260203",
+                  "SRC-LITE-VAL-20260220",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-1-1-2",
+                  "RV-BT-Q3-3-1-3",
+                  "RV-BT-Q4-2-1-3"
+                ],
+                "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "monitorability": [
+              {
+                "name": "monitorability",
+                "score": 3.5,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-LITE-Q2FY26-20260203",
+                  "SRC-LITE-VAL-20260220",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-1-1-2",
+                  "RV-BT-Q3-3-1-3",
+                  "RV-BT-Q4-2-1-3"
+                ],
+                "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "payoff_convexity": [
+              {
+                "name": "payoff_convexity",
+                "score": 3.7,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-LITE-Q2FY26-20260203",
+                  "SRC-LITE-VAL-20260220",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-1-1-2",
+                  "RV-BT-Q3-3-1-3",
+                  "RV-BT-Q4-2-1-3"
+                ],
+                "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+                "status": "verified_with_caveats"
+              }
+            ]
+          },
+          "weights": {
+            "chokepoint_strength": 0.26,
+            "future_space": 0.18,
+            "valuation_odds": 0.18,
+            "evidence_quality": 0.14,
+            "disconfirming_risk_control": 0.1,
+            "monitorability": 0.05,
+            "payoff_convexity": 0.09
+          },
+          "dimension_weights": {
+            "scarcity_or_monopoly": 0.35,
+            "mispricing": 0.25,
+            "earnings_elasticity": 0.25,
+            "risk_control": 0.15
+          },
+          "raw_total_score": 3.626,
+          "total_score": 3.49,
+          "thesis_confidence": 3.755,
+          "payoff_convexity": 3.17,
+          "opportunity_fit": 3.71,
+          "action_state": "watch_only",
+          "gate_reasons": [
+            "market_underpricing_below_gate"
+          ],
+          "strength": "C"
+        },
+        "action_state": "watch_only",
+        "strength": "C",
+        "label": {
+          "start_date": "2026-03-02",
+          "end_date": "2026-05-29",
+          "start_price": 783.25,
+          "end_price": 854.9600219726562,
+          "forward_3m_return": 0.0915544487362352,
+          "label_status": "verified_last_available_close_before_evaluation",
+          "price_source": "yfinance auto_adjust close; US market latest available close before 2026-06-01 evaluation date",
+          "as_of_date": "2026-03-01",
+          "evaluation_date": "2026-06-01",
+          "label_window": "three_month_forward",
+          "benchmark_return": null,
+          "excess_return": null
+        },
+        "rank": 3
+      },
+      {
+        "ticker": "COHR",
+        "name": "Coherent",
+        "market": "NYSE",
+        "thesis_node": "垂直光子器件与数据通信平台",
+        "chokepoint_node": "materials / photonics / datacenter communications",
+        "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+        "future_space": "数据中心通信和光子器件带来空间。",
+        "risks": "估值拥挤、业务混合口径、整合和毛利波动。",
+        "valuation_odds": 2.7,
+        "demand_visibility": 3.9,
+        "irreplaceability": 3.9,
+        "market_underpricing": 2.7,
+        "valuation_status": "verified",
+        "expected_excess_return": 0.02,
+        "valuation_tolerance": 2.5,
+        "downside_fragility": 3.8,
+        "catalyst_proximity": 3.3,
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength",
+              "score": 3.9,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-COHR-Q2FY26-20260204",
+                "SRC-COHR-VAL-20260227",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-3",
+                "RV-BT-Q3-3-1-4",
+                "RV-BT-Q4-2-1-4"
+              ],
+              "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space",
+              "score": 3.8,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-COHR-Q2FY26-20260204",
+                "SRC-COHR-VAL-20260227",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-3",
+                "RV-BT-Q3-3-1-4",
+                "RV-BT-Q4-2-1-4"
+              ],
+              "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds",
+              "score": 2.7,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-COHR-Q2FY26-20260204",
+                "SRC-COHR-VAL-20260227",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-3",
+                "RV-BT-Q3-3-1-4",
+                "RV-BT-Q4-2-1-4"
+              ],
+              "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality",
+              "score": 3.7,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-COHR-Q2FY26-20260204",
+                "SRC-COHR-VAL-20260227",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-3",
+                "RV-BT-Q3-3-1-4",
+                "RV-BT-Q4-2-1-4"
+              ],
+              "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control",
+              "score": 3.0,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-COHR-Q2FY26-20260204",
+                "SRC-COHR-VAL-20260227",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-3",
+                "RV-BT-Q3-3-1-4",
+                "RV-BT-Q4-2-1-4"
+              ],
+              "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability",
+              "score": 3.4,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-COHR-Q2FY26-20260204",
+                "SRC-COHR-VAL-20260227",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-3",
+                "RV-BT-Q3-3-1-4",
+                "RV-BT-Q4-2-1-4"
+              ],
+              "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity",
+              "score": 3.4,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-COHR-Q2FY26-20260204",
+                "SRC-COHR-VAL-20260227",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-3",
+                "RV-BT-Q3-3-1-4",
+                "RV-BT-Q4-2-1-4"
+              ],
+              "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        },
+        "chokepoint_strength": 3.9,
+        "evidence_quality": 3.7,
+        "disconfirming_risk_control": 3.0,
+        "monitorability": 3.4,
+        "payoff_convexity": 3.4,
+        "score": {
+          "ticker": "COHR",
+          "score_components": {
+            "chokepoint_strength": 3.9,
+            "future_space": 3.8,
+            "valuation_odds": 2.7,
+            "evidence_quality": 3.7,
+            "disconfirming_risk_control": 3.0,
+            "monitorability": 3.4,
+            "payoff_convexity": 3.4
+          },
+          "score_dimensions": {
+            "scarcity_or_monopoly": 3.9,
+            "mispricing": 2.7,
+            "earnings_elasticity": 3.54,
+            "risk_control": 3.345
+          },
+          "score_subcomponents": {
+            "chokepoint_strength": [
+              {
+                "name": "chokepoint_strength",
+                "score": 3.9,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-COHR-Q2FY26-20260204",
+                  "SRC-COHR-VAL-20260227",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-1-1-3",
+                  "RV-BT-Q3-3-1-4",
+                  "RV-BT-Q4-2-1-4"
+                ],
+                "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "future_space": [
+              {
+                "name": "future_space",
+                "score": 3.8,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-COHR-Q2FY26-20260204",
+                  "SRC-COHR-VAL-20260227",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-1-1-3",
+                  "RV-BT-Q3-3-1-4",
+                  "RV-BT-Q4-2-1-4"
+                ],
+                "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "valuation_odds": [
+              {
+                "name": "valuation_odds",
+                "score": 2.7,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-COHR-Q2FY26-20260204",
+                  "SRC-COHR-VAL-20260227",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-1-1-3",
+                  "RV-BT-Q3-3-1-4",
+                  "RV-BT-Q4-2-1-4"
+                ],
+                "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "evidence_quality": [
+              {
+                "name": "evidence_quality",
+                "score": 3.7,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-COHR-Q2FY26-20260204",
+                  "SRC-COHR-VAL-20260227",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-1-1-3",
+                  "RV-BT-Q3-3-1-4",
+                  "RV-BT-Q4-2-1-4"
+                ],
+                "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "disconfirming_risk_control": [
+              {
+                "name": "disconfirming_risk_control",
+                "score": 3.0,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-COHR-Q2FY26-20260204",
+                  "SRC-COHR-VAL-20260227",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-1-1-3",
+                  "RV-BT-Q3-3-1-4",
+                  "RV-BT-Q4-2-1-4"
+                ],
+                "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "monitorability": [
+              {
+                "name": "monitorability",
+                "score": 3.4,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-COHR-Q2FY26-20260204",
+                  "SRC-COHR-VAL-20260227",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-1-1-3",
+                  "RV-BT-Q3-3-1-4",
+                  "RV-BT-Q4-2-1-4"
+                ],
+                "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "payoff_convexity": [
+              {
+                "name": "payoff_convexity",
+                "score": 3.4,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-COHR-Q2FY26-20260204",
+                  "SRC-COHR-VAL-20260227",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-1-1-3",
+                  "RV-BT-Q3-3-1-4",
+                  "RV-BT-Q4-2-1-4"
+                ],
+                "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+                "status": "verified_with_caveats"
+              }
+            ]
+          },
+          "weights": {
+            "chokepoint_strength": 0.26,
+            "future_space": 0.18,
+            "valuation_odds": 0.18,
+            "evidence_quality": 0.14,
+            "disconfirming_risk_control": 0.1,
+            "monitorability": 0.05,
+            "payoff_convexity": 0.09
+          },
+          "dimension_weights": {
+            "scarcity_or_monopoly": 0.35,
+            "mispricing": 0.25,
+            "earnings_elasticity": 0.25,
+            "risk_control": 0.15
+          },
+          "raw_total_score": 3.427,
+          "total_score": 3.427,
+          "thesis_confidence": 3.555,
+          "payoff_convexity": 2.965,
+          "opportunity_fit": 3.54,
+          "action_state": "watch_only",
+          "gate_reasons": [
+            "market_underpricing_below_gate"
+          ],
+          "strength": "C"
+        },
+        "action_state": "watch_only",
+        "strength": "C",
+        "label": {
+          "start_date": "2026-03-02",
+          "end_date": "2026-05-29",
+          "start_price": 298.9100036621094,
+          "end_price": 361.4700012207031,
+          "forward_3m_return": 0.20929375662285343,
+          "label_status": "verified_last_available_close_before_evaluation",
+          "price_source": "yfinance auto_adjust close; US market latest available close before 2026-06-01 evaluation date",
+          "as_of_date": "2026-03-01",
+          "evaluation_date": "2026-06-01",
+          "label_window": "three_month_forward",
+          "benchmark_return": null,
+          "excess_return": null
+        },
+        "rank": 4
+      },
+      {
+        "ticker": "300394.SZ",
+        "name": "天孚通信",
+        "market": "A股",
+        "thesis_node": "光器件组件弹性",
+        "chokepoint_node": "高速光器件和组件",
+        "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+        "future_space": "高速组件随 800G/1.6T 放量扩张。",
+        "risks": "估值缺口、单价下行、客户结构不透明。",
+        "valuation_odds": 2.9,
+        "demand_visibility": 3.7,
+        "irreplaceability": 3.5,
+        "market_underpricing": 2.9,
+        "valuation_status": "incomplete",
+        "expected_excess_return": 0.02,
+        "valuation_tolerance": 2.8,
+        "downside_fragility": 3.5,
+        "catalyst_proximity": 3.2,
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength",
+              "score": 3.7,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-TFC-Q3-20251030",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-4",
+                "RV-BT-Q4-1-1-3"
+              ],
+              "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space",
+              "score": 3.7,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-TFC-Q3-20251030",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-4",
+                "RV-BT-Q4-1-1-3"
+              ],
+              "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds",
+              "score": 2.9,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-TFC-Q3-20251030",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-4",
+                "RV-BT-Q4-1-1-3"
+              ],
+              "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality",
+              "score": 3.2,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-TFC-Q3-20251030",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-4",
+                "RV-BT-Q4-1-1-3"
+              ],
+              "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control",
+              "score": 3.0,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-TFC-Q3-20251030",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-4",
+                "RV-BT-Q4-1-1-3"
+              ],
+              "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability",
+              "score": 3.0,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-TFC-Q3-20251030",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-4",
+                "RV-BT-Q4-1-1-3"
+              ],
+              "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity",
+              "score": 3.3,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-TFC-Q3-20251030",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-4",
+                "RV-BT-Q4-1-1-3"
+              ],
+              "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        },
+        "chokepoint_strength": 3.7,
+        "evidence_quality": 3.2,
+        "disconfirming_risk_control": 3.0,
+        "monitorability": 3.0,
+        "payoff_convexity": 3.3,
+        "score": {
+          "ticker": "300394.SZ",
+          "score_components": {
+            "chokepoint_strength": 3.7,
+            "future_space": 3.7,
+            "valuation_odds": 2.9,
+            "evidence_quality": 3.2,
+            "disconfirming_risk_control": 3.0,
+            "monitorability": 3.0,
+            "payoff_convexity": 3.3
+          },
+          "score_dimensions": {
+            "scarcity_or_monopoly": 3.64,
+            "mispricing": 2.9,
+            "earnings_elasticity": 3.44,
+            "risk_control": 3.07
+          },
+          "score_subcomponents": {
+            "chokepoint_strength": [
+              {
+                "name": "chokepoint_strength",
+                "score": 3.7,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-TFC-Q3-20251030",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-1-1-4",
+                  "RV-BT-Q4-1-1-3"
+                ],
+                "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "future_space": [
+              {
+                "name": "future_space",
+                "score": 3.7,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-TFC-Q3-20251030",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-1-1-4",
+                  "RV-BT-Q4-1-1-3"
+                ],
+                "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "valuation_odds": [
+              {
+                "name": "valuation_odds",
+                "score": 2.9,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-TFC-Q3-20251030",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-1-1-4",
+                  "RV-BT-Q4-1-1-3"
+                ],
+                "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "evidence_quality": [
+              {
+                "name": "evidence_quality",
+                "score": 3.2,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-TFC-Q3-20251030",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-1-1-4",
+                  "RV-BT-Q4-1-1-3"
+                ],
+                "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "disconfirming_risk_control": [
+              {
+                "name": "disconfirming_risk_control",
+                "score": 3.0,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-TFC-Q3-20251030",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-1-1-4",
+                  "RV-BT-Q4-1-1-3"
+                ],
+                "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "monitorability": [
+              {
+                "name": "monitorability",
+                "score": 3.0,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-TFC-Q3-20251030",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-1-1-4",
+                  "RV-BT-Q4-1-1-3"
+                ],
+                "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "payoff_convexity": [
+              {
+                "name": "payoff_convexity",
+                "score": 3.3,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-TFC-Q3-20251030",
+                  "SRC-TF-LASER-20251208"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-1-1-4",
+                  "RV-BT-Q4-1-1-3"
+                ],
+                "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+                "status": "verified_with_caveats"
+              }
+            ]
+          },
+          "weights": {
+            "chokepoint_strength": 0.26,
+            "future_space": 0.18,
+            "valuation_odds": 0.18,
+            "evidence_quality": 0.14,
+            "disconfirming_risk_control": 0.1,
+            "monitorability": 0.05,
+            "payoff_convexity": 0.09
+          },
+          "dimension_weights": {
+            "scarcity_or_monopoly": 0.35,
+            "mispricing": 0.25,
+            "earnings_elasticity": 0.25,
+            "risk_control": 0.15
+          },
+          "raw_total_score": 3.32,
+          "total_score": 3.32,
+          "thesis_confidence": 3.355,
+          "payoff_convexity": 3.025,
+          "opportunity_fit": 3.38,
+          "action_state": "watch_only",
+          "gate_reasons": [
+            "scarcity_or_irreplaceability_below_gate",
+            "market_underpricing_below_gate",
+            "valuation_unverified"
+          ],
+          "strength": "C"
+        },
+        "action_state": "watch_only",
+        "strength": "C",
+        "label": {
+          "start_date": "2026-03-02",
+          "end_date": "2026-06-01",
+          "start_price": 350.0,
+          "end_price": 428.8800048828125,
+          "forward_3m_return": 0.22537144252232144,
+          "label_status": "verified",
+          "price_source": "yfinance auto_adjust close",
+          "as_of_date": "2026-03-01",
+          "evaluation_date": "2026-06-01",
+          "label_window": "three_month_forward",
+          "benchmark_return": null,
+          "excess_return": null
+        },
+        "rank": 5
+      },
+      {
+        "ticker": "FN",
+        "name": "Fabrinet",
+        "market": "NYSE",
+        "thesis_node": "光通信代工制造 beta",
+        "chokepoint_node": "先进光通信制造产能",
+        "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+        "future_space": "AI 数据通信制造量受益。",
+        "risks": "低弹性制造 beta、capex 回收、客户议价。",
+        "valuation_odds": 2.8,
+        "demand_visibility": 3.5,
+        "irreplaceability": 2.8,
+        "market_underpricing": 2.8,
+        "valuation_status": "verified",
+        "expected_excess_return": 0.0,
+        "valuation_tolerance": 2.8,
+        "downside_fragility": 3.2,
+        "catalyst_proximity": 3.0,
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength",
+              "score": 2.8,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-FN-Q2FY26-20260202"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-2-2-1",
+                "RV-BT-Q4-1-2-2"
+              ],
+              "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space",
+              "score": 3.5,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-FN-Q2FY26-20260202"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-2-2-1",
+                "RV-BT-Q4-1-2-2"
+              ],
+              "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds",
+              "score": 2.8,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-FN-Q2FY26-20260202"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-2-2-1",
+                "RV-BT-Q4-1-2-2"
+              ],
+              "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality",
+              "score": 3.4,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-FN-Q2FY26-20260202"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-2-2-1",
+                "RV-BT-Q4-1-2-2"
+              ],
+              "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control",
+              "score": 2.9,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-FN-Q2FY26-20260202"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-2-2-1",
+                "RV-BT-Q4-1-2-2"
+              ],
+              "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability",
+              "score": 3.3,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-FN-Q2FY26-20260202"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-2-2-1",
+                "RV-BT-Q4-1-2-2"
+              ],
+              "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity",
+              "score": 2.9,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-FN-Q2FY26-20260202"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-2-2-1",
+                "RV-BT-Q4-1-2-2"
+              ],
+              "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        },
+        "chokepoint_strength": 2.8,
+        "evidence_quality": 3.4,
+        "disconfirming_risk_control": 2.9,
+        "monitorability": 3.3,
+        "payoff_convexity": 2.9,
+        "score": {
+          "ticker": "FN",
+          "score_components": {
+            "chokepoint_strength": 2.8,
+            "future_space": 3.5,
+            "valuation_odds": 2.8,
+            "evidence_quality": 3.4,
+            "disconfirming_risk_control": 2.9,
+            "monitorability": 3.3,
+            "payoff_convexity": 2.9
+          },
+          "score_dimensions": {
+            "scarcity_or_monopoly": 2.8,
+            "mispricing": 2.8,
+            "earnings_elasticity": 3.16,
+            "risk_control": 3.175
+          },
+          "score_subcomponents": {
+            "chokepoint_strength": [
+              {
+                "name": "chokepoint_strength",
+                "score": 2.8,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-FN-Q2FY26-20260202"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-2-2-1",
+                  "RV-BT-Q4-1-2-2"
+                ],
+                "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "future_space": [
+              {
+                "name": "future_space",
+                "score": 3.5,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-FN-Q2FY26-20260202"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-2-2-1",
+                  "RV-BT-Q4-1-2-2"
+                ],
+                "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "valuation_odds": [
+              {
+                "name": "valuation_odds",
+                "score": 2.8,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-FN-Q2FY26-20260202"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-2-2-1",
+                  "RV-BT-Q4-1-2-2"
+                ],
+                "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "evidence_quality": [
+              {
+                "name": "evidence_quality",
+                "score": 3.4,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-FN-Q2FY26-20260202"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-2-2-1",
+                  "RV-BT-Q4-1-2-2"
+                ],
+                "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "disconfirming_risk_control": [
+              {
+                "name": "disconfirming_risk_control",
+                "score": 2.9,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-FN-Q2FY26-20260202"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-2-2-1",
+                  "RV-BT-Q4-1-2-2"
+                ],
+                "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "monitorability": [
+              {
+                "name": "monitorability",
+                "score": 3.3,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-FN-Q2FY26-20260202"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-2-2-1",
+                  "RV-BT-Q4-1-2-2"
+                ],
+                "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "payoff_convexity": [
+              {
+                "name": "payoff_convexity",
+                "score": 2.9,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-FN-Q2FY26-20260202"
+                ],
+                "review_ids": [
+                  "RV-BT-Q2-2-2-1",
+                  "RV-BT-Q4-1-2-2"
+                ],
+                "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+                "status": "verified_with_caveats"
+              }
+            ]
+          },
+          "weights": {
+            "chokepoint_strength": 0.26,
+            "future_space": 0.18,
+            "valuation_odds": 0.18,
+            "evidence_quality": 0.14,
+            "disconfirming_risk_control": 0.1,
+            "monitorability": 0.05,
+            "payoff_convexity": 0.09
+          },
+          "dimension_weights": {
+            "scarcity_or_monopoly": 0.35,
+            "mispricing": 0.25,
+            "earnings_elasticity": 0.25,
+            "risk_control": 0.15
+          },
+          "raw_total_score": 2.946,
+          "total_score": 2.69,
+          "thesis_confidence": 3.095,
+          "payoff_convexity": 2.875,
+          "opportunity_fit": 3.01,
+          "action_state": "no_action",
+          "gate_reasons": [
+            "scarcity_or_irreplaceability_below_gate",
+            "market_underpricing_below_gate",
+            "expected_excess_return_not_positive"
+          ],
+          "strength": "D"
+        },
+        "action_state": "no_action",
+        "strength": "D",
+        "label": {
+          "start_date": "2026-03-02",
+          "end_date": "2026-05-29",
+          "start_price": 581.3699951171875,
+          "end_price": 654.1599731445312,
+          "forward_3m_return": 0.12520422216263727,
+          "label_status": "verified_last_available_close_before_evaluation",
+          "price_source": "yfinance auto_adjust close; US market latest available close before 2026-06-01 evaluation date",
+          "as_of_date": "2026-03-01",
+          "evaluation_date": "2026-06-01",
+          "label_window": "three_month_forward",
+          "benchmark_return": null,
+          "excess_return": null
+        },
+        "rank": 6
+      },
+      {
+        "ticker": "603083.SH",
+        "name": "剑桥科技",
+        "market": "A股",
+        "thesis_node": "二线模块主题 beta",
+        "chokepoint_node": "光通信模块业务",
+        "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+        "future_space": "可能受行业景气带动。",
+        "risks": "规模和利润率弱、认证和份额不透明、主题波动。",
+        "valuation_odds": 2.2,
+        "demand_visibility": 3.0,
+        "irreplaceability": 2.4,
+        "market_underpricing": 2.2,
+        "valuation_status": "incomplete",
+        "expected_excess_return": 0.0,
+        "valuation_tolerance": 2.2,
+        "downside_fragility": 4.0,
+        "catalyst_proximity": 2.5,
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength",
+              "score": 2.4,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-CIG-Q3-20251027"
+              ],
+              "review_ids": [
+                "RV-BT-Q4-1-2-1"
+              ],
+              "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space",
+              "score": 3.0,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-CIG-Q3-20251027"
+              ],
+              "review_ids": [
+                "RV-BT-Q4-1-2-1"
+              ],
+              "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds",
+              "score": 2.2,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-CIG-Q3-20251027"
+              ],
+              "review_ids": [
+                "RV-BT-Q4-1-2-1"
+              ],
+              "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality",
+              "score": 2.5,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-CIG-Q3-20251027"
+              ],
+              "review_ids": [
+                "RV-BT-Q4-1-2-1"
+              ],
+              "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control",
+              "score": 2.6,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-CIG-Q3-20251027"
+              ],
+              "review_ids": [
+                "RV-BT-Q4-1-2-1"
+              ],
+              "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability",
+              "score": 2.8,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-CIG-Q3-20251027"
+              ],
+              "review_ids": [
+                "RV-BT-Q4-1-2-1"
+              ],
+              "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity",
+              "score": 2.6,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-CIG-Q3-20251027"
+              ],
+              "review_ids": [
+                "RV-BT-Q4-1-2-1"
+              ],
+              "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        },
+        "chokepoint_strength": 2.4,
+        "evidence_quality": 2.5,
+        "disconfirming_risk_control": 2.6,
+        "monitorability": 2.8,
+        "payoff_convexity": 2.6,
+        "score": {
+          "ticker": "603083.SH",
+          "score_components": {
+            "chokepoint_strength": 2.4,
+            "future_space": 3.0,
+            "valuation_odds": 2.2,
+            "evidence_quality": 2.5,
+            "disconfirming_risk_control": 2.6,
+            "monitorability": 2.8,
+            "payoff_convexity": 2.6
+          },
+          "score_dimensions": {
+            "scarcity_or_monopoly": 2.4,
+            "mispricing": 2.2,
+            "earnings_elasticity": 2.74,
+            "risk_control": 2.615
+          },
+          "score_subcomponents": {
+            "chokepoint_strength": [
+              {
+                "name": "chokepoint_strength",
+                "score": 2.4,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-CIG-Q3-20251027"
+                ],
+                "review_ids": [
+                  "RV-BT-Q4-1-2-1"
+                ],
+                "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "future_space": [
+              {
+                "name": "future_space",
+                "score": 3.0,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-CIG-Q3-20251027"
+                ],
+                "review_ids": [
+                  "RV-BT-Q4-1-2-1"
+                ],
+                "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "valuation_odds": [
+              {
+                "name": "valuation_odds",
+                "score": 2.2,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-CIG-Q3-20251027"
+                ],
+                "review_ids": [
+                  "RV-BT-Q4-1-2-1"
+                ],
+                "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "evidence_quality": [
+              {
+                "name": "evidence_quality",
+                "score": 2.5,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-CIG-Q3-20251027"
+                ],
+                "review_ids": [
+                  "RV-BT-Q4-1-2-1"
+                ],
+                "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "disconfirming_risk_control": [
+              {
+                "name": "disconfirming_risk_control",
+                "score": 2.6,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-CIG-Q3-20251027"
+                ],
+                "review_ids": [
+                  "RV-BT-Q4-1-2-1"
+                ],
+                "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "monitorability": [
+              {
+                "name": "monitorability",
+                "score": 2.8,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-CIG-Q3-20251027"
+                ],
+                "review_ids": [
+                  "RV-BT-Q4-1-2-1"
+                ],
+                "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+                "status": "verified_with_caveats"
+              }
+            ],
+            "payoff_convexity": [
+              {
+                "name": "payoff_convexity",
+                "score": 2.6,
+                "weight": 1.0,
+                "evidence_ids": [
+                  "SRC-CIG-Q3-20251027"
+                ],
+                "review_ids": [
+                  "RV-BT-Q4-1-2-1"
+                ],
+                "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+                "status": "verified_with_caveats"
+              }
+            ]
+          },
+          "weights": {
+            "chokepoint_strength": 0.26,
+            "future_space": 0.18,
+            "valuation_odds": 0.18,
+            "evidence_quality": 0.14,
+            "disconfirming_risk_control": 0.1,
+            "monitorability": 0.05,
+            "payoff_convexity": 0.09
+          },
+          "dimension_weights": {
+            "scarcity_or_monopoly": 0.35,
+            "mispricing": 0.25,
+            "earnings_elasticity": 0.25,
+            "risk_control": 0.15
+          },
+          "raw_total_score": 2.467,
+          "total_score": 2.467,
+          "thesis_confidence": 2.545,
+          "payoff_convexity": 2.385,
+          "opportunity_fit": 2.52,
+          "action_state": "no_action",
+          "gate_reasons": [
+            "future_demand_below_gate",
+            "scarcity_or_irreplaceability_below_gate",
+            "market_underpricing_below_gate",
+            "valuation_unverified",
+            "expected_excess_return_not_positive"
+          ],
+          "strength": "D"
+        },
+        "action_state": "no_action",
+        "strength": "D",
+        "label": {
+          "start_date": "2026-03-02",
+          "end_date": "2026-06-01",
+          "start_price": 113.56719970703125,
+          "end_price": 187.0,
+          "forward_3m_return": 0.6466021922034089,
+          "label_status": "verified",
+          "price_source": "yfinance auto_adjust close; Yahoo ticker 603083.SS",
+          "as_of_date": "2026-03-01",
+          "evaluation_date": "2026-06-01",
+          "label_window": "three_month_forward",
+          "benchmark_return": null,
+          "excess_return": null
+        },
+        "rank": 7
+      }
+    ]
+  },
+  "source_cutoff_policy": "Only sources visible on or before 2026-03-01 were used for thesis, QA, scoring, and ranking. The 2026-06-01 label source is label_only.",
+  "scoring_worksheet": [
+    {
+      "ticker": "300308.SZ",
+      "name": "中际旭创",
+      "market": "A股",
+      "thesis_node": "高速光模块龙头",
+      "chokepoint_node": "800G/1.6T 模块集成、客户认证和交付",
+      "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+      "future_space": "AI 端口扩张和 1.6T 产品 mix 是主要空间。",
+      "risks": "客户集中、ASP 下行、扩产后毛利回落、贸易限制。",
+      "valuation_odds": 3.6,
+      "demand_visibility": 4.4,
+      "irreplaceability": 4.3,
+      "market_underpricing": 3.5,
+      "valuation_status": "verified",
+      "expected_excess_return": 0.12,
+      "valuation_tolerance": 3.4,
+      "downside_fragility": 3.2,
+      "catalyst_proximity": 3.8,
+      "thesis_kill_tests": [
+        {
+          "test": "800G/1.6T ASP 与毛利率同步下滑",
+          "evidence_needed": "季度产品 ASP、毛利率、库存和订单",
+          "downgrade_action": "从 actionable_long 降为 watch_only",
+          "source_plan": "2026Q1/Q2 财报、投资者问答、客户 capex 更新"
+        },
+        {
+          "test": "核心客户订单或认证份额丢失",
+          "evidence_needed": "客户订单、认证、出货份额和交付周期",
+          "downgrade_action": "重新评分稀缺性和风险控制",
+          "source_plan": "公司公告、产业链跟踪、客户平台更新"
+        }
+      ],
+      "score_subcomponents": {
+        "chokepoint_strength": [
+          {
+            "name": "chokepoint_strength",
+            "score": 4.5,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-INNOLIGHT-Q3-20251031",
+              "SRC-INNOLIGHT-VAL-20251120",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-2-1-1",
+              "RV-BT-Q3-3-1-1",
+              "RV-BT-Q4-2-1-1"
+            ],
+            "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "future_space": [
+          {
+            "name": "future_space",
+            "score": 4.4,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-INNOLIGHT-Q3-20251031",
+              "SRC-INNOLIGHT-VAL-20251120",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-2-1-1",
+              "RV-BT-Q3-3-1-1",
+              "RV-BT-Q4-2-1-1"
+            ],
+            "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "valuation_odds": [
+          {
+            "name": "valuation_odds",
+            "score": 3.6,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-INNOLIGHT-Q3-20251031",
+              "SRC-INNOLIGHT-VAL-20251120",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-2-1-1",
+              "RV-BT-Q3-3-1-1",
+              "RV-BT-Q4-2-1-1"
+            ],
+            "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "evidence_quality": [
+          {
+            "name": "evidence_quality",
+            "score": 4.2,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-INNOLIGHT-Q3-20251031",
+              "SRC-INNOLIGHT-VAL-20251120",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-2-1-1",
+              "RV-BT-Q3-3-1-1",
+              "RV-BT-Q4-2-1-1"
+            ],
+            "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "disconfirming_risk_control": [
+          {
+            "name": "disconfirming_risk_control",
+            "score": 3.4,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-INNOLIGHT-Q3-20251031",
+              "SRC-INNOLIGHT-VAL-20251120",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-2-1-1",
+              "RV-BT-Q3-3-1-1",
+              "RV-BT-Q4-2-1-1"
+            ],
+            "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "monitorability": [
+          {
+            "name": "monitorability",
+            "score": 3.8,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-INNOLIGHT-Q3-20251031",
+              "SRC-INNOLIGHT-VAL-20251120",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-2-1-1",
+              "RV-BT-Q3-3-1-1",
+              "RV-BT-Q4-2-1-1"
+            ],
+            "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "payoff_convexity": [
+          {
+            "name": "payoff_convexity",
+            "score": 4.1,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-INNOLIGHT-Q3-20251031",
+              "SRC-INNOLIGHT-VAL-20251120",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-2-1-1",
+              "RV-BT-Q3-3-1-1",
+              "RV-BT-Q4-2-1-1"
+            ],
+            "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+            "status": "verified_with_caveats"
+          }
+        ]
+      },
+      "chokepoint_strength": 4.5,
+      "evidence_quality": 4.2,
+      "disconfirming_risk_control": 3.4,
+      "monitorability": 3.8,
+      "payoff_convexity": 4.1,
+      "score": {
+        "ticker": "300308.SZ",
+        "score_components": {
+          "chokepoint_strength": 4.5,
+          "future_space": 4.4,
+          "valuation_odds": 3.6,
+          "evidence_quality": 4.2,
+          "disconfirming_risk_control": 3.4,
+          "monitorability": 3.8,
+          "payoff_convexity": 4.1
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 4.44,
+          "mispricing": 3.57,
+          "earnings_elasticity": 4.16,
+          "risk_control": 3.78
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength",
+              "score": 4.5,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-INNOLIGHT-Q3-20251031",
+                "SRC-INNOLIGHT-VAL-20251120",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-2-1-1",
+                "RV-BT-Q3-3-1-1",
+                "RV-BT-Q4-2-1-1"
+              ],
+              "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space",
+              "score": 4.4,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-INNOLIGHT-Q3-20251031",
+                "SRC-INNOLIGHT-VAL-20251120",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-2-1-1",
+                "RV-BT-Q3-3-1-1",
+                "RV-BT-Q4-2-1-1"
+              ],
+              "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds",
+              "score": 3.6,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-INNOLIGHT-Q3-20251031",
+                "SRC-INNOLIGHT-VAL-20251120",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-2-1-1",
+                "RV-BT-Q3-3-1-1",
+                "RV-BT-Q4-2-1-1"
+              ],
+              "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality",
+              "score": 4.2,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-INNOLIGHT-Q3-20251031",
+                "SRC-INNOLIGHT-VAL-20251120",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-2-1-1",
+                "RV-BT-Q3-3-1-1",
+                "RV-BT-Q4-2-1-1"
+              ],
+              "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control",
+              "score": 3.4,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-INNOLIGHT-Q3-20251031",
+                "SRC-INNOLIGHT-VAL-20251120",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-2-1-1",
+                "RV-BT-Q3-3-1-1",
+                "RV-BT-Q4-2-1-1"
+              ],
+              "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability",
+              "score": 3.8,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-INNOLIGHT-Q3-20251031",
+                "SRC-INNOLIGHT-VAL-20251120",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-2-1-1",
+                "RV-BT-Q3-3-1-1",
+                "RV-BT-Q4-2-1-1"
+              ],
+              "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity",
+              "score": 4.1,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-INNOLIGHT-Q3-20251031",
+                "SRC-INNOLIGHT-VAL-20251120",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-2-1-1",
+                "RV-BT-Q3-3-1-1",
+                "RV-BT-Q4-2-1-1"
+              ],
+              "rationale": "截至 cutoff，需求、财务转化和远期估值三者最平衡；若 2026 盈利兑现，赔率仍可解释。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "dimension_weights": {
+          "scarcity_or_monopoly": 0.35,
+          "mispricing": 0.25,
+          "earnings_elasticity": 0.25,
+          "risk_control": 0.15
+        },
+        "raw_total_score": 4.053,
+        "total_score": 4.053,
+        "thesis_confidence": 4.12,
+        "payoff_convexity": 3.655,
+        "opportunity_fit": 4.09,
+        "action_state": "actionable_long",
+        "gate_reasons": [],
+        "strength": "B"
+      },
+      "action_state": "actionable_long",
+      "strength": "B",
+      "label": {
+        "start_date": "2026-03-02",
+        "end_date": "2026-06-01",
+        "start_price": 569.9055786132812,
+        "end_price": 1130.0,
+        "forward_3m_return": 0.9827845917030056,
+        "label_status": "verified",
+        "price_source": "yfinance auto_adjust close",
+        "as_of_date": "2026-03-01",
+        "evaluation_date": "2026-06-01",
+        "label_window": "three_month_forward",
+        "benchmark_return": null,
+        "excess_return": null
+      },
+      "rank": 1
+    },
+    {
+      "ticker": "300502.SZ",
+      "name": "新易盛",
+      "market": "A股",
+      "thesis_node": "高速光模块第二龙头",
+      "chokepoint_node": "800G/1.6T 模块交付和盈利弹性",
+      "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+      "future_space": "1.6T 放量可带来利润弹性。",
+      "risks": "客户集中、库存周期、估值波动、ASP 下行。",
+      "valuation_odds": 3.4,
+      "demand_visibility": 4.1,
+      "irreplaceability": 4.0,
+      "market_underpricing": 3.2,
+      "valuation_status": "verified",
+      "expected_excess_return": 0.08,
+      "valuation_tolerance": 3.1,
+      "downside_fragility": 3.5,
+      "catalyst_proximity": 3.7,
+      "score_subcomponents": {
+        "chokepoint_strength": [
+          {
+            "name": "chokepoint_strength",
+            "score": 4.0,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-EOPTOLINK-Q3-20251030",
+              "SRC-EOPTOLINK-VAL-20251029",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-3-1-2",
+              "RV-BT-Q3-3-1-2",
+              "RV-BT-Q4-2-1-2"
+            ],
+            "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "future_space": [
+          {
+            "name": "future_space",
+            "score": 4.2,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-EOPTOLINK-Q3-20251030",
+              "SRC-EOPTOLINK-VAL-20251029",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-3-1-2",
+              "RV-BT-Q3-3-1-2",
+              "RV-BT-Q4-2-1-2"
+            ],
+            "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "valuation_odds": [
+          {
+            "name": "valuation_odds",
+            "score": 3.4,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-EOPTOLINK-Q3-20251030",
+              "SRC-EOPTOLINK-VAL-20251029",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-3-1-2",
+              "RV-BT-Q3-3-1-2",
+              "RV-BT-Q4-2-1-2"
+            ],
+            "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "evidence_quality": [
+          {
+            "name": "evidence_quality",
+            "score": 3.9,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-EOPTOLINK-Q3-20251030",
+              "SRC-EOPTOLINK-VAL-20251029",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-3-1-2",
+              "RV-BT-Q3-3-1-2",
+              "RV-BT-Q4-2-1-2"
+            ],
+            "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "disconfirming_risk_control": [
+          {
+            "name": "disconfirming_risk_control",
+            "score": 3.1,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-EOPTOLINK-Q3-20251030",
+              "SRC-EOPTOLINK-VAL-20251029",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-3-1-2",
+              "RV-BT-Q3-3-1-2",
+              "RV-BT-Q4-2-1-2"
+            ],
+            "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "monitorability": [
+          {
+            "name": "monitorability",
+            "score": 3.6,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-EOPTOLINK-Q3-20251030",
+              "SRC-EOPTOLINK-VAL-20251029",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-3-1-2",
+              "RV-BT-Q3-3-1-2",
+              "RV-BT-Q4-2-1-2"
+            ],
+            "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "payoff_convexity": [
+          {
+            "name": "payoff_convexity",
+            "score": 4.0,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-EOPTOLINK-Q3-20251030",
+              "SRC-EOPTOLINK-VAL-20251029",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-3-1-2",
+              "RV-BT-Q3-3-1-2",
+              "RV-BT-Q4-2-1-2"
+            ],
+            "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+            "status": "verified_with_caveats"
+          }
+        ]
+      },
+      "chokepoint_strength": 4.0,
+      "evidence_quality": 3.9,
+      "disconfirming_risk_control": 3.1,
+      "monitorability": 3.6,
+      "payoff_convexity": 4.0,
+      "score": {
+        "ticker": "300502.SZ",
+        "score_components": {
+          "chokepoint_strength": 4.0,
+          "future_space": 4.2,
+          "valuation_odds": 3.4,
+          "evidence_quality": 3.9,
+          "disconfirming_risk_control": 3.1,
+          "monitorability": 3.6,
+          "payoff_convexity": 4.0
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 4.0,
+          "mispricing": 3.34,
+          "earnings_elasticity": 4.02,
+          "risk_control": 3.505
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength",
+              "score": 4.0,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-EOPTOLINK-Q3-20251030",
+                "SRC-EOPTOLINK-VAL-20251029",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-3-1-2",
+                "RV-BT-Q3-3-1-2",
+                "RV-BT-Q4-2-1-2"
+              ],
+              "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space",
+              "score": 4.2,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-EOPTOLINK-Q3-20251030",
+                "SRC-EOPTOLINK-VAL-20251029",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-3-1-2",
+                "RV-BT-Q3-3-1-2",
+                "RV-BT-Q4-2-1-2"
+              ],
+              "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds",
+              "score": 3.4,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-EOPTOLINK-Q3-20251030",
+                "SRC-EOPTOLINK-VAL-20251029",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-3-1-2",
+                "RV-BT-Q3-3-1-2",
+                "RV-BT-Q4-2-1-2"
+              ],
+              "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality",
+              "score": 3.9,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-EOPTOLINK-Q3-20251030",
+                "SRC-EOPTOLINK-VAL-20251029",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-3-1-2",
+                "RV-BT-Q3-3-1-2",
+                "RV-BT-Q4-2-1-2"
+              ],
+              "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control",
+              "score": 3.1,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-EOPTOLINK-Q3-20251030",
+                "SRC-EOPTOLINK-VAL-20251029",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-3-1-2",
+                "RV-BT-Q3-3-1-2",
+                "RV-BT-Q4-2-1-2"
+              ],
+              "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability",
+              "score": 3.6,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-EOPTOLINK-Q3-20251030",
+                "SRC-EOPTOLINK-VAL-20251029",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-3-1-2",
+                "RV-BT-Q3-3-1-2",
+                "RV-BT-Q4-2-1-2"
+              ],
+              "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity",
+              "score": 4.0,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-EOPTOLINK-Q3-20251030",
+                "SRC-EOPTOLINK-VAL-20251029",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-3-1-2",
+                "RV-BT-Q3-3-1-2",
+                "RV-BT-Q4-2-1-2"
+              ],
+              "rationale": "业绩和估值弹性强，但客户结构、库存和可持续毛利证据略弱于中际旭创。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "dimension_weights": {
+          "scarcity_or_monopoly": 0.35,
+          "mispricing": 0.25,
+          "earnings_elasticity": 0.25,
+          "risk_control": 0.15
+        },
+        "raw_total_score": 3.766,
+        "total_score": 3.766,
+        "thesis_confidence": 3.79,
+        "payoff_convexity": 3.475,
+        "opportunity_fit": 3.79,
+        "action_state": "watch_only",
+        "gate_reasons": [],
+        "strength": "B"
+      },
+      "action_state": "watch_only",
+      "strength": "B",
+      "label": {
+        "start_date": "2026-03-02",
+        "end_date": "2026-06-01",
+        "start_price": 381.0,
+        "end_price": 679.8200073242188,
+        "forward_3m_return": 0.7843044811659285,
+        "label_status": "verified",
+        "price_source": "yfinance auto_adjust close",
+        "as_of_date": "2026-03-01",
+        "evaluation_date": "2026-06-01",
+        "label_window": "three_month_forward",
+        "benchmark_return": null,
+        "excess_return": null
+      },
+      "rank": 2
+    },
+    {
+      "ticker": "LITE",
+      "name": "Lumentum",
+      "market": "NASDAQ",
+      "thesis_node": "激光器和光子组件瓶颈",
+      "chokepoint_node": "laser / photonics components / CPO-OCS option value",
+      "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+      "future_space": "激光器短缺和 CPO/OCS 提供中长期空间。",
+      "risks": "高估值、客户集中、CPO 商用节奏不确定。",
+      "valuation_odds": 2.8,
+      "demand_visibility": 4.1,
+      "irreplaceability": 4.1,
+      "market_underpricing": 2.8,
+      "valuation_status": "verified",
+      "expected_excess_return": 0.03,
+      "valuation_tolerance": 2.6,
+      "downside_fragility": 3.7,
+      "catalyst_proximity": 3.5,
+      "score_subcomponents": {
+        "chokepoint_strength": [
+          {
+            "name": "chokepoint_strength",
+            "score": 4.2,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-LITE-Q2FY26-20260203",
+              "SRC-LITE-VAL-20260220",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-1-1-2",
+              "RV-BT-Q3-3-1-3",
+              "RV-BT-Q4-2-1-3"
+            ],
+            "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "future_space": [
+          {
+            "name": "future_space",
+            "score": 4.0,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-LITE-Q2FY26-20260203",
+              "SRC-LITE-VAL-20260220",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-1-1-2",
+              "RV-BT-Q3-3-1-3",
+              "RV-BT-Q4-2-1-3"
+            ],
+            "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "valuation_odds": [
+          {
+            "name": "valuation_odds",
+            "score": 2.8,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-LITE-Q2FY26-20260203",
+              "SRC-LITE-VAL-20260220",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-1-1-2",
+              "RV-BT-Q3-3-1-3",
+              "RV-BT-Q4-2-1-3"
+            ],
+            "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "evidence_quality": [
+          {
+            "name": "evidence_quality",
+            "score": 3.9,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-LITE-Q2FY26-20260203",
+              "SRC-LITE-VAL-20260220",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-1-1-2",
+              "RV-BT-Q3-3-1-3",
+              "RV-BT-Q4-2-1-3"
+            ],
+            "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "disconfirming_risk_control": [
+          {
+            "name": "disconfirming_risk_control",
+            "score": 3.1,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-LITE-Q2FY26-20260203",
+              "SRC-LITE-VAL-20260220",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-1-1-2",
+              "RV-BT-Q3-3-1-3",
+              "RV-BT-Q4-2-1-3"
+            ],
+            "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "monitorability": [
+          {
+            "name": "monitorability",
+            "score": 3.5,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-LITE-Q2FY26-20260203",
+              "SRC-LITE-VAL-20260220",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-1-1-2",
+              "RV-BT-Q3-3-1-3",
+              "RV-BT-Q4-2-1-3"
+            ],
+            "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "payoff_convexity": [
+          {
+            "name": "payoff_convexity",
+            "score": 3.7,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-LITE-Q2FY26-20260203",
+              "SRC-LITE-VAL-20260220",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-1-1-2",
+              "RV-BT-Q3-3-1-3",
+              "RV-BT-Q4-2-1-3"
+            ],
+            "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+            "status": "verified_with_caveats"
+          }
+        ]
+      },
+      "chokepoint_strength": 4.2,
+      "evidence_quality": 3.9,
+      "disconfirming_risk_control": 3.1,
+      "monitorability": 3.5,
+      "payoff_convexity": 3.7,
+      "score": {
+        "ticker": "LITE",
+        "score_components": {
+          "chokepoint_strength": 4.2,
+          "future_space": 4.0,
+          "valuation_odds": 2.8,
+          "evidence_quality": 3.9,
+          "disconfirming_risk_control": 3.1,
+          "monitorability": 3.5,
+          "payoff_convexity": 3.7
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 4.17,
+          "mispricing": 2.8,
+          "earnings_elasticity": 3.78,
+          "risk_control": 3.48
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength",
+              "score": 4.2,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-LITE-Q2FY26-20260203",
+                "SRC-LITE-VAL-20260220",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-2",
+                "RV-BT-Q3-3-1-3",
+                "RV-BT-Q4-2-1-3"
+              ],
+              "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space",
+              "score": 4.0,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-LITE-Q2FY26-20260203",
+                "SRC-LITE-VAL-20260220",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-2",
+                "RV-BT-Q3-3-1-3",
+                "RV-BT-Q4-2-1-3"
+              ],
+              "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds",
+              "score": 2.8,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-LITE-Q2FY26-20260203",
+                "SRC-LITE-VAL-20260220",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-2",
+                "RV-BT-Q3-3-1-3",
+                "RV-BT-Q4-2-1-3"
+              ],
+              "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality",
+              "score": 3.9,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-LITE-Q2FY26-20260203",
+                "SRC-LITE-VAL-20260220",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-2",
+                "RV-BT-Q3-3-1-3",
+                "RV-BT-Q4-2-1-3"
+              ],
+              "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control",
+              "score": 3.1,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-LITE-Q2FY26-20260203",
+                "SRC-LITE-VAL-20260220",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-2",
+                "RV-BT-Q3-3-1-3",
+                "RV-BT-Q4-2-1-3"
+              ],
+              "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability",
+              "score": 3.5,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-LITE-Q2FY26-20260203",
+                "SRC-LITE-VAL-20260220",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-2",
+                "RV-BT-Q3-3-1-3",
+                "RV-BT-Q4-2-1-3"
+              ],
+              "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity",
+              "score": 3.7,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-LITE-Q2FY26-20260203",
+                "SRC-LITE-VAL-20260220",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-2",
+                "RV-BT-Q3-3-1-3",
+                "RV-BT-Q4-2-1-3"
+              ],
+              "rationale": "上游瓶颈强、财务兑现清楚，但 as-of 估值已较拥挤，赔率需要更多盈利兑现。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "dimension_weights": {
+          "scarcity_or_monopoly": 0.35,
+          "mispricing": 0.25,
+          "earnings_elasticity": 0.25,
+          "risk_control": 0.15
+        },
+        "raw_total_score": 3.626,
+        "total_score": 3.49,
+        "thesis_confidence": 3.755,
+        "payoff_convexity": 3.17,
+        "opportunity_fit": 3.71,
+        "action_state": "watch_only",
+        "gate_reasons": [
+          "market_underpricing_below_gate"
+        ],
+        "strength": "C"
+      },
+      "action_state": "watch_only",
+      "strength": "C",
+      "label": {
+        "start_date": "2026-03-02",
+        "end_date": "2026-05-29",
+        "start_price": 783.25,
+        "end_price": 854.9600219726562,
+        "forward_3m_return": 0.0915544487362352,
+        "label_status": "verified_last_available_close_before_evaluation",
+        "price_source": "yfinance auto_adjust close; US market latest available close before 2026-06-01 evaluation date",
+        "as_of_date": "2026-03-01",
+        "evaluation_date": "2026-06-01",
+        "label_window": "three_month_forward",
+        "benchmark_return": null,
+        "excess_return": null
+      },
+      "rank": 3
+    },
+    {
+      "ticker": "COHR",
+      "name": "Coherent",
+      "market": "NYSE",
+      "thesis_node": "垂直光子器件与数据通信平台",
+      "chokepoint_node": "materials / photonics / datacenter communications",
+      "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+      "future_space": "数据中心通信和光子器件带来空间。",
+      "risks": "估值拥挤、业务混合口径、整合和毛利波动。",
+      "valuation_odds": 2.7,
+      "demand_visibility": 3.9,
+      "irreplaceability": 3.9,
+      "market_underpricing": 2.7,
+      "valuation_status": "verified",
+      "expected_excess_return": 0.02,
+      "valuation_tolerance": 2.5,
+      "downside_fragility": 3.8,
+      "catalyst_proximity": 3.3,
+      "score_subcomponents": {
+        "chokepoint_strength": [
+          {
+            "name": "chokepoint_strength",
+            "score": 3.9,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-COHR-Q2FY26-20260204",
+              "SRC-COHR-VAL-20260227",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-1-1-3",
+              "RV-BT-Q3-3-1-4",
+              "RV-BT-Q4-2-1-4"
+            ],
+            "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "future_space": [
+          {
+            "name": "future_space",
+            "score": 3.8,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-COHR-Q2FY26-20260204",
+              "SRC-COHR-VAL-20260227",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-1-1-3",
+              "RV-BT-Q3-3-1-4",
+              "RV-BT-Q4-2-1-4"
+            ],
+            "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "valuation_odds": [
+          {
+            "name": "valuation_odds",
+            "score": 2.7,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-COHR-Q2FY26-20260204",
+              "SRC-COHR-VAL-20260227",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-1-1-3",
+              "RV-BT-Q3-3-1-4",
+              "RV-BT-Q4-2-1-4"
+            ],
+            "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "evidence_quality": [
+          {
+            "name": "evidence_quality",
+            "score": 3.7,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-COHR-Q2FY26-20260204",
+              "SRC-COHR-VAL-20260227",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-1-1-3",
+              "RV-BT-Q3-3-1-4",
+              "RV-BT-Q4-2-1-4"
+            ],
+            "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "disconfirming_risk_control": [
+          {
+            "name": "disconfirming_risk_control",
+            "score": 3.0,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-COHR-Q2FY26-20260204",
+              "SRC-COHR-VAL-20260227",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-1-1-3",
+              "RV-BT-Q3-3-1-4",
+              "RV-BT-Q4-2-1-4"
+            ],
+            "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "monitorability": [
+          {
+            "name": "monitorability",
+            "score": 3.4,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-COHR-Q2FY26-20260204",
+              "SRC-COHR-VAL-20260227",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-1-1-3",
+              "RV-BT-Q3-3-1-4",
+              "RV-BT-Q4-2-1-4"
+            ],
+            "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "payoff_convexity": [
+          {
+            "name": "payoff_convexity",
+            "score": 3.4,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-COHR-Q2FY26-20260204",
+              "SRC-COHR-VAL-20260227",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-1-1-3",
+              "RV-BT-Q3-3-1-4",
+              "RV-BT-Q4-2-1-4"
+            ],
+            "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+            "status": "verified_with_caveats"
+          }
+        ]
+      },
+      "chokepoint_strength": 3.9,
+      "evidence_quality": 3.7,
+      "disconfirming_risk_control": 3.0,
+      "monitorability": 3.4,
+      "payoff_convexity": 3.4,
+      "score": {
+        "ticker": "COHR",
+        "score_components": {
+          "chokepoint_strength": 3.9,
+          "future_space": 3.8,
+          "valuation_odds": 2.7,
+          "evidence_quality": 3.7,
+          "disconfirming_risk_control": 3.0,
+          "monitorability": 3.4,
+          "payoff_convexity": 3.4
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 3.9,
+          "mispricing": 2.7,
+          "earnings_elasticity": 3.54,
+          "risk_control": 3.345
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength",
+              "score": 3.9,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-COHR-Q2FY26-20260204",
+                "SRC-COHR-VAL-20260227",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-3",
+                "RV-BT-Q3-3-1-4",
+                "RV-BT-Q4-2-1-4"
+              ],
+              "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space",
+              "score": 3.8,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-COHR-Q2FY26-20260204",
+                "SRC-COHR-VAL-20260227",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-3",
+                "RV-BT-Q3-3-1-4",
+                "RV-BT-Q4-2-1-4"
+              ],
+              "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds",
+              "score": 2.7,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-COHR-Q2FY26-20260204",
+                "SRC-COHR-VAL-20260227",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-3",
+                "RV-BT-Q3-3-1-4",
+                "RV-BT-Q4-2-1-4"
+              ],
+              "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality",
+              "score": 3.7,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-COHR-Q2FY26-20260204",
+                "SRC-COHR-VAL-20260227",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-3",
+                "RV-BT-Q3-3-1-4",
+                "RV-BT-Q4-2-1-4"
+              ],
+              "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control",
+              "score": 3.0,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-COHR-Q2FY26-20260204",
+                "SRC-COHR-VAL-20260227",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-3",
+                "RV-BT-Q3-3-1-4",
+                "RV-BT-Q4-2-1-4"
+              ],
+              "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability",
+              "score": 3.4,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-COHR-Q2FY26-20260204",
+                "SRC-COHR-VAL-20260227",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-3",
+                "RV-BT-Q3-3-1-4",
+                "RV-BT-Q4-2-1-4"
+              ],
+              "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity",
+              "score": 3.4,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-COHR-Q2FY26-20260204",
+                "SRC-COHR-VAL-20260227",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-3",
+                "RV-BT-Q3-3-1-4",
+                "RV-BT-Q4-2-1-4"
+              ],
+              "rationale": "光子器件和材料能力强，但市值和估值已反映较多 AI 光互连预期。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "dimension_weights": {
+          "scarcity_or_monopoly": 0.35,
+          "mispricing": 0.25,
+          "earnings_elasticity": 0.25,
+          "risk_control": 0.15
+        },
+        "raw_total_score": 3.427,
+        "total_score": 3.427,
+        "thesis_confidence": 3.555,
+        "payoff_convexity": 2.965,
+        "opportunity_fit": 3.54,
+        "action_state": "watch_only",
+        "gate_reasons": [
+          "market_underpricing_below_gate"
+        ],
+        "strength": "C"
+      },
+      "action_state": "watch_only",
+      "strength": "C",
+      "label": {
+        "start_date": "2026-03-02",
+        "end_date": "2026-05-29",
+        "start_price": 298.9100036621094,
+        "end_price": 361.4700012207031,
+        "forward_3m_return": 0.20929375662285343,
+        "label_status": "verified_last_available_close_before_evaluation",
+        "price_source": "yfinance auto_adjust close; US market latest available close before 2026-06-01 evaluation date",
+        "as_of_date": "2026-03-01",
+        "evaluation_date": "2026-06-01",
+        "label_window": "three_month_forward",
+        "benchmark_return": null,
+        "excess_return": null
+      },
+      "rank": 4
+    },
+    {
+      "ticker": "300394.SZ",
+      "name": "天孚通信",
+      "market": "A股",
+      "thesis_node": "光器件组件弹性",
+      "chokepoint_node": "高速光器件和组件",
+      "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+      "future_space": "高速组件随 800G/1.6T 放量扩张。",
+      "risks": "估值缺口、单价下行、客户结构不透明。",
+      "valuation_odds": 2.9,
+      "demand_visibility": 3.7,
+      "irreplaceability": 3.5,
+      "market_underpricing": 2.9,
+      "valuation_status": "incomplete",
+      "expected_excess_return": 0.02,
+      "valuation_tolerance": 2.8,
+      "downside_fragility": 3.5,
+      "catalyst_proximity": 3.2,
+      "score_subcomponents": {
+        "chokepoint_strength": [
+          {
+            "name": "chokepoint_strength",
+            "score": 3.7,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-TFC-Q3-20251030",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-1-1-4",
+              "RV-BT-Q4-1-1-3"
+            ],
+            "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "future_space": [
+          {
+            "name": "future_space",
+            "score": 3.7,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-TFC-Q3-20251030",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-1-1-4",
+              "RV-BT-Q4-1-1-3"
+            ],
+            "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "valuation_odds": [
+          {
+            "name": "valuation_odds",
+            "score": 2.9,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-TFC-Q3-20251030",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-1-1-4",
+              "RV-BT-Q4-1-1-3"
+            ],
+            "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "evidence_quality": [
+          {
+            "name": "evidence_quality",
+            "score": 3.2,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-TFC-Q3-20251030",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-1-1-4",
+              "RV-BT-Q4-1-1-3"
+            ],
+            "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "disconfirming_risk_control": [
+          {
+            "name": "disconfirming_risk_control",
+            "score": 3.0,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-TFC-Q3-20251030",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-1-1-4",
+              "RV-BT-Q4-1-1-3"
+            ],
+            "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "monitorability": [
+          {
+            "name": "monitorability",
+            "score": 3.0,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-TFC-Q3-20251030",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-1-1-4",
+              "RV-BT-Q4-1-1-3"
+            ],
+            "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "payoff_convexity": [
+          {
+            "name": "payoff_convexity",
+            "score": 3.3,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-TFC-Q3-20251030",
+              "SRC-TF-LASER-20251208"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-1-1-4",
+              "RV-BT-Q4-1-1-3"
+            ],
+            "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+            "status": "verified_with_caveats"
+          }
+        ]
+      },
+      "chokepoint_strength": 3.7,
+      "evidence_quality": 3.2,
+      "disconfirming_risk_control": 3.0,
+      "monitorability": 3.0,
+      "payoff_convexity": 3.3,
+      "score": {
+        "ticker": "300394.SZ",
+        "score_components": {
+          "chokepoint_strength": 3.7,
+          "future_space": 3.7,
+          "valuation_odds": 2.9,
+          "evidence_quality": 3.2,
+          "disconfirming_risk_control": 3.0,
+          "monitorability": 3.0,
+          "payoff_convexity": 3.3
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 3.64,
+          "mispricing": 2.9,
+          "earnings_elasticity": 3.44,
+          "risk_control": 3.07
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength",
+              "score": 3.7,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-TFC-Q3-20251030",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-4",
+                "RV-BT-Q4-1-1-3"
+              ],
+              "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space",
+              "score": 3.7,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-TFC-Q3-20251030",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-4",
+                "RV-BT-Q4-1-1-3"
+              ],
+              "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds",
+              "score": 2.9,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-TFC-Q3-20251030",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-4",
+                "RV-BT-Q4-1-1-3"
+              ],
+              "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality",
+              "score": 3.2,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-TFC-Q3-20251030",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-4",
+                "RV-BT-Q4-1-1-3"
+              ],
+              "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control",
+              "score": 3.0,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-TFC-Q3-20251030",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-4",
+                "RV-BT-Q4-1-1-3"
+              ],
+              "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability",
+              "score": 3.0,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-TFC-Q3-20251030",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-4",
+                "RV-BT-Q4-1-1-3"
+              ],
+              "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity",
+              "score": 3.3,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-TFC-Q3-20251030",
+                "SRC-TF-LASER-20251208"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-1-1-4",
+                "RV-BT-Q4-1-1-3"
+              ],
+              "rationale": "组件受益确定，但缺少完整估值和客户结构证据，不能升为最高强度。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "dimension_weights": {
+          "scarcity_or_monopoly": 0.35,
+          "mispricing": 0.25,
+          "earnings_elasticity": 0.25,
+          "risk_control": 0.15
+        },
+        "raw_total_score": 3.32,
+        "total_score": 3.32,
+        "thesis_confidence": 3.355,
+        "payoff_convexity": 3.025,
+        "opportunity_fit": 3.38,
+        "action_state": "watch_only",
+        "gate_reasons": [
+          "scarcity_or_irreplaceability_below_gate",
+          "market_underpricing_below_gate",
+          "valuation_unverified"
+        ],
+        "strength": "C"
+      },
+      "action_state": "watch_only",
+      "strength": "C",
+      "label": {
+        "start_date": "2026-03-02",
+        "end_date": "2026-06-01",
+        "start_price": 350.0,
+        "end_price": 428.8800048828125,
+        "forward_3m_return": 0.22537144252232144,
+        "label_status": "verified",
+        "price_source": "yfinance auto_adjust close",
+        "as_of_date": "2026-03-01",
+        "evaluation_date": "2026-06-01",
+        "label_window": "three_month_forward",
+        "benchmark_return": null,
+        "excess_return": null
+      },
+      "rank": 5
+    },
+    {
+      "ticker": "FN",
+      "name": "Fabrinet",
+      "market": "NYSE",
+      "thesis_node": "光通信代工制造 beta",
+      "chokepoint_node": "先进光通信制造产能",
+      "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+      "future_space": "AI 数据通信制造量受益。",
+      "risks": "低弹性制造 beta、capex 回收、客户议价。",
+      "valuation_odds": 2.8,
+      "demand_visibility": 3.5,
+      "irreplaceability": 2.8,
+      "market_underpricing": 2.8,
+      "valuation_status": "verified",
+      "expected_excess_return": 0.0,
+      "valuation_tolerance": 2.8,
+      "downside_fragility": 3.2,
+      "catalyst_proximity": 3.0,
+      "score_subcomponents": {
+        "chokepoint_strength": [
+          {
+            "name": "chokepoint_strength",
+            "score": 2.8,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-FN-Q2FY26-20260202"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-2-2-1",
+              "RV-BT-Q4-1-2-2"
+            ],
+            "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "future_space": [
+          {
+            "name": "future_space",
+            "score": 3.5,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-FN-Q2FY26-20260202"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-2-2-1",
+              "RV-BT-Q4-1-2-2"
+            ],
+            "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "valuation_odds": [
+          {
+            "name": "valuation_odds",
+            "score": 2.8,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-FN-Q2FY26-20260202"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-2-2-1",
+              "RV-BT-Q4-1-2-2"
+            ],
+            "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "evidence_quality": [
+          {
+            "name": "evidence_quality",
+            "score": 3.4,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-FN-Q2FY26-20260202"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-2-2-1",
+              "RV-BT-Q4-1-2-2"
+            ],
+            "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "disconfirming_risk_control": [
+          {
+            "name": "disconfirming_risk_control",
+            "score": 2.9,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-FN-Q2FY26-20260202"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-2-2-1",
+              "RV-BT-Q4-1-2-2"
+            ],
+            "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "monitorability": [
+          {
+            "name": "monitorability",
+            "score": 3.3,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-FN-Q2FY26-20260202"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-2-2-1",
+              "RV-BT-Q4-1-2-2"
+            ],
+            "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "payoff_convexity": [
+          {
+            "name": "payoff_convexity",
+            "score": 2.9,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-FN-Q2FY26-20260202"
+            ],
+            "review_ids": [
+              "RV-BT-Q2-2-2-1",
+              "RV-BT-Q4-1-2-2"
+            ],
+            "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+            "status": "verified_with_caveats"
+          }
+        ]
+      },
+      "chokepoint_strength": 2.8,
+      "evidence_quality": 3.4,
+      "disconfirming_risk_control": 2.9,
+      "monitorability": 3.3,
+      "payoff_convexity": 2.9,
+      "score": {
+        "ticker": "FN",
+        "score_components": {
+          "chokepoint_strength": 2.8,
+          "future_space": 3.5,
+          "valuation_odds": 2.8,
+          "evidence_quality": 3.4,
+          "disconfirming_risk_control": 2.9,
+          "monitorability": 3.3,
+          "payoff_convexity": 2.9
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 2.8,
+          "mispricing": 2.8,
+          "earnings_elasticity": 3.16,
+          "risk_control": 3.175
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength",
+              "score": 2.8,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-FN-Q2FY26-20260202"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-2-2-1",
+                "RV-BT-Q4-1-2-2"
+              ],
+              "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space",
+              "score": 3.5,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-FN-Q2FY26-20260202"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-2-2-1",
+                "RV-BT-Q4-1-2-2"
+              ],
+              "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds",
+              "score": 2.8,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-FN-Q2FY26-20260202"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-2-2-1",
+                "RV-BT-Q4-1-2-2"
+              ],
+              "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality",
+              "score": 3.4,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-FN-Q2FY26-20260202"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-2-2-1",
+                "RV-BT-Q4-1-2-2"
+              ],
+              "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control",
+              "score": 2.9,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-FN-Q2FY26-20260202"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-2-2-1",
+                "RV-BT-Q4-1-2-2"
+              ],
+              "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability",
+              "score": 3.3,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-FN-Q2FY26-20260202"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-2-2-1",
+                "RV-BT-Q4-1-2-2"
+              ],
+              "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity",
+              "score": 2.9,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-FN-Q2FY26-20260202"
+              ],
+              "review_ids": [
+                "RV-BT-Q2-2-2-1",
+                "RV-BT-Q4-1-2-2"
+              ],
+              "rationale": "订单景气清楚，但制造代工稀缺性和利润弹性弱于器件/模块。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "dimension_weights": {
+          "scarcity_or_monopoly": 0.35,
+          "mispricing": 0.25,
+          "earnings_elasticity": 0.25,
+          "risk_control": 0.15
+        },
+        "raw_total_score": 2.946,
+        "total_score": 2.69,
+        "thesis_confidence": 3.095,
+        "payoff_convexity": 2.875,
+        "opportunity_fit": 3.01,
+        "action_state": "no_action",
+        "gate_reasons": [
+          "scarcity_or_irreplaceability_below_gate",
+          "market_underpricing_below_gate",
+          "expected_excess_return_not_positive"
+        ],
+        "strength": "D"
+      },
+      "action_state": "no_action",
+      "strength": "D",
+      "label": {
+        "start_date": "2026-03-02",
+        "end_date": "2026-05-29",
+        "start_price": 581.3699951171875,
+        "end_price": 654.1599731445312,
+        "forward_3m_return": 0.12520422216263727,
+        "label_status": "verified_last_available_close_before_evaluation",
+        "price_source": "yfinance auto_adjust close; US market latest available close before 2026-06-01 evaluation date",
+        "as_of_date": "2026-03-01",
+        "evaluation_date": "2026-06-01",
+        "label_window": "three_month_forward",
+        "benchmark_return": null,
+        "excess_return": null
+      },
+      "rank": 6
+    },
+    {
+      "ticker": "603083.SH",
+      "name": "剑桥科技",
+      "market": "A股",
+      "thesis_node": "二线模块主题 beta",
+      "chokepoint_node": "光通信模块业务",
+      "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+      "future_space": "可能受行业景气带动。",
+      "risks": "规模和利润率弱、认证和份额不透明、主题波动。",
+      "valuation_odds": 2.2,
+      "demand_visibility": 3.0,
+      "irreplaceability": 2.4,
+      "market_underpricing": 2.2,
+      "valuation_status": "incomplete",
+      "expected_excess_return": 0.0,
+      "valuation_tolerance": 2.2,
+      "downside_fragility": 4.0,
+      "catalyst_proximity": 2.5,
+      "score_subcomponents": {
+        "chokepoint_strength": [
+          {
+            "name": "chokepoint_strength",
+            "score": 2.4,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-CIG-Q3-20251027"
+            ],
+            "review_ids": [
+              "RV-BT-Q4-1-2-1"
+            ],
+            "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "future_space": [
+          {
+            "name": "future_space",
+            "score": 3.0,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-CIG-Q3-20251027"
+            ],
+            "review_ids": [
+              "RV-BT-Q4-1-2-1"
+            ],
+            "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "valuation_odds": [
+          {
+            "name": "valuation_odds",
+            "score": 2.2,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-CIG-Q3-20251027"
+            ],
+            "review_ids": [
+              "RV-BT-Q4-1-2-1"
+            ],
+            "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "evidence_quality": [
+          {
+            "name": "evidence_quality",
+            "score": 2.5,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-CIG-Q3-20251027"
+            ],
+            "review_ids": [
+              "RV-BT-Q4-1-2-1"
+            ],
+            "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "disconfirming_risk_control": [
+          {
+            "name": "disconfirming_risk_control",
+            "score": 2.6,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-CIG-Q3-20251027"
+            ],
+            "review_ids": [
+              "RV-BT-Q4-1-2-1"
+            ],
+            "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "monitorability": [
+          {
+            "name": "monitorability",
+            "score": 2.8,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-CIG-Q3-20251027"
+            ],
+            "review_ids": [
+              "RV-BT-Q4-1-2-1"
+            ],
+            "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "payoff_convexity": [
+          {
+            "name": "payoff_convexity",
+            "score": 2.6,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-CIG-Q3-20251027"
+            ],
+            "review_ids": [
+              "RV-BT-Q4-1-2-1"
+            ],
+            "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+            "status": "verified_with_caveats"
+          }
+        ]
+      },
+      "chokepoint_strength": 2.4,
+      "evidence_quality": 2.5,
+      "disconfirming_risk_control": 2.6,
+      "monitorability": 2.8,
+      "payoff_convexity": 2.6,
+      "score": {
+        "ticker": "603083.SH",
+        "score_components": {
+          "chokepoint_strength": 2.4,
+          "future_space": 3.0,
+          "valuation_odds": 2.2,
+          "evidence_quality": 2.5,
+          "disconfirming_risk_control": 2.6,
+          "monitorability": 2.8,
+          "payoff_convexity": 2.6
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 2.4,
+          "mispricing": 2.2,
+          "earnings_elasticity": 2.74,
+          "risk_control": 2.615
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength",
+              "score": 2.4,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-CIG-Q3-20251027"
+              ],
+              "review_ids": [
+                "RV-BT-Q4-1-2-1"
+              ],
+              "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space",
+              "score": 3.0,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-CIG-Q3-20251027"
+              ],
+              "review_ids": [
+                "RV-BT-Q4-1-2-1"
+              ],
+              "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds",
+              "score": 2.2,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-CIG-Q3-20251027"
+              ],
+              "review_ids": [
+                "RV-BT-Q4-1-2-1"
+              ],
+              "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality",
+              "score": 2.5,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-CIG-Q3-20251027"
+              ],
+              "review_ids": [
+                "RV-BT-Q4-1-2-1"
+              ],
+              "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control",
+              "score": 2.6,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-CIG-Q3-20251027"
+              ],
+              "review_ids": [
+                "RV-BT-Q4-1-2-1"
+              ],
+              "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability",
+              "score": 2.8,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-CIG-Q3-20251027"
+              ],
+              "review_ids": [
+                "RV-BT-Q4-1-2-1"
+              ],
+              "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity",
+              "score": 2.6,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-CIG-Q3-20251027"
+              ],
+              "review_ids": [
+                "RV-BT-Q4-1-2-1"
+              ],
+              "rationale": "有产业暴露，但 as-of 证据不足以证明稀缺性、错定价和利润弹性。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        },
+        "weights": {
+          "chokepoint_strength": 0.26,
+          "future_space": 0.18,
+          "valuation_odds": 0.18,
+          "evidence_quality": 0.14,
+          "disconfirming_risk_control": 0.1,
+          "monitorability": 0.05,
+          "payoff_convexity": 0.09
+        },
+        "dimension_weights": {
+          "scarcity_or_monopoly": 0.35,
+          "mispricing": 0.25,
+          "earnings_elasticity": 0.25,
+          "risk_control": 0.15
+        },
+        "raw_total_score": 2.467,
+        "total_score": 2.467,
+        "thesis_confidence": 2.545,
+        "payoff_convexity": 2.385,
+        "opportunity_fit": 2.52,
+        "action_state": "no_action",
+        "gate_reasons": [
+          "future_demand_below_gate",
+          "scarcity_or_irreplaceability_below_gate",
+          "market_underpricing_below_gate",
+          "valuation_unverified",
+          "expected_excess_return_not_positive"
+        ],
+        "strength": "D"
+      },
+      "action_state": "no_action",
+      "strength": "D",
+      "label": {
+        "start_date": "2026-03-02",
+        "end_date": "2026-06-01",
+        "start_price": 113.56719970703125,
+        "end_price": 187.0,
+        "forward_3m_return": 0.6466021922034089,
+        "label_status": "verified",
+        "price_source": "yfinance auto_adjust close; Yahoo ticker 603083.SS",
+        "as_of_date": "2026-03-01",
+        "evaluation_date": "2026-06-01",
+        "label_window": "three_month_forward",
+        "benchmark_return": null,
+        "excess_return": null
+      },
+      "rank": 7
+    }
+  ]
+}

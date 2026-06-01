@@ -21,10 +21,11 @@ from value_invest_research.information_collection import (
     run_meta_qa_collection_tasks,
     run_research_collection_tasks,
 )
-from value_invest_research.leaf_research import (
-    rollup_research_answers,
-    run_leaf_research,
-    synthesize_leaf_answers,
+from value_invest_research.adapters.outbound.leaf_research_workflow import LeafResearchWorkflowAdapter
+from value_invest_research.application.use_cases.leaf_research_workflow import (
+    RollupResearchAnswers,
+    RunLeafResearch,
+    SynthesizeLeafAnswers,
 )
 from value_invest_research.meta_qa_research import build_meta_qa_research
 from value_invest_research.report_synthesis import write_meta_qa_professional_report, write_stock_professional_report
@@ -103,7 +104,8 @@ def run_stock_qa_pipeline(
     rollup_result: dict[str, Any] = {}
     if leaf_research_provider:
         leaf_limit = leaf_research_limit if leaf_research_limit is not None else task_limit
-        leaf_research_result = run_leaf_research(
+        leaf_workflow = LeafResearchWorkflowAdapter()
+        leaf_research_result = RunLeafResearch(leaf_workflow).execute(
             root,
             normalized,
             provider=leaf_research_provider,
@@ -111,9 +113,9 @@ def run_stock_qa_pipeline(
             limit=leaf_limit,
         )
         stages.append(_stage("run_leaf_research", leaf_research_result))
-        leaf_answer_result = synthesize_leaf_answers(root, normalized)
+        leaf_answer_result = SynthesizeLeafAnswers(leaf_workflow).execute(root, normalized)
         stages.append(_stage("synthesize_leaf_answers", leaf_answer_result))
-        rollup_result = rollup_research_answers(root, normalized)
+        rollup_result = RollupResearchAnswers(leaf_workflow).execute(root, normalized)
         stages.append(_stage("rollup_research_answers", rollup_result))
         build_result = {**build_result, **_report_paths(rollup_result)}
 

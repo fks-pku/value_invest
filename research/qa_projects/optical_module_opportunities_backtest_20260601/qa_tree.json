@@ -1,0 +1,3224 @@
+{
+  "project_id": "optical_module_opportunities_backtest_20260601",
+  "title": "光模块产业投资机会研究（回测模式）",
+  "run_mode": "historical_backtest",
+  "report_date": "2026-06-01",
+  "as_of_date": "2026-03-01",
+  "evaluation_date": "2026-06-01",
+  "domain_playbook": "optical_module",
+  "research_framework_version": "optical_module_backtest_v1",
+  "nodes": [
+    {
+      "id": "Q1",
+      "level": 1,
+      "question": "需求：AI 数据中心网络升级如何转化为 800G/1.6T 光模块真实需求？",
+      "parent_id": "",
+      "investment_relevance": "Defines whether the opportunity exists and how large it can become.",
+      "decision_use": "",
+      "required_materials": [],
+      "support_evidence": "",
+      "refute_evidence": "",
+      "target_implications": "",
+      "preferred_specialty_skill": "",
+      "score_component": "",
+      "next_question_ids": [
+        "Q1.1",
+        "Q1.2"
+      ],
+      "conclusion": "截至 2026-03-01，AI 网络升级向 800G/1.6T 光模块的需求传导已经成立，强证据来自 TrendForce 截止日前预测和多家公司 FY2026Q2/2025Q3 财务兑现；最大缺口是客户订单、ASP 和 attach rate。"
+    },
+    {
+      "id": "Q1.1",
+      "level": 2,
+      "question": "AI 集群网络需求传导",
+      "parent_id": "Q1",
+      "investment_relevance": "从 GPU/ASIC 集群、scale-out/scale-up 网络、交换机端口和光模块 attach rate 推导真实模块需求。",
+      "decision_use": "",
+      "required_materials": [],
+      "support_evidence": "",
+      "refute_evidence": "",
+      "target_implications": "",
+      "preferred_specialty_skill": "",
+      "score_component": "",
+      "next_question_ids": [
+        "Q1.1.1",
+        "Q1.1.2"
+      ],
+      "conclusion": "需求由 AI 集群端口扩张和速率升级共同驱动，800G+ 是主线，1.6T 是弹性变量。"
+    },
+    {
+      "id": "Q1.1.1",
+      "level": 3,
+      "question": "AI 训练和推理集群的 GPU/ASIC 扩张是否继续推高 800G/1.6T 光模块端口需求？",
+      "parent_id": "Q1.1",
+      "investment_relevance": "影响 future_space、父节点结论、Q4 标的排序和行动状态。",
+      "decision_use": "影响 future_space、父节点结论、Q4 标的排序和行动状态。",
+      "required_materials": [
+        "AI capex",
+        "GPU/ASIC cluster scale",
+        "switch port count",
+        "800G/1.6T attach rate",
+        "module shipment forecast"
+      ],
+      "support_evidence": "能用具体数据把 AI 网络需求、端口数、速率升级、组件供给、订单、利润率、现金流或估值连接起来的证据。",
+      "refute_evidence": "云厂商 capex 放缓、AI 集群网络架构降低外部光模块 attach rate，或订单低于供应商扩产预期。",
+      "target_implications": "决定相关标的是否具备光模块产业链瓶颈敞口、未来空间、估值赔率和风险可控性。",
+      "preferred_specialty_skill": "industry-report-analysis",
+      "score_component": "future_space",
+      "next_question_ids": [],
+      "conclusion": "截至 2026-03-01，AI 集群网络升级已经足以支撑 800G+ 光模块需求主线，但仍需要用云厂商 capex、交换机端口数和客户订单确认持续性。",
+      "fact": "TrendForce 在截止日前给出 800G+ 需求和 Google TPU 相关需求的明确预测，Lumentum FY2026 Q2 也披露云与 AI 网络需求推动收入大幅增长。",
+      "inference": "需求不是单纯概念扩散，而是从 AI 计算集群扩张传导到交换机端口、光模块速率和上游激光器/组件的订单。",
+      "judgment": "Q1 future_space 可初步评为强，但还不能把所有主题股升级为高强度，必须确认订单质量和 ASP。",
+      "gap": "缺少客户级订单、端口 attach rate、GPU/ASIC 集群端口配置和分客户收入拆分。",
+      "trigger": "若 hyperscaler capex 或 AI 网络建设节奏低于预期，需求主线降级。",
+      "materiality": "影响 future_space、父节点结论、Q4 标的排序和行动状态。",
+      "minimum_evidence_gate": "至少需要一个 cutoff 前可见的一手公司/公告证据、一个行业或估值交叉验证来源，并保留反证来源。",
+      "refuting_source_plan": "云厂商 capex 放缓、AI 集群网络架构降低外部光模块 attach rate，或订单低于供应商扩产预期。",
+      "source_links": [
+        "SRC-TF-800G-20260210",
+        "SRC-TF-LASER-20251208",
+        "SRC-LITE-Q2FY26-20260203"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-TF-800G-20260210",
+          "expected_fields": [
+            "AI capex",
+            "GPU/ASIC cluster scale",
+            "switch port count",
+            "800G/1.6T attach rate",
+            "module shipment forecast"
+          ],
+          "source_bucket": "research_report",
+          "visible_date": "2026-02-10",
+          "source_visible_at": "2026-02-10",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "TrendForce press page dated 2026-02-10, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "industry-report-analysis"
+        },
+        {
+          "source_id": "SRC-TF-LASER-20251208",
+          "expected_fields": [
+            "AI capex",
+            "GPU/ASIC cluster scale",
+            "switch port count",
+            "800G/1.6T attach rate",
+            "module shipment forecast"
+          ],
+          "source_bucket": "research_report",
+          "visible_date": "2025-12-08",
+          "source_visible_at": "2025-12-08",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "TrendForce press page dated 2025-12-08, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "industry-report-analysis"
+        },
+        {
+          "source_id": "SRC-LITE-Q2FY26-20260203",
+          "expected_fields": [
+            "AI capex",
+            "GPU/ASIC cluster scale",
+            "switch port count",
+            "800G/1.6T attach rate",
+            "module shipment forecast"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-03",
+          "source_visible_at": "2026-02-03",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company IR release dated 2026-02-03, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "industry-report-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "industry-report-analysis",
+        "selected_skill": "industry-report-analysis",
+        "concrete_materials": [
+          "SRC-TF-800G-20260210",
+          "SRC-TF-LASER-20251208",
+          "SRC-LITE-Q2FY26-20260203"
+        ],
+        "extraction_schema": {
+          "schema": "optical_module_backtest_v1",
+          "period": "as_of_2026_03_01",
+          "metric": "node_relevant_metric",
+          "value": "source_observation",
+          "source_basis": "cutoff_visible_source",
+          "uncertainty": "source_limit",
+          "chokepoint": "optical_value_chain_node",
+          "financial_conversion": "revenue_margin_or_valuation_link"
+        },
+        "source_extraction_ids": [
+          "EX-BT-Q1-1-1-1",
+          "EX-BT-Q1-1-1-2",
+          "EX-BT-Q1-1-1-3"
+        ],
+        "leaf_source_review_ids": [
+          "RV-BT-Q1-1-1-1",
+          "RV-BT-Q1-1-1-2",
+          "RV-BT-Q1-1-1-3"
+        ],
+        "skill_output_status": "complete_cutoff_visible_source_parse",
+        "fallback_used": "gpt_verified_source_extraction_without_deepseek_for_cutoff_backtest",
+        "gpt_verification_status": "verified_with_caveats"
+      }
+    },
+    {
+      "id": "Q1.1.2",
+      "level": 3,
+      "question": "800G 到 1.6T 的速率升级是新增需求、产品 mix 提升，还是价格换代后的 ASP 下行？",
+      "parent_id": "Q1.1",
+      "investment_relevance": "影响 future_space、父节点结论、Q4 标的排序和行动状态。",
+      "decision_use": "影响 future_space、父节点结论、Q4 标的排序和行动状态。",
+      "required_materials": [
+        "800G/1.6T shipment",
+        "ASP",
+        "mix",
+        "customer qualification",
+        "product roadmap"
+      ],
+      "support_evidence": "能用具体数据把 AI 网络需求、端口数、速率升级、组件供给、订单、利润率、现金流或估值连接起来的证据。",
+      "refute_evidence": "1.6T 放量伴随 ASP 快速下滑或只替代 800G，不扩大收入池。",
+      "target_implications": "决定相关标的是否具备光模块产业链瓶颈敞口、未来空间、估值赔率和风险可控性。",
+      "preferred_specialty_skill": "industry-report-analysis",
+      "score_component": "future_space",
+      "next_question_ids": [],
+      "conclusion": "800G 到 1.6T 是 as-of 时点最核心的产品 mix 上移变量，但不等同于永久 ASP 扩张。",
+      "fact": "TrendForce 预计 800G 以上占比继续提升，激光器短缺与速率升级同时存在；Coherent/Lumentum 均把 AI 数据通信作为增长驱动。",
+      "inference": "产品 mix 提升会先提高收入和毛利弹性，但客户议价和扩产会逐步压缩单位经济性。",
+      "judgment": "优先选择已证明高速模块交付、客户认证和上游瓶颈获取能力的公司。",
+      "gap": "缺少 800G 与 1.6T 的 ASP 曲线、毛利差和客户认证进度。",
+      "trigger": "若 1.6T 只替代 800G 且 ASP 快速下行，收入池和赔率下调。",
+      "materiality": "影响 future_space、父节点结论、Q4 标的排序和行动状态。",
+      "minimum_evidence_gate": "至少需要一个 cutoff 前可见的一手公司/公告证据、一个行业或估值交叉验证来源，并保留反证来源。",
+      "refuting_source_plan": "1.6T 放量伴随 ASP 快速下滑或只替代 800G，不扩大收入池。",
+      "source_links": [
+        "SRC-TF-800G-20260210",
+        "SRC-TF-LASER-20251208",
+        "SRC-COHR-Q2FY26-20260204"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-TF-800G-20260210",
+          "expected_fields": [
+            "800G/1.6T shipment",
+            "ASP",
+            "mix",
+            "customer qualification",
+            "product roadmap"
+          ],
+          "source_bucket": "research_report",
+          "visible_date": "2026-02-10",
+          "source_visible_at": "2026-02-10",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "TrendForce press page dated 2026-02-10, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "industry-report-analysis"
+        },
+        {
+          "source_id": "SRC-TF-LASER-20251208",
+          "expected_fields": [
+            "800G/1.6T shipment",
+            "ASP",
+            "mix",
+            "customer qualification",
+            "product roadmap"
+          ],
+          "source_bucket": "research_report",
+          "visible_date": "2025-12-08",
+          "source_visible_at": "2025-12-08",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "TrendForce press page dated 2025-12-08, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "industry-report-analysis"
+        },
+        {
+          "source_id": "SRC-COHR-Q2FY26-20260204",
+          "expected_fields": [
+            "800G/1.6T shipment",
+            "ASP",
+            "mix",
+            "customer qualification",
+            "product roadmap"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-04",
+          "source_visible_at": "2026-02-04",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company release dated 2026-02-04, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "industry-report-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "industry-report-analysis",
+        "selected_skill": "industry-report-analysis",
+        "concrete_materials": [
+          "SRC-TF-800G-20260210",
+          "SRC-TF-LASER-20251208",
+          "SRC-COHR-Q2FY26-20260204"
+        ],
+        "extraction_schema": {
+          "schema": "optical_module_backtest_v1",
+          "period": "as_of_2026_03_01",
+          "metric": "node_relevant_metric",
+          "value": "source_observation",
+          "source_basis": "cutoff_visible_source",
+          "uncertainty": "source_limit",
+          "chokepoint": "optical_value_chain_node",
+          "financial_conversion": "revenue_margin_or_valuation_link"
+        },
+        "source_extraction_ids": [
+          "EX-BT-Q1-1-2-1",
+          "EX-BT-Q1-1-2-2",
+          "EX-BT-Q1-1-2-3"
+        ],
+        "leaf_source_review_ids": [
+          "RV-BT-Q1-1-2-1",
+          "RV-BT-Q1-1-2-2",
+          "RV-BT-Q1-1-2-3"
+        ],
+        "skill_output_status": "complete_cutoff_visible_source_parse",
+        "fallback_used": "gpt_verified_source_extraction_without_deepseek_for_cutoff_backtest",
+        "gpt_verification_status": "verified_with_caveats"
+      }
+    },
+    {
+      "id": "Q1.2",
+      "level": 2,
+      "question": "订单质量与客户集中",
+      "parent_id": "Q1",
+      "investment_relevance": "区分真实长单、客户预付款/容量锁定、短期拉货和库存风险。",
+      "decision_use": "",
+      "required_materials": [],
+      "support_evidence": "",
+      "refute_evidence": "",
+      "target_implications": "",
+      "preferred_specialty_skill": "",
+      "score_component": "",
+      "next_question_ids": [
+        "Q1.2.1",
+        "Q1.2.2"
+      ],
+      "conclusion": "财务兑现说明不只是短期题材，但长期订单、客户集中和库存质量仍需要验证。"
+    },
+    {
+      "id": "Q1.2.1",
+      "level": 3,
+      "question": "光模块供应商的高增长由长期订单、客户认证和容量锁定支撑，还是短期抢货？",
+      "parent_id": "Q1.2",
+      "investment_relevance": "影响 evidence_quality、父节点结论、Q4 标的排序和行动状态。",
+      "decision_use": "影响 evidence_quality、父节点结论、Q4 标的排序和行动状态。",
+      "required_materials": [
+        "backlog",
+        "long-term agreement",
+        "customer prepayment",
+        "capacity reservation",
+        "customer concentration"
+      ],
+      "support_evidence": "能用具体数据把 AI 网络需求、端口数、速率升级、组件供给、订单、利润率、现金流或估值连接起来的证据。",
+      "refute_evidence": "收入增长来自短期拉货，客户集中度高且没有长单或预付款支撑。",
+      "target_implications": "决定相关标的是否具备光模块产业链瓶颈敞口、未来空间、估值赔率和风险可控性。",
+      "preferred_specialty_skill": "financial-statement-analysis",
+      "score_component": "evidence_quality",
+      "next_question_ids": [],
+      "conclusion": "增长有财务兑现，不像纯短期抢货；但长期订单和容量锁定证据仍不足。",
+      "fact": "中际旭创、新易盛、Lumentum、Coherent 和 Fabrinet 在截止日前均披露 AI/数据通信相关增长，且国内模块龙头 2025Q3 利润弹性显著。",
+      "inference": "多家公司同时兑现收入和利润，说明需求已进入供应链业绩，而不只是主题预期。",
+      "judgment": "证据质量中高，但不能忽视客户集中和库存拉货风险。",
+      "gap": "缺少长单、预付款、客户集中度、库存天数和取消订单条款。",
+      "trigger": "若公司后续披露库存显著上升或订单可见度下降，Q1 需求质量降级。",
+      "materiality": "影响 evidence_quality、父节点结论、Q4 标的排序和行动状态。",
+      "minimum_evidence_gate": "至少需要一个 cutoff 前可见的一手公司/公告证据、一个行业或估值交叉验证来源，并保留反证来源。",
+      "refuting_source_plan": "收入增长来自短期拉货，客户集中度高且没有长单或预付款支撑。",
+      "source_links": [
+        "SRC-LITE-Q2FY26-20260203",
+        "SRC-COHR-Q2FY26-20260204",
+        "SRC-FN-Q2FY26-20260202",
+        "SRC-INNOLIGHT-Q3-20251031",
+        "SRC-EOPTOLINK-Q3-20251030"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-LITE-Q2FY26-20260203",
+          "expected_fields": [
+            "backlog",
+            "long-term agreement",
+            "customer prepayment",
+            "capacity reservation",
+            "customer concentration"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-03",
+          "source_visible_at": "2026-02-03",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company IR release dated 2026-02-03, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "financial-statement-analysis"
+        },
+        {
+          "source_id": "SRC-COHR-Q2FY26-20260204",
+          "expected_fields": [
+            "backlog",
+            "long-term agreement",
+            "customer prepayment",
+            "capacity reservation",
+            "customer concentration"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-04",
+          "source_visible_at": "2026-02-04",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company release dated 2026-02-04, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "financial-statement-analysis"
+        },
+        {
+          "source_id": "SRC-FN-Q2FY26-20260202",
+          "expected_fields": [
+            "backlog",
+            "long-term agreement",
+            "customer prepayment",
+            "capacity reservation",
+            "customer concentration"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-02",
+          "source_visible_at": "2026-02-02",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company IR release dated 2026-02-02, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "financial-statement-analysis"
+        },
+        {
+          "source_id": "SRC-INNOLIGHT-Q3-20251031",
+          "expected_fields": [
+            "backlog",
+            "long-term agreement",
+            "customer prepayment",
+            "capacity reservation",
+            "customer concentration"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2025-10-31",
+          "source_visible_at": "2025-10-31",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Securities Times article dated 2025-10-31 reports company 2025Q3 disclosure, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "financial-statement-analysis"
+        },
+        {
+          "source_id": "SRC-EOPTOLINK-Q3-20251030",
+          "expected_fields": [
+            "backlog",
+            "long-term agreement",
+            "customer prepayment",
+            "capacity reservation",
+            "customer concentration"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2025-10-30",
+          "source_visible_at": "2025-10-30",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Public finance article dated 2025-10-30 reports company 2025Q3 disclosure, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "financial-statement-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "financial-statement-analysis",
+        "selected_skill": "financial-statement-analysis",
+        "concrete_materials": [
+          "SRC-LITE-Q2FY26-20260203",
+          "SRC-COHR-Q2FY26-20260204",
+          "SRC-FN-Q2FY26-20260202",
+          "SRC-INNOLIGHT-Q3-20251031",
+          "SRC-EOPTOLINK-Q3-20251030"
+        ],
+        "extraction_schema": {
+          "schema": "optical_module_backtest_v1",
+          "period": "as_of_2026_03_01",
+          "metric": "node_relevant_metric",
+          "value": "source_observation",
+          "source_basis": "cutoff_visible_source",
+          "uncertainty": "source_limit",
+          "chokepoint": "optical_value_chain_node",
+          "financial_conversion": "revenue_margin_or_valuation_link"
+        },
+        "source_extraction_ids": [
+          "EX-BT-Q1-2-1-1",
+          "EX-BT-Q1-2-1-2",
+          "EX-BT-Q1-2-1-3",
+          "EX-BT-Q1-2-1-4",
+          "EX-BT-Q1-2-1-5"
+        ],
+        "leaf_source_review_ids": [
+          "RV-BT-Q1-2-1-1",
+          "RV-BT-Q1-2-1-2",
+          "RV-BT-Q1-2-1-3",
+          "RV-BT-Q1-2-1-4",
+          "RV-BT-Q1-2-1-5"
+        ],
+        "skill_output_status": "complete_cutoff_visible_source_parse",
+        "fallback_used": "gpt_verified_source_extraction_without_deepseek_for_cutoff_backtest",
+        "gpt_verification_status": "verified_with_caveats"
+      }
+    },
+    {
+      "id": "Q1.2.2",
+      "level": 3,
+      "question": "NVIDIA、云厂商和交换机平台的供应链锁定是否提高需求可见度？",
+      "parent_id": "Q1.2",
+      "investment_relevance": "影响 monitorability、父节点结论、Q4 标的排序和行动状态。",
+      "decision_use": "影响 monitorability、父节点结论、Q4 标的排序和行动状态。",
+      "required_materials": [
+        "NVIDIA investment/purchase agreement",
+        "hyperscaler capex",
+        "switch platform roadmap",
+        "supplier qualification"
+      ],
+      "support_evidence": "能用具体数据把 AI 网络需求、端口数、速率升级、组件供给、订单、利润率、现金流或估值连接起来的证据。",
+      "refute_evidence": "核心客户取消、推迟或重新分配订单，或者平台变化使既有供应商失去份额。",
+      "target_implications": "决定相关标的是否具备光模块产业链瓶颈敞口、未来空间、估值赔率和风险可控性。",
+      "preferred_specialty_skill": "news-event-analysis",
+      "score_component": "monitorability",
+      "next_question_ids": [],
+      "conclusion": "供应链锁定提高了需求可见度，但同时抬高客户集中度和单一平台风险。",
+      "fact": "TrendForce 把 Google TPU 相关需求单独映射到 800G+ 光模块；Credo 的 AI 连接预告也证明大客户平台会重塑供应链。",
+      "inference": "平台路线越清晰，供应商越能获得认证壁垒；但平台变化或客户重新分配份额会直接改变标的强度。",
+      "judgment": "把客户锁定视为支持证据，同时在 Q3 中设置平台和客户集中反证。",
+      "gap": "缺少 NVIDIA/Google/Meta/Microsoft 等客户的供应商份额和认证清单。",
+      "trigger": "若核心客户转向不同架构或不同供应商，相关标的应降级。",
+      "materiality": "影响 monitorability、父节点结论、Q4 标的排序和行动状态。",
+      "minimum_evidence_gate": "至少需要一个 cutoff 前可见的一手公司/公告证据、一个行业或估值交叉验证来源，并保留反证来源。",
+      "refuting_source_plan": "核心客户取消、推迟或重新分配订单，或者平台变化使既有供应商失去份额。",
+      "source_links": [
+        "SRC-TF-800G-20260210",
+        "SRC-TF-LASER-20251208",
+        "SRC-LITE-Q2FY26-20260203",
+        "SRC-CRDO-PREANN-20260209"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-TF-800G-20260210",
+          "expected_fields": [
+            "NVIDIA investment/purchase agreement",
+            "hyperscaler capex",
+            "switch platform roadmap",
+            "supplier qualification"
+          ],
+          "source_bucket": "research_report",
+          "visible_date": "2026-02-10",
+          "source_visible_at": "2026-02-10",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "TrendForce press page dated 2026-02-10, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "news-event-analysis"
+        },
+        {
+          "source_id": "SRC-TF-LASER-20251208",
+          "expected_fields": [
+            "NVIDIA investment/purchase agreement",
+            "hyperscaler capex",
+            "switch platform roadmap",
+            "supplier qualification"
+          ],
+          "source_bucket": "research_report",
+          "visible_date": "2025-12-08",
+          "source_visible_at": "2025-12-08",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "TrendForce press page dated 2025-12-08, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "news-event-analysis"
+        },
+        {
+          "source_id": "SRC-LITE-Q2FY26-20260203",
+          "expected_fields": [
+            "NVIDIA investment/purchase agreement",
+            "hyperscaler capex",
+            "switch platform roadmap",
+            "supplier qualification"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-03",
+          "source_visible_at": "2026-02-03",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company IR release dated 2026-02-03, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "news-event-analysis"
+        },
+        {
+          "source_id": "SRC-CRDO-PREANN-20260209",
+          "expected_fields": [
+            "NVIDIA investment/purchase agreement",
+            "hyperscaler capex",
+            "switch platform roadmap",
+            "supplier qualification"
+          ],
+          "source_bucket": "message",
+          "visible_date": "2026-02-09",
+          "source_visible_at": "2026-02-09",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company preliminary release dated 2026-02-09, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "news-event-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "news-event-analysis",
+        "selected_skill": "news-event-analysis",
+        "concrete_materials": [
+          "SRC-TF-800G-20260210",
+          "SRC-TF-LASER-20251208",
+          "SRC-LITE-Q2FY26-20260203",
+          "SRC-CRDO-PREANN-20260209"
+        ],
+        "extraction_schema": {
+          "schema": "optical_module_backtest_v1",
+          "period": "as_of_2026_03_01",
+          "metric": "node_relevant_metric",
+          "value": "source_observation",
+          "source_basis": "cutoff_visible_source",
+          "uncertainty": "source_limit",
+          "chokepoint": "optical_value_chain_node",
+          "financial_conversion": "revenue_margin_or_valuation_link"
+        },
+        "source_extraction_ids": [
+          "EX-BT-Q1-2-2-1",
+          "EX-BT-Q1-2-2-2",
+          "EX-BT-Q1-2-2-3",
+          "EX-BT-Q1-2-2-4"
+        ],
+        "leaf_source_review_ids": [
+          "RV-BT-Q1-2-2-1",
+          "RV-BT-Q1-2-2-2",
+          "RV-BT-Q1-2-2-3",
+          "RV-BT-Q1-2-2-4"
+        ],
+        "skill_output_status": "complete_cutoff_visible_source_parse",
+        "fallback_used": "gpt_verified_source_extraction_without_deepseek_for_cutoff_backtest",
+        "gpt_verification_status": "verified_with_caveats"
+      }
+    },
+    {
+      "id": "Q2",
+      "level": 1,
+      "question": "价值捕获：光模块产业链哪些环节具备瓶颈、定价权和财务弹性？",
+      "parent_id": "",
+      "investment_relevance": "Defines who can capture value and where scarcity sits.",
+      "decision_use": "",
+      "required_materials": [],
+      "support_evidence": "",
+      "refute_evidence": "",
+      "target_implications": "",
+      "preferred_specialty_skill": "",
+      "score_component": "",
+      "next_question_ids": [
+        "Q2.1",
+        "Q2.2",
+        "Q2.3"
+      ],
+      "conclusion": "价值捕获集中在高速模块集成、上游激光器/光器件和客户认证能力，制造代工和二线模块更多是 beta。"
+    },
+    {
+      "id": "Q2.1",
+      "level": 2,
+      "question": "上游激光器、InP、硅光与关键组件瓶颈",
+      "parent_id": "Q2",
+      "investment_relevance": "判断真正瓶颈在 EML/InP laser、硅光、DSP/driver/TIA、光芯片还是封装测试。",
+      "decision_use": "",
+      "required_materials": [],
+      "support_evidence": "",
+      "refute_evidence": "",
+      "target_implications": "",
+      "preferred_specialty_skill": "",
+      "score_component": "",
+      "next_question_ids": [
+        "Q2.1.1",
+        "Q2.1.2"
+      ],
+      "conclusion": "上游激光器、InP/光芯片、光器件和高速电芯片共同构成瓶颈，定价权取决于供给释放速度。"
+    },
+    {
+      "id": "Q2.1.1",
+      "level": 3,
+      "question": "EML/InP laser、硅光芯片和光电器件是否形成供应瓶颈和定价权？",
+      "parent_id": "Q2.1",
+      "investment_relevance": "影响 chokepoint_strength、父节点结论、Q4 标的排序和行动状态。",
+      "decision_use": "影响 chokepoint_strength、父节点结论、Q4 标的排序和行动状态。",
+      "required_materials": [
+        "laser capacity",
+        "InP wafer",
+        "silicon photonics",
+        "component shortage",
+        "gross margin"
+      ],
+      "support_evidence": "能用具体数据把 AI 网络需求、端口数、速率升级、组件供给、订单、利润率、现金流或估值连接起来的证据。",
+      "refute_evidence": "关键组件扩产充足，模块厂可轻松转移供应商，组件价格快速回落。",
+      "target_implications": "决定相关标的是否具备光模块产业链瓶颈敞口、未来空间、估值赔率和风险可控性。",
+      "preferred_specialty_skill": "industry-report-analysis",
+      "score_component": "chokepoint_strength",
+      "next_question_ids": [],
+      "conclusion": "上游激光器、InP/光芯片和高精度光器件是最清晰的瓶颈之一，但定价权需要看供给释放速度。",
+      "fact": "TrendForce 指出激光器和关键材料短缺，Lumentum/Coherent 的增长说明上游光子器件能够直接受益，天孚通信也体现器件环节增长。",
+      "inference": "若模块放量而上游器件供给更慢，上游环节具备阶段性议价权和利润率支撑。",
+      "judgment": "Q2 chokepoint_strength 对上游器件给中高分，但需要防止扩产后的供给反转。",
+      "gap": "缺少 EML/InP 产能、良率、客户分配和价格数据。",
+      "trigger": "若激光器供给不再紧张或 ASP 快速下滑，上游瓶颈分数下调。",
+      "materiality": "影响 chokepoint_strength、父节点结论、Q4 标的排序和行动状态。",
+      "minimum_evidence_gate": "至少需要一个 cutoff 前可见的一手公司/公告证据、一个行业或估值交叉验证来源，并保留反证来源。",
+      "refuting_source_plan": "关键组件扩产充足，模块厂可轻松转移供应商，组件价格快速回落。",
+      "source_links": [
+        "SRC-TF-LASER-20251208",
+        "SRC-LITE-Q2FY26-20260203",
+        "SRC-COHR-Q2FY26-20260204",
+        "SRC-TFC-Q3-20251030"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-TF-LASER-20251208",
+          "expected_fields": [
+            "laser capacity",
+            "InP wafer",
+            "silicon photonics",
+            "component shortage",
+            "gross margin"
+          ],
+          "source_bucket": "research_report",
+          "visible_date": "2025-12-08",
+          "source_visible_at": "2025-12-08",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "TrendForce press page dated 2025-12-08, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "industry-report-analysis"
+        },
+        {
+          "source_id": "SRC-LITE-Q2FY26-20260203",
+          "expected_fields": [
+            "laser capacity",
+            "InP wafer",
+            "silicon photonics",
+            "component shortage",
+            "gross margin"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-03",
+          "source_visible_at": "2026-02-03",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company IR release dated 2026-02-03, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "industry-report-analysis"
+        },
+        {
+          "source_id": "SRC-COHR-Q2FY26-20260204",
+          "expected_fields": [
+            "laser capacity",
+            "InP wafer",
+            "silicon photonics",
+            "component shortage",
+            "gross margin"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-04",
+          "source_visible_at": "2026-02-04",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company release dated 2026-02-04, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "industry-report-analysis"
+        },
+        {
+          "source_id": "SRC-TFC-Q3-20251030",
+          "expected_fields": [
+            "laser capacity",
+            "InP wafer",
+            "silicon photonics",
+            "component shortage",
+            "gross margin"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2025-10-30",
+          "source_visible_at": "2025-10-30",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Public finance article around 2025Q3 report period, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "industry-report-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "industry-report-analysis",
+        "selected_skill": "industry-report-analysis",
+        "concrete_materials": [
+          "SRC-TF-LASER-20251208",
+          "SRC-LITE-Q2FY26-20260203",
+          "SRC-COHR-Q2FY26-20260204",
+          "SRC-TFC-Q3-20251030"
+        ],
+        "extraction_schema": {
+          "schema": "optical_module_backtest_v1",
+          "period": "as_of_2026_03_01",
+          "metric": "node_relevant_metric",
+          "value": "source_observation",
+          "source_basis": "cutoff_visible_source",
+          "uncertainty": "source_limit",
+          "chokepoint": "optical_value_chain_node",
+          "financial_conversion": "revenue_margin_or_valuation_link"
+        },
+        "source_extraction_ids": [
+          "EX-BT-Q2-1-1-1",
+          "EX-BT-Q2-1-1-2",
+          "EX-BT-Q2-1-1-3",
+          "EX-BT-Q2-1-1-4"
+        ],
+        "leaf_source_review_ids": [
+          "RV-BT-Q2-1-1-1",
+          "RV-BT-Q2-1-1-2",
+          "RV-BT-Q2-1-1-3",
+          "RV-BT-Q2-1-1-4"
+        ],
+        "skill_output_status": "complete_cutoff_visible_source_parse",
+        "fallback_used": "gpt_verified_source_extraction_without_deepseek_for_cutoff_backtest",
+        "gpt_verification_status": "verified_with_caveats"
+      }
+    },
+    {
+      "id": "Q2.1.2",
+      "level": 3,
+      "question": "DSP、driver、TIA 和高速电芯片是否把价值转移给芯片供应商，而不是模块厂？",
+      "parent_id": "Q2.1",
+      "investment_relevance": "影响 chokepoint_strength、父节点结论、Q4 标的排序和行动状态。",
+      "decision_use": "影响 chokepoint_strength、父节点结论、Q4 标的排序和行动状态。",
+      "required_materials": [
+        "DSP supplier share",
+        "linear drive/LPO architecture",
+        "bill of materials",
+        "supplier margins"
+      ],
+      "support_evidence": "能用具体数据把 AI 网络需求、端口数、速率升级、组件供给、订单、利润率、现金流或估值连接起来的证据。",
+      "refute_evidence": "模块厂掌握集成与认证，芯片成本占比下降或供应商议价能力减弱。",
+      "target_implications": "决定相关标的是否具备光模块产业链瓶颈敞口、未来空间、估值赔率和风险可控性。",
+      "preferred_specialty_skill": "industry-report-analysis",
+      "score_component": "chokepoint_strength",
+      "next_question_ids": [],
+      "conclusion": "DSP、driver、TIA 和高速电芯片会分走价值，但 as-of 时点光模块机会仍不应只看芯片供应商。",
+      "fact": "Credo 的 AI 连接强劲预告提示高速电连接和 DSP/AEC 环节也在受益；Lumentum/Coherent 则证明光子器件端仍有财务兑现。",
+      "inference": "价值在电芯片、光器件、模块集成之间分配，不同架构会改变利润池位置。",
+      "judgment": "模块龙头仍可观察，但 Q4 排序必须纳入芯片/电连接替代带来的利润转移风险。",
+      "gap": "缺少 DSP/BOM 占比、模块厂自研能力和供应商议价数据。",
+      "trigger": "若高速电芯片厂捕获大部分增量毛利，模块厂估值应压缩。",
+      "materiality": "影响 chokepoint_strength、父节点结论、Q4 标的排序和行动状态。",
+      "minimum_evidence_gate": "至少需要一个 cutoff 前可见的一手公司/公告证据、一个行业或估值交叉验证来源，并保留反证来源。",
+      "refuting_source_plan": "模块厂掌握集成与认证，芯片成本占比下降或供应商议价能力减弱。",
+      "source_links": [
+        "SRC-CRDO-PREANN-20260209",
+        "SRC-LITE-Q2FY26-20260203",
+        "SRC-COHR-Q2FY26-20260204"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-CRDO-PREANN-20260209",
+          "expected_fields": [
+            "DSP supplier share",
+            "linear drive/LPO architecture",
+            "bill of materials",
+            "supplier margins"
+          ],
+          "source_bucket": "message",
+          "visible_date": "2026-02-09",
+          "source_visible_at": "2026-02-09",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company preliminary release dated 2026-02-09, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "industry-report-analysis"
+        },
+        {
+          "source_id": "SRC-LITE-Q2FY26-20260203",
+          "expected_fields": [
+            "DSP supplier share",
+            "linear drive/LPO architecture",
+            "bill of materials",
+            "supplier margins"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-03",
+          "source_visible_at": "2026-02-03",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company IR release dated 2026-02-03, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "industry-report-analysis"
+        },
+        {
+          "source_id": "SRC-COHR-Q2FY26-20260204",
+          "expected_fields": [
+            "DSP supplier share",
+            "linear drive/LPO architecture",
+            "bill of materials",
+            "supplier margins"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-04",
+          "source_visible_at": "2026-02-04",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company release dated 2026-02-04, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "industry-report-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "industry-report-analysis",
+        "selected_skill": "industry-report-analysis",
+        "concrete_materials": [
+          "SRC-CRDO-PREANN-20260209",
+          "SRC-LITE-Q2FY26-20260203",
+          "SRC-COHR-Q2FY26-20260204"
+        ],
+        "extraction_schema": {
+          "schema": "optical_module_backtest_v1",
+          "period": "as_of_2026_03_01",
+          "metric": "node_relevant_metric",
+          "value": "source_observation",
+          "source_basis": "cutoff_visible_source",
+          "uncertainty": "source_limit",
+          "chokepoint": "optical_value_chain_node",
+          "financial_conversion": "revenue_margin_or_valuation_link"
+        },
+        "source_extraction_ids": [
+          "EX-BT-Q2-1-2-1",
+          "EX-BT-Q2-1-2-2",
+          "EX-BT-Q2-1-2-3"
+        ],
+        "leaf_source_review_ids": [
+          "RV-BT-Q2-1-2-1",
+          "RV-BT-Q2-1-2-2",
+          "RV-BT-Q2-1-2-3"
+        ],
+        "skill_output_status": "complete_cutoff_visible_source_parse",
+        "fallback_used": "gpt_verified_source_extraction_without_deepseek_for_cutoff_backtest",
+        "gpt_verification_status": "verified_with_caveats"
+      }
+    },
+    {
+      "id": "Q2.2",
+      "level": 2,
+      "question": "模块集成、良率、认证和产能爬坡",
+      "parent_id": "Q2",
+      "investment_relevance": "分析模块厂是否凭借认证、规模制造、良率和交付稳定性捕获价值。",
+      "decision_use": "",
+      "required_materials": [],
+      "support_evidence": "",
+      "refute_evidence": "",
+      "target_implications": "",
+      "preferred_specialty_skill": "",
+      "score_component": "",
+      "next_question_ids": [
+        "Q2.2.1",
+        "Q2.2.2"
+      ],
+      "conclusion": "模块厂的认证、良率、热管理和交付能力是龙头壁垒，Fabrinet 等代工更偏产能 beta。"
+    },
+    {
+      "id": "Q2.2.1",
+      "level": 3,
+      "question": "模块厂的客户认证、良率、热管理和交付能力是否构成难替代壁垒？",
+      "parent_id": "Q2.2",
+      "investment_relevance": "影响 chokepoint_strength、父节点结论、Q4 标的排序和行动状态。",
+      "decision_use": "影响 chokepoint_strength、父节点结论、Q4 标的排序和行动状态。",
+      "required_materials": [
+        "customer qualification",
+        "yield",
+        "capacity ramp",
+        "gross margin",
+        "delivery performance"
+      ],
+      "support_evidence": "能用具体数据把 AI 网络需求、端口数、速率升级、组件供给、订单、利润率、现金流或估值连接起来的证据。",
+      "refute_evidence": "认证壁垒降低，二线厂快速进入核心客户，毛利率被价格竞争压缩。",
+      "target_implications": "决定相关标的是否具备光模块产业链瓶颈敞口、未来空间、估值赔率和风险可控性。",
+      "preferred_specialty_skill": "financial-statement-analysis",
+      "score_component": "chokepoint_strength",
+      "next_question_ids": [],
+      "conclusion": "客户认证、良率、热管理和交付能力构成模块龙头壁垒，是中际旭创/新易盛优于二线公司的核心原因。",
+      "fact": "国内模块龙头 2025Q3 已经把高速光模块需求转化为收入和利润，海外器件公司也强调 AI 数据通信交付。",
+      "inference": "高速模块不是简单装配，客户认证和良率会让先发供应商获得份额和盈利弹性。",
+      "judgment": "模块集成壁垒是 Q4 中际旭创高排序的主要支撑。",
+      "gap": "缺少客户认证名单、良率、交付周期和单客户收入占比。",
+      "trigger": "若二线厂快速获得同等认证并压价，模块龙头稀缺性下降。",
+      "materiality": "影响 chokepoint_strength、父节点结论、Q4 标的排序和行动状态。",
+      "minimum_evidence_gate": "至少需要一个 cutoff 前可见的一手公司/公告证据、一个行业或估值交叉验证来源，并保留反证来源。",
+      "refuting_source_plan": "认证壁垒降低，二线厂快速进入核心客户，毛利率被价格竞争压缩。",
+      "source_links": [
+        "SRC-INNOLIGHT-Q3-20251031",
+        "SRC-EOPTOLINK-Q3-20251030",
+        "SRC-LITE-Q2FY26-20260203",
+        "SRC-COHR-Q2FY26-20260204"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-INNOLIGHT-Q3-20251031",
+          "expected_fields": [
+            "customer qualification",
+            "yield",
+            "capacity ramp",
+            "gross margin",
+            "delivery performance"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2025-10-31",
+          "source_visible_at": "2025-10-31",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Securities Times article dated 2025-10-31 reports company 2025Q3 disclosure, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "financial-statement-analysis"
+        },
+        {
+          "source_id": "SRC-EOPTOLINK-Q3-20251030",
+          "expected_fields": [
+            "customer qualification",
+            "yield",
+            "capacity ramp",
+            "gross margin",
+            "delivery performance"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2025-10-30",
+          "source_visible_at": "2025-10-30",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Public finance article dated 2025-10-30 reports company 2025Q3 disclosure, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "financial-statement-analysis"
+        },
+        {
+          "source_id": "SRC-LITE-Q2FY26-20260203",
+          "expected_fields": [
+            "customer qualification",
+            "yield",
+            "capacity ramp",
+            "gross margin",
+            "delivery performance"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-03",
+          "source_visible_at": "2026-02-03",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company IR release dated 2026-02-03, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "financial-statement-analysis"
+        },
+        {
+          "source_id": "SRC-COHR-Q2FY26-20260204",
+          "expected_fields": [
+            "customer qualification",
+            "yield",
+            "capacity ramp",
+            "gross margin",
+            "delivery performance"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-04",
+          "source_visible_at": "2026-02-04",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company release dated 2026-02-04, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "financial-statement-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "financial-statement-analysis",
+        "selected_skill": "financial-statement-analysis",
+        "concrete_materials": [
+          "SRC-INNOLIGHT-Q3-20251031",
+          "SRC-EOPTOLINK-Q3-20251030",
+          "SRC-LITE-Q2FY26-20260203",
+          "SRC-COHR-Q2FY26-20260204"
+        ],
+        "extraction_schema": {
+          "schema": "optical_module_backtest_v1",
+          "period": "as_of_2026_03_01",
+          "metric": "node_relevant_metric",
+          "value": "source_observation",
+          "source_basis": "cutoff_visible_source",
+          "uncertainty": "source_limit",
+          "chokepoint": "optical_value_chain_node",
+          "financial_conversion": "revenue_margin_or_valuation_link"
+        },
+        "source_extraction_ids": [
+          "EX-BT-Q2-2-1-1",
+          "EX-BT-Q2-2-1-2",
+          "EX-BT-Q2-2-1-3",
+          "EX-BT-Q2-2-1-4"
+        ],
+        "leaf_source_review_ids": [
+          "RV-BT-Q2-2-1-1",
+          "RV-BT-Q2-2-1-2",
+          "RV-BT-Q2-2-1-3",
+          "RV-BT-Q2-2-1-4"
+        ],
+        "skill_output_status": "complete_cutoff_visible_source_parse",
+        "fallback_used": "gpt_verified_source_extraction_without_deepseek_for_cutoff_backtest",
+        "gpt_verification_status": "verified_with_caveats"
+      }
+    },
+    {
+      "id": "Q2.2.2",
+      "level": 3,
+      "question": "Fabrinet 等代工环节是否是产能瓶颈，还是只获得低弹性的制造 beta？",
+      "parent_id": "Q2.2",
+      "investment_relevance": "影响 payoff_convexity、父节点结论、Q4 标的排序和行动状态。",
+      "decision_use": "影响 payoff_convexity、父节点结论、Q4 标的排序和行动状态。",
+      "required_materials": [
+        "manufacturing revenue",
+        "capacity utilization",
+        "customer mix",
+        "gross margin",
+        "capex"
+      ],
+      "support_evidence": "能用具体数据把 AI 网络需求、端口数、速率升级、组件供给、订单、利润率、现金流或估值连接起来的证据。",
+      "refute_evidence": "代工利润率稳定但弹性有限，客户转单或自建产能削弱议价能力。",
+      "target_implications": "决定相关标的是否具备光模块产业链瓶颈敞口、未来空间、估值赔率和风险可控性。",
+      "preferred_specialty_skill": "financial-statement-analysis",
+      "score_component": "payoff_convexity",
+      "next_question_ids": [],
+      "conclusion": "Fabrinet 等代工环节有订单弹性，但更像制造 beta，稀缺性弱于模块品牌和上游关键器件。",
+      "fact": "Fabrinet FY2026 Q2 披露 AI 数据通信需求和扩产，但代工模式通常以制造服务收入为主。",
+      "inference": "制造产能紧张时能受益，但若客户多源化或产能扩张，利润弹性较难长期保持。",
+      "judgment": "Fabrinet 适合观察产业景气，不适合作为最高强度瓶颈标的。",
+      "gap": "缺少客户毛利、产线利用率、资本开支回收和订单可见度。",
+      "trigger": "若代工扩产快于需求或毛利率不提升，制造 beta 降级。",
+      "materiality": "影响 payoff_convexity、父节点结论、Q4 标的排序和行动状态。",
+      "minimum_evidence_gate": "至少需要一个 cutoff 前可见的一手公司/公告证据、一个行业或估值交叉验证来源，并保留反证来源。",
+      "refuting_source_plan": "代工利润率稳定但弹性有限，客户转单或自建产能削弱议价能力。",
+      "source_links": [
+        "SRC-FN-Q2FY26-20260202",
+        "SRC-LITE-Q2FY26-20260203",
+        "SRC-COHR-Q2FY26-20260204"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-FN-Q2FY26-20260202",
+          "expected_fields": [
+            "manufacturing revenue",
+            "capacity utilization",
+            "customer mix",
+            "gross margin",
+            "capex"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-02",
+          "source_visible_at": "2026-02-02",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company IR release dated 2026-02-02, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "financial-statement-analysis"
+        },
+        {
+          "source_id": "SRC-LITE-Q2FY26-20260203",
+          "expected_fields": [
+            "manufacturing revenue",
+            "capacity utilization",
+            "customer mix",
+            "gross margin",
+            "capex"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-03",
+          "source_visible_at": "2026-02-03",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company IR release dated 2026-02-03, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "financial-statement-analysis"
+        },
+        {
+          "source_id": "SRC-COHR-Q2FY26-20260204",
+          "expected_fields": [
+            "manufacturing revenue",
+            "capacity utilization",
+            "customer mix",
+            "gross margin",
+            "capex"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-04",
+          "source_visible_at": "2026-02-04",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company release dated 2026-02-04, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "financial-statement-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "financial-statement-analysis",
+        "selected_skill": "financial-statement-analysis",
+        "concrete_materials": [
+          "SRC-FN-Q2FY26-20260202",
+          "SRC-LITE-Q2FY26-20260203",
+          "SRC-COHR-Q2FY26-20260204"
+        ],
+        "extraction_schema": {
+          "schema": "optical_module_backtest_v1",
+          "period": "as_of_2026_03_01",
+          "metric": "node_relevant_metric",
+          "value": "source_observation",
+          "source_basis": "cutoff_visible_source",
+          "uncertainty": "source_limit",
+          "chokepoint": "optical_value_chain_node",
+          "financial_conversion": "revenue_margin_or_valuation_link"
+        },
+        "source_extraction_ids": [
+          "EX-BT-Q2-2-2-1",
+          "EX-BT-Q2-2-2-2",
+          "EX-BT-Q2-2-2-3"
+        ],
+        "leaf_source_review_ids": [
+          "RV-BT-Q2-2-2-1",
+          "RV-BT-Q2-2-2-2",
+          "RV-BT-Q2-2-2-3"
+        ],
+        "skill_output_status": "complete_cutoff_visible_source_parse",
+        "fallback_used": "gpt_verified_source_extraction_without_deepseek_for_cutoff_backtest",
+        "gpt_verification_status": "verified_with_caveats"
+      }
+    },
+    {
+      "id": "Q2.3",
+      "level": 2,
+      "question": "公司财务转化和竞争格局",
+      "parent_id": "Q2",
+      "investment_relevance": "把中际旭创、新易盛、Lumentum、Coherent、Fabrinet、天孚通信、剑桥科技等映射到具体利润池。",
+      "decision_use": "",
+      "required_materials": [],
+      "support_evidence": "",
+      "refute_evidence": "",
+      "target_implications": "",
+      "preferred_specialty_skill": "",
+      "score_component": "",
+      "next_question_ids": [
+        "Q2.3.1",
+        "Q2.3.2"
+      ],
+      "conclusion": "中际旭创、新易盛和海外器件龙头财务转化更直接，天孚通信偏组件弹性，Fabrinet 偏制造量。"
+    },
+    {
+      "id": "Q2.3.1",
+      "level": 3,
+      "question": "哪些公司把 800G/1.6T 需求转化成收入、毛利率、净利率和现金流？",
+      "parent_id": "Q2.3",
+      "investment_relevance": "影响 target_ranking、父节点结论、Q4 标的排序和行动状态。",
+      "decision_use": "影响 target_ranking、父节点结论、Q4 标的排序和行动状态。",
+      "required_materials": [
+        "revenue growth",
+        "gross margin",
+        "net profit",
+        "cash flow",
+        "product mix"
+      ],
+      "support_evidence": "能用具体数据把 AI 网络需求、端口数、速率升级、组件供给、订单、利润率、现金流或估值连接起来的证据。",
+      "refute_evidence": "收入高增但毛利率、现金流或资本开支消耗恶化。",
+      "target_implications": "决定相关标的是否具备光模块产业链瓶颈敞口、未来空间、估值赔率和风险可控性。",
+      "preferred_specialty_skill": "financial-statement-analysis",
+      "score_component": "target_ranking",
+      "next_question_ids": [],
+      "conclusion": "财务转化最清晰的是国内模块龙头和海外器件龙头，天孚通信偏组件弹性，Fabrinet 偏制造 beta。",
+      "fact": "中际旭创、新易盛 2025Q3 利润弹性强；Lumentum/Coherent FY2026 Q2 体现 AI 光互连上游兑现；Fabrinet 增长明显但制造属性更重。",
+      "inference": "光模块机会已经进入利润表，但不同环节对利润率和估值赔率的贡献不同。",
+      "judgment": "排序应优先模块龙头，其次器件龙头和组件公司，再看代工与二线模块。",
+      "gap": "缺少按 800G/1.6T 产品拆分的收入、毛利率、现金流和资本开支。",
+      "trigger": "若收入增长不能转化为毛利和现金流，Q2 财务转化降级。",
+      "materiality": "影响 target_ranking、父节点结论、Q4 标的排序和行动状态。",
+      "minimum_evidence_gate": "至少需要一个 cutoff 前可见的一手公司/公告证据、一个行业或估值交叉验证来源，并保留反证来源。",
+      "refuting_source_plan": "收入高增但毛利率、现金流或资本开支消耗恶化。",
+      "source_links": [
+        "SRC-INNOLIGHT-Q3-20251031",
+        "SRC-EOPTOLINK-Q3-20251030",
+        "SRC-TFC-Q3-20251030",
+        "SRC-LITE-Q2FY26-20260203",
+        "SRC-COHR-Q2FY26-20260204"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-INNOLIGHT-Q3-20251031",
+          "expected_fields": [
+            "revenue growth",
+            "gross margin",
+            "net profit",
+            "cash flow",
+            "product mix"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2025-10-31",
+          "source_visible_at": "2025-10-31",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Securities Times article dated 2025-10-31 reports company 2025Q3 disclosure, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "financial-statement-analysis"
+        },
+        {
+          "source_id": "SRC-EOPTOLINK-Q3-20251030",
+          "expected_fields": [
+            "revenue growth",
+            "gross margin",
+            "net profit",
+            "cash flow",
+            "product mix"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2025-10-30",
+          "source_visible_at": "2025-10-30",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Public finance article dated 2025-10-30 reports company 2025Q3 disclosure, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "financial-statement-analysis"
+        },
+        {
+          "source_id": "SRC-TFC-Q3-20251030",
+          "expected_fields": [
+            "revenue growth",
+            "gross margin",
+            "net profit",
+            "cash flow",
+            "product mix"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2025-10-30",
+          "source_visible_at": "2025-10-30",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Public finance article around 2025Q3 report period, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "financial-statement-analysis"
+        },
+        {
+          "source_id": "SRC-LITE-Q2FY26-20260203",
+          "expected_fields": [
+            "revenue growth",
+            "gross margin",
+            "net profit",
+            "cash flow",
+            "product mix"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-03",
+          "source_visible_at": "2026-02-03",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company IR release dated 2026-02-03, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "financial-statement-analysis"
+        },
+        {
+          "source_id": "SRC-COHR-Q2FY26-20260204",
+          "expected_fields": [
+            "revenue growth",
+            "gross margin",
+            "net profit",
+            "cash flow",
+            "product mix"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-04",
+          "source_visible_at": "2026-02-04",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company release dated 2026-02-04, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "financial-statement-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "financial-statement-analysis",
+        "selected_skill": "financial-statement-analysis",
+        "concrete_materials": [
+          "SRC-INNOLIGHT-Q3-20251031",
+          "SRC-EOPTOLINK-Q3-20251030",
+          "SRC-TFC-Q3-20251030",
+          "SRC-LITE-Q2FY26-20260203",
+          "SRC-COHR-Q2FY26-20260204"
+        ],
+        "extraction_schema": {
+          "schema": "optical_module_backtest_v1",
+          "period": "as_of_2026_03_01",
+          "metric": "node_relevant_metric",
+          "value": "source_observation",
+          "source_basis": "cutoff_visible_source",
+          "uncertainty": "source_limit",
+          "chokepoint": "optical_value_chain_node",
+          "financial_conversion": "revenue_margin_or_valuation_link"
+        },
+        "source_extraction_ids": [
+          "EX-BT-Q2-3-1-1",
+          "EX-BT-Q2-3-1-2",
+          "EX-BT-Q2-3-1-3",
+          "EX-BT-Q2-3-1-4",
+          "EX-BT-Q2-3-1-5"
+        ],
+        "leaf_source_review_ids": [
+          "RV-BT-Q2-3-1-1",
+          "RV-BT-Q2-3-1-2",
+          "RV-BT-Q2-3-1-3",
+          "RV-BT-Q2-3-1-4",
+          "RV-BT-Q2-3-1-5"
+        ],
+        "skill_output_status": "complete_cutoff_visible_source_parse",
+        "fallback_used": "gpt_verified_source_extraction_without_deepseek_for_cutoff_backtest",
+        "gpt_verification_status": "verified_with_caveats"
+      }
+    },
+    {
+      "id": "Q2.3.2",
+      "level": 3,
+      "question": "国内模块龙头和海外器件/制造龙头的价值捕获差异是什么？",
+      "parent_id": "Q2.3",
+      "investment_relevance": "影响 chokepoint_strength、父节点结论、Q4 标的排序和行动状态。",
+      "decision_use": "影响 chokepoint_strength、父节点结论、Q4 标的排序和行动状态。",
+      "required_materials": [
+        "company exposure",
+        "customer mix",
+        "component ownership",
+        "valuation",
+        "capacity"
+      ],
+      "support_evidence": "能用具体数据把 AI 网络需求、端口数、速率升级、组件供给、订单、利润率、现金流或估值连接起来的证据。",
+      "refute_evidence": "公司只具备主题暴露，缺少关键瓶颈控制或财务弹性。",
+      "target_implications": "决定相关标的是否具备光模块产业链瓶颈敞口、未来空间、估值赔率和风险可控性。",
+      "preferred_specialty_skill": "target-recommendation-analysis",
+      "score_component": "chokepoint_strength",
+      "next_question_ids": [],
+      "conclusion": "国内模块龙头更直接捕获高速模块收入，海外器件龙头更靠上游光子器件和平台路线，Fabrinet 则捕获制造量。",
+      "fact": "中际旭创/新易盛披露的是模块级财务弹性；Lumentum/Coherent 披露的是光子器件和数据通信平台；Fabrinet 披露的是代工制造需求。",
+      "inference": "同一 AI 光互连主线在不同公司表现为不同财务敞口，不能用同一估值逻辑。",
+      "judgment": "Q4 必须分层：模块龙头看份额和 ASP，器件龙头看稀缺和定价，代工看利用率和 capex 回收。",
+      "gap": "缺少统一口径的产品收入、客户结构和估值分位。",
+      "trigger": "若某一环节利润率明显弱于收入增长，重新分配评分。",
+      "materiality": "影响 chokepoint_strength、父节点结论、Q4 标的排序和行动状态。",
+      "minimum_evidence_gate": "至少需要一个 cutoff 前可见的一手公司/公告证据、一个行业或估值交叉验证来源，并保留反证来源。",
+      "refuting_source_plan": "公司只具备主题暴露，缺少关键瓶颈控制或财务弹性。",
+      "source_links": [
+        "SRC-INNOLIGHT-Q3-20251031",
+        "SRC-EOPTOLINK-Q3-20251030",
+        "SRC-TFC-Q3-20251030",
+        "SRC-LITE-Q2FY26-20260203",
+        "SRC-COHR-Q2FY26-20260204",
+        "SRC-FN-Q2FY26-20260202"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-INNOLIGHT-Q3-20251031",
+          "expected_fields": [
+            "company exposure",
+            "customer mix",
+            "component ownership",
+            "valuation",
+            "capacity"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2025-10-31",
+          "source_visible_at": "2025-10-31",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Securities Times article dated 2025-10-31 reports company 2025Q3 disclosure, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        },
+        {
+          "source_id": "SRC-EOPTOLINK-Q3-20251030",
+          "expected_fields": [
+            "company exposure",
+            "customer mix",
+            "component ownership",
+            "valuation",
+            "capacity"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2025-10-30",
+          "source_visible_at": "2025-10-30",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Public finance article dated 2025-10-30 reports company 2025Q3 disclosure, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        },
+        {
+          "source_id": "SRC-TFC-Q3-20251030",
+          "expected_fields": [
+            "company exposure",
+            "customer mix",
+            "component ownership",
+            "valuation",
+            "capacity"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2025-10-30",
+          "source_visible_at": "2025-10-30",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Public finance article around 2025Q3 report period, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        },
+        {
+          "source_id": "SRC-LITE-Q2FY26-20260203",
+          "expected_fields": [
+            "company exposure",
+            "customer mix",
+            "component ownership",
+            "valuation",
+            "capacity"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-03",
+          "source_visible_at": "2026-02-03",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company IR release dated 2026-02-03, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        },
+        {
+          "source_id": "SRC-COHR-Q2FY26-20260204",
+          "expected_fields": [
+            "company exposure",
+            "customer mix",
+            "component ownership",
+            "valuation",
+            "capacity"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-04",
+          "source_visible_at": "2026-02-04",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company release dated 2026-02-04, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        },
+        {
+          "source_id": "SRC-FN-Q2FY26-20260202",
+          "expected_fields": [
+            "company exposure",
+            "customer mix",
+            "component ownership",
+            "valuation",
+            "capacity"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-02",
+          "source_visible_at": "2026-02-02",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company IR release dated 2026-02-02, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "target-recommendation-analysis",
+        "selected_skill": "target-recommendation-analysis",
+        "concrete_materials": [
+          "SRC-INNOLIGHT-Q3-20251031",
+          "SRC-EOPTOLINK-Q3-20251030",
+          "SRC-TFC-Q3-20251030",
+          "SRC-LITE-Q2FY26-20260203",
+          "SRC-COHR-Q2FY26-20260204",
+          "SRC-FN-Q2FY26-20260202"
+        ],
+        "extraction_schema": {
+          "schema": "optical_module_backtest_v1",
+          "period": "as_of_2026_03_01",
+          "metric": "node_relevant_metric",
+          "value": "source_observation",
+          "source_basis": "cutoff_visible_source",
+          "uncertainty": "source_limit",
+          "chokepoint": "optical_value_chain_node",
+          "financial_conversion": "revenue_margin_or_valuation_link"
+        },
+        "source_extraction_ids": [
+          "EX-BT-Q2-3-2-1",
+          "EX-BT-Q2-3-2-2",
+          "EX-BT-Q2-3-2-3",
+          "EX-BT-Q2-3-2-4",
+          "EX-BT-Q2-3-2-5",
+          "EX-BT-Q2-3-2-6"
+        ],
+        "leaf_source_review_ids": [
+          "RV-BT-Q2-3-2-1",
+          "RV-BT-Q2-3-2-2",
+          "RV-BT-Q2-3-2-3",
+          "RV-BT-Q2-3-2-4",
+          "RV-BT-Q2-3-2-5",
+          "RV-BT-Q2-3-2-6"
+        ],
+        "skill_output_status": "complete_cutoff_visible_source_parse",
+        "fallback_used": "gpt_verified_source_extraction_without_deepseek_for_cutoff_backtest",
+        "gpt_verification_status": "verified_with_caveats"
+      }
+    },
+    {
+      "id": "Q3",
+      "level": 1,
+      "question": "反证与定价：哪些技术替代、供给扩张、客户 capex 或估值信号会推翻机会？",
+      "parent_id": "",
+      "investment_relevance": "Defines what would refute the thesis or cap valuation odds.",
+      "decision_use": "",
+      "required_materials": [],
+      "support_evidence": "",
+      "refute_evidence": "",
+      "target_implications": "",
+      "preferred_specialty_skill": "",
+      "score_component": "",
+      "next_question_ids": [
+        "Q3.1",
+        "Q3.2",
+        "Q3.3"
+      ],
+      "conclusion": "核心反证是技术路线替代、扩产后 ASP/毛利回落、客户集中和估值拥挤。"
+    },
+    {
+      "id": "Q3.1",
+      "level": 2,
+      "question": "技术替代和架构反证",
+      "parent_id": "Q3",
+      "investment_relevance": "评估 LPO、CPO、硅光、铜互连、OCS 和 scale-up 网络变化对可插拔光模块的影响。",
+      "decision_use": "",
+      "required_materials": [],
+      "support_evidence": "",
+      "refute_evidence": "",
+      "target_implications": "",
+      "preferred_specialty_skill": "",
+      "score_component": "",
+      "next_question_ids": [
+        "Q3.1.1",
+        "Q3.1.2"
+      ],
+      "conclusion": "CPO/LPO/硅光、铜互连和 OCS 是中长期反证，但截至 cutoff 尚不足以否定 2026 高速模块主线。"
+    },
+    {
+      "id": "Q3.1.1",
+      "level": 3,
+      "question": "LPO/CPO/硅光是否会提高部分供应商壁垒，还是削弱传统可插拔模块价值？",
+      "parent_id": "Q3.1",
+      "investment_relevance": "影响 disconfirming_risk_control、父节点结论、Q4 标的排序和行动状态。",
+      "decision_use": "影响 disconfirming_risk_control、父节点结论、Q4 标的排序和行动状态。",
+      "required_materials": [
+        "LPO/CPO roadmap",
+        "silicon photonics adoption",
+        "pluggable share",
+        "customer qualification"
+      ],
+      "support_evidence": "能用具体数据把 AI 网络需求、端口数、速率升级、组件供给、订单、利润率、现金流或估值连接起来的证据。",
+      "refute_evidence": "CPO 或平台内置光 I/O 加速落地，使传统模块 ASP 或需求低于预期。",
+      "target_implications": "决定相关标的是否具备光模块产业链瓶颈敞口、未来空间、估值赔率和风险可控性。",
+      "preferred_specialty_skill": "industry-report-analysis",
+      "score_component": "disconfirming_risk_control",
+      "next_question_ids": [],
+      "conclusion": "LPO/CPO/硅光更像中长期路线变量，as-of 时点尚不足以推翻 2026 可插拔高速模块机会。",
+      "fact": "截止日前信息显示 800G/1.6T 需求仍在可插拔模块和上游光器件链条中兑现，同时 Credo 等公司提示替代架构存在。",
+      "inference": "新架构可能提高部分供应商壁垒，也可能降低传统模块价值，关键在商用节奏和客户平台选择。",
+      "judgment": "将 CPO/LPO 作为 Q3 反证和长期路线监控，不在 as-of 时点否定模块主线。",
+      "gap": "缺少 CPO/LPO 商用规模、客户时间表和成本比较。",
+      "trigger": "若 CPO/LPO 在主要云客户中提前规模化，传统模块厂估值应降级。",
+      "materiality": "影响 disconfirming_risk_control、父节点结论、Q4 标的排序和行动状态。",
+      "minimum_evidence_gate": "至少需要一个 cutoff 前可见的一手公司/公告证据、一个行业或估值交叉验证来源，并保留反证来源。",
+      "refuting_source_plan": "CPO 或平台内置光 I/O 加速落地，使传统模块 ASP 或需求低于预期。",
+      "source_links": [
+        "SRC-TF-800G-20260210",
+        "SRC-TF-LASER-20251208",
+        "SRC-CRDO-PREANN-20260209",
+        "SRC-LITE-Q2FY26-20260203"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-TF-800G-20260210",
+          "expected_fields": [
+            "LPO/CPO roadmap",
+            "silicon photonics adoption",
+            "pluggable share",
+            "customer qualification"
+          ],
+          "source_bucket": "research_report",
+          "visible_date": "2026-02-10",
+          "source_visible_at": "2026-02-10",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "TrendForce press page dated 2026-02-10, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "industry-report-analysis"
+        },
+        {
+          "source_id": "SRC-TF-LASER-20251208",
+          "expected_fields": [
+            "LPO/CPO roadmap",
+            "silicon photonics adoption",
+            "pluggable share",
+            "customer qualification"
+          ],
+          "source_bucket": "research_report",
+          "visible_date": "2025-12-08",
+          "source_visible_at": "2025-12-08",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "TrendForce press page dated 2025-12-08, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "industry-report-analysis"
+        },
+        {
+          "source_id": "SRC-CRDO-PREANN-20260209",
+          "expected_fields": [
+            "LPO/CPO roadmap",
+            "silicon photonics adoption",
+            "pluggable share",
+            "customer qualification"
+          ],
+          "source_bucket": "message",
+          "visible_date": "2026-02-09",
+          "source_visible_at": "2026-02-09",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company preliminary release dated 2026-02-09, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "industry-report-analysis"
+        },
+        {
+          "source_id": "SRC-LITE-Q2FY26-20260203",
+          "expected_fields": [
+            "LPO/CPO roadmap",
+            "silicon photonics adoption",
+            "pluggable share",
+            "customer qualification"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-03",
+          "source_visible_at": "2026-02-03",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company IR release dated 2026-02-03, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "industry-report-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "industry-report-analysis",
+        "selected_skill": "industry-report-analysis",
+        "concrete_materials": [
+          "SRC-TF-800G-20260210",
+          "SRC-TF-LASER-20251208",
+          "SRC-CRDO-PREANN-20260209",
+          "SRC-LITE-Q2FY26-20260203"
+        ],
+        "extraction_schema": {
+          "schema": "optical_module_backtest_v1",
+          "period": "as_of_2026_03_01",
+          "metric": "node_relevant_metric",
+          "value": "source_observation",
+          "source_basis": "cutoff_visible_source",
+          "uncertainty": "source_limit",
+          "chokepoint": "optical_value_chain_node",
+          "financial_conversion": "revenue_margin_or_valuation_link"
+        },
+        "source_extraction_ids": [
+          "EX-BT-Q3-1-1-1",
+          "EX-BT-Q3-1-1-2",
+          "EX-BT-Q3-1-1-3",
+          "EX-BT-Q3-1-1-4"
+        ],
+        "leaf_source_review_ids": [
+          "RV-BT-Q3-1-1-1",
+          "RV-BT-Q3-1-1-2",
+          "RV-BT-Q3-1-1-3",
+          "RV-BT-Q3-1-1-4"
+        ],
+        "skill_output_status": "complete_cutoff_visible_source_parse",
+        "fallback_used": "gpt_verified_source_extraction_without_deepseek_for_cutoff_backtest",
+        "gpt_verification_status": "verified_with_caveats"
+      }
+    },
+    {
+      "id": "Q3.1.2",
+      "level": 3,
+      "question": "铜互连、OCS 或网络架构优化会不会减少光模块数量或改变利润池？",
+      "parent_id": "Q3.1",
+      "investment_relevance": "影响 disconfirming_risk_control、父节点结论、Q4 标的排序和行动状态。",
+      "decision_use": "影响 disconfirming_risk_control、父节点结论、Q4 标的排序和行动状态。",
+      "required_materials": [
+        "copper reach",
+        "OCS deployment",
+        "network topology",
+        "switch roadmap"
+      ],
+      "support_evidence": "能用具体数据把 AI 网络需求、端口数、速率升级、组件供给、订单、利润率、现金流或估值连接起来的证据。",
+      "refute_evidence": "架构优化显著降低光模块端口数，或价值转向交换芯片/系统商。",
+      "target_implications": "决定相关标的是否具备光模块产业链瓶颈敞口、未来空间、估值赔率和风险可控性。",
+      "preferred_specialty_skill": "news-event-analysis",
+      "score_component": "disconfirming_risk_control",
+      "next_question_ids": [],
+      "conclusion": "铜互连、OCS 和网络架构优化是必须跟踪的反证，但短期更多影响边际需求和价值分配。",
+      "fact": "Credo 的 AEC/AI 连接强预告显示电连接路线有独立景气；TrendForce 仍给出高速光模块明确需求预测。",
+      "inference": "铜互连可能在短距离或特定架构中替代一部分光模块，但大型集群的带宽和距离需求仍支撑高速光。",
+      "judgment": "反证存在但未足以推翻主线，应作为标的排序中的风险扣分。",
+      "gap": "缺少各类 AI 集群的铜/光距离边界、端口配置和总拥有成本。",
+      "trigger": "若主流云客户降低光模块 attach rate，应下调所有模块标的。",
+      "materiality": "影响 disconfirming_risk_control、父节点结论、Q4 标的排序和行动状态。",
+      "minimum_evidence_gate": "至少需要一个 cutoff 前可见的一手公司/公告证据、一个行业或估值交叉验证来源，并保留反证来源。",
+      "refuting_source_plan": "架构优化显著降低光模块端口数，或价值转向交换芯片/系统商。",
+      "source_links": [
+        "SRC-CRDO-PREANN-20260209",
+        "SRC-TF-800G-20260210",
+        "SRC-LITE-Q2FY26-20260203"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-CRDO-PREANN-20260209",
+          "expected_fields": [
+            "copper reach",
+            "OCS deployment",
+            "network topology",
+            "switch roadmap"
+          ],
+          "source_bucket": "message",
+          "visible_date": "2026-02-09",
+          "source_visible_at": "2026-02-09",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company preliminary release dated 2026-02-09, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "news-event-analysis"
+        },
+        {
+          "source_id": "SRC-TF-800G-20260210",
+          "expected_fields": [
+            "copper reach",
+            "OCS deployment",
+            "network topology",
+            "switch roadmap"
+          ],
+          "source_bucket": "research_report",
+          "visible_date": "2026-02-10",
+          "source_visible_at": "2026-02-10",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "TrendForce press page dated 2026-02-10, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "news-event-analysis"
+        },
+        {
+          "source_id": "SRC-LITE-Q2FY26-20260203",
+          "expected_fields": [
+            "copper reach",
+            "OCS deployment",
+            "network topology",
+            "switch roadmap"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-03",
+          "source_visible_at": "2026-02-03",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company IR release dated 2026-02-03, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "news-event-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "news-event-analysis",
+        "selected_skill": "news-event-analysis",
+        "concrete_materials": [
+          "SRC-CRDO-PREANN-20260209",
+          "SRC-TF-800G-20260210",
+          "SRC-LITE-Q2FY26-20260203"
+        ],
+        "extraction_schema": {
+          "schema": "optical_module_backtest_v1",
+          "period": "as_of_2026_03_01",
+          "metric": "node_relevant_metric",
+          "value": "source_observation",
+          "source_basis": "cutoff_visible_source",
+          "uncertainty": "source_limit",
+          "chokepoint": "optical_value_chain_node",
+          "financial_conversion": "revenue_margin_or_valuation_link"
+        },
+        "source_extraction_ids": [
+          "EX-BT-Q3-1-2-1",
+          "EX-BT-Q3-1-2-2",
+          "EX-BT-Q3-1-2-3"
+        ],
+        "leaf_source_review_ids": [
+          "RV-BT-Q3-1-2-1",
+          "RV-BT-Q3-1-2-2",
+          "RV-BT-Q3-1-2-3"
+        ],
+        "skill_output_status": "complete_cutoff_visible_source_parse",
+        "fallback_used": "gpt_verified_source_extraction_without_deepseek_for_cutoff_backtest",
+        "gpt_verification_status": "verified_with_caveats"
+      }
+    },
+    {
+      "id": "Q3.2",
+      "level": 2,
+      "question": "供给扩张、价格和客户议价",
+      "parent_id": "Q3",
+      "investment_relevance": "跟踪新增产能、价格下降、客户集中和库存反转。",
+      "decision_use": "",
+      "required_materials": [],
+      "support_evidence": "",
+      "refute_evidence": "",
+      "target_implications": "",
+      "preferred_specialty_skill": "",
+      "score_component": "",
+      "next_question_ids": [
+        "Q3.2.1",
+        "Q3.2.2"
+      ],
+      "conclusion": "供给扩张和客户议价可能把瓶颈利润转成价格竞争，必须绑定 ASP、毛利和库存监控。"
+    },
+    {
+      "id": "Q3.2.1",
+      "level": 3,
+      "question": "模块和上游器件扩产会不会在 800G/1.6T 放量后造成价格竞争和毛利率下行？",
+      "parent_id": "Q3.2",
+      "investment_relevance": "影响 disconfirming_risk_control、父节点结论、Q4 标的排序和行动状态。",
+      "decision_use": "影响 disconfirming_risk_control、父节点结论、Q4 标的排序和行动状态。",
+      "required_materials": [
+        "capacity expansion",
+        "ASP trend",
+        "gross margin",
+        "inventory",
+        "customer bidding"
+      ],
+      "support_evidence": "能用具体数据把 AI 网络需求、端口数、速率升级、组件供给、订单、利润率、现金流或估值连接起来的证据。",
+      "refute_evidence": "产能释放快于需求，ASP 下降，毛利率和订单可见度走弱。",
+      "target_implications": "决定相关标的是否具备光模块产业链瓶颈敞口、未来空间、估值赔率和风险可控性。",
+      "preferred_specialty_skill": "industry-report-analysis",
+      "score_component": "disconfirming_risk_control",
+      "next_question_ids": [],
+      "conclusion": "扩产和价格竞争是 2026 最大风险之一，瓶颈并不必然永久。",
+      "fact": "TrendForce 同时指出需求扩张和激光器短缺，Fabrinet 等公司扩产说明供给侧也在响应；国内模块龙头高利润会吸引产能。",
+      "inference": "当供给释放追上需求，客户议价可能导致 ASP 和毛利率回落。",
+      "judgment": "所有高强度标的都必须绑定 ASP、毛利率和订单的季度反证。",
+      "gap": "缺少供应商新增产能、实际稼动率、ASP 和库存数据。",
+      "trigger": "若 800G/1.6T ASP 连续下滑且毛利率同步回落，机会强度降级。",
+      "materiality": "影响 disconfirming_risk_control、父节点结论、Q4 标的排序和行动状态。",
+      "minimum_evidence_gate": "至少需要一个 cutoff 前可见的一手公司/公告证据、一个行业或估值交叉验证来源，并保留反证来源。",
+      "refuting_source_plan": "产能释放快于需求，ASP 下降，毛利率和订单可见度走弱。",
+      "source_links": [
+        "SRC-TF-LASER-20251208",
+        "SRC-FN-Q2FY26-20260202",
+        "SRC-INNOLIGHT-Q3-20251031",
+        "SRC-EOPTOLINK-Q3-20251030"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-TF-LASER-20251208",
+          "expected_fields": [
+            "capacity expansion",
+            "ASP trend",
+            "gross margin",
+            "inventory",
+            "customer bidding"
+          ],
+          "source_bucket": "research_report",
+          "visible_date": "2025-12-08",
+          "source_visible_at": "2025-12-08",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "TrendForce press page dated 2025-12-08, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "industry-report-analysis"
+        },
+        {
+          "source_id": "SRC-FN-Q2FY26-20260202",
+          "expected_fields": [
+            "capacity expansion",
+            "ASP trend",
+            "gross margin",
+            "inventory",
+            "customer bidding"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-02",
+          "source_visible_at": "2026-02-02",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company IR release dated 2026-02-02, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "industry-report-analysis"
+        },
+        {
+          "source_id": "SRC-INNOLIGHT-Q3-20251031",
+          "expected_fields": [
+            "capacity expansion",
+            "ASP trend",
+            "gross margin",
+            "inventory",
+            "customer bidding"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2025-10-31",
+          "source_visible_at": "2025-10-31",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Securities Times article dated 2025-10-31 reports company 2025Q3 disclosure, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "industry-report-analysis"
+        },
+        {
+          "source_id": "SRC-EOPTOLINK-Q3-20251030",
+          "expected_fields": [
+            "capacity expansion",
+            "ASP trend",
+            "gross margin",
+            "inventory",
+            "customer bidding"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2025-10-30",
+          "source_visible_at": "2025-10-30",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Public finance article dated 2025-10-30 reports company 2025Q3 disclosure, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "industry-report-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "industry-report-analysis",
+        "selected_skill": "industry-report-analysis",
+        "concrete_materials": [
+          "SRC-TF-LASER-20251208",
+          "SRC-FN-Q2FY26-20260202",
+          "SRC-INNOLIGHT-Q3-20251031",
+          "SRC-EOPTOLINK-Q3-20251030"
+        ],
+        "extraction_schema": {
+          "schema": "optical_module_backtest_v1",
+          "period": "as_of_2026_03_01",
+          "metric": "node_relevant_metric",
+          "value": "source_observation",
+          "source_basis": "cutoff_visible_source",
+          "uncertainty": "source_limit",
+          "chokepoint": "optical_value_chain_node",
+          "financial_conversion": "revenue_margin_or_valuation_link"
+        },
+        "source_extraction_ids": [
+          "EX-BT-Q3-2-1-1",
+          "EX-BT-Q3-2-1-2",
+          "EX-BT-Q3-2-1-3",
+          "EX-BT-Q3-2-1-4"
+        ],
+        "leaf_source_review_ids": [
+          "RV-BT-Q3-2-1-1",
+          "RV-BT-Q3-2-1-2",
+          "RV-BT-Q3-2-1-3",
+          "RV-BT-Q3-2-1-4"
+        ],
+        "skill_output_status": "complete_cutoff_visible_source_parse",
+        "fallback_used": "gpt_verified_source_extraction_without_deepseek_for_cutoff_backtest",
+        "gpt_verification_status": "verified_with_caveats"
+      }
+    },
+    {
+      "id": "Q3.2.2",
+      "level": 3,
+      "question": "客户集中、贸易限制和地缘政治会不会压低龙头公司的可持续估值？",
+      "parent_id": "Q3.2",
+      "investment_relevance": "影响 risk_control、父节点结论、Q4 标的排序和行动状态。",
+      "decision_use": "影响 risk_control、父节点结论、Q4 标的排序和行动状态。",
+      "required_materials": [
+        "customer concentration",
+        "export controls",
+        "tariff",
+        "geographic revenue",
+        "compliance risk"
+      ],
+      "support_evidence": "能用具体数据把 AI 网络需求、端口数、速率升级、组件供给、订单、利润率、现金流或估值连接起来的证据。",
+      "refute_evidence": "核心客户分散、长协稳定且地缘风险不影响关键交付。",
+      "target_implications": "决定相关标的是否具备光模块产业链瓶颈敞口、未来空间、估值赔率和风险可控性。",
+      "preferred_specialty_skill": "news-event-analysis",
+      "score_component": "risk_control",
+      "next_question_ids": [],
+      "conclusion": "客户集中和贸易限制是结构性折价因素，尤其影响中国模块龙头和海外器件公司的估值上限。",
+      "fact": "光模块需求高度绑定云厂商和 AI 平台，国内外公司均需要面对客户集中、供应链合规和地缘约束。",
+      "inference": "高增长若来自少数客户，估值应保留折价；贸易限制可能改变供需和订单流向。",
+      "judgment": "风险可控但不能忽略，Q4 行动状态需要保留 kill test。",
+      "gap": "缺少客户集中度、订单地理分布和出口限制敏感度。",
+      "trigger": "若核心客户订单推迟或贸易规则影响交付，相关标的直接降级。",
+      "materiality": "影响 risk_control、父节点结论、Q4 标的排序和行动状态。",
+      "minimum_evidence_gate": "至少需要一个 cutoff 前可见的一手公司/公告证据、一个行业或估值交叉验证来源，并保留反证来源。",
+      "refuting_source_plan": "核心客户分散、长协稳定且地缘风险不影响关键交付。",
+      "source_links": [
+        "SRC-LITE-Q2FY26-20260203",
+        "SRC-COHR-Q2FY26-20260204",
+        "SRC-INNOLIGHT-Q3-20251031",
+        "SRC-EOPTOLINK-Q3-20251030"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-LITE-Q2FY26-20260203",
+          "expected_fields": [
+            "customer concentration",
+            "export controls",
+            "tariff",
+            "geographic revenue",
+            "compliance risk"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-03",
+          "source_visible_at": "2026-02-03",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company IR release dated 2026-02-03, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "news-event-analysis"
+        },
+        {
+          "source_id": "SRC-COHR-Q2FY26-20260204",
+          "expected_fields": [
+            "customer concentration",
+            "export controls",
+            "tariff",
+            "geographic revenue",
+            "compliance risk"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-04",
+          "source_visible_at": "2026-02-04",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company release dated 2026-02-04, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "news-event-analysis"
+        },
+        {
+          "source_id": "SRC-INNOLIGHT-Q3-20251031",
+          "expected_fields": [
+            "customer concentration",
+            "export controls",
+            "tariff",
+            "geographic revenue",
+            "compliance risk"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2025-10-31",
+          "source_visible_at": "2025-10-31",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Securities Times article dated 2025-10-31 reports company 2025Q3 disclosure, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "news-event-analysis"
+        },
+        {
+          "source_id": "SRC-EOPTOLINK-Q3-20251030",
+          "expected_fields": [
+            "customer concentration",
+            "export controls",
+            "tariff",
+            "geographic revenue",
+            "compliance risk"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2025-10-30",
+          "source_visible_at": "2025-10-30",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Public finance article dated 2025-10-30 reports company 2025Q3 disclosure, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "news-event-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "news-event-analysis",
+        "selected_skill": "news-event-analysis",
+        "concrete_materials": [
+          "SRC-LITE-Q2FY26-20260203",
+          "SRC-COHR-Q2FY26-20260204",
+          "SRC-INNOLIGHT-Q3-20251031",
+          "SRC-EOPTOLINK-Q3-20251030"
+        ],
+        "extraction_schema": {
+          "schema": "optical_module_backtest_v1",
+          "period": "as_of_2026_03_01",
+          "metric": "node_relevant_metric",
+          "value": "source_observation",
+          "source_basis": "cutoff_visible_source",
+          "uncertainty": "source_limit",
+          "chokepoint": "optical_value_chain_node",
+          "financial_conversion": "revenue_margin_or_valuation_link"
+        },
+        "source_extraction_ids": [
+          "EX-BT-Q3-2-2-1",
+          "EX-BT-Q3-2-2-2",
+          "EX-BT-Q3-2-2-3",
+          "EX-BT-Q3-2-2-4"
+        ],
+        "leaf_source_review_ids": [
+          "RV-BT-Q3-2-2-1",
+          "RV-BT-Q3-2-2-2",
+          "RV-BT-Q3-2-2-3",
+          "RV-BT-Q3-2-2-4"
+        ],
+        "skill_output_status": "complete_cutoff_visible_source_parse",
+        "fallback_used": "gpt_verified_source_extraction_without_deepseek_for_cutoff_backtest",
+        "gpt_verification_status": "verified_with_caveats"
+      }
+    },
+    {
+      "id": "Q3.3",
+      "level": 2,
+      "question": "估值隐含预期和监控阈值",
+      "parent_id": "Q3",
+      "investment_relevance": "反推市场已经定价的增长、利润率和持续时间，定义季度降级触发器。",
+      "decision_use": "",
+      "required_materials": [],
+      "support_evidence": "",
+      "refute_evidence": "",
+      "target_implications": "",
+      "preferred_specialty_skill": "",
+      "score_component": "",
+      "next_question_ids": [
+        "Q3.3.1",
+        "Q3.3.2"
+      ],
+      "conclusion": "A 股模块龙头如盈利兑现仍有赔率，海外器件龙头估值更拥挤；季度阈值是排序更新的核心。"
+    },
+    {
+      "id": "Q3.3.1",
+      "level": 3,
+      "question": "当前估值是否已经把 800G/1.6T 高增长和高利润率充分定价？",
+      "parent_id": "Q3.3",
+      "investment_relevance": "影响 valuation_odds、父节点结论、Q4 标的排序和行动状态。",
+      "decision_use": "影响 valuation_odds、父节点结论、Q4 标的排序和行动状态。",
+      "required_materials": [
+        "market cap",
+        "forward PE/EV EBITDA",
+        "consensus revenue",
+        "margin",
+        "historical percentile"
+      ],
+      "support_evidence": "能用具体数据把 AI 网络需求、端口数、速率升级、组件供给、订单、利润率、现金流或估值连接起来的证据。",
+      "refute_evidence": "估值要求多年高增和高毛利率，安全边际不足。",
+      "target_implications": "决定相关标的是否具备光模块产业链瓶颈敞口、未来空间、估值赔率和风险可控性。",
+      "preferred_specialty_skill": "valuation-analysis",
+      "score_component": "valuation_odds",
+      "next_question_ids": [],
+      "conclusion": "截至 2026-03-01，A 股模块龙头的远期 PE 若按研报盈利兑现仍有赔率，海外器件龙头估值更拥挤。",
+      "fact": "中际旭创、新易盛研报给出 2026 年约 20 倍和 19 倍附近 PE 预期；Lumentum/Coherent 的第三方市值和估值数据已较高。",
+      "inference": "赔率差异来自盈利弹性和已定价程度：国内模块龙头若盈利兑现，估值仍可消化；海外器件龙头需要更强持续增长。",
+      "judgment": "中际旭创可进入最高强度观察，新易盛偏中高；Lumentum/Coherent 更适合 watch_only。",
+      "gap": "缺少 as-of 当日复权价格、实时 PE 分位、盈利上修幅度和同业估值表。",
+      "trigger": "若盈利上修停止或估值继续扩张但订单未同步，降低观察强度。",
+      "materiality": "影响 valuation_odds、父节点结论、Q4 标的排序和行动状态。",
+      "minimum_evidence_gate": "至少需要一个 cutoff 前可见的一手公司/公告证据、一个行业或估值交叉验证来源，并保留反证来源。",
+      "refuting_source_plan": "估值要求多年高增和高毛利率，安全边际不足。",
+      "source_links": [
+        "SRC-INNOLIGHT-VAL-20251120",
+        "SRC-EOPTOLINK-VAL-20251029",
+        "SRC-LITE-VAL-20260220",
+        "SRC-COHR-VAL-20260227"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-INNOLIGHT-VAL-20251120",
+          "expected_fields": [
+            "market cap",
+            "forward PE/EV EBITDA",
+            "consensus revenue",
+            "margin",
+            "historical percentile"
+          ],
+          "source_bucket": "research_report",
+          "visible_date": "2025-11-20",
+          "source_visible_at": "2025-11-20",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Research report page dated 2025-11-20, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "valuation-analysis"
+        },
+        {
+          "source_id": "SRC-EOPTOLINK-VAL-20251029",
+          "expected_fields": [
+            "market cap",
+            "forward PE/EV EBITDA",
+            "consensus revenue",
+            "margin",
+            "historical percentile"
+          ],
+          "source_bucket": "research_report",
+          "visible_date": "2025-10-29",
+          "source_visible_at": "2025-10-29",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Research report page dated 2025-10-29, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "valuation-analysis"
+        },
+        {
+          "source_id": "SRC-LITE-VAL-20260220",
+          "expected_fields": [
+            "market cap",
+            "forward PE/EV EBITDA",
+            "consensus revenue",
+            "margin",
+            "historical percentile"
+          ],
+          "source_bucket": "research_report",
+          "visible_date": "2026-02-20",
+          "source_visible_at": "2026-02-20",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Market data page with February 2026 snapshot context, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "valuation-analysis"
+        },
+        {
+          "source_id": "SRC-COHR-VAL-20260227",
+          "expected_fields": [
+            "market cap",
+            "forward PE/EV EBITDA",
+            "consensus revenue",
+            "margin",
+            "historical percentile"
+          ],
+          "source_bucket": "research_report",
+          "visible_date": "2026-02-27",
+          "source_visible_at": "2026-02-27",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Market data page with February 2026 snapshot context, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "valuation-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "valuation-analysis",
+        "selected_skill": "valuation-analysis",
+        "concrete_materials": [
+          "SRC-INNOLIGHT-VAL-20251120",
+          "SRC-EOPTOLINK-VAL-20251029",
+          "SRC-LITE-VAL-20260220",
+          "SRC-COHR-VAL-20260227"
+        ],
+        "extraction_schema": {
+          "schema": "optical_module_backtest_v1",
+          "period": "as_of_2026_03_01",
+          "metric": "node_relevant_metric",
+          "value": "source_observation",
+          "source_basis": "cutoff_visible_source",
+          "uncertainty": "source_limit",
+          "chokepoint": "optical_value_chain_node",
+          "financial_conversion": "revenue_margin_or_valuation_link"
+        },
+        "source_extraction_ids": [
+          "EX-BT-Q3-3-1-1",
+          "EX-BT-Q3-3-1-2",
+          "EX-BT-Q3-3-1-3",
+          "EX-BT-Q3-3-1-4"
+        ],
+        "leaf_source_review_ids": [
+          "RV-BT-Q3-3-1-1",
+          "RV-BT-Q3-3-1-2",
+          "RV-BT-Q3-3-1-3",
+          "RV-BT-Q3-3-1-4"
+        ],
+        "skill_output_status": "complete_cutoff_visible_source_parse",
+        "fallback_used": "gpt_verified_source_extraction_without_deepseek_for_cutoff_backtest",
+        "gpt_verification_status": "verified_with_caveats"
+      }
+    },
+    {
+      "id": "Q3.3.2",
+      "level": 3,
+      "question": "季度跟踪哪些硬指标可以最快发现需求、价格或份额拐点？",
+      "parent_id": "Q3.3",
+      "investment_relevance": "影响 monitorability、父节点结论、Q4 标的排序和行动状态。",
+      "decision_use": "影响 monitorability、父节点结论、Q4 标的排序和行动状态。",
+      "required_materials": [
+        "quarterly revenue",
+        "gross margin",
+        "backlog",
+        "capex",
+        "customer order",
+        "ASP"
+      ],
+      "support_evidence": "能用具体数据把 AI 网络需求、端口数、速率升级、组件供给、订单、利润率、现金流或估值连接起来的证据。",
+      "refute_evidence": "无法持续获得可监控数据的标的不能给高行动状态。",
+      "target_implications": "决定相关标的是否具备光模块产业链瓶颈敞口、未来空间、估值赔率和风险可控性。",
+      "preferred_specialty_skill": "target-recommendation-analysis",
+      "score_component": "monitorability",
+      "next_question_ids": [],
+      "conclusion": "最有效的季度监控指标是订单/收入、ASP、毛利率、库存、客户 capex、800G/1.6T 速率 mix 和上游激光器供给。",
+      "fact": "截止日前证据分别指向需求、上游短缺、公司收入兑现和估值压力，因此监控也应覆盖这些环节。",
+      "inference": "单看收入会滞后，ASP 与毛利率能更早反映瓶颈是否转为价格竞争。",
+      "judgment": "Q3 应建立红黄绿阈值，避免把周期高点误判为持续稀缺。",
+      "gap": "缺少可自动更新的数据接口和每家公司阈值。",
+      "trigger": "任何两个核心指标连续两个季度转弱，标的状态至少下调一级。",
+      "materiality": "影响 monitorability、父节点结论、Q4 标的排序和行动状态。",
+      "minimum_evidence_gate": "至少需要一个 cutoff 前可见的一手公司/公告证据、一个行业或估值交叉验证来源，并保留反证来源。",
+      "refuting_source_plan": "无法持续获得可监控数据的标的不能给高行动状态。",
+      "source_links": [
+        "SRC-TF-800G-20260210",
+        "SRC-TF-LASER-20251208",
+        "SRC-LITE-Q2FY26-20260203",
+        "SRC-COHR-Q2FY26-20260204",
+        "SRC-FN-Q2FY26-20260202"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-TF-800G-20260210",
+          "expected_fields": [
+            "quarterly revenue",
+            "gross margin",
+            "backlog",
+            "capex",
+            "customer order",
+            "ASP"
+          ],
+          "source_bucket": "research_report",
+          "visible_date": "2026-02-10",
+          "source_visible_at": "2026-02-10",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "TrendForce press page dated 2026-02-10, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        },
+        {
+          "source_id": "SRC-TF-LASER-20251208",
+          "expected_fields": [
+            "quarterly revenue",
+            "gross margin",
+            "backlog",
+            "capex",
+            "customer order",
+            "ASP"
+          ],
+          "source_bucket": "research_report",
+          "visible_date": "2025-12-08",
+          "source_visible_at": "2025-12-08",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "TrendForce press page dated 2025-12-08, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        },
+        {
+          "source_id": "SRC-LITE-Q2FY26-20260203",
+          "expected_fields": [
+            "quarterly revenue",
+            "gross margin",
+            "backlog",
+            "capex",
+            "customer order",
+            "ASP"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-03",
+          "source_visible_at": "2026-02-03",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company IR release dated 2026-02-03, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        },
+        {
+          "source_id": "SRC-COHR-Q2FY26-20260204",
+          "expected_fields": [
+            "quarterly revenue",
+            "gross margin",
+            "backlog",
+            "capex",
+            "customer order",
+            "ASP"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-04",
+          "source_visible_at": "2026-02-04",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company release dated 2026-02-04, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        },
+        {
+          "source_id": "SRC-FN-Q2FY26-20260202",
+          "expected_fields": [
+            "quarterly revenue",
+            "gross margin",
+            "backlog",
+            "capex",
+            "customer order",
+            "ASP"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-02",
+          "source_visible_at": "2026-02-02",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company IR release dated 2026-02-02, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "target-recommendation-analysis",
+        "selected_skill": "target-recommendation-analysis",
+        "concrete_materials": [
+          "SRC-TF-800G-20260210",
+          "SRC-TF-LASER-20251208",
+          "SRC-LITE-Q2FY26-20260203",
+          "SRC-COHR-Q2FY26-20260204",
+          "SRC-FN-Q2FY26-20260202"
+        ],
+        "extraction_schema": {
+          "schema": "optical_module_backtest_v1",
+          "period": "as_of_2026_03_01",
+          "metric": "node_relevant_metric",
+          "value": "source_observation",
+          "source_basis": "cutoff_visible_source",
+          "uncertainty": "source_limit",
+          "chokepoint": "optical_value_chain_node",
+          "financial_conversion": "revenue_margin_or_valuation_link"
+        },
+        "source_extraction_ids": [
+          "EX-BT-Q3-3-2-1",
+          "EX-BT-Q3-3-2-2",
+          "EX-BT-Q3-3-2-3",
+          "EX-BT-Q3-3-2-4",
+          "EX-BT-Q3-3-2-5"
+        ],
+        "leaf_source_review_ids": [
+          "RV-BT-Q3-3-2-1",
+          "RV-BT-Q3-3-2-2",
+          "RV-BT-Q3-3-2-3",
+          "RV-BT-Q3-3-2-4",
+          "RV-BT-Q3-3-2-5"
+        ],
+        "skill_output_status": "complete_cutoff_visible_source_parse",
+        "fallback_used": "gpt_verified_source_extraction_without_deepseek_for_cutoff_backtest",
+        "gpt_verification_status": "verified_with_caveats"
+      }
+    },
+    {
+      "id": "Q4",
+      "level": 1,
+      "question": "标的：哪些具体证券最能把光模块瓶颈转化为赔率和业绩弹性？",
+      "parent_id": "",
+      "investment_relevance": "Converts verified conclusions into specific target observations.",
+      "decision_use": "",
+      "required_materials": [],
+      "support_evidence": "",
+      "refute_evidence": "",
+      "target_implications": "",
+      "preferred_specialty_skill": "",
+      "score_component": "",
+      "next_question_ids": [
+        "Q4.1",
+        "Q4.2"
+      ],
+      "conclusion": "冻结 as-of 标的清单：中际旭创最高，新易盛次之，Lumentum/Coherent/天孚通信观察，Fabrinet/剑桥科技暂不动作。"
+    },
+    {
+      "id": "Q4.1",
+      "level": 2,
+      "question": "投资 universe 与瓶颈映射",
+      "parent_id": "Q4",
+      "investment_relevance": "列出 A 股、美股和海外主要标的，并映射到模块、激光器、器件、代工和交换/硅光节点。",
+      "decision_use": "",
+      "required_materials": [],
+      "support_evidence": "",
+      "refute_evidence": "",
+      "target_implications": "",
+      "preferred_specialty_skill": "",
+      "score_component": "",
+      "next_question_ids": [
+        "Q4.1.1",
+        "Q4.1.2"
+      ],
+      "conclusion": "标的分层按瓶颈节点映射，而不是主题热度；模块龙头和上游器件最接近利润池。"
+    },
+    {
+      "id": "Q4.1.1",
+      "level": 3,
+      "question": "哪些具体证券对应光模块、激光器/器件、代工制造和硅光/芯片节点？",
+      "parent_id": "Q4.1",
+      "investment_relevance": "影响 target_ranking、父节点结论、Q4 标的排序和行动状态。",
+      "decision_use": "影响 target_ranking、父节点结论、Q4 标的排序和行动状态。",
+      "required_materials": [
+        "ticker list",
+        "node exposure",
+        "listing market",
+        "liquidity",
+        "financial exposure"
+      ],
+      "support_evidence": "能用具体数据把 AI 网络需求、端口数、速率升级、组件供给、订单、利润率、现金流或估值连接起来的证据。",
+      "refute_evidence": "敞口太低、估值不可验证或只是宽泛 AI 主题暴露。",
+      "target_implications": "决定相关标的是否具备光模块产业链瓶颈敞口、未来空间、估值赔率和风险可控性。",
+      "preferred_specialty_skill": "target-recommendation-analysis",
+      "score_component": "target_ranking",
+      "next_question_ids": [],
+      "conclusion": "可映射标的分为模块龙头、上游器件/激光器、组件、代工制造和二线模块；只有前两类最可能捕获瓶颈利润。",
+      "fact": "中际旭创/新易盛对应高速模块；Lumentum/Coherent 对应激光器和光子器件；天孚通信对应组件；Fabrinet 对应代工；剑桥科技对应二线模块。",
+      "inference": "标的排序不能按主题热度，而要按瓶颈强度、财务转化和估值赔率分层。",
+      "judgment": "初始 universe 保留 7 个标的，但高强度候选集中在中际旭创和新易盛。",
+      "gap": "缺少完整全球同业 universe、硅光芯片标的和非上市关键供应商映射。",
+      "trigger": "若新证据显示上游器件定价权强于模块集成，Lumentum/Coherent 排序上调。",
+      "materiality": "影响 target_ranking、父节点结论、Q4 标的排序和行动状态。",
+      "minimum_evidence_gate": "至少需要一个 cutoff 前可见的一手公司/公告证据、一个行业或估值交叉验证来源，并保留反证来源。",
+      "refuting_source_plan": "敞口太低、估值不可验证或只是宽泛 AI 主题暴露。",
+      "source_links": [
+        "SRC-INNOLIGHT-Q3-20251031",
+        "SRC-EOPTOLINK-Q3-20251030",
+        "SRC-TFC-Q3-20251030",
+        "SRC-LITE-Q2FY26-20260203",
+        "SRC-COHR-Q2FY26-20260204",
+        "SRC-FN-Q2FY26-20260202"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-INNOLIGHT-Q3-20251031",
+          "expected_fields": [
+            "ticker list",
+            "node exposure",
+            "listing market",
+            "liquidity",
+            "financial exposure"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2025-10-31",
+          "source_visible_at": "2025-10-31",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Securities Times article dated 2025-10-31 reports company 2025Q3 disclosure, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        },
+        {
+          "source_id": "SRC-EOPTOLINK-Q3-20251030",
+          "expected_fields": [
+            "ticker list",
+            "node exposure",
+            "listing market",
+            "liquidity",
+            "financial exposure"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2025-10-30",
+          "source_visible_at": "2025-10-30",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Public finance article dated 2025-10-30 reports company 2025Q3 disclosure, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        },
+        {
+          "source_id": "SRC-TFC-Q3-20251030",
+          "expected_fields": [
+            "ticker list",
+            "node exposure",
+            "listing market",
+            "liquidity",
+            "financial exposure"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2025-10-30",
+          "source_visible_at": "2025-10-30",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Public finance article around 2025Q3 report period, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        },
+        {
+          "source_id": "SRC-LITE-Q2FY26-20260203",
+          "expected_fields": [
+            "ticker list",
+            "node exposure",
+            "listing market",
+            "liquidity",
+            "financial exposure"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-03",
+          "source_visible_at": "2026-02-03",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company IR release dated 2026-02-03, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        },
+        {
+          "source_id": "SRC-COHR-Q2FY26-20260204",
+          "expected_fields": [
+            "ticker list",
+            "node exposure",
+            "listing market",
+            "liquidity",
+            "financial exposure"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-04",
+          "source_visible_at": "2026-02-04",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company release dated 2026-02-04, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        },
+        {
+          "source_id": "SRC-FN-Q2FY26-20260202",
+          "expected_fields": [
+            "ticker list",
+            "node exposure",
+            "listing market",
+            "liquidity",
+            "financial exposure"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-02",
+          "source_visible_at": "2026-02-02",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company IR release dated 2026-02-02, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "target-recommendation-analysis",
+        "selected_skill": "target-recommendation-analysis",
+        "concrete_materials": [
+          "SRC-INNOLIGHT-Q3-20251031",
+          "SRC-EOPTOLINK-Q3-20251030",
+          "SRC-TFC-Q3-20251030",
+          "SRC-LITE-Q2FY26-20260203",
+          "SRC-COHR-Q2FY26-20260204",
+          "SRC-FN-Q2FY26-20260202"
+        ],
+        "extraction_schema": {
+          "schema": "optical_module_backtest_v1",
+          "period": "as_of_2026_03_01",
+          "metric": "node_relevant_metric",
+          "value": "source_observation",
+          "source_basis": "cutoff_visible_source",
+          "uncertainty": "source_limit",
+          "chokepoint": "optical_value_chain_node",
+          "financial_conversion": "revenue_margin_or_valuation_link"
+        },
+        "source_extraction_ids": [
+          "EX-BT-Q4-1-1-1",
+          "EX-BT-Q4-1-1-2",
+          "EX-BT-Q4-1-1-3",
+          "EX-BT-Q4-1-1-4",
+          "EX-BT-Q4-1-1-5",
+          "EX-BT-Q4-1-1-6"
+        ],
+        "leaf_source_review_ids": [
+          "RV-BT-Q4-1-1-1",
+          "RV-BT-Q4-1-1-2",
+          "RV-BT-Q4-1-1-3",
+          "RV-BT-Q4-1-1-4",
+          "RV-BT-Q4-1-1-5",
+          "RV-BT-Q4-1-1-6"
+        ],
+        "skill_output_status": "complete_cutoff_visible_source_parse",
+        "fallback_used": "gpt_verified_source_extraction_without_deepseek_for_cutoff_backtest",
+        "gpt_verification_status": "verified_with_caveats"
+      }
+    },
+    {
+      "id": "Q4.1.2",
+      "level": 3,
+      "question": "哪些标的只是主题热度或二阶 beta，不能进入高强度观察？",
+      "parent_id": "Q4.1",
+      "investment_relevance": "影响 action_state、父节点结论、Q4 标的排序和行动状态。",
+      "decision_use": "影响 action_state、父节点结论、Q4 标的排序和行动状态。",
+      "required_materials": [
+        "scarcity score",
+        "valuation odds",
+        "earnings elasticity",
+        "risk control"
+      ],
+      "support_evidence": "能用具体数据把 AI 网络需求、端口数、速率升级、组件供给、订单、利润率、现金流或估值连接起来的证据。",
+      "refute_evidence": "缺少稀缺性、错定价、利润弹性或可监控风险中的任一核心条件。",
+      "target_implications": "决定相关标的是否具备光模块产业链瓶颈敞口、未来空间、估值赔率和风险可控性。",
+      "preferred_specialty_skill": "target-recommendation-analysis",
+      "score_component": "action_state",
+      "next_question_ids": [],
+      "conclusion": "Fabrinet、剑桥科技和部分电连接替代公司更多是主题/二阶 beta，不能因为行业热度直接升为高强度。",
+      "fact": "Fabrinet 收入跟随制造量，剑桥科技 as-of 财务弹性弱于一线模块，Credo 更像替代路径和连接生态观察。",
+      "inference": "二阶 beta 可能上涨，但缺少稀缺、错定价和利润弹性三者同时成立的证据。",
+      "judgment": "保持在 watch_only 或 no_action，等待更强财务和估值证据。",
+      "gap": "缺少各标的客户认证、订单和盈利弹性。",
+      "trigger": "若二线公司获得明确大客户 1.6T 认证且估值合理，可重新进入 Q4 排序。",
+      "materiality": "影响 action_state、父节点结论、Q4 标的排序和行动状态。",
+      "minimum_evidence_gate": "至少需要一个 cutoff 前可见的一手公司/公告证据、一个行业或估值交叉验证来源，并保留反证来源。",
+      "refuting_source_plan": "缺少稀缺性、错定价、利润弹性或可监控风险中的任一核心条件。",
+      "source_links": [
+        "SRC-CIG-Q3-20251027",
+        "SRC-FN-Q2FY26-20260202",
+        "SRC-CRDO-PREANN-20260209"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-CIG-Q3-20251027",
+          "expected_fields": [
+            "scarcity score",
+            "valuation odds",
+            "earnings elasticity",
+            "risk control"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2025-10-27",
+          "source_visible_at": "2025-10-27",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Public disclosure page dated 2025-10-27, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        },
+        {
+          "source_id": "SRC-FN-Q2FY26-20260202",
+          "expected_fields": [
+            "scarcity score",
+            "valuation odds",
+            "earnings elasticity",
+            "risk control"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-02",
+          "source_visible_at": "2026-02-02",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company IR release dated 2026-02-02, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        },
+        {
+          "source_id": "SRC-CRDO-PREANN-20260209",
+          "expected_fields": [
+            "scarcity score",
+            "valuation odds",
+            "earnings elasticity",
+            "risk control"
+          ],
+          "source_bucket": "message",
+          "visible_date": "2026-02-09",
+          "source_visible_at": "2026-02-09",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company preliminary release dated 2026-02-09, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "target-recommendation-analysis",
+        "selected_skill": "target-recommendation-analysis",
+        "concrete_materials": [
+          "SRC-CIG-Q3-20251027",
+          "SRC-FN-Q2FY26-20260202",
+          "SRC-CRDO-PREANN-20260209"
+        ],
+        "extraction_schema": {
+          "schema": "optical_module_backtest_v1",
+          "period": "as_of_2026_03_01",
+          "metric": "node_relevant_metric",
+          "value": "source_observation",
+          "source_basis": "cutoff_visible_source",
+          "uncertainty": "source_limit",
+          "chokepoint": "optical_value_chain_node",
+          "financial_conversion": "revenue_margin_or_valuation_link"
+        },
+        "source_extraction_ids": [
+          "EX-BT-Q4-1-2-1",
+          "EX-BT-Q4-1-2-2",
+          "EX-BT-Q4-1-2-3"
+        ],
+        "leaf_source_review_ids": [
+          "RV-BT-Q4-1-2-1",
+          "RV-BT-Q4-1-2-2",
+          "RV-BT-Q4-1-2-3"
+        ],
+        "skill_output_status": "complete_cutoff_visible_source_parse",
+        "fallback_used": "gpt_verified_source_extraction_without_deepseek_for_cutoff_backtest",
+        "gpt_verification_status": "verified_with_caveats"
+      }
+    },
+    {
+      "id": "Q4.2",
+      "level": 2,
+      "question": "排序、赔率和复盘计划",
+      "parent_id": "Q4",
+      "investment_relevance": "把 Q1-Q3 结论转化为观察强度、赔率路径和降级触发器。",
+      "decision_use": "",
+      "required_materials": [],
+      "support_evidence": "",
+      "refute_evidence": "",
+      "target_implications": "",
+      "preferred_specialty_skill": "",
+      "score_component": "",
+      "next_question_ids": [
+        "Q4.2.1",
+        "Q4.2.2"
+      ],
+      "conclusion": "当前只有中际旭创同时满足四项核心条件；后续用价格标签和季度数据检验预测质量。"
+    },
+    {
+      "id": "Q4.2.1",
+      "level": 3,
+      "question": "哪些标的同时满足稀缺性、错定价、利润弹性和风险可控？",
+      "parent_id": "Q4.2",
+      "investment_relevance": "影响 target_ranking、父节点结论、Q4 标的排序和行动状态。",
+      "decision_use": "影响 target_ranking、父节点结论、Q4 标的排序和行动状态。",
+      "required_materials": [
+        "core score dimensions",
+        "valuation",
+        "base/bull/bear path",
+        "kill tests"
+      ],
+      "support_evidence": "能用具体数据把 AI 网络需求、端口数、速率升级、组件供给、订单、利润率、现金流或估值连接起来的证据。",
+      "refute_evidence": "任一核心维度不足时只能 watch_only 或 no_action。",
+      "target_implications": "决定相关标的是否具备光模块产业链瓶颈敞口、未来空间、估值赔率和风险可控性。",
+      "preferred_specialty_skill": "target-recommendation-analysis",
+      "score_component": "target_ranking",
+      "next_question_ids": [],
+      "conclusion": "截至 2026-03-01，最符合稀缺性、错定价、利润弹性和风险可控四项条件的是中际旭创；新易盛为中高强度观察。",
+      "fact": "中际旭创和新易盛同时具备高速模块业绩兑现与相对可解释的远期估值；Lumentum/Coherent 瓶颈强但估值更拥挤。",
+      "inference": "最高排序应优先选择需求兑现清楚、模块壁垒强、远期估值仍可被盈利消化的标的。",
+      "judgment": "冻结排序：中际旭创 actionable_long；新易盛、Lumentum、Coherent、天孚通信 watch_only；Fabrinet、剑桥科技 no_action。",
+      "gap": "缺少经复权价格标签和完整估值分位。",
+      "trigger": "若 Q2/Q3 指标显示 ASP 或订单转弱，立即复核排序。",
+      "materiality": "影响 target_ranking、父节点结论、Q4 标的排序和行动状态。",
+      "minimum_evidence_gate": "至少需要一个 cutoff 前可见的一手公司/公告证据、一个行业或估值交叉验证来源，并保留反证来源。",
+      "refuting_source_plan": "任一核心维度不足时只能 watch_only 或 no_action。",
+      "source_links": [
+        "SRC-INNOLIGHT-VAL-20251120",
+        "SRC-EOPTOLINK-VAL-20251029",
+        "SRC-LITE-VAL-20260220",
+        "SRC-COHR-VAL-20260227",
+        "SRC-TF-LASER-20251208"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-INNOLIGHT-VAL-20251120",
+          "expected_fields": [
+            "core score dimensions",
+            "valuation",
+            "base/bull/bear path",
+            "kill tests"
+          ],
+          "source_bucket": "research_report",
+          "visible_date": "2025-11-20",
+          "source_visible_at": "2025-11-20",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Research report page dated 2025-11-20, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        },
+        {
+          "source_id": "SRC-EOPTOLINK-VAL-20251029",
+          "expected_fields": [
+            "core score dimensions",
+            "valuation",
+            "base/bull/bear path",
+            "kill tests"
+          ],
+          "source_bucket": "research_report",
+          "visible_date": "2025-10-29",
+          "source_visible_at": "2025-10-29",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Research report page dated 2025-10-29, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        },
+        {
+          "source_id": "SRC-LITE-VAL-20260220",
+          "expected_fields": [
+            "core score dimensions",
+            "valuation",
+            "base/bull/bear path",
+            "kill tests"
+          ],
+          "source_bucket": "research_report",
+          "visible_date": "2026-02-20",
+          "source_visible_at": "2026-02-20",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Market data page with February 2026 snapshot context, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        },
+        {
+          "source_id": "SRC-COHR-VAL-20260227",
+          "expected_fields": [
+            "core score dimensions",
+            "valuation",
+            "base/bull/bear path",
+            "kill tests"
+          ],
+          "source_bucket": "research_report",
+          "visible_date": "2026-02-27",
+          "source_visible_at": "2026-02-27",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Market data page with February 2026 snapshot context, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        },
+        {
+          "source_id": "SRC-TF-LASER-20251208",
+          "expected_fields": [
+            "core score dimensions",
+            "valuation",
+            "base/bull/bear path",
+            "kill tests"
+          ],
+          "source_bucket": "research_report",
+          "visible_date": "2025-12-08",
+          "source_visible_at": "2025-12-08",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "TrendForce press page dated 2025-12-08, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "target-recommendation-analysis",
+        "selected_skill": "target-recommendation-analysis",
+        "concrete_materials": [
+          "SRC-INNOLIGHT-VAL-20251120",
+          "SRC-EOPTOLINK-VAL-20251029",
+          "SRC-LITE-VAL-20260220",
+          "SRC-COHR-VAL-20260227",
+          "SRC-TF-LASER-20251208"
+        ],
+        "extraction_schema": {
+          "schema": "optical_module_backtest_v1",
+          "period": "as_of_2026_03_01",
+          "metric": "node_relevant_metric",
+          "value": "source_observation",
+          "source_basis": "cutoff_visible_source",
+          "uncertainty": "source_limit",
+          "chokepoint": "optical_value_chain_node",
+          "financial_conversion": "revenue_margin_or_valuation_link"
+        },
+        "source_extraction_ids": [
+          "EX-BT-Q4-2-1-1",
+          "EX-BT-Q4-2-1-2",
+          "EX-BT-Q4-2-1-3",
+          "EX-BT-Q4-2-1-4",
+          "EX-BT-Q4-2-1-5"
+        ],
+        "leaf_source_review_ids": [
+          "RV-BT-Q4-2-1-1",
+          "RV-BT-Q4-2-1-2",
+          "RV-BT-Q4-2-1-3",
+          "RV-BT-Q4-2-1-4",
+          "RV-BT-Q4-2-1-5"
+        ],
+        "skill_output_status": "complete_cutoff_visible_source_parse",
+        "fallback_used": "gpt_verified_source_extraction_without_deepseek_for_cutoff_backtest",
+        "gpt_verification_status": "verified_with_caveats"
+      }
+    },
+    {
+      "id": "Q4.2.2",
+      "level": 3,
+      "question": "下一次复盘前必须补哪些数据，哪些事件会改变排序？",
+      "parent_id": "Q4.2",
+      "investment_relevance": "影响 monitorability、父节点结论、Q4 标的排序和行动状态。",
+      "decision_use": "影响 monitorability、父节点结论、Q4 标的排序和行动状态。",
+      "required_materials": [
+        "missing data",
+        "earnings calendar",
+        "customer order",
+        "valuation update",
+        "technology roadmap"
+      ],
+      "support_evidence": "能用具体数据把 AI 网络需求、端口数、速率升级、组件供给、订单、利润率、现金流或估值连接起来的证据。",
+      "refute_evidence": "没有可执行复盘数据或排序规则时，降低结论强度。",
+      "target_implications": "决定相关标的是否具备光模块产业链瓶颈敞口、未来空间、估值赔率和风险可控性。",
+      "preferred_specialty_skill": "target-recommendation-analysis",
+      "score_component": "monitorability",
+      "next_question_ids": [],
+      "conclusion": "下次复盘必须补齐价格标签、订单/ASP/毛利、客户 capex、1.6T 认证和 CPO/LPO 替代进展。",
+      "fact": "当前证据足以建立 as-of 观察清单，但许多关键变量仍是研报预测或公司口径，尚未形成自动跟踪。",
+      "inference": "光模块是快节奏景气行业，排序必须随季度数据滚动更新。",
+      "judgment": "复盘周期设为 2026-06-01，标签只用于评估预测质量，不回写 as-of 结论。",
+      "gap": "缺少标签价格源、季度自动更新和客户订单数据库。",
+      "trigger": "补齐 2026Q1/Q2 业绩、复权价格和新订单后重新评分。",
+      "materiality": "影响 monitorability、父节点结论、Q4 标的排序和行动状态。",
+      "minimum_evidence_gate": "至少需要一个 cutoff 前可见的一手公司/公告证据、一个行业或估值交叉验证来源，并保留反证来源。",
+      "refuting_source_plan": "没有可执行复盘数据或排序规则时，降低结论强度。",
+      "source_links": [
+        "SRC-TF-800G-20260210",
+        "SRC-TF-LASER-20251208",
+        "SRC-LITE-Q2FY26-20260203",
+        "SRC-COHR-Q2FY26-20260204",
+        "SRC-FN-Q2FY26-20260202"
+      ],
+      "source_plan": [
+        {
+          "source_id": "SRC-TF-800G-20260210",
+          "expected_fields": [
+            "missing data",
+            "earnings calendar",
+            "customer order",
+            "valuation update",
+            "technology roadmap"
+          ],
+          "source_bucket": "research_report",
+          "visible_date": "2026-02-10",
+          "source_visible_at": "2026-02-10",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "TrendForce press page dated 2026-02-10, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        },
+        {
+          "source_id": "SRC-TF-LASER-20251208",
+          "expected_fields": [
+            "missing data",
+            "earnings calendar",
+            "customer order",
+            "valuation update",
+            "technology roadmap"
+          ],
+          "source_bucket": "research_report",
+          "visible_date": "2025-12-08",
+          "source_visible_at": "2025-12-08",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "TrendForce press page dated 2025-12-08, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        },
+        {
+          "source_id": "SRC-LITE-Q2FY26-20260203",
+          "expected_fields": [
+            "missing data",
+            "earnings calendar",
+            "customer order",
+            "valuation update",
+            "technology roadmap"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-03",
+          "source_visible_at": "2026-02-03",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company IR release dated 2026-02-03, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        },
+        {
+          "source_id": "SRC-COHR-Q2FY26-20260204",
+          "expected_fields": [
+            "missing data",
+            "earnings calendar",
+            "customer order",
+            "valuation update",
+            "technology roadmap"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-04",
+          "source_visible_at": "2026-02-04",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company release dated 2026-02-04, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        },
+        {
+          "source_id": "SRC-FN-Q2FY26-20260202",
+          "expected_fields": [
+            "missing data",
+            "earnings calendar",
+            "customer order",
+            "valuation update",
+            "technology roadmap"
+          ],
+          "source_bucket": "evidence",
+          "visible_date": "2026-02-02",
+          "source_visible_at": "2026-02-02",
+          "cutoff_status": "visible_on_or_before_as_of_date",
+          "as_of_date": "2026-03-01",
+          "allowed_usage": "thesis",
+          "availability_proof": "Company IR release dated 2026-02-02, before 2026-03-01 cutoff.",
+          "preferred_parser_skill": "target-recommendation-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "target-recommendation-analysis",
+        "selected_skill": "target-recommendation-analysis",
+        "concrete_materials": [
+          "SRC-TF-800G-20260210",
+          "SRC-TF-LASER-20251208",
+          "SRC-LITE-Q2FY26-20260203",
+          "SRC-COHR-Q2FY26-20260204",
+          "SRC-FN-Q2FY26-20260202"
+        ],
+        "extraction_schema": {
+          "schema": "optical_module_backtest_v1",
+          "period": "as_of_2026_03_01",
+          "metric": "node_relevant_metric",
+          "value": "source_observation",
+          "source_basis": "cutoff_visible_source",
+          "uncertainty": "source_limit",
+          "chokepoint": "optical_value_chain_node",
+          "financial_conversion": "revenue_margin_or_valuation_link"
+        },
+        "source_extraction_ids": [
+          "EX-BT-Q4-2-2-1",
+          "EX-BT-Q4-2-2-2",
+          "EX-BT-Q4-2-2-3",
+          "EX-BT-Q4-2-2-4",
+          "EX-BT-Q4-2-2-5"
+        ],
+        "leaf_source_review_ids": [
+          "RV-BT-Q4-2-2-1",
+          "RV-BT-Q4-2-2-2",
+          "RV-BT-Q4-2-2-3",
+          "RV-BT-Q4-2-2-4",
+          "RV-BT-Q4-2-2-5"
+        ],
+        "skill_output_status": "complete_cutoff_visible_source_parse",
+        "fallback_used": "gpt_verified_source_extraction_without_deepseek_for_cutoff_backtest",
+        "gpt_verification_status": "verified_with_caveats"
+      }
+    }
+  ]
+}

@@ -707,7 +707,7 @@ def _render_qa_l2_section(section: dict[str, Any], l1_index: int, index: int) ->
         for i, leaf in enumerate(section.get("leaf_nodes", []), start=1)
     )
     return f"""
-    <!-- <details class="qa-l2-card" legacy compatibility marker> -->
+    <!-- <details class="qa-l2-card" compatibility marker> -->
     <details class="qa-l2-card qa-card level-2" open>
       <summary>
         <span>Q{prefix}</span>
@@ -739,7 +739,7 @@ def _render_qa_l3_card(node: dict[str, Any], prefix: str, index: int) -> str:
     gaps = node.get("gaps") or node.get("next_data") or []
     source_index = _render_source_item_list("资料索引", node.get("source_items", []), limit=4)
     return f"""
-    <!-- <details class="qa-l3-card" legacy compatibility marker> -->
+    <!-- <details class="qa-l3-card" compatibility marker> -->
     <details class="qa-l3-card qa-card level-3" open>
       <summary class="qa-l3-head">
         <span>Q{prefix}.{index}</span>

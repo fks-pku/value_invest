@@ -1,0 +1,1701 @@
+{
+  "project_id": "storage_memory_opportunities_live_20260601",
+  "report_date": "2026-06-01",
+  "scoring_worksheet": [
+    {
+      "rank": 1,
+      "ticker": "MU",
+      "name": "Micron Technology",
+      "market": "NASDAQ",
+      "action_state": "actionable_long",
+      "strength": "高",
+      "thesis_node": "HBM/Cloud Memory",
+      "chokepoint_node": "HBM/high-end DRAM",
+      "score": {
+        "total_score": 4.12,
+        "action_state": "actionable_long",
+        "opportunity_fit": 4.1,
+        "payoff_convexity": 4.2,
+        "thesis_confidence": 4.0,
+        "score_dimensions": {
+          "scarcity_or_monopoly": 4.2,
+          "mispricing": 3.8,
+          "earnings_elasticity": 4.4,
+          "risk_control": 3.8
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength",
+              "score": 4.4,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-MU-FY26-Q2",
+                "SRC-MU-VALUATION"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space",
+              "score": 4.4,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-MU-FY26-Q2",
+                "SRC-MU-VALUATION"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds",
+              "score": 3.8,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-MU-FY26-Q2",
+                "SRC-MU-VALUATION"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality",
+              "score": 4.2,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-MU-FY26-Q2",
+                "SRC-MU-VALUATION"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control",
+              "score": 3.6,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-MU-FY26-Q2",
+                "SRC-MU-VALUATION"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability",
+              "score": 4.0,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-MU-FY26-Q2",
+                "SRC-MU-VALUATION"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity",
+              "score": 4.2,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-MU-FY26-Q2",
+                "SRC-MU-VALUATION"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        }
+      },
+      "scores": {
+        "chokepoint_strength": 4.4,
+        "future_space": 4.4,
+        "valuation_odds": 3.8,
+        "evidence_quality": 4.2,
+        "disconfirming_risk_control": 3.6,
+        "monitorability": 4.0,
+        "payoff_convexity": 4.2
+      },
+      "rationale": "Cloud Memory 高收入和高毛利已经验证高端内存瓶颈，若 forward PE 仍处周期折价区，赔率优于多数已完全定价的 AI 硬件资产。",
+      "future_space": "HBM、server DRAM 和 AI cloud memory mix 继续提升。",
+      "odds": "有利但周期性强，需验证 ASP 和 capex。",
+      "risks": "HBM 供给反转、DRAM ASP 下跌、客户 capex 放缓。",
+      "sources": [
+        "SRC-MU-FY26-Q2",
+        "SRC-MU-VALUATION"
+      ],
+      "score_subcomponents": {
+        "chokepoint_strength": [
+          {
+            "name": "chokepoint_strength",
+            "score": 4.4,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-MU-FY26-Q2",
+              "SRC-MU-VALUATION"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "future_space": [
+          {
+            "name": "future_space",
+            "score": 4.4,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-MU-FY26-Q2",
+              "SRC-MU-VALUATION"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "valuation_odds": [
+          {
+            "name": "valuation_odds",
+            "score": 3.8,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-MU-FY26-Q2",
+              "SRC-MU-VALUATION"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "evidence_quality": [
+          {
+            "name": "evidence_quality",
+            "score": 4.2,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-MU-FY26-Q2",
+              "SRC-MU-VALUATION"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "disconfirming_risk_control": [
+          {
+            "name": "disconfirming_risk_control",
+            "score": 3.6,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-MU-FY26-Q2",
+              "SRC-MU-VALUATION"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "monitorability": [
+          {
+            "name": "monitorability",
+            "score": 4.0,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-MU-FY26-Q2",
+              "SRC-MU-VALUATION"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "payoff_convexity": [
+          {
+            "name": "payoff_convexity",
+            "score": 4.2,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-MU-FY26-Q2",
+              "SRC-MU-VALUATION"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ]
+      },
+      "thesis_kill_tests": [
+        {
+          "test": "核心瓶颈数据连续两个季度恶化",
+          "evidence_needed": "收入、毛利率、ASP、库存、capex、客户订单",
+          "downgrade_action": "actionable_long 降为 watch_only，watch_only 降为 no_action",
+          "source_plan": "跟踪公司季报、投资者电话会、行业价格数据和客户 capex 指引"
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "ticker": "SNDK",
+      "name": "Sandisk",
+      "market": "NASDAQ",
+      "action_state": "actionable_long",
+      "strength": "中高",
+      "thesis_node": "data-center NAND/eSSD",
+      "chokepoint_node": "enterprise SSD / NAND firm commitments",
+      "score": {
+        "total_score": 3.98,
+        "action_state": "actionable_long",
+        "opportunity_fit": 3.9,
+        "payoff_convexity": 4.4,
+        "thesis_confidence": 3.7,
+        "score_dimensions": {
+          "scarcity_or_monopoly": 3.7,
+          "mispricing": 3.7,
+          "earnings_elasticity": 4.6,
+          "risk_control": 3.4
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength",
+              "score": 3.8,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-SNDK-FY26-Q3",
+                "SRC-SNDK-VALUATION"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space",
+              "score": 4.3,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-SNDK-FY26-Q3",
+                "SRC-SNDK-VALUATION"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds",
+              "score": 3.7,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-SNDK-FY26-Q3",
+                "SRC-SNDK-VALUATION"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality",
+              "score": 3.8,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-SNDK-FY26-Q3",
+                "SRC-SNDK-VALUATION"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control",
+              "score": 3.2,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-SNDK-FY26-Q3",
+                "SRC-SNDK-VALUATION"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability",
+              "score": 3.7,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-SNDK-FY26-Q3",
+                "SRC-SNDK-VALUATION"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity",
+              "score": 4.4,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-SNDK-FY26-Q3",
+                "SRC-SNDK-VALUATION"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        }
+      },
+      "scores": {
+        "chokepoint_strength": 3.8,
+        "future_space": 4.3,
+        "valuation_odds": 3.7,
+        "evidence_quality": 3.8,
+        "disconfirming_risk_control": 3.2,
+        "monitorability": 3.7,
+        "payoff_convexity": 4.4
+      },
+      "rationale": "data center NAND 收入和 Q4 指引显示极强经营弹性，若 New Business Model 带来更稳定采购，赔率凸性高。",
+      "future_space": "AI 数据持久化、企业 SSD 和 NAND mix shift。",
+      "odds": "高弹性但估值和 NAND 周期需实时验证。",
+      "risks": "NAND ASP 反转、客户承诺不稳定、库存回补结束。",
+      "sources": [
+        "SRC-SNDK-FY26-Q3",
+        "SRC-SNDK-VALUATION"
+      ],
+      "score_subcomponents": {
+        "chokepoint_strength": [
+          {
+            "name": "chokepoint_strength",
+            "score": 3.8,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-SNDK-FY26-Q3",
+              "SRC-SNDK-VALUATION"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "future_space": [
+          {
+            "name": "future_space",
+            "score": 4.3,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-SNDK-FY26-Q3",
+              "SRC-SNDK-VALUATION"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "valuation_odds": [
+          {
+            "name": "valuation_odds",
+            "score": 3.7,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-SNDK-FY26-Q3",
+              "SRC-SNDK-VALUATION"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "evidence_quality": [
+          {
+            "name": "evidence_quality",
+            "score": 3.8,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-SNDK-FY26-Q3",
+              "SRC-SNDK-VALUATION"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "disconfirming_risk_control": [
+          {
+            "name": "disconfirming_risk_control",
+            "score": 3.2,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-SNDK-FY26-Q3",
+              "SRC-SNDK-VALUATION"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "monitorability": [
+          {
+            "name": "monitorability",
+            "score": 3.7,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-SNDK-FY26-Q3",
+              "SRC-SNDK-VALUATION"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "payoff_convexity": [
+          {
+            "name": "payoff_convexity",
+            "score": 4.4,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-SNDK-FY26-Q3",
+              "SRC-SNDK-VALUATION"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ]
+      },
+      "thesis_kill_tests": [
+        {
+          "test": "核心瓶颈数据连续两个季度恶化",
+          "evidence_needed": "收入、毛利率、ASP、库存、capex、客户订单",
+          "downgrade_action": "actionable_long 降为 watch_only，watch_only 降为 no_action",
+          "source_plan": "跟踪公司季报、投资者电话会、行业价格数据和客户 capex 指引"
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "ticker": "000660.KS",
+      "name": "SK hynix",
+      "market": "KRX",
+      "action_state": "watch_only",
+      "strength": "中高",
+      "thesis_node": "HBM leader",
+      "chokepoint_node": "HBM / AI memory",
+      "score": {
+        "total_score": 3.82,
+        "action_state": "watch_only",
+        "opportunity_fit": 3.8,
+        "payoff_convexity": 3.6,
+        "thesis_confidence": 4.1,
+        "score_dimensions": {
+          "scarcity_or_monopoly": 4.6,
+          "mispricing": 3.0,
+          "earnings_elasticity": 4.3,
+          "risk_control": 3.4
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength",
+              "score": 4.6,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-SKHYNIX-Q1-2026"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space",
+              "score": 4.4,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-SKHYNIX-Q1-2026"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds",
+              "score": 3.0,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-SKHYNIX-Q1-2026"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality",
+              "score": 4.2,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-SKHYNIX-Q1-2026"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control",
+              "score": 3.5,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-SKHYNIX-Q1-2026"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability",
+              "score": 3.2,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-SKHYNIX-Q1-2026"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity",
+              "score": 3.6,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-SKHYNIX-Q1-2026"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        }
+      },
+      "scores": {
+        "chokepoint_strength": 4.6,
+        "future_space": 4.4,
+        "valuation_odds": 3.0,
+        "evidence_quality": 4.2,
+        "disconfirming_risk_control": 3.5,
+        "monitorability": 3.2,
+        "payoff_convexity": 3.6
+      },
+      "rationale": "HBM 领导地位和利润率最强，但本报告未取得统一实时估值，动作状态保守。",
+      "future_space": "HBM3E/HBM4 和高附加值 AI memory。",
+      "odds": "基本面强，赔率未验证。",
+      "risks": "Samsung/Micron 追赶、客户集中、韩国市场估值已重估。",
+      "sources": [
+        "SRC-SKHYNIX-Q1-2026"
+      ],
+      "score_subcomponents": {
+        "chokepoint_strength": [
+          {
+            "name": "chokepoint_strength",
+            "score": 4.6,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-SKHYNIX-Q1-2026"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "future_space": [
+          {
+            "name": "future_space",
+            "score": 4.4,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-SKHYNIX-Q1-2026"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "valuation_odds": [
+          {
+            "name": "valuation_odds",
+            "score": 3.0,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-SKHYNIX-Q1-2026"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "evidence_quality": [
+          {
+            "name": "evidence_quality",
+            "score": 4.2,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-SKHYNIX-Q1-2026"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "disconfirming_risk_control": [
+          {
+            "name": "disconfirming_risk_control",
+            "score": 3.5,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-SKHYNIX-Q1-2026"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "monitorability": [
+          {
+            "name": "monitorability",
+            "score": 3.2,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-SKHYNIX-Q1-2026"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "payoff_convexity": [
+          {
+            "name": "payoff_convexity",
+            "score": 3.6,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-SKHYNIX-Q1-2026"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ]
+      },
+      "thesis_kill_tests": [
+        {
+          "test": "核心瓶颈数据连续两个季度恶化",
+          "evidence_needed": "收入、毛利率、ASP、库存、capex、客户订单",
+          "downgrade_action": "actionable_long 降为 watch_only，watch_only 降为 no_action",
+          "source_plan": "跟踪公司季报、投资者电话会、行业价格数据和客户 capex 指引"
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "ticker": "WDC",
+      "name": "Western Digital",
+      "market": "NASDAQ",
+      "action_state": "watch_only",
+      "strength": "中",
+      "thesis_node": "nearline HDD cash flow",
+      "chokepoint_node": "high-capacity HDD capacity discipline",
+      "score": {
+        "total_score": 3.55,
+        "action_state": "watch_only",
+        "opportunity_fit": 3.4,
+        "payoff_convexity": 3.4,
+        "thesis_confidence": 3.7,
+        "score_dimensions": {
+          "scarcity_or_monopoly": 3.5,
+          "mispricing": 3.1,
+          "earnings_elasticity": 3.8,
+          "risk_control": 3.6
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength",
+              "score": 3.6,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-WDC-FY26-Q3",
+                "SRC-WDC-VALUATION"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space",
+              "score": 3.7,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-WDC-FY26-Q3",
+                "SRC-WDC-VALUATION"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds",
+              "score": 3.1,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-WDC-FY26-Q3",
+                "SRC-WDC-VALUATION"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality",
+              "score": 4.0,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-WDC-FY26-Q3",
+                "SRC-WDC-VALUATION"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control",
+              "score": 3.5,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-WDC-FY26-Q3",
+                "SRC-WDC-VALUATION"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability",
+              "score": 3.8,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-WDC-FY26-Q3",
+                "SRC-WDC-VALUATION"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity",
+              "score": 3.4,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-WDC-FY26-Q3",
+                "SRC-WDC-VALUATION"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        }
+      },
+      "scores": {
+        "chokepoint_strength": 3.6,
+        "future_space": 3.7,
+        "valuation_odds": 3.1,
+        "evidence_quality": 4.0,
+        "disconfirming_risk_control": 3.5,
+        "monitorability": 3.8,
+        "payoff_convexity": 3.4
+      },
+      "rationale": "HDD 供给纪律和 FCF 很强，但估值和周期弹性需要约束。",
+      "future_space": "nearline HDD、HAMR 和云容量存储。",
+      "odds": "中性偏好，等待估值/订单确认。",
+      "risks": "HDD 需求从长期容量转为短期补库存，毛利率回落。",
+      "sources": [
+        "SRC-WDC-FY26-Q3",
+        "SRC-WDC-VALUATION"
+      ],
+      "score_subcomponents": {
+        "chokepoint_strength": [
+          {
+            "name": "chokepoint_strength",
+            "score": 3.6,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-WDC-FY26-Q3",
+              "SRC-WDC-VALUATION"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "future_space": [
+          {
+            "name": "future_space",
+            "score": 3.7,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-WDC-FY26-Q3",
+              "SRC-WDC-VALUATION"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "valuation_odds": [
+          {
+            "name": "valuation_odds",
+            "score": 3.1,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-WDC-FY26-Q3",
+              "SRC-WDC-VALUATION"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "evidence_quality": [
+          {
+            "name": "evidence_quality",
+            "score": 4.0,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-WDC-FY26-Q3",
+              "SRC-WDC-VALUATION"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "disconfirming_risk_control": [
+          {
+            "name": "disconfirming_risk_control",
+            "score": 3.5,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-WDC-FY26-Q3",
+              "SRC-WDC-VALUATION"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "monitorability": [
+          {
+            "name": "monitorability",
+            "score": 3.8,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-WDC-FY26-Q3",
+              "SRC-WDC-VALUATION"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "payoff_convexity": [
+          {
+            "name": "payoff_convexity",
+            "score": 3.4,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-WDC-FY26-Q3",
+              "SRC-WDC-VALUATION"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ]
+      },
+      "thesis_kill_tests": [
+        {
+          "test": "核心瓶颈数据连续两个季度恶化",
+          "evidence_needed": "收入、毛利率、ASP、库存、capex、客户订单",
+          "downgrade_action": "actionable_long 降为 watch_only，watch_only 降为 no_action",
+          "source_plan": "跟踪公司季报、投资者电话会、行业价格数据和客户 capex 指引"
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "ticker": "STX",
+      "name": "Seagate Technology",
+      "market": "NASDAQ",
+      "action_state": "watch_only",
+      "strength": "中",
+      "thesis_node": "nearline HDD cash flow",
+      "chokepoint_node": "high-capacity HDD capacity discipline",
+      "score": {
+        "total_score": 3.48,
+        "action_state": "watch_only",
+        "opportunity_fit": 3.3,
+        "payoff_convexity": 3.3,
+        "thesis_confidence": 3.7,
+        "score_dimensions": {
+          "scarcity_or_monopoly": 3.5,
+          "mispricing": 3.0,
+          "earnings_elasticity": 3.7,
+          "risk_control": 3.5
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength",
+              "score": 3.5,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-STX-FY26-Q3",
+                "SRC-STX-VALUATION"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space",
+              "score": 3.6,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-STX-FY26-Q3",
+                "SRC-STX-VALUATION"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds",
+              "score": 3.0,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-STX-FY26-Q3",
+                "SRC-STX-VALUATION"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality",
+              "score": 4.0,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-STX-FY26-Q3",
+                "SRC-STX-VALUATION"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control",
+              "score": 3.4,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-STX-FY26-Q3",
+                "SRC-STX-VALUATION"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability",
+              "score": 3.8,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-STX-FY26-Q3",
+                "SRC-STX-VALUATION"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity",
+              "score": 3.3,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-STX-FY26-Q3",
+                "SRC-STX-VALUATION"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        }
+      },
+      "scores": {
+        "chokepoint_strength": 3.5,
+        "future_space": 3.6,
+        "valuation_odds": 3.0,
+        "evidence_quality": 4.0,
+        "disconfirming_risk_control": 3.4,
+        "monitorability": 3.8,
+        "payoff_convexity": 3.3
+      },
+      "rationale": "FCF 和毛利率强，但与 WDC 类似，更多是容量周期和供给纪律，稀缺性低于 HBM。",
+      "future_space": "高容量 nearline HDD 和云容量扩张。",
+      "odds": "中性，适合观察现金回报。",
+      "risks": "订单周期、HAMR 竞争、估值高位。",
+      "sources": [
+        "SRC-STX-FY26-Q3",
+        "SRC-STX-VALUATION"
+      ],
+      "score_subcomponents": {
+        "chokepoint_strength": [
+          {
+            "name": "chokepoint_strength",
+            "score": 3.5,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-STX-FY26-Q3",
+              "SRC-STX-VALUATION"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "future_space": [
+          {
+            "name": "future_space",
+            "score": 3.6,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-STX-FY26-Q3",
+              "SRC-STX-VALUATION"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "valuation_odds": [
+          {
+            "name": "valuation_odds",
+            "score": 3.0,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-STX-FY26-Q3",
+              "SRC-STX-VALUATION"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "evidence_quality": [
+          {
+            "name": "evidence_quality",
+            "score": 4.0,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-STX-FY26-Q3",
+              "SRC-STX-VALUATION"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "disconfirming_risk_control": [
+          {
+            "name": "disconfirming_risk_control",
+            "score": 3.4,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-STX-FY26-Q3",
+              "SRC-STX-VALUATION"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "monitorability": [
+          {
+            "name": "monitorability",
+            "score": 3.8,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-STX-FY26-Q3",
+              "SRC-STX-VALUATION"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "payoff_convexity": [
+          {
+            "name": "payoff_convexity",
+            "score": 3.3,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-STX-FY26-Q3",
+              "SRC-STX-VALUATION"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ]
+      },
+      "thesis_kill_tests": [
+        {
+          "test": "核心瓶颈数据连续两个季度恶化",
+          "evidence_needed": "收入、毛利率、ASP、库存、capex、客户订单",
+          "downgrade_action": "actionable_long 降为 watch_only，watch_only 降为 no_action",
+          "source_plan": "跟踪公司季报、投资者电话会、行业价格数据和客户 capex 指引"
+        }
+      ]
+    },
+    {
+      "rank": 6,
+      "ticker": "005930.KS",
+      "name": "Samsung Electronics",
+      "market": "KRX",
+      "action_state": "watch_only",
+      "strength": "中",
+      "thesis_node": "memory catch-up / diversified exposure",
+      "chokepoint_node": "HBM catch-up and enterprise SSD",
+      "score": {
+        "total_score": 3.22,
+        "action_state": "watch_only",
+        "opportunity_fit": 3.0,
+        "payoff_convexity": 3.1,
+        "thesis_confidence": 3.5,
+        "score_dimensions": {
+          "scarcity_or_monopoly": 3.3,
+          "mispricing": 3.0,
+          "earnings_elasticity": 3.6,
+          "risk_control": 3.2
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength",
+              "score": 3.3,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-SAMSUNG-Q1-2026"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space",
+              "score": 3.9,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-SAMSUNG-Q1-2026"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds",
+              "score": 3.0,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-SAMSUNG-Q1-2026"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality",
+              "score": 3.8,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-SAMSUNG-Q1-2026"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control",
+              "score": 3.1,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-SAMSUNG-Q1-2026"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability",
+              "score": 3.0,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-SAMSUNG-Q1-2026"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity",
+              "score": 3.1,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-SAMSUNG-Q1-2026"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        }
+      },
+      "scores": {
+        "chokepoint_strength": 3.3,
+        "future_space": 3.9,
+        "valuation_odds": 3.0,
+        "evidence_quality": 3.8,
+        "disconfirming_risk_control": 3.1,
+        "monitorability": 3.0,
+        "payoff_convexity": 3.1
+      },
+      "rationale": "产品线完整，但 HBM 追赶和集团业务混合会稀释存储投资纯度。",
+      "future_space": "HBM、server DDR5、enterprise SSD。",
+      "odds": "未验证，需本地估值和 HBM 客户份额。",
+      "risks": "追赶不及预期、业务混合、资本开支压力。",
+      "sources": [
+        "SRC-SAMSUNG-Q1-2026"
+      ],
+      "score_subcomponents": {
+        "chokepoint_strength": [
+          {
+            "name": "chokepoint_strength",
+            "score": 3.3,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-SAMSUNG-Q1-2026"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "future_space": [
+          {
+            "name": "future_space",
+            "score": 3.9,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-SAMSUNG-Q1-2026"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "valuation_odds": [
+          {
+            "name": "valuation_odds",
+            "score": 3.0,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-SAMSUNG-Q1-2026"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "evidence_quality": [
+          {
+            "name": "evidence_quality",
+            "score": 3.8,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-SAMSUNG-Q1-2026"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "disconfirming_risk_control": [
+          {
+            "name": "disconfirming_risk_control",
+            "score": 3.1,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-SAMSUNG-Q1-2026"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "monitorability": [
+          {
+            "name": "monitorability",
+            "score": 3.0,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-SAMSUNG-Q1-2026"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "payoff_convexity": [
+          {
+            "name": "payoff_convexity",
+            "score": 3.1,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-SAMSUNG-Q1-2026"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ]
+      },
+      "thesis_kill_tests": [
+        {
+          "test": "核心瓶颈数据连续两个季度恶化",
+          "evidence_needed": "收入、毛利率、ASP、库存、capex、客户订单",
+          "downgrade_action": "actionable_long 降为 watch_only，watch_only 降为 no_action",
+          "source_plan": "跟踪公司季报、投资者电话会、行业价格数据和客户 capex 指引"
+        }
+      ]
+    },
+    {
+      "rank": 7,
+      "ticker": "SIMO",
+      "name": "Silicon Motion",
+      "market": "NASDAQ",
+      "action_state": "watch_only",
+      "strength": "低到中",
+      "thesis_node": "SSD controller optionality",
+      "chokepoint_node": "controller / GPU boot drive",
+      "score": {
+        "total_score": 3.05,
+        "action_state": "watch_only",
+        "opportunity_fit": 2.9,
+        "payoff_convexity": 3.5,
+        "thesis_confidence": 3.0,
+        "score_dimensions": {
+          "scarcity_or_monopoly": 2.8,
+          "mispricing": 3.2,
+          "earnings_elasticity": 3.6,
+          "risk_control": 2.8
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength",
+              "score": 2.9,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-SIMO-Q1-2026"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space",
+              "score": 3.4,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-SIMO-Q1-2026"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds",
+              "score": 3.2,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-SIMO-Q1-2026"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality",
+              "score": 3.1,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-SIMO-Q1-2026"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control",
+              "score": 2.6,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-SIMO-Q1-2026"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability",
+              "score": 3.0,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-SIMO-Q1-2026"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity",
+              "score": 3.5,
+              "weight": 1.0,
+              "evidence_ids": [
+                "SRC-SIMO-Q1-2026"
+              ],
+              "review_ids": [],
+              "rationale": "来自 Q1-Q4 验证链的综合评分。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        }
+      },
+      "scores": {
+        "chokepoint_strength": 2.9,
+        "future_space": 3.4,
+        "valuation_odds": 3.2,
+        "evidence_quality": 3.1,
+        "disconfirming_risk_control": 2.6,
+        "monitorability": 3.0,
+        "payoff_convexity": 3.5
+      },
+      "rationale": "控制器弹性明显，但是否有不可替代瓶颈仍未证明。",
+      "future_space": "AI 设备 boot drive、enterprise SSD controller。",
+      "odds": "期权属性强，但证据不足。",
+      "risks": "客户集中、替代、毛利率被压缩。",
+      "sources": [
+        "SRC-SIMO-Q1-2026"
+      ],
+      "score_subcomponents": {
+        "chokepoint_strength": [
+          {
+            "name": "chokepoint_strength",
+            "score": 2.9,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-SIMO-Q1-2026"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "future_space": [
+          {
+            "name": "future_space",
+            "score": 3.4,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-SIMO-Q1-2026"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "valuation_odds": [
+          {
+            "name": "valuation_odds",
+            "score": 3.2,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-SIMO-Q1-2026"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "evidence_quality": [
+          {
+            "name": "evidence_quality",
+            "score": 3.1,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-SIMO-Q1-2026"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "disconfirming_risk_control": [
+          {
+            "name": "disconfirming_risk_control",
+            "score": 2.6,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-SIMO-Q1-2026"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "monitorability": [
+          {
+            "name": "monitorability",
+            "score": 3.0,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-SIMO-Q1-2026"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ],
+        "payoff_convexity": [
+          {
+            "name": "payoff_convexity",
+            "score": 3.5,
+            "weight": 1.0,
+            "evidence_ids": [
+              "SRC-SIMO-Q1-2026"
+            ],
+            "review_ids": [],
+            "rationale": "来自 Q1-Q4 验证链的综合评分。",
+            "status": "verified_with_caveats"
+          }
+        ]
+      },
+      "thesis_kill_tests": [
+        {
+          "test": "核心瓶颈数据连续两个季度恶化",
+          "evidence_needed": "收入、毛利率、ASP、库存、capex、客户订单",
+          "downgrade_action": "actionable_long 降为 watch_only，watch_only 降为 no_action",
+          "source_plan": "跟踪公司季报、投资者电话会、行业价格数据和客户 capex 指引"
+        }
+      ]
+    }
+  ],
+  "prediction_review": {
+    "horizon": "2026-Q3 earnings season",
+    "review_trigger": "下一轮存储厂商季报、ASP 数据、云厂 capex 和 HBM/eSSD 订单披露"
+  }
+}

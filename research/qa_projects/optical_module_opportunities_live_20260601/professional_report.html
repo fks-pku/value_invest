@@ -1,0 +1,1603 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>光模块产业投资机会研究</title>
+<style>
+
+:root {
+  color-scheme: light;
+  --bg: #f5f7fb;
+  --surface: rgba(255,255,255,.88);
+  --surface-strong: #ffffff;
+  --text: #1d1d1f;
+  --muted: #667085;
+  --line: #d9e0ea;
+  --blue: #0a84ff;
+  --green: #1d9a6c;
+  --amber: #b7791f;
+  --red: #c2413d;
+  --shadow: 0 20px 60px rgba(20, 32, 54, .10);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at 20% 0%, #e8f2ff 0, transparent 32rem), var(--bg);
+  line-height: 1.62;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.hero {
+  padding: 24px clamp(20px, 5vw, 72px) 52px;
+  background: linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.58));
+  border-bottom: 1px solid var(--line);
+}
+.top-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 44px;
+}
+.top-nav a {
+  padding: 8px 12px;
+  border: 1px solid rgba(10,132,255,.18);
+  border-radius: 999px;
+  background: rgba(255,255,255,.72);
+  color: #28506f;
+  font-size: 13px;
+}
+.hero-inner { max-width: 1120px; margin: 0 auto; }
+.eyebrow, .section-kicker, .label {
+  margin: 0 0 8px;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+h1 { max-width: 980px; margin: 0; font-size: clamp(34px, 5vw, 68px); line-height: 1.04; letter-spacing: 0; }
+.hero-subtitle { max-width: 720px; color: var(--muted); font-size: 19px; }
+.hero-meta { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-meta span, .state-pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: rgba(255,255,255,.8);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 13px;
+}
+.section { max-width: 1180px; margin: 0 auto; padding: 48px clamp(18px, 4vw, 36px); }
+.section-heading { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+.section-heading h2 { margin: 0; font-size: clamp(28px, 3vw, 42px); letter-spacing: 0; }
+.section-note, .muted { color: var(--muted); }
+.goal-card, .chain-explain, .qa-card, .target-section .target-table, .source-collapse {
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+.goal-card {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  padding: 22px;
+}
+.goal-main { font-size: 22px; font-weight: 700; }
+.chain-explain { padding: 22px; }
+.chain-plain-summary { margin-top: 0; font-size: 18px; color: #344054; }
+.chain-flow-steps { display: grid; gap: 8px; padding-left: 22px; color: #344054; }
+.chain-layer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin: 18px 0; }
+.chain-layer-card {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface-strong);
+  padding: 16px;
+}
+.chain-layer-card h3 { margin: 0 0 8px; font-size: 16px; }
+.chain-map { overflow-x: auto; margin: 18px 0; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 12px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+th { color: #475467; font-size: 13px; background: #f7f9fc; }
+.chain-chokepoints, .chain-target-links {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: #f7f9fc;
+  color: #344054;
+}
+.qa-stack, .child-stack { display: grid; gap: 14px; }
+.qa-card { padding: 0; overflow: clip; }
+.qa-card summary {
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 12px;
+  align-items: center;
+  padding: 18px 20px;
+  list-style: none;
+}
+.qa-card summary::-webkit-details-marker { display: none; }
+.qid {
+  display: inline-flex;
+  min-width: 54px;
+  justify-content: center;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: #eaf3ff;
+  color: var(--blue);
+  font-weight: 700;
+  font-size: 13px;
+}
+.question { font-weight: 700; }
+.qa-count { color: var(--muted); font-size: 13px; }
+.chevron { color: var(--blue); font-size: 24px; transition: transform .2s ease; }
+.qa-card[open] > summary .chevron { transform: rotate(90deg); }
+.qa-body { padding: 0 20px 20px; display: grid; gap: 14px; }
+.qa-block {
+  border: 1px solid rgba(217,224,234,.82);
+  border-radius: 16px;
+  background: rgba(255,255,255,.68);
+  padding: 14px;
+}
+.block-title { margin: 0 0 10px; font-weight: 800; color: #334155; }
+.artifact-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface-strong);
+  padding: 14px;
+}
+.l3-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.l3-meta span {
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: #f3f6fa;
+  color: #475467;
+  font-size: 12px;
+}
+.l3-artifact dl { display: grid; gap: 10px; margin: 0; }
+.l3-artifact dl div { display: grid; grid-template-columns: 74px 1fr; gap: 10px; }
+dt { color: var(--blue); font-weight: 800; }
+dd { margin: 0; color: #344054; }
+.source-links { margin: 10px 0 0; color: var(--muted); font-size: 13px; }
+.target-table, .source-table { background: var(--surface-strong); overflow: hidden; }
+.target-table { border-radius: 22px; }
+.state-actionable_long { color: var(--green); border-color: rgba(29,154,108,.28); background: #eaf8f2; }
+.state-watch_only { color: var(--amber); border-color: rgba(183,121,31,.28); background: #fff7e6; }
+.state-no_action { color: var(--red); border-color: rgba(194,65,61,.24); background: #fff1f0; }
+.source-collapse { padding: 16px 18px; }
+.source-collapse summary { cursor: pointer; font-weight: 800; color: #334155; }
+.source-table { margin-top: 14px; }
+@media (max-width: 760px) {
+  .goal-card { grid-template-columns: 1fr; }
+  .qa-card summary { grid-template-columns: auto 1fr auto; }
+  .qa-count { grid-column: 2 / 3; }
+  .target-table, .source-table, .chain-table { font-size: 13px; }
+  th, td { padding: 10px; }
+}
+
+</style>
+</head>
+<body>
+<header class="hero">
+  <nav class="top-nav" aria-label="报告导航">
+    <a href="#goal">当前研究目标</a>
+    <a href="#chain">产业链全景</a>
+    <a href="#qa">问题下钻</a>
+    <a href="#targets">最终标的推荐</a>
+    <a href="#sources">来源索引</a>
+  </nav>
+  <div class="hero-inner">
+    <p class="eyebrow">Research Goal QA</p>
+    <h1>光模块产业投资机会研究</h1>
+    <p class="hero-subtitle">以产业链、问题下钻、反证和标的赔率为主线组织研究结论。</p>
+    <div class="hero-meta">
+      <span>2026-06-01</span>
+      <span>live_prediction</span>
+    </div>
+  </div>
+</header>
+<main>
+<section id="goal" class="section goal-section">
+  <div class="section-heading">
+    <span class="section-kicker">01</span>
+    <h2>当前研究目标</h2>
+  </div>
+  <div class="goal-card">
+    <div>
+      <p class="label">研究对象</p>
+      <p class="goal-main">光模块产业投资机会研究</p>
+    </div>
+    <div>
+      <p class="label">当前结论</p>
+      <p>光模块产业的机会来自 AI 数据中心网络升级向 800G/1.6T 高速光模块、激光器/组件和规模制造的传导。当前需求和业绩兑现强，但估值已经拥挤，必须用订单、ASP、毛利率、客户 capex 和技术路线持续验证。</p>
+    </div>
+    <div>
+      <p class="label">最大不确定性</p>
+      <p>800G/1.6T 放量后 ASP 是否快速下行，LPO/CPO/OCS 是否改变可插拔模块利润池，以及高估值能否被 2026-2027 年盈利兑现消化。</p>
+    </div>
+    <div>
+      <p class="label">边界</p>
+      <p>研究观察清单，不构成买卖指令；重点判断未来三到六个月需要验证的 AI 光模块瓶颈、赔率和反证。</p>
+    </div>
+  </div>
+</section>
+<section id="chain" class="section supply-chain-section">
+  <div class="section-heading">
+    <span class="section-kicker">02</span>
+    <h2>产业链全景</h2>
+  </div>
+  <div class="chain-explain">
+    <p class="chain-plain-summary">产业链全景用于先回答谁提供什么、谁依赖谁、谁付款、利润和瓶颈在哪里，再进入 QA。</p>
+    <ol class="chain-flow-steps"><li>确认终端需求和付费方。</li>
+<li>映射上游、中游、下游的产品和依赖。</li>
+<li>定位供给、认证、渠道、数据或监管瓶颈。</li>
+<li>把瓶颈映射到具体标的和财务敞口。</li>
+<li>用反证和估值检查赔率。</li></ol>
+    <div class="chain-layer-grid">
+    <article class="chain-layer-card">
+      <p class="label">上游光芯片/电芯片</p>
+      <h3>EML/InP laser、硅光、VCSEL、DSP、driver、TIA</h3>
+      <p>决定高速模块性能、功耗和良率，是 800G/1.6T 的关键瓶颈候选。</p>
+    </article>
+
+    <article class="chain-layer-card">
+      <p class="label">光器件与组件</p>
+      <h3>TOSA/ROSA、AWG、透镜、连接器、隔离器、光引擎</h3>
+      <p>受益于速率升级和组件数量/精度提升，价值取决于客户认证和良率。</p>
+    </article>
+
+    <article class="chain-layer-card">
+      <p class="label">模块集成</p>
+      <h3>400G/800G/1.6T 可插拔光模块、LPO、硅光模块</h3>
+      <p>直接承接 AI 数据中心订单，利润取决于认证、规模制造、交付和 ASP 下行速度。</p>
+    </article>
+
+    <article class="chain-layer-card">
+      <p class="label">代工制造</p>
+      <h3>光模块和通信设备制造服务</h3>
+      <p>获得产能爬坡 beta，但是否具备稀缺性取决于客户黏性和制造良率。</p>
+    </article>
+
+    <article class="chain-layer-card">
+      <p class="label">下游客户/系统</p>
+      <h3>AI 服务器、交换机、GPU/ASIC 集群、云网络</h3>
+      <p>客户 capex、网络架构和平台路线决定最终端口需求与订单可见度。</p>
+    </article></div>
+    <div class="chain-map">
+      <table class="chain-table">
+        <thead>
+          <tr><th>层级</th><th>产品/服务</th><th>关键玩家</th><th>价值/利润流</th></tr>
+        </thead>
+        <tbody>
+      <tr>
+        <td>上游光芯片/电芯片</td>
+        <td>EML/InP laser、硅光、VCSEL、DSP、driver、TIA</td>
+        <td>Lumentum、Coherent、Marvell、Broadcom、MACOM</td>
+        <td>决定高速模块性能、功耗和良率，是 800G/1.6T 的关键瓶颈候选。</td>
+      </tr>
+
+      <tr>
+        <td>光器件与组件</td>
+        <td>TOSA/ROSA、AWG、透镜、连接器、隔离器、光引擎</td>
+        <td>天孚通信、Coherent、Lumentum、光迅科技等</td>
+        <td>受益于速率升级和组件数量/精度提升，价值取决于客户认证和良率。</td>
+      </tr>
+
+      <tr>
+        <td>模块集成</td>
+        <td>400G/800G/1.6T 可插拔光模块、LPO、硅光模块</td>
+        <td>中际旭创、新易盛、Coherent、Lumentum、剑桥科技</td>
+        <td>直接承接 AI 数据中心订单，利润取决于认证、规模制造、交付和 ASP 下行速度。</td>
+      </tr>
+
+      <tr>
+        <td>代工制造</td>
+        <td>光模块和通信设备制造服务</td>
+        <td>Fabrinet、部分 EMS/ODM 厂商</td>
+        <td>获得产能爬坡 beta，但是否具备稀缺性取决于客户黏性和制造良率。</td>
+      </tr>
+
+      <tr>
+        <td>下游客户/系统</td>
+        <td>AI 服务器、交换机、GPU/ASIC 集群、云网络</td>
+        <td>NVIDIA、Google、Microsoft、Amazon、Meta、交换机厂商</td>
+        <td>客户 capex、网络架构和平台路线决定最终端口需求与订单可见度。</td>
+      </tr></tbody>
+      </table>
+    </div>
+    <div class="chain-chokepoints"><strong>候选瓶颈：</strong>ai_network_demand_driver, speed_transition_800g_1_6t, customer_capex_and_order_visibility, laser_inp_silicon_photonics_bottleneck, module_integration_yield_and_certification, lpo_cpo_and_architecture_substitution, company_financial_conversion, valuation_and_priced_in_expectations, target_mapping</div>
+    <div class="chain-target-links"><strong>标的映射：</strong>Q2 负责瓶颈评分，Q4 负责把瓶颈、赔率和风险合成具体标的排序。</div>
+  </div>
+</section>
+<section id="qa" class="section qa-section">
+  <div class="section-heading">
+    <span class="section-kicker">03</span>
+    <h2>问题下钻</h2>
+  </div>
+  <div class="qa-stack"><details id="q1" class="qa-card level-1" open>
+  <summary>
+    <span class="qid">Q1</span>
+    <span class="question">需求：AI 数据中心网络升级如何转化为 800G/1.6T 光模块真实需求？</span>
+    <span class="qa-count">2 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      
+      <div class="artifact-card"><p>AI 数据中心网络升级正在真实拉动 800G/1.6T 光模块需求，核心证据来自市场规模、出货量、速率 mix 和公司收入兑现；最大缺口是客户订单、端口 attach rate 和 ASP 曲线。</p></div>
+      
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><details id="q1-1" class="qa-card level-2" open>
+  <summary>
+    <span class="qid">Q1.1</span>
+    <span class="question">AI 集群网络需求传导</span>
+    <span class="qa-count">2 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      
+      <div class="artifact-card"><p>需求从 AI 集群端口和速率升级两条线传导：800G 正在普及，1.6T 开始商用；但新增收入仍取决于 ASP 与产品 mix。</p></div>
+      
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><details id="q1-1-1" class="qa-card level-3" open>
+  <summary>
+    <span class="qid">Q1.1.1</span>
+    <span class="question">AI 训练和推理集群的 GPU/ASIC 扩张是否继续推高 800G/1.6T 光模块端口需求？</span>
+    <span class="qa-count">0 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      <div class="l3-meta">
+  <span class="l3-skill">技能：industry-report-analysis</span>
+  <span class="l3-execution-status">状态：verified_with_caveats</span>
+  <span class="l3-score-component">评分：future_space</span>
+  <span class="l3-decision-use">用途：影响 future_space、父节点结论、Q4 标的排序和行动状态。</span>
+</div>
+      <div class="artifact-card l3-artifact">
+  <dl>
+    <div><dt>事实</dt><dd>TrendForce 预计 AI 光模块市场 2026 年达到 260 亿美元，800G 及以上模块份额到 2026 年超过 60%，800G+ 出货从 2025 年约 2400 万只提升到 2026 年接近 6300 万只。</dd></div>
+    <div><dt>推论</dt><dd>AI 集群扩张已经从 GPU 叙事传导到交换机端口和高速光模块数量，需求增长同时来自端口数增加和速率升级。</dd></div>
+    <div><dt>判断</dt><dd>需求主线成立，Q1 future_space 较强；但需要进一步用云厂商 capex、GPU/ASIC 集群规模和端口 attach rate 验证。</dd></div>
+    <div><dt>缺口</dt><dd>缺少 hyperscaler capex、交换机端口数、GPU/ASIC 集群规模和实际订单拆分。</dd></div>
+    <div><dt>触发器</dt><dd>若 AI capex 放缓或网络架构降低外部光模块 attach rate，需求强度下调。</dd></div>
+  </dl>
+</div>
+      <p class="source-links">来源：<a href="https://www.trendforce.com/presscenter/news/20260420-13017.html" target="_blank" rel="noreferrer">TrendForce: Global AI Optical Transceiver Market to Reach US$26 Billion in 2026</a> / <a href="https://www.trendforce.com/presscenter/news/20260210-12919.html" target="_blank" rel="noreferrer">TrendForce: Google high-speed interconnect to push 800G+ optical share past 60% by 2026</a> / <a href="https://www.trendforce.com/presscenter/news/20251208-12823.html" target="_blank" rel="noreferrer">TrendForce: AI data centers ignite laser shortage wave</a> / <a href="https://finance.sina.com.cn/stock/relnews/cn/2026-04-27/doc-inhvwwmp2518726.shtml" target="_blank" rel="noreferrer">AI 寻机系列：光模块设备进入快车道</a></p>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><p class="muted">已到 L3 叶子问题，下一步通过来源更新和季度触发器继续验证。</p></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>缺少 hyperscaler capex、交换机端口数、GPU/ASIC 集群规模和实际订单拆分。 触发器：若 AI capex 放缓或网络架构降低外部光模块 attach rate，需求强度下调。</p>
+    </div>
+  </div>
+</details>
+<details id="q1-1-2" class="qa-card level-3" open>
+  <summary>
+    <span class="qid">Q1.1.2</span>
+    <span class="question">800G 到 1.6T 的速率升级是新增需求、产品 mix 提升，还是价格换代后的 ASP 下行？</span>
+    <span class="qa-count">0 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      <div class="l3-meta">
+  <span class="l3-skill">技能：industry-report-analysis</span>
+  <span class="l3-execution-status">状态：verified_with_caveats</span>
+  <span class="l3-score-component">评分：future_space</span>
+  <span class="l3-decision-use">用途：影响 future_space、父节点结论、Q4 标的排序和行动状态。</span>
+</div>
+      <div class="artifact-card l3-artifact">
+  <dl>
+    <div><dt>事实</dt><dd>TrendForce 预计 800G+ 份额由 2024 年 19.5% 提升至 2026 年超过 60%；LightCounting 口径显示 2026 年数通光模块市场约 228 亿美元，800G 普及与 1.6T 商用同步推进。</dd></div>
+    <div><dt>推论</dt><dd>速率升级带来产品 mix 上移，但不等于利润永久提高；1.6T 放量是否创造增量收入取决于 ASP 下行速度和客户认证。</dd></div>
+    <div><dt>判断</dt><dd>800G/1.6T 是收入弹性的核心变量，优先关注能证明 1.6T 认证、交付和毛利率的公司。</dd></div>
+    <div><dt>缺口</dt><dd>缺少 800G/1.6T 分速率出货、ASP 曲线和客户认证清单。</dd></div>
+    <div><dt>触发器</dt><dd>若 1.6T 只替换 800G 且 ASP 快速下滑，未来空间和估值赔率下调。</dd></div>
+  </dl>
+</div>
+      <p class="source-links">来源：<a href="https://www.trendforce.com/presscenter/news/20260420-13017.html" target="_blank" rel="noreferrer">TrendForce: Global AI Optical Transceiver Market to Reach US$26 Billion in 2026</a> / <a href="https://www.trendforce.com/presscenter/news/20260210-12919.html" target="_blank" rel="noreferrer">TrendForce: Google high-speed interconnect to push 800G+ optical share past 60% by 2026</a> / <a href="https://finance.sina.com.cn/stock/relnews/cn/2026-04-27/doc-inhvwwmp2518726.shtml" target="_blank" rel="noreferrer">AI 寻机系列：光模块设备进入快车道</a></p>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><p class="muted">已到 L3 叶子问题，下一步通过来源更新和季度触发器继续验证。</p></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>缺少 800G/1.6T 分速率出货、ASP 曲线和客户认证清单。 触发器：若 1.6T 只替换 800G 且 ASP 快速下滑，未来空间和估值赔率下调。</p>
+    </div>
+  </div>
+</details></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>继续补齐一手数据、反证来源、估值口径和季度监控阈值。</p>
+    </div>
+  </div>
+</details>
+<details id="q1-2" class="qa-card level-2" open>
+  <summary>
+    <span class="qid">Q1.2</span>
+    <span class="question">订单质量与客户集中</span>
+    <span class="qa-count">2 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      
+      <div class="artifact-card"><p>订单正在进入公司报表，但长单、预付款、客户集中和库存仍需验证，不能把单季高增等同于长期需求。</p></div>
+      
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><details id="q1-2-1" class="qa-card level-3" open>
+  <summary>
+    <span class="qid">Q1.2.1</span>
+    <span class="question">光模块供应商的高增长由长期订单、客户认证和容量锁定支撑，还是短期抢货？</span>
+    <span class="qa-count">0 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      <div class="l3-meta">
+  <span class="l3-skill">技能：financial-statement-analysis</span>
+  <span class="l3-execution-status">状态：verified_with_caveats</span>
+  <span class="l3-score-component">评分：evidence_quality</span>
+  <span class="l3-decision-use">用途：影响 evidence_quality、父节点结论、Q4 标的排序和行动状态。</span>
+</div>
+      <div class="artifact-card l3-artifact">
+  <dl>
+    <div><dt>事实</dt><dd>中际旭创、新易盛、Lumentum、Coherent、Fabrinet 等均披露或被报道出现高速光模块/AI datacenter 驱动的收入高增；Lumentum 提到激光芯片和 scale-across components，Coherent 表示需求强且扩产。</dd></div>
+    <div><dt>推论</dt><dd>强业绩说明订单正在兑现，但客户集中、长单和预付款证据不完整，短期拉货与长期订单仍需区分。</dd></div>
+    <div><dt>判断</dt><dd>当前订单质量支持主题继续研究，但不能只用单季增速提高所有标的行动状态。</dd></div>
+    <div><dt>缺口</dt><dd>缺少 backlog、客户预付款、容量锁定、客户集中度和库存风险。</dd></div>
+    <div><dt>触发器</dt><dd>若收入增长来自短期抢货且客户未锁定产能，需求可见度下调。</dd></div>
+  </dl>
+</div>
+      <p class="source-links">来源：<a href="https://investor.lumentum.com/financial-news-releases/news-details/2026/Lumentum-Announces-Third-Quarter-of-Fiscal-Year-2026-Financial-Results/default.aspx" target="_blank" rel="noreferrer">Lumentum FY2026 Q3 results</a> / <a href="https://www.coherent.com/news/press-releases/third-quarter-fiscal-year-2026-results" target="_blank" rel="noreferrer">Coherent FY2026 Q3 results</a> / <a href="https://investor.fabrinet.com/news-releases/news-release-details/fabrinet-announces-third-quarter-fiscal-year-2026-financial" target="_blank" rel="noreferrer">Fabrinet FY2026 Q3 results</a> / <a href="https://www.nbd.com.cn/articles/2026-04-16/4343067.html" target="_blank" rel="noreferrer">中际旭创 2026 年一季度业绩报道</a> / <a href="https://www.nbd.com.cn/articles/2026-04-24/4356799.html" target="_blank" rel="noreferrer">新易盛 2025 年报及 2026 年一季度业绩报道</a></p>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><p class="muted">已到 L3 叶子问题，下一步通过来源更新和季度触发器继续验证。</p></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>缺少 backlog、客户预付款、容量锁定、客户集中度和库存风险。 触发器：若收入增长来自短期抢货且客户未锁定产能，需求可见度下调。</p>
+    </div>
+  </div>
+</details>
+<details id="q1-2-2" class="qa-card level-3" open>
+  <summary>
+    <span class="qid">Q1.2.2</span>
+    <span class="question">NVIDIA、云厂商和交换机平台的供应链锁定是否提高需求可见度？</span>
+    <span class="qa-count">0 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      <div class="l3-meta">
+  <span class="l3-skill">技能：news-event-analysis</span>
+  <span class="l3-execution-status">状态：verified_with_caveats</span>
+  <span class="l3-score-component">评分：monitorability</span>
+  <span class="l3-decision-use">用途：影响 monitorability、父节点结论、Q4 标的排序和行动状态。</span>
+</div>
+      <div class="artifact-card l3-artifact">
+  <dl>
+    <div><dt>事实</dt><dd>TrendForce 提到 NVIDIA 对激光供应链的战略锁定；Lumentum Q3 现金增加主要受优先股发行影响，并管理层强调 CPO/OCS 增长驱动；Coherent 也强调扩产以满足强需求。</dd></div>
+    <div><dt>推论</dt><dd>头部客户对供应链的锁定提升需求可见度，也可能加剧客户集中和议价风险。</dd></div>
+    <div><dt>判断</dt><dd>客户锁定是光模块产业的重要支持证据，但需要用采购协议、订单期限和产能预定进一步验证。</dd></div>
+    <div><dt>缺口</dt><dd>缺少 NVIDIA/云厂商具体采购协议、供应份额和取消条款。</dd></div>
+    <div><dt>触发器</dt><dd>核心客户重新分配订单或平台路线改变时，供应商份额和估值需重算。</dd></div>
+  </dl>
+</div>
+      <p class="source-links">来源：<a href="https://www.trendforce.com/presscenter/news/20251208-12823.html" target="_blank" rel="noreferrer">TrendForce: AI data centers ignite laser shortage wave</a> / <a href="https://investor.lumentum.com/financial-news-releases/news-details/2026/Lumentum-Announces-Third-Quarter-of-Fiscal-Year-2026-Financial-Results/default.aspx" target="_blank" rel="noreferrer">Lumentum FY2026 Q3 results</a> / <a href="https://www.coherent.com/news/press-releases/third-quarter-fiscal-year-2026-results" target="_blank" rel="noreferrer">Coherent FY2026 Q3 results</a> / <a href="https://static.cninfo.com.cn/finalpage/2026-04-24/1225185699.PDF" target="_blank" rel="noreferrer">中际旭创 2026 年投资者交流/公告材料</a></p>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><p class="muted">已到 L3 叶子问题，下一步通过来源更新和季度触发器继续验证。</p></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>缺少 NVIDIA/云厂商具体采购协议、供应份额和取消条款。 触发器：核心客户重新分配订单或平台路线改变时，供应商份额和估值需重算。</p>
+    </div>
+  </div>
+</details></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>继续补齐一手数据、反证来源、估值口径和季度监控阈值。</p>
+    </div>
+  </div>
+</details></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>继续补齐一手数据、反证来源、估值口径和季度监控阈值。</p>
+    </div>
+  </div>
+</details>
+<details id="q2" class="qa-card level-1" open>
+  <summary>
+    <span class="qid">Q2</span>
+    <span class="question">价值捕获：光模块产业链哪些环节具备瓶颈、定价权和财务弹性？</span>
+    <span class="qa-count">3 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      
+      <div class="artifact-card"><p>价值捕获不是均匀分布：上游激光器/InP/硅光、头部模块认证与良率、以及少数具备规模交付能力的公司更接近瓶颈。</p></div>
+      
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><details id="q2-1" class="qa-card level-2" open>
+  <summary>
+    <span class="qid">Q2.1</span>
+    <span class="question">上游激光器、InP、硅光与关键组件瓶颈</span>
+    <span class="qa-count">2 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      
+      <div class="artifact-card"><p>组件短缺和激光器锁定是当前最重要瓶颈之一，Lumentum/Coherent/天孚通信等上游和组件环节值得单独评分。</p></div>
+      
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><details id="q2-1-1" class="qa-card level-3" open>
+  <summary>
+    <span class="qid">Q2.1.1</span>
+    <span class="question">EML/InP laser、硅光芯片和光电器件是否形成供应瓶颈和定价权？</span>
+    <span class="qa-count">0 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      <div class="l3-meta">
+  <span class="l3-skill">技能：industry-report-analysis</span>
+  <span class="l3-execution-status">状态：verified_with_caveats</span>
+  <span class="l3-score-component">评分：chokepoint_strength</span>
+  <span class="l3-decision-use">用途：影响 chokepoint_strength、父节点结论、Q4 标的排序和行动状态。</span>
+</div>
+      <div class="artifact-card l3-artifact">
+  <dl>
+    <div><dt>事实</dt><dd>TrendForce 指出组件短缺是 AI 光模块扩产主要瓶颈，并描述激光器供应链短缺；Lumentum Q3 组件收入 5.333 亿美元，占收入 66%，且毛利率显著扩张。</dd></div>
+    <div><dt>推论</dt><dd>AI 光模块瓶颈不只在模块组装，更在激光器、InP、硅光和高精度组件。组件供应商若掌握稀缺产能，利润弹性可能强于普通模块代工。</dd></div>
+    <div><dt>判断</dt><dd>Lumentum、Coherent、天孚通信等上游/组件环节应获得较高 chokepoint 权重。</dd></div>
+    <div><dt>缺口</dt><dd>缺少激光器/InP 产能、lead time、组件价格和客户认证数据。</dd></div>
+    <div><dt>触发器</dt><dd>若关键组件扩产充足或模块厂可快速切换供应商，上游瓶颈评分下调。</dd></div>
+  </dl>
+</div>
+      <p class="source-links">来源：<a href="https://www.trendforce.com/presscenter/news/20260420-13017.html" target="_blank" rel="noreferrer">TrendForce: Global AI Optical Transceiver Market to Reach US$26 Billion in 2026</a> / <a href="https://www.trendforce.com/presscenter/news/20251208-12823.html" target="_blank" rel="noreferrer">TrendForce: AI data centers ignite laser shortage wave</a> / <a href="https://investor.lumentum.com/financial-news-releases/news-details/2026/Lumentum-Announces-Third-Quarter-of-Fiscal-Year-2026-Financial-Results/default.aspx" target="_blank" rel="noreferrer">Lumentum FY2026 Q3 results</a> / <a href="https://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12120784" target="_blank" rel="noreferrer">天孚通信 2026 年一季度报告</a></p>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><p class="muted">已到 L3 叶子问题，下一步通过来源更新和季度触发器继续验证。</p></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>缺少激光器/InP 产能、lead time、组件价格和客户认证数据。 触发器：若关键组件扩产充足或模块厂可快速切换供应商，上游瓶颈评分下调。</p>
+    </div>
+  </div>
+</details>
+<details id="q2-1-2" class="qa-card level-3" open>
+  <summary>
+    <span class="qid">Q2.1.2</span>
+    <span class="question">DSP、driver、TIA 和高速电芯片是否把价值转移给芯片供应商，而不是模块厂？</span>
+    <span class="qa-count">0 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      <div class="l3-meta">
+  <span class="l3-skill">技能：industry-report-analysis</span>
+  <span class="l3-execution-status">状态：verified_with_caveats</span>
+  <span class="l3-score-component">评分：chokepoint_strength</span>
+  <span class="l3-decision-use">用途：影响 chokepoint_strength、父节点结论、Q4 标的排序和行动状态。</span>
+</div>
+      <div class="artifact-card l3-artifact">
+  <dl>
+    <div><dt>事实</dt><dd>CPO/LPO 和硅光路线正在进入 AI 光互联讨论，TrendForce 预计 Micro LED CPO 到 2028 年后明显放量；当前 2026 年仍以 800G/1.6T 可插拔和相关组件为主。</dd></div>
+    <div><dt>推论</dt><dd>DSP/driver/TIA 和 LPO/CPO 可能改变价值分配：价值可能从传统模块厂转向芯片、硅光和系统方案。</dd></div>
+    <div><dt>判断</dt><dd>短期模块厂仍受益，但中期需追踪 LPO/CPO 对毛利池的迁移。</dd></div>
+    <div><dt>缺口</dt><dd>缺少 DSP supplier share、BOM、linear-drive/LPO 认证和 CPO 客户路线图。</dd></div>
+    <div><dt>触发器</dt><dd>若 CPO 或平台内置光 I/O 快速落地，传统可插拔模块价值池下调。</dd></div>
+  </dl>
+</div>
+      <p class="source-links">来源：<a href="https://www.trendforce.com/presscenter/news/20260511-13039.html" target="_blank" rel="noreferrer">TrendForce: Micro LED CPO optical transceiver market projected to reach US$848 million by 2030</a> / <a href="https://investor.lumentum.com/financial-news-releases/news-details/2026/Lumentum-Announces-Third-Quarter-of-Fiscal-Year-2026-Financial-Results/default.aspx" target="_blank" rel="noreferrer">Lumentum FY2026 Q3 results</a> / <a href="https://www.coherent.com/news/press-releases/third-quarter-fiscal-year-2026-results" target="_blank" rel="noreferrer">Coherent FY2026 Q3 results</a></p>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><p class="muted">已到 L3 叶子问题，下一步通过来源更新和季度触发器继续验证。</p></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>缺少 DSP supplier share、BOM、linear-drive/LPO 认证和 CPO 客户路线图。 触发器：若 CPO 或平台内置光 I/O 快速落地，传统可插拔模块价值池下调。</p>
+    </div>
+  </div>
+</details></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>继续补齐一手数据、反证来源、估值口径和季度监控阈值。</p>
+    </div>
+  </div>
+</details>
+<details id="q2-2" class="qa-card level-2" open>
+  <summary>
+    <span class="qid">Q2.2</span>
+    <span class="question">模块集成、良率、认证和产能爬坡</span>
+    <span class="qa-count">2 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      
+      <div class="artifact-card"><p>头部模块厂的认证、良率和交付构成短期壁垒；代工制造受益于放量，但稀缺性和现金流弹性弱于核心器件与模块龙头。</p></div>
+      
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><details id="q2-2-1" class="qa-card level-3" open>
+  <summary>
+    <span class="qid">Q2.2.1</span>
+    <span class="question">模块厂的客户认证、良率、热管理和交付能力是否构成难替代壁垒？</span>
+    <span class="qa-count">0 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      <div class="l3-meta">
+  <span class="l3-skill">技能：financial-statement-analysis</span>
+  <span class="l3-execution-status">状态：verified_with_caveats</span>
+  <span class="l3-score-component">评分：chokepoint_strength</span>
+  <span class="l3-decision-use">用途：影响 chokepoint_strength、父节点结论、Q4 标的排序和行动状态。</span>
+</div>
+      <div class="artifact-card l3-artifact">
+  <dl>
+    <div><dt>事实</dt><dd>中际旭创和新易盛业绩高增，剑桥科技高速光模块业务带动利润改善；Coherent 与 Lumentum 均体现 AI datacenter 高速产品带来的收入和利润改善。</dd></div>
+    <div><dt>推论</dt><dd>客户认证、良率、热管理和规模交付形成模块厂壁垒，尤其在 800G/1.6T 初期。</dd></div>
+    <div><dt>判断</dt><dd>中际旭创、新易盛是模块集成环节核心观察对象；但需要跟踪 ASP 和毛利率是否被竞争压缩。</dd></div>
+    <div><dt>缺口</dt><dd>缺少模块厂分速率毛利率、良率和客户份额。</dd></div>
+    <div><dt>触发器</dt><dd>若二线厂快速通过认证或价格竞争压缩毛利，模块厂 chokepoint_strength 下调。</dd></div>
+  </dl>
+</div>
+      <p class="source-links">来源：<a href="https://investor.lumentum.com/financial-news-releases/news-details/2026/Lumentum-Announces-Third-Quarter-of-Fiscal-Year-2026-Financial-Results/default.aspx" target="_blank" rel="noreferrer">Lumentum FY2026 Q3 results</a> / <a href="https://www.coherent.com/news/press-releases/third-quarter-fiscal-year-2026-results" target="_blank" rel="noreferrer">Coherent FY2026 Q3 results</a> / <a href="https://www.nbd.com.cn/articles/2026-04-16/4343067.html" target="_blank" rel="noreferrer">中际旭创 2026 年一季度业绩报道</a> / <a href="https://www.nbd.com.cn/articles/2026-04-24/4356799.html" target="_blank" rel="noreferrer">新易盛 2025 年报及 2026 年一季度业绩报道</a> / <a href="https://stockmc.xueqiu.com/202604/603083_20260428_T4QY.pdf" target="_blank" rel="noreferrer">剑桥科技 2026 年一季度报告</a></p>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><p class="muted">已到 L3 叶子问题，下一步通过来源更新和季度触发器继续验证。</p></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>缺少模块厂分速率毛利率、良率和客户份额。 触发器：若二线厂快速通过认证或价格竞争压缩毛利，模块厂 chokepoint_strength 下调。</p>
+    </div>
+  </div>
+</details>
+<details id="q2-2-2" class="qa-card level-3" open>
+  <summary>
+    <span class="qid">Q2.2.2</span>
+    <span class="question">Fabrinet 等代工环节是否是产能瓶颈，还是只获得低弹性的制造 beta？</span>
+    <span class="qa-count">0 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      <div class="l3-meta">
+  <span class="l3-skill">技能：financial-statement-analysis</span>
+  <span class="l3-execution-status">状态：verified_with_caveats</span>
+  <span class="l3-score-component">评分：payoff_convexity</span>
+  <span class="l3-decision-use">用途：影响 payoff_convexity、父节点结论、Q4 标的排序和行动状态。</span>
+</div>
+      <div class="artifact-card l3-artifact">
+  <dl>
+    <div><dt>事实</dt><dd>Fabrinet FY26 Q3 收入创纪录并给出强 Q4 指引，但本季 non-GAAP FCF 为负，主要因资本开支增加。</dd></div>
+    <div><dt>推论</dt><dd>代工制造能直接受益于模块放量，但其瓶颈属性弱于核心光芯片和头部模块厂；扩产也会消耗现金流。</dd></div>
+    <div><dt>判断</dt><dd>Fabrinet 是制造 beta 和订单能见度观察标的，不应和掌握关键器件/认证的公司同等评分。</dd></div>
+    <div><dt>缺口</dt><dd>缺少客户 mix、产能利用率、毛利率按项目拆分和 capex 回报。</dd></div>
+    <div><dt>触发器</dt><dd>若扩产不能转化为利润和 FCF，Fabrinet 维持 watch_only。</dd></div>
+  </dl>
+</div>
+      <p class="source-links">来源：<a href="https://www.coherent.com/news/press-releases/third-quarter-fiscal-year-2026-results" target="_blank" rel="noreferrer">Coherent FY2026 Q3 results</a> / <a href="https://investor.fabrinet.com/news-releases/news-release-details/fabrinet-announces-third-quarter-fiscal-year-2026-financial" target="_blank" rel="noreferrer">Fabrinet FY2026 Q3 results</a></p>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><p class="muted">已到 L3 叶子问题，下一步通过来源更新和季度触发器继续验证。</p></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>缺少客户 mix、产能利用率、毛利率按项目拆分和 capex 回报。 触发器：若扩产不能转化为利润和 FCF，Fabrinet 维持 watch_only。</p>
+    </div>
+  </div>
+</details></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>继续补齐一手数据、反证来源、估值口径和季度监控阈值。</p>
+    </div>
+  </div>
+</details>
+<details id="q2-3" class="qa-card level-2" open>
+  <summary>
+    <span class="qid">Q2.3</span>
+    <span class="question">公司财务转化和竞争格局</span>
+    <span class="qa-count">2 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      
+      <div class="artifact-card"><p>国内模块龙头业绩弹性最直接，海外 photonics 龙头上游能力强；二者的估值、客户集中和产品 mix 决定最终排序。</p></div>
+      
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><details id="q2-3-1" class="qa-card level-3" open>
+  <summary>
+    <span class="qid">Q2.3.1</span>
+    <span class="question">哪些公司把 800G/1.6T 需求转化成收入、毛利率、净利率和现金流？</span>
+    <span class="qa-count">0 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      <div class="l3-meta">
+  <span class="l3-skill">技能：financial-statement-analysis</span>
+  <span class="l3-execution-status">状态：verified_with_caveats</span>
+  <span class="l3-score-component">评分：target_ranking</span>
+  <span class="l3-decision-use">用途：影响 target_ranking、父节点结论、Q4 标的排序和行动状态。</span>
+</div>
+      <div class="artifact-card l3-artifact">
+  <dl>
+    <div><dt>事实</dt><dd>中际旭创 2026Q1 收入 194.96 亿元、净利润 57.35 亿元；新易盛 Q1 收入 83.38 亿元、净利润 27.80 亿元；Lumentum/Coherent/Fabrinet 也披露强增长。</dd></div>
+    <div><dt>推论</dt><dd>光模块需求已经进入财务报表，但各公司价值捕获不同：模块厂收入弹性大，上游器件毛利弹性高，代工制造现金流更受 capex 影响。</dd></div>
+    <div><dt>判断</dt><dd>中际旭创和新易盛具备最直接模块弹性，Lumentum/Coherent 具备器件和垂直整合弹性，Fabrinet 更偏制造 beta。</dd></div>
+    <div><dt>缺口</dt><dd>缺少统一毛利率、现金流、订单和估值分位表。</dd></div>
+    <div><dt>触发器</dt><dd>收入高增但毛利率或现金流恶化时，不能提高行动状态。</dd></div>
+  </dl>
+</div>
+      <p class="source-links">来源：<a href="https://investor.lumentum.com/financial-news-releases/news-details/2026/Lumentum-Announces-Third-Quarter-of-Fiscal-Year-2026-Financial-Results/default.aspx" target="_blank" rel="noreferrer">Lumentum FY2026 Q3 results</a> / <a href="https://www.coherent.com/news/press-releases/third-quarter-fiscal-year-2026-results" target="_blank" rel="noreferrer">Coherent FY2026 Q3 results</a> / <a href="https://investor.fabrinet.com/news-releases/news-release-details/fabrinet-announces-third-quarter-fiscal-year-2026-financial" target="_blank" rel="noreferrer">Fabrinet FY2026 Q3 results</a> / <a href="https://www.nbd.com.cn/articles/2026-04-16/4343067.html" target="_blank" rel="noreferrer">中际旭创 2026 年一季度业绩报道</a> / <a href="https://www.nbd.com.cn/articles/2026-04-24/4356799.html" target="_blank" rel="noreferrer">新易盛 2025 年报及 2026 年一季度业绩报道</a></p>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><p class="muted">已到 L3 叶子问题，下一步通过来源更新和季度触发器继续验证。</p></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>缺少统一毛利率、现金流、订单和估值分位表。 触发器：收入高增但毛利率或现金流恶化时，不能提高行动状态。</p>
+    </div>
+  </div>
+</details>
+<details id="q2-3-2" class="qa-card level-3" open>
+  <summary>
+    <span class="qid">Q2.3.2</span>
+    <span class="question">国内模块龙头和海外器件/制造龙头的价值捕获差异是什么？</span>
+    <span class="qa-count">0 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      <div class="l3-meta">
+  <span class="l3-skill">技能：target-recommendation-analysis</span>
+  <span class="l3-execution-status">状态：verified_with_caveats</span>
+  <span class="l3-score-component">评分：chokepoint_strength</span>
+  <span class="l3-decision-use">用途：影响 chokepoint_strength、父节点结论、Q4 标的排序和行动状态。</span>
+</div>
+      <div class="artifact-card l3-artifact">
+  <dl>
+    <div><dt>事实</dt><dd>国内模块龙头中际旭创、新易盛业绩弹性最强；Lumentum 和 Coherent 在激光、组件和系统层有更强上游/垂直整合；天孚通信处于光器件环节；剑桥科技规模较小但改善明显。</dd></div>
+    <div><dt>推论</dt><dd>国内龙头更贴近模块放量，海外龙头更贴近上游器件与垂直能力；估值和客户结构决定排序。</dd></div>
+    <div><dt>判断</dt><dd>Q4 标的排序需要把“模块收入弹性”和“上游瓶颈稀缺性”分开处理。</dd></div>
+    <div><dt>缺口</dt><dd>缺少客户结构、产品 mix、估值和订单质量的统一比较。</dd></div>
+    <div><dt>触发器</dt><dd>若公司只是主题暴露而缺少瓶颈控制或财务弹性，降为 watch_only/no_action。</dd></div>
+  </dl>
+</div>
+      <p class="source-links">来源：<a href="https://investor.lumentum.com/financial-news-releases/news-details/2026/Lumentum-Announces-Third-Quarter-of-Fiscal-Year-2026-Financial-Results/default.aspx" target="_blank" rel="noreferrer">Lumentum FY2026 Q3 results</a> / <a href="https://www.coherent.com/news/press-releases/third-quarter-fiscal-year-2026-results" target="_blank" rel="noreferrer">Coherent FY2026 Q3 results</a> / <a href="https://www.nbd.com.cn/articles/2026-04-16/4343067.html" target="_blank" rel="noreferrer">中际旭创 2026 年一季度业绩报道</a> / <a href="https://www.nbd.com.cn/articles/2026-04-24/4356799.html" target="_blank" rel="noreferrer">新易盛 2025 年报及 2026 年一季度业绩报道</a> / <a href="https://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12120784" target="_blank" rel="noreferrer">天孚通信 2026 年一季度报告</a> / <a href="https://stockmc.xueqiu.com/202604/603083_20260428_T4QY.pdf" target="_blank" rel="noreferrer">剑桥科技 2026 年一季度报告</a></p>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><p class="muted">已到 L3 叶子问题，下一步通过来源更新和季度触发器继续验证。</p></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>缺少客户结构、产品 mix、估值和订单质量的统一比较。 触发器：若公司只是主题暴露而缺少瓶颈控制或财务弹性，降为 watch_only/no_action。</p>
+    </div>
+  </div>
+</details></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>继续补齐一手数据、反证来源、估值口径和季度监控阈值。</p>
+    </div>
+  </div>
+</details></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>继续补齐一手数据、反证来源、估值口径和季度监控阈值。</p>
+    </div>
+  </div>
+</details>
+<details id="q3" class="qa-card level-1" open>
+  <summary>
+    <span class="qid">Q3</span>
+    <span class="question">反证与定价：哪些技术替代、供给扩张、客户 capex 或估值信号会推翻机会？</span>
+    <span class="qa-count">3 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      
+      <div class="artifact-card"><p>主要反证来自 CPO/LPO/OCS 等架构变化、扩产后 ASP 下行、客户集中和估值已经定价。</p></div>
+      
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><details id="q3-1" class="qa-card level-2" open>
+  <summary>
+    <span class="qid">Q3.1</span>
+    <span class="question">技术替代和架构反证</span>
+    <span class="qa-count">2 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      
+      <div class="artifact-card"><p>CPO/LPO/OCS 短期不会完全否定可插拔模块机会，但会改变长期利润池，需要作为技术路线 kill test。</p></div>
+      
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><details id="q3-1-1" class="qa-card level-3" open>
+  <summary>
+    <span class="qid">Q3.1.1</span>
+    <span class="question">LPO/CPO/硅光是否会提高部分供应商壁垒，还是削弱传统可插拔模块价值？</span>
+    <span class="qa-count">0 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      <div class="l3-meta">
+  <span class="l3-skill">技能：industry-report-analysis</span>
+  <span class="l3-execution-status">状态：verified_with_caveats</span>
+  <span class="l3-score-component">评分：disconfirming_risk_control</span>
+  <span class="l3-decision-use">用途：影响 disconfirming_risk_control、父节点结论、Q4 标的排序和行动状态。</span>
+</div>
+      <div class="artifact-card l3-artifact">
+  <dl>
+    <div><dt>事实</dt><dd>TrendForce 预计 CPO 相关产品 2028 年下半年后明显放量，CPO/硅光是中长期变量；2026 年高速可插拔模块仍是主线。</dd></div>
+    <div><dt>推论</dt><dd>LPO/CPO/硅光短期更像升级路径而非立即替代，但它会改变长期价值分配。</dd></div>
+    <div><dt>判断</dt><dd>2026 年不应因 CPO 否定可插拔模块机会，但必须把 CPO 路线图作为 Q3 kill test。</dd></div>
+    <div><dt>缺口</dt><dd>缺少客户 CPO 量产路线、LPO 认证、硅光成本和可靠性数据。</dd></div>
+    <div><dt>触发器</dt><dd>若 CPO 或平台内置光 I/O 提前规模化，可插拔模块估值下调。</dd></div>
+  </dl>
+</div>
+      <p class="source-links">来源：<a href="https://www.trendforce.com/presscenter/news/20260420-13017.html" target="_blank" rel="noreferrer">TrendForce: Global AI Optical Transceiver Market to Reach US$26 Billion in 2026</a> / <a href="https://www.trendforce.com/presscenter/news/20260511-13039.html" target="_blank" rel="noreferrer">TrendForce: Micro LED CPO optical transceiver market projected to reach US$848 million by 2030</a></p>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><p class="muted">已到 L3 叶子问题，下一步通过来源更新和季度触发器继续验证。</p></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>缺少客户 CPO 量产路线、LPO 认证、硅光成本和可靠性数据。 触发器：若 CPO 或平台内置光 I/O 提前规模化，可插拔模块估值下调。</p>
+    </div>
+  </div>
+</details>
+<details id="q3-1-2" class="qa-card level-3" open>
+  <summary>
+    <span class="qid">Q3.1.2</span>
+    <span class="question">铜互连、OCS 或网络架构优化会不会减少光模块数量或改变利润池？</span>
+    <span class="qa-count">0 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      <div class="l3-meta">
+  <span class="l3-skill">技能：news-event-analysis</span>
+  <span class="l3-execution-status">状态：verified_with_caveats</span>
+  <span class="l3-score-component">评分：disconfirming_risk_control</span>
+  <span class="l3-decision-use">用途：影响 disconfirming_risk_control、父节点结论、Q4 标的排序和行动状态。</span>
+</div>
+      <div class="artifact-card l3-artifact">
+  <dl>
+    <div><dt>事实</dt><dd>TrendForce 将 OCS 和 CPO 列为高带宽互连的重要方向；Lumentum 也把 optical circuit switches 作为未来增长驱动。</dd></div>
+    <div><dt>推论</dt><dd>OCS/铜互连/网络拓扑优化可能减少部分链路的光模块需求，也可能创造新的光器件价值池。</dd></div>
+    <div><dt>判断</dt><dd>该问题是反证也是二阶机会，需跟踪 OCS 对 Lumentum/组件商与模块厂的相对影响。</dd></div>
+    <div><dt>缺口</dt><dd>缺少 OCS 部署、铜互连 reach、switch roadmap 和端口数变化。</dd></div>
+    <div><dt>触发器</dt><dd>若架构优化显著降低光模块端口数，模块厂 future_space 下调。</dd></div>
+  </dl>
+</div>
+      <p class="source-links">来源：<a href="https://www.trendforce.com/presscenter/news/20260511-13039.html" target="_blank" rel="noreferrer">TrendForce: Micro LED CPO optical transceiver market projected to reach US$848 million by 2030</a> / <a href="https://investor.lumentum.com/financial-news-releases/news-details/2026/Lumentum-Announces-Third-Quarter-of-Fiscal-Year-2026-Financial-Results/default.aspx" target="_blank" rel="noreferrer">Lumentum FY2026 Q3 results</a></p>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><p class="muted">已到 L3 叶子问题，下一步通过来源更新和季度触发器继续验证。</p></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>缺少 OCS 部署、铜互连 reach、switch roadmap 和端口数变化。 触发器：若架构优化显著降低光模块端口数，模块厂 future_space 下调。</p>
+    </div>
+  </div>
+</details></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>继续补齐一手数据、反证来源、估值口径和季度监控阈值。</p>
+    </div>
+  </div>
+</details>
+<details id="q3-2" class="qa-card level-2" open>
+  <summary>
+    <span class="qid">Q3.2</span>
+    <span class="question">供给扩张、价格和客户议价</span>
+    <span class="qa-count">2 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      
+      <div class="artifact-card"><p>供给扩张与价格竞争是最直接反证；客户集中和地缘风险限制估值上限。</p></div>
+      
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><details id="q3-2-1" class="qa-card level-3" open>
+  <summary>
+    <span class="qid">Q3.2.1</span>
+    <span class="question">模块和上游器件扩产会不会在 800G/1.6T 放量后造成价格竞争和毛利率下行？</span>
+    <span class="qa-count">0 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      <div class="l3-meta">
+  <span class="l3-skill">技能：industry-report-analysis</span>
+  <span class="l3-execution-status">状态：verified_with_caveats</span>
+  <span class="l3-score-component">评分：disconfirming_risk_control</span>
+  <span class="l3-decision-use">用途：影响 disconfirming_risk_control、父节点结论、Q4 标的排序和行动状态。</span>
+</div>
+      <div class="artifact-card l3-artifact">
+  <dl>
+    <div><dt>事实</dt><dd>行业预测显示需求强，但券商报道提示产能满足率约 70%-80%/50%-60%，同时大量厂商扩产。</dd></div>
+    <div><dt>推论</dt><dd>供给短缺支持当前价格和毛利率，但扩产会在 800G/1.6T 放量后带来价格竞争。</dd></div>
+    <div><dt>判断</dt><dd>ASP 和毛利率是最重要的季度反证，不能只看收入增长。</dd></div>
+    <div><dt>缺口</dt><dd>缺少 ASP、产能扩张、库存和客户 bidding 数据。</dd></div>
+    <div><dt>触发器</dt><dd>若产能释放快于需求、ASP 下降且毛利率转弱，Q2/Q4 同时降级。</dd></div>
+  </dl>
+</div>
+      <p class="source-links">来源：<a href="https://www.trendforce.com/presscenter/news/20260420-13017.html" target="_blank" rel="noreferrer">TrendForce: Global AI Optical Transceiver Market to Reach US$26 Billion in 2026</a> / <a href="https://investor.lumentum.com/financial-news-releases/news-details/2026/Lumentum-Announces-Third-Quarter-of-Fiscal-Year-2026-Financial-Results/default.aspx" target="_blank" rel="noreferrer">Lumentum FY2026 Q3 results</a> / <a href="https://investor.fabrinet.com/news-releases/news-release-details/fabrinet-announces-third-quarter-fiscal-year-2026-financial" target="_blank" rel="noreferrer">Fabrinet FY2026 Q3 results</a> / <a href="https://finance.sina.com.cn/stock/relnews/cn/2026-04-24/doc-inhvpkaq4780264.shtml" target="_blank" rel="noreferrer">券商聚焦：光模块龙头地位稳固，800G/1.6T 需求强劲</a></p>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><p class="muted">已到 L3 叶子问题，下一步通过来源更新和季度触发器继续验证。</p></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>缺少 ASP、产能扩张、库存和客户 bidding 数据。 触发器：若产能释放快于需求、ASP 下降且毛利率转弱，Q2/Q4 同时降级。</p>
+    </div>
+  </div>
+</details>
+<details id="q3-2-2" class="qa-card level-3" open>
+  <summary>
+    <span class="qid">Q3.2.2</span>
+    <span class="question">客户集中、贸易限制和地缘政治会不会压低龙头公司的可持续估值？</span>
+    <span class="qa-count">0 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      <div class="l3-meta">
+  <span class="l3-skill">技能：news-event-analysis</span>
+  <span class="l3-execution-status">状态：verified_with_caveats</span>
+  <span class="l3-score-component">评分：risk_control</span>
+  <span class="l3-decision-use">用途：影响 risk_control、父节点结论、Q4 标的排序和行动状态。</span>
+</div>
+      <div class="artifact-card l3-artifact">
+  <dl>
+    <div><dt>事实</dt><dd>行业高度依赖 NVIDIA 和头部云客户；中际、新易盛、Lumentum、Coherent 都受 AI 数据中心资本开支影响。</dd></div>
+    <div><dt>推论</dt><dd>客户集中既提高订单可见度，也提高议价和订单重分配风险；地缘和贸易限制会影响供应链配置。</dd></div>
+    <div><dt>判断</dt><dd>客户集中和地缘风险应限制估值上限，尤其对高估值标的。</dd></div>
+    <div><dt>缺口</dt><dd>缺少客户集中度、出口限制、地区收入和合规风险数据。</dd></div>
+    <div><dt>触发器</dt><dd>若核心客户下调订单或因贸易限制改变供应链，标的排序重算。</dd></div>
+  </dl>
+</div>
+      <p class="source-links">来源：<a href="https://www.trendforce.com/presscenter/news/20251208-12823.html" target="_blank" rel="noreferrer">TrendForce: AI data centers ignite laser shortage wave</a> / <a href="https://investor.lumentum.com/financial-news-releases/news-details/2026/Lumentum-Announces-Third-Quarter-of-Fiscal-Year-2026-Financial-Results/default.aspx" target="_blank" rel="noreferrer">Lumentum FY2026 Q3 results</a> / <a href="https://www.coherent.com/news/press-releases/third-quarter-fiscal-year-2026-results" target="_blank" rel="noreferrer">Coherent FY2026 Q3 results</a> / <a href="https://www.nbd.com.cn/articles/2026-04-16/4343067.html" target="_blank" rel="noreferrer">中际旭创 2026 年一季度业绩报道</a></p>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><p class="muted">已到 L3 叶子问题，下一步通过来源更新和季度触发器继续验证。</p></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>缺少客户集中度、出口限制、地区收入和合规风险数据。 触发器：若核心客户下调订单或因贸易限制改变供应链，标的排序重算。</p>
+    </div>
+  </div>
+</details></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>继续补齐一手数据、反证来源、估值口径和季度监控阈值。</p>
+    </div>
+  </div>
+</details>
+<details id="q3-3" class="qa-card level-2" open>
+  <summary>
+    <span class="qid">Q3.3</span>
+    <span class="question">估值隐含预期和监控阈值</span>
+    <span class="qa-count">2 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      
+      <div class="artifact-card"><p>估值已明显拥挤，尤其美股 photonics 龙头；必须用实时估值、订单和毛利率验证赔率。</p></div>
+      
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><details id="q3-3-1" class="qa-card level-3" open>
+  <summary>
+    <span class="qid">Q3.3.1</span>
+    <span class="question">当前估值是否已经把 800G/1.6T 高增长和高利润率充分定价？</span>
+    <span class="qa-count">0 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      <div class="l3-meta">
+  <span class="l3-skill">技能：valuation-analysis</span>
+  <span class="l3-execution-status">状态：verified_with_caveats</span>
+  <span class="l3-score-component">评分：valuation_odds</span>
+  <span class="l3-decision-use">用途：影响 valuation_odds、父节点结论、Q4 标的排序和行动状态。</span>
+</div>
+      <div class="artifact-card l3-artifact">
+  <dl>
+    <div><dt>事实</dt><dd>Lumentum 市值约 702 亿美元、PE 约 171.5、forward PE 约 57；Coherent 市值约 738.7 亿美元且一年大幅上涨；中际旭创卖方估算 2026/2027/2028 PE 约 31.6/16.4/11.3。</dd></div>
+    <div><dt>推论</dt><dd>光模块产业逻辑强，但美股上游/器件龙头估值已经反映大量增长，A 股龙头若盈利预测兑现则赔率更好但预测风险高。</dd></div>
+    <div><dt>判断</dt><dd>估值赔率分化：中际旭创较有赔率但需实时价格验证；LITE/COHR 更像高质量高估值 watch_only。</dd></div>
+    <div><dt>缺口</dt><dd>缺少实时价格、EV/EBITDA、forward EPS、历史分位和一致预期变化。</dd></div>
+    <div><dt>触发器</dt><dd>若估值要求多年高增长且毛利率无失误，安全边际不足。</dd></div>
+  </dl>
+</div>
+      <p class="source-links">来源：<a href="https://stock.finance.sina.com.cn/stock/go.php/vReport_Show/kind/search/rptid/830260860305/index.phtml" target="_blank" rel="noreferrer">中际旭创 2026 年一季报点评及盈利预测</a> / <a href="https://stockanalysis.com/stocks/lite/" target="_blank" rel="noreferrer">StockAnalysis Lumentum valuation snapshot</a> / <a href="https://stockanalysis.com/stocks/cohr/market-cap/" target="_blank" rel="noreferrer">StockAnalysis Coherent market-cap snapshot</a></p>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><p class="muted">已到 L3 叶子问题，下一步通过来源更新和季度触发器继续验证。</p></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>缺少实时价格、EV/EBITDA、forward EPS、历史分位和一致预期变化。 触发器：若估值要求多年高增长且毛利率无失误，安全边际不足。</p>
+    </div>
+  </div>
+</details>
+<details id="q3-3-2" class="qa-card level-3" open>
+  <summary>
+    <span class="qid">Q3.3.2</span>
+    <span class="question">季度跟踪哪些硬指标可以最快发现需求、价格或份额拐点？</span>
+    <span class="qa-count">0 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      <div class="l3-meta">
+  <span class="l3-skill">技能：target-recommendation-analysis</span>
+  <span class="l3-execution-status">状态：verified_with_caveats</span>
+  <span class="l3-score-component">评分：monitorability</span>
+  <span class="l3-decision-use">用途：影响 monitorability、父节点结论、Q4 标的排序和行动状态。</span>
+</div>
+      <div class="artifact-card l3-artifact">
+  <dl>
+    <div><dt>事实</dt><dd>可监控数据包括季度收入、毛利率、订单/客户锁定、组件短缺、ASP、库存和 capex；当前项目缺少自动化更新。</dd></div>
+    <div><dt>推论</dt><dd>光模块周期拐点通常先体现在 ASP、订单能见度和毛利率，而不是行业新闻。</dd></div>
+    <div><dt>判断</dt><dd>后续应建立季度红黄绿信号表，而不是靠新闻流更新。</dd></div>
+    <div><dt>缺口</dt><dd>缺少 ASP、backlog、客户订单、库存和技术认证进展。</dd></div>
+    <div><dt>触发器</dt><dd>任一核心指标连续两个季度恶化，目标分数重算。</dd></div>
+  </dl>
+</div>
+      <p class="source-links">来源：<a href="https://investor.lumentum.com/financial-news-releases/news-details/2026/Lumentum-Announces-Third-Quarter-of-Fiscal-Year-2026-Financial-Results/default.aspx" target="_blank" rel="noreferrer">Lumentum FY2026 Q3 results</a> / <a href="https://www.coherent.com/news/press-releases/third-quarter-fiscal-year-2026-results" target="_blank" rel="noreferrer">Coherent FY2026 Q3 results</a> / <a href="https://www.nbd.com.cn/articles/2026-04-16/4343067.html" target="_blank" rel="noreferrer">中际旭创 2026 年一季度业绩报道</a> / <a href="https://www.nbd.com.cn/articles/2026-04-24/4356799.html" target="_blank" rel="noreferrer">新易盛 2025 年报及 2026 年一季度业绩报道</a></p>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><p class="muted">已到 L3 叶子问题，下一步通过来源更新和季度触发器继续验证。</p></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>缺少 ASP、backlog、客户订单、库存和技术认证进展。 触发器：任一核心指标连续两个季度恶化，目标分数重算。</p>
+    </div>
+  </div>
+</details></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>继续补齐一手数据、反证来源、估值口径和季度监控阈值。</p>
+    </div>
+  </div>
+</details></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>继续补齐一手数据、反证来源、估值口径和季度监控阈值。</p>
+    </div>
+  </div>
+</details>
+<details id="q4" class="qa-card level-1" open>
+  <summary>
+    <span class="qid">Q4</span>
+    <span class="question">标的：哪些具体证券最能把光模块瓶颈转化为赔率和业绩弹性？</span>
+    <span class="qa-count">2 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      
+      <div class="artifact-card"><p>当前观察优先级偏向中际旭创，其次新易盛、Lumentum、Coherent；天孚通信为组件观察，Fabrinet/剑桥科技为二阶或低强度观察。</p></div>
+      
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><details id="q4-1" class="qa-card level-2" open>
+  <summary>
+    <span class="qid">Q4.1</span>
+    <span class="question">投资 universe 与瓶颈映射</span>
+    <span class="qa-count">2 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      
+      <div class="artifact-card"><p>投资 universe 必须按节点映射：模块、组件、激光器/硅光、代工、CPO/芯片，而不是统一贴“光模块”标签。</p></div>
+      
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><details id="q4-1-1" class="qa-card level-3" open>
+  <summary>
+    <span class="qid">Q4.1.1</span>
+    <span class="question">哪些具体证券对应光模块、激光器/器件、代工制造和硅光/芯片节点？</span>
+    <span class="qa-count">0 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      <div class="l3-meta">
+  <span class="l3-skill">技能：target-recommendation-analysis</span>
+  <span class="l3-execution-status">状态：verified_with_caveats</span>
+  <span class="l3-score-component">评分：target_ranking</span>
+  <span class="l3-decision-use">用途：影响 target_ranking、父节点结论、Q4 标的排序和行动状态。</span>
+</div>
+      <div class="artifact-card l3-artifact">
+  <dl>
+    <div><dt>事实</dt><dd>可投资 universe 覆盖中际旭创、新易盛、天孚通信、剑桥科技、Lumentum、Coherent、Fabrinet，并可扩展到 Marvell/Broadcom 等电芯片和交换链条。</dd></div>
+    <div><dt>推论</dt><dd>不同标的映射的瓶颈不同：模块、组件、激光器/硅光、代工制造和 DSP/电芯片不能混为一谈。</dd></div>
+    <div><dt>判断</dt><dd>最终表应按节点敞口排序，而不是按“光模块概念”统一加分。</dd></div>
+    <div><dt>缺口</dt><dd>缺少部分海外/中国标的实时估值、客户结构和产品 mix。</dd></div>
+    <div><dt>触发器</dt><dd>敞口低或估值不可验证的标的不进入高强度观察。</dd></div>
+  </dl>
+</div>
+      <p class="source-links">来源：<a href="https://investor.lumentum.com/financial-news-releases/news-details/2026/Lumentum-Announces-Third-Quarter-of-Fiscal-Year-2026-Financial-Results/default.aspx" target="_blank" rel="noreferrer">Lumentum FY2026 Q3 results</a> / <a href="https://www.coherent.com/news/press-releases/third-quarter-fiscal-year-2026-results" target="_blank" rel="noreferrer">Coherent FY2026 Q3 results</a> / <a href="https://investor.fabrinet.com/news-releases/news-release-details/fabrinet-announces-third-quarter-fiscal-year-2026-financial" target="_blank" rel="noreferrer">Fabrinet FY2026 Q3 results</a> / <a href="https://www.nbd.com.cn/articles/2026-04-16/4343067.html" target="_blank" rel="noreferrer">中际旭创 2026 年一季度业绩报道</a> / <a href="https://www.nbd.com.cn/articles/2026-04-24/4356799.html" target="_blank" rel="noreferrer">新易盛 2025 年报及 2026 年一季度业绩报道</a> / <a href="https://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12120784" target="_blank" rel="noreferrer">天孚通信 2026 年一季度报告</a> / <a href="https://stockmc.xueqiu.com/202604/603083_20260428_T4QY.pdf" target="_blank" rel="noreferrer">剑桥科技 2026 年一季度报告</a></p>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><p class="muted">已到 L3 叶子问题，下一步通过来源更新和季度触发器继续验证。</p></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>缺少部分海外/中国标的实时估值、客户结构和产品 mix。 触发器：敞口低或估值不可验证的标的不进入高强度观察。</p>
+    </div>
+  </div>
+</details>
+<details id="q4-1-2" class="qa-card level-3" open>
+  <summary>
+    <span class="qid">Q4.1.2</span>
+    <span class="question">哪些标的只是主题热度或二阶 beta，不能进入高强度观察？</span>
+    <span class="qa-count">0 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      <div class="l3-meta">
+  <span class="l3-skill">技能：target-recommendation-analysis</span>
+  <span class="l3-execution-status">状态：verified_with_caveats</span>
+  <span class="l3-score-component">评分：action_state</span>
+  <span class="l3-decision-use">用途：影响 action_state、父节点结论、Q4 标的排序和行动状态。</span>
+</div>
+      <div class="artifact-card l3-artifact">
+  <dl>
+    <div><dt>事实</dt><dd>剑桥科技和 Fabrinet 属于受益链但瓶颈控制弱于中际/新易盛/Lumentum/Coherent；天孚通信组件地位较好但规模和估值仍需验证。</dd></div>
+    <div><dt>推论</dt><dd>二阶 beta 可以赚钱，但不能因为主题热度就当作稀缺瓶颈。</dd></div>
+    <div><dt>判断</dt><dd>Fabrinet、剑桥科技等更适合 watch_only/no_action；天孚通信需看组件稀缺和估值。</dd></div>
+    <div><dt>缺口</dt><dd>缺少二阶标的 capex 回报、订单质量和估值安全边际。</dd></div>
+    <div><dt>触发器</dt><dd>若不能证明稀缺性和利润弹性，保持低行动状态。</dd></div>
+  </dl>
+</div>
+      <p class="source-links">来源：<a href="https://investor.fabrinet.com/news-releases/news-release-details/fabrinet-announces-third-quarter-fiscal-year-2026-financial" target="_blank" rel="noreferrer">Fabrinet FY2026 Q3 results</a> / <a href="https://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12120784" target="_blank" rel="noreferrer">天孚通信 2026 年一季度报告</a> / <a href="https://stockmc.xueqiu.com/202604/603083_20260428_T4QY.pdf" target="_blank" rel="noreferrer">剑桥科技 2026 年一季度报告</a> / <a href="https://stockanalysis.com/stocks/lite/" target="_blank" rel="noreferrer">StockAnalysis Lumentum valuation snapshot</a></p>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><p class="muted">已到 L3 叶子问题，下一步通过来源更新和季度触发器继续验证。</p></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>缺少二阶标的 capex 回报、订单质量和估值安全边际。 触发器：若不能证明稀缺性和利润弹性，保持低行动状态。</p>
+    </div>
+  </div>
+</details></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>继续补齐一手数据、反证来源、估值口径和季度监控阈值。</p>
+    </div>
+  </div>
+</details>
+<details id="q4-2" class="qa-card level-2" open>
+  <summary>
+    <span class="qid">Q4.2</span>
+    <span class="question">排序、赔率和复盘计划</span>
+    <span class="qa-count">2 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      
+      <div class="artifact-card"><p>最高强度来自需求高增、瓶颈控制、财务弹性和估值仍可解释的交集；其余标的以 watch_only 为主。</p></div>
+      
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><details id="q4-2-1" class="qa-card level-3" open>
+  <summary>
+    <span class="qid">Q4.2.1</span>
+    <span class="question">哪些标的同时满足稀缺性、错定价、利润弹性和风险可控？</span>
+    <span class="qa-count">0 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      <div class="l3-meta">
+  <span class="l3-skill">技能：target-recommendation-analysis</span>
+  <span class="l3-execution-status">状态：verified_with_caveats</span>
+  <span class="l3-score-component">评分：target_ranking</span>
+  <span class="l3-decision-use">用途：影响 target_ranking、父节点结论、Q4 标的排序和行动状态。</span>
+</div>
+      <div class="artifact-card l3-artifact">
+  <dl>
+    <div><dt>事实</dt><dd>中际旭创和新易盛财务弹性最强；Lumentum/Coherent 掌握上游组件和垂直能力但估值较高；天孚通信是组件观察；Fabrinet/剑桥科技是二阶或低权重。</dd></div>
+    <div><dt>推论</dt><dd>最高观察强度来自“需求高增 + 瓶颈控制 + 财务弹性 + 估值仍可解释”的组合。</dd></div>
+    <div><dt>判断</dt><dd>中际旭创可列为最高强度观察；新易盛、Lumentum、Coherent 维持 watch_only；其他标的根据证据补齐再升级。</dd></div>
+    <div><dt>缺口</dt><dd>缺少实时估值和订单质量验证，不能把全部标的设为高强度。</dd></div>
+    <div><dt>触发器</dt><dd>任一核心维度缺失时，行动状态上限为 watch_only 或 no_action。</dd></div>
+  </dl>
+</div>
+      <p class="source-links">来源：<a href="https://investor.lumentum.com/financial-news-releases/news-details/2026/Lumentum-Announces-Third-Quarter-of-Fiscal-Year-2026-Financial-Results/default.aspx" target="_blank" rel="noreferrer">Lumentum FY2026 Q3 results</a> / <a href="https://www.coherent.com/news/press-releases/third-quarter-fiscal-year-2026-results" target="_blank" rel="noreferrer">Coherent FY2026 Q3 results</a> / <a href="https://www.nbd.com.cn/articles/2026-04-16/4343067.html" target="_blank" rel="noreferrer">中际旭创 2026 年一季度业绩报道</a> / <a href="https://www.nbd.com.cn/articles/2026-04-24/4356799.html" target="_blank" rel="noreferrer">新易盛 2025 年报及 2026 年一季度业绩报道</a> / <a href="https://stock.finance.sina.com.cn/stock/go.php/vReport_Show/kind/search/rptid/830260860305/index.phtml" target="_blank" rel="noreferrer">中际旭创 2026 年一季报点评及盈利预测</a></p>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><p class="muted">已到 L3 叶子问题，下一步通过来源更新和季度触发器继续验证。</p></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>缺少实时估值和订单质量验证，不能把全部标的设为高强度。 触发器：任一核心维度缺失时，行动状态上限为 watch_only 或 no_action。</p>
+    </div>
+  </div>
+</details>
+<details id="q4-2-2" class="qa-card level-3" open>
+  <summary>
+    <span class="qid">Q4.2.2</span>
+    <span class="question">下一次复盘前必须补哪些数据，哪些事件会改变排序？</span>
+    <span class="qa-count">0 个子问题</span>
+    <span class="chevron">›</span>
+  </summary>
+  <div class="qa-body">
+    <div class="qa-block">
+      <p class="block-title">1. 当前结论呈现</p>
+      <div class="l3-meta">
+  <span class="l3-skill">技能：target-recommendation-analysis</span>
+  <span class="l3-execution-status">状态：verified_with_caveats</span>
+  <span class="l3-score-component">评分：monitorability</span>
+  <span class="l3-decision-use">用途：影响 monitorability、父节点结论、Q4 标的排序和行动状态。</span>
+</div>
+      <div class="artifact-card l3-artifact">
+  <dl>
+    <div><dt>事实</dt><dd>下一次复盘应重点补实时估值、客户订单、ASP、1.6T 认证、组件产能和毛利率。</dd></div>
+    <div><dt>推论</dt><dd>这些数据会直接改变 Q1 需求、Q2 瓶颈、Q3 反证和 Q4 排序。</dd></div>
+    <div><dt>判断</dt><dd>建立复盘清单后，报告才能从一次性研究升级为持续跟踪系统。</dd></div>
+    <div><dt>缺口</dt><dd>缺少自动化源和阈值。</dd></div>
+    <div><dt>触发器</dt><dd>客户订单、ASP 或估值任一项显著变化，都应重跑 target ranking。</dd></div>
+  </dl>
+</div>
+      <p class="source-links">来源：<a href="https://www.trendforce.com/presscenter/news/20260420-13017.html" target="_blank" rel="noreferrer">TrendForce: Global AI Optical Transceiver Market to Reach US$26 Billion in 2026</a> / <a href="https://www.trendforce.com/presscenter/news/20260210-12919.html" target="_blank" rel="noreferrer">TrendForce: Google high-speed interconnect to push 800G+ optical share past 60% by 2026</a> / <a href="https://stock.finance.sina.com.cn/stock/go.php/vReport_Show/kind/search/rptid/830260860305/index.phtml" target="_blank" rel="noreferrer">中际旭创 2026 年一季报点评及盈利预测</a> / <a href="https://stockanalysis.com/stocks/lite/" target="_blank" rel="noreferrer">StockAnalysis Lumentum valuation snapshot</a> / <a href="https://stockanalysis.com/stocks/cohr/market-cap/" target="_blank" rel="noreferrer">StockAnalysis Coherent market-cap snapshot</a></p>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">2. 问题展开（子 QA）</p>
+      <div class="child-stack"><p class="muted">已到 L3 叶子问题，下一步通过来源更新和季度触发器继续验证。</p></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>缺少自动化源和阈值。 触发器：客户订单、ASP 或估值任一项显著变化，都应重跑 target ranking。</p>
+    </div>
+  </div>
+</details></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>继续补齐一手数据、反证来源、估值口径和季度监控阈值。</p>
+    </div>
+  </div>
+</details></div>
+    </div>
+    <div class="qa-block">
+      <p class="block-title">3. 待补充的问题</p>
+      <p>继续补齐一手数据、反证来源、估值口径和季度监控阈值。</p>
+    </div>
+  </div>
+</details></div>
+</section>
+<section id="targets" class="section target-section">
+  <div class="section-heading">
+    <span class="section-kicker">04</span>
+    <h2>最终标的推荐</h2>
+  </div>
+  <p class="section-note">该表是研究观察清单，不是买卖指令；排序同时考虑瓶颈强度、未来空间、估值赔率和反证可控性。</p>
+  <table class="target-table">
+    <thead>
+      <tr>
+        <th>排序</th><th>标的</th><th>状态</th><th>强度</th><th>瓶颈节点</th><th>核心理由</th><th>赔率/空间</th><th>主要风险</th>
+      </tr>
+    </thead>
+    <tbody><tr>
+  <td>1</td>
+  <td>300308.SZ 中际旭创</td>
+  <td><span class="state-pill state-actionable_long">actionable_long</span></td>
+  <td>高</td>
+  <td>高速光模块集成与客户认证</td>
+  <td>业绩兑现最强，收入和净利润高增，且卖方预测 PE 若兑现仍有赔率；核心风险是估值、客户集中和 ASP 下行。</td>
+  <td>1.6T 放量、3.2T 研发和 AI capex 延续可带来盈利上修；若 2027 利润预测兑现，估值有消化空间。</td>
+  <td>实时估值未完全验证；客户集中、产能扩张和价格竞争会压缩赔率。</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>300502.SZ 新易盛</td>
+  <td><span class="state-pill state-watch_only">watch_only</span></td>
+  <td>中高</td>
+  <td>800G/1.6T 模块集成</td>
+  <td>收入和利润高增，但报道提示净利环比下滑和存货审计关注，需补毛利率、库存和估值分位。</td>
+  <td>若 1.6T 认证和订单继续强化，利润弹性仍大。</td>
+  <td>库存、ASP、客户集中和估值拥挤是主要风险。</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>LITE Lumentum</td>
+  <td><span class="state-pill state-watch_only">watch_only</span></td>
+  <td>中高</td>
+  <td>上游激光器、scale-across components、CPO/OCS</td>
+  <td>上游组件稀缺性和利润率改善很强，但市值和 PE 已经显著定价，需要等待估值或订单再验证。</td>
+  <td>CPO/OCS 和激光器短缺若持续，盈利能力仍可能上修。</td>
+  <td>估值高、客户集中、技术路线变化和 ASP 下行。</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>COHR Coherent</td>
+  <td><span class="state-pill state-watch_only">watch_only</span></td>
+  <td>中高</td>
+  <td>激光器、器件、模块和 datacenter communications</td>
+  <td>垂直整合和 datacenter communications 收入强，但市值大幅上行后赔率需要重新验证。</td>
+  <td>若扩产转化为持续毛利和现金流，估值可被业绩消化。</td>
+  <td>高估值、扩产执行、客户需求估计错误。</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>300394.SZ 天孚通信</td>
+  <td><span class="state-pill state-watch_only">watch_only</span></td>
+  <td>中</td>
+  <td>光引擎组件与精密器件</td>
+  <td>组件环节受益于高速光模块升级，业绩稳健，但需要证明核心瓶颈和估值赔率。</td>
+  <td>若上游组件短缺持续，盈利弹性可能上修。</td>
+  <td>规模较小、估值和客户结构未充分验证。</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td>FN Fabrinet</td>
+  <td><span class="state-pill state-watch_only">watch_only</span></td>
+  <td>中</td>
+  <td>制造产能与客户爬坡 beta</td>
+  <td>收入和指引强，但 FCF 因扩产转负，制造 beta 的稀缺性弱于器件和模块龙头。</td>
+  <td>若新客户协议和产能利用率持续提升，仍有制造杠杆。</td>
+  <td>capex 消耗、客户转单和制造利润率限制。</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td>603083.SH 剑桥科技</td>
+  <td><span class="state-pill state-no_action">no_action</span></td>
+  <td>低中</td>
+  <td>高速光模块业务改善</td>
+  <td>业绩改善明显，但规模、客户、瓶颈控制和估值证据不足，暂不进入高强度清单。</td>
+  <td>若 800G/1.6T 客户认证和毛利率持续改善，可重新评估。</td>
+  <td>二线竞争、客户验证不足和估值不透明。</td>
+</tr></tbody>
+  </table>
+</section>
+<section id="sources" class="section source-section">
+  <div class="section-heading">
+    <span class="section-kicker">05</span>
+    <h2>来源索引</h2>
+  </div>
+  <details class="source-collapse">
+    <summary>展开来源索引</summary>
+    <table class="source-table">
+      <thead><tr><th>ID</th><th>类别</th><th>立场</th><th>摘要</th><th>链接</th></tr></thead>
+      <tbody><tr>
+  <td>SRC-TF-AI-OPT-20260420</td>
+  <td>research_report</td>
+  <td>support</td>
+  <td>TrendForce 预计 AI 光模块市场从 2025 年 165 亿美元增长到 2026 年 260 亿美元，增速超过 57%，并指出组件短缺是扩产的主要瓶颈。</td>
+  <td><a href="https://www.trendforce.com/presscenter/news/20260420-13017.html" target="_blank" rel="noreferrer">打开</a></td>
+</tr>
+<tr>
+  <td>SRC-TF-GOOGLE-800G-20260210</td>
+  <td>research_report</td>
+  <td>support</td>
+  <td>TrendForce 预计 800G 及以上光模块出货占比由 2024 年 19.5% 提升至 2026 年超过 60%；Google 2026 年 TPU 出货近 400 万颗，对应 800G+ 光模块需求超过 600 万只。</td>
+  <td><a href="https://www.trendforce.com/presscenter/news/20260210-12919.html" target="_blank" rel="noreferrer">打开</a></td>
+</tr>
+<tr>
+  <td>SRC-TF-LASER-SHORTAGE-20251208</td>
+  <td>research_report</td>
+  <td>support</td>
+  <td>TrendForce 指出高速光互联成为 AI 数据中心扩展的核心，预计 800G 及以上光模块出货从 2025 年约 2400 万只提升到 2026 年接近 6300 万只，激光器供应链出现锁定和短缺。</td>
+  <td><a href="https://www.trendforce.com/presscenter/news/20251208-12823.html" target="_blank" rel="noreferrer">打开</a></td>
+</tr>
+<tr>
+  <td>SRC-TF-CPO-20260511</td>
+  <td>research_report</td>
+  <td>lead</td>
+  <td>TrendForce 预计 Micro LED CPO 光收发模块 2028 年下半年开始明显放量，2030 年产值约 8.48 亿美元，说明 CPO 是中长期替代/升级变量而非 2026 年即时全面替代。</td>
+  <td><a href="https://www.trendforce.com/presscenter/news/20260511-13039.html" target="_blank" rel="noreferrer">打开</a></td>
+</tr>
+<tr>
+  <td>SRC-LITE-FY26-Q3</td>
+  <td>evidence</td>
+  <td>support</td>
+  <td>Lumentum FY26 Q3 收入 8.084 亿美元，同比 +90.1%；non-GAAP 毛利率 47.9%、经营利润率 32.2%，管理层指出激光芯片、scale-across components、CPO 和 optical circuit switches 是增长驱动。</td>
+  <td><a href="https://investor.lumentum.com/financial-news-releases/news-details/2026/Lumentum-Announces-Third-Quarter-of-Fiscal-Year-2026-Financial-Results/default.aspx" target="_blank" rel="noreferrer">打开</a></td>
+</tr>
+<tr>
+  <td>SRC-COHR-FY26-Q3</td>
+  <td>evidence</td>
+  <td>support</td>
+  <td>Coherent FY26 Q3 收入 18.1 亿美元，同比 +21%；non-GAAP 毛利率 39.6%；Datacenter &amp; Communications 收入约 13.616 亿美元，公司称 AI 数据中心需求强劲并继续扩产。</td>
+  <td><a href="https://www.coherent.com/news/press-releases/third-quarter-fiscal-year-2026-results" target="_blank" rel="noreferrer">打开</a></td>
+</tr>
+<tr>
+  <td>SRC-FN-FY26-Q3</td>
+  <td>evidence</td>
+  <td>support</td>
+  <td>Fabrinet FY26 Q3 收入 12.143 亿美元，同比显著增长；Q4 收入指引 12.5-12.9 亿美元；但本季 non-GAAP FCF 为 -1083 万美元，扩产带来现金流压力。</td>
+  <td><a href="https://investor.fabrinet.com/news-releases/news-release-details/fabrinet-announces-third-quarter-fiscal-year-2026-financial" target="_blank" rel="noreferrer">打开</a></td>
+</tr>
+<tr>
+  <td>SRC-INNOLIGHT-Q1-2026</td>
+  <td>message</td>
+  <td>support</td>
+  <td>中际旭创 2026Q1 营业收入 194.96 亿元，同比 +192.12%；归母净利润 57.35 亿元，同比 +262.28%，受益于 AI 算力基础设施和高速光模块放量。</td>
+  <td><a href="https://www.nbd.com.cn/articles/2026-04-16/4343067.html" target="_blank" rel="noreferrer">打开</a></td>
+</tr>
+<tr>
+  <td>SRC-INNOLIGHT-INVESTOR-QA-20260424</td>
+  <td>evidence</td>
+  <td>lead</td>
+  <td>中际旭创公告材料提到高速光模块放量背景下上游关键环节资源约束、客户订单能见度和 3.2T/6.4T 光模块研发推进，是判断订单质量和技术路线的重要线索。</td>
+  <td><a href="https://static.cninfo.com.cn/finalpage/2026-04-24/1225185699.PDF" target="_blank" rel="noreferrer">打开</a></td>
+</tr>
+<tr>
+  <td>SRC-EOPTOLINK-Q1-2026</td>
+  <td>message</td>
+  <td>support</td>
+  <td>新易盛 2025 年营业收入约 248.42 亿元、归母净利润约 95.32 亿元；2026Q1 营收 83.38 亿元，同比 +105.76%，归母净利润 27.80 亿元，同比 +76.80%，但报道提示 Q1 净利环比下滑和存货可变现净值审计关注。</td>
+  <td><a href="https://www.nbd.com.cn/articles/2026-04-24/4356799.html" target="_blank" rel="noreferrer">打开</a></td>
+</tr>
+<tr>
+  <td>SRC-TFC-Q1-2026</td>
+  <td>evidence</td>
+  <td>support</td>
+  <td>天孚通信 2026Q1 营业收入 13.30 亿元，同比 +40.82%；归母净利润 4.92 亿元，同比 +45.79%，光器件环节维持高盈利水平。</td>
+  <td><a href="https://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12120784" target="_blank" rel="noreferrer">打开</a></td>
+</tr>
+<tr>
+  <td>SRC-CIG-Q1-2026</td>
+  <td>evidence</td>
+  <td>lead</td>
+  <td>剑桥科技 2026Q1 营业收入 12.87 亿元，同比 +43.98%；归母净利润 1.18 亿元，同比 +276.44%，高速光模块业务规模增加带动盈利改善。</td>
+  <td><a href="https://stockmc.xueqiu.com/202604/603083_20260428_T4QY.pdf" target="_blank" rel="noreferrer">打开</a></td>
+</tr>
+<tr>
+  <td>SRC-BOFA-OPT-20260424</td>
+  <td>research_report</td>
+  <td>lead</td>
+  <td>报道引用专家预测：2026 年 800G 光模块需求约 5000-6000 万只，1.6T 约 3000 万只；行业产能满足率分别约 70%-80% 和 50%-60%，提示需求强但供给/产能仍是约束。</td>
+  <td><a href="https://finance.sina.com.cn/stock/relnews/cn/2026-04-24/doc-inhvpkaq4780264.shtml" target="_blank" rel="noreferrer">打开</a></td>
+</tr>
+<tr>
+  <td>SRC-OPT-MARKET-228B-20260427</td>
+  <td>research_report</td>
+  <td>support</td>
+  <td>报道引用 LightCounting 测算：2026 年全球光模块数通市场规模约 228 亿美元，2026-2030 年复合增速约 20%；2026 年进入 800G 普及和 1.6T 商用阶段。</td>
+  <td><a href="https://finance.sina.com.cn/stock/relnews/cn/2026-04-27/doc-inhvwwmp2518726.shtml" target="_blank" rel="noreferrer">打开</a></td>
+</tr>
+<tr>
+  <td>SRC-INNOLIGHT-VALUATION-20260417</td>
+  <td>research_report</td>
+  <td>lead</td>
+  <td>卖方报告预测中际旭创 2026-2028 年收入和净利润继续高增，并给出当前股价对应 2026/2027/2028 年 PE 约 31.6/16.4/11.3 倍；该估值需要用实时价格验证。</td>
+  <td><a href="https://stock.finance.sina.com.cn/stock/go.php/vReport_Show/kind/search/rptid/830260860305/index.phtml" target="_blank" rel="noreferrer">打开</a></td>
+</tr>
+<tr>
+  <td>SRC-LITE-VALUATION-20260527</td>
+  <td>research_report</td>
+  <td>lead</td>
+  <td>StockAnalysis 显示 Lumentum 市值约 702 亿美元、PE 约 171.5、forward PE 约 57，说明市场已显著定价 AI 光通信增长。</td>
+  <td><a href="https://stockanalysis.com/stocks/lite/" target="_blank" rel="noreferrer">打开</a></td>
+</tr>
+<tr>
+  <td>SRC-COHR-VALUATION-20260522</td>
+  <td>research_report</td>
+  <td>lead</td>
+  <td>StockAnalysis 显示 Coherent 市值约 738.7 亿美元，一年增幅大，说明估值已明显反映 AI photonics 预期。</td>
+  <td><a href="https://stockanalysis.com/stocks/cohr/market-cap/" target="_blank" rel="noreferrer">打开</a></td>
+</tr></tbody>
+    </table>
+  </details>
+</section>
+</main>
+</body>
+</html>

@@ -65,7 +65,7 @@ def build_parser() -> argparse.ArgumentParser:
         help="Validate a final HTML report against the locked research report contract",
     )
     report_contract_parser.add_argument("path")
-    report_contract_parser.add_argument("--mode", choices=["live_prediction", "historical_backtest"], default="live_prediction")
+    report_contract_parser.add_argument("--mode", choices=["live_prediction", "historical_backtest"], default="historical_backtest")
     report_contract_parser.add_argument("--require-l3", action="store_true")
 
     time_slice_parser = subparsers.add_parser(
@@ -81,6 +81,13 @@ def build_parser() -> argparse.ArgumentParser:
     )
     research_artifacts_parser.add_argument("project_dir")
     research_artifacts_parser.add_argument("--require-l3", action="store_true")
+
+    render_project_report_parser = subparsers.add_parser(
+        "render-research-report",
+        help="Render a research project through the canonical ViewModel and HTML renderer",
+    )
+    render_project_report_parser.add_argument("project_dir")
+    render_project_report_parser.add_argument("--filename", default="professional_report.html")
 
     stock_pipeline_parser = subparsers.add_parser(
         "run-stock-qa-pipeline",
@@ -615,6 +622,8 @@ def main(argv: list[str] | None = None) -> int:
             return run_audit_time_slice_cmd(root, args)
         if args.command == "validate-research-artifacts":
             return run_validate_research_artifacts_cmd(root, args)
+        if args.command == "render-research-report":
+            return run_render_research_report_cmd(root, args)
         if args.command == "run-stock-qa-pipeline":
             return run_stock_qa_pipeline_cmd(root, args)
         if args.command == "add-research-question":
@@ -720,112 +729,93 @@ def validate_evidence_file(path: Path) -> int:
 
 
 def run_validate_report_contract_cmd(root: Path, args) -> int:
-    from value_invest_research.framework_contracts import validate_report_contract_html
+    from value_invest_research.adapters.outbound.filesystem_research_artifacts import FileSystemReportDocumentRepository
+    from value_invest_research.application.use_cases.validate_report_contract import ValidateReportContract
 
     path = _resolve_cli_path(root, args.path)
-    result = validate_report_contract_html(
-        path.read_text(encoding="utf-8"),
+    result = ValidateReportContract(FileSystemReportDocumentRepository(path)).execute(
         mode=args.mode,
         require_l3=args.require_l3,
     )
-    summary = result.get("summary", {})
-    status = "OK" if result.get("ok") else "FAILED"
+    status = "OK" if result.ok else "FAILED"
     print(
         f"Report contract validation {status}: "
         f"path={path}, "
-        f"mode={summary.get('mode', '')}, "
-        f"level1_cards={summary.get('level1_cards', 0)}, "
-        f"level2_cards={summary.get('level2_cards', 0)}, "
-        f"level3_cards={summary.get('level3_cards', 0)}, "
-        f"issues={len(result.get('issues', []))}"
+        f"mode={result.mode}, "
+        f"level1_cards={result.level1_cards}, "
+        f"level2_cards={result.level2_cards}, "
+        f"level3_cards={result.level3_cards}, "
+        f"issues={len(result.issues)}"
     )
-    for issue in result.get("issues", [])[:10]:
+    for issue in result.issues[:10]:
         print(f"{issue.get('severity', 'error')}:{issue.get('code', '')}: {issue.get('message', '')}")
-    return 0 if result.get("ok") else 1
+    return 0 if result.ok else 1
 
 
 def run_audit_time_slice_cmd(root: Path, args) -> int:
-    from value_invest_research.framework_contracts import audit_time_slice_sources
+    from value_invest_research.adapters.outbound.filesystem_research_artifacts import FileSystemSourceListRepository
+    from value_invest_research.application.use_cases.audit_time_slice import AuditTimeSlice
 
     path = _resolve_cli_path(root, args.path)
-    rows = _read_jsonl(path)
-    result = audit_time_slice_sources(rows, as_of_date=args.as_of_date)
-    summary = result.get("summary", {})
-    status = "OK" if result.get("ok") else "FAILED"
+    result = AuditTimeSlice(FileSystemSourceListRepository(path)).execute(as_of_date=args.as_of_date)
+    status = "OK" if result.ok else "FAILED"
     print(
         f"Time-slice audit {status}: "
         f"path={path}, "
-        f"as_of_date={summary.get('as_of_date', '')}, "
-        f"sources={summary.get('sources', 0)}, "
-        f"post_cutoff_non_label_count={summary.get('post_cutoff_non_label_count', 0)}, "
-        f"label_only_count={summary.get('label_only_count', 0)}, "
-        f"quarantined_count={summary.get('quarantined_count', 0)}, "
-        f"issues={len(result.get('issues', []))}"
+        f"as_of_date={result.as_of_date}, "
+        f"sources={result.sources}, "
+        f"post_cutoff_non_label_count={result.post_cutoff_non_label_count}, "
+        f"label_only_count={result.label_only_count}, "
+        f"quarantined_count={result.quarantined_count}, "
+        f"issues={len(result.issues)}"
     )
-    for issue in result.get("issues", [])[:10]:
+    for issue in result.issues[:10]:
         print(f"{issue.get('severity', 'error')}:{issue.get('code', '')}: {issue.get('message', '')}")
-    return 0 if result.get("ok") else 1
+    return 0 if result.ok else 1
 
 
 def run_validate_research_artifacts_cmd(root: Path, args) -> int:
-    from value_invest_research.framework_contracts import (
-        validate_qa_tree_schema,
-        validate_source_extraction_schema,
-        validate_target_observation_contract,
+    from value_invest_research.adapters.outbound.filesystem_research_artifacts import (
+        FileSystemResearchArtifactRepository,
     )
+    from value_invest_research.application.use_cases.validate_research_project import ValidateResearchProject
 
     project_dir = _resolve_cli_path(root, args.project_dir)
-    qa_path = project_dir / "qa_tree.json"
-    source_extractions_path = project_dir / "source_extractions.jsonl"
-    workbench_path = project_dir / "investment_workbench.json"
-
-    issues: list[dict[str, str]] = []
-    qa_tree: dict[str, Any] = {}
-    source_extractions: list[dict[str, Any]] = []
-    targets: list[dict[str, Any]] = []
-
-    if qa_path.exists():
-        qa_tree = json.loads(qa_path.read_text(encoding="utf-8"))
-    else:
-        issues.append({"severity": "error", "code": "missing_qa_tree", "message": f"{qa_path} does not exist"})
-
-    if source_extractions_path.exists():
-        source_extractions = _read_jsonl(source_extractions_path)
-    else:
-        issues.append({
-            "severity": "error",
-            "code": "missing_source_extractions",
-            "message": f"{source_extractions_path} does not exist",
-        })
-
-    if workbench_path.exists():
-        workbench = json.loads(workbench_path.read_text(encoding="utf-8"))
-        targets = workbench.get("scoring_worksheet") or workbench.get("targets") or []
-    else:
-        issues.append({"severity": "error", "code": "missing_workbench", "message": f"{workbench_path} does not exist"})
-
-    qa_result = validate_qa_tree_schema(qa_tree, require_l3=args.require_l3) if qa_tree else {"ok": False, "issues": []}
-    extraction_result = (
-        validate_source_extraction_schema(source_extractions, qa_tree)
-        if qa_tree and source_extractions
-        else {"ok": False, "issues": []}
-    )
-    target_result = validate_target_observation_contract(targets) if targets else {"ok": False, "issues": []}
-
-    all_issues = issues + qa_result.get("issues", []) + extraction_result.get("issues", []) + target_result.get("issues", [])
-    ok = not any(issue.get("severity") == "error" for issue in all_issues)
-    status = "OK" if ok else "FAILED"
+    result = ValidateResearchProject(FileSystemResearchArtifactRepository(project_dir)).execute(require_l3=args.require_l3)
+    status = "OK" if result.ok else "FAILED"
     print(
         f"Research artifact validation {status}: "
         f"project_dir={project_dir}, "
-        f"qa_nodes={qa_result.get('summary', {}).get('nodes', 0)}, "
-        f"source_extractions={extraction_result.get('summary', {}).get('source_extractions', 0)}, "
-        f"targets={target_result.get('summary', {}).get('targets', 0)}, "
-        f"issues={len(all_issues)}"
+        f"qa_nodes={result.qa_nodes}, "
+        f"source_extractions={result.source_extractions}, "
+        f"leaf_source_reviews={result.leaf_source_reviews}, "
+        f"targets={result.targets}, "
+        f"issues={len(result.issues)}"
     )
-    for issue in all_issues[:10]:
+    for issue in result.issues[:10]:
         print(f"{issue.get('severity', 'error')}:{issue.get('code', '')}: {issue.get('message', '')}")
-    return 0 if ok else 1
+    return 0 if result.ok else 1
+
+
+def run_render_research_report_cmd(root: Path, args) -> int:
+    from value_invest_research.adapters.outbound.canonical_html_report_renderer import CanonicalHtmlReportRenderer
+    from value_invest_research.adapters.outbound.filesystem_research_project import FileSystemResearchProjectRepository
+    from value_invest_research.application.use_cases.render_research_project_report import RenderResearchProjectReport
+
+    project_dir = _resolve_cli_path(root, args.project_dir)
+    result = RenderResearchProjectReport(
+        FileSystemResearchProjectRepository(project_dir),
+        CanonicalHtmlReportRenderer(),
+    ).execute(filename=args.filename)
+    print(
+        f"Research report rendered: "
+        f"project_id={result['project_id']}, "
+        f"qa_roots={result['qa_roots']}, "
+        f"targets={result['targets']}, "
+        f"sources={result['sources']}, "
+        f"report={result['report_path']}"
+    )
+    return 0
 
 
 def _resolve_cli_path(root: Path, path_text: str) -> Path:
@@ -1177,9 +1167,10 @@ def run_answer_synthesis_cmd(root: Path, args) -> int:
 
 
 def run_build_leaf_research_tasks_cmd(root: Path, args) -> int:
-    from value_invest_research.leaf_research import build_leaf_research_tasks
+    from value_invest_research.adapters.outbound.leaf_research_workflow import LeafResearchWorkflowAdapter
+    from value_invest_research.application.use_cases.leaf_research_workflow import BuildLeafResearchTasks
 
-    result = build_leaf_research_tasks(
+    result = BuildLeafResearchTasks(LeafResearchWorkflowAdapter()).execute(
         root,
         args.ticker,
         limit=args.limit,
@@ -1196,9 +1187,10 @@ def run_build_leaf_research_tasks_cmd(root: Path, args) -> int:
 
 
 def run_leaf_research_cmd(root: Path, args) -> int:
-    from value_invest_research.leaf_research import run_leaf_research
+    from value_invest_research.adapters.outbound.leaf_research_workflow import LeafResearchWorkflowAdapter
+    from value_invest_research.application.use_cases.leaf_research_workflow import RunLeafResearch
 
-    result = run_leaf_research(
+    result = RunLeafResearch(LeafResearchWorkflowAdapter()).execute(
         root,
         args.ticker,
         provider=args.provider,
@@ -1217,9 +1209,10 @@ def run_leaf_research_cmd(root: Path, args) -> int:
 
 
 def run_import_leaf_research_results_cmd(root: Path, args) -> int:
-    from value_invest_research.leaf_research import import_leaf_research_results
+    from value_invest_research.adapters.outbound.leaf_research_workflow import LeafResearchWorkflowAdapter
+    from value_invest_research.application.use_cases.leaf_research_workflow import ImportLeafResearchResults
 
-    result = import_leaf_research_results(root, args.ticker, Path(args.path))
+    result = ImportLeafResearchResults(LeafResearchWorkflowAdapter()).execute(root, args.ticker, Path(args.path))
     print(
         f"Leaf research results imported for {result['ticker']}: "
         f"records={result['records']}, "
@@ -1231,9 +1224,10 @@ def run_import_leaf_research_results_cmd(root: Path, args) -> int:
 
 
 def run_synthesize_leaf_answers_cmd(root: Path, args) -> int:
-    from value_invest_research.leaf_research import synthesize_leaf_answers
+    from value_invest_research.adapters.outbound.leaf_research_workflow import LeafResearchWorkflowAdapter
+    from value_invest_research.application.use_cases.leaf_research_workflow import SynthesizeLeafAnswers
 
-    result = synthesize_leaf_answers(root, args.ticker)
+    result = SynthesizeLeafAnswers(LeafResearchWorkflowAdapter()).execute(root, args.ticker)
     print(
         f"Leaf answers synthesized for {result['ticker']}: "
         f"answers={result['answers']}, "
@@ -1245,9 +1239,10 @@ def run_synthesize_leaf_answers_cmd(root: Path, args) -> int:
 
 
 def run_rollup_research_answers_cmd(root: Path, args) -> int:
-    from value_invest_research.leaf_research import rollup_research_answers
+    from value_invest_research.adapters.outbound.leaf_research_workflow import LeafResearchWorkflowAdapter
+    from value_invest_research.application.use_cases.leaf_research_workflow import RollupResearchAnswers
 
-    result = rollup_research_answers(root, args.ticker)
+    result = RollupResearchAnswers(LeafResearchWorkflowAdapter()).execute(root, args.ticker)
     print(
         f"Leaf research rollups written for {result['ticker']}: "
         f"rollups={result['rollups']}, "
@@ -1258,10 +1253,11 @@ def run_rollup_research_answers_cmd(root: Path, args) -> int:
 
 
 def run_write_professional_report_cmd(root: Path, args) -> int:
-    from value_invest_research.report_synthesis import write_stock_professional_report
+    from value_invest_research.adapters.outbound.professional_report_renderer import ProfessionalReportRendererAdapter
+    from value_invest_research.application.use_cases.write_professional_report import WriteStockProfessionalReport
 
     client = _get_llm_client(args.api_key, args.base_url, args.model) if args.use_llm else None
-    result = write_stock_professional_report(root, args.ticker, client=client)
+    result = WriteStockProfessionalReport(ProfessionalReportRendererAdapter()).execute(root, args.ticker, client=client)
     print(
         f"Professional report written for {result['ticker']}: "
         f"mode={result['report_mode']}, "
@@ -1689,10 +1685,11 @@ def run_meta_qa_answer_synthesis_cmd(root: Path, args) -> int:
 
 
 def run_write_meta_qa_professional_report_cmd(root: Path, args) -> int:
-    from value_invest_research.report_synthesis import write_meta_qa_professional_report
+    from value_invest_research.adapters.outbound.professional_report_renderer import ProfessionalReportRendererAdapter
+    from value_invest_research.application.use_cases.write_professional_report import WriteMetaQaProfessionalReport
 
     client = _get_llm_client(args.api_key, args.base_url, args.model) if args.use_llm else None
-    result = write_meta_qa_professional_report(root, args.project_id, client=client)
+    result = WriteMetaQaProfessionalReport(ProfessionalReportRendererAdapter()).execute(root, args.project_id, client=client)
     print(
         f"Meta QA professional report written: "
         f"project_id={result['project_id']}, "

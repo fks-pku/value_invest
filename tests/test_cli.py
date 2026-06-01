@@ -267,6 +267,8 @@ class CliTests(unittest.TestCase):
                 """,
                 encoding="utf-8",
             )
+            fixture_report = Path(__file__).parent / "fixtures" / "research_quality_gold" / "professional_report.html"
+            report_path.write_text(fixture_report.read_text(encoding="utf-8"), encoding="utf-8")
 
             out = StringIO()
             with redirect_stdout(out):
@@ -282,7 +284,7 @@ class CliTests(unittest.TestCase):
 
             self.assertEqual(exit_code, 0)
             self.assertIn("Report contract validation OK", out.getvalue())
-            self.assertIn("level3_cards=2", out.getvalue())
+            self.assertIn("level3_cards=4", out.getvalue())
 
             source_path = Path(tmp) / "sources.jsonl"
             source_path.write_text(
@@ -350,7 +352,7 @@ class CliTests(unittest.TestCase):
                             "concrete_materials": ["ev1"],
                             "extraction_schema": ["revenue"],
                             "source_extraction_ids": ["se-q1-1-1-ev1"],
-                            "leaf_source_review_ids": ["review-se-q1-1-1-ev1"],
+                            "leaf_source_review_ids": ["review-q1-1-1-ev1"],
                             "skill_output_status": "deepseek_mcp_completed",
                             "fallback_used": False,
                             "gpt_verification_status": "verified",
@@ -384,8 +386,36 @@ class CliTests(unittest.TestCase):
                         "extraction_id": "se-q1-1-1-ev1",
                         "l3_question_id": "q1-1-1",
                         "source_id": "ev1",
+                        "source_title": "Visible evidence",
+                        "source_bucket": "evidence",
+                        "parser": "deepseek_mcp",
                         "parser_status": "ok",
                         "schema_fields": {"revenue": {"value": "visible revenue", "evidence_ids": ["ev1"]}},
+                        "key_facts": ["visible revenue"],
+                        "inference": "Revenue evidence can support the L3 conclusion.",
+                        "support_refute_or_lead": "support",
+                        "uncertainties": [],
+                        "follow_up_data": ["next filing"],
+                        "created_at": "2026-02-20T00:00:00Z",
+                    }
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            (project_dir / "leaf_source_reviews.jsonl").write_text(
+                json.dumps(
+                    {
+                        "review_id": "review-q1-1-1-ev1",
+                        "extraction_id": "se-q1-1-1-ev1",
+                        "l3_question_id": "q1-1-1",
+                        "source_id": "ev1",
+                        "gpt_verification_status": "verified",
+                        "adopted_facts": ["visible revenue"],
+                        "corrections": [],
+                        "rejected_claims": [],
+                        "final_bucket": "evidence",
+                        "final_support_refute_or_lead": "support",
+                        "allowed_to_strengthen_conclusion": True,
                     }
                 )
                 + "\n",
@@ -397,7 +427,16 @@ class CliTests(unittest.TestCase):
                         "scoring_worksheet": [
                             {
                                 "ticker": "DEMO",
-                                "score": {"action_state": "actionable_long", "score_subcomponents": subcomponents},
+                                "score": {
+                                    "action_state": "actionable_long",
+                                    "score_dimensions": {
+                                        "scarcity_or_monopoly": 4,
+                                        "mispricing": 4,
+                                        "earnings_elasticity": 4,
+                                        "risk_control": 4,
+                                    },
+                                    "score_subcomponents": subcomponents,
+                                },
                                 "thesis_kill_tests": [
                                     {
                                         "test": "revenue reverses",
@@ -424,6 +463,7 @@ class CliTests(unittest.TestCase):
 
             self.assertEqual(exit_code, 0)
             self.assertIn("Research artifact validation OK", out.getvalue())
+            self.assertIn("leaf_source_reviews=1", out.getvalue())
 
     def test_stock_qa_pipeline_command_prints_run_manifest(self):
         with project_tmp_dir() as tmp:

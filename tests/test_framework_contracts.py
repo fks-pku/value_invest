@@ -1,5 +1,7 @@
+import json
 import unittest
 from copy import deepcopy
+from pathlib import Path
 
 from value_invest_research.framework_contracts import (
     QA_BLOCK_TITLES,
@@ -14,6 +16,7 @@ from value_invest_research.framework_contracts import (
     get_domain_playbook,
     rank_target_observations,
     score_target_observation,
+    validate_leaf_source_review_schema,
     validate_source_extraction_schema,
     validate_qa_tree_schema,
     validate_report_contract_html,
@@ -261,6 +264,8 @@ class FrameworkContractsTests(unittest.TestCase):
                     "extraction_id": "se-q1-1-1-ev1",
                     "l3_question_id": "q1-1-1",
                     "source_id": "ev1",
+                    "source_title": "Visible evidence",
+                    "source_bucket": "evidence",
                     "parser": "deepseek_mcp",
                     "parser_status": "ok",
                     "schema_fields": {
@@ -268,11 +273,68 @@ class FrameworkContractsTests(unittest.TestCase):
                         "capex": {"value": "AI budget conversion", "evidence_ids": ["ev1"]},
                         "margin": {"value": "not disclosed", "evidence_ids": ["ev1"], "status": "not_available"},
                     },
+                    "key_facts": ["capex guide visible before cutoff"],
+                    "inference": "AI budget can convert into hardware demand.",
+                    "support_refute_or_lead": "support",
+                    "uncertainties": ["customer ROI"],
+                    "follow_up_data": ["next capex guide"],
+                    "created_at": "2026-02-20T00:00:00Z",
                 }
             ],
             qa_tree,
         )
         self.assertTrue(extraction_schema_result["ok"], extraction_schema_result["issues"])
+
+        review_schema_result = validate_leaf_source_review_schema(
+            [
+                {
+                    "review_id": "review-q1-1-1-ev1",
+                    "extraction_id": "se-q1-1-1-ev1",
+                    "l3_question_id": "q1-1-1",
+                    "source_id": "ev1",
+                    "gpt_verification_status": "verified",
+                    "adopted_facts": ["capex guide visible before cutoff"],
+                    "corrections": [],
+                    "rejected_claims": [],
+                    "final_bucket": "evidence",
+                    "final_support_refute_or_lead": "support",
+                    "allowed_to_strengthen_conclusion": True,
+                }
+            ],
+            [
+                {
+                    "extraction_id": "se-q1-1-1-ev1",
+                    "l3_question_id": "q1-1-1",
+                    "source_id": "ev1",
+                }
+            ],
+            qa_tree,
+        )
+        self.assertTrue(review_schema_result["ok"], review_schema_result["issues"])
+
+        bad_review_schema_result = validate_leaf_source_review_schema(
+            [
+                {
+                    "review_id": "review-q1-1-1-ev1",
+                    "extraction_id": "missing-extraction",
+                    "l3_question_id": "q1-1-1",
+                    "source_id": "ev1",
+                    "gpt_verification_status": "needs_review",
+                    "adopted_facts": ["capex guide visible before cutoff"],
+                    "corrections": [],
+                    "rejected_claims": [],
+                    "final_bucket": "evidence",
+                    "final_support_refute_or_lead": "support",
+                    "allowed_to_strengthen_conclusion": True,
+                }
+            ],
+            [],
+            qa_tree,
+        )
+        self.assertFalse(bad_review_schema_result["ok"])
+        bad_review_codes = {issue["code"] for issue in bad_review_schema_result["issues"]}
+        self.assertIn("leaf_source_review_unknown_extraction", bad_review_codes)
+        self.assertIn("leaf_source_review_allows_unverified_extraction", bad_review_codes)
 
         bad_extraction_schema_result = validate_source_extraction_schema(
             [
@@ -484,6 +546,29 @@ class FrameworkContractsTests(unittest.TestCase):
         self.assertIn("memory_unit_economics", memory_playbook["required_extraction_schemas"])
         self.assertIn("model_reconciliation", memory_playbook["mechanism_depth_blocks"])
         self.assertEqual(get_domain_playbook("storage")["q_map"]["Q1"], memory_playbook["q_map"]["Q1"])
+
+    def test_gold_research_fixture_satisfies_full_quality_gate(self):
+        fixture_dir = Path(__file__).parent / "fixtures" / "research_quality_gold"
+        html = (fixture_dir / "professional_report.html").read_text(encoding="utf-8")
+        qa_tree = json.loads((fixture_dir / "qa_tree.json").read_text(encoding="utf-8"))
+        source_extractions = _read_jsonl(fixture_dir / "source_extractions.jsonl")
+        leaf_source_reviews = _read_jsonl(fixture_dir / "leaf_source_reviews.jsonl")
+        workbench = json.loads((fixture_dir / "investment_workbench.json").read_text(encoding="utf-8"))
+
+        report_result = validate_report_contract_html(html, require_l3=True)
+        self.assertTrue(report_result["ok"], report_result["issues"])
+        qa_result = validate_qa_tree_schema(qa_tree, require_l3=True)
+        self.assertTrue(qa_result["ok"], qa_result["issues"])
+        extraction_result = validate_source_extraction_schema(source_extractions, qa_tree)
+        self.assertTrue(extraction_result["ok"], extraction_result["issues"])
+        review_result = validate_leaf_source_review_schema(leaf_source_reviews, source_extractions, qa_tree)
+        self.assertTrue(review_result["ok"], review_result["issues"])
+        target_result = validate_target_observation_contract(workbench["scoring_worksheet"])
+        self.assertTrue(target_result["ok"], target_result["issues"])
+
+
+def _read_jsonl(path: Path) -> list[dict]:
+    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
 
 
 if __name__ == "__main__":

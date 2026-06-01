@@ -188,7 +188,7 @@ class LeafResearchTests(unittest.TestCase):
                 return _FakeHttpResponse(response)
 
             with patch.dict("os.environ", {"PERPLEXITY_API_KEY": "test-key"}, clear=True):
-                with patch("value_invest_research.leaf_research.urllib.request.urlopen", side_effect=fake_urlopen):
+                with patch("value_invest_research.adapters.outbound.research_search_providers.urllib.request.urlopen", side_effect=fake_urlopen):
                     result = run_leaf_research(tmp, "XIAOMI", provider="perplexity", limit=1)
 
             research_dir = stock_dir / "research_system"
@@ -253,7 +253,7 @@ class LeafResearchTests(unittest.TestCase):
                 "LEAF_RESEARCH_PROVIDER_NAME": "custom_search",
             }
             with patch.dict("os.environ", env, clear=True):
-                with patch("value_invest_research.leaf_research.urllib.request.urlopen", side_effect=fake_urlopen):
+                with patch("value_invest_research.adapters.outbound.research_search_providers.urllib.request.urlopen", side_effect=fake_urlopen):
                     result = run_leaf_research(tmp, "XIAOMI", provider="openai_compatible", limit=1)
 
             rows = _read_jsonl(stock_dir / "research_system" / "leaf_research_results.jsonl")

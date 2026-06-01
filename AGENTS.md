@@ -7,6 +7,11 @@ File-system-first equity research assistant. The canonical entry point is now on
 | Module | Path | Purpose |
 |------|------|------|
 | Core package | `src/value_invest_research/` | CLI, schemas, scaffolding, ingestion, research-system generation, run logs, and LLM research workflows. |
+| Domain layer | `src/value_invest_research/domain/` | Pure research entities, policies, quality gates, scoring, and validation rules. No file, network, LLM, CLI, or rendering dependencies. |
+| Application layer | `src/value_invest_research/application/` | Use cases and orchestration. Depends on domain and ports, never concrete adapters. |
+| Ports | `src/value_invest_research/ports/` | Protocols for repositories, source parsing, LLMs, data, search, and rendering. |
+| Adapters | `src/value_invest_research/adapters/` | Inbound CLI/API adapters and outbound file-system, LLM, DeepSeek, data, search, and renderer implementations. |
+| Architecture docs | `docs/architecture/hexagonal_research_system.md` | Hexagonal architecture dependency rules, migration map, and quality gates. |
 | Framework contracts | `src/value_invest_research/framework_contracts.py` | Executable validation and audit utilities for report hierarchy, time-sliced backtests, QA schema, scoring, frozen recommendations, labels, training samples, reviews, workbench traces, and domain playbooks. |
 | Tests | `tests/` | unittest coverage for schemas, CLI, scaffolding, ingestion, and research workflow prompt/output behavior. |
 | Research skill | `skills/value_invest_research/` | Operating protocol, frameworks, prompts, and evidence checklists. |
@@ -14,6 +19,18 @@ File-system-first equity research assistant. The canonical entry point is now on
 | Config | `config/` | Watchlist, source priority, research object registry, and event playbooks. |
 | Stock objects | `stocks/` | Stock memos, evidence logs, structured data, run logs, and proposals. |
 | Research objects | `research/` | Sector/theme/event memos, evidence, candidate screens, and run logs. |
+
+## Architecture Contract
+
+The research system is migrating to a hexagonal architecture. New or refactored code must follow the dependency rule in `docs/architecture/hexagonal_research_system.md`:
+
+- `domain` contains pure business rules and must not import `application`, `ports`, or `adapters`.
+- `application` coordinates use cases and may import `domain` and `ports`, but not concrete adapters.
+- `ports` define protocols and must not import `application` or `adapters`.
+- `adapters` implement system edges: CLI, file system, LLM, DeepSeek, market data, search, and HTML rendering.
+- Existing root-level modules are legacy-compatible during migration. Prefer moving one tested vertical slice at a time instead of wholesale file moves.
+- New research topics must enter through `ResearchGoal -> DomainPlaybook -> QuestionArchitecture`; do not start from a report template or hard-coded HTML outline.
+- Public reports should be assembled through `ResearchProjectRepository -> ReportViewModel -> CanonicalReportRenderer`. Report renderers must not own domain question design or source parsing, and domain/playbook code must not know HTML classes.
 
 ## Canonical Research Goal Framework
 
@@ -58,10 +75,10 @@ Framework changes are persistent by default:
 
 ## Time-Sliced Prediction Evaluation
 
-The research system must support two explicit run modes:
+The research system must support two explicit run modes. The default mode is historical training/backtest; use live prediction only when the user explicitly asks for current/live/real-time research or otherwise states that the run should not be time-sliced.
 
-- Historical training/backtest mode: use an `as_of_date`, defaulting to three calendar months before the evaluation date when the user asks to train, audit, or evaluate prediction ability. Source collection, source parsing, QA answers, valuation context, and target ranking may only use information that was publicly visible on or before `as_of_date`. Later materials are look-ahead data and must not enter the thesis, score, odds model, or target rank.
-- Live prediction mode: use information visible up to the report date. Do not attach a future return label. Instead, set a validation horizon, required evidence, and next review trigger, normally report date plus three months unless the user specifies another horizon.
+- Historical training/backtest mode: use an `as_of_date`, defaulting to three calendar months before the evaluation date/report date unless the user specifies another cutoff. Source collection, source parsing, QA answers, valuation context, and target ranking may only use information that was publicly visible on or before `as_of_date`. Later materials are look-ahead data and must not enter the thesis, score, odds model, or target rank.
+- Live prediction mode: use only when explicitly requested. Use information visible up to the report date. Do not attach a future return label. Instead, set a validation horizon, required evidence, and next review trigger, normally report date plus three months unless the user specifies another horizon.
 
 Historical training/backtest reports must attach an ex-post label to each final target recommendation:
 
@@ -135,7 +152,10 @@ The framework optimizes research quality before report polish. Run these passes 
 
 6. Executable contract validation and learning artifacts
    - Use `framework_contracts.py` to validate final report hierarchy/card structure, validate QA tree schema, validate source-extraction schema fields, audit time-sliced sources and `availability_proof`, score targets with separated thesis confidence/payoff convexity plus auditable subcomponents, rank targets deterministically, validate target kill tests, freeze recommendations before labels, attach forward-return labels, build training samples, build prediction reviews, and keep internal workbench traces out of final HTML.
+   - Use `skills/value_invest_research/frameworks/research_quality_gate.md` as the operational quality gate. A complete refreshed report must preserve `qa_tree.json`, `source_extractions.jsonl`, `leaf_source_reviews.jsonl`, and `investment_workbench.json`; missing parser or GPT review layers are hard failures, not presentation gaps.
+   - Treat `tests/fixtures/research_quality_gold/` as the gold regression fixture for the current contract. Framework changes must keep this fixture passing or intentionally update the fixture and tests in the same change.
    - Run `value-invest-research validate-report-contract <professional_report.html> --mode historical_backtest --require-l3` after refreshed canonical reports.
+   - Run `value-invest-research validate-research-artifacts <project_dir> --require-l3` after refreshed canonical reports. This validates the QA tree, source-parser records, GPT review records, target score subcomponents, score dimensions, and kill tests.
    - Run `value-invest-research audit-time-slice <sources.jsonl> --as-of-date YYYY-MM-DD` before using historical-mode sources for QA, scoring, odds, or ranking.
 
 1. Current research goal

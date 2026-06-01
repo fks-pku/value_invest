@@ -1,0 +1,234 @@
+{
+  "nodes": [
+    {
+      "id": "root",
+      "level": 0,
+      "question": "半导体硬件投资机会是否成立？",
+      "next_question_ids": ["q1", "q2", "q3", "q4"]
+    },
+    {
+      "id": "q1",
+      "level": 1,
+      "parent_id": "root",
+      "question": "Q1 需求是否真实兑现？",
+      "next_question_ids": ["q1-1"]
+    },
+    {
+      "id": "q1-1",
+      "level": 2,
+      "parent_id": "q1",
+      "question": "Q1.1 capex 如何传导到硬件收入？",
+      "next_question_ids": ["q1-1-1"]
+    },
+    {
+      "id": "q1-1-1",
+      "level": 3,
+      "parent_id": "q1-1",
+      "question": "Q1.1.1 云厂 capex 是否形成可验证硬件订单？",
+      "materiality": "决定需求强度能否上抛到 Q1，并影响 future_space。",
+      "decision_use": "判断 AI capex 是否能转化为硬件收入和目标未来空间。",
+      "support_evidence": ["ev1 capex 与硬件收入同向增长"],
+      "refute_evidence": ["客户 ROI 不达预期或订单取消"],
+      "target_implications": "若验证为真，提高上游硬件和 HBM 标的未来空间得分。",
+      "score_component": "future_space",
+      "minimum_evidence_gate": "至少一条公司口径证据和一条反证计划。",
+      "refuting_source_plan": ["搜索客户 ROI 下修、订单取消、capex 延后证据"],
+      "source_plan": [
+        {
+          "source_id": "ev1",
+          "expected_fields": ["capex", "orders", "revenue"],
+          "source_bucket": "evidence",
+          "source_visible_at": "2026-05-01",
+          "cutoff_status": "live_visible",
+          "allowed_usage": "thesis",
+          "preferred_skill": "financial-statement-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "financial_statement",
+        "selected_skill": "financial-statement-analysis",
+        "concrete_materials": ["ev1"],
+        "extraction_schema": ["capex", "orders", "revenue"],
+        "source_extraction_ids": ["ex-q111-ev1"],
+        "leaf_source_review_ids": ["rv-q111-ev1"],
+        "skill_output_status": "complete",
+        "fallback_used": false,
+        "gpt_verification_status": "verified"
+      },
+      "fact": ["ev1 显示 capex 和硬件收入同向增长。"],
+      "inference": ["capex 已经开始向硬件订单和收入传导。"],
+      "judgment": "需求真实性可以上抛，但仍需下一季订单验证。",
+      "gap": ["客户 ROI 和订单取消率仍需补充。"],
+      "trigger": ["云厂 capex 指引下修或 backlog 转弱。"],
+      "source_links": ["https://example.com/ev1"]
+    },
+    {
+      "id": "q2",
+      "level": 1,
+      "parent_id": "root",
+      "question": "Q2 哪些节点能捕获增量利润？",
+      "next_question_ids": ["q2-1"]
+    },
+    {
+      "id": "q2-1",
+      "level": 2,
+      "parent_id": "q2",
+      "question": "Q2.1 瓶颈强度如何打分？",
+      "next_question_ids": ["q2-1-1"]
+    },
+    {
+      "id": "q2-1-1",
+      "level": 3,
+      "parent_id": "q2-1",
+      "question": "Q2.1.1 HBM 是否是真瓶颈？",
+      "materiality": "决定 Q2 chokepoint_strength 和最终标的排序权重。",
+      "decision_use": "验证 HBM 是否具备需求流入、不可替代、供给约束和定价权。",
+      "support_evidence": ["ir1 显示 HBM 供给受产能和认证约束"],
+      "refute_evidence": ["扩产快于需求或替代方案降低 HBM 用量"],
+      "target_implications": "若瓶颈成立，提高 HBM 暴露公司的稀缺性得分。",
+      "score_component": "chokepoint_strength",
+      "minimum_evidence_gate": "至少覆盖供给、价格、客户认证和替代风险。",
+      "refuting_source_plan": ["搜索 HBM 扩产、ASP 下行、替代架构证据"],
+      "source_plan": [
+        {
+          "source_id": "ir1",
+          "expected_fields": ["capacity", "pricing_power", "substitution_risk"],
+          "source_bucket": "research_report",
+          "source_visible_at": "2026-05-02",
+          "cutoff_status": "live_visible",
+          "allowed_usage": "thesis",
+          "preferred_skill": "industry-report-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "industry_report",
+        "selected_skill": "industry-report-analysis",
+        "concrete_materials": ["ir1"],
+        "extraction_schema": ["capacity", "pricing_power", "substitution_risk"],
+        "source_extraction_ids": ["ex-q211-ir1"],
+        "leaf_source_review_ids": ["rv-q211-ir1"],
+        "skill_output_status": "complete",
+        "fallback_used": false,
+        "gpt_verification_status": "verified"
+      },
+      "fact": ["ir1 显示 HBM 供给受到产能和认证约束。"],
+      "inference": ["供给约束叠加客户认证使 HBM 具备瓶颈属性。"],
+      "judgment": "HBM 暂可作为高优先级瓶颈，但需跟踪扩产和价格。",
+      "gap": ["缺少实时 HBM ASP 和客户认证数据。"],
+      "trigger": ["HBM ASP 或毛利率连续走弱。"],
+      "source_links": ["https://example.com/ir1"]
+    },
+    {
+      "id": "q3",
+      "level": 1,
+      "parent_id": "root",
+      "question": "Q3 反证和估值风险是什么？",
+      "next_question_ids": ["q3-1"]
+    },
+    {
+      "id": "q3-1",
+      "level": 2,
+      "parent_id": "q3",
+      "question": "Q3.1 哪些触发器会降级？",
+      "next_question_ids": ["q3-1-1"]
+    },
+    {
+      "id": "q3-1-1",
+      "level": 3,
+      "parent_id": "q3-1",
+      "question": "Q3.1.1 估值是否已经透支增长？",
+      "materiality": "决定 valuation_odds 是否能支持最终排序。",
+      "decision_use": "比较隐含增长、盈利上修空间和估值分位。",
+      "support_evidence": ["ev2 显示估值仍需要盈利上修兑现"],
+      "refute_evidence": ["盈利上修追不上估值扩张"],
+      "target_implications": "若赔率不足，标的最高只能 watch_only。",
+      "score_component": "valuation_odds",
+      "minimum_evidence_gate": "至少有估值分位、隐含预期和情景赔率。",
+      "refuting_source_plan": ["搜索 EPS 下修、倍数压缩和 FCF 走弱证据"],
+      "source_plan": [
+        {
+          "source_id": "ev2",
+          "expected_fields": ["multiple", "implied_growth", "fcf_yield"],
+          "source_bucket": "evidence",
+          "source_visible_at": "2026-05-03",
+          "cutoff_status": "live_visible",
+          "allowed_usage": "thesis",
+          "preferred_skill": "valuation-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "valuation",
+        "selected_skill": "valuation-analysis",
+        "concrete_materials": ["ev2"],
+        "extraction_schema": ["multiple", "implied_growth", "fcf_yield"],
+        "source_extraction_ids": ["ex-q311-ev2"],
+        "leaf_source_review_ids": ["rv-q311-ev2"],
+        "skill_output_status": "complete",
+        "fallback_used": false,
+        "gpt_verification_status": "verified"
+      },
+      "fact": ["ev2 显示估值需要持续盈利上修兑现。"],
+      "inference": ["产业趋势强并不自动等于赔率足够。"],
+      "judgment": "估值赔率保持中性，需要结合后续盈利上修再升级。",
+      "gap": ["缺少实时同业估值分位。"],
+      "trigger": ["EPS 下修或自由现金流收益率继续压缩。"],
+      "source_links": ["https://example.com/ev2"]
+    },
+    {
+      "id": "q4",
+      "level": 1,
+      "parent_id": "root",
+      "question": "Q4 哪些标的进入观察清单？",
+      "next_question_ids": ["q4-1"]
+    },
+    {
+      "id": "q4-1",
+      "level": 2,
+      "parent_id": "q4",
+      "question": "Q4.1 标的强度如何排序？",
+      "next_question_ids": ["q4-1-1"]
+    },
+    {
+      "id": "q4-1-1",
+      "level": 3,
+      "parent_id": "q4-1",
+      "question": "Q4.1.1 MU 是否满足观察清单要求？",
+      "materiality": "决定最终 target_ranking 和 action_state。",
+      "decision_use": "把 Q1 需求、Q2 瓶颈、Q3 赔率和风险门槛映射到具体证券。",
+      "support_evidence": ["ev3 显示 MU 有 HBM 暴露"],
+      "refute_evidence": ["估值或毛利弹性不足"],
+      "target_implications": "若估值赔率未验证，保持 watch_only。",
+      "score_component": "target_ranking",
+      "minimum_evidence_gate": "必须具备四核心维度评分和 kill tests。",
+      "refuting_source_plan": ["搜索 MU HBM 毛利、价格、估值下修证据"],
+      "source_plan": [
+        {
+          "source_id": "ev3",
+          "expected_fields": ["ticker", "hbm_exposure", "kill_test"],
+          "source_bucket": "evidence",
+          "source_visible_at": "2026-05-04",
+          "cutoff_status": "live_visible",
+          "allowed_usage": "thesis",
+          "preferred_skill": "target-recommendation-analysis"
+        }
+      ],
+      "skill_dispatch": {
+        "task_family": "target_recommendation",
+        "selected_skill": "target-recommendation-analysis",
+        "concrete_materials": ["ev3"],
+        "extraction_schema": ["ticker", "hbm_exposure", "kill_test"],
+        "source_extraction_ids": ["ex-q411-ev3"],
+        "leaf_source_review_ids": ["rv-q411-ev3"],
+        "skill_output_status": "complete",
+        "fallback_used": false,
+        "gpt_verification_status": "verified"
+      },
+      "fact": ["ev3 显示 MU 有 HBM 业务敞口。"],
+      "inference": ["MU 能映射到 Q2 的 HBM 瓶颈，但赔率仍需验证。"],
+      "judgment": "MU 进入 watch_only，不升级为 actionable_long。",
+      "gap": ["缺少实时估值和下一季 HBM 毛利。"],
+      "trigger": ["HBM 毛利率下行或客户订单低于预期。"],
+      "source_links": ["https://example.com/ev3"]
+    }
+  ]
+}

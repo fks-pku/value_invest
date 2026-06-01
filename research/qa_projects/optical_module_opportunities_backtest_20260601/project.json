@@ -1,0 +1,13 @@
+{
+  "project_id": "optical_module_opportunities_backtest_20260601",
+  "title": "光模块产业投资机会研究（回测模式）",
+  "framework": "research_goal_qa",
+  "domain_playbook": "optical_module",
+  "run_mode": "historical_backtest",
+  "report_date": "2026-06-01",
+  "as_of_date": "2026-03-01",
+  "evaluation_date": "2026-06-01",
+  "current_judgment": "截至 2026-03-01，光模块投资机会的主线已经从 AI 数据中心网络升级传导到 800G/1.6T 模块、激光器/组件和模块龙头财务兑现；排序上优先选择已证明高速模块交付、客户认证和远期估值仍可解释的标的。",
+  "biggest_uncertainty": "最大不确定性是 2026 年后 800G/1.6T ASP 与毛利率是否在扩产后快速下行，以及 CPO/LPO/铜互连/OCS 是否改变可插拔模块利润池。",
+  "decision_boundary": "历史回测研究观察清单，不构成买卖指令；论证只使用 2026-03-01 及以前可见信息，2026-06-01 的价格标签仅用于最终表现评估，当前未验证。"
+}

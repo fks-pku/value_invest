@@ -1,0 +1,11 @@
+{
+  "project_id": "optical_module_opportunities_live_20260601",
+  "title": "光模块产业投资机会研究",
+  "framework": "research_goal_qa",
+  "domain_playbook": "optical_module",
+  "run_mode": "live_prediction",
+  "report_date": "2026-06-01",
+  "current_judgment": "光模块产业的机会来自 AI 数据中心网络升级向 800G/1.6T 高速光模块、激光器/组件和规模制造的传导。当前需求和业绩兑现强，但估值已经拥挤，必须用订单、ASP、毛利率、客户 capex 和技术路线持续验证。",
+  "biggest_uncertainty": "800G/1.6T 放量后 ASP 是否快速下行，LPO/CPO/OCS 是否改变可插拔模块利润池，以及高估值能否被 2026-2027 年盈利兑现消化。",
+  "decision_boundary": "研究观察清单，不构成买卖指令；重点判断未来三到六个月需要验证的 AI 光模块瓶颈、赔率和反证。"
+}

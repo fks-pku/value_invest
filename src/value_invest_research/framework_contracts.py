@@ -26,6 +26,8 @@ LABEL_TERMS = [
     "股价变化标签",
     "标签起点",
     "标签终点",
+    "标签窗口",
+    "三个月涨幅",
 ]
 
 PUBLIC_META_DRIFT_TERMS = [
@@ -84,6 +86,37 @@ L3_SKILL_DISPATCH_REQUIRED_FIELDS = [
     "skill_output_status",
     "fallback_used",
     "gpt_verification_status",
+]
+
+SOURCE_EXTRACTION_REQUIRED_FIELDS = [
+    "extraction_id",
+    "l3_question_id",
+    "source_id",
+    "source_title",
+    "source_bucket",
+    "parser",
+    "parser_status",
+    "schema_fields",
+    "key_facts",
+    "inference",
+    "support_refute_or_lead",
+    "uncertainties",
+    "follow_up_data",
+    "created_at",
+]
+
+LEAF_SOURCE_REVIEW_REQUIRED_FIELDS = [
+    "review_id",
+    "extraction_id",
+    "l3_question_id",
+    "source_id",
+    "gpt_verification_status",
+    "adopted_facts",
+    "corrections",
+    "rejected_claims",
+    "final_bucket",
+    "final_support_refute_or_lead",
+    "allowed_to_strengthen_conclusion",
 ]
 
 KNOWN_SPECIALTY_SKILLS = {
@@ -176,19 +209,23 @@ DOMAIN_PLAYBOOKS = {
     "memory_industry": {
         "research_type": "industry/theme opportunity",
         "q_map": {
-            "Q1": "Demand reality: AI data-center, general data-center, device, and non-DC demand by workload and product type",
-            "Q2": "Value-capture bottlenecks: HBM/high-end DRAM, commodity DRAM, NAND/eSSD, nearline HDD, controllers, manufacturing capacity, and equipment constraints",
-            "Q3": "Disconfirming tests and priced-in risk: capacity additions, inventory, ASP decline, substitute architectures, customer capex digestion, China supply, and valuation",
-            "Q4": "Target observation list: memory makers, equipment/materials, controllers, storage devices, and regional listings reconciled with chokepoint score, financial conversion, valuation odds, and kill tests",
+            "Q1": "Demand reality: convert AI, data-center, and terminal demand into sustainable bit demand, ASP, and product mix",
+            "Q2": "Value-capture bottlenecks: test scarcity, pricing power, and financial conversion across HBM, high-end DRAM, NAND/eSSD, nearline HDD, controllers, capacity, equipment, materials, and packaging",
+            "Q3": "Disconfirming tests and priced-in risk: supply response, inventory, ASP decline, substitute architectures, customer capex digestion, China supply, mid-cycle downside, and valuation",
+            "Q4": "Target observation list: specific assets reconciled with scarcity, mispricing, earnings elasticity, risk control, valuation odds, and kill tests",
         },
         "mechanism_buckets": [
-            "Workload-to-memory demand",
+            "Workload-to-product demand",
+            "Price-volume-mix-inventory bridge",
             "Demand-supply slope mismatch",
-            "Product price and unit economics",
+            "HBM/high-end DRAM scarcity",
+            "NAND/eSSD/nearline HDD cash-flow economics",
+            "Controller/IP and firmware capture",
+            "Capacity/equipment/materials second-order chain",
             "Company value capture",
-            "Capital return and capex cycle",
-            "Market-pricing and rerating",
             "Counter-supply and substitution",
+            "Market-pricing and rerating",
+            "Monitoring and kill tests",
             "Model口径 reconciliation",
         ],
         "mechanism_depth_blocks": [
@@ -217,6 +254,55 @@ DOMAIN_PLAYBOOKS = {
             "payoff_convexity": "separate operating leverage, mix shift, and multiple rerating",
         },
         "depth_quality_rule": "memory research is too shallow if it lacks workload-to-product demand, capacity response, ASP/cost/mix, company financial conversion, valuation rerating, and model口径 reconciliation",
+        "default_score_schema": SCORE_WEIGHTS,
+    },
+    "optical_module": {
+        "research_type": "industry/theme opportunity",
+        "q_map": {
+            "Q1": "Demand reality: AI cluster networking, 800G/1.6T port demand, customer capex, and order visibility",
+            "Q2": "Value-capture bottlenecks: lasers, InP/silicon photonics, DSP/driver/TIA, components, module integration, qualification, yield, and manufacturing capacity",
+            "Q3": "Disconfirming tests and priced-in risk: LPO/CPO/substitution, copper/OCS architecture, capacity expansion, ASP erosion, customer concentration, geopolitics, and valuation",
+            "Q4": "Target observation list: specific module, laser/component, manufacturing, and chip assets reconciled with chokepoint score, financial conversion, valuation odds, and kill tests",
+        },
+        "mechanism_buckets": [
+            "AI cluster network demand",
+            "800G/1.6T speed transition",
+            "Customer order visibility and concentration",
+            "Laser/InP/silicon photonics bottleneck",
+            "DSP/driver/TIA value capture",
+            "Module integration, yield, and qualification",
+            "LPO/CPO/copper/OCS substitution",
+            "Manufacturing capacity and EMS beta",
+            "Company financial conversion",
+            "Market-pricing and rerating",
+            "Monitoring and kill tests",
+        ],
+        "mechanism_depth_blocks": [
+            "demand_driver_tree",
+            "supply_or_access_response",
+            "unit_economics_profit_bridge",
+            "competitive_value_capture_map",
+            "market_pricing_bridge",
+            "disconfirming_counter_supply_tests",
+            "capital_chain_second_order_beneficiaries",
+            "model_reconciliation",
+        ],
+        "required_extraction_schemas": [
+            "optical_port_demand",
+            "optical_component_capacity",
+            "optical_module_unit_economics",
+            "optical_customer_order_visibility",
+            "optical_valuation_rerating",
+            "optical_model_reconciliation",
+        ],
+        "scoring_adjustments": {
+            "future_space": "include AI cluster port count, speed mix, attach rate, and customer capex durability",
+            "chokepoint_strength": "include laser/component scarcity, customer qualification, yield, capacity reservation, and substitution risk",
+            "valuation_odds": "include whether 800G/1.6T growth and high margins are already priced",
+            "disconfirming_risk_control": "include CPO/LPO/copper/OCS substitution, ASP erosion, capacity expansion, and customer concentration",
+            "payoff_convexity": "separate module revenue growth, component margin leverage, manufacturing beta, and multiple rerating",
+        },
+        "depth_quality_rule": "optical module research is too shallow if it does not model AI port demand, speed transition, component/module bottlenecks, customer qualification, price erosion, financial conversion, valuation, and technology substitution kill tests",
         "default_score_schema": SCORE_WEIGHTS,
     },
     "default": {
@@ -251,7 +337,7 @@ DOMAIN_PLAYBOOKS = {
 def validate_report_contract_html(
     html: str,
     *,
-    mode: str = "live_prediction",
+    mode: str = "historical_backtest",
     require_l3: bool = False,
 ) -> dict[str, Any]:
     """Validate the public HTML report against the locked presentation contract."""
@@ -656,21 +742,85 @@ def validate_source_extraction_schema(
 ) -> dict[str, Any]:
     """Validate that source-parser outputs filled the selected specialty schema."""
     issues: list[dict[str, str]] = []
-    required_by_l3: dict[str, list[str]] = {}
+    l3_ids: set[str] = set()
+    expected_extraction_ids: set[str] = set()
+    required_by_l3: dict[str, dict[str, Any]] = {}
     for node in qa_tree.get("nodes", []) or []:
         if _level_number(node.get("level")) != 3:
             continue
+        node_id = str(node.get("id") or "")
+        if not node_id:
+            continue
+        l3_ids.add(node_id)
         dispatch = node.get("skill_dispatch") if isinstance(node.get("skill_dispatch"), dict) else {}
         schema = dispatch.get("extraction_schema") or []
+        expected_extraction_ids.update(str(item) for item in dispatch.get("source_extraction_ids", []) or [] if str(item))
         if isinstance(schema, (list, tuple)):
-            required_by_l3[str(node.get("id"))] = [str(item) for item in schema if str(item)]
+            required_by_l3[node_id] = {
+                "fields": [str(item) for item in schema if str(item)],
+                "schema_name": "",
+            }
+        elif isinstance(schema, dict):
+            required_by_l3[node_id] = {
+                "fields": [str(item) for item in schema.keys() if str(item)],
+                "schema_name": str(schema.get("schema") or schema.get("name") or ""),
+            }
+        elif isinstance(schema, str) and schema.strip():
+            required_by_l3[node_id] = {"fields": [], "schema_name": schema.strip()}
+
+    extraction_ids = {str(record.get("extraction_id") or "") for record in source_extractions if record.get("extraction_id")}
+    for extraction_id in sorted(expected_extraction_ids - extraction_ids):
+        _issue(
+            issues,
+            "error",
+            "l3_missing_source_extraction",
+            f"L3 skill_dispatch references missing source extraction {extraction_id}",
+        )
 
     for record in source_extractions:
         extraction_id = str(record.get("extraction_id") or "")
         l3_id = str(record.get("l3_question_id") or "")
-        required = required_by_l3.get(l3_id, [])
+        for field in SOURCE_EXTRACTION_REQUIRED_FIELDS:
+            if field not in record or (field not in {"uncertainties", "follow_up_data"} and _is_empty(record.get(field))):
+                _issue(
+                    issues,
+                    "error",
+                    "source_extraction_missing_field",
+                    f"{extraction_id or '<missing extraction_id>'} is missing required field {field}",
+                )
+        if l3_id and l3_ids and l3_id not in l3_ids:
+            _issue(
+                issues,
+                "error",
+                "source_extraction_unknown_l3",
+                f"{extraction_id} points to unknown L3 node {l3_id}",
+            )
+        if extraction_id and expected_extraction_ids and extraction_id not in expected_extraction_ids:
+            _issue(
+                issues,
+                "warning",
+                "source_extraction_not_referenced",
+                f"{extraction_id} is not referenced by any L3 skill_dispatch.source_extraction_ids",
+            )
+        if str(record.get("source_bucket") or "") not in {"evidence", "research_report", "opinion", "message"}:
+            _issue(
+                issues,
+                "error",
+                "source_extraction_invalid_bucket",
+                f"{extraction_id} source_bucket must be evidence, research_report, opinion, or message",
+            )
+        if str(record.get("support_refute_or_lead") or "") not in {"support", "refute", "lead"}:
+            _issue(
+                issues,
+                "error",
+                "source_extraction_invalid_stance",
+                f"{extraction_id} support_refute_or_lead must be support, refute, or lead",
+            )
+        required_spec = required_by_l3.get(l3_id, {})
+        required = list(required_spec.get("fields", []) or [])
+        schema_name = str(required_spec.get("schema_name") or "")
         schema_fields = record.get("schema_fields")
-        if required and not isinstance(schema_fields, dict):
+        if (required or schema_name) and not isinstance(schema_fields, dict):
             _issue(
                 issues,
                 "error",
@@ -687,6 +837,13 @@ def validate_source_extraction_schema(
                     "source_extraction_missing_schema_field",
                     f"{extraction_id} is missing schema field {field}",
                 )
+        if schema_name and isinstance(schema_fields, dict) and str(schema_fields.get("schema") or "") != schema_name:
+            _issue(
+                issues,
+                "error",
+                "source_extraction_schema_name_mismatch",
+                f"{extraction_id} schema_fields.schema must match L3 extraction_schema {schema_name}",
+            )
         if str(record.get("parser_status") or "").lower() not in {"ok", "complete", "completed"}:
             _issue(
                 issues,
@@ -700,6 +857,130 @@ def validate_source_extraction_schema(
         "summary": {
             "source_extractions": len(source_extractions),
             "l3_schema_nodes": len(required_by_l3),
+            "expected_source_extractions": len(expected_extraction_ids),
+        },
+        "issues": issues,
+    }
+
+
+def validate_leaf_source_review_schema(
+    leaf_source_reviews: list[dict[str, Any]],
+    source_extractions: list[dict[str, Any]],
+    qa_tree: dict[str, Any],
+) -> dict[str, Any]:
+    """Validate GPT review records that approve or reject parser outputs."""
+    issues: list[dict[str, str]] = []
+    extraction_by_id = {
+        str(record.get("extraction_id")): record
+        for record in source_extractions
+        if isinstance(record, dict) and record.get("extraction_id")
+    }
+    expected_extraction_ids: set[str] = set()
+    expected_review_ids: set[str] = set()
+    for node in qa_tree.get("nodes", []) or []:
+        if _level_number(node.get("level")) != 3:
+            continue
+        dispatch = node.get("skill_dispatch") if isinstance(node.get("skill_dispatch"), dict) else {}
+        expected_extraction_ids.update(str(item) for item in dispatch.get("source_extraction_ids", []) or [] if str(item))
+        expected_review_ids.update(str(item) for item in dispatch.get("leaf_source_review_ids", []) or [] if str(item))
+
+    review_ids = {str(record.get("review_id") or "") for record in leaf_source_reviews if record.get("review_id")}
+    reviewed_extraction_ids = {
+        str(record.get("extraction_id") or "") for record in leaf_source_reviews if record.get("extraction_id")
+    }
+    for review_id in sorted(expected_review_ids - review_ids):
+        _issue(
+            issues,
+            "error",
+            "l3_missing_leaf_source_review",
+            f"L3 skill_dispatch references missing leaf source review {review_id}",
+        )
+    for extraction_id in sorted(expected_extraction_ids - reviewed_extraction_ids):
+        _issue(
+            issues,
+            "error",
+            "source_extraction_missing_gpt_review",
+            f"{extraction_id} must have a matching GPT verification record in leaf_source_reviews.jsonl",
+        )
+
+    for record in leaf_source_reviews:
+        review_id = str(record.get("review_id") or "")
+        for field in LEAF_SOURCE_REVIEW_REQUIRED_FIELDS:
+            if field not in record or (field not in {"corrections", "rejected_claims"} and _is_empty(record.get(field))):
+                _issue(
+                    issues,
+                    "error",
+                    "leaf_source_review_missing_field",
+                    f"{review_id or '<missing review_id>'} is missing required field {field}",
+                )
+        if review_id and expected_review_ids and review_id not in expected_review_ids:
+            _issue(
+                issues,
+                "warning",
+                "leaf_source_review_not_referenced",
+                f"{review_id} is not referenced by any L3 skill_dispatch.leaf_source_review_ids",
+            )
+        extraction_id = str(record.get("extraction_id") or "")
+        extraction = extraction_by_id.get(extraction_id)
+        if extraction_id and extraction is None:
+            _issue(
+                issues,
+                "error",
+                "leaf_source_review_unknown_extraction",
+                f"{review_id} points to unknown source extraction {extraction_id}",
+            )
+        elif extraction is not None:
+            if str(record.get("source_id") or "") != str(extraction.get("source_id") or ""):
+                _issue(
+                    issues,
+                    "error",
+                    "leaf_source_review_source_mismatch",
+                    f"{review_id} source_id must match extraction {extraction_id}",
+                )
+            if str(record.get("l3_question_id") or "") != str(extraction.get("l3_question_id") or ""):
+                _issue(
+                    issues,
+                    "error",
+                    "leaf_source_review_l3_mismatch",
+                    f"{review_id} l3_question_id must match extraction {extraction_id}",
+                )
+        status = str(record.get("gpt_verification_status") or "").lower()
+        allowed = record.get("allowed_to_strengthen_conclusion")
+        if status not in {"verified", "verified_with_caveats", "rejected", "needs_review"} and not status.startswith("verified_"):
+            _issue(
+                issues,
+                "error",
+                "leaf_source_review_invalid_status",
+                f"{review_id} gpt_verification_status must be verified, verified_with_caveats, rejected, or needs_review",
+            )
+        if allowed is True and not (status == "verified" or status.startswith("verified_") or status == "verified_with_caveats"):
+            _issue(
+                issues,
+                "error",
+                "leaf_source_review_allows_unverified_extraction",
+                f"{review_id} cannot strengthen conclusions unless GPT verification is verified",
+            )
+        if str(record.get("final_bucket") or "") not in {"evidence", "research_report", "opinion", "message"}:
+            _issue(
+                issues,
+                "error",
+                "leaf_source_review_invalid_bucket",
+                f"{review_id} final_bucket must be evidence, research_report, opinion, or message",
+            )
+        if str(record.get("final_support_refute_or_lead") or "") not in {"support", "refute", "lead"}:
+            _issue(
+                issues,
+                "error",
+                "leaf_source_review_invalid_stance",
+                f"{review_id} final_support_refute_or_lead must be support, refute, or lead",
+            )
+
+    return {
+        "ok": not any(issue["severity"] == "error" for issue in issues),
+        "summary": {
+            "leaf_source_reviews": len(leaf_source_reviews),
+            "expected_leaf_source_reviews": len(expected_review_ids),
+            "reviewed_source_extractions": len(reviewed_extraction_ids),
         },
         "issues": issues,
     }
@@ -938,6 +1219,11 @@ def get_domain_playbook(name: str) -> dict[str, Any]:
         "storage_memory": "memory_industry",
         "存储": "memory_industry",
         "存储行业": "memory_industry",
+        "optical": "optical_module",
+        "optical_module": "optical_module",
+        "optical_transceiver": "optical_module",
+        "光模块": "optical_module",
+        "光通信": "optical_module",
     }
     key = aliases.get(key, key)
     return deepcopy(DOMAIN_PLAYBOOKS.get(key, DOMAIN_PLAYBOOKS["default"]))

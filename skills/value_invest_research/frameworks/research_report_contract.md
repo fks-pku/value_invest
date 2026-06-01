@@ -2,6 +2,8 @@
 
 This contract defines the locked default final report structure for all future investment research outputs unless the user explicitly asks to iterate on the framework.
 
+The public report contract is a presentation boundary, not a domain-question template. New or refreshed reports should be assembled as `ResearchProjectRepository -> ReportViewModel -> CanonicalReportRenderer`. Domain-specific questions, source schemas, metrics, and tracking thresholds belong in playbooks and QA artifacts before rendering.
+
 ## Locked Current Contract
 
 The current locked contract is:
@@ -69,7 +71,7 @@ Treat a generated report as contract-invalid if any of these invariants fail:
 
 ## Time-Sliced Evaluation Contract
 
-Final reports must declare the run mode in the current research goal section:
+Final reports must declare the run mode in the current research goal section. Historical training/backtest is the default mode for refreshed research reports; live prediction is valid only when the user explicitly asks for current/live/real-time research or a non-time-sliced run:
 
 - Historical training/backtest mode: show `as_of_date` and information cutoff in the current research goal section. The QA drilldown and target rationale must be written only from information publicly visible on or before `as_of_date`.
 - Live prediction mode: show report date, evidence freshness, validation horizon, and next review trigger. Do not show future return labels.
@@ -232,6 +234,8 @@ Final HTML must be research-first. Keep these out of final HTML:
 Store process metadata in `investment_workbench.json`, run logs, or internal files.
 
 Source parsing traces such as `source_extractions.jsonl` and `leaf_source_reviews.jsonl` are internal files. They should be generated and preserved for auditability and token efficiency, but final HTML should not render them unless the user explicitly asks to inspect parsing traces.
+
+The operational completion gate is `frameworks/research_quality_gate.md`. It validates internal artifacts and should not be explained inside the final HTML report. The public report remains limited to the locked research sections, while parser records, GPT review records, target scorebooks, validation output, and framework QA traces stay in internal files.
 
 Historical mode evaluation fields are allowed in final HTML because they are part of prediction validation, not process trace. Keep `as_of_date` and information cutoff in `当前研究目标`; keep evaluation dates, label window, benchmark return, and forward return only in the isolated label area of `最终标的推荐` rather than adding new top-level sections.
 

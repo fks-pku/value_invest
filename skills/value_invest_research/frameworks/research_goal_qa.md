@@ -6,6 +6,20 @@ Use it whenever the user proposes a research goal, topic, company, sector, event
 
 Final report presentation is governed by `research_report_contract.md`. Follow that contract for all future user-facing HTML reports unless the user explicitly asks to iterate on the framework.
 
+## System Boundary Contract
+
+New research topics must enter through the domain question architecture path:
+
+`ResearchGoal -> DomainPlaybook -> QuestionArchitecture`
+
+Do not start a new topic from a report template, hard-coded HTML outline, or a copied previous report. Domain playbooks own concrete L2/L3 questions, source schemas, metrics, tracking indicators, and thresholds.
+
+Public report assembly must use the presentation boundary:
+
+`ResearchProjectRepository -> ReportViewModel -> CanonicalReportRenderer`
+
+The report contract owns only section order, hierarchy, interaction, and component classes. If the research view changes, update the playbook/source/QA layer. If the frontend changes, update the renderer and report contract. Keep these concerns separate.
+
 ## Output Order
 
 Final user-facing HTML reports must use exactly this top-level order:
@@ -43,10 +57,10 @@ Future reports must use the latest framework requirement.
 
 ## Time-Sliced Prediction Evaluation
 
-Every research run must declare one of two modes before source collection:
+Every research run must declare one of two modes before source collection. The default is historical training/backtest mode; use live prediction mode only when the user explicitly asks for current/live/real-time research or otherwise states that the run should not be time-sliced:
 
-- Historical training/backtest mode: used when the user wants to train, audit, or evaluate prediction ability. Set an `as_of_date`, defaulting to three calendar months before the evaluation date unless the user specifies another cutoff. All QA reasoning, source parsing, valuation context, and target ranking must only use information publicly visible on or before `as_of_date`.
-- Live prediction mode: used when the user wants an investable current research observation. Use information visible up to the report date. Do not attach a future return label; record the next validation horizon and review trigger instead.
+- Historical training/backtest mode: the default for new research goals. Set an `as_of_date`, defaulting to three calendar months before the evaluation date/report date unless the user specifies another cutoff. All QA reasoning, source parsing, valuation context, and target ranking must only use information publicly visible on or before `as_of_date`.
+- Live prediction mode: used only when the user wants an explicitly current research observation. Use information visible up to the report date. Do not attach a future return label; record the next validation horizon and review trigger instead.
 
 Historical training/backtest mode must prevent look-ahead bias:
 
@@ -329,6 +343,8 @@ For every L3 question:
 8. The verified draft L3 answer must include fact, inference, preliminary judgment, gap, trigger, source links, and support/refute/lead stance.
 9. GPT resolves conflicts, corrects unsupported claims, and writes the final L3 answer.
 10. Parent Q1/Q1.1 rollups may only use GPT-verified L3 answers.
+
+Completion gate: apply `frameworks/research_quality_gate.md` before treating a refreshed report as done. The project must contain a valid `qa_tree.json`, `source_extractions.jsonl`, `leaf_source_reviews.jsonl`, and `investment_workbench.json`. Missing parser records, missing GPT review records, or target scores without auditable subcomponents are hard failures.
 
 Every L3 answer must preserve this dispatch trace:
 

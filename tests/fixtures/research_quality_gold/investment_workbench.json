@@ -1,0 +1,65 @@
+{
+  "scoring_worksheet": [
+    {
+      "ticker": "MU",
+      "name": "Micron Technology",
+      "action_state": "watch_only",
+      "thesis_node": "HBM 瓶颈暴露",
+      "rationale": "HBM 敞口强，但估值赔率和下一季毛利仍需验证。",
+      "score": {
+        "action_state": "watch_only",
+        "total_score": 3.78,
+        "opportunity_fit": 3.7,
+        "thesis_confidence": 3.8,
+        "payoff_convexity": 4.0,
+        "score_components": {
+          "chokepoint_strength": 4.0,
+          "future_space": 4.0,
+          "valuation_odds": 3.0,
+          "evidence_quality": 4.0,
+          "disconfirming_risk_control": 3.5,
+          "monitorability": 4.0,
+          "payoff_convexity": 4.0
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 4.0,
+          "mispricing": 3.0,
+          "earnings_elasticity": 4.0,
+          "risk_control": 3.8
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {"name": "demand_flow", "score": 4, "weight": 0.35, "evidence_ids": ["ir1"], "review_ids": ["rv-q211-ir1"], "rationale": "AI capex 传导到 HBM 需求。", "status": "verified"},
+            {"name": "supply_constraint", "score": 4, "weight": 0.65, "evidence_ids": ["ir1"], "review_ids": ["rv-q211-ir1"], "rationale": "产能和认证限制形成供给约束。", "status": "verified"}
+          ],
+          "future_space": [
+            {"name": "capex_to_revenue", "score": 4, "weight": 1.0, "evidence_ids": ["ev1"], "review_ids": ["rv-q111-ev1"], "rationale": "capex 到硬件收入链条可验证。", "status": "verified"}
+          ],
+          "valuation_odds": [
+            {"name": "implied_growth", "score": 3, "weight": 1.0, "evidence_ids": ["ev2"], "review_ids": ["rv-q311-ev2"], "rationale": "估值需要盈利继续兑现，因此赔率保持中性。", "status": "verified_with_caveats"}
+          ],
+          "evidence_quality": [
+            {"name": "source_quality", "score": 4, "weight": 1.0, "evidence_ids": ["ev1", "ir1", "ev2", "ev3"], "review_ids": ["rv-q111-ev1", "rv-q211-ir1", "rv-q311-ev2", "rv-q411-ev3"], "rationale": "证据覆盖需求、瓶颈、估值和标的映射。", "status": "verified"}
+          ],
+          "disconfirming_risk_control": [
+            {"name": "kill_tests", "score": 3.5, "weight": 1.0, "evidence_ids": ["ev3"], "review_ids": ["rv-q411-ev3"], "rationale": "已有降级触发器，但阈值仍需量化。", "status": "verified_with_caveats"}
+          ],
+          "monitorability": [
+            {"name": "quarterly_data", "score": 4, "weight": 1.0, "evidence_ids": ["ev3"], "review_ids": ["rv-q411-ev3"], "rationale": "HBM ASP、毛利、订单和 capex 可季度跟踪。", "status": "verified"}
+          ],
+          "payoff_convexity": [
+            {"name": "operating_leverage", "score": 4, "weight": 1.0, "evidence_ids": ["ev3"], "review_ids": ["rv-q411-ev3"], "rationale": "若 HBM 毛利兑现，盈利弹性较高。", "status": "verified"}
+          ]
+        }
+      },
+      "thesis_kill_tests": [
+        {
+          "test": "HBM 毛利率或 ASP 连续走弱",
+          "evidence_needed": "下一季 HBM ASP、毛利率和管理层指引",
+          "downgrade_action": "维持或下调为 no_action",
+          "source_plan": ["ev3", "next_quarter_results"]
+        }
+      ]
+    }
+  ]
+}
