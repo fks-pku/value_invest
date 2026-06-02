@@ -27,12 +27,15 @@ Use the project default mapping unless the topic clearly requires a custom map:
 | Industry/theme | Demand reality and future space | Value-capture bottlenecks | Disconfirming tests and priced-in risk | Specific target observation list |
 | Single company | Growth drivers | Moat, unit economics, and value capture | Financial quality, valuation, and disconfirming tests | Observation decision and monitoring list |
 | Event/policy | Fact boundary and scope | Transmission mechanism | Beneficiaries, losers, and second-order effects | Disconfirming tests and watchlist |
+| Event/conference opportunity | Official fact boundary and new-information delta | Transmission chain and supply-chain chokepoints | Disconfirming tests and priced-in risk | Specific target observation list and ranking |
 | Technology/product route | Technical feasibility and adoption demand | Bottlenecks and ecosystem readiness | Commercialization and competition | Exposed assets and monitoring list |
 | Target update | What changed | Which thesis node changed | Whether price/risk/reward changed | Observation-strength update |
 
 ## Question Quality Bar
 
 For every refreshed canonical research plan, create a supply-chain map before Q1-Q4. It should map upstream, midstream, downstream, infrastructure/ecosystem, customers/end demand, key players, products/services, dependency links, value/profit flow, and candidate chokepoints. This prevents the QA tree from jumping directly to familiar tickers before the industry structure is understood.
+
+For conferences, keynotes, product launches, investor days, and other public events, use the event/conference opportunity adapter unless the user asks for a different lens. L2 buckets must cover official fact boundary, new-information delta, event-to-order/revenue/margin bridge, supply-chain chokepoint, company exposure, valuation/priced-in risk, and target ranking. Preferred L3 skills are `event-to-investment-analysis`, `conference-transcript-analysis`, `supply-chain-chokepoint-analysis`, `company-exposure-analysis`, `valuation-analysis`, and `target-ranking-analysis`.
 
 For industry/theme opportunity and technology/product-route research, Q2 must include an explicit chokepoint evaluation if value capture depends on scarce supply, workflow control, proprietary data, distribution, trust, regulation, or another hard-to-bypass constraint. The L2/L3 tree should ask what demand reaches the node, why the node is irreplaceable, what constrains supply or access, whether pricing power and financial conversion are visible, whether the market has already priced it, and what would refute it.
 

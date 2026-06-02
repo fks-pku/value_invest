@@ -60,7 +60,7 @@ def build_report_view_model(
             "current_judgment": project.get("current_judgment") or _rollup_text(qa_roots),
             "biggest_uncertainty": project.get("biggest_uncertainty") or _default_uncertainty(goal),
         },
-        supply_chain=_supply_chain_model(resolved_playbook),
+        supply_chain=_artifact_supply_chain(project, qa_tree) or _supply_chain_model(resolved_playbook),
         qa_roots=qa_roots,
         targets=targets,
         sources=sources,
@@ -103,6 +103,7 @@ def _view_node(
         "judgment": str(node.get("judgment", "")),
         "gap": str(node.get("gap", "")),
         "trigger": str(node.get("trigger", "")),
+        "artifact": node.get("artifact") if isinstance(node.get("artifact"), dict) else {},
         "source_ids": source_ids,
         "source_index": source_index,
         "children": children,
@@ -128,6 +129,13 @@ def _supply_chain_model(playbook: DomainPlaybook) -> dict[str, Any]:
         "chokepoints": ", ".join(playbook.mechanism_buckets),
         "target_links": "Q2 负责瓶颈评分，Q4 负责把瓶颈、赔率和风险合成具体标的排序。",
     }
+
+
+def _artifact_supply_chain(project: dict[str, Any], qa_tree: dict[str, Any]) -> dict[str, Any]:
+    for candidate in (project.get("supply_chain"), qa_tree.get("supply_chain")):
+        if isinstance(candidate, dict) and candidate.get("layers"):
+            return candidate
+    return {}
 
 
 def _rollup_text(qa_roots: list[dict[str, Any]]) -> str:

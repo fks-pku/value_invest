@@ -71,6 +71,22 @@ def resolve_domain_playbook(goal: ResearchGoal) -> DomainPlaybook:
         return memory_industry_playbook(goal)
     if "optical" in hint or "optical" in topic or "光模块" in goal.topic or "光通信" in goal.topic:
         return optical_module_playbook(goal)
+    if (
+        "event" in hint
+        or "conference" in hint
+        or "keynote" in hint
+        or "launch" in hint
+        or "gtc" in hint
+        or "event" in topic
+        or "conference" in topic
+        or "keynote" in topic
+        or "launch" in topic
+        or "gtc" in topic
+        or "大会" in goal.topic
+        or "发布会" in goal.topic
+        or "发布" in goal.topic
+    ):
+        return event_conference_playbook(goal)
     if "semiconductor" in hint or "半导体" in goal.topic:
         return semiconductor_hardware_playbook(goal)
     return default_playbook(goal)
@@ -694,6 +710,217 @@ def optical_module_playbook(goal: ResearchGoal) -> DomainPlaybook:
     )
 
 
+def event_conference_playbook(goal: ResearchGoal) -> DomainPlaybook:
+    q_map = {
+        "Q1": "事实边界：大会/发布会到底确认了什么，哪些只是路线图或营销表述？",
+        "Q2": "传导与瓶颈：哪些产业链节点能把事件增量转成订单、收入、利润和现金流？",
+        "Q3": "反证与定价：哪些信号说明事件被延迟、不可财务化、可替代或已经充分定价？",
+        "Q4": "标的：哪些具体证券具备直接敞口、赔率、监控触发器和可控下行？",
+    }
+    return DomainPlaybook(
+        playbook_id="event_conference",
+        research_type=goal.normalized_type(),
+        q_map=q_map,
+        mechanism_buckets=[
+            "official_fact_boundary",
+            "new_information_delta",
+            "commercialization_stage",
+            "event_to_order_revenue_margin_bridge",
+            "supply_chain_chokepoint",
+            "company_exposure_and_financial_conversion",
+            "market_pricing_bridge",
+            "disconfirming_and_kill_tests",
+            "specific_target_ranking",
+        ],
+        l2_templates={
+            "Q1": [
+                _l2(
+                    "Q1.1",
+                    "官方事实和新增信息边界",
+                    "先把正式发布、路线图、伙伴名单、性能宣称和市场解读分开，避免把发布会热度当成财务事实。",
+                    [
+                        _event_l3(
+                            "官方材料确认了哪些产品、客户、量产/上市时间和性能指标？",
+                            "evidence_quality",
+                            "conference-transcript-analysis",
+                            required_materials=["official keynote/transcript", "official press releases", "agenda/session page", "product availability wording"],
+                            refute_evidence="材料只出现愿景、探索、伙伴展示或未给出可验证的时间/客户/产量。",
+                        ),
+                        _event_l3(
+                            "相对于会前公开信息，这次事件真正新增了哪些投资相关假设？",
+                            "future_space",
+                            "event-to-investment-analysis",
+                            required_materials=["pre-event baseline", "event announcements", "company roadmap", "customer/product delta"],
+                            refute_evidence="事件内容只是重复既有路线图，没有改变需求、供给、时间或竞争假设。",
+                        ),
+                    ],
+                ),
+                _l2(
+                    "Q1.2",
+                    "需求和客户可见度",
+                    "事件只有在客户、订单、capex、上市节奏或生态采用上可验证，才能提高投资结论强度。",
+                    [
+                        _event_l3(
+                            "客户/伙伴名单能否证明真实需求，还是只是生态展示？",
+                            "evidence_quality",
+                            "news-event-analysis",
+                            required_materials=["named customer statements", "supplier/customer press releases", "order/backlog/capex clues", "third-party coverage"],
+                            refute_evidence="客户仅被列为探索/合作，缺少订单、采购、量产或收入确认信号。",
+                        ),
+                        _event_l3(
+                            "事件信息能否形成未来 3-12 个月的可验证催化剂？",
+                            "monitorability",
+                            "event-to-investment-analysis",
+                            required_materials=["shipment date", "product launch window", "earnings calendar", "customer capex cycle", "supplier ramp timing"],
+                            refute_evidence="没有明确时间表、下一次披露点或可监控数据。",
+                        ),
+                    ],
+                ),
+            ],
+            "Q2": [
+                _l2(
+                    "Q2.1",
+                    "事件到产业链瓶颈的传导链",
+                    "把发布内容映射到上游/中游/下游，判断增量需求是否经过稀缺节点，而不是泛主题扩散。",
+                    [
+                        _event_l3(
+                            "事件增量最可能流向哪些稀缺节点：算力、网络、封装、制造、功耗散热、软件生态还是终端渠道？",
+                            "chokepoint_strength",
+                            "supply-chain-chokepoint-analysis",
+                            required_materials=["supply-chain map", "product BOM/platform architecture", "capacity/qualification data", "customer dependency evidence"],
+                            refute_evidence="节点可被轻松替代、双供、内部化或没有供给约束。",
+                        ),
+                        _event_l3(
+                            "候选瓶颈是否具备定价权和财务转化，而不只是技术重要性？",
+                            "chokepoint_strength",
+                            "supply-chain-chokepoint-analysis",
+                            required_materials=["ASP/take rate", "gross margin", "backlog/orders", "prepayment", "capacity utilization", "FCF"],
+                            refute_evidence="节点技术关键但利润被客户、平台商或系统集成商拿走。",
+                        ),
+                    ],
+                ),
+                _l2(
+                    "Q2.2",
+                    "公司敞口和利润桥",
+                    "把事件节点映射到公司收入、毛利、现金流和经营杠杆，而不是只列受益公司。",
+                    [
+                        _event_l3(
+                            "哪些公司有直接产品/客户/订单敞口，哪些只是间接叙事？",
+                            "target_ranking",
+                            "company-exposure-analysis",
+                            required_materials=["segment revenue", "product exposure", "customer list", "order/backlog", "guidance", "management commentary"],
+                            refute_evidence="业务混合度太高、敞口太低或只有伙伴名单而没有收入桥。",
+                        ),
+                        _event_l3(
+                            "事件能否改变目标公司的收入、毛利率、FCF 或资本开支节奏？",
+                            "payoff_convexity",
+                            "financial-statement-analysis",
+                            required_materials=["revenue bridge", "gross margin", "capex", "inventory", "working capital", "cash flow"],
+                            refute_evidence="收入增量被低毛利制造、capex 消耗、客户议价或库存压力抵消。",
+                        ),
+                    ],
+                ),
+            ],
+            "Q3": [
+                _l2(
+                    "Q3.1",
+                    "事件反证和执行风险",
+                    "为发布会结论绑定可执行的反证，而不是用宏观风险泛泛否定。",
+                    [
+                        _event_l3(
+                            "哪些技术、量产、生态、监管或客户 ROI 风险会让事件传导失败？",
+                            "disconfirming_risk_control",
+                            "event-to-investment-analysis",
+                            required_materials=["technical roadmap", "production/yield status", "regulatory/policy constraints", "customer ROI/capex commentary"],
+                            refute_evidence="量产延期、生态采用不足、监管限制或客户 capex 下修。",
+                        ),
+                        _event_l3(
+                            "哪些竞争路线或替代方案会绕开当前候选瓶颈？",
+                            "risk_control",
+                            "supply-chain-chokepoint-analysis",
+                            required_materials=["competitor roadmap", "substitution architecture", "customer self-build", "open ecosystem alternatives"],
+                            refute_evidence="替代路线更低成本、更快量产或获得核心客户导入。",
+                        ),
+                    ],
+                ),
+                _l2(
+                    "Q3.2",
+                    "市场定价和赔率",
+                    "把事件热度和估值分开，反推当前价格要求兑现的增长、利润率和持续时间。",
+                    [
+                        _event_l3(
+                            "核心标的是否已经把事件带来的增长、利润和 rerating 充分定价？",
+                            "valuation_odds",
+                            "valuation-analysis",
+                            required_materials=["market cap/EV", "PE/EV EBITDA/FCF yield", "consensus revision", "historical percentile", "peer multiples"],
+                            refute_evidence="估值已要求多年高增长和高利润率，事件兑现不足以提供安全边际。",
+                        ),
+                        _event_l3(
+                            "哪些短期交易拥挤或预期过高会压低胜率/赔率？",
+                            "risk_control",
+                            "valuation-analysis",
+                            required_materials=["price reaction", "earnings revision", "positioning/valuation proxy", "bear/base/bull scenarios"],
+                            refute_evidence="估值或预期回落空间大于基本面增量。",
+                        ),
+                    ],
+                ),
+            ],
+            "Q4": [
+                _l2(
+                    "Q4.1",
+                    "具体证券 universe 和敞口筛选",
+                    "先从经济相关证券出发，再用敞口、瓶颈、估值和风险过滤，不用方便交易的代理标的替代真实受益方。",
+                    [
+                        _event_l3(
+                            "哪些具体证券对应事件传导链上的直接瓶颈或高弹性节点？",
+                            "target_ranking",
+                            "company-exposure-analysis",
+                            required_materials=["ticker universe", "node exposure", "financial exposure", "liquidity/listing market", "source links"],
+                            refute_evidence="敞口低、不可交易、数据不可验证或只是宽泛主题暴露。",
+                        ),
+                        _event_l3(
+                            "哪些候选标的应因缺少稀缺性、错定价、利润弹性或风险控制而降级？",
+                            "action_state",
+                            "target-ranking-analysis",
+                            required_materials=["core score dimensions", "chokepoint score", "valuation odds", "kill tests", "monitoring data"],
+                            refute_evidence="任一核心维度缺失时只能 watch_only 或 no_action。",
+                        ),
+                    ],
+                ),
+                _l2(
+                    "Q4.2",
+                    "排序、赔率和复盘触发器",
+                    "把 Q1-Q3 verified conclusions 转成确定性排序、简化赔率模型和下一次复盘清单。",
+                    [
+                        _event_l3(
+                            "最终排序如何同时反映稀缺性、错定价、利润弹性和风险控制？",
+                            "target_ranking",
+                            "target-ranking-analysis",
+                            required_materials=["score_subcomponents", "evidence/review ids", "action_state", "odds model", "rank tie-break"],
+                            refute_evidence="评分缺少证据链、人工调序、估值缺口或无法解释行动状态。",
+                        ),
+                        _event_l3(
+                            "未来 3 个月哪些数据会升级、维持或撤销这些观察？",
+                            "monitorability",
+                            "target-ranking-analysis",
+                            required_materials=["review horizon", "earnings dates", "product availability", "order/backlog", "valuation update", "thesis kill tests"],
+                            refute_evidence="没有硬触发器或无法在复盘期内验证。",
+                        ),
+                    ],
+                ),
+            ],
+        },
+        supply_chain_layers=[
+            {"layer": "事件源头", "products": "keynote、发布会、官方新闻稿、演示、路线图", "players": "主办公司、管理层、合作伙伴", "value_flow": "提供事实边界和新增信息，但本身不是财务结论。"},
+            {"layer": "产品/技术路线", "products": "新芯片、平台、软件、终端、网络、制造路线", "players": "平台商、IP/芯片/系统公司、软件生态", "value_flow": "决定需求传导到哪些产品和生态节点。"},
+            {"layer": "供应链瓶颈", "products": "制造、封装、网络、功耗散热、组件、认证、渠道或数据访问", "players": "代工、ODM/OEM、组件商、云厂商、渠道和生态伙伴", "value_flow": "只有稀缺且可 monetization 的节点才可能捕获超额利润。"},
+            {"layer": "公司财务敞口", "products": "收入、毛利率、订单、backlog、capex、FCF、客户结构", "players": "具体上市公司和可交易资产", "value_flow": "把事件叙事转成公司层面的收入和现金流弹性。"},
+            {"layer": "资本市场定价", "products": "估值倍数、盈利预期、股价反应、风险溢价", "players": "投资者、卖方、指数/行业资金", "value_flow": "决定机会是错定价、观察项，还是已经充分定价。"},
+        ],
+        quality_rule="event research must parse official fact boundary, identify new information delta, bridge event claims to orders/revenue/margin/FCF, score chokepoints, verify company exposure, reverse valuation expectations, and rank targets with monitorable kill tests",
+    )
+
+
 def default_playbook(goal: ResearchGoal) -> DomainPlaybook:
     q_map = goal.q_map()
     return DomainPlaybook(
@@ -763,6 +990,29 @@ def _optical_l3(
     leaf.update(
         {
             "decision_use": f"影响 {score_component}、父节点结论、Q4 标的排序和行动状态。",
+            "required_materials": required_materials,
+            "support_evidence": support_evidence,
+            "refute_evidence": refute_evidence,
+            "target_implications": target_implications,
+        }
+    )
+    return leaf
+
+
+def _event_l3(
+    question: str,
+    score_component: str,
+    skill: str,
+    *,
+    required_materials: list[str],
+    refute_evidence: str,
+    support_evidence: str = "能把事件信息从发布会表述落到客户、订单、时间、财务或估值影响的证据。",
+    target_implications: str = "决定相关标的是直接事件受益、仅观察验证，还是因缺少财务/估值证据而降级。",
+) -> dict[str, Any]:
+    leaf = _l3(question, score_component, skill)
+    leaf.update(
+        {
+            "decision_use": f"影响 {score_component}、事件传导强度、Q4 标的排序和行动状态。",
             "required_materials": required_materials,
             "support_evidence": support_evidence,
             "refute_evidence": refute_evidence,

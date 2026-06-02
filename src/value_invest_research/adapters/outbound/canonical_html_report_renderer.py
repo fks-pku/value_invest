@@ -182,12 +182,12 @@ def _render_qa_card(node: dict[str, Any]) -> str:
     children = node.get("children") or []
     node_id = str(node.get("id", ""))
     child_cards = "\n".join(_render_qa_card(child) for child in children)
-    child_summary = child_cards or '<p class="muted">已到 L3 叶子问题，下一步通过来源更新和季度触发器继续验证。</p>'
+    child_summary = child_cards or '<p class="muted">已到当前最深研究单元，下一步通过来源更新和季度触发器继续验证。</p>'
     conclusion = _node_conclusion(node)
     gap_text = _gap_text(node)
-    metadata = _l3_metadata(node) if level == 3 else ""
+    metadata = _l3_metadata(node) if level >= 3 else ""
     source_links = _source_links(node.get("source_index") or [])
-    artifact = _artifact_card(node) if level == 3 else f'<div class="artifact-card"><p>{_e(conclusion)}</p></div>'
+    artifact = _artifact_card(node) if level >= 3 else f'<div class="artifact-card"><p>{_e(conclusion)}</p></div>'
     return f"""
 <details id="{_id(node_id)}" class="qa-card level-{level}" open>
   <summary>
@@ -349,8 +349,10 @@ def _l3_metadata(node: dict[str, Any]) -> str:
 
 
 def _artifact_card(node: dict[str, Any]) -> str:
+    rendered_artifacts = _render_node_artifacts(node.get("artifact"))
     return f"""
 <div class="artifact-card l3-artifact">
+  {rendered_artifacts}
   <dl>
     <div><dt>事实</dt><dd>{_e(str(node.get("fact", "")))}</dd></div>
     <div><dt>推论</dt><dd>{_e(str(node.get("inference", "")))}</dd></div>
@@ -358,6 +360,45 @@ def _artifact_card(node: dict[str, Any]) -> str:
     <div><dt>缺口</dt><dd>{_e(str(node.get("gap", "")))}</dd></div>
     <div><dt>触发器</dt><dd>{_e(str(node.get("trigger", "")))}</dd></div>
   </dl>
+</div>
+""".strip()
+
+
+def _render_node_artifacts(artifact: Any) -> str:
+    if not isinstance(artifact, dict):
+        return ""
+    tables = artifact.get("tables")
+    if not isinstance(tables, list):
+        tables = [artifact] if artifact.get("columns") and artifact.get("rows") else []
+    return "\n".join(_render_artifact_table(table) for table in tables if isinstance(table, dict))
+
+
+def _render_artifact_table(table: dict[str, Any]) -> str:
+    columns = [str(column) for column in table.get("columns", []) if str(column)]
+    rows = table.get("rows", [])
+    if not columns or not isinstance(rows, list):
+        return ""
+    header = "".join(f"<th>{_e(column)}</th>" for column in columns)
+    body_rows = []
+    for row in rows:
+        if isinstance(row, dict):
+            cells = [row.get(column, "") for column in columns]
+        elif isinstance(row, list):
+            cells = row
+        else:
+            continue
+        body_rows.append("<tr>" + "".join(f"<td>{_e(str(cell))}</td>" for cell in cells) + "</tr>")
+    if not body_rows:
+        return ""
+    title = str(table.get("title") or "")
+    title_html = f'<p class="artifact-title">{_e(title)}</p>' if title else ""
+    return f"""
+<div class="artifact-table-wrap">
+  {title_html}
+  <table class="artifact-table">
+    <thead><tr>{header}</tr></thead>
+    <tbody>{''.join(body_rows)}</tbody>
+  </table>
 </div>
 """.strip()
 
@@ -516,6 +557,10 @@ th { color: #475467; font-size: 13px; background: #f7f9fc; }
 }
 .qa-stack, .child-stack { display: grid; gap: 14px; }
 .qa-card { padding: 0; overflow: clip; }
+.qa-card.level-4 { background: rgba(255,255,255,.76); border-style: dashed; }
+.qa-card.level-5 { background: rgba(247,249,252,.92); border-style: dashed; }
+.qa-card.level-4 > summary { padding-left: 28px; }
+.qa-card.level-5 > summary { padding-left: 36px; }
 .qa-card summary {
   cursor: pointer;
   display: grid;
@@ -554,6 +599,24 @@ th { color: #475467; font-size: 13px; background: #f7f9fc; }
   border-radius: 14px;
   background: var(--surface-strong);
   padding: 14px;
+}
+.artifact-title {
+  margin: 0 0 8px;
+  font-weight: 800;
+  color: #334155;
+}
+.artifact-table-wrap {
+  overflow-x: auto;
+  margin-bottom: 14px;
+  border: 1px solid rgba(217,224,234,.8);
+  border-radius: 12px;
+}
+.artifact-table th {
+  white-space: nowrap;
+}
+.artifact-table td {
+  min-width: 120px;
+  font-size: 13px;
 }
 .l3-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
 .l3-meta span {

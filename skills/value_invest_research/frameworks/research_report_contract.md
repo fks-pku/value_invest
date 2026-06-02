@@ -10,7 +10,8 @@ The current locked contract is:
 
 - Top-level order is exactly `当前研究目标` -> `产业链全景` -> `问题下钻` -> `最终标的推荐` -> `来源索引`.
 - `产业链全景` is a standalone research map section, not a process appendix. It must show the upstream, midstream, downstream, key players, products/services, dependency links, profit/value flow, and where possible chokepoints sit before the QA drilldown begins. It must also use `supply-chain-panorama-explainer` output so a new reader can understand the chain in Chinese before entering the QA tree.
-- `问题下钻` must preserve the full adapted Q1-Q4 QA tree. Complete refreshed reports must render L3 leaf questions, not stop at L2 summaries, unless the user explicitly asks for a shorter executive version.
+- `问题下钻` must preserve the full adapted Q1-Q4 QA tree. Complete refreshed reports must render L3 questions and any available adaptive L4/L5 drilldown units, not stop at L2 summaries, unless the user explicitly asks for a shorter executive version.
+- Maximum public/internal QA depth is five. L1 is the adapted research direction, L2 is the mechanism bucket, L3 is the investment decision question, and L4/L5 are optional deeper workbench/research units used only when needed. Do not force all branches to reach L5.
 - Q4 remains the auditable as-of target-selection QA node and must keep child questions when the research has target implications.
 - `最终标的推荐` is a standalone presentation rollup, not a replacement for Q4. It synthesizes the QA tree into a ranked target table.
 - In historical training/backtest mode, public report prose must read as if written on the `as_of_date`. Later price movement appears only once, as isolated evaluation columns or one adjacent label block in `最终标的推荐`.
@@ -21,7 +22,7 @@ The current locked contract is:
 
 These five areas are locked requirements for all future reports and refreshed reports. Do not relax, reinterpret, or silently replace them in generated reports, templates, prompts, or renderer code:
 
-1. Hierarchy and format lock: final reports must keep the exact public order `当前研究目标` -> `产业链全景` -> `问题下钻` -> `最终标的推荐` -> `来源索引`; `问题下钻` must render the full adapted Q1-Q4 tree through L1/L2/L3 when L3 exists; every QA card must use the same three-block body order.
+1. Hierarchy and format lock: final reports must keep the exact public order `当前研究目标` -> `产业链全景` -> `问题下钻` -> `最终标的推荐` -> `来源索引`; `问题下钻` must render the full adapted Q1-Q4 tree through L1/L2/L3 and any adaptive L4/L5 units when they exist; every QA card must use the same three-block body order.
 2. Backtest time-slice lock: historical training/backtest mode uses only information visible at the frozen cutoff, normally three calendar months before the evaluation/report date unless the user specifies a different horizon. Source collection, source parsing, QA reasoning, target ranking, score fields, odds models, and rationale must not use any post-cutoff information. The only current-time data allowed in the public report is the final-target evaluation label, rendered once in `最终标的推荐`.
 3. Frontend card-style lock: refreshed canonical reports must use the shared Apple-inspired card system and canonical component family. QA cards must remain clickable/collapsible through `details.qa-card > summary` with `qa-count` and `chevron`, default `open`. Do not introduce a parallel public layout, alternate card family, static QA card wrapper, per-target card deck, source-bucket layout, process appendix layout, or redesigned visual system unless the user explicitly asks for a frontend redesign.
 4. Public no-changelog lock: refreshed canonical reports must not render process/change-log content such as "本轮升级", "本次更新", "本轮新增", "机制深度映射", "本轮如何落实", "what changed in this run", execution/tool traces, or workbench/process explanations. These are internal artifacts unless the user explicitly asks to inspect process.
@@ -32,7 +33,7 @@ Before marking any framework iteration complete, run a regression contract check
 
 Executable enforcement lives in `src/value_invest_research/framework_contracts.py`. Use it to validate report HTML, QA tree schema, time-sliced sources, target score separation, frozen recommendation integrity, label attachment, training samples, prediction reviews, internal workbench separation, and domain playbook selection.
 
-In addition to the public presentation locks, refreshed canonical reports must pass the internal QA professionalism lock. Every L3 record is invalid if it lacks `decision_use`, `materiality`, `support_evidence`, `refute_evidence`, `target_implications`, `score_component`, `minimum_evidence_gate`, `refuting_source_plan`, structured `source_plan`, structured `skill_dispatch`, differentiated `fact`/`inference`/`judgment`, `gap`, `trigger`, and `source_links`. In historical mode, the structured `source_plan` must also carry source-visible date, cutoff status, and availability proof.
+In addition to the public presentation locks, refreshed canonical reports must pass the internal QA professionalism lock. Every L3-L5 research-unit record is invalid if it lacks `decision_use`, `materiality`, `support_evidence`, `refute_evidence`, `target_implications`, `score_component`, `minimum_evidence_gate`, `refuting_source_plan`, structured `source_plan`, structured `skill_dispatch`, differentiated `fact`/`inference`/`judgment`, `gap`, `trigger`, and `source_links`. In historical mode, the structured `source_plan` must also carry source-visible date, cutoff status, and availability proof.
 
 ## Top-Level HTML Contract
 
@@ -56,18 +57,18 @@ Treat a generated report as contract-invalid if any of these invariants fail:
 2. `产业链全景` renders as one `supply-chain-section` with `chain-explain`, `chain-plain-summary`, `chain-flow-steps`, `chain-layer-grid`, `chain-layer-card`, `chain-chokepoints`, `chain-target-links`, and a `chain-map` or `chain-table`; it must cover upstream, midstream, downstream, key players, products/services, dependency links, value/profit flow, and candidate chokepoints in beginner-readable Chinese.
 3. `问题下钻` renders Q1-Q4 as `qa-card level-1` cards. Q nodes must not appear as loose top-level sections outside `问题下钻`.
 3. Each L1 renders its available L2 children as `qa-card level-2` cards, grouped by meaningful mechanism bucket rather than by generic summary labels.
-4. Complete refreshed reports render every available L3 leaf as a `qa-card level-3` card. A report may omit L3 only when the source QA tree truly has no L3 leaves or the user explicitly requested a shorter executive version.
-5. Every `qa-card level-1`, `qa-card level-2`, and `qa-card level-3` uses the same three-block body order: `1. 当前结论呈现`, `2. 问题展开（子 QA）`, `3. 待补充的问题`.
+4. Complete refreshed reports render every available L3 question and adaptive L4/L5 research unit as `qa-card level-3`, `qa-card level-4`, or `qa-card level-5`. A report may omit L3 only when the source QA tree truly has no L3 leaves or the user explicitly requested a shorter executive version.
+5. Every `qa-card level-1` through `qa-card level-5` uses the same three-block body order: `1. 当前结论呈现`, `2. 问题展开（子 QA）`, `3. 待补充的问题`.
 6. Every QA card must be an interactive `details.qa-card` element with a direct `summary` header, `qa-count`, and `chevron`, opened by default. Static `article.qa-card`, `div.qa-card`, or non-clickable wrappers are contract-invalid even if hierarchy classes are present.
 7. Parent-level artifacts such as scorecards, risk matrices, answer tables, and target-selection tables render inside `1. 当前结论呈现` of the QA node they answer, before child QA expansion.
 8. `2. 问题展开（子 QA）` contains either inline child `qa-card` nodes or jump links, not both. Do not duplicate the same child titles in both a summary list and rendered child cards.
 9. Q4 remains inside `问题下钻` as the auditable target-selection QA node and keeps its L2/L3 children. The standalone `最终标的推荐` section must never erase, replace, rename, or move Q4.
 10. `最终标的推荐` renders as one `target-section` with a dense `target-table` by default. It is a synthesized rollup from Q1-Q4, not an extra QA node and not a process appendix.
 11. `来源索引` renders as one collapsed `source-collapse` by default. Source details may expand inside it, but they must not create additional top-level sections.
-12. Refreshed canonical reports must use the shared component family: `hero`, `top-nav`, `goal-card`, `supply-chain-section`, `chain-explain`, `chain-plain-summary`, `chain-flow-steps`, `chain-layer-grid`, `chain-layer-card`, `chain-chokepoints`, `chain-target-links`, `chain-map`, `chain-table`, `qa-card level-1`, `qa-card level-2`, `qa-card level-3`, `qa-body`, `qa-block`, `block-title`, `artifact-card`, `target-section`, `target-table`, and `source-collapse`. Do not introduce alternate public component families unless the user explicitly asks for a frontend redesign.
+12. Refreshed canonical reports must use the shared component family: `hero`, `top-nav`, `goal-card`, `supply-chain-section`, `chain-explain`, `chain-plain-summary`, `chain-flow-steps`, `chain-layer-grid`, `chain-layer-card`, `chain-chokepoints`, `chain-target-links`, `chain-map`, `chain-table`, `qa-card level-1`, `qa-card level-2`, `qa-card level-3`, optional `qa-card level-4`, optional `qa-card level-5`, `qa-body`, `qa-block`, `block-title`, `artifact-card`, `target-section`, `target-table`, and `source-collapse`. Do not introduce alternate public component families unless the user explicitly asks for a frontend redesign.
 13. Target-table `action_state` cells must render with the canonical status color classes: `state-actionable_long`, `state-watch_only`, or `state-no_action`. Plain uncolored action-state text is contract drift.
 14. Historical training/backtest labels are evaluation fields only. They may appear once in the isolated label area of `最终标的推荐`, never inside QA conclusion prose or Q4 child logic.
-15. Every visible L3 card must include a compact professional-routing strip with selected `Skill`, actual `Execution` status, `Score Component`, and `Decision Use`. `Skill` is the intended specialty lens; `Execution` must come from `skill_output_status` and `fallback_used`, so a selected skill cannot be mistaken for a completed parser run. Full parser traces still belong in internal files unless explicitly requested.
+15. Every visible L3-L5 research-unit card must include a compact professional-routing strip with selected `Skill`, actual `Execution` status, `Score Component`, and `Decision Use`. `Skill` is the intended specialty lens; `Execution` must come from `skill_output_status` and `fallback_used`, so a selected skill cannot be mistaken for a completed parser run. Full parser traces still belong in internal files unless explicitly requested.
 
 ## Time-Sliced Evaluation Contract
 
@@ -92,13 +93,26 @@ Historical project artifacts must include an internal anti-leakage declaration, 
 
 ## QA Hierarchy Contract
 
-The default QA hierarchy is three layers:
+The default QA hierarchy is adaptive with maximum depth five:
 
 - `L1`: top-level adapted research direction, normally Q1-Q4.
 - `L2`: mechanism bucket selected by the research-type adapter and domain playbook. L2 must group L3 questions by meaningful analytical mechanism.
-- `L3`: evidence-collection and answer unit.
+- `L3`: investment decision question. It should be able to change a parent conclusion, score component, target rank, action state, valuation odds, or risk control.
+- `L4`: optional decomposition unit under an L3 when the L3 spans multiple companies, supply-chain nodes, financial bridges, valuation cases, or source families.
+- `L5`: optional atomic work unit for one company/node/source/model row when L4 is still too broad. L5 is the maximum depth; if more depth seems necessary, rewrite the higher-level question instead of creating L6.
 
 L2 must not be a single catch-all wrapper under each L1 when many unrelated L3 questions exist. Split L2 by the analytical mechanisms that matter for the selected research object.
+
+Adaptive drilldown triggers:
+
+- the parent question covers multiple companies, securities, or value-chain nodes;
+- the answer requires a mapping table, driver tree, financial bridge, valuation model, scorecard, scenario table, or kill-test matrix;
+- the source plan spans more than three material classes or parser skills;
+- the conclusion can only say "needs verification" without a more granular sub-question;
+- support and refuting evidence apply to different submechanisms and should not be averaged into one judgment;
+- target ranking would change depending on a company-specific or node-specific answer.
+
+Do not create L4/L5 for cosmetic completeness. Stop at the shallowest level that gives a sourced, decision-useful answer.
 
 The shared contract defines hierarchy and presentation only. It does not hard-code domain questions, metrics, parsing methods, tracking indicators, or thresholds.
 
@@ -266,18 +280,18 @@ The public explanation must use:
 
 The `产业链全景` section must also keep `supply-chain-section` and `chain-map` or `chain-table` classes so validators can distinguish it from process appendices or decorative cards. The QA tree may still contain deeper supply-chain questions, but the top-level map is mandatory because all later opportunity analysis needs a shared industry coordinate system.
 
-## L3 Logic Card Contract
+## L3-L5 Logic Card Contract
 
-Every L3 `logic-grid` must distinguish `Fact`, `Inference`, `Judgment`, and `Gap / Trigger`.
+Every L3-L5 `logic-grid` must distinguish `Fact`, `Inference`, `Judgment`, and `Gap / Trigger`.
 
 - `Fact` is source-bound: extracted facts, reported numbers, dates, official statements, or source summaries visible at the cutoff.
 - `Inference` explains how the facts answer the leaf question.
 - `Judgment` states the decision impact on parent conclusion, target strength, `action_state`, valuation odds, or risk control.
 - `Fact`, `Inference`, and `Judgment` must not be three copies of the same conclusion. A complete QA tree is invalid when those fields are undifferentiated.
 
-L3 cards must directly answer their leaf question. When the leaf is a mapping, bridge, comparison, scenario, score, target-selection, or kill-test question, the L3 current-conclusion block should include an `artifact-card` with the corresponding structured answer table. Examples: workload-to-product mapping, demand-supply slope table, unit-economics bridge, valuation bridge, target-score table, or kill-test table. Source chips and generic prose are not enough if they leave the reader to infer the actual answer.
+L3-L5 cards must directly answer their unit question. When the unit is a mapping, bridge, comparison, scenario, score, target-selection, or kill-test question, the current-conclusion block should include an `artifact-card` with the corresponding structured answer table. Examples: workload-to-product mapping, demand-supply slope table, unit-economics bridge, valuation bridge, target-score table, or kill-test table. Source chips and generic prose are not enough if they leave the reader to infer the actual answer.
 
-The public card may show only the readable logic fields, but the source QA tree must preserve the full L3 audit schema:
+The public card may show only the readable logic fields, but the source QA tree must preserve the full L3-L5 audit schema:
 
 - `decision_use`: how the answer changes the parent decision, target rank, odds, or risk control.
 - `support_evidence` and `refute_evidence`: what would strengthen or weaken the leaf.
@@ -287,16 +301,16 @@ The public card may show only the readable logic fields, but the source QA tree 
 - `source_plan`: structured source objects with expected fields, bucket, visible date/cutoff status, allowed usage, preferred parser skill, and historical-mode availability proof.
 - `skill_dispatch`: structured object with `task_family`, `selected_skill`, `concrete_materials`, `extraction_schema`, `source_extraction_ids`, `leaf_source_review_ids`, `skill_output_status`, `fallback_used`, and `gpt_verification_status`.
 
-Every persisted source-parser record must include `schema_fields` that fill the L3 `skill_dispatch.extraction_schema`. Generic source summaries without schema-field mapping are not sufficient to strengthen refreshed canonical QA answers until GPT maps and verifies them.
+Every persisted source-parser record must include `schema_fields` that fill the L3-L5 `skill_dispatch.extraction_schema`. Generic source summaries without schema-field mapping are not sufficient to strengthen refreshed canonical QA answers until GPT maps and verifies them.
 
-The visible L3 card must surface the minimum routing proof from this schema: selected skill, actual execution status, score component, and decision use. The detailed `source_extractions.jsonl` and `leaf_source_reviews.jsonl` records remain internal by default.
+The visible L3-L5 card must surface the minimum routing proof from this schema: selected skill, actual execution status, score component, and decision use. The detailed `source_extractions.jsonl` and `leaf_source_reviews.jsonl` records remain internal by default.
 
 ## Visual Contract
 
 Default visual style:
 
 - Apple-inspired light surfaces and SF-system typography.
-- Clear L1/L2/L3 hierarchy through spacing, labels, and restrained borders.
+- Clear L1/L2/L3/L4/L5 hierarchy through spacing, labels, and restrained borders.
 - Soft text palette with blue-gray hierarchy accents; avoid heavy black text blocks or black badges unless needed for a small emphasis state.
 - Blue links for concrete sources.
 - Dense but readable tables for target recommendation and source traceability.

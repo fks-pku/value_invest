@@ -1,6 +1,6 @@
 ---
 name: leaf-research-deepseek
-description: Use this skill for L3 leaf research when concrete materials have already been selected and DeepSeek MCP should carefully read them. It defines the source-reading prompt, extraction schema, and GPT verification checklist for first-pass L3 answers.
+description: Use this skill for L3-L5 research-unit parsing when concrete materials have already been selected and DeepSeek MCP should carefully read them. It defines the source-reading prompt, extraction schema, and GPT verification checklist for first-pass L3-L5 answers.
 ---
 
 # Leaf Research DeepSeek

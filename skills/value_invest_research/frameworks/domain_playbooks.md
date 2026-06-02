@@ -1,6 +1,6 @@
 # Domain Playbooks
 
-Domain playbooks are the depth layer under the shared QA/report contract. The public report contract fixes hierarchy and presentation; this file fixes how a domain should become concrete L2/L3 mechanism questions, source plans, extraction schemas, and scoring inputs.
+Domain playbooks are the depth layer under the shared QA/report contract. The public report contract fixes hierarchy and presentation; this file fixes how a domain should become concrete L2/L3 mechanism questions, optional L4/L5 decomposition units, source plans, extraction schemas, and scoring inputs.
 
 ## Mechanism Depth Protocol
 
@@ -19,7 +19,7 @@ Every applicable domain playbook should cover these blocks unless the research o
 7. Capital-chain and second-order beneficiaries: whether high returns pull capex into equipment, materials, infrastructure, channels, or downstream adopters.
 8. Model and口径 reconciliation: compare external models by period, unit, currency, revenue/profit/capex scope, and margin definition before adopting numbers.
 
-Each L3 extraction schema should prefer structured rows over prose:
+Each L3-L5 extraction schema should prefer structured rows over prose:
 
 - metric or assumption
 - period
@@ -30,6 +30,13 @@ Each L3 extraction schema should prefer structured rows over prose:
 - support/refute/lead stance
 - uncertainty or口径 caveat
 - parent QA node and score component affected
+
+Adaptive depth rule:
+
+- Use L3 for investment decision questions.
+- Use L4 when one L3 spans multiple companies, value-chain nodes, source families, financial bridges, valuation cases, or risk tests.
+- Use L5 only for atomic work units such as one target financial bridge, one bottleneck score row, one source/model row, one valuation scenario, or one kill-test threshold.
+- Do not go beyond L5. If L5 still feels too broad, rewrite L2/L3 instead of creating another level.
 
 Every domain playbook should define a supply-chain map schema with at least:
 
@@ -128,3 +135,54 @@ Scoring adjustments:
 - `valuation_odds` must check whether 800G/1.6T growth and high margins are already priced.
 - `disconfirming_risk_control` must include CPO/LPO/copper/OCS substitution, ASP erosion, capacity expansion, customer concentration, and geopolitics.
 - `payoff_convexity` must separate module revenue growth, component margin leverage, manufacturing beta, and multiple rerating.
+
+## Event / Conference Playbook
+
+Use this playbook for conferences, keynotes, product launches, investor days, policy meetings, roadshows, major demos, and other public events where the investment question is whether the event changes future fundamentals or target ranking.
+
+Default Q map:
+
+- Q1 Fact boundary: identify what was officially confirmed, what is only roadmap/marketing language, and what new assumption changed versus pre-event public knowledge.
+- Q2 Transmission and chokepoints: map event claims into product route, customer/order evidence, supply-chain bottlenecks, company exposure, margin, FCF, and value capture.
+- Q3 Disconfirming tests and priced-in risk: test execution delay, missing customer conversion, substitution, weak ROI, valuation crowding, and already-priced expectations.
+- Q4 Target observation list: rank specific securities by direct exposure, scarcity, mispricing, earnings elasticity, risk control, payoff odds, and monitorability.
+
+Required L2 mechanism buckets:
+
+- Official fact boundary: official agenda, keynote, transcript/replay, press releases, product availability, named partners/customers, production status, and exact dates.
+- New-information delta: what changed versus prior roadmap, market expectation, or existing customer/supplier disclosures.
+- Event-to-commercialization bridge: concept -> prototype -> qualification -> production -> shipment -> revenue -> gross margin -> FCF.
+- Customer/order visibility: customer statements, capex, purchase agreements, backlog/RPO, supplier ramp, channel availability, and product launch windows.
+- Supply-chain chokepoint: scarcity, qualification, capacity, access, distribution, data, trust, regulation, ecosystem lock-in, and substitute/counter-supply paths.
+- Company exposure and profit bridge: segment revenue, product mix, customer concentration, order timing, ASP/take rate, margin, capex, working capital, and FCF.
+- Valuation/priced-in risk: current market cap, multiple, consensus revisions, event price reaction, implied growth/margin duration, and downside if the event does not convert.
+- Target ranking and kill tests: target universe, score subcomponents, action state, simplified odds model, upgrade data, downgrade data, and validation horizon.
+
+Required extraction schemas:
+
+- `event_fact_boundary`: event, date, speaker/source, claim, official/third-party status, product/customer/timing anchor, source link, and confidence.
+- `conference_claim_quality`: claim, claim type, commercialization stage, exact wording cue, commercial anchor, evidence strength, verification needed.
+- `event_transmission_chain`: event claim, product route, customer/order signal, revenue bridge, margin/FCF bridge, affected chain node, target implication.
+- `chokepoint_scorecard`: node, demand flow, irreplaceability, supply/access constraint, pricing power, financial conversion, market pricing, disconfirming trigger.
+- `company_exposure_bridge`: ticker, node exposure, revenue proxy, margin/FCF bridge, customer concentration, dilution, timing, evidence quality, missing data.
+- `event_valuation_odds`: ticker, market cap/EV, relevant multiple, implied growth/margin, event delta, base/bull/bear path, upgrade/downgrade data.
+- `target_ranking_worksheet`: ticker, core score dimensions, score subcomponents, action state, kill tests, review horizon, evidence/review IDs.
+
+Skill dispatch defaults:
+
+- Event fact and new-information delta -> `event-to-investment-analysis`.
+- Keynote, transcript, slides, demos, and management Q&A -> `conference-transcript-analysis`.
+- Supply-chain scarcity and Q2 scorecard -> `supply-chain-chokepoint-analysis`.
+- Company exposure and profit bridge -> `company-exposure-analysis`, then `financial-statement-analysis` when filings/results are available.
+- Valuation and priced-in expectations -> `valuation-analysis`.
+- Final deterministic ranking -> `target-ranking-analysis`, with `target-recommendation-analysis` used for the public observation-list fields.
+- News/live coverage -> `news-event-analysis`; it is usually a lead until confirmed by official or company evidence.
+
+Scoring adjustments:
+
+- `evidence_quality` must separate official facts, roadmap claims, customer logos, third-party news, and market interpretation.
+- `future_space` can only strengthen when the event changes customer demand, shipment timing, adoption duration, or product availability.
+- `chokepoint_strength` requires scarcity plus monetization; partner lists without capacity/qualification/pricing evidence are only leads.
+- `valuation_odds` must reverse whether the event delta is already priced.
+- `disconfirming_risk_control` must include event-specific kill tests such as launch delay, missing order conversion, customer capex pullback, substitution, and valuation crowding.
+- `monitorability` must include a concrete review horizon and next evidence to collect.

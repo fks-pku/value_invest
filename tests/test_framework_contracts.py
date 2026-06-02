@@ -46,7 +46,7 @@ class FrameworkContractsTests(unittest.TestCase):
               <table class="chain-table"><tr><th>上游</th><th>中游</th><th>下游</th><th>关键玩家</th><th>价值关系</th></tr></table>
             </div>
           </section>
-          <section id="qa"><h2>{qa_title}</h2>
+          <section id="qa"><h2>{qa_title}</h2><div class="qa-body"></div>
             <details class="qa-card level-1" id="q1" open>
               <summary><h3>Q1 demand</h3><span class="qa-count">1</span><span class="chevron">›</span></summary>
               <div class="qa-body">
@@ -171,6 +171,89 @@ class FrameworkContractsTests(unittest.TestCase):
         meta_result = validate_report_contract_html(meta_drift_invalid, mode="historical_backtest", require_l3=True)
         self.assertFalse(meta_result["ok"])
         self.assertIn("public_meta_drift", {issue["code"] for issue in meta_result["issues"]})
+
+    def test_adaptive_drilldown_allows_l4_l5_but_rejects_l6(self):
+        goal_title, chain_title, qa_title, target_title, source_title = REPORT_SECTIONS
+        block_one, block_two, block_three = QA_BLOCK_TITLES
+        html = f"""
+        <main>
+          <header class="hero"></header>
+          <nav class="top-nav"></nav>
+          <section id="goal"><h2>{goal_title}</h2><div class="goal-card"></div></section>
+          <section id="chain" class="supply-chain-section"><h2>{chain_title}</h2>
+            <div class="chain-explain">
+              <p class="chain-plain-summary">一句话看懂链条。</p>
+              <ol class="chain-flow-steps"><li>需求</li><li>供给</li><li>瓶颈</li></ol>
+              <div class="chain-layer-grid"><article class="chain-layer-card">上游</article></div>
+              <div class="chain-chokepoints">卡点</div>
+              <div class="chain-target-links">标的</div>
+              <div class="chain-map"><table class="chain-table"><tr><th>层级</th></tr></table></div>
+            </div>
+          </section>
+          <section id="qa"><h2>{qa_title}</h2><div class="qa-body"></div>
+            <details class="qa-card level-1" id="q1" open>
+              <summary><span>Q1</span><span class="qa-count">1</span><span class="chevron">›</span></summary>
+              <section class="qa-block"><h4 class="block-title">{block_one}</h4><div class="artifact-card"></div></section>
+              <section class="qa-block"><h4 class="block-title">{block_two}</h4>
+                <details class="qa-card level-2" id="q1-1" open>
+                  <summary><span>Q1.1</span><span class="qa-count">1</span><span class="chevron">›</span></summary>
+                  <section class="qa-block"><h4 class="block-title">{block_one}</h4><div class="artifact-card"></div></section>
+                  <section class="qa-block"><h4 class="block-title">{block_two}</h4>
+                    <details class="qa-card level-3" id="q1-1-1" open>
+                      <summary><span>Q1.1.1</span><span class="qa-count">1</span><span class="chevron">›</span></summary>
+                      <section class="qa-block"><h4 class="block-title">{block_one}</h4>{_l3_meta_html()}<div class="artifact-card"></div></section>
+                      <section class="qa-block"><h4 class="block-title">{block_two}</h4>
+                        <details class="qa-card level-4" id="q1-1-1-1" open>
+                          <summary><span>Q1.1.1.1</span><span class="qa-count">1</span><span class="chevron">›</span></summary>
+                          <section class="qa-block"><h4 class="block-title">{block_one}</h4>{_l3_meta_html()}<div class="artifact-card"></div></section>
+                          <section class="qa-block"><h4 class="block-title">{block_two}</h4>
+                            <details class="qa-card level-5" id="q1-1-1-1-1" open>
+                              <summary><span>Q1.1.1.1.1</span><span class="qa-count">0</span><span class="chevron">›</span></summary>
+                              <section class="qa-block"><h4 class="block-title">{block_one}</h4>{_l3_meta_html()}<div class="artifact-card"></div></section>
+                              <section class="qa-block"><h4 class="block-title">{block_two}</h4></section>
+                              <section class="qa-block"><h4 class="block-title">{block_three}</h4></section>
+                            </details>
+                          </section>
+                          <section class="qa-block"><h4 class="block-title">{block_three}</h4></section>
+                        </details>
+                      </section>
+                      <section class="qa-block"><h4 class="block-title">{block_three}</h4></section>
+                    </details>
+                  </section>
+                  <section class="qa-block"><h4 class="block-title">{block_three}</h4></section>
+                </details>
+              </section>
+              <section class="qa-block"><h4 class="block-title">{block_three}</h4></section>
+            </details>
+            <details class="qa-card level-1" id="q4" open>
+              <summary><span>Q4</span><span class="qa-count">0</span><span class="chevron">›</span></summary>
+              <section class="qa-block"><h4 class="block-title">{block_one}</h4><div class="artifact-card"></div></section>
+              <section class="qa-block"><h4 class="block-title">{block_two}</h4></section>
+              <section class="qa-block"><h4 class="block-title">{block_three}</h4></section>
+            </details>
+          </section>
+          <section id="targets" class="target-section"><h2>{target_title}</h2>
+            <table class="target-table"><tr><td><span class="state-pill state-watch_only">watch_only</span></td></tr></table>
+          </section>
+          <section id="sources"><h2>{source_title}</h2><details class="source-collapse"><summary>sources</summary></details></section>
+        </main>
+        """
+
+        html_result = validate_report_contract_html(html, mode="live_prediction", require_l3=True)
+        self.assertTrue(html_result["ok"], html_result["issues"])
+        self.assertEqual(html_result["summary"]["level4_cards"], 1)
+        self.assertEqual(html_result["summary"]["level5_cards"], 1)
+
+        qa_tree = {"nodes": _adaptive_depth_nodes()}
+        qa_result = validate_qa_tree_schema(qa_tree, require_l3=True)
+        self.assertTrue(qa_result["ok"], qa_result["issues"])
+        self.assertEqual(qa_result["summary"]["max_depth"], 5)
+
+        too_deep = deepcopy(qa_tree)
+        too_deep["nodes"].append({**_complete_research_node("Q1.1.1.1.1.1", 6), "parent_id": "Q1.1.1.1.1"})
+        too_deep_result = validate_qa_tree_schema(too_deep, require_l3=True)
+        self.assertFalse(too_deep_result["ok"])
+        self.assertIn("qa_depth_exceeds_max", {issue["code"] for issue in too_deep_result["issues"]})
 
     def test_qa_schema_time_slice_scoring_freeze_labels_samples_and_review(self):
         qa_tree = {
@@ -601,6 +684,11 @@ class FrameworkContractsTests(unittest.TestCase):
         self.assertIn("model_reconciliation", memory_playbook["mechanism_depth_blocks"])
         self.assertEqual(get_domain_playbook("storage")["q_map"]["Q1"], memory_playbook["q_map"]["Q1"])
 
+        event_playbook = get_domain_playbook("gtc")
+        self.assertIn("Fact boundary", event_playbook["q_map"]["Q1"])
+        self.assertIn("conference_claim_quality", event_playbook["required_extraction_schemas"])
+        self.assertIn("company_exposure_and_financial_conversion", event_playbook["mechanism_buckets"])
+
     def test_gold_research_fixture_satisfies_full_quality_gate(self):
         fixture_dir = Path(__file__).parent / "fixtures" / "research_quality_gold"
         html = (fixture_dir / "professional_report.html").read_text(encoding="utf-8")
@@ -623,6 +711,63 @@ class FrameworkContractsTests(unittest.TestCase):
 
 def _read_jsonl(path: Path) -> list[dict]:
     return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+
+
+def _l3_meta_html() -> str:
+    return """
+    <div class="l3-meta">
+      <span class="l3-skill">financial-statement-analysis</span>
+      <span class="l3-execution-status">verified_with_caveats</span>
+      <span class="l3-score-component">future_space</span>
+      <span class="l3-decision-use">changes target ranking</span>
+    </div>
+    """
+
+
+def _adaptive_depth_nodes() -> list[dict]:
+    return [
+        {"id": "Q1", "level": 1, "question": "L1", "parent_id": "", "next_question_ids": ["Q1.1"]},
+        {"id": "Q1.1", "level": 2, "question": "L2", "parent_id": "Q1", "next_question_ids": ["Q1.1.1"]},
+        {**_complete_research_node("Q1.1.1", 3), "parent_id": "Q1.1", "next_question_ids": ["Q1.1.1.1"]},
+        {**_complete_research_node("Q1.1.1.1", 4), "parent_id": "Q1.1.1", "next_question_ids": ["Q1.1.1.1.1"]},
+        {**_complete_research_node("Q1.1.1.1.1", 5), "parent_id": "Q1.1.1.1", "next_question_ids": []},
+    ]
+
+
+def _complete_research_node(node_id: str, level: int) -> dict:
+    return {
+        "id": node_id,
+        "level": level,
+        "question": f"{node_id} adaptive research unit",
+        "parent_id": "",
+        "next_question_ids": [],
+        "decision_use": "changes target ranking",
+        "materiality": "material to score",
+        "support_evidence": "support evidence",
+        "refute_evidence": "refute evidence",
+        "target_implications": "target implications",
+        "score_component": "future_space",
+        "minimum_evidence_gate": "minimum gate",
+        "refuting_source_plan": "refuting source plan",
+        "source_plan": [{"source_id": "SRC-1", "source_bucket": "evidence", "allowed_usage": "thesis"}],
+        "skill_dispatch": {
+            "task_family": "adaptive_depth_test",
+            "selected_skill": "financial-statement-analysis",
+            "concrete_materials": ["SRC-1"],
+            "extraction_schema": ["field"],
+            "source_extraction_ids": [f"EX-{node_id}"],
+            "leaf_source_review_ids": [f"RV-{node_id}"],
+            "skill_output_status": "complete",
+            "fallback_used": "none",
+            "gpt_verification_status": "verified",
+        },
+        "fact": f"{node_id} fact",
+        "inference": f"{node_id} inference",
+        "judgment": f"{node_id} judgment",
+        "gap": "gap",
+        "trigger": "trigger",
+        "source_links": ["SRC-1"],
+    }
 
 
 if __name__ == "__main__":

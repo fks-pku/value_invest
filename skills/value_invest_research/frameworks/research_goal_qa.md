@@ -139,6 +139,14 @@ Default research types:
 | Technology/product route | Technical feasibility and adoption demand | Bottlenecks and ecosystem readiness | Commercialization, competition, and disconfirming tests | Exposed assets and monitoring list |
 | Target update | What changed | Which thesis node changed | Whether price/risk/reward changed | Update action for observation strength |
 
+For conferences, keynotes, product launches, investor days, and other public events, use the event/conference adaptation unless the user explicitly asks for a different lens:
+
+| Type | Q1 | Q2 | Q3 | Q4 |
+|---|---|---|---|---|
+| Event/conference investment opportunity | Official fact boundary and new-information delta | Transmission chain and supply-chain chokepoints | Disconfirming tests and priced-in risk | Specific target observation list and ranking |
+
+This adapter is mandatory for event-driven research. The report is too shallow if it only summarizes what was announced. It must parse official facts versus roadmap/marketing language, identify the incremental assumption change, bridge the event into customer/order/revenue/margin/FCF evidence, test which chokepoints can capture value, check valuation odds, and rank specific securities with monitorable kill tests.
+
 If the topic does not fit a default type, define a custom Q1-Q4 map in the execution plan. Do not force demand/bottleneck/target wording onto company, event, policy, or technology-route questions when it weakens the research.
 
 ## Mechanism Depth Protocol
@@ -176,6 +184,7 @@ Before evidence collection, run two quality-control passes:
 1. Question architecture pass
    - Use `investment-question-architect`.
    - Each L3 question must state decision use, materiality, required materials, support evidence, refuting evidence, target implications, preferred specialty skill, score component, and minimum evidence gate.
+   - For event/conference topics, force L2 buckets for official fact boundary, new-information delta, event-to-order/revenue/margin bridge, supply-chain chokepoint, company exposure, valuation/priced-in risk, and target ranking. Use `event-to-investment-analysis`, `conference-transcript-analysis`, `supply-chain-chokepoint-analysis`, `company-exposure-analysis`, `valuation-analysis`, and `target-ranking-analysis` as the default skill family.
    - For model-heavy industry/theme research, require a mechanism-depth map before accepting the L2/L3 tree. L2 buckets should represent analytical mechanisms such as demand driver, supply response, unit economics, value capture, valuation/pricing, counter-supply, or second-order beneficiaries.
    - Each L3 question must be tied to a score driver such as future space, chokepoint strength, valuation odds, evidence quality, disconfirming-risk control, monitorability, payoff convexity, target ranking, or action state.
    - Delete or rewrite questions that cannot change a parent conclusion, target strength, valuation odds, or risk controls.
@@ -183,6 +192,7 @@ Before evidence collection, run two quality-control passes:
 2. Source planning pass
    - Use `research-source-planner`.
    - Each L3 question must have a concrete source plan across evidence, research_report, message, and opinion where relevant.
+   - For event/conference topics, the source plan must include official event materials first: agenda/session page, keynote/transcript/replay, official press releases/blogs, partner/customer statements, company filings/earnings calls for exposed targets, and valuation/consensus data. Third-party news can map timing and market reaction, but it cannot upgrade conviction unless confirmed by primary evidence.
    - For mechanism-depth questions, the source plan must name the exact fields needed to fill the model: period, unit/currency, volume, price, mix, capacity, utilization, cost, margin, capex, FCF, valuation multiple, implied expectation, and口径 when relevant.
    - The stored `source_plan` must be structured by concrete source, expected fields, source bucket, visible date/cutoff status, allowed usage, preferred parser skill, and historical-mode `availability_proof` when applicable. A prose-only source plan is insufficient for refreshed canonical reports.
    - Each supporting source plan must have a refuting or boundary-check source plan.
@@ -277,13 +287,26 @@ The simplified odds model is not a price target or trading instruction. If curre
 
 ## QA Drilldown
 
-Use at most three layers by default:
+Use adaptive depth up to five layers by default:
 
-- Q1: main research direction.
-- Q1.1: mechanism question.
-- Q1.1.1: evidence-collection unit.
+- Q1: main adapted research direction.
+- Q1.1: mechanism bucket.
+- Q1.1.1: investment decision question.
+- Q1.1.1.1: optional decomposition unit under the decision question.
+- Q1.1.1.1.1: optional atomic work unit for one company, chain node, source, table row, or model row.
 
-Do not put too many unrelated L3 leaves under one catch-all L2. L2 should group L3 leaves into mechanism buckets selected by the research-type adapter and domain playbook. If an L1 has only one L2 but many L3 leaves, split the L2 layer before polishing the report.
+Stop at the shallowest layer that gives a sourced, decision-useful answer. Do not force every branch to L5.
+
+Create L4/L5 only when at least one trigger is present:
+
+- the parent L3 covers multiple companies, securities, or supply-chain nodes;
+- the answer requires a mapping table, driver tree, financial bridge, valuation model, scorecard, scenario table, or kill-test matrix;
+- the source plan spans more than three material classes or parser skills;
+- support and refuting evidence apply to different submechanisms and should not be averaged into one judgment;
+- the conclusion can only say "needs verification" without a more granular sub-question;
+- target ranking, action state, valuation odds, or risk control would change depending on a company-specific or node-specific answer.
+
+Do not put too many unrelated L3 questions under one catch-all L2. L2 should group L3 questions into mechanism buckets selected by the research-type adapter and domain playbook. If an L1 has only one L2 but many L3 questions, split the L2 layer before polishing the report. If one L3 still carries multiple companies/nodes/models, split it into L4/L5.
 
 The report must proceed through the QA tree directly:
 
@@ -312,7 +335,7 @@ Presentation artifacts are answer formats, not structural peers:
 
 Every parent answer must roll up only from child answers and auditable sources.
 
-L3 is the smallest research unit. Each L3 answer must include:
+L3-L5 are research units. Each L3-L5 answer must include:
 
 - Materiality.
 - Decision use.
@@ -333,24 +356,24 @@ L3 is the smallest research unit. Each L3 answer must include:
 
 `Fact`, `Inference`, and `Judgment` must be meaningfully different fields, not three copies of the same conclusion. `Fact` records source-bound observations; `Inference` explains how those facts answer the leaf question; `Judgment` states how the answer changes the parent conclusion, target strength, action state, valuation odds, or risk control.
 
-An L3 answer must also be structurally sufficient for the question type. If the leaf asks "how does X map to Y", "which is tighter", "how does valuation rerate", "which target captures value", or any other mechanism question, the answer needs a concrete answer artifact inside `当前结论呈现`: mapping table, driver table, bridge table, ranking table, scenario table, score table, or kill-test table. The artifact is not a process appendix; it is the actual answer. A fact paragraph plus source chips is insufficient when the reader cannot see how the evidence answers the L3 question.
+An L3-L5 answer must also be structurally sufficient for the question type. If the unit asks "how does X map to Y", "which is tighter", "how does valuation rerate", "which target captures value", or any other mechanism question, the answer needs a concrete answer artifact inside `当前结论呈现`: mapping table, driver table, bridge table, ranking table, scenario table, score table, or kill-test table. The artifact is not a process appendix; it is the actual answer. A fact paragraph plus source chips is insufficient when the reader cannot see how the evidence answers the unit question.
 
-For every L3 question:
+For every L3-L5 research unit:
 
 1. GPT decides which materials to search or read and why.
 2. GPT defines the source priority and extraction schema.
 3. GPT classifies the leaf task family and routes it through the specialty skill dispatch layer when useful.
-4. DeepSeek MCP or the selected specialty skill carefully processes the selected concrete materials and drafts the first structured L3 answer.
+4. DeepSeek MCP or the selected specialty skill carefully processes the selected concrete materials and drafts the first structured answer.
 5. Persist each source-parser output as one `source_extractions.jsonl` record.
-6. Each parser output must fill `schema_fields` for the L3 `extraction_schema`. If the parser returns only a generic note, GPT must either map it into the schema during verification or mark it incomplete.
+6. Each parser output must fill `schema_fields` for the unit `extraction_schema`. If the parser returns only a generic note, GPT must either map it into the schema during verification or mark it incomplete.
 7. GPT verifies each extraction and writes one `leaf_source_reviews.jsonl` record.
-8. The verified draft L3 answer must include fact, inference, preliminary judgment, gap, trigger, source links, and support/refute/lead stance.
-9. GPT resolves conflicts, corrects unsupported claims, and writes the final L3 answer.
-10. Parent Q1/Q1.1 rollups may only use GPT-verified L3 answers.
+8. The verified draft answer must include fact, inference, preliminary judgment, gap, trigger, source links, and support/refute/lead stance.
+9. GPT resolves conflicts, corrects unsupported claims, and writes the final research-unit answer.
+10. Parent rollups may only use GPT-verified child answers.
 
 Completion gate: apply `frameworks/research_quality_gate.md` before treating a refreshed report as done. The project must contain a valid `qa_tree.json`, `source_extractions.jsonl`, `leaf_source_reviews.jsonl`, and `investment_workbench.json`. Missing parser records, missing GPT review records, or target scores without auditable subcomponents are hard failures.
 
-Every L3 answer must preserve this dispatch trace:
+Every L3-L5 answer must preserve this dispatch trace:
 
 `skill_dispatch` must be a structured object, not a bare skill name or prose chain. It must contain:
 
@@ -521,7 +544,7 @@ Use Apple-inspired presentation:
 - Current locked report contract:
   - Top-level order is exactly `当前研究目标` -> `产业链全景` -> `问题下钻` -> `最终标的推荐` -> `来源索引`.
   - `产业链全景` is mandatory and must render as `supply-chain-section` with `chain-explain`, `chain-plain-summary`, `chain-flow-steps`, `chain-layer-grid`, `chain-layer-card`, `chain-chokepoints`, `chain-target-links`, and `chain-map` or `chain-table`, covering upstream, midstream, downstream, key players, products/services, dependencies, value/profit flow, and candidate chokepoints in beginner-readable Chinese.
-  - `问题下钻` preserves the full adapted Q1-Q4 QA tree and must render L3 leaf questions in complete refreshed reports unless the user explicitly asks for a shorter executive version.
+  - `问题下钻` preserves the full adapted Q1-Q4 QA tree and must render L3 questions plus any adaptive L4/L5 research units in complete refreshed reports unless the user explicitly asks for a shorter executive version.
   - Q4 remains the auditable as-of target-selection QA node with child questions.
   - `最终标的推荐` is a standalone presentation rollup, not a replacement for Q4.
   - The hierarchy and format rules in `research_report_contract.md` are validation requirements. A complete refreshed report is invalid if it drops L3, moves Q4 out of `问题下钻`, duplicates child-question lists beside inline cards, replaces the canonical component family, or adds public process appendices.
@@ -541,7 +564,7 @@ Use Apple-inspired presentation:
 - Do not render process metadata, iteration diffs, execution traces, quality-framework explanations, tool/delegation attribution, or workbench appendices in final HTML.
 - Preserve full QA depth in the final report; do not replace the QA tree with a compressed Q1-Q4 summary unless the user explicitly requests a brief version.
 - Inside every QA card/details node, use a consistent three-part display: `1. 当前结论呈现`, `2. 问题展开（子 QA）`, `3. 待补充的问题`.
-- Every visible L3 card must show a compact `Skill` / `Execution` / `Score Component` / `Decision Use` strip inside `1. 当前结论呈现`. `Skill` is the intended specialty lens; `Execution` is the actual parser/delegation state from `skill_output_status` and `fallback_used`. This makes the question architecture and specialty dispatch visible without rendering the full source-parser trace.
+- Every visible L3-L5 research-unit card must show a compact `Skill` / `Execution` / `Score Component` / `Decision Use` strip inside `1. 当前结论呈现`. `Skill` is the intended specialty lens; `Execution` is the actual parser/delegation state from `skill_output_status` and `fallback_used`. This makes the question architecture and specialty dispatch visible without rendering the full source-parser trace.
 - If child QA nodes are rendered inline as expandable cards, do not also render a separate child-question list with the same titles. The question expansion section should contain either jump links or inline child cards, not both.
 - Put answer-presentation artifacts under `当前结论呈现` before child QA expansion.
 - Keep source indexes collapsed by default unless the user explicitly asks to inspect sources.

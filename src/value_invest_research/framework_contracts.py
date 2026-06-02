@@ -9,6 +9,8 @@ from typing import Any
 
 REPORT_SECTIONS = ["当前研究目标", "产业链全景", "问题下钻", "最终标的推荐", "来源索引"]
 QA_BLOCK_TITLES = ["1. 当前结论呈现", "2. 问题展开（子 QA）", "3. 待补充的问题"]
+MAX_QA_DEPTH = 5
+RESEARCH_UNIT_MIN_LEVEL = 3
 SECTION_IDS = {
     REPORT_SECTIONS[0]: ("goal", "research-goal", "current-research-goal"),
     REPORT_SECTIONS[1]: ("chain", "supply-chain", "industry-chain", "产业链全景"),
@@ -144,10 +146,15 @@ KNOWN_SPECIALTY_SKILLS = {
     "valuation-analysis",
     "industry-report-analysis",
     "supply-chain-panorama-explainer",
+    "event-to-investment-analysis",
+    "conference-transcript-analysis",
+    "supply-chain-chokepoint-analysis",
+    "company-exposure-analysis",
     "news-event-analysis",
     "opinion-analysis",
     "leaf-research-deepseek",
     "target-recommendation-analysis",
+    "target-ranking-analysis",
     "quant-research-fks",
     "quantitative-research",
     "frontend-design",
@@ -323,6 +330,55 @@ DOMAIN_PLAYBOOKS = {
         "depth_quality_rule": "optical module research is too shallow if it does not model AI port demand, speed transition, component/module bottlenecks, customer qualification, price erosion, financial conversion, valuation, and technology substitution kill tests",
         "default_score_schema": SCORE_WEIGHTS,
     },
+    "event_conference": {
+        "research_type": "event/policy or technology/product-route event",
+        "q_map": {
+            "Q1": "Fact boundary: what did the event actually confirm, and what is only roadmap or marketing language?",
+            "Q2": "Transmission and chokepoints: which supply-chain nodes can convert the event into orders, revenue, margin, and cash flow?",
+            "Q3": "Disconfirming tests and priced-in risk: what would show the event is delayed, non-material, substitutable, or already fully priced?",
+            "Q4": "Target observation list: which specific securities have direct exposure, favorable odds, monitorable triggers, and controlled downside?",
+        },
+        "mechanism_buckets": [
+            "official_fact_boundary",
+            "new_information_delta",
+            "commercialization_stage",
+            "event_to_order_revenue_margin_bridge",
+            "supply_chain_chokepoint",
+            "company_exposure_and_financial_conversion",
+            "market_pricing_bridge",
+            "disconfirming_and_kill_tests",
+            "specific_target_ranking",
+        ],
+        "mechanism_depth_blocks": [
+            "event_fact_boundary",
+            "new_information_delta",
+            "transmission_chain",
+            "supply_or_access_response",
+            "unit_economics_profit_bridge",
+            "competitive_value_capture_map",
+            "market_pricing_bridge",
+            "disconfirming_counter_supply_tests",
+            "target_ranking",
+        ],
+        "required_extraction_schemas": [
+            "event_fact_boundary",
+            "conference_claim_quality",
+            "event_transmission_chain",
+            "chokepoint_scorecard",
+            "company_exposure_bridge",
+            "event_valuation_odds",
+            "target_ranking_worksheet",
+        ],
+        "scoring_adjustments": {
+            "future_space": "use only event claims that connect to customer demand, product availability, shipment timing, or adoption duration",
+            "chokepoint_strength": "require an explicit scarce node; event partner lists without scarcity are only leads",
+            "valuation_odds": "test whether the event delta is already embedded in market expectations",
+            "evidence_quality": "separate official fact, roadmap, customer logo, third-party lead, and market interpretation",
+            "disconfirming_risk_control": "bind each target to launch timing, order conversion, customer capex, substitution, and valuation kill tests",
+        },
+        "depth_quality_rule": "event research is too shallow if it only summarizes announcements; it must parse the event fact boundary, bridge the event to orders/revenue/margin/FCF, test chokepoints, verify company exposure, reverse priced-in expectations, and rank specific targets with kill tests",
+        "default_score_schema": SCORE_WEIGHTS,
+    },
     "default": {
         "research_type": "custom",
         "q_map": {
@@ -369,11 +425,7 @@ def validate_report_contract_html(
         if positions != sorted(positions):
             _issue(issues, "error", "top_level_order", "top-level sections are out of order")
 
-    level_counts = {
-        "level1_cards": _class_count(html, "qa-card", "level-1"),
-        "level2_cards": _class_count(html, "qa-card", "level-2"),
-        "level3_cards": _class_count(html, "qa-card", "level-3"),
-    }
+    level_counts = _qa_level_counts(html)
     if level_counts["level1_cards"] == 0:
         _issue(issues, "error", "missing_level1_cards", "问题下钻 must render Q1-Q4 as qa-card level-1")
     if level_counts["level2_cards"] == 0:
@@ -381,15 +433,10 @@ def validate_report_contract_html(
     if require_l3 and level_counts["level3_cards"] == 0:
         _issue(issues, "error", "missing_level3_cards", "complete refreshed reports must render L3 leaves")
 
-    interactive_level_counts = {
-        "interactive_level1_cards": _tag_class_count(html, "details", "qa-card", "level-1"),
-        "interactive_level2_cards": _tag_class_count(html, "details", "qa-card", "level-2"),
-        "interactive_level3_cards": _tag_class_count(html, "details", "qa-card", "level-3"),
-    }
-    if (
-        interactive_level_counts["interactive_level1_cards"] != level_counts["level1_cards"]
-        or interactive_level_counts["interactive_level2_cards"] != level_counts["level2_cards"]
-        or interactive_level_counts["interactive_level3_cards"] != level_counts["level3_cards"]
+    interactive_level_counts = _interactive_qa_level_counts(html)
+    if any(
+        interactive_level_counts[f"interactive_level{level}_cards"] != level_counts[f"level{level}_cards"]
+        for level in range(1, MAX_QA_DEPTH + 1)
     ):
         _issue(
             issues,
@@ -457,17 +504,18 @@ def validate_report_contract_html(
         "l3_score_component_elements": _class_count(html, "l3-score-component"),
         "l3_decision_use_elements": _class_count(html, "l3-decision-use"),
     }
-    if require_l3 and level_counts["level3_cards"] > 0 and (
-        l3_metadata_counts["l3_skill_elements"] < level_counts["level3_cards"]
-        or l3_metadata_counts["l3_execution_status_elements"] < level_counts["level3_cards"]
-        or l3_metadata_counts["l3_score_component_elements"] < level_counts["level3_cards"]
-        or l3_metadata_counts["l3_decision_use_elements"] < level_counts["level3_cards"]
+    research_unit_cards = _research_unit_card_count(level_counts)
+    if require_l3 and research_unit_cards > 0 and (
+        l3_metadata_counts["l3_skill_elements"] < research_unit_cards
+        or l3_metadata_counts["l3_execution_status_elements"] < research_unit_cards
+        or l3_metadata_counts["l3_score_component_elements"] < research_unit_cards
+        or l3_metadata_counts["l3_decision_use_elements"] < research_unit_cards
     ):
         _issue(
             issues,
             "error",
             "missing_l3_skill_metadata",
-            "L3 cards must visibly show selected skill, execution status, score component, and decision use",
+            "Research-unit cards from L3 to L5 must visibly show selected skill, execution status, score component, and decision use",
         )
 
     for title in QA_BLOCK_TITLES:
@@ -586,6 +634,10 @@ def validate_qa_tree_schema(qa_tree: dict[str, Any], *, require_l3: bool = False
     l1_nodes = [node for node in nodes if _level_number(node.get("level")) == 1]
     l2_nodes = [node for node in nodes if _level_number(node.get("level")) == 2]
     l3_nodes = [node for node in nodes if _level_number(node.get("level")) == 3]
+    research_unit_nodes = [
+        node for node in nodes if RESEARCH_UNIT_MIN_LEVEL <= _level_number(node.get("level")) <= MAX_QA_DEPTH
+    ]
+    too_deep_nodes = [node for node in nodes if _level_number(node.get("level")) > MAX_QA_DEPTH]
 
     if not l1_nodes:
         _issue(issues, "error", "missing_l1", "QA tree must include L1 nodes")
@@ -593,6 +645,13 @@ def validate_qa_tree_schema(qa_tree: dict[str, Any], *, require_l3: bool = False
         _issue(issues, "error", "missing_l2", "QA tree must include L2 mechanism buckets")
     if require_l3 and not l3_nodes:
         _issue(issues, "error", "missing_l3", "complete QA trees must include L3 evidence units")
+    for node in too_deep_nodes:
+        _issue(
+            issues,
+            "error",
+            "qa_depth_exceeds_max",
+            f"{node.get('id', '<unknown>')} exceeds maximum adaptive QA depth L{MAX_QA_DEPTH}",
+        )
 
     for node in nodes:
         node_id = str(node.get("id", ""))
@@ -604,7 +663,7 @@ def validate_qa_tree_schema(qa_tree: dict[str, Any], *, require_l3: bool = False
             if str(child.get("parent_id", "")) not in {node_id, ""}:
                 _issue(issues, "error", "broken_parent_link", f"{child_id} has a mismatched parent_id")
 
-    for node in l3_nodes:
+    for node in research_unit_nodes:
         node_id = str(node.get("id", ""))
         for field in L3_REQUIRED_FIELDS:
             if _is_empty(node.get(field)):
@@ -635,6 +694,8 @@ def validate_qa_tree_schema(qa_tree: dict[str, Any], *, require_l3: bool = False
             "l1_nodes": len(l1_nodes),
             "l2_nodes": len(l2_nodes),
             "l3_nodes": len(l3_nodes),
+            "research_unit_nodes": len(research_unit_nodes),
+            "max_depth": max((_level_number(node.get("level")) for node in nodes), default=0),
         },
         "issues": issues,
     }
@@ -764,7 +825,7 @@ def validate_source_extraction_schema(
     expected_extraction_ids: set[str] = set()
     required_by_l3: dict[str, dict[str, Any]] = {}
     for node in qa_tree.get("nodes", []) or []:
-        if _level_number(node.get("level")) != 3:
+        if not _is_research_unit_level(node.get("level")):
             continue
         node_id = str(node.get("id") or "")
         if not node_id:
@@ -896,7 +957,7 @@ def validate_leaf_source_review_schema(
     expected_extraction_ids: set[str] = set()
     expected_review_ids: set[str] = set()
     for node in qa_tree.get("nodes", []) or []:
-        if _level_number(node.get("level")) != 3:
+        if not _is_research_unit_level(node.get("level")):
             continue
         dispatch = node.get("skill_dispatch") if isinstance(node.get("skill_dispatch"), dict) else {}
         expected_extraction_ids.update(str(item) for item in dispatch.get("source_extraction_ids", []) or [] if str(item))
@@ -1163,7 +1224,7 @@ def validate_backtest_leakage_controls(
     source_ids = thesis_source_ids | label_source_ids
 
     for node in qa_tree.get("nodes", []) or []:
-        if _level_number(node.get("level")) != 3:
+        if not _is_research_unit_level(node.get("level")):
             continue
         node_id = str(node.get("id") or "")
         grounding = node.get("backtest_grounding")
@@ -1448,6 +1509,14 @@ def get_domain_playbook(name: str) -> dict[str, Any]:
         "optical_transceiver": "optical_module",
         "光模块": "optical_module",
         "光通信": "optical_module",
+        "event": "event_conference",
+        "conference": "event_conference",
+        "keynote": "event_conference",
+        "launch": "event_conference",
+        "gtc": "event_conference",
+        "gtc_taipei": "event_conference",
+        "大会": "event_conference",
+        "发布会": "event_conference",
     }
     key = aliases.get(key, key)
     return deepcopy(DOMAIN_PLAYBOOKS.get(key, DOMAIN_PLAYBOOKS["default"]))
@@ -1493,6 +1562,27 @@ def _tag_class_count(html: str, tag: str, *classes: str) -> int:
     return count
 
 
+def _qa_level_counts(html: str) -> dict[str, int]:
+    return {
+        f"level{level}_cards": _class_count(html, "qa-card", f"level-{level}")
+        for level in range(1, MAX_QA_DEPTH + 1)
+    }
+
+
+def _interactive_qa_level_counts(html: str) -> dict[str, int]:
+    return {
+        f"interactive_level{level}_cards": _tag_class_count(html, "details", "qa-card", f"level-{level}")
+        for level in range(1, MAX_QA_DEPTH + 1)
+    }
+
+
+def _research_unit_card_count(level_counts: dict[str, int]) -> int:
+    return sum(
+        level_counts.get(f"level{level}_cards", 0)
+        for level in range(RESEARCH_UNIT_MIN_LEVEL, MAX_QA_DEPTH + 1)
+    )
+
+
 def _tag_count(html: str, tag: str) -> int:
     return len(re.findall(rf"<{re.escape(tag)}\b", html, flags=re.IGNORECASE))
 
@@ -1512,6 +1602,11 @@ def _level_number(value: Any) -> int:
         return int(text)
     except ValueError:
         return 0
+
+
+def _is_research_unit_level(value: Any) -> bool:
+    level = _level_number(value)
+    return RESEARCH_UNIT_MIN_LEVEL <= level <= MAX_QA_DEPTH
 
 
 def _is_empty(value: Any) -> bool:

@@ -1,13 +1,13 @@
 ---
 name: research-source-planner
-description: Use this skill after an investment QA tree exists and before reading materials. It creates a source-search plan for each L3 question: which primary filings, earnings calls, industry reports, datasets, news, and opinions to collect, why each source matters, and which specialty parser should read it.
+description: Use this skill after an investment QA tree exists and before reading materials. It creates a source-search plan for each L3-L5 research unit: which primary filings, earnings calls, industry reports, datasets, news, and opinions to collect, why each source matters, and which specialty parser should read it.
 ---
 
 # Research Source Planner
 
-This skill converts L3 questions into concrete source plans. It is responsible for collecting the right information, not for final synthesis.
+This skill converts L3-L5 research units into concrete source plans. It is responsible for collecting the right information, not for final synthesis.
 
-Before L3 source planning, make sure the run has a source plan for `产业链全景`. This plan should collect enough evidence to map upstream, midstream, downstream, key players, products/services, dependency links, value/profit flow, and candidate chokepoints. The chain map is a required public section and should be supported by primary/company/industry sources rather than unsupported background prose.
+Before L3-L5 source planning, make sure the run has a source plan for `产业链全景`. This plan should collect enough evidence to map upstream, midstream, downstream, key players, products/services, dependency links, value/profit flow, and candidate chokepoints. The chain map is a required public section and should be supported by primary/company/industry sources rather than unsupported background prose.
 
 ## Source Priority
 
@@ -19,9 +19,11 @@ Use this order unless the question requires otherwise:
 4. News/messages: public news, supply-chain updates, policy headlines, product launch messages.
 5. Opinions: expert interviews, investor views, industry commentary.
 
-## L3 Source Plan Template
+For event/conference research, the first source pack must include official event materials before general news: agenda/session page, keynote transcript or replay, official press releases/blogs, speaker/company posts, product availability pages, partner/customer statements, and exposed-company filings or earnings calls. Third-party news may map timing and market reaction, but it is usually a lead until primary evidence confirms commercial impact.
 
-For each L3 question, output:
+## L3-L5 Source Plan Template
+
+For each L3-L5 research unit, output:
 
 - `l3_question`
 - `materiality`: why the answer changes parent conclusion or target strength.
@@ -42,6 +44,14 @@ For each L3 question, output:
 - `freshness_requirement`: latest quarter, latest filing, historical baseline, or event window.
 - `planned_source_extractions`: records to create in `source_extractions.jsonl`, one per concrete source or small source bundle.
 
+For event/conference L3-L5 questions, include these extra fields when relevant:
+
+- `event_fact_boundary`: exact claim, speaker/source, date/session, official status, and product/customer/timing anchor.
+- `new_information_delta`: what changed versus pre-event public knowledge.
+- `commercialization_stage`: concept, prototype, qualification, production, shipment, revenue, or margin evidence.
+- `event_to_financial_bridge`: product route -> customer/order -> revenue -> margin/FCF -> valuation.
+- `company_exposure_fields`: segment exposure, customer concentration, margin bridge, capex/FCF impact, and dilution.
+
 For supply-chain map sources, also output:
 
 - `chain_layer`
@@ -54,7 +64,7 @@ For supply-chain map sources, also output:
 
 ## Mechanism Model Source Discipline
 
-When the L3 question belongs to a model-heavy industry or technology route, plan sources for a driver table, not just a prose answer. The source plan must name expected fields such as:
+When the L3-L5 research unit belongs to a model-heavy industry or technology route, plan sources for a driver table, not just a prose answer. The source plan must name expected fields such as:
 
 - period, unit, currency, geography, and scope.
 - volume, price, mix, penetration, duration, and replacement cycle.
@@ -78,7 +88,7 @@ If these fields cannot be collected, the source plan should mark the conclusion 
 
 When DeepSeek MCP is available, prepare a narrow prompt per source or per small source bundle:
 
-- The exact L3 question.
+- The exact L3-L5 research-unit question.
 - Why the source is being read.
 - The extraction schema.
 - The source bucket.
@@ -87,9 +97,9 @@ When DeepSeek MCP is available, prepare a narrow prompt per source or per small 
 
 The planner should expect two persisted artifacts:
 
-- `source_extractions.jsonl`: DeepSeek/source-parser output by source-L3 pair.
+- `source_extractions.jsonl`: DeepSeek/source-parser output by source-to-research-unit pair.
 - `leaf_source_reviews.jsonl`: GPT verification, corrections, adopted facts, and rejection decisions.
 
-Do not plan one large DeepSeek job for a whole research report. Prefer one source, one L3 question, and one compact schema.
+Do not plan one large DeepSeek job for a whole research report. Prefer one source, one L3-L5 research unit, and one compact schema.
 
 GPT remains responsible for source selection, source reliability, conflict resolution, and final synthesis.

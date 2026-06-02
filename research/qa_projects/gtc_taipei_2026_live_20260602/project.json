@@ -1,0 +1,56 @@
+{
+  "project_id": "gtc_taipei_2026_live_20260602",
+  "title": "GTC Taipei 2026 实时投资机会报告",
+  "object_type": "event_policy",
+  "research_type": "event_policy",
+  "run_mode": "live_prediction",
+  "report_date": "2026-06-02",
+  "domain_playbook": "event_conference",
+  "decision_boundary": "研究 GTC Taipei 2026 公开材料对未来 3-12 个月可验证投资机会的影响；只输出研究观察清单，不构成买卖指令。",
+  "current_judgment": "GTC Taipei 2026 的核心增量不是泛 AI 热度，而是 NVIDIA 将 AI factory 平台、Vera Rubin/Vera CPU、CPO 网络、HBM4/存储和 Windows 个人智能体 PC 同时推向量产或上市窗口。可投资机会应优先落在可验证的稀缺节点：平台控制、先进制造/封装、HBM/高速存储、AI server rack/ODM、CPO 网络和 Windows AI PC 生态；但多数核心资产已经被高预期定价，当前更适合形成观察清单和季度触发器。",
+  "biggest_uncertainty": "RTX Spark 与 agentic AI factory 的真实订单、出货、客户 ROI 和公司财务转化尚未由财报口径充分验证。",
+  "supply_chain": {
+    "plain_summary": "这次 GTC Taipei 的钱不是从发布会本身产生，而是从 NVIDIA 定义平台开始，流向算力芯片、先进制造、HBM/高速存储、CPO 网络、AI server rack、Windows AI PC 和云/企业客户。投资上要先问：哪个环节稀缺、谁能收费、能不能变成收入和现金流，以及市场是否已经把这些增量充分定价。",
+    "flow_steps": [
+      "NVIDIA 发布 Vera Rubin/Vera CPU/Spectrum-X CPO/RTX Spark，定义平台路线和生态接口。",
+      "TSMC、HBM/存储、先进封装、CPO 网络和 ODM/OEM 承接量产，形成供给侧瓶颈和订单窗口。",
+      "云服务商、AI 实验室和企业客户采购 AI factory；PC OEM 与 Microsoft 推动个人智能体 PC 上市。",
+      "收入先进入平台商和核心组件商，再通过 ODM/OEM、功耗散热、网络和终端渠道扩散。",
+      "资本市场根据订单、出货、毛利率、估值倍数和反证触发器重新定价相关标的。"
+    ],
+    "layers": [
+      {
+        "layer": "平台定义",
+        "products": "Vera Rubin、Vera CPU、Spectrum-X CPO、RTX Spark、CUDA/Windows AI stack",
+        "players": "NVIDIA、Microsoft",
+        "value_flow": "平台商掌握接口、软件生态和产品路线，最强稀缺性在 NVIDIA；Microsoft 通过 Windows/Surface 把端侧 AI 商业化。"
+      },
+      {
+        "layer": "制造与封装",
+        "products": "先进制程、cuLitho/AI fab、先进封装、rack-scale integration",
+        "players": "TSMC、Foxconn、Quanta/QCT、Wistron/Wiwynn、Pegatron、Compal",
+        "value_flow": "制造和集成把平台路线变成可交付系统；利润率取决于制程/封装稀缺性和 ODM 的议价能力。"
+      },
+      {
+        "layer": "存储与网络瓶颈",
+        "products": "HBM4、SOCAMM2、PCIe Gen6 SSD、BlueField storage、CPO Ethernet switches",
+        "players": "Micron、CPO/光网络供应链、NVIDIA networking ecosystem",
+        "value_flow": "AI factory 的吞吐、功耗和延迟受 HBM/高速存储和网络约束，若供给紧缺可转化为 ASP、毛利率和订单弹性。"
+      },
+      {
+        "layer": "终端与云客户",
+        "products": "AI factories、GPU/CPU racks、Windows AI PCs、personal agents",
+        "players": "CoreWeave、Lambda、OCI、OpenAI、Anthropic、ByteDance、Dell、HP、Lenovo、ASUS、Surface",
+        "value_flow": "客户付费决定需求真伪；只有采购、部署、capex 和出货能把发布会信息变成财务事实。"
+      },
+      {
+        "layer": "资本市场定价",
+        "products": "市值、PE/forward PE、盈利上修、股价反应、目标价",
+        "players": "NVDA、TSM、MU、MSFT、DELL、QCOM、台湾 ODM/电源散热标的",
+        "value_flow": "强产业逻辑如果已经被估值吸收，只能进入观察清单；赔率来自稀缺性、错定价、盈利弹性和可控反证同时成立。"
+      }
+    ],
+    "chokepoints": "NVIDIA 平台控制、TSMC 先进制造/AI fab、HBM4/SOCAMM2/高速存储、Spectrum-X CPO 网络、AI server rack ODM、Windows AI PC 生态入口。",
+    "target_links": "Q2 评分这些瓶颈的稀缺性和财务转化；Q3 检查估值/竞争/执行反证；Q4 将其映射到 NVDA、TSM、MU、Wiwynn、Quanta、Microsoft、Dell、Qualcomm 等具体证券。"
+  }
+}

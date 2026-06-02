@@ -352,6 +352,28 @@ class HexagonalArchitectureTests(unittest.TestCase):
         q2_leaf_questions = [node.question for node in architecture.nodes if node.id.startswith("Q2.") and node.level == 3]
         self.assertTrue(any("HBM" in question for question in q2_leaf_questions))
 
+    def test_plan_research_goal_uses_event_conference_playbook_for_gtc(self):
+        goal = ResearchGoal(
+            topic="GTC Taipei 2026 大会投资机会",
+            research_type="event",
+            domain_hint="gtc_taipei_2026",
+            run_mode="live_prediction",
+        )
+
+        architecture = PlanResearchGoal().execute(goal)
+
+        self.assertEqual(architecture.playbook.playbook_id, "event_conference")
+        self.assertEqual([node.id for node in architecture.nodes if node.level == 1], ["Q1", "Q2", "Q3", "Q4"])
+        leaf_skills = {
+            node.preferred_specialty_skill
+            for node in architecture.nodes
+            if node.level == 3
+        }
+        self.assertIn("event-to-investment-analysis", leaf_skills)
+        self.assertIn("conference-transcript-analysis", leaf_skills)
+        self.assertIn("company-exposure-analysis", leaf_skills)
+        self.assertIn("target-ranking-analysis", leaf_skills)
+
     def test_research_goal_defaults_to_historical_backtest(self):
         goal = ResearchGoal(topic="光模块产业投资机会", research_type="industry")
 

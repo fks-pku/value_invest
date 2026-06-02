@@ -7,23 +7,25 @@ This gate defines the minimum internal artifacts for a complete refreshed resear
 Every complete refreshed research project must preserve these files in the project directory:
 
 - `professional_report.html`: clean public report using the locked five-section contract.
-- `qa_tree.json`: full Q1-Q4 tree with L1, L2, and L3 nodes.
-- `source_extractions.jsonl`: one parser or DeepSeek extraction per source-L3 pair.
+- `qa_tree.json`: full Q1-Q4 tree with L1, L2, L3, and any adaptive L4/L5 research-unit nodes.
+- `source_extractions.jsonl`: one parser or DeepSeek extraction per source-to-L3/L4/L5 research-unit pair.
 - `leaf_source_reviews.jsonl`: one GPT verification record per extraction.
 - `investment_workbench.json`: internal scoring worksheet, frozen recommendations, labels when relevant, and validation output.
 
 The gold regression fixture is `tests/fixtures/research_quality_gold/`. New framework changes should keep this fixture passing or intentionally update it with matching tests.
 
-## L3 Quality Gate
+## L3-L5 Quality Gate
 
-An L3 node is complete only when all of the following exist:
+An L3-L5 research unit is complete only when all of the following exist:
 
 - decision fields: `materiality`, `decision_use`, `support_evidence`, `refute_evidence`, `target_implications`, `score_component`, `minimum_evidence_gate`, and `refuting_source_plan`.
 - structured `source_plan` naming concrete source IDs, expected fields, source bucket, cutoff status, allowed usage, and preferred parser skill.
 - structured `skill_dispatch` naming selected skill, concrete materials, extraction schema, source extraction IDs, review IDs, execution status, fallback status, and GPT verification status.
 - final answer fields: fact, inference, judgment, gap, trigger, and source links.
 
-Fact, inference, and judgment must be differentiated. A source list without a mapping, driver table, bridge table, score table, scenario table, or kill-test table is insufficient when the L3 question asks a mechanism question.
+Fact, inference, and judgment must be differentiated. A source list without a mapping, driver table, bridge table, score table, scenario table, or kill-test table is insufficient when the research-unit question asks a mechanism question.
+
+For event/conference research, an L3-L5 research unit is incomplete if it only summarizes announcements. The artifact must include at least one structured bridge appropriate to the question: official fact boundary, new-information delta, commercialization stage, event-to-financial transmission chain, chokepoint scorecard, company exposure bridge, valuation odds bridge, or target ranking worksheet.
 
 ## Source Parser Gate
 
@@ -44,7 +46,7 @@ Fact, inference, and judgment must be differentiated. A source list without a ma
 - `follow_up_data`
 - `created_at`
 
-`schema_fields` must fill the fields requested by the matching L3 `skill_dispatch.extraction_schema`.
+`schema_fields` must fill the fields requested by the matching L3-L5 `skill_dispatch.extraction_schema`. The field name `l3_question_id` is retained in JSONL for backward compatibility, but it may reference an L3, L4, or L5 research unit.
 
 ## GPT Review Gate
 
@@ -62,14 +64,14 @@ Fact, inference, and judgment must be differentiated. A source list without a ma
 - `final_support_refute_or_lead`
 - `allowed_to_strengthen_conclusion`
 
-Only verified or verified-with-caveats records may strengthen a final L3 answer. Rejected or needs-review records can remain in the audit trail, but they cannot support parent conclusions.
+Only verified or verified-with-caveats records may strengthen a final L3-L5 answer. Rejected or needs-review records can remain in the audit trail, but they cannot support parent conclusions.
 
 ## Historical Backtest Anti-Leakage Gate
 
 Historical backtests must reduce both source-time leakage and model-time leakage:
 
 - `qa_tree.json` must include `anti_leakage_controls` with `as_of_date`, cutoff source-pack policy, LLM prior policy, question-tree policy, supply-chain policy, scoring policy, and label isolation policy.
-- Every L3 node must include `backtest_grounding` with exact `allowed_source_ids`, `model_prior_policy`, `post_cutoff_knowledge_policy`, and empty `non_source_claims`.
+- Every L3-L5 research unit must include `backtest_grounding` with exact `allowed_source_ids`, `model_prior_policy`, `post_cutoff_knowledge_policy`, and empty `non_source_claims`.
 - Source parser records must not use label-only or post-cutoff thesis sources.
 - Target score subcomponents must reference cutoff-visible source IDs or GPT-approved leaf review IDs.
 - Label fields such as `forward_3m_return`, `end_price`, `label_status`, and `excess_return` must not appear in score rationale or QA reasoning.
