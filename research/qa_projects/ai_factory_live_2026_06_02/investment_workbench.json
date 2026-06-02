@@ -1,0 +1,2652 @@
+{
+  "project_id": "ai_factory_live_2026_06_02",
+  "run_mode": "live_prediction",
+  "report_date": "2026-06-02",
+  "validation_horizon": "2026-09-02",
+  "execution_plan": {
+    "q1": "验证付费需求和物理建设。",
+    "q2": "定位稀缺卡点和财务转化。",
+    "q3": "绑定反证、定价和风险。",
+    "q4": "输出观察清单和复核触发。"
+  },
+  "source_pack": [
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8",
+    "S9",
+    "S10",
+    "S11",
+    "S12",
+    "S13"
+  ],
+  "scoring_worksheet": [
+    {
+      "ticker": "000660.KS",
+      "name": "SK hynix",
+      "target_class": "public_equity_observation",
+      "action_state": "watch_only",
+      "thesis_node": "HBM/高端内存最强卡点",
+      "rationale": "Q1 2026 HBM、服务器 DRAM 和 eSSD 推动收入与 72% operating margin；AI 工厂内存瓶颈强于普通主题暴露。",
+      "downgrade_risk": "HBM 供给过剩、ASP 反转、客户资格或良率不及预期。",
+      "next_verification_data": "Q2 2026 HBM 出货/ASP/客户资格、capex 和库存口径。",
+      "payoff_odds": "稀缺和盈利弹性强，但非美股同口径估值与周期风险需复核。",
+      "win_probability": "62%",
+      "strength": "高",
+      "score": {
+        "action_state": "watch_only",
+        "total_score": 3.98,
+        "opportunity_fit": 3.98,
+        "thesis_confidence": 4.5,
+        "payoff_convexity": 4.4,
+        "score_components": {
+          "chokepoint_strength": 4.7,
+          "future_space": 4.6,
+          "valuation_odds": 3,
+          "evidence_quality": 4.5,
+          "disconfirming_risk_control": 3.6,
+          "monitorability": 4,
+          "payoff_convexity": 4.4
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 4.7,
+          "mispricing": 3,
+          "earnings_elasticity": 4.6,
+          "risk_control": 3.6
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "scarce_node_control",
+              "score": 4.7,
+              "weight": 1,
+              "evidence_ids": [
+                "S19"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s19"
+              ],
+              "rationale": "对应 AI 工厂供应链卡点的稀缺性和价值捕获能力。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "demand_flow",
+              "score": 4.6,
+              "weight": 1,
+              "evidence_ids": [
+                "S19"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s19"
+              ],
+              "rationale": "官方收入、订单或产品线证据支持 AI 工厂需求流入。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "mispricing_check",
+              "score": 3,
+              "weight": 1,
+              "evidence_ids": [
+                "S13"
+              ],
+              "review_ids": [
+                "rv-q3-3-1"
+              ],
+              "rationale": "实时同口径估值仍未完全补齐，因此不提升行动状态。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "source_quality",
+              "score": 4.5,
+              "weight": 1,
+              "evidence_ids": [
+                "S19"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s19"
+              ],
+              "rationale": "主要证据来自公司 IR、SEC、官方新闻稿或高可靠来源。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "kill_tests",
+              "score": 3.6,
+              "weight": 1,
+              "evidence_ids": [
+                "S19"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s19"
+              ],
+              "rationale": "已绑定客户集中、项目延期、毛利和估值反证。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "quarterly_metrics",
+              "score": 4,
+              "weight": 1,
+              "evidence_ids": [
+                "S19"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s19"
+              ],
+              "rationale": "下一季财报可跟踪收入、订单、毛利、backlog 和产品采用。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "operating_leverage",
+              "score": 4.4,
+              "weight": 1,
+              "evidence_ids": [
+                "S19"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s19"
+              ],
+              "rationale": "收入高速增长或订单转化可产生经营杠杆，但估值反向也较快。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        }
+      },
+      "thesis_kill_tests": [
+        {
+          "test": "HBM 供给过剩、ASP 反转、客户资格或良率不及预期。",
+          "evidence_needed": "Q2 2026 HBM 出货/ASP/客户资格、capex 和库存口径。",
+          "downgrade_action": "不满足则维持 watch_only 或降级 no_action",
+          "source_plan": [
+            "S19"
+          ]
+        }
+      ],
+      "prediction_review": {
+        "initial_claim": "Q1 2026 HBM、服务器 DRAM 和 eSSD 推动收入与 72% operating margin；AI 工厂内存瓶颈强于普通主题暴露。",
+        "validation_horizon": "2026-09-02",
+        "required_evidence": "Q2 2026 HBM 出货/ASP/客户资格、capex 和库存口径。",
+        "current_status": "watch_only",
+        "review_trigger": "下一轮核心公司财报或 2026-09-02"
+      },
+      "rank": 1
+    },
+    {
+      "ticker": "NVDA",
+      "name": "NVIDIA",
+      "target_class": "public_equity_observation",
+      "action_state": "watch_only",
+      "thesis_node": "GPU/AI networking 平台卡点",
+      "rationale": "AI 工厂最直接平台卡点，Data Center 和 networking 已兑现。",
+      "downgrade_risk": "Data Center networking 或 compute 增速显著放缓；中国限制扩大；客户 ASIC 替代加速。",
+      "next_verification_data": "Q2 FY27 收入、Data Center compute/networking 拆分、非中国需求与毛利率。",
+      "payoff_odds": "高质量但高预期，赔率需等估值/回撤或连续超预期确认。",
+      "win_probability": "63%",
+      "strength": "高",
+      "score": {
+        "action_state": "watch_only",
+        "total_score": 3.91,
+        "opportunity_fit": 3.91,
+        "thesis_confidence": 4.33,
+        "payoff_convexity": 4.2,
+        "score_components": {
+          "chokepoint_strength": 4.8,
+          "future_space": 4.7,
+          "valuation_odds": 2.4,
+          "evidence_quality": 4.6,
+          "disconfirming_risk_control": 3.2,
+          "monitorability": 4.5,
+          "payoff_convexity": 4.2
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 4.8,
+          "mispricing": 2.4,
+          "earnings_elasticity": 4.6,
+          "risk_control": 3.2
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "scarce_node_control",
+              "score": 4.8,
+              "weight": 1,
+              "evidence_ids": [
+                "S1"
+              ],
+              "review_ids": [
+                "rv-q1-2-1",
+                "rv-q2-1-1"
+              ],
+              "rationale": "对应 Q2 卡点具备稀缺或系统控制力。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "demand_flow",
+              "score": 4.7,
+              "weight": 1,
+              "evidence_ids": [
+                "S1"
+              ],
+              "review_ids": [
+                "rv-q1-2-1",
+                "rv-q2-1-1"
+              ],
+              "rationale": "Q1 需求证据能流向该目标的收入或订单。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "mispricing_check",
+              "score": 2.4,
+              "weight": 1,
+              "evidence_ids": [
+                "S13"
+              ],
+              "review_ids": [
+                "rv-q3-3-1"
+              ],
+              "rationale": "实时同口径估值未完全复核，赔率分保守处理。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "source_quality",
+              "score": 4.6,
+              "weight": 1,
+              "evidence_ids": [
+                "S1"
+              ],
+              "review_ids": [
+                "rv-q1-2-1",
+                "rv-q2-1-1"
+              ],
+              "rationale": "主要证据来自公司 IR、SEC 或 IEA 等高可靠来源。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "kill_tests",
+              "score": 3.2,
+              "weight": 1,
+              "evidence_ids": [
+                "S1"
+              ],
+              "review_ids": [
+                "rv-q1-2-1",
+                "rv-q2-1-1"
+              ],
+              "rationale": "已绑定收入、订单、毛利率、capex 或并网等降级触发器。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "quarterly_metrics",
+              "score": 4.5,
+              "weight": 1,
+              "evidence_ids": [
+                "S1"
+              ],
+              "review_ids": [
+                "rv-q1-2-1",
+                "rv-q2-1-1"
+              ],
+              "rationale": "下一季财报可直接跟踪关键指标。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "operating_leverage",
+              "score": 4.2,
+              "weight": 1,
+              "evidence_ids": [
+                "S1"
+              ],
+              "review_ids": [
+                "rv-q1-2-1",
+                "rv-q2-1-1"
+              ],
+              "rationale": "若卡点继续紧缺，收入和利润率有经营杠杆；若供给反转则回撤也快。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        }
+      },
+      "thesis_kill_tests": [
+        {
+          "test": "Data Center networking 或 compute 增速显著放缓；中国限制扩大；客户 ASIC 替代加速。",
+          "evidence_needed": "Q2 FY27 收入、Data Center compute/networking 拆分、非中国需求与毛利率。",
+          "downgrade_action": "若触发则维持 watch_only 或降级 no_action",
+          "source_plan": [
+            "S1"
+          ]
+        }
+      ],
+      "prediction_review": {
+        "initial_claim": "AI 工厂最直接平台卡点，Data Center 和 networking 已兑现。",
+        "validation_horizon": "2026-09-02",
+        "required_evidence": "Q2 FY27 收入、Data Center compute/networking 拆分、非中国需求与毛利率。",
+        "current_status": "watch_only",
+        "review_trigger": "下一轮核心公司财报或 2026-09-02"
+      },
+      "rank": 2
+    },
+    {
+      "ticker": "TSM",
+      "name": "TSMC",
+      "target_class": "public_equity_observation",
+      "action_state": "watch_only",
+      "thesis_node": "先进制程/制造卡点",
+      "rationale": "先进制程组合和利润率显示制造稀缺，但地缘与估值口径压低风险控制。",
+      "downgrade_risk": "先进制程占比、毛利率或 capex 回落；地缘风险升高。",
+      "next_verification_data": "2Q26 revenue/margin、先进制程与封装产能、客户排产。",
+      "payoff_odds": "稀缺很强，赔率取决于地缘折价和同口径 ADR/本地股估值复核。",
+      "win_probability": "60%",
+      "strength": "中高",
+      "score": {
+        "action_state": "watch_only",
+        "total_score": 3.79,
+        "opportunity_fit": 3.79,
+        "thesis_confidence": 4.08,
+        "payoff_convexity": 3.6,
+        "score_components": {
+          "chokepoint_strength": 4.7,
+          "future_space": 4,
+          "valuation_odds": 2.7,
+          "evidence_quality": 4.5,
+          "disconfirming_risk_control": 3.1,
+          "monitorability": 3.8,
+          "payoff_convexity": 3.6
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 4.7,
+          "mispricing": 2.7,
+          "earnings_elasticity": 4,
+          "risk_control": 3.1
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "scarce_node_control",
+              "score": 4.7,
+              "weight": 1,
+              "evidence_ids": [
+                "S7"
+              ],
+              "review_ids": [
+                "rv-q2-2-2"
+              ],
+              "rationale": "对应 Q2 卡点具备稀缺或系统控制力。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "demand_flow",
+              "score": 4,
+              "weight": 1,
+              "evidence_ids": [
+                "S7"
+              ],
+              "review_ids": [
+                "rv-q2-2-2"
+              ],
+              "rationale": "Q1 需求证据能流向该目标的收入或订单。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "mispricing_check",
+              "score": 2.7,
+              "weight": 1,
+              "evidence_ids": [
+                "S13"
+              ],
+              "review_ids": [
+                "rv-q3-3-1"
+              ],
+              "rationale": "实时同口径估值未完全复核，赔率分保守处理。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "source_quality",
+              "score": 4.5,
+              "weight": 1,
+              "evidence_ids": [
+                "S7"
+              ],
+              "review_ids": [
+                "rv-q2-2-2"
+              ],
+              "rationale": "主要证据来自公司 IR、SEC 或 IEA 等高可靠来源。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "kill_tests",
+              "score": 3.1,
+              "weight": 1,
+              "evidence_ids": [
+                "S7"
+              ],
+              "review_ids": [
+                "rv-q2-2-2"
+              ],
+              "rationale": "已绑定收入、订单、毛利率、capex 或并网等降级触发器。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "quarterly_metrics",
+              "score": 3.8,
+              "weight": 1,
+              "evidence_ids": [
+                "S7"
+              ],
+              "review_ids": [
+                "rv-q2-2-2"
+              ],
+              "rationale": "下一季财报可直接跟踪关键指标。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "operating_leverage",
+              "score": 3.6,
+              "weight": 1,
+              "evidence_ids": [
+                "S7"
+              ],
+              "review_ids": [
+                "rv-q2-2-2"
+              ],
+              "rationale": "若卡点继续紧缺，收入和利润率有经营杠杆；若供给反转则回撤也快。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        }
+      },
+      "thesis_kill_tests": [
+        {
+          "test": "先进制程占比、毛利率或 capex 回落；地缘风险升高。",
+          "evidence_needed": "2Q26 revenue/margin、先进制程与封装产能、客户排产。",
+          "downgrade_action": "若触发则维持 watch_only 或降级 no_action",
+          "source_plan": [
+            "S7"
+          ]
+        }
+      ],
+      "prediction_review": {
+        "initial_claim": "先进制程组合和利润率显示制造稀缺，但地缘与估值口径压低风险控制。",
+        "validation_horizon": "2026-09-02",
+        "required_evidence": "2Q26 revenue/margin、先进制程与封装产能、客户排产。",
+        "current_status": "watch_only",
+        "review_trigger": "下一轮核心公司财报或 2026-09-02"
+      },
+      "rank": 3
+    },
+    {
+      "ticker": "MU",
+      "name": "Micron Technology",
+      "target_class": "public_equity_observation",
+      "action_state": "watch_only",
+      "thesis_node": "HBM/云内存弹性卡点",
+      "rationale": "Cloud Memory 与 Core Data Center 利润率极高，盈利弹性强；但内存周期反转风险大。",
+      "downgrade_risk": "HBM/Cloud Memory 毛利率下降、库存上升、Q3 指引不达预期。",
+      "next_verification_data": "Q3 FY26 实际收入、gross margin、HBM 订单和 capex/inventory。",
+      "payoff_odds": "弹性强于稳健性，适合作为高波动观察。",
+      "win_probability": "58%",
+      "strength": "中高",
+      "score": {
+        "action_state": "watch_only",
+        "total_score": 3.77,
+        "opportunity_fit": 3.77,
+        "thesis_confidence": 3.87,
+        "payoff_convexity": 4.6,
+        "score_components": {
+          "chokepoint_strength": 4.1,
+          "future_space": 4.3,
+          "valuation_odds": 3.1,
+          "evidence_quality": 4.2,
+          "disconfirming_risk_control": 2.9,
+          "monitorability": 4.2,
+          "payoff_convexity": 4.6
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 4.1,
+          "mispricing": 3.1,
+          "earnings_elasticity": 4.5,
+          "risk_control": 2.9
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "scarce_node_control",
+              "score": 4.1,
+              "weight": 1,
+              "evidence_ids": [
+                "S9"
+              ],
+              "review_ids": [
+                "rv-q2-2-1"
+              ],
+              "rationale": "对应 Q2 卡点具备稀缺或系统控制力。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "demand_flow",
+              "score": 4.3,
+              "weight": 1,
+              "evidence_ids": [
+                "S9"
+              ],
+              "review_ids": [
+                "rv-q2-2-1"
+              ],
+              "rationale": "Q1 需求证据能流向该目标的收入或订单。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "mispricing_check",
+              "score": 3.1,
+              "weight": 1,
+              "evidence_ids": [
+                "S13"
+              ],
+              "review_ids": [
+                "rv-q3-3-1"
+              ],
+              "rationale": "实时同口径估值未完全复核，赔率分保守处理。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "source_quality",
+              "score": 4.2,
+              "weight": 1,
+              "evidence_ids": [
+                "S9"
+              ],
+              "review_ids": [
+                "rv-q2-2-1"
+              ],
+              "rationale": "主要证据来自公司 IR、SEC 或 IEA 等高可靠来源。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "kill_tests",
+              "score": 2.9,
+              "weight": 1,
+              "evidence_ids": [
+                "S9"
+              ],
+              "review_ids": [
+                "rv-q2-2-1"
+              ],
+              "rationale": "已绑定收入、订单、毛利率、capex 或并网等降级触发器。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "quarterly_metrics",
+              "score": 4.2,
+              "weight": 1,
+              "evidence_ids": [
+                "S9"
+              ],
+              "review_ids": [
+                "rv-q2-2-1"
+              ],
+              "rationale": "下一季财报可直接跟踪关键指标。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "operating_leverage",
+              "score": 4.6,
+              "weight": 1,
+              "evidence_ids": [
+                "S9"
+              ],
+              "review_ids": [
+                "rv-q2-2-1"
+              ],
+              "rationale": "若卡点继续紧缺，收入和利润率有经营杠杆；若供给反转则回撤也快。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        }
+      },
+      "thesis_kill_tests": [
+        {
+          "test": "HBM/Cloud Memory 毛利率下降、库存上升、Q3 指引不达预期。",
+          "evidence_needed": "Q3 FY26 实际收入、gross margin、HBM 订单和 capex/inventory。",
+          "downgrade_action": "若触发则维持 watch_only 或降级 no_action",
+          "source_plan": [
+            "S9"
+          ]
+        }
+      ],
+      "prediction_review": {
+        "initial_claim": "Cloud Memory 与 Core Data Center 利润率极高，盈利弹性强；但内存周期反转风险大。",
+        "validation_horizon": "2026-09-02",
+        "required_evidence": "Q3 FY26 实际收入、gross margin、HBM 订单和 capex/inventory。",
+        "current_status": "watch_only",
+        "review_trigger": "下一轮核心公司财报或 2026-09-02"
+      },
+      "rank": 4
+    },
+    {
+      "ticker": "CRDO",
+      "name": "Credo Technology",
+      "target_class": "public_equity_observation",
+      "action_state": "watch_only",
+      "thesis_node": "高速铜缆/光互联 AI data infrastructure",
+      "rationale": "Q4 FY2026 revenue $437M、同比 +157%，68%+ gross margin，高速铜缆和光互联是 AI 集群功耗/带宽卡点。",
+      "downgrade_risk": "大客户集中、订单节奏反转、收购整合或估值回撤。",
+      "next_verification_data": "下一季 revenue guide、gross margin、客户集中、AEC/optical 采用。",
+      "payoff_odds": "弹性很强但波动和客户集中也强，适合 watch_only。",
+      "win_probability": "57%",
+      "strength": "中高",
+      "score": {
+        "action_state": "watch_only",
+        "total_score": 3.5,
+        "opportunity_fit": 3.5,
+        "thesis_confidence": 4.1,
+        "payoff_convexity": 4.6,
+        "score_components": {
+          "chokepoint_strength": 3.9,
+          "future_space": 4.4,
+          "valuation_odds": 2.8,
+          "evidence_quality": 4.1,
+          "disconfirming_risk_control": 2.8,
+          "monitorability": 3.8,
+          "payoff_convexity": 4.6
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 3.9,
+          "mispricing": 2.8,
+          "earnings_elasticity": 4.5,
+          "risk_control": 2.8
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "scarce_node_control",
+              "score": 3.9,
+              "weight": 1,
+              "evidence_ids": [
+                "S16"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s16"
+              ],
+              "rationale": "对应 AI 工厂供应链卡点的稀缺性和价值捕获能力。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "demand_flow",
+              "score": 4.4,
+              "weight": 1,
+              "evidence_ids": [
+                "S16"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s16"
+              ],
+              "rationale": "官方收入、订单或产品线证据支持 AI 工厂需求流入。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "mispricing_check",
+              "score": 2.8,
+              "weight": 1,
+              "evidence_ids": [
+                "S13"
+              ],
+              "review_ids": [
+                "rv-q3-3-1"
+              ],
+              "rationale": "实时同口径估值仍未完全补齐，因此不提升行动状态。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "source_quality",
+              "score": 4.1,
+              "weight": 1,
+              "evidence_ids": [
+                "S16"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s16"
+              ],
+              "rationale": "主要证据来自公司 IR、SEC、官方新闻稿或高可靠来源。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "kill_tests",
+              "score": 2.8,
+              "weight": 1,
+              "evidence_ids": [
+                "S16"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s16"
+              ],
+              "rationale": "已绑定客户集中、项目延期、毛利和估值反证。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "quarterly_metrics",
+              "score": 3.8,
+              "weight": 1,
+              "evidence_ids": [
+                "S16"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s16"
+              ],
+              "rationale": "下一季财报可跟踪收入、订单、毛利、backlog 和产品采用。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "operating_leverage",
+              "score": 4.6,
+              "weight": 1,
+              "evidence_ids": [
+                "S16"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s16"
+              ],
+              "rationale": "收入高速增长或订单转化可产生经营杠杆，但估值反向也较快。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        }
+      },
+      "thesis_kill_tests": [
+        {
+          "test": "大客户集中、订单节奏反转、收购整合或估值回撤。",
+          "evidence_needed": "下一季 revenue guide、gross margin、客户集中、AEC/optical 采用。",
+          "downgrade_action": "不满足则维持 watch_only 或降级 no_action",
+          "source_plan": [
+            "S16"
+          ]
+        }
+      ],
+      "prediction_review": {
+        "initial_claim": "Q4 FY2026 revenue $437M、同比 +157%，68%+ gross margin，高速铜缆和光互联是 AI 集群功耗/带宽卡点。",
+        "validation_horizon": "2026-09-02",
+        "required_evidence": "下一季 revenue guide、gross margin、客户集中、AEC/optical 采用。",
+        "current_status": "watch_only",
+        "review_trigger": "下一轮核心公司财报或 2026-09-02"
+      },
+      "rank": 5
+    },
+    {
+      "ticker": "ALAB",
+      "name": "Astera Labs",
+      "target_class": "public_equity_observation",
+      "action_state": "watch_only",
+      "thesis_node": "rack-scale AI connectivity / PCIe 6 fabric",
+      "rationale": "Q1 2026 revenue +93% YoY、GAAP gross margin 76.3%，Scorpio X-Series/PCIe 6 产品直接对应 rack-scale AI fabric。",
+      "downgrade_risk": "客户集中、平台替代、估值过高或新产品爬坡低于预期。",
+      "next_verification_data": "Q2 revenue guide 实现、Scorpio/Aries/Taurus/Leo 设计赢单和客户集中度。",
+      "payoff_odds": "高增长高毛利，但估值和客户集中会限制行动状态。",
+      "win_probability": "57%",
+      "strength": "中高",
+      "score": {
+        "action_state": "watch_only",
+        "total_score": 3.5,
+        "opportunity_fit": 3.5,
+        "thesis_confidence": 4.2,
+        "payoff_convexity": 4.5,
+        "score_components": {
+          "chokepoint_strength": 4,
+          "future_space": 4.3,
+          "valuation_odds": 2.7,
+          "evidence_quality": 4.2,
+          "disconfirming_risk_control": 2.9,
+          "monitorability": 3.8,
+          "payoff_convexity": 4.5
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 4,
+          "mispricing": 2.7,
+          "earnings_elasticity": 4.4,
+          "risk_control": 2.9
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "scarce_node_control",
+              "score": 4,
+              "weight": 1,
+              "evidence_ids": [
+                "S15"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s15"
+              ],
+              "rationale": "对应 AI 工厂供应链卡点的稀缺性和价值捕获能力。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "demand_flow",
+              "score": 4.3,
+              "weight": 1,
+              "evidence_ids": [
+                "S15"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s15"
+              ],
+              "rationale": "官方收入、订单或产品线证据支持 AI 工厂需求流入。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "mispricing_check",
+              "score": 2.7,
+              "weight": 1,
+              "evidence_ids": [
+                "S13"
+              ],
+              "review_ids": [
+                "rv-q3-3-1"
+              ],
+              "rationale": "实时同口径估值仍未完全补齐，因此不提升行动状态。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "source_quality",
+              "score": 4.2,
+              "weight": 1,
+              "evidence_ids": [
+                "S15"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s15"
+              ],
+              "rationale": "主要证据来自公司 IR、SEC、官方新闻稿或高可靠来源。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "kill_tests",
+              "score": 2.9,
+              "weight": 1,
+              "evidence_ids": [
+                "S15"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s15"
+              ],
+              "rationale": "已绑定客户集中、项目延期、毛利和估值反证。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "quarterly_metrics",
+              "score": 3.8,
+              "weight": 1,
+              "evidence_ids": [
+                "S15"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s15"
+              ],
+              "rationale": "下一季财报可跟踪收入、订单、毛利、backlog 和产品采用。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "operating_leverage",
+              "score": 4.5,
+              "weight": 1,
+              "evidence_ids": [
+                "S15"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s15"
+              ],
+              "rationale": "收入高速增长或订单转化可产生经营杠杆，但估值反向也较快。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        }
+      },
+      "thesis_kill_tests": [
+        {
+          "test": "客户集中、平台替代、估值过高或新产品爬坡低于预期。",
+          "evidence_needed": "Q2 revenue guide 实现、Scorpio/Aries/Taurus/Leo 设计赢单和客户集中度。",
+          "downgrade_action": "不满足则维持 watch_only 或降级 no_action",
+          "source_plan": [
+            "S15"
+          ]
+        }
+      ],
+      "prediction_review": {
+        "initial_claim": "Q1 2026 revenue +93% YoY、GAAP gross margin 76.3%，Scorpio X-Series/PCIe 6 产品直接对应 rack-scale AI fabric。",
+        "validation_horizon": "2026-09-02",
+        "required_evidence": "Q2 revenue guide 实现、Scorpio/Aries/Taurus/Leo 设计赢单和客户集中度。",
+        "current_status": "watch_only",
+        "review_trigger": "下一轮核心公司财报或 2026-09-02"
+      },
+      "rank": 6
+    },
+    {
+      "ticker": "AVGO",
+      "name": "Broadcom",
+      "target_class": "public_equity_observation",
+      "action_state": "watch_only",
+      "thesis_node": "定制 ASIC/AI networking 卡点",
+      "rationale": "AI revenue 高速增长，定制 ASIC/网络路线明确；但客户集中和项目制交付压低风险控制。",
+      "downgrade_risk": "Q2 AI semiconductor revenue 未兑现；大客户订单推迟或转向。",
+      "next_verification_data": "Q2 FY26 实际 AI semiconductor revenue、客户数、margin 和 backlog。",
+      "payoff_odds": "长期路线很强，短期赔率受估值与客户集中限制。",
+      "win_probability": "55%",
+      "strength": "中",
+      "score": {
+        "action_state": "watch_only",
+        "total_score": 3.45,
+        "opportunity_fit": 3.45,
+        "thesis_confidence": 3.77,
+        "payoff_convexity": 4.1,
+        "score_components": {
+          "chokepoint_strength": 4,
+          "future_space": 4.2,
+          "valuation_odds": 2.3,
+          "evidence_quality": 4.1,
+          "disconfirming_risk_control": 2.8,
+          "monitorability": 3.8,
+          "payoff_convexity": 4.1
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 4,
+          "mispricing": 2.3,
+          "earnings_elasticity": 4.2,
+          "risk_control": 2.8
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "scarce_node_control",
+              "score": 4,
+              "weight": 1,
+              "evidence_ids": [
+                "S8",
+                "S5"
+              ],
+              "review_ids": [
+                "rv-q2-1-2"
+              ],
+              "rationale": "对应 Q2 卡点具备稀缺或系统控制力。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "demand_flow",
+              "score": 4.2,
+              "weight": 1,
+              "evidence_ids": [
+                "S8",
+                "S5"
+              ],
+              "review_ids": [
+                "rv-q2-1-2"
+              ],
+              "rationale": "Q1 需求证据能流向该目标的收入或订单。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "mispricing_check",
+              "score": 2.3,
+              "weight": 1,
+              "evidence_ids": [
+                "S13"
+              ],
+              "review_ids": [
+                "rv-q3-3-1"
+              ],
+              "rationale": "实时同口径估值未完全复核，赔率分保守处理。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "source_quality",
+              "score": 4.1,
+              "weight": 1,
+              "evidence_ids": [
+                "S8",
+                "S5"
+              ],
+              "review_ids": [
+                "rv-q2-1-2"
+              ],
+              "rationale": "主要证据来自公司 IR、SEC 或 IEA 等高可靠来源。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "kill_tests",
+              "score": 2.8,
+              "weight": 1,
+              "evidence_ids": [
+                "S8",
+                "S5"
+              ],
+              "review_ids": [
+                "rv-q2-1-2"
+              ],
+              "rationale": "已绑定收入、订单、毛利率、capex 或并网等降级触发器。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "quarterly_metrics",
+              "score": 3.8,
+              "weight": 1,
+              "evidence_ids": [
+                "S8",
+                "S5"
+              ],
+              "review_ids": [
+                "rv-q2-1-2"
+              ],
+              "rationale": "下一季财报可直接跟踪关键指标。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "operating_leverage",
+              "score": 4.1,
+              "weight": 1,
+              "evidence_ids": [
+                "S8",
+                "S5"
+              ],
+              "review_ids": [
+                "rv-q2-1-2"
+              ],
+              "rationale": "若卡点继续紧缺，收入和利润率有经营杠杆；若供给反转则回撤也快。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        }
+      },
+      "thesis_kill_tests": [
+        {
+          "test": "Q2 AI semiconductor revenue 未兑现；大客户订单推迟或转向。",
+          "evidence_needed": "Q2 FY26 实际 AI semiconductor revenue、客户数、margin 和 backlog。",
+          "downgrade_action": "若触发则维持 watch_only 或降级 no_action",
+          "source_plan": [
+            "S8",
+            "S5"
+          ]
+        }
+      ],
+      "prediction_review": {
+        "initial_claim": "AI revenue 高速增长，定制 ASIC/网络路线明确；但客户集中和项目制交付压低风险控制。",
+        "validation_horizon": "2026-09-02",
+        "required_evidence": "Q2 FY26 实际 AI semiconductor revenue、客户数、margin 和 backlog。",
+        "current_status": "watch_only",
+        "review_trigger": "下一轮核心公司财报或 2026-09-02"
+      },
+      "rank": 7
+    },
+    {
+      "ticker": "VRT",
+      "name": "Vertiv",
+      "target_class": "public_equity_observation",
+      "action_state": "watch_only",
+      "thesis_node": "电力/散热快速交付卡点",
+      "rationale": "数据中心需求推动 organic sales、margin 和 FY 指引，但估值和项目延期风险高。",
+      "downgrade_risk": "organic growth 或 backlog 放缓；大型项目并网/交付延迟。",
+      "next_verification_data": "Q2 sales、organic orders、margin、capacity expansion、项目延期评论。",
+      "payoff_odds": "主题纯度高但估值容忍度低，等待订单质量复核。",
+      "win_probability": "56%",
+      "strength": "中",
+      "score": {
+        "action_state": "watch_only",
+        "total_score": 3.44,
+        "opportunity_fit": 3.44,
+        "thesis_confidence": 3.85,
+        "payoff_convexity": 4,
+        "score_components": {
+          "chokepoint_strength": 3.9,
+          "future_space": 4.1,
+          "valuation_odds": 2.5,
+          "evidence_quality": 4.2,
+          "disconfirming_risk_control": 3.2,
+          "monitorability": 4,
+          "payoff_convexity": 4
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 3.8,
+          "mispricing": 2.5,
+          "earnings_elasticity": 4,
+          "risk_control": 3.2
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "scarce_node_control",
+              "score": 3.9,
+              "weight": 1,
+              "evidence_ids": [
+                "S10",
+                "S12"
+              ],
+              "review_ids": [
+                "rv-q2-3-1",
+                "rv-q1-3-1"
+              ],
+              "rationale": "对应 Q2 卡点具备稀缺或系统控制力。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "demand_flow",
+              "score": 4.1,
+              "weight": 1,
+              "evidence_ids": [
+                "S10",
+                "S12"
+              ],
+              "review_ids": [
+                "rv-q2-3-1",
+                "rv-q1-3-1"
+              ],
+              "rationale": "Q1 需求证据能流向该目标的收入或订单。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "mispricing_check",
+              "score": 2.5,
+              "weight": 1,
+              "evidence_ids": [
+                "S13"
+              ],
+              "review_ids": [
+                "rv-q3-3-1"
+              ],
+              "rationale": "实时同口径估值未完全复核，赔率分保守处理。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "source_quality",
+              "score": 4.2,
+              "weight": 1,
+              "evidence_ids": [
+                "S10",
+                "S12"
+              ],
+              "review_ids": [
+                "rv-q2-3-1",
+                "rv-q1-3-1"
+              ],
+              "rationale": "主要证据来自公司 IR、SEC 或 IEA 等高可靠来源。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "kill_tests",
+              "score": 3.2,
+              "weight": 1,
+              "evidence_ids": [
+                "S10",
+                "S12"
+              ],
+              "review_ids": [
+                "rv-q2-3-1",
+                "rv-q1-3-1"
+              ],
+              "rationale": "已绑定收入、订单、毛利率、capex 或并网等降级触发器。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "quarterly_metrics",
+              "score": 4,
+              "weight": 1,
+              "evidence_ids": [
+                "S10",
+                "S12"
+              ],
+              "review_ids": [
+                "rv-q2-3-1",
+                "rv-q1-3-1"
+              ],
+              "rationale": "下一季财报可直接跟踪关键指标。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "operating_leverage",
+              "score": 4,
+              "weight": 1,
+              "evidence_ids": [
+                "S10",
+                "S12"
+              ],
+              "review_ids": [
+                "rv-q2-3-1",
+                "rv-q1-3-1"
+              ],
+              "rationale": "若卡点继续紧缺，收入和利润率有经营杠杆；若供给反转则回撤也快。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        }
+      },
+      "thesis_kill_tests": [
+        {
+          "test": "organic growth 或 backlog 放缓；大型项目并网/交付延迟。",
+          "evidence_needed": "Q2 sales、organic orders、margin、capacity expansion、项目延期评论。",
+          "downgrade_action": "若触发则维持 watch_only 或降级 no_action",
+          "source_plan": [
+            "S10",
+            "S12"
+          ]
+        }
+      ],
+      "prediction_review": {
+        "initial_claim": "数据中心需求推动 organic sales、margin 和 FY 指引，但估值和项目延期风险高。",
+        "validation_horizon": "2026-09-02",
+        "required_evidence": "Q2 sales、organic orders、margin、capacity expansion、项目延期评论。",
+        "current_status": "watch_only",
+        "review_trigger": "下一轮核心公司财报或 2026-09-02"
+      },
+      "rank": 8
+    },
+    {
+      "ticker": "MRVL",
+      "name": "Marvell Technology",
+      "target_class": "public_equity_observation",
+      "action_state": "watch_only",
+      "thesis_node": "custom silicon / electro-optics / AI Ethernet",
+      "rationale": "Q1 FY2027 Data Center revenue $1.833B，占总收入 76%，AI systems、ethernet switching、DCI 和 AI servers 均在数据中心应用中。",
+      "downgrade_risk": "custom silicon 项目延期、大客户集中、客户自研/垂直整合或毛利承压。",
+      "next_verification_data": "下一季 Data Center revenue、custom silicon ramp、electro-optics 订单、客户集中披露。",
+      "payoff_odds": "价值捕获清晰但客户集中与项目制风险压低风险控制。",
+      "win_probability": "56%",
+      "strength": "中",
+      "score": {
+        "action_state": "watch_only",
+        "total_score": 3.4,
+        "opportunity_fit": 3.4,
+        "thesis_confidence": 4.2,
+        "payoff_convexity": 4,
+        "score_components": {
+          "chokepoint_strength": 3.8,
+          "future_space": 4.2,
+          "valuation_odds": 2.7,
+          "evidence_quality": 4.2,
+          "disconfirming_risk_control": 3,
+          "monitorability": 4,
+          "payoff_convexity": 4
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 3.8,
+          "mispricing": 2.7,
+          "earnings_elasticity": 4.1,
+          "risk_control": 3
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "scarce_node_control",
+              "score": 3.8,
+              "weight": 1,
+              "evidence_ids": [
+                "S14"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s14"
+              ],
+              "rationale": "对应 AI 工厂供应链卡点的稀缺性和价值捕获能力。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "demand_flow",
+              "score": 4.2,
+              "weight": 1,
+              "evidence_ids": [
+                "S14"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s14"
+              ],
+              "rationale": "官方收入、订单或产品线证据支持 AI 工厂需求流入。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "mispricing_check",
+              "score": 2.7,
+              "weight": 1,
+              "evidence_ids": [
+                "S13"
+              ],
+              "review_ids": [
+                "rv-q3-3-1"
+              ],
+              "rationale": "实时同口径估值仍未完全补齐，因此不提升行动状态。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "source_quality",
+              "score": 4.2,
+              "weight": 1,
+              "evidence_ids": [
+                "S14"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s14"
+              ],
+              "rationale": "主要证据来自公司 IR、SEC、官方新闻稿或高可靠来源。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "kill_tests",
+              "score": 3,
+              "weight": 1,
+              "evidence_ids": [
+                "S14"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s14"
+              ],
+              "rationale": "已绑定客户集中、项目延期、毛利和估值反证。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "quarterly_metrics",
+              "score": 4,
+              "weight": 1,
+              "evidence_ids": [
+                "S14"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s14"
+              ],
+              "rationale": "下一季财报可跟踪收入、订单、毛利、backlog 和产品采用。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "operating_leverage",
+              "score": 4,
+              "weight": 1,
+              "evidence_ids": [
+                "S14"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s14"
+              ],
+              "rationale": "收入高速增长或订单转化可产生经营杠杆，但估值反向也较快。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        }
+      },
+      "thesis_kill_tests": [
+        {
+          "test": "custom silicon 项目延期、大客户集中、客户自研/垂直整合或毛利承压。",
+          "evidence_needed": "下一季 Data Center revenue、custom silicon ramp、electro-optics 订单、客户集中披露。",
+          "downgrade_action": "不满足则维持 watch_only 或降级 no_action",
+          "source_plan": [
+            "S14"
+          ]
+        }
+      ],
+      "prediction_review": {
+        "initial_claim": "Q1 FY2027 Data Center revenue $1.833B，占总收入 76%，AI systems、ethernet switching、DCI 和 AI servers 均在数据中心应用中。",
+        "validation_horizon": "2026-09-02",
+        "required_evidence": "下一季 Data Center revenue、custom silicon ramp、electro-optics 订单、客户集中披露。",
+        "current_status": "watch_only",
+        "review_trigger": "下一轮核心公司财报或 2026-09-02"
+      },
+      "rank": 9
+    },
+    {
+      "ticker": "ETN",
+      "name": "Eaton",
+      "target_class": "public_equity_observation",
+      "action_state": "watch_only",
+      "thesis_node": "电气设备/变压器/热管理链条",
+      "rationale": "Electrical Americas/Global 订单和 backlog 强，风险控制较 VRT 稳，但 AI 纯度更低。",
+      "downgrade_risk": "Electrical backlog 增速回落；数据中心贡献无法持续；收购整合拖累。",
+      "next_verification_data": "Electrical orders/backlog、book-to-bill、Boyd Thermal 整合。",
+      "payoff_odds": "较稳健的电气链条观察，弹性低于纯 AI 基础设施。",
+      "win_probability": "55%",
+      "strength": "中",
+      "score": {
+        "action_state": "watch_only",
+        "total_score": 3.39,
+        "opportunity_fit": 3.39,
+        "thesis_confidence": 3.8,
+        "payoff_convexity": 3.2,
+        "score_components": {
+          "chokepoint_strength": 3.6,
+          "future_space": 3.7,
+          "valuation_odds": 2.9,
+          "evidence_quality": 4.2,
+          "disconfirming_risk_control": 3.7,
+          "monitorability": 3.8,
+          "payoff_convexity": 3.2
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 3.6,
+          "mispricing": 2.9,
+          "earnings_elasticity": 3.4,
+          "risk_control": 3.7
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "scarce_node_control",
+              "score": 3.6,
+              "weight": 1,
+              "evidence_ids": [
+                "S11",
+                "S12"
+              ],
+              "review_ids": [
+                "rv-q2-3-1",
+                "rv-q1-3-1"
+              ],
+              "rationale": "对应 Q2 卡点具备稀缺或系统控制力。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "demand_flow",
+              "score": 3.7,
+              "weight": 1,
+              "evidence_ids": [
+                "S11",
+                "S12"
+              ],
+              "review_ids": [
+                "rv-q2-3-1",
+                "rv-q1-3-1"
+              ],
+              "rationale": "Q1 需求证据能流向该目标的收入或订单。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "mispricing_check",
+              "score": 2.9,
+              "weight": 1,
+              "evidence_ids": [
+                "S13"
+              ],
+              "review_ids": [
+                "rv-q3-3-1"
+              ],
+              "rationale": "实时同口径估值未完全复核，赔率分保守处理。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "source_quality",
+              "score": 4.2,
+              "weight": 1,
+              "evidence_ids": [
+                "S11",
+                "S12"
+              ],
+              "review_ids": [
+                "rv-q2-3-1",
+                "rv-q1-3-1"
+              ],
+              "rationale": "主要证据来自公司 IR、SEC 或 IEA 等高可靠来源。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "kill_tests",
+              "score": 3.7,
+              "weight": 1,
+              "evidence_ids": [
+                "S11",
+                "S12"
+              ],
+              "review_ids": [
+                "rv-q2-3-1",
+                "rv-q1-3-1"
+              ],
+              "rationale": "已绑定收入、订单、毛利率、capex 或并网等降级触发器。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "quarterly_metrics",
+              "score": 3.8,
+              "weight": 1,
+              "evidence_ids": [
+                "S11",
+                "S12"
+              ],
+              "review_ids": [
+                "rv-q2-3-1",
+                "rv-q1-3-1"
+              ],
+              "rationale": "下一季财报可直接跟踪关键指标。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "operating_leverage",
+              "score": 3.2,
+              "weight": 1,
+              "evidence_ids": [
+                "S11",
+                "S12"
+              ],
+              "review_ids": [
+                "rv-q2-3-1",
+                "rv-q1-3-1"
+              ],
+              "rationale": "若卡点继续紧缺，收入和利润率有经营杠杆；若供给反转则回撤也快。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        }
+      },
+      "thesis_kill_tests": [
+        {
+          "test": "Electrical backlog 增速回落；数据中心贡献无法持续；收购整合拖累。",
+          "evidence_needed": "Electrical orders/backlog、book-to-bill、Boyd Thermal 整合。",
+          "downgrade_action": "若触发则维持 watch_only 或降级 no_action",
+          "source_plan": [
+            "S11",
+            "S12"
+          ]
+        }
+      ],
+      "prediction_review": {
+        "initial_claim": "Electrical Americas/Global 订单和 backlog 强，风险控制较 VRT 稳，但 AI 纯度更低。",
+        "validation_horizon": "2026-09-02",
+        "required_evidence": "Electrical orders/backlog、book-to-bill、Boyd Thermal 整合。",
+        "current_status": "watch_only",
+        "review_trigger": "下一轮核心公司财报或 2026-09-02"
+      },
+      "rank": 10
+    },
+    {
+      "ticker": "ANET",
+      "name": "Arista Networks",
+      "target_class": "public_equity_observation",
+      "action_state": "watch_only",
+      "thesis_node": "AI networking / cloud switching",
+      "rationale": "Q1 2026 revenue $2.709B、同比 +35.1%，XPO 光互联面向下一代 AI data centers。",
+      "downgrade_risk": "云客户 capex 放缓、merchant silicon 依赖、NVIDIA/Broadcom 生态挤压。",
+      "next_verification_data": "Q2 revenue/margin guide、AI networking 客户贡献、XPO 采用进展。",
+      "payoff_odds": "稳健网络卡点，但弹性和错价证据弱于小型连接标的。",
+      "win_probability": "55%",
+      "strength": "中",
+      "score": {
+        "action_state": "watch_only",
+        "total_score": 3.35,
+        "opportunity_fit": 3.35,
+        "thesis_confidence": 4.2,
+        "payoff_convexity": 3.5,
+        "score_components": {
+          "chokepoint_strength": 3.5,
+          "future_space": 3.9,
+          "valuation_odds": 2.7,
+          "evidence_quality": 4.2,
+          "disconfirming_risk_control": 3.5,
+          "monitorability": 4,
+          "payoff_convexity": 3.5
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 3.5,
+          "mispricing": 2.7,
+          "earnings_elasticity": 3.7,
+          "risk_control": 3.5
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "scarce_node_control",
+              "score": 3.5,
+              "weight": 1,
+              "evidence_ids": [
+                "S18"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s18"
+              ],
+              "rationale": "对应 AI 工厂供应链卡点的稀缺性和价值捕获能力。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "demand_flow",
+              "score": 3.9,
+              "weight": 1,
+              "evidence_ids": [
+                "S18"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s18"
+              ],
+              "rationale": "官方收入、订单或产品线证据支持 AI 工厂需求流入。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "mispricing_check",
+              "score": 2.7,
+              "weight": 1,
+              "evidence_ids": [
+                "S13"
+              ],
+              "review_ids": [
+                "rv-q3-3-1"
+              ],
+              "rationale": "实时同口径估值仍未完全补齐，因此不提升行动状态。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "source_quality",
+              "score": 4.2,
+              "weight": 1,
+              "evidence_ids": [
+                "S18"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s18"
+              ],
+              "rationale": "主要证据来自公司 IR、SEC、官方新闻稿或高可靠来源。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "kill_tests",
+              "score": 3.5,
+              "weight": 1,
+              "evidence_ids": [
+                "S18"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s18"
+              ],
+              "rationale": "已绑定客户集中、项目延期、毛利和估值反证。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "quarterly_metrics",
+              "score": 4,
+              "weight": 1,
+              "evidence_ids": [
+                "S18"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s18"
+              ],
+              "rationale": "下一季财报可跟踪收入、订单、毛利、backlog 和产品采用。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "operating_leverage",
+              "score": 3.5,
+              "weight": 1,
+              "evidence_ids": [
+                "S18"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s18"
+              ],
+              "rationale": "收入高速增长或订单转化可产生经营杠杆，但估值反向也较快。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        }
+      },
+      "thesis_kill_tests": [
+        {
+          "test": "云客户 capex 放缓、merchant silicon 依赖、NVIDIA/Broadcom 生态挤压。",
+          "evidence_needed": "Q2 revenue/margin guide、AI networking 客户贡献、XPO 采用进展。",
+          "downgrade_action": "不满足则维持 watch_only 或降级 no_action",
+          "source_plan": [
+            "S18"
+          ]
+        }
+      ],
+      "prediction_review": {
+        "initial_claim": "Q1 2026 revenue $2.709B、同比 +35.1%，XPO 光互联面向下一代 AI data centers。",
+        "validation_horizon": "2026-09-02",
+        "required_evidence": "Q2 revenue/margin guide、AI networking 客户贡献、XPO 采用进展。",
+        "current_status": "watch_only",
+        "review_trigger": "下一轮核心公司财报或 2026-09-02"
+      },
+      "rank": 11
+    },
+    {
+      "ticker": "005930.KS",
+      "name": "Samsung Electronics",
+      "target_class": "public_equity_observation",
+      "action_state": "watch_only",
+      "thesis_node": "HBM4/AI memory/foundry 第二梯队卡点",
+      "rationale": "Q1 2026 DS revenue KRW 81.7T、operating profit KRW 53.7T，AI memory、HBM4、SOCAMM2 和先进制程均有官方证据。",
+      "downgrade_risk": "HBM 客户资格、foundry 利用率、消费电子拖累或内存周期反转。",
+      "next_verification_data": "HBM4E 样品/客户进度、Memory ASP、foundry 利用率和 AI 产品占比。",
+      "payoff_odds": "AI memory 受益清晰，但相对 SK hynix 的稀缺性和执行确定性较弱。",
+      "win_probability": "53%",
+      "strength": "中",
+      "score": {
+        "action_state": "watch_only",
+        "total_score": 3.33,
+        "opportunity_fit": 3.33,
+        "thesis_confidence": 4.1,
+        "payoff_convexity": 3.6,
+        "score_components": {
+          "chokepoint_strength": 3.4,
+          "future_space": 4,
+          "valuation_odds": 2.8,
+          "evidence_quality": 4.1,
+          "disconfirming_risk_control": 3.3,
+          "monitorability": 3.8,
+          "payoff_convexity": 3.6
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 3.4,
+          "mispricing": 2.8,
+          "earnings_elasticity": 3.8,
+          "risk_control": 3.3
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "scarce_node_control",
+              "score": 3.4,
+              "weight": 1,
+              "evidence_ids": [
+                "S20"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s20"
+              ],
+              "rationale": "对应 AI 工厂供应链卡点的稀缺性和价值捕获能力。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "demand_flow",
+              "score": 4,
+              "weight": 1,
+              "evidence_ids": [
+                "S20"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s20"
+              ],
+              "rationale": "官方收入、订单或产品线证据支持 AI 工厂需求流入。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "mispricing_check",
+              "score": 2.8,
+              "weight": 1,
+              "evidence_ids": [
+                "S13"
+              ],
+              "review_ids": [
+                "rv-q3-3-1"
+              ],
+              "rationale": "实时同口径估值仍未完全补齐，因此不提升行动状态。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "source_quality",
+              "score": 4.1,
+              "weight": 1,
+              "evidence_ids": [
+                "S20"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s20"
+              ],
+              "rationale": "主要证据来自公司 IR、SEC、官方新闻稿或高可靠来源。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "kill_tests",
+              "score": 3.3,
+              "weight": 1,
+              "evidence_ids": [
+                "S20"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s20"
+              ],
+              "rationale": "已绑定客户集中、项目延期、毛利和估值反证。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "quarterly_metrics",
+              "score": 3.8,
+              "weight": 1,
+              "evidence_ids": [
+                "S20"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s20"
+              ],
+              "rationale": "下一季财报可跟踪收入、订单、毛利、backlog 和产品采用。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "operating_leverage",
+              "score": 3.6,
+              "weight": 1,
+              "evidence_ids": [
+                "S20"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s20"
+              ],
+              "rationale": "收入高速增长或订单转化可产生经营杠杆，但估值反向也较快。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        }
+      },
+      "thesis_kill_tests": [
+        {
+          "test": "HBM 客户资格、foundry 利用率、消费电子拖累或内存周期反转。",
+          "evidence_needed": "HBM4E 样品/客户进度、Memory ASP、foundry 利用率和 AI 产品占比。",
+          "downgrade_action": "不满足则维持 watch_only 或降级 no_action",
+          "source_plan": [
+            "S20"
+          ]
+        }
+      ],
+      "prediction_review": {
+        "initial_claim": "Q1 2026 DS revenue KRW 81.7T、operating profit KRW 53.7T，AI memory、HBM4、SOCAMM2 和先进制程均有官方证据。",
+        "validation_horizon": "2026-09-02",
+        "required_evidence": "HBM4E 样品/客户进度、Memory ASP、foundry 利用率和 AI 产品占比。",
+        "current_status": "watch_only",
+        "review_trigger": "下一轮核心公司财报或 2026-09-02"
+      },
+      "rank": 12
+    },
+    {
+      "ticker": "DELL",
+      "name": "Dell Technologies",
+      "target_class": "public_equity_observation",
+      "action_state": "watch_only",
+      "thesis_node": "AI server 系统集成/backlog",
+      "rationale": "Q1 FY2027 booked $24.4B AI orders、recognized $16.1B AI server revenue，并把 FY27 AI server revenue 预期提高到 $60B。",
+      "downgrade_risk": "AI server 毛利低、backlog 取消/重排、内存/GPU 供应或现金流质量转弱。",
+      "next_verification_data": "AI server backlog、ISG margin、现金流、订单取消率和供应链约束。",
+      "payoff_odds": "需求证据极强，但系统集成利润率和现金流决定能否捕获价值。",
+      "win_probability": "54%",
+      "strength": "中",
+      "score": {
+        "action_state": "watch_only",
+        "total_score": 3.27,
+        "opportunity_fit": 3.27,
+        "thesis_confidence": 4.3,
+        "payoff_convexity": 3.8,
+        "score_components": {
+          "chokepoint_strength": 3.2,
+          "future_space": 4.5,
+          "valuation_odds": 2.8,
+          "evidence_quality": 4.3,
+          "disconfirming_risk_control": 3.1,
+          "monitorability": 4.2,
+          "payoff_convexity": 3.8
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 3.2,
+          "mispricing": 2.8,
+          "earnings_elasticity": 4,
+          "risk_control": 3.1
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "scarce_node_control",
+              "score": 3.2,
+              "weight": 1,
+              "evidence_ids": [
+                "S17"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s17"
+              ],
+              "rationale": "对应 AI 工厂供应链卡点的稀缺性和价值捕获能力。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "demand_flow",
+              "score": 4.5,
+              "weight": 1,
+              "evidence_ids": [
+                "S17"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s17"
+              ],
+              "rationale": "官方收入、订单或产品线证据支持 AI 工厂需求流入。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "mispricing_check",
+              "score": 2.8,
+              "weight": 1,
+              "evidence_ids": [
+                "S13"
+              ],
+              "review_ids": [
+                "rv-q3-3-1"
+              ],
+              "rationale": "实时同口径估值仍未完全补齐，因此不提升行动状态。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "source_quality",
+              "score": 4.3,
+              "weight": 1,
+              "evidence_ids": [
+                "S17"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s17"
+              ],
+              "rationale": "主要证据来自公司 IR、SEC、官方新闻稿或高可靠来源。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "kill_tests",
+              "score": 3.1,
+              "weight": 1,
+              "evidence_ids": [
+                "S17"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s17"
+              ],
+              "rationale": "已绑定客户集中、项目延期、毛利和估值反证。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "quarterly_metrics",
+              "score": 4.2,
+              "weight": 1,
+              "evidence_ids": [
+                "S17"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s17"
+              ],
+              "rationale": "下一季财报可跟踪收入、订单、毛利、backlog 和产品采用。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "operating_leverage",
+              "score": 3.8,
+              "weight": 1,
+              "evidence_ids": [
+                "S17"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s17"
+              ],
+              "rationale": "收入高速增长或订单转化可产生经营杠杆，但估值反向也较快。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        }
+      },
+      "thesis_kill_tests": [
+        {
+          "test": "AI server 毛利低、backlog 取消/重排、内存/GPU 供应或现金流质量转弱。",
+          "evidence_needed": "AI server backlog、ISG margin、现金流、订单取消率和供应链约束。",
+          "downgrade_action": "不满足则维持 watch_only 或降级 no_action",
+          "source_plan": [
+            "S17"
+          ]
+        }
+      ],
+      "prediction_review": {
+        "initial_claim": "Q1 FY2027 booked $24.4B AI orders、recognized $16.1B AI server revenue，并把 FY27 AI server revenue 预期提高到 $60B。",
+        "validation_horizon": "2026-09-02",
+        "required_evidence": "AI server backlog、ISG margin、现金流、订单取消率和供应链约束。",
+        "current_status": "watch_only",
+        "review_trigger": "下一轮核心公司财报或 2026-09-02"
+      },
+      "rank": 13
+    },
+    {
+      "ticker": "AMD",
+      "name": "Advanced Micro Devices",
+      "target_class": "public_equity_observation",
+      "action_state": "no_action",
+      "thesis_node": "替代 GPU/CPU 算力路线",
+      "rationale": "AI 基础设施需求强，但相对 NVIDIA/Broadcom/TSMC 的稀缺性证据不足。",
+      "downgrade_risk": "MI/EPYC 增速无法持续；客户采用低于预期。",
+      "next_verification_data": "下一季 Data Center revenue、Instinct GPU shipments、主要客户 deployment。",
+      "payoff_odds": "替代路线观察，不满足稀缺优先门槛。",
+      "win_probability": "48%",
+      "strength": "低中",
+      "score": {
+        "action_state": "no_action",
+        "total_score": 2.95,
+        "opportunity_fit": 2.95,
+        "thesis_confidence": 3.2,
+        "payoff_convexity": 3.8,
+        "score_components": {
+          "chokepoint_strength": 2.7,
+          "future_space": 3.8,
+          "valuation_odds": 2.5,
+          "evidence_quality": 3.4,
+          "disconfirming_risk_control": 2.9,
+          "monitorability": 3.4,
+          "payoff_convexity": 3.8
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 2.7,
+          "mispricing": 2.5,
+          "earnings_elasticity": 3.8,
+          "risk_control": 2.9
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "scarce_node_control",
+              "score": 2.7,
+              "weight": 1,
+              "evidence_ids": [
+                "S1",
+                "S8"
+              ],
+              "review_ids": [
+                "rv-q2-1-1",
+                "rv-q2-1-2"
+              ],
+              "rationale": "对应 Q2 卡点具备稀缺或系统控制力。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "demand_flow",
+              "score": 3.8,
+              "weight": 1,
+              "evidence_ids": [
+                "S1",
+                "S8"
+              ],
+              "review_ids": [
+                "rv-q2-1-1",
+                "rv-q2-1-2"
+              ],
+              "rationale": "Q1 需求证据能流向该目标的收入或订单。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "mispricing_check",
+              "score": 2.5,
+              "weight": 1,
+              "evidence_ids": [
+                "S13"
+              ],
+              "review_ids": [
+                "rv-q3-3-1"
+              ],
+              "rationale": "实时同口径估值未完全复核，赔率分保守处理。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "source_quality",
+              "score": 3.4,
+              "weight": 1,
+              "evidence_ids": [
+                "S1",
+                "S8"
+              ],
+              "review_ids": [
+                "rv-q2-1-1",
+                "rv-q2-1-2"
+              ],
+              "rationale": "主要证据来自公司 IR、SEC 或 IEA 等高可靠来源。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "kill_tests",
+              "score": 2.9,
+              "weight": 1,
+              "evidence_ids": [
+                "S1",
+                "S8"
+              ],
+              "review_ids": [
+                "rv-q2-1-1",
+                "rv-q2-1-2"
+              ],
+              "rationale": "已绑定收入、订单、毛利率、capex 或并网等降级触发器。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "quarterly_metrics",
+              "score": 3.4,
+              "weight": 1,
+              "evidence_ids": [
+                "S1",
+                "S8"
+              ],
+              "review_ids": [
+                "rv-q2-1-1",
+                "rv-q2-1-2"
+              ],
+              "rationale": "下一季财报可直接跟踪关键指标。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "operating_leverage",
+              "score": 3.8,
+              "weight": 1,
+              "evidence_ids": [
+                "S1",
+                "S8"
+              ],
+              "review_ids": [
+                "rv-q2-1-1",
+                "rv-q2-1-2"
+              ],
+              "rationale": "若卡点继续紧缺，收入和利润率有经营杠杆；若供给反转则回撤也快。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        }
+      },
+      "thesis_kill_tests": [
+        {
+          "test": "MI/EPYC 增速无法持续；客户采用低于预期。",
+          "evidence_needed": "下一季 Data Center revenue、Instinct GPU shipments、主要客户 deployment。",
+          "downgrade_action": "若触发则维持 watch_only 或降级 no_action",
+          "source_plan": [
+            "S1",
+            "S8"
+          ]
+        }
+      ],
+      "prediction_review": {
+        "initial_claim": "AI 基础设施需求强，但相对 NVIDIA/Broadcom/TSMC 的稀缺性证据不足。",
+        "validation_horizon": "2026-09-02",
+        "required_evidence": "下一季 Data Center revenue、Instinct GPU shipments、主要客户 deployment。",
+        "current_status": "no_action",
+        "review_trigger": "下一轮核心公司财报或 2026-09-02"
+      },
+      "rank": 14
+    },
+    {
+      "ticker": "ORCL",
+      "name": "Oracle",
+      "target_class": "public_equity_observation",
+      "action_state": "no_action",
+      "thesis_node": "客户预付型 AI cloud capacity",
+      "rationale": "RPO 巨大但设备资金、客户预付、自供 GPU 和容量管理风险使稀缺性不如上游卡点。",
+      "downgrade_risk": "客户预付款或合同质量下降；GPU sourcing 或 datacenter capacity 管理出问题。",
+      "next_verification_data": "Q4 FY26 RPO、capex funding、OCI margin、客户集中与合同取消。",
+      "payoff_odds": "需求强但资本/执行风险更像运营商，不作为本轮优先机会。",
+      "win_probability": "49%",
+      "strength": "低中",
+      "score": {
+        "action_state": "no_action",
+        "total_score": 2.82,
+        "opportunity_fit": 2.82,
+        "thesis_confidence": 3.3,
+        "payoff_convexity": 3.5,
+        "score_components": {
+          "chokepoint_strength": 2.8,
+          "future_space": 4,
+          "valuation_odds": 2.2,
+          "evidence_quality": 3.8,
+          "disconfirming_risk_control": 2.6,
+          "monitorability": 3.5,
+          "payoff_convexity": 3.5
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 2.8,
+          "mispricing": 2.2,
+          "earnings_elasticity": 3.6,
+          "risk_control": 2.6
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "scarce_node_control",
+              "score": 2.8,
+              "weight": 1,
+              "evidence_ids": [
+                "S6"
+              ],
+              "review_ids": [
+                "rv-q1-1-1",
+                "rv-q3-1-1"
+              ],
+              "rationale": "对应 Q2 卡点具备稀缺或系统控制力。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "demand_flow",
+              "score": 4,
+              "weight": 1,
+              "evidence_ids": [
+                "S6"
+              ],
+              "review_ids": [
+                "rv-q1-1-1",
+                "rv-q3-1-1"
+              ],
+              "rationale": "Q1 需求证据能流向该目标的收入或订单。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "mispricing_check",
+              "score": 2.2,
+              "weight": 1,
+              "evidence_ids": [
+                "S13"
+              ],
+              "review_ids": [
+                "rv-q3-3-1"
+              ],
+              "rationale": "实时同口径估值未完全复核，赔率分保守处理。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "source_quality",
+              "score": 3.8,
+              "weight": 1,
+              "evidence_ids": [
+                "S6"
+              ],
+              "review_ids": [
+                "rv-q1-1-1",
+                "rv-q3-1-1"
+              ],
+              "rationale": "主要证据来自公司 IR、SEC 或 IEA 等高可靠来源。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "kill_tests",
+              "score": 2.6,
+              "weight": 1,
+              "evidence_ids": [
+                "S6"
+              ],
+              "review_ids": [
+                "rv-q1-1-1",
+                "rv-q3-1-1"
+              ],
+              "rationale": "已绑定收入、订单、毛利率、capex 或并网等降级触发器。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "quarterly_metrics",
+              "score": 3.5,
+              "weight": 1,
+              "evidence_ids": [
+                "S6"
+              ],
+              "review_ids": [
+                "rv-q1-1-1",
+                "rv-q3-1-1"
+              ],
+              "rationale": "下一季财报可直接跟踪关键指标。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "operating_leverage",
+              "score": 3.5,
+              "weight": 1,
+              "evidence_ids": [
+                "S6"
+              ],
+              "review_ids": [
+                "rv-q1-1-1",
+                "rv-q3-1-1"
+              ],
+              "rationale": "若卡点继续紧缺，收入和利润率有经营杠杆；若供给反转则回撤也快。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        }
+      },
+      "thesis_kill_tests": [
+        {
+          "test": "客户预付款或合同质量下降；GPU sourcing 或 datacenter capacity 管理出问题。",
+          "evidence_needed": "Q4 FY26 RPO、capex funding、OCI margin、客户集中与合同取消。",
+          "downgrade_action": "若触发则维持 watch_only 或降级 no_action",
+          "source_plan": [
+            "S6"
+          ]
+        }
+      ],
+      "prediction_review": {
+        "initial_claim": "RPO 巨大但设备资金、客户预付、自供 GPU 和容量管理风险使稀缺性不如上游卡点。",
+        "validation_horizon": "2026-09-02",
+        "required_evidence": "Q4 FY26 RPO、capex funding、OCI margin、客户集中与合同取消。",
+        "current_status": "no_action",
+        "review_trigger": "下一轮核心公司财报或 2026-09-02"
+      },
+      "rank": 15
+    },
+    {
+      "ticker": "SMCI",
+      "name": "Super Micro Computer",
+      "target_class": "public_equity_observation",
+      "action_state": "no_action",
+      "thesis_node": "AI server 组装/交付",
+      "rationale": "Q3 FY2026 revenue $10.2B 同比增长，但环比从 $12.7B 回落，服务器组装价值捕获、执行和合规风险更高。",
+      "downgrade_risk": "订单延期、毛利承压、合规/出口风险、客户 site-readiness 延误。",
+      "next_verification_data": "Q4 revenue guide、gross margin、客户 site-readiness、审计/合规和现金转换。",
+      "payoff_odds": "AI server 暴露直接但风险控制不足，暂不进入 watch_only 以上。",
+      "win_probability": "45%",
+      "strength": "低中",
+      "score": {
+        "action_state": "no_action",
+        "total_score": 2.75,
+        "opportunity_fit": 2.75,
+        "thesis_confidence": 3.5,
+        "payoff_convexity": 3.7,
+        "score_components": {
+          "chokepoint_strength": 2.6,
+          "future_space": 3.8,
+          "valuation_odds": 2.3,
+          "evidence_quality": 3.5,
+          "disconfirming_risk_control": 2.4,
+          "monitorability": 3.4,
+          "payoff_convexity": 3.7
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 2.6,
+          "mispricing": 2.3,
+          "earnings_elasticity": 3.7,
+          "risk_control": 2.4
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "scarce_node_control",
+              "score": 2.6,
+              "weight": 1,
+              "evidence_ids": [
+                "S21"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s21"
+              ],
+              "rationale": "对应 AI 工厂供应链卡点的稀缺性和价值捕获能力。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "demand_flow",
+              "score": 3.8,
+              "weight": 1,
+              "evidence_ids": [
+                "S21"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s21"
+              ],
+              "rationale": "官方收入、订单或产品线证据支持 AI 工厂需求流入。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "mispricing_check",
+              "score": 2.3,
+              "weight": 1,
+              "evidence_ids": [
+                "S13"
+              ],
+              "review_ids": [
+                "rv-q3-3-1"
+              ],
+              "rationale": "实时同口径估值仍未完全补齐，因此不提升行动状态。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "source_quality",
+              "score": 3.5,
+              "weight": 1,
+              "evidence_ids": [
+                "S21"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s21"
+              ],
+              "rationale": "主要证据来自公司 IR、SEC、官方新闻稿或高可靠来源。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "kill_tests",
+              "score": 2.4,
+              "weight": 1,
+              "evidence_ids": [
+                "S21"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s21"
+              ],
+              "rationale": "已绑定客户集中、项目延期、毛利和估值反证。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "quarterly_metrics",
+              "score": 3.4,
+              "weight": 1,
+              "evidence_ids": [
+                "S21"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s21"
+              ],
+              "rationale": "下一季财报可跟踪收入、订单、毛利、backlog 和产品采用。",
+              "status": "verified_with_caveats"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "operating_leverage",
+              "score": 3.7,
+              "weight": 1,
+              "evidence_ids": [
+                "S21"
+              ],
+              "review_ids": [
+                "rv-q4-1-1-s21"
+              ],
+              "rationale": "收入高速增长或订单转化可产生经营杠杆，但估值反向也较快。",
+              "status": "verified_with_caveats"
+            }
+          ]
+        }
+      },
+      "thesis_kill_tests": [
+        {
+          "test": "订单延期、毛利承压、合规/出口风险、客户 site-readiness 延误。",
+          "evidence_needed": "Q4 revenue guide、gross margin、客户 site-readiness、审计/合规和现金转换。",
+          "downgrade_action": "不满足则维持 watch_only 或降级 no_action",
+          "source_plan": [
+            "S21"
+          ]
+        }
+      ],
+      "prediction_review": {
+        "initial_claim": "Q3 FY2026 revenue $10.2B 同比增长，但环比从 $12.7B 回落，服务器组装价值捕获、执行和合规风险更高。",
+        "validation_horizon": "2026-09-02",
+        "required_evidence": "Q4 revenue guide、gross margin、客户 site-readiness、审计/合规和现金转换。",
+        "current_status": "no_action",
+        "review_trigger": "下一轮核心公司财报或 2026-09-02"
+      },
+      "rank": 16
+    }
+  ],
+  "notes": [
+    "实时模式：不附 ex-post 标签。",
+    "DeepSeek 仅用于材料包叶子草稿；最终验证和排序由 GPT 完成。",
+    "2026-06-02 target universe expanded to include MRVL/ALAB/CRDO/DELL/ANET/SK hynix/Samsung/SMCI; label fields remain empty in live mode."
+  ]
+}

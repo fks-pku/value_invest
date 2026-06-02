@@ -1,0 +1,3087 @@
+{
+  "as_of_date": "2026-03-02",
+  "label_status": "unattached",
+  "targets": [
+    {
+      "ticker": "000660.KS",
+      "name": "SK hynix",
+      "market": "Korea",
+      "thesis_node": "HBM 和高端 AI memory",
+      "action_state": "actionable_long",
+      "rationale": "HBM3E/HBM4 供应能力和 49% FY25 operating margin 形成强稀缺和利润桥；价格 label 暂未验证但不能排除核心标的。",
+      "next_verification_data": "HBM4 ramp、客户资格、ASP、capex",
+      "downgrade_risk": "HBM 供给过剩或 ASP 反转",
+      "source_ids": [
+        "SRC-SKHYNIX-FY25"
+      ],
+      "score": {
+        "total_score": 4.111,
+        "component_scores": {
+          "chokepoint_strength": 4.7,
+          "future_space": 4.55,
+          "valuation_odds": 3.35,
+          "evidence_quality": 4.35,
+          "disconfirming_risk_control": 3.65,
+          "monitorability": 3.55,
+          "payoff_convexity": 4.1
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 4.7,
+          "mispricing": 3.35,
+          "earnings_elasticity": 4.325,
+          "risk_control": 3.65
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength_primary_driver",
+              "score": 4.7,
+              "weight": 0.26,
+              "evidence_ids": [
+                "SRC-SKHYNIX-FY25"
+              ],
+              "review_ids": [],
+              "rationale": "chokepoint_strength score is based on cutoff-visible evidence for HBM 和高端 AI memory; no price evaluation data was used.",
+              "status": "active_with_kill_tests"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space_primary_driver",
+              "score": 4.55,
+              "weight": 0.18,
+              "evidence_ids": [
+                "SRC-SKHYNIX-FY25"
+              ],
+              "review_ids": [],
+              "rationale": "future_space score is based on cutoff-visible evidence for HBM 和高端 AI memory; no price evaluation data was used.",
+              "status": "active_with_kill_tests"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds_primary_driver",
+              "score": 3.35,
+              "weight": 0.18,
+              "evidence_ids": [
+                "SRC-SKHYNIX-FY25"
+              ],
+              "review_ids": [],
+              "rationale": "valuation_odds score is based on cutoff-visible evidence for HBM 和高端 AI memory; no price evaluation data was used.",
+              "status": "active_with_kill_tests"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality_primary_driver",
+              "score": 4.35,
+              "weight": 0.14,
+              "evidence_ids": [
+                "SRC-SKHYNIX-FY25"
+              ],
+              "review_ids": [],
+              "rationale": "evidence_quality score is based on cutoff-visible evidence for HBM 和高端 AI memory; no price evaluation data was used.",
+              "status": "active_with_kill_tests"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control_primary_driver",
+              "score": 3.65,
+              "weight": 0.1,
+              "evidence_ids": [
+                "SRC-SKHYNIX-FY25"
+              ],
+              "review_ids": [],
+              "rationale": "disconfirming_risk_control score is based on cutoff-visible evidence for HBM 和高端 AI memory; no price evaluation data was used.",
+              "status": "active_with_kill_tests"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability_primary_driver",
+              "score": 3.55,
+              "weight": 0.05,
+              "evidence_ids": [
+                "SRC-SKHYNIX-FY25"
+              ],
+              "review_ids": [],
+              "rationale": "monitorability score is based on cutoff-visible evidence for HBM 和高端 AI memory; no price evaluation data was used.",
+              "status": "active_with_kill_tests"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity_primary_driver",
+              "score": 4.1,
+              "weight": 0.09,
+              "evidence_ids": [
+                "SRC-SKHYNIX-FY25"
+              ],
+              "review_ids": [],
+              "rationale": "payoff_convexity score is based on cutoff-visible evidence for HBM 和高端 AI memory; no price evaluation data was used.",
+              "status": "active_with_kill_tests"
+            }
+          ]
+        },
+        "thesis_confidence": 4.24,
+        "payoff_convexity": 4.1,
+        "opportunity_fit": 4.111
+      },
+      "score_subcomponents": {
+        "chokepoint_strength": [
+          {
+            "name": "chokepoint_strength_primary_driver",
+            "score": 4.7,
+            "weight": 0.26,
+            "evidence_ids": [
+              "SRC-SKHYNIX-FY25"
+            ],
+            "review_ids": [],
+            "rationale": "chokepoint_strength score is based on cutoff-visible evidence for HBM 和高端 AI memory; no price evaluation data was used.",
+            "status": "active_with_kill_tests"
+          }
+        ],
+        "future_space": [
+          {
+            "name": "future_space_primary_driver",
+            "score": 4.55,
+            "weight": 0.18,
+            "evidence_ids": [
+              "SRC-SKHYNIX-FY25"
+            ],
+            "review_ids": [],
+            "rationale": "future_space score is based on cutoff-visible evidence for HBM 和高端 AI memory; no price evaluation data was used.",
+            "status": "active_with_kill_tests"
+          }
+        ],
+        "valuation_odds": [
+          {
+            "name": "valuation_odds_primary_driver",
+            "score": 3.35,
+            "weight": 0.18,
+            "evidence_ids": [
+              "SRC-SKHYNIX-FY25"
+            ],
+            "review_ids": [],
+            "rationale": "valuation_odds score is based on cutoff-visible evidence for HBM 和高端 AI memory; no price evaluation data was used.",
+            "status": "active_with_kill_tests"
+          }
+        ],
+        "evidence_quality": [
+          {
+            "name": "evidence_quality_primary_driver",
+            "score": 4.35,
+            "weight": 0.14,
+            "evidence_ids": [
+              "SRC-SKHYNIX-FY25"
+            ],
+            "review_ids": [],
+            "rationale": "evidence_quality score is based on cutoff-visible evidence for HBM 和高端 AI memory; no price evaluation data was used.",
+            "status": "active_with_kill_tests"
+          }
+        ],
+        "disconfirming_risk_control": [
+          {
+            "name": "disconfirming_risk_control_primary_driver",
+            "score": 3.65,
+            "weight": 0.1,
+            "evidence_ids": [
+              "SRC-SKHYNIX-FY25"
+            ],
+            "review_ids": [],
+            "rationale": "disconfirming_risk_control score is based on cutoff-visible evidence for HBM 和高端 AI memory; no price evaluation data was used.",
+            "status": "active_with_kill_tests"
+          }
+        ],
+        "monitorability": [
+          {
+            "name": "monitorability_primary_driver",
+            "score": 3.55,
+            "weight": 0.05,
+            "evidence_ids": [
+              "SRC-SKHYNIX-FY25"
+            ],
+            "review_ids": [],
+            "rationale": "monitorability score is based on cutoff-visible evidence for HBM 和高端 AI memory; no price evaluation data was used.",
+            "status": "active_with_kill_tests"
+          }
+        ],
+        "payoff_convexity": [
+          {
+            "name": "payoff_convexity_primary_driver",
+            "score": 4.1,
+            "weight": 0.09,
+            "evidence_ids": [
+              "SRC-SKHYNIX-FY25"
+            ],
+            "review_ids": [],
+            "rationale": "payoff_convexity score is based on cutoff-visible evidence for HBM 和高端 AI memory; no price evaluation data was used.",
+            "status": "active_with_kill_tests"
+          }
+        ]
+      },
+      "thesis_kill_tests": [
+        {
+          "test": "订单/利润桥断裂",
+          "evidence_needed": "HBM4 ramp、客户资格、ASP、capex",
+          "downgrade_action": "downgrade to watch_only or no_action",
+          "source_plan": "Next company filing, earnings call and order/margin disclosure"
+        },
+        {
+          "test": "客户 capex 或估值反证",
+          "evidence_needed": "customer capex guidance and valuation-implied growth",
+          "downgrade_action": "cap score and remove actionable_long",
+          "source_plan": "Hyperscaler capex updates and valuation screen"
+        }
+      ],
+      "odds_model": {
+        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
+        "base_path": "HBM4 ramp、客户资格、ASP、capex",
+        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
+        "bear_path": "HBM 供给过剩或 ASP 反转"
+      },
+      "prediction_review": {
+        "initial_claim": "HBM3E/HBM4 供应能力和 49% FY25 operating margin 形成强稀缺和利润桥；价格 label 暂未验证但不能排除核心标的。",
+        "validation_horizon": "2026-06-02",
+        "required_evidence": "HBM4 ramp、客户资格、ASP、capex",
+        "current_status": "actionable_long",
+        "review_trigger": "HBM 供给过剩或 ASP 反转"
+      },
+      "rank": 1
+    },
+    {
+      "ticker": "VRT",
+      "name": "Vertiv",
+      "market": "USA",
+      "thesis_node": "AI 工厂电力和液冷",
+      "action_state": "actionable_long",
+      "rationale": "订单、backlog 和物理瓶颈同时成立；若估值不过度，最接近截面下可行动机会。",
+      "next_verification_data": "backlog 转收入、液冷毛利、客户 capex",
+      "downgrade_risk": "backlog 毛利低于预期或客户 capex 下修",
+      "source_ids": [
+        "SRC-VRT-Q4-2025"
+      ],
+      "score": {
+        "total_score": 4.06,
+        "component_scores": {
+          "chokepoint_strength": 4.45,
+          "future_space": 4.45,
+          "valuation_odds": 3.45,
+          "evidence_quality": 4.45,
+          "disconfirming_risk_control": 3.85,
+          "monitorability": 4.2,
+          "payoff_convexity": 4.05
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 4.45,
+          "mispricing": 3.45,
+          "earnings_elasticity": 4.25,
+          "risk_control": 3.85
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength_primary_driver",
+              "score": 4.45,
+              "weight": 0.26,
+              "evidence_ids": [
+                "SRC-VRT-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "chokepoint_strength score is based on cutoff-visible evidence for AI 工厂电力和液冷; no price evaluation data was used.",
+              "status": "active_with_kill_tests"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space_primary_driver",
+              "score": 4.45,
+              "weight": 0.18,
+              "evidence_ids": [
+                "SRC-VRT-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "future_space score is based on cutoff-visible evidence for AI 工厂电力和液冷; no price evaluation data was used.",
+              "status": "active_with_kill_tests"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds_primary_driver",
+              "score": 3.45,
+              "weight": 0.18,
+              "evidence_ids": [
+                "SRC-VRT-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "valuation_odds score is based on cutoff-visible evidence for AI 工厂电力和液冷; no price evaluation data was used.",
+              "status": "active_with_kill_tests"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality_primary_driver",
+              "score": 4.45,
+              "weight": 0.14,
+              "evidence_ids": [
+                "SRC-VRT-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "evidence_quality score is based on cutoff-visible evidence for AI 工厂电力和液冷; no price evaluation data was used.",
+              "status": "active_with_kill_tests"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control_primary_driver",
+              "score": 3.85,
+              "weight": 0.1,
+              "evidence_ids": [
+                "SRC-VRT-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "disconfirming_risk_control score is based on cutoff-visible evidence for AI 工厂电力和液冷; no price evaluation data was used.",
+              "status": "active_with_kill_tests"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability_primary_driver",
+              "score": 4.2,
+              "weight": 0.05,
+              "evidence_ids": [
+                "SRC-VRT-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "monitorability score is based on cutoff-visible evidence for AI 工厂电力和液冷; no price evaluation data was used.",
+              "status": "active_with_kill_tests"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity_primary_driver",
+              "score": 4.05,
+              "weight": 0.09,
+              "evidence_ids": [
+                "SRC-VRT-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "payoff_convexity score is based on cutoff-visible evidence for AI 工厂电力和液冷; no price evaluation data was used.",
+              "status": "active_with_kill_tests"
+            }
+          ]
+        },
+        "thesis_confidence": 4.248,
+        "payoff_convexity": 4.05,
+        "opportunity_fit": 4.06
+      },
+      "score_subcomponents": {
+        "chokepoint_strength": [
+          {
+            "name": "chokepoint_strength_primary_driver",
+            "score": 4.45,
+            "weight": 0.26,
+            "evidence_ids": [
+              "SRC-VRT-Q4-2025"
+            ],
+            "review_ids": [],
+            "rationale": "chokepoint_strength score is based on cutoff-visible evidence for AI 工厂电力和液冷; no price evaluation data was used.",
+            "status": "active_with_kill_tests"
+          }
+        ],
+        "future_space": [
+          {
+            "name": "future_space_primary_driver",
+            "score": 4.45,
+            "weight": 0.18,
+            "evidence_ids": [
+              "SRC-VRT-Q4-2025"
+            ],
+            "review_ids": [],
+            "rationale": "future_space score is based on cutoff-visible evidence for AI 工厂电力和液冷; no price evaluation data was used.",
+            "status": "active_with_kill_tests"
+          }
+        ],
+        "valuation_odds": [
+          {
+            "name": "valuation_odds_primary_driver",
+            "score": 3.45,
+            "weight": 0.18,
+            "evidence_ids": [
+              "SRC-VRT-Q4-2025"
+            ],
+            "review_ids": [],
+            "rationale": "valuation_odds score is based on cutoff-visible evidence for AI 工厂电力和液冷; no price evaluation data was used.",
+            "status": "active_with_kill_tests"
+          }
+        ],
+        "evidence_quality": [
+          {
+            "name": "evidence_quality_primary_driver",
+            "score": 4.45,
+            "weight": 0.14,
+            "evidence_ids": [
+              "SRC-VRT-Q4-2025"
+            ],
+            "review_ids": [],
+            "rationale": "evidence_quality score is based on cutoff-visible evidence for AI 工厂电力和液冷; no price evaluation data was used.",
+            "status": "active_with_kill_tests"
+          }
+        ],
+        "disconfirming_risk_control": [
+          {
+            "name": "disconfirming_risk_control_primary_driver",
+            "score": 3.85,
+            "weight": 0.1,
+            "evidence_ids": [
+              "SRC-VRT-Q4-2025"
+            ],
+            "review_ids": [],
+            "rationale": "disconfirming_risk_control score is based on cutoff-visible evidence for AI 工厂电力和液冷; no price evaluation data was used.",
+            "status": "active_with_kill_tests"
+          }
+        ],
+        "monitorability": [
+          {
+            "name": "monitorability_primary_driver",
+            "score": 4.2,
+            "weight": 0.05,
+            "evidence_ids": [
+              "SRC-VRT-Q4-2025"
+            ],
+            "review_ids": [],
+            "rationale": "monitorability score is based on cutoff-visible evidence for AI 工厂电力和液冷; no price evaluation data was used.",
+            "status": "active_with_kill_tests"
+          }
+        ],
+        "payoff_convexity": [
+          {
+            "name": "payoff_convexity_primary_driver",
+            "score": 4.05,
+            "weight": 0.09,
+            "evidence_ids": [
+              "SRC-VRT-Q4-2025"
+            ],
+            "review_ids": [],
+            "rationale": "payoff_convexity score is based on cutoff-visible evidence for AI 工厂电力和液冷; no price evaluation data was used.",
+            "status": "active_with_kill_tests"
+          }
+        ]
+      },
+      "thesis_kill_tests": [
+        {
+          "test": "订单/利润桥断裂",
+          "evidence_needed": "backlog 转收入、液冷毛利、客户 capex",
+          "downgrade_action": "downgrade to watch_only or no_action",
+          "source_plan": "Next company filing, earnings call and order/margin disclosure"
+        },
+        {
+          "test": "客户 capex 或估值反证",
+          "evidence_needed": "customer capex guidance and valuation-implied growth",
+          "downgrade_action": "cap score and remove actionable_long",
+          "source_plan": "Hyperscaler capex updates and valuation screen"
+        }
+      ],
+      "odds_model": {
+        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
+        "base_path": "backlog 转收入、液冷毛利、客户 capex",
+        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
+        "bear_path": "backlog 毛利低于预期或客户 capex 下修"
+      },
+      "prediction_review": {
+        "initial_claim": "订单、backlog 和物理瓶颈同时成立；若估值不过度，最接近截面下可行动机会。",
+        "validation_horizon": "2026-06-02",
+        "required_evidence": "backlog 转收入、液冷毛利、客户 capex",
+        "current_status": "actionable_long",
+        "review_trigger": "backlog 毛利低于预期或客户 capex 下修"
+      },
+      "rank": 2
+    },
+    {
+      "ticker": "NVDA",
+      "name": "NVIDIA",
+      "market": "USA",
+      "thesis_node": "AI 工厂平台控制",
+      "action_state": "watch_only",
+      "rationale": "平台稀缺性最强，但市场隐含预期也高，未充分定价证据不足。",
+      "next_verification_data": "Data Center 指引、gross margin、客户 capex、隐含增长",
+      "downgrade_risk": "capex 放缓或毛利无法支撑估值",
+      "source_ids": [
+        "SRC-NVDA-FY26-Q4"
+      ],
+      "score": {
+        "total_score": 3.867,
+        "component_scores": {
+          "chokepoint_strength": 4.95,
+          "future_space": 4.9,
+          "valuation_odds": 2.25,
+          "evidence_quality": 4.85,
+          "disconfirming_risk_control": 3.4,
+          "monitorability": 4.8,
+          "payoff_convexity": 3.6
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 4.95,
+          "mispricing": 2.25,
+          "earnings_elasticity": 4.25,
+          "risk_control": 3.4
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength_primary_driver",
+              "score": 4.95,
+              "weight": 0.26,
+              "evidence_ids": [
+                "SRC-NVDA-FY26-Q4"
+              ],
+              "review_ids": [],
+              "rationale": "chokepoint_strength score is based on cutoff-visible evidence for AI 工厂平台控制; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space_primary_driver",
+              "score": 4.9,
+              "weight": 0.18,
+              "evidence_ids": [
+                "SRC-NVDA-FY26-Q4"
+              ],
+              "review_ids": [],
+              "rationale": "future_space score is based on cutoff-visible evidence for AI 工厂平台控制; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds_primary_driver",
+              "score": 2.25,
+              "weight": 0.18,
+              "evidence_ids": [
+                "SRC-NVDA-FY26-Q4"
+              ],
+              "review_ids": [],
+              "rationale": "valuation_odds score is based on cutoff-visible evidence for AI 工厂平台控制; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality_primary_driver",
+              "score": 4.85,
+              "weight": 0.14,
+              "evidence_ids": [
+                "SRC-NVDA-FY26-Q4"
+              ],
+              "review_ids": [],
+              "rationale": "evidence_quality score is based on cutoff-visible evidence for AI 工厂平台控制; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control_primary_driver",
+              "score": 3.4,
+              "weight": 0.1,
+              "evidence_ids": [
+                "SRC-NVDA-FY26-Q4"
+              ],
+              "review_ids": [],
+              "rationale": "disconfirming_risk_control score is based on cutoff-visible evidence for AI 工厂平台控制; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability_primary_driver",
+              "score": 4.8,
+              "weight": 0.05,
+              "evidence_ids": [
+                "SRC-NVDA-FY26-Q4"
+              ],
+              "review_ids": [],
+              "rationale": "monitorability score is based on cutoff-visible evidence for AI 工厂平台控制; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity_primary_driver",
+              "score": 3.6,
+              "weight": 0.09,
+              "evidence_ids": [
+                "SRC-NVDA-FY26-Q4"
+              ],
+              "review_ids": [],
+              "rationale": "payoff_convexity score is based on cutoff-visible evidence for AI 工厂平台控制; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ]
+        },
+        "thesis_confidence": 4.408,
+        "payoff_convexity": 3.6,
+        "opportunity_fit": 3.867
+      },
+      "score_subcomponents": {
+        "chokepoint_strength": [
+          {
+            "name": "chokepoint_strength_primary_driver",
+            "score": 4.95,
+            "weight": 0.26,
+            "evidence_ids": [
+              "SRC-NVDA-FY26-Q4"
+            ],
+            "review_ids": [],
+            "rationale": "chokepoint_strength score is based on cutoff-visible evidence for AI 工厂平台控制; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "future_space": [
+          {
+            "name": "future_space_primary_driver",
+            "score": 4.9,
+            "weight": 0.18,
+            "evidence_ids": [
+              "SRC-NVDA-FY26-Q4"
+            ],
+            "review_ids": [],
+            "rationale": "future_space score is based on cutoff-visible evidence for AI 工厂平台控制; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "valuation_odds": [
+          {
+            "name": "valuation_odds_primary_driver",
+            "score": 2.25,
+            "weight": 0.18,
+            "evidence_ids": [
+              "SRC-NVDA-FY26-Q4"
+            ],
+            "review_ids": [],
+            "rationale": "valuation_odds score is based on cutoff-visible evidence for AI 工厂平台控制; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "evidence_quality": [
+          {
+            "name": "evidence_quality_primary_driver",
+            "score": 4.85,
+            "weight": 0.14,
+            "evidence_ids": [
+              "SRC-NVDA-FY26-Q4"
+            ],
+            "review_ids": [],
+            "rationale": "evidence_quality score is based on cutoff-visible evidence for AI 工厂平台控制; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "disconfirming_risk_control": [
+          {
+            "name": "disconfirming_risk_control_primary_driver",
+            "score": 3.4,
+            "weight": 0.1,
+            "evidence_ids": [
+              "SRC-NVDA-FY26-Q4"
+            ],
+            "review_ids": [],
+            "rationale": "disconfirming_risk_control score is based on cutoff-visible evidence for AI 工厂平台控制; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "monitorability": [
+          {
+            "name": "monitorability_primary_driver",
+            "score": 4.8,
+            "weight": 0.05,
+            "evidence_ids": [
+              "SRC-NVDA-FY26-Q4"
+            ],
+            "review_ids": [],
+            "rationale": "monitorability score is based on cutoff-visible evidence for AI 工厂平台控制; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "payoff_convexity": [
+          {
+            "name": "payoff_convexity_primary_driver",
+            "score": 3.6,
+            "weight": 0.09,
+            "evidence_ids": [
+              "SRC-NVDA-FY26-Q4"
+            ],
+            "review_ids": [],
+            "rationale": "payoff_convexity score is based on cutoff-visible evidence for AI 工厂平台控制; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ]
+      },
+      "thesis_kill_tests": [],
+      "odds_model": {
+        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
+        "base_path": "Data Center 指引、gross margin、客户 capex、隐含增长",
+        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
+        "bear_path": "capex 放缓或毛利无法支撑估值"
+      },
+      "prediction_review": {
+        "initial_claim": "平台稀缺性最强，但市场隐含预期也高，未充分定价证据不足。",
+        "validation_horizon": "2026-06-02",
+        "required_evidence": "Data Center 指引、gross margin、客户 capex、隐含增长",
+        "current_status": "watch_only",
+        "review_trigger": "capex 放缓或毛利无法支撑估值"
+      },
+      "rank": 3
+    },
+    {
+      "ticker": "TSM",
+      "name": "TSMC ADR",
+      "market": "USA/Taiwan",
+      "thesis_node": "先进制程和封装",
+      "action_state": "watch_only",
+      "rationale": "先进制程和封装是 AI 工厂硬瓶颈，财务质量高；但高 capex 和估值已部分反映增长。",
+      "next_verification_data": "advanced packaging、capex、AI/HPC revenue mix",
+      "downgrade_risk": "先进封装供给过快或地缘风险恶化",
+      "source_ids": [
+        "SRC-TSM-Q4-2025"
+      ],
+      "score": {
+        "total_score": 3.841,
+        "component_scores": {
+          "chokepoint_strength": 4.55,
+          "future_space": 4.45,
+          "valuation_odds": 2.95,
+          "evidence_quality": 4.3,
+          "disconfirming_risk_control": 3.7,
+          "monitorability": 3.6,
+          "payoff_convexity": 3.2
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 4.55,
+          "mispricing": 2.95,
+          "earnings_elasticity": 3.825,
+          "risk_control": 3.7
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength_primary_driver",
+              "score": 4.55,
+              "weight": 0.26,
+              "evidence_ids": [
+                "SRC-TSM-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "chokepoint_strength score is based on cutoff-visible evidence for 先进制程和封装; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space_primary_driver",
+              "score": 4.45,
+              "weight": 0.18,
+              "evidence_ids": [
+                "SRC-TSM-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "future_space score is based on cutoff-visible evidence for 先进制程和封装; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds_primary_driver",
+              "score": 2.95,
+              "weight": 0.18,
+              "evidence_ids": [
+                "SRC-TSM-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "valuation_odds score is based on cutoff-visible evidence for 先进制程和封装; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality_primary_driver",
+              "score": 4.3,
+              "weight": 0.14,
+              "evidence_ids": [
+                "SRC-TSM-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "evidence_quality score is based on cutoff-visible evidence for 先进制程和封装; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control_primary_driver",
+              "score": 3.7,
+              "weight": 0.1,
+              "evidence_ids": [
+                "SRC-TSM-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "disconfirming_risk_control score is based on cutoff-visible evidence for 先进制程和封装; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability_primary_driver",
+              "score": 3.6,
+              "weight": 0.05,
+              "evidence_ids": [
+                "SRC-TSM-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "monitorability score is based on cutoff-visible evidence for 先进制程和封装; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity_primary_driver",
+              "score": 3.2,
+              "weight": 0.09,
+              "evidence_ids": [
+                "SRC-TSM-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "payoff_convexity score is based on cutoff-visible evidence for 先进制程和封装; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ]
+        },
+        "thesis_confidence": 4.138,
+        "payoff_convexity": 3.2,
+        "opportunity_fit": 3.841
+      },
+      "score_subcomponents": {
+        "chokepoint_strength": [
+          {
+            "name": "chokepoint_strength_primary_driver",
+            "score": 4.55,
+            "weight": 0.26,
+            "evidence_ids": [
+              "SRC-TSM-Q4-2025"
+            ],
+            "review_ids": [],
+            "rationale": "chokepoint_strength score is based on cutoff-visible evidence for 先进制程和封装; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "future_space": [
+          {
+            "name": "future_space_primary_driver",
+            "score": 4.45,
+            "weight": 0.18,
+            "evidence_ids": [
+              "SRC-TSM-Q4-2025"
+            ],
+            "review_ids": [],
+            "rationale": "future_space score is based on cutoff-visible evidence for 先进制程和封装; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "valuation_odds": [
+          {
+            "name": "valuation_odds_primary_driver",
+            "score": 2.95,
+            "weight": 0.18,
+            "evidence_ids": [
+              "SRC-TSM-Q4-2025"
+            ],
+            "review_ids": [],
+            "rationale": "valuation_odds score is based on cutoff-visible evidence for 先进制程和封装; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "evidence_quality": [
+          {
+            "name": "evidence_quality_primary_driver",
+            "score": 4.3,
+            "weight": 0.14,
+            "evidence_ids": [
+              "SRC-TSM-Q4-2025"
+            ],
+            "review_ids": [],
+            "rationale": "evidence_quality score is based on cutoff-visible evidence for 先进制程和封装; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "disconfirming_risk_control": [
+          {
+            "name": "disconfirming_risk_control_primary_driver",
+            "score": 3.7,
+            "weight": 0.1,
+            "evidence_ids": [
+              "SRC-TSM-Q4-2025"
+            ],
+            "review_ids": [],
+            "rationale": "disconfirming_risk_control score is based on cutoff-visible evidence for 先进制程和封装; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "monitorability": [
+          {
+            "name": "monitorability_primary_driver",
+            "score": 3.6,
+            "weight": 0.05,
+            "evidence_ids": [
+              "SRC-TSM-Q4-2025"
+            ],
+            "review_ids": [],
+            "rationale": "monitorability score is based on cutoff-visible evidence for 先进制程和封装; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "payoff_convexity": [
+          {
+            "name": "payoff_convexity_primary_driver",
+            "score": 3.2,
+            "weight": 0.09,
+            "evidence_ids": [
+              "SRC-TSM-Q4-2025"
+            ],
+            "review_ids": [],
+            "rationale": "payoff_convexity score is based on cutoff-visible evidence for 先进制程和封装; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ]
+      },
+      "thesis_kill_tests": [],
+      "odds_model": {
+        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
+        "base_path": "advanced packaging、capex、AI/HPC revenue mix",
+        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
+        "bear_path": "先进封装供给过快或地缘风险恶化"
+      },
+      "prediction_review": {
+        "initial_claim": "先进制程和封装是 AI 工厂硬瓶颈，财务质量高；但高 capex 和估值已部分反映增长。",
+        "validation_horizon": "2026-06-02",
+        "required_evidence": "advanced packaging、capex、AI/HPC revenue mix",
+        "current_status": "watch_only",
+        "review_trigger": "先进封装供给过快或地缘风险恶化"
+      },
+      "rank": 4
+    },
+    {
+      "ticker": "ALAB",
+      "name": "Astera Labs",
+      "market": "USA",
+      "thesis_node": "机柜级连接芯片",
+      "action_state": "watch_only",
+      "rationale": "rack-scale connectivity 弹性强，收入和毛利证据好，但估值和客户集中压制风险控制。",
+      "next_verification_data": "Scorpio ramp、客户集中、gross margin",
+      "downgrade_risk": "大客户需求放缓或平台替代",
+      "source_ids": [
+        "SRC-ALAB-Q4-2025"
+      ],
+      "score": {
+        "total_score": 3.684,
+        "component_scores": {
+          "chokepoint_strength": 4.25,
+          "future_space": 4.35,
+          "valuation_odds": 2.7,
+          "evidence_quality": 4,
+          "disconfirming_risk_control": 2.85,
+          "monitorability": 3.8,
+          "payoff_convexity": 4.4
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 4.25,
+          "mispricing": 2.7,
+          "earnings_elasticity": 4.375,
+          "risk_control": 2.85
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength_primary_driver",
+              "score": 4.25,
+              "weight": 0.26,
+              "evidence_ids": [
+                "SRC-ALAB-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "chokepoint_strength score is based on cutoff-visible evidence for 机柜级连接芯片; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space_primary_driver",
+              "score": 4.35,
+              "weight": 0.18,
+              "evidence_ids": [
+                "SRC-ALAB-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "future_space score is based on cutoff-visible evidence for 机柜级连接芯片; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds_primary_driver",
+              "score": 2.7,
+              "weight": 0.18,
+              "evidence_ids": [
+                "SRC-ALAB-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "valuation_odds score is based on cutoff-visible evidence for 机柜级连接芯片; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality_primary_driver",
+              "score": 4,
+              "weight": 0.14,
+              "evidence_ids": [
+                "SRC-ALAB-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "evidence_quality score is based on cutoff-visible evidence for 机柜级连接芯片; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control_primary_driver",
+              "score": 2.85,
+              "weight": 0.1,
+              "evidence_ids": [
+                "SRC-ALAB-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "disconfirming_risk_control score is based on cutoff-visible evidence for 机柜级连接芯片; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability_primary_driver",
+              "score": 3.8,
+              "weight": 0.05,
+              "evidence_ids": [
+                "SRC-ALAB-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "monitorability score is based on cutoff-visible evidence for 机柜级连接芯片; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity_primary_driver",
+              "score": 4.4,
+              "weight": 0.09,
+              "evidence_ids": [
+                "SRC-ALAB-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "payoff_convexity score is based on cutoff-visible evidence for 机柜级连接芯片; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ]
+        },
+        "thesis_confidence": 3.815,
+        "payoff_convexity": 4.4,
+        "opportunity_fit": 3.684
+      },
+      "score_subcomponents": {
+        "chokepoint_strength": [
+          {
+            "name": "chokepoint_strength_primary_driver",
+            "score": 4.25,
+            "weight": 0.26,
+            "evidence_ids": [
+              "SRC-ALAB-Q4-2025"
+            ],
+            "review_ids": [],
+            "rationale": "chokepoint_strength score is based on cutoff-visible evidence for 机柜级连接芯片; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "future_space": [
+          {
+            "name": "future_space_primary_driver",
+            "score": 4.35,
+            "weight": 0.18,
+            "evidence_ids": [
+              "SRC-ALAB-Q4-2025"
+            ],
+            "review_ids": [],
+            "rationale": "future_space score is based on cutoff-visible evidence for 机柜级连接芯片; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "valuation_odds": [
+          {
+            "name": "valuation_odds_primary_driver",
+            "score": 2.7,
+            "weight": 0.18,
+            "evidence_ids": [
+              "SRC-ALAB-Q4-2025"
+            ],
+            "review_ids": [],
+            "rationale": "valuation_odds score is based on cutoff-visible evidence for 机柜级连接芯片; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "evidence_quality": [
+          {
+            "name": "evidence_quality_primary_driver",
+            "score": 4,
+            "weight": 0.14,
+            "evidence_ids": [
+              "SRC-ALAB-Q4-2025"
+            ],
+            "review_ids": [],
+            "rationale": "evidence_quality score is based on cutoff-visible evidence for 机柜级连接芯片; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "disconfirming_risk_control": [
+          {
+            "name": "disconfirming_risk_control_primary_driver",
+            "score": 2.85,
+            "weight": 0.1,
+            "evidence_ids": [
+              "SRC-ALAB-Q4-2025"
+            ],
+            "review_ids": [],
+            "rationale": "disconfirming_risk_control score is based on cutoff-visible evidence for 机柜级连接芯片; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "monitorability": [
+          {
+            "name": "monitorability_primary_driver",
+            "score": 3.8,
+            "weight": 0.05,
+            "evidence_ids": [
+              "SRC-ALAB-Q4-2025"
+            ],
+            "review_ids": [],
+            "rationale": "monitorability score is based on cutoff-visible evidence for 机柜级连接芯片; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "payoff_convexity": [
+          {
+            "name": "payoff_convexity_primary_driver",
+            "score": 4.4,
+            "weight": 0.09,
+            "evidence_ids": [
+              "SRC-ALAB-Q4-2025"
+            ],
+            "review_ids": [],
+            "rationale": "payoff_convexity score is based on cutoff-visible evidence for 机柜级连接芯片; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ]
+      },
+      "thesis_kill_tests": [],
+      "odds_model": {
+        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
+        "base_path": "Scorpio ramp、客户集中、gross margin",
+        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
+        "bear_path": "大客户需求放缓或平台替代"
+      },
+      "prediction_review": {
+        "initial_claim": "rack-scale connectivity 弹性强，收入和毛利证据好，但估值和客户集中压制风险控制。",
+        "validation_horizon": "2026-06-02",
+        "required_evidence": "Scorpio ramp、客户集中、gross margin",
+        "current_status": "watch_only",
+        "review_trigger": "大客户需求放缓或平台替代"
+      },
+      "rank": 5
+    },
+    {
+      "ticker": "CRDO",
+      "name": "Credo",
+      "market": "USA",
+      "thesis_node": "AEC/光互联/高速连接",
+      "action_state": "watch_only",
+      "rationale": "收入高弹性，连接需求真实；但高波动和客户集中使行动状态封顶。",
+      "next_verification_data": "AEC/optical orders、customer concentration、gross margin",
+      "downgrade_risk": "客户订单延迟或价格压力",
+      "source_ids": [
+        "SRC-CRDO-FY26-Q3"
+      ],
+      "score": {
+        "total_score": 3.649,
+        "component_scores": {
+          "chokepoint_strength": 4.05,
+          "future_space": 4.3,
+          "valuation_odds": 2.85,
+          "evidence_quality": 3.95,
+          "disconfirming_risk_control": 2.75,
+          "monitorability": 3.65,
+          "payoff_convexity": 4.55
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 4.05,
+          "mispricing": 2.85,
+          "earnings_elasticity": 4.425,
+          "risk_control": 2.75
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength_primary_driver",
+              "score": 4.05,
+              "weight": 0.26,
+              "evidence_ids": [
+                "SRC-CRDO-FY26-Q3"
+              ],
+              "review_ids": [],
+              "rationale": "chokepoint_strength score is based on cutoff-visible evidence for AEC/光互联/高速连接; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space_primary_driver",
+              "score": 4.3,
+              "weight": 0.18,
+              "evidence_ids": [
+                "SRC-CRDO-FY26-Q3"
+              ],
+              "review_ids": [],
+              "rationale": "future_space score is based on cutoff-visible evidence for AEC/光互联/高速连接; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds_primary_driver",
+              "score": 2.85,
+              "weight": 0.18,
+              "evidence_ids": [
+                "SRC-CRDO-FY26-Q3"
+              ],
+              "review_ids": [],
+              "rationale": "valuation_odds score is based on cutoff-visible evidence for AEC/光互联/高速连接; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality_primary_driver",
+              "score": 3.95,
+              "weight": 0.14,
+              "evidence_ids": [
+                "SRC-CRDO-FY26-Q3"
+              ],
+              "review_ids": [],
+              "rationale": "evidence_quality score is based on cutoff-visible evidence for AEC/光互联/高速连接; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control_primary_driver",
+              "score": 2.75,
+              "weight": 0.1,
+              "evidence_ids": [
+                "SRC-CRDO-FY26-Q3"
+              ],
+              "review_ids": [],
+              "rationale": "disconfirming_risk_control score is based on cutoff-visible evidence for AEC/光互联/高速连接; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability_primary_driver",
+              "score": 3.65,
+              "weight": 0.05,
+              "evidence_ids": [
+                "SRC-CRDO-FY26-Q3"
+              ],
+              "review_ids": [],
+              "rationale": "monitorability score is based on cutoff-visible evidence for AEC/光互联/高速连接; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity_primary_driver",
+              "score": 4.55,
+              "weight": 0.09,
+              "evidence_ids": [
+                "SRC-CRDO-FY26-Q3"
+              ],
+              "review_ids": [],
+              "rationale": "payoff_convexity score is based on cutoff-visible evidence for AEC/光互联/高速连接; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ]
+        },
+        "thesis_confidence": 3.728,
+        "payoff_convexity": 4.55,
+        "opportunity_fit": 3.649
+      },
+      "score_subcomponents": {
+        "chokepoint_strength": [
+          {
+            "name": "chokepoint_strength_primary_driver",
+            "score": 4.05,
+            "weight": 0.26,
+            "evidence_ids": [
+              "SRC-CRDO-FY26-Q3"
+            ],
+            "review_ids": [],
+            "rationale": "chokepoint_strength score is based on cutoff-visible evidence for AEC/光互联/高速连接; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "future_space": [
+          {
+            "name": "future_space_primary_driver",
+            "score": 4.3,
+            "weight": 0.18,
+            "evidence_ids": [
+              "SRC-CRDO-FY26-Q3"
+            ],
+            "review_ids": [],
+            "rationale": "future_space score is based on cutoff-visible evidence for AEC/光互联/高速连接; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "valuation_odds": [
+          {
+            "name": "valuation_odds_primary_driver",
+            "score": 2.85,
+            "weight": 0.18,
+            "evidence_ids": [
+              "SRC-CRDO-FY26-Q3"
+            ],
+            "review_ids": [],
+            "rationale": "valuation_odds score is based on cutoff-visible evidence for AEC/光互联/高速连接; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "evidence_quality": [
+          {
+            "name": "evidence_quality_primary_driver",
+            "score": 3.95,
+            "weight": 0.14,
+            "evidence_ids": [
+              "SRC-CRDO-FY26-Q3"
+            ],
+            "review_ids": [],
+            "rationale": "evidence_quality score is based on cutoff-visible evidence for AEC/光互联/高速连接; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "disconfirming_risk_control": [
+          {
+            "name": "disconfirming_risk_control_primary_driver",
+            "score": 2.75,
+            "weight": 0.1,
+            "evidence_ids": [
+              "SRC-CRDO-FY26-Q3"
+            ],
+            "review_ids": [],
+            "rationale": "disconfirming_risk_control score is based on cutoff-visible evidence for AEC/光互联/高速连接; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "monitorability": [
+          {
+            "name": "monitorability_primary_driver",
+            "score": 3.65,
+            "weight": 0.05,
+            "evidence_ids": [
+              "SRC-CRDO-FY26-Q3"
+            ],
+            "review_ids": [],
+            "rationale": "monitorability score is based on cutoff-visible evidence for AEC/光互联/高速连接; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "payoff_convexity": [
+          {
+            "name": "payoff_convexity_primary_driver",
+            "score": 4.55,
+            "weight": 0.09,
+            "evidence_ids": [
+              "SRC-CRDO-FY26-Q3"
+            ],
+            "review_ids": [],
+            "rationale": "payoff_convexity score is based on cutoff-visible evidence for AEC/光互联/高速连接; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ]
+      },
+      "thesis_kill_tests": [],
+      "odds_model": {
+        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
+        "base_path": "AEC/optical orders、customer concentration、gross margin",
+        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
+        "bear_path": "客户订单延迟或价格压力"
+      },
+      "prediction_review": {
+        "initial_claim": "收入高弹性，连接需求真实；但高波动和客户集中使行动状态封顶。",
+        "validation_horizon": "2026-06-02",
+        "required_evidence": "AEC/optical orders、customer concentration、gross margin",
+        "current_status": "watch_only",
+        "review_trigger": "客户订单延迟或价格压力"
+      },
+      "rank": 6
+    },
+    {
+      "ticker": "MU",
+      "name": "Micron",
+      "market": "USA",
+      "thesis_node": "HBM 和高端内存",
+      "action_state": "watch_only",
+      "rationale": "HBM/云内存方向清晰，赔率和弹性较强；但相对 SK hynix 的稀缺性和客户资格需要验证。",
+      "next_verification_data": "HBM design wins、ASP、Cloud Memory margin",
+      "downgrade_risk": "HBM 份额不及预期或周期反转",
+      "source_ids": [
+        "SRC-MU-FY26-Q1"
+      ],
+      "score": {
+        "total_score": 3.629,
+        "component_scores": {
+          "chokepoint_strength": 3.95,
+          "future_space": 4.2,
+          "valuation_odds": 3,
+          "evidence_quality": 3.8,
+          "disconfirming_risk_control": 3.1,
+          "monitorability": 3.4,
+          "payoff_convexity": 4.05
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 3.95,
+          "mispricing": 3,
+          "earnings_elasticity": 4.125,
+          "risk_control": 3.1
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength_primary_driver",
+              "score": 3.95,
+              "weight": 0.26,
+              "evidence_ids": [
+                "SRC-MU-FY26-Q1"
+              ],
+              "review_ids": [],
+              "rationale": "chokepoint_strength score is based on cutoff-visible evidence for HBM 和高端内存; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space_primary_driver",
+              "score": 4.2,
+              "weight": 0.18,
+              "evidence_ids": [
+                "SRC-MU-FY26-Q1"
+              ],
+              "review_ids": [],
+              "rationale": "future_space score is based on cutoff-visible evidence for HBM 和高端内存; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds_primary_driver",
+              "score": 3,
+              "weight": 0.18,
+              "evidence_ids": [
+                "SRC-MU-FY26-Q1"
+              ],
+              "review_ids": [],
+              "rationale": "valuation_odds score is based on cutoff-visible evidence for HBM 和高端内存; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality_primary_driver",
+              "score": 3.8,
+              "weight": 0.14,
+              "evidence_ids": [
+                "SRC-MU-FY26-Q1"
+              ],
+              "review_ids": [],
+              "rationale": "evidence_quality score is based on cutoff-visible evidence for HBM 和高端内存; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control_primary_driver",
+              "score": 3.1,
+              "weight": 0.1,
+              "evidence_ids": [
+                "SRC-MU-FY26-Q1"
+              ],
+              "review_ids": [],
+              "rationale": "disconfirming_risk_control score is based on cutoff-visible evidence for HBM 和高端内存; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability_primary_driver",
+              "score": 3.4,
+              "weight": 0.05,
+              "evidence_ids": [
+                "SRC-MU-FY26-Q1"
+              ],
+              "review_ids": [],
+              "rationale": "monitorability score is based on cutoff-visible evidence for HBM 和高端内存; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity_primary_driver",
+              "score": 4.05,
+              "weight": 0.09,
+              "evidence_ids": [
+                "SRC-MU-FY26-Q1"
+              ],
+              "review_ids": [],
+              "rationale": "payoff_convexity score is based on cutoff-visible evidence for HBM 和高端内存; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ]
+        },
+        "thesis_confidence": 3.7,
+        "payoff_convexity": 4.05,
+        "opportunity_fit": 3.629
+      },
+      "score_subcomponents": {
+        "chokepoint_strength": [
+          {
+            "name": "chokepoint_strength_primary_driver",
+            "score": 3.95,
+            "weight": 0.26,
+            "evidence_ids": [
+              "SRC-MU-FY26-Q1"
+            ],
+            "review_ids": [],
+            "rationale": "chokepoint_strength score is based on cutoff-visible evidence for HBM 和高端内存; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "future_space": [
+          {
+            "name": "future_space_primary_driver",
+            "score": 4.2,
+            "weight": 0.18,
+            "evidence_ids": [
+              "SRC-MU-FY26-Q1"
+            ],
+            "review_ids": [],
+            "rationale": "future_space score is based on cutoff-visible evidence for HBM 和高端内存; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "valuation_odds": [
+          {
+            "name": "valuation_odds_primary_driver",
+            "score": 3,
+            "weight": 0.18,
+            "evidence_ids": [
+              "SRC-MU-FY26-Q1"
+            ],
+            "review_ids": [],
+            "rationale": "valuation_odds score is based on cutoff-visible evidence for HBM 和高端内存; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "evidence_quality": [
+          {
+            "name": "evidence_quality_primary_driver",
+            "score": 3.8,
+            "weight": 0.14,
+            "evidence_ids": [
+              "SRC-MU-FY26-Q1"
+            ],
+            "review_ids": [],
+            "rationale": "evidence_quality score is based on cutoff-visible evidence for HBM 和高端内存; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "disconfirming_risk_control": [
+          {
+            "name": "disconfirming_risk_control_primary_driver",
+            "score": 3.1,
+            "weight": 0.1,
+            "evidence_ids": [
+              "SRC-MU-FY26-Q1"
+            ],
+            "review_ids": [],
+            "rationale": "disconfirming_risk_control score is based on cutoff-visible evidence for HBM 和高端内存; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "monitorability": [
+          {
+            "name": "monitorability_primary_driver",
+            "score": 3.4,
+            "weight": 0.05,
+            "evidence_ids": [
+              "SRC-MU-FY26-Q1"
+            ],
+            "review_ids": [],
+            "rationale": "monitorability score is based on cutoff-visible evidence for HBM 和高端内存; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "payoff_convexity": [
+          {
+            "name": "payoff_convexity_primary_driver",
+            "score": 4.05,
+            "weight": 0.09,
+            "evidence_ids": [
+              "SRC-MU-FY26-Q1"
+            ],
+            "review_ids": [],
+            "rationale": "payoff_convexity score is based on cutoff-visible evidence for HBM 和高端内存; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ]
+      },
+      "thesis_kill_tests": [],
+      "odds_model": {
+        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
+        "base_path": "HBM design wins、ASP、Cloud Memory margin",
+        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
+        "bear_path": "HBM 份额不及预期或周期反转"
+      },
+      "prediction_review": {
+        "initial_claim": "HBM/云内存方向清晰，赔率和弹性较强；但相对 SK hynix 的稀缺性和客户资格需要验证。",
+        "validation_horizon": "2026-06-02",
+        "required_evidence": "HBM design wins、ASP、Cloud Memory margin",
+        "current_status": "watch_only",
+        "review_trigger": "HBM 份额不及预期或周期反转"
+      },
+      "rank": 7
+    },
+    {
+      "ticker": "MRVL",
+      "name": "Marvell Technology",
+      "market": "USA",
+      "thesis_node": "custom silicon 和电光互联",
+      "action_state": "watch_only",
+      "rationale": "AI data-center demand 已进入 custom products 和 electro-optics 财务口径，弹性强；但客户集中、定制项目量产节奏和估值隐含预期不透明，行动状态封顶为 watch_only。",
+      "next_verification_data": "custom silicon 项目量产、electro-optics 收入、客户集中、gross margin",
+      "downgrade_risk": "大客户项目延期、客户自研替代或毛利不达预期",
+      "source_ids": [
+        "SRC-MRVL-FY26-Q3"
+      ],
+      "score": {
+        "total_score": 3.577,
+        "component_scores": {
+          "chokepoint_strength": 3.95,
+          "future_space": 4.25,
+          "valuation_odds": 2.8,
+          "evidence_quality": 3.85,
+          "disconfirming_risk_control": 2.8,
+          "monitorability": 3.35,
+          "payoff_convexity": 4.35
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 3.95,
+          "mispricing": 2.8,
+          "earnings_elasticity": 4.3,
+          "risk_control": 2.8
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength_primary_driver",
+              "score": 3.95,
+              "weight": 0.26,
+              "evidence_ids": [
+                "SRC-MRVL-FY26-Q3"
+              ],
+              "review_ids": [],
+              "rationale": "chokepoint_strength score is based on cutoff-visible evidence for custom silicon 和电光互联; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space_primary_driver",
+              "score": 4.25,
+              "weight": 0.18,
+              "evidence_ids": [
+                "SRC-MRVL-FY26-Q3"
+              ],
+              "review_ids": [],
+              "rationale": "future_space score is based on cutoff-visible evidence for custom silicon 和电光互联; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds_primary_driver",
+              "score": 2.8,
+              "weight": 0.18,
+              "evidence_ids": [
+                "SRC-MRVL-FY26-Q3"
+              ],
+              "review_ids": [],
+              "rationale": "valuation_odds score is based on cutoff-visible evidence for custom silicon 和电光互联; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality_primary_driver",
+              "score": 3.85,
+              "weight": 0.14,
+              "evidence_ids": [
+                "SRC-MRVL-FY26-Q3"
+              ],
+              "review_ids": [],
+              "rationale": "evidence_quality score is based on cutoff-visible evidence for custom silicon 和电光互联; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control_primary_driver",
+              "score": 2.8,
+              "weight": 0.1,
+              "evidence_ids": [
+                "SRC-MRVL-FY26-Q3"
+              ],
+              "review_ids": [],
+              "rationale": "disconfirming_risk_control score is based on cutoff-visible evidence for custom silicon 和电光互联; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability_primary_driver",
+              "score": 3.35,
+              "weight": 0.05,
+              "evidence_ids": [
+                "SRC-MRVL-FY26-Q3"
+              ],
+              "review_ids": [],
+              "rationale": "monitorability score is based on cutoff-visible evidence for custom silicon 和电光互联; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity_primary_driver",
+              "score": 4.35,
+              "weight": 0.09,
+              "evidence_ids": [
+                "SRC-MRVL-FY26-Q3"
+              ],
+              "review_ids": [],
+              "rationale": "payoff_convexity score is based on cutoff-visible evidence for custom silicon 和电光互联; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ]
+        },
+        "thesis_confidence": 3.653,
+        "payoff_convexity": 4.35,
+        "opportunity_fit": 3.577
+      },
+      "score_subcomponents": {
+        "chokepoint_strength": [
+          {
+            "name": "chokepoint_strength_primary_driver",
+            "score": 3.95,
+            "weight": 0.26,
+            "evidence_ids": [
+              "SRC-MRVL-FY26-Q3"
+            ],
+            "review_ids": [],
+            "rationale": "chokepoint_strength score is based on cutoff-visible evidence for custom silicon 和电光互联; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "future_space": [
+          {
+            "name": "future_space_primary_driver",
+            "score": 4.25,
+            "weight": 0.18,
+            "evidence_ids": [
+              "SRC-MRVL-FY26-Q3"
+            ],
+            "review_ids": [],
+            "rationale": "future_space score is based on cutoff-visible evidence for custom silicon 和电光互联; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "valuation_odds": [
+          {
+            "name": "valuation_odds_primary_driver",
+            "score": 2.8,
+            "weight": 0.18,
+            "evidence_ids": [
+              "SRC-MRVL-FY26-Q3"
+            ],
+            "review_ids": [],
+            "rationale": "valuation_odds score is based on cutoff-visible evidence for custom silicon 和电光互联; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "evidence_quality": [
+          {
+            "name": "evidence_quality_primary_driver",
+            "score": 3.85,
+            "weight": 0.14,
+            "evidence_ids": [
+              "SRC-MRVL-FY26-Q3"
+            ],
+            "review_ids": [],
+            "rationale": "evidence_quality score is based on cutoff-visible evidence for custom silicon 和电光互联; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "disconfirming_risk_control": [
+          {
+            "name": "disconfirming_risk_control_primary_driver",
+            "score": 2.8,
+            "weight": 0.1,
+            "evidence_ids": [
+              "SRC-MRVL-FY26-Q3"
+            ],
+            "review_ids": [],
+            "rationale": "disconfirming_risk_control score is based on cutoff-visible evidence for custom silicon 和电光互联; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "monitorability": [
+          {
+            "name": "monitorability_primary_driver",
+            "score": 3.35,
+            "weight": 0.05,
+            "evidence_ids": [
+              "SRC-MRVL-FY26-Q3"
+            ],
+            "review_ids": [],
+            "rationale": "monitorability score is based on cutoff-visible evidence for custom silicon 和电光互联; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "payoff_convexity": [
+          {
+            "name": "payoff_convexity_primary_driver",
+            "score": 4.35,
+            "weight": 0.09,
+            "evidence_ids": [
+              "SRC-MRVL-FY26-Q3"
+            ],
+            "review_ids": [],
+            "rationale": "payoff_convexity score is based on cutoff-visible evidence for custom silicon 和电光互联; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ]
+      },
+      "thesis_kill_tests": [],
+      "odds_model": {
+        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
+        "base_path": "custom silicon 项目量产、electro-optics 收入、客户集中、gross margin",
+        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
+        "bear_path": "大客户项目延期、客户自研替代或毛利不达预期"
+      },
+      "prediction_review": {
+        "initial_claim": "AI data-center demand 已进入 custom products 和 electro-optics 财务口径，弹性强；但客户集中、定制项目量产节奏和估值隐含预期不透明，行动状态封顶为 watch_only。",
+        "validation_horizon": "2026-06-02",
+        "required_evidence": "custom silicon 项目量产、electro-optics 收入、客户集中、gross margin",
+        "current_status": "watch_only",
+        "review_trigger": "大客户项目延期、客户自研替代或毛利不达预期"
+      },
+      "rank": 8
+    },
+    {
+      "ticker": "AVGO",
+      "name": "Broadcom",
+      "market": "USA",
+      "thesis_node": "custom ASIC 和 AI Ethernet",
+      "action_state": "watch_only",
+      "rationale": "AI ASIC/Ethernet 已财务化，但大客户集中和估值隐含预期需要控制。",
+      "next_verification_data": "AI revenue、customer count、Ethernet orders",
+      "downgrade_risk": "大客户/ASIC 节奏不及预期",
+      "source_ids": [
+        "SRC-AVGO-FY25-Q4"
+      ],
+      "score": {
+        "total_score": 3.455,
+        "component_scores": {
+          "chokepoint_strength": 3.9,
+          "future_space": 4.05,
+          "valuation_odds": 2.7,
+          "evidence_quality": 3.75,
+          "disconfirming_risk_control": 3.1,
+          "monitorability": 3.55,
+          "payoff_convexity": 3.55
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 3.9,
+          "mispricing": 2.7,
+          "earnings_elasticity": 3.8,
+          "risk_control": 3.1
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength_primary_driver",
+              "score": 3.9,
+              "weight": 0.26,
+              "evidence_ids": [
+                "SRC-AVGO-FY25-Q4"
+              ],
+              "review_ids": [],
+              "rationale": "chokepoint_strength score is based on cutoff-visible evidence for custom ASIC 和 AI Ethernet; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space_primary_driver",
+              "score": 4.05,
+              "weight": 0.18,
+              "evidence_ids": [
+                "SRC-AVGO-FY25-Q4"
+              ],
+              "review_ids": [],
+              "rationale": "future_space score is based on cutoff-visible evidence for custom ASIC 和 AI Ethernet; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds_primary_driver",
+              "score": 2.7,
+              "weight": 0.18,
+              "evidence_ids": [
+                "SRC-AVGO-FY25-Q4"
+              ],
+              "review_ids": [],
+              "rationale": "valuation_odds score is based on cutoff-visible evidence for custom ASIC 和 AI Ethernet; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality_primary_driver",
+              "score": 3.75,
+              "weight": 0.14,
+              "evidence_ids": [
+                "SRC-AVGO-FY25-Q4"
+              ],
+              "review_ids": [],
+              "rationale": "evidence_quality score is based on cutoff-visible evidence for custom ASIC 和 AI Ethernet; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control_primary_driver",
+              "score": 3.1,
+              "weight": 0.1,
+              "evidence_ids": [
+                "SRC-AVGO-FY25-Q4"
+              ],
+              "review_ids": [],
+              "rationale": "disconfirming_risk_control score is based on cutoff-visible evidence for custom ASIC 和 AI Ethernet; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability_primary_driver",
+              "score": 3.55,
+              "weight": 0.05,
+              "evidence_ids": [
+                "SRC-AVGO-FY25-Q4"
+              ],
+              "review_ids": [],
+              "rationale": "monitorability score is based on cutoff-visible evidence for custom ASIC 和 AI Ethernet; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity_primary_driver",
+              "score": 3.55,
+              "weight": 0.09,
+              "evidence_ids": [
+                "SRC-AVGO-FY25-Q4"
+              ],
+              "review_ids": [],
+              "rationale": "payoff_convexity score is based on cutoff-visible evidence for custom ASIC 和 AI Ethernet; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ]
+        },
+        "thesis_confidence": 3.627,
+        "payoff_convexity": 3.55,
+        "opportunity_fit": 3.455
+      },
+      "score_subcomponents": {
+        "chokepoint_strength": [
+          {
+            "name": "chokepoint_strength_primary_driver",
+            "score": 3.9,
+            "weight": 0.26,
+            "evidence_ids": [
+              "SRC-AVGO-FY25-Q4"
+            ],
+            "review_ids": [],
+            "rationale": "chokepoint_strength score is based on cutoff-visible evidence for custom ASIC 和 AI Ethernet; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "future_space": [
+          {
+            "name": "future_space_primary_driver",
+            "score": 4.05,
+            "weight": 0.18,
+            "evidence_ids": [
+              "SRC-AVGO-FY25-Q4"
+            ],
+            "review_ids": [],
+            "rationale": "future_space score is based on cutoff-visible evidence for custom ASIC 和 AI Ethernet; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "valuation_odds": [
+          {
+            "name": "valuation_odds_primary_driver",
+            "score": 2.7,
+            "weight": 0.18,
+            "evidence_ids": [
+              "SRC-AVGO-FY25-Q4"
+            ],
+            "review_ids": [],
+            "rationale": "valuation_odds score is based on cutoff-visible evidence for custom ASIC 和 AI Ethernet; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "evidence_quality": [
+          {
+            "name": "evidence_quality_primary_driver",
+            "score": 3.75,
+            "weight": 0.14,
+            "evidence_ids": [
+              "SRC-AVGO-FY25-Q4"
+            ],
+            "review_ids": [],
+            "rationale": "evidence_quality score is based on cutoff-visible evidence for custom ASIC 和 AI Ethernet; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "disconfirming_risk_control": [
+          {
+            "name": "disconfirming_risk_control_primary_driver",
+            "score": 3.1,
+            "weight": 0.1,
+            "evidence_ids": [
+              "SRC-AVGO-FY25-Q4"
+            ],
+            "review_ids": [],
+            "rationale": "disconfirming_risk_control score is based on cutoff-visible evidence for custom ASIC 和 AI Ethernet; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "monitorability": [
+          {
+            "name": "monitorability_primary_driver",
+            "score": 3.55,
+            "weight": 0.05,
+            "evidence_ids": [
+              "SRC-AVGO-FY25-Q4"
+            ],
+            "review_ids": [],
+            "rationale": "monitorability score is based on cutoff-visible evidence for custom ASIC 和 AI Ethernet; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "payoff_convexity": [
+          {
+            "name": "payoff_convexity_primary_driver",
+            "score": 3.55,
+            "weight": 0.09,
+            "evidence_ids": [
+              "SRC-AVGO-FY25-Q4"
+            ],
+            "review_ids": [],
+            "rationale": "payoff_convexity score is based on cutoff-visible evidence for custom ASIC 和 AI Ethernet; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ]
+      },
+      "thesis_kill_tests": [],
+      "odds_model": {
+        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
+        "base_path": "AI revenue、customer count、Ethernet orders",
+        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
+        "bear_path": "大客户/ASIC 节奏不及预期"
+      },
+      "prediction_review": {
+        "initial_claim": "AI ASIC/Ethernet 已财务化，但大客户集中和估值隐含预期需要控制。",
+        "validation_horizon": "2026-06-02",
+        "required_evidence": "AI revenue、customer count、Ethernet orders",
+        "current_status": "watch_only",
+        "review_trigger": "大客户/ASIC 节奏不及预期"
+      },
+      "rank": 9
+    },
+    {
+      "ticker": "DELL",
+      "name": "Dell Technologies",
+      "market": "USA",
+      "thesis_node": "AI server 系统交付",
+      "action_state": "watch_only",
+      "rationale": "AI server backlog 极强，系统交付弹性大；但利润率和现金流质量决定价值捕获。",
+      "next_verification_data": "AI server margin、backlog conversion、cash flow",
+      "downgrade_risk": "订单增长但毛利或现金流差",
+      "source_ids": [
+        "SRC-DELL-FY26-Q4"
+      ],
+      "score": {
+        "total_score": 3.425,
+        "component_scores": {
+          "chokepoint_strength": 3.45,
+          "future_space": 4.3,
+          "valuation_odds": 3.1,
+          "evidence_quality": 4.1,
+          "disconfirming_risk_control": 2.95,
+          "monitorability": 3.8,
+          "payoff_convexity": 3.7
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 3.45,
+          "mispricing": 3.1,
+          "earnings_elasticity": 4,
+          "risk_control": 2.95
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength_primary_driver",
+              "score": 3.45,
+              "weight": 0.26,
+              "evidence_ids": [
+                "SRC-DELL-FY26-Q4"
+              ],
+              "review_ids": [],
+              "rationale": "chokepoint_strength score is based on cutoff-visible evidence for AI server 系统交付; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space_primary_driver",
+              "score": 4.3,
+              "weight": 0.18,
+              "evidence_ids": [
+                "SRC-DELL-FY26-Q4"
+              ],
+              "review_ids": [],
+              "rationale": "future_space score is based on cutoff-visible evidence for AI server 系统交付; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds_primary_driver",
+              "score": 3.1,
+              "weight": 0.18,
+              "evidence_ids": [
+                "SRC-DELL-FY26-Q4"
+              ],
+              "review_ids": [],
+              "rationale": "valuation_odds score is based on cutoff-visible evidence for AI server 系统交付; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality_primary_driver",
+              "score": 4.1,
+              "weight": 0.14,
+              "evidence_ids": [
+                "SRC-DELL-FY26-Q4"
+              ],
+              "review_ids": [],
+              "rationale": "evidence_quality score is based on cutoff-visible evidence for AI server 系统交付; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control_primary_driver",
+              "score": 2.95,
+              "weight": 0.1,
+              "evidence_ids": [
+                "SRC-DELL-FY26-Q4"
+              ],
+              "review_ids": [],
+              "rationale": "disconfirming_risk_control score is based on cutoff-visible evidence for AI server 系统交付; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability_primary_driver",
+              "score": 3.8,
+              "weight": 0.05,
+              "evidence_ids": [
+                "SRC-DELL-FY26-Q4"
+              ],
+              "review_ids": [],
+              "rationale": "monitorability score is based on cutoff-visible evidence for AI server 系统交付; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity_primary_driver",
+              "score": 3.7,
+              "weight": 0.09,
+              "evidence_ids": [
+                "SRC-DELL-FY26-Q4"
+              ],
+              "review_ids": [],
+              "rationale": "payoff_convexity score is based on cutoff-visible evidence for AI server 系统交付; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ]
+        },
+        "thesis_confidence": 3.647,
+        "payoff_convexity": 3.7,
+        "opportunity_fit": 3.425
+      },
+      "score_subcomponents": {
+        "chokepoint_strength": [
+          {
+            "name": "chokepoint_strength_primary_driver",
+            "score": 3.45,
+            "weight": 0.26,
+            "evidence_ids": [
+              "SRC-DELL-FY26-Q4"
+            ],
+            "review_ids": [],
+            "rationale": "chokepoint_strength score is based on cutoff-visible evidence for AI server 系统交付; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "future_space": [
+          {
+            "name": "future_space_primary_driver",
+            "score": 4.3,
+            "weight": 0.18,
+            "evidence_ids": [
+              "SRC-DELL-FY26-Q4"
+            ],
+            "review_ids": [],
+            "rationale": "future_space score is based on cutoff-visible evidence for AI server 系统交付; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "valuation_odds": [
+          {
+            "name": "valuation_odds_primary_driver",
+            "score": 3.1,
+            "weight": 0.18,
+            "evidence_ids": [
+              "SRC-DELL-FY26-Q4"
+            ],
+            "review_ids": [],
+            "rationale": "valuation_odds score is based on cutoff-visible evidence for AI server 系统交付; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "evidence_quality": [
+          {
+            "name": "evidence_quality_primary_driver",
+            "score": 4.1,
+            "weight": 0.14,
+            "evidence_ids": [
+              "SRC-DELL-FY26-Q4"
+            ],
+            "review_ids": [],
+            "rationale": "evidence_quality score is based on cutoff-visible evidence for AI server 系统交付; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "disconfirming_risk_control": [
+          {
+            "name": "disconfirming_risk_control_primary_driver",
+            "score": 2.95,
+            "weight": 0.1,
+            "evidence_ids": [
+              "SRC-DELL-FY26-Q4"
+            ],
+            "review_ids": [],
+            "rationale": "disconfirming_risk_control score is based on cutoff-visible evidence for AI server 系统交付; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "monitorability": [
+          {
+            "name": "monitorability_primary_driver",
+            "score": 3.8,
+            "weight": 0.05,
+            "evidence_ids": [
+              "SRC-DELL-FY26-Q4"
+            ],
+            "review_ids": [],
+            "rationale": "monitorability score is based on cutoff-visible evidence for AI server 系统交付; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "payoff_convexity": [
+          {
+            "name": "payoff_convexity_primary_driver",
+            "score": 3.7,
+            "weight": 0.09,
+            "evidence_ids": [
+              "SRC-DELL-FY26-Q4"
+            ],
+            "review_ids": [],
+            "rationale": "payoff_convexity score is based on cutoff-visible evidence for AI server 系统交付; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ]
+      },
+      "thesis_kill_tests": [],
+      "odds_model": {
+        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
+        "base_path": "AI server margin、backlog conversion、cash flow",
+        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
+        "bear_path": "订单增长但毛利或现金流差"
+      },
+      "prediction_review": {
+        "initial_claim": "AI server backlog 极强，系统交付弹性大；但利润率和现金流质量决定价值捕获。",
+        "validation_horizon": "2026-06-02",
+        "required_evidence": "AI server margin、backlog conversion、cash flow",
+        "current_status": "watch_only",
+        "review_trigger": "订单增长但毛利或现金流差"
+      },
+      "rank": 10
+    },
+    {
+      "ticker": "005930.KS",
+      "name": "Samsung Electronics",
+      "market": "Korea",
+      "thesis_node": "HBM/server DDR5/eSSD",
+      "action_state": "watch_only",
+      "rationale": "内存业务 AI 产品强，但 HBM 领导力和市场预期相对 SK hynix 需要更多验证。",
+      "next_verification_data": "HBM4 shipment、server DDR5/eSSD mix",
+      "downgrade_risk": "HBM 资格或价格不及预期",
+      "source_ids": [
+        "SRC-SAMSUNG-FY25"
+      ],
+      "score": {
+        "total_score": 3.39,
+        "component_scores": {
+          "chokepoint_strength": 3.55,
+          "future_space": 4.05,
+          "valuation_odds": 2.9,
+          "evidence_quality": 3.8,
+          "disconfirming_risk_control": 3.15,
+          "monitorability": 3.2,
+          "payoff_convexity": 3.55
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 3.55,
+          "mispricing": 2.9,
+          "earnings_elasticity": 3.8,
+          "risk_control": 3.15
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength_primary_driver",
+              "score": 3.55,
+              "weight": 0.26,
+              "evidence_ids": [
+                "SRC-SAMSUNG-FY25"
+              ],
+              "review_ids": [],
+              "rationale": "chokepoint_strength score is based on cutoff-visible evidence for HBM/server DDR5/eSSD; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space_primary_driver",
+              "score": 4.05,
+              "weight": 0.18,
+              "evidence_ids": [
+                "SRC-SAMSUNG-FY25"
+              ],
+              "review_ids": [],
+              "rationale": "future_space score is based on cutoff-visible evidence for HBM/server DDR5/eSSD; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds_primary_driver",
+              "score": 2.9,
+              "weight": 0.18,
+              "evidence_ids": [
+                "SRC-SAMSUNG-FY25"
+              ],
+              "review_ids": [],
+              "rationale": "valuation_odds score is based on cutoff-visible evidence for HBM/server DDR5/eSSD; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality_primary_driver",
+              "score": 3.8,
+              "weight": 0.14,
+              "evidence_ids": [
+                "SRC-SAMSUNG-FY25"
+              ],
+              "review_ids": [],
+              "rationale": "evidence_quality score is based on cutoff-visible evidence for HBM/server DDR5/eSSD; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control_primary_driver",
+              "score": 3.15,
+              "weight": 0.1,
+              "evidence_ids": [
+                "SRC-SAMSUNG-FY25"
+              ],
+              "review_ids": [],
+              "rationale": "disconfirming_risk_control score is based on cutoff-visible evidence for HBM/server DDR5/eSSD; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability_primary_driver",
+              "score": 3.2,
+              "weight": 0.05,
+              "evidence_ids": [
+                "SRC-SAMSUNG-FY25"
+              ],
+              "review_ids": [],
+              "rationale": "monitorability score is based on cutoff-visible evidence for HBM/server DDR5/eSSD; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity_primary_driver",
+              "score": 3.55,
+              "weight": 0.09,
+              "evidence_ids": [
+                "SRC-SAMSUNG-FY25"
+              ],
+              "review_ids": [],
+              "rationale": "payoff_convexity score is based on cutoff-visible evidence for HBM/server DDR5/eSSD; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ]
+        },
+        "thesis_confidence": 3.545,
+        "payoff_convexity": 3.55,
+        "opportunity_fit": 3.39
+      },
+      "score_subcomponents": {
+        "chokepoint_strength": [
+          {
+            "name": "chokepoint_strength_primary_driver",
+            "score": 3.55,
+            "weight": 0.26,
+            "evidence_ids": [
+              "SRC-SAMSUNG-FY25"
+            ],
+            "review_ids": [],
+            "rationale": "chokepoint_strength score is based on cutoff-visible evidence for HBM/server DDR5/eSSD; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "future_space": [
+          {
+            "name": "future_space_primary_driver",
+            "score": 4.05,
+            "weight": 0.18,
+            "evidence_ids": [
+              "SRC-SAMSUNG-FY25"
+            ],
+            "review_ids": [],
+            "rationale": "future_space score is based on cutoff-visible evidence for HBM/server DDR5/eSSD; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "valuation_odds": [
+          {
+            "name": "valuation_odds_primary_driver",
+            "score": 2.9,
+            "weight": 0.18,
+            "evidence_ids": [
+              "SRC-SAMSUNG-FY25"
+            ],
+            "review_ids": [],
+            "rationale": "valuation_odds score is based on cutoff-visible evidence for HBM/server DDR5/eSSD; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "evidence_quality": [
+          {
+            "name": "evidence_quality_primary_driver",
+            "score": 3.8,
+            "weight": 0.14,
+            "evidence_ids": [
+              "SRC-SAMSUNG-FY25"
+            ],
+            "review_ids": [],
+            "rationale": "evidence_quality score is based on cutoff-visible evidence for HBM/server DDR5/eSSD; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "disconfirming_risk_control": [
+          {
+            "name": "disconfirming_risk_control_primary_driver",
+            "score": 3.15,
+            "weight": 0.1,
+            "evidence_ids": [
+              "SRC-SAMSUNG-FY25"
+            ],
+            "review_ids": [],
+            "rationale": "disconfirming_risk_control score is based on cutoff-visible evidence for HBM/server DDR5/eSSD; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "monitorability": [
+          {
+            "name": "monitorability_primary_driver",
+            "score": 3.2,
+            "weight": 0.05,
+            "evidence_ids": [
+              "SRC-SAMSUNG-FY25"
+            ],
+            "review_ids": [],
+            "rationale": "monitorability score is based on cutoff-visible evidence for HBM/server DDR5/eSSD; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "payoff_convexity": [
+          {
+            "name": "payoff_convexity_primary_driver",
+            "score": 3.55,
+            "weight": 0.09,
+            "evidence_ids": [
+              "SRC-SAMSUNG-FY25"
+            ],
+            "review_ids": [],
+            "rationale": "payoff_convexity score is based on cutoff-visible evidence for HBM/server DDR5/eSSD; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ]
+      },
+      "thesis_kill_tests": [],
+      "odds_model": {
+        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
+        "base_path": "HBM4 shipment、server DDR5/eSSD mix",
+        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
+        "bear_path": "HBM 资格或价格不及预期"
+      },
+      "prediction_review": {
+        "initial_claim": "内存业务 AI 产品强，但 HBM 领导力和市场预期相对 SK hynix 需要更多验证。",
+        "validation_horizon": "2026-06-02",
+        "required_evidence": "HBM4 shipment、server DDR5/eSSD mix",
+        "current_status": "watch_only",
+        "review_trigger": "HBM 资格或价格不及预期"
+      },
+      "rank": 11
+    },
+    {
+      "ticker": "ANET",
+      "name": "Arista Networks",
+      "market": "USA",
+      "thesis_node": "AI Ethernet 网络",
+      "action_state": "watch_only",
+      "rationale": "AI networking 方向成立，但与平台网络路线的关系和客户订单需要更多证明。",
+      "next_verification_data": "AI cluster wins、gross margin、cloud capex",
+      "downgrade_risk": "Spectrum-X 或客户自研挤压份额",
+      "source_ids": [
+        "SRC-ANET-Q4-2025"
+      ],
+      "score": {
+        "total_score": 3.269,
+        "component_scores": {
+          "chokepoint_strength": 3.5,
+          "future_space": 3.75,
+          "valuation_odds": 2.75,
+          "evidence_quality": 3.6,
+          "disconfirming_risk_control": 3.25,
+          "monitorability": 3.4,
+          "payoff_convexity": 3.2
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 3.5,
+          "mispricing": 2.75,
+          "earnings_elasticity": 3.475,
+          "risk_control": 3.25
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength_primary_driver",
+              "score": 3.5,
+              "weight": 0.26,
+              "evidence_ids": [
+                "SRC-ANET-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "chokepoint_strength score is based on cutoff-visible evidence for AI Ethernet 网络; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space_primary_driver",
+              "score": 3.75,
+              "weight": 0.18,
+              "evidence_ids": [
+                "SRC-ANET-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "future_space score is based on cutoff-visible evidence for AI Ethernet 网络; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds_primary_driver",
+              "score": 2.75,
+              "weight": 0.18,
+              "evidence_ids": [
+                "SRC-ANET-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "valuation_odds score is based on cutoff-visible evidence for AI Ethernet 网络; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality_primary_driver",
+              "score": 3.6,
+              "weight": 0.14,
+              "evidence_ids": [
+                "SRC-ANET-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "evidence_quality score is based on cutoff-visible evidence for AI Ethernet 网络; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control_primary_driver",
+              "score": 3.25,
+              "weight": 0.1,
+              "evidence_ids": [
+                "SRC-ANET-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "disconfirming_risk_control score is based on cutoff-visible evidence for AI Ethernet 网络; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability_primary_driver",
+              "score": 3.4,
+              "weight": 0.05,
+              "evidence_ids": [
+                "SRC-ANET-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "monitorability score is based on cutoff-visible evidence for AI Ethernet 网络; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity_primary_driver",
+              "score": 3.2,
+              "weight": 0.09,
+              "evidence_ids": [
+                "SRC-ANET-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "payoff_convexity score is based on cutoff-visible evidence for AI Ethernet 网络; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ]
+        },
+        "thesis_confidence": 3.445,
+        "payoff_convexity": 3.2,
+        "opportunity_fit": 3.269
+      },
+      "score_subcomponents": {
+        "chokepoint_strength": [
+          {
+            "name": "chokepoint_strength_primary_driver",
+            "score": 3.5,
+            "weight": 0.26,
+            "evidence_ids": [
+              "SRC-ANET-Q4-2025"
+            ],
+            "review_ids": [],
+            "rationale": "chokepoint_strength score is based on cutoff-visible evidence for AI Ethernet 网络; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "future_space": [
+          {
+            "name": "future_space_primary_driver",
+            "score": 3.75,
+            "weight": 0.18,
+            "evidence_ids": [
+              "SRC-ANET-Q4-2025"
+            ],
+            "review_ids": [],
+            "rationale": "future_space score is based on cutoff-visible evidence for AI Ethernet 网络; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "valuation_odds": [
+          {
+            "name": "valuation_odds_primary_driver",
+            "score": 2.75,
+            "weight": 0.18,
+            "evidence_ids": [
+              "SRC-ANET-Q4-2025"
+            ],
+            "review_ids": [],
+            "rationale": "valuation_odds score is based on cutoff-visible evidence for AI Ethernet 网络; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "evidence_quality": [
+          {
+            "name": "evidence_quality_primary_driver",
+            "score": 3.6,
+            "weight": 0.14,
+            "evidence_ids": [
+              "SRC-ANET-Q4-2025"
+            ],
+            "review_ids": [],
+            "rationale": "evidence_quality score is based on cutoff-visible evidence for AI Ethernet 网络; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "disconfirming_risk_control": [
+          {
+            "name": "disconfirming_risk_control_primary_driver",
+            "score": 3.25,
+            "weight": 0.1,
+            "evidence_ids": [
+              "SRC-ANET-Q4-2025"
+            ],
+            "review_ids": [],
+            "rationale": "disconfirming_risk_control score is based on cutoff-visible evidence for AI Ethernet 网络; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "monitorability": [
+          {
+            "name": "monitorability_primary_driver",
+            "score": 3.4,
+            "weight": 0.05,
+            "evidence_ids": [
+              "SRC-ANET-Q4-2025"
+            ],
+            "review_ids": [],
+            "rationale": "monitorability score is based on cutoff-visible evidence for AI Ethernet 网络; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "payoff_convexity": [
+          {
+            "name": "payoff_convexity_primary_driver",
+            "score": 3.2,
+            "weight": 0.09,
+            "evidence_ids": [
+              "SRC-ANET-Q4-2025"
+            ],
+            "review_ids": [],
+            "rationale": "payoff_convexity score is based on cutoff-visible evidence for AI Ethernet 网络; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ]
+      },
+      "thesis_kill_tests": [],
+      "odds_model": {
+        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
+        "base_path": "AI cluster wins、gross margin、cloud capex",
+        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
+        "bear_path": "Spectrum-X 或客户自研挤压份额"
+      },
+      "prediction_review": {
+        "initial_claim": "AI networking 方向成立，但与平台网络路线的关系和客户订单需要更多证明。",
+        "validation_horizon": "2026-06-02",
+        "required_evidence": "AI cluster wins、gross margin、cloud capex",
+        "current_status": "watch_only",
+        "review_trigger": "Spectrum-X 或客户自研挤压份额"
+      },
+      "rank": 12
+    },
+    {
+      "ticker": "SMCI",
+      "name": "Supermicro",
+      "market": "USA",
+      "thesis_node": "AI server 组装",
+      "action_state": "no_action",
+      "rationale": "AI server 主题弹性大，但执行、治理和毛利风险使风险控制不足。",
+      "next_verification_data": "margin、cash conversion、governance",
+      "downgrade_risk": "治理风险或毛利恶化",
+      "source_ids": [
+        "SRC-SMCI-FY26-Q2"
+      ],
+      "score": {
+        "total_score": 3.071,
+        "component_scores": {
+          "chokepoint_strength": 2.75,
+          "future_space": 3.75,
+          "valuation_odds": 3.25,
+          "evidence_quality": 2.65,
+          "disconfirming_risk_control": 2.1,
+          "monitorability": 3,
+          "payoff_convexity": 4.1
+        },
+        "score_dimensions": {
+          "scarcity_or_monopoly": 2.75,
+          "mispricing": 3.25,
+          "earnings_elasticity": 3.925,
+          "risk_control": 2.1
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength_primary_driver",
+              "score": 2.75,
+              "weight": 0.26,
+              "evidence_ids": [
+                "SRC-SMCI-FY26-Q2"
+              ],
+              "review_ids": [],
+              "rationale": "chokepoint_strength score is based on cutoff-visible evidence for AI server 组装; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space_primary_driver",
+              "score": 3.75,
+              "weight": 0.18,
+              "evidence_ids": [
+                "SRC-SMCI-FY26-Q2"
+              ],
+              "review_ids": [],
+              "rationale": "future_space score is based on cutoff-visible evidence for AI server 组装; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds_primary_driver",
+              "score": 3.25,
+              "weight": 0.18,
+              "evidence_ids": [
+                "SRC-SMCI-FY26-Q2"
+              ],
+              "review_ids": [],
+              "rationale": "valuation_odds score is based on cutoff-visible evidence for AI server 组装; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality_primary_driver",
+              "score": 2.65,
+              "weight": 0.14,
+              "evidence_ids": [
+                "SRC-SMCI-FY26-Q2"
+              ],
+              "review_ids": [],
+              "rationale": "evidence_quality score is based on cutoff-visible evidence for AI server 组装; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control_primary_driver",
+              "score": 2.1,
+              "weight": 0.1,
+              "evidence_ids": [
+                "SRC-SMCI-FY26-Q2"
+              ],
+              "review_ids": [],
+              "rationale": "disconfirming_risk_control score is based on cutoff-visible evidence for AI server 组装; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability_primary_driver",
+              "score": 3,
+              "weight": 0.05,
+              "evidence_ids": [
+                "SRC-SMCI-FY26-Q2"
+              ],
+              "review_ids": [],
+              "rationale": "monitorability score is based on cutoff-visible evidence for AI server 组装; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity_primary_driver",
+              "score": 4.1,
+              "weight": 0.09,
+              "evidence_ids": [
+                "SRC-SMCI-FY26-Q2"
+              ],
+              "review_ids": [],
+              "rationale": "payoff_convexity score is based on cutoff-visible evidence for AI server 组装; no price evaluation data was used.",
+              "status": "capped_until_verified"
+            }
+          ]
+        },
+        "thesis_confidence": 2.84,
+        "payoff_convexity": 4.1,
+        "opportunity_fit": 3.071
+      },
+      "score_subcomponents": {
+        "chokepoint_strength": [
+          {
+            "name": "chokepoint_strength_primary_driver",
+            "score": 2.75,
+            "weight": 0.26,
+            "evidence_ids": [
+              "SRC-SMCI-FY26-Q2"
+            ],
+            "review_ids": [],
+            "rationale": "chokepoint_strength score is based on cutoff-visible evidence for AI server 组装; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "future_space": [
+          {
+            "name": "future_space_primary_driver",
+            "score": 3.75,
+            "weight": 0.18,
+            "evidence_ids": [
+              "SRC-SMCI-FY26-Q2"
+            ],
+            "review_ids": [],
+            "rationale": "future_space score is based on cutoff-visible evidence for AI server 组装; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "valuation_odds": [
+          {
+            "name": "valuation_odds_primary_driver",
+            "score": 3.25,
+            "weight": 0.18,
+            "evidence_ids": [
+              "SRC-SMCI-FY26-Q2"
+            ],
+            "review_ids": [],
+            "rationale": "valuation_odds score is based on cutoff-visible evidence for AI server 组装; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "evidence_quality": [
+          {
+            "name": "evidence_quality_primary_driver",
+            "score": 2.65,
+            "weight": 0.14,
+            "evidence_ids": [
+              "SRC-SMCI-FY26-Q2"
+            ],
+            "review_ids": [],
+            "rationale": "evidence_quality score is based on cutoff-visible evidence for AI server 组装; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "disconfirming_risk_control": [
+          {
+            "name": "disconfirming_risk_control_primary_driver",
+            "score": 2.1,
+            "weight": 0.1,
+            "evidence_ids": [
+              "SRC-SMCI-FY26-Q2"
+            ],
+            "review_ids": [],
+            "rationale": "disconfirming_risk_control score is based on cutoff-visible evidence for AI server 组装; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "monitorability": [
+          {
+            "name": "monitorability_primary_driver",
+            "score": 3,
+            "weight": 0.05,
+            "evidence_ids": [
+              "SRC-SMCI-FY26-Q2"
+            ],
+            "review_ids": [],
+            "rationale": "monitorability score is based on cutoff-visible evidence for AI server 组装; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ],
+        "payoff_convexity": [
+          {
+            "name": "payoff_convexity_primary_driver",
+            "score": 4.1,
+            "weight": 0.09,
+            "evidence_ids": [
+              "SRC-SMCI-FY26-Q2"
+            ],
+            "review_ids": [],
+            "rationale": "payoff_convexity score is based on cutoff-visible evidence for AI server 组装; no price evaluation data was used.",
+            "status": "capped_until_verified"
+          }
+        ]
+      },
+      "thesis_kill_tests": [],
+      "odds_model": {
+        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
+        "base_path": "margin、cash conversion、governance",
+        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
+        "bear_path": "治理风险或毛利恶化"
+      },
+      "prediction_review": {
+        "initial_claim": "AI server 主题弹性大，但执行、治理和毛利风险使风险控制不足。",
+        "validation_horizon": "2026-06-02",
+        "required_evidence": "margin、cash conversion、governance",
+        "current_status": "no_action",
+        "review_trigger": "治理风险或毛利恶化"
+      },
+      "rank": 13
+    }
+  ]
+}

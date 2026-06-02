@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 工厂相关投资机会实时研究报告</title>
+<style>
+    :root{--bg:#f5f5f7;--panel:#fff;--line:#d7dce5;--ink:#1d1d1f;--muted:#667085;--blue:#0a63ce;--green:#0f7a4f;--amber:#956100;--red:#b42318}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;line-height:1.58}.hero{padding:40px min(6vw,72px) 24px;background:linear-gradient(#fff,#f7f8fb);border-bottom:1px solid var(--line)}.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:800}h1{margin:8px 0 10px;font-size:34px;letter-spacing:0}.subtitle{max-width:1120px;color:#4b5260;font-size:15px}.top-nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line);padding:10px min(6vw,72px);display:flex;gap:16px;flex-wrap:wrap}.top-nav a{color:#2f5f9f;text-decoration:none;font-size:13px;font-weight:800}.wrap{padding:24px min(6vw,72px) 56px}.section{margin:0 0 26px}h2{font-size:24px;margin:0 0 12px}
+    .goal-card,.supply-chain-section,.target-section,.source-collapse{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:18px;box-shadow:0 10px 28px rgba(30,41,59,.05)}.goal-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.metric{border:1px solid #e7ebf2;border-radius:8px;padding:12px;background:#fbfcfe}.metric span{display:block;color:var(--muted);font-size:12px}.metric strong{font-size:15px}.chain-explain{display:grid;gap:14px;margin-bottom:16px}.chain-plain-summary{margin:0;padding:14px 16px;border:1px solid #d9e4f2;border-radius:8px;background:#f6f9fd;font-weight:760;line-height:1.75}.chain-flow-steps,.chain-chokepoints,.chain-target-links{border:1px solid #e6eaf1;border-radius:8px;background:#fbfcff;padding:14px}.chain-flow-steps b,.chain-chokepoints b,.chain-target-links b{display:block;margin-bottom:8px}.chain-flow-steps ol{margin:0;padding-left:22px;line-height:1.75}.chain-layer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}.chain-layer-card{border:1px solid #e6eaf1;border-radius:8px;background:#fff;padding:12px}.chain-layer-card b,.chain-layer-card span{display:block}.chain-layer-card span{color:var(--blue);font-weight:800;margin-top:4px}.chain-layer-card p{margin:8px 0;color:var(--ink)}.chain-layer-card small{color:var(--muted);line-height:1.6}.chain-map,.table-scroll{overflow:auto;border:1px solid #e6eaf1;border-radius:8px}.chain-table,.target-table{min-width:1500px}
+    .qa-card{background:var(--panel);border:1px solid var(--line);border-radius:8px;margin:12px 0;overflow:hidden}.qa-card[open]>summary{border-bottom:1px solid #e6eaf1}.qa-card summary{list-style:none;cursor:pointer;padding:14px 16px;display:grid;grid-template-columns:auto 1fr auto auto;gap:10px;align-items:center}.qa-card summary::-webkit-details-marker{display:none}.qid{font-weight:800;color:var(--blue);font-size:13px}.qtitle{font-weight:760}.qa-count{font-size:12px;color:var(--muted);background:#f1f4f9;border:1px solid #e0e5ee;border-radius:999px;padding:3px 8px}.chevron{color:var(--muted)}details[open]>summary .chevron{transform:rotate(90deg)}.level-2{margin-left:16px}.level-3{margin-left:32px}.level-4{margin-left:48px}.level-5{margin-left:64px}.qa-body{padding:14px 16px 16px}.qa-block{margin:0 0 14px}.block-title{font-size:12px;font-weight:800;color:#586174;text-transform:uppercase;margin-bottom:8px}
+    .artifact-card{border:1px solid #e2e7ef;border-radius:8px;background:#fbfcff;padding:12px;margin:10px 0}.artifact-title{font-weight:780;margin-bottom:8px}.logic-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.logic-card{border:1px solid #e5e9f0;border-radius:8px;background:#fff;padding:10px}.logic-card b{display:block;font-size:12px;color:#536071;margin-bottom:4px}.logic-card p{margin:0;font-size:13px}.routing{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:10px}.pill{border:1px solid #dfe6f1;background:#f7faff;border-radius:999px;padding:4px 8px;font-size:12px;color:#46515f}.source-chips{display:flex;flex-wrap:wrap;gap:6px}.source-chip{font-size:12px;color:#0a63ce;background:#eef5ff;border:1px solid #d8e8ff;border-radius:999px;padding:4px 8px;text-decoration:none}
+    table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:9px 8px;border-bottom:1px solid #e6eaf1;text-align:left;vertical-align:top}th{color:#536071;font-size:12px;background:#f8fafc}.state-actionable_long{color:var(--green);font-weight:800}.state-watch_only{color:var(--amber);font-weight:800}.state-no_action{color:var(--red);font-weight:800}.source-collapse summary{cursor:pointer;font-weight:800}.source-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px;margin-top:12px}.source-card{border:1px solid #e5e9f0;border-radius:8px;background:#fbfcff;padding:10px}.source-card a{color:#0a63ce}
+    @media(max-width:900px){.goal-grid,.logic-grid{grid-template-columns:1fr}.level-2,.level-3,.level-4,.level-5{margin-left:0}.qa-card summary{grid-template-columns:auto 1fr auto}.qa-count{display:none}}
+  </style>
+</head>
+<body>
+  <header class="hero"><div class="eyebrow">Live Prediction · AI Factory · 2026-06-02</div><h1>AI 工厂相关投资机会实时研究报告</h1><p class="subtitle">实时模式：使用截至 2026-06-02 可见资料形成产业链、QA、评分和排序；验证窗口至 2026-09-02，最终标的表右侧 label 字段先保留为空。</p></header>
+  <nav class="top-nav"><a href="#goal">当前研究目标</a><a href="#chain">产业链全景</a><a href="#qa">问题下钻</a><a href="#targets">最终标的推荐</a><a href="#sources">来源索引</a></nav>
+  <main class="wrap">
+    <section id="goal" class="section"><h2>当前研究目标</h2><div class="goal-card"><div class="goal-grid">
+      <div class="metric"><span>研究对象</span><strong>AI 工厂相关投资机会</strong></div>
+      <div class="metric"><span>运行模式</span><strong>live_prediction</strong></div>
+      <div class="metric"><span>报告日期</span><strong>2026-06-02</strong></div>
+      <div class="metric"><span>复核日期</span><strong>2026-09-02</strong></div>
+    </div><div class="artifact-card"><div class="artifact-title">当前结论</div>AI 工厂需求已由云收入、AI backlog、GPU/ASIC/HBM/连接网络/服务器/电力基础设施订单共同验证；本次扩展候选池纳入 Marvell、Astera、Credo、Dell、Arista、SK hynix、Samsung、Supermicro 等直接价值捕获载体，但同口径估值/反向 DCF 尚未补齐，因此仍不强行给出可执行做多。</div><div class="artifact-card"><div class="artifact-title">最大不确定性</div>AI 服务货币化和客户预付款能否持续覆盖越来越高的算力、电力、内存和数据中心成本。</div></div></section>
+    <section id="chain" class="section"><h2>产业链全景</h2>
+  <div class="supply-chain-section chain-explain">
+    <p class="chain-plain-summary">AI 工厂不是单一数据中心，而是一条把企业和模型公司的 AI 需求，转换成 GPU/ASIC、HBM、先进制程、网络、电力、散热和云服务收入的资本开支链条。钱先由云厂商和模型客户付给算力平台，再沿着稀缺硬件、电力和交付能力向上游流动。</p>
+    <div class="chain-flow-steps"><b>新手可读的订单、产品和资金流</b><ol><li>模型公司、企业客户和云用户购买训练、推理、智能体和数据服务，形成对算力的真实付费需求。</li><li>微软、Google、Amazon、Meta、Oracle 等云与平台公司把需求转成资本开支、长期云合同、RPO、GPU/Trainium/TPU 等订单。</li><li>订单流向 NVIDIA GPU 平台、Broadcom 定制 ASIC/网络、Micron HBM/数据中心内存、TSMC 先进制程和封装。</li><li>AI 工厂必须接入电网、变压器、UPS、配电、液冷和快速模块化交付，Vertiv、Eaton 等把“能不能按时上线”变成产品和服务收入。</li><li>最终价值捕获取决于谁控制不可替代卡点，谁能把卡点转成毛利率、现金流和可持续订单，而不是谁只拥有宽泛主题暴露。</li></ol></div>
+    <div class="chain-layer-grid"><article class="chain-layer-card"><b>需求与付费层</b><span>AI API、企业智能体、云 AI 平台、模型训练和推理容量</span><p><strong>关键玩家：</strong>Microsoft, Alphabet/Google Cloud, Amazon AWS, Meta, Oracle, OpenAI, Anthropic</p><small>客户付款或预付款进入云合同和 RPO，决定 AI 工厂建设是否有收入回收路径。</small></article><article class="chain-layer-card"><b>云与系统集成层</b><span>GPU 云、Trainium/TPU/自研芯片云、AI 平台、服务器集群和软件栈</span><p><strong>关键玩家：</strong>AWS, Azure, Google Cloud, Oracle Cloud, NVIDIA CUDA/DGX/Blackwell/Rubin ecosystem</p><small>云厂商把收入和长期合同转成 capex，向芯片、内存、网络和数据中心设施下订单。</small></article><article class="chain-layer-card"><b>计算与网络芯片层</b><span>GPU、定制 AI 加速器、AI Ethernet/NVLink/交换芯片、光互连</span><p><strong>关键玩家：</strong>NVIDIA, Broadcom, AMD, Marvell, Coherent, Lumentum, Corning</p><small>GPU 平台和定制 ASIC/网络是算力预算的最大硬件去向，利润来自性能、生态、客户设计绑定和网络扩展。</small></article><article class="chain-layer-card"><b>内存、制造与封装层</b><span>HBM、DDR、eSSD、3nm/5nm/7nm 晶圆、先进封装</span><p><strong>关键玩家：</strong>Micron, SK hynix, Samsung, TSMC</p><small>大模型需要高带宽内存和先进制程，产能、良率、认证和封装排产决定可交付量。</small></article><article class="chain-layer-card"><b>电力、散热与物理交付层</b><span>UPS、配电、变压器、液冷、热管理、模块化电力舱和数据中心服务</span><p><strong>关键玩家：</strong>Vertiv, Eaton, Schneider Electric, Siemens Energy, GE Vernova</p><small>AI 工厂能否通电、散热、快速上线，决定项目收入确认节奏；订单积压和 book-to-bill 是最直接信号。</small></article></div>
+    <div class="chain-map"><table class="chain-table"><thead><tr><th>层级</th><th>产品/服务</th><th>关键玩家</th><th>价值/利润流</th></tr></thead><tbody><tr><td>需求与付费层</td><td>AI API、企业智能体、云 AI 平台、模型训练和推理容量</td><td>Microsoft, Alphabet/Google Cloud, Amazon AWS, Meta, Oracle, OpenAI, Anthropic</td><td>客户付款或预付款进入云合同和 RPO，决定 AI 工厂建设是否有收入回收路径。</td></tr><tr><td>云与系统集成层</td><td>GPU 云、Trainium/TPU/自研芯片云、AI 平台、服务器集群和软件栈</td><td>AWS, Azure, Google Cloud, Oracle Cloud, NVIDIA CUDA/DGX/Blackwell/Rubin ecosystem</td><td>云厂商把收入和长期合同转成 capex，向芯片、内存、网络和数据中心设施下订单。</td></tr><tr><td>计算与网络芯片层</td><td>GPU、定制 AI 加速器、AI Ethernet/NVLink/交换芯片、光互连</td><td>NVIDIA, Broadcom, AMD, Marvell, Coherent, Lumentum, Corning</td><td>GPU 平台和定制 ASIC/网络是算力预算的最大硬件去向，利润来自性能、生态、客户设计绑定和网络扩展。</td></tr><tr><td>内存、制造与封装层</td><td>HBM、DDR、eSSD、3nm/5nm/7nm 晶圆、先进封装</td><td>Micron, SK hynix, Samsung, TSMC</td><td>大模型需要高带宽内存和先进制程，产能、良率、认证和封装排产决定可交付量。</td></tr><tr><td>电力、散热与物理交付层</td><td>UPS、配电、变压器、液冷、热管理、模块化电力舱和数据中心服务</td><td>Vertiv, Eaton, Schneider Electric, Siemens Energy, GE Vernova</td><td>AI 工厂能否通电、散热、快速上线，决定项目收入确认节奏；订单积压和 book-to-bill 是最直接信号。</td></tr></tbody></table></div>
+    <div class="chain-chokepoints"><b>候选瓶颈</b>候选卡点包括 NVIDIA 平台与网络生态、Broadcom 定制 ASIC/AI networking、TSMC 先进制程与先进封装、Micron HBM/数据中心内存、电网接入与变压器、Vertiv/Eaton 电力散热交付。</div>
+    <div class="chain-target-links"><b>标的映射</b>Q2 将逐一测试这些卡点的稀缺性、替代难度、定价权和财务转化；Q4 只把能通过稀缺、错价、盈利弹性、风险控制四维门槛的证券放入更高强度观察。</div>
+  </div>
+</section>
+    <section id="qa" class="section"><h2>问题下钻</h2><details id="q1" class="qa-card level-1" open>
+  <summary><span class="qid">Q1</span><span class="qtitle">需求是否真实兑现？</span><span class="qa-count">3 个子问题</span><span class="chevron">›</span></summary>
+  <div class="qa-body">
+    <div class="qa-block"><div class="block-title">1. 当前结论呈现</div><div class="artifact-card"><div class="artifact-title">回答呈现</div><p>需求真实性较强：云收入、AI 平台 run-rate、GPU/芯片订单、RPO 和电力侧订单同时扩张，显示 AI 工厂不是单一叙事。</p></div></div>
+    <div class="qa-block"><div class="block-title">2. 问题展开（子 QA）</div><div class="child-stack"><details id="q1-1" class="qa-card level-2" open>
+  <summary><span class="qid">Q1.1</span><span class="qtitle">云厂商和模型客户是否已经形成可审计付费需求？</span><span class="qa-count">1 个子问题</span><span class="chevron">›</span></summary>
+  <div class="qa-body">
+    <div class="qa-block"><div class="block-title">1. 当前结论呈现</div><div class="artifact-card"><div class="artifact-title">回答呈现</div><p>Microsoft、Alphabet、Amazon、Meta、Oracle 的收入、backlog、RPO 和 capex 指引共同支持需求已进入付费和合同层。</p></div></div>
+    <div class="qa-block"><div class="block-title">2. 问题展开（子 QA）</div><div class="child-stack"><details id="q1-1-1" class="qa-card level-3" open>
+  <summary><span class="qid">Q1.1.1</span><span class="qtitle">云收入、AI backlog 和长期合同能否证明需求不是一次性 capex 军备竞赛？</span><span class="qa-count">0 个子问题</span><span class="chevron">›</span></summary>
+  <div class="qa-body">
+    <div class="qa-block"><div class="block-title">1. 当前结论呈现</div>
+    <div class="routing">
+      <span class="pill l3-skill">Skill: financial-statement-analysis</span>
+      <span class="pill l3-execution-status">Execution: verified_with_caveats</span>
+      <span class="pill l3-score-component">Score Component: future_space</span>
+      <span class="pill l3-decision-use">Decision Use: 判断该机制是否足以影响 AI 工厂投资机会的排序和行动状态。</span>
+    </div>
+    <div class="artifact-card">
+      <div class="artifact-title">回答呈现</div>
+      <div class="logic-grid">
+        <div class="logic-card"><b>事实</b><ul><li>Microsoft 披露 AI business 年化收入 run-rate 超过 370 亿美元且同比 +123%；Alphabet 披露 Google Cloud 收入 200 亿美元、同比 +63%，Cloud backlog 超过 4600 亿美元。</li><li>Amazon 披露自研芯片业务年化收入 run-rate 超过 200 亿美元、过去 12 个月 landed 210 万+ AI chips，并披露 OpenAI/Anthropic 多 GW 级 Trainium 承诺。</li><li>Oracle Q3 FY26 RPO 达 5530 亿美元，同比 +325%，多数增量来自大规模 AI 合同；Meta 将 2026 capex 指引上调至 1250-1450 亿美元。</li></ul></div>
+        <div class="logic-card"><b>推理</b><ul><li>付费收入、长期云合同和芯片部署同时出现，说明需求已从“预期建设”进入“合同与收入确认”阶段。</li></ul></div>
+        <div class="logic-card"><b>判断</b><p>需求真实性可上抛到 Q1，但仍需防止客户预付款/融资驱动的合同在融资收紧时被重谈。</p></div>
+        <div class="logic-card"><b>触发器</b><ul><li>下一季云 AI 收入和 RPO 增速显著低于 capex 增速；主要模型客户融资或付费承诺转弱。</li></ul></div>
+      </div>
+    </div><div class="source-chips"><a class="source-chip" href="https://www.microsoft.com/en-us/Investor/earnings/FY-2026-Q3/press-release-webcast">S2</a><a class="source-chip" href="https://www.sec.gov/Archives/edgar/data/1652044/000165204426000043/googexhibit991q12026.htm">S3</a><a class="source-chip" href="https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-First-Quarter-2026-Results/">S4</a><a class="source-chip" href="https://s2.q4cdn.com/299287126/files/doc_earnings/2026/q1/earnings-result/AMZN-Q1-2026-Earnings-Release.pdf">S5</a><a class="source-chip" href="https://investor.oracle.com/investor-news/news-details/2026/Oracle-Announces-Fiscal-Year-2026-Third-Quarter-Financial-Results/default.aspx">S6</a></div></div>
+    <div class="qa-block"><div class="block-title">2. 问题展开（子 QA）</div><div class="child-stack"><p class="muted">已到当前最深研究单元，下一步通过来源更新和复核触发器继续验证。</p></div></div>
+    <div class="qa-block"><div class="block-title">3. 待补充的问题</div><p>缺少非头部模型公司和普通企业客户的分层 ROI 数据；Oracle RPO 中客户预付款/客户自供 GPU 的合同质量需要继续拆分。</p></div>
+  </div>
+</details></div></div>
+    <div class="qa-block"><div class="block-title">3. 待补充的问题</div><p>等待子问题继续补证。</p></div>
+  </div>
+</details>
+<details id="q1-2" class="qa-card level-2" open>
+  <summary><span class="qid">Q1.2</span><span class="qtitle">算力硬件收入是否已经兑现到平台公司？</span><span class="qa-count">1 个子问题</span><span class="chevron">›</span></summary>
+  <div class="qa-body">
+    <div class="qa-block"><div class="block-title">1. 当前结论呈现</div><div class="artifact-card"><div class="artifact-title">回答呈现</div><p>NVIDIA Q1 FY27 Data Center 收入和网络收入继续创新高，说明下游 capex 已转成硬件收入。</p></div></div>
+    <div class="qa-block"><div class="block-title">2. 问题展开（子 QA）</div><div class="child-stack"><details id="q1-2-1" class="qa-card level-3" open>
+  <summary><span class="qid">Q1.2.1</span><span class="qtitle">NVIDIA Data Center 收入和网络增长是否证明 AI 工厂建设在交付？</span><span class="qa-count">0 个子问题</span><span class="chevron">›</span></summary>
+  <div class="qa-body">
+    <div class="qa-block"><div class="block-title">1. 当前结论呈现</div>
+    <div class="routing">
+      <span class="pill l3-skill">Skill: financial-statement-analysis</span>
+      <span class="pill l3-execution-status">Execution: verified_with_caveats</span>
+      <span class="pill l3-score-component">Score Component: future_space</span>
+      <span class="pill l3-decision-use">Decision Use: 判断该机制是否足以影响 AI 工厂投资机会的排序和行动状态。</span>
+    </div>
+    <div class="artifact-card">
+      <div class="artifact-title">回答呈现</div>
+      <div class="logic-grid">
+        <div class="logic-card"><b>事实</b><ul><li>NVIDIA Q1 FY27 收入 816.15 亿美元，同比 +85%；Data Center 收入 752 亿美元，同比 +92%。</li><li>旧口径下 Data Center compute 收入 604 亿美元，同比 +77%、环比 +18%；Data Center networking 收入 148 亿美元，同比 +199%、环比 +35%。</li><li>NVIDIA Q2 FY27 收入指引 910 亿美元±2%，且不假设中国 Data Center compute 收入。</li></ul></div>
+        <div class="logic-card"><b>推理</b><ul><li>算力平台和 AI 网络同时高速增长，说明 AI 工厂不仅买 GPU，也在构建更大的集群互联。</li></ul></div>
+        <div class="logic-card"><b>判断</b><p>NVIDIA 是 AI 工厂计算平台最强可见卡点，但极高收入基数和中国收入排除使增速持续性必须按季度复核。</p></div>
+        <div class="logic-card"><b>触发器</b><ul><li>Data Center networking 增速明显放缓；Q2/Q3 指引低于新增供应预期；中国以外需求无法弥补限制。</li></ul></div>
+      </div>
+    </div><div class="source-chips"><a class="source-chip" href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-First-Quarter-Fiscal-2027/default.aspx">S1</a></div></div>
+    <div class="qa-block"><div class="block-title">2. 问题展开（子 QA）</div><div class="child-stack"><p class="muted">已到当前最深研究单元，下一步通过来源更新和复核触发器继续验证。</p></div></div>
+    <div class="qa-block"><div class="block-title">3. 待补充的问题</div><p>平台需求高度集中于少数大客户；中国出口限制和客户自研芯片可能改变长期增量分配。</p></div>
+  </div>
+</details></div></div>
+    <div class="qa-block"><div class="block-title">3. 待补充的问题</div><p>等待子问题继续补证。</p></div>
+  </div>
+</details>
+<details id="q1-3" class="qa-card level-2" open>
+  <summary><span class="qid">Q1.3</span><span class="qtitle">电力、散热和电气订单是否验证物理建设？</span><span class="qa-count">1 个子问题</span><span class="chevron">›</span></summary>
+  <div class="qa-body">
+    <div class="qa-block"><div class="block-title">1. 当前结论呈现</div><div class="artifact-card"><div class="artifact-title">回答呈现</div><p>Vertiv、Eaton 与 IEA 的订单和电力数据说明需求正在形成物理数据中心，而不是仅停留在软件口号。</p></div></div>
+    <div class="qa-block"><div class="block-title">2. 问题展开（子 QA）</div><div class="child-stack"><details id="q1-3-1" class="qa-card level-3" open>
+  <summary><span class="qid">Q1.3.1</span><span class="qtitle">电力与散热侧订单能否证明 AI 工厂真实落地？</span><span class="qa-count">0 个子问题</span><span class="chevron">›</span></summary>
+  <div class="qa-body">
+    <div class="qa-block"><div class="block-title">1. 当前结论呈现</div>
+    <div class="routing">
+      <span class="pill l3-skill">Skill: supply-chain-chokepoint-analysis</span>
+      <span class="pill l3-execution-status">Execution: verified_with_caveats</span>
+      <span class="pill l3-score-component">Score Component: future_space</span>
+      <span class="pill l3-decision-use">Decision Use: 判断该机制是否足以影响 AI 工厂投资机会的排序和行动状态。</span>
+    </div>
+    <div class="artifact-card">
+      <div class="artifact-title">回答呈现</div>
+      <div class="logic-grid">
+        <div class="logic-card"><b>事实</b><ul><li>Vertiv Q1 2026 net sales 26.5 亿美元，同比 +30%，Americas organic sales 因数据中心需求同比 +44%。</li><li>Eaton Electrical Americas Q1 sales 36 亿美元，同比 +20%，滚动平均订单 organic +42%，backlog +44%；Electrical Global backlog +73%。</li><li>IEA 指出 2025 数据中心用电 +17%，AI-focused data centers 增长更快，2030 数据中心用电预计翻倍。</li></ul></div>
+        <div class="logic-card"><b>推理</b><ul><li>电力、散热和配电订单通常比芯片订单更贴近项目开工/上线，因此可作为 AI 工厂物理建设的交叉验证。</li></ul></div>
+        <div class="logic-card"><b>判断</b><p>物理建设侧支持 Q1，但项目并网和审批拖延会让收入确认节奏波动。</p></div>
+        <div class="logic-card"><b>触发器</b><ul><li>Vertiv/Eaton book-to-bill 回落至 1 附近；IEA 或电力机构提示项目取消/延迟占比上升。</li></ul></div>
+      </div>
+    </div><div class="source-chips"><a class="source-chip" href="https://investors.vertiv.com/news/news-details/2026/Vertiv-Reports-Strong-First-Quarter-with-Diluted-EPS-Growth-of-136-Adjusted-Diluted-EPS-Growth-of-83-Raises-Full-Year-Guidance/default.aspx">S10</a><a class="source-chip" href="https://www.eaton.com/us/en-us/company/news-insights/news-releases/2026/eaton-reports-record-first-quarter-2026-results.html">S11</a><a class="source-chip" href="https://www.iea.org/news/data-centre-electricity-use-surged-in-2025-even-with-tightening-bottlenecks-driving-a-scramble-for-solutions">S12</a></div></div>
+    <div class="qa-block"><div class="block-title">2. 问题展开（子 QA）</div><div class="child-stack"><p class="muted">已到当前最深研究单元，下一步通过来源更新和复核触发器继续验证。</p></div></div>
+    <div class="qa-block"><div class="block-title">3. 待补充的问题</div><p>缺少按 AI/非 AI 数据中心拆分的 Vertiv/Eaton 订单；IEA 是宏观预测，不能直接映射到单家公司收入。</p></div>
+  </div>
+</details></div></div>
+    <div class="qa-block"><div class="block-title">3. 待补充的问题</div><p>等待子问题继续补证。</p></div>
+  </div>
+</details></div></div>
+    <div class="qa-block"><div class="block-title">3. 待补充的问题</div><p>等待子问题继续补证。</p></div>
+  </div>
+</details>
+<details id="q2" class="qa-card level-1" open>
+  <summary><span class="qid">Q2</span><span class="qtitle">哪些卡点能捕获增量利润？</span><span class="qa-count">3 个子问题</span><span class="chevron">›</span></summary>
+  <div class="qa-body">
+    <div class="qa-block"><div class="block-title">1. 当前结论呈现</div><div class="artifact-card"><div class="artifact-title">回答呈现</div><p>最强卡点集中在平台 GPU/网络、定制 ASIC、HBM/数据中心内存、先进制程/封装，以及电力散热交付；但每个卡点的定价权和估值赔率不同。</p></div></div>
+    <div class="qa-block"><div class="block-title">2. 问题展开（子 QA）</div><div class="child-stack"><details id="q2-1" class="qa-card level-2" open>
+  <summary><span class="qid">Q2.1</span><span class="qtitle">计算平台与网络卡点是否不可替代？</span><span class="qa-count">2 个子问题</span><span class="chevron">›</span></summary>
+  <div class="qa-body">
+    <div class="qa-block"><div class="block-title">1. 当前结论呈现</div><div class="artifact-card"><div class="artifact-title">回答呈现</div><p>NVIDIA 仍是通用 GPU 平台卡点，Broadcom 则是自研 ASIC 与 AI networking 迁移的受益卡点。</p></div></div>
+    <div class="qa-block"><div class="block-title">2. 问题展开（子 QA）</div><div class="child-stack"><details id="q2-1-1" class="qa-card level-3" open>
+  <summary><span class="qid">Q2.1.1</span><span class="qtitle">NVIDIA 平台和 AI networking 是否仍有强卡点属性？</span><span class="qa-count">0 个子问题</span><span class="chevron">›</span></summary>
+  <div class="qa-body">
+    <div class="qa-block"><div class="block-title">1. 当前结论呈现</div>
+    <div class="routing">
+      <span class="pill l3-skill">Skill: supply-chain-chokepoint-analysis</span>
+      <span class="pill l3-execution-status">Execution: verified_with_caveats</span>
+      <span class="pill l3-score-component">Score Component: chokepoint_strength</span>
+      <span class="pill l3-decision-use">Decision Use: 判断该机制是否足以影响 AI 工厂投资机会的排序和行动状态。</span>
+    </div>
+    <div class="artifact-card">
+      <div class="artifact-title">回答呈现</div>
+      <div class="logic-grid">
+        <div class="logic-card"><b>事实</b><ul><li>NVIDIA 将 Data Center 拆为 Hyperscale 与 ACIE，ACIE 覆盖 AI Clouds、Industrial、Enterprise 等 purpose-built AI factories。</li><li>Data Center networking Q1 FY27 收入 148 亿美元，同比 +199%，增长快于 compute。</li><li>NVIDIA 同期发布/推进 Vera Rubin、BlueField-4 STX、Dynamo 1.0 和光互连合作，强化系统级平台。</li></ul></div>
+        <div class="logic-card"><b>推理</b><ul><li>卡点正在从单颗 GPU 延伸到整机、网络、存储加速、软件和生态，替代难度高于普通芯片供应。</li></ul></div>
+        <div class="logic-card"><b>判断</b><p>NVIDIA 稀缺性强，但估值和客户自研 ASIC 对 mispricing 形成压力。</p></div>
+        <div class="logic-card"><b>触发器</b><ul><li>Broadcom/AMD/自研芯片增速持续高于 NVIDIA compute；NVIDIA networking 增速断崖式下滑。</li></ul></div>
+      </div>
+    </div><div class="source-chips"><a class="source-chip" href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-First-Quarter-Fiscal-2027/default.aspx">S1</a></div></div>
+    <div class="qa-block"><div class="block-title">2. 问题展开（子 QA）</div><div class="child-stack"><p class="muted">已到当前最深研究单元，下一步通过来源更新和复核触发器继续验证。</p></div></div>
+    <div class="qa-block"><div class="block-title">3. 待补充的问题</div><p>定制 ASIC 路线可能在大客户推理工作负载中替代部分通用 GPU；中国限制仍是区域风险。</p></div>
+  </div>
+</details>
+<details id="q2-1-2" class="qa-card level-3" open>
+  <summary><span class="qid">Q2.1.2</span><span class="qtitle">Broadcom 定制 ASIC 和 AI networking 是否成为第二条稀缺路线？</span><span class="qa-count">0 个子问题</span><span class="chevron">›</span></summary>
+  <div class="qa-body">
+    <div class="qa-block"><div class="block-title">1. 当前结论呈现</div>
+    <div class="routing">
+      <span class="pill l3-skill">Skill: company-exposure-analysis</span>
+      <span class="pill l3-execution-status">Execution: verified_with_caveats</span>
+      <span class="pill l3-score-component">Score Component: chokepoint_strength</span>
+      <span class="pill l3-decision-use">Decision Use: 判断该机制是否足以影响 AI 工厂投资机会的排序和行动状态。</span>
+    </div>
+    <div class="artifact-card">
+      <div class="artifact-title">回答呈现</div>
+      <div class="logic-grid">
+        <div class="logic-card"><b>事实</b><ul><li>Broadcom Q1 FY26 AI revenue 84 亿美元，同比 +106%，来自 custom AI accelerators 和 AI networking。</li><li>Broadcom 指引 Q2 FY26 AI semiconductor revenue 107 亿美元，Q2 总收入约 220 亿美元，同比 +47%。</li><li>Amazon 自研芯片业务年化收入 run-rate 超过 200 亿美元，并获得 OpenAI/Anthropic 多 GW 级 Trainium 承诺。</li></ul></div>
+        <div class="logic-card"><b>推理</b><ul><li>自研 AI 芯片和网络正在从实验路线变成量产采购路线，Broadcom 的定制硅和网络能力映射到大客户降本需求。</li></ul></div>
+        <div class="logic-card"><b>判断</b><p>Broadcom 卡点强，但客户集中和项目制交付使收入节奏更脆。</p></div>
+        <div class="logic-card"><b>触发器</b><ul><li>Q2 AI semiconductor 指引未兑现；大型 XPU 客户订单推迟或转向内部/其他供应商。</li></ul></div>
+      </div>
+    </div><div class="source-chips"><a class="source-chip" href="https://investors.broadcom.com/node/63976/pdf">S8</a><a class="source-chip" href="https://s2.q4cdn.com/299287126/files/doc_earnings/2026/q1/earnings-result/AMZN-Q1-2026-Earnings-Release.pdf">S5</a></div></div>
+    <div class="qa-block"><div class="block-title">2. 问题展开（子 QA）</div><div class="child-stack"><p class="muted">已到当前最深研究单元，下一步通过来源更新和复核触发器继续验证。</p></div></div>
+    <div class="qa-block"><div class="block-title">3. 待补充的问题</div><p>材料未验证每个定制客户的毛利率、合同期限和取消条款；Amazon 自研成功也可能把部分价值留在云厂商内部。</p></div>
+  </div>
+</details></div></div>
+    <div class="qa-block"><div class="block-title">3. 待补充的问题</div><p>等待子问题继续补证。</p></div>
+  </div>
+</details>
+<details id="q2-2" class="qa-card level-2" open>
+  <summary><span class="qid">Q2.2</span><span class="qtitle">HBM、内存、先进制程和封装是否控制交付？</span><span class="qa-count">2 个子问题</span><span class="chevron">›</span></summary>
+  <div class="qa-body">
+    <div class="qa-block"><div class="block-title">1. 当前结论呈现</div><div class="artifact-card"><div class="artifact-title">回答呈现</div><p>Micron 与 TSMC 披露显示，AI 工厂卡点不仅在 GPU，也在高带宽内存、数据中心内存和先进制程产能。</p></div></div>
+    <div class="qa-block"><div class="block-title">2. 问题展开（子 QA）</div><div class="child-stack"><details id="q2-2-1" class="qa-card level-3" open>
+  <summary><span class="qid">Q2.2.1</span><span class="qtitle">Micron 的云内存和数据中心内存是否具备财务弹性？</span><span class="qa-count">0 个子问题</span><span class="chevron">›</span></summary>
+  <div class="qa-body">
+    <div class="qa-block"><div class="block-title">1. 当前结论呈现</div>
+    <div class="routing">
+      <span class="pill l3-skill">Skill: financial-statement-analysis</span>
+      <span class="pill l3-execution-status">Execution: verified_with_caveats</span>
+      <span class="pill l3-score-component">Score Component: chokepoint_strength</span>
+      <span class="pill l3-decision-use">Decision Use: 判断该机制是否足以影响 AI 工厂投资机会的排序和行动状态。</span>
+    </div>
+    <div class="artifact-card">
+      <div class="artifact-title">回答呈现</div>
+      <div class="logic-grid">
+        <div class="logic-card"><b>事实</b><ul><li>Micron FY26 Q2 Cloud Memory BU 收入 77.49 亿美元，gross margin 74%，operating margin 66%。</li><li>Core Data Center BU 收入 56.87 亿美元，gross margin 74%，operating margin 67%。</li><li>Micron 指引 FY26 Q3 收入 335 亿美元±7.5 亿美元，gross margin 约 81%。</li></ul></div>
+        <div class="logic-card"><b>推理</b><ul><li>AI 工厂对 HBM、DRAM 和 eSSD 的需求已转化为高毛利和高经营利润率，说明内存从周期品局部升级为战略稀缺品。</li></ul></div>
+        <div class="logic-card"><b>判断</b><p>Micron 盈利弹性强，但内存扩产和 ASP 周期反转会迅速削弱风险控制。</p></div>
+        <div class="logic-card"><b>触发器</b><ul><li>HBM/Cloud Memory margin 连续下滑；库存天数或 capex 上升快于收入；客户转向替代架构降低 HBM attach。</li></ul></div>
+      </div>
+    </div><div class="source-chips"><a class="source-chip" href="https://micron.gcs-web.com/news-releases/news-release-details/micron-technology-inc-reports-results-second-quarter-fiscal-2026">S9</a></div></div>
+    <div class="qa-block"><div class="block-title">2. 问题展开（子 QA）</div><div class="child-stack"><p class="muted">已到当前最深研究单元，下一步通过来源更新和复核触发器继续验证。</p></div></div>
+    <div class="qa-block"><div class="block-title">3. 待补充的问题</div><p>材料未拆出 HBM 具体收入、ASP、客户集中和长期供货协议；高毛利可能吸引供给快速响应。</p></div>
+  </div>
+</details>
+<details id="q2-2-2" class="qa-card level-3" open>
+  <summary><span class="qid">Q2.2.2</span><span class="qtitle">TSMC 先进制程是否是最难替代的制造卡点？</span><span class="qa-count">0 个子问题</span><span class="chevron">›</span></summary>
+  <div class="qa-body">
+    <div class="qa-block"><div class="block-title">1. 当前结论呈现</div>
+    <div class="routing">
+      <span class="pill l3-skill">Skill: company-exposure-analysis</span>
+      <span class="pill l3-execution-status">Execution: verified_with_caveats</span>
+      <span class="pill l3-score-component">Score Component: chokepoint_strength</span>
+      <span class="pill l3-decision-use">Decision Use: 判断该机制是否足以影响 AI 工厂投资机会的排序和行动状态。</span>
+    </div>
+    <div class="artifact-card">
+      <div class="artifact-title">回答呈现</div>
+      <div class="logic-grid">
+        <div class="logic-card"><b>事实</b><ul><li>TSMC Q1 2026 收入 NT$1.1341 兆，同比 +35.1%；美元收入 359 亿美元，同比 +40.6%。</li><li>Q1 gross margin 66.2%，operating margin 58.1%，net margin 50.5%。</li><li>3nm、5nm、7nm 分别占 wafer revenue 25%、36%、13%，7nm 及以下先进制程合计 74%。</li></ul></div>
+        <div class="logic-card"><b>推理</b><ul><li>AI GPU、ASIC 和高性能网络芯片都依赖先进制程，TSMC 的制程组合和高利润率说明其制造卡点有强财务转化。</li></ul></div>
+        <div class="logic-card"><b>判断</b><p>TSMC 稀缺性极强，但地缘风险和 ADR/本地股估值口径需要单独压低风险控制分。</p></div>
+        <div class="logic-card"><b>触发器</b><ul><li>先进制程占比或毛利率回落；客户转单到其他 foundry；地缘事件影响产能或估值折价。</li></ul></div>
+      </div>
+    </div><div class="source-chips"><a class="source-chip" href="https://investor.tsmc.com/english/encrypt/files/encrypt_file/qr/phase4_reports/2026-04/bd8eb0403902fdea59a2f5e390e48d010b50edc9/1Q26%20EarningsRelease_WoG.pdf">S7</a></div></div>
+    <div class="qa-block"><div class="block-title">2. 问题展开（子 QA）</div><div class="child-stack"><p class="muted">已到当前最深研究单元，下一步通过来源更新和复核触发器继续验证。</p></div></div>
+    <div class="qa-block"><div class="block-title">3. 待补充的问题</div><p>材料没有 CoWoS/先进封装产能的具体瓶颈表；台湾地缘和能源风险不是本材料包能完全量化的。</p></div>
+  </div>
+</details></div></div>
+    <div class="qa-block"><div class="block-title">3. 待补充的问题</div><p>等待子问题继续补证。</p></div>
+  </div>
+</details>
+<details id="q2-3" class="qa-card level-2" open>
+  <summary><span class="qid">Q2.3</span><span class="qtitle">电力、散热和快速交付能否捕获系统级利润？</span><span class="qa-count">1 个子问题</span><span class="chevron">›</span></summary>
+  <div class="qa-body">
+    <div class="qa-block"><div class="block-title">1. 当前结论呈现</div><div class="artifact-card"><div class="artifact-title">回答呈现</div><p>Vertiv、Eaton 的订单和积压证明电力散热是 AI 工厂上线的真实瓶颈，但估值和项目延迟风险使行动状态保持保守。</p></div></div>
+    <div class="qa-block"><div class="block-title">2. 问题展开（子 QA）</div><div class="child-stack"><details id="q2-3-1" class="qa-card level-3" open>
+  <summary><span class="qid">Q2.3.1</span><span class="qtitle">Vertiv/Eaton 是否把电力散热瓶颈转化成订单和利润率？</span><span class="qa-count">0 个子问题</span><span class="chevron">›</span></summary>
+  <div class="qa-body">
+    <div class="qa-block"><div class="block-title">1. 当前结论呈现</div>
+    <div class="routing">
+      <span class="pill l3-skill">Skill: supply-chain-chokepoint-analysis</span>
+      <span class="pill l3-execution-status">Execution: verified_with_caveats</span>
+      <span class="pill l3-score-component">Score Component: chokepoint_strength</span>
+      <span class="pill l3-decision-use">Decision Use: 判断该机制是否足以影响 AI 工厂投资机会的排序和行动状态。</span>
+    </div>
+    <div class="artifact-card">
+      <div class="artifact-title">回答呈现</div>
+      <div class="logic-grid">
+        <div class="logic-card"><b>事实</b><ul><li>Vertiv Q1 sales +30%，organic +23%，adjusted operating margin 20.8%，同比 +430bp，FY2026 organic growth 指引 29%-31%。</li><li>Eaton Electrical Americas orders rolling average organic +42%、backlog +44%；Electrical Global backlog +73%；Electrical businesses book-to-bill 1.2。</li><li>IEA 指出 gas turbines、transformers、advanced chips、IT components 供应链收紧，项目管线压迫 grid connections。</li></ul></div>
+        <div class="logic-card"><b>推理</b><ul><li>数据中心电力散热不是可选配套，而是上线瓶颈；订单、backlog、margin 同时改善，说明系统级基础设施商可捕获价值。</li></ul></div>
+        <div class="logic-card"><b>判断</b><p>Vertiv/Eaton 是 AI 工厂物理瓶颈受益者，但 direct AI revenue 口径不完整，估值赔率需保守。</p></div>
+        <div class="logic-card"><b>触发器</b><ul><li>book-to-bill 低于 1；backlog 增速连续两个季度回落；大型数据中心项目延期或取消。</li></ul></div>
+      </div>
+    </div><div class="source-chips"><a class="source-chip" href="https://investors.vertiv.com/news/news-details/2026/Vertiv-Reports-Strong-First-Quarter-with-Diluted-EPS-Growth-of-136-Adjusted-Diluted-EPS-Growth-of-83-Raises-Full-Year-Guidance/default.aspx">S10</a><a class="source-chip" href="https://www.eaton.com/us/en-us/company/news-insights/news-releases/2026/eaton-reports-record-first-quarter-2026-results.html">S11</a><a class="source-chip" href="https://www.iea.org/news/data-centre-electricity-use-surged-in-2025-even-with-tightening-bottlenecks-driving-a-scramble-for-solutions">S12</a></div></div>
+    <div class="qa-block"><div class="block-title">2. 问题展开（子 QA）</div><div class="child-stack"><p class="muted">已到当前最深研究单元，下一步通过来源更新和复核触发器继续验证。</p></div></div>
+    <div class="qa-block"><div class="block-title">3. 待补充的问题</div><p>订单未完全按 AI 项目披露；若项目并网慢、客户推迟建设，订单转收入节奏会放缓。</p></div>
+  </div>
+</details></div></div>
+    <div class="qa-block"><div class="block-title">3. 待补充的问题</div><p>等待子问题继续补证。</p></div>
+  </div>
+</details></div></div>
+    <div class="qa-block"><div class="block-title">3. 待补充的问题</div><p>等待子问题继续补证。</p></div>
+  </div>
+</details>
+<details id="q3" class="qa-card level-1" open>
+  <summary><span class="qid">Q3</span><span class="qtitle">反证、定价和风险控制是什么？</span><span class="qa-count">3 个子问题</span><span class="chevron">›</span></summary>
+  <div class="qa-body">
+    <div class="qa-block"><div class="block-title">1. 当前结论呈现</div><div class="artifact-card"><div class="artifact-title">回答呈现</div><p>最大的反证不是“AI 需求消失”，而是 AI 服务收入跟不上 capex、物理供给拖慢上线、估值已经透支增长。</p></div></div>
+    <div class="qa-block"><div class="block-title">2. 问题展开（子 QA）</div><div class="child-stack"><details id="q3-1" class="qa-card level-2" open>
+  <summary><span class="qid">Q3.1</span><span class="qtitle">AI 收入和客户合同能否覆盖资本开支？</span><span class="qa-count">1 个子问题</span><span class="chevron">›</span></summary>
+  <div class="qa-body">
+    <div class="qa-block"><div class="block-title">1. 当前结论呈现</div><div class="artifact-card"><div class="artifact-title">回答呈现</div><p>收入和合同增长强，但 Meta/Oracle/Amazon 的披露提示组件涨价、预付款、客户自供 GPU 和融资质量是核心风险。</p></div></div>
+    <div class="qa-block"><div class="block-title">2. 问题展开（子 QA）</div><div class="child-stack"><details id="q3-1-1" class="qa-card level-3" open>
+  <summary><span class="qid">Q3.1.1</span><span class="qtitle">capex ROI 是否足够支撑云厂商继续扩建 AI 工厂？</span><span class="qa-count">0 个子问题</span><span class="chevron">›</span></summary>
+  <div class="qa-body">
+    <div class="qa-block"><div class="block-title">1. 当前结论呈现</div>
+    <div class="routing">
+      <span class="pill l3-skill">Skill: valuation-analysis</span>
+      <span class="pill l3-execution-status">Execution: verified_with_caveats</span>
+      <span class="pill l3-score-component">Score Component: disconfirming_risk_control</span>
+      <span class="pill l3-decision-use">Decision Use: 判断该机制是否足以影响 AI 工厂投资机会的排序和行动状态。</span>
+    </div>
+    <div class="artifact-card">
+      <div class="artifact-title">回答呈现</div>
+      <div class="logic-grid">
+        <div class="logic-card"><b>事实</b><ul><li>Microsoft AI business run-rate 超 370 亿美元、Alphabet Cloud backlog 超 4600 亿美元、Amazon Bedrock spend 环比 +170%，支持收入侧增长。</li><li>Meta 上调 2026 capex 至 1250-1450 亿美元并提到更高组件价格；Oracle 指出多数大规模 AI 合同由客户预付或自供 GPU 支撑。</li></ul></div>
+        <div class="logic-card"><b>推理</b><ul><li>收入增长与合同增长支持 capex，但“客户预付款/自供 GPU/组件涨价”说明产业链利润可能来自客户融资而非稳定 ROI。</li></ul></div>
+        <div class="logic-card"><b>判断</b><p>ROI 风险可控但未消除；对直接受益标的应绑定下一季云 AI 收入、RPO 质量和 capex 纪律。</p></div>
+        <div class="logic-card"><b>触发器</b><ul><li>云厂商下调 capex 或强调消化已有容量；AI 服务收入增速低于 capex 增速两个季度。</li></ul></div>
+      </div>
+    </div><div class="source-chips"><a class="source-chip" href="https://www.microsoft.com/en-us/Investor/earnings/FY-2026-Q3/press-release-webcast">S2</a><a class="source-chip" href="https://www.sec.gov/Archives/edgar/data/1652044/000165204426000043/googexhibit991q12026.htm">S3</a><a class="source-chip" href="https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-First-Quarter-2026-Results/">S4</a><a class="source-chip" href="https://s2.q4cdn.com/299287126/files/doc_earnings/2026/q1/earnings-result/AMZN-Q1-2026-Earnings-Release.pdf">S5</a><a class="source-chip" href="https://investor.oracle.com/investor-news/news-details/2026/Oracle-Announces-Fiscal-Year-2026-Third-Quarter-Financial-Results/default.aspx">S6</a></div></div>
+    <div class="qa-block"><div class="block-title">2. 问题展开（子 QA）</div><div class="child-stack"><p class="muted">已到当前最深研究单元，下一步通过来源更新和复核触发器继续验证。</p></div></div>
+    <div class="qa-block"><div class="block-title">3. 待补充的问题</div><p>缺少客户级 gross margin、GPU utilization、AI 服务单位经济和推理收入占比。</p></div>
+  </div>
+</details></div></div>
+    <div class="qa-block"><div class="block-title">3. 待补充的问题</div><p>等待子问题继续补证。</p></div>
+  </div>
+</details>
+<details id="q3-2" class="qa-card level-2" open>
+  <summary><span class="qid">Q3.2</span><span class="qtitle">物理供给和政策风险会不会限制交付？</span><span class="qa-count">1 个子问题</span><span class="chevron">›</span></summary>
+  <div class="qa-body">
+    <div class="qa-block"><div class="block-title">1. 当前结论呈现</div><div class="artifact-card"><div class="artifact-title">回答呈现</div><p>IEA 明确点名电力设备、先进芯片、IT 组件和 grid connection 约束，NVIDIA 中国收入排除也提示地缘风险。</p></div></div>
+    <div class="qa-block"><div class="block-title">2. 问题展开（子 QA）</div><div class="child-stack"><details id="q3-2-1" class="qa-card level-3" open>
+  <summary><span class="qid">Q3.2.1</span><span class="qtitle">电网、变压器、先进芯片和出口限制是否构成硬反证？</span><span class="qa-count">0 个子问题</span><span class="chevron">›</span></summary>
+  <div class="qa-body">
+    <div class="qa-block"><div class="block-title">1. 当前结论呈现</div>
+    <div class="routing">
+      <span class="pill l3-skill">Skill: news-event-analysis</span>
+      <span class="pill l3-execution-status">Execution: verified_with_caveats</span>
+      <span class="pill l3-score-component">Score Component: disconfirming_risk_control</span>
+      <span class="pill l3-decision-use">Decision Use: 判断该机制是否足以影响 AI 工厂投资机会的排序和行动状态。</span>
+    </div>
+    <div class="artifact-card">
+      <div class="artifact-title">回答呈现</div>
+      <div class="logic-grid">
+        <div class="logic-card"><b>事实</b><ul><li>IEA 指出 gas turbines、transformers、advanced chips、IT components 供应链过去一年收紧，数据中心项目压迫 planning、regulatory systems 和 grid connections。</li><li>IEA 还指出 AI data centers 有快速且大幅的电力波动，现场燃气电厂也有技术和财务门槛。</li><li>NVIDIA Q2 FY27 指引不假设中国 Data Center compute 收入。</li></ul></div>
+        <div class="logic-card"><b>推理</b><ul><li>AI 工厂增长的限制正在从芯片短缺扩展到电网、能源、审批和地缘政策。</li></ul></div>
+        <div class="logic-card"><b>判断</b><p>这些反证不会否定需求，但会改变收入确认速度、订单可靠性和估值容忍度。</p></div>
+        <div class="logic-card"><b>触发器</b><ul><li>并网审批延期明显上升；美国/中国进一步限制先进 AI 芯片；大型项目因电力成本或社区反对取消。</li></ul></div>
+      </div>
+    </div><div class="source-chips"><a class="source-chip" href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-First-Quarter-Fiscal-2027/default.aspx">S1</a><a class="source-chip" href="https://www.iea.org/news/data-centre-electricity-use-surged-in-2025-even-with-tightening-bottlenecks-driving-a-scramble-for-solutions">S12</a></div></div>
+    <div class="qa-block"><div class="block-title">2. 问题展开（子 QA）</div><div class="child-stack"><p class="muted">已到当前最深研究单元，下一步通过来源更新和复核触发器继续验证。</p></div></div>
+    <div class="qa-block"><div class="block-title">3. 待补充的问题</div><p>缺少地区级并网排队、变压器交期、燃气轮机交期与项目取消率。</p></div>
+  </div>
+</details></div></div>
+    <div class="qa-block"><div class="block-title">3. 待补充的问题</div><p>等待子问题继续补证。</p></div>
+  </div>
+</details>
+<details id="q3-3" class="qa-card level-2" open>
+  <summary><span class="qid">Q3.3</span><span class="qtitle">当前估值是否已经透支增长？</span><span class="qa-count">1 个子问题</span><span class="chevron">›</span></summary>
+  <div class="qa-body">
+    <div class="qa-block"><div class="block-title">1. 当前结论呈现</div><div class="artifact-card"><div class="artifact-title">回答呈现</div><p>本次无法形成完整同口径反向 DCF，因此所有目标的 mispricing 分数保守处理，避免把强主题误判为强赔率。</p></div></div>
+    <div class="qa-block"><div class="block-title">2. 问题展开（子 QA）</div><div class="child-stack"><details id="q3-3-1" class="qa-card level-3" open>
+  <summary><span class="qid">Q3.3.1</span><span class="qtitle">没有完整估值模型时如何控制错价判断？</span><span class="qa-count">0 个子问题</span><span class="chevron">›</span></summary>
+  <div class="qa-body">
+    <div class="qa-block"><div class="block-title">1. 当前结论呈现</div>
+    <div class="routing">
+      <span class="pill l3-skill">Skill: valuation-analysis</span>
+      <span class="pill l3-execution-status">Execution: verified_with_caveats</span>
+      <span class="pill l3-score-component">Score Component: valuation_odds</span>
+      <span class="pill l3-decision-use">Decision Use: 判断该机制是否足以影响 AI 工厂投资机会的排序和行动状态。</span>
+    </div>
+    <div class="artifact-card">
+      <div class="artifact-title">回答呈现</div>
+      <div class="logic-grid">
+        <div class="logic-card"><b>事实</b><ul><li>Broadcom、Micron、Vertiv、Eaton 均披露了强劲增长、利润率或订单，但材料包缺少同口径的价格、EV、净债务、forward EPS/FCF 和反向 DCF。</li><li>S13 记录本次实时估值快照口径未充分复核，只能作为 lead，不能强化结论。</li></ul></div>
+        <div class="logic-card"><b>推理</b><ul><li>强基本面不等于强赔率；没有同口径估值模型时，action_state 必须被估值赔率上限约束。</li></ul></div>
+        <div class="logic-card"><b>判断</b><p>估值证据不足是本次没有给出 actionable_long 的直接原因之一。</p></div>
+        <div class="logic-card"><b>触发器</b><ul><li>补齐反向 DCF 后，若增长/利润假设明显低于 Q1/Q2 证据，才可上调 mispricing；若高于证据，则降级。</li></ul></div>
+      </div>
+    </div><div class="source-chips"><a class="source-chip" href="https://investors.broadcom.com/node/63976/pdf">S8</a><a class="source-chip" href="https://micron.gcs-web.com/news-releases/news-release-details/micron-technology-inc-reports-results-second-quarter-fiscal-2026">S9</a><a class="source-chip" href="https://investors.vertiv.com/news/news-details/2026/Vertiv-Reports-Strong-First-Quarter-with-Diluted-EPS-Growth-of-136-Adjusted-Diluted-EPS-Growth-of-83-Raises-Full-Year-Guidance/default.aspx">S10</a><a class="source-chip" href="https://www.eaton.com/us/en-us/company/news-insights/news-releases/2026/eaton-reports-record-first-quarter-2026-results.html">S11</a><a class="source-chip">S13</a></div></div>
+    <div class="qa-block"><div class="block-title">2. 问题展开（子 QA）</div><div class="child-stack"><p class="muted">已到当前最深研究单元，下一步通过来源更新和复核触发器继续验证。</p></div></div>
+    <div class="qa-block"><div class="block-title">3. 待补充的问题</div><p>需要补齐 broker/交易所价格、forward estimates、EV/FCF、同业分位和情景敏感性。</p></div>
+  </div>
+</details></div></div>
+    <div class="qa-block"><div class="block-title">3. 待补充的问题</div><p>等待子问题继续补证。</p></div>
+  </div>
+</details></div></div>
+    <div class="qa-block"><div class="block-title">3. 待补充的问题</div><p>等待子问题继续补证。</p></div>
+  </div>
+</details>
+<details id="q4" class="qa-card level-1" open>
+  <summary><span class="qid">Q4</span><span class="qtitle">哪些标的进入实时观察清单？</span><span class="qa-count">2 个子问题</span><span class="chevron">›</span></summary>
+  <div class="qa-body">
+    <div class="qa-block"><div class="block-title">1. 当前结论呈现</div><div class="artifact-card"><div class="artifact-title">回答呈现</div><p>当前最佳做法是 watch_only 清单：NVDA、TSM、MU、VRT、ETN、AVGO 优先跟踪；ORCL/AMD 因稀缺性或资本风险暂时靠后。</p></div></div>
+    <div class="qa-block"><div class="block-title">2. 问题展开（子 QA）</div><div class="child-stack"><details id="q4-1" class="qa-card level-2" open>
+  <summary><span class="qid">Q4.1</span><span class="qtitle">稀缺、错价、盈利弹性、风险控制四维门槛如何排序？</span><span class="qa-count">1 个子问题</span><span class="chevron">›</span></summary>
+  <div class="qa-body">
+    <div class="qa-block"><div class="block-title">1. 当前结论呈现</div><div class="artifact-card"><div class="artifact-title">回答呈现</div><p>没有标的同时通过四维强门槛；稀缺最强的是 NVDA/TSM，弹性最强的是 MU/VRT，风险控制相对较好但纯度较低的是 ETN。</p></div></div>
+    <div class="qa-block"><div class="block-title">2. 问题展开（子 QA）</div><div class="child-stack"><details id="q4-1-1" class="qa-card level-3" open>
+  <summary><span class="qid">Q4.1.1</span><span class="qtitle">目标排序是否从 Q2 卡点和 Q3 风险确定性推出？</span><span class="qa-count">0 个子问题</span><span class="chevron">›</span></summary>
+  <div class="qa-body">
+    <div class="qa-block"><div class="block-title">1. 当前结论呈现</div>
+    <div class="routing">
+      <span class="pill l3-skill">Skill: target-ranking-analysis</span>
+      <span class="pill l3-execution-status">Execution: verified_with_caveats</span>
+      <span class="pill l3-score-component">Score Component: target_ranking</span>
+      <span class="pill l3-decision-use">Decision Use: 判断该机制是否足以影响 AI 工厂投资机会的排序和行动状态。</span>
+    </div>
+    <div class="artifact-card">
+      <div class="artifact-title">回答呈现</div>
+      <div class="logic-grid">
+        <div class="logic-card"><b>事实</b><ul><li>实时候选池应覆盖 GPU 平台、先进制程、HBM、定制 ASIC/AI networking、高速互联、AI server 系统集成、电力散热等直接价值捕获载体。</li><li>新增 MRVL、ALAB、CRDO、DELL、ANET、SK hynix、Samsung、SMCI 后，目标宇宙与同主题回测报告的产业链口径一致；实时模式 label 仍为空。</li></ul></div>
+        <div class="logic-card"><b>推理</b><ul><li>排序应先看稀缺/垄断，再看错价、盈利弹性和风险控制；只靠主题暴露不足以进入高强度行动状态。</li></ul></div>
+        <div class="logic-card"><b>判断</b><p>Marvell 这类 custom silicon / electro-optics / AI Ethernet 标的不应被排除；由于估值和客户集中风险仍未完全验证，新增标的大多先进入 watch_only，SMCI 因执行/合规/环比风险暂列 no_action。</p></div>
+        <div class="logic-card"><b>触发器</b><ul><li>下一轮财报若收入、订单/backlog、毛利率和估值假设同时改善，可升级；若客户集中、项目延期或 capex 下修恶化，则降级。</li></ul></div>
+      </div>
+    </div><div class="source-chips"><a class="source-chip" href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-First-Quarter-Fiscal-2027/default.aspx">S1</a><a class="source-chip" href="https://investor.oracle.com/investor-news/news-details/2026/Oracle-Announces-Fiscal-Year-2026-Third-Quarter-Financial-Results/default.aspx">S6</a><a class="source-chip" href="https://investor.tsmc.com/english/encrypt/files/encrypt_file/qr/phase4_reports/2026-04/bd8eb0403902fdea59a2f5e390e48d010b50edc9/1Q26%20EarningsRelease_WoG.pdf">S7</a><a class="source-chip" href="https://investors.broadcom.com/node/63976/pdf">S8</a><a class="source-chip" href="https://micron.gcs-web.com/news-releases/news-release-details/micron-technology-inc-reports-results-second-quarter-fiscal-2026">S9</a><a class="source-chip" href="https://investors.vertiv.com/news/news-details/2026/Vertiv-Reports-Strong-First-Quarter-with-Diluted-EPS-Growth-of-136-Adjusted-Diluted-EPS-Growth-of-83-Raises-Full-Year-Guidance/default.aspx">S10</a><a class="source-chip" href="https://www.eaton.com/us/en-us/company/news-insights/news-releases/2026/eaton-reports-record-first-quarter-2026-results.html">S11</a><a class="source-chip" href="https://investor.marvell.com/news-events/press-releases/detail/1023/marvell-technology-inc-reports-first-quarter-of-fiscal-year-2027-financial-results">S14</a><a class="source-chip" href="https://www.sec.gov/Archives/edgar/data/1736297/000173629726000017/q126exhibit991.htm">S15</a><a class="source-chip" href="https://investors.credosemi.com/news-events/news/news-details/2026/Credo-Technology-Group-Holding-Ltd-Reports-Fourth-Quarter-and-Fiscal-Year-2026-Financial-Results/default.aspx">S16</a><a class="source-chip" href="https://www.sec.gov/Archives/edgar/data/1571996/000157199626000021/exhibit991earnings8kq1fy27.htm">S17</a><a class="source-chip" href="https://www.arista.com/en/company/news/press-release/24017-pr-20260505">S18</a><a class="source-chip" href="https://www.prnewswire.com/news-releases/sk-hynix-announces-1q26-financial-results-302750959.html">S19</a><a class="source-chip" href="https://news.samsung.com/global/samsung-electronics-announces-first-quarter-2026-results">S20</a><a class="source-chip" href="https://ir.supermicro.com/news/news-details/2026/Supermicro-Announces-Third-Quarter-Fiscal-Year-2026-Financial-Results/default.aspx">S21</a></div></div>
+    <div class="qa-block"><div class="block-title">2. 问题展开（子 QA）</div><div class="child-stack"><p class="muted">已到当前最深研究单元，下一步通过来源更新和复核触发器继续验证。</p></div></div>
+    <div class="qa-block"><div class="block-title">3. 待补充的问题</div><p>需要补齐同口径 EV/revenue、EV/EBITDA、P/FCF、forward estimate、客户集中和订单质量，才能从 watch_only 升级。</p></div>
+  </div>
+</details></div></div>
+    <div class="qa-block"><div class="block-title">3. 待补充的问题</div><p>等待子问题继续补证。</p></div>
+  </div>
+</details>
+<details id="q4-2" class="qa-card level-2" open>
+  <summary><span class="qid">Q4.2</span><span class="qtitle">下一次如何复核和升级/降级？</span><span class="qa-count">1 个子问题</span><span class="chevron">›</span></summary>
+  <div class="qa-body">
+    <div class="qa-block"><div class="block-title">1. 当前结论呈现</div><div class="artifact-card"><div class="artifact-title">回答呈现</div><p>复核重点是云 AI 收入、RPO 质量、NVIDIA networking、Broadcom AI revenue、Micron HBM margin、Vertiv/Eaton backlog 和电网审批。</p></div></div>
+    <div class="qa-block"><div class="block-title">2. 问题展开（子 QA）</div><div class="child-stack"><details id="q4-2-1" class="qa-card level-3" open>
+  <summary><span class="qid">Q4.2.1</span><span class="qtitle">哪些硬触发器决定观察清单升级或降级？</span><span class="qa-count">0 个子问题</span><span class="chevron">›</span></summary>
+  <div class="qa-body">
+    <div class="qa-block"><div class="block-title">1. 当前结论呈现</div>
+    <div class="routing">
+      <span class="pill l3-skill">Skill: target-recommendation-analysis</span>
+      <span class="pill l3-execution-status">Execution: verified_with_caveats</span>
+      <span class="pill l3-score-component">Score Component: monitorability</span>
+      <span class="pill l3-decision-use">Decision Use: 判断该机制是否足以影响 AI 工厂投资机会的排序和行动状态。</span>
+    </div>
+    <div class="artifact-card">
+      <div class="artifact-title">回答呈现</div>
+      <div class="logic-grid">
+        <div class="logic-card"><b>事实</b><ul><li>核心可监控数据来自季度财报：云 AI 收入/RPO、GPU/networking revenue、AI semiconductor revenue、HBM/Cloud Memory margin、电气和散热 backlog。</li><li>估值触发器仍需补齐同口径 price/EV/FCF/forward estimate 数据。</li></ul></div>
+        <div class="logic-card"><b>推理</b><ul><li>这些指标能把“AI 工厂大主题”还原成逐季可验证的收入、订单、利润率和赔率。</li></ul></div>
+        <div class="logic-card"><b>判断</b><p>下一次复核日设置为 2026-09-02，或在核心公司下一轮财报全部发布后提前复核。</p></div>
+        <div class="logic-card"><b>触发器</b><ul><li>复核触发器扩展到 MRVL/ALAB/CRDO/DELL/ANET/SK hynix/Samsung/SMCI：下一季收入、订单/backlog、毛利、客户集中、产品采用和估值假设任一组合转弱即降级。</li></ul></div>
+      </div>
+    </div><div class="source-chips"><a class="source-chip" href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-First-Quarter-Fiscal-2027/default.aspx">S1</a><a class="source-chip" href="https://www.microsoft.com/en-us/Investor/earnings/FY-2026-Q3/press-release-webcast">S2</a><a class="source-chip" href="https://www.sec.gov/Archives/edgar/data/1652044/000165204426000043/googexhibit991q12026.htm">S3</a><a class="source-chip" href="https://investors.broadcom.com/node/63976/pdf">S8</a><a class="source-chip" href="https://micron.gcs-web.com/news-releases/news-release-details/micron-technology-inc-reports-results-second-quarter-fiscal-2026">S9</a><a class="source-chip" href="https://investors.vertiv.com/news/news-details/2026/Vertiv-Reports-Strong-First-Quarter-with-Diluted-EPS-Growth-of-136-Adjusted-Diluted-EPS-Growth-of-83-Raises-Full-Year-Guidance/default.aspx">S10</a><a class="source-chip" href="https://www.eaton.com/us/en-us/company/news-insights/news-releases/2026/eaton-reports-record-first-quarter-2026-results.html">S11</a><a class="source-chip">S13</a><a class="source-chip" href="https://investor.marvell.com/news-events/press-releases/detail/1023/marvell-technology-inc-reports-first-quarter-of-fiscal-year-2027-financial-results">S14</a><a class="source-chip" href="https://www.sec.gov/Archives/edgar/data/1736297/000173629726000017/q126exhibit991.htm">S15</a><a class="source-chip" href="https://investors.credosemi.com/news-events/news/news-details/2026/Credo-Technology-Group-Holding-Ltd-Reports-Fourth-Quarter-and-Fiscal-Year-2026-Financial-Results/default.aspx">S16</a><a class="source-chip" href="https://www.sec.gov/Archives/edgar/data/1571996/000157199626000021/exhibit991earnings8kq1fy27.htm">S17</a><a class="source-chip" href="https://www.arista.com/en/company/news/press-release/24017-pr-20260505">S18</a><a class="source-chip" href="https://www.prnewswire.com/news-releases/sk-hynix-announces-1q26-financial-results-302750959.html">S19</a><a class="source-chip" href="https://news.samsung.com/global/samsung-electronics-announces-first-quarter-2026-results">S20</a><a class="source-chip" href="https://ir.supermicro.com/news/news-details/2026/Supermicro-Announces-Third-Quarter-Fiscal-Year-2026-Financial-Results/default.aspx">S21</a></div></div>
+    <div class="qa-block"><div class="block-title">2. 问题展开（子 QA）</div><div class="child-stack"><p class="muted">已到当前最深研究单元，下一步通过来源更新和复核触发器继续验证。</p></div></div>
+    <div class="qa-block"><div class="block-title">3. 待补充的问题</div><p>部分公司不直接披露 AI-only 订单和利润，需结合客户、地区和产品口径二次验证。</p></div>
+  </div>
+</details></div></div>
+    <div class="qa-block"><div class="block-title">3. 待补充的问题</div><p>等待子问题继续补证。</p></div>
+  </div>
+</details></div></div>
+    <div class="qa-block"><div class="block-title">3. 待补充的问题</div><p>等待子问题继续补证。</p></div>
+  </div>
+</details></section>
+    <section id="targets" class="section"><h2>最终标的推荐</h2><div class="target-section">
+    <p>这是 2026-06-02 的实时研究观察名单。右侧 label 字段按回测报告列结构保留为空，待验证窗口结束后再补；空 label 不参与当前 QA、评分、排序、赔率或行动状态。</p>
+    <div class="table-scroll"><table class="target-table">
+      <thead><tr><th>#</th><th>标的</th><th>市场</th><th>Action State</th><th>总分</th><th>稀缺/垄断</th><th>未充分定价</th><th>业绩弹性</th><th>风险控制</th><th>截面理由</th><th>降级触发</th><th>start_price</th><th>end_price</th><th>forward_3m_return</th><th>benchmark_return</th><th>excess_return</th><th>label_status</th></tr></thead>
+      <tbody><tr>
+      <td>1</td>
+      <td><strong>000660.KS</strong><br><span>SK hynix</span></td>
+      <td>Korea</td>
+      <td class="state-watch_only">watch_only</td>
+      <td>3.98</td>
+      <td>4.7</td>
+      <td>3</td>
+      <td>4.6</td>
+      <td>3.6</td>
+      <td>Q1 2026 HBM、服务器 DRAM 和 eSSD 推动收入与 72% operating margin；AI 工厂内存瓶颈强于普通主题暴露。</td>
+      <td>HBM 供给过剩、ASP 反转、客户资格或良率不及预期。</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr><tr>
+      <td>2</td>
+      <td><strong>NVDA</strong><br><span>NVIDIA</span></td>
+      <td>USA</td>
+      <td class="state-watch_only">watch_only</td>
+      <td>3.91</td>
+      <td>4.8</td>
+      <td>2.4</td>
+      <td>4.6</td>
+      <td>3.2</td>
+      <td>AI 工厂最直接平台卡点，Data Center 和 networking 已兑现。</td>
+      <td>Data Center networking 或 compute 增速显著放缓；中国限制扩大；客户 ASIC 替代加速。</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr><tr>
+      <td>3</td>
+      <td><strong>TSM</strong><br><span>TSMC</span></td>
+      <td>USA/Taiwan ADR</td>
+      <td class="state-watch_only">watch_only</td>
+      <td>3.79</td>
+      <td>4.7</td>
+      <td>2.7</td>
+      <td>4</td>
+      <td>3.1</td>
+      <td>先进制程组合和利润率显示制造稀缺，但地缘与估值口径压低风险控制。</td>
+      <td>先进制程占比、毛利率或 capex 回落；地缘风险升高。</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr><tr>
+      <td>4</td>
+      <td><strong>MU</strong><br><span>Micron Technology</span></td>
+      <td>USA</td>
+      <td class="state-watch_only">watch_only</td>
+      <td>3.77</td>
+      <td>4.1</td>
+      <td>3.1</td>
+      <td>4.5</td>
+      <td>2.9</td>
+      <td>Cloud Memory 与 Core Data Center 利润率极高，盈利弹性强；但内存周期反转风险大。</td>
+      <td>HBM/Cloud Memory 毛利率下降、库存上升、Q3 指引不达预期。</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr><tr>
+      <td>5</td>
+      <td><strong>CRDO</strong><br><span>Credo Technology</span></td>
+      <td>USA</td>
+      <td class="state-watch_only">watch_only</td>
+      <td>3.5</td>
+      <td>3.9</td>
+      <td>2.8</td>
+      <td>4.5</td>
+      <td>2.8</td>
+      <td>Q4 FY2026 revenue $437M、同比 +157%，68%+ gross margin，高速铜缆和光互联是 AI 集群功耗/带宽卡点。</td>
+      <td>大客户集中、订单节奏反转、收购整合或估值回撤。</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr><tr>
+      <td>6</td>
+      <td><strong>ALAB</strong><br><span>Astera Labs</span></td>
+      <td>USA</td>
+      <td class="state-watch_only">watch_only</td>
+      <td>3.5</td>
+      <td>4</td>
+      <td>2.7</td>
+      <td>4.4</td>
+      <td>2.9</td>
+      <td>Q1 2026 revenue +93% YoY、GAAP gross margin 76.3%，Scorpio X-Series/PCIe 6 产品直接对应 rack-scale AI fabric。</td>
+      <td>客户集中、平台替代、估值过高或新产品爬坡低于预期。</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr><tr>
+      <td>7</td>
+      <td><strong>AVGO</strong><br><span>Broadcom</span></td>
+      <td>USA</td>
+      <td class="state-watch_only">watch_only</td>
+      <td>3.45</td>
+      <td>4</td>
+      <td>2.3</td>
+      <td>4.2</td>
+      <td>2.8</td>
+      <td>AI revenue 高速增长，定制 ASIC/网络路线明确；但客户集中和项目制交付压低风险控制。</td>
+      <td>Q2 AI semiconductor revenue 未兑现；大客户订单推迟或转向。</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr><tr>
+      <td>8</td>
+      <td><strong>VRT</strong><br><span>Vertiv</span></td>
+      <td>USA</td>
+      <td class="state-watch_only">watch_only</td>
+      <td>3.44</td>
+      <td>3.8</td>
+      <td>2.5</td>
+      <td>4</td>
+      <td>3.2</td>
+      <td>数据中心需求推动 organic sales、margin 和 FY 指引，但估值和项目延期风险高。</td>
+      <td>organic growth 或 backlog 放缓；大型项目并网/交付延迟。</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr><tr>
+      <td>9</td>
+      <td><strong>MRVL</strong><br><span>Marvell Technology</span></td>
+      <td>USA</td>
+      <td class="state-watch_only">watch_only</td>
+      <td>3.4</td>
+      <td>3.8</td>
+      <td>2.7</td>
+      <td>4.1</td>
+      <td>3</td>
+      <td>Q1 FY2027 Data Center revenue $1.833B，占总收入 76%，AI systems、ethernet switching、DCI 和 AI servers 均在数据中心应用中。</td>
+      <td>custom silicon 项目延期、大客户集中、客户自研/垂直整合或毛利承压。</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr><tr>
+      <td>10</td>
+      <td><strong>ETN</strong><br><span>Eaton</span></td>
+      <td>USA</td>
+      <td class="state-watch_only">watch_only</td>
+      <td>3.39</td>
+      <td>3.6</td>
+      <td>2.9</td>
+      <td>3.4</td>
+      <td>3.7</td>
+      <td>Electrical Americas/Global 订单和 backlog 强，风险控制较 VRT 稳，但 AI 纯度更低。</td>
+      <td>Electrical backlog 增速回落；数据中心贡献无法持续；收购整合拖累。</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr><tr>
+      <td>11</td>
+      <td><strong>ANET</strong><br><span>Arista Networks</span></td>
+      <td>USA</td>
+      <td class="state-watch_only">watch_only</td>
+      <td>3.35</td>
+      <td>3.5</td>
+      <td>2.7</td>
+      <td>3.7</td>
+      <td>3.5</td>
+      <td>Q1 2026 revenue $2.709B、同比 +35.1%，XPO 光互联面向下一代 AI data centers。</td>
+      <td>云客户 capex 放缓、merchant silicon 依赖、NVIDIA/Broadcom 生态挤压。</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr><tr>
+      <td>12</td>
+      <td><strong>005930.KS</strong><br><span>Samsung Electronics</span></td>
+      <td>Korea</td>
+      <td class="state-watch_only">watch_only</td>
+      <td>3.33</td>
+      <td>3.4</td>
+      <td>2.8</td>
+      <td>3.8</td>
+      <td>3.3</td>
+      <td>Q1 2026 DS revenue KRW 81.7T、operating profit KRW 53.7T，AI memory、HBM4、SOCAMM2 和先进制程均有官方证据。</td>
+      <td>HBM 客户资格、foundry 利用率、消费电子拖累或内存周期反转。</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr><tr>
+      <td>13</td>
+      <td><strong>DELL</strong><br><span>Dell Technologies</span></td>
+      <td>USA</td>
+      <td class="state-watch_only">watch_only</td>
+      <td>3.27</td>
+      <td>3.2</td>
+      <td>2.8</td>
+      <td>4</td>
+      <td>3.1</td>
+      <td>Q1 FY2027 booked $24.4B AI orders、recognized $16.1B AI server revenue，并把 FY27 AI server revenue 预期提高到 $60B。</td>
+      <td>AI server 毛利低、backlog 取消/重排、内存/GPU 供应或现金流质量转弱。</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr><tr>
+      <td>14</td>
+      <td><strong>AMD</strong><br><span>Advanced Micro Devices</span></td>
+      <td>USA</td>
+      <td class="state-no_action">no_action</td>
+      <td>2.95</td>
+      <td>2.7</td>
+      <td>2.5</td>
+      <td>3.8</td>
+      <td>2.9</td>
+      <td>AI 基础设施需求强，但相对 NVIDIA/Broadcom/TSMC 的稀缺性证据不足。</td>
+      <td>MI/EPYC 增速无法持续；客户采用低于预期。</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr><tr>
+      <td>15</td>
+      <td><strong>ORCL</strong><br><span>Oracle</span></td>
+      <td>USA</td>
+      <td class="state-no_action">no_action</td>
+      <td>2.82</td>
+      <td>2.8</td>
+      <td>2.2</td>
+      <td>3.6</td>
+      <td>2.6</td>
+      <td>RPO 巨大但设备资金、客户预付、自供 GPU 和容量管理风险使稀缺性不如上游卡点。</td>
+      <td>客户预付款或合同质量下降；GPU sourcing 或 datacenter capacity 管理出问题。</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr><tr>
+      <td>16</td>
+      <td><strong>SMCI</strong><br><span>Super Micro Computer</span></td>
+      <td>USA</td>
+      <td class="state-no_action">no_action</td>
+      <td>2.75</td>
+      <td>2.6</td>
+      <td>2.3</td>
+      <td>3.7</td>
+      <td>2.4</td>
+      <td>Q3 FY2026 revenue $10.2B 同比增长，但环比从 $12.7B 回落，服务器组装价值捕获、执行和合规风险更高。</td>
+      <td>订单延期、毛利承压、合规/出口风险、客户 site-readiness 延误。</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr></tbody>
+    </table></div>
+  </div></section>
+    <section id="sources" class="section"><h2>来源索引</h2><details class="source-collapse"><summary>展开来源索引 <span class="chevron">›</span></summary><div class="source-grid"><div class="source-card"><strong>S1</strong><br><a href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-First-Quarter-Fiscal-2027/default.aspx">NVIDIA Announces Financial Results for First Quarter Fiscal 2027</a><p>NVIDIA Investor Relations</p><small>evidence · 2026-05-20 · thesis</small></div><div class="source-card"><strong>S2</strong><br><a href="https://www.microsoft.com/en-us/Investor/earnings/FY-2026-Q3/press-release-webcast">Microsoft FY26 Q3 Earnings Release</a><p>Microsoft Investor Relations</p><small>evidence · 2026-04-29 · thesis</small></div><div class="source-card"><strong>S3</strong><br><a href="https://www.sec.gov/Archives/edgar/data/1652044/000165204426000043/googexhibit991q12026.htm">Alphabet Announces First Quarter 2026 Results</a><p>Alphabet / SEC Exhibit 99.1</p><small>evidence · 2026-04-29 · thesis</small></div><div class="source-card"><strong>S4</strong><br><a href="https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-First-Quarter-2026-Results/">Meta Reports First Quarter 2026 Results</a><p>Meta Investor Relations</p><small>evidence · 2026-04-29 · thesis</small></div><div class="source-card"><strong>S5</strong><br><a href="https://s2.q4cdn.com/299287126/files/doc_earnings/2026/q1/earnings-result/AMZN-Q1-2026-Earnings-Release.pdf">Amazon Q1 2026 Earnings Release</a><p>Amazon Investor Relations</p><small>evidence · 2026-05-01 · thesis</small></div><div class="source-card"><strong>S6</strong><br><a href="https://investor.oracle.com/investor-news/news-details/2026/Oracle-Announces-Fiscal-Year-2026-Third-Quarter-Financial-Results/default.aspx">Oracle Announces Fiscal Year 2026 Third Quarter Financial Results</a><p>Oracle Investor Relations</p><small>evidence · 2026-03-10 · thesis</small></div><div class="source-card"><strong>S7</strong><br><a href="https://investor.tsmc.com/english/encrypt/files/encrypt_file/qr/phase4_reports/2026-04/bd8eb0403902fdea59a2f5e390e48d010b50edc9/1Q26%20EarningsRelease_WoG.pdf">TSMC 1Q26 Earnings Release</a><p>TSMC Investor Relations</p><small>evidence · 2026-04-16 · thesis</small></div><div class="source-card"><strong>S8</strong><br><a href="https://investors.broadcom.com/node/63976/pdf">Broadcom Q1 Fiscal Year 2026 Financial Results</a><p>Broadcom Investor Relations</p><small>evidence · 2026-03-04 · thesis</small></div><div class="source-card"><strong>S9</strong><br><a href="https://micron.gcs-web.com/news-releases/news-release-details/micron-technology-inc-reports-results-second-quarter-fiscal-2026">Micron Reports Second Quarter Fiscal 2026 Results</a><p>Micron Investor Relations</p><small>evidence · 2026-03-18 · thesis</small></div><div class="source-card"><strong>S10</strong><br><a href="https://investors.vertiv.com/news/news-details/2026/Vertiv-Reports-Strong-First-Quarter-with-Diluted-EPS-Growth-of-136-Adjusted-Diluted-EPS-Growth-of-83-Raises-Full-Year-Guidance/default.aspx">Vertiv Reports First Quarter 2026 Results</a><p>Vertiv Investor Relations</p><small>evidence · 2026-04-22 · thesis</small></div><div class="source-card"><strong>S11</strong><br><a href="https://www.eaton.com/us/en-us/company/news-insights/news-releases/2026/eaton-reports-record-first-quarter-2026-results.html">Eaton Reports Record First Quarter 2026 Results</a><p>Eaton</p><small>evidence · 2026-05-05 · thesis</small></div><div class="source-card"><strong>S12</strong><br><a href="https://www.iea.org/news/data-centre-electricity-use-surged-in-2025-even-with-tightening-bottlenecks-driving-a-scramble-for-solutions">IEA: Data centre electricity use surged in 2025</a><p>International Energy Agency</p><small>research_report · 2026-04-16 · thesis</small></div><div class="source-card"><strong>S13</strong><br>实时估值口径缺口记录<p>Internal valuation note</p><small>message · 2026-06-02 · lead</small></div><div class="source-card"><strong>S14</strong><br><a href="https://investor.marvell.com/news-events/press-releases/detail/1023/marvell-technology-inc-reports-first-quarter-of-fiscal-year-2027-financial-results">Marvell Technology Reports First Quarter Fiscal Year 2027 Results</a><p>Marvell Investor Relations</p><small>evidence · 2026-05-27 · thesis</small></div><div class="source-card"><strong>S15</strong><br><a href="https://www.sec.gov/Archives/edgar/data/1736297/000173629726000017/q126exhibit991.htm">Astera Labs Reports First Quarter 2026 Financial Results</a><p>Astera Labs / SEC Exhibit 99.1</p><small>evidence · 2026-05-05 · thesis</small></div><div class="source-card"><strong>S16</strong><br><a href="https://investors.credosemi.com/news-events/news/news-details/2026/Credo-Technology-Group-Holding-Ltd-Reports-Fourth-Quarter-and-Fiscal-Year-2026-Financial-Results/default.aspx">Credo Reports Fourth Quarter and Fiscal Year 2026 Results</a><p>Credo Investor Relations</p><small>evidence · 2026-06-01 · thesis</small></div><div class="source-card"><strong>S17</strong><br><a href="https://www.sec.gov/Archives/edgar/data/1571996/000157199626000021/exhibit991earnings8kq1fy27.htm">Dell Technologies Delivers First Quarter Fiscal 2027 Financial Results</a><p>Dell Technologies / SEC Exhibit 99.1</p><small>evidence · 2026-05-28 · thesis</small></div><div class="source-card"><strong>S18</strong><br><a href="https://www.arista.com/en/company/news/press-release/24017-pr-20260505">Arista Networks Reports First Quarter 2026 Financial Results</a><p>Arista Networks</p><small>evidence · 2026-05-05 · thesis</small></div><div class="source-card"><strong>S19</strong><br><a href="https://www.prnewswire.com/news-releases/sk-hynix-announces-1q26-financial-results-302750959.html">SK hynix Announces 1Q26 Financial Results</a><p>SK hynix / PRNewswire</p><small>evidence · 2026-04-22 · thesis</small></div><div class="source-card"><strong>S20</strong><br><a href="https://news.samsung.com/global/samsung-electronics-announces-first-quarter-2026-results">Samsung Electronics Announces First Quarter 2026 Results</a><p>Samsung Global Newsroom</p><small>evidence · 2026-04-30 · thesis</small></div><div class="source-card"><strong>S21</strong><br><a href="https://ir.supermicro.com/news/news-details/2026/Supermicro-Announces-Third-Quarter-Fiscal-Year-2026-Financial-Results/default.aspx">Supermicro Announces Third Quarter Fiscal Year 2026 Results</a><p>Supermicro Investor Relations</p><small>evidence · 2026-05-05 · thesis</small></div></div></details></section>
+  </main>
+</body>
+</html>
