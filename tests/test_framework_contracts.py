@@ -25,6 +25,37 @@ from value_invest_research.framework_contracts import (
 )
 
 
+def _industry_overview_html(title: str) -> str:
+    return f"""
+          <section id="overview" class="industry-overview-section"><h2>{title}</h2>
+            <details class="industry-module supply-chain-section">
+              <summary class="module-head"><span class="module-index">01</span><div><h3>产业链与生态位</h3><p>先看清楚生态位。</p></div><span class="chevron">›</span></summary>
+              <div class="industry-module-body">
+              <div class="chain-explain">
+                <div class="chain-research-bridge"><div class="chain-bridge-grid"><div class="chain-bridge-card"><span>研究目标如何转成产业链问题</span><strong>先理清产业链，再生成 QA。</strong></div><div class="chain-bridge-card"><span>核心投资问题</span><strong>哪些节点捕获价值？</strong></div></div><div class="chain-node-lens"><b>节点筛选口径</b><ul><li><b>需求流入</b><span>订单和收入。</span></li></ul></div></div>
+                <p class="chain-plain-summary">一句话看懂：需求从客户进入链条，经由上中下游交付产品，利润集中在稀缺卡点。</p>
+                <div class="overview-subtitle">泳道图</div>
+                <div class="chain-relationship-graph chain-lane-map">
+                  <div class="chain-graph-head"><b>按上游 / 中游 / 下游展开公司关系</b><span>只保留最影响 QA 和标的排序的节点。</span></div>
+                  <div class="chain-layer-grid">
+                    <article class="chain-layer-card chain-stage-panel"><div class="chain-stage-head"><span>上游</span><strong>负责关键输入</strong></div><ul class="chain-company-list"><li class="chain-company-card">关键产品；高；Q2/Q4。</li></ul></article>
+                  </div>
+                </div>
+                <div class="overview-subtitle">价值流</div>
+                <div class="chain-map-card chain-value-flow"><div class="chain-sankey-list"><article class="chain-sankey-flow">需求预算 -> 关键供给 -> 系统交付。</article></div></div>
+                <details class="chain-map"><summary>展开结构化链条表 <span class="chevron">›</span></summary>
+                  <table class="chain-table"><tr><th>上游</th><th>中游</th><th>下游</th><th>关键玩家</th><th>价值关系</th></tr></table>
+                </details>
+              </div>
+              </div>
+            </details>
+            <details class="industry-module industry-space"><summary class="module-head"><span class="module-index">02</span><div><h3>行业空间</h3></div><span class="chevron">›</span></summary><div class="industry-module-body"><table><tr><td>空间</td></tr></table></div></details>
+            <details class="industry-module industry-competition"><summary class="module-head"><span class="module-index">03</span><div><h3>竞争格局与利润池</h3></div><span class="chevron">›</span></summary><div class="industry-module-body"><table><tr><td>竞争</td></tr></table></div></details>
+            <details class="industry-module industry-chokepoints"><summary class="module-head"><span class="module-index">04</span><div><h3>瓶颈点</h3></div><span class="chevron">›</span></summary><div class="industry-module-body"><div class="chain-chokepoints">瓶颈点：认证、产能、软件生态。</div></div></details>
+            <details class="industry-module industry-key-variables"><summary class="module-head"><span class="module-index">05</span><div><h3>关键变量与待验证数据</h3></div><span class="chevron">›</span></summary><div class="industry-module-body"><div class="key-variable-grid"><details class="chain-data-gaps"><summary>关键变量 <span class="chevron">›</span></summary><ul><li>关键数据缺口</li></ul></details><table><tr><td>QA 映射</td></tr></table></div></div></details>
+          </section>""".rstrip()
+
+
 class FrameworkContractsTests(unittest.TestCase):
     def test_report_and_qa_contracts_enforce_hierarchy_label_boundary_and_cards(self):
         goal_title, chain_title, qa_title, target_title, source_title = REPORT_SECTIONS
@@ -34,18 +65,7 @@ class FrameworkContractsTests(unittest.TestCase):
           <header class="hero"></header>
           <nav class="top-nav"></nav>
           <section id="goal"><h2>{goal_title}</h2><div class="goal-card"></div></section>
-          <section id="chain" class="supply-chain-section"><h2>{chain_title}</h2>
-            <div class="chain-explain">
-              <p class="chain-plain-summary">一句话看懂：需求从客户进入链条，经由上中下游交付产品，利润集中在稀缺卡点。</p>
-              <ol class="chain-flow-steps"><li>客户提出需求</li><li>平台和设备商组织供给</li><li>稀缺节点捕获利润</li></ol>
-              <div class="chain-layer-grid"><article class="chain-layer-card">上游负责关键输入</article></div>
-              <div class="chain-chokepoints">关键卡点：认证、产能、软件生态。</div>
-              <div class="chain-target-links">对应标的：Q2/Q4 继续验证。</div>
-            </div>
-            <div class="chain-map">
-              <table class="chain-table"><tr><th>上游</th><th>中游</th><th>下游</th><th>关键玩家</th><th>价值关系</th></tr></table>
-            </div>
-          </section>
+{_industry_overview_html(chain_title)}
           <section id="qa"><h2>{qa_title}</h2><div class="qa-body"></div>
             <details class="qa-card level-1" id="q1" open>
               <summary><h3>Q1 demand</h3><span class="qa-count">1</span><span class="chevron">›</span></summary>
@@ -96,6 +116,9 @@ class FrameworkContractsTests(unittest.TestCase):
             </details>
           </section>
           <section class="target-section" id="targets"><h2>{target_title}</h2>
+            <div class="target-odds-model">
+              <table class="target-odds-table"><tr><th>隐含预期</th><td>赔率待验证</td></tr></table>
+            </div>
             <table class="target-table"><tr><th>forward_3m_return</th></tr></table>
           </section>
           <details class="source-collapse" id="sources"><summary><h2>{source_title}</h2></summary></details>
@@ -112,19 +135,7 @@ class FrameworkContractsTests(unittest.TestCase):
 
         no_chain_result = validate_report_contract_html(
             html.replace(
-                f"""
-          <section id=\"chain\" class=\"supply-chain-section\"><h2>{chain_title}</h2>
-            <div class=\"chain-explain\">
-              <p class=\"chain-plain-summary\">一句话看懂：需求从客户进入链条，经由上中下游交付产品，利润集中在稀缺卡点。</p>
-              <ol class=\"chain-flow-steps\"><li>客户提出需求</li><li>平台和设备商组织供给</li><li>稀缺节点捕获利润</li></ol>
-              <div class=\"chain-layer-grid\"><article class=\"chain-layer-card\">上游负责关键输入</article></div>
-              <div class=\"chain-chokepoints\">关键卡点：认证、产能、软件生态。</div>
-              <div class=\"chain-target-links\">对应标的：Q2/Q4 继续验证。</div>
-            </div>
-            <div class=\"chain-map\">
-              <table class=\"chain-table\"><tr><th>上游</th><th>中游</th><th>下游</th><th>关键玩家</th><th>价值关系</th></tr></table>
-            </div>
-          </section>""",
+                _industry_overview_html(chain_title),
                 "",
             ),
             mode="historical_backtest",
@@ -180,16 +191,7 @@ class FrameworkContractsTests(unittest.TestCase):
           <header class="hero"></header>
           <nav class="top-nav"></nav>
           <section id="goal"><h2>{goal_title}</h2><div class="goal-card"></div></section>
-          <section id="chain" class="supply-chain-section"><h2>{chain_title}</h2>
-            <div class="chain-explain">
-              <p class="chain-plain-summary">一句话看懂链条。</p>
-              <ol class="chain-flow-steps"><li>需求</li><li>供给</li><li>瓶颈</li></ol>
-              <div class="chain-layer-grid"><article class="chain-layer-card">上游</article></div>
-              <div class="chain-chokepoints">卡点</div>
-              <div class="chain-target-links">标的</div>
-              <div class="chain-map"><table class="chain-table"><tr><th>层级</th></tr></table></div>
-            </div>
-          </section>
+{_industry_overview_html(chain_title)}
           <section id="qa"><h2>{qa_title}</h2><div class="qa-body"></div>
             <details class="qa-card level-1" id="q1" open>
               <summary><span>Q1</span><span class="qa-count">1</span><span class="chevron">›</span></summary>
@@ -233,6 +235,9 @@ class FrameworkContractsTests(unittest.TestCase):
             </details>
           </section>
           <section id="targets" class="target-section"><h2>{target_title}</h2>
+            <div class="target-odds-model">
+              <table class="target-odds-table"><tr><td>赔率待验证</td></tr></table>
+            </div>
             <table class="target-table"><tr><td><span class="state-pill state-watch_only">watch_only</span></td></tr></table>
           </section>
           <section id="sources"><h2>{source_title}</h2><details class="source-collapse"><summary>sources</summary></details></section>

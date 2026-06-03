@@ -7,8 +7,8 @@
     {
       "id": "Q1",
       "level": 1,
-      "question": "AI 工厂需求是否真实，并能从主题叙事流到具体产业链节点？",
-      "conclusion": "截面前的官方材料已经证明 AI 工厂不是单一 GPU 叙事：NVIDIA 数据中心收入、Dell AI server backlog、Vertiv 订单、HBM 和连接芯片收入都显示需求进入财务口径。但需求是否可持续仍取决于客户 capex 和 AI ROI。",
+      "question": "行业空间与需求真实性：AI 工厂的未来空间是否足够大，且需求已经进入财务指标？",
+      "conclusion": "截面前的官方材料显示，AI 工厂已经从单一 GPU 主题扩展成跨平台、服务器、HBM、先进制造、连接网络、电力液冷和系统交付的资本开支链条。行业空间成立的关键不是 TAM 口号，而是客户 capex 能否持续转成收入、backlog、毛利和现金流；当前证据支持需求真实，但仍需用客户 ROI 和云厂商 capex 持续性验证。",
       "children": [
         {
           "id": "Q1.1",
@@ -279,8 +279,8 @@
               "conclusion": "Q1.2 支持跨平台、内存、连接、物理基础设施和系统交付建立目标池。",
               "skill": "industry-report-analysis",
               "score_component": "future_space",
-              "decision_use": "决定产业链全景和 Q2 卡点顺序。",
-              "materiality": "决定产业链全景和 Q2 卡点顺序。",
+              "decision_use": "决定行业生态位和 Q2 卡点顺序。",
+              "materiality": "决定行业生态位和 Q2 卡点顺序。",
               "support_evidence": [
                 "SRC-NVDA-FY26-Q4 supports 需求传导的主路径是什么？",
                 "SRC-DELL-FY26-Q4 supports 需求传导的主路径是什么？",
@@ -946,14 +946,14 @@
     {
       "id": "Q2",
       "level": 1,
-      "question": "哪些环节是真正稀缺、难替代、能捕获价值的卡点？",
-      "conclusion": "最强卡点是平台控制、HBM/先进封装、电力液冷和机柜级连接；系统交付有订单弹性但利润率不一定好；开放网络和 ASIC 方向有大空间，但需要与 NVIDIA 平台整合风险拆开。",
+      "question": "竞争格局与价值捕获：哪些节点具备 chokepoint 属性，能把行业增长转成公司利润？",
+      "conclusion": "Q2 不再把 chokepoint 当成独立主题，而是先看每个节点的竞争者、替代路线、客户议价力和供给扩张，再判断哪些节点具备真稀缺和货币化能力。当前最强的是平台控制、HBM/先进封装、电力液冷和部分机柜级连接；系统交付有订单弹性但利润率不一定好。",
       "children": [
         {
           "id": "Q2.1",
           "level": 2,
-          "question": "平台、制造和内存卡点",
-          "conclusion": "平台控制和 HBM/先进封装是最硬的卡点；但越强的卡点通常越容易被市场提前定价。",
+          "question": "上游核心节点竞争格局：平台、制造和 HBM 谁有定价权？",
+          "conclusion": "平台控制和 HBM/先进封装是最硬的竞争优势；但越强的卡点通常越容易被市场提前定价，所以需要同时比较替代路线、供给扩张和估值隐含预期。",
           "children": [
             {
               "id": "Q2.1.1",
@@ -1750,8 +1750,8 @@
         {
           "id": "Q2.2",
           "level": 2,
-          "question": "连接、电力冷却和系统交付卡点",
-          "conclusion": "连接和物理基础设施是 AI 工厂落地瓶颈；其中 VRT/ALAB/CRDO/MRVL 的证据直接，DELL/SMCI 的订单弹性强但利润质量分化。",
+          "question": "连接、电力液冷和系统交付竞争格局：谁能留住利润？",
+          "conclusion": "连接和物理基础设施是 AI 工厂落地瓶颈；VRT/ALAB/CRDO/MRVL 的证据直接，但客户集中、平台替代和项目毛利决定它们是否是真 chokepoint；DELL/SMCI 的订单弹性强但利润质量分化。",
           "children": [
             {
               "id": "Q2.2.1",
@@ -3837,8 +3837,8 @@
     {
       "id": "Q4",
       "level": 1,
-      "question": "按截面证据应如何形成具体标的观察名单？",
-      "conclusion": "冻结排序优先看 VRT、SK hynix、NVDA、TSM、ALAB、CRDO、MRVL、MU、DELL、AVGO、ANET、SMCI 等价值捕获载体；行动状态由四个核心维度控制，不因主题热度直接升高。",
+      "question": "估值赔率与标的推荐：哪些标的同时具备胜率、赔率和可监控风险？",
+      "conclusion": "冻结排序优先看 VRT、SK hynix、NVDA、TSM、ALAB、CRDO、MRVL、MU、DELL、AVGO、ANET、SMCI 等价值捕获载体。Q4 不只给名单，还要把隐含预期、base/bull/bear 验证路径、升级数据和降级数据展示清楚；行动状态由稀缺/垄断、未充分定价、业绩弹性和风险控制四维共同决定。",
       "children": [
         {
           "id": "Q4.1",
@@ -5091,8 +5091,8 @@
       "id": "Q1",
       "level": 1,
       "parent_id": "",
-      "question": "AI 工厂需求是否真实，并能从主题叙事流到具体产业链节点？",
-      "current_conclusion": "截面前的官方材料已经证明 AI 工厂不是单一 GPU 叙事：NVIDIA 数据中心收入、Dell AI server backlog、Vertiv 订单、HBM 和连接芯片收入都显示需求进入财务口径。但需求是否可持续仍取决于客户 capex 和 AI ROI。",
+      "question": "行业空间与需求真实性：AI 工厂的未来空间是否足够大，且需求已经进入财务指标？",
+      "current_conclusion": "截面前的官方材料显示，AI 工厂已经从单一 GPU 主题扩展成跨平台、服务器、HBM、先进制造、连接网络、电力液冷和系统交付的资本开支链条。行业空间成立的关键不是 TAM 口号，而是客户 capex 能否持续转成收入、backlog、毛利和现金流；当前证据支持需求真实，但仍需用客户 ROI 和云厂商 capex 持续性验证。",
       "next_question_ids": [
         "Q1.1",
         "Q1.2"
@@ -5313,8 +5313,8 @@
         "Q1.2.1.1",
         "Q1.2.1.2"
       ],
-      "materiality": "决定产业链全景和 Q2 卡点顺序。",
-      "decision_use": "决定产业链全景和 Q2 卡点顺序。",
+      "materiality": "决定行业生态位和 Q2 卡点顺序。",
+      "decision_use": "决定行业生态位和 Q2 卡点顺序。",
       "support_evidence": [
         "SRC-NVDA-FY26-Q4 supports 需求传导的主路径是什么？",
         "SRC-DELL-FY26-Q4 supports 需求传导的主路径是什么？",
@@ -5837,8 +5837,8 @@
       "id": "Q2",
       "level": 1,
       "parent_id": "",
-      "question": "哪些环节是真正稀缺、难替代、能捕获价值的卡点？",
-      "current_conclusion": "最强卡点是平台控制、HBM/先进封装、电力液冷和机柜级连接；系统交付有订单弹性但利润率不一定好；开放网络和 ASIC 方向有大空间，但需要与 NVIDIA 平台整合风险拆开。",
+      "question": "竞争格局与价值捕获：哪些节点具备 chokepoint 属性，能把行业增长转成公司利润？",
+      "current_conclusion": "Q2 不再把 chokepoint 当成独立主题，而是先看每个节点的竞争者、替代路线、客户议价力和供给扩张，再判断哪些节点具备真稀缺和货币化能力。当前最强的是平台控制、HBM/先进封装、电力液冷和部分机柜级连接；系统交付有订单弹性但利润率不一定好。",
       "next_question_ids": [
         "Q2.1",
         "Q2.2"
@@ -5848,8 +5848,8 @@
       "id": "Q2.1",
       "level": 2,
       "parent_id": "Q2",
-      "question": "平台、制造和内存卡点",
-      "current_conclusion": "平台控制和 HBM/先进封装是最硬的卡点；但越强的卡点通常越容易被市场提前定价。",
+      "question": "上游核心节点竞争格局：平台、制造和 HBM 谁有定价权？",
+      "current_conclusion": "平台控制和 HBM/先进封装是最硬的竞争优势；但越强的卡点通常越容易被市场提前定价，所以需要同时比较替代路线、供给扩张和估值隐含预期。",
       "next_question_ids": [
         "Q2.1.1",
         "Q2.1.2"
@@ -6483,8 +6483,8 @@
       "id": "Q2.2",
       "level": 2,
       "parent_id": "Q2",
-      "question": "连接、电力冷却和系统交付卡点",
-      "current_conclusion": "连接和物理基础设施是 AI 工厂落地瓶颈；其中 VRT/ALAB/CRDO/MRVL 的证据直接，DELL/SMCI 的订单弹性强但利润质量分化。",
+      "question": "连接、电力液冷和系统交付竞争格局：谁能留住利润？",
+      "current_conclusion": "连接和物理基础设施是 AI 工厂落地瓶颈；VRT/ALAB/CRDO/MRVL 的证据直接，但客户集中、平台替代和项目毛利决定它们是否是真 chokepoint；DELL/SMCI 的订单弹性强但利润质量分化。",
       "next_question_ids": [
         "Q2.2.1",
         "Q2.2.2"
@@ -8175,8 +8175,8 @@
       "id": "Q4",
       "level": 1,
       "parent_id": "",
-      "question": "按截面证据应如何形成具体标的观察名单？",
-      "current_conclusion": "冻结排序优先看 VRT、SK hynix、NVDA、TSM、ALAB、CRDO、MRVL、MU、DELL、AVGO、ANET、SMCI 等价值捕获载体；行动状态由四个核心维度控制，不因主题热度直接升高。",
+      "question": "估值赔率与标的推荐：哪些标的同时具备胜率、赔率和可监控风险？",
+      "current_conclusion": "冻结排序优先看 VRT、SK hynix、NVDA、TSM、ALAB、CRDO、MRVL、MU、DELL、AVGO、ANET、SMCI 等价值捕获载体。Q4 不只给名单，还要把隐含预期、base/bull/bear 验证路径、升级数据和降级数据展示清楚；行动状态由稀缺/垄断、未充分定价、业绩弹性和风险控制四维共同决定。",
       "next_question_ids": [
         "Q4.1",
         "Q4.2"

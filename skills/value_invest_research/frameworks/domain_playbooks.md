@@ -6,7 +6,7 @@ Domain playbooks are the depth layer under the shared QA/report contract. The pu
 
 For industry/theme opportunity and technology/product-route research, the question architect must build a mechanism-depth map before source collection. The map prevents generic "theme looks good" reports by forcing the research to model how demand turns into company cash flow and how the market may already price it.
 
-Before Q1-Q4, the architect must also build the public `产业链全景` map. This map should cover upstream, midstream, downstream, infrastructure/ecosystem layers, key players, products/services, dependency links, value/profit flow, and candidate chokepoints. It is the coordinate system for Q2 value-capture and Q4 target ranking.
+Before Q1-Q4, the architect must also build the public `产业链全景` map. This map should cover upstream, midstream, downstream, infrastructure/ecosystem layers, key players, products/services, dependency links, company relationship edges, value/profit flow, and candidate chokepoints. Each edge should explain from, to, relationship, product/order/value flow, bottleneck, target mapping, and evidence. It is the coordinate system for Q2 competitive-landscape/value-capture analysis and Q4 target ranking.
 
 Every applicable domain playbook should cover these blocks unless the research object makes a block irrelevant:
 
@@ -58,7 +58,7 @@ Use this playbook for DRAM, HBM, NAND, eSSD, HDD/nearline, memory controllers, m
 Default Q map:
 
 - Q1 Demand reality: convert AI, data-center, and terminal demand into sustainable bit demand, ASP, and product mix by workload and product type.
-- Q2 Value-capture bottlenecks: test whether HBM/high-end DRAM, NAND/eSSD, nearline HDD, controller/IP, capacity, equipment, materials, and packaging constraints have scarcity, pricing power, and financial conversion.
+- Q2 Competitive landscape and value capture: compare suppliers, substitutes, customer bargaining power, supply response, pricing power, and chokepoint strength across HBM/high-end DRAM, NAND/eSSD, nearline HDD, controller/IP, capacity, equipment, materials, and packaging.
 - Q3 Disconfirming tests and priced-in risk: capacity additions, inventory, ASP decline, substitute architectures, customer capex digestion, China supply, mid-cycle downside, and valuation already priced in.
 - Q4 Target observation list: memory makers, equipment/materials, controllers, storage devices, and regional/local listings reconciled with scarcity, mispricing, earnings elasticity, risk control, valuation odds, and kill tests.
 
@@ -101,7 +101,7 @@ Use this playbook for optical transceivers, AI datacenter optical modules, 800G/
 Default Q map:
 
 - Q1 Demand reality: AI datacenter network upgrades, switch port count, 800G/1.6T speed transition, customer capex, and order visibility.
-- Q2 Value-capture bottlenecks: lasers, InP/silicon photonics, DSP/driver/TIA, optical components, module integration, qualification, yield, and manufacturing capacity.
+- Q2 Competitive landscape and value capture: compare suppliers, substitutes, customer bargaining power, supply response, pricing power, and chokepoint strength across lasers, InP/silicon photonics, DSP/driver/TIA, optical components, module integration, qualification, yield, and manufacturing capacity.
 - Q3 Disconfirming tests and priced-in risk: LPO/CPO/substitution, copper and OCS architecture changes, capacity expansion, ASP erosion, customer concentration, geopolitics, and valuation already priced in.
 - Q4 Target observation list: module makers, laser/component suppliers, EMS/manufacturing names, silicon-photonics/chip beneficiaries, and regional listings reconciled with chokepoint score, financial conversion, valuation odds, and kill tests.
 

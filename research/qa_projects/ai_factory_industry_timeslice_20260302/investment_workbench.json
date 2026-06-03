@@ -4,50 +4,290 @@
   "as_of_date": "2026-03-02",
   "evaluation_date": "2026-06-02",
   "supply_chain_explainer": {
-    "plainSummary": "一句话看懂：AI 工厂不是只买 GPU，而是云厂商和 AI 公司把算力、内存、网络、存储、电力冷却、机柜和系统软件一起采购成可运行的生产线；最值得研究的是谁控制难替代的卡点，谁只是跟着主题涨。",
+    "plainSummary": "一句话看懂：AI 工厂产业链分成上游核心供给、中游系统交付、下游需求运营。上游决定算力、内存、制造和连接瓶颈；中游把芯片、内存、网络、电力和冷却组合成可上线的服务器、机柜和数据中心；下游用 capex、利用率、收入和 ROI 验证需求是否可持续。投资判断要落到具体公司：它从谁那里拿到需求或供给，自己生产什么，卖给谁，最后能否转成收入、毛利、现金流和估值赔率。",
     "flowSteps": [
-      "下游客户先决定是否继续加 AI capex：云厂商、AI 实验室、企业和主权 AI 项目提出训练、推理和 agent 工作负载。",
-      "平台层把需求变成标准架构：NVIDIA、Broadcom/ASIC 路线、以太网网络和系统商定义机柜、服务器、网络和软件栈。",
-      "芯片制造和内存环节把平台变成可交付硬件：先进制程、先进封装、HBM、服务器 DRAM 和高端 NAND 决定供给速度。",
-      "连接、电力、液冷和系统交付把硬件落到数据中心：机柜级互联、电源、冷却、服务器整合和服务能力决定项目能否按期上线。",
-      "利润留在稀缺且难替代的节点：平台控制、HBM、先进制造/封装、机柜级连接、电力液冷和有高质量 backlog 的系统交付。"
+      "下游客户提出训练、推理、agent、主权 AI 和企业 AI 工作负载，形成 capex、订单、机柜规格和交付时间表。",
+      "中游系统商和数据中心基础设施商把下游需求拆成服务器、机柜、网络、电力、液冷和运维交付需求。",
+      "上游平台、制造、HBM、连接和网络公司提供核心硬件、资格标准、产能和平台能力，决定中游能否交付。",
+      "中游完成 AI server、rack、cluster 和机房基础设施交付后，下游用利用率、云收入、RPO/backlog、AI ROI 和追加 capex 验证需求。",
+      "只有当稀缺供给能持续变成收入、毛利、现金流和估值上修时，该节点才有投资赔率。"
     ],
     "layers": [
       {
-        "name": "需求端",
-        "role": "决定 AI capex 是否持续",
-        "players": "hyperscaler、AI lab、企业、主权 AI、CoreWeave/xAI 等新云",
-        "note": "如果 token 收入、企业 ROI 或模型需求放缓，全链条估值都会承压。"
-      },
-      {
-        "name": "平台控制",
-        "role": "把需求变成标准系统",
+        "stage": "上游",
+        "name": "平台与加速器",
+        "role": "把 AI 工作负载变成标准算力架构",
         "players": "NVDA、AVGO custom ASIC、AMD/ASIC 替代路线",
-        "note": "平台越强，卡点越稀缺；但最强平台也最容易被提前定价。"
+        "note": "接受下游训练/推理需求和 capex 预算，提供 GPU/ASIC、网络平台、软件栈和参考架构。"
       },
       {
-        "name": "芯片制造和内存",
-        "role": "提供先进制程、封装、HBM 和服务器内存",
+        "stage": "上游",
+        "name": "制造、封装与内存",
+        "role": "决定核心硬件供给斜率",
         "players": "TSMC、SK hynix、Samsung、Micron",
-        "note": "这是 AI 工厂真正硬瓶颈之一，重点看产能、良率、客户资格和毛利。"
+        "note": "接受芯片设计、HBM 规格和订单预测，提供先进制程/封装、HBM、服务器 DRAM、eSSD。"
       },
       {
-        "name": "网络和连接",
-        "role": "让一整排 GPU/ASIC 像一个系统工作",
-        "players": "ALAB、CRDO、AVGO、ANET、MRVL",
-        "note": "连接是系统效率瓶颈，但要区分开放以太网、NVIDIA 自有网络和客户集中风险。"
+        "stage": "上游",
+        "name": "网络连接",
+        "role": "让机柜和集群扩展成可用系统",
+        "players": "ALAB、CRDO、MRVL、AVGO、ANET",
+        "note": "接受高带宽、低延迟、低功耗和平台兼容性要求，提供 switch、retimer、AEC、光互联和 custom networking。"
       },
       {
-        "name": "电力冷却和系统交付",
-        "role": "把 AI 工厂变成可上线数据中心",
-        "players": "VRT、DELL、SMCI、HPE、ODM",
-        "note": "订单和 backlog 可验证，但系统商利润率和执行质量差异很大。"
+        "stage": "中游",
+        "name": "服务器、机柜和数据中心系统",
+        "role": "把上游部件组合成可交付 AI 工厂",
+        "players": "DELL、SMCI、HPE、ODM、VRT、数据中心工程商",
+        "note": "接受 GPU/HBM/网络/电力冷却部件和客户规格，提供 AI server、rack、cluster、机房电力和冷却交付。"
       },
       {
-        "name": "运营与回报",
-        "role": "验证 AI 工厂是否赚钱",
-        "players": "云厂商、AI 应用商、企业客户",
-        "note": "只有客户持续赚钱并追加 capex，上游硬件弹性才不是一次性周期。"
+        "stage": "下游",
+        "name": "云厂商、AI lab、企业和主权 AI",
+        "role": "决定需求是否真实和可持续",
+        "players": "hyperscaler、AI lab、企业客户、主权 AI 项目",
+        "note": "接受中游交付的 AI 工厂能力，提供订单、capex、利用率和 ROI 验证；其追加投资决定产业链持续性。"
+      }
+    ],
+    "stageGroups": [
+      {
+        "stage": "上游",
+        "summary": "核心供给层：提供平台、算力、先进制造、HBM、高端内存、网络连接和 custom silicon，决定 AI 工厂能否扩容。",
+        "companies": [
+          {
+            "name": "NVIDIA",
+            "ticker": "NVDA",
+            "node_type": "计算平台 / GPU",
+            "demand_input": "云厂商和 AI labs 的训练、推理、agent 工作负载、capex 预算、机柜规格。",
+            "supply_input": "TSMC 先进制程/封装、HBM 供应、网络与系统生态交付能力。",
+            "produces": "GPU、AI 加速平台、网络/软件栈、参考架构和供应链资格标准。",
+            "provides_to": "云厂商、AI labs、DELL / SMCI / HPE / ODM、TSMC、HBM 供应商。",
+            "financial_metrics": "Data Center revenue、gross margin、客户 capex、订单/供给约束、推理收入线索。",
+            "bottleneck_strength": "极强，但估值隐含预期高，Q4 不能只按稀缺性排序。",
+            "qa_link": "Q2.1 / Q4.1",
+            "evidence": "SRC-NVDA-FY26-Q4"
+          },
+          {
+            "name": "Broadcom",
+            "ticker": "AVGO",
+            "node_type": "Custom ASIC / Ethernet",
+            "demand_input": "云厂商自研 ASIC 规格、Ethernet AI fabric 需求和长期项目节奏。",
+            "supply_input": "先进制造、封装、网络生态、客户共同开发资源。",
+            "produces": "custom ASIC、Ethernet switch、AI networking silicon。",
+            "provides_to": "云厂商自研 ASIC 项目、AI networking 系统商和数据中心网络方案。",
+            "financial_metrics": "AI semiconductor revenue、客户集中度、订单/指引、AI networking 项目进度。",
+            "bottleneck_strength": "强，但要验证量产节奏和客户集中风险。",
+            "qa_link": "Q2.2 / Q4.1",
+            "evidence": "SRC-AVGO-FY25-Q4"
+          },
+          {
+            "name": "TSMC",
+            "ticker": "TSM",
+            "node_type": "先进制程 / 先进封装",
+            "demand_input": "GPU/ASIC 设计方的先进节点 wafer 订单、先进封装需求和交付排期。",
+            "supply_input": "设备、材料、良率工程、capex、地缘与产能约束。",
+            "produces": "先进制程、先进封装、产能扩张、良率和量产交付能力。",
+            "provides_to": "GPU/ASIC 平台方、AI accelerator 设计公司和系统供应链。",
+            "financial_metrics": "HPC/AI revenue mix、gross margin、advanced technology share、capex、advanced packaging capacity。",
+            "bottleneck_strength": "硬瓶颈强，但资本开支、地缘和估值会压制赔率。",
+            "qa_link": "Q2.1.2 / Q3.1.1",
+            "evidence": "SRC-TSM-Q4-2025"
+          },
+          {
+            "name": "SK hynix",
+            "ticker": "000660.KS",
+            "node_type": "HBM / 高端 DRAM",
+            "demand_input": "GPU/ASIC 平台的 HBM 规格、客户资格认证、订单预测和平台迭代节奏。",
+            "supply_input": "DRAM wafer、封装产能、良率、客户认证和扩产资本开支。",
+            "produces": "HBM3E/HBM4、高端 DRAM、产能扩张和高价值 memory mix。",
+            "provides_to": "GPU/ASIC 平台、AI server 供应链和云厂商间接需求。",
+            "financial_metrics": "HBM mix、memory revenue、operating margin、ASP、capex、客户资格。",
+            "bottleneck_strength": "极强，当前最需要跟踪 ASP、资格和供给扩张。",
+            "qa_link": "Q2.1.2 / Q4.1",
+            "evidence": "SRC-SKHYNIX-FY25"
+          },
+          {
+            "name": "Micron",
+            "ticker": "MU",
+            "node_type": "HBM / DRAM / eSSD",
+            "demand_input": "GPU/ASIC 平台和云厂商的 HBM、服务器 DRAM、eSSD 需求和价格信号。",
+            "supply_input": "DRAM/NAND 产能、HBM ramp、良率和价格周期。",
+            "produces": "HBM、云端内存、服务器 DRAM、NAND/eSSD。",
+            "provides_to": "AI server、云数据中心和存储/内存供应链。",
+            "financial_metrics": "HBM revenue、DRAM/NAND ASP、gross margin、inventory、capex。",
+            "bottleneck_strength": "强，但周期反转和供给扩张是主要反证。",
+            "qa_link": "Q2.1.2 / Q3.2",
+            "evidence": "SRC-MU-FY26-Q1"
+          },
+          {
+            "name": "Samsung Electronics",
+            "ticker": "005930.KS",
+            "node_type": "HBM / Server DDR5 / eSSD",
+            "demand_input": "GPU/ASIC 平台和云客户的 HBM、server DDR5、enterprise SSD 需求。",
+            "supply_input": "大规模 memory 产能、HBM 客户资格、良率和产品 mix。",
+            "produces": "HBM、server DDR5、enterprise SSD 和大规模 memory 产能。",
+            "provides_to": "AI server 供应链、云厂商和高端内存客户。",
+            "financial_metrics": "Memory revenue、HBM shipment/qualification、server DDR5/eSSD mix、margin。",
+            "bottleneck_strength": "中强，规模强但 HBM 领导力需要验证。",
+            "qa_link": "Q2.1.2 / Q4.1",
+            "evidence": "SRC-SAMSUNG-FY25"
+          },
+          {
+            "name": "Astera Labs",
+            "ticker": "ALAB",
+            "node_type": "机柜级连接芯片",
+            "demand_input": "AI server/rack 平台的 PCIe/CXL、retimer、信号完整性和 rack-scale 连接需求。",
+            "supply_input": "平台设计导入、客户认证、封测与高端连接生态。",
+            "produces": "retimer、connectivity chips、rack-scale AI infrastructure 连接方案。",
+            "provides_to": "AI server OEM/ODM、云厂商机柜平台和加速器系统。",
+            "financial_metrics": "Revenue growth、gross margin、customer concentration、new product ramp。",
+            "bottleneck_strength": "强弹性，但估值和客户集中压制风险控制。",
+            "qa_link": "Q2.2.1 / Q3.1",
+            "evidence": "SRC-ALAB-Q4-2025"
+          },
+          {
+            "name": "Credo",
+            "ticker": "CRDO",
+            "node_type": "AEC / Optical interconnect",
+            "demand_input": "AI server/rack 平台的 AEC、光互联、低功耗高速连接和 memory connectivity 需求。",
+            "supply_input": "客户设计导入、封测能力、平台兼容性和供应链交付。",
+            "produces": "active electrical cables、optical interconnects、connectivity silicon。",
+            "provides_to": "云厂商、AI server/rack 系统和机柜级网络连接。",
+            "financial_metrics": "Revenue growth、客户集中度、gross margin、design win/ramp。",
+            "bottleneck_strength": "强弹性，但客户集中和导入节奏是主要风险。",
+            "qa_link": "Q2.2.1 / Q4.1",
+            "evidence": "SRC-CRDO-FY26-Q3"
+          },
+          {
+            "name": "Marvell",
+            "ticker": "MRVL",
+            "node_type": "Custom silicon / Electro-optics",
+            "demand_input": "云厂商 custom silicon、电光互联、数据中心网络和长期定制项目。",
+            "supply_input": "先进制造、客户联合开发、光电生态和项目量产节奏。",
+            "produces": "custom silicon、electro-optics、data-center networking products。",
+            "provides_to": "云厂商、AI networking 和 custom accelerator 生态。",
+            "financial_metrics": "Data-center revenue、custom silicon pipeline、electro-optics ramp、gross margin。",
+            "bottleneck_strength": "中强，量产节奏和客户集中需要验证。",
+            "qa_link": "Q2.2.1 / Q4.1",
+            "evidence": "SRC-MRVL-FY26-Q3"
+          },
+          {
+            "name": "Arista Networks",
+            "ticker": "ANET",
+            "node_type": "Ethernet AI networking",
+            "demand_input": "云厂商和 AI 集群的 Ethernet AI networking、switching fabric 和网络扩展需求。",
+            "supply_input": "客户网络架构、switch silicon、软件/网络操作系统和供应链交付。",
+            "produces": "Ethernet switch、AI networking 平台和数据中心网络方案。",
+            "provides_to": "云厂商、AI 网络集群和企业数据中心。",
+            "financial_metrics": "Cloud revenue、AI networking contribution、gross margin、客户 capex。",
+            "bottleneck_strength": "中强，需验证以太网路线能否形成稀缺利润池。",
+            "qa_link": "Q2.2.1 / Q3.1",
+            "evidence": "SRC-ANET-Q4-2025"
+          }
+        ]
+      },
+      {
+        "stage": "中游",
+        "summary": "系统交付层：把上游芯片、内存、网络和电力冷却能力，集成为可上线的服务器、机柜、集群和数据中心基础设施。",
+        "companies": [
+          {
+            "name": "Dell Technologies",
+            "ticker": "DELL",
+            "node_type": "AI server / 系统集成",
+            "demand_input": "云厂商和企业客户的 AI server 订单、整机规格和交付时间表。",
+            "supply_input": "GPU/ASIC、CPU、内存、存储、网络和电力冷却部件。",
+            "produces": "AI-optimized server、rack-scale 系统、集群集成和交付服务。",
+            "provides_to": "云厂商、企业客户和 AI 基础设施项目。",
+            "financial_metrics": "AI server orders、shipments、backlog、operating margin、cash conversion。",
+            "bottleneck_strength": "订单强，但价值捕获取决于毛利率和现金流。",
+            "qa_link": "Q1.1.2 / Q2.2.2 / Q4.1",
+            "evidence": "SRC-DELL-FY26-Q4"
+          },
+          {
+            "name": "Supermicro",
+            "ticker": "SMCI",
+            "node_type": "AI server / 快速定制交付",
+            "demand_input": "云厂商和 AI 客户的服务器订单、机柜规格和快速交付需求。",
+            "supply_input": "GPU、主板、网络、存储和电力冷却部件。",
+            "produces": "AI server、rack integration、快速定制交付。",
+            "provides_to": "AI 云、企业客户和数据中心集成项目。",
+            "financial_metrics": "Revenue growth、gross margin、inventory、governance/execution risk。",
+            "bottleneck_strength": "订单弹性大，但治理、执行和毛利风险更高。",
+            "qa_link": "Q2.2.2 / Q3.2",
+            "evidence": "SRC-SMCI-FY26-Q2"
+          },
+          {
+            "name": "HPE / ODM",
+            "ticker": "HPE/ODM",
+            "node_type": "服务器 / ODM 交付",
+            "demand_input": "云厂商、企业和主权 AI 的服务器/机柜规格与交付需求。",
+            "supply_input": "GPU、CPU、内存、网络、电力冷却和制造资源。",
+            "produces": "服务器、机柜、集群集成、ODM 代工和运维交付。",
+            "provides_to": "云厂商、企业和主权 AI 项目。",
+            "financial_metrics": "AI server backlog、gross margin、客户质量、交付周期。",
+            "bottleneck_strength": "偏执行和规模节点，需要订单、毛利和客户质量验证。",
+            "qa_link": "Q2.2.2 / Q4.1",
+            "evidence": "SRC-DELL-FY26-Q4"
+          },
+          {
+            "name": "Vertiv",
+            "ticker": "VRT",
+            "node_type": "电力 / 液冷 / 数据中心基础设施",
+            "demand_input": "AI server/rack、高功率密度、热负载、液冷、电力容量和项目工程要求。",
+            "supply_input": "电力设备、热管理方案、工程交付能力、供应链和现场服务。",
+            "produces": "power、thermal、liquid cooling、UPS、机房基础设施方案和现场交付能力。",
+            "provides_to": "云厂商、数据中心运营方、AI 工厂项目和系统集成商。",
+            "financial_metrics": "Organic orders、backlog、organic growth、margin、cash conversion、液冷项目质量。",
+            "bottleneck_strength": "强物理瓶颈，关键看 backlog 质量、毛利和交付能力。",
+            "qa_link": "Q2.2.2 / Q4.2",
+            "evidence": "SRC-VRT-Q4-2025"
+          }
+        ]
+      },
+      {
+        "stage": "下游",
+        "summary": "需求和运营验证层：提出工作负载、支付 capex、运营 AI 工厂，并用收入、利用率和 ROI 决定是否继续扩容。",
+        "companies": [
+          {
+            "name": "Hyperscaler / 云厂商",
+            "ticker": "MSFT / AMZN / GOOGL / META 等",
+            "node_type": "核心付费客户 / AI 工厂运营方",
+            "demand_input": "终端 AI workload、云客户需求、内部模型训练/推理需求。",
+            "supply_input": "中游 AI server/rack/cluster、电力冷却和运维能力；上游 GPU/ASIC、网络和软件栈。",
+            "produces": "capex 预算、订单、使用率、云收入、RPO/backlog 和 ROI 信号。",
+            "provides_to": "上游平台、中游系统商、电力液冷供应商和应用生态。",
+            "financial_metrics": "Capex guidance、cloud revenue、RPO/backlog、FCF、AI ROI commentary。",
+            "bottleneck_strength": "需求真实性最终验证方；capex/ROI 下修会压低全链条评分。",
+            "qa_link": "Q1 / Q3",
+            "evidence": "SRC-NVDA-FY26-Q4"
+          },
+          {
+            "name": "AI labs / 新云",
+            "ticker": "AI labs / CoreWeave/xAI 类节点",
+            "node_type": "新增算力需求 / 租赁需求",
+            "demand_input": "模型训练、推理、agent 服务和客户算力租赁需求。",
+            "supply_input": "云或自建 AI 工厂的算力、机柜、网络、电力冷却和资本支持。",
+            "produces": "训练/推理工作负载、长期租约、算力采购和需求斜率。",
+            "provides_to": "云厂商、系统商、GPU/ASIC 平台和融资市场。",
+            "financial_metrics": "租约/订单、融资能力、利用率、收入转化、客户集中度。",
+            "bottleneck_strength": "能放大需求斜率，但信用、融资和客户集中需要单独折价。",
+            "qa_link": "Q1.2 / Q3.1",
+            "evidence": "SRC-DELL-FY26-Q4"
+          },
+          {
+            "name": "企业 / 主权 AI",
+            "ticker": "Enterprise / Sovereign AI",
+            "node_type": "长期推理和应用扩散需求",
+            "demand_input": "业务流程、数据安全、合规、本地化和主权算力需求。",
+            "supply_input": "云或本地 AI 工厂、模型服务、数据中心交付和安全合规能力。",
+            "produces": "应用收入、预算、采购订单和可验证 ROI。",
+            "provides_to": "云厂商、系统商、软件/服务生态和上游硬件需求。",
+            "financial_metrics": "企业 AI spend、使用率、ROI case、主权 AI 项目预算、续约/扩容。",
+            "bottleneck_strength": "决定需求能否从训练周期扩散到长期推理和企业应用。",
+            "qa_link": "Q1.2 / Q3.1",
+            "evidence": "SRC-NVDA-FY26-Q4"
+          }
+        ]
       }
     ],
     "chokepoints": [
@@ -119,57 +359,1124 @@
         "重要卡点，但需要区分已经定价的部分",
         "Q3.1 / Q4.1"
       ]
+    ],
+    "relationships": [
+      {
+        "from": "云厂商 / AI labs",
+        "to": "NVDA / AVGO / ASIC 生态",
+        "relationship": "客户 capex 先进入平台和加速器架构",
+        "demand_input": "接受下游训练、推理、agent 工作负载、机柜规格、预算和长期供货需求。",
+        "supply_input": "TSMC 先进制程/封装、HBM、网络生态和系统交付能力。",
+        "produces": "提供 GPU/ASIC 加速器、网络/软件平台、参考架构和供应链资格标准。",
+        "provides_to": "云厂商、AI labs、系统商和 AI 工厂项目。",
+        "financial_metrics": "Data Center / AI semiconductor revenue、客户 capex、订单/指引、毛利率。",
+        "bottleneck_strength": "客户 ROI、capex 持续性、平台标准控制。",
+        "qa_link": "NVDA、AVGO；Q1.1、Q2.1、Q4.1。",
+        "evidence": "SRC-NVDA-FY26-Q4；SRC-AVGO-FY25-Q4。"
+      },
+      {
+        "from": "NVDA / ASIC 平台",
+        "to": "TSMC",
+        "relationship": "先进制程和先进封装承接 AI 工厂芯片需求",
+        "demand_input": "接受 GPU/ASIC 设计、先进节点 wafer 订单、先进封装需求和交付排期。",
+        "supply_input": "设备、材料、良率工程、capex、地缘与产能约束。",
+        "produces": "提供先进制程、先进封装、产能扩张、良率和量产交付能力。",
+        "provides_to": "GPU/ASIC 平台方、AI accelerator 设计公司和系统供应链。",
+        "financial_metrics": "HPC/AI revenue mix、gross margin、advanced technology share、capex、advanced packaging capacity。",
+        "bottleneck_strength": "先进制程、CoWoS/先进封装、良率、capex。",
+        "qa_link": "TSM；Q2.1.2、Q2.1.2.2、Q3.1.1.1。",
+        "evidence": "SRC-TSM-Q4-2025。"
+      },
+      {
+        "from": "NVDA / ASIC 平台",
+        "to": "SK hynix / Micron / Samsung",
+        "relationship": "AI 工厂算力集群需要 HBM、服务器 DRAM 和 eSSD",
+        "demand_input": "接受 GPU/ASIC BOM、HBM 规格、客户资格认证、订单预测和平台迭代节奏。",
+        "supply_input": "DRAM/NAND 产能、封装能力、良率、客户认证和扩产资本开支。",
+        "produces": "提供 HBM3E/HBM4、服务器 DDR5、企业 SSD、产能扩张和高价值 memory mix。",
+        "provides_to": "GPU/ASIC 平台、AI server 供应链和云厂商间接需求。",
+        "financial_metrics": "HBM mix、DRAM/NAND ASP、gross margin、inventory、capex、客户资格。",
+        "bottleneck_strength": "HBM 产能、客户资格、ASP、供给扩张。",
+        "qa_link": "000660.KS、MU、005930.KS；Q2.1.2、Q2.1.2.1、Q2.1.2.1.2。",
+        "evidence": "SRC-SKHYNIX-FY25；SRC-MU-FY26-Q1；SRC-SAMSUNG-FY25。"
+      },
+      {
+        "from": "云厂商 / AI labs",
+        "to": "DELL / SMCI / HPE / ODM",
+        "relationship": "AI server 和机柜系统交付",
+        "demand_input": "接受客户整机规格、GPU/ASIC allocation、网络/存储/电力冷却要求和交付时间表。",
+        "supply_input": "GPU/ASIC、CPU、内存、存储、网络和电力冷却部件。",
+        "produces": "提供 AI-optimized server、rack-scale 系统、集群集成、交付服务和 backlog 可见性。",
+        "provides_to": "云厂商、AI labs、企业客户和数据中心集成项目。",
+        "financial_metrics": "AI server orders、shipments、backlog、operating margin、cash conversion。",
+        "bottleneck_strength": "订单转收入、毛利率、现金转化、执行质量。",
+        "qa_link": "DELL、SMCI；Q1.1.2、Q2.2.2.2、Q4.1。",
+        "evidence": "SRC-DELL-FY26-Q4；SRC-SMCI-FY26-Q2。"
+      },
+      {
+        "from": "AI server / rack",
+        "to": "VRT",
+        "relationship": "高功率机柜需要电力、热管理和液冷基础设施",
+        "demand_input": "接受高功率机柜密度、数据中心电力容量、热负载、液冷部署和项目工程要求。",
+        "supply_input": "电力设备、热管理方案、工程交付能力、供应链和现场服务。",
+        "produces": "提供 power、thermal、liquid cooling、UPS、机房基础设施方案和现场交付能力。",
+        "provides_to": "云厂商、数据中心运营方、AI 工厂项目和系统集成商。",
+        "financial_metrics": "Organic orders、backlog、organic growth、margin、cash conversion、液冷项目质量。",
+        "bottleneck_strength": "液冷交付、项目毛利、backlog 质量。",
+        "qa_link": "VRT；Q2.2.2、Q2.2.2.1、Q4.2.2.1。",
+        "evidence": "SRC-VRT-Q4-2025。"
+      },
+      {
+        "from": "AI server / rack",
+        "to": "ALAB / CRDO",
+        "relationship": "机柜级高速连接和 AEC/retimer 支撑集群扩展",
+        "demand_input": "接受 rack-scale 带宽、延迟、功耗、信号完整性和平台兼容性要求。",
+        "supply_input": "平台设计导入、客户认证、封测与高端连接生态。",
+        "produces": "提供 PCIe/CXL retimer、AEC、connectivity chips、光互联相关方案和 memory connectivity。",
+        "provides_to": "云厂商、AI server/rack 系统和机柜级网络连接。",
+        "financial_metrics": "Revenue growth、gross margin、customer concentration、new product ramp / design win。",
+        "bottleneck_strength": "客户集中、design-in 节奏、平台替代风险。",
+        "qa_link": "ALAB、CRDO；Q2.2.1、Q2.2.1.1、Q3.1.1.2。",
+        "evidence": "SRC-ALAB-Q4-2025；SRC-CRDO-FY26-Q3。"
+      },
+      {
+        "from": "AI networking / custom silicon",
+        "to": "MRVL / AVGO / ANET",
+        "relationship": "custom silicon、电光互联和以太网网络承接开放/定制路线",
+        "demand_input": "接受云厂商自研 ASIC 需求、Ethernet AI fabric 规格、switch/电光互联项目和客户定制节奏。",
+        "supply_input": "先进制造、客户联合开发、光电生态、网络操作系统和项目量产节奏。",
+        "produces": "提供 custom silicon、electro-optics、Ethernet switch、AI networking 平台和长期项目支持。",
+        "provides_to": "云厂商、AI networking 和 custom accelerator 生态。",
+        "financial_metrics": "Data-center revenue、custom silicon pipeline、electro-optics ramp、gross margin、cloud revenue。",
+        "bottleneck_strength": "大客户集中、量产节奏、与 NVIDIA 平台竞争。",
+        "qa_link": "MRVL、AVGO、ANET；Q2.2.1.2、Q2.2.1.3。",
+        "evidence": "SRC-MRVL-FY26-Q3；SRC-AVGO-FY25-Q4；SRC-ANET-Q4-2025。"
+      }
     ]
   },
-  "supply_chain_map": [
+  "supply_chain_research_bridge": {
+    "objective": "把“AI 工厂产业相关投资机会”拆成可验证的产业链问题，再由产业链节点生成后续 QA 和标的排序。",
+    "coreQuestion": "哪些节点能把 AI 工厂需求稳定转成收入、毛利、现金流和估值赔率，而不是只获得主题曝光？",
+    "currentConclusion": "行业概况显示，AI 工厂不是单点 GPU 叙事。需求先由云厂商和 AI labs 的 capex 触发，再进入平台、HBM/先进封装、连接、电力液冷和系统交付。后续 QA 应优先下钻 HBM/先进封装、电力液冷、机柜级连接、系统交付利润质量和客户 ROI 反证。",
+    "outputToQa": [
+      [
+        "Q1",
+        "需求是否真实",
+        "看下游 capex、平台收入、服务器 backlog、电力液冷订单和连接芯片收入是否同向验证。"
+      ],
+      [
+        "Q2",
+        "竞争格局与价值捕获",
+        "先看每个节点谁和谁竞争、替代路线和客户议价力，再判断哪些节点形成真 chokepoint。"
+      ],
+      [
+        "Q3",
+        "什么会推翻",
+        "看 capex ROI、供给扩张、估值拥挤、客户集中、平台替代和 backlog 毛利质量。"
+      ],
+      [
+        "Q4",
+        "推荐哪些标的",
+        "把节点分数映射到具体证券、赔率、风险闸门和监控触发器。"
+      ]
+    ]
+  },
+  "supply_chain_node_lenses": [
     [
-      "需求端",
-      "训练、推理、agent、主权 AI、企业 AI",
-      "云厂商、AI labs、企业客户",
-      "客户 capex -> 服务器/机柜订单 -> 供应链收入",
-      "需求真实但必须验证 ROI 和 capex 持续性",
-      "Q1 / Q3"
+      "需求流入",
+      "是否有明确客户预算、订单、收入或 backlog 流入该节点。"
     ],
     [
-      "平台层",
-      "GPU/ASIC、软件栈、AI 工厂参考架构",
+      "稀缺供给",
+      "是否控制短期难扩张的产能、资格、设计导入、生态或工程交付能力。"
+    ],
+    [
+      "替代难度",
+      "客户能否绕开、双供、内化，或被平台路线替代。"
+    ],
+    [
+      "货币化能力",
+      "稀缺是否能体现为价格、毛利、收入增长、现金流或更高 backlog 质量。"
+    ],
+    [
+      "市场定价",
+      "当前估值是否已经把增长路径和利润率上修充分反映。"
+    ],
+    [
+      "反证触发",
+      "哪些数据会证明瓶颈只是暂时的、低利润的，或已被供给扩张消化。"
+    ]
+  ],
+  "supply_chain_value_capture_matrix": [
+    {
+      "node": "平台与加速器",
+      "demand": "云厂商和 AI labs capex 直接进入 GPU/ASIC 平台和软件生态。",
+      "chokepoint": "GPU 供给、软件栈、生态锁定、参考架构和客户开发节奏。",
+      "monetization": "Data Center / AI semiconductor revenue、gross margin、平台升级周期。",
+      "targets": "NVDA、AVGO",
+      "verification": "客户 capex、数据中心收入、推理收入、毛利率和隐含增长预期。",
+      "qa": "Q1.1 / Q2.1 / Q4.1"
+    },
+    {
+      "node": "HBM / 高端内存",
+      "demand": "GPU/ASIC BOM、平台资格和 AI server 规格拉动 HBM、server DRAM、eSSD。",
+      "chokepoint": "HBM 客户资格、良率、封装、产能扩张斜率和 ASP。",
+      "monetization": "HBM mix、ASP、operating margin、inventory 和 capex 效率。",
+      "targets": "SK hynix、MU、Samsung",
+      "verification": "HBM ASP、客户资格、供给扩张、DRAM/NAND 价格和毛利率。",
+      "qa": "Q2.1.2 / Q3.2 / Q4.1"
+    },
+    {
+      "node": "先进制程 / 封装",
+      "demand": "GPU/ASIC 设计和机柜级平台升级带来先进节点与封装订单。",
+      "chokepoint": "先进节点、先进封装产能、良率、设备/材料和地缘约束。",
+      "monetization": "advanced technology share、gross margin、capex 与 HPC/AI mix。",
+      "targets": "TSM",
+      "verification": "先进封装产能、AI/HPC 客户 mix、capex 回报和地缘风险。",
+      "qa": "Q2.1.2.2 / Q3.1 / Q4.1"
+    },
+    {
+      "node": "电力 / 液冷 / 数据中心基础设施",
+      "demand": "高功率机柜和数据中心上线需求形成电力、热管理和液冷工程订单。",
+      "chokepoint": "现场工程交付、液冷方案、供货周期和高质量 backlog。",
+      "monetization": "organic orders、backlog、project margin、cash conversion。",
+      "targets": "VRT",
+      "verification": "backlog 转收入、液冷项目毛利、取消率、交付周期和客户 capex。",
+      "qa": "Q2.2.2 / Q4.2"
+    },
+    {
+      "node": "机柜级连接 / 网络",
+      "demand": "rack-scale 扩展带来 retimer、AEC、光互联、Ethernet AI networking 和 custom silicon 需求。",
+      "chokepoint": "design-in、客户认证、平台兼容、功耗/延迟和高速信号能力。",
+      "monetization": "revenue growth、gross margin、客户集中度、设计导入和量产 ramp。",
+      "targets": "ALAB、CRDO、MRVL、ANET、AVGO",
+      "verification": "大客户占比、项目量产节奏、平台替代、毛利率和估值分位。",
+      "qa": "Q2.2.1 / Q3.1 / Q4.1"
+    },
+    {
+      "node": "系统交付",
+      "demand": "云厂商和 AI labs 的 AI server、rack、cluster 订单进入 OEM/ODM。",
+      "chokepoint": "GPU allocation、集成能力、供应链执行、现金周转和治理质量。",
+      "monetization": "AI server orders、shipments、backlog、operating margin、cash conversion。",
+      "targets": "DELL、SMCI、HPE/ODM",
+      "verification": "backlog 毛利、现金转化、库存、订单取消和治理风险。",
+      "qa": "Q2.2.2 / Q3.2 / Q4.1"
+    },
+    {
+      "node": "下游运营验证",
+      "demand": "客户将 AI 工厂上线为训练、推理、云服务、企业/主权 AI 项目。",
+      "chokepoint": "利用率、应用收入、RPO/backlog、FCF 和 capex ROI。",
+      "monetization": "不是直接上游利润池，但决定全链条需求持续性和估值容忍度。",
+      "targets": "云厂商和全链条二阶验证",
+      "verification": "cloud revenue、RPO、capex guidance、FCF、AI ROI commentary。",
+      "qa": "Q1.2 / Q3.1"
+    }
+  ],
+  "supply_chain_qa_mapping": [
+    {
+      "q": "Q1 需求真实性",
+      "signal": "平台收入、服务器 backlog、电力液冷订单、HBM/连接收入是否同时增长。",
+      "use": "判断 AI 工厂是否已经进入财务口径，决定是否继续做 Q2/Q4。"
+    },
+    {
+      "q": "Q2 竞争格局与价值捕获",
+      "signal": "节点内竞争者、替代路线、客户议价力、供给扩张和定价权是否共同指向真 chokepoint。",
+      "use": "先做竞争格局判断，再形成 chokepoint 分数，并把强节点映射到具体证券。"
+    },
+    {
+      "q": "Q3 反证和赔率",
+      "signal": "估值隐含预期、客户 capex ROI、供给扩张、客户集中、平台替代、backlog 毛利。",
+      "use": "给每个强主题设置降级闸门，避免只按热度排序。"
+    },
+    {
+      "q": "Q4 标的推荐",
+      "signal": "把 Q1-Q3 的节点结论转成稀缺/垄断、未定价、业绩弹性、风险控制四维评分。",
+      "use": "输出具体标的、强度、赔率、风险提示和后续监控触发器。"
+    }
+  ],
+  "supply_chain_data_gaps": [
+    "云厂商 capex、RPO/backlog、cloud revenue、FCF 和 AI ROI 的同口径季度跟踪。",
+    "HBM ASP、HBM4 客户资格、产能扩张、良率、产品 mix 和客户分配。",
+    "TSMC 先进封装产能、AI/HPC 客户 mix、capex 回报和地缘风险折价。",
+    "VRT backlog 转收入节奏、液冷项目毛利、取消率、交付周期和现金转化。",
+    "ALAB/CRDO/MRVL/ANET/AVGO 的客户集中、design-in、项目量产和平台替代风险。",
+    "DELL/SMCI/HPE/ODM 的 AI server 毛利、库存、现金流、订单取消和治理/执行风险。"
+  ],
+  "supply_chain_network": {
+    "width": 1540,
+    "height": 760,
+    "nodes": [
+      {
+        "id": "NVDA",
+        "label": "NVIDIA",
+        "ticker": "NVDA",
+        "stage": "上游",
+        "role": "GPU / 平台",
+        "x": 64,
+        "y": 58,
+        "w": 190,
+        "h": 54
+      },
+      {
+        "id": "AVGO",
+        "label": "Broadcom",
+        "ticker": "AVGO",
+        "stage": "上游",
+        "role": "Custom ASIC",
+        "x": 64,
+        "y": 126,
+        "w": 190,
+        "h": 54
+      },
+      {
+        "id": "TSM",
+        "label": "TSMC",
+        "ticker": "TSM",
+        "stage": "上游",
+        "role": "先进制程 / 封装",
+        "x": 64,
+        "y": 194,
+        "w": 190,
+        "h": 54
+      },
+      {
+        "id": "SKHYNIX",
+        "label": "SK hynix",
+        "ticker": "000660.KS",
+        "stage": "上游",
+        "role": "HBM",
+        "x": 64,
+        "y": 262,
+        "w": 190,
+        "h": 54
+      },
+      {
+        "id": "MU",
+        "label": "Micron",
+        "ticker": "MU",
+        "stage": "上游",
+        "role": "HBM / DRAM / eSSD",
+        "x": 64,
+        "y": 330,
+        "w": 190,
+        "h": 54
+      },
+      {
+        "id": "SAMSUNG",
+        "label": "Samsung",
+        "ticker": "005930.KS",
+        "stage": "上游",
+        "role": "HBM / DDR5 / eSSD",
+        "x": 64,
+        "y": 398,
+        "w": 190,
+        "h": 54
+      },
+      {
+        "id": "ALAB",
+        "label": "Astera Labs",
+        "ticker": "ALAB",
+        "stage": "上游",
+        "role": "机柜级连接",
+        "x": 64,
+        "y": 466,
+        "w": 190,
+        "h": 54
+      },
+      {
+        "id": "CRDO",
+        "label": "Credo",
+        "ticker": "CRDO",
+        "stage": "上游",
+        "role": "AEC / 光互联",
+        "x": 64,
+        "y": 534,
+        "w": 190,
+        "h": 54
+      },
+      {
+        "id": "MRVL",
+        "label": "Marvell",
+        "ticker": "MRVL",
+        "stage": "上游",
+        "role": "电光 / custom",
+        "x": 64,
+        "y": 602,
+        "w": 190,
+        "h": 54
+      },
+      {
+        "id": "ANET",
+        "label": "Arista",
+        "ticker": "ANET",
+        "stage": "上游",
+        "role": "AI Ethernet",
+        "x": 64,
+        "y": 670,
+        "w": 190,
+        "h": 54
+      },
+      {
+        "id": "DELL",
+        "label": "Dell",
+        "ticker": "DELL",
+        "stage": "中游",
+        "role": "AI server / 集成",
+        "x": 610,
+        "y": 148,
+        "w": 190,
+        "h": 54
+      },
+      {
+        "id": "SMCI",
+        "label": "Supermicro",
+        "ticker": "SMCI",
+        "stage": "中游",
+        "role": "快速定制交付",
+        "x": 610,
+        "y": 266,
+        "w": 190,
+        "h": 54
+      },
+      {
+        "id": "HPEODM",
+        "label": "HPE / ODM",
+        "ticker": "HPE/ODM",
+        "stage": "中游",
+        "role": "服务器 / ODM",
+        "x": 610,
+        "y": 384,
+        "w": 190,
+        "h": 54
+      },
+      {
+        "id": "VRT",
+        "label": "Vertiv",
+        "ticker": "VRT",
+        "stage": "中游",
+        "role": "电力 / 液冷",
+        "x": 610,
+        "y": 502,
+        "w": 190,
+        "h": 54
+      },
+      {
+        "id": "CLOUD",
+        "label": "Hyperscaler",
+        "ticker": "MSFT/AMZN/GOOGL/META",
+        "stage": "下游",
+        "role": "云厂商 / AI 工厂",
+        "x": 1136,
+        "y": 178,
+        "w": 190,
+        "h": 54
+      },
+      {
+        "id": "AILABS",
+        "label": "AI labs / 新云",
+        "ticker": "CoreWeave/xAI 类",
+        "stage": "下游",
+        "role": "新增算力需求",
+        "x": 1136,
+        "y": 342,
+        "w": 190,
+        "h": 54
+      },
+      {
+        "id": "ENTERPRISE",
+        "label": "企业 / 主权 AI",
+        "ticker": "Enterprise/Sovereign",
+        "stage": "下游",
+        "role": "长期应用需求",
+        "x": 1136,
+        "y": 506,
+        "w": 190,
+        "h": 54
+      }
+    ],
+    "edges": [
+      {
+        "from": "CLOUD",
+        "to": "NVDA",
+        "type": "需求",
+        "label": "capex / 平台规格",
+        "flow": "demand",
+        "curve": 0.18
+      },
+      {
+        "from": "CLOUD",
+        "to": "AVGO",
+        "type": "需求",
+        "label": "自研 ASIC / Ethernet",
+        "flow": "demand",
+        "curve": 0.28
+      },
+      {
+        "from": "CLOUD",
+        "to": "DELL",
+        "type": "订单",
+        "label": "AI server 订单",
+        "flow": "demand",
+        "curve": -0.04
+      },
+      {
+        "from": "CLOUD",
+        "to": "VRT",
+        "type": "项目",
+        "label": "电力 / 液冷项目",
+        "flow": "demand",
+        "curve": 0.15
+      },
+      {
+        "from": "AILABS",
+        "to": "DELL",
+        "type": "订单",
+        "label": "训练集群交付",
+        "flow": "demand",
+        "curve": 0.06
+      },
+      {
+        "from": "ENTERPRISE",
+        "to": "CLOUD",
+        "type": "验证",
+        "label": "云收入 / ROI",
+        "flow": "feedback",
+        "curve": -0.18
+      },
+      {
+        "from": "TSM",
+        "to": "NVDA",
+        "type": "供给",
+        "label": "先进制程 / 封装",
+        "flow": "supply",
+        "curve": -0.15
+      },
+      {
+        "from": "TSM",
+        "to": "AVGO",
+        "type": "供给",
+        "label": "ASIC 量产",
+        "flow": "supply",
+        "curve": -0.06
+      },
+      {
+        "from": "SKHYNIX",
+        "to": "NVDA",
+        "type": "供给",
+        "label": "HBM 资格 / 供给",
+        "flow": "supply",
+        "curve": 0.08
+      },
+      {
+        "from": "MU",
+        "to": "DELL",
+        "type": "供给",
+        "label": "DRAM / eSSD",
+        "flow": "supply",
+        "curve": -0.1
+      },
+      {
+        "from": "SAMSUNG",
+        "to": "DELL",
+        "type": "供给",
+        "label": "HBM / server memory",
+        "flow": "supply",
+        "curve": 0.08
+      },
+      {
+        "from": "NVDA",
+        "to": "DELL",
+        "type": "供给",
+        "label": "GPU / 参考架构",
+        "flow": "supply",
+        "curve": -0.05
+      },
+      {
+        "from": "AVGO",
+        "to": "HPEODM",
+        "type": "供给",
+        "label": "ASIC / Ethernet",
+        "flow": "supply",
+        "curve": 0.08
+      },
+      {
+        "from": "ALAB",
+        "to": "DELL",
+        "type": "供给",
+        "label": "retimer / CXL",
+        "flow": "supply",
+        "curve": 0.14
+      },
+      {
+        "from": "CRDO",
+        "to": "SMCI",
+        "type": "供给",
+        "label": "AEC / 光互联",
+        "flow": "supply",
+        "curve": 0.1
+      },
+      {
+        "from": "MRVL",
+        "to": "HPEODM",
+        "type": "供给",
+        "label": "电光 / custom",
+        "flow": "supply",
+        "curve": -0.06
+      },
+      {
+        "from": "ANET",
+        "to": "HPEODM",
+        "type": "供给",
+        "label": "AI Ethernet",
+        "flow": "supply",
+        "curve": 0.16
+      },
+      {
+        "from": "DELL",
+        "to": "CLOUD",
+        "type": "交付",
+        "label": "服务器 / 机柜",
+        "flow": "delivery",
+        "curve": -0.06
+      },
+      {
+        "from": "SMCI",
+        "to": "AILABS",
+        "type": "交付",
+        "label": "快速定制服务器",
+        "flow": "delivery",
+        "curve": 0.08
+      },
+      {
+        "from": "HPEODM",
+        "to": "ENTERPRISE",
+        "type": "交付",
+        "label": "企业 / 主权交付",
+        "flow": "delivery",
+        "curve": -0.08
+      },
+      {
+        "from": "VRT",
+        "to": "CLOUD",
+        "type": "交付",
+        "label": "电力 / 液冷",
+        "flow": "delivery",
+        "curve": 0.18
+      },
+      {
+        "from": "VRT",
+        "to": "AILABS",
+        "type": "交付",
+        "label": "机房基础设施",
+        "flow": "delivery",
+        "curve": -0.08
+      }
+    ],
+    "legend": [
+      [
+        "实线蓝色",
+        "供给/交付：产品、产能、系统或基础设施从左向右传导。"
+      ],
+      [
+        "虚线金色",
+        "需求/订单：下游 capex、规格和项目需求向中上游反馈。"
+      ],
+      [
+        "灰色",
+        "运营验证：收入、利用率、ROI 和续费决定链条持续性。"
+      ]
+    ]
+  },
+  "supply_chain_sankey": [
+    {
+      "step": "01",
+      "title": "需求预算先变成平台订单",
+      "from": "云厂商 / AI labs capex",
+      "to": "NVDA / AVGO 平台与 ASIC",
+      "what": "训练、推理、agent 工作负载先变成 GPU/ASIC 平台规格和长期供货需求。",
+      "beneficiaries": "NVDA、AVGO，以及承接 GPU/ASIC 设计的先进制造和 HBM 供应链。",
+      "metric": "Data Center / AI semiconductor revenue、客户 capex、供给约束。",
+      "investment_read": "这是需求真实性入口；如果平台收入和客户 capex 同时走强，Q1 才能上抛到 Q2/Q4。",
+      "weight": 5,
+      "kind": "demand"
+    },
+    {
+      "step": "02",
+      "title": "平台规格传导到制造和内存",
+      "from": "平台规格",
+      "to": "TSMC + HBM 供应商",
+      "what": "GPU/ASIC 设计和机柜规格传导到先进制程、封装、HBM、server DRAM 和 eSSD。",
+      "beneficiaries": "TSMC、SK hynix、Micron、Samsung。",
+      "metric": "advanced technology share、capex、HBM mix、ASP、gross margin。",
+      "investment_read": "这是硬瓶颈入口；如果供给斜率慢于需求，利润更可能留在 HBM、先进制程和封装。",
+      "weight": 5,
+      "kind": "supply"
+    },
+    {
+      "step": "03",
+      "title": "客户订单进入系统交付",
+      "from": "AI server / rack 订单",
+      "to": "DELL / SMCI / HPE / ODM",
+      "what": "客户订单变成 AI server、rack-scale 系统、集群集成和交付 backlog。",
+      "beneficiaries": "DELL、SMCI、HPE/ODM。",
+      "metric": "AI server orders、shipments、backlog、operating margin、cash conversion。",
+      "investment_read": "这是收入确认入口；订单强不等于利润强，要看 backlog 是否转成毛利和现金流。",
+      "weight": 4,
+      "kind": "delivery"
+    },
+    {
+      "step": "04",
+      "title": "高功率机柜倒逼电力液冷",
+      "from": "高功率机柜",
+      "to": "VRT / 数据中心工程",
+      "what": "GPU 密度和机柜功耗进一步变成电力、热管理、液冷和现场交付项目。",
+      "beneficiaries": "Vertiv、数据中心电力和热管理工程商。",
+      "metric": "organic orders、backlog、project margin、liquid cooling delivery。",
+      "investment_read": "这是物理落地瓶颈；如果电力/液冷跟不上，AI 工厂不能上线，VRT 的价值捕获会更清晰。",
+      "weight": 4,
+      "kind": "delivery"
+    },
+    {
+      "step": "05",
+      "title": "机柜扩展带来连接和网络需求",
+      "from": "机柜级扩展",
+      "to": "ALAB / CRDO / MRVL / ANET",
+      "what": "rack-scale 扩展需要 retimer、AEC、光互联、custom silicon 和 Ethernet AI networking。",
+      "beneficiaries": "ALAB、CRDO、MRVL、ANET、AVGO。",
+      "metric": "revenue growth、design win、customer concentration、gross margin。",
+      "investment_read": "这是高弹性入口；弹性大，但要扣客户集中、平台替代和估值风险。",
+      "weight": 3,
+      "kind": "supply"
+    },
+    {
+      "step": "06",
+      "title": "上线后由收入和 ROI 反向验证",
+      "from": "中游交付",
+      "to": "云收入 / RPO / ROI",
+      "what": "AI 工厂上线后由利用率、云收入、RPO/backlog、FCF 和 ROI 验证需求持续性。",
+      "beneficiaries": "全链条，但最先影响高估值和客户集中度高的节点。",
+      "metric": "capex guidance、cloud revenue、RPO/backlog、FCF、AI ROI commentary。",
+      "investment_read": "这是反证入口；如果 ROI 或 capex 放缓，前面所有价值流都要降级。",
+      "weight": 4,
+      "kind": "feedback"
+    }
+  ],
+  "supply_chain_chokepoint_heatmap": [
+    {
+      "node": "NVDA 平台控制",
+      "role": "GPU / 软件栈 / 网络平台",
+      "controllers": "NVDA",
+      "scores": {
+        "稀缺性": 5,
+        "替代难度": 5,
+        "定价权": 5,
+        "财务弹性": 5,
+        "估值风险": 2,
+        "反证风险": 3
+      },
+      "conclusion": "最强稀缺性，但未定价证据不足，Q4 仍需估值闸门。",
+      "qa_link": "Q2.1 / Q4.1"
+    },
+    {
+      "node": "HBM 与高端内存",
+      "role": "HBM / server DRAM / eSSD",
+      "controllers": "SK hynix、MU、Samsung",
+      "scores": {
+        "稀缺性": 5,
+        "替代难度": 4,
+        "定价权": 4,
+        "财务弹性": 5,
+        "估值风险": 3,
+        "反证风险": 3
+      },
+      "conclusion": "硬瓶颈明确，关键反证是 ASP、资格和供给扩张。",
+      "qa_link": "Q2.1.2 / Q3.2"
+    },
+    {
+      "node": "先进制程与封装",
+      "role": "先进制造 / CoWoS 类封装",
+      "controllers": "TSMC",
+      "scores": {
+        "稀缺性": 5,
+        "替代难度": 5,
+        "定价权": 4,
+        "财务弹性": 4,
+        "估值风险": 3,
+        "反证风险": 3
+      },
+      "conclusion": "交付斜率慢、卡点硬，但 capex 和地缘风险需要折价。",
+      "qa_link": "Q2.1.2 / Q3.1"
+    },
+    {
+      "node": "电力和液冷",
+      "role": "power / thermal / liquid cooling",
+      "controllers": "Vertiv、数据中心工程商",
+      "scores": {
+        "稀缺性": 4,
+        "替代难度": 4,
+        "定价权": 4,
+        "财务弹性": 4,
+        "估值风险": 3,
+        "反证风险": 3
+      },
+      "conclusion": "AI 工厂落地的物理瓶颈，backlog 毛利和项目交付是核心验证。",
+      "qa_link": "Q2.2.2 / Q4.2"
+    },
+    {
+      "node": "机柜级连接",
+      "role": "retimer / AEC / optical / Ethernet",
+      "controllers": "ALAB、CRDO、MRVL、ANET、AVGO",
+      "scores": {
+        "稀缺性": 4,
+        "替代难度": 4,
+        "定价权": 3,
+        "财务弹性": 5,
+        "估值风险": 2,
+        "反证风险": 2
+      },
+      "conclusion": "弹性高，但客户集中、平台替代和估值风险更高。",
+      "qa_link": "Q2.2.1 / Q3.2"
+    },
+    {
+      "node": "系统交付",
+      "role": "AI server / rack / cluster integration",
+      "controllers": "DELL、SMCI、HPE/ODM",
+      "scores": {
+        "稀缺性": 3,
+        "替代难度": 3,
+        "定价权": 2,
+        "财务弹性": 4,
+        "估值风险": 3,
+        "反证风险": 2
+      },
+      "conclusion": "订单可见度强，但价值捕获取决于毛利、现金流和执行质量。",
+      "qa_link": "Q2.2.2 / Q4.1"
+    },
+    {
+      "node": "下游需求验证",
+      "role": "capex / utilization / cloud revenue / ROI",
+      "controllers": "Hyperscaler、AI labs、企业/主权 AI",
+      "scores": {
+        "稀缺性": 3,
+        "替代难度": 3,
+        "定价权": 2,
+        "财务弹性": 5,
+        "估值风险": 2,
+        "反证风险": 2
+      },
+      "conclusion": "不是直接瓶颈标的，但决定全链条需求是否继续扩张。",
+      "qa_link": "Q1 / Q3"
+    }
+  ],
+  "supply_chain_map": [
+    [
+      "上游",
+      "计算平台 / GPU / ASIC",
+      "云厂商和 AI labs 的训练、推理、capex 与规格",
+      "先进制程、HBM、封装、网络生态",
+      "GPU/ASIC、软件栈、平台标准",
       "NVDA、AVGO、AMD/ASIC 生态",
-      "定义系统标准和供应商资格",
-      "强卡点，但估值可能提前反映",
+      "Data Center/AI revenue、gross margin、客户 capex、订单/供给约束",
+      "平台控制强，但估值可能提前反映",
       "Q2.1 / Q4"
     ],
     [
-      "制造/内存",
-      "先进制程、先进封装、HBM、服务器 DRAM/NAND",
-      "TSMC、SK hynix、Samsung、Micron",
-      "供给斜率决定交付速度和毛利",
-      "最接近硬瓶颈，但要看产能扩张",
+      "上游",
+      "先进制造 / 封装",
+      "GPU/ASIC 设计和先进封装订单",
+      "设备、材料、良率、capex 和产能",
+      "先进制程、先进封装、量产交付",
+      "TSMC",
+      "HPC/AI mix、gross margin、advanced technology share、capex",
+      "硬瓶颈强，但资本开支和地缘风险需要折价",
+      "Q2.1 / Q3.1"
+    ],
+    [
+      "上游",
+      "HBM / 高端内存 / eSSD",
+      "GPU/ASIC 平台规格、客户资格和云端内存需求",
+      "DRAM/NAND wafer、封装、良率、扩产资本开支",
+      "HBM、server DRAM、enterprise SSD",
+      "SK hynix、Micron、Samsung",
+      "HBM mix、ASP、memory margin、inventory、capex、客户资格",
+      "硬瓶颈强，但供给扩张和价格周期是反证",
       "Q2.1 / Q3.2"
     ],
     [
-      "网络/连接",
-      "Ethernet switch、PCIe/CXL retimer、AEC/光互联、custom silicon",
-      "ALAB、CRDO、MRVL、AVGO、ANET",
-      "决定集群扩展效率和功耗",
-      "弹性大，客户集中、平台替代和项目节奏风险也大",
-      "Q2.2 / Q3.2"
-    ],
-    [
-      "电力/液冷/系统",
-      "电源、液冷、机柜、AI server、系统集成",
-      "VRT、DELL、SMCI、HPE/ODM",
-      "把硬件订单变成可上线项目",
-      "订单可验证，利润率和执行是关键",
+      "上游",
+      "网络连接 / 电光互联",
+      "AI rack 带宽、延迟、功耗和平台兼容需求",
+      "设计导入、封测、switch silicon、光电生态",
+      "retimer、AEC、optical interconnect、Ethernet switch、custom silicon",
+      "ALAB、CRDO、MRVL、ANET、AVGO",
+      "Revenue growth、gross margin、客户集中、design win/ramp",
+      "弹性大，但客户集中和平台替代风险高",
       "Q2.2 / Q4"
     ],
     [
-      "运营回报",
-      "模型服务、企业 agent、AI 应用收入",
-      "云厂商、AI 应用商、企业",
-      "决定客户是否持续追加 capex",
-      "若 ROI 变差，全链条降分",
-      "Q3"
+      "中游",
+      "服务器 / 机柜 / 集群交付",
+      "云厂商和企业客户的整机规格、订单和交付时间表",
+      "GPU/ASIC、CPU、内存、网络、存储和电力冷却部件",
+      "AI server、rack、cluster、集成交付",
+      "DELL、SMCI、HPE、ODM",
+      "AI server orders、shipments、backlog、operating margin、cash conversion",
+      "订单可验证，利润率和现金转化决定价值捕获",
+      "Q2.2 / Q4"
+    ],
+    [
+      "中游",
+      "电力 / 液冷 / 数据中心基础设施",
+      "高功率机柜、热负载、液冷、电力容量和工程需求",
+      "电力设备、热管理方案、工程交付能力",
+      "power、thermal、liquid cooling、UPS、现场交付",
+      "VRT、数据中心工程商",
+      "Organic orders、backlog、organic growth、margin、cash conversion",
+      "强物理瓶颈，关键看 backlog 质量和交付毛利",
+      "Q2.2 / Q4"
+    ],
+    [
+      "下游",
+      "云厂商 / AI labs / 企业 / 主权 AI",
+      "终端 workload、业务流程、模型训练/推理和安全合规需求",
+      "AI server、rack、cluster、云服务和本地交付能力",
+      "capex、订单、利用率、云收入、RPO/backlog、ROI 信号",
+      "Hyperscaler、AI labs、企业、主权 AI",
+      "Capex guidance、cloud revenue、RPO/backlog、FCF、AI ROI",
+      "需求真实性最终验证方，capex/ROI 下修会压低全链条评分",
+      "Q1 / Q3"
     ]
+  ],
+  "q2_competition_landscape": [
+    {
+      "node": "平台与加速器",
+      "competition": "NVIDIA 平台生态对 custom ASIC、AMD 和开放网络路线形成强压制，但云厂自研会持续分流部分增量。",
+      "chokepoint": "强。软件栈、互联、客户迁移成本和供给资格形成平台 chokepoint。",
+      "profit": "利润主要进入 NVDA；ASIC 外溢进入 AVGO/MRVL，但受大客户项目节奏制约。",
+      "refute": "客户自研 ASIC 提速、开放网络路线成熟、毛利率下行或中国/出口限制扩大。",
+      "qa": "Q2.1 / Q3.1 / Q4.1"
+    },
+    {
+      "node": "HBM / 高端内存",
+      "competition": "SK hynix、Micron、Samsung 竞争，关键不是总内存规模，而是 HBM 客户资格、良率、产能和 ASP。",
+      "chokepoint": "强。客户资格和供给斜率决定谁能拿到高价值 AI memory 利润池。",
+      "profit": "利润优先流向 HBM 领导者；普通 DRAM/NAND beta 需要折价。",
+      "refute": "HBM 供给快速扩张、ASP 反转、客户资格变化或替代内存架构出现。",
+      "qa": "Q2.1.2 / Q3.2 / Q4.1"
+    },
+    {
+      "node": "先进制程 / 封装",
+      "competition": "先进制造集中度高，TSMC 处于最关键位置；主要约束来自产能、良率、capex 和地缘风险。",
+      "chokepoint": "强。先进节点和封装产能决定 GPU/ASIC 交付斜率。",
+      "profit": "TSM 能捕获稳定高质量利润，但估值、capex 和地缘风险限制赔率。",
+      "refute": "先进封装供给放量、capex 回报下降、客户转单或地缘风险恶化。",
+      "qa": "Q2.1.2.2 / Q3.1 / Q4.1"
+    },
+    {
+      "node": "机柜级连接 / 网络",
+      "competition": "ALAB、CRDO、MRVL、AVGO、ANET 与平台自有方案、客户自研和开放/封闭路线竞争。",
+      "chokepoint": "中强。design-in、功耗/延迟和客户认证有壁垒，但客户集中和平台替代压制风险控制。",
+      "profit": "高弹性可能进入 ALAB/CRDO/MRVL，稳态利润进入 AVGO/ANET，但需要项目量产和毛利验证。",
+      "refute": "大客户订单延迟、平台自有方案替代、价格压力或设计导入失败。",
+      "qa": "Q2.2.1 / Q3.2 / Q4.1"
+    },
+    {
+      "node": "电力 / 液冷",
+      "competition": "数据中心电力、热管理和现场工程能力竞争，关键不是单品，而是高功率机柜落地能力和 backlog 质量。",
+      "chokepoint": "强。AI 工厂没有电力和液冷无法上线，物理交付周期形成真实约束。",
+      "profit": "VRT 是最直接上市载体，利润质量取决于 backlog 毛利、交付周期和现金转化。",
+      "refute": "backlog 转收入低质量、液冷毛利不达预期、客户 capex 下修或工程交付延迟。",
+      "qa": "Q2.2.2 / Q4.2"
+    },
+    {
+      "node": "系统交付",
+      "competition": "DELL、SMCI、HPE/ODM 竞争 AI server/rack 交付，客户议价力强，硬件组装利润池未必厚。",
+      "chokepoint": "中弱。订单可见度强，但替代供应商多，利润率和现金流决定是否只是过账。",
+      "profit": "DELL 更偏高质量订单验证；SMCI 弹性大但执行、治理和毛利风险更高。",
+      "refute": "订单增长不带来毛利和现金流、库存上升、治理风险或订单取消。",
+      "qa": "Q2.2.2 / Q3.2 / Q4.1"
+    }
+  ],
+  "q1_demand_space_model": [
+    {
+      "path": "客户 capex / AI labs 预算",
+      "visibleEvidence": "NVIDIA 数据中心收入和 AI factory 表述，Dell AI server backlog，Vertiv organic orders/backlog。",
+      "futureSpaceRead": "AI 工厂已经进入可财务验证阶段；未来空间取决于训练/推理工作负载、客户 ROI 和云厂商 capex 延续性。",
+      "revenueBridge": "capex -> GPU/ASIC -> AI server/rack -> 电力液冷/连接/HBM -> 云收入/RPO/FCF 反馈。",
+      "openQuestion": "客户 ROI、Cloud revenue 和 FCF 能否证明 capex 不是短期透支。"
+    },
+    {
+      "path": "平台规格传导",
+      "visibleEvidence": "GPU/ASIC 平台规格拉动 HBM、先进制程/封装、网络连接和整机配置。",
+      "futureSpaceRead": "行业空间不是只看 GPU 数量，而是看每一代平台带来的内存容量、带宽、功耗、机柜密度和网络复杂度提升。",
+      "revenueBridge": "平台升级 -> HBM/封装/retimer/AEC/交换机/电源液冷单机价值量提升。",
+      "openQuestion": "平台自有方案、客户自研 ASIC 或开放路线会不会压低第三方利润池。"
+    },
+    {
+      "path": "物理落地约束",
+      "visibleEvidence": "电力、散热、机柜和系统交付订单已经进入 VRT/DELL 等公司财务口径。",
+      "futureSpaceRead": "AI 工厂未来空间最终受电力容量、液冷交付、机房改造和系统集成节奏限制。",
+      "revenueBridge": "高功率机柜 -> power/thermal/liquid cooling -> 工程交付 -> backlog 转收入和毛利。",
+      "openQuestion": "backlog 是否能转成高质量利润，而不是低毛利工程过账。"
+    }
+  ],
+  "target_odds_models": [
+    {
+      "ticker": "000660.KS",
+      "name": "SK hynix",
+      "thesis_node": "HBM 和高端 AI memory",
+      "implied_expectation": "市场已认可 HBM 景气，但 HBM4 资格、产能斜率和 ASP 持续性仍可能带来盈利上修空间。",
+      "base_path": "HBM 客户资格稳定，ASP 和毛利维持，供给扩张慢于 AI memory 需求。",
+      "bull_path": "HBM4 ramp 和客户份额继续领先，AI memory mix 推高利润率。",
+      "bear_path": "HBM 供给快速扩张、ASP 反转或客户资格变化。",
+      "upgrade_data": "HBM4 ramp、客户资格、ASP、capex",
+      "downgrade_data": "HBM 供给过剩或 ASP 反转",
+      "odds_judgment": "硬瓶颈强，赔率取决于 HBM 价格与资格持续性。"
+    },
+    {
+      "ticker": "VRT",
+      "name": "Vertiv",
+      "thesis_node": "AI 工厂电力和液冷",
+      "implied_expectation": "市场已看到 AI 数据中心电力/液冷需求，但未必充分计入 backlog 转化质量和物理交付瓶颈的持续性。",
+      "base_path": "backlog 按期转收入，液冷和电力项目毛利维持，客户 capex 不下修。",
+      "bull_path": "高功率机柜渗透超预期，液冷项目毛利高于市场预期，订单持续上修。",
+      "bear_path": "backlog 转收入质量差、液冷毛利不达预期或云厂 capex 放缓。",
+      "upgrade_data": "backlog 转收入、液冷毛利、客户 capex",
+      "downgrade_data": "backlog 毛利低于预期或客户 capex 下修",
+      "odds_judgment": "胜率与赔率在目标池中最均衡；需要持续验证 backlog 毛利。"
+    },
+    {
+      "ticker": "NVDA",
+      "name": "NVIDIA",
+      "thesis_node": "AI 工厂平台控制",
+      "implied_expectation": "市场已高度计入平台控制和数据中心增长，未充分定价证据弱于稀缺性证据。",
+      "base_path": "Data Center 指引和毛利继续兑现，客户 capex 维持。",
+      "bull_path": "AI 工厂平台需求、网络和软件生态带来持续上修。",
+      "bear_path": "capex/ROI 放缓、出口限制扩大或毛利率无法支撑估值。",
+      "upgrade_data": "Data Center 指引、gross margin、客户 capex、隐含增长",
+      "downgrade_data": "capex 放缓或毛利无法支撑估值",
+      "odds_judgment": "胜率高，但赔率受高隐含预期压制。"
+    },
+    {
+      "ticker": "TSM",
+      "name": "TSMC ADR",
+      "thesis_node": "先进制程和封装",
+      "implied_expectation": "市场已认可先进制程和封装稀缺，但先进封装供需缺口与 AI/HPC mix 仍需量化。",
+      "base_path": "advanced technology share 和 capex 按计划兑现，HPC/AI mix 支撑毛利。",
+      "bull_path": "先进封装供给持续短缺，AI/HPC 收入和毛利率超预期。",
+      "bear_path": "先进封装供给过快、capex 回报下降或地缘风险恶化。",
+      "upgrade_data": "advanced packaging、capex、AI/HPC revenue mix",
+      "downgrade_data": "先进封装供给过快或地缘风险恶化",
+      "odds_judgment": "高质量胜率资产，赔率需要估值与 capex 回报验证。"
+    },
+    {
+      "ticker": "ALAB",
+      "name": "Astera Labs",
+      "thesis_node": "机柜级连接芯片",
+      "implied_expectation": "市场已看到 rack-scale connectivity 高增长，关键是客户集中和估值是否允许继续上修。",
+      "base_path": "Scorpio/rack-scale 产品按期放量，gross margin 稳定。",
+      "bull_path": "机柜级连接 attach rate 提升且客户扩散。",
+      "bear_path": "大客户需求放缓、平台自有方案替代或估值压缩。",
+      "upgrade_data": "Scorpio ramp、客户集中、gross margin",
+      "downgrade_data": "大客户需求放缓或平台替代",
+      "odds_judgment": "高弹性高风险，先作为 watch_only 验证。"
+    },
+    {
+      "ticker": "CRDO",
+      "name": "Credo",
+      "thesis_node": "AEC/光互联/高速连接",
+      "implied_expectation": "市场可能已计入 AEC/光互联高增速，赔率来自订单持续性和客户扩散。",
+      "base_path": "AEC/optical orders 继续增长，客户集中不恶化，毛利稳定。",
+      "bull_path": "AI rack 带宽升级推动收入和利润持续上修。",
+      "bear_path": "客户订单延迟、价格压力或替代路线挤压。",
+      "upgrade_data": "AEC/optical orders、customer concentration、gross margin",
+      "downgrade_data": "客户订单延迟或价格压力",
+      "odds_judgment": "弹性突出，但风险控制尚不足以提高行动状态。"
+    },
+    {
+      "ticker": "MU",
+      "name": "Micron",
+      "thesis_node": "HBM 和高端内存",
+      "implied_expectation": "市场已看到存储周期回升，AI memory/HBM 的超额利润池是否充分计入仍需验证。",
+      "base_path": "HBM design wins、Cloud Memory mix 和 ASP 支撑毛利。",
+      "bull_path": "HBM 份额提升且 DRAM/eSSD 同步改善。",
+      "bear_path": "HBM 份额不及预期、ASP 回落或周期反转。",
+      "upgrade_data": "HBM design wins、ASP、Cloud Memory margin",
+      "downgrade_data": "HBM 份额不及预期或周期反转",
+      "odds_judgment": "弹性较强，但相对稀缺性低于 SK hynix。"
+    },
+    {
+      "ticker": "MRVL",
+      "name": "Marvell Technology",
+      "thesis_node": "custom silicon 和电光互联",
+      "implied_expectation": "市场已认可 custom silicon 和电光互联方向，但项目量产节奏和客户集中仍不透明。",
+      "base_path": "custom silicon 项目按期量产，electro-optics 收入持续增长。",
+      "bull_path": "大客户项目放量，AI data-center mix 带来利润上修。",
+      "bear_path": "项目延期、客户自研替代或毛利不达预期。",
+      "upgrade_data": "custom silicon 项目量产、electro-optics 收入、客户集中、gross margin",
+      "downgrade_data": "大客户项目延期、客户自研替代或毛利不达预期",
+      "odds_judgment": "赔率来自定制芯片/光互联弹性，需用项目节点验证。"
+    },
+    {
+      "ticker": "AVGO",
+      "name": "Broadcom",
+      "thesis_node": "custom ASIC 和 AI Ethernet",
+      "implied_expectation": "市场已计入 AI ASIC/Ethernet 稳态受益，赔率取决于客户数量和项目持续性。",
+      "base_path": "AI revenue、customer count 和 Ethernet orders 继续兑现。",
+      "bull_path": "更多云厂 ASIC 项目扩散，AI networking 贡献持续上修。",
+      "bear_path": "大客户/ASIC 节奏不及预期或估值透支。",
+      "upgrade_data": "AI revenue、customer count、Ethernet orders",
+      "downgrade_data": "大客户/ASIC 节奏不及预期",
+      "odds_judgment": "稳态优质，但短期错配需要更强证据。"
+    },
+    {
+      "ticker": "DELL",
+      "name": "Dell Technologies",
+      "thesis_node": "AI server 系统交付",
+      "implied_expectation": "市场已看到 AI server backlog，未必充分计入利润率和现金转化的不确定性。",
+      "base_path": "AI server backlog 转收入且毛利、现金流不恶化。",
+      "bull_path": "AI server/rack 订单继续上修并带来利润率改善。",
+      "bear_path": "订单增长但毛利或现金流质量差。",
+      "upgrade_data": "AI server margin、backlog conversion、cash flow",
+      "downgrade_data": "订单增长但毛利或现金流差",
+      "odds_judgment": "订单胜率较高，赔率取决于利润质量。"
+    },
+    {
+      "ticker": "005930.KS",
+      "name": "Samsung Electronics",
+      "thesis_node": "HBM/server DDR5/eSSD",
+      "implied_expectation": "市场已看到 AI memory 受益，但相对 SK hynix 的 HBM 领导力折价仍需验证。",
+      "base_path": "HBM4 shipment、server DDR5/eSSD mix 改善，毛利回升。",
+      "bull_path": "HBM 资格和供给份额改善，估值折价收敛。",
+      "bear_path": "HBM 资格或价格不及预期。",
+      "upgrade_data": "HBM4 shipment、server DDR5/eSSD mix",
+      "downgrade_data": "HBM 资格或价格不及预期",
+      "odds_judgment": "估值可能有弹性，但稀缺性证据弱于 SK hynix。"
+    },
+    {
+      "ticker": "ANET",
+      "name": "Arista Networks",
+      "thesis_node": "AI Ethernet 网络",
+      "implied_expectation": "市场认可 AI networking 增长，但仍需证明开放以太网路线份额。",
+      "base_path": "AI cluster wins 和云厂 capex 支撑收入，gross margin 稳定。",
+      "bull_path": "开放以太网路线在 AI 集群中份额继续扩大。",
+      "bear_path": "平台网络方案或客户自研挤压份额。",
+      "upgrade_data": "AI cluster wins、gross margin、cloud capex",
+      "downgrade_data": "Spectrum-X 或客户自研挤压份额",
+      "odds_judgment": "方向成立，等待客户订单和路线份额验证。"
+    },
+    {
+      "ticker": "SMCI",
+      "name": "Supermicro",
+      "thesis_node": "AI server 组装",
+      "implied_expectation": "市场可能给予 AI server 主题弹性，但治理、执行和毛利风险应显著折价。",
+      "base_path": "收入恢复且 margin、cash conversion、governance 不恶化。",
+      "bull_path": "AI server 订单恢复并证明治理风险可控。",
+      "bear_path": "治理风险、毛利恶化或现金流转差。",
+      "upgrade_data": "margin、cash conversion、governance",
+      "downgrade_data": "治理风险或毛利恶化",
+      "odds_judgment": "主题弹性不能抵消风险控制缺口，维持 no_action。"
+    }
   ],
   "source_extractions": [
     {
@@ -336,7 +1643,7 @@
           "status": "verified"
         },
         "investment_relevance": {
-          "value": "决定产业链全景和 Q2 卡点顺序。",
+          "value": "决定行业生态位和 Q2 卡点顺序。",
           "source_anchor": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Fourth-Quarter-and-Fiscal-2026/",
           "status": "verified"
         },
@@ -384,7 +1691,7 @@
           "status": "verified"
         },
         "investment_relevance": {
-          "value": "决定产业链全景和 Q2 卡点顺序。",
+          "value": "决定行业生态位和 Q2 卡点顺序。",
           "source_anchor": "https://investors.delltechnologies.com/node/19176/pdf",
           "status": "verified"
         },
@@ -432,7 +1739,7 @@
           "status": "verified"
         },
         "investment_relevance": {
-          "value": "决定产业链全景和 Q2 卡点顺序。",
+          "value": "决定行业生态位和 Q2 卡点顺序。",
           "source_anchor": "https://investors.vertiv.com/news/news-details/2026/Vertiv-Reports-Strong-Fourth-Quarter-with-Organic-Orders-Growth-of-252-and-Diluted-EPS-Growth-of-200-Adjusted-Diluted-EPS-37/",
           "status": "verified"
         },
@@ -480,7 +1787,7 @@
           "status": "verified"
         },
         "investment_relevance": {
-          "value": "决定产业链全景和 Q2 卡点顺序。",
+          "value": "决定行业生态位和 Q2 卡点顺序。",
           "source_anchor": "https://www.sec.gov/Archives/edgar/data/1046179/000104617926000008/a4q25e_withguidancexfinal.htm",
           "status": "verified"
         },
@@ -6167,7 +7474,7 @@
       "market": "Korea",
       "thesis_node": "HBM 和高端 AI memory",
       "action_state": "actionable_long",
-      "rationale": "HBM3E/HBM4 供应能力和 49% FY25 operating margin 形成强稀缺和利润桥；价格 label 暂未验证但不能排除核心标的。",
+      "rationale": "HBM3E/HBM4 供应能力和 49% FY25 operating margin 形成强稀缺和利润桥，后续主要验证 ASP、客户资格和供给扩张节奏。",
       "next_verification_data": "HBM4 ramp、客户资格、ASP、capex",
       "downgrade_risk": "HBM 供给过剩或 ASP 反转",
       "source_ids": [
@@ -6395,13 +7702,17 @@
         }
       ],
       "odds_model": {
-        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
-        "base_path": "HBM4 ramp、客户资格、ASP、capex",
-        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
-        "bear_path": "HBM 供给过剩或 ASP 反转"
+        "thesis_node": "HBM 和高端 AI memory",
+        "implied_expectation": "市场已认可 HBM 景气，但 HBM4 资格、产能斜率和 ASP 持续性仍可能带来盈利上修空间。",
+        "base_path": "HBM 客户资格稳定，ASP 和毛利维持，供给扩张慢于 AI memory 需求。",
+        "bull_path": "HBM4 ramp 和客户份额继续领先，AI memory mix 推高利润率。",
+        "bear_path": "HBM 供给快速扩张、ASP 反转或客户资格变化。",
+        "upgrade_data": "HBM4 ramp、客户资格、ASP、capex",
+        "downgrade_data": "HBM 供给过剩或 ASP 反转",
+        "odds_judgment": "硬瓶颈强，赔率取决于 HBM 价格与资格持续性。"
       },
       "prediction_review": {
-        "initial_claim": "HBM3E/HBM4 供应能力和 49% FY25 operating margin 形成强稀缺和利润桥；价格 label 暂未验证但不能排除核心标的。",
+        "initial_claim": "HBM3E/HBM4 供应能力和 49% FY25 operating margin 形成强稀缺和利润桥，后续主要验证 ASP、客户资格和供给扩张节奏。",
         "validation_horizon": "2026-06-02",
         "required_evidence": "HBM4 ramp、客户资格、ASP、capex",
         "current_status": "actionable_long",
@@ -6643,10 +7954,14 @@
         }
       ],
       "odds_model": {
-        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
-        "base_path": "backlog 转收入、液冷毛利、客户 capex",
-        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
-        "bear_path": "backlog 毛利低于预期或客户 capex 下修"
+        "thesis_node": "AI 工厂电力和液冷",
+        "implied_expectation": "市场已看到 AI 数据中心电力/液冷需求，但未必充分计入 backlog 转化质量和物理交付瓶颈的持续性。",
+        "base_path": "backlog 按期转收入，液冷和电力项目毛利维持，客户 capex 不下修。",
+        "bull_path": "高功率机柜渗透超预期，液冷项目毛利高于市场预期，订单持续上修。",
+        "bear_path": "backlog 转收入质量差、液冷毛利不达预期或云厂 capex 放缓。",
+        "upgrade_data": "backlog 转收入、液冷毛利、客户 capex",
+        "downgrade_data": "backlog 毛利低于预期或客户 capex 下修",
+        "odds_judgment": "胜率与赔率在目标池中最均衡；需要持续验证 backlog 毛利。"
       },
       "prediction_review": {
         "initial_claim": "订单、backlog 和物理瓶颈同时成立；若估值不过度，最接近截面下可行动机会。",
@@ -6878,10 +8193,14 @@
       },
       "thesis_kill_tests": [],
       "odds_model": {
-        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
-        "base_path": "Data Center 指引、gross margin、客户 capex、隐含增长",
-        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
-        "bear_path": "capex 放缓或毛利无法支撑估值"
+        "thesis_node": "AI 工厂平台控制",
+        "implied_expectation": "市场已高度计入平台控制和数据中心增长，未充分定价证据弱于稀缺性证据。",
+        "base_path": "Data Center 指引和毛利继续兑现，客户 capex 维持。",
+        "bull_path": "AI 工厂平台需求、网络和软件生态带来持续上修。",
+        "bear_path": "capex/ROI 放缓、出口限制扩大或毛利率无法支撑估值。",
+        "upgrade_data": "Data Center 指引、gross margin、客户 capex、隐含增长",
+        "downgrade_data": "capex 放缓或毛利无法支撑估值",
+        "odds_judgment": "胜率高，但赔率受高隐含预期压制。"
       },
       "prediction_review": {
         "initial_claim": "平台稀缺性最强，但市场隐含预期也高，未充分定价证据不足。",
@@ -7113,10 +8432,14 @@
       },
       "thesis_kill_tests": [],
       "odds_model": {
-        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
-        "base_path": "advanced packaging、capex、AI/HPC revenue mix",
-        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
-        "bear_path": "先进封装供给过快或地缘风险恶化"
+        "thesis_node": "先进制程和封装",
+        "implied_expectation": "市场已认可先进制程和封装稀缺，但先进封装供需缺口与 AI/HPC mix 仍需量化。",
+        "base_path": "advanced technology share 和 capex 按计划兑现，HPC/AI mix 支撑毛利。",
+        "bull_path": "先进封装供给持续短缺，AI/HPC 收入和毛利率超预期。",
+        "bear_path": "先进封装供给过快、capex 回报下降或地缘风险恶化。",
+        "upgrade_data": "advanced packaging、capex、AI/HPC revenue mix",
+        "downgrade_data": "先进封装供给过快或地缘风险恶化",
+        "odds_judgment": "高质量胜率资产，赔率需要估值与 capex 回报验证。"
       },
       "prediction_review": {
         "initial_claim": "先进制程和封装是 AI 工厂硬瓶颈，财务质量高；但高 capex 和估值已部分反映增长。",
@@ -7348,10 +8671,14 @@
       },
       "thesis_kill_tests": [],
       "odds_model": {
-        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
-        "base_path": "Scorpio ramp、客户集中、gross margin",
-        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
-        "bear_path": "大客户需求放缓或平台替代"
+        "thesis_node": "机柜级连接芯片",
+        "implied_expectation": "市场已看到 rack-scale connectivity 高增长，关键是客户集中和估值是否允许继续上修。",
+        "base_path": "Scorpio/rack-scale 产品按期放量，gross margin 稳定。",
+        "bull_path": "机柜级连接 attach rate 提升且客户扩散。",
+        "bear_path": "大客户需求放缓、平台自有方案替代或估值压缩。",
+        "upgrade_data": "Scorpio ramp、客户集中、gross margin",
+        "downgrade_data": "大客户需求放缓或平台替代",
+        "odds_judgment": "高弹性高风险，先作为 watch_only 验证。"
       },
       "prediction_review": {
         "initial_claim": "rack-scale connectivity 弹性强，收入和毛利证据好，但估值和客户集中压制风险控制。",
@@ -7583,10 +8910,14 @@
       },
       "thesis_kill_tests": [],
       "odds_model": {
-        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
-        "base_path": "AEC/optical orders、customer concentration、gross margin",
-        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
-        "bear_path": "客户订单延迟或价格压力"
+        "thesis_node": "AEC/光互联/高速连接",
+        "implied_expectation": "市场可能已计入 AEC/光互联高增速，赔率来自订单持续性和客户扩散。",
+        "base_path": "AEC/optical orders 继续增长，客户集中不恶化，毛利稳定。",
+        "bull_path": "AI rack 带宽升级推动收入和利润持续上修。",
+        "bear_path": "客户订单延迟、价格压力或替代路线挤压。",
+        "upgrade_data": "AEC/optical orders、customer concentration、gross margin",
+        "downgrade_data": "客户订单延迟或价格压力",
+        "odds_judgment": "弹性突出，但风险控制尚不足以提高行动状态。"
       },
       "prediction_review": {
         "initial_claim": "收入高弹性，连接需求真实；但高波动和客户集中使行动状态封顶。",
@@ -7818,10 +9149,14 @@
       },
       "thesis_kill_tests": [],
       "odds_model": {
-        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
-        "base_path": "HBM design wins、ASP、Cloud Memory margin",
-        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
-        "bear_path": "HBM 份额不及预期或周期反转"
+        "thesis_node": "HBM 和高端内存",
+        "implied_expectation": "市场已看到存储周期回升，AI memory/HBM 的超额利润池是否充分计入仍需验证。",
+        "base_path": "HBM design wins、Cloud Memory mix 和 ASP 支撑毛利。",
+        "bull_path": "HBM 份额提升且 DRAM/eSSD 同步改善。",
+        "bear_path": "HBM 份额不及预期、ASP 回落或周期反转。",
+        "upgrade_data": "HBM design wins、ASP、Cloud Memory margin",
+        "downgrade_data": "HBM 份额不及预期或周期反转",
+        "odds_judgment": "弹性较强，但相对稀缺性低于 SK hynix。"
       },
       "prediction_review": {
         "initial_claim": "HBM/云内存方向清晰，赔率和弹性较强；但相对 SK hynix 的稀缺性和客户资格需要验证。",
@@ -8053,10 +9388,14 @@
       },
       "thesis_kill_tests": [],
       "odds_model": {
-        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
-        "base_path": "custom silicon 项目量产、electro-optics 收入、客户集中、gross margin",
-        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
-        "bear_path": "大客户项目延期、客户自研替代或毛利不达预期"
+        "thesis_node": "custom silicon 和电光互联",
+        "implied_expectation": "市场已认可 custom silicon 和电光互联方向，但项目量产节奏和客户集中仍不透明。",
+        "base_path": "custom silicon 项目按期量产，electro-optics 收入持续增长。",
+        "bull_path": "大客户项目放量，AI data-center mix 带来利润上修。",
+        "bear_path": "项目延期、客户自研替代或毛利不达预期。",
+        "upgrade_data": "custom silicon 项目量产、electro-optics 收入、客户集中、gross margin",
+        "downgrade_data": "大客户项目延期、客户自研替代或毛利不达预期",
+        "odds_judgment": "赔率来自定制芯片/光互联弹性，需用项目节点验证。"
       },
       "prediction_review": {
         "initial_claim": "AI data-center demand 已进入 custom products 和 electro-optics 财务口径，弹性强；但客户集中、定制项目量产节奏和估值隐含预期不透明，行动状态封顶为 watch_only。",
@@ -8288,10 +9627,14 @@
       },
       "thesis_kill_tests": [],
       "odds_model": {
-        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
-        "base_path": "AI revenue、customer count、Ethernet orders",
-        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
-        "bear_path": "大客户/ASIC 节奏不及预期"
+        "thesis_node": "custom ASIC 和 AI Ethernet",
+        "implied_expectation": "市场已计入 AI ASIC/Ethernet 稳态受益，赔率取决于客户数量和项目持续性。",
+        "base_path": "AI revenue、customer count 和 Ethernet orders 继续兑现。",
+        "bull_path": "更多云厂 ASIC 项目扩散，AI networking 贡献持续上修。",
+        "bear_path": "大客户/ASIC 节奏不及预期或估值透支。",
+        "upgrade_data": "AI revenue、customer count、Ethernet orders",
+        "downgrade_data": "大客户/ASIC 节奏不及预期",
+        "odds_judgment": "稳态优质，但短期错配需要更强证据。"
       },
       "prediction_review": {
         "initial_claim": "AI ASIC/Ethernet 已财务化，但大客户集中和估值隐含预期需要控制。",
@@ -8523,10 +9866,14 @@
       },
       "thesis_kill_tests": [],
       "odds_model": {
-        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
-        "base_path": "AI server margin、backlog conversion、cash flow",
-        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
-        "bear_path": "订单增长但毛利或现金流差"
+        "thesis_node": "AI server 系统交付",
+        "implied_expectation": "市场已看到 AI server backlog，未必充分计入利润率和现金转化的不确定性。",
+        "base_path": "AI server backlog 转收入且毛利、现金流不恶化。",
+        "bull_path": "AI server/rack 订单继续上修并带来利润率改善。",
+        "bear_path": "订单增长但毛利或现金流质量差。",
+        "upgrade_data": "AI server margin、backlog conversion、cash flow",
+        "downgrade_data": "订单增长但毛利或现金流差",
+        "odds_judgment": "订单胜率较高，赔率取决于利润质量。"
       },
       "prediction_review": {
         "initial_claim": "AI server backlog 极强，系统交付弹性大；但利润率和现金流质量决定价值捕获。",
@@ -8758,10 +10105,14 @@
       },
       "thesis_kill_tests": [],
       "odds_model": {
-        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
-        "base_path": "HBM4 shipment、server DDR5/eSSD mix",
-        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
-        "bear_path": "HBM 资格或价格不及预期"
+        "thesis_node": "HBM/server DDR5/eSSD",
+        "implied_expectation": "市场已看到 AI memory 受益，但相对 SK hynix 的 HBM 领导力折价仍需验证。",
+        "base_path": "HBM4 shipment、server DDR5/eSSD mix 改善，毛利回升。",
+        "bull_path": "HBM 资格和供给份额改善，估值折价收敛。",
+        "bear_path": "HBM 资格或价格不及预期。",
+        "upgrade_data": "HBM4 shipment、server DDR5/eSSD mix",
+        "downgrade_data": "HBM 资格或价格不及预期",
+        "odds_judgment": "估值可能有弹性，但稀缺性证据弱于 SK hynix。"
       },
       "prediction_review": {
         "initial_claim": "内存业务 AI 产品强，但 HBM 领导力和市场预期相对 SK hynix 需要更多验证。",
@@ -8993,10 +10344,14 @@
       },
       "thesis_kill_tests": [],
       "odds_model": {
-        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
-        "base_path": "AI cluster wins、gross margin、cloud capex",
-        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
-        "bear_path": "Spectrum-X 或客户自研挤压份额"
+        "thesis_node": "AI Ethernet 网络",
+        "implied_expectation": "市场认可 AI networking 增长，但仍需证明开放以太网路线份额。",
+        "base_path": "AI cluster wins 和云厂 capex 支撑收入，gross margin 稳定。",
+        "bull_path": "开放以太网路线在 AI 集群中份额继续扩大。",
+        "bear_path": "平台网络方案或客户自研挤压份额。",
+        "upgrade_data": "AI cluster wins、gross margin、cloud capex",
+        "downgrade_data": "Spectrum-X 或客户自研挤压份额",
+        "odds_judgment": "方向成立，等待客户订单和路线份额验证。"
       },
       "prediction_review": {
         "initial_claim": "AI networking 方向成立，但与平台网络路线的关系和客户订单需要更多证明。",
@@ -9228,10 +10583,14 @@
       },
       "thesis_kill_tests": [],
       "odds_model": {
-        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
-        "base_path": "margin、cash conversion、governance",
-        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
-        "bear_path": "治理风险或毛利恶化"
+        "thesis_node": "AI server 组装",
+        "implied_expectation": "市场可能给予 AI server 主题弹性，但治理、执行和毛利风险应显著折价。",
+        "base_path": "收入恢复且 margin、cash conversion、governance 不恶化。",
+        "bull_path": "AI server 订单恢复并证明治理风险可控。",
+        "bear_path": "治理风险、毛利恶化或现金流转差。",
+        "upgrade_data": "margin、cash conversion、governance",
+        "downgrade_data": "治理风险或毛利恶化",
+        "odds_judgment": "主题弹性不能抵消风险控制缺口，维持 no_action。"
       },
       "prediction_review": {
         "initial_claim": "AI server 主题弹性大，但执行、治理和毛利风险使风险控制不足。",
@@ -9254,7 +10613,7 @@
       "market": "Korea",
       "thesis_node": "HBM 和高端 AI memory",
       "action_state": "actionable_long",
-      "rationale": "HBM3E/HBM4 供应能力和 49% FY25 operating margin 形成强稀缺和利润桥；价格 label 暂未验证但不能排除核心标的。",
+      "rationale": "HBM3E/HBM4 供应能力和 49% FY25 operating margin 形成强稀缺和利润桥，后续主要验证 ASP、客户资格和供给扩张节奏。",
       "next_verification_data": "HBM4 ramp、客户资格、ASP、capex",
       "downgrade_risk": "HBM 供给过剩或 ASP 反转",
       "source_ids": [
@@ -9482,13 +10841,17 @@
         }
       ],
       "odds_model": {
-        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
-        "base_path": "HBM4 ramp、客户资格、ASP、capex",
-        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
-        "bear_path": "HBM 供给过剩或 ASP 反转"
+        "thesis_node": "HBM 和高端 AI memory",
+        "implied_expectation": "市场已认可 HBM 景气，但 HBM4 资格、产能斜率和 ASP 持续性仍可能带来盈利上修空间。",
+        "base_path": "HBM 客户资格稳定，ASP 和毛利维持，供给扩张慢于 AI memory 需求。",
+        "bull_path": "HBM4 ramp 和客户份额继续领先，AI memory mix 推高利润率。",
+        "bear_path": "HBM 供给快速扩张、ASP 反转或客户资格变化。",
+        "upgrade_data": "HBM4 ramp、客户资格、ASP、capex",
+        "downgrade_data": "HBM 供给过剩或 ASP 反转",
+        "odds_judgment": "硬瓶颈强，赔率取决于 HBM 价格与资格持续性。"
       },
       "prediction_review": {
-        "initial_claim": "HBM3E/HBM4 供应能力和 49% FY25 operating margin 形成强稀缺和利润桥；价格 label 暂未验证但不能排除核心标的。",
+        "initial_claim": "HBM3E/HBM4 供应能力和 49% FY25 operating margin 形成强稀缺和利润桥，后续主要验证 ASP、客户资格和供给扩张节奏。",
         "validation_horizon": "2026-06-02",
         "required_evidence": "HBM4 ramp、客户资格、ASP、capex",
         "current_status": "actionable_long",
@@ -9498,15 +10861,15 @@
         "as_of_date": "2026-03-02",
         "evaluation_date": "2026-06-02",
         "label_window": "2026-03-02_to_2026-06-02",
-        "start_price": null,
-        "start_price_date": null,
-        "end_price": null,
-        "end_price_date": null,
-        "forward_3m_return": null,
+        "start_price": 939000,
+        "start_price_date": "2026-03-03",
+        "end_price": 2363000,
+        "end_price_date": "2026-06-01",
+        "forward_3m_return": 151.65,
         "benchmark_return": 62.46,
-        "excess_return": null,
-        "price_source": "not verified",
-        "label_status": "label_unverified: KRX/Yahoo label not collected in this run"
+        "excess_return": 89.19,
+        "price_source": "Naver Finance KRX daily close",
+        "label_status": "label_verified_krx_next_trading_day"
       },
       "rank": 1
     },
@@ -9744,10 +11107,14 @@
         }
       ],
       "odds_model": {
-        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
-        "base_path": "backlog 转收入、液冷毛利、客户 capex",
-        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
-        "bear_path": "backlog 毛利低于预期或客户 capex 下修"
+        "thesis_node": "AI 工厂电力和液冷",
+        "implied_expectation": "市场已看到 AI 数据中心电力/液冷需求，但未必充分计入 backlog 转化质量和物理交付瓶颈的持续性。",
+        "base_path": "backlog 按期转收入，液冷和电力项目毛利维持，客户 capex 不下修。",
+        "bull_path": "高功率机柜渗透超预期，液冷项目毛利高于市场预期，订单持续上修。",
+        "bear_path": "backlog 转收入质量差、液冷毛利不达预期或云厂 capex 放缓。",
+        "upgrade_data": "backlog 转收入、液冷毛利、客户 capex",
+        "downgrade_data": "backlog 毛利低于预期或客户 capex 下修",
+        "odds_judgment": "胜率与赔率在目标池中最均衡；需要持续验证 backlog 毛利。"
       },
       "prediction_review": {
         "initial_claim": "订单、backlog 和物理瓶颈同时成立；若估值不过度，最接近截面下可行动机会。",
@@ -9993,10 +11360,14 @@
       },
       "thesis_kill_tests": [],
       "odds_model": {
-        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
-        "base_path": "Data Center 指引、gross margin、客户 capex、隐含增长",
-        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
-        "bear_path": "capex 放缓或毛利无法支撑估值"
+        "thesis_node": "AI 工厂平台控制",
+        "implied_expectation": "市场已高度计入平台控制和数据中心增长，未充分定价证据弱于稀缺性证据。",
+        "base_path": "Data Center 指引和毛利继续兑现，客户 capex 维持。",
+        "bull_path": "AI 工厂平台需求、网络和软件生态带来持续上修。",
+        "bear_path": "capex/ROI 放缓、出口限制扩大或毛利率无法支撑估值。",
+        "upgrade_data": "Data Center 指引、gross margin、客户 capex、隐含增长",
+        "downgrade_data": "capex 放缓或毛利无法支撑估值",
+        "odds_judgment": "胜率高，但赔率受高隐含预期压制。"
       },
       "prediction_review": {
         "initial_claim": "平台稀缺性最强，但市场隐含预期也高，未充分定价证据不足。",
@@ -10242,10 +11613,14 @@
       },
       "thesis_kill_tests": [],
       "odds_model": {
-        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
-        "base_path": "advanced packaging、capex、AI/HPC revenue mix",
-        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
-        "bear_path": "先进封装供给过快或地缘风险恶化"
+        "thesis_node": "先进制程和封装",
+        "implied_expectation": "市场已认可先进制程和封装稀缺，但先进封装供需缺口与 AI/HPC mix 仍需量化。",
+        "base_path": "advanced technology share 和 capex 按计划兑现，HPC/AI mix 支撑毛利。",
+        "bull_path": "先进封装供给持续短缺，AI/HPC 收入和毛利率超预期。",
+        "bear_path": "先进封装供给过快、capex 回报下降或地缘风险恶化。",
+        "upgrade_data": "advanced packaging、capex、AI/HPC revenue mix",
+        "downgrade_data": "先进封装供给过快或地缘风险恶化",
+        "odds_judgment": "高质量胜率资产，赔率需要估值与 capex 回报验证。"
       },
       "prediction_review": {
         "initial_claim": "先进制程和封装是 AI 工厂硬瓶颈，财务质量高；但高 capex 和估值已部分反映增长。",
@@ -10491,10 +11866,14 @@
       },
       "thesis_kill_tests": [],
       "odds_model": {
-        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
-        "base_path": "Scorpio ramp、客户集中、gross margin",
-        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
-        "bear_path": "大客户需求放缓或平台替代"
+        "thesis_node": "机柜级连接芯片",
+        "implied_expectation": "市场已看到 rack-scale connectivity 高增长，关键是客户集中和估值是否允许继续上修。",
+        "base_path": "Scorpio/rack-scale 产品按期放量，gross margin 稳定。",
+        "bull_path": "机柜级连接 attach rate 提升且客户扩散。",
+        "bear_path": "大客户需求放缓、平台自有方案替代或估值压缩。",
+        "upgrade_data": "Scorpio ramp、客户集中、gross margin",
+        "downgrade_data": "大客户需求放缓或平台替代",
+        "odds_judgment": "高弹性高风险，先作为 watch_only 验证。"
       },
       "prediction_review": {
         "initial_claim": "rack-scale connectivity 弹性强，收入和毛利证据好，但估值和客户集中压制风险控制。",
@@ -10740,10 +12119,14 @@
       },
       "thesis_kill_tests": [],
       "odds_model": {
-        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
-        "base_path": "AEC/optical orders、customer concentration、gross margin",
-        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
-        "bear_path": "客户订单延迟或价格压力"
+        "thesis_node": "AEC/光互联/高速连接",
+        "implied_expectation": "市场可能已计入 AEC/光互联高增速，赔率来自订单持续性和客户扩散。",
+        "base_path": "AEC/optical orders 继续增长，客户集中不恶化，毛利稳定。",
+        "bull_path": "AI rack 带宽升级推动收入和利润持续上修。",
+        "bear_path": "客户订单延迟、价格压力或替代路线挤压。",
+        "upgrade_data": "AEC/optical orders、customer concentration、gross margin",
+        "downgrade_data": "客户订单延迟或价格压力",
+        "odds_judgment": "弹性突出，但风险控制尚不足以提高行动状态。"
       },
       "prediction_review": {
         "initial_claim": "收入高弹性，连接需求真实；但高波动和客户集中使行动状态封顶。",
@@ -10989,10 +12372,14 @@
       },
       "thesis_kill_tests": [],
       "odds_model": {
-        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
-        "base_path": "HBM design wins、ASP、Cloud Memory margin",
-        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
-        "bear_path": "HBM 份额不及预期或周期反转"
+        "thesis_node": "HBM 和高端内存",
+        "implied_expectation": "市场已看到存储周期回升，AI memory/HBM 的超额利润池是否充分计入仍需验证。",
+        "base_path": "HBM design wins、Cloud Memory mix 和 ASP 支撑毛利。",
+        "bull_path": "HBM 份额提升且 DRAM/eSSD 同步改善。",
+        "bear_path": "HBM 份额不及预期、ASP 回落或周期反转。",
+        "upgrade_data": "HBM design wins、ASP、Cloud Memory margin",
+        "downgrade_data": "HBM 份额不及预期或周期反转",
+        "odds_judgment": "弹性较强，但相对稀缺性低于 SK hynix。"
       },
       "prediction_review": {
         "initial_claim": "HBM/云内存方向清晰，赔率和弹性较强；但相对 SK hynix 的稀缺性和客户资格需要验证。",
@@ -11238,10 +12625,14 @@
       },
       "thesis_kill_tests": [],
       "odds_model": {
-        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
-        "base_path": "custom silicon 项目量产、electro-optics 收入、客户集中、gross margin",
-        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
-        "bear_path": "大客户项目延期、客户自研替代或毛利不达预期"
+        "thesis_node": "custom silicon 和电光互联",
+        "implied_expectation": "市场已认可 custom silicon 和电光互联方向，但项目量产节奏和客户集中仍不透明。",
+        "base_path": "custom silicon 项目按期量产，electro-optics 收入持续增长。",
+        "bull_path": "大客户项目放量，AI data-center mix 带来利润上修。",
+        "bear_path": "项目延期、客户自研替代或毛利不达预期。",
+        "upgrade_data": "custom silicon 项目量产、electro-optics 收入、客户集中、gross margin",
+        "downgrade_data": "大客户项目延期、客户自研替代或毛利不达预期",
+        "odds_judgment": "赔率来自定制芯片/光互联弹性，需用项目节点验证。"
       },
       "prediction_review": {
         "initial_claim": "AI data-center demand 已进入 custom products 和 electro-optics 财务口径，弹性强；但客户集中、定制项目量产节奏和估值隐含预期不透明，行动状态封顶为 watch_only。",
@@ -11487,10 +12878,14 @@
       },
       "thesis_kill_tests": [],
       "odds_model": {
-        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
-        "base_path": "AI revenue、customer count、Ethernet orders",
-        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
-        "bear_path": "大客户/ASIC 节奏不及预期"
+        "thesis_node": "custom ASIC 和 AI Ethernet",
+        "implied_expectation": "市场已计入 AI ASIC/Ethernet 稳态受益，赔率取决于客户数量和项目持续性。",
+        "base_path": "AI revenue、customer count 和 Ethernet orders 继续兑现。",
+        "bull_path": "更多云厂 ASIC 项目扩散，AI networking 贡献持续上修。",
+        "bear_path": "大客户/ASIC 节奏不及预期或估值透支。",
+        "upgrade_data": "AI revenue、customer count、Ethernet orders",
+        "downgrade_data": "大客户/ASIC 节奏不及预期",
+        "odds_judgment": "稳态优质，但短期错配需要更强证据。"
       },
       "prediction_review": {
         "initial_claim": "AI ASIC/Ethernet 已财务化，但大客户集中和估值隐含预期需要控制。",
@@ -11736,10 +13131,14 @@
       },
       "thesis_kill_tests": [],
       "odds_model": {
-        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
-        "base_path": "AI server margin、backlog conversion、cash flow",
-        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
-        "bear_path": "订单增长但毛利或现金流差"
+        "thesis_node": "AI server 系统交付",
+        "implied_expectation": "市场已看到 AI server backlog，未必充分计入利润率和现金转化的不确定性。",
+        "base_path": "AI server backlog 转收入且毛利、现金流不恶化。",
+        "bull_path": "AI server/rack 订单继续上修并带来利润率改善。",
+        "bear_path": "订单增长但毛利或现金流质量差。",
+        "upgrade_data": "AI server margin、backlog conversion、cash flow",
+        "downgrade_data": "订单增长但毛利或现金流差",
+        "odds_judgment": "订单胜率较高，赔率取决于利润质量。"
       },
       "prediction_review": {
         "initial_claim": "AI server backlog 极强，系统交付弹性大；但利润率和现金流质量决定价值捕获。",
@@ -11985,10 +13384,14 @@
       },
       "thesis_kill_tests": [],
       "odds_model": {
-        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
-        "base_path": "HBM4 shipment、server DDR5/eSSD mix",
-        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
-        "bear_path": "HBM 资格或价格不及预期"
+        "thesis_node": "HBM/server DDR5/eSSD",
+        "implied_expectation": "市场已看到 AI memory 受益，但相对 SK hynix 的 HBM 领导力折价仍需验证。",
+        "base_path": "HBM4 shipment、server DDR5/eSSD mix 改善，毛利回升。",
+        "bull_path": "HBM 资格和供给份额改善，估值折价收敛。",
+        "bear_path": "HBM 资格或价格不及预期。",
+        "upgrade_data": "HBM4 shipment、server DDR5/eSSD mix",
+        "downgrade_data": "HBM 资格或价格不及预期",
+        "odds_judgment": "估值可能有弹性，但稀缺性证据弱于 SK hynix。"
       },
       "prediction_review": {
         "initial_claim": "内存业务 AI 产品强，但 HBM 领导力和市场预期相对 SK hynix 需要更多验证。",
@@ -12001,15 +13404,15 @@
         "as_of_date": "2026-03-02",
         "evaluation_date": "2026-06-02",
         "label_window": "2026-03-02_to_2026-06-02",
-        "start_price": null,
-        "start_price_date": null,
-        "end_price": null,
-        "end_price_date": null,
-        "forward_3m_return": null,
+        "start_price": 195100,
+        "start_price_date": "2026-03-03",
+        "end_price": 349000,
+        "end_price_date": "2026-06-01",
+        "forward_3m_return": 78.88,
         "benchmark_return": 62.46,
-        "excess_return": null,
-        "price_source": "not verified",
-        "label_status": "label_unverified: KRX/Yahoo label not collected in this run"
+        "excess_return": 16.42,
+        "price_source": "Naver Finance KRX daily close",
+        "label_status": "label_verified_krx_next_trading_day"
       },
       "rank": 11
     },
@@ -12234,10 +13637,14 @@
       },
       "thesis_kill_tests": [],
       "odds_model": {
-        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
-        "base_path": "AI cluster wins、gross margin、cloud capex",
-        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
-        "bear_path": "Spectrum-X 或客户自研挤压份额"
+        "thesis_node": "AI Ethernet 网络",
+        "implied_expectation": "市场认可 AI networking 增长，但仍需证明开放以太网路线份额。",
+        "base_path": "AI cluster wins 和云厂 capex 支撑收入，gross margin 稳定。",
+        "bull_path": "开放以太网路线在 AI 集群中份额继续扩大。",
+        "bear_path": "平台网络方案或客户自研挤压份额。",
+        "upgrade_data": "AI cluster wins、gross margin、cloud capex",
+        "downgrade_data": "Spectrum-X 或客户自研挤压份额",
+        "odds_judgment": "方向成立，等待客户订单和路线份额验证。"
       },
       "prediction_review": {
         "initial_claim": "AI networking 方向成立，但与平台网络路线的关系和客户订单需要更多证明。",
@@ -12483,10 +13890,14 @@
       },
       "thesis_kill_tests": [],
       "odds_model": {
-        "implied_expectation": "As-of market likely priced meaningful AI factory growth; mispricing score is capped unless order and profit evidence exceed implied expectations.",
-        "base_path": "margin、cash conversion、governance",
-        "bull_path": "Orders, margin and capex evidence exceed market-implied growth.",
-        "bear_path": "治理风险或毛利恶化"
+        "thesis_node": "AI server 组装",
+        "implied_expectation": "市场可能给予 AI server 主题弹性，但治理、执行和毛利风险应显著折价。",
+        "base_path": "收入恢复且 margin、cash conversion、governance 不恶化。",
+        "bull_path": "AI server 订单恢复并证明治理风险可控。",
+        "bear_path": "治理风险、毛利恶化或现金流转差。",
+        "upgrade_data": "margin、cash conversion、governance",
+        "downgrade_data": "治理风险或毛利恶化",
+        "odds_judgment": "主题弹性不能抵消风险控制缺口，维持 no_action。"
       },
       "prediction_review": {
         "initial_claim": "AI server 主题弹性大，但执行、治理和毛利风险使风险控制不足。",

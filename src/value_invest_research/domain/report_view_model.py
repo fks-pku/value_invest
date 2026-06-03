@@ -112,12 +112,64 @@ def _view_node(
 
 def _supply_chain_model(playbook: DomainPlaybook) -> dict[str, Any]:
     layers = playbook.supply_chain_layers or [
-        {"layer": "上游", "products": "待定义", "players": "待定义", "value_flow": "需要领域 playbook 补充。"},
-        {"layer": "中游", "products": "待定义", "players": "待定义", "value_flow": "需要领域 playbook 补充。"},
-        {"layer": "下游", "products": "待定义", "players": "待定义", "value_flow": "需要领域 playbook 补充。"},
+        {
+            "stage": "上游",
+            "node": "待定义",
+            "demand_input": "需要领域 playbook 补充下游需求、订单或预算来源。",
+            "supply_input": "需要领域 playbook 补充产能、技术、材料或生态输入。",
+            "produces": "需要领域 playbook 补充自身产品/服务。",
+            "players": "待定义",
+            "financial_metrics": "需要领域 playbook 补充收入、毛利、订单、backlog、capex 或现金流指标。",
+            "value_flow": "需要领域 playbook 补充瓶颈和利润捕获逻辑。",
+            "qa_link": "Q2 / Q4",
+        },
+        {
+            "stage": "中游",
+            "node": "待定义",
+            "demand_input": "需要领域 playbook 补充客户规格、交付需求或项目订单。",
+            "supply_input": "需要领域 playbook 补充上游关键部件、产能、认证或工程资源。",
+            "produces": "需要领域 playbook 补充集成、制造、交付或平台能力。",
+            "players": "待定义",
+            "financial_metrics": "需要领域 playbook 补充收入、毛利、订单、backlog、库存或现金转化。",
+            "value_flow": "需要领域 playbook 补充瓶颈和价值捕获逻辑。",
+            "qa_link": "Q2 / Q4",
+        },
+        {
+            "stage": "下游",
+            "node": "待定义",
+            "demand_input": "需要领域 playbook 补充终端需求、使用场景、预算或 ROI 约束。",
+            "supply_input": "需要领域 playbook 补充上中游产品、解决方案、渠道或交付能力。",
+            "produces": "需要领域 playbook 补充订单、使用率、收入转化、续费或 ROI 信号。",
+            "players": "待定义",
+            "financial_metrics": "需要领域 playbook 补充 capex、收入、RPO/backlog、使用率、FCF 或 ROI 指标。",
+            "value_flow": "需要领域 playbook 补充需求验证和反证逻辑。",
+            "qa_link": "Q1 / Q3",
+        },
+    ]
+    stage_groups = [
+        {
+            "stage": str(layer.get("stage") or layer.get("layer") or "待定义"),
+            "summary": str(layer.get("value_flow") or "等待领域 playbook 补充。"),
+            "companies": [
+                {
+                    "name": str(layer.get("players") or "待定义玩家"),
+                    "ticker": "",
+                    "node_type": str(layer.get("node_type") or layer.get("node") or layer.get("products") or "需要领域 playbook 补充。"),
+                    "demand_input": str(layer.get("demand_input") or layer.get("demand") or layer.get("accepts_from") or layer.get("inputs") or "需要领域 playbook 补充。"),
+                    "supply_input": str(layer.get("supply_input") or layer.get("supply") or "需要领域 playbook 补充。"),
+                    "produces": str(layer.get("produces") or layer.get("products") or "需要领域 playbook 补充。"),
+                    "provides_to": str(layer.get("provides_to") or layer.get("outputs") or "需要领域 playbook 补充。"),
+                    "financial_metrics": str(layer.get("financial_metrics") or layer.get("metrics") or "需要领域 playbook 补充。"),
+                    "bottleneck_strength": str(layer.get("bottleneck_strength") or layer.get("value_flow") or "需要领域 playbook 补充。"),
+                    "qa_link": str(layer.get("qa_link") or layer.get("qa") or "需要领域 playbook 补充。"),
+                    "evidence": str(layer.get("evidence") or "待验证"),
+                }
+            ],
+        }
+        for layer in layers
     ]
     return {
-        "plain_summary": "产业链全景用于先回答谁提供什么、谁依赖谁、谁付款、利润和瓶颈在哪里，再进入 QA。",
+        "plain_summary": "行业概况用于先回答谁提供什么、谁依赖谁、谁付款、利润和瓶颈在哪里，再进入 QA。",
         "flow_steps": [
             "确认终端需求和付费方。",
             "映射上游、中游、下游的产品和依赖。",
@@ -126,6 +178,35 @@ def _supply_chain_model(playbook: DomainPlaybook) -> dict[str, Any]:
             "用反证和估值检查赔率。",
         ],
         "layers": layers,
+        "stage_groups": stage_groups,
+        "relationships": [
+            {
+                "from": "上游关键输入",
+                "to": "中游价值捕获节点",
+                "relationship": "供应、认证、产能或技术依赖",
+                "demand_input": "承接下游订单、规格、部署或预算需求。",
+                "supply_input": "接受上游产品、产能、认证或技术输入。",
+                "produces": "提供可被下游采购或部署的产品/服务。",
+                "provides_to": "提供给下游客户、系统商、渠道或生态节点。",
+                "financial_metrics": "收入、毛利率、订单、backlog、产能利用率和现金转化。",
+                "bottleneck_strength": "等待领域 playbook 明确稀缺资源和替代路径。",
+                "qa_link": "Q2 定位瓶颈，Q4 映射具体标的。",
+                "evidence": "需要一手来源、公司披露或行业数据验证。",
+            },
+            {
+                "from": "中游价值捕获节点",
+                "to": "下游付费客户",
+                "relationship": "产品交付、解决方案、渠道或生态绑定",
+                "demand_input": "承接终端需求、使用场景、预算和 ROI 约束。",
+                "supply_input": "接受中游产品、交付、渠道或生态能力。",
+                "produces": "提供预算、订单、使用率、续费和 ROI 反馈。",
+                "provides_to": "反馈给中游系统商、上游关键供应商和应用生态。",
+                "financial_metrics": "客户 capex、收入、RPO/backlog、续费、使用率和 FCF。",
+                "bottleneck_strength": "等待补充分产品收入、毛利率、订单/backlog 和客户验证。",
+                "qa_link": "Q4 只允许把可财务化关系转成目标评分。",
+                "evidence": "需要客户、财报、订单或价格数据。",
+            },
+        ],
         "chokepoints": ", ".join(playbook.mechanism_buckets),
         "target_links": "Q2 负责瓶颈评分，Q4 负责把瓶颈、赔率和风险合成具体标的排序。",
     }

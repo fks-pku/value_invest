@@ -115,8 +115,8 @@ class ReportSynthesisTests(unittest.TestCase):
             self.assertEqual(result["report_mode"], "deterministic")
             self.assertTrue((stock_dir / "research_system" / "professional_report.html").exists())
             self.assertIn("AAPL 专业投研报告", markdown)
-            self.assertIn("当前研究目标", report)
-            self.assertIn("QA 拆分", report)
+            self.assertIn("当前研究的问题", report)
+            self.assertIn("下钻 QA", report)
             self.assertIn("Q1", report)
 
     def test_write_meta_qa_professional_report_from_answers(self):
@@ -148,8 +148,8 @@ class ReportSynthesisTests(unittest.TestCase):
             self.assertEqual(result["report_mode"], "deterministic")
             self.assertIn("机器人 专业投研报告", markdown)
             self.assertIn("机器人", report)
-            self.assertIn("当前研究目标", report)
-            self.assertIn("QA 拆分", report)
+            self.assertIn("当前研究的问题", report)
+            self.assertIn("下钻 QA", report)
             self.assertIn("qa-source-list", report)
             self.assertIn('href="https://example.com/robotics/shipments"', report)
 
@@ -300,10 +300,10 @@ class ReportSynthesisTests(unittest.TestCase):
             report = Path(report_result["professional_report_path"]).read_text(encoding="utf-8")
             markdown = Path(report_result["professional_report_md_path"]).read_text(encoding="utf-8")
             self.assertTrue(report_result["investment_workbench_path"].endswith("investment_workbench.json"))
-            self.assertIn("当前研究目标", report)
+            self.assertIn("当前研究的问题", report)
             self.assertIn("研究执行计划", report)
             self.assertIn("DeepSeek 只做资料摘要", report)
-            self.assertIn("QA 拆分", report)
+            self.assertIn("下钻 QA", report)
             self.assertIn("Q1", report)
             self.assertIn("Q1.1", report)
             self.assertIn("Q1.1.1", report)
@@ -340,7 +340,7 @@ class ReportSynthesisTests(unittest.TestCase):
             self.assertEqual(len(client.calls), 1)
             self.assertIn("LLM 专业报告", markdown)
             self.assertIn("LLM 报告已经基于 QA 树收敛", markdown)
-            self.assertIn("当前研究目标", report)
+            self.assertIn("当前研究的问题", report)
 
 
 if __name__ == "__main__":

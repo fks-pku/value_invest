@@ -4,7 +4,7 @@
 
 | 排名 | 标的 | Action State | 总分 | forward_3m_return |
 |---|---|---:|---:|---:|
-| 1 | 000660.KS | actionable_long | 4.11 | n/a |
+| 1 | 000660.KS | actionable_long | 4.11 | 151.65% |
 | 2 | VRT | actionable_long | 4.06 | 25.47% |
 | 3 | NVDA | watch_only | 3.87 | 22.95% |
 | 4 | TSM | watch_only | 3.84 | 18.02% |
@@ -14,6 +14,6 @@
 | 8 | MRVL | watch_only | 3.58 | 171.37% |
 | 9 | AVGO | watch_only | 3.46 | 44.27% |
 | 10 | DELL | watch_only | 3.42 | 203.46% |
-| 11 | 005930.KS | watch_only | 3.39 | n/a |
+| 11 | 005930.KS | watch_only | 3.39 | 78.88% |
 | 12 | ANET | watch_only | 3.27 | 32.00% |
 | 13 | SMCI | no_action | 3.07 | 47.28% |

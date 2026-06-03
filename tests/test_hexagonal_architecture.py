@@ -630,7 +630,7 @@ class HexagonalArchitectureTests(unittest.TestCase):
 
         document = repository.load_report_document()
 
-        self.assertIn("当前研究目标", document.html)
+        self.assertIn("当前研究的问题", document.html)
         self.assertFalse(document.load_issues)
 
     def test_filesystem_source_list_repository_is_an_outbound_adapter(self):

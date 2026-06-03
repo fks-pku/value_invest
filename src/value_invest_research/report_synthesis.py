@@ -526,7 +526,7 @@ def _markdown_report_html(
   <header>
     <p class="eyebrow">产业链 QA 研究</p>
     <h1>{escape(title)}</h1>
-    <p class="subtitle">先明确当前研究目标，再按问题树逐层下钻；每个叶子问题挂接证据、研报、消息和观点。</p>
+    <p class="subtitle">先明确当前研究问题，再按问题树逐层下钻；每个叶子问题挂接证据、研报、消息和观点。</p>
   </header>
   {nav}
   <main class="qa-full-research">
@@ -538,9 +538,9 @@ def _markdown_report_html(
 
 
 def _professional_report_nav(context: dict[str, Any] | None, workbench: dict[str, Any] | None = None) -> str:
-    links = [("#research-target", "研究目标"), ("#qa-split", "QA 拆分")]
+    links = [("#research-target", "研究问题"), ("#qa-split", "下钻 QA")]
     if workbench and workbench.get("research_execution_plan"):
-        links = [("#research-target", "研究目标"), ("#execution-plan", "研究计划"), ("#qa-split", "QA 拆分")]
+        links = [("#research-target", "研究问题"), ("#execution-plan", "研究计划"), ("#qa-split", "下钻 QA")]
     if context:
         for index, section in enumerate(context.get("top_level", [])[:6], start=1):
             links.append((f"#qa-l1-{index}", f"Q{index}"))
@@ -639,7 +639,7 @@ def _render_qa_hierarchy(context: dict[str, Any], workbench: dict[str, Any] | No
     return f"""
     <section id="research-target" class="level-frame qa-target-section">
       <div class="qa-section-title">
-        <p class="eyebrow">01 / 当前研究目标</p>
+        <p class="eyebrow">01 / 当前研究的问题</p>
         <h2>{escape(str(context.get("meta_question", "")))}</h2>
       </div>
       <p class="qa-target-answer">{escape(_node_takeaway(root))}</p>
@@ -648,7 +648,7 @@ def _render_qa_hierarchy(context: dict[str, Any], workbench: dict[str, Any] | No
     {plan_html}
     <section id="qa-split" class="level-frame qa-split-section">
       <div class="qa-section-title">
-        <p class="eyebrow">{qa_label} / QA 拆分</p>
+        <p class="eyebrow">{qa_label} / 下钻 QA</p>
         <h2>从研究方向到资料搜集</h2>
         <p class="subtitle-small">阅读顺序：Q1/Q2/Q3/Q4 是研究方向，Qx.y 是机制问题，Qx.y.z 是具体资料搜集和证据判断。</p>
       </div>

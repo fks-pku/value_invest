@@ -25,14 +25,14 @@ The report contract owns only section order, hierarchy, interaction, and compone
 Final user-facing HTML reports must use exactly this top-level order:
 
 1. Current research goal.
-2. Supply-chain panorama / `产业链全景`.
+2. Industry overview / `行业概况`.
 3. Question drilldown.
 4. Final target recommendation.
 5. Source index.
 
 The final target recommendation is a research conclusion section. It must synthesize all QA evidence into a ranked observation list with specific targets, win probability, payoff odds, rationale, required verification data, and downgrade triggers. It must not issue buy/sell/hold instructions.
 
-`产业链全景` is mandatory. It must map upstream, midstream, downstream, key players, products/services, dependency links, value/profit flow, and candidate chokepoints before the QA drilldown. Use `supply-chain-panorama-explainer` so the public section is beginner-readable Chinese rather than a jargon-only table. Q2 and Q4 should be able to cite this map when judging scarcity, value capture, and target exposure.
+`行业概况` is mandatory and is the fact-map layer before QA. It must contain five public modules: `产业链与生态位`, `行业空间`, `竞争格局与利润池`, `瓶颈点`, and `关键变量与待验证数据`. Each module renders as a clickable collapsed `details.industry-module > summary.module-head` card with `module-index`, `chevron`, and `industry-module-body`. Use `supply-chain-panorama-explainer` for `产业链与生态位`; that module must keep a readable upstream/midstream/downstream swimlane view and a value-flow view so readers can see ecosystem position before Q1-Q4. Q1-Q4 question design, Q2 value-capture analysis, Q3 disconfirming tests, and Q4 target ranking should cite this industry overview.
 
 Research type adaptation, question architecture, source planning, specialty parsing, GPT verification, tool attribution, and iteration notes are internal process artifacts. Store them in workbench JSON, logs, or internal files; do not render them as top-level HTML report sections unless the user explicitly asks to inspect process.
 
@@ -96,7 +96,7 @@ Label availability must not define the target universe. The frozen target list s
 Use `src/value_invest_research/framework_contracts.py` to turn the written framework into reusable checks and artifacts:
 
 - Report contract validation: verify top-level order, Q1-Q4 hierarchy, L1/L2/L3 rendering, Q4 preservation, final target rollup, source collapse, and canonical card classes.
-- Supply-chain validation: verify the report includes a standalone `产业链全景` section with `supply-chain-section`, `chain-explain`, `chain-plain-summary`, `chain-flow-steps`, `chain-layer-grid`, `chain-layer-card`, `chain-chokepoints`, `chain-target-links`, plus `chain-map` or `chain-table`, and that it maps upstream, midstream, downstream, players, products/services, dependencies, value/profit flow, and candidate chokepoints in beginner-readable Chinese.
+- Industry-overview validation: verify the report includes a standalone `行业概况` section with `industry-overview-section`, five clickable `details.industry-module` cards, `summary.module-head`, `module-index`, `industry-module-body`, `supply-chain-section`, `chain-explain`, `chain-research-bridge`, `chain-node-lens`, `chain-plain-summary`, `chain-lane-map`, `chain-value-flow`, `chain-layer-grid`, `chain-layer-card`, `chain-relationship-graph`, `chain-stage-panel`, `chain-company-list`, `chain-company-card`, `chain-chokepoints`, `chain-data-gaps`, `industry-space`, `industry-competition`, `industry-chokepoints`, `industry-key-variables`, plus `chain-map` or `chain-table`. It must show the ecosystem map, industry space, competition/profit pool, chokepoints, and key variables in beginner-readable Chinese without forcing all content to be visible at once.
 - Time-slice audit: reject post-cutoff thesis sources and allow current-time data only as final-target label metadata.
 - QA schema validation: require L3 question-quality fields, structured source plan, structured skill dispatch, fact, inference, judgment, gap, trigger, and source links before parent rollup. The validator rejects missing `decision_use`, `support_evidence`, `refute_evidence`, `target_implications`, `score_component`, `minimum_evidence_gate`, `refuting_source_plan`, or undifferentiated fact/inference/judgment.
 - Research artifact validation: require L3 parser `schema_fields`, source availability proof, auditable target `score_subcomponents`, deterministic target ranking inputs, and hard kill tests for actionable targets.
@@ -133,7 +133,7 @@ Default research types:
 
 | Type | Q1 | Q2 | Q3 | Q4 |
 |---|---|---|---|---|
-| Industry/theme opportunity | Demand reality | Value-capture bottlenecks | Disconfirming tests and priced-in risk | Target observation list |
+| Industry/theme opportunity | Industry space and demand reality | Competitive landscape and value capture, with chokepoint analysis as a submodule | Disconfirming tests and priced-in risk | Valuation odds and target observation list |
 | Single company | Growth drivers | Moat, unit economics, and value capture | Financial quality, valuation, and disconfirming tests | Observation decision and monitoring list |
 | Event/policy | Event facts and scope | Transmission mechanism | Beneficiaries, losers, and second-order effects | Disconfirming tests and watchlist |
 | Technology/product route | Technical feasibility and adoption demand | Bottlenecks and ecosystem readiness | Commercialization, competition, and disconfirming tests | Exposed assets and monitoring list |
@@ -203,7 +203,7 @@ Before evidence collection, run two quality-control passes:
 Default QA directions for industry/theme opportunity:
 
 1. Q1: Confirm demand.
-2. Q2: Locate bottlenecks.
+2. Q2: Analyze competitive landscape and identify value-capturing chokepoints.
 3. Q3: Bind disconfirming tests.
 4. Q4: Target observation list with reasons.
 
@@ -211,9 +211,9 @@ For other research types, use the adapted Q1-Q4 map. Each Q direction should sta
 
 ## Chokepoint Evaluation Protocol
 
-For industry/theme opportunity and technology/product-route research, the domain playbook must add a chokepoint evaluation whenever value capture depends on scarce supply, workflow control, proprietary data, distribution, trust, regulation, or another hard-to-bypass constraint.
+For industry/theme opportunity and technology/product-route research, the domain playbook must add competitive-landscape analysis before chokepoint evaluation whenever value capture depends on scarce supply, workflow control, proprietary data, distribution, trust, regulation, or another hard-to-bypass constraint.
 
-The chokepoint scorecard belongs inside the relevant Q2 bottleneck node, usually Q2.1. It must not become a top-level appendix or a component parallel to the QA tree.
+Chokepoint is a conclusion produced by competitive-landscape analysis, not a synonym for the whole competition module. The Q2 flow is: identify competitors and substitutes in each node, test customer bargaining power and supply expansion, then decide which nodes are true chokepoints. The chokepoint scorecard belongs inside the relevant Q2 competition/value-capture node, usually Q2.1. It must not become a top-level appendix or a component parallel to the QA tree.
 
 Each scorecard must declare a score schema with dimension weights, scoring definitions, and downgrade rules. Do not use unexplained qualitative labels as the only score basis. If one dimension lacks evidence, score it conservatively and list the missing data.
 
@@ -230,28 +230,32 @@ Each chokepoint node should answer:
 Q4 target observation lists must use Q2 chokepoint evaluation as an input to ranking. A target cannot receive high strength from theme exposure alone; it must reconcile chokepoint score or score drivers with future space, valuation odds, evidence quality, and Q3 downgrade tests.
 In historical training/backtest mode, Q4 must retain as-of target-selection child questions. Do not replace Q4's child QA with the final label table, and do not create a Q4 child whose purpose is to evaluate later returns.
 
-## Supply-Chain Panorama
+## Industry Overview
 
-Every refreshed canonical report must include `产业链全景` before `问题下钻`.
+Every refreshed canonical report must include `行业概况` before `下钻 QA`.
 
-This section is the shared map for later reasoning. It must describe:
+This section is the shared fact map for later reasoning. It must include five public modules:
 
-- upstream, midstream, downstream, infrastructure, ecosystem, and end-demand layers when applicable;
-- key listed and private players;
-- products and services each player provides;
-- dependency links: who supplies whom, who controls access, and who bears cost;
-- value/profit flow: revenue, margin, cash flow, bargaining power, and capital intensity;
-- candidate chokepoints: scarce, monopolistic, hard-to-substitute, qualification-heavy, proprietary, regulated, trusted, or ecosystem-locked nodes;
-- the Q2/Q4 nodes that should use each chain-map insight.
+- `产业链与生态位`: upstream, midstream, downstream layers, key players, what each player provides, who depends on whom, and how orders/products/capacity/revenue/margin/ROI flow through the ecosystem.
+- `行业空间`: demand drivers, visible evidence, future-space read, and revenue/profit bridge.
+- `竞争格局与利润池`: who competes in each node, substitutes, customer bargaining power, supply response, and whether profit can stay in the node.
+- `瓶颈点`: scarce, monopolistic, hard-to-substitute, qualification-heavy, proprietary, regulated, trusted, or ecosystem-locked nodes.
+- `关键变量与待验证数据`: data gaps and Q1-Q4 nodes that should test each industry-map insight.
 
-Render this as `supply-chain-section` with:
+Render this as `industry-overview-section` with five clickable `details.industry-module` blocks. Each block has a direct `summary.module-head` with `module-index`, concise title text, `chevron`, and an `industry-module-body` that contains the detailed tables/maps. The `产业链与生态位` block uses `supply-chain-section` with:
 
-- `chain-explain` and `chain-plain-summary`: a short Chinese explanation of what the chain does.
-- `chain-flow-steps`: 3-7 steps showing who provides what, who pays whom, and how product/order/money/data flows.
-- `chain-layer-grid` and `chain-layer-card`: beginner-readable cards for upstream, midstream, downstream, platform/ecosystem, customers, and other relevant layers.
-- `chain-chokepoints`: candidate bottlenecks in plain Chinese, with why each is scarce or hard to substitute.
-- `chain-target-links`: how those bottlenecks map to possible listed targets and the Q2/Q4 nodes that will test them.
+- `chain-explain`, `chain-research-bridge`, `chain-node-lens`, and `chain-plain-summary`: a short Chinese explanation of what the chain does, how the research goal becomes a supply-chain problem, and what lens is used to screen nodes.
+- `chain-lane-map`, `chain-layer-grid`, and `chain-layer-card`: upstream/midstream/downstream swimlane view.
+- `chain-value-flow`: value-flow view showing orders, products, capacity, revenue, margin, and ROI movement.
+- `chain-relationship-graph`, `chain-stage-panel`, `chain-company-list`, and `chain-company-card`: concise company/node lists inside each upstream/midstream/downstream panel.
 - `chain-map` or `chain-table`: the auditable structured map.
+
+The remaining modules use:
+
+- `industry-space`: industry space and future-space bridge.
+- `industry-competition`: competition landscape and profit-pool table.
+- `industry-chokepoints` plus `chain-chokepoints`: candidate bottlenecks in plain Chinese, with why each is scarce or hard to substitute.
+- `industry-key-variables` plus `chain-data-gaps`: key variables and data required before strengthening QA conclusions or target scores.
 
 It is not a process appendix and should not describe framework changes. It is a research artifact that prevents target selection from jumping straight to familiar company names.
 
@@ -277,13 +281,13 @@ Q4 target observation lists must also include:
 - Score breakdown: chokepoint strength, future space, valuation odds, evidence quality, disconfirming-risk control, and monitorability.
 - Four core target dimensions: `scarcity_or_monopoly`, `mispricing`, `earnings_elasticity`, and `risk_control`.
 - Score audit: auditable `score_subcomponents` for all seven core components, with subdimension name, score, weight, evidence IDs or GPT review IDs, rationale, and status.
-- Simplified odds model: implied expectation, base path, bull path, bear path, and upgrade/downgrade data.
+- Simplified odds model: implied expectation, base path, bull path, bear path, upgrade/downgrade data, and one compact odds judgment per target.
 - Prediction review fields: initial claim, validation horizon, required evidence, current status, and next review trigger.
 - Action state: `actionable_long`, `watch_only`, or `no_action`, with gate reasons when not actionable.
 - Deterministic rank: sort from frozen score fields by action-state priority, opportunity fit, total score, payoff convexity, thesis confidence, then ticker/name tie-break; do not manually reorder after labels.
 - Hard thesis kill tests: any `actionable_long` target must list test, evidence needed, downgrade action, and source plan. If kill tests are missing, cap at `watch_only`.
 
-The simplified odds model is not a price target or trading instruction. If current valuation data is stale, incomplete, or source quality is weak, mark odds as unverified and do not raise target strength.
+The simplified odds model is not a price target or trading instruction. If current valuation data is stale, incomplete, or source quality is weak, mark odds as unverified and do not raise target strength. Public HTML must show this model inside `标的推荐` as `target-odds-model` with `target-odds-table`, before the dense target table; Q4 should also summarize the odds gate in its current-conclusion block.
 
 ## QA Drilldown
 
@@ -311,7 +315,7 @@ Do not put too many unrelated L3 questions under one catch-all L2. L2 should gro
 The report must proceed through the QA tree directly:
 
 - Q1 owns the first adapted research direction. For industry/theme opportunity this is demand analysis.
-- Q2 owns the second adapted research direction. For industry/theme opportunity this is bottleneck/value-capture analysis.
+- Q2 owns the second adapted research direction. For industry/theme opportunity this is competitive-landscape and value-capture analysis; chokepoint scoring is a submodule inside that analysis.
 - Q3 owns disconfirming tests, valuation/odds checks, risk triggers, or the adapted third direction.
 - Q4 owns target observation tables, monitoring lists, decision updates, or the adapted fourth direction.
 
@@ -329,7 +333,7 @@ Do not duplicate the same conclusion, child-QA list, or pending-question text in
 
 Presentation artifacts are answer formats, not structural peers:
 
-- Bottleneck scorecards belong under the bottleneck question they answer, usually Q2.1.
+- Bottleneck/chokepoint scorecards belong under the competitive-landscape/value-capture question they answer, usually Q2.1.
 - Disconfirming-test lists belong under the risk question they answer, usually Q3.1.
 - Target observation tables belong under the target-selection question they answer, usually Q4.1.
 
@@ -398,7 +402,7 @@ Before running an L3 task, classify it into one or more task families:
 | Task family | Preferred skill | Use for | Required output discipline |
 |---|---|---|---|
 | Question architecture | `investment-question-architect` | Research type classification, Q1-Q4 map, L1/L2/L3 question design | decision-use questions, materiality, support/refute tests, target implications |
-| Supply-chain panorama | `supply-chain-panorama-explainer` | public `产业链全景` explanation before Q1-Q4 | plain Chinese summary, flow steps, layer cards, chokepoints, target/Q2/Q4 links |
+| Supply-chain panorama | `supply-chain-panorama-explainer` | public `行业概况` explanation before Q1-Q4 | plain Chinese summary, flow steps, layer cards, chokepoints, target/Q2/Q4 links |
 | Source planning | `research-source-planner` | Material selection before source reading | source priority, concrete sources/searches, extraction schema, refuting-source plan |
 | Financial statement / filing parsing | `financial-statement-analysis` | 10-K, 10-Q, 20-F, annual reports, quarterly reports, earnings releases, segment data, capex, inventory, RPO/backlog, cash-flow quality | normalized financial facts, earnings-quality view, gaps, triggers |
 | Valuation / priced-in expectations | `valuation-analysis` | multiples, FCF yield, reverse DCF, peer comparison, valuation sensitivity, margin of safety, market-implied growth/margins | market facts, implied assumptions, scenario table, odds judgment, disconfirming tests |
@@ -542,13 +546,13 @@ This section is a research observation list, not a buy/sell instruction.
 Use Apple-inspired presentation:
 
 - Current locked report contract:
-  - Top-level order is exactly `当前研究目标` -> `产业链全景` -> `问题下钻` -> `最终标的推荐` -> `来源索引`.
-  - `产业链全景` is mandatory and must render as `supply-chain-section` with `chain-explain`, `chain-plain-summary`, `chain-flow-steps`, `chain-layer-grid`, `chain-layer-card`, `chain-chokepoints`, `chain-target-links`, and `chain-map` or `chain-table`, covering upstream, midstream, downstream, key players, products/services, dependencies, value/profit flow, and candidate chokepoints in beginner-readable Chinese.
-  - `问题下钻` preserves the full adapted Q1-Q4 QA tree and must render L3 questions plus any adaptive L4/L5 research units in complete refreshed reports unless the user explicitly asks for a shorter executive version.
+  - Top-level order is exactly `当前研究的问题` -> `行业概况` -> `下钻 QA` -> `标的推荐` -> `来源索引`.
+  - `行业概况` is mandatory and must render as `industry-overview-section` with five clickable `details.industry-module` blocks: `产业链与生态位`, `行业空间`, `竞争格局与利润池`, `瓶颈点`, and `关键变量与待验证数据`. It must include `summary.module-head`, `module-index`, `industry-module-body`, `supply-chain-section`, `chain-explain`, `chain-research-bridge`, `chain-node-lens`, `chain-plain-summary`, `chain-lane-map`, `chain-value-flow`, `chain-layer-grid`, `chain-layer-card`, `chain-relationship-graph`, `chain-stage-panel`, `chain-company-list`, `chain-company-card`, `chain-chokepoints`, `chain-data-gaps`, `industry-space`, `industry-competition`, `industry-chokepoints`, `industry-key-variables`, and `chain-map` or `chain-table`.
+  - `下钻 QA` preserves the full adapted Q1-Q4 QA tree and must render L3 questions plus any adaptive L4/L5 research units in complete refreshed reports unless the user explicitly asks for a shorter executive version.
   - Q4 remains the auditable as-of target-selection QA node with child questions.
-  - `最终标的推荐` is a standalone presentation rollup, not a replacement for Q4.
-  - The hierarchy and format rules in `research_report_contract.md` are validation requirements. A complete refreshed report is invalid if it drops L3, moves Q4 out of `问题下钻`, duplicates child-question lists beside inline cards, replaces the canonical component family, or adds public process appendices.
-  - Four non-drift locks must always hold: hierarchy and format lock, supply-chain map lock, backtest time-slice lock, and frontend card-style lock. In backtest mode, only cutoff-visible information can drive source collection, QA reasoning, scoring, odds, and target ranking; the only current-time data allowed in final HTML is the final-target evaluation label.
+  - `标的推荐` is a standalone presentation rollup, not a replacement for Q4.
+  - The hierarchy and format rules in `research_report_contract.md` are validation requirements. A complete refreshed report is invalid if it drops L3, moves Q4 out of `下钻 QA`, duplicates child-question lists beside inline cards, replaces the canonical component family, or adds public process appendices.
+  - Four non-drift locks must always hold: hierarchy and format lock, industry-overview lock, backtest time-slice lock, and frontend card-style lock. In backtest mode, only cutoff-visible information can drive source collection, QA reasoning, scoring, odds, and target ranking; the only current-time data allowed in final HTML is the final-target evaluation label.
   - Frontend interaction is locked too: every `qa-card level-1/2/3` must be a clickable `details.qa-card` with `summary`, `qa-count`, and `chevron`, default `open`. Static `article/div.qa-card` cards fail the report contract.
   - In historical training/backtest mode, public prose must read as if written on the `as_of_date`; later price movement appears only once in the isolated final target evaluation fields.
   - Do not add process appendices, execution traces, tool traces, iteration notes, or workbench sections unless explicitly requested.
@@ -559,7 +563,7 @@ Use Apple-inspired presentation:
 - Low-noise cards.
 - Blue links for concrete sources.
 - In historical training/backtest mode, show the as-of cutoff and information cutoff in the current research goal section. Keep evaluation dates, label windows, benchmark returns, and later price movement out of QA conclusions and rationale. Show later price movement only once inside the final target recommendation table. Do not add a separate top-level backtest section unless the user explicitly asks for it.
-- Final HTML must use exactly five top-level sections: `当前研究目标`, `产业链全景`, `问题下钻`, `最终标的推荐`, `来源索引`.
+- Final HTML must use exactly five top-level sections: `当前研究的问题`, `行业概况`, `下钻 QA`, `标的推荐`, `来源索引`.
 - The final target recommendation section must rank specific targets by synthesized win probability and payoff odds, while keeping Q4 as the auditable QA source of the target logic.
 - Do not render process metadata, iteration diffs, execution traces, quality-framework explanations, tool/delegation attribution, or workbench appendices in final HTML.
 - Preserve full QA depth in the final report; do not replace the QA tree with a compressed Q1-Q4 summary unless the user explicitly requests a brief version.
@@ -568,7 +572,7 @@ Use Apple-inspired presentation:
 - If child QA nodes are rendered inline as expandable cards, do not also render a separate child-question list with the same titles. The question expansion section should contain either jump links or inline child cards, not both.
 - Put answer-presentation artifacts under `当前结论呈现` before child QA expansion.
 - Keep source indexes collapsed by default unless the user explicitly asks to inspect sources.
-- Use the canonical frontend component family defined in `research_report_contract.md` for refreshed reports: `supply-chain-section` with `chain-explain`, `chain-plain-summary`, `chain-flow-steps`, `chain-layer-grid`, `chain-layer-card`, `chain-chokepoints`, `chain-target-links`, and `chain-map` or `chain-table`; `qa-card`; `artifact-card`; `target-section` + `target-table`; and one collapsed `source-collapse`. Do not introduce visually divergent component families unless the user explicitly asks for a frontend redesign.
+- Use the canonical frontend component family defined in `research_report_contract.md` for refreshed reports: `industry-overview-section`, clickable `details.industry-module`, `summary.module-head`, `module-index`, `industry-module-body`, `supply-chain-section`, `chain-explain`, `chain-research-bridge`, `chain-node-lens`, `chain-plain-summary`, `chain-lane-map`, `chain-value-flow`, `chain-layer-grid`, `chain-layer-card`, `chain-relationship-graph`, `chain-stage-panel`, `chain-company-list`, `chain-company-card`, `chain-chokepoints`, `chain-data-gaps`, `industry-space`, `industry-competition`, `industry-chokepoints`, `industry-key-variables`, and `chain-map` or `chain-table`; `qa-card`; `artifact-card`; `target-section` + `target-odds-model` + `target-odds-table` + `target-table`; and one collapsed `source-collapse`. Do not introduce visually divergent component families unless the user explicitly asks for a frontend redesign.
 - `target-table` action-state cells must keep the matching canonical color class: `state-actionable_long`, `state-watch_only`, or `state-no_action`. Plain action-state text without the class is format drift.
 - Additive-iteration lock: framework changes are additive by default. New sections, fields, dimensions, skills, source schemas, or visual affordances must preserve existing public section order, canonical component classes, QA interactions, action-state color classes, target-table structure, source-collapse behavior, and no-changelog rules unless the user explicitly asks for a frontend/report redesign.
 - Before marking a framework iteration complete, run regression checks on a new/refreshed report and one existing canonical report or fixture: `validate-report-contract`, `validate-research-artifacts` when artifacts exist, and a browser or DOM smoke check for QA card collapse plus action-state color classes when target states appear.

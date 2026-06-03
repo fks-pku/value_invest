@@ -228,8 +228,8 @@ class CliTests(unittest.TestCase):
             report_path = Path(tmp) / "professional_report.html"
             report_path.write_text(
                 """
-                <section><h2>当前研究目标</h2></section>
-                <section><h2>问题下钻</h2>
+                <section><h2>当前研究的问题</h2></section>
+                <section><h2>下钻 QA</h2>
                   <details class="qa-card level-1" id="q1" open>
                     <summary><span>Q1</span><span class="qa-count">1</span><span class="chevron">&gt;</span></summary>
                     <h4>1. 当前结论呈现</h4><h4>2. 问题展开（子 QA）</h4><h4>3. 待补充的问题</h4>
@@ -262,7 +262,7 @@ class CliTests(unittest.TestCase):
                     </details>
                   </details>
                 </section>
-                <section class="target-section"><h2>最终标的推荐</h2><table class="target-table"><tr><td>forward_3m_return</td></tr></table></section>
+                <section class="target-section"><h2>标的推荐</h2><table class="target-table"><tr><td>forward_3m_return</td></tr></table></section>
                 <details class="source-collapse"><summary><h2>来源索引</h2></summary></details>
                 """,
                 encoding="utf-8",

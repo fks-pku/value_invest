@@ -5,7 +5,7 @@ description: Use this skill when a research question asks which supply-chain nod
 
 # Supply Chain Chokepoint Analysis
 
-This skill evaluates whether a supply-chain node is a real investment bottleneck or only theme exposure.
+This skill evaluates whether a supply-chain node is a real investment bottleneck or only theme exposure. Chokepoint analysis is a submodule of competitive-landscape/value-capture analysis: first compare competitors, substitutes, customer bargaining power, supply expansion, and pricing power inside the node, then decide whether the node is a true chokepoint.
 
 ## Inputs
 
@@ -31,6 +31,7 @@ Use this seven-part scorecard. Keep scores conservative when evidence is missing
 ## Rules
 
 - A chokepoint requires both scarcity and monetization. Scarcity without company-level financial exposure is not enough.
+- Do not treat chokepoint as the whole competition module. It is the conclusion after competitive structure, substitution paths, customer power, and supply response have been tested.
 - Customer qualification and switching cost matter more than broad TAM.
 - Always name the strongest substitution path and the fastest counter-supply path.
 - Output must feed Q2 and Q4 target ranking; it should not become a standalone report section.

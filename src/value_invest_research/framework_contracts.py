@@ -7,13 +7,13 @@ from html import unescape
 from typing import Any
 
 
-REPORT_SECTIONS = ["当前研究目标", "产业链全景", "问题下钻", "最终标的推荐", "来源索引"]
+REPORT_SECTIONS = ["当前研究的问题", "行业概况", "下钻 QA", "标的推荐", "来源索引"]
 QA_BLOCK_TITLES = ["1. 当前结论呈现", "2. 问题展开（子 QA）", "3. 待补充的问题"]
 MAX_QA_DEPTH = 5
 RESEARCH_UNIT_MIN_LEVEL = 3
 SECTION_IDS = {
     REPORT_SECTIONS[0]: ("goal", "research-goal", "current-research-goal"),
-    REPORT_SECTIONS[1]: ("chain", "supply-chain", "industry-chain", "产业链全景"),
+    REPORT_SECTIONS[1]: ("overview", "industry-overview", "chain", "supply-chain", "industry-chain"),
     REPORT_SECTIONS[2]: ("qa", "qa-split", "question-drilldown"),
     REPORT_SECTIONS[3]: ("targets", "target-recommendations", "final-target-recommendations"),
     REPORT_SECTIONS[4]: ("sources", "source-index"),
@@ -198,8 +198,8 @@ DOMAIN_PLAYBOOKS = {
     "semiconductor_hardware": {
         "research_type": "industry/theme opportunity",
         "q_map": {
-            "Q1": "Demand reality: AI capex, accelerator demand, memory demand, and endpoint risk",
-            "Q2": "Value-capture bottlenecks: HBM, custom ASIC, networking, advanced foundry, packaging, and process control",
+            "Q1": "Industry space and demand reality: AI capex, accelerator demand, memory demand, and endpoint risk",
+            "Q2": "Competitive landscape and value capture: compare competitors, substitutes, customer power, supply response, and chokepoint strength across HBM, custom ASIC, networking, advanced foundry, packaging, and process control",
             "Q3": "Disconfirming tests and priced-in risk: ROI, capex digestion, memory cycle, WFE orders, and valuation",
             "Q4": "Target observation list: ranked securities reconciled with chokepoint score, odds, and downgrade triggers",
         },
@@ -234,8 +234,8 @@ DOMAIN_PLAYBOOKS = {
     "memory_industry": {
         "research_type": "industry/theme opportunity",
         "q_map": {
-            "Q1": "Demand reality: convert AI, data-center, and terminal demand into sustainable bit demand, ASP, and product mix",
-            "Q2": "Value-capture bottlenecks: test scarcity, pricing power, and financial conversion across HBM, high-end DRAM, NAND/eSSD, nearline HDD, controllers, capacity, equipment, materials, and packaging",
+            "Q1": "Industry space and demand reality: convert AI, data-center, and terminal demand into sustainable bit demand, ASP, and product mix",
+            "Q2": "Competitive landscape and value capture: compare suppliers, substitutes, customer power, supply response, pricing power, and chokepoint strength across HBM, high-end DRAM, NAND/eSSD, nearline HDD, controllers, capacity, equipment, materials, and packaging",
             "Q3": "Disconfirming tests and priced-in risk: supply response, inventory, ASP decline, substitute architectures, customer capex digestion, China supply, mid-cycle downside, and valuation",
             "Q4": "Target observation list: specific assets reconciled with scarcity, mispricing, earnings elasticity, risk control, valuation odds, and kill tests",
         },
@@ -284,8 +284,8 @@ DOMAIN_PLAYBOOKS = {
     "optical_module": {
         "research_type": "industry/theme opportunity",
         "q_map": {
-            "Q1": "Demand reality: AI cluster networking, 800G/1.6T port demand, customer capex, and order visibility",
-            "Q2": "Value-capture bottlenecks: lasers, InP/silicon photonics, DSP/driver/TIA, components, module integration, qualification, yield, and manufacturing capacity",
+            "Q1": "Industry space and demand reality: AI cluster networking, 800G/1.6T port demand, customer capex, and order visibility",
+            "Q2": "Competitive landscape and value capture: compare suppliers, substitutes, customer power, supply response, pricing power, and chokepoint strength across lasers, InP/silicon photonics, DSP/driver/TIA, components, module integration, qualification, yield, and manufacturing capacity",
             "Q3": "Disconfirming tests and priced-in risk: LPO/CPO/substitution, copper/OCS architecture, capacity expansion, ASP erosion, customer concentration, geopolitics, and valuation",
             "Q4": "Target observation list: specific module, laser/component, manufacturing, and chip assets reconciled with chokepoint score, financial conversion, valuation odds, and kill tests",
         },
@@ -427,7 +427,7 @@ def validate_report_contract_html(
 
     level_counts = _qa_level_counts(html)
     if level_counts["level1_cards"] == 0:
-        _issue(issues, "error", "missing_level1_cards", "问题下钻 must render Q1-Q4 as qa-card level-1")
+        _issue(issues, "error", "missing_level1_cards", "下钻 QA must render Q1-Q4 as qa-card level-1")
     if level_counts["level2_cards"] == 0:
         _issue(issues, "error", "missing_level2_cards", "L1 cards must render mechanism buckets as qa-card level-2")
     if require_l3 and level_counts["level3_cards"] == 0:
@@ -462,29 +462,84 @@ def validate_report_contract_html(
             "QA cards must include qa-count and chevron interaction affordances",
         )
 
+    industry_overview_sections = _class_count(html, "industry-overview-section")
+    if industry_overview_sections == 0:
+        _issue(
+            issues,
+            "error",
+            "missing_industry_overview_section",
+            "final HTML must include a standalone 行业概况 section before 下钻 QA",
+        )
     supply_chain_sections = _class_count(html, "supply-chain-section")
     if supply_chain_sections == 0:
         _issue(
             issues,
             "error",
             "missing_supply_chain_section",
-            "final HTML must include a standalone 产业链全景 section before 问题下钻",
+            "行业概况 must include a 产业链与生态位 module before 下钻 QA",
         )
     if "chain-table" not in html and "chain-map" not in html:
         _issue(
             issues,
             "error",
             "missing_supply_chain_map",
-            "产业链全景 must render an auditable chain map/table of upstream, midstream, downstream, players, and value links",
+            "行业概况/产业链与生态位 must render an auditable chain map/table of upstream, midstream, downstream, players, and value links",
+        )
+    required_industry_overview_classes = [
+        "industry-overview-section",
+        "industry-module",
+        "industry-module-body",
+        "module-index",
+        "industry-space",
+        "industry-competition",
+        "industry-chokepoints",
+        "industry-key-variables",
+    ]
+    missing_industry_overview_classes = [
+        class_name for class_name in required_industry_overview_classes if _class_count(html, class_name) == 0
+    ]
+    if missing_industry_overview_classes:
+        _issue(
+            issues,
+            "error",
+            "missing_industry_overview_components",
+            "行业概况 must include industry space, competition/profit-pool, chokepoint, and key-variable modules; missing "
+            + ", ".join(missing_industry_overview_classes),
+        )
+    required_industry_detail_modules = [
+        "supply-chain-section",
+        "industry-space",
+        "industry-competition",
+        "industry-chokepoints",
+        "industry-key-variables",
+    ]
+    static_industry_modules = [
+        class_name
+        for class_name in required_industry_detail_modules
+        if _tag_class_count(html, "details", "industry-module", class_name) == 0
+    ]
+    if static_industry_modules:
+        _issue(
+            issues,
+            "error",
+            "missing_interactive_industry_modules",
+            "行业概况 modules must render as clickable details.industry-module nodes, not always-expanded static sections; missing "
+            + ", ".join(static_industry_modules),
         )
     required_chain_explainer_classes = [
         "chain-explain",
+        "chain-research-bridge",
+        "chain-node-lens",
         "chain-plain-summary",
-        "chain-flow-steps",
         "chain-layer-grid",
         "chain-layer-card",
+        "chain-relationship-graph",
+        "chain-lane-map",
+        "chain-value-flow",
+        "chain-stage-panel",
+        "chain-company-list",
+        "chain-company-card",
         "chain-chokepoints",
-        "chain-target-links",
     ]
     missing_chain_explainer_classes = [
         class_name for class_name in required_chain_explainer_classes if _class_count(html, class_name) == 0
@@ -494,8 +549,18 @@ def validate_report_contract_html(
             issues,
             "error",
             "missing_beginner_chain_explainer",
-            "产业链全景 must include beginner-readable Chinese explanation components; missing "
+            "行业概况/产业链与生态位 must include beginner-readable Chinese explanation components; missing "
             + ", ".join(missing_chain_explainer_classes),
+        )
+    required_overview_labels = ["产业链与生态位", "泳道图", "价值流", "行业空间", "竞争格局与利润池", "瓶颈点", "关键变量"]
+    missing_overview_labels = [label for label in required_overview_labels if label not in html]
+    if industry_overview_sections and missing_overview_labels:
+        _issue(
+            issues,
+            "error",
+            "missing_industry_overview_blocks",
+            "行业概况必须保留产业链与生态位、泳道图、价值流、行业空间、竞争格局与利润池、瓶颈点、关键变量；缺少 "
+            + ", ".join(missing_overview_labels),
         )
 
     l3_metadata_counts = {
@@ -522,20 +587,27 @@ def validate_report_contract_html(
         if title not in html:
             _issue(issues, "error", "missing_qa_block_title", f"QA cards must include {title}")
 
-    target_start = section_positions.get("最终标的推荐", -1)
+    target_start = section_positions.get("标的推荐", -1)
     source_start = section_positions.get("来源索引", len(html))
-    qa_start = section_positions.get("问题下钻", -1)
+    qa_start = section_positions.get("下钻 QA", -1)
     qa_region_end = target_start if target_start >= 0 else len(html)
     qa_region = html[qa_start:qa_region_end] if qa_start >= 0 else html
     q4_relative_position = _first_position(qa_region, ['class="qid">Q4', "class='qid'>Q4", ">Q4<", "id=\"q4", "id='q4", "Q4"])
     q4_position = qa_start + q4_relative_position if qa_start >= 0 and q4_relative_position >= 0 else -1
     if q4_position < 0 or (qa_start >= 0 and not (qa_start <= q4_position < max(target_start, qa_start))):
-        _issue(issues, "error", "q4_not_in_question_drilldown", "Q4 must remain inside 问题下钻")
+        _issue(issues, "error", "q4_not_in_question_drilldown", "Q4 must remain inside 下钻 QA")
 
     if _class_count(html, "target-section") == 0:
-        _issue(issues, "error", "missing_target_section", "最终标的推荐 must render as target-section")
+        _issue(issues, "error", "missing_target_section", "标的推荐 must render as target-section")
     if "target-table" not in html:
-        _issue(issues, "error", "missing_target_table", "最终标的推荐 must render a dense target-table")
+        _issue(issues, "error", "missing_target_table", "标的推荐 must render a dense target-table")
+    if "target-odds-model" not in html or "target-odds-table" not in html:
+        _issue(
+            issues,
+            "error",
+            "missing_target_odds_model",
+            "标的推荐 must include a simplified target-odds-model with target-odds-table",
+        )
     if "source-collapse" not in html:
         _issue(issues, "error", "missing_source_collapse", "来源索引 must render as a collapsed source-collapse")
 
@@ -559,14 +631,28 @@ def validate_report_contract_html(
         "hero",
         "top-nav",
         "goal-card",
+        "industry-overview-section",
+        "industry-module",
+        "industry-module-body",
+        "module-index",
         "supply-chain-section",
         "chain-explain",
+        "chain-research-bridge",
+        "chain-node-lens",
         "chain-plain-summary",
-        "chain-flow-steps",
         "chain-layer-grid",
         "chain-layer-card",
+        "chain-relationship-graph",
+        "chain-lane-map",
+        "chain-value-flow",
+        "chain-stage-panel",
+        "chain-company-list",
+        "chain-company-card",
         "chain-chokepoints",
-        "chain-target-links",
+        "industry-space",
+        "industry-competition",
+        "industry-chokepoints",
+        "industry-key-variables",
         "chain-map",
         "chain-table",
         "qa-body",
@@ -574,6 +660,8 @@ def validate_report_contract_html(
         "block-title",
         "artifact-card",
         "target-section",
+        "target-odds-model",
+        "target-odds-table",
         "target-table",
         "source-collapse",
     ]
@@ -596,7 +684,7 @@ def validate_report_contract_html(
                 issues,
                 "error",
                 "label_outside_final_targets",
-                "current-time label fields may appear only inside 最终标的推荐",
+                "current-time label fields may appear only inside 标的推荐",
             )
         if not any(term in target_region for term in LABEL_TERMS):
             _issue(issues, "warning", "missing_label_area", "historical backtest reports should include one label area")

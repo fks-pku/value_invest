@@ -101,6 +101,105 @@ h1 { max-width: 980px; margin: 0; font-size: clamp(34px, 5vw, 68px); line-height
 }
 .chain-layer-card h3 { margin: 0 0 8px; font-size: 16px; }
 .chain-map { overflow-x: auto; margin: 18px 0; }
+.chain-relationship-graph {
+  margin: 20px 0;
+  border: 1px solid rgba(10,132,255,.16);
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(10,132,255,.08), transparent 38%),
+    linear-gradient(225deg, rgba(29,154,108,.08), transparent 42%),
+    #ffffff;
+  padding: 16px;
+}
+.chain-graph-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: end;
+  margin-bottom: 12px;
+}
+.chain-graph-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+  color: #1d2939;
+}
+.chain-relationship-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+}
+.chain-relation-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(217,224,234,.88);
+  border-radius: 16px;
+  background: rgba(255,255,255,.9);
+  padding: 14px;
+}
+.chain-relation-card::after {
+  content: "";
+  position: absolute;
+  inset: auto -28px -32px auto;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  background: rgba(10,132,255,.07);
+}
+.chain-relation-line {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+}
+.chain-company {
+  display: inline-flex;
+  justify-content: center;
+  min-height: 34px;
+  align-items: center;
+  padding: 7px 9px;
+  border-radius: 999px;
+  background: #eaf3ff;
+  color: #0a5dcc;
+  font-size: 13px;
+  font-weight: 800;
+  text-align: center;
+}
+.chain-arrow {
+  color: var(--green);
+  font-size: 20px;
+  font-weight: 900;
+}
+.chain-relation-type {
+  position: relative;
+  z-index: 1;
+  margin: 10px 0;
+  color: #344054;
+  font-weight: 800;
+}
+.chain-relation-meta {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+.chain-relation-meta div {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 8px;
+}
+.chain-relation-meta dt {
+  color: var(--blue);
+  font-size: 12px;
+}
+.chain-relation-meta dd {
+  margin: 0;
+  color: #475467;
+  font-size: 13px;
+}
 table { width: 100%; border-collapse: collapse; }
 th, td { padding: 12px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
 th { color: #475467; font-size: 13px; background: #f7f9fc; }
@@ -291,6 +390,132 @@ dd { margin: 0; color: #344054; }
       <h3>市值、PE/forward PE、盈利上修、股价反应、目标价</h3>
       <p>强产业逻辑如果已经被估值吸收，只能进入观察清单；赔率来自稀缺性、错定价、盈利弹性和可控反证同时成立。</p>
     </article></div>
+    <div class="chain-relationship-graph">
+      <div class="chain-graph-head">
+        <p class="chain-graph-title">公司关系图</p>
+        <p class="muted">阅读方式：左侧公司或节点提供产品/能力，右侧公司或节点承接需求；每条边说明钱、订单或瓶颈如何传导。</p>
+      </div>
+      <div class="chain-relationship-grid">
+        <article class="chain-relation-card">
+          <div class="chain-relation-line">
+            <span class="chain-company">NVIDIA</span>
+            <span class="chain-arrow">→</span>
+            <span class="chain-company">TSMC</span>
+          </div>
+          <p class="chain-relation-type">平台路线依赖先进制造、先进封装和 AI fab 效率</p>
+          <dl class="chain-relation-meta">
+            <div><dt>价值流</dt><dd>Vera Rubin/Vera CPU/AI factory 路线把订单和制造效率需求传导给先进制程与封装。</dd></div>
+            <div><dt>瓶颈</dt><dd>先进制造、先进封装、良率和产能。</dd></div>
+            <div><dt>标的</dt><dd>TSM / 2330.TW；Q2.1.1.3、Q2.2.2.3、Q4.2.1。</dd></div>
+            <div><dt>证据</dt><dd>SRC-NV-TSMC-AI-FABS-20260531；SRC-NV-VERA-RUBIN-20260531。</dd></div>
+          </dl>
+        </article>
+
+        <article class="chain-relation-card">
+          <div class="chain-relation-line">
+            <span class="chain-company">NVIDIA</span>
+            <span class="chain-arrow">→</span>
+            <span class="chain-company">Micron</span>
+          </div>
+          <p class="chain-relation-type">Vera Rubin 平台绑定 HBM4、SOCAMM2 和 AI storage</p>
+          <dl class="chain-relation-meta">
+            <div><dt>价值流</dt><dd>AI factory 带宽和存储吞吐需求传导到 HBM4、高速内存和 SSD 收入/毛利率。</dd></div>
+            <div><dt>瓶颈</dt><dd>HBM4 产能、良率、ASP、产品 mix。</dd></div>
+            <div><dt>标的</dt><dd>MU；Q2.1.1.1、Q2.2.2.2、Q4.2.1。</dd></div>
+            <div><dt>证据</dt><dd>SRC-MU-HBM4-20260316；SRC-NV-VERA-RUBIN-20260531。</dd></div>
+          </dl>
+        </article>
+
+        <article class="chain-relation-card">
+          <div class="chain-relation-line">
+            <span class="chain-company">NVIDIA</span>
+            <span class="chain-arrow">→</span>
+            <span class="chain-company">CoreWeave / Lambda / OCI</span>
+          </div>
+          <p class="chain-relation-type">Spectrum-X CPO first adopters 和 AI factory 部署客户</p>
+          <dl class="chain-relation-meta">
+            <div><dt>价值流</dt><dd>云客户部署决定 CPO/networking 是否从产品发布转成真实订单与数据中心收入。</dd></div>
+            <div><dt>瓶颈</dt><dd>CPO 端口出货、部署规模、客户 ROI。</dd></div>
+            <div><dt>标的</dt><dd>NVDA networking；待补 CPO 供应商；Q2.1.1.2、Q2.1.1.2.2。</dd></div>
+            <div><dt>证据</dt><dd>SRC-NV-VERA-RUBIN-20260531。</dd></div>
+          </dl>
+        </article>
+
+        <article class="chain-relation-card">
+          <div class="chain-relation-line">
+            <span class="chain-company">NVIDIA</span>
+            <span class="chain-arrow">→</span>
+            <span class="chain-company">Wiwynn / Quanta / Foxconn</span>
+          </div>
+          <p class="chain-relation-type">Vera Rubin 量产通过服务器 ODM 和 rack 集成落地</p>
+          <dl class="chain-relation-meta">
+            <div><dt>价值流</dt><dd>AI server/rack 订单先进入 ODM 收入，再看毛利率和营运资本能否转成现金流。</dd></div>
+            <div><dt>瓶颈</dt><dd>AI server 订单、单 rack 毛利、客户集中和营运资本。</dd></div>
+            <div><dt>标的</dt><dd>6669.TW、2382.TW、2317.TW；Q2.1.1.4、Q2.2.2.4。</dd></div>
+            <div><dt>证据</dt><dd>SRC-NV-VERA-RUBIN-20260531。</dd></div>
+          </dl>
+        </article>
+
+        <article class="chain-relation-card">
+          <div class="chain-relation-line">
+            <span class="chain-company">NVIDIA</span>
+            <span class="chain-arrow">→</span>
+            <span class="chain-company">Microsoft</span>
+          </div>
+          <p class="chain-relation-type">RTX Spark Windows PC 和 personal agents 生态合作</p>
+          <dl class="chain-relation-meta">
+            <div><dt>价值流</dt><dd>NVIDIA 把端侧算力推入 Windows 生态，Microsoft 提供系统、Surface 和开发者入口。</dd></div>
+            <div><dt>瓶颈</dt><dd>AI PC 出货、应用生态、企业采购和端侧 ROI。</dd></div>
+            <div><dt>标的</dt><dd>MSFT、NVDA、QCOM 反证观察；Q2.1.1.5、Q3.1.2。</dd></div>
+            <div><dt>证据</dt><dd>SRC-NV-MSFT-RTX-SPARK-20260601；SRC-MSFT-SURFACE-ULTRA-20260531。</dd></div>
+          </dl>
+        </article>
+
+        <article class="chain-relation-card">
+          <div class="chain-relation-line">
+            <span class="chain-company">Microsoft / NVIDIA</span>
+            <span class="chain-arrow">→</span>
+            <span class="chain-company">Dell / HP / Lenovo / ASUS</span>
+          </div>
+          <p class="chain-relation-type">RTX Spark AI PC 通过 OEM 上市和渠道验证</p>
+          <dl class="chain-relation-meta">
+            <div><dt>价值流</dt><dd>硬件 SKU、售价、出货和企业采购决定 AI PC 分支是否能进入财务口径。</dd></div>
+            <div><dt>瓶颈</dt><dd>销量、ASP、毛利率、software attach rate。</dd></div>
+            <div><dt>标的</dt><dd>DELL、MSFT；Q1.2.2、Q2.1.1.5、Q4.1.2。</dd></div>
+            <div><dt>证据</dt><dd>SRC-NV-MSFT-RTX-SPARK-20260601；SRC-MSFT-SURFACE-ULTRA-20260531。</dd></div>
+          </dl>
+        </article>
+
+        <article class="chain-relation-card">
+          <div class="chain-relation-line">
+            <span class="chain-company">OpenAI / Anthropic / ByteDance</span>
+            <span class="chain-arrow">→</span>
+            <span class="chain-company">NVIDIA AI factory ecosystem</span>
+          </div>
+          <p class="chain-relation-type">AI 实验室和企业客户决定 agentic AI factory 需求真伪</p>
+          <dl class="chain-relation-meta">
+            <div><dt>价值流</dt><dd>客户训练/推理需求、capex 和部署 ROI 决定平台订单持续性。</dd></div>
+            <div><dt>瓶颈</dt><dd>客户 capex、订单/backlog、推理 ROI、监管与出口限制。</dd></div>
+            <div><dt>标的</dt><dd>NVDA、TSM、MU 和 ODM 全链路；Q1.2.1、Q3.1.1。</dd></div>
+            <div><dt>证据</dt><dd>SRC-NV-VERA-RUBIN-20260531；SRC-NV-VERA-CPU-20260531。</dd></div>
+          </dl>
+        </article>
+
+        <article class="chain-relation-card">
+          <div class="chain-relation-line">
+            <span class="chain-company">资本市场</span>
+            <span class="chain-arrow">→</span>
+            <span class="chain-company">NVDA / TSM / MU / ODM / AI PC 标的</span>
+          </div>
+          <p class="chain-relation-type">产业链事实通过估值、盈利上修和拥挤度重新定价</p>
+          <dl class="chain-relation-meta">
+            <div><dt>价值流</dt><dd>订单、毛利、出货和 capex 先改变预期，再影响胜率和赔率。</dd></div>
+            <div><dt>瓶颈</dt><dd>估值分位、一致预期、EPS revision 和风险溢价。</dd></div>
+            <div><dt>标的</dt><dd>Q3.2.1、Q4.2.1；最终观察清单。</dd></div>
+            <div><dt>证据</dt><dd>SRC-SA-NVDA-20260602；SRC-SA-TSM-20260602；SRC-SA-MU-20260602。</dd></div>
+          </dl>
+        </article></div>
+    </div>
     <div class="chain-map">
       <table class="chain-table">
         <thead>

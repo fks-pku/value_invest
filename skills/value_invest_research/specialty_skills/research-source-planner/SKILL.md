@@ -7,7 +7,7 @@ description: Use this skill after an investment QA tree exists and before readin
 
 This skill converts L3-L5 research units into concrete source plans. It is responsible for collecting the right information, not for final synthesis.
 
-Before L3-L5 source planning, make sure the run has a source plan for `产业链全景`. This plan should collect enough evidence to map upstream, midstream, downstream, key players, products/services, dependency links, value/profit flow, and candidate chokepoints. The chain map is a required public section and should be supported by primary/company/industry sources rather than unsupported background prose.
+Before L3-L5 source planning, make sure the run has a source plan for `产业链全景`. This plan should collect enough evidence to map upstream, midstream, downstream, key players, products/services, dependency links, company relationship edges, value/profit flow, and candidate chokepoints. Each material relationship edge should identify from, to, relationship, product/order/value flow, bottleneck, target mapping, and evidence. The chain map is a required public section and should be supported by primary/company/industry sources rather than unsupported background prose.
 
 ## Source Priority
 

@@ -80,20 +80,40 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
         self.assertIn("research_report_contract.md", framework)
 
         for phrase in [
-            "当前研究目标",
-            "产业链全景",
-            "问题下钻",
-            "最终标的推荐",
+            "当前研究的问题",
+            "行业概况",
+            "下钻 QA",
+            "标的推荐",
             "来源索引",
-            "supply-chain map",
+            "industry-overview-section",
+            "industry-module",
+            "details.industry-module",
+            "summary.module-head",
+            "module-index",
+            "industry-module-body",
             "upstream, midstream, downstream",
+            "产业链与生态位",
+            "行业空间",
+            "竞争格局与利润池",
+            "瓶颈点",
+            "关键变量与待验证数据",
             "chain-explain",
+            "chain-research-bridge",
+            "chain-node-lens",
             "chain-plain-summary",
-            "chain-flow-steps",
+            "chain-lane-map",
+            "chain-value-flow",
             "chain-layer-grid",
             "chain-layer-card",
+            "chain-relationship-graph",
+            "chain-stage-panel",
+            "chain-company-list",
+            "chain-company-card",
             "chain-chokepoints",
-            "chain-target-links",
+            "industry-space",
+            "industry-competition",
+            "industry-chokepoints",
+            "industry-key-variables",
             "L2 must not be a single catch-all wrapper",
             "research-type adapter",
             "domain playbook",
@@ -153,9 +173,10 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
             "qa-card level-4",
             "qa-card level-5",
             "Every `qa-card level-1` through `qa-card level-5`",
-            "Q4 remains inside `问题下钻`",
+            "details.industry-module",
+            "Q4 remains inside `下钻 QA`",
             "must never erase, replace, rename, or move Q4",
-            "one `target-section` with a dense `target-table`",
+            "one `target-section` with a `target-odds-model`, `target-odds-table`, and dense `target-table`",
             "one collapsed `source-collapse`",
             "duplicate the same child titles",
             "qa-card",
@@ -178,12 +199,12 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
         ]:
             with self.subTest(doc=doc_name):
                 self.assertIn("validation requirements", doc_text)
-                self.assertIn("产业链全景", doc_text)
+                self.assertIn("行业概况", doc_text)
                 self.assertIn("drops L3", doc_text)
-                self.assertIn("moves Q4 out of `问题下钻`", doc_text)
+                self.assertIn("moves Q4 out of `下钻 QA`", doc_text)
                 self.assertIn("duplicates child-question lists beside inline cards", doc_text)
                 self.assertIn("Four non-drift locks", doc_text)
-                self.assertIn("supply-chain map lock", doc_text)
+                self.assertIn("industry-overview lock", doc_text)
                 self.assertIn("supply-chain-panorama-explainer", doc_text)
                 self.assertIn("beginner-readable Chinese", doc_text)
                 self.assertIn("Additive-iteration lock", doc_text)
