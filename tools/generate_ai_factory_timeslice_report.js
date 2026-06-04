@@ -277,6 +277,81 @@ const chainNodeLenses = [
   ["反证触发", "哪些数据会证明瓶颈只是暂时的、低利润的，或已被供给扩张消化。"],
 ];
 
+const keyConstraintDefinition = {
+  theme: "AI 工厂不是单一 GPU 主题，而是一套把工作负载转成可上线数据中心能力的供给链。",
+  preciseConstraint: "当前约束集中在平台规格、HBM/先进封装、机柜级连接、电力液冷和系统交付利润质量；其中只有能把稀缺转成收入、毛利、现金流且未被估值充分反映的节点，才构成投资机会。",
+  whyNow: "截至研究截面，NVIDIA、Dell、Vertiv、Astera、Credo、Broadcom、Marvell、内存公司均已给出收入、订单、backlog 或高价值产品 mix 证据，说明需求已进入财务口径。",
+  scope: "本报告只评估 AI 工厂硬件和基础设施链条，不把纯软件应用、云厂自有股价表现或后续三个月价格 label 作为当时推荐依据。",
+  routeConflict: "平台一体化、开放 Ethernet/custom ASIC、HBM/先进封装、电力液冷、服务器集成和机柜级连接会争夺利润池；强主题不等于强赔率。",
+  adoptionHorizon: "回测截面只使用 2026-03-02 前可见证据。后续验证应按季度跟踪订单、毛利、capex、供给扩张和估值隐含预期。",
+};
+
+const technologyRouteMatrix = [
+  {
+    route: "封闭平台 / GPU 集群",
+    bestFit: "训练和高端推理的主线 AI 工厂平台。",
+    solves: "把算力、网络、软件栈和供应链资格统一成可部署系统。",
+    tradeoff: "客户依赖度高、估值预期高，且 custom ASIC 会分流部分增量。",
+    timing: "截面已财务化，主要看 Data Center 收入、毛利和客户 capex。",
+    beneficiaries: "NVDA、TSM、HBM 供应链、系统和电力液冷节点。",
+    refute: "客户 capex/ROI 转弱、毛利下行、出口限制或替代平台加速。",
+  },
+  {
+    route: "Custom ASIC / 开放 Ethernet",
+    bestFit: "云厂自研、规模化推理、成本/功耗优化场景。",
+    solves: "降低平台依赖，给 Broadcom、Marvell、Arista 等开放/定制路线带来利润池。",
+    tradeoff: "客户集中度高，项目量产节奏不透明，且仍依赖先进制造和 HBM。",
+    timing: "截面已有 AVGO/MRVL/ANET 财务证据，但仍需要客户数、订单和量产节点。",
+    beneficiaries: "AVGO、MRVL、ANET、TSM、HBM 供应商。",
+    refute: "项目延期、客户自研内化、NVIDIA 平台继续压制开放路线。",
+  },
+  {
+    route: "HBM / 先进封装供给路线",
+    bestFit: "所有高端 GPU/ASIC 平台的硬约束。",
+    solves: "决定 AI accelerator 供给斜率和高端内存利润池。",
+    tradeoff: "高利润会诱发扩产；普通 DRAM/NAND beta 不能等同于 HBM 稀缺。",
+    timing: "截面已出现 SK hynix、Micron、Samsung 的 AI memory 财务证据。",
+    beneficiaries: "SK hynix、Micron、Samsung、TSMC。",
+    refute: "HBM ASP 反转、客户资格变化、供给快速扩张、先进封装缓解。",
+  },
+  {
+    route: "机柜级连接 / AEC / 电光互联",
+    bestFit: "rack-scale AI server、低延迟高带宽互联和网络扩展。",
+    solves: "解决高速信号、功耗、延迟和机柜扩展瓶颈。",
+    tradeoff: "客户集中度和平台替代风险高，估值容易提前反映高增长。",
+    timing: "截面已有 ALAB/CRDO/MRVL 收入高增证据，仍需 design-in 和毛利验证。",
+    beneficiaries: "ALAB、CRDO、MRVL、AVGO、ANET。",
+    refute: "大客户订单延后、平台自有方案替代、ASP 或毛利下行。",
+  },
+  {
+    route: "电力 / 液冷 / 数据中心基础设施",
+    bestFit: "高功率机柜落地、AI 工厂上线和容量扩张。",
+    solves: "把 AI server backlog 变成可运行的数据中心能力。",
+    tradeoff: "订单强不代表利润强，项目毛利、交付能力和现金转化必须验证。",
+    timing: "截面已有 VRT orders/backlog 证据，是物理落地瓶颈。",
+    beneficiaries: "VRT、数据中心工程和电力热管理供应链。",
+    refute: "backlog 转收入质量差、液冷项目毛利低、客户 capex 下修。",
+  },
+];
+
+const componentValueChainRows = [
+  ["平台规格", "GPU/ASIC、软件栈、参考架构、供应链资格", "NVDA、AVGO", "云厂 capex 和 AI workload", "TSM/HBM/系统商/网络连接", "Data Center/AI revenue、毛利率、客户 capex", "Q1/Q2/Q4"],
+  ["先进制造与封装", "先进制程、先进封装、良率、量产交付", "TSM", "GPU/ASIC 设计和交付排期", "平台方和 AI accelerator 供应链", "advanced technology share、capex、gross margin", "Q2/Q3/Q4"],
+  ["高端内存", "HBM、server DRAM、enterprise SSD", "SK hynix、MU、Samsung", "平台 BOM 和客户资格", "GPU/ASIC 平台、系统商、云厂商", "HBM mix、ASP、operating margin、inventory", "Q2/Q3/Q4"],
+  ["机柜级连接", "retimer、AEC、optical/electro-optics、Ethernet switch", "ALAB、CRDO、MRVL、ANET、AVGO", "rack-scale 带宽、延迟、功耗和平台兼容", "服务器/机柜系统和云厂商", "revenue growth、客户集中、gross margin、design win", "Q2/Q3/Q4"],
+  ["系统交付", "AI server、rack、cluster、集成服务", "DELL、SMCI、HPE/ODM", "客户整机规格和交付时间表", "云厂商、AI labs、企业/主权 AI", "orders、shipments、backlog、margin、cash conversion", "Q1/Q2/Q4"],
+  ["电力液冷", "power、thermal、liquid cooling、UPS、现场工程", "VRT、数据中心工程商", "高功率机柜、热负载、电力容量", "数据中心运营方和 AI 工厂项目", "orders、backlog、project margin、cash conversion", "Q2/Q3/Q4"],
+  ["下游运营验证", "capex、利用率、cloud revenue、RPO/backlog、ROI", "云厂商、AI labs、企业/主权 AI", "终端模型训练/推理和企业应用需求", "全链条供给节点", "capex guidance、cloud revenue、FCF、AI ROI", "Q1/Q3"],
+];
+
+const bottleneckReleaseTimeline = [
+  ["平台供给", "GPU/ASIC 供给和平台标准控制", "Data Center 收入、毛利和客户 capex 同向验证", "季度财报和客户 capex 更新", "capex/ROI 下修或毛利无法支撑估值", "NVDA、AVGO、TSM、HBM 链"],
+  ["HBM/先进封装", "客户资格、良率、封装和产能扩张斜率", "HBM mix、ASP、产能/良率、advanced packaging capex", "季度价格、资格和扩产进展", "ASP 反转、供给快速扩张、资格变化", "SK hynix、MU、Samsung、TSM"],
+  ["机柜级连接", "rack-scale 信号完整性、低功耗、低延迟和 design-in", "ALAB/CRDO/MRVL 收入、毛利、客户集中、项目 ramp", "季度收入、design win 和客户集中披露", "大客户订单延迟、平台自有方案替代、毛利下行", "ALAB、CRDO、MRVL、ANET、AVGO"],
+  ["电力液冷", "高功率机柜电力和热管理现场交付", "VRT orders/backlog、液冷项目毛利、现金转化", "季度订单、backlog、项目毛利和交付周期", "backlog 低质量转化、取消率上升、客户 capex 放缓", "VRT"],
+  ["系统交付", "AI server backlog 转收入和现金流质量", "DELL/SMCI orders、shipments、margin、inventory、cash conversion", "季度 backlog、毛利和现金流披露", "订单增长但利润/现金流走弱或治理风险扩大", "DELL、SMCI、HPE/ODM"],
+];
+
 const chainValueCaptureMatrix = [
   {
     node: "平台与加速器",
@@ -434,6 +509,39 @@ const chainSankeyFlows = [
   },
 ];
 
+const chainSimpleFlowSteps = [
+  {
+    step: "1",
+    title: "云厂商有 AI 需求",
+    plain: "云厂商、AI labs 和企业要训练模型、跑推理和部署 agent，所以先决定要投入多少 capex。",
+    investment: "先看需求是否真实：云 capex、AI 收入、RPO/backlog 和客户 ROI。",
+  },
+  {
+    step: "2",
+    title: "需求变成 GPU / ASIC 订单",
+    plain: "AI 工作负载需要算力，订单先流向 GPU 平台和云厂自研 ASIC。",
+    investment: "对应 NVDA、AVGO 等平台/ASIC 节点，也会拉动后面的制造和内存。",
+  },
+  {
+    step: "3",
+    title: "GPU / ASIC 拉动制造和内存",
+    plain: "芯片要被生产出来，需要 TSMC 的先进制程/封装；芯片旁边还需要 HBM、server DRAM 和 eSSD。",
+    investment: "对应 TSMC、SK hynix、Micron、Samsung。这里通常是硬瓶颈。",
+  },
+  {
+    step: "4",
+    title: "芯片要被装成可上线系统",
+    plain: "系统交付就是把 GPU/ASIC、CPU、内存、存储、网卡、电源、散热和整机结构，组装成 AI server、机柜 rack 和集群，并交付到客户数据中心。",
+    investment: "对应 DELL、SMCI、HPE/ODM。订单强不够，还要看毛利、交付和现金流。",
+  },
+  {
+    step: "5",
+    title: "机柜上线还需要电力、液冷和网络",
+    plain: "高功率机柜不能只买服务器，还要电力容量、UPS、液冷、热管理、机柜级连接、交换机和光/电互联，才能真正跑起来。",
+    investment: "对应 VRT、ALAB、CRDO、MRVL、ANET、AVGO 等。最后用利用率、云收入和 ROI 反向验证。",
+  },
+];
+
 const chainChokepointScores = [
   chokepointScore("NVDA 平台控制", "GPU / 软件栈 / 网络平台", "NVDA", [5, 5, 5, 5, 2, 3], "最强稀缺性，但未定价证据不足，Q4 仍需估值闸门。", "Q2.1 / Q4.1"),
   chokepointScore("HBM 与高端内存", "HBM / server DRAM / eSSD", "SK hynix、MU、Samsung", [5, 4, 4, 5, 3, 3], "硬瓶颈明确，关键反证是 ASP、资格和供给扩张。", "Q2.1.2 / Q3.2"),
@@ -445,13 +553,9 @@ const chainChokepointScores = [
 ];
 
 const chainRows = [
-  ["上游", "计算平台 / GPU / ASIC", "云厂商和 AI labs 的训练、推理、capex 与规格", "先进制程、HBM、封装、网络生态", "GPU/ASIC、软件栈、平台标准", "NVDA、AVGO、AMD/ASIC 生态", "Data Center/AI revenue、gross margin、客户 capex、订单/供给约束", "平台控制强，但估值可能提前反映", "Q2.1 / Q4"],
-  ["上游", "先进制造 / 封装", "GPU/ASIC 设计和先进封装订单", "设备、材料、良率、capex 和产能", "先进制程、先进封装、量产交付", "TSMC", "HPC/AI mix、gross margin、advanced technology share、capex", "硬瓶颈强，但资本开支和地缘风险需要折价", "Q2.1 / Q3.1"],
-  ["上游", "HBM / 高端内存 / eSSD", "GPU/ASIC 平台规格、客户资格和云端内存需求", "DRAM/NAND wafer、封装、良率、扩产资本开支", "HBM、server DRAM、enterprise SSD", "SK hynix、Micron、Samsung", "HBM mix、ASP、memory margin、inventory、capex、客户资格", "硬瓶颈强，但供给扩张和价格周期是反证", "Q2.1 / Q3.2"],
-  ["上游", "网络连接 / 电光互联", "AI rack 带宽、延迟、功耗和平台兼容需求", "设计导入、封测、switch silicon、光电生态", "retimer、AEC、optical interconnect、Ethernet switch、custom silicon", "ALAB、CRDO、MRVL、ANET、AVGO", "Revenue growth、gross margin、客户集中、design win/ramp", "弹性大，但客户集中和平台替代风险高", "Q2.2 / Q4"],
-  ["中游", "服务器 / 机柜 / 集群交付", "云厂商和企业客户的整机规格、订单和交付时间表", "GPU/ASIC、CPU、内存、网络、存储和电力冷却部件", "AI server、rack、cluster、集成交付", "DELL、SMCI、HPE、ODM", "AI server orders、shipments、backlog、operating margin、cash conversion", "订单可验证，利润率和现金转化决定价值捕获", "Q2.2 / Q4"],
-  ["中游", "电力 / 液冷 / 数据中心基础设施", "高功率机柜、热负载、液冷、电力容量和工程需求", "电力设备、热管理方案、工程交付能力", "power、thermal、liquid cooling、UPS、现场交付", "VRT、数据中心工程商", "Organic orders、backlog、organic growth、margin、cash conversion", "强物理瓶颈，关键看 backlog 质量和交付毛利", "Q2.2 / Q4"],
-  ["下游", "云厂商 / AI labs / 企业 / 主权 AI", "终端 workload、业务流程、模型训练/推理和安全合规需求", "AI server、rack、cluster、云服务和本地交付能力", "capex、订单、利用率、云收入、RPO/backlog、ROI 信号", "Hyperscaler、AI labs、企业、主权 AI", "Capex guidance、cloud revenue、RPO/backlog、FCF、AI ROI", "需求真实性最终验证方，capex/ROI 下修会压低全链条评分", "Q1 / Q3"],
+  ["上游：核心供给", "决定 AI 工厂能不能拿到算力、内存、制造、封装和高速连接等关键输入。", "GPU/ASIC 平台、先进制造与封装、HBM/高端内存、机柜级连接。", "稀缺性最强，但估值、扩产和技术替代反证也最重要。", "Q1 / Q2 / Q3 / Q4"],
+  ["中游：系统落地", "把上游芯片、内存、网络、电力和冷却能力集成为可上线服务器、机柜、集群和数据中心基础设施。", "AI server / rack / cluster 系统交付，电力、液冷和现场工程。", "订单可见度强，但真正价值捕获取决于毛利、交付质量和现金流。", "Q2.2 / Q3 / Q4"],
+  ["下游：需求运营", "提出 AI 工作负载和 capex，接收中游交付，并用使用率、云收入、RPO/backlog、FCF 和 ROI 反向验证需求。", "云厂商、AI labs、企业 AI、主权 AI 和数据中心运营方。", "它决定全链条需求是否持续；capex/ROI 下修会先压低高估值和高客户集中标的。", "Q1 / Q3"],
 ];
 
 const l1s = [
@@ -547,6 +651,140 @@ const q1DemandSpaceModel = [
   },
 ];
 
+const industrySpaceConclusion = {
+  judgment: "截至 2026-03-02，AI 工厂的行业空间不能只用当前收入或订单锚点描述。更合理的判断是：未来 12-36 个月，空间来自 AI 工作负载继续增长后，对整套 BOM 的同步拉动，包括计算加速器、HBM/高端内存、先进制造/封装、服务器/rack、网络互联、电力液冷和配套存储。当前锚点证明需求已经财务化，未来空间则取决于这些 BOM 环节能否继续被平台规格、客户 capex 和物理交付节奏放大。",
+  anchor: "当前截面锚点只作为证据：NVIDIA Data Center Q4 FY26 revenue $62.3B；Dell FY26 AI-optimized server orders >$64B、backlog $43B；Vertiv backlog $15.0B；TSMC 2026 capex guidance $52B-$56B。",
+  futureSpace: "基准判断：未来空间仍处扩张段，但不是无约束扩张。最有空间弹性的 BOM 环节是高算力平台、HBM/先进封装、机柜级网络互联和电力液冷；服务器组装和普通硬件环节需要用毛利、现金流和 backlog 转化质量过滤。",
+  uncertainty: "最大不确定性是客户 ROI、capex 持续性、backlog 转收入质量、HBM/先进封装供给扩张，以及高功率机柜能否按期落地。",
+  boundary: "本模块只做行业空间测算，不回答竞争格局、利润池归属、标的估值或最终推荐；这些分别进入后续行业概况模块、Q2/Q3 和标的推荐。",
+};
+
+const industrySpaceBoundary = [
+  ["纳入口径", "AI 计算平台、AI server/rack、HBM/高端内存、先进制程/封装、连接网络、电力液冷和数据中心基础设施交付。"],
+  ["排除口径", "不把应用软件收入、普通企业 IT 更新、非 AI 数据中心维护性 capex、竞争份额和标的估值放进本模块。"],
+  ["时间口径", `以 ${AS_OF_DATE} 前公开材料为截面，判断未来 12-36 个月的 BOM 扩张空间，不使用后验股价表现。`],
+  ["测算方法", "当前收入、订单、backlog、capex 指引只是证据锚点；核心是拆 BOM、找扩张机制、判断上限约束，并给出需要继续验证的数据。"],
+];
+
+const industrySpaceDriverTree = [
+  {
+    layer: "1. 需求源头",
+    driver: "训练、推理、agent、主权 AI、企业 AI 工作负载增长",
+    measurable: "云厂商 capex、AI cloud revenue、RPO/backlog、客户 ROI、GPU/ASIC 订单",
+    output: "形成 AI 工厂预算和计算平台需求",
+  },
+  {
+    layer: "2. BOM 放大",
+    driver: "每代 GPU/ASIC 提高 HBM 容量、先进封装复杂度、网络速度、机柜功率和散热要求",
+    measurable: "HBM mix、先进制程/封装占比、retimer/AEC/交换机收入、单机柜功率、液冷渗透",
+    output: "把同一份算力需求放大为更多 BOM 子系统价值量",
+  },
+  {
+    layer: "3. 物理交付",
+    driver: "服务器、机柜、电力、液冷、网络和数据中心工程把订单变成上线产能",
+    measurable: "AI server shipments/backlog、Vertiv orders/backlog、交付周期、毛利和现金流",
+    output: "决定行业空间能否从订单转成收入和可持续扩容",
+  },
+];
+
+const industrySpaceScenarioRows = [
+  {
+    scenario: "Bear / 空间兑现不足",
+    futureSpace: "未来空间从扩张转为消化既有订单，BOM 价值量仍存在，但新增订单斜率明显放缓。",
+    keyAssumptions: "客户 AI ROI 低于预期，云厂商 capex 下修；GPU/ASIC 供给改善但需求不继续上修；HBM/DRAM 或系统交付价格开始承压。",
+    expansionPath: "收入主要来自 backlog 转化和已规划数据中心建设，新增 BOM 拉动有限。",
+    upperBound: "capex ROI、项目融资、电力接入、库存和价格下行。",
+    watchData: "云厂商 capex 指引、AI cloud revenue、DELL/VRT backlog conversion、HBM ASP 和库存。",
+  },
+  {
+    scenario: "Base / 分层扩张",
+    futureSpace: "未来空间继续扩张，但集中在能被平台规格和物理瓶颈持续放大的 BOM 环节：HBM/先进封装、机柜级网络、电力液冷和高端系统交付。",
+    keyAssumptions: "训练和推理工作负载继续增长；backlog 能转收入；每代平台提高内存、带宽、功率和散热需求；客户 ROI 没有明显恶化。",
+    expansionPath: "GPU/ASIC 需求 -> HBM/先进制造/封装 -> rack/server -> 网络互联 -> 电力液冷 -> 数据中心上线。",
+    upperBound: "先进封装/HBM 产能、高功率机柜交付、客户预算和供给扩张后的价格压力。",
+    watchData: "NVIDIA/ASIC 订单、TSMC capex 和先进封装产能、HBM mix、AI server backlog、液冷订单。",
+  },
+  {
+    scenario: "Bull / BOM 价值量继续上修",
+    futureSpace: "未来空间可能继续超预期，表现为单柜功率、单卡内存、集群网络复杂度和液冷渗透同步上修，AI 工厂从训练扩展到推理和主权 AI 建设。",
+    keyAssumptions: "推理/agent 工作负载带来持续新增算力；主权 AI 和企业 AI 加速；电力液冷和先进封装扩产跟上；客户 ROI 被云收入或效率提升验证。",
+    expansionPath: "新增需求不仅增加 GPU/ASIC 数量，还提高每个 rack 的 HBM、网络、供电、热管理和系统集成价值量。",
+    upperBound: "电力瓶颈、供应商扩产速度、客户集中度、监管和估值透支。",
+    watchData: "推理收入、AI cloud backlog、sovereign AI 订单、rack-scale networking revenue、液冷渗透率。",
+  },
+];
+
+const industrySpaceSizingRows = [
+  {
+    segment: "计算加速器 / GPU / ASIC",
+    futureSpace: "仍是最大 BOM 空间入口，但未来增量不能只看 GPU 数量，还要看 custom ASIC、平台升级和推理负载是否扩大总算力预算。",
+    currentEvidence: "NVIDIA Q4 FY26 Data Center revenue $62.3B，管理层使用 AI factories 口径。",
+    expansionMechanism: "训练/推理工作负载增长、客户 capex、平台迭代、GPU/ASIC 供给改善。",
+    upperBound: "客户 ROI、ASIC 替代、出口限制、供给释放后的价格和毛利压力。",
+    confidence: "高",
+    sourceIds: ["SRC-NVDA-FY26-Q4"],
+    nextData: "云厂商 capex、AI cloud revenue、RPO/backlog、推理收入和 FCF。",
+  },
+  {
+    segment: "服务器 / rack 系统交付",
+    futureSpace: "空间取决于 AI 加速器能否变成可上线系统。当前 backlog 大，未来关键是订单转收入、转毛利和转现金流。",
+    currentEvidence: "Dell FY26 AI-optimized server orders >$64B、shipped >$25B、backlog $43B。",
+    expansionMechanism: "机柜级部署、GPU/ASIC 可得性、企业/云客户交付周期、rack-scale 方案升级。",
+    upperBound: "backlog 取消、交付延迟、低毛利系统集成、客户集中。",
+    confidence: "高",
+    sourceIds: ["SRC-DELL-FY26-Q4"],
+    nextData: "AI server revenue、backlog conversion、取消率、交付周期。",
+  },
+  {
+    segment: "电力 / 液冷 / 数据中心基础设施",
+    futureSpace: "未来空间由高功率机柜密度和液冷渗透率决定，是 AI 工厂扩容能否落地的物理约束型 BOM。",
+    currentEvidence: "Vertiv Q4 2025 organic orders +252% YoY，backlog $15.0B。",
+    expansionMechanism: "机柜功率密度提升、液冷渗透、数据中心改造和新建。",
+    upperBound: "项目交付能力、工程毛利、营运资金、电力接入和客户建设节奏。",
+    confidence: "中高",
+    sourceIds: ["SRC-VRT-Q4-2025"],
+    nextData: "液冷订单、项目毛利、交付周期、营运资金和现金流。",
+  },
+  {
+    segment: "先进制程 / 先进封装",
+    futureSpace: "未来空间来自 GPU/ASIC 和 HBM 共同推高先进节点与封装复杂度；这是算力需求转成可制造供给的核心 BOM 约束。",
+    currentEvidence: "TSMC Q4 2025 revenue $33.73B，advanced technologies 77% of wafer revenue，2026 capex guidance $52B-$56B。",
+    expansionMechanism: "GPU/ASIC 订单、先进封装能力、良率提升、产能扩张。",
+    upperBound: "capex 执行、良率、地缘政治、客户订单节奏和封装产能释放。",
+    confidence: "中高",
+    sourceIds: ["SRC-TSM-Q4-2025"],
+    nextData: "advanced packaging capacity、HPC/AI mix、capex 执行、良率。",
+  },
+  {
+    segment: "HBM / 高端内存 / eSSD",
+    futureSpace: "未来空间来自每颗 GPU/ASIC 的 HBM 容量和带宽提升，以及 AI server 对高端 DRAM/eSSD 的配套需求。",
+    currentEvidence: "SK hynix FY2025 revenue KRW97.1467T、operating margin 49%；Micron 和 Samsung 均披露 AI memory/HBM 相关强需求。",
+    expansionMechanism: "单卡 HBM 容量提升、HBM4 ramp、server DRAM/eSSD mix 上移。",
+    upperBound: "供应商扩产、ASP 反转、客户资格认证、库存和内存周期。",
+    confidence: "中高",
+    sourceIds: ["SRC-SKHYNIX-FY25", "SRC-MU-FY26-Q1", "SRC-SAMSUNG-FY25"],
+    nextData: "HBM ASP、客户资格、HBM4 ramp、server DRAM/eSSD mix、库存。",
+  },
+  {
+    segment: "连接网络 / AI networking",
+    futureSpace: "未来空间来自集群规模扩大后，rack 内和 rack 间的低延迟、高带宽、低功耗连接需求上升。",
+    currentEvidence: "Broadcom Q1 FY26 AI semiconductor revenue expected $8.2B；Astera Q4 revenue $270.6M +92%；Credo FY26 Q3 revenue $407.0M +200%；Arista FY2025 revenue $9.006B +28.6%。",
+    expansionMechanism: "集群规模、机柜间带宽、retimer/AEC、Ethernet/光互联升级。",
+    upperBound: "客户集中、平台自研、价格压力、技术路线切换。",
+    confidence: "中",
+    sourceIds: ["SRC-AVGO-FY25-Q4", "SRC-ALAB-Q4-2025", "SRC-CRDO-FY26-Q3", "SRC-ANET-Q4-2025"],
+    nextData: "AI networking revenue、design win、客户集中度、订单和毛利率。",
+  },
+];
+
+const industrySpaceValidationRows = [
+  ["客户需求", "云厂商 capex、AI cloud revenue、RPO/backlog、FCF", "证明 AI 工厂支出能带来收入或效率回报", "capex 继续增长但云收入/FCF 不跟随"],
+  ["系统交付", "AI server shipments、backlog conversion、取消率", "证明订单能转成上线产能", "backlog 增长但交付延迟或取消率上升"],
+  ["物理基础设施", "液冷订单、power/thermal backlog、项目毛利", "证明高功率机柜真实落地", "订单转收入但毛利和现金流恶化"],
+  ["制造和内存", "advanced packaging capacity、HBM ASP、HBM mix、库存", "证明供给扩张没有迅速压垮价格", "HBM/DRAM ASP 回落、库存上升"],
+  ["连接网络", "AI networking revenue、AEC/retimer design win、交换机订单", "证明大集群带来可持续连接需求", "收入增长依赖少数客户且后续订单放缓"],
+];
+
 const leaves = [
   leaf("Q1.1.1", "Q1.1", "需求是否已经进入 NVIDIA 数据中心收入和 AI 工厂表述？", "financial-statement-analysis", "evidence_quality", "决定 AI 工厂是否可以作为真实产业需求，而不是概念词。", ["SRC-NVDA-FY26-Q4"], "NVIDIA Q4 FY26 revenue was $68.1B and Data Center revenue was $62.3B; management explicitly described customers investing in AI compute factories.", "AI 工厂已经进入 NVIDIA 的收入和管理层口径，说明需求具备财务基础。", "Q1 可以确认需求真实，但 NVDA 本身估值要单独测试。", "缺少客户 ROI 和订单拆分。", "若客户 capex 或数据中心收入增速放缓，降低 future_space。", artifact("NVIDIA 需求证据", ["口径", "数据", "含义"], [["收入", "Q4 FY26 $68.1B", "需求规模已财务化"], ["数据中心", "$62.3B", "AI 工厂主收入池"], ["管理层表述", "AI factories", "产业链研究成立"], ["风险", "China/ROI/毛利", "不能直接推出低估"]])),
   leaf("Q1.1.2", "Q1.1", "AI 工厂是否已经进入系统和物理基础设施订单？", "financial-statement-analysis", "evidence_quality", "判断 DELL/VRT 等非芯片环节是否可进入观察池。", ["SRC-DELL-FY26-Q4", "SRC-VRT-Q4-2025"], "Dell disclosed more than $64B AI-optimized server orders and $43B backlog; Vertiv organic orders rose 252% YoY and backlog reached $15.0B.", "AI 工厂需求已经传导到服务器和电力冷却，说明非芯片环节不是纯配套。", "VRT/DELL 可进入 Q4 观察池，SMCI 需因执行风险更保守。", "缺少 backlog 毛利、取消率和客户集中度。", "若 backlog 转收入但毛利下降，则降低 risk_control。", artifact("订单传导", ["公司", "截面证据", "投资含义"], [["DELL", "$64B AI server orders / $43B backlog", "系统交付弹性强"], ["VRT", "orders +252% / backlog $15B", "电力液冷是硬瓶颈"], ["SMCI", "AI server exposure", "执行和治理风险压分"]])),
@@ -618,6 +856,15 @@ const targets = rankTargets([
   target("SMCI", "Supermicro", "USA", "AI server 组装", [2.75, 3.75, 3.25, 2.65, 2.10, 3.00, 4.10], ["SRC-SMCI-FY26-Q2"], "AI server 主题弹性大，但执行、治理和毛利风险使风险控制不足。", "margin、cash conversion、governance", "治理风险或毛利恶化", "no_action"),
 ]);
 
+const targetProfitBridgeRows = [
+  ["VRT", "电力/液冷 backlog", "AI 工厂高功率机柜 -> 电力、热管理、液冷项目", "orders/backlog 转收入", "项目毛利、交付周期、现金转化", "backlog 转化低质量或客户 capex 下修", "actionable_long"],
+  ["000660.KS", "HBM / 高端内存", "GPU/ASIC 平台规格 -> HBM 客户资格和高价值 mix", "HBM mix、ASP、operating margin", "HBM4 ramp、ASP、客户资格、扩产节奏", "ASP 反转或供给快速扩张", "actionable_long"],
+  ["NVDA", "平台控制", "AI workload -> GPU 平台、网络、软件生态和供应链资格", "Data Center revenue、gross margin", "客户 capex、推理收入、毛利率、隐含增长", "capex ROI 下降或估值已充分反映", "watch_only"],
+  ["TSM", "先进制程/封装", "GPU/ASIC 设计 -> 先进节点和先进封装订单", "HPC/AI mix、gross margin、capex 回报", "advanced packaging capacity、capex、地缘风险", "先进封装供给缓解或地缘风险上升", "watch_only"],
+  ["ALAB/CRDO/MRVL", "连接高弹性", "rack-scale 带宽需求 -> retimer/AEC/electro-optics/custom silicon", "收入增长、gross margin、design-in", "客户集中、项目 ramp、平台替代", "大客户延迟或毛利下行", "watch_only"],
+  ["DELL/SMCI", "系统交付", "AI server/rack 订单 -> backlog、发货和集成交付", "shipments、operating margin、cash conversion", "AI server 毛利、库存、现金流、治理", "订单强但利润和现金流弱", "watch_only / no_action"],
+];
+
 function main() {
   fs.mkdirSync(OUT_DIR, { recursive: true });
   const qaTree = buildQaTree();
@@ -638,6 +885,7 @@ function main() {
     run_mode: "historical_backtest",
     as_of_date: AS_OF_DATE,
     evaluation_date: EVALUATION_DATE,
+    constraint_definition: keyConstraintDefinition,
     supply_chain_explainer: chainExplainer,
     supply_chain_research_bridge: chainResearchBridge,
     supply_chain_node_lenses: chainNodeLenses,
@@ -646,10 +894,20 @@ function main() {
     supply_chain_data_gaps: chainDataGaps,
     supply_chain_network: chainNetwork,
     supply_chain_sankey: chainSankeyFlows,
+    technology_route_matrix: technologyRouteMatrix,
+    component_value_chain: componentValueChainRows,
     supply_chain_chokepoint_heatmap: chainChokepointScores,
+    bottleneck_release_timeline: bottleneckReleaseTimeline,
     supply_chain_map: chainRows,
     q2_competition_landscape: q2CompetitionLandscape,
     q1_demand_space_model: q1DemandSpaceModel,
+    industry_space_conclusion: industrySpaceConclusion,
+    industry_space_boundary: industrySpaceBoundary,
+    industry_space_driver_tree: industrySpaceDriverTree,
+    industry_space_scenario_rows: industrySpaceScenarioRows,
+    industry_space_sizing_rows: industrySpaceSizingRows,
+    industry_space_validation_rows: industrySpaceValidationRows,
+    target_profit_bridge: targetProfitBridgeRows,
     target_odds_models: targets.map((target) => ({ ticker: target.ticker, name: target.name, ...target.odds_model })),
     source_extractions: extractions,
     leaf_source_reviews: reviews,
@@ -1188,7 +1446,23 @@ function renderGoal() {
     <div class="metric"><span>信息截面</span><strong>${AS_OF_DATE}</strong></div>
     <div class="metric"><span>评估日期</span><strong>${EVALUATION_DATE}</strong></div>
   </div>
-  <div class="artifact-card"><div class="artifact-title">当前结论</div>在截面前，AI 工厂已经从 NVIDIA 平台收入传导到服务器 backlog、电力液冷订单、HBM/先进制造和连接芯片收入。最接近“当前未被市场充分定价的巨大机会”的方向是电力液冷和 HBM 硬瓶颈，但多数标的仍需要估值和风险闸门控制。</div></div>`;
+  <div class="artifact-card"><div class="artifact-title">当前结论</div>在截面前，AI 工厂已经从 NVIDIA 平台收入传导到服务器 backlog、电力液冷订单、HBM/先进制造和连接芯片收入。最接近“当前未被市场充分定价的巨大机会”的方向是电力液冷和 HBM 硬瓶颈，但多数标的仍需要估值和风险闸门控制。</div>
+  ${renderConstraintDefinition()}</div>`;
+}
+
+function renderConstraintDefinition() {
+  const items = [
+    ["主题边界", keyConstraintDefinition.theme],
+    ["精确定义", keyConstraintDefinition.preciseConstraint],
+    ["为什么现在", keyConstraintDefinition.whyNow],
+    ["研究范围", keyConstraintDefinition.scope],
+    ["路线冲突", keyConstraintDefinition.routeConflict],
+    ["验证周期", keyConstraintDefinition.adoptionHorizon],
+  ].map((row) => `<article><span>${esc(row[0])}</span><p>${esc(row[1])}</p></article>`).join("");
+  return `<div class="constraint-definition">
+    <div class="artifact-title">关键约束定义：先定义瓶颈，再谈标的</div>
+    <div class="constraint-grid">${items}</div>
+  </div>`;
 }
 
 function renderIndustryOverview() {
@@ -1202,17 +1476,10 @@ function renderIndustryOverview() {
 }
 
 function renderSupplyChain() {
-  const rows = chainRows.map((row) => `<tr>${row.map((cell) => `<td>${esc(cell)}</td>`).join("")}</tr>`).join("");
   return `<details class="industry-module supply-chain-section">
     <summary class="module-head"><span class="module-index">01</span><div><h3>产业链与生态位</h3><p>先看清楚谁提供什么、谁依赖谁、订单和利润沿什么路径流动，后面的 QA 才不是凭空提问。</p></div><span class="chevron">›</span></summary>
     <div class="industry-module-body">
     ${renderChainExplain()}
-    <details class="chain-map">
-      <summary>展开结构化链条表 <span class="chevron">›</span></summary>
-      <table class="chain-table">
-      <thead><tr><th>上/中/下游</th><th>链条节点</th><th>需求输入</th><th>供给输入</th><th>自身生产/提供</th><th>主要玩家</th><th>财务验证指标</th><th>价值/瓶颈判断</th><th>QA 链接</th></tr></thead>
-      <tbody>${rows}</tbody>
-    </table></details>
     </div>
   </details>`;
 }
@@ -1221,11 +1488,17 @@ function renderChainExplain() {
   return `<div class="chain-explain">
     ${renderChainResearchBridge()}
     <p class="chain-plain-summary">${esc(chainExplainer.plainSummary)}</p>
-    <div class="overview-subtitle">泳道图</div>
-    ${renderLaneMap()}
-    <div class="overview-subtitle">价值流</div>
-    ${renderValueFlowMap()}
+    ${renderChainDetailPanel("泳道图", "按上游 / 中游 / 下游看生态位、公司关系和依赖方向。", renderLaneMap(), "chain-lane-panel")}
+    ${renderChainDetailPanel("价值流", "用白话步骤解释需求如何变成订单、系统交付、收入和利润验证。", renderValueFlowMap(), "chain-value-panel")}
+    ${renderChainDetailPanel("BOM / 组件级链条", "把系统拆成子系统、组件、关键公司、输入输出和财务验证指标。", renderComponentValueChain(), "chain-component-panel")}
   </div>`;
+}
+
+function renderChainDetailPanel(title, description, body, extraClass = "") {
+  return `<details class="chain-detail-panel ${extraClass}">
+    <summary><span>${esc(title)}</span><small>${esc(description)}</small><span class="chevron">›</span></summary>
+    <div class="chain-detail-body">${body}</div>
+  </details>`;
 }
 
 function renderChainResearchBridge() {
@@ -1240,22 +1513,96 @@ function renderChainResearchBridge() {
 }
 
 function renderIndustrySpace() {
-  const rows = q1DemandSpaceModel.map((item) => `<tr>
-    <td><strong>${esc(item.path)}</strong></td>
-    <td>${esc(item.visibleEvidence)}</td>
-    <td>${esc(item.futureSpaceRead)}</td>
-    <td>${esc(item.revenueBridge)}</td>
-    <td>${esc(item.openQuestion)}</td>
-  </tr>`).join("");
   return `<details class="industry-module industry-space">
-    <summary class="module-head"><span class="module-index">02</span><div><h3>行业空间</h3><p>行业空间不直接等于投资机会。这里先拆需求来源、未来空间、收入/利润传导和还要验证的数据。</p></div><span class="chevron">›</span></summary>
+    <summary class="module-head"><span class="module-index">02</span><div><h3>行业空间</h3><p>只回答未来空间：用当前截面锚点做证据，按 BOM 子系统判断未来 12-36 个月空间、约束和验证数据。</p></div><span class="chevron">›</span></summary>
     <div class="industry-module-body">
-    <div class="table-scroll"><table>
-      <thead><tr><th>空间来源</th><th>截面可见证据</th><th>未来空间判断</th><th>收入/利润传导</th><th>继续下钻</th></tr></thead>
-      <tbody>${rows}</tbody>
-    </table></div>
+    <div class="industry-space-summary">
+      <p>${esc(industrySpaceConclusion.judgment)}</p>
+      <div class="space-summary-grid">
+        <article><span>未来空间结论</span><strong>${esc(industrySpaceConclusion.futureSpace)}</strong></article>
+        <article><span>截面证据锚点</span><strong>${esc(industrySpaceConclusion.anchor)}</strong></article>
+        <article><span>最大不确定性</span><strong>${esc(industrySpaceConclusion.uncertainty)}</strong></article>
+        <article><span>本模块边界</span><strong>${esc(industrySpaceConclusion.boundary)}</strong></article>
+      </div>
+    </div>
+    ${renderSpaceDetailPanel("测算边界", "先限定哪些支出算 AI 工厂空间，哪些不在这里讨论。", renderSpaceBoundary(), "space-boundary-panel")}
+    ${renderSpaceDetailPanel("需求驱动树", "把工作负载、BOM 放大和物理交付拆成可观测驱动。", renderSpaceDriverTree(), "space-driver-panel")}
+    ${renderSpaceDetailPanel("情景判断", "用 Bear/Base/Bull 判断未来空间的上修或降级路径。", renderSpaceScenarioTable(), "space-scenario-panel")}
+    ${renderSpaceDetailPanel("BOM 未来空间表", "按 BOM 子系统判断未来空间、扩张机制、上限约束和验证数据；当前锚点只作为证据。", renderSpaceSizingTable(), "space-sizing-panel")}
+    ${renderSpaceDetailPanel("后续验证数据", "列出能强化或削弱空间测算的关键数据，不进入竞争格局判断。", renderSpaceValidationTable(), "space-validation-panel")}
     </div>
   </details>`;
+}
+
+function renderSpaceDetailPanel(title, description, body, extraClass = "") {
+  return `<details class="space-detail-panel ${extraClass}">
+    <summary><span>${esc(title)}</span><small>${esc(description)}</small><span class="chevron">›</span></summary>
+    <div class="space-detail-body">${body}</div>
+  </details>`;
+}
+
+function renderSpaceBoundary() {
+  const cards = industrySpaceBoundary.map(([label, text]) => `<article>
+    <span>${esc(label)}</span>
+    <p>${esc(text)}</p>
+  </article>`).join("");
+  return `<div class="space-boundary-grid">${cards}</div>`;
+}
+
+function renderSpaceDriverTree() {
+  const cards = industrySpaceDriverTree.map((item) => `<article class="space-driver-card">
+    <span>${esc(item.layer)}</span>
+    <b>${esc(item.driver)}</b>
+    <dl>
+      <div><dt>可观测指标</dt><dd>${esc(item.measurable)}</dd></div>
+      <div><dt>空间输出</dt><dd>${esc(item.output)}</dd></div>
+    </dl>
+  </article>`).join("");
+  return `<div class="space-driver-tree">${cards}</div>`;
+}
+
+function renderSpaceSizingTable() {
+  const rows = industrySpaceSizingRows.map((item) => `<tr>
+    <td><strong>${esc(item.segment)}</strong></td>
+    <td>${esc(item.futureSpace)}</td>
+    <td>${esc(item.currentEvidence)}</td>
+    <td>${esc(item.expansionMechanism)}</td>
+    <td>${esc(item.upperBound)}</td>
+    <td>${esc(item.confidence)}</td>
+    <td>${renderSourceChips(item.sourceIds)}</td>
+    <td>${esc(item.nextData)}</td>
+  </tr>`).join("");
+  return `<div class="space-sizing-table table-scroll"><table>
+    <thead><tr><th>BOM 子系统</th><th>未来空间判断</th><th>当前截面证据</th><th>扩张机制</th><th>空间上限 / 约束</th><th>可信度</th><th>来源</th><th>下一步数据</th></tr></thead>
+    <tbody>${rows}</tbody>
+  </table></div>`;
+}
+
+function renderSpaceScenarioTable() {
+  const rows = industrySpaceScenarioRows.map((item) => `<tr>
+    <td><strong>${esc(item.scenario)}</strong></td>
+    <td>${esc(item.futureSpace)}</td>
+    <td>${esc(item.keyAssumptions)}</td>
+    <td>${esc(item.expansionPath)}</td>
+    <td>${esc(item.upperBound)}</td>
+    <td>${esc(item.watchData)}</td>
+  </tr>`).join("");
+  return `<div class="space-scenario-table table-scroll"><table>
+    <thead><tr><th>情景</th><th>未来空间判断</th><th>关键假设</th><th>扩张路径</th><th>空间上限 / 削弱条件</th><th>后续验证数据</th></tr></thead>
+    <tbody>${rows}</tbody>
+  </table></div>`;
+}
+
+function renderSpaceValidationTable() {
+  const rows = industrySpaceValidationRows.map((row) => `<tr>${row.map((cell) => `<td>${esc(cell)}</td>`).join("")}</tr>`).join("");
+  return `<div class="space-validation-table table-scroll"><table>
+    <thead><tr><th>验证对象</th><th>跟踪数据</th><th>说明什么</th><th>削弱信号</th></tr></thead>
+    <tbody>${rows}</tbody>
+  </table></div>`;
+}
+
+function renderSourceChips(sourceIds) {
+  return `<div class="source-chips">${sourceIds.map((sourceId) => `<a class="source-chip" href="${esc(byId(sourceId).url)}">${esc(sourceId)}</a>`).join("")}</div>`;
 }
 
 function renderCompetitionProfitPool() {
@@ -1270,6 +1617,7 @@ function renderCompetitionProfitPool() {
   return `<details class="industry-module industry-competition">
     <summary class="module-head"><span class="module-index">03</span><div><h3>竞争格局与利润池</h3><p>先判断谁和谁竞争、客户能否替代、供给能否扩张，再判断利润池会留在哪些节点。</p></div><span class="chevron">›</span></summary>
     <div class="industry-module-body">
+    ${renderTechnologyRouteMatrix()}
     <div class="table-scroll"><table>
       <thead><tr><th>节点</th><th>竞争格局</th><th>Chokepoint 初判</th><th>利润池/标的含义</th><th>主要反证</th><th>后续 QA</th></tr></thead>
       <tbody>${rows}</tbody>
@@ -1294,8 +1642,50 @@ function renderIndustryChokepoints() {
       <thead><tr><th>节点</th><th>控制者</th>${dimensions.map((dimension) => `<th>${esc(dimension)}</th>`).join("")}<th>当前判断</th><th>QA</th></tr></thead>
       <tbody>${rows}</tbody>
     </table></div>
+    ${renderBottleneckReleaseTimeline()}
     </div>
   </details>`;
+}
+
+function renderTechnologyRouteMatrix() {
+  const rows = technologyRouteMatrix.map((item) => `<tr>
+    <td><strong>${esc(item.route)}</strong></td>
+    <td>${esc(item.bestFit)}</td>
+    <td>${esc(item.solves)}</td>
+    <td>${esc(item.tradeoff)}</td>
+    <td>${esc(item.timing)}</td>
+    <td>${esc(item.beneficiaries)}</td>
+    <td>${esc(item.refute)}</td>
+  </tr>`).join("");
+  return `<div class="technology-route-matrix">
+    <div class="chain-graph-head"><b>技术路线比较矩阵</b><span>先比较路线，再判断利润池和替代风险。</span></div>
+    <div class="table-scroll"><table>
+      <thead><tr><th>路线</th><th>最适用场景</th><th>解决什么约束</th><th>代价/限制</th><th>截面验证</th><th>主要受益</th><th>反证</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table></div>
+  </div>`;
+}
+
+function renderComponentValueChain() {
+  const rows = componentValueChainRows.map((row) => `<tr>${row.map((cell) => `<td>${esc(cell)}</td>`).join("")}</tr>`).join("");
+  return `<div class="component-value-chain">
+    <div class="chain-graph-head"><b>BOM / 组件级价值链</b><span>从“系统”拆到子系统和财务验证指标，避免只列公司名称。</span></div>
+    <div class="table-scroll"><table>
+      <thead><tr><th>子系统</th><th>组件/服务</th><th>关键公司</th><th>接受什么</th><th>提供给谁</th><th>财务验证</th><th>相关 QA</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table></div>
+  </div>`;
+}
+
+function renderBottleneckReleaseTimeline() {
+  const rows = bottleneckReleaseTimeline.map((row) => `<tr>${row.map((cell) => `<td>${esc(cell)}</td>`).join("")}</tr>`).join("");
+  return `<div class="bottleneck-release-timeline">
+    <div class="chain-graph-head"><b>瓶颈释放时间表</b><span>瓶颈不是永久标签；必须跟踪谁在扩产、何时缓解、什么数据会降级。</span></div>
+    <div class="table-scroll"><table>
+      <thead><tr><th>瓶颈</th><th>当前约束</th><th>释放/验证信号</th><th>观察节奏</th><th>降级触发</th><th>标的含义</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table></div>
+  </div>`;
 }
 
 function renderIndustryKeyVariables() {
@@ -1520,13 +1910,25 @@ function renderValueFlowMap() {
       </div>
     </article>`).join("");
   return `<div class="chain-map-card chain-value-flow">
-    <div class="chain-graph-head"><b>订单和价值如何在链条里流动</b><span>按“需求预算 -> 关键供给 -> 系统交付 -> 收入/ROI 验证”阅读。</span></div>
+    <div class="chain-graph-head"><b>订单和价值如何在链条里流动</b><span>先读白话步骤，再看下面的价值流卡片。</span></div>
+    ${renderSimpleValueFlow()}
     <div class="chain-value-guide">
       <div><b>先看谁付钱</b><span>下游 capex、订单、机柜规格。</span></div>
       <div><b>再看谁卡住供给</b><span>GPU/ASIC、HBM、先进制造、连接、电力液冷。</span></div>
       <div><b>最后看钱留在哪</b><span>收入、毛利、backlog、现金流和估值上修。</span></div>
     </div>
     <div class="chain-sankey-list">${flows}</div>
+  </div>`;
+}
+
+function renderSimpleValueFlow() {
+  const cards = chainSimpleFlowSteps.map((item) => `<article class="chain-simple-step">
+    <span>${esc(item.step)}</span>
+    <div><b>${esc(item.title)}</b><p>${esc(item.plain)}</p><small>${esc(item.investment)}</small></div>
+  </article>`).join("");
+  return `<div class="chain-simple-flow">
+    <div class="simple-flow-head"><b>先按这条主线理解</b><span>云需求 -> 芯片订单 -> 制造/内存 -> 系统交付 -> 电力液冷/网络 -> 运营验证</span></div>
+    <div class="chain-simple-grid">${cards}</div>
   </div>`;
 }
 
@@ -1573,10 +1975,8 @@ function renderQaCard(node) {
 
 function renderCurrentConclusion(node) {
   if (node.level < 3) {
-    const demandSpace = node.id === "Q1" ? renderDemandSpaceModel() : "";
-    const competition = node.id === "Q2" ? renderCompetitionLandscape() : "";
     const oddsGate = node.id === "Q4" ? renderQ4OddsGate() : "";
-    return `<p>${esc(node.conclusion)}</p>${demandSpace}${competition}${oddsGate}`;
+    return `<p>${esc(node.conclusion)}</p>${renderQaComplementFocus(node)}${oddsGate}`;
   }
   return `<div class="routing"><span class="pill l3-skill">Skill: ${esc(node.skill)}</span><span class="pill l3-execution-status">Execution: ${esc(node.skill_dispatch.skill_output_status)}</span><span class="pill l3-score-component">Score Component: ${esc(node.score_component)}</span><span class="pill l3-decision-use">Decision Use: ${esc(node.decision_use)}</span></div>
     <div class="logic-grid"><div class="logic-card"><b>Fact</b><p>${esc(node.fact)}</p></div><div class="logic-card"><b>Inference</b><p>${esc(node.inference)}</p></div><div class="logic-card"><b>Judgment</b><p>${esc(node.judgment)}</p></div><div class="logic-card"><b>Gap / Trigger</b><p>${esc(node.gap)} ${esc(node.trigger)}</p></div></div>
@@ -1584,40 +1984,31 @@ function renderCurrentConclusion(node) {
     <div class="source-chips">${node.sourceIds.map((sourceId) => `<a class="source-chip" href="${esc(byId(sourceId).url)}">${esc(sourceId)}</a>`).join("")}</div>`;
 }
 
-function renderDemandSpaceModel() {
-  const rows = q1DemandSpaceModel.map((item) => `<tr>
-    <td><strong>${esc(item.path)}</strong></td>
-    <td>${esc(item.visibleEvidence)}</td>
-    <td>${esc(item.futureSpaceRead)}</td>
-    <td>${esc(item.revenueBridge)}</td>
-    <td>${esc(item.openQuestion)}</td>
-  </tr>`).join("");
-  return `<div class="demand-space-model artifact-card">
-    <div class="artifact-title">Q1 回答呈现：行业空间必须沿财务链条验证</div>
-    <p>行业空间不直接等于可投资机会。Q1 先确认需求有没有进入收入、订单、backlog、毛利和现金流，再把未来空间拆成客户预算、平台规格和物理落地三条验证链。</p>
-    <div class="table-scroll"><table>
-      <thead><tr><th>空间来源</th><th>截面可见证据</th><th>未来空间判断</th><th>收入/利润传导</th><th>继续下钻</th></tr></thead>
-      <tbody>${rows}</tbody>
-    </table></div>
-  </div>`;
-}
-
-function renderCompetitionLandscape() {
-  const rows = q2CompetitionLandscape.map((item) => `<tr>
-    <td><strong>${esc(item.node)}</strong></td>
-    <td>${esc(item.competition)}</td>
-    <td>${esc(item.chokepoint)}</td>
-    <td>${esc(item.profit)}</td>
-    <td>${esc(item.refute)}</td>
-    <td>${esc(item.qa)}</td>
-  </tr>`).join("");
-  return `<div class="competition-landscape artifact-card">
-    <div class="artifact-title">Q2 回答呈现：竞争格局中的 chokepoint 判断</div>
-    <p>chokepoint 不是单独一层，而是竞争格局分析后的结果：先判断谁和谁竞争、客户能否替代、供给能否扩张、谁有定价权，再看稀缺是否能变成利润和现金流。</p>
-    <div class="table-scroll"><table>
-      <thead><tr><th>节点</th><th>竞争格局</th><th>Chokepoint 判断</th><th>利润池/标的含义</th><th>主要反证</th><th>后续 QA</th></tr></thead>
-      <tbody>${rows}</tbody>
-    </table></div>
+function renderQaComplementFocus(node) {
+  const focus = {
+    Q1: {
+      baseline: "行业概况已经交代需求路径、行业空间和收入/利润传导。",
+      questions: ["需求是否已经进入公司收入、订单、backlog、毛利或现金流。", "需求是否只停留在平台公司，还是外溢到第三方连接、系统交付和物理基础设施。", "哪些数据会证明客户 ROI 能支撑后续 capex。"],
+    },
+    Q2: {
+      baseline: "行业概况已经交代竞争格局、技术路线和候选瓶颈。",
+      questions: ["候选瓶颈是否真的稀缺、难替代且可收费。", "哪家公司能把节点稀缺转成财务弹性，而不是只获得主题曝光。", "哪些供给扩张、路线替代或客户议价会削弱 chokepoint。"],
+    },
+    Q3: {
+      baseline: "行业概况已经列出关键变量和待验证数据。",
+      questions: ["哪些行业概况结论最可能被反证推翻。", "哪些瓶颈可能最快释放，从而改变利润池分配。", "哪些高关注标的的估值已经反映了好消息。"],
+    },
+    Q4: {
+      baseline: "行业概况已经把节点映射到候选标的。",
+      questions: ["为什么某个标的进入排序，另一个只保留观察或排除。", "胜率、赔率、稀缺性、业绩弹性和风险控制如何共同决定行动状态。", "哪条新证据会提高或撤销当前排序。"],
+    },
+  }[node.id];
+  if (!focus) return "";
+  const questions = focus.questions.map((item) => `<li>${esc(item)}</li>`).join("");
+  return `<div class="qa-complement-focus artifact-card">
+    <div class="artifact-title">本层继续追问</div>
+    <p>${esc(focus.baseline)}</p>
+    <ul>${questions}</ul>
   </div>`;
 }
 
@@ -1669,9 +2060,49 @@ function renderTargets(rankedTargets) {
   }).join("");
   return `<div class="target-section">
     <p>这是冻结在 ${AS_OF_DATE} 的研究观察名单。右侧 label 字段只用于评估当时预测，不参与前面的 QA、评分、排序、赔率或行动状态。</p>
+    ${renderTargetProfitBridge()}
+    ${renderTargetValuationTable(rankedTargets)}
     ${renderTargetOddsModels(rankedTargets)}
     <div class="table-scroll"><table class="target-table">
       <thead><tr><th>#</th><th>标的</th><th>市场</th><th>Action State</th><th>总分</th><th>稀缺/垄断</th><th>未充分定价</th><th>业绩弹性</th><th>风险控制</th><th>截面理由</th><th>降级触发</th><th>start_price</th><th>end_price</th><th>forward_3m_return</th><th>benchmark_return</th><th>excess_return</th><th>label_status</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table></div>
+  </div>`;
+}
+
+function renderTargetProfitBridge() {
+  const rows = targetProfitBridgeRows.map((row) => `<tr>${row.map((cell) => `<td>${esc(cell)}</td>`).join("")}</tr>`).join("");
+  return `<div class="target-profit-bridge">
+    <div class="artifact-title">标的财务桥：主题如何进入收入、利润和现金流</div>
+    <p>先把每个标的的受益节点落到账面科目，再看估值和风险。只拿主题曝光、没有利润桥的标的不能上调行动状态。</p>
+    <div class="table-scroll"><table>
+      <thead><tr><th>标的</th><th>核心节点</th><th>需求传导</th><th>财务桥</th><th>必须验证</th><th>降级触发</th><th>当前状态</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table></div>
+  </div>`;
+}
+
+function renderTargetValuationTable(rankedTargets) {
+  const rows = rankedTargets.map((target) => {
+    const dims = target.score.score_dimensions;
+    const valuationRead = dims.mispricing >= 3.3 ? "有错配线索" : dims.mispricing >= 2.8 ? "需要估值确认" : "估值可能已反映";
+    return `<tr>
+      <td><strong>${esc(target.ticker)}</strong><br><span>${esc(target.name)}</span></td>
+      <td>${target.score.total_score.toFixed(2)}</td>
+      <td>${dims.scarcity_or_monopoly.toFixed(2)}</td>
+      <td>${dims.mispricing.toFixed(2)}</td>
+      <td>${dims.earnings_elasticity.toFixed(2)}</td>
+      <td>${dims.risk_control.toFixed(2)}</td>
+      <td>${esc(valuationRead)}</td>
+      <td>${esc(target.odds_model?.implied_expectation || "")}</td>
+      <td>${esc(target.next_verification_data)}</td>
+    </tr>`;
+  }).join("");
+  return `<div class="target-valuation-table">
+    <div class="artifact-title">估值与赔率表：胜率之外还要看是否未充分定价</div>
+    <p>这里不使用后续价格 label，只展示冻结截面下的四维闸门、估值错配读数和下一步验证数据。</p>
+    <div class="table-scroll"><table>
+      <thead><tr><th>标的</th><th>总分</th><th>稀缺/垄断</th><th>未充分定价</th><th>业绩弹性</th><th>风险控制</th><th>估值读数</th><th>隐含预期</th><th>下一步验证</th></tr></thead>
       <tbody>${rows}</tbody>
     </table></div>
   </div>`;
@@ -1716,14 +2147,15 @@ function css() {
   return `
     :root{--bg:#f5f5f7;--panel:#fff;--line:#d7dce5;--ink:#1d1d1f;--muted:#667085;--blue:#0a63ce;--green:#0f7a4f;--amber:#956100;--red:#b42318}
     *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;line-height:1.58}.hero{padding:40px min(6vw,72px) 24px;background:linear-gradient(#fff,#f7f8fb);border-bottom:1px solid var(--line)}.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:800}h1{margin:8px 0 10px;font-size:34px;letter-spacing:0}.subtitle{max-width:1120px;color:#4b5260;font-size:15px}.top-nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line);padding:10px min(6vw,72px);display:flex;gap:16px;flex-wrap:wrap}.top-nav a{color:#2f5f9f;text-decoration:none;font-size:13px;font-weight:800}.wrap{padding:24px min(6vw,72px) 56px}.section{margin:0 0 26px}h2{font-size:24px;margin:0 0 12px}
-    .goal-card,.target-section,.source-collapse{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:18px;box-shadow:0 10px 28px rgba(30,41,59,.05)}.industry-overview-section{display:grid;gap:12px}.industry-module{background:var(--panel);border:1px solid var(--line);border-radius:10px;box-shadow:0 10px 28px rgba(30,41,59,.04);overflow:hidden}.industry-module>summary{list-style:none;cursor:pointer}.industry-module>summary::-webkit-details-marker{display:none}.industry-module[open]>summary{border-bottom:1px solid #e6eaf1}.industry-module-body{padding:16px 18px 18px}.module-head{display:grid;grid-template-columns:auto 1fr auto;column-gap:10px;row-gap:3px;margin:0;align-items:center;padding:16px 18px}.module-head .module-index{display:inline-flex;width:32px;height:32px;align-items:center;justify-content:center;border-radius:999px;background:#eef5ff;color:var(--blue);font-size:12px;font-weight:900}.module-head .chevron{color:var(--muted);font-weight:900;transition:transform .18s ease}.industry-module[open]>.module-head .chevron{transform:rotate(90deg)}.module-head h3{margin:0;font-size:18px}.module-head p{margin:0;color:#667085;font-size:13px}.overview-subtitle{font-size:13px;font-weight:900;color:#334155;margin-top:4px}.goal-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.metric{border:1px solid #e7ebf2;border-radius:8px;padding:12px;background:#fbfcfe}.metric span{display:block;color:var(--muted);font-size:12px}.metric strong{font-size:15px}.chain-explain{display:grid;gap:14px;margin-bottom:16px}.chain-plain-summary{margin:0;padding:14px 16px;border:1px solid #d9e4f2;border-radius:8px;background:#f6f9fd;font-weight:760;line-height:1.75}.chain-chokepoints,.chain-map,.chain-data-gaps{border:1px solid #e6eaf1;border-radius:8px;background:#fbfcff;padding:14px}.chain-map summary,.chain-data-gaps summary{cursor:pointer;font-weight:800;color:#344054}.chain-chokepoints b{display:block;margin-bottom:8px}.chain-relationship-graph,.chain-map-card{border:1px solid #d9e4f2;border-radius:10px;background:linear-gradient(135deg,#f7fbff,#fff);padding:14px}.chain-graph-head{display:flex;justify-content:space-between;gap:12px;align-items:end;margin-bottom:12px}.chain-graph-head b{font-size:16px}.chain-graph-head span{color:var(--muted);font-size:12px}.chain-layer-grid{display:grid;grid-template-columns:repeat(3,minmax(260px,1fr));gap:10px}.chain-layer-card{border:1px solid #e1e7f0;border-radius:10px;background:#fff;overflow:hidden}.chain-stage-panel summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto auto;gap:10px;align-items:center;padding:12px}.chain-stage-panel summary::-webkit-details-marker,.chain-lane-node summary::-webkit-details-marker{display:none}.chain-stage-head{display:grid;gap:8px;padding:14px 14px 8px}.chain-stage-head strong{color:#344054;font-size:13px;line-height:1.55}.chain-stage-name{display:inline-flex;width:max-content;border-radius:999px;background:#eef5ff;color:var(--blue);font-weight:900;font-size:12px;padding:4px 10px}.chain-company-list{display:grid;gap:8px;margin:0;padding:0 14px 14px;list-style:none}.chain-company-list li{border:1px solid #edf1f7;border-radius:10px;background:#fbfdff;padding:10px}.chain-company-list b{display:block;color:#1f2937;font-size:13px}.chain-company-list span{display:block;color:#526071;font-size:12px;margin-top:3px}.chain-company-list small{display:block;color:#0a63ce;font-size:11px;font-weight:800;margin-top:5px}.chain-relation-card{border:1px solid #edf1f7;border-radius:10px;background:#fbfdff;overflow:hidden}.chain-lane-node summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;padding:10px}.chain-lane-node em{font-style:normal;color:#0a63ce;font-size:12px;font-weight:900}.chain-company-detail{padding:0 10px 10px}.chain-company-head{display:flex;justify-content:space-between;gap:10px;margin:4px 0 8px}.chain-company-head small{color:#667085;font-size:11px}.chain-relation-meta{display:grid;gap:6px;margin:0}.chain-relation-meta div{display:grid;grid-template-columns:72px 1fr;gap:8px}.chain-relation-meta dt{color:#0a63ce;font-size:12px;font-weight:900}.chain-relation-meta dd{margin:0;color:#526071;font-size:12px}.chain-table,.target-table{min-width:1800px}.chain-map{overflow:auto}
+    .goal-card,.target-section,.source-collapse{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:18px;box-shadow:0 10px 28px rgba(30,41,59,.05)}.industry-overview-section{display:grid;gap:12px}.industry-module{background:var(--panel);border:1px solid var(--line);border-radius:10px;box-shadow:0 10px 28px rgba(30,41,59,.04);overflow:hidden}.industry-module>summary{list-style:none;cursor:pointer}.industry-module>summary::-webkit-details-marker{display:none}.industry-module[open]>summary{border-bottom:1px solid #e6eaf1}.industry-module-body{padding:16px 18px 18px}.module-head{display:grid;grid-template-columns:auto 1fr auto;column-gap:10px;row-gap:3px;margin:0;align-items:center;padding:16px 18px}.module-head .module-index{display:inline-flex;width:32px;height:32px;align-items:center;justify-content:center;border-radius:999px;background:#eef5ff;color:var(--blue);font-size:12px;font-weight:900}.module-head .chevron{color:var(--muted);font-weight:900;transition:transform .18s ease}.industry-module[open]>.module-head .chevron{transform:rotate(90deg)}.module-head h3{margin:0;font-size:18px}.module-head p{margin:0;color:#667085;font-size:13px}.overview-subtitle{font-size:13px;font-weight:900;color:#334155;margin-top:4px}.goal-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.metric{border:1px solid #e7ebf2;border-radius:8px;padding:12px;background:#fbfcfe}.metric span{display:block;color:var(--muted);font-size:12px}.metric strong{font-size:15px}.chain-explain{display:grid;gap:12px;margin-bottom:16px}.chain-plain-summary{margin:0;padding:14px 16px;border:1px solid #d9e4f2;border-radius:8px;background:#f6f9fd;font-weight:760;line-height:1.75}.chain-detail-panel{border:1px solid #d9e4f2;border-radius:12px;background:#fbfcff;overflow:hidden}.chain-detail-panel>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:13px 14px}.chain-detail-panel>summary::-webkit-details-marker{display:none}.chain-detail-panel>summary span:first-child{font-weight:900;color:#27364a}.chain-detail-panel>summary small{color:#667085;font-size:12px;line-height:1.45}.chain-detail-panel[open]>summary{border-bottom:1px solid #e6eaf1}.chain-detail-panel .chevron{transition:transform .18s ease}.chain-detail-body{padding:14px}.chain-chokepoints,.chain-map,.chain-data-gaps{border:1px solid #e6eaf1;border-radius:8px;background:#fbfcff;padding:14px}.chain-map summary,.chain-data-gaps summary{cursor:pointer;font-weight:800;color:#344054}.chain-chokepoints b{display:block;margin-bottom:8px}.chain-relationship-graph,.chain-map-card{border:1px solid #d9e4f2;border-radius:10px;background:linear-gradient(135deg,#f7fbff,#fff);padding:14px}.chain-graph-head{display:flex;justify-content:space-between;gap:12px;align-items:end;margin-bottom:12px}.chain-graph-head b{font-size:16px}.chain-graph-head span{color:var(--muted);font-size:12px}.chain-layer-grid{display:grid;grid-template-columns:repeat(3,minmax(260px,1fr));gap:10px}.chain-layer-card{border:1px solid #e1e7f0;border-radius:10px;background:#fff;overflow:hidden}.chain-stage-panel summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto auto;gap:10px;align-items:center;padding:12px}.chain-stage-panel summary::-webkit-details-marker,.chain-lane-node summary::-webkit-details-marker{display:none}.chain-stage-head{display:grid;gap:8px;padding:14px 14px 8px}.chain-stage-head strong{color:#344054;font-size:13px;line-height:1.55}.chain-stage-name{display:inline-flex;width:max-content;border-radius:999px;background:#eef5ff;color:var(--blue);font-weight:900;font-size:12px;padding:4px 10px}.chain-company-list{display:grid;gap:8px;margin:0;padding:0 14px 14px;list-style:none}.chain-company-list li{border:1px solid #edf1f7;border-radius:10px;background:#fbfdff;padding:10px}.chain-company-list b{display:block;color:#1f2937;font-size:13px}.chain-company-list span{display:block;color:#526071;font-size:12px;margin-top:3px}.chain-company-list small{display:block;color:#0a63ce;font-size:11px;font-weight:800;margin-top:5px}.chain-relation-card{border:1px solid #edf1f7;border-radius:10px;background:#fbfdff;overflow:hidden}.chain-lane-node summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;padding:10px}.chain-lane-node em{font-style:normal;color:#0a63ce;font-size:12px;font-weight:900}.chain-company-detail{padding:0 10px 10px}.chain-company-head{display:flex;justify-content:space-between;gap:10px;margin:4px 0 8px}.chain-company-head small{color:#667085;font-size:11px}.chain-relation-meta{display:grid;gap:6px;margin:0}.chain-relation-meta div{display:grid;grid-template-columns:72px 1fr;gap:8px}.chain-relation-meta dt{color:#0a63ce;font-size:12px;font-weight:900}.chain-relation-meta dd{margin:0;color:#526071;font-size:12px}.chain-table,.target-table{min-width:1800px}.chain-map{overflow:auto}
     .qa-card{background:var(--panel);border:1px solid var(--line);border-radius:8px;margin:12px 0;overflow:hidden}.qa-card[open]>summary{border-bottom:1px solid #e6eaf1}.qa-card summary{list-style:none;cursor:pointer;padding:14px 16px;display:grid;grid-template-columns:auto 1fr auto auto;gap:10px;align-items:center}.qa-card summary::-webkit-details-marker{display:none}.qid{font-weight:800;color:var(--blue);font-size:13px}.qtitle{font-weight:760}.qa-count{font-size:12px;color:var(--muted);background:#f1f4f9;border:1px solid #e0e5ee;border-radius:999px;padding:3px 8px}.chevron{color:var(--muted)}details[open]>summary .chevron{transform:rotate(90deg)}.level-2{margin-left:16px}.level-3{margin-left:32px}.level-4{margin-left:48px}.level-5{margin-left:64px}.qa-body{padding:14px 16px 16px}.qa-block{margin:0 0 14px}.block-title{font-size:12px;font-weight:800;color:#586174;text-transform:uppercase;margin-bottom:8px}
-    .artifact-card{border:1px solid #e2e7ef;border-radius:8px;background:#fbfcff;padding:12px;margin:10px 0}.artifact-title{font-weight:780;margin-bottom:8px}.demand-space-model,.competition-landscape,.q4-odds-gate{background:linear-gradient(180deg,#fff,#f8fbff)}.demand-space-model p,.competition-landscape p,.q4-odds-gate p,.target-odds-model p{margin:0 0 10px;color:#526071}.demand-space-model table,.competition-landscape table{min-width:1320px}.q4-odds-gate table{min-width:920px}.logic-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.logic-card{border:1px solid #e5e9f0;border-radius:8px;background:#fff;padding:10px}.logic-card b{display:block;font-size:12px;color:#536071;margin-bottom:4px}.logic-card p{margin:0;font-size:13px}.routing{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:10px}.pill{border:1px solid #dfe6f1;background:#f7faff;border-radius:999px;padding:4px 8px;font-size:12px;color:#46515f}.source-chips{display:flex;flex-wrap:wrap;gap:6px}.source-chip{font-size:12px;color:#0a63ce;background:#eef5ff;border:1px solid #d8e8ff;border-radius:999px;padding:4px 8px;text-decoration:none}
-    table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:9px 8px;border-bottom:1px solid #e6eaf1;text-align:left;vertical-align:top}th{color:#536071;font-size:12px;background:#f8fafc}.target-odds-model{border:1px solid #d9e4f2;border-radius:10px;background:#fbfdff;padding:14px;margin:14px 0}.target-odds-table{min-width:1800px}.state-actionable_long{color:var(--green);font-weight:800}.state-watch_only{color:var(--amber);font-weight:800}.state-no_action{color:var(--red);font-weight:800}.source-collapse summary{cursor:pointer;font-weight:800}.source-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px;margin-top:12px}.source-card{border:1px solid #e5e9f0;border-radius:8px;background:#fbfcff;padding:10px}.source-card a{color:#0a63ce}
-    .chain-value-guide{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:12px}.chain-value-guide div{border:1px solid #e1e7f0;border-radius:12px;background:#fff;padding:10px}.chain-value-guide b{display:block;color:#27364a;font-size:13px}.chain-value-guide span{display:block;color:#667085;font-size:12px;margin-top:4px}.chain-sankey-list{display:grid;gap:12px}.chain-sankey-flow{display:grid;grid-template-columns:1fr;gap:10px;align-items:stretch;border:1px solid #e1e7f0;border-radius:14px;background:#fff;padding:12px}.chain-sankey-flow p{margin:0}.flow-step{display:flex;align-items:center;gap:10px}.flow-step span{display:inline-flex;width:32px;height:28px;align-items:center;justify-content:center;border-radius:8px;background:#eef5ff;color:#0a63ce;font-weight:900}.flow-step b{color:#27364a}.flow-route{display:grid;grid-template-columns:minmax(160px,.9fr) minmax(260px,1.4fr) minmax(160px,.9fr);gap:10px;align-items:center}.flow-from,.flow-to{font-weight:900;color:#27364a;border:1px solid #e8edf5;border-radius:12px;background:#fbfcff;padding:10px}.flow-from small,.flow-to small{display:block;color:#667085;font-size:11px;font-weight:800;margin-bottom:4px}.flow-band{min-height:calc(18px + var(--flow-weight)*4px);display:flex;align-items:center;justify-content:center;border-radius:999px;padding:8px 14px;text-align:center;font-size:12px;font-weight:900;color:#fff;background:#2b6cb0}.flow-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.flow-fields div{border:1px solid #edf1f7;border-radius:12px;background:#fbfcff;padding:10px}.flow-fields b{display:block;color:#0a63ce;font-size:12px;margin-bottom:4px}.flow-fields p{margin:0;color:#526071;font-size:12px}
-    .industry-space table,.industry-competition table,.industry-chokepoints table{min-width:1200px}.industry-key-variables .key-variable-grid{display:grid;grid-template-columns:minmax(260px,.8fr) minmax(520px,1.2fr);gap:12px}.industry-key-variables ul{margin:8px 0 0;padding-left:20px;color:#526071;line-height:1.75}.qa-generation-table{overflow:auto;border:1px solid #e6eaf1;border-radius:8px}.heat-score{text-align:center}.heat-score span{display:inline-flex;min-width:28px;height:24px;align-items:center;justify-content:center;border-radius:8px;font-weight:900}.heat-high span{background:#e7f6ed;color:var(--green)}.heat-mid span{background:#fff4d6;color:var(--amber)}.heat-low span{background:#fee4e2;color:var(--red)}
+    .artifact-card{border:1px solid #e2e7ef;border-radius:8px;background:#fbfcff;padding:12px;margin:10px 0}.artifact-title{font-weight:780;margin-bottom:8px}.qa-complement-focus,.q4-odds-gate{background:linear-gradient(180deg,#fff,#f8fbff)}.qa-complement-focus p,.q4-odds-gate p,.target-odds-model p{margin:0 0 10px;color:#526071}.qa-complement-focus ul{margin:0;padding-left:18px;color:#344054}.qa-complement-focus li{margin:5px 0}.q4-odds-gate table{min-width:920px}.logic-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.logic-card{border:1px solid #e5e9f0;border-radius:8px;background:#fff;padding:10px}.logic-card b{display:block;font-size:12px;color:#536071;margin-bottom:4px}.logic-card p{margin:0;font-size:13px}.routing{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:10px}.pill{border:1px solid #dfe6f1;background:#f7faff;border-radius:999px;padding:4px 8px;font-size:12px;color:#46515f}.source-chips{display:flex;flex-wrap:wrap;gap:6px}.source-chip{font-size:12px;color:#0a63ce;background:#eef5ff;border:1px solid #d8e8ff;border-radius:999px;padding:4px 8px;text-decoration:none}
+    .constraint-definition,.technology-route-matrix,.component-value-chain,.bottleneck-release-timeline,.target-profit-bridge,.target-valuation-table{border:1px solid #d9e4f2;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfdff);padding:14px;margin:14px 0}.constraint-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.constraint-grid article{border:1px solid #e6ecf5;border-radius:10px;background:#f8fbff;padding:11px}.constraint-grid span{display:block;color:#0a63ce;font-size:12px;font-weight:900;margin-bottom:5px}.constraint-grid p{margin:0;color:#465365;font-size:13px;line-height:1.65}.technology-route-matrix table,.component-value-chain table,.bottleneck-release-timeline table,.target-profit-bridge table,.target-valuation-table table{min-width:1280px}.target-profit-bridge p,.target-valuation-table p{margin:0 0 10px;color:#526071}
+    .industry-module-body,.qa-body,.chain-detail-body,.space-detail-body,.target-section,.artifact-card{min-width:0;max-width:100%}.table-scroll{max-width:100%;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;border:1px solid #e6eaf1;border-radius:8px;background:#fff}.table-scroll table{width:max-content;min-width:100%}table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:9px 8px;border-bottom:1px solid #e6eaf1;text-align:left;vertical-align:top}th{color:#536071;font-size:12px;background:#f8fafc}.target-odds-model{border:1px solid #d9e4f2;border-radius:10px;background:#fbfdff;padding:14px;margin:14px 0}.target-odds-table{min-width:1800px}.state-actionable_long{color:var(--green);font-weight:800}.state-watch_only{color:var(--amber);font-weight:800}.state-no_action{color:var(--red);font-weight:800}.source-collapse summary{cursor:pointer;font-weight:800}.source-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px;margin-top:12px}.source-card{border:1px solid #e5e9f0;border-radius:8px;background:#fbfcff;padding:10px}.source-card a{color:#0a63ce}
+    .chain-simple-flow{border:1px solid #d8e6f7;border-radius:12px;background:#f7fbff;padding:12px;margin-bottom:12px}.simple-flow-head{display:flex;justify-content:space-between;gap:12px;margin-bottom:10px}.simple-flow-head b{color:#27364a}.simple-flow-head span{color:#667085;font-size:12px}.chain-simple-grid{display:grid;grid-template-columns:repeat(5,minmax(160px,1fr));gap:8px}.chain-simple-step{border:1px solid #e1e7f0;border-radius:12px;background:#fff;padding:10px;display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:start}.chain-simple-step>span{display:inline-flex;width:26px;height:26px;align-items:center;justify-content:center;border-radius:999px;background:#0a63ce;color:#fff;font-weight:900;font-size:12px}.chain-simple-step b{display:block;color:#27364a;font-size:13px;margin-bottom:4px}.chain-simple-step p{margin:0;color:#344054;font-size:12px;line-height:1.55}.chain-simple-step small{display:block;margin-top:6px;color:#667085;font-size:11px;line-height:1.45}.chain-value-guide{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:12px}.chain-value-guide div{border:1px solid #e1e7f0;border-radius:12px;background:#fff;padding:10px}.chain-value-guide b{display:block;color:#27364a;font-size:13px}.chain-value-guide span{display:block;color:#667085;font-size:12px;margin-top:4px}.chain-sankey-list{display:grid;gap:12px}.chain-sankey-flow{display:grid;grid-template-columns:1fr;gap:10px;align-items:stretch;border:1px solid #e1e7f0;border-radius:14px;background:#fff;padding:12px}.chain-sankey-flow p{margin:0}.flow-step{display:flex;align-items:center;gap:10px}.flow-step span{display:inline-flex;width:32px;height:28px;align-items:center;justify-content:center;border-radius:8px;background:#eef5ff;color:#0a63ce;font-weight:900}.flow-step b{color:#27364a}.flow-route{display:grid;grid-template-columns:minmax(160px,.9fr) minmax(260px,1.4fr) minmax(160px,.9fr);gap:10px;align-items:center}.flow-from,.flow-to{font-weight:900;color:#27364a;border:1px solid #e8edf5;border-radius:12px;background:#fbfcff;padding:10px}.flow-from small,.flow-to small{display:block;color:#667085;font-size:11px;font-weight:800;margin-bottom:4px}.flow-band{min-height:calc(18px + var(--flow-weight)*4px);display:flex;align-items:center;justify-content:center;border-radius:999px;padding:8px 14px;text-align:center;font-size:12px;font-weight:900;color:#fff;background:#2b6cb0}.flow-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.flow-fields div{border:1px solid #edf1f7;border-radius:12px;background:#fbfcff;padding:10px}.flow-fields b{display:block;color:#0a63ce;font-size:12px;margin-bottom:4px}.flow-fields p{margin:0;color:#526071;font-size:12px}
+    .industry-space table,.industry-competition table,.industry-chokepoints table{min-width:1200px}.industry-space-summary{border:1px solid #d9e4f2;border-radius:12px;background:linear-gradient(180deg,#fff,#f7fbff);padding:14px;margin-bottom:12px}.industry-space-summary>p{margin:0 0 12px;color:#344054;line-height:1.75;font-weight:760}.space-summary-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.space-summary-grid article,.space-boundary-grid article,.space-driver-card{border:1px solid #e2e9f3;border-radius:12px;background:#fff;padding:12px}.space-summary-grid span,.space-boundary-grid span,.space-driver-card span{display:block;color:#0a63ce;font-size:12px;font-weight:900;margin-bottom:6px}.space-summary-grid strong{display:block;color:#27364a;font-size:13px;line-height:1.6}.space-detail-panel{border:1px solid #d9e4f2;border-radius:12px;background:#fbfcff;margin:10px 0;overflow:hidden}.space-detail-panel>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:13px 14px}.space-detail-panel>summary::-webkit-details-marker{display:none}.space-detail-panel>summary span:first-child{font-weight:900;color:#27364a}.space-detail-panel>summary small{color:#667085;font-size:12px;line-height:1.45}.space-detail-panel[open]>summary{border-bottom:1px solid #e6eaf1}.space-detail-body{padding:14px}.space-boundary-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.space-boundary-grid p{margin:0;color:#526071;font-size:13px;line-height:1.65}.space-driver-tree{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.space-driver-card b{display:block;color:#27364a;font-size:13px;line-height:1.55;margin-bottom:8px}.space-driver-card dl{display:grid;gap:7px;margin:0}.space-driver-card div{display:grid;grid-template-columns:74px 1fr;gap:8px}.space-driver-card dt{color:#0a63ce;font-size:12px;font-weight:900}.space-driver-card dd{margin:0;color:#526071;font-size:12px;line-height:1.55}.space-scenario-table table{min-width:1600px}.space-sizing-table table{min-width:1900px}.space-validation-table table{min-width:1100px}.industry-key-variables .key-variable-grid{display:grid;grid-template-columns:minmax(260px,.8fr) minmax(520px,1.2fr);gap:12px}.industry-key-variables ul{margin:8px 0 0;padding-left:20px;color:#526071;line-height:1.75}.qa-generation-table{border:1px solid #e6eaf1;border-radius:8px}.heat-score{text-align:center}.heat-score span{display:inline-flex;min-width:28px;height:24px;align-items:center;justify-content:center;border-radius:8px;font-weight:900}.heat-high span{background:#e7f6ed;color:var(--green)}.heat-mid span{background:#fff4d6;color:var(--amber)}.heat-low span{background:#fee4e2;color:var(--red)}
     .chain-research-bridge,.chain-data-gaps{border:1px solid #d9e4f2;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfdff);padding:14px}.chain-bridge-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.chain-bridge-card{border:1px solid #e5edf7;border-radius:12px;background:#f8fbff;padding:12px}.chain-bridge-card span{display:block;color:#667085;font-size:12px;font-weight:800;margin-bottom:6px}.chain-bridge-card strong{display:block;color:#223047;line-height:1.55}.chain-research-bridge>p{margin:12px 0;color:#435064;line-height:1.75}.chain-node-lens{border:1px solid #e7edf6;border-radius:12px;background:#fff;padding:12px;margin:12px 0}.chain-node-lens>b{display:block;color:#27364a;margin-bottom:8px}.chain-node-lens ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0;padding:0;list-style:none}.chain-node-lens li{border:1px solid #edf1f7;border-radius:10px;background:#fbfcff;padding:10px}.chain-node-lens li b{display:block;color:#0a63ce;font-size:12px;margin-bottom:4px}.chain-node-lens li span{display:block;color:#526071;font-size:12px;line-height:1.55}.chain-data-gaps summary{cursor:pointer;font-weight:900;color:#344054}.chain-data-gaps ul{margin:10px 0 0;padding-left:20px;color:#526071;line-height:1.75}
-    @media(max-width:900px){.goal-grid,.logic-grid,.chain-value-guide,.flow-route,.flow-fields,.chain-bridge-grid,.chain-node-lens ul,.chain-qa-grid,.industry-key-variables .key-variable-grid{grid-template-columns:1fr}.level-2,.level-3,.level-4,.level-5{margin-left:0}.qa-card summary{grid-template-columns:auto 1fr auto}.qa-count{display:none}}
+    @media(max-width:900px){.goal-grid,.logic-grid,.chain-simple-grid,.chain-value-guide,.flow-route,.flow-fields,.chain-bridge-grid,.chain-node-lens ul,.chain-qa-grid,.industry-key-variables .key-variable-grid,.constraint-grid,.space-summary-grid,.space-boundary-grid,.space-driver-tree{grid-template-columns:1fr}.simple-flow-head{display:grid}.level-2,.level-3,.level-4,.level-5{margin-left:0}.qa-card summary{grid-template-columns:auto 1fr auto}.qa-count{display:none}}
   `;
 }
 

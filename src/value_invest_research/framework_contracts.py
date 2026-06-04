@@ -478,21 +478,17 @@ def validate_report_contract_html(
             "missing_supply_chain_section",
             "行业概况 must include a 产业链与生态位 module before 下钻 QA",
         )
-    if "chain-table" not in html and "chain-map" not in html:
-        _issue(
-            issues,
-            "error",
-            "missing_supply_chain_map",
-            "行业概况/产业链与生态位 must render an auditable chain map/table of upstream, midstream, downstream, players, and value links",
-        )
     required_industry_overview_classes = [
         "industry-overview-section",
         "industry-module",
         "industry-module-body",
         "module-index",
+        "component-value-chain",
+        "technology-route-matrix",
         "industry-space",
         "industry-competition",
         "industry-chokepoints",
+        "bottleneck-release-timeline",
         "industry-key-variables",
     ]
     missing_industry_overview_classes = [
@@ -526,16 +522,54 @@ def validate_report_contract_html(
             "行业概况 modules must render as clickable details.industry-module nodes, not always-expanded static sections; missing "
             + ", ".join(static_industry_modules),
         )
+    required_industry_space_classes = [
+        "industry-space-summary",
+        "space-summary-grid",
+        "space-detail-panel",
+        "space-boundary-grid",
+        "space-driver-tree",
+        "space-scenario-table",
+        "space-sizing-table",
+        "space-validation-table",
+    ]
+    missing_industry_space_classes = [
+        class_name for class_name in required_industry_space_classes if _class_count(html, class_name) == 0
+    ]
+    if missing_industry_space_classes:
+        _issue(
+            issues,
+            "error",
+            "missing_industry_space_sizing_model",
+            "行业概况/行业空间 must include a future-space BOM sizing model: conclusion, boundary, driver tree, scenario table, BOM future-space table, and validation data; missing "
+            + ", ".join(missing_industry_space_classes),
+        )
+    industry_space_detail_panels = _tag_class_count(html, "details", "space-detail-panel")
+    if industry_space_detail_panels < 5:
+        _issue(
+            issues,
+            "error",
+            "missing_interactive_industry_space_panels",
+            "行业空间 must keep its future-space subcomponents collapsible as details.space-detail-panel nodes for 测算边界, 需求驱动树, 情景判断, BOM 未来空间表, and 后续验证数据",
+        )
+    if _class_count(html, "table-scroll") == 0 or "overflow-x:auto" not in html.replace(" ", ""):
+        _issue(
+            issues,
+            "error",
+            "missing_horizontal_table_scroll",
+            "Wide report tables and dense card tables must use table-scroll with horizontal overflow so content does not exceed card boundaries",
+        )
     required_chain_explainer_classes = [
         "chain-explain",
         "chain-research-bridge",
         "chain-node-lens",
         "chain-plain-summary",
+        "chain-detail-panel",
         "chain-layer-grid",
         "chain-layer-card",
         "chain-relationship-graph",
         "chain-lane-map",
         "chain-value-flow",
+        "chain-simple-flow",
         "chain-stage-panel",
         "chain-company-list",
         "chain-company-card",
@@ -552,6 +586,14 @@ def validate_report_contract_html(
             "行业概况/产业链与生态位 must include beginner-readable Chinese explanation components; missing "
             + ", ".join(missing_chain_explainer_classes),
         )
+    chain_detail_panels = _tag_class_count(html, "details", "chain-detail-panel")
+    if chain_detail_panels < 3:
+        _issue(
+            issues,
+            "error",
+            "missing_interactive_chain_detail_panels",
+            "产业链与生态位 must keep its long subcomponents collapsible as details.chain-detail-panel nodes for 泳道图, 价值流, and BOM / 组件级链条",
+        )
     required_overview_labels = ["产业链与生态位", "泳道图", "价值流", "行业空间", "竞争格局与利润池", "瓶颈点", "关键变量"]
     missing_overview_labels = [label for label in required_overview_labels if label not in html]
     if industry_overview_sections and missing_overview_labels:
@@ -562,7 +604,22 @@ def validate_report_contract_html(
             "行业概况必须保留产业链与生态位、泳道图、价值流、行业空间、竞争格局与利润池、瓶颈点、关键变量；缺少 "
             + ", ".join(missing_overview_labels),
         )
-
+    overlap_qa_start = section_positions.get("下钻 QA", -1)
+    overlap_target_start = section_positions.get("标的推荐", len(html))
+    qa_overlap_region = html[overlap_qa_start:overlap_target_start] if overlap_qa_start >= 0 else ""
+    duplicated_overview_artifacts = [
+        class_name
+        for class_name in ("demand-space-model", "competition-landscape")
+        if _class_count(qa_overlap_region, class_name) > 0
+    ]
+    if industry_overview_sections and duplicated_overview_artifacts:
+        _issue(
+            issues,
+            "error",
+            "qa_duplicates_industry_overview",
+            "下钻 QA must complement 行业概况 instead of re-rendering overview map/table artifacts; duplicated "
+            + ", ".join(duplicated_overview_artifacts),
+        )
     l3_metadata_counts = {
         "l3_skill_elements": _class_count(html, "l3-skill"),
         "l3_execution_status_elements": _class_count(html, "l3-execution-status"),
@@ -599,6 +656,13 @@ def validate_report_contract_html(
 
     if _class_count(html, "target-section") == 0:
         _issue(issues, "error", "missing_target_section", "标的推荐 must render as target-section")
+    if _class_count(html, "target-profit-bridge") == 0 or _class_count(html, "target-valuation-table") == 0:
+        _issue(
+            issues,
+            "error",
+            "missing_target_financial_bridge",
+            "标的推荐 must include target-profit-bridge and target-valuation-table before the final target table",
+        )
     if "target-table" not in html:
         _issue(issues, "error", "missing_target_table", "标的推荐 must render a dense target-table")
     if "target-odds-model" not in html or "target-odds-table" not in html:
@@ -631,6 +695,7 @@ def validate_report_contract_html(
         "hero",
         "top-nav",
         "goal-card",
+        "constraint-definition",
         "industry-overview-section",
         "industry-module",
         "industry-module-body",
@@ -640,26 +705,39 @@ def validate_report_contract_html(
         "chain-research-bridge",
         "chain-node-lens",
         "chain-plain-summary",
+        "chain-detail-panel",
         "chain-layer-grid",
         "chain-layer-card",
         "chain-relationship-graph",
         "chain-lane-map",
         "chain-value-flow",
+        "chain-simple-flow",
         "chain-stage-panel",
         "chain-company-list",
         "chain-company-card",
+        "component-value-chain",
         "chain-chokepoints",
+        "technology-route-matrix",
+        "bottleneck-release-timeline",
         "industry-space",
+        "industry-space-summary",
+        "space-summary-grid",
+        "space-detail-panel",
+        "space-boundary-grid",
+        "space-driver-tree",
+        "space-scenario-table",
+        "space-sizing-table",
+        "space-validation-table",
         "industry-competition",
         "industry-chokepoints",
         "industry-key-variables",
-        "chain-map",
-        "chain-table",
         "qa-body",
         "qa-block",
         "block-title",
         "artifact-card",
         "target-section",
+        "target-profit-bridge",
+        "target-valuation-table",
         "target-odds-model",
         "target-odds-table",
         "target-table",

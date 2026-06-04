@@ -62,6 +62,8 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
             "maximum depth five",
             "mapping table",
             "driver table",
+            "Industry-overview / QA complementarity lock",
+            "decision-interrogation layer",
         ]:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, combined)
@@ -91,6 +93,7 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
             "summary.module-head",
             "module-index",
             "industry-module-body",
+            "constraint-definition",
             "upstream, midstream, downstream",
             "产业链与生态位",
             "行业空间",
@@ -103,6 +106,9 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
             "chain-plain-summary",
             "chain-lane-map",
             "chain-value-flow",
+            "chain-simple-flow",
+            "chain-detail-panel",
+            "component-value-chain",
             "chain-layer-grid",
             "chain-layer-card",
             "chain-relationship-graph",
@@ -110,7 +116,17 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
             "chain-company-list",
             "chain-company-card",
             "chain-chokepoints",
+            "technology-route-matrix",
+            "bottleneck-release-timeline",
             "industry-space",
+            "industry-space-summary",
+            "space-detail-panel",
+            "space-boundary-grid",
+            "space-driver-tree",
+            "space-scenario-table",
+            "space-sizing-table",
+            "space-validation-table",
+            "table-scroll",
             "industry-competition",
             "industry-chokepoints",
             "industry-key-variables",
@@ -176,12 +192,16 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
             "details.industry-module",
             "Q4 remains inside `下钻 QA`",
             "must never erase, replace, rename, or move Q4",
-            "one `target-section` with a `target-odds-model`, `target-odds-table`, and dense `target-table`",
+            "one `target-section` with `target-profit-bridge`, `target-valuation-table`, a `target-odds-model`, `target-odds-table`, and dense `target-table`",
             "one collapsed `source-collapse`",
             "duplicate the same child titles",
             "qa-card",
             "artifact-card",
             "target-table",
+            "target-profit-bridge",
+            "target-valuation-table",
+            "complementary, not duplicative",
+            "simple value-flow steps",
             "source-collapse",
             "source-bucket",
             "state-actionable_long",
@@ -207,6 +227,20 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
                 self.assertIn("industry-overview lock", doc_text)
                 self.assertIn("supply-chain-panorama-explainer", doc_text)
                 self.assertIn("beginner-readable Chinese", doc_text)
+                self.assertIn("component-value-chain", doc_text)
+                self.assertIn("chain-simple-flow", doc_text)
+                self.assertIn("chain-detail-panel", doc_text)
+                self.assertIn("space-sizing-table", doc_text)
+                self.assertIn("space-scenario-table", doc_text)
+                self.assertIn("space-validation-table", doc_text)
+                self.assertIn("future-space", doc_text)
+                self.assertIn("BOM", doc_text)
+                self.assertIn("table-scroll", doc_text)
+                self.assertIn("technology-route-matrix", doc_text)
+                self.assertIn("bottleneck-release-timeline", doc_text)
+                self.assertIn("target-profit-bridge", doc_text)
+                self.assertIn("target-valuation-table", doc_text)
+                self.assertIn("decision-interrogation layer", doc_text)
                 self.assertIn("Additive-iteration lock", doc_text)
                 self.assertIn("backtest time-slice lock", doc_text)
                 self.assertIn("frontend card-style lock", doc_text)

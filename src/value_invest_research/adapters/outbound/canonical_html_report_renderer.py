@@ -86,6 +86,7 @@ def _render_hero(data: dict[str, Any]) -> str:
 
 def _render_goal(data: dict[str, Any]) -> str:
     goal = data["goal"]
+    constraint = _render_constraint_definition(goal.get("constraint_definition") or goal.get("key_constraint") or {})
     return f"""
 <main>
 <section id="goal" class="section goal-section">
@@ -110,8 +111,38 @@ def _render_goal(data: dict[str, Any]) -> str:
       <p class="label">边界</p>
       <p>{_e(str(goal.get("decision_boundary", "")))}</p>
     </div>
+    {constraint}
   </div>
 </section>
+""".strip()
+
+
+def _render_constraint_definition(item: dict[str, Any]) -> str:
+    if not isinstance(item, dict) or not item:
+        item = {
+            "theme": "先把研究主题翻译成精确定义的约束，再判断哪些公司能把约束转成财务价值。",
+            "precise_constraint": "待补充：核心瓶颈、边界、替代路线和验证周期。",
+            "why_now": "待补充：为什么现在进入投资观察窗口。",
+            "scope": "待补充：研究范围和不纳入范围。",
+            "route_conflict": "待补充：关键技术路线、商业路线或竞争路线冲突。",
+            "adoption_horizon": "待补充：验证周期和降级节奏。",
+        }
+    rows = [
+        ("主题边界", item.get("theme", "")),
+        ("精确定义", item.get("precise_constraint") or item.get("preciseConstraint") or item.get("constraint", "")),
+        ("为什么现在", item.get("why_now") or item.get("whyNow") or ""),
+        ("研究范围", item.get("scope", "")),
+        ("路线冲突", item.get("route_conflict") or item.get("routeConflict") or ""),
+        ("验证周期", item.get("adoption_horizon") or item.get("adoptionHorizon") or ""),
+    ]
+    cards = "\n".join(
+        f"<article><span>{_e(label)}</span><p>{_e(str(value))}</p></article>" for label, value in rows
+    )
+    return f"""
+    <div class="constraint-definition">
+      <p class="artifact-title">关键约束定义</p>
+      <div class="constraint-grid">{cards}</div>
+    </div>
 """.strip()
 
 
@@ -119,22 +150,6 @@ def _render_industry_overview(chain: dict[str, Any]) -> str:
     layers = chain.get("layers") or []
     relationships = chain.get("relationships") or []
     stage_groups = chain.get("stage_groups") or chain.get("stageGroups") or []
-    rows = "\n".join(
-        f"""
-      <tr>
-        <td>{_e(str(layer.get("stage") or layer.get("layer", "")))}</td>
-        <td>{_e(str(layer.get("node") or layer.get("products", "")))}</td>
-        <td>{_e(str(layer.get("demand_input") or layer.get("demand") or layer.get("accepts_from") or layer.get("inputs", "")))}</td>
-        <td>{_e(str(layer.get("supply_input") or layer.get("supply") or ""))}</td>
-        <td>{_e(str(layer.get("produces") or layer.get("outputs", "")))}</td>
-        <td>{_e(str(layer.get("players", "")))}</td>
-        <td>{_e(str(layer.get("financial_metrics") or layer.get("metrics", "")))}</td>
-        <td>{_e(str(layer.get("value_flow") or layer.get("judgment", "")))}</td>
-        <td>{_e(str(layer.get("qa_link") or layer.get("qa", "")))}</td>
-      </tr>
-""".rstrip()
-        for layer in layers
-    )
     research_bridge = _render_chain_research_bridge(
         chain.get("research_bridge") or chain.get("supply_chain_research_bridge") or {},
         chain.get("node_lenses") or chain.get("supply_chain_node_lenses") or [],
@@ -158,19 +173,9 @@ def _render_industry_overview(chain: dict[str, Any]) -> str:
     <div class="chain-explain">
       {research_bridge}
       <p class="chain-plain-summary">{_e(str(chain.get("plain_summary", "")))}</p>
-      <div class="overview-subtitle">泳道图</div>
-      {lane_map}
-      <div class="overview-subtitle">价值流</div>
-      {value_flow}
-      <details class="chain-map">
-        <summary>展开结构化链条表 <span class="chevron">›</span></summary>
-        <table class="chain-table">
-          <thead>
-            <tr><th>上/中/下游</th><th>链条节点</th><th>需求输入</th><th>供给输入</th><th>自身生产/提供</th><th>关键玩家</th><th>财务验证指标</th><th>价值/瓶颈判断</th><th>QA 链接</th></tr>
-          </thead>
-          <tbody>{rows}</tbody>
-        </table>
-      </details>
+      {_render_chain_detail_panel("泳道图", "按上游 / 中游 / 下游看生态位、公司关系和依赖方向。", lane_map, "chain-lane-panel")}
+      {_render_chain_detail_panel("价值流", "用白话步骤解释需求如何变成订单、系统交付、收入和利润验证。", value_flow, "chain-value-panel")}
+      {_render_chain_detail_panel("BOM / 组件级链条", "把系统拆成子系统、组件、关键公司、输入输出和财务验证指标。", _render_component_value_chain(chain.get("component_value_chain") or chain.get("componentValueChain") or []), "chain-component-panel")}
     </div>
     </div>
   </details>
@@ -179,6 +184,15 @@ def _render_industry_overview(chain: dict[str, Any]) -> str:
   {industry_chokepoints}
   {industry_key_variables}
 </section>
+""".strip()
+
+
+def _render_chain_detail_panel(title: str, description: str, body: str, class_name: str) -> str:
+    return f"""
+      <details class="chain-detail-panel {class_name}">
+        <summary><span>{_e(title)}</span><small>{_e(description)}</small><span class="chevron">›</span></summary>
+        <div class="chain-detail-body">{body}</div>
+      </details>
 """.strip()
 
 
@@ -320,18 +334,180 @@ def _render_chain_value_flow_card(flow: dict[str, Any]) -> str:
 
 
 def _render_industry_space(chain: dict[str, Any]) -> str:
-    rows = chain.get("industry_space_rows") or chain.get("industrySpace") or []
+    rows = chain.get("industry_space_sizing_rows") or chain.get("industry_space_rows") or chain.get("industrySpace") or []
     if not isinstance(rows, list) or not rows:
-        rows = [["需求来源", chain.get("plain_summary", ""), "等待量化空间", "收入/利润桥待补", "进入 Q1 下钻"]]
-    body = "\n".join("<tr>" + "".join(f"<td>{_e(str(cell))}</td>" for cell in _row_cells(row, 5)) + "</tr>" for row in rows)
+        rows = [
+            {
+                "segment": "BOM 子系统待拆分",
+                "futureSpace": str(chain.get("plain_summary", "")) or "等待未来空间判断。",
+                "currentEvidence": "收入、订单、backlog、capex 锚点待补。",
+                "expansionMechanism": "工作负载增长传导到 BOM 子系统。",
+                "upperBound": "客户 ROI、供给扩张和交付质量。",
+                "confidence": "中",
+                "nextData": "进入 Q1/Q2 下钻。",
+            }
+        ]
+    scenario_rows = chain.get("industry_space_scenario_rows") if isinstance(chain.get("industry_space_scenario_rows"), list) else []
+    conclusion = chain.get("industry_space_conclusion") if isinstance(chain.get("industry_space_conclusion"), dict) else {}
+    summary = str(
+        conclusion.get("judgment")
+        or "行业空间需要回答未来空间，而不是复述当前规模。当前收入、订单、backlog 和 capex 指引只是证据锚点，核心是按 BOM 子系统判断未来扩张机制、上限约束和验证数据。"
+    )
+    future_space = str(conclusion.get("futureSpace") or conclusion.get("future_space") or "未来空间结论待补：需要按 BOM 子系统判断 12-36 个月扩张路径。")
+    anchor = str(conclusion.get("anchor") or "当前截面证据锚点待补：收入、订单、backlog、capex 指引。")
+    uncertainty = str(conclusion.get("uncertainty") or "最大不确定性：客户 ROI、订单转收入和交付质量。")
+    boundary = str(conclusion.get("boundary") or "本模块只做行业空间测算，不回答竞争格局、利润池归属、估值或标的排序。")
     return f"""
   <details class="industry-module industry-space">
-    <summary class="module-head"><span class="module-index">02</span><div><h3>行业空间</h3><p>拆需求来源、未来空间、收入/利润传导和继续下钻问题。</p></div><span class="chevron">›</span></summary>
+    <summary class="module-head"><span class="module-index">02</span><div><h3>行业空间</h3><p>只回答未来空间：用当前截面锚点做证据，按 BOM 子系统判断未来 12-36 个月空间、约束和验证数据。</p></div><span class="chevron">›</span></summary>
     <div class="industry-module-body">
-    <div class="table-scroll"><table><thead><tr><th>空间来源</th><th>截面可见证据</th><th>未来空间判断</th><th>收入/利润传导</th><th>继续下钻</th></tr></thead><tbody>{body}</tbody></table></div>
+      <div class="industry-space-summary">
+        <p>{_e(summary)}</p>
+        <div class="space-summary-grid">
+          <article><span>未来空间结论</span><strong>{_e(future_space)}</strong></article>
+          <article><span>截面证据锚点</span><strong>{_e(anchor)}</strong></article>
+          <article><span>最大不确定性</span><strong>{_e(uncertainty)}</strong></article>
+          <article><span>本模块边界</span><strong>{_e(boundary)}</strong></article>
+        </div>
+      </div>
+      {_render_space_detail_panel("测算边界", "先限定哪些支出算行业空间，哪些不在这里讨论。", _render_space_boundary(chain), "space-boundary-panel")}
+      {_render_space_detail_panel("需求驱动树", "把需求源头、BOM 放大和物理交付拆成可观测驱动。", _render_space_driver_tree(chain), "space-driver-panel")}
+      {_render_space_detail_panel("情景判断", "用 Bear/Base/Bull 判断未来空间的上修或降级路径。", _render_space_scenario_table(scenario_rows), "space-scenario-panel")}
+      {_render_space_detail_panel("BOM 未来空间表", "按 BOM 子系统判断未来空间、扩张机制、上限约束和验证数据；当前锚点只作为证据。", _render_space_sizing_table(rows), "space-sizing-panel")}
+      {_render_space_detail_panel("后续验证数据", "列出能强化或削弱空间测算的关键数据，不进入竞争格局判断。", _render_space_validation_table(chain), "space-validation-panel")}
     </div>
   </details>
 """.strip()
+
+
+def _render_space_detail_panel(title: str, description: str, body: str, class_name: str) -> str:
+    return f"""
+      <details class="space-detail-panel {class_name}">
+        <summary><span>{_e(title)}</span><small>{_e(description)}</small><span class="chevron">›</span></summary>
+        <div class="space-detail-body">{body}</div>
+      </details>
+""".strip()
+
+
+def _render_space_boundary(chain: dict[str, Any]) -> str:
+    rows = chain.get("industry_space_boundary") if isinstance(chain.get("industry_space_boundary"), list) else []
+    if not rows:
+        rows = [
+            ["纳入口径", "与研究主题直接相关的需求、订单、收入、backlog、capex 和交付空间。"],
+            ["排除口径", "竞争份额、利润池归属、估值和标的排序不在行业空间模块回答。"],
+            ["时间口径", "使用截止日前可见材料，观察未来 12-36 个月验证数据。"],
+            ["测算方法", "先把当前截面数据作为证据锚点，再拆 BOM 扩张机制、未来空间和验证数据。"],
+        ]
+    cards = []
+    for row in rows:
+        cells = (_row_cells(row, 2) + ["", ""])[:2]
+        cards.append(f"<article><span>{_e(str(cells[0]))}</span><p>{_e(str(cells[1]))}</p></article>")
+    return f'<div class="space-boundary-grid">{"".join(cards)}</div>'
+
+
+def _render_space_driver_tree(chain: dict[str, Any]) -> str:
+    rows = chain.get("industry_space_driver_tree") if isinstance(chain.get("industry_space_driver_tree"), list) else []
+    if not rows:
+        rows = [
+            {"layer": "1. 需求源头", "driver": "工作负载、客户预算和订单。", "measurable": "capex、收入、RPO/backlog、订单。", "output": "形成行业空间。"},
+            {"layer": "2. 规格传导", "driver": "平台规格提高 BOM 和基础设施要求。", "measurable": "产品 mix、单位价值量、功耗/带宽。", "output": "放大硬件空间。"},
+            {"layer": "3. 交付验证", "driver": "系统交付把订单变成上线产能。", "measurable": "shipments、backlog conversion、现金流。", "output": "验证空间质量。"},
+        ]
+    cards = []
+    for row in rows:
+        if isinstance(row, dict):
+            layer = row.get("layer", "")
+            driver = row.get("driver", "")
+            measurable = row.get("measurable", "")
+            output = row.get("output", "")
+        else:
+            cells = _row_cells(row, 4) + ["", "", "", ""]
+            layer, driver, measurable, output = cells[:4]
+        cards.append(
+            f"""
+        <article class="space-driver-card">
+          <span>{_e(str(layer))}</span>
+          <b>{_e(str(driver))}</b>
+          <dl><div><dt>可观测指标</dt><dd>{_e(str(measurable))}</dd></div><div><dt>空间输出</dt><dd>{_e(str(output))}</dd></div></dl>
+        </article>
+""".strip()
+        )
+    return f'<div class="space-driver-tree">{"".join(cards)}</div>'
+
+
+def _render_space_sizing_table(rows: list[Any]) -> str:
+    body_rows = []
+    for row in rows:
+        if isinstance(row, dict):
+            cells = [
+                row.get("segment", ""),
+                row.get("futureSpace") or row.get("future_space") or row.get("read", ""),
+                row.get("currentEvidence") or row.get("current_evidence") or row.get("currentAnchor") or row.get("current_anchor", ""),
+                row.get("expansionMechanism") or row.get("expansion_mechanism") or row.get("sizingMethod") or row.get("sizing_method", ""),
+                row.get("upperBound") or row.get("upper_bound") or row.get("growthDriver") or row.get("growth_driver", ""),
+                row.get("confidence", ""),
+                ", ".join(str(item) for item in row.get("sourceIds", row.get("source_ids", []))) if isinstance(row.get("sourceIds", row.get("source_ids", [])), list) else row.get("sourceIds", row.get("source_ids", "")),
+                row.get("nextData") or row.get("next_data", ""),
+            ]
+        else:
+            cells = _row_cells(row, 8)
+            if len(cells) == 5:
+                cells = [cells[0], "未来空间待判断。", cells[1], "用截面证据作为空间锚点。", cells[2], "中", "", cells[4]]
+        cells = (cells + [""] * 8)[:8]
+        body_rows.append("<tr>" + "".join(f"<td>{_e(str(cell))}</td>" for cell in cells) + "</tr>")
+    return """
+      <div class="space-sizing-table table-scroll"><table>
+        <thead><tr><th>BOM 子系统</th><th>未来空间判断</th><th>当前截面证据</th><th>扩张机制</th><th>空间上限 / 约束</th><th>可信度</th><th>来源</th><th>下一步数据</th></tr></thead>
+        <tbody>{}</tbody>
+      </table></div>
+""".format("".join(body_rows)).strip()
+
+
+def _render_space_scenario_table(rows: list[Any]) -> str:
+    if not rows:
+        rows = [
+            {
+                "scenario": "Base / 待验证扩张",
+                "futureSpace": "未来空间是否扩张取决于 BOM 子系统能否继续被需求和规格放大。",
+                "keyAssumptions": "客户 capex、订单、backlog 和 ROI 不明显恶化。",
+                "expansionPath": "需求 -> BOM 子系统 -> 系统交付 -> 收入和现金流。",
+                "upperBound": "客户 ROI、供给扩张、交付质量和价格压力。",
+                "watchData": "capex、收入、订单、backlog、价格、库存和毛利。",
+            }
+        ]
+    body_rows = []
+    for row in rows:
+        if isinstance(row, dict):
+            cells = [
+                row.get("scenario", ""),
+                row.get("futureSpace") or row.get("future_space", ""),
+                row.get("keyAssumptions") or row.get("key_assumptions", ""),
+                row.get("expansionPath") or row.get("expansion_path", ""),
+                row.get("upperBound") or row.get("upper_bound", ""),
+                row.get("watchData") or row.get("watch_data", ""),
+            ]
+        else:
+            cells = _row_cells(row, 6)
+        cells = (cells + [""] * 6)[:6]
+        body_rows.append("<tr>" + "".join(f"<td>{_e(str(cell))}</td>" for cell in cells) + "</tr>")
+    return """
+      <div class="space-scenario-table table-scroll"><table>
+        <thead><tr><th>情景</th><th>未来空间判断</th><th>关键假设</th><th>扩张路径</th><th>空间上限 / 削弱条件</th><th>后续验证数据</th></tr></thead>
+        <tbody>{}</tbody>
+      </table></div>
+""".format("".join(body_rows)).strip()
+
+
+def _render_space_validation_table(chain: dict[str, Any]) -> str:
+    rows = chain.get("industry_space_validation_rows") if isinstance(chain.get("industry_space_validation_rows"), list) else []
+    if not rows:
+        rows = [
+            ["客户需求", "capex、收入、RPO/backlog、FCF", "证明需求能转成商业回报", "capex 增长但收入/现金流不跟随"],
+            ["系统交付", "shipments、backlog conversion、取消率", "证明订单能转成上线产能", "backlog 增长但交付延迟"],
+            ["供给扩张", "产能、价格、库存、项目毛利", "证明空间没有被供给快速压缩", "价格下行或库存上升"],
+        ]
+    body = "\n".join("<tr>" + "".join(f"<td>{_e(str(cell))}</td>" for cell in (_row_cells(row, 4) + ["", "", "", ""])[:4]) + "</tr>" for row in rows)
+    return f'<div class="space-validation-table table-scroll"><table><thead><tr><th>验证对象</th><th>跟踪数据</th><th>说明什么</th><th>削弱信号</th></tr></thead><tbody>{body}</tbody></table></div>'
 
 
 def _render_industry_competition(chain: dict[str, Any]) -> str:
@@ -343,6 +519,7 @@ def _render_industry_competition(chain: dict[str, Any]) -> str:
   <details class="industry-module industry-competition">
     <summary class="module-head"><span class="module-index">03</span><div><h3>竞争格局与利润池</h3><p>先看竞争、替代、客户议价和供给扩张，再判断利润池留在哪。</p></div><span class="chevron">›</span></summary>
     <div class="industry-module-body">
+    {_render_technology_route_matrix(chain.get("technology_route_matrix") or chain.get("technologyRouteMatrix") or [])}
     <div class="table-scroll"><table><thead><tr><th>节点</th><th>竞争格局</th><th>Chokepoint 初判</th><th>利润池/标的含义</th><th>主要反证</th><th>后续 QA</th></tr></thead><tbody>{body}</tbody></table></div>
     </div>
   </details>
@@ -356,8 +533,79 @@ def _render_industry_chokepoints(chain: dict[str, Any]) -> str:
     <summary class="module-head"><span class="module-index">04</span><div><h3>瓶颈点</h3><p>瓶颈点是竞争格局和价值捕获分析后的结果，后续需要进入 Q3/Q4 验证估值和反证。</p></div><span class="chevron">›</span></summary>
     <div class="industry-module-body">
     <div class="chain-chokepoints">{_e(str(text))}</div>
+    {_render_bottleneck_release_timeline(chain.get("bottleneck_release_timeline") or chain.get("bottleneckReleaseTimeline") or [])}
     </div>
   </details>
+""".strip()
+
+
+def _render_component_value_chain(items: list[Any]) -> str:
+    if not isinstance(items, list) or not items:
+        rows = [
+            ["待补充", "子系统/组件", "关键公司", "接受什么输入", "提供给谁", "财务验证指标", "相关 QA"],
+        ]
+    else:
+        rows = [_row_cells(item, 7) for item in items]
+    body = "\n".join("<tr>" + "".join(f"<td>{_e(str(cell))}</td>" for cell in row) + "</tr>" for row in rows)
+    return f"""
+    <div class="component-value-chain">
+      <div class="chain-graph-head"><b>BOM / 组件级价值链</b><span>从系统拆到子系统、供应商和财务验证指标。</span></div>
+      <div class="table-scroll"><table>
+        <thead><tr><th>子系统</th><th>组件/服务</th><th>关键公司</th><th>接受什么</th><th>提供给谁</th><th>财务验证</th><th>相关 QA</th></tr></thead>
+        <tbody>{body}</tbody>
+      </table></div>
+    </div>
+""".strip()
+
+
+def _render_technology_route_matrix(items: list[Any]) -> str:
+    if not isinstance(items, list) or not items:
+        rows = [
+            ["待补充", "适用场景", "解决的约束", "代价/限制", "验证节奏", "主要受益", "反证"],
+        ]
+    else:
+        rows = [
+            [
+                item.get("route", ""),
+                item.get("best_fit") or item.get("bestFit") or "",
+                item.get("solves", ""),
+                item.get("tradeoff", ""),
+                item.get("timing", ""),
+                item.get("beneficiaries", ""),
+                item.get("refute", ""),
+            ]
+            if isinstance(item, dict)
+            else _row_cells(item, 7)
+            for item in items
+        ]
+    body = "\n".join("<tr>" + "".join(f"<td>{_e(str(cell))}</td>" for cell in row) + "</tr>" for row in rows)
+    return f"""
+    <div class="technology-route-matrix">
+      <div class="chain-graph-head"><b>技术路线比较矩阵</b><span>先比较路线，再判断利润池和替代风险。</span></div>
+      <div class="table-scroll"><table>
+        <thead><tr><th>路线</th><th>最适用场景</th><th>解决什么约束</th><th>代价/限制</th><th>验证节奏</th><th>主要受益</th><th>反证</th></tr></thead>
+        <tbody>{body}</tbody>
+      </table></div>
+    </div>
+""".strip()
+
+
+def _render_bottleneck_release_timeline(items: list[Any]) -> str:
+    if not isinstance(items, list) or not items:
+        rows = [
+            ["待补充", "当前约束", "释放/验证信号", "观察节奏", "降级触发", "标的含义"],
+        ]
+    else:
+        rows = [_row_cells(item, 6) for item in items]
+    body = "\n".join("<tr>" + "".join(f"<td>{_e(str(cell))}</td>" for cell in row) + "</tr>" for row in rows)
+    return f"""
+    <div class="bottleneck-release-timeline">
+      <div class="chain-graph-head"><b>瓶颈释放时间表</b><span>瓶颈必须跟踪扩产、缓解和降级触发。</span></div>
+      <div class="table-scroll"><table>
+        <thead><tr><th>瓶颈</th><th>当前约束</th><th>释放/验证信号</th><th>观察节奏</th><th>降级触发</th><th>标的含义</th></tr></thead>
+        <tbody>{body}</tbody>
+      </table></div>
+    </div>
 """.strip()
 
 
@@ -899,6 +1147,8 @@ def _render_targets(targets: list[dict[str, Any]], project: dict[str, Any] | Non
     <h2>标的推荐</h2>
   </div>
   <p class="section-note">该表是研究观察清单，不是买卖指令；排序同时考虑瓶颈强度、未来空间、估值赔率和反证可控性。</p>
+  {_render_target_profit_bridge(targets)}
+  {_render_target_valuation_table(targets)}
   {_render_target_odds_model(targets)}
   <table class="target-table">
     <thead>
@@ -909,6 +1159,87 @@ def _render_targets(targets: list[dict[str, Any]], project: dict[str, Any] | Non
     <tbody>{rows}</tbody>
   </table>
 </section>
+""".strip()
+
+
+def _render_target_profit_bridge(targets: list[dict[str, Any]]) -> str:
+    rows = "\n".join(_target_profit_bridge_row(target) for target in targets)
+    if not rows:
+        rows = '<tr><td colspan="7">暂无可展示财务桥。</td></tr>'
+    return f"""
+  <div class="target-profit-bridge">
+    <p class="artifact-title">标的财务桥</p>
+    <p>把主题受益落到账面科目；只有能进入收入、利润、现金流且可验证的节点，才支持更高观察强度。</p>
+    <table>
+      <thead><tr><th>标的</th><th>核心节点</th><th>需求传导</th><th>财务桥</th><th>必须验证</th><th>降级触发</th><th>状态</th></tr></thead>
+      <tbody>{rows}</tbody>
+    </table>
+  </div>
+""".strip()
+
+
+def _target_profit_bridge_row(target: dict[str, Any]) -> str:
+    target_label = f"{target.get('ticker', '')} {target.get('name', '')}".strip()
+    node = target.get("thesis_node") or target.get("chokepoint") or target.get("bottleneck_node") or ""
+    demand = target.get("demand_bridge") or target.get("rationale") or ""
+    financial = target.get("financial_bridge") or target.get("future_space") or target.get("odds") or ""
+    verify = target.get("next_verification_data") or target.get("required_evidence") or ""
+    downgrade = target.get("downgrade_risk") or target.get("risks") or ""
+    state = target.get("action_state") or target.get("strength") or ""
+    return f"""
+<tr>
+  <td>{_e(target_label)}</td>
+  <td>{_e(str(node))}</td>
+  <td>{_e(str(demand))}</td>
+  <td>{_e(str(financial))}</td>
+  <td>{_e(str(verify))}</td>
+  <td>{_e(str(downgrade))}</td>
+  <td>{_e(str(state))}</td>
+</tr>
+""".strip()
+
+
+def _render_target_valuation_table(targets: list[dict[str, Any]]) -> str:
+    rows = "\n".join(_target_valuation_row(target) for target in targets)
+    if not rows:
+        rows = '<tr><td colspan="9">暂无可展示估值赔率表。</td></tr>'
+    return f"""
+  <div class="target-valuation-table">
+    <p class="artifact-title">估值与赔率表</p>
+    <p>胜率之外必须看是否仍有错配。估值缺失或已充分反映时，行动状态应保守。</p>
+    <table>
+      <thead><tr><th>标的</th><th>总分</th><th>稀缺/垄断</th><th>未充分定价</th><th>业绩弹性</th><th>风险控制</th><th>估值读数</th><th>隐含预期</th><th>下一步验证</th></tr></thead>
+      <tbody>{rows}</tbody>
+    </table>
+  </div>
+""".strip()
+
+
+def _target_valuation_row(target: dict[str, Any]) -> str:
+    target_label = f"{target.get('ticker', '')} {target.get('name', '')}".strip()
+    score = target.get("score") if isinstance(target.get("score"), dict) else {}
+    dimensions = score.get("score_dimensions") if isinstance(score.get("score_dimensions"), dict) else {}
+    total = score.get("total_score") or target.get("strength_score") or target.get("score") or ""
+    scarcity = dimensions.get("scarcity_or_monopoly", "")
+    mispricing = dimensions.get("mispricing", "")
+    elasticity = dimensions.get("earnings_elasticity", "")
+    risk = dimensions.get("risk_control", "")
+    valuation_read = target.get("valuation_read") or target.get("valuation_odds") or target.get("odds") or "待验证"
+    odds = target.get("odds_model") if isinstance(target.get("odds_model"), dict) else {}
+    implied = odds.get("implied_expectation") or target.get("implied_expectation") or ""
+    verify = target.get("next_verification_data") or target.get("required_evidence") or ""
+    return f"""
+<tr>
+  <td>{_e(target_label)}</td>
+  <td>{_e(str(total))}</td>
+  <td>{_e(str(scarcity))}</td>
+  <td>{_e(str(mispricing))}</td>
+  <td>{_e(str(elasticity))}</td>
+  <td>{_e(str(risk))}</td>
+  <td>{_e(str(valuation_read))}</td>
+  <td>{_e(str(implied))}</td>
+  <td>{_e(str(verify))}</td>
+</tr>
 """.strip()
 
 
@@ -1243,6 +1574,36 @@ h1 { max-width: 980px; margin: 0; font-size: clamp(34px, 5vw, 68px); line-height
   gap: 18px;
   padding: 22px;
 }
+.constraint-definition {
+  grid-column: 1 / -1;
+  border: 1px solid rgba(10,132,255,.16);
+  border-radius: 18px;
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
+  padding: 16px;
+}
+.constraint-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.constraint-grid article {
+  border: 1px solid #e5edf7;
+  border-radius: 16px;
+  background: #f8fbff;
+  padding: 14px;
+}
+.constraint-grid span {
+  display: block;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 900;
+  margin-bottom: 6px;
+}
+.constraint-grid p {
+  margin: 0;
+  color: #435064;
+  font-size: 13px;
+}
 .goal-main { font-size: 22px; font-weight: 700; }
 .industry-overview-section {
   display: grid;
@@ -1267,6 +1628,8 @@ h1 { max-width: 980px; margin: 0; font-size: clamp(34px, 5vw, 68px); line-height
 }
 .industry-module-body {
   padding: 22px;
+  min-width: 0;
+  max-width: 100%;
 }
 .module-head {
   display: grid;
@@ -1398,6 +1761,125 @@ h1 { max-width: 980px; margin: 0; font-size: clamp(34px, 5vw, 68px); line-height
   color: #526071;
   line-height: 1.75;
 }
+.chain-detail-panel,
+.space-detail-panel {
+  border: 1px solid rgba(10,132,255,.16);
+  border-radius: 18px;
+  background: #fbfcff;
+  margin: 14px 0;
+  overflow: hidden;
+}
+.chain-detail-panel > summary,
+.space-detail-panel > summary {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 10px;
+  align-items: center;
+  list-style: none;
+  cursor: pointer;
+  padding: 14px 16px;
+}
+.chain-detail-panel > summary::-webkit-details-marker,
+.space-detail-panel > summary::-webkit-details-marker {
+  display: none;
+}
+.chain-detail-panel > summary span:first-child,
+.space-detail-panel > summary span:first-child {
+  color: #27364a;
+  font-weight: 900;
+}
+.chain-detail-panel > summary small,
+.space-detail-panel > summary small {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+.chain-detail-panel[open] > summary,
+.space-detail-panel[open] > summary {
+  border-bottom: 1px solid var(--line);
+}
+.chain-detail-body,
+.space-detail-body {
+  padding: 16px;
+  min-width: 0;
+  max-width: 100%;
+}
+.industry-space-summary {
+  border: 1px solid rgba(10,132,255,.16);
+  border-radius: 18px;
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
+  padding: 16px;
+  margin-bottom: 14px;
+}
+.industry-space-summary > p {
+  margin: 0 0 12px;
+  color: #344054;
+  font-weight: 760;
+  line-height: 1.75;
+}
+.space-summary-grid,
+.space-boundary-grid,
+.space-driver-tree {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.space-summary-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.space-boundary-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.space-summary-grid article,
+.space-boundary-grid article,
+.space-driver-card {
+  border: 1px solid #e5edf7;
+  border-radius: 16px;
+  background: #fff;
+  padding: 14px;
+}
+.space-summary-grid span,
+.space-boundary-grid span,
+.space-driver-card span {
+  display: block;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 900;
+  margin-bottom: 6px;
+}
+.space-summary-grid strong,
+.space-boundary-grid p,
+.space-driver-card b {
+  display: block;
+  margin: 0;
+  color: #344054;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.space-driver-card dl {
+  display: grid;
+  gap: 7px;
+  margin: 10px 0 0;
+}
+.space-driver-card dl div {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  gap: 8px;
+}
+.space-driver-card dt {
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 900;
+}
+.space-driver-card dd {
+  margin: 0;
+  color: #526071;
+  font-size: 12px;
+  line-height: 1.55;
+}
+.space-scenario-table table { min-width: 1600px; }
+.space-sizing-table table { min-width: 1900px; }
+.space-validation-table table { min-width: 1080px; }
 .key-variable-grid {
   display: grid;
   grid-template-columns: minmax(260px, .8fr) minmax(520px, 1.2fr);
@@ -1520,7 +2002,12 @@ h1 { max-width: 980px; margin: 0; font-size: clamp(34px, 5vw, 68px); line-height
   padding: 14px;
 }
 .chain-relationship-graph,
-.chain-map-card {
+.chain-map-card,
+.component-value-chain,
+.technology-route-matrix,
+.bottleneck-release-timeline,
+.target-profit-bridge,
+.target-valuation-table {
   margin: 20px 0;
   border: 1px solid rgba(10,132,255,.16);
   border-radius: 18px;
@@ -1529,6 +2016,20 @@ h1 { max-width: 980px; margin: 0; font-size: clamp(34px, 5vw, 68px); line-height
     linear-gradient(225deg, rgba(29,154,108,.08), transparent 42%),
     #ffffff;
   padding: 16px;
+}
+.component-value-chain,
+.technology-route-matrix,
+.bottleneck-release-timeline,
+.target-profit-bridge,
+.target-valuation-table {
+  overflow-x: auto;
+}
+.component-value-chain table,
+.technology-route-matrix table,
+.bottleneck-release-timeline table,
+.target-profit-bridge table,
+.target-valuation-table table {
+  min-width: 1180px;
 }
 .chain-company-network {
   margin: 20px 0;
@@ -1742,6 +2243,19 @@ h1 { max-width: 980px; margin: 0; font-size: clamp(34px, 5vw, 68px); line-height
   font-weight: 800;
   color: #1d2939;
 }
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+}
+.table-scroll table {
+  width: max-content;
+  min-width: 100%;
+}
 table { width: 100%; border-collapse: collapse; }
 th, td { padding: 12px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
 th { color: #475467; font-size: 13px; background: #f7f9fc; }
@@ -1796,6 +2310,8 @@ th { color: #475467; font-size: 13px; background: #f7f9fc; }
   border-radius: 14px;
   background: var(--surface-strong);
   padding: 14px;
+  min-width: 0;
+  max-width: 100%;
 }
 .artifact-title {
   margin: 0 0 8px;
@@ -1837,7 +2353,9 @@ dd { margin: 0; color: #344054; }
   overflow-x: auto;
 }
 .target-odds-model h3 { margin: 0 0 6px; font-size: 18px; }
-.target-odds-model p { margin: 0 0 12px; color: var(--muted); font-size: 14px; }
+.target-odds-model p,
+.target-profit-bridge p:not(.artifact-title),
+.target-valuation-table p:not(.artifact-title) { margin: 0 0 12px; color: var(--muted); font-size: 14px; }
 .target-table, .target-odds-table, .source-table { background: var(--surface-strong); overflow: hidden; }
 .target-table, .target-odds-table { border-radius: 22px; }
 .target-odds-table { min-width: 1500px; }
@@ -1851,8 +2369,12 @@ dd { margin: 0; color: #344054; }
   .goal-card { grid-template-columns: 1fr; }
   .chain-bridge-grid,
   .chain-node-lens ul,
+  .constraint-grid,
   .chain-qa-grid,
   .chain-value-guide,
+  .space-summary-grid,
+  .space-boundary-grid,
+  .space-driver-tree,
   .key-variable-grid,
   .flow-route,
   .flow-fields { grid-template-columns: 1fr; }

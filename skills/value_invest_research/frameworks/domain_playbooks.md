@@ -14,10 +14,13 @@ Every applicable domain playbook should cover these blocks unless the research o
 2. Supply or access response: capacity, utilization, inventory, lead time, capex, regulation, distribution, data, or trust constraints.
 3. Unit economics and profit bridge: ASP/take rate, cost, gross margin, operating margin, FCF, capex intensity, and working-capital pressure.
 4. Competitive value-capture map: which companies or assets capture revenue/profit at each node; what substitution or internalization path can bypass them.
-5. Market-pricing bridge: current market cap/multiples/discount rate/implied growth versus the required fundamental path.
-6. Disconfirming and counter-supply tests: what evidence would prove demand is overstated, bottlenecks are temporary, pricing is peaking, or supply will catch up.
-7. Capital-chain and second-order beneficiaries: whether high returns pull capex into equipment, materials, infrastructure, channels, or downstream adopters.
-8. Model and口径 reconciliation: compare external models by period, unit, currency, revenue/profit/capex scope, and margin definition before adopting numbers.
+5. Technology or product route comparison when route choice affects value capture: best-fit scenario, solved constraint, cost/power/performance/reliability/serviceability tradeoff, timing/evidence, beneficiaries, and substitution/refuting trigger.
+6. Component/BOM value chain: subsystem, component/service, key companies, demand input, supply input, downstream recipient, financial validation metric, and QA link.
+7. Bottleneck release timeline: current constraint, expansion/release owner, release/verification signal, observation cadence, downgrade trigger, and target implication.
+8. Market-pricing bridge: current market cap/multiples/discount rate/implied growth versus the required fundamental path.
+9. Disconfirming and counter-supply tests: what evidence would prove demand is overstated, bottlenecks are temporary, pricing is peaking, or supply will catch up.
+10. Capital-chain and second-order beneficiaries: whether high returns pull capex into equipment, materials, infrastructure, channels, or downstream adopters.
+11. Model and口径 reconciliation: compare external models by period, unit, currency, revenue/profit/capex scope, and margin definition before adopting numbers.
 
 Each L3-L5 extraction schema should prefer structured rows over prose:
 
@@ -45,11 +48,16 @@ Every domain playbook should define a supply-chain map schema with at least:
 - products/services
 - dependency links
 - value/profit flow
+- component/BOM rows when the industry depends on subsystem economics
+- technology-route rows when competing routes change profit-pool allocation
 - candidate chokepoints
+- bottleneck-release rows for scarcity nodes
 - downstream demand or customer link
 - related Q2/Q4 node
 
 Target scoring should roll component evidence into four core dimensions: `scarcity_or_monopoly`, `mispricing`, `earnings_elasticity`, and `risk_control`. The older component family remains the audit layer under those dimensions.
+
+For final target recommendation, each playbook should define enough inputs to render `target-profit-bridge` and `target-valuation-table`: demand-to-revenue path, margin/FCF bridge, must-verify financial data, valuation-implied expectation, upgrade evidence, downgrade evidence, and action-state cap.
 
 ## Memory Industry Playbook
 

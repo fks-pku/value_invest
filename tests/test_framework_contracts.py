@@ -28,30 +28,40 @@ from value_invest_research.framework_contracts import (
 def _industry_overview_html(title: str) -> str:
     return f"""
           <section id="overview" class="industry-overview-section"><h2>{title}</h2>
+            <style>.table-scroll{{overflow-x:auto}}</style>
             <details class="industry-module supply-chain-section">
               <summary class="module-head"><span class="module-index">01</span><div><h3>产业链与生态位</h3><p>先看清楚生态位。</p></div><span class="chevron">›</span></summary>
               <div class="industry-module-body">
               <div class="chain-explain">
                 <div class="chain-research-bridge"><div class="chain-bridge-grid"><div class="chain-bridge-card"><span>研究目标如何转成产业链问题</span><strong>先理清产业链，再生成 QA。</strong></div><div class="chain-bridge-card"><span>核心投资问题</span><strong>哪些节点捕获价值？</strong></div></div><div class="chain-node-lens"><b>节点筛选口径</b><ul><li><b>需求流入</b><span>订单和收入。</span></li></ul></div></div>
                 <p class="chain-plain-summary">一句话看懂：需求从客户进入链条，经由上中下游交付产品，利润集中在稀缺卡点。</p>
-                <div class="overview-subtitle">泳道图</div>
-                <div class="chain-relationship-graph chain-lane-map">
-                  <div class="chain-graph-head"><b>按上游 / 中游 / 下游展开公司关系</b><span>只保留最影响 QA 和标的排序的节点。</span></div>
-                  <div class="chain-layer-grid">
-                    <article class="chain-layer-card chain-stage-panel"><div class="chain-stage-head"><span>上游</span><strong>负责关键输入</strong></div><ul class="chain-company-list"><li class="chain-company-card">关键产品；高；Q2/Q4。</li></ul></article>
+                <details class="chain-detail-panel chain-lane-panel"><summary><span>泳道图</span><small>按上游 / 中游 / 下游看生态位。</small><span class="chevron">›</span></summary><div class="chain-detail-body">
+                  <div class="chain-relationship-graph chain-lane-map">
+                    <div class="chain-graph-head"><b>按上游 / 中游 / 下游展开公司关系</b><span>只保留最影响 QA 和标的排序的节点。</span></div>
+                    <div class="chain-layer-grid">
+                      <article class="chain-layer-card chain-stage-panel"><div class="chain-stage-head"><span>上游</span><strong>负责关键输入</strong></div><ul class="chain-company-list"><li class="chain-company-card">关键产品；高；Q2/Q4。</li></ul></article>
+                    </div>
                   </div>
-                </div>
-                <div class="overview-subtitle">价值流</div>
-                <div class="chain-map-card chain-value-flow"><div class="chain-sankey-list"><article class="chain-sankey-flow">需求预算 -> 关键供给 -> 系统交付。</article></div></div>
-                <details class="chain-map"><summary>展开结构化链条表 <span class="chevron">›</span></summary>
-                  <table class="chain-table"><tr><th>上游</th><th>中游</th><th>下游</th><th>关键玩家</th><th>价值关系</th></tr></table>
-                </details>
+                </div></details>
+                <details class="chain-detail-panel chain-value-panel"><summary><span>价值流</span><small>解释需求如何变成订单、系统交付和利润验证。</small><span class="chevron">›</span></summary><div class="chain-detail-body">
+                  <div class="chain-map-card chain-value-flow"><div class="chain-simple-flow"><article class="chain-simple-step">云需求 -> 芯片订单 -> 系统交付。系统交付是把芯片、内存、网络和电力散热装成可上线服务器、机柜和集群。</article></div><div class="chain-sankey-list"><article class="chain-sankey-flow">需求预算 -> 关键供给 -> 系统交付。</article></div></div>
+                </div></details>
+                <details class="chain-detail-panel chain-component-panel"><summary><span>BOM / 组件级链条</span><small>拆到子系统、组件和财务验证。</small><span class="chevron">›</span></summary><div class="chain-detail-body">
+                  <div class="component-value-chain"><div class="table-scroll"><table><tr><td>组件链条</td></tr></table></div></div>
+                </div></details>
               </div>
               </div>
             </details>
-            <details class="industry-module industry-space"><summary class="module-head"><span class="module-index">02</span><div><h3>行业空间</h3></div><span class="chevron">›</span></summary><div class="industry-module-body"><table><tr><td>空间</td></tr></table></div></details>
-            <details class="industry-module industry-competition"><summary class="module-head"><span class="module-index">03</span><div><h3>竞争格局与利润池</h3></div><span class="chevron">›</span></summary><div class="industry-module-body"><table><tr><td>竞争</td></tr></table></div></details>
-            <details class="industry-module industry-chokepoints"><summary class="module-head"><span class="module-index">04</span><div><h3>瓶颈点</h3></div><span class="chevron">›</span></summary><div class="industry-module-body"><div class="chain-chokepoints">瓶颈点：认证、产能、软件生态。</div></div></details>
+            <details class="industry-module industry-space"><summary class="module-head"><span class="module-index">02</span><div><h3>行业空间</h3></div><span class="chevron">›</span></summary><div class="industry-module-body">
+              <div class="industry-space-summary"><p>行业空间回答未来 12-36 个月 BOM 级空间，当前规模只是证据锚点。</p><div class="space-summary-grid"><article><span>未来空间结论</span><strong>BOM 子系统仍有扩张空间。</strong></article><article><span>截面证据锚点</span><strong>收入、订单、backlog。</strong></article><article><span>不确定性</span><strong>客户 ROI。</strong></article><article><span>边界</span><strong>不回答竞争和标的。</strong></article></div></div>
+              <details class="space-detail-panel"><summary><span>测算边界</span><small>限定口径。</small><span class="chevron">›</span></summary><div class="space-detail-body"><div class="space-boundary-grid"><article><span>纳入</span><p>AI 工厂硬件支出。</p></article></div></div></details>
+              <details class="space-detail-panel"><summary><span>需求驱动树</span><small>拆驱动。</small><span class="chevron">›</span></summary><div class="space-detail-body"><div class="space-driver-tree"><article><span>1. 需求</span><b>工作负载</b></article></div></div></details>
+              <details class="space-detail-panel"><summary><span>情景判断</span><small>未来空间情景。</small><span class="chevron">›</span></summary><div class="space-detail-body"><div class="space-scenario-table table-scroll"><table><tr><td>Base：BOM 空间扩张。</td></tr></table></div></div></details>
+              <details class="space-detail-panel"><summary><span>BOM 未来空间表</span><small>按子系统判断。</small><span class="chevron">›</span></summary><div class="space-detail-body"><div class="space-sizing-table table-scroll"><table><tr><td>BOM 未来空间</td></tr></table></div></div></details>
+              <details class="space-detail-panel"><summary><span>后续验证数据</span><small>验证数据。</small><span class="chevron">›</span></summary><div class="space-detail-body"><div class="space-validation-table table-scroll"><table><tr><td>验证数据</td></tr></table></div></div></details>
+            </div></details>
+            <details class="industry-module industry-competition"><summary class="module-head"><span class="module-index">03</span><div><h3>竞争格局与利润池</h3></div><span class="chevron">›</span></summary><div class="industry-module-body"><div class="technology-route-matrix"><div class="table-scroll"><table><tr><td>路线比较</td></tr></table></div></div><div class="table-scroll"><table><tr><td>竞争</td></tr></table></div></div></details>
+            <details class="industry-module industry-chokepoints"><summary class="module-head"><span class="module-index">04</span><div><h3>瓶颈点</h3></div><span class="chevron">›</span></summary><div class="industry-module-body"><div class="chain-chokepoints">瓶颈点：认证、产能、软件生态。</div><div class="bottleneck-release-timeline"><div class="table-scroll"><table><tr><td>释放节奏</td></tr></table></div></div></div></details>
             <details class="industry-module industry-key-variables"><summary class="module-head"><span class="module-index">05</span><div><h3>关键变量与待验证数据</h3></div><span class="chevron">›</span></summary><div class="industry-module-body"><div class="key-variable-grid"><details class="chain-data-gaps"><summary>关键变量 <span class="chevron">›</span></summary><ul><li>关键数据缺口</li></ul></details><table><tr><td>QA 映射</td></tr></table></div></div></details>
           </section>""".rstrip()
 
@@ -64,7 +74,7 @@ class FrameworkContractsTests(unittest.TestCase):
         <main>
           <header class="hero"></header>
           <nav class="top-nav"></nav>
-          <section id="goal"><h2>{goal_title}</h2><div class="goal-card"></div></section>
+          <section id="goal"><h2>{goal_title}</h2><div class="goal-card"><div class="constraint-definition"><div class="constraint-grid"><article><span>精确定义</span><p>先定义关键约束。</p></article></div></div></div></section>
 {_industry_overview_html(chain_title)}
           <section id="qa"><h2>{qa_title}</h2><div class="qa-body"></div>
             <details class="qa-card level-1" id="q1" open>
@@ -116,6 +126,8 @@ class FrameworkContractsTests(unittest.TestCase):
             </details>
           </section>
           <section class="target-section" id="targets"><h2>{target_title}</h2>
+            <div class="target-profit-bridge"><table><tr><td>财务桥</td></tr></table></div>
+            <div class="target-valuation-table"><table><tr><td>估值表</td></tr></table></div>
             <div class="target-odds-model">
               <table class="target-odds-table"><tr><th>隐含预期</th><td>赔率待验证</td></tr></table>
             </div>
@@ -132,6 +144,32 @@ class FrameworkContractsTests(unittest.TestCase):
         self.assertEqual(result["summary"]["supply_chain_sections"], 1)
         self.assertEqual(result["summary"]["level3_cards"], 2)
         self.assertEqual(result["summary"]["interactive_level3_cards"], 2)
+
+        duplicated_overview_artifact_result = validate_report_contract_html(
+            html.replace(
+                f"<section id=\"qa\"><h2>{qa_title}</h2>",
+                f"<section id=\"qa\"><h2>{qa_title}</h2><div class=\"demand-space-model artifact-card\"></div>",
+                1,
+            ),
+            mode="historical_backtest",
+            require_l3=True,
+        )
+        self.assertFalse(duplicated_overview_artifact_result["ok"])
+        self.assertIn(
+            "qa_duplicates_industry_overview",
+            {issue["code"] for issue in duplicated_overview_artifact_result["issues"]},
+        )
+
+        noninteractive_chain_detail_result = validate_report_contract_html(
+            html.replace('class="chain-detail-panel', 'class="chain-detail-static'),
+            mode="historical_backtest",
+            require_l3=True,
+        )
+        self.assertFalse(noninteractive_chain_detail_result["ok"])
+        self.assertIn(
+            "missing_interactive_chain_detail_panels",
+            {issue["code"] for issue in noninteractive_chain_detail_result["issues"]},
+        )
 
         no_chain_result = validate_report_contract_html(
             html.replace(
@@ -176,8 +214,8 @@ class FrameworkContractsTests(unittest.TestCase):
         self.assertIn("missing_beginner_chain_explainer", {issue["code"] for issue in no_beginner_result["issues"]})
 
         meta_drift_invalid = html.replace(
-            f"<section id=\"goal\"><h2>{goal_title}</h2><div class=\"goal-card\"></div></section>",
-            f"<section id=\"goal\"><h2>{goal_title}</h2><div class=\"goal-card\"></div><p>本轮升级了机制深度映射。</p></section>",
+            f"<section id=\"goal\"><h2>{goal_title}</h2><div class=\"goal-card\"><div class=\"constraint-definition\"><div class=\"constraint-grid\"><article><span>精确定义</span><p>先定义关键约束。</p></article></div></div></div></section>",
+            f"<section id=\"goal\"><h2>{goal_title}</h2><div class=\"goal-card\"><div class=\"constraint-definition\"><div class=\"constraint-grid\"><article><span>精确定义</span><p>先定义关键约束。</p></article></div></div></div><p>本轮升级了机制深度映射。</p></section>",
         )
         meta_result = validate_report_contract_html(meta_drift_invalid, mode="historical_backtest", require_l3=True)
         self.assertFalse(meta_result["ok"])
@@ -190,7 +228,7 @@ class FrameworkContractsTests(unittest.TestCase):
         <main>
           <header class="hero"></header>
           <nav class="top-nav"></nav>
-          <section id="goal"><h2>{goal_title}</h2><div class="goal-card"></div></section>
+          <section id="goal"><h2>{goal_title}</h2><div class="goal-card"><div class="constraint-definition"><div class="constraint-grid"><article><span>精确定义</span><p>先定义关键约束。</p></article></div></div></div></section>
 {_industry_overview_html(chain_title)}
           <section id="qa"><h2>{qa_title}</h2><div class="qa-body"></div>
             <details class="qa-card level-1" id="q1" open>
@@ -235,6 +273,8 @@ class FrameworkContractsTests(unittest.TestCase):
             </details>
           </section>
           <section id="targets" class="target-section"><h2>{target_title}</h2>
+            <div class="target-profit-bridge"><table><tr><td>财务桥</td></tr></table></div>
+            <div class="target-valuation-table"><table><tr><td>估值表</td></tr></table></div>
             <div class="target-odds-model">
               <table class="target-odds-table"><tr><td>赔率待验证</td></tr></table>
             </div>

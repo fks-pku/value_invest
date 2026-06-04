@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>研究质量金标准样例</title>
+  <style>.table-scroll{overflow-x:auto}</style>
 </head>
 <body>
   <header class="hero"><h1>半导体硬件投资机会样例</h1></header>
@@ -10,7 +11,16 @@
   <main>
     <section id="goal">
       <h2>当前研究的问题</h2>
-      <div class="goal-card">判断 AI 基础设施增量需求是否能通过稀缺瓶颈转化为可投资的具体标的观察清单。</div>
+      <div class="goal-card">
+        判断 AI 基础设施增量需求是否能通过稀缺瓶颈转化为可投资的具体标的观察清单。
+        <div class="constraint-definition">
+          <div class="constraint-grid">
+            <article><span>主题边界</span><p>AI 基础设施硬件链条。</p></article>
+            <article><span>精确定义</span><p>先定义瓶颈，再判断财务转化。</p></article>
+            <article><span>验证周期</span><p>按季度跟踪订单、毛利和估值。</p></article>
+          </div>
+        </div>
+      </div>
     </section>
     <section id="overview" class="industry-overview-section">
       <h2>行业概况</h2>
@@ -26,24 +36,37 @@
             <div class="chain-node-lens"><b>节点筛选口径</b><ul><li><b>需求流入</b><span>订单和收入。</span></li></ul></div>
           </div>
           <p class="chain-plain-summary">一句话看懂：云厂商预算先进入服务器和加速卡，再传导到 GPU、HBM、先进封装、代工和设备，利润优先流向产能稀缺且替代难度高的节点。</p>
-          <div class="overview-subtitle">泳道图</div>
-          <div class="chain-relationship-graph chain-lane-map">
-            <div class="chain-layer-grid">
-              <article class="chain-layer-card chain-stage-panel"><div class="chain-stage-head"><span class="chain-stage-name">上游</span><strong>设备、材料、EDA 和制造能力。</strong></div><ul class="chain-company-list"><li class="chain-company-card">关键设备和材料；高；Q2/Q4。</li></ul></article>
-              <article class="chain-layer-card chain-stage-panel"><div class="chain-stage-head"><span class="chain-stage-name">中游</span><strong>GPU、ASIC、HBM、先进封装和代工。</strong></div><ul class="chain-company-list"><li class="chain-company-card">加速器、HBM 和封装产能；高；Q2/Q4。</li></ul></article>
-              <article class="chain-layer-card chain-stage-panel"><div class="chain-stage-head"><span class="chain-stage-name">下游</span><strong>云厂商、服务器 OEM 和企业 AI 应用。</strong></div><ul class="chain-company-list"><li class="chain-company-card">应用收入和 ROI 信号；需求验证节点；Q1/Q3。</li></ul></article>
+          <details class="chain-detail-panel chain-lane-panel"><summary><span>泳道图</span><small>按上游 / 中游 / 下游看生态位。</small><span class="chevron">›</span></summary><div class="chain-detail-body">
+            <div class="chain-relationship-graph chain-lane-map">
+              <div class="chain-layer-grid">
+                <article class="chain-layer-card chain-stage-panel"><div class="chain-stage-head"><span class="chain-stage-name">上游</span><strong>设备、材料、EDA 和制造能力。</strong></div><ul class="chain-company-list"><li class="chain-company-card">关键设备和材料；高；Q2/Q4。</li></ul></article>
+                <article class="chain-layer-card chain-stage-panel"><div class="chain-stage-head"><span class="chain-stage-name">中游</span><strong>GPU、ASIC、HBM、先进封装和代工。</strong></div><ul class="chain-company-list"><li class="chain-company-card">加速器、HBM 和封装产能；高；Q2/Q4。</li></ul></article>
+                <article class="chain-layer-card chain-stage-panel"><div class="chain-stage-head"><span class="chain-stage-name">下游</span><strong>云厂商、服务器 OEM 和企业 AI 应用。</strong></div><ul class="chain-company-list"><li class="chain-company-card">应用收入和 ROI 信号；需求验证节点；Q1/Q3。</li></ul></article>
+              </div>
             </div>
-          </div>
-          <div class="overview-subtitle">价值流</div>
-          <div class="chain-map-card chain-value-flow">需求预算 -> GPU/ASIC/HBM/先进封装 -> 系统交付 -> 云收入和 ROI 验证。</div>
-          <details class="chain-map"><summary>展开结构化链条表 <span class="chevron">›</span></summary><table class="chain-table"><tr><th>环节</th><th>产品/服务</th><th>关键玩家</th><th>价值/利润流</th></tr></table></details>
+          </div></details>
+          <details class="chain-detail-panel chain-value-panel"><summary><span>价值流</span><small>解释需求如何变成订单、系统交付和利润验证。</small><span class="chevron">›</span></summary><div class="chain-detail-body">
+            <div class="chain-map-card chain-value-flow"><div class="chain-simple-flow">云需求 -> 芯片订单 -> 制造和内存 -> 系统交付。系统交付是把芯片、内存、网络、电力散热和机柜集成为可上线服务器、机柜或集群。</div>需求预算 -> GPU/ASIC/HBM/先进封装 -> 系统交付 -> 云收入和 ROI 验证。</div>
+          </div></details>
+          <details class="chain-detail-panel chain-component-panel"><summary><span>BOM / 组件级链条</span><small>拆到子系统、组件和财务验证。</small><span class="chevron">›</span></summary><div class="chain-detail-body">
+            <div class="component-value-chain">
+              <div class="table-scroll"><table><tr><th>子系统</th><th>组件/服务</th><th>关键公司</th><th>财务验证</th></tr><tr><td>高端内存</td><td>HBM</td><td>MU / SK hynix</td><td>ASP 和毛利率</td></tr></table></div>
+            </div>
+          </div></details>
         </div>
         </div>
       </details>
-      <details class="industry-module industry-space"><summary class="module-head"><span class="module-index">02</span><div><h3>行业空间</h3></div><span class="chevron">›</span></summary><div class="industry-module-body"><table><tr><td>AI capex 和服务器订单验证空间。</td></tr></table></div></details>
-      <details class="industry-module industry-competition"><summary class="module-head"><span class="module-index">03</span><div><h3>竞争格局与利润池</h3></div><span class="chevron">›</span></summary><div class="industry-module-body"><table><tr><td>利润优先流向 HBM、先进封装和高质量物理基础设施节点。</td></tr></table></div></details>
-      <details class="industry-module industry-chokepoints"><summary class="module-head"><span class="module-index">04</span><div><h3>瓶颈点</h3></div><span class="chevron">›</span></summary><div class="industry-module-body"><div class="chain-chokepoints">HBM 产能、CoWoS/先进封装、先进制程、关键设备交付。</div></div></details>
-      <details class="industry-module industry-key-variables"><summary class="module-head"><span class="module-index">05</span><div><h3>关键变量与待验证数据</h3></div><span class="chevron">›</span></summary><div class="industry-module-body"><div class="key-variable-grid"><details class="chain-data-gaps"><summary>关键变量 <span class="chevron">›</span></summary><ul><li>capex、backlog、ASP、毛利率和客户 ROI。</li></ul></details><table><tr><td>Q1-Q4 由行业概况生成。</td></tr></table></div></div></details>
+      <details class="industry-module industry-space"><summary class="module-head"><span class="module-index">02</span><div><h3>行业空间</h3></div><span class="chevron">›</span></summary><div class="industry-module-body">
+        <div class="industry-space-summary"><p>行业空间回答未来 12-36 个月 BOM 级空间，当前规模只是证据锚点。</p><div class="space-summary-grid"><article><span>未来空间结论</span><strong>BOM 子系统仍有扩张空间。</strong></article><article><span>截面证据锚点</span><strong>AI capex、服务器订单和 backlog。</strong></article><article><span>不确定性</span><strong>客户 ROI 和交付质量。</strong></article><article><span>边界</span><strong>不处理利润池归属。</strong></article></div></div>
+        <details class="space-detail-panel"><summary><span>测算边界</span><small>限定口径。</small><span class="chevron">›</span></summary><div class="space-detail-body"><div class="space-boundary-grid"><article><span>纳入</span><p>AI 工厂硬件空间。</p></article></div></div></details>
+        <details class="space-detail-panel"><summary><span>需求驱动树</span><small>工作负载到硬件。</small><span class="chevron">›</span></summary><div class="space-detail-body"><div class="space-driver-tree"><article><span>1. 需求</span><b>工作负载增长。</b></article></div></div></details>
+        <details class="space-detail-panel"><summary><span>情景判断</span><small>未来空间情景。</small><span class="chevron">›</span></summary><div class="space-detail-body"><div class="space-scenario-table table-scroll"><table><tr><td>Base：BOM 空间扩张。</td></tr></table></div></div></details>
+        <details class="space-detail-panel"><summary><span>BOM 未来空间表</span><small>按子系统判断。</small><span class="chevron">›</span></summary><div class="space-detail-body"><div class="space-sizing-table table-scroll"><table><tr><td>AI capex 和服务器订单只是证据锚点，BOM 空间来自 HBM、先进封装、网络和液冷。</td></tr></table></div></div></details>
+        <details class="space-detail-panel"><summary><span>后续验证数据</span><small>验证空间。</small><span class="chevron">›</span></summary><div class="space-detail-body"><div class="space-validation-table table-scroll"><table><tr><td>capex、backlog、收入和 ROI。</td></tr></table></div></div></details>
+      </div></details>
+      <details class="industry-module industry-competition"><summary class="module-head"><span class="module-index">03</span><div><h3>竞争格局与利润池</h3></div><span class="chevron">›</span></summary><div class="industry-module-body"><div class="technology-route-matrix"><div class="table-scroll"><table><tr><th>路线</th><th>反证</th></tr><tr><td>GPU 平台</td><td>custom ASIC 加速替代</td></tr></table></div></div><div class="table-scroll"><table><tr><td>利润优先流向 HBM、先进封装和高质量物理基础设施节点。</td></tr></table></div></div></details>
+      <details class="industry-module industry-chokepoints"><summary class="module-head"><span class="module-index">04</span><div><h3>瓶颈点</h3></div><span class="chevron">›</span></summary><div class="industry-module-body"><div class="chain-chokepoints">HBM 产能、CoWoS/先进封装、先进制程、关键设备交付。</div><div class="bottleneck-release-timeline"><div class="table-scroll"><table><tr><th>瓶颈</th><th>降级触发</th></tr><tr><td>HBM</td><td>ASP 反转</td></tr></table></div></div></div></details>
+      <details class="industry-module industry-key-variables"><summary class="module-head"><span class="module-index">05</span><div><h3>关键变量与待验证数据</h3></div><span class="chevron">›</span></summary><div class="industry-module-body"><div class="key-variable-grid"><details class="chain-data-gaps"><summary>关键变量 <span class="chevron">›</span></summary><ul><li>capex、backlog、ASP、毛利率和客户 ROI。</li></ul></details><div class="table-scroll"><table><tr><td>Q1-Q4 由行业概况生成。</td></tr></table></div></div></div></details>
     </section>
     <section id="qa" class="qa-body">
       <h2>下钻 QA</h2>
@@ -134,6 +157,12 @@
     </section>
     <section id="targets" class="target-section">
       <h2>标的推荐</h2>
+      <div class="target-profit-bridge">
+        <table><tr><th>标的</th><th>财务桥</th><th>必须验证</th></tr><tr><td>MU</td><td>HBM demand -> ASP / margin</td><td>客户资格和毛利率</td></tr></table>
+      </div>
+      <div class="target-valuation-table">
+        <table><tr><th>标的</th><th>估值读数</th><th>下一步验证</th></tr><tr><td>MU</td><td>需要确认未充分定价</td><td>同业分位和盈利上修</td></tr></table>
+      </div>
       <div class="target-odds-model">
         <table class="target-odds-table">
           <tr><th>标的</th><th>隐含预期</th><th>Base 路径</th><th>Bull 路径</th><th>Bear 路径</th><th>升级数据</th><th>降级数据</th><th>赔率判断</th></tr>
