@@ -334,49 +334,96 @@ def _render_chain_value_flow_card(flow: dict[str, Any]) -> str:
 
 
 def _render_industry_space(chain: dict[str, Any]) -> str:
-    rows = chain.get("industry_space_sizing_rows") or chain.get("industry_space_rows") or chain.get("industrySpace") or []
+    rows = (
+        chain.get("industry_space_evidence_pack")
+        or chain.get("industry_space_bom_reasoning")
+        or chain.get("industry_space_node_elasticity_rows")
+        or chain.get("industry_space_sizing_rows")
+        or chain.get("industry_space_rows")
+        or chain.get("industrySpace")
+        or []
+    )
     if not isinstance(rows, list) or not rows:
         rows = [
             {
-                "segment": "BOM 子系统待拆分",
-                "futureSpace": str(chain.get("plain_summary", "")) or "等待未来空间判断。",
+                "node": "BOM 子系统待拆分",
+                "elasticityQuestion": "行业扩张会放大哪个必不可少节点？",
+                "directionalElasticity": str(chain.get("plain_summary", "")) or "节点弹性待判断。",
+                "whyMatters": "空间门槛只用于决定是否值得继续做 chokepoint 下钻。",
                 "currentEvidence": "收入、订单、backlog、capex 锚点待补。",
                 "expansionMechanism": "工作负载增长传导到 BOM 子系统。",
-                "upperBound": "客户 ROI、供给扩张和交付质量。",
+                "capOrRisk": "客户 ROI、供给扩张和交付质量。",
                 "confidence": "中",
                 "nextData": "进入 Q1/Q2 下钻。",
             }
         ]
-    scenario_rows = chain.get("industry_space_scenario_rows") if isinstance(chain.get("industry_space_scenario_rows"), list) else []
     conclusion = chain.get("industry_space_conclusion") if isinstance(chain.get("industry_space_conclusion"), dict) else {}
     summary = str(
         conclusion.get("judgment")
-        or "行业空间需要回答未来空间，而不是复述当前规模。当前收入、订单、backlog 和 capex 指引只是证据锚点，核心是按 BOM 子系统判断未来扩张机制、上限约束和验证数据。"
+        or "本节只回答一个问题：未来需求会放大哪些 BOM 节点。每个节点按证据、空间推理、风险反证和结论展开。"
     )
-    future_space = str(conclusion.get("futureSpace") or conclusion.get("future_space") or "未来空间结论待补：需要按 BOM 子系统判断 12-36 个月扩张路径。")
-    anchor = str(conclusion.get("anchor") or "当前截面证据锚点待补：收入、订单、backlog、capex 指引。")
-    uncertainty = str(conclusion.get("uncertainty") or "最大不确定性：客户 ROI、订单转收入和交付质量。")
-    boundary = str(conclusion.get("boundary") or "本模块只做行业空间测算，不回答竞争格局、利润池归属、估值或标的排序。")
     return f"""
   <details class="industry-module industry-space">
-    <summary class="module-head"><span class="module-index">02</span><div><h3>行业空间</h3><p>只回答未来空间：用当前截面锚点做证据，按 BOM 子系统判断未来 12-36 个月空间、约束和验证数据。</p></div><span class="chevron">›</span></summary>
+    <summary class="module-head"><span class="module-index">02</span><div><h3>行业空间</h3><p>直接按 BOM 节点说明未来空间：证据、空间推理、风险反证和结论。</p></div><span class="chevron">›</span></summary>
     <div class="industry-module-body">
       <div class="industry-space-summary">
         <p>{_e(summary)}</p>
-        <div class="space-summary-grid">
-          <article><span>未来空间结论</span><strong>{_e(future_space)}</strong></article>
-          <article><span>截面证据锚点</span><strong>{_e(anchor)}</strong></article>
-          <article><span>最大不确定性</span><strong>{_e(uncertainty)}</strong></article>
-          <article><span>本模块边界</span><strong>{_e(boundary)}</strong></article>
-        </div>
       </div>
-      {_render_space_detail_panel("测算边界", "先限定哪些支出算行业空间，哪些不在这里讨论。", _render_space_boundary(chain), "space-boundary-panel")}
-      {_render_space_detail_panel("需求驱动树", "把需求源头、BOM 放大和物理交付拆成可观测驱动。", _render_space_driver_tree(chain), "space-driver-panel")}
-      {_render_space_detail_panel("情景判断", "用 Bear/Base/Bull 判断未来空间的上修或降级路径。", _render_space_scenario_table(scenario_rows), "space-scenario-panel")}
-      {_render_space_detail_panel("BOM 未来空间表", "按 BOM 子系统判断未来空间、扩张机制、上限约束和验证数据；当前锚点只作为证据。", _render_space_sizing_table(rows), "space-sizing-panel")}
-      {_render_space_detail_panel("后续验证数据", "列出能强化或削弱空间测算的关键数据，不进入竞争格局判断。", _render_space_validation_table(chain), "space-validation-panel")}
+      {_render_space_bom_reasoning(rows)}
     </div>
   </details>
+""".strip()
+
+
+def _render_space_bom_reasoning(rows: list[Any]) -> str:
+    cards = [_render_space_node_card(row) for row in rows]
+    return f'<div class="space-bom-reasoning">{"".join(cards)}</div>'
+
+
+def _render_space_node_card(row: Any) -> str:
+    if not isinstance(row, dict):
+        cells = _row_cells(row, 6)
+        row = {
+            "node": cells[0] if len(cells) > 0 else "BOM 节点",
+            "coreQuestion": cells[1] if len(cells) > 1 else "该节点是否被未来空间放大？",
+            "facts": [cells[2]] if len(cells) > 2 else [],
+            "inferenceChain": [cells[3]] if len(cells) > 3 else [],
+            "refuteData": cells[4] if len(cells) > 4 else "",
+            "chokepointImplication": cells[5] if len(cells) > 5 else "",
+            "sourceIds": [],
+        }
+    facts = row.get("facts")
+    if not isinstance(facts, list) or not facts:
+        evidence = row.get("currentEvidence") or row.get("current_evidence") or row.get("currentAnchor") or row.get("current_anchor") or row.get("evidence") or "证据待补。"
+        facts = [evidence]
+    inference = row.get("inferenceChain") or row.get("inference_chain")
+    if not isinstance(inference, list) or not inference:
+        mechanism = row.get("expansionMechanism") or row.get("expansion_mechanism") or row.get("whyMatters") or row.get("why_matters") or "空间推理待补。"
+        elasticity = row.get("nodeElasticity") or row.get("node_elasticity") or row.get("directionalElasticity") or row.get("directional_elasticity") or ""
+        inference = [mechanism, elasticity] if elasticity else [mechanism]
+    risk = row.get("refuteData") or row.get("refute_data") or row.get("capOrRisk") or row.get("cap_or_risk") or row.get("upperBound") or row.get("upper_bound") or "风险反证待补。"
+    conclusion = row.get("chokepointImplication") or row.get("chokepoint_implication") or row.get("conclusion") or row.get("nextData") or row.get("next_data") or "结论待补。"
+    source_ids = row.get("sourceIds") or row.get("source_ids") or []
+    if not isinstance(source_ids, list):
+        source_ids = [source_ids] if source_ids else []
+    fact_items = "".join(f"<li>{_e(str(fact))}</li>" for fact in facts if str(fact).strip())
+    reasoning_items = "".join(f"<li>{_e(str(step))}</li>" for step in inference if str(step).strip())
+    source_chips = "".join(f'<span class="source-chip">{_e(str(source_id))}</span>' for source_id in source_ids)
+    return f"""
+      <details class="space-node-card">
+        <summary>
+          <span class="space-node-label">BOM 节点</span>
+          <strong>{_e(str(row.get("node") or row.get("segment") or ""))}</strong>
+          <small>{_e(str(row.get("coreQuestion") or row.get("core_question") or row.get("elasticityQuestion") or row.get("elasticity_question") or ""))}</small>
+          <span class="chevron">›</span>
+        </summary>
+        <div class="space-node-reasoning">
+          <section class="space-node-section space-node-evidence"><h4>证据</h4><ul>{fact_items}</ul><div class="space-node-sources">{source_chips}</div></section>
+          <section class="space-node-section space-node-space-reasoning"><h4>空间推理</h4><ol>{reasoning_items}</ol></section>
+          <section class="space-node-section space-node-risk"><h4>风险反证</h4><p>{_e(str(risk))}</p></section>
+          <section class="space-node-section space-node-conclusion"><h4>结论</h4><p>{_e(str(conclusion))}</p></section>
+        </div>
+      </details>
 """.strip()
 
 
@@ -435,40 +482,123 @@ def _render_space_driver_tree(chain: dict[str, Any]) -> str:
     return f'<div class="space-driver-tree">{"".join(cards)}</div>'
 
 
-def _render_space_sizing_table(rows: list[Any]) -> str:
+def _render_space_node_elasticity_table(rows: list[Any]) -> str:
     body_rows = []
     for row in rows:
         if isinstance(row, dict):
             cells = [
-                row.get("segment", ""),
-                row.get("futureSpace") or row.get("future_space") or row.get("read", ""),
+                row.get("node") or row.get("segment", ""),
+                row.get("elasticityQuestion") or row.get("elasticity_question") or row.get("formula", ""),
+                row.get("directionalElasticity") or row.get("directional_elasticity") or row.get("futureSpace") or row.get("future_space") or row.get("read", ""),
+                row.get("whyMatters") or row.get("why_matters") or row.get("investment_read") or "用于判断该节点是否值得进入 Q2 chokepoint 下钻。",
                 row.get("currentEvidence") or row.get("current_evidence") or row.get("currentAnchor") or row.get("current_anchor", ""),
                 row.get("expansionMechanism") or row.get("expansion_mechanism") or row.get("sizingMethod") or row.get("sizing_method", ""),
-                row.get("upperBound") or row.get("upper_bound") or row.get("growthDriver") or row.get("growth_driver", ""),
+                row.get("capOrRisk") or row.get("cap_or_risk") or row.get("upperBound") or row.get("upper_bound") or row.get("growthDriver") or row.get("growth_driver", ""),
                 row.get("confidence", ""),
                 ", ".join(str(item) for item in row.get("sourceIds", row.get("source_ids", []))) if isinstance(row.get("sourceIds", row.get("source_ids", [])), list) else row.get("sourceIds", row.get("source_ids", "")),
                 row.get("nextData") or row.get("next_data", ""),
             ]
         else:
-            cells = _row_cells(row, 8)
+            cells = _row_cells(row, 10)
             if len(cells) == 5:
-                cells = [cells[0], "未来空间待判断。", cells[1], "用截面证据作为空间锚点。", cells[2], "中", "", cells[4]]
-        cells = (cells + [""] * 8)[:8]
+                cells = [cells[0], "弹性问题待补。", cells[1], "用于判断 chokepoint 下钻优先级。", cells[2], "用截面证据作为空间锚点。", "客户 ROI、供给扩张和交付质量。", "中", "", cells[4]]
+        cells = (cells + [""] * 10)[:10]
         body_rows.append("<tr>" + "".join(f"<td>{_e(str(cell))}</td>" for cell in cells) + "</tr>")
     return """
-      <div class="space-sizing-table table-scroll"><table>
-        <thead><tr><th>BOM 子系统</th><th>未来空间判断</th><th>当前截面证据</th><th>扩张机制</th><th>空间上限 / 约束</th><th>可信度</th><th>来源</th><th>下一步数据</th></tr></thead>
+      <div class="space-node-elasticity-table table-scroll"><table>
+        <thead><tr><th>BOM 节点</th><th>弹性问题</th><th>方向性弹性</th><th>为什么影响 chokepoint</th><th>当前截面证据</th><th>扩张机制</th><th>上限 / 风险</th><th>可信度</th><th>来源</th><th>下一步数据</th></tr></thead>
         <tbody>{}</tbody>
       </table></div>
 """.format("".join(body_rows)).strip()
+
+
+def _render_space_evidence_pack(rows: list[Any]) -> str:
+    if not rows:
+        rows = [
+            {
+                "node": "节点证据包待补",
+                "coreQuestion": "哪些 cutoff-visible 事实能支持或反证该节点的未来空间弹性？",
+                "facts": ["收入、订单、backlog、capex、RPO、价格、库存和毛利证据待补。"],
+                "inferenceChain": ["事实锚点 -> 空间弹性 -> chokepoint 影响 -> 反证数据。"],
+                "nodeElasticity": "节点弹性待判断。",
+                "chokepointImplication": "证据包用于把行业空间传递给 Q2 chokepoint 和 Q4 target ranking。",
+                "refuteData": "需要补充能推翻空间弹性的客户、供给、价格和现金流数据。",
+                "sourceIds": [],
+            }
+        ]
+    cards = []
+    for row in rows:
+        if not isinstance(row, dict):
+            cells = _row_cells(row, 6)
+            row = {
+                "node": cells[0] if len(cells) > 0 else "节点证据包",
+                "coreQuestion": cells[1] if len(cells) > 1 else "该节点是否被行业空间放大？",
+                "facts": [cells[2]] if len(cells) > 2 else [],
+                "inferenceChain": [cells[3]] if len(cells) > 3 else [],
+                "nodeElasticity": cells[4] if len(cells) > 4 else "",
+                "refuteData": cells[5] if len(cells) > 5 else "",
+                "sourceIds": [],
+            }
+        facts = row.get("facts") if isinstance(row.get("facts"), list) else [row.get("facts", "")]
+        inference = row.get("inferenceChain") or row.get("inference_chain")
+        inference_steps = inference if isinstance(inference, list) else [inference or ""]
+        source_ids = row.get("sourceIds") or row.get("source_ids") or []
+        if not isinstance(source_ids, list):
+            source_ids = [source_ids] if source_ids else []
+        fact_items = "".join(f"<li>{_e(str(fact))}</li>" for fact in facts if str(fact).strip())
+        chain_items = "".join(f"<li>{_e(str(step))}</li>" for step in inference_steps if str(step).strip())
+        source_chips = "".join(f'<span class="source-chip">{_e(str(source_id))}</span>' for source_id in source_ids)
+        cards.append(
+            f"""
+        <article class="space-evidence-card">
+          <header>
+            <span>节点证据包</span>
+            <h4>{_e(str(row.get("node", "")))}</h4>
+            <p>{_e(str(row.get("coreQuestion") or row.get("core_question") or ""))}</p>
+          </header>
+          <div class="space-evidence-grid">
+            <section><b>事实锚点</b><ul>{fact_items}</ul><div class="space-evidence-sources">{source_chips}</div></section>
+            <section><b>推理链条</b><ol class="space-inference-chain">{chain_items}</ol></section>
+            <section><b>节点弹性</b><p>{_e(str(row.get("nodeElasticity") or row.get("node_elasticity") or ""))}</p></section>
+            <section><b>对 chokepoint 的影响</b><p>{_e(str(row.get("chokepointImplication") or row.get("chokepoint_implication") or ""))}</p></section>
+            <section class="space-refute-box"><b>反证数据</b><p>{_e(str(row.get("refuteData") or row.get("refute_data") or ""))}</p></section>
+          </div>
+        </article>
+""".strip()
+        )
+    return f'<div class="space-evidence-pack">{"".join(cards)}</div>'
+
+
+def _render_space_gate_model(model: dict[str, Any]) -> str:
+    horizon = str(model.get("horizon") or "未来 12-36 个月，使用截止日前可见材料作为判断起点。")
+    space_level = str(model.get("spaceLevel") or model.get("space_level") or model.get("totalRange") or model.get("total_range") or "空间等级待判断。")
+    expansion = str(model.get("expansionCertainty") or model.get("expansion_certainty") or model.get("dedupedDefinition") or model.get("deduped_definition") or "扩张确定性待判断。")
+    amplification = str(model.get("chokepointAmplification") or model.get("chokepoint_amplification") or "chokepoint 放大作用待判断。")
+    confidence = str(model.get("confidence") or "中：当前证据用于决定是否继续下钻，不用于精确总盘。")
+    method = str(model.get("method") or "用收入、订单、backlog、capex 作为锚点，判断产业扩张是否足以放大稀缺节点。")
+    not_used = str(model.get("notUsed") or model.get("not_used") or model.get("nonAdditiveWarning") or model.get("non_additive_warning") or "不使用手工精确 TAM 作为标的评分依据。")
+    return f"""
+      <div class="space-gate-model">
+        <div class="space-model-grid">
+          <article><span>判断 horizon</span><strong>{_e(horizon)}</strong></article>
+          <article><span>空间等级</span><strong>{_e(space_level)}</strong></article>
+          <article><span>扩张确定性</span><strong>{_e(expansion)}</strong></article>
+          <article><span>瓶颈放大作用</span><strong>{_e(amplification)}</strong></article>
+        </div>
+        <div class="space-model-note"><b>使用方法</b><p>{_e(method)}</p></div>
+        <div class="space-model-note warning"><b>不用作精确 TAM</b><p>{_e(not_used)}</p></div>
+        <div class="space-model-note"><b>可信度</b><p>{_e(confidence)}</p></div>
+      </div>
+""".strip()
 
 
 def _render_space_scenario_table(rows: list[Any]) -> str:
     if not rows:
         rows = [
             {
-                "scenario": "Base / 待验证扩张",
-                "futureSpace": "未来空间是否扩张取决于 BOM 子系统能否继续被需求和规格放大。",
+                "scenario": "门槛通过 / 待验证扩张",
+                "gateResult": "空间等级待判断",
+                "futureSpace": "未来空间是否扩张取决于需求和规格能否放大必不可少节点。",
                 "keyAssumptions": "客户 capex、订单、backlog 和 ROI 不明显恶化。",
                 "expansionPath": "需求 -> BOM 子系统 -> 系统交付 -> 收入和现金流。",
                 "upperBound": "客户 ROI、供给扩张、交付质量和价格压力。",
@@ -480,6 +610,7 @@ def _render_space_scenario_table(rows: list[Any]) -> str:
         if isinstance(row, dict):
             cells = [
                 row.get("scenario", ""),
+                row.get("gateResult") or row.get("gate_result") or row.get("estimated2028") or row.get("estimated_2028") or row.get("numericRange") or row.get("numeric_range", ""),
                 row.get("futureSpace") or row.get("future_space", ""),
                 row.get("keyAssumptions") or row.get("key_assumptions", ""),
                 row.get("expansionPath") or row.get("expansion_path", ""),
@@ -487,12 +618,12 @@ def _render_space_scenario_table(rows: list[Any]) -> str:
                 row.get("watchData") or row.get("watch_data", ""),
             ]
         else:
-            cells = _row_cells(row, 6)
-        cells = (cells + [""] * 6)[:6]
+            cells = _row_cells(row, 7)
+        cells = (cells + [""] * 7)[:7]
         body_rows.append("<tr>" + "".join(f"<td>{_e(str(cell))}</td>" for cell in cells) + "</tr>")
     return """
       <div class="space-scenario-table table-scroll"><table>
-        <thead><tr><th>情景</th><th>未来空间判断</th><th>关键假设</th><th>扩张路径</th><th>空间上限 / 削弱条件</th><th>后续验证数据</th></tr></thead>
+        <thead><tr><th>情景</th><th>空间门槛</th><th>未来空间判断</th><th>关键假设</th><th>扩张路径</th><th>削弱条件</th><th>后续验证数据</th></tr></thead>
         <tbody>{}</tbody>
       </table></div>
 """.format("".join(body_rows)).strip()
@@ -1817,6 +1948,89 @@ h1 { max-width: 980px; margin: 0; font-size: clamp(34px, 5vw, 68px); line-height
   font-weight: 760;
   line-height: 1.75;
 }
+.space-bom-reasoning {
+  display: grid;
+  gap: 12px;
+}
+.space-node-card {
+  border: 1px solid rgba(10,132,255,.16);
+  border-radius: 16px;
+  background: #fbfcff;
+  overflow: hidden;
+}
+.space-node-card > summary {
+  display: grid;
+  grid-template-columns: auto minmax(160px, .45fr) minmax(240px, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  list-style: none;
+  cursor: pointer;
+  padding: 14px 16px;
+}
+.space-node-card > summary::-webkit-details-marker {
+  display: none;
+}
+.space-node-card[open] > summary {
+  border-bottom: 1px solid var(--line);
+}
+.space-node-label {
+  display: inline-flex;
+  border-radius: 999px;
+  background: #eef5ff;
+  color: var(--blue);
+  border: 1px solid #d8e8ff;
+  font-size: 11px;
+  font-weight: 900;
+  padding: 3px 8px;
+}
+.space-node-card summary strong {
+  color: #27364a;
+  font-size: 14px;
+}
+.space-node-card summary small {
+  color: #667085;
+  font-size: 12px;
+  line-height: 1.45;
+}
+.space-node-reasoning {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  padding: 14px;
+}
+.space-node-section {
+  border: 1px solid #e2e9f3;
+  border-radius: 14px;
+  background: #fff;
+  padding: 12px;
+}
+.space-node-section h4 {
+  margin: 0 0 8px;
+  color: #27364a;
+  font-size: 13px;
+}
+.space-node-section p,
+.space-node-section li {
+  color: #526071;
+  font-size: 12px;
+  line-height: 1.65;
+}
+.space-node-section ul,
+.space-node-section ol {
+  margin: 0;
+  padding-left: 18px;
+}
+.space-node-risk {
+  background: #fffaf0;
+  border-color: #f4d28f;
+}
+.space-node-conclusion {
+  background: #f5fbf7;
+  border-color: #cfead9;
+}
+.space-node-sources {
+  margin-top: 10px;
+}
 .space-summary-grid,
 .space-boundary-grid,
 .space-driver-tree {
@@ -1832,7 +2046,8 @@ h1 { max-width: 980px; margin: 0; font-size: clamp(34px, 5vw, 68px); line-height
 }
 .space-summary-grid article,
 .space-boundary-grid article,
-.space-driver-card {
+.space-driver-card,
+.space-model-grid article {
   border: 1px solid #e5edf7;
   border-radius: 16px;
   background: #fff;
@@ -1840,7 +2055,8 @@ h1 { max-width: 980px; margin: 0; font-size: clamp(34px, 5vw, 68px); line-height
 }
 .space-summary-grid span,
 .space-boundary-grid span,
-.space-driver-card span {
+.space-driver-card span,
+.space-model-grid span {
   display: block;
   color: var(--blue);
   font-size: 12px;
@@ -1848,6 +2064,7 @@ h1 { max-width: 980px; margin: 0; font-size: clamp(34px, 5vw, 68px); line-height
   margin-bottom: 6px;
 }
 .space-summary-grid strong,
+.space-model-grid strong,
 .space-boundary-grid p,
 .space-driver-card b {
   display: block;
@@ -1877,8 +2094,112 @@ h1 { max-width: 980px; margin: 0; font-size: clamp(34px, 5vw, 68px); line-height
   font-size: 12px;
   line-height: 1.55;
 }
+.space-gate-model {
+  display: grid;
+  gap: 12px;
+}
+.space-model-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+.space-model-note {
+  border: 1px solid rgba(10,132,255,.16);
+  border-radius: 16px;
+  background: #fff;
+  padding: 14px;
+}
+.space-model-note.warning {
+  background: #fffaf0;
+  border-color: #f4d28f;
+}
+.space-model-note b {
+  display: block;
+  color: #27364a;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+.space-model-note p {
+  margin: 0;
+  color: #526071;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.space-evidence-pack {
+  display: grid;
+  gap: 12px;
+}
+.space-evidence-card {
+  border: 1px solid rgba(10,132,255,.16);
+  border-radius: 16px;
+  background: linear-gradient(180deg, #ffffff, #f8fbff);
+  padding: 14px;
+}
+.space-evidence-card header {
+  border-bottom: 1px solid #e6edf7;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+}
+.space-evidence-card header span {
+  display: inline-flex;
+  color: var(--blue);
+  background: #edf6ff;
+  border: 1px solid #cfe6ff;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 900;
+  padding: 3px 8px;
+  margin-bottom: 8px;
+}
+.space-evidence-card h4 {
+  margin: 0 0 5px;
+  color: #1d2939;
+  font-size: 16px;
+}
+.space-evidence-card header p {
+  margin: 0;
+  color: #526071;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.space-evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.space-evidence-grid section {
+  border: 1px solid #e2e9f3;
+  border-radius: 14px;
+  background: #fff;
+  padding: 12px;
+}
+.space-evidence-grid b {
+  display: block;
+  color: #27364a;
+  font-size: 13px;
+  margin-bottom: 7px;
+}
+.space-evidence-grid p,
+.space-evidence-grid li {
+  color: #526071;
+  font-size: 12px;
+  line-height: 1.65;
+}
+.space-evidence-grid ul,
+.space-inference-chain {
+  margin: 0;
+  padding-left: 18px;
+}
+.space-refute-box {
+  grid-column: 1 / -1;
+  background: #fffaf0 !important;
+  border-color: #f4d28f !important;
+}
+.space-evidence-sources {
+  margin-top: 10px;
+}
 .space-scenario-table table { min-width: 1600px; }
-.space-sizing-table table { min-width: 1900px; }
+.space-node-elasticity-table table { min-width: 2200px; }
 .space-validation-table table { min-width: 1080px; }
 .key-variable-grid {
   display: grid;
@@ -2373,11 +2694,18 @@ dd { margin: 0; color: #344054; }
   .chain-qa-grid,
   .chain-value-guide,
   .space-summary-grid,
+  .space-node-reasoning,
   .space-boundary-grid,
   .space-driver-tree,
+  .space-model-grid,
+  .space-evidence-grid,
   .key-variable-grid,
   .flow-route,
   .flow-fields { grid-template-columns: 1fr; }
+  .space-node-card > summary { grid-template-columns: 1fr auto; }
+  .space-node-label,
+  .space-node-card summary strong,
+  .space-node-card summary small { grid-column: 1 / 2; }
   .qa-card summary { grid-template-columns: auto 1fr auto; }
   .qa-count { grid-column: 2 / 3; }
   .target-table, .target-odds-table, .source-table, .chain-table { font-size: 13px; }

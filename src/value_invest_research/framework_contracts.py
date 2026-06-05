@@ -524,13 +524,13 @@ def validate_report_contract_html(
         )
     required_industry_space_classes = [
         "industry-space-summary",
-        "space-summary-grid",
-        "space-detail-panel",
-        "space-boundary-grid",
-        "space-driver-tree",
-        "space-scenario-table",
-        "space-sizing-table",
-        "space-validation-table",
+        "space-bom-reasoning",
+        "space-node-card",
+        "space-node-reasoning",
+        "space-node-evidence",
+        "space-node-space-reasoning",
+        "space-node-risk",
+        "space-node-conclusion",
     ]
     missing_industry_space_classes = [
         class_name for class_name in required_industry_space_classes if _class_count(html, class_name) == 0
@@ -539,17 +539,27 @@ def validate_report_contract_html(
         _issue(
             issues,
             "error",
-            "missing_industry_space_sizing_model",
-            "行业概况/行业空间 must include a future-space BOM sizing model: conclusion, boundary, driver tree, scenario table, BOM future-space table, and validation data; missing "
+            "missing_industry_space_bom_reasoning",
+            "行业概况/行业空间 must directly render BOM node space reasoning cards with evidence, space reasoning, risk/refute, and conclusion; missing "
             + ", ".join(missing_industry_space_classes),
         )
-    industry_space_detail_panels = _tag_class_count(html, "details", "space-detail-panel")
-    if industry_space_detail_panels < 5:
+    industry_space_node_cards = _tag_class_count(html, "details", "space-node-card")
+    if industry_space_node_cards < 1:
         _issue(
             issues,
             "error",
-            "missing_interactive_industry_space_panels",
-            "行业空间 must keep its future-space subcomponents collapsible as details.space-detail-panel nodes for 测算边界, 需求驱动树, 情景判断, BOM 未来空间表, and 后续验证数据",
+            "missing_interactive_industry_space_node_cards",
+            "行业空间 must render each key BOM node as a collapsible details.space-node-card",
+        )
+    gate_terms = ["BOM", "证据", "空间推理", "风险反证", "结论"]
+    missing_gate_terms = [term for term in gate_terms if term not in html]
+    if _class_count(html, "industry-space") and missing_gate_terms:
+        _issue(
+            issues,
+            "error",
+            "missing_industry_space_bom_reasoning_terms",
+            "行业空间 must organize BOM node reasoning with the four public fields: 证据, 空间推理, 风险反证, 结论; missing "
+            + ", ".join(missing_gate_terms),
         )
     if _class_count(html, "table-scroll") == 0 or "overflow-x:auto" not in html.replace(" ", ""):
         _issue(
@@ -721,13 +731,13 @@ def validate_report_contract_html(
         "bottleneck-release-timeline",
         "industry-space",
         "industry-space-summary",
-        "space-summary-grid",
-        "space-detail-panel",
-        "space-boundary-grid",
-        "space-driver-tree",
-        "space-scenario-table",
-        "space-sizing-table",
-        "space-validation-table",
+        "space-bom-reasoning",
+        "space-node-card",
+        "space-node-reasoning",
+        "space-node-evidence",
+        "space-node-space-reasoning",
+        "space-node-risk",
+        "space-node-conclusion",
         "industry-competition",
         "industry-chokepoints",
         "industry-key-variables",

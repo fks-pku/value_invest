@@ -120,12 +120,13 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
             "bottleneck-release-timeline",
             "industry-space",
             "industry-space-summary",
-            "space-detail-panel",
-            "space-boundary-grid",
-            "space-driver-tree",
-            "space-scenario-table",
-            "space-sizing-table",
-            "space-validation-table",
+            "space-bom-reasoning",
+            "space-node-card",
+            "space-node-reasoning",
+            "space-node-evidence",
+            "space-node-space-reasoning",
+            "space-node-risk",
+            "space-node-conclusion",
             "table-scroll",
             "industry-competition",
             "industry-chokepoints",
@@ -230,10 +231,16 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
                 self.assertIn("component-value-chain", doc_text)
                 self.assertIn("chain-simple-flow", doc_text)
                 self.assertIn("chain-detail-panel", doc_text)
-                self.assertIn("space-sizing-table", doc_text)
-                self.assertIn("space-scenario-table", doc_text)
-                self.assertIn("space-validation-table", doc_text)
-                self.assertIn("future-space", doc_text)
+                self.assertIn("space-bom-reasoning", doc_text)
+                self.assertIn("space-node-card", doc_text)
+                self.assertIn("space-node-evidence", doc_text)
+                self.assertIn("space-node-space-reasoning", doc_text)
+                self.assertIn("space-node-risk", doc_text)
+                self.assertIn("space-node-conclusion", doc_text)
+                self.assertIn("证据", doc_text)
+                self.assertIn("空间推理", doc_text)
+                self.assertIn("风险反证", doc_text)
+                self.assertIn("结论", doc_text)
                 self.assertIn("BOM", doc_text)
                 self.assertIn("table-scroll", doc_text)
                 self.assertIn("technology-route-matrix", doc_text)
