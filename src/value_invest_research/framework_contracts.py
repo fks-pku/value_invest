@@ -529,6 +529,9 @@ def validate_report_contract_html(
         "space-node-reasoning",
         "space-node-evidence",
         "space-node-space-reasoning",
+        "space-node-sizing",
+        "space-sizing-grid",
+        "space-node-sizing-table",
         "space-node-risk",
         "space-node-conclusion",
     ]
@@ -540,7 +543,7 @@ def validate_report_contract_html(
             issues,
             "error",
             "missing_industry_space_bom_reasoning",
-            "行业概况/行业空间 must directly render BOM node space reasoning cards with evidence, space reasoning, risk/refute, and conclusion; missing "
+            "行业概况/行业空间 must directly render BOM node space reasoning cards with evidence, numerical sizing, risk/refute, and conclusion; missing "
             + ", ".join(missing_industry_space_classes),
         )
     industry_space_node_cards = _tag_class_count(html, "details", "space-node-card")
@@ -551,14 +554,14 @@ def validate_report_contract_html(
             "missing_interactive_industry_space_node_cards",
             "行业空间 must render each key BOM node as a collapsible details.space-node-card",
         )
-    gate_terms = ["BOM", "证据", "空间推理", "风险反证", "结论"]
+    gate_terms = ["BOM", "证据", "空间推理", "轻量数值测算", "测算公式", "当前锚点", "未来假设", "置信度", "风险反证", "结论"]
     missing_gate_terms = [term for term in gate_terms if term not in html]
     if _class_count(html, "industry-space") and missing_gate_terms:
         _issue(
             issues,
             "error",
             "missing_industry_space_bom_reasoning_terms",
-            "行业空间 must organize BOM node reasoning with the four public fields: 证据, 空间推理, 风险反证, 结论; missing "
+            "行业空间 must organize BOM node reasoning with evidence, space reasoning, lightweight numerical sizing, risk/refute, and conclusion; missing "
             + ", ".join(missing_gate_terms),
         )
     if _class_count(html, "table-scroll") == 0 or "overflow-x:auto" not in html.replace(" ", ""):
@@ -736,6 +739,9 @@ def validate_report_contract_html(
         "space-node-reasoning",
         "space-node-evidence",
         "space-node-space-reasoning",
+        "space-node-sizing",
+        "space-sizing-grid",
+        "space-node-sizing-table",
         "space-node-risk",
         "space-node-conclusion",
         "industry-competition",

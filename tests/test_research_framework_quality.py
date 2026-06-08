@@ -125,6 +125,9 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
             "space-node-reasoning",
             "space-node-evidence",
             "space-node-space-reasoning",
+            "space-node-sizing",
+            "space-sizing-grid",
+            "space-node-sizing-table",
             "space-node-risk",
             "space-node-conclusion",
             "table-scroll",
@@ -235,10 +238,17 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
                 self.assertIn("space-node-card", doc_text)
                 self.assertIn("space-node-evidence", doc_text)
                 self.assertIn("space-node-space-reasoning", doc_text)
+                self.assertIn("space-node-sizing", doc_text)
+                self.assertIn("space-sizing-grid", doc_text)
+                self.assertIn("space-node-sizing-table", doc_text)
                 self.assertIn("space-node-risk", doc_text)
                 self.assertIn("space-node-conclusion", doc_text)
                 self.assertIn("证据", doc_text)
                 self.assertIn("空间推理", doc_text)
+                self.assertIn("轻量数值测算", doc_text)
+                self.assertIn("测算公式", doc_text)
+                self.assertIn("当前锚点", doc_text)
+                self.assertIn("未来假设", doc_text)
                 self.assertIn("风险反证", doc_text)
                 self.assertIn("结论", doc_text)
                 self.assertIn("BOM", doc_text)

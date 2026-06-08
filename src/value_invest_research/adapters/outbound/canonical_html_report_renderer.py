@@ -360,7 +360,7 @@ def _render_industry_space(chain: dict[str, Any]) -> str:
     conclusion = chain.get("industry_space_conclusion") if isinstance(chain.get("industry_space_conclusion"), dict) else {}
     summary = str(
         conclusion.get("judgment")
-        or "本节只回答一个问题：未来需求会放大哪些 BOM 节点。每个节点按证据、空间推理、风险反证和结论展开。"
+        or "本节只回答一个问题：未来需求会放大哪些 BOM 节点。每个节点按证据、空间推理、风险反证和结论展开；空间推理内必须包含轻量数值测算。"
     )
     return f"""
   <details class="industry-module industry-space">
@@ -409,6 +409,7 @@ def _render_space_node_card(row: Any) -> str:
     fact_items = "".join(f"<li>{_e(str(fact))}</li>" for fact in facts if str(fact).strip())
     reasoning_items = "".join(f"<li>{_e(str(step))}</li>" for step in inference if str(step).strip())
     source_chips = "".join(f'<span class="source-chip">{_e(str(source_id))}</span>' for source_id in source_ids)
+    numeric_sizing = _render_space_node_sizing(row.get("numericSizing") or row.get("numeric_sizing"))
     return f"""
       <details class="space-node-card">
         <summary>
@@ -419,11 +420,57 @@ def _render_space_node_card(row: Any) -> str:
         </summary>
         <div class="space-node-reasoning">
           <section class="space-node-section space-node-evidence"><h4>证据</h4><ul>{fact_items}</ul><div class="space-node-sources">{source_chips}</div></section>
-          <section class="space-node-section space-node-space-reasoning"><h4>空间推理</h4><ol>{reasoning_items}</ol></section>
+          <section class="space-node-section space-node-space-reasoning"><h4>空间推理</h4><ol>{reasoning_items}</ol>{numeric_sizing}</section>
           <section class="space-node-section space-node-risk"><h4>风险反证</h4><p>{_e(str(risk))}</p></section>
           <section class="space-node-section space-node-conclusion"><h4>结论</h4><p>{_e(str(conclusion))}</p></section>
         </div>
       </details>
+""".strip()
+
+
+def _render_space_node_sizing(sizing: Any) -> str:
+    if not isinstance(sizing, dict):
+        sizing = {}
+    formula = str(sizing.get("formula") or "待补。")
+    current_anchor = str(sizing.get("currentAnchor") or sizing.get("current_anchor") or "待补。")
+    future_assumption = str(sizing.get("futureAssumption") or sizing.get("future_assumption") or "待补。")
+    confidence = str(sizing.get("confidence") or "低：缺少可验证锚点。")
+    source_ids = sizing.get("sourceIds") or sizing.get("source_ids") or []
+    if not isinstance(source_ids, list):
+        source_ids = [source_ids] if source_ids else []
+    scenarios = sizing.get("scenarios") if isinstance(sizing.get("scenarios"), list) else []
+    if not scenarios:
+        scenarios = [["待补", "待补", "需要补充 Bear/Base/Bull 或代理锚点。"]]
+    rows = []
+    for scenario in scenarios:
+        if isinstance(scenario, dict):
+            cells = [
+                scenario.get("case") or scenario.get("name") or scenario.get("scenario") or "",
+                scenario.get("range") or scenario.get("value") or scenario.get("anchor") or "",
+                scenario.get("logic") or scenario.get("meaning") or scenario.get("note") or "",
+            ]
+        else:
+            cells = _row_cells(scenario, 3)
+        cells = (cells + [""] * 3)[:3]
+        rows.append("<tr>" + "".join(f"<td>{_e(str(cell))}</td>" for cell in cells) + "</tr>")
+    source_chips = "".join(f'<span class="source-chip">{_e(str(source_id))}</span>' for source_id in source_ids)
+    return f"""
+        <div class="space-node-sizing">
+          <h5>轻量数值测算</h5>
+          <div class="space-sizing-grid">
+            <div><span>测算公式</span><p>{_e(formula)}</p></div>
+            <div><span>当前锚点</span><p>{_e(current_anchor)}</p></div>
+            <div><span>未来假设</span><p>{_e(future_assumption)}</p></div>
+            <div><span>置信度</span><p>{_e(confidence)}</p></div>
+          </div>
+          <div class="space-node-sizing-table table-scroll">
+            <table>
+              <thead><tr><th>情景</th><th>空间区间 / 代理锚点</th><th>推理含义</th></tr></thead>
+              <tbody>{"".join(rows)}</tbody>
+            </table>
+          </div>
+          <div class="space-node-sources">{source_chips}</div>
+        </div>
 """.strip()
 
 
@@ -2031,6 +2078,50 @@ h1 { max-width: 980px; margin: 0; font-size: clamp(34px, 5vw, 68px); line-height
 .space-node-sources {
   margin-top: 10px;
 }
+.space-node-sizing {
+  margin-top: 12px;
+  border: 1px solid #d9e8fb;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #f8fbff, #fff);
+  padding: 12px;
+}
+.space-node-sizing h5 {
+  margin: 0 0 10px;
+  color: var(--blue);
+  font-size: 12px;
+}
+.space-sizing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.space-sizing-grid div {
+  border: 1px solid #e5edf7;
+  border-radius: 10px;
+  background: #fff;
+  padding: 9px;
+}
+.space-sizing-grid span {
+  display: block;
+  color: #667085;
+  font-size: 11px;
+  font-weight: 900;
+  margin-bottom: 5px;
+}
+.space-sizing-grid p {
+  margin: 0;
+  color: #344054;
+  font-size: 12px;
+  line-height: 1.55;
+}
+.space-node-sizing-table table {
+  min-width: 760px;
+}
+.space-node-sizing-table th,
+.space-node-sizing-table td {
+  font-size: 12px;
+}
 .space-summary-grid,
 .space-boundary-grid,
 .space-driver-tree {
@@ -2695,6 +2786,7 @@ dd { margin: 0; color: #344054; }
   .chain-value-guide,
   .space-summary-grid,
   .space-node-reasoning,
+  .space-sizing-grid,
   .space-boundary-grid,
   .space-driver-tree,
   .space-model-grid,
