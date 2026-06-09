@@ -1,0 +1,137 @@
+{
+  "schema_version": "1.0",
+  "domains": {
+    "ai_factory": {
+      "label": "AI factory and semiconductor hardware",
+      "aliases": [
+        "ai_factory",
+        "semiconductor_hardware",
+        "memory_industry",
+        "optical_module",
+        "data_center_ai"
+      ],
+      "priority_sources": [
+        {
+          "id": "semianalysis",
+          "name": "SemiAnalysis",
+          "domain": "semianalysis.com",
+          "access": "mixed_public_and_paywalled",
+          "reliability": "high",
+          "categories": ["third_party", "company_tam", "customer_guidance"],
+          "node_keywords": ["AI factory", "GPU", "ASIC", "HBM", "CoWoS", "networking", "interconnect", "datacenter capex"],
+          "query_hints": ["BOM", "supply chain", "cluster", "TCO", "capacity", "AI datacenter"]
+        },
+        {
+          "id": "trendforce",
+          "name": "TrendForce",
+          "domain": "trendforce.com",
+          "access": "public_summary_and_paid_data",
+          "reliability": "high",
+          "categories": ["third_party", "company_tam"],
+          "node_keywords": ["HBM", "DRAM", "NAND", "AI server", "CoWoS", "supply demand"],
+          "query_hints": ["forecast", "capacity", "ASP", "market size", "supply demand"]
+        },
+        {
+          "id": "techinsights",
+          "name": "TechInsights",
+          "domain": "techinsights.com",
+          "access": "mixed_public_and_paid",
+          "reliability": "high",
+          "categories": ["third_party", "company_tam"],
+          "node_keywords": ["semiconductor", "HBM", "advanced packaging", "AI accelerator", "datacenter"],
+          "query_hints": ["market analysis", "forecast", "supply chain", "competitive analysis"]
+        },
+        {
+          "id": "omdia",
+          "name": "Omdia",
+          "domain": "omdia.tech.informa.com",
+          "access": "mixed_public_and_paid",
+          "reliability": "high",
+          "categories": ["third_party", "company_tam", "customer_guidance"],
+          "node_keywords": ["AI data center", "semiconductor", "server", "networking", "memory"],
+          "query_hints": ["forecast", "market size", "datacenter", "cloud capex"]
+        },
+        {
+          "id": "delloro",
+          "name": "Dell'Oro Group",
+          "domain": "delloro.com",
+          "access": "public_summary_and_paid_data",
+          "reliability": "high",
+          "categories": ["third_party", "company_tam"],
+          "node_keywords": ["data center switch", "Ethernet", "AI networking", "server", "telecom"],
+          "query_hints": ["forecast", "market share", "Ethernet AI", "switch"]
+        },
+        {
+          "id": "lightcounting",
+          "name": "LightCounting",
+          "domain": "lightcounting.com",
+          "access": "public_summary_and_paid_data",
+          "reliability": "high",
+          "categories": ["third_party", "company_tam"],
+          "node_keywords": ["optical transceiver", "800G", "1.6T", "datacenter interconnect", "AEC"],
+          "query_hints": ["forecast", "shipments", "optical modules", "AI cluster"]
+        },
+        {
+          "id": "the_information",
+          "name": "The Information",
+          "domain": "theinformation.com",
+          "access": "paywalled",
+          "reliability": "medium_high",
+          "categories": ["customer_guidance", "message"],
+          "node_keywords": ["OpenAI", "Microsoft", "Meta", "Google", "Amazon", "AI datacenter"],
+          "query_hints": ["capex", "orders", "AI infrastructure", "customer demand"]
+        },
+        {
+          "id": "serve_the_home",
+          "name": "ServeTheHome",
+          "domain": "servethehome.com",
+          "access": "public",
+          "reliability": "medium_high",
+          "categories": ["third_party", "financial_evidence"],
+          "node_keywords": ["AI server", "rack", "networking", "GPU", "liquid cooling"],
+          "query_hints": ["systems", "rack scale", "BOM", "datacenter"]
+        },
+        {
+          "id": "semi_engineering",
+          "name": "Semiconductor Engineering",
+          "domain": "semiengineering.com",
+          "access": "public",
+          "reliability": "medium_high",
+          "categories": ["third_party"],
+          "node_keywords": ["advanced packaging", "chiplet", "HBM", "interconnect", "thermal"],
+          "query_hints": ["engineering constraint", "capacity", "roadmap", "yield"]
+        },
+        {
+          "id": "semi",
+          "name": "SEMI",
+          "domain": "semi.org",
+          "access": "public_summary_and_paid_data",
+          "reliability": "high",
+          "categories": ["third_party", "company_tam"],
+          "node_keywords": ["semiconductor equipment", "fab", "capex", "wafer", "packaging"],
+          "query_hints": ["forecast", "equipment spending", "capacity", "fab"]
+        },
+        {
+          "id": "company_ir",
+          "name": "Company IR and SEC filings",
+          "domain": "",
+          "access": "public",
+          "reliability": "primary",
+          "categories": ["company_guidance", "company_tam", "financial_evidence"],
+          "node_keywords": ["investor relations", "earnings", "10-K", "10-Q", "press release"],
+          "query_hints": ["guidance", "TAM", "revenue", "gross margin", "backlog", "capex"]
+        },
+        {
+          "id": "customer_ir",
+          "name": "Customer IR and filings",
+          "domain": "",
+          "access": "public",
+          "reliability": "primary",
+          "categories": ["customer_guidance", "financial_evidence"],
+          "node_keywords": ["Microsoft", "Amazon", "Alphabet", "Meta", "Oracle", "capex", "RPO"],
+          "query_hints": ["capex guidance", "RPO", "PPE purchases", "cloud revenue", "AI demand"]
+        }
+      ]
+    }
+  }
+}

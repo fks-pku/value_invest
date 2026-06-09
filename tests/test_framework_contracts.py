@@ -21,6 +21,7 @@ from value_invest_research.framework_contracts import (
     validate_source_extraction_schema,
     validate_qa_tree_schema,
     validate_report_contract_html,
+    validate_industry_space_source_search_pipeline,
     validate_target_observation_contract,
 )
 
@@ -55,7 +56,7 @@ def _industry_overview_html(title: str) -> str:
             <details class="industry-module industry-space"><summary class="module-head"><span class="module-index">02</span><div><h3>行业空间</h3></div><span class="chevron">›</span></summary><div class="industry-module-body">
               <div class="industry-space-summary"><p>行业空间直接按 BOM 节点说明未来空间。</p></div>
               <div class="space-bom-reasoning">
-                <details class="space-node-card"><summary><span class="space-node-label">BOM 节点</span><strong>HBM</strong><small>该节点是否被未来空间放大？</small><span class="chevron">›</span></summary><div class="space-node-reasoning"><section class="space-node-section space-node-evidence"><h4>证据</h4><p>收入、订单、backlog。</p></section><section class="space-node-section space-node-space-reasoning"><h4>空间推理</h4><p>AI capex 放大 BOM 节点。</p><div class="space-node-sizing"><h5>轻量数值测算</h5><div class="space-sizing-grid"><div><span>测算公式</span><p>HBM 空间 = 出货量 x 单卡容量 x ASP。</p></div><div><span>当前锚点</span><p>当前收入锚点。</p></div><div><span>未来假设</span><p>Base 继续扩张。</p></div><div><span>置信度</span><p>中。</p></div></div><div class="space-node-sizing-table table-scroll"><table><tr><td>Bear</td><td>待验证</td><td>需求降级。</td></tr><tr><td>Base</td><td>扩张</td><td>空间放大。</td></tr></table></div></div></section><section class="space-node-section space-node-risk"><h4>风险反证</h4><p>客户 ROI 下修。</p></section><section class="space-node-section space-node-conclusion"><h4>结论</h4><p>进入 chokepoint 下钻。</p></section></div></details>
+                <details class="space-node-card"><summary><span class="space-node-label">BOM 节点</span><strong>HBM</strong><small>该节点是否被未来空间放大？</small><span class="chevron">›</span></summary><div class="space-node-reasoning"><section class="space-node-section space-node-space-reasoning"><h4>空间推理</h4><p>AI capex 放大 BOM 节点。</p><div class="space-node-sizing"><div class="space-method-step"><div class="space-step-title"><span class="space-step-index">1</span><h5>公开拆法</h5></div><div class="space-public-methods space-method-card-grid space-node-sizing-table"><section class="space-method-card"><header><span>公司指引</span><small>待补</small></header><div class="space-method-card-body"><p class="space-method-empty">待补。</p></div></section><section class="space-method-card"><header><span>公司 TAM</span><small>1 条</small></header><div class="space-method-card-body"><article class="space-method-entry"><b>公司或机构：Micron</b><p><strong>指引内容：</strong>2025 $35B -> 2028 $100B</p><dl><div><dt>BOM 节点</dt><dd>HBM</dd></div><div><dt>时间范围</dt><dd>2025E-2028E</dd></div><div><dt>可验证指标</dt><dd>HBM ASP、客户资格、毛利率</dd></div><div><dt>置信度</dt><dd>中</dd></div></dl><div class="space-method-entry-sources"><div class="source-chips"><span class="source-chip">SRC-MU-FY26-Q1-PREPARED</span></div></div></article></div></section><section class="space-method-card"><header><span>客户侧指引</span><small>待补</small></header><div class="space-method-card-body"><p class="space-method-empty">待补。</p></div></section><section class="space-method-card"><header><span>第三方拆法</span><small>待补</small></header><div class="space-method-card-body"><p class="space-method-empty">待补。</p></div></section><section class="space-method-card"><header><span>财务兑现证据</span><small>待补</small></header><div class="space-method-card-body"><p class="space-method-empty">待补。</p></div></section></div></div><div class="space-horizon-conclusion"><div class="space-step-title"><span class="space-step-index">2</span><h5>空间结论</h5></div><p class="space-horizon-summary">结论：结合五类信息，HBM 未来空间仍大。</p><div class="space-horizon-grid"><article class="space-horizon-card"><span>短期</span><strong class="space-horizon-size space-horizon-large">大</strong><p>公司指引和财务兑现证据支持近端需求。</p></article><article class="space-horizon-card"><span>中期</span><strong class="space-horizon-size space-horizon-large">大</strong><p>公司 TAM 和第三方拆法支持中期扩张。</p></article><article class="space-horizon-card"><span>长期</span><strong class="space-horizon-size space-horizon-mid">中高</strong><p>长期空间仍大，但受供给扩张和价格影响。</p></article></div><small class="space-step-confidence">置信度：中。</small></div></div></section><section class="space-node-section space-node-evidence"><h4>证据</h4><p>收入、订单、backlog。</p></section></div></details>
               </div>
             </div></details>
             <details class="industry-module industry-competition"><summary class="module-head"><span class="module-index">03</span><div><h3>竞争格局与利润池</h3></div><span class="chevron">›</span></summary><div class="industry-module-body"><div class="technology-route-matrix"><div class="table-scroll"><table><tr><td>路线比较</td></tr></table></div></div><div class="table-scroll"><table><tr><td>竞争</td></tr></table></div></div></details>
@@ -750,6 +751,43 @@ class FrameworkContractsTests(unittest.TestCase):
         self.assertTrue(review_result["ok"], review_result["issues"])
         target_result = validate_target_observation_contract(workbench["scoring_worksheet"])
         self.assertTrue(target_result["ok"], target_result["issues"])
+
+    def test_industry_space_source_search_requires_professional_universe_queries(self):
+        categories = ["company_guidance", "company_tam", "customer_guidance", "third_party", "financial_evidence"]
+        base_plan = {
+            category: {
+                "status": "gap",
+                "search_query": f"HBM {category}",
+                "expected_fields": ["period", "value", "source_visible_at"],
+                "allowed_usage": "historical_thesis",
+                "preferred_parser_skill": "industry-report-analysis",
+                "gap_reason": "No reliable source found in fixture.",
+            }
+            for category in categories
+        }
+        workbench = {
+            "industry_space_evidence_pack": [
+                {"node": "HBM", "publicSizingMethods": {"methods": []}},
+            ],
+            "industry_space_source_search_matrix": [
+                {"node": "HBM", "category_search_plan": deepcopy(base_plan)},
+            ],
+        }
+
+        result = validate_industry_space_source_search_pipeline(workbench)
+        codes = {issue["code"] for issue in result["issues"]}
+        self.assertFalse(result["ok"])
+        self.assertIn("industry_space_source_search_missing_priority_sources", codes)
+        self.assertIn("industry_space_source_search_missing_directed_queries", codes)
+
+        enriched_plan = deepcopy(base_plan)
+        for category, entry in enriched_plan.items():
+            entry["priority_sources"] = [{"id": "semianalysis", "name": "SemiAnalysis"}]
+            entry["directed_queries"] = [{"source_id": "semianalysis", "query": f"site:semianalysis.com HBM {category} before 2026-03-01"}]
+        workbench["industry_space_source_search_matrix"][0]["category_search_plan"] = enriched_plan
+
+        result = validate_industry_space_source_search_pipeline(workbench)
+        self.assertTrue(result["ok"], result["issues"])
 
 
 def _read_jsonl(path: Path) -> list[dict]:

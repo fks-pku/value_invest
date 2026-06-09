@@ -62,6 +62,46 @@ For supply-chain map sources, also output:
 - `candidate_chokepoints`
 - `related_q2_q4_nodes`
 
+## Industry Space BOM Source Search
+
+For `行业空间`, do not start from a coarse evidence pool and loosely match sources to cards. After the supply-chain/component map identifies BOM or subsystem nodes, actively search each node across these five fixed buckets:
+
+1. `公司指引`: company guidance on revenue, capex, orders, backlog, capacity, shipment, mix, pricing, or business growth.
+2. `公司 TAM`: company-disclosed TAM, SAM, serviceable market, long-term CAGR, penetration, or market-size bridge.
+3. `客户侧指引`: downstream customer capex, budget, RPO/backlog, order, workload, usage, deployment, or adoption guidance.
+4. `第三方拆法`: sell-side excerpts, industry data providers, trade bodies, reputable public research, or investor presentations that disclose a sizing method, formula, or forecast.
+5. `财务兑现证据`: reported revenue, segment growth, orders, backlog, margin, cash flow, capex, inventory, or utilization that verifies demand is becoming financials.
+
+For every BOM/subsystem node, persist an `industry_space_source_search_matrix` row with one `category_search_plan` entry per bucket. Each bucket entry must include:
+
+- `search_query` or `search_terms`
+- `priority_sources`: domain-specific professional sources from `config/source_universes.json`; for AI factory / semiconductor hardware this should include sources such as SemiAnalysis, TrendForce, Omdia, TechInsights, Dell'Oro, LightCounting, ServeTheHome, Semiconductor Engineering, company IR, and customer IR when relevant.
+- `directed_queries`: site/domain targeted queries for the priority sources, not only broad keyword search.
+- `search_intent`
+- `expected_fields`: scope, period, formula/decomposition, assumptions, output value, unit/currency, source date,口径 caveat, and verification metric.
+- `source_bucket`
+- `visible_date_policy`, `source_visible_at`, cutoff status, and `availability_proof` in historical/backtest mode.
+- `allowed_usage`: usually `historical_thesis` or `lead_only`; never use post-cutoff material to strengthen a time-sliced thesis.
+- `preferred_parser_skill`
+- `parser_assignment`: whether DeepSeek/source-parser should read the concrete material.
+- `status`: `found` with `sourceIds` when usable materials exist, or `gap` with `gap_reason` when they do not.
+- `selected_materials`: concrete source IDs and why each one belongs to that bucket.
+
+Every non-empty public-method entry rendered in `行业空间` must be traceable to the matching bucket-level `sourceIds`. If a bucket has no reliable source, keep the bucket visible as a searched gap; do not fill the blank with model-created TAM, unsourced estimates, or generic narrative evidence.
+
+If `priority_sources` or `directed_queries` are missing, the source plan is incomplete even if it has a generic query. A gap should distinguish `searched_no_reliable_source`, `paywalled_or_no_access`, `post_cutoff_only`, and `planned_not_executed` when possible.
+
+## Question-Dimensional Parsing
+
+Source planning must start from the smallest active question, not from a generic source list. For each L3-L5 unit or BOM-node question:
+
+- Define the question-specific source universe first, combining newly searched materials with already collected source IDs.
+- Define the dimensions that must be inspected inside each source, such as `公司指引`, `公司 TAM`, `客户侧指引`, `第三方拆法`, `财务兑现证据`, margin, capex, backlog, qualification, ASP, customer adoption, or refuting evidence.
+- Assign each concrete source to every relevant dimension. A single source may satisfy multiple dimensions and should not be consumed by only the first matching bucket.
+- Require DeepSeek/source-parser to return `dimension_findings` for every requested dimension, each with found/gap, facts, scope caveat, verification metrics, support/refute/lead stance, and missing data.
+- Preserve scope caveats. A company-wide outlook can support `公司指引` with a caveat even if it is not a pure product-level guide; a product TAM can support `公司 TAM` without proving near-term revenue.
+- Keep missing dimensions explicit. Do not hide a bucket simply because another bucket from the same source is strong.
+
 ## Mechanism Model Source Discipline
 
 When the L3-L5 research unit belongs to a model-heavy industry or technology route, plan sources for a driver table, not just a prose answer. The source plan must name expected fields such as:
@@ -90,7 +130,7 @@ When DeepSeek MCP is available, prepare a narrow prompt per source or per small 
 
 - The exact L3-L5 research-unit question.
 - Why the source is being read.
-- The extraction schema.
+- The extraction schema and the dimension list to inspect.
 - The source bucket.
 - The expected support/refute/lead classification.
 - The intended context policy and `max_tokens` budget: preserve complete source context when the DeepSeek MCP server/model supports it; normally use `max_tokens` 32000-64000 for long-source extraction, at least 24000 for multi-source L3 drafts, and at least 12000 for ordinary single-source parsing.

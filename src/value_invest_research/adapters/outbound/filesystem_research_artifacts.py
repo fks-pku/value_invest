@@ -29,6 +29,7 @@ class FileSystemResearchArtifactRepository:
         sources: list[dict[str, Any]] = []
         source_extractions: list[dict[str, Any]] = []
         leaf_source_reviews: list[dict[str, Any]] = []
+        workbench: dict[str, Any] = {}
         targets: list[dict[str, Any]] = []
 
         if qa_path.exists():
@@ -68,6 +69,7 @@ class FileSystemResearchArtifactRepository:
             sources=sources,
             source_extractions=source_extractions,
             leaf_source_reviews=leaf_source_reviews,
+            workbench=workbench,
             targets=targets,
             load_issues=issues,
         )

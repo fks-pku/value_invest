@@ -126,10 +126,21 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
             "space-node-evidence",
             "space-node-space-reasoning",
             "space-node-sizing",
-            "space-sizing-grid",
+            "space-method-step",
+            "space-step-title",
+            "space-step-index",
+            "space-public-methods",
+            "space-method-card-grid",
+            "space-method-card",
+            "space-method-card-body",
+            "space-method-entry",
+            "space-method-entry-sources",
+            "space-method-empty",
+            "space-horizon-conclusion",
+            "space-horizon-grid",
+            "space-horizon-card",
             "space-node-sizing-table",
-            "space-node-risk",
-            "space-node-conclusion",
+            "space-step-confidence",
             "table-scroll",
             "industry-competition",
             "industry-chokepoints",
@@ -239,17 +250,37 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
                 self.assertIn("space-node-evidence", doc_text)
                 self.assertIn("space-node-space-reasoning", doc_text)
                 self.assertIn("space-node-sizing", doc_text)
-                self.assertIn("space-sizing-grid", doc_text)
+                self.assertIn("space-method-step", doc_text)
+                self.assertIn("space-step-title", doc_text)
+                self.assertIn("space-step-index", doc_text)
+                self.assertIn("space-public-methods", doc_text)
+                self.assertIn("space-method-card-grid", doc_text)
+                self.assertIn("space-method-card", doc_text)
+                self.assertIn("space-method-card-body", doc_text)
+                self.assertIn("space-method-entry", doc_text)
+                self.assertIn("space-method-entry-sources", doc_text)
+                self.assertIn("space-method-empty", doc_text)
+                self.assertIn("space-horizon-conclusion", doc_text)
+                self.assertIn("space-horizon-grid", doc_text)
+                self.assertIn("space-horizon-card", doc_text)
                 self.assertIn("space-node-sizing-table", doc_text)
-                self.assertIn("space-node-risk", doc_text)
-                self.assertIn("space-node-conclusion", doc_text)
+                self.assertIn("space-step-confidence", doc_text)
                 self.assertIn("证据", doc_text)
                 self.assertIn("空间推理", doc_text)
-                self.assertIn("轻量数值测算", doc_text)
-                self.assertIn("测算公式", doc_text)
-                self.assertIn("当前锚点", doc_text)
-                self.assertIn("未来假设", doc_text)
-                self.assertIn("风险反证", doc_text)
+                self.assertIn("公开拆法", doc_text)
+                self.assertIn("公司指引", doc_text)
+                self.assertIn("公司 TAM", doc_text)
+                self.assertIn("客户侧指引", doc_text)
+                self.assertIn("第三方拆法", doc_text)
+                self.assertIn("财务兑现证据", doc_text)
+                self.assertIn("公司或机构", doc_text)
+                self.assertIn("指引内容", doc_text)
+                self.assertIn("时间范围", doc_text)
+                self.assertIn("可验证指标", doc_text)
+                self.assertIn("空间结论", doc_text)
+                self.assertIn("短期", doc_text)
+                self.assertIn("中期", doc_text)
+                self.assertIn("长期", doc_text)
                 self.assertIn("结论", doc_text)
                 self.assertIn("BOM", doc_text)
                 self.assertIn("table-scroll", doc_text)

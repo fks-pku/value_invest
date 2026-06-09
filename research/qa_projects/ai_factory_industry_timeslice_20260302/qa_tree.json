@@ -49,7 +49,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "financial-statement-analysis",
@@ -67,7 +70,10 @@
                   "numbers_dates",
                   "investment_relevance",
                   "support_refute_or_lead",
-                  "uncertainties"
+                  "uncertainties",
+                  "question_context",
+                  "extraction_dimensions",
+                  "dimension_findings"
                 ],
                 "source_extraction_ids": [
                   "EXT-Q1-1-1-NVDA-FY26-Q4"
@@ -164,7 +170,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "financial-statement-analysis",
@@ -181,7 +190,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "financial-statement-analysis",
@@ -200,7 +212,10 @@
                   "numbers_dates",
                   "investment_relevance",
                   "support_refute_or_lead",
-                  "uncertainties"
+                  "uncertainties",
+                  "question_context",
+                  "extraction_dimensions",
+                  "dimension_findings"
                 ],
                 "source_extraction_ids": [
                   "EXT-Q1-1-2-DELL-FY26-Q4",
@@ -307,7 +322,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "industry-report-analysis",
@@ -324,7 +342,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "industry-report-analysis",
@@ -341,7 +362,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "industry-report-analysis",
@@ -358,7 +382,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "industry-report-analysis",
@@ -379,7 +406,10 @@
                   "numbers_dates",
                   "investment_relevance",
                   "support_refute_or_lead",
-                  "uncertainties"
+                  "uncertainties",
+                  "question_context",
+                  "extraction_dimensions",
+                  "dimension_findings"
                 ],
                 "source_extraction_ids": [
                   "EXT-Q1-2-1-NVDA-FY26-Q4",
@@ -490,7 +520,10 @@
                         "numbers_dates",
                         "investment_relevance",
                         "support_refute_or_lead",
-                        "uncertainties"
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
                       ],
                       "source_bucket": "evidence",
                       "preferred_parser_skill": "financial-statement-analysis",
@@ -507,7 +540,10 @@
                         "numbers_dates",
                         "investment_relevance",
                         "support_refute_or_lead",
-                        "uncertainties"
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
                       ],
                       "source_bucket": "evidence",
                       "preferred_parser_skill": "financial-statement-analysis",
@@ -526,7 +562,10 @@
                       "numbers_dates",
                       "investment_relevance",
                       "support_refute_or_lead",
-                      "uncertainties"
+                      "uncertainties",
+                      "question_context",
+                      "extraction_dimensions",
+                      "dimension_findings"
                     ],
                     "source_extraction_ids": [
                       "EXT-Q1-2-1-1-NVDA-FY26-Q4",
@@ -623,7 +662,10 @@
                         "numbers_dates",
                         "investment_relevance",
                         "support_refute_or_lead",
-                        "uncertainties"
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
                       ],
                       "source_bucket": "evidence",
                       "preferred_parser_skill": "financial-statement-analysis",
@@ -640,7 +682,10 @@
                         "numbers_dates",
                         "investment_relevance",
                         "support_refute_or_lead",
-                        "uncertainties"
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
                       ],
                       "source_bucket": "evidence",
                       "preferred_parser_skill": "financial-statement-analysis",
@@ -659,7 +704,10 @@
                       "numbers_dates",
                       "investment_relevance",
                       "support_refute_or_lead",
-                      "uncertainties"
+                      "uncertainties",
+                      "question_context",
+                      "extraction_dimensions",
+                      "dimension_findings"
                     ],
                     "source_extraction_ids": [
                       "EXT-Q1-2-1-2-DELL-FY26-Q4",
@@ -761,7 +809,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "industry-report-analysis",
@@ -778,7 +829,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "industry-report-analysis",
@@ -795,7 +849,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "industry-report-analysis",
@@ -812,7 +869,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "industry-report-analysis",
@@ -829,7 +889,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "industry-report-analysis",
@@ -851,7 +914,10 @@
                   "numbers_dates",
                   "investment_relevance",
                   "support_refute_or_lead",
-                  "uncertainties"
+                  "uncertainties",
+                  "question_context",
+                  "extraction_dimensions",
+                  "dimension_findings"
                 ],
                 "source_extraction_ids": [
                   "EXT-Q1-2-2-ALAB-Q4-2025",
@@ -988,7 +1054,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "valuation-analysis",
@@ -1006,7 +1075,10 @@
                   "numbers_dates",
                   "investment_relevance",
                   "support_refute_or_lead",
-                  "uncertainties"
+                  "uncertainties",
+                  "question_context",
+                  "extraction_dimensions",
+                  "dimension_findings"
                 ],
                 "source_extraction_ids": [
                   "EXT-Q2-1-1-NVDA-FY26-Q4"
@@ -1069,7 +1141,7 @@
               "parent": "Q2.1",
               "level": 3,
               "question": "HBM、先进制造和封装是否是硬瓶颈？",
-              "conclusion": "SK hynix、TSM、MU、Samsung 均是核心价值捕获载体，其中 SK hynix 因 HBM 领导力最稀缺。",
+              "conclusion": "SK hynix、TSM、MU、Samsung 均是核心价值捕获载体，其中 SK hynix 因 HBM 领导力最稀缺；Micron 的 outlook/TAM/财务兑现需要按不同口径拆开使用。",
               "skill": "industry-report-analysis",
               "score_component": "chokepoint_strength",
               "decision_use": "决定 SK hynix/TSM/MU/Samsung 的卡点强度。",
@@ -1077,8 +1149,12 @@
               "support_evidence": [
                 "SRC-TSM-Q4-2025 supports HBM、先进制造和封装是否是硬瓶颈？",
                 "SRC-MU-FY26-Q1 supports HBM、先进制造和封装是否是硬瓶颈？",
+                "SRC-MU-FY26-Q1-PREPARED supports HBM、先进制造和封装是否是硬瓶颈？",
                 "SRC-SKHYNIX-FY25 supports HBM、先进制造和封装是否是硬瓶颈？",
-                "SRC-SAMSUNG-FY25 supports HBM、先进制造和封装是否是硬瓶颈？"
+                "SRC-SAMSUNG-FY25 supports HBM、先进制造和封装是否是硬瓶颈？",
+                "SRC-TF-HBM-PRICE-20240506 supports HBM、先进制造和封装是否是硬瓶颈？",
+                "SRC-TF-BLACKWELL-HBM-20240808 supports HBM、先进制造和封装是否是硬瓶颈？",
+                "SRC-SA-COWOS-HBM-2023 supports HBM、先进制造和封装是否是硬瓶颈？"
               ],
               "refute_evidence": [
                 "Counter evidence that weakens HBM、先进制造和封装是否是硬瓶颈？"
@@ -1100,7 +1176,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "industry-report-analysis",
@@ -1117,7 +1196,30 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
+                  ],
+                  "source_bucket": "evidence",
+                  "preferred_parser_skill": "industry-report-analysis",
+                  "availability_proof": "publisher date / official release page visible 2025-12-17"
+                },
+                {
+                  "source_id": "SRC-MU-FY26-Q1-PREPARED",
+                  "as_of_date": "2026-03-02",
+                  "source_visible_at": "2025-12-17",
+                  "cutoff_status": "cutoff_visible",
+                  "allowed_usage": "historical_thesis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "industry-report-analysis",
@@ -1134,7 +1236,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "industry-report-analysis",
@@ -1151,11 +1256,74 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "industry-report-analysis",
                   "availability_proof": "publisher date / official release page visible 2026-01-29"
+                },
+                {
+                  "source_id": "SRC-TF-HBM-PRICE-20240506",
+                  "as_of_date": "2026-03-02",
+                  "source_visible_at": "2024-05-06",
+                  "cutoff_status": "cutoff_visible",
+                  "allowed_usage": "historical_thesis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
+                  ],
+                  "source_bucket": "research_report",
+                  "preferred_parser_skill": "industry-report-analysis",
+                  "availability_proof": "publisher date / official release page visible 2024-05-06"
+                },
+                {
+                  "source_id": "SRC-TF-BLACKWELL-HBM-20240808",
+                  "as_of_date": "2026-03-02",
+                  "source_visible_at": "2024-08-08",
+                  "cutoff_status": "cutoff_visible",
+                  "allowed_usage": "historical_thesis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
+                  ],
+                  "source_bucket": "research_report",
+                  "preferred_parser_skill": "industry-report-analysis",
+                  "availability_proof": "publisher date / official release page visible 2024-08-08"
+                },
+                {
+                  "source_id": "SRC-SA-COWOS-HBM-2023",
+                  "as_of_date": "2026-03-02",
+                  "source_visible_at": "2023-07-05",
+                  "cutoff_status": "cutoff_visible",
+                  "allowed_usage": "historical_thesis",
+                  "expected_fields": [
+                    "key_facts",
+                    "numbers_dates",
+                    "investment_relevance",
+                    "support_refute_or_lead",
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
+                  ],
+                  "source_bucket": "research_report",
+                  "preferred_parser_skill": "industry-report-analysis",
+                  "availability_proof": "publisher date / official release page visible 2023-07-05"
                 }
               ],
               "skill_dispatch": {
@@ -1164,27 +1332,42 @@
                 "concrete_materials": [
                   "SRC-TSM-Q4-2025",
                   "SRC-MU-FY26-Q1",
+                  "SRC-MU-FY26-Q1-PREPARED",
                   "SRC-SKHYNIX-FY25",
-                  "SRC-SAMSUNG-FY25"
+                  "SRC-SAMSUNG-FY25",
+                  "SRC-TF-HBM-PRICE-20240506",
+                  "SRC-TF-BLACKWELL-HBM-20240808",
+                  "SRC-SA-COWOS-HBM-2023"
                 ],
                 "extraction_schema": [
                   "key_facts",
                   "numbers_dates",
                   "investment_relevance",
                   "support_refute_or_lead",
-                  "uncertainties"
+                  "uncertainties",
+                  "question_context",
+                  "extraction_dimensions",
+                  "dimension_findings"
                 ],
                 "source_extraction_ids": [
                   "EXT-Q2-1-2-TSM-Q4-2025",
                   "EXT-Q2-1-2-MU-FY26-Q1",
+                  "EXT-Q2-1-2-MU-FY26-Q1-PREPARED",
                   "EXT-Q2-1-2-SKHYNIX-FY25",
-                  "EXT-Q2-1-2-SAMSUNG-FY25"
+                  "EXT-Q2-1-2-SAMSUNG-FY25",
+                  "EXT-Q2-1-2-TF-HBM-PRICE-20240506",
+                  "EXT-Q2-1-2-TF-BLACKWELL-HBM-20240808",
+                  "EXT-Q2-1-2-SA-COWOS-HBM-2023"
                 ],
                 "leaf_source_review_ids": [
                   "REV-Q2-1-2-TSM-Q4-2025",
                   "REV-Q2-1-2-MU-FY26-Q1",
+                  "REV-Q2-1-2-MU-FY26-Q1-PREPARED",
                   "REV-Q2-1-2-SKHYNIX-FY25",
-                  "REV-Q2-1-2-SAMSUNG-FY25"
+                  "REV-Q2-1-2-SAMSUNG-FY25",
+                  "REV-Q2-1-2-TF-HBM-PRICE-20240506",
+                  "REV-Q2-1-2-TF-BLACKWELL-HBM-20240808",
+                  "REV-Q2-1-2-SA-COWOS-HBM-2023"
                 ],
                 "skill_output_status": "gpt_verified_direct_parse",
                 "fallback_used": true,
@@ -1194,29 +1377,41 @@
                 "allowed_source_ids": [
                   "SRC-TSM-Q4-2025",
                   "SRC-MU-FY26-Q1",
+                  "SRC-MU-FY26-Q1-PREPARED",
                   "SRC-SKHYNIX-FY25",
-                  "SRC-SAMSUNG-FY25"
+                  "SRC-SAMSUNG-FY25",
+                  "SRC-TF-HBM-PRICE-20240506",
+                  "SRC-TF-BLACKWELL-HBM-20240808",
+                  "SRC-SA-COWOS-HBM-2023"
                 ],
                 "model_prior_policy": "hypothesis_only_not_scoring_evidence",
                 "post_cutoff_knowledge_policy": "not_used_before_label_attach",
                 "non_source_claims": []
               },
-              "fact": "TSMC advanced technologies were 77% of wafer revenue; SK hynix and Samsung reported AI memory/HBM strength; Micron reported record revenue and margin expansion.",
+              "fact": "TSMC advanced technologies were 77% of wafer revenue; Micron Q2 outlook and HBM TAM give near-term and long-term memory evidence; SK hynix and Samsung reported AI memory/HBM strength; TrendForce and SemiAnalysis provide HBM value-share and CoWoS/HBM bottleneck methods.",
               "inference": "AI 工厂交付需要先进制程、封装和 HBM，供给斜率慢于需求时可形成价格和毛利弹性。",
-              "judgment": "SK hynix、TSM、MU、Samsung 均是核心价值捕获载体，其中 SK hynix 因 HBM 领导力最稀缺。",
-              "gap": "缺少同口径产能、客户分配和估值分位。",
+              "judgment": "SK hynix、TSM、MU、Samsung 均是核心价值捕获载体，其中 SK hynix 因 HBM 领导力最稀缺；Micron 的 outlook/TAM/财务兑现需要按不同口径拆开使用。",
+              "gap": "缺少同口径产能、客户分配、HBM ASP 和估值分位。",
               "trigger": "若 HBM 供给快速扩张或 ASP 反转，降低相关标的。",
               "sourceIds": [
                 "SRC-TSM-Q4-2025",
                 "SRC-MU-FY26-Q1",
+                "SRC-MU-FY26-Q1-PREPARED",
                 "SRC-SKHYNIX-FY25",
-                "SRC-SAMSUNG-FY25"
+                "SRC-SAMSUNG-FY25",
+                "SRC-TF-HBM-PRICE-20240506",
+                "SRC-TF-BLACKWELL-HBM-20240808",
+                "SRC-SA-COWOS-HBM-2023"
               ],
               "source_links": [
                 "SRC-TSM-Q4-2025",
                 "SRC-MU-FY26-Q1",
+                "SRC-MU-FY26-Q1-PREPARED",
                 "SRC-SKHYNIX-FY25",
-                "SRC-SAMSUNG-FY25"
+                "SRC-SAMSUNG-FY25",
+                "SRC-TF-HBM-PRICE-20240506",
+                "SRC-TF-BLACKWELL-HBM-20240808",
+                "SRC-SA-COWOS-HBM-2023"
               ],
               "answerArtifact": {
                 "title": "制造和内存卡点",
@@ -1249,7 +1444,7 @@
                   "parent": "Q2.1.2",
                   "level": 4,
                   "question": "HBM 价值捕获应该优先看谁？",
-                  "conclusion": "HBM 分支需要继续拆到公司层，否则 Q2.1.2 容易把不同强度混在一起。",
+                  "conclusion": "HBM 分支需要继续拆到公司层，否则 Q2.1.2 容易把不同强度混在一起；同一份 Micron 材料必须按 outlook、TAM、财务兑现分维度解析。",
                   "skill": "industry-report-analysis",
                   "score_component": "chokepoint_strength",
                   "decision_use": "把 HBM 从先进制造大桶里拆出来，决定 SK hynix、Micron、Samsung 的相对强弱。",
@@ -1257,7 +1452,11 @@
                   "support_evidence": [
                     "SRC-SKHYNIX-FY25 supports HBM 价值捕获应该优先看谁？",
                     "SRC-MU-FY26-Q1 supports HBM 价值捕获应该优先看谁？",
-                    "SRC-SAMSUNG-FY25 supports HBM 价值捕获应该优先看谁？"
+                    "SRC-MU-FY26-Q1-PREPARED supports HBM 价值捕获应该优先看谁？",
+                    "SRC-SAMSUNG-FY25 supports HBM 价值捕获应该优先看谁？",
+                    "SRC-TF-HBM-PRICE-20240506 supports HBM 价值捕获应该优先看谁？",
+                    "SRC-TF-BLACKWELL-HBM-20240808 supports HBM 价值捕获应该优先看谁？",
+                    "SRC-SA-COWOS-HBM-2023 supports HBM 价值捕获应该优先看谁？"
                   ],
                   "refute_evidence": [
                     "Counter evidence that weakens HBM 价值捕获应该优先看谁？"
@@ -1279,7 +1478,10 @@
                         "numbers_dates",
                         "investment_relevance",
                         "support_refute_or_lead",
-                        "uncertainties"
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
                       ],
                       "source_bucket": "evidence",
                       "preferred_parser_skill": "industry-report-analysis",
@@ -1296,7 +1498,30 @@
                         "numbers_dates",
                         "investment_relevance",
                         "support_refute_or_lead",
-                        "uncertainties"
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
+                      ],
+                      "source_bucket": "evidence",
+                      "preferred_parser_skill": "industry-report-analysis",
+                      "availability_proof": "publisher date / official release page visible 2025-12-17"
+                    },
+                    {
+                      "source_id": "SRC-MU-FY26-Q1-PREPARED",
+                      "as_of_date": "2026-03-02",
+                      "source_visible_at": "2025-12-17",
+                      "cutoff_status": "cutoff_visible",
+                      "allowed_usage": "historical_thesis",
+                      "expected_fields": [
+                        "key_facts",
+                        "numbers_dates",
+                        "investment_relevance",
+                        "support_refute_or_lead",
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
                       ],
                       "source_bucket": "evidence",
                       "preferred_parser_skill": "industry-report-analysis",
@@ -1313,11 +1538,74 @@
                         "numbers_dates",
                         "investment_relevance",
                         "support_refute_or_lead",
-                        "uncertainties"
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
                       ],
                       "source_bucket": "evidence",
                       "preferred_parser_skill": "industry-report-analysis",
                       "availability_proof": "publisher date / official release page visible 2026-01-29"
+                    },
+                    {
+                      "source_id": "SRC-TF-HBM-PRICE-20240506",
+                      "as_of_date": "2026-03-02",
+                      "source_visible_at": "2024-05-06",
+                      "cutoff_status": "cutoff_visible",
+                      "allowed_usage": "historical_thesis",
+                      "expected_fields": [
+                        "key_facts",
+                        "numbers_dates",
+                        "investment_relevance",
+                        "support_refute_or_lead",
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
+                      ],
+                      "source_bucket": "research_report",
+                      "preferred_parser_skill": "industry-report-analysis",
+                      "availability_proof": "publisher date / official release page visible 2024-05-06"
+                    },
+                    {
+                      "source_id": "SRC-TF-BLACKWELL-HBM-20240808",
+                      "as_of_date": "2026-03-02",
+                      "source_visible_at": "2024-08-08",
+                      "cutoff_status": "cutoff_visible",
+                      "allowed_usage": "historical_thesis",
+                      "expected_fields": [
+                        "key_facts",
+                        "numbers_dates",
+                        "investment_relevance",
+                        "support_refute_or_lead",
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
+                      ],
+                      "source_bucket": "research_report",
+                      "preferred_parser_skill": "industry-report-analysis",
+                      "availability_proof": "publisher date / official release page visible 2024-08-08"
+                    },
+                    {
+                      "source_id": "SRC-SA-COWOS-HBM-2023",
+                      "as_of_date": "2026-03-02",
+                      "source_visible_at": "2023-07-05",
+                      "cutoff_status": "cutoff_visible",
+                      "allowed_usage": "historical_thesis",
+                      "expected_fields": [
+                        "key_facts",
+                        "numbers_dates",
+                        "investment_relevance",
+                        "support_refute_or_lead",
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
+                      ],
+                      "source_bucket": "research_report",
+                      "preferred_parser_skill": "industry-report-analysis",
+                      "availability_proof": "publisher date / official release page visible 2023-07-05"
                     }
                   ],
                   "skill_dispatch": {
@@ -1326,24 +1614,39 @@
                     "concrete_materials": [
                       "SRC-SKHYNIX-FY25",
                       "SRC-MU-FY26-Q1",
-                      "SRC-SAMSUNG-FY25"
+                      "SRC-MU-FY26-Q1-PREPARED",
+                      "SRC-SAMSUNG-FY25",
+                      "SRC-TF-HBM-PRICE-20240506",
+                      "SRC-TF-BLACKWELL-HBM-20240808",
+                      "SRC-SA-COWOS-HBM-2023"
                     ],
                     "extraction_schema": [
                       "key_facts",
                       "numbers_dates",
                       "investment_relevance",
                       "support_refute_or_lead",
-                      "uncertainties"
+                      "uncertainties",
+                      "question_context",
+                      "extraction_dimensions",
+                      "dimension_findings"
                     ],
                     "source_extraction_ids": [
                       "EXT-Q2-1-2-1-SKHYNIX-FY25",
                       "EXT-Q2-1-2-1-MU-FY26-Q1",
-                      "EXT-Q2-1-2-1-SAMSUNG-FY25"
+                      "EXT-Q2-1-2-1-MU-FY26-Q1-PREPARED",
+                      "EXT-Q2-1-2-1-SAMSUNG-FY25",
+                      "EXT-Q2-1-2-1-TF-HBM-PRICE-20240506",
+                      "EXT-Q2-1-2-1-TF-BLACKWELL-HBM-20240808",
+                      "EXT-Q2-1-2-1-SA-COWOS-HBM-2023"
                     ],
                     "leaf_source_review_ids": [
                       "REV-Q2-1-2-1-SKHYNIX-FY25",
                       "REV-Q2-1-2-1-MU-FY26-Q1",
-                      "REV-Q2-1-2-1-SAMSUNG-FY25"
+                      "REV-Q2-1-2-1-MU-FY26-Q1-PREPARED",
+                      "REV-Q2-1-2-1-SAMSUNG-FY25",
+                      "REV-Q2-1-2-1-TF-HBM-PRICE-20240506",
+                      "REV-Q2-1-2-1-TF-BLACKWELL-HBM-20240808",
+                      "REV-Q2-1-2-1-SA-COWOS-HBM-2023"
                     ],
                     "skill_output_status": "gpt_verified_direct_parse",
                     "fallback_used": true,
@@ -1353,26 +1656,38 @@
                     "allowed_source_ids": [
                       "SRC-SKHYNIX-FY25",
                       "SRC-MU-FY26-Q1",
-                      "SRC-SAMSUNG-FY25"
+                      "SRC-MU-FY26-Q1-PREPARED",
+                      "SRC-SAMSUNG-FY25",
+                      "SRC-TF-HBM-PRICE-20240506",
+                      "SRC-TF-BLACKWELL-HBM-20240808",
+                      "SRC-SA-COWOS-HBM-2023"
                     ],
                     "model_prior_policy": "hypothesis_only_not_scoring_evidence",
                     "post_cutoff_knowledge_policy": "not_used_before_label_attach",
                     "non_source_claims": []
                   },
-                  "fact": "SK hynix 披露 AI memory 驱动的高收入和 49% operating margin；Micron 和 Samsung 也披露 AI memory/HBM 或高价值内存强势。",
-                  "inference": "HBM 是 AI 工厂最硬的内存卡点，但供应商之间的资格、份额和毛利弹性不同。",
-                  "judgment": "HBM 分支需要继续拆到公司层，否则 Q2.1.2 容易把不同强度混在一起。",
+                  "fact": "SK hynix 披露 AI memory 驱动的高收入和 49% operating margin；Micron 同时给出 FQ2 outlook、HBM TAM 和 AI memory 财务兑现；Samsung 也披露 AI memory/HBM 或高价值内存强势；TrendForce/SemiAnalysis 支持 HBM 价值量和瓶颈逻辑。",
+                  "inference": "HBM 是 AI 工厂最硬的内存卡点，但供应商之间的资格、份额、价格协议和毛利弹性不同。",
+                  "judgment": "HBM 分支需要继续拆到公司层，否则 Q2.1.2 容易把不同强度混在一起；同一份 Micron 材料必须按 outlook、TAM、财务兑现分维度解析。",
                   "gap": "缺少同口径 HBM 产能、客户资格和 ASP。",
                   "trigger": "若客户资格或 ASP 反转，相关标的降级。",
                   "sourceIds": [
                     "SRC-SKHYNIX-FY25",
                     "SRC-MU-FY26-Q1",
-                    "SRC-SAMSUNG-FY25"
+                    "SRC-MU-FY26-Q1-PREPARED",
+                    "SRC-SAMSUNG-FY25",
+                    "SRC-TF-HBM-PRICE-20240506",
+                    "SRC-TF-BLACKWELL-HBM-20240808",
+                    "SRC-SA-COWOS-HBM-2023"
                   ],
                   "source_links": [
                     "SRC-SKHYNIX-FY25",
                     "SRC-MU-FY26-Q1",
-                    "SRC-SAMSUNG-FY25"
+                    "SRC-MU-FY26-Q1-PREPARED",
+                    "SRC-SAMSUNG-FY25",
+                    "SRC-TF-HBM-PRICE-20240506",
+                    "SRC-TF-BLACKWELL-HBM-20240808",
+                    "SRC-SA-COWOS-HBM-2023"
                   ],
                   "answerArtifact": {
                     "title": "HBM 公司分层",
@@ -1389,7 +1704,7 @@
                       ],
                       [
                         "Micron",
-                        "record revenue/margin with AI memory",
+                        "FQ2 outlook + HBM TAM + cloud memory margin",
                         "高弹性观察"
                       ],
                       [
@@ -1433,7 +1748,10 @@
                             "numbers_dates",
                             "investment_relevance",
                             "support_refute_or_lead",
-                            "uncertainties"
+                            "uncertainties",
+                            "question_context",
+                            "extraction_dimensions",
+                            "dimension_findings"
                           ],
                           "source_bucket": "evidence",
                           "preferred_parser_skill": "financial-statement-analysis",
@@ -1451,7 +1769,10 @@
                           "numbers_dates",
                           "investment_relevance",
                           "support_refute_or_lead",
-                          "uncertainties"
+                          "uncertainties",
+                          "question_context",
+                          "extraction_dimensions",
+                          "dimension_findings"
                         ],
                         "source_extraction_ids": [
                           "EXT-Q2-1-2-1-1-SKHYNIX-FY25"
@@ -1513,13 +1834,14 @@
                       "parent": "Q2.1.2.1",
                       "level": 5,
                       "question": "Micron 和 Samsung 是同等卡点还是补充弹性？",
-                      "conclusion": "MU/Samsung 应进入 watch_only，而不是直接与 SK hynix 同行动状态。",
+                      "conclusion": "MU/Samsung 应进入 watch_only，而不是直接与 SK hynix 同行动状态；Micron 材料要拆成公司指引、公司 TAM 和财务兑现三类使用。",
                       "skill": "financial-statement-analysis",
                       "score_component": "target_ranking",
                       "decision_use": "控制 MU 与 Samsung 在目标池中的排序，避免把所有内存公司同分。",
                       "materiality": "控制 MU 与 Samsung 在目标池中的排序，避免把所有内存公司同分。",
                       "support_evidence": [
                         "SRC-MU-FY26-Q1 supports Micron 和 Samsung 是同等卡点还是补充弹性？",
+                        "SRC-MU-FY26-Q1-PREPARED supports Micron 和 Samsung 是同等卡点还是补充弹性？",
                         "SRC-SAMSUNG-FY25 supports Micron 和 Samsung 是同等卡点还是补充弹性？"
                       ],
                       "refute_evidence": [
@@ -1542,7 +1864,30 @@
                             "numbers_dates",
                             "investment_relevance",
                             "support_refute_or_lead",
-                            "uncertainties"
+                            "uncertainties",
+                            "question_context",
+                            "extraction_dimensions",
+                            "dimension_findings"
+                          ],
+                          "source_bucket": "evidence",
+                          "preferred_parser_skill": "financial-statement-analysis",
+                          "availability_proof": "publisher date / official release page visible 2025-12-17"
+                        },
+                        {
+                          "source_id": "SRC-MU-FY26-Q1-PREPARED",
+                          "as_of_date": "2026-03-02",
+                          "source_visible_at": "2025-12-17",
+                          "cutoff_status": "cutoff_visible",
+                          "allowed_usage": "historical_thesis",
+                          "expected_fields": [
+                            "key_facts",
+                            "numbers_dates",
+                            "investment_relevance",
+                            "support_refute_or_lead",
+                            "uncertainties",
+                            "question_context",
+                            "extraction_dimensions",
+                            "dimension_findings"
                           ],
                           "source_bucket": "evidence",
                           "preferred_parser_skill": "financial-statement-analysis",
@@ -1559,7 +1904,10 @@
                             "numbers_dates",
                             "investment_relevance",
                             "support_refute_or_lead",
-                            "uncertainties"
+                            "uncertainties",
+                            "question_context",
+                            "extraction_dimensions",
+                            "dimension_findings"
                           ],
                           "source_bucket": "evidence",
                           "preferred_parser_skill": "financial-statement-analysis",
@@ -1571,6 +1919,7 @@
                         "selected_skill": "financial-statement-analysis",
                         "concrete_materials": [
                           "SRC-MU-FY26-Q1",
+                          "SRC-MU-FY26-Q1-PREPARED",
                           "SRC-SAMSUNG-FY25"
                         ],
                         "extraction_schema": [
@@ -1578,14 +1927,19 @@
                           "numbers_dates",
                           "investment_relevance",
                           "support_refute_or_lead",
-                          "uncertainties"
+                          "uncertainties",
+                          "question_context",
+                          "extraction_dimensions",
+                          "dimension_findings"
                         ],
                         "source_extraction_ids": [
                           "EXT-Q2-1-2-1-2-MU-FY26-Q1",
+                          "EXT-Q2-1-2-1-2-MU-FY26-Q1-PREPARED",
                           "EXT-Q2-1-2-1-2-SAMSUNG-FY25"
                         ],
                         "leaf_source_review_ids": [
                           "REV-Q2-1-2-1-2-MU-FY26-Q1",
+                          "REV-Q2-1-2-1-2-MU-FY26-Q1-PREPARED",
                           "REV-Q2-1-2-1-2-SAMSUNG-FY25"
                         ],
                         "skill_output_status": "gpt_verified_direct_parse",
@@ -1595,23 +1949,26 @@
                       "backtest_grounding": {
                         "allowed_source_ids": [
                           "SRC-MU-FY26-Q1",
+                          "SRC-MU-FY26-Q1-PREPARED",
                           "SRC-SAMSUNG-FY25"
                         ],
                         "model_prior_policy": "hypothesis_only_not_scoring_evidence",
                         "post_cutoff_knowledge_policy": "not_used_before_label_attach",
                         "non_source_claims": []
                       },
-                      "fact": "Micron 披露 record revenue and margin expansion，Samsung 披露 Memory Business record quarterly revenue and operating profit。",
+                      "fact": "Micron 披露 record revenue and margin expansion，FQ2 outlook 指向更高收入和毛利，并给出 HBM TAM 与 2026 HBM supply 价量协议；Samsung 披露 Memory Business record quarterly revenue and operating profit。",
                       "inference": "两家公司都受益于 AI memory，但相对 SK hynix 的 HBM 份额、资格和定价权需要更强证据。",
-                      "judgment": "MU/Samsung 应进入 watch_only，而不是直接与 SK hynix 同行动状态。",
+                      "judgment": "MU/Samsung 应进入 watch_only，而不是直接与 SK hynix 同行动状态；Micron 材料要拆成公司指引、公司 TAM 和财务兑现三类使用。",
                       "gap": "缺少同口径 HBM 资格和产品 mix。",
                       "trigger": "若 HBM 出货/ASP 明显领先预期，才可上调。",
                       "sourceIds": [
                         "SRC-MU-FY26-Q1",
+                        "SRC-MU-FY26-Q1-PREPARED",
                         "SRC-SAMSUNG-FY25"
                       ],
                       "source_links": [
                         "SRC-MU-FY26-Q1",
+                        "SRC-MU-FY26-Q1-PREPARED",
                         "SRC-SAMSUNG-FY25"
                       ],
                       "answerArtifact": {
@@ -1624,7 +1981,7 @@
                         "rows": [
                           [
                             "MU",
-                            "AI cloud memory/HBM 弹性",
+                            "FQ2 outlook、HBM TAM、AI cloud memory/HBM 弹性",
                             "份额和资格仍需证明"
                           ],
                           [
@@ -1671,7 +2028,10 @@
                         "numbers_dates",
                         "investment_relevance",
                         "support_refute_or_lead",
-                        "uncertainties"
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
                       ],
                       "source_bucket": "evidence",
                       "preferred_parser_skill": "financial-statement-analysis",
@@ -1689,7 +2049,10 @@
                       "numbers_dates",
                       "investment_relevance",
                       "support_refute_or_lead",
-                      "uncertainties"
+                      "uncertainties",
+                      "question_context",
+                      "extraction_dimensions",
+                      "dimension_findings"
                     ],
                     "source_extraction_ids": [
                       "EXT-Q2-1-2-2-TSM-Q4-2025"
@@ -1790,7 +2153,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "industry-report-analysis",
@@ -1807,7 +2173,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "industry-report-analysis",
@@ -1824,7 +2193,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "industry-report-analysis",
@@ -1841,7 +2213,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "industry-report-analysis",
@@ -1858,7 +2233,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "industry-report-analysis",
@@ -1880,7 +2258,10 @@
                   "numbers_dates",
                   "investment_relevance",
                   "support_refute_or_lead",
-                  "uncertainties"
+                  "uncertainties",
+                  "question_context",
+                  "extraction_dimensions",
+                  "dimension_findings"
                 ],
                 "source_extraction_ids": [
                   "EXT-Q2-2-1-ALAB-Q4-2025",
@@ -2001,7 +2382,10 @@
                         "numbers_dates",
                         "investment_relevance",
                         "support_refute_or_lead",
-                        "uncertainties"
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
                       ],
                       "source_bucket": "evidence",
                       "preferred_parser_skill": "financial-statement-analysis",
@@ -2018,7 +2402,10 @@
                         "numbers_dates",
                         "investment_relevance",
                         "support_refute_or_lead",
-                        "uncertainties"
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
                       ],
                       "source_bucket": "evidence",
                       "preferred_parser_skill": "financial-statement-analysis",
@@ -2037,7 +2424,10 @@
                       "numbers_dates",
                       "investment_relevance",
                       "support_refute_or_lead",
-                      "uncertainties"
+                      "uncertainties",
+                      "question_context",
+                      "extraction_dimensions",
+                      "dimension_findings"
                     ],
                     "source_extraction_ids": [
                       "EXT-Q2-2-1-1-ALAB-Q4-2025",
@@ -2134,7 +2524,10 @@
                         "numbers_dates",
                         "investment_relevance",
                         "support_refute_or_lead",
-                        "uncertainties"
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
                       ],
                       "source_bucket": "evidence",
                       "preferred_parser_skill": "industry-report-analysis",
@@ -2151,7 +2544,10 @@
                         "numbers_dates",
                         "investment_relevance",
                         "support_refute_or_lead",
-                        "uncertainties"
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
                       ],
                       "source_bucket": "evidence",
                       "preferred_parser_skill": "industry-report-analysis",
@@ -2170,7 +2566,10 @@
                       "numbers_dates",
                       "investment_relevance",
                       "support_refute_or_lead",
-                      "uncertainties"
+                      "uncertainties",
+                      "question_context",
+                      "extraction_dimensions",
+                      "dimension_findings"
                     ],
                     "source_extraction_ids": [
                       "EXT-Q2-2-1-2-AVGO-FY25-Q4",
@@ -2261,7 +2660,10 @@
                         "numbers_dates",
                         "investment_relevance",
                         "support_refute_or_lead",
-                        "uncertainties"
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
                       ],
                       "source_bucket": "evidence",
                       "preferred_parser_skill": "financial-statement-analysis",
@@ -2279,7 +2681,10 @@
                       "numbers_dates",
                       "investment_relevance",
                       "support_refute_or_lead",
-                      "uncertainties"
+                      "uncertainties",
+                      "question_context",
+                      "extraction_dimensions",
+                      "dimension_findings"
                     ],
                     "source_extraction_ids": [
                       "EXT-Q2-2-1-3-MRVL-FY26-Q3"
@@ -2374,7 +2779,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "financial-statement-analysis",
@@ -2391,7 +2799,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "financial-statement-analysis",
@@ -2408,7 +2819,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "financial-statement-analysis",
@@ -2428,7 +2842,10 @@
                   "numbers_dates",
                   "investment_relevance",
                   "support_refute_or_lead",
-                  "uncertainties"
+                  "uncertainties",
+                  "question_context",
+                  "extraction_dimensions",
+                  "dimension_findings"
                 ],
                 "source_extraction_ids": [
                   "EXT-Q2-2-2-VRT-Q4-2025",
@@ -2528,7 +2945,10 @@
                         "numbers_dates",
                         "investment_relevance",
                         "support_refute_or_lead",
-                        "uncertainties"
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
                       ],
                       "source_bucket": "evidence",
                       "preferred_parser_skill": "financial-statement-analysis",
@@ -2546,7 +2966,10 @@
                       "numbers_dates",
                       "investment_relevance",
                       "support_refute_or_lead",
-                      "uncertainties"
+                      "uncertainties",
+                      "question_context",
+                      "extraction_dimensions",
+                      "dimension_findings"
                     ],
                     "source_extraction_ids": [
                       "EXT-Q2-2-2-1-VRT-Q4-2025"
@@ -2638,7 +3061,10 @@
                         "numbers_dates",
                         "investment_relevance",
                         "support_refute_or_lead",
-                        "uncertainties"
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
                       ],
                       "source_bucket": "evidence",
                       "preferred_parser_skill": "financial-statement-analysis",
@@ -2655,7 +3081,10 @@
                         "numbers_dates",
                         "investment_relevance",
                         "support_refute_or_lead",
-                        "uncertainties"
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
                       ],
                       "source_bucket": "evidence",
                       "preferred_parser_skill": "financial-statement-analysis",
@@ -2674,7 +3103,10 @@
                       "numbers_dates",
                       "investment_relevance",
                       "support_refute_or_lead",
-                      "uncertainties"
+                      "uncertainties",
+                      "question_context",
+                      "extraction_dimensions",
+                      "dimension_findings"
                     ],
                     "source_extraction_ids": [
                       "EXT-Q2-2-2-2-DELL-FY26-Q4",
@@ -2786,7 +3218,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "valuation-analysis",
@@ -2803,7 +3238,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "valuation-analysis",
@@ -2820,7 +3258,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "valuation-analysis",
@@ -2837,7 +3278,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "valuation-analysis",
@@ -2858,7 +3302,10 @@
                   "numbers_dates",
                   "investment_relevance",
                   "support_refute_or_lead",
-                  "uncertainties"
+                  "uncertainties",
+                  "question_context",
+                  "extraction_dimensions",
+                  "dimension_findings"
                 ],
                 "source_extraction_ids": [
                   "EXT-Q3-1-1-NVDA-FY26-Q4",
@@ -2964,7 +3411,10 @@
                         "numbers_dates",
                         "investment_relevance",
                         "support_refute_or_lead",
-                        "uncertainties"
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
                       ],
                       "source_bucket": "evidence",
                       "preferred_parser_skill": "valuation-analysis",
@@ -2981,7 +3431,10 @@
                         "numbers_dates",
                         "investment_relevance",
                         "support_refute_or_lead",
-                        "uncertainties"
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
                       ],
                       "source_bucket": "evidence",
                       "preferred_parser_skill": "valuation-analysis",
@@ -3000,7 +3453,10 @@
                       "numbers_dates",
                       "investment_relevance",
                       "support_refute_or_lead",
-                      "uncertainties"
+                      "uncertainties",
+                      "question_context",
+                      "extraction_dimensions",
+                      "dimension_findings"
                     ],
                     "source_extraction_ids": [
                       "EXT-Q3-1-1-1-NVDA-FY26-Q4",
@@ -3095,7 +3551,10 @@
                         "numbers_dates",
                         "investment_relevance",
                         "support_refute_or_lead",
-                        "uncertainties"
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
                       ],
                       "source_bucket": "evidence",
                       "preferred_parser_skill": "valuation-analysis",
@@ -3112,7 +3571,10 @@
                         "numbers_dates",
                         "investment_relevance",
                         "support_refute_or_lead",
-                        "uncertainties"
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
                       ],
                       "source_bucket": "evidence",
                       "preferred_parser_skill": "valuation-analysis",
@@ -3129,7 +3591,10 @@
                         "numbers_dates",
                         "investment_relevance",
                         "support_refute_or_lead",
-                        "uncertainties"
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
                       ],
                       "source_bucket": "evidence",
                       "preferred_parser_skill": "valuation-analysis",
@@ -3146,7 +3611,10 @@
                         "numbers_dates",
                         "investment_relevance",
                         "support_refute_or_lead",
-                        "uncertainties"
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
                       ],
                       "source_bucket": "evidence",
                       "preferred_parser_skill": "valuation-analysis",
@@ -3163,7 +3631,10 @@
                         "numbers_dates",
                         "investment_relevance",
                         "support_refute_or_lead",
-                        "uncertainties"
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
                       ],
                       "source_bucket": "evidence",
                       "preferred_parser_skill": "valuation-analysis",
@@ -3185,7 +3656,10 @@
                       "numbers_dates",
                       "investment_relevance",
                       "support_refute_or_lead",
-                      "uncertainties"
+                      "uncertainties",
+                      "question_context",
+                      "extraction_dimensions",
+                      "dimension_findings"
                     ],
                     "source_extraction_ids": [
                       "EXT-Q3-1-1-2-ALAB-Q4-2025",
@@ -3305,7 +3779,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "news-event-analysis",
@@ -3322,7 +3799,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "news-event-analysis",
@@ -3339,7 +3819,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "news-event-analysis",
@@ -3359,7 +3842,10 @@
                   "numbers_dates",
                   "investment_relevance",
                   "support_refute_or_lead",
-                  "uncertainties"
+                  "uncertainties",
+                  "question_context",
+                  "extraction_dimensions",
+                  "dimension_findings"
                 ],
                 "source_extraction_ids": [
                   "EXT-Q3-1-2-NVDA-FY26-Q4",
@@ -3471,7 +3957,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "industry-report-analysis",
@@ -3488,7 +3977,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "industry-report-analysis",
@@ -3505,7 +3997,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "industry-report-analysis",
@@ -3522,7 +4017,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "industry-report-analysis",
@@ -3543,7 +4041,10 @@
                   "numbers_dates",
                   "investment_relevance",
                   "support_refute_or_lead",
-                  "uncertainties"
+                  "uncertainties",
+                  "question_context",
+                  "extraction_dimensions",
+                  "dimension_findings"
                 ],
                 "source_extraction_ids": [
                   "EXT-Q3-2-1-TSM-Q4-2025",
@@ -3658,7 +4159,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "industry-report-analysis",
@@ -3675,7 +4179,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "industry-report-analysis",
@@ -3692,7 +4199,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "industry-report-analysis",
@@ -3709,7 +4219,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "industry-report-analysis",
@@ -3726,7 +4239,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "industry-report-analysis",
@@ -3748,7 +4264,10 @@
                   "numbers_dates",
                   "investment_relevance",
                   "support_refute_or_lead",
-                  "uncertainties"
+                  "uncertainties",
+                  "question_context",
+                  "extraction_dimensions",
+                  "dimension_findings"
                 ],
                 "source_extraction_ids": [
                   "EXT-Q3-2-2-ALAB-Q4-2025",
@@ -3886,7 +4405,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "target-recommendation-analysis",
@@ -3903,7 +4425,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "target-recommendation-analysis",
@@ -3920,7 +4445,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "target-recommendation-analysis",
@@ -3937,7 +4465,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "target-recommendation-analysis",
@@ -3954,7 +4485,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "target-recommendation-analysis",
@@ -3971,7 +4505,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "target-recommendation-analysis",
@@ -3988,7 +4525,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "target-recommendation-analysis",
@@ -4005,7 +4545,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "target-recommendation-analysis",
@@ -4030,7 +4573,10 @@
                   "numbers_dates",
                   "investment_relevance",
                   "support_refute_or_lead",
-                  "uncertainties"
+                  "uncertainties",
+                  "question_context",
+                  "extraction_dimensions",
+                  "dimension_findings"
                 ],
                 "source_extraction_ids": [
                   "EXT-Q4-1-1-NVDA-FY26-Q4",
@@ -4175,7 +4721,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "target-recommendation-analysis",
@@ -4192,7 +4741,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "target-recommendation-analysis",
@@ -4209,7 +4761,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "target-recommendation-analysis",
@@ -4226,7 +4781,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "target-recommendation-analysis",
@@ -4243,7 +4801,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "target-recommendation-analysis",
@@ -4265,7 +4826,10 @@
                   "numbers_dates",
                   "investment_relevance",
                   "support_refute_or_lead",
-                  "uncertainties"
+                  "uncertainties",
+                  "question_context",
+                  "extraction_dimensions",
+                  "dimension_findings"
                 ],
                 "source_extraction_ids": [
                   "EXT-Q4-1-2-VRT-Q4-2025",
@@ -4377,7 +4941,10 @@
                         "numbers_dates",
                         "investment_relevance",
                         "support_refute_or_lead",
-                        "uncertainties"
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
                       ],
                       "source_bucket": "evidence",
                       "preferred_parser_skill": "target-recommendation-analysis",
@@ -4394,7 +4961,10 @@
                         "numbers_dates",
                         "investment_relevance",
                         "support_refute_or_lead",
-                        "uncertainties"
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
                       ],
                       "source_bucket": "evidence",
                       "preferred_parser_skill": "target-recommendation-analysis",
@@ -4411,7 +4981,10 @@
                         "numbers_dates",
                         "investment_relevance",
                         "support_refute_or_lead",
-                        "uncertainties"
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
                       ],
                       "source_bucket": "evidence",
                       "preferred_parser_skill": "target-recommendation-analysis",
@@ -4431,7 +5004,10 @@
                       "numbers_dates",
                       "investment_relevance",
                       "support_refute_or_lead",
-                      "uncertainties"
+                      "uncertainties",
+                      "question_context",
+                      "extraction_dimensions",
+                      "dimension_findings"
                     ],
                     "source_extraction_ids": [
                       "EXT-Q4-1-2-1-VRT-Q4-2025",
@@ -4554,7 +5130,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "target-recommendation-analysis",
@@ -4571,7 +5150,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "target-recommendation-analysis",
@@ -4588,7 +5170,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "target-recommendation-analysis",
@@ -4605,7 +5190,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "target-recommendation-analysis",
@@ -4622,7 +5210,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "target-recommendation-analysis",
@@ -4644,7 +5235,10 @@
                   "numbers_dates",
                   "investment_relevance",
                   "support_refute_or_lead",
-                  "uncertainties"
+                  "uncertainties",
+                  "question_context",
+                  "extraction_dimensions",
+                  "dimension_findings"
                 ],
                 "source_extraction_ids": [
                   "EXT-Q4-2-1-DELL-FY26-Q4",
@@ -4759,7 +5353,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "target-recommendation-analysis",
@@ -4776,7 +5373,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "target-recommendation-analysis",
@@ -4793,7 +5393,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "target-recommendation-analysis",
@@ -4810,7 +5413,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "target-recommendation-analysis",
@@ -4827,7 +5433,10 @@
                     "numbers_dates",
                     "investment_relevance",
                     "support_refute_or_lead",
-                    "uncertainties"
+                    "uncertainties",
+                    "question_context",
+                    "extraction_dimensions",
+                    "dimension_findings"
                   ],
                   "source_bucket": "evidence",
                   "preferred_parser_skill": "target-recommendation-analysis",
@@ -4849,7 +5458,10 @@
                   "numbers_dates",
                   "investment_relevance",
                   "support_refute_or_lead",
-                  "uncertainties"
+                  "uncertainties",
+                  "question_context",
+                  "extraction_dimensions",
+                  "dimension_findings"
                 ],
                 "source_extraction_ids": [
                   "EXT-Q4-2-2-NVDA-FY26-Q4",
@@ -4975,7 +5587,10 @@
                         "numbers_dates",
                         "investment_relevance",
                         "support_refute_or_lead",
-                        "uncertainties"
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
                       ],
                       "source_bucket": "evidence",
                       "preferred_parser_skill": "target-recommendation-analysis",
@@ -4992,7 +5607,10 @@
                         "numbers_dates",
                         "investment_relevance",
                         "support_refute_or_lead",
-                        "uncertainties"
+                        "uncertainties",
+                        "question_context",
+                        "extraction_dimensions",
+                        "dimension_findings"
                       ],
                       "source_bucket": "evidence",
                       "preferred_parser_skill": "target-recommendation-analysis",
@@ -5011,7 +5629,10 @@
                       "numbers_dates",
                       "investment_relevance",
                       "support_refute_or_lead",
-                      "uncertainties"
+                      "uncertainties",
+                      "question_context",
+                      "extraction_dimensions",
+                      "dimension_findings"
                     ],
                     "source_extraction_ids": [
                       "EXT-Q4-2-2-1-VRT-Q4-2025",
@@ -5142,7 +5763,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "financial-statement-analysis",
@@ -5160,7 +5784,10 @@
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q1-1-1-NVDA-FY26-Q4"
@@ -5223,7 +5850,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "financial-statement-analysis",
@@ -5240,7 +5870,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "financial-statement-analysis",
@@ -5259,7 +5892,10 @@
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q1-1-2-DELL-FY26-Q4",
@@ -5342,7 +5978,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -5359,7 +5998,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -5376,7 +6018,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -5393,7 +6038,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -5414,7 +6062,10 @@
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q1-2-1-NVDA-FY26-Q4",
@@ -5489,7 +6140,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "financial-statement-analysis",
@@ -5506,7 +6160,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "financial-statement-analysis",
@@ -5525,7 +6182,10 @@
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q1-2-1-1-NVDA-FY26-Q4",
@@ -5592,7 +6252,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "financial-statement-analysis",
@@ -5609,7 +6272,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "financial-statement-analysis",
@@ -5628,7 +6294,10 @@
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q1-2-1-2-DELL-FY26-Q4",
@@ -5698,7 +6367,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -5715,7 +6387,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -5732,7 +6407,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -5749,7 +6427,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -5766,7 +6447,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -5788,7 +6472,10 @@
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q1-2-2-ALAB-Q4-2025",
@@ -5888,7 +6575,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "valuation-analysis",
@@ -5906,7 +6596,10 @@
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q2-1-1-NVDA-FY26-Q4"
@@ -5940,7 +6633,7 @@
       "level": 3,
       "parent_id": "Q2.1",
       "question": "HBM、先进制造和封装是否是硬瓶颈？",
-      "current_conclusion": "SK hynix、TSM、MU、Samsung 均是核心价值捕获载体，其中 SK hynix 因 HBM 领导力最稀缺。",
+      "current_conclusion": "SK hynix、TSM、MU、Samsung 均是核心价值捕获载体，其中 SK hynix 因 HBM 领导力最稀缺；Micron 的 outlook/TAM/财务兑现需要按不同口径拆开使用。",
       "next_question_ids": [
         "Q2.1.2.1",
         "Q2.1.2.2"
@@ -5950,8 +6643,12 @@
       "support_evidence": [
         "SRC-TSM-Q4-2025 supports HBM、先进制造和封装是否是硬瓶颈？",
         "SRC-MU-FY26-Q1 supports HBM、先进制造和封装是否是硬瓶颈？",
+        "SRC-MU-FY26-Q1-PREPARED supports HBM、先进制造和封装是否是硬瓶颈？",
         "SRC-SKHYNIX-FY25 supports HBM、先进制造和封装是否是硬瓶颈？",
-        "SRC-SAMSUNG-FY25 supports HBM、先进制造和封装是否是硬瓶颈？"
+        "SRC-SAMSUNG-FY25 supports HBM、先进制造和封装是否是硬瓶颈？",
+        "SRC-TF-HBM-PRICE-20240506 supports HBM、先进制造和封装是否是硬瓶颈？",
+        "SRC-TF-BLACKWELL-HBM-20240808 supports HBM、先进制造和封装是否是硬瓶颈？",
+        "SRC-SA-COWOS-HBM-2023 supports HBM、先进制造和封装是否是硬瓶颈？"
       ],
       "refute_evidence": [
         "Counter evidence that weakens HBM、先进制造和封装是否是硬瓶颈？"
@@ -5974,7 +6671,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -5991,7 +6691,30 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
+          ],
+          "source_bucket": "evidence",
+          "preferred_parser_skill": "industry-report-analysis",
+          "availability_proof": "publisher date / official release page visible 2025-12-17"
+        },
+        {
+          "source_id": "SRC-MU-FY26-Q1-PREPARED",
+          "as_of_date": "2026-03-02",
+          "source_visible_at": "2025-12-17",
+          "cutoff_status": "cutoff_visible",
+          "allowed_usage": "historical_thesis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -6008,7 +6731,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -6025,11 +6751,74 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
           "availability_proof": "publisher date / official release page visible 2026-01-29"
+        },
+        {
+          "source_id": "SRC-TF-HBM-PRICE-20240506",
+          "as_of_date": "2026-03-02",
+          "source_visible_at": "2024-05-06",
+          "cutoff_status": "cutoff_visible",
+          "allowed_usage": "historical_thesis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
+          ],
+          "source_bucket": "research_report",
+          "preferred_parser_skill": "industry-report-analysis",
+          "availability_proof": "publisher date / official release page visible 2024-05-06"
+        },
+        {
+          "source_id": "SRC-TF-BLACKWELL-HBM-20240808",
+          "as_of_date": "2026-03-02",
+          "source_visible_at": "2024-08-08",
+          "cutoff_status": "cutoff_visible",
+          "allowed_usage": "historical_thesis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
+          ],
+          "source_bucket": "research_report",
+          "preferred_parser_skill": "industry-report-analysis",
+          "availability_proof": "publisher date / official release page visible 2024-08-08"
+        },
+        {
+          "source_id": "SRC-SA-COWOS-HBM-2023",
+          "as_of_date": "2026-03-02",
+          "source_visible_at": "2023-07-05",
+          "cutoff_status": "cutoff_visible",
+          "allowed_usage": "historical_thesis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
+          ],
+          "source_bucket": "research_report",
+          "preferred_parser_skill": "industry-report-analysis",
+          "availability_proof": "publisher date / official release page visible 2023-07-05"
         }
       ],
       "skill_dispatch": {
@@ -6038,27 +6827,42 @@
         "concrete_materials": [
           "SRC-TSM-Q4-2025",
           "SRC-MU-FY26-Q1",
+          "SRC-MU-FY26-Q1-PREPARED",
           "SRC-SKHYNIX-FY25",
-          "SRC-SAMSUNG-FY25"
+          "SRC-SAMSUNG-FY25",
+          "SRC-TF-HBM-PRICE-20240506",
+          "SRC-TF-BLACKWELL-HBM-20240808",
+          "SRC-SA-COWOS-HBM-2023"
         ],
         "extraction_schema": [
           "key_facts",
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q2-1-2-TSM-Q4-2025",
           "EXT-Q2-1-2-MU-FY26-Q1",
+          "EXT-Q2-1-2-MU-FY26-Q1-PREPARED",
           "EXT-Q2-1-2-SKHYNIX-FY25",
-          "EXT-Q2-1-2-SAMSUNG-FY25"
+          "EXT-Q2-1-2-SAMSUNG-FY25",
+          "EXT-Q2-1-2-TF-HBM-PRICE-20240506",
+          "EXT-Q2-1-2-TF-BLACKWELL-HBM-20240808",
+          "EXT-Q2-1-2-SA-COWOS-HBM-2023"
         ],
         "leaf_source_review_ids": [
           "REV-Q2-1-2-TSM-Q4-2025",
           "REV-Q2-1-2-MU-FY26-Q1",
+          "REV-Q2-1-2-MU-FY26-Q1-PREPARED",
           "REV-Q2-1-2-SKHYNIX-FY25",
-          "REV-Q2-1-2-SAMSUNG-FY25"
+          "REV-Q2-1-2-SAMSUNG-FY25",
+          "REV-Q2-1-2-TF-HBM-PRICE-20240506",
+          "REV-Q2-1-2-TF-BLACKWELL-HBM-20240808",
+          "REV-Q2-1-2-SA-COWOS-HBM-2023"
         ],
         "skill_output_status": "gpt_verified_direct_parse",
         "fallback_used": true,
@@ -6068,23 +6872,31 @@
         "allowed_source_ids": [
           "SRC-TSM-Q4-2025",
           "SRC-MU-FY26-Q1",
+          "SRC-MU-FY26-Q1-PREPARED",
           "SRC-SKHYNIX-FY25",
-          "SRC-SAMSUNG-FY25"
+          "SRC-SAMSUNG-FY25",
+          "SRC-TF-HBM-PRICE-20240506",
+          "SRC-TF-BLACKWELL-HBM-20240808",
+          "SRC-SA-COWOS-HBM-2023"
         ],
         "model_prior_policy": "hypothesis_only_not_scoring_evidence",
         "post_cutoff_knowledge_policy": "not_used_before_label_attach",
         "non_source_claims": []
       },
-      "fact": "TSMC advanced technologies were 77% of wafer revenue; SK hynix and Samsung reported AI memory/HBM strength; Micron reported record revenue and margin expansion.",
+      "fact": "TSMC advanced technologies were 77% of wafer revenue; Micron Q2 outlook and HBM TAM give near-term and long-term memory evidence; SK hynix and Samsung reported AI memory/HBM strength; TrendForce and SemiAnalysis provide HBM value-share and CoWoS/HBM bottleneck methods.",
       "inference": "AI 工厂交付需要先进制程、封装和 HBM，供给斜率慢于需求时可形成价格和毛利弹性。",
-      "judgment": "SK hynix、TSM、MU、Samsung 均是核心价值捕获载体，其中 SK hynix 因 HBM 领导力最稀缺。",
-      "gap": "缺少同口径产能、客户分配和估值分位。",
+      "judgment": "SK hynix、TSM、MU、Samsung 均是核心价值捕获载体，其中 SK hynix 因 HBM 领导力最稀缺；Micron 的 outlook/TAM/财务兑现需要按不同口径拆开使用。",
+      "gap": "缺少同口径产能、客户分配、HBM ASP 和估值分位。",
       "trigger": "若 HBM 供给快速扩张或 ASP 反转，降低相关标的。",
       "source_links": [
         "SRC-TSM-Q4-2025",
         "SRC-MU-FY26-Q1",
+        "SRC-MU-FY26-Q1-PREPARED",
         "SRC-SKHYNIX-FY25",
-        "SRC-SAMSUNG-FY25"
+        "SRC-SAMSUNG-FY25",
+        "SRC-TF-HBM-PRICE-20240506",
+        "SRC-TF-BLACKWELL-HBM-20240808",
+        "SRC-SA-COWOS-HBM-2023"
       ]
     },
     {
@@ -6092,7 +6904,7 @@
       "level": 4,
       "parent_id": "Q2.1.2",
       "question": "HBM 价值捕获应该优先看谁？",
-      "current_conclusion": "HBM 分支需要继续拆到公司层，否则 Q2.1.2 容易把不同强度混在一起。",
+      "current_conclusion": "HBM 分支需要继续拆到公司层，否则 Q2.1.2 容易把不同强度混在一起；同一份 Micron 材料必须按 outlook、TAM、财务兑现分维度解析。",
       "next_question_ids": [
         "Q2.1.2.1.1",
         "Q2.1.2.1.2"
@@ -6102,7 +6914,11 @@
       "support_evidence": [
         "SRC-SKHYNIX-FY25 supports HBM 价值捕获应该优先看谁？",
         "SRC-MU-FY26-Q1 supports HBM 价值捕获应该优先看谁？",
-        "SRC-SAMSUNG-FY25 supports HBM 价值捕获应该优先看谁？"
+        "SRC-MU-FY26-Q1-PREPARED supports HBM 价值捕获应该优先看谁？",
+        "SRC-SAMSUNG-FY25 supports HBM 价值捕获应该优先看谁？",
+        "SRC-TF-HBM-PRICE-20240506 supports HBM 价值捕获应该优先看谁？",
+        "SRC-TF-BLACKWELL-HBM-20240808 supports HBM 价值捕获应该优先看谁？",
+        "SRC-SA-COWOS-HBM-2023 supports HBM 价值捕获应该优先看谁？"
       ],
       "refute_evidence": [
         "Counter evidence that weakens HBM 价值捕获应该优先看谁？"
@@ -6125,7 +6941,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -6142,7 +6961,30 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
+          ],
+          "source_bucket": "evidence",
+          "preferred_parser_skill": "industry-report-analysis",
+          "availability_proof": "publisher date / official release page visible 2025-12-17"
+        },
+        {
+          "source_id": "SRC-MU-FY26-Q1-PREPARED",
+          "as_of_date": "2026-03-02",
+          "source_visible_at": "2025-12-17",
+          "cutoff_status": "cutoff_visible",
+          "allowed_usage": "historical_thesis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -6159,11 +7001,74 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
           "availability_proof": "publisher date / official release page visible 2026-01-29"
+        },
+        {
+          "source_id": "SRC-TF-HBM-PRICE-20240506",
+          "as_of_date": "2026-03-02",
+          "source_visible_at": "2024-05-06",
+          "cutoff_status": "cutoff_visible",
+          "allowed_usage": "historical_thesis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
+          ],
+          "source_bucket": "research_report",
+          "preferred_parser_skill": "industry-report-analysis",
+          "availability_proof": "publisher date / official release page visible 2024-05-06"
+        },
+        {
+          "source_id": "SRC-TF-BLACKWELL-HBM-20240808",
+          "as_of_date": "2026-03-02",
+          "source_visible_at": "2024-08-08",
+          "cutoff_status": "cutoff_visible",
+          "allowed_usage": "historical_thesis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
+          ],
+          "source_bucket": "research_report",
+          "preferred_parser_skill": "industry-report-analysis",
+          "availability_proof": "publisher date / official release page visible 2024-08-08"
+        },
+        {
+          "source_id": "SRC-SA-COWOS-HBM-2023",
+          "as_of_date": "2026-03-02",
+          "source_visible_at": "2023-07-05",
+          "cutoff_status": "cutoff_visible",
+          "allowed_usage": "historical_thesis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
+          ],
+          "source_bucket": "research_report",
+          "preferred_parser_skill": "industry-report-analysis",
+          "availability_proof": "publisher date / official release page visible 2023-07-05"
         }
       ],
       "skill_dispatch": {
@@ -6172,24 +7077,39 @@
         "concrete_materials": [
           "SRC-SKHYNIX-FY25",
           "SRC-MU-FY26-Q1",
-          "SRC-SAMSUNG-FY25"
+          "SRC-MU-FY26-Q1-PREPARED",
+          "SRC-SAMSUNG-FY25",
+          "SRC-TF-HBM-PRICE-20240506",
+          "SRC-TF-BLACKWELL-HBM-20240808",
+          "SRC-SA-COWOS-HBM-2023"
         ],
         "extraction_schema": [
           "key_facts",
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q2-1-2-1-SKHYNIX-FY25",
           "EXT-Q2-1-2-1-MU-FY26-Q1",
-          "EXT-Q2-1-2-1-SAMSUNG-FY25"
+          "EXT-Q2-1-2-1-MU-FY26-Q1-PREPARED",
+          "EXT-Q2-1-2-1-SAMSUNG-FY25",
+          "EXT-Q2-1-2-1-TF-HBM-PRICE-20240506",
+          "EXT-Q2-1-2-1-TF-BLACKWELL-HBM-20240808",
+          "EXT-Q2-1-2-1-SA-COWOS-HBM-2023"
         ],
         "leaf_source_review_ids": [
           "REV-Q2-1-2-1-SKHYNIX-FY25",
           "REV-Q2-1-2-1-MU-FY26-Q1",
-          "REV-Q2-1-2-1-SAMSUNG-FY25"
+          "REV-Q2-1-2-1-MU-FY26-Q1-PREPARED",
+          "REV-Q2-1-2-1-SAMSUNG-FY25",
+          "REV-Q2-1-2-1-TF-HBM-PRICE-20240506",
+          "REV-Q2-1-2-1-TF-BLACKWELL-HBM-20240808",
+          "REV-Q2-1-2-1-SA-COWOS-HBM-2023"
         ],
         "skill_output_status": "gpt_verified_direct_parse",
         "fallback_used": true,
@@ -6199,21 +7119,29 @@
         "allowed_source_ids": [
           "SRC-SKHYNIX-FY25",
           "SRC-MU-FY26-Q1",
-          "SRC-SAMSUNG-FY25"
+          "SRC-MU-FY26-Q1-PREPARED",
+          "SRC-SAMSUNG-FY25",
+          "SRC-TF-HBM-PRICE-20240506",
+          "SRC-TF-BLACKWELL-HBM-20240808",
+          "SRC-SA-COWOS-HBM-2023"
         ],
         "model_prior_policy": "hypothesis_only_not_scoring_evidence",
         "post_cutoff_knowledge_policy": "not_used_before_label_attach",
         "non_source_claims": []
       },
-      "fact": "SK hynix 披露 AI memory 驱动的高收入和 49% operating margin；Micron 和 Samsung 也披露 AI memory/HBM 或高价值内存强势。",
-      "inference": "HBM 是 AI 工厂最硬的内存卡点，但供应商之间的资格、份额和毛利弹性不同。",
-      "judgment": "HBM 分支需要继续拆到公司层，否则 Q2.1.2 容易把不同强度混在一起。",
+      "fact": "SK hynix 披露 AI memory 驱动的高收入和 49% operating margin；Micron 同时给出 FQ2 outlook、HBM TAM 和 AI memory 财务兑现；Samsung 也披露 AI memory/HBM 或高价值内存强势；TrendForce/SemiAnalysis 支持 HBM 价值量和瓶颈逻辑。",
+      "inference": "HBM 是 AI 工厂最硬的内存卡点，但供应商之间的资格、份额、价格协议和毛利弹性不同。",
+      "judgment": "HBM 分支需要继续拆到公司层，否则 Q2.1.2 容易把不同强度混在一起；同一份 Micron 材料必须按 outlook、TAM、财务兑现分维度解析。",
       "gap": "缺少同口径 HBM 产能、客户资格和 ASP。",
       "trigger": "若客户资格或 ASP 反转，相关标的降级。",
       "source_links": [
         "SRC-SKHYNIX-FY25",
         "SRC-MU-FY26-Q1",
-        "SRC-SAMSUNG-FY25"
+        "SRC-MU-FY26-Q1-PREPARED",
+        "SRC-SAMSUNG-FY25",
+        "SRC-TF-HBM-PRICE-20240506",
+        "SRC-TF-BLACKWELL-HBM-20240808",
+        "SRC-SA-COWOS-HBM-2023"
       ]
     },
     {
@@ -6249,7 +7177,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "financial-statement-analysis",
@@ -6267,7 +7198,10 @@
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q2-1-2-1-1-SKHYNIX-FY25"
@@ -6301,12 +7235,13 @@
       "level": 5,
       "parent_id": "Q2.1.2.1",
       "question": "Micron 和 Samsung 是同等卡点还是补充弹性？",
-      "current_conclusion": "MU/Samsung 应进入 watch_only，而不是直接与 SK hynix 同行动状态。",
+      "current_conclusion": "MU/Samsung 应进入 watch_only，而不是直接与 SK hynix 同行动状态；Micron 材料要拆成公司指引、公司 TAM 和财务兑现三类使用。",
       "next_question_ids": [],
       "materiality": "控制 MU 与 Samsung 在目标池中的排序，避免把所有内存公司同分。",
       "decision_use": "控制 MU 与 Samsung 在目标池中的排序，避免把所有内存公司同分。",
       "support_evidence": [
         "SRC-MU-FY26-Q1 supports Micron 和 Samsung 是同等卡点还是补充弹性？",
+        "SRC-MU-FY26-Q1-PREPARED supports Micron 和 Samsung 是同等卡点还是补充弹性？",
         "SRC-SAMSUNG-FY25 supports Micron 和 Samsung 是同等卡点还是补充弹性？"
       ],
       "refute_evidence": [
@@ -6330,7 +7265,30 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
+          ],
+          "source_bucket": "evidence",
+          "preferred_parser_skill": "financial-statement-analysis",
+          "availability_proof": "publisher date / official release page visible 2025-12-17"
+        },
+        {
+          "source_id": "SRC-MU-FY26-Q1-PREPARED",
+          "as_of_date": "2026-03-02",
+          "source_visible_at": "2025-12-17",
+          "cutoff_status": "cutoff_visible",
+          "allowed_usage": "historical_thesis",
+          "expected_fields": [
+            "key_facts",
+            "numbers_dates",
+            "investment_relevance",
+            "support_refute_or_lead",
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "financial-statement-analysis",
@@ -6347,7 +7305,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "financial-statement-analysis",
@@ -6359,6 +7320,7 @@
         "selected_skill": "financial-statement-analysis",
         "concrete_materials": [
           "SRC-MU-FY26-Q1",
+          "SRC-MU-FY26-Q1-PREPARED",
           "SRC-SAMSUNG-FY25"
         ],
         "extraction_schema": [
@@ -6366,14 +7328,19 @@
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q2-1-2-1-2-MU-FY26-Q1",
+          "EXT-Q2-1-2-1-2-MU-FY26-Q1-PREPARED",
           "EXT-Q2-1-2-1-2-SAMSUNG-FY25"
         ],
         "leaf_source_review_ids": [
           "REV-Q2-1-2-1-2-MU-FY26-Q1",
+          "REV-Q2-1-2-1-2-MU-FY26-Q1-PREPARED",
           "REV-Q2-1-2-1-2-SAMSUNG-FY25"
         ],
         "skill_output_status": "gpt_verified_direct_parse",
@@ -6383,19 +7350,21 @@
       "backtest_grounding": {
         "allowed_source_ids": [
           "SRC-MU-FY26-Q1",
+          "SRC-MU-FY26-Q1-PREPARED",
           "SRC-SAMSUNG-FY25"
         ],
         "model_prior_policy": "hypothesis_only_not_scoring_evidence",
         "post_cutoff_knowledge_policy": "not_used_before_label_attach",
         "non_source_claims": []
       },
-      "fact": "Micron 披露 record revenue and margin expansion，Samsung 披露 Memory Business record quarterly revenue and operating profit。",
+      "fact": "Micron 披露 record revenue and margin expansion，FQ2 outlook 指向更高收入和毛利，并给出 HBM TAM 与 2026 HBM supply 价量协议；Samsung 披露 Memory Business record quarterly revenue and operating profit。",
       "inference": "两家公司都受益于 AI memory，但相对 SK hynix 的 HBM 份额、资格和定价权需要更强证据。",
-      "judgment": "MU/Samsung 应进入 watch_only，而不是直接与 SK hynix 同行动状态。",
+      "judgment": "MU/Samsung 应进入 watch_only，而不是直接与 SK hynix 同行动状态；Micron 材料要拆成公司指引、公司 TAM 和财务兑现三类使用。",
       "gap": "缺少同口径 HBM 资格和产品 mix。",
       "trigger": "若 HBM 出货/ASP 明显领先预期，才可上调。",
       "source_links": [
         "SRC-MU-FY26-Q1",
+        "SRC-MU-FY26-Q1-PREPARED",
         "SRC-SAMSUNG-FY25"
       ]
     },
@@ -6432,7 +7401,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "financial-statement-analysis",
@@ -6450,7 +7422,10 @@
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q2-1-2-2-TSM-Q4-2025"
@@ -6531,7 +7506,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -6548,7 +7526,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -6565,7 +7546,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -6582,7 +7566,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -6599,7 +7586,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -6621,7 +7611,10 @@
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q2-2-1-ALAB-Q4-2025",
@@ -6700,7 +7693,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "financial-statement-analysis",
@@ -6717,7 +7713,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "financial-statement-analysis",
@@ -6736,7 +7735,10 @@
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q2-2-1-1-ALAB-Q4-2025",
@@ -6803,7 +7805,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -6820,7 +7825,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -6839,7 +7847,10 @@
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q2-2-1-2-AVGO-FY25-Q4",
@@ -6905,7 +7916,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "financial-statement-analysis",
@@ -6923,7 +7937,10 @@
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q2-2-1-3-MRVL-FY26-Q3"
@@ -6990,7 +8007,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "financial-statement-analysis",
@@ -7007,7 +8027,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "financial-statement-analysis",
@@ -7024,7 +8047,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "financial-statement-analysis",
@@ -7044,7 +8070,10 @@
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q2-2-2-VRT-Q4-2025",
@@ -7114,7 +8143,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "financial-statement-analysis",
@@ -7132,7 +8164,10 @@
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q2-2-2-1-VRT-Q4-2025"
@@ -7195,7 +8230,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "financial-statement-analysis",
@@ -7212,7 +8250,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "financial-statement-analysis",
@@ -7231,7 +8272,10 @@
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q2-2-2-2-DELL-FY26-Q4",
@@ -7325,7 +8369,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "valuation-analysis",
@@ -7342,7 +8389,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "valuation-analysis",
@@ -7359,7 +8409,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "valuation-analysis",
@@ -7376,7 +8429,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "valuation-analysis",
@@ -7397,7 +8453,10 @@
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q3-1-1-NVDA-FY26-Q4",
@@ -7472,7 +8531,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "valuation-analysis",
@@ -7489,7 +8551,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "valuation-analysis",
@@ -7508,7 +8573,10 @@
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q3-1-1-1-NVDA-FY26-Q4",
@@ -7578,7 +8646,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "valuation-analysis",
@@ -7595,7 +8666,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "valuation-analysis",
@@ -7612,7 +8686,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "valuation-analysis",
@@ -7629,7 +8706,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "valuation-analysis",
@@ -7646,7 +8726,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "valuation-analysis",
@@ -7668,7 +8751,10 @@
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q3-1-1-2-ALAB-Q4-2025",
@@ -7748,7 +8834,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "news-event-analysis",
@@ -7765,7 +8854,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "news-event-analysis",
@@ -7782,7 +8874,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "news-event-analysis",
@@ -7802,7 +8897,10 @@
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q3-1-2-NVDA-FY26-Q4",
@@ -7886,7 +8984,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -7903,7 +9004,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -7920,7 +9024,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -7937,7 +9044,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -7958,7 +9068,10 @@
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q3-2-1-TSM-Q4-2025",
@@ -8036,7 +9149,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -8053,7 +9169,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -8070,7 +9189,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -8087,7 +9209,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -8104,7 +9229,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "industry-report-analysis",
@@ -8126,7 +9254,10 @@
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q3-2-2-ALAB-Q4-2025",
@@ -8233,7 +9364,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "target-recommendation-analysis",
@@ -8250,7 +9384,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "target-recommendation-analysis",
@@ -8267,7 +9404,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "target-recommendation-analysis",
@@ -8284,7 +9424,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "target-recommendation-analysis",
@@ -8301,7 +9444,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "target-recommendation-analysis",
@@ -8318,7 +9464,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "target-recommendation-analysis",
@@ -8335,7 +9484,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "target-recommendation-analysis",
@@ -8352,7 +9504,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "target-recommendation-analysis",
@@ -8377,7 +9532,10 @@
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q4-1-1-NVDA-FY26-Q4",
@@ -8473,7 +9631,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "target-recommendation-analysis",
@@ -8490,7 +9651,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "target-recommendation-analysis",
@@ -8507,7 +9671,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "target-recommendation-analysis",
@@ -8524,7 +9691,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "target-recommendation-analysis",
@@ -8541,7 +9711,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "target-recommendation-analysis",
@@ -8563,7 +9736,10 @@
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q4-1-2-VRT-Q4-2025",
@@ -8643,7 +9819,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "target-recommendation-analysis",
@@ -8660,7 +9839,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "target-recommendation-analysis",
@@ -8677,7 +9859,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "target-recommendation-analysis",
@@ -8697,7 +9882,10 @@
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q4-1-2-1-VRT-Q4-2025",
@@ -8782,7 +9970,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "target-recommendation-analysis",
@@ -8799,7 +9990,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "target-recommendation-analysis",
@@ -8816,7 +10010,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "target-recommendation-analysis",
@@ -8833,7 +10030,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "target-recommendation-analysis",
@@ -8850,7 +10050,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "target-recommendation-analysis",
@@ -8872,7 +10075,10 @@
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q4-2-1-DELL-FY26-Q4",
@@ -8956,7 +10162,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "target-recommendation-analysis",
@@ -8973,7 +10182,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "target-recommendation-analysis",
@@ -8990,7 +10202,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "target-recommendation-analysis",
@@ -9007,7 +10222,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "target-recommendation-analysis",
@@ -9024,7 +10242,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "target-recommendation-analysis",
@@ -9046,7 +10267,10 @@
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q4-2-2-NVDA-FY26-Q4",
@@ -9125,7 +10349,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "target-recommendation-analysis",
@@ -9142,7 +10369,10 @@
             "numbers_dates",
             "investment_relevance",
             "support_refute_or_lead",
-            "uncertainties"
+            "uncertainties",
+            "question_context",
+            "extraction_dimensions",
+            "dimension_findings"
           ],
           "source_bucket": "evidence",
           "preferred_parser_skill": "target-recommendation-analysis",
@@ -9161,7 +10391,10 @@
           "numbers_dates",
           "investment_relevance",
           "support_refute_or_lead",
-          "uncertainties"
+          "uncertainties",
+          "question_context",
+          "extraction_dimensions",
+          "dimension_findings"
         ],
         "source_extraction_ids": [
           "EXT-Q4-2-2-1-VRT-Q4-2025",

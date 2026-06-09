@@ -11,6 +11,7 @@ from value_invest_research.domain.research_artifacts import (
 from value_invest_research.framework_contracts import (
     audit_time_slice_sources,
     validate_backtest_leakage_controls,
+    validate_industry_space_source_search_pipeline,
     validate_report_contract_html,
     validate_leaf_source_review_schema,
     validate_qa_tree_schema,
@@ -57,6 +58,11 @@ def validate_research_artifacts(
         artifacts.targets,
         artifacts.sources,
     ) if artifacts.qa_tree else {"ok": False, "issues": [], "summary": {}}
+    industry_space_source_search_result = (
+        validate_industry_space_source_search_pipeline(artifacts.workbench)
+        if artifacts.workbench
+        else {"ok": True, "issues": [], "summary": {}}
+    )
 
     all_issues = (
         list(artifacts.load_issues)
@@ -65,6 +71,7 @@ def validate_research_artifacts(
         + list(review_result.get("issues", []))
         + list(target_result.get("issues", []))
         + list(leakage_result.get("issues", []))
+        + list(industry_space_source_search_result.get("issues", []))
     )
     ok = not any(issue.get("severity") == "error" for issue in all_issues)
     return ResearchArtifactValidationResult(

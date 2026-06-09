@@ -32,6 +32,14 @@ LABEL_TERMS = [
     "三个月涨幅",
 ]
 
+INDUSTRY_SPACE_SOURCE_SEARCH_CATEGORIES = [
+    ("company_guidance", "公司指引"),
+    ("company_tam", "公司 TAM"),
+    ("customer_guidance", "客户侧指引"),
+    ("third_party", "第三方拆法"),
+    ("financial_evidence", "财务兑现证据"),
+]
+
 PUBLIC_META_DRIFT_TERMS = [
     "本轮升级",
     "本次升级",
@@ -530,10 +538,20 @@ def validate_report_contract_html(
         "space-node-evidence",
         "space-node-space-reasoning",
         "space-node-sizing",
-        "space-sizing-grid",
+        "space-method-step",
+        "space-step-title",
+        "space-step-index",
+        "space-public-methods",
+        "space-method-card-grid",
+        "space-method-card",
+        "space-method-card-body",
+        "space-method-entry",
+        "space-method-entry-sources",
+        "space-horizon-conclusion",
+        "space-horizon-grid",
+        "space-horizon-card",
         "space-node-sizing-table",
-        "space-node-risk",
-        "space-node-conclusion",
+        "space-step-confidence",
     ]
     missing_industry_space_classes = [
         class_name for class_name in required_industry_space_classes if _class_count(html, class_name) == 0
@@ -543,7 +561,7 @@ def validate_report_contract_html(
             issues,
             "error",
             "missing_industry_space_bom_reasoning",
-            "行业概况/行业空间 must directly render BOM node space reasoning cards with evidence, numerical sizing, risk/refute, and conclusion; missing "
+            "行业概况/行业空间 must directly render BOM node space reasoning cards with public sizing methods and evidence below; missing "
             + ", ".join(missing_industry_space_classes),
         )
     industry_space_node_cards = _tag_class_count(html, "details", "space-node-card")
@@ -554,15 +572,58 @@ def validate_report_contract_html(
             "missing_interactive_industry_space_node_cards",
             "行业空间 must render each key BOM node as a collapsible details.space-node-card",
         )
-    gate_terms = ["BOM", "证据", "空间推理", "轻量数值测算", "测算公式", "当前锚点", "未来假设", "置信度", "风险反证", "结论"]
+    gate_terms = [
+        "BOM",
+        "证据",
+        "空间推理",
+        "公开拆法",
+        "公司指引",
+        "公司 TAM",
+        "客户侧指引",
+        "第三方拆法",
+        "财务兑现证据",
+        "公司或机构",
+        "指引内容",
+        "时间范围",
+        "可验证指标",
+        "空间结论",
+        "短期",
+        "中期",
+        "长期",
+        "置信度",
+        "结论",
+    ]
     missing_gate_terms = [term for term in gate_terms if term not in html]
     if _class_count(html, "industry-space") and missing_gate_terms:
         _issue(
             issues,
             "error",
             "missing_industry_space_bom_reasoning_terms",
-            "行业空间 must organize BOM node reasoning with evidence, space reasoning, lightweight numerical sizing, risk/refute, and conclusion; missing "
+            "行业空间 must organize BOM node reasoning with public sizing methods first and evidence below; missing "
             + ", ".join(missing_gate_terms),
+        )
+    method_entries = list(
+        re.finditer(
+            r"<article\b[^>]*class\s*=\s*(['\"])(?=[^'\"]*\bspace-method-entry\b)[^'\"]*\1[^>]*>(.*?)</article>",
+            html,
+            flags=re.IGNORECASE | re.DOTALL,
+        )
+    )
+    method_entries_without_sources = [
+        match.group(0)
+        for match in method_entries
+        if "space-method-entry-sources" not in match.group(0)
+        or "source-chip" not in match.group(0)
+        or "source-chip-missing" in match.group(0)
+        or "待补来源" in match.group(0)
+    ]
+    if method_entries_without_sources:
+        _issue(
+            issues,
+            "error",
+            "industry_space_method_entry_missing_sources",
+            "Every non-empty 行业空间/公开拆法 entry must carry its own selected evidence source chips; do not rely on a coarse BOM-node evidence pool. Missing or placeholder sources: "
+            + str(len(method_entries_without_sources)),
         )
     if _class_count(html, "table-scroll") == 0 or "overflow-x:auto" not in html.replace(" ", ""):
         _issue(
@@ -740,10 +801,20 @@ def validate_report_contract_html(
         "space-node-evidence",
         "space-node-space-reasoning",
         "space-node-sizing",
-        "space-sizing-grid",
+        "space-method-step",
+        "space-step-title",
+        "space-step-index",
+        "space-public-methods",
+        "space-method-card-grid",
+        "space-method-card",
+        "space-method-card-body",
+        "space-method-entry",
+        "space-method-entry-sources",
+        "space-horizon-conclusion",
+        "space-horizon-grid",
+        "space-horizon-card",
         "space-node-sizing-table",
-        "space-node-risk",
-        "space-node-conclusion",
+        "space-step-confidence",
         "industry-competition",
         "industry-chokepoints",
         "industry-key-variables",
@@ -803,6 +874,135 @@ def validate_report_contract_html(
             **interaction_affordance_counts,
             **l3_metadata_counts,
             "mode": mode,
+        },
+        "issues": issues,
+    }
+
+
+def validate_industry_space_source_search_pipeline(workbench: dict[str, Any]) -> dict[str, Any]:
+    """Validate that every BOM node has an active five-bucket source-search plan."""
+    issues: list[dict[str, str]] = []
+    if not isinstance(workbench, dict):
+        return {"ok": True, "issues": issues, "summary": {}}
+    evidence_pack = workbench.get("industry_space_evidence_pack") or []
+    if not isinstance(evidence_pack, list) or not evidence_pack:
+        return {"ok": True, "issues": issues, "summary": {"industry_space_nodes": 0}}
+
+    matrix_rows = workbench.get("industry_space_source_search_matrix") or []
+    matrix_by_node = {
+        str(row.get("node")): row
+        for row in matrix_rows
+        if isinstance(row, dict) and row.get("node")
+    } if isinstance(matrix_rows, list) else {}
+
+    validated_nodes = 0
+    for node_row in evidence_pack:
+        if not isinstance(node_row, dict):
+            continue
+        node_name = str(node_row.get("node") or "")
+        sizing = node_row.get("publicSizingMethods") or node_row.get("public_sizing_methods") or {}
+        matrix_row = matrix_by_node.get(node_name, {})
+        source_plan = (
+            matrix_row.get("category_search_plan")
+            or matrix_row.get("source_search_plan")
+            or (sizing.get("sourceSearchPlan") if isinstance(sizing, dict) else None)
+            or (sizing.get("source_search_plan") if isinstance(sizing, dict) else None)
+        )
+        normalized_plan = _normalize_industry_space_source_search_plan(source_plan)
+        if not normalized_plan:
+            _issue(
+                issues,
+                "error",
+                "missing_industry_space_source_search_plan",
+                f"{node_name or '<unknown>'} must actively search 公司指引 / 公司 TAM / 客户侧指引 / 第三方拆法 / 财务兑现证据 after BOM node identification",
+            )
+            continue
+        validated_nodes += 1
+        method_counts = _industry_space_method_counts((sizing or {}).get("methods") if isinstance(sizing, dict) else [])
+        for category_key, category_label in INDUSTRY_SPACE_SOURCE_SEARCH_CATEGORIES:
+            entry = normalized_plan.get(category_key) or normalized_plan.get(category_label)
+            if not isinstance(entry, dict):
+                _issue(
+                    issues,
+                    "error",
+                    "missing_industry_space_source_search_category",
+                    f"{node_name or '<unknown>'} is missing active source-search category {category_label}",
+                )
+                continue
+            status = str(entry.get("status") or entry.get("search_status") or "").strip()
+            source_ids = entry.get("sourceIds") or entry.get("source_ids") or []
+            if not isinstance(source_ids, list):
+                source_ids = [source_ids] if source_ids else []
+            if _is_empty(entry.get("search_query")) and _is_empty(entry.get("search_terms")):
+                _issue(
+                    issues,
+                    "error",
+                    "industry_space_source_search_missing_query",
+                    f"{node_name or '<unknown>'} / {category_label} needs explicit search_query or search_terms",
+                )
+            if _is_empty(entry.get("expected_fields")):
+                _issue(
+                    issues,
+                    "error",
+                    "industry_space_source_search_missing_expected_fields",
+                    f"{node_name or '<unknown>'} / {category_label} needs expected_fields for source parsing",
+                )
+            if _is_empty(entry.get("allowed_usage")):
+                _issue(
+                    issues,
+                    "error",
+                    "industry_space_source_search_missing_allowed_usage",
+                    f"{node_name or '<unknown>'} / {category_label} needs allowed_usage",
+                )
+            if _is_empty(entry.get("preferred_parser_skill")):
+                _issue(
+                    issues,
+                    "error",
+                    "industry_space_source_search_missing_parser_skill",
+                    f"{node_name or '<unknown>'} / {category_label} needs preferred_parser_skill",
+                )
+            if _is_empty(entry.get("priority_sources")):
+                _issue(
+                    issues,
+                    "error",
+                    "industry_space_source_search_missing_priority_sources",
+                    f"{node_name or '<unknown>'} / {category_label} needs domain-specific priority_sources such as SemiAnalysis, TrendForce, Omdia, company IR, or customer IR",
+                )
+            if _is_empty(entry.get("directed_queries")):
+                _issue(
+                    issues,
+                    "error",
+                    "industry_space_source_search_missing_directed_queries",
+                    f"{node_name or '<unknown>'} / {category_label} needs site/domain directed_queries instead of only broad keyword search",
+                )
+            if method_counts.get(category_key, 0) > 0 and (status != "found" or not source_ids):
+                _issue(
+                    issues,
+                    "error",
+                    "industry_space_source_search_entry_without_found_plan",
+                    f"{node_name or '<unknown>'} / {category_label} has rendered entries but source-search plan is not found with source_ids",
+                )
+            if method_counts.get(category_key, 0) == 0 and status != "gap" and not source_ids:
+                _issue(
+                    issues,
+                    "error",
+                    "industry_space_source_search_gap_not_marked",
+                    f"{node_name or '<unknown>'} / {category_label} has no selected source; mark status=gap with gap_reason instead of leaving it implicit",
+                )
+            if status == "gap" and _is_empty(entry.get("gap_reason")):
+                _issue(
+                    issues,
+                    "error",
+                    "industry_space_source_search_gap_missing_reason",
+                    f"{node_name or '<unknown>'} / {category_label} gap needs gap_reason",
+                )
+
+    return {
+        "ok": not any(issue["severity"] == "error" for issue in issues),
+        "summary": {
+            "industry_space_nodes": len([row for row in evidence_pack if isinstance(row, dict)]),
+            "validated_source_search_nodes": validated_nodes,
+            "required_categories_per_node": len(INDUSTRY_SPACE_SOURCE_SEARCH_CATEGORIES),
         },
         "issues": issues,
     }
@@ -1811,6 +2011,81 @@ def _normalized_logic_text(value: Any) -> str:
         text = str(value or "")
     text = unescape(text).lower()
     return re.sub(r"\s+", " ", text).strip()
+
+
+def _normalize_industry_space_source_search_plan(source_plan: Any) -> dict[str, dict[str, Any]]:
+    normalized: dict[str, dict[str, Any]] = {}
+    if isinstance(source_plan, dict):
+        for category_key, category_label in INDUSTRY_SPACE_SOURCE_SEARCH_CATEGORIES:
+            entry = source_plan.get(category_key) or source_plan.get(category_label)
+            if isinstance(entry, dict):
+                entry = dict(entry)
+                entry.setdefault("category", category_key)
+                entry.setdefault("source_type", category_label)
+                normalized[category_key] = entry
+                normalized[category_label] = entry
+        return normalized
+    if isinstance(source_plan, list):
+        for item in source_plan:
+            if not isinstance(item, dict):
+                continue
+            text = " ".join(str(item.get(field) or "") for field in ("category", "source_type", "label"))
+            category_key = _industry_space_category_key(text)
+            if not category_key:
+                continue
+            entry = dict(item)
+            label = dict(INDUSTRY_SPACE_SOURCE_SEARCH_CATEGORIES).get(category_key, category_key)
+            entry.setdefault("category", category_key)
+            entry.setdefault("source_type", label)
+            normalized[category_key] = entry
+            normalized[label] = entry
+    return normalized
+
+
+def _industry_space_method_counts(methods: Any) -> dict[str, int]:
+    counts = {key: 0 for key, _label in INDUSTRY_SPACE_SOURCE_SEARCH_CATEGORIES}
+    if not isinstance(methods, list):
+        return counts
+    for method in methods:
+        if isinstance(method, dict):
+            text = " ".join(
+                str(method.get(field) or "")
+                for field in (
+                    "sourceType",
+                    "source_type",
+                    "type",
+                    "organization",
+                    "company",
+                    "source",
+                    "guidanceContent",
+                    "guidance_content",
+                    "guidance",
+                    "value",
+                    "method",
+                )
+            )
+        elif isinstance(method, (list, tuple)):
+            text = " ".join(str(item or "") for item in method[:4])
+        else:
+            text = str(method or "")
+        category_key = _industry_space_category_key(text) or "third_party"
+        counts[category_key] = counts.get(category_key, 0) + 1
+    return counts
+
+
+def _industry_space_category_key(text: str) -> str:
+    lower = text.lower()
+    if "客户侧" in text or "客户指引" in text or "customer" in lower:
+        return "customer_guidance"
+    if "公司 tam" in lower or "TAM" in text or "市场空间" in text or "可触达市场" in text:
+        return "company_tam"
+    if "第三方" in text or "研报" in text or "机构" in text or "预测" in text or "数据商" in text or "sell-side" in lower or "forecast" in lower or "industry" in lower:
+        return "third_party"
+    if "公司指引" in text or "指引" in text or "预计" in text or "guidance" in lower or "outlook" in lower or "expected" in lower:
+        return "company_guidance"
+    if "经营验证" in text or "财务兑现" in text or "公司财报" in text or "财报" in text or "收入" in text or "订单" in text or "利润" in text or "现金" in text or any(token in lower for token in ("revenue", "order", "backlog", "margin", "cash")):
+        return "financial_evidence"
+    return ""
 
 
 def _cutoff_thesis_source_ids(sources: list[dict[str, Any]], as_of_date: str) -> set[str]:

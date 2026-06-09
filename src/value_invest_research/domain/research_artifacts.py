@@ -15,6 +15,7 @@ class ResearchArtifacts:
     sources: list[dict[str, Any]] = field(default_factory=list)
     source_extractions: list[dict[str, Any]] = field(default_factory=list)
     leaf_source_reviews: list[dict[str, Any]] = field(default_factory=list)
+    workbench: dict[str, Any] = field(default_factory=dict)
     targets: list[dict[str, Any]] = field(default_factory=list)
     load_issues: list[Issue] = field(default_factory=list)
 

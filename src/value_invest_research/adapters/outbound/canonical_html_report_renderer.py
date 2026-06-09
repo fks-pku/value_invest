@@ -306,12 +306,48 @@ def _render_chain_value_flow(chain: dict[str, Any], relationships: list[dict[str
                 "weight": 2,
             },
         ]
+    simple_flow = _render_chain_simple_flow(chain)
     cards = "\n".join(_render_chain_value_flow_card(flow) for flow in flows if isinstance(flow, dict))
     return f"""
     <div class="chain-map-card chain-value-flow">
       <div class="chain-graph-head"><b>订单和价值如何在链条里流动</b><span>看需求、供给、交付、收入和 ROI 如何依次验证。</span></div>
+      {simple_flow}
       <div class="chain-sankey-list">{cards}</div>
     </div>
+""".strip()
+
+
+def _render_chain_simple_flow(chain: dict[str, Any]) -> str:
+    raw_steps = chain.get("simple_value_flow") or chain.get("chain_simple_flow") or chain.get("flow_steps") or []
+    if not isinstance(raw_steps, list) or not raw_steps:
+        raw_steps = [
+            "下游需求或预算先变成订单、规格和交付要求。",
+            "订单传导到关键供给节点，形成收入、产能和价格验证。",
+            "系统交付后，再用客户 ROI、使用率和续费验证持续性。",
+        ]
+    cards = []
+    for index, item in enumerate(raw_steps[:6], start=1):
+        if isinstance(item, dict):
+            title = str(item.get("title") or f"步骤 {index}")
+            plain = str(item.get("plain") or item.get("description") or item.get("step") or "")
+            investment = str(item.get("investment") or item.get("investment_read") or "对应到收入、毛利、订单或现金流验证。")
+        else:
+            title = f"步骤 {index}"
+            plain = str(item)
+            investment = "对应到收入、毛利、订单或现金流验证。"
+        cards.append(
+            f"""
+        <article class="chain-simple-step">
+          <span>{index}</span>
+          <div><b>{_e(title)}</b><p>{_e(plain)}</p><small>{_e(investment)}</small></div>
+        </article>
+""".strip()
+        )
+    return f"""
+      <div class="chain-simple-flow">
+        <div class="simple-flow-head"><b>先按这条主线理解</b><span>需求 -> 订单 -> 供给 -> 交付 -> 财务验证</span></div>
+        <div class="chain-simple-grid">{"".join(cards)}</div>
+      </div>
 """.strip()
 
 
@@ -360,11 +396,11 @@ def _render_industry_space(chain: dict[str, Any]) -> str:
     conclusion = chain.get("industry_space_conclusion") if isinstance(chain.get("industry_space_conclusion"), dict) else {}
     summary = str(
         conclusion.get("judgment")
-        or "本节只回答一个问题：未来需求会放大哪些 BOM 节点。每个节点按证据、空间推理、风险反证和结论展开；空间推理内必须包含轻量数值测算。"
+        or "本节只回答一个问题：未来需求会放大哪些 BOM 节点。空间判断必须先记录公司指引、公司 TAM、客户侧指引、第三方拆法和财务兑现证据，再直接结合这五类信息判断短期、中期、长期空间是否足够大；找不到可靠公开拆法时，应明确标为数据缺口，不由模型自行补精确 TAM。"
     )
     return f"""
   <details class="industry-module industry-space">
-    <summary class="module-head"><span class="module-index">02</span><div><h3>行业空间</h3><p>直接按 BOM 节点说明未来空间：证据、空间推理、风险反证和结论。</p></div><span class="chevron">›</span></summary>
+    <summary class="module-head"><span class="module-index">02</span><div><h3>行业空间</h3><p>公开拆法优先记录 BOM 节点空间：先看推理，再看证据来源。</p></div><span class="chevron">›</span></summary>
     <div class="industry-module-body">
       <div class="industry-space-summary">
         <p>{_e(summary)}</p>
@@ -401,15 +437,13 @@ def _render_space_node_card(row: Any) -> str:
         mechanism = row.get("expansionMechanism") or row.get("expansion_mechanism") or row.get("whyMatters") or row.get("why_matters") or "空间推理待补。"
         elasticity = row.get("nodeElasticity") or row.get("node_elasticity") or row.get("directionalElasticity") or row.get("directional_elasticity") or ""
         inference = [mechanism, elasticity] if elasticity else [mechanism]
-    risk = row.get("refuteData") or row.get("refute_data") or row.get("capOrRisk") or row.get("cap_or_risk") or row.get("upperBound") or row.get("upper_bound") or "风险反证待补。"
-    conclusion = row.get("chokepointImplication") or row.get("chokepoint_implication") or row.get("conclusion") or row.get("nextData") or row.get("next_data") or "结论待补。"
     source_ids = row.get("sourceIds") or row.get("source_ids") or []
     if not isinstance(source_ids, list):
         source_ids = [source_ids] if source_ids else []
     fact_items = "".join(f"<li>{_e(str(fact))}</li>" for fact in facts if str(fact).strip())
     reasoning_items = "".join(f"<li>{_e(str(step))}</li>" for step in inference if str(step).strip())
     source_chips = "".join(f'<span class="source-chip">{_e(str(source_id))}</span>' for source_id in source_ids)
-    numeric_sizing = _render_space_node_sizing(row.get("numericSizing") or row.get("numeric_sizing"))
+    numeric_sizing = _render_space_node_sizing(row.get("publicSizingMethods") or row.get("public_sizing_methods") or row.get("numericSizing") or row.get("numeric_sizing"))
     return f"""
       <details class="space-node-card">
         <summary>
@@ -419,18 +453,185 @@ def _render_space_node_card(row: Any) -> str:
           <span class="chevron">›</span>
         </summary>
         <div class="space-node-reasoning">
-          <section class="space-node-section space-node-evidence"><h4>证据</h4><ul>{fact_items}</ul><div class="space-node-sources">{source_chips}</div></section>
           <section class="space-node-section space-node-space-reasoning"><h4>空间推理</h4><ol>{reasoning_items}</ol>{numeric_sizing}</section>
-          <section class="space-node-section space-node-risk"><h4>风险反证</h4><p>{_e(str(risk))}</p></section>
-          <section class="space-node-section space-node-conclusion"><h4>结论</h4><p>{_e(str(conclusion))}</p></section>
+          <section class="space-node-section space-node-evidence"><h4>证据</h4><ul>{fact_items}</ul><div class="space-node-sources">{source_chips}</div></section>
         </div>
       </details>
 """.strip()
 
 
+def _public_method_categories() -> list[dict[str, str]]:
+    return [
+        {"key": "company_guidance", "label": "公司指引", "hint": "管理层给出的未来收入、capex、订单、业务增速或产能口径。"},
+        {"key": "company_tam", "label": "公司 TAM", "hint": "公司披露的市场空间、长期 CAGR、服务市场或可触达市场。"},
+        {"key": "customer_guidance", "label": "客户侧指引", "hint": "下游客户的 capex、RPO、订单、预算和使用量，验证真实需求来源。"},
+        {"key": "third_party", "label": "第三方拆法", "hint": "研报、行业机构或数据商给出的拆分模型、TAM、出货量、价格或供需预测。"},
+        {"key": "financial_evidence", "label": "财务兑现证据", "hint": "收入、订单、backlog、利润率、现金流等已经落地的经营数据。"},
+    ]
+
+
+def _normalize_public_method(method: Any) -> dict[str, str]:
+    if isinstance(method, dict):
+        source_ids = method.get("sourceIds") or method.get("source_ids") or method.get("sources") or []
+        if not isinstance(source_ids, list):
+            source_ids = [source_ids] if source_ids else []
+        return {
+            "source_type": str(method.get("sourceType") or method.get("source_type") or method.get("type") or ""),
+            "organization": str(method.get("organization") or method.get("company") or method.get("source") or ""),
+            "content": str(method.get("guidanceContent") or method.get("guidance_content") or method.get("guidance") or method.get("value") or method.get("method") or ""),
+            "bom_node": str(method.get("bomNode") or method.get("bom_node") or method.get("node") or method.get("scope") or ""),
+            "timeframe": str(method.get("timeframe") or method.get("period") or ""),
+            "metric": str(method.get("verificationMetric") or method.get("verification_metric") or method.get("metric") or method.get("assumption") or method.get("keyAssumption") or method.get("key_assumption") or ""),
+            "confidence": str(method.get("confidence") or ""),
+            "source_ids": [str(source_id) for source_id in source_ids if source_id],
+        }
+    cells = (_row_cells(method, 8) + [""] * 8)[:8]
+    source_ids = cells[7] if len(cells) > 7 else []
+    if not isinstance(source_ids, list):
+        source_ids = [source_ids] if source_ids else []
+    return {
+        "source_type": str(cells[0]),
+        "organization": str(cells[1]),
+        "content": str(cells[2]),
+        "bom_node": str(cells[3]),
+        "timeframe": str(cells[4]),
+        "metric": str(cells[5]),
+        "confidence": str(cells[6]),
+        "source_ids": [str(source_id) for source_id in source_ids if source_id],
+    }
+
+
+def _classify_public_method(method: dict[str, str]) -> str:
+    text = " ".join(str(method.get(key) or "") for key in ("source_type", "organization", "content"))
+    text_lower = text.lower()
+    if any(token in text for token in ("客户侧", "客户指引")) or "customer" in text_lower:
+        return "customer_guidance"
+    if any(token in text for token in ("公司 TAM", "TAM", "市场空间", "可触达市场")):
+        return "company_tam"
+    if any(token in text for token in ("第三方", "研报", "机构", "预测", "数据商")) or "sell-side" in text_lower or "forecast" in text_lower or "industry" in text_lower:
+        return "third_party"
+    if any(token in text for token in ("公司指引", "指引", "预计")) or "guidance" in text_lower or "outlook" in text_lower or "expected" in text_lower:
+        return "company_guidance"
+    if any(token in text for token in ("经营验证", "财务兑现", "公司财报", "财报", "收入", "订单", "利润", "现金")) or any(token in text_lower for token in ("revenue", "order", "backlog", "margin", "cash")):
+        return "financial_evidence"
+    return "third_party"
+
+
+def _normalize_public_method_source_search_plan(source_search_plan: Any) -> dict[str, dict[str, Any]]:
+    normalized: dict[str, dict[str, Any]] = {}
+    categories = _public_method_categories()
+    if isinstance(source_search_plan, dict):
+        for category in categories:
+            entry = source_search_plan.get(category["key"]) or source_search_plan.get(category["label"])
+            if isinstance(entry, dict):
+                normalized[category["key"]] = entry
+                normalized[category["label"]] = entry
+    elif isinstance(source_search_plan, list):
+        for entry in source_search_plan:
+            if not isinstance(entry, dict):
+                continue
+            category_key = _classify_public_method(
+                {
+                    "source_type": str(entry.get("category") or entry.get("source_type") or entry.get("label") or ""),
+                    "organization": "",
+                    "content": "",
+                }
+            )
+            label = next((category["label"] for category in categories if category["key"] == category_key), category_key)
+            normalized[category_key] = entry
+            normalized[label] = entry
+    return normalized
+
+
+def _render_public_method_gap(category: dict[str, str], plan_entry: dict[str, Any] | None) -> tuple[str, str]:
+    if isinstance(plan_entry, dict) and str(plan_entry.get("status") or plan_entry.get("search_status") or "").strip() == "gap":
+        search_intent = str(plan_entry.get("search_intent") or plan_entry.get("search_query") or category["hint"])
+        gap_reason = str(plan_entry.get("gap_reason") or "当前 source pack 未找到可用材料。")
+        priority_sources = plan_entry.get("priority_sources") if isinstance(plan_entry.get("priority_sources"), list) else []
+        priority_text = "、".join(
+            str(source.get("name") or source.get("id") or "")
+            for source in priority_sources[:4]
+            if isinstance(source, dict) and (source.get("name") or source.get("id"))
+        )
+        directed_queries = plan_entry.get("directed_queries") if isinstance(plan_entry.get("directed_queries"), list) else []
+        first_query = ""
+        if directed_queries and isinstance(directed_queries[0], dict):
+            first_query = str(directed_queries[0].get("query") or "")
+        query_line = f"<br>示例 query：{_e(first_query)}" if first_query else ""
+        return (
+            f'<p class="space-method-empty space-method-gap">已规划专业源搜索：{_e(search_intent)}<br>优先源：{_e(priority_text or "待配置")}{query_line}<br>缺口：{_e(gap_reason)}</p>',
+            "已搜索 / 缺口",
+        )
+    return f'<p class="space-method-empty">待补：{_e(category["hint"])}</p>', "待补"
+
+
+def _render_public_method_cards(methods: list[Any], source_search_plan: Any = None) -> str:
+    categories = _public_method_categories()
+    normalized_plan = _normalize_public_method_source_search_plan(source_search_plan)
+    grouped: dict[str, list[dict[str, str]]] = {category["key"]: [] for category in categories}
+    for raw_method in methods:
+        method = _normalize_public_method(raw_method)
+        grouped[_classify_public_method(method)].append(method)
+    cards = []
+    for category in categories:
+        rows = grouped.get(category["key"], [])
+        if rows:
+            rendered_rows = []
+            for row in rows:
+                source_ids = row.get("source_ids") or []
+                source_chips = "".join(f'<span class="source-chip">{_e(str(source_id))}</span>' for source_id in source_ids)
+                if not source_chips:
+                    source_chips = '<span class="source-chip source-chip-missing">待补来源</span>'
+                rendered_rows.append(
+                    f"""
+                <article class="space-method-entry">
+                  <b>公司或机构：{_e(row.get("organization") or "待补")}</b>
+                  <p><strong>指引内容：</strong>{_e(row.get("content") or "待补")}</p>
+                  <dl>
+                    <div><dt>BOM 节点</dt><dd>{_e(row.get("bom_node") or "待补")}</dd></div>
+                    <div><dt>时间范围</dt><dd>{_e(row.get("timeframe") or "待补")}</dd></div>
+                    <div><dt>可验证指标</dt><dd>{_e(row.get("metric") or "待补")}</dd></div>
+                    <div><dt>置信度</dt><dd>{_e(row.get("confidence") or "待补")}</dd></div>
+                  </dl>
+                  <div class="space-method-entry-sources"><div class="source-chips">{source_chips}</div></div>
+                </article>
+""".strip()
+                )
+            body = "".join(rendered_rows)
+            count = f"{len(rows)} 条"
+        else:
+            body, count = _render_public_method_gap(category, normalized_plan.get(category["key"]) or normalized_plan.get(category["label"]))
+        cards.append(
+            f"""
+            <section class="space-method-card space-method-{_e(category["key"])}">
+              <header><span>{_e(category["label"])}</span><small>{_e(count)}</small></header>
+              <div class="space-method-card-body">{body}</div>
+            </section>
+""".strip()
+        )
+    return f'<div class="space-public-methods space-method-card-grid space-node-sizing-table">{"".join(cards)}</div>'
+
+
 def _render_space_node_sizing(sizing: Any) -> str:
     if not isinstance(sizing, dict):
         sizing = {}
+    methods = sizing.get("methods") if isinstance(sizing.get("methods"), list) else []
+    source_search_plan = sizing.get("sourceSearchPlan") or sizing.get("source_search_plan") or {}
+    if methods:
+        source_ids = sizing.get("sourceIds") or sizing.get("source_ids") or []
+        if not isinstance(source_ids, list):
+            source_ids = [source_ids] if source_ids else []
+        source_chips = "".join(f'<span class="source-chip">{_e(str(source_id))}</span>' for source_id in source_ids)
+        return f"""
+          <div class="space-node-sizing">
+          <div class="space-method-step">
+            <div class="space-step-title"><span class="space-step-index">1</span><h5>公开拆法</h5></div>
+            {_render_public_method_cards(methods, source_search_plan)}
+          </div>
+          {_render_space_horizon_conclusion(sizing)}
+          <div class="space-node-sources">{source_chips}</div>
+        </div>
+""".strip()
     formula = str(sizing.get("formula") or "待补。")
     current_anchor = str(sizing.get("currentAnchor") or sizing.get("current_anchor") or "待补。")
     future_assumption = str(sizing.get("futureAssumption") or sizing.get("future_assumption") or "待补。")
@@ -455,14 +656,12 @@ def _render_space_node_sizing(sizing: Any) -> str:
         rows.append("<tr>" + "".join(f"<td>{_e(str(cell))}</td>" for cell in cells) + "</tr>")
     source_chips = "".join(f'<span class="source-chip">{_e(str(source_id))}</span>' for source_id in source_ids)
     return f"""
-        <div class="space-node-sizing">
-          <h5>轻量数值测算</h5>
-          <div class="space-sizing-grid">
-            <div><span>测算公式</span><p>{_e(formula)}</p></div>
-            <div><span>当前锚点</span><p>{_e(current_anchor)}</p></div>
-            <div><span>未来假设</span><p>{_e(future_assumption)}</p></div>
-            <div><span>置信度</span><p>{_e(confidence)}</p></div>
+          <div class="space-node-sizing">
+          <div class="space-method-step">
+            <div class="space-step-title"><span class="space-step-index">1</span><h5>公开拆法</h5></div>
+            {_render_public_method_cards([{"source_type": "旧字段兼容", "organization": "内部代理口径", "content": formula, "bom_node": current_anchor, "timeframe": "待补", "metric": future_assumption, "confidence": confidence}], source_search_plan)}
           </div>
+          {_render_space_horizon_conclusion({"conclusion": str(sizing.get("conclusion") or "旧字段兼容展示，需迁移为五类公开信息。"), "confidence": confidence})}
           <div class="space-node-sizing-table table-scroll">
             <table>
               <thead><tr><th>情景</th><th>空间区间 / 代理锚点</th><th>推理含义</th></tr></thead>
@@ -472,6 +671,60 @@ def _render_space_node_sizing(sizing: Any) -> str:
           <div class="space-node-sources">{source_chips}</div>
         </div>
 """.strip()
+
+
+def _render_space_horizon_conclusion(sizing: dict[str, Any]) -> str:
+    horizon = sizing.get("horizonConclusion") or sizing.get("horizon_conclusion")
+    if not isinstance(horizon, dict):
+        conclusion = str(sizing.get("conclusion") or "现有公开信息不足，不能给出高置信空间判断。")
+        horizon = {
+            "summary": f"结论：{conclusion}",
+            "confidence": str(sizing.get("confidence") or "低：缺少完整公开方法。"),
+            "horizons": [
+                {"label": "短期", "size": "中", "reason": "主要看公司指引和财务兑现证据能否继续支持近端需求。"},
+                {"label": "中期", "size": "中", "reason": "主要看公司 TAM、客户侧指引和第三方拆法能否共同指向扩张。"},
+                {"label": "长期", "size": "待验证", "reason": "长期空间需要继续验证供给扩张、价格、替代路线和客户 ROI。"},
+            ],
+        }
+    horizons = horizon.get("horizons") if isinstance(horizon.get("horizons"), list) else []
+    if not horizons:
+        horizons = [
+            {"label": "短期", "size": "待验证", "reason": "需要补充近端指引。"},
+            {"label": "中期", "size": "待验证", "reason": "需要补充中期公开拆法。"},
+            {"label": "长期", "size": "待验证", "reason": "需要补充长期需求和供给材料。"},
+        ]
+    cards = []
+    for item in horizons:
+        if not isinstance(item, dict):
+            continue
+        size = str(item.get("size") or "待验证")
+        cards.append(
+            f"""
+            <article class="space-horizon-card">
+              <span>{_e(str(item.get("label") or "待补"))}</span>
+              <strong class="{_e(_horizon_size_class(size))}">{_e(size)}</strong>
+              <p>{_e(str(item.get("reason") or "待补。"))}</p>
+            </article>
+""".strip()
+        )
+    return f"""
+          <div class="space-horizon-conclusion">
+            <div class="space-step-title"><span class="space-step-index">2</span><h5>空间结论</h5></div>
+            <p class="space-horizon-summary">{_e(str(horizon.get("summary") or "待补。"))}</p>
+            <div class="space-horizon-grid">{"".join(cards)}</div>
+            <small class="space-step-confidence">置信度：{_e(str(horizon.get("confidence") or sizing.get("confidence") or "待补。"))}</small>
+          </div>
+""".strip()
+
+
+def _horizon_size_class(size: str) -> str:
+    if "大" in size:
+        return "space-horizon-size space-horizon-large"
+    if "中" in size:
+        return "space-horizon-size space-horizon-mid"
+    if "小" in size or "低" in size:
+        return "space-horizon-size space-horizon-low"
+    return "space-horizon-size"
 
 
 def _render_space_detail_panel(title: str, description: str, body: str, class_name: str) -> str:
@@ -2041,7 +2294,7 @@ h1 { max-width: 980px; margin: 0; font-size: clamp(34px, 5vw, 68px); line-height
 }
 .space-node-reasoning {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 10px;
   padding: 14px;
 }
@@ -2050,6 +2303,13 @@ h1 { max-width: 980px; margin: 0; font-size: clamp(34px, 5vw, 68px); line-height
   border-radius: 14px;
   background: #fff;
   padding: 12px;
+}
+.space-node-space-reasoning {
+  border-color: #d9e8fb;
+  background: #fbfdff;
+}
+.space-node-evidence {
+  background: #fbfcff;
 }
 .space-node-section h4 {
   margin: 0 0 8px;
@@ -2067,14 +2327,6 @@ h1 { max-width: 980px; margin: 0; font-size: clamp(34px, 5vw, 68px); line-height
   margin: 0;
   padding-left: 18px;
 }
-.space-node-risk {
-  background: #fffaf0;
-  border-color: #f4d28f;
-}
-.space-node-conclusion {
-  background: #f5fbf7;
-  border-color: #cfead9;
-}
 .space-node-sources {
   margin-top: 10px;
 }
@@ -2085,35 +2337,217 @@ h1 { max-width: 980px; margin: 0; font-size: clamp(34px, 5vw, 68px); line-height
   background: linear-gradient(180deg, #f8fbff, #fff);
   padding: 12px;
 }
-.space-node-sizing h5 {
-  margin: 0 0 10px;
-  color: var(--blue);
-  font-size: 12px;
-}
-.space-sizing-grid {
+.space-method-step {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
   margin-bottom: 10px;
 }
-.space-sizing-grid div {
+.space-step-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.space-step-title h5 {
+  margin: 0;
+  color: var(--blue);
+  font-size: 12px;
+}
+.space-step-index {
+  display: inline-flex;
+  width: 22px;
+  height: 22px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--blue);
+  color: #fff;
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 900;
+  flex: 0 0 auto;
+}
+.space-public-methods {
+  margin-bottom: 0;
+}
+.space-method-card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+.space-method-card {
+  border: 1px solid #e1e9f4;
+  border-radius: 12px;
+  background: #fff;
+  display: grid;
+  grid-template-columns: minmax(128px, 168px) 1fr;
+  gap: 12px;
+  padding: 10px;
+  min-width: 0;
+}
+.space-method-card header {
+  border-right: 1px solid #edf1f7;
+  display: grid;
+  align-content: start;
+  gap: 7px;
+  padding-right: 10px;
+}
+.space-method-card header span {
+  color: #27364a;
+  font-size: 12px;
+  font-weight: 900;
+}
+.space-method-card header small {
+  width: max-content;
+  color: var(--blue);
+  background: #eef5ff;
+  border: 1px solid #d8e8ff;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 900;
+  padding: 2px 7px;
+  white-space: nowrap;
+}
+.space-method-card-body {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 8px;
+  min-width: 0;
+}
+.space-method-entry {
+  border: 1px solid #edf1f7;
+  border-radius: 10px;
+  background: #fbfdff;
+  padding: 9px;
+  margin: 0;
+}
+.space-method-entry b {
+  display: block;
+  color: #1f2937;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+.space-method-entry p {
+  margin: 0 0 8px;
+  color: #344054;
+  font-size: 12px;
+  line-height: 1.55;
+}
+.space-method-entry p strong {
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 900;
+}
+.space-method-entry dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5px 10px;
+  margin: 0;
+}
+.space-method-entry dl div {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 6px;
+}
+.space-method-entry dt {
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 900;
+}
+.space-method-entry dd {
+  margin: 0;
+  color: #526071;
+  font-size: 11px;
+  line-height: 1.45;
+}
+.space-method-entry-sources {
+  margin-top: 8px;
+}
+.space-method-entry-sources .source-chips {
+  gap: 5px;
+}
+.source-chip-missing {
+  color: #956100;
+  background: #fff7e6;
+  border-color: #f4d28f;
+}
+.space-method-empty {
+  align-self: center;
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.space-method-gap {
+  border: 1px dashed #d8e3f2;
+  border-radius: 10px;
+  background: #fbfcff;
+  padding: 9px;
+  color: #5d6675;
+}
+.space-horizon-conclusion {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.space-horizon-summary {
   border: 1px solid #e5edf7;
   border-radius: 10px;
   background: #fff;
-  padding: 9px;
+  padding: 10px;
+  margin: 0;
+  color: #344054;
+  font-size: 12px;
+  line-height: 1.65;
 }
-.space-sizing-grid span {
+.space-horizon-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.space-horizon-card {
+  border: 1px solid #e5edf7;
+  border-radius: 10px;
+  background: #fff;
+  padding: 10px;
+}
+.space-horizon-card span {
   display: block;
   color: #667085;
   font-size: 11px;
   font-weight: 900;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
-.space-sizing-grid p {
+.space-horizon-card strong {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 3px 8px;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+.space-horizon-large {
+  color: var(--green);
+  background: #e7f6ed;
+}
+.space-horizon-mid {
+  color: var(--amber);
+  background: #fff4d6;
+}
+.space-horizon-low {
+  color: var(--red);
+  background: #fee4e2;
+}
+.space-horizon-card p {
   margin: 0;
   color: #344054;
   font-size: 12px;
   line-height: 1.55;
+}
+.space-step-confidence {
+  display: block;
+  margin-top: 6px;
+  color: #667085;
+  font-size: 11px;
+  font-weight: 900;
 }
 .space-node-sizing-table table {
   min-width: 760px;
@@ -2517,6 +2951,70 @@ h1 { max-width: 980px; margin: 0; font-size: clamp(34px, 5vw, 68px); line-height
   color: var(--muted);
   font-size: 12px;
 }
+.chain-simple-flow {
+  border: 1px solid #d8e6f7;
+  border-radius: 12px;
+  background: #f7fbff;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+.simple-flow-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.simple-flow-head b { color: #27364a; }
+.simple-flow-head span {
+  color: var(--muted);
+  font-size: 12px;
+}
+.chain-simple-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 8px;
+}
+.chain-simple-step {
+  border: 1px solid #e1e7f0;
+  border-radius: 12px;
+  background: #fff;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px;
+  align-items: start;
+}
+.chain-simple-step > span {
+  display: inline-flex;
+  width: 26px;
+  height: 26px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--blue);
+  color: #fff;
+  font-weight: 900;
+  font-size: 12px;
+}
+.chain-simple-step b {
+  display: block;
+  color: #27364a;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+.chain-simple-step p {
+  margin: 0;
+  color: #344054;
+  font-size: 12px;
+  line-height: 1.55;
+}
+.chain-simple-step small {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.45;
+}
 .chain-value-guide {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2786,7 +3284,8 @@ dd { margin: 0; color: #344054; }
   .chain-value-guide,
   .space-summary-grid,
   .space-node-reasoning,
-  .space-sizing-grid,
+  .space-horizon-grid,
+  .space-method-card-grid,
   .space-boundary-grid,
   .space-driver-tree,
   .space-model-grid,
@@ -2801,6 +3300,14 @@ dd { margin: 0; color: #344054; }
   .qa-card summary { grid-template-columns: auto 1fr auto; }
   .qa-count { grid-column: 2 / 3; }
   .target-table, .target-odds-table, .source-table, .chain-table { font-size: 13px; }
+  .space-method-card { grid-template-columns: 1fr; }
+  .space-method-card header {
+    border-right: 0;
+    border-bottom: 1px solid #edf1f7;
+    padding-right: 0;
+    padding-bottom: 8px;
+  }
+  .space-method-entry dl { grid-template-columns: 1fr; }
   th, td { padding: 10px; }
 }
 """

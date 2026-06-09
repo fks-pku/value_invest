@@ -16,6 +16,7 @@ Before using this skill, GPT must define:
 - Selected concrete materials or links.
 - Source priority.
 - Extraction schema.
+- Dimension list to inspect for the current question when the source can contain multiple kinds of information.
 - How the answer could support, refute, or only lead to further work.
 
 ## DeepSeek Prompt Contract
@@ -47,6 +48,14 @@ Ask DeepSeek to return:
 - `follow_up_data`
 - `source_links`
 - `schema_fields`: a map for every requested extraction-schema field, each with value, source anchor when available, uncertainty/status, and evidence/review trace placeholders.
+- `dimension_findings`: when GPT provides a dimension list, one record per dimension with `dimension`, `found_or_gap`, `facts`, `scope_caveat`, `verification_metrics`, `support_refute_or_lead`, and `missing_data`.
+
+Parsing rule:
+
+- Read the selected material against the current research question, not as a generic source summary.
+- Inspect every requested dimension before concluding. Do not stop after classifying the source into one bucket.
+- A single source may populate multiple dimensions. For example, an earnings release may provide company guidance, financial execution evidence, capex, segment margin, and remaining product-level gaps in one pass.
+- If a fact is broader than the precise product question, preserve it with a scope caveat instead of discarding it.
 
 ## Persisted Artifacts
 
@@ -61,6 +70,7 @@ Write every successful parser result to `source_extractions.jsonl` as one JSON o
 - `parser_status`: `ok`, `empty_response`, `fallback_gpt_direct_parse`, or `discarded`
 - `key_facts`
 - `schema_fields`
+- `dimension_findings`
 - `inference`
 - `support_refute_or_lead`
 - `uncertainties`
