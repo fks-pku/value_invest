@@ -7,16 +7,11 @@ description: Use for investment research workflows that start from a user resear
 
 This Skill turns heterogeneous market information into auditable research artifacts. The default sequence is a single research-goal QA framework with a research-type adapter and specialty skill dispatch:
 
-1. Current research goal.
-2. Research type adaptation layer.
-3. Supply-chain map pass.
-4. Question architecture pass.
-5. Source planning pass.
-6. Specialty parsing for L3-L5 research units.
-7. GPT verification and evidence-linked synthesis.
-8. Specific target observation list.
-9. Executable contract validation, time-slice audit, frozen recommendation label attach, training sample, and prediction review artifacts.
-10. HTML QA presentation.
+1. Stage 1: Define the research problem — research type classification, domain playbook selection, run mode, project.json.
+2. Stage 2: Build industry overview — five modules (产业链与生态位, 行业空间, 竞争格局与利润池, 瓶颈点, 关键变量与待验证数据), each minimum unit executing "think → search → parse" loop. Module 5 aggregates gaps into pending_questions for Stage 3.
+3. Stage 3: Generate QA tree from pending_questions — L2 mechanism buckets from domain playbook, L3 decision questions with same "think → search → parse" loop, adaptive L4/L5 decomposition only when triggered.
+4. Stage 4: Synthesize target recommendations — deterministic ranking from four core dimensions, scarcity-first gate, freeze before labels.
+5. Stage gates: validate-project-schema → validate-industry-overview → validate-research-artifacts --require-l3 → validate-report-contract --require-l3.
 
 ## Non-Negotiable Rules
 
@@ -106,6 +101,27 @@ This Skill turns heterogeneous market information into auditable research artifa
 - Do not promote an idea without a time frame and disconfirming tests.
 - For industry/theme opportunity and technology/product-route research, do not stop at a broad Q1-Q4 outline. Build a mechanism-depth map before source collection: demand driver tree, supply or access response, unit economics/profit bridge, competitive value-capture map, market-pricing bridge, counter-supply/disconfirming tests, capital-chain or second-order beneficiaries, and model/口径 reconciliation.
 - Domain-specific depth requirements live in `frameworks/domain_playbooks.md`. Use that file when selecting or synthesizing a playbook; for storage/memory research, use its memory industry playbook so the QA tree forces workload-to-memory demand, demand-supply slope mismatch, product price/unit economics, company value capture, capex cycle, market-pricing rerating, counter-supply/substitution, and model口径 reconciliation.
+
+## The "Think → Search → Parse" Loop
+
+Every minimum research unit (BOM node in Stage 2, L3 leaf question in Stage 3) executes this loop:
+
+1. **Think**: LLM writes a `source_plan` before any search. States decision_use, expected_fields, priority_sources (from `config/source_universes.json`), directed_queries, and preferred_parser_skill. Written into the unit as an auditable record.
+2. **Search**: LLM executes web searches using `web_search_prime` + `webfetch` (primary). Collected materials → `sources.jsonl` with `source_visible_at` and `cutoff_status`.
+3. **Parse**: DeepSeek MCP reads materials → `source_extractions.jsonl` (fills `schema_fields`). GPT verifies → `leaf_source_reviews.jsonl`. Verified facts feed into the unit answer.
+
+If 3 rounds of directed search produce no usable results → `status=gap` + `gap_reason`. Do not invent numbers.
+
+## LLM Analyst Behavior Rules
+
+- **One unit at a time**: Complete one BOM node or one L3 leaf before starting the next.
+- **Think before searching**: Every search is preceded by a written source_plan stating why, what, where, and how.
+- **Gap is an answer**: After 3 rounds of directed search with no usable results, write `status=gap` + `gap_reason`. Do not create proprietary estimates.
+- **Concrete citations**: Every fact carries a source_id. No unattributed prose.
+- **Self-challenge**: After each supporting source, actively search for one refuting source. Record "no public refutation found" if none exists.
+- **No skipping**: Modules skipped only with domain playbook exemption. L3 questions deleted only with domain playbook justification.
+- **Stage gate reporting**: At each stage start, output current stage, completed stages, next sub-unit, and pending gate command.
+- **Refresh behavior**: Skip chain rebuild if industry structure unchanged; refresh only time-sensitive space data; add L3 only for new gaps; always re-synthesize Stage 4.
 
 ## HTML QA Presentation
 

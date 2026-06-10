@@ -194,3 +194,61 @@ Scoring adjustments:
 - `valuation_odds` must reverse whether the event delta is already priced.
 - `disconfirming_risk_control` must include event-specific kill tests such as launch delay, missing order conversion, customer capex pullback, substitution, and valuation crowding.
 - `monitorability` must include a concrete review horizon and next evidence to collect.
+
+## AI Factory Infrastructure Playbook
+
+Use this playbook for AI datacenter hardware, GPU/ASIC computing, AI networking, interconnect, HBM/memory, advanced packaging, power/cooling, and AI factory capex cycle research.
+
+Default Q map:
+
+- Q1 Demand reality: convert AI workload, cloud revenue, and customer capex into sustainable demand, order visibility, and physical build-out by compute, memory, networking, and power/cooling nodes.
+- Q2 Competitive landscape and value capture: compare suppliers, substitutes, customer bargaining power, supply response, pricing power, and chokepoint strength across GPU platform, custom ASIC, AI networking, HBM/data-center memory, advanced process/packaging, and power/cooling delivery.
+- Q3 Disconfirming tests and priced-in risk: capex ROI, customer financing quality, substitution (custom ASIC, CPO, copper, internal builds), supply expansion, geopolitics, grid/power constraints, and valuation already priced in.
+- Q4 Target observation list: compute platform, custom ASIC, networking, memory, foundry/packaging, power/cooling, and server/integration names reconciled with scarcity, mispricing, earnings elasticity, risk control, valuation odds, and kill tests.
+
+Required L2 mechanism buckets:
+
+- AI workload demand driver tree: training/inference/agent/RAG workload → GPU/ASIC/TPU demand → HBM/memory attach → network bandwidth → power/cooling per rack, with evidence that it is not merely inventory restocking.
+- Supply response and capacity: TSMC CoWoS/advanced packaging, HBM wafer capacity, networking chip supply, power equipment lead time, transformer/grid interconnection, and datacenter construction timeline.
+- Unit economics and profit bridge: per-node ASP, cost structure, gross margin, operating margin, capex intensity, FCF conversion, and working-capital pressure.
+- Competitive value-capture map: which companies capture revenue/profit at GPU platform, custom ASIC design, AI Ethernet/InfiniBand/NVLink switching, optical interconnect, HBM supply, advanced packaging, power/cooling, and server integration nodes.
+- Technology route comparison: GPU vs custom ASIC, pluggable optics vs CPO, air cooling vs liquid cooling, Ethernet vs InfiniBand, discrete GPU vs chiplet.
+- Component/BOM value chain: subsystem, component/service, key companies, demand input, supply input, downstream recipient, financial validation metric, and QA link.
+- Market-pricing bridge: current market cap/multiples/discount rate/implied growth versus required fundamental path for each node.
+- Counter-supply and substitution: customer self-designed chips, China domestic supply, second-source qualification, architecture changes (CPO, CXL, UALink), and cloud capex digestion.
+- Capital-chain and second-order beneficiaries: whether high AI factory returns pull capex into equipment, materials, test, infrastructure, channels, or downstream AI service adoption.
+- Model口径 reconciliation: compare sell-side/industry/internal models by revenue scope, segment split, calendar/fiscal period, currency, margin definition, and capex classification.
+
+### AI Factory BOM Node Catalog
+
+The following BOM nodes are the default decomposition targets for the 行业空间 module:
+
+| Node | Key Subsystems | Typical Public-Method Sources |
+|------|---------------|------------------------------|
+| GPU/AI Accelerator | NVIDIA Blackwell/Rubin, AMD MI400, Intel Gaudi | NVIDIA IR, SemiAnalysis, TechInsights |
+| Custom ASIC/XPU | Broadcom, Marvell, Amazon Trainium, Google TPU | Broadcom IR, Amazon IR, SemiAnalysis |
+| AI Networking | NVLink, InfiniBand, Ethernet switch, NIC/DPU | NVIDIA IR, Broadcom IR, Dell'Oro |
+| Optical Interconnect | 800G/1.6T transceivers, LPO/CPO, silicon photonics | LightCounting, Coherent IR, Lumentum IR |
+| HBM/Data-Center Memory | HBM3E/HBM4, DDR5, eSSD, CXL memory | Micron IR, SK hynix IR, TrendForce |
+| Advanced Process/Packaging | 3nm/2nm, CoWoS, 3D packaging | TSMC IR, TechInsights, SemiAnalysis |
+| Power/Cooling Delivery | UPS, switchgear, transformer, liquid cooling, busway | Vertiv IR, Eaton IR, IEA |
+| Server/System Integration | AI server, rack-scale, liquid-cooled chassis | Dell IR, Supermicro IR, ServeTheHome |
+
+### AI Factory Extraction Schemas
+
+- `ai_factory_compute_demand`: platform/chip type, workload, cluster scale, unit volume, ASP, revenue, customer attach, period, source.
+- `ai_factory_network_demand`: network type (NVLink/IB/Ethernet), port speed, port count, attach rate, switch/NIC revenue, period, source.
+- `ai_factory_memory_demand`: memory type (HBM/DDR/eSSD), capacity per GPU/server, attach rate, ASP, revenue, margin, period, source.
+- `ai_factory_power_cooling_demand`: product type (UPS/switchgear/transformer/liquid cooling), order/backlog, book-to-bill, margin, lead time, period, source.
+- `ai_factory_manufacturing_capacity`: foundry, node, wafer capacity, packaging capacity, utilization, capex, ramp timing, source.
+- `ai_factory_unit_economics`: company/product node, ASP, cost, gross margin, operating margin, capex, FCF, period, source.
+- `ai_factory_valuation_rerating`: company, market cap/EV, multiples, FCF yield, implied growth/margin, peer set, source.
+- `ai_factory_model_reconciliation`: model/source, metric, period, value, unit, scope, formula, difference vs alternative, adoption status.
+
+Scoring adjustments:
+
+- `future_space` must include demand-supply slope mismatch and node-specific attach rate logic, not only TAM.
+- `chokepoint_strength` must include supply constraint, qualification difficulty, ecosystem lock-in, and substitution risk.
+- `valuation_odds` must check whether node growth and peak margins are already priced into current multiples.
+- `disconfirming_risk_control` must include counter-supply, architecture substitution, capex digestion, geopolitics, and grid/power constraint.
+- `payoff_convexity` must separate volume growth, mix upgrade, margin expansion, and multiple rerating.

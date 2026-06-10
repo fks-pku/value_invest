@@ -5698,13 +5698,13 @@
     }
   ],
   "anti_leakage_controls": {
-    "anti_leakage_level": "strict_cutoff_source_pack",
+    "anti_leakage_level": "strict_source_pack_only",
     "as_of_date": "2026-03-02",
-    "cutoff_source_pack_policy": "only sources visible on or before as_of_date can be used in QA and scoring",
+    "cutoff_source_pack_policy": "all_qa_reasoning_scoring_and_target_ranking_must_use_only_cutoff_visible_source_ids",
     "llm_prior_policy": "model_prior_is_not_evidence",
-    "question_tree_policy": "domain playbook may structure hypotheses but cannot strengthen conclusions without cutoff sources",
-    "supply_chain_policy": "supply-chain priors are explanatory only unless grounded by cutoff source IDs",
-    "scoring_policy": "target scores use only cutoff-visible evidence and GPT reviews",
+    "question_tree_policy": "no_question_may_use_post_cutoff_source_ids_or_label_fields_for_thesis",
+    "supply_chain_policy": "supply_chain_map_may_use_framework_knowledge_but_target_facts_must_be_cutoff_visible",
+    "scoring_policy": "target_score_subcomponents_must_reference_only_cutoff_source_ids_or_gpt_verified_review_ids",
     "label_isolation_policy": "labels_attached_after_frozen_recommendations_only"
   },
   "nodes": [
@@ -10427,5 +10427,1010 @@
         "SRC-SKHYNIX-FY25"
       ]
     }
-  ]
+  ],
+  "supply_chain": {
+    "plain_summary": "AI 工厂产业链从云厂商 capex 预算出发，经 GPU/AI 加速器、HBM 内存、先进制程与封装、AI 网络互联和定制 ASIC 五条关键路线，最后由电力和散热基础设施完成物理交付。最短瓶颈依次为：NVIDIA GPU 平台（CUDA 生态锁定）→ TSMC CoWoS 先进封装（产能硬缺）→ HBM 内存（产能+客户资格双稀缺）。定制 ASIC 是 GPU 路线的补充路线，电力散热是物理落地的交叉验证环节。",
+    "flow_steps": [
+      "步骤1：云厂商（Microsoft、Alphabet、Amazon、Meta）将 AI 训练和推理需求转成集体 capex 预算，2026 年四家合计约 $650-700B，同比增 60-80%。",
+      "步骤2：capex 预算首先流向计算芯片采购（NVIDIA GPU、Broadcom 定制 ASIC/XPU、AMD MI350X），NVIDIA 以 CUDA 生态和年度平台迭代主导 GPU 路线。",
+      "步骤3：GPU 和 ASIC 制造需经 TSMC 先进制程（N3/N5）和 CoWoS 先进封装，再搭配 HBM 内存由 SK hynix/Micron/Samsung 供应，三者组成 AI 加速器的核心硬件三角。",
+      "步骤4：系统集成商（Dell、Supermicro、HPE）接收云厂商 AI 服务器订单，按 GPU/ASIC 平台组装整机，并向 NVIDIA/Broadcom/AMD 下芯片采购单。",
+      "步骤5：连接与网络芯片（Broadcom Tomahawk 6、Astera Labs PCIe retimer、Credo AEC）提供机柜级和集群级互联，800G/1.6T 速率升级驱动端口数和 ASP 增长。",
+      "步骤6：电力散热供应商（Vertiv、Eaton、液冷厂商）为高密度 AI 机架（40kW+/rack）提供 UPS、配电和液冷方案，液冷从可选升级为高功率 GPU 的必要配套。",
+      "步骤7：最终交付的 AI 服务器集群承载模型训练和推理工作负载，云厂商通过出租 GPU 实例和 AI 服务获取收入，完成 capex 到 ROI 的商业闭环。"
+    ],
+    "layers": [
+      {
+        "layer": "需求与付费层",
+        "products": "AI 训练/推理服务、云计算 API、基础模型许可",
+        "players": "Microsoft Azure、Alphabet Google Cloud、Amazon AWS、Meta、Oracle OCI、OpenAI、Anthropic、xAI",
+        "value_flow": "模型公司和云用户通过 API/云订阅付费，云厂商通过出租 GPU 实例和 AI 服务获取收入。云厂商是 capex 的第一采购方和瓶颈守门人。四家 hyperscaler 2026 capex 合计 $650-700B。"
+      },
+      {
+        "layer": "系统集成与交付层",
+        "products": "AI 优化服务器、液冷整机柜、AI 存储系统",
+        "players": "Dell Technologies、Supermicro、HPE、Lenovo、Foxconn、Quanta",
+        "value_flow": "系统集成商接收云厂商订单，完成 GPU/ASIC 平台的组装、液冷方案集成、测试和交付。Dell AI server orders $64B+/backlog $43B。赚取组装毛利，但利润率低于芯片层。"
+      },
+      {
+        "layer": "计算与网络芯片层",
+        "products": "GPU 加速器（Blackwell/Vera Rubin）、定制 ASIC/XPU、AI Ethernet 交换机（Tomahawk 6）、PCIe retimer、AEC 有源电缆",
+        "players": "NVIDIA（GPU 平台）、Broadcom（ASIC+Ethernet 交换机）、AMD、Marvell（custom silicon + 光电）、Astera Labs（PCIe retimer）、Credo（AEC/PAM4 DSP）、Arista Networks（AI 网络交换机）",
+        "value_flow": "NVIDIA 通过 CUDA 生态和 NVLink/NVSwitch 实现 GPU 平台锁定，捕获最高价值（DC $215.9B FY2026）。Broadcom 通过定制 ASIC（6 个核心客户）和高性能 Ethernet 交换芯片获取大客户绑定（AI 半导体 FY2026 >$56B）。Astera/Credo 在机柜级连接中捕获小而关键的增量价值。"
+      },
+      {
+        "layer": "内存与先进制造层",
+        "products": "HBM3E/HBM4、DDR5 服务器 DRAM、eSSD、3nm/5nm 先进制程、CoWoS 2.5D 先进封装",
+        "players": "SK hynix（HBM 领导者）、Micron Technology、Samsung Electronics、TSMC（垄断先进制程和 CoWoS 封装）",
+        "value_flow": "HBM 是 GPU 性能的天花板，每颗 Blackwell GPU 需配多颗 HBM stack，HBM ASP 约为 DDR5 的 5 倍。SK hynix 以 62% HBM 份额和 49% OPM 主导利润池。TSMC 通过 3nm/5nm 制程和 CoWoS 封装垄断 GPU/ASIC 制造（CoWoS 满产至 2027），缺封装意味着缺 GPU。NVIDIA 占 CoWoS 60-70%，产能是最硬瓶颈。"
+      },
+      {
+        "layer": "电力、散热与基础设施层",
+        "products": "UPS 不间断电源、配电设备、液冷 CDU 和冷板、高密度机架 PDU、冷水机组",
+        "players": "Vertiv（市场领导者）、Eaton、nVent、Schneider Electric、CoolIT、Boyd",
+        "value_flow": "高密度 AI 机架（>40kW/rack）使电力和散热从配套变成硬约束，液冷从可选升级为 4000W+ GPU TDP 的必要方案。液冷市场 2025 ~$3B → 2029 ~$7B。电力散热订单是 AI 工厂物理建设的前瞻交叉验证指标。"
+      }
+    ],
+    "candidate_chokepoints": [
+      {
+        "node": "NVIDIA GPU 平台",
+        "reason": "CUDA 软件生态锁定、NVLink/NVSwitch 整机集成、年度产品迭代（Blackwell → Vera Rubin）构成竞争对手难以跨越的护城河。NVIDIA 占 AI 加速器 ~80% 份额，DC 收入 $215.9B 并持续高增长。",
+        "confidence": "高"
+      },
+      {
+        "node": "TSMC CoWoS 先进封装",
+        "reason": "CoWoS 2.5D 封装是 GPU+HBM 集成的唯一量产方案，产能是 AI 加速器的先决约束。满产至 2027 年，客户已在谈判 2028 年产能。52-78 周交付周期反映极度紧缺。",
+        "confidence": "高"
+      },
+      {
+        "node": "HBM 高端内存",
+        "reason": "HBM3E/HBM4 产能由 SK hynix 主导（62% 份额）、客户资格壁垒高、ASP 约 DDR5 的 5 倍、2026 年全部售罄。$54.6B 市场 +58% YoY，$100B TAM by 2028。",
+        "confidence": "高"
+      },
+      {
+        "node": "Broadcom 定制 ASIC/AI 网络",
+        "reason": "6 个核心 XPU 客户（含 Google TPU 多代合作）深度绑定，Tomahawk 6 是唯一 100Tb/s Ethernet 交换机，AI 网络 +60% YoY。FY2027 目标 >$100B AI 半导体收入，Bookings >$30B vs 出货 $10.8B。",
+        "confidence": "中"
+      },
+      {
+        "node": "电力散热基础设施",
+        "reason": "液冷是高密度 AI 机架的必要配套（GPU TDP → 4000W+ by 2029），Vertiv 有机订单 +252% YoY 和 $15B backlog 显示物理瓶颈被财务化。但电力设备存在替代供应商，竞争壁垒低于芯片层。",
+        "confidence": "中"
+      },
+      {
+        "node": "AI 网络 800G/1.6T 互联",
+        "reason": "Credo AEC 和 PAM4 DSP 是 NVIDIA 机柜级连接的稀缺增量（Credo +200% YoY），Broadcom 1.6T DSP 唯一玩家。但单品价值量和客户集中度限制了规模上限，CPO/硅光子路线变更可能重新分配价值。",
+        "confidence": "低"
+      }
+    ],
+    "industry_space_evidence_pack": [
+      {
+        "node": "GPU/AI 加速器",
+        "coreQuestion": "AI 工厂对 GPU 的需求空间还能放大多少？定制 ASIC 路线会分流多少？",
+        "facts": [
+          "NVIDIA Q4 FY26 DC 收入 $62.3B +75% YoY，全年 $215.9B +65%，Q1 FY27 指引 $78B",
+          "NVIDIA ~80% AI 加速器份额，市场 >$200B by 2026",
+          "Meta 签署多年数百万 GPU 协议，CoreWeave 5GW AI 工厂目标 2030",
+          "Omdia: AI 芯片 $123B 2024 → $207B 2025 → $286B 2030，定制 ASIC 份额上升",
+          "四家 hyperscaler 2026 capex 合计 $650-700B，+60-80% YoY"
+        ],
+        "inferenceChain": [
+          "GPU 收入增速在超大基数上仍保持 +75% YoY，说明需求未饱和",
+          "Vera Rubin 路线图保障 2027+ 连续升级，降低平台断层风险",
+          "AI 工厂表述（非单一芯片出货）说明 NVIDIA 将需求框架从硬件扩展到系统级",
+          "定制 ASIC 份额在上升但绝对收入规模仍远小于 GPU，短期内是补充而非替代"
+        ],
+        "sourceIds": [
+          "SRC-001",
+          "SRC-002",
+          "SRC-003",
+          "SRC-004",
+          "SRC-015"
+        ],
+        "publicSizingMethods": {
+          "methods": [
+            {
+              "organization": "NVIDIA",
+              "guidance_content": "Q4 FY26 DC $62.3B, +75% YoY; full-year $215.9B; Q1 FY27 guide $78B",
+              "source_type": "公司指引",
+              "bom_node": "GPU/AI 加速器",
+              "timeframe": "FY2026-FY2027",
+              "verification_metric": "Data Center 收入增速",
+              "confidence": "高",
+              "sourceIds": [
+                "SRC-001"
+              ],
+              "source_ids": [
+                "SRC-001"
+              ]
+            },
+            {
+              "organization": "NVIDIA",
+              "guidance_content": "NVIDIA Data Center TAM driven by accelerated computing and AI platform shifts across four large markets: Data Center, Gaming, ProVis, Automotive",
+              "source_type": "公司 TAM",
+              "bom_node": "GPU/AI 加速器",
+              "timeframe": "FY2026",
+              "verification_metric": "NVIDIA TAM framework and market descriptions",
+              "confidence": "中",
+              "sourceIds": [
+                "SRC-015"
+              ],
+              "source_ids": [
+                "SRC-015"
+              ]
+            },
+            {
+              "organization": "SiliconAnalysts",
+              "guidance_content": "NVIDIA ~80% AI accelerator market share, total market >$200B by 2026",
+              "source_type": "第三方拆法",
+              "bom_node": "GPU/AI 加速器",
+              "timeframe": "2025-2026",
+              "verification_metric": "AI 加速器市场份额",
+              "confidence": "中",
+              "sourceIds": [
+                "SRC-004"
+              ],
+              "source_ids": [
+                "SRC-004"
+              ]
+            },
+            {
+              "organization": "CNBC (Hyperscaler capex)",
+              "guidance_content": "Four hyperscalers 2026 capex $650-700B; Amazon $200B, Alphabet $175-185B, Meta $115-135B, Microsoft ~$105B",
+              "source_type": "客户侧指引",
+              "bom_node": "GPU/AI 加速器",
+              "timeframe": "2026",
+              "verification_metric": "云厂商 capex 预算",
+              "confidence": "高",
+              "sourceIds": [
+                "SRC-002"
+              ],
+              "source_ids": [
+                "SRC-002"
+              ]
+            },
+            {
+              "organization": "Omdia",
+              "guidance_content": "AI chip $123B 2024 → $207B 2025 → $286B 2030; custom ASICs gaining share",
+              "source_type": "第三方拆法",
+              "bom_node": "GPU/AI 加速器",
+              "timeframe": "2024-2030",
+              "verification_metric": "AI 芯片市场规模",
+              "confidence": "中",
+              "sourceIds": [
+                "SRC-003"
+              ],
+              "source_ids": [
+                "SRC-003"
+              ]
+            },
+            {
+              "organization": "NVIDIA",
+              "guidance_content": "Q4 FY26 total rev $68.1B, GM 75%, operating income $44.3B; DC $62.3B; full-year DC $215.9B",
+              "source_type": "财务兑现证据",
+              "bom_node": "GPU/AI 加速器",
+              "timeframe": "FY2026",
+              "verification_metric": "收入、毛利率、经营利润",
+              "confidence": "高",
+              "sourceIds": [
+                "SRC-001"
+              ],
+              "source_ids": [
+                "SRC-001"
+              ]
+            }
+          ]
+        },
+        "space_horizon": {
+          "short_term": "大",
+          "short_reason": "Blackwell 量产交付，四家 hyperscaler capex 2026 全部大幅上调，NVIDIA Q1 FY27 guide $78B 确认短期增速",
+          "mid_term": "大",
+          "mid_reason": "Vera Rubin 路线图保障 2027+ 平台升级，定制 ASIC 双轨并行增长而非替代",
+          "long_term": "中",
+          "long_reason": "定制 ASIC 份额持续上升可能分流通用 GPU 增速，但 CUDA 生态护城河深",
+          "confidence": "高"
+        }
+      },
+      {
+        "node": "HBM/数据中心内存",
+        "coreQuestion": "HBM 和 AI 内存的需求空间能否支撑高利润率？稀缺性何时被新产能打破？",
+        "facts": [
+          "SK hynix FY25 收入 KRW 97.15T，OPM 49%，HBM 收入翻倍，HBM4 率先量产",
+          "HBM 市场 $54.6B 2026 +58% YoY，$100B TAM by 2028，2026 全年售罄",
+          "SK hynix 62% HBM 份额，Micron 21%，Samsung 17%",
+          "Micron Q2 FY26 $23.86B +196%，HBM 100% sold out through 2027，Q3 guide $33.5B GM 81%",
+          "UBS: HBM 定价 +18.5% YoY 2026，SK hynix 70% HBM4 (Rubin)，HBM 收入 $32.7B",
+          "NVIDIA 占 CoWoS 60-70%，是最大 HBM 采购方"
+        ],
+        "inferenceChain": [
+          "HBM 是 GPU 性能的物理天花板——缺 HBM 意味着 GPU 无法出货",
+          "ASP 是 DDR5 的约 5 倍且持续上涨，说明需求 > 供给的基本面未变",
+          "SK hynix 以 62% 份额和 49% OPM 捕获最高质量利润，HBM4 先发优势延续",
+          "Micron +196% YoY 和 Samsung record memory revenue 说明全行业受益，但份额分化"
+        ],
+        "sourceIds": [
+          "SRC-007",
+          "SRC-008",
+          "SRC-009",
+          "SRC-010",
+          "SRC-011"
+        ],
+        "publicSizingMethods": {
+          "methods": [
+            {
+              "organization": "SK hynix",
+              "guidance_content": "FY25 HBM revenue doubled; HBM4 mass production started first in industry; custom HBM partnership",
+              "source_type": "公司指引",
+              "bom_node": "HBM/数据中心内存",
+              "timeframe": "FY2025-FY2026",
+              "verification_metric": "HBM 收入增速和 HBM4 进度",
+              "confidence": "高",
+              "sourceIds": [
+                "SRC-008"
+              ],
+              "source_ids": [
+                "SRC-008"
+              ]
+            },
+            {
+              "organization": "Micron",
+              "guidance_content": "Micron estimates HBM TAM from ~$35B in calendar 2025 to ~$100B in calendar 2028, ~40% CAGR",
+              "source_type": "公司 TAM",
+              "bom_node": "HBM/数据中心内存",
+              "timeframe": "2025-2028",
+              "verification_metric": "HBM TAM 增速",
+              "confidence": "高",
+              "sourceIds": [
+                "SRC-008"
+              ],
+              "source_ids": [
+                "SRC-008"
+              ]
+            },
+            {
+              "organization": "TSMC (容量代理)",
+              "guidance_content": "NVIDIA holds 60-70% of CoWoS capacity as largest HBM buyer; CoWoS fully utilized through 2027",
+              "source_type": "客户侧指引",
+              "bom_node": "HBM/数据中心内存",
+              "timeframe": "2025-2027",
+              "verification_metric": "CoWoS 容量作为 HBM 需求代理",
+              "confidence": "高",
+              "sourceIds": [
+                "SRC-013"
+              ],
+              "source_ids": [
+                "SRC-013"
+              ]
+            },
+            {
+              "organization": "Bank of America",
+              "guidance_content": "HBM market $54.6B 2026 +58% YoY; SK hynix 62%, Micron 21%, Samsung 17%; sold out through 2026; $100B TAM by 2028",
+              "source_type": "第三方拆法",
+              "bom_node": "HBM/数据中心内存",
+              "timeframe": "2026-2028",
+              "verification_metric": "HBM 市场规模和份额分布",
+              "confidence": "中",
+              "sourceIds": [
+                "SRC-009"
+              ],
+              "source_ids": [
+                "SRC-009"
+              ]
+            },
+            {
+              "organization": "UBS",
+              "guidance_content": "Blended HBM pricing +18.5% YoY 2026; SK hynix 70% of HBM4 (Rubin); HBM rev $32.7B; SK hynix >70% OP from HBM",
+              "source_type": "第三方拆法",
+              "bom_node": "HBM/数据中心内存",
+              "timeframe": "2026",
+              "verification_metric": "HBM 定价和 HBM4 市场份额",
+              "confidence": "中",
+              "sourceIds": [
+                "SRC-011"
+              ],
+              "source_ids": [
+                "SRC-011"
+              ]
+            },
+            {
+              "organization": "SK hynix",
+              "guidance_content": "FY25 revenue KRW 97.15T, OPM 49%, net profit KRW 42.95T; HBM revenue doubled YoY",
+              "source_type": "财务兑现证据",
+              "bom_node": "HBM/数据中心内存",
+              "timeframe": "FY2025",
+              "verification_metric": "收入和经营利润率",
+              "confidence": "高",
+              "sourceIds": [
+                "SRC-008"
+              ],
+              "source_ids": [
+                "SRC-008"
+              ]
+            },
+            {
+              "organization": "Micron",
+              "guidance_content": "Q2 FY26 revenue $23.86B +196% YoY; HBM 100% sold out through 2027; Q3 guide $33.5B GM 81%",
+              "source_type": "财务兑现证据",
+              "bom_node": "HBM/数据中心内存",
+              "timeframe": "FY26 Q2-Q3",
+              "verification_metric": "收入和毛利率",
+              "confidence": "高",
+              "sourceIds": [
+                "SRC-010"
+              ],
+              "source_ids": [
+                "SRC-010"
+              ]
+            },
+            {
+              "organization": "Samsung",
+              "guidance_content": "Q4 FY25 KRW 93.8T all-time high quarterly revenue; Memory Business record OP driven by HBM",
+              "source_type": "财务兑现证据",
+              "bom_node": "HBM/数据中心内存",
+              "timeframe": "Q4 FY25",
+              "verification_metric": "内存业务收入和利润创新高",
+              "confidence": "高",
+              "sourceIds": [
+                "SRC-007"
+              ],
+              "source_ids": [
+                "SRC-007"
+              ]
+            }
+          ]
+        },
+        "space_horizon": {
+          "short_term": "大",
+          "short_reason": "HBM3E 12-hi 量产，2026 全年售罄，价格锁定 +18.5% YoY，三大厂商全部 open 满产",
+          "mid_term": "大",
+          "mid_reason": "HBM4 过渡至 Rubin 平台，推理需求增加内存带宽要求，$100B TAM by 2028",
+          "long_term": "中",
+          "long_reason": "产能扩张和新供应商可能打破稀缺性，但认证壁垒高，3-4 年内难以实质冲击",
+          "confidence": "高"
+        }
+      },
+      {
+        "node": "AI 网络互联",
+        "coreQuestion": "AI 集群对网络的需求空间有多大？Broadcom 的 Ethernet 切换和 Tomahawk 路线能否持续捕获价值？",
+        "facts": [
+          "Broadcom Q1 FY26 AI semiconductor $8.4B +106% YoY, AI networking +60% YoY, Q2 guide $10.7B",
+          "Broadcom FY2026 AI >$56B, FY2027 >$100B, bookings >$30B vs shipments $10.8B",
+          "Tomahawk 6: 第一颗 100Tb/s Ethernet 交换机芯片，1.6T DSP 唯一玩家",
+          "AI networking 占 AI 半导体收入 ~33%（Q1）→ 40%（Q2），网络增速快于 XPU 绝对金额",
+          "Tomahawk 7 规划 2027 年性能翻倍"
+        ],
+        "inferenceChain": [
+          "AI 网络受益于 GPU 和 XPU 双路部署——不管哪种计算芯片都需要网络互联",
+          "集群规模扩大（从千卡到十万卡）意味着网络端口数和带宽要求非线性增长",
+          "Broadcom 是唯一同时拥有 Ethernet 交换芯片和 1.6T DSP 的厂商，形成网络平台壁垒",
+          "AI networking 在总 AI 收入中占比上升（33%→40%），说明网络价值量增速超过芯片数量增速"
+        ],
+        "sourceIds": [
+          "SRC-005",
+          "SRC-006"
+        ],
+        "publicSizingMethods": {
+          "methods": [
+            {
+              "organization": "Broadcom",
+              "guidance_content": "Q1 FY26 AI semi $8.4B +106% YoY; Q2 guide $10.7B; AI networking +60% YoY; FY2026 >$56B; FY2027 >$100B; Tomahawk 6 100Tb/s Ethernet switch chip; 1.6T DSP sole player; Tomahawk 7 2x performance target 2027",
+              "source_type": "公司指引",
+              "bom_node": "AI 网络互联",
+              "timeframe": "FY2026-FY2027",
+              "verification_metric": "AI 半导体收入增速",
+              "confidence": "高",
+              "sourceIds": [
+                "SRC-006"
+              ],
+              "source_ids": [
+                "SRC-006"
+              ]
+            },
+            {
+              "organization": "Broadcom",
+              "guidance_content": "FY2027 AI semiconductor >$100B; AI networking 33-40% of total AI revenue; Tomahawk 6 100Tb/s only switch; 1.6T DSP only player",
+              "source_type": "公司 TAM",
+              "bom_node": "AI 网络互联",
+              "timeframe": "FY2026-FY2027",
+              "verification_metric": "AI 网络收入占比和技术里程碑",
+              "confidence": "高",
+              "sourceIds": [
+                "SRC-006"
+              ],
+              "source_ids": [
+                "SRC-006"
+              ]
+            },
+            {
+              "organization": "Hyperscalers (via Broadcom)",
+              "guidance_content": "Hyperscalers demand Tomahawk 6 for GPU and XPU clusters; networking content grows faster than chip count",
+              "source_type": "客户侧指引",
+              "bom_node": "AI 网络互联",
+              "timeframe": "2026",
+              "verification_metric": "网络内容增速",
+              "confidence": "中",
+              "sourceIds": [
+                "SRC-006"
+              ],
+              "source_ids": [
+                "SRC-006"
+              ]
+            },
+            {
+              "organization": "Broadcom",
+              "guidance_content": "Q1 FY26 AI networking ~one-third of $8.4B AI rev; Q2 growing to 40%; bookings >$30B vs shipments $10.8B",
+              "source_type": "财务兑现证据",
+              "bom_node": "AI 网络互联",
+              "timeframe": "FY26 Q1-Q2",
+              "verification_metric": "AI 网络收入占比变化",
+              "confidence": "高",
+              "sourceIds": [
+                "SRC-006"
+              ],
+              "source_ids": [
+                "SRC-006"
+              ]
+            }
+          ]
+        },
+        "space_horizon": {
+          "short_term": "大",
+          "short_reason": "Tomahawk 6 大规模 ramp，800G/1.6T 速率迁移，AI networking +60% YoY",
+          "mid_term": "大",
+          "mid_reason": "Tomahawk 7 2027 性能翻倍，Ethernet 持续从 InfiniBand 夺取 scale-up 份额",
+          "long_term": "中",
+          "long_reason": "CPO/硅光子架构变更可能重新分配价值，但 Broadcom 的 SerDes/DSP 技术领先优势深厚",
+          "confidence": "中"
+        }
+      },
+      {
+        "node": "定制 ASIC/XPU",
+        "coreQuestion": "定制 AI 芯片路线能否开辟第二条稀缺卡点？Broadcom 的 6 核心客户模型是否可持续？",
+        "facts": [
+          "Broadcom Q1 FY26 XPU +140% YoY, 6 core customers, Google TPU multi-generation deal",
+          "Broadcom FY2026 AI semiconductor >$56B +180%, FY2027 >$100B, bookings >$30B vs shipments $10.8B",
+          "Omdia: custom ASICs gaining share in $286B 2030 AI chip market",
+          "SiliconAnalysts: custom ASIC to grow from ~$15B 2025 to $25B+ 2026",
+          "Marvell DC +38% YoY driven by AI custom products and electro-optics"
+        ],
+        "inferenceChain": [
+          "定制 ASIC 从实验路线变成主流采购路线——Broadcom 的 6 核心客户数说明大企业对定制芯片的需求是结构性的",
+          "Google TPU 多代合作验证了定制芯片可以持续迭代而非一次性项目",
+          "Bookings ($30B) 远超当前出货 ($10.8B) 说明未来 2-4 季度的收入管线已锁定",
+          "定制 ASIC 和 GPU 是并行增长而非零和——大客户需要两种芯片用于不同工作负载"
+        ],
+        "sourceIds": [
+          "SRC-003",
+          "SRC-004",
+          "SRC-005",
+          "SRC-006"
+        ],
+        "publicSizingMethods": {
+          "methods": [
+            {
+              "organization": "Broadcom",
+              "guidance_content": "Q1 FY26 custom XPU +140% YoY; 6 core customers; Google TPU multi-generation deal; FY2026 AI >$56B",
+              "source_type": "公司指引",
+              "bom_node": "定制 ASIC/XPU",
+              "timeframe": "FY2026-FY2027",
+              "verification_metric": "XPU 收入增速和客户数量",
+              "confidence": "高",
+              "sourceIds": [
+                "SRC-006"
+              ],
+              "source_ids": [
+                "SRC-006"
+              ]
+            },
+            {
+              "organization": "Broadcom",
+              "guidance_content": "Broadcom AI semiconductor revenue $56B FY26, >$100B FY27; 6 core XPU customers; bookings >$30B vs shipments $10.8B",
+              "source_type": "公司 TAM",
+              "bom_node": "定制 ASIC/XPU",
+              "timeframe": "FY2026-FY2027",
+              "verification_metric": "AI 半导体收入和 bookings 管线",
+              "confidence": "高",
+              "sourceIds": [
+                "SRC-006"
+              ],
+              "source_ids": [
+                "SRC-006"
+              ]
+            },
+            {
+              "organization": "Google/Broadcom",
+              "guidance_content": "Google TPU multi-generation; 6 core XPU customers including major hyperscalers",
+              "source_type": "客户侧指引",
+              "bom_node": "定制 ASIC/XPU",
+              "timeframe": "Multi-generation",
+              "verification_metric": "核心客户数量和合作深度",
+              "confidence": "高",
+              "sourceIds": [
+                "SRC-006"
+              ],
+              "source_ids": [
+                "SRC-006"
+              ]
+            },
+            {
+              "organization": "SiliconAnalysts",
+              "guidance_content": "Custom ASIC to grow from ~$15B 2025 to $25B+ 2026",
+              "source_type": "第三方拆法",
+              "bom_node": "定制 ASIC/XPU",
+              "timeframe": "2025-2026",
+              "verification_metric": "定制 ASIC 市场增速",
+              "confidence": "中",
+              "sourceIds": [
+                "SRC-004"
+              ],
+              "source_ids": [
+                "SRC-004"
+              ]
+            },
+            {
+              "organization": "Omdia",
+              "guidance_content": "AI processors $123B→$207B→$286B, custom ASICs gaining share",
+              "source_type": "第三方拆法",
+              "bom_node": "定制 ASIC/XPU",
+              "timeframe": "2024-2030",
+              "verification_metric": "定制 ASIC 市场份额趋势",
+              "confidence": "中",
+              "sourceIds": [
+                "SRC-003"
+              ],
+              "source_ids": [
+                "SRC-003"
+              ]
+            },
+            {
+              "organization": "Broadcom",
+              "guidance_content": "Q1 FY26 XPU +140% YoY; bookings >$30B vs shipments $10.8B; FY2026 AI >$56B +180%",
+              "source_type": "财务兑现证据",
+              "bom_node": "定制 ASIC/XPU",
+              "timeframe": "FY26 Q1",
+              "verification_metric": "XPU 收入和 bookings",
+              "confidence": "高",
+              "sourceIds": [
+                "SRC-006"
+              ],
+              "source_ids": [
+                "SRC-006"
+              ]
+            }
+          ]
+        },
+        "space_horizon": {
+          "short_term": "大",
+          "short_reason": "XPU bookings >$30B vs shipments $10.8B，未来 2-4 季收入已锁定，+140% YoY",
+          "mid_term": "大",
+          "mid_reason": "更多大企业和模型公司采纳定制路线，客户数和单客户收入双增长",
+          "long_term": "中",
+          "long_reason": "客户高度集中（6 个核心客户），项目制交付收入节奏脆弱，大客户自研能力是替代风险",
+          "confidence": "中"
+        }
+      },
+      {
+        "node": "先进制程/先进封装",
+        "coreQuestion": "TSMC 的先进制程和 CoWoS 封装产能空间是否仍是最硬卡点？供给约束何时缓解？",
+        "facts": [
+          "TSMC Q4 2025: N3 28% wafer revenue, N5 35%, N7 14%; GM 66.2%, OPM 58.1%",
+          "TSMC FY2026 capex $52-56B, revenue growth 'close to 30%', AI accelerator CAGR mid-to-high 50%",
+          "CoWoS fully utilized through 2027, customers negotiating 2028 capacity",
+          "All 2nm/CoWoS fabs fully booked, 52-78 week lead times",
+          "NVIDIA 60-70% of CoWoS, A16 (1.6nm) on schedule H2 2026",
+          "Foundry 2.0 industry growth ~14% in 2026, TSMC long-term revenue CAGR approaching 25% (2024-2029)"
+        ],
+        "inferenceChain": [
+          "CoWoS 产能可能是整个 AI 工厂链条中最硬的瓶颈——没有封装，没有 GPU",
+          "52-78 周交付周期说明需求远超供给，TSMC 拥有极强的定价权",
+          "NVIDIA 独占 60-70% CoWoS 意味着 GPU 供应的天花板由 TSMC 封装产能决定",
+          "A16 1.6nm 按计划推进保障了 2027+ 制程升级路线"
+        ],
+        "sourceIds": [
+          "SRC-012",
+          "SRC-013"
+        ],
+        "publicSizingMethods": {
+          "methods": [
+            {
+              "organization": "TSMC",
+              "guidance_content": "FY2026 capex $52-56B; revenue growth 'close to 30%'; AI accelerator CAGR mid-to-high 50%; Foundry 2.0 industry growth ~14% in 2026",
+              "source_type": "公司指引",
+              "bom_node": "先进制程/先进封装",
+              "timeframe": "FY2026",
+              "verification_metric": "capex 和收入增速指引",
+              "confidence": "高",
+              "sourceIds": [
+                "SRC-012"
+              ],
+              "source_ids": [
+                "SRC-012"
+              ]
+            },
+            {
+              "organization": "TSMC",
+              "guidance_content": "Foundry 2.0 industry growth ~14% in 2026; long-term revenue CAGR approaching 25% (2024-2029)",
+              "source_type": "公司 TAM",
+              "bom_node": "先进制程/先进封装",
+              "timeframe": "2024-2029",
+              "verification_metric": "代工市场和 TSMC 长期增速",
+              "confidence": "中",
+              "sourceIds": [
+                "SRC-012"
+              ],
+              "source_ids": [
+                "SRC-012"
+              ]
+            },
+            {
+              "organization": "TSMC (via customer negotiation data)",
+              "guidance_content": "CoWoS fully utilized through 2027; customers negotiating 2028 capacity; NVIDIA 60-70% of CoWoS",
+              "source_type": "客户侧指引",
+              "bom_node": "先进制程/先进封装",
+              "timeframe": "2025-2028",
+              "verification_metric": "CoWoS 利用率和客户容量谈判",
+              "confidence": "高",
+              "sourceIds": [
+                "SRC-013"
+              ],
+              "source_ids": [
+                "SRC-013"
+              ]
+            },
+            {
+              "organization": "TSMC (Q1 2026 call)",
+              "guidance_content": "All 2nm/CoWoS fabs fully booked; 52-78 week lead times; N3 severely constrained",
+              "source_type": "财务兑现证据",
+              "bom_node": "先进制程/先进封装",
+              "timeframe": "2026-2028",
+              "verification_metric": "先进节点产能饱和度",
+              "confidence": "高",
+              "sourceIds": [
+                "SRC-013"
+              ],
+              "source_ids": [
+                "SRC-013"
+              ]
+            },
+            {
+              "organization": "TSMC",
+              "guidance_content": "Q4 2025 N3 28% wafer rev, N5 35%, N7 14%; GM 66.2%, OPM 58.1%; Q4 rev $33.73B",
+              "source_type": "财务兑现证据",
+              "bom_node": "先进制程/先进封装",
+              "timeframe": "Q4 2025",
+              "verification_metric": "制程结构和利润率",
+              "confidence": "高",
+              "sourceIds": [
+                "SRC-012"
+              ],
+              "source_ids": [
+                "SRC-012"
+              ]
+            }
+          ]
+        },
+        "space_horizon": {
+          "short_term": "大",
+          "short_reason": "N3 满载，CoWoS 满产至 2027 年，52-78 周交付周期，NVIDIA 独占 60-70%",
+          "mid_term": "大",
+          "mid_reason": "A16 1.6nm H2 2026 启动，2nm 扩产持续，CoWoS 容量随新厂逐步增加",
+          "long_term": "中",
+          "long_reason": "地缘风险和多区域扩产增加资本密度，但 TSMC 的技术护城河在 3-5 年内难以挑战",
+          "confidence": "高"
+        }
+      },
+      {
+        "node": "电力/散热基础设施",
+        "coreQuestion": "AI 工厂电力散热需求空间能否支撑持续的订单和利润率？液冷从可选变必需的阈值是否已过？",
+        "facts": [
+          "Dell'Oro: 液冷市场 $3B 2025 → $7B 2029, single-phase DLC 主导, Vertiv 市场领先",
+          "Hyperscalers 是液冷需求的主要锚定客户, 4000W+ GPU TDP by 2029",
+          "GPU TDP 跨越 4000W 使液冷从可选效率升级为结构性必需"
+        ],
+        "inferenceChain": [
+          "高密度 AI 机架（>40kW/rack）使液冷跨越了从可选到必需的阈值——物理约束而非商业选择",
+          "GPU TDP 从 1000W (H100) → 4000W+ (future) 意味着空气冷却方案不可行",
+          "液冷市场增速低于 AI 芯片但确定性高——每个 AI 机架都需要冷却",
+          "电力散热是 AI 工厂物理建设的前瞻交叉验证指标"
+        ],
+        "sourceIds": [
+          "SRC-014"
+        ],
+        "publicSizingMethods": {
+          "methods": [
+            {
+              "organization": "Dell'Oro",
+              "guidance_content": "Liquid cooling market $3B 2025 → $7B 2029; single-phase DLC dominant; Vertiv leads market; hyperscalers anchor demand; rapid innovation in cold plates and coolant distribution; 4000W+ GPU TDP by 2029",
+              "source_type": "第三方拆法",
+              "bom_node": "电力/散热基础设施",
+              "timeframe": "2025-2029",
+              "verification_metric": "液冷市场规模、需求结构和技术趋势",
+              "confidence": "中",
+              "sourceIds": [
+                "SRC-014"
+              ],
+              "source_ids": [
+                "SRC-014"
+              ]
+            },
+            {
+              "organization": "Hyperscalers (via Dell'Oro)",
+              "guidance_content": "Hyperscalers account for substantial share of liquid cooling market revenue",
+              "source_type": "客户侧指引",
+              "bom_node": "电力/散热基础设施",
+              "timeframe": "2025-2029",
+              "verification_metric": "液冷客户集中度",
+              "confidence": "中",
+              "sourceIds": [
+                "SRC-014"
+              ],
+              "source_ids": [
+                "SRC-014"
+              ]
+            }
+          ]
+        },
+        "space_horizon": {
+          "short_term": "大",
+          "short_reason": "液冷跨越临界阈值成为高密度 AI 机架必需品，hyperscaler 大规模采用",
+          "mid_term": "大",
+          "mid_reason": "GPU TDP 超过 4000W by 2029 使液冷成为结构性长期需求",
+          "long_term": "中",
+          "long_reason": "基础设施是慢增长资产类别，但 AI 密度升级提供结构性先发优势",
+          "confidence": "中"
+        }
+      }
+    ],
+    "pending_questions": [
+      {
+        "gap_source": "行业空间 / 电力散热 / 财务兑现证据",
+        "variable": "缺少电力散热厂商（Vertiv/Eaton）按 AI/非 AI 数据中心的拆分订单和利润率数据",
+        "materiality": "判断 Vertiv 的 AI 收入弹性——如果没有拆分，$7B 液冷 TAM 可能被多种非 AI 增长混杂",
+        "candidate_qa_direction": "Q2",
+        "candidate_score_component": "evidence_quality"
+      },
+      {
+        "gap_source": "行业空间 / 电力散热 / 公司指引",
+        "variable": "缺少电力散热公司的公司层面收入/订单指引（Vertiv 数据来自第三方报告中引用的截面数据）",
+        "materiality": "直接公司指引对于验证订单增速和毛利趋势是必需的",
+        "candidate_qa_direction": "Q1",
+        "candidate_score_component": "future_space"
+      },
+      {
+        "gap_source": "行业空间 / 定制 ASIC / 项目级拆解",
+        "variable": "Broadcom 6 个 XPU 客户的逐个收入拆分、量产节奏和毛利率不公开",
+        "materiality": "判断定制 ASIC 的利润桥——项目制交付的毛利率可能低于平台型芯片，且大客户议价权强",
+        "candidate_qa_direction": "Q2",
+        "candidate_score_component": "chokepoint_strength"
+      },
+      {
+        "gap_source": "行业空间 / HBM / 产能分配",
+        "variable": "HBM 按客户的产能分配比例（NVIDIA 占多少 HBM 采购）和 HBM4 资格认证时间线不完整",
+        "materiality": "NVIDIA 主导采购意味着 HBM 供应商的客户集中风险偏高",
+        "candidate_qa_direction": "Q2",
+        "candidate_score_component": "risk_control"
+      },
+      {
+        "gap_source": "行业空间 / 估值",
+        "variable": "缺少所有关键目标（NVDA、AVGO、TSM、SK hynix、MU）的同口径反向 DCF 和隐含增长模型",
+        "materiality": "强增长不等于好赔率——必须测试市场是否已经将增长路径充分带入估值",
+        "candidate_qa_direction": "Q3",
+        "candidate_score_component": "valuation_odds"
+      },
+      {
+        "gap_source": "竞争格局 / 地缘",
+        "variable": "缺少地区级电网排队、变压器交期和 AI 数据中心项目取消率数据",
+        "materiality": "电网接入可能构成 AI 工厂物理建设的硬上限，特别是在单一区域集中部署的场景",
+        "candidate_qa_direction": "Q3",
+        "candidate_score_component": "disconfirming_risk_control"
+      },
+      {
+        "gap_source": "产业链 / 云 ROI",
+        "variable": "缺少云厂商 AI 服务的单位经济模型（每 GPU 实例的推理收入、训练 ROI、capex 回收周期）",
+        "materiality": "capex 到 ROI 的闭环是否成立决定了 AI 工厂长期需求是否可持续",
+        "candidate_qa_direction": "Q1",
+        "candidate_score_component": "future_space"
+      }
+    ],
+    "competition_rows": [
+      ["GPU/AI 加速器", "主导: NVIDIA (80-85%)。护城河: CUDA 生态 + NVLink 整机平台 + CoWoS 优先分配。挑战者: AMD MI300X/355X（5-8%）、Google TPU（5-7%）、AWS Trainium（3-5%）、Intel Gaudi 3（1-3%）。动态: 定制 ASIC 增速（44.6%）首次超过 GPU 增速（16.1%）— TrendForce 2026 预测。AMD ROCm 缩小差距但未追平。推理侧比训练侧更易被替代。", "NVIDIA 暂居最强卡点，需 Q2 验证稀缺性和定价权", "供应商（NVIDIA GM 75%）", "替代路线/供给扩张/客户议价", "进入 Q2 竞争格局下钻"],
+      ["HBM/数据中心内存", "主导: SK hynix (52-62%)。护城河: HBM3E 先发 + 与 NVIDIA 深度绑定 + TSV 产能领先。挑战者: Micron（19-21%）、Samsung（17%）。动态: 三供应商格局寡头化。Samsung HBM3E 2025 年通过认证后以低 30% 价格抢份额。HBM4 Jensen Huang 确认三家全部认证。产能全部 sold out 至 2027。", "SK hynix 暂居最强卡点，需 Q2 验证稀缺性和定价权", "供应商（SK hynix OPM 49%，Micron GM 81%）", "替代路线/供给扩张/客户议价", "进入 Q2 竞争格局下钻"],
+      ["定制 ASIC/XPU", "主导: Broadcom (~70% 设计服务市场)。护城河: 大客户深度绑定 + 全栈 SerDes IP + 多代 TPU 合作。挑战者: Marvell（20-25%，AWS Trainium、Microsoft Maia）。动态: Broadcom + Marvell 双头垄断 80%+ 定制 ASIC 设计。Google 引入 MediaTek 分流。Microsoft 可能从 Marvell 转单 Broadcom。NVIDIA 投资 Marvell $2B 合作硅光子。", "Broadcom 暂居最强卡点，需 Q2 验证稀缺性和定价权", "设计方（Broadcom AI GM ~60%）+ 客户（自研降本）", "替代路线/供给扩张/客户议价", "进入 Q2 竞争格局下钻"],
+      ["AI 网络（交换/DSP）", "主导: Broadcom（芯片层）/ Celestica+NVIDIA（系统层） (~80% 交换 ASIC)。护城河: Tomahawk 6 唯一 100Tb/s + 1.6T DSP 唯一供应商。挑战者: Marvell/Teralynx（~10% 交换 ASIC）、Arista/Cisco/NVIDIA（系统层竞争激烈）。动态: Ethernet 已占 AI 后端网络 2/3（Dell'Oro），逐步取代 InfiniBand。NVIDIA Spectrum-X 增长 192.6% YoY（IDC Q4 2025）。速率从 800G 升级到 1.6T。", "Broadcom（芯片层）/ Celestica+NVIDIA（系统层） 暂居最强卡点，需 Q2 验证稀缺性和定价权", "芯片供应商（Tomahawk 高毛利）+ 系统商（Celestica/Arista/NVIDIA）分食", "替代路线/供给扩张/客户议价", "进入 Q2 竞争格局下钻"],
+      ["先进制程/先进封装", "主导: TSMC (~70% 纯晶圆代工 / 3nm 以下 >90%)。护城河: 制程领先 + 客户信任（不与客户竞争）+ CoWoS 封装垄断 + 多年代工积累不可复制。挑战者: Samsung Foundry（7.3%，2nm 良率 ~40% vs TSMC ~60%）、Intel Foundry（18A 推迟，尚未赢得大客户）。动态: TSMC 2nm GAA 量产，A16（1.6nm）H2 2026。CoWoS 满产至 2027，客户已在谈 2028 产能。Samsung 用价格补贴抢单。Intel 18A 进度推迟。", "TSMC 暂居最强卡点，需 Q2 验证稀缺性和定价权", "供应商（TSMC GM 66.2%，OPM 58.1%）", "替代路线/供给扩张/客户议价", "进入 Q2 竞争格局下钻"],
+      ["电力/散热基础设施", "主导: Schneider Electric（21.4%）/ Vertiv（18.2%） (分散)。护城河: NVIDIA 深度合作 + 液冷全栈方案 + 全球制造。挑战者: Eaton（12.5%）、ABB（15.8%）、Delta（9.1%）。动态: 液冷是结构性增长点（$3B→$7B），Vertiv 在液冷和 NVIDIA 合作上领先。Schneider 全栈集成能力强。Eaton 在 UPS/配电稳固。新进入者快速涌入。", "Schneider Electric（21.4%）/ Vertiv（18.2%） 暂居最强卡点，需 Q2 验证稀缺性和定价权", "供应商（Vertiv OPM ~20.8%），但竞争加剧", "替代路线/供给扩张/客户议价", "进入 Q2 竞争格局下钻"]
+    ],
+    "technology_route_matrix": [
+      {
+        "route": "GPU（通用） vs 定制 ASIC",
+        "best_fit": "GPU 适合训练 + 灵活推理 / ASIC 适合大规模固定推理 + 自研降本",
+        "solves": "ASIC 降低单 token 成本，GPU 降低开发迁移成本",
+        "tradeoff": "ASIC：更低 TCO 但开发成本高锁定弱 / GPU：CUDA 灵活但采购成本高",
+        "timing": "TrendForce 预测 2026 ASIC 增速 44.6% vs GPU 16.1%",
+        "beneficiaries": "Broadcom/Marvell（ASIC 设计）vs NVIDIA（GPU 主导）",
+        "refute": "若 ASIC 增速在 2027 显著放缓，说明 GPU 路线仍然稳固"
+      },
+      {
+        "route": "Ethernet vs InfiniBand（AI 后端网络）",
+        "best_fit": "Ethernet：多供应商、大规模集群 / InfiniBand：NVIDIA GPU 绑定",
+        "solves": "Ethernet 解决供应商锁定 / InfiniBand 解决延迟确定性",
+        "tradeoff": "Ethernet：开放生态但调优复杂 / InfiniBand：开箱即用但绑定 NVIDIA",
+        "timing": "Ethernet 占 AI 后端 2/3（Dell'Oro Q4 2025），InfiniBand 份额持续下降",
+        "beneficiaries": "Ethernet 生态：Arista/Cisco/Broadcom/Celestica / InfiniBand：NVIDIA 独占",
+        "refute": "若 NVIDIA 大幅降价 InfiniBand 或 Ultra Ethernet 推进受阻"
+      },
+      {
+        "route": "液冷 vs 风冷（数据中心散热）",
+        "best_fit": "液冷：>50kW/rack / 风冷：<30kW/rack",
+        "solves": "液冷解决高密度 GPU 热管理 / 风冷解决成本",
+        "tradeoff": "液冷：必须但贵且运维复杂 / 风冷：便宜但无法支持 4000W+ TDP GPU",
+        "timing": "GPU TDP 预计 2029 超 4000W（Dell'Oro），液冷从可选升级为必要",
+        "beneficiaries": "Vertiv/CoolIT/nVent/Boyd（液冷）vs 传统 HVAC 厂商",
+        "refute": "若下一代 GPU TDP 意外下降或 chiplet 降低散热密度"
+      }
+    ],
+    "competition": {
+      "chain_node_competition": [
+        {
+          "node": "GPU/AI 加速器",
+          "dominant_player": "NVIDIA",
+          "market_share": "80-85%",
+          "competitive_intensity": "低",
+          "moat_source": "CUDA 生态 + NVLink 整机平台 + CoWoS 优先分配",
+          "profit_destination": "供应商（NVIDIA GM 75%）",
+          "challengers": "AMD MI300X/355X（5-8%）、Google TPU（5-7%）、AWS Trainium（3-5%）、Intel Gaudi 3（1-3%）",
+          "key_dynamics": "定制 ASIC 增速（44.6%）首次超过 GPU 增速（16.1%）— TrendForce 2026 预测。AMD ROCm 缩小差距但未追平。推理侧比训练侧更易被替代。",
+          "sourceIds": ["SRC-004", "SRC-017"]
+        },
+        {
+          "node": "HBM/数据中心内存",
+          "dominant_player": "SK hynix",
+          "market_share": "52-62%",
+          "competitive_intensity": "中低",
+          "moat_source": "HBM3E 先发 + 与 NVIDIA 深度绑定 + TSV 产能领先",
+          "profit_destination": "供应商（SK hynix OPM 49%，Micron GM 81%）",
+          "challengers": "Micron（19-21%）、Samsung（17%）",
+          "key_dynamics": "三供应商格局寡头化。Samsung HBM3E 2025 年通过认证后以低 30% 价格抢份额。HBM4 Jensen Huang 确认三家全部认证。产能全部 sold out 至 2027。",
+          "sourceIds": ["SRC-009", "SRC-011", "SRC-019"]
+        },
+        {
+          "node": "定制 ASIC/XPU",
+          "dominant_player": "Broadcom",
+          "market_share": "~70% 设计服务市场",
+          "competitive_intensity": "中",
+          "moat_source": "大客户深度绑定 + 全栈 SerDes IP + 多代 TPU 合作",
+          "profit_destination": "设计方（Broadcom AI GM ~60%）+ 客户（自研降本）",
+          "challengers": "Marvell（20-25%，AWS Trainium、Microsoft Maia）",
+          "key_dynamics": "Broadcom + Marvell 双头垄断 80%+ 定制 ASIC 设计。Google 引入 MediaTek 分流。Microsoft 可能从 Marvell 转单 Broadcom。NVIDIA 投资 Marvell $2B 合作硅光子。",
+          "sourceIds": ["SRC-006", "SRC-020", "SRC-021"]
+        },
+        {
+          "node": "AI 网络（交换/DSP）",
+          "dominant_player": "Broadcom（芯片层）/ Celestica+NVIDIA（系统层）",
+          "market_share": "Broadcom ~80% 交换 ASIC",
+          "competitive_intensity": "中高",
+          "moat_source": "Tomahawk 6 唯一 100Tb/s + 1.6T DSP 唯一供应商",
+          "profit_destination": "芯片供应商（Tomahawk 高毛利）+ 系统商（Celestica/Arista/NVIDIA）分食",
+          "challengers": "Marvell/Teralynx（~10% 交换 ASIC）、Arista/Cisco/NVIDIA（系统层竞争激烈）",
+          "key_dynamics": "Ethernet 已占 AI 后端网络 2/3（Dell'Oro），逐步取代 InfiniBand。NVIDIA Spectrum-X 增长 192.6% YoY（IDC Q4 2025）。速率从 800G 升级到 1.6T。",
+          "sourceIds": ["SRC-006", "SRC-022", "SRC-023"]
+        },
+        {
+          "node": "先进制程/先进封装",
+          "dominant_player": "TSMC",
+          "market_share": "~70% 纯晶圆代工 / 3nm 以下 >90%",
+          "competitive_intensity": "极低",
+          "moat_source": "制程领先 + 客户信任（不与客户竞争）+ CoWoS 封装垄断 + 多年代工积累不可复制",
+          "profit_destination": "供应商（TSMC GM 66.2%，OPM 58.1%）",
+          "challengers": "Samsung Foundry（7.3%，2nm 良率 ~40% vs TSMC ~60%）、Intel Foundry（18A 推迟，尚未赢得大客户）",
+          "key_dynamics": "TSMC 2nm GAA 量产，A16（1.6nm）H2 2026。CoWoS 满产至 2027，客户已在谈 2028 产能。Samsung 用价格补贴抢单。Intel 18A 进度推迟。",
+          "sourceIds": ["SRC-012", "SRC-013", "SRC-018"]
+        },
+        {
+          "node": "电力/散热基础设施",
+          "dominant_player": "Schneider Electric（21.4%）/ Vertiv（18.2%）",
+          "market_share": "分散",
+          "competitive_intensity": "中",
+          "moat_source": "NVIDIA 深度合作 + 液冷全栈方案 + 全球制造",
+          "profit_destination": "供应商（Vertiv OPM ~20.8%），但竞争加剧",
+          "challengers": "Eaton（12.5%）、ABB（15.8%）、Delta（9.1%）",
+          "key_dynamics": "液冷是结构性增长点（$3B→$7B），Vertiv 在液冷和 NVIDIA 合作上领先。Schneider 全栈集成能力强。Eaton 在 UPS/配电稳固。新进入者快速涌入。",
+          "sourceIds": ["SRC-014", "SRC-026", "SRC-027", "SRC-028"]
+        }
+      ],
+      "technology_route_comparison": [
+        {
+          "route_pair": "GPU（通用） vs 定制 ASIC",
+          "best_fit_scenario": "GPU 适合训练 + 灵活推理 / ASIC 适合大规模固定推理 + 自研降本",
+          "solved_constraint": "ASIC 降低单 token 成本，GPU 降低开发迁移成本",
+          "tradeoff": "ASIC：更低 TCO 但开发成本高锁定弱 / GPU：CUDA 灵活但采购成本高",
+          "timing_evidence": "TrendForce 预测 2026 ASIC 增速 44.6% vs GPU 16.1%",
+          "beneficiaries": "Broadcom/Marvell（ASIC 设计）vs NVIDIA（GPU 主导）",
+          "refuting_trigger": "若 ASIC 增速在 2027 显著放缓，说明 GPU 路线仍然稳固",
+          "sourceIds": ["SRC-004", "SRC-020"]
+        },
+        {
+          "route_pair": "Ethernet vs InfiniBand（AI 后端网络）",
+          "best_fit_scenario": "Ethernet：多供应商、大规模集群 / InfiniBand：NVIDIA GPU 绑定",
+          "solved_constraint": "Ethernet 解决供应商锁定 / InfiniBand 解决延迟确定性",
+          "tradeoff": "Ethernet：开放生态但调优复杂 / InfiniBand：开箱即用但绑定 NVIDIA",
+          "timing_evidence": "Ethernet 占 AI 后端 2/3（Dell'Oro Q4 2025），InfiniBand 份额持续下降",
+          "beneficiaries": "Ethernet 生态：Arista/Cisco/Broadcom/Celestica / InfiniBand：NVIDIA 独占",
+          "refuting_trigger": "若 NVIDIA 大幅降价 InfiniBand 或 Ultra Ethernet 推进受阻",
+          "sourceIds": ["SRC-022", "SRC-023"]
+        },
+        {
+          "route_pair": "液冷 vs 风冷（数据中心散热）",
+          "best_fit_scenario": "液冷：>50kW/rack / 风冷：<30kW/rack",
+          "solved_constraint": "液冷解决高密度 GPU 热管理 / 风冷解决成本",
+          "tradeoff": "液冷：必须但贵且运维复杂 / 风冷：便宜但无法支持 4000W+ TDP GPU",
+          "timing_evidence": "GPU TDP 预计 2029 超 4000W（Dell'Oro），液冷从可选升级为必要",
+          "beneficiaries": "Vertiv/CoolIT/nVent/Boyd（液冷）vs 传统 HVAC 厂商",
+          "refuting_trigger": "若下一代 GPU TDP 意外下降或 chiplet 降低散热密度",
+          "sourceIds": ["SRC-014", "SRC-027"]
+        }
+      ],
+      "profit_pool_flow": {
+        "summary": "$650-700B 云厂商 2026 capex 流入产业链各节点。GPU 平台和 HBM 截留最高利润（GM 70%+）。AI 服务器组装利润最薄。",
+        "nodes": [
+          {
+            "node": "GPU/AI 加速器",
+            "estimated_revenue": "~$150B+",
+            "gross_margin": "70-75%",
+            "profit_retention": "极高",
+            "rationale": "NVIDIA DC 收入 ~$193B FY26，以 GM 75% 计算约 $145B 毛利",
+            "sourceIds": ["SRC-001"]
+          },
+          {
+            "node": "HBM 内存",
+            "estimated_revenue": "~$55B",
+            "gross_margin": "60-74%",
+            "profit_retention": "高",
+            "rationale": "HBM 2026 市场 ~$55B，SK hynix OPM 49%，Micron Cloud Memory GM 74%",
+            "sourceIds": ["SRC-008", "SRC-009", "SRC-010"]
+          },
+          {
+            "node": "定制 ASIC",
+            "estimated_revenue": "~$40B+",
+            "gross_margin": "~60%",
+            "profit_retention": "高",
+            "rationale": "Broadcom FY26 AI 指引 $56B，ASIC 设计毛利 ~60%",
+            "sourceIds": ["SRC-006"]
+          },
+          {
+            "node": "AI 网络（交换+DSP）",
+            "estimated_revenue": "~$30B",
+            "gross_margin": "50-65%",
+            "profit_retention": "中高",
+            "rationale": "Broadcom AI networking ~$2.8B Q1（33% of $8.4B），加上系统层 Celestica/NVIDIA/Arista 收入",
+            "sourceIds": ["SRC-006", "SRC-023"]
+          },
+          {
+            "node": "先进制程/封装",
+            "estimated_revenue": "~$110B",
+            "gross_margin": "62-66%",
+            "profit_retention": "高",
+            "rationale": "TSMC FY2026 收入预计 ~$110B（~30% 增长），GM 66.2%",
+            "sourceIds": ["SRC-012"]
+          },
+          {
+            "node": "电力/散热",
+            "estimated_revenue": "~$20B",
+            "gross_margin": "30-40%",
+            "profit_retention": "中",
+            "rationale": "Vertiv FY2026 指引 $13.25-13.75B，OPM 20.8%。液冷市场 ~$3B。",
+            "sourceIds": ["SRC-014", "SRC-027"]
+          },
+          {
+            "node": "AI 服务器组装",
+            "estimated_revenue": "~$80B+",
+            "gross_margin": "8-15%",
+            "profit_retention": "极低",
+            "rationale": "Dell AI 订单 >$64B 但服务器组装 OPM ~5-10%。高度竞争。",
+            "sourceIds": ["SRC-001"]
+          }
+        ]
+      }
+    }
+  }
 }

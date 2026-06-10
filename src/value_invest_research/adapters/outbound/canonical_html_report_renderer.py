@@ -12,6 +12,7 @@ class CanonicalHtmlReportRenderer:
 
     def render(self, view_model: ReportViewModel) -> str:
         data = view_model.to_dict()
+        source_url_by_id = _source_url_lookup(data.get("sources", []))
         title = str(data["project"].get("title") or data["goal"].get("topic") or "专业投研报告")
         return "\n".join(
             [
@@ -28,7 +29,7 @@ class CanonicalHtmlReportRenderer:
                 "<body>",
                 _render_hero(data),
                 _render_goal(data),
-                _render_industry_overview(data["supply_chain"]),
+                _render_industry_overview(data["supply_chain"], source_url_by_id),
                 _render_qa(data["qa_roots"]),
                 _render_targets(data["targets"], data["project"]),
                 _render_sources(data["sources"]),
@@ -55,6 +56,25 @@ class CanonicalHtmlReportRenderer:
             "targets": len(view_model.targets),
             "sources": len(view_model.sources),
         }
+
+
+def _source_url_lookup(sources: list[dict[str, Any]]) -> dict[str, str]:
+    lookup: dict[str, str] = {}
+    for source in sources:
+        if not isinstance(source, dict):
+            continue
+        source_id = str(source.get("source_id") or source.get("id") or "")
+        url = str(source.get("url") or "")
+        if source_id and url:
+            lookup[source_id] = url
+    return lookup
+
+
+def _render_source_chip(source_id: str, source_url_by_id: dict[str, str]) -> str:
+    url = source_url_by_id.get(str(source_id), "")
+    if url:
+        return f'<a class="source-chip" href="{_e(url)}" target="_blank" rel="noopener">{_e(str(source_id))}</a>'
+    return f'<span class="source-chip">{_e(str(source_id))}</span>'
 
 
 def _render_hero(data: dict[str, Any]) -> str:
@@ -146,7 +166,7 @@ def _render_constraint_definition(item: dict[str, Any]) -> str:
 """.strip()
 
 
-def _render_industry_overview(chain: dict[str, Any]) -> str:
+def _render_industry_overview(chain: dict[str, Any], source_url_by_id: dict[str, str]) -> str:
     layers = chain.get("layers") or []
     relationships = chain.get("relationships") or []
     stage_groups = chain.get("stage_groups") or chain.get("stageGroups") or []
@@ -157,8 +177,8 @@ def _render_industry_overview(chain: dict[str, Any]) -> str:
     data_gaps = _render_chain_data_gaps(chain.get("data_gaps") or chain.get("supply_chain_data_gaps") or [])
     lane_map = _render_chain_lane_map(stage_groups, layers, relationships)
     value_flow = _render_chain_value_flow(chain, relationships)
-    industry_space = _render_industry_space(chain)
-    industry_competition = _render_industry_competition(chain)
+    industry_space = _render_industry_space(chain, source_url_by_id)
+    industry_competition = _render_industry_competition(chain, source_url_by_id)
     industry_chokepoints = _render_industry_chokepoints(chain)
     industry_key_variables = _render_industry_key_variables(chain, data_gaps)
     return f"""
@@ -369,7 +389,7 @@ def _render_chain_value_flow_card(flow: dict[str, Any]) -> str:
 """.rstrip()
 
 
-def _render_industry_space(chain: dict[str, Any]) -> str:
+def _render_industry_space(chain: dict[str, Any], source_url_by_id: dict[str, str]) -> str:
     rows = (
         chain.get("industry_space_evidence_pack")
         or chain.get("industry_space_bom_reasoning")
@@ -405,18 +425,18 @@ def _render_industry_space(chain: dict[str, Any]) -> str:
       <div class="industry-space-summary">
         <p>{_e(summary)}</p>
       </div>
-      {_render_space_bom_reasoning(rows)}
+      {_render_space_bom_reasoning(rows, source_url_by_id)}
     </div>
   </details>
 """.strip()
 
 
-def _render_space_bom_reasoning(rows: list[Any]) -> str:
-    cards = [_render_space_node_card(row) for row in rows]
+def _render_space_bom_reasoning(rows: list[Any], source_url_by_id: dict[str, str]) -> str:
+    cards = [_render_space_node_card(row, source_url_by_id) for row in rows]
     return f'<div class="space-bom-reasoning">{"".join(cards)}</div>'
 
 
-def _render_space_node_card(row: Any) -> str:
+def _render_space_node_card(row: Any, source_url_by_id: dict[str, str]) -> str:
     if not isinstance(row, dict):
         cells = _row_cells(row, 6)
         row = {
@@ -442,8 +462,8 @@ def _render_space_node_card(row: Any) -> str:
         source_ids = [source_ids] if source_ids else []
     fact_items = "".join(f"<li>{_e(str(fact))}</li>" for fact in facts if str(fact).strip())
     reasoning_items = "".join(f"<li>{_e(str(step))}</li>" for step in inference if str(step).strip())
-    source_chips = "".join(f'<span class="source-chip">{_e(str(source_id))}</span>' for source_id in source_ids)
-    numeric_sizing = _render_space_node_sizing(row.get("publicSizingMethods") or row.get("public_sizing_methods") or row.get("numericSizing") or row.get("numeric_sizing"))
+    source_chips = "".join(_render_source_chip(str(source_id), source_url_by_id) for source_id in source_ids)
+    numeric_sizing = _render_space_node_sizing(row.get("publicSizingMethods") or row.get("public_sizing_methods") or row.get("numericSizing") or row.get("numeric_sizing"), source_url_by_id)
     return f"""
       <details class="space-node-card">
         <summary>
@@ -502,7 +522,17 @@ def _normalize_public_method(method: Any) -> dict[str, str]:
 
 
 def _classify_public_method(method: dict[str, str]) -> str:
-    text = " ".join(str(method.get(key) or "") for key in ("source_type", "organization", "content"))
+    explicit = str(method.get("source_type") or "")
+    category_map = {
+        "公司指引": "company_guidance", "company_guidance": "company_guidance",
+        "公司 TAM": "company_tam", "company_tam": "company_tam",
+        "客户侧指引": "customer_guidance", "customer_guidance": "customer_guidance",
+        "第三方拆法": "third_party", "third_party": "third_party",
+        "财务兑现证据": "financial_evidence", "financial_evidence": "financial_evidence",
+    }
+    if explicit in category_map:
+        return category_map[explicit]
+    text = " ".join(str(method.get(key) or "") for key in ("organization", "guidance_content", "content"))
     text_lower = text.lower()
     if any(token in text for token in ("客户侧", "客户指引")) or "customer" in text_lower:
         return "customer_guidance"
@@ -565,7 +595,9 @@ def _render_public_method_gap(category: dict[str, str], plan_entry: dict[str, An
     return f'<p class="space-method-empty">待补：{_e(category["hint"])}</p>', "待补"
 
 
-def _render_public_method_cards(methods: list[Any], source_search_plan: Any = None) -> str:
+def _render_public_method_cards(methods: list[Any], source_search_plan: Any = None, source_url_by_id: dict[str, str] | None = None) -> str:
+    if source_url_by_id is None:
+        source_url_by_id = {}
     categories = _public_method_categories()
     normalized_plan = _normalize_public_method_source_search_plan(source_search_plan)
     grouped: dict[str, list[dict[str, str]]] = {category["key"]: [] for category in categories}
@@ -579,7 +611,7 @@ def _render_public_method_cards(methods: list[Any], source_search_plan: Any = No
             rendered_rows = []
             for row in rows:
                 source_ids = row.get("source_ids") or []
-                source_chips = "".join(f'<span class="source-chip">{_e(str(source_id))}</span>' for source_id in source_ids)
+                source_chips = "".join(_render_source_chip(str(source_id), source_url_by_id) for source_id in source_ids)
                 if not source_chips:
                     source_chips = '<span class="source-chip source-chip-missing">待补来源</span>'
                 rendered_rows.append(
@@ -612,7 +644,7 @@ def _render_public_method_cards(methods: list[Any], source_search_plan: Any = No
     return f'<div class="space-public-methods space-method-card-grid space-node-sizing-table">{"".join(cards)}</div>'
 
 
-def _render_space_node_sizing(sizing: Any) -> str:
+def _render_space_node_sizing(sizing: Any, source_url_by_id: dict[str, str]) -> str:
     if not isinstance(sizing, dict):
         sizing = {}
     methods = sizing.get("methods") if isinstance(sizing.get("methods"), list) else []
@@ -621,12 +653,12 @@ def _render_space_node_sizing(sizing: Any) -> str:
         source_ids = sizing.get("sourceIds") or sizing.get("source_ids") or []
         if not isinstance(source_ids, list):
             source_ids = [source_ids] if source_ids else []
-        source_chips = "".join(f'<span class="source-chip">{_e(str(source_id))}</span>' for source_id in source_ids)
+        source_chips = "".join(_render_source_chip(str(source_id), source_url_by_id) for source_id in source_ids)
         return f"""
           <div class="space-node-sizing">
           <div class="space-method-step">
             <div class="space-step-title"><span class="space-step-index">1</span><h5>公开拆法</h5></div>
-            {_render_public_method_cards(methods, source_search_plan)}
+            {_render_public_method_cards(methods, source_search_plan, source_url_by_id)}
           </div>
           {_render_space_horizon_conclusion(sizing)}
           <div class="space-node-sources">{source_chips}</div>
@@ -654,12 +686,12 @@ def _render_space_node_sizing(sizing: Any) -> str:
             cells = _row_cells(scenario, 3)
         cells = (cells + [""] * 3)[:3]
         rows.append("<tr>" + "".join(f"<td>{_e(str(cell))}</td>" for cell in cells) + "</tr>")
-    source_chips = "".join(f'<span class="source-chip">{_e(str(source_id))}</span>' for source_id in source_ids)
+    source_chips = "".join(_render_source_chip(str(source_id), source_url_by_id) for source_id in source_ids)
     return f"""
           <div class="space-node-sizing">
           <div class="space-method-step">
             <div class="space-step-title"><span class="space-step-index">1</span><h5>公开拆法</h5></div>
-            {_render_public_method_cards([{"source_type": "旧字段兼容", "organization": "内部代理口径", "content": formula, "bom_node": current_anchor, "timeframe": "待补", "metric": future_assumption, "confidence": confidence}], source_search_plan)}
+            {_render_public_method_cards([{"source_type": "旧字段兼容", "organization": "内部代理口径", "content": formula, "bom_node": current_anchor, "timeframe": "待补", "metric": future_assumption, "confidence": confidence}], source_search_plan, source_url_by_id)}
           </div>
           {_render_space_horizon_conclusion({"conclusion": str(sizing.get("conclusion") or "旧字段兼容展示，需迁移为五类公开信息。"), "confidence": confidence})}
           <div class="space-node-sizing-table table-scroll">
@@ -847,7 +879,7 @@ def _render_space_evidence_pack(rows: list[Any]) -> str:
             source_ids = [source_ids] if source_ids else []
         fact_items = "".join(f"<li>{_e(str(fact))}</li>" for fact in facts if str(fact).strip())
         chain_items = "".join(f"<li>{_e(str(step))}</li>" for step in inference_steps if str(step).strip())
-        source_chips = "".join(f'<span class="source-chip">{_e(str(source_id))}</span>' for source_id in source_ids)
+        source_chips = "".join(_render_source_chip(str(source_id), {}) for source_id in source_ids)
         cards.append(
             f"""
         <article class="space-evidence-card">
@@ -941,20 +973,107 @@ def _render_space_validation_table(chain: dict[str, Any]) -> str:
     return f'<div class="space-validation-table table-scroll"><table><thead><tr><th>验证对象</th><th>跟踪数据</th><th>说明什么</th><th>削弱信号</th></tr></thead><tbody>{body}</tbody></table></div>'
 
 
-def _render_industry_competition(chain: dict[str, Any]) -> str:
-    rows = chain.get("competition_rows") or chain.get("competitionLandscape") or []
-    if not isinstance(rows, list) or not rows:
-        rows = [["核心节点", "竞争者和替代路线待补", "是否形成 chokepoint 待验证", "利润池归属待验证", "供给扩张/客户议价", "进入 Q2 下钻"]]
-    body = "\n".join("<tr>" + "".join(f"<td>{_e(str(cell))}</td>" for cell in _row_cells(row, 6)) + "</tr>" for row in rows)
+def _render_industry_competition(chain: dict[str, Any], source_url_by_id: dict[str, str]) -> str:
+    competition = chain.get("competition") if isinstance(chain.get("competition"), dict) else {}
+    node_cards = competition.get("chain_node_competition") or chain.get("competition_cards") or []
+    profit_pool = competition.get("profit_pool_flow") if isinstance(competition.get("profit_pool_flow"), dict) else {}
+
+    if isinstance(node_cards, list) and node_cards:
+        cards_html = "".join(_render_competition_node_card(node, i, source_url_by_id) for i, node in enumerate(node_cards))
+    else:
+        cards_html = ""
+
+    profit_html = ""
+    if profit_pool:
+        profit_html = _render_profit_pool_flow(profit_pool)
+
     return f"""
   <details class="industry-module industry-competition">
-    <summary class="module-head"><span class="module-index">03</span><div><h3>竞争格局与利润池</h3><p>先看竞争、替代、客户议价和供给扩张，再判断利润池留在哪。</p></div><span class="chevron">›</span></summary>
+    <summary class="module-head"><span class="module-index">03</span><div><h3>竞争格局与利润池</h3><p>每个链节点的竞争烈度、主导方、护城河来源和利润流向。</p></div><span class="chevron">›</span></summary>
     <div class="industry-module-body">
     {_render_technology_route_matrix(chain.get("technology_route_matrix") or chain.get("technologyRouteMatrix") or [])}
-    <div class="table-scroll"><table><thead><tr><th>节点</th><th>竞争格局</th><th>Chokepoint 初判</th><th>利润池/标的含义</th><th>主要反证</th><th>后续 QA</th></tr></thead><tbody>{body}</tbody></table></div>
+    {profit_html}
+    {cards_html if cards_html else _render_competition_fallback_table(chain.get("competition_rows") or chain.get("competitionLandscape") or [])}
     </div>
   </details>
 """.strip()
+
+
+def _render_competition_node_card(node: dict[str, Any], index: int, source_url_by_id: dict[str, str]) -> str:
+    node_name = str(node.get("node") or "")
+    dominant = str(node.get("dominant_player") or "")
+    share = str(node.get("market_share") or "")
+    intensity = str(node.get("competitive_intensity") or "待补")
+    moat = str(node.get("moat_source") or "")
+    profit_dest = str(node.get("profit_destination") or "")
+    challengers = str(node.get("challengers") or "")
+    dynamics = str(node.get("key_dynamics") or "")
+    source_ids = node.get("sourceIds") or node.get("source_ids") or []
+    if not isinstance(source_ids, list):
+        source_ids = [source_ids] if source_ids else []
+    source_chips = "".join(_render_source_chip(str(sid), source_url_by_id) for sid in source_ids)
+    intensity_class = {"低": "competition-low", "中低": "competition-midlow", "中": "competition-mid", "中高": "competition-high", "高": "competition-high", "极低": "competition-low"}
+    ic = intensity_class.get(intensity, "competition-mid")
+    return f"""
+        <details class="competition-node-card" open>
+          <summary>
+            <span class="competition-node-index">{index + 1:02d}</span>
+            <strong>{_e(node_name)}</strong>
+            <span class="competition-intensity {ic}">竞争烈度：{_e(intensity)}</span>
+            <span class="chevron">›</span>
+          </summary>
+          <div class="competition-node-body">
+            <section class="competition-subcard">
+              <h4>主要玩家与利润分布</h4>
+              <div class="competition-subcard-grid">
+                <div class="competition-subcard-item"><span>主导方</span><strong>{_e(dominant)}</strong><small>份额 {_e(share)}</small></div>
+                <div class="competition-subcard-item"><span>挑战者</span><p>{_e(challengers)}</p></div>
+                <div class="competition-subcard-item col-span"><span>利润流向</span><p>{_e(profit_dest)}</p></div>
+              </div>
+            </section>
+            <section class="competition-subcard">
+              <h4>领头羊的护城河</h4>
+              <p>{_e(moat)}</p>
+            </section>
+            <section class="competition-subcard">
+              <h4>当前烈度与未来变化</h4>
+              <p>{_e(dynamics)}</p>
+            </section>
+            <div class="space-node-sources">{source_chips}</div>
+          </div>
+        </details>""".strip()
+
+
+def _render_competition_fallback_table(rows: list[Any]) -> str:
+    if not isinstance(rows, list) or not rows:
+        rows = [["核心节点", "竞争者和替代路线待补", "是否形成 chokepoint 待验证", "利润池归属待验证", "供给扩张/客户议价", "进入 Q2 下钻"]]
+    body = "\n".join("<tr>" + "".join(f"<td>{_e(str(cell))}</td>" for cell in _row_cells(row, 6)) + "</tr>" for row in rows)
+    return f'<div class="table-scroll"><table><thead><tr><th>节点</th><th>竞争格局</th><th>Chokepoint 初判</th><th>利润池/标的含义</th><th>主要反证</th><th>后续 QA</th></tr></thead><tbody>{body}</tbody></table></div>'
+
+
+def _render_profit_pool_flow(profit_pool: dict[str, Any]) -> str:
+    summary = str(profit_pool.get("summary") or "")
+    nodes = profit_pool.get("nodes") if isinstance(profit_pool.get("nodes"), list) else []
+    rows = ""
+    for n in nodes:
+        if not isinstance(n, dict):
+            continue
+        rows += f"""
+          <tr>
+            <td><strong>{_e(str(n.get('node') or ''))}</strong></td>
+            <td>{_e(str(n.get('estimated_revenue') or ''))}</td>
+            <td>{_e(str(n.get('gross_margin') or ''))}</td>
+            <td><span class="profit-badge profit-{n.get('profit_retention','中').replace('极高','high').replace('高','high').replace('中高','mid').replace('中','mid').replace('低','low').replace('极低','low')}">{_e(str(n.get('profit_retention') or ''))}</span></td>
+            <td class="profit-rationale">{_e(str(n.get('rationale') or ''))}</td>
+          </tr>"""
+    return f"""
+      <div class="profit-pool-flow">
+        <div class="chain-graph-head"><b>利润池流向</b><span>{_e(summary)}</span></div>
+        <div class="table-scroll"><table>
+          <thead><tr><th>节点</th><th>估算收入规模</th><th>毛利率区间</th><th>利润截留</th><th>依据</th></tr></thead>
+          <tbody>{rows}</tbody>
+        </table></div>
+      </div>""".strip()
 
 
 def _render_industry_chokepoints(chain: dict[str, Any]) -> str:
@@ -2887,6 +3006,95 @@ h1 { max-width: 980px; margin: 0; font-size: clamp(34px, 5vw, 68px); line-height
     #ffffff;
   padding: 16px;
 }
+/* ---- competition node cards ---- */
+.competition-node-card {
+  border: 1px solid rgba(10,132,255,.16);
+  border-radius: 16px;
+  background: #fbfcff;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.competition-node-card > summary {
+  display: grid;
+  grid-template-columns: auto minmax(160px, .45fr) auto auto;
+  gap: 10px;
+  align-items: center;
+  list-style: none;
+  cursor: pointer;
+  padding: 14px 16px;
+}
+.competition-node-card > summary::-webkit-details-marker { display: none; }
+.competition-node-card[open] > summary { border-bottom: 1px solid rgba(10,132,255,.16); }
+.competition-node-index {
+  display: inline-flex;
+  border-radius: 999px;
+  background: #eef5ff;
+  color: #0a84ff;
+  border: 1px solid #d8e8ff;
+  font-size: 11px;
+  font-weight: 900;
+  padding: 3px 8px;
+}
+.competition-node-card summary strong { color: #27364a; font-size: 14px; }
+.competition-intensity {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+.competition-low { background: #e6f7ec; color: #1d9a6c; }
+.competition-midlow { background: #eef5ff; color: #0a84ff; }
+.competition-mid { background: #fff3e0; color: #cc7a00; }
+.competition-high { background: #ffeaea; color: #c0392b; }
+.competition-node-body { padding: 14px; }
+.competition-subcard {
+  border: 1px solid #edf1f7;
+  border-radius: 12px;
+  background: #fff;
+  padding: 12px;
+  margin-bottom: 10px;
+}
+.competition-subcard h4 {
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: #27364a;
+}
+.competition-subcard p {
+  margin: 0;
+  font-size: 12px;
+  color: #4a5568;
+  line-height: 1.55;
+}
+.competition-subcard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.competition-subcard-item {
+  background: #fbfcff;
+  border: 1px solid #edf1f7;
+  border-radius: 10px;
+  padding: 8px 10px;
+}
+.competition-subcard-item.col-span { grid-column: span 2; }
+.competition-subcard-item > span { display: block; font-size: 11px; color: #667085; margin-bottom: 3px; }
+.competition-subcard-item > strong { display: block; font-size: 14px; color: #27364a; }
+.competition-subcard-item > small { display: block; font-size: 11px; color: #8896a7; margin-top: 2px; }
+.competition-subcard-item > p { margin: 0; font-size: 12px; color: #4a5568; line-height: 1.5; }
+.profit-pool-flow { margin: 20px 0; }
+.profit-pool-flow .chain-graph-head { margin-bottom: 10px; }
+.profit-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.profit-high { background: #e6f7ec; color: #1d9a6c; }
+.profit-mid { background: #fff3e0; color: #cc7a00; }
+.profit-low { background: #ffeaea; color: #c0392b; }
+.profit-rationale { font-size: 12px; color: #667085; line-height: 1.45; max-width: 320px; }
+/* ---- end competition node cards ---- */
 .chain-network-canvas {
   overflow-x: auto;
   border: 1px solid var(--line);

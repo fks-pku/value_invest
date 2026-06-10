@@ -175,118 +175,175 @@ The framework optimizes research quality before report polish. Run these passes 
    - Run `value-invest-research audit-time-slice <sources.jsonl> --as-of-date YYYY-MM-DD` before using historical-mode sources for QA, scoring, odds, or ranking.
    - In historical mode, `validate-research-artifacts` must also pass the anti-leakage gate: `anti_leakage_controls`, L3-L5 `backtest_grounding`, cutoff-only source parsing, and target score references to cutoff sources or GPT-verified reviews.
 
-1. Current research goal
+## Four-Stage Serial Research Pipeline
+
+Every research run executes as a four-stage serial pipeline. The LLM must not skip stages or run them out of order.
+
+```
+Stage 1: 定义研究问题
+    │  Gate: validate-project-schema
+    │  Output: project.json (research_type, domain_playbook, as_of_date, object_id)
+    ▼
+Stage 2: 行业概况 (五个模块)
+    │  Gate: validate-industry-overview
+    │  Output: supply_chain data + industry_space_evidence_pack +
+    │          competition data + chokepoint data + pending_questions
+    ▼
+Stage 3: 针对性 QA 树
+    │  Gate: validate-research-artifacts --require-l3
+    │  Output: qa_tree.json + source_extractions.jsonl + leaf_source_reviews.jsonl
+    ▼
+Stage 4: 标的推荐
+       Gate: validate-report-contract --require-l3
+       Output: frozen_recommendations.json → labeled_recommendations.json (if backtest)
+```
+
+### Stage 1: Define Research Problem
+
+LLM must write `project.json` with these minimum fields:
+- `project_id`
+- `title`
+- `research_type`: one of `industry/theme opportunity`, `single company`, `event/policy`, `technology/product route`, `target update`, or custom
+- `domain_playbook`: selected from `domain_playbooks.md` or synthesized
+- `run_mode`: `historical_backtest` (default) or `live_prediction`
+- `as_of_date` (if backtest), `report_date` (if live)
+- `decision_boundary`
+- `current_judgment`: short directional judgment
+- `biggest_uncertainty`
+
+Run `validate-project-schema <project_dir>` before proceeding to Stage 2.
+
+### Stage 2: Industry Overview (Five Modules)
+
+Stage 2 populates all five `行业概况` modules. Each minimum research unit (BOM node, chokepoint, competition node) executes a self-contained "think → search → parse" loop. Do not skip to Stage 3 until `validate-industry-overview` passes.
+
+#### The "think → search → parse" loop (reused in Stage 3)
+
+Every minimum research unit follows this sequence:
+
+1. **Think**: LLM writes a `source_plan` before any search. The plan states:
+   - `decision_use`: why this unit matters
+   - `expected_fields`: concrete fields to extract
+   - `priority_sources`: drawn from `config/source_universes.json` for the domain
+   - `directed_queries`: site/domain-specific search queries (not just broad keywords)
+   - `preferred_parser_skill`: which specialty skill should parse results
+
+2. **Search**: LLM executes web searches using `web_search_prime` + `webfetch` (primary) or `web-reader`. Collected materials are written to `sources.jsonl` with `source_visible_at` and `cutoff_status`.
+
+3. **Parse**: DeepSeek MCP reads materials → `source_extractions.jsonl` (fills `schema_fields`). GPT verifies → `leaf_source_reviews.jsonl`. Verified facts feed into the unit answer.
+
+If 3 rounds of directed search produce no usable results → write `status=gap` + `gap_reason`. Do not invent TAM numbers.
+
+#### Module 2: 行业空间 — BOM Node Execution
+
+Each BOM node is an independent minimum unit. For each node, the LLM runs the "think → search → parse" loop across all five public-method buckets:
+
+| Bucket | Sources | Expected fields |
+|--------|---------|----------------|
+| 公司指引 | Company IR, earnings calls | Revenue guidance, capex, order outlook, capacity plans |
+| 公司 TAM | Investor day, 10-K market sections | Market size, CAGR, serviceable market |
+| 客户侧指引 | Downstream capex, RPO announcements | Customer spend, backlog, prepayment |
+| 第三方拆法 | SemiAnalysis, TrendForce, Omdia, Dell'Oro, LightCounting | TAM, shipment, ASP, supply-demand balance |
+| 财务兑现证据 | Segment revenue, backlog, margin | Actual revenue, backlog, margin, FCF |
+
+Every entry must carry independent `source_ids` and render `space-method-entry-sources` source chips. Missing buckets → `待补`.
+
+#### Module 5 → Stage 3 Bridge
+
+Module 5 (`关键变量与待验证数据`) does NOT run new searches. It aggregates all `gap` fields from Modules 1–4 into `pending_questions`. Each entry carries:
+- `gap_source`: which module/sub-unit
+- `variable`: what is unknown
+- `materiality`: why it matters
+- `candidate_qa_direction`: which Q direction (Q1-Q4)
+- `candidate_score_component`: which ranking driver
+
+This list is the direct input for Stage 3 QA tree generation.
+
+### Stage 3: QA Tree Generation
+
+The LLM reads `pending_questions` from Stage 2 and generates a QA tree. Do not invent questions — derive them from documented gaps.
+
+L2 buckets come from the domain playbook's mechanism buckets. L3 questions are grouped under those buckets.
+
+L3 → L4/L5 decomposition triggers:
+- L3 fact/inference/judgment still ambiguous
+- source_plan spans >3 material classes
+- support and refuting evidence address different sub-mechanisms
+- L3 covers multiple companies/nodes
+
+Each L3 leaf runs the same "think → search → parse" loop as Stage 2 modules. Each L3-L5 answer must directly answer the unit question, not merely list adjacent facts. If the question asks for a mapping, bridge, ranking, comparison, formula, scenario, or risk test, the current-conclusion block must include the corresponding structured answer artifact inside the QA card.
+
+Run `validate-research-artifacts --require-l3 <project_dir>` before Stage 4.
+
+### Stage 4: Target Recommendation
+
+Stage 4 does NO new searches. It synthesizes:
+1. Aggregate all L3 `score_component` fields into per-target scores
+2. Compute four core dimensions from seven audit components
+3. Apply scarcity-first gate
+4. Deterministic ranking
+5. Output frozen_recommendations.json
+
+Run `validate-report-contract --require-l3 <report.html>` to complete.
+
+## LLM Analyst Behavior Contract
+
+The LLM must follow these rules during every research run:
+
+### 1. One unit at a time
+Do not plan all BOM nodes' source_plans simultaneously. Complete one node → next node.
+
+### 2. Think before searching
+Before every search, output:
+- Why: decision_use
+- What: expected_fields
+- Where: priority_sources + directed_queries
+- How: preferred_parser_skill
+
+This is written into the unit's `source_plan` as an auditable record.
+
+### 3. Gap is an answer
+After 3 rounds of directed search with no usable results: write `status=gap` + `gap_reason`. Gaps flow to Stage 2 Module 5 → Stage 3 QA tree.
+
+### 4. Concrete citations
+Every fact carries a `source_id`. No "the industry generally believes" prose.
+
+### 5. Self-challenge
+After each supporting source, actively search for one refuting source. If not found: "refuting search planned but no public refutation found."
+
+### 6. No skipping
+Modules may be skipped only if the domain playbook explicitly exempts the research type. L3 questions may be deleted only with domain playbook justification.
+
+### 7. Stage gate reporting
+At each stage start, output:
+```
+## 执行计划
+**当前阶段**: Stage N / [name]
+**已完成**: Stage N-1 ✓ (gate passed)
+**下一步**: [specific sub-unit]
+**待通过门控**: [gate command]
+```
+
+After each minimum unit, report findings, gaps, and next unit.
+
+### 8. Refresh behavior
+- Stage 2 Module 1 (chain): skip if industry structure unchanged
+- Stage 2 Module 2 (space): refresh only time-sensitive data
+- Stage 3: add L3 only for new gaps; do not rewrite answered L3
+- Stage 4: always re-synthesize
+
+## Stage Gate Commands
+
+```
+value-invest-research validate-project-schema <project_dir>
+value-invest-research validate-industry-overview <project_dir>
+value-invest-research validate-research-artifacts <project_dir> --require-l3
+value-invest-research validate-report-contract <report.html> --mode historical_backtest --require-l3
+```
+
+### 1. Current research goal
    - Define the object, time frame, investment relevance, and decision boundary.
    - Output one constrained current judgment and the biggest uncertainty.
-
-2. Research type adaptation layer
-   - Before building Q1-Q4, classify the research type: industry/theme opportunity, single company, event/policy, technology/product route, target update, or other user-defined type.
-   - Keep the QA skeleton, but adapt the meaning of Q1-Q4 to the research type. Do not force every topic into demand/bottleneck/target wording.
-   - Default mappings:
-     - Industry/theme opportunity: Q1 industry space and demand reality, Q2 competitive landscape and value capture with chokepoint analysis as a submodule, Q3 disconfirming tests and priced-in risk, Q4 valuation odds and target observation list.
-     - Single company: Q1 growth drivers, Q2 moat/unit economics/value capture, Q3 financial quality/valuation/disconfirming tests, Q4 observation decision and monitoring list.
-     - Event/policy: Q1 event facts and scope, Q2 transmission mechanism, Q3 beneficiaries/losers and second-order effects, Q4 disconfirming tests and watchlist.
-     - Technology/product route: Q1 technical feasibility and adoption demand, Q2 ecosystem/competitive landscape and value-capturing chokepoints, Q3 commercialization/competition/disconfirming tests, Q4 exposed assets and monitoring list.
-   - If the type does not fit a default mapping, define a custom Q1-Q4 map in the execution plan before collecting evidence.
-
-3. Research execution plan
-   - Present the execution plan before research output.
-   - Use QA directions as the primary structure, not step components. For industry/theme opportunity, default to Q1 confirm industry space and demand, Q2 analyze competitive landscape and identify value-capturing chokepoints, Q3 bind disconfirming tests and priced-in risk, Q4 build valuation odds and target observation list with reasons. For other research types, use the adapted Q1-Q4 map defined above.
-   - For each Q direction, state what questions to ask, how to collect information, how to connect the information into reasoning, and how to present it.
-
-4. QA drilldown
-   - Research must proceed through the QA tree directly.
-   - Use adaptive depth up to five layers inside each Q direction: Q1, Q1.1, Q1.1.1, Q1.1.1.1, Q1.1.1.1.1.
-   - L4/L5 are created only when the parent L3 remains too broad, e.g. it covers multiple companies, multiple supply-chain nodes, valuation plus financial bridge plus risk in one question, a source plan spans more than three material classes, the answer requires a table/model/scorecard, or the conclusion can only say "needs verification" without more granular work.
-   - Every QA layer must present information in this order: current conclusion, question expansion/child QA, then remaining questions or data gaps.
-   - Details, scorecards, tables, and jump pages must live inside the QA layer whose question they answer. Do not put them as Q-parallel components or unrelated top-level appendices.
-   - Bottleneck/chokepoint scorecards belong under the relevant Q2 competitive-landscape/value-capture question. They must be the output of competition analysis, not a Q-parallel component.
-   - Chokepoint scorecards must answer seven questions: demand flow, irreplaceability, supply or access constraint, pricing power, financial conversion, market pricing, and disconfirming trigger.
-   - Chokepoint scorecards must use a declared schema with dimension weights. If a dimension cannot be evidenced, score it conservatively and list the missing data.
-   - Q4 target ranking must explicitly reference the Q2 chokepoint score or its drivers; target strength is not valid unless it reconciles chokepoint strength with future space, valuation odds, and the Q3 downgrade tests.
-   - Disconfirming-test lists belong under the relevant risk question, usually Q3.1.
-- Target tables belong under the relevant target-selection question, usually Q4.1.
-- In historical training/backtest mode, Q4 must still retain as-of target-selection child questions. Do not replace Q4's child QA with the final label table, and do not create a Q4 child whose purpose is to evaluate later returns.
-- Each layer rolls up only from its child answers.
-   - Each L3-L5 answer must separate fact, inference, judgment, gap, and trigger. Fact must be sourced observations or extracted source summaries; inference must explain how those facts answer the unit question; judgment must state the decision impact. These fields must not repeat the same sentence.
-   - Each L3-L5 answer must directly answer the unit question, not merely list adjacent facts. If the question asks for a mapping, bridge, ranking, comparison, formula, scenario, or risk test, the current-conclusion block must include the corresponding structured answer artifact inside the QA card: e.g. mapping table, driver table, bridge table, score table, scenario table, or kill-test table. Source lists alone are insufficient.
-   - For every L3-L5 research unit, GPT must decide which materials to search or read, define the extraction schema, and assign those concrete materials to DeepSeek MCP for careful reading.
-   - DeepSeek should produce the first structured L3-L5 reading answer from those materials: fact, inference, preliminary judgment, gap, trigger, source links, and support/refute/lead stance.
-   - GPT must then verify DeepSeek's L3-L5 answer against source links or local files, resolve conflicts, correct unsupported claims, and write the final answer and parent rollup.
-   - Every L3-L5 research unit must include a materiality statement: why the answer changes the parent conclusion, target strength, valuation odds, or risk controls.
-   - Every L3-L5 research unit must include a source plan before materials are read.
-   - A complete L3-L5 record is invalid if it lacks `decision_use`, `support_evidence`, `refute_evidence`, `target_implications`, `score_component`, `minimum_evidence_gate`, `refuting_source_plan`, structured `source_plan`, structured `skill_dispatch`, or differentiated `fact`/`inference`/`judgment`.
-
-5. Information buckets
-   - Classify every input as evidence, research_report, opinion, or message.
-   - Mark each item as support, refute, or lead.
-   - Attach source links for concrete information.
-
-6. Specialty skill dispatch
-   - Before assigning an L3-L5 task, classify its task family and route it to the most relevant specialized skill when available.
-   - Project-tracked definitions for these skills live under `skills/value_invest_research/specialty_skills/`; local `.agents/skills/` copies may exist for agent discovery but are not the source of truth.
-   - Default task families:
-     - Question tree design -> `investment-question-architect`.
-     - Supply-chain panorama explanation -> `supply-chain-panorama-explainer`.
-     - L3-L5 source planning -> `research-source-planner`.
-     - Financial statement or filing parsing -> `financial-statement-analysis`.
-     - Valuation, priced-in expectations, multiples, reverse DCF, margin of safety -> `valuation-analysis`.
-     - Industry report, market dataset, TAM, supply-demand, price, or competitive-map parsing -> `industry-report-analysis`.
-     - News, public message, policy update, supply-chain report, or rumor-like lead parsing -> `news-event-analysis`.
-     - Expert, investor, interview, or social-media viewpoint parsing -> `opinion-analysis`.
-     - Large source reading, long report/transcript extraction, first-pass L3-L5 drafting -> `leaf-research-deepseek` plus DeepSeek MCP.
-     - Specific target observation list and strength scoring -> `target-recommendation-analysis`.
-     - Quantitative strategy, factor, backtest, or systematic signal -> `quant-research-fks` or `quantitative-research`.
-     - HTML/report presentation design -> `frontend-design`.
-   - Every L3-L5 answer must keep `skill_dispatch` as a structured object with `task_family`, `selected_skill`, `concrete_materials`, `extraction_schema`, `source_extraction_ids`, `leaf_source_review_ids`, `skill_output_status`, `fallback_used`, and `gpt_verification_status`. A bare skill name or prose chain is contract drift.
-   - When one leaf task spans multiple families, chain skills in the natural order. Example: financial-statement-analysis normalizes filings first, then valuation-analysis turns verified financial facts into priced-in expectations.
-   - Specialized skills are assistants for leaf-level processing, not final judges. GPT remains responsible for research type selection, question design, source priority, verification, synthesis, target strength, and final user-facing conclusions.
-   - If a needed specialized skill is unavailable, record the task family and use the closest auditable fallback: primary source parsing by GPT, DeepSeek source extraction, or a local deterministic script.
-
-7. DeepSeek delegation
-   - DeepSeek's primary research role is parsing concrete source materials: research reports, news/messages, earnings releases, annual reports, filings, transcripts, expert interviews, and other single-source documents.
-- Delegate a source to DeepSeek only after GPT has defined the research question, source priority, and extraction schema.
-- DeepSeek extraction must be tied to the current smallest research question and its dimension list. It must scan the selected material for every requested dimension, not classify the source once and stop. One source can create multiple findings for the same question. GPT must correct parser bucket mistakes, for example when a company-wide outlook supports `公司指引` with a scope caveat even if it is not a pure product-line guide.
-- DeepSeek should return structured extraction: key facts, numbers, dates, source bucket, support/refute/lead stance, affected QA node, uncertainty, and follow-up data needs.
-   - Persist DeepSeek source-parser outputs in `source_extractions.jsonl`; persist GPT verification in `leaf_source_reviews.jsonl`.
-   - For formal investment source parsing, assume DeepSeek can use a very large input context when the MCP server/model supports it. Do not prematurely split a long filing, transcript, report, or source pack only because it is longer than GPT's comfortable reading window; keep the full source context together when source integrity matters, up to the server-supported context limit.
-   - `max_tokens` is the output budget, not the input context window. Set a large DeepSeek `max_tokens` budget by default: normally 32000-64000 tokens for long-source extraction, at least 24000 tokens for multi-source L3-L5 drafts, and at least 12000 tokens for ordinary single-source parsing unless the task is intentionally tiny.
-   - Prefer narrow DeepSeek jobs by question and schema, but allow large source context inside that narrow job: one complete source or coherent source bundle, one L3-L5 research unit, one extraction schema. Even with a large token budget, require compact JSON/table output with explicit limits unless the extraction truly needs exhaustive coverage.
-   - If a DeepSeek response is truncated, malformed, empty, or stops mid-field, mark that delegation as `incomplete`, do not use it for conclusions, and either retry with a smaller chunk or fall back to GPT-verified source parsing.
-   - For L3-L5 research units, DeepSeek is the default first-pass reader and answer drafter for the selected materials.
-   - DeepSeek may also do source summarization, key-point extraction, initial classification, and candidate-question drafting.
-   - DeepSeek must not produce final investment judgment, trading instruction, financial conclusion, architecture decision, or unrechecked target recommendation.
-   - The main model must verify and synthesize all material conclusions against auditable sources.
-   - GPT remains responsible for source selection, source reliability checks, cross-source conflict resolution, reasoning synthesis, target strength, final report language, and all user-facing conclusions.
-
-8. Final target observation list
-   - If the research has investment implications, map conclusions to specific securities or assets, not only broad directions.
-   - Do not restrict the target universe to securities with convenient Nasdaq/Yahoo/US labels. Include economically central non-US listings, ADRs, local shares, or other investable assets when they are the actual value-capture vehicles; use unverified label status if price labeling is not yet collected.
-   - For every target, include ticker/name, chokepoint or thesis node, chokepoint score or score drivers, reason, strength, required verification data, catalysts, risks, and source links.
-   - Include score breakdown, simplified odds model, and review trigger for each target when the report has enough data. These are required for refreshed reports unless the user asks for a shorter executive view.
-   - In historical training/backtest mode, also include the as-of cutoff, label window, forward three-month return, benchmark/sector return and excess return when available, price source, and label status. Keep these fields visually separate from the as-of recommendation rationale.
-   - This is a research observation list, not a buy/sell instruction.
-
-9. HTML presentation
-   - Use Apple-inspired visual style: white/light-gray surfaces, SF-system typography, restrained borders, clean spacing, and low-noise cards.
-   - Final user-facing page order must be exactly: current research goal, supply-chain panorama, question drilldown, final target recommendation, source index.
-   - In historical training/backtest mode, show the `as_of_date` and information cutoff in `当前研究的问题`, but keep evaluation dates, label windows, benchmark returns, and later price movement out of all QA conclusions and rationale. Show later price movement only once inside `标的推荐`, as an isolated label block or rightmost label columns. Do not add a new top-level backtest appendix unless the user explicitly asks for it.
-   - The final target recommendation section should be a synthesized ranking of specific securities or assets, emphasizing both win probability and payoff odds. It should not replace the Q4 QA node; Q4 remains the auditable source of target logic.
-- Research type adaptation, execution plans, specialty skill traces, tool/delegation traces, iteration changes, and quality-process notes are internal metadata. Keep them out of the final HTML unless the user explicitly asks to inspect process.
-- QA drilldown should show Q1-Q4 as the top-level sections, using the adapted Q meanings for the selected research type.
-- Q4 remains the auditable as-of target-selection QA node with child questions. The standalone `标的推荐` section is a presentation rollup and must not erase or replace Q4's child-question hierarchy.
-- Every visible L3-L5 research-unit card must show a compact professional-routing strip inside `当前结论呈现`: selected `Skill`, actual `Execution` status, `Score Component`, and `Decision Use`. This is not a process appendix; it is the user's audit handle for whether the unit question was routed through the proper professional lens and whether that route actually ran. `Skill` is the intended specialty lens; `Execution` must reflect `skill_output_status` and `fallback_used`, not merely the selected skill name. Detailed parser traces remain internal unless explicitly requested.
-   - Inside every QA card/details node, use a consistent three-part display: `1. 当前结论呈现`, `2. 问题展开（子 QA）`, `3. 待补充的问题`.
-   - If child QA nodes are rendered inline as expandable cards, do not also render a separate child-question list with the same titles. The question expansion section should contain either jump links or inline child cards, not both.
-   - Parent-level answer artifacts such as `回答呈现`, scorecards,反证清单, target tables, and summary matrices belong under `当前结论呈现`, before child QA expansion.
-   - Do not duplicate the same conclusion, child-QA list, or pending-question text in both a generated summary card and the body; use one sequential presentation.
-   - Keep source indexes collapsed by default unless the user explicitly asks to inspect sources.
-   - Refreshed canonical reports must reuse the shared frontend component family from `skills/value_invest_research/frameworks/research_report_contract.md`: `industry-overview-section`, clickable `details.industry-module`, `summary.module-head`, `module-index`, `industry-module-body`, `supply-chain-section`, `chain-explain`, `chain-research-bridge`, `chain-node-lens`, `chain-plain-summary`, `chain-detail-panel`, `chain-lane-map`, `chain-value-flow`, `chain-simple-flow`, `component-value-chain`, `chain-layer-grid`, `chain-layer-card`, `chain-relationship-graph`, `chain-stage-panel`, `chain-company-list`, `chain-company-card`, `chain-chokepoints`, `industry-space`, `industry-space-summary`, `space-bom-reasoning`, `space-node-card`, `space-node-reasoning`, `space-node-evidence`, `space-node-space-reasoning`, `space-node-sizing`, `space-method-step`, `space-step-title`, `space-step-index`, `space-public-methods`, `space-method-card-grid`, `space-method-card`, `space-method-card-body`, `space-method-entry`, `space-method-entry-sources`, `space-method-empty`, `space-horizon-conclusion`, `space-horizon-grid`, `space-horizon-card`, `space-node-sizing-table`, `space-step-confidence`, `table-scroll`, `chain-data-gaps`, `industry-competition`, `industry-chokepoints`, `industry-key-variables`; `qa-card`; `artifact-card`; `target-section` + `target-odds-model` + `target-odds-table` + `target-table`; and one collapsed `source-collapse`. Do not introduce alternate component families unless the user explicitly asks for a frontend redesign.
-   - `qa-card` is not a static wrapper. Render every QA card as interactive `details.qa-card` with `summary`, `qa-count`, and `chevron`, default `open`; a static `article/div.qa-card` is contract drift.
-   - `target-table` action-state cells must keep canonical color classes: `state-actionable_long`, `state-watch_only`, or `state-no_action`. Showing plain `action_state` text without the status class is frontend contract drift.
-   - Visual artifacts are answer formats inside QA nodes, not standalone siblings: scorecards inside the bottleneck Q node, risk triggers inside the disconfirming-test Q node, and target tables inside the target-selection Q node.
-   - Avoid appending a generic full report or workbench appendix unless explicitly requested.
-   - Preserve complete QA coverage in the final report; do not replace the QA tree with a compressed Q1-Q4 summary unless the user requests a brief version.
 
 ## Commands
 

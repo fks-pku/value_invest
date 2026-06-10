@@ -82,6 +82,18 @@ def build_parser() -> argparse.ArgumentParser:
     research_artifacts_parser.add_argument("project_dir")
     research_artifacts_parser.add_argument("--require-l3", action="store_true")
 
+    project_schema_parser = subparsers.add_parser(
+        "validate-project-schema",
+        help="Validate project.json against the four-stage pipeline schema",
+    )
+    project_schema_parser.add_argument("project_dir")
+
+    industry_overview_parser = subparsers.add_parser(
+        "validate-industry-overview",
+        help="Validate that industry overview data is populated before Stage 3",
+    )
+    industry_overview_parser.add_argument("project_dir")
+
     render_project_report_parser = subparsers.add_parser(
         "render-research-report",
         help="Render a research project through the canonical ViewModel and HTML renderer",
@@ -622,6 +634,10 @@ def main(argv: list[str] | None = None) -> int:
             return run_audit_time_slice_cmd(root, args)
         if args.command == "validate-research-artifacts":
             return run_validate_research_artifacts_cmd(root, args)
+        if args.command == "validate-project-schema":
+            return run_validate_project_schema_cmd(root, args)
+        if args.command == "validate-industry-overview":
+            return run_validate_industry_overview_cmd(root, args)
         if args.command == "render-research-report":
             return run_render_research_report_cmd(root, args)
         if args.command == "run-stock-qa-pipeline":
@@ -795,6 +811,29 @@ def run_validate_research_artifacts_cmd(root: Path, args) -> int:
     for issue in result.issues[:10]:
         print(f"{issue.get('severity', 'error')}:{issue.get('code', '')}: {issue.get('message', '')}")
     return 0 if result.ok else 1
+
+
+def run_validate_project_schema_cmd(root: Path, args: argparse.Namespace) -> int:
+    import json
+    from value_invest_research.framework_contracts import validate_project_schema
+    project_file = root / args.project_dir / "project.json"
+    if not project_file.exists():
+        print(json.dumps({"ok": False, "issues": [{"severity": "error", "code": "missing_project_json", "message": str(project_file) + " not found"}], "summary": {}}, ensure_ascii=False))
+        return 1
+    with open(project_file) as fh:
+        project = json.load(fh)
+    result = validate_project_schema(project)
+    print(json.dumps(result, ensure_ascii=False, indent=2))
+    return 0 if result["ok"] else 1
+
+
+def run_validate_industry_overview_cmd(root: Path, args: argparse.Namespace) -> int:
+    from value_invest_research.framework_contracts import validate_industry_overview
+    project_dir = root / args.project_dir
+    result = validate_industry_overview(str(project_dir))
+    import json
+    print(json.dumps(result, ensure_ascii=False, indent=2))
+    return 0 if result["ok"] else 1
 
 
 def run_render_research_report_cmd(root: Path, args) -> int:

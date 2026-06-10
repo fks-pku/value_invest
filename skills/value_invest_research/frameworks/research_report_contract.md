@@ -266,6 +266,22 @@ Historical mode evaluation fields are allowed in final HTML because they are par
 
 1. `产业链与生态位`: use `supply-chain-section` to show the research-goal bridge, plain summary, node-screening lens, lane/swimlane map, beginner-readable value-flow view, and `component-value-chain`. The lane/swimlane map, value-flow view, and component/BOM value chain must be nested collapsible `details.chain-detail-panel` components. Do not render a separate high-level chain overview table by default.
 2. `行业空间`: use `industry-space` as a direct BOM-node space reasoning module only. It must include `industry-space-summary` and `space-bom-reasoning`; every key BOM/subsystem node must render as a collapsed `details.space-node-card` with single-column `space-node-reasoning`, where `space-node-space-reasoning` appears first and `space-node-evidence` appears below it. The 空间推理 block must include `space-node-sizing`, `space-method-step`, `space-step-title`, `space-step-index`, `space-public-methods`, `space-method-card-grid`, `space-method-card`, `space-method-card-body`, `space-method-entry`, `space-method-entry-sources`, `space-method-empty`, `space-horizon-conclusion`, `space-horizon-grid`, `space-horizon-card`, `space-node-sizing-table`, and `space-step-confidence`, showing ordered `1 公开拆法`, `2 空间结论`, source chips, and confidence. It should show how public methods imply future node expansion, with cutoff-visible evidence below the reasoning card. It must not answer competition, profit-pool ownership, valuation, or target ranking.
+
+   **Five public-method classification contract** — LLM must classify every data point into one of five buckets by its **source identity**, not by what the data says:
+
+   | Bucket | 来源身份 | 判据 | 正确示例 | 错误示例 |
+   |--------|---------|------|---------|---------|
+   | **公司指引** | BOM 节点核心供应商公司的管理层预测 | 公司在财报/earnings call 中给出的自身经营指引（收入、capex、出货量、利润率预期）。必须是公司说自己的数字。 | NVIDIA 给出 Q1 FY27 收入指引 $78B | Bank of America 预测 HBM 市场 $54.6B（BofA 是投行，归第三方） |
+   | **公司 TAM** | BOM 节点核心供应商公司对行业总规模的估计 | 公司在 Investor Day/10-K/prepared remarks 中引用的市场空间数字。必须是公司说市场的数字。 | Micron 估计 HBM TAM $35B→$100B | Dell'Oro 预测液冷市场 $7B（Dell'Oro 是第三方研究机构） |
+   | **客户侧指引** | BOM 节点产品的下游买家 | 下游客户的 capex、订单、RPO、采购计划。证明需求是真实支付，不是口号。 | Amazon/Meta/Alphabet capex 指引，NVIDIA 采购 HBM 量 | 公司自己说"客户需求很强"（这是一手消息，不是客户侧一手数据） |
+   | **第三方拆法** | 独立于买卖双方的第三方机构 | 投行（UBS/BofA）、市场研究机构（Omdia/TrendForce/Dell'Oro/LightCounting/SemiAnalysis/TechInsights）、独立分析师。不能是 BOM 节点供应商，也不能是它的客户。 | UBS 预测 HBM ASP +18.5%，Omdia 预测 AI 芯片 $286B | TSMC 在 earnings call 中说 CoWoS 满产（TSMC 是供应商，归公司指引或财务兑现） |
+   | **财务兑现证据** | BOM 节点核心供应商公司的已落地经营数据 | 公司已经实现的收入、利润率、backlog、RPO。不是预测，不是指引，是已发生的数字。 | NVIDIA Q4 FY26 DC 收入 $62.3B（已实现），SK hynix OPM 49%（已实现） | Broadcom 给出 Q2 FY26 指引 $22B（这是指引，归公司指引） |
+
+   **硬性规则**：
+   - "公司指引"和"公司 TAM"只能来自 BOM 节点核心供应商公司自身，不能来自投行、第三方研究机构、或下游客户
+   - "第三方拆法"不能来自 BOM 节点供应商公司或其客户——即使该公司在财报中引用了第三方数据，也应标注原第三方机构为来源
+   - 当一条数据同时涉及多个身份时（如 Broadcom 既给自身指引又讨论市场），拆成两条分别归类
+   - 找不到符合身份的真实来源时，写 `status=gap`，不要用错误身份来源填充
 3. `竞争格局与利润池`: use `industry-competition` and `technology-route-matrix` to show who competes in each node, substitutes, customer bargaining power, supply response, technical/product-route alternatives, and where profit can stay.
 4. `瓶颈点`: use `industry-chokepoints`, `chain-chokepoints`, and `bottleneck-release-timeline` to show which nodes are scarce, hard to substitute, protected by qualification/capacity/ecosystem/data/trust/regulation, how those nodes affect target strength, and what evidence would prove the bottleneck is being released.
 5. `关键变量与待验证数据`: use `industry-key-variables` and `chain-data-gaps` to show the variables that convert the industry map into Q1-Q4 drilldown questions.

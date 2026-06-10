@@ -879,6 +879,110 @@ def validate_report_contract_html(
     }
 
 
+def validate_project_schema(project: dict[str, Any]) -> dict[str, Any]:
+    """Validate project.json against the four-stage pipeline schema."""
+    issues: list[dict[str, str]] = []
+    if not isinstance(project, dict):
+        return {"ok": False, "issues": [{"severity": "error", "code": "missing_project", "message": "project dict is absent or not a dict"}], "summary": {}}
+    project_id = str(project.get("project_id") or "")
+    if not project_id:
+        _issue(issues, "error", "missing_project_id", "project.json must include project_id")
+    research_type = str(project.get("research_type") or "")
+    valid_types = {"industry/theme opportunity", "single company", "event/policy", "technology/product route", "target update"}
+    if research_type not in valid_types:
+        _issue(issues, "error", "missing_or_invalid_research_type", f"project.json must include research_type in {valid_types}")
+    run_mode = str(project.get("run_mode") or "")
+    if run_mode not in ("historical_backtest", "live_prediction"):
+        _issue(issues, "error", "missing_or_invalid_run_mode", "project.json must declare run_mode as historical_backtest or live_prediction")
+    if run_mode == "historical_backtest" and not project.get("as_of_date"):
+        _issue(issues, "error", "missing_as_of_date", "historical_backtest mode requires as_of_date in project.json")
+    if run_mode == "live_prediction" and not project.get("report_date"):
+        _issue(issues, "error", "missing_report_date", "live_prediction mode requires report_date in project.json")
+    domain_playbook = str(project.get("domain_playbook") or "")
+    if not domain_playbook:
+        _issue(issues, "warn", "missing_domain_playbook", "project.json should specify a domain_playbook; defaulting to generic")
+    return {"ok": not _any_error(issues), "issues": issues, "summary": {"project_id": project_id, "research_type": research_type, "run_mode": run_mode}}
+
+
+def validate_industry_overview(project_dir: "str | Path") -> dict[str, Any]:
+    """Validate that an industry overview has been populated with non-trivial data before Stage 3."""
+    import json
+    from pathlib import Path
+    issues: list[dict[str, str]] = []
+    project_dir = Path(project_dir)
+
+    # Check project.json
+    project_file = project_dir / "project.json"
+    if not project_file.exists():
+        _issue(issues, "error", "missing_project_json", f"{project_dir} has no project.json")
+        return {"ok": False, "issues": issues, "summary": {}}
+    with open(project_file) as fh:
+        project = json.load(fh)
+    project_validation = validate_project_schema(project)
+    if not project_validation["ok"]:
+        issues.extend(project_validation["issues"])
+
+    # Check qa_tree.json for supply_chain
+    qa_file = project_dir / "qa_tree.json"
+    chain = {}
+    if qa_file.exists():
+        with open(qa_file) as fh:
+            chain = json.load(fh).get("supply_chain") or {}
+
+    # Validate industry_space_evidence_pack presence
+    evidence_pack = (
+        chain.get("industry_space_evidence_pack")
+        or chain.get("industry_space_bom_reasoning")
+        or chain.get("industry_space_rows")
+        or []
+    )
+    if not isinstance(evidence_pack, list) or not evidence_pack:
+        _issue(
+            issues,
+            "error",
+            "missing_industry_space_evidence_pack",
+            "Stage 2 must populate industry_space_evidence_pack with at least one BOM node before Stage 3",
+        )
+    else:
+        node_count = 0
+        has_sizing_data = 0
+        for node in evidence_pack:
+            if not isinstance(node, dict):
+                continue
+            node_count += 1
+            sizing = node.get("publicSizingMethods") or node.get("public_sizing_methods") or {}
+            if isinstance(sizing, dict) and sizing.get("methods"):
+                has_sizing_data += 1
+        if node_count == 0:
+            _issue(issues, "error", "empty_industry_space_evidence_pack", "industry_space_evidence_pack exists but contains no BOM nodes")
+        if has_sizing_data == 0:
+            _issue(issues, "warn", "no_space_sizing_data", "no BOM node has populated publicSizingMethods; Stage 2 Module 2 may be incomplete")
+
+    # Validate five module presence hints
+    found_modules = []
+    if chain.get("layers") or chain.get("stage_groups"):
+        found_modules.append("产业链与生态位")
+    if evidence_pack and len(evidence_pack) > 0:
+        found_modules.append("行业空间")
+    if chain.get("competition") or chain.get("competition_landscape"):
+        found_modules.append("竞争格局与利润池")
+    if chain.get("chokepoints") or chain.get("candidate_chokepoints"):
+        found_modules.append("瓶颈点")
+    if chain.get("data_gaps") or chain.get("pending_questions"):
+        found_modules.append("关键变量与待验证数据")
+
+    missing_modules = [m for m in ["产业链与生态位", "行业空间", "竞争格局与利润池", "瓶颈点", "关键变量与待验证数据"] if m not in found_modules]
+    for module in missing_modules:
+        _issue(issues, "warn", f"missing_module_hint_{module}", f"行业概况 module '{module}' has no detectable data in supply_chain; stage may be incomplete")
+
+    ok = not _any_error(issues)
+    return {"ok": ok, "issues": issues, "summary": {"modules_detected": found_modules, "missing_modules": missing_modules, "bom_nodes": len(evidence_pack)}}
+
+
+def _any_error(issues: list[dict[str, str]]) -> bool:
+    return any(i.get("severity") == "error" for i in issues)
+
+
 def validate_industry_space_source_search_pipeline(workbench: dict[str, Any]) -> dict[str, Any]:
     """Validate that every BOM node has an active five-bucket source-search plan."""
     issues: list[dict[str, str]] = []

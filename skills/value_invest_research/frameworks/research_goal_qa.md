@@ -272,6 +272,30 @@ The remaining modules use:
 
 It is not a process appendix and should not describe framework changes. It is a research artifact that prevents target selection from jumping straight to familiar company names.
 
+### Module 5 → Stage 3 Bridge Protocol
+
+Module 5 (`关键变量与待验证数据`) is the bridge from Stage 2 to Stage 3. It does NOT run new searches. It aggregates every `gap`, `missing_data`, and unresolved variable from Modules 1-4 into a `pending_questions` list.
+
+Each entry in `pending_questions`:
+
+- `gap_source`: which module and sub-unit produced this gap (e.g. "行业空间 / HBM 节点 / 公司指引缺失")
+- `variable`: what is unknown (e.g. "HBM3E 2026 ASP 指引")
+- `materiality`: why it matters for the investment decision
+- `candidate_qa_direction`: which Q1-Q4 direction this should feed into
+- `candidate_score_component`: which ranking driver this gap affects
+
+LLM reads `pending_questions` and maps them to L3 questions:
+
+| Gap source | Maps to | Example L3 transformation |
+|------------|---------|--------------------------|
+| Value flow path unclear (chain) | Q2 competition/value capture | "Which node actually controls profit allocation?" |
+| BOM sizing method missing (space) | Q1 demand or Q2 chokepoint | "Can HBM supplier revenue elasticity support current capex?" |
+| Substitution path unknown (competition) | Q3 disconfirming | "How quickly can custom ASIC replace NVIDIA general-purpose GPU?" |
+| Grid constraint data missing (chokepoint) | Q3 physical risk | "Is US grid interconnection a hard ceiling on AI factory delivery?" |
+| Valuation data incomplete (any) | Q3 pricing risk | "What growth assumptions are embedded in current valuation?" |
+
+Do NOT generate L3 questions that do not trace back to at least one `pending_questions` entry or one data gap documented in the industry overview.
+
 ## Scarcity-First Opportunity Gate
 
 Scarcity-first opportunity gate is a hard action filter, not a style preference.

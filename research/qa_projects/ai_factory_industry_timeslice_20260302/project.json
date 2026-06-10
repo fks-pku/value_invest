@@ -1,8 +1,12 @@
 {
   "project_id": "ai_factory_industry_timeslice_20260302",
   "title": "AI 工厂产业相关投资机会回测研究",
-  "mode": "historical_backtest",
+  "research_type": "industry/theme opportunity",
+  "domain_playbook": "ai_factory_infrastructure",
+  "run_mode": "historical_backtest",
   "as_of_date": "2026-03-02",
   "evaluation_date": "2026-06-02",
-  "report_path": "professional_report.html"
+  "decision_boundary": "研究观察清单，不构成买卖指令。仅使用 2026-03-02 之前公开可见信息，后续价格仅用于评估标签，不参与推荐逻辑。",
+  "current_judgment": "截至 2026-03-02，GPU/ASIC/HBM/先进制程/网络/电力散热订单共同验证 AI 工厂需求并非单一叙事；但估值赔率差异大，需按稀缺性、错价、盈利弹性、风险控制逐标的检验。",
+  "biggest_uncertainty": "云厂商 capex ROI 能否持续支撑扩建；客户自研 ASIC 和出口限制对通用 GPU 平台的替代速度和程度。"
 }
