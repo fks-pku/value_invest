@@ -95,17 +95,21 @@ class _InMemorySourceListRepository:
 class _InMemoryResearchProjectRepository:
     project_dir_label = "memory://research-project"
 
-    def __init__(self, project: dict, qa_tree: dict, sources: list[dict], targets: list[dict]):
+    def __init__(self, project: dict, qa_tree: dict, sources: list[dict], targets: list[dict], workbench=None):
         self.project = project
         self.qa_tree = qa_tree
         self.sources = sources
         self.targets = targets
+        self.workbench = workbench or {}
 
     def load_project(self) -> dict:
         return self.project
 
     def load_qa_tree(self) -> dict:
         return self.qa_tree
+
+    def load_workbench_for_report(self) -> dict:
+        return self.workbench
 
     def load_sources_for_report(self) -> list[dict]:
         return self.sources
@@ -389,6 +393,45 @@ class HexagonalArchitectureTests(unittest.TestCase):
         self.assertEqual(len(view_model.qa_roots), 4)
         self.assertEqual(view_model.qa_roots[0]["children"][0]["children"][0]["source_index"][0]["source_id"], "SRC1")
         self.assertEqual(view_model.targets[0]["ticker"], "MU")
+
+    def test_build_report_view_model_uses_workbench_industry_overview(self):
+        project, qa_tree, sources, targets = _minimal_project_artifacts()
+        workbench = {
+            "supply_chain_explainer": {
+                "plainSummary": "workbench chain summary",
+                "layers": [{"stage": "上游", "node": "HBM"}],
+                "stageGroups": [{"stage": "上游", "summary": "HBM", "companies": []}],
+            },
+            "industry_space_evidence_pack": [
+                {
+                    "node": "HBM / 高端内存",
+                    "publicSizingMethods": {
+                        "methods": [
+                            {
+                                "sourceType": "公司指引",
+                                "organization": "Micron",
+                                "guidanceContent": "HBM outlook",
+                                "bomNode": "HBM / 高端内存",
+                                "timeframe": "FY2026",
+                                "verificationMetric": "HBM revenue",
+                                "confidence": "中高",
+                                "sourceIds": ["SRC1"],
+                            }
+                        ]
+                    },
+                }
+            ],
+            "q2_competition_landscape": [{"node": "HBM / 高端内存", "competition": "三家竞争", "profit": "利润池在 HBM", "refute": "供给释放"}],
+            "supply_chain_chokepoint_heatmap": [{"node": "HBM / 高端内存", "role": "HBM 供给", "controllers": "MU/SKHynix/Samsung", "scores": {"稀缺性": 5}}],
+        }
+        repository = _InMemoryResearchProjectRepository(project, qa_tree, sources, targets, workbench)
+
+        view_model = BuildReportViewModel(repository).execute()
+
+        self.assertEqual(view_model.supply_chain["plain_summary"], "workbench chain summary")
+        self.assertEqual(view_model.supply_chain["industry_space_evidence_pack"][0]["node"], "HBM / 高端内存")
+        self.assertEqual(view_model.supply_chain["competition"]["chain_node_competition"][0]["node"], "HBM / 高端内存")
+        self.assertEqual(view_model.supply_chain["chokepoint_nodes"][0]["node"], "HBM / 高端内存")
 
     def test_build_report_view_model_defaults_to_historical_backtest_when_mode_missing(self):
         project, qa_tree, sources, targets = _minimal_project_artifacts()
@@ -688,6 +731,7 @@ class HexagonalArchitectureTests(unittest.TestCase):
 
             self.assertEqual(repository.load_project()["project_id"], "memory-test")
             self.assertEqual(len(repository.load_qa_tree()["nodes"]), 12)
+            self.assertEqual(repository.load_workbench_for_report()["scoring_worksheet"][0]["ticker"], "MU")
             self.assertEqual(repository.load_sources_for_report()[0]["source_id"], "SRC1")
             self.assertEqual(repository.load_targets_for_report()[0]["ticker"], "MU")
 
@@ -860,6 +904,27 @@ def _minimal_project_artifacts() -> tuple[dict, dict, list[dict], list[dict]]:
                     "qa_link": "Q3",
                 },
             ],
+            "stage_groups": [
+                {
+                    "stage": "中游",
+                    "summary": "HBM 是高端内存价值捕获节点。",
+                    "companies": [
+                        {
+                            "name": "Micron",
+                            "ticker": "MU",
+                            "node_type": "HBM / 高端 DRAM",
+                            "demand_input": "AI 加速器需求。",
+                            "supply_input": "晶圆产能、封装和良率。",
+                            "produces": "HBM 与高端 DRAM。",
+                            "provides_to": "GPU/服务器平台。",
+                            "financial_metrics": "收入、ASP、毛利率。",
+                            "bottleneck_strength": "待验证。",
+                            "qa_link": "Q1/Q2",
+                            "evidence": "SRC1",
+                        }
+                    ],
+                }
+            ],
             "component_value_chain": [
                 {
                     "subsystem": "HBM / 高端 DRAM",
@@ -1018,7 +1083,7 @@ def _minimal_project_artifacts() -> tuple[dict, dict, list[dict], list[dict]]:
             "name": name,
             "action_state": action_state,
             "strength": strength,
-            "chokepoint_node": "HBM/high-end DRAM",
+            "chokepoint_node": "HBM / 高端 DRAM",
             "rationale": "瓶颈、财务弹性和估值赔率共同支持进入观察清单。",
             "future_space": "未来空间来自 AI cloud memory mix 提升。",
             "risks": "ASP 反转、供给扩张和客户 capex 放缓。",

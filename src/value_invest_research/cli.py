@@ -125,7 +125,7 @@ def build_parser() -> argparse.ArgumentParser:
     stock_pipeline_parser.add_argument("--professional-report-api-key", default=None)
     stock_pipeline_parser.add_argument("--professional-report-base-url", default="https://api.z.ai/api/coding/paas/v4")
     stock_pipeline_parser.add_argument("--professional-report-model", default="glm-5.1")
-    stock_pipeline_parser.add_argument("--leaf-research-provider", default=None, choices=["mock", "manual", "perplexity", "openai_compatible"])
+    stock_pipeline_parser.add_argument("--leaf-research-provider", default=None, choices=["mock", "manual", "perplexity", "exa", "openai_compatible"])
     stock_pipeline_parser.add_argument("--leaf-research-input", default=None)
     stock_pipeline_parser.add_argument("--leaf-research-limit", type=int, default=None)
     stock_pipeline_parser.add_argument("--timeout", type=int, default=10)
@@ -248,7 +248,7 @@ def build_parser() -> argparse.ArgumentParser:
         help="Run leaf research tasks through a provider adapter",
     )
     run_leaf_parser.add_argument("ticker")
-    run_leaf_parser.add_argument("--provider", default="mock", choices=["mock", "manual", "perplexity", "openai_compatible"])
+    run_leaf_parser.add_argument("--provider", default="mock", choices=["mock", "manual", "perplexity", "exa", "openai_compatible"])
     run_leaf_parser.add_argument("--input", default=None)
     run_leaf_parser.add_argument("--limit", type=int, default=None)
 

@@ -137,6 +137,14 @@ class LeafResearchTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, "LEAF_RESEARCH_API_KEY"):
                     run_leaf_research(tmp, "XIAOMI", provider="openai_compatible", limit=1)
 
+    def test_exa_provider_requires_api_key(self):
+        with project_tmp_dir("leaf_exa_key") as tmp:
+            self._seed_xiaomi(tmp)
+
+            with patch.dict("os.environ", {}, clear=True):
+                with self.assertRaisesRegex(ValueError, "EXA_API_KEY"):
+                    run_leaf_research(tmp, "XIAOMI", provider="exa", limit=1)
+
     def test_run_leaf_research_with_perplexity_provider_writes_cited_results(self):
         with project_tmp_dir("leaf_perplexity") as tmp:
             stock_dir = self._seed_xiaomi(tmp)
@@ -264,6 +272,54 @@ class LeafResearchTests(unittest.TestCase):
             self.assertEqual(rows[0]["provider_model"], "search-model")
             self.assertIn("Generic compatible answer", rows[0]["answer"])
             self.assertEqual(rows[0]["sources"][0]["information_category"], "research_report")
+
+    def test_run_leaf_research_with_exa_provider_writes_source_discovery_results(self):
+        with project_tmp_dir("leaf_exa") as tmp:
+            stock_dir = self._seed_xiaomi(tmp)
+            captured = {}
+            response = {
+                "requestId": "exa-test",
+                "results": [
+                    {
+                        "title": "Micron HBM Outlook",
+                        "url": "https://investors.micron.com/news-releases/news-release-details/micron-hbm-outlook",
+                        "publishedDate": "2026-01-08T00:00:00.000Z",
+                        "author": "Micron",
+                        "text": "Micron described HBM demand, product ramps, and data center memory growth.",
+                        "highlights": ["HBM demand and data center memory growth are increasing."],
+                    }
+                ],
+            }
+
+            def fake_urlopen(request, timeout=0):
+                captured["url"] = request.full_url
+                captured["headers"] = {key.lower(): value for key, value in request.header_items()}
+                captured["payload"] = json.loads(request.data.decode("utf-8"))
+                captured["timeout"] = timeout
+                return _FakeHttpResponse(response)
+
+            env = {
+                "EXA_API_KEY": "test-exa-key",
+                "EXA_NUM_RESULTS": "2",
+                "EXA_SEARCH_TYPE": "auto",
+            }
+            with patch.dict("os.environ", env, clear=True):
+                with patch("value_invest_research.adapters.outbound.research_search_providers.urllib.request.urlopen", side_effect=fake_urlopen):
+                    result = run_leaf_research(tmp, "XIAOMI", provider="exa", limit=1)
+
+            rows = _read_jsonl(stock_dir / "research_system" / "leaf_research_results.jsonl")
+            self.assertEqual(result["provider"], "exa")
+            self.assertEqual(captured["url"], "https://api.exa.ai/search")
+            self.assertEqual(captured["headers"]["x-api-key"], "test-exa-key")
+            self.assertEqual(captured["payload"]["type"], "auto")
+            self.assertEqual(captured["payload"]["numResults"], 2)
+            self.assertIn("contents", captured["payload"])
+            self.assertEqual(rows[0]["provider"], "exa")
+            self.assertEqual(rows[0]["provider_model"], "exa-search-auto")
+            self.assertIn("source discovery", rows[0]["answer"].lower())
+            self.assertEqual(rows[0]["sources"][0]["information_category"], "evidence")
+            self.assertEqual(rows[0]["sources"][0]["publisher"], "investors.micron.com")
+            self.assertIn("HBM demand", rows[0]["sources"][0]["quoted_or_extracted_points"][0])
 
     def test_import_leaf_research_results_normalizes_manual_rows(self):
         with project_tmp_dir("leaf_manual") as tmp:

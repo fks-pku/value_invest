@@ -56,6 +56,7 @@ src/value_invest_research/
       filesystem_research_artifacts.py
       filesystem_research_project.py
       canonical_html_report_renderer.py
+      report_sections/          # per-section HTML adapters for the locked public report contract
       ...                      # planned: LLM, DeepSeek, SEC, yfinance, HTML renderer adapters
 ```
 
@@ -225,9 +226,11 @@ ResearchGoal
 
 research project files
   -> FileSystemResearchProjectRepository
+  -> project.json + qa_tree.json + sources/evidence + investment_workbench.json
   -> BuildReportViewModel use case
   -> domain.report_view_model
   -> CanonicalHtmlReportRenderer
+  -> report_sections section registry
   -> locked professional_report.html
 ```
 
@@ -235,8 +238,23 @@ This is the key decoupling for future iteration:
 
 - Changing domain expertise or QA depth belongs in `domain_playbooks.py` or a future playbook adapter.
 - Changing research sequencing belongs in `application/orchestration/research_orchestrator.py` and use cases.
-- Changing public presentation belongs in `CanonicalHtmlReportRenderer` or another `CanonicalReportRenderer` adapter.
+- Changing public presentation belongs in `adapters/outbound/report_sections/` or another `CanonicalReportRenderer` adapter. The top-level renderer only assembles the page shell, CSS, and ordered section registry.
 - Changing file layout belongs in `FileSystemResearchProjectRepository` or another `ResearchProjectRepository` adapter.
+- Changing internal workbench field names belongs in `domain.report_view_model` normalization or the repository adapter, not in section HTML.
+
+The public report renderer is intentionally split by section:
+
+```text
+CanonicalHtmlReportRenderer
+  -> DEFAULT_REPORT_SECTIONS
+  -> CurrentGoalSection
+  -> IndustryOverviewSection
+  -> QaSection
+  -> TargetRecommendationsSection
+  -> SourcesSection
+```
+
+This is the presentation extension point. If only `行业空间` changes, edit the industry-overview section adapter and its contract tests; do not change question planning, source parsing, target scoring, or file-system repositories. If the top-level order changes, update the section registry and the report contract together.
 
 ## Migration Map
 
@@ -251,7 +269,7 @@ This is the key decoupling for future iteration:
 | L3 source parsing | `ports/source_parsers.py` + `application/use_cases/parse_l3_source_materials.py` + parser adapters | Parser and reviewer are separate ports. DeepSeek/GPT review can plug in without touching leaf research, report rendering, or domain playbooks. |
 | research question planning | `domain/research_goal.py`, `domain/domain_playbooks.py`, `domain/question_architecture.py` | New topics should start from `ResearchGoal -> DomainPlaybook -> QuestionArchitecture`, not from hard-coded report templates. |
 | report assembly | `domain/report_view_model.py` + `application/use_cases/build_report_view_model.py` | Report renderers should consume a stable ViewModel instead of reading project files directly. |
-| canonical HTML rendering | `ports/renderers.py` + `adapters/outbound/canonical_html_report_renderer.py` | Frontend format changes should be isolated to renderer adapters and report contract tests. |
+| canonical HTML rendering | `ports/renderers.py` + `adapters/outbound/canonical_html_report_renderer.py` + `adapters/outbound/report_sections/` | Frontend format changes should be isolated to section renderer adapters and report contract tests. |
 | `llm.py` | `ports/llm.py` + outbound LLM adapters | Application depends on protocol, not vendor implementation. |
 | `ingest_prices.py`, `ingest_sec.py` | outbound data adapters | Market and filing data enter through ports. |
 | `cli.py` | inbound CLI adapter | Parse args, construct adapters, call use cases. Report validation, artifact validation, time-slice audit, and professional report writing now follow this path. |

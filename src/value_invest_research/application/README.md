@@ -21,7 +21,7 @@ Canonical research flow:
 
 1. `PlanResearchGoal` converts `ResearchGoal` into `QuestionArchitecture`.
 2. Evidence collection and source parsing fill project artifacts behind repository ports.
-3. `BuildReportViewModel` assembles public report data from a `ResearchProjectRepository`.
+3. `BuildReportViewModel` assembles public report data from a `ResearchProjectRepository`, including workbench artifacts that feed industry overview, BOM coverage, competition, chokepoints, and target profit bridges.
 4. `RenderResearchProjectReport` writes the report through a `CanonicalReportRenderer`.
 
 Leaf research flow:

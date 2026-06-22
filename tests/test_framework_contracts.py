@@ -29,7 +29,7 @@ from value_invest_research.framework_contracts import (
 def _industry_overview_html(title: str) -> str:
     return f"""
           <section id="overview" class="industry-overview-section"><h2>{title}</h2>
-            <style>.table-scroll{{overflow-x:auto}}</style>
+            <style>.table-scroll{{overflow-x:auto}}.space-method-card-grid{{display:grid;grid-template-columns:1fr}}.competition-question-grid{{display:grid;grid-template-columns:1fr}}.chokepoint-question-grid{{display:grid;grid-template-columns:1fr}}</style>
             <details class="industry-module supply-chain-section">
               <summary class="module-head"><span class="module-index">01</span><div><h3>产业链与生态位</h3><p>先看清楚生态位。</p></div><span class="chevron">›</span></summary>
               <div class="industry-module-body">
@@ -50,6 +50,9 @@ def _industry_overview_html(title: str) -> str:
                 <details class="chain-detail-panel chain-component-panel"><summary><span>BOM / 组件级链条</span><small>拆到子系统、组件和财务验证。</small><span class="chevron">›</span></summary><div class="chain-detail-body">
                   <div class="component-value-chain"><div class="table-scroll"><table><tr><td>组件链条</td></tr></table></div></div>
                 </div></details>
+                <details class="chain-detail-panel bom-taxonomy-panel"><summary><span>统一 BOM 口径</span><small>行业空间、竞争格局、瓶颈点和标的映射共用。</small><span class="chevron">›</span></summary><div class="chain-detail-body">
+                  <div class="bom-taxonomy"><div class="bom-taxonomy-grid"><article class="bom-taxonomy-card"><span>上游</span><strong>HBM</strong><p>高带宽内存。</p></article><article class="bom-taxonomy-card"><span>中游</span><strong>系统交付</strong><p>服务器和 rack 集成。</p></article></div></div>
+                </div></details>
               </div>
               </div>
             </details>
@@ -57,11 +60,12 @@ def _industry_overview_html(title: str) -> str:
               <div class="industry-space-summary"><p>行业空间直接按 BOM 节点说明未来空间。</p></div>
               <div class="space-bom-reasoning">
                 <details class="space-node-card"><summary><span class="space-node-label">BOM 节点</span><strong>HBM</strong><small>该节点是否被未来空间放大？</small><span class="chevron">›</span></summary><div class="space-node-reasoning"><section class="space-node-section space-node-space-reasoning"><h4>空间推理</h4><p>AI capex 放大 BOM 节点。</p><div class="space-node-sizing"><div class="space-method-step"><div class="space-step-title"><span class="space-step-index">1</span><h5>公开拆法</h5></div><div class="space-public-methods space-method-card-grid space-node-sizing-table"><section class="space-method-card"><header><span>公司指引</span><small>待补</small></header><div class="space-method-card-body"><p class="space-method-empty">待补。</p></div></section><section class="space-method-card"><header><span>公司 TAM</span><small>1 条</small></header><div class="space-method-card-body"><article class="space-method-entry"><b>公司或机构：Micron</b><p><strong>指引内容：</strong>2025 $35B -> 2028 $100B</p><dl><div><dt>BOM 节点</dt><dd>HBM</dd></div><div><dt>时间范围</dt><dd>2025E-2028E</dd></div><div><dt>可验证指标</dt><dd>HBM ASP、客户资格、毛利率</dd></div><div><dt>置信度</dt><dd>中</dd></div></dl><div class="space-method-entry-sources"><div class="source-chips"><span class="source-chip">SRC-MU-FY26-Q1-PREPARED</span></div></div></article></div></section><section class="space-method-card"><header><span>客户侧指引</span><small>待补</small></header><div class="space-method-card-body"><p class="space-method-empty">待补。</p></div></section><section class="space-method-card"><header><span>第三方拆法</span><small>待补</small></header><div class="space-method-card-body"><p class="space-method-empty">待补。</p></div></section><section class="space-method-card"><header><span>财务兑现证据</span><small>待补</small></header><div class="space-method-card-body"><p class="space-method-empty">待补。</p></div></section></div></div><div class="space-horizon-conclusion"><div class="space-step-title"><span class="space-step-index">2</span><h5>空间结论</h5></div><p class="space-horizon-summary">结论：结合五类信息，HBM 未来空间仍大。</p><div class="space-horizon-grid"><article class="space-horizon-card"><span>短期</span><strong class="space-horizon-size space-horizon-large">大</strong><p>公司指引和财务兑现证据支持近端需求。</p></article><article class="space-horizon-card"><span>中期</span><strong class="space-horizon-size space-horizon-large">大</strong><p>公司 TAM 和第三方拆法支持中期扩张。</p></article><article class="space-horizon-card"><span>长期</span><strong class="space-horizon-size space-horizon-mid">中高</strong><p>长期空间仍大，但受供给扩张和价格影响。</p></article></div><small class="space-step-confidence">置信度：中。</small></div></div></section><section class="space-node-section space-node-evidence"><h4>证据</h4><p>收入、订单、backlog。</p></section></div></details>
+                <details class="space-node-card"><summary><span class="space-node-label">BOM 节点</span><strong>系统交付</strong><small>服务器和 rack 集成空间。</small><span class="chevron">›</span></summary><div class="space-node-reasoning"><section class="space-node-section space-node-space-reasoning"><h4>空间推理</h4><div class="space-node-sizing"><div class="space-method-step"><div class="space-step-title"><span class="space-step-index">1</span><h5>公开拆法</h5></div><div class="space-public-methods space-method-card-grid space-node-sizing-table"><section class="space-method-card"><header><span>公司指引</span><small>待补</small></header><div class="space-method-card-body"><p class="space-method-empty">待补。</p></div></section></div></div><div class="space-horizon-conclusion"><div class="space-step-title"><span class="space-step-index">2</span><h5>空间结论</h5></div><p>系统交付空间需要订单和毛利验证。</p><div class="space-horizon-grid"><article class="space-horizon-card"><span>短期</span><strong>中</strong><p>看订单。</p></article></div><small class="space-step-confidence">置信度：中。</small></div></div></section><section class="space-node-section space-node-evidence"><h4>证据</h4><p>系统交付证据。</p></section></div></details>
               </div>
             </div></details>
-            <details class="industry-module industry-competition"><summary class="module-head"><span class="module-index">03</span><div><h3>竞争格局与利润池</h3></div><span class="chevron">›</span></summary><div class="industry-module-body"><div class="technology-route-matrix"><div class="table-scroll"><table><tr><td>路线比较</td></tr></table></div></div><div class="table-scroll"><table><tr><td>竞争</td></tr></table></div></div></details>
-            <details class="industry-module industry-chokepoints"><summary class="module-head"><span class="module-index">04</span><div><h3>瓶颈点</h3></div><span class="chevron">›</span></summary><div class="industry-module-body"><div class="chain-chokepoints">瓶颈点：认证、产能、软件生态。</div><div class="bottleneck-release-timeline"><div class="table-scroll"><table><tr><td>释放节奏</td></tr></table></div></div></div></details>
-            <details class="industry-module industry-key-variables"><summary class="module-head"><span class="module-index">05</span><div><h3>关键变量与待验证数据</h3></div><span class="chevron">›</span></summary><div class="industry-module-body"><div class="key-variable-grid"><details class="chain-data-gaps"><summary>关键变量 <span class="chevron">›</span></summary><ul><li>关键数据缺口</li></ul></details><table><tr><td>QA 映射</td></tr></table></div></div></details>
+            <details class="industry-module industry-competition"><summary class="module-head"><span class="module-index">03</span><div><h3>竞争格局与利润池</h3></div><span class="chevron">›</span></summary><div class="industry-module-body"><div class="competition-bom-map"><details class="competition-bom-card"><summary><strong>HBM</strong><span class="chevron">›</span></summary><div class="overview-research-unit"><div class="competition-question-grid"><section class="overview-question-card overview-answer"><h4>玩家市场份额分布</h4><div class="overview-answer overview-answer-prose"><p>公开资料显示 HBM 竞争集中在 SK hynix、Micron、Samsung；具体份额需要引用可比较口径来源，缺口必须明示 <a href="https://example.com">来源</a>。</p></div></section><section><h4>头部玩家优势分析</h4><div class="overview-answer overview-answer-prose"><p>头部优势主要来自客户资格和良率。</p></div></section><section><h4>替代玩家赶超希望</h4><div class="overview-answer overview-answer-prose"><p>赶超取决于客户认证、扩产和 ASP。</p></div></section><section><h4>格局变化核心变量</h4><div class="overview-answer overview-answer-prose"><p>ASP 反转是关键触发器。</p></div></section></div></div><div class="profit-pool-table table-scroll"><table><tr><td>利润池</td></tr></table></div></details><details class="competition-bom-card"><summary><strong>系统交付</strong><span class="chevron">›</span></summary><div class="overview-research-unit"><div class="competition-question-grid"><section class="overview-question-card overview-answer"><h4>玩家市场份额分布</h4><div class="overview-answer overview-answer-prose"><p>系统交付由 DELL、SMCI、HPE/ODM 竞争，份额需要订单和 backlog 口径补齐 <a href="https://example.com">来源</a>。</p></div></section><section><h4>头部玩家优势分析</h4><div class="overview-answer overview-answer-prose"><p>头部优势来自 GPU allocation 和交付能力。</p></div></section><section><h4>替代玩家赶超希望</h4><div class="overview-answer overview-answer-prose"><p>ODM 和其他 OEM 可追赶。</p></div></section><section><h4>格局变化核心变量</h4><div class="overview-answer overview-answer-prose"><p>毛利和现金流走弱会触发降级。</p></div></section></div></div><div class="profit-pool-table table-scroll"><table><tr><td>系统交付利润池</td></tr></table></div></details></div></div></details>
+            <details class="industry-module industry-chokepoints"><summary class="module-head"><span class="module-index">04</span><div><h3>瓶颈点</h3></div><span class="chevron">›</span></summary><div class="industry-module-body"><div class="chain-chokepoints">瓶颈点：认证、产能、软件生态。</div><div class="chokepoint-bom-map"><details class="chokepoint-bom-card"><summary><strong>HBM</strong><span class="chevron">›</span></summary><div class="overview-research-unit"><div class="chokepoint-question-grid"><section class="overview-question-card overview-answer"><h4>具体约束是什么</h4><p>客户资格和产能。</p></section><section><h4>谁控制该约束</h4><p>领先内存厂。</p></section><section><h4>稀缺会持续多久</h4><p>看 HBM4 ramp。</p></section><section><h4>扩产/替代/释放路径</h4><p>扩产和良率改善。</p></section><section><h4>量化评分与降级规则</h4><p>ASP 走弱降级。</p></section><section><h4>标的影响/监控触发器</h4><p>影响内存标的排序。</p></section></div></div><div class="chokepoint-scorecard">稀缺性 5 / 替代难度 4。</div></details><details class="chokepoint-bom-card"><summary><strong>系统交付</strong><span class="chevron">›</span></summary><div class="overview-research-unit"><div class="chokepoint-question-grid"><section class="overview-question-card overview-answer"><h4>具体约束是什么</h4><p>backlog 转收入和系统交付能力。</p></section></div></div><div class="chokepoint-scorecard">系统交付需要毛利和现金流验证。</div></details></div><div class="bottleneck-release-timeline"><div class="table-scroll"><table><tr><td>HBM</td></tr><tr><td>系统交付</td></tr></table></div></div></div></details>
+            <details class="industry-module industry-key-variables"><summary class="module-head"><span class="module-index">05</span><div><h3>关键变量与待验证数据</h3></div><span class="chevron">›</span></summary><div class="industry-module-body"><div class="key-variable-grid"><div class="key-variable-bom-map"><details class="key-variable-bom-card"><summary><strong>HBM</strong><span>Q2/Q4</span><span class="chevron">›</span></summary><div class="overview-question-card overview-answer"><p>HBM ASP 和资格。</p></div></details><details class="key-variable-bom-card"><summary><strong>系统交付</strong><span>Q2/Q4</span><span class="chevron">›</span></summary><div class="overview-question-card overview-answer"><p>系统交付 backlog、毛利和现金流。</p></div></details></div><details class="chain-data-gaps"><summary>关键变量 <span class="chevron">›</span></summary><ul><li>关键数据缺口</li></ul></details><table><tr><td>QA 映射</td></tr></table></div></div></details>
           </section>""".rstrip()
 
 
@@ -125,12 +129,12 @@ class FrameworkContractsTests(unittest.TestCase):
             </details>
           </section>
           <section class="target-section" id="targets"><h2>{target_title}</h2>
-            <div class="target-profit-bridge"><table><tr><td>财务桥</td></tr></table></div>
-            <div class="target-valuation-table"><table><tr><td>估值表</td></tr></table></div>
+            <div class="target-profit-bridge"><table><tr><td>HBM</td><td>系统交付</td><td>财务桥</td></tr></table></div>
+            <div class="target-valuation-table"><table><tr><td>HBM</td><td>系统交付</td><td>估值表</td></tr></table></div>
             <div class="target-odds-model">
               <table class="target-odds-table"><tr><th>隐含预期</th><td>赔率待验证</td></tr></table>
             </div>
-            <table class="target-table"><tr><th>forward_3m_return</th></tr></table>
+            <table class="target-table"><tr><th>forward_3m_return</th><th>HBM</th><th>系统交付</th></tr></table>
           </section>
           <details class="source-collapse" id="sources"><summary><h2>{source_title}</h2></summary></details>
         </main>
@@ -143,6 +147,24 @@ class FrameworkContractsTests(unittest.TestCase):
         self.assertEqual(result["summary"]["supply_chain_sections"], 1)
         self.assertEqual(result["summary"]["level3_cards"], 2)
         self.assertEqual(result["summary"]["interactive_level3_cards"], 2)
+
+        source_pool_leak_result = validate_report_contract_html(
+            html.replace(
+                '缺口必须明示 <a href="https://example.com">来源</a>。</p></div></section>',
+                '缺口必须明示 <a href="https://example.com">来源</a>。</p></div>'
+                '<div class="overview-answer-sources source-chips">'
+                '<a class="source-chip" href="https://unrelated.example">SRC-LEAK</a>'
+                "</div></section>",
+                1,
+            ),
+            mode="historical_backtest",
+            require_l3=True,
+        )
+        self.assertFalse(source_pool_leak_result["ok"])
+        self.assertIn(
+            "competition_source_chips_not_claim_level",
+            {issue["code"] for issue in source_pool_leak_result["issues"]},
+        )
 
         duplicated_overview_artifact_result = validate_report_contract_html(
             html.replace(
@@ -200,8 +222,8 @@ class FrameworkContractsTests(unittest.TestCase):
         self.assertIn("missing_interactive_qa_cards", {issue["code"] for issue in static_result["issues"]})
 
         uncolored_action_state = html.replace(
-            '<table class="target-table"><tr><th>forward_3m_return</th></tr></table>',
-            '<table class="target-table"><tr><th>forward_3m_return</th><td>watch_only</td></tr></table>',
+            '<table class="target-table"><tr><th>forward_3m_return</th><th>HBM</th><th>系统交付</th></tr></table>',
+            '<table class="target-table"><tr><th>forward_3m_return</th><th>HBM</th><th>系统交付</th><td>watch_only</td></tr></table>',
         )
         uncolored_result = validate_report_contract_html(uncolored_action_state, mode="historical_backtest", require_l3=True)
         self.assertFalse(uncolored_result["ok"])
@@ -272,12 +294,12 @@ class FrameworkContractsTests(unittest.TestCase):
             </details>
           </section>
           <section id="targets" class="target-section"><h2>{target_title}</h2>
-            <div class="target-profit-bridge"><table><tr><td>财务桥</td></tr></table></div>
-            <div class="target-valuation-table"><table><tr><td>估值表</td></tr></table></div>
+            <div class="target-profit-bridge"><table><tr><td>HBM</td><td>系统交付</td><td>财务桥</td></tr></table></div>
+            <div class="target-valuation-table"><table><tr><td>HBM</td><td>系统交付</td><td>估值表</td></tr></table></div>
             <div class="target-odds-model">
               <table class="target-odds-table"><tr><td>赔率待验证</td></tr></table>
             </div>
-            <table class="target-table"><tr><td><span class="state-pill state-watch_only">watch_only</span></td></tr></table>
+            <table class="target-table"><tr><td>HBM</td><td>系统交付</td><td><span class="state-pill state-watch_only">watch_only</span></td></tr></table>
           </section>
           <section id="sources"><h2>{source_title}</h2><details class="source-collapse"><summary>sources</summary></details></section>
         </main>
@@ -403,6 +425,7 @@ class FrameworkContractsTests(unittest.TestCase):
         self.assertFalse(audit["ok"])
         self.assertEqual(audit["summary"]["post_cutoff_non_label_count"], 1)
         self.assertIn("source_missing_availability_proof", {issue["code"] for issue in audit["issues"]})
+        self.assertIn("post_cutoff_thesis_source", {issue["code"] for issue in audit["issues"]})
 
         extraction_schema_result = validate_source_extraction_schema(
             [
@@ -640,6 +663,12 @@ class FrameworkContractsTests(unittest.TestCase):
             sources[:2],
         )
         self.assertTrue(leakage_result["ok"], leakage_result["issues"])
+
+        future_source_result = validate_backtest_leakage_controls(qa_tree, [], [], [], sources)
+        self.assertFalse(future_source_result["ok"])
+        future_source_codes = {issue["code"] for issue in future_source_result["issues"]}
+        self.assertIn("post_cutoff_thesis_source", future_source_codes)
+        self.assertEqual(future_source_result["summary"]["post_cutoff_non_label_count"], 1)
 
         leaky_tree = deepcopy(qa_tree)
         leaky_tree["nodes"][-1]["backtest_grounding"]["non_source_claims"] = ["post-cutoff winner knowledge"]

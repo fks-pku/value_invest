@@ -51,6 +51,9 @@ class ResearchProjectRepository(Protocol):
     def load_qa_tree(self) -> dict:
         """Load the structured QA tree."""
 
+    def load_workbench_for_report(self) -> dict:
+        """Load structured research workbench artifacts used by public report assembly."""
+
     def load_sources_for_report(self) -> list[dict]:
         """Load source records for public source indexing."""
 

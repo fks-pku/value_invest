@@ -4,6 +4,7 @@ from pathlib import Path
 from typing import Any
 
 from value_invest_research.adapters.outbound.research_search_providers import (
+    ExaResearchSearchProvider,
     MockResearchSearchProvider,
     OpenAICompatibleResearchSearchProvider,
     PerplexityResearchSearchProvider,

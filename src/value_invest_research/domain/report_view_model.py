@@ -35,6 +35,7 @@ def build_report_view_model(
     qa_tree: dict[str, Any],
     sources: list[dict[str, Any]],
     targets: list[dict[str, Any]],
+    workbench: dict[str, Any] | None = None,
     playbook: DomainPlaybook | None = None,
 ) -> ReportViewModel:
     """Convert research artifacts into a presentation-neutral report model."""
@@ -52,6 +53,7 @@ def build_report_view_model(
             "run_mode": project.get("run_mode") or qa_tree.get("run_mode") or goal.run_mode,
             "report_date": project.get("report_date") or qa_tree.get("report_date") or goal.report_date,
             "as_of_date": project.get("as_of_date") or qa_tree.get("as_of_date") or goal.as_of_date,
+            "target_profit_bridge": (workbench or {}).get("target_profit_bridge") if isinstance(workbench, dict) else [],
         },
         goal={
             "topic": goal.topic,
@@ -59,8 +61,9 @@ def build_report_view_model(
             "decision_boundary": goal.decision_boundary,
             "current_judgment": project.get("current_judgment") or _rollup_text(qa_roots),
             "biggest_uncertainty": project.get("biggest_uncertainty") or _default_uncertainty(goal),
+            "constraint_definition": (workbench or {}).get("constraint_definition") if isinstance(workbench, dict) else {},
         },
-        supply_chain=_artifact_supply_chain(project, qa_tree) or _supply_chain_model(resolved_playbook),
+        supply_chain=_artifact_supply_chain(project, qa_tree, workbench or {}) or _supply_chain_model(resolved_playbook),
         qa_roots=qa_roots,
         targets=targets,
         sources=sources,
@@ -212,11 +215,225 @@ def _supply_chain_model(playbook: DomainPlaybook) -> dict[str, Any]:
     }
 
 
-def _artifact_supply_chain(project: dict[str, Any], qa_tree: dict[str, Any]) -> dict[str, Any]:
+def _artifact_supply_chain(project: dict[str, Any], qa_tree: dict[str, Any], workbench: dict[str, Any]) -> dict[str, Any]:
+    if isinstance(workbench, dict) and workbench:
+        chain = _supply_chain_from_workbench(workbench)
+        if chain:
+            return chain
     for candidate in (project.get("supply_chain"), qa_tree.get("supply_chain")):
         if isinstance(candidate, dict) and candidate.get("layers"):
             return candidate
     return {}
+
+
+def _supply_chain_from_workbench(workbench: dict[str, Any]) -> dict[str, Any]:
+    explainer = workbench.get("supply_chain_explainer")
+    if not isinstance(explainer, dict):
+        explainer = {}
+    chain: dict[str, Any] = {
+        "plain_summary": explainer.get("plainSummary") or explainer.get("plain_summary") or "",
+        "flow_steps": explainer.get("flowSteps") or explainer.get("flow_steps") or [],
+        "layers": explainer.get("layers") or workbench.get("supply_chain_map") or [],
+        "stage_groups": explainer.get("stageGroups") or explainer.get("stage_groups") or [],
+        "relationships": explainer.get("relationships") or [],
+        "research_bridge": workbench.get("supply_chain_research_bridge") or {},
+        "node_lenses": workbench.get("supply_chain_node_lenses") or [],
+        "data_gaps": workbench.get("supply_chain_data_gaps") or [],
+        "component_value_chain": workbench.get("component_value_chain") or [],
+        "chokepoints": explainer.get("chokepoints") or workbench.get("supply_chain_chokepoint_heatmap") or [],
+        "bottleneck_release_timeline": workbench.get("bottleneck_release_timeline") or [],
+        "qa_mapping": workbench.get("supply_chain_qa_mapping") or [],
+        "industry_space_conclusion": workbench.get("industry_space_conclusion") or {},
+        "industry_space_gate_model": workbench.get("industry_space_gate_model") or {},
+        "industry_space_boundary": workbench.get("industry_space_boundary") or [],
+        "industry_space_driver_tree": workbench.get("industry_space_driver_tree") or [],
+        "industry_space_scenario_rows": workbench.get("industry_space_scenario_rows") or [],
+        "industry_space_node_elasticity_rows": workbench.get("industry_space_node_elasticity_rows") or [],
+        "industry_space_evidence_pack": workbench.get("industry_space_evidence_pack") or [],
+        "industry_space_source_universe": workbench.get("industry_space_source_universe") or {},
+        "industry_space_source_search_matrix": workbench.get("industry_space_source_search_matrix") or [],
+        "industry_space_validation_rows": workbench.get("industry_space_validation_rows") or [],
+        "competition": {
+            "chain_node_competition": _competition_nodes_from_workbench(workbench),
+        },
+        "chokepoint_nodes": _chokepoint_nodes_from_workbench(workbench),
+    }
+    return {key: value for key, value in chain.items() if value not in ({}, [], "")}
+
+
+def _overview_plan_by_node(matrix_rows: Any) -> dict[str, dict[str, dict[str, Any]]]:
+    result: dict[str, dict[str, dict[str, Any]]] = {}
+    if not isinstance(matrix_rows, list):
+        return result
+    for row in matrix_rows:
+        if not isinstance(row, dict):
+            continue
+        node = str(row.get("node") or "")
+        question_plan = row.get("question_search_plan") if isinstance(row.get("question_search_plan"), dict) else {}
+        if node:
+            result[node] = {str(question): plan for question, plan in question_plan.items() if isinstance(plan, dict)}
+    return result
+
+
+def _plan_source_ids(plan: dict[str, Any]) -> list[str]:
+    raw_ids = plan.get("sourceIds") or plan.get("source_ids") or []
+    if not isinstance(raw_ids, list):
+        raw_ids = [raw_ids] if raw_ids else []
+    return [str(source_id) for source_id in raw_ids if source_id]
+
+
+def _first_existing(row: dict[str, Any], keys: list[str]) -> str:
+    for key in keys:
+        value = row.get(key)
+        if value not in (None, ""):
+            return str(value)
+    return ""
+
+
+def _first_existing_raw(row: dict[str, Any], keys: list[str]) -> Any:
+    for key in keys:
+        value = row.get(key)
+        if value not in (None, "", []):
+            return value
+    return None
+
+
+def _competition_nodes_from_workbench(workbench: dict[str, Any]) -> list[dict[str, Any]]:
+    rows = workbench.get("q2_competition_landscape")
+    if not isinstance(rows, list):
+        return []
+    plans = _overview_plan_by_node(workbench.get("competition_source_search_matrix"))
+    specs = [
+        {
+            "title": "玩家市场份额分布",
+            "plan_aliases": ["玩家市场份额分布", "主要玩家是谁？", "竞争结构"],
+            "paragraphs": ["marketShareParagraphs", "market_share_paragraphs"],
+            "judgment": ["market_share", "share_distribution", "competition"],
+            "facts": ["marketShareFacts", "market_share_facts", "competitionFacts"],
+            "reasoning": ["marketShareReasoning", "market_share_reasoning", "competitionReasoning"],
+            "evidence": ["marketShareEvidence", "market_share_evidence", "competitionEvidence"],
+            "gap": ["marketShareGap", "market_share_gap", "competitionGap"],
+        },
+        {
+            "title": "头部玩家优势分析",
+            "plan_aliases": ["头部玩家优势分析", "客户为什么不能随便换？", "进入壁垒"],
+            "paragraphs": ["advantageParagraphs", "advantage_paragraphs"],
+            "judgment": ["head_player_advantage", "advantage", "chokepoint", "barrier"],
+            "facts": ["advantageFacts", "advantage_facts", "barrierFacts"],
+            "reasoning": ["advantageReasoning", "advantage_reasoning", "barrierReasoning"],
+            "evidence": ["advantageEvidence", "advantage_evidence", "barrierEvidence"],
+            "gap": ["advantageGap", "advantage_gap", "barrierGap"],
+        },
+        {
+            "title": "替代玩家赶超希望",
+            "plan_aliases": ["替代玩家赶超希望", "反证触发器", "竞争结构"],
+            "paragraphs": ["catchupParagraphs", "catchup_paragraphs"],
+            "judgment": ["catchup", "substitute_catchup", "alternative_catchup", "refute"],
+            "facts": ["catchupFacts", "catchup_facts", "refuteFacts", "competitionFacts"],
+            "reasoning": ["catchupReasoning", "catchup_reasoning", "refuteReasoning"],
+            "evidence": ["catchupEvidence", "catchup_evidence", "refuteEvidence"],
+            "gap": ["catchupGap", "catchup_gap", "refuteGap"],
+        },
+        {
+            "title": "格局变化核心变量",
+            "plan_aliases": ["格局变化核心变量", "哪些信号说明看错？", "反证触发器"],
+            "paragraphs": ["changeVariableParagraphs", "change_variable_paragraphs"],
+            "judgment": ["refute"],
+            "facts": ["refuteFacts"],
+            "reasoning": ["refuteReasoning"],
+            "evidence": ["refuteEvidence"],
+            "gap": ["refuteGap"],
+        },
+    ]
+    nodes: list[dict[str, Any]] = []
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        node = str(row.get("node") or "")
+        node_plans = plans.get(node, {})
+        questions = []
+        for spec in specs:
+            title = str(spec["title"])
+            plan = next((node_plans.get(alias, {}) for alias in spec["plan_aliases"] if node_plans.get(alias)), {})
+            paragraphs = _first_existing_raw(row, spec.get("paragraphs", []))
+            if isinstance(paragraphs, str):
+                paragraphs = [paragraphs]
+            if isinstance(paragraphs, list) and paragraphs:
+                answer_sections = {"paragraphs": paragraphs}
+            else:
+                judgment = _first_existing(row, spec["judgment"])
+                answer_sections = {
+                    "judgment": judgment or "待补。",
+                    "facts": _first_existing(row, spec["facts"]) or "待补。",
+                    "reasoning": _first_existing(row, spec["reasoning"]) or "待补。",
+                    "evidence": _first_existing(row, spec["evidence"]) or "待补。",
+                    "gap": _first_existing(row, spec["gap"]) or "待补。",
+                }
+            questions.append(
+                {
+                    "question": title,
+                    "answer_sections": answer_sections,
+                    "sourceIds": _plan_source_ids(plan),
+                    "source_plan": plan,
+                }
+            )
+        nodes.append(
+            {
+                "node": node,
+                "competitive_intensity": row.get("competitive_intensity") or "中",
+                "profit_pool_owner": row.get("profit") or "",
+                "financial_metric": row.get("profitFacts") or "",
+                "profit_pool_refute": row.get("refute") or "",
+                "questions": questions,
+            }
+        )
+    return nodes
+
+
+def _chokepoint_nodes_from_workbench(workbench: dict[str, Any]) -> list[dict[str, Any]]:
+    rows = workbench.get("supply_chain_chokepoint_heatmap")
+    if not isinstance(rows, list):
+        return []
+    plans = _overview_plan_by_node(workbench.get("chokepoint_source_search_matrix"))
+    specs = [
+        ("具体约束是什么", "role"),
+        ("谁控制该约束", "controllers"),
+        ("稀缺会持续多久", "conclusion"),
+        ("扩产/替代/释放路径", "release"),
+        ("量化评分与降级规则", "scores"),
+        ("标的影响/监控触发器", "qa_link"),
+    ]
+    nodes: list[dict[str, Any]] = []
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        node = str(row.get("node") or "")
+        node_plans = plans.get(node, {})
+        questions = []
+        for title, field in specs:
+            plan = node_plans.get(title, {})
+            value = row.get(field)
+            if isinstance(value, dict):
+                value = "；".join(f"{key}: {score}" for key, score in value.items())
+            if not value and field == "release":
+                value = "重点检查扩产计划、替代路线、客户资格、交付周期和下一轮财报验证。"
+            questions.append(
+                {
+                    "question": title,
+                    "answer": str(value or "待补。"),
+                    "sourceIds": _plan_source_ids(plan),
+                    "source_plan": plan,
+                }
+            )
+        nodes.append(
+            {
+                "node": node,
+                "score": row.get("scores") or "待补",
+                "downgrade_rule": row.get("conclusion") or "",
+                "questions": questions,
+            }
+        )
+    return nodes
 
 
 def _rollup_text(qa_roots: list[dict[str, Any]]) -> str:

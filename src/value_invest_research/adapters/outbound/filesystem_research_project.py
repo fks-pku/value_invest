@@ -21,6 +21,9 @@ class FileSystemResearchProjectRepository:
     def load_qa_tree(self) -> dict[str, Any]:
         return _read_json(self.project_dir / "qa_tree.json")
 
+    def load_workbench_for_report(self) -> dict[str, Any]:
+        return _read_json(self.project_dir / "investment_workbench.json")
+
     def load_sources_for_report(self) -> list[dict[str, Any]]:
         sources_path = self.project_dir / "sources.jsonl"
         evidence_path = self.project_dir / "evidence.jsonl"

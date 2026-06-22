@@ -4,6 +4,7 @@ import json
 import os
 import re
 import urllib.error
+import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 from typing import Any
@@ -139,11 +140,67 @@ class PerplexityResearchSearchProvider(OpenAICompatibleResearchSearchProvider):
         )
 
 
+class ExaResearchSearchProvider:
+    """Exa search adapter for leaf-level source discovery."""
+
+    name = "exa"
+
+    def __init__(self) -> None:
+        api_key = os.environ.get("EXA_API_KEY", "").strip()
+        if not api_key:
+            raise ValueError("EXA_API_KEY is required for provider=exa. Set the environment variable or use provider=mock/manual.")
+        self.api_key = api_key
+        self.endpoint = os.environ.get("EXA_ENDPOINT", "https://api.exa.ai/search").strip()
+        self.search_type = os.environ.get("EXA_SEARCH_TYPE", "auto").strip() or "auto"
+        self.model = f"exa-search-{self.search_type}"
+        self.timeout = int(os.environ.get("EXA_TIMEOUT", "60"))
+        self.num_results = int(os.environ.get("EXA_NUM_RESULTS", "8"))
+        self.text_max_characters = int(os.environ.get("EXA_TEXT_MAX_CHARACTERS", "1500"))
+
+    def search(self, task: dict[str, Any]) -> dict[str, Any]:
+        query = exa_query_from_task(task)
+        payload = {
+            "query": query,
+            "type": self.search_type,
+            "numResults": max(1, min(int(task.get("max_sources", self.num_results) or self.num_results), self.num_results)),
+            "contents": {
+                "highlights": True,
+                "text": {
+                    "maxCharacters": self.text_max_characters,
+                },
+            },
+        }
+        request = urllib.request.Request(
+            self.endpoint,
+            data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
+            headers={
+                "x-api-key": self.api_key,
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            },
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(request, timeout=self.timeout) as response:
+                response_body = response.read().decode("utf-8")
+        except urllib.error.HTTPError as exc:
+            detail = exc.read().decode("utf-8", errors="replace")
+            raise ValueError(f"Exa request failed with HTTP {exc.code}: {detail}") from exc
+        except urllib.error.URLError as exc:
+            raise ValueError(f"Exa request failed: {exc.reason}") from exc
+        raw_response = json.loads(response_body)
+        result = provider_result_from_exa_response(task, raw_response, query=query, provider_model=self.model)
+        result["_raw_provider_response"] = raw_response
+        return result
+
+
 def provider_for_name(provider: str):
     if provider == "mock":
         return MockResearchSearchProvider()
     if provider == "perplexity":
         return PerplexityResearchSearchProvider()
+    if provider == "exa":
+        return ExaResearchSearchProvider()
     if provider == "openai_compatible":
         return OpenAICompatibleResearchSearchProvider()
     raise ValueError(f"Unsupported leaf research provider: {provider}")
@@ -267,6 +324,51 @@ def provider_result_from_chat_response(
     }
 
 
+def provider_result_from_exa_response(
+    task: dict[str, Any],
+    raw_response: dict[str, Any],
+    *,
+    query: str,
+    provider_model: str,
+) -> dict[str, Any]:
+    sources = sources_from_exa_results(raw_response)
+    titles = [source.get("title", "") for source in sources if source.get("title")]
+    facts = [
+        f"Exa returned candidate source: {title}"
+        for title in titles[:5]
+    ]
+    return {
+        "provider": "exa",
+        "provider_model": provider_model,
+        "task_id": task.get("task_id", ""),
+        "node_id": task.get("node_id", ""),
+        "query": query,
+        "answer": (
+            f"Exa source discovery found {len(sources)} candidate sources for this leaf question. "
+            "Use DeepSeek/source-parser to read the selected materials before strengthening the conclusion."
+        ),
+        "facts": facts,
+        "inferences": ["Exa output is treated as a source candidate set, not as a final investment judgment."],
+        "judgment": "Source discovery only; GPT must verify source fit and DeepSeek/source-parser must extract question-specific fields.",
+        "supporting_evidence": [source.get("summary", "") for source in sources[:5] if source.get("summary")],
+        "refuting_evidence": [],
+        "research_leads": titles[:8],
+        "gaps": task.get("required_evidence", [])[:3] or ["Need source-parser extraction and GPT verification before parent rollup."],
+        "confidence": "low",
+        "materiality": task.get("materiality", ""),
+        "source_plan": task.get("source_search_plan", []),
+        "extraction_schema": task.get("extraction_schema", {}),
+        "task_family": task.get("task_family", ""),
+        "selected_skill": task.get("selected_skill", ""),
+        "skill_dispatch_trace": {
+            **(task.get("skill_dispatch_trace", {}) if isinstance(task.get("skill_dispatch_trace"), dict) else {}),
+            "skill_output_status": "source_discovery",
+            "gpt_verification_status": "pending_exa_source_review",
+        },
+        "sources": sources,
+    }
+
+
 def chat_response_content(raw_response: dict[str, Any]) -> str:
     try:
         content = raw_response["choices"][0]["message"]["content"]
@@ -339,6 +441,72 @@ def sources_from_search_results(raw_response: dict[str, Any]) -> list[dict[str, 
             }
         )
     return sources
+
+
+def sources_from_exa_results(raw_response: dict[str, Any]) -> list[dict[str, Any]]:
+    sources: list[dict[str, Any]] = []
+    for item in raw_response.get("results", []) or []:
+        if not isinstance(item, dict):
+            continue
+        url = str(item.get("url", "")).strip()
+        if not url:
+            continue
+        category = infer_information_category_from_url(url)
+        text = str(item.get("summary") or item.get("text") or "").strip()
+        highlights = _text_list(item.get("highlights"))
+        if not highlights and text:
+            highlights = [text[:500]]
+        sources.append(
+            {
+                "url": url,
+                "title": item.get("title", "") or url,
+                "publisher": publisher_from_url(url),
+                "author": item.get("author", ""),
+                "published_at": item.get("publishedDate", "") or item.get("published_at", ""),
+                "source_type": category,
+                "information_category": category,
+                "reliability": default_reliability(category),
+                "materiality": "medium",
+                "summary": text[:1000],
+                "quoted_or_extracted_points": highlights[:5],
+            }
+        )
+    return sources
+
+
+def exa_query_from_task(task: dict[str, Any]) -> str:
+    parts = [
+        str(task.get("question", "")).strip(),
+        f"Company: {task.get('company_name', '')} {task.get('ticker', '')}".strip(),
+        f"Parent question: {task.get('parent_question', '')}".strip(),
+        f"Required evidence: {'; '.join(_text_list(task.get('required_evidence'))[:4])}",
+        f"Preferred materials: {source_plan_focus(task.get('source_search_plan', []))}",
+    ]
+    return "\n".join(part for part in parts if part and not part.endswith(": "))
+
+
+def source_plan_focus(source_plan: Any) -> str:
+    if not isinstance(source_plan, list):
+        return ""
+    chunks: list[str] = []
+    for item in source_plan[:5]:
+        if not isinstance(item, dict):
+            continue
+        chunks.append(
+            " / ".join(
+                _text_list([
+                    item.get("source_bucket", ""),
+                    item.get("source_type", ""),
+                    item.get("expected_fields", ""),
+                ])
+            )
+        )
+    return "; ".join(chunk for chunk in chunks if chunk)
+
+
+def publisher_from_url(url: str) -> str:
+    host = urllib.parse.urlparse(url).netloc.lower()
+    return host.removeprefix("www.")
 
 
 def infer_information_category_from_url(url: str) -> str:

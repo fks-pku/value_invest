@@ -109,6 +109,9 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
             "chain-simple-flow",
             "chain-detail-panel",
             "component-value-chain",
+            "bom-taxonomy",
+            "bom-taxonomy-grid",
+            "bom-taxonomy-card",
             "chain-layer-grid",
             "chain-layer-card",
             "chain-relationship-graph",
@@ -116,7 +119,6 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
             "chain-company-list",
             "chain-company-card",
             "chain-chokepoints",
-            "technology-route-matrix",
             "bottleneck-release-timeline",
             "industry-space",
             "industry-space-summary",
@@ -131,6 +133,8 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
             "space-step-index",
             "space-public-methods",
             "space-method-card-grid",
+            "single-column full-width",
+            "grid-template-columns: 1fr",
             "space-method-card",
             "space-method-card-body",
             "space-method-entry",
@@ -243,6 +247,7 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
                 self.assertIn("supply-chain-panorama-explainer", doc_text)
                 self.assertIn("beginner-readable Chinese", doc_text)
                 self.assertIn("component-value-chain", doc_text)
+                self.assertIn("bom-taxonomy", doc_text)
                 self.assertIn("chain-simple-flow", doc_text)
                 self.assertIn("chain-detail-panel", doc_text)
                 self.assertIn("space-bom-reasoning", doc_text)
@@ -255,6 +260,7 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
                 self.assertIn("space-step-index", doc_text)
                 self.assertIn("space-public-methods", doc_text)
                 self.assertIn("space-method-card-grid", doc_text)
+                self.assertIn("single-column full-width", doc_text)
                 self.assertIn("space-method-card", doc_text)
                 self.assertIn("space-method-card-body", doc_text)
                 self.assertIn("space-method-entry", doc_text)
@@ -284,7 +290,8 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
                 self.assertIn("结论", doc_text)
                 self.assertIn("BOM", doc_text)
                 self.assertIn("table-scroll", doc_text)
-                self.assertIn("technology-route-matrix", doc_text)
+                self.assertIn("competition-bom-map", doc_text)
+                self.assertIn("competition-bom-card", doc_text)
                 self.assertIn("bottleneck-release-timeline", doc_text)
                 self.assertIn("target-profit-bridge", doc_text)
                 self.assertIn("target-valuation-table", doc_text)

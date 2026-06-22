@@ -7,6 +7,8 @@ description: Use this skill after an investment QA tree exists and before readin
 
 This skill converts L3-L5 research units into concrete source plans. It is responsible for collecting the right information, not for final synthesis.
 
+GPT is the end-to-end research analyst for source planning. The user may be a non-specialist and should not be expected to choose the correct source universe. For each research topic and smallest active question, GPT must classify the domain, select and combine the relevant professional universe from `config/source_universes.json`, add justified candidate sources when the registry is incomplete, and record why those universes and sources are needed. AI search engines are recall supplements, not replacements for GPT's universe selection.
+
 Before L3-L5 source planning, make sure the run has a source plan for `产业链全景`. This plan should collect enough evidence to map upstream, midstream, downstream, key players, products/services, dependency links, company relationship edges, value/profit flow, and candidate chokepoints. Each material relationship edge should identify from, to, relationship, product/order/value flow, bottleneck, target mapping, and evidence. The chain map is a required public section and should be supported by primary/company/industry sources rather than unsupported background prose.
 
 ## Source Priority

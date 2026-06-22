@@ -492,12 +492,28 @@ def validate_report_contract_html(
         "industry-module-body",
         "module-index",
         "component-value-chain",
-        "technology-route-matrix",
+        "bom-taxonomy",
+        "bom-taxonomy-grid",
+        "bom-taxonomy-card",
+        "overview-research-unit",
+        "overview-question-card",
+        "overview-answer",
+        "overview-answer-prose",
+        "competition-bom-map",
+        "competition-bom-card",
+        "competition-question-grid",
+        "profit-pool-table",
         "industry-space",
         "industry-competition",
         "industry-chokepoints",
+        "chokepoint-bom-map",
+        "chokepoint-bom-card",
+        "chokepoint-question-grid",
+        "chokepoint-scorecard",
         "bottleneck-release-timeline",
         "industry-key-variables",
+        "key-variable-bom-map",
+        "key-variable-bom-card",
     ]
     missing_industry_overview_classes = [
         class_name for class_name in required_industry_overview_classes if _class_count(html, class_name) == 0
@@ -510,6 +526,39 @@ def validate_report_contract_html(
             "行业概况 must include industry space, competition/profit-pool, chokepoint, and key-variable modules; missing "
             + ", ".join(missing_industry_overview_classes),
         )
+    if _class_count(html, "overview-source-plan") or _class_count(html, "source-universe-plan") or _class_count(html, "exa-search-plan"):
+        _issue(
+            issues,
+            "error",
+            "public_source_plan_leak",
+            "source_universe_plan and exa_search_plan belong to internal artifacts and must not render in final public HTML",
+        )
+    if _class_count(html, "bom-taxonomy") and _class_count(html, "bom-taxonomy-card") < 2:
+        _issue(
+            issues,
+            "error",
+            "incomplete_bom_taxonomy",
+            "统一 BOM 口径 must render at least two bom-taxonomy-card definitions so industry chain, space, competition, chokepoints, and target mapping share the same node names",
+        )
+    bom_taxonomy_nodes = _bom_taxonomy_nodes(html)
+    if bom_taxonomy_nodes:
+        coverage_regions = {
+            "行业空间": _class_region(html, ("industry-module", "industry-space"), [("industry-module", "industry-competition")]),
+            "竞争格局与利润池": _class_region(html, ("industry-module", "industry-competition"), [("industry-module", "industry-chokepoints")]),
+            "瓶颈点": _class_region(html, ("industry-module", "industry-chokepoints"), [("industry-module", "industry-key-variables")]),
+            "关键变量与待验证数据": _class_region(html, ("industry-module", "industry-key-variables"), [("qa-section",), ("qa-card", "level-1")]),
+            "标的推荐": _class_region(html, ("target-section",), [("source-collapse",)]),
+        }
+        for module_name, region in coverage_regions.items():
+            missing_nodes = _missing_taxonomy_nodes(region, bom_taxonomy_nodes)
+            if missing_nodes:
+                _issue(
+                    issues,
+                    "error",
+                    "missing_bom_taxonomy_coverage",
+                    f"{module_name} must expand one-to-one from 产业链与生态位 BOM taxonomy; missing "
+                    + ", ".join(missing_nodes),
+                )
     required_industry_detail_modules = [
         "supply-chain-section",
         "industry-space",
@@ -529,6 +578,88 @@ def validate_report_contract_html(
             "missing_interactive_industry_modules",
             "行业概况 modules must render as clickable details.industry-module nodes, not always-expanded static sections; missing "
             + ", ".join(static_industry_modules),
+        )
+    competition_region = _class_region(html, ("industry-module", "industry-competition"), [("industry-module", "industry-chokepoints")])
+    if _class_count(html, "industry-competition") and (
+        _tag_class_count(html, "details", "competition-bom-card") < 1
+        or _class_count(html, "competition-question-grid") == 0
+        or _class_count(html, "profit-pool-table") == 0
+        or _class_count(html, "overview-question-card") == 0
+        or _class_count(competition_region, "overview-answer-prose") == 0
+    ):
+        _issue(
+            issues,
+            "error",
+            "missing_bom_level_competition_profit_pool",
+            "竞争格局与利润池 must organize by BOM/subsystem node with collapsible competition-bom-card, competition-question-grid, prose overview answers, source chips, and profit-pool-table",
+        )
+    if _class_count(html, "industry-competition"):
+        missing_competition_questions = [
+            label
+            for label in ["玩家市场份额分布", "头部玩家优势分析", "替代玩家赶超希望", "格局变化核心变量"]
+            if label not in html
+        ]
+        if missing_competition_questions:
+            _issue(
+                issues,
+                "error",
+                "missing_fixed_competition_profit_pool_questions",
+                "竞争格局与利润池 must render the fixed BOM-level questions: "
+                + ", ".join(missing_competition_questions),
+            )
+        source_pool_leaks: list[str] = []
+        for card_match in re.finditer(
+            r"<section\b[^>]*\boverview-question-card\b[^>]*>(.*?)</section>",
+            competition_region,
+            flags=re.IGNORECASE | re.DOTALL,
+        ):
+            card_html = card_match.group(1)
+            if "overview-answer-prose" not in card_html or "overview-answer-sources" not in card_html:
+                continue
+            prose_match = re.search(
+                r"<div\b[^>]*\boverview-answer-prose\b[^>]*>(.*?)</div>",
+                card_html,
+                flags=re.IGNORECASE | re.DOTALL,
+            )
+            source_match = re.search(
+                r"<div\b[^>]*\boverview-answer-sources\b[^>]*>(.*?)</div>",
+                card_html,
+                flags=re.IGNORECASE | re.DOTALL,
+            )
+            if not prose_match or not source_match:
+                continue
+            inline_hrefs = set(
+                re.findall(r"<a\b(?![^>]*\bsource-chip\b)[^>]*href\s*=\s*['\"]([^'\"]+)['\"]", prose_match.group(1), flags=re.IGNORECASE)
+            )
+            chip_hrefs = re.findall(
+                r"<a\b[^>]*\bsource-chip\b[^>]*href\s*=\s*['\"]([^'\"]+)['\"]",
+                source_match.group(1),
+                flags=re.IGNORECASE,
+            )
+            leaked_hrefs = [href for href in chip_hrefs if href not in inline_hrefs]
+            if leaked_hrefs:
+                title_match = re.search(r"<h4[^>]*>(.*?)</h4>", card_html, flags=re.IGNORECASE | re.DOTALL)
+                title = re.sub(r"<[^>]+>", "", title_match.group(1)).strip() if title_match else "unknown card"
+                source_pool_leaks.append(f"{title}: {len(leaked_hrefs)} uncited source chip(s)")
+        if source_pool_leaks:
+            _issue(
+                issues,
+                "error",
+                "competition_source_chips_not_claim_level",
+                "竞争格局与利润池 source chips must only list sources actually cited in that card's prose, not broad node-level source pools: "
+                + "; ".join(source_pool_leaks[:5]),
+            )
+    if _class_count(html, "industry-chokepoints") and (
+        _tag_class_count(html, "details", "chokepoint-bom-card") < 1
+        or _class_count(html, "chokepoint-question-grid") == 0
+        or _class_count(html, "chokepoint-scorecard") == 0
+        or _class_count(html, "overview-question-card") == 0
+    ):
+        _issue(
+            issues,
+            "error",
+            "missing_bom_level_chokepoint_analysis",
+            "瓶颈点 must organize by BOM/subsystem node with collapsible chokepoint-bom-card, chokepoint-question-grid, overview question cards, source chips, and chokepoint-scorecard",
         )
     required_industry_space_classes = [
         "industry-space-summary",
@@ -632,6 +763,26 @@ def validate_report_contract_html(
             "missing_horizontal_table_scroll",
             "Wide report tables and dense card tables must use table-scroll with horizontal overflow so content does not exceed card boundaries",
         )
+    if "<style" in html.lower():
+        stacked_bom_child_grids = [
+            "space-method-card-grid",
+            "competition-question-grid",
+            "chokepoint-question-grid",
+        ]
+        non_stacked_bom_child_grids = [
+            class_name
+            for class_name in stacked_bom_child_grids
+            if _class_count(html, class_name) > 0
+            and not _css_class_has_single_column_stack(html, class_name)
+        ]
+        if non_stacked_bom_child_grids:
+            _issue(
+                issues,
+                "error",
+                "missing_single_column_bom_child_card_stack",
+                "Every BOM card's child method/question cards must render as a single-column full-width stack, not side-by-side; missing "
+                + ", ".join(non_stacked_bom_child_grids),
+            )
     required_chain_explainer_classes = [
         "chain-explain",
         "chain-research-bridge",
@@ -791,7 +942,6 @@ def validate_report_contract_html(
         "chain-company-card",
         "component-value-chain",
         "chain-chokepoints",
-        "technology-route-matrix",
         "bottleneck-release-timeline",
         "industry-space",
         "industry-space-summary",
@@ -1691,6 +1841,11 @@ def validate_backtest_leakage_controls(
             "labels must be attached only after frozen recommendations and must not feed scoring",
         )
 
+    source_audit = {"summary": {}}
+    if as_of_date and sources is not None:
+        source_audit = audit_time_slice_sources(sources, as_of_date=as_of_date)
+        issues.extend(source_audit.get("issues", []))
+
     thesis_source_ids = _cutoff_thesis_source_ids(sources or [], as_of_date)
     label_source_ids = {
         str(source.get("source_id") or source.get("id") or "")
@@ -1839,6 +1994,9 @@ def validate_backtest_leakage_controls(
             "mode": "historical_backtest",
             "thesis_sources": len(thesis_source_ids),
             "label_sources": len(label_source_ids),
+            "post_cutoff_non_label_count": int(
+                source_audit.get("summary", {}).get("post_cutoff_non_label_count", 0) or 0
+            ),
             "targets": len(targets),
         },
         "issues": issues,
@@ -2046,6 +2204,79 @@ def _tag_class_count(html: str, tag: str, *classes: str) -> int:
         if all(class_name in class_set for class_name in classes):
             count += 1
     return count
+
+
+def _css_class_has_single_column_stack(html: str, class_name: str) -> bool:
+    css_rule_pattern = r"([^{}]+)\{([^{}]*)\}"
+    class_token = re.compile(rf"(?<![-\w])\.{re.escape(class_name)}(?![-\w])", re.IGNORECASE)
+    for match in re.finditer(css_rule_pattern, html, flags=re.IGNORECASE | re.DOTALL):
+        selector = match.group(1)
+        if not class_token.search(selector):
+            continue
+        body = re.sub(r"\s+", "", match.group(2)).lower()
+        if "grid-template-columns:1fr" in body and "grid-auto-flow:column" not in body:
+            return True
+    return False
+
+
+def _css_class_rule_defined(html: str, class_name: str) -> bool:
+    return re.search(rf"\.{re.escape(class_name)}\s*\{{", html, flags=re.IGNORECASE) is not None
+
+
+def _class_position(html: str, *classes: str, start: int = 0) -> int:
+    for match in re.finditer(r"class\s*=\s*(['\"])(.*?)\1", html[start:], flags=re.IGNORECASE | re.DOTALL):
+        class_set = set(match.group(2).split())
+        if all(class_name in class_set for class_name in classes):
+            return start + match.start()
+    return -1
+
+
+def _class_region(html: str, start_classes: tuple[str, ...], end_class_options: list[tuple[str, ...]]) -> str:
+    start = _class_position(html, *start_classes)
+    if start < 0:
+        return ""
+    ends = [
+        pos
+        for pos in (_class_position(html, *classes, start=start + 1) for classes in end_class_options)
+        if pos >= 0
+    ]
+    end = min(ends) if ends else len(html)
+    return html[start:end]
+
+
+def _section_region(html: str, start_label: str, end_label: str) -> str:
+    start = html.find(start_label)
+    if start < 0:
+        return ""
+    end = html.find(end_label, start + len(start_label))
+    return html[start : end if end >= 0 else len(html)]
+
+
+def _strip_html(html: str) -> str:
+    text = re.sub(r"<[^>]+>", " ", html)
+    return " ".join(text.split())
+
+
+def _bom_taxonomy_nodes(html: str) -> list[str]:
+    nodes: list[str] = []
+    pattern = r"<article\b(?=[^>]*class\s*=\s*(['\"])[^'\"]*\bbom-taxonomy-card\b[^'\"]*\1)[^>]*>(.*?)</article>"
+    for match in re.finditer(pattern, html, flags=re.IGNORECASE | re.DOTALL):
+        card_html = match.group(2)
+        card_text = _strip_html(card_html)
+        strong_match = re.search(r"<strong\b[^>]*>(.*?)</strong>", card_html, flags=re.IGNORECASE | re.DOTALL)
+        label = _strip_html(strong_match.group(1)) if strong_match else ""
+        if not label:
+            continue
+        if label == "核心 BOM 节点" or "非 BOM" in card_text or "需求验证" in card_text or "客户需求" in label:
+            continue
+        if label not in nodes:
+            nodes.append(label)
+    return nodes
+
+
+def _missing_taxonomy_nodes(region_html: str, nodes: list[str]) -> list[str]:
+    region_text = _strip_html(region_html)
+    return [node for node in nodes if node not in region_text]
 
 
 def _qa_level_counts(html: str) -> dict[str, int]:

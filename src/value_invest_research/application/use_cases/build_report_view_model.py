@@ -16,6 +16,7 @@ class BuildReportViewModel:
         return build_report_view_model(
             project=self.repository.load_project(),
             qa_tree=self.repository.load_qa_tree(),
+            workbench=self.repository.load_workbench_for_report(),
             sources=self.repository.load_sources_for_report(),
             targets=self.repository.load_targets_for_report(),
         )
