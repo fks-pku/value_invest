@@ -206,18 +206,20 @@ DOMAIN_PLAYBOOKS = {
     "semiconductor_hardware": {
         "research_type": "industry/theme opportunity",
         "q_map": {
-            "Q1": "Industry space and demand reality: AI capex, accelerator demand, memory demand, and endpoint risk",
-            "Q2": "Competitive landscape and value capture: compare competitors, substitutes, customer power, supply response, and chokepoint strength across HBM, custom ASIC, networking, advanced foundry, packaging, and process control",
-            "Q3": "Disconfirming tests and priced-in risk: ROI, capex digestion, memory cycle, WFE orders, and valuation",
-            "Q4": "Target observation list: ranked securities reconciled with chokepoint score, odds, and downgrade triggers",
+            "Q1": "Technology feasibility: why this S-curve may become real rather than remain a concept",
+            "Q2": "Industry space and S-curve stage: whether demand is entering early acceleration and future space is large enough",
+            "Q3": "Technical chain and BOM presentation: who sits on the chain, what each node does, and where supply-demand tension may appear",
+            "Q4": "Target observation list: companies directly exposed to the S-curve, with watch intensity and verification triggers",
         },
         "mechanism_buckets": [
-            "AI accelerator demand",
-            "HBM and high-end memory bottleneck",
-            "custom ASIC and Ethernet networking",
-            "advanced foundry and advanced packaging",
-            "wafer-fab equipment and process control",
-            "valuation, payoff convexity, and disconfirming triggers",
+            "technology_feasibility",
+            "adoption_inflection",
+            "industry_space",
+            "s_curve_stage",
+            "simple_bom_map",
+            "supply_demand_tension",
+            "company_exposure_screen",
+            "kill_tests",
         ],
         "mechanism_depth_blocks": [
             "demand_driver_tree",
@@ -242,24 +244,20 @@ DOMAIN_PLAYBOOKS = {
     "memory_industry": {
         "research_type": "industry/theme opportunity",
         "q_map": {
-            "Q1": "Industry space and demand reality: convert AI, data-center, and terminal demand into sustainable bit demand, ASP, and product mix",
-            "Q2": "Competitive landscape and value capture: compare suppliers, substitutes, customer power, supply response, pricing power, and chokepoint strength across HBM, high-end DRAM, NAND/eSSD, nearline HDD, controllers, capacity, equipment, materials, and packaging",
-            "Q3": "Disconfirming tests and priced-in risk: supply response, inventory, ASP decline, substitute architectures, customer capex digestion, China supply, mid-cycle downside, and valuation",
-            "Q4": "Target observation list: specific assets reconciled with scarcity, mispricing, earnings elasticity, risk control, valuation odds, and kill tests",
+            "Q1": "Technology feasibility: why the memory/storage S-curve may become real rather than remain a cycle call",
+            "Q2": "Industry space and S-curve stage: whether AI/data-center demand is entering early acceleration and future space is large enough",
+            "Q3": "Technical chain and BOM presentation: HBM, DRAM, NAND/eSSD, HDD, controllers, equipment, and customers, with supply-demand tension only as a first-pass flag",
+            "Q4": "Target observation list: memory/storage companies directly exposed to the S-curve, with watch intensity and verification triggers",
         },
         "mechanism_buckets": [
-            "Workload-to-product demand",
-            "Price-volume-mix-inventory bridge",
-            "Demand-supply slope mismatch",
-            "HBM/high-end DRAM scarcity",
-            "NAND/eSSD/nearline HDD cash-flow economics",
-            "Controller/IP and firmware capture",
-            "Capacity/equipment/materials second-order chain",
-            "Company value capture",
-            "Counter-supply and substitution",
-            "Market-pricing and rerating",
-            "Monitoring and kill tests",
-            "Model口径 reconciliation",
+            "technology_feasibility",
+            "adoption_inflection",
+            "industry_space",
+            "s_curve_stage",
+            "simple_bom_map",
+            "supply_demand_tension",
+            "company_exposure_screen",
+            "kill_tests",
         ],
         "mechanism_depth_blocks": [
             "demand_driver_tree",
@@ -292,23 +290,20 @@ DOMAIN_PLAYBOOKS = {
     "optical_module": {
         "research_type": "industry/theme opportunity",
         "q_map": {
-            "Q1": "Industry space and demand reality: AI cluster networking, 800G/1.6T port demand, customer capex, and order visibility",
-            "Q2": "Competitive landscape and value capture: compare suppliers, substitutes, customer power, supply response, pricing power, and chokepoint strength across lasers, InP/silicon photonics, DSP/driver/TIA, components, module integration, qualification, yield, and manufacturing capacity",
-            "Q3": "Disconfirming tests and priced-in risk: LPO/CPO/substitution, copper/OCS architecture, capacity expansion, ASP erosion, customer concentration, geopolitics, and valuation",
-            "Q4": "Target observation list: specific module, laser/component, manufacturing, and chip assets reconciled with chokepoint score, financial conversion, valuation odds, and kill tests",
+            "Q1": "Technology feasibility: why optical interconnect demand may become a real S-curve rather than a one-cycle upgrade",
+            "Q2": "Industry space and S-curve stage: whether AI cluster networking is entering early acceleration and future space is large enough",
+            "Q3": "Technical chain and BOM presentation: lasers, optical chips, DSP/driver/TIA, modules, manufacturing, switches, and customers, with supply-demand tension only as a first-pass flag",
+            "Q4": "Target observation list: optical-chain companies directly exposed to the S-curve, with watch intensity and verification triggers",
         },
         "mechanism_buckets": [
-            "AI cluster network demand",
-            "800G/1.6T speed transition",
-            "Customer order visibility and concentration",
-            "Laser/InP/silicon photonics bottleneck",
-            "DSP/driver/TIA value capture",
-            "Module integration, yield, and qualification",
-            "LPO/CPO/copper/OCS substitution",
-            "Manufacturing capacity and EMS beta",
-            "Company financial conversion",
-            "Market-pricing and rerating",
-            "Monitoring and kill tests",
+            "technology_feasibility",
+            "adoption_inflection",
+            "industry_space",
+            "s_curve_stage",
+            "simple_bom_map",
+            "supply_demand_tension",
+            "company_exposure_screen",
+            "kill_tests",
         ],
         "mechanism_depth_blocks": [
             "demand_driver_tree",
@@ -390,16 +385,19 @@ DOMAIN_PLAYBOOKS = {
     "default": {
         "research_type": "custom",
         "q_map": {
-            "Q1": "Demand or primary driver reality",
-            "Q2": "Value-capture mechanism and bottlenecks",
-            "Q3": "Disconfirming tests, financial quality, and priced-in risk",
-            "Q4": "Specific target observation list and monitoring plan",
+            "Q1": "Technology feasibility: why this S-curve may become real",
+            "Q2": "Industry space and S-curve stage: how large the future space may be and where the curve sits now",
+            "Q3": "Technical chain and BOM presentation: who is on the chain and what each node does",
+            "Q4": "Target observation list and monitoring plan",
         },
         "mechanism_buckets": [
-            "primary driver",
-            "value capture",
-            "risk and valuation",
-            "target mapping",
+            "technology_feasibility",
+            "adoption_inflection",
+            "industry_space",
+            "s_curve_stage",
+            "simple_bom_map",
+            "company_exposure_screen",
+            "kill_tests",
         ],
         "mechanism_depth_blocks": [
             "demand_driver_tree",
@@ -484,33 +482,21 @@ def validate_report_contract_html(
             issues,
             "error",
             "missing_supply_chain_section",
-            "行业概况 must include a 产业链与生态位 module before 下钻 QA",
+            "行业概况 must include a 技术链与 BOM 呈现 module before 下钻 QA",
         )
     required_industry_overview_classes = [
         "industry-overview-section",
         "industry-module",
         "industry-module-body",
         "module-index",
+        "supply-chain-section",
         "component-value-chain",
         "bom-taxonomy",
         "bom-taxonomy-grid",
         "bom-taxonomy-card",
-        "overview-research-unit",
         "overview-question-card",
         "overview-answer",
-        "overview-answer-prose",
-        "competition-bom-map",
-        "competition-bom-card",
-        "competition-question-grid",
-        "profit-pool-table",
         "industry-space",
-        "industry-competition",
-        "industry-chokepoints",
-        "chokepoint-bom-map",
-        "chokepoint-bom-card",
-        "chokepoint-question-grid",
-        "chokepoint-scorecard",
-        "bottleneck-release-timeline",
         "industry-key-variables",
         "key-variable-bom-map",
         "key-variable-bom-card",
@@ -523,7 +509,7 @@ def validate_report_contract_html(
             issues,
             "error",
             "missing_industry_overview_components",
-            "行业概况 must include industry space, competition/profit-pool, chokepoint, and key-variable modules; missing "
+            "行业概况 must include S-curve industry space, technical-chain/BOM presentation, and key-variable modules; missing "
             + ", ".join(missing_industry_overview_classes),
         )
     if _class_count(html, "overview-source-plan") or _class_count(html, "source-universe-plan") or _class_count(html, "exa-search-plan"):
@@ -538,32 +524,27 @@ def validate_report_contract_html(
             issues,
             "error",
             "incomplete_bom_taxonomy",
-            "统一 BOM 口径 must render at least two bom-taxonomy-card definitions so industry chain, space, competition, chokepoints, and target mapping share the same node names",
+            "统一 BOM 口径 must render at least two bom-taxonomy-card definitions so the technical chain and S-curve space share visible node names",
         )
     bom_taxonomy_nodes = _bom_taxonomy_nodes(html)
     if bom_taxonomy_nodes:
         coverage_regions = {
-            "行业空间": _class_region(html, ("industry-module", "industry-space"), [("industry-module", "industry-competition")]),
-            "竞争格局与利润池": _class_region(html, ("industry-module", "industry-competition"), [("industry-module", "industry-chokepoints")]),
-            "瓶颈点": _class_region(html, ("industry-module", "industry-chokepoints"), [("industry-module", "industry-key-variables")]),
+            "S曲线与产业空间": _class_region(html, ("industry-module", "industry-space"), [("industry-module", "industry-competition"), ("industry-module", "industry-chokepoints"), ("industry-module", "industry-key-variables")]),
             "关键变量与待验证数据": _class_region(html, ("industry-module", "industry-key-variables"), [("qa-section",), ("qa-card", "level-1")]),
-            "标的推荐": _class_region(html, ("target-section",), [("source-collapse",)]),
         }
         for module_name, region in coverage_regions.items():
             missing_nodes = _missing_taxonomy_nodes(region, bom_taxonomy_nodes)
             if missing_nodes:
                 _issue(
                     issues,
-                    "error",
+                    "warn",
                     "missing_bom_taxonomy_coverage",
-                    f"{module_name} must expand one-to-one from 产业链与生态位 BOM taxonomy; missing "
+                    f"{module_name} should reuse the 技术链与 BOM node names where relevant; missing "
                     + ", ".join(missing_nodes),
                 )
     required_industry_detail_modules = [
         "supply-chain-section",
         "industry-space",
-        "industry-competition",
-        "industry-chokepoints",
         "industry-key-variables",
     ]
     static_industry_modules = [
@@ -798,7 +779,6 @@ def validate_report_contract_html(
         "chain-stage-panel",
         "chain-company-list",
         "chain-company-card",
-        "chain-chokepoints",
     ]
     missing_chain_explainer_classes = [
         class_name for class_name in required_chain_explainer_classes if _class_count(html, class_name) == 0
@@ -808,7 +788,7 @@ def validate_report_contract_html(
             issues,
             "error",
             "missing_beginner_chain_explainer",
-            "行业概况/产业链与生态位 must include beginner-readable Chinese explanation components; missing "
+            "行业概况/技术链与 BOM 呈现 must include beginner-readable Chinese explanation components; missing "
             + ", ".join(missing_chain_explainer_classes),
         )
     chain_detail_panels = _tag_class_count(html, "details", "chain-detail-panel")
@@ -817,16 +797,16 @@ def validate_report_contract_html(
             issues,
             "error",
             "missing_interactive_chain_detail_panels",
-            "产业链与生态位 must keep its long subcomponents collapsible as details.chain-detail-panel nodes for 泳道图, 价值流, and BOM / 组件级链条",
+            "技术链与 BOM 呈现 must keep its long subcomponents collapsible as details.chain-detail-panel nodes for 泳道图, 价值流, and BOM / 组件级链条",
         )
-    required_overview_labels = ["产业链与生态位", "泳道图", "价值流", "行业空间", "竞争格局与利润池", "瓶颈点", "关键变量"]
+    required_overview_labels = ["技术链与 BOM 呈现", "泳道图", "价值流", "S曲线与产业空间", "关键变量"]
     missing_overview_labels = [label for label in required_overview_labels if label not in html]
     if industry_overview_sections and missing_overview_labels:
         _issue(
             issues,
             "error",
             "missing_industry_overview_blocks",
-            "行业概况必须保留产业链与生态位、泳道图、价值流、行业空间、竞争格局与利润池、瓶颈点、关键变量；缺少 "
+            "行业概况必须保留技术链与 BOM 呈现、泳道图、价值流、S曲线与产业空间、关键变量；缺少 "
             + ", ".join(missing_overview_labels),
         )
     overlap_qa_start = section_positions.get("下钻 QA", -1)
@@ -941,8 +921,6 @@ def validate_report_contract_html(
         "chain-company-list",
         "chain-company-card",
         "component-value-chain",
-        "chain-chokepoints",
-        "bottleneck-release-timeline",
         "industry-space",
         "industry-space-summary",
         "space-bom-reasoning",
@@ -965,8 +943,6 @@ def validate_report_contract_html(
         "space-horizon-card",
         "space-node-sizing-table",
         "space-step-confidence",
-        "industry-competition",
-        "industry-chokepoints",
         "industry-key-variables",
         "qa-body",
         "qa-block",
@@ -1108,12 +1084,12 @@ def validate_industry_overview(project_dir: "str | Path") -> dict[str, Any]:
         if has_sizing_data == 0:
             _issue(issues, "warn", "no_space_sizing_data", "no BOM node has populated publicSizingMethods; Stage 2 Module 2 may be incomplete")
 
-    # Validate five module presence hints
+    # Validate simplified S-curve module presence hints
     found_modules = []
     if chain.get("layers") or chain.get("stage_groups"):
-        found_modules.append("产业链与生态位")
+        found_modules.append("技术链与BOM呈现")
     if evidence_pack and len(evidence_pack) > 0:
-        found_modules.append("行业空间")
+        found_modules.append("S曲线与产业空间")
     if chain.get("competition") or chain.get("competition_landscape"):
         found_modules.append("竞争格局与利润池")
     if chain.get("chokepoints") or chain.get("candidate_chokepoints"):
@@ -1121,7 +1097,8 @@ def validate_industry_overview(project_dir: "str | Path") -> dict[str, Any]:
     if chain.get("data_gaps") or chain.get("pending_questions"):
         found_modules.append("关键变量与待验证数据")
 
-    missing_modules = [m for m in ["产业链与生态位", "行业空间", "竞争格局与利润池", "瓶颈点", "关键变量与待验证数据"] if m not in found_modules]
+    required_modules = ["技术链与BOM呈现", "S曲线与产业空间", "关键变量与待验证数据"]
+    missing_modules = [m for m in required_modules if m not in found_modules]
     for module in missing_modules:
         _issue(issues, "warn", f"missing_module_hint_{module}", f"行业概况 module '{module}' has no detectable data in supply_chain; stage may be incomplete")
 

@@ -34,7 +34,7 @@ def _render_hero(data: dict[str, Any]) -> str:
   <div class="hero-inner">
     <p class="eyebrow">Research Goal QA</p>
     <h1>{_e(str(title))}</h1>
-    <p class="hero-subtitle">先建立行业概况，再由行业地图生成下钻 QA，最后汇总到标的赔率和观察清单。</p>
+    <p class="hero-subtitle">先判断新技术是否进入 S 曲线，再看产业空间和技术链，最后形成标的观察清单。</p>
     <div class="hero-meta">
       <span>{_e(str(report_date))}</span>
       <span>{_e(str(run_mode))}</span>

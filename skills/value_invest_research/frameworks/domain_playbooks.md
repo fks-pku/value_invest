@@ -2,6 +2,25 @@
 
 Domain playbooks are the depth layer under the shared QA/report contract. The public report contract fixes hierarchy and presentation; this file fixes how a domain should become concrete L2/L3 mechanism questions, optional L4/L5 decomposition units, source plans, extraction schemas, and scoring inputs.
 
+## Current Default: S-Curve First
+
+The default industry/theme and technology-route playbook is now S-curve-first. The first-pass research should spend most effort on:
+
+1. Whether the new technology has a large enough prospect and solves a real old-solution failure.
+2. Whether feasibility is improving through performance, cost, reliability, ecosystem, regulation, or customer ROI.
+3. Whether adoption is moving from concept/pilot into early acceleration.
+4. Whether future industry space is large enough to justify deeper research.
+5. Whether demand is likely to exceed supply somewhere on the chain.
+
+In this first pass, BOM is a presentation map rather than a full competition workbook. It should explain upstream/midstream/downstream, key companies, what each node receives, what it produces, and whom it supplies. Detailed competitive landscape, profit-pool ownership, and chokepoint scorecards are follow-up deepening modules, not default first-pass requirements.
+
+Default S-curve Q map:
+
+- Q1 Technology feasibility: why this S curve may become real rather than remain a concept.
+- Q2 Industry space and S-curve stage: whether demand is entering early acceleration and future space is large enough.
+- Q3 Technical chain and BOM presentation: who sits on the chain, what each node does, and where supply-demand tension may appear.
+- Q4 Target observation list: companies directly exposed to the S curve, with watch intensity and verification triggers.
+
 ## Mechanism Depth Protocol
 
 For industry/theme opportunity and technology/product-route research, the question architect must build a mechanism-depth map before source collection. The map prevents generic "theme looks good" reports by forcing the research to model how demand turns into company cash flow and how the market may already price it.

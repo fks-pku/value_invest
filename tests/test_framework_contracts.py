@@ -31,7 +31,7 @@ def _industry_overview_html(title: str) -> str:
           <section id="overview" class="industry-overview-section"><h2>{title}</h2>
             <style>.table-scroll{{overflow-x:auto}}.space-method-card-grid{{display:grid;grid-template-columns:1fr}}.competition-question-grid{{display:grid;grid-template-columns:1fr}}.chokepoint-question-grid{{display:grid;grid-template-columns:1fr}}</style>
             <details class="industry-module supply-chain-section">
-              <summary class="module-head"><span class="module-index">01</span><div><h3>产业链与生态位</h3><p>先看清楚生态位。</p></div><span class="chevron">›</span></summary>
+              <summary class="module-head"><span class="module-index">01</span><div><h3>技术链与 BOM 呈现</h3><p>先看清楚链上有谁、各自做什么。</p></div><span class="chevron">›</span></summary>
               <div class="industry-module-body">
               <div class="chain-explain">
                 <div class="chain-research-bridge"><div class="chain-bridge-grid"><div class="chain-bridge-card"><span>研究目标如何转成产业链问题</span><strong>先理清产业链，再生成 QA。</strong></div><div class="chain-bridge-card"><span>核心投资问题</span><strong>哪些节点捕获价值？</strong></div></div><div class="chain-node-lens"><b>节点筛选口径</b><ul><li><b>需求流入</b><span>订单和收入。</span></li></ul></div></div>
@@ -50,14 +50,14 @@ def _industry_overview_html(title: str) -> str:
                 <details class="chain-detail-panel chain-component-panel"><summary><span>BOM / 组件级链条</span><small>拆到子系统、组件和财务验证。</small><span class="chevron">›</span></summary><div class="chain-detail-body">
                   <div class="component-value-chain"><div class="table-scroll"><table><tr><td>组件链条</td></tr></table></div></div>
                 </div></details>
-                <details class="chain-detail-panel bom-taxonomy-panel"><summary><span>统一 BOM 口径</span><small>行业空间、竞争格局、瓶颈点和标的映射共用。</small><span class="chevron">›</span></summary><div class="chain-detail-body">
+                <details class="chain-detail-panel bom-taxonomy-panel"><summary><span>统一 BOM 口径</span><small>S 曲线空间、关键变量和标的映射共用。</small><span class="chevron">›</span></summary><div class="chain-detail-body">
                   <div class="bom-taxonomy"><div class="bom-taxonomy-grid"><article class="bom-taxonomy-card"><span>上游</span><strong>HBM</strong><p>高带宽内存。</p></article><article class="bom-taxonomy-card"><span>中游</span><strong>系统交付</strong><p>服务器和 rack 集成。</p></article></div></div>
                 </div></details>
               </div>
               </div>
             </details>
-            <details class="industry-module industry-space"><summary class="module-head"><span class="module-index">02</span><div><h3>行业空间</h3></div><span class="chevron">›</span></summary><div class="industry-module-body">
-              <div class="industry-space-summary"><p>行业空间直接按 BOM 节点说明未来空间。</p></div>
+            <details class="industry-module industry-space"><summary class="module-head"><span class="module-index">02</span><div><h3>S曲线与产业空间</h3></div><span class="chevron">›</span></summary><div class="industry-module-body">
+              <div class="industry-space-summary"><p>S 曲线与产业空间直接说明未来空间和早期加速证据。</p></div>
               <div class="space-bom-reasoning">
                 <details class="space-node-card"><summary><span class="space-node-label">BOM 节点</span><strong>HBM</strong><small>该节点是否被未来空间放大？</small><span class="chevron">›</span></summary><div class="space-node-reasoning"><section class="space-node-section space-node-space-reasoning"><h4>空间推理</h4><p>AI capex 放大 BOM 节点。</p><div class="space-node-sizing"><div class="space-method-step"><div class="space-step-title"><span class="space-step-index">1</span><h5>公开拆法</h5></div><div class="space-public-methods space-method-card-grid space-node-sizing-table"><section class="space-method-card"><header><span>公司指引</span><small>待补</small></header><div class="space-method-card-body"><p class="space-method-empty">待补。</p></div></section><section class="space-method-card"><header><span>公司 TAM</span><small>1 条</small></header><div class="space-method-card-body"><article class="space-method-entry"><b>公司或机构：Micron</b><p><strong>指引内容：</strong>2025 $35B -> 2028 $100B</p><dl><div><dt>BOM 节点</dt><dd>HBM</dd></div><div><dt>时间范围</dt><dd>2025E-2028E</dd></div><div><dt>可验证指标</dt><dd>HBM ASP、客户资格、毛利率</dd></div><div><dt>置信度</dt><dd>中</dd></div></dl><div class="space-method-entry-sources"><div class="source-chips"><span class="source-chip">SRC-MU-FY26-Q1-PREPARED</span></div></div></article></div></section><section class="space-method-card"><header><span>客户侧指引</span><small>待补</small></header><div class="space-method-card-body"><p class="space-method-empty">待补。</p></div></section><section class="space-method-card"><header><span>第三方拆法</span><small>待补</small></header><div class="space-method-card-body"><p class="space-method-empty">待补。</p></div></section><section class="space-method-card"><header><span>财务兑现证据</span><small>待补</small></header><div class="space-method-card-body"><p class="space-method-empty">待补。</p></div></section></div></div><div class="space-horizon-conclusion"><div class="space-step-title"><span class="space-step-index">2</span><h5>空间结论</h5></div><p class="space-horizon-summary">结论：结合五类信息，HBM 未来空间仍大。</p><div class="space-horizon-grid"><article class="space-horizon-card"><span>短期</span><strong class="space-horizon-size space-horizon-large">大</strong><p>公司指引和财务兑现证据支持近端需求。</p></article><article class="space-horizon-card"><span>中期</span><strong class="space-horizon-size space-horizon-large">大</strong><p>公司 TAM 和第三方拆法支持中期扩张。</p></article><article class="space-horizon-card"><span>长期</span><strong class="space-horizon-size space-horizon-mid">中高</strong><p>长期空间仍大，但受供给扩张和价格影响。</p></article></div><small class="space-step-confidence">置信度：中。</small></div></div></section><section class="space-node-section space-node-evidence"><h4>证据</h4><p>收入、订单、backlog。</p></section></div></details>
                 <details class="space-node-card"><summary><span class="space-node-label">BOM 节点</span><strong>系统交付</strong><small>服务器和 rack 集成空间。</small><span class="chevron">›</span></summary><div class="space-node-reasoning"><section class="space-node-section space-node-space-reasoning"><h4>空间推理</h4><div class="space-node-sizing"><div class="space-method-step"><div class="space-step-title"><span class="space-step-index">1</span><h5>公开拆法</h5></div><div class="space-public-methods space-method-card-grid space-node-sizing-table"><section class="space-method-card"><header><span>公司指引</span><small>待补</small></header><div class="space-method-card-body"><p class="space-method-empty">待补。</p></div></section></div></div><div class="space-horizon-conclusion"><div class="space-step-title"><span class="space-step-index">2</span><h5>空间结论</h5></div><p>系统交付空间需要订单和毛利验证。</p><div class="space-horizon-grid"><article class="space-horizon-card"><span>短期</span><strong>中</strong><p>看订单。</p></article></div><small class="space-step-confidence">置信度：中。</small></div></div></section><section class="space-node-section space-node-evidence"><h4>证据</h4><p>系统交付证据。</p></section></div></details>
@@ -748,11 +748,11 @@ class FrameworkContractsTests(unittest.TestCase):
         self.assertIn("rejected_future_sources", workbench)
 
         playbook = get_domain_playbook("semiconductor_hardware")
-        self.assertIn("demand reality", playbook["q_map"]["Q1"].lower())
-        self.assertIn("HBM", " ".join(playbook["mechanism_buckets"]))
+        self.assertIn("s-curve", playbook["q_map"]["Q1"].lower())
+        self.assertIn("s_curve_stage", playbook["mechanism_buckets"])
 
         memory_playbook = get_domain_playbook("memory_industry")
-        self.assertIn("Demand-supply slope mismatch", memory_playbook["mechanism_buckets"])
+        self.assertIn("industry_space", memory_playbook["mechanism_buckets"])
         self.assertIn("memory_unit_economics", memory_playbook["required_extraction_schemas"])
         self.assertIn("model_reconciliation", memory_playbook["mechanism_depth_blocks"])
         self.assertEqual(get_domain_playbook("storage")["q_map"]["Q1"], memory_playbook["q_map"]["Q1"])

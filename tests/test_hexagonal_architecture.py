@@ -354,7 +354,7 @@ class HexagonalArchitectureTests(unittest.TestCase):
         self.assertEqual([node.id for node in architecture.nodes if node.level == 1], ["Q1", "Q2", "Q3", "Q4"])
         self.assertGreater(len([node for node in architecture.nodes if node.level == 3]), 4)
         q2_leaf_questions = [node.question for node in architecture.nodes if node.id.startswith("Q2.") and node.level == 3]
-        self.assertTrue(any("HBM" in question for question in q2_leaf_questions))
+        self.assertTrue(any("S 曲线" in question or "空间" in question for question in q2_leaf_questions))
 
     def test_plan_research_goal_uses_event_conference_playbook_for_gtc(self):
         goal = ResearchGoal(

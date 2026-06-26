@@ -1,0 +1,11 @@
+{
+  "project_id": "ai_factory_industry_scurve_timeslice_20260302",
+  "title": "AI 工厂产业 S 曲线投资机会回测研究",
+  "research_type": "industry/theme opportunity",
+  "run_mode": "historical_backtest",
+  "mode": "historical_backtest",
+  "as_of_date": "2026-03-02",
+  "evaluation_date": "2026-06-02",
+  "report_path": "professional_report.html",
+  "framework_focus": "s_curve_first"
+}

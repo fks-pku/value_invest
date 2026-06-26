@@ -29,12 +29,18 @@ def _render_industry_overview(chain: dict[str, Any], source_url_by_id: dict[str,
     )
     lane_map = _render_chain_lane_map(stage_groups, layers, relationships)
     value_flow = _render_chain_value_flow(chain, relationships)
-    industry_space = _render_industry_space(chain, source_url_by_id)
-    industry_competition = _render_industry_competition(chain, source_url_by_id)
-    industry_chokepoints = _render_industry_chokepoints(chain, source_url_by_id)
+    industry_space = _render_industry_space(chain, source_url_by_id, "02")
+    optional_index = 3
+    industry_competition = _render_industry_competition(chain, source_url_by_id, f"{optional_index:02d}")
+    if industry_competition:
+        optional_index += 1
+    industry_chokepoints = _render_industry_chokepoints(chain, source_url_by_id, f"{optional_index:02d}")
+    if industry_chokepoints:
+        optional_index += 1
     industry_key_variables = _render_industry_key_variables(
         chain,
         _render_chain_data_gaps(chain.get("data_gaps") or chain.get("supply_chain_data_gaps") or []),
+        f"{optional_index:02d}",
     )
     component_value_chain = chain.get("component_value_chain") or chain.get("componentValueChain") or []
     bom_taxonomy = _render_bom_taxonomy(
@@ -48,7 +54,7 @@ def _render_industry_overview(chain: dict[str, Any], source_url_by_id: dict[str,
     <h2>行业概况</h2>
   </div>
   <details class="industry-module supply-chain-section">
-    <summary class="module-head"><span class="module-index">01</span><div><h3>产业链与生态位</h3><p>先看清楚谁提供什么、谁依赖谁、订单和利润沿什么路径流动。</p></div><span class="chevron">›</span></summary>
+    <summary class="module-head"><span class="module-index">01</span><div><h3>技术链与 BOM 呈现</h3><p>先看清楚链上有谁、各自做什么、接受什么输入、提供给谁。</p></div><span class="chevron">›</span></summary>
     <div class="industry-module-body">
     <div class="chain-explain">
       {research_bridge}
@@ -56,7 +62,7 @@ def _render_industry_overview(chain: dict[str, Any], source_url_by_id: dict[str,
       {_render_chain_detail_panel("泳道图", "按上游 / 中游 / 下游看生态位、公司关系和依赖方向。", lane_map, "chain-lane-panel")}
       {_render_chain_detail_panel("价值流", "用白话步骤解释需求如何变成订单、系统交付、收入和利润验证。", value_flow, "chain-value-panel")}
       {_render_chain_detail_panel("BOM / 组件级链条", "把系统拆成子系统、组件、关键公司、输入输出和财务验证指标。", _render_component_value_chain(component_value_chain), "chain-component-panel")}
-      {_render_chain_detail_panel("统一 BOM 口径", "后续行业空间、竞争格局、瓶颈点和标的映射均使用同一套节点定义。", bom_taxonomy, "bom-taxonomy-panel")}
+      {_render_chain_detail_panel("统一 BOM 口径", "后续 S 曲线空间、关键变量和标的映射使用同一套节点定义。", bom_taxonomy, "bom-taxonomy-panel")}
     </div>
     </div>
   </details>
@@ -89,11 +95,11 @@ def _render_bom_taxonomy(nodes: list[Any], component_value_chain: list[Any]) -> 
                     {
                         "label": label,
                         "layer": str(node.get("layer") or node.get("stage") or "BOM 节点"),
-                        "role": str(node.get("role") or node.get("description") or node.get("definition") or "用于统一行业空间、竞争格局、瓶颈点和标的映射。"),
+                        "role": str(node.get("role") or node.get("description") or node.get("definition") or "用于统一 S 曲线空间、关键变量和标的映射。"),
                     }
                 )
             elif str(node).strip():
-                normalized.append({"label": str(node), "layer": "BOM 节点", "role": "用于统一行业空间、竞争格局、瓶颈点和标的映射。"})
+                normalized.append({"label": str(node), "layer": "BOM 节点", "role": "用于统一 S 曲线空间、关键变量和标的映射。"})
     if not normalized and isinstance(component_value_chain, list):
         seen: set[str] = set()
         for item in component_value_chain:
@@ -158,10 +164,10 @@ def _render_chain_research_bridge(bridge: dict[str, Any], node_lenses: list[Any]
     return f"""
     <div class="chain-research-bridge">
       <div class="chain-bridge-grid">
-        <div class="chain-bridge-card"><span>研究目标如何转成产业链问题</span><strong>{_e(str(bridge.get("objective") or "先用产业链理清需求、供给、价值捕获和反证，再生成 QA。"))}</strong></div>
-        <div class="chain-bridge-card"><span>核心投资问题</span><strong>{_e(str(bridge.get("core_question") or bridge.get("coreQuestion") or "哪些节点能把主题需求转成可持续收入、利润、现金流和赔率？"))}</strong></div>
+        <div class="chain-bridge-card"><span>研究目标如何转成 S 曲线问题</span><strong>{_e(str(bridge.get("objective") or "先判断新技术能否进入指数级扩张，再把产业空间映射到技术链和公司。"))}</strong></div>
+        <div class="chain-bridge-card"><span>核心投资问题</span><strong>{_e(str(bridge.get("core_question") or bridge.get("coreQuestion") or "这条技术曲线是否已经进入早期加速，产业空间是否足够大，链上哪些公司直接受益？"))}</strong></div>
       </div>
-      <p>{_e(str(bridge.get("current_conclusion") or bridge.get("currentConclusion") or "行业概况需要先回答谁提供什么、谁依赖谁、钱流向哪里、瓶颈在哪里，以及这些结论如何生成下钻 QA。"))}</p>
+      <p>{_e(str(bridge.get("current_conclusion") or bridge.get("currentConclusion") or "行业概况先回答 S 曲线是否成立、空间从哪里来、链条上有谁，以及哪些变量决定后续是否需要更深竞争和瓶颈分析。"))}</p>
       {_render_chain_node_lens(node_lenses)}
     </div>
 """.strip()
@@ -183,11 +189,10 @@ def _render_chain_node_lens(node_lenses: list[Any]) -> str:
     if not isinstance(node_lenses, list) or not node_lenses:
         node_lenses = [
             ["需求流入", "是否有明确客户预算、订单、收入或 backlog 流入该节点。"],
-            ["稀缺供给", "是否控制短期难扩张的产能、资格、生态或工程交付能力。"],
-            ["替代难度", "客户能否绕开、双供、内化，或被平台路线替代。"],
-            ["货币化能力", "稀缺是否能体现为价格、毛利、收入增长、现金流或更高 backlog 质量。"],
-            ["市场定价", "当前估值是否已经充分反映增长和利润率上修。"],
-            ["反证触发", "哪些数据会证明瓶颈只是暂时的、低利润的，或已被供给扩张消化。"],
+            ["空间斜率", "需求是否从线性试点进入可持续放量。"],
+            ["供需状态", "当前供给是否明显跟不上未来需求斜率。"],
+            ["财务验证", "空间是否开始体现为收入、订单、backlog、毛利或现金流。"],
+            ["反证触发", "哪些数据会证明 S 曲线放缓、需求不可实现或供给快速补上。"],
         ]
     items = "\n".join(_chain_node_lens_item(row) for row in node_lenses[:4])
     return f'<div class="chain-node-lens"><b>节点筛选口径</b><ul>{items}</ul></div>'
@@ -325,7 +330,7 @@ def _render_chain_value_flow_card(flow: dict[str, Any]) -> str:
 """.rstrip()
 
 
-def _render_industry_space(chain: dict[str, Any], source_url_by_id: dict[str, str]) -> str:
+def _render_industry_space(chain: dict[str, Any], source_url_by_id: dict[str, str], module_index: str = "02") -> str:
     rows = (
         chain.get("industry_space_evidence_pack")
         or chain.get("industry_space_bom_reasoning")
@@ -352,11 +357,11 @@ def _render_industry_space(chain: dict[str, Any], source_url_by_id: dict[str, st
     conclusion = chain.get("industry_space_conclusion") if isinstance(chain.get("industry_space_conclusion"), dict) else {}
     summary = str(
         conclusion.get("judgment")
-        or "本节只回答一个问题：未来需求会放大哪些 BOM 节点。空间判断必须先记录公司指引、公司 TAM、客户侧指引、第三方拆法和财务兑现证据，再直接结合这五类信息判断短期、中期、长期空间是否足够大；找不到可靠公开拆法时，应明确标为数据缺口，不由模型自行补精确 TAM。"
+        or "本节把 80% 研究重心放在寻找 S 曲线本身：新技术前景是否足够大、可实现性是否逐步被验证、需求是否进入不可逆早期加速。BOM 节点在这里用于承载空间证据，而不是展开详细竞争格局。"
     )
     return f"""
   <details class="industry-module industry-space">
-    <summary class="module-head"><span class="module-index">02</span><div><h3>行业空间</h3><p>公开拆法优先记录 BOM 节点空间：先看推理，再看证据来源。</p></div><span class="chevron">›</span></summary>
+    <summary class="module-head"><span class="module-index">{_e(module_index)}</span><div><h3>S曲线与产业空间</h3><p>优先判断整个产业是否进入大空间、可实现、早期加速的 S 曲线。</p></div><span class="chevron">›</span></summary>
     <div class="industry-module-body">
       <div class="industry-space-summary">
         <p>{_e(summary)}</p>
@@ -949,7 +954,7 @@ def _render_space_validation_table(chain: dict[str, Any]) -> str:
     return f'<div class="space-validation-table table-scroll"><table><thead><tr><th>验证对象</th><th>跟踪数据</th><th>说明什么</th><th>削弱信号</th></tr></thead><tbody>{body}</tbody></table></div>'
 
 
-def _render_industry_competition(chain: dict[str, Any], source_url_by_id: dict[str, str]) -> str:
+def _render_industry_competition(chain: dict[str, Any], source_url_by_id: dict[str, str], module_index: str = "03") -> str:
     competition = chain.get("competition") if isinstance(chain.get("competition"), dict) else {}
     node_cards = competition.get("chain_node_competition") or chain.get("competition_cards") or []
 
@@ -957,14 +962,14 @@ def _render_industry_competition(chain: dict[str, Any], source_url_by_id: dict[s
         cards_html = "".join(_render_competition_node_card(node, i, source_url_by_id) for i, node in enumerate(node_cards))
         body_html = f'<div class="competition-bom-map">{cards_html}</div>'
     else:
-        body_html = _render_competition_fallback_table(
-            chain.get("competition_rows") or chain.get("competitionLandscape") or [],
-            source_url_by_id,
-        )
+        rows = chain.get("competition_rows") or chain.get("competitionLandscape") or []
+        if not isinstance(rows, list) or not rows:
+            return ""
+        body_html = _render_competition_fallback_table(rows, source_url_by_id)
 
     return f"""
   <details class="industry-module industry-competition">
-    <summary class="module-head"><span class="module-index">03</span><div><h3>竞争格局与利润池</h3><p>每个 BOM 节点按四问展开：玩家市场份额分布、头部玩家优势、替代玩家赶超希望、格局变化核心变量。</p></div><span class="chevron">›</span></summary>
+    <summary class="module-head"><span class="module-index">{_e(module_index)}</span><div><h3>竞争格局与利润池</h3><p>可选深化模块：只有当报告进入第二阶段竞争/利润池分析时才展开。</p></div><span class="chevron">›</span></summary>
     <div class="industry-module-body">
     {body_html}
     </div>
@@ -1077,11 +1082,13 @@ def _render_profit_pool_flow(profit_pool: dict[str, Any]) -> str:
       </div>""".strip()
 
 
-def _render_industry_chokepoints(chain: dict[str, Any], source_url_by_id: dict[str, str]) -> str:
+def _render_industry_chokepoints(chain: dict[str, Any], source_url_by_id: dict[str, str], module_index: str = "04") -> str:
     nodes = chain.get("chokepoint_nodes") or []
     if isinstance(nodes, list) and nodes:
         cards = '<div class="chokepoint-bom-map">' + "".join(_render_chokepoint_node_card(node, i, source_url_by_id) for i, node in enumerate(nodes)) + "</div>"
     else:
+        if not chain.get("chokepoints") and not chain.get("candidate_chokepoints"):
+            return ""
         text = chain.get("chokepoints") or "瓶颈点待 Q2 竞争格局验证。"
         cards = f"""
     <div class="chain-chokepoints">{_e(str(text))}</div>
@@ -1106,7 +1113,7 @@ def _render_industry_chokepoints(chain: dict[str, Any], source_url_by_id: dict[s
     </div>"""
     return f"""
   <details class="industry-module industry-chokepoints">
-    <summary class="module-head"><span class="module-index">04</span><div><h3>瓶颈点</h3><p>四问每个链节点：瓶颈在哪、有多紧、会释放还是会加剧、有没有中小市值卡点。</p></div><span class="chevron">›</span></summary>
+    <summary class="module-head"><span class="module-index">{_e(module_index)}</span><div><h3>瓶颈点</h3><p>可选深化模块：当前先识别 S 曲线和链条，后续再细拆供需瓶颈。</p></div><span class="chevron">›</span></summary>
     <div class="industry-module-body">
     <div class="chain-chokepoints" hidden></div>
     <div class="bottleneck-release-timeline" hidden></div>
@@ -1202,7 +1209,7 @@ def _render_bottleneck_release_timeline(items: list[Any]) -> str:
 """.strip()
 
 
-def _render_industry_key_variables(chain: dict[str, Any], data_gaps: str) -> str:
+def _render_industry_key_variables(chain: dict[str, Any], data_gaps: str, module_index: str = "03") -> str:
     qa_mapping = chain.get("qa_mapping") or chain.get("output_to_qa") or []
     if not isinstance(qa_mapping, list) or not qa_mapping:
         qa_mapping = [["Q1-Q4", "行业概况里的空间、竞争、瓶颈和反证信号。", "用于生成下钻 QA 和标的排序。"]]
@@ -1238,7 +1245,7 @@ def _render_industry_key_variables(chain: dict[str, Any], data_gaps: str) -> str
     bom_map = f'<div class="key-variable-bom-map">{"".join(node_cards)}</div>' if node_cards else ""
     return f"""
   <details class="industry-module industry-key-variables">
-    <summary class="module-head"><span class="module-index">05</span><div><h3>关键变量与待验证数据</h3><p>把行业概况转成下钻 QA：哪些数据变化会强化、削弱或推翻当前排序。</p></div><span class="chevron">›</span></summary>
+    <summary class="module-head"><span class="module-index">{_e(module_index)}</span><div><h3>关键变量与待验证数据</h3><p>把 S 曲线判断转成后续跟踪：哪些数据会强化、削弱或推翻当前空间判断。</p></div><span class="chevron">›</span></summary>
     <div class="industry-module-body">
     <div class="key-variable-grid">
       {bom_map}

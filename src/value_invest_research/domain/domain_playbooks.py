@@ -68,9 +68,9 @@ def resolve_domain_playbook(goal: ResearchGoal) -> DomainPlaybook:
     hint = goal.domain_hint.lower()
     topic = goal.topic.lower()
     if "memory" in hint or "storage" in hint or "存储" in goal.topic or "memory" in topic:
-        return memory_industry_playbook(goal)
+        return s_curve_opportunity_playbook(goal, "memory_industry")
     if "optical" in hint or "optical" in topic or "光模块" in goal.topic or "光通信" in goal.topic:
-        return optical_module_playbook(goal)
+        return s_curve_opportunity_playbook(goal, "optical_module")
     if (
         "event" in hint
         or "conference" in hint
@@ -88,8 +88,88 @@ def resolve_domain_playbook(goal: ResearchGoal) -> DomainPlaybook:
     ):
         return event_conference_playbook(goal)
     if "semiconductor" in hint or "半导体" in goal.topic:
-        return semiconductor_hardware_playbook(goal)
+        return s_curve_opportunity_playbook(goal, "semiconductor_hardware")
     return default_playbook(goal)
+
+
+def s_curve_opportunity_playbook(goal: ResearchGoal, playbook_id: str = "s_curve_opportunity") -> DomainPlaybook:
+    q_map = {
+        "Q1": "新技术前景与可实现性：这条 S 曲线为什么可能成立？",
+        "Q2": "产业空间与阶段判断：需求是否进入早期加速，未来空间是否足够大？",
+        "Q3": "技术链与 BOM 呈现：链上有哪些关键节点、公司各自做什么、供需关系在哪里偏紧？",
+        "Q4": "标的观察：哪些公司与 S 曲线空间直接相关，现阶段如何观察而不是过早下结论？",
+    }
+    return DomainPlaybook(
+        playbook_id=playbook_id,
+        research_type=goal.normalized_type(),
+        q_map=q_map,
+        mechanism_buckets=[
+            "technology_feasibility",
+            "adoption_inflection",
+            "industry_space",
+            "s_curve_stage",
+            "simple_bom_map",
+            "supply_demand_tension",
+            "company_exposure_screen",
+            "kill_tests",
+        ],
+        l2_templates={
+            "Q1": [
+                _l2(
+                    "Q1.1",
+                    "技术前景和可实现性验证",
+                    "先判断技术不是概念，而是有明确性能提升、成本下降路径、客户痛点和工程可落地证据。",
+                    [
+                        _l3("该技术解决的原始问题是否足够大，旧方案为什么不够？", "future_space", "industry-report-analysis"),
+                        _l3("性能、成本、可靠性、生态或监管条件是否已经接近商业化门槛？", "evidence_quality", "industry-report-analysis"),
+                        _l3("哪些证据会证明它仍停留在概念期或不可规模化？", "disconfirming_risk_control", "news-event-analysis"),
+                    ],
+                )
+            ],
+            "Q2": [
+                _l2(
+                    "Q2.1",
+                    "S 曲线阶段和产业空间",
+                    "把研究重心放在曲线本身：需求是否从试点进入早期放量，空间是否大到值得继续研究。",
+                    [
+                        _l3("当前处在 S 曲线的哪个阶段：萌芽、早期加速、快速渗透还是成熟？", "future_space", "industry-report-analysis"),
+                        _l3("公开材料如何描述未来空间：公司指引、公司 TAM、客户侧指引、第三方拆法和财务兑现证据分别说明什么？", "future_space", "research-source-planner"),
+                        _l3("需求是否具备不可逆性：客户 ROI、政策/生态、成本曲线或供给锁定是否支持持续渗透？", "evidence_quality", "industry-report-analysis"),
+                    ],
+                )
+            ],
+            "Q3": [
+                _l2(
+                    "Q3.1",
+                    "技术链和 BOM 简表",
+                    "本阶段只把链条讲清楚，不细拆竞争格局：谁在上游、中游、下游，各自输入、产出和客户是谁。",
+                    [
+                        _l3("技术链/BOM 由哪些关键节点组成，每个节点接受什么输入、生产什么、提供给谁？", "monitorability", "industry-report-analysis"),
+                        _l3("哪些节点的需求斜率最可能高于供给斜率，需要后续进入瓶颈研究？", "chokepoint_strength", "supply-chain-chokepoint-analysis"),
+                        _l3("哪些公司与这些节点直接相关，哪些只是宽泛主题暴露？", "target_ranking", "company-exposure-analysis"),
+                    ],
+                )
+            ],
+            "Q4": [
+                _l2(
+                    "Q4.1",
+                    "初步标的观察和下一步验证",
+                    "只把 S 曲线和链条映射到候选公司，先给观察强度和待验证数据，不急于做完整竞争格局评分。",
+                    [
+                        _l3("哪些具体证券最直接暴露在 S 曲线空间和关键 BOM 节点上？", "target_ranking", "target-recommendation-analysis"),
+                        _l3("现阶段哪些标的可能只是主题热度，缺少空间、供需或财务验证？", "risk_control", "valuation-analysis"),
+                        _l3("下一轮深化前必须跟踪哪些数据来确认或否定 S 曲线？", "monitorability", "target-recommendation-analysis"),
+                    ],
+                )
+            ],
+        },
+        supply_chain_layers=[
+            {"layer": "上游", "products": "基础技术、核心材料、关键设备、IP、数据、能源或原始能力", "players": "按具体行业由 source planner 填充", "value_flow": "提供 S 曲线扩张所需的基础输入。"},
+            {"layer": "中游", "products": "核心产品、BOM 子系统、平台、系统集成或工程交付", "players": "按具体行业由 source planner 填充", "value_flow": "把技术可行性转成可交付产品和订单。"},
+            {"layer": "下游", "products": "客户应用、部署场景、渠道、终端需求和 ROI 验证", "players": "按具体行业由 source planner 填充", "value_flow": "决定需求是否从试点进入早期加速。"},
+        ],
+        quality_rule="S-curve research must spend most effort on technology feasibility, future industry space, adoption inflection, and source-backed supply-demand direction; BOM is presentation-only until the user asks for deeper competition or chokepoint work",
+    )
 
 
 def memory_industry_playbook(goal: ResearchGoal) -> DomainPlaybook:
@@ -922,18 +1002,7 @@ def event_conference_playbook(goal: ResearchGoal) -> DomainPlaybook:
 
 
 def default_playbook(goal: ResearchGoal) -> DomainPlaybook:
-    q_map = goal.q_map()
-    return DomainPlaybook(
-        playbook_id="default",
-        research_type=goal.normalized_type(),
-        q_map=q_map,
-        mechanism_buckets=["driver", "value_capture", "risk", "target_mapping"],
-        l2_templates={
-            qid: [_l2(f"{qid}.1", title, "默认机制桶，需由专业提问 agent 按领域进一步细化。", [_l3(title, "target_ranking" if qid == "Q4" else "future_space", "investment-question-architect")])]
-            for qid, title in q_map.items()
-        },
-        quality_rule="custom research needs domain playbook before evidence collection",
-    )
+    return s_curve_opportunity_playbook(goal, "default")
 
 
 def _l2(node_id: str, question: str, why: str, l3_questions: list[dict[str, Any]]) -> QuestionTemplate:
