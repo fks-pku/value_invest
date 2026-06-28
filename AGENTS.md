@@ -2,6 +2,22 @@
 
 File-system-first equity research assistant. The canonical entry point is now one research-goal QA framework: user research goal -> execution plan -> adaptive QA drilldown up to five layers -> evidence-linked synthesis -> specific target observation list. Plain files are the source of truth; Python code validates contracts, scaffolds research objects, ingests public data, and creates LLM research drafts.
 
+## Immutable First Core Investment Logic
+
+This is the permanent first core of the research framework. Future framework iterations, report templates, playbooks, scoring rules, source workflows, and frontend rendering must preserve this core and may only add implementation detail around it:
+
+> Find an industry, theme, company, or asset entering a large and durable S-curve; identify the truly scarce, hard-to-substitute, monopoly-like, or chokepoint BOM/supply-chain nodes inside that curve; then select only those securities whose future growth and profit path are not yet fully priced by the market, whose earnings elasticity is large, and whose downside risks are controlled and monitorable.
+
+Operationally, every research run must optimize for proving or disproving this chain:
+
+1. Is the S-curve real, large, feasible, and near an adoption inflection rather than only a narrative?
+2. Which BOM, supply-chain, workflow, data, distribution, trust, capacity, regulatory, or ecosystem nodes are truly scarce or hard to bypass?
+3. Which companies can convert that scarcity into revenue, margin, free cash flow, or valuation rerating?
+4. Has the market already priced that growth path, or is there still mispricing?
+5. Is the payoff large enough and the risk small enough for the target to pass the four core gates: `scarcity_or_monopoly`, `mispricing`, `earnings_elasticity`, and `risk_control`?
+
+Broad theme exposure, large TAM claims, popular narratives, short-term price labels, convenient ticker availability, or surface-level growth are never sufficient. If the research cannot prove the S-curve, the scarce value-capture node, the underpricing, the earnings elasticity, and the risk-control condition with cutoff-visible evidence, the target must remain `watch_only` or `no_action`.
+
 ## Module Index
 
 | Module | Path | Purpose |
