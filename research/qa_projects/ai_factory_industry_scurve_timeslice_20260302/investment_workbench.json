@@ -1,0 +1,3157 @@
+{
+  "project_id": "ai_factory_industry_scurve_timeslice_20260302",
+  "as_of_date": "2026-03-28",
+  "run_mode": "historical_backtest",
+  "source_extractions": [
+    {
+      "extraction_id": "EXT-Q1_1_1",
+      "l3_question_id": "Q1.1.1",
+      "source_id": "SRC-NVDA-FY26-Q4",
+      "source_title": "NVIDIA FY2026 Q4 results",
+      "source_bucket": "evidence",
+      "parser": "financial-statement-analysis",
+      "parser_status": "completed",
+      "schema_fields": {
+        "claim": "NVIDIA Data Center revenue、Dell AI server orders/backlog、Vertiv orders/backlog、Micron HBM 价量协议同时出现，说明需求已在平台、系统、基础设施和内存四个层面财务化。",
+        "source_date": "2026-02-25",
+        "decision_relevance": "验证 AI factory 是否已从概念转入财务化阶段。"
+      },
+      "key_facts": [
+        "NVIDIA Data Center revenue、Dell AI server orders/backlog、Vertiv orders/backlog、Micron HBM 价量协议同时出现，说明需求已在平台、系统、基础设施和内存四个层面财务化。"
+      ],
+      "inference": "Q1.1.1 supports future_space under the cutoff-visible source pack.",
+      "support_refute_or_lead": "support",
+      "uncertainties": [
+        "需要继续验证客户侧 AI 服务收入、利用率和 ROI。"
+      ],
+      "follow_up_data": [],
+      "created_at": "2026-03-28T00:00:00Z"
+    },
+    {
+      "extraction_id": "EXT-Q1_1_2",
+      "l3_question_id": "Q1.1.2",
+      "source_id": "SRC-MSFT-FY26-Q2",
+      "source_title": "Microsoft FY2026 Q2 results",
+      "source_bucket": "evidence",
+      "parser": "financial-statement-analysis",
+      "parser_status": "completed",
+      "schema_fields": {
+        "claim": "Microsoft commercial RPO、Amazon PPE purchases、Alphabet 2026 capex、Meta capex guidance 和 Oracle RPO 都显示客户仍在前置投入。",
+        "source_date": "2026-01-28",
+        "decision_relevance": "判断 S 曲线下一段是否有客户预算支撑。"
+      },
+      "key_facts": [
+        "Microsoft commercial RPO、Amazon PPE purchases、Alphabet 2026 capex、Meta capex guidance 和 Oracle RPO 都显示客户仍在前置投入。"
+      ],
+      "inference": "Q1.1.2 supports future_space under the cutoff-visible source pack.",
+      "support_refute_or_lead": "support",
+      "uncertainties": [
+        "最大反证是 AI ROI 不达预期导致 capex 下修和 FCF 压力上升。"
+      ],
+      "follow_up_data": [],
+      "created_at": "2026-03-28T00:00:00Z"
+    },
+    {
+      "extraction_id": "EXT-Q1_2_1",
+      "l3_question_id": "Q1.2.1",
+      "source_id": "SRC-SA-GB200-BOM-2024",
+      "source_title": "SemiAnalysis GB200 Hardware Architecture Component Supply Chain and BOM",
+      "source_bucket": "research_report",
+      "parser": "industry-report-analysis",
+      "parser_status": "completed",
+      "schema_fields": {
+        "claim": "SemiAnalysis 的 GB200/rack-scale 拆法、Omdia 的 AI processor forecast，以及 GTC 2026 Vera Rubin 的七芯片/五类 rack-scale 系统描述都表明，GPU/ASIC 需求从单芯片扩展到机柜级 accelerator 平台。",
+        "source_date": "2024-07-17",
+        "decision_relevance": "判断当前 accelerator BOM 是否从单卡/单服务器升级到 rack-scale / cluster-scale 部署。"
+      },
+      "key_facts": [
+        "SemiAnalysis 的 GB200/rack-scale 拆法、Omdia 的 AI processor forecast，以及 GTC 2026 Vera Rubin 的七芯片/五类 rack-scale 系统描述都表明，GPU/ASIC 需求从单芯片扩展到机柜级 accelerator 平台。"
+      ],
+      "inference": "Q1.2.1 supports future_space under the cutoff-visible source pack.",
+      "support_refute_or_lead": "support",
+      "uncertainties": [
+        "需要继续验证每一代平台是否仍提高单柜 GPU/ASIC 数量、ASP、利用率和交付节奏；其他 BOM 的单位用量留到各自章节。"
+      ],
+      "follow_up_data": [],
+      "created_at": "2026-03-28T00:00:00Z"
+    },
+    {
+      "extraction_id": "EXT-Q1_2_2",
+      "l3_question_id": "Q1.2.2",
+      "source_id": "SRC-SA-COOLING-2025",
+      "source_title": "SemiAnalysis Datacenter Anatomy Part 2 Cooling Systems",
+      "source_bucket": "research_report",
+      "parser": "industry-report-analysis",
+      "parser_status": "completed",
+      "schema_fields": {
+        "claim": "高功率 rack 对 direct-to-chip liquid cooling、电力和现场工程提出更高要求；Vertiv backlog 和 Dell'Oro liquid-cooling forecast 说明该约束正在财务化。",
+        "source_date": "2025-02-13",
+        "decision_relevance": "避免只看芯片收入而忽视电力和冷却约束。"
+      },
+      "key_facts": [
+        "高功率 rack 对 direct-to-chip liquid cooling、电力和现场工程提出更高要求；Vertiv backlog 和 Dell'Oro liquid-cooling forecast 说明该约束正在财务化。"
+      ],
+      "inference": "Q1.2.2 supports disconfirming_risk_control under the cutoff-visible source pack.",
+      "support_refute_or_lead": "support",
+      "uncertainties": [
+        "若电力接入、建设许可或项目毛利恶化，AI factory 扩容会放缓。"
+      ],
+      "follow_up_data": [],
+      "created_at": "2026-03-28T00:00:00Z"
+    },
+    {
+      "extraction_id": "EXT-Q2_1_1",
+      "l3_question_id": "Q2.1.1",
+      "source_id": "SRC-OMDIA-AI-PROCESSORS-20250828",
+      "source_title": "Omdia AI Data Center Chip Market Forecast",
+      "source_bucket": "research_report",
+      "parser": "industry-report-analysis",
+      "parser_status": "completed",
+      "schema_fields": {
+        "claim": "Omdia 的 AI processor spending、Micron 的 HBM TAM、Dell'Oro 的液冷/AI networking forecast、LightCounting 的 optical demand 都指向多个 BOM 节点扩张。",
+        "source_date": "2025-08-28",
+        "decision_relevance": "决定是否继续投入 S 曲线研究。"
+      },
+      "key_facts": [
+        "Omdia 的 AI processor spending、Micron 的 HBM TAM、Dell'Oro 的液冷/AI networking forecast、LightCounting 的 optical demand 都指向多个 BOM 节点扩张。"
+      ],
+      "inference": "Q2.1.1 supports future_space under the cutoff-visible source pack.",
+      "support_refute_or_lead": "support",
+      "uncertainties": [
+        "这些拆法口径不同，不能相加；只能作为节点空间方向性证据。"
+      ],
+      "follow_up_data": [],
+      "created_at": "2026-03-28T00:00:00Z"
+    },
+    {
+      "extraction_id": "EXT-Q2_1_2",
+      "l3_question_id": "Q2.1.2",
+      "source_id": "SRC-NVDA-FY26-Q4",
+      "source_title": "NVIDIA FY2026 Q4 results",
+      "source_bucket": "evidence",
+      "parser": "industry-report-analysis",
+      "parser_status": "completed",
+      "schema_fields": {
+        "claim": "平台收入已巨大，但 GTC 2026 仍把下一代 AI factory 规格扩展到 Vera CPU、Rubin GPU、NVLink、BlueField、Spectrum、SuperNIC、Groq LPU、存储、网络和推理调度；同时 HBM、液冷、机柜连接和系统交付仍处在快速扩张和供给约束阶段，因此整体更像早期加速，而不是成熟渗透末期。",
+        "source_date": "2026-02-25",
+        "decision_relevance": "判断风险收益是否还在早期。"
+      },
+      "key_facts": [
+        "平台收入已巨大，但 GTC 2026 仍把下一代 AI factory 规格扩展到 Vera CPU、Rubin GPU、NVLink、BlueField、Spectrum、SuperNIC、Groq LPU、存储、网络和推理调度；同时 HBM、液冷、机柜连接和系统交付仍处在快速扩张和供给约束阶段，因此整体更像早期加速，而不是成熟渗透末期。"
+      ],
+      "inference": "Q2.1.2 supports future_space under the cutoff-visible source pack.",
+      "support_refute_or_lead": "support",
+      "uncertainties": [
+        "NVDA 等龙头可能已被市场高度定价，不能把行业阶段直接等同于个股赔率。"
+      ],
+      "follow_up_data": [],
+      "created_at": "2026-03-28T00:00:00Z"
+    },
+    {
+      "extraction_id": "EXT-Q2_2_1",
+      "l3_question_id": "Q2.2.1",
+      "source_id": "SRC-MSFT-FY26-Q2",
+      "source_title": "Microsoft FY2026 Q2 results",
+      "source_bucket": "evidence",
+      "parser": "financial-statement-analysis",
+      "parser_status": "completed",
+      "schema_fields": {
+        "claim": "云厂商 capex、Oracle/Microsoft RPO、Dell backlog、Vertiv backlog、HBM 价量协议共同说明客户已经把未来交付锁进资本开支和供应链。",
+        "source_date": "2026-01-28",
+        "decision_relevance": "判断 S 曲线是否只是短期订单扰动。"
+      },
+      "key_facts": [
+        "云厂商 capex、Oracle/Microsoft RPO、Dell backlog、Vertiv backlog、HBM 价量协议共同说明客户已经把未来交付锁进资本开支和供应链。"
+      ],
+      "inference": "Q2.2.1 supports evidence_quality under the cutoff-visible source pack.",
+      "support_refute_or_lead": "support",
+      "uncertainties": [
+        "路径依赖仍需用 cloud revenue、FCF 和利用率来验证。"
+      ],
+      "follow_up_data": [],
+      "created_at": "2026-03-28T00:00:00Z"
+    },
+    {
+      "extraction_id": "EXT-Q2_2_2",
+      "l3_question_id": "Q2.2.2",
+      "source_id": "SRC-AMZN-Q4-2025",
+      "source_title": "Amazon Q4 2025 results",
+      "source_bucket": "evidence",
+      "parser": "news-event-analysis",
+      "parser_status": "completed",
+      "schema_fields": {
+        "claim": "最重要反证是客户 capex/ROI 下修、HBM/先进封装供给过快释放、连接价格下行、系统商订单不转利润，以及电力液冷 backlog 低质量。",
+        "source_date": "2026-02-05",
+        "decision_relevance": "定义 S 曲线被证伪或降级的条件。"
+      },
+      "key_facts": [
+        "最重要反证是客户 capex/ROI 下修、HBM/先进封装供给过快释放、连接价格下行、系统商订单不转利润，以及电力液冷 backlog 低质量。"
+      ],
+      "inference": "Q2.2.2 supports risk_control under the cutoff-visible source pack.",
+      "support_refute_or_lead": "support",
+      "uncertainties": [
+        "需要每季跟踪 capex 指引、HBM ASP、backlog 转收入、gross margin 和 FCF。"
+      ],
+      "follow_up_data": [],
+      "created_at": "2026-03-28T00:00:00Z"
+    },
+    {
+      "extraction_id": "EXT-Q3_1_1",
+      "l3_question_id": "Q3.1.1",
+      "source_id": "SRC-SA-GB200-BOM-2024",
+      "source_title": "SemiAnalysis GB200 Hardware Architecture Component Supply Chain and BOM",
+      "source_bucket": "research_report",
+      "parser": "industry-report-analysis",
+      "parser_status": "completed",
+      "schema_fields": {
+        "claim": "本报告在行业概况的 BOM taxonomy 和组件链条中逐项列出：输入、产出、下游对象、代表公司和验证指标。",
+        "source_date": "2024-07-17",
+        "decision_relevance": "建立标的映射前的技术链地图。"
+      },
+      "key_facts": [
+        "本报告在行业概况的 BOM taxonomy 和组件链条中逐项列出：输入、产出、下游对象、代表公司和验证指标。"
+      ],
+      "inference": "Q3.1.1 supports evidence_quality under the cutoff-visible source pack.",
+      "support_refute_or_lead": "support",
+      "uncertainties": [
+        "仍需后续把每个节点拆成竞争格局和利润池，但不是本版主目标。"
+      ],
+      "follow_up_data": [],
+      "created_at": "2026-03-28T00:00:00Z"
+    },
+    {
+      "extraction_id": "EXT-Q3_1_2",
+      "l3_question_id": "Q3.1.2",
+      "source_id": "SRC-MU-FY26-Q1-PREPARED",
+      "source_title": "Micron FY2026 Q1 prepared remarks",
+      "source_bucket": "evidence",
+      "parser": "supply-chain-chokepoint-analysis",
+      "parser_status": "completed",
+      "schema_fields": {
+        "claim": "HBM、先进封装、电力液冷和高速连接最值得后续深挖；系统交付订单强但利润质量需过滤。",
+        "source_date": "2025-12-17",
+        "decision_relevance": "帮助后续选择优先下钻节点。"
+      },
+      "key_facts": [
+        "HBM、先进封装、电力液冷和高速连接最值得后续深挖；系统交付订单强但利润质量需过滤。"
+      ],
+      "inference": "Q3.1.2 supports chokepoint_strength under the cutoff-visible source pack.",
+      "support_refute_or_lead": "support",
+      "uncertainties": [
+        "还缺统一的产能、资格、价格和订单取消率数据。"
+      ],
+      "follow_up_data": [],
+      "created_at": "2026-03-28T00:00:00Z"
+    },
+    {
+      "extraction_id": "EXT-Q3_2_1",
+      "l3_question_id": "Q3.2.1",
+      "source_id": "SRC-VRT-Q4-2025",
+      "source_title": "Vertiv Q4 2025 results",
+      "source_bucket": "evidence",
+      "parser": "company-exposure-analysis",
+      "parser_status": "completed",
+      "schema_fields": {
+        "claim": "直接受益包括 VRT、SK hynix、NVDA、TSM、MU、ALAB、CRDO、MRVL、DELL、AVGO 等；云厂商本身更多是需求验证，不是本报告的主要上游卖铲标的。",
+        "source_date": "2026-02-11",
+        "decision_relevance": "过滤泛主题标的。"
+      },
+      "key_facts": [
+        "直接受益包括 VRT、SK hynix、NVDA、TSM、MU、ALAB、CRDO、MRVL、DELL、AVGO 等；云厂商本身更多是需求验证，不是本报告的主要上游卖铲标的。"
+      ],
+      "inference": "Q3.2.1 supports target_ranking under the cutoff-visible source pack.",
+      "support_refute_or_lead": "support",
+      "uncertainties": [
+        "下一版需要补估值和利润桥，避免只按产业链位置排序。"
+      ],
+      "follow_up_data": [],
+      "created_at": "2026-03-28T00:00:00Z"
+    },
+    {
+      "extraction_id": "EXT-Q4_1_1",
+      "l3_question_id": "Q4.1.1",
+      "source_id": "SRC-VRT-Q4-2025",
+      "source_title": "Vertiv Q4 2025 results",
+      "source_bucket": "evidence",
+      "parser": "target-recommendation-analysis",
+      "parser_status": "completed",
+      "schema_fields": {
+        "claim": "VRT、SK hynix、NVDA、TSM、MU、ALAB、CRDO、MRVL、DELL、AVGO、ANET、Samsung、SMCI 进入观察池，强度分层见标的推荐表。",
+        "source_date": "2026-02-11",
+        "decision_relevance": "生成具体证券观察名单。"
+      },
+      "key_facts": [
+        "VRT、SK hynix、NVDA、TSM、MU、ALAB、CRDO、MRVL、DELL、AVGO、ANET、Samsung、SMCI 进入观察池，强度分层见标的推荐表。"
+      ],
+      "inference": "Q4.1.1 supports target_ranking under the cutoff-visible source pack.",
+      "support_refute_or_lead": "support",
+      "uncertainties": [
+        "需要补同口径估值、隐含预期和财务弹性。"
+      ],
+      "follow_up_data": [],
+      "created_at": "2026-03-28T00:00:00Z"
+    },
+    {
+      "extraction_id": "EXT-Q4_1_2",
+      "l3_question_id": "Q4.1.2",
+      "source_id": "SRC-VRT-Q4-2025",
+      "source_title": "Vertiv Q4 2025 results",
+      "source_bucket": "evidence",
+      "parser": "target-recommendation-analysis",
+      "parser_status": "completed",
+      "schema_fields": {
+        "claim": "升级信号是订单/backlog 转高质量收入、HBM ASP 与资格持续、连接 design-in 放量、capex ROI 兑现；降级信号是 capex 下修、供给过剩、毛利恶化、客户集中风险暴露。",
+        "source_date": "2026-02-11",
+        "decision_relevance": "给出后续跟踪规则。"
+      },
+      "key_facts": [
+        "升级信号是订单/backlog 转高质量收入、HBM ASP 与资格持续、连接 design-in 放量、capex ROI 兑现；降级信号是 capex 下修、供给过剩、毛利恶化、客户集中风险暴露。"
+      ],
+      "inference": "Q4.1.2 supports monitorability under the cutoff-visible source pack.",
+      "support_refute_or_lead": "support",
+      "uncertainties": [
+        "需要每季自动填报关键变量表。"
+      ],
+      "follow_up_data": [],
+      "created_at": "2026-03-28T00:00:00Z"
+    }
+  ],
+  "leaf_source_reviews": [
+    {
+      "review_id": "REV-Q1_1_1",
+      "extraction_id": "EXT-Q1_1_1",
+      "l3_question_id": "Q1.1.1",
+      "source_id": "SRC-NVDA-FY26-Q4",
+      "gpt_verification_status": "verified_with_caveats",
+      "adopted_facts": [
+        "NVIDIA Data Center revenue、Dell AI server orders/backlog、Vertiv orders/backlog、Micron HBM 价量协议同时出现，说明需求已在平台、系统、基础设施和内存四个层面财务化。"
+      ],
+      "corrections": [],
+      "rejected_claims": [],
+      "final_bucket": "evidence",
+      "final_support_refute_or_lead": "support",
+      "allowed_to_strengthen_conclusion": true
+    },
+    {
+      "review_id": "REV-Q1_1_2",
+      "extraction_id": "EXT-Q1_1_2",
+      "l3_question_id": "Q1.1.2",
+      "source_id": "SRC-MSFT-FY26-Q2",
+      "gpt_verification_status": "verified_with_caveats",
+      "adopted_facts": [
+        "Microsoft commercial RPO、Amazon PPE purchases、Alphabet 2026 capex、Meta capex guidance 和 Oracle RPO 都显示客户仍在前置投入。"
+      ],
+      "corrections": [],
+      "rejected_claims": [],
+      "final_bucket": "evidence",
+      "final_support_refute_or_lead": "support",
+      "allowed_to_strengthen_conclusion": true
+    },
+    {
+      "review_id": "REV-Q1_2_1",
+      "extraction_id": "EXT-Q1_2_1",
+      "l3_question_id": "Q1.2.1",
+      "source_id": "SRC-SA-GB200-BOM-2024",
+      "gpt_verification_status": "verified_with_caveats",
+      "adopted_facts": [
+        "SemiAnalysis 的 GB200/rack-scale 拆法、Omdia 的 AI processor forecast，以及 GTC 2026 Vera Rubin 的七芯片/五类 rack-scale 系统描述都表明，GPU/ASIC 需求从单芯片扩展到机柜级 accelerator 平台。"
+      ],
+      "corrections": [],
+      "rejected_claims": [],
+      "final_bucket": "research_report",
+      "final_support_refute_or_lead": "support",
+      "allowed_to_strengthen_conclusion": true
+    },
+    {
+      "review_id": "REV-Q1_2_2",
+      "extraction_id": "EXT-Q1_2_2",
+      "l3_question_id": "Q1.2.2",
+      "source_id": "SRC-SA-COOLING-2025",
+      "gpt_verification_status": "verified_with_caveats",
+      "adopted_facts": [
+        "高功率 rack 对 direct-to-chip liquid cooling、电力和现场工程提出更高要求；Vertiv backlog 和 Dell'Oro liquid-cooling forecast 说明该约束正在财务化。"
+      ],
+      "corrections": [],
+      "rejected_claims": [],
+      "final_bucket": "research_report",
+      "final_support_refute_or_lead": "support",
+      "allowed_to_strengthen_conclusion": true
+    },
+    {
+      "review_id": "REV-Q2_1_1",
+      "extraction_id": "EXT-Q2_1_1",
+      "l3_question_id": "Q2.1.1",
+      "source_id": "SRC-OMDIA-AI-PROCESSORS-20250828",
+      "gpt_verification_status": "verified_with_caveats",
+      "adopted_facts": [
+        "Omdia 的 AI processor spending、Micron 的 HBM TAM、Dell'Oro 的液冷/AI networking forecast、LightCounting 的 optical demand 都指向多个 BOM 节点扩张。"
+      ],
+      "corrections": [],
+      "rejected_claims": [],
+      "final_bucket": "research_report",
+      "final_support_refute_or_lead": "support",
+      "allowed_to_strengthen_conclusion": true
+    },
+    {
+      "review_id": "REV-Q2_1_2",
+      "extraction_id": "EXT-Q2_1_2",
+      "l3_question_id": "Q2.1.2",
+      "source_id": "SRC-NVDA-FY26-Q4",
+      "gpt_verification_status": "verified_with_caveats",
+      "adopted_facts": [
+        "平台收入已巨大，但 GTC 2026 仍把下一代 AI factory 规格扩展到 Vera CPU、Rubin GPU、NVLink、BlueField、Spectrum、SuperNIC、Groq LPU、存储、网络和推理调度；同时 HBM、液冷、机柜连接和系统交付仍处在快速扩张和供给约束阶段，因此整体更像早期加速，而不是成熟渗透末期。"
+      ],
+      "corrections": [],
+      "rejected_claims": [],
+      "final_bucket": "evidence",
+      "final_support_refute_or_lead": "support",
+      "allowed_to_strengthen_conclusion": true
+    },
+    {
+      "review_id": "REV-Q2_2_1",
+      "extraction_id": "EXT-Q2_2_1",
+      "l3_question_id": "Q2.2.1",
+      "source_id": "SRC-MSFT-FY26-Q2",
+      "gpt_verification_status": "verified_with_caveats",
+      "adopted_facts": [
+        "云厂商 capex、Oracle/Microsoft RPO、Dell backlog、Vertiv backlog、HBM 价量协议共同说明客户已经把未来交付锁进资本开支和供应链。"
+      ],
+      "corrections": [],
+      "rejected_claims": [],
+      "final_bucket": "evidence",
+      "final_support_refute_or_lead": "support",
+      "allowed_to_strengthen_conclusion": true
+    },
+    {
+      "review_id": "REV-Q2_2_2",
+      "extraction_id": "EXT-Q2_2_2",
+      "l3_question_id": "Q2.2.2",
+      "source_id": "SRC-AMZN-Q4-2025",
+      "gpt_verification_status": "verified_with_caveats",
+      "adopted_facts": [
+        "最重要反证是客户 capex/ROI 下修、HBM/先进封装供给过快释放、连接价格下行、系统商订单不转利润，以及电力液冷 backlog 低质量。"
+      ],
+      "corrections": [],
+      "rejected_claims": [],
+      "final_bucket": "evidence",
+      "final_support_refute_or_lead": "support",
+      "allowed_to_strengthen_conclusion": true
+    },
+    {
+      "review_id": "REV-Q3_1_1",
+      "extraction_id": "EXT-Q3_1_1",
+      "l3_question_id": "Q3.1.1",
+      "source_id": "SRC-SA-GB200-BOM-2024",
+      "gpt_verification_status": "verified_with_caveats",
+      "adopted_facts": [
+        "本报告在行业概况的 BOM taxonomy 和组件链条中逐项列出：输入、产出、下游对象、代表公司和验证指标。"
+      ],
+      "corrections": [],
+      "rejected_claims": [],
+      "final_bucket": "research_report",
+      "final_support_refute_or_lead": "support",
+      "allowed_to_strengthen_conclusion": true
+    },
+    {
+      "review_id": "REV-Q3_1_2",
+      "extraction_id": "EXT-Q3_1_2",
+      "l3_question_id": "Q3.1.2",
+      "source_id": "SRC-MU-FY26-Q1-PREPARED",
+      "gpt_verification_status": "verified_with_caveats",
+      "adopted_facts": [
+        "HBM、先进封装、电力液冷和高速连接最值得后续深挖；系统交付订单强但利润质量需过滤。"
+      ],
+      "corrections": [],
+      "rejected_claims": [],
+      "final_bucket": "evidence",
+      "final_support_refute_or_lead": "support",
+      "allowed_to_strengthen_conclusion": true
+    },
+    {
+      "review_id": "REV-Q3_2_1",
+      "extraction_id": "EXT-Q3_2_1",
+      "l3_question_id": "Q3.2.1",
+      "source_id": "SRC-VRT-Q4-2025",
+      "gpt_verification_status": "verified_with_caveats",
+      "adopted_facts": [
+        "直接受益包括 VRT、SK hynix、NVDA、TSM、MU、ALAB、CRDO、MRVL、DELL、AVGO 等；云厂商本身更多是需求验证，不是本报告的主要上游卖铲标的。"
+      ],
+      "corrections": [],
+      "rejected_claims": [],
+      "final_bucket": "evidence",
+      "final_support_refute_or_lead": "support",
+      "allowed_to_strengthen_conclusion": true
+    },
+    {
+      "review_id": "REV-Q4_1_1",
+      "extraction_id": "EXT-Q4_1_1",
+      "l3_question_id": "Q4.1.1",
+      "source_id": "SRC-VRT-Q4-2025",
+      "gpt_verification_status": "verified_with_caveats",
+      "adopted_facts": [
+        "VRT、SK hynix、NVDA、TSM、MU、ALAB、CRDO、MRVL、DELL、AVGO、ANET、Samsung、SMCI 进入观察池，强度分层见标的推荐表。"
+      ],
+      "corrections": [],
+      "rejected_claims": [],
+      "final_bucket": "evidence",
+      "final_support_refute_or_lead": "support",
+      "allowed_to_strengthen_conclusion": true
+    },
+    {
+      "review_id": "REV-Q4_1_2",
+      "extraction_id": "EXT-Q4_1_2",
+      "l3_question_id": "Q4.1.2",
+      "source_id": "SRC-VRT-Q4-2025",
+      "gpt_verification_status": "verified_with_caveats",
+      "adopted_facts": [
+        "升级信号是订单/backlog 转高质量收入、HBM ASP 与资格持续、连接 design-in 放量、capex ROI 兑现；降级信号是 capex 下修、供给过剩、毛利恶化、客户集中风险暴露。"
+      ],
+      "corrections": [],
+      "rejected_claims": [],
+      "final_bucket": "evidence",
+      "final_support_refute_or_lead": "support",
+      "allowed_to_strengthen_conclusion": true
+    }
+  ],
+  "scoring_worksheet": [
+    {
+      "ticker": "VRT",
+      "name": "Vertiv",
+      "market": "USA",
+      "rank": 1,
+      "thesis_node": "电力 / 液冷 / 数据中心基础设施",
+      "action_state": "actionable_long",
+      "rationale": "AI 工厂物理瓶颈已经体现为 orders 和 backlog，空间大、财务兑现直接、反证可监控。",
+      "future_space": "中高：若 backlog 毛利和现金转化良好，订单弹性可进入盈利上修。",
+      "downgrade": "backlog 毛利低质量、云厂 capex 下修、项目交付延迟。",
+      "evidence_ids": [
+        "SRC-VRT-Q4-2025",
+        "SRC-DO-LIQUID-COOLING-20260108"
+      ],
+      "score": {
+        "action_state": "actionable_long",
+        "total_score": 4.02,
+        "thesis_confidence": 4.08,
+        "payoff_convexity": 3.82,
+        "score_dimensions": {
+          "scarcity_or_monopoly": 4.3,
+          "mispricing": 3.5,
+          "earnings_elasticity": 4.2,
+          "risk_control": 3.8
+        },
+        "score_components": {
+          "chokepoint_strength": 4.4,
+          "future_space": 4.2,
+          "valuation_odds": 3.4,
+          "evidence_quality": 4.2,
+          "disconfirming_risk_control": 3.7,
+          "monitorability": 4.1,
+          "payoff_convexity": 3.9
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength_source_pack",
+              "score": 4.4,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-VRT-Q4-2025",
+                "SRC-DO-LIQUID-COOLING-20260108"
+              ],
+              "review_ids": [],
+              "rationale": "chokepoint_strength based on cutoff-visible source pack."
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space_source_pack",
+              "score": 4.2,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-VRT-Q4-2025",
+                "SRC-DO-LIQUID-COOLING-20260108"
+              ],
+              "review_ids": [],
+              "rationale": "future_space based on cutoff-visible source pack."
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds_source_pack",
+              "score": 3.4,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-VRT-Q4-2025",
+                "SRC-DO-LIQUID-COOLING-20260108"
+              ],
+              "review_ids": [],
+              "rationale": "valuation_odds based on cutoff-visible source pack."
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality_source_pack",
+              "score": 4.2,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-VRT-Q4-2025",
+                "SRC-DO-LIQUID-COOLING-20260108"
+              ],
+              "review_ids": [],
+              "rationale": "evidence_quality based on cutoff-visible source pack."
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control_source_pack",
+              "score": 3.7,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-VRT-Q4-2025",
+                "SRC-DO-LIQUID-COOLING-20260108"
+              ],
+              "review_ids": [],
+              "rationale": "disconfirming_risk_control based on cutoff-visible source pack."
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability_source_pack",
+              "score": 4.1,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-VRT-Q4-2025",
+                "SRC-DO-LIQUID-COOLING-20260108"
+              ],
+              "review_ids": [],
+              "rationale": "monitorability based on cutoff-visible source pack."
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity_source_pack",
+              "score": 3.9,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-VRT-Q4-2025",
+                "SRC-DO-LIQUID-COOLING-20260108"
+              ],
+              "review_ids": [],
+              "rationale": "payoff_convexity based on cutoff-visible source pack."
+            }
+          ]
+        }
+      },
+      "thesis_kill_tests": [
+        {
+          "test": "核心订单、backlog、ASP 或客户资格是否在后续披露中恶化。",
+          "evidence_needed": "季度财报、订单/backlog、毛利、ASP、客户资格或 capex 指引。",
+          "downgrade_action": "若证据恶化，降为 watch_only 或 no_action。",
+          "source_plan": [
+            "SRC-VRT-Q4-2025",
+            "SRC-DO-LIQUID-COOLING-20260108"
+          ]
+        }
+      ]
+    },
+    {
+      "ticker": "000660.KS",
+      "name": "SK hynix",
+      "market": "Korea",
+      "rank": 2,
+      "thesis_node": "HBM / 高端内存",
+      "action_state": "actionable_long",
+      "rationale": "HBM 供应能力和 49% operating margin 显示硬约束已经变成利润桥。",
+      "future_space": "中高：HBM TAM 和 AI memory mix 支撑中期空间，但需继续验证 ASP 和客户资格。",
+      "downgrade": "HBM 供给过快释放、ASP 下行、客户资格落后。",
+      "evidence_ids": [
+        "SRC-SKHYNIX-FY25",
+        "SRC-MU-FY26-Q1-PREPARED",
+        "SRC-TF-HBM-PRICE-20240506"
+      ],
+      "score": {
+        "action_state": "actionable_long",
+        "total_score": 3.96,
+        "thesis_confidence": 4.03,
+        "payoff_convexity": 3.88,
+        "score_dimensions": {
+          "scarcity_or_monopoly": 4.5,
+          "mispricing": 3.3,
+          "earnings_elasticity": 4.2,
+          "risk_control": 3.5
+        },
+        "score_components": {
+          "chokepoint_strength": 4.6,
+          "future_space": 4.4,
+          "valuation_odds": 3.2,
+          "evidence_quality": 4.1,
+          "disconfirming_risk_control": 3.5,
+          "monitorability": 3.7,
+          "payoff_convexity": 4
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength_source_pack",
+              "score": 4.6,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-SKHYNIX-FY25",
+                "SRC-MU-FY26-Q1-PREPARED",
+                "SRC-TF-HBM-PRICE-20240506"
+              ],
+              "review_ids": [],
+              "rationale": "chokepoint_strength based on cutoff-visible source pack."
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space_source_pack",
+              "score": 4.4,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-SKHYNIX-FY25",
+                "SRC-MU-FY26-Q1-PREPARED",
+                "SRC-TF-HBM-PRICE-20240506"
+              ],
+              "review_ids": [],
+              "rationale": "future_space based on cutoff-visible source pack."
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds_source_pack",
+              "score": 3.2,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-SKHYNIX-FY25",
+                "SRC-MU-FY26-Q1-PREPARED",
+                "SRC-TF-HBM-PRICE-20240506"
+              ],
+              "review_ids": [],
+              "rationale": "valuation_odds based on cutoff-visible source pack."
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality_source_pack",
+              "score": 4.1,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-SKHYNIX-FY25",
+                "SRC-MU-FY26-Q1-PREPARED",
+                "SRC-TF-HBM-PRICE-20240506"
+              ],
+              "review_ids": [],
+              "rationale": "evidence_quality based on cutoff-visible source pack."
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control_source_pack",
+              "score": 3.5,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-SKHYNIX-FY25",
+                "SRC-MU-FY26-Q1-PREPARED",
+                "SRC-TF-HBM-PRICE-20240506"
+              ],
+              "review_ids": [],
+              "rationale": "disconfirming_risk_control based on cutoff-visible source pack."
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability_source_pack",
+              "score": 3.7,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-SKHYNIX-FY25",
+                "SRC-MU-FY26-Q1-PREPARED",
+                "SRC-TF-HBM-PRICE-20240506"
+              ],
+              "review_ids": [],
+              "rationale": "monitorability based on cutoff-visible source pack."
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity_source_pack",
+              "score": 4,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-SKHYNIX-FY25",
+                "SRC-MU-FY26-Q1-PREPARED",
+                "SRC-TF-HBM-PRICE-20240506"
+              ],
+              "review_ids": [],
+              "rationale": "payoff_convexity based on cutoff-visible source pack."
+            }
+          ]
+        }
+      },
+      "thesis_kill_tests": [
+        {
+          "test": "核心订单、backlog、ASP 或客户资格是否在后续披露中恶化。",
+          "evidence_needed": "季度财报、订单/backlog、毛利、ASP、客户资格或 capex 指引。",
+          "downgrade_action": "若证据恶化，降为 watch_only 或 no_action。",
+          "source_plan": [
+            "SRC-SKHYNIX-FY25",
+            "SRC-MU-FY26-Q1-PREPARED",
+            "SRC-TF-HBM-PRICE-20240506"
+          ]
+        }
+      ]
+    },
+    {
+      "ticker": "NVDA",
+      "name": "NVIDIA",
+      "market": "USA",
+      "rank": 3,
+      "thesis_node": "计算加速器 / GPU / ASIC",
+      "action_state": "watch_only",
+      "rationale": "平台控制最强，GTC 2026 继续把 AI factory 规格从 GPU 扩展到 rack/pod-scale 系统与推理调度层，需求和财务证据最硬，但市场最可能已经部分定价。",
+      "future_space": "高胜率但赔率需单独证明：只有盈利上修持续超过隐含预期时才上调。",
+      "downgrade": "capex ROI 下降、毛利率不及预期、ASIC 分流超预期。",
+      "evidence_ids": [
+        "SRC-NVDA-FY26-Q4",
+        "SRC-NVDA-GTC-VERA-RUBIN-20260316",
+        "SRC-NVDA-GTC-DYNAMO-20260316",
+        "SRC-OMDIA-AI-PROCESSORS-20250828"
+      ],
+      "score": {
+        "action_state": "watch_only",
+        "total_score": 3.72,
+        "thesis_confidence": 4.15,
+        "payoff_convexity": 3.35,
+        "score_dimensions": {
+          "scarcity_or_monopoly": 4.8,
+          "mispricing": 2.3,
+          "earnings_elasticity": 4.4,
+          "risk_control": 3.8
+        },
+        "score_components": {
+          "chokepoint_strength": 4.7,
+          "future_space": 4.5,
+          "valuation_odds": 2.4,
+          "evidence_quality": 4.7,
+          "disconfirming_risk_control": 3.7,
+          "monitorability": 4.2,
+          "payoff_convexity": 3.5
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength_source_pack",
+              "score": 4.7,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-NVDA-FY26-Q4",
+                "SRC-NVDA-GTC-VERA-RUBIN-20260316",
+                "SRC-NVDA-GTC-DYNAMO-20260316",
+                "SRC-OMDIA-AI-PROCESSORS-20250828"
+              ],
+              "review_ids": [],
+              "rationale": "chokepoint_strength based on cutoff-visible source pack."
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space_source_pack",
+              "score": 4.5,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-NVDA-FY26-Q4",
+                "SRC-NVDA-GTC-VERA-RUBIN-20260316",
+                "SRC-NVDA-GTC-DYNAMO-20260316",
+                "SRC-OMDIA-AI-PROCESSORS-20250828"
+              ],
+              "review_ids": [],
+              "rationale": "future_space based on cutoff-visible source pack."
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds_source_pack",
+              "score": 2.4,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-NVDA-FY26-Q4",
+                "SRC-NVDA-GTC-VERA-RUBIN-20260316",
+                "SRC-NVDA-GTC-DYNAMO-20260316",
+                "SRC-OMDIA-AI-PROCESSORS-20250828"
+              ],
+              "review_ids": [],
+              "rationale": "valuation_odds based on cutoff-visible source pack."
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality_source_pack",
+              "score": 4.7,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-NVDA-FY26-Q4",
+                "SRC-NVDA-GTC-VERA-RUBIN-20260316",
+                "SRC-NVDA-GTC-DYNAMO-20260316",
+                "SRC-OMDIA-AI-PROCESSORS-20250828"
+              ],
+              "review_ids": [],
+              "rationale": "evidence_quality based on cutoff-visible source pack."
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control_source_pack",
+              "score": 3.7,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-NVDA-FY26-Q4",
+                "SRC-NVDA-GTC-VERA-RUBIN-20260316",
+                "SRC-NVDA-GTC-DYNAMO-20260316",
+                "SRC-OMDIA-AI-PROCESSORS-20250828"
+              ],
+              "review_ids": [],
+              "rationale": "disconfirming_risk_control based on cutoff-visible source pack."
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability_source_pack",
+              "score": 4.2,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-NVDA-FY26-Q4",
+                "SRC-NVDA-GTC-VERA-RUBIN-20260316",
+                "SRC-NVDA-GTC-DYNAMO-20260316",
+                "SRC-OMDIA-AI-PROCESSORS-20250828"
+              ],
+              "review_ids": [],
+              "rationale": "monitorability based on cutoff-visible source pack."
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity_source_pack",
+              "score": 3.5,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-NVDA-FY26-Q4",
+                "SRC-NVDA-GTC-VERA-RUBIN-20260316",
+                "SRC-NVDA-GTC-DYNAMO-20260316",
+                "SRC-OMDIA-AI-PROCESSORS-20250828"
+              ],
+              "review_ids": [],
+              "rationale": "payoff_convexity based on cutoff-visible source pack."
+            }
+          ]
+        }
+      },
+      "thesis_kill_tests": []
+    },
+    {
+      "ticker": "TSM",
+      "name": "TSMC ADR",
+      "market": "USA/Taiwan",
+      "rank": 4,
+      "thesis_node": "先进制程与先进封装",
+      "action_state": "watch_only",
+      "rationale": "先进制程和先进封装是硬供给层，财务质量强。",
+      "future_space": "稳健空间较大，但高 capex 与地缘风险降低赔率弹性。",
+      "downgrade": "先进封装供给释放、capex 回报下行、地缘风险。",
+      "evidence_ids": [
+        "SRC-TSM-Q4-2025",
+        "SRC-SA-COWOS-HBM-2023"
+      ],
+      "score": {
+        "action_state": "watch_only",
+        "total_score": 3.46,
+        "thesis_confidence": 3.7,
+        "payoff_convexity": 3.12,
+        "score_dimensions": {
+          "scarcity_or_monopoly": 4,
+          "mispricing": 2.8,
+          "earnings_elasticity": 3.7,
+          "risk_control": 3.2
+        },
+        "score_components": {
+          "chokepoint_strength": 4.1,
+          "future_space": 4,
+          "valuation_odds": 2.9,
+          "evidence_quality": 4.2,
+          "disconfirming_risk_control": 3.2,
+          "monitorability": 3.4,
+          "payoff_convexity": 3.1
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength_source_pack",
+              "score": 4.1,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-TSM-Q4-2025",
+                "SRC-SA-COWOS-HBM-2023"
+              ],
+              "review_ids": [],
+              "rationale": "chokepoint_strength based on cutoff-visible source pack."
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space_source_pack",
+              "score": 4,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-TSM-Q4-2025",
+                "SRC-SA-COWOS-HBM-2023"
+              ],
+              "review_ids": [],
+              "rationale": "future_space based on cutoff-visible source pack."
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds_source_pack",
+              "score": 2.9,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-TSM-Q4-2025",
+                "SRC-SA-COWOS-HBM-2023"
+              ],
+              "review_ids": [],
+              "rationale": "valuation_odds based on cutoff-visible source pack."
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality_source_pack",
+              "score": 4.2,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-TSM-Q4-2025",
+                "SRC-SA-COWOS-HBM-2023"
+              ],
+              "review_ids": [],
+              "rationale": "evidence_quality based on cutoff-visible source pack."
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control_source_pack",
+              "score": 3.2,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-TSM-Q4-2025",
+                "SRC-SA-COWOS-HBM-2023"
+              ],
+              "review_ids": [],
+              "rationale": "disconfirming_risk_control based on cutoff-visible source pack."
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability_source_pack",
+              "score": 3.4,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-TSM-Q4-2025",
+                "SRC-SA-COWOS-HBM-2023"
+              ],
+              "review_ids": [],
+              "rationale": "monitorability based on cutoff-visible source pack."
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity_source_pack",
+              "score": 3.1,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-TSM-Q4-2025",
+                "SRC-SA-COWOS-HBM-2023"
+              ],
+              "review_ids": [],
+              "rationale": "payoff_convexity based on cutoff-visible source pack."
+            }
+          ]
+        }
+      },
+      "thesis_kill_tests": []
+    },
+    {
+      "ticker": "MU",
+      "name": "Micron",
+      "market": "USA",
+      "rank": 5,
+      "thesis_node": "HBM / 高端内存",
+      "action_state": "watch_only",
+      "rationale": "HBM TAM、价量协议和云内存利润改善带来高弹性。",
+      "future_space": "赔率可能高于成熟龙头，但相对 SK hynix 的资格和份额仍待验证。",
+      "downgrade": "HBM 份额不及预期、ASP/DRAM 周期反转。",
+      "evidence_ids": [
+        "SRC-MU-FY26-Q1",
+        "SRC-MU-FY26-Q1-PREPARED"
+      ],
+      "score": {
+        "action_state": "watch_only",
+        "total_score": 3.63,
+        "thesis_confidence": 3.74,
+        "payoff_convexity": 4.08,
+        "score_dimensions": {
+          "scarcity_or_monopoly": 3.9,
+          "mispricing": 3.2,
+          "earnings_elasticity": 4.4,
+          "risk_control": 3.1
+        },
+        "score_components": {
+          "chokepoint_strength": 4,
+          "future_space": 4.4,
+          "valuation_odds": 3.1,
+          "evidence_quality": 3.8,
+          "disconfirming_risk_control": 3,
+          "monitorability": 3.5,
+          "payoff_convexity": 4.2
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength_source_pack",
+              "score": 4,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-MU-FY26-Q1",
+                "SRC-MU-FY26-Q1-PREPARED"
+              ],
+              "review_ids": [],
+              "rationale": "chokepoint_strength based on cutoff-visible source pack."
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space_source_pack",
+              "score": 4.4,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-MU-FY26-Q1",
+                "SRC-MU-FY26-Q1-PREPARED"
+              ],
+              "review_ids": [],
+              "rationale": "future_space based on cutoff-visible source pack."
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds_source_pack",
+              "score": 3.1,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-MU-FY26-Q1",
+                "SRC-MU-FY26-Q1-PREPARED"
+              ],
+              "review_ids": [],
+              "rationale": "valuation_odds based on cutoff-visible source pack."
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality_source_pack",
+              "score": 3.8,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-MU-FY26-Q1",
+                "SRC-MU-FY26-Q1-PREPARED"
+              ],
+              "review_ids": [],
+              "rationale": "evidence_quality based on cutoff-visible source pack."
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control_source_pack",
+              "score": 3,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-MU-FY26-Q1",
+                "SRC-MU-FY26-Q1-PREPARED"
+              ],
+              "review_ids": [],
+              "rationale": "disconfirming_risk_control based on cutoff-visible source pack."
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability_source_pack",
+              "score": 3.5,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-MU-FY26-Q1",
+                "SRC-MU-FY26-Q1-PREPARED"
+              ],
+              "review_ids": [],
+              "rationale": "monitorability based on cutoff-visible source pack."
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity_source_pack",
+              "score": 4.2,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-MU-FY26-Q1",
+                "SRC-MU-FY26-Q1-PREPARED"
+              ],
+              "review_ids": [],
+              "rationale": "payoff_convexity based on cutoff-visible source pack."
+            }
+          ]
+        }
+      },
+      "thesis_kill_tests": []
+    },
+    {
+      "ticker": "ALAB",
+      "name": "Astera Labs",
+      "market": "USA",
+      "rank": 6,
+      "thesis_node": "高速连接与 AI 网络",
+      "action_state": "watch_only",
+      "rationale": "机柜级连接收入高增，直接受益 rack-scale AI。",
+      "future_space": "高弹性但高估值/客户集中，必须用 design-in 和毛利验证。",
+      "downgrade": "大客户订单延后、平台自研替代、估值压缩。",
+      "evidence_ids": [
+        "SRC-ALAB-Q4-2025"
+      ],
+      "score": {
+        "action_state": "watch_only",
+        "total_score": 3.23,
+        "thesis_confidence": 3.39,
+        "payoff_convexity": 4.13,
+        "score_dimensions": {
+          "scarcity_or_monopoly": 3.8,
+          "mispricing": 2.2,
+          "earnings_elasticity": 4.5,
+          "risk_control": 2.8
+        },
+        "score_components": {
+          "chokepoint_strength": 3.8,
+          "future_space": 4,
+          "valuation_odds": 2.2,
+          "evidence_quality": 3.5,
+          "disconfirming_risk_control": 2.7,
+          "monitorability": 3.4,
+          "payoff_convexity": 4.4
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength_source_pack",
+              "score": 3.8,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-ALAB-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "chokepoint_strength based on cutoff-visible source pack."
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space_source_pack",
+              "score": 4,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-ALAB-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "future_space based on cutoff-visible source pack."
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds_source_pack",
+              "score": 2.2,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-ALAB-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "valuation_odds based on cutoff-visible source pack."
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality_source_pack",
+              "score": 3.5,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-ALAB-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "evidence_quality based on cutoff-visible source pack."
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control_source_pack",
+              "score": 2.7,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-ALAB-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "disconfirming_risk_control based on cutoff-visible source pack."
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability_source_pack",
+              "score": 3.4,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-ALAB-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "monitorability based on cutoff-visible source pack."
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity_source_pack",
+              "score": 4.4,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-ALAB-Q4-2025"
+              ],
+              "review_ids": [],
+              "rationale": "payoff_convexity based on cutoff-visible source pack."
+            }
+          ]
+        }
+      },
+      "thesis_kill_tests": []
+    },
+    {
+      "ticker": "CRDO",
+      "name": "Credo",
+      "market": "USA",
+      "rank": 7,
+      "thesis_node": "高速连接与 AI 网络",
+      "action_state": "watch_only",
+      "rationale": "AEC/光互联需求强，收入高弹性。",
+      "future_space": "弹性大但波动也大，客户集中和价格压力是关键。",
+      "downgrade": "客户订单延迟、价格下行、毛利不达预期。",
+      "evidence_ids": [
+        "SRC-CRDO-FY26-Q3",
+        "SRC-LC-PAM4-DSP-20260226"
+      ],
+      "score": {
+        "action_state": "watch_only",
+        "total_score": 3.24,
+        "thesis_confidence": 3.32,
+        "payoff_convexity": 4.05,
+        "score_dimensions": {
+          "scarcity_or_monopoly": 3.6,
+          "mispricing": 2.4,
+          "earnings_elasticity": 4.4,
+          "risk_control": 2.7
+        },
+        "score_components": {
+          "chokepoint_strength": 3.6,
+          "future_space": 4,
+          "valuation_odds": 2.5,
+          "evidence_quality": 3.4,
+          "disconfirming_risk_control": 2.7,
+          "monitorability": 3.3,
+          "payoff_convexity": 4.3
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength_source_pack",
+              "score": 3.6,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-CRDO-FY26-Q3",
+                "SRC-LC-PAM4-DSP-20260226"
+              ],
+              "review_ids": [],
+              "rationale": "chokepoint_strength based on cutoff-visible source pack."
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space_source_pack",
+              "score": 4,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-CRDO-FY26-Q3",
+                "SRC-LC-PAM4-DSP-20260226"
+              ],
+              "review_ids": [],
+              "rationale": "future_space based on cutoff-visible source pack."
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds_source_pack",
+              "score": 2.5,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-CRDO-FY26-Q3",
+                "SRC-LC-PAM4-DSP-20260226"
+              ],
+              "review_ids": [],
+              "rationale": "valuation_odds based on cutoff-visible source pack."
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality_source_pack",
+              "score": 3.4,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-CRDO-FY26-Q3",
+                "SRC-LC-PAM4-DSP-20260226"
+              ],
+              "review_ids": [],
+              "rationale": "evidence_quality based on cutoff-visible source pack."
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control_source_pack",
+              "score": 2.7,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-CRDO-FY26-Q3",
+                "SRC-LC-PAM4-DSP-20260226"
+              ],
+              "review_ids": [],
+              "rationale": "disconfirming_risk_control based on cutoff-visible source pack."
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability_source_pack",
+              "score": 3.3,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-CRDO-FY26-Q3",
+                "SRC-LC-PAM4-DSP-20260226"
+              ],
+              "review_ids": [],
+              "rationale": "monitorability based on cutoff-visible source pack."
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity_source_pack",
+              "score": 4.3,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-CRDO-FY26-Q3",
+                "SRC-LC-PAM4-DSP-20260226"
+              ],
+              "review_ids": [],
+              "rationale": "payoff_convexity based on cutoff-visible source pack."
+            }
+          ]
+        }
+      },
+      "thesis_kill_tests": []
+    },
+    {
+      "ticker": "MRVL",
+      "name": "Marvell Technology",
+      "market": "USA",
+      "rank": 8,
+      "thesis_node": "custom silicon / 电光互联",
+      "action_state": "watch_only",
+      "rationale": "custom products 与 electro-optics 已进入 AI data-center 收入口径。",
+      "future_space": "中高弹性，但定制项目量产节奏和客户集中需要折价。",
+      "downgrade": "大客户项目延期、客户自研替代、毛利不达预期。",
+      "evidence_ids": [
+        "SRC-MRVL-FY26-Q3"
+      ],
+      "score": {
+        "action_state": "watch_only",
+        "total_score": 3.28,
+        "thesis_confidence": 3.31,
+        "payoff_convexity": 3.76,
+        "score_dimensions": {
+          "scarcity_or_monopoly": 3.5,
+          "mispricing": 2.6,
+          "earnings_elasticity": 4,
+          "risk_control": 2.9
+        },
+        "score_components": {
+          "chokepoint_strength": 3.5,
+          "future_space": 3.8,
+          "valuation_odds": 2.7,
+          "evidence_quality": 3.4,
+          "disconfirming_risk_control": 2.9,
+          "monitorability": 3.2,
+          "payoff_convexity": 3.9
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength_source_pack",
+              "score": 3.5,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-MRVL-FY26-Q3"
+              ],
+              "review_ids": [],
+              "rationale": "chokepoint_strength based on cutoff-visible source pack."
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space_source_pack",
+              "score": 3.8,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-MRVL-FY26-Q3"
+              ],
+              "review_ids": [],
+              "rationale": "future_space based on cutoff-visible source pack."
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds_source_pack",
+              "score": 2.7,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-MRVL-FY26-Q3"
+              ],
+              "review_ids": [],
+              "rationale": "valuation_odds based on cutoff-visible source pack."
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality_source_pack",
+              "score": 3.4,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-MRVL-FY26-Q3"
+              ],
+              "review_ids": [],
+              "rationale": "evidence_quality based on cutoff-visible source pack."
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control_source_pack",
+              "score": 2.9,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-MRVL-FY26-Q3"
+              ],
+              "review_ids": [],
+              "rationale": "disconfirming_risk_control based on cutoff-visible source pack."
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability_source_pack",
+              "score": 3.2,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-MRVL-FY26-Q3"
+              ],
+              "review_ids": [],
+              "rationale": "monitorability based on cutoff-visible source pack."
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity_source_pack",
+              "score": 3.9,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-MRVL-FY26-Q3"
+              ],
+              "review_ids": [],
+              "rationale": "payoff_convexity based on cutoff-visible source pack."
+            }
+          ]
+        }
+      },
+      "thesis_kill_tests": []
+    },
+    {
+      "ticker": "DELL",
+      "name": "Dell Technologies",
+      "market": "USA",
+      "rank": 9,
+      "thesis_node": "服务器 / 机柜系统交付",
+      "action_state": "watch_only",
+      "rationale": "AI server orders/backlog 强，能验证 AI factory 进入系统交付阶段。",
+      "future_space": "空间大但利润池未必厚，重点看毛利和现金流。",
+      "downgrade": "订单增长但利润率或现金流较弱、库存上升。",
+      "evidence_ids": [
+        "SRC-DELL-FY26-Q4"
+      ],
+      "score": {
+        "action_state": "watch_only",
+        "total_score": 3.16,
+        "thesis_confidence": 3.25,
+        "payoff_convexity": 3.24,
+        "score_dimensions": {
+          "scarcity_or_monopoly": 2.9,
+          "mispricing": 2.8,
+          "earnings_elasticity": 3.7,
+          "risk_control": 3
+        },
+        "score_components": {
+          "chokepoint_strength": 2.8,
+          "future_space": 3.7,
+          "valuation_odds": 2.9,
+          "evidence_quality": 3.7,
+          "disconfirming_risk_control": 3,
+          "monitorability": 3.5,
+          "payoff_convexity": 3.3
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength_source_pack",
+              "score": 2.8,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-DELL-FY26-Q4"
+              ],
+              "review_ids": [],
+              "rationale": "chokepoint_strength based on cutoff-visible source pack."
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space_source_pack",
+              "score": 3.7,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-DELL-FY26-Q4"
+              ],
+              "review_ids": [],
+              "rationale": "future_space based on cutoff-visible source pack."
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds_source_pack",
+              "score": 2.9,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-DELL-FY26-Q4"
+              ],
+              "review_ids": [],
+              "rationale": "valuation_odds based on cutoff-visible source pack."
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality_source_pack",
+              "score": 3.7,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-DELL-FY26-Q4"
+              ],
+              "review_ids": [],
+              "rationale": "evidence_quality based on cutoff-visible source pack."
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control_source_pack",
+              "score": 3,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-DELL-FY26-Q4"
+              ],
+              "review_ids": [],
+              "rationale": "disconfirming_risk_control based on cutoff-visible source pack."
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability_source_pack",
+              "score": 3.5,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-DELL-FY26-Q4"
+              ],
+              "review_ids": [],
+              "rationale": "monitorability based on cutoff-visible source pack."
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity_source_pack",
+              "score": 3.3,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-DELL-FY26-Q4"
+              ],
+              "review_ids": [],
+              "rationale": "payoff_convexity based on cutoff-visible source pack."
+            }
+          ]
+        }
+      },
+      "thesis_kill_tests": []
+    },
+    {
+      "ticker": "SMCI",
+      "name": "Supermicro",
+      "market": "USA",
+      "rank": 10,
+      "thesis_node": "服务器 / 机柜系统交付",
+      "action_state": "no_action",
+      "rationale": "主题弹性存在，但执行、治理和毛利风险压制风险控制。",
+      "future_space": "只适合验证系统交付 beta，不适合在当前证据下提高强度。",
+      "downgrade": "治理风险、毛利恶化、现金转化差。",
+      "evidence_ids": [
+        "SRC-SMCI-FY26-Q2"
+      ],
+      "score": {
+        "action_state": "no_action",
+        "total_score": 2.56,
+        "thesis_confidence": 2.54,
+        "payoff_convexity": 2.98,
+        "score_dimensions": {
+          "scarcity_or_monopoly": 2.4,
+          "mispricing": 2,
+          "earnings_elasticity": 3.5,
+          "risk_control": 1.9
+        },
+        "score_components": {
+          "chokepoint_strength": 2.3,
+          "future_space": 3.4,
+          "valuation_odds": 2,
+          "evidence_quality": 2.7,
+          "disconfirming_risk_control": 1.8,
+          "monitorability": 2.4,
+          "payoff_convexity": 3.1
+        },
+        "score_subcomponents": {
+          "chokepoint_strength": [
+            {
+              "name": "chokepoint_strength_source_pack",
+              "score": 2.3,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-SMCI-FY26-Q2"
+              ],
+              "review_ids": [],
+              "rationale": "chokepoint_strength based on cutoff-visible source pack."
+            }
+          ],
+          "future_space": [
+            {
+              "name": "future_space_source_pack",
+              "score": 3.4,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-SMCI-FY26-Q2"
+              ],
+              "review_ids": [],
+              "rationale": "future_space based on cutoff-visible source pack."
+            }
+          ],
+          "valuation_odds": [
+            {
+              "name": "valuation_odds_source_pack",
+              "score": 2,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-SMCI-FY26-Q2"
+              ],
+              "review_ids": [],
+              "rationale": "valuation_odds based on cutoff-visible source pack."
+            }
+          ],
+          "evidence_quality": [
+            {
+              "name": "evidence_quality_source_pack",
+              "score": 2.7,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-SMCI-FY26-Q2"
+              ],
+              "review_ids": [],
+              "rationale": "evidence_quality based on cutoff-visible source pack."
+            }
+          ],
+          "disconfirming_risk_control": [
+            {
+              "name": "disconfirming_risk_control_source_pack",
+              "score": 1.8,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-SMCI-FY26-Q2"
+              ],
+              "review_ids": [],
+              "rationale": "disconfirming_risk_control based on cutoff-visible source pack."
+            }
+          ],
+          "monitorability": [
+            {
+              "name": "monitorability_source_pack",
+              "score": 2.4,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-SMCI-FY26-Q2"
+              ],
+              "review_ids": [],
+              "rationale": "monitorability based on cutoff-visible source pack."
+            }
+          ],
+          "payoff_convexity": [
+            {
+              "name": "payoff_convexity_source_pack",
+              "score": 3.1,
+              "weight": 1,
+              "evidence_ids": [
+                "SRC-SMCI-FY26-Q2"
+              ],
+              "review_ids": [],
+              "rationale": "payoff_convexity based on cutoff-visible source pack."
+            }
+          ]
+        }
+      },
+      "thesis_kill_tests": []
+    }
+  ],
+  "frozen_recommendations": {
+    "as_of_date": "2026-03-28",
+    "label_status": "unattached",
+    "targets": [
+      {
+        "ticker": "VRT",
+        "name": "Vertiv",
+        "market": "USA",
+        "rank": 1,
+        "thesis_node": "电力 / 液冷 / 数据中心基础设施",
+        "action_state": "actionable_long",
+        "rationale": "AI 工厂物理瓶颈已经体现为 orders 和 backlog，空间大、财务兑现直接、反证可监控。",
+        "future_space": "中高：若 backlog 毛利和现金转化良好，订单弹性可进入盈利上修。",
+        "downgrade": "backlog 毛利低质量、云厂 capex 下修、项目交付延迟。",
+        "evidence_ids": [
+          "SRC-VRT-Q4-2025",
+          "SRC-DO-LIQUID-COOLING-20260108"
+        ],
+        "score": {
+          "action_state": "actionable_long",
+          "total_score": 4.02,
+          "thesis_confidence": 4.08,
+          "payoff_convexity": 3.82,
+          "score_dimensions": {
+            "scarcity_or_monopoly": 4.3,
+            "mispricing": 3.5,
+            "earnings_elasticity": 4.2,
+            "risk_control": 3.8
+          },
+          "score_components": {
+            "chokepoint_strength": 4.4,
+            "future_space": 4.2,
+            "valuation_odds": 3.4,
+            "evidence_quality": 4.2,
+            "disconfirming_risk_control": 3.7,
+            "monitorability": 4.1,
+            "payoff_convexity": 3.9
+          },
+          "score_subcomponents": {
+            "chokepoint_strength": [
+              {
+                "name": "chokepoint_strength_source_pack",
+                "score": 4.4,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-VRT-Q4-2025",
+                  "SRC-DO-LIQUID-COOLING-20260108"
+                ],
+                "review_ids": [],
+                "rationale": "chokepoint_strength based on cutoff-visible source pack."
+              }
+            ],
+            "future_space": [
+              {
+                "name": "future_space_source_pack",
+                "score": 4.2,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-VRT-Q4-2025",
+                  "SRC-DO-LIQUID-COOLING-20260108"
+                ],
+                "review_ids": [],
+                "rationale": "future_space based on cutoff-visible source pack."
+              }
+            ],
+            "valuation_odds": [
+              {
+                "name": "valuation_odds_source_pack",
+                "score": 3.4,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-VRT-Q4-2025",
+                  "SRC-DO-LIQUID-COOLING-20260108"
+                ],
+                "review_ids": [],
+                "rationale": "valuation_odds based on cutoff-visible source pack."
+              }
+            ],
+            "evidence_quality": [
+              {
+                "name": "evidence_quality_source_pack",
+                "score": 4.2,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-VRT-Q4-2025",
+                  "SRC-DO-LIQUID-COOLING-20260108"
+                ],
+                "review_ids": [],
+                "rationale": "evidence_quality based on cutoff-visible source pack."
+              }
+            ],
+            "disconfirming_risk_control": [
+              {
+                "name": "disconfirming_risk_control_source_pack",
+                "score": 3.7,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-VRT-Q4-2025",
+                  "SRC-DO-LIQUID-COOLING-20260108"
+                ],
+                "review_ids": [],
+                "rationale": "disconfirming_risk_control based on cutoff-visible source pack."
+              }
+            ],
+            "monitorability": [
+              {
+                "name": "monitorability_source_pack",
+                "score": 4.1,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-VRT-Q4-2025",
+                  "SRC-DO-LIQUID-COOLING-20260108"
+                ],
+                "review_ids": [],
+                "rationale": "monitorability based on cutoff-visible source pack."
+              }
+            ],
+            "payoff_convexity": [
+              {
+                "name": "payoff_convexity_source_pack",
+                "score": 3.9,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-VRT-Q4-2025",
+                  "SRC-DO-LIQUID-COOLING-20260108"
+                ],
+                "review_ids": [],
+                "rationale": "payoff_convexity based on cutoff-visible source pack."
+              }
+            ]
+          }
+        },
+        "thesis_kill_tests": [
+          {
+            "test": "核心订单、backlog、ASP 或客户资格是否在后续披露中恶化。",
+            "evidence_needed": "季度财报、订单/backlog、毛利、ASP、客户资格或 capex 指引。",
+            "downgrade_action": "若证据恶化，降为 watch_only 或 no_action。",
+            "source_plan": [
+              "SRC-VRT-Q4-2025",
+              "SRC-DO-LIQUID-COOLING-20260108"
+            ]
+          }
+        ]
+      },
+      {
+        "ticker": "000660.KS",
+        "name": "SK hynix",
+        "market": "Korea",
+        "rank": 2,
+        "thesis_node": "HBM / 高端内存",
+        "action_state": "actionable_long",
+        "rationale": "HBM 供应能力和 49% operating margin 显示硬约束已经变成利润桥。",
+        "future_space": "中高：HBM TAM 和 AI memory mix 支撑中期空间，但需继续验证 ASP 和客户资格。",
+        "downgrade": "HBM 供给过快释放、ASP 下行、客户资格落后。",
+        "evidence_ids": [
+          "SRC-SKHYNIX-FY25",
+          "SRC-MU-FY26-Q1-PREPARED",
+          "SRC-TF-HBM-PRICE-20240506"
+        ],
+        "score": {
+          "action_state": "actionable_long",
+          "total_score": 3.96,
+          "thesis_confidence": 4.03,
+          "payoff_convexity": 3.88,
+          "score_dimensions": {
+            "scarcity_or_monopoly": 4.5,
+            "mispricing": 3.3,
+            "earnings_elasticity": 4.2,
+            "risk_control": 3.5
+          },
+          "score_components": {
+            "chokepoint_strength": 4.6,
+            "future_space": 4.4,
+            "valuation_odds": 3.2,
+            "evidence_quality": 4.1,
+            "disconfirming_risk_control": 3.5,
+            "monitorability": 3.7,
+            "payoff_convexity": 4
+          },
+          "score_subcomponents": {
+            "chokepoint_strength": [
+              {
+                "name": "chokepoint_strength_source_pack",
+                "score": 4.6,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-SKHYNIX-FY25",
+                  "SRC-MU-FY26-Q1-PREPARED",
+                  "SRC-TF-HBM-PRICE-20240506"
+                ],
+                "review_ids": [],
+                "rationale": "chokepoint_strength based on cutoff-visible source pack."
+              }
+            ],
+            "future_space": [
+              {
+                "name": "future_space_source_pack",
+                "score": 4.4,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-SKHYNIX-FY25",
+                  "SRC-MU-FY26-Q1-PREPARED",
+                  "SRC-TF-HBM-PRICE-20240506"
+                ],
+                "review_ids": [],
+                "rationale": "future_space based on cutoff-visible source pack."
+              }
+            ],
+            "valuation_odds": [
+              {
+                "name": "valuation_odds_source_pack",
+                "score": 3.2,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-SKHYNIX-FY25",
+                  "SRC-MU-FY26-Q1-PREPARED",
+                  "SRC-TF-HBM-PRICE-20240506"
+                ],
+                "review_ids": [],
+                "rationale": "valuation_odds based on cutoff-visible source pack."
+              }
+            ],
+            "evidence_quality": [
+              {
+                "name": "evidence_quality_source_pack",
+                "score": 4.1,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-SKHYNIX-FY25",
+                  "SRC-MU-FY26-Q1-PREPARED",
+                  "SRC-TF-HBM-PRICE-20240506"
+                ],
+                "review_ids": [],
+                "rationale": "evidence_quality based on cutoff-visible source pack."
+              }
+            ],
+            "disconfirming_risk_control": [
+              {
+                "name": "disconfirming_risk_control_source_pack",
+                "score": 3.5,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-SKHYNIX-FY25",
+                  "SRC-MU-FY26-Q1-PREPARED",
+                  "SRC-TF-HBM-PRICE-20240506"
+                ],
+                "review_ids": [],
+                "rationale": "disconfirming_risk_control based on cutoff-visible source pack."
+              }
+            ],
+            "monitorability": [
+              {
+                "name": "monitorability_source_pack",
+                "score": 3.7,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-SKHYNIX-FY25",
+                  "SRC-MU-FY26-Q1-PREPARED",
+                  "SRC-TF-HBM-PRICE-20240506"
+                ],
+                "review_ids": [],
+                "rationale": "monitorability based on cutoff-visible source pack."
+              }
+            ],
+            "payoff_convexity": [
+              {
+                "name": "payoff_convexity_source_pack",
+                "score": 4,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-SKHYNIX-FY25",
+                  "SRC-MU-FY26-Q1-PREPARED",
+                  "SRC-TF-HBM-PRICE-20240506"
+                ],
+                "review_ids": [],
+                "rationale": "payoff_convexity based on cutoff-visible source pack."
+              }
+            ]
+          }
+        },
+        "thesis_kill_tests": [
+          {
+            "test": "核心订单、backlog、ASP 或客户资格是否在后续披露中恶化。",
+            "evidence_needed": "季度财报、订单/backlog、毛利、ASP、客户资格或 capex 指引。",
+            "downgrade_action": "若证据恶化，降为 watch_only 或 no_action。",
+            "source_plan": [
+              "SRC-SKHYNIX-FY25",
+              "SRC-MU-FY26-Q1-PREPARED",
+              "SRC-TF-HBM-PRICE-20240506"
+            ]
+          }
+        ]
+      },
+      {
+        "ticker": "NVDA",
+        "name": "NVIDIA",
+        "market": "USA",
+        "rank": 3,
+        "thesis_node": "计算加速器 / GPU / ASIC",
+        "action_state": "watch_only",
+        "rationale": "平台控制最强，GTC 2026 继续把 AI factory 规格从 GPU 扩展到 rack/pod-scale 系统与推理调度层，需求和财务证据最硬，但市场最可能已经部分定价。",
+        "future_space": "高胜率但赔率需单独证明：只有盈利上修持续超过隐含预期时才上调。",
+        "downgrade": "capex ROI 下降、毛利率不及预期、ASIC 分流超预期。",
+        "evidence_ids": [
+          "SRC-NVDA-FY26-Q4",
+          "SRC-NVDA-GTC-VERA-RUBIN-20260316",
+          "SRC-NVDA-GTC-DYNAMO-20260316",
+          "SRC-OMDIA-AI-PROCESSORS-20250828"
+        ],
+        "score": {
+          "action_state": "watch_only",
+          "total_score": 3.72,
+          "thesis_confidence": 4.15,
+          "payoff_convexity": 3.35,
+          "score_dimensions": {
+            "scarcity_or_monopoly": 4.8,
+            "mispricing": 2.3,
+            "earnings_elasticity": 4.4,
+            "risk_control": 3.8
+          },
+          "score_components": {
+            "chokepoint_strength": 4.7,
+            "future_space": 4.5,
+            "valuation_odds": 2.4,
+            "evidence_quality": 4.7,
+            "disconfirming_risk_control": 3.7,
+            "monitorability": 4.2,
+            "payoff_convexity": 3.5
+          },
+          "score_subcomponents": {
+            "chokepoint_strength": [
+              {
+                "name": "chokepoint_strength_source_pack",
+                "score": 4.7,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-NVDA-FY26-Q4",
+                  "SRC-NVDA-GTC-VERA-RUBIN-20260316",
+                  "SRC-NVDA-GTC-DYNAMO-20260316",
+                  "SRC-OMDIA-AI-PROCESSORS-20250828"
+                ],
+                "review_ids": [],
+                "rationale": "chokepoint_strength based on cutoff-visible source pack."
+              }
+            ],
+            "future_space": [
+              {
+                "name": "future_space_source_pack",
+                "score": 4.5,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-NVDA-FY26-Q4",
+                  "SRC-NVDA-GTC-VERA-RUBIN-20260316",
+                  "SRC-NVDA-GTC-DYNAMO-20260316",
+                  "SRC-OMDIA-AI-PROCESSORS-20250828"
+                ],
+                "review_ids": [],
+                "rationale": "future_space based on cutoff-visible source pack."
+              }
+            ],
+            "valuation_odds": [
+              {
+                "name": "valuation_odds_source_pack",
+                "score": 2.4,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-NVDA-FY26-Q4",
+                  "SRC-NVDA-GTC-VERA-RUBIN-20260316",
+                  "SRC-NVDA-GTC-DYNAMO-20260316",
+                  "SRC-OMDIA-AI-PROCESSORS-20250828"
+                ],
+                "review_ids": [],
+                "rationale": "valuation_odds based on cutoff-visible source pack."
+              }
+            ],
+            "evidence_quality": [
+              {
+                "name": "evidence_quality_source_pack",
+                "score": 4.7,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-NVDA-FY26-Q4",
+                  "SRC-NVDA-GTC-VERA-RUBIN-20260316",
+                  "SRC-NVDA-GTC-DYNAMO-20260316",
+                  "SRC-OMDIA-AI-PROCESSORS-20250828"
+                ],
+                "review_ids": [],
+                "rationale": "evidence_quality based on cutoff-visible source pack."
+              }
+            ],
+            "disconfirming_risk_control": [
+              {
+                "name": "disconfirming_risk_control_source_pack",
+                "score": 3.7,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-NVDA-FY26-Q4",
+                  "SRC-NVDA-GTC-VERA-RUBIN-20260316",
+                  "SRC-NVDA-GTC-DYNAMO-20260316",
+                  "SRC-OMDIA-AI-PROCESSORS-20250828"
+                ],
+                "review_ids": [],
+                "rationale": "disconfirming_risk_control based on cutoff-visible source pack."
+              }
+            ],
+            "monitorability": [
+              {
+                "name": "monitorability_source_pack",
+                "score": 4.2,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-NVDA-FY26-Q4",
+                  "SRC-NVDA-GTC-VERA-RUBIN-20260316",
+                  "SRC-NVDA-GTC-DYNAMO-20260316",
+                  "SRC-OMDIA-AI-PROCESSORS-20250828"
+                ],
+                "review_ids": [],
+                "rationale": "monitorability based on cutoff-visible source pack."
+              }
+            ],
+            "payoff_convexity": [
+              {
+                "name": "payoff_convexity_source_pack",
+                "score": 3.5,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-NVDA-FY26-Q4",
+                  "SRC-NVDA-GTC-VERA-RUBIN-20260316",
+                  "SRC-NVDA-GTC-DYNAMO-20260316",
+                  "SRC-OMDIA-AI-PROCESSORS-20250828"
+                ],
+                "review_ids": [],
+                "rationale": "payoff_convexity based on cutoff-visible source pack."
+              }
+            ]
+          }
+        },
+        "thesis_kill_tests": []
+      },
+      {
+        "ticker": "TSM",
+        "name": "TSMC ADR",
+        "market": "USA/Taiwan",
+        "rank": 4,
+        "thesis_node": "先进制程与先进封装",
+        "action_state": "watch_only",
+        "rationale": "先进制程和先进封装是硬供给层，财务质量强。",
+        "future_space": "稳健空间较大，但高 capex 与地缘风险降低赔率弹性。",
+        "downgrade": "先进封装供给释放、capex 回报下行、地缘风险。",
+        "evidence_ids": [
+          "SRC-TSM-Q4-2025",
+          "SRC-SA-COWOS-HBM-2023"
+        ],
+        "score": {
+          "action_state": "watch_only",
+          "total_score": 3.46,
+          "thesis_confidence": 3.7,
+          "payoff_convexity": 3.12,
+          "score_dimensions": {
+            "scarcity_or_monopoly": 4,
+            "mispricing": 2.8,
+            "earnings_elasticity": 3.7,
+            "risk_control": 3.2
+          },
+          "score_components": {
+            "chokepoint_strength": 4.1,
+            "future_space": 4,
+            "valuation_odds": 2.9,
+            "evidence_quality": 4.2,
+            "disconfirming_risk_control": 3.2,
+            "monitorability": 3.4,
+            "payoff_convexity": 3.1
+          },
+          "score_subcomponents": {
+            "chokepoint_strength": [
+              {
+                "name": "chokepoint_strength_source_pack",
+                "score": 4.1,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-TSM-Q4-2025",
+                  "SRC-SA-COWOS-HBM-2023"
+                ],
+                "review_ids": [],
+                "rationale": "chokepoint_strength based on cutoff-visible source pack."
+              }
+            ],
+            "future_space": [
+              {
+                "name": "future_space_source_pack",
+                "score": 4,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-TSM-Q4-2025",
+                  "SRC-SA-COWOS-HBM-2023"
+                ],
+                "review_ids": [],
+                "rationale": "future_space based on cutoff-visible source pack."
+              }
+            ],
+            "valuation_odds": [
+              {
+                "name": "valuation_odds_source_pack",
+                "score": 2.9,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-TSM-Q4-2025",
+                  "SRC-SA-COWOS-HBM-2023"
+                ],
+                "review_ids": [],
+                "rationale": "valuation_odds based on cutoff-visible source pack."
+              }
+            ],
+            "evidence_quality": [
+              {
+                "name": "evidence_quality_source_pack",
+                "score": 4.2,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-TSM-Q4-2025",
+                  "SRC-SA-COWOS-HBM-2023"
+                ],
+                "review_ids": [],
+                "rationale": "evidence_quality based on cutoff-visible source pack."
+              }
+            ],
+            "disconfirming_risk_control": [
+              {
+                "name": "disconfirming_risk_control_source_pack",
+                "score": 3.2,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-TSM-Q4-2025",
+                  "SRC-SA-COWOS-HBM-2023"
+                ],
+                "review_ids": [],
+                "rationale": "disconfirming_risk_control based on cutoff-visible source pack."
+              }
+            ],
+            "monitorability": [
+              {
+                "name": "monitorability_source_pack",
+                "score": 3.4,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-TSM-Q4-2025",
+                  "SRC-SA-COWOS-HBM-2023"
+                ],
+                "review_ids": [],
+                "rationale": "monitorability based on cutoff-visible source pack."
+              }
+            ],
+            "payoff_convexity": [
+              {
+                "name": "payoff_convexity_source_pack",
+                "score": 3.1,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-TSM-Q4-2025",
+                  "SRC-SA-COWOS-HBM-2023"
+                ],
+                "review_ids": [],
+                "rationale": "payoff_convexity based on cutoff-visible source pack."
+              }
+            ]
+          }
+        },
+        "thesis_kill_tests": []
+      },
+      {
+        "ticker": "MU",
+        "name": "Micron",
+        "market": "USA",
+        "rank": 5,
+        "thesis_node": "HBM / 高端内存",
+        "action_state": "watch_only",
+        "rationale": "HBM TAM、价量协议和云内存利润改善带来高弹性。",
+        "future_space": "赔率可能高于成熟龙头，但相对 SK hynix 的资格和份额仍待验证。",
+        "downgrade": "HBM 份额不及预期、ASP/DRAM 周期反转。",
+        "evidence_ids": [
+          "SRC-MU-FY26-Q1",
+          "SRC-MU-FY26-Q1-PREPARED"
+        ],
+        "score": {
+          "action_state": "watch_only",
+          "total_score": 3.63,
+          "thesis_confidence": 3.74,
+          "payoff_convexity": 4.08,
+          "score_dimensions": {
+            "scarcity_or_monopoly": 3.9,
+            "mispricing": 3.2,
+            "earnings_elasticity": 4.4,
+            "risk_control": 3.1
+          },
+          "score_components": {
+            "chokepoint_strength": 4,
+            "future_space": 4.4,
+            "valuation_odds": 3.1,
+            "evidence_quality": 3.8,
+            "disconfirming_risk_control": 3,
+            "monitorability": 3.5,
+            "payoff_convexity": 4.2
+          },
+          "score_subcomponents": {
+            "chokepoint_strength": [
+              {
+                "name": "chokepoint_strength_source_pack",
+                "score": 4,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-MU-FY26-Q1",
+                  "SRC-MU-FY26-Q1-PREPARED"
+                ],
+                "review_ids": [],
+                "rationale": "chokepoint_strength based on cutoff-visible source pack."
+              }
+            ],
+            "future_space": [
+              {
+                "name": "future_space_source_pack",
+                "score": 4.4,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-MU-FY26-Q1",
+                  "SRC-MU-FY26-Q1-PREPARED"
+                ],
+                "review_ids": [],
+                "rationale": "future_space based on cutoff-visible source pack."
+              }
+            ],
+            "valuation_odds": [
+              {
+                "name": "valuation_odds_source_pack",
+                "score": 3.1,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-MU-FY26-Q1",
+                  "SRC-MU-FY26-Q1-PREPARED"
+                ],
+                "review_ids": [],
+                "rationale": "valuation_odds based on cutoff-visible source pack."
+              }
+            ],
+            "evidence_quality": [
+              {
+                "name": "evidence_quality_source_pack",
+                "score": 3.8,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-MU-FY26-Q1",
+                  "SRC-MU-FY26-Q1-PREPARED"
+                ],
+                "review_ids": [],
+                "rationale": "evidence_quality based on cutoff-visible source pack."
+              }
+            ],
+            "disconfirming_risk_control": [
+              {
+                "name": "disconfirming_risk_control_source_pack",
+                "score": 3,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-MU-FY26-Q1",
+                  "SRC-MU-FY26-Q1-PREPARED"
+                ],
+                "review_ids": [],
+                "rationale": "disconfirming_risk_control based on cutoff-visible source pack."
+              }
+            ],
+            "monitorability": [
+              {
+                "name": "monitorability_source_pack",
+                "score": 3.5,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-MU-FY26-Q1",
+                  "SRC-MU-FY26-Q1-PREPARED"
+                ],
+                "review_ids": [],
+                "rationale": "monitorability based on cutoff-visible source pack."
+              }
+            ],
+            "payoff_convexity": [
+              {
+                "name": "payoff_convexity_source_pack",
+                "score": 4.2,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-MU-FY26-Q1",
+                  "SRC-MU-FY26-Q1-PREPARED"
+                ],
+                "review_ids": [],
+                "rationale": "payoff_convexity based on cutoff-visible source pack."
+              }
+            ]
+          }
+        },
+        "thesis_kill_tests": []
+      },
+      {
+        "ticker": "ALAB",
+        "name": "Astera Labs",
+        "market": "USA",
+        "rank": 6,
+        "thesis_node": "高速连接与 AI 网络",
+        "action_state": "watch_only",
+        "rationale": "机柜级连接收入高增，直接受益 rack-scale AI。",
+        "future_space": "高弹性但高估值/客户集中，必须用 design-in 和毛利验证。",
+        "downgrade": "大客户订单延后、平台自研替代、估值压缩。",
+        "evidence_ids": [
+          "SRC-ALAB-Q4-2025"
+        ],
+        "score": {
+          "action_state": "watch_only",
+          "total_score": 3.23,
+          "thesis_confidence": 3.39,
+          "payoff_convexity": 4.13,
+          "score_dimensions": {
+            "scarcity_or_monopoly": 3.8,
+            "mispricing": 2.2,
+            "earnings_elasticity": 4.5,
+            "risk_control": 2.8
+          },
+          "score_components": {
+            "chokepoint_strength": 3.8,
+            "future_space": 4,
+            "valuation_odds": 2.2,
+            "evidence_quality": 3.5,
+            "disconfirming_risk_control": 2.7,
+            "monitorability": 3.4,
+            "payoff_convexity": 4.4
+          },
+          "score_subcomponents": {
+            "chokepoint_strength": [
+              {
+                "name": "chokepoint_strength_source_pack",
+                "score": 3.8,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-ALAB-Q4-2025"
+                ],
+                "review_ids": [],
+                "rationale": "chokepoint_strength based on cutoff-visible source pack."
+              }
+            ],
+            "future_space": [
+              {
+                "name": "future_space_source_pack",
+                "score": 4,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-ALAB-Q4-2025"
+                ],
+                "review_ids": [],
+                "rationale": "future_space based on cutoff-visible source pack."
+              }
+            ],
+            "valuation_odds": [
+              {
+                "name": "valuation_odds_source_pack",
+                "score": 2.2,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-ALAB-Q4-2025"
+                ],
+                "review_ids": [],
+                "rationale": "valuation_odds based on cutoff-visible source pack."
+              }
+            ],
+            "evidence_quality": [
+              {
+                "name": "evidence_quality_source_pack",
+                "score": 3.5,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-ALAB-Q4-2025"
+                ],
+                "review_ids": [],
+                "rationale": "evidence_quality based on cutoff-visible source pack."
+              }
+            ],
+            "disconfirming_risk_control": [
+              {
+                "name": "disconfirming_risk_control_source_pack",
+                "score": 2.7,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-ALAB-Q4-2025"
+                ],
+                "review_ids": [],
+                "rationale": "disconfirming_risk_control based on cutoff-visible source pack."
+              }
+            ],
+            "monitorability": [
+              {
+                "name": "monitorability_source_pack",
+                "score": 3.4,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-ALAB-Q4-2025"
+                ],
+                "review_ids": [],
+                "rationale": "monitorability based on cutoff-visible source pack."
+              }
+            ],
+            "payoff_convexity": [
+              {
+                "name": "payoff_convexity_source_pack",
+                "score": 4.4,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-ALAB-Q4-2025"
+                ],
+                "review_ids": [],
+                "rationale": "payoff_convexity based on cutoff-visible source pack."
+              }
+            ]
+          }
+        },
+        "thesis_kill_tests": []
+      },
+      {
+        "ticker": "CRDO",
+        "name": "Credo",
+        "market": "USA",
+        "rank": 7,
+        "thesis_node": "高速连接与 AI 网络",
+        "action_state": "watch_only",
+        "rationale": "AEC/光互联需求强，收入高弹性。",
+        "future_space": "弹性大但波动也大，客户集中和价格压力是关键。",
+        "downgrade": "客户订单延迟、价格下行、毛利不达预期。",
+        "evidence_ids": [
+          "SRC-CRDO-FY26-Q3",
+          "SRC-LC-PAM4-DSP-20260226"
+        ],
+        "score": {
+          "action_state": "watch_only",
+          "total_score": 3.24,
+          "thesis_confidence": 3.32,
+          "payoff_convexity": 4.05,
+          "score_dimensions": {
+            "scarcity_or_monopoly": 3.6,
+            "mispricing": 2.4,
+            "earnings_elasticity": 4.4,
+            "risk_control": 2.7
+          },
+          "score_components": {
+            "chokepoint_strength": 3.6,
+            "future_space": 4,
+            "valuation_odds": 2.5,
+            "evidence_quality": 3.4,
+            "disconfirming_risk_control": 2.7,
+            "monitorability": 3.3,
+            "payoff_convexity": 4.3
+          },
+          "score_subcomponents": {
+            "chokepoint_strength": [
+              {
+                "name": "chokepoint_strength_source_pack",
+                "score": 3.6,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-CRDO-FY26-Q3",
+                  "SRC-LC-PAM4-DSP-20260226"
+                ],
+                "review_ids": [],
+                "rationale": "chokepoint_strength based on cutoff-visible source pack."
+              }
+            ],
+            "future_space": [
+              {
+                "name": "future_space_source_pack",
+                "score": 4,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-CRDO-FY26-Q3",
+                  "SRC-LC-PAM4-DSP-20260226"
+                ],
+                "review_ids": [],
+                "rationale": "future_space based on cutoff-visible source pack."
+              }
+            ],
+            "valuation_odds": [
+              {
+                "name": "valuation_odds_source_pack",
+                "score": 2.5,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-CRDO-FY26-Q3",
+                  "SRC-LC-PAM4-DSP-20260226"
+                ],
+                "review_ids": [],
+                "rationale": "valuation_odds based on cutoff-visible source pack."
+              }
+            ],
+            "evidence_quality": [
+              {
+                "name": "evidence_quality_source_pack",
+                "score": 3.4,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-CRDO-FY26-Q3",
+                  "SRC-LC-PAM4-DSP-20260226"
+                ],
+                "review_ids": [],
+                "rationale": "evidence_quality based on cutoff-visible source pack."
+              }
+            ],
+            "disconfirming_risk_control": [
+              {
+                "name": "disconfirming_risk_control_source_pack",
+                "score": 2.7,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-CRDO-FY26-Q3",
+                  "SRC-LC-PAM4-DSP-20260226"
+                ],
+                "review_ids": [],
+                "rationale": "disconfirming_risk_control based on cutoff-visible source pack."
+              }
+            ],
+            "monitorability": [
+              {
+                "name": "monitorability_source_pack",
+                "score": 3.3,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-CRDO-FY26-Q3",
+                  "SRC-LC-PAM4-DSP-20260226"
+                ],
+                "review_ids": [],
+                "rationale": "monitorability based on cutoff-visible source pack."
+              }
+            ],
+            "payoff_convexity": [
+              {
+                "name": "payoff_convexity_source_pack",
+                "score": 4.3,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-CRDO-FY26-Q3",
+                  "SRC-LC-PAM4-DSP-20260226"
+                ],
+                "review_ids": [],
+                "rationale": "payoff_convexity based on cutoff-visible source pack."
+              }
+            ]
+          }
+        },
+        "thesis_kill_tests": []
+      },
+      {
+        "ticker": "MRVL",
+        "name": "Marvell Technology",
+        "market": "USA",
+        "rank": 8,
+        "thesis_node": "custom silicon / 电光互联",
+        "action_state": "watch_only",
+        "rationale": "custom products 与 electro-optics 已进入 AI data-center 收入口径。",
+        "future_space": "中高弹性，但定制项目量产节奏和客户集中需要折价。",
+        "downgrade": "大客户项目延期、客户自研替代、毛利不达预期。",
+        "evidence_ids": [
+          "SRC-MRVL-FY26-Q3"
+        ],
+        "score": {
+          "action_state": "watch_only",
+          "total_score": 3.28,
+          "thesis_confidence": 3.31,
+          "payoff_convexity": 3.76,
+          "score_dimensions": {
+            "scarcity_or_monopoly": 3.5,
+            "mispricing": 2.6,
+            "earnings_elasticity": 4,
+            "risk_control": 2.9
+          },
+          "score_components": {
+            "chokepoint_strength": 3.5,
+            "future_space": 3.8,
+            "valuation_odds": 2.7,
+            "evidence_quality": 3.4,
+            "disconfirming_risk_control": 2.9,
+            "monitorability": 3.2,
+            "payoff_convexity": 3.9
+          },
+          "score_subcomponents": {
+            "chokepoint_strength": [
+              {
+                "name": "chokepoint_strength_source_pack",
+                "score": 3.5,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-MRVL-FY26-Q3"
+                ],
+                "review_ids": [],
+                "rationale": "chokepoint_strength based on cutoff-visible source pack."
+              }
+            ],
+            "future_space": [
+              {
+                "name": "future_space_source_pack",
+                "score": 3.8,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-MRVL-FY26-Q3"
+                ],
+                "review_ids": [],
+                "rationale": "future_space based on cutoff-visible source pack."
+              }
+            ],
+            "valuation_odds": [
+              {
+                "name": "valuation_odds_source_pack",
+                "score": 2.7,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-MRVL-FY26-Q3"
+                ],
+                "review_ids": [],
+                "rationale": "valuation_odds based on cutoff-visible source pack."
+              }
+            ],
+            "evidence_quality": [
+              {
+                "name": "evidence_quality_source_pack",
+                "score": 3.4,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-MRVL-FY26-Q3"
+                ],
+                "review_ids": [],
+                "rationale": "evidence_quality based on cutoff-visible source pack."
+              }
+            ],
+            "disconfirming_risk_control": [
+              {
+                "name": "disconfirming_risk_control_source_pack",
+                "score": 2.9,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-MRVL-FY26-Q3"
+                ],
+                "review_ids": [],
+                "rationale": "disconfirming_risk_control based on cutoff-visible source pack."
+              }
+            ],
+            "monitorability": [
+              {
+                "name": "monitorability_source_pack",
+                "score": 3.2,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-MRVL-FY26-Q3"
+                ],
+                "review_ids": [],
+                "rationale": "monitorability based on cutoff-visible source pack."
+              }
+            ],
+            "payoff_convexity": [
+              {
+                "name": "payoff_convexity_source_pack",
+                "score": 3.9,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-MRVL-FY26-Q3"
+                ],
+                "review_ids": [],
+                "rationale": "payoff_convexity based on cutoff-visible source pack."
+              }
+            ]
+          }
+        },
+        "thesis_kill_tests": []
+      },
+      {
+        "ticker": "DELL",
+        "name": "Dell Technologies",
+        "market": "USA",
+        "rank": 9,
+        "thesis_node": "服务器 / 机柜系统交付",
+        "action_state": "watch_only",
+        "rationale": "AI server orders/backlog 强，能验证 AI factory 进入系统交付阶段。",
+        "future_space": "空间大但利润池未必厚，重点看毛利和现金流。",
+        "downgrade": "订单增长但利润率或现金流较弱、库存上升。",
+        "evidence_ids": [
+          "SRC-DELL-FY26-Q4"
+        ],
+        "score": {
+          "action_state": "watch_only",
+          "total_score": 3.16,
+          "thesis_confidence": 3.25,
+          "payoff_convexity": 3.24,
+          "score_dimensions": {
+            "scarcity_or_monopoly": 2.9,
+            "mispricing": 2.8,
+            "earnings_elasticity": 3.7,
+            "risk_control": 3
+          },
+          "score_components": {
+            "chokepoint_strength": 2.8,
+            "future_space": 3.7,
+            "valuation_odds": 2.9,
+            "evidence_quality": 3.7,
+            "disconfirming_risk_control": 3,
+            "monitorability": 3.5,
+            "payoff_convexity": 3.3
+          },
+          "score_subcomponents": {
+            "chokepoint_strength": [
+              {
+                "name": "chokepoint_strength_source_pack",
+                "score": 2.8,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-DELL-FY26-Q4"
+                ],
+                "review_ids": [],
+                "rationale": "chokepoint_strength based on cutoff-visible source pack."
+              }
+            ],
+            "future_space": [
+              {
+                "name": "future_space_source_pack",
+                "score": 3.7,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-DELL-FY26-Q4"
+                ],
+                "review_ids": [],
+                "rationale": "future_space based on cutoff-visible source pack."
+              }
+            ],
+            "valuation_odds": [
+              {
+                "name": "valuation_odds_source_pack",
+                "score": 2.9,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-DELL-FY26-Q4"
+                ],
+                "review_ids": [],
+                "rationale": "valuation_odds based on cutoff-visible source pack."
+              }
+            ],
+            "evidence_quality": [
+              {
+                "name": "evidence_quality_source_pack",
+                "score": 3.7,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-DELL-FY26-Q4"
+                ],
+                "review_ids": [],
+                "rationale": "evidence_quality based on cutoff-visible source pack."
+              }
+            ],
+            "disconfirming_risk_control": [
+              {
+                "name": "disconfirming_risk_control_source_pack",
+                "score": 3,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-DELL-FY26-Q4"
+                ],
+                "review_ids": [],
+                "rationale": "disconfirming_risk_control based on cutoff-visible source pack."
+              }
+            ],
+            "monitorability": [
+              {
+                "name": "monitorability_source_pack",
+                "score": 3.5,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-DELL-FY26-Q4"
+                ],
+                "review_ids": [],
+                "rationale": "monitorability based on cutoff-visible source pack."
+              }
+            ],
+            "payoff_convexity": [
+              {
+                "name": "payoff_convexity_source_pack",
+                "score": 3.3,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-DELL-FY26-Q4"
+                ],
+                "review_ids": [],
+                "rationale": "payoff_convexity based on cutoff-visible source pack."
+              }
+            ]
+          }
+        },
+        "thesis_kill_tests": []
+      },
+      {
+        "ticker": "SMCI",
+        "name": "Supermicro",
+        "market": "USA",
+        "rank": 10,
+        "thesis_node": "服务器 / 机柜系统交付",
+        "action_state": "no_action",
+        "rationale": "主题弹性存在，但执行、治理和毛利风险压制风险控制。",
+        "future_space": "只适合验证系统交付 beta，不适合在当前证据下提高强度。",
+        "downgrade": "治理风险、毛利恶化、现金转化差。",
+        "evidence_ids": [
+          "SRC-SMCI-FY26-Q2"
+        ],
+        "score": {
+          "action_state": "no_action",
+          "total_score": 2.56,
+          "thesis_confidence": 2.54,
+          "payoff_convexity": 2.98,
+          "score_dimensions": {
+            "scarcity_or_monopoly": 2.4,
+            "mispricing": 2,
+            "earnings_elasticity": 3.5,
+            "risk_control": 1.9
+          },
+          "score_components": {
+            "chokepoint_strength": 2.3,
+            "future_space": 3.4,
+            "valuation_odds": 2,
+            "evidence_quality": 2.7,
+            "disconfirming_risk_control": 1.8,
+            "monitorability": 2.4,
+            "payoff_convexity": 3.1
+          },
+          "score_subcomponents": {
+            "chokepoint_strength": [
+              {
+                "name": "chokepoint_strength_source_pack",
+                "score": 2.3,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-SMCI-FY26-Q2"
+                ],
+                "review_ids": [],
+                "rationale": "chokepoint_strength based on cutoff-visible source pack."
+              }
+            ],
+            "future_space": [
+              {
+                "name": "future_space_source_pack",
+                "score": 3.4,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-SMCI-FY26-Q2"
+                ],
+                "review_ids": [],
+                "rationale": "future_space based on cutoff-visible source pack."
+              }
+            ],
+            "valuation_odds": [
+              {
+                "name": "valuation_odds_source_pack",
+                "score": 2,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-SMCI-FY26-Q2"
+                ],
+                "review_ids": [],
+                "rationale": "valuation_odds based on cutoff-visible source pack."
+              }
+            ],
+            "evidence_quality": [
+              {
+                "name": "evidence_quality_source_pack",
+                "score": 2.7,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-SMCI-FY26-Q2"
+                ],
+                "review_ids": [],
+                "rationale": "evidence_quality based on cutoff-visible source pack."
+              }
+            ],
+            "disconfirming_risk_control": [
+              {
+                "name": "disconfirming_risk_control_source_pack",
+                "score": 1.8,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-SMCI-FY26-Q2"
+                ],
+                "review_ids": [],
+                "rationale": "disconfirming_risk_control based on cutoff-visible source pack."
+              }
+            ],
+            "monitorability": [
+              {
+                "name": "monitorability_source_pack",
+                "score": 2.4,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-SMCI-FY26-Q2"
+                ],
+                "review_ids": [],
+                "rationale": "monitorability based on cutoff-visible source pack."
+              }
+            ],
+            "payoff_convexity": [
+              {
+                "name": "payoff_convexity_source_pack",
+                "score": 3.1,
+                "weight": 1,
+                "evidence_ids": [
+                  "SRC-SMCI-FY26-Q2"
+                ],
+                "review_ids": [],
+                "rationale": "payoff_convexity based on cutoff-visible source pack."
+              }
+            ]
+          }
+        },
+        "thesis_kill_tests": []
+      }
+    ]
+  },
+  "label_attach": {
+    "evaluation_date": "2026-06-28",
+    "label_window": "2026-03-28_to_2026-06-28",
+    "rule": "labels are attached after frozen recommendations and do not alter thesis, score, or rank"
+  },
+  "rejected_future_sources": [],
+  "public_html_policy": "do_not_render_internal_trace_unless_user_requests_it"
+}

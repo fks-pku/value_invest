@@ -56,6 +56,26 @@ def _industry_overview_html(title: str) -> str:
               </div>
               </div>
             </details>
+            <details class="industry-module bom-research-module">
+              <summary class="module-head"><span class="module-index">02</span><div><h3>HBM / 高端内存</h3><p>逐节点回答七个核心投资问题。</p></div><span class="chevron">›</span></summary>
+              <div class="industry-module-body">
+                <div class="bom-node-brief">
+                  <article><span>接受</span><p>GPU/ASIC 平台规格。</p></article>
+                  <article><span>生产</span><p>HBM 和高端内存。</p></article>
+                  <article><span>提供给</span><p>加速器和系统交付。</p></article>
+                  <article><span>验证指标</span><p>ASP、资格、毛利率。</p></article>
+                </div>
+                <div class="bom-question-list">
+                  <details class="bom-question-card"><summary><span class="bom-question-index">1</span><strong>需求是否会大幅增长？</strong><span class="chevron">›</span></summary><div class="bom-question-answer"><p>AI 算力需求推高 HBM 需求。</p><div class="bom-question-sources"><span class="source-chip">SRC1</span></div></div></details>
+                  <details class="bom-question-card"><summary><span class="bom-question-index">2</span><strong>单位用量是否会提升？</strong><span class="chevron">›</span></summary><div class="bom-question-answer"><p>每代平台提高 HBM 容量。</p><div class="bom-question-sources"><span class="source-chip">SRC2</span></div></div></details>
+                  <details class="bom-question-card"><summary><span class="bom-question-index">3</span><strong>供给能否跟上？</strong><span class="chevron">›</span></summary><div class="bom-question-answer"><p>供给受良率和认证约束。</p><div class="bom-question-sources"><span class="source-chip">SRC3</span></div></div></details>
+                  <details class="bom-question-card"><summary><span class="bom-question-index">4</span><strong>谁控制供给？</strong><span class="chevron">›</span></summary><div class="bom-question-answer"><p>领先内存厂控制有效供给。</p><div class="bom-question-sources"><span class="source-chip">SRC4</span></div></div></details>
+                  <details class="bom-question-card"><summary><span class="bom-question-index">5</span><strong>是否已经财务兑现？</strong><span class="chevron">›</span></summary><div class="bom-question-answer"><p>收入和毛利开始兑现。</p><div class="bom-question-sources"><span class="source-chip">SRC5</span></div></div></details>
+                  <details class="bom-question-card"><summary><span class="bom-question-index">6</span><strong>市场是否已定价？</strong><span class="chevron">›</span></summary><div class="bom-question-answer"><p>需要比较估值和盈利上修。</p><div class="bom-question-sources"><span class="source-chip">SRC6</span></div></div></details>
+                  <details class="bom-question-card"><summary><span class="bom-question-index">7</span><strong>反证是什么？</strong><span class="chevron">›</span></summary><div class="bom-question-answer"><p>ASP 下行或供给释放会反证。</p><div class="bom-question-sources"><span class="source-chip">SRC7</span></div></div></details>
+                </div>
+              </div>
+            </details>
             <details class="industry-module industry-space"><summary class="module-head"><span class="module-index">02</span><div><h3>S曲线与产业空间</h3></div><span class="chevron">›</span></summary><div class="industry-module-body">
               <div class="industry-space-summary"><p>S 曲线与产业空间直接说明未来空间和早期加速证据。</p></div>
               <div class="space-bom-reasoning">
@@ -71,7 +91,8 @@ def _industry_overview_html(title: str) -> str:
 
 class FrameworkContractsTests(unittest.TestCase):
     def test_report_and_qa_contracts_enforce_hierarchy_label_boundary_and_cards(self):
-        goal_title, chain_title, qa_title, target_title, source_title = REPORT_SECTIONS
+        goal_title, chain_title, target_title, source_title = REPORT_SECTIONS
+        qa_title = "下钻 QA"
         block_one, block_two, block_three = QA_BLOCK_TITLES
         html = f"""
         <main>
@@ -243,7 +264,8 @@ class FrameworkContractsTests(unittest.TestCase):
         self.assertIn("public_meta_drift", {issue["code"] for issue in meta_result["issues"]})
 
     def test_adaptive_drilldown_allows_l4_l5_but_rejects_l6(self):
-        goal_title, chain_title, qa_title, target_title, source_title = REPORT_SECTIONS
+        goal_title, chain_title, target_title, source_title = REPORT_SECTIONS
+        qa_title = "下钻 QA"
         block_one, block_two, block_three = QA_BLOCK_TITLES
         html = f"""
         <main>

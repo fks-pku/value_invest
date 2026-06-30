@@ -7,16 +7,15 @@ from html import unescape
 from typing import Any
 
 
-REPORT_SECTIONS = ["当前研究的问题", "行业概况", "下钻 QA", "标的推荐", "来源索引"]
+REPORT_SECTIONS = ["当前研究的问题", "行业概况", "标的推荐", "来源索引"]
 QA_BLOCK_TITLES = ["1. 当前结论呈现", "2. 问题展开（子 QA）", "3. 待补充的问题"]
 MAX_QA_DEPTH = 5
 RESEARCH_UNIT_MIN_LEVEL = 3
 SECTION_IDS = {
     REPORT_SECTIONS[0]: ("goal", "research-goal", "current-research-goal"),
     REPORT_SECTIONS[1]: ("overview", "industry-overview", "chain", "supply-chain", "industry-chain"),
-    REPORT_SECTIONS[2]: ("qa", "qa-split", "question-drilldown"),
-    REPORT_SECTIONS[3]: ("targets", "target-recommendations", "final-target-recommendations"),
-    REPORT_SECTIONS[4]: ("sources", "source-index"),
+    REPORT_SECTIONS[2]: ("targets", "target-recommendations", "final-target-recommendations"),
+    REPORT_SECTIONS[3]: ("sources", "source-index"),
 }
 LABEL_TERMS = [
     "forward_3m_return",
@@ -425,19 +424,21 @@ def validate_report_contract_html(
     section_positions = _section_positions(html)
     found_sections = [section for section in REPORT_SECTIONS if section in section_positions]
     if found_sections != REPORT_SECTIONS:
-        _issue(issues, "error", "top_level_sections", "final HTML must use the locked five-section order")
+        _issue(issues, "error", "top_level_sections", "final HTML must use the locked four-section order")
     else:
         positions = [section_positions[section] for section in REPORT_SECTIONS]
         if positions != sorted(positions):
             _issue(issues, "error", "top_level_order", "top-level sections are out of order")
 
     level_counts = _qa_level_counts(html)
-    if level_counts["level1_cards"] == 0:
-        _issue(issues, "error", "missing_level1_cards", "下钻 QA must render Q1-Q4 as qa-card level-1")
-    if level_counts["level2_cards"] == 0:
-        _issue(issues, "error", "missing_level2_cards", "L1 cards must render mechanism buckets as qa-card level-2")
-    if require_l3 and level_counts["level3_cards"] == 0:
-        _issue(issues, "error", "missing_level3_cards", "complete refreshed reports must render L3 leaves")
+    has_public_qa = _first_position(html, ["下钻 QA"]) >= 0
+    if has_public_qa:
+        if level_counts["level1_cards"] == 0:
+            _issue(issues, "error", "missing_level1_cards", "下钻 QA must render Q1-Q4 as qa-card level-1")
+        if level_counts["level2_cards"] == 0:
+            _issue(issues, "error", "missing_level2_cards", "L1 cards must render mechanism buckets as qa-card level-2")
+        if require_l3 and level_counts["level3_cards"] == 0:
+            _issue(issues, "error", "missing_level3_cards", "complete refreshed reports must render L3 leaves")
 
     interactive_level_counts = _interactive_qa_level_counts(html)
     if any(
@@ -474,7 +475,7 @@ def validate_report_contract_html(
             issues,
             "error",
             "missing_industry_overview_section",
-            "final HTML must include a standalone 行业概况 section before 下钻 QA",
+            "final HTML must include a standalone 行业概况 section before 标的推荐",
         )
     supply_chain_sections = _class_count(html, "supply-chain-section")
     if supply_chain_sections == 0:
@@ -482,7 +483,7 @@ def validate_report_contract_html(
             issues,
             "error",
             "missing_supply_chain_section",
-            "行业概况 must include a 技术链与 BOM 呈现 module before 下钻 QA",
+            "行业概况 must include a 技术链与 BOM 呈现 module before 标的推荐",
         )
     required_industry_overview_classes = [
         "industry-overview-section",
@@ -491,15 +492,13 @@ def validate_report_contract_html(
         "module-index",
         "supply-chain-section",
         "component-value-chain",
-        "bom-taxonomy",
-        "bom-taxonomy-grid",
-        "bom-taxonomy-card",
-        "overview-question-card",
-        "overview-answer",
-        "industry-space",
-        "industry-key-variables",
-        "key-variable-bom-map",
-        "key-variable-bom-card",
+        "bom-research-module",
+        "bom-node-brief",
+        "bom-question-list",
+        "bom-question-card",
+        "bom-question-index",
+        "bom-question-answer",
+        "bom-question-sources",
     ]
     missing_industry_overview_classes = [
         class_name for class_name in required_industry_overview_classes if _class_count(html, class_name) == 0
@@ -509,7 +508,7 @@ def validate_report_contract_html(
             issues,
             "error",
             "missing_industry_overview_components",
-            "行业概况 must include S-curve industry space, technical-chain/BOM presentation, and key-variable modules; missing "
+            "行业概况 must include the technical-chain/BOM presentation module; missing "
             + ", ".join(missing_industry_overview_classes),
         )
     if _class_count(html, "overview-source-plan") or _class_count(html, "source-universe-plan") or _class_count(html, "exa-search-plan"):
@@ -530,7 +529,6 @@ def validate_report_contract_html(
     if bom_taxonomy_nodes:
         coverage_regions = {
             "S曲线与产业空间": _class_region(html, ("industry-module", "industry-space"), [("industry-module", "industry-competition"), ("industry-module", "industry-chokepoints"), ("industry-module", "industry-key-variables")]),
-            "关键变量与待验证数据": _class_region(html, ("industry-module", "industry-key-variables"), [("qa-section",), ("qa-card", "level-1")]),
         }
         for module_name, region in coverage_regions.items():
             missing_nodes = _missing_taxonomy_nodes(region, bom_taxonomy_nodes)
@@ -544,8 +542,6 @@ def validate_report_contract_html(
                 )
     required_industry_detail_modules = [
         "supply-chain-section",
-        "industry-space",
-        "industry-key-variables",
     ]
     static_industry_modules = [
         class_name
@@ -559,6 +555,43 @@ def validate_report_contract_html(
             "missing_interactive_industry_modules",
             "行业概况 modules must render as clickable details.industry-module nodes, not always-expanded static sections; missing "
             + ", ".join(static_industry_modules),
+        )
+    bom_research_modules = _tag_class_count(html, "details", "industry-module", "bom-research-module")
+    if bom_research_modules == 0:
+        _issue(
+            issues,
+            "error",
+            "missing_bom_research_modules",
+            "行业概况 must expand each BOM node into a clickable details.industry-module.bom-research-module starting from module 02",
+        )
+    bom_question_cards = _tag_class_count(html, "details", "bom-question-card")
+    if bom_research_modules and bom_question_cards < bom_research_modules * 7:
+        _issue(
+            issues,
+            "error",
+            "missing_bom_seven_question_cards",
+            "Each BOM research module must embed seven collapsible bom-question-card submodules",
+        )
+    missing_bom_question_labels = [
+        label
+        for label in [
+            "需求是否会大幅增长？",
+            "单位用量是否会提升？",
+            "供给能否跟上？",
+            "谁控制供给？",
+            "是否已经财务兑现？",
+            "市场是否已定价？",
+            "反证是什么？",
+        ]
+        if label not in html
+    ]
+    if bom_research_modules and missing_bom_question_labels:
+        _issue(
+            issues,
+            "error",
+            "missing_bom_seven_question_labels",
+            "BOM research modules must keep the seven core investment questions; missing "
+            + ", ".join(missing_bom_question_labels),
         )
     competition_region = _class_region(html, ("industry-module", "industry-competition"), [("industry-module", "industry-chokepoints")])
     if _class_count(html, "industry-competition") and (
@@ -668,7 +701,7 @@ def validate_report_contract_html(
     missing_industry_space_classes = [
         class_name for class_name in required_industry_space_classes if _class_count(html, class_name) == 0
     ]
-    if missing_industry_space_classes:
+    if _class_count(html, "industry-space") and missing_industry_space_classes:
         _issue(
             issues,
             "error",
@@ -677,7 +710,7 @@ def validate_report_contract_html(
             + ", ".join(missing_industry_space_classes),
         )
     industry_space_node_cards = _tag_class_count(html, "details", "space-node-card")
-    if industry_space_node_cards < 1:
+    if _class_count(html, "industry-space") and industry_space_node_cards < 1:
         _issue(
             issues,
             "error",
@@ -799,17 +832,17 @@ def validate_report_contract_html(
             "missing_interactive_chain_detail_panels",
             "技术链与 BOM 呈现 must keep its long subcomponents collapsible as details.chain-detail-panel nodes for 泳道图, 价值流, and BOM / 组件级链条",
         )
-    required_overview_labels = ["技术链与 BOM 呈现", "泳道图", "价值流", "S曲线与产业空间", "关键变量"]
+    required_overview_labels = ["技术链与 BOM 呈现", "泳道图", "价值流"]
     missing_overview_labels = [label for label in required_overview_labels if label not in html]
     if industry_overview_sections and missing_overview_labels:
         _issue(
             issues,
             "error",
             "missing_industry_overview_blocks",
-            "行业概况必须保留技术链与 BOM 呈现、泳道图、价值流、S曲线与产业空间、关键变量；缺少 "
+            "行业概况必须保留技术链与 BOM 呈现、泳道图、价值流；缺少 "
             + ", ".join(missing_overview_labels),
         )
-    overlap_qa_start = section_positions.get("下钻 QA", -1)
+    overlap_qa_start = _first_position(html, ["下钻 QA"])
     overlap_target_start = section_positions.get("标的推荐", len(html))
     qa_overlap_region = html[overlap_qa_start:overlap_target_start] if overlap_qa_start >= 0 else ""
     duplicated_overview_artifacts = [
@@ -817,7 +850,7 @@ def validate_report_contract_html(
         for class_name in ("demand-space-model", "competition-landscape")
         if _class_count(qa_overlap_region, class_name) > 0
     ]
-    if industry_overview_sections and duplicated_overview_artifacts:
+    if has_public_qa and industry_overview_sections and duplicated_overview_artifacts:
         _issue(
             issues,
             "error",
@@ -832,7 +865,7 @@ def validate_report_contract_html(
         "l3_decision_use_elements": _class_count(html, "l3-decision-use"),
     }
     research_unit_cards = _research_unit_card_count(level_counts)
-    if require_l3 and research_unit_cards > 0 and (
+    if has_public_qa and require_l3 and research_unit_cards > 0 and (
         l3_metadata_counts["l3_skill_elements"] < research_unit_cards
         or l3_metadata_counts["l3_execution_status_elements"] < research_unit_cards
         or l3_metadata_counts["l3_score_component_elements"] < research_unit_cards
@@ -845,18 +878,19 @@ def validate_report_contract_html(
             "Research-unit cards from L3 to L5 must visibly show selected skill, execution status, score component, and decision use",
         )
 
-    for title in QA_BLOCK_TITLES:
-        if title not in html:
-            _issue(issues, "error", "missing_qa_block_title", f"QA cards must include {title}")
+    if has_public_qa:
+        for title in QA_BLOCK_TITLES:
+            if title not in html:
+                _issue(issues, "error", "missing_qa_block_title", f"QA cards must include {title}")
 
     target_start = section_positions.get("标的推荐", -1)
     source_start = section_positions.get("来源索引", len(html))
-    qa_start = section_positions.get("下钻 QA", -1)
+    qa_start = _first_position(html, ["下钻 QA"])
     qa_region_end = target_start if target_start >= 0 else len(html)
     qa_region = html[qa_start:qa_region_end] if qa_start >= 0 else html
     q4_relative_position = _first_position(qa_region, ['class="qid">Q4', "class='qid'>Q4", ">Q4<", "id=\"q4", "id='q4", "Q4"])
     q4_position = qa_start + q4_relative_position if qa_start >= 0 and q4_relative_position >= 0 else -1
-    if q4_position < 0 or (qa_start >= 0 and not (qa_start <= q4_position < max(target_start, qa_start))):
+    if has_public_qa and (q4_position < 0 or (qa_start >= 0 and not (qa_start <= q4_position < max(target_start, qa_start)))):
         _issue(issues, "error", "q4_not_in_question_drilldown", "Q4 must remain inside 下钻 QA")
 
     if _class_count(html, "target-section") == 0:
@@ -921,32 +955,13 @@ def validate_report_contract_html(
         "chain-company-list",
         "chain-company-card",
         "component-value-chain",
-        "industry-space",
-        "industry-space-summary",
-        "space-bom-reasoning",
-        "space-node-card",
-        "space-node-reasoning",
-        "space-node-evidence",
-        "space-node-space-reasoning",
-        "space-node-sizing",
-        "space-method-step",
-        "space-step-title",
-        "space-step-index",
-        "space-public-methods",
-        "space-method-card-grid",
-        "space-method-card",
-        "space-method-card-body",
-        "space-method-entry",
-        "space-method-entry-sources",
-        "space-horizon-conclusion",
-        "space-horizon-grid",
-        "space-horizon-card",
-        "space-node-sizing-table",
-        "space-step-confidence",
-        "industry-key-variables",
-        "qa-body",
-        "qa-block",
-        "block-title",
+        "bom-research-module",
+        "bom-node-brief",
+        "bom-question-list",
+        "bom-question-card",
+        "bom-question-index",
+        "bom-question-answer",
+        "bom-question-sources",
         "artifact-card",
         "target-section",
         "target-profit-bridge",
@@ -1055,21 +1070,14 @@ def validate_industry_overview(project_dir: "str | Path") -> dict[str, Any]:
         with open(qa_file) as fh:
             chain = json.load(fh).get("supply_chain") or {}
 
-    # Validate industry_space_evidence_pack presence
+    # Validate optional industry_space_evidence_pack when a deeper space module is present.
     evidence_pack = (
         chain.get("industry_space_evidence_pack")
         or chain.get("industry_space_bom_reasoning")
         or chain.get("industry_space_rows")
         or []
     )
-    if not isinstance(evidence_pack, list) or not evidence_pack:
-        _issue(
-            issues,
-            "error",
-            "missing_industry_space_evidence_pack",
-            "Stage 2 must populate industry_space_evidence_pack with at least one BOM node before Stage 3",
-        )
-    else:
+    if isinstance(evidence_pack, list) and evidence_pack:
         node_count = 0
         has_sizing_data = 0
         for node in evidence_pack:
@@ -1097,7 +1105,7 @@ def validate_industry_overview(project_dir: "str | Path") -> dict[str, Any]:
     if chain.get("data_gaps") or chain.get("pending_questions"):
         found_modules.append("关键变量与待验证数据")
 
-    required_modules = ["技术链与BOM呈现", "S曲线与产业空间", "关键变量与待验证数据"]
+    required_modules = ["技术链与BOM呈现"]
     missing_modules = [m for m in required_modules if m not in found_modules]
     for module in missing_modules:
         _issue(issues, "warn", f"missing_module_hint_{module}", f"行业概况 module '{module}' has no detectable data in supply_chain; stage may be incomplete")
