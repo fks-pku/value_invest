@@ -45,10 +45,10 @@ const sources = [
   source("SRC-MSFT-FY26-Q2", "Microsoft FY2026 Q2 results", "evidence", "https://www.microsoft.com/en-us/investor/earnings/fy-2026-q2/press-release-webcast", "2026-01-28", "Microsoft Q2 FY2026 Microsoft Cloud revenue was $51.5B, +26%, commercial RPO increased 110% to $625B, and Azure and other cloud services revenue increased 39%."),
   source("SRC-MSFT-FY26-Q2-CALL", "Microsoft FY2026 Q2 earnings call", "evidence", "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q2.aspx", "2026-01-28", "Microsoft said Q2 FY26 capital expenditures were $37.5B, about two-thirds for short-lived assets primarily GPUs and CPUs, and that customer demand exceeded supply."),
   source("SRC-AMZN-Q4-2025", "Amazon Q4 2025 results", "evidence", "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/default.aspx", "2026-02-05", "Amazon Q4 2025 AWS segment sales increased to $35.6B; management said the chips business grew triple digits year over year and expected 2026 capex of about $200B across Amazon, driven by AI, chips, robotics and satellites."),
-  source("SRC-GOOGL-Q4-2025", "Alphabet Q4 2025 results", "evidence", "https://s206.q4cdn.com/479360582/files/doc_news/2026/Feb/04/attachments/2025q4-alphabet-earnings-release.pdf", "2026-02-04", "Alphabet Q4 2025 Google Cloud revenue increased 48% to $17.7B, Cloud annual run rate exceeded $70B, and 2026 CapEx was anticipated at $175B-$185B to meet customer demand."),
+  source("SRC-GOOGL-Q4-2025", "Alphabet Q4 2025 results", "evidence", "https://s206.q4cdn.com/479360582/files/doc_news/2026/Feb/04/attachments/2025q4-alphabet-earnings-release.pdf", "2026-02-04", "Alphabet Q4 2025 Google Cloud revenue increased 48% to $17.7B, Cloud annual run rate exceeded $70B, FY2025 purchases of property and equipment were $91.4B, and 2026 CapEx was anticipated at $175B-$185B to meet customer demand."),
   source("SRC-GOOGL-Q4-2025-CALL", "Alphabet Q4 2025 earnings call", "evidence", "https://abc.xyz/investor/events/event-details/2026/2025-Q4-Earnings-Call-2026-Dr_C033hS6/default.aspx", "2026-02-04", "Alphabet said backlog reached $240B, up 55% sequentially; Gemini App exceeded 750M monthly active users; Gemini Enterprise had 8M paid seats; and Gemini 3 processed about three times the daily tokens of Gemini 2.5 Pro while serving costs fell 78%."),
   source("SRC-META-Q3-2025", "Meta Q3 2025 results", "evidence", "https://investor.atmeta.com/investor-news/press-release-details/2025/Meta-Reports-Third-Quarter-2025-Results/default.aspx", "2025-10-29", "Meta Q3 2025 capex was $19.37B; 2025 capex guidance was $70B-$72B and management expected 2026 capex dollar growth to be notably larger, driven by infrastructure capacity needs."),
-  source("SRC-META-Q4-2025", "Meta Q4 2025 results", "evidence", "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Fourth-Quarter-and-Full-Year-2025-Results/default.aspx", "2026-01-28", "Meta expected 2026 capital expenditures, including principal payments on finance leases, of $115B-$135B as it invested in infrastructure capacity and AI/superintelligence labs."),
+  source("SRC-META-Q4-2025", "Meta Q4 2025 results", "evidence", "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Fourth-Quarter-and-Full-Year-2025-Results/default.aspx", "2026-01-28", "Meta FY2025 capital expenditures, including principal payments on finance leases, were $72.22B, and Meta expected 2026 capital expenditures of $115B-$135B as it invested in infrastructure capacity and AI/superintelligence labs."),
   source("SRC-ORCL-FY26-Q2", "Oracle FY2026 Q2 results", "evidence", "https://investor.oracle.com/investor-news/news-details/2025/Oracle-Announces-Fiscal-Year-2026-Second-Quarter-Financial-Results/default.aspx", "2025-12-10", "Oracle Q2 FY2026 RPO was $523B, +438%; cloud revenue was $8.0B, +34%; TTM capex was $35.5B and FCF was negative $13.2B after heavy cloud infrastructure investment."),
   source("SRC-CHATGPT-MAU-202302", "TIME: ChatGPT 100M users in two months", "message", "https://time.com/6253615/chatgpt-fastest-growing/", "2023-02-08", "TIME cited Similarweb and UBS data that ChatGPT reached about 100M monthly active users in January 2023, two months after launch."),
   source("SRC-CHATGPT-WAU-202408", "The Verge: ChatGPT 200M weekly users", "message", "https://www.theverge.com/2024/8/29/24231685/openai-chatgpt-200-million-weekly-users", "2024-08-29", "The Verge reported OpenAI confirmed ChatGPT had more than 200M weekly users in August 2024, double the 100M weekly active users reported in November 2023."),
@@ -810,63 +810,158 @@ function strictComputeDemandRow(row) {
     historySummary: "本问的历史数据改为每个环节一个主 metric：应用端看 ChatGPT weekly active users；预算/RPO 看 Microsoft Commercial RPO；订单/交付看 Dell AI-optimized server ending backlog；GPU 兑现看 NVIDIA Data Center segment revenue；ASIC 兑现看 Broadcom AI semiconductor revenue；反证缺口看公开 GPU-hours consumed。除 GPU-hours 尚无公开连续序列外，其余主指标尽量按同主体、同字段、同单位串联历史点，并以数据表呈现。",
     futureCards: [
       {
-        horizon: "需求侧预期",
+        horizon: "应用使用：当前没有硬未来指引",
+        expectationStatus: "非硬预期",
+        marketExpectation: "OpenAI 和 Alphabet 给出的主要是当前使用量、开发者数、token 吞吐和 Gemini 用户数据，不是未来 WAU、tokens 或 GPU-hours 指引。因此这一卡只能说明未来 accelerator workload 有需求入口，不能当成市场预期本身。",
         expectationSource: "OpenAI / Alphabet",
-        logicLink: "应用/任务 -> workload",
-        metric: "ChatGPT weekly active users；API tokens/min；Gemini MAU / daily-token usage",
-        expectationType: "应用使用与工作负载披露",
-        timeframe: "0-4 个季度持续观察，4-8 个季度看企业与 agent 任务扩散",
-        confidence: "中高：用户和 token 口径强，但直接 GPU-hours 仍缺",
-        view: "[OpenAI DevDay 2025 披露 800M+ weekly ChatGPT users、4M+ developers 和 API 6B tokens/min](source:SRC-OPENAI-DEVDAY-2025)；[Alphabet Q4 FY25 call 披露 Gemini App 750M+ MAU、Gemini Enterprise 8M paid seats、Gemini 3 daily tokens 约为 Gemini 2.5 Pro 的 3x](source:SRC-GOOGL-Q4-2025-CALL)。这类预期说明应用端仍在给未来 accelerator workload 提供需求入口。",
-        validation: "后续验证 ChatGPT WAU、API tokens/min、Gemini usage、企业席位和公开 GPU-hours / utilization 是否继续同向增长。",
+        sourceType: "当前使用量证据",
+        currentBaseline: "[OpenAI DevDay 2025 披露 800M+ weekly ChatGPT users、4M+ developers、API 6B tokens/min](source:SRC-OPENAI-DEVDAY-2025)；[Alphabet 披露 Gemini App 750M+ MAU、Gemini Enterprise 8M paid seats、Gemini 3 daily tokens 约为 Gemini 2.5 Pro 的 3x](source:SRC-GOOGL-Q4-2025-CALL)。",
+        expectedValue: "未披露未来 WAU、tokens、GPU-hours 或 accelerator utilization 目标。",
+        impliedGrowth: "无法量化；只能说明当前工作负载入口很大，不能直接推出未来 GPU/ASIC 需求增速。",
+        chainValidation: "验证需求链条的第一环：AI 应用/任务 -> workload。后续必须用 capex、订单、backlog 和供应商收入确认是否穿透到当前 BOM。",
+        refuteTest: "如果后续 tokens、GPU-hours、AI 服务收入或客户 ROI 不能继续增长，即使当前用户规模很大，也不能支撑 GPU/ASIC 继续扩张的预期。",
+        expectationRows: [
+          {
+            entity: "OpenAI",
+            currentPeriod: "DevDay 2025",
+            currentMetric: "[披露 800M+ weekly ChatGPT users、4M+ developers、API 6B tokens/min](source:SRC-OPENAI-DEVDAY-2025)。",
+            guidancePeriod: "未披露",
+            guidanceMetric: "未披露未来 WAU、tokens、GPU-hours 或 accelerator utilization 目标。",
+            comparability: "没有同口径未来指引；只能作为真实 workload 入口证据，不能直接当作 GPU/ASIC 未来需求指引。",
+          },
+          {
+            entity: "Alphabet / Gemini",
+            currentPeriod: "Q4 2025 call",
+            currentMetric: "[Gemini App 750M+ MAU、Gemini Enterprise 8M paid seats、Gemini 3 daily tokens 约为 Gemini 2.5 Pro 的 3x](source:SRC-GOOGL-Q4-2025-CALL)。",
+            guidancePeriod: "未披露",
+            guidanceMetric: "未披露未来 Gemini token、GPU-hours 或 accelerator 采购目标。",
+            comparability: "没有同口径未来指引；说明模型使用量和企业席位已有规模，但还需要 capex、backlog、供应商收入验证穿透。",
+          },
+        ],
         sourceIds: ["SRC-OPENAI-DEVDAY-2025", "SRC-GOOGL-Q4-2025-CALL"],
       },
       {
-        horizon: "客户预算预期",
-        expectationSource: "Microsoft / Amazon / Alphabet / Meta",
-        logicLink: "workload -> 客户 capex / RPO / PPE",
-        metric: "Microsoft Commercial RPO；hyperscaler AI capex / PPE purchases",
-        expectationType: "客户承诺、资本开支与基础设施预算",
-        timeframe: "0-8 个季度",
-        confidence: "高：多家客户公开给出 RPO、capex 或 PPE 锚点；但需继续拆分 AI accelerator 占比",
-        view: "[Microsoft Q2 FY26 Commercial RPO 达 $625B，电话会披露约 45% 来自 OpenAI](source:SRC-MSFT-FY26-Q2-CALL)；[Alphabet 预计 2026 capex 为 $175B-$185B](source:SRC-GOOGL-Q4-2025)，[Meta 预计 2026 capex 为 $115B-$135B](source:SRC-META-Q4-2025)，[Amazon 表示 2026 capex 约 $200B](source:SRC-AMZN-Q4-2025)。这些是客户侧对 AI 基础设施继续投入的基本面预期锚点。",
-        validation: "后续验证新增 RPO、capex、PPE purchases 是否继续流向 GPU/ASIC、AI server、networking、电力和液冷，而不是被非 AI 基础设施稀释。",
+        horizon: "客户预算：2026 capex 仍维持高强度",
+        expectationStatus: "公司指引",
+        marketExpectation: "客户侧当前明确预期是：2026 年云厂和 AI 基础设施资本开支仍会维持高位。Alphabet 指引 2026 capex 为 $175B-$185B，Meta 指引 2026 capex 为 $115B-$135B，Amazon 表示 2026 capex 约 $200B。Microsoft 的 $625B Commercial RPO 说明承诺池很大，但 RPO 不是 capex 指引，也不是 GPU 订单。",
+        expectationSource: "Alphabet / Meta / Amazon / Microsoft",
+        sourceType: "公司 capex 指引 + RPO 承诺池",
+        currentBaseline: "[Amazon TTM property and equipment purchases 为 $128.3B](source:SRC-AMZN-Q4-2025)；[Microsoft Q2 FY26 Commercial RPO 为 $625B，电话会称约 45% 来自 OpenAI](source:SRC-MSFT-FY26-Q2-CALL)。",
+        expectedValue: "[Alphabet 预计 2026 capex 为 $175B-$185B](source:SRC-GOOGL-Q4-2025)；[Meta 预计 2026 capex 为 $115B-$135B](source:SRC-META-Q4-2025)；[Amazon 预计 2026 capex 约 $200B](source:SRC-AMZN-Q4-2025)。",
+        impliedGrowth: "方向上是高位继续扩张；但不同公司 capex 口径不可直接相加，且 capex 不等于 GPU/ASIC 采购额。",
+        chainValidation: "验证需求链条第二环：workload -> 客户 capex / RPO / PPE。它证明客户愿意前置投入，但还要继续验证资金是否流向 accelerator 和 AI server。",
+        refuteTest: "如果 2026 capex 指引下修、RPO 不转收入、PPE 增长流向非 AI 资产，或 AI ROI 导致 FCF 压力上升，本环预期要降级。",
+        expectationRows: [
+          {
+            entity: "Alphabet",
+            currentPeriod: "FY2025 / Q4 2025",
+            currentMetric: "[FY2025 purchases of property and equipment 为 $91.4B，Q4 2025 为 $27.9B](source:SRC-GOOGL-Q4-2025)。",
+            guidancePeriod: "FY2026E",
+            guidanceMetric: "[2026 CapEx investments 预计 $175B-$185B](source:SRC-GOOGL-Q4-2025)。",
+            comparability: "基本同属 capex/PPE 投入口径，但 FY2026 是公司前瞻指引。相对 FY2025 PPE purchases，中值约接近翻倍，说明客户侧 AI compute capacity 预算仍在上修。",
+          },
+          {
+            entity: "Meta",
+            currentPeriod: "FY2025 / Q4 2025",
+            currentMetric: "[FY2025 capex including principal payments on finance leases 为 $72.22B，Q4 为 $22.14B](source:SRC-META-Q4-2025)。",
+            guidancePeriod: "FY2026E",
+            guidanceMetric: "[2026 capex including principal payments on finance leases 预计 $115B-$135B](source:SRC-META-Q4-2025)。",
+            comparability: "同口径度较高。相对 FY2025 实际值，FY2026 指引区间隐含约 +59% 至 +87%，直接显示 AI/基础设施预算仍在加速。",
+          },
+          {
+            entity: "Amazon",
+            currentPeriod: "TTM ended 2025-12-31",
+            currentMetric: "[Free cash flow 下降主要由 purchases of property and equipment, net of proceeds and incentives 同比增加 $50.7B 推动；当前表采用报告内已记录的 TTM PPE purchases $128.3B](source:SRC-AMZN-Q4-2025)。",
+            guidancePeriod: "FY2026E",
+            guidanceMetric: "[预计 2026 capital expenditures across Amazon 约 $200B](source:SRC-AMZN-Q4-2025)。",
+            comparability: "近似 capex/PPE 投入口径，但 Amazon 指引覆盖全集团 AI、chips、robotics、satellites 等，不是纯 AWS 或 GPU/ASIC 采购。",
+          },
+          {
+            entity: "Microsoft",
+            currentPeriod: "Q2 FY2026",
+            currentMetric: "[Capital expenditures 为 $37.5B，约三分之二投向以 GPU/CPU 为主的短寿命资产；Commercial RPO 为 $625B，其中约 45% 来自 OpenAI](source:SRC-MSFT-FY26-Q2-CALL)。",
+            guidancePeriod: "未来 12 个月 / 平均约 2.5 年",
+            guidanceMetric: "[约 25% Commercial RPO 将在未来 12 个月确认收入，Commercial RPO 加权平均期限约 2.5 年](source:SRC-MSFT-FY26-Q2-CALL)。",
+            comparability: "不是 capex-to-capex 指引，而是 capex 当前投入 + RPO 未来履约可见度；用于验证客户需求锁定，不用于和 Alphabet/Meta 的年度 capex 指引直接相加。",
+          },
+        ],
         sourceIds: ["SRC-MSFT-FY26-Q2-CALL", "SRC-GOOGL-Q4-2025", "SRC-META-Q4-2025", "SRC-AMZN-Q4-2025"],
       },
       {
-        horizon: "系统交付预期",
+        horizon: "系统交付：Dell FY27 AI server 收入约 $50B",
+        expectationStatus: "公司指引",
+        marketExpectation: "Dell 给出的硬预期是 FY27 AI-optimized server revenue 约 $50B，同比增长 103%。这比单纯 backlog 更接近市场要验证的未来收入预期。",
         expectationSource: "Dell",
-        logicLink: "客户预算 -> AI server / accelerator 系统交付",
-        metric: "Dell AI-optimized server ending backlog；AI server revenue guide；orders / shipments",
-        expectationType: "订单、backlog、系统收入指引",
-        timeframe: "0-4 个季度转收入，4-8 个季度看补单",
-        confidence: "中高：backlog 和 FY27 收入指引清楚，但需要验证订单取消率、交付节奏和毛利质量",
-        view: "[Dell FY26 AI-optimized server orders 超过 $64B、shipments 超过 $25B，进入 FY27 的 backlog 为 $43B，并指引 FY27 AI-optimized server revenue 约 $50B](source:SRC-DELL-FY26-Q4)。这说明客户预算已经形成可交付系统池，是 GPU/ASIC 需求穿透的重要中间锚点。",
-        validation: "后续验证 backlog 是否按期转 revenue、orders 是否继续补充 backlog、shipments 是否提速，以及系统交付毛利率是否稳定。",
+        sourceType: "公司收入指引 + backlog",
+        currentBaseline: "[Dell FY26 AI-optimized server orders 超过 $64B、shipments 超过 $25B，进入 FY27 的 backlog 为 $43B](source:SRC-DELL-FY26-Q4)。",
+        expectedValue: "[FY27 AI-optimized server revenue 约 $50B、同比 +103%](source:SRC-DELL-FY26-Q4)。",
+        impliedGrowth: "系统交付收入预期翻倍，说明客户预算已经形成可交付订单池；但利润池是否厚，还要看毛利率和现金转换。",
+        chainValidation: "验证需求链条第三环：客户预算 -> AI server / accelerator 系统交付。Dell 不是本 BOM 的投资结论，而是 GPU/ASIC 需求进入系统订单的验证节点。",
+        refuteTest: "如果 backlog 不转 revenue、orders 不补充、订单取消或系统交付毛利率下降，说明需求穿透质量低于预期。",
+        expectationRows: [
+          {
+            entity: "Dell",
+            currentPeriod: "FY2026",
+            currentMetric: "[AI-optimized server orders 超过 $64B、shipments 超过 $25B，进入 FY2027 的 backlog 为 $43B](source:SRC-DELL-FY26-Q4)。",
+            guidancePeriod: "FY2027E",
+            guidanceMetric: "[AI-optimized server revenue 约 $50B、同比 +103%](source:SRC-DELL-FY26-Q4)。",
+            comparability: "订单/backlog 对下一年收入指引，口径不是完全相同但传导关系明确：订单池需要转化为系统交付收入。",
+          },
+        ],
         sourceIds: ["SRC-DELL-FY26-Q4"],
       },
       {
-        horizon: "GPU / ASIC 供应商预期",
-        expectationSource: "NVIDIA / Broadcom",
-        logicLink: "系统订单 -> GPU / custom ASIC 财务兑现",
-        metric: "NVIDIA Data Center revenue；Broadcom AI semiconductor revenue",
-        expectationType: "供应商收入锚点、下一季指引、平台路线图",
-        timeframe: "0-4 个季度看收入和指引，4-8 个季度看新平台放量",
-        confidence: "中高：NVIDIA 收入兑现最硬，Broadcom custom ASIC 指引强；但客户集中度和替代路径仍需跟踪",
-        view: "[NVIDIA Q4 FY26 Data Center revenue 达 $62.3B](source:SRC-NVDA-FY26-Q4)，[Vera Rubin 平台把 AI factory 扩展到 rack-scale / pod-scale 系统](source:SRC-NVDA-GTC-VERA-RUBIN-20260316)；[Broadcom Q1 FY26 AI revenue 为 $8.4B，并预计 Q2 FY26 AI semiconductor revenue 约 $10.7B](source:SRC-AVGO-FY26-Q1)。供应商侧预期指向 GPU 与 custom ASIC 两条 accelerator 路线继续兑现。",
-        validation: "后续验证 NVIDIA Data Center revenue、Blackwell/Vera Rubin 交付、Broadcom AI semiconductor actual revenue、gross margin、客户集中度和自研 ASIC 分流。",
+        horizon: "ASIC 供应商：Broadcom Q2 FY26 AI 半导体约 $10.7B",
+        expectationStatus: "公司指引",
+        marketExpectation: "供应商侧最清楚的硬预期来自 Broadcom：Q2 FY26 AI semiconductor revenue 约 $10.7B。NVIDIA Q4 FY26 Data Center revenue $62.3B 是当前兑现证据，Vera Rubin 是路线图，不应和 Broadcom 的收入指引混成同一种预期。",
+        expectationSource: "Broadcom / NVIDIA",
+        sourceType: "公司收入指引 + 当前收入锚点",
+        currentBaseline: "[Broadcom Q1 FY26 AI revenue 为 $8.4B、同比 +106%](source:SRC-AVGO-FY26-Q1)；[NVIDIA Q4 FY26 Data Center revenue 为 $62.3B](source:SRC-NVDA-FY26-Q4)。",
+        expectedValue: "[Broadcom 预计 Q2 FY26 AI semiconductor revenue 约 $10.7B](source:SRC-AVGO-FY26-Q1)。NVIDIA Vera Rubin 只是未来平台路线图，不是收入指引。",
+        impliedGrowth: "Broadcom AI semiconductor revenue 从 Q1 FY26 $8.4B 到 Q2 FY26 指引 $10.7B，隐含约 +27% QoQ；NVIDIA 需要另补市场一致预期或公司下季指引，不能只用当前收入代表预期。",
+        chainValidation: "验证需求链条第四环：系统订单 -> GPU / custom ASIC 供应商收入。Broadcom 证明 custom ASIC 路线也进入收入指引，NVIDIA 证明 GPU 路线已大规模兑现。",
+        refuteTest: "如果 Broadcom 指引未兑现、NVIDIA 下一季指引放缓、毛利率下降、客户集中度暴露或云厂自研 ASIC 分流超预期，本环预期要降级。",
+        expectationRows: [
+          {
+            entity: "Broadcom",
+            currentPeriod: "Q1 FY2026",
+            currentMetric: "[AI revenue 为 $8.4B、同比 +106%](source:SRC-AVGO-FY26-Q1)。",
+            guidancePeriod: "Q2 FY2026E",
+            guidanceMetric: "[AI semiconductor revenue 预计约 $10.7B](source:SRC-AVGO-FY26-Q1)。",
+            comparability: "基本同属 AI 半导体收入口径，从 Q1 actual 到 Q2 guide 隐含约 +27% QoQ，证明 custom ASIC 需求已进入供应商收入指引。",
+          },
+          {
+            entity: "NVIDIA",
+            currentPeriod: "Q4 FY2026",
+            currentMetric: "[Data Center revenue 为 $62.3B](source:SRC-NVDA-FY26-Q4)。",
+            guidancePeriod: "未放入同口径收入指引",
+            guidanceMetric: "[Vera Rubin](source:SRC-NVDA-GTC-VERA-RUBIN-20260316) 是未来平台路线图，不是收入指引。",
+            comparability: "现状是收入兑现，未来是产品路线图，不能视为同口径。严格市场预期还需补 NVIDIA 下季收入指引或市场一致预期。",
+          },
+        ],
         sourceIds: ["SRC-NVDA-FY26-Q4", "SRC-NVDA-GTC-VERA-RUBIN-20260316", "SRC-AVGO-FY26-Q1"],
       },
       {
-        horizon: "第三方行业预期",
+        horizon: "第三方市场预期：2030E AI processor spending 约 $286B",
+        expectationStatus: "第三方预测",
+        marketExpectation: "Omdia 的预期是 AI data-center processor spending 从 2024 年约 $123B、2025E 约 $207B，增长到 2030E 约 $286B，同时 custom ASICs gaining traction。这是行业池子的预期，不是某家公司收入预期。",
         expectationSource: "Omdia",
-        logicLink: "行业空间 -> GPU / ASIC 需求池",
-        metric: "AI data-center processor spending；GPU vs custom ASIC mix",
-        expectationType: "第三方行业预测与路线拆分",
-        timeframe: "2024A-2030E",
-        confidence: "中：方向有参考价值，但属于第三方预测，不能替代公司订单和收入验证",
-        view: "[Omdia 预计 AI data-center processor spending 从 2024 年约 $123B、2025E 约 $207B 到 2030E 约 $286B，并指出 custom ASICs gaining traction](source:SRC-OMDIA-AI-PROCESSORS-20250828)。第三方预期支持需求池仍扩张，但也提示未来增长会从 GPU 单线扩张转向 GPU 与 custom ASIC 结构变化。",
-        validation: "后续验证第三方预测是否被 NVIDIA / Broadcom / AMD / hyperscaler 的订单、收入和 capex 实际兑现，而不是只停留在 TAM 口径。",
+        sourceType: "第三方行业预测",
+        currentBaseline: "[Omdia 给出的 2024 规模约 $123B，2025E 约 $207B](source:SRC-OMDIA-AI-PROCESSORS-20250828)。",
+        expectedValue: "[2030E 约 $286B](source:SRC-OMDIA-AI-PROCESSORS-20250828)。",
+        impliedGrowth: "从 2024 到 2030E 约 +132%；从 2025E 到 2030E 约 +38%。这说明仍有空间，但增速不再能按 NVIDIA 过去 17 倍收入扩张外推。",
+        chainValidation: "验证需求链条的远期市场池：AI processor spending。它能说明行业池子还在扩张，但不能替代公司订单、收入和估值判断。",
+        refuteTest: "如果第三方预测被下修，或 GPU/ASIC 价格、客户 capex、利用率与收入兑现不匹配，则该远期市场池预期要降级。",
+        expectationRows: [
+          {
+            entity: "Omdia",
+            currentPeriod: "2024A / 2025E",
+            currentMetric: "[AI data-center processor spending：2024 年约 $123B，2025E 约 $207B](source:SRC-OMDIA-AI-PROCESSORS-20250828)。",
+            guidancePeriod: "2030E",
+            guidanceMetric: "[约 $286B，且 custom ASICs gaining traction](source:SRC-OMDIA-AI-PROCESSORS-20250828)。",
+            comparability: "同属第三方 processor spending 口径。行业池子仍扩张，但 2025E 到 2030E 的增速低于 2024-2025 的跃迁，不能机械外推 NVIDIA 早期高增速。",
+          },
+        ],
         sourceIds: ["SRC-OMDIA-AI-PROCESSORS-20250828"],
       },
     ],
@@ -1287,6 +1382,25 @@ function renderLogicChainMetricTable(stages) {
 }
 
 function renderBomFutureCard(item) {
+  if (item.marketExpectation) {
+    const fields = [
+      ["预期来源", item.expectationSource],
+      ["来源类型", item.sourceType],
+      ["当前基准", item.currentBaseline],
+      ["预期值 / 窗口", item.expectedValue],
+      ["隐含增长", item.impliedGrowth],
+      ["验证链条", item.chainValidation],
+      ["证伪条件", item.refuteTest],
+    ].filter(([, value]) => value);
+    return `<details class="bom-future-card bom-expectation-card">
+    <summary><b>${e(item.horizon)}</b>${item.expectationStatus ? `<span>${e(item.expectationStatus)}</span>` : ""}<span class="chevron">›</span></summary>
+    <div class="bom-nested-card-body">
+      <div class="bom-expectation-core"><span>市场现在预期什么？</span><p>${sourceText(item.marketExpectation)}</p></div>
+      ${item.expectationRows?.length ? renderExpectationRowsTable(item.expectationRows) : `<div class="bom-expectation-grid">${fields.map(([label, value]) => `<article class="bom-expectation-field"><span>${e(label)}</span><b>${sourceText(value)}</b></article>`).join("")}</div>`}
+      <div class="bom-question-sources">${sourceChips(item.sourceIds)}</div>
+    </div>
+  </details>`;
+  }
   if (item.expectationSource || item.expectationType || item.logicLink || item.metric || item.validation) {
     const fields = [
       ["预期来源", item.expectationSource],
@@ -1313,6 +1427,22 @@ function renderBomFutureCard(item) {
       <div class="bom-question-sources">${sourceChips(item.sourceIds)}</div>
     </div>
   </details>`;
+}
+
+function renderExpectationRowsTable(rows) {
+  return `<div class="bom-expectation-table table-scroll">
+    <table>
+      <thead><tr><th>公司 / 机构</th><th>现状期间</th><th>现状口径 / 数值</th><th>指引期间</th><th>预期 / 指引口径 / 数值</th><th>口径说明 / 投资含义</th></tr></thead>
+      <tbody>${rows.map((row) => `<tr>
+        <td><b>${e(row.entity)}</b></td>
+        <td>${sourceText(row.currentPeriod ?? "")}</td>
+        <td>${sourceText(row.currentMetric ?? row.current)}</td>
+        <td>${sourceText(row.guidancePeriod ?? "")}</td>
+        <td>${sourceText(row.guidanceMetric ?? row.expectation)}</td>
+        <td>${sourceText(row.comparability ?? row.readThrough)}</td>
+      </tr>`).join("")}</tbody>
+    </table>
+  </div>`;
 }
 
 function renderBomMechanismCard(title, body) {
@@ -2922,12 +3052,13 @@ function e(value) {
 function css() {
   return `
 :root{--bg:#f5f7fb;--surface:rgba(255,255,255,.9);--text:#1d1d1f;--muted:#667085;--line:#d9e0ea;--blue:#0a84ff;--green:#1d9a6c;--amber:#b7791f;--red:#c2413d;--shadow:0 18px 50px rgba(20,32,54,.10)}
-.bom-future-card.bom-expectation-card{background:#fff}.bom-future-card.bom-expectation-card>summary{grid-template-columns:1fr auto auto}.bom-expectation-card>summary>span:not(.chevron){border:1px solid rgba(10,132,255,.18);border-radius:999px;background:#eef7ff;color:var(--blue);font-size:11px;font-weight:900;padding:4px 8px;white-space:nowrap}.bom-expectation-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin-top:10px}.bom-expectation-field{border:1px solid #e8eef7;border-radius:12px;background:#fbfdff;padding:9px}.bom-expectation-field span{display:block;color:#667085;font-size:11px;font-weight:900;margin-bottom:3px}.bom-expectation-field b{display:block;color:#223047;font-size:13px;line-height:1.45}.bom-expectation-validation{border:1px solid rgba(29,154,108,.20);border-radius:12px;background:#f5fffa;margin-top:10px;padding:10px}.bom-expectation-validation>b{display:block;color:#166f52;margin-bottom:4px}.bom-expectation-validation p{margin:0;color:#344054}.bom-expectation-card .bom-question-sources{margin-top:10px}
+.bom-future-card.bom-expectation-card{background:#fff}.bom-future-card.bom-expectation-card>summary{grid-template-columns:1fr auto auto}.bom-expectation-card>summary>span:not(.chevron){border:1px solid rgba(10,132,255,.18);border-radius:999px;background:#eef7ff;color:var(--blue);font-size:11px;font-weight:900;padding:4px 8px;white-space:nowrap}.bom-expectation-core{border:1px solid rgba(10,132,255,.18);border-radius:14px;background:linear-gradient(180deg,#fff,#f7fbff);padding:12px;margin-bottom:10px}.bom-expectation-core span{display:block;color:var(--blue);font-size:11px;font-weight:900;margin-bottom:5px}.bom-expectation-core p{margin:0;color:#223047;font-size:14px;line-height:1.55}.bom-expectation-table{margin-top:10px}.bom-expectation-table table{min-width:1240px}.bom-expectation-table td:first-child{width:130px;color:#223047}.bom-expectation-table td:nth-child(2),.bom-expectation-table td:nth-child(4){width:120px;color:#475467;font-weight:800}.bom-expectation-table td{line-height:1.55}.bom-expectation-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}.bom-expectation-field{border:1px solid #e8eef7;border-radius:12px;background:#fbfdff;padding:9px;min-width:0}.bom-expectation-field span{display:block;color:#667085;font-size:11px;font-weight:900;margin-bottom:3px}.bom-expectation-field b{display:block;color:#223047;font-size:13px;line-height:1.45}.bom-expectation-validation{border:1px solid rgba(29,154,108,.20);border-radius:12px;background:#f5fffa;margin-top:10px;padding:10px}.bom-expectation-validation>b{display:block;color:#166f52;margin-bottom:4px}.bom-expectation-validation p{margin:0;color:#344054}.bom-expectation-card .bom-question-sources{margin-top:10px}
 .representative-companies{margin:12px 0 14px;padding:10px 0;border-top:1px solid #eef2f7;border-bottom:1px solid #eef2f7}.representative-companies>b{display:block;color:var(--blue);font-size:12px;margin-bottom:8px}.representative-companies>div{display:flex;flex-wrap:wrap;gap:8px}.representative-companies span{display:inline-flex;align-items:center;border:1px solid #d9e7f7;border-radius:999px;background:#f7fbff;color:#223047;padding:5px 9px;font-size:12px;font-weight:800}
 *{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;background:radial-gradient(circle at 20% 0%,#e8f2ff 0,transparent 34rem),var(--bg);color:var(--text);line-height:1.62}a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
 .hero{padding:32px clamp(22px,5vw,72px) 48px;background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,255,255,.62));border-bottom:1px solid var(--line)}.hero-inner{max-width:1180px;margin:0 auto}.eyebrow{margin:0 0 10px;color:var(--blue);font-size:12px;font-weight:800;text-transform:uppercase}h1{max-width:980px;margin:0;font-size:clamp(36px,5vw,66px);line-height:1.04;letter-spacing:0}.hero-subtitle{max-width:780px;color:#475467;font-size:19px}.hero-meta{display:flex;gap:10px;flex-wrap:wrap}.hero-meta span,.state-pill{border:1px solid var(--line);border-radius:999px;background:#fff;padding:6px 10px;color:var(--muted);font-size:13px}.top-nav{position:sticky;top:0;z-index:5;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;padding:12px;background:rgba(245,247,251,.82);backdrop-filter:blur(16px);border-bottom:1px solid rgba(217,224,234,.72)}.top-nav a{padding:8px 12px;border:1px solid rgba(10,132,255,.18);border-radius:999px;background:#fff;color:#28506f;font-size:13px}.section{max-width:1180px;margin:0 auto;padding:44px clamp(18px,4vw,36px)}.section-heading{display:flex;align-items:end;justify-content:space-between;margin-bottom:18px}.section-heading h2{margin:0;font-size:clamp(30px,3vw,44px);letter-spacing:0}.muted{color:var(--muted)}
 .goal-card,.industry-module,.qa-card,.source-collapse,.artifact-card{border:1px solid var(--line);border-radius:22px;background:var(--surface);box-shadow:var(--shadow)}.goal-card{padding:22px}.goal-main{font-size:22px;font-weight:800;margin-bottom:16px}.goal-grid,.constraint-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.metric,.constraint-grid article,.chain-bridge-card,.chain-node-lens,.overview-question-card,.chain-company-card,.bom-node-brief article{border:1px solid #e6edf7;border-radius:16px;background:#fff;padding:14px}.metric span,.constraint-grid span,.bom-node-brief span{display:block;color:var(--muted);font-size:12px;font-weight:800}.metric strong{display:block;color:#223047;font-size:18px}.constraint-definition{margin-top:18px}.artifact-title{font-weight:900;color:#26364f;margin-bottom:8px}.industry-overview-section{display:grid;gap:14px}.industry-module{overflow:hidden}.industry-module>summary,.qa-card>summary,.chain-detail-panel>summary,.bom-question-card>summary,.source-collapse>summary{list-style:none;cursor:pointer}.industry-module>summary::-webkit-details-marker,.qa-card>summary::-webkit-details-marker,details>summary::-webkit-details-marker{display:none}.industry-module[open]>summary,.qa-card[open]>summary{border-bottom:1px solid var(--line)}.module-head{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:18px 22px}.module-index{display:inline-flex;width:34px;height:34px;border-radius:999px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900;font-size:12px}.module-head h3{margin:0;font-size:22px}.module-head p{margin:0;color:var(--muted);font-size:14px}.chevron{color:var(--muted);font-weight:900;transition:transform .18s ease}.industry-module[open]>.module-head .chevron,.qa-card[open]>summary .chevron,details[open]>summary>.chevron{transform:rotate(90deg)}.industry-module-body{padding:22px;min-width:0}.chain-explain{padding:0}.chain-plain-summary{font-size:18px;color:#344054;margin-top:0}.chain-research-bridge{border:1px solid rgba(10,132,255,.18);border-radius:18px;background:#fbfdff;padding:16px;margin:18px 0}.chain-bridge-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.chain-node-lens ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0;padding:0;list-style:none}.chain-node-lens b,.chain-bridge-card span{display:block;color:var(--blue);font-size:12px;margin-bottom:4px}.chain-detail-panel{border:1px solid #e6edf7;border-radius:18px;background:#fff;margin-top:12px;overflow:hidden}.chain-detail-panel>summary{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;font-weight:900}.chain-layer-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:16px}.chain-layer-card{border:1px solid #eef2f7;border-radius:16px;background:#fbfcff;padding:14px}.chain-layer-card p{margin:10px 0}.chain-layer-card span{display:block;color:var(--muted);font-size:12px}.chain-simple-flow{display:grid;grid-template-columns:repeat(5,minmax(180px,1fr));gap:10px;padding:16px;overflow-x:auto}.chain-stage-panel{min-width:180px;border:1px solid #e8eef7;border-radius:16px;padding:14px;background:#fbfcff}.chain-stage-panel span{display:inline-flex;width:28px;height:28px;border-radius:50%;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900}.chain-relationship-graph{margin:0 16px 16px;padding:14px;border:1px dashed #bfd7f5;border-radius:16px;color:#3d536d;background:#f7fbff}.chain-company-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:16px}.company-flow-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.company-flow-grid p{margin:0;border-top:1px solid #eef2f7;padding-top:8px}.company-flow-grid b{display:block;color:#223047}.component-value-chain,.chain-lane-map,.chain-value-flow{min-width:0}.chain-relationship-graph{display:block}.bom-node-brief{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:14px}.bom-node-brief p{margin:4px 0 0}.bom-question-list{display:grid;gap:10px}.bom-question-card{border:1px solid #e3ebf6;border-radius:18px;background:#fff;overflow:hidden}.bom-question-card>summary{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:14px 16px}.bom-question-card[open]>summary{border-bottom:1px solid #edf1f7}.bom-question-index{display:inline-flex;width:28px;height:28px;border-radius:999px;align-items:center;justify-content:center;background:#f0f7ff;color:var(--blue);font-weight:900;font-size:12px}.bom-question-answer{padding:14px 16px;background:#fbfcff}.bom-question-answer p{margin:0 0 10px}.bom-question-sources{display:flex;gap:6px;flex-wrap:wrap}.bom-demand-study{display:grid;gap:14px}.bom-demand-thesis{border:1px solid rgba(10,132,255,.18);border-radius:16px;background:#fff;padding:14px;color:#26364f}.bom-demand-steps{display:grid;gap:10px}.bom-demand-step{display:grid;grid-template-columns:auto 1fr;gap:12px;border:1px solid #e8eef7;border-radius:16px;background:#fff;padding:14px}.bom-demand-step>span{display:inline-flex;width:34px;height:34px;border-radius:999px;align-items:center;justify-content:center;background:#eef7ff;color:var(--blue);font-weight:900;font-size:12px}.bom-demand-step h5{margin:0 0 6px;font-size:15px;color:#223047}.bom-demand-step p{margin:0 0 8px}.bom-demand-table{min-width:980px}.source-chip{display:inline-flex;margin:2px 4px 2px 0;border:1px solid rgba(10,132,255,.2);border-radius:999px;background:#eef7ff;color:var(--blue);padding:3px 8px;font-size:11px}
 .bom-question-research-status{border:1px solid #dbeafe;border-radius:16px;background:#f7fbff;overflow:hidden;margin-bottom:12px}.bom-question-research-status>summary{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:12px;list-style:none;cursor:pointer}.bom-question-research-status[open]>summary{border-bottom:1px solid #dbeafe}.bom-question-research-status summary b{color:#0a66cc}.bom-question-research-status summary span:not(.chevron){color:#667085;font-size:12px;font-weight:900}.bom-question-research-body{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:12px}.bom-question-research-body article{border:1px solid #e7eef8;border-radius:14px;background:#fff;padding:11px}.bom-question-research-body span{display:block;color:var(--blue);font-size:11px;font-weight:900;margin-bottom:4px}.bom-question-research-body p{margin:0;color:#344054;font-size:13px}.bom-s-curve-stage-card{border:1px solid rgba(29,154,108,.24);border-radius:20px;background:linear-gradient(180deg,#fff,#f5fffa);overflow:hidden;margin-top:14px}.bom-s-curve-stage-card>summary{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;list-style:none;cursor:pointer;padding:16px}.bom-s-curve-stage-card[open]>summary{border-bottom:1px solid rgba(29,154,108,.18)}.bom-s-curve-stage-card>summary>span:first-child{display:inline-flex;border:1px solid rgba(29,154,108,.28);border-radius:999px;background:#eaf8f2;color:var(--green);padding:6px 10px;font-size:12px;font-weight:900;white-space:nowrap}.bom-s-curve-stage-card h5,.bom-s-curve-stage-card p{margin:0}.bom-s-curve-stage-card summary b{display:block;color:#173f34;font-size:16px}.bom-s-curve-stage-card summary p{color:#667085;font-size:13px}.bom-stage-rollup-body{display:grid;gap:12px;padding:14px}.bom-stage-source-discipline,.bom-stage-next-signal,.bom-stage-downgrade-signal{border:1px solid #dcefe8;border-radius:16px;background:#fff;padding:12px}.bom-stage-current{border:1px solid #dcefe8;border-radius:16px;background:#f8fffb;padding:12px}.bom-stage-source-discipline>b,.bom-stage-current>b,.bom-stage-next-signal>b,.bom-stage-downgrade-signal>b{display:block;color:#173f34;margin-bottom:5px}.bom-stage-source-discipline p,.bom-stage-current p,.bom-stage-next-signal p,.bom-stage-downgrade-signal p{margin:0;color:#344054}.bom-stage-evidence-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.bom-stage-evidence-grid article{border:1px solid #e7eef8;border-radius:16px;background:#fff;padding:12px}.bom-stage-evidence-grid span{display:inline-flex;border-radius:999px;background:#eef7ff;color:var(--blue);font-size:11px;font-weight:900;padding:4px 8px}.bom-stage-evidence-grid b{display:block;color:#223047;margin:7px 0 5px}.bom-stage-evidence-grid p{margin:0;color:#344054;font-size:13px}.bom-question-four-step{display:grid;gap:12px;margin-bottom:14px}.bom-step-card{border:1px solid #e2ebf6;border-radius:18px;background:#fff;overflow:hidden}.bom-step-card>summary{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:14px;list-style:none;cursor:pointer}.bom-step-card[open]>summary{border-bottom:1px solid #e2ebf6}.bom-step-card>summary span:first-child{display:inline-flex;width:58px;height:26px;border-radius:999px;align-items:center;justify-content:center;background:#eef7ff;color:var(--blue);font-size:11px;font-weight:900}.bom-step-card>summary h5{margin:0;color:#223047;font-size:16px;line-height:1.35}.bom-step-body{display:grid;gap:12px;padding:14px}.bom-step-body>p{margin:0;color:#344054}.bom-metric-rationale-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.bom-metric-rationale-card{border:1px solid #edf2f8;border-radius:16px;background:#fbfdff;padding:12px}.bom-metric-rationale-card span{display:block;color:var(--blue);font-size:11px;font-weight:900;margin-bottom:4px}.bom-metric-rationale-card b{display:block;color:#223047;font-size:14px;margin-bottom:6px}.bom-metric-rationale-card p{margin:0;color:#344054;font-size:13px}.bom-history-metric-list{display:grid;gap:16px}.bom-history-metric-paragraph{display:grid;gap:8px;padding:0 0 14px;border-bottom:1px solid #e7edf6}.bom-history-metric-paragraph:last-child{border-bottom:0;padding-bottom:0}.bom-history-metric-text{margin:0;color:#344054}.bom-history-metric-text b{display:block;color:#223047;margin-bottom:4px}.bom-future-grid,.bom-mechanism-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.bom-mechanism-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.bom-future-card,.bom-mechanism-card,.bom-question-verdict{border:1px solid #edf2f8;border-radius:16px;background:#fbfdff;overflow:hidden}.bom-future-card>summary,.bom-mechanism-card>summary{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;list-style:none;cursor:pointer;padding:12px}.bom-future-card[open]>summary,.bom-mechanism-card[open]>summary{border-bottom:1px solid #edf2f8}.bom-nested-card-body,.bom-question-verdict{padding:12px}.bom-future-card b,.bom-mechanism-card b,.bom-question-verdict b{display:block;color:#223047}.bom-nested-card-body p,.bom-question-verdict p{margin:0;color:#344054}.bom-question-supporting-detail{display:grid;gap:12px;margin-top:12px;border-top:1px solid #e7edf6;padding-top:12px}
+.bom-future-grid{display:grid;grid-template-columns:1fr;gap:14px}.bom-future-card{min-width:0}
 .bom-logic-chain-panel{border:1px solid #e1eaf6;border-radius:18px;background:#fbfdff;overflow:hidden}.bom-logic-chain-panel>summary{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:13px;list-style:none;cursor:pointer}.bom-logic-chain-panel[open]>summary{border-bottom:1px solid #e1eaf6}.bom-logic-chain-panel summary b{color:#0a66cc}.bom-logic-chain-panel summary span:not(.chevron){color:#667085;font-size:12px;font-weight:900}.bom-logic-chain-table{padding:12px}.bom-logic-chain-table table{min-width:980px}.bom-logic-chain-row td:first-child b{color:#0a66cc}.bom-logic-stage-stack{display:grid;gap:12px}.bom-logic-stage-card{border:1px solid #e1eaf6;border-radius:18px;background:#fbfdff;overflow:hidden}.bom-logic-stage-card>summary{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:13px;list-style:none;cursor:pointer}.bom-logic-stage-card[open]>summary{border-bottom:1px solid #e1eaf6}.bom-logic-stage-card .stage-index{display:inline-flex;width:58px;height:28px;border-radius:999px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-size:11px;font-weight:900}.bom-logic-stage-card summary b{display:block;color:#0a66cc;font-size:12px}.bom-logic-stage-card summary strong{display:block;color:#223047;font-size:16px;line-height:1.3}.bom-logic-stage-body{display:grid;gap:10px;padding:13px}.bom-logic-stage-card p{margin:0;color:#344054}.bom-stage-history,.bom-stage-current{border:1px solid #edf2f8;border-radius:16px;background:#fff;padding:12px}.bom-stage-history>b,.bom-stage-current>b{display:block;color:#223047;margin-bottom:6px}.metric-point-count{display:inline-flex;width:max-content;max-width:100%;border:1px solid #e0e8f4;border-radius:999px;background:#fff;color:#667085;padding:3px 8px;font-size:11px;font-weight:900;margin-top:8px}.metric-data-table,.metric-trend-gap{border:1px solid #eef3f9;border-radius:14px;background:#fbfdff;padding:10px}.metric-data-table>b,.metric-trend-gap>b{display:block;color:#667085;font-size:11px;margin-bottom:4px}.metric-data-table p,.metric-trend-gap p{margin:0;color:#344054;font-size:13px}.metric-data-rows{display:grid;gap:0;margin-top:10px;border:1px solid #e6edf7;border-radius:12px;overflow:hidden;background:#fff}.metric-data-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:8px 10px;border-top:1px solid #eef2f7}.metric-data-row:first-child{border-top:0}.metric-data-row span{color:#344054;font-size:12px}.metric-data-row strong{color:#223047;font-size:12px;text-align:right}.metric-data-head{background:#f6f9fd}.metric-data-head b{color:#667085;font-size:11px;text-transform:uppercase}.metric-multi-series-data .metric-data-row{grid-template-columns:minmax(120px,.8fr) 1fr auto}
 .bom-demand-logic-chain{display:grid;gap:10px}.bom-demand-logic-step{display:grid;grid-template-columns:auto 1fr;gap:12px;border:1px solid #edf2f8;border-radius:16px;background:#fbfdff;padding:12px}.bom-demand-logic-step>span{display:inline-flex;width:34px;height:34px;border-radius:999px;align-items:center;justify-content:center;background:#eef7ff;color:var(--blue);font-weight:900;font-size:12px}.bom-demand-logic-step b{display:block;color:#223047;margin-bottom:5px}.bom-demand-logic-step p{margin:0 0 6px;color:#344054}.bom-demand-logic-step em{font-style:normal;color:#667085;font-size:12px;font-weight:800}
 .research-narrative{display:grid;gap:18px}.narrative-head{border:1px solid rgba(10,132,255,.16);border-radius:18px;background:linear-gradient(180deg,#fff,#f7fbff);padding:18px}.narrative-head span{display:block;color:var(--blue);font-size:12px;font-weight:900;margin-bottom:6px}.narrative-head h4{margin:0 0 10px;font-size:24px;line-height:1.25;color:#1f2d3d}.narrative-head p{margin:0;color:#344054;font-size:16px}.logic-flow{display:grid;grid-template-columns:repeat(5,minmax(150px,1fr));gap:8px;align-items:stretch}.flow-step{border:1px solid #dceafa;border-radius:16px;background:#fff;padding:12px;min-width:150px}.flow-step span{display:inline-flex;width:28px;height:28px;border-radius:999px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900;font-size:12px;margin-bottom:8px}.flow-step p{margin:0;color:#26364f;font-weight:800;line-height:1.45}.flow-arrow{display:none}.narrative-prose{display:grid;gap:12px;border-left:3px solid #0a84ff;padding-left:16px}.narrative-prose p{margin:0;color:#2f3d52;font-size:15px}.narrative-data-table{min-width:1040px}.narrative-bottom{display:grid;grid-template-columns:1fr 1fr;gap:12px}.investment-takeaway,.bear-case-box{border:1px solid #e4ebf5;border-radius:18px;background:#fff;padding:16px}.investment-takeaway b,.bear-case-box b{display:block;color:#223047;margin-bottom:8px}.investment-takeaway p{margin:0;color:#344054}.bear-case-box{background:#fffafa;border-color:#f0d3d0}.bear-case-box ul{margin:0;padding-left:18px;color:#4b5563}.bear-case-box li+li{margin-top:6px}.demand-chain-audit{border:1px solid rgba(10,132,255,.18);border-radius:18px;background:#f7fbff;padding:14px}.demand-chain-title{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:12px}.demand-chain-title span{color:var(--blue);font-weight:900}.demand-chain-title strong{color:#344054;font-size:13px}.demand-chain-cards{display:grid;gap:12px}.chain-audit-card{border:1px solid #dceafa;border-radius:16px;background:#fff;overflow:hidden}.chain-audit-head{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:14px;border-bottom:1px solid #edf3fb}.chain-audit-head>span{display:inline-flex;width:34px;height:34px;border-radius:999px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900;font-size:12px}.chain-audit-head h5{margin:0 0 4px;font-size:16px;color:#223047}.chain-audit-head p{margin:0;color:var(--muted)}.chain-audit-head strong{border:1px solid rgba(10,132,255,.24);border-radius:999px;background:#f0f7ff;color:var(--blue);padding:5px 10px;font-size:12px;white-space:nowrap}.chain-audit-body-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:14px}.chain-audit-body-grid div{border:1px solid #eef2f7;border-radius:14px;background:#fbfcff;padding:12px}.chain-audit-body-grid b{display:block;color:#223047;margin-bottom:6px}.chain-audit-body-grid p{margin:0;color:#3d536d}.chain-audit-verdict{display:flex;justify-content:space-between;gap:12px;align-items:center;border-top:1px solid #edf3fb;padding:12px 14px}.chain-audit-verdict>span{color:#667085;font-size:12px;font-weight:800}.qa-card{margin:12px 0;overflow:hidden}.qa-card summary{display:grid;grid-template-columns:auto 1fr auto auto;gap:12px;align-items:center;padding:14px 16px}.qid{font-weight:900;color:var(--blue)}.qa-count{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:4px 8px}.qa-body{display:grid;gap:10px;padding:14px 16px}.qa-block{border:1px solid #edf1f7;border-radius:16px;background:#fff;padding:12px}.block-title{font-weight:900;color:#27364a;margin-bottom:6px}.qa-card.level-2{margin-left:18px;background:rgba(255,255,255,.82)}.qa-card.level-3{margin-left:28px;background:rgba(247,249,252,.95);border-style:dashed}.l3-meta{display:flex;gap:8px;flex-wrap:wrap}.l3-meta span{border:1px solid #e0e8f4;border-radius:999px;background:#f7fbff;color:#4e5f75;font-size:11px;padding:4px 8px}.overview-answer p{margin:0}.overview-answer-prose{color:#344054}.target-section{display:grid;gap:14px}.table-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}.table-scroll table{min-width:920px;border-collapse:separate;border-spacing:0;width:100%;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}.table-scroll th,.table-scroll td{padding:10px 12px;text-align:left;border-bottom:1px solid #edf1f7;vertical-align:top;font-size:13px}.table-scroll th{background:#f6f9fd;color:#475467;font-size:12px;font-weight:900}.state-actionable_long,.state-watch_only,.state-no_action{display:inline-flex;border-radius:999px;padding:4px 8px;font-weight:900;font-size:12px}.state-actionable_long{color:var(--green);background:#eaf8f2;border:1px solid rgba(29,154,108,.25)}.state-watch_only{color:var(--amber);background:#fff7e6;border:1px solid rgba(183,121,31,.25)}.state-no_action{color:var(--red);background:#fff1f0;border:1px solid rgba(194,65,61,.22)}.source-collapse{padding:16px}.source-collapse summary{font-weight:900;color:#334155}.source-collapse .table-scroll{margin-top:12px}
