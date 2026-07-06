@@ -593,6 +593,145 @@ def validate_report_contract_html(
             "BOM research modules must keep the seven core investment questions; missing "
             + ", ".join(missing_bom_question_labels),
         )
+    if _class_count(html, "bom-question-four-step"):
+        missing_bom_four_step_titles = [
+            title
+            for title in [
+                "研究逻辑链条与应看 Metric",
+                "逻辑环节逐卡：Metric 历史曲线",
+                "市场对这一子部分的未来预期",
+                "第一性原理评估未来趋势",
+            ]
+            if title not in html
+        ]
+        if missing_bom_four_step_titles:
+            _issue(
+                issues,
+                "error",
+                "missing_bom_four_step_titles",
+                "BOM question cards must use the locked four-part logic-chain/history/expectation/first-principles titles; missing "
+                + ", ".join(missing_bom_four_step_titles),
+            )
+        if _class_count(html, "bom-logic-chain-row") < bom_question_cards * 4:
+            _issue(
+                issues,
+                "error",
+                "insufficient_bom_logic_chain_rows",
+                "Each bom-question-card must render a bom-logic-chain-table with several logic rows mapping chain links to metrics",
+            )
+        if _class_count(html, "bom-logic-stage-card") < bom_question_cards * 4:
+            _issue(
+                issues,
+                "error",
+                "insufficient_bom_logic_stage_cards",
+                "Each bom-question-card must render per-link bom-logic-stage-card history cards in bom-step-history",
+            )
+        search_status_count = _class_count(html, "bom-question-research-status")
+        search_status_details_count = _tag_class_count(html, "details", "bom-question-research-status")
+        if search_status_count < bom_question_cards:
+            _issue(
+                issues,
+                "error",
+                "missing_bom_question_search_status",
+                "Each bom-question-card must start with a compact search/evidence status before the verdict; local caches cannot replace question-level search artifacts",
+            )
+        if search_status_count and search_status_details_count != search_status_count:
+            _issue(
+                issues,
+                "error",
+                "static_bom_question_search_status",
+                "BOM question search/evidence status must render as collapsed details cards",
+            )
+        if _open_details_class_count(html, "bom-question-research-status"):
+            _issue(
+                issues,
+                "error",
+                "expanded_bom_question_search_status",
+                "BOM question search/evidence status cards must be collapsed by default",
+            )
+        stage_card_count = _class_count(html, "bom-s-curve-stage-card")
+        stage_card_details_count = _tag_class_count(html, "details", "bom-s-curve-stage-card")
+        if bom_research_modules and stage_card_count < bom_research_modules:
+            _issue(
+                issues,
+                "error",
+                "missing_bom_s_curve_stage_rollup",
+                "Each BOM research module must render one S-curve stage rollup only after its seven question cards are complete",
+            )
+        if stage_card_count and stage_card_details_count != stage_card_count:
+            _issue(
+                issues,
+                "error",
+                "static_bom_s_curve_stage_rollup",
+                "BOM S-curve stage rollups must render as collapsed details cards",
+            )
+        if _open_details_class_count(html, "bom-s-curve-stage-card"):
+            _issue(
+                issues,
+                "error",
+                "expanded_bom_s_curve_stage_rollup",
+                "BOM S-curve stage rollups must be collapsed by default because they are nested rollups",
+            )
+        for required_class in [
+            "bom-stage-current",
+            "bom-stage-evidence-grid",
+            "bom-stage-next-signal",
+            "bom-stage-downgrade-signal",
+            "bom-stage-source-discipline",
+        ]:
+            if stage_card_count and _class_count(html, required_class) == 0:
+                _issue(
+                    issues,
+                    "error",
+                    f"missing_{required_class.replace('-', '_')}",
+                    "BOM S-curve stage rollups must include current stage, seven-question evidence, next confirmation signal, downgrade signal, and source discipline",
+                )
+        nested_bom_details_requirements = [
+            ("bom-step-card", bom_question_cards * 4),
+            ("bom-logic-chain-panel", bom_question_cards),
+            ("bom-logic-stage-card", bom_question_cards * 4),
+            ("bom-future-card", bom_question_cards * 2),
+            ("bom-mechanism-card", bom_question_cards * 2),
+        ]
+        for class_name, minimum_count in nested_bom_details_requirements:
+            class_count = _class_count(html, class_name)
+            details_count = _tag_class_count(html, "details", class_name)
+            if class_count < minimum_count:
+                _issue(
+                    issues,
+                    "error",
+                    f"insufficient_{class_name.replace('-', '_')}",
+                    f"Nested BOM structure {class_name} must render enough collapsed detail nodes; expected at least {minimum_count}, found {class_count}",
+                )
+            if class_count and details_count != class_count:
+                _issue(
+                    issues,
+                    "error",
+                    f"static_{class_name.replace('-', '_')}",
+                    f"Nested BOM structure {class_name} must render as clickable details cards with summary headers",
+                )
+            open_count = _open_details_class_count(html, class_name)
+            if open_count:
+                _issue(
+                    issues,
+                    "error",
+                    f"expanded_{class_name.replace('-', '_')}",
+                    f"Nested BOM structure {class_name} must be collapsed by default so users can scan nested titles before opening details",
+                )
+        if not (_class_count(html, "metric-point-count") or _class_count(html, "metric-trend-gap")):
+            _issue(
+                issues,
+                "error",
+                "missing_metric_point_count_or_gap",
+                "BOM metric history must show point counts for curves or explicit metric-trend-gap when fewer than five same-metric points are available",
+            )
+    elif bom_question_cards:
+        _issue(
+            issues,
+            "warn",
+            "legacy_bom_question_structure",
+            "BOM question cards use a legacy structure; refreshed reports should use bom-question-four-step with logic-chain tables and per-link metric history cards",
+        )
     competition_region = _class_region(html, ("industry-module", "industry-competition"), [("industry-module", "industry-chokepoints")])
     if _class_count(html, "industry-competition") and (
         _tag_class_count(html, "details", "competition-bom-card") < 1
@@ -2186,6 +2325,21 @@ def _tag_class_count(html: str, tag: str, *classes: str) -> int:
     pattern = rf"<{re.escape(tag)}\b[^>]*class\s*=\s*(['\"])(.*?)\1"
     for match in re.finditer(pattern, html, flags=re.IGNORECASE | re.DOTALL):
         class_set = set(match.group(2).split())
+        if all(class_name in class_set for class_name in classes):
+            count += 1
+    return count
+
+
+def _open_details_class_count(html: str, *classes: str) -> int:
+    count = 0
+    for match in re.finditer(r"<details\b([^>]*)>", html, flags=re.IGNORECASE | re.DOTALL):
+        attrs = match.group(1)
+        if not re.search(r"\bopen\b", attrs, flags=re.IGNORECASE):
+            continue
+        class_match = re.search(r"class\s*=\s*(['\"])(.*?)\1", attrs, flags=re.IGNORECASE | re.DOTALL)
+        if not class_match:
+            continue
+        class_set = set(class_match.group(2).split())
         if all(class_name in class_set for class_name in classes):
             count += 1
     return count
