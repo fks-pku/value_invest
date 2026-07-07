@@ -8,13 +8,13 @@
       "bom_node_id": "compute",
       "bom_node": "计算加速器 / GPU / ASIC",
       "question_number": 1,
-      "question": "需求是否会大幅增长？",
+      "question": "当前 BOM 的需求是否会被 S 曲线放大拉动？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
       "source_universe_plan": {
@@ -59,6 +59,7 @@
           "SRC-AVGO-FY25-Q3",
           "SRC-AVGO-FY25-Q4",
           "SRC-AVGO-FY26-Q1",
+          "SRC-SA-GB200-BOM-2024",
           "SRC-NVDA-GTC-VERA-RUBIN-20260316",
           "SRC-NVDA-GTC-DYNAMO-20260316",
           "SRC-OMDIA-AI-PROCESSORS-20250828",
@@ -110,6 +111,7 @@
           "SRC-AVGO-FY25-Q3",
           "SRC-AVGO-FY25-Q4",
           "SRC-AVGO-FY26-Q1",
+          "SRC-SA-GB200-BOM-2024",
           "SRC-NVDA-GTC-VERA-RUBIN-20260316",
           "SRC-NVDA-GTC-DYNAMO-20260316",
           "SRC-OMDIA-AI-PROCESSORS-20250828",
@@ -152,6 +154,7 @@
         "SRC-AVGO-FY25-Q3",
         "SRC-AVGO-FY25-Q4",
         "SRC-AVGO-FY26-Q1",
+        "SRC-SA-GB200-BOM-2024",
         "SRC-NVDA-GTC-VERA-RUBIN-20260316",
         "SRC-NVDA-GTC-DYNAMO-20260316",
         "SRC-OMDIA-AI-PROCESSORS-20250828",
@@ -177,607 +180,754 @@
       "bom_node_id": "compute",
       "bom_node": "计算加速器 / GPU / ASIC",
       "question_number": 2,
-      "question": "单位用量是否会提升？",
+      "question": "供给能否跟上？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
-      "search_execution_status": "待逐问搜索",
+      "search_execution_status": "completed",
       "source_universe_plan": {
         "priority_sources": [
-          "company_filings",
-          "earnings_transcripts",
-          "industry_research",
-          "customer_capex_disclosures",
-          "technical_supply_chain_teardowns"
+          "company earnings releases and guidance",
+          "industry processor forecast and technical teardowns",
+          "customer capex / order disclosures",
+          "valuation and market expectation proxies"
         ],
-        "cutoff_policy": "only sources visible on or before 2026-03-28 may strengthen the historical backtest conclusion"
+        "selected_source_ids": [
+          "SRC-TSM-Q4-2025",
+          "SRC-MU-FY26-Q1-PREPARED",
+          "SRC-MU-FY26-Q1",
+          "SRC-DELL-FY25-Q4",
+          "SRC-DELL-FY26-Q1",
+          "SRC-DELL-FY26-Q2-PERFORMANCE",
+          "SRC-DELL-FY26-Q3",
+          "SRC-DELL-FY26-Q4"
+        ],
+        "cutoff_policy": "only sources visible on or before 2026-03-28 strengthen the as-of conclusion; later labels or price action are excluded"
       },
       "exa_search_plan": {
-        "direct_query": "计算加速器 / GPU / ASIC 单位用量是否会提升 AI factory 2026-03-28 revenue orders capacity outlook",
+        "direct_query": "GPU ASIC supply constraint TSMC capex advanced packaging HBM agreements Dell AI server backlog before 2026-03-28",
         "expected_fields": [
-          "metric_history",
-          "future_expectation",
-          "supply_constraint",
-          "pricing_or_margin",
-          "refuting_evidence"
+          "same_metric_history",
+          "company_guidance_or_market_expectation",
+          "current_baseline",
+          "forward_anchor",
+          "refuting_evidence_or_gap"
         ],
-        "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
+        "selected_source_ids": [
+          "SRC-TSM-Q4-2025",
+          "SRC-MU-FY26-Q1-PREPARED",
+          "SRC-MU-FY26-Q1",
+          "SRC-DELL-FY25-Q4",
+          "SRC-DELL-FY26-Q1",
+          "SRC-DELL-FY26-Q2-PERFORMANCE",
+          "SRC-DELL-FY26-Q3",
+          "SRC-DELL-FY26-Q4"
+        ],
+        "retrieval_status": "completed",
+        "gap_rule": "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02"
       },
       "source_ids": [
-        "SRC-SA-GB200-BOM-2024",
-        "SRC-NVDA-GTC-VERA-RUBIN-20260316",
-        "SRC-NVDA-GTC-DYNAMO-20260316"
+        "SRC-TSM-Q4-2025",
+        "SRC-MU-FY26-Q1-PREPARED",
+        "SRC-MU-FY26-Q1",
+        "SRC-DELL-FY25-Q4",
+        "SRC-DELL-FY26-Q1",
+        "SRC-DELL-FY26-Q2-PERFORMANCE",
+        "SRC-DELL-FY26-Q3",
+        "SRC-DELL-FY26-Q4"
       ],
-      "evidence_summary": [],
-      "gap_summary": [],
-      "parser_status": "pending",
-      "completed_at": null,
-      "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
+      "evidence_summary": [
+        "补入 TSMC、Micron、Dell 三条供给链证据，分别覆盖制造、内存和系统交付。"
+      ],
+      "gap_summary": [
+        "缺少 CoWoS 月产能、HBM 各厂有效产能、GPU allocation、lead time 和订单取消率。"
+      ],
+      "parser_status": "gpt_verified_source_parse",
+      "completed_at": "2026-07-07",
+      "verdict_policy": "verdict_written_after_question_level_search_parse_and_explicit_gap_marking"
     },
     {
       "artifact_id": "BOM-SEARCH-compute_q3",
       "bom_node_id": "compute",
       "bom_node": "计算加速器 / GPU / ASIC",
       "question_number": 3,
-      "question": "供给能否跟上？",
+      "question": "谁控制供给？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
-      "search_execution_status": "待逐问搜索",
+      "search_execution_status": "completed",
       "source_universe_plan": {
         "priority_sources": [
-          "company_filings",
-          "earnings_transcripts",
-          "industry_research",
-          "customer_capex_disclosures",
-          "technical_supply_chain_teardowns"
+          "company earnings releases and guidance",
+          "industry processor forecast and technical teardowns",
+          "customer capex / order disclosures",
+          "valuation and market expectation proxies"
         ],
-        "cutoff_policy": "only sources visible on or before 2026-03-28 may strengthen the historical backtest conclusion"
+        "selected_source_ids": [
+          "SRC-NVDA-FY26-Q4",
+          "SRC-AMD-Q4-2025-TOMS",
+          "SRC-AVGO-FY25-Q2",
+          "SRC-AVGO-FY25-Q3",
+          "SRC-AVGO-FY26-Q1",
+          "SRC-TSM-Q4-2025",
+          "SRC-MU-FY26-Q1-PREPARED",
+          "SRC-SKHYNIX-FY25"
+        ],
+        "cutoff_policy": "only sources visible on or before 2026-03-28 strengthen the as-of conclusion; later labels or price action are excluded"
       },
       "exa_search_plan": {
-        "direct_query": "计算加速器 / GPU / ASIC 供给能否跟上 AI factory 2026-03-28 revenue orders capacity outlook",
+        "direct_query": "GPU ASIC supply control NVIDIA AMD Broadcom custom ASIC TSMC HBM market share guidance before 2026-03-28",
         "expected_fields": [
-          "metric_history",
-          "future_expectation",
-          "supply_constraint",
-          "pricing_or_margin",
-          "refuting_evidence"
+          "same_metric_history",
+          "company_guidance_or_market_expectation",
+          "current_baseline",
+          "forward_anchor",
+          "refuting_evidence_or_gap"
         ],
-        "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
+        "selected_source_ids": [
+          "SRC-NVDA-FY26-Q4",
+          "SRC-AMD-Q4-2025-TOMS",
+          "SRC-AVGO-FY25-Q2",
+          "SRC-AVGO-FY25-Q3",
+          "SRC-AVGO-FY26-Q1",
+          "SRC-TSM-Q4-2025",
+          "SRC-MU-FY26-Q1-PREPARED",
+          "SRC-SKHYNIX-FY25"
+        ],
+        "retrieval_status": "completed",
+        "gap_rule": "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02"
       },
       "source_ids": [
-        "SRC-SA-COWOS-HBM-2023",
+        "SRC-NVDA-FY26-Q4",
+        "SRC-AMD-Q4-2025-TOMS",
+        "SRC-AVGO-FY25-Q2",
+        "SRC-AVGO-FY25-Q3",
+        "SRC-AVGO-FY26-Q1",
         "SRC-TSM-Q4-2025",
         "SRC-MU-FY26-Q1-PREPARED",
         "SRC-SKHYNIX-FY25"
       ],
-      "evidence_summary": [],
-      "gap_summary": [],
-      "parser_status": "pending",
-      "completed_at": null,
-      "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
+      "evidence_summary": [
+        "补入 AMD 作为替代玩家量级参考，明确 NVIDIA 主导、Broadcom 第二路线、TSMC/HBM 实物控制三层。"
+      ],
+      "gap_summary": [
+        "缺少 Omdia/Gartner/IDC 的精确 AI accelerator 份额表、云厂自研 ASIC 采购量和客户 allocation。"
+      ],
+      "parser_status": "gpt_verified_source_parse",
+      "completed_at": "2026-07-07",
+      "verdict_policy": "verdict_written_after_question_level_search_parse_and_explicit_gap_marking"
     },
     {
       "artifact_id": "BOM-SEARCH-compute_q4",
       "bom_node_id": "compute",
       "bom_node": "计算加速器 / GPU / ASIC",
       "question_number": 4,
-      "question": "谁控制供给？",
+      "question": "是否已经财务兑现？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
-      "search_execution_status": "待逐问搜索",
+      "search_execution_status": "completed",
       "source_universe_plan": {
         "priority_sources": [
-          "company_filings",
-          "earnings_transcripts",
-          "industry_research",
-          "customer_capex_disclosures",
-          "technical_supply_chain_teardowns"
+          "company earnings releases and guidance",
+          "industry processor forecast and technical teardowns",
+          "customer capex / order disclosures",
+          "valuation and market expectation proxies"
         ],
-        "cutoff_policy": "only sources visible on or before 2026-03-28 may strengthen the historical backtest conclusion"
+        "selected_source_ids": [
+          "SRC-NVDA-FY23-Q4",
+          "SRC-NVDA-FY24-Q2",
+          "SRC-NVDA-FY24-Q4",
+          "SRC-NVDA-FY25-Q2",
+          "SRC-NVDA-FY25-Q4",
+          "SRC-NVDA-FY26-Q2",
+          "SRC-NVDA-FY26-Q3",
+          "SRC-NVDA-FY26-Q4",
+          "SRC-AVGO-FY25-Q2",
+          "SRC-AVGO-FY25-Q3",
+          "SRC-AVGO-FY26-Q1",
+          "SRC-DELL-FY25-Q4",
+          "SRC-DELL-FY26-Q1",
+          "SRC-DELL-FY26-Q2-PERFORMANCE",
+          "SRC-DELL-FY26-Q3",
+          "SRC-DELL-FY26-Q4"
+        ],
+        "cutoff_policy": "only sources visible on or before 2026-03-28 strengthen the as-of conclusion; later labels or price action are excluded"
       },
       "exa_search_plan": {
-        "direct_query": "计算加速器 / GPU / ASIC 谁控制供给 AI factory 2026-03-28 revenue orders capacity outlook",
+        "direct_query": "NVIDIA Data Center revenue Broadcom AI semiconductor revenue Dell AI server backlog guidance financial realization before 2026-03-28",
         "expected_fields": [
-          "metric_history",
-          "future_expectation",
-          "supply_constraint",
-          "pricing_or_margin",
-          "refuting_evidence"
+          "same_metric_history",
+          "company_guidance_or_market_expectation",
+          "current_baseline",
+          "forward_anchor",
+          "refuting_evidence_or_gap"
         ],
-        "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
+        "selected_source_ids": [
+          "SRC-NVDA-FY23-Q4",
+          "SRC-NVDA-FY24-Q2",
+          "SRC-NVDA-FY24-Q4",
+          "SRC-NVDA-FY25-Q2",
+          "SRC-NVDA-FY25-Q4",
+          "SRC-NVDA-FY26-Q2",
+          "SRC-NVDA-FY26-Q3",
+          "SRC-NVDA-FY26-Q4",
+          "SRC-AVGO-FY25-Q2",
+          "SRC-AVGO-FY25-Q3",
+          "SRC-AVGO-FY26-Q1",
+          "SRC-DELL-FY25-Q4",
+          "SRC-DELL-FY26-Q1",
+          "SRC-DELL-FY26-Q2-PERFORMANCE",
+          "SRC-DELL-FY26-Q3",
+          "SRC-DELL-FY26-Q4"
+        ],
+        "retrieval_status": "completed",
+        "gap_rule": "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02"
       },
       "source_ids": [
+        "SRC-NVDA-FY23-Q4",
+        "SRC-NVDA-FY24-Q2",
+        "SRC-NVDA-FY24-Q4",
+        "SRC-NVDA-FY25-Q2",
+        "SRC-NVDA-FY25-Q4",
+        "SRC-NVDA-FY26-Q2",
+        "SRC-NVDA-FY26-Q3",
         "SRC-NVDA-FY26-Q4",
-        "SRC-AVGO-FY25-Q4",
-        "SRC-TSM-Q4-2025",
-        "SRC-MU-FY26-Q1-PREPARED",
-        "SRC-SKHYNIX-FY25"
+        "SRC-AVGO-FY25-Q2",
+        "SRC-AVGO-FY25-Q3",
+        "SRC-AVGO-FY26-Q1",
+        "SRC-DELL-FY25-Q4",
+        "SRC-DELL-FY26-Q1",
+        "SRC-DELL-FY26-Q2-PERFORMANCE",
+        "SRC-DELL-FY26-Q3",
+        "SRC-DELL-FY26-Q4"
       ],
-      "evidence_summary": [],
-      "gap_summary": [],
-      "parser_status": "pending",
-      "completed_at": null,
-      "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
+      "evidence_summary": [
+        "新增 Q1 FY27 NVIDIA outlook、Broadcom Q2 guide、Dell FY27 guide，以 03 形式承接 02 历史数据。"
+      ],
+      "gap_summary": [
+        "缺少 GPU/ASIC ASP、NVIDIA backlog、客户集中、订单取消率和按产品毛利率。"
+      ],
+      "parser_status": "gpt_verified_source_parse",
+      "completed_at": "2026-07-07",
+      "verdict_policy": "verdict_written_after_question_level_search_parse_and_explicit_gap_marking"
     },
     {
       "artifact_id": "BOM-SEARCH-compute_q5",
       "bom_node_id": "compute",
       "bom_node": "计算加速器 / GPU / ASIC",
       "question_number": 5,
-      "question": "是否已经财务兑现？",
+      "question": "市场是否已定价？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
-      "search_execution_status": "待逐问搜索",
+      "search_execution_status": "completed",
       "source_universe_plan": {
         "priority_sources": [
-          "company_filings",
-          "earnings_transcripts",
-          "industry_research",
-          "customer_capex_disclosures",
-          "technical_supply_chain_teardowns"
+          "company earnings releases and guidance",
+          "industry processor forecast and technical teardowns",
+          "customer capex / order disclosures",
+          "valuation and market expectation proxies"
         ],
-        "cutoff_policy": "only sources visible on or before 2026-03-28 may strengthen the historical backtest conclusion"
+        "selected_source_ids": [
+          "SRC-NVDA-FY26-Q4",
+          "SRC-AVGO-FY26-Q1",
+          "SRC-OMDIA-AI-PROCESSORS-20250828"
+        ],
+        "cutoff_policy": "only sources visible on or before 2026-03-28 strengthen the as-of conclusion; later labels or price action are excluded"
       },
       "exa_search_plan": {
-        "direct_query": "计算加速器 / GPU / ASIC 是否已经财务兑现 AI factory 2026-03-28 revenue orders capacity outlook",
+        "direct_query": "NVIDIA Broadcom AI revenue guidance valuation priced in AI accelerator expectations before 2026-03-28",
         "expected_fields": [
-          "metric_history",
-          "future_expectation",
-          "supply_constraint",
-          "pricing_or_margin",
-          "refuting_evidence"
+          "same_metric_history",
+          "company_guidance_or_market_expectation",
+          "current_baseline",
+          "forward_anchor",
+          "refuting_evidence_or_gap"
         ],
-        "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
+        "selected_source_ids": [
+          "SRC-NVDA-FY26-Q4",
+          "SRC-AVGO-FY26-Q1",
+          "SRC-OMDIA-AI-PROCESSORS-20250828"
+        ],
+        "retrieval_status": "completed",
+        "gap_rule": "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02"
       },
       "source_ids": [
         "SRC-NVDA-FY26-Q4",
-        "SRC-AVGO-FY25-Q4",
-        "SRC-DELL-FY26-Q4",
-        "SRC-MSFT-FY26-Q2",
-        "SRC-AMZN-Q4-2025",
-        "SRC-GOOGL-Q4-2025"
+        "SRC-AVGO-FY26-Q1",
+        "SRC-OMDIA-AI-PROCESSORS-20250828"
       ],
-      "evidence_summary": [],
-      "gap_summary": [],
-      "parser_status": "pending",
-      "completed_at": null,
-      "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
+      "evidence_summary": [
+        "补齐 actual vs guidance 和 Omdia 空间预测，明确估值数据仍是核心缺口。"
+      ],
+      "gap_summary": [
+        "缺少 as-of forward PE、EV/Sales、consensus revision、FCF yield 和 reverse DCF。"
+      ],
+      "parser_status": "gpt_verified_source_parse",
+      "completed_at": "2026-07-07",
+      "verdict_policy": "verdict_written_after_question_level_search_parse_and_explicit_gap_marking"
     },
     {
       "artifact_id": "BOM-SEARCH-compute_q6",
       "bom_node_id": "compute",
       "bom_node": "计算加速器 / GPU / ASIC",
       "question_number": 6,
-      "question": "市场是否已定价？",
-      "workflow_order": [
-        "external_search",
-        "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
-      ],
-      "search_execution_status": "待逐问搜索",
-      "source_universe_plan": {
-        "priority_sources": [
-          "company_filings",
-          "earnings_transcripts",
-          "industry_research",
-          "customer_capex_disclosures",
-          "technical_supply_chain_teardowns"
-        ],
-        "cutoff_policy": "only sources visible on or before 2026-03-28 may strengthen the historical backtest conclusion"
-      },
-      "exa_search_plan": {
-        "direct_query": "计算加速器 / GPU / ASIC 市场是否已定价 AI factory 2026-03-28 revenue orders capacity outlook",
-        "expected_fields": [
-          "metric_history",
-          "future_expectation",
-          "supply_constraint",
-          "pricing_or_margin",
-          "refuting_evidence"
-        ],
-        "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
-      },
-      "source_ids": [
-        "SRC-NVDA-FY26-Q4",
-        "SRC-AVGO-FY25-Q4",
-        "SRC-OMDIA-AI-PROCESSORS-20250828"
-      ],
-      "evidence_summary": [],
-      "gap_summary": [],
-      "parser_status": "pending",
-      "completed_at": null,
-      "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
-    },
-    {
-      "artifact_id": "BOM-SEARCH-compute_q7",
-      "bom_node_id": "compute",
-      "bom_node": "计算加速器 / GPU / ASIC",
-      "question_number": 7,
       "question": "反证是什么？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
-      "search_execution_status": "待逐问搜索",
+      "search_execution_status": "completed",
       "source_universe_plan": {
         "priority_sources": [
-          "company_filings",
-          "earnings_transcripts",
-          "industry_research",
-          "customer_capex_disclosures",
-          "technical_supply_chain_teardowns"
+          "company earnings releases and guidance",
+          "industry processor forecast and technical teardowns",
+          "customer capex / order disclosures",
+          "valuation and market expectation proxies"
         ],
-        "cutoff_policy": "only sources visible on or before 2026-03-28 may strengthen the historical backtest conclusion"
+        "selected_source_ids": [
+          "SRC-MSFT-FY26-Q2",
+          "SRC-AMZN-Q4-2025",
+          "SRC-GOOGL-Q4-2025",
+          "SRC-META-Q4-2025",
+          "SRC-ORCL-FY26-Q2",
+          "SRC-TSM-Q4-2025",
+          "SRC-MU-FY26-Q1-PREPARED",
+          "SRC-DELL-FY26-Q4",
+          "SRC-OMDIA-AI-PROCESSORS-20250828",
+          "SRC-AVGO-FY26-Q1",
+          "SRC-NVDA-FY26-Q4"
+        ],
+        "cutoff_policy": "only sources visible on or before 2026-03-28 strengthen the as-of conclusion; later labels or price action are excluded"
       },
       "exa_search_plan": {
-        "direct_query": "计算加速器 / GPU / ASIC 反证是什么 AI factory 2026-03-28 revenue orders capacity outlook",
+        "direct_query": "GPU ASIC demand refutation capex downgrade lead time ASP custom ASIC replacement before 2026-03-28",
         "expected_fields": [
-          "metric_history",
-          "future_expectation",
-          "supply_constraint",
-          "pricing_or_margin",
-          "refuting_evidence"
+          "same_metric_history",
+          "company_guidance_or_market_expectation",
+          "current_baseline",
+          "forward_anchor",
+          "refuting_evidence_or_gap"
         ],
-        "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
+        "selected_source_ids": [
+          "SRC-MSFT-FY26-Q2",
+          "SRC-AMZN-Q4-2025",
+          "SRC-GOOGL-Q4-2025",
+          "SRC-META-Q4-2025",
+          "SRC-ORCL-FY26-Q2",
+          "SRC-TSM-Q4-2025",
+          "SRC-MU-FY26-Q1-PREPARED",
+          "SRC-DELL-FY26-Q4",
+          "SRC-OMDIA-AI-PROCESSORS-20250828",
+          "SRC-AVGO-FY26-Q1",
+          "SRC-NVDA-FY26-Q4"
+        ],
+        "retrieval_status": "completed",
+        "gap_rule": "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02"
       },
       "source_ids": [
+        "SRC-MSFT-FY26-Q2",
         "SRC-AMZN-Q4-2025",
         "SRC-GOOGL-Q4-2025",
-        "SRC-META-Q3-2025",
-        "SRC-AVGO-FY25-Q4",
-        "SRC-OMDIA-AI-PROCESSORS-20250828"
+        "SRC-META-Q4-2025",
+        "SRC-ORCL-FY26-Q2",
+        "SRC-TSM-Q4-2025",
+        "SRC-MU-FY26-Q1-PREPARED",
+        "SRC-DELL-FY26-Q4",
+        "SRC-OMDIA-AI-PROCESSORS-20250828",
+        "SRC-AVGO-FY26-Q1",
+        "SRC-NVDA-FY26-Q4"
       ],
-      "evidence_summary": [],
-      "gap_summary": [],
-      "parser_status": "pending",
-      "completed_at": null,
-      "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
+      "evidence_summary": [
+        "把反证拆为预算、供给质量、路线替代三张卡，并补入对应源。"
+      ],
+      "gap_summary": [
+        "缺少 GPU rental price、lead time、ASP、order cancellation、accelerator utilization 和 AI ROI 可比序列。"
+      ],
+      "parser_status": "gpt_verified_source_parse",
+      "completed_at": "2026-07-07",
+      "verdict_policy": "verdict_written_after_question_level_search_parse_and_explicit_gap_marking"
     },
     {
       "artifact_id": "BOM-SEARCH-manufacturing_q1",
       "bom_node_id": "manufacturing",
       "bom_node": "先进制程与先进封装",
       "question_number": 1,
-      "question": "需求是否会大幅增长？",
+      "question": "当前 BOM 的需求是否会被 S 曲线放大拉动？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
-      "search_execution_status": "待逐问搜索",
+      "search_execution_status": "completed",
       "source_universe_plan": {
         "priority_sources": [
-          "company_filings",
-          "earnings_transcripts",
-          "industry_research",
-          "customer_capex_disclosures",
-          "technical_supply_chain_teardowns"
+          "TSMC earnings release and guidance",
+          "SemiAnalysis CoWoS/HBM technical teardown",
+          "advanced packaging supply-chain materials"
         ],
-        "cutoff_policy": "only sources visible on or before 2026-03-28 may strengthen the historical backtest conclusion"
+        "selected_source_ids": [
+          "SRC-TSM-Q4-2025",
+          "SRC-SA-COWOS-HBM-2023",
+          "SRC-SA-GB200-BOM-2024"
+        ],
+        "cutoff_policy": "only sources visible on or before 2026-03-28 strengthen the as-of conclusion; later labels or price action are excluded"
       },
       "exa_search_plan": {
-        "direct_query": "先进制程与先进封装 需求是否会大幅增长 AI factory 2026-03-28 revenue orders capacity outlook",
+        "direct_query": "TSMC advanced technologies gross margin capex CoWoS HBM AI accelerator demand before 2026-03-28",
         "expected_fields": [
-          "metric_history",
-          "future_expectation",
-          "supply_constraint",
-          "pricing_or_margin",
-          "refuting_evidence"
+          "TSMC financial/current baseline",
+          "company guidance",
+          "advanced packaging bottleneck evidence",
+          "direct capacity gap"
         ],
-        "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
+        "selected_source_ids": [
+          "SRC-TSM-Q4-2025",
+          "SRC-SA-COWOS-HBM-2023",
+          "SRC-SA-GB200-BOM-2024"
+        ],
+        "retrieval_status": "completed",
+        "gap_rule": "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02"
       },
       "source_ids": [
         "SRC-TSM-Q4-2025",
-        "SRC-SA-COWOS-HBM-2023"
+        "SRC-SA-COWOS-HBM-2023",
+        "SRC-SA-GB200-BOM-2024"
       ],
-      "evidence_summary": [],
-      "gap_summary": [],
-      "parser_status": "pending",
-      "completed_at": null,
-      "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
+      "evidence_summary": [
+        "TSMC 官方财务与 capex 指引已补入；SemiAnalysis CoWoS/HBM 拆解已补入。"
+      ],
+      "gap_summary": [
+        "缺少 CoWoS 月产能、客户 allocation、先进封装 ASP 和交期序列。"
+      ],
+      "parser_status": "gpt_verified_source_parse",
+      "completed_at": "2026-07-07",
+      "verdict_policy": "verdict_written_after_question_level_search_parse_and_explicit_gap_marking"
     },
     {
       "artifact_id": "BOM-SEARCH-manufacturing_q2",
       "bom_node_id": "manufacturing",
       "bom_node": "先进制程与先进封装",
       "question_number": 2,
-      "question": "单位用量是否会提升？",
-      "workflow_order": [
-        "external_search",
-        "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
-      ],
-      "search_execution_status": "待逐问搜索",
-      "source_universe_plan": {
-        "priority_sources": [
-          "company_filings",
-          "earnings_transcripts",
-          "industry_research",
-          "customer_capex_disclosures",
-          "technical_supply_chain_teardowns"
-        ],
-        "cutoff_policy": "only sources visible on or before 2026-03-28 may strengthen the historical backtest conclusion"
-      },
-      "exa_search_plan": {
-        "direct_query": "先进制程与先进封装 单位用量是否会提升 AI factory 2026-03-28 revenue orders capacity outlook",
-        "expected_fields": [
-          "metric_history",
-          "future_expectation",
-          "supply_constraint",
-          "pricing_or_margin",
-          "refuting_evidence"
-        ],
-        "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
-      },
-      "source_ids": [
-        "SRC-SA-GB200-BOM-2024",
-        "SRC-SA-COWOS-HBM-2023"
-      ],
-      "evidence_summary": [],
-      "gap_summary": [],
-      "parser_status": "pending",
-      "completed_at": null,
-      "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
-    },
-    {
-      "artifact_id": "BOM-SEARCH-manufacturing_q3",
-      "bom_node_id": "manufacturing",
-      "bom_node": "先进制程与先进封装",
-      "question_number": 3,
       "question": "供给能否跟上？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
-      "search_execution_status": "待逐问搜索",
+      "search_execution_status": "completed",
       "source_universe_plan": {
         "priority_sources": [
-          "company_filings",
-          "earnings_transcripts",
-          "industry_research",
-          "customer_capex_disclosures",
-          "technical_supply_chain_teardowns"
+          "TSMC earnings release and guidance",
+          "SemiAnalysis CoWoS/HBM technical teardown",
+          "advanced packaging supply-chain materials"
         ],
-        "cutoff_policy": "only sources visible on or before 2026-03-28 may strengthen the historical backtest conclusion"
+        "selected_source_ids": [
+          "SRC-TSM-Q4-2025",
+          "SRC-SA-COWOS-HBM-2023",
+          "SRC-SA-GB200-BOM-2024"
+        ],
+        "cutoff_policy": "only sources visible on or before 2026-03-28 strengthen the as-of conclusion; later labels or price action are excluded"
       },
       "exa_search_plan": {
-        "direct_query": "先进制程与先进封装 供给能否跟上 AI factory 2026-03-28 revenue orders capacity outlook",
+        "direct_query": "TSMC 2026 capex CoWoS capacity lead time advanced packaging supply constraint before 2026-03-28",
         "expected_fields": [
-          "metric_history",
-          "future_expectation",
-          "supply_constraint",
-          "pricing_or_margin",
-          "refuting_evidence"
+          "TSMC financial/current baseline",
+          "company guidance",
+          "advanced packaging bottleneck evidence",
+          "direct capacity gap"
         ],
-        "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
+        "selected_source_ids": [
+          "SRC-TSM-Q4-2025",
+          "SRC-SA-COWOS-HBM-2023",
+          "SRC-SA-GB200-BOM-2024"
+        ],
+        "retrieval_status": "completed",
+        "gap_rule": "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02"
       },
       "source_ids": [
-        "SRC-TSM-Q4-2025"
+        "SRC-TSM-Q4-2025",
+        "SRC-SA-COWOS-HBM-2023",
+        "SRC-SA-GB200-BOM-2024"
       ],
-      "evidence_summary": [],
-      "gap_summary": [],
-      "parser_status": "pending",
-      "completed_at": null,
-      "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
+      "evidence_summary": [
+        "补入 TSMC 官方披露和 SemiAnalysis 先进封装拆解。"
+      ],
+      "gap_summary": [
+        "缺少官方 CoWoS 产能、lead time、良率、工具交付和客户 allocation。"
+      ],
+      "parser_status": "gpt_verified_source_parse",
+      "completed_at": "2026-07-07",
+      "verdict_policy": "verdict_written_after_question_level_search_parse_and_explicit_gap_marking"
     },
     {
-      "artifact_id": "BOM-SEARCH-manufacturing_q4",
+      "artifact_id": "BOM-SEARCH-manufacturing_q3",
       "bom_node_id": "manufacturing",
       "bom_node": "先进制程与先进封装",
-      "question_number": 4,
+      "question_number": 3,
       "question": "谁控制供给？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
-      "search_execution_status": "待逐问搜索",
+      "search_execution_status": "completed",
       "source_universe_plan": {
         "priority_sources": [
-          "company_filings",
-          "earnings_transcripts",
-          "industry_research",
-          "customer_capex_disclosures",
-          "technical_supply_chain_teardowns"
+          "TSMC earnings release and guidance",
+          "SemiAnalysis CoWoS/HBM technical teardown",
+          "advanced packaging supply-chain materials"
         ],
-        "cutoff_policy": "only sources visible on or before 2026-03-28 may strengthen the historical backtest conclusion"
+        "selected_source_ids": [
+          "SRC-TSM-Q4-2025",
+          "SRC-SA-COWOS-HBM-2023",
+          "SRC-SA-GB200-BOM-2024"
+        ],
+        "cutoff_policy": "only sources visible on or before 2026-03-28 strengthen the as-of conclusion; later labels or price action are excluded"
       },
       "exa_search_plan": {
-        "direct_query": "先进制程与先进封装 谁控制供给 AI factory 2026-03-28 revenue orders capacity outlook",
+        "direct_query": "TSMC CoWoS control advanced packaging ecosystem allocation qualification AI accelerator before 2026-03-28",
         "expected_fields": [
-          "metric_history",
-          "future_expectation",
-          "supply_constraint",
-          "pricing_or_margin",
-          "refuting_evidence"
+          "TSMC financial/current baseline",
+          "company guidance",
+          "advanced packaging bottleneck evidence",
+          "direct capacity gap"
         ],
-        "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
+        "selected_source_ids": [
+          "SRC-TSM-Q4-2025",
+          "SRC-SA-COWOS-HBM-2023",
+          "SRC-SA-GB200-BOM-2024"
+        ],
+        "retrieval_status": "completed",
+        "gap_rule": "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02"
       },
       "source_ids": [
-        "SRC-TSM-Q4-2025"
+        "SRC-TSM-Q4-2025",
+        "SRC-SA-COWOS-HBM-2023",
+        "SRC-SA-GB200-BOM-2024"
       ],
-      "evidence_summary": [],
-      "gap_summary": [],
-      "parser_status": "pending",
-      "completed_at": null,
-      "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
+      "evidence_summary": [
+        "补入 TSMC 官方披露和 SemiAnalysis 先进封装拆解。"
+      ],
+      "gap_summary": [
+        "缺少 CoWoS/SoIC 等细分产能份额、客户 allocation 和替代供应商资格进度。"
+      ],
+      "parser_status": "gpt_verified_source_parse",
+      "completed_at": "2026-07-07",
+      "verdict_policy": "verdict_written_after_question_level_search_parse_and_explicit_gap_marking"
     },
     {
-      "artifact_id": "BOM-SEARCH-manufacturing_q5",
+      "artifact_id": "BOM-SEARCH-manufacturing_q4",
       "bom_node_id": "manufacturing",
       "bom_node": "先进制程与先进封装",
-      "question_number": 5,
+      "question_number": 4,
       "question": "是否已经财务兑现？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
-      "search_execution_status": "待逐问搜索",
+      "search_execution_status": "completed",
       "source_universe_plan": {
         "priority_sources": [
-          "company_filings",
-          "earnings_transcripts",
-          "industry_research",
-          "customer_capex_disclosures",
-          "technical_supply_chain_teardowns"
+          "TSMC earnings release and guidance",
+          "SemiAnalysis CoWoS/HBM technical teardown",
+          "advanced packaging supply-chain materials"
         ],
-        "cutoff_policy": "only sources visible on or before 2026-03-28 may strengthen the historical backtest conclusion"
+        "selected_source_ids": [
+          "SRC-TSM-Q4-2025",
+          "SRC-SA-COWOS-HBM-2023",
+          "SRC-SA-GB200-BOM-2024"
+        ],
+        "cutoff_policy": "only sources visible on or before 2026-03-28 strengthen the as-of conclusion; later labels or price action are excluded"
       },
       "exa_search_plan": {
-        "direct_query": "先进制程与先进封装 是否已经财务兑现 AI factory 2026-03-28 revenue orders capacity outlook",
+        "direct_query": "TSMC advanced technologies revenue gross margin capex return AI HPC advanced packaging financial realization before 2026-03-28",
         "expected_fields": [
-          "metric_history",
-          "future_expectation",
-          "supply_constraint",
-          "pricing_or_margin",
-          "refuting_evidence"
+          "TSMC financial/current baseline",
+          "company guidance",
+          "advanced packaging bottleneck evidence",
+          "direct capacity gap"
         ],
-        "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
+        "selected_source_ids": [
+          "SRC-TSM-Q4-2025",
+          "SRC-SA-COWOS-HBM-2023",
+          "SRC-SA-GB200-BOM-2024"
+        ],
+        "retrieval_status": "completed",
+        "gap_rule": "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02"
       },
       "source_ids": [
-        "SRC-TSM-Q4-2025"
+        "SRC-TSM-Q4-2025",
+        "SRC-SA-COWOS-HBM-2023",
+        "SRC-SA-GB200-BOM-2024"
       ],
-      "evidence_summary": [],
-      "gap_summary": [],
-      "parser_status": "pending",
-      "completed_at": null,
-      "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
+      "evidence_summary": [
+        "补入 TSMC 官方披露和 SemiAnalysis 先进封装拆解。"
+      ],
+      "gap_summary": [
+        "缺少 AI/HPC 与 advanced packaging 分部收入、毛利、现金回报和客户集中度。"
+      ],
+      "parser_status": "gpt_verified_source_parse",
+      "completed_at": "2026-07-07",
+      "verdict_policy": "verdict_written_after_question_level_search_parse_and_explicit_gap_marking"
     },
     {
-      "artifact_id": "BOM-SEARCH-manufacturing_q6",
+      "artifact_id": "BOM-SEARCH-manufacturing_q5",
       "bom_node_id": "manufacturing",
       "bom_node": "先进制程与先进封装",
-      "question_number": 6,
+      "question_number": 5,
       "question": "市场是否已定价？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
-      "search_execution_status": "待逐问搜索",
+      "search_execution_status": "completed",
       "source_universe_plan": {
         "priority_sources": [
-          "company_filings",
-          "earnings_transcripts",
-          "industry_research",
-          "customer_capex_disclosures",
-          "technical_supply_chain_teardowns"
+          "TSMC earnings release and guidance",
+          "SemiAnalysis CoWoS/HBM technical teardown",
+          "advanced packaging supply-chain materials"
         ],
-        "cutoff_policy": "only sources visible on or before 2026-03-28 may strengthen the historical backtest conclusion"
+        "selected_source_ids": [
+          "SRC-TSM-Q4-2025",
+          "SRC-SA-COWOS-HBM-2023",
+          "SRC-SA-GB200-BOM-2024"
+        ],
+        "cutoff_policy": "only sources visible on or before 2026-03-28 strengthen the as-of conclusion; later labels or price action are excluded"
       },
       "exa_search_plan": {
-        "direct_query": "先进制程与先进封装 市场是否已定价 AI factory 2026-03-28 revenue orders capacity outlook",
+        "direct_query": "TSMC valuation forward PE EPS revision capex ROI AI advanced packaging before 2026-03-28",
         "expected_fields": [
-          "metric_history",
-          "future_expectation",
-          "supply_constraint",
-          "pricing_or_margin",
-          "refuting_evidence"
+          "TSMC financial/current baseline",
+          "company guidance",
+          "advanced packaging bottleneck evidence",
+          "direct capacity gap"
         ],
-        "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
+        "selected_source_ids": [
+          "SRC-TSM-Q4-2025",
+          "SRC-SA-COWOS-HBM-2023",
+          "SRC-SA-GB200-BOM-2024"
+        ],
+        "retrieval_status": "completed",
+        "gap_rule": "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02"
       },
       "source_ids": [
-        "SRC-TSM-Q4-2025"
+        "SRC-TSM-Q4-2025",
+        "SRC-SA-COWOS-HBM-2023",
+        "SRC-SA-GB200-BOM-2024"
       ],
-      "evidence_summary": [],
-      "gap_summary": [],
-      "parser_status": "pending",
-      "completed_at": null,
-      "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
+      "evidence_summary": [
+        "补入 TSMC 官方披露和 SemiAnalysis 先进封装拆解。"
+      ],
+      "gap_summary": [
+        "缺少 as-of 2026-03-28 估值、盈利上修、目标价分布、capex ROI 和地缘风险折价。"
+      ],
+      "parser_status": "gpt_verified_source_parse",
+      "completed_at": "2026-07-07",
+      "verdict_policy": "verdict_written_after_question_level_search_parse_and_explicit_gap_marking"
     },
     {
-      "artifact_id": "BOM-SEARCH-manufacturing_q7",
+      "artifact_id": "BOM-SEARCH-manufacturing_q6",
       "bom_node_id": "manufacturing",
       "bom_node": "先进制程与先进封装",
-      "question_number": 7,
+      "question_number": 6,
       "question": "反证是什么？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
-      "search_execution_status": "待逐问搜索",
+      "search_execution_status": "completed",
       "source_universe_plan": {
         "priority_sources": [
-          "company_filings",
-          "earnings_transcripts",
-          "industry_research",
-          "customer_capex_disclosures",
-          "technical_supply_chain_teardowns"
+          "TSMC earnings release and guidance",
+          "SemiAnalysis CoWoS/HBM technical teardown",
+          "advanced packaging supply-chain materials"
         ],
-        "cutoff_policy": "only sources visible on or before 2026-03-28 may strengthen the historical backtest conclusion"
+        "selected_source_ids": [
+          "SRC-TSM-Q4-2025",
+          "SRC-SA-COWOS-HBM-2023",
+          "SRC-SA-GB200-BOM-2024"
+        ],
+        "cutoff_policy": "only sources visible on or before 2026-03-28 strengthen the as-of conclusion; later labels or price action are excluded"
       },
       "exa_search_plan": {
-        "direct_query": "先进制程与先进封装 反证是什么 AI factory 2026-03-28 revenue orders capacity outlook",
+        "direct_query": "TSMC CoWoS oversupply lead time gross margin capex return refutation before 2026-03-28",
         "expected_fields": [
-          "metric_history",
-          "future_expectation",
-          "supply_constraint",
-          "pricing_or_margin",
-          "refuting_evidence"
+          "TSMC financial/current baseline",
+          "company guidance",
+          "advanced packaging bottleneck evidence",
+          "direct capacity gap"
         ],
-        "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
+        "selected_source_ids": [
+          "SRC-TSM-Q4-2025",
+          "SRC-SA-COWOS-HBM-2023",
+          "SRC-SA-GB200-BOM-2024"
+        ],
+        "retrieval_status": "completed",
+        "gap_rule": "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02"
       },
       "source_ids": [
-        "SRC-TSM-Q4-2025"
+        "SRC-TSM-Q4-2025",
+        "SRC-SA-COWOS-HBM-2023",
+        "SRC-SA-GB200-BOM-2024"
       ],
-      "evidence_summary": [],
-      "gap_summary": [],
-      "parser_status": "pending",
-      "completed_at": null,
-      "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
+      "evidence_summary": [
+        "补入 TSMC 官方披露和 SemiAnalysis 先进封装拆解。"
+      ],
+      "gap_summary": [
+        "缺少 CoWoS lead time、先进封装 ASP、客户订单取消率、利用率和 capex ROI 监控阈值。"
+      ],
+      "parser_status": "gpt_verified_source_parse",
+      "completed_at": "2026-07-07",
+      "verdict_policy": "verdict_written_after_question_level_search_parse_and_explicit_gap_marking"
     },
     {
       "artifact_id": "BOM-SEARCH-memory_q1",
       "bom_node_id": "memory",
       "bom_node": "HBM / 高端内存",
       "question_number": 1,
-      "question": "需求是否会大幅增长？",
+      "question": "当前 BOM 的需求是否会被 S 曲线放大拉动？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
       "source_universe_plan": {
@@ -791,7 +941,7 @@
         "cutoff_policy": "only sources visible on or before 2026-03-28 may strengthen the historical backtest conclusion"
       },
       "exa_search_plan": {
-        "direct_query": "HBM / 高端内存 需求是否会大幅增长 AI factory 2026-03-28 revenue orders capacity outlook",
+        "direct_query": "HBM / 高端内存 当前 BOM 的需求是否会被 S 曲线放大拉动 AI factory 2026-03-28 revenue orders capacity outlook",
         "expected_fields": [
           "metric_history",
           "future_expectation",
@@ -816,57 +966,13 @@
       "bom_node_id": "memory",
       "bom_node": "HBM / 高端内存",
       "question_number": 2,
-      "question": "单位用量是否会提升？",
-      "workflow_order": [
-        "external_search",
-        "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
-      ],
-      "search_execution_status": "待逐问搜索",
-      "source_universe_plan": {
-        "priority_sources": [
-          "company_filings",
-          "earnings_transcripts",
-          "industry_research",
-          "customer_capex_disclosures",
-          "technical_supply_chain_teardowns"
-        ],
-        "cutoff_policy": "only sources visible on or before 2026-03-28 may strengthen the historical backtest conclusion"
-      },
-      "exa_search_plan": {
-        "direct_query": "HBM / 高端内存 单位用量是否会提升 AI factory 2026-03-28 revenue orders capacity outlook",
-        "expected_fields": [
-          "metric_history",
-          "future_expectation",
-          "supply_constraint",
-          "pricing_or_margin",
-          "refuting_evidence"
-        ],
-        "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
-      },
-      "source_ids": [
-        "SRC-MU-FY26-Q1-PREPARED"
-      ],
-      "evidence_summary": [],
-      "gap_summary": [],
-      "parser_status": "pending",
-      "completed_at": null,
-      "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
-    },
-    {
-      "artifact_id": "BOM-SEARCH-memory_q3",
-      "bom_node_id": "memory",
-      "bom_node": "HBM / 高端内存",
-      "question_number": 3,
       "question": "供给能否跟上？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
       "source_universe_plan": {
@@ -901,17 +1007,17 @@
       "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
     },
     {
-      "artifact_id": "BOM-SEARCH-memory_q4",
+      "artifact_id": "BOM-SEARCH-memory_q3",
       "bom_node_id": "memory",
       "bom_node": "HBM / 高端内存",
-      "question_number": 4,
+      "question_number": 3,
       "question": "谁控制供给？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
       "source_universe_plan": {
@@ -947,17 +1053,17 @@
       "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
     },
     {
-      "artifact_id": "BOM-SEARCH-memory_q5",
+      "artifact_id": "BOM-SEARCH-memory_q4",
       "bom_node_id": "memory",
       "bom_node": "HBM / 高端内存",
-      "question_number": 5,
+      "question_number": 4,
       "question": "是否已经财务兑现？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
       "source_universe_plan": {
@@ -993,17 +1099,17 @@
       "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
     },
     {
-      "artifact_id": "BOM-SEARCH-memory_q6",
+      "artifact_id": "BOM-SEARCH-memory_q5",
       "bom_node_id": "memory",
       "bom_node": "HBM / 高端内存",
-      "question_number": 6,
+      "question_number": 5,
       "question": "市场是否已定价？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
       "source_universe_plan": {
@@ -1038,17 +1144,17 @@
       "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
     },
     {
-      "artifact_id": "BOM-SEARCH-memory_q7",
+      "artifact_id": "BOM-SEARCH-memory_q6",
       "bom_node_id": "memory",
       "bom_node": "HBM / 高端内存",
-      "question_number": 7,
+      "question_number": 6,
       "question": "反证是什么？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
       "source_universe_plan": {
@@ -1086,13 +1192,13 @@
       "bom_node_id": "network",
       "bom_node": "高速连接与 AI 网络",
       "question_number": 1,
-      "question": "需求是否会大幅增长？",
+      "question": "当前 BOM 的需求是否会被 S 曲线放大拉动？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
       "source_universe_plan": {
@@ -1106,7 +1212,7 @@
         "cutoff_policy": "only sources visible on or before 2026-03-28 may strengthen the historical backtest conclusion"
       },
       "exa_search_plan": {
-        "direct_query": "高速连接与 AI 网络 需求是否会大幅增长 AI factory 2026-03-28 revenue orders capacity outlook",
+        "direct_query": "高速连接与 AI 网络 当前 BOM 的需求是否会被 S 曲线放大拉动 AI factory 2026-03-28 revenue orders capacity outlook",
         "expected_fields": [
           "metric_history",
           "future_expectation",
@@ -1132,58 +1238,13 @@
       "bom_node_id": "network",
       "bom_node": "高速连接与 AI 网络",
       "question_number": 2,
-      "question": "单位用量是否会提升？",
-      "workflow_order": [
-        "external_search",
-        "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
-      ],
-      "search_execution_status": "待逐问搜索",
-      "source_universe_plan": {
-        "priority_sources": [
-          "company_filings",
-          "earnings_transcripts",
-          "industry_research",
-          "customer_capex_disclosures",
-          "technical_supply_chain_teardowns"
-        ],
-        "cutoff_policy": "only sources visible on or before 2026-03-28 may strengthen the historical backtest conclusion"
-      },
-      "exa_search_plan": {
-        "direct_query": "高速连接与 AI 网络 单位用量是否会提升 AI factory 2026-03-28 revenue orders capacity outlook",
-        "expected_fields": [
-          "metric_history",
-          "future_expectation",
-          "supply_constraint",
-          "pricing_or_margin",
-          "refuting_evidence"
-        ],
-        "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
-      },
-      "source_ids": [
-        "SRC-SA-OPTICAL-2024",
-        "SRC-LC-AI-OPTICS-202501"
-      ],
-      "evidence_summary": [],
-      "gap_summary": [],
-      "parser_status": "pending",
-      "completed_at": null,
-      "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
-    },
-    {
-      "artifact_id": "BOM-SEARCH-network_q3",
-      "bom_node_id": "network",
-      "bom_node": "高速连接与 AI 网络",
-      "question_number": 3,
       "question": "供给能否跟上？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
       "source_universe_plan": {
@@ -1218,17 +1279,17 @@
       "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
     },
     {
-      "artifact_id": "BOM-SEARCH-network_q4",
+      "artifact_id": "BOM-SEARCH-network_q3",
       "bom_node_id": "network",
       "bom_node": "高速连接与 AI 网络",
-      "question_number": 4,
+      "question_number": 3,
       "question": "谁控制供给？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
       "source_universe_plan": {
@@ -1265,17 +1326,17 @@
       "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
     },
     {
-      "artifact_id": "BOM-SEARCH-network_q5",
+      "artifact_id": "BOM-SEARCH-network_q4",
       "bom_node_id": "network",
       "bom_node": "高速连接与 AI 网络",
-      "question_number": 5,
+      "question_number": 4,
       "question": "是否已经财务兑现？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
       "source_universe_plan": {
@@ -1312,17 +1373,17 @@
       "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
     },
     {
-      "artifact_id": "BOM-SEARCH-network_q6",
+      "artifact_id": "BOM-SEARCH-network_q5",
       "bom_node_id": "network",
       "bom_node": "高速连接与 AI 网络",
-      "question_number": 6,
+      "question_number": 5,
       "question": "市场是否已定价？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
       "source_universe_plan": {
@@ -1357,17 +1418,17 @@
       "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
     },
     {
-      "artifact_id": "BOM-SEARCH-network_q7",
+      "artifact_id": "BOM-SEARCH-network_q6",
       "bom_node_id": "network",
       "bom_node": "高速连接与 AI 网络",
-      "question_number": 7,
+      "question_number": 6,
       "question": "反证是什么？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
       "source_universe_plan": {
@@ -1406,13 +1467,13 @@
       "bom_node_id": "powerCooling",
       "bom_node": "电力 / 液冷 / 数据中心基础设施",
       "question_number": 1,
-      "question": "需求是否会大幅增长？",
+      "question": "当前 BOM 的需求是否会被 S 曲线放大拉动？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
       "source_universe_plan": {
@@ -1426,7 +1487,7 @@
         "cutoff_policy": "only sources visible on or before 2026-03-28 may strengthen the historical backtest conclusion"
       },
       "exa_search_plan": {
-        "direct_query": "电力 / 液冷 / 数据中心基础设施 需求是否会大幅增长 AI factory 2026-03-28 revenue orders capacity outlook",
+        "direct_query": "电力 / 液冷 / 数据中心基础设施 当前 BOM 的需求是否会被 S 曲线放大拉动 AI factory 2026-03-28 revenue orders capacity outlook",
         "expected_fields": [
           "metric_history",
           "future_expectation",
@@ -1452,58 +1513,13 @@
       "bom_node_id": "powerCooling",
       "bom_node": "电力 / 液冷 / 数据中心基础设施",
       "question_number": 2,
-      "question": "单位用量是否会提升？",
-      "workflow_order": [
-        "external_search",
-        "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
-      ],
-      "search_execution_status": "待逐问搜索",
-      "source_universe_plan": {
-        "priority_sources": [
-          "company_filings",
-          "earnings_transcripts",
-          "industry_research",
-          "customer_capex_disclosures",
-          "technical_supply_chain_teardowns"
-        ],
-        "cutoff_policy": "only sources visible on or before 2026-03-28 may strengthen the historical backtest conclusion"
-      },
-      "exa_search_plan": {
-        "direct_query": "电力 / 液冷 / 数据中心基础设施 单位用量是否会提升 AI factory 2026-03-28 revenue orders capacity outlook",
-        "expected_fields": [
-          "metric_history",
-          "future_expectation",
-          "supply_constraint",
-          "pricing_or_margin",
-          "refuting_evidence"
-        ],
-        "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
-      },
-      "source_ids": [
-        "SRC-SA-GB200-BOM-2024",
-        "SRC-DO-LIQUID-COOLING-20260108"
-      ],
-      "evidence_summary": [],
-      "gap_summary": [],
-      "parser_status": "pending",
-      "completed_at": null,
-      "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
-    },
-    {
-      "artifact_id": "BOM-SEARCH-powerCooling_q3",
-      "bom_node_id": "powerCooling",
-      "bom_node": "电力 / 液冷 / 数据中心基础设施",
-      "question_number": 3,
       "question": "供给能否跟上？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
       "source_universe_plan": {
@@ -1538,17 +1554,17 @@
       "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
     },
     {
-      "artifact_id": "BOM-SEARCH-powerCooling_q4",
+      "artifact_id": "BOM-SEARCH-powerCooling_q3",
       "bom_node_id": "powerCooling",
       "bom_node": "电力 / 液冷 / 数据中心基础设施",
-      "question_number": 4,
+      "question_number": 3,
       "question": "谁控制供给？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
       "source_universe_plan": {
@@ -1583,17 +1599,17 @@
       "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
     },
     {
-      "artifact_id": "BOM-SEARCH-powerCooling_q5",
+      "artifact_id": "BOM-SEARCH-powerCooling_q4",
       "bom_node_id": "powerCooling",
       "bom_node": "电力 / 液冷 / 数据中心基础设施",
-      "question_number": 5,
+      "question_number": 4,
       "question": "是否已经财务兑现？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
       "source_universe_plan": {
@@ -1627,17 +1643,17 @@
       "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
     },
     {
-      "artifact_id": "BOM-SEARCH-powerCooling_q6",
+      "artifact_id": "BOM-SEARCH-powerCooling_q5",
       "bom_node_id": "powerCooling",
       "bom_node": "电力 / 液冷 / 数据中心基础设施",
-      "question_number": 6,
+      "question_number": 5,
       "question": "市场是否已定价？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
       "source_universe_plan": {
@@ -1671,17 +1687,17 @@
       "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
     },
     {
-      "artifact_id": "BOM-SEARCH-powerCooling_q7",
+      "artifact_id": "BOM-SEARCH-powerCooling_q6",
       "bom_node_id": "powerCooling",
       "bom_node": "电力 / 液冷 / 数据中心基础设施",
-      "question_number": 7,
+      "question_number": 6,
       "question": "反证是什么？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
       "source_universe_plan": {
@@ -1720,13 +1736,13 @@
       "bom_node_id": "system",
       "bom_node": "服务器 / 机柜系统交付",
       "question_number": 1,
-      "question": "需求是否会大幅增长？",
+      "question": "当前 BOM 的需求是否会被 S 曲线放大拉动？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
       "source_universe_plan": {
@@ -1740,7 +1756,7 @@
         "cutoff_policy": "only sources visible on or before 2026-03-28 may strengthen the historical backtest conclusion"
       },
       "exa_search_plan": {
-        "direct_query": "服务器 / 机柜系统交付 需求是否会大幅增长 AI factory 2026-03-28 revenue orders capacity outlook",
+        "direct_query": "服务器 / 机柜系统交付 当前 BOM 的需求是否会被 S 曲线放大拉动 AI factory 2026-03-28 revenue orders capacity outlook",
         "expected_fields": [
           "metric_history",
           "future_expectation",
@@ -1765,57 +1781,13 @@
       "bom_node_id": "system",
       "bom_node": "服务器 / 机柜系统交付",
       "question_number": 2,
-      "question": "单位用量是否会提升？",
-      "workflow_order": [
-        "external_search",
-        "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
-      ],
-      "search_execution_status": "待逐问搜索",
-      "source_universe_plan": {
-        "priority_sources": [
-          "company_filings",
-          "earnings_transcripts",
-          "industry_research",
-          "customer_capex_disclosures",
-          "technical_supply_chain_teardowns"
-        ],
-        "cutoff_policy": "only sources visible on or before 2026-03-28 may strengthen the historical backtest conclusion"
-      },
-      "exa_search_plan": {
-        "direct_query": "服务器 / 机柜系统交付 单位用量是否会提升 AI factory 2026-03-28 revenue orders capacity outlook",
-        "expected_fields": [
-          "metric_history",
-          "future_expectation",
-          "supply_constraint",
-          "pricing_or_margin",
-          "refuting_evidence"
-        ],
-        "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
-      },
-      "source_ids": [
-        "SRC-SA-GB200-BOM-2024"
-      ],
-      "evidence_summary": [],
-      "gap_summary": [],
-      "parser_status": "pending",
-      "completed_at": null,
-      "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
-    },
-    {
-      "artifact_id": "BOM-SEARCH-system_q3",
-      "bom_node_id": "system",
-      "bom_node": "服务器 / 机柜系统交付",
-      "question_number": 3,
       "question": "供给能否跟上？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
       "source_universe_plan": {
@@ -1850,17 +1822,17 @@
       "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
     },
     {
-      "artifact_id": "BOM-SEARCH-system_q4",
+      "artifact_id": "BOM-SEARCH-system_q3",
       "bom_node_id": "system",
       "bom_node": "服务器 / 机柜系统交付",
-      "question_number": 4,
+      "question_number": 3,
       "question": "谁控制供给？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
       "source_universe_plan": {
@@ -1895,17 +1867,17 @@
       "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
     },
     {
-      "artifact_id": "BOM-SEARCH-system_q5",
+      "artifact_id": "BOM-SEARCH-system_q4",
       "bom_node_id": "system",
       "bom_node": "服务器 / 机柜系统交付",
-      "question_number": 5,
+      "question_number": 4,
       "question": "是否已经财务兑现？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
       "source_universe_plan": {
@@ -1940,17 +1912,17 @@
       "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
     },
     {
-      "artifact_id": "BOM-SEARCH-system_q6",
+      "artifact_id": "BOM-SEARCH-system_q5",
       "bom_node_id": "system",
       "bom_node": "服务器 / 机柜系统交付",
-      "question_number": 6,
+      "question_number": 5,
       "question": "市场是否已定价？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
       "source_universe_plan": {
@@ -1984,17 +1956,17 @@
       "verdict_policy": "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap"
     },
     {
-      "artifact_id": "BOM-SEARCH-system_q7",
+      "artifact_id": "BOM-SEARCH-system_q6",
       "bom_node_id": "system",
       "bom_node": "服务器 / 机柜系统交付",
-      "question_number": 7,
+      "question_number": 6,
       "question": "反证是什么？",
       "workflow_order": [
         "external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
-        "bom_s_curve_stage_rollup_after_7_questions"
+        "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
       "source_universe_plan": {

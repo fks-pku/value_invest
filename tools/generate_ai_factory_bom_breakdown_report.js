@@ -185,7 +185,7 @@ function renderHtml() {
 
     <section id="bom" class="section">
       <h2>按 BOM 拆解产业构成与供需斜率</h2>
-      <p class="section-lead">每个节点都用同一张表回答：需求是否会大幅增长、单位用量是否会提升、供给能否跟上、谁控制供给、是否已经财务兑现、市场是否已定价、反证是什么。</p>
+      <p class="section-lead">每个节点都用同一张表回答：当前 BOM 的需求是否会被 S 曲线放大拉动、供给能否跟上、谁控制供给、是否已经财务兑现、市场是否已定价、反证是什么。单位用量弹性并入第一问。</p>
       <div class="bom-stack">${bomNodes.map(renderNode).join("")}</div>
     </section>
 
@@ -334,7 +334,16 @@ function analysisForNode(nodeName) {
       a("反证是什么？", "价格下跌、capex 下修、供给释放、客户延迟", "利用率不足、AI 服务价格下行、客户 ROI 不佳、折旧压力压低 FCF、RPO 不转收入。", ["SRC-AMZN-Q4-2025", "SRC-ORCL-FY26-Q2"]),
     ],
   };
-  return rows[nodeName] || [];
+  return (rows[nodeName] || [])
+    .filter((row) => row.question !== "单位用量是否会提升？")
+    .map((row) => {
+      if (row.question !== "需求是否会大幅增长？") return row;
+      return {
+        ...row,
+        question: "当前 BOM 的需求是否会被 S 曲线放大拉动？",
+        prompt: "需求增长和单位用量弹性",
+      };
+    });
 }
 
 function nodeVerdict(nodeName) {

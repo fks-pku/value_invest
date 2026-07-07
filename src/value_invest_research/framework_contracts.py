@@ -565,18 +565,17 @@ def validate_report_contract_html(
             "行业概况 must expand each BOM node into a clickable details.industry-module.bom-research-module starting from module 02",
         )
     bom_question_cards = _tag_class_count(html, "details", "bom-question-card")
-    if bom_research_modules and bom_question_cards < bom_research_modules * 7:
+    if bom_research_modules and bom_question_cards < bom_research_modules * 6:
         _issue(
             issues,
             "error",
-            "missing_bom_seven_question_cards",
-            "Each BOM research module must embed seven collapsible bom-question-card submodules",
+            "missing_bom_six_question_cards",
+            "Each BOM research module must embed six collapsible bom-question-card submodules",
         )
     missing_bom_question_labels = [
         label
         for label in [
-            "需求是否会大幅增长？",
-            "单位用量是否会提升？",
+            "当前 BOM 的需求是否会被 S 曲线放大拉动？",
             "供给能否跟上？",
             "谁控制供给？",
             "是否已经财务兑现？",
@@ -589,42 +588,58 @@ def validate_report_contract_html(
         _issue(
             issues,
             "error",
-            "missing_bom_seven_question_labels",
-            "BOM research modules must keep the seven core investment questions; missing "
+            "missing_bom_six_question_labels",
+            "BOM research modules must keep the six core investment questions; missing "
             + ", ".join(missing_bom_question_labels),
         )
-    if _class_count(html, "bom-question-four-step"):
-        missing_bom_four_step_titles = [
+    if _class_count(html, "bom-question-stage-flow") or _class_count(html, "bom-question-four-step"):
+        missing_bom_stage_flow_titles = [
             title
             for title in [
-                "研究逻辑链条与应看 Metric",
-                "逻辑环节逐卡：Metric 历史曲线",
-                "市场对这一子部分的未来预期",
-                "第一性原理评估未来趋势",
+                "具体逻辑链条",
+                "Metric 历史与现状",
+                "市场的未来预期",
+                "第一性原理评估",
+                "整体的未来趋势评估",
             ]
             if title not in html
         ]
-        if missing_bom_four_step_titles:
+        if missing_bom_stage_flow_titles:
             _issue(
                 issues,
                 "error",
-                "missing_bom_four_step_titles",
-                "BOM question cards must use the locked four-part logic-chain/history/expectation/first-principles titles; missing "
-                + ", ".join(missing_bom_four_step_titles),
+                "missing_bom_stage_flow_titles",
+                "BOM question cards must use the locked stage-flow titles; missing "
+                + ", ".join(missing_bom_stage_flow_titles),
             )
         if _class_count(html, "bom-logic-chain-row") < bom_question_cards * 4:
             _issue(
                 issues,
                 "error",
                 "insufficient_bom_logic_chain_rows",
-                "Each bom-question-card must render a bom-logic-chain-table with several logic rows mapping chain links to metrics",
+                "Each bom-question-card must render a bom-logic-chain-table with several concrete logic rows; metric selection belongs in the 02 stage cards",
             )
-        if _class_count(html, "bom-logic-stage-card") < bom_question_cards * 4:
+        if _class_count(html, "bom-stage-integrated-card") < bom_question_cards * 4:
             _issue(
                 issues,
                 "error",
-                "insufficient_bom_logic_stage_cards",
-                "Each bom-question-card must render per-link bom-logic-stage-card history cards in bom-step-history",
+                "insufficient_bom_stage_integrated_cards",
+                "Each bom-question-card must render one integrated stage card per logic-chain row, combining metric history, market expectation, and first-principles assessment",
+            )
+        if _class_count(html, "bom-step-final-trend") < bom_question_cards:
+            _issue(
+                issues,
+                "error",
+                "missing_bom_step_final_trend",
+                "Each bom-question-card must render a final overall future trend assessment after the per-stage cards",
+            )
+        integrated_stage_count = _class_count(html, "bom-stage-integrated-card")
+        if integrated_stage_count and _class_count(html, "bom-stage-subcard") < integrated_stage_count * 3:
+            _issue(
+                issues,
+                "error",
+                "insufficient_bom_stage_subcards",
+                "Each integrated stage card must contain metric history/current state, market future expectation, and first-principles subcards",
             )
         search_status_count = _class_count(html, "bom-question-research-status")
         search_status_details_count = _tag_class_count(html, "details", "bom-question-research-status")
@@ -656,7 +671,7 @@ def validate_report_contract_html(
                 issues,
                 "error",
                 "missing_bom_s_curve_stage_rollup",
-                "Each BOM research module must render one S-curve stage rollup only after its seven question cards are complete",
+                "Each BOM research module must render one S-curve stage rollup only after its six question cards are complete",
             )
         if stage_card_count and stage_card_details_count != stage_card_count:
             _issue(
@@ -684,14 +699,16 @@ def validate_report_contract_html(
                     issues,
                     "error",
                     f"missing_{required_class.replace('-', '_')}",
-                    "BOM S-curve stage rollups must include current stage, seven-question evidence, next confirmation signal, downgrade signal, and source discipline",
+                    "BOM S-curve stage rollups must include current stage, six-question evidence, next confirmation signal, downgrade signal, and source discipline",
                 )
         nested_bom_details_requirements = [
-            ("bom-step-card", bom_question_cards * 4),
+            ("bom-step-card", bom_question_cards * 6),
             ("bom-logic-chain-panel", bom_question_cards),
-            ("bom-logic-stage-card", bom_question_cards * 4),
-            ("bom-future-card", bom_question_cards * 2),
-            ("bom-mechanism-card", bom_question_cards * 2),
+            ("bom-stage-integrated-card", bom_question_cards * 4),
+            ("bom-stage-subcard", bom_question_cards * 12),
+            ("bom-future-card", bom_question_cards * 4),
+            ("bom-mechanism-card", bom_question_cards * 8),
+            ("bom-step-final-trend", bom_question_cards),
         ]
         for class_name, minimum_count in nested_bom_details_requirements:
             class_count = _class_count(html, class_name)
@@ -730,7 +747,7 @@ def validate_report_contract_html(
             issues,
             "warn",
             "legacy_bom_question_structure",
-            "BOM question cards use a legacy structure; refreshed reports should use bom-question-four-step with logic-chain tables and per-link metric history cards",
+            "BOM question cards use a legacy structure; refreshed reports should use bom-question-stage-flow with logic-chain tables and integrated per-link history, expectation, and mechanism cards",
         )
     competition_region = _class_region(html, ("industry-module", "industry-competition"), [("industry-module", "industry-chokepoints")])
     if _class_count(html, "industry-competition") and (

@@ -29,8 +29,10 @@ def _render_industry_overview(chain: dict[str, Any], source_url_by_id: dict[str,
     )
     lane_map = _render_chain_lane_map(stage_groups, layers, relationships)
     value_flow = _render_chain_value_flow(chain, relationships)
-    industry_space = _render_industry_space(chain, source_url_by_id, "02")
-    optional_index = 3
+    bom_research_modules = _render_bom_research_modules(chain, source_url_by_id, 2)
+    optional_index = 2 + max(1, len(_extract_bom_taxonomy_nodes(chain)))
+    industry_space = _render_industry_space(chain, source_url_by_id, f"{optional_index:02d}")
+    optional_index += 1
     industry_competition = _render_industry_competition(chain, source_url_by_id, f"{optional_index:02d}")
     if industry_competition:
         optional_index += 1
@@ -66,12 +68,102 @@ def _render_industry_overview(chain: dict[str, Any], source_url_by_id: dict[str,
     </div>
     </div>
   </details>
+  {bom_research_modules}
   {industry_space}
   {industry_competition}
   {industry_chokepoints}
   {industry_key_variables}
 </section>
 """.strip()
+
+
+BOM_S_CURVE_QUESTIONS = [
+    (
+        "当前 BOM 的需求是否会被 S 曲线放大拉动？",
+        "需求增长和单位用量弹性需要一起判断：只要 AI 需求增长，必须说明该 BOM 节点为什么会被同步或放大拉动。",
+    ),
+    ("供给能否跟上？", "判断产能、良率、认证、设备、材料、扩产周期和交付周期是否足以跟上需求斜率。"),
+    ("谁控制供给？", "识别控制有效供给、客户认证、关键技术、生态入口或交付能力的公司。"),
+    ("是否已经财务兑现？", "检查收入、毛利、订单、backlog、RPO、现金流或公司指引是否已经验证机会。"),
+    ("市场是否已定价？", "比较估值、预期、盈利上修空间和隐含增长，判断是否仍有赔率。"),
+    ("反证是什么？", "列出会推翻该节点机会的价格、供给、客户、capex、技术替代和执行触发器。"),
+]
+
+
+def _render_bom_research_modules(chain: dict[str, Any], source_url_by_id: dict[str, str], start_index: int) -> str:
+    nodes = _extract_bom_taxonomy_nodes(chain)
+    component_value_chain = chain.get("component_value_chain") or []
+    cards = []
+    for offset, node in enumerate(nodes):
+        label = node["label"]
+        component = next((row for row in component_value_chain if _row_cells(row, 7) and str(_row_cells(row, 7)[0]).strip() == label), None)
+        cells = _row_cells(component, 7) if component is not None else []
+        receives = str(cells[3] if len(cells) > 3 else node.get("role", "待补该 BOM 的输入。"))
+        produces = str(cells[1] if len(cells) > 1 else label)
+        provides_to = str(cells[4] if len(cells) > 4 else "待补该 BOM 的下游接收方。")
+        verification = str(cells[5] if len(cells) > 5 else "收入、订单、backlog、毛利率、现金流和反证触发器。")
+        source_ids = _extract_source_ids_for_bom_node(chain, label)
+        cards.append(
+            f"""
+  <details class="industry-module bom-research-module">
+    <summary class="module-head"><span class="module-index">{start_index + offset:02d}</span><div><h3>{_e(label)}</h3><p>围绕当前 BOM 节点回答六个 S 曲线投资问题。</p></div><span class="chevron">›</span></summary>
+    <div class="industry-module-body">
+      <div class="bom-node-brief">
+        <article><span>接受什么</span><p>{_e(receives)}</p></article>
+        <article><span>自己生产什么</span><p>{_e(produces)}</p></article>
+        <article><span>提供给谁</span><p>{_e(provides_to)}</p></article>
+        <article><span>验证指标</span><p>{_e(verification)}</p></article>
+      </div>
+      <div class="bom-question-list">{_render_bom_question_list(label, source_ids, source_url_by_id)}</div>
+    </div>
+  </details>
+""".rstrip()
+        )
+    return "\n".join(cards)
+
+
+def _render_bom_question_list(label: str, source_ids: list[str], source_url_by_id: dict[str, str]) -> str:
+    source_chips = "".join(_render_source_chip(source_id, source_url_by_id) for source_id in source_ids[:5])
+    if not source_chips:
+        source_chips = '<span class="source-chip">source-gap</span>'
+    cards = []
+    for index, (question, answer) in enumerate(BOM_S_CURVE_QUESTIONS, start=1):
+        cards.append(
+            f"""
+        <details class="bom-question-card">
+          <summary><span class="bom-question-index">{index}</span><strong>{_e(question)}</strong><span class="chevron">›</span></summary>
+          <div class="bom-question-answer">
+            <p>{_e(label)}：{_e(answer)}</p>
+            <div class="bom-question-sources">{source_chips}</div>
+          </div>
+        </details>
+""".strip()
+        )
+    return "".join(cards)
+
+
+def _extract_source_ids_for_bom_node(chain: dict[str, Any], label: str) -> list[str]:
+    rows = chain.get("industry_space_evidence_pack") or chain.get("industry_space_bom_reasoning") or []
+    source_ids: list[str] = []
+    if isinstance(rows, list):
+        for row in rows:
+            if not isinstance(row, dict):
+                continue
+            row_label = str(row.get("node") or row.get("segment") or row.get("bomNode") or "")
+            if row_label and row_label != label:
+                continue
+            for key in ("sourceIds", "source_ids"):
+                values = row.get(key)
+                if isinstance(values, list):
+                    source_ids.extend(str(value) for value in values if value)
+                elif values:
+                    source_ids.append(str(values))
+            methods = row.get("publicSizingMethods") or row.get("public_sizing_methods") or {}
+            for method in methods.get("methods", []) if isinstance(methods, dict) else []:
+                values = method.get("sourceIds") or method.get("source_ids") or []
+                if isinstance(values, list):
+                    source_ids.extend(str(value) for value in values if value)
+    return list(dict.fromkeys(source_ids))
 
 
 def _render_chain_detail_panel(title: str, description: str, body: str, class_name: str) -> str:

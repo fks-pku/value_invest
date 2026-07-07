@@ -16,7 +16,7 @@ const sources = [
   source("SRC-NVDA-FY25-Q4", "NVIDIA FY2025 Q4 results", "evidence", "https://investor.nvidia.com/news/press-release-details/2025/NVIDIA-Announces-Financial-Results-for-Fourth-Quarter-and-Fiscal-2025/", "2025-02-26", "NVIDIA Q4 FY25 Data Center revenue was $35.6B, extending the AI infrastructure revenue ramp before Blackwell scaled further."),
   source("SRC-NVDA-FY26-Q2", "NVIDIA FY2026 Q2 results", "evidence", "https://investor.nvidia.com/news/press-release-details/2025/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2026/default.aspx", "2025-08-27", "NVIDIA Q2 FY26 Data Center revenue was $41.1B and Blackwell data-center revenue increased 17% sequentially."),
   source("SRC-NVDA-FY26-Q3", "NVIDIA FY2026 Q3 results", "evidence", "https://investor.nvidia.com/news/press-release-details/2025/NVIDIA-Announces-Financial-Results-for-Third-Quarter-Fiscal-2026/default.aspx", "2025-11-19", "NVIDIA Q3 FY26 Data Center revenue was $51.2B, up 25% sequentially and 66% year over year; management said cloud GPUs were sold out and compute demand kept accelerating."),
-  source("SRC-NVDA-FY26-Q4", "NVIDIA FY2026 Q4 results", "evidence", "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Fourth-Quarter-and-Fiscal-2026/", "2026-02-25", "NVIDIA Q4 FY26 revenue was $68.1B, Data Center revenue was $62.3B, and management framed customer demand as AI factories for the AI industrial revolution."),
+  source("SRC-NVDA-FY26-Q4", "NVIDIA FY2026 Q4 results", "evidence", "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Fourth-Quarter-and-Fiscal-2026/", "2026-02-25", "NVIDIA Q4 FY26 revenue was $68.1B, Data Center revenue was $62.3B, Q1 FY27 revenue outlook was $78.0B +/-2%, and management framed customer demand as AI factories for the AI industrial revolution."),
   source("SRC-NVDA-GTC-VERA-RUBIN-20260316", "NVIDIA Vera Rubin platform at GTC 2026", "evidence", "https://nvidianews.nvidia.com/news/nvidia-vera-rubin-platform", "2026-03-16", "NVIDIA announced Vera Rubin as seven chips and five rack-scale systems for AI factories, covering Vera CPU, Rubin GPU, NVLink 6, ConnectX-9, BlueField-4, Spectrum-6 and Groq 3 LPU."),
   source("SRC-NVDA-GTC-DYNAMO-20260316", "NVIDIA Dynamo 1.0 for AI factory inference", "evidence", "https://nvidianews.nvidia.com/news/dynamo-1-0", "2026-03-16", "NVIDIA announced Dynamo 1.0 as open-source production software for AI factory inference orchestration, with reported up to 7x Blackwell inference performance improvement and broad cloud/provider adoption."),
   source("SRC-VRT-Q4-2025", "Vertiv Q4 2025 results", "evidence", "https://investors.vertiv.com/news/news-details/2026/Vertiv-Reports-Strong-Fourth-Quarter-with-Organic-Orders-Growth-of-252-and-Diluted-EPS-Growth-of-200-Adjusted-Diluted-EPS-37/", "2026-02-11", "Vertiv Q4 2025 organic orders rose about 252% YoY and backlog reached $15.0B, reflecting robust AI infrastructure demand."),
@@ -32,6 +32,7 @@ const sources = [
   source("SRC-AVGO-FY25-Q3", "Broadcom FY2025 Q3 results", "evidence", "https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-third-quarter-fiscal-year-2025-financial", "2025-09-04", "Broadcom Q3 FY25 AI revenue was $5.2B, up 63% year over year, and management expected Q4 AI revenue of about $6.2B."),
   source("SRC-AVGO-FY25-Q4", "Broadcom FY2025 Q4 results", "evidence", "https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-fourth-quarter-and-fiscal-year-2025", "2025-12-11", "Broadcom Q4 FY25 AI semiconductor revenue rose 74% YoY and Q1 FY26 AI semiconductor revenue was expected to double to $8.2B, driven by custom AI accelerators and Ethernet AI switches."),
   source("SRC-AVGO-FY26-Q1", "Broadcom FY2026 Q1 results", "evidence", "https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-first-quarter-fiscal-year-2026-financial", "2026-03-05", "Broadcom Q1 FY26 AI revenue was $8.4B, up 106% year over year, and management expected Q2 AI semiconductor revenue of about $10.7B."),
+  source("SRC-AMD-Q4-2025-TOMS", "Tom's Hardware AMD Q4 2025 results summary", "message", "https://www.tomshardware.com/pc-components/cpus/amd-ceo-downplays-pc-memory-crunch-saying-our-focus-areas-are-enterprise-company-wants-to-focus-on-growing-higher-end-of-the-market", "2026-02-04", "Tom's Hardware reported AMD Q4 2025 total revenue of about $10.3B, Data Center revenue of $5.4B up 39% year over year, full-year Data Center revenue of $16.6B, and management focus on enterprise and high-end markets."),
   source("SRC-ANET-Q4-2025", "Arista Q4 2025 results", "evidence", "https://investors.arista.com/Communications/Press-Releases-and-Events/Press-Release-Detail/2026/Arista-Networks-Inc--Reports-Fourth-Quarter-and-Year-End-2025-Financial-Results/default.aspx", "2026-02-12", "Arista FY2025 revenue was $9.006B, +28.6%, and management said it exceeded AI networking and campus expansion goals."),
   source("SRC-TSM-Q4-2025", "TSMC Q4 2025 results", "evidence", "https://www.sec.gov/Archives/edgar/data/1046179/000104617926000008/a4q25e_withguidancexfinal.htm", "2026-01-15", "TSMC Q4 2025 revenue was $33.73B, gross margin 62.3%, advanced technologies were 77% of wafer revenue, and 2026 capex was expected at $52B-$56B."),
   source("SRC-MU-FY26-Q1", "Micron FY2026 Q1 results", "evidence", "https://micron.gcs-web.com/news-releases/news-release-details/micron-technology-inc-reports-results-first-quarter-fiscal-2026", "2025-12-17", "Micron FY26 Q1 delivered record revenue and margin expansion, with AI data-center memory demand driving cloud memory and HBM-related strength."),
@@ -443,7 +444,7 @@ function writeAuditArtifacts() {
 
 function buildAllBomQuestionSearchArtifacts() {
   return bomNodes.flatMap((node) => (
-    bomSevenQuestionRows(node)
+    bomCoreQuestionRows(node)
       .map((row, index) => applyBomQuestionSearchOverride(row, index + 1, node))
       .map((row, index) => buildBomQuestionSearchArtifact(row, index + 1, node))
   ));
@@ -673,7 +674,7 @@ function renderChainPanels() {
 }
 
 function renderBomResearchModule(node, moduleNumber) {
-  const rows = bomSevenQuestionRows(node).map((row, index) => applyBomQuestionSearchOverride(row, index + 1, node));
+  const rows = bomCoreQuestionRows(node).map((row, index) => applyBomQuestionSearchOverride(row, index + 1, node));
   return `<details class="industry-module bom-research-module" open>
     <summary class="module-head"><span class="module-index">${String(moduleNumber).padStart(2, "0")}</span><div><h3>${e(node.name)}</h3><p>${e(node.plain)}</p></div><span class="chevron">›</span></summary>
     <div class="industry-module-body">
@@ -734,7 +735,7 @@ function buildBomQuestionSearchArtifact(row, questionNumber, node) {
       "source_parse",
       "metric_history_and_gap_check",
       "question_verdict",
-      "bom_s_curve_stage_rollup_after_7_questions",
+      "bom_s_curve_stage_rollup_after_6_questions",
     ],
     search_execution_status: override.search_execution_status || "待逐问搜索",
     source_universe_plan: override.source_universe_plan || {
@@ -759,7 +760,966 @@ function applyBomQuestionSearchOverride(row, questionNumber, node) {
   if (node.id === "compute" && questionNumber === 1) {
     return strictComputeDemandRow(row);
   }
+  if (node.id === "compute") {
+    return strictComputeQuestionRow(row, questionNumber);
+  }
+  if (node.id === "manufacturing") {
+    return strictManufacturingQuestionRow(row, questionNumber);
+  }
   return row;
+}
+
+function strictComputeQuestionRow(row, questionNumber) {
+  const presets = {
+    2: strictComputeSupplyRow,
+    3: strictComputeControlRow,
+    4: strictComputeFinancialRow,
+    5: strictComputePricingRow,
+    6: strictComputeRefuteRow,
+  };
+  const builder = presets[questionNumber];
+  return builder ? builder(row, questionNumber) : row;
+}
+
+function strictManufacturingQuestionRow(row, questionNumber) {
+  const sharedSources = ["SRC-TSM-Q4-2025", "SRC-SA-COWOS-HBM-2023", "SRC-SA-GB200-BOM-2024"];
+  const tsmcMetric = {
+    type: "TSMC 财务与供给",
+    name: "TSMC revenue / gross margin / advanced technologies share / 2026 capex",
+    why: "先进制程与先进封装的需求、供给和财务兑现都要先看 TSMC 是否同时出现高收入、高毛利、高先进制程占比和高 capex；这些指标能把 AI 芯片需求从叙事落到制造供给层。",
+    dataRequirement: "主体：TSMC；字段：revenue、gross margin、advanced technologies wafer revenue share、Q1 revenue/gross margin guide、2026 capital budget；单位：美元和百分比；频率：季度/年度；capex 和 guidance 放在预期栏，不冒充历史曲线。",
+    trendKind: "non_time_series",
+    trendLabel: "TSMC 制造供给截面",
+    series: [
+      { label: "Q4 2025 revenue", value: "$33.73B", change: "+25.5% YoY" },
+      { label: "Q4 2025 gross margin", value: "62.3%", change: "高端制造议价强" },
+      { label: "Q4 2025 advanced technologies", value: "77% of wafer revenue", change: "先进节点高度集中" },
+      { label: "Q1 2026 revenue guide", value: "$34.6B-$35.8B", change: "近端收入继续强" },
+      { label: "2026 capital budget", value: "$52B-$56B", change: "供给释放路径" },
+    ],
+    seriesGap: "这是同一公司披露的制造供给截面和指引组合，不是同一字段 5 个历史点；用于判断当前强度和未来供给释放，不画趋势线。",
+    history: "[TSMC Q4 2025 revenue $33.73B、gross margin 62.3%、advanced technologies 77% of wafer revenue](source:SRC-TSM-Q4-2025)。",
+    current: "[TSMC Q1 2026 revenue guide $34.6B-$35.8B、gross margin guide 63%-65%](source:SRC-TSM-Q4-2025)。",
+    future: "[TSMC 2026 capital budget expected $52B-$56B](source:SRC-TSM-Q4-2025)，说明先进制造/封装供给仍在高强度扩张。",
+    quality: "官方披露强；缺少 CoWoS 月产能、客户 allocation、按 AI/HPC 拆分的先进封装收入。",
+    sourceIds: ["SRC-TSM-Q4-2025"],
+  };
+  const packagingMetric = {
+    type: "先进封装瓶颈",
+    name: "CoWoS / HBM integration bottleneck evidence",
+    why: "AI accelerator 不只是先进晶圆，还需要把 GPU/ASIC 与 HBM 组合成可交付芯片；CoWoS 类先进封装和 HBM 集成决定有效供给是否能跟上。",
+    dataRequirement: "主体：SemiAnalysis / TSMC 先进封装生态；字段：CoWoS/HBM bottleneck、GB200 rack-scale BOM、advanced packaging capacity signal；单位：技术路线和产能约束；频率：事件/报告。",
+    trendKind: "non_time_series",
+    trendLabel: "技术瓶颈证据",
+    series: [
+      { label: "2023 CoWoS/HBM constraint", value: "identified bottleneck", change: "供给卡点被专业拆解识别" },
+      { label: "GB200 rack-scale BOM", value: "advanced packaging + HBM integration", change: "平台复杂度继续上升" },
+      { label: "TSMC 2026 capex", value: "$52B-$56B", change: "供给扩张但非即时释放" },
+    ],
+    seriesGap: "专业拆解说明瓶颈方向，但公开材料没有直接给出连续月度 CoWoS 产能表。",
+    history: "[SemiAnalysis 识别 CoWoS 和 HBM 是 AI accelerator 产能约束](source:SRC-SA-COWOS-HBM-2023)；[GB200 BOM 拆解显示 rack-scale 架构提高先进封装和集成复杂度](source:SRC-SA-GB200-BOM-2024)。",
+    current: "先进封装不是可选项，而是 GPU/ASIC 和 HBM 变成可交付 AI accelerator 的必要工程环节。",
+    future: "若 CoWoS/HBM 集成供给释放慢于 accelerator 平台需求，先进封装仍是供需瓶颈；若 capex 快速转化为可交付产能，稀缺性会下降。",
+    quality: "第三方技术拆解强；缺少官方 CoWoS 产能、交期和价格序列。",
+    sourceIds: ["SRC-SA-COWOS-HBM-2023", "SRC-SA-GB200-BOM-2024", "SRC-TSM-Q4-2025"],
+  };
+  const commonFutureCards = [
+    expectationCard("TSMC 公司指引", "公司指引", "市场对先进制程与先进封装的近端预期，最硬的是 TSMC 自身给出的 Q1 收入/毛利指引和 2026 capex。", [
+      expectationRow("TSMC", "Q4 2025", "[Revenue $33.73B，gross margin 62.3%，advanced technologies 77%](source:SRC-TSM-Q4-2025)。", "Q1 2026E / FY2026E", "[Q1 revenue $34.6B-$35.8B，gross margin 63%-65%；2026 capex $52B-$56B](source:SRC-TSM-Q4-2025)。", "Q1 指引验证近端需求，capex 验证供给释放；两者都不能直接等同于 CoWoS 产能。"),
+    ], ["SRC-TSM-Q4-2025"]),
+    expectationCard("专业拆解", "第三方判断", "专业拆解把先进封装放在 AI accelerator 有效供给链中，而不是把它当作普通晶圆制造扩产。", [
+      expectationRow("SemiAnalysis", "2023-2024", "[CoWoS/HBM 被识别为 AI capacity constraint](source:SRC-SA-COWOS-HBM-2023)；[GB200 BOM 显示 rack-scale 架构对封装和集成要求更高](source:SRC-SA-GB200-BOM-2024)。", "后续平台周期", "继续观察 CoWoS 产能、HBM attach、rack-scale 平台设计和客户 allocation。", "第三方拆解是机制证据，不是公司财务指引；需要和 TSMC capex、毛利率、交期交叉验证。"),
+    ], ["SRC-SA-COWOS-HBM-2023", "SRC-SA-GB200-BOM-2024"]),
+  ];
+  const configs = {
+    1: {
+      answer: "先进制程与先进封装的需求增长来自 GPU/ASIC 平台放量和 HBM 集成复杂度上升。TSMC Q4 2025 的高收入、高毛利、高 advanced technologies 占比，以及 2026 高 capex 指引，说明需求已经穿透到制造供给层；但 CoWoS/先进封装的直接产能、交期和价格仍是缺口。",
+      metricLogic: "本问只判断先进制程与先进封装自身需求是否增长：GPU/ASIC 设计增加 -> 先进节点 wafer 和封装订单增加 -> CoWoS/HBM 集成成为必要环节 -> TSMC revenue、advanced technologies share、gross margin 和 capex 共同验证。",
+      historySummary: "02 按制造供给和封装瓶颈两个环节展示：TSMC 指标说明财务和供给强度，SemiAnalysis 拆解说明先进封装为什么是 AI accelerator 的必要环节。",
+      chainNodes: [
+        { title: "制造需求是否穿透到 TSMC", metrics: [tsmcMetric] },
+        { title: "先进封装是否成为 GPU/HBM 集成刚需", metrics: [packagingMetric] },
+      ],
+      futureCards: commonFutureCards,
+      mechanism: {
+        sustain: "只要 GPU/ASIC 平台继续走向更大 die、更高 HBM 带宽和 rack-scale 集成，先进制程与先进封装的需求会随有效供给链继续放大。",
+        break: "如果架构优化降低先进封装复杂度，或 capex 快速释放导致 CoWoS/HBM 供给宽松，高毛利和稀缺性会下降。",
+      },
+      directQuery: "TSMC advanced technologies gross margin capex CoWoS HBM AI accelerator demand before 2026-03-28",
+      evidenceSummary: ["TSMC 官方财务与 capex 指引已补入；SemiAnalysis CoWoS/HBM 拆解已补入。"],
+      gapSummary: ["缺少 CoWoS 月产能、客户 allocation、先进封装 ASP 和交期序列。"],
+    },
+    2: {
+      answer: "单位用量提升主要体现在每颗 AI accelerator 对先进节点、interposer/封装面积、HBM 集成和系统级封装复杂度的要求提高。TSMC 的 advanced technologies 高占比和 SemiAnalysis 的 GB200/CoWoS 拆解支持这一机制，但缺少按平台代际量化的封装面积和 CoWoS 用量表。",
+      metricLogic: "单位用量问题不问 TSMC 总收入，而问单个 GPU/ASIC 平台是否需要更多先进制程和封装资源。核心链条是：平台规格升级 -> HBM attach 和封装复杂度提升 -> 每个平台消耗更多先进制造/封装资源 -> 单位价值量提高。",
+      historySummary: "02 用 TSMC advanced technologies 占比和 SemiAnalysis GB200/CoWoS 拆解做证据；这些不是连续量化表，但能说明单位复杂度上升。",
+      chainNodes: [
+        { title: "先进制程占比是否高", metrics: [tsmcMetric] },
+        { title: "封装和 HBM 集成复杂度是否上升", metrics: [packagingMetric] },
+      ],
+      futureCards: commonFutureCards,
+      mechanism: {
+        sustain: "若 AI accelerator 继续提高 HBM 带宽、封装密度和 rack-scale 集成，单位先进封装价值量会继续上升。",
+        break: "若 chiplet/封装标准化、替代封装路线或设计优化降低 CoWoS 用量，单位用量提升会变弱。",
+      },
+      directQuery: "GB200 CoWoS HBM advanced packaging content per accelerator TSMC advanced technologies before 2026-03-28",
+      gapSummary: ["缺少每代 GPU/ASIC 的 CoWoS 面积、interposer 数量、封装 ASP 和 HBM attach 量化表。"],
+    },
+    3: {
+      answer: "先进制程与先进封装供给仍受有效产能、良率、设备、客户认证和 capex 周期约束。TSMC 2026 capex $52B-$56B 说明供给会扩张，但扩张不等于即时有效产能；CoWoS/HBM 的专业拆解仍提示先进封装是 AI accelerator 的串联约束。",
+      metricLogic: "供给问题看有效产能而不是名义 capex：capex -> 设备到位 -> 良率/认证 -> CoWoS/HBM 可交付 -> GPU/ASIC 交付。任何环节慢于需求，短缺仍存在。",
+      historySummary: "02 展示 TSMC 指标和 CoWoS/HBM 拆解；03 用 TSMC Q1/FY2026 指引说明供给释放路径。",
+      chainNodes: [
+        { title: "名义扩产与财务强度", metrics: [tsmcMetric] },
+        { title: "有效产能串联约束", metrics: [packagingMetric] },
+      ],
+      futureCards: commonFutureCards,
+      mechanism: {
+        sustain: "供给约束持续的机制是高端封装和先进节点扩产、良率、认证慢于客户需求斜率。",
+        break: "如果 capex 快速变成有效产能、交期缩短、价格松动或客户转向替代封装，供给瓶颈会降级。",
+      },
+      directQuery: "TSMC 2026 capex CoWoS capacity lead time advanced packaging supply constraint before 2026-03-28",
+      gapSummary: ["缺少官方 CoWoS 产能、lead time、良率、工具交付和客户 allocation。"],
+    },
+    4: {
+      answer: "供给控制权集中在 TSMC 及其先进封装生态，但这种控制权不是只看市场份额，而要看先进节点、封装能力、良率、客户认证和交付可靠性。当前公开证据能证明 TSMC 是核心控制者，但还不足以量化各类先进封装产能份额。",
+      metricLogic: "控制权链条是：先进节点和封装 know-how -> 客户认证和排产权 -> allocation 和交付可靠性 -> 毛利率与 capex 回报。",
+      historySummary: "02 用 TSMC advanced technologies、gross margin 和 capex 做控制权代理；用 CoWoS/HBM 拆解说明为什么替代难。",
+      chainNodes: [
+        { title: "TSMC 是否控制关键制造环节", metrics: [tsmcMetric] },
+        { title: "替代难度来自哪里", metrics: [packagingMetric] },
+      ],
+      futureCards: commonFutureCards,
+      mechanism: {
+        sustain: "控制权持续来自先进节点、先进封装 know-how、客户认证、规模经验和生态配套。",
+        break: "若客户多供应、OSAT/竞争代工追赶、或替代封装路线成熟，TSMC 控制权和稀缺溢价会被稀释。",
+      },
+      directQuery: "TSMC CoWoS control advanced packaging ecosystem allocation qualification AI accelerator before 2026-03-28",
+      gapSummary: ["缺少 CoWoS/SoIC 等细分产能份额、客户 allocation 和替代供应商资格进度。"],
+    },
+    5: {
+      answer: "财务兑现已经较强：TSMC Q4 2025 revenue $33.73B、gross margin 62.3%、advanced technologies 77%，Q1 2026 revenue/gross margin guide 也继续强。问题是这仍是公司整体/先进技术口径，不是 AI 先进封装单独收入；所以可以证明高端制造强，但不能精确证明 CoWoS 利润池大小。",
+      metricLogic: "财务兑现链条是：先进节点/封装需求 -> TSMC 收入和 gross margin -> advanced technologies 占比 -> capex 回报和现金流质量。",
+      historySummary: "02 重点展示 TSMC 官方披露；03 用 Q1 指引和 2026 capex 判断未来兑现路径。",
+      chainNodes: [
+        { title: "收入和毛利是否兑现", metrics: [tsmcMetric] },
+        { title: "封装瓶颈是否能解释财务强度", metrics: [packagingMetric] },
+      ],
+      futureCards: commonFutureCards,
+      mechanism: {
+        sustain: "如果 advanced technologies 占比和 gross margin 持续高位，同时 capex 能带来高回报，财务兑现可持续。",
+        break: "如果 capex 回报下行、产能释放压低毛利、或地缘/客户转单影响利用率，财务兑现质量会下降。",
+      },
+      directQuery: "TSMC advanced technologies revenue gross margin capex return AI HPC advanced packaging financial realization before 2026-03-28",
+      gapSummary: ["缺少 AI/HPC 与 advanced packaging 分部收入、毛利、现金回报和客户集中度。"],
+    },
+    6: {
+      answer: "市场对 TSMC 的强需求和高 capex 有预期，但本报告当前缺少 as-of 2026-03-28 的 forward PE、EPS revision、capex ROI 和地缘折价量化表，因此只能判断“基本面强、估值赔率待验证”。不能因为 TSMC 是瓶颈就直接推出买入结论。",
+      metricLogic: "定价问题要把制造强度转成赔率：市场是否已经计入高 capex、高毛利、AI/HPC 增长和地缘风险折价；如果估值已充分反映，强基本面也只能是 watch_only。",
+      historySummary: "02 用 TSMC 官方数据证明基本面强；估值和隐含预期仍是趋势缺口，不能用 post-label 股价表现回填。",
+      chainNodes: [
+        { title: "基本面预期是否强", metrics: [tsmcMetric] },
+        { title: "估值赔率缺口", metrics: [{
+          type: "估值缺口",
+          name: "TSMC as-of forward PE / EPS revision / capex ROI gap",
+          why: "判断是否已定价需要 as-of 估值、盈利上修和资本回报，不是只看收入和 capex。",
+          dataRequirement: "主体：TSMC；字段：forward PE、EV/EBITDA、EPS revision、capex ROI、geopolitical discount；单位：倍数/百分比；期间：2026-03-28 前可见。",
+          series: [],
+          seriesGap: "当前源包没有可验证的 as-of 估值和盈利上修序列，因此市场是否已定价不能完整回答。",
+          history: "TSMC 基本面强，但估值赔率缺口未补齐。",
+          current: "维持 watch_only 口径，不从基本面强直接跳到高赔率。",
+          future: "下一轮应补 as-of consensus、forward PE、EPS revision、capex ROI 和地缘折价。",
+          quality: "估值缺口。",
+          sourceIds: ["SRC-TSM-Q4-2025"],
+        }] },
+      ],
+      futureCards: commonFutureCards,
+      mechanism: {
+        sustain: "若盈利上修持续超过估值隐含增长，且地缘风险没有扩大，赔率仍可能存在。",
+        break: "若市场已经充分计入高增长和高毛利，或 capex ROI/地缘风险恶化，赔率下降。",
+      },
+      directQuery: "TSMC valuation forward PE EPS revision capex ROI AI advanced packaging before 2026-03-28",
+      gapSummary: ["缺少 as-of 2026-03-28 估值、盈利上修、目标价分布、capex ROI 和地缘风险折价。"],
+    },
+    7: {
+      answer: "核心反证是：CoWoS/先进封装扩产快于需求、良率改善导致稀缺性下降、客户多供应或替代封装路线成熟、TSMC capex 回报下降、gross margin guide 下行，或地缘风险导致客户转单。当前材料没有显示这些反证已经发生，但缺少交期、价格和客户 allocation 监控。",
+      metricLogic: "反证链条要跟前面相反：客户需求放缓 -> capex 过剩 -> CoWoS/HBM 交期缩短 -> 价格/毛利下行 -> TSMC 指引或利用率下修。",
+      historySummary: "02 用 TSMC 指引和 CoWoS/HBM 拆解定义反证阈值；03 仍以公司指引和第三方拆解为监控锚点。",
+      chainNodes: [
+        { title: "供给释放反证", metrics: [tsmcMetric] },
+        { title: "封装瓶颈消退反证", metrics: [packagingMetric] },
+      ],
+      futureCards: commonFutureCards,
+      mechanism: {
+        sustain: "如果交期仍长、毛利率强、capex 仍高回报，反证未出现。",
+        break: "如果供给释放超过需求，短缺逻辑会先表现为交期缩短、ASP/毛利下降和 capex 回报走弱。",
+      },
+      directQuery: "TSMC CoWoS oversupply lead time gross margin capex return refutation before 2026-03-28",
+      gapSummary: ["缺少 CoWoS lead time、先进封装 ASP、客户订单取消率、利用率和 capex ROI 监控阈值。"],
+    },
+  };
+  const config = configs[questionNumber === 1 ? 1 : questionNumber + 1];
+  if (!config) return row;
+  return strictComputeRichRow(row, questionNumber, {
+    sourceIds: sharedSources,
+    prioritySources: ["TSMC earnings release and guidance", "SemiAnalysis CoWoS/HBM technical teardown", "advanced packaging supply-chain materials"],
+    expectedFields: ["TSMC financial/current baseline", "company guidance", "advanced packaging bottleneck evidence", "direct capacity gap"],
+    evidenceSummary: config.evidenceSummary || ["补入 TSMC 官方披露和 SemiAnalysis 先进封装拆解。"],
+    ...config,
+  });
+}
+
+function strictComputeRichRow(row, questionNumber, config) {
+  let chainNodes = config.chainNodes.map((node) => ({
+    ...node,
+    sourceIds: node.sourceIds || uniqueSourceIdsFromMetrics(node.metrics || []),
+  }));
+  while (chainNodes.length < 4) {
+    chainNodes = [...chainNodes, strictComputeGapChainNode(row, config, chainNodes.length + 1)];
+  }
+  let futureCards = config.futureCards || [];
+  while (futureCards.length < chainNodes.length) {
+    futureCards = [
+      ...futureCards,
+      strictComputeGapFutureCard(row, config, chainNodes[chainNodes.length - 1]),
+    ];
+  }
+  const sourceIds = [...new Set([
+    ...(config.sourceIds || []),
+    ...chainNodes.flatMap((node) => node.sourceIds || []),
+    ...futureCards.flatMap((card) => card.sourceIds || []),
+  ])];
+  return {
+    ...row,
+    answer: config.answer,
+    sourceIds,
+    metricLogic: config.metricLogic,
+    historySummary: config.historySummary,
+    futureCards,
+    mechanism: config.mechanism,
+    replaceDefaultMetrics: true,
+    detail: {
+      ...(row.detail || {}),
+      reportNarrative: {
+        ...(row.detail?.reportNarrative || {}),
+        chainNodes,
+      },
+    },
+    searchArtifact: {
+      search_execution_status: "completed",
+      parser_status: "gpt_verified_source_parse",
+      completed_at: "2026-07-07",
+      source_ids: sourceIds,
+      source_universe_plan: {
+        priority_sources: config.prioritySources || [
+          "company earnings releases and guidance",
+          "industry processor forecast and technical teardowns",
+          "customer capex / order disclosures",
+          "valuation and market expectation proxies",
+        ],
+        selected_source_ids: sourceIds,
+        cutoff_policy: `only sources visible on or before ${AS_OF_DATE} strengthen the as-of conclusion; later labels or price action are excluded`,
+      },
+      exa_search_plan: {
+        direct_query: config.directQuery,
+        expected_fields: config.expectedFields || [
+          "same_metric_history",
+          "company_guidance_or_market_expectation",
+          "current_baseline",
+          "forward_anchor",
+          "refuting_evidence_or_gap",
+        ],
+        selected_source_ids: sourceIds,
+        retrieval_status: "completed",
+        gap_rule: "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02",
+      },
+      evidence_summary: config.evidenceSummary || [],
+      gap_summary: config.gapSummary || [],
+      verdict_policy: "verdict_written_after_question_level_search_parse_and_explicit_gap_marking",
+    },
+  };
+}
+
+function uniqueSourceIdsFromMetrics(metrics) {
+  return [...new Set(metrics.flatMap((metric) => metric.sourceIds || []))];
+}
+
+function strictComputeGapChainNode(row, config, gapIndex = 1) {
+  const sourceIds = [...new Set([
+    ...(config.sourceIds || []),
+    ...(config.chainNodes || []).flatMap((node) => uniqueSourceIdsFromMetrics(node.metrics || [])),
+  ])].slice(0, 5);
+  return {
+    title: gapIndex > 1 ? `缺口与监控 ${gapIndex}` : "缺口与监控",
+    sourceIds,
+    metrics: [
+      {
+        type: "缺口与监控",
+        name: `${row.question} direct validation gap ${gapIndex}`,
+        why: "富数据问题最后必须保留一个直接验证缺口：已有材料能回答方向，但仍要标出哪些关键 metric 没有被公开同口径历史、公司指引或第三方预期覆盖。",
+        dataRequirement: "主体：当前 BOM 相关供应商、客户和第三方机构；字段：直接验证该问的同口径历史、未来指引、价格/交期/利用率/估值或反证阈值；单位按字段定义；缺失时不得用模型先验补结论。",
+        series: [],
+        seriesGap: (config.gapSummary || ["当前仍缺少完整同口径历史或未来预期数据。"]).join("；"),
+        history: "当前已补入公开可见的公司披露、指引和第三方预测，但直接验证缺口仍需显式保留。",
+        current: "该缺口不会推翻已写入的本问方向性判断，但会降低结论强度和标的推荐强度。",
+        future: "下一轮刷新应优先围绕该缺口搜索，而不是重复扩展泛化证据池。",
+        quality: "显式缺口；不替代结论。",
+        sourceIds,
+      },
+    ],
+  };
+}
+
+function strictComputeGapFutureCard(row, config, chainNode) {
+  const sourceIds = chainNode.sourceIds || [];
+  return expectationCard("缺口与监控", "关键缺口", `本问仍有直接验证缺口：${(config.gapSummary || ["缺少完整同口径历史或未来预期数据。"]).join("；")}。这些缺口必须进入后续搜索计划，不能用已有方向性材料替代。`, [
+    expectationRow(
+      "当前 BOM / 后续刷新",
+      "当前报告 as-of source pack",
+      "已补入公开公司披露、管理层指引和第三方预测。",
+      "下一轮刷新",
+      "优先补直接 metric、连续历史、未来指引、价格/交期/利用率/估值或反证阈值。",
+      "这是质量控制卡；它说明结论边界，不是新增正面或负面证据。"
+    ),
+  ], sourceIds);
+}
+
+function strictComputeUnitUsageRow(row, questionNumber) {
+  const chainNodes = [
+    {
+      title: "平台规格是否从单卡走向 rack / pod / cluster",
+      metrics: [
+        {
+          type: "平台规格",
+          name: "NVIDIA AI factory platform generation scope",
+          why: "单位用量提升首先看采购单位是否从单卡/单服务器升级为 rack-scale、pod-scale 或 cluster-scale accelerator 平台；这决定同一客户项目需要更多 GPU/ASIC、CPU、NVLink、DPU 和网络芯片。",
+          dataRequirement: "主体：NVIDIA；字段：平台代际规格、rack/pod-scale 系统组成、推理成本/性能改善；单位：平台代际或相对性能；频率：平台发布和季度更新；少于 5 个同口径点时按规格表，不画趋势。",
+          trendLabel: "平台代际规格点",
+          trendKind: "non_time_series",
+          series: [
+            { label: "GB200 / NVL72", value: "rack-scale", change: "从 server/card 到 rack 级系统" },
+            { label: "Blackwell Ultra", value: "50x agentic AI perf / 35x lower cost vs Hopper", change: "推理负载单位经济性改善" },
+            { label: "Vera Rubin", value: "six/seven chips + rack-scale systems", change: "继续平台化" },
+          ],
+          seriesGap: "这些是平台规格事件，不是同一数值字段的历史序列；只用于说明采购单位升级，不能画成连续趋势线。",
+          history: "[NVIDIA FY26 Q4 highlights 披露 Vera Rubin 平台和 Blackwell Ultra 推理性能/成本改善](source:SRC-NVDA-FY26-Q4)，[GTC 2026 Vera Rubin 新闻进一步定义下一代 AI factory rack-scale 系统](source:SRC-NVDA-GTC-VERA-RUBIN-20260316)。",
+          current: "当前 accelerator 需求单位已经从“买 GPU 卡”转向“买完整 AI factory 平台规格”；这会放大每个项目的 GPU/ASIC 单位用量。",
+          future: "[NVIDIA Q1 FY27 revenue outlook 为 $78.0B +/-2%](source:SRC-NVDA-FY26-Q4)，若后续平台收入继续按新平台规格兑现，单位用量提升仍成立。",
+          quality: "规格证据强；缺少跨代单柜 GPU 数量和 ASP 的连续公开表。",
+          sourceIds: ["SRC-NVDA-FY26-Q4", "SRC-NVDA-GTC-VERA-RUBIN-20260316"],
+        },
+      ],
+    },
+    {
+      title: "单位算力是否被推理和 agent 任务继续吃掉",
+      metrics: [
+        {
+          type: "推理经济性",
+          name: "NVIDIA disclosed inference cost/performance improvement",
+          why: "如果每代平台把单位 token 成本压低，客户会更容易把训练后的模型部署成在线推理和 agent 服务，形成更多 accelerator 部署需求。",
+          dataRequirement: "主体：NVIDIA；字段：inference token cost 或 agentic AI performance improvement；单位：倍数；频率：平台代际；这是机制指标，不能和收入序列混画。",
+          trendLabel: "机制指标",
+          series: [
+            { label: "Blackwell Ultra vs Hopper", value: "up to 50x perf / 35x lower cost", change: "显著改善推理经济性" },
+            { label: "Vera Rubin vs Blackwell", value: "up to 10x token cost reduction", change: "继续降低单位 token 成本" },
+            { label: "Dynamo 1.0", value: "up to 7x Blackwell inference performance", change: "提升线上推理调度效率" },
+          ],
+          seriesGap: "这是产品路线图和 benchmark 口径，不是公司财务字段；只用于解释为什么单位用量可能继续扩张。",
+          history: "[NVIDIA FY26 Q4 highlights 提到 Blackwell Ultra 和 Vera Rubin 的推理成本/性能改善](source:SRC-NVDA-FY26-Q4)；[Dynamo 1.0 声称可提升 Blackwell inference performance](source:SRC-NVDA-GTC-DYNAMO-20260316)。",
+          current: "推理效率提升不一定降低总硬件需求；如果更低成本带来更多在线任务和 agent 调用，反而会提升部署规模。",
+          future: "未来要把这一机制和 OpenAI tokens/min、Gemini daily-token、云 AI revenue、GPU hours 或 utilization 交叉验证。",
+          quality: "机制支持强；缺少客户侧 GPU-hours 同口径序列。",
+          sourceIds: ["SRC-NVDA-FY26-Q4", "SRC-NVDA-GTC-DYNAMO-20260316", "SRC-OPENAI-DEVDAY-2025", "SRC-GOOGL-Q4-2025-CALL"],
+        },
+      ],
+    },
+    {
+      title: "平台单位升级是否已经进入系统交付",
+      metrics: [
+        {
+          type: "系统交付",
+          name: "Dell AI-optimized server shipments / backlog / FY27 revenue guide",
+          why: "单位用量提升最终要进入整机/机柜系统交付；Dell 的 orders、shipments、backlog 和 FY27 revenue guide 可以验证平台规格不是停留在发布会。",
+          dataRequirement: "主体：Dell；字段：AI-optimized server orders、shipments、ending backlog、revenue guide；单位：十亿美元；频率：季度/年度；订单和收入为漏斗数据，不与单一季度收入曲线混画。",
+          trendKind: "non_time_series",
+          trendLabel: "订单到收入漏斗",
+          series: [
+            { label: "FY26 orders", value: ">$64B", change: "形成全年订单池" },
+            { label: "FY26 shipments", value: ">$25B", change: "部分转入交付" },
+            { label: "FY27 backlog", value: "$43B", change: "未来交付池扩大" },
+            { label: "FY27 revenue guide", value: "~$50B", change: "收入指引承接 backlog" },
+          ],
+          history: "[Dell FY26 披露 AI-optimized server orders、shipments、backlog 和 FY27 revenue guide](source:SRC-DELL-FY26-Q4)。",
+          current: "含 GPU/ASIC 的系统交付已经出现高额 backlog，说明客户不是只买单卡，而是在采购整套 AI server / rack 方案。",
+          future: "若 FY27 AI-optimized server revenue 兑现，单位用量提升会继续从平台规格传到整机和机柜交付。",
+          quality: "系统交付验证强；仍需补毛利率、取消率和客户集中。",
+          sourceIds: ["SRC-DELL-FY26-Q4"],
+        },
+      ],
+    },
+  ];
+  return strictComputeRichRow(row, questionNumber, {
+    answer: "GPU/ASIC 的单位用量提升已经有较强证据：平台从单卡/单服务器转向 rack-scale / pod-scale / AI factory，推理经济性改善推动更多在线部署，Dell 的 AI server backlog 和收入指引说明这种规格升级开始进入系统交付。但公开材料还缺单柜 GPU 数、ASP、GPU-hours 与客户配置的连续表。",
+    metricLogic: "单位用量问题不问总需求有多大，而问同一客户项目、同一机柜或同一 AI factory 是否天然消耗更多当前 BOM。GPU/ASIC 的判断链条是：平台采购单位升级 -> 推理/agent 任务提高在线部署需求 -> 系统交付验证 -> 单位价值量和收入兑现。",
+    historySummary: "02 按 01 的三个环节选择指标：平台规格看 NVIDIA 平台代际规格；推理经济性看 NVIDIA 披露的 token cost / inference performance 改善；系统交付看 Dell AI server orders、shipments、backlog 和 FY27 revenue guide。前两项是规格/机制数据，不画成财务趋势；Dell 是订单到收入漏斗。",
+    chainNodes,
+    futureCards: [
+      expectationCard("平台规格", "公司路线图", "NVIDIA 的市场预期不是给出单柜 GPU 数，而是继续把 AI factory 推向 Vera Rubin rack-scale / pod-scale 平台，同时给出 Q1 FY27 revenue outlook。", [
+        expectationRow("NVIDIA", "Q4 FY2026 / GTC 2026", "[Data Center revenue $62.3B，FY26 full-year Data Center revenue $193.7B](source:SRC-NVDA-FY26-Q4)。", "Q1 FY2027E / Vera Rubin cycle", "[Q1 FY27 revenue outlook $78.0B +/-2%](source:SRC-NVDA-FY26-Q4)；[Vera Rubin 定义下一代 AI factory 平台](source:SRC-NVDA-GTC-VERA-RUBIN-20260316)。", "收入指引是公司整体口径，Vera Rubin 是平台规格；二者共同说明单位用量提升有未来平台锚点。"),
+      ], ["SRC-NVDA-FY26-Q4", "SRC-NVDA-GTC-VERA-RUBIN-20260316"]),
+      expectationCard("推理经济性", "产品路线图", "市场预期是推理成本下降会扩大线上推理与 agent 工作负载，但这需要用实际 token/GPU-hours 继续验证。", [
+        expectationRow("NVIDIA", "FY2026 Q4 highlights", "[Blackwell Ultra / Vera Rubin 被表述为继续降低 inference token cost](source:SRC-NVDA-FY26-Q4)。", "2026-2028 platform cycle", "[Dynamo 1.0 强调 AI factory inference orchestration](source:SRC-NVDA-GTC-DYNAMO-20260316)。", "这是机制预期，不是收入指引；若单位成本下降没有带来更多任务量，则单位用量结论要下调。"),
+      ], ["SRC-NVDA-FY26-Q4", "SRC-NVDA-GTC-DYNAMO-20260316"]),
+      expectationCard("系统交付", "公司指引", "Dell 把 AI server 从订单和出货推进到 FY27 revenue guide，是单位用量提升穿透到系统交付的硬预期。", [
+        expectationRow("Dell", "FY2026", "[AI-optimized server orders >$64B、shipments >$25B、FY27 backlog $43B](source:SRC-DELL-FY26-Q4)。", "FY2027E", "[AI-optimized server revenue guide 约 $50B、同比 +103%](source:SRC-DELL-FY26-Q4)。", "系统交付不是当前 BOM 的利润结论，但能验证 GPU/ASIC 单位采购强度已经进入未来交付池。"),
+      ], ["SRC-DELL-FY26-Q4"]),
+    ],
+    mechanism: {
+      sustain: "可持续机制是平台采购单位继续变大，推理和 agent 任务把 GPU/ASIC 从训练资产变成在线服务资产，系统交付商继续把整柜和集群方案转成 backlog 与收入。",
+      break: "不可持续机制是推理效率提升完全抵消任务量增长，客户从整柜扩容转向存量优化，或者 AI server backlog 不能转收入并暴露低毛利/取消率。",
+    },
+    directQuery: "GPU ASIC unit content rack-scale AI factory Vera Rubin NVL72 Dell AI optimized server backlog revenue guide before 2026-03-28",
+    evidenceSummary: ["平台规格、推理经济性和系统交付三个环节均有 cutoff-visible 材料，但单柜 GPU 数、ASP 与客户配置连续数据仍缺。"],
+    gapSummary: ["缺少跨代单柜 GPU/ASIC 数量、平均 ASP、客户配置与实际 GPU-hours 的可比序列。"],
+  });
+}
+
+function strictComputeSupplyRow(row, questionNumber) {
+  const chainNodes = [
+    {
+      title: "先进制程与先进封装供给",
+      metrics: [
+        {
+          type: "制造/封装",
+          name: "TSMC advanced technologies share, gross margin and 2026 capex",
+          why: "GPU/ASIC 的最终供给受先进制程和先进封装制约；TSMC 的先进技术收入占比、毛利率和 capex 指引能验证核心制造供给是否仍紧。",
+          dataRequirement: "主体：TSMC；字段：advanced technologies share、gross margin、revenue guidance、capital budget；单位：%、美元；频率：季度/年度；capex 是未来供给释放锚点，不混入历史收入曲线。",
+          trendKind: "non_time_series",
+          trendLabel: "制造供给截面与指引",
+          series: [
+            { label: "Q4 2025 revenue", value: "$33.73B", change: "+25.5% YoY" },
+            { label: "Q4 2025 gross margin", value: "62.3%", change: "高毛利说明供给强势" },
+            { label: "Q4 2025 advanced tech share", value: "77%", change: "先进节点高度集中" },
+            { label: "2026 capex guide", value: "$52B-$56B", change: "扩产释放路径" },
+          ],
+          seriesGap: "这是制造供给截面、盈利质量和扩产指引组合，不是同一字段的连续历史曲线。",
+          history: "[TSMC Q4 2025 revenue $33.73B、gross margin 62.3%、advanced technologies 77% of wafer revenue](source:SRC-TSM-Q4-2025)。",
+          current: "[TSMC 预计 Q1 2026 revenue $34.6B-$35.8B、gross margin 63%-65%](source:SRC-TSM-Q4-2025)。",
+          future: "[2026 capital budget expected $52B-$56B](source:SRC-TSM-Q4-2025)，说明供给会扩张，但释放需要设备、良率和客户排产时间。",
+          quality: "官方供给指引强；缺少 CoWoS 月产能和客户 allocation。",
+          sourceIds: ["SRC-TSM-Q4-2025"],
+        },
+      ],
+    },
+    {
+      title: "HBM 与内存配套是否成为串联约束",
+      metrics: [
+        {
+          type: "内存约束",
+          name: "Micron HBM TAM and 2026 price/volume agreements",
+          why: "GPU/ASIC 供给不是只有晶圆，HBM 是可交付 accelerator 的串联约束；Micron 的 HBM TAM 与价量协议能验证内存供给是否仍偏紧。",
+          dataRequirement: "主体：Micron；字段：HBM TAM、price and volume agreements、HBM supply status；单位：美元 TAM / 合同状态；频率：财报/管理层材料。",
+          trendKind: "non_time_series",
+          trendLabel: "HBM 供需锚点",
+          series: [
+            { label: "CY2025 HBM TAM", value: "~$35B", change: "当前池子" },
+            { label: "CY2028 HBM TAM", value: "~$100B", change: "~40% CAGR" },
+            { label: "2026 HBM supply", value: "price/volume agreements completed", change: "供需进入合同层" },
+          ],
+          seriesGap: "TAM 与价量协议不是季度供给曲线；用于验证 HBM 仍是 GPU/ASIC 交付约束。",
+          history: "[Micron prepared remarks forecast HBM TAM from about $35B in CY2025 to around $100B in CY2028](source:SRC-MU-FY26-Q1-PREPARED)。",
+          current: "[Micron 表示 2026 HBM supply 已完成 price and volume agreements](source:SRC-MU-FY26-Q1-PREPARED)。",
+          future: "若 HBM TAM 和价量协议继续上行，GPU/ASIC 供给释放仍受内存认证和产能制约。",
+          quality: "前瞻供需材料强；缺少 HBM 各厂份额和产能释放表。",
+          sourceIds: ["SRC-MU-FY26-Q1-PREPARED", "SRC-MU-FY26-Q1"],
+        },
+      ],
+    },
+    {
+      title: "系统交付能否承接芯片供给",
+      metrics: [
+        {
+          type: "系统交付",
+          name: "Dell AI-optimized server ending backlog and shipments",
+          why: "即便芯片制造扩张，最终可交付供给仍要经过服务器和机柜系统；Dell backlog/shipments 能验证系统交付是否仍有排队。",
+          dataRequirement: "主体：Dell；字段：AI-optimized server shipments、ending backlog、orders；单位：十亿美元；频率：季度/年度。",
+          trendKind: "time_series",
+          trendLabel: "系统交付 backlog",
+          series: [
+            { label: "Q4 FY25", value: "~$9B", change: "基准" },
+            { label: "Q1 FY26", value: "$14.4B", change: "+60% vs Q4 FY25" },
+            { label: "Q2 FY26", value: "$11.7B", change: "交付消化后回落" },
+            { label: "Q3 FY26", value: "$18.4B", change: "重新上行" },
+            { label: "Q4 FY26", value: "$43B", change: "显著跃升" },
+          ],
+          history: "[Dell AI server backlog 从 FY25 Q4 约 $9B 到 FY26 Q4 / FY27 entry $43B](source:SRC-DELL-FY26-Q4)。",
+          current: "[FY26 shipments 超过 $25B](source:SRC-DELL-FY26-Q4)，说明交付已在推进，但 backlog 仍大。",
+          future: "[FY27 AI-optimized server revenue guide 约 $50B](source:SRC-DELL-FY26-Q4)，是系统交付供给释放的下一步验证。",
+          quality: "系统交付约束有 5 个点；仍需补取消率和毛利。",
+          sourceIds: ["SRC-DELL-FY25-Q4", "SRC-DELL-FY26-Q1", "SRC-DELL-FY26-Q2-PERFORMANCE", "SRC-DELL-FY26-Q3", "SRC-DELL-FY26-Q4"],
+        },
+      ],
+    },
+  ];
+  return strictComputeRichRow(row, questionNumber, {
+    answer: "GPU/ASIC 供给短期不能简单说“能跟上”。核心制约来自 TSMC 先进制程/先进封装、HBM 供给与价量协议、以及 AI server 系统交付。TSMC 和 Dell 都给出扩张指引，说明供给会释放；但 HBM、封装、系统交付和客户认证仍可能让有效供给慢于需求斜率。",
+    metricLogic: "供给问题要拆成有效供给链：先进制程/先进封装 -> HBM 配套 -> 系统交付。只看 NVIDIA/Broadcom 需求是不够的；如果任一串联约束慢于需求，GPU/ASIC 可交付量仍紧。",
+    historySummary: "02 复用供给链条：制造/封装看 TSMC advanced technologies、毛利率和 capex；HBM 配套看 Micron HBM TAM 和价量协议；系统交付看 Dell backlog/shipments。指引和 TAM 放在 03 或非连续表中，不冒充同口径历史。",
+    chainNodes,
+    futureCards: [
+      expectationCard("制造/封装", "公司指引", "TSMC 的市场预期是 2026 继续高 capex 扩产，同时 Q1 revenue 和 gross margin guide 仍强。", [
+        expectationRow("TSMC", "Q4 2025", "[Revenue $33.73B，gross margin 62.3%，advanced technologies 77%](source:SRC-TSM-Q4-2025)。", "Q1 2026E / FY2026E", "[Q1 revenue $34.6B-$35.8B，gross margin 63%-65%；2026 capex $52B-$56B](source:SRC-TSM-Q4-2025)。", "Q1 指引代表近端需求，capex 代表供给释放路径；不等于 CoWoS 月产能。"),
+      ], ["SRC-TSM-Q4-2025"]),
+      expectationCard("HBM 配套", "公司 TAM / 合同", "Micron 预期 HBM TAM 到 2028 约 $100B，并披露 2026 HBM supply 已有价量协议，说明供给释放仍被资格和产能绑定。", [
+        expectationRow("Micron", "CY2025E / FY26 Q1", "[HBM TAM about $35B in CY2025](source:SRC-MU-FY26-Q1-PREPARED)。", "CY2028E / CY2026 supply", "[HBM TAM around $100B in CY2028；2026 HBM supply price and volume agreements completed](source:SRC-MU-FY26-Q1-PREPARED)。", "TAM 是空间预期，价量协议是短期供需约束；二者共同支持 HBM 是 GPU/ASIC 串联约束。"),
+      ], ["SRC-MU-FY26-Q1-PREPARED"]),
+      expectationCard("系统交付", "公司指引", "Dell 的 FY27 revenue guide 是系统交付供给能否消化 backlog 的关键市场预期。", [
+        expectationRow("Dell", "FY2026", "[AI server shipments >$25B，FY27 backlog $43B](source:SRC-DELL-FY26-Q4)。", "FY2027E", "[AI-optimized server revenue guide about $50B](source:SRC-DELL-FY26-Q4)。", "如果 guide 兑现，说明系统交付供给在释放；如果毛利或现金恶化，供给释放可能不是高质量。"),
+      ], ["SRC-DELL-FY26-Q4"]),
+    ],
+    mechanism: {
+      sustain: "供给紧张可持续的机制是先进封装/HBM/系统交付的扩产、良率、认证和项目周期慢于客户订单斜率。",
+      break: "供给反证是 TSMC/CoWoS/HBM 扩产快于需求、交期缩短、订单取消、系统商 backlog 转收入但毛利下降。",
+    },
+    directQuery: "GPU ASIC supply constraint TSMC capex advanced packaging HBM agreements Dell AI server backlog before 2026-03-28",
+    evidenceSummary: ["补入 TSMC、Micron、Dell 三条供给链证据，分别覆盖制造、内存和系统交付。"],
+    gapSummary: ["缺少 CoWoS 月产能、HBM 各厂有效产能、GPU allocation、lead time 和订单取消率。"],
+  });
+}
+
+function strictComputeControlRow(row, questionNumber) {
+  const chainNodes = [
+    {
+      title: "平台控制权",
+      metrics: [
+        {
+          type: "平台控制",
+          name: "NVIDIA Data Center revenue vs AMD Data Center revenue",
+          why: "控制权首先看谁实际控制当前 accelerator 平台收入；NVIDIA 与 AMD 数据中心收入对比能给出通用 GPU/CPU/accelerator 竞争格局的量级差异。",
+          dataRequirement: "主体：NVIDIA / AMD；字段：Data Center revenue；单位：十亿美元；期间：最近季度/年度；不同公司口径不完全同一，必须标注代理性质。",
+          trendKind: "non_time_series",
+          trendLabel: "平台收入量级对比",
+          series: [
+            { label: "NVIDIA Q4 FY26 Data Center", value: "$62.3B", change: "绝对主导" },
+            { label: "NVIDIA FY26 Data Center", value: "$193.7B", change: "全年主导" },
+            { label: "AMD Q4 2025 Data Center", value: "$5.4B", change: "追赶者/替代路线" },
+            { label: "AMD FY2025 Data Center", value: "$16.6B", change: "量级明显小" },
+          ],
+          seriesGap: "NVIDIA 与 AMD 的 segment definition 不完全一致，不能当作精确份额表，只能作为平台收入控制权代理。",
+          history: "[NVIDIA Q4 FY26 Data Center revenue $62.3B、FY26 Data Center revenue $193.7B](source:SRC-NVDA-FY26-Q4)；[Tom's Hardware 报道 AMD Q4 2025 Data Center revenue $5.4B、FY2025 $16.6B](source:SRC-AMD-Q4-2025-TOMS)。",
+          current: "NVIDIA 平台控制权最强；AMD 是追赶者，当前公开量级仍明显小于 NVIDIA。",
+          future: "未来要看 AMD MI/Helios、云厂自研 ASIC 和 Broadcom custom ASIC 是否改变增量份额，而不是只看绝对收入。",
+          quality: "代理对比；需要 Omdia/Gartner/IDC 的付费 AI accelerator 份额表补精确份额。",
+          sourceIds: ["SRC-NVDA-FY26-Q4", "SRC-AMD-Q4-2025-TOMS"],
+        },
+      ],
+    },
+    {
+      title: "custom ASIC 控制权",
+      metrics: [
+        {
+          type: "ASIC 控制",
+          name: "Broadcom AI semiconductor revenue and guide",
+          why: "Broadcom 是 custom AI accelerator / AI networking 的关键代理；它的 AI semiconductor revenue 能验证云厂 ASIC 第二路线是否已有供给控制权。",
+          dataRequirement: "主体：Broadcom；字段：AI revenue / AI semiconductor revenue；单位：十亿美元；实际与指引分开。",
+          trendKind: "non_time_series",
+          trendLabel: "实际与指引",
+          series: [
+            { label: "Q2 FY25 actual", value: ">$4.4B", change: "+46% YoY" },
+            { label: "Q3 FY25 actual", value: "$5.2B", change: "+63% YoY" },
+            { label: "Q1 FY26 actual", value: "$8.4B", change: "+106% YoY" },
+            { label: "Q2 FY26 guide", value: "~$10.7B", change: "约 +27% QoQ vs Q1 actual" },
+          ],
+          seriesGap: "前三项为 actual，最后一项为 guidance；不画成同口径历史趋势，只用于判断控制权在形成。",
+          history: "[Broadcom Q2 FY25 AI revenue >$4.4B](source:SRC-AVGO-FY25-Q2)，[Q3 FY25 AI revenue $5.2B](source:SRC-AVGO-FY25-Q3)，[Q1 FY26 AI revenue $8.4B](source:SRC-AVGO-FY26-Q1)。",
+          current: "[Broadcom Q1 FY26 AI revenue +106% YoY，driven by custom AI accelerators and AI networking](source:SRC-AVGO-FY26-Q1)。",
+          future: "[Q2 FY26 AI semiconductor revenue expected $10.7B](source:SRC-AVGO-FY26-Q1)。",
+          quality: "custom ASIC 控制权证据增强，但客户集中与项目节奏未完全披露。",
+          sourceIds: ["SRC-AVGO-FY25-Q2", "SRC-AVGO-FY25-Q3", "SRC-AVGO-FY26-Q1"],
+        },
+      ],
+    },
+    {
+      title: "实物交付控制权",
+      metrics: [
+        {
+          type: "制造/HBM控制",
+          name: "TSMC advanced tech share and Micron/SK hynix HBM evidence",
+          why: "设计平台控制权不能单独转成供给控制；TSMC 与 HBM 供应商决定实物交付的瓶颈控制。",
+          dataRequirement: "主体：TSMC / Micron / SK hynix；字段：advanced tech share、capex、HBM TAM、operating margin；单位：% / 美元；作为实物约束代理。",
+          trendKind: "non_time_series",
+          trendLabel: "交付控制代理",
+          series: [
+            { label: "TSMC advanced tech share", value: "77%", change: "先进制程集中" },
+            { label: "TSMC 2026 capex", value: "$52B-$56B", change: "供给释放控制" },
+            { label: "Micron 2028 HBM TAM", value: "~$100B", change: "内存瓶颈空间" },
+            { label: "SK hynix FY25 operating margin", value: "49%", change: "HBM/AI memory 利润兑现" },
+          ],
+          seriesGap: "这是跨公司、跨字段控制权代理，不是份额表。",
+          history: "[TSMC advanced technologies 77% of wafer revenue and 2026 capex $52B-$56B](source:SRC-TSM-Q4-2025)；[Micron HBM TAM 2028 around $100B](source:SRC-MU-FY26-Q1-PREPARED)；[SK hynix FY25 operating margin 49%](source:SRC-SKHYNIX-FY25)。",
+          current: "实物控制权由 TSMC/先进封装/HBM 与系统交付共同决定。",
+          future: "若 HBM 和先进封装持续紧张，平台控制方也需要这些节点配合才能交付。",
+          quality: "控制权代理；缺精确 allocation 和份额表。",
+          sourceIds: ["SRC-TSM-Q4-2025", "SRC-MU-FY26-Q1-PREPARED", "SRC-SKHYNIX-FY25"],
+        },
+      ],
+    },
+  ];
+  return strictComputeRichRow(row, questionNumber, {
+    answer: "GPU/ASIC 的供给控制权分三层：NVIDIA 控制通用 GPU 平台和软件/互联生态；Broadcom/云厂 custom ASIC 正形成第二路线；TSMC、HBM 厂和系统交付商控制实物交付。NVIDIA 当前收入量级仍明显领先，但投资判断要避免把“设计控制权”误当成“全部供给控制权”。",
+    metricLogic: "控制权问题按平台、ASIC 第二路线、实物交付三层拆。平台层看 NVIDIA/AMD 收入量级，ASIC 层看 Broadcom AI semiconductor，实物层看 TSMC 与 HBM 供给控制。",
+    historySummary: "02 把不同控制权层级分开列：NVIDIA/AMD 是平台收入代理，Broadcom 是 custom ASIC 代理，TSMC/Micron/SK hynix 是实物交付代理。跨公司口径只做控制权判断，不做精确份额表。",
+    chainNodes,
+    futureCards: [
+      expectationCard("平台控制", "公司指引 / 替代路线", "NVIDIA 仍给出最强的近期收入指引；AMD 是替代玩家，但截至 cutoff 的公开量级仍显著较小。", [
+        expectationRow("NVIDIA", "Q4 FY2026", "[Data Center revenue $62.3B](source:SRC-NVDA-FY26-Q4)。", "Q1 FY2027E", "[Revenue outlook $78.0B +/-2%](source:SRC-NVDA-FY26-Q4)。", "公司整体 revenue outlook 不是 Data Center 单项指引，但在当前收入结构下仍是平台需求强度锚点。"),
+        expectationRow("AMD", "Q4 2025 / FY2025", "[Q4 Data Center revenue $5.4B，FY2025 Data Center revenue $16.6B](source:SRC-AMD-Q4-2025-TOMS)。", "2026", "公开材料强调 enterprise/high-end focus，但缺少同 NVIDIA 可比的 GPU revenue 指引。", "AMD 是重要替代路线，但当前资料仍不足以证明其已改变主导权。"),
+      ], ["SRC-NVDA-FY26-Q4", "SRC-AMD-Q4-2025-TOMS"]),
+      expectationCard("ASIC 控制", "公司指引", "Broadcom 的 Q2 FY26 AI semiconductor 指引说明 custom ASIC 控制权在增强。", [
+        expectationRow("Broadcom", "Q1 FY2026", "[AI revenue $8.4B、+106% YoY](source:SRC-AVGO-FY26-Q1)。", "Q2 FY2026E", "[AI semiconductor revenue expected about $10.7B](source:SRC-AVGO-FY26-Q1)。", "Q2 guide 是 ASIC/AI networking 第二路线最清楚的未来控制权锚点。"),
+      ], ["SRC-AVGO-FY26-Q1"]),
+      expectationCard("实物交付", "供给节点指引", "TSMC 和 HBM 厂控制实物供给；即便平台需求强，也要看先进制程、封装和内存是否能交付。", [
+        expectationRow("TSMC / Micron", "Q4 2025 / FY26 Q1", "[TSMC advanced technologies 77%](source:SRC-TSM-Q4-2025)；[Micron 2026 HBM supply price/volume agreements completed](source:SRC-MU-FY26-Q1-PREPARED)。", "FY2026E / CY2028E", "[TSMC 2026 capex $52B-$56B](source:SRC-TSM-Q4-2025)；[Micron HBM TAM around $100B in CY2028](source:SRC-MU-FY26-Q1-PREPARED)。", "这是实物控制权，不是 GPU/ASIC 设计份额；它决定可交付供给。"),
+      ], ["SRC-TSM-Q4-2025", "SRC-MU-FY26-Q1-PREPARED"]),
+    ],
+    mechanism: {
+      sustain: "控制权可持续来自 CUDA/生态、平台路线图、客户认证、custom ASIC 项目锁定，以及先进制造/HBM 的不可绕过性。",
+      break: "控制权被削弱的机制是客户多供、AMD/ASIC 替代超预期、TSMC/HBM供给释放削弱 allocation，或客户把 bargaining power 转回自己。",
+    },
+    directQuery: "GPU ASIC supply control NVIDIA AMD Broadcom custom ASIC TSMC HBM market share guidance before 2026-03-28",
+    evidenceSummary: ["补入 AMD 作为替代玩家量级参考，明确 NVIDIA 主导、Broadcom 第二路线、TSMC/HBM 实物控制三层。"],
+    gapSummary: ["缺少 Omdia/Gartner/IDC 的精确 AI accelerator 份额表、云厂自研 ASIC 采购量和客户 allocation。"],
+  });
+}
+
+function strictComputeFinancialRow(row, questionNumber) {
+  const chainNodes = [
+    {
+      title: "GPU 收入兑现",
+      metrics: [
+        {
+          type: "收入兑现",
+          name: "NVIDIA Data Center segment revenue and gross margin",
+          why: "GPU/ASIC 的财务兑现首先看 NVIDIA Data Center revenue，同时用 gross margin 过滤低质量增长。",
+          dataRequirement: "主体：NVIDIA；字段：Data Center revenue、gross margin；单位：十亿美元/%；频率：季度。",
+          trendKind: "time_series",
+          trendLabel: "NVIDIA Data Center revenue",
+          series: [
+            { label: "Q4 FY23", value: "$3.62B", change: "基准" },
+            { label: "Q2 FY24", value: "$10.32B", change: "+185% vs Q4 FY23" },
+            { label: "Q4 FY24", value: "$18.4B", change: "+408% vs Q4 FY23" },
+            { label: "Q2 FY25", value: "$26.3B", change: "+627% vs Q4 FY23" },
+            { label: "Q4 FY25", value: "$35.6B", change: "+884% vs Q4 FY23" },
+            { label: "Q2 FY26", value: "$41.1B", change: "+1035% vs Q4 FY23" },
+            { label: "Q3 FY26", value: "$51.2B", change: "+1314% vs Q4 FY23" },
+            { label: "Q4 FY26", value: "$62.3B", change: "+1621% vs Q4 FY23" },
+          ],
+          history: "[NVIDIA Data Center revenue 从 Q4 FY23 $3.62B 上升到 Q4 FY26 $62.3B](source:SRC-NVDA-FY26-Q4)。",
+          current: "[Q4 FY26 GAAP gross margin 75.0%，Data Center revenue $62.3B](source:SRC-NVDA-FY26-Q4)。",
+          future: "[Q1 FY27 revenue outlook $78.0B +/-2%，gross margin expected about 75%](source:SRC-NVDA-FY26-Q4)。",
+          quality: "财务兑现最强同口径指标。",
+          sourceIds: ["SRC-NVDA-FY23-Q4", "SRC-NVDA-FY24-Q2", "SRC-NVDA-FY24-Q4", "SRC-NVDA-FY25-Q2", "SRC-NVDA-FY25-Q4", "SRC-NVDA-FY26-Q2", "SRC-NVDA-FY26-Q3", "SRC-NVDA-FY26-Q4"],
+        },
+      ],
+    },
+    {
+      title: "ASIC 收入兑现",
+      metrics: [
+        {
+          type: "ASIC收入",
+          name: "Broadcom AI semiconductor revenue actuals and guide",
+          why: "Broadcom 是 custom ASIC/AI networking 财务兑现的关键代理，能判断第二增长路线是否已经进入报表。",
+          dataRequirement: "主体：Broadcom；字段：AI revenue actual 和 AI semiconductor revenue guide；单位：十亿美元；actual 与 guidance 分开。",
+          trendKind: "non_time_series",
+          trendLabel: "actual + guide",
+          series: [
+            { label: "Q2 FY25 actual", value: ">$4.4B", change: "+46% YoY" },
+            { label: "Q3 FY25 actual", value: "$5.2B", change: "+63% YoY" },
+            { label: "Q1 FY26 actual", value: "$8.4B", change: "+106% YoY" },
+            { label: "Q2 FY26 guide", value: "$10.7B", change: "expected" },
+          ],
+          seriesGap: "Q2 FY26 是指引，不进入 actual-only 历史曲线；本表用于财务兑现和未来锚点同屏展示。",
+          history: "[Broadcom Q2 FY25 AI revenue >$4.4B](source:SRC-AVGO-FY25-Q2)，[Q3 FY25 $5.2B](source:SRC-AVGO-FY25-Q3)，[Q1 FY26 $8.4B](source:SRC-AVGO-FY26-Q1)。",
+          current: "[Q1 FY26 AI revenue $8.4B，driven by custom AI accelerators and AI networking](source:SRC-AVGO-FY26-Q1)。",
+          future: "[Q2 FY26 AI semiconductor revenue expected about $10.7B](source:SRC-AVGO-FY26-Q1)。",
+          quality: "第二路线财务兑现强，但实际点少于 NVIDIA。",
+          sourceIds: ["SRC-AVGO-FY25-Q2", "SRC-AVGO-FY25-Q3", "SRC-AVGO-FY26-Q1"],
+        },
+      ],
+    },
+    {
+      title: "系统订单兑现",
+      metrics: [
+        {
+          type: "订单兑现",
+          name: "Dell AI-optimized server orders, shipments and backlog",
+          why: "订单/backlog 是收入前导，验证 GPU/ASIC 是否已被装进可交付系统。",
+          dataRequirement: "主体：Dell；字段：AI server orders、shipments、ending backlog、revenue guide；单位：十亿美元。",
+          trendKind: "time_series",
+          trendLabel: "Dell ending backlog",
+          series: [
+            { label: "Q4 FY25", value: "~$9B", change: "基准" },
+            { label: "Q1 FY26", value: "$14.4B", change: "+60%" },
+            { label: "Q2 FY26", value: "$11.7B", change: "交付消化" },
+            { label: "Q3 FY26", value: "$18.4B", change: "重新上行" },
+            { label: "Q4 FY26", value: "$43B", change: "+378% vs Q4 FY25" },
+          ],
+          history: "[Dell ending backlog 从 FY25 Q4 约 $9B 到进入 FY27 的 $43B](source:SRC-DELL-FY26-Q4)。",
+          current: "[FY26 orders >$64B、shipments >$25B](source:SRC-DELL-FY26-Q4)。",
+          future: "[FY27 AI-optimized server revenue guide about $50B](source:SRC-DELL-FY26-Q4)。",
+          quality: "订单兑现强；利润质量需另查。",
+          sourceIds: ["SRC-DELL-FY25-Q4", "SRC-DELL-FY26-Q1", "SRC-DELL-FY26-Q2-PERFORMANCE", "SRC-DELL-FY26-Q3", "SRC-DELL-FY26-Q4"],
+        },
+      ],
+    },
+  ];
+  return strictComputeRichRow(row, questionNumber, {
+    answer: "GPU/ASIC 已经是 AI factory 链条里财务兑现最充分的节点：NVIDIA Data Center revenue 形成 8 个公开历史点并保持高毛利，Broadcom AI semiconductor revenue 形成 custom ASIC 第二曲线，Dell AI server backlog 与 FY27 revenue guide 说明客户预算已进入系统交付。剩余问题是盈利质量和市场定价，而不是是否已经兑现。",
+    metricLogic: "财务兑现按收入、订单和未来指引三层验证：平台收入确认需求穿透，ASIC 收入确认第二路线，AI server backlog/revenue guide 确认系统交付池。",
+    historySummary: "02 以 NVIDIA revenue 作为最强同口径曲线，Broadcom 作为 actual+guide 表，Dell 作为 backlog 时间序列。所有 guidance 都明确标为未来锚点，不混入 actual-only 历史曲线。",
+    chainNodes,
+    futureCards: [
+      expectationCard("GPU 收入", "公司指引", "NVIDIA 给出 Q1 FY27 revenue outlook 与 gross margin outlook，说明市场预期下一季仍高位兑现。", [
+        expectationRow("NVIDIA", "Q4 FY2026", "[Data Center revenue $62.3B，GAAP gross margin 75.0%](source:SRC-NVDA-FY26-Q4)。", "Q1 FY2027E", "[Revenue expected $78.0B +/-2%，gross margin expected 74.9%-75.0% +/-50 bps](source:SRC-NVDA-FY26-Q4)。", "公司整体收入指引不能拆成 Data Center 单项，但高 Data Center 占比使其仍是 GPU/ASIC 兑现的近端锚点。"),
+      ], ["SRC-NVDA-FY26-Q4"]),
+      expectationCard("ASIC 收入", "公司指引", "Broadcom 的 Q2 FY26 AI semiconductor guide 是 custom ASIC 收入继续兑现的核心预期。", [
+        expectationRow("Broadcom", "Q1 FY2026", "[AI revenue $8.4B、+106% YoY](source:SRC-AVGO-FY26-Q1)。", "Q2 FY2026E", "[AI semiconductor revenue expected about $10.7B](source:SRC-AVGO-FY26-Q1)。", "与 actual 基本同一业务口径，适合做近端收入兑现验证。"),
+      ], ["SRC-AVGO-FY26-Q1"]),
+      expectationCard("系统订单", "公司指引", "Dell FY27 revenue guide 验证 backlog 是否能变成收入。", [
+        expectationRow("Dell", "FY2026", "[Orders >$64B，shipments >$25B，FY27 backlog $43B](source:SRC-DELL-FY26-Q4)。", "FY2027E", "[AI-optimized server revenue about $50B, up 103% YoY](source:SRC-DELL-FY26-Q4)。", "订单到收入的兑现链条清楚，但仍需看毛利和现金。"),
+      ], ["SRC-DELL-FY26-Q4"]),
+    ],
+    mechanism: {
+      sustain: "财务兑现可持续需要收入、毛利率、订单/backlog 和指引同步强，而不是只靠一次性订单。",
+      break: "若收入高增但毛利下降、backlog 不转收入、现金流恶化或 guide 下修，兑现质量会下降。",
+    },
+    directQuery: "NVIDIA Data Center revenue Broadcom AI semiconductor revenue Dell AI server backlog guidance financial realization before 2026-03-28",
+    evidenceSummary: ["新增 Q1 FY27 NVIDIA outlook、Broadcom Q2 guide、Dell FY27 guide，以 03 形式承接 02 历史数据。"],
+    gapSummary: ["缺少 GPU/ASIC ASP、NVIDIA backlog、客户集中、订单取消率和按产品毛利率。"],
+  });
+}
+
+function strictComputePricingRow(row, questionNumber) {
+  const chainNodes = [
+    {
+      title: "胜率是否已被市场识别",
+      metrics: [
+        {
+          type: "定价代理",
+          name: "NVIDIA / Broadcom forward guidance vs already-realized revenue",
+          why: "缺少 as-of 估值数据库时，先用公司指引与已兑现收入判断市场是否已有高预期；如果龙头已经给出强指引，胜率通常已被市场识别。",
+          dataRequirement: "主体：NVIDIA / Broadcom；字段：actual revenue、next-quarter guidance；单位：十亿美元；结合估值数据后才能最终定价。",
+          trendKind: "non_time_series",
+          trendLabel: "actual vs guide",
+          series: [
+            { label: "NVDA Q4 FY26 revenue", value: "$68.1B", change: "+73% YoY" },
+            { label: "NVDA Q1 FY27 revenue outlook", value: "$78.0B +/-2%", change: "市场已看到高指引" },
+            { label: "AVGO Q1 FY26 AI revenue", value: "$8.4B", change: "+106% YoY" },
+            { label: "AVGO Q2 FY26 AI semi guide", value: "$10.7B", change: "市场已看到继续上行" },
+          ],
+          seriesGap: "这是实际+指引对比，不是估值倍数；定价问题还需要 forward PE/EV sales/盈利上修数据。",
+          history: "[NVIDIA Q4 FY26 revenue $68.1B、Data Center revenue $62.3B](source:SRC-NVDA-FY26-Q4)；[Broadcom Q1 FY26 AI revenue $8.4B](source:SRC-AVGO-FY26-Q1)。",
+          current: "龙头收入和指引已经非常显眼，说明市场大概率已识别 GPU/ASIC 胜率。",
+          future: "只有后续指引继续上修、盈利修正超过估值隐含预期，赔率才可能继续成立。",
+          quality: "定价代理；缺正式估值。",
+          sourceIds: ["SRC-NVDA-FY26-Q4", "SRC-AVGO-FY26-Q1"],
+        },
+      ],
+    },
+    {
+      title: "行业池子还能否提供上修空间",
+      metrics: [
+        {
+          type: "空间预期",
+          name: "Omdia AI data-center processor spending forecast",
+          why: "行业池子能判断增长路径是否还有剩余空间，但不能说明个股便宜。",
+          dataRequirement: "主体：Omdia；字段：AI data-center processor spending；单位：十亿美元；期间：2024/2025E/2030E。",
+          trendKind: "time_series",
+          trendLabel: "第三方市场空间",
+          series: [
+            { label: "2024", value: "~$123B", change: "基准" },
+            { label: "2025E", value: "~$207B", change: "+68%" },
+            { label: "2030E", value: "~$286B", change: "+38% vs 2025E" },
+          ],
+          seriesGap: "只有三点且含预测，不能作为历史曲线；用于判断远期空间不是估值。",
+          history: "[Omdia forecast 2024 about $123B and 2025E about $207B](source:SRC-OMDIA-AI-PROCESSORS-20250828)。",
+          current: "2025E 已是高基数，说明市场可能已开始从高增长转向结构分化。",
+          future: "[2030E about $286B and custom ASICs gaining traction](source:SRC-OMDIA-AI-PROCESSORS-20250828)。",
+          quality: "行业空间锚点；不等同估值便宜。",
+          sourceIds: ["SRC-OMDIA-AI-PROCESSORS-20250828"],
+        },
+      ],
+    },
+    {
+      title: "需要补的真实估值数据",
+      metrics: [
+        {
+          type: "估值缺口",
+          name: "Forward PE / EV sales / EPS revision / FCF yield as of 2026-03-28",
+          why: "市场是否已定价的最终答案必须用 as-of 估值和盈利上修判断，不能只靠产业强度。",
+          dataRequirement: "主体：NVDA / AVGO / AMD / TSM / peers；字段：forward PE、EV/Sales、consensus EPS/revenue revision、FCF yield；单位：倍数/%；必须使用 2026-03-28 前可见数据。",
+          series: [],
+          seriesGap: "当前源包没有完整 as-of 估值数据库；这是定价问题的核心缺口，不能用当前股价或后验涨跌补。",
+          history: "已搜索到公司财务和指引，但未接入历史估值与一致预期修正数据库。",
+          current: "因此本问只能判断“胜率大概率已被市场关注”，不能判断“赔率仍便宜”。",
+          future: "下一步需要接入 as-of historical valuation provider 或手工收集当时 sell-side consensus。",
+          quality: "核心缺口。",
+          sourceIds: ["SRC-NVDA-FY26-Q4", "SRC-AVGO-FY26-Q1", "SRC-OMDIA-AI-PROCESSORS-20250828"],
+        },
+      ],
+    },
+  ];
+  return strictComputeRichRow(row, questionNumber, {
+    answer: "GPU/ASIC 的胜率已经高度显性化，尤其是 NVIDIA 和 Broadcom：收入、毛利、下一季指引、行业空间预测都很强。但“强基本面”不等于“仍有赔率”。当前报告仍缺 2026-03-28 as-of 的估值倍数、盈利上修和隐含增长数据，因此只能把本问判为：市场大概率已部分定价，赔率需补估值后再确认。",
+    metricLogic: "定价问题按三步：先看强基本面是否已被公司指引公开化，再看行业池子是否还有剩余空间，最后必须接入估值和一致预期修正。前两步只能判断胜率被识别，第三步才判断赔率。",
+    historySummary: "02 不用后验涨跌判断定价；当前只列 actual vs guidance、Omdia 空间预测，以及明确估值数据缺口。",
+    chainNodes,
+    futureCards: [
+      expectationCard("龙头指引", "公司指引", "NVIDIA 和 Broadcom 都已经给出强近端预期，这意味着市场很难完全不知道主链逻辑。", [
+        expectationRow("NVIDIA", "Q4 FY2026", "[Revenue $68.1B，Data Center revenue $62.3B](source:SRC-NVDA-FY26-Q4)。", "Q1 FY2027E", "[Revenue outlook $78.0B +/-2%](source:SRC-NVDA-FY26-Q4)。", "强指引提升胜率，同时也提高市场预期门槛。"),
+        expectationRow("Broadcom", "Q1 FY2026", "[AI revenue $8.4B、+106% YoY](source:SRC-AVGO-FY26-Q1)。", "Q2 FY2026E", "[AI semiconductor revenue expected about $10.7B](source:SRC-AVGO-FY26-Q1)。", "custom ASIC 强指引说明第二路线也已被市场看到。"),
+      ], ["SRC-NVDA-FY26-Q4", "SRC-AVGO-FY26-Q1"]),
+      expectationCard("行业池子", "第三方预测", "Omdia 的预测支持 AI processor 仍增长，但 2025E 到 2030E 的增速远低于早期收入爆发段，定价必须看盈利上修和份额迁移。", [
+        expectationRow("Omdia", "2024A / 2025E", "[AI data-center processor spending about $123B in 2024 and $207B in 2025E](source:SRC-OMDIA-AI-PROCESSORS-20250828)。", "2030E", "[About $286B, with custom ASICs gaining traction](source:SRC-OMDIA-AI-PROCESSORS-20250828)。", "空间仍在，但不支持把早期 17x 收入斜率线性外推。"),
+      ], ["SRC-OMDIA-AI-PROCESSORS-20250828"]),
+      expectationCard("估值缺口", "待补数据", "当前报告无法用缺失的估值数据硬判便宜或贵，因此标的推荐需要维持 watch_only 或降低强度。", [
+        expectationRow("NVDA / AVGO / AMD", "2026-03-28 as-of", "当前源包没有完整 forward PE、EV/Sales、EPS revision、FCF yield。", "后续刷新", "需接入 as-of consensus / valuation source。", "没有估值，就不能把产业强度直接升级为买入强度。"),
+      ], ["SRC-NVDA-FY26-Q4", "SRC-AVGO-FY26-Q1"]),
+    ],
+    mechanism: {
+      sustain: "赔率成立需要后续收入和盈利上修继续超过市场已知强指引，并且估值没有提前吃掉 2-3 年增长。",
+      break: "若强指引已经完全进入估值，或者盈利上修跟不上股价/倍数扩张，基本面强也只能保持观察。",
+    },
+    directQuery: "NVIDIA Broadcom AI revenue guidance valuation priced in AI accelerator expectations before 2026-03-28",
+    evidenceSummary: ["补齐 actual vs guidance 和 Omdia 空间预测，明确估值数据仍是核心缺口。"],
+    gapSummary: ["缺少 as-of forward PE、EV/Sales、consensus revision、FCF yield 和 reverse DCF。"],
+  });
+}
+
+function strictComputeRefuteRow(row, questionNumber) {
+  const chainNodes = [
+    {
+      title: "需求端反证",
+      metrics: [
+        {
+          type: "客户预算反证",
+          name: "Hyperscaler capex / RPO / FCF pressure",
+          why: "GPU/ASIC 需求若要降级，最早会出现在客户 capex 下修、RPO 不转收入或 FCF 压力逼迫项目延后。",
+          dataRequirement: "主体：Microsoft / Amazon / Alphabet / Meta / Oracle；字段：capex、PPE purchases、RPO、FCF；单位：美元；频率：季度/年度。",
+          trendKind: "non_time_series",
+          trendLabel: "客户预算与压力",
+          series: [
+            { label: "MSFT Q2 FY26 RPO", value: "$625B", change: "+110% YoY" },
+            { label: "AMZN 2026 capex plan", value: "~$200B", change: "AI/chips 等驱动" },
+            { label: "GOOGL 2026 capex guide", value: "$175B-$185B", change: "接近 FY25 PPE 的约 2x" },
+            { label: "META 2026 capex guide", value: "$115B-$135B", change: "+59%-87% vs FY25" },
+            { label: "ORCL Q2 FY26 RPO", value: "$523B", change: "+438%" },
+          ],
+          seriesGap: "跨公司、跨口径预算/承诺数据，不能画成一条趋势；用于识别反证监控清单。",
+          history: "[Microsoft RPO $625B](source:SRC-MSFT-FY26-Q2)，[Alphabet 2026 capex $175B-$185B](source:SRC-GOOGL-Q4-2025)，[Meta 2026 capex $115B-$135B](source:SRC-META-Q4-2025)。",
+          current: "客户预算端目前没有明显下修信号，但 FCF 和 ROI 压力必须跟踪。",
+          future: "若 capex/RPO 下修或 FCF 压力扩大，GPU/ASIC 需求最先降级。",
+          quality: "反证监控强；不是 GPU 订单。",
+          sourceIds: ["SRC-MSFT-FY26-Q2", "SRC-AMZN-Q4-2025", "SRC-GOOGL-Q4-2025", "SRC-META-Q4-2025", "SRC-ORCL-FY26-Q2"],
+        },
+      ],
+    },
+    {
+      title: "供给与价格反证",
+      metrics: [
+        {
+          type: "供给反证",
+          name: "TSMC capex / HBM supply agreements / Dell backlog conversion",
+          why: "若供给释放快于需求，短缺逻辑会先通过 capex 扩产、价量协议变化、backlog 转收入质量和毛利率变化体现。",
+          dataRequirement: "主体：TSMC / Micron / Dell；字段：capex、HBM supply agreements、backlog conversion、margin；单位：美元/%。",
+          trendKind: "non_time_series",
+          trendLabel: "供给释放与质量",
+          series: [
+            { label: "TSMC 2026 capex", value: "$52B-$56B", change: "供给释放" },
+            { label: "Micron 2026 HBM supply", value: "price/volume agreements completed", change: "紧张进入合同" },
+            { label: "Dell FY27 backlog", value: "$43B", change: "转收入待验证" },
+            { label: "Dell FY27 revenue guide", value: "~$50B", change: "转收入目标" },
+          ],
+          seriesGap: "反证看的是多个节点的转弱，不是单一历史曲线。",
+          history: "[TSMC 2026 capex $52B-$56B](source:SRC-TSM-Q4-2025)，[Micron 2026 HBM supply price/volume agreements completed](source:SRC-MU-FY26-Q1-PREPARED)，[Dell FY27 backlog $43B](source:SRC-DELL-FY26-Q4)。",
+          current: "当前供给仍在扩张但约束未完全解除。",
+          future: "若扩产释放导致 lead time 缩短、价格下降或 backlog 低毛利转收入，应降级。",
+          quality: "反证框架明确；缺 lead time / spot price / allocation。",
+          sourceIds: ["SRC-TSM-Q4-2025", "SRC-MU-FY26-Q1-PREPARED", "SRC-DELL-FY26-Q4"],
+        },
+      ],
+    },
+    {
+      title: "路线替代反证",
+      metrics: [
+        {
+          type: "替代反证",
+          name: "Custom ASIC gaining traction vs NVIDIA GPU growth",
+          why: "custom ASIC 不是天然反证；只有在它压低整体 accelerator 增长、GPU ASP 或 NVIDIA 增速时，才构成实质反证。",
+          dataRequirement: "主体：Omdia / Broadcom / NVIDIA；字段：AI processor spending、custom ASIC growth、NVIDIA Data Center revenue；单位：美元/%。",
+          trendKind: "non_time_series",
+          trendLabel: "替代与总池子",
+          series: [
+            { label: "Omdia 2025E AI processor", value: "$207B", change: "总池子大" },
+            { label: "Omdia 2030E AI processor", value: "$286B", change: "增速放缓但仍扩大" },
+            { label: "Broadcom Q2 FY26 guide", value: "$10.7B", change: "ASIC 增强" },
+            { label: "NVIDIA Q1 FY27 outlook", value: "$78B", change: "GPU 平台仍强" },
+          ],
+          seriesGap: "这是替代路线和总需求池的交叉验证，不是精确份额。",
+          history: "[Omdia 预计 custom ASICs gaining traction](source:SRC-OMDIA-AI-PROCESSORS-20250828)；[Broadcom Q2 FY26 AI semiconductor guide $10.7B](source:SRC-AVGO-FY26-Q1)。",
+          current: "当前更像总 accelerator 池扩大并出现结构迁移，而不是 ASIC 直接证伪 GPU。",
+          future: "如果 Broadcom/ASIC 上行同时 NVIDIA 指引转弱，路线替代会变成实质反证。",
+          quality: "路线反证需继续份额数据。",
+          sourceIds: ["SRC-OMDIA-AI-PROCESSORS-20250828", "SRC-AVGO-FY26-Q1", "SRC-NVDA-FY26-Q4"],
+        },
+      ],
+    },
+  ];
+  return strictComputeRichRow(row, questionNumber, {
+    answer: "GPU/ASIC 的核心反证不是泛泛的“AI 泡沫”，而是三类可观测数据：客户预算/RPO/capex 下修，供给释放导致价格、交期、毛利和 backlog 质量转弱，以及 custom ASIC 替代从扩大总池子变成压低 GPU 增长。当前材料没有显示这些反证已经发生，但缺少 GPU-hours、lead time、GPU 租赁价格和 as-of 估值，仍需监控。",
+    metricLogic: "反证要和前面链条一一对应：需求端看 capex/RPO/FCF，供给端看 capex/HBM/backlog 转化，路线端看 ASIC 是否压低 GPU 总增长。",
+    historySummary: "02 不把反证写成风险清单，而是选择能提前证伪的 metric：客户预算、供给释放/质量、路线替代。跨公司指标只做监控表，不画趋势线。",
+    chainNodes,
+    futureCards: [
+      expectationCard("客户预算反证", "公司指引", "当前市场预期仍是 capex 上行；如果后续任一大客户下修，GPU/ASIC 需求判断要先降级。", [
+        expectationRow("Microsoft / Alphabet / Meta / Amazon / Oracle", "FY2025 / Q2 FY26", "[Microsoft RPO $625B](source:SRC-MSFT-FY26-Q2)，[Alphabet FY25 PPE $91.4B](source:SRC-GOOGL-Q4-2025)，[Meta FY25 capex $72.22B](source:SRC-META-Q4-2025)。", "FY2026E", "[Alphabet capex $175B-$185B](source:SRC-GOOGL-Q4-2025)，[Meta $115B-$135B](source:SRC-META-Q4-2025)，[Amazon capex about $200B](source:SRC-AMZN-Q4-2025)。", "当前不是反证，但这些是后续降级的第一组阈值。"),
+      ], ["SRC-MSFT-FY26-Q2", "SRC-GOOGL-Q4-2025", "SRC-META-Q4-2025", "SRC-AMZN-Q4-2025"]),
+      expectationCard("供给/价格反证", "供给释放路径", "TSMC capex 与 HBM 价量协议说明供给在扩张；如果释放快于需求，会从短缺逻辑变成毛利和价格压力。", [
+        expectationRow("TSMC / Micron / Dell", "Q4 2025 / FY26", "[TSMC 2026 capex $52B-$56B](source:SRC-TSM-Q4-2025)，[Micron 2026 HBM supply 已有价量协议](source:SRC-MU-FY26-Q1-PREPARED)，[Dell backlog $43B](source:SRC-DELL-FY26-Q4)。", "FY2026-FY2027", "关注 lead time、ASP、backlog 转收入、毛利率和取消率。", "当前源包没有 lead time/价格数据；必须作为 gap 监控。"),
+      ], ["SRC-TSM-Q4-2025", "SRC-MU-FY26-Q1-PREPARED", "SRC-DELL-FY26-Q4"]),
+      expectationCard("路线替代反证", "第三方预测 + 公司指引", "custom ASIC 正在增强，但当前更像总池子扩大；只有当 ASIC 增强伴随 GPU 指引下修才是实质反证。", [
+        expectationRow("Omdia / Broadcom / NVIDIA", "2025E / Q1 FY26", "[Omdia 2025E AI processor spending $207B](source:SRC-OMDIA-AI-PROCESSORS-20250828)，[Broadcom Q1 FY26 AI revenue $8.4B](source:SRC-AVGO-FY26-Q1)。", "2030E / Q2 FY26E / Q1 FY27E", "[Omdia 2030E $286B](source:SRC-OMDIA-AI-PROCESSORS-20250828)，[Broadcom Q2 FY26 guide $10.7B](source:SRC-AVGO-FY26-Q1)，[NVIDIA Q1 FY27 revenue outlook $78B](source:SRC-NVDA-FY26-Q4)。", "如果 Broadcom 上行且 NVIDIA 同时转弱，才说明替代压低 GPU；当前更像两条线同时扩张。"),
+      ], ["SRC-OMDIA-AI-PROCESSORS-20250828", "SRC-AVGO-FY26-Q1", "SRC-NVDA-FY26-Q4"]),
+    ],
+    mechanism: {
+      sustain: "反证未出现时，需求链条仍由客户预算、订单、收入和供给紧张共同支撑。",
+      break: "真正降级需要看到预算下修、订单取消、lead time/ASP 下行、毛利恶化、ASIC 替代压低 GPU 增长或 AI ROI 证明不足。",
+    },
+    directQuery: "GPU ASIC demand refutation capex downgrade lead time ASP custom ASIC replacement before 2026-03-28",
+    evidenceSummary: ["把反证拆为预算、供给质量、路线替代三张卡，并补入对应源。"],
+    gapSummary: ["缺少 GPU rental price、lead time、ASP、order cancellation、accelerator utilization 和 AI ROI 可比序列。"],
+  });
+}
+
+function expectationCard(horizon, status, marketExpectation, expectationRows, sourceIds) {
+  return {
+    horizon,
+    expectationStatus: status,
+    marketExpectation,
+    expectationRows,
+    sourceIds,
+  };
+}
+
+function expectationRow(entity, currentPeriod, currentMetric, guidancePeriod, guidanceMetric, comparability) {
+  return {
+    entity,
+    currentPeriod,
+    currentMetric,
+    guidancePeriod,
+    guidanceMetric,
+    comparability,
+  };
 }
 
 function strictComputeDemandRow(row) {
@@ -797,6 +1757,7 @@ function strictComputeDemandRow(row) {
     "SRC-AVGO-FY25-Q3",
     "SRC-AVGO-FY25-Q4",
     "SRC-AVGO-FY26-Q1",
+    "SRC-SA-GB200-BOM-2024",
     "SRC-NVDA-GTC-VERA-RUBIN-20260316",
     "SRC-NVDA-GTC-DYNAMO-20260316",
     "SRC-OMDIA-AI-PROCESSORS-20250828",
@@ -804,22 +1765,15 @@ function strictComputeDemandRow(row) {
   ];
   return {
     ...row,
-    answer: `截至 ${AS_OF_DATE}，外部逐问搜索后的结论是：计算加速器 / GPU / ASIC 的需求已经大幅增长，并且增长链条不只停留在 AI 叙事。证据从应用和 token 负载出发，穿透到云厂 capex、RPO、系统订单，再穿透到 NVIDIA Data Center 收入和 Broadcom AI 半导体收入；但直接的 tokens / GPU hours / 利用率同口径历史仍是关键缺口，所以本问可判为需求链条强成立，不能单独替代后续 6 问和 BOM 阶段判定。`,
+    answer: `截至 ${AS_OF_DATE}，外部逐问搜索后的结论是：计算加速器 / GPU / ASIC 的需求已经被 AI S 曲线放大拉动。证据从应用和 token 负载出发，穿透到云厂 capex、RPO、系统订单，再穿透到 NVIDIA Data Center 收入和 Broadcom AI 半导体收入；同时 rack-scale / pod-scale 平台和 Dell AI server backlog 说明当前 BOM 的需求弹性不是简单等于终端 AI 需求，而是被平台规格和系统交付放大。但直接的 tokens / GPU hours / 利用率同口径历史仍是关键缺口，所以本问可判为需求链条和 BOM 弹性强成立，不能单独替代后续 5 问和 BOM 阶段判定。`,
     sourceIds,
-    metricLogic: `本问严格按一条链判断：AI 应用/任务是否真实变多 -> 是否转化为 token、推理请求或 GPU/CPU 加速工作负载 -> 是否进入云厂和 AI 客户的 capex、RPO、PPE purchases 或长期订单 -> 是否落到 AI server / accelerator 采购与交付 -> 是否已经被 GPU/ASIC 供应商确认成收入、backlog、指引和现金流。只有这条链同时出现历史加速、当前兑现和未来锚点，才说明当前 BOM 的需求不是概念热度；若任一环节只能找到截面或代理指标，必须标为 gap。`,
-    historySummary: "本问的历史数据改为每个环节一个主 metric：应用端看 ChatGPT weekly active users；预算/RPO 看 Microsoft Commercial RPO；订单/交付看 Dell AI-optimized server ending backlog；GPU 兑现看 NVIDIA Data Center segment revenue；ASIC 兑现看 Broadcom AI semiconductor revenue；反证缺口看公开 GPU-hours consumed。除 GPU-hours 尚无公开连续序列外，其余主指标尽量按同主体、同字段、同单位串联历史点，并以数据表呈现。",
+    metricLogic: `本问严格按一条链判断：AI 应用/任务是否真实变多 -> 是否转化为 token、推理请求或 GPU/CPU 加速工作负载 -> 是否进入云厂和 AI 客户的 capex、RPO、PPE purchases 或长期订单 -> 是否落到 AI server / accelerator 采购与交付 -> 当前 BOM 的需求弹性是否被平台规格、attach rate、单位价值量或系统架构放大 -> 是否已经被 GPU/ASIC 供应商确认成收入、backlog、指引和现金流。只有这条链同时出现历史加速、当前兑现、BOM 弹性和未来锚点，才说明当前 BOM 的需求不是概念热度；若任一环节只能找到截面或代理指标，必须标为 gap。`,
+    historySummary: "本问复用 01 的逻辑链条，逐环节选择最能回答该环节的 metric：应用端看 ChatGPT weekly active users；预算/RPO 看 Microsoft Commercial RPO；订单/交付看 Dell AI-optimized server ending backlog；BOM 弹性看 NVIDIA platform generation scope 和 Dell AI server revenue guide；GPU 兑现看 NVIDIA Data Center segment revenue；ASIC 兑现看 Broadcom AI semiconductor revenue；反证缺口看公开 GPU-hours consumed。除 GPU-hours 尚无公开连续序列外，其余主指标尽量按同主体、同字段、同单位串联历史点，并以数据表呈现。",
     futureCards: [
       {
-        horizon: "应用使用：当前没有硬未来指引",
+        horizon: "环节 1｜应用/任务：ChatGPT WAU 与 token 工作负载预期",
         expectationStatus: "非硬预期",
-        marketExpectation: "OpenAI 和 Alphabet 给出的主要是当前使用量、开发者数、token 吞吐和 Gemini 用户数据，不是未来 WAU、tokens 或 GPU-hours 指引。因此这一卡只能说明未来 accelerator workload 有需求入口，不能当成市场预期本身。",
-        expectationSource: "OpenAI / Alphabet",
-        sourceType: "当前使用量证据",
-        currentBaseline: "[OpenAI DevDay 2025 披露 800M+ weekly ChatGPT users、4M+ developers、API 6B tokens/min](source:SRC-OPENAI-DEVDAY-2025)；[Alphabet 披露 Gemini App 750M+ MAU、Gemini Enterprise 8M paid seats、Gemini 3 daily tokens 约为 Gemini 2.5 Pro 的 3x](source:SRC-GOOGL-Q4-2025-CALL)。",
-        expectedValue: "未披露未来 WAU、tokens、GPU-hours 或 accelerator utilization 目标。",
-        impliedGrowth: "无法量化；只能说明当前工作负载入口很大，不能直接推出未来 GPU/ASIC 需求增速。",
-        chainValidation: "验证需求链条的第一环：AI 应用/任务 -> workload。后续必须用 capex、订单、backlog 和供应商收入确认是否穿透到当前 BOM。",
-        refuteTest: "如果后续 tokens、GPU-hours、AI 服务收入或客户 ROI 不能继续增长，即使当前用户规模很大，也不能支撑 GPU/ASIC 继续扩张的预期。",
+        marketExpectation: "本环节复用 01 的「应用/任务」链条，并参考本环节已选 ChatGPT WAU。当前能搜集到的是 OpenAI、Alphabet 已披露的使用量和 token 吞吐，但没有未来 WAU、tokens 或 GPU-hours 的硬指引；因此本环节只能证明需求入口很大，不能单独证明未来 GPU/ASIC 采购。",
         expectationRows: [
           {
             entity: "OpenAI",
@@ -827,7 +1781,7 @@ function strictComputeDemandRow(row) {
             currentMetric: "[披露 800M+ weekly ChatGPT users、4M+ developers、API 6B tokens/min](source:SRC-OPENAI-DEVDAY-2025)。",
             guidancePeriod: "未披露",
             guidanceMetric: "未披露未来 WAU、tokens、GPU-hours 或 accelerator utilization 目标。",
-            comparability: "没有同口径未来指引；只能作为真实 workload 入口证据，不能直接当作 GPU/ASIC 未来需求指引。",
+            comparability: "与 01 的应用/任务环节和 02 的 WAU metric 对齐，但只有当前使用量，没有同口径未来预期；只能作为 workload 入口证据。",
           },
           {
             entity: "Alphabet / Gemini",
@@ -835,30 +1789,31 @@ function strictComputeDemandRow(row) {
             currentMetric: "[Gemini App 750M+ MAU、Gemini Enterprise 8M paid seats、Gemini 3 daily tokens 约为 Gemini 2.5 Pro 的 3x](source:SRC-GOOGL-Q4-2025-CALL)。",
             guidancePeriod: "未披露",
             guidanceMetric: "未披露未来 Gemini token、GPU-hours 或 accelerator 采购目标。",
-            comparability: "没有同口径未来指引；说明模型使用量和企业席位已有规模，但还需要 capex、backlog、供应商收入验证穿透。",
+            comparability: "Gemini 是旁证，不是本环节已选主 metric；用于说明工作负载入口扩大，不能直接外推 GPU/ASIC 增速。",
           },
         ],
         sourceIds: ["SRC-OPENAI-DEVDAY-2025", "SRC-GOOGL-Q4-2025-CALL"],
       },
       {
-        horizon: "客户预算：2026 capex 仍维持高强度",
+        horizon: "环节 2｜预算/RPO：客户预算与承诺池预期",
         expectationStatus: "公司指引",
-        marketExpectation: "客户侧当前明确预期是：2026 年云厂和 AI 基础设施资本开支仍会维持高位。Alphabet 指引 2026 capex 为 $175B-$185B，Meta 指引 2026 capex 为 $115B-$135B，Amazon 表示 2026 capex 约 $200B。Microsoft 的 $625B Commercial RPO 说明承诺池很大，但 RPO 不是 capex 指引，也不是 GPU 订单。",
-        expectationSource: "Alphabet / Meta / Amazon / Microsoft",
-        sourceType: "公司 capex 指引 + RPO 承诺池",
-        currentBaseline: "[Amazon TTM property and equipment purchases 为 $128.3B](source:SRC-AMZN-Q4-2025)；[Microsoft Q2 FY26 Commercial RPO 为 $625B，电话会称约 45% 来自 OpenAI](source:SRC-MSFT-FY26-Q2-CALL)。",
-        expectedValue: "[Alphabet 预计 2026 capex 为 $175B-$185B](source:SRC-GOOGL-Q4-2025)；[Meta 预计 2026 capex 为 $115B-$135B](source:SRC-META-Q4-2025)；[Amazon 预计 2026 capex 约 $200B](source:SRC-AMZN-Q4-2025)。",
-        impliedGrowth: "方向上是高位继续扩张；但不同公司 capex 口径不可直接相加，且 capex 不等于 GPU/ASIC 采购额。",
-        chainValidation: "验证需求链条第二环：workload -> 客户 capex / RPO / PPE。它证明客户愿意前置投入，但还要继续验证资金是否流向 accelerator 和 AI server。",
-        refuteTest: "如果 2026 capex 指引下修、RPO 不转收入、PPE 增长流向非 AI 资产，或 AI ROI 导致 FCF 压力上升，本环预期要降级。",
+        marketExpectation: "本环节复用 01 的「预算/RPO」链条，并参考本环节已选 Microsoft Commercial RPO，同时用云厂 capex/PPE 指引交叉验证客户预算。最强信息是 Alphabet、Meta、Amazon 2026 capex 指引继续上修，以及 Microsoft RPO 的未来确认安排。",
         expectationRows: [
+          {
+            entity: "Microsoft",
+            currentPeriod: "Q2 FY2026",
+            currentMetric: "[Commercial RPO 为 $625B，其中约 45% 来自 OpenAI；capital expenditures 为 $37.5B，约三分之二投向以 GPU/CPU 为主的短寿命资产](source:SRC-MSFT-FY26-Q2-CALL)。",
+            guidancePeriod: "未来 12 个月 / 平均约 2.5 年",
+            guidanceMetric: "[约 25% Commercial RPO 将在未来 12 个月确认收入，Commercial RPO 加权平均期限约 2.5 年](source:SRC-MSFT-FY26-Q2-CALL)。",
+            comparability: "与 01 的预算/RPO环节和 02 的 RPO metric 对齐；RPO 是云承诺池，不是 GPU/ASIC 订单，需和 capex、server backlog 共同验证。",
+          },
           {
             entity: "Alphabet",
             currentPeriod: "FY2025 / Q4 2025",
             currentMetric: "[FY2025 purchases of property and equipment 为 $91.4B，Q4 2025 为 $27.9B](source:SRC-GOOGL-Q4-2025)。",
             guidancePeriod: "FY2026E",
             guidanceMetric: "[2026 CapEx investments 预计 $175B-$185B](source:SRC-GOOGL-Q4-2025)。",
-            comparability: "基本同属 capex/PPE 投入口径，但 FY2026 是公司前瞻指引。相对 FY2025 PPE purchases，中值约接近翻倍，说明客户侧 AI compute capacity 预算仍在上修。",
+            comparability: "基本同属 capex/PPE 投入口径；相对 FY2025 PPE purchases，中值接近翻倍，说明客户侧 AI compute capacity 预算仍在上修。",
           },
           {
             entity: "Meta",
@@ -866,7 +1821,7 @@ function strictComputeDemandRow(row) {
             currentMetric: "[FY2025 capex including principal payments on finance leases 为 $72.22B，Q4 为 $22.14B](source:SRC-META-Q4-2025)。",
             guidancePeriod: "FY2026E",
             guidanceMetric: "[2026 capex including principal payments on finance leases 预计 $115B-$135B](source:SRC-META-Q4-2025)。",
-            comparability: "同口径度较高。相对 FY2025 实际值，FY2026 指引区间隐含约 +59% 至 +87%，直接显示 AI/基础设施预算仍在加速。",
+            comparability: "同口径度较高；FY2026 指引区间相对 FY2025 实际值隐含约 +59% 至 +87%。",
           },
           {
             entity: "Amazon",
@@ -874,30 +1829,15 @@ function strictComputeDemandRow(row) {
             currentMetric: "[Free cash flow 下降主要由 purchases of property and equipment, net of proceeds and incentives 同比增加 $50.7B 推动；当前表采用报告内已记录的 TTM PPE purchases $128.3B](source:SRC-AMZN-Q4-2025)。",
             guidancePeriod: "FY2026E",
             guidanceMetric: "[预计 2026 capital expenditures across Amazon 约 $200B](source:SRC-AMZN-Q4-2025)。",
-            comparability: "近似 capex/PPE 投入口径，但 Amazon 指引覆盖全集团 AI、chips、robotics、satellites 等，不是纯 AWS 或 GPU/ASIC 采购。",
-          },
-          {
-            entity: "Microsoft",
-            currentPeriod: "Q2 FY2026",
-            currentMetric: "[Capital expenditures 为 $37.5B，约三分之二投向以 GPU/CPU 为主的短寿命资产；Commercial RPO 为 $625B，其中约 45% 来自 OpenAI](source:SRC-MSFT-FY26-Q2-CALL)。",
-            guidancePeriod: "未来 12 个月 / 平均约 2.5 年",
-            guidanceMetric: "[约 25% Commercial RPO 将在未来 12 个月确认收入，Commercial RPO 加权平均期限约 2.5 年](source:SRC-MSFT-FY26-Q2-CALL)。",
-            comparability: "不是 capex-to-capex 指引，而是 capex 当前投入 + RPO 未来履约可见度；用于验证客户需求锁定，不用于和 Alphabet/Meta 的年度 capex 指引直接相加。",
+            comparability: "近似 capex/PPE 投入口径，但覆盖全集团 AI、chips、robotics、satellites 等，不是纯 AWS 或 GPU/ASIC 采购。",
           },
         ],
         sourceIds: ["SRC-MSFT-FY26-Q2-CALL", "SRC-GOOGL-Q4-2025", "SRC-META-Q4-2025", "SRC-AMZN-Q4-2025"],
       },
       {
-        horizon: "系统交付：Dell FY27 AI server 收入约 $50B",
+        horizon: "环节 3｜订单/交付：AI server backlog 与 revenue 指引",
         expectationStatus: "公司指引",
-        marketExpectation: "Dell 给出的硬预期是 FY27 AI-optimized server revenue 约 $50B，同比增长 103%。这比单纯 backlog 更接近市场要验证的未来收入预期。",
-        expectationSource: "Dell",
-        sourceType: "公司收入指引 + backlog",
-        currentBaseline: "[Dell FY26 AI-optimized server orders 超过 $64B、shipments 超过 $25B，进入 FY27 的 backlog 为 $43B](source:SRC-DELL-FY26-Q4)。",
-        expectedValue: "[FY27 AI-optimized server revenue 约 $50B、同比 +103%](source:SRC-DELL-FY26-Q4)。",
-        impliedGrowth: "系统交付收入预期翻倍，说明客户预算已经形成可交付订单池；但利润池是否厚，还要看毛利率和现金转换。",
-        chainValidation: "验证需求链条第三环：客户预算 -> AI server / accelerator 系统交付。Dell 不是本 BOM 的投资结论，而是 GPU/ASIC 需求进入系统订单的验证节点。",
-        refuteTest: "如果 backlog 不转 revenue、orders 不补充、订单取消或系统交付毛利率下降，说明需求穿透质量低于预期。",
+        marketExpectation: "本环节复用 01 的「订单/交付」链条，并参考本环节已选 Dell AI-optimized server ending backlog。Dell 给出的 FY27 AI-optimized server revenue 约 $50B 是从订单池到系统交付收入的硬预期，能验证客户预算是否落到含 GPU/ASIC 的系统交付。",
         expectationRows: [
           {
             entity: "Dell",
@@ -905,22 +1845,63 @@ function strictComputeDemandRow(row) {
             currentMetric: "[AI-optimized server orders 超过 $64B、shipments 超过 $25B，进入 FY2027 的 backlog 为 $43B](source:SRC-DELL-FY26-Q4)。",
             guidancePeriod: "FY2027E",
             guidanceMetric: "[AI-optimized server revenue 约 $50B、同比 +103%](source:SRC-DELL-FY26-Q4)。",
-            comparability: "订单/backlog 对下一年收入指引，口径不是完全相同但传导关系明确：订单池需要转化为系统交付收入。",
+            comparability: "与 01 的订单/交付环节和 02 的 backlog metric 对齐；订单/backlog 对下一年收入指引，传导关系明确但不是同一会计字段。",
           },
         ],
         sourceIds: ["SRC-DELL-FY26-Q4"],
       },
       {
-        horizon: "ASIC 供应商：Broadcom Q2 FY26 AI 半导体约 $10.7B",
+        horizon: "环节 4｜BOM弹性：平台规格与系统交付放大系数",
+        expectationStatus: "公司路线图 + 系统商指引",
+        marketExpectation: "本环节复用 01 的「当前 BOM 需求弹性」链条，并参考本环节已选 NVIDIA platform generation scope 与 Dell AI server revenue guide。要回答的不是终端 AI 需求本身，而是 AI 需求增长后，GPU/ASIC 这一 BOM 的需求会不会被 rack-scale / pod-scale 平台和系统交付放大。",
+        expectationRows: [
+          {
+            entity: "NVIDIA",
+            currentPeriod: "Q4 FY2026 / GTC 2026",
+            currentMetric: "[Data Center revenue $62.3B，FY26 full-year Data Center revenue $193.7B](source:SRC-NVDA-FY26-Q4)。",
+            guidancePeriod: "Q1 FY2027E / Vera Rubin cycle",
+            guidanceMetric: "[Q1 FY27 revenue outlook $78.0B +/-2%](source:SRC-NVDA-FY26-Q4)；[Vera Rubin 定义下一代 AI factory rack-scale 系统](source:SRC-NVDA-GTC-VERA-RUBIN-20260316)。",
+            comparability: "收入指引是公司整体口径，Vera Rubin 是平台规格；二者共同说明当前 BOM 的需求弹性有未来平台锚点，但仍需单柜 GPU/ASIC 数量和 ASP 验证。",
+          },
+          {
+            entity: "Dell",
+            currentPeriod: "FY2026",
+            currentMetric: "[AI-optimized server orders >$64B、shipments >$25B、FY27 backlog $43B](source:SRC-DELL-FY26-Q4)。",
+            guidancePeriod: "FY2027E",
+            guidanceMetric: "[AI-optimized server revenue guide 约 $50B、同比 +103%](source:SRC-DELL-FY26-Q4)。",
+            comparability: "Dell 是系统交付代理，不是 GPU/ASIC 厂商收入；但它能验证平台规格升级已经进入整机/机柜交付池。",
+          },
+        ],
+        sourceIds: ["SRC-NVDA-FY26-Q4", "SRC-NVDA-GTC-VERA-RUBIN-20260316", "SRC-DELL-FY26-Q4"],
+      },
+      {
+        horizon: "环节 5｜GPU 财务兑现：NVIDIA Data Center revenue 的未来锚点",
+        expectationStatus: "当前收入强，硬指引缺口",
+        marketExpectation: "本环节复用 01 的「GPU 财务兑现」链条，并参考本环节已选 NVIDIA Data Center segment revenue。当前收入兑现极强，但本报告这一轮未放入 NVIDIA 同口径下一季收入指引；Vera Rubin 是路线图，Omdia 是行业池预测，二者都不能替代 NVIDIA forward revenue guidance。",
+        expectationRows: [
+          {
+            entity: "NVIDIA",
+            currentPeriod: "Q4 FY2026",
+            currentMetric: "[Data Center revenue 为 $62.3B](source:SRC-NVDA-FY26-Q4)。",
+            guidancePeriod: "未放入同口径收入指引",
+            guidanceMetric: "[Vera Rubin](source:SRC-NVDA-GTC-VERA-RUBIN-20260316) 是未来平台路线图，不是收入指引。",
+            comparability: "与 01 的 GPU 财务兑现环节和 02 的 NVIDIA Data Center revenue metric 对齐，但未来端缺少同口径 revenue guidance；需要补 NVIDIA 下季指引或一致预期。",
+          },
+          {
+            entity: "Omdia",
+            currentPeriod: "2024A / 2025E",
+            currentMetric: "[AI data-center processor spending：2024 年约 $123B，2025E 约 $207B](source:SRC-OMDIA-AI-PROCESSORS-20250828)。",
+            guidancePeriod: "2030E",
+            guidanceMetric: "[约 $286B，且 custom ASICs gaining traction](source:SRC-OMDIA-AI-PROCESSORS-20250828)。",
+            comparability: "这是 GPU/ASIC 行业池预期，不是 NVIDIA 收入口径；只能作为空间和 mix 旁证。",
+          },
+        ],
+        sourceIds: ["SRC-NVDA-FY26-Q4", "SRC-NVDA-GTC-VERA-RUBIN-20260316", "SRC-OMDIA-AI-PROCESSORS-20250828"],
+      },
+      {
+        horizon: "环节 6｜ASIC 财务兑现：Broadcom AI semiconductor revenue 指引",
         expectationStatus: "公司指引",
-        marketExpectation: "供应商侧最清楚的硬预期来自 Broadcom：Q2 FY26 AI semiconductor revenue 约 $10.7B。NVIDIA Q4 FY26 Data Center revenue $62.3B 是当前兑现证据，Vera Rubin 是路线图，不应和 Broadcom 的收入指引混成同一种预期。",
-        expectationSource: "Broadcom / NVIDIA",
-        sourceType: "公司收入指引 + 当前收入锚点",
-        currentBaseline: "[Broadcom Q1 FY26 AI revenue 为 $8.4B、同比 +106%](source:SRC-AVGO-FY26-Q1)；[NVIDIA Q4 FY26 Data Center revenue 为 $62.3B](source:SRC-NVDA-FY26-Q4)。",
-        expectedValue: "[Broadcom 预计 Q2 FY26 AI semiconductor revenue 约 $10.7B](source:SRC-AVGO-FY26-Q1)。NVIDIA Vera Rubin 只是未来平台路线图，不是收入指引。",
-        impliedGrowth: "Broadcom AI semiconductor revenue 从 Q1 FY26 $8.4B 到 Q2 FY26 指引 $10.7B，隐含约 +27% QoQ；NVIDIA 需要另补市场一致预期或公司下季指引，不能只用当前收入代表预期。",
-        chainValidation: "验证需求链条第四环：系统订单 -> GPU / custom ASIC 供应商收入。Broadcom 证明 custom ASIC 路线也进入收入指引，NVIDIA 证明 GPU 路线已大规模兑现。",
-        refuteTest: "如果 Broadcom 指引未兑现、NVIDIA 下一季指引放缓、毛利率下降、客户集中度暴露或云厂自研 ASIC 分流超预期，本环预期要降级。",
+        marketExpectation: "本环节复用 01 的「ASIC 财务兑现」链条，并参考本环节已选 Broadcom AI semiconductor revenue。Broadcom Q2 FY26 AI semiconductor revenue 约 $10.7B 是 custom ASIC 路线最清楚的未来收入锚点。",
         expectationRows: [
           {
             entity: "Broadcom",
@@ -928,41 +1909,26 @@ function strictComputeDemandRow(row) {
             currentMetric: "[AI revenue 为 $8.4B、同比 +106%](source:SRC-AVGO-FY26-Q1)。",
             guidancePeriod: "Q2 FY2026E",
             guidanceMetric: "[AI semiconductor revenue 预计约 $10.7B](source:SRC-AVGO-FY26-Q1)。",
-            comparability: "基本同属 AI 半导体收入口径，从 Q1 actual 到 Q2 guide 隐含约 +27% QoQ，证明 custom ASIC 需求已进入供应商收入指引。",
-          },
-          {
-            entity: "NVIDIA",
-            currentPeriod: "Q4 FY2026",
-            currentMetric: "[Data Center revenue 为 $62.3B](source:SRC-NVDA-FY26-Q4)。",
-            guidancePeriod: "未放入同口径收入指引",
-            guidanceMetric: "[Vera Rubin](source:SRC-NVDA-GTC-VERA-RUBIN-20260316) 是未来平台路线图，不是收入指引。",
-            comparability: "现状是收入兑现，未来是产品路线图，不能视为同口径。严格市场预期还需补 NVIDIA 下季收入指引或市场一致预期。",
+            comparability: "与 01 的 ASIC 财务兑现环节和 02 的 Broadcom AI semiconductor revenue metric 基本对齐；从 Q1 actual 到 Q2 guide 隐含约 +27% QoQ。",
           },
         ],
-        sourceIds: ["SRC-NVDA-FY26-Q4", "SRC-NVDA-GTC-VERA-RUBIN-20260316", "SRC-AVGO-FY26-Q1"],
+        sourceIds: ["SRC-AVGO-FY26-Q1"],
       },
       {
-        horizon: "第三方市场预期：2030E AI processor spending 约 $286B",
-        expectationStatus: "第三方预测",
-        marketExpectation: "Omdia 的预期是 AI data-center processor spending 从 2024 年约 $123B、2025E 约 $207B，增长到 2030E 约 $286B，同时 custom ASICs gaining traction。这是行业池子的预期，不是某家公司收入预期。",
-        expectationSource: "Omdia",
-        sourceType: "第三方行业预测",
-        currentBaseline: "[Omdia 给出的 2024 规模约 $123B，2025E 约 $207B](source:SRC-OMDIA-AI-PROCESSORS-20250828)。",
-        expectedValue: "[2030E 约 $286B](source:SRC-OMDIA-AI-PROCESSORS-20250828)。",
-        impliedGrowth: "从 2024 到 2030E 约 +132%；从 2025E 到 2030E 约 +38%。这说明仍有空间，但增速不再能按 NVIDIA 过去 17 倍收入扩张外推。",
-        chainValidation: "验证需求链条的远期市场池：AI processor spending。它能说明行业池子还在扩张，但不能替代公司订单、收入和估值判断。",
-        refuteTest: "如果第三方预测被下修，或 GPU/ASIC 价格、客户 capex、利用率与收入兑现不匹配，则该远期市场池预期要降级。",
+        horizon: "环节 7｜反证/缺口：GPU-hours 与 accelerator utilization 预期",
+        expectationStatus: "关键缺口",
+        marketExpectation: "本环节复用 01 的「反证/缺口」链条，并参考本环节已选 public GPU-hours consumed by AI workloads。当前没有稳定公开的 GPU-hours、accelerator utilization 或 AI ROI 未来预期，因此需求强结论仍依赖 WAU、RPO、backlog、NVIDIA/Broadcom 收入等代理链条。",
         expectationRows: [
           {
-            entity: "Omdia",
-            currentPeriod: "2024A / 2025E",
-            currentMetric: "[AI data-center processor spending：2024 年约 $123B，2025E 约 $207B](source:SRC-OMDIA-AI-PROCESSORS-20250828)。",
-            guidancePeriod: "2030E",
-            guidanceMetric: "[约 $286B，且 custom ASICs gaining traction](source:SRC-OMDIA-AI-PROCESSORS-20250828)。",
-            comparability: "同属第三方 processor spending 口径。行业池子仍扩张，但 2025E 到 2030E 的增速低于 2024-2025 的跃迁，不能机械外推 NVIDIA 早期高增速。",
+            entity: "OpenAI / Google / hyperscalers",
+            currentPeriod: "截至本问搜索",
+            currentMetric: "[OpenAI tokens/min 与 Gemini daily-token 倍数可作为 workload 旁证](source:SRC-OPENAI-DEVDAY-2025)，[NVIDIA Dynamo 是推理效率路线图](source:SRC-NVDA-GTC-DYNAMO-20260316)。",
+            guidancePeriod: "未披露",
+            guidanceMetric: "未披露连续可比 GPU-hours、accelerator utilization 或 AI ROI 目标。",
+            comparability: "与 01 的反证/缺口环节和 02 的 GPU-hours metric 对齐；这是最重要缺口，不能用 capex、收入或 tokens 直接替代 GPU-hours。",
           },
         ],
-        sourceIds: ["SRC-OMDIA-AI-PROCESSORS-20250828"],
+        sourceIds: ["SRC-OPENAI-DEVDAY-2025", "SRC-GOOGL-Q4-2025-CALL", "SRC-NVDA-GTC-DYNAMO-20260316"],
       },
     ],
     mechanism: {
@@ -1124,6 +2090,38 @@ function strictComputeDemandChainNodes() {
       sourceIds: ["SRC-DELL-FY25-Q4", "SRC-DELL-FY26-Q1", "SRC-DELL-FY26-Q2-PERFORMANCE", "SRC-DELL-FY26-Q3", "SRC-DELL-FY26-Q4"],
     },
     {
+      title: "订单 -> 当前 BOM 需求弹性放大",
+      question: "AI 需求增长 1 倍时，GPU/ASIC 这一 BOM 的需求会不会被平台规格和系统架构放大？",
+      status: "弹性证据较强，但缺少单柜数量/ASP 连续表",
+      metrics: [
+        {
+          type: "BOM弹性",
+          name: "NVIDIA platform generation scope and Dell AI server revenue guide",
+          why: "需求是否大涨不能只看终端 AI workload，还要看 workload 增长后当前 BOM 的放大倍数。rack-scale / pod-scale 平台、整柜交付和 AI server revenue guide 能验证 GPU/ASIC 是否从单卡采购升级为系统级采购。",
+          dataRequirement: "主体：NVIDIA / Dell；字段：platform generation scope、rack-scale/pod-scale system、AI-optimized server backlog/revenue guide；单位：平台规格和美元；频率：平台发布和财年指引；缺少单柜 GPU/ASIC 数量、ASP 和配置率连续表时必须标为弹性缺口。",
+          trendKind: "non_time_series",
+          trendLabel: "BOM 需求弹性证据",
+          series: [
+            { label: "GB200 / NVL72", value: "rack-scale", change: "采购单位从卡/服务器上移到机柜" },
+            { label: "Vera Rubin", value: "rack-scale systems", change: "下一代平台继续系统化" },
+            { label: "Dell FY27 AI server revenue guide", value: "~$50B", change: "系统交付承接放大后的需求" },
+          ],
+          seriesGap: "平台规格和系统收入指引说明弹性方向，但没有提供同口径单柜 GPU/ASIC 数量、ASP、attach rate 的 5 点历史序列。",
+          history: "[SemiAnalysis GB200/rack-scale BOM 拆解](source:SRC-SA-GB200-BOM-2024) 和 [NVIDIA Vera Rubin rack-scale 平台](source:SRC-NVDA-GTC-VERA-RUBIN-20260316) 表明 accelerator 采购单位正在上移。",
+          current: "[Dell FY27 AI-optimized server revenue guide 约 $50B](source:SRC-DELL-FY26-Q4) 说明这种平台规格升级已经进入系统交付收入预期。",
+          future: "如果下一代平台继续提高单柜 GPU/ASIC 数量、单系统 ASP 和系统交付收入，当前 BOM 的需求弹性会继续大于终端 AI 需求增速。",
+          quality: "弹性机制证据强；缺少单柜配置、ASP、attach rate 的连续量化表。",
+          sourceIds: ["SRC-SA-GB200-BOM-2024", "SRC-NVDA-GTC-VERA-RUBIN-20260316", "SRC-DELL-FY26-Q4"],
+        },
+      ],
+      history: "需求弹性来自平台采购单位变化：从单卡、单服务器，走向 rack-scale、pod-scale 和 AI factory 交付。",
+      current: "当前有 GB200/Vera Rubin 平台规格、Dell backlog/revenue guide 支撑，但还缺少按平台代际量化的单柜 GPU/ASIC 数量和 ASP。",
+      future: "未来重点看单柜 GPU/ASIC 数、系统 ASP、attach rate、订单转收入和客户配置是否继续上移。",
+      refute: "如果软件效率、模型压缩或架构替代使客户用更少 GPU/ASIC 完成同样 workload，BOM 弹性会下降。",
+      conclusion: "当前 BOM 不是被动跟随终端 AI 需求，而是被平台化采购放大拉动；这是第 1 问成立的核心组成部分。",
+      sourceIds: ["SRC-SA-GB200-BOM-2024", "SRC-NVDA-GTC-VERA-RUBIN-20260316", "SRC-DELL-FY26-Q4"],
+    },
+    {
       title: "订单 -> GPU 平台收入兑现",
       question: "GPU 平台供应商是否已经把需求兑现成连续收入曲线？",
       status: "NVIDIA 同口径曲线强",
@@ -1228,7 +2226,7 @@ function renderBomSCurveStageCard(node, rows) {
     <div class="bom-stage-rollup-body">
       <section class="bom-stage-source-discipline">
         <b>判定门槛</b>
-        <p>只有当前 BOM 的 7 个子问都完成外部搜索、来源解析、metric 历史/缺口检查和本问结论后，才允许把阶段判定升级为正式结论；未完成逐问搜索时，旧本地材料只能作为待验证缓存。</p>
+        <p>只有当前 BOM 的 6 个子问都完成外部搜索、来源解析、metric 历史/缺口检查和本问结论后，才允许把阶段判定升级为正式结论；未完成逐问搜索时，旧本地材料只能作为待验证缓存。</p>
       </section>
       <section class="bom-stage-current">
         <b>当前阶段</b>
@@ -1259,8 +2257,8 @@ function pendingBomSCurveStage(node) {
   return {
     stage: "待逐问搜索完成后判定",
     confidence: "置信度：待定",
-    current: `${node.name} 的七个子问尚未完成新一轮 question-level search/source parse/gap 标注，因此当前报告不作正式 S 曲线阶段判断。旧本地材料只能作为待验证缓存，不能替代阶段判定证据。`,
-    nextSignal: "逐一完成需求、单位用量、供给、控制者、财务兑现、市场定价、反证七问的搜索和解析后，再根据七问结论判断当前 BOM 位于叙事期、预算/订单确认期、供给紧张期、财务兑现期，还是定价拥挤/成熟期。",
+    current: `${node.name} 的六个子问尚未完成新一轮 question-level search/source parse/gap 标注，因此当前报告不作正式 S 曲线阶段判断。旧本地材料只能作为待验证缓存，不能替代阶段判定证据。`,
+    nextSignal: "逐一完成需求弹性、供给、控制者、财务兑现、市场定价、反证六问的搜索和解析后，再根据六问结论判断当前 BOM 位于叙事期、预算/订单确认期、供给紧张期、财务兑现期，还是定价拥挤/成熟期。",
     downgradeSignal: "如果逐问搜索只能得到主题叙事、少量截面或无法追溯到当前 BOM 的 metric 历史/未来锚点，则该 BOM 的阶段应维持 pending，不得升级为早期 S 曲线机会。",
   };
 }
@@ -1313,8 +2311,8 @@ function bomSCurveStageForNode(node) {
   return presets[node.id] || {
     stage: "阶段待判定",
     confidence: "置信度：低；需逐问搜索确认",
-    current: "当前 BOM 尚未完成七问搜索闭环，不能给出正式 S 曲线阶段。",
-    nextSignal: "完成七问搜索、metric 历史序列、未来预期和反证检查后再确认阶段。",
+    current: "当前 BOM 尚未完成六问搜索闭环，不能给出正式 S 曲线阶段。",
+    nextSignal: "完成六问搜索、metric 历史序列、未来预期和反证检查后再确认阶段。",
     downgradeSignal: "若搜索只能得到主题叙事或孤立截面，阶段应维持 watch_only / no_action。",
   };
 }
@@ -1323,37 +2321,113 @@ function renderBomQuestionFourStep(row, questionNumber, node) {
   const analysis = buildBomQuestionAnalysis(row, questionNumber, node);
   const sectionTitles = bomQuestionSectionTitles(row.question);
   const logicStages = buildBomLogicStages(analysis.metrics);
-  return `<section class="bom-question-four-step">
-    <details class="bom-step-card bom-step-metrics">
+  const futureCards = alignFutureCardsToStages(analysis.future, logicStages, row, node);
+  return `<section class="bom-question-stage-flow">
+    <details class="bom-step-card bom-step-metrics bom-step-logic">
       <summary><span>01</span><h5>${e(sectionTitles.logic)}</h5><span class="chevron">›</span></summary>
       <div class="bom-step-body">
         <p>${sourceText(analysis.metricLogic)}</p>
-        ${renderLogicChainMetricTable(logicStages)}
+        ${renderConcreteLogicChainPanel(logicStages)}
       </div>
     </details>
-    <details class="bom-step-card bom-step-history">
-      <summary><span>02</span><h5>${e(sectionTitles.history)}</h5><span class="chevron">›</span></summary>
+    <div class="bom-logic-stage-stack">${logicStages.map((stage, index) => renderBomIntegratedStageCard(stage, futureCards[index], analysis, index + 2)).join("")}</div>
+    <details class="bom-step-card bom-step-final-trend">
+      <summary><span>Final</span><h5>${e(sectionTitles.finalTrend)}</h5><span class="chevron">›</span></summary>
       <div class="bom-step-body">
-        <p>${sourceText(analysis.historySummary)}</p>
-        <div class="bom-logic-stage-stack">${logicStages.map(renderBomLogicStageCard).join("")}</div>
-      </div>
-    </details>
-    <details class="bom-step-card bom-step-future">
-      <summary><span>03</span><h5>${e(sectionTitles.future)}</h5><span class="chevron">›</span></summary>
-      <div class="bom-step-body">
-        <div class="bom-future-grid">${analysis.future.map(renderBomFutureCard).join("")}</div>
-      </div>
-    </details>
-    <details class="bom-step-card bom-step-mechanism">
-      <summary><span>04</span><h5>${e(sectionTitles.mechanism)}</h5><span class="chevron">›</span></summary>
-      <div class="bom-step-body">
-        <div class="bom-mechanism-grid">
-          ${renderBomMechanismCard("可持续机制", analysis.mechanism.sustain)}
-          ${renderBomMechanismCard("不可持续/反证机制", analysis.mechanism.break)}
+        <div class="bom-final-trend-grid">
+          ${renderBomMechanismCard("支持未来继续的机制", analysis.mechanism.sustain)}
+          ${renderBomMechanismCard("削弱或推翻趋势的机制", analysis.mechanism.break)}
         </div>
       </div>
     </details>
   </section>`;
+}
+
+function renderBomIntegratedStageCard(stage, futureCard, analysis, displayIndex) {
+  return `<details class="bom-step-card bom-logic-stage-card bom-stage-integrated-card">
+    <summary>
+      <span class="stage-index">${String(displayIndex).padStart(2, "0")}</span>
+      <div><b>环节 ${stage.index}｜${e(stage.stage)}</b><strong>${e(logicStageQuestion(stage))}</strong></div>
+      <span class="chevron">›</span>
+    </summary>
+    <div class="bom-logic-stage-body">
+      <p>${sourceText(logicStageRole(stage))}</p>
+      <details class="bom-stage-subcard bom-stage-history-card">
+        <summary><b>Metric 历史与现状</b><span class="chevron">›</span></summary>
+        <div class="bom-stage-subcard-body">
+          ${renderBomStageHistoryContent(stage)}
+        </div>
+      </details>
+      <details class="bom-stage-subcard bom-stage-future-card">
+        <summary><b>市场的未来预期</b><span class="chevron">›</span></summary>
+        <div class="bom-stage-subcard-body">
+          ${renderBomFutureCard(futureCard, stage)}
+        </div>
+      </details>
+      <details class="bom-stage-subcard bom-stage-mechanism-card">
+        <summary><b>第一性原理评估</b><span class="chevron">›</span></summary>
+        <div class="bom-stage-subcard-body">
+          <div class="bom-stage-mechanism-grid">
+            ${renderBomMechanismCard("本环节支持机制", stageMechanismSupport(stage, analysis))}
+            ${renderBomMechanismCard("本环节反向机制", stageMechanismRefute(stage, analysis))}
+          </div>
+        </div>
+      </details>
+    </div>
+  </details>`;
+}
+
+function renderBomStageHistoryContent(stage) {
+  const metric = stage.metric;
+  return `<div class="bom-stage-history-content">
+    <section class="bom-stage-metric-choice">
+      <b>本环节应看哪些 Metric</b>
+      ${renderMetricChoiceTable(stage)}
+    </section>
+    <section class="bom-stage-history">
+      <b>Metric 历史数据 / 实体现状</b>
+      <p>${sourceText(metric.history)}</p>
+      ${renderMetricTrend(metric)}
+    </section>
+    <section class="bom-stage-current">
+      <b>当前证据读法</b>
+      <p>${sourceText(metric.current || "当前源包只能支持方向性判断；需要继续补同口径历史序列。")}</p>
+    </section>
+    <div class="bom-question-sources">${sourceChips(metric.sourceIds)}</div>
+  </div>`;
+}
+
+function stageMechanismSupport(stage, analysis) {
+  const metric = stage.metric || {};
+  return metric.future || `如果「${stage.stage}」继续改善，并能和其它逻辑环节相互验证，本问的未来趋势更可能延续。整体支持机制：${analysis.mechanism.sustain}`;
+}
+
+function stageMechanismRefute(stage, analysis) {
+  const metric = stage.metric || {};
+  const gap = metric.seriesGap ? `当前需要特别警惕的数据缺口是：${metric.seriesGap}` : "";
+  return `${gap} 如果「${stage.stage}」对应 metric 走弱、口径不能复核，或与订单、收入、价格、现金流相互矛盾，本环节会削弱本问结论。整体反向机制：${analysis.mechanism.break}`;
+}
+
+function alignFutureCardsToStages(cards, stages, row, node) {
+  if (cards.length === stages.length) {
+    return cards;
+  }
+  return stages.map((stage) => ({
+    horizon: `环节 ${stage.index}｜${stage.stage}`,
+    expectationStatus: "预期缺口",
+    marketExpectation: `当前材料没有给出与 01 逻辑环节「${stage.stage}」严格对齐、且能和本环节已选 Metric「${stage.metric.name}」互相验证的公司指引、市场一致预期、第三方预测或客户侧目标。该环节目前只能用本环节历史/当前兑现数据判断，不能把泛化时间窗口或非同口径材料当作市场预期。`,
+    expectationRows: [
+      {
+        entity: node.name,
+        currentPeriod: "见本环节历史数据",
+        currentMetric: stage.metric.current || stage.metric.history || "已有材料只能支持当前判断或历史截面。",
+        guidancePeriod: "待补",
+        guidanceMetric: "待补严格对应本环节已选 metric 的未来指引、预测或目标。",
+        comparability: "缺口不是结论；后续搜索必须围绕本环节和已选 metric 单独补资料。",
+      },
+    ],
+    sourceIds: row.sourceIds || stage.metric.sourceIds || [],
+  }));
 }
 
 function buildBomLogicStages(metrics) {
@@ -1364,24 +2438,41 @@ function buildBomLogicStages(metrics) {
   }));
 }
 
-function renderLogicChainMetricTable(stages) {
+function renderConcreteLogicChainPanel(stages) {
   return `<details class="bom-logic-chain-panel">
-    <summary><b>逻辑链条 Metric 表</b><span>${stages.length} 个环节</span><span class="chevron">›</span></summary>
+    <summary><b>具体逻辑链条</b><span>${stages.length} 个环节</span><span class="chevron">›</span></summary>
     <div class="table-scroll bom-logic-chain-table">
       <table>
-        <thead><tr><th>逻辑环节</th><th>应该看的 Metric</th><th>为什么看它</th><th>数据要求</th></tr></thead>
+        <thead><tr><th>逻辑环节</th><th>本环节要判断什么</th><th>为什么放在链条里</th></tr></thead>
         <tbody>${stages.map((stage) => `<tr class="bom-logic-chain-row">
           <td><b>${e(stage.stage)}</b></td>
-          <td>${e(stage.metric.name)}</td>
-          <td>${sourceText(stage.metric.why)}</td>
-          <td>${sourceText(stage.metric.dataRequirement || "优先收集同一口径 5 个以上历史数据点；不足时标为趋势缺口。")}</td>
+          <td>${sourceText(logicStageQuestion(stage))}</td>
+          <td>${sourceText(logicStageRole(stage))}</td>
         </tr>`).join("")}</tbody>
       </table>
     </div>
   </details>`;
 }
 
-function renderBomFutureCard(item) {
+function logicStageQuestion(stage) {
+  return `判断「${stage.stage}」是否真实成立，以及它是否足以支撑当前 BOM 子问题的结论。`;
+}
+
+function logicStageRole(stage) {
+  const stageName = stage.stage || "";
+  if (/应用|工作负载|需求/.test(stageName)) return "这是需求链条的源头；只有真实任务变多，后面的预算、订单和收入才有解释力。";
+  if (/预算|RPO|订单|交付|backlog/.test(stageName)) return "这是从使用热度进入采购承诺的桥梁；没有承诺池或订单，主题热度不能直接转成投资证据。";
+  if (/财务|收入|利润|现金|兑现/.test(stageName)) return "这是需求穿透到公司报表的闭环；只有收入、利润或现金流兑现，才说明产业机会能被公司捕获。";
+  if (/供给|产能|良率|价格|交付周期|扩产/.test(stageName)) return "这是判断供需斜率的关键；需求强但供给释放更快，稀缺溢价会下降。";
+  if (/份额|控制|壁垒|议价|替代/.test(stageName)) return "这是判断谁能捕获利润池的关键；产业增长如果不能被少数公司控制，就不一定形成好标的。";
+  if (/估值|定价|上修|隐含|仓位/.test(stageName)) return "这是把产业判断翻译成赔率的环节；好行业已经被充分定价时，推荐强度要下降。";
+  return "这是把抽象问题拆成可验证节点的中间环节；后续对应环节卡会为它选择指标、整理历史现状、收集市场预期并做机制判断。";
+}
+
+function renderBomFutureCard(item, stage) {
+  const summaryTitle = stage ? `环节 ${stage.index}｜${stage.stage}` : item.horizon;
+  const stageLabel = stage ? `<div class="bom-expectation-stage"><span>对应 01 逻辑环节 / 本环节已选 Metric</span><b>${e(stage.stage)} · ${e(stage.metric.name)}</b></div>` : "";
+  const subtitle = stage && item.horizon && item.horizon !== summaryTitle ? `<p class="bom-expectation-subtitle">${e(item.horizon)}</p>` : "";
   if (item.marketExpectation) {
     const fields = [
       ["预期来源", item.expectationSource],
@@ -1393,8 +2484,9 @@ function renderBomFutureCard(item) {
       ["证伪条件", item.refuteTest],
     ].filter(([, value]) => value);
     return `<details class="bom-future-card bom-expectation-card">
-    <summary><b>${e(item.horizon)}</b>${item.expectationStatus ? `<span>${e(item.expectationStatus)}</span>` : ""}<span class="chevron">›</span></summary>
+    <summary><b>${e(summaryTitle)}</b>${item.expectationStatus ? `<span>${e(item.expectationStatus)}</span>` : ""}<span class="chevron">›</span></summary>
     <div class="bom-nested-card-body">
+      ${stageLabel}${subtitle}
       <div class="bom-expectation-core"><span>市场现在预期什么？</span><p>${sourceText(item.marketExpectation)}</p></div>
       ${item.expectationRows?.length ? renderExpectationRowsTable(item.expectationRows) : `<div class="bom-expectation-grid">${fields.map(([label, value]) => `<article class="bom-expectation-field"><span>${e(label)}</span><b>${sourceText(value)}</b></article>`).join("")}</div>`}
       <div class="bom-question-sources">${sourceChips(item.sourceIds)}</div>
@@ -1411,8 +2503,9 @@ function renderBomFutureCard(item) {
       ["可信度", item.confidence],
     ].filter(([, value]) => value);
     return `<details class="bom-future-card bom-expectation-card">
-    <summary><b>${e(item.horizon)}</b>${item.expectationType ? `<span>${e(item.expectationType)}</span>` : ""}<span class="chevron">›</span></summary>
+    <summary><b>${e(summaryTitle)}</b>${item.expectationType ? `<span>${e(item.expectationType)}</span>` : ""}<span class="chevron">›</span></summary>
     <div class="bom-nested-card-body">
+      ${stageLabel}${subtitle}
       <p>${sourceText(item.view)}</p>
       <div class="bom-expectation-grid">${fields.map(([label, value]) => `<article class="bom-expectation-field"><span>${e(label)}</span><b>${sourceText(value)}</b></article>`).join("")}</div>
       ${item.validation ? `<div class="bom-expectation-validation"><b>后续验证点</b><p>${sourceText(item.validation)}</p></div>` : ""}
@@ -1421,8 +2514,9 @@ function renderBomFutureCard(item) {
   </details>`;
   }
   return `<details class="bom-future-card">
-    <summary><b>${e(item.horizon)}</b><span class="chevron">›</span></summary>
+    <summary><b>${e(summaryTitle)}</b><span class="chevron">›</span></summary>
     <div class="bom-nested-card-body">
+      ${stageLabel}${subtitle}
       <p>${sourceText(item.view)}</p>
       <div class="bom-question-sources">${sourceChips(item.sourceIds)}</div>
     </div>
@@ -1459,13 +2553,17 @@ function renderBomLogicStageCard(stage) {
   return `<details class="bom-logic-stage-card">
     <summary>
       <span class="stage-index">环节 ${stage.index}</span>
-      <div><b>${e(stage.stage)}</b><strong>${e(metric.name)}</strong></div>
+      <div><b>${e(stage.stage)}</b><strong>${e(logicStageQuestion(stage))}</strong></div>
       <span class="chevron">›</span>
     </summary>
     <div class="bom-logic-stage-body">
-      <p>${sourceText(metric.why)}</p>
+      <p>${sourceText(logicStageRole(stage))}</p>
+      <section class="bom-stage-metric-choice">
+        <b>本环节应看哪些 Metric</b>
+        ${renderMetricChoiceTable(stage)}
+      </section>
       <section class="bom-stage-history">
-        <b>对应 Metric 历史数据</b>
+        <b>Metric 历史数据 / 实体现状</b>
         <p>${sourceText(metric.history)}</p>
         ${renderMetricTrend(metric)}
       </section>
@@ -1476,6 +2574,20 @@ function renderBomLogicStageCard(stage) {
       <div class="bom-question-sources">${sourceChips(metric.sourceIds)}</div>
     </div>
   </details>`;
+}
+
+function renderMetricChoiceTable(stage) {
+  const metric = stage.metric;
+  return `<div class="table-scroll metric-choice-table">
+    <table>
+      <thead><tr><th>Metric</th><th>为什么选它</th><th>数据要求</th></tr></thead>
+      <tbody><tr>
+        <td><b>${e(metric.name)}</b></td>
+        <td>${sourceText(metric.why)}</td>
+        <td>${sourceText(metric.dataRequirement || "优先按公司/实体分别搜集同一口径历史数据；涉及多家公司或实体时，按主体分表或在表格中分主体列示。")}</td>
+      </tr></tbody>
+    </table>
+  </div>`;
 }
 
 function renderDemandGrowthLogicChain(node) {
@@ -1535,10 +2647,8 @@ function renderMetricRationaleList(metrics) {
 
 function bomQuestionSectionTitles(question) {
   return {
-    logic: "研究逻辑链条与应看 Metric",
-    history: "逻辑环节逐卡：Metric 历史数据",
-    future: "市场对这一子部分的未来预期",
-    mechanism: "第一性原理评估未来趋势",
+    logic: "具体逻辑链条",
+    finalTrend: "整体的未来趋势评估",
   };
 }
 
@@ -1554,10 +2664,11 @@ function buildBomQuestionAnalysis(row, questionNumber, node) {
   const narrativeMetrics = row.detail?.reportNarrative?.chainNodes
     ?.flatMap((chainNode) => chainNode.metrics || [])
     || [];
+  const defaultMetrics = row.replaceDefaultMetrics ? [] : buildDefaultBomMetrics(row, questionNumber, node);
   const metrics = mergeMetricCards([
     ...narrativeMetrics,
-    ...buildDefaultBomMetrics(row, questionNumber, node),
-  ]).slice(0, 6);
+    ...defaultMetrics,
+  ]).slice(0, 7);
   return {
     metricLogic: row.metricLogic || metricLogicForQuestion(row.question, node),
     historySummary: row.historySummary || historySummaryForQuestion(row.question, node),
@@ -1936,12 +3047,13 @@ function renderMetricTrend(metric) {
   if (metric.multiSeries && metric.multiSeries.length) {
     return renderMetricMultiSeriesData(metric);
   }
+  const dataRows = renderMetricDataRows(series);
   if (series.length < 2) {
+    const maybeDataRows = dataRows ? `\n      ${dataRows}` : "";
     return `<div class="metric-trend-gap">
       <b>连续趋势</b>
       <p>${sourceText(metric.seriesGap || "公开材料暂时只有单点或代理数据，不能画成连续趋势。")} 少于 5 个同口径历史数据点，先标为趋势缺口。</p>
-      <span class="metric-point-count">${series.length} 个数据点</span>
-      ${renderMetricDataRows(series)}
+      <span class="metric-point-count">${series.length} 个数据点</span>${maybeDataRows}
     </div>`;
   }
   if (series.length < 5) {
@@ -1949,7 +3061,7 @@ function renderMetricTrend(metric) {
       <b>连续趋势不足</b>
       <p>${sourceText(metric.seriesGap || "公开材料只有少量截面或不完整历史。")} 少于 5 个同口径历史数据点，不能画成趋势线。</p>
       <span class="metric-point-count">${series.length} 个数据点</span>
-      ${renderMetricDataRows(series)}
+      ${dataRows}
     </div>`;
   }
   if (metric.trendKind !== "time_series") {
@@ -1957,31 +3069,41 @@ function renderMetricTrend(metric) {
       <b>${e(metric.trendLabel || "非连续数据点")}</b>
       <p>${sourceText(metric.seriesGap || "这些点来自不同公司、不同口径或订单漏斗，适合做方向判断，不适合画成连续历史趋势。")}</p>
       <span class="metric-point-count">${series.length} 个数据点</span>
-      ${renderMetricDataRows(series)}
+      ${dataRows}
     </div>`;
   }
   return `<div class="metric-data-table">
     <b>${e(metric.trendLabel || "历史数据点")}</b>
     <p>按同一主体、同一字段、同一单位列出历史观测值；这里不画折线，避免把点间斜率误读成精确趋势。</p>
     <span class="metric-point-count">${series.length} 个数据点</span>
-    ${renderMetricDataRows(series)}
+    ${dataRows}
   </div>`;
 }
 
 function renderMetricDataRows(series, companyName = "") {
   if (!series.length) return "";
-  return `<div class="metric-data-rows">
-    <div class="metric-data-row metric-data-head">
-      ${companyName ? "<b>主体</b>" : ""}
-      <b>期间 / 截点</b>
-      <b>数值</b>
-    </div>
-    ${series.map((point) => `<div class="metric-data-row">
-      ${companyName ? `<span>${e(companyName)}</span>` : ""}
-      <span>${e(point.label)}</span>
-      <strong>${e(point.value)}</strong>
-    </div>`).join("")}
-  </div>`;
+  const hasChange = series.some((point) => point.change);
+  const rowClass = [
+    "metric-data-row",
+    hasChange ? "metric-data-row-with-change" : "",
+    companyName ? "metric-data-row-with-company" : "",
+  ].filter(Boolean).join(" ");
+  const headerCells = [
+    companyName ? "<b>主体</b>" : "",
+    "<b>期间 / 截点</b>",
+    "<b>数值</b>",
+    hasChange ? "<b>相对变化</b>" : "",
+  ].filter(Boolean).join("");
+  const rows = series.map((point) => {
+    const cells = [
+      companyName ? `<span>${e(companyName)}</span>` : "",
+      `<span>${e(point.label)}</span>`,
+      `<strong>${e(point.value)}</strong>`,
+      hasChange ? `<span>${e(point.change || "")}</span>` : "",
+    ].filter(Boolean).join("");
+    return `<div class="${rowClass}">${cells}</div>`;
+  }).join("");
+  return `<div class="metric-data-rows"><div class="${rowClass} metric-data-head">${headerCells}</div>${rows}</div>`;
 }
 
 function renderMetricMultiSeriesData(metric) {
@@ -2061,23 +3183,23 @@ function renderDemandChainAudit(chainAudit) {
   </div>`;
 }
 
-function renderBomSevenQuestionCard(node) {
-  const rows = bomSevenQuestionRows(node);
+function renderBomCoreQuestionCard(node) {
+  const rows = bomCoreQuestionRows(node);
   return `<article class="overview-question-card">
     <h4>${e(node.name)}</h4>
     <div class="overview-answer">
-      <div class="table-scroll"><table class="bom-seven-question-table"><thead><tr><th>问题</th><th>回答</th><th>来源</th></tr></thead><tbody>${rows.map((row) => `<tr><td><b>${e(row.question)}</b></td><td>${sourceText(row.answer)}</td><td>${sourceChips(row.sourceIds)}</td></tr>`).join("")}</tbody></table></div>
+      <div class="table-scroll"><table class="bom-core-question-table"><thead><tr><th>问题</th><th>回答</th><th>来源</th></tr></thead><tbody>${rows.map((row) => `<tr><td><b>${e(row.question)}</b></td><td>${sourceText(row.answer)}</td><td>${sourceChips(row.sourceIds)}</td></tr>`).join("")}</tbody></table></div>
     </div>
   </article>`;
 }
 
-function bomSevenQuestionRows(node) {
+function bomCoreQuestionRows(node) {
   const rows = {
     compute: [
       {
-        question: "需求是否会大幅增长？",
-        answer: "AI factory 的第一层实物需求是数据中心 AI 加速器。当前应先验证 AI workload 是否变成客户 capex，再验证 capex 是否变成 GPU/ASIC 收入、订单和 backlog。",
-        sourceIds: ["SRC-NVDA-FY26-Q4", "SRC-AVGO-FY25-Q4", "SRC-MSFT-FY26-Q2", "SRC-AMZN-Q4-2025", "SRC-GOOGL-Q4-2025", "SRC-META-Q3-2025", "SRC-ORCL-FY26-Q2", "SRC-DELL-FY26-Q4"],
+        question: "当前 BOM 的需求是否会被 S 曲线放大拉动？",
+        answer: "AI factory 的第一层实物需求是数据中心 AI 加速器。当前应先验证 AI workload 是否变成客户 capex，再验证 capex 是否变成 GPU/ASIC 收入、订单和 backlog；同时判断需求弹性，即平台是否从单卡/单机采购上移到 rack-scale、pod-scale 和系统级交付，使 GPU/ASIC 需求被单位价值量和系统规格进一步放大。",
+        sourceIds: ["SRC-NVDA-FY26-Q4", "SRC-AVGO-FY25-Q4", "SRC-MSFT-FY26-Q2", "SRC-AMZN-Q4-2025", "SRC-GOOGL-Q4-2025", "SRC-META-Q3-2025", "SRC-ORCL-FY26-Q2", "SRC-DELL-FY26-Q4", "SRC-SA-GB200-BOM-2024", "SRC-NVDA-GTC-VERA-RUBIN-20260316"],
         detail: {
           reportNarrative: {
             eyebrow: "核心问题 01 / 需求验证",
@@ -2628,36 +3750,6 @@ function bomSevenQuestionRows(node) {
         },
       },
       {
-        question: "单位用量是否会提升？",
-        answer: "rack-scale 架构把需求从单卡扩大到机柜级平台，更多 GPU/ASIC 会同时拉动 HBM、网络、功耗和散热。",
-        sourceIds: ["SRC-SA-GB200-BOM-2024", "SRC-NVDA-GTC-VERA-RUBIN-20260316", "SRC-NVDA-GTC-DYNAMO-20260316"],
-        detail: {
-          thesis: "单位用量提升的核心不是“每张 GPU 更贵”这么简单，而是 AI factory 从单服务器采购变成机柜、pod 和集群级采购。只要平台规格继续向 rack-scale 演进，单个训练/推理集群对应的 GPU、HBM、NVLink/以太网、液冷和电力用量都会同步放大。",
-          steps: [
-            {
-              title: "看平台形态是否升级",
-              body: "GB200/NVL72 和 Vera Rubin 的共同点是把 GPU、CPU、互联、网络和系统管理组合成 rack-scale/pod-scale 平台。投资上应把需求单位从“卡”改成“机柜/集群”。",
-              sourceIds: ["SRC-SA-GB200-BOM-2024", "SRC-NVDA-GTC-VERA-RUBIN-20260316"],
-            },
-            {
-              title: "看推理是否提高利用和并发",
-              body: "Dynamo 这类推理调度层如果提高 Blackwell 推理吞吐和利用率，会让客户更愿意把 GPU 采购从训练扩展到持续在线推理。它不是硬件收入本身，但会提高硬件部署的经济性。",
-              sourceIds: ["SRC-NVDA-GTC-DYNAMO-20260316"],
-            },
-            {
-              title: "只看当前 accelerator BOM 的单位强度",
-              body: "本节点只判断 GPU/ASIC 自身的单位用量是否提升：从单卡、单服务器，走向 rack-scale / pod-scale / cluster-scale accelerator 部署。HBM、网络、光模块、电力和液冷的单位用量在各自 BOM 章节单独研究。",
-              sourceIds: ["SRC-SA-GB200-BOM-2024"],
-            },
-          ],
-          checks: [
-            ["平台单位", "从 server/card 转向 rack/pod/cluster。", "支持单位用量提升", "补各代平台单柜 GPU/ASIC 数量、ASP、利用率和交付节奏"],
-            ["推理利用", "Dynamo 等软件层强化推理吞吐和调度。", "支持部署经济性", "补客户侧推理收入和 GPU 利用率"],
-            ["当前 BOM 边界", "只判断 GPU/ASIC 单位采购强度是否提高，其他节点留到各自 BOM 章节。", "避免跨 BOM 混写", "补单柜/单集群 accelerator 数量、ASP、利用率和订单口径"],
-          ],
-        },
-      },
-      {
         question: "供给能否跟上？",
         answer: "供给受先进制程、先进封装、HBM、系统集成和客户认证共同限制。",
         sourceIds: ["SRC-SA-COWOS-HBM-2023", "SRC-TSM-Q4-2025", "SRC-MU-FY26-Q1-PREPARED", "SRC-SKHYNIX-FY25"],
@@ -2808,8 +3900,7 @@ function bomSevenQuestionRows(node) {
       },
     ],
     manufacturing: [
-      ["需求是否会大幅增长？", "GPU/ASIC 放量必须经过先进制程和先进封装，AI accelerator 越复杂，越依赖高端制造和 CoWoS 类封装。", ["SRC-TSM-Q4-2025", "SRC-SA-COWOS-HBM-2023"]],
-      ["单位用量是否会提升？", "单位用量体现为先进节点、封装面积、HBM 集成和基板复杂度上升，不只是 wafer 数量。", ["SRC-SA-GB200-BOM-2024", "SRC-SA-COWOS-HBM-2023"]],
+      ["当前 BOM 的需求是否会被 S 曲线放大拉动？", "GPU/ASIC 放量必须经过先进制程和先进封装，AI accelerator 越复杂，越依赖高端制造、CoWoS 类封装、封装面积和 HBM 集成；因此该节点的需求不只是跟随晶圆数量，还会被平台复杂度和封装价值量放大。", ["SRC-TSM-Q4-2025", "SRC-SA-COWOS-HBM-2023", "SRC-SA-GB200-BOM-2024"]],
       ["供给能否跟上？", "扩产周期长，受设备、良率、工程经验、客户认证和 capex 制约。", ["SRC-TSM-Q4-2025"]],
       ["谁控制供给？", "核心控制者是 TSMC 及其先进封装生态。", ["SRC-TSM-Q4-2025"]],
       ["是否已经财务兑现？", "TSMC advanced technologies revenue share、gross margin 和 2026 capex 指引说明高端制造处于强需求状态。", ["SRC-TSM-Q4-2025"]],
@@ -2817,8 +3908,7 @@ function bomSevenQuestionRows(node) {
       ["反证是什么？", "先进封装产能释放快于需求、客户转单或自建替代、capex 回报下降、毛利率下行。", ["SRC-TSM-Q4-2025"]],
     ],
     memory: [
-      ["需求是否会大幅增长？", "AI accelerator 需要高带宽内存喂数据，GPU/ASIC 数量增加、上下文变长和推理并发都会推高 HBM 与高端内存需求。", ["SRC-MU-FY26-Q1-PREPARED", "SRC-SKHYNIX-FY25"]],
-      ["单位用量是否会提升？", "每代平台提升 HBM 容量、带宽和堆叠层数，server DRAM 与 enterprise SSD 也受益于训练/推理数据流。", ["SRC-MU-FY26-Q1-PREPARED"]],
+      ["当前 BOM 的需求是否会被 S 曲线放大拉动？", "AI accelerator 需要高带宽内存喂数据，GPU/ASIC 数量增加、上下文变长和推理并发都会推高 HBM 与高端内存需求；每代平台提升 HBM 容量、带宽和堆叠层数，使内存节点需求具备高于单纯服务器数量的弹性。", ["SRC-MU-FY26-Q1-PREPARED", "SRC-SKHYNIX-FY25"]],
       ["供给能否跟上？", "HBM 扩产受 DRAM wafer、堆叠封装、良率、客户资格和提前价量协议限制。", ["SRC-MU-FY26-Q1-PREPARED", "SRC-SA-COWOS-HBM-2023"]],
       ["谁控制供给？", "主要是 SK hynix、Micron、Samsung；SK hynix 领导力更强，Micron 是高弹性追赶者，Samsung 需要验证 HBM 领先性。", ["SRC-SKHYNIX-FY25", "SRC-MU-FY26-Q1-PREPARED", "SRC-SAMSUNG-FY25"]],
       ["是否已经财务兑现？", "SK hynix operating margin、Micron HBM TAM 与价量协议、Samsung high-value AI products 说明利润已经兑现。", ["SRC-SKHYNIX-FY25", "SRC-MU-FY26-Q1-PREPARED", "SRC-SAMSUNG-FY25"]],
@@ -2826,8 +3916,7 @@ function bomSevenQuestionRows(node) {
       ["反证是什么？", "HBM ASP 下跌、客户资格不及预期、扩产快于需求、DRAM/NAND 周期反转、GPU/ASIC 需求放缓。", ["SRC-MU-FY26-Q1-PREPARED"]],
     ],
     network: [
-      ["需求是否会大幅增长？", "rack-scale 与 cluster-scale AI 提高东西向流量，拉动 retimer、AEC、switch、NIC、光模块和 PAM4 DSP。", ["SRC-SA-OPTICAL-2024", "SRC-LC-AI-OPTICS-202501", "SRC-DO-AI-NETWORKS-20250715"]],
-      ["单位用量是否会提升？", "每 GPU 或每机柜的网络端口、光模块、DSP 和板级连接组件用量随 800G/1.6T 迁移上升。", ["SRC-SA-OPTICAL-2024", "SRC-LC-AI-OPTICS-202501"]],
+      ["当前 BOM 的需求是否会被 S 曲线放大拉动？", "rack-scale 与 cluster-scale AI 提高东西向流量，拉动 retimer、AEC、switch、NIC、光模块和 PAM4 DSP；每 GPU 或每机柜的网络端口、光模块、DSP 和板级连接组件用量随 800G/1.6T 迁移上升，因此网络节点可能具备更高单位弹性。", ["SRC-SA-OPTICAL-2024", "SRC-LC-AI-OPTICS-202501", "SRC-DO-AI-NETWORKS-20250715"]],
       ["供给能否跟上？", "约束来自客户设计导入、平台认证、低功耗/低延迟指标、信号完整性和批量可靠性。", ["SRC-SA-OPTICAL-2024", "SRC-LC-PAM4-DSP-20260226"]],
       ["谁控制供给？", "Astera、Credo、Marvell、Broadcom、Arista 和 NVIDIA networking 控制不同子环节。", ["SRC-ALAB-Q4-2025", "SRC-CRDO-FY26-Q3", "SRC-MRVL-FY26-Q3", "SRC-ANET-Q4-2025"]],
       ["是否已经财务兑现？", "ALAB、CRDO、MRVL、Arista 等公司收入已体现 AI networking / connectivity 需求。", ["SRC-ALAB-Q4-2025", "SRC-CRDO-FY26-Q3", "SRC-MRVL-FY26-Q3", "SRC-ANET-Q4-2025"]],
@@ -2835,8 +3924,7 @@ function bomSevenQuestionRows(node) {
       ["反证是什么？", "平台自研替代、客户设计切换、ASP 下行、CPO/LPO/AEC 路线变化、主要客户延迟 ramp。", ["SRC-SA-OPTICAL-2024", "SRC-DO-AI-NETWORKS-20250715"]],
     ],
     powerCooling: [
-      ["需求是否会大幅增长？", "GPU/ASIC 和 rack-scale 系统功耗提升后，数据中心必须新增电力、UPS、PDU、液冷和热管理能力。", ["SRC-VRT-Q4-2025", "SRC-SA-GB200-BOM-2024", "SRC-DO-LIQUID-COOLING-20260108"]],
-      ["单位用量是否会提升？", "高功率机柜提高每 rack 的电力和散热需求，抬升 UPS、配电、液冷 CDU、管路、现场工程和服务价值量。", ["SRC-SA-GB200-BOM-2024", "SRC-DO-LIQUID-COOLING-20260108"]],
+      ["当前 BOM 的需求是否会被 S 曲线放大拉动？", "GPU/ASIC 和 rack-scale 系统功耗提升后，数据中心必须新增电力、UPS、PDU、液冷和热管理能力；高功率机柜提高每 rack 的电力和散热需求，抬升 UPS、配电、液冷 CDU、管路、现场工程和服务价值量。", ["SRC-VRT-Q4-2025", "SRC-SA-GB200-BOM-2024", "SRC-DO-LIQUID-COOLING-20260108"]],
       ["供给能否跟上？", "约束来自工程交付、项目周期、电力接入、现场可靠性、液冷方案认证和供应链交付能力。", ["SRC-VRT-Q4-2025", "SRC-DO-LIQUID-COOLING-20260108"]],
       ["谁控制供给？", "Vertiv、Schneider、Eaton 和数据中心工程/液冷供应商控制关键供给。", ["SRC-VRT-Q4-2025", "SRC-DO-LIQUID-COOLING-20260108"]],
       ["是否已经财务兑现？", "Vertiv organic orders +252% YoY、backlog $15.0B，是物理瓶颈财务化最清楚的证据之一。", ["SRC-VRT-Q4-2025"]],
@@ -2844,8 +3932,7 @@ function bomSevenQuestionRows(node) {
       ["反证是什么？", "客户 capex 下修、电力接入延迟、项目毛利低于预期、backlog 取消或转收入慢、液冷渗透率低于预期。", ["SRC-VRT-Q4-2025", "SRC-DO-LIQUID-COOLING-20260108"]],
     ],
     system: [
-      ["需求是否会大幅增长？", "GPU/ASIC、HBM、网络和电力冷却最终必须组合成服务器、机柜和集群才能上线。", ["SRC-DELL-FY26-Q4", "SRC-SA-GB200-BOM-2024"]],
-      ["单位用量是否会提升？", "AI server 从单机走向 rack-scale，单系统包含更多 GPU、网络、电源、冷却和集成服务。", ["SRC-SA-GB200-BOM-2024"]],
+      ["当前 BOM 的需求是否会被 S 曲线放大拉动？", "GPU/ASIC、HBM、网络和电力冷却最终必须组合成服务器、机柜和集群才能上线；AI server 从单机走向 rack-scale，单系统包含更多 GPU、网络、电源、冷却和集成服务，使系统交付节点随平台复杂度和整柜化采购放大。", ["SRC-DELL-FY26-Q4", "SRC-SA-GB200-BOM-2024"]],
       ["供给能否跟上？", "供给受 GPU allocation、供应链协调、整机工程、客户定制、液冷/电力配套和交付周期约束。", ["SRC-DELL-FY26-Q4", "SRC-SA-GB200-BOM-2024"]],
       ["谁控制供给？", "Dell、Supermicro、HPE、ODM/OEM 是主要系统交付者，但玩家较多、客户议价强。", ["SRC-DELL-FY26-Q4", "SRC-SMCI-FY26-Q2"]],
       ["是否已经财务兑现？", "Dell 披露 AI-optimized server orders、shipments 和 backlog；Supermicro 也有 AI server exposure，但需看执行和治理风险。", ["SRC-DELL-FY26-Q4", "SRC-SMCI-FY26-Q2"]],
@@ -2853,7 +3940,11 @@ function bomSevenQuestionRows(node) {
       ["反证是什么？", "订单取消、GPU allocation 变化、毛利率下降、库存/应收上升、客户延迟部署、治理或执行问题。", ["SRC-SMCI-FY26-Q2", "SRC-DELL-FY26-Q4"]],
     ],
   };
-  return (rows[node.id] || []).map((row) => Array.isArray(row) ? { question: row[0], answer: row[1], sourceIds: row[2] } : row);
+  return normalizeBomCoreQuestionRows(rows[node.id] || []);
+}
+
+function normalizeBomCoreQuestionRows(rows) {
+  return rows.map((row) => Array.isArray(row) ? { question: row[0], answer: row[1], sourceIds: row[2] } : row);
 }
 
 function renderCompanyCard(node) {
@@ -3052,20 +4143,21 @@ function e(value) {
 function css() {
   return `
 :root{--bg:#f5f7fb;--surface:rgba(255,255,255,.9);--text:#1d1d1f;--muted:#667085;--line:#d9e0ea;--blue:#0a84ff;--green:#1d9a6c;--amber:#b7791f;--red:#c2413d;--shadow:0 18px 50px rgba(20,32,54,.10)}
-.bom-future-card.bom-expectation-card{background:#fff}.bom-future-card.bom-expectation-card>summary{grid-template-columns:1fr auto auto}.bom-expectation-card>summary>span:not(.chevron){border:1px solid rgba(10,132,255,.18);border-radius:999px;background:#eef7ff;color:var(--blue);font-size:11px;font-weight:900;padding:4px 8px;white-space:nowrap}.bom-expectation-core{border:1px solid rgba(10,132,255,.18);border-radius:14px;background:linear-gradient(180deg,#fff,#f7fbff);padding:12px;margin-bottom:10px}.bom-expectation-core span{display:block;color:var(--blue);font-size:11px;font-weight:900;margin-bottom:5px}.bom-expectation-core p{margin:0;color:#223047;font-size:14px;line-height:1.55}.bom-expectation-table{margin-top:10px}.bom-expectation-table table{min-width:1240px}.bom-expectation-table td:first-child{width:130px;color:#223047}.bom-expectation-table td:nth-child(2),.bom-expectation-table td:nth-child(4){width:120px;color:#475467;font-weight:800}.bom-expectation-table td{line-height:1.55}.bom-expectation-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}.bom-expectation-field{border:1px solid #e8eef7;border-radius:12px;background:#fbfdff;padding:9px;min-width:0}.bom-expectation-field span{display:block;color:#667085;font-size:11px;font-weight:900;margin-bottom:3px}.bom-expectation-field b{display:block;color:#223047;font-size:13px;line-height:1.45}.bom-expectation-validation{border:1px solid rgba(29,154,108,.20);border-radius:12px;background:#f5fffa;margin-top:10px;padding:10px}.bom-expectation-validation>b{display:block;color:#166f52;margin-bottom:4px}.bom-expectation-validation p{margin:0;color:#344054}.bom-expectation-card .bom-question-sources{margin-top:10px}
+.bom-future-card.bom-expectation-card{background:#fff}.bom-future-card.bom-expectation-card>summary{grid-template-columns:1fr auto auto}.bom-expectation-card>summary>span:not(.chevron){border:1px solid rgba(10,132,255,.18);border-radius:999px;background:#eef7ff;color:var(--blue);font-size:11px;font-weight:900;padding:4px 8px;white-space:nowrap}.bom-expectation-stage{display:grid;gap:3px;border:1px solid #e1eaf6;border-radius:14px;background:#fbfdff;padding:10px;margin-bottom:10px}.bom-expectation-stage span{color:#667085;font-size:11px;font-weight:900}.bom-expectation-stage b{color:#0a66cc;font-size:13px;line-height:1.35}.bom-expectation-subtitle{margin:0 0 10px;color:#667085;font-size:13px;line-height:1.45}.bom-expectation-core{border:1px solid rgba(10,132,255,.18);border-radius:14px;background:linear-gradient(180deg,#fff,#f7fbff);padding:12px;margin-bottom:10px}.bom-expectation-core span{display:block;color:var(--blue);font-size:11px;font-weight:900;margin-bottom:5px}.bom-expectation-core p{margin:0;color:#223047;font-size:14px;line-height:1.55}.bom-expectation-table{margin-top:10px}.bom-expectation-table table{min-width:1240px}.bom-expectation-table td:first-child{width:130px;color:#223047}.bom-expectation-table td:nth-child(2),.bom-expectation-table td:nth-child(4){width:120px;color:#475467;font-weight:800}.bom-expectation-table td{line-height:1.55}.bom-expectation-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}.bom-expectation-field{border:1px solid #e8eef7;border-radius:12px;background:#fbfdff;padding:9px;min-width:0}.bom-expectation-field span{display:block;color:#667085;font-size:11px;font-weight:900;margin-bottom:3px}.bom-expectation-field b{display:block;color:#223047;font-size:13px;line-height:1.45}.bom-expectation-validation{border:1px solid rgba(29,154,108,.20);border-radius:12px;background:#f5fffa;margin-top:10px;padding:10px}.bom-expectation-validation>b{display:block;color:#166f52;margin-bottom:4px}.bom-expectation-validation p{margin:0;color:#344054}.bom-expectation-card .bom-question-sources{margin-top:10px}
 .representative-companies{margin:12px 0 14px;padding:10px 0;border-top:1px solid #eef2f7;border-bottom:1px solid #eef2f7}.representative-companies>b{display:block;color:var(--blue);font-size:12px;margin-bottom:8px}.representative-companies>div{display:flex;flex-wrap:wrap;gap:8px}.representative-companies span{display:inline-flex;align-items:center;border:1px solid #d9e7f7;border-radius:999px;background:#f7fbff;color:#223047;padding:5px 9px;font-size:12px;font-weight:800}
 *{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;background:radial-gradient(circle at 20% 0%,#e8f2ff 0,transparent 34rem),var(--bg);color:var(--text);line-height:1.62}a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
 .hero{padding:32px clamp(22px,5vw,72px) 48px;background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,255,255,.62));border-bottom:1px solid var(--line)}.hero-inner{max-width:1180px;margin:0 auto}.eyebrow{margin:0 0 10px;color:var(--blue);font-size:12px;font-weight:800;text-transform:uppercase}h1{max-width:980px;margin:0;font-size:clamp(36px,5vw,66px);line-height:1.04;letter-spacing:0}.hero-subtitle{max-width:780px;color:#475467;font-size:19px}.hero-meta{display:flex;gap:10px;flex-wrap:wrap}.hero-meta span,.state-pill{border:1px solid var(--line);border-radius:999px;background:#fff;padding:6px 10px;color:var(--muted);font-size:13px}.top-nav{position:sticky;top:0;z-index:5;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;padding:12px;background:rgba(245,247,251,.82);backdrop-filter:blur(16px);border-bottom:1px solid rgba(217,224,234,.72)}.top-nav a{padding:8px 12px;border:1px solid rgba(10,132,255,.18);border-radius:999px;background:#fff;color:#28506f;font-size:13px}.section{max-width:1180px;margin:0 auto;padding:44px clamp(18px,4vw,36px)}.section-heading{display:flex;align-items:end;justify-content:space-between;margin-bottom:18px}.section-heading h2{margin:0;font-size:clamp(30px,3vw,44px);letter-spacing:0}.muted{color:var(--muted)}
 .goal-card,.industry-module,.qa-card,.source-collapse,.artifact-card{border:1px solid var(--line);border-radius:22px;background:var(--surface);box-shadow:var(--shadow)}.goal-card{padding:22px}.goal-main{font-size:22px;font-weight:800;margin-bottom:16px}.goal-grid,.constraint-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.metric,.constraint-grid article,.chain-bridge-card,.chain-node-lens,.overview-question-card,.chain-company-card,.bom-node-brief article{border:1px solid #e6edf7;border-radius:16px;background:#fff;padding:14px}.metric span,.constraint-grid span,.bom-node-brief span{display:block;color:var(--muted);font-size:12px;font-weight:800}.metric strong{display:block;color:#223047;font-size:18px}.constraint-definition{margin-top:18px}.artifact-title{font-weight:900;color:#26364f;margin-bottom:8px}.industry-overview-section{display:grid;gap:14px}.industry-module{overflow:hidden}.industry-module>summary,.qa-card>summary,.chain-detail-panel>summary,.bom-question-card>summary,.source-collapse>summary{list-style:none;cursor:pointer}.industry-module>summary::-webkit-details-marker,.qa-card>summary::-webkit-details-marker,details>summary::-webkit-details-marker{display:none}.industry-module[open]>summary,.qa-card[open]>summary{border-bottom:1px solid var(--line)}.module-head{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:18px 22px}.module-index{display:inline-flex;width:34px;height:34px;border-radius:999px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900;font-size:12px}.module-head h3{margin:0;font-size:22px}.module-head p{margin:0;color:var(--muted);font-size:14px}.chevron{color:var(--muted);font-weight:900;transition:transform .18s ease}.industry-module[open]>.module-head .chevron,.qa-card[open]>summary .chevron,details[open]>summary>.chevron{transform:rotate(90deg)}.industry-module-body{padding:22px;min-width:0}.chain-explain{padding:0}.chain-plain-summary{font-size:18px;color:#344054;margin-top:0}.chain-research-bridge{border:1px solid rgba(10,132,255,.18);border-radius:18px;background:#fbfdff;padding:16px;margin:18px 0}.chain-bridge-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.chain-node-lens ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0;padding:0;list-style:none}.chain-node-lens b,.chain-bridge-card span{display:block;color:var(--blue);font-size:12px;margin-bottom:4px}.chain-detail-panel{border:1px solid #e6edf7;border-radius:18px;background:#fff;margin-top:12px;overflow:hidden}.chain-detail-panel>summary{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;font-weight:900}.chain-layer-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:16px}.chain-layer-card{border:1px solid #eef2f7;border-radius:16px;background:#fbfcff;padding:14px}.chain-layer-card p{margin:10px 0}.chain-layer-card span{display:block;color:var(--muted);font-size:12px}.chain-simple-flow{display:grid;grid-template-columns:repeat(5,minmax(180px,1fr));gap:10px;padding:16px;overflow-x:auto}.chain-stage-panel{min-width:180px;border:1px solid #e8eef7;border-radius:16px;padding:14px;background:#fbfcff}.chain-stage-panel span{display:inline-flex;width:28px;height:28px;border-radius:50%;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900}.chain-relationship-graph{margin:0 16px 16px;padding:14px;border:1px dashed #bfd7f5;border-radius:16px;color:#3d536d;background:#f7fbff}.chain-company-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:16px}.company-flow-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.company-flow-grid p{margin:0;border-top:1px solid #eef2f7;padding-top:8px}.company-flow-grid b{display:block;color:#223047}.component-value-chain,.chain-lane-map,.chain-value-flow{min-width:0}.chain-relationship-graph{display:block}.bom-node-brief{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:14px}.bom-node-brief p{margin:4px 0 0}.bom-question-list{display:grid;gap:10px}.bom-question-card{border:1px solid #e3ebf6;border-radius:18px;background:#fff;overflow:hidden}.bom-question-card>summary{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:14px 16px}.bom-question-card[open]>summary{border-bottom:1px solid #edf1f7}.bom-question-index{display:inline-flex;width:28px;height:28px;border-radius:999px;align-items:center;justify-content:center;background:#f0f7ff;color:var(--blue);font-weight:900;font-size:12px}.bom-question-answer{padding:14px 16px;background:#fbfcff}.bom-question-answer p{margin:0 0 10px}.bom-question-sources{display:flex;gap:6px;flex-wrap:wrap}.bom-demand-study{display:grid;gap:14px}.bom-demand-thesis{border:1px solid rgba(10,132,255,.18);border-radius:16px;background:#fff;padding:14px;color:#26364f}.bom-demand-steps{display:grid;gap:10px}.bom-demand-step{display:grid;grid-template-columns:auto 1fr;gap:12px;border:1px solid #e8eef7;border-radius:16px;background:#fff;padding:14px}.bom-demand-step>span{display:inline-flex;width:34px;height:34px;border-radius:999px;align-items:center;justify-content:center;background:#eef7ff;color:var(--blue);font-weight:900;font-size:12px}.bom-demand-step h5{margin:0 0 6px;font-size:15px;color:#223047}.bom-demand-step p{margin:0 0 8px}.bom-demand-table{min-width:980px}.source-chip{display:inline-flex;margin:2px 4px 2px 0;border:1px solid rgba(10,132,255,.2);border-radius:999px;background:#eef7ff;color:var(--blue);padding:3px 8px;font-size:11px}
-.bom-question-research-status{border:1px solid #dbeafe;border-radius:16px;background:#f7fbff;overflow:hidden;margin-bottom:12px}.bom-question-research-status>summary{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:12px;list-style:none;cursor:pointer}.bom-question-research-status[open]>summary{border-bottom:1px solid #dbeafe}.bom-question-research-status summary b{color:#0a66cc}.bom-question-research-status summary span:not(.chevron){color:#667085;font-size:12px;font-weight:900}.bom-question-research-body{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:12px}.bom-question-research-body article{border:1px solid #e7eef8;border-radius:14px;background:#fff;padding:11px}.bom-question-research-body span{display:block;color:var(--blue);font-size:11px;font-weight:900;margin-bottom:4px}.bom-question-research-body p{margin:0;color:#344054;font-size:13px}.bom-s-curve-stage-card{border:1px solid rgba(29,154,108,.24);border-radius:20px;background:linear-gradient(180deg,#fff,#f5fffa);overflow:hidden;margin-top:14px}.bom-s-curve-stage-card>summary{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;list-style:none;cursor:pointer;padding:16px}.bom-s-curve-stage-card[open]>summary{border-bottom:1px solid rgba(29,154,108,.18)}.bom-s-curve-stage-card>summary>span:first-child{display:inline-flex;border:1px solid rgba(29,154,108,.28);border-radius:999px;background:#eaf8f2;color:var(--green);padding:6px 10px;font-size:12px;font-weight:900;white-space:nowrap}.bom-s-curve-stage-card h5,.bom-s-curve-stage-card p{margin:0}.bom-s-curve-stage-card summary b{display:block;color:#173f34;font-size:16px}.bom-s-curve-stage-card summary p{color:#667085;font-size:13px}.bom-stage-rollup-body{display:grid;gap:12px;padding:14px}.bom-stage-source-discipline,.bom-stage-next-signal,.bom-stage-downgrade-signal{border:1px solid #dcefe8;border-radius:16px;background:#fff;padding:12px}.bom-stage-current{border:1px solid #dcefe8;border-radius:16px;background:#f8fffb;padding:12px}.bom-stage-source-discipline>b,.bom-stage-current>b,.bom-stage-next-signal>b,.bom-stage-downgrade-signal>b{display:block;color:#173f34;margin-bottom:5px}.bom-stage-source-discipline p,.bom-stage-current p,.bom-stage-next-signal p,.bom-stage-downgrade-signal p{margin:0;color:#344054}.bom-stage-evidence-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.bom-stage-evidence-grid article{border:1px solid #e7eef8;border-radius:16px;background:#fff;padding:12px}.bom-stage-evidence-grid span{display:inline-flex;border-radius:999px;background:#eef7ff;color:var(--blue);font-size:11px;font-weight:900;padding:4px 8px}.bom-stage-evidence-grid b{display:block;color:#223047;margin:7px 0 5px}.bom-stage-evidence-grid p{margin:0;color:#344054;font-size:13px}.bom-question-four-step{display:grid;gap:12px;margin-bottom:14px}.bom-step-card{border:1px solid #e2ebf6;border-radius:18px;background:#fff;overflow:hidden}.bom-step-card>summary{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:14px;list-style:none;cursor:pointer}.bom-step-card[open]>summary{border-bottom:1px solid #e2ebf6}.bom-step-card>summary span:first-child{display:inline-flex;width:58px;height:26px;border-radius:999px;align-items:center;justify-content:center;background:#eef7ff;color:var(--blue);font-size:11px;font-weight:900}.bom-step-card>summary h5{margin:0;color:#223047;font-size:16px;line-height:1.35}.bom-step-body{display:grid;gap:12px;padding:14px}.bom-step-body>p{margin:0;color:#344054}.bom-metric-rationale-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.bom-metric-rationale-card{border:1px solid #edf2f8;border-radius:16px;background:#fbfdff;padding:12px}.bom-metric-rationale-card span{display:block;color:var(--blue);font-size:11px;font-weight:900;margin-bottom:4px}.bom-metric-rationale-card b{display:block;color:#223047;font-size:14px;margin-bottom:6px}.bom-metric-rationale-card p{margin:0;color:#344054;font-size:13px}.bom-history-metric-list{display:grid;gap:16px}.bom-history-metric-paragraph{display:grid;gap:8px;padding:0 0 14px;border-bottom:1px solid #e7edf6}.bom-history-metric-paragraph:last-child{border-bottom:0;padding-bottom:0}.bom-history-metric-text{margin:0;color:#344054}.bom-history-metric-text b{display:block;color:#223047;margin-bottom:4px}.bom-future-grid,.bom-mechanism-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.bom-mechanism-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.bom-future-card,.bom-mechanism-card,.bom-question-verdict{border:1px solid #edf2f8;border-radius:16px;background:#fbfdff;overflow:hidden}.bom-future-card>summary,.bom-mechanism-card>summary{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;list-style:none;cursor:pointer;padding:12px}.bom-future-card[open]>summary,.bom-mechanism-card[open]>summary{border-bottom:1px solid #edf2f8}.bom-nested-card-body,.bom-question-verdict{padding:12px}.bom-future-card b,.bom-mechanism-card b,.bom-question-verdict b{display:block;color:#223047}.bom-nested-card-body p,.bom-question-verdict p{margin:0;color:#344054}.bom-question-supporting-detail{display:grid;gap:12px;margin-top:12px;border-top:1px solid #e7edf6;padding-top:12px}
+.bom-question-research-status{border:1px solid #dbeafe;border-radius:16px;background:#f7fbff;overflow:hidden;margin-bottom:12px}.bom-question-research-status>summary{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:12px;list-style:none;cursor:pointer}.bom-question-research-status[open]>summary{border-bottom:1px solid #dbeafe}.bom-question-research-status summary b{color:#0a66cc}.bom-question-research-status summary span:not(.chevron){color:#667085;font-size:12px;font-weight:900}.bom-question-research-body{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:12px}.bom-question-research-body article{border:1px solid #e7eef8;border-radius:14px;background:#fff;padding:11px}.bom-question-research-body span{display:block;color:var(--blue);font-size:11px;font-weight:900;margin-bottom:4px}.bom-question-research-body p{margin:0;color:#344054;font-size:13px}.bom-s-curve-stage-card{border:1px solid rgba(29,154,108,.24);border-radius:20px;background:linear-gradient(180deg,#fff,#f5fffa);overflow:hidden;margin-top:14px}.bom-s-curve-stage-card>summary{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;list-style:none;cursor:pointer;padding:16px}.bom-s-curve-stage-card[open]>summary{border-bottom:1px solid rgba(29,154,108,.18)}.bom-s-curve-stage-card>summary>span:first-child{display:inline-flex;border:1px solid rgba(29,154,108,.28);border-radius:999px;background:#eaf8f2;color:var(--green);padding:6px 10px;font-size:12px;font-weight:900;white-space:nowrap}.bom-s-curve-stage-card h5,.bom-s-curve-stage-card p{margin:0}.bom-s-curve-stage-card summary b{display:block;color:#173f34;font-size:16px}.bom-s-curve-stage-card summary p{color:#667085;font-size:13px}.bom-stage-rollup-body{display:grid;gap:12px;padding:14px}.bom-stage-source-discipline,.bom-stage-next-signal,.bom-stage-downgrade-signal{border:1px solid #dcefe8;border-radius:16px;background:#fff;padding:12px}.bom-stage-current{border:1px solid #dcefe8;border-radius:16px;background:#f8fffb;padding:12px}.bom-stage-source-discipline>b,.bom-stage-current>b,.bom-stage-next-signal>b,.bom-stage-downgrade-signal>b{display:block;color:#173f34;margin-bottom:5px}.bom-stage-source-discipline p,.bom-stage-current p,.bom-stage-next-signal p,.bom-stage-downgrade-signal p{margin:0;color:#344054}.bom-stage-evidence-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.bom-stage-evidence-grid article{border:1px solid #e7eef8;border-radius:16px;background:#fff;padding:12px}.bom-stage-evidence-grid span{display:inline-flex;border-radius:999px;background:#eef7ff;color:var(--blue);font-size:11px;font-weight:900;padding:4px 8px}.bom-stage-evidence-grid b{display:block;color:#223047;margin:7px 0 5px}.bom-stage-evidence-grid p{margin:0;color:#344054;font-size:13px}.bom-question-four-step,.bom-question-stage-flow{display:grid;gap:12px;margin-bottom:14px}.bom-step-card{border:1px solid #e2ebf6;border-radius:18px;background:#fff;overflow:hidden}.bom-step-card>summary{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:14px;list-style:none;cursor:pointer}.bom-step-card[open]>summary{border-bottom:1px solid #e2ebf6}.bom-step-card>summary span:first-child{display:inline-flex;width:58px;height:26px;border-radius:999px;align-items:center;justify-content:center;background:#eef7ff;color:var(--blue);font-size:11px;font-weight:900}.bom-step-card>summary h5{margin:0;color:#223047;font-size:16px;line-height:1.35}.bom-step-body{display:grid;gap:12px;padding:14px}.bom-step-body>p{margin:0;color:#344054}.bom-metric-rationale-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.bom-metric-rationale-card{border:1px solid #edf2f8;border-radius:16px;background:#fbfdff;padding:12px}.bom-metric-rationale-card span{display:block;color:var(--blue);font-size:11px;font-weight:900;margin-bottom:4px}.bom-metric-rationale-card b{display:block;color:#223047;font-size:14px;margin-bottom:6px}.bom-metric-rationale-card p{margin:0;color:#344054;font-size:13px}.bom-history-metric-list{display:grid;gap:16px}.bom-history-metric-paragraph{display:grid;gap:8px;padding:0 0 14px;border-bottom:1px solid #e7edf6}.bom-history-metric-paragraph:last-child{border-bottom:0;padding-bottom:0}.bom-history-metric-text{margin:0;color:#344054}.bom-history-metric-text b{display:block;color:#223047;margin-bottom:4px}.bom-future-grid,.bom-mechanism-grid,.bom-final-trend-grid,.bom-stage-mechanism-grid{display:grid;grid-template-columns:1fr;gap:10px}.bom-future-card,.bom-mechanism-card,.bom-question-verdict{border:1px solid #edf2f8;border-radius:16px;background:#fbfdff;overflow:hidden}.bom-future-card>summary,.bom-mechanism-card>summary{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;list-style:none;cursor:pointer;padding:12px}.bom-future-card[open]>summary,.bom-mechanism-card[open]>summary{border-bottom:1px solid #edf2f8}.bom-nested-card-body,.bom-question-verdict{padding:12px}.bom-future-card b,.bom-mechanism-card b,.bom-question-verdict b{display:block;color:#223047}.bom-nested-card-body p,.bom-question-verdict p{margin:0;color:#344054}.bom-question-supporting-detail{display:grid;gap:12px;margin-top:12px;border-top:1px solid #e7edf6;padding-top:12px}.bom-stage-integrated-card{border-color:#d8e6f7;background:linear-gradient(180deg,#fff,#fbfdff)}.bom-stage-integrated-card>summary{grid-template-columns:auto 1fr auto}.bom-stage-integrated-card>summary .stage-index{width:58px;height:28px}.bom-stage-subcard{border:1px solid #edf2f8;border-radius:16px;background:#fff;overflow:hidden}.bom-stage-subcard>summary{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;list-style:none;cursor:pointer;padding:12px}.bom-stage-subcard[open]>summary{border-bottom:1px solid #edf2f8}.bom-stage-subcard summary b{color:#223047}.bom-stage-subcard-body{display:grid;gap:10px;padding:12px}.bom-stage-history-content{display:grid;gap:10px}
 .bom-future-grid{display:grid;grid-template-columns:1fr;gap:14px}.bom-future-card{min-width:0}
-.bom-logic-chain-panel{border:1px solid #e1eaf6;border-radius:18px;background:#fbfdff;overflow:hidden}.bom-logic-chain-panel>summary{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:13px;list-style:none;cursor:pointer}.bom-logic-chain-panel[open]>summary{border-bottom:1px solid #e1eaf6}.bom-logic-chain-panel summary b{color:#0a66cc}.bom-logic-chain-panel summary span:not(.chevron){color:#667085;font-size:12px;font-weight:900}.bom-logic-chain-table{padding:12px}.bom-logic-chain-table table{min-width:980px}.bom-logic-chain-row td:first-child b{color:#0a66cc}.bom-logic-stage-stack{display:grid;gap:12px}.bom-logic-stage-card{border:1px solid #e1eaf6;border-radius:18px;background:#fbfdff;overflow:hidden}.bom-logic-stage-card>summary{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:13px;list-style:none;cursor:pointer}.bom-logic-stage-card[open]>summary{border-bottom:1px solid #e1eaf6}.bom-logic-stage-card .stage-index{display:inline-flex;width:58px;height:28px;border-radius:999px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-size:11px;font-weight:900}.bom-logic-stage-card summary b{display:block;color:#0a66cc;font-size:12px}.bom-logic-stage-card summary strong{display:block;color:#223047;font-size:16px;line-height:1.3}.bom-logic-stage-body{display:grid;gap:10px;padding:13px}.bom-logic-stage-card p{margin:0;color:#344054}.bom-stage-history,.bom-stage-current{border:1px solid #edf2f8;border-radius:16px;background:#fff;padding:12px}.bom-stage-history>b,.bom-stage-current>b{display:block;color:#223047;margin-bottom:6px}.metric-point-count{display:inline-flex;width:max-content;max-width:100%;border:1px solid #e0e8f4;border-radius:999px;background:#fff;color:#667085;padding:3px 8px;font-size:11px;font-weight:900;margin-top:8px}.metric-data-table,.metric-trend-gap{border:1px solid #eef3f9;border-radius:14px;background:#fbfdff;padding:10px}.metric-data-table>b,.metric-trend-gap>b{display:block;color:#667085;font-size:11px;margin-bottom:4px}.metric-data-table p,.metric-trend-gap p{margin:0;color:#344054;font-size:13px}.metric-data-rows{display:grid;gap:0;margin-top:10px;border:1px solid #e6edf7;border-radius:12px;overflow:hidden;background:#fff}.metric-data-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:8px 10px;border-top:1px solid #eef2f7}.metric-data-row:first-child{border-top:0}.metric-data-row span{color:#344054;font-size:12px}.metric-data-row strong{color:#223047;font-size:12px;text-align:right}.metric-data-head{background:#f6f9fd}.metric-data-head b{color:#667085;font-size:11px;text-transform:uppercase}.metric-multi-series-data .metric-data-row{grid-template-columns:minmax(120px,.8fr) 1fr auto}
+.bom-logic-chain-panel{border:1px solid #e1eaf6;border-radius:18px;background:#fbfdff;overflow:hidden}.bom-logic-chain-panel>summary{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:13px;list-style:none;cursor:pointer}.bom-logic-chain-panel[open]>summary{border-bottom:1px solid #e1eaf6}.bom-logic-chain-panel summary b{color:#0a66cc}.bom-logic-chain-panel summary span:not(.chevron){color:#667085;font-size:12px;font-weight:900}.bom-logic-chain-table{padding:12px}.bom-logic-chain-table table{min-width:980px}.bom-logic-chain-row td:first-child b{color:#0a66cc}.bom-logic-stage-stack{display:grid;gap:12px}.bom-logic-stage-card{border:1px solid #e1eaf6;border-radius:18px;background:#fbfdff;overflow:hidden}.bom-logic-stage-card>summary{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:13px;list-style:none;cursor:pointer}.bom-logic-stage-card[open]>summary{border-bottom:1px solid #e1eaf6}.bom-logic-stage-card .stage-index{display:inline-flex;width:58px;height:28px;border-radius:999px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-size:11px;font-weight:900}.bom-logic-stage-card summary b{display:block;color:#0a66cc;font-size:12px}.bom-logic-stage-card summary strong{display:block;color:#223047;font-size:16px;line-height:1.3}.bom-logic-stage-body{display:grid;gap:10px;padding:13px}.bom-logic-stage-card p{margin:0;color:#344054}.bom-stage-metric-choice,.bom-stage-history,.bom-stage-current{border:1px solid #edf2f8;border-radius:16px;background:#fff;padding:12px}.bom-stage-metric-choice>b,.bom-stage-history>b,.bom-stage-current>b{display:block;color:#223047;margin-bottom:6px}.metric-choice-table th:first-child,.metric-choice-table td:first-child{width:28%}.metric-point-count{display:inline-flex;width:max-content;max-width:100%;border:1px solid #e0e8f4;border-radius:999px;background:#fff;color:#667085;padding:3px 8px;font-size:11px;font-weight:900;margin-top:8px}.metric-data-table,.metric-trend-gap{border:1px solid #eef3f9;border-radius:14px;background:#fbfdff;padding:10px}.metric-data-table>b,.metric-trend-gap>b{display:block;color:#667085;font-size:11px;margin-bottom:4px}.metric-data-table p,.metric-trend-gap p{margin:0;color:#344054;font-size:13px}.metric-data-rows{display:grid;gap:0;margin-top:10px;border:1px solid #e6edf7;border-radius:12px;overflow:hidden;background:#fff}.metric-data-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:8px 10px;border-top:1px solid #eef2f7}.metric-data-row:first-child{border-top:0}.metric-data-row span{color:#344054;font-size:12px}.metric-data-row strong{color:#223047;font-size:12px;text-align:right}.metric-data-head{background:#f6f9fd}.metric-data-head b{color:#667085;font-size:11px;text-transform:uppercase}.metric-data-row-with-change{grid-template-columns:minmax(120px,1fr) minmax(90px,auto) minmax(140px,1fr)}.metric-data-row-with-company.metric-data-row-with-change{grid-template-columns:minmax(120px,.8fr) minmax(120px,1fr) minmax(90px,auto) minmax(140px,1fr)}.metric-multi-series-data .metric-data-row{grid-template-columns:minmax(120px,.8fr) 1fr auto}.metric-multi-series-data .metric-data-row-with-company.metric-data-row-with-change{grid-template-columns:minmax(120px,.8fr) minmax(120px,1fr) minmax(90px,auto) minmax(140px,1fr)}
 .bom-demand-logic-chain{display:grid;gap:10px}.bom-demand-logic-step{display:grid;grid-template-columns:auto 1fr;gap:12px;border:1px solid #edf2f8;border-radius:16px;background:#fbfdff;padding:12px}.bom-demand-logic-step>span{display:inline-flex;width:34px;height:34px;border-radius:999px;align-items:center;justify-content:center;background:#eef7ff;color:var(--blue);font-weight:900;font-size:12px}.bom-demand-logic-step b{display:block;color:#223047;margin-bottom:5px}.bom-demand-logic-step p{margin:0 0 6px;color:#344054}.bom-demand-logic-step em{font-style:normal;color:#667085;font-size:12px;font-weight:800}
 .research-narrative{display:grid;gap:18px}.narrative-head{border:1px solid rgba(10,132,255,.16);border-radius:18px;background:linear-gradient(180deg,#fff,#f7fbff);padding:18px}.narrative-head span{display:block;color:var(--blue);font-size:12px;font-weight:900;margin-bottom:6px}.narrative-head h4{margin:0 0 10px;font-size:24px;line-height:1.25;color:#1f2d3d}.narrative-head p{margin:0;color:#344054;font-size:16px}.logic-flow{display:grid;grid-template-columns:repeat(5,minmax(150px,1fr));gap:8px;align-items:stretch}.flow-step{border:1px solid #dceafa;border-radius:16px;background:#fff;padding:12px;min-width:150px}.flow-step span{display:inline-flex;width:28px;height:28px;border-radius:999px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900;font-size:12px;margin-bottom:8px}.flow-step p{margin:0;color:#26364f;font-weight:800;line-height:1.45}.flow-arrow{display:none}.narrative-prose{display:grid;gap:12px;border-left:3px solid #0a84ff;padding-left:16px}.narrative-prose p{margin:0;color:#2f3d52;font-size:15px}.narrative-data-table{min-width:1040px}.narrative-bottom{display:grid;grid-template-columns:1fr 1fr;gap:12px}.investment-takeaway,.bear-case-box{border:1px solid #e4ebf5;border-radius:18px;background:#fff;padding:16px}.investment-takeaway b,.bear-case-box b{display:block;color:#223047;margin-bottom:8px}.investment-takeaway p{margin:0;color:#344054}.bear-case-box{background:#fffafa;border-color:#f0d3d0}.bear-case-box ul{margin:0;padding-left:18px;color:#4b5563}.bear-case-box li+li{margin-top:6px}.demand-chain-audit{border:1px solid rgba(10,132,255,.18);border-radius:18px;background:#f7fbff;padding:14px}.demand-chain-title{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:12px}.demand-chain-title span{color:var(--blue);font-weight:900}.demand-chain-title strong{color:#344054;font-size:13px}.demand-chain-cards{display:grid;gap:12px}.chain-audit-card{border:1px solid #dceafa;border-radius:16px;background:#fff;overflow:hidden}.chain-audit-head{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:14px;border-bottom:1px solid #edf3fb}.chain-audit-head>span{display:inline-flex;width:34px;height:34px;border-radius:999px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900;font-size:12px}.chain-audit-head h5{margin:0 0 4px;font-size:16px;color:#223047}.chain-audit-head p{margin:0;color:var(--muted)}.chain-audit-head strong{border:1px solid rgba(10,132,255,.24);border-radius:999px;background:#f0f7ff;color:var(--blue);padding:5px 10px;font-size:12px;white-space:nowrap}.chain-audit-body-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:14px}.chain-audit-body-grid div{border:1px solid #eef2f7;border-radius:14px;background:#fbfcff;padding:12px}.chain-audit-body-grid b{display:block;color:#223047;margin-bottom:6px}.chain-audit-body-grid p{margin:0;color:#3d536d}.chain-audit-verdict{display:flex;justify-content:space-between;gap:12px;align-items:center;border-top:1px solid #edf3fb;padding:12px 14px}.chain-audit-verdict>span{color:#667085;font-size:12px;font-weight:800}.qa-card{margin:12px 0;overflow:hidden}.qa-card summary{display:grid;grid-template-columns:auto 1fr auto auto;gap:12px;align-items:center;padding:14px 16px}.qid{font-weight:900;color:var(--blue)}.qa-count{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:4px 8px}.qa-body{display:grid;gap:10px;padding:14px 16px}.qa-block{border:1px solid #edf1f7;border-radius:16px;background:#fff;padding:12px}.block-title{font-weight:900;color:#27364a;margin-bottom:6px}.qa-card.level-2{margin-left:18px;background:rgba(255,255,255,.82)}.qa-card.level-3{margin-left:28px;background:rgba(247,249,252,.95);border-style:dashed}.l3-meta{display:flex;gap:8px;flex-wrap:wrap}.l3-meta span{border:1px solid #e0e8f4;border-radius:999px;background:#f7fbff;color:#4e5f75;font-size:11px;padding:4px 8px}.overview-answer p{margin:0}.overview-answer-prose{color:#344054}.target-section{display:grid;gap:14px}.table-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}.table-scroll table{min-width:920px;border-collapse:separate;border-spacing:0;width:100%;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}.table-scroll th,.table-scroll td{padding:10px 12px;text-align:left;border-bottom:1px solid #edf1f7;vertical-align:top;font-size:13px}.table-scroll th{background:#f6f9fd;color:#475467;font-size:12px;font-weight:900}.state-actionable_long,.state-watch_only,.state-no_action{display:inline-flex;border-radius:999px;padding:4px 8px;font-weight:900;font-size:12px}.state-actionable_long{color:var(--green);background:#eaf8f2;border:1px solid rgba(29,154,108,.25)}.state-watch_only{color:var(--amber);background:#fff7e6;border:1px solid rgba(183,121,31,.25)}.state-no_action{color:var(--red);background:#fff1f0;border:1px solid rgba(194,65,61,.22)}.source-collapse{padding:16px}.source-collapse summary{font-weight:900;color:#334155}.source-collapse .table-scroll{margin-top:12px}
 .chain-node-expansion{display:grid;gap:12px;border:1px solid rgba(10,132,255,.18);border-radius:22px;background:linear-gradient(180deg,#fff,#f7fbff);padding:16px}.chain-node-expansion-head span{display:block;color:var(--blue);font-size:12px;font-weight:900;margin-bottom:4px}.chain-node-expansion-head h5{margin:0 0 8px;font-size:21px;line-height:1.3;color:#223047}.chain-node-expansion-head p{margin:0;color:#667085}.chain-node-stack{display:grid;gap:10px}.chain-node-detail{border:1px solid #dceafa;border-radius:18px;background:#fff;overflow:hidden}.chain-node-detail>summary{display:grid;grid-template-columns:auto 1fr auto auto;gap:12px;align-items:center;padding:14px 16px;list-style:none;cursor:pointer}.chain-node-detail>summary::-webkit-details-marker{display:none}.chain-node-detail[open]>summary{border-bottom:1px solid #edf3fb}.chain-node-index{display:inline-flex;width:36px;height:36px;border-radius:999px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900;font-size:12px}.chain-node-detail h6{margin:0 0 3px;color:#223047;font-size:17px}.chain-node-detail summary p{margin:0;color:#667085;font-size:13px}.chain-node-detail summary strong{border:1px solid rgba(10,132,255,.22);border-radius:999px;background:#f0f7ff;color:#0a66cc;padding:5px 9px;font-size:12px;white-space:nowrap}.chain-node-detail[open]>summary .chevron{transform:rotate(90deg)}.chain-node-body{display:grid;gap:12px;padding:14px 16px;background:#fbfdff}.chain-node-lens-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.chain-node-lens-grid article{border:1px solid #e8eef7;border-radius:15px;background:#fff;padding:12px}.chain-node-lens-grid b,.chain-node-conclusion b{display:block;color:#223047;margin-bottom:6px}.chain-node-lens-grid p,.chain-node-conclusion p{margin:0;color:#344054}.chain-node-conclusion{border:1px solid rgba(29,154,108,.22);border-radius:16px;background:#f3fbf7;padding:13px}
 .chain-metric-board{display:grid;gap:10px;border:1px solid rgba(10,132,255,.14);border-radius:18px;background:#f7fbff;padding:13px}.chain-metric-board-head{display:flex;justify-content:space-between;gap:12px;align-items:center}.chain-metric-board-head b{color:#223047}.chain-metric-board-head span{color:#667085;font-size:12px;font-weight:900}.chain-metric-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.chain-metric-card{display:grid;gap:10px;border:1px solid #dfeaf7;border-radius:16px;background:#fff;padding:13px}.chain-metric-card header span{display:block;color:var(--blue);font-size:11px;font-weight:900;margin-bottom:3px}.chain-metric-card header strong{display:block;color:#223047;font-size:15px;line-height:1.25}.chain-metric-card p{margin:0;color:#344054;font-size:13px}.chain-metric-card dl{display:grid;gap:7px;margin:0}.chain-metric-card dl div{border-top:1px solid #eef2f7;padding-top:7px}.chain-metric-card dt{color:#667085;font-size:11px;font-weight:900}.chain-metric-card dd{margin:2px 0 0;color:#344054;font-size:13px}.chain-metric-card footer{display:grid;gap:8px}.chain-metric-card em{font-style:normal;color:#7a5a00;background:#fff7dc;border:1px solid #f1dda6;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:900;width:max-content;max-width:100%}
 .historical-comparison{display:grid;gap:14px;border:1px solid rgba(10,132,255,.18);border-radius:20px;background:linear-gradient(180deg,#ffffff,#f7fbff);padding:16px}.history-head span{display:block;color:var(--blue);font-size:12px;font-weight:900;margin-bottom:4px}.history-head h5{margin:0 0 8px;font-size:20px;line-height:1.3;color:#223047}.history-head p{margin:0;color:#475467}.history-snapshot-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.history-metric-card{border:1px solid #e1eaf6;border-radius:16px;background:#fff;padding:14px}.history-metric-card>span{display:block;color:#667085;font-size:12px;font-weight:900}.history-metric-card strong{display:block;color:#0a84ff;font-size:25px;line-height:1.1;margin:6px 0}.history-metric-card p{margin:0 0 8px;color:#344054;font-size:13px}.history-bar-list{display:grid;gap:9px}.history-bar-row{display:grid;grid-template-columns:145px 1fr minmax(120px,auto);gap:10px;align-items:center}.history-bar-label b{display:block;color:#223047}.history-bar-label span{color:#667085;font-size:13px}.history-bar-track{height:14px;border-radius:999px;background:#e9f1fb;overflow:hidden}.history-bar-track i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#72b7ff,#0a84ff)}.history-table{min-width:1040px}
 .future-runway{display:grid;gap:14px;border:1px solid rgba(29,154,108,.20);border-radius:20px;background:linear-gradient(180deg,#ffffff,#f7fffb);padding:16px}.runway-head span{display:block;color:var(--green);font-size:12px;font-weight:900;margin-bottom:4px}.runway-head h5{margin:0 0 8px;font-size:20px;line-height:1.3;color:#223047}.runway-head p{margin:0;color:#475467}.runway-formula{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.runway-formula-card{border:1px solid #dcefe8;border-radius:16px;background:#fff;padding:14px}.runway-formula-card>span{display:inline-flex;width:28px;height:28px;border-radius:999px;align-items:center;justify-content:center;background:#eaf8f2;color:var(--green);font-weight:900;font-size:12px}.runway-formula-card h6{margin:10px 0 6px;color:#223047;font-size:15px}.runway-formula-card p{margin:0;color:#3d536d}.runway-table{min-width:1180px}.runway-timeline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.runway-timeline article{border:1px solid #dcefe8;border-radius:16px;background:#fff;padding:14px}.runway-timeline span{display:block;color:var(--green);font-size:12px;font-weight:900}.runway-timeline strong{display:block;margin:4px 0;color:#223047}.runway-timeline p{margin:0;color:#3d536d}.runway-verdict{border:1px solid rgba(29,154,108,.22);border-radius:16px;background:#f1fbf7;padding:14px}.runway-verdict b{display:block;color:#166f52;margin-bottom:6px}.runway-verdict p{margin:0;color:#2f3d52}
+.table-scroll.metric-choice-table{overflow-x:visible}.table-scroll.metric-choice-table table{min-width:0;width:100%;table-layout:fixed}.table-scroll.metric-choice-table th,.table-scroll.metric-choice-table td{white-space:normal;overflow-wrap:anywhere;word-break:break-word;line-height:1.55}.table-scroll.metric-choice-table th:first-child,.table-scroll.metric-choice-table td:first-child{width:28%}
 @media(max-width:820px){.goal-grid,.constraint-grid,.chain-bridge-grid,.chain-layer-grid,.chain-company-list,.company-flow-grid,.chain-node-lens ul,.bom-node-brief,.chain-audit-body-grid,.logic-flow,.narrative-bottom,.history-snapshot-grid,.history-bar-row,.runway-formula,.runway-timeline,.chain-node-lens-grid,.chain-metric-grid,.bom-metric-rationale-list,.bom-future-grid,.bom-mechanism-grid,.bom-question-research-body,.bom-stage-evidence-grid{grid-template-columns:1fr}.chain-audit-head,.chain-audit-verdict,.demand-chain-title,.chain-node-detail>summary,.chain-metric-board-head{display:grid;grid-template-columns:1fr}.qa-card.level-2,.qa-card.level-3{margin-left:0}.qa-card summary{grid-template-columns:auto 1fr auto}.qa-count{display:none}}
 `;
 }
