@@ -706,7 +706,6 @@ def validate_report_contract_html(
             ("bom-logic-chain-panel", bom_question_cards),
             ("bom-stage-integrated-card", bom_question_cards * 4),
             ("bom-stage-subcard", bom_question_cards * 12),
-            ("bom-future-card", bom_question_cards * 4),
             ("bom-mechanism-card", bom_question_cards * 8),
             ("bom-step-final-trend", bom_question_cards),
         ]
@@ -741,6 +740,41 @@ def validate_report_contract_html(
                 "error",
                 "missing_metric_point_count_or_gap",
                 "BOM metric history must show point counts for curves or explicit metric-trend-gap when fewer than five same-metric points are available",
+            )
+        if _class_count(html, "metric-history-table") == 0:
+            _issue(
+                issues,
+                "error",
+                "missing_metric_history_table",
+                "BOM metric history must directly render metric-level data tables inside Metric 历史与现状",
+            )
+        if _class_count(html, "metric-history-caption") == 0:
+            _issue(
+                issues,
+                "error",
+                "missing_metric_history_caption",
+                "BOM metric history tables must put the metric name and definition once in a table caption instead of repeating them on every data row",
+            )
+        if _class_count(html, "metric-history-name") == 0:
+            _issue(
+                issues,
+                "error",
+                "missing_metric_history_name_link",
+                "BOM metric history captions must expose the concrete metric name as a source-linked metric-history-name",
+            )
+        if _class_count(html, "metric-name-cell") > 0:
+            _issue(
+                issues,
+                "error",
+                "legacy_repeated_metric_name_cells",
+                "BOM metric history tables must not repeat the Metric column on every row; use metric-history-caption instead",
+            )
+        if _class_count(html, "bom-expectation-table") == 0:
+            _issue(
+                issues,
+                "error",
+                "missing_bom_expectation_table",
+                "BOM future expectation subcards must directly render entity expectation tables",
             )
     elif bom_question_cards:
         _issue(

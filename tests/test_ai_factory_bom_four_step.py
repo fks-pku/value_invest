@@ -103,7 +103,6 @@ class AiFactoryBomStageFlowTests(unittest.TestCase):
                     "bom-logic-chain-panel",
                     "bom-stage-integrated-card",
                     "bom-stage-subcard",
-                    "bom-future-card",
                     "bom-mechanism-card",
                     "bom-step-final-trend",
                 ]:
@@ -156,25 +155,54 @@ class AiFactoryBomStageFlowTests(unittest.TestCase):
                     self.assertEqual(len(details_blocks_by_class(stage_card, "bom-stage-history-card")), 1)
                     self.assertEqual(len(details_blocks_by_class(stage_card, "bom-stage-future-card")), 1)
                     self.assertEqual(len(details_blocks_by_class(stage_card, "bom-stage-mechanism-card")), 1)
-                    self.assertEqual(len(details_blocks_by_class(stage_card, "bom-future-card")), 1)
+                    self.assertIn("bom-expectation-table", stage_card)
                     self.assertGreaterEqual(len(details_blocks_by_class(stage_card, "bom-mechanism-card")), 2)
 
-    def test_integrated_stage_history_contains_metric_choice_and_actual_data(self):
+    def test_integrated_stage_history_directly_renders_metric_tables(self):
         html = REPORT.read_text(encoding="utf-8")
         cards = bom_question_cards(html)
 
         self.assertGreaterEqual(len(cards), 36)
-        self.assertIn(".table-scroll.metric-choice-table{overflow-x:visible}", html)
-        self.assertIn(".table-scroll.metric-choice-table table{min-width:0;width:100%;table-layout:fixed}", html)
         for index, card in enumerate(cards, start=1):
             stage_cards = details_blocks_by_class(card, "bom-stage-integrated-card")
             with self.subTest(card=index):
                 for stage_card in stage_cards:
-                    self.assertIn("本环节应看哪些 Metric", stage_card)
-                    self.assertIn("metric-choice-table", stage_card)
-                    self.assertIn("Metric 历史数据 / 实体现状", stage_card)
+                    history_card = details_blocks_by_class(stage_card, "bom-stage-history-card")[0]
+                    self.assertNotIn("本环节应看哪些 Metric", history_card)
+                    self.assertNotIn("当前证据读法", history_card)
+                    self.assertIn("metric-history-group", history_card)
+                    self.assertIn("metric-history-table", history_card)
+                    self.assertIn("metric-history-caption", history_card)
+                    self.assertIn("metric-history-name", history_card)
+                    self.assertIn("metric-history-definition", history_card)
+                    self.assertNotIn("<th>Metric</th>", history_card)
+                    self.assertNotIn("<th>口径 / 数据要求</th>", history_card)
+                    self.assertNotIn('class="metric-name-cell"', history_card)
+                    self.assertIn("<th>期间 / 截点</th>", history_card)
+                    self.assertIn("<th>数值</th>", history_card)
+                    self.assertRegex(history_card, r'<a class="metric-history-name" ')
                     self.assertRegex(stage_card, r"metric-data-table|metric-trend-gap")
-                    self.assertIn("当前证据读法", stage_card)
+
+    def test_integrated_stage_future_directly_renders_entity_expectation_tables(self):
+        html = REPORT.read_text(encoding="utf-8")
+        cards = bom_question_cards(html)
+
+        self.assertGreaterEqual(len(cards), 36)
+        for index, card in enumerate(cards, start=1):
+            stage_cards = details_blocks_by_class(card, "bom-stage-integrated-card")
+            with self.subTest(card=index):
+                for stage_card in stage_cards:
+                    future_card = details_blocks_by_class(stage_card, "bom-stage-future-card")[0]
+                    self.assertNotIn("市场现在预期什么？", future_card)
+                    self.assertNotIn("bom-expectation-grid", future_card)
+                    self.assertNotIn("bom-expectation-field", future_card)
+                    self.assertNotIn('class="bom-future-card', future_card)
+                    self.assertIn("expectation-table-group", future_card)
+                    self.assertIn("bom-expectation-table", future_card)
+                    self.assertIn("<th>公司 / 机构</th>", future_card)
+                    self.assertIn("<th>现状期间</th>", future_card)
+                    self.assertIn("<th>预期 / 指引口径 / 数值</th>", future_card)
+                    self.assertRegex(future_card, r'<td class="expectation-entity-cell"><a ')
 
     def test_metric_history_uses_tables_not_visual_charts(self):
         html = REPORT.read_text(encoding="utf-8")
@@ -226,8 +254,6 @@ class AiFactoryBomStageFlowTests(unittest.TestCase):
                 self.assertIn(metric, compute_first_question)
 
         expected_expectation_labels = [
-            "对应 01 逻辑环节 / 本环节已选 Metric",
-            "市场现在预期什么？",
             "公司 / 机构",
             "现状期间",
             "现状口径 / 数值",

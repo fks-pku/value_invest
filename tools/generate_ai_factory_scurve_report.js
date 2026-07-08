@@ -2380,19 +2380,7 @@ function renderBomIntegratedStageCard(stage, futureCard, analysis, displayIndex)
 function renderBomStageHistoryContent(stage) {
   const metric = stage.metric;
   return `<div class="bom-stage-history-content">
-    <section class="bom-stage-metric-choice">
-      <b>本环节应看哪些 Metric</b>
-      ${renderMetricChoiceTable(stage)}
-    </section>
-    <section class="bom-stage-history">
-      <b>Metric 历史数据 / 实体现状</b>
-      <p>${sourceText(metric.history)}</p>
-      ${renderMetricTrend(metric)}
-    </section>
-    <section class="bom-stage-current">
-      <b>当前证据读法</b>
-      <p>${sourceText(metric.current || "当前源包只能支持方向性判断；需要继续补同口径历史序列。")}</p>
-    </section>
+    ${renderMetricHistoryGroup(metric, 1)}
     <div class="bom-question-sources">${sourceChips(metric.sourceIds)}</div>
   </div>`;
 }
@@ -2471,71 +2459,63 @@ function logicStageRole(stage) {
 
 function renderBomFutureCard(item, stage) {
   const summaryTitle = stage ? `环节 ${stage.index}｜${stage.stage}` : item.horizon;
-  const stageLabel = stage ? `<div class="bom-expectation-stage"><span>对应 01 逻辑环节 / 本环节已选 Metric</span><b>${e(stage.stage)} · ${e(stage.metric.name)}</b></div>` : "";
-  const subtitle = stage && item.horizon && item.horizon !== summaryTitle ? `<p class="bom-expectation-subtitle">${e(item.horizon)}</p>` : "";
   if (item.marketExpectation) {
-    const fields = [
-      ["预期来源", item.expectationSource],
-      ["来源类型", item.sourceType],
-      ["当前基准", item.currentBaseline],
-      ["预期值 / 窗口", item.expectedValue],
-      ["隐含增长", item.impliedGrowth],
-      ["验证链条", item.chainValidation],
-      ["证伪条件", item.refuteTest],
-    ].filter(([, value]) => value);
-    return `<details class="bom-future-card bom-expectation-card">
-    <summary><b>${e(summaryTitle)}</b>${item.expectationStatus ? `<span>${e(item.expectationStatus)}</span>` : ""}<span class="chevron">›</span></summary>
-    <div class="bom-nested-card-body">
-      ${stageLabel}${subtitle}
-      <div class="bom-expectation-core"><span>市场现在预期什么？</span><p>${sourceText(item.marketExpectation)}</p></div>
-      ${item.expectationRows?.length ? renderExpectationRowsTable(item.expectationRows) : `<div class="bom-expectation-grid">${fields.map(([label, value]) => `<article class="bom-expectation-field"><span>${e(label)}</span><b>${sourceText(value)}</b></article>`).join("")}</div>`}
+    return `<div class="bom-expectation-card">
+      ${renderExpectationRowsTable(expectationRowsForItem(item, stage), item)}
       <div class="bom-question-sources">${sourceChips(item.sourceIds)}</div>
-    </div>
-  </details>`;
+    </div>`;
   }
   if (item.expectationSource || item.expectationType || item.logicLink || item.metric || item.validation) {
-    const fields = [
-      ["预期来源", item.expectationSource],
-      ["对应逻辑环节", item.logicLink],
-      ["对应 metric", item.metric],
-      ["预期性质", item.expectationType],
-      ["时间范围", item.timeframe],
-      ["可信度", item.confidence],
-    ].filter(([, value]) => value);
-    return `<details class="bom-future-card bom-expectation-card">
-    <summary><b>${e(summaryTitle)}</b>${item.expectationType ? `<span>${e(item.expectationType)}</span>` : ""}<span class="chevron">›</span></summary>
-    <div class="bom-nested-card-body">
-      ${stageLabel}${subtitle}
-      <p>${sourceText(item.view)}</p>
-      <div class="bom-expectation-grid">${fields.map(([label, value]) => `<article class="bom-expectation-field"><span>${e(label)}</span><b>${sourceText(value)}</b></article>`).join("")}</div>
-      ${item.validation ? `<div class="bom-expectation-validation"><b>后续验证点</b><p>${sourceText(item.validation)}</p></div>` : ""}
+    return `<div class="bom-expectation-card">
+      ${renderExpectationRowsTable(expectationRowsForItem(item, stage), item)}
       <div class="bom-question-sources">${sourceChips(item.sourceIds)}</div>
-    </div>
-  </details>`;
+    </div>`;
   }
-  return `<details class="bom-future-card">
-    <summary><b>${e(summaryTitle)}</b><span class="chevron">›</span></summary>
-    <div class="bom-nested-card-body">
-      ${stageLabel}${subtitle}
-      <p>${sourceText(item.view)}</p>
+  return `<div class="bom-expectation-card">
+      ${renderExpectationRowsTable([{
+        entity: summaryTitle,
+        currentPeriod: "见本环节历史数据",
+        currentMetric: stage?.metric?.current || stage?.metric?.history || "",
+        guidancePeriod: "待补",
+        guidanceMetric: item.view || "待补严格对应本环节已选 metric 的未来指引、预测或目标。",
+        comparability: "缺口不是结论；后续搜索必须围绕本环节和已选 metric 单独补资料。",
+      }], item)}
       <div class="bom-question-sources">${sourceChips(item.sourceIds)}</div>
-    </div>
-  </details>`;
+    </div>`;
 }
 
-function renderExpectationRowsTable(rows) {
-  return `<div class="bom-expectation-table table-scroll">
-    <table>
-      <thead><tr><th>公司 / 机构</th><th>现状期间</th><th>现状口径 / 数值</th><th>指引期间</th><th>预期 / 指引口径 / 数值</th><th>口径说明 / 投资含义</th></tr></thead>
-      <tbody>${rows.map((row) => `<tr>
-        <td><b>${e(row.entity)}</b></td>
+function expectationRowsForItem(item, stage) {
+  if (item.expectationRows?.length) {
+    return item.expectationRows;
+  }
+  return [{
+    entity: item.expectationSource || item.sourceType || item.horizon || `环节 ${stage?.index || ""}`,
+    currentPeriod: item.timeframe || item.currentBaseline || "见本环节历史数据",
+    currentMetric: item.view || item.currentBaseline || stage?.metric?.current || stage?.metric?.history || "",
+    guidancePeriod: item.timeframe || "待补",
+    guidanceMetric: item.expectedValue || item.marketExpectation || item.validation || "待补严格对应本环节已选 metric 的未来指引、预测或目标。",
+    comparability: item.confidence || item.chainValidation || item.refuteTest || "缺口不是结论；后续搜索必须围绕本环节和已选 metric 单独补资料。",
+  }];
+}
+
+function renderExpectationRowsTable(rows, item = {}) {
+  return `<div class="expectation-table-list">
+    ${rows.map((row, index) => `<section class="expectation-table-group">
+      <h6>实体 ${index + 1} 预期</h6>
+      <div class="bom-expectation-table table-scroll">
+        <table>
+          <thead><tr><th>公司 / 机构</th><th>现状期间</th><th>现状口径 / 数值</th><th>指引期间</th><th>预期 / 指引口径 / 数值</th><th>口径说明 / 投资含义</th></tr></thead>
+          <tbody><tr>
+        <td class="expectation-entity-cell">${linkToFirstSource(row.entity, row.sourceIds || item.sourceIds)}</td>
         <td>${sourceText(row.currentPeriod ?? "")}</td>
         <td>${sourceText(row.currentMetric ?? row.current)}</td>
         <td>${sourceText(row.guidancePeriod ?? "")}</td>
         <td>${sourceText(row.guidanceMetric ?? row.expectation)}</td>
         <td>${sourceText(row.comparability ?? row.readThrough)}</td>
-      </tr>`).join("")}</tbody>
-    </table>
+      </tr></tbody>
+        </table>
+      </div>
+    </section>`).join("")}
   </div>`;
 }
 
@@ -3047,7 +3027,7 @@ function renderMetricTrend(metric) {
   if (metric.multiSeries && metric.multiSeries.length) {
     return renderMetricMultiSeriesData(metric);
   }
-  const dataRows = renderMetricDataRows(series);
+  const dataRows = renderMetricDataRows(series, metric);
   if (series.length < 2) {
     const maybeDataRows = dataRows ? `\n      ${dataRows}` : "";
     return `<div class="metric-trend-gap">
@@ -3074,36 +3054,46 @@ function renderMetricTrend(metric) {
   }
   return `<div class="metric-data-table">
     <b>${e(metric.trendLabel || "历史数据点")}</b>
-    <p>按同一主体、同一字段、同一单位列出历史观测值；这里不画折线，避免把点间斜率误读成精确趋势。</p>
     <span class="metric-point-count">${series.length} 个数据点</span>
     ${dataRows}
   </div>`;
 }
 
-function renderMetricDataRows(series, companyName = "") {
-  if (!series.length) return "";
-  const hasChange = series.some((point) => point.change);
-  const rowClass = [
-    "metric-data-row",
-    hasChange ? "metric-data-row-with-change" : "",
-    companyName ? "metric-data-row-with-company" : "",
-  ].filter(Boolean).join(" ");
-  const headerCells = [
-    companyName ? "<b>主体</b>" : "",
-    "<b>期间 / 截点</b>",
-    "<b>数值</b>",
-    hasChange ? "<b>相对变化</b>" : "",
-  ].filter(Boolean).join("");
-  const rows = series.map((point) => {
-    const cells = [
-      companyName ? `<span>${e(companyName)}</span>` : "",
-      `<span>${e(point.label)}</span>`,
-      `<strong>${e(point.value)}</strong>`,
-      hasChange ? `<span>${e(point.change || "")}</span>` : "",
-    ].filter(Boolean).join("");
-    return `<div class="${rowClass}">${cells}</div>`;
-  }).join("");
-  return `<div class="metric-data-rows"><div class="${rowClass} metric-data-head">${headerCells}</div>${rows}</div>`;
+function renderMetricHistoryGroup(metric, index) {
+  return `<section class="metric-history-group">
+    <h6>Metric ${index}</h6>
+    ${renderMetricTrend(metric)}
+  </section>`;
+}
+
+function renderMetricDataRows(series, metric = {}, companyName = "") {
+  const rows = series.length ? series : [{
+    label: "待补",
+    value: "暂无同口径历史数据点",
+    change: metric.seriesGap || "需要继续搜索和补数",
+  }];
+  const hasChange = rows.some((point) => point.change);
+  const hasRowSubject = !companyName && rows.some((point) => point.company || point.entity || point.subject);
+  const metricName = metric.name || metric.trendLabel || "Metric";
+  const metricDefinition = metric.dataRequirement || metric.why || "待补该 metric 的主体、字段、单位、频率和来源口径。";
+  const subjectCaption = companyName ? `<span class="metric-history-subject">主体：${e(companyName)}</span>` : "";
+  return `<div class="metric-history-table-wrap table-scroll">
+    <table class="metric-history-table">
+      <caption class="metric-history-caption">
+        <span class="metric-history-caption-label">Metric</span>
+        ${linkToFirstSource(metricName, metric.sourceIds, "metric-history-name")}
+        ${subjectCaption}
+        <span class="metric-history-definition"><b>口径 / 数据要求</b>${sourceText(metricDefinition)}</span>
+      </caption>
+      <thead><tr>${hasRowSubject ? "<th>主体</th>" : ""}<th>期间 / 截点</th><th>数值</th>${hasChange ? "<th>相对变化</th>" : ""}</tr></thead>
+      <tbody>${rows.map((point) => `<tr>
+        ${hasRowSubject ? `<td>${e(point.company || point.entity || point.subject)}</td>` : ""}
+        <td>${sourceText(point.label)}</td>
+        <td><strong>${sourceText(point.value)}</strong></td>
+        ${hasChange ? `<td>${sourceText(point.change || "")}</td>` : ""}
+      </tr>`).join("")}</tbody>
+    </table>
+  </div>`;
 }
 
 function renderMetricMultiSeriesData(metric) {
@@ -3119,7 +3109,7 @@ function renderMetricMultiSeriesData(metric) {
     <b>${e(metric.trendLabel || "多公司同口径数据点")}</b>
     <p>同口径多公司比较按数据表展开，不画多线图。</p>
     <span class="metric-point-count">${validSeries.map((line) => `${e(line.name)} ${line.points.length} 个点`).join(" / ")}</span>
-    ${validSeries.map((line) => renderMetricDataRows(line.points || [], line.name)).join("")}
+    ${validSeries.map((line) => renderMetricDataRows(line.points || [], metric, line.name)).join("")}
   </div>`;
 }
 
@@ -4093,6 +4083,13 @@ function sourceChips(sourceIds = []) {
   }).join("");
 }
 
+function linkToFirstSource(label, sourceIds = [], className = "") {
+  const item = [...new Set(sourceIds || [])].map((id) => sourceById[id]).find(Boolean);
+  const safeLabel = e(label || "待补");
+  const classAttr = className ? ` class="${e(className)}"` : "";
+  return item ? `<a${classAttr} href="${e(item.url)}" target="_blank" rel="noopener">${safeLabel}</a>` : safeLabel;
+}
+
 function sourceText(text) {
   return e(text).replace(/\[([^\]]+)\]\(source:([^)]+)\)/g, (_match, labelText, sourceId) => {
     const item = sourceById[sourceId];
@@ -4143,6 +4140,7 @@ function e(value) {
 function css() {
   return `
 :root{--bg:#f5f7fb;--surface:rgba(255,255,255,.9);--text:#1d1d1f;--muted:#667085;--line:#d9e0ea;--blue:#0a84ff;--green:#1d9a6c;--amber:#b7791f;--red:#c2413d;--shadow:0 18px 50px rgba(20,32,54,.10)}
+.metric-history-group,.expectation-table-group{display:grid;gap:8px}.metric-history-group h6,.expectation-table-group h6{margin:0;color:#223047;font-size:13px;line-height:1.35}.metric-history-table-wrap{margin-top:10px}.metric-history-table{min-width:560px}.metric-history-caption{text-align:left;caption-side:top;border:1px solid #e1eaf6;border-bottom:0;border-radius:10px 10px 0 0;background:#f8fbff;padding:10px 12px;color:#475467}.metric-history-caption-label{display:block;color:#667085;font-size:11px;font-weight:900;letter-spacing:0;text-transform:uppercase}.metric-history-name{display:inline-block;color:var(--blue);font-size:13px;font-weight:900;line-height:1.35;text-decoration:none}.metric-history-name:hover{text-decoration:underline}.metric-history-subject{display:inline-flex;margin-left:8px;border:1px solid rgba(10,132,255,.18);border-radius:999px;background:#eef7ff;color:#0a66cc;font-size:11px;font-weight:900;padding:2px 7px;vertical-align:1px}.metric-history-definition{display:block;margin-top:5px;color:#475467;font-size:12px;line-height:1.45}.metric-history-definition b{margin-right:6px;color:#223047}.metric-history-table th:first-child,.metric-history-table td:first-child{width:180px}.expectation-entity-cell a{color:var(--blue);font-weight:900}.metric-history-table td strong{color:#223047}.expectation-table-list{display:grid;gap:12px}.bom-expectation-card{display:grid;gap:10px}.bom-expectation-table{margin-top:0}.bom-expectation-table table{min-width:1120px}.bom-expectation-table td:first-child{width:150px;color:#223047}.bom-expectation-table td:nth-child(2),.bom-expectation-table td:nth-child(4){width:120px;color:#475467;font-weight:800}.bom-expectation-table td{line-height:1.55}
 .bom-future-card.bom-expectation-card{background:#fff}.bom-future-card.bom-expectation-card>summary{grid-template-columns:1fr auto auto}.bom-expectation-card>summary>span:not(.chevron){border:1px solid rgba(10,132,255,.18);border-radius:999px;background:#eef7ff;color:var(--blue);font-size:11px;font-weight:900;padding:4px 8px;white-space:nowrap}.bom-expectation-stage{display:grid;gap:3px;border:1px solid #e1eaf6;border-radius:14px;background:#fbfdff;padding:10px;margin-bottom:10px}.bom-expectation-stage span{color:#667085;font-size:11px;font-weight:900}.bom-expectation-stage b{color:#0a66cc;font-size:13px;line-height:1.35}.bom-expectation-subtitle{margin:0 0 10px;color:#667085;font-size:13px;line-height:1.45}.bom-expectation-core{border:1px solid rgba(10,132,255,.18);border-radius:14px;background:linear-gradient(180deg,#fff,#f7fbff);padding:12px;margin-bottom:10px}.bom-expectation-core span{display:block;color:var(--blue);font-size:11px;font-weight:900;margin-bottom:5px}.bom-expectation-core p{margin:0;color:#223047;font-size:14px;line-height:1.55}.bom-expectation-table{margin-top:10px}.bom-expectation-table table{min-width:1240px}.bom-expectation-table td:first-child{width:130px;color:#223047}.bom-expectation-table td:nth-child(2),.bom-expectation-table td:nth-child(4){width:120px;color:#475467;font-weight:800}.bom-expectation-table td{line-height:1.55}.bom-expectation-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}.bom-expectation-field{border:1px solid #e8eef7;border-radius:12px;background:#fbfdff;padding:9px;min-width:0}.bom-expectation-field span{display:block;color:#667085;font-size:11px;font-weight:900;margin-bottom:3px}.bom-expectation-field b{display:block;color:#223047;font-size:13px;line-height:1.45}.bom-expectation-validation{border:1px solid rgba(29,154,108,.20);border-radius:12px;background:#f5fffa;margin-top:10px;padding:10px}.bom-expectation-validation>b{display:block;color:#166f52;margin-bottom:4px}.bom-expectation-validation p{margin:0;color:#344054}.bom-expectation-card .bom-question-sources{margin-top:10px}
 .representative-companies{margin:12px 0 14px;padding:10px 0;border-top:1px solid #eef2f7;border-bottom:1px solid #eef2f7}.representative-companies>b{display:block;color:var(--blue);font-size:12px;margin-bottom:8px}.representative-companies>div{display:flex;flex-wrap:wrap;gap:8px}.representative-companies span{display:inline-flex;align-items:center;border:1px solid #d9e7f7;border-radius:999px;background:#f7fbff;color:#223047;padding:5px 9px;font-size:12px;font-weight:800}
 *{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;background:radial-gradient(circle at 20% 0%,#e8f2ff 0,transparent 34rem),var(--bg);color:var(--text);line-height:1.62}a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
