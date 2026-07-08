@@ -179,6 +179,7 @@ class AiFactoryBomStageFlowTests(unittest.TestCase):
                     self.assertNotIn("<th>口径 / 数据要求</th>", history_card)
                     self.assertNotIn('class="metric-name-cell"', history_card)
                     self.assertIn("<th>期间 / 截点</th>", history_card)
+                    self.assertIn("<th>实际时间</th>", history_card)
                     self.assertIn("<th>数值</th>", history_card)
                     self.assertRegex(history_card, r'<a class="metric-history-name" ')
                     self.assertRegex(stage_card, r"metric-data-table|metric-trend-gap")
@@ -201,6 +202,9 @@ class AiFactoryBomStageFlowTests(unittest.TestCase):
                     self.assertIn("bom-expectation-table", future_card)
                     self.assertIn("<th>公司 / 机构</th>", future_card)
                     self.assertIn("<th>现状期间</th>", future_card)
+                    self.assertIn("<th>现状实际时间</th>", future_card)
+                    self.assertIn("<th>指引期间</th>", future_card)
+                    self.assertIn("<th>指引实际时间</th>", future_card)
                     self.assertIn("<th>预期 / 指引口径 / 数值</th>", future_card)
                     self.assertRegex(future_card, r'<td class="expectation-entity-cell"><a ')
 
@@ -222,17 +226,26 @@ class AiFactoryBomStageFlowTests(unittest.TestCase):
             with self.subTest(forbidden=forbidden):
                 self.assertNotIn(forbidden, html)
 
+    def test_nested_metric_tables_keep_visible_horizontal_scroll(self):
+        html = REPORT.read_text(encoding="utf-8")
+
+        self.assertIn("scrollbar-gutter:stable", html)
+        self.assertIn(".table-scroll::-webkit-scrollbar", html)
+        self.assertIn("min-width:0;max-width:100%;box-sizing:border-box", html)
+        self.assertIn(".metric-data-table,.metric-trend-gap{overflow:visible}", html)
+        self.assertIn(".metric-history-table td strong{white-space:nowrap}", html)
+
     def test_compute_demand_question_keeps_history_expectation_and_mechanism_by_stage(self):
         html = REPORT.read_text(encoding="utf-8")
         compute_first_question = bom_question_cards(html)[0]
 
         expected_stage_titles = [
-            "应用/任务",
-            "预算/RPO",
-            "订单/交付",
-            "BOM弹性",
-            "GPU财务兑现",
-            "ASIC财务兑现",
+            "AI 应用/任务 -&gt; token 与推理工作负载",
+            "workload -&gt; 客户 capex / RPO / PPE",
+            "capex / RPO -&gt; AI server 与 accelerator 交付订单",
+            "订单 -&gt; 当前 BOM 需求弹性放大",
+            "订单 -&gt; GPU 平台收入兑现",
+            "订单 -&gt; custom ASIC 收入兑现",
             "反证/缺口",
         ]
         for title in expected_stage_titles:
@@ -241,6 +254,11 @@ class AiFactoryBomStageFlowTests(unittest.TestCase):
 
         expected_metrics = [
             "ChatGPT weekly active users (WAU)",
+            "ChatGPT daily active users YoY growth (DAU growth)",
+            "ChatGPT messages / prompts per day",
+            "OpenAI API tokens per minute and developer count",
+            "Gemini MAU / enterprise paid seats / daily-token multiple",
+            "AI coding workflow penetration",
             "Microsoft commercial remaining performance obligation (Commercial RPO, $B)",
             "Dell AI-optimized server ending backlog ($B)",
             "NVIDIA Data Center segment revenue ($B)",
@@ -253,11 +271,15 @@ class AiFactoryBomStageFlowTests(unittest.TestCase):
             with self.subTest(metric=metric):
                 self.assertIn(metric, compute_first_question)
 
+        self.assertIn("本环节主动选择的异质 Metric", compute_first_question)
+
         expected_expectation_labels = [
             "公司 / 机构",
             "现状期间",
+            "现状实际时间",
             "现状口径 / 数值",
             "指引期间",
+            "指引实际时间",
             "预期 / 指引口径 / 数值",
             "口径说明 / 投资含义",
         ]
@@ -269,6 +291,18 @@ class AiFactoryBomStageFlowTests(unittest.TestCase):
         for term in pricing_terms:
             with self.subTest(term=term):
                 self.assertNotIn(term, compute_first_question)
+
+        expected_calendar_mappings = [
+            "2024-01 至 2024-03（Microsoft FY2024 Q3）",
+            "2025-10 至 2025-12（Microsoft FY2026 Q2）",
+            "2025-11 至 2026-01（NVIDIA FY2026 Q4）",
+            "2026-02 至 2026-04（NVIDIA FY2027 Q1预期）",
+            "2025-11 至 2026-01（Broadcom FY2026 Q1）",
+            "2026-02 至 2026-04（Broadcom FY2026 Q2预期）",
+        ]
+        for mapping in expected_calendar_mappings:
+            with self.subTest(mapping=mapping):
+                self.assertIn(mapping, compute_first_question)
 
     def test_final_trend_card_collects_whole_question_future_assessment(self):
         html = REPORT.read_text(encoding="utf-8")
@@ -332,6 +366,11 @@ class AiFactoryBomStageFlowTests(unittest.TestCase):
         )
         self.assertIn("SRC-OPENAI-DEVDAY-2025", artifacts["BOM-SEARCH-compute_q1"]["source_ids"])
         self.assertIn("SRC-NVDA-FY26-Q4", artifacts["BOM-SEARCH-compute_q1"]["source_ids"])
+        self.assertIn("metric_candidate_plan", artifacts["BOM-SEARCH-compute_q1"])
+        self.assertIn(
+            "ChatGPT messages / prompts per day",
+            html,
+        )
         self.assertIn("待逐问搜索完成后判定", html)
 
     def test_compute_demand_question_uses_specific_primary_metric_per_stage(self):

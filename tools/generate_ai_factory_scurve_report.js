@@ -56,8 +56,13 @@ const sources = [
   source("SRC-CHATGPT-WAU-202412", "The Verge: ChatGPT 300M weekly users", "message", "https://www.theverge.com/2024/12/4/24313097/chatgpt-300-million-weekly-users", "2024-12-04", "The Verge reported Sam Altman said ChatGPT had more than 300M weekly active users and more than 1B daily messages at NYT DealBook."),
   source("SRC-CHATGPT-WAU-202508", "Windows Central: ChatGPT weekly users and prompt volume", "message", "https://www.windowscentral.com/artificial-intelligence/chatgpt-is-set-to-hit-700-million-weekly-users-but-can-its-rivals-catch-up", "2025-08-05", "Windows Central reported ChatGPT was on track to reach 700M weekly active users in August 2025, about 4x year over year, with an estimated 2.5B-3.0B prompts per day."),
   source("SRC-CHATGPT-WAU-202510", "Economic Times: OpenAI DevDay 2025 ChatGPT apps", "message", "https://m.economictimes.com/tech/artificial-intelligence/devday-2025-openai-launches-apps-inside-chatgpt/articleshow/124346472.cms", "2025-10-06", "Economic Times reported OpenAI said ChatGPT weekly users surpassed 800M at DevDay 2025, alongside the launch of apps inside ChatGPT."),
+  source("SRC-CHATGPT-DAU-202505", "Economic Times: ChatGPT DAU grew more than fourfold", "message", "https://economictimes.indiatimes.com/tech/technology/chatgpt-user-base-grew-fourfold-in-a-year-sam-altman/articleshow/121298162.cms", "2025-05-20", "Economic Times reported Sam Altman said ChatGPT daily active users increased more than fourfold year over year; the article did not disclose an absolute DAU number."),
+  source("SRC-CHATGPT-MESSAGES-202510", "Business Insider: ChatGPT messages per day", "message", "https://www.businessinsider.com/chatgpt-openai-user-stats-messages-per-day-tech-ai-2025-10", "2025-10-13", "Business Insider reported ChatGPT was handling roughly 2.5B messages per day, a task-volume proxy that is closer to inference workload than WAU alone."),
   source("SRC-OPENAI-CHATGPT-WORK-202602", "OpenAI ChatGPT usage and adoption patterns at work", "evidence", "https://openai.com/business/guides-and-resources/chatgpt-usage-and-adoption-patterns-at-work/", "2026-02-01", "OpenAI said ChatGPT had 100M weekly active users within months of release and over 700M weekly active users; the page chart shows steady growth from November 2023 through July 2025."),
   source("SRC-OPENAI-DEVDAY-2025", "OpenAI DevDay 2025", "evidence", "https://openai.com/devday/", "2025-10-06", "OpenAI said it served more than 4M developers, more than 800M weekly ChatGPT users and more than 6B tokens per minute across its API platform."),
+  source("SRC-GOOGLE-AI-CODE-202410", "Business Insider: Google AI-generated code share", "message", "https://www.businessinsider.com/google-earnings-q3-2024-new-code-created-by-ai-2024-10", "2024-10-29", "Business Insider reported Sundar Pichai said more than 25% of Google's new code was AI-generated and reviewed by engineers, a developer-workflow task proxy."),
+  source("SRC-MSFT-AI-CODE-202504", "New York Post: Microsoft AI-written code share", "message", "https://nypost.com/2025/04/30/business/microsoft-ceo-satya-nadella-says-30-of-code-now-written-by-ai/", "2025-04-30", "New York Post reported Satya Nadella said roughly 20%-30% of Microsoft's code was written by AI, with the percentage continuing to grow; this is a developer-workflow task proxy, not a GPU-hour metric."),
+  source("SRC-CLAUDE-CODE-WIRED-202601", "Wired: Claude Code business traction", "message", "https://www.wired.com/story/claude-code-success-anthropic-business-model", "2026-01-22", "Wired reported Claude Code became a major developer-agent product and reached roughly $1B in annualized revenue within a year, indicating AI coding tasks had begun converting into paid workflow demand."),
   source("SRC-SA-COWOS-HBM-2023", "SemiAnalysis AI Capacity Constraints CoWoS and HBM Supply Chain", "research_report", "https://semianalysis.com/2023/07/05/ai-capacity-constraints-cowos-and/?action=share", "2023-07-05", "SemiAnalysis identified CoWoS and HBM as AI accelerator bottlenecks and explained CoWoS as TSMC 2.5D packaging that integrates logic and HBM on an interposer."),
   source("SRC-SA-GB200-BOM-2024", "SemiAnalysis GB200 Hardware Architecture Component Supply Chain and BOM", "research_report", "https://newsletter.semianalysis.com/p/gb200-hardware-architecture-and-component", "2024-07-17", "SemiAnalysis mapped GB200 rack-scale architecture and component implications, including that many data centers cannot support very high rack density without direct-to-chip liquid cooling."),
   source("SRC-SA-COOLING-2025", "SemiAnalysis Datacenter Anatomy Part 2 Cooling Systems", "research_report", "https://newsletter.semianalysis.com/p/datacenter-anatomy-part-2-cooling-systems", "2025-02-13", "SemiAnalysis described data-center cooling as one of the fastest-evolving AI infrastructure markets and argued liquid-cooling demand is underestimated in chip-by-chip capacity models."),
@@ -706,8 +711,8 @@ function renderBomQuestionResearchStatus(row, questionNumber, node) {
   const artifact = buildBomQuestionSearchArtifact(row, questionNumber, node);
   const isCompleted = artifact.search_execution_status === "completed";
   const leadText = isCompleted
-    ? "本问已按当前 BOM × 当前子问完成外部搜索、来源解析、metric 历史/缺口检查，再写入本问结论。"
-    : "本问结论只能在当前 BOM × 当前子问完成外部搜索、来源解析和缺口标注之后写入；旧本地材料只能作为待验证缓存。";
+    ? "本问已按当前 BOM × 当前子问先设计异质 metric 候选集，再逐 metric 搜索、来源解析、历史/缺口检查，最后写入本问结论。"
+    : "本问结论只能在当前 BOM × 当前子问完成 metric 候选设计、逐 metric 搜索、来源解析和缺口标注之后写入；旧本地材料只能作为待验证缓存。";
   const evidenceText = isCompleted
     ? `本问已绑定 ${artifact.source_ids.length} 条 question-level 来源；后续刷新不得用其它 BOM 的粗证据池替代本问证据。`
     : `当前静态报告引用 ${artifact.source_ids.length} 条已导入公开来源；完整刷新必须生成 question-level search artifact 后再评估本问。`;
@@ -731,7 +736,9 @@ function buildBomQuestionSearchArtifact(row, questionNumber, node) {
     question_number: questionNumber,
     question: row.question,
     workflow_order: [
-      "external_search",
+      "logic_stage_design",
+      "metric_candidate_design",
+      "per_metric_external_search",
       "source_parse",
       "metric_history_and_gap_check",
       "question_verdict",
@@ -746,6 +753,11 @@ function buildBomQuestionSearchArtifact(row, questionNumber, node) {
       direct_query: `${node.name} ${row.question.replace(/[？?]/g, "")} AI factory ${AS_OF_DATE} revenue orders capacity outlook`,
       expected_fields: ["metric_history", "future_expectation", "supply_constraint", "pricing_or_margin", "refuting_evidence"],
       gap_rule: "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve",
+    },
+    metric_candidate_plan: override.metric_candidate_plan || {
+      rule: "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
+      candidate_classes: ["direct demand", "usage intensity", "workflow/task complexity", "enterprise adoption", "customer budget/order", "BOM pull-through", "financial realization", "refutation"],
+      public_rendering: "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status",
     },
     source_ids: [...new Set(override.source_ids || row.sourceIds || [])],
     evidence_summary: override.evidence_summary || [],
@@ -1032,6 +1044,12 @@ function strictComputeRichRow(row, questionNumber, config) {
         selected_source_ids: sourceIds,
         retrieval_status: "completed",
         gap_rule: "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02",
+      },
+      metric_candidate_plan: config.metricCandidatePlan || {
+        rule: "logic stage first, metric second: every logic stage must choose heterogeneous metrics before search, then run one search/parse loop per metric rather than reusing one broad evidence pool",
+        candidate_classes: ["direct demand", "usage intensity", "workflow/task complexity", "enterprise adoption", "budget/order", "BOM pull-through", "financial realization", "refutation"],
+        selected_stage_count: chainNodes.length,
+        selected_metric_count: chainNodes.reduce((sum, chainNode) => sum + (chainNode.metrics || []).length, 0),
       },
       evidence_summary: config.evidenceSummary || [],
       gap_summary: config.gapSummary || [],
@@ -1728,9 +1746,15 @@ function strictComputeDemandRow(row) {
     "SRC-CHATGPT-WAU-202408",
     "SRC-CHATGPT-WAU-202412",
     "SRC-CHATGPT-WAU-202508",
+    "SRC-CHATGPT-WAU-202510",
+    "SRC-CHATGPT-DAU-202505",
+    "SRC-CHATGPT-MESSAGES-202510",
     "SRC-OPENAI-CHATGPT-WORK-202602",
     "SRC-OPENAI-DEVDAY-2025",
     "SRC-GOOGL-Q4-2025-CALL",
+    "SRC-GOOGLE-AI-CODE-202410",
+    "SRC-MSFT-AI-CODE-202504",
+    "SRC-CLAUDE-CODE-WIRED-202601",
     "SRC-MSFT-FY25-Q3-METRICS",
     "SRC-MSFT-FY25-Q4-CALL",
     "SRC-MSFT-FY26-Q1",
@@ -1773,7 +1797,7 @@ function strictComputeDemandRow(row) {
       {
         horizon: "环节 1｜应用/任务：ChatGPT WAU 与 token 工作负载预期",
         expectationStatus: "非硬预期",
-        marketExpectation: "本环节复用 01 的「应用/任务」链条，并参考本环节已选 ChatGPT WAU。当前能搜集到的是 OpenAI、Alphabet 已披露的使用量和 token 吞吐，但没有未来 WAU、tokens 或 GPU-hours 的硬指引；因此本环节只能证明需求入口很大，不能单独证明未来 GPU/ASIC 采购。",
+        marketExpectation: "本环节复用 01 的「应用/任务」链条，并参考本环节主动选择的异质 metric 组：WAU、DAU 增速、messages/prompts、API tokens/min、Gemini 使用量、企业/开发者 adoption 和 AI coding workflow。当前能搜集到的是 OpenAI、Alphabet、Google、Microsoft、Anthropic 等已披露的使用量和工作流代理，但没有未来 WAU、tokens、GPU-hours 或 accelerator utilization 的硬指引；因此本环节能证明需求入口很大，不能单独证明未来 GPU/ASIC 采购。",
         expectationRows: [
           {
             entity: "OpenAI",
@@ -1791,8 +1815,16 @@ function strictComputeDemandRow(row) {
             guidanceMetric: "未披露未来 Gemini token、GPU-hours 或 accelerator 采购目标。",
             comparability: "Gemini 是旁证，不是本环节已选主 metric；用于说明工作负载入口扩大，不能直接外推 GPU/ASIC 增速。",
           },
+          {
+            entity: "Google / Microsoft / Anthropic",
+            currentPeriod: "2024-10 至 2026-01",
+            currentMetric: "[Google 披露 >25% 新代码由 AI 生成](source:SRC-GOOGLE-AI-CODE-202410)，[Microsoft 披露约 20%-30% 代码由 AI 编写](source:SRC-MSFT-AI-CODE-202504)，[Wired 报道 Claude Code 约 $1B ARR](source:SRC-CLAUDE-CODE-WIRED-202601)。",
+            guidancePeriod: "未披露",
+            guidanceMetric: "未披露未来 AI coding token、agent task 或 GPU-hours 目标。",
+            comparability: "这些指标证明 AI 进入高价值工作流，但跨公司口径不可相加；只能作为任务复杂度和企业采用的旁证。",
+          },
         ],
-        sourceIds: ["SRC-OPENAI-DEVDAY-2025", "SRC-GOOGL-Q4-2025-CALL"],
+        sourceIds: ["SRC-OPENAI-DEVDAY-2025", "SRC-GOOGL-Q4-2025-CALL", "SRC-GOOGLE-AI-CODE-202410", "SRC-MSFT-AI-CODE-202504", "SRC-CLAUDE-CODE-WIRED-202601"],
       },
       {
         horizon: "环节 2｜预算/RPO：客户预算与承诺池预期",
@@ -1973,7 +2005,7 @@ function strictComputeDemandRow(row) {
         gap_rule: "same-metric history requires at least five comparable points; otherwise render noncontinuous chart or metric-trend-gap and do not infer acceleration from a single snapshot",
       },
       evidence_summary: [
-        "Primary application metric is ChatGPT weekly active users, with a WAU series from roughly 100M to 800M+ using OpenAI and public management-disclosure sources.",
+        "Application/task stage now starts from a metric candidate set: ChatGPT WAU, DAU growth, messages/prompts per day, OpenAI API tokens/min, Gemini MAU/paid seats/daily-token multiple, and AI coding workflow penetration.",
         "Primary budget/RPO metric is Microsoft Commercial RPO, rising from $235B in Q3 FY24 to $625B in Q2 FY26; Microsoft disclosed roughly 45% of Q2 FY26 RPO came from OpenAI.",
         "Primary order metric is Dell AI-optimized server ending backlog, moving from roughly $9B at FY25 Q4 to $43B entering FY27.",
         "Primary GPU financial metric is NVIDIA Data Center segment revenue; primary ASIC financial metric is Broadcom AI semiconductor revenue.",
@@ -1993,12 +2025,12 @@ function strictComputeDemandChainNodes() {
     {
       title: "AI 应用/任务 -> token 与推理工作负载",
       question: "是否有真实 AI 使用量和推理任务增长，而不是只有主题热度？",
-      status: "使用量证据强，但 tokens/GPU-hours 连续序列仍缺口",
+      status: "应用入口证据强；直接 GPU-hours 连续序列仍缺口",
       metrics: [
         {
           type: "应用/任务",
           name: "ChatGPT weekly active users (WAU)",
-          why: "应用端只选 ChatGPT WAU 作为主 metric，因为它是最可持续公开追踪的大规模 AI 使用入口；OpenAI API tokens/min 和 Gemini 使用量只作为旁证，不混进主指标名称。",
+          why: "用户规模是应用/任务是否真实成立的第一层证据。WAU 不是 GPU 需求本身，但它能说明 AI 工具是否从少数实验用户扩散成高频入口。",
           dataRequirement: "主体：OpenAI / ChatGPT；字段：weekly active users；单位：百万人；频率：公开不定期披露，优先按披露日期串联 5 个以上点；来源优先 OpenAI，其次管理层公开发言或主流媒体转述。",
           trendKind: "time_series",
           series: [
@@ -2014,13 +2046,95 @@ function strictComputeDemandChainNodes() {
           quality: "主指标口径统一为 WAU；tokens/min 与 Gemini 使用量降为旁证",
           sourceIds: ["SRC-OPENAI-CHATGPT-WORK-202602", "SRC-CHATGPT-WAU-202408", "SRC-CHATGPT-WAU-202412", "SRC-CHATGPT-WAU-202508", "SRC-OPENAI-DEVDAY-2025"],
         },
+        {
+          type: "应用/任务",
+          name: "ChatGPT daily active users YoY growth (DAU growth)",
+          why: "DAU 更接近使用频率。如果 DAU 只是一时热度，后续预算和硬件订单的解释力会弱；如果 DAU 同比高增，说明应用入口正在变成日常任务入口。",
+          dataRequirement: "主体：OpenAI / ChatGPT；字段：daily active users YoY growth 或 DAU absolute；单位：倍数或用户数；频率：公开披露不定期；优先搜绝对 DAU，若只有倍数必须标为代理。",
+          series: [
+            { label: "2025-05", value: ">4x YoY", change: "Sam Altman disclosed DAU grew more than fourfold YoY" },
+          ],
+          seriesGap: "公开源只给 DAU 同比倍数，没有披露绝对 DAU，也没有 5 个同口径历史点；只能证明使用频率有强增长线索，不能画完整 DAU 趋势。",
+          history: "[Economic Times 报道 Sam Altman 称 ChatGPT daily active users 同比增长超过 4 倍](source:SRC-CHATGPT-DAU-202505)。",
+          current: "DAU 绝对值未披露；因此本指标不能替代 WAU 或 messages/day，只能作为活跃频率旁证。",
+          future: "若后续能搜到连续 DAU、DAU/WAU 或 retention，才能判断用户是否从周活扩散成日活和高频工作负载。",
+          quality: "活跃频率代理；缺绝对 DAU 和连续历史",
+          sourceIds: ["SRC-CHATGPT-DAU-202505"],
+        },
+        {
+          type: "应用/任务",
+          name: "ChatGPT messages / prompts per day",
+          why: "消息量比用户数更接近推理任务量。用户增长如果没有转成更多 messages、prompts 或 tokens，对 GPU/ASIC 的传导会弱很多。",
+          dataRequirement: "主体：OpenAI / ChatGPT；字段：messages per day 或 prompts per day；单位：十亿次/天；频率：公开披露不定期；若来源是媒体转述，需要标明估算性质。",
+          series: [
+            { label: "2024-12", value: ">1B daily messages", change: "Sam Altman said ChatGPT exceeded 1B daily messages" },
+            { label: "2025-08", actualTime: "2025-08（披露日 2025-08-05；媒体估算区间）", value: "2.5B-3.0B prompts/day", change: "public reports estimated daily prompts/messages roughly doubled or more" },
+          ],
+          seriesGap: "只有 2 个不完全同口径点，messages 与 prompts 也不完全等同；适合说明任务量强，但不足以画连续季度趋势。",
+          history: "[2024 年 12 月报道提到 ChatGPT 超过 1B daily messages](source:SRC-CHATGPT-WAU-202412)。",
+          current: "[Windows Central 报道 ChatGPT 每日约 2.5B-3.0B prompts](source:SRC-CHATGPT-WAU-202508)；[Business Insider 报道约 2.5B messages/day](source:SRC-CHATGPT-MESSAGES-202510)。",
+          future: "如果 messages/day 与 tokens/min 同时继续上行，说明推理工作负载不只是用户数扩张，而是任务量扩张。",
+          quality: "任务量代理；messages/prompts 口径需继续净化",
+          sourceIds: ["SRC-CHATGPT-WAU-202412", "SRC-CHATGPT-WAU-202508", "SRC-CHATGPT-MESSAGES-202510"],
+        },
+        {
+          type: "应用/任务",
+          name: "OpenAI API tokens per minute and developer count",
+          why: "API tokens/min 和开发者数量更接近企业/开发者把模型嵌入产品和工作流的强度，比纯消费者 WAU 更能解释云端推理容量需求。",
+          dataRequirement: "主体：OpenAI；字段：API tokens per minute、developer count；单位：tokens/min、developer count；频率：事件披露；若只有单点，标为截面。",
+          series: [
+            { label: "DevDay 2025", value: "6B tokens/min", change: "API platform throughput" },
+            { label: "DevDay 2025", value: "4M+ developers", change: "developer adoption" },
+          ],
+          seriesGap: "OpenAI DevDay 提供强截面，但没有给出过去多个季度的 API token 吞吐历史，不能单独证明 token 加速斜率。",
+          history: "缺少 DevDay 之前同口径 API tokens/min 历史点。",
+          current: "[OpenAI DevDay 2025 披露 API 平台 6B tokens/min 和 4M+ developers](source:SRC-OPENAI-DEVDAY-2025)。",
+          future: "后续应跟踪 tokens/min、API revenue、enterprise seats 和 agent calls 是否同步上升。",
+          quality: "企业/开发者工作负载截面；缺历史序列",
+          sourceIds: ["SRC-OPENAI-DEVDAY-2025"],
+        },
+        {
+          type: "应用/任务",
+          name: "Gemini MAU / enterprise paid seats / daily-token multiple",
+          why: "只看 ChatGPT 容易把单产品热度误判为行业 S 曲线。Gemini 提供跨平台交叉验证：用户规模、企业席位和 daily-token 倍数同时披露时，说明工作负载不是单一产品现象。",
+          dataRequirement: "主体：Alphabet / Gemini；字段：Gemini App MAU、Gemini Enterprise paid seats、Gemini daily-token multiple；单位：MAU、席位、倍数；频率：季度电话会/管理层披露。",
+          series: [
+            { label: "Q4 2025 call", value: "750M+ MAU", change: "Gemini App usage scale" },
+            { label: "Q4 2025 call", value: "8M paid seats", change: "enterprise adoption" },
+            { label: "Q4 2025 call", value: "Gemini 3 daily tokens ~3x Gemini 2.5 Pro", change: "task intensity proxy" },
+          ],
+          seriesGap: "Gemini 数据是同一披露期的多字段截面，不是 5 点历史序列；但能作为 ChatGPT 之外的行业交叉验证。",
+          history: "缺少 Gemini MAU、付费席位和 daily-token 的多季度公开序列。",
+          current: "[Alphabet Q4 2025 call 披露 Gemini App 750M+ MAU、Gemini Enterprise 8M paid seats、Gemini 3 daily tokens 约为 Gemini 2.5 Pro 的 3x](source:SRC-GOOGL-Q4-2025-CALL)。",
+          future: "若 Gemini 使用量和付费席位继续上行，说明 AI 应用任务增长不是 OpenAI 单点；若 Gemini 增长放缓，应降低行业扩散判断。",
+          quality: "跨平台交叉验证；缺多季度同口径历史",
+          sourceIds: ["SRC-GOOGL-Q4-2025-CALL"],
+        },
+        {
+          type: "应用/任务",
+          name: "AI coding workflow penetration",
+          why: "AI coding 是 agent/task 工作负载的重要早期场景。它不直接给出 GPU-hours，但能证明 AI 从聊天工具进入高价值工作流，进而支撑企业付费和推理调用。",
+          dataRequirement: "主体：Google / Microsoft / Anthropic Claude Code；字段：AI-generated code share、AI-written code share、Claude Code revenue/ARR；单位：百分比或美元；频率：管理层披露/媒体报道；跨公司数据只做不同质交叉验证。",
+          trendKind: "non_time_series",
+          series: [
+            { label: "Google 2024-10", sourceIds: ["SRC-GOOGLE-AI-CODE-202410"], value: ">25% new code AI-generated", change: "AI enters internal software workflow" },
+            { label: "Microsoft 2025-04", sourceIds: ["SRC-MSFT-AI-CODE-202504"], value: "20%-30% code written by AI", change: "AI coding adoption at hyperscaler scale" },
+            { label: "Claude Code 2026-01", sourceIds: ["SRC-CLAUDE-CODE-WIRED-202601"], value: "~$1B ARR reported", change: "coding agent converts into paid workflow demand" },
+          ],
+          seriesGap: "跨公司、跨口径指标不能画成同一趋势；它只回答“AI 任务是否进入高价值工作流”，不能直接外推 GPU/ASIC 数量。",
+          history: "[Google 披露超过 25% 新代码由 AI 生成并经工程师审查](source:SRC-GOOGLE-AI-CODE-202410)；[Microsoft 披露约 20%-30% 代码由 AI 编写](source:SRC-MSFT-AI-CODE-202504)。",
+          current: "[Wired 报道 Claude Code 已成为重要开发者 agent 产品，并达到约 $1B annualized revenue](source:SRC-CLAUDE-CODE-WIRED-202601)。",
+          future: "如果 AI coding 从补全走向 agentic PR、测试、重构和企业工作流，推理请求的复杂度和时长会继续增加；若质量/安全问题导致采用放缓，则是反证。",
+          quality: "高价值任务场景代理；跨公司口径不可相加",
+          sourceIds: ["SRC-GOOGLE-AI-CODE-202410", "SRC-MSFT-AI-CODE-202504", "SRC-CLAUDE-CODE-WIRED-202601"],
+        },
       ],
-      history: "使用量从 2023 年早期消费者 adoption 走向 2025 年大规模 weekly users、developer/API token 和 Gemini 企业席位披露，说明任务入口已经显著扩大。",
-      current: "当前最硬的公开一手锚点是 OpenAI 的 800M+ weekly users 与 6B tokens/min，以及 Alphabet 的 750M+ Gemini MAU 和 3x daily-token 使用量。",
-      future: "未来要验证 workload 是否继续快于模型效率改善，核心看 tokens、GPU hours、inference revenue、agent task volume 和客户 ROI。",
+      history: "应用/任务不能只看一个 ChatGPT WAU。本环节按不同质 metric 主动搜集：用户规模、DAU 活跃频率、messages/prompts、API tokens、跨平台 Gemini、AI coding workflow。它们共同说明真实任务入口已经扩大，但直接 GPU-hours 仍未公开成连续序列。",
+      current: "当前最硬的入口证据是 OpenAI 800M+ weekly users、6B tokens/min、ChatGPT 2.5B+ messages/prompts/day、Gemini 750M+ MAU，以及 AI coding 进入 Google/Microsoft/Claude Code 工作流。",
+      future: "未来要验证 workload 是否继续快于模型效率改善，核心看 tokens/min、messages/day、DAU/WAU、enterprise seats、AI coding agent activity、GPU-hours、inference revenue 和客户 ROI。",
       refute: "若模型效率、缓存、蒸馏和调度优化使单位任务算力快速下降，或者 AI 应用 ROI 不足，使用量增长不一定继续穿透到 accelerator 采购。",
-      conclusion: "工作负载入口成立，但还不能单独判定 GPU/ASIC S 曲线阶段，必须继续看预算、订单和收入兑现。",
-      sourceIds: ["SRC-OPENAI-CHATGPT-WORK-202602", "SRC-CHATGPT-WAU-202408", "SRC-CHATGPT-WAU-202412", "SRC-OPENAI-DEVDAY-2025"],
+      conclusion: "工作负载入口强成立，但不是无条件成立：同口径 GPU-hours 和连续 token/request 历史仍缺，因此必须继续看预算、订单和收入兑现。",
+      sourceIds: ["SRC-OPENAI-CHATGPT-WORK-202602", "SRC-CHATGPT-WAU-202408", "SRC-CHATGPT-WAU-202412", "SRC-CHATGPT-WAU-202508", "SRC-CHATGPT-WAU-202510", "SRC-CHATGPT-DAU-202505", "SRC-CHATGPT-MESSAGES-202510", "SRC-OPENAI-DEVDAY-2025", "SRC-GOOGL-Q4-2025-CALL", "SRC-GOOGLE-AI-CODE-202410", "SRC-MSFT-AI-CODE-202504", "SRC-CLAUDE-CODE-WIRED-202601"],
     },
     {
       title: "workload -> 客户 capex / RPO / PPE",
@@ -2320,7 +2434,9 @@ function bomSCurveStageForNode(node) {
 function renderBomQuestionFourStep(row, questionNumber, node) {
   const analysis = buildBomQuestionAnalysis(row, questionNumber, node);
   const sectionTitles = bomQuestionSectionTitles(row.question);
-  const logicStages = buildBomLogicStages(analysis.metrics);
+  const logicStages = analysis.chainNodes?.length
+    ? buildBomLogicStages(analysis.chainNodes)
+    : buildBomLogicStages(analysis.metrics);
   const futureCards = alignFutureCardsToStages(analysis.future, logicStages, row, node);
   return `<section class="bom-question-stage-flow">
     <details class="bom-step-card bom-step-metrics bom-step-logic">
@@ -2378,20 +2494,21 @@ function renderBomIntegratedStageCard(stage, futureCard, analysis, displayIndex)
 }
 
 function renderBomStageHistoryContent(stage) {
-  const metric = stage.metric;
+  const metrics = stageMetrics(stage);
   return `<div class="bom-stage-history-content">
-    ${renderMetricHistoryGroup(metric, 1)}
-    <div class="bom-question-sources">${sourceChips(metric.sourceIds)}</div>
+    ${renderMetricCoverageStrip(stage)}
+    ${metrics.map((metric, index) => renderMetricHistoryGroup(metric, index + 1)).join("")}
+    <div class="bom-question-sources">${sourceChips(uniqueSourceIdsFromMetrics(metrics))}</div>
   </div>`;
 }
 
 function stageMechanismSupport(stage, analysis) {
-  const metric = stage.metric || {};
+  const metric = primaryStageMetric(stage);
   return metric.future || `如果「${stage.stage}」继续改善，并能和其它逻辑环节相互验证，本问的未来趋势更可能延续。整体支持机制：${analysis.mechanism.sustain}`;
 }
 
 function stageMechanismRefute(stage, analysis) {
-  const metric = stage.metric || {};
+  const metric = primaryStageMetric(stage);
   const gap = metric.seriesGap ? `当前需要特别警惕的数据缺口是：${metric.seriesGap}` : "";
   return `${gap} 如果「${stage.stage}」对应 metric 走弱、口径不能复核，或与订单、收入、价格、现金流相互矛盾，本环节会削弱本问结论。整体反向机制：${analysis.mechanism.break}`;
 }
@@ -2403,27 +2520,36 @@ function alignFutureCardsToStages(cards, stages, row, node) {
   return stages.map((stage) => ({
     horizon: `环节 ${stage.index}｜${stage.stage}`,
     expectationStatus: "预期缺口",
-    marketExpectation: `当前材料没有给出与 01 逻辑环节「${stage.stage}」严格对齐、且能和本环节已选 Metric「${stage.metric.name}」互相验证的公司指引、市场一致预期、第三方预测或客户侧目标。该环节目前只能用本环节历史/当前兑现数据判断，不能把泛化时间窗口或非同口径材料当作市场预期。`,
+    marketExpectation: `当前材料没有给出与 01 逻辑环节「${stage.stage}」严格对齐、且能和本环节已选 Metric「${stageMetricNames(stage)}」互相验证的公司指引、市场一致预期、第三方预测或客户侧目标。该环节目前只能用本环节历史/当前兑现数据判断，不能把泛化时间窗口或非同口径材料当作市场预期。`,
     expectationRows: [
       {
         entity: node.name,
         currentPeriod: "见本环节历史数据",
-        currentMetric: stage.metric.current || stage.metric.history || "已有材料只能支持当前判断或历史截面。",
+        currentMetric: primaryStageMetric(stage).current || primaryStageMetric(stage).history || "已有材料只能支持当前判断或历史截面。",
         guidancePeriod: "待补",
         guidanceMetric: "待补严格对应本环节已选 metric 的未来指引、预测或目标。",
         comparability: "缺口不是结论；后续搜索必须围绕本环节和已选 metric 单独补资料。",
       },
     ],
-    sourceIds: row.sourceIds || stage.metric.sourceIds || [],
+    sourceIds: row.sourceIds || uniqueSourceIdsFromMetrics(stageMetrics(stage)) || [],
   }));
 }
 
-function buildBomLogicStages(metrics) {
-  return metrics.map((metric, index) => ({
-    index: index + 1,
-    stage: metric.type || `环节 ${index + 1}`,
-    metric,
-  }));
+function buildBomLogicStages(items) {
+  return items.map((item, index) => {
+    const metrics = item.metrics || [item];
+    const metric = metrics[0] || {};
+    return {
+      index: index + 1,
+      stage: item.title || metric.type || `环节 ${index + 1}`,
+      question: item.question,
+      role: item.role,
+      status: item.status,
+      metrics,
+      metric,
+      sourceIds: item.sourceIds || uniqueSourceIdsFromMetrics(metrics),
+    };
+  });
 }
 
 function renderConcreteLogicChainPanel(stages) {
@@ -2447,6 +2573,7 @@ function logicStageQuestion(stage) {
 }
 
 function logicStageRole(stage) {
+  if (stage.role) return stage.role;
   const stageName = stage.stage || "";
   if (/应用|工作负载|需求/.test(stageName)) return "这是需求链条的源头；只有真实任务变多，后面的预算、订单和收入才有解释力。";
   if (/预算|RPO|订单|交付|backlog/.test(stageName)) return "这是从使用热度进入采购承诺的桥梁；没有承诺池或订单，主题热度不能直接转成投资证据。";
@@ -2459,6 +2586,7 @@ function logicStageRole(stage) {
 
 function renderBomFutureCard(item, stage) {
   const summaryTitle = stage ? `环节 ${stage.index}｜${stage.stage}` : item.horizon;
+  const metric = primaryStageMetric(stage || {});
   if (item.marketExpectation) {
     return `<div class="bom-expectation-card">
       ${renderExpectationRowsTable(expectationRowsForItem(item, stage), item)}
@@ -2475,7 +2603,7 @@ function renderBomFutureCard(item, stage) {
       ${renderExpectationRowsTable([{
         entity: summaryTitle,
         currentPeriod: "见本环节历史数据",
-        currentMetric: stage?.metric?.current || stage?.metric?.history || "",
+        currentMetric: metric.current || metric.history || "",
         guidancePeriod: "待补",
         guidanceMetric: item.view || "待补严格对应本环节已选 metric 的未来指引、预测或目标。",
         comparability: "缺口不是结论；后续搜索必须围绕本环节和已选 metric 单独补资料。",
@@ -2488,14 +2616,45 @@ function expectationRowsForItem(item, stage) {
   if (item.expectationRows?.length) {
     return item.expectationRows;
   }
+  const metric = primaryStageMetric(stage || {});
   return [{
     entity: item.expectationSource || item.sourceType || item.horizon || `环节 ${stage?.index || ""}`,
     currentPeriod: item.timeframe || item.currentBaseline || "见本环节历史数据",
-    currentMetric: item.view || item.currentBaseline || stage?.metric?.current || stage?.metric?.history || "",
+    currentMetric: item.view || item.currentBaseline || metric.current || metric.history || "",
     guidancePeriod: item.timeframe || "待补",
     guidanceMetric: item.expectedValue || item.marketExpectation || item.validation || "待补严格对应本环节已选 metric 的未来指引、预测或目标。",
     comparability: item.confidence || item.chainValidation || item.refuteTest || "缺口不是结论；后续搜索必须围绕本环节和已选 metric 单独补资料。",
   }];
+}
+
+function stageMetrics(stage = {}) {
+  return (stage.metrics && stage.metrics.length ? stage.metrics : [stage.metric]).filter(Boolean);
+}
+
+function primaryStageMetric(stage = {}) {
+  return stage.metric || stageMetrics(stage)[0] || {};
+}
+
+function stageMetricNames(stage = {}) {
+  const names = stageMetrics(stage).map((metric) => metric.name).filter(Boolean);
+  return names.length ? names.join(" / ") : "待补 metric";
+}
+
+function metricCoverageStatus(metric = {}) {
+  const pointCount = metric.multiSeries
+    ? metric.multiSeries.reduce((sum, series) => sum + (series.points || []).length, 0)
+    : (metric.series || []).length;
+  if (pointCount >= 5 && metric.trendKind === "time_series") return "历史序列";
+  if (pointCount > 0) return "截面/不连续";
+  return "缺口";
+}
+
+function renderMetricCoverageStrip(stage) {
+  const metrics = stageMetrics(stage);
+  return `<div class="metric-candidate-strip">
+    <b>本环节主动选择的异质 Metric</b>
+    <div class="metric-candidate-list">${metrics.map((metric, index) => `<span><i>M${index + 1}</i>${e(metric.name || metric.type || "待补 metric")}<em>${e(metricCoverageStatus(metric))}</em></span>`).join("")}</div>
+  </div>`;
 }
 
 function renderExpectationRowsTable(rows, item = {}) {
@@ -2504,12 +2663,14 @@ function renderExpectationRowsTable(rows, item = {}) {
       <h6>实体 ${index + 1} 预期</h6>
       <div class="bom-expectation-table table-scroll">
         <table>
-          <thead><tr><th>公司 / 机构</th><th>现状期间</th><th>现状口径 / 数值</th><th>指引期间</th><th>预期 / 指引口径 / 数值</th><th>口径说明 / 投资含义</th></tr></thead>
+          <thead><tr><th>公司 / 机构</th><th>现状期间</th><th>现状实际时间</th><th>现状口径 / 数值</th><th>指引期间</th><th>指引实际时间</th><th>预期 / 指引口径 / 数值</th><th>口径说明 / 投资含义</th></tr></thead>
           <tbody><tr>
         <td class="expectation-entity-cell">${linkToFirstSource(row.entity, row.sourceIds || item.sourceIds)}</td>
         <td>${sourceText(row.currentPeriod ?? "")}</td>
+        <td>${sourceText(row.currentActualTime ?? actualTimeForPeriod(row.entity, row.currentPeriod, row.sourceIds || item.sourceIds || []))}</td>
         <td>${sourceText(row.currentMetric ?? row.current)}</td>
         <td>${sourceText(row.guidancePeriod ?? "")}</td>
+        <td>${sourceText(row.guidanceActualTime ?? actualTimeForPeriod(row.entity, row.guidancePeriod, row.sourceIds || item.sourceIds || []))}</td>
         <td>${sourceText(row.guidanceMetric ?? row.expectation)}</td>
         <td>${sourceText(row.comparability ?? row.readThrough)}</td>
       </tr></tbody>
@@ -2517,6 +2678,173 @@ function renderExpectationRowsTable(rows, item = {}) {
       </div>
     </section>`).join("")}
   </div>`;
+}
+
+function actualTimeForPeriod(entity, period, sourceIds = []) {
+  const raw = String(period ?? "").trim();
+  if (!raw) return "";
+  if (/待补|未披露|不适用|后续刷新|见本环节|未放入/.test(raw)) return "待补 / 不适用";
+  if (/未来\s*\d+\s*个月|平均约|rolling|向后滚动/i.test(raw)) return "滚动窗口：从披露期末或披露日向后计算，非固定自然季度";
+  if (/as[- ]of|截至|\d{4}-\d{2}-\d{2}/i.test(raw)) return raw;
+  if (isMixedEntity(entity)) {
+    return `多实体混合：${raw} 需按各公司财年分别映射；本行只作聚合锚点`;
+  }
+  const parts = raw.split(/\s*\/\s*/).filter(Boolean);
+  const mapped = parts.map((part) => actualTimeForPeriodPart(entity, part, sourceIds));
+  return mapped.join(" / ");
+}
+
+function isMixedEntity(entity) {
+  const text = String(entity ?? "");
+  return /\s\/\s/.test(text) || /\band\b|与|、/.test(text);
+}
+
+function actualTimeForPeriodPart(entity, part, sourceIds = []) {
+  const text = String(part ?? "").trim();
+  const normalized = text.replace(/\s+/g, " ");
+  if (!normalized) return "";
+  if (/DevDay 2025/i.test(normalized)) return "2025-10（OpenAI DevDay 2025）";
+  if (/GTC 2026/i.test(normalized)) return "2026-03（GTC 2026）";
+  if (/Vera Rubin|platform cycle|后续平台周期|路线图|cycle/i.test(normalized)) return `${normalized}（路线图/产品周期，非固定财务期间）`;
+  if (/CY\s*(\d{4})(E?)/i.test(normalized)) {
+    const [, year, suffix] = normalized.match(/CY\s*(\d{4})(E?)/i);
+    return `${year} 年自然年${suffix ? "预期" : ""}`;
+  }
+  const fiscalQuarter =
+    normalized.match(/Q([1-4])\s*FY\s*(\d{2,4})(E?)/i)
+    || normalized.match(/FY\s*(\d{2,4})\s*Q([1-4])(E?)/i)?.slice(0, 1).concat(
+      normalized.match(/FY\s*(\d{2,4})\s*Q([1-4])(E?)/i)?.[2],
+      normalized.match(/FY\s*(\d{2,4})\s*Q([1-4])(E?)/i)?.[1],
+      normalized.match(/FY\s*(\d{2,4})\s*Q([1-4])(E?)/i)?.[3] || "",
+    );
+  if (fiscalQuarter) {
+    const quarter = Number(fiscalQuarter[1]);
+    const fiscalYear = fullYear(fiscalQuarter[2]);
+    const suffix = fiscalQuarter[3] ? "预期" : "";
+    return fiscalQuarterActualTime(entity, quarter, fiscalYear, suffix);
+  }
+  const calendarQuarter = normalized.match(/Q([1-4])\s*(\d{4})(E?)/i);
+  if (calendarQuarter) {
+    const quarter = Number(calendarQuarter[1]);
+    const year = Number(calendarQuarter[2]);
+    const suffix = calendarQuarter[3] ? "预期" : "";
+    return `${formatMonthRange(...calendarQuarterRange(quarter, year))}（自然年 Q${quarter}${suffix}）`;
+  }
+  const fiscalRange = normalized.match(/FY\s*(\d{2,4})\s*[-–]\s*FY?\s*(\d{2,4})(E?)/i);
+  if (fiscalRange) {
+    return [
+      fiscalYearActualTime(entity, fullYear(fiscalRange[1]), fiscalRange[3] ? "预期" : ""),
+      fiscalYearActualTime(entity, fullYear(fiscalRange[2]), fiscalRange[3] ? "预期" : ""),
+    ].join(" 至 ");
+  }
+  const fiscalYear = normalized.match(/FY\s*(\d{2,4})(E?)/i);
+  if (fiscalYear) {
+    return fiscalYearActualTime(entity, fullYear(fiscalYear[1]), fiscalYear[2] ? "预期" : "");
+  }
+  const yearPoint = normalized.match(/^(\d{4})(A|E)?$/i) || normalized.match(/^(\d{4})\s*年?(A|E)?$/i);
+  if (yearPoint) {
+    const suffix = /E/i.test(yearPoint[2] || "") ? "预期" : /A/i.test(yearPoint[2] || "") ? "实际" : "";
+    return `${yearPoint[1]} 年自然年${suffix}`;
+  }
+  const sourceDate = firstSourceVisibleDate(sourceIds);
+  if (sourceDate) return `${normalized}（披露日 ${sourceDate}；非标准财务期间）`;
+  return `${normalized}（非标准财务期间）`;
+}
+
+function fiscalQuarterActualTime(entity, quarter, fiscalYear, suffix = "") {
+  const type = fiscalCalendarType(entity);
+  if (type === "calendar") return `${formatMonthRange(...calendarQuarterRange(quarter, fiscalYear))}（自然年 Q${quarter}${suffix}）`;
+  const ranges = {
+    jan: {
+      1: [fiscalYear - 1, 2, fiscalYear - 1, 4],
+      2: [fiscalYear - 1, 5, fiscalYear - 1, 7],
+      3: [fiscalYear - 1, 8, fiscalYear - 1, 10],
+      4: [fiscalYear - 1, 11, fiscalYear, 1],
+    },
+    jun: {
+      1: [fiscalYear - 1, 7, fiscalYear - 1, 9],
+      2: [fiscalYear - 1, 10, fiscalYear - 1, 12],
+      3: [fiscalYear, 1, fiscalYear, 3],
+      4: [fiscalYear, 4, fiscalYear, 6],
+    },
+    oct: {
+      1: [fiscalYear - 1, 11, fiscalYear, 1],
+      2: [fiscalYear, 2, fiscalYear, 4],
+      3: [fiscalYear, 5, fiscalYear, 7],
+      4: [fiscalYear, 8, fiscalYear, 10],
+    },
+    may: {
+      1: [fiscalYear - 1, 6, fiscalYear - 1, 8],
+      2: [fiscalYear - 1, 9, fiscalYear - 1, 11],
+      3: [fiscalYear - 1, 12, fiscalYear, 2],
+      4: [fiscalYear, 3, fiscalYear, 5],
+    },
+    aug: {
+      1: [fiscalYear - 1, 9, fiscalYear - 1, 11],
+      2: [fiscalYear - 1, 12, fiscalYear, 2],
+      3: [fiscalYear, 3, fiscalYear, 5],
+      4: [fiscalYear, 6, fiscalYear, 8],
+    },
+  };
+  const range = ranges[type]?.[quarter];
+  if (!range) return `FY${fiscalYear} Q${quarter}${suffix}（公司财年，需查财年截止月）`;
+  return `${formatMonthRange(...range)}（${entityFiscalName(entity)} FY${fiscalYear} Q${quarter}${suffix}）`;
+}
+
+function fiscalYearActualTime(entity, fiscalYear, suffix = "") {
+  const type = fiscalCalendarType(entity);
+  if (type === "calendar") return `${fiscalYear} 年自然年${suffix}`;
+  const ranges = {
+    jan: [fiscalYear - 1, 2, fiscalYear, 1],
+    jun: [fiscalYear - 1, 7, fiscalYear, 6],
+    oct: [fiscalYear - 1, 11, fiscalYear, 10],
+    may: [fiscalYear - 1, 6, fiscalYear, 5],
+    aug: [fiscalYear - 1, 9, fiscalYear, 8],
+  };
+  const range = ranges[type];
+  if (!range) return `FY${fiscalYear}${suffix}（公司财年，需查财年截止月）`;
+  return `${formatMonthRange(...range)}（${entityFiscalName(entity)} FY${fiscalYear}${suffix}）`;
+}
+
+function fiscalCalendarType(entity) {
+  const text = String(entity ?? "").toLowerCase();
+  if (/microsoft/.test(text)) return "jun";
+  if (/nvidia|dell|marvell|credo|supermicro/.test(text)) return "jan";
+  if (/broadcom/.test(text)) return "oct";
+  if (/oracle/.test(text)) return "may";
+  if (/micron/.test(text)) return "aug";
+  if (/alphabet|google|meta|amazon|tsmc|samsung|sk hynix|amd|arista|vertiv|omdia|semianalysis|lightcounting|trendforce|openai/.test(text)) return "calendar";
+  return "unknown";
+}
+
+function entityFiscalName(entity) {
+  return String(entity ?? "").split(/[\/、与]/)[0].trim() || "公司";
+}
+
+function calendarQuarterRange(quarter, year) {
+  return {
+    1: [year, 1, year, 3],
+    2: [year, 4, year, 6],
+    3: [year, 7, year, 9],
+    4: [year, 10, year, 12],
+  }[quarter];
+}
+
+function formatMonthRange(startYear, startMonth, endYear, endMonth) {
+  return `${formatMonth(startYear, startMonth)} 至 ${formatMonth(endYear, endMonth)}`;
+}
+
+function formatMonth(year, month) {
+  return `${year}-${String(month).padStart(2, "0")}`;
+}
+
+function fullYear(value) {
+  const year = Number(value);
+  return year < 100 ? 2000 + year : year;
+}
+
+function firstSourceVisibleDate(sourceIds = []) {
+  return [...new Set(sourceIds || [])].map((id) => sourceById[id]?.source_visible_at).find(Boolean) || "";
 }
 
 function renderBomMechanismCard(title, body) {
@@ -2641,9 +2969,8 @@ function renderBomHistoryMetric(metric, index) {
 }
 
 function buildBomQuestionAnalysis(row, questionNumber, node) {
-  const narrativeMetrics = row.detail?.reportNarrative?.chainNodes
-    ?.flatMap((chainNode) => chainNode.metrics || [])
-    || [];
+  const narrativeChainNodes = row.detail?.reportNarrative?.chainNodes || [];
+  const narrativeMetrics = narrativeChainNodes.flatMap((chainNode) => chainNode.metrics || []);
   const defaultMetrics = row.replaceDefaultMetrics ? [] : buildDefaultBomMetrics(row, questionNumber, node);
   const metrics = mergeMetricCards([
     ...narrativeMetrics,
@@ -2652,6 +2979,7 @@ function buildBomQuestionAnalysis(row, questionNumber, node) {
   return {
     metricLogic: row.metricLogic || metricLogicForQuestion(row.question, node),
     historySummary: row.historySummary || historySummaryForQuestion(row.question, node),
+    chainNodes: narrativeChainNodes,
     metrics,
     future: row.futureCards || futureForQuestion(row.question, row, node),
     mechanism: row.mechanism || mechanismForQuestion(row.question, row, node),
@@ -3066,6 +3394,52 @@ function renderMetricHistoryGroup(metric, index) {
   </section>`;
 }
 
+function actualTimeForMetricPoint(metric, point, companyName = "") {
+  const entity = inferMetricPointEntity(metric, point, companyName);
+  return actualTimeForPeriod(entity, point.label, point.sourceIds || metric.sourceIds || []);
+}
+
+function inferMetricPointEntity(metric = {}, point = {}, companyName = "") {
+  const rowText = [
+    companyName,
+    point.company,
+    point.entity,
+    point.subject,
+    point.label,
+  ].filter(Boolean).join(" ");
+  const metricText = [
+    metric.name,
+    metric.dataRequirement,
+    metric.why,
+  ].filter(Boolean).join(" ");
+  const candidates = [
+    ["Microsoft", /\bMSFT\b|Microsoft/i],
+    ["Oracle", /\bORCL\b|Oracle/i],
+    ["NVIDIA", /\bNVDA\b|NVIDIA/i],
+    ["Broadcom", /\bAVGO\b|Broadcom/i],
+    ["Dell", /\bDELL\b|Dell/i],
+    ["Alphabet", /\bGOOGL\b|Alphabet|Google/i],
+    ["Amazon", /\bAMZN\b|Amazon|AWS/i],
+    ["Meta", /\bMETA\b|Meta/i],
+    ["TSMC", /\bTSMC\b|Taiwan Semiconductor/i],
+    ["Micron", /\bMU\b|Micron/i],
+    ["AMD", /\bAMD\b|Advanced Micro Devices/i],
+    ["Marvell", /\bMRVL\b|Marvell/i],
+    ["Credo", /\bCRDO\b|Credo/i],
+    ["Astera", /\bALAB\b|Astera/i],
+    ["Vertiv", /\bVRT\b|Vertiv/i],
+    ["Arista", /\bANET\b|Arista/i],
+    ["OpenAI", /OpenAI|ChatGPT/i],
+    ["Omdia", /Omdia/i],
+    ["TrendForce", /TrendForce/i],
+    ["LightCounting", /LightCounting/i],
+    ["SemiAnalysis", /SemiAnalysis/i],
+  ];
+  const rowEntity = candidates.find(([, pattern]) => pattern.test(rowText))?.[0];
+  if (rowEntity) return rowEntity;
+  return candidates.find(([, pattern]) => pattern.test(metricText))?.[0] || companyName || point.entity || point.company || point.subject || metric.name || "";
+}
+
 function renderMetricDataRows(series, metric = {}, companyName = "") {
   const rows = series.length ? series : [{
     label: "待补",
@@ -3077,21 +3451,29 @@ function renderMetricDataRows(series, metric = {}, companyName = "") {
   const metricName = metric.name || metric.trendLabel || "Metric";
   const metricDefinition = metric.dataRequirement || metric.why || "待补该 metric 的主体、字段、单位、频率和来源口径。";
   const subjectCaption = companyName ? `<span class="metric-history-subject">主体：${e(companyName)}</span>` : "";
+  const captionRows = [
+    `<span class="metric-history-caption-label">Metric</span>`,
+    linkToFirstSource(metricName, metric.sourceIds, "metric-history-name"),
+    subjectCaption,
+    `<span class="metric-history-definition"><b>口径 / 数据要求</b>${sourceText(metricDefinition)}</span>`,
+  ].filter(Boolean).map((part) => `        ${part}`).join("\n");
+  const bodyRows = rows.map((point) => {
+    const cells = [
+      hasRowSubject ? `<td>${e(point.company || point.entity || point.subject)}</td>` : "",
+      `<td>${sourceText(point.label)}</td>`,
+      `<td>${sourceText(point.actualTime || actualTimeForMetricPoint(metric, point, companyName))}</td>`,
+      `<td><strong>${sourceText(point.value)}</strong></td>`,
+      hasChange ? `<td>${sourceText(point.change || "")}</td>` : "",
+    ].filter(Boolean).map((cell) => `        ${cell}`).join("\n");
+    return `<tr>\n${cells}\n      </tr>`;
+  }).join("");
   return `<div class="metric-history-table-wrap table-scroll">
     <table class="metric-history-table">
       <caption class="metric-history-caption">
-        <span class="metric-history-caption-label">Metric</span>
-        ${linkToFirstSource(metricName, metric.sourceIds, "metric-history-name")}
-        ${subjectCaption}
-        <span class="metric-history-definition"><b>口径 / 数据要求</b>${sourceText(metricDefinition)}</span>
+${captionRows}
       </caption>
-      <thead><tr>${hasRowSubject ? "<th>主体</th>" : ""}<th>期间 / 截点</th><th>数值</th>${hasChange ? "<th>相对变化</th>" : ""}</tr></thead>
-      <tbody>${rows.map((point) => `<tr>
-        ${hasRowSubject ? `<td>${e(point.company || point.entity || point.subject)}</td>` : ""}
-        <td>${sourceText(point.label)}</td>
-        <td><strong>${sourceText(point.value)}</strong></td>
-        ${hasChange ? `<td>${sourceText(point.change || "")}</td>` : ""}
-      </tr>`).join("")}</tbody>
+      <thead><tr>${hasRowSubject ? "<th>主体</th>" : ""}<th>期间 / 截点</th><th>实际时间</th><th>数值</th>${hasChange ? "<th>相对变化</th>" : ""}</tr></thead>
+      <tbody>${bodyRows}</tbody>
     </table>
   </div>`;
 }
@@ -4140,7 +4522,7 @@ function e(value) {
 function css() {
   return `
 :root{--bg:#f5f7fb;--surface:rgba(255,255,255,.9);--text:#1d1d1f;--muted:#667085;--line:#d9e0ea;--blue:#0a84ff;--green:#1d9a6c;--amber:#b7791f;--red:#c2413d;--shadow:0 18px 50px rgba(20,32,54,.10)}
-.metric-history-group,.expectation-table-group{display:grid;gap:8px}.metric-history-group h6,.expectation-table-group h6{margin:0;color:#223047;font-size:13px;line-height:1.35}.metric-history-table-wrap{margin-top:10px}.metric-history-table{min-width:560px}.metric-history-caption{text-align:left;caption-side:top;border:1px solid #e1eaf6;border-bottom:0;border-radius:10px 10px 0 0;background:#f8fbff;padding:10px 12px;color:#475467}.metric-history-caption-label{display:block;color:#667085;font-size:11px;font-weight:900;letter-spacing:0;text-transform:uppercase}.metric-history-name{display:inline-block;color:var(--blue);font-size:13px;font-weight:900;line-height:1.35;text-decoration:none}.metric-history-name:hover{text-decoration:underline}.metric-history-subject{display:inline-flex;margin-left:8px;border:1px solid rgba(10,132,255,.18);border-radius:999px;background:#eef7ff;color:#0a66cc;font-size:11px;font-weight:900;padding:2px 7px;vertical-align:1px}.metric-history-definition{display:block;margin-top:5px;color:#475467;font-size:12px;line-height:1.45}.metric-history-definition b{margin-right:6px;color:#223047}.metric-history-table th:first-child,.metric-history-table td:first-child{width:180px}.expectation-entity-cell a{color:var(--blue);font-weight:900}.metric-history-table td strong{color:#223047}.expectation-table-list{display:grid;gap:12px}.bom-expectation-card{display:grid;gap:10px}.bom-expectation-table{margin-top:0}.bom-expectation-table table{min-width:1120px}.bom-expectation-table td:first-child{width:150px;color:#223047}.bom-expectation-table td:nth-child(2),.bom-expectation-table td:nth-child(4){width:120px;color:#475467;font-weight:800}.bom-expectation-table td{line-height:1.55}
+.metric-candidate-strip{display:grid;gap:8px;border:1px solid #e4edf8;border-radius:14px;background:#f8fbff;padding:10px}.metric-candidate-strip>b{color:#223047;font-size:12px}.metric-candidate-list{display:flex;flex-wrap:wrap;gap:7px}.metric-candidate-list span{display:inline-flex;align-items:center;gap:6px;border:1px solid #dce8f7;border-radius:999px;background:#fff;color:#344054;font-size:11px;font-weight:800;padding:5px 8px}.metric-candidate-list i{font-style:normal;color:#0a66cc}.metric-candidate-list em{font-style:normal;border-radius:999px;background:#eef7ff;color:#0a66cc;padding:2px 6px}.metric-history-group,.expectation-table-group{display:grid;gap:8px}.metric-history-group h6,.expectation-table-group h6{margin:0;color:#223047;font-size:13px;line-height:1.35}.metric-history-table-wrap{margin-top:10px}.metric-history-table{min-width:720px}.metric-history-caption{text-align:left;caption-side:top;border:1px solid #e1eaf6;border-bottom:0;border-radius:10px 10px 0 0;background:#f8fbff;padding:10px 12px;color:#475467}.metric-history-caption-label{display:block;color:#667085;font-size:11px;font-weight:900;letter-spacing:0;text-transform:uppercase}.metric-history-name{display:inline-block;color:var(--blue);font-size:13px;font-weight:900;line-height:1.35;text-decoration:none}.metric-history-name:hover{text-decoration:underline}.metric-history-subject{display:inline-flex;margin-left:8px;border:1px solid rgba(10,132,255,.18);border-radius:999px;background:#eef7ff;color:#0a66cc;font-size:11px;font-weight:900;padding:2px 7px;vertical-align:1px}.metric-history-definition{display:block;margin-top:5px;color:#475467;font-size:12px;line-height:1.45}.metric-history-definition b{margin-right:6px;color:#223047}.metric-history-table th:first-child,.metric-history-table td:first-child{width:180px}.expectation-entity-cell a{color:var(--blue);font-weight:900}.metric-history-table td strong{color:#223047}.expectation-table-list{display:grid;gap:12px}.bom-expectation-card{display:grid;gap:10px}.bom-expectation-table{margin-top:0}.bom-expectation-table table{min-width:1120px}.bom-expectation-table td:first-child{width:150px;color:#223047}.bom-expectation-table td:nth-child(2),.bom-expectation-table td:nth-child(4){width:120px;color:#475467;font-weight:800}.bom-expectation-table td{line-height:1.55}
 .bom-future-card.bom-expectation-card{background:#fff}.bom-future-card.bom-expectation-card>summary{grid-template-columns:1fr auto auto}.bom-expectation-card>summary>span:not(.chevron){border:1px solid rgba(10,132,255,.18);border-radius:999px;background:#eef7ff;color:var(--blue);font-size:11px;font-weight:900;padding:4px 8px;white-space:nowrap}.bom-expectation-stage{display:grid;gap:3px;border:1px solid #e1eaf6;border-radius:14px;background:#fbfdff;padding:10px;margin-bottom:10px}.bom-expectation-stage span{color:#667085;font-size:11px;font-weight:900}.bom-expectation-stage b{color:#0a66cc;font-size:13px;line-height:1.35}.bom-expectation-subtitle{margin:0 0 10px;color:#667085;font-size:13px;line-height:1.45}.bom-expectation-core{border:1px solid rgba(10,132,255,.18);border-radius:14px;background:linear-gradient(180deg,#fff,#f7fbff);padding:12px;margin-bottom:10px}.bom-expectation-core span{display:block;color:var(--blue);font-size:11px;font-weight:900;margin-bottom:5px}.bom-expectation-core p{margin:0;color:#223047;font-size:14px;line-height:1.55}.bom-expectation-table{margin-top:10px}.bom-expectation-table table{min-width:1240px}.bom-expectation-table td:first-child{width:130px;color:#223047}.bom-expectation-table td:nth-child(2),.bom-expectation-table td:nth-child(4){width:120px;color:#475467;font-weight:800}.bom-expectation-table td{line-height:1.55}.bom-expectation-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}.bom-expectation-field{border:1px solid #e8eef7;border-radius:12px;background:#fbfdff;padding:9px;min-width:0}.bom-expectation-field span{display:block;color:#667085;font-size:11px;font-weight:900;margin-bottom:3px}.bom-expectation-field b{display:block;color:#223047;font-size:13px;line-height:1.45}.bom-expectation-validation{border:1px solid rgba(29,154,108,.20);border-radius:12px;background:#f5fffa;margin-top:10px;padding:10px}.bom-expectation-validation>b{display:block;color:#166f52;margin-bottom:4px}.bom-expectation-validation p{margin:0;color:#344054}.bom-expectation-card .bom-question-sources{margin-top:10px}
 .representative-companies{margin:12px 0 14px;padding:10px 0;border-top:1px solid #eef2f7;border-bottom:1px solid #eef2f7}.representative-companies>b{display:block;color:var(--blue);font-size:12px;margin-bottom:8px}.representative-companies>div{display:flex;flex-wrap:wrap;gap:8px}.representative-companies span{display:inline-flex;align-items:center;border:1px solid #d9e7f7;border-radius:999px;background:#f7fbff;color:#223047;padding:5px 9px;font-size:12px;font-weight:800}
 *{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;background:radial-gradient(circle at 20% 0%,#e8f2ff 0,transparent 34rem),var(--bg);color:var(--text);line-height:1.62}a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
@@ -4150,12 +4532,13 @@ function css() {
 .bom-future-grid{display:grid;grid-template-columns:1fr;gap:14px}.bom-future-card{min-width:0}
 .bom-logic-chain-panel{border:1px solid #e1eaf6;border-radius:18px;background:#fbfdff;overflow:hidden}.bom-logic-chain-panel>summary{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:13px;list-style:none;cursor:pointer}.bom-logic-chain-panel[open]>summary{border-bottom:1px solid #e1eaf6}.bom-logic-chain-panel summary b{color:#0a66cc}.bom-logic-chain-panel summary span:not(.chevron){color:#667085;font-size:12px;font-weight:900}.bom-logic-chain-table{padding:12px}.bom-logic-chain-table table{min-width:980px}.bom-logic-chain-row td:first-child b{color:#0a66cc}.bom-logic-stage-stack{display:grid;gap:12px}.bom-logic-stage-card{border:1px solid #e1eaf6;border-radius:18px;background:#fbfdff;overflow:hidden}.bom-logic-stage-card>summary{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:13px;list-style:none;cursor:pointer}.bom-logic-stage-card[open]>summary{border-bottom:1px solid #e1eaf6}.bom-logic-stage-card .stage-index{display:inline-flex;width:58px;height:28px;border-radius:999px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-size:11px;font-weight:900}.bom-logic-stage-card summary b{display:block;color:#0a66cc;font-size:12px}.bom-logic-stage-card summary strong{display:block;color:#223047;font-size:16px;line-height:1.3}.bom-logic-stage-body{display:grid;gap:10px;padding:13px}.bom-logic-stage-card p{margin:0;color:#344054}.bom-stage-metric-choice,.bom-stage-history,.bom-stage-current{border:1px solid #edf2f8;border-radius:16px;background:#fff;padding:12px}.bom-stage-metric-choice>b,.bom-stage-history>b,.bom-stage-current>b{display:block;color:#223047;margin-bottom:6px}.metric-choice-table th:first-child,.metric-choice-table td:first-child{width:28%}.metric-point-count{display:inline-flex;width:max-content;max-width:100%;border:1px solid #e0e8f4;border-radius:999px;background:#fff;color:#667085;padding:3px 8px;font-size:11px;font-weight:900;margin-top:8px}.metric-data-table,.metric-trend-gap{border:1px solid #eef3f9;border-radius:14px;background:#fbfdff;padding:10px}.metric-data-table>b,.metric-trend-gap>b{display:block;color:#667085;font-size:11px;margin-bottom:4px}.metric-data-table p,.metric-trend-gap p{margin:0;color:#344054;font-size:13px}.metric-data-rows{display:grid;gap:0;margin-top:10px;border:1px solid #e6edf7;border-radius:12px;overflow:hidden;background:#fff}.metric-data-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:8px 10px;border-top:1px solid #eef2f7}.metric-data-row:first-child{border-top:0}.metric-data-row span{color:#344054;font-size:12px}.metric-data-row strong{color:#223047;font-size:12px;text-align:right}.metric-data-head{background:#f6f9fd}.metric-data-head b{color:#667085;font-size:11px;text-transform:uppercase}.metric-data-row-with-change{grid-template-columns:minmax(120px,1fr) minmax(90px,auto) minmax(140px,1fr)}.metric-data-row-with-company.metric-data-row-with-change{grid-template-columns:minmax(120px,.8fr) minmax(120px,1fr) minmax(90px,auto) minmax(140px,1fr)}.metric-multi-series-data .metric-data-row{grid-template-columns:minmax(120px,.8fr) 1fr auto}.metric-multi-series-data .metric-data-row-with-company.metric-data-row-with-change{grid-template-columns:minmax(120px,.8fr) minmax(120px,1fr) minmax(90px,auto) minmax(140px,1fr)}
 .bom-demand-logic-chain{display:grid;gap:10px}.bom-demand-logic-step{display:grid;grid-template-columns:auto 1fr;gap:12px;border:1px solid #edf2f8;border-radius:16px;background:#fbfdff;padding:12px}.bom-demand-logic-step>span{display:inline-flex;width:34px;height:34px;border-radius:999px;align-items:center;justify-content:center;background:#eef7ff;color:var(--blue);font-weight:900;font-size:12px}.bom-demand-logic-step b{display:block;color:#223047;margin-bottom:5px}.bom-demand-logic-step p{margin:0 0 6px;color:#344054}.bom-demand-logic-step em{font-style:normal;color:#667085;font-size:12px;font-weight:800}
-.research-narrative{display:grid;gap:18px}.narrative-head{border:1px solid rgba(10,132,255,.16);border-radius:18px;background:linear-gradient(180deg,#fff,#f7fbff);padding:18px}.narrative-head span{display:block;color:var(--blue);font-size:12px;font-weight:900;margin-bottom:6px}.narrative-head h4{margin:0 0 10px;font-size:24px;line-height:1.25;color:#1f2d3d}.narrative-head p{margin:0;color:#344054;font-size:16px}.logic-flow{display:grid;grid-template-columns:repeat(5,minmax(150px,1fr));gap:8px;align-items:stretch}.flow-step{border:1px solid #dceafa;border-radius:16px;background:#fff;padding:12px;min-width:150px}.flow-step span{display:inline-flex;width:28px;height:28px;border-radius:999px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900;font-size:12px;margin-bottom:8px}.flow-step p{margin:0;color:#26364f;font-weight:800;line-height:1.45}.flow-arrow{display:none}.narrative-prose{display:grid;gap:12px;border-left:3px solid #0a84ff;padding-left:16px}.narrative-prose p{margin:0;color:#2f3d52;font-size:15px}.narrative-data-table{min-width:1040px}.narrative-bottom{display:grid;grid-template-columns:1fr 1fr;gap:12px}.investment-takeaway,.bear-case-box{border:1px solid #e4ebf5;border-radius:18px;background:#fff;padding:16px}.investment-takeaway b,.bear-case-box b{display:block;color:#223047;margin-bottom:8px}.investment-takeaway p{margin:0;color:#344054}.bear-case-box{background:#fffafa;border-color:#f0d3d0}.bear-case-box ul{margin:0;padding-left:18px;color:#4b5563}.bear-case-box li+li{margin-top:6px}.demand-chain-audit{border:1px solid rgba(10,132,255,.18);border-radius:18px;background:#f7fbff;padding:14px}.demand-chain-title{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:12px}.demand-chain-title span{color:var(--blue);font-weight:900}.demand-chain-title strong{color:#344054;font-size:13px}.demand-chain-cards{display:grid;gap:12px}.chain-audit-card{border:1px solid #dceafa;border-radius:16px;background:#fff;overflow:hidden}.chain-audit-head{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:14px;border-bottom:1px solid #edf3fb}.chain-audit-head>span{display:inline-flex;width:34px;height:34px;border-radius:999px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900;font-size:12px}.chain-audit-head h5{margin:0 0 4px;font-size:16px;color:#223047}.chain-audit-head p{margin:0;color:var(--muted)}.chain-audit-head strong{border:1px solid rgba(10,132,255,.24);border-radius:999px;background:#f0f7ff;color:var(--blue);padding:5px 10px;font-size:12px;white-space:nowrap}.chain-audit-body-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:14px}.chain-audit-body-grid div{border:1px solid #eef2f7;border-radius:14px;background:#fbfcff;padding:12px}.chain-audit-body-grid b{display:block;color:#223047;margin-bottom:6px}.chain-audit-body-grid p{margin:0;color:#3d536d}.chain-audit-verdict{display:flex;justify-content:space-between;gap:12px;align-items:center;border-top:1px solid #edf3fb;padding:12px 14px}.chain-audit-verdict>span{color:#667085;font-size:12px;font-weight:800}.qa-card{margin:12px 0;overflow:hidden}.qa-card summary{display:grid;grid-template-columns:auto 1fr auto auto;gap:12px;align-items:center;padding:14px 16px}.qid{font-weight:900;color:var(--blue)}.qa-count{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:4px 8px}.qa-body{display:grid;gap:10px;padding:14px 16px}.qa-block{border:1px solid #edf1f7;border-radius:16px;background:#fff;padding:12px}.block-title{font-weight:900;color:#27364a;margin-bottom:6px}.qa-card.level-2{margin-left:18px;background:rgba(255,255,255,.82)}.qa-card.level-3{margin-left:28px;background:rgba(247,249,252,.95);border-style:dashed}.l3-meta{display:flex;gap:8px;flex-wrap:wrap}.l3-meta span{border:1px solid #e0e8f4;border-radius:999px;background:#f7fbff;color:#4e5f75;font-size:11px;padding:4px 8px}.overview-answer p{margin:0}.overview-answer-prose{color:#344054}.target-section{display:grid;gap:14px}.table-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}.table-scroll table{min-width:920px;border-collapse:separate;border-spacing:0;width:100%;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}.table-scroll th,.table-scroll td{padding:10px 12px;text-align:left;border-bottom:1px solid #edf1f7;vertical-align:top;font-size:13px}.table-scroll th{background:#f6f9fd;color:#475467;font-size:12px;font-weight:900}.state-actionable_long,.state-watch_only,.state-no_action{display:inline-flex;border-radius:999px;padding:4px 8px;font-weight:900;font-size:12px}.state-actionable_long{color:var(--green);background:#eaf8f2;border:1px solid rgba(29,154,108,.25)}.state-watch_only{color:var(--amber);background:#fff7e6;border:1px solid rgba(183,121,31,.25)}.state-no_action{color:var(--red);background:#fff1f0;border:1px solid rgba(194,65,61,.22)}.source-collapse{padding:16px}.source-collapse summary{font-weight:900;color:#334155}.source-collapse .table-scroll{margin-top:12px}
+.research-narrative{display:grid;gap:18px}.narrative-head{border:1px solid rgba(10,132,255,.16);border-radius:18px;background:linear-gradient(180deg,#fff,#f7fbff);padding:18px}.narrative-head span{display:block;color:var(--blue);font-size:12px;font-weight:900;margin-bottom:6px}.narrative-head h4{margin:0 0 10px;font-size:24px;line-height:1.25;color:#1f2d3d}.narrative-head p{margin:0;color:#344054;font-size:16px}.logic-flow{display:grid;grid-template-columns:repeat(5,minmax(150px,1fr));gap:8px;align-items:stretch}.flow-step{border:1px solid #dceafa;border-radius:16px;background:#fff;padding:12px;min-width:150px}.flow-step span{display:inline-flex;width:28px;height:28px;border-radius:999px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900;font-size:12px;margin-bottom:8px}.flow-step p{margin:0;color:#26364f;font-weight:800;line-height:1.45}.flow-arrow{display:none}.narrative-prose{display:grid;gap:12px;border-left:3px solid #0a84ff;padding-left:16px}.narrative-prose p{margin:0;color:#2f3d52;font-size:15px}.narrative-data-table{min-width:1040px}.narrative-bottom{display:grid;grid-template-columns:1fr 1fr;gap:12px}.investment-takeaway,.bear-case-box{border:1px solid #e4ebf5;border-radius:18px;background:#fff;padding:16px}.investment-takeaway b,.bear-case-box b{display:block;color:#223047;margin-bottom:8px}.investment-takeaway p{margin:0;color:#344054}.bear-case-box{background:#fffafa;border-color:#f0d3d0}.bear-case-box ul{margin:0;padding-left:18px;color:#4b5563}.bear-case-box li+li{margin-top:6px}.demand-chain-audit{border:1px solid rgba(10,132,255,.18);border-radius:18px;background:#f7fbff;padding:14px}.demand-chain-title{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:12px}.demand-chain-title span{color:var(--blue);font-weight:900}.demand-chain-title strong{color:#344054;font-size:13px}.demand-chain-cards{display:grid;gap:12px}.chain-audit-card{border:1px solid #dceafa;border-radius:16px;background:#fff;overflow:hidden}.chain-audit-head{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:14px;border-bottom:1px solid #edf3fb}.chain-audit-head>span{display:inline-flex;width:34px;height:34px;border-radius:999px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900;font-size:12px}.chain-audit-head h5{margin:0 0 4px;font-size:16px;color:#223047}.chain-audit-head p{margin:0;color:var(--muted)}.chain-audit-head strong{border:1px solid rgba(10,132,255,.24);border-radius:999px;background:#f0f7ff;color:var(--blue);padding:5px 10px;font-size:12px;white-space:nowrap}.chain-audit-body-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:14px}.chain-audit-body-grid div{border:1px solid #eef2f7;border-radius:14px;background:#fbfcff;padding:12px}.chain-audit-body-grid b{display:block;color:#223047;margin-bottom:6px}.chain-audit-body-grid p{margin:0;color:#3d536d}.chain-audit-verdict{display:flex;justify-content:space-between;gap:12px;align-items:center;border-top:1px solid #edf3fb;padding:12px 14px}.chain-audit-verdict>span{color:#667085;font-size:12px;font-weight:800}.qa-card{margin:12px 0;overflow:hidden}.qa-card summary{display:grid;grid-template-columns:auto 1fr auto auto;gap:12px;align-items:center;padding:14px 16px}.qid{font-weight:900;color:var(--blue)}.qa-count{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:4px 8px}.qa-body{display:grid;gap:10px;padding:14px 16px}.qa-block{border:1px solid #edf1f7;border-radius:16px;background:#fff;padding:12px}.block-title{font-weight:900;color:#27364a;margin-bottom:6px}.qa-card.level-2{margin-left:18px;background:rgba(255,255,255,.82)}.qa-card.level-3{margin-left:28px;background:rgba(247,249,252,.95);border-style:dashed}.l3-meta{display:flex;gap:8px;flex-wrap:wrap}.l3-meta span{border:1px solid #e0e8f4;border-radius:999px;background:#f7fbff;color:#4e5f75;font-size:11px;padding:4px 8px}.overview-answer p{margin:0}.overview-answer-prose{color:#344054}.target-section{display:grid;gap:14px}.table-scroll{display:block;width:100%;max-width:100%;min-width:0;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-gutter:stable;padding-bottom:8px;overscroll-behavior-x:contain}.table-scroll::-webkit-scrollbar{height:10px}.table-scroll::-webkit-scrollbar-track{background:#eef3f9;border-radius:999px}.table-scroll::-webkit-scrollbar-thumb{background:#b9c9dd;border-radius:999px;border:2px solid #eef3f9}.table-scroll table{min-width:max(920px,100%);width:max-content;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}.table-scroll th,.table-scroll td{padding:10px 12px;text-align:left;border-bottom:1px solid #edf1f7;vertical-align:top;font-size:13px}.table-scroll th{background:#f6f9fd;color:#475467;font-size:12px;font-weight:900}.state-actionable_long,.state-watch_only,.state-no_action{display:inline-flex;border-radius:999px;padding:4px 8px;font-weight:900;font-size:12px}.state-actionable_long{color:var(--green);background:#eaf8f2;border:1px solid rgba(29,154,108,.25)}.state-watch_only{color:var(--amber);background:#fff7e6;border:1px solid rgba(183,121,31,.25)}.state-no_action{color:var(--red);background:#fff1f0;border:1px solid rgba(194,65,61,.22)}.source-collapse{padding:16px}.source-collapse summary{font-weight:900;color:#334155}.source-collapse .table-scroll{margin-top:12px}
 .chain-node-expansion{display:grid;gap:12px;border:1px solid rgba(10,132,255,.18);border-radius:22px;background:linear-gradient(180deg,#fff,#f7fbff);padding:16px}.chain-node-expansion-head span{display:block;color:var(--blue);font-size:12px;font-weight:900;margin-bottom:4px}.chain-node-expansion-head h5{margin:0 0 8px;font-size:21px;line-height:1.3;color:#223047}.chain-node-expansion-head p{margin:0;color:#667085}.chain-node-stack{display:grid;gap:10px}.chain-node-detail{border:1px solid #dceafa;border-radius:18px;background:#fff;overflow:hidden}.chain-node-detail>summary{display:grid;grid-template-columns:auto 1fr auto auto;gap:12px;align-items:center;padding:14px 16px;list-style:none;cursor:pointer}.chain-node-detail>summary::-webkit-details-marker{display:none}.chain-node-detail[open]>summary{border-bottom:1px solid #edf3fb}.chain-node-index{display:inline-flex;width:36px;height:36px;border-radius:999px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900;font-size:12px}.chain-node-detail h6{margin:0 0 3px;color:#223047;font-size:17px}.chain-node-detail summary p{margin:0;color:#667085;font-size:13px}.chain-node-detail summary strong{border:1px solid rgba(10,132,255,.22);border-radius:999px;background:#f0f7ff;color:#0a66cc;padding:5px 9px;font-size:12px;white-space:nowrap}.chain-node-detail[open]>summary .chevron{transform:rotate(90deg)}.chain-node-body{display:grid;gap:12px;padding:14px 16px;background:#fbfdff}.chain-node-lens-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.chain-node-lens-grid article{border:1px solid #e8eef7;border-radius:15px;background:#fff;padding:12px}.chain-node-lens-grid b,.chain-node-conclusion b{display:block;color:#223047;margin-bottom:6px}.chain-node-lens-grid p,.chain-node-conclusion p{margin:0;color:#344054}.chain-node-conclusion{border:1px solid rgba(29,154,108,.22);border-radius:16px;background:#f3fbf7;padding:13px}
 .chain-metric-board{display:grid;gap:10px;border:1px solid rgba(10,132,255,.14);border-radius:18px;background:#f7fbff;padding:13px}.chain-metric-board-head{display:flex;justify-content:space-between;gap:12px;align-items:center}.chain-metric-board-head b{color:#223047}.chain-metric-board-head span{color:#667085;font-size:12px;font-weight:900}.chain-metric-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.chain-metric-card{display:grid;gap:10px;border:1px solid #dfeaf7;border-radius:16px;background:#fff;padding:13px}.chain-metric-card header span{display:block;color:var(--blue);font-size:11px;font-weight:900;margin-bottom:3px}.chain-metric-card header strong{display:block;color:#223047;font-size:15px;line-height:1.25}.chain-metric-card p{margin:0;color:#344054;font-size:13px}.chain-metric-card dl{display:grid;gap:7px;margin:0}.chain-metric-card dl div{border-top:1px solid #eef2f7;padding-top:7px}.chain-metric-card dt{color:#667085;font-size:11px;font-weight:900}.chain-metric-card dd{margin:2px 0 0;color:#344054;font-size:13px}.chain-metric-card footer{display:grid;gap:8px}.chain-metric-card em{font-style:normal;color:#7a5a00;background:#fff7dc;border:1px solid #f1dda6;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:900;width:max-content;max-width:100%}
 .historical-comparison{display:grid;gap:14px;border:1px solid rgba(10,132,255,.18);border-radius:20px;background:linear-gradient(180deg,#ffffff,#f7fbff);padding:16px}.history-head span{display:block;color:var(--blue);font-size:12px;font-weight:900;margin-bottom:4px}.history-head h5{margin:0 0 8px;font-size:20px;line-height:1.3;color:#223047}.history-head p{margin:0;color:#475467}.history-snapshot-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.history-metric-card{border:1px solid #e1eaf6;border-radius:16px;background:#fff;padding:14px}.history-metric-card>span{display:block;color:#667085;font-size:12px;font-weight:900}.history-metric-card strong{display:block;color:#0a84ff;font-size:25px;line-height:1.1;margin:6px 0}.history-metric-card p{margin:0 0 8px;color:#344054;font-size:13px}.history-bar-list{display:grid;gap:9px}.history-bar-row{display:grid;grid-template-columns:145px 1fr minmax(120px,auto);gap:10px;align-items:center}.history-bar-label b{display:block;color:#223047}.history-bar-label span{color:#667085;font-size:13px}.history-bar-track{height:14px;border-radius:999px;background:#e9f1fb;overflow:hidden}.history-bar-track i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#72b7ff,#0a84ff)}.history-table{min-width:1040px}
 .future-runway{display:grid;gap:14px;border:1px solid rgba(29,154,108,.20);border-radius:20px;background:linear-gradient(180deg,#ffffff,#f7fffb);padding:16px}.runway-head span{display:block;color:var(--green);font-size:12px;font-weight:900;margin-bottom:4px}.runway-head h5{margin:0 0 8px;font-size:20px;line-height:1.3;color:#223047}.runway-head p{margin:0;color:#475467}.runway-formula{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.runway-formula-card{border:1px solid #dcefe8;border-radius:16px;background:#fff;padding:14px}.runway-formula-card>span{display:inline-flex;width:28px;height:28px;border-radius:999px;align-items:center;justify-content:center;background:#eaf8f2;color:var(--green);font-weight:900;font-size:12px}.runway-formula-card h6{margin:10px 0 6px;color:#223047;font-size:15px}.runway-formula-card p{margin:0;color:#3d536d}.runway-table{min-width:1180px}.runway-timeline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.runway-timeline article{border:1px solid #dcefe8;border-radius:16px;background:#fff;padding:14px}.runway-timeline span{display:block;color:var(--green);font-size:12px;font-weight:900}.runway-timeline strong{display:block;margin:4px 0;color:#223047}.runway-timeline p{margin:0;color:#3d536d}.runway-verdict{border:1px solid rgba(29,154,108,.22);border-radius:16px;background:#f1fbf7;padding:14px}.runway-verdict b{display:block;color:#166f52;margin-bottom:6px}.runway-verdict p{margin:0;color:#2f3d52}
-.table-scroll.metric-choice-table{overflow-x:visible}.table-scroll.metric-choice-table table{min-width:0;width:100%;table-layout:fixed}.table-scroll.metric-choice-table th,.table-scroll.metric-choice-table td{white-space:normal;overflow-wrap:anywhere;word-break:break-word;line-height:1.55}.table-scroll.metric-choice-table th:first-child,.table-scroll.metric-choice-table td:first-child{width:28%}
+.table-scroll.metric-choice-table{overflow-x:auto}.table-scroll.metric-choice-table table{min-width:max(760px,100%);width:max-content;table-layout:auto}.table-scroll.metric-choice-table th,.table-scroll.metric-choice-table td{white-space:normal;overflow-wrap:anywhere;word-break:break-word;line-height:1.55}.table-scroll.metric-choice-table th:first-child,.table-scroll.metric-choice-table td:first-child{width:28%}
+.industry-module-body,.bom-question-answer,.bom-question-stage-flow,.bom-step-body,.bom-logic-stage-stack,.bom-logic-stage-card,.bom-logic-stage-body,.bom-stage-subcard,.bom-stage-subcard-body,.bom-stage-history-content,.metric-history-group,.metric-data-table,.metric-trend-gap,.expectation-table-list,.expectation-table-group,.bom-expectation-card,.bom-stage-mechanism-grid,.bom-final-trend-grid,.qa-body,.qa-block{min-width:0;max-width:100%;box-sizing:border-box}.metric-data-table,.metric-trend-gap{overflow:visible}.metric-history-table{table-layout:auto}.metric-history-table td strong{white-space:nowrap}.metric-history-table th:nth-child(2),.metric-history-table td:nth-child(2){min-width:210px}.metric-history-table th:nth-child(3),.metric-history-table td:nth-child(3){min-width:120px}
 @media(max-width:820px){.goal-grid,.constraint-grid,.chain-bridge-grid,.chain-layer-grid,.chain-company-list,.company-flow-grid,.chain-node-lens ul,.bom-node-brief,.chain-audit-body-grid,.logic-flow,.narrative-bottom,.history-snapshot-grid,.history-bar-row,.runway-formula,.runway-timeline,.chain-node-lens-grid,.chain-metric-grid,.bom-metric-rationale-list,.bom-future-grid,.bom-mechanism-grid,.bom-question-research-body,.bom-stage-evidence-grid{grid-template-columns:1fr}.chain-audit-head,.chain-audit-verdict,.demand-chain-title,.chain-node-detail>summary,.chain-metric-board-head{display:grid;grid-template-columns:1fr}.qa-card.level-2,.qa-card.level-3{margin-left:0}.qa-card summary{grid-template-columns:auto 1fr auto}.qa-count{display:none}}
 `;
 }

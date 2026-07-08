@@ -748,6 +748,13 @@ def validate_report_contract_html(
                 "missing_metric_history_table",
                 "BOM metric history must directly render metric-level data tables inside Metric 历史与现状",
             )
+        if _class_count(html, "metric-history-table") and "实际时间" not in html:
+            _issue(
+                issues,
+                "error",
+                "missing_metric_history_calendar_time_column",
+                "BOM metric history tables must map reported fiscal period labels into an actual calendar-time column",
+            )
         if _class_count(html, "metric-history-caption") == 0:
             _issue(
                 issues,
@@ -775,6 +782,15 @@ def validate_report_contract_html(
                 "error",
                 "missing_bom_expectation_table",
                 "BOM future expectation subcards must directly render entity expectation tables",
+            )
+        if _class_count(html, "bom-expectation-table") and (
+            "现状实际时间" not in html or "指引实际时间" not in html
+        ):
+            _issue(
+                issues,
+                "error",
+                "missing_expectation_calendar_time_columns",
+                "BOM expectation tables must map fiscal period labels into calendar time columns: 现状实际时间 and 指引实际时间",
             )
     elif bom_question_cards:
         _issue(
@@ -966,6 +982,16 @@ def validate_report_contract_html(
             "error",
             "missing_horizontal_table_scroll",
             "Wide report tables and dense card tables must use table-scroll with horizontal overflow so content does not exceed card boundaries",
+        )
+    if _class_count(html, "table-scroll") and _class_count(html, "bom-question-stage-flow") and (
+        "scrollbar-gutter:stable" not in html.replace(" ", "")
+        or "min-width:0;max-width:100%" not in html.replace(" ", "")
+    ):
+        _issue(
+            issues,
+            "error",
+            "missing_nested_table_scroll_sizing",
+            "Nested dense tables must keep a visible local horizontal scrollbar and set parent card/table containers to min-width:0 so metric values are not clipped",
         )
     if "<style" in html.lower():
         stacked_bom_child_grids = [

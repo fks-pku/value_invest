@@ -10,7 +10,9 @@
       "question_number": 1,
       "question": "当前 BOM 的需求是否会被 S 曲线放大拉动？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -30,9 +32,15 @@
           "SRC-CHATGPT-WAU-202408",
           "SRC-CHATGPT-WAU-202412",
           "SRC-CHATGPT-WAU-202508",
+          "SRC-CHATGPT-WAU-202510",
+          "SRC-CHATGPT-DAU-202505",
+          "SRC-CHATGPT-MESSAGES-202510",
           "SRC-OPENAI-CHATGPT-WORK-202602",
           "SRC-OPENAI-DEVDAY-2025",
           "SRC-GOOGL-Q4-2025-CALL",
+          "SRC-GOOGLE-AI-CODE-202410",
+          "SRC-MSFT-AI-CODE-202504",
+          "SRC-CLAUDE-CODE-WIRED-202601",
           "SRC-MSFT-FY25-Q3-METRICS",
           "SRC-MSFT-FY25-Q4-CALL",
           "SRC-MSFT-FY26-Q1",
@@ -82,9 +90,15 @@
           "SRC-CHATGPT-WAU-202408",
           "SRC-CHATGPT-WAU-202412",
           "SRC-CHATGPT-WAU-202508",
+          "SRC-CHATGPT-WAU-202510",
+          "SRC-CHATGPT-DAU-202505",
+          "SRC-CHATGPT-MESSAGES-202510",
           "SRC-OPENAI-CHATGPT-WORK-202602",
           "SRC-OPENAI-DEVDAY-2025",
           "SRC-GOOGL-Q4-2025-CALL",
+          "SRC-GOOGLE-AI-CODE-202410",
+          "SRC-MSFT-AI-CODE-202504",
+          "SRC-CLAUDE-CODE-WIRED-202601",
           "SRC-MSFT-FY25-Q3-METRICS",
           "SRC-MSFT-FY25-Q4-CALL",
           "SRC-MSFT-FY26-Q1",
@@ -120,14 +134,34 @@
         "retrieval_status": "completed",
         "gap_rule": "same-metric history requires at least five comparable points; otherwise render noncontinuous chart or metric-trend-gap and do not infer acceleration from a single snapshot"
       },
+      "metric_candidate_plan": {
+        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "customer budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+      },
       "source_ids": [
         "SRC-CHATGPT-MAU-202302",
         "SRC-CHATGPT-WAU-202408",
         "SRC-CHATGPT-WAU-202412",
         "SRC-CHATGPT-WAU-202508",
+        "SRC-CHATGPT-WAU-202510",
+        "SRC-CHATGPT-DAU-202505",
+        "SRC-CHATGPT-MESSAGES-202510",
         "SRC-OPENAI-CHATGPT-WORK-202602",
         "SRC-OPENAI-DEVDAY-2025",
         "SRC-GOOGL-Q4-2025-CALL",
+        "SRC-GOOGLE-AI-CODE-202410",
+        "SRC-MSFT-AI-CODE-202504",
+        "SRC-CLAUDE-CODE-WIRED-202601",
         "SRC-MSFT-FY25-Q3-METRICS",
         "SRC-MSFT-FY25-Q4-CALL",
         "SRC-MSFT-FY26-Q1",
@@ -161,7 +195,7 @@
         "SRC-OMDIA-SEMI-TRENDS-202512"
       ],
       "evidence_summary": [
-        "Primary application metric is ChatGPT weekly active users, with a WAU series from roughly 100M to 800M+ using OpenAI and public management-disclosure sources.",
+        "Application/task stage now starts from a metric candidate set: ChatGPT WAU, DAU growth, messages/prompts per day, OpenAI API tokens/min, Gemini MAU/paid seats/daily-token multiple, and AI coding workflow penetration.",
         "Primary budget/RPO metric is Microsoft Commercial RPO, rising from $235B in Q3 FY24 to $625B in Q2 FY26; Microsoft disclosed roughly 45% of Q2 FY26 RPO came from OpenAI.",
         "Primary order metric is Dell AI-optimized server ending backlog, moving from roughly $9B at FY25 Q4 to $43B entering FY27.",
         "Primary GPU financial metric is NVIDIA Data Center segment revenue; primary ASIC financial metric is Broadcom AI semiconductor revenue."
@@ -182,7 +216,9 @@
       "question_number": 2,
       "question": "供给能否跟上？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -230,6 +266,21 @@
         "retrieval_status": "completed",
         "gap_rule": "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02"
       },
+      "metric_candidate_plan": {
+        "rule": "logic stage first, metric second: every logic stage must choose heterogeneous metrics before search, then run one search/parse loop per metric rather than reusing one broad evidence pool",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "selected_stage_count": 4,
+        "selected_metric_count": 4
+      },
       "source_ids": [
         "SRC-TSM-Q4-2025",
         "SRC-MU-FY26-Q1-PREPARED",
@@ -257,7 +308,9 @@
       "question_number": 3,
       "question": "谁控制供给？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -305,6 +358,21 @@
         "retrieval_status": "completed",
         "gap_rule": "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02"
       },
+      "metric_candidate_plan": {
+        "rule": "logic stage first, metric second: every logic stage must choose heterogeneous metrics before search, then run one search/parse loop per metric rather than reusing one broad evidence pool",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "selected_stage_count": 4,
+        "selected_metric_count": 4
+      },
       "source_ids": [
         "SRC-NVDA-FY26-Q4",
         "SRC-AMD-Q4-2025-TOMS",
@@ -332,7 +400,9 @@
       "question_number": 4,
       "question": "是否已经财务兑现？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -396,6 +466,21 @@
         "retrieval_status": "completed",
         "gap_rule": "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02"
       },
+      "metric_candidate_plan": {
+        "rule": "logic stage first, metric second: every logic stage must choose heterogeneous metrics before search, then run one search/parse loop per metric rather than reusing one broad evidence pool",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "selected_stage_count": 4,
+        "selected_metric_count": 4
+      },
       "source_ids": [
         "SRC-NVDA-FY23-Q4",
         "SRC-NVDA-FY24-Q2",
@@ -431,7 +516,9 @@
       "question_number": 5,
       "question": "市场是否已定价？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -469,6 +556,21 @@
         "retrieval_status": "completed",
         "gap_rule": "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02"
       },
+      "metric_candidate_plan": {
+        "rule": "logic stage first, metric second: every logic stage must choose heterogeneous metrics before search, then run one search/parse loop per metric rather than reusing one broad evidence pool",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "selected_stage_count": 4,
+        "selected_metric_count": 4
+      },
       "source_ids": [
         "SRC-NVDA-FY26-Q4",
         "SRC-AVGO-FY26-Q1",
@@ -491,7 +593,9 @@
       "question_number": 6,
       "question": "反证是什么？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -545,6 +649,21 @@
         "retrieval_status": "completed",
         "gap_rule": "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02"
       },
+      "metric_candidate_plan": {
+        "rule": "logic stage first, metric second: every logic stage must choose heterogeneous metrics before search, then run one search/parse loop per metric rather than reusing one broad evidence pool",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "selected_stage_count": 4,
+        "selected_metric_count": 4
+      },
       "source_ids": [
         "SRC-MSFT-FY26-Q2",
         "SRC-AMZN-Q4-2025",
@@ -575,7 +694,9 @@
       "question_number": 1,
       "question": "当前 BOM 的需求是否会被 S 曲线放大拉动？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -611,6 +732,21 @@
         "retrieval_status": "completed",
         "gap_rule": "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02"
       },
+      "metric_candidate_plan": {
+        "rule": "logic stage first, metric second: every logic stage must choose heterogeneous metrics before search, then run one search/parse loop per metric rather than reusing one broad evidence pool",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "selected_stage_count": 4,
+        "selected_metric_count": 4
+      },
       "source_ids": [
         "SRC-TSM-Q4-2025",
         "SRC-SA-COWOS-HBM-2023",
@@ -633,7 +769,9 @@
       "question_number": 2,
       "question": "供给能否跟上？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -669,6 +807,21 @@
         "retrieval_status": "completed",
         "gap_rule": "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02"
       },
+      "metric_candidate_plan": {
+        "rule": "logic stage first, metric second: every logic stage must choose heterogeneous metrics before search, then run one search/parse loop per metric rather than reusing one broad evidence pool",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "selected_stage_count": 4,
+        "selected_metric_count": 4
+      },
       "source_ids": [
         "SRC-TSM-Q4-2025",
         "SRC-SA-COWOS-HBM-2023",
@@ -691,7 +844,9 @@
       "question_number": 3,
       "question": "谁控制供给？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -727,6 +882,21 @@
         "retrieval_status": "completed",
         "gap_rule": "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02"
       },
+      "metric_candidate_plan": {
+        "rule": "logic stage first, metric second: every logic stage must choose heterogeneous metrics before search, then run one search/parse loop per metric rather than reusing one broad evidence pool",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "selected_stage_count": 4,
+        "selected_metric_count": 4
+      },
       "source_ids": [
         "SRC-TSM-Q4-2025",
         "SRC-SA-COWOS-HBM-2023",
@@ -749,7 +919,9 @@
       "question_number": 4,
       "question": "是否已经财务兑现？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -785,6 +957,21 @@
         "retrieval_status": "completed",
         "gap_rule": "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02"
       },
+      "metric_candidate_plan": {
+        "rule": "logic stage first, metric second: every logic stage must choose heterogeneous metrics before search, then run one search/parse loop per metric rather than reusing one broad evidence pool",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "selected_stage_count": 4,
+        "selected_metric_count": 4
+      },
       "source_ids": [
         "SRC-TSM-Q4-2025",
         "SRC-SA-COWOS-HBM-2023",
@@ -807,7 +994,9 @@
       "question_number": 5,
       "question": "市场是否已定价？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -843,6 +1032,21 @@
         "retrieval_status": "completed",
         "gap_rule": "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02"
       },
+      "metric_candidate_plan": {
+        "rule": "logic stage first, metric second: every logic stage must choose heterogeneous metrics before search, then run one search/parse loop per metric rather than reusing one broad evidence pool",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "selected_stage_count": 4,
+        "selected_metric_count": 4
+      },
       "source_ids": [
         "SRC-TSM-Q4-2025",
         "SRC-SA-COWOS-HBM-2023",
@@ -865,7 +1069,9 @@
       "question_number": 6,
       "question": "反证是什么？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -901,6 +1107,21 @@
         "retrieval_status": "completed",
         "gap_rule": "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02"
       },
+      "metric_candidate_plan": {
+        "rule": "logic stage first, metric second: every logic stage must choose heterogeneous metrics before search, then run one search/parse loop per metric rather than reusing one broad evidence pool",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "selected_stage_count": 4,
+        "selected_metric_count": 4
+      },
       "source_ids": [
         "SRC-TSM-Q4-2025",
         "SRC-SA-COWOS-HBM-2023",
@@ -923,7 +1144,9 @@
       "question_number": 1,
       "question": "当前 BOM 的需求是否会被 S 曲线放大拉动？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -951,6 +1174,20 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
+      "metric_candidate_plan": {
+        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "customer budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+      },
       "source_ids": [
         "SRC-MU-FY26-Q1-PREPARED",
         "SRC-SKHYNIX-FY25"
@@ -968,7 +1205,9 @@
       "question_number": 2,
       "question": "供给能否跟上？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -996,6 +1235,20 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
+      "metric_candidate_plan": {
+        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "customer budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+      },
       "source_ids": [
         "SRC-MU-FY26-Q1-PREPARED",
         "SRC-SA-COWOS-HBM-2023"
@@ -1013,7 +1266,9 @@
       "question_number": 3,
       "question": "谁控制供给？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -1041,6 +1296,20 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
+      "metric_candidate_plan": {
+        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "customer budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+      },
       "source_ids": [
         "SRC-SKHYNIX-FY25",
         "SRC-MU-FY26-Q1-PREPARED",
@@ -1059,7 +1328,9 @@
       "question_number": 4,
       "question": "是否已经财务兑现？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -1087,6 +1358,20 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
+      "metric_candidate_plan": {
+        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "customer budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+      },
       "source_ids": [
         "SRC-SKHYNIX-FY25",
         "SRC-MU-FY26-Q1-PREPARED",
@@ -1105,7 +1390,9 @@
       "question_number": 5,
       "question": "市场是否已定价？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -1133,6 +1420,20 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
+      "metric_candidate_plan": {
+        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "customer budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+      },
       "source_ids": [
         "SRC-MU-FY26-Q1-PREPARED",
         "SRC-SKHYNIX-FY25"
@@ -1150,7 +1451,9 @@
       "question_number": 6,
       "question": "反证是什么？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -1178,6 +1481,20 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
+      "metric_candidate_plan": {
+        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "customer budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+      },
       "source_ids": [
         "SRC-MU-FY26-Q1-PREPARED"
       ],
@@ -1194,7 +1511,9 @@
       "question_number": 1,
       "question": "当前 BOM 的需求是否会被 S 曲线放大拉动？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -1222,6 +1541,20 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
+      "metric_candidate_plan": {
+        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "customer budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+      },
       "source_ids": [
         "SRC-SA-OPTICAL-2024",
         "SRC-LC-AI-OPTICS-202501",
@@ -1240,7 +1573,9 @@
       "question_number": 2,
       "question": "供给能否跟上？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -1268,6 +1603,20 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
+      "metric_candidate_plan": {
+        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "customer budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+      },
       "source_ids": [
         "SRC-SA-OPTICAL-2024",
         "SRC-LC-PAM4-DSP-20260226"
@@ -1285,7 +1634,9 @@
       "question_number": 3,
       "question": "谁控制供给？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -1313,6 +1664,20 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
+      "metric_candidate_plan": {
+        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "customer budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+      },
       "source_ids": [
         "SRC-ALAB-Q4-2025",
         "SRC-CRDO-FY26-Q3",
@@ -1332,7 +1697,9 @@
       "question_number": 4,
       "question": "是否已经财务兑现？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -1360,6 +1727,20 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
+      "metric_candidate_plan": {
+        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "customer budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+      },
       "source_ids": [
         "SRC-ALAB-Q4-2025",
         "SRC-CRDO-FY26-Q3",
@@ -1379,7 +1760,9 @@
       "question_number": 5,
       "question": "市场是否已定价？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -1407,6 +1790,20 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
+      "metric_candidate_plan": {
+        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "customer budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+      },
       "source_ids": [
         "SRC-ALAB-Q4-2025",
         "SRC-CRDO-FY26-Q3"
@@ -1424,7 +1821,9 @@
       "question_number": 6,
       "question": "反证是什么？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -1452,6 +1851,20 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
+      "metric_candidate_plan": {
+        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "customer budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+      },
       "source_ids": [
         "SRC-SA-OPTICAL-2024",
         "SRC-DO-AI-NETWORKS-20250715"
@@ -1469,7 +1882,9 @@
       "question_number": 1,
       "question": "当前 BOM 的需求是否会被 S 曲线放大拉动？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -1497,6 +1912,20 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
+      "metric_candidate_plan": {
+        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "customer budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+      },
       "source_ids": [
         "SRC-VRT-Q4-2025",
         "SRC-SA-GB200-BOM-2024",
@@ -1515,7 +1944,9 @@
       "question_number": 2,
       "question": "供给能否跟上？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -1543,6 +1974,20 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
+      "metric_candidate_plan": {
+        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "customer budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+      },
       "source_ids": [
         "SRC-VRT-Q4-2025",
         "SRC-DO-LIQUID-COOLING-20260108"
@@ -1560,7 +2005,9 @@
       "question_number": 3,
       "question": "谁控制供给？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -1588,6 +2035,20 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
+      "metric_candidate_plan": {
+        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "customer budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+      },
       "source_ids": [
         "SRC-VRT-Q4-2025",
         "SRC-DO-LIQUID-COOLING-20260108"
@@ -1605,7 +2066,9 @@
       "question_number": 4,
       "question": "是否已经财务兑现？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -1633,6 +2096,20 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
+      "metric_candidate_plan": {
+        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "customer budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+      },
       "source_ids": [
         "SRC-VRT-Q4-2025"
       ],
@@ -1649,7 +2126,9 @@
       "question_number": 5,
       "question": "市场是否已定价？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -1677,6 +2156,20 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
+      "metric_candidate_plan": {
+        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "customer budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+      },
       "source_ids": [
         "SRC-VRT-Q4-2025"
       ],
@@ -1693,7 +2186,9 @@
       "question_number": 6,
       "question": "反证是什么？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -1721,6 +2216,20 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
+      "metric_candidate_plan": {
+        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "customer budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+      },
       "source_ids": [
         "SRC-VRT-Q4-2025",
         "SRC-DO-LIQUID-COOLING-20260108"
@@ -1738,7 +2247,9 @@
       "question_number": 1,
       "question": "当前 BOM 的需求是否会被 S 曲线放大拉动？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -1766,6 +2277,20 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
+      "metric_candidate_plan": {
+        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "customer budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+      },
       "source_ids": [
         "SRC-DELL-FY26-Q4",
         "SRC-SA-GB200-BOM-2024"
@@ -1783,7 +2308,9 @@
       "question_number": 2,
       "question": "供给能否跟上？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -1811,6 +2338,20 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
+      "metric_candidate_plan": {
+        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "customer budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+      },
       "source_ids": [
         "SRC-DELL-FY26-Q4",
         "SRC-SA-GB200-BOM-2024"
@@ -1828,7 +2369,9 @@
       "question_number": 3,
       "question": "谁控制供给？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -1856,6 +2399,20 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
+      "metric_candidate_plan": {
+        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "customer budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+      },
       "source_ids": [
         "SRC-DELL-FY26-Q4",
         "SRC-SMCI-FY26-Q2"
@@ -1873,7 +2430,9 @@
       "question_number": 4,
       "question": "是否已经财务兑现？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -1901,6 +2460,20 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
+      "metric_candidate_plan": {
+        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "customer budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+      },
       "source_ids": [
         "SRC-DELL-FY26-Q4",
         "SRC-SMCI-FY26-Q2"
@@ -1918,7 +2491,9 @@
       "question_number": 5,
       "question": "市场是否已定价？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -1946,6 +2521,20 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
+      "metric_candidate_plan": {
+        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "customer budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+      },
       "source_ids": [
         "SRC-DELL-FY26-Q4"
       ],
@@ -1962,7 +2551,9 @@
       "question_number": 6,
       "question": "反证是什么？",
       "workflow_order": [
-        "external_search",
+        "logic_stage_design",
+        "metric_candidate_design",
+        "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
@@ -1989,6 +2580,20 @@
           "refuting_evidence"
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
+      },
+      "metric_candidate_plan": {
+        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
+        "candidate_classes": [
+          "direct demand",
+          "usage intensity",
+          "workflow/task complexity",
+          "enterprise adoption",
+          "customer budget/order",
+          "BOM pull-through",
+          "financial realization",
+          "refutation"
+        ],
+        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
       },
       "source_ids": [
         "SRC-SMCI-FY26-Q2",
