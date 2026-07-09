@@ -62,14 +62,19 @@ class AiFactoryBomStageFlowTests(unittest.TestCase):
         self.assertGreaterEqual(len(cards), 36)
         for index, card in enumerate(cards, start=1):
             with self.subTest(card=index):
-                self.assertIn('<section class="bom-question-verdict"><b>本问结论</b>', card)
                 self.assertIn('<section class="bom-question-stage-flow">', card)
+                self.assertIn("<h5>判断模型</h5>", card)
                 self.assertIn("<h5>具体逻辑链条</h5>", card)
                 self.assertIn("Metric 历史与现状", card)
                 self.assertIn("市场的未来预期", card)
                 self.assertIn("第一性原理评估", card)
-                self.assertIn("<h5>整体的未来趋势评估</h5>", card)
-                self.assertIn("bom-step-final-trend", card)
+                self.assertIn("<h5>本问结论</h5>", card)
+                self.assertIn("<h5>对标的推荐的影响</h5>", card)
+                self.assertIn("bom-step-model", card)
+                self.assertIn("bom-step-question-conclusion", card)
+                self.assertIn("bom-step-target-impact", card)
+                self.assertNotIn("<h5>整体的未来趋势评估</h5>", card)
+                self.assertNotIn("bom-step-final-trend", card)
                 self.assertNotIn("逻辑环节逐卡：Metric 列表与历史数据", card)
                 self.assertNotIn("逻辑环节逐卡：市场预期", card)
                 self.assertNotIn("第一性原理评估未来趋势", card)
@@ -88,7 +93,7 @@ class AiFactoryBomStageFlowTests(unittest.TestCase):
                 self.assertNotIn(" open", opening_tag(status_cards[0]))
                 self.assertLess(
                     card.index('class="bom-question-research-status"'),
-                    card.index('class="bom-question-verdict"'),
+                    card.index('class="bom-step-card bom-step-model"'),
                 )
 
     def test_nested_bom_stage_cards_are_collapsible_by_default(self):
@@ -100,11 +105,13 @@ class AiFactoryBomStageFlowTests(unittest.TestCase):
             with self.subTest(card=index):
                 for class_name in [
                     "bom-step-card",
+                    "bom-step-model",
                     "bom-logic-chain-panel",
                     "bom-stage-integrated-card",
                     "bom-stage-subcard",
                     "bom-mechanism-card",
-                    "bom-step-final-trend",
+                    "bom-step-question-conclusion",
+                    "bom-step-target-impact",
                 ]:
                     blocks = details_blocks_by_class(card, class_name)
                     self.assertGreaterEqual(len(blocks), 1)
@@ -120,7 +127,7 @@ class AiFactoryBomStageFlowTests(unittest.TestCase):
         self.assertGreaterEqual(len(cards), 36)
         for index, card in enumerate(cards, start=1):
             question = re.search(r"<strong>(.*?)</strong>", card).group(1)
-            logic_section = section_between(card, "bom-step-metrics", "bom-stage-integrated-card")
+            logic_section = section_between(card, "bom-step-logic", "bom-stage-integrated-card")
             rows = re.findall(r'<tr class="bom-logic-chain-row">.*?</tr>', logic_section, flags=re.DOTALL)
             with self.subTest(card=index, question=question):
                 chain_panels = details_blocks_by_class(logic_section, "bom-logic-chain-panel")
@@ -142,7 +149,7 @@ class AiFactoryBomStageFlowTests(unittest.TestCase):
 
         self.assertGreaterEqual(len(cards), 36)
         for index, card in enumerate(cards, start=1):
-            logic_section = section_between(card, "bom-step-metrics", "bom-stage-integrated-card")
+            logic_section = section_between(card, "bom-step-logic", "bom-stage-integrated-card")
             logic_rows = re.findall(r'<tr class="bom-logic-chain-row">.*?</tr>', logic_section, flags=re.DOTALL)
             stage_cards = details_blocks_by_class(card, "bom-stage-integrated-card")
             with self.subTest(card=index):
@@ -304,22 +311,33 @@ class AiFactoryBomStageFlowTests(unittest.TestCase):
             with self.subTest(mapping=mapping):
                 self.assertIn(mapping, compute_first_question)
 
-    def test_final_trend_card_collects_whole_question_future_assessment(self):
+    def test_question_conclusion_and_target_impact_close_after_stage_evidence(self):
         html = REPORT.read_text(encoding="utf-8")
         cards = bom_question_cards(html)
 
         self.assertGreaterEqual(len(cards), 36)
         for index, card in enumerate(cards, start=1):
             with self.subTest(card=index):
-                final_cards = details_blocks_by_class(card, "bom-step-final-trend")
-                self.assertEqual(len(final_cards), 1)
-                final_card = final_cards[0]
-                self.assertIn("<h5>整体的未来趋势评估</h5>", final_card)
-                self.assertIn("支持未来继续的机制", final_card)
-                self.assertIn("削弱或推翻趋势的机制", final_card)
+                conclusion_cards = details_blocks_by_class(card, "bom-step-question-conclusion")
+                target_impact_cards = details_blocks_by_class(card, "bom-step-target-impact")
+                self.assertEqual(len(conclusion_cards), 1)
+                self.assertEqual(len(target_impact_cards), 1)
+                conclusion_card = conclusion_cards[0]
+                target_impact_card = target_impact_cards[0]
+                self.assertIn("<h5>本问结论</h5>", conclusion_card)
+                self.assertIn("综合判断", conclusion_card)
+                self.assertIn("支持机制", conclusion_card)
+                self.assertIn("主要反证", conclusion_card)
+                self.assertIn("结论强度", conclusion_card)
+                self.assertIn("<h5>对标的推荐的影响</h5>", target_impact_card)
+                self.assertIn("推荐含义", target_impact_card)
                 self.assertGreater(
-                    card.index('class="bom-step-card bom-step-final-trend"'),
+                    card.index('class="bom-step-card bom-step-question-conclusion"'),
                     card.rindex("bom-stage-integrated-card"),
+                )
+                self.assertGreater(
+                    card.index('class="bom-step-card bom-step-target-impact"'),
+                    card.index('class="bom-step-card bom-step-question-conclusion"'),
                 )
 
     def test_s_curve_stage_card_appears_only_after_all_six_questions(self):

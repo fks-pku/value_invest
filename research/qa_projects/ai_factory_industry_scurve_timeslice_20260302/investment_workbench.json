@@ -10,12 +10,14 @@
       "question_number": 1,
       "question": "当前 BOM 的需求是否会被 S 曲线放大拉动？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -216,12 +218,14 @@
       "question_number": 2,
       "question": "供给能否跟上？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -308,12 +312,14 @@
       "question_number": 3,
       "question": "谁控制供给？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -400,12 +406,14 @@
       "question_number": 4,
       "question": "是否已经财务兑现？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -516,12 +524,14 @@
       "question_number": 5,
       "question": "市场是否已定价？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -593,12 +603,14 @@
       "question_number": 6,
       "question": "反证是什么？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -694,12 +706,14 @@
       "question_number": 1,
       "question": "当前 BOM 的需求是否会被 S 曲线放大拉动？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -769,12 +783,14 @@
       "question_number": 2,
       "question": "供给能否跟上？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -844,12 +860,14 @@
       "question_number": 3,
       "question": "谁控制供给？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -919,12 +937,14 @@
       "question_number": 4,
       "question": "是否已经财务兑现？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -994,12 +1014,14 @@
       "question_number": 5,
       "question": "市场是否已定价？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -1069,12 +1091,14 @@
       "question_number": 6,
       "question": "反证是什么？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -1144,12 +1168,14 @@
       "question_number": 1,
       "question": "当前 BOM 的需求是否会被 S 曲线放大拉动？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -1205,12 +1231,14 @@
       "question_number": 2,
       "question": "供给能否跟上？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -1266,12 +1294,14 @@
       "question_number": 3,
       "question": "谁控制供给？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -1328,12 +1358,14 @@
       "question_number": 4,
       "question": "是否已经财务兑现？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -1390,12 +1422,14 @@
       "question_number": 5,
       "question": "市场是否已定价？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -1451,12 +1485,14 @@
       "question_number": 6,
       "question": "反证是什么？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -1511,12 +1547,14 @@
       "question_number": 1,
       "question": "当前 BOM 的需求是否会被 S 曲线放大拉动？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -1573,12 +1611,14 @@
       "question_number": 2,
       "question": "供给能否跟上？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -1634,12 +1674,14 @@
       "question_number": 3,
       "question": "谁控制供给？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -1697,12 +1739,14 @@
       "question_number": 4,
       "question": "是否已经财务兑现？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -1760,12 +1804,14 @@
       "question_number": 5,
       "question": "市场是否已定价？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -1821,12 +1867,14 @@
       "question_number": 6,
       "question": "反证是什么？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -1882,12 +1930,14 @@
       "question_number": 1,
       "question": "当前 BOM 的需求是否会被 S 曲线放大拉动？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -1944,12 +1994,14 @@
       "question_number": 2,
       "question": "供给能否跟上？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -2005,12 +2057,14 @@
       "question_number": 3,
       "question": "谁控制供给？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -2066,12 +2120,14 @@
       "question_number": 4,
       "question": "是否已经财务兑现？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -2126,12 +2182,14 @@
       "question_number": 5,
       "question": "市场是否已定价？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -2186,12 +2244,14 @@
       "question_number": 6,
       "question": "反证是什么？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -2247,12 +2307,14 @@
       "question_number": 1,
       "question": "当前 BOM 的需求是否会被 S 曲线放大拉动？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -2308,12 +2370,14 @@
       "question_number": 2,
       "question": "供给能否跟上？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -2369,12 +2433,14 @@
       "question_number": 3,
       "question": "谁控制供给？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -2430,12 +2496,14 @@
       "question_number": 4,
       "question": "是否已经财务兑现？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -2491,12 +2559,14 @@
       "question_number": 5,
       "question": "市场是否已定价？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -2551,12 +2621,14 @@
       "question_number": 6,
       "question": "反证是什么？",
       "workflow_order": [
+        "judgment_model_design",
         "logic_stage_design",
         "metric_candidate_design",
         "per_metric_external_search",
         "source_parse",
         "metric_history_and_gap_check",
         "question_verdict",
+        "target_implication_rollup",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -2607,9 +2679,9 @@
     }
   ],
   "bom_stage_rollup_policy": {
-    "workflow_order": "search_and_parse_each_bom_question_before_verdict_then_roll_up_7_questions_into_bom_s_curve_stage",
+    "workflow_order": "design_judgment_model_then_search_and_parse_each_bom_six_question_before_conclusion_and_target_impact_rollup",
     "local_cache_policy": "old local artifacts are caches only; they cannot replace fresh question-level search artifacts",
-    "public_rendering_policy": "show compact evidence status and stage rollup; keep raw search plans in workbench artifacts"
+    "public_rendering_policy": "show compact evidence status, judgment model, stage evidence, question conclusion, target impact, and BOM stage rollup; keep raw search plans in workbench artifacts"
   },
   "source_extractions": [
     {

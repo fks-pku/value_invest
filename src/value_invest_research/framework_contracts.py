@@ -596,11 +596,13 @@ def validate_report_contract_html(
         missing_bom_stage_flow_titles = [
             title
             for title in [
+                "判断模型",
                 "具体逻辑链条",
                 "Metric 历史与现状",
                 "市场的未来预期",
                 "第一性原理评估",
-                "整体的未来趋势评估",
+                "本问结论",
+                "对标的推荐的影响",
             ]
             if title not in html
         ]
@@ -617,7 +619,7 @@ def validate_report_contract_html(
                 issues,
                 "error",
                 "insufficient_bom_logic_chain_rows",
-                "Each bom-question-card must render a bom-logic-chain-table with several concrete logic rows; metric selection belongs in the 02 stage cards",
+                "Each bom-question-card must render a bom-logic-chain-table with several concrete logic rows; metric selection belongs in the per-stage cards after the judgment model",
             )
         if _class_count(html, "bom-stage-integrated-card") < bom_question_cards * 4:
             _issue(
@@ -626,12 +628,26 @@ def validate_report_contract_html(
                 "insufficient_bom_stage_integrated_cards",
                 "Each bom-question-card must render one integrated stage card per logic-chain row, combining metric history, market expectation, and first-principles assessment",
             )
-        if _class_count(html, "bom-step-final-trend") < bom_question_cards:
+        if _class_count(html, "bom-step-model") < bom_question_cards:
             _issue(
                 issues,
                 "error",
-                "missing_bom_step_final_trend",
-                "Each bom-question-card must render a final overall future trend assessment after the per-stage cards",
+                "missing_bom_step_model",
+                "Each bom-question-card must render the question-specific judgment model before the logic chain and evidence cards",
+            )
+        if _class_count(html, "bom-step-question-conclusion") < bom_question_cards:
+            _issue(
+                issues,
+                "error",
+                "missing_bom_step_question_conclusion",
+                "Each bom-question-card must render the question conclusion after the per-stage evidence cards",
+            )
+        if _class_count(html, "bom-step-target-impact") < bom_question_cards:
+            _issue(
+                issues,
+                "error",
+                "missing_bom_step_target_impact",
+                "Each bom-question-card must render target-recommendation impact after the question conclusion",
             )
         integrated_stage_count = _class_count(html, "bom-stage-integrated-card")
         if integrated_stage_count and _class_count(html, "bom-stage-subcard") < integrated_stage_count * 3:
@@ -702,12 +718,14 @@ def validate_report_contract_html(
                     "BOM S-curve stage rollups must include current stage, six-question evidence, next confirmation signal, downgrade signal, and source discipline",
                 )
         nested_bom_details_requirements = [
-            ("bom-step-card", bom_question_cards * 6),
+            ("bom-step-card", bom_question_cards * 8),
+            ("bom-step-model", bom_question_cards),
             ("bom-logic-chain-panel", bom_question_cards),
             ("bom-stage-integrated-card", bom_question_cards * 4),
             ("bom-stage-subcard", bom_question_cards * 12),
             ("bom-mechanism-card", bom_question_cards * 8),
-            ("bom-step-final-trend", bom_question_cards),
+            ("bom-step-question-conclusion", bom_question_cards),
+            ("bom-step-target-impact", bom_question_cards),
         ]
         for class_name, minimum_count in nested_bom_details_requirements:
             class_count = _class_count(html, class_name)
