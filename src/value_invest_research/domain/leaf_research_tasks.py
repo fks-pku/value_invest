@@ -12,6 +12,7 @@ def build_leaf_tasks_from_tree(
     *,
     ticker: str,
     company_name: str,
+    source_universe: dict[str, Any] | None = None,
     completed_node_ids: set[str] | None = None,
     limit: int | None = None,
 ) -> list[dict[str, Any]]:
@@ -24,7 +25,7 @@ def build_leaf_tasks_from_tree(
         if not node_id or node_id in completed or not is_leaf_node(qa_tree, node):
             continue
         parent = nodes_by_id.get(node.get("parent_id", ""), {})
-        tasks.append(build_leaf_task(qa_tree, node, parent, ticker, company_name))
+        tasks.append(build_leaf_task(qa_tree, node, parent, ticker, company_name, source_universe=source_universe))
         if limit is not None and len(tasks) >= limit:
             break
     return tasks
@@ -36,6 +37,8 @@ def build_leaf_task(
     parent: dict[str, Any],
     ticker: str,
     company_name: str,
+    *,
+    source_universe: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     node_id = node.get("id", "")
     synthesis = node.get("synthesis", {}) or {}
@@ -51,6 +54,7 @@ def build_leaf_task(
     task_family = classify_task_family(node, parent)
     selected_skill = selected_skill_for_task_family(task_family)
     source_search_plan = source_search_plan_for_task(node, parent, task_family)
+    source_universe_plan = source_universe_plan_for_task(question, source_universe or {})
     extraction_schema = extraction_schema_for_task(task_family)
     materiality = materiality_statement(question, parent_question, task_family)
     return {
@@ -73,6 +77,7 @@ def build_leaf_task(
         "information_categories": list(INFO_CATEGORIES),
         "preferred_source_types": preferred_source_types(node),
         "source_search_plan": source_search_plan,
+        "source_universe_plan": source_universe_plan,
         "task_family": task_family,
         "selected_skill": selected_skill,
         "extraction_schema": extraction_schema,
@@ -88,6 +93,38 @@ def build_leaf_task(
         "time_scope": node.get("time_frame") or "latest_available_and_historical_context",
         "max_sources": 8,
         "refresh_policy": "skip_if_complete",
+    }
+
+
+def source_universe_plan_for_task(question: str, source_universe: dict[str, Any]) -> dict[str, Any]:
+    sources = source_universe.get("priority_sources") if isinstance(source_universe, dict) else []
+    if not isinstance(sources, list):
+        sources = []
+    question_lower = question.lower()
+    ranked: list[tuple[int, dict[str, Any]]] = []
+    for source in sources:
+        if not isinstance(source, dict):
+            continue
+        keywords = [str(item) for item in source.get("node_keywords", []) or []]
+        score = sum(1 for keyword in keywords if keyword.lower() in question_lower)
+        ranked.append((score, source))
+    ranked.sort(key=lambda item: (-item[0], str(item[1].get("id") or "")))
+    selected = [item for _, item in ranked[:6]]
+    return {
+        "domain_id": str(source_universe.get("domain_id") or ""),
+        "priority_sources": [
+            {
+                "id": str(item.get("id") or ""),
+                "name": str(item.get("name") or ""),
+                "domain": str(item.get("domain") or ""),
+                "reliability": str(item.get("reliability") or ""),
+            }
+            for item in selected
+        ],
+        "directed_queries": [
+            " ".join(part for part in [question, str(item.get("domain") or ""), *[str(hint) for hint in item.get("query_hints", []) or []][:3]] if part)
+            for item in selected
+        ],
     }
 
 

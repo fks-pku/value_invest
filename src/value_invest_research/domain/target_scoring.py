@@ -10,6 +10,10 @@ from value_invest_research.framework_contracts import (
     score_target_observation,
     validate_target_observation_contract,
 )
+from value_invest_research.domain.bom_research_readiness import (
+    apply_target_research_gates,
+    build_bom_readiness,
+)
 
 
 @dataclass(frozen=True)
@@ -22,13 +26,28 @@ class TargetScoringResult:
     issues: list[dict[str, str]] = field(default_factory=list)
 
 
-def score_and_rank_targets(targets: list[dict[str, Any]]) -> TargetScoringResult:
+def score_and_rank_targets(
+    targets: list[dict[str, Any]],
+    *,
+    workbench: dict[str, Any] | None = None,
+) -> TargetScoringResult:
     """Score raw targets and rank them deterministically."""
     scored_targets: list[dict[str, Any]] = []
-    for target in targets:
+    readiness_by_node = build_bom_readiness(workbench or {}) if workbench is not None else {}
+    for raw_target in targets:
+        target = deepcopy(raw_target)
+        if workbench is not None:
+            node_readiness = readiness_by_node.get(str(target.get("thesis_node_id") or ""), {})
+            target["research_gate_required"] = True
+            target["bom_research_complete"] = bool(node_readiness.get("complete"))
+            target["refutation_status"] = (
+                "verified" if node_readiness.get("refutation_complete") else "unverified"
+            )
         scoring_input = _target_scoring_input(target)
         score = score_target_observation(scoring_input)
         scored_targets.append({**target, "score": score, "action_state": score["action_state"]})
+    if workbench is not None:
+        scored_targets = apply_target_research_gates(scored_targets, workbench)
     ranked_targets = rank_target_observations(scored_targets)
     validation = validate_target_observation_contract(ranked_targets)
     issues = list(validation.get("issues", []))

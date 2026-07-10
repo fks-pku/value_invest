@@ -8,6 +8,7 @@ from value_invest_research.domain.research_artifacts import (
     SourceList,
     TimeSliceAuditResult,
 )
+from value_invest_research.domain.bom_research_readiness import validate_bom_research_decision_gates
 from value_invest_research.framework_contracts import (
     audit_time_slice_sources,
     validate_backtest_leakage_controls,
@@ -63,6 +64,10 @@ def validate_research_artifacts(
         if artifacts.workbench
         else {"ok": True, "issues": [], "summary": {}}
     )
+    bom_decision_gate_result = validate_bom_research_decision_gates(
+        artifacts.workbench,
+        artifacts.targets,
+    )
 
     all_issues = (
         list(artifacts.load_issues)
@@ -72,6 +77,7 @@ def validate_research_artifacts(
         + list(target_result.get("issues", []))
         + list(leakage_result.get("issues", []))
         + list(industry_space_source_search_result.get("issues", []))
+        + list(bom_decision_gate_result.get("issues", []))
     )
     ok = not any(issue.get("severity") == "error" for issue in all_issues)
     return ResearchArtifactValidationResult(

@@ -38,6 +38,13 @@ class SourceListRepository(Protocol):
         """Load source records for cutoff auditing."""
 
 
+class SourceUniverseRepository(Protocol):
+    """Outbound port for resolving a professional source universe for a research object."""
+
+    def resolve_for_research(self, qa_tree: dict) -> dict:
+        """Return the best matching source-universe record for the QA tree."""
+
+
 class ResearchProjectRepository(Protocol):
     """Outbound port for loading a full research project for report assembly."""
 

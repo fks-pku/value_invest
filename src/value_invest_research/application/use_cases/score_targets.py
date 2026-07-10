@@ -10,6 +10,10 @@ from value_invest_research.domain.target_scoring import TargetScoringResult, sco
 class ScoreTargets:
     """Score and rank target observations through domain scoring rules."""
 
-    def execute(self, targets: list[dict[str, Any]]) -> TargetScoringResult:
-        return score_and_rank_targets(targets)
-
+    def execute(
+        self,
+        targets: list[dict[str, Any]],
+        *,
+        workbench: dict[str, Any] | None = None,
+    ) -> TargetScoringResult:
+        return score_and_rank_targets(targets, workbench=workbench)

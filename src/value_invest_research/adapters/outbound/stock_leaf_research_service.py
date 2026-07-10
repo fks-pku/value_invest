@@ -11,6 +11,7 @@ from value_invest_research.adapters.outbound.filesystem_leaf_research import (
     FileSystemRawProviderResponseStore,
 )
 from value_invest_research.adapters.outbound.research_search_providers import provider_for_name
+from value_invest_research.adapters.outbound.filesystem_source_universe import FileSystemSourceUniverseRepository
 from value_invest_research.application.use_cases.build_leaf_research_tasks_from_tree import (
     BuildLeafResearchTasksFromTree,
 )
@@ -51,7 +52,10 @@ class StockLeafResearchService:
         build_result = build_research_system(root, normalized)
         research_dir = Path(build_result["qa_tree_path"]).parent
         qa_tree = _read_json(research_dir / "qa_tree.json")
-        task_result = BuildLeafResearchTasksFromTree(_artifact_repository(research_dir)).execute(
+        task_result = BuildLeafResearchTasksFromTree(
+            _artifact_repository(research_dir),
+            FileSystemSourceUniverseRepository(root / "config" / "source_universes.json"),
+        ).execute(
             qa_tree,
             ticker=normalized,
             company_name=_company_name(root, normalized),

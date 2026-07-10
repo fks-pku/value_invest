@@ -27,7 +27,6 @@ def _render_hero(data: dict[str, Any]) -> str:
   <nav class="top-nav" aria-label="报告导航">
     <a href="#goal">当前研究的问题</a>
     <a href="#overview">行业概况</a>
-    <a href="#qa">下钻 QA</a>
     <a href="#targets">标的推荐</a>
     <a href="#sources">来源索引</a>
   </nav>

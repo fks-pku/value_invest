@@ -101,6 +101,10 @@ S 曲线判断必须同时包含：
 
 六问完成后，才能对该 BOM 节点做 S 曲线阶段判定。
 
+这里的“完成”是语义门槛，不是卡片已经生成：每问都必须保存非空的 Universe、direct/Exa 和 Metric 候选计划，完成当前问题的主动搜索、逐来源解析、来源 ID 和证据摘要；第 6 问还必须保存明确的 `refuting_source_ids` 与 `refutation_evidence_summary`。只有假设性风险清单、不含实际反向证据时，第 6 问仍为未完成，BOM 阶段维持 pending。
+
+标的推荐另有硬门槛。`actionable_long` 必须同时具备 canonical `thesis_node_id`、对应 BOM 六问完成、反证证据完成、结构化公司/分部财务桥明确验证的公司敞口、研究截面估值/预期差完成、分项评分证据可追溯，以及包含 metric/threshold/cadence/downgrade action 的 kill tests。不能用宽泛的 target evidence IDs 自动推断公司敞口已验证。任一项缺失均降为 `watch_only`；缺少 BOM 映射则为 `no_action`。必须同时保存候选状态、最终状态和 `research_gate` 原因。
+
 ## 每一问的固定环节流结构
 
 每个 `BOM 节点 × 六问` 是最小研究单元。每个最小研究单元必须先定义判断模型，再给逻辑链条；随后按逻辑环节逐个聚合历史、预期和第一性原理；最后给本问结论，并说明它如何影响标的推荐。

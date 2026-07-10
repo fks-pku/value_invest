@@ -450,8 +450,9 @@ class HexagonalArchitectureTests(unittest.TestCase):
         result = validate_report_contract_html(html, require_l3=True)
 
         self.assertTrue(result["ok"], result["issues"])
-        self.assertEqual(result["summary"]["level1_cards"], 4)
-        self.assertEqual(result["summary"]["interactive_level3_cards"], 4)
+        self.assertEqual(result["summary"]["level1_cards"], 0)
+        self.assertEqual(result["summary"]["interactive_level3_cards"], 0)
+        self.assertNotIn('id="qa"', html)
 
     def test_canonical_renderer_outputs_backtest_label_columns(self):
         project, qa_tree, sources, targets = _minimal_project_artifacts()

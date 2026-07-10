@@ -6,11 +6,13 @@ This gate defines the minimum internal artifacts for a complete refreshed resear
 
 Every complete refreshed research project must preserve these files in the project directory:
 
-- `professional_report.html`: clean public report using the locked five-section contract.
+- `professional_report.html`: clean public report using the locked four-section contract: `当前研究的问题` -> `行业概况` -> `标的推荐` -> `来源索引`.
 - `qa_tree.json`: full Q1-Q4 tree with L1, L2, L3, and any adaptive L4/L5 research-unit nodes.
 - `source_extractions.jsonl`: one parser or DeepSeek extraction per source-to-L3/L4/L5 research-unit pair.
 - `leaf_source_reviews.jsonl`: one GPT verification record per extraction.
 - `investment_workbench.json`: internal scoring worksheet, frozen recommendations, labels when relevant, and validation output.
+
+For BOM-first S-curve research, `investment_workbench.json` must also preserve one search artifact per `BOM node x six questions`, including one parse/review record for every selected source. Q6 is incomplete without explicit refuting source IDs and refutation evidence.
 
 The gold regression fixture is `tests/fixtures/research_quality_gold/`. New framework changes should keep this fixture passing or intentionally update it with matching tests.
 
@@ -84,17 +86,18 @@ Every target in `investment_workbench.json` must preserve:
 
 - seven auditable component score subcomponents: chokepoint strength, future space, valuation odds, evidence quality, disconfirming-risk control, monitorability, and payoff convexity.
 - four public gate dimensions: scarcity or monopoly, mispricing, earnings elasticity, and risk control.
-- evidence IDs or review IDs for every score subcomponent.
-- hard thesis kill tests for any `actionable_long` target.
+- a canonical `thesis_node_id`, candidate action state, final action state, and persisted `research_gate`.
+- component-specific evidence IDs or review IDs for verified score subcomponents; gap rows instead use `status=gap` and `gap_reason`.
+- hard thesis kill tests with trigger metric, threshold, observation frequency, source plan, and downgrade action for any `actionable_long` target.
 
-The default state is `no_action`. A target cannot become `actionable_long` unless scarcity, mispricing, earnings elasticity, and risk control all pass.
+The default state is conservative. A target cannot become `actionable_long` unless its canonical BOM mapping, all six questions, explicit refutation, explicitly verified company/segment financial exposure, valuation/mispricing, score trace, scarcity, earnings elasticity, and risk control all pass. Generic evidence IDs cannot stand in for company exposure. Missing evidence caps the target at `watch_only`; missing BOM mapping is `no_action`.
 
 ## Validation Commands
 
 Run these checks before treating a complete refreshed report as done:
 
 ```bash
-PYTHONPATH=src python3 -m value_invest_research validate-report-contract <project_dir>/professional_report.html --require-l3
+PYTHONPATH=src python3 -m value_invest_research validate-report-contract <project_dir>/professional_report.html
 PYTHONPATH=src python3 -m value_invest_research validate-research-artifacts <project_dir> --require-l3
 ```
 

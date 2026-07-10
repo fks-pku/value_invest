@@ -4,8 +4,9 @@ import unittest
 from pathlib import Path
 
 
-REPORT = Path("research/qa_projects/ai_factory_industry_scurve_timeslice_20260302/professional_report.html")
-WORKBENCH = Path("research/qa_projects/ai_factory_industry_scurve_timeslice_20260302/investment_workbench.json")
+REPORT = Path("research/qa_projects/ai_factory_industry_scurve_timeslice_20260328/professional_report.html")
+WORKBENCH = Path("research/qa_projects/ai_factory_industry_scurve_timeslice_20260328/investment_workbench.json")
+PROJECT = Path("research/qa_projects/ai_factory_industry_scurve_timeslice_20260328/project.json")
 
 
 def details_blocks_by_class(html: str, class_name: str) -> list[str]:
@@ -434,6 +435,46 @@ class AiFactoryBomStageFlowTests(unittest.TestCase):
         self.assertNotIn("Q4 FY25 guide", broadcom_card)
         self.assertNotIn("Q2 FY26 guide", broadcom_card)
         self.assertNotIn("actual / guidance checkpoints", broadcom_card)
+
+    def test_every_selected_bom_source_has_a_question_specific_parse_record(self):
+        workbench = json.loads(WORKBENCH.read_text(encoding="utf-8"))
+
+        for artifact in workbench["bom_question_search_artifacts"]:
+            with self.subTest(artifact=artifact["artifact_id"]):
+                parsed_ids = {row["source_id"] for row in artifact["source_parse_records"]}
+                self.assertEqual(parsed_ids, set(artifact["source_ids"]))
+                for row in artifact["source_parse_records"]:
+                    self.assertEqual(row["parser_status"], "completed")
+                    self.assertTrue(row["question_dimensions"])
+
+    def test_failed_research_gate_never_renders_actionable_state(self):
+        workbench = json.loads(WORKBENCH.read_text(encoding="utf-8"))
+
+        invalid = [
+            target
+            for target in workbench["scoring_worksheet"]
+            if target["action_state"] == "actionable_long" and not target["research_gate"]["passed"]
+        ]
+
+        self.assertEqual(invalid, [])
+        self.assertTrue(any(target["candidate_action_state"] == "actionable_long" for target in workbench["scoring_worksheet"]))
+        self.assertTrue(all(target["thesis_node_id"] for target in workbench["scoring_worksheet"]))
+        self.assertTrue(all(target["score"].get("weights") for target in workbench["scoring_worksheet"]))
+        self.assertTrue(all(target["score"].get("dimension_weights") for target in workbench["scoring_worksheet"]))
+
+    def test_public_report_keeps_four_sections_and_internal_plans_private(self):
+        html = REPORT.read_text(encoding="utf-8")
+        positions = [html.index(f'<section id="{section_id}"') for section_id in ["goal", "overview", "targets", "sources"]]
+
+        self.assertEqual(positions, sorted(positions))
+        for internal_term in ["source_universe_plan", "exa_search_plan", "direct_query", "search_query"]:
+            self.assertNotIn(internal_term, html)
+
+    def test_project_id_matches_the_historical_cutoff(self):
+        project = json.loads(PROJECT.read_text(encoding="utf-8"))
+
+        self.assertEqual(project["as_of_date"], "2026-03-28")
+        self.assertTrue(project["project_id"].endswith("20260328"))
 
 
 if __name__ == "__main__":

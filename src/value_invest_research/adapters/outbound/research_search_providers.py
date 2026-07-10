@@ -475,12 +475,20 @@ def sources_from_exa_results(raw_response: dict[str, Any]) -> list[dict[str, Any
 
 
 def exa_query_from_task(task: dict[str, Any]) -> str:
+    universe = task.get("source_universe_plan") if isinstance(task.get("source_universe_plan"), dict) else {}
+    priority_sources = universe.get("priority_sources") if isinstance(universe.get("priority_sources"), list) else []
+    universe_names = ", ".join(
+        str(item.get("name") or item.get("domain") or "")
+        for item in priority_sources
+        if isinstance(item, dict) and (item.get("name") or item.get("domain"))
+    )
     parts = [
         str(task.get("question", "")).strip(),
         f"Company: {task.get('company_name', '')} {task.get('ticker', '')}".strip(),
         f"Parent question: {task.get('parent_question', '')}".strip(),
         f"Required evidence: {'; '.join(_text_list(task.get('required_evidence'))[:4])}",
         f"Preferred materials: {source_plan_focus(task.get('source_search_plan', []))}",
+        f"Professional source universe: {universe_names}",
     ]
     return "\n".join(part for part in parts if part and not part.endswith(": "))
 

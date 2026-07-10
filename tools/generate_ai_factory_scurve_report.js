@@ -1,8 +1,9 @@
 const fs = require("fs");
 const path = require("path");
+const { spawnSync } = require("child_process");
 
 const ROOT = path.resolve(__dirname, "..");
-const PROJECT_ID = "ai_factory_industry_scurve_timeslice_20260302";
+const PROJECT_ID = "ai_factory_industry_scurve_timeslice_20260328";
 const OUT_DIR = path.join(ROOT, "research", "qa_projects", PROJECT_ID);
 const AS_OF_DATE = "2026-03-28";
 const EVALUATION_DATE = "2026-06-28";
@@ -158,6 +159,9 @@ const bomNodes = [
   },
 ];
 
+const BOM_NODE_ID_BY_NAME = Object.fromEntries(bomNodes.map((node) => [node.name, node.id]));
+BOM_NODE_ID_BY_NAME["custom silicon / 电光互联"] = "network";
+
 const spaceNodes = [
   spaceNode("计算加速器 / GPU / ASIC", [
     method("公司指引", "NVIDIA", "Q4 FY26 Data Center revenue 达 $62.3B，说明 AI factory 需求已经在平台收入中财务化。", "计算加速器 / GPU / ASIC", "FY2026 Q4", "Data Center revenue、gross margin、客户 capex、后续指引", "高", ["SRC-NVDA-FY26-Q4"]),
@@ -276,7 +280,9 @@ const targets = [
 
 function main() {
   fs.mkdirSync(OUT_DIR, { recursive: true });
-  fs.writeFileSync(path.join(OUT_DIR, "professional_report.html"), renderHtml(), "utf8");
+  const bomQuestionSearchArtifacts = buildAllBomQuestionSearchArtifacts();
+  const scoringWorksheet = scoreTargetsThroughDomain(targets, bomQuestionSearchArtifacts);
+  fs.writeFileSync(path.join(OUT_DIR, "professional_report.html"), renderHtml(scoringWorksheet), "utf8");
   fs.writeFileSync(path.join(OUT_DIR, "sources.jsonl"), sources.map((item) => JSON.stringify({ ...item, as_of_date: AS_OF_DATE, cutoff_status: "cutoff_visible" })).join("\n") + "\n", "utf8");
   fs.writeFileSync(path.join(OUT_DIR, "project.json"), JSON.stringify({
     project_id: PROJECT_ID,
@@ -289,11 +295,51 @@ function main() {
     report_path: "professional_report.html",
     framework_focus: "s_curve_first",
   }, null, 2), "utf8");
-  writeAuditArtifacts();
+  writeAuditArtifacts(bomQuestionSearchArtifacts, scoringWorksheet);
   console.log(path.join(OUT_DIR, "professional_report.html"));
 }
 
-function writeAuditArtifacts() {
+function scoreTargetsThroughDomain(targetItems, bomQuestionSearchArtifacts) {
+  const normalizedTargets = targetItems.map((item) => ({
+    ticker: item.ticker,
+    name: item.name,
+    market: item.market,
+    thesis_node: item.thesisNode,
+    thesis_node_id: item.thesisNodeId,
+    candidate_action_state: item.actionState,
+    action_state: item.actionState,
+    rationale: item.rationale,
+    future_space: item.futureSpace,
+    downgrade: item.downgrade,
+    risks: item.downgrade,
+    evidence_ids: item.sourceIds,
+    valuation_status: "incomplete",
+  }));
+  const result = spawnSync(
+    "python3",
+    [path.join(ROOT, "tools", "score_bom_targets.py")],
+    {
+      cwd: ROOT,
+      env: {
+        ...process.env,
+        PYTHONPATH: path.join(ROOT, "src"),
+        PYTHONPYCACHEPREFIX: "/private/tmp/value_invest_pycache",
+      },
+      input: JSON.stringify({
+        targets: normalizedTargets,
+        workbench: { bom_question_search_artifacts: bomQuestionSearchArtifacts },
+      }),
+      encoding: "utf8",
+      maxBuffer: 10 * 1024 * 1024,
+    },
+  );
+  if (result.status !== 0) {
+    throw new Error(`Domain target scoring failed: ${result.stderr || result.stdout}`);
+  }
+  return JSON.parse(result.stdout);
+}
+
+function writeAuditArtifacts(bomQuestionSearchArtifacts, scoringWorksheet) {
   const nodes = flattenQaNodes(qaTree);
   const l3Nodes = nodes.filter((node) => node.level >= 3);
   const qaRecords = nodes.map((node) => {
@@ -307,8 +353,8 @@ function writeAuditArtifacts() {
         conclusion: node.conclusion,
       };
     }
-    const extractionId = extractionIdFor(node);
-    const reviewId = reviewIdFor(node);
+    const extractionIds = extractionIdsForNode(node);
+    const reviewIds = reviewIdsForNode(node);
     return {
       id: node.id,
       level: node.level,
@@ -333,10 +379,10 @@ function writeAuditArtifacts() {
         selected_skill: node.skill,
         concrete_materials: node.sourceIds,
         extraction_schema: ["claim", "source_date", "decision_relevance"],
-        source_extraction_ids: [extractionId],
-        leaf_source_review_ids: [reviewId],
-        skill_output_status: node.status,
-        fallback_used: false,
+        source_extraction_ids: extractionIds,
+        leaf_source_review_ids: reviewIds,
+        skill_output_status: "per_source_summary_parse_completed",
+        fallback_used: true,
         gpt_verification_status: "verified_with_caveats",
       },
       fact: node.conclusion,
@@ -354,51 +400,50 @@ function writeAuditArtifacts() {
     };
   });
 
-  const sourceExtractions = l3Nodes.map((node) => {
-    const sourceId = node.sourceIds[0];
+  const sourceExtractions = l3Nodes.flatMap((node) => sourceIdsForNode(node).map((sourceId) => {
     const source = sourceById[sourceId] || {};
+    const stance = sourceStanceFor(source, node);
     return {
-      extraction_id: extractionIdFor(node),
+      extraction_id: extractionIdFor(node, sourceId),
       l3_question_id: node.id,
       source_id: sourceId,
       source_title: source.title || sourceId,
       source_bucket: source.source_bucket || "evidence",
-      parser: node.skill,
+      parser: `deterministic_source_summary_adapter:${node.skill}`,
       parser_status: "completed",
       schema_fields: {
-        claim: node.conclusion,
+        claim: source.summary || "Source summary unavailable.",
         source_date: source.source_visible_at || AS_OF_DATE,
         decision_relevance: node.decisionUse,
       },
-      key_facts: [node.conclusion],
-      inference: `${node.id} supports ${normalizedScoreComponent(node.score)} under the cutoff-visible source pack.`,
-      support_refute_or_lead: "support",
+      key_facts: [source.summary || "Source summary unavailable."],
+      inference: `${sourceId} is evaluated only for ${node.id} and the ${normalizedScoreComponent(node.score)} decision dimension.`,
+      support_refute_or_lead: stance,
       uncertainties: [node.gap],
-      follow_up_data: [],
+      follow_up_data: stance === "lead" ? ["Verify the lead with a primary filing or company disclosure."] : [],
       created_at: `${AS_OF_DATE}T00:00:00Z`,
     };
-  });
+  }));
 
-  const leafSourceReviews = l3Nodes.map((node) => {
-    const sourceId = node.sourceIds[0];
+  const leafSourceReviews = l3Nodes.flatMap((node) => sourceIdsForNode(node).map((sourceId) => {
     const source = sourceById[sourceId] || {};
+    const stance = sourceStanceFor(source, node);
+    const canStrengthen = ["evidence", "research_report"].includes(source.source_bucket) && stance !== "lead";
     return {
-      review_id: reviewIdFor(node),
-      extraction_id: extractionIdFor(node),
+      review_id: reviewIdFor(node, sourceId),
+      extraction_id: extractionIdFor(node, sourceId),
       l3_question_id: node.id,
       source_id: sourceId,
-      gpt_verification_status: "verified_with_caveats",
-      adopted_facts: [node.conclusion],
+      gpt_verification_status: canStrengthen ? "verified_with_caveats" : "needs_review",
+      adopted_facts: canStrengthen ? [source.summary || "Source summary unavailable."] : ["Lead retained for verification only."],
       corrections: [],
       rejected_claims: [],
       final_bucket: source.source_bucket || "evidence",
-      final_support_refute_or_lead: "support",
-      allowed_to_strengthen_conclusion: true,
+      final_support_refute_or_lead: stance,
+      allowed_to_strengthen_conclusion: canStrengthen,
     };
-  });
+  }));
 
-  const bomQuestionSearchArtifacts = buildAllBomQuestionSearchArtifacts();
-  const scoringWorksheet = targets.map((targetItem, index) => buildTargetAudit(targetItem, index + 1));
   const workbench = {
     project_id: PROJECT_ID,
     as_of_date: AS_OF_DATE,
@@ -420,7 +465,12 @@ function writeAuditArtifacts() {
     label_attach: {
       evaluation_date: EVALUATION_DATE,
       label_window: LABEL_WINDOW,
+      label_status: "attached_after_freeze",
       rule: "labels are attached after frozen recommendations and do not alter thesis, score, or rank",
+      targets: scoringWorksheet.map((targetItem) => ({
+        ticker: targetItem.ticker,
+        ...(labels[targetItem.ticker] || { label_status: "label_unverified" }),
+      })),
     },
     rejected_future_sources: [],
     public_html_policy: "do_not_render_internal_trace_unless_user_requests_it",
@@ -462,12 +512,35 @@ function flattenQaNodes(nodes, parentId = "") {
   });
 }
 
-function extractionIdFor(node) {
-  return `EXT-${node.id.replace(/\./g, "_")}`;
+function sourceIdsForNode(node) {
+  return [...new Set((node.sourceIds || []).filter((sourceId) => sourceById[sourceId]))];
 }
 
-function reviewIdFor(node) {
-  return `REV-${node.id.replace(/\./g, "_")}`;
+function extractionIdFor(node, sourceId) {
+  return `EXT-${node.id.replace(/\./g, "_")}-${String(sourceId).replace(/[^A-Za-z0-9]+/g, "_")}`;
+}
+
+function reviewIdFor(node, sourceId) {
+  return `REV-${node.id.replace(/\./g, "_")}-${String(sourceId).replace(/[^A-Za-z0-9]+/g, "_")}`;
+}
+
+function extractionIdsForNode(node) {
+  return sourceIdsForNode(node).map((sourceId) => extractionIdFor(node, sourceId));
+}
+
+function reviewIdsForNode(node) {
+  return sourceIdsForNode(node).map((sourceId) => reviewIdFor(node, sourceId));
+}
+
+function sourceStanceFor(source, node) {
+  if (["message", "opinion"].includes(source.source_bucket)) {
+    return "lead";
+  }
+  const text = `${source.source_id || ""} ${source.summary || ""} ${node.question || ""}`.toLowerCase();
+  if (/smci|governance risk|margin risk|free cash flow was negative|订单不转利润/.test(text)) {
+    return "refute";
+  }
+  return "support";
 }
 
 function normalizedScoreComponent(score) {
@@ -480,90 +553,7 @@ function normalizedScoreComponent(score) {
   return mapping[score] || score;
 }
 
-function buildTargetAudit(targetItem, rank) {
-  const preset = targetScorePreset(targetItem);
-  const scoreSubcomponents = Object.fromEntries(Object.entries(preset.components).map(([component, score]) => [
-    component,
-    [{
-      name: `${component}_source_pack`,
-      score,
-      weight: 1,
-      evidence_ids: targetItem.sourceIds,
-      review_ids: [],
-      rationale: `${component} based on cutoff-visible source pack.`,
-    }],
-  ]));
-  return {
-    ticker: targetItem.ticker,
-    name: targetItem.name,
-    market: targetItem.market,
-    rank,
-    thesis_node: targetItem.thesisNode,
-    action_state: targetItem.actionState,
-    rationale: targetItem.rationale,
-    future_space: targetItem.futureSpace,
-    downgrade: targetItem.downgrade,
-    evidence_ids: targetItem.sourceIds,
-    score: {
-      action_state: targetItem.actionState,
-      total_score: preset.total_score,
-      thesis_confidence: preset.thesis_confidence,
-      payoff_convexity: preset.payoff_convexity,
-      score_dimensions: preset.dimensions,
-      score_components: preset.components,
-      score_subcomponents: scoreSubcomponents,
-    },
-    thesis_kill_tests: targetItem.actionState === "actionable_long" ? [
-      {
-        test: "核心订单、backlog、ASP 或客户资格是否在后续披露中恶化。",
-        evidence_needed: "季度财报、订单/backlog、毛利、ASP、客户资格或 capex 指引。",
-        downgrade_action: "若证据恶化，降为 watch_only 或 no_action。",
-        source_plan: targetItem.sourceIds,
-      },
-    ] : [],
-  };
-}
-
-function targetScorePreset(targetItem) {
-  const byTicker = {
-    VRT: scores(4.3, 3.5, 4.2, 3.8, 4.4, 4.2, 3.4, 4.2, 3.7, 4.1, 3.9, 4.02, 4.08, 3.82),
-    "000660.KS": scores(4.5, 3.3, 4.2, 3.5, 4.6, 4.4, 3.2, 4.1, 3.5, 3.7, 4.0, 3.96, 4.03, 3.88),
-    NVDA: scores(4.8, 2.3, 4.4, 3.8, 4.7, 4.5, 2.4, 4.7, 3.7, 4.2, 3.5, 3.72, 4.15, 3.35),
-    TSM: scores(4.0, 2.8, 3.7, 3.2, 4.1, 4.0, 2.9, 4.2, 3.2, 3.4, 3.1, 3.46, 3.70, 3.12),
-    MU: scores(3.9, 3.2, 4.4, 3.1, 4.0, 4.4, 3.1, 3.8, 3.0, 3.5, 4.2, 3.63, 3.74, 4.08),
-    ALAB: scores(3.8, 2.2, 4.5, 2.8, 3.8, 4.0, 2.2, 3.5, 2.7, 3.4, 4.4, 3.23, 3.39, 4.13),
-    CRDO: scores(3.6, 2.4, 4.4, 2.7, 3.6, 4.0, 2.5, 3.4, 2.7, 3.3, 4.3, 3.24, 3.32, 4.05),
-    MRVL: scores(3.5, 2.6, 4.0, 2.9, 3.5, 3.8, 2.7, 3.4, 2.9, 3.2, 3.9, 3.28, 3.31, 3.76),
-    DELL: scores(2.9, 2.8, 3.7, 3.0, 2.8, 3.7, 2.9, 3.7, 3.0, 3.5, 3.3, 3.16, 3.25, 3.24),
-    SMCI: scores(2.4, 2.0, 3.5, 1.9, 2.3, 3.4, 2.0, 2.7, 1.8, 2.4, 3.1, 2.56, 2.54, 2.98),
-  };
-  return byTicker[targetItem.ticker] || scores(3, 2.5, 3, 2.5, 3, 3, 2.5, 3, 2.5, 3, 3, 3, 3, 3);
-}
-
-function scores(scarcity, mispricing, earnings, risk, chokepoint, future, valuation, evidence, riskControl, monitorability, payoff, total, confidence, convexity) {
-  return {
-    dimensions: {
-      scarcity_or_monopoly: scarcity,
-      mispricing,
-      earnings_elasticity: earnings,
-      risk_control: risk,
-    },
-    components: {
-      chokepoint_strength: chokepoint,
-      future_space: future,
-      valuation_odds: valuation,
-      evidence_quality: evidence,
-      disconfirming_risk_control: riskControl,
-      monitorability,
-      payoff_convexity: payoff,
-    },
-    total_score: total,
-    thesis_confidence: confidence,
-    payoff_convexity: convexity,
-  };
-}
-
-function renderHtml() {
+function renderHtml(scoringWorksheet) {
   return `<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -590,7 +580,7 @@ function renderHtml() {
   <main>
     <section id="goal" class="section"><div class="section-heading"><h2>当前研究的问题</h2></div>${renderGoal()}</section>
     <section id="overview" class="section"><div class="section-heading"><h2>行业概况</h2></div>${renderOverview()}</section>
-    <section id="targets" class="section"><div class="section-heading"><h2>标的推荐</h2></div>${renderTargets()}</section>
+    <section id="targets" class="section"><div class="section-heading"><h2>标的推荐</h2></div>${renderTargets(scoringWorksheet)}</section>
     <section id="sources" class="section"><div class="section-heading"><h2>来源索引</h2></div>${renderSources()}</section>
   </main>
 </body>
@@ -708,7 +698,12 @@ function renderBomQuestionCard(row, questionNumber, node) {
 
 function renderBomQuestionResearchStatus(row, questionNumber, node) {
   const artifact = buildBomQuestionSearchArtifact(row, questionNumber, node);
-  const isCompleted = artifact.search_execution_status === "completed";
+  const isCompleted = isBomQuestionArtifactComplete(artifact);
+  const statusLabel = isCompleted
+    ? "证据闭环完成"
+    : artifact.search_execution_status === "completed"
+      ? "检索完成，证据闭环仍有缺口"
+      : artifact.search_execution_status;
   const leadText = isCompleted
     ? "本问已按当前 BOM × 当前子问先定义判断模型，再设计逻辑链条和异质 metric 候选集，逐 metric 搜索、来源解析、历史/缺口检查后写入本问结论。"
     : "本问结论只能在当前 BOM × 当前子问完成判断模型、逻辑链条、metric 候选设计、逐 metric 搜索、来源解析和缺口标注之后写入；旧本地材料只能作为待验证缓存。";
@@ -716,7 +711,7 @@ function renderBomQuestionResearchStatus(row, questionNumber, node) {
     ? `本问已绑定 ${artifact.source_ids.length} 条 question-level 来源；后续刷新不得用其它 BOM 的粗证据池替代本问证据。`
     : `当前静态报告引用 ${artifact.source_ids.length} 条已导入公开来源；完整刷新必须生成 question-level search artifact 后再评估本问。`;
   return `<details class="bom-question-research-status">
-    <summary><b>搜索与证据状态</b><span>${artifact.search_execution_status}</span><span class="chevron">›</span></summary>
+    <summary><b>搜索与证据状态</b><span>${e(statusLabel)}</span><span class="chevron">›</span></summary>
     <div class="bom-question-research-body">
       <article><span>检索先行</span><p>${sourceText(leadText)}</p></article>
       <article><span>证据包</span><p>${sourceText(evidenceText)}</p></article>
@@ -728,6 +723,23 @@ function renderBomQuestionResearchStatus(row, questionNumber, node) {
 function buildBomQuestionSearchArtifact(row, questionNumber, node) {
   const questionKey = `${node.id}_q${questionNumber}`;
   const override = row.searchArtifact || {};
+  const sourceIds = [...new Set(override.source_ids || row.sourceIds || [])];
+  const sourceParseRecords = override.source_parse_records || sourceIds.map((sourceId) => {
+    const source = sourceById[sourceId] || {};
+    const stance = sourceStanceFor(source, { question: row.question });
+    const canStrengthen = ["evidence", "research_report"].includes(source.source_bucket) && stance !== "lead";
+    return {
+      parse_id: `BOM-PARSE-${questionKey}-${String(sourceId).replace(/[^A-Za-z0-9]+/g, "_")}`,
+      source_id: sourceId,
+      parser: "deterministic_source_summary_adapter",
+      parser_status: "completed",
+      question_dimensions: questionDimensionsForNumber(questionNumber),
+      key_facts: [source.summary || "Source summary unavailable."],
+      support_refute_or_lead: stance,
+      gpt_verification_status: canStrengthen ? "verified_with_caveats" : "needs_review",
+      allowed_to_strengthen_conclusion: canStrengthen,
+    };
+  });
   return {
     artifact_id: `BOM-SEARCH-${questionKey}`,
     bom_node_id: node.id,
@@ -760,13 +772,60 @@ function buildBomQuestionSearchArtifact(row, questionNumber, node) {
       candidate_classes: ["direct demand", "usage intensity", "workflow/task complexity", "enterprise adoption", "customer budget/order", "BOM pull-through", "financial realization", "refutation"],
       public_rendering: "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status",
     },
-    source_ids: [...new Set(override.source_ids || row.sourceIds || [])],
+    source_ids: sourceIds,
+    source_parse_records: sourceParseRecords,
     evidence_summary: override.evidence_summary || [],
+    refuting_source_ids: [...new Set(override.refuting_source_ids || [])],
+    refutation_evidence_summary: override.refutation_evidence_summary || [],
     gap_summary: override.gap_summary || [],
     parser_status: override.parser_status || "pending",
     completed_at: override.completed_at || null,
     verdict_policy: override.verdict_policy || "do_not_write_or_strengthen_verdict_before_search_parse_or_explicit_gap",
   };
+}
+
+function questionDimensionsForNumber(questionNumber) {
+  return {
+    1: ["demand transmission", "unit/system elasticity", "historical acceleration", "future runway"],
+    2: ["effective capacity", "yield", "qualification", "lead time", "supply release"],
+    3: ["share", "barriers", "substitution", "customer lock-in"],
+    4: ["revenue", "margin", "orders/backlog", "cash flow", "guidance"],
+    5: ["as-of valuation", "priced-in expectations", "earnings revisions", "payoff odds"],
+    6: ["observed contrary evidence", "trigger metric", "threshold", "downgrade action"],
+  }[questionNumber] || [];
+}
+
+function isBomQuestionArtifactComplete(artifact) {
+  const searchComplete = ["complete", "completed", "ok"].includes(artifact.search_execution_status);
+  const parserStatusComplete = [
+    "complete",
+    "completed",
+    "gpt_verified_source_parse",
+    "ok",
+    "verified",
+    "verified_with_caveats",
+  ].includes(artifact.parser_status);
+  const parsedSourceIds = new Set((artifact.source_parse_records || [])
+    .filter((record) => ["complete", "completed", "ok"].includes(record.parser_status))
+    .filter((record) => ["verified", "verified_with_caveats", "needs_review", "rejected"].includes(record.gpt_verification_status))
+    .map((record) => record.source_id));
+  const strengtheningSourceIds = new Set((artifact.source_parse_records || [])
+    .filter((record) => ["complete", "completed", "ok"].includes(record.parser_status))
+    .filter((record) => ["verified", "verified_with_caveats"].includes(record.gpt_verification_status))
+    .filter((record) => record.allowed_to_strengthen_conclusion === true)
+    .map((record) => record.source_id));
+  const parserComplete = parserStatusComplete
+    && (artifact.source_ids || []).length > 0
+    && (artifact.source_ids || []).every((sourceId) => parsedSourceIds.has(sourceId));
+  const evidenceComplete = (artifact.source_ids || []).length > 0
+    && (artifact.evidence_summary || []).length > 0
+    && strengtheningSourceIds.size > 0;
+  const refutationComplete = artifact.question_number !== 6 || (
+    (artifact.refuting_source_ids || []).length > 0
+    && (artifact.refutation_evidence_summary || []).length > 0
+    && (artifact.refuting_source_ids || []).every((sourceId) => strengtheningSourceIds.has(sourceId))
+  );
+  return searchComplete && parserComplete && evidenceComplete && refutationComplete;
 }
 
 function applyBomQuestionSearchOverride(row, questionNumber, node) {
@@ -2333,7 +2392,7 @@ function strictComputeDemandChainNodes() {
 
 function renderBomSCurveStageCard(node, rows) {
   const searchArtifacts = rows.map((row, index) => buildBomQuestionSearchArtifact(row, index + 1, node));
-  const searchComplete = searchArtifacts.every((artifact) => artifact.search_execution_status === "completed");
+  const searchComplete = searchArtifacts.every(isBomQuestionArtifactComplete);
   const stage = searchComplete ? bomSCurveStageForNode(node) : pendingBomSCurveStage(node);
   const sourceIds = [...new Set(rows.flatMap((row) => row.sourceIds || []))];
   return `<details class="bom-s-curve-stage-card">
@@ -4581,20 +4640,36 @@ function renderQaCard(node) {
   </details>`;
 }
 
-function renderTargets() {
-  const profitRows = targets.map((item) => [item.ticker, item.thesisNode, item.rationale, item.futureSpace, item.downgrade, item.actionState]);
-  const valuationRows = targets.slice(0, 8).map((item) => [item.ticker, "估值未完整重建", item.actionState === "actionable_long" ? "需要确认增长未被完全定价" : "因估值或风险控制封顶", item.futureSpace, item.downgrade]);
-  const oddsRows = targets.slice(0, 8).map((item) => [item.ticker, item.actionState, item.futureSpace, item.downgrade]);
+function renderTargets(scoringWorksheet) {
+  const profitRows = scoringWorksheet.map((item) => [item.ticker, item.thesis_node, item.rationale, item.future_space, item.downgrade, item.action_state]);
+  const valuationRows = scoringWorksheet.slice(0, 8).map((item) => [item.ticker, "估值未完整重建", "估值证据未闭环，状态由研究门槛封顶", item.future_space, item.downgrade]);
+  const oddsRows = scoringWorksheet.slice(0, 8).map((item) => [item.ticker, item.action_state, item.future_space, item.downgrade]);
   return `<div class="target-section">
-    <div class="artifact-card"><div class="artifact-title">标的推荐口径</div><p>这里是研究观察名单，不是交易指令。排序优先看 S 曲线空间能否落到公司财务，再看是否被市场充分定价和风险是否可监控。</p></div>
+    <div class="artifact-card"><div class="artifact-title">标的推荐口径</div><p>这里是研究观察名单，不是交易指令。只有对应 BOM 六问、显式反证、公司敞口和研究截面估值全部通过，候选状态才允许升级为 actionable_long；任一缺口都会自动降级。</p></div>
     ${table("target-profit-bridge", ["标的", "链条节点", "为什么能捕获价值", "未来空间", "降级触发", "状态"], profitRows)}
     ${table("target-valuation-table", ["标的", "估值证据", "赔率判断", "空间依据", "主要风险"], valuationRows)}
     <div class="target-odds-model">${table("target-odds-table", ["标的", "状态", "赔率来源", "风险闸门"], oddsRows)}</div>
-    ${table("target-table", ["排序", "标的", "公司", "市场", "节点", "强度", "理由", "风险", "as_of_date", "evaluation_date", "label_window", "start_price", "end_price", "forward_3m_return", "label_status"], targets.map((item, index) => {
+    ${table("target-table", ["排序", "标的", "公司", "市场", "节点", "候选状态", "最终状态", "研究门槛", "理由", "风险", "as_of_date", "evaluation_date", "label_window", "start_price", "end_price", "forward_3m_return", "label_status"], scoringWorksheet.map((item, index) => {
       const lab = labels[item.ticker] || {};
-      return [index + 1, item.ticker, item.name, item.market, item.thesisNode, `<span class="state-${item.actionState}">${item.actionState}</span>`, item.rationale, item.downgrade, AS_OF_DATE, EVALUATION_DATE, LABEL_WINDOW, lab.start_price ?? "label_unverified", lab.end_price ?? "label_unverified", lab.forward_3m_return ?? "label_unverified", lab.label_status ?? "label_unverified"];
+      const gate = item.research_gate || {};
+      const gateSummary = gate.passed
+        ? "通过"
+        : `${gate.completed_questions || 0}/${gate.required_questions || 6} 问完成；${(gate.gate_reasons || [])
+          .filter((reason) => !String(reason).startsWith("bom_six_question_incomplete"))
+          .map(gateReasonLabel)
+          .join("；")}`;
+      return [index + 1, item.ticker, item.name, item.market, item.thesis_node, item.candidate_action_state, `<span class="state-${item.action_state}">${item.action_state}</span>`, gateSummary, item.rationale, item.downgrade, AS_OF_DATE, EVALUATION_DATE, LABEL_WINDOW, lab.start_price ?? "label_unverified", lab.end_price ?? "label_unverified", lab.forward_3m_return ?? "label_unverified", lab.label_status ?? "label_unverified"];
     }), true)}
   </div>`;
+}
+
+function gateReasonLabel(reason) {
+  return {
+    missing_canonical_bom_mapping: "缺少统一 BOM 映射",
+    refutation_evidence_unverified: "反证证据未验证",
+    valuation_unverified: "估值与预期差未验证",
+    company_exposure_unverified: "公司财务敞口未验证",
+  }[reason] || reason;
 }
 
 function renderSources() {
@@ -4643,7 +4718,18 @@ function method(sourceType, organization, guidanceContent, bomNode, timeframe, v
   return { sourceType, organization, guidanceContent, bomNode, timeframe, verificationMetric, confidence, sourceIds };
 }
 function target(ticker, name, market, thesisNode, actionState, rationale, futureSpace, downgrade, sourceIds) {
-  return { ticker, name, market, thesisNode, actionState, rationale, futureSpace, downgrade, sourceIds };
+  return {
+    ticker,
+    name,
+    market,
+    thesisNode,
+    thesisNodeId: BOM_NODE_ID_BY_NAME[thesisNode] || "",
+    actionState,
+    rationale,
+    futureSpace,
+    downgrade,
+    sourceIds,
+  };
 }
 function source(source_id, title, source_bucket, url, source_visible_at, summary) {
   return {

@@ -431,7 +431,10 @@ def validate_report_contract_html(
             _issue(issues, "error", "top_level_order", "top-level sections are out of order")
 
     level_counts = _qa_level_counts(html)
-    has_public_qa = _first_position(html, ["下钻 QA"]) >= 0
+    has_public_qa = _first_position(
+        html,
+        ['id="qa"', "id='qa'", 'class="qa-section', "class='qa-section"],
+    ) >= 0
     if has_public_qa:
         if level_counts["level1_cards"] == 0:
             _issue(issues, "error", "missing_level1_cards", "下钻 QA must render Q1-Q4 as qa-card level-1")
@@ -1926,6 +1929,7 @@ def validate_target_observation_contract(targets: list[dict[str, Any]]) -> dict[
     for target in targets:
         ticker = str(target.get("ticker") or target.get("name") or "")
         score = target.get("score") if isinstance(target.get("score"), dict) else {}
+        strict_research_gate = bool(target.get("research_gate_required") or target.get("research_gate"))
         subcomponents = target.get("score_subcomponents") or score.get("score_subcomponents")
         if not isinstance(subcomponents, dict):
             _issue(
@@ -1954,13 +1958,37 @@ def validate_target_observation_contract(targets: list[dict[str, Any]]) -> dict[
                                 f"{ticker} has an invalid subcomponent under {component}",
                             )
                             continue
-                        if _is_empty(row.get("evidence_ids")) and _is_empty(row.get("review_ids")):
+                        status = str(row.get("status") or "scored").strip().lower()
+                        is_gap = status in {"gap", "missing", "unverified", "incomplete"}
+                        if is_gap and _is_empty(row.get("gap_reason")):
+                            _issue(
+                                issues,
+                                "error",
+                                "target_score_gap_missing_reason",
+                                f"{ticker} {component}.{row.get('name', '')} must explain its evidence gap",
+                            )
+                        if not is_gap and _is_empty(row.get("evidence_ids")) and _is_empty(row.get("review_ids")):
                             _issue(
                                 issues,
                                 "error",
                                 "target_score_subcomponent_missing_trace",
                                 f"{ticker} {component}.{row.get('name', '')} needs evidence_ids or review_ids",
                             )
+                        if strict_research_gate and not is_gap:
+                            if _is_empty(row.get("evidence_role")):
+                                _issue(
+                                    issues,
+                                    "error",
+                                    "target_score_subcomponent_missing_evidence_role",
+                                    f"{ticker} {component}.{row.get('name', '')} must identify the evidence role",
+                                )
+                            if _is_empty(row.get("rationale")):
+                                _issue(
+                                    issues,
+                                    "error",
+                                    "target_score_subcomponent_missing_rationale",
+                                    f"{ticker} {component}.{row.get('name', '')} must preserve a component-specific rationale",
+                                )
         action_state = str(target.get("action_state") or score.get("action_state") or "")
         dimensions = score.get("score_dimensions")
         if not isinstance(dimensions, dict):
@@ -1979,6 +2007,22 @@ def validate_target_observation_contract(targets: list[dict[str, Any]]) -> dict[
                         "target_missing_score_dimension",
                         f"{ticker} is missing score_dimensions.{dimension}",
                     )
+        if strict_research_gate:
+            gate = target.get("research_gate")
+            if not isinstance(gate, dict):
+                _issue(
+                    issues,
+                    "error",
+                    "target_missing_research_gate",
+                    f"{ticker} must persist research_gate before recommendation rendering",
+                )
+            elif action_state == "actionable_long" and not gate.get("passed"):
+                _issue(
+                    issues,
+                    "error",
+                    "actionable_target_failed_research_gate",
+                    f"{ticker} cannot be actionable_long while research_gate.passed is false",
+                )
         if action_state == "actionable_long":
             kill_tests = target.get("thesis_kill_tests")
             if not isinstance(kill_tests, list) or not kill_tests:
@@ -1990,9 +2034,18 @@ def validate_target_observation_contract(targets: list[dict[str, Any]]) -> dict[
                 )
             else:
                 for kill_test in kill_tests:
+                    required_kill_test_fields = [
+                        "test",
+                        "evidence_needed",
+                        "downgrade_action",
+                        "source_plan",
+                    ]
+                    if strict_research_gate:
+                        required_kill_test_fields.extend(
+                            ["trigger_metric", "threshold", "observation_frequency"]
+                        )
                     if not isinstance(kill_test, dict) or any(
-                        _is_empty(kill_test.get(field))
-                        for field in ("test", "evidence_needed", "downgrade_action", "source_plan")
+                        _is_empty(kill_test.get(field)) for field in required_kill_test_fields
                     ):
                         _issue(
                             issues,
@@ -2811,6 +2864,8 @@ def _score_from_subcomponents(
                 "review_ids": deepcopy(row.get("review_ids") or review_ids),
                 "rationale": row.get("rationale", ""),
                 "status": row.get("status", "scored"),
+                "evidence_role": row.get("evidence_role", ""),
+                "gap_reason": row.get("gap_reason", ""),
             }
         )
     if not normalized_rows or total_weight <= 0:
@@ -2865,6 +2920,34 @@ def _opportunity_gate(
     if valuation_status in {"missing", "stale", "unverified", "incomplete"}:
         gate_reasons.append("valuation_unverified")
         max_total_score = min(max_total_score, 3.49)
+
+    if target.get("research_gate_required"):
+        if target.get("bom_research_complete") is not True:
+            gate_reasons.append("bom_six_question_incomplete")
+            max_total_score = min(max_total_score, 3.49)
+        if str(target.get("refutation_status") or "").strip().lower() not in {
+            "complete",
+            "completed",
+            "ok",
+            "verified",
+            "verified_with_caveats",
+        }:
+            gate_reasons.append("refutation_evidence_unverified")
+            max_total_score = min(max_total_score, 3.49)
+        if valuation_status not in {"complete", "completed", "ok", "verified", "verified_with_caveats"}:
+            if "valuation_unverified" not in gate_reasons:
+                gate_reasons.append("valuation_unverified")
+            max_total_score = min(max_total_score, 3.49)
+        exposure_status = str(target.get("company_exposure_status") or "").strip().lower()
+        if exposure_status not in {
+            "complete",
+            "completed",
+            "ok",
+            "verified",
+            "verified_with_caveats",
+        }:
+            gate_reasons.append("company_exposure_unverified")
+            max_total_score = min(max_total_score, 3.49)
 
     expected_excess_return = _optional_float(target.get("expected_excess_return"))
     if expected_excess_return is not None and expected_excess_return <= 0:

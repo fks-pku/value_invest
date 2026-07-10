@@ -31,7 +31,7 @@ def _render_targets(targets: list[dict[str, Any]], project: dict[str, Any] | Non
     <span class="section-kicker">04</span>
     <h2>标的推荐</h2>
   </div>
-  <p class="section-note">该表是研究观察清单，不是买卖指令；排序同时考虑瓶颈强度、未来空间、估值赔率和反证可控性。</p>
+  <div class="artifact-card"><p class="section-note">该表是研究观察清单，不是买卖指令；排序同时考虑瓶颈强度、未来空间、估值赔率和反证可控性。</p></div>
   {_render_target_profit_bridge(project.get("target_profit_bridge") or targets)}
   {_render_target_valuation_table(targets)}
   {_render_target_odds_model(targets)}

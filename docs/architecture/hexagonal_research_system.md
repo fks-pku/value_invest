@@ -29,7 +29,8 @@ src/value_invest_research/
   domain/
     research_goal.py           # research objective and research-type mapping
     domain_playbooks.py        # domain-specific question adapters
-    question_architecture.py   # three-layer QA architecture
+    question_architecture.py   # adaptive QA architecture, maximum depth five
+    bom_research_readiness.py  # semantic completion, evidence gates, target gating
     report_view_model.py       # renderer-facing public report model
     research_artifacts.py      # pure data objects for research artifacts
     quality_gates.py           # artifact validation rules and result shaping
@@ -44,7 +45,7 @@ src/value_invest_research/
       research_orchestrator.py # pipeline sequencing, no direct I/O
 
   ports/
-    repositories.py            # repository protocols
+    repositories.py            # project, artifact, and source-universe protocols
     renderers.py               # report renderer protocols
     llm.py                     # planned: LLM/source parser protocols
     market_data.py             # planned: pricing/filing protocols
@@ -113,7 +114,9 @@ Target scoring and source parsing persistence now also have application seams:
 ```text
 target candidates
   -> ScoreTargets use case
+  -> domain.bom_research_readiness builds evidence-backed scoring inputs
   -> domain.target_scoring.score_and_rank_targets
+  -> semantic BOM/refutation/valuation gates
   -> ranked target observations
 
 source parser/GPT review records
@@ -134,6 +137,18 @@ L3 source parsing jobs
 ```
 
 `SummarySourceMaterialParser` is the deterministic adapter for already-summarized materials. `DelegatingSourceMaterialParser` is the adapter shell for DeepSeek MCP or another external parser; the MCP runtime can inject the callable without changing application or domain code.
+
+Source-universe selection is repository-backed and persisted on each leaf task:
+
+```text
+L3 question + domain playbook
+  -> BuildLeafResearchTasksFromTree use case
+  -> SourceUniverseRepository port
+  -> FileSystemSourceUniverseRepository(config/source_universes.json)
+  -> question-level source_universe_plan + direct/Exa search plan
+```
+
+The universe plan chooses where to search; it does not count as evidence. Every selected source still needs its own parse/review record before it can strengthen a conclusion.
 
 Report writing is now port-backed while the current renderer is still the implementation:
 
@@ -249,12 +264,11 @@ CanonicalHtmlReportRenderer
   -> DEFAULT_REPORT_SECTIONS
   -> CurrentGoalSection
   -> IndustryOverviewSection
-  -> QaSection
   -> TargetRecommendationsSection
   -> SourcesSection
 ```
 
-This is the presentation extension point. If only `行业空间` changes, edit the industry-overview section adapter and its contract tests; do not change question planning, source parsing, target scoring, or file-system repositories. If the top-level order changes, update the section registry and the report contract together.
+The compact public default is exactly `当前研究的问题 -> 行业概况 -> 标的推荐 -> 来源索引`. Adaptive QA, search plans, parser traces, and workbench records remain internal unless explicitly requested. This is the presentation extension point: if only an industry-overview card changes, edit its section adapter and contract tests; do not change question planning, source parsing, target scoring, or file-system repositories. If the top-level order changes, update the section registry and the report contract together.
 
 ## Migration Map
 
@@ -267,7 +281,9 @@ This is the presentation extension point. If only `行业空间` changes, edit t
 | `information_collection.py` | source planning use case + search/fetch adapters | Source plans are application; search/fetch are outbound adapters. |
 | `leaf_research.py` | compatibility facade over leaf use cases/adapters | Provider execution, raw-response storage, task/result/answer files, merged result persistence, task construction, leaf answer synthesis, parent rollup construction, and provider prompts/parsing now live in domain/application/adapters. The workflow adapter and stock QA pipeline no longer call this module directly. |
 | L3 source parsing | `ports/source_parsers.py` + `application/use_cases/parse_l3_source_materials.py` + parser adapters | Parser and reviewer are separate ports. DeepSeek/GPT review can plug in without touching leaf research, report rendering, or domain playbooks. |
-| research question planning | `domain/research_goal.py`, `domain/domain_playbooks.py`, `domain/question_architecture.py` | New topics should start from `ResearchGoal -> DomainPlaybook -> QuestionArchitecture`, not from hard-coded report templates. |
+| research question planning | `domain/research_goal.py`, `domain/domain_playbooks.py`, `domain/question_architecture.py` | New topics should start from `ResearchGoal -> DomainPlaybook -> QuestionArchitecture`, adaptively drilling to at most five layers, not from hard-coded report templates. |
+| source-universe resolution | `ports/repositories.py` + `adapters/outbound/filesystem_source_universe.py` | Professional source selection is an outbound repository decision persisted per minimum question; report code must not hard-code it. |
+| BOM semantic completion and target gates | `domain/bom_research_readiness.py` + `domain/target_scoring.py` | Search status alone is never completion. Per-source parsing, strengthening evidence, Q6 refutation, valuation, and canonical BOM mapping control score confidence and action-state caps. |
 | report assembly | `domain/report_view_model.py` + `application/use_cases/build_report_view_model.py` | Report renderers should consume a stable ViewModel instead of reading project files directly. |
 | canonical HTML rendering | `ports/renderers.py` + `adapters/outbound/canonical_html_report_renderer.py` + `adapters/outbound/report_sections/` | Frontend format changes should be isolated to section renderer adapters and report contract tests. |
 | `llm.py` | `ports/llm.py` + outbound LLM adapters | Application depends on protocol, not vendor implementation. |
