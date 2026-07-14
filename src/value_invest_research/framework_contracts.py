@@ -599,8 +599,7 @@ def validate_report_contract_html(
         missing_bom_stage_flow_titles = [
             title
             for title in [
-                "判断模型",
-                "具体逻辑链条",
+                "研究逻辑链",
                 "Metric 历史与现状",
                 "市场的未来预期",
                 "第一性原理评估",
@@ -617,26 +616,42 @@ def validate_report_contract_html(
                 "BOM question cards must use the locked stage-flow titles; missing "
                 + ", ".join(missing_bom_stage_flow_titles),
             )
-        if _class_count(html, "bom-logic-chain-row") < bom_question_cards * 4:
+        logic_row_count = _class_count(html, "bom-logic-chain-row")
+        integrated_stage_count = _class_count(html, "bom-stage-integrated-card")
+        if logic_row_count < bom_question_cards * 4:
             _issue(
                 issues,
                 "error",
                 "insufficient_bom_logic_chain_rows",
-                "Each bom-question-card must render a bom-logic-chain-table with several concrete logic rows; metric selection belongs in the per-stage cards after the judgment model",
+                "Each bom-question-card must compile its judgment rule and several concrete causal rows into one research-logic card",
             )
-        if _class_count(html, "bom-stage-integrated-card") < bom_question_cards * 4:
+        if integrated_stage_count < bom_question_cards * 4:
             _issue(
                 issues,
                 "error",
                 "insufficient_bom_stage_integrated_cards",
                 "Each bom-question-card must render one integrated stage card per logic-chain row, combining metric history, market expectation, and first-principles assessment",
             )
-        if _class_count(html, "bom-step-model") < bom_question_cards:
+        if logic_row_count != integrated_stage_count:
             _issue(
                 issues,
                 "error",
-                "missing_bom_step_model",
-                "Each bom-question-card must render the question-specific judgment model before the logic chain and evidence cards",
+                "bom_logic_stage_count_mismatch",
+                "Every public research-logic row must map one-to-one to an integrated evidence stage card",
+            )
+        if _class_count(html, "bom-step-research-logic") < bom_question_cards:
+            _issue(
+                issues,
+                "error",
+                "missing_bom_step_research_logic",
+                "Each bom-question-card must compile the question-specific model, formula, conclusion rule, and causal stages into one research-logic card",
+            )
+        if _class_count(html, "bom-step-model") or _class_count(html, "bom-step-logic"):
+            _issue(
+                issues,
+                "error",
+                "legacy_split_bom_research_logic",
+                "Public BOM questions must not render separate judgment-model and concrete-logic cards",
             )
         if _class_count(html, "bom-step-question-conclusion") < bom_question_cards:
             _issue(
@@ -652,7 +667,6 @@ def validate_report_contract_html(
                 "missing_bom_step_target_impact",
                 "Each bom-question-card must render target-recommendation impact after the question conclusion",
             )
-        integrated_stage_count = _class_count(html, "bom-stage-integrated-card")
         if integrated_stage_count and _class_count(html, "bom-stage-subcard") < integrated_stage_count * 3:
             _issue(
                 issues,
@@ -721,9 +735,8 @@ def validate_report_contract_html(
                     "BOM S-curve stage rollups must include current stage, six-question evidence, next confirmation signal, downgrade signal, and source discipline",
                 )
         nested_bom_details_requirements = [
-            ("bom-step-card", bom_question_cards * 8),
-            ("bom-step-model", bom_question_cards),
-            ("bom-logic-chain-panel", bom_question_cards),
+            ("bom-step-card", bom_question_cards * 7),
+            ("bom-step-research-logic", bom_question_cards),
             ("bom-stage-integrated-card", bom_question_cards * 4),
             ("bom-stage-subcard", bom_question_cards * 12),
             ("bom-mechanism-card", bom_question_cards * 8),

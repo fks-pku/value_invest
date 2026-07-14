@@ -64,6 +64,30 @@ Stop drilling down when one source plan and one extraction schema can answer the
 
 For industry/theme S-curve research, first establish one canonical BOM taxonomy. Each node has a stable ID, public name, input, output, downstream recipient, representative companies, and financial metrics.
 
+### 4.1 Per-Node Playbook Contract
+
+Before source planning, every canonical BOM node must resolve to exactly one node-specific `BomNodePlaybook`. Exact node-ID coverage is required: no canonical node may be missing, duplicated, or silently handled by a generic fallback.
+
+The invariant is:
+
+`canonical node -> node-specific playbook -> cutoff-frozen research run -> report module`
+
+Each node playbook owns only stable domain logic:
+
+- scope and explicit exclusions;
+- inputs, product/output, downstream recipients, representative companies, and financial validation metrics;
+- node-specific master equations or causal formulas for demand, market value, effective supply, and investment odds;
+- exactly six question definitions;
+- 4-7 causal stages per question;
+- one primary metric, one or two cross-check metrics, and one refutation metric per stage;
+- question-level formula, purpose, conclusion rule, and failure condition.
+
+The playbook must not contain source IDs, cutoff dates, observations, verdicts, gaps, target states, or HTML classes. Those belong respectively to the research run, evidence artifacts, target gate, and renderer.
+
+The shared six question labels do not imply shared causal stages. For example, HBM effective supply is a wafer/yield/stacking/packaging/qualification funnel, while power/cooling effective supply is an equipment/lead-time/site/grid/commissioning funnel. Reusing generic stages across unlike nodes is a contract failure.
+
+Each cutoff-frozen node research run must match the playbook's question and stage IDs exactly and store stage-level actual history, forward expectations, first-principles assessment, source IDs, explicit gaps, and search/parse status.
+
 Each BOM node receives six internal/public research questions:
 
 1. Is demand amplified by the S-curve, including unit/system elasticity?
@@ -95,6 +119,8 @@ Define object, formula/causal frame, evidence handles, conclusion rule, and fail
 ### B. Logic chain
 
 Write concrete links for the current BOM only. Do not put metric values into the chain.
+
+The model and logic chain remain separate internal inputs: the model owns the formula and pass/fail rule, while the chain owns the node-specific causal stages. The public report renderer must compile both into one `研究逻辑链` card. It must not expose two adjacent cards named `判断模型` and `具体逻辑链条`.
 
 ### C. Per-link metric planning
 

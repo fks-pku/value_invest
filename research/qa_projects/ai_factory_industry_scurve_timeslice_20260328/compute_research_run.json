@@ -1,0 +1,2188 @@
+{
+  "schema_version": "1.0",
+  "node_id": "compute",
+  "as_of_date": "2026-03-28",
+  "run_metadata": {
+    "project_id": "ai_factory_industry_scurve_timeslice_20260328",
+    "mode": "historical_backtest",
+    "cutoff_policy": "Only information visible on or before 2026-03-28 may support conclusions.",
+    "research_director": "GPT",
+    "parser_note": "Question-specific source extraction and GPT verification; DeepSeek adapter was unavailable in this run."
+  },
+  "questions": [
+    {
+      "question_id": "compute_q1_demand",
+      "conclusion": "需求链已经形成可投资的闭环：真实 AI 使用量和任务复杂度上升，云厂把需求转成 capex 与合同承诺，Dell 的 AI server backlog 和 NVIDIA/Broadcom 的平台收入继续放大。最强同口径证据是 NVIDIA Data Center revenue 从 2023 年初单季 36.2 亿美元升至 2026 年初 623 亿美元；Broadcom AI revenue 从 2025 年中 44 亿美元以上升至 2026 年初 84 亿美元。效率改善很快，但截至截面日尚未抵消总工作负载、客户预算和订单的增长。因此 GPU/ASIC 需求处于 S 曲线加速段，而不是只停留在应用热度。",
+      "logic_summary": "按真实任务 -> 单任务计算强度 -> 客户资本承诺 -> accelerator/AI server 订单 -> 平台收入逐层验证；每层分别检索主指标、交叉指标和反证。",
+      "conclusion_strength": "高：五个因果环节均有 cutoff 前证据；直接 GPU-hours 与全行业 shipment 序列仍缺。",
+      "mechanism": {
+        "support": "使用量、任务复杂度、客户 capex/RPO、系统订单和平台收入同向上升，需求已穿透到财务端。",
+        "refute": "Google serving cost 降低、NVIDIA Dynamo 提升推理效率，说明软件效率是持续反证；若任务增长或 capex 放缓，算力弹性会下降。"
+      },
+      "target_impact": "提高 NVIDIA、Broadcom 和可验证 custom-ASIC 暴露的产业胜率，但仍须经过供给、控制权、估值和反证问，不能据此直接升级为 actionable_long。",
+      "source_ids": [
+        "SRC-OPENAI-CHATGPT-WORK-202602",
+        "SRC-OPENAI-DEVDAY-2025",
+        "SRC-GOOGL-Q4-2025-CALL",
+        "SRC-MSFT-FY26-Q2",
+        "SRC-MSFT-FY26-Q2-CALL",
+        "SRC-GOOGL-Q4-2025",
+        "SRC-META-Q4-2025",
+        "SRC-AMZN-Q4-2025",
+        "SRC-DELL-FY25-Q4",
+        "SRC-DELL-FY26-Q1",
+        "SRC-DELL-FY26-Q2-PERFORMANCE",
+        "SRC-DELL-FY26-Q3",
+        "SRC-DELL-FY26-Q4",
+        "SRC-NVDA-FY23-Q4",
+        "SRC-NVDA-FY24-Q2",
+        "SRC-NVDA-FY24-Q4",
+        "SRC-NVDA-FY25-Q2",
+        "SRC-NVDA-FY25-Q4",
+        "SRC-NVDA-FY26-Q2",
+        "SRC-NVDA-FY26-Q3",
+        "SRC-NVDA-FY26-Q4",
+        "SRC-AVGO-FY25-Q2",
+        "SRC-AVGO-FY25-Q3",
+        "SRC-AVGO-FY26-Q1",
+        "SRC-OMDIA-AI-PROCESSORS-20250828"
+      ],
+      "stages": [
+        {
+          "stage_id": "workload_volume",
+          "status": "成立",
+          "source_ids": [
+            "SRC-OPENAI-CHATGPT-WORK-202602",
+            "SRC-OPENAI-DEVDAY-2025",
+            "SRC-GOOGL-Q4-2025-CALL"
+          ],
+          "metric": {
+            "name": "AI 用户、token 与企业任务量",
+            "trendKind": "time_series",
+            "series": [
+              {
+                "label": "2023-11",
+                "value": "ChatGPT WAU 约100M",
+                "change": "早期规模锚"
+              },
+              {
+                "label": "2025-07",
+                "value": "ChatGPT WAU >700M",
+                "change": "约为2023-11的7倍"
+              },
+              {
+                "label": "2025-10",
+                "value": "ChatGPT WAU >800M",
+                "change": "三个月再增逾14%"
+              },
+              {
+                "label": "2026-02截面",
+                "value": "Gemini App MAU >750M；Enterprise 8M seats",
+                "change": "第二平台也形成大规模使用"
+              }
+            ],
+            "history": "[OpenAI 的公开图表显示 ChatGPT WAU 从 2023 年 11 月约 1 亿升至 2025 年 7 月超过 7 亿](source:SRC-OPENAI-CHATGPT-WORK-202602)。",
+            "current": "[DevDay 2025 披露超过 8 亿 WAU、400 万开发者和每分钟 60 亿 API tokens](source:SRC-OPENAI-DEVDAY-2025)；[Alphabet 披露 Gemini App 超过 7.5 亿 MAU、Enterprise 800 万付费席位](source:SRC-GOOGL-Q4-2025-CALL)。",
+            "future": "公司没有给出下一年同口径用户/任务量指引；未来必须继续跟踪付费席位、API token 和 agent/coding 工作流，而不能只看注册用户。",
+            "quality": "官方使用量强；缺跨平台统一 token/task 序列",
+            "source_ids": [
+              "SRC-OPENAI-CHATGPT-WORK-202602",
+              "SRC-OPENAI-DEVDAY-2025",
+              "SRC-GOOGL-Q4-2025-CALL"
+            ]
+          },
+          "expectation_rows": [
+            {
+              "entity": "OpenAI",
+              "current_period": "2025-10",
+              "current_actual_time": "2025-10",
+              "current_metric": "[ChatGPT WAU >800M；API >6B tokens/min](source:SRC-OPENAI-DEVDAY-2025)",
+              "guidance_period": "未量化",
+              "guidance_actual_time": "2026及以后",
+              "guidance_metric": "未提供下一年同口径 WAU/token 指引。",
+              "comparability": "现状可核验，未来数量仍是显式缺口。",
+              "source_ids": [
+                "SRC-OPENAI-DEVDAY-2025"
+              ]
+            },
+            {
+              "entity": "Alphabet",
+              "current_period": "Q4 2025",
+              "current_actual_time": "2025-10至2025-12",
+              "current_metric": "[Gemini App >750M MAU；Enterprise 8M seats](source:SRC-GOOGL-Q4-2025-CALL)",
+              "guidance_period": "持续扩张",
+              "guidance_actual_time": "2026",
+              "guidance_metric": "管理层将增长与更高 capex 配套，但未给 MAU/seat 数字指引。",
+              "comparability": "capex 不是用户指标，只能做需求承诺交叉验证。",
+              "source_ids": [
+                "SRC-GOOGL-Q4-2025-CALL",
+                "SRC-GOOGL-Q4-2025"
+              ]
+            }
+          ]
+        },
+        {
+          "stage_id": "compute_intensity",
+          "status": "净方向向上，但效率构成反证",
+          "source_ids": [
+            "SRC-GOOGL-Q4-2025-CALL",
+            "SRC-NVDA-GTC-DYNAMO-20260316"
+          ],
+          "metric": {
+            "name": "单任务 token、推理步骤与服务效率",
+            "trendKind": "time_series",
+            "series": [
+              {
+                "label": "Gemini 3 vs 2.5 Pro",
+                "value": "daily tokens 约3x",
+                "change": "任务/模型复杂度上升"
+              },
+              {
+                "label": "AI Mode vs traditional search",
+                "value": "query length 约3x",
+                "change": "每次交互更复杂"
+              },
+              {
+                "label": "Gemini serving",
+                "value": "unit cost -78%",
+                "change": "效率反向抵消"
+              },
+              {
+                "label": "Dynamo 1.0 vendor claim",
+                "value": "Blackwell inference performance up to 7x",
+                "change": "供给侧效率反证"
+              }
+            ],
+            "history": "公开材料缺少三年统一的每任务 GPU-hour 序列，不能用模型参数量代替真实计算量。",
+            "current": "[Alphabet 披露 Gemini 3 的日 token 约为 2.5 Pro 的三倍，AI Mode query 约为传统搜索的三倍](source:SRC-GOOGL-Q4-2025-CALL)，但同期 serving cost 下降 78%；[NVIDIA Dynamo 宣称最高可提升 Blackwell inference performance 7 倍](source:SRC-NVDA-GTC-DYNAMO-20260316)。",
+            "future": "未来算力需求取决于“任务量 x 单任务复杂度”是否快于“单位任务效率”改善；目前前者与客户预算共同更强，但净弹性必须季度复核。",
+            "quality": "官方披露强但口径稀疏；性能数据含厂商声明",
+            "source_ids": [
+              "SRC-GOOGL-Q4-2025-CALL",
+              "SRC-NVDA-GTC-DYNAMO-20260316"
+            ]
+          },
+          "expectation_rows": [
+            {
+              "entity": "Alphabet",
+              "current_period": "Q4 2025",
+              "current_actual_time": "2025-10至2025-12",
+              "current_metric": "[daily tokens 3x、query length 3x，同时 serving cost -78%](source:SRC-GOOGL-Q4-2025-CALL)",
+              "guidance_period": "未量化",
+              "guidance_actual_time": "2026",
+              "guidance_metric": "未给每任务 token/GPU-hour 指引。",
+              "comparability": "同时显示需求放大与效率抵消，不能单向外推。",
+              "source_ids": [
+                "SRC-GOOGL-Q4-2025-CALL"
+              ]
+            },
+            {
+              "entity": "NVIDIA",
+              "current_period": "GTC 2026",
+              "current_actual_time": "2026-03-16",
+              "current_metric": "[Dynamo 1.0 声称最高 7x inference performance](source:SRC-NVDA-GTC-DYNAMO-20260316)",
+              "guidance_period": "平台推广",
+              "guidance_actual_time": "2026",
+              "guidance_metric": "预期云和推理服务商采用，但没有独立的全行业利用率指引。",
+              "comparability": "厂商性能声明需客户实际 cost/token 验证。",
+              "source_ids": [
+                "SRC-NVDA-GTC-DYNAMO-20260316"
+              ]
+            }
+          ]
+        },
+        {
+          "stage_id": "capacity_commitment",
+          "status": "强成立",
+          "source_ids": [
+            "SRC-MSFT-FY25-Q3-METRICS",
+            "SRC-MSFT-FY25-Q4-CALL",
+            "SRC-MSFT-FY26-Q1",
+            "SRC-MSFT-FY26-Q2",
+            "SRC-MSFT-FY26-Q2-CALL",
+            "SRC-GOOGL-Q4-2025",
+            "SRC-META-Q4-2025",
+            "SRC-AMZN-Q4-2025"
+          ],
+          "metric": {
+            "name": "云厂 capex、RPO 与长期算力承诺",
+            "trendKind": "time_series",
+            "series": [
+              {
+                "label": "Microsoft 2024-01至03",
+                "value": "Commercial RPO $235B",
+                "change": "基线"
+              },
+              {
+                "label": "Microsoft 2025-04至06",
+                "value": "RPO $368B",
+                "change": "+57% vs 基线"
+              },
+              {
+                "label": "Microsoft 2025-07至09",
+                "value": "RPO $392B",
+                "change": "+6.5% QoQ"
+              },
+              {
+                "label": "Microsoft 2025-10至12",
+                "value": "RPO $625B",
+                "change": "+59% QoQ；含OpenAI大单"
+              },
+              {
+                "label": "Microsoft 2025-10至12",
+                "value": "capex $37.5B",
+                "change": "约2/3为GPU/CPU等短寿命资产"
+              }
+            ],
+            "history": "[Microsoft Commercial RPO 从 2024 年初的 2350 亿美元升至 2025 年中 3680 亿、2025 年三季度 3920 亿](source:SRC-MSFT-FY25-Q3-METRICS)。",
+            "current": "[2025 年四季度 RPO 达 6250 亿美元，季度 capex 375 亿美元且约三分之二用于 GPU/CPU 等短寿命资产，需求仍高于供给](source:SRC-MSFT-FY26-Q2-CALL)。",
+            "future": "[Alphabet 预计 2026 capex 1750-1850 亿美元](source:SRC-GOOGL-Q4-2025)，[Meta 1150-1350 亿美元](source:SRC-META-Q4-2025)，[Amazon 约 2000 亿美元](source:SRC-AMZN-Q4-2025)；这些是公司总 capex，不应全部归因于 GPU/ASIC。",
+            "quality": "官方财务强；跨公司 capex 口径不可直接相加",
+            "source_ids": [
+              "SRC-MSFT-FY25-Q3-METRICS",
+              "SRC-MSFT-FY25-Q4-CALL",
+              "SRC-MSFT-FY26-Q1",
+              "SRC-MSFT-FY26-Q2",
+              "SRC-MSFT-FY26-Q2-CALL",
+              "SRC-GOOGL-Q4-2025",
+              "SRC-META-Q4-2025",
+              "SRC-AMZN-Q4-2025"
+            ]
+          },
+          "expectation_rows": [
+            {
+              "entity": "Microsoft",
+              "current_period": "FY2026 Q2",
+              "current_actual_time": "2025-10至2025-12",
+              "current_metric": "[RPO $625B；季度 capex $37.5B](source:SRC-MSFT-FY26-Q2-CALL)",
+              "guidance_period": "需求高于供给",
+              "guidance_actual_time": "2026",
+              "guidance_metric": "未给全年 capex 单一数值，但表示继续扩容。",
+              "comparability": "RPO 45%来自OpenAI，需单列集中度。",
+              "source_ids": [
+                "SRC-MSFT-FY26-Q2",
+                "SRC-MSFT-FY26-Q2-CALL"
+              ]
+            },
+            {
+              "entity": "Alphabet",
+              "current_period": "FY2025/Q4",
+              "current_actual_time": "2025全年/2025-10至12",
+              "current_metric": "[FY2025 PPE purchases $91.4B](source:SRC-GOOGL-Q4-2025)",
+              "guidance_period": "CY2026",
+              "guidance_actual_time": "2026",
+              "guidance_metric": "[capex $175B-$185B](source:SRC-GOOGL-Q4-2025)。",
+              "comparability": "同为公司 capex，方向可比；仍包含服务器外资产。",
+              "source_ids": [
+                "SRC-GOOGL-Q4-2025"
+              ]
+            },
+            {
+              "entity": "Meta",
+              "current_period": "FY2025",
+              "current_actual_time": "2025全年",
+              "current_metric": "[capex $72.22B](source:SRC-META-Q4-2025)",
+              "guidance_period": "CY2026",
+              "guidance_actual_time": "2026",
+              "guidance_metric": "[capex $115B-$135B](source:SRC-META-Q4-2025)。",
+              "comparability": "同口径公司 capex，AI归因需谨慎。",
+              "source_ids": [
+                "SRC-META-Q4-2025"
+              ]
+            },
+            {
+              "entity": "Amazon",
+              "current_period": "FY2025/Q4",
+              "current_actual_time": "2025全年/2025-10至12",
+              "current_metric": "AWS和自研芯片业务加速。",
+              "guidance_period": "CY2026",
+              "guidance_actual_time": "2026",
+              "guidance_metric": "[公司 capex约$200B](source:SRC-AMZN-Q4-2025)。",
+              "comparability": "含AI、芯片、机器人和卫星，不是纯GPU预算。",
+              "source_ids": [
+                "SRC-AMZN-Q4-2025"
+              ]
+            }
+          ]
+        },
+        {
+          "stage_id": "accelerator_orders",
+          "status": "强成立",
+          "source_ids": [
+            "SRC-DELL-FY25-Q4",
+            "SRC-DELL-FY26-Q1",
+            "SRC-DELL-FY26-Q2-PERFORMANCE",
+            "SRC-DELL-FY26-Q3",
+            "SRC-DELL-FY26-Q4"
+          ],
+          "metric": {
+            "name": "AI server 订单、交付与 backlog",
+            "trendKind": "time_series",
+            "series": [
+              {
+                "label": "2024-11至2025-01",
+                "value": "Dell AI backlog约$9B",
+                "change": "起始"
+              },
+              {
+                "label": "2025-02至04",
+                "value": "$14.4B",
+                "change": "+60%"
+              },
+              {
+                "label": "2025-05至07",
+                "value": "$11.7B",
+                "change": "交付消化后-19%"
+              },
+              {
+                "label": "2025-08至10",
+                "value": "$18.4B",
+                "change": "+57%"
+              },
+              {
+                "label": "2025-11至2026-01",
+                "value": "$43B",
+                "change": "+134%"
+              }
+            ],
+            "history": "[Dell AI server backlog 从 2025 财年末约 90 亿美元升至 2026 财年一季度 144 亿，二季度在交付后回落至 117 亿，三季度再升至 184 亿](source:SRC-DELL-FY26-Q3)。",
+            "current": "[FY2026 末 backlog 达 430 亿美元，全年 AI server orders 超过 640 亿、shipments 超过 250 亿](source:SRC-DELL-FY26-Q4)。",
+            "future": "[Dell 指引 FY2027 AI-optimized server revenue 约 500 亿美元，同比增长 103%](source:SRC-DELL-FY26-Q4)。",
+            "quality": "官方订单/交付链强；单一OEM且不等于芯片净收入",
+            "source_ids": [
+              "SRC-DELL-FY25-Q4",
+              "SRC-DELL-FY26-Q1",
+              "SRC-DELL-FY26-Q2-PERFORMANCE",
+              "SRC-DELL-FY26-Q3",
+              "SRC-DELL-FY26-Q4"
+            ]
+          },
+          "expectation_rows": [
+            {
+              "entity": "Dell",
+              "current_period": "FY2026",
+              "current_actual_time": "2025-02至2026-01",
+              "current_metric": "[orders >$64B、shipments >$25B、ending backlog $43B](source:SRC-DELL-FY26-Q4)",
+              "guidance_period": "FY2027",
+              "guidance_actual_time": "2026-02至2027-01",
+              "guidance_metric": "[AI server revenue约$50B，+103%](source:SRC-DELL-FY26-Q4)。",
+              "comparability": "backlog不是收入，需看取消率、交付和毛利。",
+              "source_ids": [
+                "SRC-DELL-FY26-Q4"
+              ]
+            }
+          ]
+        },
+        {
+          "stage_id": "market_value",
+          "status": "强成立，增速将趋缓",
+          "source_ids": [
+            "SRC-NVDA-FY23-Q4",
+            "SRC-NVDA-FY24-Q2",
+            "SRC-NVDA-FY24-Q4",
+            "SRC-NVDA-FY25-Q2",
+            "SRC-NVDA-FY25-Q4",
+            "SRC-NVDA-FY26-Q2",
+            "SRC-NVDA-FY26-Q3",
+            "SRC-NVDA-FY26-Q4",
+            "SRC-AVGO-FY25-Q2",
+            "SRC-AVGO-FY25-Q3",
+            "SRC-AVGO-FY26-Q1",
+            "SRC-OMDIA-AI-PROCESSORS-20250828"
+          ],
+          "metric": {
+            "name": "GPU/ASIC 平台收入与 AI processor spending",
+            "trendKind": "time_series",
+            "series": [
+              {
+                "label": "NVIDIA 2022-11至2023-01",
+                "value": "Data Center $3.62B",
+                "change": "S曲线前基线"
+              },
+              {
+                "label": "NVIDIA 2023-05至07",
+                "value": "$10.32B",
+                "change": "+185% vs 基线"
+              },
+              {
+                "label": "NVIDIA 2024-11至2025-01",
+                "value": "$35.6B",
+                "change": "+245% vs 2023-05至07"
+              },
+              {
+                "label": "NVIDIA 2025-08至10",
+                "value": "$51.2B",
+                "change": "+25% QoQ"
+              },
+              {
+                "label": "NVIDIA 2025-11至2026-01",
+                "value": "$62.3B",
+                "change": "+22% QoQ/+75% YoY"
+              }
+            ],
+            "history": "[NVIDIA Data Center revenue 从 2023 财年四季度 36.2 亿美元，经 2024 财年二季度 103.2 亿、2025 财年四季度 356 亿，升至 2026 财年四季度 623 亿美元](source:SRC-NVDA-FY26-Q4)。",
+            "current": "[Broadcom AI revenue 从 2025 财年二季度超过 44 亿、三季度 52 亿，升至 2026 财年一季度 84 亿美元](source:SRC-AVGO-FY26-Q1)。",
+            "future": "[Omdia 预计 AI data-center processor spending 从 2024 年 1230 亿美元升至 2025 年 2070 亿、2030 年 2860 亿美元](source:SRC-OMDIA-AI-PROCESSORS-20250828)，意味着市场仍增长但 2025 后斜率显著放缓。",
+            "quality": "公司收入官方且连续；市场预测为第三方口径",
+            "source_ids": [
+              "SRC-NVDA-FY23-Q4",
+              "SRC-NVDA-FY24-Q2",
+              "SRC-NVDA-FY24-Q4",
+              "SRC-NVDA-FY25-Q2",
+              "SRC-NVDA-FY25-Q4",
+              "SRC-NVDA-FY26-Q2",
+              "SRC-NVDA-FY26-Q3",
+              "SRC-NVDA-FY26-Q4",
+              "SRC-AVGO-FY25-Q2",
+              "SRC-AVGO-FY25-Q3",
+              "SRC-AVGO-FY26-Q1",
+              "SRC-OMDIA-AI-PROCESSORS-20250828"
+            ]
+          },
+          "expectation_rows": [
+            {
+              "entity": "NVIDIA",
+              "current_period": "FY2026 Q4",
+              "current_actual_time": "2025-11至2026-01",
+              "current_metric": "[Data Center $62.3B；total $68.1B](source:SRC-NVDA-FY26-Q4)",
+              "guidance_period": "FY2027 Q1",
+              "guidance_actual_time": "2026-02至2026-04",
+              "guidance_metric": "[total revenue guide $78B +/-2%](source:SRC-NVDA-FY26-Q4)。",
+              "comparability": "总收入指引不能直接当Data Center指引。",
+              "source_ids": [
+                "SRC-NVDA-FY26-Q4"
+              ]
+            },
+            {
+              "entity": "Broadcom",
+              "current_period": "FY2026 Q1",
+              "current_actual_time": "2025-11至2026-01",
+              "current_metric": "[AI revenue $8.4B，+106% YoY](source:SRC-AVGO-FY26-Q1)",
+              "guidance_period": "FY2026 Q2",
+              "guidance_actual_time": "2026-02至2026-04",
+              "guidance_metric": "[AI semiconductor revenue约$10.7B](source:SRC-AVGO-FY26-Q1)。",
+              "comparability": "Q1 actual与Q2 guide同口径，适合验证。",
+              "source_ids": [
+                "SRC-AVGO-FY26-Q1"
+              ]
+            },
+            {
+              "entity": "Omdia",
+              "current_period": "CY2025E",
+              "current_actual_time": "2025",
+              "current_metric": "[AI processor spending $207B](source:SRC-OMDIA-AI-PROCESSORS-20250828)",
+              "guidance_period": "CY2030E",
+              "guidance_actual_time": "2030",
+              "guidance_metric": "[约$286B](source:SRC-OMDIA-AI-PROCESSORS-20250828)。",
+              "comparability": "五年增量存在但远低于2024-25增速，构成斜率反证。",
+              "source_ids": [
+                "SRC-OMDIA-AI-PROCESSORS-20250828"
+              ]
+            }
+          ]
+        }
+      ],
+      "search_artifact": {
+        "search_execution_status": "completed",
+        "parser_status": "gpt_verified_source_parse",
+        "source_universe_plan": {
+          "priority_sources": [
+            "OpenAI/Alphabet usage disclosures",
+            "hyperscaler filings and calls",
+            "Dell order disclosures",
+            "NVIDIA/Broadcom results",
+            "Omdia processor forecast"
+          ],
+          "cutoff_policy": "only sources visible on or before 2026-03-28"
+        },
+        "exa_search_plan": {
+          "direct_query": "AI workload token agent capex RPO AI server orders GPU ASIC revenue before 2026-03-28",
+          "expected_fields": [
+            "workload volume",
+            "compute intensity",
+            "capex/RPO",
+            "orders/backlog",
+            "platform revenue"
+          ]
+        },
+        "metric_candidate_plan": {
+          "rule": "one primary metric per causal stage plus one or two cross-checks and one refutation metric",
+          "candidate_classes": [
+            "usage",
+            "elasticity",
+            "capital commitment",
+            "physical orders",
+            "financial realization"
+          ]
+        },
+        "evidence_summary": [
+          "All five causal links show cutoff-visible acceleration; efficiency improvement and slower long-run market growth are preserved as counterweights."
+        ],
+        "gap_summary": [
+          "No public global GPU-hours series.",
+          "No unified global accelerator shipment history.",
+          "Hyperscaler capex includes non-accelerator assets."
+        ],
+        "completed_at": "2026-07-14"
+      }
+    },
+    {
+      "question_id": "compute_q2_supply",
+      "conclusion": "供给并未完全跟上，但瓶颈不是单一“GPU 缺货”，而是先进 die、CoWoS 类封装、合格 HBM、平台爬坡和系统交付共同决定的有效供给漏斗。TSMC 高先进制程占比和 520-560 亿美元 capex、memory 价量协议、NVIDIA sold-out 表述、Microsoft demand exceeds supply 与 Dell 430 亿美元 backlog 同时说明截面日仍偏紧；但公开材料缺少同口径 qualified accelerator capacity、封装产能和 lead-time 序列，所以只能判断“有效供给仍受约束”，不能精确量化缺口。",
+      "logic_summary": "按先进 die -> 先进封装 -> HBM allocation -> 平台量产 -> 合格交付逐层研究，禁止把任何一层的名义扩产直接写成最终 accelerator 供给。",
+      "conclusion_strength": "中高：供需偏紧方向可验证；漏斗各层的同口径产能与良率数据不完整。",
+      "mechanism": {
+        "support": "客户 demand exceeds supply、cloud GPU sold-out、HBM 合同锁定和系统 backlog 共同支持有效供给滞后。",
+        "refute": "TSMC 高 capex、memory supplier 扩产和新平台效率提升会逐步释放供给；缺少 lead-time/qualified-capacity 序列使精确缺口不可计算。"
+      },
+      "target_impact": "供给约束提高平台龙头近端议价权，但不应仅凭“缺货”给高分；必须监控封装、HBM、平台延期和交付速度。",
+      "source_ids": [
+        "SRC-TSM-Q4-2025",
+        "SRC-SA-GB200-BOM-2024",
+        "SRC-MU-FY26-Q1-PREPARED",
+        "SRC-TF-HBM-INDUSTRY-4Q25",
+        "SRC-NVDA-FY26-Q3",
+        "SRC-NVDA-FY26-Q4",
+        "SRC-NVDA-GTC-VERA-RUBIN-20260316",
+        "SRC-MSFT-FY26-Q2-CALL",
+        "SRC-DELL-FY26-Q4"
+      ],
+      "stages": [
+        {
+          "stage_id": "advanced_die",
+          "status": "扩产中，仍是必要约束",
+          "source_ids": [
+            "SRC-TSM-Q4-2025"
+          ],
+          "metric": {
+            "name": "先进节点 wafer 产出与良率",
+            "trendKind": "non_time_series",
+            "series": [
+              {
+                "label": "TSMC Q4 2025",
+                "value": "advanced technologies 77% of wafer revenue",
+                "change": "高端节点成为主力"
+              },
+              {
+                "label": "TSMC 2026E",
+                "value": "capex $52B-$56B",
+                "change": "继续扩充先进产能"
+              }
+            ],
+            "history": "公开源包没有保存三年 AI accelerator 专属 wafer starts 或 yield 序列。",
+            "current": "[TSMC Q4 2025 advanced technologies 占 wafer revenue 77%，gross margin 62.3%](source:SRC-TSM-Q4-2025)，显示先进节点高利用和经济性。",
+            "future": "[TSMC 预计 2026 capex 520-560 亿美元](source:SRC-TSM-Q4-2025)；这是供给扩张信号，不是 accelerator 合格供给数。",
+            "quality": "官方强；缺AI专属产能/良率",
+            "source_ids": [
+              "SRC-TSM-Q4-2025"
+            ]
+          },
+          "expectation_rows": [
+            {
+              "entity": "TSMC",
+              "current_period": "Q4 2025",
+              "current_actual_time": "2025-10至2025-12",
+              "current_metric": "[advanced technologies 77%；gross margin 62.3%](source:SRC-TSM-Q4-2025)",
+              "guidance_period": "CY2026",
+              "guidance_actual_time": "2026",
+              "guidance_metric": "[capex $52B-$56B](source:SRC-TSM-Q4-2025)。",
+              "comparability": "capex需经建设、良率和客户allocation才转供给。",
+              "source_ids": [
+                "SRC-TSM-Q4-2025"
+              ]
+            }
+          ]
+        },
+        {
+          "stage_id": "advanced_packaging",
+          "status": "仍可能是漏斗约束，量化不足",
+          "source_ids": [
+            "SRC-SA-GB200-BOM-2024",
+            "SRC-TF-HBM-INDUSTRY-4Q25"
+          ],
+          "metric": {
+            "name": "CoWoS 类合格封装吞吐",
+            "trendKind": "non_time_series",
+            "series": [
+              {
+                "label": "GB200/NVL72",
+                "value": "logic+HBM+复杂封装",
+                "change": "系统复杂度上升"
+              },
+              {
+                "label": "4Q25",
+                "value": "供应链扩充HBM前后端",
+                "change": "名义供给斜率上升"
+              }
+            ],
+            "history": "[SemiAnalysis 对 GB200 硬件架构/BOM 的拆解显示逻辑 die、HBM 和封装必须组合后才能形成可交付模块](source:SRC-SA-GB200-BOM-2024)。",
+            "current": "现有公开源没有保存 CoWoS 月产能、合格率和客户 allocation 的连续可比表，因此不能给出精确缺口。",
+            "future": "供应商持续扩产，但新平台 die、HBM 与封装集成复杂度提高，qualified throughput 仍需用实际出货验证。",
+            "quality": "机制证据存在；量化数据缺口大",
+            "source_ids": [
+              "SRC-SA-GB200-BOM-2024",
+              "SRC-TF-HBM-INDUSTRY-4Q25"
+            ]
+          },
+          "expectation_rows": [
+            {
+              "entity": "产业链",
+              "current_period": "Blackwell量产期",
+              "current_actual_time": "2024-2026",
+              "current_metric": "[复杂BOM与封装集成是交付必要条件](source:SRC-SA-GB200-BOM-2024)",
+              "guidance_period": "2026扩产",
+              "guidance_actual_time": "2026",
+              "guidance_metric": "名义后端产能扩充。",
+              "comparability": "缺同口径qualified capacity/yield，不能判断何时完全消缺。",
+              "source_ids": [
+                "SRC-SA-GB200-BOM-2024",
+                "SRC-TF-HBM-INDUSTRY-4Q25"
+              ]
+            }
+          ]
+        },
+        {
+          "stage_id": "memory_allocation",
+          "status": "短期锁定",
+          "source_ids": [
+            "SRC-MU-FY26-Q1-PREPARED",
+            "SRC-TF-HBM-INDUSTRY-4Q25"
+          ],
+          "metric": {
+            "name": "合格 HBM allocation 与价量覆盖",
+            "trendKind": "time_series",
+            "series": [
+              {
+                "label": "CY2025E",
+                "value": "HBM TAM约$35B",
+                "change": "需求扩大"
+              },
+              {
+                "label": "CY2026E",
+                "value": "Micron HBM price-volume agreements completed",
+                "change": "供给提前锁定"
+              },
+              {
+                "label": "CY2028E",
+                "value": "HBM TAM约$100B",
+                "change": "约40% CAGR锚"
+              }
+            ],
+            "history": "[HBM 需要资格、TSV/stacking 和先进封装，不能用普通 DRAM wafer 代替](source:SRC-TF-HBM-INDUSTRY-4Q25)。",
+            "current": "[Micron 表示 2026 年 HBM 供给已完成 price-volume agreements](source:SRC-MU-FY26-Q1-PREPARED)，说明 allocation 提前锁定。",
+            "future": "三家均扩 HBM4，但资格和后端吞吐决定实际供给；若 ASP/lead time 下行，HBM 对 accelerator 的约束会减弱。",
+            "quality": "公司协议+第三方机制同向",
+            "source_ids": [
+              "SRC-MU-FY26-Q1-PREPARED",
+              "SRC-TF-HBM-INDUSTRY-4Q25"
+            ]
+          },
+          "expectation_rows": [
+            {
+              "entity": "Micron",
+              "current_period": "FY2026 Q1",
+              "current_actual_time": "2025-09至2025-11",
+              "current_metric": "[CY2026 HBM价量协议已完成](source:SRC-MU-FY26-Q1-PREPARED)",
+              "guidance_period": "CY2026",
+              "guidance_actual_time": "2026",
+              "guidance_metric": "按已签价量交付。",
+              "comparability": "协议覆盖增强可见度，也说明现货供给自由度低。",
+              "source_ids": [
+                "SRC-MU-FY26-Q1-PREPARED"
+              ]
+            }
+          ]
+        },
+        {
+          "stage_id": "platform_ramp",
+          "status": "Blackwell已放量，Rubin仍需验证",
+          "source_ids": [
+            "SRC-NVDA-FY26-Q3",
+            "SRC-NVDA-FY26-Q4",
+            "SRC-NVDA-GTC-VERA-RUBIN-20260316",
+            "SRC-DELL-FY26-Q4"
+          ],
+          "metric": {
+            "name": "新平台量产、系统出货与客户可用性",
+            "trendKind": "time_series",
+            "series": [
+              {
+                "label": "NVIDIA FY26 Q3",
+                "value": "cloud GPUs sold out",
+                "change": "Blackwell供需偏紧"
+              },
+              {
+                "label": "NVIDIA FY26 Q4",
+                "value": "Data Center $62.3B",
+                "change": "Blackwell规模兑现"
+              },
+              {
+                "label": "Dell FY26",
+                "value": "AI shipments >$25B",
+                "change": "系统交付放量"
+              },
+              {
+                "label": "Rubin",
+                "value": "7 chips/5 rack-scale systems",
+                "change": "复杂度进一步上升"
+              }
+            ],
+            "history": "[NVIDIA FY26 Q3 表示 cloud GPUs sold out](source:SRC-NVDA-FY26-Q3)，FY26 Q4 Data Center revenue 继续放量。",
+            "current": "[Dell FY26 AI server shipments 超过 250 亿美元](source:SRC-DELL-FY26-Q4)，说明平台已经穿过部分系统集成环节。",
+            "future": "[Vera Rubin 由七类芯片和五种 rack-scale systems 构成](source:SRC-NVDA-GTC-VERA-RUBIN-20260316)；更高集成度可能提高价值，也增加爬坡风险。",
+            "quality": "官方产品/交付强；未来平台尚未量产",
+            "source_ids": [
+              "SRC-NVDA-FY26-Q3",
+              "SRC-NVDA-FY26-Q4",
+              "SRC-NVDA-GTC-VERA-RUBIN-20260316",
+              "SRC-DELL-FY26-Q4"
+            ]
+          },
+          "expectation_rows": [
+            {
+              "entity": "NVIDIA",
+              "current_period": "FY2026 Q4",
+              "current_actual_time": "2025-11至2026-01",
+              "current_metric": "[Data Center $62.3B](source:SRC-NVDA-FY26-Q4)",
+              "guidance_period": "Rubin deployment",
+              "guidance_actual_time": "2026下半年起",
+              "guidance_metric": "[云厂计划部署Vera Rubin](source:SRC-NVDA-GTC-VERA-RUBIN-20260316)。",
+              "comparability": "产品路线图不是量产证明。",
+              "source_ids": [
+                "SRC-NVDA-FY26-Q4",
+                "SRC-NVDA-GTC-VERA-RUBIN-20260316"
+              ]
+            }
+          ]
+        },
+        {
+          "stage_id": "qualified_delivery",
+          "status": "仍低于客户需求",
+          "source_ids": [
+            "SRC-NVDA-FY26-Q3",
+            "SRC-MSFT-FY26-Q2-CALL",
+            "SRC-DELL-FY26-Q4"
+          ],
+          "metric": {
+            "name": "最终交付、交期与客户供需表述",
+            "trendKind": "time_series",
+            "series": [
+              {
+                "label": "2025-08至10",
+                "value": "NVIDIA cloud GPUs sold out",
+                "change": "供给偏紧"
+              },
+              {
+                "label": "2025-10至12",
+                "value": "Microsoft demand exceeds supply",
+                "change": "客户侧确认"
+              },
+              {
+                "label": "2026-01末",
+                "value": "Dell backlog $43B",
+                "change": "待交付承诺扩大"
+              }
+            ],
+            "history": "客户侧供需与系统 backlog 比单一厂商“sold out”更能验证最终供给。",
+            "current": "[Microsoft 表示 demand exceeds supply](source:SRC-MSFT-FY26-Q2-CALL)，[Dell 进入 FY27 时 AI backlog 430 亿美元](source:SRC-DELL-FY26-Q4)。",
+            "future": "供给是否追上要看 backlog 转收入、交期、折价和库存；当前源包没有行业 lead-time 序列。",
+            "quality": "多方官方证据同向；缺lead-time",
+            "source_ids": [
+              "SRC-NVDA-FY26-Q3",
+              "SRC-MSFT-FY26-Q2-CALL",
+              "SRC-DELL-FY26-Q4"
+            ]
+          },
+          "expectation_rows": [
+            {
+              "entity": "Microsoft",
+              "current_period": "FY2026 Q2",
+              "current_actual_time": "2025-10至2025-12",
+              "current_metric": "[客户需求高于可用供给](source:SRC-MSFT-FY26-Q2-CALL)",
+              "guidance_period": "持续扩容",
+              "guidance_actual_time": "2026",
+              "guidance_metric": "继续投入短寿命算力资产。",
+              "comparability": "定性供需强，缺数量缺口。",
+              "source_ids": [
+                "SRC-MSFT-FY26-Q2-CALL"
+              ]
+            },
+            {
+              "entity": "Dell",
+              "current_period": "FY2026末",
+              "current_actual_time": "2026-01末",
+              "current_metric": "[AI backlog $43B](source:SRC-DELL-FY26-Q4)",
+              "guidance_period": "FY2027",
+              "guidance_actual_time": "2026-02至2027-01",
+              "guidance_metric": "[AI server revenue约$50B](source:SRC-DELL-FY26-Q4)。",
+              "comparability": "需验证backlog转收入和毛利。",
+              "source_ids": [
+                "SRC-DELL-FY26-Q4"
+              ]
+            }
+          ]
+        }
+      ],
+      "search_artifact": {
+        "search_execution_status": "completed",
+        "parser_status": "gpt_verified_source_parse",
+        "source_universe_plan": {
+          "priority_sources": [
+            "TSMC filings",
+            "NVIDIA/Dell/Microsoft disclosures",
+            "HBM supplier filings",
+            "SemiAnalysis architecture"
+          ],
+          "cutoff_policy": "only sources visible on or before 2026-03-28"
+        },
+        "exa_search_plan": {
+          "direct_query": "GPU ASIC qualified supply advanced node packaging HBM platform ramp lead time before 2026-03-28",
+          "expected_fields": [
+            "advanced die",
+            "advanced packaging",
+            "HBM allocation",
+            "platform ramp",
+            "qualified delivery"
+          ]
+        },
+        "metric_candidate_plan": {
+          "rule": "one primary metric per causal stage plus one or two cross-checks and one refutation metric",
+          "candidate_classes": [
+            "wafer/yield",
+            "packaging",
+            "memory",
+            "system ramp",
+            "delivery"
+          ]
+        },
+        "evidence_summary": [
+          "Multiple independent disclosures show effective accelerator supply remained constrained, but public capacity data cannot quantify the exact deficit."
+        ],
+        "gap_summary": [
+          "No comparable CoWoS/qualified-accelerator capacity series.",
+          "No public industry lead-time history.",
+          "Platform yield and board/rack yield are not disclosed."
+        ],
+        "completed_at": "2026-07-14"
+      }
+    },
+    {
+      "question_id": "compute_q3_control",
+      "conclusion": "截至截面日，NVIDIA 控制的是“硬件 + CUDA 软件 + rack-scale 系统规格 + 云端部署”的综合平台，而不是只有一张 GPU；这解释了其远高于其他公开厂商的 Data Center 收入规模。控制权并非永久垄断：Broadcom custom ASIC 收入翻倍、Google TPU 价值量约 60-90 亿美元、Amazon Trainium/Graviton 合计年化收入超过 100 亿美元，AMD Data Center 也在增长。更准确的格局是 NVIDIA 绝对主导，云厂 custom ASIC 是最快的第二路线，AMD/开放路线为追赶者；公开材料没有同口径全球 accelerator 份额表，不能拿 PC GPU 份额冒充。",
+      "logic_summary": "按数据中心经济份额 -> 软件生态 -> 性能/TCO -> 客户系统锁定 -> 替代速度逐层识别控制权。",
+      "conclusion_strength": "中高：平台控制和替代方向清晰；精确市场份额及真实工作负载 TCO 仍缺。",
+      "mechanism": {
+        "support": "NVIDIA 收入规模、CUDA 开发者生态、系统规格和客户部署共同构成控制权。",
+        "refute": "Broadcom/custom ASIC、Google TPU、Amazon Trainium 与 AMD 是真实替代路线；效率改善和客户自研会削弱通用 GPU 的边际份额。"
+      },
+      "target_impact": "NVIDIA 保持最高平台控制分；Broadcom 获得 custom-ASIC 增量暴露；AMD 维持观察。仍需估值和公司盈利桥决定证券排序。",
+      "source_ids": [
+        "SRC-NVDA-FY26-Q4",
+        "SRC-AVGO-FY26-Q1",
+        "SRC-AMD-Q4-2025",
+        "SRC-OMDIA-AI-PROCESSORS-20250828",
+        "SRC-OMDIA-TPU-202412",
+        "SRC-NVDA-CUDA-ECOSYSTEM-202403",
+        "SRC-NVDA-GTC-DYNAMO-20260316",
+        "SRC-NVDA-GTC-VERA-RUBIN-20260316",
+        "SRC-AMZN-Q4-2025",
+        "SRC-DELL-FY26-Q4"
+      ],
+      "stages": [
+        {
+          "stage_id": "qualified_share",
+          "status": "NVIDIA绝对主导，精确份额缺口",
+          "source_ids": [
+            "SRC-NVDA-FY26-Q4",
+            "SRC-AVGO-FY26-Q1",
+            "SRC-AMD-Q4-2025",
+            "SRC-OMDIA-AI-PROCESSORS-20250828"
+          ],
+          "metric": {
+            "name": "数据中心 AI accelerator 经济份额",
+            "trendKind": "time_series",
+            "series": [
+              {
+                "label": "NVIDIA 2025-11至2026-01",
+                "value": "Data Center $62.3B",
+                "change": "+75% YoY"
+              },
+              {
+                "label": "Broadcom 2025-11至2026-01",
+                "value": "AI revenue $8.4B",
+                "change": "+106% YoY"
+              },
+              {
+                "label": "AMD 2025-10至12",
+                "value": "Data Center $5.4B",
+                "change": "+39% YoY；含EPYC CPU"
+              }
+            ],
+            "history": "三家公司披露口径不同：NVIDIA Data Center 含网络，Broadcom AI 含 custom accelerator 与网络，AMD Data Center 含 CPU。",
+            "current": "[Omdia 明确 NVIDIA 仍是 dominant vendor，同时 custom ASIC/ASSP 与 AMD gaining traction](source:SRC-OMDIA-AI-PROCESSORS-20250828)。收入规模代理显示 NVIDIA 远高于其他公开厂商，但不是可直接相除的市场份额。",
+            "future": "精确全球 AI accelerator 厂商份额需要 Omdia/Gartner/IDC 的统一付费表；报告明确保留缺口。",
+            "quality": "官方收入+第三方格局；口径不可直接计算份额",
+            "source_ids": [
+              "SRC-NVDA-FY26-Q4",
+              "SRC-AVGO-FY26-Q1",
+              "SRC-AMD-Q4-2025",
+              "SRC-OMDIA-AI-PROCESSORS-20250828"
+            ]
+          },
+          "expectation_rows": [
+            {
+              "entity": "NVIDIA",
+              "current_period": "FY2026 Q4",
+              "current_actual_time": "2025-11至2026-01",
+              "current_metric": "[Data Center $62.3B](source:SRC-NVDA-FY26-Q4)",
+              "guidance_period": "FY2027 Q1",
+              "guidance_actual_time": "2026-02至04",
+              "guidance_metric": "[total revenue $78B +/-2%](source:SRC-NVDA-FY26-Q4)。",
+              "comparability": "Data Center不等于纯GPU，且总收入guide不同口径。",
+              "source_ids": [
+                "SRC-NVDA-FY26-Q4"
+              ]
+            },
+            {
+              "entity": "Broadcom",
+              "current_period": "FY2026 Q1",
+              "current_actual_time": "2025-11至2026-01",
+              "current_metric": "[AI revenue $8.4B](source:SRC-AVGO-FY26-Q1)",
+              "guidance_period": "FY2026 Q2",
+              "guidance_actual_time": "2026-02至04",
+              "guidance_metric": "[AI semiconductor约$10.7B](source:SRC-AVGO-FY26-Q1)。",
+              "comparability": "含custom accelerator和AI网络。",
+              "source_ids": [
+                "SRC-AVGO-FY26-Q1"
+              ]
+            },
+            {
+              "entity": "AMD",
+              "current_period": "Q4 2025",
+              "current_actual_time": "2025-10至12",
+              "current_metric": "[Data Center $5.4B](source:SRC-AMD-Q4-2025)",
+              "guidance_period": "Q1 2026",
+              "guidance_actual_time": "2026-01至03",
+              "guidance_metric": "公司总收入guide $9.8B +/-$0.3B。",
+              "comparability": "Data Center含EPYC CPU，不能作为纯accelerator份额。",
+              "source_ids": [
+                "SRC-AMD-Q4-2025"
+              ]
+            }
+          ]
+        },
+        {
+          "stage_id": "software_ecosystem",
+          "status": "NVIDIA控制力强",
+          "source_ids": [
+            "SRC-NVDA-CUDA-ECOSYSTEM-202403"
+          ],
+          "metric": {
+            "name": "CUDA 开发者、应用与企业 adoption",
+            "trendKind": "time_series",
+            "series": [
+              {
+                "label": "GTC 2024",
+                "value": "nearly 5M developers",
+                "change": "生态规模"
+              },
+              {
+                "label": "GTC 2024",
+                "value": ">40K companies",
+                "change": "企业覆盖"
+              },
+              {
+                "label": "GTC 2024",
+                "value": ">3,300 GPU apps",
+                "change": "应用资产"
+              },
+              {
+                "label": "GTC 2024",
+                "value": ">1,600 GenAI companies",
+                "change": "新应用生态"
+              }
+            ],
+            "history": "CUDA 的控制力来自开发工具、库、应用和人才共同形成的迁移成本。",
+            "current": "[NVIDIA GTC 2024 材料披露接近 500 万开发者、4 万多家公司、3300 多个 GPU 应用和 1600 多家生成式 AI 公司](source:SRC-NVDA-CUDA-ECOSYSTEM-202403)。",
+            "future": "未来需跟踪 PyTorch/OpenAI compiler、ROCm、TPU/Trainium 工具链是否降低迁移成本；开发者总数本身不是收入。",
+            "quality": "官方生态数据；缺独立活跃度/迁移率",
+            "source_ids": [
+              "SRC-NVDA-CUDA-ECOSYSTEM-202403"
+            ]
+          },
+          "expectation_rows": [
+            {
+              "entity": "NVIDIA CUDA",
+              "current_period": "GTC 2024",
+              "current_actual_time": "2024-03",
+              "current_metric": "[nearly 5M developers、>3,300 apps](source:SRC-NVDA-CUDA-ECOSYSTEM-202403)",
+              "guidance_period": "持续扩张",
+              "guidance_actual_time": "2025-2026",
+              "guidance_metric": "未给同口径未来数值指引。",
+              "comparability": "生态存量是壁垒代理，不等于每个工作负载不可替代。",
+              "source_ids": [
+                "SRC-NVDA-CUDA-ECOSYSTEM-202403"
+              ]
+            }
+          ]
+        },
+        {
+          "stage_id": "performance_tco",
+          "status": "领先但需独立验证",
+          "source_ids": [
+            "SRC-NVDA-GTC-DYNAMO-20260316",
+            "SRC-NVDA-GTC-VERA-RUBIN-20260316",
+            "SRC-GOOGL-Q4-2025-CALL"
+          ],
+          "metric": {
+            "name": "真实负载 cost/token、吞吐与利用率",
+            "trendKind": "time_series",
+            "series": [
+              {
+                "label": "Dynamo 1.0",
+                "value": "up to 7x Blackwell inference performance",
+                "change": "厂商声明"
+              },
+              {
+                "label": "Gemini serving",
+                "value": "unit cost -78%",
+                "change": "客户侧效率改善"
+              },
+              {
+                "label": "Rubin platform",
+                "value": "rack-scale协同设计",
+                "change": "系统级TCO路线"
+              }
+            ],
+            "history": "公开 benchmark 经常使用不同模型、精度、batch 和系统边界，不能简单横比峰值 FLOPS。",
+            "current": "[NVIDIA Dynamo 宣称最高 7 倍推理性能提升](source:SRC-NVDA-GTC-DYNAMO-20260316)；[Alphabet 同期将 Gemini serving unit cost 降低 78%](source:SRC-GOOGL-Q4-2025-CALL)，说明软件优化会快速改变 TCO。",
+            "future": "控制权取决于客户实际 cost/token、time-to-train 和利用率，而非单一厂商 benchmark；本轮没有独立跨平台三年 TCO 表。",
+            "quality": "机制清晰；独立TCO证据不足",
+            "source_ids": [
+              "SRC-NVDA-GTC-DYNAMO-20260316",
+              "SRC-NVDA-GTC-VERA-RUBIN-20260316",
+              "SRC-GOOGL-Q4-2025-CALL"
+            ]
+          },
+          "expectation_rows": [
+            {
+              "entity": "NVIDIA",
+              "current_period": "GTC 2026",
+              "current_actual_time": "2026-03-16",
+              "current_metric": "[Dynamo最高7x inference performance](source:SRC-NVDA-GTC-DYNAMO-20260316)",
+              "guidance_period": "Rubin rollout",
+              "guidance_actual_time": "2026下半年起",
+              "guidance_metric": "[rack-scale平台继续提升系统级效率](source:SRC-NVDA-GTC-VERA-RUBIN-20260316)。",
+              "comparability": "均为厂商口径，需客户actual cost/token。",
+              "source_ids": [
+                "SRC-NVDA-GTC-DYNAMO-20260316",
+                "SRC-NVDA-GTC-VERA-RUBIN-20260316"
+              ]
+            }
+          ]
+        },
+        {
+          "stage_id": "customer_lock",
+          "status": "多平台部署形成锁定",
+          "source_ids": [
+            "SRC-NVDA-GTC-VERA-RUBIN-20260316",
+            "SRC-DELL-FY26-Q4",
+            "SRC-MSFT-FY26-Q2-CALL"
+          ],
+          "metric": {
+            "name": "云/OEM/AI lab 平台承诺",
+            "trendKind": "time_series",
+            "series": [
+              {
+                "label": "Dell FY26末",
+                "value": "AI backlog $43B",
+                "change": "系统级承诺"
+              },
+              {
+                "label": "Microsoft FY26 Q2",
+                "value": "demand > supply",
+                "change": "客户容量锁定"
+              },
+              {
+                "label": "Rubin",
+                "value": "cloud deployments announced",
+                "change": "下一代延续"
+              }
+            ],
+            "history": "客户围绕 rack、软件和运维流程建设后，迁移成本高于单芯片替换。",
+            "current": "[Dell 430 亿美元 AI backlog](source:SRC-DELL-FY26-Q4)和[Microsoft demand exceeds supply](source:SRC-MSFT-FY26-Q2-CALL)显示平台承诺仍强；[Rubin 公布云端部署路线](source:SRC-NVDA-GTC-VERA-RUBIN-20260316)。",
+            "future": "客户也会通过多供和自研 ASIC 降低锁定；应跟踪每个 hyperscaler 的自研 chip deployment share。",
+            "quality": "客户/OEM证据强；缺平台份额分配",
+            "source_ids": [
+              "SRC-NVDA-GTC-VERA-RUBIN-20260316",
+              "SRC-DELL-FY26-Q4",
+              "SRC-MSFT-FY26-Q2-CALL"
+            ]
+          },
+          "expectation_rows": [
+            {
+              "entity": "Dell/客户群",
+              "current_period": "FY2026末",
+              "current_actual_time": "2026-01末",
+              "current_metric": "[AI backlog $43B](source:SRC-DELL-FY26-Q4)",
+              "guidance_period": "FY2027",
+              "guidance_actual_time": "2026-02至2027-01",
+              "guidance_metric": "AI server revenue约$50B。",
+              "comparability": "OEM backlog说明系统承诺，不等于全部由NVIDIA获取。",
+              "source_ids": [
+                "SRC-DELL-FY26-Q4"
+              ]
+            }
+          ]
+        },
+        {
+          "stage_id": "substitution",
+          "status": "custom ASIC加速，尚未颠覆NVIDIA",
+          "source_ids": [
+            "SRC-OMDIA-TPU-202412",
+            "SRC-AMZN-Q4-2025",
+            "SRC-AVGO-FY26-Q1",
+            "SRC-AMD-Q4-2025",
+            "SRC-OMDIA-AI-PROCESSORS-20250828"
+          ],
+          "metric": {
+            "name": "替代 accelerator 的收入、部署与迁移",
+            "trendKind": "time_series",
+            "series": [
+              {
+                "label": "Google TPU 2024E",
+                "value": "约$6B-$9B value",
+                "change": "Omdia估计"
+              },
+              {
+                "label": "Amazon 2025末",
+                "value": "Graviton+Trainium run rate >$10B",
+                "change": "triple-digit growth"
+              },
+              {
+                "label": "Broadcom FY26 Q1",
+                "value": "AI revenue $8.4B",
+                "change": "+106% YoY"
+              },
+              {
+                "label": "AMD Q4 2025",
+                "value": "Data Center $5.4B",
+                "change": "+39% YoY；含CPU"
+              }
+            ],
+            "history": "[Omdia 估计 Google TPU 价值量 60-90 亿美元并认为其正在获取 NVIDIA 份额](source:SRC-OMDIA-TPU-202412)。",
+            "current": "[Amazon 表示 Graviton+Trainium 合计年化收入超过 100 亿美元且三位数增长](source:SRC-AMZN-Q4-2025)；[Broadcom AI revenue 84 亿美元](source:SRC-AVGO-FY26-Q1)。",
+            "future": "[Omdia 预计 custom ASIC/ASSP 继续 gaining traction](source:SRC-OMDIA-AI-PROCESSORS-20250828)；替代主要先发生在规模稳定、可专用化的云工作负载。",
+            "quality": "多源同向；口径混合且未给统一份额",
+            "source_ids": [
+              "SRC-OMDIA-TPU-202412",
+              "SRC-AMZN-Q4-2025",
+              "SRC-AVGO-FY26-Q1",
+              "SRC-AMD-Q4-2025",
+              "SRC-OMDIA-AI-PROCESSORS-20250828"
+            ]
+          },
+          "expectation_rows": [
+            {
+              "entity": "Google TPU",
+              "current_period": "2024E",
+              "current_actual_time": "2024",
+              "current_metric": "[价值量约$6B-$9B](source:SRC-OMDIA-TPU-202412)",
+              "guidance_period": "继续增长",
+              "guidance_actual_time": "2025以后",
+              "guidance_metric": "Omdia判断shipments足以获取份额。",
+              "comparability": "第三方估计，非Alphabet分部披露。",
+              "source_ids": [
+                "SRC-OMDIA-TPU-202412"
+              ]
+            },
+            {
+              "entity": "Amazon Trainium/Graviton",
+              "current_period": "2025末",
+              "current_actual_time": "2025",
+              "current_metric": "[combined annual run rate >$10B](source:SRC-AMZN-Q4-2025)",
+              "guidance_period": "2026供给",
+              "guidance_actual_time": "2026上半年",
+              "guidance_metric": "Trainium3供给接近全部承诺。",
+              "comparability": "含CPU Graviton，不能当纯ASIC收入。",
+              "source_ids": [
+                "SRC-AMZN-Q4-2025"
+              ]
+            }
+          ]
+        }
+      ],
+      "search_artifact": {
+        "search_execution_status": "completed",
+        "parser_status": "gpt_verified_source_parse",
+        "source_universe_plan": {
+          "priority_sources": [
+            "Omdia",
+            "company filings and product disclosures",
+            "NVIDIA CUDA material",
+            "cloud custom-silicon disclosures"
+          ],
+          "cutoff_policy": "only sources visible on or before 2026-03-28"
+        },
+        "exa_search_plan": {
+          "direct_query": "data center AI accelerator share CUDA TCO customer lock custom ASIC TPU Trainium AMD before 2026-03-28",
+          "expected_fields": [
+            "economic share",
+            "software ecosystem",
+            "real-workload TCO",
+            "customer commitment",
+            "substitution"
+          ]
+        },
+        "metric_candidate_plan": {
+          "rule": "one primary metric per causal stage plus one or two cross-checks and one refutation metric",
+          "candidate_classes": [
+            "share",
+            "ecosystem",
+            "TCO",
+            "lock-in",
+            "second-source"
+          ]
+        },
+        "evidence_summary": [
+          "NVIDIA controls the integrated platform while custom ASICs form a rapidly growing second route; exact standardized share remains unavailable publicly."
+        ],
+        "gap_summary": [
+          "No directly comparable global accelerator vendor-share table.",
+          "No independent cross-platform cost-per-token history.",
+          "Cloud custom-silicon disclosures mix CPU, accelerator and network value."
+        ],
+        "completed_at": "2026-07-14"
+      }
+    },
+    {
+      "question_id": "compute_q4_financial",
+      "conclusion": "产业需求已明确进入公司财务：NVIDIA Data Center 单季收入由 36.2 亿美元增至 623 亿美元，FY2026 FCF 达 965.8 亿美元；Broadcom AI revenue 在不到一年内由 44 亿美元以上升至 84 亿美元，FY2025 FCF 269 亿美元；AMD Data Center 也增长但口径含 CPU。财务兑现并非没有代价：NVIDIA FY2026 GAAP gross margin 为 71.1%，低于 Blackwell 放量前的高点，Microsoft 巨额 capex 压低当期 FCF，说明下一阶段要看收入增长能否继续覆盖系统复杂度和资本强度。",
+      "logic_summary": "按收入 -> ASP/mix -> margin/经营杠杆 -> orders/guidance -> OCF/FCF 建立公司财务桥，不把产业订单直接等同于股东现金流。",
+      "conclusion_strength": "高：NVIDIA/Broadcom收入、利润和现金流均有官方披露；纯GPU ASP、Broadcom纯ASIC margin仍不披露。",
+      "mechanism": {
+        "support": "平台收入、公司利润和自由现金流同步增长，财务兑现明确。",
+        "refute": "margin 正常化、系统成本、客户 capex 的现金流压力以及 custom ASIC 竞争可能削弱后续盈利弹性。"
+      },
+      "target_impact": "NVIDIA 与 Broadcom 通过财务兑现门槛，AMD 需拆分 CPU/accelerator；是否可投资仍由 Q5 估值和 Q6 反证决定。",
+      "source_ids": [
+        "SRC-NVDA-FY23-Q4",
+        "SRC-NVDA-FY24-Q2",
+        "SRC-NVDA-FY24-Q4",
+        "SRC-NVDA-FY25-Q4",
+        "SRC-NVDA-FY26-Q4",
+        "SRC-AVGO-FY25-Q2",
+        "SRC-AVGO-FY25-Q3",
+        "SRC-AVGO-FY25-Q4",
+        "SRC-AVGO-FY26-Q1",
+        "SRC-AMD-Q4-2025",
+        "SRC-DELL-FY26-Q4",
+        "SRC-MSFT-FY26-Q2-CALL"
+      ],
+      "stages": [
+        {
+          "stage_id": "revenue",
+          "status": "强兑现",
+          "source_ids": [
+            "SRC-NVDA-FY23-Q4",
+            "SRC-NVDA-FY24-Q2",
+            "SRC-NVDA-FY24-Q4",
+            "SRC-NVDA-FY25-Q4",
+            "SRC-NVDA-FY26-Q4",
+            "SRC-AVGO-FY25-Q2",
+            "SRC-AVGO-FY25-Q3",
+            "SRC-AVGO-FY26-Q1",
+            "SRC-AMD-Q4-2025"
+          ],
+          "metric": {
+            "name": "AI accelerator/Data Center 收入",
+            "trendKind": "time_series",
+            "series": [
+              {
+                "label": "NVIDIA 2022-11至2023-01",
+                "value": "Data Center $3.62B",
+                "change": "基线"
+              },
+              {
+                "label": "NVIDIA 2023-11至2024-01",
+                "value": "$18.4B",
+                "change": "约5.1x"
+              },
+              {
+                "label": "NVIDIA 2024-11至2025-01",
+                "value": "$35.6B",
+                "change": "+93% YoY"
+              },
+              {
+                "label": "NVIDIA 2025-11至2026-01",
+                "value": "$62.3B",
+                "change": "+75% YoY"
+              },
+              {
+                "label": "Broadcom 2025-11至2026-01",
+                "value": "AI $8.4B",
+                "change": "+106% YoY"
+              }
+            ],
+            "history": "NVIDIA 同口径 Data Center 序列覆盖 S 曲线前后，是最强财务验证。",
+            "current": "[NVIDIA Q4 FY26 Data Center revenue 623 亿美元](source:SRC-NVDA-FY26-Q4)，[Broadcom Q1 FY26 AI revenue 84 亿美元](source:SRC-AVGO-FY26-Q1)，[AMD Q4 2025 Data Center 54 亿美元](source:SRC-AMD-Q4-2025)。",
+            "future": "NVIDIA total guide 与 Broadcom AI guide 继续增长，但 AMD 没有纯 accelerator guide。",
+            "quality": "官方强；公司口径需分开",
+            "source_ids": [
+              "SRC-NVDA-FY23-Q4",
+              "SRC-NVDA-FY24-Q2",
+              "SRC-NVDA-FY24-Q4",
+              "SRC-NVDA-FY25-Q4",
+              "SRC-NVDA-FY26-Q4",
+              "SRC-AVGO-FY25-Q2",
+              "SRC-AVGO-FY25-Q3",
+              "SRC-AVGO-FY26-Q1",
+              "SRC-AMD-Q4-2025"
+            ]
+          },
+          "expectation_rows": [
+            {
+              "entity": "NVIDIA",
+              "current_period": "FY2026 Q4",
+              "current_actual_time": "2025-11至2026-01",
+              "current_metric": "[Data Center $62.3B](source:SRC-NVDA-FY26-Q4)",
+              "guidance_period": "FY2027 Q1",
+              "guidance_actual_time": "2026-02至04",
+              "guidance_metric": "[total revenue $78B +/-2%](source:SRC-NVDA-FY26-Q4)。",
+              "comparability": "总收入与Data Center不同口径。",
+              "source_ids": [
+                "SRC-NVDA-FY26-Q4"
+              ]
+            },
+            {
+              "entity": "Broadcom",
+              "current_period": "FY2026 Q1",
+              "current_actual_time": "2025-11至2026-01",
+              "current_metric": "[AI revenue $8.4B](source:SRC-AVGO-FY26-Q1)",
+              "guidance_period": "FY2026 Q2",
+              "guidance_actual_time": "2026-02至04",
+              "guidance_metric": "[AI semiconductor $10.7B](source:SRC-AVGO-FY26-Q1)。",
+              "comparability": "同口径actual-to-guide。",
+              "source_ids": [
+                "SRC-AVGO-FY26-Q1"
+              ]
+            }
+          ]
+        },
+        {
+          "stage_id": "price_mix",
+          "status": "高端平台mix提升，但ASP不披露",
+          "source_ids": [
+            "SRC-NVDA-FY26-Q4",
+            "SRC-NVDA-GTC-VERA-RUBIN-20260316",
+            "SRC-AVGO-FY26-Q1"
+          ],
+          "metric": {
+            "name": "高端平台 mix 与单位价值代理",
+            "trendKind": "time_series",
+            "series": [
+              {
+                "label": "NVIDIA Q4 FY26",
+                "value": "Data Center约91% of total revenue",
+                "change": "平台高度集中"
+              },
+              {
+                "label": "Rubin",
+                "value": "7 chips + 5 rack-scale systems",
+                "change": "单位系统内容提升"
+              },
+              {
+                "label": "Broadcom Q1 FY26",
+                "value": "AI revenue +106% YoY",
+                "change": "custom accelerator/network mix上升"
+              }
+            ],
+            "history": "公司不披露 GPU/ASIC 单颗 ASP 和纯软件 attach，无法精确拆 price-volume。",
+            "current": "Data Center 占 NVIDIA Q4 FY26 total revenue 约 91%，[Rubin 把价值延伸到多芯片与 rack-scale 系统](source:SRC-NVDA-GTC-VERA-RUBIN-20260316)。",
+            "future": "单位价值仍可能随 rack-scale 和软件提升，但客户 custom ASIC 与效率提升会压制长期 ASP。",
+            "quality": "可计算mix代理；缺直接ASP",
+            "source_ids": [
+              "SRC-NVDA-FY26-Q4",
+              "SRC-NVDA-GTC-VERA-RUBIN-20260316",
+              "SRC-AVGO-FY26-Q1"
+            ]
+          },
+          "expectation_rows": [
+            {
+              "entity": "NVIDIA",
+              "current_period": "FY2026 Q4",
+              "current_actual_time": "2025-11至2026-01",
+              "current_metric": "Data Center $62.3B / total $68.1B，约91%。",
+              "guidance_period": "Rubin周期",
+              "guidance_actual_time": "2026以后",
+              "guidance_metric": "系统内容继续扩张。",
+              "comparability": "收入占比不是ASP，不能推断单颗价格。",
+              "source_ids": [
+                "SRC-NVDA-FY26-Q4",
+                "SRC-NVDA-GTC-VERA-RUBIN-20260316"
+              ]
+            }
+          ]
+        },
+        {
+          "stage_id": "margin",
+          "status": "利润强兑现，margin需监控",
+          "source_ids": [
+            "SRC-NVDA-FY25-Q4",
+            "SRC-NVDA-FY26-Q4",
+            "SRC-AVGO-FY25-Q4"
+          ],
+          "metric": {
+            "name": "gross margin 与 operating income",
+            "trendKind": "time_series",
+            "series": [
+              {
+                "label": "NVIDIA FY2025",
+                "value": "GAAP gross margin约75%",
+                "change": "高点"
+              },
+              {
+                "label": "NVIDIA FY2026",
+                "value": "GAAP gross margin 71.1%",
+                "change": "约-3.9pct"
+              },
+              {
+                "label": "NVIDIA FY2026",
+                "value": "operating income $130.4B",
+                "change": "规模杠杆强"
+              }
+            ],
+            "history": "Blackwell ramp 与产品结构变化使 FY2026 margin 从高点回落，但经营利润继续大幅增长。",
+            "current": "[NVIDIA FY2026 GAAP gross margin 71.1%、operating income 1304 亿美元](source:SRC-NVDA-FY26-Q4)。",
+            "future": "[NVIDIA Q1 FY27 gross-margin guide 约75%](source:SRC-NVDA-FY26-Q4)；需验证平台爬坡后恢复，而非只看收入。",
+            "quality": "官方财务强；Broadcom AI专属margin缺失",
+            "source_ids": [
+              "SRC-NVDA-FY25-Q4",
+              "SRC-NVDA-FY26-Q4",
+              "SRC-AVGO-FY25-Q4"
+            ]
+          },
+          "expectation_rows": [
+            {
+              "entity": "NVIDIA",
+              "current_period": "FY2026",
+              "current_actual_time": "2025-02至2026-01",
+              "current_metric": "[GAAP GM 71.1%；operating income $130.4B](source:SRC-NVDA-FY26-Q4)",
+              "guidance_period": "FY2027 Q1",
+              "guidance_actual_time": "2026-02至04",
+              "guidance_metric": "[GAAP GM约75%](source:SRC-NVDA-FY26-Q4)。",
+              "comparability": "季度guide与年度actual不同期间，但同为公司GM。",
+              "source_ids": [
+                "SRC-NVDA-FY26-Q4"
+              ]
+            }
+          ]
+        },
+        {
+          "stage_id": "visibility",
+          "status": "强可见度",
+          "source_ids": [
+            "SRC-NVDA-FY26-Q4",
+            "SRC-AVGO-FY26-Q1",
+            "SRC-DELL-FY26-Q4"
+          ],
+          "metric": {
+            "name": "订单、backlog 与收入指引",
+            "trendKind": "time_series",
+            "series": [
+              {
+                "label": "NVIDIA FY27 Q1 guide",
+                "value": "total revenue $78B +/-2%",
+                "change": "高于Q4 actual $68.1B"
+              },
+              {
+                "label": "Broadcom FY26 Q2 guide",
+                "value": "AI semiconductor $10.7B",
+                "change": "+27% vs Q1 actual"
+              },
+              {
+                "label": "Dell FY27 guide",
+                "value": "AI server revenue约$50B",
+                "change": "+103% YoY"
+              }
+            ],
+            "history": "跨公司指引均指向继续增长，但口径不同。",
+            "current": "[NVIDIA total guide 780 亿美元](source:SRC-NVDA-FY26-Q4)、[Broadcom AI guide 107 亿美元](source:SRC-AVGO-FY26-Q1)、[Dell AI server guide 500 亿美元](source:SRC-DELL-FY26-Q4)。",
+            "future": "连续验证 actual vs guide；若 backlog 转收入不及预期，应先降级高估值平台。",
+            "quality": "官方强；跨公司不可相加",
+            "source_ids": [
+              "SRC-NVDA-FY26-Q4",
+              "SRC-AVGO-FY26-Q1",
+              "SRC-DELL-FY26-Q4"
+            ]
+          },
+          "expectation_rows": [
+            {
+              "entity": "NVIDIA",
+              "current_period": "Q4 FY26 actual",
+              "current_actual_time": "2025-11至2026-01",
+              "current_metric": "[total $68.1B](source:SRC-NVDA-FY26-Q4)",
+              "guidance_period": "Q1 FY27",
+              "guidance_actual_time": "2026-02至04",
+              "guidance_metric": "[total $78B +/-2%](source:SRC-NVDA-FY26-Q4)。",
+              "comparability": "同公司连续季度。",
+              "source_ids": [
+                "SRC-NVDA-FY26-Q4"
+              ]
+            },
+            {
+              "entity": "Broadcom",
+              "current_period": "Q1 FY26 actual",
+              "current_actual_time": "2025-11至2026-01",
+              "current_metric": "[AI $8.4B](source:SRC-AVGO-FY26-Q1)",
+              "guidance_period": "Q2 FY26",
+              "guidance_actual_time": "2026-02至04",
+              "guidance_metric": "[AI $10.7B](source:SRC-AVGO-FY26-Q1)。",
+              "comparability": "同口径actual-to-guide。",
+              "source_ids": [
+                "SRC-AVGO-FY26-Q1"
+              ]
+            }
+          ]
+        },
+        {
+          "stage_id": "cash_flow",
+          "status": "强兑现但资本链现金流分化",
+          "source_ids": [
+            "SRC-NVDA-FY26-Q4",
+            "SRC-AVGO-FY25-Q4",
+            "SRC-MSFT-FY26-Q2-CALL"
+          ],
+          "metric": {
+            "name": "OCF/FCF 与资本占用",
+            "trendKind": "time_series",
+            "series": [
+              {
+                "label": "NVIDIA FY2026",
+                "value": "FCF $96.6B",
+                "change": "强现金转化"
+              },
+              {
+                "label": "Broadcom FY2025",
+                "value": "FCF $26.9B",
+                "change": "+39%"
+              },
+              {
+                "label": "Microsoft FY26 Q2",
+                "value": "OCF $35.8B / FCF $5.9B",
+                "change": "高capex压低FCF"
+              }
+            ],
+            "history": "供应商端高毛利转为强 FCF；客户端为建设算力承担高资本支出。",
+            "current": "[NVIDIA FY2026 FCF 965.8 亿美元](source:SRC-NVDA-FY26-Q4)，[Broadcom FY2025 FCF 269 亿美元、增长 39%](source:SRC-AVGO-FY25-Q4)。",
+            "future": "[Microsoft 当季 OCF 358 亿美元但 FCF 仅 59 亿美元](source:SRC-MSFT-FY26-Q2-CALL)，表明下游 ROI/现金流是下一轮 capex 的约束。",
+            "quality": "官方现金流强；Broadcom含软件业务",
+            "source_ids": [
+              "SRC-NVDA-FY26-Q4",
+              "SRC-AVGO-FY25-Q4",
+              "SRC-MSFT-FY26-Q2-CALL"
+            ]
+          },
+          "expectation_rows": [
+            {
+              "entity": "NVIDIA",
+              "current_period": "FY2026",
+              "current_actual_time": "2025-02至2026-01",
+              "current_metric": "[FCF $96.6B](source:SRC-NVDA-FY26-Q4)",
+              "guidance_period": "下一季度",
+              "guidance_actual_time": "2026-02至04",
+              "guidance_metric": "未给FCF guide。",
+              "comparability": "现金流需随收入和margin继续验证。",
+              "source_ids": [
+                "SRC-NVDA-FY26-Q4"
+              ]
+            },
+            {
+              "entity": "Broadcom",
+              "current_period": "FY2025",
+              "current_actual_time": "2024-11至2025-11",
+              "current_metric": "[FCF $26.9B，+39%](source:SRC-AVGO-FY25-Q4)",
+              "guidance_period": "FY2026",
+              "guidance_actual_time": "2025-11以后",
+              "guidance_metric": "未给AI专属FCF。",
+              "comparability": "公司FCF包含VMware软件。",
+              "source_ids": [
+                "SRC-AVGO-FY25-Q4"
+              ]
+            }
+          ]
+        }
+      ],
+      "search_artifact": {
+        "search_execution_status": "completed",
+        "parser_status": "gpt_verified_source_parse",
+        "source_universe_plan": {
+          "priority_sources": [
+            "NVIDIA/Broadcom/AMD/Dell results",
+            "company cash-flow statements",
+            "official guidance"
+          ],
+          "cutoff_policy": "only sources visible on or before 2026-03-28"
+        },
+        "exa_search_plan": {
+          "direct_query": "GPU ASIC revenue margin backlog guidance free cash flow before 2026-03-28",
+          "expected_fields": [
+            "segment revenue",
+            "price/mix",
+            "margin",
+            "visibility",
+            "cash flow"
+          ]
+        },
+        "metric_candidate_plan": {
+          "rule": "one primary metric per causal stage plus one or two cross-checks and one refutation metric",
+          "candidate_classes": [
+            "revenue",
+            "unit economics",
+            "profit",
+            "orders/guidance",
+            "cash conversion"
+          ]
+        },
+        "evidence_summary": [
+          "NVIDIA and Broadcom have converted AI demand into revenue and free cash flow; platform-specific ASP and margin disclosure remain limited."
+        ],
+        "gap_summary": [
+          "No direct GPU/ASIC ASP series.",
+          "Broadcom does not disclose custom-ASIC standalone margin or FCF.",
+          "AMD Data Center includes CPU."
+        ],
+        "completed_at": "2026-07-14"
+      }
+    },
+    {
+      "question_id": "compute_q5_pricing",
+      "conclusion": "本问未完成。当前研究包严格隔离了 2026-03-28 之后的三个月价格标签，但没有保存截面日可审计的 NVIDIA、Broadcom、AMD 市值/EV、cutoff 前一致预期、盈利上修历史和 reverse-DCF 隐含路径。已有财报足以证明盈利强，却不足以回答“市场已经定价了多少”。因此本章不能把强产业逻辑翻译成买入赔率，相关标的维持 watch_only/no_action。",
+      "logic_summary": "必须从 cutoff 当日证券价格与企业价值出发，连接 cutoff 前 EPS/FCF 预期和 reverse DCF；标签价格不得回流到研究。",
+      "conclusion_strength": "未完成：搜索计划执行，但截面估值与共识包未形成可审计证据。",
+      "mechanism": {
+        "support": "如果市场隐含增长、份额和 margin 明显低于可验证研究情景，才有预期差。",
+        "refute": "如果估值已要求多年高增长、高份额和高 margin，任何效率、custom ASIC 或 capex 反证都会放大下行。"
+      },
+      "target_impact": "GPU/ASIC 产业胜率可评估，但 NVIDIA、Broadcom、AMD 均不得因本章直接升级 actionable_long。",
+      "source_ids": [
+        "SRC-NVDA-FY26-Q4",
+        "SRC-AVGO-FY25-Q4",
+        "SRC-AVGO-FY26-Q1",
+        "SRC-AMD-Q4-2025"
+      ],
+      "stages": [
+        {
+          "stage_id": "asof_valuation",
+          "status": "缺口",
+          "source_ids": [],
+          "metric": {
+            "name": "2026-03-28 截面估值倍数",
+            "trendKind": "non_time_series",
+            "series": [],
+            "history": "当前研究包没有保存 cutoff 当日可审计 market cap、EV、P/E、EV/Sales 和 FCF yield。",
+            "current": "缺口；三个月后价格只用于 label，不能倒灌。",
+            "future": "需要来自 cutoff 可见市场数据和同期财报的独立估值快照。",
+            "quality": "关键缺口",
+            "source_ids": []
+          },
+          "expectation_rows": []
+        },
+        {
+          "stage_id": "implied_path",
+          "status": "缺口",
+          "source_ids": [],
+          "metric": {
+            "name": "市场隐含收入、份额和margin路径",
+            "trendKind": "non_time_series",
+            "series": [],
+            "history": "没有 reverse DCF 或可复算隐含路径。",
+            "current": "缺口。",
+            "future": "估值起点和cutoff前预测补齐后再计算。",
+            "quality": "依赖前序缺口",
+            "source_ids": []
+          },
+          "expectation_rows": []
+        },
+        {
+          "stage_id": "expectation_revision",
+          "status": "部分：公司guide有，consensus revisions缺",
+          "source_ids": [
+            "SRC-NVDA-FY26-Q4",
+            "SRC-AVGO-FY26-Q1",
+            "SRC-AMD-Q4-2025"
+          ],
+          "metric": {
+            "name": "cutoff 前公司指引与一致预期上修",
+            "trendKind": "time_series",
+            "series": [
+              {
+                "label": "NVIDIA FY27 Q1 guide",
+                "value": "total $78B +/-2%",
+                "change": "公司指引"
+              },
+              {
+                "label": "Broadcom FY26 Q2 guide",
+                "value": "AI $10.7B",
+                "change": "公司指引"
+              },
+              {
+                "label": "AMD Q1 2026 guide",
+                "value": "total $9.8B +/-$0.3B",
+                "change": "公司指引"
+              }
+            ],
+            "history": "公司指引可见，但没有保存每个发布日期前后 consensus 的变化。",
+            "current": "[NVIDIA](source:SRC-NVDA-FY26-Q4)、[Broadcom](source:SRC-AVGO-FY26-Q1)、[AMD](source:SRC-AMD-Q4-2025)均给出下一期指引。",
+            "future": "缺 timestamped consensus，无法判断上修空间。",
+            "quality": "公司一手强；预期差数据缺",
+            "source_ids": [
+              "SRC-NVDA-FY26-Q4",
+              "SRC-AVGO-FY26-Q1",
+              "SRC-AMD-Q4-2025"
+            ]
+          },
+          "expectation_rows": [
+            {
+              "entity": "NVIDIA",
+              "current_period": "FY2026 Q4",
+              "current_actual_time": "2025-11至2026-01",
+              "current_metric": "total $68.1B",
+              "guidance_period": "FY2027 Q1",
+              "guidance_actual_time": "2026-02至04",
+              "guidance_metric": "[guide $78B +/-2%](source:SRC-NVDA-FY26-Q4)。",
+              "comparability": "没有cutoff前consensus对照。",
+              "source_ids": [
+                "SRC-NVDA-FY26-Q4"
+              ]
+            }
+          ]
+        },
+        {
+          "stage_id": "scenario_odds",
+          "status": "无法计算",
+          "source_ids": [
+            "SRC-NVDA-FY26-Q4",
+            "SRC-AVGO-FY25-Q4",
+            "SRC-AMD-Q4-2025"
+          ],
+          "metric": {
+            "name": "悲观/基准/乐观情景收益与下行",
+            "trendKind": "non_time_series",
+            "series": [],
+            "history": "需求、控制权和财务数据可以作为情景基本面输入。",
+            "current": "没有估值起点和市场隐含路径，不能计算证券回报。",
+            "future": "先补cutoff估值和共识，再分别设增长、份额、margin与终值。",
+            "quality": "依赖估值缺口",
+            "source_ids": [
+              "SRC-NVDA-FY26-Q4",
+              "SRC-AVGO-FY25-Q4",
+              "SRC-AMD-Q4-2025"
+            ]
+          },
+          "expectation_rows": []
+        }
+      ],
+      "search_artifact": {
+        "search_execution_status": "completed",
+        "parser_status": "pending",
+        "source_universe_plan": {
+          "priority_sources": [
+            "as-of market-data provider",
+            "timestamped consensus",
+            "company filings"
+          ],
+          "cutoff_policy": "only sources visible on or before 2026-03-28"
+        },
+        "exa_search_plan": {
+          "direct_query": "NVDA AVGO AMD valuation consensus reverse DCF as of 2026-03-28",
+          "expected_fields": [
+            "price/market cap/EV",
+            "P/E/EV-Sales/FCF yield",
+            "consensus revisions",
+            "reverse DCF"
+          ]
+        },
+        "metric_candidate_plan": {
+          "rule": "one primary metric per causal stage plus one or two cross-checks and one refutation metric",
+          "candidate_classes": [
+            "valuation",
+            "implied path",
+            "expectations",
+            "scenario odds"
+          ]
+        },
+        "evidence_summary": [],
+        "gap_summary": [
+          "No auditable cutoff valuation snapshot.",
+          "No timestamped consensus revision history.",
+          "No reverse-DCF bridge."
+        ],
+        "completed_at": "2026-07-14"
+      }
+    },
+    {
+      "question_id": "compute_q6_refutation",
+      "conclusion": "GPU/ASIC 主线已有真实反证，而不是泛化“AI 泡沫”：Omdia 认为 processor growth 在 2025 附近见顶、custom ASIC/ASSP 份额上升；Alphabet 将 serving unit cost 降低 78%，NVIDIA Dynamo 也显著提高推理效率；Google TPU、Amazon Trainium 与 Broadcom custom ASIC 正在获取工作负载；AMD 因出口限制计提 4.4 亿美元 MI308 费用，NVIDIA 下一季指引不计中国 Data Center compute 收入；Microsoft 巨额 capex 令 FCF 明显低于 OCF。反证尚未推翻需求，但已经限定了 GPU 龙头份额、增长斜率和估值承受力。",
+      "logic_summary": "把真实逆向证据分别绑定工作负载/ROI、效率、custom ASIC、监管供应和财务估值，并定义季度降级动作。",
+      "conclusion_strength": "高：每个主要因果环节都有 cutoff 前真实反向来源；估值阈值因 Q5 缺口仍未量化。",
+      "mechanism": {
+        "support": "真实反证没有否定当前需求，却能阻止把 2023-2025 的增速、NVIDIA 份额和高 margin 线性外推。",
+        "refute": "若效率改善、custom ASIC 份额、出口限制和客户 FCF 压力同时增强，GPU/ASIC 行业仍增长但证券超额收益可能消失。"
+      },
+      "target_impact": "所有 GPU/ASIC 标的保持绑定触发器：capex/RPO、custom ASIC 份额、平台收入增速、margin/FCF、出口可服务市场和截面估值。",
+      "source_ids": [
+        "SRC-OMDIA-AI-PROCESSORS-20250828",
+        "SRC-GOOGL-Q4-2025-CALL",
+        "SRC-NVDA-GTC-DYNAMO-20260316",
+        "SRC-OMDIA-TPU-202412",
+        "SRC-AMZN-Q4-2025",
+        "SRC-AVGO-FY26-Q1",
+        "SRC-AMD-Q4-2025",
+        "SRC-NVDA-FY26-Q4",
+        "SRC-MSFT-FY26-Q2-CALL"
+      ],
+      "stages": [
+        {
+          "stage_id": "workload_roi",
+          "status": "增长斜率反证已出现",
+          "source_ids": [
+            "SRC-OMDIA-AI-PROCESSORS-20250828",
+            "SRC-MSFT-FY26-Q2-CALL"
+          ],
+          "metric": {
+            "name": "AI processor spending、客户FCF与capex回报",
+            "trendKind": "time_series",
+            "series": [
+              {
+                "label": "AI processor 2024",
+                "value": "$123B",
+                "change": "Omdia"
+              },
+              {
+                "label": "2025E",
+                "value": "$207B",
+                "change": "+68%"
+              },
+              {
+                "label": "2030E",
+                "value": "$286B",
+                "change": "2025-30 CAGR约6.7%"
+              },
+              {
+                "label": "Microsoft FY26 Q2",
+                "value": "OCF $35.8B / FCF $5.9B",
+                "change": "capex消耗现金"
+              }
+            ],
+            "history": "[Omdia 的路径显示 2024-25 爆发后，2025-30 的增速明显放缓](source:SRC-OMDIA-AI-PROCESSORS-20250828)。",
+            "current": "[Microsoft 当季高 capex 令 FCF 显著低于 OCF](source:SRC-MSFT-FY26-Q2-CALL)，说明客户最终需证明 AI ROI。",
+            "future": "若 cloud growth/RPO/capex guide 同时下修两个季度，需求结论降级；若收入和FCF覆盖投资，则反证未触发。",
+            "quality": "真实反向预测+客户现金流",
+            "source_ids": [
+              "SRC-OMDIA-AI-PROCESSORS-20250828",
+              "SRC-MSFT-FY26-Q2-CALL"
+            ]
+          },
+          "expectation_rows": [
+            {
+              "entity": "Omdia",
+              "current_period": "2025E",
+              "current_actual_time": "2025",
+              "current_metric": "[AI processor $207B](source:SRC-OMDIA-AI-PROCESSORS-20250828)",
+              "guidance_period": "2030E",
+              "guidance_actual_time": "2030",
+              "guidance_metric": "[$286B](source:SRC-OMDIA-AI-PROCESSORS-20250828)。",
+              "comparability": "长期仍增长，但斜率显著低于爆发期。",
+              "source_ids": [
+                "SRC-OMDIA-AI-PROCESSORS-20250828"
+              ]
+            }
+          ]
+        },
+        {
+          "stage_id": "efficiency",
+          "status": "真实反证已出现，净效应未转负",
+          "source_ids": [
+            "SRC-GOOGL-Q4-2025-CALL",
+            "SRC-NVDA-GTC-DYNAMO-20260316"
+          ],
+          "metric": {
+            "name": "每任务服务成本与推理效率",
+            "trendKind": "non_time_series",
+            "series": [
+              {
+                "label": "Alphabet",
+                "value": "Gemini serving unit cost -78%",
+                "change": "效率大幅改善"
+              },
+              {
+                "label": "NVIDIA Dynamo",
+                "value": "up to 7x inference performance",
+                "change": "同硬件产出更多token"
+              }
+            ],
+            "history": "软件和调度效率可以减少给定工作负载需要的硬件。",
+            "current": "[Alphabet serving unit cost 降低 78%](source:SRC-GOOGL-Q4-2025-CALL)，[NVIDIA Dynamo 宣称最高 7 倍推理性能](source:SRC-NVDA-GTC-DYNAMO-20260316)。",
+            "future": "若总 token/task 增长低于单位效率改善，accelerator 数量弹性将下降；当前用户、capex和订单仍更快增长。",
+            "quality": "官方披露；净效应需总量数据",
+            "source_ids": [
+              "SRC-GOOGL-Q4-2025-CALL",
+              "SRC-NVDA-GTC-DYNAMO-20260316"
+            ]
+          },
+          "expectation_rows": [
+            {
+              "entity": "Alphabet/NVIDIA",
+              "current_period": "2025-2026",
+              "current_actual_time": "2025-2026",
+              "current_metric": "单位服务成本与推理效率显著改善。",
+              "guidance_period": "持续",
+              "guidance_actual_time": "2026以后",
+              "guidance_metric": "效率软件继续部署。",
+              "comparability": "必须与总task/token同表比较，不能单独判利空。",
+              "source_ids": [
+                "SRC-GOOGL-Q4-2025-CALL",
+                "SRC-NVDA-GTC-DYNAMO-20260316"
+              ]
+            }
+          ]
+        },
+        {
+          "stage_id": "custom_asic",
+          "status": "份额迁移反证已出现",
+          "source_ids": [
+            "SRC-OMDIA-TPU-202412",
+            "SRC-AMZN-Q4-2025",
+            "SRC-AVGO-FY26-Q1",
+            "SRC-OMDIA-AI-PROCESSORS-20250828"
+          ],
+          "metric": {
+            "name": "custom ASIC 部署与收入份额",
+            "trendKind": "time_series",
+            "series": [
+              {
+                "label": "Google TPU",
+                "value": "约$6B-$9B",
+                "change": "Omdia估计"
+              },
+              {
+                "label": "Trainium+Graviton",
+                "value": "> $10B run rate",
+                "change": "triple-digit growth"
+              },
+              {
+                "label": "Broadcom AI Q1 FY26",
+                "value": "$8.4B",
+                "change": "+106% YoY"
+              }
+            ],
+            "history": "custom ASIC 已不是概念，已有收入和大规模云部署。",
+            "current": "[Omdia 认为 TPU 正获取 NVIDIA 份额](source:SRC-OMDIA-TPU-202412)，[Amazon 自研芯片年化收入超过 100 亿美元](source:SRC-AMZN-Q4-2025)。",
+            "future": "若 custom ASIC 份额连续上升且 NVIDIA Data Center 增速显著落后总 AI compute，需下调 GPU 控制权；对 Broadcom 反向上调。",
+            "quality": "多源反证强；统一份额缺",
+            "source_ids": [
+              "SRC-OMDIA-TPU-202412",
+              "SRC-AMZN-Q4-2025",
+              "SRC-AVGO-FY26-Q1",
+              "SRC-OMDIA-AI-PROCESSORS-20250828"
+            ]
+          },
+          "expectation_rows": [
+            {
+              "entity": "Custom ASIC路线",
+              "current_period": "2024-2026",
+              "current_actual_time": "2024-2026",
+              "current_metric": "TPU、Trainium与Broadcom均有规模证据。",
+              "guidance_period": "继续获取份额",
+              "guidance_actual_time": "2026以后",
+              "guidance_metric": "[Omdia预计custom ASIC/ASSP gaining traction](source:SRC-OMDIA-AI-PROCESSORS-20250828)。",
+              "comparability": "行业利多不等于NVIDIA份额利多。",
+              "source_ids": [
+                "SRC-OMDIA-AI-PROCESSORS-20250828",
+                "SRC-OMDIA-TPU-202412",
+                "SRC-AMZN-Q4-2025"
+              ]
+            }
+          ]
+        },
+        {
+          "stage_id": "regulatory_supply",
+          "status": "出口限制已造成实际损失",
+          "source_ids": [
+            "SRC-AMD-Q4-2025",
+            "SRC-NVDA-FY26-Q4"
+          ],
+          "metric": {
+            "name": "受限市场收入、费用与指引排除",
+            "trendKind": "time_series",
+            "series": [
+              {
+                "label": "AMD FY2025",
+                "value": "MI308 charges $440M",
+                "change": "出口管制造成实际费用"
+              },
+              {
+                "label": "AMD Q4 2025",
+                "value": "China sales $390M",
+                "change": "受限市场仍有敞口"
+              },
+              {
+                "label": "NVIDIA Q1 FY27 guide",
+                "value": "no China DC compute assumed",
+                "change": "可服务市场被排除"
+              }
+            ],
+            "history": "出口限制从政策风险转成费用和指引口径。",
+            "current": "[AMD 计提 MI308 出口限制相关 4.4 亿美元费用](source:SRC-AMD-Q4-2025)；[NVIDIA Q1 FY27 guide 不假设中国 Data Center compute revenue](source:SRC-NVDA-FY26-Q4)。",
+            "future": "若限制扩大至更多产品/地区或客户集中度升高，收入路径需下调；若许可恢复则反证减弱。",
+            "quality": "一手财务强",
+            "source_ids": [
+              "SRC-AMD-Q4-2025",
+              "SRC-NVDA-FY26-Q4"
+            ]
+          },
+          "expectation_rows": [
+            {
+              "entity": "AMD",
+              "current_period": "FY/Q4 2025",
+              "current_actual_time": "2025",
+              "current_metric": "[MI308 charges $440M；Q4 China sales $390M](source:SRC-AMD-Q4-2025)",
+              "guidance_period": "Q1 2026",
+              "guidance_actual_time": "2026-01至03",
+              "guidance_metric": "总收入guide已纳入当前限制。",
+              "comparability": "费用和收入均是监管影响，不应只写政策标题。",
+              "source_ids": [
+                "SRC-AMD-Q4-2025"
+              ]
+            },
+            {
+              "entity": "NVIDIA",
+              "current_period": "Q4 FY26",
+              "current_actual_time": "2025-11至2026-01",
+              "current_metric": "Data Center继续增长。",
+              "guidance_period": "Q1 FY27",
+              "guidance_actual_time": "2026-02至04",
+              "guidance_metric": "[guide不包含中国DC compute revenue](source:SRC-NVDA-FY26-Q4)。",
+              "comparability": "排除口径是可服务市场反证。",
+              "source_ids": [
+                "SRC-NVDA-FY26-Q4"
+              ]
+            }
+          ]
+        },
+        {
+          "stage_id": "financial_valuation",
+          "status": "财务尚未失速，估值阈值缺失",
+          "source_ids": [
+            "SRC-NVDA-FY26-Q4",
+            "SRC-AVGO-FY25-Q4",
+            "SRC-MSFT-FY26-Q2-CALL"
+          ],
+          "metric": {
+            "name": "收入增速、margin、FCF与估值触发器",
+            "trendKind": "time_series",
+            "series": [
+              {
+                "label": "NVIDIA FY26",
+                "value": "GM 71.1%；FCF $96.6B",
+                "change": "财务未失速"
+              },
+              {
+                "label": "Broadcom FY25",
+                "value": "FCF $26.9B",
+                "change": "+39%"
+              },
+              {
+                "label": "Microsoft FY26 Q2",
+                "value": "FCF $5.9B vs OCF $35.8B",
+                "change": "客户capex压力"
+              }
+            ],
+            "history": "供应商财务仍强，但客户资本强度和 NVIDIA margin 正常化需要监控。",
+            "current": "截面日没有出现收入/FCF崩塌；真正的证券反证仍缺 cutoff 估值阈值。",
+            "future": "季度 kill test：平台收入增速/guide转负、gross margin 连续下降、FCF转弱、客户capex/RPO下修；估值阈值待Q5补齐。",
+            "quality": "财务强；估值关键缺口",
+            "source_ids": [
+              "SRC-NVDA-FY26-Q4",
+              "SRC-AVGO-FY25-Q4",
+              "SRC-MSFT-FY26-Q2-CALL"
+            ]
+          },
+          "expectation_rows": [
+            {
+              "entity": "NVIDIA/Broadcom",
+              "current_period": "FY2025-26",
+              "current_actual_time": "2025-2026",
+              "current_metric": "收入与FCF仍强。",
+              "guidance_period": "季度监控",
+              "guidance_actual_time": "2026以后",
+              "guidance_metric": "若增长与上修转负而估值仍高则降级。",
+              "comparability": "缺as-of valuation，暂不能量化倍数阈值。",
+              "source_ids": [
+                "SRC-NVDA-FY26-Q4",
+                "SRC-AVGO-FY25-Q4"
+              ]
+            }
+          ]
+        }
+      ],
+      "search_artifact": {
+        "search_execution_status": "completed",
+        "parser_status": "gpt_verified_source_parse",
+        "source_universe_plan": {
+          "priority_sources": [
+            "Omdia contrary forecasts",
+            "cloud efficiency disclosures",
+            "custom-silicon disclosures",
+            "company export-control and cash-flow filings"
+          ],
+          "cutoff_policy": "only sources visible on or before 2026-03-28"
+        },
+        "exa_search_plan": {
+          "direct_query": "GPU ASIC downside efficiency custom ASIC export control capex ROI margin before 2026-03-28",
+          "expected_fields": [
+            "ROI/growth slope",
+            "efficiency",
+            "custom ASIC substitution",
+            "regulation",
+            "financial/valuation"
+          ]
+        },
+        "metric_candidate_plan": {
+          "rule": "one primary metric per causal stage plus one or two cross-checks and one refutation metric",
+          "candidate_classes": [
+            "demand/ROI",
+            "efficiency",
+            "substitution",
+            "regulation",
+            "financial trigger"
+          ]
+        },
+        "evidence_summary": [
+          "Observed contrary evidence exists for slower long-run growth, efficiency gains, custom-ASIC substitution, export restrictions and customer cash-flow pressure."
+        ],
+        "gap_summary": [
+          "No quantitative as-of valuation kill threshold.",
+          "No standardized custom-ASIC share series.",
+          "No global cost-per-token history."
+        ],
+        "completed_at": "2026-07-14",
+        "refuting_source_ids": [
+          "SRC-OMDIA-AI-PROCESSORS-20250828",
+          "SRC-GOOGL-Q4-2025-CALL",
+          "SRC-OMDIA-TPU-202412",
+          "SRC-AMD-Q4-2025",
+          "SRC-MSFT-FY26-Q2-CALL"
+        ],
+        "refutation_evidence_summary": [
+          "Omdia forecasts materially slower growth after the 2025 surge and rising custom-ASIC share.",
+          "Alphabet and NVIDIA disclose large efficiency gains that can reduce hardware required per task.",
+          "AMD export-control charges and NVIDIA's China-excluded guide show a realized regulatory constraint.",
+          "Microsoft's capex-heavy quarter shows customer FCF pressure despite strong demand."
+        ]
+      }
+    }
+  ]
+}
+

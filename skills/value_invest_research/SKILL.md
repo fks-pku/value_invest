@@ -46,6 +46,20 @@ Do not mix another report template into this workflow.
 
 ## S-Curve and BOM Loop
 
+Before researching any node, create or load its own `BomNodePlaybook`. The six public question labels are shared, but the causal model underneath them is node-specific. Each playbook must define:
+
+- exact node boundary, inputs, outputs, downstream recipients, representative companies, and financial validation metrics;
+- node-specific demand, market-value, effective-supply, and investment-odds equations or equivalent causal formulas;
+- exactly six question playbooks;
+- 4-7 causal stages per question, each with one primary metric, one or two cross-check metrics, and one refutation metric;
+- conclusion rules that state when the question passes, remains pending, or is refuted.
+
+Enforce:
+
+`one canonical BOM node -> one node-specific playbook -> one cutoff-frozen research run -> one report module`
+
+The canonical BOM registry and playbook registry must have exact one-to-one node-ID coverage. Never reuse HBM's chain for compute, networking, manufacturing, power/cooling, or system delivery. Never let a renderer's static prose or a generic fallback stand in for a missing node playbook. Playbooks contain no run-specific sources, dates, facts, verdicts, or presentation classes.
+
 For every canonical BOM node, research:
 
 1. Demand pull-through and unit/system elasticity.
@@ -55,9 +69,11 @@ For every canonical BOM node, research:
 5. Pricing: as-of valuation, implied expectations, revisions, and payoff odds.
 6. Refutation: observed contrary evidence, threshold, cadence, and downgrade action.
 
-Every question uses:
+Every question keeps a separate internal judgment model and causal-stage definition, but the public report compiles them into one reader-facing sequence:
 
-`判断模型 -> 具体逻辑链条 -> per-link history/expectation/first-principles -> 本问结论 -> target impact`
+`01 研究逻辑链（判断规则 + 具体因果环节） -> 02+ per-link history/expectation/first-principles -> 本问结论 -> target impact`
+
+Do not render separate public `判断模型` and `具体逻辑链条` cards. The model formula and conclusion rule explain how to judge; the causal rows explain what must happen and how each link will be tested.
 
 A BOM stage is pending until all six questions complete. Completion requires a non-empty source-universe plan, direct/Exa search plan, metric-candidate plan, completed search, per-source parsing, and strengthening evidence. Q6 is incomplete without explicit refuting evidence.
 

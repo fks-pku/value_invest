@@ -53,19 +53,29 @@ Render one `details.industry-module.bom-research-module` per canonical node. Use
 5. `市场是否已定价？`
 6. `反证是什么？`
 
+Every module must be assembled from that node's own validated node-specific `BomNodePlaybook` plus its cutoff-frozen research run. The canonical BOM registry, playbook registry, research-run node IDs, and rendered module IDs must have exact one-to-one coverage. A static renderer answer, copied causal chain, or generic fallback is not a valid module even when six visible cards exist.
+
+The shared card sequence is presentation-only. Judgment formulas, causal stages, primary/cross-check/refutation metrics, and conclusion rules must remain specific to the current node.
+
 Each card is an independent minimum research unit and begins with collapsed `bom-question-research-status`. Raw Universe/Exa queries stay internal; the status card shows only completion and evidence-gap discipline.
 
 ### Question Evidence Sequence
 
 Inside every BOM question card:
 
-1. `details.bom-step-model` / `判断模型`
-2. `details.bom-step-logic` / `具体逻辑链条`
-3. one `details.bom-stage-integrated-card` per exact logic-chain row
-4. `details.bom-step-question-conclusion` / `本问结论`
-5. `details.bom-step-target-impact` / `对标的推荐的影响`
+1. `details.bom-step-research-logic` / `研究逻辑链`
+2. one `details.bom-stage-integrated-card` per exact logic-chain row, numbered from `02`
+3. `details.bom-step-question-conclusion` / `本问结论`
+4. `details.bom-step-target-impact` / `对标的推荐的影响`
 
-The logic step contains causal links only, not metric names or values.
+The internal node playbook continues to store the judgment model and causal stages as separate domain fields. The public `研究逻辑链` compiles them into one card and must contain:
+
+- judgment model name, purpose, formula, and conclusion rule once;
+- one row per exact causal stage;
+- for each row: why the stage matters, what metric family will test it, and how the stage will be judged;
+- no observed metric values, source plans, raw searches, or verdict prose.
+
+Do not render separate public `判断模型` or `具体逻辑链条` cards. Do not repeat the model's key questions or metric families outside their corresponding causal rows.
 
 Every integrated stage card contains three collapsed `bom-stage-subcard` elements:
 

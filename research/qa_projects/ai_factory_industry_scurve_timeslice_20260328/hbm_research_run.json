@@ -1,0 +1,310 @@
+{
+  "node_id": "memory",
+  "as_of_date": "2026-03-28",
+  "run_metadata": {
+    "mode": "historical_backtest",
+    "research_scope": "HBM only; excludes server DDR5 and enterprise SSD",
+    "workflow": "domain playbook -> stage metric search -> question-specific parse -> evidence/gap review -> verdict",
+    "parser_note": "This run uses question-specific verified source summaries. No DeepSeek call was available in this runtime."
+  },
+  "questions": [
+    {
+      "question_id": "hbm_q1_demand",
+      "conclusion": "截至 2026-03-28，HBM 需求被 AI accelerator S 曲线放大拉动的证据较强：accelerator 订单和平台收入持续增长；单颗 GPU 的 HBM 容量由 H100 的 80GB 提升到 H200 的 141GB、Blackwell 的 192GB、Rubin 的最高 288GB；TrendForce 预计 HBM consumption 在 2024 年增长超过 200%，2025 年再翻倍；Micron 将 HBM TAM 从 2025 年约 350 亿美元上调到 2028 年约 1000 亿美元。核心不是只卖更多 GPU，而是“accelerator 数量 x 单颗 HBM 含量”同时上升。",
+      "logic_summary": "先验证 accelerator 数量，再验证每颗 accelerator 的 HBM GB、代际/堆叠结构，最后合并到全行业 bit 与价值量；不能直接从 AI 热度跳到 HBM TAM。",
+      "conclusion_strength": "中高：数量、单位含量与 TAM 三条证据同向；缺口是全市场 accelerator shipment 和 HBM attach rate 的连续统一序列。",
+      "mechanism": {
+        "support": "长上下文、推理并发和更高带宽要求推动每颗 accelerator 的 HBM 容量与带宽代际提升；同时 GPU/ASIC 出货和 AI server 交付扩张，形成数量与单位含量的乘法。",
+        "refute": "若 accelerator 订单下修、单位 HBM GB 停止提升、客户延后 HBM4 平台，或 HBM bit/TAM 预测连续下修，需求弹性判断必须降级。"
+      },
+      "target_impact": "需求问通过后，SK hynix、Micron、Samsung 才值得继续进入供给与控制权研究；本问只证明 HBM 池子扩大，不决定三家公司谁更值得买。",
+      "source_ids": [
+        "SRC-NVDA-FY26-Q4",
+        "SRC-DELL-FY26-Q4",
+        "SRC-NVDA-HBM-SPECS-20260316",
+        "SRC-TF-BLACKWELL-HBM-20240808",
+        "SRC-MU-FY26-Q1-PREPARED"
+      ],
+      "stages": [
+        {
+          "stage_id": "accelerator_volume",
+          "status": "成立，但缺统一出货量",
+          "source_ids": ["SRC-NVDA-FY26-Q4", "SRC-DELL-FY26-Q4"],
+          "metric": {
+            "name": "accelerator 交付需求代理",
+            "dataRequirement": "主指标应为全市场 accelerator shipments；公开口径不足时，用 NVIDIA Data Center revenue 与 Dell AI server orders/shipments/backlog 交叉验证，反证是公司指引或订单下修。",
+            "series": [
+              {"label": "2023-02", "value": "NVIDIA Data Center $3.62B", "change": "AI 加速前基线"},
+              {"label": "2024-02", "value": "NVIDIA Data Center $18.4B", "change": "约为基线 5.1 倍"},
+              {"label": "2025-02", "value": "NVIDIA Data Center $35.6B", "change": "+93% YoY"},
+              {"label": "2026-02", "value": "NVIDIA Data Center $62.3B", "change": "+75% YoY"}
+            ],
+            "history": "[NVIDIA Data Center revenue 从 2023 年初的 36.2 亿美元升至 2026 年初的 623 亿美元](source:SRC-NVDA-FY26-Q4)；[Dell FY26 AI server orders 超过 640 亿美元、shipped 超过 250 亿美元、FY27 backlog 430 亿美元](source:SRC-DELL-FY26-Q4)。",
+            "current": "数量底座显著扩大，但收入同时含 ASP/mix，不能把收入倍数直接当出货倍数。",
+            "future": "NVIDIA Q1 FY27 revenue outlook 与 Dell FY27 AI server revenue guide 说明近端交付仍在扩张。",
+            "quality": "强交付代理；缺全市场 accelerator shipment 同口径序列",
+            "source_ids": ["SRC-NVDA-FY26-Q4", "SRC-DELL-FY26-Q4"]
+          },
+          "expectation_rows": [
+            {
+              "entity": "NVIDIA",
+              "current_period": "Q4 FY2026",
+              "current_actual_time": "2025-11 至 2026-01",
+              "current_metric": "[Data Center revenue 623 亿美元](source:SRC-NVDA-FY26-Q4)。",
+              "guidance_period": "Q1 FY2027E",
+              "guidance_actual_time": "2026-02 至 2026-04",
+              "guidance_metric": "[公司总收入指引 780 亿美元 +/-2%](source:SRC-NVDA-FY26-Q4)。",
+              "comparability": "收入指引不是 accelerator 出货量，但能验证近端平台需求没有在截面前转弱。",
+              "source_ids": ["SRC-NVDA-FY26-Q4"]
+            },
+            {
+              "entity": "Dell",
+              "current_period": "FY2026",
+              "current_actual_time": "2025-02 至 2026-01",
+              "current_metric": "[AI server shipments 超过 250 亿美元，期末 backlog 430 亿美元](source:SRC-DELL-FY26-Q4)。",
+              "guidance_period": "FY2027E",
+              "guidance_actual_time": "2026-02 至 2027-01",
+              "guidance_metric": "[AI-optimized server revenue 指引约 500 亿美元，同比约 +103%](source:SRC-DELL-FY26-Q4)。",
+              "comparability": "系统收入包含非 HBM 部件，只用于确认 accelerator 交付数量底座。",
+              "source_ids": ["SRC-DELL-FY26-Q4"]
+            }
+          ]
+        },
+        {
+          "stage_id": "hbm_content",
+          "status": "强成立",
+          "source_ids": ["SRC-NVDA-HBM-SPECS-20260316", "SRC-TF-BLACKWELL-HBM-20240808"],
+          "metric": {
+            "name": "每颗 NVIDIA accelerator 的 HBM 容量",
+            "trendKind": "time_series",
+            "dataRequirement": "主体：NVIDIA 数据中心 GPU；字段：每颗 GPU 的最大 HBM 容量；单位：GB/GPU；按产品代际比较；交叉验证 bandwidth 和 stack 配置，反证是新代际容量停止提升。",
+            "series": [
+              {"label": "H100", "value": "80GB HBM3", "change": "基线"},
+              {"label": "H200", "value": "141GB HBM3E", "change": "+76% vs H100"},
+              {"label": "Blackwell", "value": "192GB HBM3E", "change": "+36% vs H200"},
+              {"label": "Blackwell Ultra", "value": "288GB HBM3E", "change": "+50% vs Blackwell"},
+              {"label": "Rubin", "value": "最高 288GB HBM4", "change": "容量持平、带宽近 3 倍"}
+            ],
+            "history": "[NVIDIA 平台从 H100 80GB、H200 141GB、Blackwell 192GB 升至 Blackwell Ultra 288GB；Rubin 最高 288GB HBM4，带宽最高 22TB/s](source:SRC-NVDA-HBM-SPECS-20260316)。",
+            "current": "单位容量在 Hopper 到 Blackwell Ultra 显著提升；Rubin 容量不再提升，但 HBM4 接口与带宽跃升说明单位价值量仍可能继续上行。",
+            "future": "下一步不是机械假设 GB 永远增长，而是跟踪 HBM4/HBM4E 的 stack 数、层数、带宽和 ASP。",
+            "quality": "官方平台规格；不同 SKU 最大容量口径需注意",
+            "source_ids": ["SRC-NVDA-HBM-SPECS-20260316"]
+          },
+          "expectation_rows": [
+            {
+              "entity": "NVIDIA",
+              "current_period": "Blackwell / Blackwell Ultra",
+              "current_actual_time": "2025-2026 平台周期",
+              "current_metric": "[最高 192GB/288GB HBM3E](source:SRC-NVDA-HBM-SPECS-20260316)。",
+              "guidance_period": "Rubin platform",
+              "guidance_actual_time": "2026 下半年起",
+              "guidance_metric": "[最高 288GB HBM4、最高 22TB/s，带宽接近 Blackwell 的 3 倍](source:SRC-NVDA-HBM-SPECS-20260316)。",
+              "comparability": "容量持平但带宽/代际升级，未来价值量不能只看 GB。",
+              "source_ids": ["SRC-NVDA-HBM-SPECS-20260316"]
+            }
+          ]
+        },
+        {
+          "stage_id": "generation_mix",
+          "status": "高端化成立",
+          "source_ids": ["SRC-TF-BLACKWELL-HBM-20240808", "SRC-TF-HBM-INDUSTRY-4Q25"],
+          "metric": {
+            "name": "HBM3E 12-high 与 HBM4 mix",
+            "dataRequirement": "主指标：高端代际/高堆叠产品在 HBM consumption 或 shipment 的占比；交叉验证认证和单 stack 容量；反证是平台延期导致采购回退成熟代际。",
+            "series": [
+              {"label": "2024", "value": "HBM3E adoption >60% of NVIDIA HBM consumption", "change": "H200 拉动"},
+              {"label": "2025E", "value": "HBM3E >85%; 12-high约40%", "change": "Blackwell/Blackwell Ultra 拉动"},
+              {"label": "2026E", "value": "HBM4 mass production by all three suppliers", "change": "资格和量产决定份额"}
+            ],
+            "seriesGap": "这是代际结构节点，不是连续财务序列；2026 HBM4 的精确 bit mix 位于付费报告。",
+            "history": "[TrendForce 预计 NVIDIA HBM3E consumption 2024 年超过 60%、2025 年超过 85%，12-high 在 2025 年约占 HBM3E 40%](source:SRC-TF-BLACKWELL-HBM-20240808)。",
+            "current": "需求从 HBM3/HBM3E 8-high 向 HBM3E 12-high 和 HBM4 升级，增加 die、堆叠和资格复杂度。",
+            "future": "2026 份额取决于 HBM4 认证，而不只是三家公司名义产能。",
+            "quality": "专业第三方结构数据；精确供应商 mix 需付费表",
+            "source_ids": ["SRC-TF-BLACKWELL-HBM-20240808", "SRC-TF-HBM-INDUSTRY-4Q25"]
+          },
+          "expectation_rows": [
+            {
+              "entity": "TrendForce",
+              "current_period": "2024-2025E",
+              "current_actual_time": "2024-2025",
+              "current_metric": "[HBM3E/12-high 占比快速上升](source:SRC-TF-BLACKWELL-HBM-20240808)。",
+              "guidance_period": "2026E",
+              "guidance_actual_time": "2026",
+              "guidance_metric": "[三家供应商进入 HBM4 mass production，但 yield 和 certification 约束近端供给](source:SRC-TF-HBM-INDUSTRY-4Q25)。",
+              "comparability": "代际 mix 不是总需求；需要和 accelerator 数量共同使用。",
+              "source_ids": ["SRC-TF-HBM-INDUSTRY-4Q25", "SRC-TF-BLACKWELL-HBM-20240808"]
+            }
+          ]
+        },
+        {
+          "stage_id": "total_demand_value",
+          "status": "未来空间大",
+          "source_ids": ["SRC-TF-BLACKWELL-HBM-20240808", "SRC-MU-FY26-Q1-PREPARED", "SRC-TF-HBM-PRICE-20240506"],
+          "metric": {
+            "name": "HBM bit growth 与 TAM",
+            "dataRequirement": "主指标：全行业 HBM bit consumption 和 TAM；交叉验证 HBM value share 和供应商 HBM revenue；反证是预测连续下修。",
+            "series": [
+              {"label": "2024", "value": "HBM consumption growth >200%", "change": "数量与单位含量共振"},
+              {"label": "2025E", "value": "HBM consumption约再翻倍", "change": "Blackwell/12-high 拉动"},
+              {"label": "2025E", "value": "HBM TAM约$35B", "change": "Micron 截面"},
+              {"label": "2028E", "value": "HBM TAM约$100B", "change": "约40% CAGR"}
+            ],
+            "history": "[TrendForce 预计 2024 年 HBM consumption 增长超过 200%、2025 年再翻倍](source:SRC-TF-BLACKWELL-HBM-20240808)。",
+            "current": "[Micron 给出 2025 年约 350 亿美元 HBM TAM](source:SRC-MU-FY26-Q1-PREPARED)，而 [HBM ASP 约为 DDR5 的五倍，2025 年 value share 可能超过 DRAM 的 30%](source:SRC-TF-HBM-PRICE-20240506)。",
+            "future": "[Micron 将 2028 年 HBM TAM 上调到约 1000 亿美元，约 40% CAGR](source:SRC-MU-FY26-Q1-PREPARED)。",
+            "quality": "公司 TAM 与第三方 bit/value 数据同向；不能将不同口径相加",
+            "source_ids": ["SRC-TF-BLACKWELL-HBM-20240808", "SRC-MU-FY26-Q1-PREPARED", "SRC-TF-HBM-PRICE-20240506"]
+          },
+          "expectation_rows": [
+            {
+              "entity": "Micron",
+              "current_period": "CY2025E",
+              "current_actual_time": "2025",
+              "current_metric": "[HBM TAM约350亿美元](source:SRC-MU-FY26-Q1-PREPARED)。",
+              "guidance_period": "CY2028E",
+              "guidance_actual_time": "2028",
+              "guidance_metric": "[HBM TAM约1000亿美元，约40% CAGR](source:SRC-MU-FY26-Q1-PREPARED)。",
+              "comparability": "公司 TAM 是市场预期锚，不是 Micron 收入指引；需要用供应商出货与 ASP 逐年验证。",
+              "source_ids": ["SRC-MU-FY26-Q1-PREPARED"]
+            }
+          ]
+        }
+      ],
+      "search_artifact": {
+        "search_execution_status": "completed",
+        "parser_status": "gpt_verified_source_parse",
+        "source_universe_plan": {"priority_sources": ["NVIDIA platform specifications", "memory supplier filings/earnings", "TrendForce HBM research"], "cutoff_policy": "visible on or before 2026-03-28"},
+        "exa_search_plan": {"direct_query": "HBM accelerator shipments capacity per GPU HBM consumption TAM before 2026-03-28", "expected_fields": ["accelerator volume", "HBM GB per accelerator", "generation mix", "HBM bit/TAM"]},
+        "metric_candidate_plan": {"rule": "one primary metric per causal stage plus cross-check and refutation metric", "candidate_classes": ["accelerator volume", "unit content", "generation mix", "total bit/value"]},
+        "evidence_summary": ["Accelerator demand proxy, per-GPU HBM content, high-end generation mix and HBM bit/TAM all point upward."],
+        "gap_summary": ["No public five-point series for global accelerator shipments or HBM attach rate."],
+        "completed_at": "2026-07-14"
+      }
+    },
+    {
+      "question_id": "hbm_q2_supply",
+      "conclusion": "截至截面日，HBM 的名义扩产仍不能直接消除短缺：先进 DRAM wafer、较高 wafer trade ratio、die yield、TSV/堆叠后端和客户认证共同压缩有效供给。Micron 的 2026 全年 HBM 已完成价量协议，TrendForce 仍把 yield、certification 和 back-end capacity 视为近端约束；但 Samsung 已开始 HBM4 商业出货并预计 2026 HBM 销售超过三倍，说明供给释放正在加速。结论应是“2026 仍偏紧，但必须动态监控新增合格供给”，而不是永久短缺。",
+      "logic_summary": "从 wafer 投入开始，逐层扣除 die yield、TSV/stacking/packaging 吞吐和 qualification，最终只看 qualified delivery 与已锁定需求的差。",
+      "conclusion_strength": "中高：售罄/价量协议和认证延迟支持偏紧；供给扩张速度与精确 S-D ratio 仍缺公开连续数据。",
+      "mechanism": {"support": "HBM 比普通 DRAM 消耗更多 wafer、后端工序更复杂且必须逐客户认证，因此有效供给释放慢于名义 capex。", "refute": "Samsung HBM4 量产、三家后端扩产和良率改善会增加合格供给；若 ASP、交期和售罄状态转弱，瓶颈判断应迅速降级。"},
+      "target_impact": "供给仍紧支持 HBM chokepoint，但 Samsung 扩产和 HBM4 多供意味着稀缺溢价不是永久的；标的强度必须与各家 qualified capacity 而非总 DRAM 产能绑定。",
+      "source_ids": ["SRC-MU-FY26-Q1-PREPARED", "SRC-TF-HBM-INDUSTRY-4Q25", "SRC-TF-HBM-BULLETIN-20260320", "SRC-SAMSUNG-HBM4-20260212", "SRC-SA-COWOS-HBM-2023"],
+      "stages": [
+        {
+          "stage_id": "wafer_allocation",
+          "status": "约束成立",
+          "source_ids": ["SRC-TF-HBM-INDUSTRY-4Q25", "SRC-MU-FY26-Q1-PREPARED"],
+          "metric": {"name": "HBM wafer/TSV capacity", "series": [{"label": "4Q25", "value": "SK hynix TSV capacity约150K", "change": "TrendForce 口径下领先"}, {"label": "CY2026 supply", "value": "Micron 全年价量协议完成", "change": "可售供给已锁定"}], "history": "[TrendForce 4Q25 HBM 分析给出 SK hynix 约 150K TSV capacity，并指出三家扩产](source:SRC-TF-HBM-INDUSTRY-4Q25)。", "current": "[Micron 表示 2026 全部 HBM supply 已完成 price and volume agreements](source:SRC-MU-FY26-Q1-PREPARED)，说明可售先进产能在截面上仍紧。", "future": "三家都扩充前后端，名义产能会增长；需跟踪何时转为合格出货。", "quality": "方向清晰；缺统一月度 wafer/TSV capacity 序列", "source_ids": ["SRC-TF-HBM-INDUSTRY-4Q25", "SRC-MU-FY26-Q1-PREPARED"]},
+          "expectation_rows": [{"entity": "TrendForce / Micron", "current_period": "4Q25 / CY2026 supply", "current_actual_time": "2025-10 至 2026-12", "current_metric": "[SK hynix TSV capacity约150K；Micron 2026 supply价量协议完成](source:SRC-TF-HBM-INDUSTRY-4Q25)。", "guidance_period": "2026E", "guidance_actual_time": "2026", "guidance_metric": "三家扩产，但可交付供给仍受后端与认证限制。", "comparability": "产能与合同不是同口径，只用于供给漏斗的不同环节。", "source_ids": ["SRC-TF-HBM-INDUSTRY-4Q25", "SRC-MU-FY26-Q1-PREPARED"]}]
+        },
+        {
+          "stage_id": "die_yield",
+          "status": "关键但数据缺口大",
+          "source_ids": ["SRC-SAMSUNG-HBM4-20260212", "SRC-TF-HBM-INDUSTRY-4Q25"],
+          "metric": {"name": "HBM die yield / stable yield signal", "series": [{"label": "2025-10", "value": "TrendForce：yield constrains near-term supply", "change": "行业约束"}, {"label": "2026-02", "value": "Samsung称HBM4量产初期稳定良率", "change": "单公司正向释放"}], "history": "[TrendForce 把 yield 列为 HBM 近端供给约束](source:SRC-TF-HBM-INDUSTRY-4Q25)。", "current": "[Samsung 宣称 HBM4 量产初期取得稳定良率并开始商业出货](source:SRC-SAMSUNG-HBM4-20260212)，这是供给释放证据，但不是三家可比 yield 表。", "future": "若三家 HBM4 yield 同步稳定，短缺会由 die yield 转向后端和认证。", "quality": "公司定性披露；缺可比百分比", "source_ids": ["SRC-SAMSUNG-HBM4-20260212", "SRC-TF-HBM-INDUSTRY-4Q25"]},
+          "expectation_rows": [{"entity": "Samsung", "current_period": "2026-02", "current_actual_time": "2026-02", "current_metric": "[HBM4 已商业出货，称初期良率稳定](source:SRC-SAMSUNG-HBM4-20260212)。", "guidance_period": "CY2026E", "guidance_actual_time": "2026", "guidance_metric": "[预计 HBM 销售较 2025 年超过三倍并扩充 HBM4 产能](source:SRC-SAMSUNG-HBM4-20260212)。", "comparability": "销售增长同时受份额、出货和 ASP 影响，不能单独推导 yield。", "source_ids": ["SRC-SAMSUNG-HBM4-20260212"]}]
+        },
+        {
+          "stage_id": "stacking_packaging",
+          "status": "约束成立",
+          "source_ids": ["SRC-SA-COWOS-HBM-2023", "SRC-TF-HBM-INDUSTRY-4Q25"],
+          "metric": {"name": "TSV/stacking/packaging capacity", "series": [{"label": "2023", "value": "CoWoS + HBM identified as AI capacity constraints", "change": "瓶颈起点"}, {"label": "4Q25", "value": "back-end capacity buildout remains critical", "change": "约束延续"}], "history": "[SemiAnalysis 早期把 CoWoS 与 HBM 识别为 AI accelerator capacity constraints](source:SRC-SA-COWOS-HBM-2023)。", "current": "[TrendForce 4Q25 仍把 back-end capacity buildout、yield 和 certification 列为 HBM 供给关键](source:SRC-TF-HBM-INDUSTRY-4Q25)。", "future": "12-high/HBM4 增加后端复杂度，供给释放取决于新线爬坡而非只看 DRAM wafer。", "quality": "机制证据强；缺月度后端吞吐表", "source_ids": ["SRC-SA-COWOS-HBM-2023", "SRC-TF-HBM-INDUSTRY-4Q25"]},
+          "expectation_rows": [{"entity": "TrendForce", "current_period": "4Q25", "current_actual_time": "2025-10", "current_metric": "[后端扩产、yield、认证共同约束供给](source:SRC-TF-HBM-INDUSTRY-4Q25)。", "guidance_period": "2026E", "guidance_actual_time": "2026", "guidance_metric": "三家扩充 back-end，但量产和认证节奏仍决定实际 shipment。", "comparability": "公开摘要未给月度吞吐数，因此只做方向判断。", "source_ids": ["SRC-TF-HBM-INDUSTRY-4Q25"]}]
+        },
+        {
+          "stage_id": "qualification",
+          "status": "资格仍是硬门槛",
+          "source_ids": ["SRC-TF-HBM-BULLETIN-20260320", "SRC-SAMSUNG-HBM4-20260212"],
+          "metric": {"name": "HBM4 qualification / commercial shipment", "series": [{"label": "2026-02", "value": "Samsung商业出货HBM4", "change": "供给开始释放"}, {"label": "2026-03", "value": "TrendForce：更高规格导致三家验证延迟", "change": "平台排期风险"}], "history": "HBM3E/HBM4 都需经过 GPU/ASIC 客户验证，样品和量产资格不能互换。", "current": "[Samsung 已宣布 HBM4 商业出货](source:SRC-SAMSUNG-HBM4-20260212)，但 [TrendForce 3 月 20 日仍称更高规格使主要供应商验证延迟，早期 HBM4 shipment 有下修风险](source:SRC-TF-HBM-BULLETIN-20260320)。", "future": "资格进度会把需求在 HBM4 与 HBM3E 之间重新分配，并影响客户平台发布时间。", "quality": "官方出货与第三方认证跟踪存在张力，需按客户/产品拆分", "source_ids": ["SRC-TF-HBM-BULLETIN-20260320", "SRC-SAMSUNG-HBM4-20260212"]},
+          "expectation_rows": [{"entity": "TrendForce", "current_period": "2026-03", "current_actual_time": "2026-03-20", "current_metric": "[HBM4 qualification 延迟，早期 shipment 有下修风险](source:SRC-TF-HBM-BULLETIN-20260320)。", "guidance_period": "2026E", "guidance_actual_time": "2026", "guidance_metric": "未满足的 HBM4 需求可能回流 HBM3E，客户也可能推迟下一代平台。", "comparability": "这是明确反向证据：它同时削弱 HBM4 供给和短期平台需求时点。", "source_ids": ["SRC-TF-HBM-BULLETIN-20260320"]}]
+        },
+        {
+          "stage_id": "qualified_delivery",
+          "status": "偏紧但正在松动",
+          "source_ids": ["SRC-MU-FY26-Q1-PREPARED", "SRC-SAMSUNG-HBM4-20260212"],
+          "metric": {"name": "sold-out / price-volume agreement coverage", "series": [{"label": "CY2025", "value": "HBM TAM约$35B", "change": "需求基准"}, {"label": "CY2026", "value": "Micron supply价量协议完成", "change": "合同层紧张"}, {"label": "CY2026E", "value": "Samsung HBM sales >3x", "change": "新增合格供给/份额"}], "history": "[Micron 2026 全年 HBM supply 已完成价量协议](source:SRC-MU-FY26-Q1-PREPARED)。", "current": "合同覆盖支持供需偏紧，但 [Samsung 预计 2026 HBM 销售超过三倍并扩产](source:SRC-SAMSUNG-HBM4-20260212)，说明供给曲线正在上移。", "future": "需要把三家 shipment、ASP、lead time 与资格按季度放在一起，才能判断何时由短缺转为平衡。", "quality": "公司合同/销售指引强；缺全行业 S-D ratio 公开表", "source_ids": ["SRC-MU-FY26-Q1-PREPARED", "SRC-SAMSUNG-HBM4-20260212"]},
+          "expectation_rows": [{"entity": "Micron / Samsung", "current_period": "2026 supply status", "current_actual_time": "2026", "current_metric": "[Micron 2026 supply价量协议完成](source:SRC-MU-FY26-Q1-PREPARED)。", "guidance_period": "CY2026E", "guidance_actual_time": "2026", "guidance_metric": "[Samsung HBM sales预计超过三倍并扩充HBM4产能](source:SRC-SAMSUNG-HBM4-20260212)。", "comparability": "一边是已锁定需求，一边是新增供给；二者共同说明紧张仍在但不是永久不变。", "source_ids": ["SRC-MU-FY26-Q1-PREPARED", "SRC-SAMSUNG-HBM4-20260212"]}]
+        }
+      ],
+      "search_artifact": {
+        "search_execution_status": "completed",
+        "parser_status": "gpt_verified_source_parse",
+        "source_universe_plan": {"priority_sources": ["memory supplier filings", "TrendForce HBM S-D/capacity reports", "SemiAnalysis packaging analysis"], "cutoff_policy": "visible on or before 2026-03-28"},
+        "exa_search_plan": {"direct_query": "HBM wafer capacity yield TSV packaging qualification sold out 2026 before 2026-03-28", "expected_fields": ["wafer capacity", "yield", "backend capacity", "qualification", "contract coverage"]},
+        "metric_candidate_plan": {"rule": "follow the effective-supply funnel", "candidate_classes": ["wafer", "yield", "stacking/packaging", "qualification", "qualified delivery"]},
+        "evidence_summary": ["Qualified supply remains constrained by wafer allocation, yield, backend throughput and qualification, while Samsung expansion is a real offsetting force."],
+        "gap_summary": ["No public comparable supplier yield or full-industry quarterly S-D ratio."],
+        "completed_at": "2026-07-14"
+      }
+    },
+    {
+      "question_id": "hbm_q3_control",
+      "conclusion": "HBM 供给控制权集中于 SK hynix、Samsung、Micron，但需要按“合格出货份额”而非普通 DRAM 份额判断。公开资料显示 SK hynix 的 2025 HBM bit output 约 59%，2026E 约 50%；Samsung 约从 20% 升至 28%，Micron 为剩余份额。SK hynix 仍控制最大合格供给和既有客户关系，但 Samsung HBM4 商业出货及认证进展意味着控制权正从单一龙头向三供格局边际扩散；Micron 已锁定 2026 价量，但 HBM4 验证节奏仍需持续跟踪。",
+      "logic_summary": "先看合格 bit/revenue/shipment share，再看代际资格、稳定量产和合同锁定，最后评估 second source 是否改变份额。",
+      "conclusion_strength": "中高：三家格局和龙头方向清楚；精确份额口径来自第三方且会随认证快速变化。",
+      "mechanism": {"support": "HBM 需要先进工艺、堆叠、客户认证和长期合作，合格供给集中在三家公司，龙头可将技术与交付优势转成 allocation 和份额。", "refute": "Samsung HBM4 量产、客户三供策略和 Micron 扩张会降低单一供应商锁定；控制权可能在行业增长中重新分配。"},
+      "target_impact": "本问不支持把 HBM 行业增长平均分配给三家公司。SK hynix 胜率最高但份额有下行风险；Samsung 是份额修复路线；Micron 是高弹性但资格需验证的路线。",
+      "source_ids": ["SRC-TF-HBM-SHARE-20260309", "SRC-TF-HBM-BULLETIN-20260212", "SRC-SAMSUNG-HBM4-20260212", "SRC-SKHYNIX-FY25", "SRC-MU-FY26-Q1-PREPARED"],
+      "stages": [
+        {"stage_id": "qualified_share", "status": "SK hynix 领先但份额边际下降", "source_ids": ["SRC-TF-HBM-SHARE-20260309"], "metric": {"name": "全球 HBM bit output share", "series": [{"label": "2025E SK hynix", "value": "59%", "change": "龙头"}, {"label": "2025E Samsung", "value": "20%", "change": "落后"}, {"label": "2025E Micron", "value": "约21%", "change": "推算余量"}, {"label": "2026E SK hynix", "value": "50%", "change": "份额下降"}, {"label": "2026E Samsung", "value": "28%", "change": "份额修复"}], "history": "[TrendForce 相关公开材料预计 SK hynix 2025 HBM bit output share 约59%、Samsung约20%；2026E SK hynix约50%、Samsung约28%](source:SRC-TF-HBM-SHARE-20260309)。", "current": "份额高度集中，但龙头并非份额永远上升。Micron 份额为公开数据余量推算，不能当独立披露。", "future": "HBM4 资格会重新分配 2026 份额。", "quality": "第三方预测；bit share 与 revenue/share 不可混用", "source_ids": ["SRC-TF-HBM-SHARE-20260309"]}, "expectation_rows": [{"entity": "TrendForce", "current_period": "2025E", "current_actual_time": "2025", "current_metric": "[SK hynix约59%、Samsung约20% HBM bit output](source:SRC-TF-HBM-SHARE-20260309)。", "guidance_period": "2026E", "guidance_actual_time": "2026", "guidance_metric": "[SK hynix约50%、Samsung约28%](source:SRC-TF-HBM-SHARE-20260309)。", "comparability": "同为 bit output forecast，可比较方向；仍非最终实际份额。", "source_ids": ["SRC-TF-HBM-SHARE-20260309"]}]},
+        {"stage_id": "generation_lead", "status": "HBM4 领先关系变化中", "source_ids": ["SRC-TF-HBM-BULLETIN-20260212", "SRC-SAMSUNG-HBM4-20260212"], "metric": {"name": "HBM4 qualification / shipment timing", "series": [{"label": "2026-02-12", "value": "Samsung开始商业出货HBM4", "change": "代际领先信号"}, {"label": "2026-02-12", "value": "TrendForce：Samsung验证领先、SK volume领先、Micron略慢", "change": "三家分化"}], "history": "HBM3E 时期 SK hynix 量产和客户关系领先。", "current": "[TrendForce 2 月认为 Samsung HBM4 验证领先、SK hynix 保持 volume leadership、Micron 略慢](source:SRC-TF-HBM-BULLETIN-20260212)；[Samsung 同日宣布商业出货 HBM4](source:SRC-SAMSUNG-HBM4-20260212)。", "future": "代际控制权可能与存量 HBM3E 份额不同。", "quality": "官方出货 + 第三方资格跟踪", "source_ids": ["SRC-TF-HBM-BULLETIN-20260212", "SRC-SAMSUNG-HBM4-20260212"]}, "expectation_rows": [{"entity": "TrendForce", "current_period": "2026-02", "current_actual_time": "2026-02", "current_metric": "[Samsung 验证领先，SK volume领先，Micron略慢](source:SRC-TF-HBM-BULLETIN-20260212)。", "guidance_period": "Rubin/HBM4 cycle", "guidance_actual_time": "2026", "guidance_metric": "NVIDIA 可能采用三供以满足需求。", "comparability": "资格领先不等于全年份额，仍需实际 shipment 验证。", "source_ids": ["SRC-TF-HBM-BULLETIN-20260212"]}]},
+        {"stage_id": "time_to_volume", "status": "SK volume领先，Samsung在追赶", "source_ids": ["SRC-SKHYNIX-FY25", "SRC-SAMSUNG-HBM4-20260212"], "metric": {"name": "mass-production / volume-shipment status", "series": [{"label": "FY2025 SK hynix", "value": "HBM3E/HBM4 stable supply leadership", "change": "既有量产优势"}, {"label": "2026-02 Samsung", "value": "HBM4 mass production and commercial shipment", "change": "追赶兑现"}], "history": "[SK hynix FY25 业绩将纪录表现归因于 AI memory/HBM leadership](source:SRC-SKHYNIX-FY25)。", "current": "[Samsung HBM4 已进入 mass production/commercial shipment](source:SRC-SAMSUNG-HBM4-20260212)，说明 second source 不再只是样品。", "future": "需要季度 shipment 和客户平台覆盖验证量产份额。", "quality": "公司披露定性；缺同口径 volume 表", "source_ids": ["SRC-SKHYNIX-FY25", "SRC-SAMSUNG-HBM4-20260212"]}, "expectation_rows": [{"entity": "Samsung", "current_period": "2026-02", "current_actual_time": "2026-02", "current_metric": "[HBM4商业出货](source:SRC-SAMSUNG-HBM4-20260212)。", "guidance_period": "CY2026E", "guidance_actual_time": "2026", "guidance_metric": "[HBM sales预计超过三倍](source:SRC-SAMSUNG-HBM4-20260212)。", "comparability": "销售增速需拆为份额、量和价。", "source_ids": ["SRC-SAMSUNG-HBM4-20260212"]}]},
+        {"stage_id": "contract_lock", "status": "Micron 合同可见度强", "source_ids": ["SRC-MU-FY26-Q1-PREPARED"], "metric": {"name": "price-volume agreements / sold-out status", "series": [{"label": "CY2026", "value": "Micron entire HBM supply covered by price-volume agreements", "change": "收入可见度"}], "history": "HBM 合同锁定通常早于交付，反映客户为供给确定性付费。", "current": "[Micron 2026 全年 HBM supply 已完成 price and volume agreements](source:SRC-MU-FY26-Q1-PREPARED)。", "future": "协议提高可见度，但不证明 Micron 最终份额或 margin 一定高于同行。", "quality": "官方强证据；缺合同价格和客户分布", "source_ids": ["SRC-MU-FY26-Q1-PREPARED"]}, "expectation_rows": [{"entity": "Micron", "current_period": "CY2026 supply", "current_actual_time": "2026", "current_metric": "[价量协议全部完成](source:SRC-MU-FY26-Q1-PREPARED)。", "guidance_period": "CY2026", "guidance_actual_time": "2026", "guidance_metric": "已锁定供给将随客户平台资格转为 shipment/revenue。", "comparability": "合同覆盖强，但需实际出货与毛利验证。", "source_ids": ["SRC-MU-FY26-Q1-PREPARED"]}]},
+        {"stage_id": "second_source", "status": "替代正在发生", "source_ids": ["SRC-TF-HBM-BULLETIN-20260212", "SRC-TF-HBM-SHARE-20260309"], "metric": {"name": "second-source qualification and share change", "series": [{"label": "2025E", "value": "SK hynix 59% / Samsung 20%", "change": "集中"}, {"label": "2026E", "value": "SK hynix 50% / Samsung 28%", "change": "三供扩散"}], "history": "客户采用多供是降低单一 HBM 风险的自然结果。", "current": "[TrendForce 认为 NVIDIA 可能采用三家供应商；份额预测显示 Samsung 上升、SK hynix 回落](source:SRC-TF-HBM-BULLETIN-20260212)。", "future": "若 Samsung/Micron 按期通过关键平台并提升份额，SK hynix 仍是龙头但超额控制权会减弱。", "quality": "第三方预测；需要 actual shipment 验证", "source_ids": ["SRC-TF-HBM-BULLETIN-20260212", "SRC-TF-HBM-SHARE-20260309"]}, "expectation_rows": [{"entity": "TrendForce", "current_period": "2025E", "current_actual_time": "2025", "current_metric": "HBM供给高度集中。", "guidance_period": "2026E", "guidance_actual_time": "2026", "guidance_metric": "[三供策略和Samsung份额修复](source:SRC-TF-HBM-SHARE-20260309)。", "comparability": "这是龙头控制权的核心反证。", "source_ids": ["SRC-TF-HBM-SHARE-20260309"]}]}
+      ],
+      "search_artifact": {"search_execution_status": "completed", "parser_status": "gpt_verified_source_parse", "source_universe_plan": {"priority_sources": ["supplier filings", "TrendForce qualification/share bulletins"], "cutoff_policy": "visible on or before 2026-03-28"}, "exa_search_plan": {"direct_query": "HBM supplier bit share qualification HBM4 volume leadership second source before 2026-03-28", "expected_fields": ["share", "qualification", "mass production", "contracts", "second source"]}, "metric_candidate_plan": {"rule": "share must be qualified by generation and customer", "candidate_classes": ["qualified share", "generation lead", "time to volume", "contract lock", "second source"]}, "evidence_summary": ["SK hynix retains volume leadership, while Samsung HBM4 progress and a three-supplier strategy weaken permanent single-vendor control."], "gap_summary": ["Precise paid tables and actual customer-specific shipment shares remain unavailable."], "completed_at": "2026-07-14"}
+    },
+    {
+      "question_id": "hbm_q4_financial",
+      "conclusion": "HBM 已经进入财务兑现阶段，但公司层报表仍混有普通 DRAM/NAND 周期。SK hynix FY2024 至 FY2025 收入由 66.2 万亿韩元增至 97.1 万亿、营业利润由 23.5 万亿增至 47.2 万亿，营业利润率由 35% 升至 49%；Micron FY2023 至 FY2025 收入由 155 亿美元升至 374 亿、毛利率由 -9% 升至约 40%，且 HBM、高容量 DIMM 与低功耗 server DRAM 合计收入在 FY2025 达 100 亿美元、同比超过五倍。利润兑现很强，但不能把全部利润改善都归因于 HBM；仍需分产品收入、capex、库存和 FCF 做桥接。",
+      "logic_summary": "依次看 HBM 价量、收入/mix、利润率、capex/库存和现金流，避免只用总公司利润率替代 HBM 财务桥。",
+      "conclusion_strength": "中高：公司利润和高价值产品 mix 同时改善；HBM 独立收入与毛利披露仍不充分。",
+      "mechanism": {"support": "HBM 高 ASP、高价值 mix 和已锁定需求推动收入与利润率上升，规模扩大后经营现金流改善。", "refute": "普通 DRAM 价格周期、库存回补或会计减值反转也能改善利润；若 capex/库存增速超过现金流，HBM 利润质量会下降。"},
+      "target_impact": "SK hynix 的财务兑现确定性最高；Micron 的利润弹性更大但混合周期更强；Samsung 需把 HBM4 份额修复转成可辨认的 Memory/DS 利润。",
+      "source_ids": ["SRC-SKHYNIX-FY24", "SRC-SKHYNIX-FY25", "SRC-MU-FY25", "SRC-MU-FY25-Q4-PREPARED", "SRC-MU-FY26-Q1", "SRC-SAMSUNG-FY25"],
+      "stages": [
+        {"stage_id": "price_volume", "status": "价量同时改善但 HBM 独立序列不足", "source_ids": ["SRC-MU-FY26-Q1-PREPARED", "SRC-MU-FY25-Q4-PREPARED"], "metric": {"name": "HBM/high-value memory revenue growth", "series": [{"label": "Micron FY2024", "value": "HBM+high-capacity DIMM+LP server DRAM约<$2B", "change": "由FY25 >5x反推上限"}, {"label": "Micron FY2025", "value": "$10B", "change": ">5x YoY"}, {"label": "Micron FY26 Q1", "value": "HBM/data-center revenue record", "change": "继续创新高"}], "history": "[Micron FY2025 HBM、高容量 DIMM 与 LP server DRAM 合计收入达到 100 亿美元、同比超过五倍](source:SRC-MU-FY25-Q4-PREPARED)。", "current": "[FY26 Q1 HBM 和 data-center revenue 再创新高，2026 supply 完成价量协议](source:SRC-MU-FY26-Q1-PREPARED)。", "future": "实际财务桥仍需 HBM 独立 shipment、ASP 和 revenue。", "quality": "高价值产品组合口径，不是纯 HBM", "source_ids": ["SRC-MU-FY25-Q4-PREPARED", "SRC-MU-FY26-Q1-PREPARED"]}, "expectation_rows": [{"entity": "Micron", "current_period": "FY2025 / FY26 Q1", "current_actual_time": "2024-09 至 2025-11", "current_metric": "[高价值 server memory组合收入100亿美元、HBM revenue再创新高](source:SRC-MU-FY25-Q4-PREPARED)。", "guidance_period": "CY2026 supply", "guidance_actual_time": "2026", "guidance_metric": "[全部HBM供给已完成价量协议](source:SRC-MU-FY26-Q1-PREPARED)。", "comparability": "组合收入比纯 HBM 更宽，不能直接推 HBM revenue。", "source_ids": ["SRC-MU-FY25-Q4-PREPARED", "SRC-MU-FY26-Q1-PREPARED"]}]},
+        {"stage_id": "revenue_mix", "status": "高价值 mix 明显上升", "source_ids": ["SRC-SKHYNIX-FY24", "SRC-SAMSUNG-FY25", "SRC-MU-FY25-Q4-PREPARED"], "metric": {"name": "HBM/high-value memory mix", "series": [{"label": "SK hynix 4Q24", "value": "HBM >40% of DRAM revenue", "change": "已成核心mix"}, {"label": "Micron FY2025", "value": "$10B high-value server memory combo", "change": ">5x"}, {"label": "Samsung 4Q25", "value": "Memory record revenue/profit", "change": "HBM等高价值产品拉动"}], "history": "[SK hynix 4Q24 HBM 已超过 DRAM revenue 的 40%](source:SRC-SKHYNIX-FY24)。", "current": "[Micron 高价值 server memory 组合快速增长](source:SRC-MU-FY25-Q4-PREPARED)；[Samsung Memory 4Q25 因 HBM 等高价值产品创纪录](source:SRC-SAMSUNG-FY25)。", "future": "HBM4 mix 能否继续提高决定利润池是否延续。", "quality": "公司口径不一致，不能横向直接排名", "source_ids": ["SRC-SKHYNIX-FY24", "SRC-MU-FY25-Q4-PREPARED", "SRC-SAMSUNG-FY25"]}, "expectation_rows": [{"entity": "SK hynix / Micron / Samsung", "current_period": "4Q24-FY2025", "current_actual_time": "2024-10 至 2025-12", "current_metric": "三家公司高价值 memory mix 均上升。", "guidance_period": "2026E", "guidance_actual_time": "2026", "guidance_metric": "HBM4与高端AI memory继续扩张。", "comparability": "各家公司披露维度不同，需分别追踪，不能合并成份额表。", "source_ids": ["SRC-SKHYNIX-FY24", "SRC-MU-FY25-Q4-PREPARED", "SRC-SAMSUNG-FY25"]}]},
+        {"stage_id": "margin", "status": "利润率大幅兑现", "source_ids": ["SRC-SKHYNIX-FY24", "SRC-SKHYNIX-FY25", "SRC-MU-FY25"], "metric": {"name": "供应商 gross/operating margin", "multiSeries": [{"name": "SK hynix operating margin", "points": [{"label": "FY2024", "value": "35%", "change": "恢复并创新高"}, {"label": "FY2025", "value": "49%", "change": "+14pct"}]}, {"name": "Micron GAAP gross margin", "points": [{"label": "FY2023", "value": "-9%", "change": "周期低点"}, {"label": "FY2024", "value": "22.4%", "change": "+31.4pct"}, {"label": "FY2025", "value": "39.8%", "change": "+17.4pct"}]}], "seriesGap": "每家公司不足5个同口径年度点；但方向足以说明利润兑现。", "history": "[SK hynix FY2024 operating margin 35%](source:SRC-SKHYNIX-FY24)；[FY2025 升至49%](source:SRC-SKHYNIX-FY25)。[Micron FY2023-FY2025 gross margin从-9%升至39.8%](source:SRC-MU-FY25)。", "current": "利润率提升与 HBM/高端 mix 同向，但也包含普通 DRAM/NAND 价格回升。", "future": "若 HBM 供需偏紧延续，margin 可维持高位；供给释放和普通 DRAM 周期反转会压低。", "quality": "官方财务强；归因需拆产品", "source_ids": ["SRC-SKHYNIX-FY24", "SRC-SKHYNIX-FY25", "SRC-MU-FY25"]}, "expectation_rows": [{"entity": "SK hynix / Micron", "current_period": "FY2025", "current_actual_time": "2024-09 至 2025-12（多实体混合）", "current_metric": "[SK operating margin 49%；Micron gross margin 39.8%](source:SRC-SKHYNIX-FY25)。", "guidance_period": "CY2026", "guidance_actual_time": "2026", "guidance_metric": "已锁定 HBM 需求支持高端 mix，但没有同口径全年 margin guide。", "comparability": "一个是 operating margin，一个是 gross margin，只比较趋势，不比较绝对值。", "source_ids": ["SRC-SKHYNIX-FY25", "SRC-MU-FY25"]}]},
+        {"stage_id": "capital_inventory", "status": "扩产资本强度高", "source_ids": ["SRC-MU-FY25", "SRC-TF-HBM-INDUSTRY-4Q25"], "metric": {"name": "capex 与库存质量", "series": [{"label": "Micron FY2025 capex", "value": "$13.8B", "change": "约37% of revenue"}, {"label": "4Q25 supplier plan", "value": "三家扩充HBM前后端", "change": "供给释放路径"}], "history": "[Micron FY2025 net capex 138 亿美元](source:SRC-MU-FY25)。", "current": "高 capex 是扩供必要条件，也会提高周期反转时的下行风险。", "future": "需要把 capex 转为 qualified capacity，并跟踪库存是否快于收入增长。", "quality": "capex 官方；缺三家公司可比 HBM 专属 capex/inventory", "source_ids": ["SRC-MU-FY25", "SRC-TF-HBM-INDUSTRY-4Q25"]}, "expectation_rows": [{"entity": "Micron / industry", "current_period": "FY2025 / 4Q25", "current_actual_time": "2024-09 至 2025-10", "current_metric": "[Micron capex 138亿美元，三家扩充HBM产能](source:SRC-MU-FY25)。", "guidance_period": "2026E", "guidance_actual_time": "2026", "guidance_metric": "供给将增长，但资格和后端决定兑现速度。", "comparability": "capex 不是供给，需经过产能漏斗。", "source_ids": ["SRC-MU-FY25", "SRC-TF-HBM-INDUSTRY-4Q25"]}]},
+        {"stage_id": "cash_flow", "status": "Micron 已转正，跨公司仍需补齐", "source_ids": ["SRC-MU-FY25"], "metric": {"name": "operating cash flow / FCF", "series": [{"label": "Micron FY2024 OCF", "value": "$8.51B", "change": "恢复"}, {"label": "Micron FY2025 OCF", "value": "$17.53B", "change": "+106%"}, {"label": "Micron FY2025 adjusted FCF", "value": "$3.72B", "change": "高capex后仍为正"}], "history": "[Micron FY2025 operating cash flow 175.3 亿美元，FY2024 为 85.1 亿美元；adjusted FCF 37.2 亿美元](source:SRC-MU-FY25)。", "current": "现金流已改善，但 HBM 专属现金流无法从公开报表分离。", "future": "若 HBM mix 和价量协议兑现，OCF 应继续覆盖更高 capex；若库存/应收上升，需降级。", "quality": "官方现金流；单公司且非HBM专属", "source_ids": ["SRC-MU-FY25"]}, "expectation_rows": [{"entity": "Micron", "current_period": "FY2025", "current_actual_time": "2024-09 至 2025-08", "current_metric": "[OCF 175.3亿美元、adjusted FCF 37.2亿美元](source:SRC-MU-FY25)。", "guidance_period": "CY2026", "guidance_actual_time": "2026", "guidance_metric": "HBM价量协议提高收入可见度，但公开材料未给HBM专属FCF指引。", "comparability": "用公司现金流校验利润质量，不把它全部归因于HBM。", "source_ids": ["SRC-MU-FY25", "SRC-MU-FY26-Q1-PREPARED"]}]}
+      ],
+      "search_artifact": {"search_execution_status": "completed", "parser_status": "gpt_verified_source_parse", "source_universe_plan": {"priority_sources": ["supplier annual results", "10-K", "prepared remarks"], "cutoff_policy": "visible on or before 2026-03-28"}, "exa_search_plan": {"direct_query": "HBM revenue mix gross margin operating margin capex inventory cash flow before 2026-03-28", "expected_fields": ["price/volume", "revenue mix", "margin", "capex/inventory", "cash flow"]}, "metric_candidate_plan": {"rule": "bridge price-volume to cash flow", "candidate_classes": ["HBM revenue", "mix", "margin", "capital intensity", "FCF"]}, "evidence_summary": ["HBM/high-value memory mix and supplier profitability improved sharply, but product-specific cash-flow attribution remains incomplete."], "gap_summary": ["HBM standalone revenue, margin, capex and FCF are not consistently disclosed across suppliers."], "completed_at": "2026-07-14"}
+    },
+    {
+      "question_id": "hbm_q5_pricing",
+      "conclusion": "本问未完成。当前证据包能证明 HBM 需求、供给和利润兑现，却没有保存 2026-03-28 截面的 SK hynix、Micron、Samsung 同口径估值、盈利一致预期、盈利上修历史和 reverse-DCF 隐含 HBM 路径。没有这些数据，不能判断市场是否已把 2028 年 HBM 空间、各家份额和高利润率充分定价，也不能把产业强度直接翻译成可买赔率。",
+      "logic_summary": "必须从 cutoff 当日估值出发，反推市场隐含 HBM 收入/份额/margin，再与研究情景和盈利上修比较；本轮没有可靠完成该数据链。",
+      "conclusion_strength": "未完成：保持 watch_only/no_action，不输出赔率结论。",
+      "mechanism": {"support": "若市场隐含的 HBM 份额、ASP 和 margin 明显低于可验证基准情景，才存在预期差。", "refute": "若估值已要求龙头长期维持高份额、高 ASP 和高 margin，任何供给释放都会造成估值压缩。"},
+      "target_impact": "由于定价问未通过，HBM 相关标的不能升级为 actionable_long；当前只能比较产业胜率，不能给出买入排序。",
+      "source_ids": ["SRC-SKHYNIX-FY25", "SRC-MU-FY25", "SRC-SAMSUNG-FY25"],
+      "stages": [
+        {"stage_id": "asof_valuation", "status": "缺口", "source_ids": [], "metric": {"name": "2026-03-28 截面估值倍数", "series": [], "history": "未保存 cutoff 当日三家公司 EV、P/E、P/B 和 FCF yield。", "current": "缺口。", "future": "需要用当日股价、净债务和 cutoff 前一致预期重建。", "quality": "关键缺口", "source_ids": []}, "expectation_rows": []},
+        {"stage_id": "implied_hbm_path", "status": "缺口", "source_ids": [], "metric": {"name": "市场隐含 HBM 收入/份额/margin", "series": [], "history": "没有 reverse DCF 或 segment bridge。", "current": "缺口。", "future": "估值输入补齐后才能反推。", "quality": "关键缺口", "source_ids": []}, "expectation_rows": []},
+        {"stage_id": "earnings_revisions", "status": "缺口", "source_ids": [], "metric": {"name": "cutoff 前盈利一致预期与 revisions", "series": [], "history": "当前源包没有保存三家公司 2025-2026 consensus revision history。", "current": "缺口。", "future": "需使用带时间戳的 consensus 数据。", "quality": "关键缺口", "source_ids": []}, "expectation_rows": []},
+        {"stage_id": "scenario_odds", "status": "无法计算", "source_ids": ["SRC-SKHYNIX-FY25", "SRC-MU-FY25", "SRC-SAMSUNG-FY25"], "metric": {"name": "情景收益/下行", "series": [], "history": "需求与财务数据可用于后续情景输入，但没有估值起点。", "current": "不能计算胜率/赔率。", "future": "先补估值和隐含路径，再做悲观/基准/乐观情景。", "quality": "依赖前序缺口", "source_ids": ["SRC-SKHYNIX-FY25", "SRC-MU-FY25", "SRC-SAMSUNG-FY25"]}, "expectation_rows": []}
+      ],
+      "search_artifact": {"search_execution_status": "completed", "parser_status": "pending", "source_universe_plan": {"priority_sources": ["as-of market data", "timestamped consensus", "company filings"], "cutoff_policy": "valuation inputs must be observable on 2026-03-28"}, "exa_search_plan": {"direct_query": "SK hynix Micron Samsung valuation consensus as of 2026-03-28", "expected_fields": ["price", "EV", "P/E", "P/B", "FCF yield", "consensus revisions"]}, "metric_candidate_plan": {"rule": "no pricing verdict without as-of valuation and implied path", "candidate_classes": ["valuation", "implied HBM path", "revisions", "scenario odds"]}, "evidence_summary": [], "gap_summary": ["No reliable timestamped as-of valuation/consensus package was produced in this run."], "completed_at": null}
+    },
+    {
+      "question_id": "hbm_q6_refutation",
+      "conclusion": "已观察到的反向证据不是“AI 泡沫”这种泛风险，而是三条具体变化：第一，TrendForce 在 2026-03-20 指出更高 HBM4 规格导致验证延迟，可能下修早期 HBM4 shipment 并推迟下一代平台；第二，Samsung 已商业出货 HBM4、预计 2026 HBM 销售超过三倍并扩产，供给释放可能压低中期稀缺溢价；第三，TrendForce 预计 SK hynix HBM bit share 从 2025 年约 59% 降至 2026 年约 50%，Samsung 从约 20% 升至 28%，说明行业增长不等于龙头份额永远稳定。反证已真实存在，但尚缺明确季度阈值和 cutoff 估值触发器。",
+      "logic_summary": "分别对需求、单位含量、有效供给、控制权和财务/定价建立真实反向来源；不把假设性风险清单冒充反证。",
+      "conclusion_strength": "中高：已有真实反向来源；量化阈值和估值触发器仍需下一轮补齐。",
+      "mechanism": {"support": "HBM 主线仍强，但真实反证能阻止把短缺、份额和利润率线性外推。", "refute": "如果反证被后续实际数据否定，例如验证恢复、份额稳定且 ASP/margin 继续上行，则不应仅凭一次延迟降级长期 S 曲线。"},
+      "target_impact": "SK hynix 需监控份额和 HBM4 资格，Samsung 需监控扩产是否转利润，Micron 需监控验证和份额；任何标的都必须绑定需求、供给、份额、margin 和估值触发器。",
+      "source_ids": ["SRC-TF-HBM-BULLETIN-20260320", "SRC-SAMSUNG-HBM4-20260212", "SRC-TF-HBM-SHARE-20260309", "SRC-TF-HBM-INDUSTRY-4Q25"],
+      "stages": [
+        {"stage_id": "demand_trigger", "status": "已出现平台时点下修风险", "source_ids": ["SRC-TF-HBM-BULLETIN-20260320"], "metric": {"name": "HBM4 shipment / platform timing revision", "series": [{"label": "2026-03-20", "value": "early HBM4 shipments face downward revision", "change": "客户平台可能延后"}], "history": "在强需求背景下，平台时点仍可能因 memory qualification 延后。", "current": "[TrendForce 指出 HBM4 验证延迟可能下修早期 shipment，并促使客户推迟下一代 AI 平台](source:SRC-TF-HBM-BULLETIN-20260320)。", "future": "若 delay 扩大到 accelerator/server shipment，应降级近端需求。", "quality": "真实反向来源；缺量化 shipment 下修幅度", "source_ids": ["SRC-TF-HBM-BULLETIN-20260320"]}, "expectation_rows": [{"entity": "TrendForce", "current_period": "2026-03-20", "current_actual_time": "2026-03-20", "current_metric": "HBM4 validation delay。", "guidance_period": "2026E", "guidance_actual_time": "2026", "guidance_metric": "[早期shipment下修、下一代平台可能延迟](source:SRC-TF-HBM-BULLETIN-20260320)。", "comparability": "这是需求时点反证，不等于长期TAM消失。", "source_ids": ["SRC-TF-HBM-BULLETIN-20260320"]}]},
+        {"stage_id": "content_trigger", "status": "尚未触发，但需监控", "source_ids": ["SRC-NVDA-HBM-SPECS-20260316"], "metric": {"name": "HBM GB per accelerator generation", "series": [{"label": "H100", "value": "80GB", "change": "基线"}, {"label": "H200", "value": "141GB", "change": "+76%"}, {"label": "Blackwell", "value": "192GB", "change": "+36%"}, {"label": "Rubin", "value": "最高288GB", "change": "容量未下降"}], "history": "[单位 HBM 容量尚未出现代际下降](source:SRC-NVDA-HBM-SPECS-20260316)。", "current": "该反证在截面日未触发；Rubin 容量持平/上升且带宽显著提升。", "future": "若后续平台通过更少 HBM 达到同等吞吐，则需求弹性下降。", "quality": "官方规格，可量化监控", "source_ids": ["SRC-NVDA-HBM-SPECS-20260316"]}, "expectation_rows": [{"entity": "NVIDIA", "current_period": "Hopper-Blackwell", "current_actual_time": "2022-2026", "current_metric": "单位HBM容量持续提升。", "guidance_period": "Rubin", "guidance_actual_time": "2026 下半年", "guidance_metric": "[最高288GB HBM4、22TB/s](source:SRC-NVDA-HBM-SPECS-20260316)。", "comparability": "暂不构成反证；后续每代复核。", "source_ids": ["SRC-NVDA-HBM-SPECS-20260316"]}]},
+        {"stage_id": "supply_trigger", "status": "已出现供给释放证据", "source_ids": ["SRC-SAMSUNG-HBM4-20260212", "SRC-TF-HBM-INDUSTRY-4Q25"], "metric": {"name": "qualified capacity / supplier expansion", "series": [{"label": "4Q25", "value": "三家扩HBM前后端", "change": "供给斜率上升"}, {"label": "2026-02", "value": "Samsung HBM4商业出货", "change": "qualified supply释放"}, {"label": "2026E", "value": "Samsung HBM sales >3x", "change": "供给/份额扩张"}], "history": "[TrendForce 记录三家供应商扩充 HBM 前后端](source:SRC-TF-HBM-INDUSTRY-4Q25)。", "current": "[Samsung HBM4 已商业出货，并预计2026 HBM销售超过三倍](source:SRC-SAMSUNG-HBM4-20260212)。", "future": "若新增合格供给伴随 ASP/lead time 下行，则 shortage thesis 降级。", "quality": "真实反向供给证据；缺全行业qualified capacity序列", "source_ids": ["SRC-SAMSUNG-HBM4-20260212", "SRC-TF-HBM-INDUSTRY-4Q25"]}, "expectation_rows": [{"entity": "Samsung", "current_period": "2026-02", "current_actual_time": "2026-02", "current_metric": "[HBM4商业出货](source:SRC-SAMSUNG-HBM4-20260212)。", "guidance_period": "CY2026E", "guidance_actual_time": "2026", "guidance_metric": "[HBM sales预计超过三倍并扩产](source:SRC-SAMSUNG-HBM4-20260212)。", "comparability": "这是供给短缺的直接反证，但最终要看总需求与ASP。", "source_ids": ["SRC-SAMSUNG-HBM4-20260212"]}]},
+        {"stage_id": "control_trigger", "status": "龙头份额下行风险已出现", "source_ids": ["SRC-TF-HBM-SHARE-20260309"], "metric": {"name": "qualified HBM bit share change", "series": [{"label": "SK hynix 2025E", "value": "59%", "change": "龙头"}, {"label": "SK hynix 2026E", "value": "50%", "change": "-9pct"}, {"label": "Samsung 2025E", "value": "20%", "change": "落后"}, {"label": "Samsung 2026E", "value": "28%", "change": "+8pct"}], "history": "[TrendForce 份额预测显示 SK hynix 下行、Samsung 上行](source:SRC-TF-HBM-SHARE-20260309)。", "current": "控制权仍集中，但份额迁移是具体反证。", "future": "若实际出货印证，SK hynix 的行业胜率仍高但公司超额利润需下调；Samsung 反向上调。", "quality": "第三方预测；需actual shipment验证", "source_ids": ["SRC-TF-HBM-SHARE-20260309"]}, "expectation_rows": [{"entity": "TrendForce", "current_period": "2025E", "current_actual_time": "2025", "current_metric": "SK hynix约59%、Samsung约20%。", "guidance_period": "2026E", "guidance_actual_time": "2026", "guidance_metric": "[SK hynix约50%、Samsung约28%](source:SRC-TF-HBM-SHARE-20260309)。", "comparability": "同口径预测，适合做份额反证。", "source_ids": ["SRC-TF-HBM-SHARE-20260309"]}]},
+        {"stage_id": "financial_pricing_trigger", "status": "财务未触发，估值阈值缺失", "source_ids": ["SRC-SKHYNIX-FY25", "SRC-MU-FY25"], "metric": {"name": "margin / inventory / FCF / valuation trigger", "series": [{"label": "SK hynix FY2025", "value": "operating margin 49%", "change": "未触发"}, {"label": "Micron FY2025", "value": "gross margin 39.8%; adjusted FCF $3.72B", "change": "未触发"}], "history": "[SK hynix 与 Micron 利润率/现金流在截面前仍改善](source:SRC-SKHYNIX-FY25)。", "current": "财务反证尚未触发，但由于 Q5 估值数据缺失，无法判断价格端是否已过度定价。", "future": "季度监控 gross/operating margin、inventory days、FCF、earnings revisions 和 as-of valuation。", "quality": "财务可跟踪；估值阈值未完成", "source_ids": ["SRC-SKHYNIX-FY25", "SRC-MU-FY25"]}, "expectation_rows": [{"entity": "SK hynix / Micron", "current_period": "FY2025", "current_actual_time": "2024-09 至 2025-12（多实体混合）", "current_metric": "利润率与FCF尚未恶化。", "guidance_period": "季度监控", "guidance_actual_time": "2026 起", "guidance_metric": "若margin下行、inventory上升、FCF恶化且估值仍高，则降级。", "comparability": "阈值需要公司历史波动和估值数据校准。", "source_ids": ["SRC-SKHYNIX-FY25", "SRC-MU-FY25"]}]}
+      ],
+      "search_artifact": {"search_execution_status": "completed", "parser_status": "gpt_verified_source_parse", "source_universe_plan": {"priority_sources": ["TrendForce contrary bulletins", "supplier capacity announcements", "supplier financials"], "cutoff_policy": "only observed contrary evidence visible by 2026-03-28"}, "exa_search_plan": {"direct_query": "HBM downside demand delay capacity expansion share loss margin risk before 2026-03-28", "expected_fields": ["demand delay", "unit-content reversal", "qualified supply release", "share loss", "financial trigger"]}, "metric_candidate_plan": {"rule": "each thesis link needs an observed refuting source or explicit not-triggered metric", "candidate_classes": ["demand", "content", "supply", "control", "financial/pricing"]}, "evidence_summary": ["Observed contrary evidence exists for HBM4 timing, Samsung supply expansion, and SK hynix share erosion."], "refuting_source_ids": ["SRC-TF-HBM-BULLETIN-20260320", "SRC-SAMSUNG-HBM4-20260212"], "refutation_evidence_summary": ["Qualification delays may defer HBM4 shipments/platform timing, while verified Samsung commercial shipments and capacity expansion may loosen scarcity. Share-migration reporting remains a lead until independently verified."], "gap_summary": ["Quarterly quantitative thresholds and as-of valuation triggers remain incomplete."], "completed_at": "2026-07-14"}
+    }
+  ]
+}

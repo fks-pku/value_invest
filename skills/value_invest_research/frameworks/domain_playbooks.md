@@ -12,7 +12,7 @@ The default industry/theme and technology-route playbook is now S-curve-first. T
 4. Whether future industry space is large enough to justify deeper research.
 5. Whether demand is likely to exceed supply somewhere on the chain.
 
-In this first pass, BOM is a presentation map rather than a full competition workbook. It should explain upstream/midstream/downstream, key companies, what each node receives, what it produces, and whom it supplies. Detailed competitive landscape, profit-pool ownership, and chokepoint scorecards are follow-up deepening modules, not default first-pass requirements.
+In this first pass, detailed competitive-landscape, profit-pool, and chokepoint workbooks remain optional deepening modules. The BOM is not merely a presentation map, however: every displayed node must have its own six-question playbook and evidence run. The first pass may omit optional modules, but it may not replace node-specific demand, supply, controller, financial, pricing, and refutation research with generic prose.
 
 Default S-curve Q map:
 
@@ -20,6 +20,39 @@ Default S-curve Q map:
 - Q2 Industry space and S-curve stage: whether demand is entering early acceleration and future space is large enough.
 - Q3 Technical chain and BOM presentation: who sits on the chain, what each node does, and where supply-demand tension may appear.
 - Q4 Target observation list: companies directly exposed to the S curve, with watch intensity and verification triggers.
+
+## Universal Per-BOM Playbook Contract
+
+This contract applies across industries. HBM is an implementation example, not a privileged exception.
+
+The required mapping is:
+
+`one canonical BOM node -> one node-specific playbook -> one cutoff-frozen research run -> one report module`
+
+Before source collection, the application must compare the canonical BOM registry with the playbook registry. Their node-ID sets must match exactly. Missing, duplicate, extra, generic-fallback, or renderer-owned playbooks fail the contract.
+
+Each node playbook defines:
+
+1. Stable identity and boundary: node ID, public name, description, explicit exclusions, inputs, outputs, downstream recipients, representative companies, and financial validation metrics.
+2. Node-specific master equations or causal formulas for demand, market value, effective supply, and investment odds.
+3. Exactly six question playbooks: demand, supply, control, financial realization, pricing, and refutation.
+4. Four to seven causal stages per question.
+5. One primary metric, one or two cross-check metrics, and one refutation metric for every stage.
+
+The judgment model and causal stages are separate domain fields because they answer different engineering questions: the model defines the formula and conclusion rule; the stages define the causal path to test. This separation is internal only. The canonical public renderer compiles both into one `研究逻辑链` card, so changing HTML presentation never changes the domain playbook and changing a playbook never introduces renderer classes.
+6. A purpose, formula, conclusion rule, and failure condition for every question.
+
+Stable domain playbooks must not contain report dates, source IDs, observations, conclusions, gaps, target states, or CSS. One cutoff-frozen research run owns those changing fields and must match the playbook's node, question, and stage IDs exactly.
+
+Shared labels do not justify shared mechanics. The playbook author must derive each chain from the node itself. Examples:
+
+- Compute demand may run from workloads to deployable compute capacity, platform orders, and accelerator revenue.
+- HBM supply runs through advanced wafer allocation, die yield, TSV/stacking, packaging/test, qualification, and contracted delivery.
+- Networking supply may run through switch silicon, optics/electrical components, port-speed qualification, system interoperability, and deployment timing.
+- Power/cooling supply may run through equipment capacity, component lead times, grid/site readiness, engineering labor, commissioning, and backlog conversion.
+- System delivery may run through accelerator allocation, component availability, rack integration, customer acceptance, deployment, and cash conversion.
+
+Do not search until the node-specific stages and metric plan exist. Do not render a node until a matching research run exists. Do not assert a node stage until all six questions pass semantic completion.
 
 ## Mechanism Depth Protocol
 
@@ -248,7 +281,7 @@ The following BOM nodes are the default decomposition targets for the 行业空�
 | Custom ASIC/XPU | Broadcom, Marvell, Amazon Trainium, Google TPU | Broadcom IR, Amazon IR, SemiAnalysis |
 | AI Networking | NVLink, InfiniBand, Ethernet switch, NIC/DPU | NVIDIA IR, Broadcom IR, Dell'Oro |
 | Optical Interconnect | 800G/1.6T transceivers, LPO/CPO, silicon photonics | LightCounting, Coherent IR, Lumentum IR |
-| HBM/Data-Center Memory | HBM3E/HBM4, DDR5, eSSD, CXL memory | Micron IR, SK hynix IR, TrendForce |
+| HBM | HBM3E/HBM4 and later high-bandwidth stacked memory | Micron IR, SK hynix IR, Samsung IR, TrendForce |
 | Advanced Process/Packaging | 3nm/2nm, CoWoS, 3D packaging | TSMC IR, TechInsights, SemiAnalysis |
 | Power/Cooling Delivery | UPS, switchgear, transformer, liquid cooling, busway | Vertiv IR, Eaton IR, IEA |
 | Server/System Integration | AI server, rack-scale, liquid-cooled chassis | Dell IR, Supermicro IR, ServeTheHome |

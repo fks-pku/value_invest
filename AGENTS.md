@@ -64,6 +64,14 @@ For industry/theme/S-curve work, define one canonical BOM registry. Each node ex
 
 The exact node ID and public name are reused by research artifacts, company exposure, target scoring, and report rendering.
 
+Every canonical node must own a node-specific `BomNodePlaybook` before source search begins. The playbook defines that node's boundary, master equations, six question models, and 4-7 causal stages per question. Every stage defines one primary metric, one or two cross-check metrics, and one refutation metric. Shared question labels do not permit shared generic causal chains: compute, manufacturing, HBM, networking, power/cooling, and system delivery each require node-specific mechanisms and metrics.
+
+The invariant is:
+
+`one canonical BOM node -> one node-specific playbook -> one cutoff-frozen research run -> one report module`
+
+Validate exact one-to-one coverage between the canonical BOM registry and the playbook registry. Missing, duplicate, extra, static-renderer, or generic-fallback playbooks are contract failures. Playbooks contain no source IDs, report dates, run facts, verdicts, or CSS; those belong to the research run, evidence artifacts, and renderer respectively.
+
 ### 4. Research six questions for every BOM node
 
 Each `BOM node x question` is a minimum research unit:
@@ -143,6 +151,8 @@ Default top-level order is exactly:
 Do not render public `下钻 QA`, source plans, raw search queries, parser traces, score worksheets, tool traces, or change logs unless the user explicitly asks for the workbench.
 
 `行业概况` renders `01 技术链与BOM呈现`, then one numbered BOM module from `02` onward. Each BOM module contains the six question cards and one S-curve rollup. Optional deepening modules such as industry space, competition/profit pool, and chokepoints are rendered only when explicitly requested or required by a playbook.
+
+Inside each public BOM question card, render one combined `01 研究逻辑链` card. It compiles the internal judgment model, formula, conclusion rule, and node-specific causal stages into one readable chain. Do not render separate public `判断模型` and `具体逻辑链条` cards. The internal playbook must still preserve those fields separately so research rules remain testable and presentation remains replaceable. Evidence cards for the exact causal stages begin at `02`, followed by the question conclusion and target impact.
 
 Nested structures are collapsed `details` cards. Wide tables use `table-scroll`. Source links sit next to supported claims. The source index is collapsed.
 

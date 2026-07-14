@@ -5,6 +5,8 @@ const { spawnSync } = require("child_process");
 const ROOT = path.resolve(__dirname, "..");
 const PROJECT_ID = "ai_factory_industry_scurve_timeslice_20260328";
 const OUT_DIR = path.join(ROOT, "research", "qa_projects", PROJECT_ID);
+const COMPUTE_RESEARCH_RUN_PATH = path.join(OUT_DIR, "compute_research_run.json");
+const HBM_RESEARCH_RUN_PATH = path.join(OUT_DIR, "hbm_research_run.json");
 const AS_OF_DATE = "2026-03-28";
 const EVALUATION_DATE = "2026-06-28";
 const LABEL_WINDOW = "2026-03-28_to_2026-06-28";
@@ -17,7 +19,7 @@ const sources = [
   source("SRC-NVDA-FY25-Q4", "NVIDIA FY2025 Q4 results", "evidence", "https://investor.nvidia.com/news/press-release-details/2025/NVIDIA-Announces-Financial-Results-for-Fourth-Quarter-and-Fiscal-2025/", "2025-02-26", "NVIDIA Q4 FY25 Data Center revenue was $35.6B, extending the AI infrastructure revenue ramp before Blackwell scaled further."),
   source("SRC-NVDA-FY26-Q2", "NVIDIA FY2026 Q2 results", "evidence", "https://investor.nvidia.com/news/press-release-details/2025/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2026/default.aspx", "2025-08-27", "NVIDIA Q2 FY26 Data Center revenue was $41.1B and Blackwell data-center revenue increased 17% sequentially."),
   source("SRC-NVDA-FY26-Q3", "NVIDIA FY2026 Q3 results", "evidence", "https://investor.nvidia.com/news/press-release-details/2025/NVIDIA-Announces-Financial-Results-for-Third-Quarter-Fiscal-2026/default.aspx", "2025-11-19", "NVIDIA Q3 FY26 Data Center revenue was $51.2B, up 25% sequentially and 66% year over year; management said cloud GPUs were sold out and compute demand kept accelerating."),
-  source("SRC-NVDA-FY26-Q4", "NVIDIA FY2026 Q4 results", "evidence", "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Fourth-Quarter-and-Fiscal-2026/", "2026-02-25", "NVIDIA Q4 FY26 revenue was $68.1B, Data Center revenue was $62.3B, Q1 FY27 revenue outlook was $78.0B +/-2%, and management framed customer demand as AI factories for the AI industrial revolution."),
+  source("SRC-NVDA-FY26-Q4", "NVIDIA FY2026 Q4 results", "evidence", "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Fourth-Quarter-and-Fiscal-2026/", "2026-02-25", "NVIDIA Q4 FY26 revenue was $68.1B and Data Center revenue was $62.3B, up 75% YoY. FY2026 revenue was $215.9B, GAAP gross margin was 71.1%, operating income was $130.4B and free cash flow was $96.6B. Q1 FY27 revenue outlook was $78.0B +/-2% with no China Data Center compute revenue assumed."),
   source("SRC-NVDA-GTC-VERA-RUBIN-20260316", "NVIDIA Vera Rubin platform at GTC 2026", "evidence", "https://nvidianews.nvidia.com/news/nvidia-vera-rubin-platform", "2026-03-16", "NVIDIA announced Vera Rubin as seven chips and five rack-scale systems for AI factories, covering Vera CPU, Rubin GPU, NVLink 6, ConnectX-9, BlueField-4, Spectrum-6 and Groq 3 LPU."),
   source("SRC-NVDA-GTC-DYNAMO-20260316", "NVIDIA Dynamo 1.0 for AI factory inference", "evidence", "https://nvidianews.nvidia.com/news/dynamo-1-0", "2026-03-16", "NVIDIA announced Dynamo 1.0 as open-source production software for AI factory inference orchestration, with reported up to 7x Blackwell inference performance improvement and broad cloud/provider adoption."),
   source("SRC-VRT-Q4-2025", "Vertiv Q4 2025 results", "evidence", "https://investors.vertiv.com/news/news-details/2026/Vertiv-Reports-Strong-Fourth-Quarter-with-Organic-Orders-Growth-of-252-and-Diluted-EPS-Growth-of-200-Adjusted-Diluted-EPS-37/", "2026-02-11", "Vertiv Q4 2025 organic orders rose about 252% YoY and backlog reached $15.0B, reflecting robust AI infrastructure demand."),
@@ -31,21 +33,33 @@ const sources = [
   source("SRC-MRVL-FY26-Q3", "Marvell FY2026 Q3 10-Q", "evidence", "https://investor.marvell.com/sec-filings/all-sec-filings/content/0001835632-25-000197/mrvl-20251101.htm", "2025-12-03", "Marvell FY26 Q3 net revenue was $2.075B; data-center sales increased 38% year over year, driven by AI-related demand for custom products and electro-optics."),
   source("SRC-AVGO-FY25-Q2", "Broadcom FY2025 Q2 results", "evidence", "https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-second-quarter-fiscal-year-2025-financial", "2025-06-05", "Broadcom Q2 FY25 AI revenue exceeded $4.4B, up 46% year over year, and management expected Q3 AI revenue of about $5.1B."),
   source("SRC-AVGO-FY25-Q3", "Broadcom FY2025 Q3 results", "evidence", "https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-third-quarter-fiscal-year-2025-financial", "2025-09-04", "Broadcom Q3 FY25 AI revenue was $5.2B, up 63% year over year, and management expected Q4 AI revenue of about $6.2B."),
-  source("SRC-AVGO-FY25-Q4", "Broadcom FY2025 Q4 results", "evidence", "https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-fourth-quarter-and-fiscal-year-2025", "2025-12-11", "Broadcom Q4 FY25 AI semiconductor revenue rose 74% YoY and Q1 FY26 AI semiconductor revenue was expected to double to $8.2B, driven by custom AI accelerators and Ethernet AI switches."),
+  source("SRC-AVGO-FY25-Q4", "Broadcom FY2025 Q4 results", "evidence", "https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-fourth-quarter-and-fiscal-year-2025", "2025-12-11", "Broadcom Q4 FY25 AI semiconductor revenue rose 74% YoY and Q1 FY26 AI semiconductor revenue was expected at $8.2B, driven by custom AI accelerators and Ethernet AI switches. FY2025 revenue was $63.9B and free cash flow was $26.9B, up 39%."),
   source("SRC-AVGO-FY26-Q1", "Broadcom FY2026 Q1 results", "evidence", "https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-first-quarter-fiscal-year-2026-financial", "2026-03-05", "Broadcom Q1 FY26 AI revenue was $8.4B, up 106% year over year, and management expected Q2 AI semiconductor revenue of about $10.7B."),
+  source("SRC-AMD-Q4-2025", "AMD Q4 and FY2025 results", "evidence", "https://ir.amd.com/news-events/press-releases/detail/1276/amd-reports-fourth-quarter-and-full-year-2025-financial-results", "2026-02-03", "AMD Q4 2025 Data Center revenue was $5.4B, up 39% year over year, and FY2025 Data Center revenue was $16.6B, up 32%; MI308 export-control inventory charges were $440M and Q1 2026 total revenue guidance was $9.8B +/-$0.3B."),
   source("SRC-AMD-Q4-2025-TOMS", "Tom's Hardware AMD Q4 2025 results summary", "message", "https://www.tomshardware.com/pc-components/cpus/amd-ceo-downplays-pc-memory-crunch-saying-our-focus-areas-are-enterprise-company-wants-to-focus-on-growing-higher-end-of-the-market", "2026-02-04", "Tom's Hardware reported AMD Q4 2025 total revenue of about $10.3B, Data Center revenue of $5.4B up 39% year over year, full-year Data Center revenue of $16.6B, and management focus on enterprise and high-end markets."),
+  source("SRC-NVDA-CUDA-ECOSYSTEM-202403", "NVIDIA GTC 2024 CUDA ecosystem highlights", "evidence", "https://images.nvidia.com/nvimages/gtc/pdf/gtc24-spring-best-of-highlight.pdf", "2024-03-18", "NVIDIA described a CUDA ecosystem of nearly 5M developers, more than 40K companies, over 3,300 GPU-accelerated applications and more than 1,600 generative-AI companies."),
+  source("SRC-OMDIA-TPU-202412", "Omdia Google TPU demand and custom-ASIC competition", "research_report", "https://omdia.tech.informa.com/pr/2024/dec/omdia-demand-for-googles-tpu-chips-accelerates-challenging-nvidias-dominance", "2024-12-11", "Omdia estimated Google TPU value at roughly $6B-$9B and argued rising shipments were sufficient to take share from NVIDIA, providing a concrete custom-ASIC substitution check."),
   source("SRC-ANET-Q4-2025", "Arista Q4 2025 results", "evidence", "https://investors.arista.com/Communications/Press-Releases-and-Events/Press-Release-Detail/2026/Arista-Networks-Inc--Reports-Fourth-Quarter-and-Year-End-2025-Financial-Results/default.aspx", "2026-02-12", "Arista FY2025 revenue was $9.006B, +28.6%, and management said it exceeded AI networking and campus expansion goals."),
   source("SRC-TSM-Q4-2025", "TSMC Q4 2025 results", "evidence", "https://www.sec.gov/Archives/edgar/data/1046179/000104617926000008/a4q25e_withguidancexfinal.htm", "2026-01-15", "TSMC Q4 2025 revenue was $33.73B, gross margin 62.3%, advanced technologies were 77% of wafer revenue, and 2026 capex was expected at $52B-$56B."),
   source("SRC-MU-FY26-Q1", "Micron FY2026 Q1 results", "evidence", "https://micron.gcs-web.com/news-releases/news-release-details/micron-technology-inc-reports-results-first-quarter-fiscal-2026", "2025-12-17", "Micron FY26 Q1 delivered record revenue and margin expansion, with AI data-center memory demand driving cloud memory and HBM-related strength."),
   source("SRC-MU-FY26-Q1-PREPARED", "Micron FY2026 Q1 prepared remarks", "evidence", "https://investors.micron.com/static-files/088991c5-a249-4f66-a0a6-258d9b66f3f9", "2025-12-17", "Micron prepared remarks forecast HBM TAM from about $35B in calendar 2025 to around $100B in calendar 2028, about 40% CAGR, and said 2026 HBM supply had completed price and volume agreements."),
   source("SRC-SKHYNIX-FY25", "SK hynix FY2025 results", "evidence", "https://www.prnewswire.com/news-releases/sk-hynix-announces-fy25-financial-results-posts-record-high-results-and-delivers-highest-shareholder-returns-302672384.html", "2026-01-28", "SK hynix FY2025 revenue was KRW97.1467T, operating profit KRW47.2063T and operating margin 49%, driven by AI memory and HBM leadership."),
   source("SRC-SAMSUNG-FY25", "Samsung Q4 and FY2025 results", "evidence", "https://news.samsung.com/global/samsung-electronics-announces-fourth-quarter-and-fy-2025-results", "2026-01-29", "Samsung Q4 2025 Memory Business reached record quarterly revenue and operating profit, with HBM, server DDR5 and enterprise SSD as high-value AI products."),
+  source("SRC-SKHYNIX-FY24", "SK hynix FY2024 results", "evidence", "https://news.skhynix.com/sk-hynix-announces-4q24-financial-results/", "2025-01-23", "SK hynix FY2024 revenue was KRW66.1930T, operating profit KRW23.4673T and operating margin 35%; HBM exceeded 40% of DRAM revenue in Q4 2024."),
+  source("SRC-MU-FY25", "Micron FY2025 results", "evidence", "https://investors.micron.com/news-releases/news-release-details/micron-technology-inc-reports-results-fourth-quarter-and-full-8", "2025-09-23", "Micron FY2025 revenue was $37.378B, GAAP gross margin was 39.8%, operating cash flow was $17.53B, adjusted free cash flow was $3.72B and net capex was $13.80B."),
+  source("SRC-MU-FY25-Q4-PREPARED", "Micron FY2025 Q4 prepared remarks", "evidence", "https://investors.micron.com/static-files/5fb98d73-2134-4446-8d1b-0f90285f6c02?pubDate=20251218", "2025-09-23", "Micron said combined HBM, high-capacity DIMM and low-power server DRAM revenue reached $10B in FY2025, more than five times the prior fiscal year."),
+  source("SRC-NVDA-HBM-SPECS-20260316", "NVIDIA platform HBM specification progression", "evidence", "https://developer.nvidia.com/blog/inside-the-nvidia-rubin-platform-six-new-chips-one-ai-supercomputer/", "2026-03-16", "NVIDIA platform specifications show H100 at 80GB HBM, H200 at 141GB, Blackwell at 192GB, Blackwell Ultra at 288GB and Rubin at up to 288GB HBM4 with up to 22TB/s bandwidth."),
+  source("SRC-SAMSUNG-HBM4-20260212", "Samsung commercial HBM4 shipment", "evidence", "https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing", "2026-02-12", "Samsung announced commercial HBM4 shipments, described stable initial mass-production yields, expected 2026 HBM sales to more than triple versus 2025 and said it was expanding HBM4 capacity."),
+  source("SRC-TF-HBM-INDUSTRY-4Q25", "TrendForce HBM Industry Analysis 4Q25", "research_report", "https://www.trendforce.com/research/download/RP251029MY", "2025-10-31", "TrendForce said SK hynix led with about 150K TSV capacity; yield, certification and backend capacity constrained near-term supply; all three suppliers planned HBM4 mass production in 2026."),
+  source("SRC-TF-HBM-BULLETIN-20260212", "TrendForce HBM Market Bulletin February 2026", "research_report", "https://www.trendforce.com/research/download/RP260212TV3", "2026-02-12", "TrendForce assessed Samsung as leading HBM4 validation, SK hynix as retaining volume leadership and Micron as slightly behind, while NVIDIA was expected to use all three suppliers under tight capacity."),
+  source("SRC-TF-HBM-BULLETIN-20260320", "TrendForce HBM Market Bulletin March 2026", "research_report", "https://www.trendforce.com/research/download/RP260320WK3", "2026-03-20", "TrendForce said stricter HBM4 specifications delayed supplier validation, creating downside risk to early HBM4 shipments and next-generation AI platform timing; unmet HBM4 demand could shift back to HBM3E."),
+  source("SRC-TF-HBM-SHARE-20260309", "TrendForce HBM supplier share outlook", "message", "https://www.trendforce.com/news/2026/03/09/news-samsung-sk%E2%80%AFhynix-reportedly-tapped-as-nvidia-rubin-hbm4-suppliers-shipments-could-start-in-march/", "2026-03-09", "TrendForce-related public reporting projected SK hynix global HBM bit output share at 59% in 2025 and 50% in 2026, while Samsung could rise from 20% to 28%; these are forecasts rather than audited actual shares."),
   source("SRC-SMCI-FY26-Q2", "Supermicro FY2026 Q2 results", "evidence", "https://ir.supermicro.com/news/news-details/2026/Super-Micro-Computer-Inc.-Reports-Second-Quarter-Fiscal-2026-Financial-Results/default.aspx", "2026-02-03", "Supermicro remained an AI server assembly exposure, but margin, execution and governance risks require a lower risk-control score."),
   source("SRC-MSFT-FY25-Q3-METRICS", "Microsoft FY2025 Q3 investor metrics", "evidence", "https://www.microsoft.com/en-us/investor/earnings/fy-2025-q3/metrics", "2025-04-30", "Microsoft investor metrics provide Commercial remaining performance obligation in billions for Q3 FY24 through Q3 FY25: $235B, $269B, $259B, $298B and $315B across quarterly points, plus Microsoft Cloud revenue and margin metrics."),
   source("SRC-MSFT-FY25-Q4-CALL", "Microsoft FY2025 Q4 earnings call", "evidence", "https://www.microsoft.com/en-us/investor/events/fy-2025/earnings-fy-2025-q4", "2025-07-30", "Microsoft said commercial remaining performance obligation increased to $368B in FY25 Q4, up 37% year over year, with Azure and AI workload demand remaining higher than supply."),
   source("SRC-MSFT-FY26-Q1", "Microsoft FY2026 Q1 results", "evidence", "https://www.microsoft.com/en-us/investor/earnings/fy-2026-q1/press-release-webcast", "2025-10-29", "Microsoft Q1 FY26 Microsoft Cloud revenue was $49.1B and commercial remaining performance obligation increased 51% to $392B."),
   source("SRC-MSFT-FY26-Q2", "Microsoft FY2026 Q2 results", "evidence", "https://www.microsoft.com/en-us/investor/earnings/fy-2026-q2/press-release-webcast", "2026-01-28", "Microsoft Q2 FY2026 Microsoft Cloud revenue was $51.5B, +26%, commercial RPO increased 110% to $625B, and Azure and other cloud services revenue increased 39%."),
-  source("SRC-MSFT-FY26-Q2-CALL", "Microsoft FY2026 Q2 earnings call", "evidence", "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q2.aspx", "2026-01-28", "Microsoft said Q2 FY26 capital expenditures were $37.5B, about two-thirds for short-lived assets primarily GPUs and CPUs, and that customer demand exceeded supply."),
+  source("SRC-MSFT-FY26-Q2-CALL", "Microsoft FY2026 Q2 earnings call", "evidence", "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q2.aspx", "2026-01-28", "Microsoft said Q2 FY26 capital expenditures were $37.5B, about two-thirds for short-lived assets primarily GPUs and CPUs, and customer demand exceeded supply. Operating cash flow was $35.8B while free cash flow was $5.9B after heavy capital spending."),
   source("SRC-AMZN-Q4-2025", "Amazon Q4 2025 results", "evidence", "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/default.aspx", "2026-02-05", "Amazon Q4 2025 AWS segment sales increased to $35.6B; management said the chips business grew triple digits year over year and expected 2026 capex of about $200B across Amazon, driven by AI, chips, robotics and satellites."),
   source("SRC-GOOGL-Q4-2025", "Alphabet Q4 2025 results", "evidence", "https://s206.q4cdn.com/479360582/files/doc_news/2026/Feb/04/attachments/2025q4-alphabet-earnings-release.pdf", "2026-02-04", "Alphabet Q4 2025 Google Cloud revenue increased 48% to $17.7B, Cloud annual run rate exceeded $70B, FY2025 purchases of property and equipment were $91.4B, and 2026 CapEx was anticipated at $175B-$185B to meet customer demand."),
   source("SRC-GOOGL-Q4-2025-CALL", "Alphabet Q4 2025 earnings call", "evidence", "https://abc.xyz/investor/events/event-details/2026/2025-Q4-Earnings-Call-2026-Dr_C033hS6/default.aspx", "2026-02-04", "Alphabet said backlog reached $240B, up 55% sequentially; Gemini App exceeded 750M monthly active users; Gemini Enterprise had 8M paid seats; and Gemini 3 processed about three times the daily tokens of Gemini 2.5 Pro while serving costs fell 78%."),
@@ -79,6 +93,8 @@ const sources = [
 ];
 
 const sourceById = Object.fromEntries(sources.map((item) => [item.source_id, item]));
+const computeResearchPayload = loadBomResearchPayload(COMPUTE_RESEARCH_RUN_PATH);
+const hbmResearchPayload = loadBomResearchPayload(HBM_RESEARCH_RUN_PATH);
 
 const labels = {
   VRT: label(251.07, 303.95, 21.06, "Nasdaq historical close", "label_verified", { start_price_date: "2026-03-27", end_price_date: "2026-06-26" }),
@@ -97,16 +113,7 @@ const labels = {
 };
 
 const bomNodes = [
-  {
-    id: "compute",
-    name: "计算加速器 / GPU / ASIC",
-    plain: "把训练、推理和 agent 工作负载转成可采购的算力平台。",
-    players: "NVIDIA、Broadcom custom ASIC、AMD、云厂自研 ASIC",
-    receives: "云厂商 capex、模型训练/推理需求、系统交付规格。",
-    produces: "GPU、AI ASIC、平台软件、互联标准、参考机柜架构。",
-    suppliesTo: "服务器/机柜系统、云厂商和 AI labs。",
-    metrics: "Data Center revenue、AI semiconductor revenue、供给排期、gross margin、客户 capex。",
-  },
+  computeResearchPayload.node,
   {
     id: "manufacturing",
     name: "先进制程与先进封装",
@@ -117,16 +124,7 @@ const bomNodes = [
     suppliesTo: "GPU/ASIC 平台方和高端内存/系统供应链。",
     metrics: "advanced technologies revenue share、capex、gross margin、先进封装产能。",
   },
-  {
-    id: "memory",
-    name: "HBM / 高端内存",
-    plain: "决定 AI 加速器带宽和可交付数量，是 AI factory 扩容的硬供给约束之一。",
-    players: "SK hynix、Micron、Samsung",
-    receives: "GPU/ASIC 平台规格、客户认证、价量协议和交付排期。",
-    produces: "HBM3E/HBM4、server DRAM、enterprise SSD。",
-    suppliesTo: "GPU/ASIC 平台、服务器系统和云数据中心。",
-    metrics: "HBM TAM、HBM ASP、客户资格、operating margin、memory mix。",
-  },
+  hbmResearchPayload.node,
   {
     id: "network",
     name: "高速连接与 AI 网络",
@@ -183,12 +181,12 @@ const spaceNodes = [
     ["中期", "大", "TSMC 高 capex 与 CoWoS/HBM 卡点共同指向供给扩张。"],
     ["长期", "中高", "如果先进封装供给快速释放，节点从稀缺卡点转为高质量制造平台。"],
   ], ["SRC-TSM-Q4-2025", "SRC-SA-COWOS-HBM-2023"]),
-  spaceNode("HBM / 高端内存", [
-    method("公司 TAM", "Micron", "HBM TAM from about $35B in CY2025 to around $100B in CY2028，约 40% CAGR。", "HBM / 高端内存", "2025E-2028E", "HBM TAM、HBM shipment、ASP、价量协议", "高", ["SRC-MU-FY26-Q1-PREPARED"]),
-    method("公司指引", "Micron", "2026 HBM supply 已完成 price and volume agreements，说明供需紧张已进入合同层面。", "HBM / 高端内存", "2026E", "价量协议、客户认证、HBM bit shipment", "中高", ["SRC-MU-FY26-Q1-PREPARED"]),
-    method("第三方拆法", "TrendForce", "HBM ASP 为普通 DRAM 数倍、约 DDR5 五倍，2025 年 HBM value share 可超过 DRAM 的 30%。", "HBM / 高端内存", "2024-2025E", "HBM ASP、bit share、value share", "中", ["SRC-TF-HBM-PRICE-20240506"]),
-    method("客户侧指引", "TrendForce", "NVIDIA 是最大 HBM buyer，预期采购份额超过 70%，Blackwell 抬升 HBM content。", "HBM / 高端内存", "Blackwell cycle", "NVIDIA HBM procurement、平台规格、HBM content", "中", ["SRC-TF-BLACKWELL-HBM-20240808"]),
-    method("财务兑现证据", "SK hynix / Micron / Samsung", "SK hynix FY25 operating margin 49%，Micron record revenue and margin expansion，Samsung Memory record revenue/profit，均指向 AI memory 利润兑现。", "HBM / 高端内存", "FY2025-FY2026", "operating margin、memory mix、HBM qualification、ASP", "中高", ["SRC-SKHYNIX-FY25", "SRC-MU-FY26-Q1", "SRC-SAMSUNG-FY25"]),
+  spaceNode("HBM", [
+    method("公司 TAM", "Micron", "HBM TAM from about $35B in CY2025 to around $100B in CY2028，约 40% CAGR。", "HBM", "2025E-2028E", "HBM TAM、HBM shipment、ASP、价量协议", "高", ["SRC-MU-FY26-Q1-PREPARED"]),
+    method("公司指引", "Micron", "2026 HBM supply 已完成 price and volume agreements，说明供需紧张已进入合同层面。", "HBM", "2026E", "价量协议、客户认证、HBM bit shipment", "中高", ["SRC-MU-FY26-Q1-PREPARED"]),
+    method("第三方拆法", "TrendForce", "HBM ASP 为普通 DRAM 数倍、约 DDR5 五倍，2025 年 HBM value share 可超过 DRAM 的 30%。", "HBM", "2024-2025E", "HBM ASP、bit share、value share", "中", ["SRC-TF-HBM-PRICE-20240506"]),
+    method("客户侧指引", "TrendForce", "NVIDIA 是最大 HBM buyer，预期采购份额超过 70%，Blackwell 抬升 HBM content。", "HBM", "Blackwell cycle", "NVIDIA HBM procurement、平台规格、HBM content", "中", ["SRC-TF-BLACKWELL-HBM-20240808"]),
+    method("财务兑现证据", "SK hynix / Micron / Samsung", "SK hynix FY25 operating margin 49%，Micron record revenue and margin expansion，Samsung Memory record revenue/profit，均指向 AI memory 利润兑现。", "HBM", "FY2025-FY2026", "operating margin、memory mix、HBM qualification、ASP", "中高", ["SRC-SKHYNIX-FY25", "SRC-MU-FY26-Q1", "SRC-SAMSUNG-FY25"]),
   ], "这是 AI factory 最像 S 曲线硬约束的节点之一：短期供给紧，中期 TAM 扩张清晰，长期取决于 HBM4 资格、扩产和 ASP 是否维持。", "高", [
     ["短期", "大", "价量协议和高价值 mix 已进入公司口径。"],
     ["中期", "很大", "Micron 给出的 2028 HBM TAM 指向数倍空间。"],
@@ -267,10 +265,10 @@ const qaTree = [
 
 const targets = [
   target("VRT", "Vertiv", "USA", "电力 / 液冷 / 数据中心基础设施", "actionable_long", "AI 工厂物理瓶颈已经体现为 orders 和 backlog，空间大、财务兑现直接、反证可监控。", "中高：若 backlog 毛利和现金转化良好，订单弹性可进入盈利上修。", "backlog 毛利低质量、云厂 capex 下修、项目交付延迟。", ["SRC-VRT-Q4-2025", "SRC-DO-LIQUID-COOLING-20260108"]),
-  target("000660.KS", "SK hynix", "Korea", "HBM / 高端内存", "actionable_long", "HBM 供应能力和 49% operating margin 显示硬约束已经变成利润桥。", "中高：HBM TAM 和 AI memory mix 支撑中期空间，但需继续验证 ASP 和客户资格。", "HBM 供给过快释放、ASP 下行、客户资格落后。", ["SRC-SKHYNIX-FY25", "SRC-MU-FY26-Q1-PREPARED", "SRC-TF-HBM-PRICE-20240506"]),
+  target("000660.KS", "SK hynix", "Korea", "HBM", "actionable_long", "HBM 供应能力和 49% operating margin 显示硬约束已经变成利润桥。", "中高：HBM TAM 和 AI memory mix 支撑中期空间，但需继续验证 ASP 和客户资格。", "HBM 供给过快释放、ASP 下行、客户资格落后。", ["SRC-SKHYNIX-FY25", "SRC-MU-FY26-Q1-PREPARED", "SRC-TF-HBM-PRICE-20240506"]),
   target("NVDA", "NVIDIA", "USA", "计算加速器 / GPU / ASIC", "watch_only", "平台控制最强，GTC 2026 继续把 AI factory 规格从 GPU 扩展到 rack/pod-scale 系统与推理调度层，需求和财务证据最硬，但市场最可能已经部分定价。", "高胜率但赔率需单独证明：只有盈利上修持续超过隐含预期时才上调。", "capex ROI 下降、毛利率不及预期、ASIC 分流超预期。", ["SRC-NVDA-FY26-Q4", "SRC-NVDA-GTC-VERA-RUBIN-20260316", "SRC-NVDA-GTC-DYNAMO-20260316", "SRC-OMDIA-AI-PROCESSORS-20250828"]),
   target("TSM", "TSMC ADR", "USA/Taiwan", "先进制程与先进封装", "watch_only", "先进制程和先进封装是硬供给层，财务质量强。", "稳健空间较大，但高 capex 与地缘风险降低赔率弹性。", "先进封装供给释放、capex 回报下行、地缘风险。", ["SRC-TSM-Q4-2025", "SRC-SA-COWOS-HBM-2023"]),
-  target("MU", "Micron", "USA", "HBM / 高端内存", "watch_only", "HBM TAM、价量协议和云内存利润改善带来高弹性。", "赔率可能高于成熟龙头，但相对 SK hynix 的资格和份额仍待验证。", "HBM 份额不及预期、ASP/DRAM 周期反转。", ["SRC-MU-FY26-Q1", "SRC-MU-FY26-Q1-PREPARED"]),
+  target("MU", "Micron", "USA", "HBM", "watch_only", "HBM TAM、价量协议和云内存利润改善带来高弹性。", "赔率可能高于成熟龙头，但相对 SK hynix 的资格和份额仍待验证。", "HBM 份额不及预期、ASP/DRAM 周期反转。", ["SRC-MU-FY26-Q1", "SRC-MU-FY26-Q1-PREPARED"]),
   target("ALAB", "Astera Labs", "USA", "高速连接与 AI 网络", "watch_only", "机柜级连接收入高增，直接受益 rack-scale AI。", "高弹性但高估值/客户集中，必须用 design-in 和毛利验证。", "大客户订单延后、平台自研替代、估值压缩。", ["SRC-ALAB-Q4-2025"]),
   target("CRDO", "Credo", "USA", "高速连接与 AI 网络", "watch_only", "AEC/光互联需求强，收入高弹性。", "弹性大但波动也大，客户集中和价格压力是关键。", "客户订单延迟、价格下行、毛利不达预期。", ["SRC-CRDO-FY26-Q3", "SRC-LC-PAM4-DSP-20260226"]),
   target("MRVL", "Marvell Technology", "USA", "custom silicon / 电光互联", "watch_only", "custom products 与 electro-optics 已进入 AI data-center 收入口径。", "中高弹性，但定制项目量产节奏和客户集中需要折价。", "大客户项目延期、客户自研替代、毛利不达预期。", ["SRC-MRVL-FY26-Q3"]),
@@ -335,6 +333,27 @@ function scoreTargetsThroughDomain(targetItems, bomQuestionSearchArtifacts) {
   );
   if (result.status !== 0) {
     throw new Error(`Domain target scoring failed: ${result.stderr || result.stdout}`);
+  }
+  return JSON.parse(result.stdout);
+}
+
+function loadBomResearchPayload(researchRunPath) {
+  const result = spawnSync(
+    "python3",
+    [path.join(ROOT, "tools", "build_bom_research_payload.py"), researchRunPath],
+    {
+      cwd: ROOT,
+      env: {
+        ...process.env,
+        PYTHONPATH: path.join(ROOT, "src"),
+        PYTHONPYCACHEPREFIX: "/private/tmp/value_invest_pycache",
+      },
+      encoding: "utf8",
+      maxBuffer: 10 * 1024 * 1024,
+    },
+  );
+  if (result.status !== 0) {
+    throw new Error(`BOM research payload build failed for ${researchRunPath}: ${result.stderr || result.stdout}`);
   }
   return JSON.parse(result.stdout);
 }
@@ -670,7 +689,7 @@ function renderChainPanels() {
 
 function renderBomResearchModule(node, moduleNumber) {
   const rows = bomCoreQuestionRows(node).map((row, index) => applyBomQuestionSearchOverride(row, index + 1, node));
-  return `<details class="industry-module bom-research-module" open>
+  return `<details id="bom-${e(node.id)}" class="industry-module bom-research-module" open>
     <summary class="module-head"><span class="module-index">${String(moduleNumber).padStart(2, "0")}</span><div><h3>${e(node.name)}</h3><p>${e(node.plain)}</p></div><span class="chevron">›</span></summary>
     <div class="industry-module-body">
       <div class="bom-node-brief">
@@ -679,10 +698,19 @@ function renderBomResearchModule(node, moduleNumber) {
         <article><span>提供给</span><p>${e(node.suppliesTo)}</p></article>
         <article><span>验证指标</span><p>${e(node.metrics)}</p></article>
       </div>
+${renderBomMasterEquations(node)}
       <div class="bom-question-list">${rows.map((row, index) => renderBomQuestionCard(row, index + 1, node)).join("")}</div>
       ${renderBomSCurveStageCard(node, rows)}
     </div>
   </details>`;
+}
+
+function renderBomMasterEquations(node) {
+  if (!node.masterEquations?.length) return "";
+  return `<section class="bom-master-equations">
+    <b>${e(node.name)} 研究主线</b>
+    <div>${node.masterEquations.map((equation, index) => `<p><span>${String(index + 1).padStart(2, "0")}</span>${e(equation)}</p>`).join("")}</div>
+  </section>`;
 }
 
 function renderBomQuestionCard(row, questionNumber, node) {
@@ -705,8 +733,8 @@ function renderBomQuestionResearchStatus(row, questionNumber, node) {
       ? "检索完成，证据闭环仍有缺口"
       : artifact.search_execution_status;
   const leadText = isCompleted
-    ? "本问已按当前 BOM × 当前子问先定义判断模型，再设计逻辑链条和异质 metric 候选集，逐 metric 搜索、来源解析、历史/缺口检查后写入本问结论。"
-    : "本问结论只能在当前 BOM × 当前子问完成判断模型、逻辑链条、metric 候选设计、逐 metric 搜索、来源解析和缺口标注之后写入；旧本地材料只能作为待验证缓存。";
+    ? "本问已按当前 BOM × 当前子问先定义专业判断规则和节点专属因果环节，再设计异质 metric 候选集，逐 metric 搜索、来源解析、历史/缺口检查后写入本问结论。"
+    : "本问结论只能在当前 BOM × 当前子问完成专业判断规则、节点专属因果环节、metric 候选设计、逐 metric 搜索、来源解析和缺口标注之后写入；旧本地材料只能作为待验证缓存。";
   const evidenceText = isCompleted
     ? `本问已绑定 ${artifact.source_ids.length} 条 question-level 来源；后续刷新不得用其它 BOM 的粗证据池替代本问证据。`
     : `当前静态报告引用 ${artifact.source_ids.length} 条已导入公开来源；完整刷新必须生成 question-level search artifact 后再评估本问。`;
@@ -829,11 +857,8 @@ function isBomQuestionArtifactComplete(artifact) {
 }
 
 function applyBomQuestionSearchOverride(row, questionNumber, node) {
-  if (node.id === "compute" && questionNumber === 1) {
-    return strictComputeDemandRow(row);
-  }
   if (node.id === "compute") {
-    return strictComputeQuestionRow(row, questionNumber);
+    return row;
   }
   if (node.id === "manufacturing") {
     return strictManufacturingQuestionRow(row, questionNumber);
@@ -2493,41 +2518,42 @@ function bomSCurveStageForNode(node) {
 
 function renderBomQuestionFourStep(row, questionNumber, node) {
   const analysis = buildBomQuestionAnalysis(row, questionNumber, node);
-  const sectionTitles = bomQuestionSectionTitles(row.question);
   const logicStages = analysis.chainNodes?.length
     ? buildBomLogicStages(analysis.chainNodes)
     : buildBomLogicStages(analysis.metrics);
   const futureCards = alignFutureCardsToStages(analysis.future, logicStages, row, node);
   return `<section class="bom-question-stage-flow">
-    ${renderBomQuestionModelCard(analysis.model)}
-    <details class="bom-step-card bom-step-logic">
-      <summary><span>02</span><h5>${e(sectionTitles.logic)}</h5><span class="chevron">›</span></summary>
-      <div class="bom-step-body">
-        <p>${sourceText(analysis.metricLogic)}</p>
-        ${renderConcreteLogicChainPanel(logicStages)}
-      </div>
-    </details>
-    <div class="bom-logic-stage-stack">${logicStages.map((stage, index) => renderBomIntegratedStageCard(stage, futureCards[index], analysis, index + 3)).join("")}</div>
+    ${renderBomResearchLogicCard(analysis.model, logicStages)}
+    <div class="bom-logic-stage-stack">${logicStages.map((stage, index) => renderBomIntegratedStageCard(stage, futureCards[index], analysis, index + 2)).join("")}</div>
     ${renderBomQuestionConclusionCard(row, analysis)}
     ${renderBomQuestionTargetImpactCard(row, analysis, node)}
   </section>`;
 }
 
-function renderBomQuestionModelCard(model) {
-  return `<details class="bom-step-card bom-step-model">
-    <summary><span>01</span><h5>判断模型</h5><span class="chevron">›</span></summary>
+function renderBomResearchLogicCard(model, stages) {
+  return `<details class="bom-step-card bom-step-research-logic">
+    <summary><span>01</span><h5>研究逻辑链</h5><span class="chevron">›</span></summary>
     <div class="bom-step-body">
       <div class="bom-model-card">
         <div class="bom-model-head">
           <span>${e(model.name)}</span>
           <b>${e(model.purpose)}</b>
         </div>
-        <p>${sourceText(model.formula)}</p>
+        <div class="bom-research-logic-rules">
+          <article><b>判断公式</b><p>${sourceText(model.formula)}</p></article>
+          <article><b>整问结论规则</b><p>${sourceText(model.conclusionRule)}</p></article>
+        </div>
       </div>
-      <div class="bom-model-grid">
-        <article><b>核心判别</b><ul>${model.keyQuestions.map((item) => `<li>${e(item)}</li>`).join("")}</ul></article>
-        <article><b>证据抓手</b><ul>${model.metricFamilies.map((item) => `<li>${e(item)}</li>`).join("")}</ul></article>
-        <article><b>结论规则</b><p>${sourceText(model.conclusionRule)}</p></article>
+      <div class="table-scroll bom-logic-chain-table">
+        <table>
+          <thead><tr><th>逻辑环节</th><th>为什么看</th><th>看什么</th><th>如何判定</th></tr></thead>
+          <tbody>${stages.map((stage) => `<tr class="bom-logic-chain-row">
+            <td><b>${e(stage.stage)}</b></td>
+            <td>${sourceText(logicStageRole(stage))}</td>
+            <td>${sourceText(stageMetricPlan(stage))}</td>
+            <td>${sourceText(logicStageQuestion(stage))}</td>
+          </tr>`).join("")}</tbody>
+        </table>
       </div>
     </div>
   </details>`;
@@ -2656,20 +2682,9 @@ function buildBomLogicStages(items) {
   });
 }
 
-function renderConcreteLogicChainPanel(stages) {
-  return `<details class="bom-logic-chain-panel">
-    <summary><b>具体逻辑链条</b><span>${stages.length} 个环节</span><span class="chevron">›</span></summary>
-    <div class="table-scroll bom-logic-chain-table">
-      <table>
-        <thead><tr><th>逻辑环节</th><th>本环节要判断什么</th><th>为什么放在链条里</th></tr></thead>
-        <tbody>${stages.map((stage) => `<tr class="bom-logic-chain-row">
-          <td><b>${e(stage.stage)}</b></td>
-          <td>${sourceText(logicStageQuestion(stage))}</td>
-          <td>${sourceText(logicStageRole(stage))}</td>
-        </tr>`).join("")}</tbody>
-      </table>
-    </div>
-  </details>`;
+function stageMetricPlan(stage) {
+  const metric = primaryStageMetric(stage);
+  return metric.dataRequirement || stageMetricNames(stage);
 }
 
 function logicStageQuestion(stage) {
@@ -3055,12 +3070,6 @@ function renderMetricRationaleList(metrics) {
       <p>${sourceText(metric.why)}</p>
     </article>`).join("")}
   </div>`;
-}
-
-function bomQuestionSectionTitles(question) {
-  return {
-    logic: "具体逻辑链条",
-  };
 }
 
 function questionModelForQuestion(question, node) {
@@ -3686,19 +3695,20 @@ ${captionRows}
 }
 
 function renderMetricMultiSeriesData(metric) {
-  const validSeries = metric.multiSeries.filter((line) => (line.points || []).length >= 5);
-  if (!validSeries.length) {
+  const seriesWithPoints = metric.multiSeries.filter((line) => (line.points || []).length > 0);
+  if (!seriesWithPoints.length) {
     return `<div class="metric-trend-gap">
       <b>多公司历史数据不足</b>
       <p>${sourceText(metric.seriesGap || "该 metric 涉及多家公司，但尚未补齐每家公司 5 个以上同口径历史点。")} 少于 5 个同口径历史数据点，先标为趋势缺口。</p>
       <span class="metric-point-count">0 条可画曲线</span>
     </div>`;
   }
+  const incompleteSeries = seriesWithPoints.filter((line) => (line.points || []).length < 5);
   return `<div class="metric-data-table metric-multi-series-data">
     <b>${e(metric.trendLabel || "多公司同口径数据点")}</b>
-    <p>同口径多公司比较按数据表展开，不画多线图。</p>
-    <span class="metric-point-count">${validSeries.map((line) => `${e(line.name)} ${line.points.length} 个点`).join(" / ")}</span>
-    ${validSeries.map((line) => renderMetricDataRows(line.points || [], metric, line.name)).join("")}
+    <p>同口径多公司比较按数据表展开，不画多线图。${incompleteSeries.length ? ` ${e(metric.seriesGap || "部分主体不足 5 个同口径历史点，保留现有真实数据并标为趋势缺口。")} ` : ""}</p>
+    <span class="metric-point-count">${seriesWithPoints.map((line) => `${e(line.name)} ${line.points.length} 个点`).join(" / ")}</span>
+    ${seriesWithPoints.map((line) => renderMetricDataRows(line.points || [], metric, line.name)).join("")}
   </div>`;
 }
 
@@ -3773,6 +3783,7 @@ function renderBomCoreQuestionCard(node) {
 }
 
 function bomCoreQuestionRows(node) {
+  if (node.id === "compute") return computeResearchPayload.questions;
   const rows = {
     compute: [
       {
@@ -4486,14 +4497,7 @@ function bomCoreQuestionRows(node) {
       ["市场是否已定价？", "卡点强但成熟龙头预期较高，赔率取决于先进封装短缺持续性、capex 回报和地缘折价。", ["SRC-TSM-Q4-2025"]],
       ["反证是什么？", "先进封装产能释放快于需求、客户转单或自建替代、capex 回报下降、毛利率下行。", ["SRC-TSM-Q4-2025"]],
     ],
-    memory: [
-      ["当前 BOM 的需求是否会被 S 曲线放大拉动？", "AI accelerator 需要高带宽内存喂数据，GPU/ASIC 数量增加、上下文变长和推理并发都会推高 HBM 与高端内存需求；每代平台提升 HBM 容量、带宽和堆叠层数，使内存节点需求具备高于单纯服务器数量的弹性。", ["SRC-MU-FY26-Q1-PREPARED", "SRC-SKHYNIX-FY25"]],
-      ["供给能否跟上？", "HBM 扩产受 DRAM wafer、堆叠封装、良率、客户资格和提前价量协议限制。", ["SRC-MU-FY26-Q1-PREPARED", "SRC-SA-COWOS-HBM-2023"]],
-      ["谁控制供给？", "主要是 SK hynix、Micron、Samsung；SK hynix 领导力更强，Micron 是高弹性追赶者，Samsung 需要验证 HBM 领先性。", ["SRC-SKHYNIX-FY25", "SRC-MU-FY26-Q1-PREPARED", "SRC-SAMSUNG-FY25"]],
-      ["是否已经财务兑现？", "SK hynix operating margin、Micron HBM TAM 与价量协议、Samsung high-value AI products 说明利润已经兑现。", ["SRC-SKHYNIX-FY25", "SRC-MU-FY26-Q1-PREPARED", "SRC-SAMSUNG-FY25"]],
-      ["市场是否已定价？", "存储稀缺已被关注，但 HBM 供需、ASP、资格认证和盈利弹性仍可能继续改变利润预期。", ["SRC-MU-FY26-Q1-PREPARED", "SRC-SKHYNIX-FY25"]],
-      ["反证是什么？", "HBM ASP 下跌、客户资格不及预期、扩产快于需求、DRAM/NAND 周期反转、GPU/ASIC 需求放缓。", ["SRC-MU-FY26-Q1-PREPARED"]],
-    ],
+    memory: hbmResearchPayload.questions,
     network: [
       ["当前 BOM 的需求是否会被 S 曲线放大拉动？", "rack-scale 与 cluster-scale AI 提高东西向流量，拉动 retimer、AEC、switch、NIC、光模块和 PAM4 DSP；每 GPU 或每机柜的网络端口、光模块、DSP 和板级连接组件用量随 800G/1.6T 迁移上升，因此网络节点可能具备更高单位弹性。", ["SRC-SA-OPTICAL-2024", "SRC-LC-AI-OPTICS-202501", "SRC-DO-AI-NETWORKS-20250715"]],
       ["供给能否跟上？", "约束来自客户设计导入、平台认证、低功耗/低延迟指标、信号完整性和批量可靠性。", ["SRC-SA-OPTICAL-2024", "SRC-LC-PAM4-DSP-20260226"]],
@@ -4658,7 +4662,7 @@ function renderTargets(scoringWorksheet) {
           .filter((reason) => !String(reason).startsWith("bom_six_question_incomplete"))
           .map(gateReasonLabel)
           .join("；")}`;
-      return [index + 1, item.ticker, item.name, item.market, item.thesis_node, item.candidate_action_state, `<span class="state-${item.action_state}">${item.action_state}</span>`, gateSummary, item.rationale, item.downgrade, AS_OF_DATE, EVALUATION_DATE, LABEL_WINDOW, lab.start_price ?? "label_unverified", lab.end_price ?? "label_unverified", lab.forward_3m_return ?? "label_unverified", lab.label_status ?? "label_unverified"];
+      return [index + 1, item.ticker, item.name, item.market, item.thesis_node, `<span class="state-${item.candidate_action_state}">${item.candidate_action_state}</span>`, `<span class="state-${item.action_state}">${item.action_state}</span>`, gateSummary, item.rationale, item.downgrade, AS_OF_DATE, EVALUATION_DATE, LABEL_WINDOW, lab.start_price ?? "label_unverified", lab.end_price ?? "label_unverified", lab.forward_3m_return ?? "label_unverified", lab.label_status ?? "label_unverified"];
     }), true)}
   </div>`;
 }
@@ -4692,7 +4696,8 @@ function linkToFirstSource(label, sourceIds = [], className = "") {
   const item = [...new Set(sourceIds || [])].map((id) => sourceById[id]).find(Boolean);
   const safeLabel = e(label || "待补");
   const classAttr = className ? ` class="${e(className)}"` : "";
-  return item ? `<a${classAttr} href="${e(item.url)}" target="_blank" rel="noopener">${safeLabel}</a>` : safeLabel;
+  if (item) return `<a${classAttr} href="${e(item.url)}" target="_blank" rel="noopener">${safeLabel}</a>`;
+  return className ? `<span class="${e(className)} metric-history-name-gap">${safeLabel}</span>` : safeLabel;
 }
 
 function sourceText(text) {
@@ -4761,7 +4766,7 @@ function css() {
 .representative-companies{margin:12px 0 14px;padding:10px 0;border-top:1px solid #eef2f7;border-bottom:1px solid #eef2f7}.representative-companies>b{display:block;color:var(--blue);font-size:12px;margin-bottom:8px}.representative-companies>div{display:flex;flex-wrap:wrap;gap:8px}.representative-companies span{display:inline-flex;align-items:center;border:1px solid #d9e7f7;border-radius:999px;background:#f7fbff;color:#223047;padding:5px 9px;font-size:12px;font-weight:800}
 *{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;background:radial-gradient(circle at 20% 0%,#e8f2ff 0,transparent 34rem),var(--bg);color:var(--text);line-height:1.62}a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
 .hero{padding:32px clamp(22px,5vw,72px) 48px;background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,255,255,.62));border-bottom:1px solid var(--line)}.hero-inner{max-width:1180px;margin:0 auto}.eyebrow{margin:0 0 10px;color:var(--blue);font-size:12px;font-weight:800;text-transform:uppercase}h1{max-width:980px;margin:0;font-size:clamp(36px,5vw,66px);line-height:1.04;letter-spacing:0}.hero-subtitle{max-width:780px;color:#475467;font-size:19px}.hero-meta{display:flex;gap:10px;flex-wrap:wrap}.hero-meta span,.state-pill{border:1px solid var(--line);border-radius:999px;background:#fff;padding:6px 10px;color:var(--muted);font-size:13px}.top-nav{position:sticky;top:0;z-index:5;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;padding:12px;background:rgba(245,247,251,.82);backdrop-filter:blur(16px);border-bottom:1px solid rgba(217,224,234,.72)}.top-nav a{padding:8px 12px;border:1px solid rgba(10,132,255,.18);border-radius:999px;background:#fff;color:#28506f;font-size:13px}.section{max-width:1180px;margin:0 auto;padding:44px clamp(18px,4vw,36px)}.section-heading{display:flex;align-items:end;justify-content:space-between;margin-bottom:18px}.section-heading h2{margin:0;font-size:clamp(30px,3vw,44px);letter-spacing:0}.muted{color:var(--muted)}
-.goal-card,.industry-module,.qa-card,.source-collapse,.artifact-card{border:1px solid var(--line);border-radius:22px;background:var(--surface);box-shadow:var(--shadow)}.goal-card{padding:22px}.goal-main{font-size:22px;font-weight:800;margin-bottom:16px}.goal-grid,.constraint-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.metric,.constraint-grid article,.chain-bridge-card,.chain-node-lens,.overview-question-card,.chain-company-card,.bom-node-brief article{border:1px solid #e6edf7;border-radius:16px;background:#fff;padding:14px}.metric span,.constraint-grid span,.bom-node-brief span{display:block;color:var(--muted);font-size:12px;font-weight:800}.metric strong{display:block;color:#223047;font-size:18px}.constraint-definition{margin-top:18px}.artifact-title{font-weight:900;color:#26364f;margin-bottom:8px}.industry-overview-section{display:grid;gap:14px}.industry-module{overflow:hidden}.industry-module>summary,.qa-card>summary,.chain-detail-panel>summary,.bom-question-card>summary,.source-collapse>summary{list-style:none;cursor:pointer}.industry-module>summary::-webkit-details-marker,.qa-card>summary::-webkit-details-marker,details>summary::-webkit-details-marker{display:none}.industry-module[open]>summary,.qa-card[open]>summary{border-bottom:1px solid var(--line)}.module-head{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:18px 22px}.module-index{display:inline-flex;width:34px;height:34px;border-radius:999px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900;font-size:12px}.module-head h3{margin:0;font-size:22px}.module-head p{margin:0;color:var(--muted);font-size:14px}.chevron{color:var(--muted);font-weight:900;transition:transform .18s ease}.industry-module[open]>.module-head .chevron,.qa-card[open]>summary .chevron,details[open]>summary>.chevron{transform:rotate(90deg)}.industry-module-body{padding:22px;min-width:0}.chain-explain{padding:0}.chain-plain-summary{font-size:18px;color:#344054;margin-top:0}.chain-research-bridge{border:1px solid rgba(10,132,255,.18);border-radius:18px;background:#fbfdff;padding:16px;margin:18px 0}.chain-bridge-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.chain-node-lens ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0;padding:0;list-style:none}.chain-node-lens b,.chain-bridge-card span{display:block;color:var(--blue);font-size:12px;margin-bottom:4px}.chain-detail-panel{border:1px solid #e6edf7;border-radius:18px;background:#fff;margin-top:12px;overflow:hidden}.chain-detail-panel>summary{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;font-weight:900}.chain-layer-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:16px}.chain-layer-card{border:1px solid #eef2f7;border-radius:16px;background:#fbfcff;padding:14px}.chain-layer-card p{margin:10px 0}.chain-layer-card span{display:block;color:var(--muted);font-size:12px}.chain-simple-flow{display:grid;grid-template-columns:repeat(5,minmax(180px,1fr));gap:10px;padding:16px;overflow-x:auto}.chain-stage-panel{min-width:180px;border:1px solid #e8eef7;border-radius:16px;padding:14px;background:#fbfcff}.chain-stage-panel span{display:inline-flex;width:28px;height:28px;border-radius:50%;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900}.chain-relationship-graph{margin:0 16px 16px;padding:14px;border:1px dashed #bfd7f5;border-radius:16px;color:#3d536d;background:#f7fbff}.chain-company-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:16px}.company-flow-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.company-flow-grid p{margin:0;border-top:1px solid #eef2f7;padding-top:8px}.company-flow-grid b{display:block;color:#223047}.component-value-chain,.chain-lane-map,.chain-value-flow{min-width:0}.chain-relationship-graph{display:block}.bom-node-brief{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:14px}.bom-node-brief p{margin:4px 0 0}.bom-question-list{display:grid;gap:10px}.bom-question-card{border:1px solid #e3ebf6;border-radius:18px;background:#fff;overflow:hidden}.bom-question-card>summary{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:14px 16px}.bom-question-card[open]>summary{border-bottom:1px solid #edf1f7}.bom-question-index{display:inline-flex;width:28px;height:28px;border-radius:999px;align-items:center;justify-content:center;background:#f0f7ff;color:var(--blue);font-weight:900;font-size:12px}.bom-question-answer{padding:14px 16px;background:#fbfcff}.bom-question-answer p{margin:0 0 10px}.bom-question-sources{display:flex;gap:6px;flex-wrap:wrap}.bom-demand-study{display:grid;gap:14px}.bom-demand-thesis{border:1px solid rgba(10,132,255,.18);border-radius:16px;background:#fff;padding:14px;color:#26364f}.bom-demand-steps{display:grid;gap:10px}.bom-demand-step{display:grid;grid-template-columns:auto 1fr;gap:12px;border:1px solid #e8eef7;border-radius:16px;background:#fff;padding:14px}.bom-demand-step>span{display:inline-flex;width:34px;height:34px;border-radius:999px;align-items:center;justify-content:center;background:#eef7ff;color:var(--blue);font-weight:900;font-size:12px}.bom-demand-step h5{margin:0 0 6px;font-size:15px;color:#223047}.bom-demand-step p{margin:0 0 8px}.bom-demand-table{min-width:980px}.source-chip{display:inline-flex;margin:2px 4px 2px 0;border:1px solid rgba(10,132,255,.2);border-radius:999px;background:#eef7ff;color:var(--blue);padding:3px 8px;font-size:11px}
+.goal-card,.industry-module,.qa-card,.source-collapse,.artifact-card{border:1px solid var(--line);border-radius:22px;background:var(--surface);box-shadow:var(--shadow)}.goal-card{padding:22px}.goal-main{font-size:22px;font-weight:800;margin-bottom:16px}.goal-grid,.constraint-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.metric,.constraint-grid article,.chain-bridge-card,.chain-node-lens,.overview-question-card,.chain-company-card,.bom-node-brief article{border:1px solid #e6edf7;border-radius:16px;background:#fff;padding:14px}.metric span,.constraint-grid span,.bom-node-brief span{display:block;color:var(--muted);font-size:12px;font-weight:800}.metric strong{display:block;color:#223047;font-size:18px}.constraint-definition{margin-top:18px}.artifact-title{font-weight:900;color:#26364f;margin-bottom:8px}.industry-overview-section{display:grid;gap:14px}.industry-module{overflow:hidden}.industry-module>summary,.qa-card>summary,.chain-detail-panel>summary,.bom-question-card>summary,.source-collapse>summary{list-style:none;cursor:pointer}.industry-module>summary::-webkit-details-marker,.qa-card>summary::-webkit-details-marker,details>summary::-webkit-details-marker{display:none}.industry-module[open]>summary,.qa-card[open]>summary{border-bottom:1px solid var(--line)}.module-head{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:18px 22px}.module-index{display:inline-flex;width:34px;height:34px;border-radius:999px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900;font-size:12px}.module-head h3{margin:0;font-size:22px}.module-head p{margin:0;color:var(--muted);font-size:14px}.chevron{color:var(--muted);font-weight:900;transition:transform .18s ease}.industry-module[open]>.module-head .chevron,.qa-card[open]>summary .chevron,details[open]>summary>.chevron{transform:rotate(90deg)}.industry-module-body{padding:22px;min-width:0}.chain-explain{padding:0}.chain-plain-summary{font-size:18px;color:#344054;margin-top:0}.chain-research-bridge{border:1px solid rgba(10,132,255,.18);border-radius:18px;background:#fbfdff;padding:16px;margin:18px 0}.chain-bridge-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.chain-node-lens ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0;padding:0;list-style:none}.chain-node-lens b,.chain-bridge-card span{display:block;color:var(--blue);font-size:12px;margin-bottom:4px}.chain-detail-panel{border:1px solid #e6edf7;border-radius:18px;background:#fff;margin-top:12px;overflow:hidden}.chain-detail-panel>summary{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;font-weight:900}.chain-layer-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:16px}.chain-layer-card{border:1px solid #eef2f7;border-radius:16px;background:#fbfcff;padding:14px}.chain-layer-card p{margin:10px 0}.chain-layer-card span{display:block;color:var(--muted);font-size:12px}.chain-simple-flow{display:grid;grid-template-columns:repeat(5,minmax(180px,1fr));gap:10px;padding:16px;overflow-x:auto}.chain-stage-panel{min-width:180px;border:1px solid #e8eef7;border-radius:16px;padding:14px;background:#fbfcff}.chain-stage-panel span{display:inline-flex;width:28px;height:28px;border-radius:50%;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900}.chain-relationship-graph{margin:0 16px 16px;padding:14px;border:1px dashed #bfd7f5;border-radius:16px;color:#3d536d;background:#f7fbff}.chain-company-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:16px}.company-flow-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.company-flow-grid p{margin:0;border-top:1px solid #eef2f7;padding-top:8px}.company-flow-grid b{display:block;color:#223047}.component-value-chain,.chain-lane-map,.chain-value-flow{min-width:0}.chain-relationship-graph{display:block}.bom-node-brief{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:14px}.bom-node-brief p{margin:4px 0 0}.bom-master-equations{display:grid;gap:10px;margin:0 0 14px;padding:14px;border:1px solid #dceaf8;border-radius:16px;background:#f7fbff}.bom-master-equations>b{color:#1f5d96}.bom-master-equations>div{display:grid;gap:8px}.bom-master-equations p{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:center;margin:0;padding:10px 12px;border:1px solid #e2edf8;border-radius:12px;background:#fff;color:#344054}.bom-master-equations p span{display:inline-flex;width:28px;height:28px;align-items:center;justify-content:center;border-radius:999px;background:#eaf3ff;color:var(--blue);font-size:11px;font-weight:900}.bom-question-list{display:grid;gap:10px}.bom-question-card{border:1px solid #e3ebf6;border-radius:18px;background:#fff;overflow:hidden}.bom-question-card>summary{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:14px 16px}.bom-question-card[open]>summary{border-bottom:1px solid #edf1f7}.bom-question-index{display:inline-flex;width:28px;height:28px;border-radius:999px;align-items:center;justify-content:center;background:#f0f7ff;color:var(--blue);font-weight:900;font-size:12px}.bom-question-answer{padding:14px 16px;background:#fbfcff}.bom-question-answer p{margin:0 0 10px}.bom-question-sources{display:flex;gap:6px;flex-wrap:wrap}.bom-demand-study{display:grid;gap:14px}.bom-demand-thesis{border:1px solid rgba(10,132,255,.18);border-radius:16px;background:#fff;padding:14px;color:#26364f}.bom-demand-steps{display:grid;gap:10px}.bom-demand-step{display:grid;grid-template-columns:auto 1fr;gap:12px;border:1px solid #e8eef7;border-radius:16px;background:#fff;padding:14px}.bom-demand-step>span{display:inline-flex;width:34px;height:34px;border-radius:999px;align-items:center;justify-content:center;background:#eef7ff;color:var(--blue);font-weight:900;font-size:12px}.bom-demand-step h5{margin:0 0 6px;font-size:15px;color:#223047}.bom-demand-step p{margin:0 0 8px}.bom-demand-table{min-width:980px}.source-chip{display:inline-flex;margin:2px 4px 2px 0;border:1px solid rgba(10,132,255,.2);border-radius:999px;background:#eef7ff;color:var(--blue);padding:3px 8px;font-size:11px}
 .bom-question-research-status{border:1px solid #dbeafe;border-radius:16px;background:#f7fbff;overflow:hidden;margin-bottom:12px}.bom-question-research-status>summary{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:12px;list-style:none;cursor:pointer}.bom-question-research-status[open]>summary{border-bottom:1px solid #dbeafe}.bom-question-research-status summary b{color:#0a66cc}.bom-question-research-status summary span:not(.chevron){color:#667085;font-size:12px;font-weight:900}.bom-question-research-body{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:12px}.bom-question-research-body article{border:1px solid #e7eef8;border-radius:14px;background:#fff;padding:11px}.bom-question-research-body span{display:block;color:var(--blue);font-size:11px;font-weight:900;margin-bottom:4px}.bom-question-research-body p{margin:0;color:#344054;font-size:13px}.bom-s-curve-stage-card{border:1px solid rgba(29,154,108,.24);border-radius:20px;background:linear-gradient(180deg,#fff,#f5fffa);overflow:hidden;margin-top:14px}.bom-s-curve-stage-card>summary{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;list-style:none;cursor:pointer;padding:16px}.bom-s-curve-stage-card[open]>summary{border-bottom:1px solid rgba(29,154,108,.18)}.bom-s-curve-stage-card>summary>span:first-child{display:inline-flex;border:1px solid rgba(29,154,108,.28);border-radius:999px;background:#eaf8f2;color:var(--green);padding:6px 10px;font-size:12px;font-weight:900;white-space:nowrap}.bom-s-curve-stage-card h5,.bom-s-curve-stage-card p{margin:0}.bom-s-curve-stage-card summary b{display:block;color:#173f34;font-size:16px}.bom-s-curve-stage-card summary p{color:#667085;font-size:13px}.bom-stage-rollup-body{display:grid;gap:12px;padding:14px}.bom-stage-source-discipline,.bom-stage-next-signal,.bom-stage-downgrade-signal{border:1px solid #dcefe8;border-radius:16px;background:#fff;padding:12px}.bom-stage-current{border:1px solid #dcefe8;border-radius:16px;background:#f8fffb;padding:12px}.bom-stage-source-discipline>b,.bom-stage-current>b,.bom-stage-next-signal>b,.bom-stage-downgrade-signal>b{display:block;color:#173f34;margin-bottom:5px}.bom-stage-source-discipline p,.bom-stage-current p,.bom-stage-next-signal p,.bom-stage-downgrade-signal p{margin:0;color:#344054}.bom-stage-evidence-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.bom-stage-evidence-grid article{border:1px solid #e7eef8;border-radius:16px;background:#fff;padding:12px}.bom-stage-evidence-grid span{display:inline-flex;border-radius:999px;background:#eef7ff;color:var(--blue);font-size:11px;font-weight:900;padding:4px 8px}.bom-stage-evidence-grid b{display:block;color:#223047;margin:7px 0 5px}.bom-stage-evidence-grid p{margin:0;color:#344054;font-size:13px}.bom-question-four-step,.bom-question-stage-flow{display:grid;gap:12px;margin-bottom:14px}.bom-step-card{border:1px solid #e2ebf6;border-radius:18px;background:#fff;overflow:hidden}.bom-step-card>summary{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:14px;list-style:none;cursor:pointer}.bom-step-card[open]>summary{border-bottom:1px solid #e2ebf6}.bom-step-card>summary span:first-child{display:inline-flex;width:58px;height:26px;border-radius:999px;align-items:center;justify-content:center;background:#eef7ff;color:var(--blue);font-size:11px;font-weight:900}.bom-step-card>summary h5{margin:0;color:#223047;font-size:16px;line-height:1.35}.bom-step-body{display:grid;gap:12px;padding:14px}.bom-step-body>p{margin:0;color:#344054}.bom-metric-rationale-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.bom-metric-rationale-card{border:1px solid #edf2f8;border-radius:16px;background:#fbfdff;padding:12px}.bom-metric-rationale-card span{display:block;color:var(--blue);font-size:11px;font-weight:900;margin-bottom:4px}.bom-metric-rationale-card b{display:block;color:#223047;font-size:14px;margin-bottom:6px}.bom-metric-rationale-card p{margin:0;color:#344054;font-size:13px}.bom-history-metric-list{display:grid;gap:16px}.bom-history-metric-paragraph{display:grid;gap:8px;padding:0 0 14px;border-bottom:1px solid #e7edf6}.bom-history-metric-paragraph:last-child{border-bottom:0;padding-bottom:0}.bom-history-metric-text{margin:0;color:#344054}.bom-history-metric-text b{display:block;color:#223047;margin-bottom:4px}.bom-future-grid,.bom-mechanism-grid,.bom-stage-mechanism-grid{display:grid;grid-template-columns:1fr;gap:10px}.bom-future-card,.bom-mechanism-card{border:1px solid #edf2f8;border-radius:16px;background:#fbfdff;overflow:hidden}.bom-future-card>summary,.bom-mechanism-card>summary{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;list-style:none;cursor:pointer;padding:12px}.bom-future-card[open]>summary,.bom-mechanism-card[open]>summary{border-bottom:1px solid #edf2f8}.bom-nested-card-body{padding:12px}.bom-future-card b,.bom-mechanism-card b b{display:block;color:#223047}.bom-nested-card-body p p{margin:0;color:#344054}.bom-question-supporting-detail{display:grid;gap:12px;margin-top:12px;border-top:1px solid #e7edf6;padding-top:12px}.bom-stage-integrated-card{border-color:#d8e6f7;background:linear-gradient(180deg,#fff,#fbfdff)}.bom-stage-integrated-card>summary{grid-template-columns:auto 1fr auto}.bom-stage-integrated-card>summary .stage-index{width:58px;height:28px}.bom-stage-subcard{border:1px solid #edf2f8;border-radius:16px;background:#fff;overflow:hidden}.bom-stage-subcard>summary{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;list-style:none;cursor:pointer;padding:12px}.bom-stage-subcard[open]>summary{border-bottom:1px solid #edf2f8}.bom-stage-subcard summary b{color:#223047}.bom-stage-subcard-body{display:grid;gap:10px;padding:12px}.bom-stage-history-content{display:grid;gap:10px}
 .bom-future-grid{display:grid;grid-template-columns:1fr;gap:14px}.bom-future-card{min-width:0}
 .bom-model-card,.bom-target-impact-card{border:1px solid #e1ecf8;border-radius:16px;background:#fbfdff;padding:13px}.bom-model-head{display:grid;gap:5px;margin-bottom:8px}.bom-model-head span{color:var(--blue);font-size:12px;font-weight:900}.bom-model-head b{color:#223047;font-size:15px}.bom-model-card p,.bom-target-impact-card p{margin:0;color:#344054}.bom-model-grid,.bom-question-conclusion-grid,.bom-target-impact-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.bom-model-grid article,.bom-question-conclusion-grid article,.bom-target-impact-grid article{border:1px solid #edf2f8;border-radius:15px;background:#fff;padding:12px}.bom-model-grid b,.bom-question-conclusion-grid b,.bom-target-impact-grid b{display:block;color:#223047;margin-bottom:6px}.bom-model-grid ul{margin:0;padding-left:18px;color:#344054}.bom-model-grid li+li{margin-top:5px}.bom-model-grid p,.bom-question-conclusion-grid p{margin:0;color:#344054}.bom-target-impact-grid{margin-top:10px}.bom-target-impact-grid span{display:block;color:var(--blue);font-size:11px;font-weight:900;margin-bottom:5px}.bom-target-impact-grid b{margin:0;font-size:13px}.bom-model-card,.bom-model-grid,.bom-question-conclusion-grid,.bom-target-impact-card,.bom-target-impact-grid{min-width:0;max-width:100%;box-sizing:border-box}
@@ -4774,6 +4779,7 @@ function css() {
 .future-runway{display:grid;gap:14px;border:1px solid rgba(29,154,108,.20);border-radius:20px;background:linear-gradient(180deg,#ffffff,#f7fffb);padding:16px}.runway-head span{display:block;color:var(--green);font-size:12px;font-weight:900;margin-bottom:4px}.runway-head h5{margin:0 0 8px;font-size:20px;line-height:1.3;color:#223047}.runway-head p{margin:0;color:#475467}.runway-formula{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.runway-formula-card{border:1px solid #dcefe8;border-radius:16px;background:#fff;padding:14px}.runway-formula-card>span{display:inline-flex;width:28px;height:28px;border-radius:999px;align-items:center;justify-content:center;background:#eaf8f2;color:var(--green);font-weight:900;font-size:12px}.runway-formula-card h6{margin:10px 0 6px;color:#223047;font-size:15px}.runway-formula-card p{margin:0;color:#3d536d}.runway-table{min-width:1180px}.runway-timeline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.runway-timeline article{border:1px solid #dcefe8;border-radius:16px;background:#fff;padding:14px}.runway-timeline span{display:block;color:var(--green);font-size:12px;font-weight:900}.runway-timeline strong{display:block;margin:4px 0;color:#223047}.runway-timeline p{margin:0;color:#3d536d}.runway-verdict{border:1px solid rgba(29,154,108,.22);border-radius:16px;background:#f1fbf7;padding:14px}.runway-verdict b{display:block;color:#166f52;margin-bottom:6px}.runway-verdict p{margin:0;color:#2f3d52}
 .table-scroll.metric-choice-table{overflow-x:auto}.table-scroll.metric-choice-table table{min-width:max(760px,100%);width:max-content;table-layout:auto}.table-scroll.metric-choice-table th,.table-scroll.metric-choice-table td{white-space:normal;overflow-wrap:anywhere;word-break:break-word;line-height:1.55}.table-scroll.metric-choice-table th:first-child,.table-scroll.metric-choice-table td:first-child{width:28%}
 .industry-module-body,.bom-question-answer,.bom-question-stage-flow,.bom-step-body,.bom-logic-stage-stack,.bom-logic-stage-card,.bom-logic-stage-body,.bom-stage-subcard,.bom-stage-subcard-body,.bom-stage-history-content,.metric-history-group,.metric-data-table,.metric-trend-gap,.expectation-table-list,.expectation-table-group,.bom-expectation-card,.bom-stage-mechanism-grid,.qa-body,.qa-block{min-width:0;max-width:100%;box-sizing:border-box}.metric-data-table,.metric-trend-gap{overflow:visible}.metric-history-table{table-layout:auto}.metric-history-table td strong{white-space:nowrap}.metric-history-table th:nth-child(2),.metric-history-table td:nth-child(2){min-width:210px}.metric-history-table th:nth-child(3),.metric-history-table td:nth-child(3){min-width:120px}
+.bom-research-logic-rules{display:grid;gap:9px;margin-top:10px}.bom-research-logic-rules article{border-top:1px solid #e7eef8;padding-top:9px}.bom-research-logic-rules b{display:block;color:#223047;font-size:12px;margin-bottom:4px}.bom-research-logic-rules p{margin:0;color:#344054}.bom-step-research-logic .bom-logic-chain-table table{min-width:1180px}.bom-step-research-logic .bom-logic-chain-table th:nth-child(1){width:17%}.bom-step-research-logic .bom-logic-chain-table th:nth-child(2){width:25%}.bom-step-research-logic .bom-logic-chain-table th:nth-child(3){width:32%}.bom-step-research-logic .bom-logic-chain-table th:nth-child(4){width:26%}
 @media(max-width:820px){.goal-grid,.constraint-grid,.chain-bridge-grid,.chain-layer-grid,.chain-company-list,.company-flow-grid,.chain-node-lens ul,.bom-node-brief,.chain-audit-body-grid,.logic-flow,.narrative-bottom,.history-snapshot-grid,.history-bar-row,.runway-formula,.runway-timeline,.chain-node-lens-grid,.chain-metric-grid,.bom-metric-rationale-list,.bom-future-grid,.bom-mechanism-grid,.bom-question-research-body,.bom-stage-evidence-grid{grid-template-columns:1fr}.chain-audit-head,.chain-audit-verdict,.demand-chain-title,.chain-node-detail>summary,.chain-metric-board-head{display:grid;grid-template-columns:1fr}.qa-card.level-2,.qa-card.level-3{margin-left:0}.qa-card summary{grid-template-columns:auto 1fr auto}.qa-count{display:none}}
 @media(max-width:820px){.bom-model-grid,.bom-question-conclusion-grid,.bom-target-impact-grid{grid-template-columns:1fr}}
 `;
