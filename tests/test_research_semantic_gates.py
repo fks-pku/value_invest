@@ -25,7 +25,7 @@ def _artifact(question_number: int) -> dict:
         "parser_status": "gpt_verified_source_parse",
         "source_universe_plan": {"priority_sources": ["primary filings"]},
         "exa_search_plan": {"direct_query": f"memory question {question_number}"},
-        "metric_candidate_plan": {"candidate_classes": ["direct evidence"]},
+        "claim_mapping_plan": {"atomic_claim_types": ["actual", "forecast", "refutation"]},
         "source_ids": [f"SRC-{question_number}"],
         "evidence_summary": [f"question {question_number} evidence"],
         "source_parse_records": [
@@ -85,7 +85,7 @@ class ResearchSemanticGateTests(unittest.TestCase):
 
     def test_missing_active_research_plan_keeps_question_incomplete(self):
         artifacts = [_artifact(index) for index in range(1, 7)]
-        artifacts[0]["metric_candidate_plan"] = {}
+        artifacts[0]["claim_mapping_plan"] = {}
         workbench = {"bom_question_search_artifacts": artifacts}
 
         readiness = build_bom_readiness(workbench)["memory"]

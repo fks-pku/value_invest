@@ -6,7 +6,7 @@ from typing import Any
 
 @dataclass(frozen=True)
 class BomLogicStage:
-    """One causal link inside a BOM question judgment model."""
+    """Optional reasoning hint, never a mandatory evidence-storage coordinate."""
 
     stage_id: str
     title: str
@@ -30,7 +30,7 @@ class BomLogicStage:
 
 @dataclass(frozen=True)
 class BomQuestionPlaybook:
-    """Domain-owned question model. It contains no run-specific evidence or verdict."""
+    """Domain-owned six-question guidance without a fixed evidence path."""
 
     question_id: str
     question_number: int
@@ -50,6 +50,14 @@ class BomQuestionPlaybook:
             "purpose": self.purpose,
             "formula": self.formula,
             "conclusion_rule": self.conclusion_rule,
+            "logic_hints": [
+                {
+                    "title": stage.title,
+                    "why_it_matters": stage.role,
+                    "example_metric": stage.primary_metric,
+                }
+                for stage in self.stages
+            ],
             "stages": [stage.to_dict() for stage in self.stages],
         }
 
@@ -379,16 +387,14 @@ def validate_bom_node_playbook(playbook: BomNodePlaybook) -> None:
     if len(question_ids) != len(set(question_ids)):
         raise ValueError("BOM question IDs must be unique")
     for question in playbook.questions:
-        if not 4 <= len(question.stages) <= 7:
-            raise ValueError(f"{question.question_id} must contain 4-7 causal stages")
         stage_ids = [stage.stage_id for stage in question.stages]
         if len(stage_ids) != len(set(stage_ids)):
             raise ValueError(f"{question.question_id} stage IDs must be unique")
         for stage in question.stages:
-            if not stage.primary_metric or not stage.refutation_metric:
-                raise ValueError(f"{question.question_id}/{stage.stage_id} must define primary and refutation metrics")
-            if not 1 <= len(stage.cross_check_metrics) <= 2:
-                raise ValueError(f"{question.question_id}/{stage.stage_id} must define one or two cross-check metrics")
+            if not stage.title or not stage.role:
+                raise ValueError(
+                    f"{question.question_id}/{stage.stage_id} reasoning hints need title and purpose"
+                )
 
 
 def validate_bom_playbook_registry(

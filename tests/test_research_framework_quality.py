@@ -101,13 +101,16 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
             "bom-taxonomy",
             "bom-research-module",
             "bom-question-card",
-            "bom-question-research-status",
-            "bom-step-research-logic",
-            "bom-stage-integrated-card",
-            "metric-history-table",
-            "metric-trend-gap",
-            "expectation-table-group",
-            "bom-expectation-table",
+            "bom-question-understanding",
+            "bom-question-current",
+            "bom-question-change",
+            "bom-question-timeline",
+            "bom-question-materials",
+            "bom-question-coverage",
+            "bom-temporal-baseline",
+            "bom-material-timeline",
+            "bom-mapped-material-table",
+            "bom-coverage-status",
             "bom-s-curve-stage-card",
             "target-profit-bridge",
             "target-valuation-table",
@@ -115,9 +118,26 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
             "target-table",
             "source-collapse",
             "table-scroll",
+            "industry-index",
+            "bom-node",
+            "bom-project-index",
+            "bom-index-card",
+            "project-back-link",
         ]:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, contract)
+
+    def test_canonical_contracts_define_industry_parent_and_bom_children(self):
+        combined = "\n".join(self._canonical_docs().values())
+        for phrase in [
+            "boms/<node_id>",
+            "industry-index",
+            "bom-node",
+            "boms/manifest.json",
+            "one industry-chain project",
+        ]:
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, combined)
 
     def test_public_report_keeps_process_artifacts_internal(self):
         contract = self._canonical_docs()["research_report_contract.md"]

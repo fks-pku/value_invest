@@ -22,7 +22,7 @@ Do not mix another report template into this workflow.
 1. Convert the request into `ResearchGoal` with mode, date, decision, scope, and domain hint.
 2. Use `investment-question-architect` plus the domain playbook to build internal QA to maximum depth five.
 3. For S-curve work, define a canonical BOM taxonomy and run the six-question research loop for every node.
-4. Use `research-source-planner`; GPT selects the professional Universe and direct/Exa search plan for each minimum question and metric.
+4. Use `research-source-planner`; GPT selects the professional Universe and direct/Exa search plan from each six-question coordinate's current coverage gaps.
 5. Parse one source at a time against the current question with the appropriate specialty skill. DeepSeek may perform first-pass reading when available; GPT verifies every adopted claim.
 6. Roll facts, inference, judgment, gaps, refutation, and triggers upward.
 7. Run company exposure and as-of valuation analysis.
@@ -37,7 +37,7 @@ Do not mix another report template into this workflow.
 - Messages/opinions are leads unless independently verified.
 - The same source is re-parsed for every question dimension it serves.
 - Search is active and question-level. A general source pool cannot replace a fresh minimum-unit search.
-- Metric candidates are designed before search; search results do not choose the metric by accident.
+- Active search starts from explicit evidence gaps, while external reports may introduce previously unknown metrics or mechanisms through atomic claim mapping.
 - Actual history and forward expectations remain separate.
 - Acceleration claims need same-definition history or explicit YoY/multiple evidence.
 - Future runway needs cutoff-visible guidance/forecast/TAM/customer budget plus first-principles support.
@@ -46,17 +46,19 @@ Do not mix another report template into this workflow.
 
 ## S-Curve and BOM Loop
 
-Before researching any node, create or load its own `BomNodePlaybook`. The six public question labels are shared, but the causal model underneath them is node-specific. Each playbook must define:
+Before researching any node, create or load its own `BomNodePlaybook`. The six public question labels are shared. Each playbook must define:
 
 - exact node boundary, inputs, outputs, downstream recipients, representative companies, and financial validation metrics;
 - node-specific demand, market-value, effective-supply, and investment-odds equations or equivalent causal formulas;
 - exactly six question playbooks;
-- 4-7 causal stages per question, each with one primary metric, one or two cross-check metrics, and one refutation metric;
+- a concise node-specific reasoning hint for each question; the hint is optional guidance, not a mandatory evidence path;
 - conclusion rules that state when the question passes, remains pending, or is refuted.
 
 Enforce:
 
-`one canonical BOM node -> one node-specific playbook -> one cutoff-frozen research run -> one report module`
+`one industry-chain project -> one boms/<node_id>/ child project per canonical BOM node`
+
+`one canonical BOM node -> one six-question playbook -> one temporal ledger -> reproducible snapshots -> one independent BOM report`
 
 The canonical BOM registry and playbook registry must have exact one-to-one node-ID coverage. Never reuse HBM's chain for compute, networking, manufacturing, power/cooling, or system delivery. Never let a renderer's static prose or a generic fallback stand in for a missing node playbook. Playbooks contain no run-specific sources, dates, facts, verdicts, or presentation classes.
 
@@ -69,13 +71,13 @@ For every canonical BOM node, research:
 5. Pricing: as-of valuation, implied expectations, revisions, and payoff odds.
 6. Refutation: observed contrary evidence, threshold, cadence, and downgrade action.
 
-Every question keeps a separate internal judgment model and causal-stage definition, but the public report compiles them into one reader-facing sequence:
+Every question keeps one compact judgment model and optional logic hint. The public report uses:
 
-`01 研究逻辑链（判断规则 + 具体因果环节） -> 02+ per-link history/expectation/first-principles -> 本问结论 -> target impact`
+`基本理解思路 -> 当前结论 -> 相较上一截面的变化 -> 时间演化 -> 映射材料 -> 信息覆盖`
 
-Do not render separate public `判断模型` and `具体逻辑链条` cards. The model formula and conclusion rule explain how to judge; the causal rows explain what must happen and how each link will be tested.
+Do not require one evidence card per logic-hint row. Evidence is stored as atomic claims mapped to `BOM x question x time`, so new themes can enter even when the initial hint did not anticipate them.
 
-A BOM stage is pending until all six questions complete. Completion requires a non-empty source-universe plan, direct/Exa search plan, metric-candidate plan, completed search, per-source parsing, and strengthening evidence. Q6 is incomplete without explicit refuting evidence.
+A BOM stage is pending until all six questions complete. Completion requires source planning, pull search, ingestion of available external materials, question-specific atomic parsing, temporal coverage, and strengthening evidence. Q6 is incomplete without explicit refuting evidence.
 
 ## Source Planning and Parsing
 
@@ -129,7 +131,9 @@ The default HTML contains exactly:
 3. `标的推荐`
 4. `来源索引`
 
-`行业概况` begins with `01 技术链与BOM呈现`, then one numbered module per BOM node. Public `下钻 QA`, raw Universe/Exa plans, parser traces, workbench data, and framework-change notes remain hidden unless requested.
+Industry/S-curve output is split by scope. The parent `professional_report.html` uses `data-report-scope="industry-index"`: `行业概况` contains `01 技术链与BOM呈现` plus `02 BOM 独立研究目录`, and each full-width `bom-index-card` links to `boms/<node_id>/professional_report.html`. It never embeds all six-question modules. Each child report uses `data-report-scope="bom-node"`, contains exactly one BOM module, preserves the six questions and S-curve rollup, and links back to the parent.
+
+Each BOM child owns `project.json`, node-filtered `sources.jsonl`, a temporal ledger, as-of snapshots, optional compatibility `research_run.json`, and its report. The parent owns `boms/manifest.json`, canonical taxonomy, navigation, and aggregated targets. Public `下钻 QA`, raw Universe/Exa plans, parser traces, workbench data, and framework-change notes remain hidden unless requested.
 
 Use nested collapsed `details`, claim-near blue links, one full-width sibling card per row, and local `table-scroll` for wide tables. Keep the public report clean and research-first.
 

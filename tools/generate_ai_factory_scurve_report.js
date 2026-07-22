@@ -5,8 +5,9 @@ const { spawnSync } = require("child_process");
 const ROOT = path.resolve(__dirname, "..");
 const PROJECT_ID = "ai_factory_industry_scurve_timeslice_20260328";
 const OUT_DIR = path.join(ROOT, "research", "qa_projects", PROJECT_ID);
-const COMPUTE_RESEARCH_RUN_PATH = path.join(OUT_DIR, "compute_research_run.json");
-const HBM_RESEARCH_RUN_PATH = path.join(OUT_DIR, "hbm_research_run.json");
+const BOMS_DIR = path.join(OUT_DIR, "boms");
+const COMPUTE_RESEARCH_RUN_PATH = path.join(BOMS_DIR, "compute", "research_run.json");
+const HBM_RESEARCH_RUN_PATH = path.join(BOMS_DIR, "memory", "research_run.json");
 const AS_OF_DATE = "2026-03-28";
 const EVALUATION_DATE = "2026-06-28";
 const LABEL_WINDOW = "2026-03-28_to_2026-06-28";
@@ -278,10 +279,45 @@ const targets = [
 
 function main() {
   fs.mkdirSync(OUT_DIR, { recursive: true });
+  fs.mkdirSync(BOMS_DIR, { recursive: true });
   const bomQuestionSearchArtifacts = buildAllBomQuestionSearchArtifacts();
   const scoringWorksheet = scoreTargetsThroughDomain(targets, bomQuestionSearchArtifacts);
-  fs.writeFileSync(path.join(OUT_DIR, "professional_report.html"), renderHtml(scoringWorksheet), "utf8");
-  fs.writeFileSync(path.join(OUT_DIR, "sources.jsonl"), sources.map((item) => JSON.stringify({ ...item, as_of_date: AS_OF_DATE, cutoff_status: "cutoff_visible" })).join("\n") + "\n", "utf8");
+  const bomManifest = buildBomProjectManifest();
+  for (const entry of bomManifest.nodes) {
+    const node = bomNodes.find((candidate) => candidate.id === entry.node_id);
+    if (!node) throw new Error(`Manifest node missing from BOM registry: ${entry.node_id}`);
+    const childDir = path.join(OUT_DIR, entry.directory);
+    const nodeSources = collectBomSources(node, scoringWorksheet);
+    const nodeWorksheet = scoringWorksheet.filter((item) => item.thesis_node_id === node.id);
+    const questionRows = buildBomQuestionRows(node);
+    fs.mkdirSync(childDir, { recursive: true });
+    const temporalBundle = buildBomTemporalBundle(node, questionRows, nodeSources, childDir);
+    fs.writeFileSync(path.join(OUT_DIR, entry.report_path), renderBomHtml(node, nodeWorksheet, nodeSources, questionRows, temporalBundle), "utf8");
+    fs.writeFileSync(path.join(OUT_DIR, entry.sources_path), serializeSources(nodeSources), "utf8");
+    fs.writeFileSync(path.join(OUT_DIR, entry.project_path), JSON.stringify({
+      project_id: entry.child_project_id,
+      parent_project_id: PROJECT_ID,
+      project_scope: "bom_node",
+      bom_node_id: node.id,
+      bom_public_name: node.name,
+      title: `AI 工厂 · ${node.name} BOM 节点研究`,
+      research_type: "bom_node_s_curve_research",
+      run_mode: "historical_backtest",
+      mode: "historical_backtest",
+      as_of_date: AS_OF_DATE,
+      evaluation_date: EVALUATION_DATE,
+      report_path: "professional_report.html",
+      sources_path: "sources.jsonl",
+      research_run_path: entry.research_run_path ? "research_run.json" : null,
+      temporal_manifest_path: "temporal_manifest.json",
+      evidence_ledger_path: "ledger/claims.jsonl",
+      snapshot_path: `snapshots/${AS_OF_DATE}/thesis_snapshot.json`,
+      research_status: entry.research_run_path ? "node_run_available" : "partial_research",
+    }, null, 2), "utf8");
+  }
+  fs.writeFileSync(path.join(BOMS_DIR, "manifest.json"), JSON.stringify(bomManifest, null, 2), "utf8");
+  fs.writeFileSync(path.join(OUT_DIR, "professional_report.html"), renderIndustryIndexHtml(scoringWorksheet, bomManifest.nodes), "utf8");
+  fs.writeFileSync(path.join(OUT_DIR, "sources.jsonl"), serializeSources(sources), "utf8");
   fs.writeFileSync(path.join(OUT_DIR, "project.json"), JSON.stringify({
     project_id: PROJECT_ID,
     title: "AI 工厂产业第一核心投资框架回测研究",
@@ -292,9 +328,165 @@ function main() {
     evaluation_date: EVALUATION_DATE,
     report_path: "professional_report.html",
     framework_focus: "s_curve_first",
+    project_scope: "industry_chain",
+    bom_root: "boms",
+    bom_manifest_path: "boms/manifest.json",
+    bom_projects: bomManifest.nodes,
   }, null, 2), "utf8");
   writeAuditArtifacts(bomQuestionSearchArtifacts, scoringWorksheet);
   console.log(path.join(OUT_DIR, "professional_report.html"));
+}
+
+function buildBomProjectManifest() {
+  const result = spawnSync(
+    "python3",
+    [path.join(ROOT, "tools", "build_bom_project_manifest.py")],
+    {
+      cwd: ROOT,
+      env: {
+        ...process.env,
+        PYTHONPATH: path.join(ROOT, "src"),
+        PYTHONPYCACHEPREFIX: "/private/tmp/value_invest_pycache",
+      },
+      input: JSON.stringify({
+        parent_project_id: PROJECT_ID,
+        nodes: bomNodes.map((node) => ({ id: node.id, name: node.name })),
+        research_run_node_ids: ["compute", "memory"],
+      }),
+      encoding: "utf8",
+      maxBuffer: 10 * 1024 * 1024,
+    },
+  );
+  if (result.status !== 0) {
+    throw new Error(`BOM project manifest build failed: ${result.stderr || result.stdout}`);
+  }
+  return JSON.parse(result.stdout);
+}
+
+function serializeSources(sourceItems) {
+  return sourceItems
+    .map((item) => JSON.stringify({ ...item, as_of_date: AS_OF_DATE, cutoff_status: "cutoff_visible" }))
+    .join("\n") + "\n";
+}
+
+function collectBomSources(node, scoringWorksheet) {
+  const questionSourceIds = buildBomQuestionRows(node)
+    .flatMap((row) => row.sourceIds || []);
+  const targetSourceIds = scoringWorksheet
+    .filter((item) => item.thesis_node_id === node.id)
+    .flatMap((item) => item.evidence_ids || []);
+  const selected = new Set([...questionSourceIds, ...targetSourceIds]);
+  return sources.filter((item) => selected.has(item.source_id));
+}
+
+function buildBomQuestionRows(node) {
+  return bomCoreQuestionRows(node)
+    .map((row, index) => applyBomQuestionSearchOverride(row, index + 1, node));
+}
+
+function buildBomTemporalBundle(node, questionRows, nodeSources, childDir) {
+  const result = spawnSync(
+    "python3",
+    [path.join(ROOT, "tools", "build_bom_temporal_research.py"), childDir],
+    {
+      cwd: ROOT,
+      env: {
+        ...process.env,
+        PYTHONPATH: path.join(ROOT, "src"),
+        PYTHONPYCACHEPREFIX: "/private/tmp/value_invest_pycache",
+      },
+      input: JSON.stringify({
+        node_id: node.id,
+        as_of_date: AS_OF_DATE,
+        questions: questionRows.map((row, index) => ({
+          question_number: index + 1,
+          question_id: `${node.id}_q${index + 1}`,
+          question: row.question,
+          conclusion: row.answer,
+          conclusion_strength: row.conclusionStrength || "待验证",
+          target_impact: row.targetImpact || "",
+          source_ids: row.sourceIds || [],
+        })),
+        sources: nodeSources,
+        claims: questionRows.flatMap((row, index) => buildTemporalClaimSeeds(row, index + 1)),
+      }),
+      encoding: "utf8",
+      maxBuffer: 20 * 1024 * 1024,
+    },
+  );
+  if (result.status !== 0) {
+    throw new Error(`BOM temporal research build failed for ${node.id}: ${result.stderr || result.stdout}`);
+  }
+  return JSON.parse(result.stdout);
+}
+
+function buildTemporalClaimSeeds(row, questionNumber) {
+  const chainNodes = row.detail?.reportNarrative?.chainNodes || [];
+  const futureCards = row.futureCards || [];
+  const claims = [];
+  chainNodes.forEach((node, nodeIndex) => {
+    const metrics = node.metrics || [];
+    metrics.forEach((metric) => {
+      const sourceIds = [...new Set([...(metric.sourceIds || []), ...(node.sourceIds || [])])];
+      const actualText = [metric.history, metric.current].filter(Boolean).join(" ");
+      const forecastText = metric.future || "";
+      sourceIds.forEach((sourceId) => {
+        if (actualText) claims.push({
+          source_id: sourceId,
+          question_number: questionNumber,
+          statement: actualText,
+          claim_type: questionNumber === 5 ? "valuation" : questionNumber === 6 ? "refutation" : "actual",
+          stance: questionNumber === 6 ? "refute" : "support",
+          metric_name: metric.name || "",
+          topic_tags: [node.title || `主题${nodeIndex + 1}`],
+          mapping_origin: "migrated_question_specific_metric_parse",
+          mapping_confidence: "high",
+        });
+        if (forecastText) claims.push({
+          source_id: sourceId,
+          question_number: questionNumber,
+          statement: forecastText,
+          claim_type: questionNumber === 5 ? "valuation" : questionNumber === 6 ? "refutation" : "forecast",
+          stance: questionNumber === 6 ? "refute" : "support",
+          metric_name: metric.name || "",
+          topic_tags: [node.title || `主题${nodeIndex + 1}`],
+          mapping_origin: "migrated_question_specific_expectation_parse",
+          mapping_confidence: "medium",
+        });
+      });
+    });
+    const future = futureCards[nodeIndex] || {};
+    (future.expectationRows || []).forEach((expectation) => {
+      const statement = [expectation.currentMetric, expectation.guidanceMetric, expectation.comparability]
+        .filter(Boolean)
+        .join(" ");
+      (expectation.sourceIds || future.sourceIds || []).forEach((sourceId) => claims.push({
+        source_id: sourceId,
+        question_number: questionNumber,
+        statement,
+        claim_type: questionNumber === 5 ? "valuation" : questionNumber === 6 ? "refutation" : "forecast",
+        stance: questionNumber === 6 ? "refute" : "support",
+        entity: expectation.entity || "",
+        effective_period: expectation.currentPeriod || "",
+        target_period: expectation.guidancePeriod || "",
+        topic_tags: [node.title || `主题${nodeIndex + 1}`],
+        mapping_origin: "migrated_question_specific_expectation_row",
+        mapping_confidence: "high",
+      }));
+    });
+  });
+  if (!claims.length) {
+    return (row.sourceIds || []).map((sourceId) => ({
+      source_id: sourceId,
+      question_number: questionNumber,
+      statement: row.answer || "该材料用于支持当前六问结论。",
+      claim_type: questionNumber === 5 ? "valuation" : questionNumber === 6 ? "refutation" : "actual",
+      stance: questionNumber === 6 ? "refute" : "support",
+      mapping_origin: "migrated_question_source_reference",
+      mapping_confidence: "medium",
+    }));
+  }
+  return claims;
 }
 
 function scoreTargetsThroughDomain(targetItems, bomQuestionSearchArtifacts) {
@@ -469,9 +661,9 @@ function writeAuditArtifacts(bomQuestionSearchArtifacts, scoringWorksheet) {
     run_mode: "historical_backtest",
     bom_question_search_artifacts: bomQuestionSearchArtifacts,
     bom_stage_rollup_policy: {
-      workflow_order: "design_judgment_model_then_search_and_parse_each_bom_six_question_before_conclusion_and_target_impact_rollup",
+      workflow_order: "keep_six_question_coordinates_then_run_pull_search_and_push_ingestion_into_an_append_only_temporal_claim_ledger_before_snapshot_synthesis",
       local_cache_policy: "old local artifacts are caches only; they cannot replace fresh question-level search artifacts",
-      public_rendering_policy: "show compact evidence status, judgment model, stage evidence, question conclusion, target impact, and BOM stage rollup; keep raw search plans in workbench artifacts",
+      public_rendering_policy: "show basic understanding, current conclusion, real snapshot change, material timeline, mapped claims, coverage, and BOM rollup; keep raw search plans in workbench artifacts",
     },
     source_extractions: sourceExtractions,
     leaf_source_reviews: leafSourceReviews,
@@ -518,8 +710,7 @@ function writeAuditArtifacts(bomQuestionSearchArtifacts, scoringWorksheet) {
 
 function buildAllBomQuestionSearchArtifacts() {
   return bomNodes.flatMap((node) => (
-    bomCoreQuestionRows(node)
-      .map((row, index) => applyBomQuestionSearchOverride(row, index + 1, node))
+    buildBomQuestionRows(node)
       .map((row, index) => buildBomQuestionSearchArtifact(row, index + 1, node))
   ));
 }
@@ -572,7 +763,7 @@ function normalizedScoreComponent(score) {
   return mapping[score] || score;
 }
 
-function renderHtml(scoringWorksheet) {
+function renderIndustryIndexHtml(scoringWorksheet, bomProjects) {
   return `<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -581,7 +772,7 @@ function renderHtml(scoringWorksheet) {
   <title>AI 工厂产业第一核心投资机会回测研究</title>
   <style>${css()}</style>
 </head>
-<body>
+<body data-report-scope="industry-index">
   <header class="hero">
     <div class="hero-inner">
       <p class="eyebrow">Historical Backtest · AI Factory · ${AS_OF_DATE}</p>
@@ -598,9 +789,44 @@ function renderHtml(scoringWorksheet) {
   </nav>
   <main>
     <section id="goal" class="section"><div class="section-heading"><h2>当前研究的问题</h2></div>${renderGoal()}</section>
-    <section id="overview" class="section"><div class="section-heading"><h2>行业概况</h2></div>${renderOverview()}</section>
+    <section id="overview" class="section"><div class="section-heading"><h2>行业概况</h2></div>${renderIndustryIndexOverview(bomProjects, scoringWorksheet)}</section>
     <section id="targets" class="section"><div class="section-heading"><h2>标的推荐</h2></div>${renderTargets(scoringWorksheet)}</section>
-    <section id="sources" class="section"><div class="section-heading"><h2>来源索引</h2></div>${renderSources()}</section>
+    <section id="sources" class="section"><div class="section-heading"><h2>来源索引</h2></div>${renderSources(sources)}</section>
+  </main>
+</body>
+</html>`;
+}
+
+function renderBomHtml(node, scoringWorksheet, nodeSources, questionRows, temporalBundle) {
+  return `<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 工厂 · ${e(node.name)} BOM 节点研究</title>
+  <style>${css()}</style>
+</head>
+<body data-report-scope="bom-node" data-bom-node-id="${e(node.id)}">
+  <header class="hero bom-node-hero">
+    <div class="hero-inner">
+      <a class="project-back-link" href="../../professional_report.html">← 返回 AI 工厂产业总览</a>
+      <p class="eyebrow">Historical Backtest · BOM Node · ${AS_OF_DATE}</p>
+      <h1>${e(node.name)}</h1>
+      <p class="hero-subtitle">独立验证该 BOM 节点的需求、供给、控制者、财务兑现、市场定价与反证。研究逻辑沿用统一六问，但证据和结论只属于当前节点。</p>
+      <div class="hero-meta"><span>研究截面 ${AS_OF_DATE}</span><span>节点 ${e(node.id)}</span><span>可独立刷新与存档</span></div>
+    </div>
+  </header>
+  <nav class="top-nav">
+    <a href="#goal">当前研究的问题</a>
+    <a href="#overview">行业概况</a>
+    <a href="#targets">标的推荐</a>
+    <a href="#sources">来源索引</a>
+  </nav>
+  <main>
+    <section id="goal" class="section"><div class="section-heading"><h2>当前研究的问题</h2></div>${renderBomGoal(node)}</section>
+    <section id="overview" class="section"><div class="section-heading"><h2>行业概况</h2></div><div class="industry-overview-section bom-node-overview">${renderBomResearchModule(node, 1, questionRows, temporalBundle)}</div></section>
+    <section id="targets" class="section"><div class="section-heading"><h2>标的推荐</h2></div>${renderTargets(scoringWorksheet)}</section>
+    <section id="sources" class="section"><div class="section-heading"><h2>来源索引</h2></div>${renderSources(nodeSources)}</section>
   </main>
 </body>
 </html>`;
@@ -626,11 +852,40 @@ function renderGoal() {
   </div>`;
 }
 
-function renderOverview() {
+function renderBomGoal(node) {
+  return `<div class="goal-card bom-goal-card">
+    <div class="goal-main">研究目标：判断 ${e(node.name)} 是否处在可投资的 S 曲线阶段，并识别结论成立所需的证据与反证。</div>
+    <div class="bom-node-brief">
+      <article><span>接受</span><p>${e(node.receives)}</p></article>
+      <article><span>生产</span><p>${e(node.produces)}</p></article>
+      <article><span>提供给</span><p>${e(node.suppliesTo)}</p></article>
+      <article><span>验证指标</span><p>${e(node.metrics)}</p></article>
+    </div>
+  </div>`;
+}
+
+function renderIndustryIndexOverview(bomProjects, scoringWorksheet) {
   return `<div class="industry-overview-section">
     ${renderSupplyChain()}
-    ${bomNodes.map((node, index) => renderBomResearchModule(node, index + 2)).join("")}
+    ${renderBomProjectIndex(bomProjects, scoringWorksheet)}
   </div>`;
+}
+
+function renderBomProjectIndex(bomProjects, scoringWorksheet) {
+  return `<details class="industry-module bom-project-index" open>
+    <summary class="module-head"><span class="module-index">02</span><div><h3>BOM 独立研究目录</h3><p>每个节点都是可单独运行、存档和迭代的子项目；产业总览不再内嵌六问全文。</p></div><span class="chevron">›</span></summary>
+    <div class="industry-module-body bom-index-list">${bomProjects.map((entry, index) => {
+      const node = bomNodes.find((candidate) => candidate.id === entry.node_id);
+      const targetCount = scoringWorksheet.filter((item) => item.thesis_node_id === entry.node_id).length;
+      const status = entry.research_run_path ? "已有节点专属研究运行" : "已有基础研究，可独立深化";
+      return `<a class="bom-index-card" href="${e(entry.report_path)}">
+        <span class="bom-index-number">${String(index + 1).padStart(2, "0")}</span>
+        <div class="bom-index-copy"><strong>${e(entry.public_name)}</strong><p>${e(node?.plain || "进入节点独立研究。")}</p></div>
+        <div class="bom-index-meta"><span>${e(status)}</span><span>${targetCount} 个关联标的</span></div>
+        <span class="bom-index-arrow">›</span>
+      </a>`;
+    }).join("")}</div>
+  </details>`;
 }
 
 function renderSupplyChain() {
@@ -687,8 +942,17 @@ function renderChainPanels() {
   <details class="chain-detail-panel component-value-chain" open><summary><span>BOM 拆分与代表公司</span><span class="chevron">›</span></summary><div class="chain-company-list">${bomNodes.map(renderCompanyCard).join("")}</div></details>`;
 }
 
-function renderBomResearchModule(node, moduleNumber) {
-  const rows = bomCoreQuestionRows(node).map((row, index) => applyBomQuestionSearchOverride(row, index + 1, node));
+function renderBomResearchModule(node, moduleNumber, suppliedRows = null, temporalBundle = null) {
+  const rows = suppliedRows || buildBomQuestionRows(node);
+  const temporalQuestions = Object.fromEntries(
+    (temporalBundle?.snapshot?.questions || []).map((item) => [item.question_number, item]),
+  );
+  const temporalCoverage = Object.fromEntries(
+    (temporalBundle?.coverage || []).map((item) => [item.question_number, item]),
+  );
+  const hasPriorSnapshot = Object.values(temporalQuestions).some(
+    (item) => item.change_state && item.change_state !== "baseline_no_prior_snapshot",
+  );
   return `<details id="bom-${e(node.id)}" class="industry-module bom-research-module" open>
     <summary class="module-head"><span class="module-index">${String(moduleNumber).padStart(2, "0")}</span><div><h3>${e(node.name)}</h3><p>${e(node.plain)}</p></div><span class="chevron">›</span></summary>
     <div class="industry-module-body">
@@ -699,7 +963,16 @@ function renderBomResearchModule(node, moduleNumber) {
         <article><span>验证指标</span><p>${e(node.metrics)}</p></article>
       </div>
 ${renderBomMasterEquations(node)}
-      <div class="bom-question-list">${rows.map((row, index) => renderBomQuestionCard(row, index + 1, node)).join("")}</div>
+      <div class="bom-temporal-baseline"><b>双轴研究账本</b><p>六问提供稳定的逻辑坐标；材料按市场可见时间进入账本。当前为 ${e(temporalBundle?.as_of_date || AS_OF_DATE)} ${hasPriorSnapshot ? "持续更新快照" : "基线快照"}，后续更新只追加材料与真实结论修正，不覆盖历史。</p></div>
+      <div class="bom-question-list">${rows.map((row, index) => renderBomQuestionCard(
+        row,
+        index + 1,
+        node,
+        temporalQuestions[index + 1] || {},
+        temporalCoverage[index + 1] || {},
+        (temporalBundle?.claims || []).filter((claim) => claim.question_number === index + 1),
+        (temporalBundle?.revisions || []).filter((revision) => revision.question_number === index + 1),
+      )).join("")}</div>
       ${renderBomSCurveStageCard(node, rows)}
     </div>
   </details>`;
@@ -713,15 +986,154 @@ function renderBomMasterEquations(node) {
   </section>`;
 }
 
-function renderBomQuestionCard(row, questionNumber, node) {
-  return `<details class="bom-question-card" open>
-    <summary><span class="bom-question-index">${questionNumber}</span><strong>${e(row.question)}</strong><span class="chevron">›</span></summary>
+function renderBomQuestionCard(row, questionNumber, node, snapshot, coverage, claims, revisions) {
+  const latest = snapshot.latest_material_at || coverage.latest_material_at || "暂无日期";
+  return `<details class="bom-question-card">
+    <summary><span class="bom-question-index">${questionNumber}</span><strong>${e(row.question)}</strong><span class="bom-question-summary-meta"><i>${e(snapshot.conclusion_strength || row.conclusionStrength || "待验证")}</i><em>最近材料 ${e(latest)}</em></span><span class="chevron">›</span></summary>
     <div class="bom-question-answer">
-      ${renderBomQuestionResearchStatus(row, questionNumber, node)}
-      ${renderBomQuestionFourStep(row, questionNumber, node)}
-      <div class="bom-question-sources">${sourceChips(row.sourceIds)}</div>
+      ${renderBomQuestionTemporalView(row, questionNumber, node, snapshot, coverage, claims, revisions)}
     </div>
   </details>`;
+}
+
+function renderBomQuestionTemporalView(row, questionNumber, node, snapshot, coverage, claims, revisions) {
+  const analysis = buildBomQuestionAnalysis(row, questionNumber, node);
+  const understanding = row.understanding || {};
+  const hints = understanding.logicHints?.length
+    ? understanding.logicHints
+    : (analysis.chainNodes || []).map((item) => ({ title: item.title, why: item.role }));
+  const displayClaims = dedupeClaimsForDisplay(claims);
+  const supportMechanism = analysis.mechanism?.sustain || "当前支持机制仍待材料验证。";
+  const refuteMechanism = analysis.mechanism?.break || "当前反证仍待材料验证。";
+  return `<section class="bom-question-temporal-flow">
+    <details class="bom-temporal-card bom-question-understanding">
+      <summary><span>01</span><h5>基本理解思路</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <div class="bom-understanding-model"><b>${e(understanding.name || analysis.model.name)}</b><p>${sourceText(understanding.purpose || analysis.model.purpose)}</p></div>
+        <div class="bom-understanding-rule"><span>大致判断公式</span><p>${sourceText(understanding.formula || analysis.model.formula)}</p></div>
+        ${hints.length ? `<div class="bom-logic-hint"><span>理解提示</span><p>${hints.map((item) => e(item.title || item)).join(" → ")}</p></div>` : ""}
+        <p class="bom-hint-boundary">这只是帮助理解的初始思路，不是材料准入清单。新材料发现的变量、观点和反证可以直接映射到本问。</p>
+      </div>
+    </details>
+    <section class="bom-question-current">
+      <div class="bom-temporal-title"><span>02</span><h5>当前结论</h5><em>${e(snapshot.conclusion_strength || analysis.conclusionStrength)}</em></div>
+      <p class="bom-current-conclusion">${sourceText(snapshot.conclusion || row.answer)}</p>
+      <div class="bom-current-support"><b>支持机制</b><p>${sourceText(supportMechanism)}</p></div>
+      <div class="bom-current-refute"><b>最大反证</b><p>${sourceText(refuteMechanism)}</p></div>
+      ${snapshot.target_impact || analysis.targetImpact ? `<div class="bom-current-impact"><b>对标的的影响</b><p>${sourceText(snapshot.target_impact || analysis.targetImpact)}</p></div>` : ""}
+      <div class="bom-question-sources">${sourceChips(snapshot.source_ids || [])}</div>
+    </section>
+    <details class="bom-temporal-card bom-question-change">
+      <summary><span>03</span><h5>相较上一截面的变化</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <p class="bom-baseline-message">${e(snapshot.change_summary || "尚无上一研究快照可供比较。")}</p>
+        ${renderThesisRevisionTable(revisions)}
+      </div>
+    </details>
+    <details class="bom-temporal-card bom-question-timeline">
+      <summary><span>04</span><h5>时间演化</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <p class="bom-temporal-note">按材料首次对市场可见的时间排列。材料出现不等于研究结论自动改变；结论修正只记录真实快照差异。</p>
+        ${renderMaterialTimeline(displayClaims)}
+      </div>
+    </details>
+    <details class="bom-temporal-card bom-question-materials">
+      <summary><span>05</span><h5>映射材料</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        ${renderMappedClaimsTable(displayClaims)}
+      </div>
+    </details>
+    <details class="bom-temporal-card bom-question-coverage">
+      <summary><span>06</span><h5>信息覆盖</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        ${renderQuestionCoverage(coverage, snapshot)}
+      </div>
+    </details>
+  </section>`;
+}
+
+function renderThesisRevisionTable(revisions) {
+  if (!revisions?.length) {
+    return `<p class="bom-empty-state">尚无结构化研究修正记录。</p>`;
+  }
+  return `<div class="table-scroll bom-revision-table"><table>
+    <thead><tr><th>记录时间</th><th>类型</th><th>原判断</th><th>当前判断</th><th>变化说明</th></tr></thead>
+    <tbody>${revisions.map((item) => `<tr>
+      <td>${e(item.recorded_at || "")}</td>
+      <td>${e(item.revision_type === "baseline" ? "基线" : item.revision_type || "")}</td>
+      <td>${sourceText(item.previous_conclusion || "无历史快照")}</td>
+      <td>${sourceText(item.current_conclusion || "")}</td>
+      <td>${sourceText(item.change_summary || "")}</td>
+    </tr>`).join("")}</tbody>
+  </table></div>`;
+}
+
+function renderMaterialTimeline(claims) {
+  if (!claims.length) return `<p class="bom-empty-state">当前没有已映射材料。</p>`;
+  const recent = [...claims]
+    .sort((a, b) => String(a.published_at).localeCompare(String(b.published_at)))
+    .slice(0, 12);
+  return `<div class="bom-material-timeline">${recent.map((claim) => `<article>
+    <time>${e(claim.published_at || "日期缺口")}</time>
+    <div><b>${sourceLinkForClaim(claim)}</b><span>${e(claimTypeLabel(claim.claim_type))} · ${e(stanceLabel(claim.stance))}</span><p>${sourceText(claim.statement || "")}</p></div>
+  </article>`).join("")}</div>${claims.length > recent.length ? `<p class="bom-temporal-note">时间线从最早材料开始展示前 ${recent.length} 条，完整 ${claims.length} 条见“映射材料”。</p>` : ""}`;
+}
+
+function renderMappedClaimsTable(claims) {
+  if (!claims.length) return `<p class="bom-empty-state">当前没有已映射材料。</p>`;
+  const ordered = [...claims].sort((a, b) => String(b.published_at).localeCompare(String(a.published_at)));
+  return `<div class="table-scroll bom-mapped-material-table"><table>
+    <thead><tr><th>发布时间</th><th>材料</th><th>类型 / 立场</th><th>主题</th><th>提取观点或数据</th><th>实际期间</th><th>预测期间</th></tr></thead>
+    <tbody>${ordered.map((claim) => `<tr>
+      <td>${e(claim.published_at || "")}</td>
+      <td>${sourceLinkForClaim(claim)}</td>
+      <td><b>${e(claimTypeLabel(claim.claim_type))}</b><span>${e(stanceLabel(claim.stance))}</span></td>
+      <td>${e((claim.topic_tags || []).join("、") || "材料发现")}</td>
+      <td>${sourceText(claim.statement || "")}</td>
+      <td>${e(claim.effective_period || "未结构化")}</td>
+      <td>${e(claim.target_period || "不适用 / 未结构化")}</td>
+    </tr>`).join("")}</tbody>
+  </table></div>`;
+}
+
+function renderQuestionCoverage(coverage, snapshot) {
+  const rows = [
+    ["事实", coverage.actual_count || 0],
+    ["预测", coverage.forecast_count || 0],
+    ["观点", coverage.opinion_count || 0],
+    ["消息", coverage.message_count || 0],
+    ["估值", coverage.valuation_count || 0],
+    ["反证", coverage.refutation_count || 0],
+  ];
+  return `<div class="bom-coverage-status"><b>${e(coverage.coverage_status || "材料缺口")}</b><p>覆盖期间：${e(coverage.earliest_material_at || "暂无")} 至 ${e(coverage.latest_material_at || "暂无")}；当前快照：${e(snapshot.change_state === "baseline_no_prior_snapshot" ? "基线，无上一截面" : "已有可比截面")}</p></div>
+  <div class="bom-coverage-list">${rows.map(([label, value]) => `<p><span>${e(label)}</span><b>${e(value)}</b></p>`).join("")}</div>
+  <div class="bom-coverage-direction"><p><span>支持材料</span><b>${e(coverage.support_count || 0)}</b></p><p><span>反向材料</span><b>${e(coverage.refute_count || 0)}</b></p></div>`;
+}
+
+function dedupeClaimsForDisplay(claims = []) {
+  const seen = new Set();
+  return claims.filter((claim) => {
+    const key = [claim.source_id, claim.claim_type, claim.statement, claim.effective_period, claim.target_period].join("|");
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+function sourceLinkForClaim(claim) {
+  const source = sourceById[claim.source_id] || {};
+  const label = source.title || claim.source_id || "来源";
+  return source.url
+    ? `<a href="${e(source.url)}" target="_blank" rel="noreferrer">${e(label)}</a>`
+    : e(label);
+}
+
+function claimTypeLabel(value) {
+  return ({ actual: "事实", forecast: "预测", opinion: "观点", message: "消息", valuation: "估值", refutation: "反证" })[value] || "材料";
+}
+
+function stanceLabel(value) {
+  return ({ support: "支持", refute: "反证", neutral: "中性", lead: "线索" })[value] || "待判断";
 }
 
 function renderBomQuestionResearchStatus(row, questionNumber, node) {
@@ -775,14 +1187,13 @@ function buildBomQuestionSearchArtifact(row, questionNumber, node) {
     question_number: questionNumber,
     question: row.question,
     workflow_order: [
-      "judgment_model_design",
-      "logic_stage_design",
-      "metric_candidate_design",
-      "per_metric_external_search",
+      "six_question_coordinate_selection",
+      "coverage_gap_review",
+      "professional_universe_and_direct_search",
+      "external_material_ingestion",
       "source_parse",
-      "metric_history_and_gap_check",
-      "question_verdict",
-      "target_implication_rollup",
+      "atomic_claim_mapping",
+      "temporal_snapshot_synthesis",
       "bom_s_curve_stage_rollup_after_6_questions",
     ],
     search_execution_status: override.search_execution_status || "待逐问搜索",
@@ -795,10 +1206,16 @@ function buildBomQuestionSearchArtifact(row, questionNumber, node) {
       expected_fields: ["metric_history", "future_expectation", "supply_constraint", "pricing_or_margin", "refuting_evidence"],
       gap_rule: "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve",
     },
-    metric_candidate_plan: override.metric_candidate_plan || {
-      rule: "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
-      candidate_classes: ["direct demand", "usage intensity", "workflow/task complexity", "enterprise adoption", "customer budget/order", "BOM pull-through", "financial realization", "refutation"],
-      public_rendering: "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status",
+    claim_mapping_plan: override.claim_mapping_plan || {
+      coordinate: `${node.id} x Q${questionNumber} x published_at`,
+      atomic_claim_types: ["actual", "forecast", "opinion", "message", "valuation", "refutation"],
+      required_time_fields: ["published_at", "effective_period", "target_period", "ingested_at"],
+      discovery_rule: "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+      unmapped_policy: "retain in unmapped/new_theme; never silently discard or force-map",
+    },
+    external_material_ingestion_plan: override.external_material_ingestion_plan || {
+      accepted_materials: ["sell-side reports", "company filings", "earnings calls", "industry research", "news", "named opinions"],
+      parse_rule: "split every document into question-specific atomic claims before synthesis",
     },
     source_ids: sourceIds,
     source_parse_records: sourceParseRecords,
@@ -824,6 +1241,11 @@ function questionDimensionsForNumber(questionNumber) {
 }
 
 function isBomQuestionArtifactComplete(artifact) {
+  const planningComplete = Boolean(
+    artifact.source_universe_plan
+    && artifact.exa_search_plan
+    && artifact.claim_mapping_plan
+  );
   const searchComplete = ["complete", "completed", "ok"].includes(artifact.search_execution_status);
   const parserStatusComplete = [
     "complete",
@@ -853,7 +1275,7 @@ function isBomQuestionArtifactComplete(artifact) {
     && (artifact.refutation_evidence_summary || []).length > 0
     && (artifact.refuting_source_ids || []).every((sourceId) => strengtheningSourceIds.has(sourceId))
   );
-  return searchComplete && parserComplete && evidenceComplete && refutationComplete;
+  return planningComplete && searchComplete && parserComplete && evidenceComplete && refutationComplete;
 }
 
 function applyBomQuestionSearchOverride(row, questionNumber, node) {
@@ -1058,6 +1480,7 @@ function strictManufacturingQuestionRow(row, questionNumber) {
   const config = configs[questionNumber === 1 ? 1 : questionNumber + 1];
   if (!config) return row;
   return strictComputeRichRow(row, questionNumber, {
+    nodeId: "manufacturing",
     sourceIds: sharedSources,
     prioritySources: ["TSMC earnings release and guidance", "SemiAnalysis CoWoS/HBM technical teardown", "advanced packaging supply-chain materials"],
     expectedFields: ["TSMC financial/current baseline", "company guidance", "advanced packaging bottleneck evidence", "direct capacity gap"],
@@ -1130,11 +1553,16 @@ function strictComputeRichRow(row, questionNumber, config) {
         retrieval_status: "completed",
         gap_rule: "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02",
       },
-      metric_candidate_plan: config.metricCandidatePlan || {
-        rule: "logic stage first, metric second: every logic stage must choose heterogeneous metrics before search, then run one search/parse loop per metric rather than reusing one broad evidence pool",
-        candidate_classes: ["direct demand", "usage intensity", "workflow/task complexity", "enterprise adoption", "budget/order", "BOM pull-through", "financial realization", "refutation"],
-        selected_stage_count: chainNodes.length,
-        selected_metric_count: chainNodes.reduce((sum, chainNode) => sum + (chainNode.metrics || []).length, 0),
+      claim_mapping_plan: config.claimMappingPlan || {
+        coordinate: `${config.nodeId || "compute"} x Q${questionNumber} x published_at`,
+        atomic_claim_types: ["actual", "forecast", "opinion", "message", "valuation", "refutation"],
+        required_time_fields: ["published_at", "effective_period", "target_period", "ingested_at"],
+        discovery_rule: "do not reject evidence merely because it was absent from the initial logic hint",
+        unmapped_policy: "retain in unmapped/new_theme",
+      },
+      external_material_ingestion_plan: {
+        accepted_materials: ["sell-side reports", "filings", "earnings calls", "industry research", "news", "opinions"],
+        parse_rule: "one document may yield multiple atomic claims and map to multiple six-question coordinates",
       },
       evidence_summary: config.evidenceSummary || [],
       gap_summary: config.gapSummary || [],
@@ -4676,8 +5104,8 @@ function gateReasonLabel(reason) {
   }[reason] || reason;
 }
 
-function renderSources() {
-  const rows = sources.map((item) => `<tr><td>${e(item.source_id)}</td><td><a href="${e(item.url)}" target="_blank" rel="noopener">${e(item.title)}</a></td><td>${e(item.source_bucket)}</td><td>${e(item.source_visible_at)}</td><td>${e(item.summary)}</td></tr>`).join("");
+function renderSources(sourceItems = sources) {
+  const rows = sourceItems.map((item) => `<tr><td>${e(item.source_id)}</td><td><a href="${e(item.url)}" target="_blank" rel="noopener">${e(item.title)}</a></td><td>${e(item.source_bucket)}</td><td>${e(item.source_visible_at)}</td><td>${e(item.summary)}</td></tr>`).join("");
   return `<details class="source-collapse"><summary>展开来源索引 <span class="chevron">›</span></summary><div class="table-scroll"><table><thead><tr><th>ID</th><th>来源</th><th>类别</th><th>可见日期</th><th>用途摘要</th></tr></thead><tbody>${rows}</tbody></table></div></details>`;
 }
 
@@ -4772,7 +5200,7 @@ function css() {
 .bom-model-card,.bom-target-impact-card{border:1px solid #e1ecf8;border-radius:16px;background:#fbfdff;padding:13px}.bom-model-head{display:grid;gap:5px;margin-bottom:8px}.bom-model-head span{color:var(--blue);font-size:12px;font-weight:900}.bom-model-head b{color:#223047;font-size:15px}.bom-model-card p,.bom-target-impact-card p{margin:0;color:#344054}.bom-model-grid,.bom-question-conclusion-grid,.bom-target-impact-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.bom-model-grid article,.bom-question-conclusion-grid article,.bom-target-impact-grid article{border:1px solid #edf2f8;border-radius:15px;background:#fff;padding:12px}.bom-model-grid b,.bom-question-conclusion-grid b,.bom-target-impact-grid b{display:block;color:#223047;margin-bottom:6px}.bom-model-grid ul{margin:0;padding-left:18px;color:#344054}.bom-model-grid li+li{margin-top:5px}.bom-model-grid p,.bom-question-conclusion-grid p{margin:0;color:#344054}.bom-target-impact-grid{margin-top:10px}.bom-target-impact-grid span{display:block;color:var(--blue);font-size:11px;font-weight:900;margin-bottom:5px}.bom-target-impact-grid b{margin:0;font-size:13px}.bom-model-card,.bom-model-grid,.bom-question-conclusion-grid,.bom-target-impact-card,.bom-target-impact-grid{min-width:0;max-width:100%;box-sizing:border-box}
 .bom-logic-chain-panel{border:1px solid #e1eaf6;border-radius:18px;background:#fbfdff;overflow:hidden}.bom-logic-chain-panel>summary{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:13px;list-style:none;cursor:pointer}.bom-logic-chain-panel[open]>summary{border-bottom:1px solid #e1eaf6}.bom-logic-chain-panel summary b{color:#0a66cc}.bom-logic-chain-panel summary span:not(.chevron){color:#667085;font-size:12px;font-weight:900}.bom-logic-chain-table{padding:12px}.bom-logic-chain-table table{min-width:980px}.bom-logic-chain-row td:first-child b{color:#0a66cc}.bom-logic-stage-stack{display:grid;gap:12px}.bom-logic-stage-card{border:1px solid #e1eaf6;border-radius:18px;background:#fbfdff;overflow:hidden}.bom-logic-stage-card>summary{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:13px;list-style:none;cursor:pointer}.bom-logic-stage-card[open]>summary{border-bottom:1px solid #e1eaf6}.bom-logic-stage-card .stage-index{display:inline-flex;width:58px;height:28px;border-radius:999px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-size:11px;font-weight:900}.bom-logic-stage-card summary b{display:block;color:#0a66cc;font-size:12px}.bom-logic-stage-card summary strong{display:block;color:#223047;font-size:16px;line-height:1.3}.bom-logic-stage-body{display:grid;gap:10px;padding:13px}.bom-logic-stage-card p{margin:0;color:#344054}.bom-stage-metric-choice,.bom-stage-history,.bom-stage-current{border:1px solid #edf2f8;border-radius:16px;background:#fff;padding:12px}.bom-stage-metric-choice>b,.bom-stage-history>b,.bom-stage-current>b{display:block;color:#223047;margin-bottom:6px}.metric-choice-table th:first-child,.metric-choice-table td:first-child{width:28%}.metric-point-count{display:inline-flex;width:max-content;max-width:100%;border:1px solid #e0e8f4;border-radius:999px;background:#fff;color:#667085;padding:3px 8px;font-size:11px;font-weight:900;margin-top:8px}.metric-data-table,.metric-trend-gap{border:1px solid #eef3f9;border-radius:14px;background:#fbfdff;padding:10px}.metric-data-table>b,.metric-trend-gap>b{display:block;color:#667085;font-size:11px;margin-bottom:4px}.metric-data-table p,.metric-trend-gap p{margin:0;color:#344054;font-size:13px}.metric-data-rows{display:grid;gap:0;margin-top:10px;border:1px solid #e6edf7;border-radius:12px;overflow:hidden;background:#fff}.metric-data-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:8px 10px;border-top:1px solid #eef2f7}.metric-data-row:first-child{border-top:0}.metric-data-row span{color:#344054;font-size:12px}.metric-data-row strong{color:#223047;font-size:12px;text-align:right}.metric-data-head{background:#f6f9fd}.metric-data-head b{color:#667085;font-size:11px;text-transform:uppercase}.metric-data-row-with-change{grid-template-columns:minmax(120px,1fr) minmax(90px,auto) minmax(140px,1fr)}.metric-data-row-with-company.metric-data-row-with-change{grid-template-columns:minmax(120px,.8fr) minmax(120px,1fr) minmax(90px,auto) minmax(140px,1fr)}.metric-multi-series-data .metric-data-row{grid-template-columns:minmax(120px,.8fr) 1fr auto}.metric-multi-series-data .metric-data-row-with-company.metric-data-row-with-change{grid-template-columns:minmax(120px,.8fr) minmax(120px,1fr) minmax(90px,auto) minmax(140px,1fr)}
 .bom-demand-logic-chain{display:grid;gap:10px}.bom-demand-logic-step{display:grid;grid-template-columns:auto 1fr;gap:12px;border:1px solid #edf2f8;border-radius:16px;background:#fbfdff;padding:12px}.bom-demand-logic-step>span{display:inline-flex;width:34px;height:34px;border-radius:999px;align-items:center;justify-content:center;background:#eef7ff;color:var(--blue);font-weight:900;font-size:12px}.bom-demand-logic-step b{display:block;color:#223047;margin-bottom:5px}.bom-demand-logic-step p{margin:0 0 6px;color:#344054}.bom-demand-logic-step em{font-style:normal;color:#667085;font-size:12px;font-weight:800}
-.research-narrative{display:grid;gap:18px}.narrative-head{border:1px solid rgba(10,132,255,.16);border-radius:18px;background:linear-gradient(180deg,#fff,#f7fbff);padding:18px}.narrative-head span{display:block;color:var(--blue);font-size:12px;font-weight:900;margin-bottom:6px}.narrative-head h4{margin:0 0 10px;font-size:24px;line-height:1.25;color:#1f2d3d}.narrative-head p{margin:0;color:#344054;font-size:16px}.logic-flow{display:grid;grid-template-columns:repeat(5,minmax(150px,1fr));gap:8px;align-items:stretch}.flow-step{border:1px solid #dceafa;border-radius:16px;background:#fff;padding:12px;min-width:150px}.flow-step span{display:inline-flex;width:28px;height:28px;border-radius:999px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900;font-size:12px;margin-bottom:8px}.flow-step p{margin:0;color:#26364f;font-weight:800;line-height:1.45}.flow-arrow{display:none}.narrative-prose{display:grid;gap:12px;border-left:3px solid #0a84ff;padding-left:16px}.narrative-prose p{margin:0;color:#2f3d52;font-size:15px}.narrative-data-table{min-width:1040px}.narrative-bottom{display:grid;grid-template-columns:1fr 1fr;gap:12px}.investment-takeaway,.bear-case-box{border:1px solid #e4ebf5;border-radius:18px;background:#fff;padding:16px}.investment-takeaway b,.bear-case-box b{display:block;color:#223047;margin-bottom:8px}.investment-takeaway p{margin:0;color:#344054}.bear-case-box{background:#fffafa;border-color:#f0d3d0}.bear-case-box ul{margin:0;padding-left:18px;color:#4b5563}.bear-case-box li+li{margin-top:6px}.demand-chain-audit{border:1px solid rgba(10,132,255,.18);border-radius:18px;background:#f7fbff;padding:14px}.demand-chain-title{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:12px}.demand-chain-title span{color:var(--blue);font-weight:900}.demand-chain-title strong{color:#344054;font-size:13px}.demand-chain-cards{display:grid;gap:12px}.chain-audit-card{border:1px solid #dceafa;border-radius:16px;background:#fff;overflow:hidden}.chain-audit-head{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:14px;border-bottom:1px solid #edf3fb}.chain-audit-head>span{display:inline-flex;width:34px;height:34px;border-radius:999px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900;font-size:12px}.chain-audit-head h5{margin:0 0 4px;font-size:16px;color:#223047}.chain-audit-head p{margin:0;color:var(--muted)}.chain-audit-head strong{border:1px solid rgba(10,132,255,.24);border-radius:999px;background:#f0f7ff;color:var(--blue);padding:5px 10px;font-size:12px;white-space:nowrap}.chain-audit-body-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:14px}.chain-audit-body-grid div{border:1px solid #eef2f7;border-radius:14px;background:#fbfcff;padding:12px}.chain-audit-body-grid b{display:block;color:#223047;margin-bottom:6px}.chain-audit-body-grid p{margin:0;color:#3d536d}.chain-audit-verdict{display:flex;justify-content:space-between;gap:12px;align-items:center;border-top:1px solid #edf3fb;padding:12px 14px}.chain-audit-verdict>span{color:#667085;font-size:12px;font-weight:800}.qa-card{margin:12px 0;overflow:hidden}.qa-card summary{display:grid;grid-template-columns:auto 1fr auto auto;gap:12px;align-items:center;padding:14px 16px}.qid{font-weight:900;color:var(--blue)}.qa-count{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:4px 8px}.qa-body{display:grid;gap:10px;padding:14px 16px}.qa-block{border:1px solid #edf1f7;border-radius:16px;background:#fff;padding:12px}.block-title{font-weight:900;color:#27364a;margin-bottom:6px}.qa-card.level-2{margin-left:18px;background:rgba(255,255,255,.82)}.qa-card.level-3{margin-left:28px;background:rgba(247,249,252,.95);border-style:dashed}.l3-meta{display:flex;gap:8px;flex-wrap:wrap}.l3-meta span{border:1px solid #e0e8f4;border-radius:999px;background:#f7fbff;color:#4e5f75;font-size:11px;padding:4px 8px}.overview-answer p{margin:0}.overview-answer-prose{color:#344054}.target-section{display:grid;gap:14px}.table-scroll{display:block;width:100%;max-width:100%;min-width:0;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-gutter:stable;padding-bottom:8px;overscroll-behavior-x:contain}.table-scroll::-webkit-scrollbar{height:10px}.table-scroll::-webkit-scrollbar-track{background:#eef3f9;border-radius:999px}.table-scroll::-webkit-scrollbar-thumb{background:#b9c9dd;border-radius:999px;border:2px solid #eef3f9}.table-scroll table{min-width:max(920px,100%);width:max-content;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}.table-scroll th,.table-scroll td{padding:10px 12px;text-align:left;border-bottom:1px solid #edf1f7;vertical-align:top;font-size:13px}.table-scroll th{background:#f6f9fd;color:#475467;font-size:12px;font-weight:900}.state-actionable_long,.state-watch_only,.state-no_action{display:inline-flex;border-radius:999px;padding:4px 8px;font-weight:900;font-size:12px}.state-actionable_long{color:var(--green);background:#eaf8f2;border:1px solid rgba(29,154,108,.25)}.state-watch_only{color:var(--amber);background:#fff7e6;border:1px solid rgba(183,121,31,.25)}.state-no_action{color:var(--red);background:#fff1f0;border:1px solid rgba(194,65,61,.22)}.source-collapse{padding:16px}.source-collapse summary{font-weight:900;color:#334155}.source-collapse .table-scroll{margin-top:12px}
+.research-narrative{display:grid;gap:18px}.narrative-head{border:1px solid rgba(10,132,255,.16);border-radius:18px;background:linear-gradient(180deg,#fff,#f7fbff);padding:18px}.narrative-head span{display:block;color:var(--blue);font-size:12px;font-weight:900;margin-bottom:6px}.narrative-head h4{margin:0 0 10px;font-size:24px;line-height:1.25;color:#1f2d3d}.narrative-head p{margin:0;color:#344054;font-size:16px}.logic-flow{display:grid;grid-template-columns:repeat(5,minmax(150px,1fr));gap:8px;align-items:stretch}.flow-step{border:1px solid #dceafa;border-radius:16px;background:#fff;padding:12px;min-width:150px}.flow-step span{display:inline-flex;width:28px;height:28px;border-radius:999px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900;font-size:12px;margin-bottom:8px}.flow-step p{margin:0;color:#26364f;font-weight:800;line-height:1.45}.flow-arrow{display:none}.narrative-prose{display:grid;gap:12px;border-left:3px solid #0a84ff;padding-left:16px}.narrative-prose p{margin:0;color:#2f3d52;font-size:15px}.narrative-data-table{min-width:1040px}.narrative-bottom{display:grid;grid-template-columns:1fr 1fr;gap:12px}.investment-takeaway,.bear-case-box{border:1px solid #e4ebf5;border-radius:18px;background:#fff;padding:16px}.investment-takeaway b,.bear-case-box b{display:block;color:#223047;margin-bottom:8px}.investment-takeaway p{margin:0;color:#344054}.bear-case-box{background:#fffafa;border-color:#f0d3d0}.bear-case-box ul{margin:0;padding-left:18px;color:#4b5563}.bear-case-box li+li{margin-top:6px}.demand-chain-audit{border:1px solid rgba(10,132,255,.18);border-radius:18px;background:#f7fbff;padding:14px}.demand-chain-title{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:12px}.demand-chain-title span{color:var(--blue);font-weight:900}.demand-chain-title strong{color:#344054;font-size:13px}.demand-chain-cards{display:grid;gap:12px}.chain-audit-card{border:1px solid #dceafa;border-radius:16px;background:#fff;overflow:hidden}.chain-audit-head{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:14px;border-bottom:1px solid #edf3fb}.chain-audit-head>span{display:inline-flex;width:34px;height:34px;border-radius:999px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900;font-size:12px}.chain-audit-head h5{margin:0 0 4px;font-size:16px;color:#223047}.chain-audit-head p{margin:0;color:var(--muted)}.chain-audit-head strong{border:1px solid rgba(10,132,255,.24);border-radius:999px;background:#f0f7ff;color:var(--blue);padding:5px 10px;font-size:12px;white-space:nowrap}.chain-audit-body-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:14px}.chain-audit-body-grid div{border:1px solid #eef2f7;border-radius:14px;background:#fbfcff;padding:12px}.chain-audit-body-grid b{display:block;color:#223047;margin-bottom:6px}.chain-audit-body-grid p{margin:0;color:#3d536d}.chain-audit-verdict{display:flex;justify-content:space-between;gap:12px;align-items:center;border-top:1px solid #edf3fb;padding:12px 14px}.chain-audit-verdict>span{color:#667085;font-size:12px;font-weight:800}.qa-card{margin:12px 0;overflow:hidden}.qa-card summary{display:grid;grid-template-columns:auto 1fr auto auto;gap:12px;align-items:center;padding:14px 16px}.qid{font-weight:900;color:var(--blue)}.qa-count{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:4px 8px}.qa-body{display:grid;gap:10px;padding:14px 16px}.qa-block{border:1px solid #edf1f7;border-radius:16px;background:#fff;padding:12px}.block-title{font-weight:900;color:#27364a;margin-bottom:6px}.qa-card.level-2{margin-left:18px;background:rgba(255,255,255,.82)}.qa-card.level-3{margin-left:28px;background:rgba(247,249,252,.95);border-style:dashed}.l3-meta{display:flex;gap:8px;flex-wrap:wrap}.l3-meta span{border:1px solid #e0e8f4;border-radius:999px;background:#f7fbff;color:#4e5f75;font-size:11px;padding:4px 8px}.overview-answer p{margin:0}.overview-answer-prose{color:#344054}.bom-index-list{display:grid;gap:12px}.bom-index-card{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:14px;align-items:center;border:1px solid #dfe8f4;border-radius:18px;background:#fff;padding:16px;color:inherit;text-decoration:none;box-shadow:0 8px 24px rgba(31,45,61,.05);transition:border-color .18s ease,transform .18s ease,box-shadow .18s ease}.bom-index-card:hover{border-color:#8fc4ff;transform:translateY(-1px);box-shadow:0 12px 28px rgba(31,45,61,.08)}.bom-index-number{display:inline-flex;width:42px;height:42px;border-radius:13px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900}.bom-index-copy strong{display:block;color:#1f2d3d;font-size:18px;margin-bottom:4px}.bom-index-copy p{margin:0;color:#667085}.bom-index-meta{display:grid;justify-items:end;gap:5px}.bom-index-meta span{color:#56677d;font-size:12px;font-weight:800}.bom-index-arrow{color:var(--blue);font-size:28px}.project-back-link{display:inline-flex;color:#d9ecff;font-size:13px;font-weight:800;text-decoration:none;margin-bottom:18px}.project-back-link:hover{color:#fff}.bom-node-hero h1{max-width:920px}.bom-node-overview .bom-research-module{margin-top:0}.bom-goal-card .bom-node-brief{margin-top:14px}.target-section{display:grid;gap:14px}.table-scroll{display:block;width:100%;max-width:100%;min-width:0;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-gutter:stable;padding-bottom:8px;overscroll-behavior-x:contain}.table-scroll::-webkit-scrollbar{height:10px}.table-scroll::-webkit-scrollbar-track{background:#eef3f9;border-radius:999px}.table-scroll::-webkit-scrollbar-thumb{background:#b9c9dd;border-radius:999px;border:2px solid #eef3f9}.table-scroll table{min-width:max(920px,100%);width:max-content;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}.table-scroll th,.table-scroll td{padding:10px 12px;text-align:left;border-bottom:1px solid #edf1f7;vertical-align:top;font-size:13px}.table-scroll th{background:#f6f9fd;color:#475467;font-size:12px;font-weight:900}.state-actionable_long,.state-watch_only,.state-no_action{display:inline-flex;border-radius:999px;padding:4px 8px;font-weight:900;font-size:12px}.state-actionable_long{color:var(--green);background:#eaf8f2;border:1px solid rgba(29,154,108,.25)}.state-watch_only{color:var(--amber);background:#fff7e6;border:1px solid rgba(183,121,31,.25)}.state-no_action{color:var(--red);background:#fff1f0;border:1px solid rgba(194,65,61,.22)}.source-collapse{padding:16px}.source-collapse summary{font-weight:900;color:#334155}.source-collapse .table-scroll{margin-top:12px}
 .chain-node-expansion{display:grid;gap:12px;border:1px solid rgba(10,132,255,.18);border-radius:22px;background:linear-gradient(180deg,#fff,#f7fbff);padding:16px}.chain-node-expansion-head span{display:block;color:var(--blue);font-size:12px;font-weight:900;margin-bottom:4px}.chain-node-expansion-head h5{margin:0 0 8px;font-size:21px;line-height:1.3;color:#223047}.chain-node-expansion-head p{margin:0;color:#667085}.chain-node-stack{display:grid;gap:10px}.chain-node-detail{border:1px solid #dceafa;border-radius:18px;background:#fff;overflow:hidden}.chain-node-detail>summary{display:grid;grid-template-columns:auto 1fr auto auto;gap:12px;align-items:center;padding:14px 16px;list-style:none;cursor:pointer}.chain-node-detail>summary::-webkit-details-marker{display:none}.chain-node-detail[open]>summary{border-bottom:1px solid #edf3fb}.chain-node-index{display:inline-flex;width:36px;height:36px;border-radius:999px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900;font-size:12px}.chain-node-detail h6{margin:0 0 3px;color:#223047;font-size:17px}.chain-node-detail summary p{margin:0;color:#667085;font-size:13px}.chain-node-detail summary strong{border:1px solid rgba(10,132,255,.22);border-radius:999px;background:#f0f7ff;color:#0a66cc;padding:5px 9px;font-size:12px;white-space:nowrap}.chain-node-detail[open]>summary .chevron{transform:rotate(90deg)}.chain-node-body{display:grid;gap:12px;padding:14px 16px;background:#fbfdff}.chain-node-lens-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.chain-node-lens-grid article{border:1px solid #e8eef7;border-radius:15px;background:#fff;padding:12px}.chain-node-lens-grid b,.chain-node-conclusion b{display:block;color:#223047;margin-bottom:6px}.chain-node-lens-grid p,.chain-node-conclusion p{margin:0;color:#344054}.chain-node-conclusion{border:1px solid rgba(29,154,108,.22);border-radius:16px;background:#f3fbf7;padding:13px}
 .chain-metric-board{display:grid;gap:10px;border:1px solid rgba(10,132,255,.14);border-radius:18px;background:#f7fbff;padding:13px}.chain-metric-board-head{display:flex;justify-content:space-between;gap:12px;align-items:center}.chain-metric-board-head b{color:#223047}.chain-metric-board-head span{color:#667085;font-size:12px;font-weight:900}.chain-metric-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.chain-metric-card{display:grid;gap:10px;border:1px solid #dfeaf7;border-radius:16px;background:#fff;padding:13px}.chain-metric-card header span{display:block;color:var(--blue);font-size:11px;font-weight:900;margin-bottom:3px}.chain-metric-card header strong{display:block;color:#223047;font-size:15px;line-height:1.25}.chain-metric-card p{margin:0;color:#344054;font-size:13px}.chain-metric-card dl{display:grid;gap:7px;margin:0}.chain-metric-card dl div{border-top:1px solid #eef2f7;padding-top:7px}.chain-metric-card dt{color:#667085;font-size:11px;font-weight:900}.chain-metric-card dd{margin:2px 0 0;color:#344054;font-size:13px}.chain-metric-card footer{display:grid;gap:8px}.chain-metric-card em{font-style:normal;color:#7a5a00;background:#fff7dc;border:1px solid #f1dda6;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:900;width:max-content;max-width:100%}
 .historical-comparison{display:grid;gap:14px;border:1px solid rgba(10,132,255,.18);border-radius:20px;background:linear-gradient(180deg,#ffffff,#f7fbff);padding:16px}.history-head span{display:block;color:var(--blue);font-size:12px;font-weight:900;margin-bottom:4px}.history-head h5{margin:0 0 8px;font-size:20px;line-height:1.3;color:#223047}.history-head p{margin:0;color:#475467}.history-snapshot-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.history-metric-card{border:1px solid #e1eaf6;border-radius:16px;background:#fff;padding:14px}.history-metric-card>span{display:block;color:#667085;font-size:12px;font-weight:900}.history-metric-card strong{display:block;color:#0a84ff;font-size:25px;line-height:1.1;margin:6px 0}.history-metric-card p{margin:0 0 8px;color:#344054;font-size:13px}.history-bar-list{display:grid;gap:9px}.history-bar-row{display:grid;grid-template-columns:145px 1fr minmax(120px,auto);gap:10px;align-items:center}.history-bar-label b{display:block;color:#223047}.history-bar-label span{color:#667085;font-size:13px}.history-bar-track{height:14px;border-radius:999px;background:#e9f1fb;overflow:hidden}.history-bar-track i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#72b7ff,#0a84ff)}.history-table{min-width:1040px}
@@ -4780,8 +5208,11 @@ function css() {
 .table-scroll.metric-choice-table{overflow-x:auto}.table-scroll.metric-choice-table table{min-width:max(760px,100%);width:max-content;table-layout:auto}.table-scroll.metric-choice-table th,.table-scroll.metric-choice-table td{white-space:normal;overflow-wrap:anywhere;word-break:break-word;line-height:1.55}.table-scroll.metric-choice-table th:first-child,.table-scroll.metric-choice-table td:first-child{width:28%}
 .industry-module-body,.bom-question-answer,.bom-question-stage-flow,.bom-step-body,.bom-logic-stage-stack,.bom-logic-stage-card,.bom-logic-stage-body,.bom-stage-subcard,.bom-stage-subcard-body,.bom-stage-history-content,.metric-history-group,.metric-data-table,.metric-trend-gap,.expectation-table-list,.expectation-table-group,.bom-expectation-card,.bom-stage-mechanism-grid,.qa-body,.qa-block{min-width:0;max-width:100%;box-sizing:border-box}.metric-data-table,.metric-trend-gap{overflow:visible}.metric-history-table{table-layout:auto}.metric-history-table td strong{white-space:nowrap}.metric-history-table th:nth-child(2),.metric-history-table td:nth-child(2){min-width:210px}.metric-history-table th:nth-child(3),.metric-history-table td:nth-child(3){min-width:120px}
 .bom-research-logic-rules{display:grid;gap:9px;margin-top:10px}.bom-research-logic-rules article{border-top:1px solid #e7eef8;padding-top:9px}.bom-research-logic-rules b{display:block;color:#223047;font-size:12px;margin-bottom:4px}.bom-research-logic-rules p{margin:0;color:#344054}.bom-step-research-logic .bom-logic-chain-table table{min-width:1180px}.bom-step-research-logic .bom-logic-chain-table th:nth-child(1){width:17%}.bom-step-research-logic .bom-logic-chain-table th:nth-child(2){width:25%}.bom-step-research-logic .bom-logic-chain-table th:nth-child(3){width:32%}.bom-step-research-logic .bom-logic-chain-table th:nth-child(4){width:26%}
-@media(max-width:820px){.goal-grid,.constraint-grid,.chain-bridge-grid,.chain-layer-grid,.chain-company-list,.company-flow-grid,.chain-node-lens ul,.bom-node-brief,.chain-audit-body-grid,.logic-flow,.narrative-bottom,.history-snapshot-grid,.history-bar-row,.runway-formula,.runway-timeline,.chain-node-lens-grid,.chain-metric-grid,.bom-metric-rationale-list,.bom-future-grid,.bom-mechanism-grid,.bom-question-research-body,.bom-stage-evidence-grid{grid-template-columns:1fr}.chain-audit-head,.chain-audit-verdict,.demand-chain-title,.chain-node-detail>summary,.chain-metric-board-head{display:grid;grid-template-columns:1fr}.qa-card.level-2,.qa-card.level-3{margin-left:0}.qa-card summary{grid-template-columns:auto 1fr auto}.qa-count{display:none}}
+.bom-temporal-baseline{border:1px solid #dce9f8;border-radius:16px;background:#f7fbff;padding:13px;margin:0 0 14px}.bom-temporal-baseline b{display:block;color:#0a66cc;margin-bottom:4px}.bom-temporal-baseline p{margin:0;color:#475467}.bom-question-card>summary{grid-template-columns:auto minmax(0,1fr) auto auto}.bom-question-summary-meta{display:grid;gap:3px;justify-items:end}.bom-question-summary-meta i{font-style:normal;color:#0a66cc;font-size:11px;font-weight:900}.bom-question-summary-meta em{font-style:normal;color:#667085;font-size:11px;white-space:nowrap}.bom-question-temporal-flow{display:grid;gap:12px}.bom-temporal-card,.bom-question-current{border:1px solid #e2ebf6;border-radius:18px;background:#fff;overflow:hidden}.bom-temporal-card>summary{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:14px;list-style:none;cursor:pointer}.bom-temporal-card[open]>summary{border-bottom:1px solid #e2ebf6}.bom-temporal-card>summary>span:first-child,.bom-temporal-title>span{display:inline-flex;width:38px;height:26px;border-radius:999px;align-items:center;justify-content:center;background:#eef7ff;color:#0a66cc;font-size:11px;font-weight:900}.bom-temporal-card h5,.bom-temporal-title h5{margin:0;color:#223047;font-size:16px}.bom-temporal-body{display:grid;gap:12px;padding:14px}.bom-understanding-model,.bom-understanding-rule,.bom-logic-hint{border-bottom:1px solid #edf2f8;padding-bottom:10px}.bom-understanding-model b,.bom-current-support b,.bom-current-refute b,.bom-current-impact b{display:block;color:#223047;margin-bottom:5px}.bom-understanding-model p,.bom-understanding-rule p,.bom-logic-hint p,.bom-hint-boundary{margin:0;color:#475467}.bom-understanding-rule span,.bom-logic-hint span{display:block;color:#0a66cc;font-size:11px;font-weight:900;margin-bottom:4px}.bom-hint-boundary{border:1px dashed #bdd6f2;border-radius:12px;background:#f8fbff;padding:10px;font-size:12px}.bom-question-current{padding:14px;border-color:#cfe1f6;background:#fbfdff}.bom-temporal-title{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;margin-bottom:10px}.bom-temporal-title em{font-style:normal;color:#0a66cc;font-size:12px;font-weight:900}.bom-current-conclusion{margin:0 0 12px!important;color:#1d2939;font-size:16px;line-height:1.75}.bom-current-support,.bom-current-refute,.bom-current-impact{border-top:1px solid #e7eef8;padding-top:10px;margin-top:10px}.bom-current-support p,.bom-current-refute p,.bom-current-impact p{margin:0;color:#475467}.bom-baseline-message,.bom-empty-state,.bom-temporal-note{margin:0;color:#667085}.bom-baseline-message{border:1px solid #e2e8f0;border-radius:12px;background:#f8fafc;padding:10px}.bom-revision-table table,.bom-mapped-material-table table{min-width:1100px}.bom-material-timeline{display:grid;gap:0}.bom-material-timeline article{display:grid;grid-template-columns:100px minmax(0,1fr);gap:14px;padding:12px 0;border-top:1px solid #edf2f8}.bom-material-timeline article:first-child{border-top:0}.bom-material-timeline time{color:#667085;font-size:12px;font-weight:800}.bom-material-timeline b{display:block}.bom-material-timeline span{display:block;color:#667085;font-size:11px;margin:3px 0 5px}.bom-material-timeline p{margin:0;color:#475467}.bom-mapped-material-table td:nth-child(1){white-space:nowrap}.bom-mapped-material-table td:nth-child(2){min-width:190px}.bom-mapped-material-table td:nth-child(3){min-width:90px}.bom-mapped-material-table td:nth-child(5){min-width:360px}.bom-mapped-material-table td span{display:block;color:#667085;font-size:11px}.bom-coverage-status{border:1px solid #dce9f8;border-radius:14px;background:#f8fbff;padding:12px}.bom-coverage-status b{display:block;color:#0a66cc;margin-bottom:4px}.bom-coverage-status p{margin:0;color:#475467}.bom-coverage-list,.bom-coverage-direction{display:grid;gap:8px}.bom-coverage-list p,.bom-coverage-direction p{display:grid;grid-template-columns:1fr auto;gap:10px;margin:0;padding:10px 12px;border:1px solid #edf2f8;border-radius:12px;background:#fff}.bom-coverage-list span,.bom-coverage-direction span{color:#667085}.bom-coverage-list b,.bom-coverage-direction b{color:#223047}.bom-question-answer,.bom-question-temporal-flow,.bom-temporal-card,.bom-temporal-body,.bom-question-current{min-width:0;max-width:100%;box-sizing:border-box}
+.target-section{grid-template-columns:minmax(0,1fr);min-width:0;max-width:100%}.target-section>*{min-width:0;max-width:100%;box-sizing:border-box}
+@media(max-width:820px){.goal-grid,.constraint-grid,.chain-bridge-grid,.chain-layer-grid,.chain-company-list,.company-flow-grid,.chain-node-lens ul,.bom-node-brief,.chain-audit-body-grid,.logic-flow,.narrative-bottom,.history-snapshot-grid,.history-bar-row,.runway-formula,.runway-timeline,.chain-node-lens-grid,.chain-metric-grid,.bom-metric-rationale-list,.bom-future-grid,.bom-mechanism-grid,.bom-question-research-body,.bom-stage-evidence-grid{grid-template-columns:1fr}.chain-audit-head,.chain-audit-verdict,.demand-chain-title,.chain-node-detail>summary,.chain-metric-board-head{display:grid;grid-template-columns:1fr}.bom-index-card{grid-template-columns:auto minmax(0,1fr) auto}.bom-index-meta{grid-column:2;justify-items:start}.qa-card.level-2,.qa-card.level-3{margin-left:0}.qa-card summary{grid-template-columns:auto 1fr auto}.qa-count{display:none}}
 @media(max-width:820px){.bom-model-grid,.bom-question-conclusion-grid,.bom-target-impact-grid{grid-template-columns:1fr}}
+@media(max-width:820px){.bom-question-card>summary{grid-template-columns:auto minmax(0,1fr) auto}.bom-question-summary-meta{grid-column:2;grid-row:2;justify-items:start}.bom-question-card>summary>.chevron{grid-column:3;grid-row:1 / span 2}.target-section{width:100%}}
 `;
 }
 

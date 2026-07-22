@@ -1,0 +1,20 @@
+{
+  "project_id": "ai_factory_industry_scurve_timeslice_20260328__bom__system",
+  "parent_project_id": "ai_factory_industry_scurve_timeslice_20260328",
+  "project_scope": "bom_node",
+  "bom_node_id": "system",
+  "bom_public_name": "服务器 / 机柜系统交付",
+  "title": "AI 工厂 · 服务器 / 机柜系统交付 BOM 节点研究",
+  "research_type": "bom_node_s_curve_research",
+  "run_mode": "historical_backtest",
+  "mode": "historical_backtest",
+  "as_of_date": "2026-03-28",
+  "evaluation_date": "2026-06-28",
+  "report_path": "professional_report.html",
+  "sources_path": "sources.jsonl",
+  "research_run_path": null,
+  "temporal_manifest_path": "temporal_manifest.json",
+  "evidence_ledger_path": "ledger/claims.jsonl",
+  "snapshot_path": "snapshots/2026-03-28/thesis_snapshot.json",
+  "research_status": "partial_research"
+}

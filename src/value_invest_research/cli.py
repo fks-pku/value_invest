@@ -791,14 +791,20 @@ def run_audit_time_slice_cmd(root: Path, args) -> int:
 
 
 def run_validate_research_artifacts_cmd(root: Path, args) -> int:
+    from value_invest_research.adapters.outbound.filesystem_bom_project_layout import (
+        FileSystemBomProjectLayoutRepository,
+    )
     from value_invest_research.adapters.outbound.filesystem_research_artifacts import (
         FileSystemResearchArtifactRepository,
     )
+    from value_invest_research.application.use_cases.validate_bom_project_layout import ValidateBomProjectLayout
     from value_invest_research.application.use_cases.validate_research_project import ValidateResearchProject
 
     project_dir = _resolve_cli_path(root, args.project_dir)
     result = ValidateResearchProject(FileSystemResearchArtifactRepository(project_dir)).execute(require_l3=args.require_l3)
-    status = "OK" if result.ok else "FAILED"
+    layout_result = ValidateBomProjectLayout(FileSystemBomProjectLayoutRepository(project_dir)).execute()
+    ok = result.ok and layout_result["ok"]
+    status = "OK" if ok else "FAILED"
     print(
         f"Research artifact validation {status}: "
         f"project_dir={project_dir}, "
@@ -806,11 +812,12 @@ def run_validate_research_artifacts_cmd(root: Path, args) -> int:
         f"source_extractions={result.source_extractions}, "
         f"leaf_source_reviews={result.leaf_source_reviews}, "
         f"targets={result.targets}, "
-        f"issues={len(result.issues)}"
+        f"bom_children={layout_result.get('summary', {}).get('child_projects', 0)}, "
+        f"issues={len(result.issues) + len(layout_result.get('issues', []))}"
     )
-    for issue in result.issues[:10]:
+    for issue in [*result.issues, *layout_result.get("issues", [])][:10]:
         print(f"{issue.get('severity', 'error')}:{issue.get('code', '')}: {issue.get('message', '')}")
-    return 0 if result.ok else 1
+    return 0 if ok else 1
 
 
 def run_validate_project_schema_cmd(root: Path, args: argparse.Namespace) -> int:

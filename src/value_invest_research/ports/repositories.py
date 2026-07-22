@@ -68,6 +68,37 @@ class ResearchProjectRepository(Protocol):
         """Load target ranking records for public report rendering."""
 
 
+class BomProjectLayoutRepository(Protocol):
+    """Outbound port for loading one industry project and its BOM children."""
+
+    @property
+    def project_dir_label(self) -> str:
+        """Stable label used in validation output."""
+
+    def load_layout_bundle(self) -> dict:
+        """Load parent metadata, manifest, and child project existence facts."""
+
+
+class TemporalResearchLedgerRepository(Protocol):
+    """Outbound port for append-only BOM claims, snapshots, and revisions."""
+
+    @property
+    def project_dir_label(self) -> str:
+        """Stable BOM child-project label."""
+
+    def load_prior_snapshots(self) -> list[dict]:
+        """Load prior as-of snapshots without mutating them."""
+
+    def load_documents(self) -> list[dict]:
+        """Load the accumulated source-document ledger."""
+
+    def load_claims(self) -> list[dict]:
+        """Load accumulated atomic claims for the next snapshot build."""
+
+    def write_temporal_bundle(self, bundle: dict) -> None:
+        """Persist documents, claims, revisions, coverage, and current snapshot."""
+
+
 class SourceParsingArtifactWriter(Protocol):
     """Outbound port for persisting parser and GPT review records."""
 

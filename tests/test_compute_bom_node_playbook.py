@@ -27,18 +27,16 @@ class ComputeBomNodePlaybookTests(unittest.TestCase):
         self.assertEqual(playbook.questions[1].model_name, "GPU/ASIC 合格供给漏斗模型")
         self.assertEqual(playbook.questions[4].model_name, "市场隐含算力路径与预期差模型")
 
-    def test_compute_stages_define_primary_cross_check_and_refutation_metrics(self):
+    def test_compute_logic_hints_are_orientation_not_completion_coordinates(self):
         playbook = compute_node_playbook()
 
         for question in playbook.questions:
             with self.subTest(question=question.question_id):
-                self.assertGreaterEqual(len(question.stages), 4)
-                self.assertLessEqual(len(question.stages), 7)
+                self.assertGreaterEqual(len(question.stages), 1)
                 for stage in question.stages:
-                    self.assertTrue(stage.primary_metric)
-                    self.assertTrue(stage.refutation_metric)
-                    self.assertGreaterEqual(len(stage.cross_check_metrics), 1)
-                    self.assertLessEqual(len(stage.cross_check_metrics), 2)
+                    self.assertTrue(stage.title)
+                    self.assertTrue(stage.role)
+        self.assertIn("logic_hints", playbook.questions[0].to_dict())
 
     def test_registry_resolves_compute_and_hbm_without_adapter_dependencies(self):
         compute = get_bom_node_playbook("compute")

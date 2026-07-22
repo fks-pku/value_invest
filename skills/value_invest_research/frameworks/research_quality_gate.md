@@ -12,7 +12,17 @@ Every complete refreshed research project must preserve these files in the proje
 - `leaf_source_reviews.jsonl`: one GPT verification record per extraction.
 - `investment_workbench.json`: internal scoring worksheet, frozen recommendations, labels when relevant, and validation output.
 
-For BOM-first S-curve research, `investment_workbench.json` must also preserve one search artifact per `BOM node x six questions`, including one parse/review record for every selected source. Q6 is incomplete without explicit refuting source IDs and refutation evidence.
+For BOM-first S-curve research, `investment_workbench.json` must also preserve one search artifact per `BOM node x six questions`, including one parse/review record for every selected source. Each BOM child additionally preserves an append-only document/claim ledger, question coverage rows, thesis revisions, and reproducible as-of snapshots. Q6 is incomplete without explicit refuting source IDs and refutation evidence.
+
+Industry-chain projects additionally preserve:
+
+- root `project.json` with `project_scope=industry_chain`, ordered `bom_projects`, and `bom_manifest_path`;
+- root `professional_report.html` with `data-report-scope=industry-index` and no embedded BOM six-question modules;
+- `boms/manifest.json` with one entry per canonical BOM node;
+- `boms/<node_id>/project.json`, node-filtered `sources.jsonl`, and `professional_report.html` with `data-report-scope=bom-node`;
+- `boms/<node_id>/research_run.json` when the child claims a completed node-specific run.
+
+The layout gate checks exact parent/manifest/child node coverage. A missing child, duplicate ID, unsafe path, or declared-but-missing research run is an error. A child without a run is allowed only with an explicit partial status and cannot pass completed research gates.
 
 The gold regression fixture is `tests/fixtures/research_quality_gold/`. New framework changes should keep this fixture passing or intentionally update it with matching tests.
 
@@ -98,6 +108,7 @@ Run these checks before treating a complete refreshed report as done:
 
 ```bash
 PYTHONPATH=src python3 -m value_invest_research validate-report-contract <project_dir>/professional_report.html
+PYTHONPATH=src python3 -m value_invest_research validate-report-contract <project_dir>/boms/<node_id>/professional_report.html
 PYTHONPATH=src python3 -m value_invest_research validate-research-artifacts <project_dir> --require-l3
 ```
 

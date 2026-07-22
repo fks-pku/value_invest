@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "node_id": "powerCooling",
+  "current_as_of_date": "2026-03-28",
+  "documents_path": "ledger/documents.jsonl",
+  "claims_path": "ledger/claims.jsonl",
+  "revisions_path": "ledger/thesis_revisions.jsonl",
+  "coverage_path": "ledger/coverage.jsonl",
+  "unmapped_sources_path": "ledger/unmapped_sources.jsonl",
+  "current_snapshot_path": "snapshots/2026-03-28/thesis_snapshot.json"
+}

@@ -249,12 +249,32 @@ research project files
   -> locked professional_report.html
 ```
 
+Industry-chain S-curve projects add an explicit parent/child artifact boundary:
+
+```text
+<industry_project>/
+  project.json                         # project_scope=industry_chain
+  professional_report.html            # chain map + BOM navigation + aggregate targets
+  qa_tree.json / workbench / sources
+  boms/
+    manifest.json
+    <node_id>/
+      project.json                     # project_scope=bom_node
+      sources.jsonl                    # node-filtered evidence index
+      research_run.json                # optional until independently completed
+      professional_report.html         # exactly one BOM and its six questions
+```
+
+`domain.bom_project_layout` owns safe node IDs, canonical relative paths, and parent/child identity rules. The application use cases build and validate the manifest through ports; the filesystem adapter only reads or writes those paths. A renderer receives either `industry-index` or `bom-node` scope. It does not decide project boundaries.
+
+Example: refining HBM changes `boms/memory/research_run.json`, the HBM source set, HBM scoring inputs, and `boms/memory/professional_report.html`. Compute, networking, manufacturing, power/cooling, and system-delivery child artifacts are untouched. After acceptance, the parent index and aggregate target view may be regenerated from child metadata without recomputing sibling research.
+
 This is the key decoupling for future iteration:
 
 - Changing domain expertise or QA depth belongs in `domain_playbooks.py` or a future playbook adapter.
 - Changing research sequencing belongs in `application/orchestration/research_orchestrator.py` and use cases.
 - Changing public presentation belongs in `adapters/outbound/report_sections/` or another `CanonicalReportRenderer` adapter. The top-level renderer only assembles the page shell, CSS, and ordered section registry.
-- Changing file layout belongs in `FileSystemResearchProjectRepository` or another `ResearchProjectRepository` adapter.
+- Changing file layout starts from the pure `bom_project_layout` contract and its application use case; filesystem behavior belongs in `FileSystemBomProjectLayoutRepository` or another layout adapter.
 - Changing internal workbench field names belongs in `domain.report_view_model` normalization or the repository adapter, not in section HTML.
 
 The public report renderer is intentionally split by section:
@@ -268,7 +288,7 @@ CanonicalHtmlReportRenderer
   -> SourcesSection
 ```
 
-The compact public default is exactly `当前研究的问题 -> 行业概况 -> 标的推荐 -> 来源索引`. Adaptive QA, search plans, parser traces, and workbench records remain internal unless explicitly requested. This is the presentation extension point: if only an industry-overview card changes, edit its section adapter and contract tests; do not change question planning, source parsing, target scoring, or file-system repositories. If the top-level order changes, update the section registry and the report contract together.
+The compact public default is exactly `当前研究的问题 -> 行业概况 -> 标的推荐 -> 来源索引` in both scopes. The parent is an `industry-index`; each child is a `bom-node`. Adaptive QA, search plans, parser traces, and workbench records remain internal unless explicitly requested. This is the presentation extension point: if only an industry-overview card changes, edit its section adapter and contract tests; do not change question planning, source parsing, target scoring, or file-system repositories. If the top-level order changes, update the section registry and the report contract together.
 
 ## Migration Map
 

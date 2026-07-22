@@ -64,11 +64,13 @@ For industry/theme/S-curve work, define one canonical BOM registry. Each node ex
 
 The exact node ID and public name are reused by research artifacts, company exposure, target scoring, and report rendering.
 
-Every canonical node must own a node-specific `BomNodePlaybook` before source search begins. The playbook defines that node's boundary, master equations, six question models, and 4-7 causal stages per question. Every stage defines one primary metric, one or two cross-check metrics, and one refutation metric. Shared question labels do not permit shared generic causal chains: compute, manufacturing, HBM, networking, power/cooling, and system delivery each require node-specific mechanisms and metrics.
+Every canonical node must own a node-specific `BomNodePlaybook`. The playbook defines that node's boundary, master equations, and six question models. It may provide a short node-specific logic hint for reader orientation, but the hint is not an evidence whitelist, a mandatory search path, or a completion coordinate. New evidence may introduce themes that the initial playbook did not anticipate.
 
-The invariant is:
+The project and node invariants are:
 
-`one canonical BOM node -> one node-specific playbook -> one cutoff-frozen research run -> one report module`
+`one industry-chain project -> one boms/<node_id>/ child project per canonical BOM node`
+
+`one canonical BOM node -> one six-question playbook -> one append-only temporal ledger -> reproducible as-of snapshots -> one independent BOM report`
 
 Validate exact one-to-one coverage between the canonical BOM registry and the playbook registry. Missing, duplicate, extra, static-renderer, or generic-fallback playbooks are contract failures. Playbooks contain no source IDs, report dates, run facts, verdicts, or CSS; those belong to the research run, evidence artifacts, and renderer respectively.
 
@@ -85,12 +87,12 @@ Each `BOM node x question` is a minimum research unit:
 
 For each question:
 
-1. Define the professional judgment model.
-2. Write the concrete causal chain without data.
-3. For each chain link, design heterogeneous metric candidates before searching.
-4. Search each selected metric independently.
-5. Show actual history, forward expectations, and first-principles assessment for the same link.
-6. Write the question conclusion and target impact only after evidence/gap review.
+1. Keep one concise professional model and basic logic hint so the reader understands the question.
+2. Run both pull research from the six-question gaps and push ingestion from external filings, reports, news, opinions, and user databases.
+3. Parse every document into atomic claims rather than one document-level summary.
+4. Map every claim to `BOM x question x time`, with optional entity, metric, topic, stance, and target-period metadata.
+5. Append claims without overwriting prior claims; preserve unmapped/new-theme material for review.
+6. Build an as-of question snapshot only after source, contradiction, recency, and coverage review.
 
 ### 5. Search and parse actively
 
@@ -107,14 +109,24 @@ GPT is the research director and chooses the source universe. For every minimum 
 
 The same document may be parsed multiple times for different questions. Every parse must use that question's dimensions.
 
+Every atomic claim preserves four time fields when available:
+
+- `published_at`: when the market could know it;
+- `effective_period`: which actual period the fact describes;
+- `target_period`: which future period a forecast addresses;
+- `ingested_at`: when the system received it.
+
+The system uses two evidence loops. Pull research is driven by six-question coverage gaps. Push research continuously ingests the user's external report database and other approved feeds. Both loops write to the same append-only ledger. A source that cannot yet be mapped remains in `unmapped/new_theme`; it must not be silently discarded or forced into an unsuitable question.
+
 ### 6. Apply semantic completion gates
 
 A BOM question is complete only when:
 
-- `source_universe_plan`, direct/Exa search plan, and `metric_candidate_plan` are non-empty;
-- question-level search completed;
-- parsing completed;
-- selected source IDs and evidence summary exist;
+- the professional source universe and direct/AI-search plan are recorded;
+- both question-driven search and available external-material ingestion have completed;
+- selected documents have question-specific atomic parses;
+- actual facts, forward expectations, source diversity, recency, and explicit gaps are recorded;
+- supporting and conflicting claims remain distinguishable;
 - Q6 additionally contains explicit refuting source IDs and refutation evidence.
 
 A BOM S-curve stage may be asserted only after all six questions pass.
@@ -150,9 +162,11 @@ Default top-level order is exactly:
 
 Do not render public `下钻 QA`, source plans, raw search queries, parser traces, score worksheets, tool traces, or change logs unless the user explicitly asks for the workbench.
 
-`行业概况` renders `01 技术链与BOM呈现`, then one numbered BOM module from `02` onward. Each BOM module contains the six question cards and one S-curve rollup. Optional deepening modules such as industry space, competition/profit pool, and chokepoints are rendered only when explicitly requested or required by a playbook.
+Industry/theme/S-curve output uses two report scopes. The parent `professional_report.html` is an `industry-index`: `行业概况` renders `01 技术链与BOM呈现` and `02 BOM 独立研究目录`, with one `bom-index-card` linking to each child. It must not embed the six-question modules. Each `boms/<node_id>/professional_report.html` is a `bom-node` report containing exactly one node's six question cards and one S-curve rollup. Optional deepening modules such as industry space, competition/profit pool, and chokepoints stay inside the relevant BOM child unless they are truly chain-wide.
 
-Inside each public BOM question card, render one combined `01 研究逻辑链` card. It compiles the internal judgment model, formula, conclusion rule, and node-specific causal stages into one readable chain. Do not render separate public `判断模型` and `具体逻辑链条` cards. The internal playbook must still preserve those fields separately so research rules remain testable and presentation remains replaceable. Evidence cards for the exact causal stages begin at `02`, followed by the question conclusion and target impact.
+The parent owns chain taxonomy, navigation, and aggregated targets. Each child owns its `project.json`, filtered `sources.jsonl`, optional `research_run.json`, report, node-specific refresh cadence, and node-level targets. A child without a completed node-specific run must state `partial_research`; it must not imply research completion.
+
+Inside each public BOM question card, render one compact `基本理解思路`, followed by `当前结论`, `相较上一截面的变化`, `时间演化`, `映射材料`, and `信息覆盖`. Do not render mandatory per-stage evidence cards. Logic hints orient the reader; they never constrain which material may enter the ledger. Every mapped material keeps a source link next to the supported claim, and past conclusions may be shown only when a real prior snapshot exists.
 
 Nested structures are collapsed `details` cards. Wide tables use `table-scroll`. Source links sit next to supported claims. The source index is collapsed.
 

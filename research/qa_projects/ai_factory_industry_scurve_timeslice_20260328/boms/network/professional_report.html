@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 工厂 · 高速连接与 AI 网络 BOM 节点研究</title>
+  <style>
+:root{--bg:#f5f7fb;--surface:rgba(255,255,255,.9);--text:#1d1d1f;--muted:#667085;--line:#d9e0ea;--blue:#0a84ff;--green:#1d9a6c;--amber:#b7791f;--red:#c2413d;--shadow:0 18px 50px rgba(20,32,54,.10)}
+.metric-candidate-strip{display:grid;gap:8px;border:1px solid #e4edf8;border-radius:14px;background:#f8fbff;padding:10px}.metric-candidate-strip>b{color:#223047;font-size:12px}.metric-candidate-list{display:flex;flex-wrap:wrap;gap:7px}.metric-candidate-list span{display:inline-flex;align-items:center;gap:6px;border:1px solid #dce8f7;border-radius:999px;background:#fff;color:#344054;font-size:11px;font-weight:800;padding:5px 8px}.metric-candidate-list i{font-style:normal;color:#0a66cc}.metric-candidate-list em{font-style:normal;border-radius:999px;background:#eef7ff;color:#0a66cc;padding:2px 6px}.metric-history-group,.expectation-table-group{display:grid;gap:8px}.metric-history-group h6,.expectation-table-group h6{margin:0;color:#223047;font-size:13px;line-height:1.35}.metric-history-table-wrap{margin-top:10px}.metric-history-table{min-width:720px}.metric-history-caption{text-align:left;caption-side:top;border:1px solid #e1eaf6;border-bottom:0;border-radius:10px 10px 0 0;background:#f8fbff;padding:10px 12px;color:#475467}.metric-history-caption-label{display:block;color:#667085;font-size:11px;font-weight:900;letter-spacing:0;text-transform:uppercase}.metric-history-name{display:inline-block;color:var(--blue);font-size:13px;font-weight:900;line-height:1.35;text-decoration:none}.metric-history-name:hover{text-decoration:underline}.metric-history-subject{display:inline-flex;margin-left:8px;border:1px solid rgba(10,132,255,.18);border-radius:999px;background:#eef7ff;color:#0a66cc;font-size:11px;font-weight:900;padding:2px 7px;vertical-align:1px}.metric-history-definition{display:block;margin-top:5px;color:#475467;font-size:12px;line-height:1.45}.metric-history-definition b{margin-right:6px;color:#223047}.metric-history-table th:first-child,.metric-history-table td:first-child{width:180px}.expectation-entity-cell a{color:var(--blue);font-weight:900}.metric-history-table td strong{color:#223047}.expectation-table-list{display:grid;gap:12px}.bom-expectation-card{display:grid;gap:10px}.bom-expectation-table{margin-top:0}.bom-expectation-table table{min-width:1120px}.bom-expectation-table td:first-child{width:150px;color:#223047}.bom-expectation-table td:nth-child(2),.bom-expectation-table td:nth-child(4){width:120px;color:#475467;font-weight:800}.bom-expectation-table td{line-height:1.55}
+.bom-future-card.bom-expectation-card{background:#fff}.bom-future-card.bom-expectation-card>summary{grid-template-columns:1fr auto auto}.bom-expectation-card>summary>span:not(.chevron){border:1px solid rgba(10,132,255,.18);border-radius:999px;background:#eef7ff;color:var(--blue);font-size:11px;font-weight:900;padding:4px 8px;white-space:nowrap}.bom-expectation-stage{display:grid;gap:3px;border:1px solid #e1eaf6;border-radius:14px;background:#fbfdff;padding:10px;margin-bottom:10px}.bom-expectation-stage span{color:#667085;font-size:11px;font-weight:900}.bom-expectation-stage b{color:#0a66cc;font-size:13px;line-height:1.35}.bom-expectation-subtitle{margin:0 0 10px;color:#667085;font-size:13px;line-height:1.45}.bom-expectation-core{border:1px solid rgba(10,132,255,.18);border-radius:14px;background:linear-gradient(180deg,#fff,#f7fbff);padding:12px;margin-bottom:10px}.bom-expectation-core span{display:block;color:var(--blue);font-size:11px;font-weight:900;margin-bottom:5px}.bom-expectation-core p{margin:0;color:#223047;font-size:14px;line-height:1.55}.bom-expectation-table{margin-top:10px}.bom-expectation-table table{min-width:1240px}.bom-expectation-table td:first-child{width:130px;color:#223047}.bom-expectation-table td:nth-child(2),.bom-expectation-table td:nth-child(4){width:120px;color:#475467;font-weight:800}.bom-expectation-table td{line-height:1.55}.bom-expectation-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}.bom-expectation-field{border:1px solid #e8eef7;border-radius:12px;background:#fbfdff;padding:9px;min-width:0}.bom-expectation-field span{display:block;color:#667085;font-size:11px;font-weight:900;margin-bottom:3px}.bom-expectation-field b{display:block;color:#223047;font-size:13px;line-height:1.45}.bom-expectation-validation{border:1px solid rgba(29,154,108,.20);border-radius:12px;background:#f5fffa;margin-top:10px;padding:10px}.bom-expectation-validation>b{display:block;color:#166f52;margin-bottom:4px}.bom-expectation-validation p{margin:0;color:#344054}.bom-expectation-card .bom-question-sources{margin-top:10px}
+.representative-companies{margin:12px 0 14px;padding:10px 0;border-top:1px solid #eef2f7;border-bottom:1px solid #eef2f7}.representative-companies>b{display:block;color:var(--blue);font-size:12px;margin-bottom:8px}.representative-companies>div{display:flex;flex-wrap:wrap;gap:8px}.representative-companies span{display:inline-flex;align-items:center;border:1px solid #d9e7f7;border-radius:999px;background:#f7fbff;color:#223047;padding:5px 9px;font-size:12px;font-weight:800}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;background:radial-gradient(circle at 20% 0%,#e8f2ff 0,transparent 34rem),var(--bg);color:var(--text);line-height:1.62}a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+.hero{padding:32px clamp(22px,5vw,72px) 48px;background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,255,255,.62));border-bottom:1px solid var(--line)}.hero-inner{max-width:1180px;margin:0 auto}.eyebrow{margin:0 0 10px;color:var(--blue);font-size:12px;font-weight:800;text-transform:uppercase}h1{max-width:980px;margin:0;font-size:clamp(36px,5vw,66px);line-height:1.04;letter-spacing:0}.hero-subtitle{max-width:780px;color:#475467;font-size:19px}.hero-meta{display:flex;gap:10px;flex-wrap:wrap}.hero-meta span,.state-pill{border:1px solid var(--line);border-radius:999px;background:#fff;padding:6px 10px;color:var(--muted);font-size:13px}.top-nav{position:sticky;top:0;z-index:5;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;padding:12px;background:rgba(245,247,251,.82);backdrop-filter:blur(16px);border-bottom:1px solid rgba(217,224,234,.72)}.top-nav a{padding:8px 12px;border:1px solid rgba(10,132,255,.18);border-radius:999px;background:#fff;color:#28506f;font-size:13px}.section{max-width:1180px;margin:0 auto;padding:44px clamp(18px,4vw,36px)}.section-heading{display:flex;align-items:end;justify-content:space-between;margin-bottom:18px}.section-heading h2{margin:0;font-size:clamp(30px,3vw,44px);letter-spacing:0}.muted{color:var(--muted)}
+.goal-card,.industry-module,.qa-card,.source-collapse,.artifact-card{border:1px solid var(--line);border-radius:22px;background:var(--surface);box-shadow:var(--shadow)}.goal-card{padding:22px}.goal-main{font-size:22px;font-weight:800;margin-bottom:16px}.goal-grid,.constraint-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.metric,.constraint-grid article,.chain-bridge-card,.chain-node-lens,.overview-question-card,.chain-company-card,.bom-node-brief article{border:1px solid #e6edf7;border-radius:16px;background:#fff;padding:14px}.metric span,.constraint-grid span,.bom-node-brief span{display:block;color:var(--muted);font-size:12px;font-weight:800}.metric strong{display:block;color:#223047;font-size:18px}.constraint-definition{margin-top:18px}.artifact-title{font-weight:900;color:#26364f;margin-bottom:8px}.industry-overview-section{display:grid;gap:14px}.industry-module{overflow:hidden}.industry-module>summary,.qa-card>summary,.chain-detail-panel>summary,.bom-question-card>summary,.source-collapse>summary{list-style:none;cursor:pointer}.industry-module>summary::-webkit-details-marker,.qa-card>summary::-webkit-details-marker,details>summary::-webkit-details-marker{display:none}.industry-module[open]>summary,.qa-card[open]>summary{border-bottom:1px solid var(--line)}.module-head{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:18px 22px}.module-index{display:inline-flex;width:34px;height:34px;border-radius:999px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900;font-size:12px}.module-head h3{margin:0;font-size:22px}.module-head p{margin:0;color:var(--muted);font-size:14px}.chevron{color:var(--muted);font-weight:900;transition:transform .18s ease}.industry-module[open]>.module-head .chevron,.qa-card[open]>summary .chevron,details[open]>summary>.chevron{transform:rotate(90deg)}.industry-module-body{padding:22px;min-width:0}.chain-explain{padding:0}.chain-plain-summary{font-size:18px;color:#344054;margin-top:0}.chain-research-bridge{border:1px solid rgba(10,132,255,.18);border-radius:18px;background:#fbfdff;padding:16px;margin:18px 0}.chain-bridge-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.chain-node-lens ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0;padding:0;list-style:none}.chain-node-lens b,.chain-bridge-card span{display:block;color:var(--blue);font-size:12px;margin-bottom:4px}.chain-detail-panel{border:1px solid #e6edf7;border-radius:18px;background:#fff;margin-top:12px;overflow:hidden}.chain-detail-panel>summary{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;font-weight:900}.chain-layer-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:16px}.chain-layer-card{border:1px solid #eef2f7;border-radius:16px;background:#fbfcff;padding:14px}.chain-layer-card p{margin:10px 0}.chain-layer-card span{display:block;color:var(--muted);font-size:12px}.chain-simple-flow{display:grid;grid-template-columns:repeat(5,minmax(180px,1fr));gap:10px;padding:16px;overflow-x:auto}.chain-stage-panel{min-width:180px;border:1px solid #e8eef7;border-radius:16px;padding:14px;background:#fbfcff}.chain-stage-panel span{display:inline-flex;width:28px;height:28px;border-radius:50%;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900}.chain-relationship-graph{margin:0 16px 16px;padding:14px;border:1px dashed #bfd7f5;border-radius:16px;color:#3d536d;background:#f7fbff}.chain-company-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:16px}.company-flow-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.company-flow-grid p{margin:0;border-top:1px solid #eef2f7;padding-top:8px}.company-flow-grid b{display:block;color:#223047}.component-value-chain,.chain-lane-map,.chain-value-flow{min-width:0}.chain-relationship-graph{display:block}.bom-node-brief{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:14px}.bom-node-brief p{margin:4px 0 0}.bom-master-equations{display:grid;gap:10px;margin:0 0 14px;padding:14px;border:1px solid #dceaf8;border-radius:16px;background:#f7fbff}.bom-master-equations>b{color:#1f5d96}.bom-master-equations>div{display:grid;gap:8px}.bom-master-equations p{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:center;margin:0;padding:10px 12px;border:1px solid #e2edf8;border-radius:12px;background:#fff;color:#344054}.bom-master-equations p span{display:inline-flex;width:28px;height:28px;align-items:center;justify-content:center;border-radius:999px;background:#eaf3ff;color:var(--blue);font-size:11px;font-weight:900}.bom-question-list{display:grid;gap:10px}.bom-question-card{border:1px solid #e3ebf6;border-radius:18px;background:#fff;overflow:hidden}.bom-question-card>summary{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:14px 16px}.bom-question-card[open]>summary{border-bottom:1px solid #edf1f7}.bom-question-index{display:inline-flex;width:28px;height:28px;border-radius:999px;align-items:center;justify-content:center;background:#f0f7ff;color:var(--blue);font-weight:900;font-size:12px}.bom-question-answer{padding:14px 16px;background:#fbfcff}.bom-question-answer p{margin:0 0 10px}.bom-question-sources{display:flex;gap:6px;flex-wrap:wrap}.bom-demand-study{display:grid;gap:14px}.bom-demand-thesis{border:1px solid rgba(10,132,255,.18);border-radius:16px;background:#fff;padding:14px;color:#26364f}.bom-demand-steps{display:grid;gap:10px}.bom-demand-step{display:grid;grid-template-columns:auto 1fr;gap:12px;border:1px solid #e8eef7;border-radius:16px;background:#fff;padding:14px}.bom-demand-step>span{display:inline-flex;width:34px;height:34px;border-radius:999px;align-items:center;justify-content:center;background:#eef7ff;color:var(--blue);font-weight:900;font-size:12px}.bom-demand-step h5{margin:0 0 6px;font-size:15px;color:#223047}.bom-demand-step p{margin:0 0 8px}.bom-demand-table{min-width:980px}.source-chip{display:inline-flex;margin:2px 4px 2px 0;border:1px solid rgba(10,132,255,.2);border-radius:999px;background:#eef7ff;color:var(--blue);padding:3px 8px;font-size:11px}
+.bom-question-research-status{border:1px solid #dbeafe;border-radius:16px;background:#f7fbff;overflow:hidden;margin-bottom:12px}.bom-question-research-status>summary{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:12px;list-style:none;cursor:pointer}.bom-question-research-status[open]>summary{border-bottom:1px solid #dbeafe}.bom-question-research-status summary b{color:#0a66cc}.bom-question-research-status summary span:not(.chevron){color:#667085;font-size:12px;font-weight:900}.bom-question-research-body{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:12px}.bom-question-research-body article{border:1px solid #e7eef8;border-radius:14px;background:#fff;padding:11px}.bom-question-research-body span{display:block;color:var(--blue);font-size:11px;font-weight:900;margin-bottom:4px}.bom-question-research-body p{margin:0;color:#344054;font-size:13px}.bom-s-curve-stage-card{border:1px solid rgba(29,154,108,.24);border-radius:20px;background:linear-gradient(180deg,#fff,#f5fffa);overflow:hidden;margin-top:14px}.bom-s-curve-stage-card>summary{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;list-style:none;cursor:pointer;padding:16px}.bom-s-curve-stage-card[open]>summary{border-bottom:1px solid rgba(29,154,108,.18)}.bom-s-curve-stage-card>summary>span:first-child{display:inline-flex;border:1px solid rgba(29,154,108,.28);border-radius:999px;background:#eaf8f2;color:var(--green);padding:6px 10px;font-size:12px;font-weight:900;white-space:nowrap}.bom-s-curve-stage-card h5,.bom-s-curve-stage-card p{margin:0}.bom-s-curve-stage-card summary b{display:block;color:#173f34;font-size:16px}.bom-s-curve-stage-card summary p{color:#667085;font-size:13px}.bom-stage-rollup-body{display:grid;gap:12px;padding:14px}.bom-stage-source-discipline,.bom-stage-next-signal,.bom-stage-downgrade-signal{border:1px solid #dcefe8;border-radius:16px;background:#fff;padding:12px}.bom-stage-current{border:1px solid #dcefe8;border-radius:16px;background:#f8fffb;padding:12px}.bom-stage-source-discipline>b,.bom-stage-current>b,.bom-stage-next-signal>b,.bom-stage-downgrade-signal>b{display:block;color:#173f34;margin-bottom:5px}.bom-stage-source-discipline p,.bom-stage-current p,.bom-stage-next-signal p,.bom-stage-downgrade-signal p{margin:0;color:#344054}.bom-stage-evidence-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.bom-stage-evidence-grid article{border:1px solid #e7eef8;border-radius:16px;background:#fff;padding:12px}.bom-stage-evidence-grid span{display:inline-flex;border-radius:999px;background:#eef7ff;color:var(--blue);font-size:11px;font-weight:900;padding:4px 8px}.bom-stage-evidence-grid b{display:block;color:#223047;margin:7px 0 5px}.bom-stage-evidence-grid p{margin:0;color:#344054;font-size:13px}.bom-question-four-step,.bom-question-stage-flow{display:grid;gap:12px;margin-bottom:14px}.bom-step-card{border:1px solid #e2ebf6;border-radius:18px;background:#fff;overflow:hidden}.bom-step-card>summary{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:14px;list-style:none;cursor:pointer}.bom-step-card[open]>summary{border-bottom:1px solid #e2ebf6}.bom-step-card>summary span:first-child{display:inline-flex;width:58px;height:26px;border-radius:999px;align-items:center;justify-content:center;background:#eef7ff;color:var(--blue);font-size:11px;font-weight:900}.bom-step-card>summary h5{margin:0;color:#223047;font-size:16px;line-height:1.35}.bom-step-body{display:grid;gap:12px;padding:14px}.bom-step-body>p{margin:0;color:#344054}.bom-metric-rationale-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.bom-metric-rationale-card{border:1px solid #edf2f8;border-radius:16px;background:#fbfdff;padding:12px}.bom-metric-rationale-card span{display:block;color:var(--blue);font-size:11px;font-weight:900;margin-bottom:4px}.bom-metric-rationale-card b{display:block;color:#223047;font-size:14px;margin-bottom:6px}.bom-metric-rationale-card p{margin:0;color:#344054;font-size:13px}.bom-history-metric-list{display:grid;gap:16px}.bom-history-metric-paragraph{display:grid;gap:8px;padding:0 0 14px;border-bottom:1px solid #e7edf6}.bom-history-metric-paragraph:last-child{border-bottom:0;padding-bottom:0}.bom-history-metric-text{margin:0;color:#344054}.bom-history-metric-text b{display:block;color:#223047;margin-bottom:4px}.bom-future-grid,.bom-mechanism-grid,.bom-stage-mechanism-grid{display:grid;grid-template-columns:1fr;gap:10px}.bom-future-card,.bom-mechanism-card{border:1px solid #edf2f8;border-radius:16px;background:#fbfdff;overflow:hidden}.bom-future-card>summary,.bom-mechanism-card>summary{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;list-style:none;cursor:pointer;padding:12px}.bom-future-card[open]>summary,.bom-mechanism-card[open]>summary{border-bottom:1px solid #edf2f8}.bom-nested-card-body{padding:12px}.bom-future-card b,.bom-mechanism-card b b{display:block;color:#223047}.bom-nested-card-body p p{margin:0;color:#344054}.bom-question-supporting-detail{display:grid;gap:12px;margin-top:12px;border-top:1px solid #e7edf6;padding-top:12px}.bom-stage-integrated-card{border-color:#d8e6f7;background:linear-gradient(180deg,#fff,#fbfdff)}.bom-stage-integrated-card>summary{grid-template-columns:auto 1fr auto}.bom-stage-integrated-card>summary .stage-index{width:58px;height:28px}.bom-stage-subcard{border:1px solid #edf2f8;border-radius:16px;background:#fff;overflow:hidden}.bom-stage-subcard>summary{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;list-style:none;cursor:pointer;padding:12px}.bom-stage-subcard[open]>summary{border-bottom:1px solid #edf2f8}.bom-stage-subcard summary b{color:#223047}.bom-stage-subcard-body{display:grid;gap:10px;padding:12px}.bom-stage-history-content{display:grid;gap:10px}
+.bom-future-grid{display:grid;grid-template-columns:1fr;gap:14px}.bom-future-card{min-width:0}
+.bom-model-card,.bom-target-impact-card{border:1px solid #e1ecf8;border-radius:16px;background:#fbfdff;padding:13px}.bom-model-head{display:grid;gap:5px;margin-bottom:8px}.bom-model-head span{color:var(--blue);font-size:12px;font-weight:900}.bom-model-head b{color:#223047;font-size:15px}.bom-model-card p,.bom-target-impact-card p{margin:0;color:#344054}.bom-model-grid,.bom-question-conclusion-grid,.bom-target-impact-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.bom-model-grid article,.bom-question-conclusion-grid article,.bom-target-impact-grid article{border:1px solid #edf2f8;border-radius:15px;background:#fff;padding:12px}.bom-model-grid b,.bom-question-conclusion-grid b,.bom-target-impact-grid b{display:block;color:#223047;margin-bottom:6px}.bom-model-grid ul{margin:0;padding-left:18px;color:#344054}.bom-model-grid li+li{margin-top:5px}.bom-model-grid p,.bom-question-conclusion-grid p{margin:0;color:#344054}.bom-target-impact-grid{margin-top:10px}.bom-target-impact-grid span{display:block;color:var(--blue);font-size:11px;font-weight:900;margin-bottom:5px}.bom-target-impact-grid b{margin:0;font-size:13px}.bom-model-card,.bom-model-grid,.bom-question-conclusion-grid,.bom-target-impact-card,.bom-target-impact-grid{min-width:0;max-width:100%;box-sizing:border-box}
+.bom-logic-chain-panel{border:1px solid #e1eaf6;border-radius:18px;background:#fbfdff;overflow:hidden}.bom-logic-chain-panel>summary{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:13px;list-style:none;cursor:pointer}.bom-logic-chain-panel[open]>summary{border-bottom:1px solid #e1eaf6}.bom-logic-chain-panel summary b{color:#0a66cc}.bom-logic-chain-panel summary span:not(.chevron){color:#667085;font-size:12px;font-weight:900}.bom-logic-chain-table{padding:12px}.bom-logic-chain-table table{min-width:980px}.bom-logic-chain-row td:first-child b{color:#0a66cc}.bom-logic-stage-stack{display:grid;gap:12px}.bom-logic-stage-card{border:1px solid #e1eaf6;border-radius:18px;background:#fbfdff;overflow:hidden}.bom-logic-stage-card>summary{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:13px;list-style:none;cursor:pointer}.bom-logic-stage-card[open]>summary{border-bottom:1px solid #e1eaf6}.bom-logic-stage-card .stage-index{display:inline-flex;width:58px;height:28px;border-radius:999px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-size:11px;font-weight:900}.bom-logic-stage-card summary b{display:block;color:#0a66cc;font-size:12px}.bom-logic-stage-card summary strong{display:block;color:#223047;font-size:16px;line-height:1.3}.bom-logic-stage-body{display:grid;gap:10px;padding:13px}.bom-logic-stage-card p{margin:0;color:#344054}.bom-stage-metric-choice,.bom-stage-history,.bom-stage-current{border:1px solid #edf2f8;border-radius:16px;background:#fff;padding:12px}.bom-stage-metric-choice>b,.bom-stage-history>b,.bom-stage-current>b{display:block;color:#223047;margin-bottom:6px}.metric-choice-table th:first-child,.metric-choice-table td:first-child{width:28%}.metric-point-count{display:inline-flex;width:max-content;max-width:100%;border:1px solid #e0e8f4;border-radius:999px;background:#fff;color:#667085;padding:3px 8px;font-size:11px;font-weight:900;margin-top:8px}.metric-data-table,.metric-trend-gap{border:1px solid #eef3f9;border-radius:14px;background:#fbfdff;padding:10px}.metric-data-table>b,.metric-trend-gap>b{display:block;color:#667085;font-size:11px;margin-bottom:4px}.metric-data-table p,.metric-trend-gap p{margin:0;color:#344054;font-size:13px}.metric-data-rows{display:grid;gap:0;margin-top:10px;border:1px solid #e6edf7;border-radius:12px;overflow:hidden;background:#fff}.metric-data-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:8px 10px;border-top:1px solid #eef2f7}.metric-data-row:first-child{border-top:0}.metric-data-row span{color:#344054;font-size:12px}.metric-data-row strong{color:#223047;font-size:12px;text-align:right}.metric-data-head{background:#f6f9fd}.metric-data-head b{color:#667085;font-size:11px;text-transform:uppercase}.metric-data-row-with-change{grid-template-columns:minmax(120px,1fr) minmax(90px,auto) minmax(140px,1fr)}.metric-data-row-with-company.metric-data-row-with-change{grid-template-columns:minmax(120px,.8fr) minmax(120px,1fr) minmax(90px,auto) minmax(140px,1fr)}.metric-multi-series-data .metric-data-row{grid-template-columns:minmax(120px,.8fr) 1fr auto}.metric-multi-series-data .metric-data-row-with-company.metric-data-row-with-change{grid-template-columns:minmax(120px,.8fr) minmax(120px,1fr) minmax(90px,auto) minmax(140px,1fr)}
+.bom-demand-logic-chain{display:grid;gap:10px}.bom-demand-logic-step{display:grid;grid-template-columns:auto 1fr;gap:12px;border:1px solid #edf2f8;border-radius:16px;background:#fbfdff;padding:12px}.bom-demand-logic-step>span{display:inline-flex;width:34px;height:34px;border-radius:999px;align-items:center;justify-content:center;background:#eef7ff;color:var(--blue);font-weight:900;font-size:12px}.bom-demand-logic-step b{display:block;color:#223047;margin-bottom:5px}.bom-demand-logic-step p{margin:0 0 6px;color:#344054}.bom-demand-logic-step em{font-style:normal;color:#667085;font-size:12px;font-weight:800}
+.research-narrative{display:grid;gap:18px}.narrative-head{border:1px solid rgba(10,132,255,.16);border-radius:18px;background:linear-gradient(180deg,#fff,#f7fbff);padding:18px}.narrative-head span{display:block;color:var(--blue);font-size:12px;font-weight:900;margin-bottom:6px}.narrative-head h4{margin:0 0 10px;font-size:24px;line-height:1.25;color:#1f2d3d}.narrative-head p{margin:0;color:#344054;font-size:16px}.logic-flow{display:grid;grid-template-columns:repeat(5,minmax(150px,1fr));gap:8px;align-items:stretch}.flow-step{border:1px solid #dceafa;border-radius:16px;background:#fff;padding:12px;min-width:150px}.flow-step span{display:inline-flex;width:28px;height:28px;border-radius:999px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900;font-size:12px;margin-bottom:8px}.flow-step p{margin:0;color:#26364f;font-weight:800;line-height:1.45}.flow-arrow{display:none}.narrative-prose{display:grid;gap:12px;border-left:3px solid #0a84ff;padding-left:16px}.narrative-prose p{margin:0;color:#2f3d52;font-size:15px}.narrative-data-table{min-width:1040px}.narrative-bottom{display:grid;grid-template-columns:1fr 1fr;gap:12px}.investment-takeaway,.bear-case-box{border:1px solid #e4ebf5;border-radius:18px;background:#fff;padding:16px}.investment-takeaway b,.bear-case-box b{display:block;color:#223047;margin-bottom:8px}.investment-takeaway p{margin:0;color:#344054}.bear-case-box{background:#fffafa;border-color:#f0d3d0}.bear-case-box ul{margin:0;padding-left:18px;color:#4b5563}.bear-case-box li+li{margin-top:6px}.demand-chain-audit{border:1px solid rgba(10,132,255,.18);border-radius:18px;background:#f7fbff;padding:14px}.demand-chain-title{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:12px}.demand-chain-title span{color:var(--blue);font-weight:900}.demand-chain-title strong{color:#344054;font-size:13px}.demand-chain-cards{display:grid;gap:12px}.chain-audit-card{border:1px solid #dceafa;border-radius:16px;background:#fff;overflow:hidden}.chain-audit-head{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:14px;border-bottom:1px solid #edf3fb}.chain-audit-head>span{display:inline-flex;width:34px;height:34px;border-radius:999px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900;font-size:12px}.chain-audit-head h5{margin:0 0 4px;font-size:16px;color:#223047}.chain-audit-head p{margin:0;color:var(--muted)}.chain-audit-head strong{border:1px solid rgba(10,132,255,.24);border-radius:999px;background:#f0f7ff;color:var(--blue);padding:5px 10px;font-size:12px;white-space:nowrap}.chain-audit-body-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:14px}.chain-audit-body-grid div{border:1px solid #eef2f7;border-radius:14px;background:#fbfcff;padding:12px}.chain-audit-body-grid b{display:block;color:#223047;margin-bottom:6px}.chain-audit-body-grid p{margin:0;color:#3d536d}.chain-audit-verdict{display:flex;justify-content:space-between;gap:12px;align-items:center;border-top:1px solid #edf3fb;padding:12px 14px}.chain-audit-verdict>span{color:#667085;font-size:12px;font-weight:800}.qa-card{margin:12px 0;overflow:hidden}.qa-card summary{display:grid;grid-template-columns:auto 1fr auto auto;gap:12px;align-items:center;padding:14px 16px}.qid{font-weight:900;color:var(--blue)}.qa-count{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:4px 8px}.qa-body{display:grid;gap:10px;padding:14px 16px}.qa-block{border:1px solid #edf1f7;border-radius:16px;background:#fff;padding:12px}.block-title{font-weight:900;color:#27364a;margin-bottom:6px}.qa-card.level-2{margin-left:18px;background:rgba(255,255,255,.82)}.qa-card.level-3{margin-left:28px;background:rgba(247,249,252,.95);border-style:dashed}.l3-meta{display:flex;gap:8px;flex-wrap:wrap}.l3-meta span{border:1px solid #e0e8f4;border-radius:999px;background:#f7fbff;color:#4e5f75;font-size:11px;padding:4px 8px}.overview-answer p{margin:0}.overview-answer-prose{color:#344054}.bom-index-list{display:grid;gap:12px}.bom-index-card{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:14px;align-items:center;border:1px solid #dfe8f4;border-radius:18px;background:#fff;padding:16px;color:inherit;text-decoration:none;box-shadow:0 8px 24px rgba(31,45,61,.05);transition:border-color .18s ease,transform .18s ease,box-shadow .18s ease}.bom-index-card:hover{border-color:#8fc4ff;transform:translateY(-1px);box-shadow:0 12px 28px rgba(31,45,61,.08)}.bom-index-number{display:inline-flex;width:42px;height:42px;border-radius:13px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900}.bom-index-copy strong{display:block;color:#1f2d3d;font-size:18px;margin-bottom:4px}.bom-index-copy p{margin:0;color:#667085}.bom-index-meta{display:grid;justify-items:end;gap:5px}.bom-index-meta span{color:#56677d;font-size:12px;font-weight:800}.bom-index-arrow{color:var(--blue);font-size:28px}.project-back-link{display:inline-flex;color:#d9ecff;font-size:13px;font-weight:800;text-decoration:none;margin-bottom:18px}.project-back-link:hover{color:#fff}.bom-node-hero h1{max-width:920px}.bom-node-overview .bom-research-module{margin-top:0}.bom-goal-card .bom-node-brief{margin-top:14px}.target-section{display:grid;gap:14px}.table-scroll{display:block;width:100%;max-width:100%;min-width:0;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-gutter:stable;padding-bottom:8px;overscroll-behavior-x:contain}.table-scroll::-webkit-scrollbar{height:10px}.table-scroll::-webkit-scrollbar-track{background:#eef3f9;border-radius:999px}.table-scroll::-webkit-scrollbar-thumb{background:#b9c9dd;border-radius:999px;border:2px solid #eef3f9}.table-scroll table{min-width:max(920px,100%);width:max-content;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}.table-scroll th,.table-scroll td{padding:10px 12px;text-align:left;border-bottom:1px solid #edf1f7;vertical-align:top;font-size:13px}.table-scroll th{background:#f6f9fd;color:#475467;font-size:12px;font-weight:900}.state-actionable_long,.state-watch_only,.state-no_action{display:inline-flex;border-radius:999px;padding:4px 8px;font-weight:900;font-size:12px}.state-actionable_long{color:var(--green);background:#eaf8f2;border:1px solid rgba(29,154,108,.25)}.state-watch_only{color:var(--amber);background:#fff7e6;border:1px solid rgba(183,121,31,.25)}.state-no_action{color:var(--red);background:#fff1f0;border:1px solid rgba(194,65,61,.22)}.source-collapse{padding:16px}.source-collapse summary{font-weight:900;color:#334155}.source-collapse .table-scroll{margin-top:12px}
+.chain-node-expansion{display:grid;gap:12px;border:1px solid rgba(10,132,255,.18);border-radius:22px;background:linear-gradient(180deg,#fff,#f7fbff);padding:16px}.chain-node-expansion-head span{display:block;color:var(--blue);font-size:12px;font-weight:900;margin-bottom:4px}.chain-node-expansion-head h5{margin:0 0 8px;font-size:21px;line-height:1.3;color:#223047}.chain-node-expansion-head p{margin:0;color:#667085}.chain-node-stack{display:grid;gap:10px}.chain-node-detail{border:1px solid #dceafa;border-radius:18px;background:#fff;overflow:hidden}.chain-node-detail>summary{display:grid;grid-template-columns:auto 1fr auto auto;gap:12px;align-items:center;padding:14px 16px;list-style:none;cursor:pointer}.chain-node-detail>summary::-webkit-details-marker{display:none}.chain-node-detail[open]>summary{border-bottom:1px solid #edf3fb}.chain-node-index{display:inline-flex;width:36px;height:36px;border-radius:999px;align-items:center;justify-content:center;background:#eaf3ff;color:var(--blue);font-weight:900;font-size:12px}.chain-node-detail h6{margin:0 0 3px;color:#223047;font-size:17px}.chain-node-detail summary p{margin:0;color:#667085;font-size:13px}.chain-node-detail summary strong{border:1px solid rgba(10,132,255,.22);border-radius:999px;background:#f0f7ff;color:#0a66cc;padding:5px 9px;font-size:12px;white-space:nowrap}.chain-node-detail[open]>summary .chevron{transform:rotate(90deg)}.chain-node-body{display:grid;gap:12px;padding:14px 16px;background:#fbfdff}.chain-node-lens-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.chain-node-lens-grid article{border:1px solid #e8eef7;border-radius:15px;background:#fff;padding:12px}.chain-node-lens-grid b,.chain-node-conclusion b{display:block;color:#223047;margin-bottom:6px}.chain-node-lens-grid p,.chain-node-conclusion p{margin:0;color:#344054}.chain-node-conclusion{border:1px solid rgba(29,154,108,.22);border-radius:16px;background:#f3fbf7;padding:13px}
+.chain-metric-board{display:grid;gap:10px;border:1px solid rgba(10,132,255,.14);border-radius:18px;background:#f7fbff;padding:13px}.chain-metric-board-head{display:flex;justify-content:space-between;gap:12px;align-items:center}.chain-metric-board-head b{color:#223047}.chain-metric-board-head span{color:#667085;font-size:12px;font-weight:900}.chain-metric-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.chain-metric-card{display:grid;gap:10px;border:1px solid #dfeaf7;border-radius:16px;background:#fff;padding:13px}.chain-metric-card header span{display:block;color:var(--blue);font-size:11px;font-weight:900;margin-bottom:3px}.chain-metric-card header strong{display:block;color:#223047;font-size:15px;line-height:1.25}.chain-metric-card p{margin:0;color:#344054;font-size:13px}.chain-metric-card dl{display:grid;gap:7px;margin:0}.chain-metric-card dl div{border-top:1px solid #eef2f7;padding-top:7px}.chain-metric-card dt{color:#667085;font-size:11px;font-weight:900}.chain-metric-card dd{margin:2px 0 0;color:#344054;font-size:13px}.chain-metric-card footer{display:grid;gap:8px}.chain-metric-card em{font-style:normal;color:#7a5a00;background:#fff7dc;border:1px solid #f1dda6;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:900;width:max-content;max-width:100%}
+.historical-comparison{display:grid;gap:14px;border:1px solid rgba(10,132,255,.18);border-radius:20px;background:linear-gradient(180deg,#ffffff,#f7fbff);padding:16px}.history-head span{display:block;color:var(--blue);font-size:12px;font-weight:900;margin-bottom:4px}.history-head h5{margin:0 0 8px;font-size:20px;line-height:1.3;color:#223047}.history-head p{margin:0;color:#475467}.history-snapshot-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.history-metric-card{border:1px solid #e1eaf6;border-radius:16px;background:#fff;padding:14px}.history-metric-card>span{display:block;color:#667085;font-size:12px;font-weight:900}.history-metric-card strong{display:block;color:#0a84ff;font-size:25px;line-height:1.1;margin:6px 0}.history-metric-card p{margin:0 0 8px;color:#344054;font-size:13px}.history-bar-list{display:grid;gap:9px}.history-bar-row{display:grid;grid-template-columns:145px 1fr minmax(120px,auto);gap:10px;align-items:center}.history-bar-label b{display:block;color:#223047}.history-bar-label span{color:#667085;font-size:13px}.history-bar-track{height:14px;border-radius:999px;background:#e9f1fb;overflow:hidden}.history-bar-track i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#72b7ff,#0a84ff)}.history-table{min-width:1040px}
+.future-runway{display:grid;gap:14px;border:1px solid rgba(29,154,108,.20);border-radius:20px;background:linear-gradient(180deg,#ffffff,#f7fffb);padding:16px}.runway-head span{display:block;color:var(--green);font-size:12px;font-weight:900;margin-bottom:4px}.runway-head h5{margin:0 0 8px;font-size:20px;line-height:1.3;color:#223047}.runway-head p{margin:0;color:#475467}.runway-formula{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.runway-formula-card{border:1px solid #dcefe8;border-radius:16px;background:#fff;padding:14px}.runway-formula-card>span{display:inline-flex;width:28px;height:28px;border-radius:999px;align-items:center;justify-content:center;background:#eaf8f2;color:var(--green);font-weight:900;font-size:12px}.runway-formula-card h6{margin:10px 0 6px;color:#223047;font-size:15px}.runway-formula-card p{margin:0;color:#3d536d}.runway-table{min-width:1180px}.runway-timeline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.runway-timeline article{border:1px solid #dcefe8;border-radius:16px;background:#fff;padding:14px}.runway-timeline span{display:block;color:var(--green);font-size:12px;font-weight:900}.runway-timeline strong{display:block;margin:4px 0;color:#223047}.runway-timeline p{margin:0;color:#3d536d}.runway-verdict{border:1px solid rgba(29,154,108,.22);border-radius:16px;background:#f1fbf7;padding:14px}.runway-verdict b{display:block;color:#166f52;margin-bottom:6px}.runway-verdict p{margin:0;color:#2f3d52}
+.table-scroll.metric-choice-table{overflow-x:auto}.table-scroll.metric-choice-table table{min-width:max(760px,100%);width:max-content;table-layout:auto}.table-scroll.metric-choice-table th,.table-scroll.metric-choice-table td{white-space:normal;overflow-wrap:anywhere;word-break:break-word;line-height:1.55}.table-scroll.metric-choice-table th:first-child,.table-scroll.metric-choice-table td:first-child{width:28%}
+.industry-module-body,.bom-question-answer,.bom-question-stage-flow,.bom-step-body,.bom-logic-stage-stack,.bom-logic-stage-card,.bom-logic-stage-body,.bom-stage-subcard,.bom-stage-subcard-body,.bom-stage-history-content,.metric-history-group,.metric-data-table,.metric-trend-gap,.expectation-table-list,.expectation-table-group,.bom-expectation-card,.bom-stage-mechanism-grid,.qa-body,.qa-block{min-width:0;max-width:100%;box-sizing:border-box}.metric-data-table,.metric-trend-gap{overflow:visible}.metric-history-table{table-layout:auto}.metric-history-table td strong{white-space:nowrap}.metric-history-table th:nth-child(2),.metric-history-table td:nth-child(2){min-width:210px}.metric-history-table th:nth-child(3),.metric-history-table td:nth-child(3){min-width:120px}
+.bom-research-logic-rules{display:grid;gap:9px;margin-top:10px}.bom-research-logic-rules article{border-top:1px solid #e7eef8;padding-top:9px}.bom-research-logic-rules b{display:block;color:#223047;font-size:12px;margin-bottom:4px}.bom-research-logic-rules p{margin:0;color:#344054}.bom-step-research-logic .bom-logic-chain-table table{min-width:1180px}.bom-step-research-logic .bom-logic-chain-table th:nth-child(1){width:17%}.bom-step-research-logic .bom-logic-chain-table th:nth-child(2){width:25%}.bom-step-research-logic .bom-logic-chain-table th:nth-child(3){width:32%}.bom-step-research-logic .bom-logic-chain-table th:nth-child(4){width:26%}
+.bom-temporal-baseline{border:1px solid #dce9f8;border-radius:16px;background:#f7fbff;padding:13px;margin:0 0 14px}.bom-temporal-baseline b{display:block;color:#0a66cc;margin-bottom:4px}.bom-temporal-baseline p{margin:0;color:#475467}.bom-question-card>summary{grid-template-columns:auto minmax(0,1fr) auto auto}.bom-question-summary-meta{display:grid;gap:3px;justify-items:end}.bom-question-summary-meta i{font-style:normal;color:#0a66cc;font-size:11px;font-weight:900}.bom-question-summary-meta em{font-style:normal;color:#667085;font-size:11px;white-space:nowrap}.bom-question-temporal-flow{display:grid;gap:12px}.bom-temporal-card,.bom-question-current{border:1px solid #e2ebf6;border-radius:18px;background:#fff;overflow:hidden}.bom-temporal-card>summary{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:14px;list-style:none;cursor:pointer}.bom-temporal-card[open]>summary{border-bottom:1px solid #e2ebf6}.bom-temporal-card>summary>span:first-child,.bom-temporal-title>span{display:inline-flex;width:38px;height:26px;border-radius:999px;align-items:center;justify-content:center;background:#eef7ff;color:#0a66cc;font-size:11px;font-weight:900}.bom-temporal-card h5,.bom-temporal-title h5{margin:0;color:#223047;font-size:16px}.bom-temporal-body{display:grid;gap:12px;padding:14px}.bom-understanding-model,.bom-understanding-rule,.bom-logic-hint{border-bottom:1px solid #edf2f8;padding-bottom:10px}.bom-understanding-model b,.bom-current-support b,.bom-current-refute b,.bom-current-impact b{display:block;color:#223047;margin-bottom:5px}.bom-understanding-model p,.bom-understanding-rule p,.bom-logic-hint p,.bom-hint-boundary{margin:0;color:#475467}.bom-understanding-rule span,.bom-logic-hint span{display:block;color:#0a66cc;font-size:11px;font-weight:900;margin-bottom:4px}.bom-hint-boundary{border:1px dashed #bdd6f2;border-radius:12px;background:#f8fbff;padding:10px;font-size:12px}.bom-question-current{padding:14px;border-color:#cfe1f6;background:#fbfdff}.bom-temporal-title{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;margin-bottom:10px}.bom-temporal-title em{font-style:normal;color:#0a66cc;font-size:12px;font-weight:900}.bom-current-conclusion{margin:0 0 12px!important;color:#1d2939;font-size:16px;line-height:1.75}.bom-current-support,.bom-current-refute,.bom-current-impact{border-top:1px solid #e7eef8;padding-top:10px;margin-top:10px}.bom-current-support p,.bom-current-refute p,.bom-current-impact p{margin:0;color:#475467}.bom-baseline-message,.bom-empty-state,.bom-temporal-note{margin:0;color:#667085}.bom-baseline-message{border:1px solid #e2e8f0;border-radius:12px;background:#f8fafc;padding:10px}.bom-revision-table table,.bom-mapped-material-table table{min-width:1100px}.bom-material-timeline{display:grid;gap:0}.bom-material-timeline article{display:grid;grid-template-columns:100px minmax(0,1fr);gap:14px;padding:12px 0;border-top:1px solid #edf2f8}.bom-material-timeline article:first-child{border-top:0}.bom-material-timeline time{color:#667085;font-size:12px;font-weight:800}.bom-material-timeline b{display:block}.bom-material-timeline span{display:block;color:#667085;font-size:11px;margin:3px 0 5px}.bom-material-timeline p{margin:0;color:#475467}.bom-mapped-material-table td:nth-child(1){white-space:nowrap}.bom-mapped-material-table td:nth-child(2){min-width:190px}.bom-mapped-material-table td:nth-child(3){min-width:90px}.bom-mapped-material-table td:nth-child(5){min-width:360px}.bom-mapped-material-table td span{display:block;color:#667085;font-size:11px}.bom-coverage-status{border:1px solid #dce9f8;border-radius:14px;background:#f8fbff;padding:12px}.bom-coverage-status b{display:block;color:#0a66cc;margin-bottom:4px}.bom-coverage-status p{margin:0;color:#475467}.bom-coverage-list,.bom-coverage-direction{display:grid;gap:8px}.bom-coverage-list p,.bom-coverage-direction p{display:grid;grid-template-columns:1fr auto;gap:10px;margin:0;padding:10px 12px;border:1px solid #edf2f8;border-radius:12px;background:#fff}.bom-coverage-list span,.bom-coverage-direction span{color:#667085}.bom-coverage-list b,.bom-coverage-direction b{color:#223047}.bom-question-answer,.bom-question-temporal-flow,.bom-temporal-card,.bom-temporal-body,.bom-question-current{min-width:0;max-width:100%;box-sizing:border-box}
+.target-section{grid-template-columns:minmax(0,1fr);min-width:0;max-width:100%}.target-section>*{min-width:0;max-width:100%;box-sizing:border-box}
+@media(max-width:820px){.goal-grid,.constraint-grid,.chain-bridge-grid,.chain-layer-grid,.chain-company-list,.company-flow-grid,.chain-node-lens ul,.bom-node-brief,.chain-audit-body-grid,.logic-flow,.narrative-bottom,.history-snapshot-grid,.history-bar-row,.runway-formula,.runway-timeline,.chain-node-lens-grid,.chain-metric-grid,.bom-metric-rationale-list,.bom-future-grid,.bom-mechanism-grid,.bom-question-research-body,.bom-stage-evidence-grid{grid-template-columns:1fr}.chain-audit-head,.chain-audit-verdict,.demand-chain-title,.chain-node-detail>summary,.chain-metric-board-head{display:grid;grid-template-columns:1fr}.bom-index-card{grid-template-columns:auto minmax(0,1fr) auto}.bom-index-meta{grid-column:2;justify-items:start}.qa-card.level-2,.qa-card.level-3{margin-left:0}.qa-card summary{grid-template-columns:auto 1fr auto}.qa-count{display:none}}
+@media(max-width:820px){.bom-model-grid,.bom-question-conclusion-grid,.bom-target-impact-grid{grid-template-columns:1fr}}
+@media(max-width:820px){.bom-question-card>summary{grid-template-columns:auto minmax(0,1fr) auto}.bom-question-summary-meta{grid-column:2;grid-row:2;justify-items:start}.bom-question-card>summary>.chevron{grid-column:3;grid-row:1 / span 2}.target-section{width:100%}}
+</style>
+</head>
+<body data-report-scope="bom-node" data-bom-node-id="network">
+  <header class="hero bom-node-hero">
+    <div class="hero-inner">
+      <a class="project-back-link" href="../../professional_report.html">← 返回 AI 工厂产业总览</a>
+      <p class="eyebrow">Historical Backtest · BOM Node · 2026-03-28</p>
+      <h1>高速连接与 AI 网络</h1>
+      <p class="hero-subtitle">独立验证该 BOM 节点的需求、供给、控制者、财务兑现、市场定价与反证。研究逻辑沿用统一六问，但证据和结论只属于当前节点。</p>
+      <div class="hero-meta"><span>研究截面 2026-03-28</span><span>节点 network</span><span>可独立刷新与存档</span></div>
+    </div>
+  </header>
+  <nav class="top-nav">
+    <a href="#goal">当前研究的问题</a>
+    <a href="#overview">行业概况</a>
+    <a href="#targets">标的推荐</a>
+    <a href="#sources">来源索引</a>
+  </nav>
+  <main>
+    <section id="goal" class="section"><div class="section-heading"><h2>当前研究的问题</h2></div><div class="goal-card bom-goal-card">
+    <div class="goal-main">研究目标：判断 高速连接与 AI 网络 是否处在可投资的 S 曲线阶段，并识别结论成立所需的证据与反证。</div>
+    <div class="bom-node-brief">
+      <article><span>接受</span><p>机柜级带宽、延迟、功耗、平台兼容性和客户导入需求。</p></article>
+      <article><span>生产</span><p>retimer、AEC、optical interconnect、switch silicon、Ethernet/InfiniBand 网络。</p></article>
+      <article><span>提供给</span><p>AI server、rack-scale 系统、云厂商集群。</p></article>
+      <article><span>验证指标</span><p>revenue growth、design win、800G/1.6T ramp、customer concentration、gross margin。</p></article>
+    </div>
+  </div></section>
+    <section id="overview" class="section"><div class="section-heading"><h2>行业概况</h2></div><div class="industry-overview-section bom-node-overview"><details id="bom-network" class="industry-module bom-research-module" open>
+    <summary class="module-head"><span class="module-index">01</span><div><h3>高速连接与 AI 网络</h3><p>把单台服务器、机柜和集群连成可训练/可推理的系统。</p></div><span class="chevron">›</span></summary>
+    <div class="industry-module-body">
+      <div class="bom-node-brief">
+        <article><span>接受</span><p>机柜级带宽、延迟、功耗、平台兼容性和客户导入需求。</p></article>
+        <article><span>生产</span><p>retimer、AEC、optical interconnect、switch silicon、Ethernet/InfiniBand 网络。</p></article>
+        <article><span>提供给</span><p>AI server、rack-scale 系统、云厂商集群。</p></article>
+        <article><span>验证指标</span><p>revenue growth、design win、800G/1.6T ramp、customer concentration、gross margin。</p></article>
+      </div>
+
+      <div class="bom-temporal-baseline"><b>双轴研究账本</b><p>六问提供稳定的逻辑坐标；材料按市场可见时间进入账本。当前为 2026-03-28 基线快照，后续更新只追加材料与真实结论修正，不覆盖历史。</p></div>
+      <div class="bom-question-list"><details class="bom-question-card">
+    <summary><span class="bom-question-index">1</span><strong>当前 BOM 的需求是否会被 S 曲线放大拉动？</strong><span class="bom-question-summary-meta"><i>待验证</i><em>最近材料 2025-07-15</em></span><span class="chevron">›</span></summary>
+    <div class="bom-question-answer">
+      <section class="bom-question-temporal-flow">
+    <details class="bom-temporal-card bom-question-understanding">
+      <summary><span>01</span><h5>基本理解思路</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <div class="bom-understanding-model"><b>S 曲线传导与弹性模型</b><p>判断终端 AI 需求是否真实传导到当前 BOM，并且是否具备大于终端需求的弹性。</p></div>
+        <div class="bom-understanding-rule"><span>大致判断公式</span><p>可投资需求 = 真实工作负载增长 × 客户预算/订单兑现 × 高速连接与 AI 网络 直接拉动 × 单位用量或单位价值量弹性。</p></div>
+        
+        <p class="bom-hint-boundary">这只是帮助理解的初始思路，不是材料准入清单。新材料发现的变量、观点和反证可以直接映射到本问。</p>
+      </div>
+    </details>
+    <section class="bom-question-current">
+      <div class="bom-temporal-title"><span>02</span><h5>当前结论</h5><em>待验证</em></div>
+      <p class="bom-current-conclusion">rack-scale 与 cluster-scale AI 提高东西向流量，拉动 retimer、AEC、switch、NIC、光模块和 PAM4 DSP；每 GPU 或每机柜的网络端口、光模块、DSP 和板级连接组件用量随 800G/1.6T 迁移上升，因此网络节点可能具备更高单位弹性。</p>
+      <div class="bom-current-support"><b>支持机制</b><p>需求可持续的第一性原理是：AI 工作负载、用户任务、上下文长度、多模态和 agent 步数提高总计算/基础设施需求，并通过客户预算进入 高速连接与 AI 网络。</p></div>
+      <div class="bom-current-refute"><b>最大反证</b><p>若 AI 应用 ROI 不足、模型效率提升快于工作负载增长、客户 capex 下修或订单取消，需求趋势就不可持续。</p></div>
+      <div class="bom-current-impact"><b>对标的的影响</b><p>本问决定 高速连接与 AI 网络 相关标的是否有足够大的收入天花板和增长斜率。若需求链条不能从工作负载穿透到订单、收入和 BOM 弹性，即使公司质量好，也只能保留观察；若需求强成立，后续才值得继续评估供给稀缺、控制者和定价。</p></div>
+      <div class="bom-question-sources"><a class="source-chip" href="https://newsletter.semianalysis.com/p/nvidias-optical-boogeyman-nvl72-infiniband" target="_blank" rel="noopener">SRC-SA-OPTICAL-2024</a><a class="source-chip" href="https://www.lightcounting.com/newsletter/en/january-2025-optics-for-ai-clusters-319" target="_blank" rel="noopener">SRC-LC-AI-OPTICS-202501</a><a class="source-chip" href="https://www.prnewswire.com/news-releases/ethernet-is-winning-the-war-against-infiniband-in-ai-back-end-networks-according-to-delloro-group-302501890.html" target="_blank" rel="noopener">SRC-DO-AI-NETWORKS-20250715</a></div>
+    </section>
+    <details class="bom-temporal-card bom-question-change">
+      <summary><span>03</span><h5>相较上一截面的变化</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <p class="bom-baseline-message">这是时间账本的基线快照；此前未保存结构化研究快照，不反向编造历史结论。</p>
+        <div class="table-scroll bom-revision-table"><table>
+    <thead><tr><th>记录时间</th><th>类型</th><th>原判断</th><th>当前判断</th><th>变化说明</th></tr></thead>
+    <tbody><tr>
+      <td>2026-03-28</td>
+      <td>基线</td>
+      <td>无历史快照</td>
+      <td>rack-scale 与 cluster-scale AI 提高东西向流量，拉动 retimer、AEC、switch、NIC、光模块和 PAM4 DSP；每 GPU 或每机柜的网络端口、光模块、DSP 和板级连接组件用量随 800G/1.6T 迁移上升，因此网络节点可能具备更高单位弹性。</td>
+      <td>这是时间账本的基线快照；此前未保存结构化研究快照，不反向编造历史结论。</td>
+    </tr></tbody>
+  </table></div>
+      </div>
+    </details>
+    <details class="bom-temporal-card bom-question-timeline">
+      <summary><span>04</span><h5>时间演化</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <p class="bom-temporal-note">按材料首次对市场可见的时间排列。材料出现不等于研究结论自动改变；结论修正只记录真实快照差异。</p>
+        <div class="bom-material-timeline"><article>
+    <time>2024-03-25</time>
+    <div><b><a href="https://newsletter.semianalysis.com/p/nvidias-optical-boogeyman-nvl72-infiniband" target="_blank" rel="noreferrer">SemiAnalysis Nvidia Optical Boogeyman NVL72 Infiniband Scale Out 800G and 1.6T Ramp</a></b><span>事实 · 支持</span><p>rack-scale 与 cluster-scale AI 提高东西向流量，拉动 retimer、AEC、switch、NIC、光模块和 PAM4 DSP；每 GPU 或每机柜的网络端口、光模块、DSP 和板级连接组件用量随 800G/1.6T 迁移上升，因此网络节点可能具备更高单位弹性。</p></div>
+  </article><article>
+    <time>2025-01-01</time>
+    <div><b><a href="https://www.lightcounting.com/newsletter/en/january-2025-optics-for-ai-clusters-319" target="_blank" rel="noreferrer">LightCounting Optics for AI Clusters</a></b><span>事实 · 支持</span><p>rack-scale 与 cluster-scale AI 提高东西向流量，拉动 retimer、AEC、switch、NIC、光模块和 PAM4 DSP；每 GPU 或每机柜的网络端口、光模块、DSP 和板级连接组件用量随 800G/1.6T 迁移上升，因此网络节点可能具备更高单位弹性。</p></div>
+  </article><article>
+    <time>2025-07-15</time>
+    <div><b><a href="https://www.prnewswire.com/news-releases/ethernet-is-winning-the-war-against-infiniband-in-ai-back-end-networks-according-to-delloro-group-302501890.html" target="_blank" rel="noreferrer">Dell&#39;Oro Group Ethernet AI Backend Network Forecast</a></b><span>事实 · 支持</span><p>rack-scale 与 cluster-scale AI 提高东西向流量，拉动 retimer、AEC、switch、NIC、光模块和 PAM4 DSP；每 GPU 或每机柜的网络端口、光模块、DSP 和板级连接组件用量随 800G/1.6T 迁移上升，因此网络节点可能具备更高单位弹性。</p></div>
+  </article></div>
+      </div>
+    </details>
+    <details class="bom-temporal-card bom-question-materials">
+      <summary><span>05</span><h5>映射材料</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <div class="table-scroll bom-mapped-material-table"><table>
+    <thead><tr><th>发布时间</th><th>材料</th><th>类型 / 立场</th><th>主题</th><th>提取观点或数据</th><th>实际期间</th><th>预测期间</th></tr></thead>
+    <tbody><tr>
+      <td>2025-07-15</td>
+      <td><a href="https://www.prnewswire.com/news-releases/ethernet-is-winning-the-war-against-infiniband-in-ai-back-end-networks-according-to-delloro-group-302501890.html" target="_blank" rel="noreferrer">Dell&#39;Oro Group Ethernet AI Backend Network Forecast</a></td>
+      <td><b>事实</b><span>支持</span></td>
+      <td>材料发现</td>
+      <td>rack-scale 与 cluster-scale AI 提高东西向流量，拉动 retimer、AEC、switch、NIC、光模块和 PAM4 DSP；每 GPU 或每机柜的网络端口、光模块、DSP 和板级连接组件用量随 800G/1.6T 迁移上升，因此网络节点可能具备更高单位弹性。</td>
+      <td>未结构化</td>
+      <td>不适用 / 未结构化</td>
+    </tr><tr>
+      <td>2025-01-01</td>
+      <td><a href="https://www.lightcounting.com/newsletter/en/january-2025-optics-for-ai-clusters-319" target="_blank" rel="noreferrer">LightCounting Optics for AI Clusters</a></td>
+      <td><b>事实</b><span>支持</span></td>
+      <td>材料发现</td>
+      <td>rack-scale 与 cluster-scale AI 提高东西向流量，拉动 retimer、AEC、switch、NIC、光模块和 PAM4 DSP；每 GPU 或每机柜的网络端口、光模块、DSP 和板级连接组件用量随 800G/1.6T 迁移上升，因此网络节点可能具备更高单位弹性。</td>
+      <td>未结构化</td>
+      <td>不适用 / 未结构化</td>
+    </tr><tr>
+      <td>2024-03-25</td>
+      <td><a href="https://newsletter.semianalysis.com/p/nvidias-optical-boogeyman-nvl72-infiniband" target="_blank" rel="noreferrer">SemiAnalysis Nvidia Optical Boogeyman NVL72 Infiniband Scale Out 800G and 1.6T Ramp</a></td>
+      <td><b>事实</b><span>支持</span></td>
+      <td>材料发现</td>
+      <td>rack-scale 与 cluster-scale AI 提高东西向流量，拉动 retimer、AEC、switch、NIC、光模块和 PAM4 DSP；每 GPU 或每机柜的网络端口、光模块、DSP 和板级连接组件用量随 800G/1.6T 迁移上升，因此网络节点可能具备更高单位弹性。</td>
+      <td>未结构化</td>
+      <td>不适用 / 未结构化</td>
+    </tr></tbody>
+  </table></div>
+      </div>
+    </details>
+    <details class="bom-temporal-card bom-question-coverage">
+      <summary><span>06</span><h5>信息覆盖</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <div class="bom-coverage-status"><b>单向覆盖，缺反证</b><p>覆盖期间：2024-03-25 至 2025-07-15；当前快照：基线，无上一截面</p></div>
+  <div class="bom-coverage-list"><p><span>事实</span><b>3</b></p><p><span>预测</span><b>0</b></p><p><span>观点</span><b>0</b></p><p><span>消息</span><b>0</b></p><p><span>估值</span><b>0</b></p><p><span>反证</span><b>0</b></p></div>
+  <div class="bom-coverage-direction"><p><span>支持材料</span><b>3</b></p><p><span>反向材料</span><b>0</b></p></div>
+      </div>
+    </details>
+  </section>
+    </div>
+  </details><details class="bom-question-card">
+    <summary><span class="bom-question-index">2</span><strong>供给能否跟上？</strong><span class="bom-question-summary-meta"><i>待验证</i><em>最近材料 2026-02-26</em></span><span class="chevron">›</span></summary>
+    <div class="bom-question-answer">
+      <section class="bom-question-temporal-flow">
+    <details class="bom-temporal-card bom-question-understanding">
+      <summary><span>01</span><h5>基本理解思路</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <div class="bom-understanding-model"><b>产能 / 良率 / 周期 / 认证模型</b><p>判断有效供给释放速度是否慢于需求斜率。</p></div>
+        <div class="bom-understanding-rule"><span>大致判断公式</span><p>有效供给 = 名义产能 × 良率 × 客户认证 × 设备/材料可得性 × 交付周期；若有效供给斜率低于需求斜率，高速连接与 AI 网络 才具备稀缺性。</p></div>
+        
+        <p class="bom-hint-boundary">这只是帮助理解的初始思路，不是材料准入清单。新材料发现的变量、观点和反证可以直接映射到本问。</p>
+      </div>
+    </details>
+    <section class="bom-question-current">
+      <div class="bom-temporal-title"><span>02</span><h5>当前结论</h5><em>待验证</em></div>
+      <p class="bom-current-conclusion">约束来自客户设计导入、平台认证、低功耗/低延迟指标、信号完整性和批量可靠性。</p>
+      <div class="bom-current-support"><b>支持机制</b><p>供给约束可持续来自产能、良率、认证、交期、工程交付和客户锁定慢于需求斜率。</p></div>
+      <div class="bom-current-refute"><b>最大反证</b><p>若扩产、良率、替代供应商和客户认证同步释放，短缺会转为价格和毛利压力。</p></div>
+      <div class="bom-current-impact"><b>对标的的影响</b><p>本问决定 高速连接与 AI 网络 是否具备 chokepoint 属性。供给跟不上时，控制有效产能和认证资源的公司才可能获得价格、毛利和 backlog 弹性；如果供给快速释放，标的推荐应从“稀缺溢价”降为“行业 beta”。</p></div>
+      <div class="bom-question-sources"><a class="source-chip" href="https://newsletter.semianalysis.com/p/nvidias-optical-boogeyman-nvl72-infiniband" target="_blank" rel="noopener">SRC-SA-OPTICAL-2024</a><a class="source-chip" href="https://www.lightcounting.com/newsletter/en/ai-capex-flows-down-the-supply-chain-to-dsp-vendors-332" target="_blank" rel="noopener">SRC-LC-PAM4-DSP-20260226</a></div>
+    </section>
+    <details class="bom-temporal-card bom-question-change">
+      <summary><span>03</span><h5>相较上一截面的变化</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <p class="bom-baseline-message">这是时间账本的基线快照；此前未保存结构化研究快照，不反向编造历史结论。</p>
+        <div class="table-scroll bom-revision-table"><table>
+    <thead><tr><th>记录时间</th><th>类型</th><th>原判断</th><th>当前判断</th><th>变化说明</th></tr></thead>
+    <tbody><tr>
+      <td>2026-03-28</td>
+      <td>基线</td>
+      <td>无历史快照</td>
+      <td>约束来自客户设计导入、平台认证、低功耗/低延迟指标、信号完整性和批量可靠性。</td>
+      <td>这是时间账本的基线快照；此前未保存结构化研究快照，不反向编造历史结论。</td>
+    </tr></tbody>
+  </table></div>
+      </div>
+    </details>
+    <details class="bom-temporal-card bom-question-timeline">
+      <summary><span>04</span><h5>时间演化</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <p class="bom-temporal-note">按材料首次对市场可见的时间排列。材料出现不等于研究结论自动改变；结论修正只记录真实快照差异。</p>
+        <div class="bom-material-timeline"><article>
+    <time>2024-03-25</time>
+    <div><b><a href="https://newsletter.semianalysis.com/p/nvidias-optical-boogeyman-nvl72-infiniband" target="_blank" rel="noreferrer">SemiAnalysis Nvidia Optical Boogeyman NVL72 Infiniband Scale Out 800G and 1.6T Ramp</a></b><span>事实 · 支持</span><p>约束来自客户设计导入、平台认证、低功耗/低延迟指标、信号完整性和批量可靠性。</p></div>
+  </article><article>
+    <time>2026-02-26</time>
+    <div><b><a href="https://www.lightcounting.com/newsletter/en/ai-capex-flows-down-the-supply-chain-to-dsp-vendors-332" target="_blank" rel="noreferrer">LightCounting AI Capex Flows Down the Supply Chain to DSP Vendors</a></b><span>事实 · 支持</span><p>约束来自客户设计导入、平台认证、低功耗/低延迟指标、信号完整性和批量可靠性。</p></div>
+  </article></div>
+      </div>
+    </details>
+    <details class="bom-temporal-card bom-question-materials">
+      <summary><span>05</span><h5>映射材料</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <div class="table-scroll bom-mapped-material-table"><table>
+    <thead><tr><th>发布时间</th><th>材料</th><th>类型 / 立场</th><th>主题</th><th>提取观点或数据</th><th>实际期间</th><th>预测期间</th></tr></thead>
+    <tbody><tr>
+      <td>2026-02-26</td>
+      <td><a href="https://www.lightcounting.com/newsletter/en/ai-capex-flows-down-the-supply-chain-to-dsp-vendors-332" target="_blank" rel="noreferrer">LightCounting AI Capex Flows Down the Supply Chain to DSP Vendors</a></td>
+      <td><b>事实</b><span>支持</span></td>
+      <td>材料发现</td>
+      <td>约束来自客户设计导入、平台认证、低功耗/低延迟指标、信号完整性和批量可靠性。</td>
+      <td>未结构化</td>
+      <td>不适用 / 未结构化</td>
+    </tr><tr>
+      <td>2024-03-25</td>
+      <td><a href="https://newsletter.semianalysis.com/p/nvidias-optical-boogeyman-nvl72-infiniband" target="_blank" rel="noreferrer">SemiAnalysis Nvidia Optical Boogeyman NVL72 Infiniband Scale Out 800G and 1.6T Ramp</a></td>
+      <td><b>事实</b><span>支持</span></td>
+      <td>材料发现</td>
+      <td>约束来自客户设计导入、平台认证、低功耗/低延迟指标、信号完整性和批量可靠性。</td>
+      <td>未结构化</td>
+      <td>不适用 / 未结构化</td>
+    </tr></tbody>
+  </table></div>
+      </div>
+    </details>
+    <details class="bom-temporal-card bom-question-coverage">
+      <summary><span>06</span><h5>信息覆盖</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <div class="bom-coverage-status"><b>单向覆盖，缺反证</b><p>覆盖期间：2024-03-25 至 2026-02-26；当前快照：基线，无上一截面</p></div>
+  <div class="bom-coverage-list"><p><span>事实</span><b>2</b></p><p><span>预测</span><b>0</b></p><p><span>观点</span><b>0</b></p><p><span>消息</span><b>0</b></p><p><span>估值</span><b>0</b></p><p><span>反证</span><b>0</b></p></div>
+  <div class="bom-coverage-direction"><p><span>支持材料</span><b>2</b></p><p><span>反向材料</span><b>0</b></p></div>
+      </div>
+    </details>
+  </section>
+    </div>
+  </details><details class="bom-question-card">
+    <summary><span class="bom-question-index">3</span><strong>谁控制供给？</strong><span class="bom-question-summary-meta"><i>待验证</i><em>最近材料 2026-03-02</em></span><span class="chevron">›</span></summary>
+    <div class="bom-question-answer">
+      <section class="bom-question-temporal-flow">
+    <details class="bom-temporal-card bom-question-understanding">
+      <summary><span>01</span><h5>基本理解思路</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <div class="bom-understanding-model"><b>份额 / 壁垒 / 替代 / 客户锁定模型</b><p>判断稀缺供给是否被少数公司控制，并能转成利润池。</p></div>
+        <div class="bom-understanding-rule"><span>大致判断公式</span><p>控制权 = 份额集中度 + 资格/认证壁垒 + 技术/IP/生态壁垒 + 客户锁定 - 替代与多供速度。</p></div>
+        
+        <p class="bom-hint-boundary">这只是帮助理解的初始思路，不是材料准入清单。新材料发现的变量、观点和反证可以直接映射到本问。</p>
+      </div>
+    </details>
+    <section class="bom-question-current">
+      <div class="bom-temporal-title"><span>02</span><h5>当前结论</h5><em>待验证</em></div>
+      <p class="bom-current-conclusion">Astera、Credo、Marvell、Broadcom、Arista 和 NVIDIA networking 控制不同子环节。</p>
+      <div class="bom-current-support"><b>支持机制</b><p>控制权可持续来自技术门槛、生态锁定、客户资格、长期协议、规模经验和不可替代交付能力。</p></div>
+      <div class="bom-current-refute"><b>最大反证</b><p>若客户多供应商策略成功、替代技术成熟、标准化降低切换成本，控制权就会被稀释。</p></div>
+      <div class="bom-current-impact"><b>对标的的影响</b><p>本问决定推荐应落到哪些具体公司。只有能控制合格供给、客户资格、生态或交付能力的公司，才可能把 高速连接与 AI 网络 的需求增长转成超额利润；份额分散或替代加速时，不应把整个节点的增长平均分配给所有玩家。</p></div>
+      <div class="bom-question-sources"><a class="source-chip" href="https://investor.marvell.com/sec-filings/all-sec-filings/content/0001835632-25-000197/mrvl-20251101.htm" target="_blank" rel="noopener">SRC-MRVL-FY26-Q3</a><a class="source-chip" href="https://www.sec.gov/Archives/edgar/data/1736297/000173629726000005/q425exhibit991.htm" target="_blank" rel="noopener">SRC-ALAB-Q4-2025</a><a class="source-chip" href="https://investors.arista.com/Communications/Press-Releases-and-Events/Press-Release-Detail/2026/Arista-Networks-Inc--Reports-Fourth-Quarter-and-Year-End-2025-Financial-Results/default.aspx" target="_blank" rel="noopener">SRC-ANET-Q4-2025</a><a class="source-chip" href="https://www.sec.gov/Archives/edgar/data/1807794/000162828026013205/credoq32026ex-9911.htm" target="_blank" rel="noopener">SRC-CRDO-FY26-Q3</a></div>
+    </section>
+    <details class="bom-temporal-card bom-question-change">
+      <summary><span>03</span><h5>相较上一截面的变化</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <p class="bom-baseline-message">这是时间账本的基线快照；此前未保存结构化研究快照，不反向编造历史结论。</p>
+        <div class="table-scroll bom-revision-table"><table>
+    <thead><tr><th>记录时间</th><th>类型</th><th>原判断</th><th>当前判断</th><th>变化说明</th></tr></thead>
+    <tbody><tr>
+      <td>2026-03-28</td>
+      <td>基线</td>
+      <td>无历史快照</td>
+      <td>Astera、Credo、Marvell、Broadcom、Arista 和 NVIDIA networking 控制不同子环节。</td>
+      <td>这是时间账本的基线快照；此前未保存结构化研究快照，不反向编造历史结论。</td>
+    </tr></tbody>
+  </table></div>
+      </div>
+    </details>
+    <details class="bom-temporal-card bom-question-timeline">
+      <summary><span>04</span><h5>时间演化</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <p class="bom-temporal-note">按材料首次对市场可见的时间排列。材料出现不等于研究结论自动改变；结论修正只记录真实快照差异。</p>
+        <div class="bom-material-timeline"><article>
+    <time>2025-12-03</time>
+    <div><b><a href="https://investor.marvell.com/sec-filings/all-sec-filings/content/0001835632-25-000197/mrvl-20251101.htm" target="_blank" rel="noreferrer">Marvell FY2026 Q3 10-Q</a></b><span>事实 · 支持</span><p>Astera、Credo、Marvell、Broadcom、Arista 和 NVIDIA networking 控制不同子环节。</p></div>
+  </article><article>
+    <time>2026-02-10</time>
+    <div><b><a href="https://www.sec.gov/Archives/edgar/data/1736297/000173629726000005/q425exhibit991.htm" target="_blank" rel="noreferrer">Astera Labs Q4 2025 results</a></b><span>事实 · 支持</span><p>Astera、Credo、Marvell、Broadcom、Arista 和 NVIDIA networking 控制不同子环节。</p></div>
+  </article><article>
+    <time>2026-02-12</time>
+    <div><b><a href="https://investors.arista.com/Communications/Press-Releases-and-Events/Press-Release-Detail/2026/Arista-Networks-Inc--Reports-Fourth-Quarter-and-Year-End-2025-Financial-Results/default.aspx" target="_blank" rel="noreferrer">Arista Q4 2025 results</a></b><span>事实 · 支持</span><p>Astera、Credo、Marvell、Broadcom、Arista 和 NVIDIA networking 控制不同子环节。</p></div>
+  </article><article>
+    <time>2026-03-02</time>
+    <div><b><a href="https://www.sec.gov/Archives/edgar/data/1807794/000162828026013205/credoq32026ex-9911.htm" target="_blank" rel="noreferrer">Credo FY2026 Q3 results</a></b><span>事实 · 支持</span><p>Astera、Credo、Marvell、Broadcom、Arista 和 NVIDIA networking 控制不同子环节。</p></div>
+  </article></div>
+      </div>
+    </details>
+    <details class="bom-temporal-card bom-question-materials">
+      <summary><span>05</span><h5>映射材料</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <div class="table-scroll bom-mapped-material-table"><table>
+    <thead><tr><th>发布时间</th><th>材料</th><th>类型 / 立场</th><th>主题</th><th>提取观点或数据</th><th>实际期间</th><th>预测期间</th></tr></thead>
+    <tbody><tr>
+      <td>2026-03-02</td>
+      <td><a href="https://www.sec.gov/Archives/edgar/data/1807794/000162828026013205/credoq32026ex-9911.htm" target="_blank" rel="noreferrer">Credo FY2026 Q3 results</a></td>
+      <td><b>事实</b><span>支持</span></td>
+      <td>材料发现</td>
+      <td>Astera、Credo、Marvell、Broadcom、Arista 和 NVIDIA networking 控制不同子环节。</td>
+      <td>未结构化</td>
+      <td>不适用 / 未结构化</td>
+    </tr><tr>
+      <td>2026-02-12</td>
+      <td><a href="https://investors.arista.com/Communications/Press-Releases-and-Events/Press-Release-Detail/2026/Arista-Networks-Inc--Reports-Fourth-Quarter-and-Year-End-2025-Financial-Results/default.aspx" target="_blank" rel="noreferrer">Arista Q4 2025 results</a></td>
+      <td><b>事实</b><span>支持</span></td>
+      <td>材料发现</td>
+      <td>Astera、Credo、Marvell、Broadcom、Arista 和 NVIDIA networking 控制不同子环节。</td>
+      <td>未结构化</td>
+      <td>不适用 / 未结构化</td>
+    </tr><tr>
+      <td>2026-02-10</td>
+      <td><a href="https://www.sec.gov/Archives/edgar/data/1736297/000173629726000005/q425exhibit991.htm" target="_blank" rel="noreferrer">Astera Labs Q4 2025 results</a></td>
+      <td><b>事实</b><span>支持</span></td>
+      <td>材料发现</td>
+      <td>Astera、Credo、Marvell、Broadcom、Arista 和 NVIDIA networking 控制不同子环节。</td>
+      <td>未结构化</td>
+      <td>不适用 / 未结构化</td>
+    </tr><tr>
+      <td>2025-12-03</td>
+      <td><a href="https://investor.marvell.com/sec-filings/all-sec-filings/content/0001835632-25-000197/mrvl-20251101.htm" target="_blank" rel="noreferrer">Marvell FY2026 Q3 10-Q</a></td>
+      <td><b>事实</b><span>支持</span></td>
+      <td>材料发现</td>
+      <td>Astera、Credo、Marvell、Broadcom、Arista 和 NVIDIA networking 控制不同子环节。</td>
+      <td>未结构化</td>
+      <td>不适用 / 未结构化</td>
+    </tr></tbody>
+  </table></div>
+      </div>
+    </details>
+    <details class="bom-temporal-card bom-question-coverage">
+      <summary><span>06</span><h5>信息覆盖</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <div class="bom-coverage-status"><b>单向覆盖，缺反证</b><p>覆盖期间：2025-12-03 至 2026-03-02；当前快照：基线，无上一截面</p></div>
+  <div class="bom-coverage-list"><p><span>事实</span><b>4</b></p><p><span>预测</span><b>0</b></p><p><span>观点</span><b>0</b></p><p><span>消息</span><b>0</b></p><p><span>估值</span><b>0</b></p><p><span>反证</span><b>0</b></p></div>
+  <div class="bom-coverage-direction"><p><span>支持材料</span><b>4</b></p><p><span>反向材料</span><b>0</b></p></div>
+      </div>
+    </details>
+  </section>
+    </div>
+  </details><details class="bom-question-card">
+    <summary><span class="bom-question-index">4</span><strong>是否已经财务兑现？</strong><span class="bom-question-summary-meta"><i>待验证</i><em>最近材料 2026-03-02</em></span><span class="chevron">›</span></summary>
+    <div class="bom-question-answer">
+      <section class="bom-question-temporal-flow">
+    <details class="bom-temporal-card bom-question-understanding">
+      <summary><span>01</span><h5>基本理解思路</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <div class="bom-understanding-model"><b>收入 / 毛利 / backlog / 现金流模型</b><p>判断产业逻辑是否已经进入公司财务，而不是停留在叙事或订单新闻。</p></div>
+        <div class="bom-understanding-rule"><span>大致判断公式</span><p>财务兑现 = 收入增长 + backlog/RPO 可见度 + 毛利/ASP 改善 + 经营现金流质量 - 库存/应收/取消风险。</p></div>
+        
+        <p class="bom-hint-boundary">这只是帮助理解的初始思路，不是材料准入清单。新材料发现的变量、观点和反证可以直接映射到本问。</p>
+      </div>
+    </details>
+    <section class="bom-question-current">
+      <div class="bom-temporal-title"><span>02</span><h5>当前结论</h5><em>待验证</em></div>
+      <p class="bom-current-conclusion">ALAB、CRDO、MRVL、Arista 等公司收入已体现 AI networking / connectivity 需求。</p>
+      <div class="bom-current-support"><b>支持机制</b><p>财务兑现可持续需要 高速连接与 AI 网络 的收入、订单、backlog、毛利率和现金流沿同一方向改善。</p></div>
+      <div class="bom-current-refute"><b>最大反证</b><p>若收入增长依赖低毛利订单、应收/库存上升或 backlog 转收入变慢，财务兑现质量会下降。</p></div>
+      <div class="bom-current-impact"><b>对标的的影响</b><p>本问决定标的确定性。收入、毛利、backlog 和现金流已经兑现的公司可进入更高置信候选；只有订单新闻、没有利润和现金兑现的公司，需要降低推荐强度并提高监控频率。</p></div>
+      <div class="bom-question-sources"><a class="source-chip" href="https://investor.marvell.com/sec-filings/all-sec-filings/content/0001835632-25-000197/mrvl-20251101.htm" target="_blank" rel="noopener">SRC-MRVL-FY26-Q3</a><a class="source-chip" href="https://www.sec.gov/Archives/edgar/data/1736297/000173629726000005/q425exhibit991.htm" target="_blank" rel="noopener">SRC-ALAB-Q4-2025</a><a class="source-chip" href="https://investors.arista.com/Communications/Press-Releases-and-Events/Press-Release-Detail/2026/Arista-Networks-Inc--Reports-Fourth-Quarter-and-Year-End-2025-Financial-Results/default.aspx" target="_blank" rel="noopener">SRC-ANET-Q4-2025</a><a class="source-chip" href="https://www.sec.gov/Archives/edgar/data/1807794/000162828026013205/credoq32026ex-9911.htm" target="_blank" rel="noopener">SRC-CRDO-FY26-Q3</a></div>
+    </section>
+    <details class="bom-temporal-card bom-question-change">
+      <summary><span>03</span><h5>相较上一截面的变化</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <p class="bom-baseline-message">这是时间账本的基线快照；此前未保存结构化研究快照，不反向编造历史结论。</p>
+        <div class="table-scroll bom-revision-table"><table>
+    <thead><tr><th>记录时间</th><th>类型</th><th>原判断</th><th>当前判断</th><th>变化说明</th></tr></thead>
+    <tbody><tr>
+      <td>2026-03-28</td>
+      <td>基线</td>
+      <td>无历史快照</td>
+      <td>ALAB、CRDO、MRVL、Arista 等公司收入已体现 AI networking / connectivity 需求。</td>
+      <td>这是时间账本的基线快照；此前未保存结构化研究快照，不反向编造历史结论。</td>
+    </tr></tbody>
+  </table></div>
+      </div>
+    </details>
+    <details class="bom-temporal-card bom-question-timeline">
+      <summary><span>04</span><h5>时间演化</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <p class="bom-temporal-note">按材料首次对市场可见的时间排列。材料出现不等于研究结论自动改变；结论修正只记录真实快照差异。</p>
+        <div class="bom-material-timeline"><article>
+    <time>2025-12-03</time>
+    <div><b><a href="https://investor.marvell.com/sec-filings/all-sec-filings/content/0001835632-25-000197/mrvl-20251101.htm" target="_blank" rel="noreferrer">Marvell FY2026 Q3 10-Q</a></b><span>事实 · 支持</span><p>ALAB、CRDO、MRVL、Arista 等公司收入已体现 AI networking / connectivity 需求。</p></div>
+  </article><article>
+    <time>2026-02-10</time>
+    <div><b><a href="https://www.sec.gov/Archives/edgar/data/1736297/000173629726000005/q425exhibit991.htm" target="_blank" rel="noreferrer">Astera Labs Q4 2025 results</a></b><span>事实 · 支持</span><p>ALAB、CRDO、MRVL、Arista 等公司收入已体现 AI networking / connectivity 需求。</p></div>
+  </article><article>
+    <time>2026-02-12</time>
+    <div><b><a href="https://investors.arista.com/Communications/Press-Releases-and-Events/Press-Release-Detail/2026/Arista-Networks-Inc--Reports-Fourth-Quarter-and-Year-End-2025-Financial-Results/default.aspx" target="_blank" rel="noreferrer">Arista Q4 2025 results</a></b><span>事实 · 支持</span><p>ALAB、CRDO、MRVL、Arista 等公司收入已体现 AI networking / connectivity 需求。</p></div>
+  </article><article>
+    <time>2026-03-02</time>
+    <div><b><a href="https://www.sec.gov/Archives/edgar/data/1807794/000162828026013205/credoq32026ex-9911.htm" target="_blank" rel="noreferrer">Credo FY2026 Q3 results</a></b><span>事实 · 支持</span><p>ALAB、CRDO、MRVL、Arista 等公司收入已体现 AI networking / connectivity 需求。</p></div>
+  </article></div>
+      </div>
+    </details>
+    <details class="bom-temporal-card bom-question-materials">
+      <summary><span>05</span><h5>映射材料</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <div class="table-scroll bom-mapped-material-table"><table>
+    <thead><tr><th>发布时间</th><th>材料</th><th>类型 / 立场</th><th>主题</th><th>提取观点或数据</th><th>实际期间</th><th>预测期间</th></tr></thead>
+    <tbody><tr>
+      <td>2026-03-02</td>
+      <td><a href="https://www.sec.gov/Archives/edgar/data/1807794/000162828026013205/credoq32026ex-9911.htm" target="_blank" rel="noreferrer">Credo FY2026 Q3 results</a></td>
+      <td><b>事实</b><span>支持</span></td>
+      <td>材料发现</td>
+      <td>ALAB、CRDO、MRVL、Arista 等公司收入已体现 AI networking / connectivity 需求。</td>
+      <td>未结构化</td>
+      <td>不适用 / 未结构化</td>
+    </tr><tr>
+      <td>2026-02-12</td>
+      <td><a href="https://investors.arista.com/Communications/Press-Releases-and-Events/Press-Release-Detail/2026/Arista-Networks-Inc--Reports-Fourth-Quarter-and-Year-End-2025-Financial-Results/default.aspx" target="_blank" rel="noreferrer">Arista Q4 2025 results</a></td>
+      <td><b>事实</b><span>支持</span></td>
+      <td>材料发现</td>
+      <td>ALAB、CRDO、MRVL、Arista 等公司收入已体现 AI networking / connectivity 需求。</td>
+      <td>未结构化</td>
+      <td>不适用 / 未结构化</td>
+    </tr><tr>
+      <td>2026-02-10</td>
+      <td><a href="https://www.sec.gov/Archives/edgar/data/1736297/000173629726000005/q425exhibit991.htm" target="_blank" rel="noreferrer">Astera Labs Q4 2025 results</a></td>
+      <td><b>事实</b><span>支持</span></td>
+      <td>材料发现</td>
+      <td>ALAB、CRDO、MRVL、Arista 等公司收入已体现 AI networking / connectivity 需求。</td>
+      <td>未结构化</td>
+      <td>不适用 / 未结构化</td>
+    </tr><tr>
+      <td>2025-12-03</td>
+      <td><a href="https://investor.marvell.com/sec-filings/all-sec-filings/content/0001835632-25-000197/mrvl-20251101.htm" target="_blank" rel="noreferrer">Marvell FY2026 Q3 10-Q</a></td>
+      <td><b>事实</b><span>支持</span></td>
+      <td>材料发现</td>
+      <td>ALAB、CRDO、MRVL、Arista 等公司收入已体现 AI networking / connectivity 需求。</td>
+      <td>未结构化</td>
+      <td>不适用 / 未结构化</td>
+    </tr></tbody>
+  </table></div>
+      </div>
+    </details>
+    <details class="bom-temporal-card bom-question-coverage">
+      <summary><span>06</span><h5>信息覆盖</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <div class="bom-coverage-status"><b>单向覆盖，缺反证</b><p>覆盖期间：2025-12-03 至 2026-03-02；当前快照：基线，无上一截面</p></div>
+  <div class="bom-coverage-list"><p><span>事实</span><b>4</b></p><p><span>预测</span><b>0</b></p><p><span>观点</span><b>0</b></p><p><span>消息</span><b>0</b></p><p><span>估值</span><b>0</b></p><p><span>反证</span><b>0</b></p></div>
+  <div class="bom-coverage-direction"><p><span>支持材料</span><b>4</b></p><p><span>反向材料</span><b>0</b></p></div>
+      </div>
+    </details>
+  </section>
+    </div>
+  </details><details class="bom-question-card">
+    <summary><span class="bom-question-index">5</span><strong>市场是否已定价？</strong><span class="bom-question-summary-meta"><i>待验证</i><em>最近材料 2026-03-02</em></span><span class="chevron">›</span></summary>
+    <div class="bom-question-answer">
+      <section class="bom-question-temporal-flow">
+    <details class="bom-temporal-card bom-question-understanding">
+      <summary><span>01</span><h5>基本理解思路</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <div class="bom-understanding-model"><b>估值 / 预期差 / 盈利上修模型</b><p>判断好产业是否仍是好赔率。</p></div>
+        <div class="bom-understanding-rule"><span>大致判断公式</span><p>赔率 = 未来盈利上修空间 ÷ 已定价增长与风险溢价；产业强度必须超过市场隐含预期才有推荐价值。</p></div>
+        
+        <p class="bom-hint-boundary">这只是帮助理解的初始思路，不是材料准入清单。新材料发现的变量、观点和反证可以直接映射到本问。</p>
+      </div>
+    </details>
+    <section class="bom-question-current">
+      <div class="bom-temporal-title"><span>02</span><h5>当前结论</h5><em>待验证</em></div>
+      <p class="bom-current-conclusion">连接节点弹性大也容易估值透支，需要用客户集中、design win、gross margin 和出货节奏验证。</p>
+      <div class="bom-current-support"><b>支持机制</b><p>错价可持续来自市场低估增长持续期、盈利弹性、利润率上行或风险下降。</p></div>
+      <div class="bom-current-refute"><b>最大反证</b><p>若估值已经把高增长、高毛利和低风险全部计入，基本面继续强也可能没有足够赔率。</p></div>
+      <div class="bom-current-impact"><b>对标的的影响</b><p>本问直接决定 action state。即使 高速连接与 AI 网络 是正确节点，如果估值和盈利预期已经充分反映，推荐只能是 watch_only；只有基本面继续超预期且估值未完全定价，才可能进入 actionable_long。</p></div>
+      <div class="bom-question-sources"><a class="source-chip" href="https://www.sec.gov/Archives/edgar/data/1736297/000173629726000005/q425exhibit991.htm" target="_blank" rel="noopener">SRC-ALAB-Q4-2025</a><a class="source-chip" href="https://www.sec.gov/Archives/edgar/data/1807794/000162828026013205/credoq32026ex-9911.htm" target="_blank" rel="noopener">SRC-CRDO-FY26-Q3</a></div>
+    </section>
+    <details class="bom-temporal-card bom-question-change">
+      <summary><span>03</span><h5>相较上一截面的变化</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <p class="bom-baseline-message">这是时间账本的基线快照；此前未保存结构化研究快照，不反向编造历史结论。</p>
+        <div class="table-scroll bom-revision-table"><table>
+    <thead><tr><th>记录时间</th><th>类型</th><th>原判断</th><th>当前判断</th><th>变化说明</th></tr></thead>
+    <tbody><tr>
+      <td>2026-03-28</td>
+      <td>基线</td>
+      <td>无历史快照</td>
+      <td>连接节点弹性大也容易估值透支，需要用客户集中、design win、gross margin 和出货节奏验证。</td>
+      <td>这是时间账本的基线快照；此前未保存结构化研究快照，不反向编造历史结论。</td>
+    </tr></tbody>
+  </table></div>
+      </div>
+    </details>
+    <details class="bom-temporal-card bom-question-timeline">
+      <summary><span>04</span><h5>时间演化</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <p class="bom-temporal-note">按材料首次对市场可见的时间排列。材料出现不等于研究结论自动改变；结论修正只记录真实快照差异。</p>
+        <div class="bom-material-timeline"><article>
+    <time>2026-02-10</time>
+    <div><b><a href="https://www.sec.gov/Archives/edgar/data/1736297/000173629726000005/q425exhibit991.htm" target="_blank" rel="noreferrer">Astera Labs Q4 2025 results</a></b><span>估值 · 支持</span><p>连接节点弹性大也容易估值透支，需要用客户集中、design win、gross margin 和出货节奏验证。</p></div>
+  </article><article>
+    <time>2026-03-02</time>
+    <div><b><a href="https://www.sec.gov/Archives/edgar/data/1807794/000162828026013205/credoq32026ex-9911.htm" target="_blank" rel="noreferrer">Credo FY2026 Q3 results</a></b><span>估值 · 支持</span><p>连接节点弹性大也容易估值透支，需要用客户集中、design win、gross margin 和出货节奏验证。</p></div>
+  </article></div>
+      </div>
+    </details>
+    <details class="bom-temporal-card bom-question-materials">
+      <summary><span>05</span><h5>映射材料</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <div class="table-scroll bom-mapped-material-table"><table>
+    <thead><tr><th>发布时间</th><th>材料</th><th>类型 / 立场</th><th>主题</th><th>提取观点或数据</th><th>实际期间</th><th>预测期间</th></tr></thead>
+    <tbody><tr>
+      <td>2026-03-02</td>
+      <td><a href="https://www.sec.gov/Archives/edgar/data/1807794/000162828026013205/credoq32026ex-9911.htm" target="_blank" rel="noreferrer">Credo FY2026 Q3 results</a></td>
+      <td><b>估值</b><span>支持</span></td>
+      <td>材料发现</td>
+      <td>连接节点弹性大也容易估值透支，需要用客户集中、design win、gross margin 和出货节奏验证。</td>
+      <td>未结构化</td>
+      <td>不适用 / 未结构化</td>
+    </tr><tr>
+      <td>2026-02-10</td>
+      <td><a href="https://www.sec.gov/Archives/edgar/data/1736297/000173629726000005/q425exhibit991.htm" target="_blank" rel="noreferrer">Astera Labs Q4 2025 results</a></td>
+      <td><b>估值</b><span>支持</span></td>
+      <td>材料发现</td>
+      <td>连接节点弹性大也容易估值透支，需要用客户集中、design win、gross margin 和出货节奏验证。</td>
+      <td>未结构化</td>
+      <td>不适用 / 未结构化</td>
+    </tr></tbody>
+  </table></div>
+      </div>
+    </details>
+    <details class="bom-temporal-card bom-question-coverage">
+      <summary><span>06</span><h5>信息覆盖</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <div class="bom-coverage-status"><b>有材料，结构不完整</b><p>覆盖期间：2026-02-10 至 2026-03-02；当前快照：基线，无上一截面</p></div>
+  <div class="bom-coverage-list"><p><span>事实</span><b>0</b></p><p><span>预测</span><b>0</b></p><p><span>观点</span><b>0</b></p><p><span>消息</span><b>0</b></p><p><span>估值</span><b>2</b></p><p><span>反证</span><b>0</b></p></div>
+  <div class="bom-coverage-direction"><p><span>支持材料</span><b>2</b></p><p><span>反向材料</span><b>0</b></p></div>
+      </div>
+    </details>
+  </section>
+    </div>
+  </details><details class="bom-question-card">
+    <summary><span class="bom-question-index">6</span><strong>反证是什么？</strong><span class="bom-question-summary-meta"><i>待验证</i><em>最近材料 2025-07-15</em></span><span class="chevron">›</span></summary>
+    <div class="bom-question-answer">
+      <section class="bom-question-temporal-flow">
+    <details class="bom-temporal-card bom-question-understanding">
+      <summary><span>01</span><h5>基本理解思路</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <div class="bom-understanding-model"><b>触发器 / 阈值 / 降级动作模型</b><p>把反证从泛泛风险变成可监控的降级纪律。</p></div>
+        <div class="bom-understanding-rule"><span>大致判断公式</span><p>反证强度 = 领先触发器变化 × 对需求/供给/控制权/财务/定价链条的破坏程度 × 可持续性。</p></div>
+        
+        <p class="bom-hint-boundary">这只是帮助理解的初始思路，不是材料准入清单。新材料发现的变量、观点和反证可以直接映射到本问。</p>
+      </div>
+    </details>
+    <section class="bom-question-current">
+      <div class="bom-temporal-title"><span>02</span><h5>当前结论</h5><em>待验证</em></div>
+      <p class="bom-current-conclusion">平台自研替代、客户设计切换、ASP 下行、CPO/LPO/AEC 路线变化、主要客户延迟 ramp。</p>
+      <div class="bom-current-support"><b>支持机制</b><p>有效反证应比财报恶化更早出现：价格、交期、订单、客户预算、供给释放或替代路线先发生变化。</p></div>
+      <div class="bom-current-refute"><b>最大反证</b><p>如果反证指标连续出现并穿透到收入、毛利、现金流或估值预期，应从观察名单降级。</p></div>
+      <div class="bom-current-impact"><b>对标的的影响</b><p>本问定义推荐纪律。高速连接与 AI 网络 相关标的必须绑定可观察降级触发器；当需求、供给、控制权、财务兑现或定价任一核心反证触发时，推荐强度应自动下调，而不是事后解释。</p></div>
+      <div class="bom-question-sources"><a class="source-chip" href="https://newsletter.semianalysis.com/p/nvidias-optical-boogeyman-nvl72-infiniband" target="_blank" rel="noopener">SRC-SA-OPTICAL-2024</a><a class="source-chip" href="https://www.prnewswire.com/news-releases/ethernet-is-winning-the-war-against-infiniband-in-ai-back-end-networks-according-to-delloro-group-302501890.html" target="_blank" rel="noopener">SRC-DO-AI-NETWORKS-20250715</a></div>
+    </section>
+    <details class="bom-temporal-card bom-question-change">
+      <summary><span>03</span><h5>相较上一截面的变化</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <p class="bom-baseline-message">这是时间账本的基线快照；此前未保存结构化研究快照，不反向编造历史结论。</p>
+        <div class="table-scroll bom-revision-table"><table>
+    <thead><tr><th>记录时间</th><th>类型</th><th>原判断</th><th>当前判断</th><th>变化说明</th></tr></thead>
+    <tbody><tr>
+      <td>2026-03-28</td>
+      <td>基线</td>
+      <td>无历史快照</td>
+      <td>平台自研替代、客户设计切换、ASP 下行、CPO/LPO/AEC 路线变化、主要客户延迟 ramp。</td>
+      <td>这是时间账本的基线快照；此前未保存结构化研究快照，不反向编造历史结论。</td>
+    </tr></tbody>
+  </table></div>
+      </div>
+    </details>
+    <details class="bom-temporal-card bom-question-timeline">
+      <summary><span>04</span><h5>时间演化</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <p class="bom-temporal-note">按材料首次对市场可见的时间排列。材料出现不等于研究结论自动改变；结论修正只记录真实快照差异。</p>
+        <div class="bom-material-timeline"><article>
+    <time>2024-03-25</time>
+    <div><b><a href="https://newsletter.semianalysis.com/p/nvidias-optical-boogeyman-nvl72-infiniband" target="_blank" rel="noreferrer">SemiAnalysis Nvidia Optical Boogeyman NVL72 Infiniband Scale Out 800G and 1.6T Ramp</a></b><span>反证 · 反证</span><p>平台自研替代、客户设计切换、ASP 下行、CPO/LPO/AEC 路线变化、主要客户延迟 ramp。</p></div>
+  </article><article>
+    <time>2025-07-15</time>
+    <div><b><a href="https://www.prnewswire.com/news-releases/ethernet-is-winning-the-war-against-infiniband-in-ai-back-end-networks-according-to-delloro-group-302501890.html" target="_blank" rel="noreferrer">Dell&#39;Oro Group Ethernet AI Backend Network Forecast</a></b><span>反证 · 反证</span><p>平台自研替代、客户设计切换、ASP 下行、CPO/LPO/AEC 路线变化、主要客户延迟 ramp。</p></div>
+  </article></div>
+      </div>
+    </details>
+    <details class="bom-temporal-card bom-question-materials">
+      <summary><span>05</span><h5>映射材料</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <div class="table-scroll bom-mapped-material-table"><table>
+    <thead><tr><th>发布时间</th><th>材料</th><th>类型 / 立场</th><th>主题</th><th>提取观点或数据</th><th>实际期间</th><th>预测期间</th></tr></thead>
+    <tbody><tr>
+      <td>2025-07-15</td>
+      <td><a href="https://www.prnewswire.com/news-releases/ethernet-is-winning-the-war-against-infiniband-in-ai-back-end-networks-according-to-delloro-group-302501890.html" target="_blank" rel="noreferrer">Dell&#39;Oro Group Ethernet AI Backend Network Forecast</a></td>
+      <td><b>反证</b><span>反证</span></td>
+      <td>材料发现</td>
+      <td>平台自研替代、客户设计切换、ASP 下行、CPO/LPO/AEC 路线变化、主要客户延迟 ramp。</td>
+      <td>未结构化</td>
+      <td>不适用 / 未结构化</td>
+    </tr><tr>
+      <td>2024-03-25</td>
+      <td><a href="https://newsletter.semianalysis.com/p/nvidias-optical-boogeyman-nvl72-infiniband" target="_blank" rel="noreferrer">SemiAnalysis Nvidia Optical Boogeyman NVL72 Infiniband Scale Out 800G and 1.6T Ramp</a></td>
+      <td><b>反证</b><span>反证</span></td>
+      <td>材料发现</td>
+      <td>平台自研替代、客户设计切换、ASP 下行、CPO/LPO/AEC 路线变化、主要客户延迟 ramp。</td>
+      <td>未结构化</td>
+      <td>不适用 / 未结构化</td>
+    </tr></tbody>
+  </table></div>
+      </div>
+    </details>
+    <details class="bom-temporal-card bom-question-coverage">
+      <summary><span>06</span><h5>信息覆盖</h5><span class="chevron">›</span></summary>
+      <div class="bom-temporal-body">
+        <div class="bom-coverage-status"><b>有材料，结构不完整</b><p>覆盖期间：2024-03-25 至 2025-07-15；当前快照：基线，无上一截面</p></div>
+  <div class="bom-coverage-list"><p><span>事实</span><b>0</b></p><p><span>预测</span><b>0</b></p><p><span>观点</span><b>0</b></p><p><span>消息</span><b>0</b></p><p><span>估值</span><b>0</b></p><p><span>反证</span><b>2</b></p></div>
+  <div class="bom-coverage-direction"><p><span>支持材料</span><b>0</b></p><p><span>反向材料</span><b>2</b></p></div>
+      </div>
+    </details>
+  </section>
+    </div>
+  </details></div>
+      <details class="bom-s-curve-stage-card">
+    <summary><span>S曲线阶段判定</span><div><b>待逐问搜索完成后判定</b><p>置信度：待定</p></div><span class="chevron">›</span></summary>
+    <div class="bom-stage-rollup-body">
+      <section class="bom-stage-source-discipline">
+        <b>判定门槛</b>
+        <p>只有当前 BOM 的 6 个子问都完成外部搜索、来源解析、metric 历史/缺口检查和本问结论后，才允许把阶段判定升级为正式结论；未完成逐问搜索时，旧本地材料只能作为待验证缓存。</p>
+      </section>
+      <section class="bom-stage-current">
+        <b>当前阶段</b>
+        <p>高速连接与 AI 网络 的六个子问尚未完成新一轮 question-level search/source parse/gap 标注，因此当前报告不作正式 S 曲线阶段判断。旧本地材料只能作为待验证缓存，不能替代阶段判定证据。</p>
+      </section>
+      <div class="bom-stage-evidence-grid">
+        <article>
+          <span>Q1</span>
+          <b>当前 BOM 的需求是否会被 S 曲线放大拉动？</b>
+          <p>rack-scale 与 cluster-scale AI 提高东西向流量，拉动 retimer、AEC、switch、NIC、光模块和 PAM4 DSP；每 GPU 或每机柜的网络端口、光模块、DSP 和板级连接组件用量随 800G/1.6T 迁移上升，因此网络节点可能具备更高单位弹性。</p>
+          <div class="bom-question-sources"><a class="source-chip" href="https://newsletter.semianalysis.com/p/nvidias-optical-boogeyman-nvl72-infiniband" target="_blank" rel="noopener">SRC-SA-OPTICAL-2024</a><a class="source-chip" href="https://www.lightcounting.com/newsletter/en/january-2025-optics-for-ai-clusters-319" target="_blank" rel="noopener">SRC-LC-AI-OPTICS-202501</a><a class="source-chip" href="https://www.prnewswire.com/news-releases/ethernet-is-winning-the-war-against-infiniband-in-ai-back-end-networks-according-to-delloro-group-302501890.html" target="_blank" rel="noopener">SRC-DO-AI-NETWORKS-20250715</a></div>
+        </article><article>
+          <span>Q2</span>
+          <b>供给能否跟上？</b>
+          <p>约束来自客户设计导入、平台认证、低功耗/低延迟指标、信号完整性和批量可靠性。</p>
+          <div class="bom-question-sources"><a class="source-chip" href="https://newsletter.semianalysis.com/p/nvidias-optical-boogeyman-nvl72-infiniband" target="_blank" rel="noopener">SRC-SA-OPTICAL-2024</a><a class="source-chip" href="https://www.lightcounting.com/newsletter/en/ai-capex-flows-down-the-supply-chain-to-dsp-vendors-332" target="_blank" rel="noopener">SRC-LC-PAM4-DSP-20260226</a></div>
+        </article><article>
+          <span>Q3</span>
+          <b>谁控制供给？</b>
+          <p>Astera、Credo、Marvell、Broadcom、Arista 和 NVIDIA networking 控制不同子环节。</p>
+          <div class="bom-question-sources"><a class="source-chip" href="https://www.sec.gov/Archives/edgar/data/1736297/000173629726000005/q425exhibit991.htm" target="_blank" rel="noopener">SRC-ALAB-Q4-2025</a><a class="source-chip" href="https://www.sec.gov/Archives/edgar/data/1807794/000162828026013205/credoq32026ex-9911.htm" target="_blank" rel="noopener">SRC-CRDO-FY26-Q3</a><a class="source-chip" href="https://investor.marvell.com/sec-filings/all-sec-filings/content/0001835632-25-000197/mrvl-20251101.htm" target="_blank" rel="noopener">SRC-MRVL-FY26-Q3</a><a class="source-chip" href="https://investors.arista.com/Communications/Press-Releases-and-Events/Press-Release-Detail/2026/Arista-Networks-Inc--Reports-Fourth-Quarter-and-Year-End-2025-Financial-Results/default.aspx" target="_blank" rel="noopener">SRC-ANET-Q4-2025</a></div>
+        </article><article>
+          <span>Q4</span>
+          <b>是否已经财务兑现？</b>
+          <p>ALAB、CRDO、MRVL、Arista 等公司收入已体现 AI networking / connectivity 需求。</p>
+          <div class="bom-question-sources"><a class="source-chip" href="https://www.sec.gov/Archives/edgar/data/1736297/000173629726000005/q425exhibit991.htm" target="_blank" rel="noopener">SRC-ALAB-Q4-2025</a><a class="source-chip" href="https://www.sec.gov/Archives/edgar/data/1807794/000162828026013205/credoq32026ex-9911.htm" target="_blank" rel="noopener">SRC-CRDO-FY26-Q3</a><a class="source-chip" href="https://investor.marvell.com/sec-filings/all-sec-filings/content/0001835632-25-000197/mrvl-20251101.htm" target="_blank" rel="noopener">SRC-MRVL-FY26-Q3</a><a class="source-chip" href="https://investors.arista.com/Communications/Press-Releases-and-Events/Press-Release-Detail/2026/Arista-Networks-Inc--Reports-Fourth-Quarter-and-Year-End-2025-Financial-Results/default.aspx" target="_blank" rel="noopener">SRC-ANET-Q4-2025</a></div>
+        </article><article>
+          <span>Q5</span>
+          <b>市场是否已定价？</b>
+          <p>连接节点弹性大也容易估值透支，需要用客户集中、design win、gross margin 和出货节奏验证。</p>
+          <div class="bom-question-sources"><a class="source-chip" href="https://www.sec.gov/Archives/edgar/data/1736297/000173629726000005/q425exhibit991.htm" target="_blank" rel="noopener">SRC-ALAB-Q4-2025</a><a class="source-chip" href="https://www.sec.gov/Archives/edgar/data/1807794/000162828026013205/credoq32026ex-9911.htm" target="_blank" rel="noopener">SRC-CRDO-FY26-Q3</a></div>
+        </article><article>
+          <span>Q6</span>
+          <b>反证是什么？</b>
+          <p>平台自研替代、客户设计切换、ASP 下行、CPO/LPO/AEC 路线变化、主要客户延迟 ramp。</p>
+          <div class="bom-question-sources"><a class="source-chip" href="https://newsletter.semianalysis.com/p/nvidias-optical-boogeyman-nvl72-infiniband" target="_blank" rel="noopener">SRC-SA-OPTICAL-2024</a><a class="source-chip" href="https://www.prnewswire.com/news-releases/ethernet-is-winning-the-war-against-infiniband-in-ai-back-end-networks-according-to-delloro-group-302501890.html" target="_blank" rel="noopener">SRC-DO-AI-NETWORKS-20250715</a></div>
+        </article>
+      </div>
+      <section class="bom-stage-next-signal">
+        <b>下一阶段确认信号</b>
+        <p>逐一完成需求弹性、供给、控制者、财务兑现、市场定价、反证六问的搜索和解析后，再根据六问结论判断当前 BOM 位于叙事期、预算/订单确认期、供给紧张期、财务兑现期，还是定价拥挤/成熟期。</p>
+      </section>
+      <section class="bom-stage-downgrade-signal">
+        <b>降级信号</b>
+        <p>如果逐问搜索只能得到主题叙事、少量截面或无法追溯到当前 BOM 的 metric 历史/未来锚点，则该 BOM 的阶段应维持 pending，不得升级为早期 S 曲线机会。</p>
+      </section>
+      <div class="bom-question-sources"><a class="source-chip" href="https://newsletter.semianalysis.com/p/nvidias-optical-boogeyman-nvl72-infiniband" target="_blank" rel="noopener">SRC-SA-OPTICAL-2024</a><a class="source-chip" href="https://www.lightcounting.com/newsletter/en/january-2025-optics-for-ai-clusters-319" target="_blank" rel="noopener">SRC-LC-AI-OPTICS-202501</a><a class="source-chip" href="https://www.prnewswire.com/news-releases/ethernet-is-winning-the-war-against-infiniband-in-ai-back-end-networks-according-to-delloro-group-302501890.html" target="_blank" rel="noopener">SRC-DO-AI-NETWORKS-20250715</a><a class="source-chip" href="https://www.lightcounting.com/newsletter/en/ai-capex-flows-down-the-supply-chain-to-dsp-vendors-332" target="_blank" rel="noopener">SRC-LC-PAM4-DSP-20260226</a><a class="source-chip" href="https://www.sec.gov/Archives/edgar/data/1736297/000173629726000005/q425exhibit991.htm" target="_blank" rel="noopener">SRC-ALAB-Q4-2025</a><a class="source-chip" href="https://www.sec.gov/Archives/edgar/data/1807794/000162828026013205/credoq32026ex-9911.htm" target="_blank" rel="noopener">SRC-CRDO-FY26-Q3</a><a class="source-chip" href="https://investor.marvell.com/sec-filings/all-sec-filings/content/0001835632-25-000197/mrvl-20251101.htm" target="_blank" rel="noopener">SRC-MRVL-FY26-Q3</a><a class="source-chip" href="https://investors.arista.com/Communications/Press-Releases-and-Events/Press-Release-Detail/2026/Arista-Networks-Inc--Reports-Fourth-Quarter-and-Year-End-2025-Financial-Results/default.aspx" target="_blank" rel="noopener">SRC-ANET-Q4-2025</a></div>
+    </div>
+  </details>
+    </div>
+  </details></div></section>
+    <section id="targets" class="section"><div class="section-heading"><h2>标的推荐</h2></div><div class="target-section">
+    <div class="artifact-card"><div class="artifact-title">标的推荐口径</div><p>这里是研究观察名单，不是交易指令。只有对应 BOM 六问、显式反证、公司敞口和研究截面估值全部通过，候选状态才允许升级为 actionable_long；任一缺口都会自动降级。</p></div>
+    <div class="table-scroll"><table class="target-profit-bridge"><thead><tr><th>标的</th><th>链条节点</th><th>为什么能捕获价值</th><th>未来空间</th><th>降级触发</th><th>状态</th></tr></thead><tbody><tr><td>ALAB</td><td>高速连接与 AI 网络</td><td>机柜级连接收入高增，直接受益 rack-scale AI。</td><td>1.5</td><td>大客户订单延后、平台自研替代、估值压缩。</td><td>no_action</td></tr><tr><td>CRDO</td><td>高速连接与 AI 网络</td><td>AEC/光互联需求强，收入高弹性。</td><td>1.5</td><td>客户订单延迟、价格下行、毛利不达预期。</td><td>no_action</td></tr><tr><td>MRVL</td><td>custom silicon / 电光互联</td><td>custom products 与 electro-optics 已进入 AI data-center 收入口径。</td><td>1.5</td><td>大客户项目延期、客户自研替代、毛利不达预期。</td><td>no_action</td></tr></tbody></table></div>
+    <div class="table-scroll"><table class="target-valuation-table"><thead><tr><th>标的</th><th>估值证据</th><th>赔率判断</th><th>空间依据</th><th>主要风险</th></tr></thead><tbody><tr><td>ALAB</td><td>估值未完整重建</td><td>估值证据未闭环，状态由研究门槛封顶</td><td>1.5</td><td>大客户订单延后、平台自研替代、估值压缩。</td></tr><tr><td>CRDO</td><td>估值未完整重建</td><td>估值证据未闭环，状态由研究门槛封顶</td><td>1.5</td><td>客户订单延迟、价格下行、毛利不达预期。</td></tr><tr><td>MRVL</td><td>估值未完整重建</td><td>估值证据未闭环，状态由研究门槛封顶</td><td>1.5</td><td>大客户项目延期、客户自研替代、毛利不达预期。</td></tr></tbody></table></div>
+    <div class="target-odds-model"><div class="table-scroll"><table class="target-odds-table"><thead><tr><th>标的</th><th>状态</th><th>赔率来源</th><th>风险闸门</th></tr></thead><tbody><tr><td>ALAB</td><td>no_action</td><td>1.5</td><td>大客户订单延后、平台自研替代、估值压缩。</td></tr><tr><td>CRDO</td><td>no_action</td><td>1.5</td><td>客户订单延迟、价格下行、毛利不达预期。</td></tr><tr><td>MRVL</td><td>no_action</td><td>1.5</td><td>大客户项目延期、客户自研替代、毛利不达预期。</td></tr></tbody></table></div></div>
+    <div class="table-scroll"><table class="target-table"><thead><tr><th>排序</th><th>标的</th><th>公司</th><th>市场</th><th>节点</th><th>候选状态</th><th>最终状态</th><th>研究门槛</th><th>理由</th><th>风险</th><th>as_of_date</th><th>evaluation_date</th><th>label_window</th><th>start_price</th><th>end_price</th><th>forward_3m_return</th><th>label_status</th></tr></thead><tbody><tr><td>1</td><td>ALAB</td><td>Astera Labs</td><td>USA</td><td>高速连接与 AI 网络</td><td><span class="state-watch_only">watch_only</span></td><td><span class="state-no_action">no_action</span></td><td>0/6 问完成；反证证据未验证；估值与预期差未验证；公司财务敞口未验证</td><td>机柜级连接收入高增，直接受益 rack-scale AI。</td><td>大客户订单延后、平台自研替代、估值压缩。</td><td>2026-03-28</td><td>2026-06-28</td><td>2026-03-28_to_2026-06-28</td><td>112.47</td><td>391.74</td><td>248.31</td><td>label_verified</td></tr><tr><td>2</td><td>CRDO</td><td>Credo</td><td>USA</td><td>高速连接与 AI 网络</td><td><span class="state-watch_only">watch_only</span></td><td><span class="state-no_action">no_action</span></td><td>0/6 问完成；反证证据未验证；估值与预期差未验证；公司财务敞口未验证</td><td>AEC/光互联需求强，收入高弹性。</td><td>客户订单延迟、价格下行、毛利不达预期。</td><td>2026-03-28</td><td>2026-06-28</td><td>2026-03-28_to_2026-06-28</td><td>95.24</td><td>238</td><td>149.9</td><td>label_verified</td></tr><tr><td>3</td><td>MRVL</td><td>Marvell Technology</td><td>USA</td><td>custom silicon / 电光互联</td><td><span class="state-watch_only">watch_only</span></td><td><span class="state-no_action">no_action</span></td><td>0/6 问完成；反证证据未验证；估值与预期差未验证；公司财务敞口未验证</td><td>custom products 与 electro-optics 已进入 AI data-center 收入口径。</td><td>大客户项目延期、客户自研替代、毛利不达预期。</td><td>2026-03-28</td><td>2026-06-28</td><td>2026-03-28_to_2026-06-28</td><td>94.88</td><td>266.77</td><td>181.17</td><td>label_verified</td></tr></tbody></table></div>
+  </div></section>
+    <section id="sources" class="section"><div class="section-heading"><h2>来源索引</h2></div><details class="source-collapse"><summary>展开来源索引 <span class="chevron">›</span></summary><div class="table-scroll"><table><thead><tr><th>ID</th><th>来源</th><th>类别</th><th>可见日期</th><th>用途摘要</th></tr></thead><tbody><tr><td>SRC-ALAB-Q4-2025</td><td><a href="https://www.sec.gov/Archives/edgar/data/1736297/000173629726000005/q425exhibit991.htm" target="_blank" rel="noopener">Astera Labs Q4 2025 results</a></td><td>evidence</td><td>2026-02-10</td><td>Astera Labs Q4 revenue was $270.6M, +92% YoY, tied to rack-scale AI infrastructure connectivity.</td></tr><tr><td>SRC-CRDO-FY26-Q3</td><td><a href="https://www.sec.gov/Archives/edgar/data/1807794/000162828026013205/credoq32026ex-9911.htm" target="_blank" rel="noopener">Credo FY2026 Q3 results</a></td><td>evidence</td><td>2026-03-02</td><td>Credo FY26 Q3 revenue was $407.0M, +200% YoY, with active electrical cables, optical interconnects and memory connectivity tied to AI infrastructure.</td></tr><tr><td>SRC-MRVL-FY26-Q3</td><td><a href="https://investor.marvell.com/sec-filings/all-sec-filings/content/0001835632-25-000197/mrvl-20251101.htm" target="_blank" rel="noopener">Marvell FY2026 Q3 10-Q</a></td><td>evidence</td><td>2025-12-03</td><td>Marvell FY26 Q3 net revenue was $2.075B; data-center sales increased 38% year over year, driven by AI-related demand for custom products and electro-optics.</td></tr><tr><td>SRC-ANET-Q4-2025</td><td><a href="https://investors.arista.com/Communications/Press-Releases-and-Events/Press-Release-Detail/2026/Arista-Networks-Inc--Reports-Fourth-Quarter-and-Year-End-2025-Financial-Results/default.aspx" target="_blank" rel="noopener">Arista Q4 2025 results</a></td><td>evidence</td><td>2026-02-12</td><td>Arista FY2025 revenue was $9.006B, +28.6%, and management said it exceeded AI networking and campus expansion goals.</td></tr><tr><td>SRC-SA-OPTICAL-2024</td><td><a href="https://newsletter.semianalysis.com/p/nvidias-optical-boogeyman-nvl72-infiniband" target="_blank" rel="noopener">SemiAnalysis Nvidia Optical Boogeyman NVL72 Infiniband Scale Out 800G and 1.6T Ramp</a></td><td>research_report</td><td>2024-03-25</td><td>SemiAnalysis linked Blackwell NVL72 system architecture, NVLink scale-up, InfiniBand scale-out, 800G and 1.6T ramps to optical and networking BOM expansion.</td></tr><tr><td>SRC-LC-AI-OPTICS-202501</td><td><a href="https://www.lightcounting.com/newsletter/en/january-2025-optics-for-ai-clusters-319" target="_blank" rel="noopener">LightCounting Optics for AI Clusters</a></td><td>research_report</td><td>2025-01-01</td><td>LightCounting estimated AI-cluster optical transceiver, LPO and CPO demand rising from about $5B in 2024 to more than $10B in 2026, with scale-up and scale-out models through 2030.</td></tr><tr><td>SRC-LC-PAM4-DSP-20260226</td><td><a href="https://www.lightcounting.com/newsletter/en/ai-capex-flows-down-the-supply-chain-to-dsp-vendors-332" target="_blank" rel="noopener">LightCounting AI Capex Flows Down the Supply Chain to DSP Vendors</a></td><td>research_report</td><td>2026-02-26</td><td>LightCounting reported AI infrastructure capex drove 800G PAM4 chipset shipments to nearly triple in 2025 and expected 800G shipments to more than double in 2026, with 1.6T ports ramping from a small base.</td></tr><tr><td>SRC-DO-AI-NETWORKS-20250715</td><td><a href="https://www.prnewswire.com/news-releases/ethernet-is-winning-the-war-against-infiniband-in-ai-back-end-networks-according-to-delloro-group-302501890.html" target="_blank" rel="noopener">Dell&#39;Oro Group Ethernet AI Backend Network Forecast</a></td><td>research_report</td><td>2025-07-15</td><td>Dell&#39;Oro Group forecast AI back-end networks could drive nearly $80B of data-center switch sales over five years and expected Ethernet to gain share from InfiniBand in AI back-end networks.</td></tr></tbody></table></div></details></section>
+  </main>
+</body>
+</html>

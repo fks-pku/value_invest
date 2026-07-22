@@ -420,6 +420,10 @@ def validate_report_contract_html(
     require_l3: bool = False,
 ) -> dict[str, Any]:
     """Validate the public HTML report against the locked presentation contract."""
+    report_scope = _report_scope(html)
+    if report_scope in {"industry-index", "bom-node"}:
+        return _validate_split_scope_report_html(html, report_scope=report_scope, mode=mode)
+
     issues: list[dict[str, str]] = []
     section_positions = _section_positions(html)
     found_sections = [section for section in REPORT_SECTIONS if section in section_positions]
@@ -1264,6 +1268,171 @@ def validate_report_contract_html(
             **interactive_level_counts,
             **interaction_affordance_counts,
             **l3_metadata_counts,
+            "mode": mode,
+        },
+        "issues": issues,
+    }
+
+
+def _report_scope(html: str) -> str:
+    match = re.search(
+        r"<body\b[^>]*\bdata-report-scope\s*=\s*(['\"])([^'\"]+)\1",
+        html,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    return match.group(2).strip() if match else ""
+
+
+def _validate_split_scope_report_html(
+    html: str,
+    *,
+    report_scope: str,
+    mode: str,
+) -> dict[str, Any]:
+    issues: list[dict[str, str]] = []
+    section_positions = _section_positions(html)
+    found_sections = [section for section in REPORT_SECTIONS if section in section_positions]
+    if found_sections != REPORT_SECTIONS:
+        _issue(issues, "error", "top_level_sections", "split reports must keep the locked four-section order")
+    elif [section_positions[section] for section in REPORT_SECTIONS] != sorted(section_positions.values()):
+        _issue(issues, "error", "top_level_order", "top-level sections are out of order")
+
+    if _class_count(html, "industry-overview-section") != 1:
+        _issue(issues, "error", "industry_overview_scope", "each split report must contain exactly one industry-overview-section")
+    for required_class in [
+        "hero",
+        "top-nav",
+        "goal-card",
+        "target-section",
+        "target-profit-bridge",
+        "target-valuation-table",
+        "target-odds-model",
+        "target-odds-table",
+        "target-table",
+        "source-collapse",
+        "table-scroll",
+    ]:
+        if _class_count(html, required_class) == 0:
+            _issue(
+                issues,
+                "error",
+                "missing_split_report_component",
+                f"split report is missing required component {required_class}",
+            )
+
+    bom_modules = _tag_class_count(html, "details", "industry-module", "bom-research-module")
+    bom_question_cards = _tag_class_count(html, "details", "bom-question-card")
+    if report_scope == "industry-index":
+        if _tag_class_count(html, "details", "industry-module", "supply-chain-section") != 1:
+            _issue(issues, "error", "missing_index_supply_chain", "industry index must contain one technical-chain module")
+        if _tag_class_count(html, "details", "industry-module", "bom-project-index") != 1:
+            _issue(issues, "error", "missing_bom_project_index", "industry index must contain one BOM child-project index")
+        index_cards = _class_count(html, "bom-index-card")
+        if index_cards < 1:
+            _issue(issues, "error", "missing_bom_index_cards", "industry index must link at least one BOM child report")
+        linked_cards = len(
+            re.findall(
+                r"<a\b[^>]*class\s*=\s*(['\"])(?=[^'\"]*\bbom-index-card\b)[^'\"]*\1[^>]*href\s*=\s*(['\"])boms/[A-Za-z0-9_-]+/professional_report\.html\2",
+                html,
+                flags=re.IGNORECASE | re.DOTALL,
+            )
+        )
+        if linked_cards != index_cards:
+            _issue(issues, "error", "invalid_bom_index_links", "every BOM index card must link to boms/<node_id>/professional_report.html")
+        if bom_modules or bom_question_cards:
+            _issue(issues, "error", "industry_index_embeds_bom_research", "industry index must not embed BOM six-question modules")
+    else:
+        if not re.search(r"<body\b[^>]*\bdata-bom-node-id\s*=", html, flags=re.IGNORECASE):
+            _issue(issues, "error", "missing_bom_node_identity", "BOM report must expose data-bom-node-id")
+        if _class_count(html, "project-back-link") != 1:
+            _issue(issues, "error", "missing_project_back_link", "BOM report must link back to its industry index")
+        if bom_modules != 1:
+            _issue(issues, "error", "bom_report_module_count", "BOM child report must contain exactly one BOM research module")
+        if bom_question_cards != 6:
+            _issue(issues, "error", "bom_report_question_count", "BOM child report must contain exactly six BOM question cards")
+        for label in [
+            "当前 BOM 的需求是否会被 S 曲线放大拉动？",
+            "供给能否跟上？",
+            "谁控制供给？",
+            "是否已经财务兑现？",
+            "市场是否已定价？",
+            "反证是什么？",
+        ]:
+            if label not in html:
+                _issue(issues, "error", "missing_bom_question_label", f"BOM child report is missing {label}")
+        if _tag_class_count(html, "details", "bom-s-curve-stage-card") != 1:
+            _issue(issues, "error", "bom_stage_rollup_count", "BOM child report must contain one S-curve rollup")
+        for required_class in [
+            "bom-question-understanding",
+            "bom-question-current",
+            "bom-question-change",
+            "bom-question-timeline",
+            "bom-question-materials",
+            "bom-question-coverage",
+        ]:
+            if _class_count(html, required_class) != bom_question_cards:
+                _issue(
+                    issues,
+                    "error",
+                    "bom_temporal_question_sequence",
+                    f"each BOM question must contain exactly one {required_class}",
+                )
+        for required_class in [
+            "bom-temporal-baseline",
+            "bom-material-timeline",
+            "bom-mapped-material-table",
+            "bom-coverage-status",
+            "bom-stage-current",
+            "bom-stage-evidence-grid",
+            "bom-stage-next-signal",
+            "bom-stage-downgrade-signal",
+            "bom-stage-source-discipline",
+        ]:
+            if _class_count(html, required_class) == 0:
+                _issue(issues, "error", "missing_bom_child_component", f"BOM child report is missing {required_class}")
+        for forbidden_class in [
+            "bom-step-research-logic",
+            "bom-stage-integrated-card",
+            "bom-stage-subcard",
+            "bom-question-research-status",
+        ]:
+            if _class_count(html, forbidden_class):
+                _issue(
+                    issues,
+                    "error",
+                    "legacy_fixed_stage_rendering",
+                    f"BOM child report must not render fixed-stage component {forbidden_class}",
+                )
+
+    if _class_count(html, "overview-source-plan") or _class_count(html, "source-universe-plan") or _class_count(html, "exa-search-plan"):
+        _issue(issues, "error", "public_source_plan_leak", "raw search plans must stay internal")
+    compact_css = html.replace(" ", "")
+    if "overflow-x:auto" not in compact_css or "scrollbar-gutter:stable" not in compact_css:
+        _issue(issues, "error", "missing_horizontal_table_scroll", "split reports must preserve local horizontal table scrolling")
+
+    target_start = section_positions.get("标的推荐", -1)
+    source_start = section_positions.get("来源索引", len(html))
+    target_region = html[target_start:source_start] if target_start >= 0 else ""
+    if mode == "historical_backtest":
+        non_target_region = html[: max(target_start, 0)] + html[source_start:]
+        if any(term in non_target_region for term in LABEL_TERMS):
+            _issue(issues, "error", "label_outside_final_targets", "current-time labels may appear only inside target recommendations")
+        if not any(term in target_region for term in LABEL_TERMS):
+            _issue(issues, "warning", "missing_label_area", "historical backtest reports should include one label area")
+
+    lowered_html = html.lower()
+    for term in PUBLIC_META_DRIFT_TERMS:
+        if term.lower() in lowered_html:
+            _issue(issues, "error", "public_meta_drift", f"final HTML must not include process/change-log term: {term}")
+
+    return {
+        "ok": not _any_error(issues),
+        "summary": {
+            "report_scope": report_scope,
+            "top_level_sections": found_sections,
+            "bom_research_modules": bom_modules,
+            "bom_question_cards": bom_question_cards,
+            "bom_index_cards": _class_count(html, "bom-index-card"),
             "mode": mode,
         },
         "issues": issues,

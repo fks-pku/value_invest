@@ -19,18 +19,15 @@ class HbmBomNodePlaybookTests(unittest.TestCase):
         self.assertNotIn("enterprise SSD", playbook.produces)
         self.assertEqual([question.question_number for question in playbook.questions], list(range(1, 7)))
 
-    def test_every_hbm_question_has_a_causal_metric_model(self):
+    def test_every_hbm_question_has_optional_reader_orientation_hints(self):
         playbook = hbm_node_playbook()
 
         for question in playbook.questions:
             with self.subTest(question=question.question_id):
-                self.assertGreaterEqual(len(question.stages), 4)
-                self.assertLessEqual(len(question.stages), 7)
+                self.assertGreaterEqual(len(question.stages), 1)
                 for stage in question.stages:
-                    self.assertTrue(stage.primary_metric)
-                    self.assertTrue(stage.refutation_metric)
-                    self.assertGreaterEqual(len(stage.cross_check_metrics), 1)
-                    self.assertLessEqual(len(stage.cross_check_metrics), 2)
+                    self.assertTrue(stage.title)
+                    self.assertTrue(stage.role)
 
     def test_playbook_contains_no_run_specific_sources_or_verdicts(self):
         payload = hbm_node_playbook().to_dict()
@@ -40,7 +37,7 @@ class HbmBomNodePlaybookTests(unittest.TestCase):
         self.assertNotIn("2026-03-28", text)
         self.assertNotIn("当前结论", text)
 
-    def test_research_run_must_match_playbook_stage_ids(self):
+    def test_research_run_can_add_or_omit_hint_topics_without_stage_drift(self):
         playbook = hbm_node_playbook()
         malformed_run = {
             "node_id": "memory",
@@ -51,8 +48,10 @@ class HbmBomNodePlaybookTests(unittest.TestCase):
             ],
         }
 
-        with self.assertRaisesRegex(ValueError, "stage drift"):
-            build_bom_node_research_payload(playbook, malformed_run)
+        payload = build_bom_node_research_payload(playbook, malformed_run)
+
+        self.assertEqual(len(payload["questions"]), 6)
+        self.assertFalse(payload["questions"][0]["understanding"]["isEvidencePath"])
 
     def test_bom_registry_requires_one_playbook_per_canonical_node(self):
         playbook = hbm_node_playbook()

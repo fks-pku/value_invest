@@ -13,6 +13,20 @@ Public HTML contains exactly four top-level sections:
 
 Public `下钻 QA` is opt-in. The complete adaptive QA tree, L3-L5 research units, source plans, parser outputs, reviews, and scoring worksheets stay internal by default.
 
+## Report Scopes and File Layout
+
+Industry/theme/S-curve research uses two public report scopes under one project:
+
+```text
+<industry_project>/professional_report.html                 # data-report-scope="industry-index"
+<industry_project>/boms/manifest.json
+<industry_project>/boms/<node_id>/professional_report.html # data-report-scope="bom-node"
+```
+
+The `industry-index` is a chain overview and navigation report. It must not embed every BOM's six-question body. The `bom-node` report is an independently refreshable node report and must contain exactly one canonical BOM node. Both scopes keep the same four top-level sections so navigation and frontend behavior remain stable.
+
+The parent `project.json` owns the canonical ordered `bom_projects` manifest. Every child owns `project.json`, filtered `sources.jsonl`, optional `research_run.json`, and its HTML report. `boms/manifest.json`, parent metadata, and child identity must agree exactly on node ID and path. No copied HTML directory is a valid child project.
+
 ## 1. Current Research Goal
 
 Render one compact `goal-card` with `constraint-definition` for industry/theme or technology-route work. It states:
@@ -29,6 +43,15 @@ Do not include framework or execution commentary.
 
 Use one `industry-overview-section`.
 
+### Parent Industry Index
+
+The parent `industry-index` contains:
+
+1. `details.industry-module.supply-chain-section` / `01 技术链与BOM呈现`.
+2. `details.industry-module.bom-project-index` / `02 BOM 独立研究目录`.
+
+The directory renders one full-width `bom-index-card` per canonical node. Every card links to `boms/<node_id>/professional_report.html`, states node scope and research status, and may show related-target count. The parent must render zero `bom-research-module` and zero `bom-question-card` elements.
+
 ### 01 Technology Chain and BOM
 
 Render `details.industry-module.supply-chain-section` with:
@@ -42,9 +65,9 @@ Render `details.industry-module.supply-chain-section` with:
 
 Every BOM node has one stable ID and one public name. It explains inputs, output/product, downstream recipient, representative companies, and financial validation metrics.
 
-### 02+ One Module per BOM Node
+### BOM Child Report
 
-Render one `details.industry-module.bom-research-module` per canonical node. Use `bom-node-brief` followed by exactly six `details.bom-question-card` nodes:
+Each `bom-node` child report links back to `../../professional_report.html` with `project-back-link`. Its `行业概况` renders exactly one `details.industry-module.bom-research-module`. Use `bom-node-brief` followed by exactly six `details.bom-question-card` nodes:
 
 1. `当前 BOM 的需求是否会被 S 曲线放大拉动？`
 2. `供给能否跟上？`
@@ -53,77 +76,70 @@ Render one `details.industry-module.bom-research-module` per canonical node. Use
 5. `市场是否已定价？`
 6. `反证是什么？`
 
-Every module must be assembled from that node's own validated node-specific `BomNodePlaybook` plus its cutoff-frozen research run. The canonical BOM registry, playbook registry, research-run node IDs, and rendered module IDs must have exact one-to-one coverage. A static renderer answer, copied causal chain, or generic fallback is not a valid module even when six visible cards exist.
+Every completed module must be assembled from that node's own six-question `BomNodePlaybook`, append-only temporal evidence ledger, and reproducible as-of snapshot. The canonical BOM registry, child-project manifest, playbook registry, ledger node IDs, snapshot node IDs, and rendered module IDs must agree. A static renderer answer or generic fallback is not a completed module even when six visible cards exist. A child may exist as `partial_research`, but the status must remain explicit and target action state stays gated.
 
-The shared card sequence is presentation-only. Judgment formulas, causal stages, primary/cross-check/refutation metrics, and conclusion rules must remain specific to the current node.
+The six questions are hard logical coordinates. A playbook may provide a short node-specific model, formula, and basic logic hint, but the hint is not a mandatory evidence path and does not restrict new themes discovered in source material.
 
-Each card is an independent minimum research unit and begins with collapsed `bom-question-research-status`. Raw Universe/Exa queries stay internal; the status card shows only completion and evidence-gap discipline.
+Each card is an independent minimum research unit. Raw Universe/Exa queries, parser traces, and execution commentary stay internal.
 
-### Question Evidence Sequence
+### Question Temporal Sequence
 
 Inside every BOM question card:
 
-1. `details.bom-step-research-logic` / `研究逻辑链`
-2. one `details.bom-stage-integrated-card` per exact logic-chain row, numbered from `02`
-3. `details.bom-step-question-conclusion` / `本问结论`
-4. `details.bom-step-target-impact` / `对标的推荐的影响`
+1. `details.bom-question-understanding` / `基本理解思路`
+2. `section.bom-question-current` / `当前结论`
+3. `details.bom-question-change` / `相较上一截面的变化`
+4. `details.bom-question-timeline` / `时间演化`
+5. `details.bom-question-materials` / `映射材料`
+6. `details.bom-question-coverage` / `信息覆盖`
 
-The internal node playbook continues to store the judgment model and causal stages as separate domain fields. The public `研究逻辑链` compiles them into one card and must contain:
+`基本理解思路` contains only:
 
-- judgment model name, purpose, formula, and conclusion rule once;
-- one row per exact causal stage;
-- for each row: why the stage matters, what metric family will test it, and how the stage will be judged;
-- no observed metric values, source plans, raw searches, or verdict prose.
+- the question's professional model and purpose;
+- one concise formula or reasoning rule;
+- an optional short arrow-separated logic hint;
+- an explicit note that the hint is for orientation, not an evidence whitelist.
 
-Do not render separate public `判断模型` or `具体逻辑链条` cards. Do not repeat the model's key questions or metric families outside their corresponding causal rows.
+Do not render one evidence card per logic-hint row. Newly discovered entities, metrics, mechanisms, and counterarguments enter through mapped claims even when the original hint did not mention them.
 
-Every integrated stage card contains three collapsed `bom-stage-subcard` elements:
+### Current Conclusion and Change
 
-- `Metric 历史与现状`
-- `市场的未来预期`
-- `第一性原理评估`
+`当前结论` is visible after the question card opens. It contains conclusion, strength, supporting mechanism, main refutation, target impact, latest material date, and claim-level links.
 
-The conclusion appears after evidence, never before it.
+`相较上一截面的变化` may claim a change only when a real prior structured snapshot exists. A migrated project with no prior snapshot must say it is the baseline and must not reconstruct old conclusions from hindsight.
 
-### Metric History
+### Time Evolution and Mapped Materials
 
-For each logic link, choose concrete, collectible metrics before searching. A metric definition names subject/owner, exact field, unit, frequency, preferred source, and point-count expectation.
+`时间演化` is ordered by `published_at` and shows material information in market-visible order. Each row includes date, source, claim type, stance, statement, effective period, target period, and link. Research-revision rows are separate from source rows and preserve previous conclusion, current conclusion, trigger claims, and target impact.
 
-Render:
+`映射材料` supports fact, forecast, opinion, message, valuation, and refutation records. One document may create several atomic claims and may map to several questions. Each claim preserves:
 
-- one `metric-history-group` per selected metric;
-- metric name once in `metric-history-caption` as a blue `metric-history-name` link;
-- definition once in `metric-history-definition`;
-- actual observations in `metric-history-table`;
-- `期间 / 截点` and mapped `实际时间` for every fiscal period;
-- `metric-trend-gap` when fewer than five same-definition actual points exist.
+- `published_at`: when the market could know it;
+- `effective_period`: which actual period it describes;
+- `target_period`: which future period it forecasts;
+- `ingested_at`: when the system received it;
+- source type, stance, entity, metric, mapping origin, and confidence when available.
 
-Do not mix guidance, consensus, TAM, or target values into actual history. For multi-company same-definition metrics, use tables rather than multi-line charts. Wide tables must sit inside `table-scroll`.
+Source material that cannot yet be mapped remains visible in an internal `unmapped/new_theme` queue. It is never silently dropped or forced into an unsuitable question.
 
-### Market Expectations
+Required public temporal components are:
 
-Use direct `expectation-table-group` blocks inside the expectation subcard. One entity/institution gets one full-width `bom-expectation-table`.
+- `bom-temporal-baseline` for an honest first snapshot with no invented history;
+- `bom-material-timeline` for publication-order evolution;
+- `bom-mapped-material-table` for atomic claim inspection;
+- `bom-coverage-status` for question-level completeness and gaps.
 
-Columns are:
+### Information Coverage
 
-- `公司 / 机构`
-- `现状期间`
-- `现状实际时间`
-- `现状口径 / 数值`
-- `指引期间`
-- `指引实际时间`
-- `预期 / 指引口径 / 数值`
-- `口径说明 / 投资含义`
+`信息覆盖` is compact and question-level. It displays:
 
-The company/institution cell is a blue source link. Current results are baselines, not expectations. Only explicit guidance, forecast, consensus, TAM, target, or customer budget is a forward expectation. Explain proxy or fiscal-calendar mismatches.
+- actual, forecast, opinion, message, valuation, and refutation claim counts;
+- supporting and conflicting claim counts;
+- earliest and latest material dates;
+- coverage status and explicit gaps;
+- whether a prior thesis snapshot exists.
 
-### First Principles
-
-For the same logic link, state:
-
-- why the mechanism can continue;
-- how efficiency, substitution, supply release, budget, or ROI can break it;
-- current judgment and confidence.
+Coverage is not measured by raw source count alone. Completion requires question-specific parsing, source diversity, recency, forward evidence, and observed counterevidence or an explicit gap.
 
 ### BOM S-Curve Rollup
 
@@ -135,7 +151,7 @@ Render one collapsed `details.bom-s-curve-stage-card` after the six questions. I
 - `bom-stage-next-signal`
 - `bom-stage-downgrade-signal`
 
-The stage is pending unless all six questions pass semantic completion. Every question needs persisted Universe, direct/Exa, and metric-candidate plans plus completed per-source parsing and strengthening evidence. Q6 requires observed refuting evidence, not only a list of hypothetical risks.
+The stage is pending unless all six questions pass semantic completion. Every question needs persisted source planning, question-specific atomic parsing, temporal coverage, and strengthening evidence. Q6 requires observed refuting evidence, not only a list of hypothetical risks.
 
 ### Optional Deepening Modules
 
@@ -164,9 +180,13 @@ Each target must expose:
 
 Use `state-actionable_long`, `state-watch_only`, and `state-no_action` classes.
 
+The parent report shows the aggregated chain-wide target list. A BOM child shows only targets whose canonical `thesis_node_id` matches that child. Updating one child must not rewrite sibling target evidence; parent aggregation may be regenerated after the child result is accepted.
+
 ## 4. Source Index
 
 Render one collapsed `source-collapse` with source ID, linked title, bucket, visible date, and concise use summary.
+
+The parent may index the complete chain source set. A BOM child indexes only sources selected by that node's six questions or its mapped targets.
 
 Claim-level links in the report are mandatory; source chips and the index are audit supplements, not substitutes.
 
@@ -177,7 +197,7 @@ Claim-level links in the report are mandatory; source chips and the index are au
 - Tables use stable columns and local horizontal `table-scroll`.
 - Text never overflows or overlaps.
 - Keep the existing restrained Apple-like visual language and canonical component family.
-- Do not render raw search queries, parser traces, framework explanations, or change logs.
+- Do not render raw search queries, parser traces, framework explanations, or framework change logs. Thesis-revision history is research content and remains visible.
 
 ## Historical Backtest Lock
 
@@ -188,18 +208,21 @@ Freeze recommendations before attaching labels. Later price data appears only in
 ## Non-Drift Locks
 
 1. Four-section hierarchy lock.
-2. Canonical BOM ID/name lock.
-3. BOM six-question semantic gate lock.
-4. Backtest time-slice lock.
-5. Frontend card and table-scroll lock.
-6. Public no-changelog lock.
+2. Parent/manifest/child path and identity lock.
+3. Canonical BOM ID/name lock.
+4. BOM six-question semantic gate lock.
+5. Backtest time-slice lock.
+6. Frontend card and table-scroll lock.
+7. Public no-changelog lock.
 
 ## Validation Requirements
 
 `framework_contracts.py` and domain quality gates must validate semantics, not only HTML classes:
 
 - four-section order;
-- required BOM/card sequence;
+- `industry-index` has a supply-chain module and `bom-project-index`, with no embedded six-question modules;
+- each `bom-node` child has exactly one BOM module, six cards, one rollup, and a parent link;
+- parent manifest and child directories have exact one-to-one identity coverage;
 - actual-history and future-expectation separation;
 - source links and table overflow;
 - six-question completion and Q6 refutation;

@@ -27,7 +27,9 @@ This contract applies across industries. HBM is an implementation example, not a
 
 The required mapping is:
 
-`one canonical BOM node -> one node-specific playbook -> one cutoff-frozen research run -> one report module`
+`one industry-chain project -> one boms/<node_id>/ child project per canonical node`
+
+`one canonical BOM node -> one six-question playbook -> one temporal ledger -> reproducible as-of snapshots -> one independent BOM report`
 
 Before source collection, the application must compare the canonical BOM registry with the playbook registry. Their node-ID sets must match exactly. Missing, duplicate, extra, generic-fallback, or renderer-owned playbooks fail the contract.
 
@@ -36,13 +38,12 @@ Each node playbook defines:
 1. Stable identity and boundary: node ID, public name, description, explicit exclusions, inputs, outputs, downstream recipients, representative companies, and financial validation metrics.
 2. Node-specific master equations or causal formulas for demand, market value, effective supply, and investment odds.
 3. Exactly six question playbooks: demand, supply, control, financial realization, pricing, and refutation.
-4. Four to seven causal stages per question.
-5. One primary metric, one or two cross-check metrics, and one refutation metric for every stage.
+4. An optional short reasoning hint for each question. It may name common mechanisms or metrics, but it is not a mandatory evidence path.
+5. A purpose, formula, conclusion rule, and failure condition for every question.
 
-The judgment model and causal stages are separate domain fields because they answer different engineering questions: the model defines the formula and conclusion rule; the stages define the causal path to test. This separation is internal only. The canonical public renderer compiles both into one `研究逻辑链` card, so changing HTML presentation never changes the domain playbook and changing a playbook never introduces renderer classes.
-6. A purpose, formula, conclusion rule, and failure condition for every question.
+The judgment model defines the formula and conclusion rule. Optional logic hints orient a non-specialist reader but never determine which materials are admissible or whether a question is complete. Changing HTML presentation never changes the domain playbook, and discovering a new mechanism does not require rewriting old evidence.
 
-Stable domain playbooks must not contain report dates, source IDs, observations, conclusions, gaps, target states, or CSS. One cutoff-frozen research run owns those changing fields and must match the playbook's node, question, and stage IDs exactly.
+Stable domain playbooks must not contain report dates, source IDs, observations, conclusions, gaps, target states, or CSS. The append-only temporal ledger owns documents and atomic claims; as-of snapshots own changing conclusions.
 
 Shared labels do not justify shared mechanics. The playbook author must derive each chain from the node itself. Examples:
 
@@ -52,7 +53,9 @@ Shared labels do not justify shared mechanics. The playbook author must derive e
 - Power/cooling supply may run through equipment capacity, component lead times, grid/site readiness, engineering labor, commissioning, and backlog conversion.
 - System delivery may run through accelerator allocation, component availability, rack integration, customer acceptance, deployment, and cash conversion.
 
-Do not search until the node-specific stages and metric plan exist. Do not render a node until a matching research run exists. Do not assert a node stage until all six questions pass semantic completion.
+Use a dual loop. Pull search responds to six-question coverage gaps. Push ingestion maps filings, reports, news, opinions, and user databases into the same ledger. A child project may render as `partial_research`, but it must not claim semantic completion. Do not assert a node stage until all six questions pass semantic completion.
+
+The public sequence is `基本理解思路 -> 当前结论 -> 相较上一截面的变化 -> 时间演化 -> 映射材料 -> 信息覆盖`. This presentation sequence does not alter the domain model or constrain material discovery.
 
 ## Mechanism Depth Protocol
 

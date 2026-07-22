@@ -10,14 +10,13 @@
       "question_number": 1,
       "question": "当前 BOM 的需求是否会被 S 曲线放大拉动？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -41,15 +40,35 @@
           "platform revenue"
         ]
       },
-      "metric_candidate_plan": {
-        "rule": "one primary metric per causal stage plus one or two cross-checks and one refutation metric",
-        "candidate_classes": [
-          "usage",
-          "elasticity",
-          "capital commitment",
-          "physical orders",
-          "financial realization"
-        ]
+      "claim_mapping_plan": {
+        "coordinate": "compute x Q1 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
+          "refutation"
+        ],
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-OPENAI-CHATGPT-WORK-202602",
@@ -627,14 +646,13 @@
       "question_number": 2,
       "question": "供给能否跟上？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -657,15 +675,35 @@
           "qualified delivery"
         ]
       },
-      "metric_candidate_plan": {
-        "rule": "one primary metric per causal stage plus one or two cross-checks and one refutation metric",
-        "candidate_classes": [
-          "wafer/yield",
-          "packaging",
-          "memory",
-          "system ramp",
-          "delivery"
-        ]
+      "claim_mapping_plan": {
+        "coordinate": "compute x Q2 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
+          "refutation"
+        ],
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-TSM-Q4-2025",
@@ -872,14 +910,13 @@
       "question_number": 3,
       "question": "谁控制供给？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -902,15 +939,35 @@
           "substitution"
         ]
       },
-      "metric_candidate_plan": {
-        "rule": "one primary metric per causal stage plus one or two cross-checks and one refutation metric",
-        "candidate_classes": [
-          "share",
-          "ecosystem",
-          "TCO",
-          "lock-in",
-          "second-source"
-        ]
+      "claim_mapping_plan": {
+        "coordinate": "compute x Q3 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
+          "refutation"
+        ],
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-NVDA-FY26-Q4",
@@ -1165,14 +1222,13 @@
       "question_number": 4,
       "question": "是否已经财务兑现？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -1194,15 +1250,35 @@
           "cash flow"
         ]
       },
-      "metric_candidate_plan": {
-        "rule": "one primary metric per causal stage plus one or two cross-checks and one refutation metric",
-        "candidate_classes": [
-          "revenue",
-          "unit economics",
-          "profit",
-          "orders/guidance",
-          "cash conversion"
-        ]
+      "claim_mapping_plan": {
+        "coordinate": "compute x Q4 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
+          "refutation"
+        ],
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-NVDA-FY23-Q4",
@@ -1489,14 +1565,13 @@
       "question_number": 5,
       "question": "市场是否已定价？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -1517,14 +1592,35 @@
           "reverse DCF"
         ]
       },
-      "metric_candidate_plan": {
-        "rule": "one primary metric per causal stage plus one or two cross-checks and one refutation metric",
-        "candidate_classes": [
+      "claim_mapping_plan": {
+        "coordinate": "compute x Q5 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
           "valuation",
-          "implied path",
-          "expectations",
-          "scenario odds"
-        ]
+          "refutation"
+        ],
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-NVDA-FY26-Q4",
@@ -1625,14 +1721,13 @@
       "question_number": 6,
       "question": "反证是什么？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -1655,15 +1750,35 @@
           "financial/valuation"
         ]
       },
-      "metric_candidate_plan": {
-        "rule": "one primary metric per causal stage plus one or two cross-checks and one refutation metric",
-        "candidate_classes": [
-          "demand/ROI",
-          "efficiency",
-          "substitution",
-          "regulation",
-          "financial trigger"
-        ]
+      "claim_mapping_plan": {
+        "coordinate": "compute x Q6 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
+          "refutation"
+        ],
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-OMDIA-AI-PROCESSORS-20250828",
@@ -1891,14 +2006,13 @@
       "question_number": 1,
       "question": "当前 BOM 的需求是否会被 S 曲线放大拉动？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -1931,20 +2045,35 @@
         "retrieval_status": "completed",
         "gap_rule": "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02"
       },
-      "metric_candidate_plan": {
-        "rule": "logic stage first, metric second: every logic stage must choose heterogeneous metrics before search, then run one search/parse loop per metric rather than reusing one broad evidence pool",
-        "candidate_classes": [
-          "direct demand",
-          "usage intensity",
-          "workflow/task complexity",
-          "enterprise adoption",
-          "budget/order",
-          "BOM pull-through",
-          "financial realization",
+      "claim_mapping_plan": {
+        "coordinate": "manufacturing x Q1 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
           "refutation"
         ],
-        "selected_stage_count": 4,
-        "selected_metric_count": 4
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "do not reject evidence merely because it was absent from the initial logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "opinions"
+        ],
+        "parse_rule": "one document may yield multiple atomic claims and map to multiple six-question coordinates"
       },
       "source_ids": [
         "SRC-TSM-Q4-2025",
@@ -2026,14 +2155,13 @@
       "question_number": 2,
       "question": "供给能否跟上？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -2066,20 +2194,35 @@
         "retrieval_status": "completed",
         "gap_rule": "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02"
       },
-      "metric_candidate_plan": {
-        "rule": "logic stage first, metric second: every logic stage must choose heterogeneous metrics before search, then run one search/parse loop per metric rather than reusing one broad evidence pool",
-        "candidate_classes": [
-          "direct demand",
-          "usage intensity",
-          "workflow/task complexity",
-          "enterprise adoption",
-          "budget/order",
-          "BOM pull-through",
-          "financial realization",
+      "claim_mapping_plan": {
+        "coordinate": "manufacturing x Q2 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
           "refutation"
         ],
-        "selected_stage_count": 4,
-        "selected_metric_count": 4
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "do not reject evidence merely because it was absent from the initial logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "opinions"
+        ],
+        "parse_rule": "one document may yield multiple atomic claims and map to multiple six-question coordinates"
       },
       "source_ids": [
         "SRC-TSM-Q4-2025",
@@ -2164,14 +2307,13 @@
       "question_number": 3,
       "question": "谁控制供给？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -2204,20 +2346,35 @@
         "retrieval_status": "completed",
         "gap_rule": "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02"
       },
-      "metric_candidate_plan": {
-        "rule": "logic stage first, metric second: every logic stage must choose heterogeneous metrics before search, then run one search/parse loop per metric rather than reusing one broad evidence pool",
-        "candidate_classes": [
-          "direct demand",
-          "usage intensity",
-          "workflow/task complexity",
-          "enterprise adoption",
-          "budget/order",
-          "BOM pull-through",
-          "financial realization",
+      "claim_mapping_plan": {
+        "coordinate": "manufacturing x Q3 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
           "refutation"
         ],
-        "selected_stage_count": 4,
-        "selected_metric_count": 4
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "do not reject evidence merely because it was absent from the initial logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "opinions"
+        ],
+        "parse_rule": "one document may yield multiple atomic claims and map to multiple six-question coordinates"
       },
       "source_ids": [
         "SRC-TSM-Q4-2025",
@@ -2299,14 +2456,13 @@
       "question_number": 4,
       "question": "是否已经财务兑现？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -2339,20 +2495,35 @@
         "retrieval_status": "completed",
         "gap_rule": "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02"
       },
-      "metric_candidate_plan": {
-        "rule": "logic stage first, metric second: every logic stage must choose heterogeneous metrics before search, then run one search/parse loop per metric rather than reusing one broad evidence pool",
-        "candidate_classes": [
-          "direct demand",
-          "usage intensity",
-          "workflow/task complexity",
-          "enterprise adoption",
-          "budget/order",
-          "BOM pull-through",
-          "financial realization",
+      "claim_mapping_plan": {
+        "coordinate": "manufacturing x Q4 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
           "refutation"
         ],
-        "selected_stage_count": 4,
-        "selected_metric_count": 4
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "do not reject evidence merely because it was absent from the initial logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "opinions"
+        ],
+        "parse_rule": "one document may yield multiple atomic claims and map to multiple six-question coordinates"
       },
       "source_ids": [
         "SRC-TSM-Q4-2025",
@@ -2437,14 +2608,13 @@
       "question_number": 5,
       "question": "市场是否已定价？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -2477,20 +2647,35 @@
         "retrieval_status": "completed",
         "gap_rule": "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02"
       },
-      "metric_candidate_plan": {
-        "rule": "logic stage first, metric second: every logic stage must choose heterogeneous metrics before search, then run one search/parse loop per metric rather than reusing one broad evidence pool",
-        "candidate_classes": [
-          "direct demand",
-          "usage intensity",
-          "workflow/task complexity",
-          "enterprise adoption",
-          "budget/order",
-          "BOM pull-through",
-          "financial realization",
+      "claim_mapping_plan": {
+        "coordinate": "manufacturing x Q5 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
           "refutation"
         ],
-        "selected_stage_count": 4,
-        "selected_metric_count": 4
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "do not reject evidence merely because it was absent from the initial logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "opinions"
+        ],
+        "parse_rule": "one document may yield multiple atomic claims and map to multiple six-question coordinates"
       },
       "source_ids": [
         "SRC-TSM-Q4-2025",
@@ -2572,14 +2757,13 @@
       "question_number": 6,
       "question": "反证是什么？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -2612,20 +2796,35 @@
         "retrieval_status": "completed",
         "gap_rule": "same-metric history requires at least five comparable points; if fewer, render metric-trend-gap and keep forecasts in 03 rather than 02"
       },
-      "metric_candidate_plan": {
-        "rule": "logic stage first, metric second: every logic stage must choose heterogeneous metrics before search, then run one search/parse loop per metric rather than reusing one broad evidence pool",
-        "candidate_classes": [
-          "direct demand",
-          "usage intensity",
-          "workflow/task complexity",
-          "enterprise adoption",
-          "budget/order",
-          "BOM pull-through",
-          "financial realization",
+      "claim_mapping_plan": {
+        "coordinate": "manufacturing x Q6 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
           "refutation"
         ],
-        "selected_stage_count": 4,
-        "selected_metric_count": 4
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "do not reject evidence merely because it was absent from the initial logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "opinions"
+        ],
+        "parse_rule": "one document may yield multiple atomic claims and map to multiple six-question coordinates"
       },
       "source_ids": [
         "SRC-TSM-Q4-2025",
@@ -2707,14 +2906,13 @@
       "question_number": 1,
       "question": "当前 BOM 的需求是否会被 S 曲线放大拉动？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -2735,14 +2933,35 @@
           "HBM bit/TAM"
         ]
       },
-      "metric_candidate_plan": {
-        "rule": "one primary metric per causal stage plus cross-check and refutation metric",
-        "candidate_classes": [
-          "accelerator volume",
-          "unit content",
-          "generation mix",
-          "total bit/value"
-        ]
+      "claim_mapping_plan": {
+        "coordinate": "memory x Q1 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
+          "refutation"
+        ],
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-NVDA-FY26-Q4",
@@ -2900,14 +3119,13 @@
       "question_number": 2,
       "question": "供给能否跟上？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -2929,15 +3147,35 @@
           "contract coverage"
         ]
       },
-      "metric_candidate_plan": {
-        "rule": "follow the effective-supply funnel",
-        "candidate_classes": [
-          "wafer",
-          "yield",
-          "stacking/packaging",
-          "qualification",
-          "qualified delivery"
-        ]
+      "claim_mapping_plan": {
+        "coordinate": "memory x Q2 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
+          "refutation"
+        ],
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-MU-FY26-Q1-PREPARED",
@@ -3062,14 +3300,13 @@
       "question_number": 3,
       "question": "谁控制供给？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -3090,15 +3327,35 @@
           "second source"
         ]
       },
-      "metric_candidate_plan": {
-        "rule": "share must be qualified by generation and customer",
-        "candidate_classes": [
-          "qualified share",
-          "generation lead",
-          "time to volume",
-          "contract lock",
-          "second source"
-        ]
+      "claim_mapping_plan": {
+        "coordinate": "memory x Q3 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
+          "refutation"
+        ],
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-TF-HBM-SHARE-20260309",
@@ -3218,14 +3475,13 @@
       "question_number": 4,
       "question": "是否已经财务兑现？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -3247,15 +3503,35 @@
           "cash flow"
         ]
       },
-      "metric_candidate_plan": {
-        "rule": "bridge price-volume to cash flow",
-        "candidate_classes": [
-          "HBM revenue",
-          "mix",
-          "margin",
-          "capital intensity",
-          "FCF"
-        ]
+      "claim_mapping_plan": {
+        "coordinate": "memory x Q4 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
+          "refutation"
+        ],
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-SKHYNIX-FY24",
@@ -3440,14 +3716,13 @@
       "question_number": 5,
       "question": "市场是否已定价？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -3470,14 +3745,35 @@
           "consensus revisions"
         ]
       },
-      "metric_candidate_plan": {
-        "rule": "no pricing verdict without as-of valuation and implied path",
-        "candidate_classes": [
+      "claim_mapping_plan": {
+        "coordinate": "memory x Q5 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
           "valuation",
-          "implied HBM path",
-          "revisions",
-          "scenario odds"
-        ]
+          "refutation"
+        ],
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-SKHYNIX-FY25",
@@ -3557,14 +3853,13 @@
       "question_number": 6,
       "question": "反证是什么？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "completed",
@@ -3586,15 +3881,35 @@
           "financial trigger"
         ]
       },
-      "metric_candidate_plan": {
-        "rule": "each thesis link needs an observed refuting source or explicit not-triggered metric",
-        "candidate_classes": [
-          "demand",
-          "content",
-          "supply",
-          "control",
-          "financial/pricing"
-        ]
+      "claim_mapping_plan": {
+        "coordinate": "memory x Q6 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
+          "refutation"
+        ],
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-TF-HBM-BULLETIN-20260320",
@@ -3757,14 +4072,13 @@
       "question_number": 1,
       "question": "当前 BOM 的需求是否会被 S 曲线放大拉动？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -3789,19 +4103,35 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
-      "metric_candidate_plan": {
-        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
-        "candidate_classes": [
-          "direct demand",
-          "usage intensity",
-          "workflow/task complexity",
-          "enterprise adoption",
-          "customer budget/order",
-          "BOM pull-through",
-          "financial realization",
+      "claim_mapping_plan": {
+        "coordinate": "network x Q1 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
           "refutation"
         ],
-        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-SA-OPTICAL-2024",
@@ -3879,14 +4209,13 @@
       "question_number": 2,
       "question": "供给能否跟上？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -3911,19 +4240,35 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
-      "metric_candidate_plan": {
-        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
-        "candidate_classes": [
-          "direct demand",
-          "usage intensity",
-          "workflow/task complexity",
-          "enterprise adoption",
-          "customer budget/order",
-          "BOM pull-through",
-          "financial realization",
+      "claim_mapping_plan": {
+        "coordinate": "network x Q2 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
           "refutation"
         ],
-        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-SA-OPTICAL-2024",
@@ -3984,14 +4329,13 @@
       "question_number": 3,
       "question": "谁控制供给？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -4016,19 +4360,35 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
-      "metric_candidate_plan": {
-        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
-        "candidate_classes": [
-          "direct demand",
-          "usage intensity",
-          "workflow/task complexity",
-          "enterprise adoption",
-          "customer budget/order",
-          "BOM pull-through",
-          "financial realization",
+      "claim_mapping_plan": {
+        "coordinate": "network x Q3 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
           "refutation"
         ],
-        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-ALAB-Q4-2025",
@@ -4125,14 +4485,13 @@
       "question_number": 4,
       "question": "是否已经财务兑现？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -4157,19 +4516,35 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
-      "metric_candidate_plan": {
-        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
-        "candidate_classes": [
-          "direct demand",
-          "usage intensity",
-          "workflow/task complexity",
-          "enterprise adoption",
-          "customer budget/order",
-          "BOM pull-through",
-          "financial realization",
+      "claim_mapping_plan": {
+        "coordinate": "network x Q4 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
           "refutation"
         ],
-        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-ALAB-Q4-2025",
@@ -4270,14 +4645,13 @@
       "question_number": 5,
       "question": "市场是否已定价？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -4302,19 +4676,35 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
-      "metric_candidate_plan": {
-        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
-        "candidate_classes": [
-          "direct demand",
-          "usage intensity",
-          "workflow/task complexity",
-          "enterprise adoption",
-          "customer budget/order",
-          "BOM pull-through",
-          "financial realization",
+      "claim_mapping_plan": {
+        "coordinate": "network x Q5 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
           "refutation"
         ],
-        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-ALAB-Q4-2025",
@@ -4373,14 +4763,13 @@
       "question_number": 6,
       "question": "反证是什么？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -4405,19 +4794,35 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
-      "metric_candidate_plan": {
-        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
-        "candidate_classes": [
-          "direct demand",
-          "usage intensity",
-          "workflow/task complexity",
-          "enterprise adoption",
-          "customer budget/order",
-          "BOM pull-through",
-          "financial realization",
+      "claim_mapping_plan": {
+        "coordinate": "network x Q6 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
           "refutation"
         ],
-        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-SA-OPTICAL-2024",
@@ -4476,14 +4881,13 @@
       "question_number": 1,
       "question": "当前 BOM 的需求是否会被 S 曲线放大拉动？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -4508,19 +4912,35 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
-      "metric_candidate_plan": {
-        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
-        "candidate_classes": [
-          "direct demand",
-          "usage intensity",
-          "workflow/task complexity",
-          "enterprise adoption",
-          "customer budget/order",
-          "BOM pull-through",
-          "financial realization",
+      "claim_mapping_plan": {
+        "coordinate": "powerCooling x Q1 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
           "refutation"
         ],
-        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-VRT-Q4-2025",
@@ -4598,14 +5018,13 @@
       "question_number": 2,
       "question": "供给能否跟上？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -4630,19 +5049,35 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
-      "metric_candidate_plan": {
-        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
-        "candidate_classes": [
-          "direct demand",
-          "usage intensity",
-          "workflow/task complexity",
-          "enterprise adoption",
-          "customer budget/order",
-          "BOM pull-through",
-          "financial realization",
+      "claim_mapping_plan": {
+        "coordinate": "powerCooling x Q2 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
           "refutation"
         ],
-        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-VRT-Q4-2025",
@@ -4703,14 +5138,13 @@
       "question_number": 3,
       "question": "谁控制供给？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -4735,19 +5169,35 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
-      "metric_candidate_plan": {
-        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
-        "candidate_classes": [
-          "direct demand",
-          "usage intensity",
-          "workflow/task complexity",
-          "enterprise adoption",
-          "customer budget/order",
-          "BOM pull-through",
-          "financial realization",
+      "claim_mapping_plan": {
+        "coordinate": "powerCooling x Q3 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
           "refutation"
         ],
-        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-VRT-Q4-2025",
@@ -4806,14 +5256,13 @@
       "question_number": 4,
       "question": "是否已经财务兑现？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -4838,19 +5287,35 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
-      "metric_candidate_plan": {
-        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
-        "candidate_classes": [
-          "direct demand",
-          "usage intensity",
-          "workflow/task complexity",
-          "enterprise adoption",
-          "customer budget/order",
-          "BOM pull-through",
-          "financial realization",
+      "claim_mapping_plan": {
+        "coordinate": "powerCooling x Q4 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
           "refutation"
         ],
-        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-VRT-Q4-2025"
@@ -4891,14 +5356,13 @@
       "question_number": 5,
       "question": "市场是否已定价？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -4923,19 +5387,35 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
-      "metric_candidate_plan": {
-        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
-        "candidate_classes": [
-          "direct demand",
-          "usage intensity",
-          "workflow/task complexity",
-          "enterprise adoption",
-          "customer budget/order",
-          "BOM pull-through",
-          "financial realization",
+      "claim_mapping_plan": {
+        "coordinate": "powerCooling x Q5 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
           "refutation"
         ],
-        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-VRT-Q4-2025"
@@ -4975,14 +5455,13 @@
       "question_number": 6,
       "question": "反证是什么？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -5007,19 +5486,35 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
-      "metric_candidate_plan": {
-        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
-        "candidate_classes": [
-          "direct demand",
-          "usage intensity",
-          "workflow/task complexity",
-          "enterprise adoption",
-          "customer budget/order",
-          "BOM pull-through",
-          "financial realization",
+      "claim_mapping_plan": {
+        "coordinate": "powerCooling x Q6 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
           "refutation"
         ],
-        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-VRT-Q4-2025",
@@ -5078,14 +5573,13 @@
       "question_number": 1,
       "question": "当前 BOM 的需求是否会被 S 曲线放大拉动？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -5110,19 +5604,35 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
-      "metric_candidate_plan": {
-        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
-        "candidate_classes": [
-          "direct demand",
-          "usage intensity",
-          "workflow/task complexity",
-          "enterprise adoption",
-          "customer budget/order",
-          "BOM pull-through",
-          "financial realization",
+      "claim_mapping_plan": {
+        "coordinate": "system x Q1 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
           "refutation"
         ],
-        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-DELL-FY26-Q4",
@@ -5181,14 +5691,13 @@
       "question_number": 2,
       "question": "供给能否跟上？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -5213,19 +5722,35 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
-      "metric_candidate_plan": {
-        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
-        "candidate_classes": [
-          "direct demand",
-          "usage intensity",
-          "workflow/task complexity",
-          "enterprise adoption",
-          "customer budget/order",
-          "BOM pull-through",
-          "financial realization",
+      "claim_mapping_plan": {
+        "coordinate": "system x Q2 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
           "refutation"
         ],
-        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-DELL-FY26-Q4",
@@ -5286,14 +5811,13 @@
       "question_number": 3,
       "question": "谁控制供给？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -5318,19 +5842,35 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
-      "metric_candidate_plan": {
-        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
-        "candidate_classes": [
-          "direct demand",
-          "usage intensity",
-          "workflow/task complexity",
-          "enterprise adoption",
-          "customer budget/order",
-          "BOM pull-through",
-          "financial realization",
+      "claim_mapping_plan": {
+        "coordinate": "system x Q3 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
           "refutation"
         ],
-        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-DELL-FY26-Q4",
@@ -5389,14 +5929,13 @@
       "question_number": 4,
       "question": "是否已经财务兑现？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -5421,19 +5960,35 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
-      "metric_candidate_plan": {
-        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
-        "candidate_classes": [
-          "direct demand",
-          "usage intensity",
-          "workflow/task complexity",
-          "enterprise adoption",
-          "customer budget/order",
-          "BOM pull-through",
-          "financial realization",
+      "claim_mapping_plan": {
+        "coordinate": "system x Q4 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
           "refutation"
         ],
-        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-DELL-FY26-Q4",
@@ -5494,14 +6049,13 @@
       "question_number": 5,
       "question": "市场是否已定价？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -5526,19 +6080,35 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
-      "metric_candidate_plan": {
-        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
-        "candidate_classes": [
-          "direct demand",
-          "usage intensity",
-          "workflow/task complexity",
-          "enterprise adoption",
-          "customer budget/order",
-          "BOM pull-through",
-          "financial realization",
+      "claim_mapping_plan": {
+        "coordinate": "system x Q5 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
           "refutation"
         ],
-        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-DELL-FY26-Q4"
@@ -5578,14 +6148,13 @@
       "question_number": 6,
       "question": "反证是什么？",
       "workflow_order": [
-        "judgment_model_design",
-        "logic_stage_design",
-        "metric_candidate_design",
-        "per_metric_external_search",
+        "six_question_coordinate_selection",
+        "coverage_gap_review",
+        "professional_universe_and_direct_search",
+        "external_material_ingestion",
         "source_parse",
-        "metric_history_and_gap_check",
-        "question_verdict",
-        "target_implication_rollup",
+        "atomic_claim_mapping",
+        "temporal_snapshot_synthesis",
         "bom_s_curve_stage_rollup_after_6_questions"
       ],
       "search_execution_status": "待逐问搜索",
@@ -5610,19 +6179,35 @@
         ],
         "gap_rule": "if same-metric history has fewer than five comparable points, render metric-trend-gap instead of inventing a curve"
       },
-      "metric_candidate_plan": {
-        "rule": "for every logic stage, select 4-8 heterogeneous candidate metrics before search; search each selected metric independently; render found series and explicit gaps",
-        "candidate_classes": [
-          "direct demand",
-          "usage intensity",
-          "workflow/task complexity",
-          "enterprise adoption",
-          "customer budget/order",
-          "BOM pull-through",
-          "financial realization",
+      "claim_mapping_plan": {
+        "coordinate": "system x Q6 x published_at",
+        "atomic_claim_types": [
+          "actual",
+          "forecast",
+          "opinion",
+          "message",
+          "valuation",
           "refutation"
         ],
-        "public_rendering": "raw search plans stay internal; public HTML shows metric groups, tables, source links, and gap status"
+        "required_time_fields": [
+          "published_at",
+          "effective_period",
+          "target_period",
+          "ingested_at"
+        ],
+        "discovery_rule": "material-discovered variables may enter the ledger even when they are absent from the reader-facing logic hint",
+        "unmapped_policy": "retain in unmapped/new_theme; never silently discard or force-map"
+      },
+      "external_material_ingestion_plan": {
+        "accepted_materials": [
+          "sell-side reports",
+          "company filings",
+          "earnings calls",
+          "industry research",
+          "news",
+          "named opinions"
+        ],
+        "parse_rule": "split every document into question-specific atomic claims before synthesis"
       },
       "source_ids": [
         "SRC-SMCI-FY26-Q2",
@@ -5676,9 +6261,9 @@
     }
   ],
   "bom_stage_rollup_policy": {
-    "workflow_order": "design_judgment_model_then_search_and_parse_each_bom_six_question_before_conclusion_and_target_impact_rollup",
+    "workflow_order": "keep_six_question_coordinates_then_run_pull_search_and_push_ingestion_into_an_append_only_temporal_claim_ledger_before_snapshot_synthesis",
     "local_cache_policy": "old local artifacts are caches only; they cannot replace fresh question-level search artifacts",
-    "public_rendering_policy": "show compact evidence status, judgment model, stage evidence, question conclusion, target impact, and BOM stage rollup; keep raw search plans in workbench artifacts"
+    "public_rendering_policy": "show basic understanding, current conclusion, real snapshot change, material timeline, mapped claims, coverage, and BOM rollup; keep raw search plans in workbench artifacts"
   },
   "source_extractions": [
     {

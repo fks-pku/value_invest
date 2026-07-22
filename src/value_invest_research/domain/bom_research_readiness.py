@@ -60,7 +60,7 @@ def build_bom_readiness(workbench: dict[str, Any]) -> dict[str, dict[str, Any]]:
             search_complete = _normalized(row.get("search_execution_status")) in COMPLETE_SEARCH_STATUSES
             planning_complete = all(
                 bool(row.get(field))
-                for field in ("source_universe_plan", "exa_search_plan", "metric_candidate_plan")
+                for field in ("source_universe_plan", "exa_search_plan", "claim_mapping_plan")
             )
             source_ids = _string_list(row.get("source_ids"))
             source_parse_records = [

@@ -68,9 +68,11 @@ For industry/theme S-curve research, first establish one canonical BOM taxonomy.
 
 Before source planning, every canonical BOM node must resolve to exactly one node-specific `BomNodePlaybook`. Exact node-ID coverage is required: no canonical node may be missing, duplicated, or silently handled by a generic fallback.
 
-The invariant is:
+The invariants are:
 
-`canonical node -> node-specific playbook -> cutoff-frozen research run -> report module`
+`industry-chain project -> boms/<node_id>/ child project`
+
+`canonical node -> six-question playbook -> temporal ledger -> as-of snapshots -> independent BOM report`
 
 Each node playbook owns only stable domain logic:
 
@@ -78,15 +80,14 @@ Each node playbook owns only stable domain logic:
 - inputs, product/output, downstream recipients, representative companies, and financial validation metrics;
 - node-specific master equations or causal formulas for demand, market value, effective supply, and investment odds;
 - exactly six question definitions;
-- 4-7 causal stages per question;
-- one primary metric, one or two cross-check metrics, and one refutation metric per stage;
+- an optional concise logic hint per question for reader orientation;
 - question-level formula, purpose, conclusion rule, and failure condition.
 
 The playbook must not contain source IDs, cutoff dates, observations, verdicts, gaps, target states, or HTML classes. Those belong respectively to the research run, evidence artifacts, target gate, and renderer.
 
-The shared six question labels do not imply shared causal stages. For example, HBM effective supply is a wafer/yield/stacking/packaging/qualification funnel, while power/cooling effective supply is an equipment/lead-time/site/grid/commissioning funnel. Reusing generic stages across unlike nodes is a contract failure.
+The shared six question labels do not imply one generic explanation. HBM and power/cooling may use different logic hints, but those hints remain revisable and must not exclude newly discovered evidence.
 
-Each cutoff-frozen node research run must match the playbook's question and stage IDs exactly and store stage-level actual history, forward expectations, first-principles assessment, source IDs, explicit gaps, and search/parse status.
+Each atomic claim must match one canonical node and one or more of its six question IDs. Claims preserve market-visible time, actual period, forecast period, source, stance, and mapping provenance. Each as-of snapshot preserves all six question conclusions and explicit coverage gaps.
 
 Each BOM node receives six internal/public research questions:
 
@@ -116,29 +117,32 @@ For every minimum question:
 
 Define object, formula/causal frame, evidence handles, conclusion rule, and failure condition.
 
-### B. Logic chain
+### B. Basic reasoning hint
 
-Write concrete links for the current BOM only. Do not put metric values into the chain.
+Write a short node-specific explanation that helps a non-specialist understand the question. It may name typical mechanisms, but it is not a search checklist.
 
-The model and logic chain remain separate internal inputs: the model owns the formula and pass/fail rule, while the chain owns the node-specific causal stages. The public report renderer must compile both into one `研究逻辑链` card. It must not expose two adjacent cards named `判断模型` and `具体逻辑链条`.
+The public renderer shows the model and hint once under `基本理解思路`. It must not generate one evidence card per hint row.
 
-### C. Per-link metric planning
+The public temporal sequence is `基本理解思路 -> 当前结论 -> 相较上一截面的变化 -> 时间演化 -> 映射材料 -> 信息覆盖`.
 
-Before search, choose heterogeneous candidates appropriate to that link: direct demand, usage intensity, workflow complexity, enterprise adoption, budget/order, BOM pull-through, supply/price, financial realization, valuation, or refutation.
+### C. Dual-loop material collection
+
+Pull research searches gaps under the six questions. Push ingestion continuously parses available external reports and approved feeds. Both loops create atomic claims and use the same question-specific verification rules.
 
 Choose concrete fields, not baskets. Example: `Microsoft commercial RPO ($B)` is valid; `cloud budget proxy` is not.
 
 ### D. Active search
 
-For each selected metric:
+For each identified evidence gap:
 
-1. Resolve professional Universe sources from `config/source_universes.json` through `SourceUniverseRepository`.
-2. Add official company/customer filings and justified specialist sources.
-3. Create a direct/Exa query for the exact question, logic link, metric, and cutoff.
-4. Search for at least one boundary/refuting source.
-5. Record selected source IDs or an explicit gap reason.
+1. Review the current six-question coverage gap.
+2. Resolve professional Universe sources from `config/source_universes.json` through `SourceUniverseRepository`.
+3. Add official company/customer filings and justified specialist sources.
+4. Create direct/Exa queries for the missing fact, forecast, opinion, valuation, or refutation evidence and enforce the cutoff.
+5. Ingest user-provided reports and other approved external materials through the same parsing path.
+6. Record selected source IDs or an explicit gap reason.
 
-One broad query cannot stand in for per-metric research.
+One broad query cannot stand in for active question-specific research. The reader-facing logic hint is not a search whitelist.
 
 ### E. Per-source parsing
 
@@ -158,18 +162,13 @@ Create one GPT verification record per extraction. Messages/opinions remain lead
 
 ### F. Evidence synthesis
 
-For every logic link, keep together:
+Split every source into atomic claims and map each claim to `BOM x six-question coordinate x published_at`. Preserve `effective_period`, `target_period`, and `ingested_at` separately. Facts, forecasts, opinions, messages, valuations, and refutations must remain distinguishable.
 
-- actual metric history/current observations;
-- explicit forward expectations;
-- first-principles support and break mechanisms;
-- source-backed conclusion and confidence.
-
-Actual history never includes guidance or forecasts. Claiming acceleration requires same-definition history or explicit YoY/multiple evidence. Claiming runway requires a cutoff-visible forward anchor and mechanism.
+The same source may yield several claims and map to several questions. Unmapped material remains in `unmapped/new_theme`; it is not silently dropped. Actual history never includes guidance or forecasts. Claiming acceleration requires same-definition history or explicit YoY/multiple evidence. Claiming runway requires a cutoff-visible forward anchor and mechanism.
 
 ## 6. Semantic Completion
 
-A BOM question is complete only when `source_universe_plan`, direct/Exa search plan, and `metric_candidate_plan` are non-empty and search, per-source parsing, source IDs, and evidence summary are complete. Q6 additionally requires explicit `refuting_source_ids` and `refutation_evidence_summary`.
+A BOM question is complete only when `source_universe_plan`, direct/Exa search plan, and `claim_mapping_plan` are non-empty and active search, per-source parsing, source IDs, and evidence summary are complete. `claim_mapping_plan` must preserve atomic claim types, the four time fields, and the unmapped-material policy. Q6 additionally requires explicit `refuting_source_ids` and `refutation_evidence_summary`.
 
 All six questions must pass before a BOM S-curve stage becomes a formal conclusion.
 
@@ -233,6 +232,22 @@ Default public order:
 4. `来源索引`
 
 Do not render internal `下钻 QA`, source plans, parser traces, or execution logs unless explicitly requested.
+
+For industry/theme/S-curve work, rendering uses this artifact topology:
+
+```text
+<industry_project>/
+  project.json
+  professional_report.html          # industry-index only
+  boms/manifest.json
+  boms/<node_id>/
+    project.json
+    sources.jsonl
+    research_run.json               # optional until the node is independently completed
+    professional_report.html        # exactly one BOM and its six questions
+```
+
+The parent report owns the chain map, BOM navigation, and aggregated targets. It does not duplicate child question content. A BOM child can be searched, parsed, scored, regenerated, and validated without regenerating the research content of sibling nodes. The manifest and canonical BOM registry must have exact ordered node-ID coverage.
 
 ## 10. Validation
 

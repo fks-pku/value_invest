@@ -75,19 +75,11 @@ def _build_question_row(
         for item in run_question.get("stages", [])
         if isinstance(item, dict)
     }
-    expected_stage_ids = {stage.stage_id for stage in question.stages}
-    if set(run_stages) != expected_stage_ids:
-        missing = sorted(expected_stage_ids - set(run_stages))
-        extra = sorted(set(run_stages) - expected_stage_ids)
-        raise ValueError(
-            f"{question.question_id} stage drift; missing={missing}, extra={extra}"
-        )
-
     chain_nodes: list[dict[str, Any]] = []
     future_cards: list[dict[str, Any]] = []
     source_ids: list[str] = []
     for stage in question.stages:
-        run_stage = run_stages[stage.stage_id]
+        run_stage = run_stages.get(stage.stage_id) or {}
         metric = _build_metric(stage, run_stage)
         stage_source_ids = _string_list(run_stage.get("source_ids"))
         metric["sourceIds"] = _dedupe([*metric.get("sourceIds", []), *stage_source_ids])
@@ -103,6 +95,24 @@ def _build_question_row(
             }
         )
         future_cards.append(_build_future_card(stage.title, run_stage, metric["sourceIds"]))
+
+    known_stage_ids = {stage.stage_id for stage in question.stages}
+    for stage_id, run_stage in run_stages.items():
+        if stage_id in known_stage_ids:
+            continue
+        metric = deepcopy(run_stage.get("metric") or {})
+        metric.setdefault("name", str(run_stage.get("title") or stage_id))
+        metric.setdefault("sourceIds", _string_list(run_stage.get("source_ids")))
+        chain_nodes.append(
+            {
+                "title": str(run_stage.get("title") or stage_id),
+                "question": "该材料主题是否影响当前六问结论？",
+                "role": "该主题来自本次材料解析，不是预设的强制因果环节。",
+                "status": str(run_stage.get("status") or "待验证"),
+                "metrics": [metric],
+                "sourceIds": metric["sourceIds"],
+            }
+        )
 
     question_source_ids = _dedupe(
         [
@@ -128,6 +138,21 @@ def _build_question_row(
                 for stage in question.stages
             ],
             "conclusionRule": question.conclusion_rule,
+        },
+        "understanding": {
+            "name": question.model_name,
+            "purpose": question.purpose,
+            "formula": question.formula,
+            "conclusionRule": question.conclusion_rule,
+            "logicHints": [
+                {
+                    "title": stage.title,
+                    "why": stage.role,
+                    "exampleMetric": stage.primary_metric,
+                }
+                for stage in question.stages
+            ],
+            "isEvidencePath": False,
         },
         "metricLogic": str(
             run_question.get("logic_summary")

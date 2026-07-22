@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "parent_project_id": "ai_factory_industry_scurve_timeslice_20260328",
+  "project_scope": "industry_chain",
+  "bom_root": "boms",
+  "nodes": [
+    {
+      "node_id": "compute",
+      "public_name": "计算加速器 / GPU / ASIC",
+      "child_project_id": "ai_factory_industry_scurve_timeslice_20260328__bom__compute",
+      "directory": "boms/compute",
+      "project_path": "boms/compute/project.json",
+      "report_path": "boms/compute/professional_report.html",
+      "sources_path": "boms/compute/sources.jsonl",
+      "research_run_path": "boms/compute/research_run.json",
+      "temporal_manifest_path": "boms/compute/temporal_manifest.json",
+      "ledger_directory": "boms/compute/ledger",
+      "snapshots_directory": "boms/compute/snapshots"
+    },
+    {
+      "node_id": "manufacturing",
+      "public_name": "先进制程与先进封装",
+      "child_project_id": "ai_factory_industry_scurve_timeslice_20260328__bom__manufacturing",
+      "directory": "boms/manufacturing",
+      "project_path": "boms/manufacturing/project.json",
+      "report_path": "boms/manufacturing/professional_report.html",
+      "sources_path": "boms/manufacturing/sources.jsonl",
+      "research_run_path": null,
+      "temporal_manifest_path": "boms/manufacturing/temporal_manifest.json",
+      "ledger_directory": "boms/manufacturing/ledger",
+      "snapshots_directory": "boms/manufacturing/snapshots"
+    },
+    {
+      "node_id": "memory",
+      "public_name": "HBM",
+      "child_project_id": "ai_factory_industry_scurve_timeslice_20260328__bom__memory",
+      "directory": "boms/memory",
+      "project_path": "boms/memory/project.json",
+      "report_path": "boms/memory/professional_report.html",
+      "sources_path": "boms/memory/sources.jsonl",
+      "research_run_path": "boms/memory/research_run.json",
+      "temporal_manifest_path": "boms/memory/temporal_manifest.json",
+      "ledger_directory": "boms/memory/ledger",
+      "snapshots_directory": "boms/memory/snapshots"
+    },
+    {
+      "node_id": "network",
+      "public_name": "高速连接与 AI 网络",
+      "child_project_id": "ai_factory_industry_scurve_timeslice_20260328__bom__network",
+      "directory": "boms/network",
+      "project_path": "boms/network/project.json",
+      "report_path": "boms/network/professional_report.html",
+      "sources_path": "boms/network/sources.jsonl",
+      "research_run_path": null,
+      "temporal_manifest_path": "boms/network/temporal_manifest.json",
+      "ledger_directory": "boms/network/ledger",
+      "snapshots_directory": "boms/network/snapshots"
+    },
+    {
+      "node_id": "powerCooling",
+      "public_name": "电力 / 液冷 / 数据中心基础设施",
+      "child_project_id": "ai_factory_industry_scurve_timeslice_20260328__bom__powerCooling",
+      "directory": "boms/powerCooling",
+      "project_path": "boms/powerCooling/project.json",
+      "report_path": "boms/powerCooling/professional_report.html",
+      "sources_path": "boms/powerCooling/sources.jsonl",
+      "research_run_path": null,
+      "temporal_manifest_path": "boms/powerCooling/temporal_manifest.json",
+      "ledger_directory": "boms/powerCooling/ledger",
+      "snapshots_directory": "boms/powerCooling/snapshots"
+    },
+    {
+      "node_id": "system",
+      "public_name": "服务器 / 机柜系统交付",
+      "child_project_id": "ai_factory_industry_scurve_timeslice_20260328__bom__system",
+      "directory": "boms/system",
+      "project_path": "boms/system/project.json",
+      "report_path": "boms/system/professional_report.html",
+      "sources_path": "boms/system/sources.jsonl",
+      "research_run_path": null,
+      "temporal_manifest_path": "boms/system/temporal_manifest.json",
+      "ledger_directory": "boms/system/ledger",
+      "snapshots_directory": "boms/system/snapshots"
+    }
+  ]
+}
