@@ -29,6 +29,6 @@ class ResearchOrchestrator:
         repository: ResearchProjectRepository,
         renderer: CanonicalReportRenderer,
         *,
-        filename: str = "professional_report.html",
+        filename: str = "professional_report.md",
     ) -> dict[str, Any]:
         return RenderResearchProjectReport(repository, renderer).execute(filename=filename)

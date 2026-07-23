@@ -37,3 +37,19 @@ class LeafResearchWorkflow(Protocol):
     def rollup_answers(self, root: Path, ticker: str) -> dict:
         """Roll leaf answers up to parent QA nodes."""
 
+
+class KnowledgeBaseMaterialFeed(Protocol):
+    """Outbound feed used to scan a user-owned knowledge base."""
+
+    @property
+    def provider_name(self) -> str:
+        """Stable provider name stored in the material ledger."""
+
+    def search_materials(
+        self,
+        *,
+        knowledge_base_id: str,
+        query: str,
+        max_results: int,
+    ) -> list[dict]:
+        """Return matching knowledge-base materials without classifying claims."""

@@ -1,0 +1,21 @@
+{
+  "project_id": "gpu_asic_bom_timeslice_20260328",
+  "title": "GPU / ASIC BOM 投资研究",
+  "report_scope": "standalone-bom",
+  "research_type": "standalone_bom",
+  "bom_node_id": "gpu_asic",
+  "run_mode": "historical_backtest",
+  "as_of_date": "2026-03-28",
+  "generated_at": "2026-07-23",
+  "question_model": "five-lens-timeline",
+  "question_labels": [
+    "需求侧",
+    "供给侧",
+    "技术侧",
+    "估值侧",
+    "ESG"
+  ],
+  "timeline_order": "published_at_desc",
+  "status": "completed",
+  "public_artifact": "professional_report.md"
+}

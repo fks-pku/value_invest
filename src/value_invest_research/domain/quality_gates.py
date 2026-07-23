@@ -14,6 +14,7 @@ from value_invest_research.framework_contracts import (
     validate_backtest_leakage_controls,
     validate_industry_space_source_search_pipeline,
     validate_report_contract_html,
+    validate_report_contract_markdown,
     validate_leaf_source_review_schema,
     validate_qa_tree_schema,
     validate_source_extraction_schema,
@@ -98,12 +99,21 @@ def validate_report_contract(
     mode: str = "historical_backtest",
     require_l3: bool = False,
 ) -> ReportContractValidationResult:
-    """Validate public report HTML without knowing how it was loaded."""
-    result = (
-        validate_report_contract_html(document.html, mode=mode, require_l3=require_l3)
-        if document.html
-        else {"ok": False, "issues": [], "summary": {"mode": mode}}
-    )
+    """Validate public report content without knowing its presentation adapter."""
+    if document.markdown:
+        result = validate_report_contract_markdown(
+            document.markdown,
+            mode=mode,
+            require_l3=require_l3,
+        )
+    elif document.html:
+        result = validate_report_contract_html(
+            document.html,
+            mode=mode,
+            require_l3=require_l3,
+        )
+    else:
+        result = {"ok": False, "issues": [], "summary": {"mode": mode}}
     all_issues = list(document.load_issues) + list(result.get("issues", []))
     ok = not any(issue.get("severity") == "error" for issue in all_issues)
     summary = result.get("summary", {})

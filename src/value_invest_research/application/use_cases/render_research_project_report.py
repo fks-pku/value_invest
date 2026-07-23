@@ -11,11 +11,11 @@ from value_invest_research.ports.repositories import ResearchProjectRepository
 
 @dataclass(frozen=True)
 class RenderResearchProjectReport:
-    """Orchestrate project artifact loading, view-model assembly, and HTML writing."""
+    """Orchestrate project artifact loading, view-model assembly, and report writing."""
 
     repository: ResearchProjectRepository
     renderer: CanonicalReportRenderer
 
-    def execute(self, *, filename: str = "professional_report.html") -> dict[str, Any]:
+    def execute(self, *, filename: str = "professional_report.md") -> dict[str, Any]:
         view_model = BuildReportViewModel(self.repository).execute()
         return self.renderer.write(Path(self.repository.project_dir_label), view_model, filename=filename)

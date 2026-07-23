@@ -20,13 +20,13 @@ class CanonicalReportRenderer(Protocol):
     """Outbound port for rendering the locked research-goal report contract."""
 
     def render(self, view_model: ReportViewModel) -> str:
-        """Render a report view model to public HTML."""
+        """Render a report view model to the adapter's public format."""
 
     def write(
         self,
         project_dir: Path,
         view_model: ReportViewModel,
         *,
-        filename: str = "professional_report.html",
+        filename: str = "professional_report.md",
     ) -> dict[str, Any]:
-        """Write public HTML and return stable result metadata."""
+        """Write the public report and return stable result metadata."""

@@ -23,7 +23,7 @@ Follow the hexagonal dependency rule in `docs/architecture/hexagonal_research_sy
 - `src/value_invest_research/domain/`: pure research rules, entities, scoring, readiness, and quality gates.
 - `src/value_invest_research/application/`: use cases. It may depend on domain and ports, never concrete adapters.
 - `src/value_invest_research/ports/`: repository, search, parser, renderer, and data protocols.
-- `src/value_invest_research/adapters/`: file system, Exa/search, LLM/DeepSeek, market data, CLI, and HTML implementations.
+- `src/value_invest_research/adapters/`: file system, Exa/search, LLM/DeepSeek, market data, CLI, Markdown, and compatibility HTML implementations.
 - `config/source_universes.json`: professional source universe registry.
 - `skills/value_invest_research/`: canonical workflow and presentation contracts.
 
@@ -31,7 +31,7 @@ New topics enter through:
 
 `ResearchGoal -> DomainPlaybook -> QuestionArchitecture -> SourcePlan -> SourceParse -> Synthesis -> TargetGate -> ReportViewModel -> CanonicalReportRenderer`
 
-Do not start a new topic from copied HTML. Renderers do not design questions or parse sources. Playbooks do not know CSS classes.
+Do not start a new topic from copied reports. Renderers do not design questions or parse sources. Playbooks do not know presentation syntax or CSS classes.
 
 ## Canonical Research Workflow
 
@@ -50,7 +50,7 @@ Use `investment-question-architect` and a domain playbook. Internal QA is adapti
 - L3: investment decision question.
 - L4/L5: optional research units when L3 still mixes companies, mechanisms, metrics, or models.
 
-Internal QA depth is preserved in `qa_tree.json`; it is not public HTML by default.
+Internal QA depth is preserved in `qa_tree.json`; it is not public Markdown by default.
 
 ### 3. Establish the BOM taxonomy
 
@@ -94,6 +94,28 @@ For each question:
 5. Append claims without overwriting prior claims; preserve unmapped/new-theme material for review.
 6. Build an as-of question snapshot only after source, contradiction, recency, and coverage review.
 
+### 4A. Standalone BOM five-lens research
+
+When the user explicitly narrows the research object to one BOM node rather than an
+industry chain, use `report_scope: standalone-bom`. Interpret the five lenses as:
+
+1. `需求侧`: demand growth, duration, customer adoption, and financial realization.
+2. `供给侧`: capacity, yield, lead time, qualification, commitments, and concentration.
+3. `技术侧`: route comparison, performance per watt, total cost, software ecosystem, and substitution.
+4. `估值侧`: as-of price, earnings basis, priced-in growth, sell-side disagreement, and downside.
+5. `ESG`: energy and water, export controls, geographic/customer concentration, governance, and capital-allocation externalities.
+
+For each lens, preserve one concise logic paragraph, one newest-to-oldest evidence
+timeline, and one current conclusion/trend synthesized only from that timeline.
+Every timeline row must identify publication date, material class, linked source,
+original page/section, and the exact lens-specific fact or view. A source may appear
+under several lenses only when it is parsed separately for each lens.
+
+This scope is a focused evidence report, not a shortcut around target gates. If the
+user later asks for an `actionable_long` decision, the evidence must still satisfy the
+canonical demand, supply/control, financial realization, valuation, and refutation
+requirements.
+
 ### 5. Search and parse actively
 
 GPT is the research director and chooses the source universe. For every minimum unit:
@@ -109,6 +131,13 @@ GPT is the research director and chooses the source universe. For every minimum 
 
 The same document may be parsed multiple times for different questions. Every parse must use that question's dimensions.
 
+Every discovered document preserves two orthogonal classifications:
+
+- `material_class`: `official_filing`, `official_company`, `sell_side_research`, `authoritative_third_party`, `market_news`, `expert_opinion`, or `other`;
+- `ingestion_channel`: `question_search`, `knowledge_base_scan`, or `manual_import`.
+
+`material_class` is more granular than the compatibility `source_bucket`. Official filings/company material map to `evidence`; sell-side and authoritative third-party material map to `research_report`; market news maps to `message`; expert opinion maps to `opinion`.
+
 Every atomic claim preserves four time fields when available:
 
 - `published_at`: when the market could know it;
@@ -116,7 +145,14 @@ Every atomic claim preserves four time fields when available:
 - `target_period`: which future period a forecast addresses;
 - `ingested_at`: when the system received it.
 
-The system uses two evidence loops. Pull research is driven by six-question coverage gaps. Push research continuously ingests the user's external report database and other approved feeds. Both loops write to the same append-only ledger. A source that cannot yet be mapped remains in `unmapped/new_theme`; it must not be silently discarded or forced into an unsuitable question.
+The system uses two evidence loops:
+
+1. `question_search`: pull research driven by one `BOM x six-question` coverage gap, using the professional universe plus Exa/AI search.
+2. `knowledge_base_scan`: push research that scans the user's IMA knowledge base and other approved feeds on a schedule, searches each canonical BOM profile, and routes new reports to the matching BOM inbox.
+
+Both loops enter the same material-intake ledger first. A newly discovered document is not evidence yet. It creates narrow `BOM x question x source` parse tasks; only question-specific parsing and GPT review may promote its atomic claims into the temporal evidence ledger. A source that cannot yet be mapped remains in `unmapped/new_theme`; it must not be silently discarded or forced into an unsuitable question.
+
+IMA credentials and knowledge-base IDs stay outside Git. Use `IMA_OPENAPI_CLIENTID`, `IMA_OPENAPI_APIKEY`, and `IMA_KNOWLEDGE_BASE_ID`; persisted feed state may contain only an irreversible knowledge-base reference hash. Historical projects quarantine knowledge-base material published after `as_of_date`; daily feeds should normally target a live successor project rather than mutate a frozen backtest.
 
 ### 6. Apply semantic completion gates
 
@@ -153,7 +189,7 @@ Backtest recommendations are frozen before future-return labels are attached. La
 
 The sole presentation contract is `skills/value_invest_research/frameworks/research_report_contract.md`.
 
-Default top-level order is exactly:
+Default industry/project top-level order is exactly:
 
 1. `当前研究的问题`
 2. `行业概况`
@@ -162,15 +198,21 @@ Default top-level order is exactly:
 
 Do not render public `下钻 QA`, source plans, raw search queries, parser traces, score worksheets, tool traces, or change logs unless the user explicitly asks for the workbench.
 
-Industry/theme/S-curve output uses two report scopes. The parent `professional_report.html` is an `industry-index`: `行业概况` renders `01 技术链与BOM呈现` and `02 BOM 独立研究目录`, with one `bom-index-card` linking to each child. It must not embed the six-question modules. Each `boms/<node_id>/professional_report.html` is a `bom-node` report containing exactly one node's six question cards and one S-curve rollup. Optional deepening modules such as industry space, competition/profit pool, and chokepoints stay inside the relevant BOM child unless they are truly chain-wide.
+Industry/theme/S-curve output uses two report scopes. Markdown is canonical and HTML is compatibility-only. The parent `professional_report.md` is an `industry-index`: `行业概况` renders `01 技术链与BOM呈现` and `02 BOM 独立研究目录`, with one relative link to each child. It must not embed the six-question modules. Each `boms/<node_id>/professional_report.md` is a `bom-node` report containing exactly one node's six question modules and one S-curve rollup. Optional deepening modules such as industry space, competition/profit pool, and chokepoints stay inside the relevant BOM child unless they are truly chain-wide.
+
+An explicitly isolated BOM may instead use `report_scope: standalone-bom`. Its public
+Markdown contains exactly five numbered H2 sections in this order: `需求侧`, `供给侧`,
+`技术侧`, `估值侧`, `ESG`. Each section contains exactly `简单逻辑链`, `信息时间线`,
+and `最新结论与趋势`. It does not inherit the four-section industry shell or the
+six-question BOM-child layout.
 
 The parent owns chain taxonomy, navigation, and aggregated targets. Each child owns its `project.json`, filtered `sources.jsonl`, optional `research_run.json`, report, node-specific refresh cadence, and node-level targets. A child without a completed node-specific run must state `partial_research`; it must not imply research completion.
 
-Inside each public BOM question card, render one compact `基本理解思路`, followed by `当前结论`, `相较上一截面的变化`, `时间演化`, `映射材料`, and `信息覆盖`. Do not render mandatory per-stage evidence cards. Logic hints orient the reader; they never constrain which material may enter the ledger. Every mapped material keeps a source link next to the supported claim, and past conclusions may be shown only when a real prior snapshot exists.
+Inside each public BOM question module, render one compact `基本理解思路`, followed by `当前结论`, `相较上一截面的变化`, `时间演化`, `映射材料`, and `信息覆盖`. Do not render mandatory per-stage evidence cards. Logic hints orient the reader; they never constrain which material may enter the ledger. Every mapped material keeps a source link, `material_class`, and `ingestion_channel` next to the supported claim. Past conclusions may be shown only when a real prior snapshot exists. Raw IMA IDs, credentials, internal search queries, and pending parse tasks never appear in public Markdown.
 
-Nested structures are collapsed `details` cards. Wide tables use `table-scroll`. Source links sit next to supported claims. The source index is collapsed.
+Use plain Markdown headings, paragraphs, lists, and tables. Source links sit next to supported claims. The report must remain readable without CSS, JavaScript, HTML cards, or hidden content.
 
-The target section must include `target-profit-bridge`, `target-valuation-table`, `target-odds-model`, `target-odds-table`, and `target-table`. Action states keep `state-actionable_long`, `state-watch_only`, or `state-no_action` classes.
+The target section must preserve the profit bridge, valuation evidence, payoff odds, final state, and downgrade triggers in one readable Markdown table. Action states remain `actionable_long`, `watch_only`, or `no_action`.
 
 ## Time-Slice Contract
 
@@ -200,6 +242,7 @@ Before calling a framework change complete:
 
 1. Run focused unit tests plus the full research-framework suite.
 2. Run `validate-report-contract` on a regenerated report.
-3. Run `validate-research-artifacts --require-l3` when artifacts exist.
-4. Run a DOM/static smoke check for four-section order, collapsed cards, table overflow, action-state colors, no public process text, and no `actionable_long` target with a failed research gate.
-5. Run `git diff --check`.
+3. Run `validate-material-intake` when search or knowledge-base intake artifacts exist.
+4. Run `validate-research-artifacts --require-l3` when artifacts exist.
+5. Run a Markdown/static smoke check for the selected report scope: four-section order and parent-child links for industry reports, or five-lens order and reverse-chronological timelines for `standalone-bom`; always verify readable tables, source links, no public process text, and no `actionable_long` target with a failed research gate.
+6. Run `git diff --check`.

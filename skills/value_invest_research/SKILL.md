@@ -10,10 +10,11 @@ Use this skill for all investment research in this repository.
 ## Canonical References
 
 - Internal question/execution contract: `frameworks/research_goal_qa.md`
-- Public HTML contract: `frameworks/research_report_contract.md`
+- Public Markdown contract: `frameworks/research_report_contract.md`
 - Domain playbooks: `frameworks/domain_playbooks.md`
 - Architecture: `../../docs/architecture/hexagonal_research_system.md`
 - Professional source registry: `../../config/source_universes.json`
+- Material classes and feed profiles: `../../config/material_feeds.json`
 
 Do not mix another report template into this workflow.
 
@@ -22,13 +23,14 @@ Do not mix another report template into this workflow.
 1. Convert the request into `ResearchGoal` with mode, date, decision, scope, and domain hint.
 2. Use `investment-question-architect` plus the domain playbook to build internal QA to maximum depth five.
 3. For S-curve work, define a canonical BOM taxonomy and run the six-question research loop for every node.
-4. Use `research-source-planner`; GPT selects the professional Universe and direct/Exa search plan from each six-question coordinate's current coverage gaps.
-5. Parse one source at a time against the current question with the appropriate specialty skill. DeepSeek may perform first-pass reading when available; GPT verifies every adopted claim.
-6. Roll facts, inference, judgment, gaps, refutation, and triggers upward.
-7. Run company exposure and as-of valuation analysis.
-8. Score and rank only after semantic completion gates.
-9. Freeze historical recommendations, then attach labels.
-10. Build `ReportViewModel` and render the four-section public report.
+4. Run two material loops: question-driven Universe/Exa search and scheduled scanning of the user's IMA/external-report database.
+5. Classify every discovered document by `material_class` and `ingestion_channel`, route it to the matching BOM inbox, and create narrow question-specific parse tasks.
+6. Parse one source at a time against the current question with the appropriate specialty skill. DeepSeek may perform first-pass reading when available; GPT verifies every adopted claim.
+7. Roll facts, inference, judgment, gaps, refutation, and triggers upward.
+8. Run company exposure and as-of valuation analysis.
+9. Score and rank only after semantic completion gates.
+10. Freeze historical recommendations, then attach labels.
+11. Build `ReportViewModel` and render the four-section public report.
 
 ## Non-Negotiable Research Rules
 
@@ -38,6 +40,7 @@ Do not mix another report template into this workflow.
 - The same source is re-parsed for every question dimension it serves.
 - Search is active and question-level. A general source pool cannot replace a fresh minimum-unit search.
 - Active search starts from explicit evidence gaps, while external reports may introduce previously unknown metrics or mechanisms through atomic claim mapping.
+- Discovery is not evidence: unparsed search or IMA material stays in the intake ledger and BOM inbox until question-specific parsing plus GPT review.
 - Actual history and forward expectations remain separate.
 - Acceleration claims need same-definition history or explicit YoY/multiple evidence.
 - Future runway needs cutoff-visible guidance/forecast/TAM/customer budget plus first-principles support.
@@ -83,6 +86,20 @@ A BOM stage is pending until all six questions complete. Completion requires sou
 
 GPT decides the source Universe based on topic and minimum question. Resolve candidates from `config/source_universes.json`, then add justified official/company/customer sources.
 
+Every document carries:
+
+- `material_class`: official filing, official company, sell-side research, authoritative third party, market news, expert opinion, or other;
+- `ingestion_channel`: question search, IMA knowledge-base scan, or manual import;
+- provider/external identity, content hash, publication/discovery time, matched BOM nodes, mapping status, and cutoff usage.
+
+Question search routes only to the requested `BOM x question`. IMA scanning searches each configured BOM profile and creates up to six `BOM x question x source` parse tasks for every newly matched report. A report may route to several BOMs. It must be parsed separately for each relevant question.
+
+The intake sequence is:
+
+`discover -> classify -> deduplicate -> cutoff gate -> BOM route -> parse inbox -> DeepSeek/specialty parse -> GPT review -> atomic claim ledger`
+
+Credentials and the raw knowledge-base ID never enter Git. Read IMA access from `IMA_OPENAPI_CLIENTID`, `IMA_OPENAPI_APIKEY`, and `IMA_KNOWLEDGE_BASE_ID`; persisted feed state stores only an irreversible reference hash. A frozen historical project quarantines documents published after its cutoff.
+
 Each leaf task stores:
 
 - `source_universe_plan`
@@ -124,16 +141,24 @@ Every score subcomponent is either verified with evidence/review IDs and `eviden
 
 ## Public Output
 
-The default HTML contains exactly:
+The default industry/project Markdown contains exactly:
 
 1. `当前研究的问题`
 2. `行业概况`
 3. `标的推荐`
 4. `来源索引`
 
-Industry/S-curve output is split by scope. The parent `professional_report.html` uses `data-report-scope="industry-index"`: `行业概况` contains `01 技术链与BOM呈现` plus `02 BOM 独立研究目录`, and each full-width `bom-index-card` links to `boms/<node_id>/professional_report.html`. It never embeds all six-question modules. Each child report uses `data-report-scope="bom-node"`, contains exactly one BOM module, preserves the six questions and S-curve rollup, and links back to the parent.
+Industry/S-curve output is split by scope. The parent `professional_report.md` declares `report_scope: industry-index`: `行业概况` contains `01 技术链与BOM呈现` plus `02 BOM 独立研究目录`, and each node links to `boms/<node_id>/professional_report.md`. It never embeds all six-question modules. Each child declares `report_scope: bom-node`, contains exactly one BOM module, preserves the six questions and S-curve rollup, and links back to the parent. HTML may exist only as a compatibility view.
 
-Each BOM child owns `project.json`, node-filtered `sources.jsonl`, a temporal ledger, as-of snapshots, optional compatibility `research_run.json`, and its report. The parent owns `boms/manifest.json`, canonical taxonomy, navigation, and aggregated targets. Public `下钻 QA`, raw Universe/Exa plans, parser traces, workbench data, and framework-change notes remain hidden unless requested.
+When the research object is explicitly one BOM rather than an industry chain, use
+`report_scope: standalone-bom`. Render exactly five numbered H2 sections:
+`需求侧`, `供给侧`, `技术侧`, `估值侧`, and `ESG`. Every section contains one
+`简单逻辑链`, one newest-to-oldest `信息时间线`, and one `最新结论与趋势`.
+Timeline rows preserve material class, a claim-near link, original page/section, and
+the question-specific fact or view. Do not wrap this scope in the four-section
+industry shell and do not expose source-search process fields.
+
+Each BOM child owns `project.json`, node-filtered `sources.jsonl`, `inbox/materials.jsonl`, `inbox/parse_tasks.jsonl`, a temporal ledger, as-of snapshots, optional compatibility `research_run.json`, and its report. The parent owns `boms/manifest.json`, `material_intake/`, canonical taxonomy, navigation, and aggregated targets. Public `下钻 QA`, raw Universe/Exa/IMA queries, provider IDs, parser traces, workbench data, and framework-change notes remain hidden unless requested.
 
 Use nested collapsed `details`, claim-near blue links, one full-width sibling card per row, and local `table-scroll` for wide tables. Keep the public report clean and research-first.
 
@@ -143,7 +168,8 @@ Before completion:
 
 - run focused and framework unit tests;
 - run `validate-report-contract`;
+- run `validate-material-intake` after question search or knowledge-base scanning;
 - run `validate-research-artifacts --require-l3`;
-- inspect DOM/static invariants;
+- inspect Markdown/static invariants;
 - confirm no failed research gate renders as `actionable_long`;
 - run `git diff --check`.

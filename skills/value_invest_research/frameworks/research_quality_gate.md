@@ -6,7 +6,8 @@ This gate defines the minimum internal artifacts for a complete refreshed resear
 
 Every complete refreshed research project must preserve these files in the project directory:
 
-- `professional_report.html`: clean public report using the locked four-section contract: `当前研究的问题` -> `行业概况` -> `标的推荐` -> `来源索引`.
+- `professional_report.md`: canonical clean public report using the locked four-section contract: `当前研究的问题` -> `行业概况` -> `标的推荐` -> `来源索引`.
+- `professional_report.html`: optional compatibility view generated from the same research artifacts.
 - `qa_tree.json`: full Q1-Q4 tree with L1, L2, L3, and any adaptive L4/L5 research-unit nodes.
 - `source_extractions.jsonl`: one parser or DeepSeek extraction per source-to-L3/L4/L5 research-unit pair.
 - `leaf_source_reviews.jsonl`: one GPT verification record per extraction.
@@ -16,13 +17,18 @@ For BOM-first S-curve research, `investment_workbench.json` must also preserve o
 
 Industry-chain projects additionally preserve:
 
+- root `material_intake/documents.jsonl`, `scan_events.jsonl`, and `feed_state.json` when scheduled or search-driven material ingestion has run;
 - root `project.json` with `project_scope=industry_chain`, ordered `bom_projects`, and `bom_manifest_path`;
-- root `professional_report.html` with `data-report-scope=industry-index` and no embedded BOM six-question modules;
+- root `professional_report.md` with `report_scope: industry-index` and no embedded BOM six-question modules;
 - `boms/manifest.json` with one entry per canonical BOM node;
-- `boms/<node_id>/project.json`, node-filtered `sources.jsonl`, and `professional_report.html` with `data-report-scope=bom-node`;
+- `boms/<node_id>/project.json`, node-filtered `sources.jsonl`, optional `inbox/materials.jsonl` and `inbox/parse_tasks.jsonl`, and `professional_report.md` with `report_scope: bom-node`;
 - `boms/<node_id>/research_run.json` when the child claims a completed node-specific run.
 
 The layout gate checks exact parent/manifest/child node coverage. A missing child, duplicate ID, unsafe path, or declared-but-missing research run is an error. A child without a run is allowed only with an explicit partial status and cannot pass completed research gates.
+
+Every intake document must preserve `material_class`, `source_bucket`, `ingestion_channel`, provider/external identity, content hash, publication/discovery date, BOM route, mapping status, and cutoff usage. A pending parse task is not evidence. Historical-mode materials published after `as_of_date` must be quarantined and must not create parse tasks or claims.
+
+Run `validate-material-intake <project_dir>` after either intake loop. The gate checks classification, exact BOM routing, source/task linkage, six-question coordinates, metadata drift, and post-cutoff isolation. Raw IMA credentials and knowledge-base IDs never persist; only an irreversible knowledge-base reference hash may appear in feed state.
 
 The gold regression fixture is `tests/fixtures/research_quality_gold/`. New framework changes should keep this fixture passing or intentionally update it with matching tests.
 
@@ -48,6 +54,8 @@ For event/conference research, an L3-L5 research unit is incomplete if it only s
 - `source_id`
 - `source_title`
 - `source_bucket`: `evidence`, `research_report`, `opinion`, or `message`
+- `material_class`
+- `ingestion_channel`
 - `parser`
 - `parser_status`
 - `schema_fields`
@@ -107,8 +115,8 @@ The default state is conservative. A target cannot become `actionable_long` unle
 Run these checks before treating a complete refreshed report as done:
 
 ```bash
-PYTHONPATH=src python3 -m value_invest_research validate-report-contract <project_dir>/professional_report.html
-PYTHONPATH=src python3 -m value_invest_research validate-report-contract <project_dir>/boms/<node_id>/professional_report.html
+PYTHONPATH=src python3 -m value_invest_research validate-report-contract <project_dir>/professional_report.md
+PYTHONPATH=src python3 -m value_invest_research validate-report-contract <project_dir>/boms/<node_id>/professional_report.md
 PYTHONPATH=src python3 -m value_invest_research validate-research-artifacts <project_dir> --require-l3
 ```
 
@@ -118,4 +126,4 @@ For historical/backtest mode, also run:
 PYTHONPATH=src python3 -m value_invest_research audit-time-slice <project_dir>/sources.jsonl --as-of-date YYYY-MM-DD
 ```
 
-Final HTML must not render source parser traces, GPT review traces, tool logs, quality-gate explanations, iteration notes, or workbench appendices unless the user explicitly asks to inspect process.
+Final Markdown must not render source parser traces, GPT review traces, tool logs, quality-gate explanations, iteration notes, or workbench appendices unless the user explicitly asks to inspect process.

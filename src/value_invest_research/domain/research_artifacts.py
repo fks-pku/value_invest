@@ -51,6 +51,7 @@ class ReportDocument:
     """A rendered public report loaded from an external source."""
 
     html: str = ""
+    markdown: str = ""
     load_issues: list[Issue] = field(default_factory=list)
 
 

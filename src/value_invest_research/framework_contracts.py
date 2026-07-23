@@ -1274,6 +1274,151 @@ def validate_report_contract_html(
     }
 
 
+def validate_report_contract_markdown(
+    markdown: str,
+    *,
+    mode: str = "historical_backtest",
+    require_l3: bool = False,
+) -> dict[str, Any]:
+    """Validate the Markdown-first public report contract."""
+
+    issues: list[dict[str, str]] = []
+    scope_match = re.search(r"^report_scope:\s*([A-Za-z0-9_-]+)\s*$", markdown, flags=re.MULTILINE)
+    report_scope = scope_match.group(1) if scope_match else "research-project"
+    headings = re.findall(r"^##\s+(.+?)\s*$", markdown, flags=re.MULTILINE)
+    if report_scope == "standalone-bom":
+        standalone_expected = [
+            "1. 需求侧",
+            "2. 供给侧",
+            "3. 技术侧",
+            "4. 估值侧",
+            "5. ESG",
+        ]
+        if headings != standalone_expected:
+            _issue(
+                issues,
+                "error",
+                "markdown_standalone_bom_sections",
+                "standalone-bom Markdown must use the locked five-lens H2 order",
+            )
+    else:
+        expected = [f"{index}. {title}" for index, title in enumerate(REPORT_SECTIONS, start=1)]
+        top_level = [heading for heading in headings if heading in expected]
+        if top_level != expected:
+            _issue(
+                issues,
+                "error",
+                "markdown_top_level_sections",
+                "Markdown report must use the locked four-section order with numbered H2 headings",
+            )
+    question_labels = [
+        "当前 BOM 的需求是否会被 S 曲线放大拉动？",
+        "供给能否跟上？",
+        "谁控制供给？",
+        "是否已经财务兑现？",
+        "市场是否已定价？",
+        "反证是什么？",
+    ]
+    question_count = sum(1 for label in question_labels if markdown.count(label) == 1)
+    if report_scope == "standalone-bom":
+        for label in ("简单逻辑链", "信息时间线", "最新结论与趋势"):
+            if markdown.count(f"### {label}") != 5:
+                _issue(
+                    issues,
+                    "error",
+                    "markdown_standalone_bom_subsections",
+                    f"every standalone BOM lens must include exactly one {label}",
+                )
+        timeline_header = "| 时间 | 信息类型 | 来源及原文位置 | 内容简介 |"
+        if markdown.count(timeline_header) != 5:
+            _issue(
+                issues,
+                "error",
+                "markdown_standalone_bom_timeline_header",
+                "every standalone BOM lens must include the canonical timeline table",
+            )
+        section_pattern = re.compile(
+            r"^##\s+\d+\.\s+.+?\n(?P<body>.*?)(?=^##\s+\d+\.|\Z)",
+            flags=re.MULTILINE | re.DOTALL,
+        )
+        for section in section_pattern.finditer(markdown):
+            dates = re.findall(r"^\|\s*(\d{4}-\d{2}-\d{2})\s*\|", section.group("body"), flags=re.MULTILINE)
+            if not dates:
+                _issue(
+                    issues,
+                    "error",
+                    "markdown_standalone_bom_empty_timeline",
+                    "every standalone BOM lens must include dated timeline rows",
+                )
+            elif dates != sorted(dates, reverse=True):
+                _issue(
+                    issues,
+                    "error",
+                    "markdown_standalone_bom_timeline_order",
+                    "standalone BOM timeline rows must be ordered newest to oldest",
+                )
+    elif report_scope == "industry-index":
+        if "技术链与 BOM" not in markdown or "BOM 独立研究目录" not in markdown:
+            _issue(
+                issues,
+                "error",
+                "markdown_industry_index",
+                "industry-index Markdown must contain the technology chain and BOM child directory",
+            )
+        if question_count:
+            _issue(
+                issues,
+                "error",
+                "markdown_parent_embeds_questions",
+                "industry-index Markdown must link to BOM children instead of embedding six-question bodies",
+            )
+    elif report_scope == "bom-node":
+        if question_count != 6:
+            _issue(
+                issues,
+                "error",
+                "markdown_bom_six_questions",
+                "bom-node Markdown must contain the six canonical BOM questions exactly once",
+            )
+        for label in ("基本理解思路", "当前结论", "相较上一截面的变化", "时间演化", "映射材料", "信息覆盖"):
+            if markdown.count(label) < 6:
+                _issue(
+                    issues,
+                    "error",
+                    "markdown_missing_question_subsection",
+                    f"every BOM question must include {label}",
+                )
+
+    if not re.search(r"\[[^\]]+\]\(https?://[^)]+\)", markdown):
+        _issue(
+            issues,
+            "error",
+            "markdown_source_links",
+            "Markdown report must keep clickable source links next to research content",
+        )
+    for leaked in ("source_universe_plan", "exa_search_plan", "direct_query", "IMA_OPENAPI_APIKEY"):
+        if leaked in markdown:
+            _issue(
+                issues,
+                "error",
+                "markdown_process_leak",
+                f"public Markdown must not expose internal process field {leaked}",
+            )
+
+    return {
+        "ok": not any(issue.get("severity") == "error" for issue in issues),
+        "issues": issues,
+        "summary": {
+            "mode": mode,
+            "report_scope": report_scope,
+            "level1_cards": 5 if report_scope == "standalone-bom" else question_count,
+            "level2_cards": 0,
+            "level3_cards": 0,
+            "require_l3": require_l3,
+        },
+    }
+
+
 def _report_scope(html: str) -> str:
     match = re.search(
         r"<body\b[^>]*\bdata-report-scope\s*=\s*(['\"])([^'\"]+)\1",

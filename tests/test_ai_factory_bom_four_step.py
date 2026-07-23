@@ -6,8 +6,10 @@ from pathlib import Path
 
 PROJECT_DIR = Path("research/qa_projects/ai_factory_industry_scurve_timeslice_20260328")
 INDUSTRY_REPORT = PROJECT_DIR / "professional_report.html"
+INDUSTRY_MARKDOWN = PROJECT_DIR / "professional_report.md"
 BOM_NODE_IDS = ["compute", "manufacturing", "memory", "network", "powerCooling", "system"]
 BOM_REPORTS = [PROJECT_DIR / "boms" / node_id / "professional_report.html" for node_id in BOM_NODE_IDS]
+BOM_MARKDOWN_REPORTS = [PROJECT_DIR / "boms" / node_id / "professional_report.md" for node_id in BOM_NODE_IDS]
 WORKBENCH = PROJECT_DIR / "investment_workbench.json"
 PROJECT = PROJECT_DIR / "project.json"
 
@@ -37,6 +39,38 @@ def bom_question_cards(html: str) -> list[str]:
 
 
 class AiFactoryTemporalBomTests(unittest.TestCase):
+    def test_markdown_is_canonical_parent_and_child_report(self):
+        parent = INDUSTRY_MARKDOWN.read_text(encoding="utf-8")
+
+        self.assertIn("report_scope: industry-index", parent)
+        self.assertEqual(
+            re.findall(r"^## [1-4]\\. .+$", parent, flags=re.MULTILINE),
+            [
+                "## 1. 当前研究的问题",
+                "## 2. 行业概况",
+                "## 3. 标的推荐",
+                "## 4. 来源索引",
+            ],
+        )
+        for node_id, report_path in zip(BOM_NODE_IDS, BOM_MARKDOWN_REPORTS):
+            with self.subTest(node_id=node_id):
+                self.assertTrue(report_path.is_file())
+                self.assertIn(f"(boms/{node_id}/professional_report.md)", parent)
+                child = report_path.read_text(encoding="utf-8")
+                self.assertIn("report_scope: bom-node", child)
+                self.assertIn(f"bom_node_id: {node_id}", child)
+                self.assertEqual(len(re.findall(r"^### Q[1-6] · ", child, flags=re.MULTILINE)), 6)
+                for label in (
+                    "#### 基本理解思路",
+                    "#### 当前结论",
+                    "#### 相较上一截面的变化",
+                    "#### 时间演化",
+                    "#### 映射材料",
+                    "#### 信息覆盖",
+                ):
+                    self.assertEqual(child.count(label), 6)
+                self.assertRegex(child, r"\\[[^\\]]+\\]\\(https?://[^)]+\\)")
+
     def test_parent_report_is_navigation_only_and_children_own_research(self):
         parent_html = INDUSTRY_REPORT.read_text(encoding="utf-8")
 

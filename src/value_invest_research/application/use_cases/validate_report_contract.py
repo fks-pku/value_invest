@@ -9,7 +9,7 @@ from value_invest_research.ports.repositories import ReportDocumentRepository
 
 @dataclass(frozen=True)
 class ValidateReportContract:
-    """Validate public report HTML through a report repository port."""
+    """Validate public report content through a report repository port."""
 
     repository: ReportDocumentRepository
 

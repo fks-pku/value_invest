@@ -20,7 +20,7 @@ Forbidden dependencies:
 - `domain` must not import `application`, `ports`, or `adapters`.
 - `application` must not import `adapters`.
 - `ports` must not import `application` or `adapters`.
-- CLI, file system, LLMs, DeepSeek, SEC, yfinance, HTML rendering, and browser concerns stay in adapters.
+- CLI, file system, LLMs, DeepSeek, SEC, yfinance, Markdown/HTML rendering, and browser concerns stay in adapters.
 
 ## Package Layout
 
@@ -57,8 +57,9 @@ src/value_invest_research/
       filesystem_research_artifacts.py
       filesystem_research_project.py
       canonical_html_report_renderer.py
-      report_sections/          # per-section HTML adapters for the locked public report contract
-      ...                      # planned: LLM, DeepSeek, SEC, yfinance, HTML renderer adapters
+      canonical_markdown_report_renderer.py # canonical public renderer
+      report_sections/          # compatibility HTML section adapters
+      ...                      # planned: LLM, DeepSeek, SEC, yfinance, renderer adapters
 ```
 
 The current codebase still has compatibility modules at package root. Migration should be incremental: add ports and use cases first, move one vertical slice, keep tests green, then move the next slice.
@@ -150,6 +151,31 @@ L3 question + domain playbook
 
 The universe plan chooses where to search; it does not count as evidence. Every selected source still needs its own parse/review record before it can strengthen a conclusion.
 
+Material discovery now has one domain contract and two outbound feeds:
+
+```text
+BOM x question coverage gap
+  -> Exa / AI search adapter
+  -> normalize MaterialDocument(channel=question_search)
+  -> MaterialIntakeRepository
+
+IMA knowledge-base BOM query
+  -> ImaKnowledgeBaseFeed adapter
+  -> normalize MaterialDocument(channel=knowledge_base_scan)
+  -> MaterialIntakeRepository
+
+MaterialIntakeRepository
+  -> parent material_intake ledger
+  -> BOM inbox/materials.jsonl
+  -> BOM inbox/parse_tasks.jsonl
+  -> question-specific parser + GPT review
+  -> temporal claim ledger
+```
+
+`domain.material_intake` owns material classes, channels, cutoff quarantine, and parse-task semantics. `application.use_cases.ingest_materials` owns deduplication, routing, and orchestration. `ImaKnowledgeBaseFeed`, Exa/search providers, and filesystem persistence stay in outbound adapters. Credentials are environment-only and never enter the repository.
+
+Discovery and evidence are deliberately separated. A report in IMA is a candidate document, not a supporting claim. It becomes evidence only after one parse and review per relevant `BOM x question`.
+
 Report writing is now port-backed while the current renderer is still the implementation:
 
 ```text
@@ -231,7 +257,7 @@ leaf task
 
 `leaf_research.py` is now a compatibility facade for existing CLI/pipeline callers. It wires repositories, providers, and use cases, but no longer owns network provider prompts, provider response parsing, leaf task construction, leaf answer synthesis, or parent rollup construction.
 
-Question architecture, report assembly, and canonical HTML rendering now have explicit seams:
+Question architecture, report assembly, and canonical Markdown rendering now have explicit seams:
 
 ```text
 ResearchGoal
@@ -246,7 +272,7 @@ research project files
   -> domain.report_view_model
   -> CanonicalHtmlReportRenderer
   -> report_sections section registry
-  -> locked professional_report.html
+  -> locked professional_report.md
 ```
 
 Industry-chain S-curve projects add an explicit parent/child artifact boundary:
@@ -254,20 +280,29 @@ Industry-chain S-curve projects add an explicit parent/child artifact boundary:
 ```text
 <industry_project>/
   project.json                         # project_scope=industry_chain
-  professional_report.html            # chain map + BOM navigation + aggregate targets
+  professional_report.md              # canonical chain map + BOM navigation + aggregate targets
+  professional_report.html            # optional compatibility view
   qa_tree.json / workbench / sources
+  material_intake/
+    documents.jsonl                    # classified search/IMA discoveries
+    scan_events.jsonl                  # feed execution audit
+    feed_state.json                    # deduplication state, opaque feed refs only
   boms/
     manifest.json
     <node_id>/
       project.json                     # project_scope=bom_node
       sources.jsonl                    # node-filtered evidence index
+      inbox/
+        materials.jsonl                # routed, not-yet-evidence documents
+        parse_tasks.jsonl              # BOM x question x source work queue
       research_run.json                # optional until independently completed
-      professional_report.html         # exactly one BOM and its six questions
+      professional_report.md           # canonical: exactly one BOM and its six questions
+      professional_report.html         # optional compatibility view
 ```
 
 `domain.bom_project_layout` owns safe node IDs, canonical relative paths, and parent/child identity rules. The application use cases build and validate the manifest through ports; the filesystem adapter only reads or writes those paths. A renderer receives either `industry-index` or `bom-node` scope. It does not decide project boundaries.
 
-Example: refining HBM changes `boms/memory/research_run.json`, the HBM source set, HBM scoring inputs, and `boms/memory/professional_report.html`. Compute, networking, manufacturing, power/cooling, and system-delivery child artifacts are untouched. After acceptance, the parent index and aggregate target view may be regenerated from child metadata without recomputing sibling research.
+Example: refining HBM changes `boms/memory/research_run.json`, the HBM source set, HBM scoring inputs, and `boms/memory/professional_report.md`. Compute, networking, manufacturing, power/cooling, and system-delivery child artifacts are untouched. After acceptance, the parent index and aggregate target view may be regenerated from child metadata without recomputing sibling research.
 
 This is the key decoupling for future iteration:
 
@@ -303,9 +338,12 @@ The compact public default is exactly `当前研究的问题 -> 行业概况 -> 
 | L3 source parsing | `ports/source_parsers.py` + `application/use_cases/parse_l3_source_materials.py` + parser adapters | Parser and reviewer are separate ports. DeepSeek/GPT review can plug in without touching leaf research, report rendering, or domain playbooks. |
 | research question planning | `domain/research_goal.py`, `domain/domain_playbooks.py`, `domain/question_architecture.py` | New topics should start from `ResearchGoal -> DomainPlaybook -> QuestionArchitecture`, adaptively drilling to at most five layers, not from hard-coded report templates. |
 | source-universe resolution | `ports/repositories.py` + `adapters/outbound/filesystem_source_universe.py` | Professional source selection is an outbound repository decision persisted per minimum question; report code must not hard-code it. |
+| dual-loop material intake | `domain/material_intake.py` + `application/use_cases/ingest_materials.py` + `MaterialIntakeRepository` / `KnowledgeBaseMaterialFeed` ports | Question search and IMA scanning share classification, cutoff, deduplication, BOM routing, and pending-parse semantics without coupling providers to the evidence ledger. |
+| IMA knowledge-base scanning | `adapters/outbound/ima_knowledge_base_feed.py` | Read-only OpenAPI adapter; credentials and knowledge-base ID come from environment variables. Persisted state keeps only irreversible reference hashes, and raw IDs never appear in public reports or Git. |
+| material-intake validation | `domain/material_intake.validate_material_intake_bundle` + `ValidateMaterialIntake` + filesystem validation repository | Enforces classification, BOM routing, source/task linkage, six-question coordinates, metadata consistency, and cutoff quarantine before unparsed material can move toward the claim ledger. |
 | BOM semantic completion and target gates | `domain/bom_research_readiness.py` + `domain/target_scoring.py` | Search status alone is never completion. Per-source parsing, strengthening evidence, Q6 refutation, valuation, and canonical BOM mapping control score confidence and action-state caps. |
 | report assembly | `domain/report_view_model.py` + `application/use_cases/build_report_view_model.py` | Report renderers should consume a stable ViewModel instead of reading project files directly. |
-| canonical HTML rendering | `ports/renderers.py` + `adapters/outbound/canonical_html_report_renderer.py` + `adapters/outbound/report_sections/` | Frontend format changes should be isolated to section renderer adapters and report contract tests. |
+| canonical Markdown rendering | `ports/renderers.py` + `adapters/outbound/canonical_markdown_report_renderer.py` | Public structure changes stay in the Markdown adapter and report contract tests; HTML adapters are compatibility-only. |
 | `llm.py` | `ports/llm.py` + outbound LLM adapters | Application depends on protocol, not vendor implementation. |
 | `ingest_prices.py`, `ingest_sec.py` | outbound data adapters | Market and filing data enter through ports. |
 | `cli.py` | inbound CLI adapter | Parse args, construct adapters, call use cases. Report validation, artifact validation, time-slice audit, and professional report writing now follow this path. |
@@ -327,7 +365,7 @@ Run these after each migration step:
 
 ```bash
 PYTHONPATH=src python3 -m unittest
-PYTHONPATH=src python3 -m value_invest_research validate-report-contract tests/fixtures/research_quality_gold/professional_report.html --require-l3
+PYTHONPATH=src python3 -m value_invest_research validate-report-contract <project>/professional_report.md
 PYTHONPATH=src python3 -m value_invest_research validate-research-artifacts tests/fixtures/research_quality_gold --require-l3
 ```
 

@@ -10,10 +10,10 @@ Adapters may depend on application, ports, and domain. Domain and application mu
 Current outbound report adapters:
 
 - `FileSystemResearchProjectRepository` loads report inputs from plain project files, including `investment_workbench.json` for structured industry-overview artifacts.
-- `CanonicalHtmlReportRenderer` renders the locked four-section public report from `ReportViewModel`; drilldown QA remains an internal artifact unless explicitly requested.
-- `report_sections/` contains the per-section HTML adapters used by `CanonicalHtmlReportRenderer`.
+- `CanonicalMarkdownReportRenderer` renders the canonical four-section public report from `ReportViewModel`.
+- `CanonicalHtmlReportRenderer` and `report_sections/` remain compatibility adapters for browser views.
 - `research_search_providers.py` contains provider-specific leaf source parsing/search adapters, including mock, Perplexity, Exa, and generic OpenAI-compatible providers.
 - `source_material_parsers.py` contains deterministic and delegating adapters for L3 source extraction and review.
 
-Changing the HTML look and interaction should create or update a renderer adapter,
+Changing the public text structure belongs in the Markdown renderer and report contract. Changing compatibility HTML look and interaction should create or update an HTML renderer adapter,
 not domain question planning or source parsing code.

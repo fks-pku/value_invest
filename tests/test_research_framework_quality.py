@@ -41,8 +41,8 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
                 self.assertNotIn(stale_five_section_order, text)
 
         contract = docs["research_report_contract.md"]
-        self.assertIn("exactly four top-level sections", contract)
-        self.assertIn("Public `下钻 QA` is opt-in", contract)
+        self.assertIn("exactly four numbered H2 sections", contract)
+        self.assertIn("Internal QA trees", contract)
 
     def test_framework_records_current_execution_pipeline(self):
         combined = "\n".join(self._canonical_docs().values())
@@ -61,6 +61,25 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
             "leaf-research-deepseek",
             "ReportViewModel",
             "CanonicalReportRenderer",
+        ]:
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, combined)
+
+    def test_framework_records_dual_material_intake_contract(self):
+        combined = "\n".join(self._canonical_docs().values())
+        for phrase in [
+            "material_class",
+            "ingestion_channel",
+            "question_search",
+            "knowledge_base_scan",
+            "official_filing",
+            "sell_side_research",
+            "authoritative_third_party",
+            "market_news",
+            "inbox/parse_tasks.jsonl",
+            "IMA_OPENAPI_CLIENTID",
+            "IMA_OPENAPI_APIKEY",
+            "IMA_KNOWLEDGE_BASE_ID",
         ]:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, combined)

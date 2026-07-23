@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "material_classes": {
+    "official_filing": "官方财报、监管文件和正式业绩公告",
+    "official_company": "公司官网、投资者关系、电话会和产品发布",
+    "sell_side_research": "证券公司和投行研究报告",
+    "authoritative_third_party": "行业协会、专业数据库和权威咨询机构",
+    "market_news": "公开新闻、供应链消息和市场快讯",
+    "expert_opinion": "专家访谈、投资人观点和行业评论",
+    "other": "暂时无法可靠归类的材料"
+  },
+  "ingestion_channels": {
+    "question_search": "针对 BOM x 六问缺口，由搜索引擎主动发现",
+    "knowledge_base_scan": "定期扫描用户知识库并按 BOM 路由",
+    "manual_import": "用户手动导入或批量迁移"
+  },
+  "ima": {
+    "enabled": false,
+    "credentials": {
+      "client_id_env": "IMA_OPENAPI_CLIENTID",
+      "api_key_env": "IMA_OPENAPI_APIKEY",
+      "knowledge_base_id_env": "IMA_KNOWLEDGE_BASE_ID"
+    },
+    "schedule": "daily",
+    "max_results_per_query": 20,
+    "bom_queries": {
+      "compute": [
+        "GPU ASIC accelerator TPU CUDA AI芯片"
+      ],
+      "manufacturing": [
+        "先进制程 先进封装 CoWoS chiplet 2nm 3nm"
+      ],
+      "memory": [
+        "HBM HBM3E HBM4 高带宽内存"
+      ],
+      "network": [
+        "AI网络 以太网 InfiniBand 光模块 CPO 交换芯片"
+      ],
+      "powerCooling": [
+        "AI数据中心 电力 液冷 UPS 配电"
+      ],
+      "system": [
+        "AI服务器 机柜 rack-scale ODM OEM 系统交付"
+      ]
+    }
+  }
+}

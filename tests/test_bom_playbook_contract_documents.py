@@ -53,20 +53,20 @@ class BomPlaybookContractDocumentTests(unittest.TestCase):
                 self.assertIn("时间演化", text)
 
         report_contract = documents[4].read_text(encoding="utf-8")
-        self.assertIn("bom-question-understanding", report_contract)
-        self.assertIn("bom-question-timeline", report_contract)
-        self.assertIn("not an evidence whitelist", report_contract)
+        self.assertIn("Basic Understanding", report_contract)
+        self.assertIn("Time Evolution", report_contract)
+        self.assertIn("evidence whitelist", report_contract)
 
     def test_public_contract_splits_parent_index_from_bom_child_reports(self):
         contract = (ROOT / "skills/value_invest_research/frameworks/research_report_contract.md").read_text(encoding="utf-8")
 
         for phrase in [
-            'data-report-scope="industry-index"',
-            'data-report-scope="bom-node"',
-            "boms/<node_id>/professional_report.html",
-            "bom-project-index",
-            "bom-index-card",
-            "project-back-link",
+            "report_scope: industry-index",
+            "report_scope: bom-node",
+            "boms/<node_id>/professional_report.md",
+            "BOM 独立研究目录",
+            "relative link",
+            "links back to the parent",
         ]:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, contract)

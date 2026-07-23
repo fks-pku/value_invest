@@ -109,6 +109,25 @@ Each question uses a question-specific model:
 | Pricing | valuation, priced-in expectations, earnings revisions |
 | Refutation | trigger, threshold, cadence, downgrade action |
 
+### 4.2 Standalone BOM five-lens adaptation
+
+If the user explicitly chooses one BOM as the complete research object, the public
+coordinate changes to five professional lenses:
+
+| Lens | Decision question |
+|---|---|
+| Demand | Is demand real, accelerating, durable, and financially visible? |
+| Supply | Can qualified effective supply keep up, and where are the constraints? |
+| Technology | Which route wins by workload, performance per watt, TCO, and ecosystem? |
+| Valuation | How much growth is already priced at the as-of date? |
+| ESG | Which environmental, policy, concentration, and governance factors can change cash flow or the multiple? |
+
+The internal source workflow remains unchanged: active question search and external
+material ingestion feed atomic `BOM x lens x published_at` claims. Each public lens
+shows only a concise logic paragraph, a reverse-chronological source timeline, and a
+current conclusion/trend derived from that timeline. This public simplification does
+not waive canonical target recommendation gates.
+
 ## 5. Minimum Research Unit Execution
 
 For every minimum question:
@@ -127,7 +146,15 @@ The public temporal sequence is `基本理解思路 -> 当前结论 -> 相较上
 
 ### C. Dual-loop material collection
 
-Pull research searches gaps under the six questions. Push ingestion continuously parses available external reports and approved feeds. Both loops create atomic claims and use the same question-specific verification rules.
+Pull research searches gaps under the six questions. Push ingestion scans available external reports and approved feeds. Both loops enter the same material-intake ledger, but discovery alone never creates evidence claims.
+
+Every material has:
+
+- `material_class`: `official_filing`, `official_company`, `sell_side_research`, `authoritative_third_party`, `market_news`, `expert_opinion`, or `other`;
+- `ingestion_channel`: `question_search`, `knowledge_base_scan`, or `manual_import`;
+- provider identity, external ID, content hash, publication/discovery time, matched BOMs, mapping status, and cutoff usage.
+
+`question_search` starts from one `BOM x question` gap and queues parsing only for that question. `knowledge_base_scan` searches each canonical BOM profile in IMA or another user database and queues one parse task for every potentially relevant question. One document may route to several BOMs.
 
 Choose concrete fields, not baskets. Example: `Microsoft commercial RPO ($B)` is valid; `cloud budget proxy` is not.
 
@@ -139,14 +166,14 @@ For each identified evidence gap:
 2. Resolve professional Universe sources from `config/source_universes.json` through `SourceUniverseRepository`.
 3. Add official company/customer filings and justified specialist sources.
 4. Create direct/Exa queries for the missing fact, forecast, opinion, valuation, or refutation evidence and enforce the cutoff.
-5. Ingest user-provided reports and other approved external materials through the same parsing path.
+5. Ingest user-provided reports and other approved external materials through `classify -> deduplicate -> cutoff gate -> BOM route -> parse inbox`.
 6. Record selected source IDs or an explicit gap reason.
 
 One broad query cannot stand in for active question-specific research. The reader-facing logic hint is not a search whitelist.
 
 ### E. Per-source parsing
 
-Create one extraction per `question x source`. Parse the source against the current question's dimensions, even if the same document was parsed elsewhere.
+Create one extraction per `question x source`. Parse the source against the current question's dimensions, even if the same document was parsed elsewhere. Unparsed intake documents remain pending materials, not support/refute evidence.
 
 Use:
 
@@ -162,7 +189,7 @@ Create one GPT verification record per extraction. Messages/opinions remain lead
 
 ### F. Evidence synthesis
 
-Split every source into atomic claims and map each claim to `BOM x six-question coordinate x published_at`. Preserve `effective_period`, `target_period`, and `ingested_at` separately. Facts, forecasts, opinions, messages, valuations, and refutations must remain distinguishable.
+Split every source into atomic claims and map each claim to `BOM x six-question coordinate x published_at`. Preserve `effective_period`, `target_period`, `ingested_at`, `material_class`, and `ingestion_channel`. Facts, forecasts, opinions, messages, valuations, and refutations must remain distinguishable.
 
 The same source may yield several claims and map to several questions. Unmapped material remains in `unmapped/new_theme`; it is not silently dropped. Actual history never includes guidance or forecasts. Claiming acceleration requires same-definition history or explicit YoY/multiple evidence. Claiming runway requires a cutoff-visible forward anchor and mechanism.
 
@@ -238,13 +265,15 @@ For industry/theme/S-curve work, rendering uses this artifact topology:
 ```text
 <industry_project>/
   project.json
-  professional_report.html          # industry-index only
+  professional_report.md            # canonical industry-index
+  professional_report.html          # optional compatibility view
   boms/manifest.json
   boms/<node_id>/
     project.json
     sources.jsonl
     research_run.json               # optional until the node is independently completed
-    professional_report.html        # exactly one BOM and its six questions
+    professional_report.md          # canonical: exactly one BOM and its six questions
+    professional_report.html        # optional compatibility view
 ```
 
 The parent report owns the chain map, BOM navigation, and aggregated targets. It does not duplicate child question content. A BOM child can be searched, parsed, scored, regenerated, and validated without regenerating the research content of sibling nodes. The manifest and canonical BOM registry must have exact ordered node-ID coverage.
@@ -256,5 +285,5 @@ Before publication:
 - validate QA and per-source parser/review schemas;
 - validate BOM semantic readiness and target research gates;
 - validate cutoff visibility and label isolation;
-- validate the four-section HTML contract and DOM interaction;
+- validate the four-section Markdown contract and source-link/static structure;
 - verify no failed-gate target is `actionable_long`.

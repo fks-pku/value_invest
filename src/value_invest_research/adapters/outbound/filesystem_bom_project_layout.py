@@ -25,11 +25,12 @@ class FileSystemBomProjectLayoutRepository:
             node_id = str(node.get("node_id") or "")
             child_dir = self.project_dir / str(node.get("directory") or f"boms/{node_id}")
             child_project = _read_json(child_dir / "project.json", load_issues)
+            report_name = Path(str(node.get("report_path") or "professional_report.md")).name
             children.append(
                 {
                     "node_id": node_id,
                     "project": child_project,
-                    "report_exists": (child_dir / "professional_report.html").is_file(),
+                    "report_exists": (child_dir / report_name).is_file(),
                     "sources_exists": (child_dir / "sources.jsonl").is_file(),
                     "research_run_exists": (child_dir / "research_run.json").is_file(),
                     "temporal_manifest_exists": (child_dir / "temporal_manifest.json").is_file(),

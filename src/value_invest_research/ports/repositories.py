@@ -99,6 +99,37 @@ class TemporalResearchLedgerRepository(Protocol):
         """Persist documents, claims, revisions, coverage, and current snapshot."""
 
 
+class MaterialIntakeRepository(Protocol):
+    """Outbound port for discovered materials and pending parse work."""
+
+    @property
+    def project_dir_label(self) -> str:
+        """Stable parent-project label."""
+
+    def load_seen_external_ids(self, provider: str, feed_id: str) -> set[str]:
+        """Load material identities already observed for one feed."""
+
+    def persist_material_batch(
+        self,
+        *,
+        documents: list[dict],
+        parse_tasks: list[dict],
+        scan_event: dict,
+    ) -> dict:
+        """Persist project intake rows and BOM-specific inbox tasks."""
+
+
+class MaterialIntakeValidationRepository(Protocol):
+    """Outbound port for loading one complete material-intake validation bundle."""
+
+    @property
+    def project_dir_label(self) -> str:
+        """Stable parent-project label."""
+
+    def load_material_intake_bundle(self) -> dict:
+        """Load project cutoff, BOM routes, intake documents, and parse inboxes."""
+
+
 class SourceParsingArtifactWriter(Protocol):
     """Outbound port for persisting parser and GPT review records."""
 

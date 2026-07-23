@@ -100,12 +100,15 @@ class FileSystemReportDocumentRepository:
                 load_issues=[
                     {
                         "severity": "error",
-                        "code": "missing_report_html",
+                        "code": "missing_report_document",
                         "message": f"{self.report_path} does not exist",
                     }
                 ]
             )
-        return ReportDocument(html=self.report_path.read_text(encoding="utf-8"))
+        content = self.report_path.read_text(encoding="utf-8")
+        if self.report_path.suffix.lower() in {".md", ".markdown"}:
+            return ReportDocument(markdown=content)
+        return ReportDocument(html=content)
 
 
 class FileSystemSourceListRepository:

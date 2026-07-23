@@ -5,6 +5,12 @@ from datetime import date
 import re
 from typing import Any, Iterable
 
+from value_invest_research.domain.material_intake import (
+    INGESTION_CHANNELS,
+    MATERIAL_CLASSES,
+    SOURCE_BUCKET_BY_MATERIAL_CLASS,
+)
+
 
 QUESTION_NUMBERS = tuple(range(1, 7))
 CLAIM_TYPES = {
@@ -44,6 +50,9 @@ class TemporalClaim:
     ingested_at: str = ""
     entity: str = ""
     metric_name: str = ""
+    material_class: str = "other"
+    source_bucket: str = "message"
+    ingestion_channel: str = "manual_import"
     mapping_origin: str = "question_specific_parse"
     mapping_confidence: str = "high"
 
@@ -192,6 +201,19 @@ def validate_temporal_research_bundle(bundle: dict[str, Any]) -> dict[str, Any]:
             _issue(issues, "claim_type", f"{claim_id} has an invalid claim_type")
         if claim.get("stance") not in STANCE_TYPES:
             _issue(issues, "claim_stance", f"{claim_id} has an invalid stance")
+        if claim.get("material_class") not in MATERIAL_CLASSES:
+            _issue(issues, "claim_material_class", f"{claim_id} has an invalid material_class")
+        if claim.get("ingestion_channel") not in INGESTION_CHANNELS:
+            _issue(issues, "claim_ingestion_channel", f"{claim_id} has an invalid ingestion_channel")
+        expected_bucket = SOURCE_BUCKET_BY_MATERIAL_CLASS.get(
+            str(claim.get("material_class") or "")
+        )
+        if expected_bucket and claim.get("source_bucket") != expected_bucket:
+            _issue(
+                issues,
+                "claim_source_bucket",
+                f"{claim_id} source_bucket does not match material_class",
+            )
         published_at = str(claim.get("published_at") or "")
         try:
             _require_date(published_at, f"{claim_id}.published_at")
@@ -292,6 +314,21 @@ def _normalize_claims(
             ingested_at=str(raw.get("ingested_at") or as_of_date),
             entity=str(raw.get("entity") or ""),
             metric_name=str(raw.get("metric_name") or ""),
+            material_class=str(
+                raw.get("material_class")
+                or source.get("material_class")
+                or _legacy_material_class(source)
+            ),
+            source_bucket=str(
+                raw.get("source_bucket")
+                or source.get("source_bucket")
+                or "message"
+            ),
+            ingestion_channel=str(
+                raw.get("ingestion_channel")
+                or source.get("ingestion_channel")
+                or "manual_import"
+            ),
             mapping_origin=str(raw.get("mapping_origin") or "question_specific_parse"),
             mapping_confidence=str(raw.get("mapping_confidence") or "high"),
         ).to_dict()
@@ -444,6 +481,24 @@ def _stance(source: dict[str, Any], question_number: int) -> str:
     if bucket in {"message", "opinion"}:
         return "lead"
     return "support"
+
+
+def _legacy_material_class(source: dict[str, Any]) -> str:
+    bucket = str(source.get("source_bucket") or "")
+    source_type = str(source.get("source_type") or "").lower()
+    if bucket == "opinion":
+        return "expert_opinion"
+    if bucket == "message":
+        return "market_news"
+    if bucket == "research_report":
+        if "sell" in source_type or "broker" in source_type:
+            return "sell_side_research"
+        return "authoritative_third_party"
+    if bucket == "evidence":
+        if any(token in source_type for token in ("annual", "10-k", "10-q", "20-f", "filing", "results")):
+            return "official_filing"
+        return "official_company"
+    return "other"
 
 
 def _claim_id(node_id: str, question_number: int, source_id: str, index: int) -> str:

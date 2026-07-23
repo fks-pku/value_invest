@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
 from typing import Any
@@ -62,7 +63,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     report_contract_parser = subparsers.add_parser(
         "validate-report-contract",
-        help="Validate a final HTML report against the locked research report contract",
+        help="Validate a final Markdown or compatibility HTML report against the locked contract",
     )
     report_contract_parser.add_argument("path")
     report_contract_parser.add_argument("--mode", choices=["live_prediction", "historical_backtest"], default="historical_backtest")
@@ -82,6 +83,12 @@ def build_parser() -> argparse.ArgumentParser:
     research_artifacts_parser.add_argument("project_dir")
     research_artifacts_parser.add_argument("--require-l3", action="store_true")
 
+    material_intake_parser = subparsers.add_parser(
+        "validate-material-intake",
+        help="Validate material classification, BOM routing, parse tasks, and cutoff isolation",
+    )
+    material_intake_parser.add_argument("project_dir")
+
     project_schema_parser = subparsers.add_parser(
         "validate-project-schema",
         help="Validate project.json against the four-stage pipeline schema",
@@ -96,10 +103,49 @@ def build_parser() -> argparse.ArgumentParser:
 
     render_project_report_parser = subparsers.add_parser(
         "render-research-report",
-        help="Render a research project through the canonical ViewModel and HTML renderer",
+        help="Render a research project through the canonical ViewModel and report renderer",
     )
     render_project_report_parser.add_argument("project_dir")
-    render_project_report_parser.add_argument("--filename", default="professional_report.html")
+    render_project_report_parser.add_argument("--filename", default="professional_report.md")
+
+    search_bom_materials_parser = subparsers.add_parser(
+        "search-bom-materials",
+        help="Search one BOM x six-question coordinate and route sources into its parse inbox",
+    )
+    search_bom_materials_parser.add_argument("project_dir")
+    search_bom_materials_parser.add_argument("--bom-node-id", required=True)
+    search_bom_materials_parser.add_argument(
+        "--question-number",
+        required=True,
+        type=int,
+        choices=range(1, 7),
+    )
+    search_bom_materials_parser.add_argument("--query", required=True)
+    search_bom_materials_parser.add_argument(
+        "--provider",
+        default="exa",
+        choices=["exa", "perplexity", "openai_compatible"],
+    )
+    search_bom_materials_parser.add_argument("--max-sources", type=int, default=8)
+    search_bom_materials_parser.add_argument("--discovered-at", default=None)
+
+    scan_ima_materials_parser = subparsers.add_parser(
+        "scan-ima-materials",
+        help="Scan an IMA knowledge base per BOM and queue new reports for six-question parsing",
+    )
+    scan_ima_materials_parser.add_argument("project_dir")
+    scan_ima_materials_parser.add_argument("--knowledge-base-id", default=None)
+    scan_ima_materials_parser.add_argument(
+        "--config",
+        default="config/material_feeds.json",
+    )
+    scan_ima_materials_parser.add_argument(
+        "--bom-node-id",
+        action="append",
+        default=None,
+    )
+    scan_ima_materials_parser.add_argument("--max-results-per-query", type=int, default=None)
+    scan_ima_materials_parser.add_argument("--discovered-at", default=None)
 
     stock_pipeline_parser = subparsers.add_parser(
         "run-stock-qa-pipeline",
@@ -634,12 +680,18 @@ def main(argv: list[str] | None = None) -> int:
             return run_audit_time_slice_cmd(root, args)
         if args.command == "validate-research-artifacts":
             return run_validate_research_artifacts_cmd(root, args)
+        if args.command == "validate-material-intake":
+            return run_validate_material_intake_cmd(root, args)
         if args.command == "validate-project-schema":
             return run_validate_project_schema_cmd(root, args)
         if args.command == "validate-industry-overview":
             return run_validate_industry_overview_cmd(root, args)
         if args.command == "render-research-report":
             return run_render_research_report_cmd(root, args)
+        if args.command == "search-bom-materials":
+            return run_search_bom_materials_cmd(root, args)
+        if args.command == "scan-ima-materials":
+            return run_scan_ima_materials_cmd(root, args)
         if args.command == "run-stock-qa-pipeline":
             return run_stock_qa_pipeline_cmd(root, args)
         if args.command == "add-research-question":
@@ -798,12 +850,35 @@ def run_validate_research_artifacts_cmd(root: Path, args) -> int:
         FileSystemResearchArtifactRepository,
     )
     from value_invest_research.application.use_cases.validate_bom_project_layout import ValidateBomProjectLayout
+    from value_invest_research.application.use_cases.validate_material_intake import ValidateMaterialIntake
     from value_invest_research.application.use_cases.validate_research_project import ValidateResearchProject
+    from value_invest_research.adapters.outbound.filesystem_material_intake import (
+        FileSystemMaterialIntakeValidationRepository,
+    )
 
     project_dir = _resolve_cli_path(root, args.project_dir)
     result = ValidateResearchProject(FileSystemResearchArtifactRepository(project_dir)).execute(require_l3=args.require_l3)
     layout_result = ValidateBomProjectLayout(FileSystemBomProjectLayoutRepository(project_dir)).execute()
-    ok = result.ok and layout_result["ok"]
+    intake_result = (
+        ValidateMaterialIntake(
+            FileSystemMaterialIntakeValidationRepository(project_dir)
+        ).execute()
+        if (
+            (project_dir / "boms" / "manifest.json").is_file()
+            or (project_dir / "material_intake").exists()
+        )
+        else {
+            "ok": True,
+            "issues": [],
+            "summary": {
+                "documents": 0,
+                "parse_tasks": 0,
+                "bom_inboxes": 0,
+                "quarantined_documents": 0,
+            },
+        }
+    )
+    ok = result.ok and layout_result["ok"] and intake_result["ok"]
     status = "OK" if ok else "FAILED"
     print(
         f"Research artifact validation {status}: "
@@ -813,11 +888,48 @@ def run_validate_research_artifacts_cmd(root: Path, args) -> int:
         f"leaf_source_reviews={result.leaf_source_reviews}, "
         f"targets={result.targets}, "
         f"bom_children={layout_result.get('summary', {}).get('child_projects', 0)}, "
-        f"issues={len(result.issues) + len(layout_result.get('issues', []))}"
+        f"intake_documents={intake_result.get('summary', {}).get('documents', 0)}, "
+        f"pending_parse_tasks={intake_result.get('summary', {}).get('parse_tasks', 0)}, "
+        f"issues={len(result.issues) + len(layout_result.get('issues', [])) + len(intake_result.get('issues', []))}"
     )
-    for issue in [*result.issues, *layout_result.get("issues", [])][:10]:
+    for issue in [
+        *result.issues,
+        *layout_result.get("issues", []),
+        *intake_result.get("issues", []),
+    ][:10]:
         print(f"{issue.get('severity', 'error')}:{issue.get('code', '')}: {issue.get('message', '')}")
     return 0 if ok else 1
+
+
+def run_validate_material_intake_cmd(root: Path, args) -> int:
+    from value_invest_research.adapters.outbound.filesystem_material_intake import (
+        FileSystemMaterialIntakeValidationRepository,
+    )
+    from value_invest_research.application.use_cases.validate_material_intake import (
+        ValidateMaterialIntake,
+    )
+
+    project_dir = _resolve_cli_path(root, args.project_dir)
+    result = ValidateMaterialIntake(
+        FileSystemMaterialIntakeValidationRepository(project_dir)
+    ).execute()
+    status = "OK" if result["ok"] else "FAILED"
+    summary = result.get("summary") or {}
+    print(
+        f"Material intake validation {status}: "
+        f"project_dir={project_dir}, "
+        f"documents={summary.get('documents', 0)}, "
+        f"parse_tasks={summary.get('parse_tasks', 0)}, "
+        f"bom_inboxes={summary.get('bom_inboxes', 0)}, "
+        f"quarantined={summary.get('quarantined_documents', 0)}, "
+        f"issues={len(result.get('issues', []))}"
+    )
+    for issue in result.get("issues", [])[:10]:
+        print(
+            f"{issue.get('severity', 'error')}:{issue.get('code', '')}: "
+            f"{issue.get('message', '')}"
+        )
+    return 0 if result["ok"] else 1
 
 
 def run_validate_project_schema_cmd(root: Path, args: argparse.Namespace) -> int:
@@ -845,13 +957,19 @@ def run_validate_industry_overview_cmd(root: Path, args: argparse.Namespace) -> 
 
 def run_render_research_report_cmd(root: Path, args) -> int:
     from value_invest_research.adapters.outbound.canonical_html_report_renderer import CanonicalHtmlReportRenderer
+    from value_invest_research.adapters.outbound.canonical_markdown_report_renderer import CanonicalMarkdownReportRenderer
     from value_invest_research.adapters.outbound.filesystem_research_project import FileSystemResearchProjectRepository
     from value_invest_research.application.use_cases.render_research_project_report import RenderResearchProjectReport
 
     project_dir = _resolve_cli_path(root, args.project_dir)
+    renderer = (
+        CanonicalHtmlReportRenderer()
+        if str(args.filename).lower().endswith(".html")
+        else CanonicalMarkdownReportRenderer()
+    )
     result = RenderResearchProjectReport(
         FileSystemResearchProjectRepository(project_dir),
-        CanonicalHtmlReportRenderer(),
+        renderer,
     ).execute(filename=args.filename)
     print(
         f"Research report rendered: "
@@ -862,6 +980,196 @@ def run_render_research_report_cmd(root: Path, args) -> int:
         f"report={result['report_path']}"
     )
     return 0
+
+
+def run_search_bom_materials_cmd(root: Path, args) -> int:
+    from value_invest_research.adapters.outbound.filesystem_material_intake import (
+        FileSystemMaterialIntakeRepository,
+    )
+    from value_invest_research.adapters.outbound.research_search_providers import (
+        provider_for_name,
+    )
+    from value_invest_research.application.use_cases.ingest_materials import (
+        ingest_question_search_result,
+    )
+
+    project_dir = _resolve_cli_path(root, args.project_dir)
+    context = _load_material_project_context(project_dir)
+    if args.bom_node_id not in context["known_bom_node_ids"]:
+        raise ValueError(f"Unknown BOM node: {args.bom_node_id}")
+    question_ids = context["question_ids_by_node"].get(args.bom_node_id) or {}
+    question_id = question_ids.get(args.question_number) or (
+        f"{args.bom_node_id}_q{args.question_number}"
+    )
+    provider = provider_for_name(args.provider)
+    search_result = provider.search(
+        {
+            "task_id": f"{question_id}_material_search",
+            "node_id": question_id,
+            "question": args.query,
+            "parent_question": _six_question_label(args.question_number),
+            "required_evidence": [
+                "actual facts",
+                "forward expectations",
+                "contradicting evidence",
+            ],
+            "information_categories": [
+                "evidence",
+                "research_report",
+                "message",
+                "opinion",
+            ],
+            "source_search_plan": [
+                {
+                    "source_bucket": "evidence",
+                    "source_type": "primary and authoritative sources",
+                    "expected_fields": "facts, dates, metrics, and source locators",
+                },
+                {
+                    "source_bucket": "research_report",
+                    "source_type": "sell-side and authoritative third party",
+                    "expected_fields": "forecast, assumptions, and disagreement",
+                },
+            ],
+            "max_sources": args.max_sources,
+        }
+    )
+    result = ingest_question_search_result(
+        search_result=search_result,
+        repository=FileSystemMaterialIntakeRepository(project_dir),
+        provider=args.provider,
+        bom_node_id=args.bom_node_id,
+        question_number=args.question_number,
+        known_bom_node_ids=context["known_bom_node_ids"],
+        mode=context["mode"],
+        as_of_date=context["as_of_date"],
+        discovered_at=args.discovered_at,
+        question_ids_by_node=context["question_ids_by_node"],
+    )
+    event = result["scan_event"]
+    print(
+        "BOM material search completed: "
+        f"node={args.bom_node_id}, "
+        f"question={args.question_number}, "
+        f"provider={args.provider}, "
+        f"new_documents={event['discovered_count']}, "
+        f"quarantined={event['quarantined_count']}, "
+        f"parse_tasks={event['parse_task_count']}"
+    )
+    return 0
+
+
+def run_scan_ima_materials_cmd(root: Path, args) -> int:
+    from value_invest_research.adapters.outbound.filesystem_material_intake import (
+        FileSystemMaterialIntakeRepository,
+    )
+    from value_invest_research.adapters.outbound.ima_knowledge_base_feed import (
+        ImaKnowledgeBaseFeed,
+    )
+    from value_invest_research.application.use_cases.ingest_materials import (
+        scan_knowledge_base_materials,
+    )
+
+    project_dir = _resolve_cli_path(root, args.project_dir)
+    context = _load_material_project_context(project_dir)
+    config_path = _resolve_cli_path(root, args.config)
+    config = json.loads(config_path.read_text(encoding="utf-8"))
+    ima_config = config.get("ima") or {}
+    bom_queries = ima_config.get("bom_queries") or {}
+    if args.bom_node_id:
+        selected = set(args.bom_node_id)
+        unknown = sorted(selected - set(context["known_bom_node_ids"]))
+        if unknown:
+            raise ValueError(f"Unknown BOM nodes: {unknown}")
+        bom_queries = {
+            node_id: queries
+            for node_id, queries in bom_queries.items()
+            if node_id in selected
+        }
+    knowledge_base_id = (
+        args.knowledge_base_id
+        or os.environ.get("IMA_KNOWLEDGE_BASE_ID", "")
+    ).strip()
+    if not knowledge_base_id:
+        raise ValueError(
+            "IMA_KNOWLEDGE_BASE_ID or --knowledge-base-id is required"
+        )
+    result = scan_knowledge_base_materials(
+        feed=ImaKnowledgeBaseFeed(),
+        repository=FileSystemMaterialIntakeRepository(project_dir),
+        knowledge_base_id=knowledge_base_id,
+        bom_queries=bom_queries,
+        known_bom_node_ids=context["known_bom_node_ids"],
+        mode=context["mode"],
+        as_of_date=context["as_of_date"],
+        discovered_at=args.discovered_at,
+        max_results_per_query=(
+            args.max_results_per_query
+            or int(ima_config.get("max_results_per_query") or 20)
+        ),
+        question_ids_by_node=context["question_ids_by_node"],
+    )
+    print(
+        "IMA material scan completed: "
+        f"bom_queries={len(result['runs'])}, "
+        f"new_documents={result['new_documents']}, "
+        f"quarantined={result['quarantined_documents']}, "
+        f"parse_tasks={result['parse_tasks']}"
+    )
+    return 0
+
+
+def _load_material_project_context(project_dir: Path) -> dict[str, Any]:
+    from value_invest_research.domain.bom_node_playbooks import (
+        get_bom_node_playbook,
+    )
+
+    project = json.loads(
+        (project_dir / "project.json").read_text(encoding="utf-8")
+    )
+    manifest = json.loads(
+        (project_dir / "boms" / "manifest.json").read_text(encoding="utf-8")
+    )
+    known_nodes = [
+        str(item.get("node_id") or "")
+        for item in manifest.get("nodes") or []
+        if str(item.get("node_id") or "").strip()
+    ]
+    question_ids_by_node: dict[str, dict[int, str]] = {}
+    for node_id in known_nodes:
+        try:
+            playbook = get_bom_node_playbook(node_id)
+        except KeyError:
+            question_ids_by_node[node_id] = {
+                number: f"{node_id}_q{number}" for number in range(1, 7)
+            }
+            continue
+        question_ids_by_node[node_id] = {
+            question.question_number: question.question_id
+            for question in playbook.questions
+        }
+    return {
+        "known_bom_node_ids": known_nodes,
+        "question_ids_by_node": question_ids_by_node,
+        "mode": str(
+            project.get("mode")
+            or project.get("run_mode")
+            or "historical_backtest"
+        ),
+        "as_of_date": str(project.get("as_of_date") or ""),
+    }
+
+
+def _six_question_label(question_number: int) -> str:
+    labels = {
+        1: "当前 BOM 的需求是否会被 S 曲线放大拉动？",
+        2: "供给能否跟上？",
+        3: "谁控制供给？",
+        4: "是否已经财务兑现？",
+        5: "市场是否已定价？",
+        6: "反证是什么？",
+    }
+    return labels[question_number]
 
 
 def _resolve_cli_path(root: Path, path_text: str) -> Path:

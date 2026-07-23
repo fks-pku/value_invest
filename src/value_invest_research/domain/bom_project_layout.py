@@ -16,6 +16,7 @@ class BomProjectLayoutEntry:
     directory: str
     project_path: str
     report_path: str
+    compatibility_html_path: str
     sources_path: str
     research_run_path: str | None
     temporal_manifest_path: str
@@ -55,7 +56,8 @@ def build_bom_project_layout(
                 child_project_id=f"{parent_project_id}__bom__{node_id}",
                 directory=directory,
                 project_path=f"{directory}/project.json",
-                report_path=f"{directory}/professional_report.html",
+                report_path=f"{directory}/professional_report.md",
+                compatibility_html_path=f"{directory}/professional_report.html",
                 sources_path=f"{directory}/sources.jsonl",
                 research_run_path=(
                     f"{directory}/research_run.json" if node_id in research_nodes else None
