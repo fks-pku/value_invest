@@ -3,7 +3,7 @@ const path = require("path");
 
 const ROOT = path.resolve(__dirname, "..");
 const PROJECT_ID = "windows_nvidia_arm_event_live_20260531";
-const OUT_DIR = path.join(ROOT, "research", "qa_projects", PROJECT_ID);
+const OUT_DIR = path.join(ROOT, "research", "bom", PROJECT_ID);
 const REPORT_DATE = "2026-05-31";
 const REVIEW_HORIZON = "2026-08-31";
 

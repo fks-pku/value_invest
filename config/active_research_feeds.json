@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "ima": {
+    "knowledge_base_name": "环球研报直通车",
+    "schedule": "daily",
+    "root_folder_pattern": "^\\d{4}年国际顶级投行研报$",
+    "backfill_start_date": "2026-01-01",
+    "lookback_days": 3
+  },
+  "projects": [
+    {
+      "project_dir": "research/bom/gpu_asic_bom_live",
+      "enabled": true,
+      "backfill_start_date": "2026-01-01",
+      "lookback_days": 3
+    }
+  ]
+}

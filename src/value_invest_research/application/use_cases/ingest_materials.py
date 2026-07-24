@@ -10,6 +10,10 @@ from value_invest_research.domain.material_intake import (
     normalize_material_document,
     validate_material_document,
 )
+from value_invest_research.domain.material_relevance import (
+    classify_bom_material,
+    validate_relevance_profile,
+)
 
 
 def ingest_material_batch(
@@ -26,6 +30,7 @@ def ingest_material_batch(
     default_bom_node_ids: Iterable[str] = (),
     default_question_numbers: Iterable[int] = (),
     question_ids_by_node: dict[str, dict[int, str]] | None = None,
+    question_labels_by_node: dict[str, dict[int, str]] | None = None,
 ) -> dict[str, Any]:
     """Normalize, deduplicate, route, and queue one material batch."""
 
@@ -81,6 +86,7 @@ def ingest_material_batch(
         for task in build_material_parse_tasks(
             document,
             question_ids_by_node=question_ids_by_node,
+            question_labels_by_node=question_labels_by_node,
         )
     ]
     scan_event = {
@@ -124,6 +130,9 @@ def scan_knowledge_base_materials(
     discovered_at: str | None = None,
     max_results_per_query: int = 20,
     question_ids_by_node: dict[str, dict[int, str]] | None = None,
+    question_labels_by_node: dict[str, dict[int, str]] | None = None,
+    fetch_originals: bool = False,
+    publication_date_extractor: Any | None = None,
 ) -> dict[str, Any]:
     """Scan IMA per BOM query and route new reports into parse inboxes."""
 
@@ -160,8 +169,24 @@ def scan_knowledge_base_materials(
                     as_of_date=as_of_date,
                     default_bom_node_ids=[node_id],
                     question_ids_by_node=question_ids_by_node,
+                    question_labels_by_node=question_labels_by_node,
                 )
             )
+    new_documents = _unique_documents(
+        document
+        for run in runs
+        for document in run.get("documents") or []
+    )
+    content_results = (
+        fetch_original_materials(
+            feed=feed,
+            repository=repository,
+            documents=new_documents,
+            publication_date_extractor=publication_date_extractor,
+        )
+        if fetch_originals
+        else []
+    )
     return {
         "provider": feed.provider_name,
         "knowledge_base_ref": knowledge_base_ref,
@@ -175,6 +200,319 @@ def scan_knowledge_base_materials(
         "parse_tasks": sum(
             run["scan_event"]["parse_task_count"] for run in runs
         ),
+        "content_results": content_results,
+    }
+
+
+def scan_knowledge_base_directory_materials(
+    *,
+    feed: Any,
+    repository: Any,
+    knowledge_base_id: str,
+    bom_node_id: str,
+    relevance_profile: dict[str, Any],
+    known_bom_node_ids: Iterable[str],
+    mode: str,
+    as_of_date: str,
+    start_date: str,
+    end_date: str,
+    discovered_at: str | None = None,
+    root_folder_pattern: str = r"^\d{4}年国际顶级投行研报$",
+    question_ids_by_node: dict[str, dict[int, str]] | None = None,
+    question_labels_by_node: dict[str, dict[int, str]] | None = None,
+    fetch_originals: bool = True,
+    publication_date_extractor: Any | None = None,
+) -> dict[str, Any]:
+    """Walk IMA date folders, classify every PDF, and ingest only BOM matches."""
+
+    discovered_at = discovered_at or date.today().isoformat()
+    known_nodes = set(str(item) for item in known_bom_node_ids)
+    if bom_node_id not in known_nodes:
+        raise ValueError(f"Unknown BOM node for directory scan: {bom_node_id}")
+    profile_issues = validate_relevance_profile(relevance_profile)
+    if profile_issues:
+        raise ValueError("; ".join(profile_issues))
+
+    raw_documents = feed.list_dated_materials(
+        knowledge_base_id=knowledge_base_id,
+        start_date=start_date,
+        end_date=end_date,
+        root_folder_pattern=root_folder_pattern,
+    )
+    decisions = [
+        classify_bom_material(
+            raw,
+            bom_node_id=bom_node_id,
+            profile=relevance_profile,
+            scanned_at=discovered_at,
+        )
+        for raw in raw_documents
+    ]
+    reviews = {
+        str(row.get("candidate_id") or ""): row
+        for row in repository.load_directory_relevance_reviews()
+        if str(row.get("candidate_id") or "").strip()
+    }
+    decisions = [
+        _apply_relevance_review(row, reviews.get(str(row["candidate_id"])))
+        for row in decisions
+    ]
+    decisions_by_external_id = {
+        str(row["external_id"]): row for row in decisions
+    }
+    relevant_documents = []
+    knowledge_base_ref = _opaque_feed_scope(knowledge_base_id)
+    for raw in raw_documents:
+        decision = decisions_by_external_id.get(
+            str(raw.get("external_id") or "")
+        )
+        if not decision or decision["relevance_status"] != "relevant":
+            continue
+        relevant_documents.append(
+            {
+                **raw,
+                "knowledge_base_ref": knowledge_base_ref,
+                "relevance_status": decision["relevance_status"],
+                "relevance_score": decision["relevance_score"],
+                "relevance_reason": decision["relevance_reason"],
+            }
+        )
+
+    feed_id = f"{knowledge_base_ref}:{bom_node_id}:dated-directory"
+    directory_event = {
+        "scan_id": _directory_scan_id(
+            provider=feed.provider_name,
+            feed_id=feed_id,
+            scanned_at=discovered_at,
+            start_date=start_date,
+            end_date=end_date,
+            candidates=decisions,
+        ),
+        "provider": feed.provider_name,
+        "feed_id": feed_id,
+        "ingestion_channel": "knowledge_base_scan",
+        "discovery_mode": "dated_directory",
+        "scanned_at": discovered_at,
+        "start_date": start_date,
+        "end_date": end_date,
+        "candidate_count": len(decisions),
+        "relevant_count": sum(
+            row["relevance_status"] == "relevant" for row in decisions
+        ),
+        "needs_review_count": sum(
+            row["relevance_status"] == "needs_review" for row in decisions
+        ),
+        "not_relevant_count": sum(
+            row["relevance_status"] == "not_relevant" for row in decisions
+        ),
+    }
+    ingestion = ingest_material_batch(
+        repository=repository,
+        raw_documents=relevant_documents,
+        provider=feed.provider_name,
+        feed_id=feed_id,
+        ingestion_channel="knowledge_base_scan",
+        discovered_at=discovered_at,
+        known_bom_node_ids=known_nodes,
+        mode=mode,
+        as_of_date=as_of_date,
+        default_bom_node_ids=[bom_node_id],
+        question_ids_by_node=question_ids_by_node,
+        question_labels_by_node=question_labels_by_node,
+    )
+    relevant_external_ids = [
+        str(row.get("external_id") or "")
+        for row in relevant_documents
+        if str(row.get("external_id") or "").strip()
+    ]
+    documents = _unique_documents(
+        repository.load_material_documents(
+            provider=feed.provider_name,
+            external_ids=relevant_external_ids,
+        )
+    )
+    source_ids_by_external_id = {
+        str(row.get("external_id") or ""): str(row.get("source_id") or "")
+        for row in documents
+    }
+    decisions = [
+        {
+            **row,
+            "source_id": (
+                source_ids_by_external_id.get(str(row["external_id"]))
+                or row.get("source_id")
+                or ""
+            ),
+        }
+        for row in decisions
+    ]
+    repository.persist_directory_scan(
+        candidates=decisions,
+        scan_event=directory_event,
+    )
+    content_results = (
+        fetch_original_materials(
+            feed=feed,
+            repository=repository,
+            documents=documents,
+            publication_date_extractor=publication_date_extractor,
+        )
+        if fetch_originals
+        else []
+    )
+    return {
+        "provider": feed.provider_name,
+        "knowledge_base_ref": knowledge_base_ref,
+        "directory_scan": directory_event,
+        "ingestion": ingestion,
+        "candidates": decisions,
+        "new_documents": ingestion["scan_event"]["discovered_count"],
+        "quarantined_documents": ingestion["scan_event"]["quarantined_count"],
+        "parse_tasks": ingestion["scan_event"]["parse_task_count"],
+        "content_results": content_results,
+    }
+
+
+def fetch_original_materials(
+    *,
+    feed: Any,
+    repository: Any,
+    documents: Iterable[dict[str, Any]],
+    publication_date_extractor: Any | None = None,
+) -> list[dict[str, Any]]:
+    """Fetch IMA originals without persisting signed provider URLs."""
+
+    results: list[dict[str, Any]] = []
+    for document in documents:
+        source_id = str(document.get("source_id") or "")
+        external_id = str(document.get("external_id") or "")
+        existing_path = repository.canonicalize_material_content(document)
+        if existing_path:
+            extraction = _extract_publication_date(
+                repository=repository,
+                document=document,
+                content=repository.read_material_content(existing_path),
+                extractor=publication_date_extractor,
+            )
+            results.append(
+                {
+                    "source_id": source_id,
+                    "status": "available",
+                    "local_content_path": (
+                        extraction.get("local_content_path") or existing_path
+                    ),
+                    "reused_existing": True,
+                    **_public_date_result(extraction),
+                }
+            )
+            continue
+        try:
+            payload = feed.fetch_media_content(
+                media_id=external_id,
+                title=str(document.get("title") or ""),
+            )
+            relative_path = repository.persist_material_content(
+                document=document,
+                content=payload["content"],
+                filename=str(payload.get("filename") or "material.bin"),
+                content_type=str(
+                    payload.get("content_type") or "application/octet-stream"
+                ),
+            )
+            extraction = _extract_publication_date(
+                repository=repository,
+                document=document,
+                content=payload["content"],
+                extractor=publication_date_extractor,
+            )
+            results.append(
+                {
+                    "source_id": source_id,
+                    "status": "available",
+                    "local_content_path": (
+                        extraction.get("local_content_path") or relative_path
+                    ),
+                    **_public_date_result(extraction),
+                }
+            )
+        except (OSError, ValueError) as exc:
+            results.append(
+                {
+                    "source_id": source_id,
+                    "status": "unavailable",
+                    "reason": str(exc),
+                }
+            )
+    return results
+
+
+def _extract_publication_date(
+    *,
+    repository: Any,
+    document: dict[str, Any],
+    content: bytes,
+    extractor: Any | None,
+) -> dict[str, Any]:
+    if extractor is None:
+        return {}
+    extraction = extractor.extract(
+        content=content,
+        title=str(document.get("title") or ""),
+    )
+    if extraction.get("publication_date_status") == "verified":
+        final_path = repository.update_publication_date(
+            source_id=str(document.get("source_id") or ""),
+            published_at=str(extraction.get("published_at") or ""),
+            publication_date_status="verified",
+            publication_date_source=str(
+                extraction.get("publication_date_source") or "pdf_cover"
+            ),
+            publication_date_locator=str(
+                extraction.get("publication_date_locator") or ""
+            ),
+        )
+        return {**extraction, "local_content_path": final_path}
+
+    current_date = str(document.get("published_at") or "").strip()
+    current_status = str(
+        document.get("publication_date_status") or ""
+    ).strip()
+    if current_date and current_status == "inferred_from_title":
+        final_path = repository.canonicalize_material_content(document)
+        return {
+            "published_at": current_date,
+            "publication_date_status": current_status,
+            "publication_date_source": str(
+                document.get("publication_date_source") or "title_suffix"
+            ),
+            "publication_date_locator": str(
+                extraction.get("publication_date_locator") or ""
+            ),
+            "local_content_path": final_path,
+        }
+
+    repository.update_publication_date(
+        source_id=str(document.get("source_id") or ""),
+        published_at="",
+        publication_date_status="needs_pdf_verification",
+        publication_date_source="unknown",
+        publication_date_locator=str(
+            extraction.get("publication_date_locator") or ""
+        ),
+    )
+    return extraction
+
+
+def _public_date_result(extraction: dict[str, Any]) -> dict[str, Any]:
+    return {
+        key: extraction[key]
+        for key in (
+            "published_at",
+            "publication_date_status",
+            "publication_date_source",
+            "publication_date_locator",
+        )
+        if key in extraction
     }
 
 
@@ -190,6 +528,7 @@ def ingest_question_search_result(
     as_of_date: str,
     discovered_at: str | None = None,
     question_ids_by_node: dict[str, dict[int, str]] | None = None,
+    question_labels_by_node: dict[str, dict[int, str]] | None = None,
 ) -> dict[str, Any]:
     """Route one Exa/AI-search result through the same material contract."""
 
@@ -207,6 +546,7 @@ def ingest_question_search_result(
         default_bom_node_ids=[bom_node_id],
         default_question_numbers=[question_number],
         question_ids_by_node=question_ids_by_node,
+        question_labels_by_node=question_labels_by_node,
     )
 
 
@@ -225,6 +565,62 @@ def _scan_id(
     return f"SCAN-{provider.upper()}-{digest.upper()}"
 
 
+def _directory_scan_id(
+    *,
+    provider: str,
+    feed_id: str,
+    scanned_at: str,
+    start_date: str,
+    end_date: str,
+    candidates: list[dict[str, Any]],
+) -> str:
+    identities = ",".join(
+        sorted(str(row.get("external_id") or "") for row in candidates)
+    )
+    digest = hashlib.sha256(
+        (
+            f"{provider}|{feed_id}|{scanned_at}|{start_date}|"
+            f"{end_date}|{identities}"
+        ).encode("utf-8")
+    ).hexdigest()[:16]
+    return f"DIRSCAN-{provider.upper()}-{digest.upper()}"
+
+
+def _apply_relevance_review(
+    decision: dict[str, Any],
+    review: dict[str, Any] | None,
+) -> dict[str, Any]:
+    if not review:
+        return decision
+    status = str(review.get("relevance_status") or "")
+    if status not in {"relevant", "not_relevant"}:
+        raise ValueError(
+            "Relevance reviews must set relevant or not_relevant"
+        )
+    return {
+        **decision,
+        "relevance_status": status,
+        "relevance_reason": str(
+            review.get("review_reason")
+            or review.get("relevance_reason")
+            or "GPT reviewed directory candidate"
+        ),
+        "review_status": "gpt_reviewed",
+        "reviewed_at": str(review.get("reviewed_at") or ""),
+    }
+
+
 def _opaque_feed_scope(value: str) -> str:
     digest = hashlib.sha256(value.encode("utf-8")).hexdigest()[:16]
     return f"ref:{digest}"
+
+
+def _unique_documents(
+    documents: Iterable[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    rows: dict[str, dict[str, Any]] = {}
+    for document in documents:
+        source_id = str(document.get("source_id") or "")
+        if source_id:
+            rows[source_id] = document
+    return [rows[source_id] for source_id in sorted(rows)]

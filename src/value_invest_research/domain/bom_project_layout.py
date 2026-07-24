@@ -18,6 +18,9 @@ class BomProjectLayoutEntry:
     report_path: str
     compatibility_html_path: str
     sources_path: str
+    source_directory: str
+    inbox_directory: str
+    material_intake_directory: str
     research_run_path: str | None
     temporal_manifest_path: str
     ledger_directory: str
@@ -59,6 +62,9 @@ def build_bom_project_layout(
                 report_path=f"{directory}/professional_report.md",
                 compatibility_html_path=f"{directory}/professional_report.html",
                 sources_path=f"{directory}/sources.jsonl",
+                source_directory=f"{directory}/source",
+                inbox_directory=f"{directory}/inbox",
+                material_intake_directory=f"{directory}/material_intake",
                 research_run_path=(
                     f"{directory}/research_run.json" if node_id in research_nodes else None
                 ),

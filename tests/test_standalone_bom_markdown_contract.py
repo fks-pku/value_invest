@@ -18,7 +18,7 @@ def _report(*, reverse_dates: bool = True) -> str:
                     "",
                     "### 信息时间线",
                     "",
-                    "| 时间 | 信息类型 | 来源及原文位置 | 内容简介 |",
+                    "| 时间 | 信息类型 | Source | 观点列表 |",
                     "|---|---|---|---|",
                     f"| {dates[0]} | 官方财报 | [来源](https://example.com/{index}/a) Item 1 | 事实。 |",
                     f"| {dates[1]} | 第三方权威 | [来源](https://example.com/{index}/b) 第 2 页 | 观点。 |",

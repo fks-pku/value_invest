@@ -159,8 +159,10 @@ BOM x question coverage gap
   -> normalize MaterialDocument(channel=question_search)
   -> MaterialIntakeRepository
 
-IMA knowledge-base BOM query
+IMA year/month/day directory walk
   -> ImaKnowledgeBaseFeed adapter
+  -> complete PDF candidate manifest
+  -> domain BOM relevance classifier + optional GPT review
   -> normalize MaterialDocument(channel=knowledge_base_scan)
   -> MaterialIntakeRepository
 
@@ -175,6 +177,31 @@ MaterialIntakeRepository
 `domain.material_intake` owns material classes, channels, cutoff quarantine, and parse-task semantics. `application.use_cases.ingest_materials` owns deduplication, routing, and orchestration. `ImaKnowledgeBaseFeed`, Exa/search providers, and filesystem persistence stay in outbound adapters. Credentials are environment-only and never enter the repository.
 
 Discovery and evidence are deliberately separated. A report in IMA is a candidate document, not a supporting claim. It becomes evidence only after one parse and review per relevant `BOM x question`.
+
+Live research adds an explicit project registry and original-material boundary:
+
+```text
+config/active_research_feeds.json
+  -> enabled live project
+  -> project-owned relevance profile and question coordinates
+  -> IMA search_knowledge_base / get_knowledge_list
+  -> material_intake/directory_candidates.jsonl
+  -> relevant-only intake
+  -> IMA get_media_info
+  -> extract actual publication date from the PDF
+  -> dated original: source/ima/<published_at>/<original-title>.pdf
+  -> unresolved date: source/ima/unmapped/<source_id>/<original-title>.pdf
+  -> later publication-date verification moves the same source into <published_at>
+  -> project inbox parse tasks
+  -> reviewed atomic claim ledger
+  -> Markdown timeline refresh
+```
+
+The adapter owns IMA HTTP, pagination, rate-limit backoff, folder traversal, and
+short-lived download headers. The intake use case owns relevance orchestration,
+deduplication, cutoff policy, routing, and fetch orchestration. The standalone
+timeline domain owns five-lens claim validation. The Markdown renderer only renders
+reviewed ledger state. Frozen historical projects are never daily-feed targets.
 
 Report writing is now port-backed while the current renderer is still the implementation:
 
@@ -285,6 +312,9 @@ Industry-chain S-curve projects add an explicit parent/child artifact boundary:
   qa_tree.json / workbench / sources
   material_intake/
     documents.jsonl                    # classified search/IMA discoveries
+    directory_candidates.jsonl          # every dated PDF and its BOM relevance decision
+    directory_scan_events.jsonl         # date ranges, counts, and scan audit
+    relevance_reviews.jsonl              # optional GPT overrides for ambiguous titles
     scan_events.jsonl                  # feed execution audit
     feed_state.json                    # deduplication state, opaque feed refs only
   boms/
@@ -292,6 +322,8 @@ Industry-chain S-curve projects add an explicit parent/child artifact boundary:
     <node_id>/
       project.json                     # project_scope=bom_node
       sources.jsonl                    # node-filtered evidence index
+      source/ima/YYYY/MM/DD/            # this BOM's canonical originals
+      material_intake/                  # this BOM's discovery and audit ledgers
       inbox/
         materials.jsonl                # routed, not-yet-evidence documents
         parse_tasks.jsonl              # BOM x question x source work queue
@@ -299,6 +331,26 @@ Industry-chain S-curve projects add an explicit parent/child artifact boundary:
       professional_report.md           # canonical: exactly one BOM and its six questions
       professional_report.html         # optional compatibility view
 ```
+
+An explicitly isolated BOM uses the same self-contained boundary without an
+industry parent:
+
+```text
+research/bom/<bom_project_id>/
+  project.json
+  professional_report.md
+  timeline_profile.json
+  sources.jsonl
+  source/ima/YYYY/MM/DD/
+  material_intake/                     # metadata and audit only
+  inbox/
+  ledger/
+```
+
+`source/` is the only canonical original-material store. `material_intake/raw/`
+is legacy and must be migrated away. This makes a BOM project portable: moving or
+archiving its directory preserves the report, source links, claims, conclusions,
+pending work, and ingestion audit without reaching into a sibling or parent.
 
 `domain.bom_project_layout` owns safe node IDs, canonical relative paths, and parent/child identity rules. The application use cases build and validate the manifest through ports; the filesystem adapter only reads or writes those paths. A renderer receives either `industry-index` or `bom-node` scope. It does not decide project boundaries.
 

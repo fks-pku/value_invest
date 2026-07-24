@@ -1329,7 +1329,7 @@ def validate_report_contract_markdown(
                     "markdown_standalone_bom_subsections",
                     f"every standalone BOM lens must include exactly one {label}",
                 )
-        timeline_header = "| 时间 | 信息类型 | 来源及原文位置 | 内容简介 |"
+        timeline_header = "| 时间 | 信息类型 | Source | 观点列表 |"
         if markdown.count(timeline_header) != 5:
             _issue(
                 issues,

@@ -3,7 +3,7 @@ const path = require("path");
 
 const ROOT = path.resolve(__dirname, "..");
 const PROJECT_ID = "ai_factory_industry_timeslice_20260302";
-const OUT_DIR = path.join(ROOT, "research", "qa_projects", PROJECT_ID);
+const OUT_DIR = path.join(ROOT, "research", "bom", PROJECT_ID);
 const AS_OF_DATE = "2026-03-02";
 const EVALUATION_DATE = "2026-06-02";
 const LABEL_START_DATE = "2026-03-02";

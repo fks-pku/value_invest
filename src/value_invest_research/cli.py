@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import argparse
+from datetime import date, timedelta
 import json
 import os
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -131,10 +133,11 @@ def build_parser() -> argparse.ArgumentParser:
 
     scan_ima_materials_parser = subparsers.add_parser(
         "scan-ima-materials",
-        help="Scan an IMA knowledge base per BOM and queue new reports for six-question parsing",
+        help="Scan an IMA knowledge base and queue question-specific report parsing",
     )
     scan_ima_materials_parser.add_argument("project_dir")
     scan_ima_materials_parser.add_argument("--knowledge-base-id", default=None)
+    scan_ima_materials_parser.add_argument("--knowledge-base-name", default=None)
     scan_ima_materials_parser.add_argument(
         "--config",
         default="config/material_feeds.json",
@@ -146,6 +149,95 @@ def build_parser() -> argparse.ArgumentParser:
     )
     scan_ima_materials_parser.add_argument("--max-results-per-query", type=int, default=None)
     scan_ima_materials_parser.add_argument("--discovered-at", default=None)
+    scan_ima_materials_parser.add_argument("--start-date", default=None)
+    scan_ima_materials_parser.add_argument("--end-date", default=None)
+    scan_ima_materials_parser.add_argument(
+        "--root-folder-pattern",
+        default=None,
+    )
+    scan_ima_materials_parser.add_argument(
+        "--skip-originals",
+        action="store_true",
+        help="Keep metadata only instead of downloading accessible original reports",
+    )
+
+    refresh_standalone_parser = subparsers.add_parser(
+        "refresh-standalone-bom-report",
+        help="Rebuild a five-lens standalone BOM Markdown report from its timeline ledger",
+    )
+    refresh_standalone_parser.add_argument("project_dir")
+    refresh_standalone_parser.add_argument("--as-of-date", default=None)
+
+    apply_standalone_parser = subparsers.add_parser(
+        "apply-standalone-bom-updates",
+        help="Validate reviewed claim/conclusion JSONL and rebuild the standalone BOM report",
+    )
+    apply_standalone_parser.add_argument("project_dir")
+    apply_standalone_parser.add_argument("--claims", required=True)
+    apply_standalone_parser.add_argument("--conclusions", required=True)
+    apply_standalone_parser.add_argument("--as-of-date", default=None)
+
+    publication_date_parser = subparsers.add_parser(
+        "review-material-publication-date",
+        help="Record a verified or unresolved source publication date and propagate it to intake artifacts",
+    )
+    publication_date_parser.add_argument("project_dir")
+    publication_date_parser.add_argument("--source-id", required=True)
+    publication_date_parser.add_argument("--published-at", default="")
+    publication_date_parser.add_argument(
+        "--status",
+        required=True,
+        choices=[
+            "verified",
+            "inferred_from_title",
+            "needs_pdf_verification",
+        ],
+    )
+    publication_date_parser.add_argument(
+        "--source",
+        required=True,
+        choices=[
+            "provider_published_at",
+            "source_visible_at",
+            "title_suffix",
+            "pdf_cover",
+            "manual_verification",
+            "unknown",
+        ],
+    )
+    publication_date_parser.add_argument("--locator", default="")
+
+    directory_location_parser = subparsers.add_parser(
+        "review-material-directory-location",
+        help="Record or clear an IMA year/month/day archive location and move the local original",
+    )
+    directory_location_parser.add_argument("project_dir")
+    directory_location_parser.add_argument("--source-id", required=True)
+    directory_location_parser.add_argument("--directory-date", default="")
+    directory_location_parser.add_argument("--directory-path", default="")
+    directory_location_parser.add_argument(
+        "--status",
+        required=True,
+        choices=["verified", "pending_directory_reconciliation"],
+    )
+
+    scan_active_ima_parser = subparsers.add_parser(
+        "scan-active-ima-materials",
+        help="Scan IMA for every enabled live research project in one registry",
+    )
+    scan_active_ima_parser.add_argument(
+        "--config",
+        default="config/active_research_feeds.json",
+    )
+    scan_active_ima_parser.add_argument("--discovered-at", default=None)
+    scan_active_ima_parser.add_argument("--start-date", default=None)
+    scan_active_ima_parser.add_argument("--end-date", default=None)
+    scan_active_ima_parser.add_argument(
+        "--full-backfill",
+        action="store_true",
+        help="Scan from each project's configured backfill_start_date",
+    )
+    scan_active_ima_parser.add_argument("--skip-originals", action="store_true")
 
     stock_pipeline_parser = subparsers.add_parser(
         "run-stock-qa-pipeline",
@@ -692,6 +784,16 @@ def main(argv: list[str] | None = None) -> int:
             return run_search_bom_materials_cmd(root, args)
         if args.command == "scan-ima-materials":
             return run_scan_ima_materials_cmd(root, args)
+        if args.command == "refresh-standalone-bom-report":
+            return run_refresh_standalone_bom_report_cmd(root, args)
+        if args.command == "apply-standalone-bom-updates":
+            return run_apply_standalone_bom_updates_cmd(root, args)
+        if args.command == "review-material-publication-date":
+            return run_review_material_publication_date_cmd(root, args)
+        if args.command == "review-material-directory-location":
+            return run_review_material_directory_location_cmd(root, args)
+        if args.command == "scan-active-ima-materials":
+            return run_scan_active_ima_materials_cmd(root, args)
         if args.command == "run-stock-qa-pipeline":
             return run_stock_qa_pipeline_cmd(root, args)
         if args.command == "add-research-question":
@@ -1066,8 +1168,11 @@ def run_scan_ima_materials_cmd(root: Path, args) -> int:
     from value_invest_research.adapters.outbound.ima_knowledge_base_feed import (
         ImaKnowledgeBaseFeed,
     )
+    from value_invest_research.adapters.outbound.pdf_publication_date_extractor import (
+        PdfPublicationDateExtractor,
+    )
     from value_invest_research.application.use_cases.ingest_materials import (
-        scan_knowledge_base_materials,
+        scan_knowledge_base_directory_materials,
     )
 
     project_dir = _resolve_cli_path(root, args.project_dir)
@@ -1075,46 +1180,323 @@ def run_scan_ima_materials_cmd(root: Path, args) -> int:
     config_path = _resolve_cli_path(root, args.config)
     config = json.loads(config_path.read_text(encoding="utf-8"))
     ima_config = config.get("ima") or {}
-    bom_queries = ima_config.get("bom_queries") or {}
+    node_ids = list(context["known_bom_node_ids"])
     if args.bom_node_id:
         selected = set(args.bom_node_id)
-        unknown = sorted(selected - set(context["known_bom_node_ids"]))
+        unknown = sorted(selected - set(node_ids))
         if unknown:
             raise ValueError(f"Unknown BOM nodes: {unknown}")
-        bom_queries = {
-            node_id: queries
-            for node_id, queries in bom_queries.items()
-            if node_id in selected
-        }
+        node_ids = [node_id for node_id in node_ids if node_id in selected]
+    feed = ImaKnowledgeBaseFeed()
+    publication_date_extractor = PdfPublicationDateExtractor()
     knowledge_base_id = (
         args.knowledge_base_id
         or os.environ.get("IMA_KNOWLEDGE_BASE_ID", "")
     ).strip()
     if not knowledge_base_id:
-        raise ValueError(
-            "IMA_KNOWLEDGE_BASE_ID or --knowledge-base-id is required"
+        knowledge_base_name = str(
+            args.knowledge_base_name
+            or ima_config.get("knowledge_base_name")
+            or ""
+        ).strip()
+        if not knowledge_base_name:
+            raise ValueError(
+                "IMA knowledge base requires --knowledge-base-id, "
+                "IMA_KNOWLEDGE_BASE_ID, or --knowledge-base-name"
+            )
+        knowledge_base_id = feed.resolve_knowledge_base_id(
+            knowledge_base_name
         )
-    result = scan_knowledge_base_materials(
-        feed=ImaKnowledgeBaseFeed(),
-        repository=FileSystemMaterialIntakeRepository(project_dir),
-        knowledge_base_id=knowledge_base_id,
-        bom_queries=bom_queries,
-        known_bom_node_ids=context["known_bom_node_ids"],
-        mode=context["mode"],
-        as_of_date=context["as_of_date"],
-        discovered_at=args.discovered_at,
-        max_results_per_query=(
-            args.max_results_per_query
-            or int(ima_config.get("max_results_per_query") or 20)
-        ),
-        question_ids_by_node=context["question_ids_by_node"],
+    end_date = args.end_date or args.discovered_at or date.today().isoformat()
+    start_date = args.start_date or end_date
+    results = [
+        scan_knowledge_base_directory_materials(
+            feed=feed,
+            repository=FileSystemMaterialIntakeRepository(project_dir),
+            knowledge_base_id=knowledge_base_id,
+            bom_node_id=node_id,
+            relevance_profile=context["relevance_profiles_by_node"].get(
+                node_id,
+                {},
+            ),
+            known_bom_node_ids=context["known_bom_node_ids"],
+            mode=context["mode"],
+            as_of_date=context["as_of_date"],
+            start_date=start_date,
+            end_date=end_date,
+            discovered_at=args.discovered_at,
+            root_folder_pattern=(
+                args.root_folder_pattern
+                or str(
+                    ima_config.get("root_folder_pattern")
+                    or r"^\d{4}年国际顶级投行研报$"
+                )
+            ),
+            question_ids_by_node=context["question_ids_by_node"],
+            question_labels_by_node=context["question_labels_by_node"],
+            fetch_originals=not args.skip_originals,
+            publication_date_extractor=publication_date_extractor,
+        )
+        for node_id in node_ids
+    ]
+    content_results = [
+        row
+        for result in results
+        for row in result.get("content_results") or []
+    ]
+    print(
+        "IMA dated-directory scan completed: "
+        f"bom_nodes={len(results)}, "
+        f"candidates={sum(result['directory_scan']['candidate_count'] for result in results)}, "
+        f"relevant={sum(result['directory_scan']['relevant_count'] for result in results)}, "
+        f"new_documents={sum(result['new_documents'] for result in results)}, "
+        f"quarantined={sum(result['quarantined_documents'] for result in results)}, "
+        f"parse_tasks={sum(result['parse_tasks'] for result in results)}, "
+        f"originals={sum(row.get('status') == 'available' for row in content_results)}, "
+        f"original_gaps={sum(row.get('status') != 'available' for row in content_results)}, "
+        f"pdf_verified_dates={sum(row.get('publication_date_status') == 'verified' for row in content_results)}, "
+        f"title_inferred_dates={sum(row.get('publication_date_status') == 'inferred_from_title' for row in content_results)}, "
+        f"publication_date_gaps={sum(row.get('status') == 'available' and row.get('publication_date_status') == 'needs_pdf_verification' for row in content_results)}"
+    )
+    return 0
+
+
+def run_scan_active_ima_materials_cmd(root: Path, args) -> int:
+    from value_invest_research.adapters.outbound.filesystem_material_intake import (
+        FileSystemMaterialIntakeRepository,
+    )
+    from value_invest_research.adapters.outbound.ima_knowledge_base_feed import (
+        ImaKnowledgeBaseFeed,
+    )
+    from value_invest_research.adapters.outbound.pdf_publication_date_extractor import (
+        PdfPublicationDateExtractor,
+    )
+    from value_invest_research.application.use_cases.ingest_materials import (
+        scan_knowledge_base_directory_materials,
+    )
+
+    config_path = _resolve_cli_path(root, args.config)
+    config = json.loads(config_path.read_text(encoding="utf-8"))
+    feed_config = config.get("ima") or {}
+    feed = ImaKnowledgeBaseFeed()
+    publication_date_extractor = PdfPublicationDateExtractor()
+    knowledge_base_id = str(
+        os.environ.get("IMA_KNOWLEDGE_BASE_ID", "")
+    ).strip()
+    if not knowledge_base_id:
+        knowledge_base_id = feed.resolve_knowledge_base_id(
+            str(feed_config.get("knowledge_base_name") or "").strip()
+        )
+    results = []
+    for entry in config.get("projects") or []:
+        if not isinstance(entry, dict) or not entry.get("enabled", True):
+            continue
+        project_dir = _resolve_cli_path(root, str(entry.get("project_dir") or ""))
+        context = _load_material_project_context(project_dir)
+        end_date = (
+            args.end_date
+            or args.discovered_at
+            or date.today().isoformat()
+        )
+        if args.start_date:
+            start_date = args.start_date
+        elif args.full_backfill:
+            start_date = str(
+                entry.get("backfill_start_date")
+                or feed_config.get("backfill_start_date")
+                or end_date
+            )
+        else:
+            lookback_days = int(
+                entry.get("lookback_days")
+                or feed_config.get("lookback_days")
+                or 3
+            )
+            start_date = (
+                date.fromisoformat(end_date) - timedelta(days=lookback_days - 1)
+            ).isoformat()
+        for node_id in context["known_bom_node_ids"]:
+            result = scan_knowledge_base_directory_materials(
+                feed=feed,
+                repository=FileSystemMaterialIntakeRepository(project_dir),
+                knowledge_base_id=knowledge_base_id,
+                bom_node_id=node_id,
+                relevance_profile=context["relevance_profiles_by_node"].get(
+                    node_id,
+                    {},
+                ),
+                known_bom_node_ids=context["known_bom_node_ids"],
+                mode=context["mode"],
+                as_of_date=context["as_of_date"],
+                start_date=start_date,
+                end_date=end_date,
+                discovered_at=args.discovered_at,
+                root_folder_pattern=str(
+                    entry.get("root_folder_pattern")
+                    or feed_config.get("root_folder_pattern")
+                    or r"^\d{4}年国际顶级投行研报$"
+                ),
+                question_ids_by_node=context["question_ids_by_node"],
+                question_labels_by_node=context["question_labels_by_node"],
+                fetch_originals=not args.skip_originals,
+                publication_date_extractor=publication_date_extractor,
+            )
+            results.append(
+                {
+                    "project_dir": str(project_dir),
+                    "bom_node_id": node_id,
+                    "candidates": result["directory_scan"]["candidate_count"],
+                    "relevant": result["directory_scan"]["relevant_count"],
+                    "new_documents": result["new_documents"],
+                    "parse_tasks": result["parse_tasks"],
+                    "originals": sum(
+                        row.get("status") == "available"
+                        for row in result.get("content_results") or []
+                    ),
+                    "original_gaps": sum(
+                        row.get("status") != "available"
+                        for row in result.get("content_results") or []
+                    ),
+                    "pdf_verified_dates": sum(
+                        row.get("publication_date_status") == "verified"
+                        for row in result.get("content_results") or []
+                    ),
+                    "title_inferred_dates": sum(
+                        row.get("publication_date_status")
+                        == "inferred_from_title"
+                        for row in result.get("content_results") or []
+                    ),
+                    "publication_date_gaps": sum(
+                        row.get("status") == "available"
+                        and row.get("publication_date_status")
+                        == "needs_pdf_verification"
+                        for row in result.get("content_results") or []
+                    ),
+                }
+            )
+    print(
+        json.dumps(
+            {
+                "projects": results,
+                "candidates": sum(row["candidates"] for row in results),
+                "relevant": sum(row["relevant"] for row in results),
+                "new_documents": sum(row["new_documents"] for row in results),
+                "parse_tasks": sum(row["parse_tasks"] for row in results),
+                "originals": sum(row["originals"] for row in results),
+                "original_gaps": sum(row["original_gaps"] for row in results),
+                "pdf_verified_dates": sum(
+                    row["pdf_verified_dates"] for row in results
+                ),
+                "title_inferred_dates": sum(
+                    row["title_inferred_dates"] for row in results
+                ),
+                "publication_date_gaps": sum(
+                    row["publication_date_gaps"] for row in results
+                ),
+            },
+            ensure_ascii=False,
+        )
+    )
+    return 0
+
+
+def run_refresh_standalone_bom_report_cmd(root: Path, args) -> int:
+    from value_invest_research.adapters.outbound.filesystem_standalone_bom_timeline import (
+        FileSystemStandaloneBomTimelineRepository,
+    )
+    from value_invest_research.adapters.outbound.standalone_bom_markdown_renderer import (
+        StandaloneBomMarkdownRenderer,
+    )
+    from value_invest_research.application.use_cases.refresh_standalone_bom_timeline import (
+        refresh_standalone_bom_report,
+    )
+
+    project_dir = _resolve_cli_path(root, args.project_dir)
+    result = refresh_standalone_bom_report(
+        repository=FileSystemStandaloneBomTimelineRepository(project_dir),
+        renderer=StandaloneBomMarkdownRenderer(),
+        as_of_date=args.as_of_date,
     )
     print(
-        "IMA material scan completed: "
-        f"bom_queries={len(result['runs'])}, "
-        f"new_documents={result['new_documents']}, "
-        f"quarantined={result['quarantined_documents']}, "
-        f"parse_tasks={result['parse_tasks']}"
+        "Standalone BOM report refreshed: "
+        f"path={result['report_path']}, "
+        f"as_of_date={result['as_of_date']}, "
+        f"claims={result['claims']}"
+    )
+    return 0
+
+
+def run_apply_standalone_bom_updates_cmd(root: Path, args) -> int:
+    from value_invest_research.adapters.outbound.filesystem_standalone_bom_timeline import (
+        FileSystemStandaloneBomTimelineRepository,
+    )
+    from value_invest_research.adapters.outbound.standalone_bom_markdown_renderer import (
+        StandaloneBomMarkdownRenderer,
+    )
+    from value_invest_research.application.use_cases.refresh_standalone_bom_timeline import (
+        apply_standalone_bom_updates,
+    )
+
+    project_dir = _resolve_cli_path(root, args.project_dir)
+    claims = _read_jsonl(_resolve_cli_path(root, args.claims))
+    conclusions = _read_jsonl(_resolve_cli_path(root, args.conclusions))
+    result = apply_standalone_bom_updates(
+        repository=FileSystemStandaloneBomTimelineRepository(project_dir),
+        renderer=StandaloneBomMarkdownRenderer(),
+        raw_claims=claims,
+        raw_conclusions=conclusions,
+        as_of_date=args.as_of_date,
+    )
+    print(
+        "Standalone BOM updates applied: "
+        f"path={result['report_path']}, "
+        f"claims={result['applied_claims']}, "
+        f"conclusions={result['applied_conclusions']}"
+    )
+    return 0
+
+
+def run_review_material_publication_date_cmd(root: Path, args) -> int:
+    from value_invest_research.adapters.outbound.filesystem_material_intake import (
+        FileSystemMaterialIntakeRepository,
+    )
+
+    project_dir = _resolve_cli_path(root, args.project_dir)
+    repository = FileSystemMaterialIntakeRepository(project_dir)
+    repository.update_publication_date(
+        source_id=args.source_id,
+        published_at=args.published_at,
+        publication_date_status=args.status,
+        publication_date_source=args.source,
+        publication_date_locator=args.locator,
+    )
+    print(
+        "Material publication date reviewed: "
+        f"source_id={args.source_id}, "
+        f"published_at={args.published_at or '<pending>'}, "
+        f"status={args.status}, source={args.source}"
+    )
+    return 0
+
+
+def run_review_material_directory_location_cmd(root: Path, args) -> int:
+    from value_invest_research.adapters.outbound.filesystem_material_intake import (
+        FileSystemMaterialIntakeRepository,
+    )
+
+    project_dir = _resolve_cli_path(root, args.project_dir)
+    repository = FileSystemMaterialIntakeRepository(project_dir)
+    local_path = repository.update_directory_location(
+        source_id=args.source_id,
+        directory_date=args.directory_date,
+        directory_path=args.directory_path,
+        directory_mapping_status=args.status,
+    )
+    print(
+        "Material directory location reviewed: "
+        f"source_id={args.source_id}, "
+        f"directory_date={args.directory_date or '<pending>'}, "
+        f"status={args.status}, local_path={local_path or '<not-downloaded>'}"
     )
     return 0
 
@@ -1127,16 +1509,40 @@ def _load_material_project_context(project_dir: Path) -> dict[str, Any]:
     project = json.loads(
         (project_dir / "project.json").read_text(encoding="utf-8")
     )
-    manifest = json.loads(
-        (project_dir / "boms" / "manifest.json").read_text(encoding="utf-8")
+    standalone_node_id = (
+        str(project.get("bom_node_id") or "").strip()
+        if project.get("report_scope") == "standalone-bom"
+        else ""
     )
-    known_nodes = [
-        str(item.get("node_id") or "")
-        for item in manifest.get("nodes") or []
-        if str(item.get("node_id") or "").strip()
-    ]
+    if standalone_node_id:
+        known_nodes = [standalone_node_id]
+    else:
+        manifest = json.loads(
+            (project_dir / "boms" / "manifest.json").read_text(encoding="utf-8")
+        )
+        known_nodes = [
+            str(item.get("node_id") or "")
+            for item in manifest.get("nodes") or []
+            if str(item.get("node_id") or "").strip()
+        ]
     question_ids_by_node: dict[str, dict[int, str]] = {}
+    question_labels_by_node: dict[str, dict[int, str]] = {}
     for node_id in known_nodes:
+        if standalone_node_id:
+            labels = [
+                str(label)
+                for label in project.get("question_labels") or []
+                if str(label).strip()
+            ]
+            question_ids_by_node[node_id] = {
+                number: f"{node_id}_{_question_slug(label)}"
+                for number, label in enumerate(labels, start=1)
+            }
+            question_labels_by_node[node_id] = {
+                number: label
+                for number, label in enumerate(labels, start=1)
+            }
+            continue
         try:
             playbook = get_bom_node_playbook(node_id)
         except KeyError:
@@ -1148,9 +1554,29 @@ def _load_material_project_context(project_dir: Path) -> dict[str, Any]:
             question.question_number: question.question_id
             for question in playbook.questions
         }
+        question_labels_by_node[node_id] = {
+            question.question_number: question.question
+            for question in playbook.questions
+        }
     return {
         "known_bom_node_ids": known_nodes,
         "question_ids_by_node": question_ids_by_node,
+        "question_labels_by_node": question_labels_by_node,
+        "relevance_profiles_by_node": (
+            {
+                standalone_node_id: (
+                    project.get("material_relevance_profile") or {}
+                )
+            }
+            if standalone_node_id
+            else {
+                str(node_id): profile
+                for node_id, profile in (
+                    project.get("material_relevance_profiles") or {}
+                ).items()
+                if isinstance(profile, dict)
+            }
+        ),
         "mode": str(
             project.get("mode")
             or project.get("run_mode")
@@ -1158,6 +1584,17 @@ def _load_material_project_context(project_dir: Path) -> dict[str, Any]:
         ),
         "as_of_date": str(project.get("as_of_date") or ""),
     }
+
+
+def _question_slug(value: str) -> str:
+    aliases = {
+        "需求侧": "demand",
+        "供给侧": "supply",
+        "技术侧": "technology",
+        "估值侧": "valuation",
+        "ESG": "esg",
+    }
+    return aliases.get(value, re.sub(r"[^A-Za-z0-9]+", "_", value).strip("_").lower())
 
 
 def _six_question_label(question_number: int) -> str:

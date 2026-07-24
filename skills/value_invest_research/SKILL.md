@@ -92,6 +92,18 @@ Every document carries:
 - `ingestion_channel`: question search, IMA knowledge-base scan, or manual import;
 - provider/external identity, content hash, publication/discovery time, matched BOM nodes, mapping status, and cutoff usage.
 
+Knowledge-base dates remain orthogonal: an IMA year/month/day folder and provider
+create/update timestamps describe archive or ingestion activity, not market
+publication. `published_at` may come only from an explicit publication field, a
+dated report title, or the original cover/header. Preserve date status, provenance,
+and locator. An unresolved date stays blank and blocks claim promotion until the
+original PDF is verified.
+
+Keyword-search results do not carry trustworthy IMA folder provenance, so keep
+their directory status pending. Folder provenance and local storage are orthogonal:
+store originals by `published_at` under `source/ima/YYYY/MM/DD/`; use
+`source/ima/unmapped/<source_id>/` only while the publication date is unresolved.
+
 Question search routes only to the requested `BOM x question`. IMA scanning searches each configured BOM profile and creates up to six `BOM x question x source` parse tasks for every newly matched report. A report may route to several BOMs. It must be parsed separately for each relevant question.
 
 The intake sequence is:
@@ -99,6 +111,18 @@ The intake sequence is:
 `discover -> classify -> deduplicate -> cutoff gate -> BOM route -> parse inbox -> DeepSeek/specialty parse -> GPT review -> atomic claim ledger`
 
 Credentials and the raw knowledge-base ID never enter Git. Read IMA access from `IMA_OPENAPI_CLIENTID`, `IMA_OPENAPI_APIKEY`, and `IMA_KNOWLEDGE_BASE_ID`; persisted feed state stores only an irreversible reference hash. A frozen historical project quarantines documents published after its cutoff.
+
+Daily IMA scanning is project-driven, not hard-coded to six questions. Resolve the
+configured knowledge-base name, walk its year/month/day directory tree, classify
+every PDF against each enabled BOM profile, and download only approved matches to
+`source/ima/<published_at>/` after checking the original PDF. The IMA day folder is
+retained only as archive provenance. Persist all relevance decisions so omissions
+are auditable. Create tasks from that project's own coordinate registry.
+Canonical BOM children produce six tasks; a `standalone-bom` project produces its
+five lens tasks. The parser must answer the current coordinate from the original
+report, record page/section, data or argument, time fields, stance, and gaps, then
+GPT reviews the result before it enters `ledger/claims.jsonl`. Only reviewed claims
+and a reviewed conclusion update may rebuild the public Markdown timeline.
 
 Each leaf task stores:
 
@@ -154,11 +178,19 @@ When the research object is explicitly one BOM rather than an industry chain, us
 `report_scope: standalone-bom`. Render exactly five numbered H2 sections:
 `需求侧`, `供给侧`, `技术侧`, `估值侧`, and `ESG`. Every section contains one
 `简单逻辑链`, one newest-to-oldest `信息时间线`, and one `最新结论与趋势`.
-Timeline rows preserve material class, a claim-near link, original page/section, and
-the question-specific fact or view. Do not wrap this scope in the four-section
+The timeline uses one row per source with columns `时间`, `信息类型`, `Source`, and
+`观点列表`; multiple atomic claims from the same source and lens are grouped in
+that row with their original locators. Do not wrap this scope in the four-section
 industry shell and do not expose source-search process fields.
 
-Each BOM child owns `project.json`, node-filtered `sources.jsonl`, `inbox/materials.jsonl`, `inbox/parse_tasks.jsonl`, a temporal ledger, as-of snapshots, optional compatibility `research_run.json`, and its report. The parent owns `boms/manifest.json`, `material_intake/`, canonical taxonomy, navigation, and aggregated targets. Public `下钻 QA`, raw Universe/Exa/IMA queries, provider IDs, parser traces, workbench data, and framework-change notes remain hidden unless requested.
+Every standalone BOM and every `boms/<node_id>/` child is a self-contained project
+directory. It owns `project.json`, `professional_report.md`, `sources.jsonl`,
+`source/`, `material_intake/`, `inbox/`, and `ledger/`. Canonical originals live
+only under `source/<provider>/YYYY/MM/DD/`; `material_intake/` stores discovery and
+audit metadata, never a second canonical PDF store. The parent owns only
+`boms/manifest.json`, canonical taxonomy, navigation, and aggregated targets.
+Public `下钻 QA`, raw Universe/Exa/IMA queries, provider IDs, parser traces,
+workbench data, and framework-change notes remain hidden unless requested.
 
 Use nested collapsed `details`, claim-near blue links, one full-width sibling card per row, and local `table-scroll` for wide tables. Keep the public report clean and research-first.
 

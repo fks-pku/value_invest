@@ -3,7 +3,9 @@ name = "value-invest-research"
 version = "0.1.0"
 description = "Foundation-first LLM investment research assistant"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "pypdf>=6.0.0",
+]
 
 [project.scripts]
 value-invest-research = "value_invest_research.cli:main"
@@ -14,6 +16,7 @@ llm = ["openai>=1.0.0"]
 research = ["pyyaml>=6.0"]
 all = [
     "openai>=1.0.0",
+    "pypdf>=6.0.0",
     "pyyaml>=6.0",
     "yfinance>=0.2.36",
 ]

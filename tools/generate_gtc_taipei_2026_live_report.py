@@ -28,7 +28,7 @@ from value_invest_research.framework_contracts import SCORE_WEIGHTS  # noqa: E40
 
 
 PROJECT_ID = "gtc_taipei_2026_live_20260602"
-PROJECT_DIR = ROOT / "research" / "qa_projects" / PROJECT_ID
+PROJECT_DIR = ROOT / "research" / "bom" / PROJECT_ID
 REPORT_DATE = "2026-06-02"
 CREATED_AT = datetime.now(timezone.utc).isoformat()
 

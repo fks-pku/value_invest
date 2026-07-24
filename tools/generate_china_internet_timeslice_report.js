@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT = path.resolve(__dirname, "..");
-const OUT_DIR = path.join(ROOT, "research", "qa_projects", "china_internet_timeslice_20260228");
+const OUT_DIR = path.join(ROOT, "research", "bom", "china_internet_timeslice_20260228");
 const AS_OF_DATE = "2026-02-28";
 const REPORT_DATE = "2026-05-30";
 

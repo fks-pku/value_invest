@@ -339,10 +339,10 @@ class MetaQaResearchTests(unittest.TestCase):
                 "分析人形机器人产业链的投资价值",
                 project_id="robotics_chain",
             )
-            project_dir = Path(tmp) / "research" / "qa_projects" / "robotics_chain"
+            project_dir = Path(tmp) / "research" / "bom" / "robotics_chain"
             record = {
                 "id": "ev_robotics_market_size",
-                "research_object": "research/qa_projects/robotics_chain",
+                "research_object": "research/bom/robotics_chain",
                 "source_type": "industry_data",
                 "source_name": "Robot Market Size Dataset",
                 "url": "https://example.com/robotics/market-size",

@@ -4,7 +4,7 @@ const { spawnSync } = require("child_process");
 
 const ROOT = path.resolve(__dirname, "..");
 const PROJECT_ID = "ai_factory_industry_scurve_timeslice_20260328";
-const OUT_DIR = path.join(ROOT, "research", "qa_projects", PROJECT_ID);
+const OUT_DIR = path.join(ROOT, "research", "bom", PROJECT_ID);
 const BOMS_DIR = path.join(OUT_DIR, "boms");
 const COMPUTE_RESEARCH_RUN_PATH = path.join(BOMS_DIR, "compute", "research_run.json");
 const HBM_RESEARCH_RUN_PATH = path.join(BOMS_DIR, "memory", "research_run.json");

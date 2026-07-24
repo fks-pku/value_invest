@@ -17,6 +17,12 @@ class BomProjectLayoutTests(unittest.TestCase):
         self.assertEqual(manifest["project_scope"], "industry_chain")
         self.assertEqual([node["node_id"] for node in manifest["nodes"]], ["compute", "memory"])
         self.assertEqual(manifest["nodes"][0]["report_path"], "boms/compute/professional_report.md")
+        self.assertEqual(manifest["nodes"][0]["source_directory"], "boms/compute/source")
+        self.assertEqual(manifest["nodes"][0]["inbox_directory"], "boms/compute/inbox")
+        self.assertEqual(
+            manifest["nodes"][0]["material_intake_directory"],
+            "boms/compute/material_intake",
+        )
         self.assertEqual(
             manifest["nodes"][0]["compatibility_html_path"],
             "boms/compute/professional_report.html",

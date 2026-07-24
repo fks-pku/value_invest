@@ -154,7 +154,25 @@ Every material has:
 - `ingestion_channel`: `question_search`, `knowledge_base_scan`, or `manual_import`;
 - provider identity, external ID, content hash, publication/discovery time, matched BOMs, mapping status, and cutoff usage.
 
-`question_search` starts from one `BOM x question` gap and queues parsing only for that question. `knowledge_base_scan` searches each canonical BOM profile in IMA or another user database and queues one parse task for every potentially relevant question. One document may route to several BOMs.
+`question_search` starts from one `BOM x question` gap and queues parsing only for
+that question. `knowledge_base_scan` first enumerates the approved database's
+year/month/day folders, records every PDF candidate, judges relevance against each
+canonical BOM profile, downloads only approved matches to the BOM project's dated
+`source/ima/` tree, and queues one parse task for every potentially relevant
+question. One document may route to several BOMs.
+
+The same intake contract also serves `standalone-bom`. In that scope, the stable
+coordinates are the five professional lenses rather than the six S-curve questions.
+Daily database scanning therefore resolves coordinates from `project.json`; it must
+not assume six questions. Each relevant document is fetched once, but parsed
+separately against every potentially affected lens. Only non-empty, GPT-reviewed
+lens claims enter the reverse-chronological public timeline.
+
+Each standalone BOM is physically self-contained at
+`research/bom/<bom_project_id>/`. Its report, originals, source index,
+inbox, temporal ledger, and intake audit stay together. For an industry-chain
+project, the same boundary begins at `boms/<node_id>/`. No BOM may depend on a
+sibling's `source/` directory or a parent-level shared PDF pool.
 
 Choose concrete fields, not baskets. Example: `Microsoft commercial RPO ($B)` is valid; `cloud budget proxy` is not.
 
@@ -189,7 +207,7 @@ Create one GPT verification record per extraction. Messages/opinions remain lead
 
 ### F. Evidence synthesis
 
-Split every source into atomic claims and map each claim to `BOM x six-question coordinate x published_at`. Preserve `effective_period`, `target_period`, `ingested_at`, `material_class`, and `ingestion_channel`. Facts, forecasts, opinions, messages, valuations, and refutations must remain distinguishable.
+Split every source into atomic claims and map each claim to `BOM x six-question coordinate x published_at`. Preserve `effective_period`, `target_period`, `ingested_at`, `material_class`, and `ingestion_channel`. Facts, forecasts, opinions, messages, valuations, and refutations must remain distinguishable. Archive-folder, provider-upload, provider-update, and discovery dates never substitute for `published_at`; unresolved publication dates block claim promotion until the original is verified.
 
 The same source may yield several claims and map to several questions. Unmapped material remains in `unmapped/new_theme`; it is not silently dropped. Actual history never includes guidance or forecasts. Claiming acceleration requires same-definition history or explicit YoY/multiple evidence. Claiming runway requires a cutoff-visible forward anchor and mechanism.
 

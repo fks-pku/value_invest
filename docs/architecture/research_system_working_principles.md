@@ -154,7 +154,7 @@ Adapters 是当前基础设施的具体实现。
 下面用当前存储行业投资机会报告举例：
 
 ```text
-research/qa_projects/storage_memory_opportunities_live_20260601/
+research/bom/storage_memory_opportunities_live_20260601/
   project.json
   qa_tree.json
   sources.jsonl
@@ -751,8 +751,8 @@ renderer 只能展示排序，不应该决定排序。
 ```bash
 PYTHONPATH=src python3 -m unittest
 PYTHONPATH=src python3 -m unittest tests.test_hexagonal_architecture
-PYTHONPATH=src python3 -m value_invest_research validate-report-contract research/qa_projects/storage_memory_opportunities_live_20260601/professional_report.html --require-l3
-PYTHONPATH=src python3 -m value_invest_research validate-research-artifacts research/qa_projects/storage_memory_opportunities_live_20260601 --require-l3
+PYTHONPATH=src python3 -m value_invest_research validate-report-contract research/bom/storage_memory_opportunities_live_20260601/professional_report.html --require-l3
+PYTHONPATH=src python3 -m value_invest_research validate-research-artifacts research/bom/storage_memory_opportunities_live_20260601 --require-l3
 git diff --check
 ```
 

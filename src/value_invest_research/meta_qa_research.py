@@ -488,7 +488,7 @@ def _project_dir(root: Path, project_id: str) -> Path:
     cleaned = _safe_id(project_id)
     if not cleaned:
         raise ValueError("project_id must be non-empty")
-    return root / "research" / "qa_projects" / cleaned
+    return root / "research" / "bom" / cleaned
 
 
 def _load_project(project_dir: Path) -> dict[str, Any]:
@@ -1710,7 +1710,7 @@ def _project_evidence_record(
     return EvidenceRecord.from_dict(
         {
             "id": f"ev_{_safe_id(project['project_id'])}_{digest[:10]}",
-            "research_object": f"research/qa_projects/{project['project_id']}",
+            "research_object": f"research/bom/{project['project_id']}",
             "source_type": source_type.strip(),
             "source_name": source_name.strip(),
             "url": url.strip(),

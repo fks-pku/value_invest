@@ -3,7 +3,7 @@ const path = require("path");
 
 const base = path.join(
   "research",
-  "qa_projects",
+  "bom",
   "semiconductor_hardware_timeslice_20260228"
 );
 

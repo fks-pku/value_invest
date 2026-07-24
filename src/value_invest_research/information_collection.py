@@ -540,7 +540,7 @@ def apply_meta_qa_source_candidates(
     """Fetch accepted generic QA source candidates and bind them to QA nodes."""
     rows = _limit_tasks(_read_jsonl(path), limit)
     applied: list[dict[str, Any]] = []
-    project_dir = root / "research" / "qa_projects" / project_id
+    project_dir = root / "research" / "bom" / project_id
     for row in rows:
         candidate = _validated_candidate_row(row)
         if not candidate["accepted"] or candidate["score"] < min_score:

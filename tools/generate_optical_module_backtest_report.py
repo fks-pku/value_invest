@@ -35,7 +35,7 @@ from value_invest_research.framework_contracts import (  # noqa: E402
 
 
 PROJECT_ID = "optical_module_opportunities_backtest_20260601"
-PROJECT_DIR = ROOT / "research" / "qa_projects" / PROJECT_ID
+PROJECT_DIR = ROOT / "research" / "bom" / PROJECT_ID
 AS_OF_DATE = "2026-03-01"
 REPORT_DATE = "2026-06-01"
 EVALUATION_DATE = "2026-06-01"

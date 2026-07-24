@@ -2,14 +2,21 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import re
 from typing import Any
 
 
 class FileSystemMaterialIntakeRepository:
-    """Persist one parent intake ledger and BOM-specific parsing inboxes."""
+    """Persist one intake ledger and research-object parsing inboxes."""
 
     def __init__(self, project_dir: Path):
         self.project_dir = project_dir
+        project = _read_json(project_dir / "project.json")
+        self.standalone_node_id = (
+            str(project.get("bom_node_id") or "").strip()
+            if project.get("report_scope") == "standalone-bom"
+            else ""
+        )
 
     @property
     def project_dir_label(self) -> str:
@@ -71,7 +78,7 @@ class FileSystemMaterialIntakeRepository:
                 for task in parse_tasks
                 if str(task.get("bom_node_id") or "") == node_id
             ]
-            inbox_dir = self.project_dir / "boms" / node_id / "inbox"
+            inbox_dir = self._inbox_dir(node_id)
             inbox_dir.mkdir(parents=True, exist_ok=True)
             _write_jsonl(
                 inbox_dir / "materials.jsonl",
@@ -98,6 +105,348 @@ class FileSystemMaterialIntakeRepository:
             "routed_documents": routed_documents,
             "parse_tasks": routed_tasks,
         }
+
+    def persist_material_content(
+        self,
+        *,
+        document: dict[str, Any],
+        content: bytes,
+        filename: str,
+        content_type: str,
+    ) -> str:
+        source_id = str(document.get("source_id") or "").strip()
+        if not source_id:
+            raise ValueError("Material content requires source_id")
+        safe_filename = _safe_filename(filename)
+        content_dir = self.project_dir / _dated_source_dir(document)
+        content_dir.mkdir(parents=True, exist_ok=True)
+        content_path = _non_conflicting_path(
+            content_dir / safe_filename,
+            source_id=source_id,
+            content=content,
+        )
+        content_path.write_bytes(content)
+        relative_path = content_path.relative_to(self.project_dir).as_posix()
+        patch = {
+            "local_content_path": relative_path,
+            "content_type": content_type,
+            "content_status": "available",
+        }
+        self._patch_source_records(source_id, patch)
+        return relative_path
+
+    def canonicalize_material_content(
+        self,
+        document: dict[str, Any],
+    ) -> str:
+        """Move a legacy original into the BOM project's canonical source tree."""
+
+        source_id = str(document.get("source_id") or "").strip()
+        if not source_id:
+            return ""
+        stored = next(
+            (
+                row
+                for row in _read_jsonl(
+                    self.project_dir / "material_intake" / "documents.jsonl"
+                )
+                if str(row.get("source_id") or "") == source_id
+            ),
+            {},
+        )
+        current_relative = str(stored.get("local_content_path") or "").strip()
+        if not current_relative:
+            return ""
+        current_path = self.project_dir / current_relative
+        if not current_path.is_file():
+            return ""
+        target_dir = self.project_dir / _dated_source_dir(
+            {**stored, **document}
+        )
+        target_dir.mkdir(parents=True, exist_ok=True)
+        preferred_name = _preferred_material_filename(
+            document={**stored, **document},
+            fallback=current_path.name,
+        )
+        target_path = _non_conflicting_path(
+            target_dir / preferred_name,
+            source_id=source_id,
+            content=current_path.read_bytes(),
+        )
+        if current_path == target_path:
+            relative_path = current_relative
+        elif current_relative.startswith("source/ima/"):
+            current_path.replace(target_path)
+            _prune_empty_directories(
+                current_path.parent,
+                stop=self.project_dir / "source" / "ima",
+            )
+            relative_path = target_path.relative_to(self.project_dir).as_posix()
+        else:
+            if target_path.exists():
+                current_path.unlink()
+            else:
+                current_path.replace(target_path)
+            _prune_empty_directories(
+                current_path.parent,
+                stop=self.project_dir / "material_intake" / "raw",
+            )
+            relative_path = target_path.relative_to(self.project_dir).as_posix()
+        self._patch_source_records(
+            source_id,
+            {
+                "local_content_path": relative_path,
+                "content_type": str(
+                    stored.get("content_type") or "application/pdf"
+                ),
+                "content_status": "available",
+            },
+        )
+        return relative_path
+
+    def read_material_content(self, relative_path: str) -> bytes:
+        path = self.project_dir / str(relative_path)
+        if not path.is_file():
+            raise ValueError(f"Material original does not exist: {relative_path}")
+        return path.read_bytes()
+
+    def load_material_documents(
+        self,
+        *,
+        provider: str,
+        external_ids: list[str],
+    ) -> list[dict[str, Any]]:
+        wanted = {str(item).strip() for item in external_ids if str(item).strip()}
+        return [
+            row
+            for row in _read_jsonl(
+                self.project_dir / "material_intake" / "documents.jsonl"
+            )
+            if str(row.get("provider") or "") == provider
+            and str(row.get("external_id") or "") in wanted
+        ]
+
+    def update_publication_date(
+        self,
+        *,
+        source_id: str,
+        published_at: str,
+        publication_date_status: str,
+        publication_date_source: str,
+        publication_date_locator: str = "",
+    ) -> str:
+        """Propagate one publication date and canonicalize its local original."""
+
+        if publication_date_status == "needs_pdf_verification":
+            patch = {
+                "published_at": "",
+                "publication_date_status": publication_date_status,
+                "publication_date_source": publication_date_source,
+                "publication_date_locator": publication_date_locator,
+                "mapping_status": "pending_publication_date",
+                "allowed_usage": "date_verification_only",
+            }
+        else:
+            if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", published_at):
+                raise ValueError("published_at must use YYYY-MM-DD")
+            patch = {
+                "published_at": published_at,
+                "publication_date_status": publication_date_status,
+                "publication_date_source": publication_date_source,
+                "publication_date_locator": publication_date_locator,
+                "mapping_status": "pending_question_parse",
+                "allowed_usage": "research",
+            }
+        self._patch_source_records(source_id, patch)
+        return self.canonicalize_material_content(
+            {"source_id": source_id, **patch}
+        )
+
+    def update_directory_location(
+        self,
+        *,
+        source_id: str,
+        directory_date: str,
+        directory_path: str,
+        directory_mapping_status: str,
+    ) -> str:
+        """Review one IMA archive location and move its original if present."""
+
+        if directory_mapping_status == "verified":
+            if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", directory_date):
+                raise ValueError("directory_date must use YYYY-MM-DD")
+            if not directory_path.strip():
+                raise ValueError("verified IMA directory requires directory_path")
+            patch = {
+                "directory_date": directory_date,
+                "directory_path": directory_path.strip(),
+                "directory_mapping_status": "verified",
+            }
+        elif directory_mapping_status == "pending_directory_reconciliation":
+            patch = {
+                "directory_date": "",
+                "directory_path": "",
+                "directory_mapping_status": directory_mapping_status,
+            }
+        else:
+            raise ValueError(
+                "IMA directory status must be verified or "
+                "pending_directory_reconciliation"
+            )
+        self._patch_source_records(source_id, patch)
+        return self.canonicalize_material_content(
+            {"source_id": source_id, **patch}
+        )
+
+    def persist_directory_scan(
+        self,
+        *,
+        candidates: list[dict[str, Any]],
+        scan_event: dict[str, Any],
+    ) -> dict[str, int]:
+        intake_dir = self.project_dir / "material_intake"
+        intake_dir.mkdir(parents=True, exist_ok=True)
+        candidate_path = intake_dir / "directory_candidates.jsonl"
+        event_path = intake_dir / "directory_scan_events.jsonl"
+        merged_candidates = _merge_directory_candidates(
+            _read_jsonl(candidate_path),
+            candidates,
+        )
+        merged_events = _merge_rows(
+            _read_jsonl(event_path),
+            [scan_event],
+            key_fields=("scan_id",),
+        )
+        _write_jsonl(candidate_path, merged_candidates)
+        _write_jsonl(event_path, merged_events)
+        return {
+            "candidates": len(merged_candidates),
+            "scan_events": len(merged_events),
+        }
+
+    def load_directory_relevance_reviews(self) -> list[dict[str, Any]]:
+        return _read_jsonl(
+            self.project_dir
+            / "material_intake"
+            / "relevance_reviews.jsonl"
+        )
+
+    def _inbox_dir(self, node_id: str) -> Path:
+        if self.standalone_node_id:
+            if node_id != self.standalone_node_id:
+                raise ValueError(
+                    f"Standalone BOM project only accepts node={self.standalone_node_id}"
+                )
+            return self.project_dir / "inbox"
+        return self.project_dir / "boms" / node_id / "inbox"
+
+    def _patch_source_records(
+        self,
+        source_id: str,
+        patch: dict[str, Any],
+    ) -> None:
+        project_documents_path = (
+            self.project_dir / "material_intake" / "documents.jsonl"
+        )
+        _write_jsonl(
+            project_documents_path,
+            [
+                {**row, **patch}
+                if str(row.get("source_id") or "") == source_id
+                else row
+                for row in _read_jsonl(project_documents_path)
+            ],
+        )
+        candidate_path = (
+            self.project_dir
+            / "material_intake"
+            / "directory_candidates.jsonl"
+        )
+        if candidate_path.exists():
+            _write_jsonl(
+                candidate_path,
+                [
+                    {**row, **_candidate_patch(patch)}
+                    if str(row.get("source_id") or "") == source_id
+                    else row
+                    for row in _read_jsonl(candidate_path)
+                ],
+            )
+        node_ids = {
+            str(node_id)
+            for row in _read_jsonl(project_documents_path)
+            if str(row.get("source_id") or "") == source_id
+            for node_id in row.get("matched_bom_node_ids") or []
+        }
+        for node_id in node_ids:
+            inbox_dir = self._inbox_dir(node_id)
+            inbox_dir.mkdir(parents=True, exist_ok=True)
+            materials_path = inbox_dir / "materials.jsonl"
+            _write_jsonl(
+                materials_path,
+                [
+                    {**row, **patch}
+                    if str(row.get("source_id") or "") == source_id
+                    else row
+                    for row in _read_jsonl(materials_path)
+                ],
+            )
+            tasks_path = inbox_dir / "parse_tasks.jsonl"
+            _write_jsonl(
+                tasks_path,
+                [
+                    {**row, **_parse_task_patch(patch)}
+                    if str(row.get("source_id") or "") == source_id
+                    else row
+                    for row in _read_jsonl(tasks_path)
+                ],
+            )
+            for reviewed_path in inbox_dir.glob(
+                "reviewed_claims*.jsonl"
+            ):
+                _write_jsonl(
+                    reviewed_path,
+                    [
+                        {**row, **_reviewed_claim_patch(patch)}
+                        if (
+                            str(row.get("source_id") or "") == source_id
+                            and str(row.get("ingestion_channel") or "")
+                            == "knowledge_base_scan"
+                        )
+                        else row
+                        for row in _read_jsonl(reviewed_path)
+                    ],
+                )
+        claims_path = self.project_dir / "ledger" / "claims.jsonl"
+        if claims_path.exists():
+            _write_jsonl(
+                claims_path,
+                [
+                    {**row, **_reviewed_claim_patch(patch)}
+                    if (
+                        str(row.get("source_id") or "") == source_id
+                        and str(row.get("ingestion_channel") or "")
+                        == "knowledge_base_scan"
+                    )
+                    else row
+                    for row in _read_jsonl(claims_path)
+                ],
+            )
+        sources_path = self.project_dir / "sources.jsonl"
+        if sources_path.exists():
+            _write_jsonl(
+                sources_path,
+                [
+                    {**row, **_source_index_patch(patch)}
+                    if (
+                        str(row.get("source_id") or "") == source_id
+                        and str(row.get("ingestion_channel") or "")
+                        == "knowledge_base_scan"
+                    )
+                    else row
+                    for row in _read_jsonl(sources_path)
+                ],
+            )
 
     def _update_feed_state(
         self,
@@ -150,23 +499,47 @@ class FileSystemMaterialIntakeValidationRepository:
             self.project_dir / "project.json",
             load_issues,
         )
-        manifest = _load_required_json(
-            self.project_dir / "boms" / "manifest.json",
-            load_issues,
+        standalone_node_id = (
+            str(project.get("bom_node_id") or "").strip()
+            if project.get("report_scope") == "standalone-bom"
+            else ""
         )
-        known_nodes = [
-            str(row.get("node_id") or "")
-            for row in manifest.get("nodes") or []
-            if isinstance(row, dict) and str(row.get("node_id") or "").strip()
-        ]
+        if standalone_node_id:
+            known_nodes = [standalone_node_id]
+        else:
+            manifest = _load_required_json(
+                self.project_dir / "boms" / "manifest.json",
+                load_issues,
+            )
+            known_nodes = [
+                str(row.get("node_id") or "")
+                for row in manifest.get("nodes") or []
+                if isinstance(row, dict) and str(row.get("node_id") or "").strip()
+            ]
+        question_numbers_by_node = {
+            node_id: list(range(1, len(project.get("question_labels") or []) + 1))
+            for node_id in known_nodes
+            if standalone_node_id and project.get("question_labels")
+        }
         documents = _read_jsonl_for_validation(
             self.project_dir / "material_intake" / "documents.jsonl",
             load_issues,
             required=False,
         )
+        directory_candidates = _read_jsonl_for_validation(
+            self.project_dir
+            / "material_intake"
+            / "directory_candidates.jsonl",
+            load_issues,
+            required=False,
+        )
         node_inboxes: dict[str, dict[str, list[dict[str, Any]]]] = {}
         for node_id in known_nodes:
-            inbox_dir = self.project_dir / "boms" / node_id / "inbox"
+            inbox_dir = (
+                self.project_dir / "inbox"
+                if standalone_node_id
+                else self.project_dir / "boms" / node_id / "inbox"
+            )
             materials_path = inbox_dir / "materials.jsonl"
             tasks_path = inbox_dir / "parse_tasks.jsonl"
             if not materials_path.exists() and not tasks_path.exists():
@@ -186,7 +559,9 @@ class FileSystemMaterialIntakeValidationRepository:
         return {
             "project": project,
             "known_bom_node_ids": known_nodes,
+            "question_numbers_by_node": question_numbers_by_node,
             "documents": documents,
+            "directory_candidates": directory_candidates,
             "node_inboxes": node_inboxes,
             "load_issues": load_issues,
         }
@@ -194,6 +569,120 @@ class FileSystemMaterialIntakeValidationRepository:
 
 def _feed_key(provider: str, feed_id: str) -> str:
     return f"{provider}:{feed_id}"
+
+
+def _candidate_patch(patch: dict[str, Any]) -> dict[str, Any]:
+    return {
+        key: patch[key]
+        for key in (
+            "published_at",
+            "publication_date_status",
+            "publication_date_source",
+            "publication_date_locator",
+            "directory_date",
+            "directory_path",
+            "directory_mapping_status",
+        )
+        if key in patch
+    }
+
+
+def _parse_task_patch(patch: dict[str, Any]) -> dict[str, Any]:
+    task_patch = _candidate_patch(patch)
+    if "local_content_path" in patch:
+        task_patch["source_content_path"] = patch["local_content_path"]
+    if "content_type" in patch:
+        task_patch["source_content_type"] = patch["content_type"]
+    if "directory_date" in patch:
+        task_patch["source_directory_date"] = patch["directory_date"]
+    if "directory_path" in patch:
+        task_patch["source_directory_path"] = patch["directory_path"]
+    if "directory_mapping_status" in patch:
+        task_patch["source_directory_mapping_status"] = patch[
+            "directory_mapping_status"
+        ]
+    if patch.get("publication_date_status") == "needs_pdf_verification":
+        task_patch["status"] = "pending_date_verification"
+    elif "publication_date_status" in patch:
+        task_patch["status"] = "pending"
+    return task_patch
+
+
+def _reviewed_claim_patch(patch: dict[str, Any]) -> dict[str, Any]:
+    claim_patch = _candidate_patch(patch)
+    if "local_content_path" in patch:
+        claim_patch["source_url"] = patch["local_content_path"]
+    return claim_patch
+
+
+def _source_index_patch(patch: dict[str, Any]) -> dict[str, Any]:
+    source_patch = _candidate_patch(patch)
+    if "local_content_path" in patch:
+        source_patch["url"] = patch["local_content_path"]
+    return source_patch
+
+
+def _safe_filename(filename: str) -> str:
+    cleaned = re.sub(r"[\x00-\x1f/\\:]+", "_", str(filename or "")).strip(" .")
+    return cleaned or "material.bin"
+
+
+def _dated_source_dir(document: dict[str, Any]) -> Path:
+    if str(document.get("provider") or "") == "ima":
+        raw_date = str(document.get("published_at") or "")
+        if not raw_date:
+            source_id = str(document.get("source_id") or "").strip()
+            if not source_id:
+                raise ValueError("Unmapped IMA originals require source_id")
+            return Path("source") / "ima" / "unmapped" / source_id
+    else:
+        raw_date = str(
+            document.get("published_at")
+            or document.get("discovered_at")
+            or ""
+        )
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", raw_date):
+        raise ValueError(
+            "Material originals require a valid storage date"
+        )
+    year, month, day = raw_date.split("-")
+    return Path("source") / "ima" / year / month / day
+
+
+def _non_conflicting_path(
+    preferred: Path,
+    *,
+    source_id: str,
+    content: bytes,
+) -> Path:
+    if not preferred.exists() or preferred.read_bytes() == content:
+        return preferred
+    suffix = preferred.suffix
+    stem = preferred.stem
+    return preferred.with_name(f"{stem}__{source_id[-8:]}{suffix}")
+
+
+def _preferred_material_filename(
+    *,
+    document: dict[str, Any],
+    fallback: str,
+) -> str:
+    title = str(document.get("title") or "").strip()
+    if title.lower().endswith((".pdf", ".docx", ".pptx", ".xlsx", ".md", ".txt")):
+        return _safe_filename(title)
+    return _safe_filename(fallback)
+
+
+def _prune_empty_directories(start: Path, *, stop: Path) -> None:
+    current = start
+    while current == stop or stop in current.parents:
+        try:
+            current.rmdir()
+        except OSError:
+            return
+        if current == stop:
+            return
+        current = current.parent
 
 
 def _merge_rows(
@@ -239,6 +728,31 @@ def _merge_material_documents(
             )
         )
         merged[source_id] = combined
+    return [merged[key] for key in sorted(merged)]
+
+
+def _merge_directory_candidates(
+    existing: list[dict[str, Any]],
+    incoming: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    merged: dict[str, dict[str, Any]] = {}
+    for row in [*existing, *incoming]:
+        candidate_id = str(row.get("candidate_id") or "")
+        if not candidate_id:
+            continue
+        previous = merged.get(candidate_id) or {}
+        combined = {**previous, **row}
+        if not str(row.get("source_id") or "").strip():
+            combined["source_id"] = previous.get("source_id", "")
+        if previous.get("review_status") == "gpt_reviewed":
+            for field_name in (
+                "relevance_status",
+                "relevance_reason",
+                "review_status",
+                "reviewed_at",
+            ):
+                combined[field_name] = previous.get(field_name)
+        merged[candidate_id] = combined
     return [merged[key] for key in sorted(merged)]
 
 

@@ -118,6 +118,52 @@ class MaterialIntakeRepository(Protocol):
     ) -> dict:
         """Persist project intake rows and BOM-specific inbox tasks."""
 
+    def persist_material_content(
+        self,
+        *,
+        document: dict,
+        content: bytes,
+        filename: str,
+        content_type: str,
+    ) -> str:
+        """Persist one fetched original material and return its project-relative path."""
+
+    def canonicalize_material_content(self, document: dict) -> str:
+        """Move or copy an existing original into the canonical dated source tree."""
+
+    def read_material_content(self, relative_path: str) -> bytes:
+        """Read one project-relative original for deterministic reparsing."""
+
+    def load_material_documents(
+        self,
+        *,
+        provider: str,
+        external_ids: list[str],
+    ) -> list[dict]:
+        """Load already-seen documents so failed downloads can be retried."""
+
+    def update_publication_date(
+        self,
+        *,
+        source_id: str,
+        published_at: str,
+        publication_date_status: str,
+        publication_date_source: str,
+        publication_date_locator: str = "",
+    ) -> str:
+        """Update publication metadata and return the canonical original path."""
+
+    def persist_directory_scan(
+        self,
+        *,
+        candidates: list[dict],
+        scan_event: dict,
+    ) -> dict:
+        """Persist all dated-directory relevance decisions for audit."""
+
+    def load_directory_relevance_reviews(self) -> list[dict]:
+        """Load GPT-reviewed overrides for ambiguous directory candidates."""
+
 
 class MaterialIntakeValidationRepository(Protocol):
     """Outbound port for loading one complete material-intake validation bundle."""

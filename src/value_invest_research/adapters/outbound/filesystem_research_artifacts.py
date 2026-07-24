@@ -18,6 +18,8 @@ class FileSystemResearchArtifactRepository:
         return str(self.project_dir)
 
     def load_research_artifacts(self) -> ResearchArtifacts:
+        project = _read_json(self.project_dir / "project.json")
+        standalone_bom = project.get("report_scope") == "standalone-bom"
         qa_path = self.project_dir / "qa_tree.json"
         source_extractions_path = self.project_dir / "source_extractions.jsonl"
         leaf_source_reviews_path = self.project_dir / "leaf_source_reviews.jsonl"
@@ -34,12 +36,12 @@ class FileSystemResearchArtifactRepository:
 
         if qa_path.exists():
             qa_tree = json.loads(qa_path.read_text(encoding="utf-8"))
-        else:
+        elif not standalone_bom:
             issues.append({"severity": "error", "code": "missing_qa_tree", "message": f"{qa_path} does not exist"})
 
         if source_extractions_path.exists():
             source_extractions = _read_jsonl(source_extractions_path)
-        else:
+        elif not standalone_bom:
             issues.append({
                 "severity": "error",
                 "code": "missing_source_extractions",
@@ -51,7 +53,7 @@ class FileSystemResearchArtifactRepository:
 
         if leaf_source_reviews_path.exists():
             leaf_source_reviews = _read_jsonl(leaf_source_reviews_path)
-        else:
+        elif not standalone_bom:
             issues.append({
                 "severity": "error",
                 "code": "missing_leaf_source_reviews",
@@ -61,7 +63,7 @@ class FileSystemResearchArtifactRepository:
         if workbench_path.exists():
             workbench = json.loads(workbench_path.read_text(encoding="utf-8"))
             targets = workbench.get("scoring_worksheet") or workbench.get("targets") or []
-        else:
+        elif not standalone_bom:
             issues.append({"severity": "error", "code": "missing_workbench", "message": f"{workbench_path} does not exist"})
 
         return ResearchArtifacts(
@@ -82,6 +84,13 @@ def _read_jsonl(path: Path) -> list[dict[str, Any]]:
             continue
         rows.append(json.loads(line))
     return rows
+
+
+def _read_json(path: Path) -> dict[str, Any]:
+    if not path.is_file():
+        return {}
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    return payload if isinstance(payload, dict) else {}
 
 
 class FileSystemReportDocumentRepository:

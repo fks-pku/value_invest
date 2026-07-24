@@ -315,7 +315,7 @@ class CliTests(unittest.TestCase):
             self.assertIn("Time-slice audit FAILED", out.getvalue())
             self.assertIn("post_cutoff_non_label_count=1", out.getvalue())
 
-            project_dir = Path(tmp) / "research" / "qa_projects" / "demo"
+            project_dir = Path(tmp) / "research" / "bom" / "demo"
             project_dir.mkdir(parents=True)
             qa_tree = {
                 "nodes": [
@@ -1136,8 +1136,8 @@ class CliTests(unittest.TestCase):
             self.assertIn("Meta QA research built", out.getvalue())
             self.assertIn("question_plan.json", out.getvalue())
             self.assertIn("research_dashboard.html", out.getvalue())
-            self.assertTrue((Path(tmp) / "research" / "qa_projects" / "ai_glasses" / "question_plan.json").exists())
-            self.assertTrue((Path(tmp) / "research" / "qa_projects" / "ai_glasses" / "qa_tree.json").exists())
+            self.assertTrue((Path(tmp) / "research" / "bom" / "ai_glasses" / "question_plan.json").exists())
+            self.assertTrue((Path(tmp) / "research" / "bom" / "ai_glasses" / "qa_tree.json").exists())
 
             out = StringIO()
             with redirect_stdout(out):
@@ -1354,7 +1354,7 @@ class CliTests(unittest.TestCase):
             self.assertIn("Meta QA answer synthesis applied", out.getvalue())
             self.assertIn("mode=llm", out.getvalue())
 
-            project_dir = Path(tmp) / "research" / "qa_projects" / "ai_glasses"
+            project_dir = Path(tmp) / "research" / "bom" / "ai_glasses"
             task = [
                 json.loads(line)
                 for line in (project_dir / "collection_tasks.jsonl").read_text(encoding="utf-8").splitlines()
@@ -1527,7 +1527,7 @@ class CliTests(unittest.TestCase):
                         "test",
                     ])
 
-            plan_path = Path(tmp) / "research" / "qa_projects" / "ai_glasses_llm_plan" / "question_plan.json"
+            plan_path = Path(tmp) / "research" / "bom" / "ai_glasses_llm_plan" / "question_plan.json"
             plan = json.loads(plan_path.read_text(encoding="utf-8"))
             self.assertEqual(exit_code, 0)
             self.assertEqual(len(client.calls), 1)
@@ -1563,7 +1563,7 @@ class CliTests(unittest.TestCase):
                     "ai_glasses",
                 ])
 
-            report_path = Path(tmp) / "research" / "qa_projects" / "ai_glasses" / "professional_report.html"
+            report_path = Path(tmp) / "research" / "bom" / "ai_glasses" / "professional_report.html"
             self.assertEqual(exit_code, 0)
             self.assertIn("Meta QA professional report written", out.getvalue())
             self.assertIn("professional_report.html", out.getvalue())

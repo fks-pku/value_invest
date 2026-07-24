@@ -116,6 +116,40 @@ user later asks for an `actionable_long` decision, the evidence must still satis
 canonical demand, supply/control, financial realization, valuation, and refutation
 requirements.
 
+### 4B. Self-contained BOM project directory
+
+One BOM research object owns one self-contained project directory:
+
+```text
+research/bom/<bom_project_id>/
+  project.json
+  professional_report.md
+  timeline_profile.json
+  sources.jsonl
+  source/
+    ima/YYYY/MM/DD/<original-title>.pdf
+    manual/
+  material_intake/
+    documents.jsonl
+    directory_candidates.jsonl
+    directory_scan_events.jsonl
+    scan_events.jsonl
+    feed_state.json
+  inbox/
+    materials.jsonl
+    parse_tasks.jsonl
+  ledger/
+    claims.jsonl
+    conclusions.jsonl
+```
+
+`source/` owns canonical originals. `material_intake/` owns metadata and audit
+ledgers only; `material_intake/raw/` is a forbidden canonical location. All local
+links in reports, claims, source indexes, and parse tasks are relative to the BOM
+project directory. An industry-chain parent follows the same rule for every
+`boms/<node_id>/` child and must not own a child's original materials.
+Question-specific work remains in `inbox/parse_tasks.jsonl`.
+
 ### 5. Search and parse actively
 
 GPT is the research director and chooses the source universe. For every minimum unit:
@@ -145,14 +179,49 @@ Every atomic claim preserves four time fields when available:
 - `target_period`: which future period a forecast addresses;
 - `ingested_at`: when the system received it.
 
+For IMA and other knowledge bases, `directory_date`, provider `create_time`,
+provider `update_time`, and `published_at` are different fields. Never infer
+`published_at` from the archive folder, upload time, discovery time, or modified
+time. Resolve it from an explicit provider publication field, a dated report title,
+or preferably the original PDF cover/header, and persist
+`publication_date_status`, `publication_date_source`, and the page/section locator.
+If the real publication date is still unknown, keep `published_at` blank and limit
+the document to `date_verification_only`; it cannot enter a public timeline or
+historical evidence ledger.
+
+An IMA search hit does not prove its year/month/day archive folder. Persist
+`directory_mapping_status=pending_directory_reconciliation` until a dated scan or
+explicit review supplies `directory_date` and `directory_path`. Archive provenance
+never controls local storage. Store originals under `source/ima/YYYY/MM/DD/` using
+`published_at`; if publication date is unresolved, use
+`source/ima/unmapped/<source_id>/`. A later PDF-cover verification may move the
+same file to its true publication-date directory without changing
+`directory_date`.
+
 The system uses two evidence loops:
 
 1. `question_search`: pull research driven by one `BOM x six-question` coverage gap, using the professional universe plus Exa/AI search.
-2. `knowledge_base_scan`: push research that scans the user's IMA knowledge base and other approved feeds on a schedule, searches each canonical BOM profile, and routes new reports to the matching BOM inbox.
+2. `knowledge_base_scan`: push research that walks the user's approved
+   year/month/day report directories, audits every PDF against each canonical BOM
+   profile, downloads only approved matches, and routes them to the matching BOM
+   inbox.
 
 Both loops enter the same material-intake ledger first. A newly discovered document is not evidence yet. It creates narrow `BOM x question x source` parse tasks; only question-specific parsing and GPT review may promote its atomic claims into the temporal evidence ledger. A source that cannot yet be mapped remains in `unmapped/new_theme`; it must not be silently discarded or forced into an unsuitable question.
 
 IMA credentials and knowledge-base IDs stay outside Git. Use `IMA_OPENAPI_CLIENTID`, `IMA_OPENAPI_APIKEY`, and `IMA_KNOWLEDGE_BASE_ID`; persisted feed state may contain only an irreversible knowledge-base reference hash. Historical projects quarantine knowledge-base material published after `as_of_date`; daily feeds should normally target a live successor project rather than mutate a frozen backtest.
+
+For a daily IMA feed such as `环球研报直通车`, the executable sequence is:
+
+`resolve knowledge base by name -> walk year/month/day folders -> audit every PDF against each enabled BOM profile -> download approved matches -> verify PDF publication date -> archive under source/ima/<published_at> -> create one parse task per relevant research coordinate -> specialty/DeepSeek first-pass reading -> GPT review -> append atomic claims -> refresh the question timeline and current conclusion`
+
+The material feed must support both canonical six-question BOM children and
+`standalone-bom` five-lens projects. It derives the allowed question coordinates
+from the project contract; it must never manufacture a six-question child path for
+a standalone project. Original files live under the live project's private
+`source/ima/<published_at>/` directory. All directory candidates and relevance decisions
+remain auditable in `material_intake/directory_candidates.jsonl`, while short-lived
+signed IMA URLs, API credentials, and raw knowledge-base IDs are never persisted.
+`config/active_research_feeds.json` is the registry of live projects scanned each day.
 
 ### 6. Apply semantic completion gates
 
@@ -206,9 +275,17 @@ Markdown contains exactly five numbered H2 sections in this order: `需求侧`, 
 and `最新结论与趋势`. It does not inherit the four-section industry shell or the
 six-question BOM-child layout.
 
-The parent owns chain taxonomy, navigation, and aggregated targets. Each child owns its `project.json`, filtered `sources.jsonl`, optional `research_run.json`, report, node-specific refresh cadence, and node-level targets. A child without a completed node-specific run must state `partial_research`; it must not imply research completion.
+The parent owns chain taxonomy, navigation, and aggregated targets. Each child owns
+its `project.json`, filtered `sources.jsonl`, `source/`, `material_intake/`,
+`inbox/`, `ledger/`, optional `research_run.json`, report, node-specific refresh
+cadence, and node-level targets. A child without a completed node-specific run must
+state `partial_research`; it must not imply research completion.
 
 Inside each public BOM question module, render one compact `基本理解思路`, followed by `当前结论`, `相较上一截面的变化`, `时间演化`, `映射材料`, and `信息覆盖`. Do not render mandatory per-stage evidence cards. Logic hints orient the reader; they never constrain which material may enter the ledger. Every mapped material keeps a source link, `material_class`, and `ingestion_channel` next to the supported claim. Past conclusions may be shown only when a real prior snapshot exists. Raw IMA IDs, credentials, internal search queries, and pending parse tasks never appear in public Markdown.
+
+Standalone BOM timelines use exactly `时间 | 信息类型 | Source | 观点列表`.
+Render one source per row and group its question-specific atomic claims as a list
+with original page or section locators.
 
 Use plain Markdown headings, paragraphs, lists, and tables. Source links sit next to supported claims. The report must remain readable without CSS, JavaScript, HTML cards, or hidden content.
 

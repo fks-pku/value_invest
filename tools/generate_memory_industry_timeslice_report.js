@@ -4,7 +4,7 @@ const https = require("https");
 
 const ROOT = path.resolve(__dirname, "..");
 const PROJECT_ID = "memory_industry_timeslice_20260228";
-const OUT_DIR = path.join(ROOT, "research", "qa_projects", PROJECT_ID);
+const OUT_DIR = path.join(ROOT, "research", "bom", PROJECT_ID);
 const AS_OF_DATE = "2026-02-28";
 const REPORT_DATE = "2026-05-31";
 const LABEL_START = "2026-02-27";

@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 const generatedAt = "2026-05-29T00:00:00+08:00";
-const base = path.join("research", "qa_projects", "pop_mart_related_opportunities");
+const base = path.join("research", "bom", "pop_mart_related_opportunities");
 fs.mkdirSync(base, { recursive: true });
 
 const urls = {

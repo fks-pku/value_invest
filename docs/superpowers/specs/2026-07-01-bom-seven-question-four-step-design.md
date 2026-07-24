@@ -33,7 +33,7 @@ The current AI Factory S-curve report generator should produce the four-step str
 
 ## Verification
 
-Add a regression test against `research/qa_projects/ai_factory_industry_scurve_timeslice_20260302/professional_report.html` that fails unless every `bom-question-card` contains:
+Add a regression test against `research/bom/ai_factory_industry_scurve_timeslice_20260302/professional_report.html` that fails unless every `bom-question-card` contains:
 
 - `bom-step-metrics`
 - `bom-step-history`

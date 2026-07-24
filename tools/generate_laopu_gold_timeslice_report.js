@@ -4,7 +4,7 @@ const path = require("path");
 const ROOT = path.resolve(__dirname, "..");
 const AS_OF_DATE = "2026-02-28";
 const REPORT_DATE = "2026-05-30";
-const OUT_DIR = path.join(ROOT, "research", "qa_projects", "laopu_gold_timeslice_20260228");
+const OUT_DIR = path.join(ROOT, "research", "bom", "laopu_gold_timeslice_20260228");
 
 const componentWeights = {
   chokepoint_strength: 0.26,

@@ -53,3 +53,33 @@ class KnowledgeBaseMaterialFeed(Protocol):
         max_results: int,
     ) -> list[dict]:
         """Return matching knowledge-base materials without classifying claims."""
+
+    def list_dated_materials(
+        self,
+        *,
+        knowledge_base_id: str,
+        start_date: str,
+        end_date: str,
+        root_folder_pattern: str,
+    ) -> list[dict]:
+        """Enumerate every material inside year/month/day folders."""
+
+    def fetch_media_content(
+        self,
+        *,
+        media_id: str,
+        title: str = "",
+    ) -> dict:
+        """Download one original material without exposing signed URLs."""
+
+
+class PublicationDateExtractor(Protocol):
+    """Outbound parser that verifies a document's actual publication date."""
+
+    def extract(
+        self,
+        *,
+        content: bytes,
+        title: str = "",
+    ) -> dict:
+        """Return publication date fields derived from document contents."""

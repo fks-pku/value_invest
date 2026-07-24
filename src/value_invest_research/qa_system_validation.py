@@ -29,7 +29,7 @@ def validate_meta_qa_system(
     require_professional_report: bool = False,
 ) -> dict[str, Any]:
     """Validate that a generic meta-QA project satisfies the layered research contract."""
-    project_dir = root / "research" / "qa_projects" / project_id
+    project_dir = root / "research" / "bom" / project_id
     return _validate_container(
         container_dir=project_dir,
         object_type="meta_qa",

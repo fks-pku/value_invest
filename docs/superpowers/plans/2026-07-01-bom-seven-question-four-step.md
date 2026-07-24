@@ -23,7 +23,7 @@ import unittest
 from pathlib import Path
 
 
-REPORT = Path("research/qa_projects/ai_factory_industry_scurve_timeslice_20260302/professional_report.html")
+REPORT = Path("research/bom/ai_factory_industry_scurve_timeslice_20260302/professional_report.html")
 
 
 class AiFactoryBomFourStepTests(unittest.TestCase):

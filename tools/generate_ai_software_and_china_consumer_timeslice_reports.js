@@ -22,7 +22,7 @@ const projects = [
     object: "AI 半导体芯片与关键硬件链条，覆盖 GPU、custom ASIC、HBM/高端存储、先进制程/封装、半导体设备与过程控制。",
     constrained_judgment: "截至冻结时点，需求真实但不能泛化为所有半导体。最强未定价稀缺性集中在 HBM/高端存储、custom ASIC 与高速互连；GPU 平台和先进制造确定性强但共识更拥挤；设备链质量高但赔率受周期、估值和出口约束压制。",
     uncertainty: "AI capex 能否持续转为客户 ROI 与半导体公司的现金流，而不是阶段性拉货、库存波动或估值拥挤。",
-    out_dir: "research/qa_projects/semiconductor_hardware_timeslice_20260228",
+    out_dir: "research/bom/semiconductor_hardware_timeslice_20260228",
     sources: [
       source("SRC-WSTS-2025", "WSTS Autumn 2025 Forecast", "https://www.wsts.org/esraCMS/extension/media/f/WST/7310/WSTS_FC-Release-2025_11.pdf", "2025-12-02", "2026 global semiconductor market forecast $975.46B; Logic +32.1% and Memory +39.4% are the clearest growth buckets."),
       source("SRC-SIA-OCT-2025", "SIA October 2025 Global Semiconductor Sales", "https://www.semiconductors.org/global-semiconductor-sales-increase-4-7-month-to-month-in-october/", "2025-12-04", "October 2025 global semiconductor sales $72.7B, +27.2% YoY and +4.7% MoM, confirming strong demand but not proving every segment has scarcity."),
@@ -76,7 +76,7 @@ const projects = [
     object: "AI 软件应用公司，覆盖企业代理、工作流、CRM、创意工具、数据云、广告优化和安全/可观测平台。",
     constrained_judgment: "截至冻结时点，AI 软件应用需求真实，但大多数优质公司估值已经反映高成长。Snowflake 和 AppLovin 赔率更凸但风险更高；ServiceNow/Microsoft 质量更高但不便宜；Palantir 因估值预期过高仅观察。",
     uncertainty: "AI 应用究竟带来可计费增量收入，还是只变成产品功能升级和基础设施成本。",
-    out_dir: "research/qa_projects/ai_software_apps_timeslice_20260228",
+    out_dir: "research/bom/ai_software_apps_timeslice_20260228",
     sources: [
       source("SRC-MSFT-FY26-Q2", "Microsoft FY2026 Q2 Earnings", "https://www.microsoft.com/en-us/Investor/earnings/FY-2026-Q2/press-release-webcast", "2026-01-28", "Microsoft revenue $81.3B +17%; Microsoft Cloud revenue $51.5B +26%; capex additions show AI/cloud demand and infrastructure intensity."),
       source("SRC-NOW-Q4-2025", "ServiceNow Q4 and FY2025 Results", "https://investor.servicenow.com/news/news-details/2026/ServiceNow-Reports-Fourth-Quarter-and-Full-Year-2025-Financial-Results-Board-of-Directors-Authorizes-Additional-5B-for-Share-Repurchase-Program/default.aspx", "2026-01-28", "Q4 subscription revenue $3.466B +21%; cRPO $12.85B +25%; Now Assist net new ACV more than doubled."),
@@ -121,7 +121,7 @@ const projects = [
     object: "中国消费股，覆盖 IP 潮玩、运动户外、餐饮连锁、白酒、软饮/茶饮、旅行服务等。",
     constrained_judgment: "截至冻结时点，中国消费不是普遍复苏行情，机会集中在有稀缺供给和海外/结构性增长的消费资产。Pop Mart 稀缺性最强但估值和单 IP 风险很高；Yum China/Trip.com 更偏质量观察；茅台和安踏更偏防守观察。",
     uncertainty: "消费升级/情绪消费能否持续越过宏观疲弱，以及强品牌能否把需求转成高质量现金流。",
-    out_dir: "research/qa_projects/china_consumer_timeslice_20260228",
+    out_dir: "research/bom/china_consumer_timeslice_20260228",
     sources: [
       source("SRC-NBS-ONLINE-2025", "NBS December 2025 Retail Sales", "https://www.stats.gov.cn/english/PressRelease/202601/t20260120_1962354.html", "2026-01-20", "2025 online retail sales RMB15,972.2bn +8.6%; physical-goods online retail +5.2%; online food +14.5%."),
       source("SRC-NBS-COMMUNIQUE-2025", "NBS 2025 Statistical Communique", "https://www.stats.gov.cn/english/PressRelease/202602/t20260228_1962661.html", "2026-02-28", "2025 total retail sales RMB50.1202tn +3.7%; gold/jewelry +12.8%, sports/recreation +15.7%, food +9.3%."),
@@ -167,7 +167,7 @@ const projects = [
     object: "小米集团（1810.HK），覆盖智能手机 x AIoT 基盘、智能电动汽车、AI/自研芯片、互联网服务和 Human x Car x Home 生态。",
     constrained_judgment: "截至冻结时点，小米的产业变化是真实的：EV 交付、毛利率、用户生态和研发投入均显示公司从手机硬件商向车家生态平台迁移。但 1810.HK 股价已经反映相当多 EV/AI 预期，且 EV 竞争、补贴退坡、手机毛利和费用投入仍会压低赔率；因此更适合列入高质量观察，不应给可行动状态。",
     uncertainty: "EV 高增长能否持续转化为稳定经营利润和自由现金流，同时不被智能手机周期、零部件成本、渠道扩张费用和估值预期反噬。",
-    out_dir: "research/qa_projects/xiaomi_timeslice_20260228",
+    out_dir: "research/bom/xiaomi_timeslice_20260228",
     l1Defs: [
       ["Q1", "小米的增长驱动是否真实且可持续？", "增长驱动真实，但主要来自 EV 与生态扩张；手机 x AIoT 基盘更像稳定器而不是高弹性来源。"],
       ["Q2", "小米的价值捕获瓶颈在哪里？", "价值捕获来自品牌、渠道、用户生态、车家互联和局部技术自研，但不可替代性还没有达到平台级垄断。"],

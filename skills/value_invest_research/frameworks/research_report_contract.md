@@ -43,9 +43,16 @@ Industry, theme, and S-curve research uses one parent index and one child projec
 
 The parent front matter uses `report_scope: industry-index`. A child uses `report_scope: bom-node` and declares `bom_node_id`. A project whose complete research object is one isolated BOM uses `report_scope: standalone-bom` and also declares `bom_node_id`.
 
+The standalone report lives beside its own `project.json`, `source/`, `ledger/`,
+`inbox/`, and `material_intake/` directories. Project-local links are resolved
+relative to that report. Canonical PDFs stay under `source/`; a renderer must never
+link to `material_intake/raw/` or to another BOM project.
+
 The parent owns chain taxonomy, navigation, and chain-wide target aggregation. It must not embed every BOM node's six-question body.
 
-Each child owns exactly one BOM node, its `project.json`, filtered `sources.jsonl`, optional `research_run.json`, temporal ledger, snapshots, report, refresh cadence, and mapped targets.
+Each child owns exactly one BOM node, its `project.json`, filtered `sources.jsonl`,
+`source/`, `material_intake/`, `inbox/`, temporal ledger, snapshots, optional
+`research_run.json`, report, refresh cadence, and mapped targets.
 
 Every child links back to the parent index. Every completed child uses its node-specific six-question playbook; a generic fallback or copied static report cannot claim completion.
 
@@ -69,15 +76,16 @@ Each section contains exactly:
 The timeline header is:
 
 ```text
-| 时间 | 信息类型 | 来源及原文位置 | 内容简介 |
+| 时间 | 信息类型 | Source | 观点列表 |
 ```
 
 `时间` is `published_at`, not the fiscal period described by the source. `信息类型`
 uses the public material classes `官方财报`, `官方公司`, `研报`, `第三方权威`,
-`市场消息`, `专家观点`, or `其他`. `来源及原文位置` contains a clickable link
-and identifies the original page, item, heading, table, or paragraph. `内容简介`
-answers the current lens with the source's concrete data, forecast, argument, or
-contrary evidence; it is not a document-level abstract.
+`市场消息`, `专家观点`, or `其他`. `Source` contains one clickable official or
+project-local original-material link. One source occupies one row within a lens.
+`观点列表` groups all GPT-reviewed atomic claims from that source for the current
+lens; every bullet preserves its page, item, heading, table, or paragraph locator.
+It is not a document-level abstract.
 
 The same source may appear in several timelines only after a separate lens-specific
 parse. Rows are never padded with model priors. The conclusion must distinguish

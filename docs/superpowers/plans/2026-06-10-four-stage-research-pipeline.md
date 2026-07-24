@@ -595,13 +595,13 @@ Add `import argparse` at the top of cli.py if not already present (check by read
 - [ ] **Step 4: Test the new commands**
 
 ```bash
-PYTHONPATH=src python -m value_invest_research validate-project-schema research/qa_projects/ai_factory_live_2026_06_02
+PYTHONPATH=src python -m value_invest_research validate-project-schema research/bom/ai_factory_live_2026_06_02
 ```
 
 Expected: OK (project has research_type, run_mode, report_date).
 
 ```bash
-PYTHONPATH=src python -m value_invest_research validate-industry-overview research/qa_projects/ai_factory_live_2026_06_02
+PYTHONPATH=src python -m value_invest_research validate-industry-overview research/bom/ai_factory_live_2026_06_02
 ```
 
 Expected: FAIL with "missing_industry_space_evidence_pack" error (current report lacks BOM nodes — this is the expected behavior, confirming the gate works).
@@ -639,7 +639,7 @@ Expected: PASS (gold fixture should still meet contract).
 - [ ] **Step 3: Run contract validation on the existing AI factory live report**
 
 ```bash
-PYTHONPATH=src python -m value_invest_research validate-report-contract research/qa_projects/ai_factory_live_2026_06_02/professional_report.html --mode live_prediction --require-l3
+PYTHONPATH=src python -m value_invest_research validate-report-contract research/bom/ai_factory_live_2026_06_02/professional_report.html --mode live_prediction --require-l3
 ```
 
 Expected: FAIL with "missing_industry_space" error (the existing report doesn't have the `行业空间` module — this is expected and documented).
