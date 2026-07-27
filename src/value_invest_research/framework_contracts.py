@@ -421,6 +421,8 @@ def validate_report_contract_html(
 ) -> dict[str, Any]:
     """Validate the public HTML report against the locked presentation contract."""
     report_scope = _report_scope(html)
+    if report_scope == "standalone-bom":
+        return _validate_standalone_bom_report_html(html, mode=mode)
     if report_scope in {"industry-index", "bom-node"}:
         return _validate_split_scope_report_html(html, report_scope=report_scope, mode=mode)
 
@@ -1389,7 +1391,10 @@ def validate_report_contract_markdown(
                     f"every BOM question must include {label}",
                 )
 
-    if not re.search(r"\[[^\]]+\]\(https?://[^)]+\)", markdown):
+    if not re.search(
+        r"\[[^\]]+\]\((?:<)?(?:https?://|/|(?:\./)?source/)[^)]+(?:>)?\)",
+        markdown,
+    ):
         _issue(
             issues,
             "error",
@@ -1426,6 +1431,186 @@ def _report_scope(html: str) -> str:
         flags=re.IGNORECASE | re.DOTALL,
     )
     return match.group(2).strip() if match else ""
+
+
+def _validate_standalone_bom_report_html(
+    html: str,
+    *,
+    mode: str,
+) -> dict[str, Any]:
+    issues: list[dict[str, str]] = []
+    lens_ids = ("demand", "supply", "technology", "valuation", "esg")
+    lens_labels = ("需求侧", "供给侧", "技术侧", "估值侧", "ESG")
+    positions = [html.find(f'id="lens-{lens_id}"') for lens_id in lens_ids]
+    if any(position < 0 for position in positions):
+        _issue(
+            issues,
+            "error",
+            "standalone_html_lenses",
+            "standalone BOM HTML must render all five locked lenses",
+        )
+    elif positions != sorted(positions):
+        _issue(
+            issues,
+            "error",
+            "standalone_html_lens_order",
+            "standalone BOM HTML lenses are out of order",
+        )
+    for label in lens_labels:
+        if f"<h2>{label}</h2>" not in html:
+            _issue(
+                issues,
+                "error",
+                "standalone_html_lens_label",
+                f"standalone BOM HTML is missing lens label {label}",
+            )
+    if not re.search(
+        r"<body\b[^>]*\bdata-bom-node-id\s*=\s*(['\"])[^'\"]+\1",
+        html,
+        flags=re.IGNORECASE,
+    ):
+        _issue(
+            issues,
+            "error",
+            "standalone_html_bom_identity",
+            "standalone BOM HTML must expose data-bom-node-id",
+        )
+    required_classes = (
+        "report-header",
+        "top-nav",
+        "lens-section",
+        "logic-note",
+        "timeline",
+        "timeline-table-wrap",
+        "timeline-table",
+        "source-row",
+        "claim-list",
+        "claim-index",
+        "conclusion-panel",
+    )
+    for class_name in required_classes:
+        if _class_count(html, class_name) == 0:
+            _issue(
+                issues,
+                "error",
+                "standalone_html_component",
+                f"standalone BOM HTML is missing component {class_name}",
+            )
+    for class_name in (
+        "lens-section",
+        "logic-note",
+        "timeline",
+        "timeline-table-wrap",
+        "timeline-table",
+        "conclusion-panel",
+    ):
+        if _class_count(html, class_name) != 5:
+            _issue(
+                issues,
+                "error",
+                "standalone_html_component_count",
+                f"standalone BOM HTML must render five {class_name} components",
+            )
+    for label in ("时间", "信息类型", "报告", "观点列表"):
+        if html.count(f'<th scope="col">{label}</th>') != 5:
+            _issue(
+                issues,
+                "error",
+                "standalone_html_timeline_header",
+                (
+                    "each standalone lens must render the locked four-column "
+                    f"timeline table; missing header {label}"
+                ),
+            )
+    if _class_count(html, "claim-index") < _class_count(html, "source-row"):
+        _issue(
+            issues,
+            "error",
+            "standalone_html_claim_bullets",
+            "every standalone timeline row must render at least one bullet claim",
+        )
+    if not re.search(
+        r'<a\b[^>]*href\s*=\s*["\'](?:https?://|source/)[^"\']+["\']',
+        html,
+        flags=re.IGNORECASE,
+    ):
+        _issue(
+            issues,
+            "error",
+            "standalone_html_source_links",
+            "standalone BOM HTML must keep clickable source links",
+        )
+    if "file://" in html:
+        _issue(
+            issues,
+            "error",
+            "standalone_html_file_uri",
+            "local HTML source links must use project-relative paths, not file URIs",
+        )
+    if re.search(r'href\s*=\s*["\']/Users/', html):
+        _issue(
+            issues,
+            "error",
+            "standalone_html_absolute_local_path",
+            "local HTML source links must stay project-relative",
+        )
+    local_source_tags = re.findall(
+        r'<a\b[^>]*href\s*=\s*["\']source/[^"\']+["\'][^>]*>',
+        html,
+        flags=re.IGNORECASE,
+    )
+    if any(re.search(r'\btarget\s*=\s*["\']_blank["\']', tag) for tag in local_source_tags):
+        _issue(
+            issues,
+            "error",
+            "standalone_html_local_new_tab",
+            "local PDF links must navigate in the current tab",
+        )
+    for lens_id in lens_ids:
+        start = html.find(f'id="lens-{lens_id}"')
+        next_positions = [position for position in positions if position > start]
+        end = min(next_positions) if next_positions else len(html)
+        region = html[start:end]
+        dates = re.findall(r'<time\b[^>]*datetime="(\d{4}-\d{2}-\d{2})"', region)
+        if not dates and 'class="empty-state"' not in region:
+            _issue(
+                issues,
+                "error",
+                "standalone_html_empty_timeline",
+                f"lens {lens_id} must include dated timeline material",
+            )
+        elif dates != sorted(dates, reverse=True):
+            _issue(
+                issues,
+                "error",
+                "standalone_html_timeline_order",
+                f"lens {lens_id} timeline must be newest to oldest",
+            )
+    lowered = html.lower()
+    for leaked in (
+        "source_universe_plan",
+        "exa_search_plan",
+        "direct_query",
+        "ima_openapi_apikey",
+    ):
+        if leaked in lowered:
+            _issue(
+                issues,
+                "error",
+                "standalone_html_process_leak",
+                f"public HTML must not expose internal process field {leaked}",
+            )
+    return {
+        "ok": not any(issue.get("severity") == "error" for issue in issues),
+        "issues": issues,
+        "summary": {
+            "mode": mode,
+            "report_scope": "standalone-bom",
+            "level1_cards": 5,
+            "level2_cards": 0,
+            "level3_cards": 0,
+        },
+    }
 
 
 def _validate_split_scope_report_html(

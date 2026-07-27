@@ -23,7 +23,8 @@ Follow the hexagonal dependency rule in `docs/architecture/hexagonal_research_sy
 - `src/value_invest_research/domain/`: pure research rules, entities, scoring, readiness, and quality gates.
 - `src/value_invest_research/application/`: use cases. It may depend on domain and ports, never concrete adapters.
 - `src/value_invest_research/ports/`: repository, search, parser, renderer, and data protocols.
-- `src/value_invest_research/adapters/`: file system, Exa/search, LLM/DeepSeek, market data, CLI, Markdown, and compatibility HTML implementations.
+- `src/value_invest_research/adapters/`: file system, Exa/search, LLM/DeepSeek,
+  market data, CLI, default HTML, and Markdown audit renderers.
 - `config/source_universes.json`: professional source universe registry.
 - `skills/value_invest_research/`: canonical workflow and presentation contracts.
 
@@ -116,18 +117,25 @@ user later asks for an `actionable_long` decision, the evidence must still satis
 canonical demand, supply/control, financial realization, valuation, and refutation
 requirements.
 
-### 4B. Self-contained BOM project directory
+### 4B. BOM project directory and shared provider archive
 
-One BOM research object owns one self-contained project directory:
+One BOM research object owns its research state, while the repository-level IMA
+archive owns provider originals:
 
 ```text
+source/ima/
+  archive_manifest.jsonl
+  archive_events.jsonl
+  YYYY/MM/DD/<original-title>.pdf
+
 research/bom/<bom_project_id>/
   project.json
+  professional_report.html
   professional_report.md
   timeline_profile.json
   sources.jsonl
   source/
-    ima/YYYY/MM/DD/<original-title>.pdf
+    ima/YYYY/MM/DD/<selected-original-title>.pdf
     manual/
   material_intake/
     documents.jsonl
@@ -143,12 +151,20 @@ research/bom/<bom_project_id>/
     conclusions.jsonl
 ```
 
-`source/` owns canonical originals. `material_intake/` owns metadata and audit
-ledgers only; `material_intake/raw/` is a forbidden canonical location. All local
-links in reports, claims, source indexes, and parse tasks are relative to the BOM
-project directory. An industry-chain parent follows the same rule for every
-`boms/<node_id>/` child and must not own a child's original materials.
-Question-specific work remains in `inbox/parse_tasks.jsonl`.
+`source/ima/` at repository root is the canonical provider mirror for every IMA
+original. It is private, ignored by Git, and organized by the verified IMA
+`directory_date`; that path is archive provenance, never a claim about publication
+date. Once a report passes BOM relevance review and its real publication date is
+verified, copy an immutable research snapshot into that BOM project's
+`source/ima/<published_at>/`. Project timelines and source links use this local
+copy, so the BOM remains portable and never confuses archive date with publication
+date. Ledgers and source indexes keep project-relative paths; local HTML and
+Markdown use different link forms for their surfaces. HTML keeps project-relative
+`source/...` links so a `file://` report opens the neighboring PDF correctly;
+Markdown resolves the same ledger path to an absolute filesystem link. Manually
+imported originals remain under `source/manual/`.
+`material_intake/raw/` is forbidden. Question-specific work remains in
+`inbox/parse_tasks.jsonl`.
 
 ### 5. Search and parse actively
 
@@ -191,37 +207,52 @@ historical evidence ledger.
 
 An IMA search hit does not prove its year/month/day archive folder. Persist
 `directory_mapping_status=pending_directory_reconciliation` until a dated scan or
-explicit review supplies `directory_date` and `directory_path`. Archive provenance
-never controls local storage. Store originals under `source/ima/YYYY/MM/DD/` using
-`published_at`; if publication date is unresolved, use
-`source/ima/unmapped/<source_id>/`. A later PDF-cover verification may move the
-same file to its true publication-date directory without changing
-`directory_date`.
+explicit review supplies `directory_date` and `directory_path`. The central mirror
+stores IMA originals under repository `source/ima/YYYY/MM/DD/` using the verified
+IMA `directory_date`. This does not populate `published_at`. A selected report must
+still resolve publication date from an explicit provider field, dated title, or
+preferably the PDF cover/header before it can enter a public timeline or historical
+evidence ledger.
 
-The system uses two evidence loops:
+The system uses one provider archive loop and two evidence loops:
 
-1. `question_search`: pull research driven by one `BOM x six-question` coverage gap, using the professional universe plus Exa/AI search.
-2. `knowledge_base_scan`: push research that walks the user's approved
-   year/month/day report directories, audits every PDF against each canonical BOM
-   profile, downloads only approved matches, and routes them to the matching BOM
-   inbox.
+1. `ima_daily_archive`: every day, walk the approved IMA year/month/day directory,
+   enumerate every PDF with pagination, and download all originals without a BOM
+   relevance filter into repository `source/ima/<directory_date>/`.
+2. `question_search`: pull research driven by one `BOM x question` coverage gap,
+   using the professional universe plus Exa/AI search.
+3. `knowledge_base_scan`: read the central IMA archive manifest, judge each report
+   against enabled BOM profiles, verify selected originals, copy them into the
+   matching BOM's `source/ima/<published_at>/`, and create local intake/inbox rows.
 
-Both loops enter the same material-intake ledger first. A newly discovered document is not evidence yet. It creates narrow `BOM x question x source` parse tasks; only question-specific parsing and GPT review may promote its atomic claims into the temporal evidence ledger. A source that cannot yet be mapped remains in `unmapped/new_theme`; it must not be silently discarded or forced into an unsuitable question.
+The archive loop preserves originals and audit metadata only; it does not create
+evidence. Both evidence loops enter the BOM material-intake ledger first. A selected
+document creates narrow `BOM x question x source` parse tasks; only
+question-specific parsing and GPT review may promote atomic claims into the temporal
+evidence ledger. A source that cannot yet be mapped remains in
+`unmapped/new_theme`; it must not be silently discarded or forced into an unsuitable
+question.
 
 IMA credentials and knowledge-base IDs stay outside Git. Use `IMA_OPENAPI_CLIENTID`, `IMA_OPENAPI_APIKEY`, and `IMA_KNOWLEDGE_BASE_ID`; persisted feed state may contain only an irreversible knowledge-base reference hash. Historical projects quarantine knowledge-base material published after `as_of_date`; daily feeds should normally target a live successor project rather than mutate a frozen backtest.
 
 For a daily IMA feed such as `环球研报直通车`, the executable sequence is:
 
-`resolve knowledge base by name -> walk year/month/day folders -> audit every PDF against each enabled BOM profile -> download approved matches -> verify PDF publication date -> archive under source/ima/<published_at> -> create one parse task per relevant research coordinate -> specialty/DeepSeek first-pass reading -> GPT review -> append atomic claims -> refresh the question timeline and current conclusion`
+`resolve knowledge base by name -> walk the previous IMA year/month/day folder with pagination -> download every PDF -> persist source/ima/<directory_date> plus archive manifest -> downstream BOM relevance review -> verify selected PDF publication date -> copy selected original into BOM source/ima/<published_at> -> create one parse task per relevant research coordinate -> specialty/DeepSeek first-pass reading -> GPT review -> append atomic claims -> refresh the question timeline and current conclusion`
 
 The material feed must support both canonical six-question BOM children and
 `standalone-bom` five-lens projects. It derives the allowed question coordinates
 from the project contract; it must never manufacture a six-question child path for
-a standalone project. Original files live under the live project's private
-`source/ima/<published_at>/` directory. All directory candidates and relevance decisions
-remain auditable in `material_intake/directory_candidates.jsonl`, while short-lived
-signed IMA URLs, API credentials, and raw knowledge-base IDs are never persisted.
-`config/active_research_feeds.json` is the registry of live projects scanned each day.
+a standalone project. Repository `source/ima/` remains the complete provider
+mirror; a BOM project stores only its selected, publication-date-verified copies.
+Archive records live in `source/ima/archive_manifest.jsonl`; BOM-specific relevance
+decisions remain auditable in each project's
+`material_intake/directory_candidates.jsonl`. Short-lived signed IMA URLs, API
+credentials, and raw knowledge-base IDs are never persisted.
+`config/ima_daily_archive.json` defines the provider mirror. Enabled BOM routing is
+configured separately and never controls whether an IMA PDF is downloaded.
+The daily job archives the previous IMA day and retries the configured recent-day
+window idempotently, so provider quota failures remain visible and are retried
+instead of being treated as completion.
 
 ### 6. Apply semantic completion gates
 
@@ -267,13 +298,19 @@ Default industry/project top-level order is exactly:
 
 Do not render public `下钻 QA`, source plans, raw search queries, parser traces, score worksheets, tool traces, or change logs unless the user explicitly asks for the workbench.
 
-Industry/theme/S-curve output uses two report scopes. Markdown is canonical and HTML is compatibility-only. The parent `professional_report.md` is an `industry-index`: `行业概况` renders `01 技术链与BOM呈现` and `02 BOM 独立研究目录`, with one relative link to each child. It must not embed the six-question modules. Each `boms/<node_id>/professional_report.md` is a `bom-node` report containing exactly one node's six question modules and one S-curve rollup. Optional deepening modules such as industry space, competition/profit pool, and chokepoints stay inside the relevant BOM child unless they are truly chain-wide.
+HTML is the default public reading artifact; Markdown is the portable audit
+sidecar. Both are generated from the same view model and must contain the same
+research claims. Industry/theme/S-curve output uses two report scopes. The parent
+`professional_report.html` is an `industry-index` and links to each child HTML.
+Each `boms/<node_id>/professional_report.html` is a `bom-node` report containing
+exactly one node's six question modules and one S-curve rollup. Optional deepening
+modules stay inside the relevant BOM child unless they are truly chain-wide.
 
-An explicitly isolated BOM may instead use `report_scope: standalone-bom`. Its public
-Markdown contains exactly five numbered H2 sections in this order: `需求侧`, `供给侧`,
-`技术侧`, `估值侧`, `ESG`. Each section contains exactly `简单逻辑链`, `信息时间线`,
-and `最新结论与趋势`. It does not inherit the four-section industry shell or the
-six-question BOM-child layout.
+An explicitly isolated BOM may instead use `report_scope: standalone-bom`. Its
+public HTML contains five collapsible top-level sections in this order: `需求侧`,
+`供给侧`, `技术侧`, `估值侧`, `ESG`. Each section contains `简单逻辑链`,
+`信息时间线`, and `最新结论与趋势`. It does not inherit the four-section industry
+shell or the six-question BOM-child layout.
 
 The parent owns chain taxonomy, navigation, and aggregated targets. Each child owns
 its `project.json`, filtered `sources.jsonl`, `source/`, `material_intake/`,
@@ -283,11 +320,12 @@ state `partial_research`; it must not imply research completion.
 
 Inside each public BOM question module, render one compact `基本理解思路`, followed by `当前结论`, `相较上一截面的变化`, `时间演化`, `映射材料`, and `信息覆盖`. Do not render mandatory per-stage evidence cards. Logic hints orient the reader; they never constrain which material may enter the ledger. Every mapped material keeps a source link, `material_class`, and `ingestion_channel` next to the supported claim. Past conclusions may be shown only when a real prior snapshot exists. Raw IMA IDs, credentials, internal search queries, and pending parse tasks never appear in public Markdown.
 
-Standalone BOM timelines use exactly `时间 | 信息类型 | Source | 观点列表`.
-Render one source per row and group its question-specific atomic claims as a list
-with original page or section locators.
-
-Use plain Markdown headings, paragraphs, lists, and tables. Source links sit next to supported claims. The report must remain readable without CSS, JavaScript, HTML cards, or hidden content.
+Standalone BOM HTML timelines render one full-width, horizontally scrollable table
+per lens with exactly `时间 | 信息类型 | 报告 | 观点列表`. One source occupies one
+row. The report cell keeps a direct source link, and the claim cell keeps a real
+bullet list using `观点 N / 原文位置 / 原子观点`. The Markdown audit sidecar mirrors
+the same four-column structure with `Source` as the report-link header. Local PDF
+links navigate in the current tab; only HTTP(S) sources may use a new tab.
 
 The target section must preserve the profit bridge, valuation evidence, payoff odds, final state, and downgrade triggers in one readable Markdown table. Action states remain `actionable_long`, `watch_only`, or `no_action`.
 
@@ -320,6 +358,7 @@ Before calling a framework change complete:
 1. Run focused unit tests plus the full research-framework suite.
 2. Run `validate-report-contract` on a regenerated report.
 3. Run `validate-material-intake` when search or knowledge-base intake artifacts exist.
-4. Run `validate-research-artifacts --require-l3` when artifacts exist.
-5. Run a Markdown/static smoke check for the selected report scope: four-section order and parent-child links for industry reports, or five-lens order and reverse-chronological timelines for `standalone-bom`; always verify readable tables, source links, no public process text, and no `actionable_long` target with a failed research gate.
-6. Run `git diff --check`.
+4. Run `validate-ima-archive` after an IMA daily archive run.
+5. Run `validate-research-artifacts --require-l3` when artifacts exist.
+6. Run a Markdown/static smoke check for the selected report scope: four-section order and parent-child links for industry reports, or five-lens order and reverse-chronological timelines for `standalone-bom`; always verify readable tables, source links, no public process text, and no `actionable_long` target with a failed research gate.
+7. Run `git diff --check`.

@@ -15,7 +15,7 @@
     "manual_import": "用户手动导入或批量迁移"
   },
   "ima": {
-    "enabled": false,
+    "enabled": true,
     "knowledge_base_name": "环球研报直通车",
     "credentials": {
       "client_id_env": "IMA_OPENAPI_CLIENTID",
@@ -23,6 +23,8 @@
       "knowledge_base_id_env": "IMA_KNOWLEDGE_BASE_ID"
     },
     "schedule": "daily",
+    "archive_root": "source/ima",
+    "archive_policy": "download_all_pdfs_before_bom_routing",
     "discovery_mode": "dated_directory",
     "root_folder_pattern": "^\\d{4}年国际顶级投行研报$",
     "lookback_days": 3

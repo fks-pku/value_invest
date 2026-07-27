@@ -1,0 +1,1384 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GPU / ASIC BOM 实时跟踪</title>
+<style>
+:root {
+  color-scheme: light;
+  --page: #f3f5f7;
+  --surface: #ffffff;
+  --surface-soft: #eef3f7;
+  --ink: #273342;
+  --muted: #697887;
+  --line: #d9e0e6;
+  --line-strong: #bdc8d2;
+  --blue: #245f83;
+  --blue-soft: #e7f0f5;
+  --rust: #a95e46;
+  --green: #39705d;
+  --shadow: 0 12px 32px rgba(36, 55, 72, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  background: var(--page);
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: "Avenir Next", "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  letter-spacing: 0;
+}
+
+a { color: var(--blue); }
+
+.report-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+.report-header-inner,
+.top-nav-inner,
+.report-main,
+.report-footer {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.report-header-inner {
+  padding: 62px 0 42px;
+}
+
+.report-label {
+  color: var(--rust);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+h1 {
+  max-width: 860px;
+  margin: 12px 0 10px;
+  color: #18364d;
+  font-family: "Baskerville", "Songti SC", serif;
+  font-size: clamp(36px, 5vw, 62px);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.report-deck {
+  max-width: 780px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.report-meta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  max-width: 760px;
+  margin-top: 34px;
+  border-top: 1px solid var(--line);
+}
+
+.report-meta div {
+  min-width: 0;
+  padding: 16px 20px 0 0;
+}
+
+.report-meta span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.report-meta strong {
+  display: block;
+  margin-top: 2px;
+  color: #24445c;
+  font-size: 19px;
+  font-weight: 650;
+}
+
+.top-nav {
+  position: sticky;
+  z-index: 30;
+  top: 0;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: saturate(140%) blur(14px);
+}
+
+.top-nav-inner {
+  display: flex;
+  min-width: max-content;
+}
+
+.top-nav a {
+  padding: 14px 18px;
+  border-bottom: 2px solid transparent;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 650;
+  text-decoration: none;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.top-nav a:first-child { padding-left: 0; }
+.top-nav a:hover,
+.top-nav a.is-active {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.report-main { padding: 24px 0 80px; }
+
+.lens-section {
+  border-bottom: 1px solid var(--line-strong);
+  background: transparent;
+}
+
+.lens-heading {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr) auto 18px;
+  gap: 18px;
+  align-items: center;
+  padding: 34px 0;
+  cursor: pointer;
+  list-style: none;
+}
+
+.lens-heading::-webkit-details-marker { display: none; }
+
+.lens-number {
+  color: var(--rust);
+  font-family: "Baskerville", serif;
+  font-size: 28px;
+}
+
+.lens-heading p {
+  margin: 0 0 2px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.lens-heading h2 {
+  margin: 0;
+  color: #1d4967;
+  font-size: 26px;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.lens-count {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.lens-chevron {
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid var(--blue);
+  border-bottom: 2px solid var(--blue);
+  transform: rotate(45deg);
+  transition: transform 180ms ease;
+}
+
+.lens-section:not([open]) .lens-chevron { transform: rotate(-45deg); }
+
+.lens-body {
+  padding: 0 0 56px 76px;
+  animation: reveal 220ms ease both;
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.logic-note {
+  max-width: 920px;
+  padding: 20px 24px;
+  border-left: 3px solid var(--rust);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.logic-note h3,
+.logic-note p { margin: 0; }
+
+.logic-note h3 {
+  color: var(--rust);
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.logic-note p {
+  margin-top: 7px;
+  color: #455565;
+}
+
+.timeline,
+.conclusion-panel {
+  margin-top: 42px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.section-heading > div {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.section-heading span {
+  color: var(--rust);
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.section-heading h3 {
+  margin: 0;
+  color: #264a64;
+  font-size: 19px;
+  letter-spacing: 0;
+}
+
+.section-heading > p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.timeline-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  box-shadow: 0 4px 18px rgba(36, 55, 72, 0.045);
+  scrollbar-color: #aebdc8 transparent;
+  scrollbar-width: thin;
+}
+
+.timeline-table-wrap:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.timeline-table {
+  width: 100%;
+  min-width: 980px;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.timeline-table .col-date { width: 118px; }
+.timeline-table .col-type { width: 112px; }
+.timeline-table .col-report { width: 260px; }
+.timeline-table .col-claims { width: auto; }
+
+.timeline-table th {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line-strong);
+  background: #edf2f5;
+  color: #526575;
+  font-size: 11px;
+  font-weight: 760;
+  text-align: left;
+  vertical-align: bottom;
+}
+
+.timeline-table td {
+  padding: 18px 16px;
+  border-bottom: 1px solid var(--line);
+  color: #3c4b5a;
+  font-size: 14px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.timeline-table tbody tr:last-child td { border-bottom: 0; }
+
+.timeline-table tbody tr:hover { background: #f9fbfc; }
+
+.source-date time {
+  color: #315a75;
+  font-size: 13px;
+  font-weight: 720;
+}
+
+.source-report {
+  font-weight: 680;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.material-tag {
+  display: inline-block;
+  padding: 1px 7px;
+  border: 1px solid #c9d8e2;
+  border-radius: 4px;
+  background: var(--blue-soft);
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.source-report a {
+  text-decoration: none;
+}
+
+.source-report a:hover { text-decoration: underline; }
+.source-report a span {
+  margin-left: 6px;
+  color: var(--rust);
+  font-size: 10px;
+  font-weight: 760;
+}
+
+.claim-list {
+  margin: 0;
+  padding-left: 18px;
+  list-style: disc;
+}
+
+.claim-list li {
+  padding: 0 0 14px 3px;
+}
+
+.claim-list li:last-child { padding-bottom: 0; }
+
+.claim-list li::marker { color: var(--rust); }
+
+.claim-heading {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+
+.claim-index {
+  color: var(--rust);
+  font-size: 12px;
+  font-weight: 760;
+}
+
+.claim-location {
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 680;
+}
+
+.claim-list p {
+  margin: 0;
+  color: #3c4b5a;
+  font-size: 14px;
+}
+
+.conclusion-panel {
+  padding: 26px 28px;
+  border-top: 3px solid var(--blue);
+  background: var(--blue-soft);
+}
+
+.conclusion-panel .section-heading { margin-bottom: 12px; }
+
+.conclusion-text {
+  margin: 0;
+  color: #28475e;
+  font-size: 16px;
+  font-weight: 520;
+}
+
+.trend-line {
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr);
+  gap: 16px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid #c6d8e3;
+}
+
+.trend-line strong {
+  color: var(--rust);
+  font-size: 12px;
+}
+
+.trend-line p {
+  margin: 0;
+  color: #526777;
+  font-size: 14px;
+}
+
+.empty-state {
+  padding: 24px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.report-footer {
+  padding: 26px 0 40px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.report-footer p { margin: 0; }
+
+@media (max-width: 760px) {
+  .report-header-inner,
+  .top-nav-inner,
+  .report-main,
+  .report-footer {
+    width: min(100% - 28px, 1180px);
+  }
+
+  .report-header-inner { padding: 38px 0 28px; }
+  h1 { font-size: 38px; }
+  .report-deck { font-size: 16px; }
+  .report-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .lens-heading {
+    grid-template-columns: 42px minmax(0, 1fr) 16px;
+    gap: 12px;
+    padding: 26px 0;
+  }
+
+  .lens-count {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .lens-chevron {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+  }
+
+  .lens-body { padding: 0 0 42px; }
+  .timeline-table { min-width: 880px; }
+  .section-heading { align-items: flex-start; flex-direction: column; }
+  .trend-line { grid-template-columns: 1fr; gap: 4px; }
+}
+
+@media print {
+  .top-nav { display: none; }
+  .report-main { padding-top: 0; }
+  .lens-section { break-inside: avoid; }
+  .timeline-table-wrap { overflow: visible; box-shadow: none; }
+  .timeline-table { min-width: 0; }
+}
+</style>
+</head>
+<body data-report-scope="standalone-bom" data-bom-node-id="gpu_asic">
+<header class="report-header">
+  <div class="report-header-inner">
+    <div class="report-label">VALUE INVEST · BOM RESEARCH</div>
+    <h1>GPU / ASIC BOM 实时跟踪</h1>
+    <p class="report-deck">以材料发布时间组织证据，把需求、供给、技术、估值与治理放在同一研究截面内。</p>
+    <div class="report-meta" aria-label="报告元数据">
+      <div><span>研究截面</span><strong>2026-07-26</strong></div>
+      <div><span>研究视角</span><strong>5</strong></div>
+      <div><span>映射材料</span><strong>5</strong></div>
+      <div><span>原子观点</span><strong>33</strong></div>
+    </div>
+  </div>
+</header>
+<nav class="top-nav" aria-label="报告章节">
+  <div class="top-nav-inner"><a href="#lens-demand">01 需求侧</a><a href="#lens-supply">02 供给侧</a><a href="#lens-technology">03 技术侧</a><a href="#lens-valuation">04 估值侧</a><a href="#lens-esg">05 ESG</a></div>
+</nav>
+<main class="report-main">
+
+<details id="lens-demand" class="lens-section" open>
+  <summary class="lens-heading">
+    <span class="lens-number">01</span>
+    <div>
+      <p>RESEARCH LENS</p>
+      <h2>需求侧</h2>
+    </div>
+    <span class="lens-count">5 份材料 · 8 条观点</span>
+    <span class="lens-chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="lens-body">
+    <section class="logic-note" aria-labelledby="logic-demand">
+      <h3 id="logic-demand">简单逻辑链</h3>
+      <p>需求成立不能只看 AI 话题热度，而要看到同一条传导链逐步兑现：真实训练和推理 工作负载增加，促使云厂商扩大可用算力和资本开支，继而形成 GPU/ASIC 与 AI 服务器订单，最终进入芯片公司的收入、利润和下一期指引。若只有市场规模预测而 没有订单和财务兑现，需求仍停留在主题阶段；若收入、订单与客户资本开支同时 增长，才属于投资可用需求。</p>
+    </section>
+
+    <section class="timeline" aria-labelledby="timeline-demand">
+      <div class="section-heading">
+        <div>
+          <span>01</span>
+          <h3 id="timeline-demand">信息时间线</h3>
+        </div>
+        <p>按市场可见日期由近及远</p>
+      </div>
+      <div class="timeline-table-wrap" role="region" aria-label="需求侧信息时间线" tabindex="0">
+        <table class="timeline-table">
+          <colgroup>
+            <col class="col-date">
+            <col class="col-type">
+            <col class="col-report">
+            <col class="col-claims">
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">时间</th>
+              <th scope="col">信息类型</th>
+              <th scope="col">报告</th>
+              <th scope="col">观点列表</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+<tr class="source-row">
+  <td class="source-date"><time datetime="2026-07-24">2026-07-24</time></td>
+  <td class="source-type"><span class="material-tag">研报</span></td>
+  <td class="source-report"><a href="source/ima/2026/07/24/德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf">德银-Meta：宏大野心需匹配宏大体量<span aria-hidden="true">PDF</span></a></td>
+  <td class="source-claims">
+    <ul class="claim-list">
+      
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 01</span>
+    <span class="claim-location">第5页，Business agents</span>
+  </div>
+  <p>Meta 各消息平台中，用户与商业 AI 的对话约为每周 1,000 万次，较年初增长约十倍；德银把这视为 2027 年可能通过订阅和按量收费变现的应用需求。该指标证明工作负载在增长，但尚未直接披露其对应 GPU/ASIC 用量。</p>
+</li>
+
+
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 02</span>
+    <span class="claim-location">第2页，Capex remains a key debate</span>
+  </div>
+  <p>Meta 2026 年资本开支指引为 1,250 亿至 1,450 亿美元；德银称市场已把 2027 年约 14GW 容量对应的资本开支预期推至 2,000 亿美元低至中段，并给出 2027 年约 2,100 亿至 2,150 亿美元、2028 年约 2,650 亿美元的估计。这是大型客户继续扩大 AI 算力采购的直接预算信号，但后两项属于分析师估计。</p>
+</li>
+
+    </ul>
+  </td>
+</tr>
+
+
+<tr class="source-row">
+  <td class="source-date"><time datetime="2026-07-24">2026-07-24</time></td>
+  <td class="source-type"><span class="material-tag">研报</span></td>
+  <td class="source-report"><a href="source/ima/2026/07/24/摩根大通-PC与服务器：英特尔2026年二季度财报及AMD“Advancing AI 2026”大会传导分析-260724.pdf">摩根大通：PC 与服务器传导分析<span aria-hidden="true">PDF</span></a></td>
+  <td class="source-claims">
+    <ul class="claim-list">
+      
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 01</span>
+    <span class="claim-location">第1页，AI-driven general server demand strength</span>
+  </div>
+  <p>Intel DCAI 收入在 2026 年第二季度环比增长 24%、同比增长 59%，由云服务商和企业服务器需求及供给改善驱动；管理层预计 2026 年服务器 CPU 需求保持双位数增长，并延续到 2027-2028 年。它是 AI 基础设施扩张的邻近验证，不等同于 GPU/ASIC 自身收入。</p>
+</li>
+
+    </ul>
+  </td>
+</tr>
+
+
+<tr class="source-row">
+  <td class="source-date"><time datetime="2026-07-24">2026-07-24</time></td>
+  <td class="source-type"><span class="material-tag">研报</span></td>
+  <td class="source-report"><a href="source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf">摩根大通：AMD AAI26 大会纪要<span aria-hidden="true">PDF</span></a></td>
+  <td class="source-claims">
+    <ul class="claim-list">
+      
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 01</span>
+    <span class="claim-location">第1、3页，MI450/Helios ramp</span>
+  </div>
+  <p>MI450 GPU 与 Helios 机架系统计划于 2026 年 9 月开始交付，2026 年第四季度和 2027 年上半年加速爬坡；报告称 Anthropic、OpenAI、Meta 等客户已有数 GW 部署排至 2027 年。订单计划提供了可见性，但实际收入仍取决于系统交付和客户数据中心按期完工。</p>
+</li>
+
+
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 02</span>
+    <span class="claim-location">第1-2页，AI Accelerator TAM</span>
+  </div>
+  <p>AMD 将 2030 年 AI 加速器 TAM 上调至约 1.4 万亿美元，相对 2025 年约 2,000 亿美元隐含超过 45% 的五年复合增速；摩根大通判断增长将由训练扩展到推理和 agent 工作负载。该数字是公司口径与投行解释，不是已兑现收入。</p>
+</li>
+
+    </ul>
+  </td>
+</tr>
+
+
+<tr class="source-row">
+  <td class="source-date"><time datetime="2026-07-24">2026-07-24</time></td>
+  <td class="source-type"><span class="material-tag">研报</span></td>
+  <td class="source-report"><a href="source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf">摩根士丹利：AMD AI 技术发布会复盘<span aria-hidden="true">PDF</span></a></td>
+  <td class="source-claims">
+    <ul class="claim-list">
+      
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 01</span>
+    <span class="claim-location">第1页，Key Takeaways</span>
+  </div>
+  <p>摩根士丹利称 Helios 在关键客户处的采用进展顺利，客户证言显示 2027 年将强劲爬坡，并把 coding agent 视为 AMD GPU 生态采用的明确加速器；但该报告同时认为 AMD 本代产品仍未取得领导地位。</p>
+</li>
+
+    </ul>
+  </td>
+</tr>
+
+
+<tr class="source-row">
+  <td class="source-date"><time datetime="2026-07-24">2026-07-24</time></td>
+  <td class="source-type"><span class="material-tag">研报</span></td>
+  <td class="source-report"><a href="source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf">巴克莱：拆解 TPU 即服务<span aria-hidden="true">PDF</span></a></td>
+  <td class="source-claims">
+    <ul class="claim-list">
+      
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 01</span>
+    <span class="claim-location">第2、4-5页，External TPU sales framework</span>
+  </div>
+  <p>巴克莱根据 Broadcom/Blackstone/Apollo 的 20GW AI XPV 计划与 Google-Blackstone 合资项目，估计外部 TPU 容量可由 2026 年 1.4GW 增至 2028 年 11.5GW，对应约 100 万颗、203 万颗和 474 万颗 TPU。它说明定制 ASIC 正从云厂内部自用扩展到外部客户，但数量是投行模型而非公司正式指引。</p>
+</li>
+
+
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 02</span>
+    <span class="claim-location">第6页，What&#x27;s Already Been Announced</span>
+  </div>
+  <p>巴克莱依据已披露数据中心供应商项目估算，2026 年第二季度 Google 外部 TPU 收入 backlog 约 880 亿美元，长期累计潜在收入超过 3,000 亿美元；该估计只覆盖首批已识别项目，必须与实际采购承诺和交付节奏交叉验证。</p>
+</li>
+
+    </ul>
+  </td>
+</tr>
+
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="conclusion-panel" aria-labelledby="conclusion-demand">
+      <div class="section-heading">
+        <div>
+          <span>02</span>
+          <h3 id="conclusion-demand">最新结论与趋势</h3>
+        </div>
+      </div>
+      <p class="conclusion-text">仅看 7 月 26 日 IMA 批次，GPU/ASIC 需求仍处于扩张阶段，而且已经从单一 NVIDIA GPU 扩展为三条并行路径：大客户继续上调算力预算，AMD 以 MI450/Helios 争夺数 GW 部署，Google TPU 开始从内部自用走向外部 merchant ASIC。最强的现实锚点是 Meta 2026 年 1,250 亿至 1,450 亿美元资本开支指引、MI450 计划在 2026 年第三季度末交付，以及服务器收入和订单仍受供给限制；最激进的 1.4 万亿美元 TAM、11.5GW 外部 TPU 和 3,000 亿美元 backlog 则主要来自公司或投行模型，不能当成已兑现事实。当前判断为：需求方向强且结构性扩散，但远期规模预测明显跑在财务兑现之前。</p>
+      <div class="trend-line">
+        <strong>趋势变化</strong>
+        <p>本批次新增的核心变化是 ASIC 外部商业化和 AMD 机架级交付时间表变得更具体，需求判断由“AI capex 高”推进到“客户、路线和交付窗口可识别”。</p>
+      </div>
+    </section>
+  </div>
+</details>
+
+
+<details id="lens-supply" class="lens-section" open>
+  <summary class="lens-heading">
+    <span class="lens-number">02</span>
+    <div>
+      <p>RESEARCH LENS</p>
+      <h2>供给侧</h2>
+    </div>
+    <span class="lens-count">5 份材料 · 7 条观点</span>
+    <span class="lens-chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="lens-body">
+    <section class="logic-note" aria-labelledby="logic-supply">
+      <h3 id="logic-supply">简单逻辑链</h3>
+      <p>GPU/ASIC 的有效供给不是“有多少晶圆”这么简单，而是先进制程晶圆、HBM、先进 封装、基板、测试和系统组装同时合格后的最小值。供给紧张时，长期交期、不可取消 订单、预付款和容量承诺会上升；但这些承诺也会在需求判断错误时转化为库存和毛利 风险。因此既要识别物理瓶颈，也要判断扩产速度是否正在消除稀缺。</p>
+    </section>
+
+    <section class="timeline" aria-labelledby="timeline-supply">
+      <div class="section-heading">
+        <div>
+          <span>01</span>
+          <h3 id="timeline-supply">信息时间线</h3>
+        </div>
+        <p>按市场可见日期由近及远</p>
+      </div>
+      <div class="timeline-table-wrap" role="region" aria-label="供给侧信息时间线" tabindex="0">
+        <table class="timeline-table">
+          <colgroup>
+            <col class="col-date">
+            <col class="col-type">
+            <col class="col-report">
+            <col class="col-claims">
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">时间</th>
+              <th scope="col">信息类型</th>
+              <th scope="col">报告</th>
+              <th scope="col">观点列表</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+<tr class="source-row">
+  <td class="source-date"><time datetime="2026-07-24">2026-07-24</time></td>
+  <td class="source-type"><span class="material-tag">研报</span></td>
+  <td class="source-report"><a href="source/ima/2026/07/24/摩根大通-PC与服务器：英特尔2026年二季度财报及AMD“Advancing AI 2026”大会传导分析-260724.pdf">摩根大通：PC 与服务器传导分析<span aria-hidden="true">PDF</span></a></td>
+  <td class="source-claims">
+    <ul class="claim-list">
+      
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 01</span>
+    <span class="claim-location">第1页，AI-driven general server demand strength</span>
+  </div>
+  <p>摩根大通把先进逻辑晶圆、硅片、内存和基板列为服务器供应链的持续约束，并预计供给改善会推动 2026 年第四季度收入进一步上行。有效供给仍由多项输入的最小值决定，而不是只看 GPU 晶圆数量。</p>
+</li>
+
+
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 02</span>
+    <span class="claim-location">第2页，EMIB-T high volume ramp</span>
+  </div>
+  <p>报告称 Intel EMIB-T 当前良率约 60%，目标 2027 年进入高量产；多个 AI 加速器项目因 CoWoS 紧张而评估 EMIB-T，但预计先从小批量开始，最大项目 TPU v9 或到 2027 年末至 2028 年才量产。替代封装路线正在形成，但短期无法立刻消除瓶颈。</p>
+</li>
+
+
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 03</span>
+    <span class="claim-location">第2页，Intel capex guidance</span>
+  </div>
+  <p>Intel 将 2026 年资本开支指引上调至超过 200 亿美元，并称 2027 年还会显著增长，用于洁净室扩建和锁定设备订单。供给正在响应高价和短缺，因此当前稀缺性不能外推为永久稀缺。</p>
+</li>
+
+    </ul>
+  </td>
+</tr>
+
+
+<tr class="source-row">
+  <td class="source-date"><time datetime="2026-07-24">2026-07-24</time></td>
+  <td class="source-type"><span class="material-tag">研报</span></td>
+  <td class="source-report"><a href="source/ima/2026/07/24/德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf">德银-Meta：宏大野心需匹配宏大体量<span aria-hidden="true">PDF</span></a></td>
+  <td class="source-claims">
+    <ul class="claim-list">
+      
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 01</span>
+    <span class="claim-location">第5-6页，2027 capex expectations</span>
+  </div>
+  <p>若 Meta 容量由 2026 年约 7GW 增至 2027 年 14GW，Hyperion 等合作方可能提供 1.0-1.5GW，使 Meta 直接融资的新增容量约为 5.5GW。伙伴资本可以缓解资产负担，但不能消除电力、服务器和建设交付约束。</p>
+</li>
+
+    </ul>
+  </td>
+</tr>
+
+
+<tr class="source-row">
+  <td class="source-date"><time datetime="2026-07-24">2026-07-24</time></td>
+  <td class="source-type"><span class="material-tag">研报</span></td>
+  <td class="source-report"><a href="source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf">摩根大通：AMD AAI26 大会纪要<span aria-hidden="true">PDF</span></a></td>
+  <td class="source-claims">
+    <ul class="claim-list">
+      
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 01</span>
+    <span class="claim-location">第3-4页，MI450/Helios shipping schedule</span>
+  </div>
+  <p>AMD 将 MI450/Helios 的首批交付定在 2026 年第三季度末，再于第四季度和 2027 年上半年提速；管理层称分阶段爬坡是为了给 ODM 调试制造并与客户机房建设对齐。GPU 供给的可用单位已经是按期调试完成的机架系统，而非单颗芯片。</p>
+</li>
+
+    </ul>
+  </td>
+</tr>
+
+
+<tr class="source-row">
+  <td class="source-date"><time datetime="2026-07-24">2026-07-24</time></td>
+  <td class="source-type"><span class="material-tag">研报</span></td>
+  <td class="source-report"><a href="source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf">摩根士丹利：AMD AI 技术发布会复盘<span aria-hidden="true">PDF</span></a></td>
+  <td class="source-claims">
+    <ul class="claim-list">
+      
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 01</span>
+    <span class="claim-location">第1页，Compute leadership</span>
+  </div>
+  <p>Helios 已进入量产，计划 2026 年第三季度开始发货、第四季度爬坡。该进度支持 AMD 供给增加，但客户采用、ODM 调试和机房配套仍决定收入确认速度。</p>
+</li>
+
+    </ul>
+  </td>
+</tr>
+
+
+<tr class="source-row">
+  <td class="source-date"><time datetime="2026-07-24">2026-07-24</time></td>
+  <td class="source-type"><span class="material-tag">研报</span></td>
+  <td class="source-report"><a href="source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf">巴克莱：拆解 TPU 即服务<span aria-hidden="true">PDF</span></a></td>
+  <td class="source-claims">
+    <ul class="claim-list">
+      
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 01</span>
+    <span class="claim-location">第2-4页，TPU-aaS entity structure and unit economics</span>
+  </div>
+  <p>外部 TPU 由 Google 与 Broadcom 协同设计、TSMC 制造，再由 Apollo/Blackstone 融资的 SPV 购买并交给数据中心运营商管理。这个结构把芯片设计、晶圆制造、资本和机房交付绑定在一起，可扩大供给，也引入跨主体执行和融资风险。</p>
+</li>
+
+    </ul>
+  </td>
+</tr>
+
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="conclusion-panel" aria-labelledby="conclusion-supply">
+      <div class="section-heading">
+        <div>
+          <span>02</span>
+          <h3 id="conclusion-supply">最新结论与趋势</h3>
+        </div>
+      </div>
+      <p class="conclusion-text">GPU/ASIC 有效供给仍由先进逻辑晶圆、内存、基板、先进封装和机架交付共同决定。摩根大通的供应链检查显示这些环节在 2026 年仍受限，EMIB-T 良率约 60%、高量产要到 2027 年，TPU v9 可能到 2027 年末至 2028 年才放量；AMD 也采用分阶段爬坡，以给 ODM 和客户机房留出调试时间。因此短期瓶颈仍存在。反方向上，Intel 已把 2026 年资本开支上调至 200 亿美元以上，TSMC/Intel/合作资本都在扩大供给，稀缺性不能机械外推。当前判断为：2026-2027 年约束仍有投资意义，但观察重点应从“有没有芯片”转向“整机系统能否按期交付，以及扩产是否开始快于需求”。</p>
+      <div class="trend-line">
+        <strong>趋势变化</strong>
+        <p>本批次把供给问题从抽象的 CoWoS 紧缺细化为良率、ODM 调试、客户机房和融资结构四个可跟踪环节。</p>
+      </div>
+    </section>
+  </div>
+</details>
+
+
+<details id="lens-technology" class="lens-section" open>
+  <summary class="lens-heading">
+    <span class="lens-number">03</span>
+    <div>
+      <p>RESEARCH LENS</p>
+      <h2>技术侧</h2>
+    </div>
+    <span class="lens-count">5 份材料 · 8 条观点</span>
+    <span class="lens-chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="lens-body">
+    <section class="logic-note" aria-labelledby="logic-technology">
+      <h3 id="logic-technology">简单逻辑链</h3>
+      <p>技术判断不应只比较芯片峰值 FLOPS，而要按工作负载比较端到端结果：模型变化 速度、训练与推理占比、吞吐/延迟、性能功耗比、每 token 成本、软件迁移成本和 集群利用率。GPU 依靠通用性与软件生态适合快速变化的任务；定制 ASIC 依靠软硬 件协同，在规模大且稳定的工作负载上追求更低 TCO。最终竞争单位正从单颗芯片 转向机架、互连、编译器和推理调度组成的平台。</p>
+    </section>
+
+    <section class="timeline" aria-labelledby="timeline-technology">
+      <div class="section-heading">
+        <div>
+          <span>01</span>
+          <h3 id="timeline-technology">信息时间线</h3>
+        </div>
+        <p>按市场可见日期由近及远</p>
+      </div>
+      <div class="timeline-table-wrap" role="region" aria-label="技术侧信息时间线" tabindex="0">
+        <table class="timeline-table">
+          <colgroup>
+            <col class="col-date">
+            <col class="col-type">
+            <col class="col-report">
+            <col class="col-claims">
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">时间</th>
+              <th scope="col">信息类型</th>
+              <th scope="col">报告</th>
+              <th scope="col">观点列表</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+<tr class="source-row">
+  <td class="source-date"><time datetime="2026-07-24">2026-07-24</time></td>
+  <td class="source-type"><span class="material-tag">研报</span></td>
+  <td class="source-report"><a href="source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf">摩根士丹利：AMD AI 技术发布会复盘<span aria-hidden="true">PDF</span></a></td>
+  <td class="source-claims">
+    <ul class="claim-list">
+      
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 01</span>
+    <span class="claim-location">第2页，Open platforms: ROCm and ROCm.ai</span>
+  </div>
+  <p>AMD 将 ROCm 发布周期由约四个月缩短到六周，并展示 coding agent 自动优化 MiniMax M3 在 MI355 上的内核后，token/s 提升 38%；公司还宣称相对 ROCm 7，DeepSeek 模型训练加速 2.4 倍、推理加速 3.3 倍。软件迭代速度正在改善，但数据仍来自厂商演示。</p>
+</li>
+
+
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 02</span>
+    <span class="claim-location">第1-2页，Cerebras disaggregated inference</span>
+  </div>
+  <p>AMD 与 Cerebras 宣布把 Helios 机架和晶圆级引擎组合成解耦推理方案，目标在超低延迟场景获得约 5 倍吞吐。它表明竞争单位正在从单颗 GPU 转为异构系统，但量产可用性和客户采用尚待验证。</p>
+</li>
+
+
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 03</span>
+    <span class="claim-location">第1页，Compute leadership: Helios</span>
+  </div>
+  <p>Helios 由 72 颗 MI455X GPU、18 颗 EPYC Venice CPU 和 Pensando NIC 组成；AMD 声称凭借约 15% 更多计算、50% 更多 HBM 容量/带宽和 50% 更多横向扩展带宽，可较 NVIDIA 提供最高约 30% 的每美元推理 token 优势。该结果是公司展示，尚非独立同工作负载基准。</p>
+</li>
+
+    </ul>
+  </td>
+</tr>
+
+
+<tr class="source-row">
+  <td class="source-date"><time datetime="2026-07-24">2026-07-24</time></td>
+  <td class="source-type"><span class="material-tag">研报</span></td>
+  <td class="source-report"><a href="source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf">巴克莱：拆解 TPU 即服务<span aria-hidden="true">PDF</span></a></td>
+  <td class="source-claims">
+    <ul class="claim-list">
+      
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 01</span>
+    <span class="claim-location">第1-3页，Background on TPU-As-A-Service</span>
+  </div>
+  <p>Google 正尝试把 TPU 从 GCP 内的租赁资源变成可由外部 AI lab 通过 SPV 直接控制的 merchant product；客户获得更深的软件定制、纵向整合和独立于单一云协议的算力控制。这扩大了 ASIC 的可服务市场，也使其开始正面争夺 NVIDIA 的外部计算需求。</p>
+</li>
+
+
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 02</span>
+    <span class="claim-location">第4、6页，Google&#x27;s Unit Economics</span>
+  </div>
+  <p>巴克莱假设 Google 2026 年以约 2 万美元单价向 SPV 销售 TPU、硬件毛利率约 25%，每 GW 约容纳 70 万颗 TPU；与 GCP 租赁相比，外部 TPU 所有权模型提高客户资本支出和折旧，但给予更强控制权。该比较是分析师模型，关键参数需用实际合同验证。</p>
+</li>
+
+    </ul>
+  </td>
+</tr>
+
+
+<tr class="source-row">
+  <td class="source-date"><time datetime="2026-07-24">2026-07-24</time></td>
+  <td class="source-type"><span class="material-tag">研报</span></td>
+  <td class="source-report"><a href="source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf">摩根大通：AMD AAI26 大会纪要<span aria-hidden="true">PDF</span></a></td>
+  <td class="source-claims">
+    <ul class="claim-list">
+      
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 01</span>
+    <span class="claim-location">第2、4页，portfolio and accelerator mix</span>
+  </div>
+  <p>摩根大通认为 GPU 在整体 AI 加速器 TAM 中的占比可能由 2025 年约 85% 降至 2030 年 60%-70%，原因是定制 XPU/ASIC 增长更快；但 GPU 绝对市场仍可能以接近 40% 的复合增速扩张。技术替代更可能表现为份额稀释，而不是 GPU 需求收缩。</p>
+</li>
+
+    </ul>
+  </td>
+</tr>
+
+
+<tr class="source-row">
+  <td class="source-date"><time datetime="2026-07-24">2026-07-24</time></td>
+  <td class="source-type"><span class="material-tag">研报</span></td>
+  <td class="source-report"><a href="source/ima/2026/07/24/德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf">德银-Meta：宏大野心需匹配宏大体量<span aria-hidden="true">PDF</span></a></td>
+  <td class="source-claims">
+    <ul class="claim-list">
+      
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 01</span>
+    <span class="claim-location">第6页，internal Iris/MTIA roadmap</span>
+  </div>
+  <p>德银预计 Meta 会用 Iris/MTIA 内部芯片承接部分推理和推荐工作负载，以降低相对 merchant GPU 的单位算力成本；在合作方容量和自研芯片共同作用下，直接融资成本可能低于简单按新增 GW 外推。稳定、可控的推理任务是 ASIC 替代最明确的场景。</p>
+</li>
+
+    </ul>
+  </td>
+</tr>
+
+
+<tr class="source-row">
+  <td class="source-date"><time datetime="2026-07-24">2026-07-24</time></td>
+  <td class="source-type"><span class="material-tag">研报</span></td>
+  <td class="source-report"><a href="source/ima/2026/07/24/摩根大通-PC与服务器：英特尔2026年二季度财报及AMD“Advancing AI 2026”大会传导分析-260724.pdf">摩根大通：PC 与服务器传导分析<span aria-hidden="true">PDF</span></a></td>
+  <td class="source-claims">
+    <ul class="claim-list">
+      
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 01</span>
+    <span class="claim-location">第2页，18A output and 14A roadmap</span>
+  </div>
+  <p>Intel 18A 产出环比增长超过 50% 且高于内部目标约 25%，但外部代工收入仅占该分部约 5%；摩根大通预计即使少量 AI 项目采用 Intel，TSMC 在先进前道晶圆仍保持 95% 以上份额。技术可行不等于已形成外部客户规模。</p>
+</li>
+
+    </ul>
+  </td>
+</tr>
+
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="conclusion-panel" aria-labelledby="conclusion-technology">
+      <div class="section-heading">
+        <div>
+          <span>02</span>
+          <h3 id="conclusion-technology">最新结论与趋势</h3>
+        </div>
+      </div>
+      <p class="conclusion-text">技术竞争的单位已经不是单颗 GPU，而是芯片、HBM、互连、机架、编译器和调度软件组成的系统。AMD 用 Helios 和更快的 ROCm 迭代缩小平台差距，但本批次性能数字大多来自厂商展示，且摩根士丹利仍认为其本代产品没有取得领导地位。更重要的结构变化来自 Google TPU：通过 Broadcom 设计、TSMC 制造和 SPV 融资，ASIC 正由云内自用产品变成可被外部 AI lab 控制的商品化算力。当前判断为：GPU 在变化快、通用性强的工作负载上仍占主导，ASIC 会在稳定、规模化、客户可控制软件栈的推理任务中更快夺取份额；这更像分层共存和 GPU 份额稀释，而不是 GPU 绝对需求下降。</p>
+      <div class="trend-line">
+        <strong>趋势变化</strong>
+        <p>相较旧的 GPU 对 GPU 比较，本批次最值得记录的是“外部 merchant ASIC”与“异构机架系统”两条技术商业化路线。</p>
+      </div>
+    </section>
+  </div>
+</details>
+
+
+<details id="lens-valuation" class="lens-section" open>
+  <summary class="lens-heading">
+    <span class="lens-number">04</span>
+    <div>
+      <p>RESEARCH LENS</p>
+      <h2>估值侧</h2>
+    </div>
+    <span class="lens-count">4 份材料 · 7 条观点</span>
+    <span class="lens-chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="lens-body">
+    <section class="logic-note" aria-labelledby="logic-valuation">
+      <h3 id="logic-valuation">简单逻辑链</h3>
+      <p>估值要把产业增长与证券赔率分开。先在同一截面固定股价，再选择可解释的盈利 口径，计算当前倍数或机构隐含假设，并比较不同机构对未来收入、利润和目标价的 分歧。高增长只有在未来盈利上修快于估值扩张时才创造赔率；若公司大幅超预期后 股价仍下跌，通常意味着市场已提前计入很高的增长门槛。</p>
+    </section>
+
+    <section class="timeline" aria-labelledby="timeline-valuation">
+      <div class="section-heading">
+        <div>
+          <span>01</span>
+          <h3 id="timeline-valuation">信息时间线</h3>
+        </div>
+        <p>按市场可见日期由近及远</p>
+      </div>
+      <div class="timeline-table-wrap" role="region" aria-label="估值侧信息时间线" tabindex="0">
+        <table class="timeline-table">
+          <colgroup>
+            <col class="col-date">
+            <col class="col-type">
+            <col class="col-report">
+            <col class="col-claims">
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">时间</th>
+              <th scope="col">信息类型</th>
+              <th scope="col">报告</th>
+              <th scope="col">观点列表</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+<tr class="source-row">
+  <td class="source-date"><time datetime="2026-07-24">2026-07-24</time></td>
+  <td class="source-type"><span class="material-tag">研报</span></td>
+  <td class="source-report"><a href="source/ima/2026/07/24/德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf">德银-Meta：宏大野心需匹配宏大体量<span aria-hidden="true">PDF</span></a></td>
+  <td class="source-claims">
+    <ul class="claim-list">
+      
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 01</span>
+    <span class="claim-location">第1-2页，rating and valuation</span>
+  </div>
+  <p>德银维持 Meta Buy，将目标价由 810 美元小幅下调至 800 美元；相对 2026 年 7 月 23 日 606.10 美元股价仍有约 32% 空间。估值基于 24 倍 2027 年 GAAP EPS，核心假设是广告回报已覆盖部分 AI 投入，订阅和云基础设施提供额外变现。</p>
+</li>
+
+
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 02</span>
+    <span class="claim-location">第5-6页，cloud sales and capex expectations</span>
+  </div>
+  <p>德银明确指出 2027 容量、每 GW 成本、利用率、定价和客户需求均有高度不确定性，第三方云收入尚未正式宣布，也未进入其当前盈利预测。把潜在算力销售直接资本化会高估已验证价值。</p>
+</li>
+
+    </ul>
+  </td>
+</tr>
+
+
+<tr class="source-row">
+  <td class="source-date"><time datetime="2026-07-24">2026-07-24</time></td>
+  <td class="source-type"><span class="material-tag">研报</span></td>
+  <td class="source-report"><a href="source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf">巴克莱：拆解 TPU 即服务<span aria-hidden="true">PDF</span></a></td>
+  <td class="source-claims">
+    <ul class="claim-list">
+      
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 01</span>
+    <span class="claim-location">第1、8页，rating and valuation worksheet</span>
+  </div>
+  <p>巴克莱维持 Alphabet Overweight 和 425 美元目标价，对应 2026 年 7 月 23 日 317.69 美元股价约 34% 潜在空间；目标价取 2027 年 25 倍 EPS 与 15 倍 EBITDA 的平均结果。赔率来自 TPU 外部商业化和云利润上修，而非纯 GPU 敞口。</p>
+</li>
+
+
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 02</span>
+    <span class="claim-location">第5、7、11页，estimate changes and company model</span>
+  </div>
+  <p>巴克莱的高情景把 2028 年外部 TPU 收入估至 2,527 亿美元、毛利 632 亿美元，并把 Alphabet 2028 年收入预测上调 40%；但同一模型预计 2027-2028 年资本开支约 3,500 亿和 5,003 亿美元、自由现金流转负。利润上修与资本强度必须同时计价。</p>
+</li>
+
+    </ul>
+  </td>
+</tr>
+
+
+<tr class="source-row">
+  <td class="source-date"><time datetime="2026-07-24">2026-07-24</time></td>
+  <td class="source-type"><span class="material-tag">研报</span></td>
+  <td class="source-report"><a href="source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf">摩根大通：AMD AAI26 大会纪要<span aria-hidden="true">PDF</span></a></td>
+  <td class="source-claims">
+    <ul class="claim-list">
+      
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 01</span>
+    <span class="claim-location">第1、5页，rating and valuation</span>
+  </div>
+  <p>摩根大通维持 AMD Neutral，2026 年 12 月目标价 385 美元，而报告股价为 552.33 美元；目标价基于约 35 倍市盈率和约 11 美元的 2026 年末盈利能力。报告认可产品改善，但认为长期份额不确定、研发投入高且股价接近充分定价。</p>
+</li>
+
+    </ul>
+  </td>
+</tr>
+
+
+<tr class="source-row">
+  <td class="source-date"><time datetime="2026-07-24">2026-07-24</time></td>
+  <td class="source-type"><span class="material-tag">研报</span></td>
+  <td class="source-report"><a href="source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf">摩根士丹利：AMD AI 技术发布会复盘<span aria-hidden="true">PDF</span></a></td>
+  <td class="source-claims">
+    <ul class="claim-list">
+      
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 01</span>
+    <span class="claim-location">第1、3页，rating table and Thoughts on the stock</span>
+  </div>
+  <p>摩根士丹利维持 AMD Equal-weight，目标价 410 美元，而 2026 年 7 月 23 日股价为 539.69 美元；报告认为 AMD 叙事改善，但相对 NVIDIA、Broadcom 估值更贵且缺少类似期权，风险收益更好的选择在别处。</p>
+</li>
+
+
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 02</span>
+    <span class="claim-location">第3页，Thoughts on the stock</span>
+  </div>
+  <p>摩根士丹利把 AMD 向客户发行的大额认股权证视为营销费用，认为其可能抵消未来数年 GPU 业务的大部分利润。即使收入增长，股东可获得的盈利弹性仍可能被获客成本和稀释削弱。</p>
+</li>
+
+    </ul>
+  </td>
+</tr>
+
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="conclusion-panel" aria-labelledby="conclusion-valuation">
+      <div class="section-heading">
+        <div>
+          <span>02</span>
+          <h3 id="conclusion-valuation">最新结论与趋势</h3>
+        </div>
+      </div>
+      <p class="conclusion-text">本批次最大的预期差不在产业方向，而在证券价格。两家投行都认可 AMD 的产品和需求改善，却分别给出 385 美元和 410 美元目标价，显著低于报告截面 539.69-552.33 美元的股价；原因包括高估值、长期份额仍不确定、研发投入和客户认股权证侵蚀股东收益。相对而言，巴克莱对 Alphabet 给出约 34% 目标空间，德银对 Meta 给出约 32% 空间，但两者的 AI 赔率来自广告、云和基础设施综合变现，并非纯 GPU/ASIC 暴露。当前判断为：产业需求可以继续强，但 AMD 已被要求以更快盈利兑现来消化价格；GOOGL/META 的赔率更好，却需要接受更低的纯加速器盈利弹性。</p>
+      <div class="trend-line">
+        <strong>趋势变化</strong>
+        <p>本批次首次把产业乐观和证券谨慎同时放在同一截面：需求预测继续上修，但 AMD 的投行目标价反而明显低于现价。</p>
+      </div>
+    </section>
+  </div>
+</details>
+
+
+<details id="lens-esg" class="lens-section" open>
+  <summary class="lens-heading">
+    <span class="lens-number">05</span>
+    <div>
+      <p>RESEARCH LENS</p>
+      <h2>ESG</h2>
+    </div>
+    <span class="lens-count">3 份材料 · 3 条观点</span>
+    <span class="lens-chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="lens-body">
+    <section class="logic-note" aria-labelledby="logic-esg">
+      <h3 id="logic-esg">简单逻辑链</h3>
+      <p>GPU/ASIC 的 ESG 不是附属评分，而是会直接改变可交付算力、可服务市场、成本和 估值的约束。性能功耗比改善决定单位算力的资源效率，但绝对工作负载增长可能让 总用电继续上升；出口管制会缩小市场并形成库存损失；供应与客户集中度影响经营 韧性；对客户、初创公司和基础设施的大额投资或担保则会改变治理透明度与资本 配置风险。</p>
+    </section>
+
+    <section class="timeline" aria-labelledby="timeline-esg">
+      <div class="section-heading">
+        <div>
+          <span>01</span>
+          <h3 id="timeline-esg">信息时间线</h3>
+        </div>
+        <p>按市场可见日期由近及远</p>
+      </div>
+      <div class="timeline-table-wrap" role="region" aria-label="ESG信息时间线" tabindex="0">
+        <table class="timeline-table">
+          <colgroup>
+            <col class="col-date">
+            <col class="col-type">
+            <col class="col-report">
+            <col class="col-claims">
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">时间</th>
+              <th scope="col">信息类型</th>
+              <th scope="col">报告</th>
+              <th scope="col">观点列表</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+<tr class="source-row">
+  <td class="source-date"><time datetime="2026-07-24">2026-07-24</time></td>
+  <td class="source-type"><span class="material-tag">研报</span></td>
+  <td class="source-report"><a href="source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf">巴克莱：拆解 TPU 即服务<span aria-hidden="true">PDF</span></a></td>
+  <td class="source-claims">
+    <ul class="claim-list">
+      
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 01</span>
+    <span class="claim-location">第1-3、7页，TPU-aaS SPV and purchase commitments</span>
+  </div>
+  <p>TPU 即服务依赖 Apollo/Blackstone 融资 SPV、Google/Broadcom 硬件和数据中心运营商的多层结构；巴克莱同时引用 Alphabet 约 8,110 亿美元采购承诺。结构可加快扩张，但会增加对手方、担保、资产利用率和表外义务的透明度风险。</p>
+</li>
+
+    </ul>
+  </td>
+</tr>
+
+
+<tr class="source-row">
+  <td class="source-date"><time datetime="2026-07-24">2026-07-24</time></td>
+  <td class="source-type"><span class="material-tag">研报</span></td>
+  <td class="source-report"><a href="source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf">摩根士丹利：AMD AI 技术发布会复盘<span aria-hidden="true">PDF</span></a></td>
+  <td class="source-claims">
+    <ul class="claim-list">
+      
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 01</span>
+    <span class="claim-location">第3页，customer warrants</span>
+  </div>
+  <p>AMD 通过向客户发行认股权证支持生态采用，摩根士丹利认为这相当于高额获客费用，并可能显著稀释 GPU 业务未来利润。它属于资本配置和股东利益问题，而非单纯产品销量问题。</p>
+</li>
+
+    </ul>
+  </td>
+</tr>
+
+
+<tr class="source-row">
+  <td class="source-date"><time datetime="2026-07-24">2026-07-24</time></td>
+  <td class="source-type"><span class="material-tag">研报</span></td>
+  <td class="source-report"><a href="source/ima/2026/07/24/德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf">德银-Meta：宏大野心需匹配宏大体量<span aria-hidden="true">PDF</span></a></td>
+  <td class="source-claims">
+    <ul class="claim-list">
+      
+<li>
+  <div class="claim-heading">
+    <span class="claim-index">观点 01</span>
+    <span class="claim-location">第2、5-6页，capacity and funding structure</span>
+  </div>
+  <p>Meta 的容量情景由 7GW 升至 14GW，资本开支预期可能升至 2027 年 2,000 亿美元以上；Hyperion 等伙伴融资可能降低报表内直接负担。对治理分析而言，关键不是只看名义 capex，而是追踪担保、租赁、合作方承诺及最终风险承担者。</p>
+</li>
+
+    </ul>
+  </td>
+</tr>
+
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="conclusion-panel" aria-labelledby="conclusion-esg">
+      <div class="section-heading">
+        <div>
+          <span>02</span>
+          <h3 id="conclusion-esg">最新结论与趋势</h3>
+        </div>
+      </div>
+      <p class="conclusion-text">这批研报没有提供足够的用电、水耗、出口管制或供应地缘数据，不能据此形成完整 ESG 结论；但资本配置和治理风险已经很清楚。Meta 和 Google 的算力扩张越来越依赖数千亿美元采购承诺、合作方融资和 SPV，AMD 又通过客户认股权证换取生态采用。真正需要跟踪的是谁承担最终资本义务、资产闲置时损失落在哪里、认股权证如何稀释利润，以及伙伴融资是否让风险移出表面口径。当前判断为：治理和融资结构是已验证风险，环境与监管维度仍属本批次证据缺口，不应被空白材料自动判为低风险。</p>
+      <div class="trend-line">
+        <strong>趋势变化</strong>
+        <p>本批次新增的是对伙伴融资、采购承诺和客户认股权证的治理映射；环境与出口管制没有新增可核验数据。</p>
+      </div>
+    </section>
+  </div>
+</details>
+
+</main>
+<footer class="report-footer">
+  <p>本报告由结构化材料账本生成；事实、预测和观点按原文位置保留。</p>
+</footer>
+<script>
+const navLinks = Array.from(document.querySelectorAll('.top-nav a'));
+const sections = Array.from(document.querySelectorAll('.lens-section'));
+const linkById = new Map(navLinks.map((link) => [link.hash.slice(1), link]));
+const observer = new IntersectionObserver((entries) => {
+  const visible = entries
+    .filter((entry) => entry.isIntersecting)
+    .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+  if (!visible) return;
+  navLinks.forEach((link) => link.classList.remove('is-active'));
+  linkById.get(visible.target.id)?.classList.add('is-active');
+}, { rootMargin: '-18% 0px -72% 0px', threshold: [0.05, 0.2, 0.5] });
+sections.forEach((section) => observer.observe(section));
+</script>
+</body>
+</html>

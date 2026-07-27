@@ -1,0 +1,1 @@
+{"scan_id": "SCAN-IMA-0F3BF3DEB79205FF", "provider": "ima", "feed_id": "ref:39d98f2380e57fab:gpu_asic:dated-directory", "ingestion_channel": "knowledge_base_scan", "scanned_at": "2026-07-27", "mode": "live_prediction", "as_of_date": "2026-07-26", "discovered_count": 5, "skipped_seen_count": 0, "quarantined_count": 0, "parse_task_count": 25}

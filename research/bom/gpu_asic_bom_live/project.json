@@ -2,11 +2,13 @@
   "project_id": "gpu_asic_bom_live",
   "title": "GPU / ASIC BOM 实时跟踪",
   "report_scope": "standalone-bom",
-  "research_type": "standalone_bom",
+  "research_type": "technology/product route",
+  "domain_playbook": "semiconductor_hardware",
   "bom_node_id": "gpu_asic",
   "run_mode": "live_prediction",
-  "as_of_date": "2026-07-24",
-  "generated_at": "2026-07-24",
+  "as_of_date": "2026-07-26",
+  "report_date": "2026-07-26",
+  "generated_at": "2026-07-27",
   "question_model": "five-lens-timeline",
   "question_labels": [
     "需求侧",
@@ -17,7 +19,8 @@
   ],
   "timeline_order": "published_at_desc",
   "status": "active",
-  "public_artifact": "professional_report.md",
+  "public_artifact": "professional_report.html",
+  "audit_artifact": "professional_report.md",
   "material_relevance_profile": {
     "direct_terms": [
       "GPU",

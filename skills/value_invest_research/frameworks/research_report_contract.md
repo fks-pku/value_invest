@@ -4,19 +4,25 @@ This is the sole default public-report contract. It defines presentation only. D
 
 ## Primary Format
 
-The canonical public artifact is Markdown:
+HTML is the default public artifact:
 
 ```text
-professional_report.md
+professional_report.html
 ```
 
-`professional_report.html` may be generated as a compatibility view, but it is not the source of truth and must not contain research content that is absent from Markdown.
+`professional_report.md` is generated from the same report view model as a
+portable audit sidecar. HTML and Markdown must not diverge in research claims,
+source mappings, dates, or conclusions.
 
-Markdown must be readable as plain text. Do not depend on CSS classes, JavaScript, HTML cards, hidden panels, or browser-only interactions to communicate the research.
+HTML must work as a self-contained local file, remain readable without a server,
+and link directly to project-local PDF originals. Presentation JavaScript may
+enhance navigation but may not hide research content or fetch evidence at runtime.
+Markdown remains readable as plain text.
 
 ## Top-Level Order
 
-Every default industry/project Markdown report contains exactly four numbered H2 sections:
+Every default industry/project report contains exactly four numbered H2 sections
+in this locked order; HTML renders the same semantic section sequence:
 
 1. `当前研究的问题`
 2. `行业概况`
@@ -26,8 +32,8 @@ Every default industry/project Markdown report contains exactly four numbered H2
 Internal QA trees, source plans, raw queries, parser outputs, reviews, score worksheets, tool traces, credentials, and change logs are excluded unless the user explicitly asks for a workbench.
 Public `下钻 QA` is therefore opt-in. Do not render raw search queries in a public report.
 
-`report_scope: standalone-bom` is the only exception. It contains exactly five
-numbered H2 sections: `需求侧`, `供给侧`, `技术侧`, `估值侧`, and `ESG`.
+`report_scope: standalone-bom` is the only exception. It contains five collapsible
+top-level sections: `需求侧`, `供给侧`, `技术侧`, `估值侧`, and `ESG`.
 
 ## Report Scopes and Layout
 
@@ -35,17 +41,25 @@ Industry, theme, and S-curve research uses one parent index and one child projec
 
 ```text
 <industry_project>/professional_report.md
-<industry_project>/professional_report.html                 # optional compatibility view
+<industry_project>/professional_report.html                 # default public view
 <industry_project>/boms/manifest.json
 <industry_project>/boms/<node_id>/professional_report.md
-<industry_project>/boms/<node_id>/professional_report.html # optional compatibility view
+<industry_project>/boms/<node_id>/professional_report.html # default public view
 ```
 
 The parent front matter uses `report_scope: industry-index`. A child uses `report_scope: bom-node` and declares `bom_node_id`. A project whose complete research object is one isolated BOM uses `report_scope: standalone-bom` and also declares `bom_node_id`.
 
-The standalone report lives beside its own `project.json`, `source/`, `ledger/`,
+The standalone HTML report lives beside its own `project.json`, Markdown audit
+sidecar, `source/`, `ledger/`,
 `inbox/`, and `material_intake/` directories. Project-local links are resolved
-relative to that report. Canonical PDFs stay under `source/`; a renderer must never
+from portable relative paths in the ledger. When rendering a report for the local
+workspace, HTML material links stay project-relative (`source/...`) so a report
+opened through `file://` resolves the neighboring PDF correctly. Markdown audit
+links may use absolute filesystem paths. Manually imported PDFs stay under the
+BOM's `source/`.
+The complete IMA provider mirror lives in repository `source/ima/`; reports selected
+for this BOM are copied to the project's `source/ima/<published_at>/` and public
+timelines link only to those portable project-local copies. A renderer must never
 link to `material_intake/raw/` or to another BOM project.
 
 The parent owns chain taxonomy, navigation, and chain-wide target aggregation. It must not embed every BOM node's six-question body.
@@ -67,25 +81,39 @@ industry parent. The report is intentionally narrower than an industry report:
 4. `估值侧`
 5. `ESG`
 
-Each section contains exactly:
+Each HTML section contains exactly:
 
 1. `简单逻辑链`: one natural-language paragraph explaining the causal test.
-2. `信息时间线`: a newest-to-oldest Markdown table.
+2. `信息时间线`: one newest-to-oldest four-column table.
 3. `最新结论与趋势`: a natural-language synthesis derived from the displayed rows.
 
-The timeline header is:
+Every HTML lens contains one horizontally scrollable table with exactly:
+
+```text
+时间 | 信息类型 | 报告 | 观点列表
+```
+
+One source occupies one row. Every row contains `published_at`, public material
+class, a direct clickable source link, and a real `<ul>` claim list.
+
+`时间` is `published_at`, not the fiscal period described by the source. `信息类型`
+uses the public material classes `官方财报`, `官方公司`, `研报`, `第三方权威`,
+`市场消息`, `专家观点`, or `其他`. `报告` contains one clickable official or
+project-local original-material link. Local PDF links use the renderer-resolved
+project-relative `source/...` path, never `/Users/...`, never `file://`, and never
+a central archive path. They navigate in the current tab because opening local
+files with `target="_blank"` can produce an empty browser tab. Only HTTP(S) links
+may use `target="_blank"`.
+One source occupies one row within a lens.
+`观点列表` groups all GPT-reviewed atomic claims from that source for the current
+lens. Every bullet visibly separates `观点 N`, `原文位置`, and the atomic claim.
+The location preserves its page, item, heading, table, or paragraph locator. It is
+not a document-level abstract. The Markdown sidecar mirrors the same claims in the
+compact `时间 | 信息类型 | Source | 观点列表` table.
 
 ```text
 | 时间 | 信息类型 | Source | 观点列表 |
 ```
-
-`时间` is `published_at`, not the fiscal period described by the source. `信息类型`
-uses the public material classes `官方财报`, `官方公司`, `研报`, `第三方权威`,
-`市场消息`, `专家观点`, or `其他`. `Source` contains one clickable official or
-project-local original-material link. One source occupies one row within a lens.
-`观点列表` groups all GPT-reviewed atomic claims from that source for the current
-lens; every bullet preserves its page, item, heading, table, or paragraph locator.
-It is not a document-level abstract.
 
 The same source may appear in several timelines only after a separate lens-specific
 parse. Rows are never padded with model priors. The conclusion must distinguish
@@ -277,7 +305,7 @@ Freeze recommendations before attaching labels.
 
 ## Non-Drift Locks
 
-1. Markdown is the canonical public artifact.
+1. HTML is the default public artifact; Markdown is the audit sidecar.
 2. Default industry/project reports keep four numbered H2 sections in exact order; `standalone-bom` keeps the five locked lenses in exact order.
 3. Parent, manifest, and child paths preserve one-to-one BOM identity.
 4. BOM ID and public name come from the canonical registry.
@@ -291,10 +319,11 @@ Freeze recommendations before attaching labels.
 Before publication:
 
 1. run focused tests and the full research-framework suite;
-2. run `validate-report-contract` on `professional_report.md`;
+2. run `validate-report-contract` on `professional_report.html` and the Markdown sidecar;
 3. run `validate-material-intake` when intake artifacts exist;
 4. run `validate-research-artifacts --require-l3` when artifacts exist;
 5. verify scope-specific section order, parent-child links where applicable, six-question or five-lens identity, timeline order, Markdown tables, source links, and no public process text;
 6. run `git diff --check`.
 
-Compatibility HTML may also be smoke-tested, but Markdown validation is the publication gate.
+HTML visual and contract validation is the publication gate; Markdown validation
+protects audit portability.

@@ -23,7 +23,7 @@ Do not mix another report template into this workflow.
 1. Convert the request into `ResearchGoal` with mode, date, decision, scope, and domain hint.
 2. Use `investment-question-architect` plus the domain playbook to build internal QA to maximum depth five.
 3. For S-curve work, define a canonical BOM taxonomy and run the six-question research loop for every node.
-4. Run two material loops: question-driven Universe/Exa search and scheduled scanning of the user's IMA/external-report database.
+4. Mirror all PDFs from the user's IMA daily directory into the central provider archive, then run two evidence loops: question-driven Universe/Exa search and BOM routing from that archive.
 5. Classify every discovered document by `material_class` and `ingestion_channel`, route it to the matching BOM inbox, and create narrow question-specific parse tasks.
 6. Parse one source at a time against the current question with the appropriate specialty skill. DeepSeek may perform first-pass reading when available; GPT verifies every adopted claim.
 7. Roll facts, inference, judgment, gaps, refutation, and triggers upward.
@@ -99,25 +99,38 @@ dated report title, or the original cover/header. Preserve date status, provenan
 and locator. An unresolved date stays blank and blocks claim promotion until the
 original PDF is verified.
 
-Keyword-search results do not carry trustworthy IMA folder provenance, so keep
-their directory status pending. Folder provenance and local storage are orthogonal:
-store originals by `published_at` under `source/ima/YYYY/MM/DD/`; use
-`source/ima/unmapped/<source_id>/` only while the publication date is unresolved.
+The repository-level `source/ima/YYYY/MM/DD/` tree mirrors IMA's verified
+`directory_date` and stores every PDF, regardless of current BOM relevance. The
+archive path never supplies `published_at`. Its manifest preserves directory
+provenance, content hash, size, and local path without raw knowledge-base IDs or
+signed URLs.
 
-Question search routes only to the requested `BOM x question`. IMA scanning searches each configured BOM profile and creates up to six `BOM x question x source` parse tasks for every newly matched report. A report may route to several BOMs. It must be parsed separately for each relevant question.
+Question search routes only to the requested `BOM x question`. Downstream IMA
+routing reads the central archive, searches each configured BOM profile, and creates
+question-specific parse tasks for matched reports. A matched report is copied into
+that project's `source/ima/<published_at>/` only after publication-date verification;
+the complete provider mirror remains in repository `source/ima/<directory_date>/`.
+A report may route to several BOMs and must be parsed separately for each relevant
+question. Persist the source path relative to the BOM project. The local HTML
+renderer keeps that project-relative `source/...` link so browser clicks resolve
+beside the report; the Markdown renderer uses an absolute filesystem link.
 
 The intake sequence is:
 
-`discover -> classify -> deduplicate -> cutoff gate -> BOM route -> parse inbox -> DeepSeek/specialty parse -> GPT review -> atomic claim ledger`
+`daily full-PDF archive -> BOM classify -> deduplicate -> publication-date/cutoff gate -> copy selected original into BOM -> parse inbox -> DeepSeek/specialty parse -> GPT review -> atomic claim ledger`
 
 Credentials and the raw knowledge-base ID never enter Git. Read IMA access from `IMA_OPENAPI_CLIENTID`, `IMA_OPENAPI_APIKEY`, and `IMA_KNOWLEDGE_BASE_ID`; persisted feed state stores only an irreversible reference hash. A frozen historical project quarantines documents published after its cutoff.
 
-Daily IMA scanning is project-driven, not hard-coded to six questions. Resolve the
-configured knowledge-base name, walk its year/month/day directory tree, classify
-every PDF against each enabled BOM profile, and download only approved matches to
-`source/ima/<published_at>/` after checking the original PDF. The IMA day folder is
-retained only as archive provenance. Persist all relevance decisions so omissions
-are auditable. Create tasks from that project's own coordinate registry.
+Daily IMA archiving is provider-driven and independent of research projects.
+Resolve the configured knowledge-base name, walk the selected year/month/day
+directory with full pagination, and download every PDF to repository
+`source/ima/<directory_date>/`. Persist one manifest record per PDF and one scan
+event per day. Repeated runs reuse existing verified files and retry only missing or
+failed originals. The scheduled job archives the previous day and rechecks the configured
+recent-day window so quota-limited gaps can recover on later days. BOM routing is a
+separate downstream operation that persists all
+relevance decisions so omissions remain auditable and creates tasks from that
+project's own coordinate registry.
 Canonical BOM children produce six tasks; a `standalone-bom` project produces its
 five lens tasks. The parser must answer the current coordinate from the original
 report, record page/section, data or argument, time fields, stance, and gaps, then
@@ -165,26 +178,37 @@ Every score subcomponent is either verified with evidence/review IDs and `eviden
 
 ## Public Output
 
-The default industry/project Markdown contains exactly:
+The default user-facing artifact is `professional_report.html`; the same view model
+also writes `professional_report.md` as a portable audit sidecar. The default
+industry/project report contains exactly:
 
 1. `当前研究的问题`
 2. `行业概况`
 3. `标的推荐`
 4. `来源索引`
 
-Industry/S-curve output is split by scope. The parent `professional_report.md` declares `report_scope: industry-index`: `行业概况` contains `01 技术链与BOM呈现` plus `02 BOM 独立研究目录`, and each node links to `boms/<node_id>/professional_report.md`. It never embeds all six-question modules. Each child declares `report_scope: bom-node`, contains exactly one BOM module, preserves the six questions and S-curve rollup, and links back to the parent. HTML may exist only as a compatibility view.
+Industry/S-curve output is split by scope. The parent
+`professional_report.html` declares `report_scope: industry-index` and links to
+`boms/<node_id>/professional_report.html`. It never embeds all six-question
+modules. Each child declares `report_scope: bom-node`, contains exactly one BOM
+module, preserves the six questions and S-curve rollup, and links back to the
+parent. Markdown mirrors the public content for auditability.
 
 When the research object is explicitly one BOM rather than an industry chain, use
-`report_scope: standalone-bom`. Render exactly five numbered H2 sections:
+`report_scope: standalone-bom`. Render five collapsible top-level HTML sections:
 `需求侧`, `供给侧`, `技术侧`, `估值侧`, and `ESG`. Every section contains one
 `简单逻辑链`, one newest-to-oldest `信息时间线`, and one `最新结论与趋势`.
-The timeline uses one row per source with columns `时间`, `信息类型`, `Source`, and
-`观点列表`; multiple atomic claims from the same source and lens are grouped in
-that row with their original locators. Do not wrap this scope in the four-section
-industry shell and do not expose source-search process fields.
+The HTML timeline uses one full-width, horizontally scrollable table per lens with
+exactly `时间 | 信息类型 | 报告 | 观点列表`. One material occupies one row; the
+report title links directly to the original PDF, and multiple atomic claims from
+the same source and lens stay in one real bullet list using
+`观点 N / 原文位置 / 原子观点`. The Markdown audit sidecar mirrors the compact
+four-column table. Local PDF links navigate in the current tab; only HTTP(S)
+sources open a new tab. Do not expose source-search process fields.
 
 Every standalone BOM and every `boms/<node_id>/` child is a self-contained project
-directory. It owns `project.json`, `professional_report.md`, `sources.jsonl`,
+directory. It owns `project.json`, `professional_report.html`,
+`professional_report.md`, `sources.jsonl`,
 `source/`, `material_intake/`, `inbox/`, and `ledger/`. Canonical originals live
 only under `source/<provider>/YYYY/MM/DD/`; `material_intake/` stores discovery and
 audit metadata, never a second canonical PDF store. The parent owns only

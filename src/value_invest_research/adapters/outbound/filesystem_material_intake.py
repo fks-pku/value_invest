@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 import re
+import shutil
 from typing import Any
 
 
@@ -330,6 +331,49 @@ class FileSystemMaterialIntakeRepository:
             / "material_intake"
             / "relevance_reviews.jsonl"
         )
+
+    def reset_research_state(self) -> dict[str, int]:
+        """Remove derived research state while preserving the project contract."""
+
+        removed_files = 0
+        removed_directories = 0
+        for relative in (
+            "source/ima",
+            "material_intake",
+            "inbox",
+            "ledger",
+        ):
+            path = self.project_dir / relative
+            if path.is_dir():
+                removed_files += sum(item.is_file() for item in path.rglob("*"))
+                shutil.rmtree(path)
+                removed_directories += 1
+            elif path.is_file():
+                path.unlink()
+                removed_files += 1
+        for relative in (
+            "sources.jsonl",
+            "professional_report.md",
+            "professional_report.html",
+        ):
+            path = self.project_dir / relative
+            if path.is_file():
+                path.unlink()
+                removed_files += 1
+        for relative in ("material_intake", "inbox", "ledger"):
+            (self.project_dir / relative).mkdir(parents=True, exist_ok=True)
+
+        profile_path = self.project_dir / "timeline_profile.json"
+        profile = _read_json(profile_path)
+        if profile:
+            for lens in profile.get("lenses") or []:
+                if isinstance(lens, dict):
+                    lens.pop("baseline_conclusion", None)
+            _write_json(profile_path, profile)
+        return {
+            "removed_files": removed_files,
+            "removed_directories": removed_directories,
+        }
 
     def _inbox_dir(self, node_id: str) -> Path:
         if self.standalone_node_id:

@@ -33,6 +33,11 @@ class FileSystemStandaloneBomTimelineRepository:
         path.write_text(markdown, encoding="utf-8")
         return path
 
+    def write_html_report(self, html: str) -> Path:
+        path = self.project_dir / "professional_report.html"
+        path.write_text(html, encoding="utf-8")
+        return path
+
     def merge_claims(self, rows: list[dict[str, Any]]) -> int:
         return _merge_jsonl(
             self.project_dir / "ledger" / "claims.jsonl",
@@ -48,6 +53,11 @@ class FileSystemStandaloneBomTimelineRepository:
         )
 
     def merge_sources_from_claims(self, claims: list[dict[str, Any]]) -> int:
+        documents_by_source = {
+            str(row.get("source_id") or ""): row
+            for row in self.load_material_documents()
+            if str(row.get("source_id") or "")
+        }
         rows = [
             {
                 "source_id": claim["source_id"],
@@ -59,6 +69,10 @@ class FileSystemStandaloneBomTimelineRepository:
                 "published_at": claim["published_at"],
                 "original_location": claim["source_location"],
                 "summary": claim["statement"],
+                "availability_proof": _availability_proof(
+                    documents_by_source.get(str(claim["source_id"])) or {},
+                    published_at=str(claim["published_at"]),
+                ),
             }
             for claim in claims
         ]
@@ -67,6 +81,70 @@ class FileSystemStandaloneBomTimelineRepository:
             rows,
             key_fields=("source_id",),
         )
+
+    def finalize_material_reviews(
+        self,
+        *,
+        reviewed_source_ids: set[str],
+        claim_counts_by_coordinate: dict[tuple[str, int], int],
+        reviewed_at: str,
+    ) -> dict[str, int]:
+        """Close question-specific parse tasks after GPT-reviewed claims land."""
+
+        if not reviewed_source_ids:
+            return {"parse_tasks": 0, "documents": 0}
+
+        tasks_path = self.project_dir / "inbox" / "parse_tasks.jsonl"
+        tasks = _read_jsonl(tasks_path)
+        finalized_tasks = 0
+        for task in tasks:
+            source_id = str(task.get("source_id") or "")
+            if source_id not in reviewed_source_ids:
+                continue
+            question_number = int(task.get("question_number") or 0)
+            claim_count = claim_counts_by_coordinate.get(
+                (source_id, question_number),
+                0,
+            )
+            task.update(
+                {
+                    "status": "completed",
+                    "review_status": "gpt_verified",
+                    "reviewed_at": reviewed_at,
+                    "claim_count": claim_count,
+                    "review_note": (
+                        "question-specific atomic claims promoted"
+                        if claim_count
+                        else "reviewed; no lens-specific atomic claim promoted"
+                    ),
+                }
+            )
+            finalized_tasks += 1
+        if tasks_path.is_file():
+            _write_jsonl(tasks_path, tasks)
+
+        finalized_documents = 0
+        for path in (
+            self.project_dir / "material_intake" / "documents.jsonl",
+            self.project_dir / "inbox" / "materials.jsonl",
+        ):
+            documents = _read_jsonl(path)
+            changed = False
+            for document in documents:
+                if str(document.get("source_id") or "") not in reviewed_source_ids:
+                    continue
+                document["mapping_status"] = "mapped"
+                document["review_status"] = "gpt_verified"
+                document["reviewed_at"] = reviewed_at
+                finalized_documents += path.name == "documents.jsonl"
+                changed = True
+            if changed:
+                _write_jsonl(path, documents)
+
+        return {
+            "parse_tasks": finalized_tasks,
+            "documents": finalized_documents,
+        }
 
 
 def _read_json(path: Path) -> dict[str, Any]:
@@ -108,6 +186,14 @@ def _merge_jsonl(
     return len(rows)
 
 
+def _write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        "".join(json.dumps(row, ensure_ascii=False) + "\n" for row in rows),
+        encoding="utf-8",
+    )
+
+
 def _source_bucket(material_class: str) -> str:
     if material_class in {"official_filing", "official_company"}:
         return "evidence"
@@ -116,3 +202,19 @@ def _source_bucket(material_class: str) -> str:
     if material_class == "expert_opinion":
         return "opinion"
     return "message"
+
+
+def _availability_proof(
+    document: dict[str, Any],
+    *,
+    published_at: str,
+) -> dict[str, str]:
+    proof_type = str(
+        document.get("publication_date_source") or "claim_published_at"
+    ).strip()
+    locator = str(document.get("publication_date_locator") or "").strip()
+    return {
+        "proof_type": proof_type,
+        "proof_value": published_at,
+        "locator": locator,
+    }

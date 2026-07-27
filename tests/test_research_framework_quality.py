@@ -108,10 +108,10 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
         self.assertIn("Q6 requires observed refuting evidence", contract)
         self.assertIn("all six questions pass semantic completion", contract)
 
-    def test_public_markdown_contract_covers_current_report_scopes(self):
+    def test_public_html_contract_covers_current_report_scopes(self):
         contract = self._canonical_docs()["research_report_contract.md"]
         for phrase in [
-            "Markdown is the canonical public artifact",
+            "HTML is the default public artifact",
             "report_scope: standalone-bom",
             "需求侧",
             "供给侧",
@@ -127,7 +127,7 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
             "project-local original-material link",
             "industry-index",
             "bom-node",
-            "boms/<node_id>/professional_report.md",
+            "boms/<node_id>/professional_report.html",
         ]:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, contract)
@@ -144,14 +144,15 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, combined)
 
-    def test_canonical_contracts_define_self_contained_bom_projects(self):
+    def test_canonical_contracts_define_central_ima_archive_and_bom_state(self):
         combined = "\n".join(self._canonical_docs().values())
         for phrase in [
-            "self-contained project directory",
+            "shared provider archive",
             "research/bom/<bom_project_id>",
             "source/ima/YYYY/MM/DD",
+            "archive_manifest.jsonl",
             "material_intake/raw/",
-            "must not own a child's original materials",
+            "download all originals",
         ]:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, combined)

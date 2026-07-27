@@ -159,10 +159,15 @@ BOM x question coverage gap
   -> normalize MaterialDocument(channel=question_search)
   -> MaterialIntakeRepository
 
-IMA year/month/day directory walk
+IMA daily provider archive
   -> ImaKnowledgeBaseFeed adapter
-  -> complete PDF candidate manifest
+  -> enumerate and download every PDF
+  -> FileSystemImaArchiveRepository(source/ima/<directory_date>)
+  -> archive_manifest.jsonl + archive_events.jsonl
+
+Central IMA archive manifest
   -> domain BOM relevance classifier + optional GPT review
+  -> verify publication date and copy selected original into BOM source/ima
   -> normalize MaterialDocument(channel=knowledge_base_scan)
   -> MaterialIntakeRepository
 
@@ -174,34 +179,43 @@ MaterialIntakeRepository
   -> temporal claim ledger
 ```
 
-`domain.material_intake` owns material classes, channels, cutoff quarantine, and parse-task semantics. `application.use_cases.ingest_materials` owns deduplication, routing, and orchestration. `ImaKnowledgeBaseFeed`, Exa/search providers, and filesystem persistence stay in outbound adapters. Credentials are environment-only and never enter the repository.
+`application.use_cases.archive_ima_daily` owns the project-independent daily mirror.
+`FileSystemImaArchiveRepository` owns its paths, manifests, hashes, and idempotent
+writes. `domain.material_intake` owns evidence material classes, channels, cutoff
+quarantine, and parse-task semantics. `application.use_cases.ingest_materials` owns
+downstream BOM routing. Credentials are environment-only and never enter the
+repository.
 
 Discovery and evidence are deliberately separated. A report in IMA is a candidate document, not a supporting claim. It becomes evidence only after one parse and review per relevant `BOM x question`.
 
-Live research adds an explicit project registry and original-material boundary:
+Live research separates the provider mirror from project evidence:
 
 ```text
-config/active_research_feeds.json
-  -> enabled live project
-  -> project-owned relevance profile and question coordinates
-  -> IMA search_knowledge_base / get_knowledge_list
-  -> material_intake/directory_candidates.jsonl
-  -> relevant-only intake
+config/ima_daily_archive.json
+  -> previous IMA year/month/day folder
+  -> enumerate all PDFs with pagination
   -> IMA get_media_info
-  -> extract actual publication date from the PDF
-  -> dated original: source/ima/<published_at>/<original-title>.pdf
-  -> unresolved date: source/ima/unmapped/<source_id>/<original-title>.pdf
-  -> later publication-date verification moves the same source into <published_at>
+  -> source/ima/<directory_date>/<original-title>.pdf
+  -> archive manifest and scan event
+
+enabled BOM project
+  -> central archive manifest
+  -> project-owned relevance profile and question coordinates
+  -> material_intake/directory_candidates.jsonl
+  -> relevant-only intake metadata
+  -> verify actual publication date from selected PDF
+  -> source/ima/<published_at>/<selected-original-title>.pdf
   -> project inbox parse tasks
   -> reviewed atomic claim ledger
-  -> Markdown timeline refresh
+  -> HTML timeline refresh + Markdown audit sidecar
 ```
 
-The adapter owns IMA HTTP, pagination, rate-limit backoff, folder traversal, and
-short-lived download headers. The intake use case owns relevance orchestration,
-deduplication, cutoff policy, routing, and fetch orchestration. The standalone
-timeline domain owns five-lens claim validation. The Markdown renderer only renders
-reviewed ledger state. Frozen historical projects are never daily-feed targets.
+The IMA adapter owns HTTP, pagination, rate-limit backoff, folder traversal, and
+short-lived download headers. The archive use case downloads without research
+filtering. The intake use case owns relevance, cutoff policy, and routing. The
+standalone timeline domain owns five-lens claim validation. The HTML renderer owns
+the default four-column `时间 | 信息类型 | 报告 | 观点列表` reading table, while
+the Markdown renderer mirrors reviewed ledger state as the portable audit sidecar.
 
 Report writing is now port-backed while the current renderer is still the implementation:
 
@@ -299,16 +313,21 @@ research project files
   -> domain.report_view_model
   -> CanonicalHtmlReportRenderer
   -> report_sections section registry
-  -> locked professional_report.md
+  -> locked professional_report.html + professional_report.md audit sidecar
 ```
 
-Industry-chain S-curve projects add an explicit parent/child artifact boundary:
+Provider originals are stored once at repository level:
 
 ```text
+source/ima/
+  archive_manifest.jsonl
+  archive_events.jsonl
+  YYYY/MM/DD/<original-title>.pdf
+
 <industry_project>/
   project.json                         # project_scope=industry_chain
-  professional_report.md              # canonical chain map + BOM navigation + aggregate targets
-  professional_report.html            # optional compatibility view
+  professional_report.html            # default chain map + BOM navigation + aggregate targets
+  professional_report.md              # portable audit sidecar
   qa_tree.json / workbench / sources
   material_intake/
     documents.jsonl                    # classified search/IMA discoveries
@@ -322,14 +341,13 @@ Industry-chain S-curve projects add an explicit parent/child artifact boundary:
     <node_id>/
       project.json                     # project_scope=bom_node
       sources.jsonl                    # node-filtered evidence index
-      source/ima/YYYY/MM/DD/            # this BOM's canonical originals
       material_intake/                  # this BOM's discovery and audit ledgers
       inbox/
         materials.jsonl                # routed, not-yet-evidence documents
         parse_tasks.jsonl              # BOM x question x source work queue
       research_run.json                # optional until independently completed
-      professional_report.md           # canonical: exactly one BOM and its six questions
-      professional_report.html         # optional compatibility view
+      professional_report.html         # default: exactly one BOM and its six questions
+      professional_report.md           # portable audit sidecar
 ```
 
 An explicitly isolated BOM uses the same self-contained boundary without an
@@ -338,19 +356,29 @@ industry parent:
 ```text
 research/bom/<bom_project_id>/
   project.json
-  professional_report.md
+  professional_report.html
+  professional_report.md              # audit sidecar
   timeline_profile.json
   sources.jsonl
-  source/ima/YYYY/MM/DD/
+  source/ima/YYYY/MM/DD/<selected-original-title>.pdf
+  source/manual/
   material_intake/                     # metadata and audit only
   inbox/
   ledger/
 ```
 
-`source/` is the only canonical original-material store. `material_intake/raw/`
-is legacy and must be migrated away. This makes a BOM project portable: moving or
-archiving its directory preserves the report, source links, claims, conclusions,
-pending work, and ingestion audit without reaching into a sibling or parent.
+Repository `source/ima/` is the complete canonical IMA provider mirror. Each BOM
+owns an immutable curated copy of only its selected reports under
+`source/ima/<published_at>/`, while `source/manual/` owns manually imported
+originals. `material_intake/raw/` is legacy and forbidden. BOM projects preserve
+research state independently and use project-relative links, never a sibling or
+parent project's files.
+
+The ledger stores those links relative to its BOM project. The HTML adapter
+preserves project-relative `source/...` links so local browser navigation stays
+inside the self-contained BOM directory and uses current-tab navigation for local
+PDFs. The Markdown adapter resolves the same path to an absolute local filesystem
+link for desktop Markdown clients.
 
 `domain.bom_project_layout` owns safe node IDs, canonical relative paths, and parent/child identity rules. The application use cases build and validate the manifest through ports; the filesystem adapter only reads or writes those paths. A renderer receives either `industry-index` or `bom-node` scope. It does not decide project boundaries.
 
@@ -395,7 +423,7 @@ The compact public default is exactly `当前研究的问题 -> 行业概况 -> 
 | material-intake validation | `domain/material_intake.validate_material_intake_bundle` + `ValidateMaterialIntake` + filesystem validation repository | Enforces classification, BOM routing, source/task linkage, six-question coordinates, metadata consistency, and cutoff quarantine before unparsed material can move toward the claim ledger. |
 | BOM semantic completion and target gates | `domain/bom_research_readiness.py` + `domain/target_scoring.py` | Search status alone is never completion. Per-source parsing, strengthening evidence, Q6 refutation, valuation, and canonical BOM mapping control score confidence and action-state caps. |
 | report assembly | `domain/report_view_model.py` + `application/use_cases/build_report_view_model.py` | Report renderers should consume a stable ViewModel instead of reading project files directly. |
-| canonical Markdown rendering | `ports/renderers.py` + `adapters/outbound/canonical_markdown_report_renderer.py` | Public structure changes stay in the Markdown adapter and report contract tests; HTML adapters are compatibility-only. |
+| canonical report rendering | `ports/renderers.py` + HTML/Markdown outbound renderers | HTML owns the default reading experience; Markdown mirrors the same view model for audit portability. |
 | `llm.py` | `ports/llm.py` + outbound LLM adapters | Application depends on protocol, not vendor implementation. |
 | `ingest_prices.py`, `ingest_sec.py` | outbound data adapters | Market and filing data enter through ports. |
 | `cli.py` | inbound CLI adapter | Parse args, construct adapters, call use cases. Report validation, artifact validation, time-slice audit, and professional report writing now follow this path. |
@@ -417,6 +445,7 @@ Run these after each migration step:
 
 ```bash
 PYTHONPATH=src python3 -m unittest
+PYTHONPATH=src python3 -m value_invest_research validate-report-contract <project>/professional_report.html
 PYTHONPATH=src python3 -m value_invest_research validate-report-contract <project>/professional_report.md
 PYTHONPATH=src python3 -m value_invest_research validate-research-artifacts tests/fixtures/research_quality_gold --require-l3
 ```

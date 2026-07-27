@@ -1,4 +1,18 @@
 {
   "schema_version": "1.0",
-  "feeds": {}
+  "feeds": {
+    "ima:ref:39d98f2380e57fab:gpu_asic:dated-directory": {
+      "provider": "ima",
+      "feed_id": "ref:39d98f2380e57fab:gpu_asic:dated-directory",
+      "last_scan_at": "2026-07-27",
+      "last_scan_id": "SCAN-IMA-0F3BF3DEB79205FF",
+      "seen_external_ids": [
+        "pdf_19ee3075e13eb6fc6b0a6821afb4b957_9eb30c2a7ec72304ca76cab506a0cf487442602265681522",
+        "pdf_19ee3075e13eb6fc6b0a6821afb4b957_1298ad0d923b9f184f57b5ba7b8936197442602265681522",
+        "pdf_19ee3075e13eb6fc6b0a6821afb4b957_fd2e353c1b2af7ba34ee090d3655c4b37442602265681522",
+        "pdf_19ee3075e13eb6fc6b0a6821afb4b957_e0e87585bbd606fcc7a0e6071f9840ef7442602265681522",
+        "pdf_19ee3075e13eb6fc6b0a6821afb4b957_ee9d3901959510b9ce70c08b4de5cc327442602265681522"
+      ]
+    }
+  }
 }

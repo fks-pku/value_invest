@@ -161,16 +161,87 @@ def build_parser() -> argparse.ArgumentParser:
         help="Keep metadata only instead of downloading accessible original reports",
     )
 
+    archive_ima_day_parser = subparsers.add_parser(
+        "archive-ima-day",
+        help="Download every PDF from one IMA day folder into source/ima/YYYY/MM/DD",
+    )
+    archive_ima_day_parser.add_argument("--date", required=True, dest="archive_date")
+    archive_ima_day_parser.add_argument("--knowledge-base-id", default=None)
+    archive_ima_day_parser.add_argument("--knowledge-base-name", default=None)
+    archive_ima_day_parser.add_argument(
+        "--config",
+        default="config/ima_daily_archive.json",
+    )
+    archive_ima_day_parser.add_argument("--archive-root", default=None)
+    archive_ima_day_parser.add_argument("--scanned-at", default=None)
+    archive_ima_day_parser.add_argument("--root-folder-pattern", default=None)
+
+    archive_ima_daily_parser = subparsers.add_parser(
+        "archive-ima-daily",
+        help="Run one daily IMA archive job with idempotent recent-day retries",
+    )
+    archive_ima_daily_parser.add_argument("--end-date", default=None)
+    archive_ima_daily_parser.add_argument("--lookback-days", type=int, default=None)
+    archive_ima_daily_parser.add_argument("--knowledge-base-id", default=None)
+    archive_ima_daily_parser.add_argument("--knowledge-base-name", default=None)
+    archive_ima_daily_parser.add_argument(
+        "--config",
+        default="config/ima_daily_archive.json",
+    )
+    archive_ima_daily_parser.add_argument("--archive-root", default=None)
+    archive_ima_daily_parser.add_argument("--scanned-at", default=None)
+    archive_ima_daily_parser.add_argument("--root-folder-pattern", default=None)
+
+    validate_ima_archive_parser = subparsers.add_parser(
+        "validate-ima-archive",
+        help="Validate central IMA archive manifests, paths, hashes, and counts",
+    )
+    validate_ima_archive_parser.add_argument(
+        "--config",
+        default="config/ima_daily_archive.json",
+    )
+    validate_ima_archive_parser.add_argument("--archive-root", default=None)
+
+    route_ima_archive_parser = subparsers.add_parser(
+        "route-ima-archive-to-bom",
+        help=(
+            "Screen one central IMA archive day, copy relevant originals into "
+            "a BOM project, and queue question-specific parsing"
+        ),
+    )
+    route_ima_archive_parser.add_argument("project_dir")
+    route_ima_archive_parser.add_argument(
+        "--date",
+        required=True,
+        dest="archive_date",
+    )
+    route_ima_archive_parser.add_argument(
+        "--archive-root",
+        default="source/ima",
+    )
+    route_ima_archive_parser.add_argument("--discovered-at", default=None)
+    route_ima_archive_parser.add_argument(
+        "--reset",
+        action="store_true",
+        help="Clear existing project materials, ledgers, conclusions, and report first",
+    )
+
     refresh_standalone_parser = subparsers.add_parser(
         "refresh-standalone-bom-report",
-        help="Rebuild a five-lens standalone BOM Markdown report from its timeline ledger",
+        help=(
+            "Rebuild a five-lens standalone BOM HTML report and Markdown audit "
+            "sidecar from its timeline ledger"
+        ),
     )
     refresh_standalone_parser.add_argument("project_dir")
     refresh_standalone_parser.add_argument("--as-of-date", default=None)
 
     apply_standalone_parser = subparsers.add_parser(
         "apply-standalone-bom-updates",
-        help="Validate reviewed claim/conclusion JSONL and rebuild the standalone BOM report",
+        help=(
+            "Validate reviewed claim/conclusion JSONL and rebuild the standalone "
+            "BOM HTML report plus Markdown audit sidecar"
+        ),
     )
     apply_standalone_parser.add_argument("project_dir")
     apply_standalone_parser.add_argument("--claims", required=True)
@@ -784,6 +855,14 @@ def main(argv: list[str] | None = None) -> int:
             return run_search_bom_materials_cmd(root, args)
         if args.command == "scan-ima-materials":
             return run_scan_ima_materials_cmd(root, args)
+        if args.command == "archive-ima-day":
+            return run_archive_ima_day_cmd(root, args)
+        if args.command == "archive-ima-daily":
+            return run_archive_ima_daily_cmd(root, args)
+        if args.command == "validate-ima-archive":
+            return run_validate_ima_archive_cmd(root, args)
+        if args.command == "route-ima-archive-to-bom":
+            return run_route_ima_archive_to_bom_cmd(root, args)
         if args.command == "refresh-standalone-bom-report":
             return run_refresh_standalone_bom_report_cmd(root, args)
         if args.command == "apply-standalone-bom-updates":
@@ -1261,6 +1340,254 @@ def run_scan_ima_materials_cmd(root: Path, args) -> int:
     return 0
 
 
+def run_archive_ima_day_cmd(root: Path, args) -> int:
+    from value_invest_research.adapters.outbound.filesystem_ima_archive import (
+        FileSystemImaArchiveRepository,
+    )
+    from value_invest_research.adapters.outbound.ima_knowledge_base_feed import (
+        ImaKnowledgeBaseFeed,
+    )
+    from value_invest_research.application.use_cases.archive_ima_daily import (
+        archive_ima_day,
+    )
+
+    config_path = _resolve_cli_path(root, args.config)
+    config = json.loads(config_path.read_text(encoding="utf-8"))
+    feed_config = config.get("ima") or config
+    feed = ImaKnowledgeBaseFeed()
+    knowledge_base_id = (
+        args.knowledge_base_id
+        or os.environ.get("IMA_KNOWLEDGE_BASE_ID", "")
+    ).strip()
+    if not knowledge_base_id:
+        knowledge_base_name = str(
+            args.knowledge_base_name
+            or feed_config.get("knowledge_base_name")
+            or ""
+        ).strip()
+        if not knowledge_base_name:
+            raise ValueError(
+                "IMA archive requires --knowledge-base-id, "
+                "IMA_KNOWLEDGE_BASE_ID, or --knowledge-base-name"
+            )
+        knowledge_base_id = feed.resolve_knowledge_base_id(knowledge_base_name)
+    archive_root = _resolve_cli_path(
+        root,
+        str(
+            args.archive_root
+            or feed_config.get("archive_root")
+            or "source/ima"
+        ),
+    )
+    result = archive_ima_day(
+        feed=feed,
+        repository=FileSystemImaArchiveRepository(
+            workspace_root=root,
+            archive_root=archive_root,
+        ),
+        knowledge_base_id=knowledge_base_id,
+        archive_date=args.archive_date,
+        scanned_at=args.scanned_at,
+        root_folder_pattern=str(
+            args.root_folder_pattern
+            or feed_config.get("root_folder_pattern")
+            or r"^\d{4}年国际顶级投行研报$"
+        ),
+    )
+    event = result["scan_event"]
+    print(json.dumps(event, ensure_ascii=False))
+    return 0 if event["status"] == "complete" else 2
+
+
+def run_archive_ima_daily_cmd(root: Path, args) -> int:
+    from value_invest_research.adapters.outbound.filesystem_ima_archive import (
+        FileSystemImaArchiveRepository,
+    )
+    from value_invest_research.adapters.outbound.ima_knowledge_base_feed import (
+        ImaKnowledgeBaseFeed,
+    )
+    from value_invest_research.application.use_cases.archive_ima_daily import (
+        archive_ima_day,
+    )
+
+    config_path = _resolve_cli_path(root, args.config)
+    config = json.loads(config_path.read_text(encoding="utf-8"))
+    feed_config = config.get("ima") or config
+    schedule = feed_config.get("schedule") or {}
+    lookback_days = int(
+        args.lookback_days
+        or schedule.get("retry_lookback_days")
+        or 3
+    )
+    if lookback_days < 1:
+        raise ValueError("lookback_days must be positive")
+    end_date = date.fromisoformat(
+        args.end_date
+        or (date.today() - timedelta(days=1)).isoformat()
+    )
+    feed = ImaKnowledgeBaseFeed()
+    knowledge_base_id = (
+        args.knowledge_base_id
+        or os.environ.get("IMA_KNOWLEDGE_BASE_ID", "")
+    ).strip()
+    if not knowledge_base_id:
+        knowledge_base_name = str(
+            args.knowledge_base_name
+            or feed_config.get("knowledge_base_name")
+            or ""
+        ).strip()
+        if not knowledge_base_name:
+            raise ValueError(
+                "IMA archive requires --knowledge-base-id, "
+                "IMA_KNOWLEDGE_BASE_ID, or --knowledge-base-name"
+            )
+        knowledge_base_id = feed.resolve_knowledge_base_id(knowledge_base_name)
+    repository = FileSystemImaArchiveRepository(
+        workspace_root=root,
+        archive_root=_resolve_cli_path(
+            root,
+            str(
+                args.archive_root
+                or feed_config.get("archive_root")
+                or "source/ima"
+            ),
+        ),
+    )
+    results = []
+    for days_before in range(lookback_days - 1, -1, -1):
+        archive_date = (end_date - timedelta(days=days_before)).isoformat()
+        results.append(
+            archive_ima_day(
+                feed=feed,
+                repository=repository,
+                knowledge_base_id=knowledge_base_id,
+                archive_date=archive_date,
+                scanned_at=args.scanned_at,
+                root_folder_pattern=str(
+                    args.root_folder_pattern
+                    or feed_config.get("root_folder_pattern")
+                    or r"^\d{4}年国际顶级投行研报$"
+                ),
+            )["scan_event"]
+        )
+    summary = {
+        "status": (
+            "complete"
+            if all(row["status"] == "complete" for row in results)
+            else "partial"
+        ),
+        "start_date": results[0]["archive_date"],
+        "end_date": results[-1]["archive_date"],
+        "days": results,
+        "candidate_count": sum(row["candidate_count"] for row in results),
+        "available_count": sum(row["available_count"] for row in results),
+        "downloaded_count": sum(row["downloaded_count"] for row in results),
+        "reused_count": sum(row["reused_count"] for row in results),
+        "unavailable_count": sum(row["unavailable_count"] for row in results),
+    }
+    print(json.dumps(summary, ensure_ascii=False))
+    return 0 if summary["status"] == "complete" else 2
+
+
+def run_validate_ima_archive_cmd(root: Path, args) -> int:
+    from value_invest_research.adapters.outbound.filesystem_ima_archive import (
+        FileSystemImaArchiveRepository,
+    )
+    from value_invest_research.application.use_cases.validate_ima_archive import (
+        validate_ima_archive,
+    )
+
+    config_path = _resolve_cli_path(root, args.config)
+    config = json.loads(config_path.read_text(encoding="utf-8"))
+    feed_config = config.get("ima") or config
+    archive_root = _resolve_cli_path(
+        root,
+        str(
+            args.archive_root
+            or feed_config.get("archive_root")
+            or "source/ima"
+        ),
+    )
+    result = validate_ima_archive(
+        repository=FileSystemImaArchiveRepository(
+            workspace_root=root,
+            archive_root=archive_root,
+        )
+    )
+    print(json.dumps(result, ensure_ascii=False))
+    return 0 if result["ok"] else 1
+
+
+def run_route_ima_archive_to_bom_cmd(root: Path, args) -> int:
+    from value_invest_research.adapters.outbound.filesystem_material_intake import (
+        FileSystemMaterialIntakeRepository,
+    )
+    from value_invest_research.adapters.outbound.ima_archive_material_feed import (
+        ImaArchiveMaterialFeed,
+    )
+    from value_invest_research.adapters.outbound.pdf_publication_date_extractor import (
+        PdfPublicationDateExtractor,
+    )
+    from value_invest_research.application.use_cases.ingest_materials import (
+        scan_knowledge_base_directory_materials,
+    )
+
+    project_dir = _resolve_cli_path(root, args.project_dir)
+    context = _load_material_project_context(project_dir)
+    if len(context["known_bom_node_ids"]) != 1:
+        raise ValueError(
+            "Central IMA archive routing currently requires exactly one BOM project"
+        )
+    node_id = context["known_bom_node_ids"][0]
+    repository = FileSystemMaterialIntakeRepository(project_dir)
+    reset_result = repository.reset_research_state() if args.reset else {}
+    result = scan_knowledge_base_directory_materials(
+        feed=ImaArchiveMaterialFeed(
+            workspace_root=root,
+            archive_root=_resolve_cli_path(root, args.archive_root),
+        ),
+        repository=repository,
+        knowledge_base_id="central-ima-archive",
+        bom_node_id=node_id,
+        relevance_profile=context["relevance_profiles_by_node"].get(node_id, {}),
+        known_bom_node_ids=context["known_bom_node_ids"],
+        mode=context["mode"],
+        as_of_date=context["as_of_date"],
+        start_date=args.archive_date,
+        end_date=args.archive_date,
+        discovered_at=args.discovered_at,
+        question_ids_by_node=context["question_ids_by_node"],
+        question_labels_by_node=context["question_labels_by_node"],
+        fetch_originals=True,
+        publication_date_extractor=PdfPublicationDateExtractor(),
+    )
+    content_results = result.get("content_results") or []
+    summary = {
+        "project_dir": str(project_dir),
+        "bom_node_id": node_id,
+        "archive_date": args.archive_date,
+        "reset": reset_result,
+        "candidate_count": result["directory_scan"]["candidate_count"],
+        "relevant_count": result["directory_scan"]["relevant_count"],
+        "needs_review_count": result["directory_scan"]["needs_review_count"],
+        "not_relevant_count": result["directory_scan"]["not_relevant_count"],
+        "new_documents": result["new_documents"],
+        "parse_tasks": result["parse_tasks"],
+        "copied_originals": sum(
+            row.get("status") == "available" for row in content_results
+        ),
+        "copy_failures": sum(
+            row.get("status") != "available" for row in content_results
+        ),
+        "verified_publication_dates": sum(
+            row.get("publication_date_status") == "verified"
+            for row in content_results
+        ),
+    }
+    print(json.dumps(summary, ensure_ascii=False))
+    return 0 if summary["copy_failures"] == 0 else 2
+
+
 def run_scan_active_ima_materials_cmd(root: Path, args) -> int:
     from value_invest_research.adapters.outbound.filesystem_material_intake import (
         FileSystemMaterialIntakeRepository,
@@ -1404,6 +1731,9 @@ def run_refresh_standalone_bom_report_cmd(root: Path, args) -> int:
     from value_invest_research.adapters.outbound.filesystem_standalone_bom_timeline import (
         FileSystemStandaloneBomTimelineRepository,
     )
+    from value_invest_research.adapters.outbound.standalone_bom_html_renderer import (
+        StandaloneBomHtmlRenderer,
+    )
     from value_invest_research.adapters.outbound.standalone_bom_markdown_renderer import (
         StandaloneBomMarkdownRenderer,
     )
@@ -1414,7 +1744,8 @@ def run_refresh_standalone_bom_report_cmd(root: Path, args) -> int:
     project_dir = _resolve_cli_path(root, args.project_dir)
     result = refresh_standalone_bom_report(
         repository=FileSystemStandaloneBomTimelineRepository(project_dir),
-        renderer=StandaloneBomMarkdownRenderer(),
+        renderer=StandaloneBomMarkdownRenderer(project_dir=project_dir),
+        html_renderer=StandaloneBomHtmlRenderer(project_dir=project_dir),
         as_of_date=args.as_of_date,
     )
     print(
@@ -1430,6 +1761,9 @@ def run_apply_standalone_bom_updates_cmd(root: Path, args) -> int:
     from value_invest_research.adapters.outbound.filesystem_standalone_bom_timeline import (
         FileSystemStandaloneBomTimelineRepository,
     )
+    from value_invest_research.adapters.outbound.standalone_bom_html_renderer import (
+        StandaloneBomHtmlRenderer,
+    )
     from value_invest_research.adapters.outbound.standalone_bom_markdown_renderer import (
         StandaloneBomMarkdownRenderer,
     )
@@ -1442,7 +1776,8 @@ def run_apply_standalone_bom_updates_cmd(root: Path, args) -> int:
     conclusions = _read_jsonl(_resolve_cli_path(root, args.conclusions))
     result = apply_standalone_bom_updates(
         repository=FileSystemStandaloneBomTimelineRepository(project_dir),
-        renderer=StandaloneBomMarkdownRenderer(),
+        renderer=StandaloneBomMarkdownRenderer(project_dir=project_dir),
+        html_renderer=StandaloneBomHtmlRenderer(project_dir=project_dir),
         raw_claims=claims,
         raw_conclusions=conclusions,
         as_of_date=args.as_of_date,
@@ -1451,7 +1786,9 @@ def run_apply_standalone_bom_updates_cmd(root: Path, args) -> int:
         "Standalone BOM updates applied: "
         f"path={result['report_path']}, "
         f"claims={result['applied_claims']}, "
-        f"conclusions={result['applied_conclusions']}"
+        f"conclusions={result['applied_conclusions']}, "
+        f"finalized_parse_tasks={result['finalized_parse_tasks']}, "
+        f"finalized_documents={result['finalized_documents']}"
     )
     return 0
 

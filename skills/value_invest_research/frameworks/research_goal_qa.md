@@ -154,25 +154,34 @@ Every material has:
 - `ingestion_channel`: `question_search`, `knowledge_base_scan`, or `manual_import`;
 - provider identity, external ID, content hash, publication/discovery time, matched BOMs, mapping status, and cutoff usage.
 
-`question_search` starts from one `BOM x question` gap and queues parsing only for
-that question. `knowledge_base_scan` first enumerates the approved database's
-year/month/day folders, records every PDF candidate, judges relevance against each
-canonical BOM profile, downloads only approved matches to the BOM project's dated
-`source/ima/` tree, and queues one parse task for every potentially relevant
-question. One document may route to several BOMs.
+Before either evidence loop, `ima_daily_archive` enumerates the approved IMA
+year/month/day folder with pagination and downloads every PDF into repository
+`source/ima/<directory_date>/`. It preserves an archive manifest but creates no
+claims. `question_search` starts from one `BOM x question` gap and queues parsing
+only for that question. `knowledge_base_scan` reads the central archive manifest,
+judges relevance against each canonical BOM profile, verifies `published_at`, copies
+the selected original into that BOM's `source/ima/<published_at>/`, and queues one
+parse task for every potentially relevant question. One document may route to
+several BOMs. Evidence ledgers retain portable project-relative paths. Public local
+HTML keeps the relative `source/...` path so a neighboring PDF opens from a
+`file://` report and navigates in the current tab, while Markdown resolves it to
+an absolute filesystem link.
 
 The same intake contract also serves `standalone-bom`. In that scope, the stable
 coordinates are the five professional lenses rather than the six S-curve questions.
-Daily database scanning therefore resolves coordinates from `project.json`; it must
-not assume six questions. Each relevant document is fetched once, but parsed
+Downstream database routing therefore resolves coordinates from `project.json`; it
+must not assume six questions. Each relevant document is archived once, but parsed
 separately against every potentially affected lens. Only non-empty, GPT-reviewed
-lens claims enter the reverse-chronological public timeline.
+lens claims enter the reverse-chronological public timeline. HTML renders one
+four-column table per lens with `时间 | 信息类型 | 报告 | 观点列表`; one source
+occupies one row and keeps all locator-backed atomic claims as
+`• 观点 N（原文位置）：原子观点` bullets in the final cell.
 
-Each standalone BOM is physically self-contained at
-`research/bom/<bom_project_id>/`. Its report, originals, source index,
-inbox, temporal ledger, and intake audit stay together. For an industry-chain
-project, the same boundary begins at `boms/<node_id>/`. No BOM may depend on a
-sibling's `source/` directory or a parent-level shared PDF pool.
+Each standalone BOM keeps its report, source index, selected IMA originals, inbox,
+temporal ledger, and intake audit at `research/bom/<bom_project_id>/`. Repository
+`source/ima/` remains the complete provider mirror; project copies are intentionally
+limited to relevant, date-verified reports so a BOM never depends on sibling or
+parent project directories.
 
 Choose concrete fields, not baskets. Example: `Microsoft commercial RPO ($B)` is valid; `cloud budget proxy` is not.
 
@@ -283,15 +292,15 @@ For industry/theme/S-curve work, rendering uses this artifact topology:
 ```text
 <industry_project>/
   project.json
-  professional_report.md            # canonical industry-index
-  professional_report.html          # optional compatibility view
+  professional_report.html          # default public industry-index
+  professional_report.md            # portable audit sidecar
   boms/manifest.json
   boms/<node_id>/
     project.json
     sources.jsonl
     research_run.json               # optional until the node is independently completed
-    professional_report.md          # canonical: exactly one BOM and its six questions
-    professional_report.html        # optional compatibility view
+    professional_report.html        # default public BOM report
+    professional_report.md          # portable audit sidecar
 ```
 
 The parent report owns the chain map, BOM navigation, and aggregated targets. It does not duplicate child question content. A BOM child can be searched, parsed, scored, regenerated, and validated without regenerating the research content of sibling nodes. The manifest and canonical BOM registry must have exact ordered node-ID coverage.

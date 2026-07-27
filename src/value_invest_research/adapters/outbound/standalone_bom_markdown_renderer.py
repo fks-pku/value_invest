@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from pathlib import Path
 from typing import Any
 
 
@@ -16,6 +17,9 @@ MATERIAL_LABELS = {
 
 class StandaloneBomMarkdownRenderer:
     """Render one five-lens BOM timeline without exposing process artifacts."""
+
+    def __init__(self, project_dir: Path | None = None):
+        self.project_dir = project_dir.resolve() if project_dir else None
 
     def render(self, view: dict[str, Any]) -> str:
         lines = [
@@ -51,7 +55,7 @@ class StandaloneBomMarkdownRenderer:
             claims = lens.get("claims") or []
             if claims:
                 lines.extend(
-                    _source_claim_row(group)
+                    _source_claim_row(group, project_dir=self.project_dir)
                     for group in _group_claims_by_source(claims)
                 )
             else:
@@ -73,26 +77,32 @@ class StandaloneBomMarkdownRenderer:
         return "\n".join(lines).rstrip() + "\n"
 
 
-def _source_claim_row(group: dict[str, Any]) -> str:
+def _source_claim_row(
+    group: dict[str, Any],
+    *,
+    project_dir: Path | None,
+) -> str:
     title = _escape_cell(
         str(group.get("source_title") or group.get("source_id") or "来源")
     )
     url = str(group.get("source_url") or "").strip()
-    source = f"[{title}]({url})" if url else title
+    url = _rendered_source_url(url, project_dir=project_dir)
+    source = f"[{title}]({_markdown_link_target(url)})" if url else title
     viewpoints = []
-    for claim in group.get("claims") or []:
+    for index, claim in enumerate(group.get("claims") or [], start=1):
         location = _escape_cell(
             str(claim.get("source_location") or "").strip()
         )
         statement = _escape_cell(str(claim.get("statement") or ""))
-        viewpoints.append(
-            f"<li>{location + '：' if location else ''}{statement}</li>"
-        )
+        label = f"观点 {index}"
+        if location:
+            label += f"（{location}）"
+        viewpoints.append(f"• **{label}**：{statement}")
     return (
         f"| {_escape_cell(str(group.get('published_at') or ''))} "
         f"| {MATERIAL_LABELS.get(str(group.get('material_class') or ''), '其他')} "
         f"| {source} "
-        f"| <ul>{''.join(viewpoints)}</ul> |"
+        f"| {'<br>'.join(viewpoints)} |"
     )
 
 
@@ -119,3 +129,17 @@ def _group_claims_by_source(
 
 def _escape_cell(value: str) -> str:
     return " ".join(value.replace("|", "\\|").splitlines()).strip()
+
+
+def _rendered_source_url(url: str, *, project_dir: Path | None) -> str:
+    if not url or project_dir is None:
+        return url
+    if url.startswith(("http://", "https://", "/")):
+        return url
+    return str((project_dir / url).resolve())
+
+
+def _markdown_link_target(url: str) -> str:
+    if url.startswith("/"):
+        return f"<{url}>"
+    return url

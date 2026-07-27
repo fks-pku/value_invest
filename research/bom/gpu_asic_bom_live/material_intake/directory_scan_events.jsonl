@@ -1,0 +1,1 @@
+{"scan_id": "DIRSCAN-IMA-27679351C34672F3", "provider": "ima", "feed_id": "ref:39d98f2380e57fab:gpu_asic:dated-directory", "ingestion_channel": "knowledge_base_scan", "discovery_mode": "dated_directory", "scanned_at": "2026-07-27", "start_date": "2026-07-26", "end_date": "2026-07-26", "candidate_count": 34, "relevant_count": 5, "needs_review_count": 0, "not_relevant_count": 29}

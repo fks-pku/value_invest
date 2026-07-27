@@ -1,12 +1,12 @@
 ---
 report_scope: standalone-bom
 bom_node_id: gpu_asic
-as_of_date: 2026-07-24
+as_of_date: 2026-07-26
 ---
 
 # GPU / ASIC BOM 实时跟踪
 
-> 研究截面：2026-07-24。时间线按材料发布时间由近及远；同一材料只有经过当前问题的独立解析和复核后，才进入该问题。
+> 研究截面：2026-07-26。时间线按材料发布时间由近及远；同一材料只有经过当前问题的独立解析和复核后，才进入该问题。
 
 ## 1. 需求侧
 
@@ -18,23 +18,17 @@ as_of_date: 2026-07-24
 
 | 时间 | 信息类型 | Source | 观点列表 |
 |---|---|---|---|
-| 2026-03-05 | 官方财报 | [Broadcom FY2026 Q1 业绩](https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-first-quarter-fiscal-year-2026-financial) | <ul><li>新闻稿开头财务摘要及 CEO 引述：Q1 AI 收入为 84 亿美元，同比增长 106%，高于公司原预测；Q2 AI 半导体收入指引约 107 亿美元。定制 ASIC 和 AI 网络收入仍在加速，说明需求已从 NVIDIA 单一路线扩展到云厂商定制芯片。</li></ul> |
-| 2026-02-26 | 官方财报 | [Dell FY2026 Q4 业绩](https://investors.delltechnologies.com/news-releases/news-release-details/dell-technologies-delivers-fourth-quarter-and-full-year-fiscal-3) | <ul><li>`AI-optimized servers` 订单、出货和 FY2027 指引段落：FY2026 AI 优化服务器订单超过 640 亿美元、出货超过 250 亿美元，期末 backlog 为 430 亿美元；FY2027 AI 服务器收入指引约 500 亿美元，同比增长 103%。这把芯片需求进一步验证为系统订单和未来交付。</li></ul> |
-| 2026-02-25 | 官方财报 | [NVIDIA FY2026 Q4 业绩](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Fourth-Quarter-and-Fiscal-2026/) | <ul><li>`Q4 and Fiscal 2026 Summary`、`Outlook`、`Data Center`：Q4 总收入 681 亿美元，同比增长 73%；数据中心收入 623 亿美元，同比增长 75%；FY2026 数据中心收入 1,937 亿美元，同比增长 68%。Q1 FY2027 总收入指引 780 亿美元，且未计入中国数据中心计算收入，显示主需求仍可支撑环比增长。</li></ul> |
-| 2026-02-05 | 官方财报 | [Amazon 2025 Q4 业绩](https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/default.aspx) | <ul><li>管理层关于 AWS、芯片业务与 2026 资本开支的说明：AWS Q4 销售额增至 356 亿美元；管理层称自研芯片业务同比三位数增长，并预计 2026 年全公司资本开支约 2,000 亿美元，主要投向 AI、芯片、机器人和卫星。GPU 与 ASIC 两条采购路线都获得客户预算支持。</li></ul> |
-| 2026-02-04 | 官方财报 | [Alphabet 2025 Q4 业绩](https://s206.q4cdn.com/479360582/files/doc_news/2026/Feb/04/attachments/2025q4-alphabet-earnings-release.pdf) | <ul><li>第 2 页财务摘要及 `Capital expenditures`；[业绩电话会](https://abc.xyz/investor/events/event-details/2026/2025-Q4-Earnings-Call-2026-Dr_C033hS6/default.aspx)，Cloud backlog 与 Gemini 使用量段落：Google Cloud Q4 收入 177 亿美元，同比增长 48%，Cloud 年化收入超过 700 亿美元；Cloud backlog 达 2,400 亿美元，环比增长 55%。公司预计 2026 年资本开支 1,750 亿至 1,850 亿美元，用于满足客户需求。</li></ul> |
-| 2026-01-28 | 官方财报 | [Microsoft FY2026 Q2 业绩](https://www.microsoft.com/en-us/investor/earnings/fy-2026-q2/press-release-webcast) | <ul><li>`Performance` 与 segment highlights；[电话会](https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q2.aspx)，CFO 关于 capex 的说明：Microsoft Cloud 收入 515 亿美元，同比增长 26%；商业 RPO 增长 110% 至 6,250 亿美元，Azure 收入增长 39%。当季资本开支 375 亿美元，其中约三分之二用于 GPU、CPU 等短期资产，管理层仍称客户需求超过供给。</li></ul> |
-| 2026-01-15 | 官方公司 | [TSMC 2025 Q4 电话会记录](https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2026-01/51d09df96cd89ac19d65af39032b038dc2896a24/TSMC%204Q25%20Transcript.pdf) | <ul><li>第 4-5 页 `AI demand and long-term outlook`：AI 加速器相关收入已占 2025 年收入的高十几百分比；TSMC 预计 2024-2029 年该口径收入复合增速为中高 50%，并称已向客户及其客户核验长期算力需求。该口径与终端芯片市场规模不同，但支持先进制造需求继续高速增长。</li></ul> |
-| 2025-08-28 | 第三方权威 | [Omdia AI 数据中心芯片预测](https://omdia.tech.informa.com/pr/2025/aug/ai-data-center-chip-market-to-hit-286bn-growth-likely-peaking-as-custom-asics-gain-ground) | <ul><li>市场规模预测及 vendor mix 段落：Omdia 估计 AI 数据中心芯片支出从 2024 年约 1,230 亿美元增至 2025 年约 2,070 亿美元，但到 2030 年仅约 2,860 亿美元，同时定制 ASIC 份额上升。按该口径，2025-2030 年隐含复合增速约 6.7%，是对“长期仍维持当前爆发速度”的重要反证。</li></ul> |
-| 2023-08-23 | 官方财报 | [NVIDIA FY2024 Q2 业绩](https://investor.nvidia.com/news/press-release-details/2023/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2024/) | <ul><li>`Data Center`：数据中心季度收入首次跃升至 103.2 亿美元，环比增长 141%、同比增长 171%。这是生成式 AI 需求从叙事进入 GPU 厂商财务报表的早期拐点，可与 2026 年的 623 亿美元季度规模形成同公司、同分部的历史对照。</li></ul> |
+| 2026-07-24 | 研报 | [德银-Meta：宏大野心需匹配宏大体量](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf>) | • **观点 1（第5页，Business agents）**：Meta 各消息平台中，用户与商业 AI 的对话约为每周 1,000 万次，较年初增长约十倍；德银把这视为 2027 年可能通过订阅和按量收费变现的应用需求。该指标证明工作负载在增长，但尚未直接披露其对应 GPU/ASIC 用量。<br>• **观点 2（第2页，Capex remains a key debate）**：Meta 2026 年资本开支指引为 1,250 亿至 1,450 亿美元；德银称市场已把 2027 年约 14GW 容量对应的资本开支预期推至 2,000 亿美元低至中段，并给出 2027 年约 2,100 亿至 2,150 亿美元、2028 年约 2,650 亿美元的估计。这是大型客户继续扩大 AI 算力采购的直接预算信号，但后两项属于分析师估计。 |
+| 2026-07-24 | 研报 | [摩根大通：PC 与服务器传导分析](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-PC与服务器：英特尔2026年二季度财报及AMD“Advancing AI 2026”大会传导分析-260724.pdf>) | • **观点 1（第1页，AI-driven general server demand strength）**：Intel DCAI 收入在 2026 年第二季度环比增长 24%、同比增长 59%，由云服务商和企业服务器需求及供给改善驱动；管理层预计 2026 年服务器 CPU 需求保持双位数增长，并延续到 2027-2028 年。它是 AI 基础设施扩张的邻近验证，不等同于 GPU/ASIC 自身收入。 |
+| 2026-07-24 | 研报 | [摩根大通：AMD AAI26 大会纪要](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf>) | • **观点 1（第1、3页，MI450/Helios ramp）**：MI450 GPU 与 Helios 机架系统计划于 2026 年 9 月开始交付，2026 年第四季度和 2027 年上半年加速爬坡；报告称 Anthropic、OpenAI、Meta 等客户已有数 GW 部署排至 2027 年。订单计划提供了可见性，但实际收入仍取决于系统交付和客户数据中心按期完工。<br>• **观点 2（第1-2页，AI Accelerator TAM）**：AMD 将 2030 年 AI 加速器 TAM 上调至约 1.4 万亿美元，相对 2025 年约 2,000 亿美元隐含超过 45% 的五年复合增速；摩根大通判断增长将由训练扩展到推理和 agent 工作负载。该数字是公司口径与投行解释，不是已兑现收入。 |
+| 2026-07-24 | 研报 | [摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | • **观点 1（第1页，Key Takeaways）**：摩根士丹利称 Helios 在关键客户处的采用进展顺利，客户证言显示 2027 年将强劲爬坡，并把 coding agent 视为 AMD GPU 生态采用的明确加速器；但该报告同时认为 AMD 本代产品仍未取得领导地位。 |
+| 2026-07-24 | 研报 | [巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | • **观点 1（第2、4-5页，External TPU sales framework）**：巴克莱根据 Broadcom/Blackstone/Apollo 的 20GW AI XPV 计划与 Google-Blackstone 合资项目，估计外部 TPU 容量可由 2026 年 1.4GW 增至 2028 年 11.5GW，对应约 100 万颗、203 万颗和 474 万颗 TPU。它说明定制 ASIC 正从云厂内部自用扩展到外部客户，但数量是投行模型而非公司正式指引。<br>• **观点 2（第6页，What's Already Been Announced）**：巴克莱依据已披露数据中心供应商项目估算，2026 年第二季度 Google 外部 TPU 收入 backlog 约 880 亿美元，长期累计潜在收入超过 3,000 亿美元；该估计只覆盖首批已识别项目，必须与实际采购承诺和交付节奏交叉验证。 |
 
 ### 最新结论与趋势
 
-截至截面日，GPU/ASIC 需求已经完成“资本开支、系统订单、芯片收入”三重验证， 不能再被视为只有远期 TAM 的主题。NVIDIA 数据中心季度收入从 2023 年中期的 103 亿美元升至 2026 年初的 623 亿美元，Dell 仍有 430 亿美元 AI 服务器 backlog，Broadcom 的 AI 收入和下一季指引又证明定制 ASIC 正在接棒扩散。
+仅看 7 月 26 日 IMA 批次，GPU/ASIC 需求仍处于扩张阶段，而且已经从单一 NVIDIA GPU 扩展为三条并行路径：大客户继续上调算力预算，AMD 以 MI450/Helios 争夺数 GW 部署，Google TPU 开始从内部自用走向外部 merchant ASIC。最强的现实锚点是 Meta 2026 年 1,250 亿至 1,450 亿美元资本开支指引、MI450 计划在 2026 年第三季度末交付，以及服务器收入和订单仍受供给限制；最激进的 1.4 万亿美元 TAM、11.5GW 外部 TPU 和 3,000 亿美元 backlog 则主要来自公司或投行模型，不能当成已兑现事实。当前判断为：需求方向强且结构性扩散，但远期规模预测明显跑在财务兑现之前。
 
-趋势上需要把“需求仍增长”和“增速永不下降”分开。TSMC 从先进制造口径看到 2024-2029 年中高 50% 的 AI 加速器收入复合增速，而 Omdia 从终端芯片支出口径 预计 2025 年后增长明显放缓。两者并不直接矛盾：前者可能包含先进节点价值量和 份额提升，后者强调终端总额基数变大。当前结论是 **需求强、仍在扩张，但市场已 从单一 GPU 爆发期进入 GPU 与定制 ASIC 并行、增速逐步分化的阶段**。
-
-**趋势变化：** 历史截面迁移为实时跟踪基线。
+**趋势变化：** 本批次新增的核心变化是 ASIC 外部商业化和 AMD 机架级交付时间表变得更具体，需求判断由“AI capex 高”推进到“客户、路线和交付窗口可识别”。
 
 ## 2. 供给侧
 
@@ -46,19 +40,17 @@ GPU/ASIC 的有效供给不是“有多少晶圆”这么简单，而是先进�
 
 | 时间 | 信息类型 | Source | 观点列表 |
 |---|---|---|---|
-| 2026-02-25 | 官方财报 | [NVIDIA FY2026 10-K](https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm) | <ul><li>Item 1A `Risks Related to Demand, Supply, and Manufacturing`：公司披露部分供应交期曾超过 12 个月；在增长期会提前下不可取消订单、支付溢价或预付款以锁定产能。长交期证明供给并非即时可得，也意味着需求回落时存在采购承诺反噬。</li><li>Item 1 `Manufacturing`：NVIDIA 采用 fabless 模式，晶圆主要依赖 TSMC 和 Samsung，内存来自 SK hynix、Micron、Samsung，使用 CoWoS 封装，并依赖鸿海、纬创、Fabrinet 等组装测试。GPU 供给实际受多个外部环节共同约束。</li><li>合并资产负债表附注与 `Commitments`：期末库存为 214 亿美元，库存采购及长期供应/产能义务为 952 亿美元。该规模说明 NVIDIA 正以资产负债表主动换取未来供给，但也把供需判断错误的成本显著放大。</li></ul> |
-| 2026-01-15 | 官方公司 | [TSMC 2025 Q4 电话会记录](https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2026-01/51d09df96cd89ac19d65af39032b038dc2896a24/TSMC%204Q25%20Transcript.pdf) | <ul><li>第 3 页 `2026 capital budget`，第 4-7 页 AI 需求与问答：TSMC 预计 2026 年资本预算 520 亿至 560 亿美元，其中 70%-80% 用于先进制程、10%-20% 用于先进封装测试等；AI 客户讨论的产能前置期已延长至 2-3 年。供给正在大幅扩张，但新增产能并非短期到位。</li></ul> |
-| 2025-12-18 | 官方财报 | [Broadcom FY2025 10-K](https://www.sec.gov/Archives/edgar/data/1730168/000173016825000121/avgo-20251102.htm) | <ul><li>Item 1 `Manufacturing` 与 Item 1A supplier risks：Broadcom 将大部分前道制造外包给 TSMC，封装测试依赖 TSMC、ASE、Foxconn、Amkor 和 SPIL；部分器件因设计与认证周期不能快速替换。定制 ASIC 的供给同样受先进制造与认证约束，并非云厂商有设计就能立即扩量。</li></ul> |
-| 2025-10-31 | 第三方权威 | [TrendForce HBM Industry Analysis 4Q25](https://www.trendforce.com/research/download/RP251029MY) | <ul><li>supplier capacity、yield、qualification 章节：TrendForce 指出 HBM 的 TSV 产能、良率、客户认证和后段产能仍限制近期供给，三家主要供应商计划在 2026 年量产 HBM4。对 GPU/ASIC 节点而言，HBM 是必须同步取得的输入，而不是可事后补配的普通元件。</li></ul> |
-| 2024-07-17 | 第三方权威 | [SemiAnalysis GB200 架构与 BOM](https://newsletter.semianalysis.com/p/gb200-hardware-architecture-and-component) | <ul><li>`Hardware Architecture` 与 `Component Supply Chain & BOM`：GB200 从单卡升级为高密度机架系统，牵涉 HBM、CoWoS、NVLink、基板、供电和液冷等协同。其意义是有效供给单位从“芯片颗数”变成“可交付并运行的系统”，任何一个组件不足都会推迟 GPU 收入确认。</li></ul> |
+| 2026-07-24 | 研报 | [摩根大通：PC 与服务器传导分析](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-PC与服务器：英特尔2026年二季度财报及AMD“Advancing AI 2026”大会传导分析-260724.pdf>) | • **观点 1（第1页，AI-driven general server demand strength）**：摩根大通把先进逻辑晶圆、硅片、内存和基板列为服务器供应链的持续约束，并预计供给改善会推动 2026 年第四季度收入进一步上行。有效供给仍由多项输入的最小值决定，而不是只看 GPU 晶圆数量。<br>• **观点 2（第2页，EMIB-T high volume ramp）**：报告称 Intel EMIB-T 当前良率约 60%，目标 2027 年进入高量产；多个 AI 加速器项目因 CoWoS 紧张而评估 EMIB-T，但预计先从小批量开始，最大项目 TPU v9 或到 2027 年末至 2028 年才量产。替代封装路线正在形成，但短期无法立刻消除瓶颈。<br>• **观点 3（第2页，Intel capex guidance）**：Intel 将 2026 年资本开支指引上调至超过 200 亿美元，并称 2027 年还会显著增长，用于洁净室扩建和锁定设备订单。供给正在响应高价和短缺，因此当前稀缺性不能外推为永久稀缺。 |
+| 2026-07-24 | 研报 | [德银-Meta：宏大野心需匹配宏大体量](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf>) | • **观点 1（第5-6页，2027 capex expectations）**：若 Meta 容量由 2026 年约 7GW 增至 2027 年 14GW，Hyperion 等合作方可能提供 1.0-1.5GW，使 Meta 直接融资的新增容量约为 5.5GW。伙伴资本可以缓解资产负担，但不能消除电力、服务器和建设交付约束。 |
+| 2026-07-24 | 研报 | [摩根大通：AMD AAI26 大会纪要](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf>) | • **观点 1（第3-4页，MI450/Helios shipping schedule）**：AMD 将 MI450/Helios 的首批交付定在 2026 年第三季度末，再于第四季度和 2027 年上半年提速；管理层称分阶段爬坡是为了给 ODM 调试制造并与客户机房建设对齐。GPU 供给的可用单位已经是按期调试完成的机架系统，而非单颗芯片。 |
+| 2026-07-24 | 研报 | [摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | • **观点 1（第1页，Compute leadership）**：Helios 已进入量产，计划 2026 年第三季度开始发货、第四季度爬坡。该进度支持 AMD 供给增加，但客户采用、ODM 调试和机房配套仍决定收入确认速度。 |
+| 2026-07-24 | 研报 | [巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | • **观点 1（第2-4页，TPU-aaS entity structure and unit economics）**：外部 TPU 由 Google 与 Broadcom 协同设计、TSMC 制造，再由 Apollo/Blackstone 融资的 SPV 购买并交给数据中心运营商管理。这个结构把芯片设计、晶圆制造、资本和机房交付绑定在一起，可扩大供给，也引入跨主体执行和融资风险。 |
 
 ### 最新结论与趋势
 
-当前 GPU/ASIC 供给仍有约束，但约束已经从最初的“拿不到先进晶圆”演化为 **先进晶圆、HBM、CoWoS、基板和整机交付的组合瓶颈**。NVIDIA 披露超过 12 个月的交期和 952 亿美元供应/产能义务，TSMC 又把客户产能讨论提前到 2-3 年， 说明真正合格的供应链仍难以即时复制。
+GPU/ASIC 有效供给仍由先进逻辑晶圆、内存、基板、先进封装和机架交付共同决定。摩根大通的供应链检查显示这些环节在 2026 年仍受限，EMIB-T 良率约 60%、高量产要到 2027 年，TPU v9 可能到 2027 年末至 2028 年才放量；AMD 也采用分阶段爬坡，以给 ODM 和客户机房留出调试时间。因此短期瓶颈仍存在。反方向上，Intel 已把 2026 年资本开支上调至 200 亿美元以上，TSMC/Intel/合作资本都在扩大供给，稀缺性不能机械外推。当前判断为：2026-2027 年约束仍有投资意义，但观察重点应从“有没有芯片”转向“整机系统能否按期交付，以及扩产是否开始快于需求”。
 
-另一方面，TSMC 以 520 亿至 560 亿美元资本开支扩张先进制程和封装，三大内存 厂也在推进 HBM4，供给不是永久固定。最重要的趋势是：**短期稀缺性仍在，但 2026 年以后要从“是否缺货”转向“扩产是否快于需求、预付承诺是否变成库存”**。 NVIDIA 214 亿美元库存和 952 亿美元承诺既是供应控制力，也是周期反转时的主要 风险暴露。
-
-**趋势变化：** 历史截面迁移为实时跟踪基线。
+**趋势变化：** 本批次把供给问题从抽象的 CoWoS 紧缺细化为良率、ODM 调试、客户机房和融资结构四个可跟踪环节。
 
 ## 3. 技术侧
 
@@ -70,22 +62,17 @@ GPU/ASIC 的有效供给不是“有多少晶圆”这么简单，而是先进�
 
 | 时间 | 信息类型 | Source | 观点列表 |
 |---|---|---|---|
-| 2026-03-16 | 官方公司 | [NVIDIA Vera Rubin 平台](https://nvidianews.nvidia.com/news/nvidia-vera-rubin-platform) | <ul><li>`News Summary` 与性能比较段落：Rubin 以 GPU、CPU、NVLink、网卡、DPU 和交换机组成机架级平台；公司称相对 Blackwell 可实现最高 10 倍每瓦吞吐、约十分之一 token 成本，并以更少 GPU 运行 MoE 模型。竞争指标已明确转向系统吞吐、功耗和 token 成本。</li></ul> |
-| 2026-03-16 | 官方公司 | [NVIDIA Dynamo 1.0](https://nvidianews.nvidia.com/news/dynamo-1-0) | <ul><li>产品说明与 benchmark 段落：NVIDIA 将 Dynamo 作为开源生产级推理编排软件，称可把 Blackwell 推理性能提高最高 7 倍。即使硬件不变，调度、分离式服务和资源利用率也能显著改变有效算力供给，软件栈继续构成平台壁垒。</li></ul> |
-| 2026-02-25 | 官方财报 | [NVIDIA FY2026 10-K](https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm) | <ul><li>Item 1 `Competition`：NVIDIA 把竞争变量定义为性能、产品广度、客户渠道、软件支持、标准 API、制造能力、芯片价格和总系统成本；并明确把 AMD、Huawei、Intel 及 Alphabet、Amazon、Microsoft 等云厂商内部芯片列为竞争者。竞争边界已经是平台与 TCO，而非单纯 GPU 对 GPU。</li></ul> |
-| 2026-02-03 | 官方财报 | [AMD 2025 Q4 业绩](https://ir.amd.com/news-events/press-releases/detail/1276/amd-reports-fourth-quarter-and-full-year-2025-financial-results) | <ul><li>`Segment Summary` 与产品进展：AMD 数据中心季度收入 54 亿美元，同比增长 39%，由 EPYC 和 Instinct GPU 拉动；公司展示 Helios 机架级路线。AMD 已形成可财务验证的第二 GPU 路线，但披露口径混合 CPU 与 GPU，不能据此直接推导 GPU 份额。</li></ul> |
-| 2025-11-06 | 官方公司 | [Google Ironwood TPU 协同设计栈](https://cloud.google.com/blog/products/compute/inside-the-ironwood-tpu-codesigned-ai-stack/) | <ul><li>`Performance and efficiency`、软件栈段落：Google 称 Ironwood 的性能功耗比为上一代 Trillium 的 2 倍、相对 2018 年首代 Cloud TPU 近 30 倍，并通过 JAX、PyTorch 和编译器协同优化。它证明定制 ASIC 在可控工作负载上可凭软硬件一体化争夺 TCO。</li></ul> |
-| 2025-08-28 | 第三方权威 | [Omdia AI 数据中心芯片预测](https://omdia.tech.informa.com/pr/2025/aug/ai-data-center-chip-market-to-hit-286bn-growth-likely-peaking-as-custom-asics-gain-ground) | <ul><li>vendor outlook：Omdia 判断 NVIDIA 仍是主导厂商，但 Google TPU、Huawei Ascend 及其他定制 ASIC/ASSP 正在获得采用。技术趋势不是 ASIC 立即替代 GPU，而是随着推理和稳定工作负载扩大，市场结构从单一路线走向分层。</li></ul> |
-| 2024-12-11 | 第三方权威 | [Omdia：Google TPU 需求加速](https://omdia.tech.informa.com/pr/2024/dec/omdia-demand-for-googles-tpu-chips-accelerates-challenging-nvidias-dominance) | <ul><li>TPU value estimate 与竞争判断：Omdia 估计 Google TPU 的芯片价值约 60 亿至 90 亿美元，已经足以构成对 NVIDIA 的可见份额侵蚀。定制 ASIC 不再只是内部实验，而是达到可改变供应商收入池的规模。</li></ul> |
-| 2024-03-18 | 官方公司 | [NVIDIA GTC 2024 生态资料](https://images.nvidia.com/nvimages/gtc/pdf/gtc24-spring-best-of-highlight.pdf) | <ul><li>CUDA ecosystem highlights：NVIDIA 当时披露 CUDA 接近 500 万开发者、4 万多家公司、3,300 多个 GPU 加速应用和 1,600 多家生成式 AI 公司。该生态规模解释了 GPU 在模型快速变化和多客户场景中的迁移成本优势。</li></ul> |
+| 2026-07-24 | 研报 | [摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | • **观点 1（第2页，Open platforms: ROCm and ROCm.ai）**：AMD 将 ROCm 发布周期由约四个月缩短到六周，并展示 coding agent 自动优化 MiniMax M3 在 MI355 上的内核后，token/s 提升 38%；公司还宣称相对 ROCm 7，DeepSeek 模型训练加速 2.4 倍、推理加速 3.3 倍。软件迭代速度正在改善，但数据仍来自厂商演示。<br>• **观点 2（第1-2页，Cerebras disaggregated inference）**：AMD 与 Cerebras 宣布把 Helios 机架和晶圆级引擎组合成解耦推理方案，目标在超低延迟场景获得约 5 倍吞吐。它表明竞争单位正在从单颗 GPU 转为异构系统，但量产可用性和客户采用尚待验证。<br>• **观点 3（第1页，Compute leadership: Helios）**：Helios 由 72 颗 MI455X GPU、18 颗 EPYC Venice CPU 和 Pensando NIC 组成；AMD 声称凭借约 15% 更多计算、50% 更多 HBM 容量/带宽和 50% 更多横向扩展带宽，可较 NVIDIA 提供最高约 30% 的每美元推理 token 优势。该结果是公司展示，尚非独立同工作负载基准。 |
+| 2026-07-24 | 研报 | [巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | • **观点 1（第1-3页，Background on TPU-As-A-Service）**：Google 正尝试把 TPU 从 GCP 内的租赁资源变成可由外部 AI lab 通过 SPV 直接控制的 merchant product；客户获得更深的软件定制、纵向整合和独立于单一云协议的算力控制。这扩大了 ASIC 的可服务市场，也使其开始正面争夺 NVIDIA 的外部计算需求。<br>• **观点 2（第4、6页，Google's Unit Economics）**：巴克莱假设 Google 2026 年以约 2 万美元单价向 SPV 销售 TPU、硬件毛利率约 25%，每 GW 约容纳 70 万颗 TPU；与 GCP 租赁相比，外部 TPU 所有权模型提高客户资本支出和折旧，但给予更强控制权。该比较是分析师模型，关键参数需用实际合同验证。 |
+| 2026-07-24 | 研报 | [摩根大通：AMD AAI26 大会纪要](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf>) | • **观点 1（第2、4页，portfolio and accelerator mix）**：摩根大通认为 GPU 在整体 AI 加速器 TAM 中的占比可能由 2025 年约 85% 降至 2030 年 60%-70%，原因是定制 XPU/ASIC 增长更快；但 GPU 绝对市场仍可能以接近 40% 的复合增速扩张。技术替代更可能表现为份额稀释，而不是 GPU 需求收缩。 |
+| 2026-07-24 | 研报 | [德银-Meta：宏大野心需匹配宏大体量](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf>) | • **观点 1（第6页，internal Iris/MTIA roadmap）**：德银预计 Meta 会用 Iris/MTIA 内部芯片承接部分推理和推荐工作负载，以降低相对 merchant GPU 的单位算力成本；在合作方容量和自研芯片共同作用下，直接融资成本可能低于简单按新增 GW 外推。稳定、可控的推理任务是 ASIC 替代最明确的场景。 |
+| 2026-07-24 | 研报 | [摩根大通：PC 与服务器传导分析](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-PC与服务器：英特尔2026年二季度财报及AMD“Advancing AI 2026”大会传导分析-260724.pdf>) | • **观点 1（第2页，18A output and 14A roadmap）**：Intel 18A 产出环比增长超过 50% 且高于内部目标约 25%，但外部代工收入仅占该分部约 5%；摩根大通预计即使少量 AI 项目采用 Intel，TSMC 在先进前道晶圆仍保持 95% 以上份额。技术可行不等于已形成外部客户规模。 |
 
 ### 最新结论与趋势
 
-技术格局不是“GPU 或 ASIC 二选一”。GPU 仍在前沿训练、快速变化模型、跨客户 通用云服务中占据优势，原因不只在芯片性能，还在 CUDA、系统互连、推理调度和 开发者生态。与此同时，Google TPU 的规模、Ironwood 的性能功耗比以及 Broadcom 定制 ASIC 收入证明：当工作负载足够稳定、规模足够大、客户能控制软硬件栈时， ASIC 可以用更低 TCO 换取份额。
+技术竞争的单位已经不是单颗 GPU，而是芯片、HBM、互连、机架、编译器和调度软件组成的系统。AMD 用 Helios 和更快的 ROCm 迭代缩小平台差距，但本批次性能数字大多来自厂商展示，且摩根士丹利仍认为其本代产品没有取得领导地位。更重要的结构变化来自 Google TPU：通过 Broadcom 设计、TSMC 制造和 SPV 融资，ASIC 正由云内自用产品变成可被外部 AI lab 控制的商品化算力。当前判断为：GPU 在变化快、通用性强的工作负载上仍占主导，ASIC 会在稳定、规模化、客户可控制软件栈的推理任务中更快夺取份额；这更像分层共存和 GPU 份额稀释，而不是 GPU 绝对需求下降。
 
-最新趋势是 **竞争单位由芯片转为完整机架与软件平台，市场由单一 GPU 主导转为 按工作负载分层共存**。Rubin 和 Dynamo 表明 NVIDIA 正用系统协同抵消 ASIC 的 效率优势；Google 则用自研芯片、编译器和云平台缩小通用生态差距。未来需要观察 的不是某个峰值算力数字，而是实际利用率、每 token 成本、部署速度及外部客户 采用范围。
-
-**趋势变化：** 历史截面迁移为实时跟踪基线。
+**趋势变化：** 相较旧的 GPU 对 GPU 比较，本批次最值得记录的是“外部 merchant ASIC”与“异构机架系统”两条技术商业化路线。
 
 ## 4. 估值侧
 
@@ -97,23 +84,16 @@ GPU/ASIC 的有效供给不是“有多少晶圆”这么简单，而是先进�
 
 | 时间 | 信息类型 | Source | 观点列表 |
 |---|---|---|---|
-| 2026-03-27 | 第三方权威 | [NVDA 历史行情](https://www.financecharts.com/stocks/NVDA/summary/price) | <ul><li>、[AVGO 历史行情](https://markets.financialcontent.com/stocks/quote/historical?Symbol=AVGO)、[AMD 历史行情](https://markets.financialcontent.com/stocks/quote/historical?Symbol=amd)，2026-03-27 日线：截面前最后收盘价分别为 NVDA 167.52 美元、AVGO 300.68 美元、AMD 201.99 美元。结合已披露 FY2026 GAAP EPS 4.90 美元，NVDA 静态 GAAP PE 约 34.2 倍；结合 AMD 2025 GAAP/Non-GAAP EPS 2.65/4.17 美元，AMD 对应约 76.2/48.4 倍。</li></ul> |
-| 2026-03-18 | 研报 | [Morningstar NVIDIA 报告](https://www.morningstar.com/company-reports/1461841-nvidia-raising-fair-value-to-260-from-240-as-agentic-ai-drives-a-1-trillion-forecast-at-gtc) | <ul><li>标题及 fair-value summary：Morningstar 将 NVIDIA 公允价值从 240 美元上调至 260 美元，依据包括 GTC 后对 2025-2027 年 Blackwell/Rubin 累计收入路径和近期预测的提高，但同时假定长期增速回落。相对 167.52 美元截面价，表面上约有 55% 空间，核心敏感项仍是长期增长折现。</li></ul> |
-| 2026-03-17 | 市场消息 | [Morgan Stanley NVIDIA 评级摘要](https://www.investing.com/news/analyst-ratings/morgan-stanley-reiterates-overweight-on-nvidia-stock-260-target-93CH-4565172) | <ul><li>评级与目标价段落：Morgan Stanley 维持 Overweight 和 260 美元目标价，并提到多位分析师上调近期盈利预期。它与 Morningstar 给出相同目标价，但这是目标价共识，不是对尾部风险的独立验证。</li></ul> |
-| 2026-03-09 | 研报 | [交银国际 Morning Express](https://files.bocomgroup.com/download/mexp-260309e.pdf) | <ul><li>第 1 页 `Broadcom Inc.`：报告维持 Broadcom 买入和 460 美元目标价；当时股价 332.77 美元、隐含空间 38.2%。报告预计 FY2026E/27E/28E AI 芯片收入约 587/1,098/1,535 亿美元，Non-GAAP EPS 约 11.47/17.82/23.52 美元。按 2026-03-27 股价和 FY2026E EPS，前瞻 PE 约 26.2 倍，但估值高度依赖定制 ASIC 收入如期放量。</li></ul> |
-| 2026-03-02 | 市场消息 | [UBS AMD 评级摘要](https://www.investing.com/news/analyst-ratings/ubs-reiterates-buy-rating-on-amd-stock-on-data-center-growth-93CH-4534296) | <ul><li>评级与目标价段落：UBS 维持 AMD 买入和 310 美元目标价，主要押注数据中心增长与 AI 加速器放量。相对 201.99 美元截面价隐含约 53% 空间。</li></ul> |
-| 2026-02-26 | 市场消息 | [Kiplinger：NVIDIA 财报后市场反应](https://www.kiplinger.com/investing/stocks/big-nvidia-numbers-take-down-the-nasdaq-stock-market-today) | <ul><li>NVIDIA earnings reaction：NVIDIA 在公布 73% 的收入增长和更高下一季指引后，股价仍下跌约 5.5%，市值减少约 2,600 亿美元。强财务数据未带来正回报，说明短期市场门槛已不只是“继续增长”，而是持续超越极高预期。</li></ul> |
-| 2026-02-25 | 官方财报 | [NVIDIA FY2026 Q4 业绩](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Fourth-Quarter-and-Fiscal-2026/) | <ul><li>FY2026 summary：NVIDIA FY2026 收入 2,159 亿美元，同比增长 65%；GAAP 净利润 1,201 亿美元、EPS 4.90 美元，GAAP 毛利率 71.1%。NVDA 的估值有已实现利润支撑，而不是只依赖远期故事，但毛利率已从 FY2025 的 75.0% 回落。</li></ul> |
-| 2026-02-04 | 市场消息 | [Goldman Sachs AMD 评级摘要](https://uk.investing.com/news/analyst-ratings/goldman-sachs-reiterates-neutral-rating-on-amd-stock-with-210-price-target-93CH-4487179) | <ul><li>估值与风险段落：Goldman Sachs 对 AMD 维持 Neutral、目标价 210 美元，理由包括相对同业的估值溢价和更高运营费用。与 UBS 的 310 美元目标价形成明显分歧，表明 AMD 的赔率主要取决于尚未完全兑现的 AI GPU 份额和利润率。</li></ul> |
-| 2026-02-03 | 官方财报 | [AMD 2025 Q4 业绩](https://ir.amd.com/news-events/press-releases/detail/1276/amd-reports-fourth-quarter-and-full-year-2025-financial-results) | <ul><li>年度 GAAP 与 Non-GAAP 表格：AMD 2025 年收入 346 亿美元，同比增长 34%；GAAP EPS 2.65 美元、Non-GAAP EPS 4.17 美元。数据中心收入增长 32%，但分部同时包含 EPYC CPU 和 Instinct GPU，因此不能把全部数据中心增长视作纯 GPU 盈利。</li></ul> |
+| 2026-07-24 | 研报 | [德银-Meta：宏大野心需匹配宏大体量](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf>) | • **观点 1（第1-2页，rating and valuation）**：德银维持 Meta Buy，将目标价由 810 美元小幅下调至 800 美元；相对 2026 年 7 月 23 日 606.10 美元股价仍有约 32% 空间。估值基于 24 倍 2027 年 GAAP EPS，核心假设是广告回报已覆盖部分 AI 投入，订阅和云基础设施提供额外变现。<br>• **观点 2（第5-6页，cloud sales and capex expectations）**：德银明确指出 2027 容量、每 GW 成本、利用率、定价和客户需求均有高度不确定性，第三方云收入尚未正式宣布，也未进入其当前盈利预测。把潜在算力销售直接资本化会高估已验证价值。 |
+| 2026-07-24 | 研报 | [巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | • **观点 1（第1、8页，rating and valuation worksheet）**：巴克莱维持 Alphabet Overweight 和 425 美元目标价，对应 2026 年 7 月 23 日 317.69 美元股价约 34% 潜在空间；目标价取 2027 年 25 倍 EPS 与 15 倍 EBITDA 的平均结果。赔率来自 TPU 外部商业化和云利润上修，而非纯 GPU 敞口。<br>• **观点 2（第5、7、11页，estimate changes and company model）**：巴克莱的高情景把 2028 年外部 TPU 收入估至 2,527 亿美元、毛利 632 亿美元，并把 Alphabet 2028 年收入预测上调 40%；但同一模型预计 2027-2028 年资本开支约 3,500 亿和 5,003 亿美元、自由现金流转负。利润上修与资本强度必须同时计价。 |
+| 2026-07-24 | 研报 | [摩根大通：AMD AAI26 大会纪要](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf>) | • **观点 1（第1、5页，rating and valuation）**：摩根大通维持 AMD Neutral，2026 年 12 月目标价 385 美元，而报告股价为 552.33 美元；目标价基于约 35 倍市盈率和约 11 美元的 2026 年末盈利能力。报告认可产品改善，但认为长期份额不确定、研发投入高且股价接近充分定价。 |
+| 2026-07-24 | 研报 | [摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | • **观点 1（第1、3页，rating table and Thoughts on the stock）**：摩根士丹利维持 AMD Equal-weight，目标价 410 美元，而 2026 年 7 月 23 日股价为 539.69 美元；报告认为 AMD 叙事改善，但相对 NVIDIA、Broadcom 估值更贵且缺少类似期权，风险收益更好的选择在别处。<br>• **观点 2（第3页，Thoughts on the stock）**：摩根士丹利把 AMD 向客户发行的大额认股权证视为营销费用，认为其可能抵消未来数年 GPU 业务的大部分利润。即使收入增长，股东可获得的盈利弹性仍可能被获客成本和稀释削弱。 |
 
 ### 最新结论与趋势
 
-截面估值不是简单的“AI 都贵”。NVDA 约 34 倍静态 GAAP PE，盈利基础最扎实， Morningstar 与 Morgan Stanley 均给出 260 美元估值/目标价；AVGO 按交银国际 FY2026E Non-GAAP EPS 约 26 倍，赔率取决于 2027-2028 年定制 ASIC 收入是否 按极高预测兑现；AMD 的静态 GAAP/Non-GAAP PE 约 76/48 倍，且机构目标价从 210 到 310 美元分歧最大，执行敏感度最高。
+本批次最大的预期差不在产业方向，而在证券价格。两家投行都认可 AMD 的产品和需求改善，却分别给出 385 美元和 410 美元目标价，显著低于报告截面 539.69-552.33 美元的股价；原因包括高估值、长期份额仍不确定、研发投入和客户认股权证侵蚀股东收益。相对而言，巴克莱对 Alphabet 给出约 34% 目标空间，德银对 Meta 给出约 32% 空间，但两者的 AI 赔率来自广告、云和基础设施综合变现，并非纯 GPU/ASIC 暴露。当前判断为：产业需求可以继续强，但 AMD 已被要求以更快盈利兑现来消化价格；GOOGL/META 的赔率更好，却需要接受更低的纯加速器盈利弹性。
 
-因此当前排序应是 **NVDA 的盈利确定性最高，AVGO 的盈利弹性最大但客户与项目 集中，AMD 的潜在份额上行最大但估值对兑现速度最敏感**。同时，NVIDIA 在大幅 超预期后仍下跌，说明整个板块已经进入“必须持续上修盈利才能消化估值”的阶段。 这份截面证据支持继续研究，不足以把任一标的直接升级为无条件买入。
-
-**趋势变化：** 历史截面迁移为实时跟踪基线。
+**趋势变化：** 本批次首次把产业乐观和证券谨慎同时放在同一截面：需求预测继续上修，但 AMD 的投行目标价反而明显低于现价。
 
 ## 5. ESG
 
@@ -125,13 +105,12 @@ GPU/ASIC 的 ESG 不是附属评分，而是会直接改变可交付算力、可
 
 | 时间 | 信息类型 | Source | 观点列表 |
 |---|---|---|---|
-| 2026-02-25 | 官方财报 | [NVIDIA FY2026 10-K](https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm) | <ul><li>Item 1 `Government Regulations` 与 Item 1A export-control risks：NVIDIA 称截至 FY2026 末已被实质排除在中国数据中心计算市场之外；H20 出口许可变化造成 45 亿美元库存及采购义务费用。政策约束已直接进入收入机会、库存和毛利，而不是抽象地缘风险。</li><li>客户集中披露及 MD&A investment/guarantee 段落：FY2026 两个直接客户分别占收入 22% 和 14%；公司还向私营公司和基础设施基金投资 175 亿美元，并对早期企业的土地、电力和机房壳体义务提供 35 亿美元担保。客户集中与生态融资提高了需求可见性，也带来关联性、流动性和资本配置风险。</li></ul> |
-| 2026-02-04 | 官方财报 | [AMD FY2025 10-K](https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000018/amd-20251227.htm) | <ul><li>Data Center MD&A 与 export-control charges：美国对 MI308 的出口管制导致 AMD 2025 年约 4.4 亿美元净库存及相关费用。AMD 与 NVIDIA 同时出现政策驱动的真实损益，说明可服务市场和产品重设计风险是 GPU 厂商共同约束。</li></ul> |
-| 2025-06-12 | 官方公司 | [AMD 30x25 与 2030 能效目标](https://www.amd.com/en/blogs/2025/amd-surpasses-30x25-goal-sets-ambitious-new-20x-rack-scale-energy-efficiency-target-for-ai-systems-by-2030.html) | <ul><li>`At a Glance`、`Surpassing 30x25`、`A New Goal`：AMD 称相对 2020 基准已实现节点级能效提高 38 倍，同等性能耗电下降 97%；并计划 2024-2030 年机架级训练/推理能效再提高 20 倍。该数据由公司定义工作负载和配置，应视为路线目标，而非行业实测均值。</li></ul> |
-| 2025-04-10 | 第三方权威 | [IEA《Energy and AI》执行摘要](https://www.iea.org/reports/energy-and-ai/executive-summary) | <ul><li>`Data centres account for...`、2030 electricity projection、grid delays：2024 年全球数据中心耗电约 415 TWh，占全球用电 1.5%；IEA 预计 2030 年增至约 945 TWh，AI 是主要驱动。约 20% 规划中数据中心项目可能因电网问题延迟，表明芯片能效提高仍可能被总算力扩张抵消，电力接入会反过来限制 GPU/ASIC 交付。</li></ul> |
+| 2026-07-24 | 研报 | [巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | • **观点 1（第1-3、7页，TPU-aaS SPV and purchase commitments）**：TPU 即服务依赖 Apollo/Blackstone 融资 SPV、Google/Broadcom 硬件和数据中心运营商的多层结构；巴克莱同时引用 Alphabet 约 8,110 亿美元采购承诺。结构可加快扩张，但会增加对手方、担保、资产利用率和表外义务的透明度风险。 |
+| 2026-07-24 | 研报 | [摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | • **观点 1（第3页，customer warrants）**：AMD 通过向客户发行认股权证支持生态采用，摩根士丹利认为这相当于高额获客费用，并可能显著稀释 GPU 业务未来利润。它属于资本配置和股东利益问题，而非单纯产品销量问题。 |
+| 2026-07-24 | 研报 | [德银-Meta：宏大野心需匹配宏大体量](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf>) | • **观点 1（第2、5-6页，capacity and funding structure）**：Meta 的容量情景由 7GW 升至 14GW，资本开支预期可能升至 2027 年 2,000 亿美元以上；Hyperion 等伙伴融资可能降低报表内直接负担。对治理分析而言，关键不是只看名义 capex，而是追踪担保、租赁、合作方承诺及最终风险承担者。 |
 
 ### 最新结论与趋势
 
-环境、监管和治理仍直接约束 GPU/ASIC 的可交付算力与可服务市场：绝对用电增长可能抵消芯片能效提升，出口管制会形成库存和收入损失，客户集中及前置采购承诺会放大周期反转风险。本轮优先解析的研报没有提供足以替代现有基线的新定量 ESG 数据，因此不人为制造趋势变化；后续扫描应继续优先提取电力接入、出口许可、客户集中度和供应承诺的新增数字。
+这批研报没有提供足够的用电、水耗、出口管制或供应地缘数据，不能据此形成完整 ESG 结论；但资本配置和治理风险已经很清楚。Meta 和 Google 的算力扩张越来越依赖数千亿美元采购承诺、合作方融资和 SPV，AMD 又通过客户认股权证换取生态采用。真正需要跟踪的是谁承担最终资本义务、资产闲置时损失落在哪里、认股权证如何稀释利润，以及伙伴融资是否让风险移出表面口径。当前判断为：治理和融资结构是已验证风险，环境与监管维度仍属本批次证据缺口，不应被空白材料自动判为低风险。
 
-**趋势变化：** 本轮没有经原文核验的新定量 ESG 变化，维持原结论。
+**趋势变化：** 本批次新增的是对伙伴融资、采购承诺和客户认股权证的治理映射；环境与出口管制没有新增可核验数据。

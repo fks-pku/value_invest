@@ -4,6 +4,7 @@ from datetime import date
 from typing import Any
 
 from value_invest_research.domain.standalone_bom_timeline import (
+    STANDALONE_LENSES,
     build_standalone_timeline_view,
     normalize_timeline_claim,
     normalize_timeline_conclusion,
@@ -14,11 +15,12 @@ def apply_standalone_bom_updates(
     *,
     repository: Any,
     renderer: Any,
+    html_renderer: Any | None = None,
     raw_claims: list[dict[str, Any]],
     raw_conclusions: list[dict[str, Any]],
     as_of_date: str | None = None,
 ) -> dict[str, Any]:
-    """Validate reviewed updates, append them, and rebuild public Markdown."""
+    """Validate reviewed updates and rebuild the public HTML plus Markdown audit view."""
 
     as_of_date = as_of_date or date.today().isoformat()
     project = repository.load_project()
@@ -44,12 +46,44 @@ def apply_standalone_bom_updates(
     repository.merge_claims(claims)
     repository.merge_sources_from_claims(claims)
     repository.merge_conclusions(conclusions)
+    review_result = {"parse_tasks": 0, "documents": 0}
+    if hasattr(repository, "finalize_material_reviews"):
+        question_numbers = {
+            lens_id: number
+            for number, (lens_id, _) in enumerate(STANDALONE_LENSES, start=1)
+        }
+        claim_counts: dict[tuple[str, int], int] = {}
+        for claim in claims:
+            coordinate = (
+                str(claim.get("source_id") or ""),
+                question_numbers[str(claim.get("lens_id") or "")],
+            )
+            claim_counts[coordinate] = claim_counts.get(coordinate, 0) + 1
+        reviewed_source_ids = {
+            str(source_id)
+            for conclusion in conclusions
+            for source_id in conclusion.get("source_ids") or []
+            if str(source_id).strip()
+        }
+        reviewed_source_ids.update(
+            str(claim.get("source_id") or "")
+            for claim in claims
+            if str(claim.get("source_id") or "")
+        )
+        review_result = repository.finalize_material_reviews(
+            reviewed_source_ids=reviewed_source_ids,
+            claim_counts_by_coordinate=claim_counts,
+            reviewed_at=as_of_date,
+        )
     return refresh_standalone_bom_report(
         repository=repository,
         renderer=renderer,
+        html_renderer=html_renderer,
         as_of_date=as_of_date,
         applied_claims=len(claims),
         applied_conclusions=len(conclusions),
+        finalized_parse_tasks=review_result["parse_tasks"],
+        finalized_documents=review_result["documents"],
     )
 
 
@@ -86,9 +120,12 @@ def refresh_standalone_bom_report(
     *,
     repository: Any,
     renderer: Any,
+    html_renderer: Any | None = None,
     as_of_date: str | None = None,
     applied_claims: int = 0,
     applied_conclusions: int = 0,
+    finalized_parse_tasks: int = 0,
+    finalized_documents: int = 0,
 ) -> dict[str, Any]:
     as_of_date = as_of_date or date.today().isoformat()
     view = build_standalone_timeline_view(
@@ -98,11 +135,18 @@ def refresh_standalone_bom_report(
         conclusions=repository.load_conclusions(),
         as_of_date=as_of_date,
     )
-    path = repository.write_report(renderer.render(view))
+    markdown_path = repository.write_report(renderer.render(view))
+    html_path = None
+    if html_renderer is not None and hasattr(repository, "write_html_report"):
+        html_path = repository.write_html_report(html_renderer.render(view))
     return {
-        "report_path": str(path),
+        "report_path": str(html_path or markdown_path),
+        "html_report_path": str(html_path) if html_path else "",
+        "markdown_report_path": str(markdown_path),
         "as_of_date": as_of_date,
         "claims": sum(len(lens["claims"]) for lens in view["lenses"]),
         "applied_claims": applied_claims,
         "applied_conclusions": applied_conclusions,
+        "finalized_parse_tasks": finalized_parse_tasks,
+        "finalized_documents": finalized_documents,
     }

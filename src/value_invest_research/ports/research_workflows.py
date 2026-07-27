@@ -83,3 +83,38 @@ class PublicationDateExtractor(Protocol):
         title: str = "",
     ) -> dict:
         """Return publication date fields derived from document contents."""
+
+
+class DailyMaterialArchiveRepository(Protocol):
+    """Outbound archive for a provider-level daily original-material mirror."""
+
+    def find_available(
+        self,
+        *,
+        provider: str,
+        external_id: str,
+        directory_date: str,
+    ) -> dict:
+        """Return an already-downloaded PDF record when its file still exists."""
+
+    def persist_pdf(
+        self,
+        *,
+        provider: str,
+        external_id: str,
+        directory_date: str,
+        title: str,
+        filename: str,
+        content: bytes,
+        content_type: str,
+    ) -> dict:
+        """Store one original and return content metadata."""
+
+    def persist_archive_record(self, record: dict) -> None:
+        """Upsert one provider-material archive record."""
+
+    def persist_scan_event(self, event: dict) -> None:
+        """Upsert one daily archive run event."""
+
+    def load_archive_bundle(self) -> dict:
+        """Load archive records and events for integrity validation."""
