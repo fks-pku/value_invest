@@ -12,29 +12,23 @@ import sys
 def main() -> int:
     parser = argparse.ArgumentParser(
         description=(
-            "Scan one IMA archive day for a standalone BOM and archive "
-            "downloaded PDFs by their actual publication dates."
+            "Register PDFs downloaded by visible IMA UI clicks in the "
+            "workspace-level source/ima mirror."
         )
     )
-    parser.add_argument("project_dir")
-    parser.add_argument("--date", required=True, dest="scan_date")
-    parser.add_argument(
-        "--knowledge-base-name",
-        default="环球研报直通车",
-    )
+    parser.add_argument("--date", required=True, dest="archive_date")
+    parser.add_argument("--candidate-list", required=True)
+    parser.add_argument("--download-dir", default="~/Downloads")
+    parser.add_argument("--download-marker", default=None)
     parser.add_argument(
         "--config",
-        default="config/material_feeds.json",
+        default="config/ima_daily_archive.json",
     )
-    parser.add_argument("--discovered-at", default=None)
+    parser.add_argument("--scanned-at", default=None)
     args = parser.parse_args()
 
-    scan_date = date.fromisoformat(args.scan_date).isoformat()
+    archive_date = date.fromisoformat(args.archive_date).isoformat()
     repo_root = _find_repo_root(Path.cwd())
-    project_dir = (repo_root / args.project_dir).resolve()
-    if not project_dir.is_dir():
-        raise SystemExit(f"BOM project does not exist: {project_dir}")
-
     env = dict(os.environ)
     src_path = str(repo_root / "src")
     env["PYTHONPATH"] = (
@@ -46,19 +40,20 @@ def main() -> int:
         sys.executable,
         "-m",
         "value_invest_research",
-        "scan-ima-materials",
-        str(project_dir),
-        "--knowledge-base-name",
-        args.knowledge_base_name,
+        "archive-ima-ui-day",
+        "--date",
+        archive_date,
+        "--candidate-list",
+        args.candidate_list,
+        "--download-dir",
+        args.download_dir,
         "--config",
         str((repo_root / args.config).resolve()),
-        "--start-date",
-        scan_date,
-        "--end-date",
-        scan_date,
-        "--discovered-at",
-        args.discovered_at or date.today().isoformat(),
+        "--scanned-at",
+        args.scanned_at or date.today().isoformat(),
     ]
+    if args.download_marker:
+        command.extend(["--download-marker", args.download_marker])
     completed = subprocess.run(command, cwd=repo_root, env=env, check=False)
     return int(completed.returncode)
 

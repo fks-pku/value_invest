@@ -44,7 +44,7 @@ Do not mix another report template into this workflow.
 - Actual history and forward expectations remain separate.
 - Acceleration claims need same-definition history or explicit YoY/multiple evidence.
 - Future runway needs cutoff-visible guidance/forecast/TAM/customer budget plus first-principles support.
-- Refutation search happens before confidence is strengthened.
+- Refutation search happens before a conclusion is strengthened.
 - In backtests, model prior is not evidence and later price data is label-only.
 
 ## S-Curve and BOM Loop
@@ -119,16 +119,18 @@ The intake sequence is:
 
 `daily full-PDF archive -> BOM classify -> deduplicate -> publication-date/cutoff gate -> copy selected original into BOM -> parse inbox -> DeepSeek/specialty parse -> GPT review -> atomic claim ledger`
 
-Credentials and the raw knowledge-base ID never enter Git. Read IMA access from `IMA_OPENAPI_CLIENTID`, `IMA_OPENAPI_APIKEY`, and `IMA_KNOWLEDGE_BASE_ID`; persisted feed state stores only an irreversible reference hash. A frozen historical project quarantines documents published after its cutoff.
+The central archive uses the user's visible, logged-in IMA page. Do not call IMA
+OpenAPI, hidden download URLs, `archive-ima-day`, or `archive-ima-daily`; do not
+read browser credentials, cookies, tokens, or raw knowledge-base IDs. A frozen
+historical project quarantines documents published after its cutoff.
 
-Daily IMA archiving is provider-driven and independent of research projects.
-Resolve the configured knowledge-base name, walk the selected year/month/day
-directory with full pagination, and download every PDF to repository
-`source/ima/<directory_date>/`. Persist one manifest record per PDF and one scan
-event per day. Repeated runs reuse existing verified files and retry only missing or
-failed originals. The scheduled job archives the previous day and rechecks the configured
-recent-day window so quota-limited gaps can recover on later days. BOM routing is a
-separate downstream operation that persists all
+Daily IMA archiving is UI-driven, attended, and independent of research projects.
+Reuse the logged-in IMA page, walk the selected year/month/day directory across all
+pages or lazy-loaded rows, click every missing PDF's visible download control, and
+import completed browser downloads into repository
+`source/ima/<directory_date>/`. Persist one manifest record per visible PDF and one
+scan event per day. Repeated runs reuse existing verified files and click only
+missing or failed originals. BOM routing is a separate downstream operation that persists all
 relevance decisions so omissions remain auditable and creates tasks from that
 project's own coordinate registry.
 Canonical BOM children produce six tasks; a `standalone-bom` project produces its
@@ -197,14 +199,35 @@ parent. Markdown mirrors the public content for auditability.
 When the research object is explicitly one BOM rather than an industry chain, use
 `report_scope: standalone-bom`. Render five collapsible top-level HTML sections:
 `需求侧`, `供给侧`, `技术侧`, `估值侧`, and `ESG`. Every section contains one
-`简单逻辑链`, one newest-to-oldest `信息时间线`, and one `最新结论与趋势`.
-The HTML timeline uses one full-width, horizontally scrollable table per lens with
-exactly `时间 | 信息类型 | 报告 | 观点列表`. One material occupies one row; the
-report title links directly to the original PDF, and multiple atomic claims from
-the same source and lens stay in one real bullet list using
-`观点 N / 原文位置 / 原子观点`. The Markdown audit sidecar mirrors the compact
-four-column table. Local PDF links navigate in the current tab; only HTTP(S)
-sources open a new tab. Do not expose source-search process fields.
+`简单逻辑链`, full-width logic nodes, and one `最新结论与趋势`. Every logic node
+is further organized by company/entity. Each entity is a collapsed-by-default
+module containing `截面变化与评估` and a newest-to-oldest three-column table:
+`材料（含链接） | 类型 | 观点列表`. Do not repeat a lens-level material timeline.
+Precede the five lenses with one gated `当前投资判断` that separates fundamental,
+consensus, and priced-in changes.
+
+The standalone workflow is:
+
+`atomic claim -> reviewed logic-node and entity mapping -> as-of logic state + entity state -> baseline/change revision -> company earnings and valuation bridge -> gated investment snapshot`
+
+Keep atomic claims immutable. Store mappings, node states, revisions, and investment
+snapshots in separate append-only ledgers. Entity snapshots live in
+`entity_states.jsonl` and use the coordinate
+`BOM x lens/question x logic node x company/entity x as_of_date`. A first
+structured snapshot establishes a
+baseline and never claims a historical change. Unmapped themes remain visible for
+review. A new positive industry claim cannot directly change an action state without
+passing the company financial, valuation, refutation, and risk-control gates.
+Do not compute or display numeric or qualitative confidence scores. Explain the
+judgment through supporting claims, refuting claims, source conditions, gaps, and
+the next falsifiable validation instead.
+Each entity module uses one full-width, horizontally scrollable table with exactly
+`材料（含链接） | 类型 | 观点列表`. One material occupies one row; the material
+cell includes `published_at` and links directly to the original PDF. Multiple
+atomic claims from the same source, node, and entity stay in one real bullet list
+using `观点 N / 原文位置 / 原子观点 / 支持或反证方向`. The Markdown audit sidecar
+mirrors the same entity tables. Local PDF links navigate in the current tab; only
+HTTP(S) sources open a new tab. Do not expose source-search process fields.
 
 Every standalone BOM and every `boms/<node_id>/` child is a self-contained project
 directory. It owns `project.json`, `professional_report.html`,

@@ -77,9 +77,10 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
             "authoritative_third_party",
             "market_news",
             "inbox/parse_tasks.jsonl",
-            "IMA_OPENAPI_CLIENTID",
-            "IMA_OPENAPI_APIKEY",
-            "IMA_KNOWLEDGE_BASE_ID",
+            "visible, logged-in IMA",
+            "must not call",
+            "browser credentials",
+            "cookies",
         ]:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, combined)
@@ -119,10 +120,11 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
             "估值侧",
             "ESG",
             "简单逻辑链",
-            "信息时间线",
+            "逻辑节点与公司信息",
+            "截面变化与评估",
             "最新结论与趋势",
-            "| 时间 | 信息类型 | Source | 观点列表 |",
-            "One source occupies one row within a lens",
+            "| 材料（含链接） | 类型 | 观点列表 |",
+            "One source occupies one row",
             "GPT-reviewed atomic claims",
             "project-local original-material link",
             "industry-index",
@@ -131,6 +133,24 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
         ]:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, contract)
+
+    def test_standalone_bom_investment_engine_is_locked_in_contracts(self):
+        combined = "\n".join(self._canonical_docs().values())
+        for phrase in [
+            "logic_nodes",
+            "claim_mappings.jsonl",
+            "logic_states.jsonl",
+            "entity_states.jsonl",
+            "thesis_revisions.jsonl",
+            "investment_snapshots.jsonl",
+            "fundamental_delta",
+            "consensus_delta",
+            "priced_in_delta",
+            "当前投资判断",
+            "BOM x lens/question x logic node x company/entity x as_of_date",
+        ]:
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, combined)
 
     def test_canonical_contracts_define_industry_parent_and_bom_children(self):
         combined = "\n".join(self._canonical_docs().values())
@@ -152,7 +172,7 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
             "source/ima/YYYY/MM/DD",
             "archive_manifest.jsonl",
             "material_intake/raw/",
-            "download all originals",
+            "click each visible download control",
         ]:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, combined)

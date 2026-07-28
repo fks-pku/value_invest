@@ -2,11 +2,14 @@
   "schema_version": "1.0",
   "ima": {
     "enabled": true,
+    "archive_method": "ui_click",
+    "ui_url": "https://ima.qq.com/",
     "knowledge_base_name": "环球研报直通车",
     "archive_root": "source/ima",
+    "download_dir": "~/Downloads",
     "root_folder_pattern": "^\\d{4}年国际顶级投行研报$",
     "schedule": {
-      "frequency": "daily",
+      "frequency": "attended_daily",
       "timezone": "Asia/Shanghai",
       "run_at": "23:30",
       "archive_day": "previous_day",

@@ -18,24 +18,14 @@
 
 发现报告不等于获得证据。未经问题化解析和复核的材料只停留在 inbox。
 
-## 访问配置
+## 中央归档访问
 
-IMA 凭证只允许放在环境变量或本机配置目录：
+中央 `source/ima` 归档使用用户已登录的 IMA 可见页面。按年、月、日进入目录，
+完整翻页或滚动后，逐项点击页面上的下载按钮。不得调用 IMA OpenAPI、隐藏下载
+URL、`archive-ima-day` 或 `archive-ima-daily`。
 
-```text
-IMA_OPENAPI_CLIENTID
-IMA_OPENAPI_APIKEY
-IMA_KNOWLEDGE_BASE_ID        # 可选；系统也可按名称解析
-```
-
-也支持 IMA 官方技能使用的本机文件：
-
-```text
-~/.config/ima/client_id
-~/.config/ima/api_key
-```
-
-凭证、原始知识库 ID 和短期签名下载链接不得进入 Git。
+浏览器凭据、Cookie、令牌、原始知识库 ID 和短期签名下载链接都不得读取或进入
+Git。若页面要求登录，由用户在可见页面完成登录后再继续。
 
 ## 活跃项目
 
@@ -64,32 +54,20 @@ research/bom/<bom_project_id>/
 原文只保存在该 BOM 的 `source/` 下。`material_intake/` 只保存候选、扫描、
 路由和去重元数据，不再保存另一份 `raw` 原文。
 
-## 每日发现
+## 每日中央归档
 
-```bash
-PYTHONPATH=src python3 -m value_invest_research \
-  scan-active-ima-materials
-```
+使用 `ima-single-day-bom-scan`：
 
-系统会：
+1. 复用已登录的 IMA 页面；
+2. 进入 `环球研报直通车 -> 年 -> 月 -> 日`；
+3. 完整翻页或滚动，记录全部 PDF 标题；
+4. 对中央清单尚未 `available` 的标题逐项点击可见下载按钮；
+5. 将浏览器下载目录中的完成文件交给 `archive-ima-ui-day`；
+6. 写入 `source/ima/<directory_date>/`、中央 manifest 和 scan event；
+7. 运行 `validate-ima-archive`。
 
-1. 按名称定位知识库；
-2. 用 `get_knowledge_list` 逐层枚举年度、月份和日期文件夹，并完整翻页；
-3. 把每个 PDF 记录到 `material_intake/directory_candidates.jsonl`；
-4. 使用项目的 BOM 相关性 profile 形成 `relevant`、`not_relevant` 或
-   `needs_review` 决策，模糊项允许 GPT 写入 `relevance_reviews.jsonl`；
-5. 按 IMA `media_id` 去重，只下载 `relevant` 原文；
-6. 从 PDF 首页核验报告实际发布日期；
-7. 将原文保存到项目的 `source/ima/<published_at>/`；
-8. 为该项目的每个候选问题生成一个独立解析任务。
-
-日常任务默认回看最近三天，以覆盖延迟上传；首次回填使用：
-
-```bash
-PYTHONPATH=src python3 -m value_invest_research \
-  scan-active-ima-materials \
-  --full-backfill
-```
+这个步骤不做 BOM 过滤，也不产生解析任务。项目级发现随后读取中央 manifest，
+再进行 BOM 相关性判断、发布日期核验、项目复制和问题化解析。
 
 目录日期是 IMA 的归档位置，`published_at` 是报告真正发布时间；二者分别保存，
 不能用目录日期、IMA 上传时间、更新时间或扫描时间覆盖报告日期。发布日期的

@@ -123,10 +123,21 @@ coordinate changes to five professional lenses:
 | ESG | Which environmental, policy, concentration, and governance factors can change cash flow or the multiple? |
 
 The internal source workflow remains unchanged: active question search and external
-material ingestion feed atomic `BOM x lens x published_at` claims. Each public lens
-shows only a concise logic paragraph, a reverse-chronological source timeline, and a
-current conclusion/trend derived from that timeline. This public simplification does
-not waive canonical target recommendation gates.
+material ingestion feed atomic claims. Each reviewed claim maps to
+`BOM x lens x logic node x company/entity x published_at`. The five-lens playbook
+then provides stable logic nodes with a question, indicators, support and refute
+rules, downstream dependencies, company bridge fields, and cadence.
+
+Research proceeds as:
+
+`atomic claim -> reviewed claim-to-node/entity mapping -> as-of node and entity state -> thesis revision -> company earnings/expectation/valuation bridge -> investment snapshot`
+
+Mappings are separate from immutable claims and preserve direction, directness,
+novelty, materiality, expectation delta, entities, and rationale. Each public lens
+shows its concise logic paragraph, then logic nodes. Every node groups evidence by
+company/entity; each entity keeps an append-only as-of assessment and a
+reverse-chronological source table. The report begins with a gated investment
+snapshot. This structure does not waive canonical target recommendation gates.
 
 ## 5. Minimum Research Unit Execution
 
@@ -154,10 +165,13 @@ Every material has:
 - `ingestion_channel`: `question_search`, `knowledge_base_scan`, or `manual_import`;
 - provider identity, external ID, content hash, publication/discovery time, matched BOMs, mapping status, and cutoff usage.
 
-Before either evidence loop, `ima_daily_archive` enumerates the approved IMA
-year/month/day folder with pagination and downloads every PDF into repository
-`source/ima/<directory_date>/`. It preserves an archive manifest but creates no
-claims. `question_search` starts from one `BOM x question` gap and queues parsing
+Before either evidence loop, the attended `ima_daily_archive` reuses a visible
+logged-in IMA page, enumerates the approved year/month/day folder across all pages
+or lazy-loaded rows, and clicks every missing PDF's visible download control. The
+completed browser downloads are imported into repository
+`source/ima/<directory_date>/`. This preserves an archive manifest but creates no
+claims and does not call IMA OpenAPI. `question_search` starts from one
+`BOM x question` gap and queues parsing
 only for that question. `knowledge_base_scan` reads the central archive manifest,
 judges relevance against each canonical BOM profile, verifies `published_at`, copies
 the selected original into that BOM's `source/ima/<published_at>/`, and queues one
@@ -172,9 +186,12 @@ coordinates are the five professional lenses rather than the six S-curve questio
 Downstream database routing therefore resolves coordinates from `project.json`; it
 must not assume six questions. Each relevant document is archived once, but parsed
 separately against every potentially affected lens. Only non-empty, GPT-reviewed
-lens claims enter the reverse-chronological public timeline. HTML renders one
-four-column table per lens with `时间 | 信息类型 | 报告 | 观点列表`; one source
-occupies one row and keeps all locator-backed atomic claims as
+lens claims enter the temporal ledger. A second reviewed step maps each claim to one
+primary logic node, optional secondary nodes, and one or more companies/entities.
+HTML renders the hierarchy `lens -> logic node -> company/entity`. Every entity is
+collapsed by default, starts with `截面变化与评估`, and keeps one three-column
+table `材料（含链接） | 类型 | 观点列表`. One source occupies one row and keeps
+all locator-backed atomic claims plus their support/refute direction as
 `• 观点 N（原文位置）：原子观点` bullets in the final cell.
 
 Each standalone BOM keeps its report, source index, selected IMA originals, inbox,

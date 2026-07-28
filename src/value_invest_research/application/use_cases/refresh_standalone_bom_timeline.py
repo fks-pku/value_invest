@@ -3,6 +3,14 @@ from __future__ import annotations
 from datetime import date
 from typing import Any
 
+from value_invest_research.domain.standalone_bom_investment_engine import (
+    build_standalone_investment_view,
+    normalize_claim_mapping,
+    normalize_entity_state,
+    normalize_investment_snapshot,
+    normalize_logic_state,
+    normalize_thesis_revision,
+)
 from value_invest_research.domain.standalone_bom_timeline import (
     STANDALONE_LENSES,
     build_standalone_timeline_view,
@@ -128,13 +136,29 @@ def refresh_standalone_bom_report(
     finalized_documents: int = 0,
 ) -> dict[str, Any]:
     as_of_date = as_of_date or date.today().isoformat()
-    view = build_standalone_timeline_view(
-        project=repository.load_project(),
-        profile=repository.load_profile(),
-        claims=repository.load_claims(),
-        conclusions=repository.load_conclusions(),
-        as_of_date=as_of_date,
-    )
+    project = repository.load_project()
+    profile = repository.load_profile()
+    if hasattr(repository, "load_claim_mappings"):
+        view = build_standalone_investment_view(
+            project=project,
+            profile=profile,
+            claims=repository.load_claims(),
+            conclusions=repository.load_conclusions(),
+            claim_mappings=repository.load_claim_mappings(),
+            logic_states=repository.load_logic_states(),
+            entity_states=repository.load_entity_states(),
+            thesis_revisions=repository.load_thesis_revisions(),
+            investment_snapshots=repository.load_investment_snapshots(),
+            as_of_date=as_of_date,
+        )
+    else:
+        view = build_standalone_timeline_view(
+            project=project,
+            profile=profile,
+            claims=repository.load_claims(),
+            conclusions=repository.load_conclusions(),
+            as_of_date=as_of_date,
+        )
     markdown_path = repository.write_report(renderer.render(view))
     html_path = None
     if html_renderer is not None and hasattr(repository, "write_html_report"):
@@ -150,3 +174,92 @@ def refresh_standalone_bom_report(
         "finalized_parse_tasks": finalized_parse_tasks,
         "finalized_documents": finalized_documents,
     }
+
+
+def apply_standalone_bom_engine_updates(
+    *,
+    repository: Any,
+    renderer: Any,
+    html_renderer: Any | None = None,
+    raw_mappings: list[dict[str, Any]],
+    raw_logic_states: list[dict[str, Any]],
+    raw_entity_states: list[dict[str, Any]],
+    raw_revisions: list[dict[str, Any]],
+    raw_investment_snapshots: list[dict[str, Any]],
+    as_of_date: str | None = None,
+) -> dict[str, Any]:
+    """Validate reviewed engine artifacts, persist them, and rebuild the report."""
+
+    as_of_date = as_of_date or date.today().isoformat()
+    profile = repository.load_profile()
+    claims_by_id = {
+        str(row.get("claim_id") or ""): row
+        for row in repository.load_claims()
+        if str(row.get("claim_id") or "")
+    }
+    mappings = [
+        normalize_claim_mapping(
+            row,
+            claims_by_id=claims_by_id,
+            profile=profile,
+            mapped_at=as_of_date,
+        )
+        for row in raw_mappings
+    ]
+    states = [
+        normalize_logic_state(
+            row,
+            profile=profile,
+            claims_by_id=claims_by_id,
+            as_of_date=as_of_date,
+        )
+        for row in raw_logic_states
+    ]
+    entity_states = [
+        normalize_entity_state(
+            row,
+            profile=profile,
+            claims_by_id=claims_by_id,
+            as_of_date=as_of_date,
+        )
+        for row in raw_entity_states
+    ]
+    revisions = [
+        normalize_thesis_revision(
+            row,
+            profile=profile,
+            claims_by_id=claims_by_id,
+            as_of_date=as_of_date,
+        )
+        for row in raw_revisions
+    ]
+    snapshots = [
+        normalize_investment_snapshot(
+            row,
+            profile=profile,
+            claims_by_id=claims_by_id,
+            as_of_date=as_of_date,
+        )
+        for row in raw_investment_snapshots
+    ]
+    repository.merge_claim_mappings(mappings)
+    repository.merge_logic_states(states)
+    repository.merge_entity_states(entity_states)
+    repository.merge_thesis_revisions(revisions)
+    repository.merge_investment_snapshots(snapshots)
+    result = refresh_standalone_bom_report(
+        repository=repository,
+        renderer=renderer,
+        html_renderer=html_renderer,
+        as_of_date=as_of_date,
+    )
+    result.update(
+        {
+            "applied_mappings": len(mappings),
+            "applied_logic_states": len(states),
+            "applied_entity_states": len(entity_states),
+            "applied_revisions": len(revisions),
+            "applied_investment_snapshots": len(snapshots),
+        }
+    )
+    return result

@@ -91,6 +91,16 @@ def build_parser() -> argparse.ArgumentParser:
     )
     material_intake_parser.add_argument("project_dir")
 
+    standalone_engine_validation_parser = subparsers.add_parser(
+        "validate-standalone-bom-engine",
+        help=(
+            "Validate the five-lens playbook, claim mappings, logic states, "
+            "thesis revisions, and gated investment snapshot"
+        ),
+    )
+    standalone_engine_validation_parser.add_argument("project_dir")
+    standalone_engine_validation_parser.add_argument("--as-of-date", default=None)
+
     project_schema_parser = subparsers.add_parser(
         "validate-project-schema",
         help="Validate project.json against the four-stage pipeline schema",
@@ -163,7 +173,10 @@ def build_parser() -> argparse.ArgumentParser:
 
     archive_ima_day_parser = subparsers.add_parser(
         "archive-ima-day",
-        help="Download every PDF from one IMA day folder into source/ima/YYYY/MM/DD",
+        help=(
+            "Legacy OpenAPI archive command; disabled when "
+            "config archive_method=ui_click"
+        ),
     )
     archive_ima_day_parser.add_argument("--date", required=True, dest="archive_date")
     archive_ima_day_parser.add_argument("--knowledge-base-id", default=None)
@@ -176,9 +189,34 @@ def build_parser() -> argparse.ArgumentParser:
     archive_ima_day_parser.add_argument("--scanned-at", default=None)
     archive_ima_day_parser.add_argument("--root-folder-pattern", default=None)
 
+    archive_ima_ui_day_parser = subparsers.add_parser(
+        "archive-ima-ui-day",
+        help=(
+            "Register PDFs downloaded by visible IMA UI clicks into "
+            "source/ima/YYYY/MM/DD"
+        ),
+    )
+    archive_ima_ui_day_parser.add_argument(
+        "--date",
+        required=True,
+        dest="archive_date",
+    )
+    archive_ima_ui_day_parser.add_argument("--candidate-list", required=True)
+    archive_ima_ui_day_parser.add_argument("--download-dir", required=True)
+    archive_ima_ui_day_parser.add_argument("--download-marker", default=None)
+    archive_ima_ui_day_parser.add_argument(
+        "--config",
+        default="config/ima_daily_archive.json",
+    )
+    archive_ima_ui_day_parser.add_argument("--archive-root", default=None)
+    archive_ima_ui_day_parser.add_argument("--scanned-at", default=None)
+
     archive_ima_daily_parser = subparsers.add_parser(
         "archive-ima-daily",
-        help="Run one daily IMA archive job with idempotent recent-day retries",
+        help=(
+            "Legacy OpenAPI daily archive; disabled when "
+            "config archive_method=ui_click"
+        ),
     )
     archive_ima_daily_parser.add_argument("--end-date", default=None)
     archive_ima_daily_parser.add_argument("--lookback-days", type=int, default=None)
@@ -247,6 +285,21 @@ def build_parser() -> argparse.ArgumentParser:
     apply_standalone_parser.add_argument("--claims", required=True)
     apply_standalone_parser.add_argument("--conclusions", required=True)
     apply_standalone_parser.add_argument("--as-of-date", default=None)
+
+    apply_engine_parser = subparsers.add_parser(
+        "apply-standalone-bom-engine-updates",
+        help=(
+            "Validate reviewed claim mappings, logic states, thesis revisions, "
+            "and investment snapshots before rebuilding the standalone BOM report"
+        ),
+    )
+    apply_engine_parser.add_argument("project_dir")
+    apply_engine_parser.add_argument("--mappings", required=True)
+    apply_engine_parser.add_argument("--logic-states", required=True)
+    apply_engine_parser.add_argument("--entity-states", required=True)
+    apply_engine_parser.add_argument("--revisions", required=True)
+    apply_engine_parser.add_argument("--investment-snapshots", required=True)
+    apply_engine_parser.add_argument("--as-of-date", default=None)
 
     publication_date_parser = subparsers.add_parser(
         "review-material-publication-date",
@@ -845,6 +898,8 @@ def main(argv: list[str] | None = None) -> int:
             return run_validate_research_artifacts_cmd(root, args)
         if args.command == "validate-material-intake":
             return run_validate_material_intake_cmd(root, args)
+        if args.command == "validate-standalone-bom-engine":
+            return run_validate_standalone_bom_engine_cmd(root, args)
         if args.command == "validate-project-schema":
             return run_validate_project_schema_cmd(root, args)
         if args.command == "validate-industry-overview":
@@ -857,6 +912,8 @@ def main(argv: list[str] | None = None) -> int:
             return run_scan_ima_materials_cmd(root, args)
         if args.command == "archive-ima-day":
             return run_archive_ima_day_cmd(root, args)
+        if args.command == "archive-ima-ui-day":
+            return run_archive_ima_ui_day_cmd(root, args)
         if args.command == "archive-ima-daily":
             return run_archive_ima_daily_cmd(root, args)
         if args.command == "validate-ima-archive":
@@ -867,6 +924,8 @@ def main(argv: list[str] | None = None) -> int:
             return run_refresh_standalone_bom_report_cmd(root, args)
         if args.command == "apply-standalone-bom-updates":
             return run_apply_standalone_bom_updates_cmd(root, args)
+        if args.command == "apply-standalone-bom-engine-updates":
+            return run_apply_standalone_bom_engine_updates_cmd(root, args)
         if args.command == "review-material-publication-date":
             return run_review_material_publication_date_cmd(root, args)
         if args.command == "review-material-directory-location":
@@ -1354,6 +1413,12 @@ def run_archive_ima_day_cmd(root: Path, args) -> int:
     config_path = _resolve_cli_path(root, args.config)
     config = json.loads(config_path.read_text(encoding="utf-8"))
     feed_config = config.get("ima") or config
+    if str(feed_config.get("archive_method") or "") == "ui_click":
+        raise ValueError(
+            "Central IMA archiving is configured for visible UI clicks. "
+            "Use ima-single-day-bom-scan and archive-ima-ui-day; "
+            "OpenAPI downloading is disabled."
+        )
     feed = ImaKnowledgeBaseFeed()
     knowledge_base_id = (
         args.knowledge_base_id
@@ -1399,6 +1464,53 @@ def run_archive_ima_day_cmd(root: Path, args) -> int:
     return 0 if event["status"] == "complete" else 2
 
 
+def run_archive_ima_ui_day_cmd(root: Path, args) -> int:
+    from value_invest_research.adapters.outbound.filesystem_ima_archive import (
+        FileSystemImaArchiveRepository,
+    )
+    from value_invest_research.application.use_cases.archive_ima_ui import (
+        archive_ima_ui_downloads,
+        load_ui_candidate_inventory,
+    )
+
+    config_path = _resolve_cli_path(root, args.config)
+    config = json.loads(config_path.read_text(encoding="utf-8"))
+    feed_config = config.get("ima") or config
+    inventory_path = _resolve_cli_path(root, args.candidate_list)
+    candidates, directory_path = load_ui_candidate_inventory(
+        inventory_path,
+        archive_date=args.archive_date,
+    )
+    download_dir = Path(args.download_dir).expanduser()
+    download_marker = (
+        Path(args.download_marker).expanduser()
+        if args.download_marker
+        else None
+    )
+    result = archive_ima_ui_downloads(
+        repository=FileSystemImaArchiveRepository(
+            workspace_root=root,
+            archive_root=_resolve_cli_path(
+                root,
+                str(
+                    args.archive_root
+                    or feed_config.get("archive_root")
+                    or "source/ima"
+                ),
+            ),
+        ),
+        archive_date=args.archive_date,
+        candidates=candidates,
+        download_dir=download_dir,
+        scanned_at=args.scanned_at,
+        download_marker=download_marker,
+        directory_path=directory_path,
+    )
+    event = result["scan_event"]
+    print(json.dumps(event, ensure_ascii=False))
+    return 0 if event["status"] == "complete" else 2
+
+
 def run_archive_ima_daily_cmd(root: Path, args) -> int:
     from value_invest_research.adapters.outbound.filesystem_ima_archive import (
         FileSystemImaArchiveRepository,
@@ -1413,6 +1525,12 @@ def run_archive_ima_daily_cmd(root: Path, args) -> int:
     config_path = _resolve_cli_path(root, args.config)
     config = json.loads(config_path.read_text(encoding="utf-8"))
     feed_config = config.get("ima") or config
+    if str(feed_config.get("archive_method") or "") == "ui_click":
+        raise ValueError(
+            "Central IMA archiving is configured for visible UI clicks. "
+            "Use ima-single-day-bom-scan and archive-ima-ui-day; "
+            "OpenAPI downloading is disabled."
+        )
     schedule = feed_config.get("schedule") or {}
     lookback_days = int(
         args.lookback_days
@@ -1757,6 +1875,37 @@ def run_refresh_standalone_bom_report_cmd(root: Path, args) -> int:
     return 0
 
 
+def run_validate_standalone_bom_engine_cmd(root: Path, args) -> int:
+    from value_invest_research.adapters.outbound.filesystem_standalone_bom_timeline import (
+        FileSystemStandaloneBomTimelineRepository,
+    )
+    from value_invest_research.domain.standalone_bom_investment_engine import (
+        validate_standalone_bom_investment_bundle,
+    )
+
+    project_dir = _resolve_cli_path(root, args.project_dir)
+    repository = FileSystemStandaloneBomTimelineRepository(project_dir)
+    project = repository.load_project()
+    as_of_date = (
+        args.as_of_date
+        or str(project.get("as_of_date") or "")
+        or date.today().isoformat()
+    )
+    result = validate_standalone_bom_investment_bundle(
+        project=project,
+        profile=repository.load_profile(),
+        claims=repository.load_claims(),
+        claim_mappings=repository.load_claim_mappings(),
+        logic_states=repository.load_logic_states(),
+        entity_states=repository.load_entity_states(),
+        thesis_revisions=repository.load_thesis_revisions(),
+        investment_snapshots=repository.load_investment_snapshots(),
+        as_of_date=as_of_date,
+    )
+    print(json.dumps(result, ensure_ascii=False))
+    return 0 if result["ok"] else 1
+
+
 def run_apply_standalone_bom_updates_cmd(root: Path, args) -> int:
     from value_invest_research.adapters.outbound.filesystem_standalone_bom_timeline import (
         FileSystemStandaloneBomTimelineRepository,
@@ -1789,6 +1938,50 @@ def run_apply_standalone_bom_updates_cmd(root: Path, args) -> int:
         f"conclusions={result['applied_conclusions']}, "
         f"finalized_parse_tasks={result['finalized_parse_tasks']}, "
         f"finalized_documents={result['finalized_documents']}"
+    )
+    return 0
+
+
+def run_apply_standalone_bom_engine_updates_cmd(root: Path, args) -> int:
+    from value_invest_research.adapters.outbound.filesystem_standalone_bom_timeline import (
+        FileSystemStandaloneBomTimelineRepository,
+    )
+    from value_invest_research.adapters.outbound.standalone_bom_html_renderer import (
+        StandaloneBomHtmlRenderer,
+    )
+    from value_invest_research.adapters.outbound.standalone_bom_markdown_renderer import (
+        StandaloneBomMarkdownRenderer,
+    )
+    from value_invest_research.application.use_cases.refresh_standalone_bom_timeline import (
+        apply_standalone_bom_engine_updates,
+    )
+
+    project_dir = _resolve_cli_path(root, args.project_dir)
+    result = apply_standalone_bom_engine_updates(
+        repository=FileSystemStandaloneBomTimelineRepository(project_dir),
+        renderer=StandaloneBomMarkdownRenderer(project_dir=project_dir),
+        html_renderer=StandaloneBomHtmlRenderer(project_dir=project_dir),
+        raw_mappings=_read_jsonl(_resolve_cli_path(root, args.mappings)),
+        raw_logic_states=_read_jsonl(
+            _resolve_cli_path(root, args.logic_states)
+        ),
+        raw_entity_states=_read_jsonl(
+            _resolve_cli_path(root, args.entity_states)
+        ),
+        raw_revisions=_read_jsonl(_resolve_cli_path(root, args.revisions)),
+        raw_investment_snapshots=_read_jsonl(
+            _resolve_cli_path(root, args.investment_snapshots)
+        ),
+        as_of_date=args.as_of_date,
+    )
+    print(
+        "Standalone BOM investment engine updated: "
+        f"path={result['report_path']}, "
+        f"mappings={result['applied_mappings']}, "
+        f"logic_states={result['applied_logic_states']}, "
+        f"entity_states={result['applied_entity_states']}, "
+        f"revisions={result['applied_revisions']}, "
+        f"investment_snapshots={result['applied_investment_snapshots']}"
     )
     return 0
 

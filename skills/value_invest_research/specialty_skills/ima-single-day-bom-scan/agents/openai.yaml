@@ -1,4 +1,4 @@
 interface:
-  display_name: "IMA 单日 BOM 扫描"
-  short_description: "扫描指定日期的 IMA 研报，并按报告实际发布日期归档"
-  default_prompt: "使用 $ima-single-day-bom-scan 扫描指定日期的 IMA 目录，筛选当前 BOM 相关 PDF，并按报告实际发布日期归档。"
+  display_name: "IMA 单日 UI 点击归档"
+  short_description: "逐项点击下载指定 IMA 日期目录的全部 PDF"
+  default_prompt: "使用 $ima-single-day-bom-scan 打开 IMA 可见页面，完整枚举指定日期目录并逐项点击下载，只更新中央 source/ima 归档。"

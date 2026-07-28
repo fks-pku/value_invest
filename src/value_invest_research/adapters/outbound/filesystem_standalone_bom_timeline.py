@@ -11,6 +11,10 @@ class FileSystemStandaloneBomTimelineRepository:
     def __init__(self, project_dir: Path):
         self.project_dir = project_dir
 
+    @property
+    def project_dir_label(self) -> str:
+        return str(self.project_dir)
+
     def load_project(self) -> dict[str, Any]:
         return _read_json(self.project_dir / "project.json")
 
@@ -22,6 +26,31 @@ class FileSystemStandaloneBomTimelineRepository:
 
     def load_conclusions(self) -> list[dict[str, Any]]:
         return _read_jsonl(self.project_dir / "ledger" / "conclusions.jsonl")
+
+    def load_claim_mappings(self) -> list[dict[str, Any]]:
+        return _read_jsonl(
+            self.project_dir / "ledger" / "claim_mappings.jsonl"
+        )
+
+    def load_logic_states(self) -> list[dict[str, Any]]:
+        return _read_jsonl(
+            self.project_dir / "ledger" / "logic_states.jsonl"
+        )
+
+    def load_entity_states(self) -> list[dict[str, Any]]:
+        return _read_jsonl(
+            self.project_dir / "ledger" / "entity_states.jsonl"
+        )
+
+    def load_thesis_revisions(self) -> list[dict[str, Any]]:
+        return _read_jsonl(
+            self.project_dir / "ledger" / "thesis_revisions.jsonl"
+        )
+
+    def load_investment_snapshots(self) -> list[dict[str, Any]]:
+        return _read_jsonl(
+            self.project_dir / "ledger" / "investment_snapshots.jsonl"
+        )
 
     def load_material_documents(self) -> list[dict[str, Any]]:
         return _read_jsonl(
@@ -50,6 +79,41 @@ class FileSystemStandaloneBomTimelineRepository:
             self.project_dir / "ledger" / "conclusions.jsonl",
             rows,
             key_fields=("lens_id", "as_of_date"),
+        )
+
+    def merge_claim_mappings(self, rows: list[dict[str, Any]]) -> int:
+        return _merge_jsonl(
+            self.project_dir / "ledger" / "claim_mappings.jsonl",
+            rows,
+            key_fields=("mapping_id",),
+        )
+
+    def merge_logic_states(self, rows: list[dict[str, Any]]) -> int:
+        return _merge_jsonl(
+            self.project_dir / "ledger" / "logic_states.jsonl",
+            rows,
+            key_fields=("logic_node_id", "as_of_date"),
+        )
+
+    def merge_entity_states(self, rows: list[dict[str, Any]]) -> int:
+        return _merge_jsonl(
+            self.project_dir / "ledger" / "entity_states.jsonl",
+            rows,
+            key_fields=("logic_node_id", "entity_id", "as_of_date"),
+        )
+
+    def merge_thesis_revisions(self, rows: list[dict[str, Any]]) -> int:
+        return _merge_jsonl(
+            self.project_dir / "ledger" / "thesis_revisions.jsonl",
+            rows,
+            key_fields=("revision_id",),
+        )
+
+    def merge_investment_snapshots(self, rows: list[dict[str, Any]]) -> int:
+        return _merge_jsonl(
+            self.project_dir / "ledger" / "investment_snapshots.jsonl",
+            rows,
+            key_fields=("as_of_date",),
         )
 
     def merge_sources_from_claims(self, claims: list[dict[str, Any]]) -> int:

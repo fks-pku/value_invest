@@ -14,6 +14,12 @@ MATERIAL_LABELS = {
     "other": "其他",
 }
 
+DIRECTION_LABELS = {
+    "support": "支持",
+    "refute": "反证",
+    "neutral": "线索",
+}
+
 
 class StandaloneBomMarkdownRenderer:
     """Render one five-lens BOM timeline without exposing process artifacts."""
@@ -22,11 +28,18 @@ class StandaloneBomMarkdownRenderer:
         self.project_dir = project_dir.resolve() if project_dir else None
 
     def render(self, view: dict[str, Any]) -> str:
-        lines = [
+        front_matter = [
             "---",
             "report_scope: standalone-bom",
             f"bom_node_id: {view['bom_node_id']}",
             f"as_of_date: {view['as_of_date']}",
+        ]
+        if view.get("investment_engine_version"):
+            front_matter.append(
+                f"investment_engine_version: {view['investment_engine_version']}"
+            )
+        lines = [
+            *front_matter,
             "---",
             "",
             f"# {view['title']}",
@@ -37,6 +50,8 @@ class StandaloneBomMarkdownRenderer:
             ),
             "",
         ]
+        if view.get("investment_engine_version"):
+            lines.extend(_investment_snapshot_lines(view))
         for index, lens in enumerate(view["lenses"], start=1):
             lines.extend(
                 [
@@ -46,23 +61,43 @@ class StandaloneBomMarkdownRenderer:
                     "",
                     lens["logic_chain"] or "当前逻辑链尚未定义。",
                     "",
-                    "### 信息时间线",
-                    "",
-                    "| 时间 | 信息类型 | Source | 观点列表 |",
-                    "|---|---|---|---|",
                 ]
             )
-            claims = lens.get("claims") or []
-            if claims:
+            logic_nodes = list(lens.get("logic_nodes") or [])
+            if logic_nodes:
                 lines.extend(
-                    _source_claim_row(group, project_dir=self.project_dir)
-                    for group in _group_claims_by_source(claims)
+                    [
+                        "### 逻辑节点与公司信息",
+                        "",
+                    ]
                 )
+                for node in logic_nodes:
+                    lines.extend(
+                        _logic_node_lines(node, project_dir=self.project_dir)
+                    )
             else:
-                lines.append(
-                    f"| {view['as_of_date']} | 其他 | 无 | "
-                    "尚无经过问题化解析和复核的材料。 |"
+                lines.extend(
+                    [
+                        "### 信息时间线",
+                        "",
+                        "| 时间 | 信息类型 | Source | 观点列表 |",
+                        "|---|---|---|---|",
+                    ]
                 )
+                claims = lens.get("claims") or []
+                if claims:
+                    lines.extend(
+                        _source_claim_row(
+                            group,
+                            project_dir=self.project_dir,
+                        )
+                        for group in _group_claims_by_source(claims)
+                    )
+                else:
+                    lines.append(
+                        f"| {view['as_of_date']} | 其他 | 无 | "
+                        "尚无经过问题化解析和复核的材料。 |"
+                    )
             lines.extend(
                 [
                     "",
@@ -97,7 +132,31 @@ def _source_claim_row(
         label = f"观点 {index}"
         if location:
             label += f"（{location}）"
-        viewpoints.append(f"• **{label}**：{statement}")
+        mappings = [
+            (
+                str(row.get("logic_node_title") or row.get("logic_node_id") or ""),
+                DIRECTION_LABELS.get(
+                    str(row.get("direction") or "neutral"),
+                    "线索",
+                ),
+            )
+            for row in sorted(
+                claim.get("logic_mappings") or [],
+                key=lambda item: (
+                    0
+                    if str(item.get("mapping_role") or "") == "primary"
+                    else 1,
+                    str(item.get("logic_node_id") or ""),
+                ),
+            )
+        ]
+        mapping_text = ""
+        if mappings:
+            mapping_text = "；映射：" + " / ".join(
+                f"{_escape_cell(title)}（{_escape_cell(direction)}）"
+                for title, direction in mappings
+            )
+        viewpoints.append(f"• **{label}**：{statement}{mapping_text}")
     return (
         f"| {_escape_cell(str(group.get('published_at') or ''))} "
         f"| {MATERIAL_LABELS.get(str(group.get('material_class') or ''), '其他')} "
@@ -143,3 +202,156 @@ def _markdown_link_target(url: str) -> str:
     if url.startswith("/"):
         return f"<{url}>"
     return url
+
+
+def _investment_snapshot_lines(view: dict[str, Any]) -> list[str]:
+    decision = dict(view.get("decision") or {})
+    coverage = dict(view.get("engine_coverage") or {})
+    lines = [
+        "### 当前投资判断",
+        "",
+        f"**动作状态：** {decision.get('action_state', 'watch_only')}",
+        "",
+        str(decision.get("summary") or ""),
+        "",
+        "| 基本面变化 | 市场共识变化 | 定价变化 |",
+        "|---|---|---|",
+        (
+            f"| {_escape_cell(str(decision.get('fundamental_delta') or '待验证'))} "
+            f"| {_escape_cell(str(decision.get('consensus_delta') or '待验证'))} "
+            f"| {_escape_cell(str(decision.get('priced_in_delta') or '待验证'))} |"
+        ),
+        "",
+        (
+            f"**研究覆盖：** {coverage.get('state_nodes', 0)} / "
+            f"{coverage.get('logic_nodes', 0)} 个逻辑节点已有截面；"
+            f"{coverage.get('mapped_claims', 0)} / "
+            f"{coverage.get('total_claims', 0)} 条原子观点完成映射。"
+        ),
+        "",
+        "#### 公司影响、预期差与动作",
+        "",
+        "| 公司 | 敞口 | 盈利传导 | 市场定价 | 当前结论 | 动作 |",
+        "|---|---|---|---|---|---|",
+    ]
+    impacts = list(decision.get("company_impacts") or [])
+    if impacts:
+        for row in impacts:
+            company = str(row.get("company") or "")
+            ticker = str(row.get("ticker") or "")
+            if ticker:
+                company += f"（{ticker}）"
+            lines.append(
+                f"| {_escape_cell(company)} "
+                f"| {_escape_cell(str(row.get('exposure') or ''))} "
+                f"| {_escape_cell(str(row.get('earnings_bridge') or ''))} "
+                f"| {_escape_cell(str(row.get('priced_in') or ''))} "
+                f"| {_escape_cell(str(row.get('conclusion') or ''))} "
+                f"| {_escape_cell(str(row.get('action_state') or 'watch_only'))} |"
+            )
+    else:
+        lines.append("| 尚无 | - | - | - | 尚未通过公司财务桥与估值门槛 | watch_only |")
+    lines.append("")
+    return lines
+
+
+def _logic_node_row(node: dict[str, Any]) -> str:
+    return (
+        f"| {_escape_cell(str(node.get('title') or ''))} "
+        f"| {_escape_cell(str(node.get('state') or 'unresolved'))} "
+        f"| {_escape_cell(str(node.get('conclusion') or ''))} "
+        f"| {_escape_cell(str(node.get('change_summary') or ''))} "
+        f"| {_escape_cell(str(node.get('next_validation') or ''))} |"
+    )
+
+
+def _logic_node_lines(
+    node: dict[str, Any],
+    *,
+    project_dir: Path | None,
+) -> list[str]:
+    lines = [
+        f"#### {node.get('title') or node.get('logic_node_id') or '逻辑节点'}",
+        "",
+        str(node.get("question") or ""),
+        "",
+        f"**当前结论：** {node.get('conclusion') or ''}",
+        "",
+    ]
+    entities = list(node.get("entities") or [])
+    if not entities:
+        return [
+            *lines,
+            "当前没有映射到具体公司或实体的材料。",
+            "",
+        ]
+    for entity in entities:
+        lines.extend(
+            [
+                f"##### {entity.get('entity_name') or '未命名实体'}",
+                "",
+                (
+                    "**截面变化与评估：** "
+                    f"{entity.get('assessment') or ''}"
+                ),
+                "",
+                (
+                    "**相较上一截面：** "
+                    f"{entity.get('change_summary') or ''}"
+                ),
+                "",
+                "| 材料（含链接） | 类型 | 观点列表 |",
+                "|---|---|---|",
+            ]
+        )
+        groups = _group_claims_by_source(list(entity.get("claims") or []))
+        if groups:
+            lines.extend(
+                _entity_source_claim_row(
+                    group,
+                    project_dir=project_dir,
+                )
+                for group in groups
+            )
+        else:
+            lines.append("| 无 | 其他 | 尚无经过复核的实体级材料。 |")
+        lines.append("")
+    return lines
+
+
+def _entity_source_claim_row(
+    group: dict[str, Any],
+    *,
+    project_dir: Path | None,
+) -> str:
+    title = _escape_cell(
+        str(group.get("source_title") or group.get("source_id") or "来源")
+    )
+    url = _rendered_source_url(
+        str(group.get("source_url") or "").strip(),
+        project_dir=project_dir,
+    )
+    source = f"[{title}]({_markdown_link_target(url)})" if url else title
+    published_at = _escape_cell(str(group.get("published_at") or ""))
+    if published_at:
+        source = f"{published_at}<br>{source}"
+    viewpoints = []
+    for index, claim in enumerate(group.get("claims") or [], start=1):
+        location = _escape_cell(str(claim.get("source_location") or ""))
+        statement = _escape_cell(str(claim.get("statement") or ""))
+        mapping = next(iter(claim.get("logic_mappings") or []), {})
+        direction = DIRECTION_LABELS.get(
+            str(mapping.get("direction") or "neutral"),
+            "线索",
+        )
+        label = f"观点 {index}"
+        if location:
+            label += f"（{location}）"
+        viewpoints.append(
+            f"• **{label} · {_escape_cell(direction)}**：{statement}"
+        )
+    return (
+        f"| {source} "
+        f"| {MATERIAL_LABELS.get(str(group.get('material_class') or ''), '其他')} "
+        f"| {'<br>'.join(viewpoints)} |"
+    )

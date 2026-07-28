@@ -9,7 +9,8 @@
   "as_of_date": "2026-07-26",
   "report_date": "2026-07-26",
   "generated_at": "2026-07-27",
-  "question_model": "five-lens-timeline",
+  "question_model": "five-lens-investment-engine",
+  "investment_engine_version": "2.0",
   "question_labels": [
     "需求侧",
     "供给侧",

@@ -99,6 +99,62 @@ class TemporalResearchLedgerRepository(Protocol):
         """Persist documents, claims, revisions, coverage, and current snapshot."""
 
 
+class StandaloneBomInvestmentRepository(Protocol):
+    """Outbound port for one structured five-lens BOM investment ledger."""
+
+    @property
+    def project_dir_label(self) -> str:
+        """Stable standalone BOM project label."""
+
+    def load_project(self) -> dict:
+        """Load standalone BOM project metadata."""
+
+    def load_profile(self) -> dict:
+        """Load the structured five-lens logic playbook."""
+
+    def load_claims(self) -> list[dict]:
+        """Load immutable atomic claims."""
+
+    def load_conclusions(self) -> list[dict]:
+        """Load lens-level conclusions."""
+
+    def load_claim_mappings(self) -> list[dict]:
+        """Load claim-to-logic-node mappings."""
+
+    def load_logic_states(self) -> list[dict]:
+        """Load append-only logic-node states."""
+
+    def load_entity_states(self) -> list[dict]:
+        """Load append-only company/entity states by logic node."""
+
+    def load_thesis_revisions(self) -> list[dict]:
+        """Load append-only thesis revisions."""
+
+    def load_investment_snapshots(self) -> list[dict]:
+        """Load reviewed investment decision snapshots."""
+
+    def merge_claim_mappings(self, rows: list[dict]) -> int:
+        """Merge reviewed claim mappings by stable mapping id."""
+
+    def merge_logic_states(self, rows: list[dict]) -> int:
+        """Merge logic states by node and as-of date."""
+
+    def merge_entity_states(self, rows: list[dict]) -> int:
+        """Merge entity states by node, entity, and as-of date."""
+
+    def merge_thesis_revisions(self, rows: list[dict]) -> int:
+        """Merge thesis revisions by stable revision id."""
+
+    def merge_investment_snapshots(self, rows: list[dict]) -> int:
+        """Merge investment snapshots by as-of date."""
+
+    def write_report(self, markdown: str):
+        """Persist the Markdown audit sidecar."""
+
+    def write_html_report(self, html: str):
+        """Persist the default HTML reading artifact."""
+
+
 class MaterialIntakeRepository(Protocol):
     """Outbound port for discovered materials and pending parse work."""
 

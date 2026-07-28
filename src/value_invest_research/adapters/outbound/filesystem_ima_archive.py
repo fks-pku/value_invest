@@ -38,6 +38,36 @@ class FileSystemImaArchiveRepository:
                     return row
         return {}
 
+    def find_by_title(
+        self,
+        *,
+        provider: str,
+        title: str,
+        directory_date: str,
+    ) -> dict[str, Any]:
+        matches = [
+            row
+            for row in self._load_manifest()
+            if (
+                str(row.get("provider") or "") == provider
+                and str(row.get("title") or "") == title
+                and str(row.get("directory_date") or "") == directory_date
+            )
+        ]
+        if not matches:
+            return {}
+        return next(
+            (
+                row
+                for row in matches
+                if str(row.get("status") or "") == "available"
+                and (
+                    self.workspace_root / str(row.get("local_path") or "")
+                ).is_file()
+            ),
+            matches[-1],
+        )
+
     def persist_pdf(
         self,
         *,

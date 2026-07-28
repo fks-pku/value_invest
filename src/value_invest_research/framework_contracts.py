@@ -1323,7 +1323,14 @@ def validate_report_contract_markdown(
     ]
     question_count = sum(1 for label in question_labels if markdown.count(label) == 1)
     if report_scope == "standalone-bom":
-        for label in ("简单逻辑链", "信息时间线", "最新结论与趋势"):
+        is_engine_report = bool(
+            re.search(
+                r"^investment_engine_version:\s*\S+",
+                markdown,
+                flags=re.MULTILINE,
+            )
+        )
+        for label in ("简单逻辑链", "最新结论与趋势"):
             if markdown.count(f"### {label}") != 5:
                 _issue(
                     issues,
@@ -1331,34 +1338,97 @@ def validate_report_contract_markdown(
                     "markdown_standalone_bom_subsections",
                     f"every standalone BOM lens must include exactly one {label}",
                 )
-        timeline_header = "| 时间 | 信息类型 | Source | 观点列表 |"
-        if markdown.count(timeline_header) != 5:
-            _issue(
-                issues,
-                "error",
-                "markdown_standalone_bom_timeline_header",
-                "every standalone BOM lens must include the canonical timeline table",
+        if is_engine_report:
+            if markdown.count("### 逻辑节点与公司信息") != 5:
+                _issue(
+                    issues,
+                    "error",
+                    "markdown_standalone_bom_entity_hierarchy",
+                    (
+                        "structured standalone BOM reports must render one "
+                        "logic-node/entity section per lens"
+                    ),
+                )
+            entity_header = "| 材料（含链接） | 类型 | 观点列表 |"
+            if markdown.count(entity_header) < 1:
+                _issue(
+                    issues,
+                    "error",
+                    "markdown_standalone_bom_entity_table",
+                    "structured reports require entity-level three-column material tables",
+                )
+            if "### 信息时间线" in markdown:
+                _issue(
+                    issues,
+                    "error",
+                    "markdown_standalone_bom_duplicate_timeline",
+                    (
+                        "structured reports must place material under entities "
+                        "instead of repeating a lens-level timeline"
+                    ),
+                )
+            if markdown.count("**截面变化与评估：**") < 1:
+                _issue(
+                    issues,
+                    "error",
+                    "markdown_standalone_bom_entity_assessment",
+                    "every rendered entity requires an as-of change assessment",
+                )
+            if markdown.count("### 当前投资判断") != 1:
+                _issue(
+                    issues,
+                    "error",
+                    "markdown_standalone_bom_investment_engine",
+                    "structured standalone BOM reports require one current investment judgment",
+                )
+            company_header = "| 公司 | 敞口 | 盈利传导 | 市场定价 | 当前结论 | 动作 |"
+            if markdown.count(company_header) != 1:
+                _issue(
+                    issues,
+                    "error",
+                    "markdown_standalone_bom_company_bridge",
+                    "structured standalone BOM reports require one company impact table",
+                )
+        else:
+            if markdown.count("### 信息时间线") != 5:
+                _issue(
+                    issues,
+                    "error",
+                    "markdown_standalone_bom_subsections",
+                    "every legacy standalone BOM lens must include one information timeline",
+                )
+            timeline_header = "| 时间 | 信息类型 | Source | 观点列表 |"
+            if markdown.count(timeline_header) != 5:
+                _issue(
+                    issues,
+                    "error",
+                    "markdown_standalone_bom_timeline_header",
+                    "every standalone BOM lens must include the canonical timeline table",
+                )
+            section_pattern = re.compile(
+                r"^##\s+\d+\.\s+.+?\n(?P<body>.*?)(?=^##\s+\d+\.|\Z)",
+                flags=re.MULTILINE | re.DOTALL,
             )
-        section_pattern = re.compile(
-            r"^##\s+\d+\.\s+.+?\n(?P<body>.*?)(?=^##\s+\d+\.|\Z)",
-            flags=re.MULTILINE | re.DOTALL,
-        )
-        for section in section_pattern.finditer(markdown):
-            dates = re.findall(r"^\|\s*(\d{4}-\d{2}-\d{2})\s*\|", section.group("body"), flags=re.MULTILINE)
-            if not dates:
-                _issue(
-                    issues,
-                    "error",
-                    "markdown_standalone_bom_empty_timeline",
-                    "every standalone BOM lens must include dated timeline rows",
+            for section in section_pattern.finditer(markdown):
+                dates = re.findall(
+                    r"^\|\s*(\d{4}-\d{2}-\d{2})\s*\|",
+                    section.group("body"),
+                    flags=re.MULTILINE,
                 )
-            elif dates != sorted(dates, reverse=True):
-                _issue(
-                    issues,
-                    "error",
-                    "markdown_standalone_bom_timeline_order",
-                    "standalone BOM timeline rows must be ordered newest to oldest",
-                )
+                if not dates:
+                    _issue(
+                        issues,
+                        "error",
+                        "markdown_standalone_bom_empty_timeline",
+                        "every standalone BOM lens must include dated timeline rows",
+                    )
+                elif dates != sorted(dates, reverse=True):
+                    _issue(
+                        issues,
+                        "error",
+                        "markdown_standalone_bom_timeline_order",
+                        "standalone BOM timeline rows must be ordered newest to oldest",
+                    )
     elif report_scope == "industry-index":
         if "技术链与 BOM" not in markdown or "BOM 独立研究目录" not in markdown:
             _issue(
@@ -1439,6 +1509,12 @@ def _validate_standalone_bom_report_html(
     mode: str,
 ) -> dict[str, Any]:
     issues: list[dict[str, str]] = []
+    engine_match = re.search(
+        r"<body\b[^>]*\bdata-investment-engine-version\s*=\s*(['\"])([^'\"]+)\1",
+        html,
+        flags=re.IGNORECASE,
+    )
+    is_engine_report = bool(engine_match)
     lens_ids = ("demand", "supply", "technology", "valuation", "esg")
     lens_labels = ("需求侧", "供给侧", "技术侧", "估值侧", "ESG")
     positions = [html.find(f'id="lens-{lens_id}"') for lens_id in lens_ids]
@@ -1475,20 +1551,16 @@ def _validate_standalone_bom_report_html(
             "standalone_html_bom_identity",
             "standalone BOM HTML must expose data-bom-node-id",
         )
-    required_classes = (
+    common_required_classes = (
         "report-header",
         "top-nav",
         "lens-section",
         "logic-note",
-        "timeline",
-        "timeline-table-wrap",
-        "timeline-table",
-        "source-row",
         "claim-list",
         "claim-index",
         "conclusion-panel",
     )
-    for class_name in required_classes:
+    for class_name in common_required_classes:
         if _class_count(html, class_name) == 0:
             _issue(
                 issues,
@@ -1499,9 +1571,6 @@ def _validate_standalone_bom_report_html(
     for class_name in (
         "lens-section",
         "logic-note",
-        "timeline",
-        "timeline-table-wrap",
-        "timeline-table",
         "conclusion-panel",
     ):
         if _class_count(html, class_name) != 5:
@@ -1511,24 +1580,131 @@ def _validate_standalone_bom_report_html(
                 "standalone_html_component_count",
                 f"standalone BOM HTML must render five {class_name} components",
             )
-    for label in ("时间", "信息类型", "报告", "观点列表"):
-        if html.count(f'<th scope="col">{label}</th>') != 5:
+    if is_engine_report:
+        for class_name in (
+            "decision-section",
+            "logic-state-section",
+            "company-table",
+            "entity-module",
+            "entity-evaluation",
+            "entity-table-wrap",
+            "entity-table",
+            "entity-source-row",
+        ):
+            if _class_count(html, class_name) == 0:
+                _issue(
+                    issues,
+                    "error",
+                    "standalone_html_investment_engine_component",
+                    f"structured standalone BOM HTML is missing {class_name}",
+                )
+        for class_name, expected_count in (
+            ("decision-section", 1),
+            ("logic-state-section", 5),
+            ("company-table", 1),
+        ):
+            if _class_count(html, class_name) != expected_count:
+                _issue(
+                    issues,
+                    "error",
+                    "standalone_html_investment_engine_component",
+                    (
+                        "structured standalone BOM HTML must render "
+                        f"{expected_count} {class_name} component(s)"
+                    ),
+                )
+        entity_table_count = _class_count(html, "entity-table")
+        for label in ("材料（含链接）", "类型", "观点列表"):
+            if html.count(f'<th scope="col">{label}</th>') != entity_table_count:
+                _issue(
+                    issues,
+                    "error",
+                    "standalone_html_entity_table_header",
+                    (
+                        "every entity module must render the locked three-column "
+                        f"table; missing header {label}"
+                    ),
+                )
+        if _class_count(html, "timeline"):
             _issue(
                 issues,
                 "error",
-                "standalone_html_timeline_header",
+                "standalone_html_duplicate_timeline",
                 (
-                    "each standalone lens must render the locked four-column "
-                    f"timeline table; missing header {label}"
+                    "structured reports must place material under entities "
+                    "instead of repeating a lens-level timeline"
                 ),
             )
-    if _class_count(html, "claim-index") < _class_count(html, "source-row"):
-        _issue(
-            issues,
-            "error",
-            "standalone_html_claim_bullets",
-            "every standalone timeline row must render at least one bullet claim",
-        )
+        if _class_count(html, "logic-node") < 5:
+            _issue(
+                issues,
+                "error",
+                "standalone_html_logic_nodes",
+                "structured standalone BOM HTML must render structured logic nodes",
+            )
+        if _class_count(html, "claim-index") < _class_count(
+            html, "entity-source-row"
+        ):
+            _issue(
+                issues,
+                "error",
+                "standalone_html_claim_bullets",
+                "every entity material row must render at least one bullet claim",
+            )
+        for table_body in re.findall(
+            r'<table class="entity-table">(.*?)</table>',
+            html,
+            flags=re.IGNORECASE | re.DOTALL,
+        ):
+            dates = re.findall(
+                r'<time\b[^>]*datetime="(\d{4}-\d{2}-\d{2})"',
+                table_body,
+            )
+            if dates != sorted(dates, reverse=True):
+                _issue(
+                    issues,
+                    "error",
+                    "standalone_html_entity_timeline_order",
+                    "entity material tables must be ordered newest to oldest",
+                )
+    else:
+        for class_name in (
+            "timeline",
+            "timeline-table-wrap",
+            "timeline-table",
+        ):
+            if _class_count(html, class_name) != 5:
+                _issue(
+                    issues,
+                    "error",
+                    "standalone_html_component_count",
+                    f"standalone BOM HTML must render five {class_name} components",
+                )
+        if _class_count(html, "source-row") == 0:
+            _issue(
+                issues,
+                "error",
+                "standalone_html_component",
+                "standalone BOM HTML is missing source-row material",
+            )
+        for label in ("时间", "信息类型", "报告", "观点列表"):
+            if html.count(f'<th scope="col">{label}</th>') != 5:
+                _issue(
+                    issues,
+                    "error",
+                    "standalone_html_timeline_header",
+                    (
+                        "each standalone lens must render the locked four-column "
+                        f"timeline table; missing header {label}"
+                    ),
+                )
+        if _class_count(html, "claim-index") < _class_count(html, "source-row"):
+            _issue(
+                issues,
+                "error",
+                "standalone_html_claim_bullets",
+                "every standalone timeline row must render at least one bullet claim",
+            )
     if not re.search(
         r'<a\b[^>]*href\s*=\s*["\'](?:https?://|source/)[^"\']+["\']',
         html,
@@ -1566,25 +1742,40 @@ def _validate_standalone_bom_report_html(
             "standalone_html_local_new_tab",
             "local PDF links must navigate in the current tab",
         )
-    for lens_id in lens_ids:
-        start = html.find(f'id="lens-{lens_id}"')
-        next_positions = [position for position in positions if position > start]
-        end = min(next_positions) if next_positions else len(html)
-        region = html[start:end]
-        dates = re.findall(r'<time\b[^>]*datetime="(\d{4}-\d{2}-\d{2})"', region)
-        if not dates and 'class="empty-state"' not in region:
-            _issue(
-                issues,
-                "error",
-                "standalone_html_empty_timeline",
-                f"lens {lens_id} must include dated timeline material",
+    if not is_engine_report:
+        for lens_id in lens_ids:
+            start = html.find(f'id="lens-{lens_id}"')
+            next_positions = [position for position in positions if position > start]
+            end = min(next_positions) if next_positions else len(html)
+            region = html[start:end]
+            dates = re.findall(
+                r'<time\b[^>]*datetime="(\d{4}-\d{2}-\d{2})"',
+                region,
             )
-        elif dates != sorted(dates, reverse=True):
+            if not dates and 'class="empty-state"' not in region:
+                _issue(
+                    issues,
+                    "error",
+                    "standalone_html_empty_timeline",
+                    f"lens {lens_id} must include dated timeline material",
+                )
+            elif dates != sorted(dates, reverse=True):
+                _issue(
+                    issues,
+                    "error",
+                    "standalone_html_timeline_order",
+                    f"lens {lens_id} timeline must be newest to oldest",
+                )
+    if is_engine_report:
+        if (
+            _class_count(html, "action-actionable_long")
+            and _class_count(html, "gate-fail")
+        ):
             _issue(
                 issues,
                 "error",
-                "standalone_html_timeline_order",
-                f"lens {lens_id} timeline must be newest to oldest",
+                "standalone_html_failed_actionable_gate",
+                "actionable_long cannot be rendered while a semantic gate fails",
             )
     lowered = html.lower()
     for leaked in (

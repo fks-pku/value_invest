@@ -160,8 +160,10 @@ BOM x question coverage gap
   -> MaterialIntakeRepository
 
 IMA daily provider archive
-  -> ImaKnowledgeBaseFeed adapter
-  -> enumerate and download every PDF
+  -> attended browser UI session
+  -> enumerate every visible PDF across pages or lazy-loaded rows
+  -> click each visible download control
+  -> archive_ima_ui_downloads
   -> FileSystemImaArchiveRepository(source/ima/<directory_date>)
   -> archive_manifest.jsonl + archive_events.jsonl
 
@@ -179,12 +181,14 @@ MaterialIntakeRepository
   -> temporal claim ledger
 ```
 
-`application.use_cases.archive_ima_daily` owns the project-independent daily mirror.
+`application.use_cases.archive_ima_ui` owns the default project-independent daily
+mirror import. `application.use_cases.archive_ima_daily` remains a legacy
+OpenAPI-compatible implementation and is not used by the IMA UI archive skill.
 `FileSystemImaArchiveRepository` owns its paths, manifests, hashes, and idempotent
 writes. `domain.material_intake` owns evidence material classes, channels, cutoff
 quarantine, and parse-task semantics. `application.use_cases.ingest_materials` owns
-downstream BOM routing. Credentials are environment-only and never enter the
-repository.
+downstream BOM routing. The UI archive never reads browser credentials, cookies,
+tokens, or raw knowledge-base IDs.
 
 Discovery and evidence are deliberately separated. A report in IMA is a candidate document, not a supporting claim. It becomes evidence only after one parse and review per relevant `BOM x question`.
 
@@ -192,9 +196,11 @@ Live research separates the provider mirror from project evidence:
 
 ```text
 config/ima_daily_archive.json
+  -> attended visible IMA session
   -> previous IMA year/month/day folder
-  -> enumerate all PDFs with pagination
-  -> IMA get_media_info
+  -> enumerate all visible PDFs across pages or lazy-loaded rows
+  -> click visible download controls
+  -> import completed browser downloads
   -> source/ima/<directory_date>/<original-title>.pdf
   -> archive manifest and scan event
 
@@ -210,12 +216,21 @@ enabled BOM project
   -> HTML timeline refresh + Markdown audit sidecar
 ```
 
-The IMA adapter owns HTTP, pagination, rate-limit backoff, folder traversal, and
-short-lived download headers. The archive use case downloads without research
-filtering. The intake use case owns relevance, cutoff policy, and routing. The
-standalone timeline domain owns five-lens claim validation. The HTML renderer owns
-the default four-column `时间 | 信息类型 | 报告 | 观点列表` reading table, while
-the Markdown renderer mirrors reviewed ledger state as the portable audit sidecar.
+The browser session owns visible navigation and click actions. The UI archive use
+case owns local download matching, PDF validation, hashing, and idempotent manifest
+reconciliation without research filtering. It never extracts hidden URLs or calls
+IMA OpenAPI. The intake use case owns relevance, cutoff policy, and routing. The
+standalone timeline domain owns five-lens claim validation. The standalone BOM
+investment-engine domain owns structured playbook validation, claim mappings,
+as-of logic states, per-node company/entity states, baseline/change revisions,
+company impact bridges, and gated investment snapshots. These are separate
+append-only ledgers, so changing a lens
+playbook does not rewrite source intake or immutable claims. The HTML renderer owns
+the public hierarchy
+`BOM -> lens/question -> logic node -> company/entity`. Each entity renders its
+as-of change assessment and the three-column
+`材料（含链接） | 类型 | 观点列表` table. The Markdown renderer mirrors reviewed
+ledger state as the portable audit sidecar.
 
 Report writing is now port-backed while the current renderer is still the implementation:
 
@@ -419,7 +434,8 @@ The compact public default is exactly `当前研究的问题 -> 行业概况 -> 
 | research question planning | `domain/research_goal.py`, `domain/domain_playbooks.py`, `domain/question_architecture.py` | New topics should start from `ResearchGoal -> DomainPlaybook -> QuestionArchitecture`, adaptively drilling to at most five layers, not from hard-coded report templates. |
 | source-universe resolution | `ports/repositories.py` + `adapters/outbound/filesystem_source_universe.py` | Professional source selection is an outbound repository decision persisted per minimum question; report code must not hard-code it. |
 | dual-loop material intake | `domain/material_intake.py` + `application/use_cases/ingest_materials.py` + `MaterialIntakeRepository` / `KnowledgeBaseMaterialFeed` ports | Question search and IMA scanning share classification, cutoff, deduplication, BOM routing, and pending-parse semantics without coupling providers to the evidence ledger. |
-| IMA knowledge-base scanning | `adapters/outbound/ima_knowledge_base_feed.py` | Read-only OpenAPI adapter; credentials and knowledge-base ID come from environment variables. Persisted state keeps only irreversible reference hashes, and raw IDs never appear in public reports or Git. |
+| IMA central archive | visible browser UI + `application/use_cases/archive_ima_ui.py` | Attended year/month/day enumeration and visible download clicks; browser credentials, cookies, tokens, hidden URLs, and raw knowledge-base IDs are never read or persisted. |
+| Legacy IMA OpenAPI adapter | `adapters/outbound/ima_knowledge_base_feed.py` | Compatibility-only; it is not used by the canonical central archive skill. |
 | material-intake validation | `domain/material_intake.validate_material_intake_bundle` + `ValidateMaterialIntake` + filesystem validation repository | Enforces classification, BOM routing, source/task linkage, six-question coordinates, metadata consistency, and cutoff quarantine before unparsed material can move toward the claim ledger. |
 | BOM semantic completion and target gates | `domain/bom_research_readiness.py` + `domain/target_scoring.py` | Search status alone is never completion. Per-source parsing, strengthening evidence, Q6 refutation, valuation, and canonical BOM mapping control score confidence and action-state caps. |
 | report assembly | `domain/report_view_model.py` + `application/use_cases/build_report_view_model.py` | Report renderers should consume a stable ViewModel instead of reading project files directly. |

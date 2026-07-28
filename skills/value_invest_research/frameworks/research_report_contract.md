@@ -81,45 +81,66 @@ industry parent. The report is intentionally narrower than an industry report:
 4. `估值侧`
 5. `ESG`
 
+The report begins with one `当前投资判断` snapshot. It must show action state,
+fundamental/consensus/priced-in deltas, semantic gate results, company exposure and
+earnings/valuation bridges, catalysts, and monitorable downgrade tests.
+
 Each HTML section contains exactly:
 
 1. `简单逻辑链`: one natural-language paragraph explaining the causal test.
-2. `信息时间线`: one newest-to-oldest four-column table.
-3. `最新结论与趋势`: a natural-language synthesis derived from the displayed rows.
+2. `逻辑节点与公司信息`: full-width node rows showing state, conclusion, evidence
+   balance, baseline/change, gap, and next validation. Each node contains
+   company/entity disclosures.
+3. `最新结论与趋势`: a natural-language synthesis derived from the displayed
+   entity evidence. Do not render confidence scores; show auditable evidence
+   conditions instead.
 
-Every HTML lens contains one horizontally scrollable table with exactly:
+The locked evidence coordinate is:
 
 ```text
-时间 | 信息类型 | 报告 | 观点列表
+BOM x lens/question x logic node x company/entity x as_of_date
 ```
 
-One source occupies one row. Every row contains `published_at`, public material
-class, a direct clickable source link, and a real `<ul>` claim list.
+Every company/entity is one full-width `<details>` module and is collapsed by
+default. Before the table it renders `截面变化与评估`, including the evidence-backed
+current assessment and a real comparison with the prior entity snapshot. The first
+snapshot says it is a baseline and never invents prior change.
 
-`时间` is `published_at`, not the fiscal period described by the source. `信息类型`
-uses the public material classes `官方财报`, `官方公司`, `研报`, `第三方权威`,
-`市场消息`, `专家观点`, or `其他`. `报告` contains one clickable official or
-project-local original-material link. Local PDF links use the renderer-resolved
-project-relative `source/...` path, never `/Users/...`, never `file://`, and never
-a central archive path. They navigate in the current tab because opening local
-files with `target="_blank"` can produce an empty browser tab. Only HTTP(S) links
-may use `target="_blank"`.
-One source occupies one row within a lens.
-`观点列表` groups all GPT-reviewed atomic claims from that source for the current
-lens. Every bullet visibly separates `观点 N`, `原文位置`, and the atomic claim.
+Every entity module contains one horizontally scrollable table with exactly:
+
+```text
+材料（含链接） | 类型 | 观点列表
+```
+
+One source occupies one row. `材料（含链接）` contains `published_at` plus one
+clickable official or project-local original-material link. `类型` uses the public
+material classes `官方财报`, `官方公司`, `研报`, `第三方权威`, `市场消息`,
+`专家观点`, or `其他`. `观点列表` groups only the GPT-reviewed atomic claims that
+map to both the current logic node and the current company/entity. Every bullet
+visibly separates `观点 N`, `原文位置`, atomic claim, and support/refute direction.
+Mapping metadata never replaces the source quotation locator. Do not repeat the
+same evidence in a lens-level timeline.
+
+`published_at` is the market-visible publication date, not the fiscal period
+described by the source. Local PDF links use the renderer-resolved project-relative
+`source/...` path, never `/Users/...`, never `file://`, and never a central archive
+path. They navigate in the current tab because opening local files with
+`target="_blank"` can produce an empty browser tab. Only HTTP(S) links may use
+`target="_blank"`.
 The location preserves its page, item, heading, table, or paragraph locator. It is
-not a document-level abstract. The Markdown sidecar mirrors the same claims in the
-compact `时间 | 信息类型 | Source | 观点列表` table.
+not a document-level abstract. The Markdown sidecar mirrors the same entity
+hierarchy and `材料（含链接） | 类型 | 观点列表` table.
 
 ```text
-| 时间 | 信息类型 | Source | 观点列表 |
+| 材料（含链接） | 类型 | 观点列表 |
 ```
 
-The same source may appear in several timelines only after a separate lens-specific
-parse. Rows are never padded with model priors. The conclusion must distinguish
-facts, forecasts, disagreement, and the strongest boundary condition. A standalone
-BOM report does not require a duplicate source-index section because its timelines
-are the claim-level index; `sources.jsonl` remains the structured audit ledger.
+The same source may appear under several entities or nodes only after a separate
+mapping confirms that the atomic claim applies to each coordinate. Rows are never
+padded with model priors. The conclusion must distinguish facts, forecasts,
+disagreement, and the strongest boundary condition. A standalone BOM report does
+not require a duplicate source-index section because its entity tables are the
+claim-level index; `sources.jsonl` remains the structured audit ledger.
 
 ## 1. Current Research Goal
 
@@ -310,7 +331,7 @@ Freeze recommendations before attaching labels.
 3. Parent, manifest, and child paths preserve one-to-one BOM identity.
 4. BOM ID and public name come from the canonical registry.
 5. Every `bom-node` child keeps the same six semantic questions; every `standalone-bom` keeps the five professional lenses.
-6. Every six-question module keeps its temporal sequence; every standalone lens keeps `简单逻辑链 -> 信息时间线 -> 最新结论与趋势` and claim-level source links.
+6. Every six-question module keeps its temporal sequence; every standalone report keeps `当前投资判断`, then each lens keeps `简单逻辑链 -> 逻辑节点 -> 公司/实体 -> 最新结论与趋势` and claim-level source links.
 7. Backtest cutoff and label isolation remain enforced.
 8. Public reports contain no raw process traces or change logs.
 

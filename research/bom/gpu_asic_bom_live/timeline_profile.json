@@ -1,31 +1,341 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "2.0",
   "bom_node_id": "gpu_asic",
   "lenses": [
     {
       "lens_id": "demand",
       "label": "需求侧",
-      "logic_chain": "需求成立不能只看 AI 话题热度，而要看到同一条传导链逐步兑现：真实训练和推理 工作负载增加，促使云厂商扩大可用算力和资本开支，继而形成 GPU/ASIC 与 AI 服务器订单，最终进入芯片公司的收入、利润和下一期指引。若只有市场规模预测而 没有订单和财务兑现，需求仍停留在主题阶段；若收入、订单与客户资本开支同时 增长，才属于投资可用需求。"
+      "logic_chain": "需求判断沿着工作负载增长、单位算力强度、客户预算、订单可见性和收入兑现逐级验证。只有真实任务与算力强度同时增长，客户愿意持续投入，订单能够按期交付并进入收入与利润，才构成可投资的需求上行。",
+      "logic_nodes": [
+        {
+          "logic_node_id": "demand.workload_growth",
+          "title": "真实 AI 工作负载",
+          "question": "训练、推理和 agent 任务是否在真实增长，而非只有主题热度？",
+          "causal_role": "input",
+          "indicators": ["活跃用户与调用量", "token 或任务量", "AI 生成代码与商业流程渗透"],
+          "support_rule": "多个不同性质的使用量指标持续增长，并出现付费或业务采用。",
+          "refute_rule": "用户或调用增长停滞，任务被一次性试用、软件优化或低价值流量替代。",
+          "downstream_node_ids": ["demand.compute_intensity"],
+          "company_bridge_fields": ["客户采用", "工作负载结构", "付费使用"],
+          "update_cadence": "monthly"
+        },
+        {
+          "logic_node_id": "demand.compute_intensity",
+          "title": "单位任务算力强度",
+          "question": "每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？",
+          "causal_role": "mechanism",
+          "indicators": ["训练规模", "推理 token 成本", "上下文长度", "test-time compute"],
+          "support_rule": "模型和 agent 路线使单位任务计算量增长快于效率改善。",
+          "refute_rule": "模型压缩、蒸馏、稀疏化和软件优化使单位任务硬件需求持续下降。",
+          "downstream_node_ids": ["demand.customer_compute_budget"],
+          "company_bridge_fields": ["单位算力用量", "产品组合", "ASP"],
+          "update_cadence": "quarterly"
+        },
+        {
+          "logic_node_id": "demand.customer_compute_budget",
+          "title": "客户预算与资本承诺",
+          "question": "云厂商、模型公司和企业是否把需求转化为可持续预算？",
+          "causal_role": "mechanism",
+          "indicators": ["AI capex", "采购承诺", "预付款", "租赁与项目融资"],
+          "support_rule": "客户资本开支、长期承诺和融资能力同步提高。",
+          "refute_rule": "客户自由现金流恶化、ROI 不足或融资约束导致预算下修。",
+          "downstream_node_ids": ["demand.order_visibility"],
+          "company_bridge_fields": ["客户预算", "采购承诺", "订单覆盖"],
+          "update_cadence": "quarterly"
+        },
+        {
+          "logic_node_id": "demand.order_visibility",
+          "title": "订单与交付可见性",
+          "question": "预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？",
+          "causal_role": "output",
+          "indicators": ["backlog", "客户部署计划", "机架发货", "取消与延期"],
+          "support_rule": "订单、部署计划和交付窗口由多个客户或官方材料交叉验证。",
+          "refute_rule": "订单仅为分析师情景，或客户机房延期、项目取消和重复计算明显。",
+          "downstream_node_ids": ["demand.revenue_realization"],
+          "company_bridge_fields": ["订单", "backlog", "交付节奏"],
+          "update_cadence": "quarterly"
+        },
+        {
+          "logic_node_id": "demand.revenue_realization",
+          "title": "收入与利润兑现",
+          "question": "订单是否进入收入、毛利、现金流和下一期指引？",
+          "causal_role": "output",
+          "indicators": ["数据中心收入", "AI 芯片收入", "毛利率", "经营现金流", "管理层指引"],
+          "support_rule": "收入、毛利与指引同步上修，且现金流没有明显背离。",
+          "refute_rule": "收入仅来自一次性预付款、低毛利获客或应收与库存堆积。",
+          "downstream_node_ids": ["valuation.fundamental_earnings"],
+          "company_bridge_fields": ["收入", "毛利", "现金流", "指引"],
+          "update_cadence": "quarterly"
+        }
+      ]
     },
     {
       "lens_id": "supply",
       "label": "供给侧",
-      "logic_chain": "GPU/ASIC 的有效供给不是“有多少晶圆”这么简单，而是先进制程晶圆、HBM、先进 封装、基板、测试和系统组装同时合格后的最小值。供给紧张时，长期交期、不可取消 订单、预付款和容量承诺会上升；但这些承诺也会在需求判断错误时转化为库存和毛利 风险。因此既要识别物理瓶颈，也要判断扩产速度是否正在消除稀缺。"
+      "logic_chain": "有效供给取决于先进晶圆、HBM 与封装、系统集成、机房电力和最终可交付系统的最小值。研究不能只看单颗芯片产能，而要定位当前约束、扩产周期、良率、认证以及约束转移。",
+      "logic_nodes": [
+        {
+          "logic_node_id": "supply.advanced_wafer_capacity",
+          "title": "先进制程晶圆",
+          "question": "先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？",
+          "causal_role": "constraint",
+          "indicators": ["先进节点产能", "良率", "wafer allocation", "代工 capex"],
+          "support_rule": "交期、预付款或客户分配显示晶圆持续紧张。",
+          "refute_rule": "扩产和良率提升使可用晶圆明显快于需求增长。",
+          "downstream_node_ids": ["supply.shippable_system"],
+          "company_bridge_fields": ["晶圆供应", "采购承诺", "产品良率"],
+          "update_cadence": "quarterly"
+        },
+        {
+          "logic_node_id": "supply.packaging_memory_capacity",
+          "title": "HBM、封装与基板",
+          "question": "HBM、先进封装、基板和测试是否成为可交付芯片的约束？",
+          "causal_role": "constraint",
+          "indicators": ["HBM 产能", "CoWoS 产能", "封装良率", "基板交期"],
+          "support_rule": "多个供应商确认交期、预订或良率约束，且扩产需要较长周期。",
+          "refute_rule": "替代路线或扩产使交期和价格快速回落。",
+          "downstream_node_ids": ["supply.shippable_system"],
+          "company_bridge_fields": ["封装供应", "HBM 配置", "产能承诺"],
+          "update_cadence": "quarterly"
+        },
+        {
+          "logic_node_id": "supply.system_integration",
+          "title": "系统集成与调试",
+          "question": "ODM、机架、网络和软件调试是否限制芯片转化为可用系统？",
+          "causal_role": "constraint",
+          "indicators": ["机架发货", "ODM 产能", "调试周期", "系统验收"],
+          "support_rule": "系统交付显著晚于芯片可用时间，客户或厂商披露调试约束。",
+          "refute_rule": "标准化设计和成熟 ODM 使机架交付周期显著缩短。",
+          "downstream_node_ids": ["supply.shippable_system"],
+          "company_bridge_fields": ["系统发货", "ODM 交付", "验收"],
+          "update_cadence": "monthly"
+        },
+        {
+          "logic_node_id": "supply.datacenter_readiness",
+          "title": "机房、电力与融资",
+          "question": "数据中心电力、冷却、建设和融资是否限制设备上线？",
+          "causal_role": "constraint",
+          "indicators": ["可用 MW/GW", "建设周期", "液冷就绪", "项目融资"],
+          "support_rule": "客户明确把机房、电力或融资列为部署节奏的主要约束。",
+          "refute_rule": "可用数据中心容量提前释放，设备上线不再受基础设施限制。",
+          "downstream_node_ids": ["supply.shippable_system"],
+          "company_bridge_fields": ["上线容量", "项目进度", "融资义务"],
+          "update_cadence": "quarterly"
+        },
+        {
+          "logic_node_id": "supply.shippable_system",
+          "title": "最终可交付供给",
+          "question": "所有约束合并后，GPU/ASIC 系统供给能否追上订单？",
+          "causal_role": "output",
+          "indicators": ["端到端交期", "发货量", "价格", "库存", "客户等待时间"],
+          "support_rule": "交期高位、价格坚挺且订单覆盖持续，说明供给仍低于需求。",
+          "refute_rule": "交期、价格和利用率同步走弱，库存与渠道供给上升。",
+          "downstream_node_ids": ["demand.revenue_realization"],
+          "company_bridge_fields": ["出货量", "交期", "库存", "ASP"],
+          "update_cadence": "monthly"
+        }
+      ]
     },
     {
       "lens_id": "technology",
       "label": "技术侧",
-      "logic_chain": "技术判断不应只比较芯片峰值 FLOPS，而要按工作负载比较端到端结果：模型变化 速度、训练与推理占比、吞吐/延迟、性能功耗比、每 token 成本、软件迁移成本和 集群利用率。GPU 依靠通用性与软件生态适合快速变化的任务；定制 ASIC 依靠软硬 件协同，在规模大且稳定的工作负载上追求更低 TCO。最终竞争单位正从单颗芯片 转向机架、互连、编译器和推理调度组成的平台。"
+      "logic_chain": "技术竞争按工作负载适配、性能与 TCO、软件生态、客户采用和平台格局逐级判断。GPU 与 ASIC 的竞争不是单颗芯片峰值比较，而是芯片、内存、互连、机架、编译器和调度软件共同决定的端到端结果。",
+      "logic_nodes": [
+        {
+          "logic_node_id": "technology.workload_fit",
+          "title": "工作负载适配",
+          "question": "GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？",
+          "causal_role": "input",
+          "indicators": ["训练/推理占比", "模型变化速度", "延迟与吞吐要求"],
+          "support_rule": "真实客户部署证明某路线对目标工作负载有稳定优势。",
+          "refute_rule": "路线优势只存在于厂商选择性基准，无法迁移到客户任务。",
+          "downstream_node_ids": ["technology.performance_tco"],
+          "company_bridge_fields": ["产品适配", "工作负载组合", "客户案例"],
+          "update_cadence": "quarterly"
+        },
+        {
+          "logic_node_id": "technology.performance_tco",
+          "title": "端到端性能与 TCO",
+          "question": "在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？",
+          "causal_role": "mechanism",
+          "indicators": ["token/s", "延迟", "每 token 成本", "性能功耗比", "集群利用率"],
+          "support_rule": "独立同口径测试或客户数据验证性能和 TCO 优势。",
+          "refute_rule": "优势依赖不可比参数、补贴、低利用率假设或未计软件迁移成本。",
+          "downstream_node_ids": ["technology.customer_adoption"],
+          "company_bridge_fields": ["性能", "TCO", "产品定价"],
+          "update_cadence": "quarterly"
+        },
+        {
+          "logic_node_id": "technology.software_ecosystem",
+          "title": "软件生态与迁移成本",
+          "question": "编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？",
+          "causal_role": "mechanism",
+          "indicators": ["软件发布节奏", "框架支持", "迁移时间", "开发者采用"],
+          "support_rule": "客户生产部署和开发者使用证明生态缩短上线时间并提高利用率。",
+          "refute_rule": "软件改进停留在演示，客户仍承担显著迁移和运维成本。",
+          "downstream_node_ids": ["technology.customer_adoption"],
+          "company_bridge_fields": ["软件采用", "开发者生态", "切换成本"],
+          "update_cadence": "monthly"
+        },
+        {
+          "logic_node_id": "technology.customer_adoption",
+          "title": "客户采用与量产",
+          "question": "技术优势是否转化为生产部署、复购和规模量产？",
+          "causal_role": "output",
+          "indicators": ["生产客户", "部署 GW", "复购", "量产时间"],
+          "support_rule": "多个客户进入生产并扩大采购，不依赖单一补贴或股权激励。",
+          "refute_rule": "采用停留在试点，或必须以大额认股权证和补贴换取。",
+          "downstream_node_ids": ["technology.platform_competition"],
+          "company_bridge_fields": ["客户数", "量产", "复购", "获客成本"],
+          "update_cadence": "quarterly"
+        },
+        {
+          "logic_node_id": "technology.platform_competition",
+          "title": "平台格局与替代路径",
+          "question": "竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？",
+          "causal_role": "output",
+          "indicators": ["加速器份额", "merchant/custom 占比", "平台收入", "切换案例"],
+          "support_rule": "份额、订单和客户部署共同显示平台价值捕获变化。",
+          "refute_rule": "市场份额结论混用 PC GPU、数据中心芯片和系统收入等不同口径。",
+          "downstream_node_ids": ["demand.order_visibility", "valuation.fundamental_earnings"],
+          "company_bridge_fields": ["市场份额", "平台收入", "竞争位置"],
+          "update_cadence": "quarterly"
+        }
+      ]
     },
     {
       "lens_id": "valuation",
       "label": "估值侧",
-      "logic_chain": "估值要把产业增长与证券赔率分开。先在同一截面固定股价，再选择可解释的盈利 口径，计算当前倍数或机构隐含假设，并比较不同机构对未来收入、利润和目标价的 分歧。高增长只有在未来盈利上修快于估值扩张时才创造赔率；若公司大幅超预期后 股价仍下跌，通常意味着市场已提前计入很高的增长门槛。"
+      "logic_chain": "估值从基本面盈利路径、市场共识、股价隐含预期、盈利修正和上下行赔率五层判断。产业增长不自动等于证券有赔率；只有盈利上修速度超过已计入预期，并且下行可被监控，才可能形成可行动结论。",
+      "logic_nodes": [
+        {
+          "logic_node_id": "valuation.fundamental_earnings",
+          "title": "基本面盈利路径",
+          "question": "GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？",
+          "causal_role": "input",
+          "indicators": ["分部收入", "增量毛利", "研发与获客成本", "FCF", "EPS"],
+          "support_rule": "结构化公司/分部桥能把节点变化量化到盈利。",
+          "refute_rule": "仅有主题敞口，或收入增长被低毛利、稀释和资本强度抵消。",
+          "downstream_node_ids": ["valuation.consensus_expectation"],
+          "company_bridge_fields": ["收入桥", "毛利桥", "FCF 桥", "EPS 桥"],
+          "update_cadence": "quarterly"
+        },
+        {
+          "logic_node_id": "valuation.consensus_expectation",
+          "title": "市场一致预期",
+          "question": "市场当前对收入、利润、份额和资本开支的主流预期是什么？",
+          "causal_role": "mechanism",
+          "indicators": ["一致预期", "目标价", "机构情景", "多空分歧"],
+          "support_rule": "同一截面、同一口径的多家机构预期可被比较。",
+          "refute_rule": "使用不同年份、盈利口径或旧目标价制造虚假分歧。",
+          "downstream_node_ids": ["valuation.implied_expectation"],
+          "company_bridge_fields": ["一致预期", "目标价", "机构分歧"],
+          "update_cadence": "weekly"
+        },
+        {
+          "logic_node_id": "valuation.implied_expectation",
+          "title": "股价隐含预期",
+          "question": "当前股价要求公司实现怎样的增长、份额和利润率路径？",
+          "causal_role": "mechanism",
+          "indicators": ["PE/EV-EBITDA", "反向 DCF", "隐含收入增速", "隐含利润率"],
+          "support_rule": "以截面股价和可复现模型还原市场已经计入的路径。",
+          "refute_rule": "只引用目标价上行空间而没有隐含假设和下行情景。",
+          "downstream_node_ids": ["valuation.revision_momentum"],
+          "company_bridge_fields": ["现价", "倍数", "隐含增速", "隐含利润率"],
+          "update_cadence": "weekly"
+        },
+        {
+          "logic_node_id": "valuation.revision_momentum",
+          "title": "盈利修正与预期差",
+          "question": "新信息是否使基本面上修速度快于市场预期和估值扩张？",
+          "causal_role": "output",
+          "indicators": ["EPS 修正", "收入修正", "目标价修正", "业绩后股价反应"],
+          "support_rule": "多期盈利预期持续上修，估值没有更快透支。",
+          "refute_rule": "股价上涨主要来自倍数扩张，盈利修正停滞或转负。",
+          "downstream_node_ids": ["valuation.payoff_asymmetry"],
+          "company_bridge_fields": ["盈利修正", "价格反应", "预期差"],
+          "update_cadence": "weekly"
+        },
+        {
+          "logic_node_id": "valuation.payoff_asymmetry",
+          "title": "上下行赔率与动作",
+          "question": "综合情景概率后，上行、下行和可监控性是否支持行动？",
+          "causal_role": "output",
+          "indicators": ["情景收益", "概率", "最大回撤风险", "kill test"],
+          "support_rule": "上行赔率显著高于可量化下行，且反证触发器可及时监控。",
+          "refute_rule": "高增长已充分定价、下行无法量化或缺少退出触发器。",
+          "downstream_node_ids": [],
+          "company_bridge_fields": ["情景赔率", "动作状态", "降级阈值"],
+          "update_cadence": "weekly"
+        }
+      ]
     },
     {
       "lens_id": "esg",
       "label": "ESG",
-      "logic_chain": "GPU/ASIC 的 ESG 不是附属评分，而是会直接改变可交付算力、可服务市场、成本和 估值的约束。性能功耗比改善决定单位算力的资源效率，但绝对工作负载增长可能让 总用电继续上升；出口管制会缩小市场并形成库存损失；供应与客户集中度影响经营 韧性；对客户、初创公司和基础设施的大额投资或担保则会改变治理透明度与资本 配置风险。"
+      "logic_chain": "ESG 只研究会改变可交付算力、可服务市场、资本成本和股东回报的约束：能源与水、出口与市场准入、供应和客户集中、治理与资本配置、融资和长期承诺。",
+      "logic_nodes": [
+        {
+          "logic_node_id": "esg.energy_water",
+          "title": "能源、水与基础设施许可",
+          "question": "绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？",
+          "causal_role": "constraint",
+          "indicators": ["PUE", "电力需求", "水耗", "许可周期"],
+          "support_rule": "项目延期、成本或监管文件明确指向资源约束。",
+          "refute_rule": "效率、能源供应和选址使资源约束不再影响部署。",
+          "downstream_node_ids": ["supply.datacenter_readiness"],
+          "company_bridge_fields": ["能源成本", "项目延期", "许可"],
+          "update_cadence": "quarterly"
+        },
+        {
+          "logic_node_id": "esg.export_market_access",
+          "title": "出口管制与市场准入",
+          "question": "出口限制和本地化要求如何改变可服务市场与库存风险？",
+          "causal_role": "constraint",
+          "indicators": ["许可范围", "受限收入", "库存损失", "替代产品"],
+          "support_rule": "官方规则和公司披露能量化收入、产品与成本影响。",
+          "refute_rule": "影响仅来自传闻，或替代产品和许可完全抵消限制。",
+          "downstream_node_ids": ["demand.revenue_realization"],
+          "company_bridge_fields": ["受限收入", "库存损失", "市场准入"],
+          "update_cadence": "event_driven"
+        },
+        {
+          "logic_node_id": "esg.concentration",
+          "title": "供应与客户集中",
+          "question": "关键供应商、客户和地区集中是否放大经营波动？",
+          "causal_role": "constraint",
+          "indicators": ["前五客户占比", "单一代工占比", "地区收入", "替代供应"],
+          "support_rule": "集中度高且替代、认证或切换周期长。",
+          "refute_rule": "客户和供应商多元化显著改善，切换已被生产验证。",
+          "downstream_node_ids": ["supply.shippable_system"],
+          "company_bridge_fields": ["客户集中", "供应集中", "地区集中"],
+          "update_cadence": "quarterly"
+        },
+        {
+          "logic_node_id": "esg.governance_capital_allocation",
+          "title": "治理与资本配置",
+          "question": "补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？",
+          "causal_role": "risk",
+          "indicators": ["股权稀释", "获客补贴", "关联交易", "投资回报"],
+          "support_rule": "资本配置带来可验证的增量利润和合理股东回报。",
+          "refute_rule": "收入增长依赖高额稀释、担保或无法验证的生态投资。",
+          "downstream_node_ids": ["valuation.payoff_asymmetry"],
+          "company_bridge_fields": ["稀释", "获客成本", "资本回报"],
+          "update_cadence": "event_driven"
+        },
+        {
+          "logic_node_id": "esg.financing_commitments",
+          "title": "融资结构与长期承诺",
+          "question": "SPV、租赁、采购承诺和表外融资把风险留给谁？",
+          "causal_role": "risk",
+          "indicators": ["采购承诺", "担保", "租赁负债", "SPV 对手方"],
+          "support_rule": "风险分担、现金流义务和资产利用率可被清晰识别。",
+          "refute_rule": "结构复杂且最终担保、闲置资产或对手方风险无法穿透。",
+          "downstream_node_ids": ["demand.customer_compute_budget", "valuation.payoff_asymmetry"],
+          "company_bridge_fields": ["采购承诺", "担保", "租赁", "表外义务"],
+          "update_cadence": "quarterly"
+        }
+      ]
     }
   ]
 }
