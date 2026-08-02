@@ -1,42 +1,83 @@
 ---
 report_scope: standalone-bom
 bom_node_id: gpu_asic
-as_of_date: 2026-07-26
-investment_engine_version: 2.0
+as_of_date: 2026-08-02
+investment_engine_version: 2.2
 ---
 
 # GPU / ASIC BOM 实时跟踪
 
-> 研究截面：2026-07-26。时间线按材料发布时间由近及远；同一材料只有经过当前问题的独立解析和复核后，才进入该问题。
+> 研究截面：2026-08-02。时间线按材料发布时间由近及远；同一材料只有经过当前问题的独立解析和复核后，才进入该问题。
 
 ### 当前投资判断
 
 **动作状态：** watch_only
 
-GPU/ASIC 的需求、替代路线和交付可见性正在增强，但当前证据主要来自五份投行材料，尚未完成官方财务兑现、公司盈利桥、反向估值和量化风险控制。产业逻辑可继续跟踪，证券层面暂不支持统一做多。
+需求侧已新增可去重的GPU需求地图和当前数量基线：公开数据支持2026年GPU型AI服务器约161万台的指示性系统量，以及NVIDIA单季752.46亿美元的数据中心实现值，但服务器配置、GPU颗数、库存和任务分配仍未闭环。GPU/ASIC路线与交付继续扩张，证券层面仍缺公司盈利桥、反向估值和量化风险控制。
 
 | 基本面变化 | 市场共识变化 | 定价变化 |
 |---|---|---|
-| 任务、客户预算、Helios/TPU 订单与系统交付线索偏正面；公司级收入、毛利和现金流闭环仍弱。 | 投行已普遍计入 AI 加速器高增长、ASIC 份额提升和平台竞争，主题本身不再是低共识。 | AMD 在两份报告的截面价格高于目标价；Alphabet、Meta 尚有目标价空间，但并非纯 GPU/ASIC 敞口。 |
+| 相较7月26日，需求判断从资本开支和订单线索推进到最终需求方分类、系统量和客户价值结构；新增数量是透明模型估算，不是已确认GPU颗数。 | AI服务器增长、GPU主导与ASIC份额上升已是公开共识；真正的预期差取决于单系统配置、GPU单位量和终端任务消化。 | 本次没有更新证券价格与一致预期，原有估值结论保持不变；需求量框架本身不构成低估证据。 |
 
-**研究覆盖：** 25 / 25 个逻辑节点已有截面；33 / 33 条原子观点完成映射。
+**研究覆盖：** 27 / 27 个逻辑节点已有截面；43 / 43 条原子观点完成映射。
 
 #### 公司影响、预期差与动作
 
 | 公司 | 敞口 | 盈利传导 | 市场定价 | 当前结论 | 动作 |
 |---|---|---|---|---|---|
-| AMD（AMD） | MI450/Helios GPU 与 ROCm 平台直接受益于替代需求。 | 2026 年第三季度末开始交付、第四季度与 2027 年爬坡；利润弹性需扣除客户认股权证和研发投入。 | 两份投行报告均为中性，报告股价显著高于 385/410 美元目标价。 | 产品与订单方向改善，但赔率和股东可得利润尚未通过。 | watch_only |
-| Alphabet（GOOGL） | TPU 自用并可能通过外部所有权/SPV 模式扩大 merchant 市场。 | 高情景可提升 TPU 收入与毛利，但巨额资本开支可能使自由现金流转负。 | 巴克莱 425 美元目标价相对报告股价约有 34% 空间，关键假设仍是外部 TPU 商业化。 | 潜在预期差较 AMD 更有吸引力，但资本强度与合同真实性尚待验证。 | watch_only |
-| Meta（META） | AI 广告、商业 agent、自研 MTIA/Iris 与大规模算力采购的综合受益者。 | 广告回报可覆盖部分投入，但 2027-2028 年 capex、合作方融资和第三方云收入高度不确定。 | 德银 800 美元目标价相对报告股价约有 32% 空间。 | 应用变现提供缓冲，但它不是纯硬件敞口，需穿透资本承诺。 | watch_only |
-| Intel（INTC） | AI 服务器 CPU、先进代工和 EMIB-T 替代封装的间接受益者。 | DCAI 收入增长和 capex 上调提供邻近验证，但外部先进代工收入占比仍低。 | 当前材料没有提供同截面可复现估值。 | 供给侧可选项存在，尚无足够外部客户规模与估值证据。 | watch_only |
+| AMD（AMD） | MI450/Helios GPU与ROCm平台直接受益于替代需求。 | 2026年第三季度末开始交付、第四季度与2027年爬坡；利润弹性需扣除客户认股权证和研发投入。 | 两份投行报告均为中性，报告股价显著高于385/410美元目标价。 | 产品与订单方向改善，但赔率和股东可得利润尚未通过。 | watch_only |
+| Alphabet（GOOGL） | TPU自用并可能通过外部所有权/SPV模式扩大merchant市场。 | 高情景可提升TPU收入与毛利，但巨额资本开支可能使自由现金流转负。 | 巴克莱425美元目标价相对报告股价约有34%空间，关键假设仍是外部TPU商业化。 | 潜在预期差较AMD更有吸引力，但资本强度与合同真实性尚待验证。 | watch_only |
+| Meta（META） | AI广告、商业agent、自研MTIA/Iris与大规模算力采购的综合受益者。 | 广告回报可覆盖部分投入，但2027-2028年capex、合作方融资和第三方云收入高度不确定。 | 德银800美元目标价相对报告股价约有32%空间。 | 应用变现提供缓冲，但它不是纯硬件敞口，需穿透资本承诺。 | watch_only |
+| Intel（INTC） | AI服务器CPU、先进代工和EMIB-T替代封装的间接受益者。 | DCAI收入增长和capex上调提供邻近验证，但外部先进代工收入占比仍低。 | 当前材料没有提供同截面可复现估值。 | 供给侧可选项存在，尚无足够外部客户规模与估值证据。 | watch_only |
 
 ## 1. 需求侧
 
 ### 简单逻辑链
 
-需求判断沿着工作负载增长、单位算力强度、客户预算、订单可见性和收入兑现逐级验证。只有真实任务与算力强度同时增长，客户愿意持续投入，订单能够按期交付并进入收入与利润，才构成可投资的需求上行。
+Q1 只定义谁在需求 GPU，并将主体分为当前需求方与潜在未来需求方；不在 Q1 展开业务、任务、承载系统、GPU 规格、采购通道、数量或截面变化。Q2 再按需求方清单建立当前需求量基线，后续节点分别验证工作负载、单位算力、预算、订单和财务兑现。
 
 ### 逻辑节点与公司信息
+
+#### Q1 需求方
+
+**当前需求方**
+
+- 超大规模云服务商
+- AI 模型公司
+- GPU 云与算力服务商
+- 大型互联网平台
+- 大型企业与工业客户
+- 科研机构
+- 主权及公共算力建设主体
+
+**潜在未来需求方**
+
+- 尚未规模化部署 AI 的传统企业
+- 从租用算力转向自建集群的 AI 应用公司
+- 电信与边缘云运营商
+- 机器人及自动驾驶平台运营方
+- 新进入的区域公共算力主体
+
+#### Q2 当前需求量基线
+
+##### 1. 分类映射预测
+
+| Q1 需求方 | 当前数量 / 预测 | 口径与期间 | 映射质量 | 来源与局限 |
+|---|---|---|---|---|
+| 超大规模云服务商 | >70万台（GPU+ASIC合计） | 北美CSP高端AI服务器采购<br>2025E | 代理映射 | 2025-06-10 · [DIGITIMES Research：Global annual AI server shipments, 2024-2025](https://www.digitimes.com/reports/item.php?id=20250604RS400)<br>由高端AI服务器超过100万台及北美CSP占70%得到下限；不是GPU专属数量，也未覆盖全部Hyperscaler。 |
+| AI 模型公司 | >100万颗H100等效 | xAI H100 GPU等效存量<br>2025年末 | 样本映射 | 2026-01-06 · [xAI：Series E与2025年末算力规模](https://x.ai/news/series-e?stream=top)<br>单一模型公司样本；等效算力不等于同型号物理GPU，也不能外推全部模型公司。 |
+| GPU 云与算力服务商 | >850MW活跃；约3.1GW签约 | CoreWeave活跃与签约功率<br>2025年末 | 样本映射 | 2026-03-02 · [CoreWeave 2025 Form 10-K](https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm)<br>单一GPU云样本；功率包含非GPU设施，签约功率不是已上线需求。 |
+| 大型互联网平台 | 约60万颗H100等效，其中约35万颗H100 | Meta H100等效容量计划<br>2024年末预测 | 样本映射 | 2024-02-01 · [Meta Q4 2023 Earnings Call Transcript](https://s21.q4cdn.com/399680738/files/doc_financials/2023/q4/META-Q4-2023-Earnings-Call-Transcript.pdf)<br>公司在2024年初给出的年末计划，当前材料没有独立确认全部转化为实际存量。 |
+| 大型企业与工业客户 | 未找到可验证的独立数量 | 企业/工业GPU独立需求量<br>截至2026-08-02 | 数据缺口 | 2026-05-20 · [NVIDIA Form 10-Q（截至2026年4月26日季度）](https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/nvda-20260426.htm)<br>NVIDIA仅披露AI云、工业、企业和主权合并收入373.77亿美元，无法拆出本类GPU数量。 |
+| 科研机构 | 约2.4万颗GH200 | JUPITER GH200配置<br>2025-09已启用 | 样本映射 | 2025-09-05 · [EuroHPC：JUPITER启动欧洲百亿亿次计算时代](https://www.eurohpc-ju.europa.eu/jupiter-launching-europes-exascale-era-2025-09-05_en)<br>单一欧洲科研超级计算机样本，不代表全球科研机构总需求。 |
+| 主权及公共算力建设主体 | 首阶段1.8万颗GB300；五年规划数十万颗 | HUMAIN主权AI工厂部署计划<br>首阶段及未来五年 | 样本映射 | 2025-05-13 · [HUMAIN与NVIDIA沙特AI工厂合作](https://nvidianews.nvidia.com/news/humain-and-nvidia-announce-strategic-partnership-to-build-ai-factories-of-the-future-in-saudi-arabia)<br>属于已宣布部署计划和远期规划，不是当前已安装存量。 |
+
+##### 2. 其它预测
+
+| 预测对象 | 当前数量 / 预测 | 期间 | 来源与未映射原因 |
+|---|---|---|---|
+| 全球AI服务器出货 | 181万台；其中高端HBM机型>100万台 | 2025E | 2025-06-10 · [DIGITIMES Research：Global annual AI server shipments, 2024-2025](https://www.digitimes.com/reports/item.php?id=20250604RS400)<br>同时包含GPU与ASIC，且无法无重叠地分配到Q1全部需求方。 |
+| 全球GPU型AI服务器 | 约161万台（跨来源机械估算） | 2026E | 2025-06-10 · [DIGITIMES Research：Global annual AI server shipments, 2024-2025](https://www.digitimes.com/reports/item.php?id=20250604RS400)<br>2026-01-20 · [TrendForce：2026年全球AI服务器出货与GPU/ASIC结构](https://www.trendforce.com/presscenter/news/20260120-12887.html)<br>由181万×1.28×69.7%合成，不是机构直接发布值；系统数不能直接换算GPU颗数。 |
 
 #### 真实 AI 工作负载
 
@@ -52,7 +93,7 @@ GPU/ASIC 的需求、替代路线和交付可见性正在增强，但当前证�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf>) | 研报 | • **观点 1（第1-2页，AI Accelerator TAM） · 支持**：AMD 将 2030 年 AI 加速器 TAM 上调至约 1.4 万亿美元，相对 2025 年约 2,000 亿美元隐含超过 45% 的五年复合增速；摩根大通判断增长将由训练扩展到推理和 agent 工作负载。该数字是公司口径与投行解释，不是已兑现收入。 |
+| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf) | 研报 | • **观点 1（第1-2页，AI Accelerator TAM） · 支持**：AMD 将 2030 年 AI 加速器 TAM 上调至约 1.4 万亿美元，相对 2025 年约 2,000 亿美元隐含超过 45% 的五年复合增速；摩根大通判断增长将由训练扩展到推理和 agent 工作负载。该数字是公司口径与投行解释，不是已兑现收入。 |
 
 ##### Meta
 
@@ -62,7 +103,7 @@ GPU/ASIC 的需求、替代路线和交付可见性正在增强，但当前证�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[德银-Meta：宏大野心需匹配宏大体量](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf>) | 研报 | • **观点 1（第5页，Business agents） · 支持**：Meta 各消息平台中，用户与商业 AI 的对话约为每周 1,000 万次，较年初增长约十倍；德银把这视为 2027 年可能通过订阅和按量收费变现的应用需求。该指标证明工作负载在增长，但尚未直接披露其对应 GPU/ASIC 用量。 |
+| 2026-07-24<br>[德银-Meta：宏大野心需匹配宏大体量](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf) | 研报 | • **观点 1（第5页，Business agents） · 支持**：Meta 各消息平台中，用户与商业 AI 的对话约为每周 1,000 万次，较年初增长约十倍；德银把这视为 2027 年可能通过订阅和按量收费变现的应用需求。该指标证明工作负载在增长，但尚未直接披露其对应 GPU/ASIC 用量。 |
 
 #### 单位任务算力强度
 
@@ -78,7 +119,7 @@ GPU/ASIC 的需求、替代路线和交付可见性正在增强，但当前证�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf>) | 研报 | • **观点 1（第1-2页，AI Accelerator TAM） · 支持**：AMD 将 2030 年 AI 加速器 TAM 上调至约 1.4 万亿美元，相对 2025 年约 2,000 亿美元隐含超过 45% 的五年复合增速；摩根大通判断增长将由训练扩展到推理和 agent 工作负载。该数字是公司口径与投行解释，不是已兑现收入。 |
+| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf) | 研报 | • **观点 1（第1-2页，AI Accelerator TAM） · 支持**：AMD 将 2030 年 AI 加速器 TAM 上调至约 1.4 万亿美元，相对 2025 年约 2,000 亿美元隐含超过 45% 的五年复合增速；摩根大通判断增长将由训练扩展到推理和 agent 工作负载。该数字是公司口径与投行解释，不是已兑现收入。 |
 
 #### 客户预算与资本承诺
 
@@ -94,7 +135,7 @@ GPU/ASIC 的需求、替代路线和交付可见性正在增强，但当前证�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[德银-Meta：宏大野心需匹配宏大体量](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf>) | 研报 | • **观点 1（第2页，Capex remains a key debate） · 支持**：Meta 2026 年资本开支指引为 1,250 亿至 1,450 亿美元；德银称市场已把 2027 年约 14GW 容量对应的资本开支预期推至 2,000 亿美元低至中段，并给出 2027 年约 2,100 亿至 2,150 亿美元、2028 年约 2,650 亿美元的估计。这是大型客户继续扩大 AI 算力采购的直接预算信号，但后两项属于分析师估计。<br>• **观点 2（第2、5-6页，capacity and funding structure） · 线索**：Meta 的容量情景由 7GW 升至 14GW，资本开支预期可能升至 2027 年 2,000 亿美元以上；Hyperion 等伙伴融资可能降低报表内直接负担。对治理分析而言，关键不是只看名义 capex，而是追踪担保、租赁、合作方承诺及最终风险承担者。 |
+| 2026-07-24<br>[德银-Meta：宏大野心需匹配宏大体量](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf) | 研报 | • **观点 1（第2页，Capex remains a key debate） · 支持**：Meta 2026 年资本开支指引为 1,250 亿至 1,450 亿美元；德银称市场已把 2027 年约 14GW 容量对应的资本开支预期推至 2,000 亿美元低至中段，并给出 2027 年约 2,100 亿至 2,150 亿美元、2028 年约 2,650 亿美元的估计。这是大型客户继续扩大 AI 算力采购的直接预算信号，但后两项属于分析师估计。<br>• **观点 2（第2、5-6页，capacity and funding structure） · 线索**：Meta 的容量情景由 7GW 升至 14GW，资本开支预期可能升至 2027 年 2,000 亿美元以上；Hyperion 等伙伴融资可能降低报表内直接负担。对治理分析而言，关键不是只看名义 capex，而是追踪担保、租赁、合作方承诺及最终风险承担者。 |
 
 ##### Alphabet / Google
 
@@ -104,7 +145,7 @@ GPU/ASIC 的需求、替代路线和交付可见性正在增强，但当前证�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | • **观点 1（第2、4-5页，External TPU sales framework） · 支持**：巴克莱根据 Broadcom/Blackstone/Apollo 的 20GW AI XPV 计划与 Google-Blackstone 合资项目，估计外部 TPU 容量可由 2026 年 1.4GW 增至 2028 年 11.5GW，对应约 100 万颗、203 万颗和 474 万颗 TPU。它说明定制 ASIC 正从云厂内部自用扩展到外部客户，但数量是投行模型而非公司正式指引。 |
+| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf) | 研报 | • **观点 1（第2、4-5页，External TPU sales framework） · 支持**：巴克莱根据 Broadcom/Blackstone/Apollo 的 20GW AI XPV 计划与 Google-Blackstone 合资项目，估计外部 TPU 容量可由 2026 年 1.4GW 增至 2028 年 11.5GW，对应约 100 万颗、203 万颗和 474 万颗 TPU。它说明定制 ASIC 正从云厂内部自用扩展到外部客户，但数量是投行模型而非公司正式指引。 |
 
 ##### Apollo
 
@@ -114,7 +155,7 @@ GPU/ASIC 的需求、替代路线和交付可见性正在增强，但当前证�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | • **观点 1（第2、4-5页，External TPU sales framework） · 支持**：巴克莱根据 Broadcom/Blackstone/Apollo 的 20GW AI XPV 计划与 Google-Blackstone 合资项目，估计外部 TPU 容量可由 2026 年 1.4GW 增至 2028 年 11.5GW，对应约 100 万颗、203 万颗和 474 万颗 TPU。它说明定制 ASIC 正从云厂内部自用扩展到外部客户，但数量是投行模型而非公司正式指引。 |
+| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf) | 研报 | • **观点 1（第2、4-5页，External TPU sales framework） · 支持**：巴克莱根据 Broadcom/Blackstone/Apollo 的 20GW AI XPV 计划与 Google-Blackstone 合资项目，估计外部 TPU 容量可由 2026 年 1.4GW 增至 2028 年 11.5GW，对应约 100 万颗、203 万颗和 474 万颗 TPU。它说明定制 ASIC 正从云厂内部自用扩展到外部客户，但数量是投行模型而非公司正式指引。 |
 
 ##### Blackstone
 
@@ -124,7 +165,7 @@ GPU/ASIC 的需求、替代路线和交付可见性正在增强，但当前证�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | • **观点 1（第2、4-5页，External TPU sales framework） · 支持**：巴克莱根据 Broadcom/Blackstone/Apollo 的 20GW AI XPV 计划与 Google-Blackstone 合资项目，估计外部 TPU 容量可由 2026 年 1.4GW 增至 2028 年 11.5GW，对应约 100 万颗、203 万颗和 474 万颗 TPU。它说明定制 ASIC 正从云厂内部自用扩展到外部客户，但数量是投行模型而非公司正式指引。 |
+| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf) | 研报 | • **观点 1（第2、4-5页，External TPU sales framework） · 支持**：巴克莱根据 Broadcom/Blackstone/Apollo 的 20GW AI XPV 计划与 Google-Blackstone 合资项目，估计外部 TPU 容量可由 2026 年 1.4GW 增至 2028 年 11.5GW，对应约 100 万颗、203 万颗和 474 万颗 TPU。它说明定制 ASIC 正从云厂内部自用扩展到外部客户，但数量是投行模型而非公司正式指引。 |
 
 ##### Broadcom
 
@@ -134,7 +175,7 @@ GPU/ASIC 的需求、替代路线和交付可见性正在增强，但当前证�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | • **观点 1（第2、4-5页，External TPU sales framework） · 支持**：巴克莱根据 Broadcom/Blackstone/Apollo 的 20GW AI XPV 计划与 Google-Blackstone 合资项目，估计外部 TPU 容量可由 2026 年 1.4GW 增至 2028 年 11.5GW，对应约 100 万颗、203 万颗和 474 万颗 TPU。它说明定制 ASIC 正从云厂内部自用扩展到外部客户，但数量是投行模型而非公司正式指引。 |
+| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf) | 研报 | • **观点 1（第2、4-5页，External TPU sales framework） · 支持**：巴克莱根据 Broadcom/Blackstone/Apollo 的 20GW AI XPV 计划与 Google-Blackstone 合资项目，估计外部 TPU 容量可由 2026 年 1.4GW 增至 2028 年 11.5GW，对应约 100 万颗、203 万颗和 474 万颗 TPU。它说明定制 ASIC 正从云厂内部自用扩展到外部客户，但数量是投行模型而非公司正式指引。 |
 
 ##### Hyperion
 
@@ -144,7 +185,7 @@ GPU/ASIC 的需求、替代路线和交付可见性正在增强，但当前证�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[德银-Meta：宏大野心需匹配宏大体量](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf>) | 研报 | • **观点 1（第2、5-6页，capacity and funding structure） · 线索**：Meta 的容量情景由 7GW 升至 14GW，资本开支预期可能升至 2027 年 2,000 亿美元以上；Hyperion 等伙伴融资可能降低报表内直接负担。对治理分析而言，关键不是只看名义 capex，而是追踪担保、租赁、合作方承诺及最终风险承担者。 |
+| 2026-07-24<br>[德银-Meta：宏大野心需匹配宏大体量](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf) | 研报 | • **观点 1（第2、5-6页，capacity and funding structure） · 线索**：Meta 的容量情景由 7GW 升至 14GW，资本开支预期可能升至 2027 年 2,000 亿美元以上；Hyperion 等伙伴融资可能降低报表内直接负担。对治理分析而言，关键不是只看名义 capex，而是追踪担保、租赁、合作方承诺及最终风险承担者。 |
 
 #### 订单与交付可见性
 
@@ -160,8 +201,8 @@ GPU/ASIC 的需求、替代路线和交付可见性正在增强，但当前证�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf>) | 研报 | • **观点 1（第1、3页，MI450/Helios ramp） · 支持**：MI450 GPU 与 Helios 机架系统计划于 2026 年 9 月开始交付，2026 年第四季度和 2027 年上半年加速爬坡；报告称 Anthropic、OpenAI、Meta 等客户已有数 GW 部署排至 2027 年。订单计划提供了可见性，但实际收入仍取决于系统交付和客户数据中心按期完工。 |
-| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | 研报 | • **观点 1（第1页，Key Takeaways） · 支持**：摩根士丹利称 Helios 在关键客户处的采用进展顺利，客户证言显示 2027 年将强劲爬坡，并把 coding agent 视为 AMD GPU 生态采用的明确加速器；但该报告同时认为 AMD 本代产品仍未取得领导地位。 |
+| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf) | 研报 | • **观点 1（第1、3页，MI450/Helios ramp） · 支持**：MI450 GPU 与 Helios 机架系统计划于 2026 年 9 月开始交付，2026 年第四季度和 2027 年上半年加速爬坡；报告称 Anthropic、OpenAI、Meta 等客户已有数 GW 部署排至 2027 年。订单计划提供了可见性，但实际收入仍取决于系统交付和客户数据中心按期完工。 |
+| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf) | 研报 | • **观点 1（第1页，Key Takeaways） · 支持**：摩根士丹利称 Helios 在关键客户处的采用进展顺利，客户证言显示 2027 年将强劲爬坡，并把 coding agent 视为 AMD GPU 生态采用的明确加速器；但该报告同时认为 AMD 本代产品仍未取得领导地位。 |
 
 ##### Alphabet / Google
 
@@ -171,7 +212,7 @@ GPU/ASIC 的需求、替代路线和交付可见性正在增强，但当前证�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | • **观点 1（第2、4-5页，External TPU sales framework） · 支持**：巴克莱根据 Broadcom/Blackstone/Apollo 的 20GW AI XPV 计划与 Google-Blackstone 合资项目，估计外部 TPU 容量可由 2026 年 1.4GW 增至 2028 年 11.5GW，对应约 100 万颗、203 万颗和 474 万颗 TPU。它说明定制 ASIC 正从云厂内部自用扩展到外部客户，但数量是投行模型而非公司正式指引。<br>• **观点 2（第6页，What's Already Been Announced） · 支持**：巴克莱依据已披露数据中心供应商项目估算，2026 年第二季度 Google 外部 TPU 收入 backlog 约 880 亿美元，长期累计潜在收入超过 3,000 亿美元；该估计只覆盖首批已识别项目，必须与实际采购承诺和交付节奏交叉验证。 |
+| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf) | 研报 | • **观点 1（第2、4-5页，External TPU sales framework） · 支持**：巴克莱根据 Broadcom/Blackstone/Apollo 的 20GW AI XPV 计划与 Google-Blackstone 合资项目，估计外部 TPU 容量可由 2026 年 1.4GW 增至 2028 年 11.5GW，对应约 100 万颗、203 万颗和 474 万颗 TPU。它说明定制 ASIC 正从云厂内部自用扩展到外部客户，但数量是投行模型而非公司正式指引。<br>• **观点 2（第6页，What's Already Been Announced） · 支持**：巴克莱依据已披露数据中心供应商项目估算，2026 年第二季度 Google 外部 TPU 收入 backlog 约 880 亿美元，长期累计潜在收入超过 3,000 亿美元；该估计只覆盖首批已识别项目，必须与实际采购承诺和交付节奏交叉验证。 |
 
 ##### Anthropic
 
@@ -181,7 +222,7 @@ GPU/ASIC 的需求、替代路线和交付可见性正在增强，但当前证�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf>) | 研报 | • **观点 1（第1、3页，MI450/Helios ramp） · 支持**：MI450 GPU 与 Helios 机架系统计划于 2026 年 9 月开始交付，2026 年第四季度和 2027 年上半年加速爬坡；报告称 Anthropic、OpenAI、Meta 等客户已有数 GW 部署排至 2027 年。订单计划提供了可见性，但实际收入仍取决于系统交付和客户数据中心按期完工。 |
+| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf) | 研报 | • **观点 1（第1、3页，MI450/Helios ramp） · 支持**：MI450 GPU 与 Helios 机架系统计划于 2026 年 9 月开始交付，2026 年第四季度和 2027 年上半年加速爬坡；报告称 Anthropic、OpenAI、Meta 等客户已有数 GW 部署排至 2027 年。订单计划提供了可见性，但实际收入仍取决于系统交付和客户数据中心按期完工。 |
 
 ##### Apollo
 
@@ -191,7 +232,7 @@ GPU/ASIC 的需求、替代路线和交付可见性正在增强，但当前证�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | • **观点 1（第2、4-5页，External TPU sales framework） · 支持**：巴克莱根据 Broadcom/Blackstone/Apollo 的 20GW AI XPV 计划与 Google-Blackstone 合资项目，估计外部 TPU 容量可由 2026 年 1.4GW 增至 2028 年 11.5GW，对应约 100 万颗、203 万颗和 474 万颗 TPU。它说明定制 ASIC 正从云厂内部自用扩展到外部客户，但数量是投行模型而非公司正式指引。 |
+| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf) | 研报 | • **观点 1（第2、4-5页，External TPU sales framework） · 支持**：巴克莱根据 Broadcom/Blackstone/Apollo 的 20GW AI XPV 计划与 Google-Blackstone 合资项目，估计外部 TPU 容量可由 2026 年 1.4GW 增至 2028 年 11.5GW，对应约 100 万颗、203 万颗和 474 万颗 TPU。它说明定制 ASIC 正从云厂内部自用扩展到外部客户，但数量是投行模型而非公司正式指引。 |
 
 ##### Blackstone
 
@@ -201,7 +242,7 @@ GPU/ASIC 的需求、替代路线和交付可见性正在增强，但当前证�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | • **观点 1（第2、4-5页，External TPU sales framework） · 支持**：巴克莱根据 Broadcom/Blackstone/Apollo 的 20GW AI XPV 计划与 Google-Blackstone 合资项目，估计外部 TPU 容量可由 2026 年 1.4GW 增至 2028 年 11.5GW，对应约 100 万颗、203 万颗和 474 万颗 TPU。它说明定制 ASIC 正从云厂内部自用扩展到外部客户，但数量是投行模型而非公司正式指引。 |
+| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf) | 研报 | • **观点 1（第2、4-5页，External TPU sales framework） · 支持**：巴克莱根据 Broadcom/Blackstone/Apollo 的 20GW AI XPV 计划与 Google-Blackstone 合资项目，估计外部 TPU 容量可由 2026 年 1.4GW 增至 2028 年 11.5GW，对应约 100 万颗、203 万颗和 474 万颗 TPU。它说明定制 ASIC 正从云厂内部自用扩展到外部客户，但数量是投行模型而非公司正式指引。 |
 
 ##### Broadcom
 
@@ -211,7 +252,7 @@ GPU/ASIC 的需求、替代路线和交付可见性正在增强，但当前证�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | • **观点 1（第2、4-5页，External TPU sales framework） · 支持**：巴克莱根据 Broadcom/Blackstone/Apollo 的 20GW AI XPV 计划与 Google-Blackstone 合资项目，估计外部 TPU 容量可由 2026 年 1.4GW 增至 2028 年 11.5GW，对应约 100 万颗、203 万颗和 474 万颗 TPU。它说明定制 ASIC 正从云厂内部自用扩展到外部客户，但数量是投行模型而非公司正式指引。 |
+| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf) | 研报 | • **观点 1（第2、4-5页，External TPU sales framework） · 支持**：巴克莱根据 Broadcom/Blackstone/Apollo 的 20GW AI XPV 计划与 Google-Blackstone 合资项目，估计外部 TPU 容量可由 2026 年 1.4GW 增至 2028 年 11.5GW，对应约 100 万颗、203 万颗和 474 万颗 TPU。它说明定制 ASIC 正从云厂内部自用扩展到外部客户，但数量是投行模型而非公司正式指引。 |
 
 ##### Meta
 
@@ -221,7 +262,7 @@ GPU/ASIC 的需求、替代路线和交付可见性正在增强，但当前证�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf>) | 研报 | • **观点 1（第1、3页，MI450/Helios ramp） · 支持**：MI450 GPU 与 Helios 机架系统计划于 2026 年 9 月开始交付，2026 年第四季度和 2027 年上半年加速爬坡；报告称 Anthropic、OpenAI、Meta 等客户已有数 GW 部署排至 2027 年。订单计划提供了可见性，但实际收入仍取决于系统交付和客户数据中心按期完工。 |
+| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf) | 研报 | • **观点 1（第1、3页，MI450/Helios ramp） · 支持**：MI450 GPU 与 Helios 机架系统计划于 2026 年 9 月开始交付，2026 年第四季度和 2027 年上半年加速爬坡；报告称 Anthropic、OpenAI、Meta 等客户已有数 GW 部署排至 2027 年。订单计划提供了可见性，但实际收入仍取决于系统交付和客户数据中心按期完工。 |
 
 ##### OpenAI
 
@@ -231,7 +272,7 @@ GPU/ASIC 的需求、替代路线和交付可见性正在增强，但当前证�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf>) | 研报 | • **观点 1（第1、3页，MI450/Helios ramp） · 支持**：MI450 GPU 与 Helios 机架系统计划于 2026 年 9 月开始交付，2026 年第四季度和 2027 年上半年加速爬坡；报告称 Anthropic、OpenAI、Meta 等客户已有数 GW 部署排至 2027 年。订单计划提供了可见性，但实际收入仍取决于系统交付和客户数据中心按期完工。 |
+| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf) | 研报 | • **观点 1（第1、3页，MI450/Helios ramp） · 支持**：MI450 GPU 与 Helios 机架系统计划于 2026 年 9 月开始交付，2026 年第四季度和 2027 年上半年加速爬坡；报告称 Anthropic、OpenAI、Meta 等客户已有数 GW 部署排至 2027 年。订单计划提供了可见性，但实际收入仍取决于系统交付和客户数据中心按期完工。 |
 
 ##### 数据中心客户
 
@@ -241,7 +282,7 @@ GPU/ASIC 的需求、替代路线和交付可见性正在增强，但当前证�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf>) | 研报 | • **观点 1（第1、3页，MI450/Helios ramp） · 支持**：MI450 GPU 与 Helios 机架系统计划于 2026 年 9 月开始交付，2026 年第四季度和 2027 年上半年加速爬坡；报告称 Anthropic、OpenAI、Meta 等客户已有数 GW 部署排至 2027 年。订单计划提供了可见性，但实际收入仍取决于系统交付和客户数据中心按期完工。 |
+| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf) | 研报 | • **观点 1（第1、3页，MI450/Helios ramp） · 支持**：MI450 GPU 与 Helios 机架系统计划于 2026 年 9 月开始交付，2026 年第四季度和 2027 年上半年加速爬坡；报告称 Anthropic、OpenAI、Meta 等客户已有数 GW 部署排至 2027 年。订单计划提供了可见性，但实际收入仍取决于系统交付和客户数据中心按期完工。 |
 
 #### 收入与利润兑现
 
@@ -257,14 +298,14 @@ GPU/ASIC 的需求、替代路线和交付可见性正在增强，但当前证�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根大通：PC 与服务器传导分析](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-PC与服务器：英特尔2026年二季度财报及AMD“Advancing AI 2026”大会传导分析-260724.pdf>) | 研报 | • **观点 1（第1页，AI-driven general server demand strength） · 支持**：Intel DCAI 收入在 2026 年第二季度环比增长 24%、同比增长 59%，由云服务商和企业服务器需求及供给改善驱动；管理层预计 2026 年服务器 CPU 需求保持双位数增长，并延续到 2027-2028 年。它是 AI 基础设施扩张的邻近验证，不等同于 GPU/ASIC 自身收入。 |
+| 2026-07-24<br>[摩根大通：PC 与服务器传导分析](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\摩根大通-PC与服务器：英特尔2026年二季度财报及AMD“Advancing AI 2026”大会传导分析-260724.pdf) | 研报 | • **观点 1（第1页，AI-driven general server demand strength） · 支持**：Intel DCAI 收入在 2026 年第二季度环比增长 24%、同比增长 59%，由云服务商和企业服务器需求及供给改善驱动；管理层预计 2026 年服务器 CPU 需求保持双位数增长，并延续到 2027-2028 年。它是 AI 基础设施扩张的邻近验证，不等同于 GPU/ASIC 自身收入。 |
 
 
 ### 最新结论与趋势
 
-仅看 7 月 26 日 IMA 批次，GPU/ASIC 需求仍处于扩张阶段，而且已经从单一 NVIDIA GPU 扩展为三条并行路径：大客户继续上调算力预算，AMD 以 MI450/Helios 争夺数 GW 部署，Google TPU 开始从内部自用走向外部 merchant ASIC。最强的现实锚点是 Meta 2026 年 1,250 亿至 1,450 亿美元资本开支指引、MI450 计划在 2026 年第三季度末交付，以及服务器收入和订单仍受供给限制；最激进的 1.4 万亿美元 TAM、11.5GW 外部 TPU 和 3,000 亿美元 backlog 则主要来自公司或投行模型，不能当成已兑现事实。当前判断为：需求方向强且结构性扩散，但远期规模预测明显跑在财务兑现之前。
+Q2已按Q1需求方拆成分类映射预测与其它预测。分类映射中，北美CSP高端AI服务器、xAI GPU等效存量、CoreWeave活跃功率、Meta H100等效计划、JUPITER GH200配置和HUMAIN部署计划提供了不同强度的类别样本；大型企业与工业客户仍只有NVIDIA混合收入桶，无法形成独立数量。其它预测保留全球AI服务器181万台、2026年增速超过28%、GPU型系统占69.7%及约161万台机械估算。所有分项单位、期间和覆盖范围不一致，不能相加为GPU总需求。
 
-**趋势变化：** 本批次新增的核心变化是 ASIC 外部商业化和 AMD 机架级交付时间表变得更具体，需求判断由“AI capex 高”推进到“客户、路线和交付窗口可识别”。
+**趋势变化：** 需求量研究从单一市场总量升级为Q1分类映射加未映射总量双层结构；信息覆盖更完整，但多数类别仍是样本或代理而非全类别总量，数量节点维持弱状态。
 
 ## 2. 供给侧
 
@@ -288,7 +329,7 @@ GPU/ASIC 的需求、替代路线和交付可见性正在增强，但当前证�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根大通：PC 与服务器传导分析](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-PC与服务器：英特尔2026年二季度财报及AMD“Advancing AI 2026”大会传导分析-260724.pdf>) | 研报 | • **观点 1（第2页，Intel capex guidance） · 支持**：Intel 将 2026 年资本开支指引上调至超过 200 亿美元，并称 2027 年还会显著增长，用于洁净室扩建和锁定设备订单。供给正在响应高价和短缺，因此当前稀缺性不能外推为永久稀缺。 |
+| 2026-07-24<br>[摩根大通：PC 与服务器传导分析](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\摩根大通-PC与服务器：英特尔2026年二季度财报及AMD“Advancing AI 2026”大会传导分析-260724.pdf) | 研报 | • **观点 1（第2页，Intel capex guidance） · 支持**：Intel 将 2026 年资本开支指引上调至超过 200 亿美元，并称 2027 年还会显著增长，用于洁净室扩建和锁定设备订单。供给正在响应高价和短缺，因此当前稀缺性不能外推为永久稀缺。 |
 
 #### HBM、封装与基板
 
@@ -304,7 +345,7 @@ HBM、先进封装、基板和测试是否成为可交付芯片的约束？
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根大通：PC 与服务器传导分析](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-PC与服务器：英特尔2026年二季度财报及AMD“Advancing AI 2026”大会传导分析-260724.pdf>) | 研报 | • **观点 1（第1页，AI-driven general server demand strength） · 支持**：摩根大通把先进逻辑晶圆、硅片、内存和基板列为服务器供应链的持续约束，并预计供给改善会推动 2026 年第四季度收入进一步上行。有效供给仍由多项输入的最小值决定，而不是只看 GPU 晶圆数量。<br>• **观点 2（第2页，EMIB-T high volume ramp） · 支持**：报告称 Intel EMIB-T 当前良率约 60%，目标 2027 年进入高量产；多个 AI 加速器项目因 CoWoS 紧张而评估 EMIB-T，但预计先从小批量开始，最大项目 TPU v9 或到 2027 年末至 2028 年才量产。替代封装路线正在形成，但短期无法立刻消除瓶颈。 |
+| 2026-07-24<br>[摩根大通：PC 与服务器传导分析](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\摩根大通-PC与服务器：英特尔2026年二季度财报及AMD“Advancing AI 2026”大会传导分析-260724.pdf) | 研报 | • **观点 1（第1页，AI-driven general server demand strength） · 支持**：摩根大通把先进逻辑晶圆、硅片、内存和基板列为服务器供应链的持续约束，并预计供给改善会推动 2026 年第四季度收入进一步上行。有效供给仍由多项输入的最小值决定，而不是只看 GPU 晶圆数量。<br>• **观点 2（第2页，EMIB-T high volume ramp） · 支持**：报告称 Intel EMIB-T 当前良率约 60%，目标 2027 年进入高量产；多个 AI 加速器项目因 CoWoS 紧张而评估 EMIB-T，但预计先从小批量开始，最大项目 TPU v9 或到 2027 年末至 2028 年才量产。替代封装路线正在形成，但短期无法立刻消除瓶颈。 |
 
 ##### AI 服务器供应链
 
@@ -314,7 +355,7 @@ HBM、先进封装、基板和测试是否成为可交付芯片的约束？
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根大通：PC 与服务器传导分析](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-PC与服务器：英特尔2026年二季度财报及AMD“Advancing AI 2026”大会传导分析-260724.pdf>) | 研报 | • **观点 1（第1页，AI-driven general server demand strength） · 支持**：摩根大通把先进逻辑晶圆、硅片、内存和基板列为服务器供应链的持续约束，并预计供给改善会推动 2026 年第四季度收入进一步上行。有效供给仍由多项输入的最小值决定，而不是只看 GPU 晶圆数量。 |
+| 2026-07-24<br>[摩根大通：PC 与服务器传导分析](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\摩根大通-PC与服务器：英特尔2026年二季度财报及AMD“Advancing AI 2026”大会传导分析-260724.pdf) | 研报 | • **观点 1（第1页，AI-driven general server demand strength） · 支持**：摩根大通把先进逻辑晶圆、硅片、内存和基板列为服务器供应链的持续约束，并预计供给改善会推动 2026 年第四季度收入进一步上行。有效供给仍由多项输入的最小值决定，而不是只看 GPU 晶圆数量。 |
 
 #### 系统集成与调试
 
@@ -330,8 +371,8 @@ ODM、机架、网络和软件调试是否限制芯片转化为可用系统？
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf>) | 研报 | • **观点 1（第3-4页，MI450/Helios shipping schedule） · 支持**：AMD 将 MI450/Helios 的首批交付定在 2026 年第三季度末，再于第四季度和 2027 年上半年提速；管理层称分阶段爬坡是为了给 ODM 调试制造并与客户机房建设对齐。GPU 供给的可用单位已经是按期调试完成的机架系统，而非单颗芯片。 |
-| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | 研报 | • **观点 1（第1页，Compute leadership） · 支持**：Helios 已进入量产，计划 2026 年第三季度开始发货、第四季度爬坡。该进度支持 AMD 供给增加，但客户采用、ODM 调试和机房配套仍决定收入确认速度。 |
+| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf) | 研报 | • **观点 1（第3-4页，MI450/Helios shipping schedule） · 支持**：AMD 将 MI450/Helios 的首批交付定在 2026 年第三季度末，再于第四季度和 2027 年上半年提速；管理层称分阶段爬坡是为了给 ODM 调试制造并与客户机房建设对齐。GPU 供给的可用单位已经是按期调试完成的机架系统，而非单颗芯片。 |
+| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf) | 研报 | • **观点 1（第1页，Compute leadership） · 支持**：Helios 已进入量产，计划 2026 年第三季度开始发货、第四季度爬坡。该进度支持 AMD 供给增加，但客户采用、ODM 调试和机房配套仍决定收入确认速度。 |
 
 ##### ODM / 系统集成商
 
@@ -341,8 +382,8 @@ ODM、机架、网络和软件调试是否限制芯片转化为可用系统？
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf>) | 研报 | • **观点 1（第3-4页，MI450/Helios shipping schedule） · 支持**：AMD 将 MI450/Helios 的首批交付定在 2026 年第三季度末，再于第四季度和 2027 年上半年提速；管理层称分阶段爬坡是为了给 ODM 调试制造并与客户机房建设对齐。GPU 供给的可用单位已经是按期调试完成的机架系统，而非单颗芯片。 |
-| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | 研报 | • **观点 1（第1页，Compute leadership） · 支持**：Helios 已进入量产，计划 2026 年第三季度开始发货、第四季度爬坡。该进度支持 AMD 供给增加，但客户采用、ODM 调试和机房配套仍决定收入确认速度。 |
+| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf) | 研报 | • **观点 1（第3-4页，MI450/Helios shipping schedule） · 支持**：AMD 将 MI450/Helios 的首批交付定在 2026 年第三季度末，再于第四季度和 2027 年上半年提速；管理层称分阶段爬坡是为了给 ODM 调试制造并与客户机房建设对齐。GPU 供给的可用单位已经是按期调试完成的机架系统，而非单颗芯片。 |
+| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf) | 研报 | • **观点 1（第1页，Compute leadership） · 支持**：Helios 已进入量产，计划 2026 年第三季度开始发货、第四季度爬坡。该进度支持 AMD 供给增加，但客户采用、ODM 调试和机房配套仍决定收入确认速度。 |
 
 ##### 数据中心客户
 
@@ -352,8 +393,8 @@ ODM、机架、网络和软件调试是否限制芯片转化为可用系统？
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf>) | 研报 | • **观点 1（第3-4页，MI450/Helios shipping schedule） · 支持**：AMD 将 MI450/Helios 的首批交付定在 2026 年第三季度末，再于第四季度和 2027 年上半年提速；管理层称分阶段爬坡是为了给 ODM 调试制造并与客户机房建设对齐。GPU 供给的可用单位已经是按期调试完成的机架系统，而非单颗芯片。 |
-| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | 研报 | • **观点 1（第1页，Compute leadership） · 支持**：Helios 已进入量产，计划 2026 年第三季度开始发货、第四季度爬坡。该进度支持 AMD 供给增加，但客户采用、ODM 调试和机房配套仍决定收入确认速度。 |
+| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf) | 研报 | • **观点 1（第3-4页，MI450/Helios shipping schedule） · 支持**：AMD 将 MI450/Helios 的首批交付定在 2026 年第三季度末，再于第四季度和 2027 年上半年提速；管理层称分阶段爬坡是为了给 ODM 调试制造并与客户机房建设对齐。GPU 供给的可用单位已经是按期调试完成的机架系统，而非单颗芯片。 |
+| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf) | 研报 | • **观点 1（第1页，Compute leadership） · 支持**：Helios 已进入量产，计划 2026 年第三季度开始发货、第四季度爬坡。该进度支持 AMD 供给增加，但客户采用、ODM 调试和机房配套仍决定收入确认速度。 |
 
 #### 机房、电力与融资
 
@@ -369,7 +410,7 @@ ODM、机架、网络和软件调试是否限制芯片转化为可用系统？
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | • **观点 1（第2-4页，TPU-aaS entity structure and unit economics） · 支持**：外部 TPU 由 Google 与 Broadcom 协同设计、TSMC 制造，再由 Apollo/Blackstone 融资的 SPV 购买并交给数据中心运营商管理。这个结构把芯片设计、晶圆制造、资本和机房交付绑定在一起，可扩大供给，也引入跨主体执行和融资风险。 |
+| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf) | 研报 | • **观点 1（第2-4页，TPU-aaS entity structure and unit economics） · 支持**：外部 TPU 由 Google 与 Broadcom 协同设计、TSMC 制造，再由 Apollo/Blackstone 融资的 SPV 购买并交给数据中心运营商管理。这个结构把芯片设计、晶圆制造、资本和机房交付绑定在一起，可扩大供给，也引入跨主体执行和融资风险。 |
 
 ##### Apollo
 
@@ -379,7 +420,7 @@ ODM、机架、网络和软件调试是否限制芯片转化为可用系统？
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | • **观点 1（第2-4页，TPU-aaS entity structure and unit economics） · 支持**：外部 TPU 由 Google 与 Broadcom 协同设计、TSMC 制造，再由 Apollo/Blackstone 融资的 SPV 购买并交给数据中心运营商管理。这个结构把芯片设计、晶圆制造、资本和机房交付绑定在一起，可扩大供给，也引入跨主体执行和融资风险。 |
+| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf) | 研报 | • **观点 1（第2-4页，TPU-aaS entity structure and unit economics） · 支持**：外部 TPU 由 Google 与 Broadcom 协同设计、TSMC 制造，再由 Apollo/Blackstone 融资的 SPV 购买并交给数据中心运营商管理。这个结构把芯片设计、晶圆制造、资本和机房交付绑定在一起，可扩大供给，也引入跨主体执行和融资风险。 |
 
 ##### Blackstone
 
@@ -389,7 +430,7 @@ ODM、机架、网络和软件调试是否限制芯片转化为可用系统？
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | • **观点 1（第2-4页，TPU-aaS entity structure and unit economics） · 支持**：外部 TPU 由 Google 与 Broadcom 协同设计、TSMC 制造，再由 Apollo/Blackstone 融资的 SPV 购买并交给数据中心运营商管理。这个结构把芯片设计、晶圆制造、资本和机房交付绑定在一起，可扩大供给，也引入跨主体执行和融资风险。 |
+| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf) | 研报 | • **观点 1（第2-4页，TPU-aaS entity structure and unit economics） · 支持**：外部 TPU 由 Google 与 Broadcom 协同设计、TSMC 制造，再由 Apollo/Blackstone 融资的 SPV 购买并交给数据中心运营商管理。这个结构把芯片设计、晶圆制造、资本和机房交付绑定在一起，可扩大供给，也引入跨主体执行和融资风险。 |
 
 ##### Broadcom
 
@@ -399,7 +440,7 @@ ODM、机架、网络和软件调试是否限制芯片转化为可用系统？
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | • **观点 1（第2-4页，TPU-aaS entity structure and unit economics） · 支持**：外部 TPU 由 Google 与 Broadcom 协同设计、TSMC 制造，再由 Apollo/Blackstone 融资的 SPV 购买并交给数据中心运营商管理。这个结构把芯片设计、晶圆制造、资本和机房交付绑定在一起，可扩大供给，也引入跨主体执行和融资风险。 |
+| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf) | 研报 | • **观点 1（第2-4页，TPU-aaS entity structure and unit economics） · 支持**：外部 TPU 由 Google 与 Broadcom 协同设计、TSMC 制造，再由 Apollo/Blackstone 融资的 SPV 购买并交给数据中心运营商管理。这个结构把芯片设计、晶圆制造、资本和机房交付绑定在一起，可扩大供给，也引入跨主体执行和融资风险。 |
 
 ##### Hyperion
 
@@ -409,7 +450,7 @@ ODM、机架、网络和软件调试是否限制芯片转化为可用系统？
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[德银-Meta：宏大野心需匹配宏大体量](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf>) | 研报 | • **观点 1（第5-6页，2027 capex expectations） · 支持**：若 Meta 容量由 2026 年约 7GW 增至 2027 年 14GW，Hyperion 等合作方可能提供 1.0-1.5GW，使 Meta 直接融资的新增容量约为 5.5GW。伙伴资本可以缓解资产负担，但不能消除电力、服务器和建设交付约束。 |
+| 2026-07-24<br>[德银-Meta：宏大野心需匹配宏大体量](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf) | 研报 | • **观点 1（第5-6页，2027 capex expectations） · 支持**：若 Meta 容量由 2026 年约 7GW 增至 2027 年 14GW，Hyperion 等合作方可能提供 1.0-1.5GW，使 Meta 直接融资的新增容量约为 5.5GW。伙伴资本可以缓解资产负担，但不能消除电力、服务器和建设交付约束。 |
 
 ##### Meta
 
@@ -419,7 +460,7 @@ ODM、机架、网络和软件调试是否限制芯片转化为可用系统？
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[德银-Meta：宏大野心需匹配宏大体量](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf>) | 研报 | • **观点 1（第5-6页，2027 capex expectations） · 支持**：若 Meta 容量由 2026 年约 7GW 增至 2027 年 14GW，Hyperion 等合作方可能提供 1.0-1.5GW，使 Meta 直接融资的新增容量约为 5.5GW。伙伴资本可以缓解资产负担，但不能消除电力、服务器和建设交付约束。 |
+| 2026-07-24<br>[德银-Meta：宏大野心需匹配宏大体量](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf) | 研报 | • **观点 1（第5-6页，2027 capex expectations） · 支持**：若 Meta 容量由 2026 年约 7GW 增至 2027 年 14GW，Hyperion 等合作方可能提供 1.0-1.5GW，使 Meta 直接融资的新增容量约为 5.5GW。伙伴资本可以缓解资产负担，但不能消除电力、服务器和建设交付约束。 |
 
 ##### TSMC
 
@@ -429,7 +470,7 @@ ODM、机架、网络和软件调试是否限制芯片转化为可用系统？
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | • **观点 1（第2-4页，TPU-aaS entity structure and unit economics） · 支持**：外部 TPU 由 Google 与 Broadcom 协同设计、TSMC 制造，再由 Apollo/Blackstone 融资的 SPV 购买并交给数据中心运营商管理。这个结构把芯片设计、晶圆制造、资本和机房交付绑定在一起，可扩大供给，也引入跨主体执行和融资风险。 |
+| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf) | 研报 | • **观点 1（第2-4页，TPU-aaS entity structure and unit economics） · 支持**：外部 TPU 由 Google 与 Broadcom 协同设计、TSMC 制造，再由 Apollo/Blackstone 融资的 SPV 购买并交给数据中心运营商管理。这个结构把芯片设计、晶圆制造、资本和机房交付绑定在一起，可扩大供给，也引入跨主体执行和融资风险。 |
 
 #### 最终可交付供给
 
@@ -445,7 +486,7 @@ ODM、机架、网络和软件调试是否限制芯片转化为可用系统？
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根大通：PC 与服务器传导分析](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-PC与服务器：英特尔2026年二季度财报及AMD“Advancing AI 2026”大会传导分析-260724.pdf>) | 研报 | • **观点 1（第1页，AI-driven general server demand strength） · 支持**：摩根大通把先进逻辑晶圆、硅片、内存和基板列为服务器供应链的持续约束，并预计供给改善会推动 2026 年第四季度收入进一步上行。有效供给仍由多项输入的最小值决定，而不是只看 GPU 晶圆数量。 |
+| 2026-07-24<br>[摩根大通：PC 与服务器传导分析](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\摩根大通-PC与服务器：英特尔2026年二季度财报及AMD“Advancing AI 2026”大会传导分析-260724.pdf) | 研报 | • **观点 1（第1页，AI-driven general server demand strength） · 支持**：摩根大通把先进逻辑晶圆、硅片、内存和基板列为服务器供应链的持续约束，并预计供给改善会推动 2026 年第四季度收入进一步上行。有效供给仍由多项输入的最小值决定，而不是只看 GPU 晶圆数量。 |
 
 ##### AMD
 
@@ -455,7 +496,7 @@ ODM、机架、网络和软件调试是否限制芯片转化为可用系统？
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf>) | 研报 | • **观点 1（第1、3页，MI450/Helios ramp） · 支持**：MI450 GPU 与 Helios 机架系统计划于 2026 年 9 月开始交付，2026 年第四季度和 2027 年上半年加速爬坡；报告称 Anthropic、OpenAI、Meta 等客户已有数 GW 部署排至 2027 年。订单计划提供了可见性，但实际收入仍取决于系统交付和客户数据中心按期完工。 |
+| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf) | 研报 | • **观点 1（第1、3页，MI450/Helios ramp） · 支持**：MI450 GPU 与 Helios 机架系统计划于 2026 年 9 月开始交付，2026 年第四季度和 2027 年上半年加速爬坡；报告称 Anthropic、OpenAI、Meta 等客户已有数 GW 部署排至 2027 年。订单计划提供了可见性，但实际收入仍取决于系统交付和客户数据中心按期完工。 |
 
 ##### Anthropic
 
@@ -465,7 +506,7 @@ ODM、机架、网络和软件调试是否限制芯片转化为可用系统？
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf>) | 研报 | • **观点 1（第1、3页，MI450/Helios ramp） · 支持**：MI450 GPU 与 Helios 机架系统计划于 2026 年 9 月开始交付，2026 年第四季度和 2027 年上半年加速爬坡；报告称 Anthropic、OpenAI、Meta 等客户已有数 GW 部署排至 2027 年。订单计划提供了可见性，但实际收入仍取决于系统交付和客户数据中心按期完工。 |
+| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf) | 研报 | • **观点 1（第1、3页，MI450/Helios ramp） · 支持**：MI450 GPU 与 Helios 机架系统计划于 2026 年 9 月开始交付，2026 年第四季度和 2027 年上半年加速爬坡；报告称 Anthropic、OpenAI、Meta 等客户已有数 GW 部署排至 2027 年。订单计划提供了可见性，但实际收入仍取决于系统交付和客户数据中心按期完工。 |
 
 ##### Intel
 
@@ -475,7 +516,7 @@ ODM、机架、网络和软件调试是否限制芯片转化为可用系统？
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根大通：PC 与服务器传导分析](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-PC与服务器：英特尔2026年二季度财报及AMD“Advancing AI 2026”大会传导分析-260724.pdf>) | 研报 | • **观点 1（第1页，AI-driven general server demand strength） · 支持**：摩根大通把先进逻辑晶圆、硅片、内存和基板列为服务器供应链的持续约束，并预计供给改善会推动 2026 年第四季度收入进一步上行。有效供给仍由多项输入的最小值决定，而不是只看 GPU 晶圆数量。 |
+| 2026-07-24<br>[摩根大通：PC 与服务器传导分析](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\摩根大通-PC与服务器：英特尔2026年二季度财报及AMD“Advancing AI 2026”大会传导分析-260724.pdf) | 研报 | • **观点 1（第1页，AI-driven general server demand strength） · 支持**：摩根大通把先进逻辑晶圆、硅片、内存和基板列为服务器供应链的持续约束，并预计供给改善会推动 2026 年第四季度收入进一步上行。有效供给仍由多项输入的最小值决定，而不是只看 GPU 晶圆数量。 |
 
 ##### Meta
 
@@ -485,7 +526,7 @@ ODM、机架、网络和软件调试是否限制芯片转化为可用系统？
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf>) | 研报 | • **观点 1（第1、3页，MI450/Helios ramp） · 支持**：MI450 GPU 与 Helios 机架系统计划于 2026 年 9 月开始交付，2026 年第四季度和 2027 年上半年加速爬坡；报告称 Anthropic、OpenAI、Meta 等客户已有数 GW 部署排至 2027 年。订单计划提供了可见性，但实际收入仍取决于系统交付和客户数据中心按期完工。 |
+| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf) | 研报 | • **观点 1（第1、3页，MI450/Helios ramp） · 支持**：MI450 GPU 与 Helios 机架系统计划于 2026 年 9 月开始交付，2026 年第四季度和 2027 年上半年加速爬坡；报告称 Anthropic、OpenAI、Meta 等客户已有数 GW 部署排至 2027 年。订单计划提供了可见性，但实际收入仍取决于系统交付和客户数据中心按期完工。 |
 
 ##### OpenAI
 
@@ -495,7 +536,7 @@ ODM、机架、网络和软件调试是否限制芯片转化为可用系统？
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf>) | 研报 | • **观点 1（第1、3页，MI450/Helios ramp） · 支持**：MI450 GPU 与 Helios 机架系统计划于 2026 年 9 月开始交付，2026 年第四季度和 2027 年上半年加速爬坡；报告称 Anthropic、OpenAI、Meta 等客户已有数 GW 部署排至 2027 年。订单计划提供了可见性，但实际收入仍取决于系统交付和客户数据中心按期完工。 |
+| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf) | 研报 | • **观点 1（第1、3页，MI450/Helios ramp） · 支持**：MI450 GPU 与 Helios 机架系统计划于 2026 年 9 月开始交付，2026 年第四季度和 2027 年上半年加速爬坡；报告称 Anthropic、OpenAI、Meta 等客户已有数 GW 部署排至 2027 年。订单计划提供了可见性，但实际收入仍取决于系统交付和客户数据中心按期完工。 |
 
 ##### 数据中心客户
 
@@ -505,7 +546,7 @@ ODM、机架、网络和软件调试是否限制芯片转化为可用系统？
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf>) | 研报 | • **观点 1（第1、3页，MI450/Helios ramp） · 支持**：MI450 GPU 与 Helios 机架系统计划于 2026 年 9 月开始交付，2026 年第四季度和 2027 年上半年加速爬坡；报告称 Anthropic、OpenAI、Meta 等客户已有数 GW 部署排至 2027 年。订单计划提供了可见性，但实际收入仍取决于系统交付和客户数据中心按期完工。 |
+| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf) | 研报 | • **观点 1（第1、3页，MI450/Helios ramp） · 支持**：MI450 GPU 与 Helios 机架系统计划于 2026 年 9 月开始交付，2026 年第四季度和 2027 年上半年加速爬坡；报告称 Anthropic、OpenAI、Meta 等客户已有数 GW 部署排至 2027 年。订单计划提供了可见性，但实际收入仍取决于系统交付和客户数据中心按期完工。 |
 
 
 ### 最新结论与趋势
@@ -536,7 +577,7 @@ GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf>) | 研报 | • **观点 1（第2、4页，portfolio and accelerator mix） · 支持**：摩根大通认为 GPU 在整体 AI 加速器 TAM 中的占比可能由 2025 年约 85% 降至 2030 年 60%-70%，原因是定制 XPU/ASIC 增长更快；但 GPU 绝对市场仍可能以接近 40% 的复合增速扩张。技术替代更可能表现为份额稀释，而不是 GPU 需求收缩。 |
+| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf) | 研报 | • **观点 1（第2、4页，portfolio and accelerator mix） · 支持**：摩根大通认为 GPU 在整体 AI 加速器 TAM 中的占比可能由 2025 年约 85% 降至 2030 年 60%-70%，原因是定制 XPU/ASIC 增长更快；但 GPU 绝对市场仍可能以接近 40% 的复合增速扩张。技术替代更可能表现为份额稀释，而不是 GPU 需求收缩。 |
 
 ##### Meta
 
@@ -546,7 +587,7 @@ GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[德银-Meta：宏大野心需匹配宏大体量](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf>) | 研报 | • **观点 1（第6页，internal Iris/MTIA roadmap） · 支持**：德银预计 Meta 会用 Iris/MTIA 内部芯片承接部分推理和推荐工作负载，以降低相对 merchant GPU 的单位算力成本；在合作方容量和自研芯片共同作用下，直接融资成本可能低于简单按新增 GW 外推。稳定、可控的推理任务是 ASIC 替代最明确的场景。 |
+| 2026-07-24<br>[德银-Meta：宏大野心需匹配宏大体量](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf) | 研报 | • **观点 1（第6页，internal Iris/MTIA roadmap） · 支持**：德银预计 Meta 会用 Iris/MTIA 内部芯片承接部分推理和推荐工作负载，以降低相对 merchant GPU 的单位算力成本；在合作方容量和自研芯片共同作用下，直接融资成本可能低于简单按新增 GW 外推。稳定、可控的推理任务是 ASIC 替代最明确的场景。 |
 
 #### 端到端性能与 TCO
 
@@ -562,7 +603,7 @@ GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | 研报 | • **观点 1（第1页，Compute leadership: Helios） · 支持**：Helios 由 72 颗 MI455X GPU、18 颗 EPYC Venice CPU 和 Pensando NIC 组成；AMD 声称凭借约 15% 更多计算、50% 更多 HBM 容量/带宽和 50% 更多横向扩展带宽，可较 NVIDIA 提供最高约 30% 的每美元推理 token 优势。该结果是公司展示，尚非独立同工作负载基准。 |
+| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf) | 研报 | • **观点 1（第1页，Compute leadership: Helios） · 支持**：Helios 由 72 颗 MI455X GPU、18 颗 EPYC Venice CPU 和 Pensando NIC 组成；AMD 声称凭借约 15% 更多计算、50% 更多 HBM 容量/带宽和 50% 更多横向扩展带宽，可较 NVIDIA 提供最高约 30% 的每美元推理 token 优势。该结果是公司展示，尚非独立同工作负载基准。 |
 
 ##### Alphabet / Google
 
@@ -572,7 +613,7 @@ GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | • **观点 1（第4、6页，Google's Unit Economics） · 支持**：巴克莱假设 Google 2026 年以约 2 万美元单价向 SPV 销售 TPU、硬件毛利率约 25%，每 GW 约容纳 70 万颗 TPU；与 GCP 租赁相比，外部 TPU 所有权模型提高客户资本支出和折旧，但给予更强控制权。该比较是分析师模型，关键参数需用实际合同验证。 |
+| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf) | 研报 | • **观点 1（第4、6页，Google's Unit Economics） · 支持**：巴克莱假设 Google 2026 年以约 2 万美元单价向 SPV 销售 TPU、硬件毛利率约 25%，每 GW 约容纳 70 万颗 TPU；与 GCP 租赁相比，外部 TPU 所有权模型提高客户资本支出和折旧，但给予更强控制权。该比较是分析师模型，关键参数需用实际合同验证。 |
 
 ##### NVIDIA
 
@@ -582,7 +623,7 @@ GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | 研报 | • **观点 1（第1页，Compute leadership: Helios） · 支持**：Helios 由 72 颗 MI455X GPU、18 颗 EPYC Venice CPU 和 Pensando NIC 组成；AMD 声称凭借约 15% 更多计算、50% 更多 HBM 容量/带宽和 50% 更多横向扩展带宽，可较 NVIDIA 提供最高约 30% 的每美元推理 token 优势。该结果是公司展示，尚非独立同工作负载基准。 |
+| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf) | 研报 | • **观点 1（第1页，Compute leadership: Helios） · 支持**：Helios 由 72 颗 MI455X GPU、18 颗 EPYC Venice CPU 和 Pensando NIC 组成；AMD 声称凭借约 15% 更多计算、50% 更多 HBM 容量/带宽和 50% 更多横向扩展带宽，可较 NVIDIA 提供最高约 30% 的每美元推理 token 优势。该结果是公司展示，尚非独立同工作负载基准。 |
 
 #### 软件生态与迁移成本
 
@@ -598,7 +639,7 @@ GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | 研报 | • **观点 1（第2页，Open platforms: ROCm and ROCm.ai） · 支持**：AMD 将 ROCm 发布周期由约四个月缩短到六周，并展示 coding agent 自动优化 MiniMax M3 在 MI355 上的内核后，token/s 提升 38%；公司还宣称相对 ROCm 7，DeepSeek 模型训练加速 2.4 倍、推理加速 3.3 倍。软件迭代速度正在改善，但数据仍来自厂商演示。 |
+| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf) | 研报 | • **观点 1（第2页，Open platforms: ROCm and ROCm.ai） · 支持**：AMD 将 ROCm 发布周期由约四个月缩短到六周，并展示 coding agent 自动优化 MiniMax M3 在 MI355 上的内核后，token/s 提升 38%；公司还宣称相对 ROCm 7，DeepSeek 模型训练加速 2.4 倍、推理加速 3.3 倍。软件迭代速度正在改善，但数据仍来自厂商演示。 |
 
 #### 客户采用与量产
 
@@ -614,7 +655,7 @@ GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | 研报 | • **观点 1（第1-2页，Cerebras disaggregated inference） · 支持**：AMD 与 Cerebras 宣布把 Helios 机架和晶圆级引擎组合成解耦推理方案，目标在超低延迟场景获得约 5 倍吞吐。它表明竞争单位正在从单颗 GPU 转为异构系统，但量产可用性和客户采用尚待验证。<br>• **观点 2（第1页，Compute leadership） · 支持**：Helios 已进入量产，计划 2026 年第三季度开始发货、第四季度爬坡。该进度支持 AMD 供给增加，但客户采用、ODM 调试和机房配套仍决定收入确认速度。<br>• **观点 3（第1页，Key Takeaways） · 支持**：摩根士丹利称 Helios 在关键客户处的采用进展顺利，客户证言显示 2027 年将强劲爬坡，并把 coding agent 视为 AMD GPU 生态采用的明确加速器；但该报告同时认为 AMD 本代产品仍未取得领导地位。 |
+| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf) | 研报 | • **观点 1（第1-2页，Cerebras disaggregated inference） · 支持**：AMD 与 Cerebras 宣布把 Helios 机架和晶圆级引擎组合成解耦推理方案，目标在超低延迟场景获得约 5 倍吞吐。它表明竞争单位正在从单颗 GPU 转为异构系统，但量产可用性和客户采用尚待验证。<br>• **观点 2（第1页，Compute leadership） · 支持**：Helios 已进入量产，计划 2026 年第三季度开始发货、第四季度爬坡。该进度支持 AMD 供给增加，但客户采用、ODM 调试和机房配套仍决定收入确认速度。<br>• **观点 3（第1页，Key Takeaways） · 支持**：摩根士丹利称 Helios 在关键客户处的采用进展顺利，客户证言显示 2027 年将强劲爬坡，并把 coding agent 视为 AMD GPU 生态采用的明确加速器；但该报告同时认为 AMD 本代产品仍未取得领导地位。 |
 
 ##### Alphabet / Google
 
@@ -624,7 +665,7 @@ GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | • **观点 1（第1-3页，Background on TPU-As-A-Service） · 支持**：Google 正尝试把 TPU 从 GCP 内的租赁资源变成可由外部 AI lab 通过 SPV 直接控制的 merchant product；客户获得更深的软件定制、纵向整合和独立于单一云协议的算力控制。这扩大了 ASIC 的可服务市场，也使其开始正面争夺 NVIDIA 的外部计算需求。 |
+| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf) | 研报 | • **观点 1（第1-3页，Background on TPU-As-A-Service） · 支持**：Google 正尝试把 TPU 从 GCP 内的租赁资源变成可由外部 AI lab 通过 SPV 直接控制的 merchant product；客户获得更深的软件定制、纵向整合和独立于单一云协议的算力控制。这扩大了 ASIC 的可服务市场，也使其开始正面争夺 NVIDIA 的外部计算需求。 |
 
 ##### Cerebras
 
@@ -634,7 +675,7 @@ GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | 研报 | • **观点 1（第1-2页，Cerebras disaggregated inference） · 支持**：AMD 与 Cerebras 宣布把 Helios 机架和晶圆级引擎组合成解耦推理方案，目标在超低延迟场景获得约 5 倍吞吐。它表明竞争单位正在从单颗 GPU 转为异构系统，但量产可用性和客户采用尚待验证。 |
+| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf) | 研报 | • **观点 1（第1-2页，Cerebras disaggregated inference） · 支持**：AMD 与 Cerebras 宣布把 Helios 机架和晶圆级引擎组合成解耦推理方案，目标在超低延迟场景获得约 5 倍吞吐。它表明竞争单位正在从单颗 GPU 转为异构系统，但量产可用性和客户采用尚待验证。 |
 
 ##### NVIDIA
 
@@ -644,7 +685,7 @@ GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | • **观点 1（第1-3页，Background on TPU-As-A-Service） · 支持**：Google 正尝试把 TPU 从 GCP 内的租赁资源变成可由外部 AI lab 通过 SPV 直接控制的 merchant product；客户获得更深的软件定制、纵向整合和独立于单一云协议的算力控制。这扩大了 ASIC 的可服务市场，也使其开始正面争夺 NVIDIA 的外部计算需求。 |
+| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf) | 研报 | • **观点 1（第1-3页，Background on TPU-As-A-Service） · 支持**：Google 正尝试把 TPU 从 GCP 内的租赁资源变成可由外部 AI lab 通过 SPV 直接控制的 merchant product；客户获得更深的软件定制、纵向整合和独立于单一云协议的算力控制。这扩大了 ASIC 的可服务市场，也使其开始正面争夺 NVIDIA 的外部计算需求。 |
 
 ##### ODM / 系统集成商
 
@@ -654,7 +695,7 @@ GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | 研报 | • **观点 1（第1页，Compute leadership） · 支持**：Helios 已进入量产，计划 2026 年第三季度开始发货、第四季度爬坡。该进度支持 AMD 供给增加，但客户采用、ODM 调试和机房配套仍决定收入确认速度。 |
+| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf) | 研报 | • **观点 1（第1页，Compute leadership） · 支持**：Helios 已进入量产，计划 2026 年第三季度开始发货、第四季度爬坡。该进度支持 AMD 供给增加，但客户采用、ODM 调试和机房配套仍决定收入确认速度。 |
 
 ##### 数据中心客户
 
@@ -664,7 +705,7 @@ GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | 研报 | • **观点 1（第1页，Compute leadership） · 支持**：Helios 已进入量产，计划 2026 年第三季度开始发货、第四季度爬坡。该进度支持 AMD 供给增加，但客户采用、ODM 调试和机房配套仍决定收入确认速度。 |
+| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf) | 研报 | • **观点 1（第1页，Compute leadership） · 支持**：Helios 已进入量产，计划 2026 年第三季度开始发货、第四季度爬坡。该进度支持 AMD 供给增加，但客户采用、ODM 调试和机房配套仍决定收入确认速度。 |
 
 #### 平台格局与替代路径
 
@@ -680,7 +721,7 @@ GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf>) | 研报 | • **观点 1（第2、4页，portfolio and accelerator mix） · 支持**：摩根大通认为 GPU 在整体 AI 加速器 TAM 中的占比可能由 2025 年约 85% 降至 2030 年 60%-70%，原因是定制 XPU/ASIC 增长更快；但 GPU 绝对市场仍可能以接近 40% 的复合增速扩张。技术替代更可能表现为份额稀释，而不是 GPU 需求收缩。 |
+| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf) | 研报 | • **观点 1（第2、4页，portfolio and accelerator mix） · 支持**：摩根大通认为 GPU 在整体 AI 加速器 TAM 中的占比可能由 2025 年约 85% 降至 2030 年 60%-70%，原因是定制 XPU/ASIC 增长更快；但 GPU 绝对市场仍可能以接近 40% 的复合增速扩张。技术替代更可能表现为份额稀释，而不是 GPU 需求收缩。 |
 
 ##### Alphabet / Google
 
@@ -690,7 +731,7 @@ GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | • **观点 1（第1-3页，Background on TPU-As-A-Service） · 支持**：Google 正尝试把 TPU 从 GCP 内的租赁资源变成可由外部 AI lab 通过 SPV 直接控制的 merchant product；客户获得更深的软件定制、纵向整合和独立于单一云协议的算力控制。这扩大了 ASIC 的可服务市场，也使其开始正面争夺 NVIDIA 的外部计算需求。 |
+| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf) | 研报 | • **观点 1（第1-3页，Background on TPU-As-A-Service） · 支持**：Google 正尝试把 TPU 从 GCP 内的租赁资源变成可由外部 AI lab 通过 SPV 直接控制的 merchant product；客户获得更深的软件定制、纵向整合和独立于单一云协议的算力控制。这扩大了 ASIC 的可服务市场，也使其开始正面争夺 NVIDIA 的外部计算需求。 |
 
 ##### Intel
 
@@ -700,7 +741,7 @@ GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根大通：PC 与服务器传导分析](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-PC与服务器：英特尔2026年二季度财报及AMD“Advancing AI 2026”大会传导分析-260724.pdf>) | 研报 | • **观点 1（第2页，18A output and 14A roadmap） · 支持**：Intel 18A 产出环比增长超过 50% 且高于内部目标约 25%，但外部代工收入仅占该分部约 5%；摩根大通预计即使少量 AI 项目采用 Intel，TSMC 在先进前道晶圆仍保持 95% 以上份额。技术可行不等于已形成外部客户规模。 |
+| 2026-07-24<br>[摩根大通：PC 与服务器传导分析](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\摩根大通-PC与服务器：英特尔2026年二季度财报及AMD“Advancing AI 2026”大会传导分析-260724.pdf) | 研报 | • **观点 1（第2页，18A output and 14A roadmap） · 支持**：Intel 18A 产出环比增长超过 50% 且高于内部目标约 25%，但外部代工收入仅占该分部约 5%；摩根大通预计即使少量 AI 项目采用 Intel，TSMC 在先进前道晶圆仍保持 95% 以上份额。技术可行不等于已形成外部客户规模。 |
 
 ##### NVIDIA
 
@@ -710,7 +751,7 @@ GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | • **观点 1（第1-3页，Background on TPU-As-A-Service） · 支持**：Google 正尝试把 TPU 从 GCP 内的租赁资源变成可由外部 AI lab 通过 SPV 直接控制的 merchant product；客户获得更深的软件定制、纵向整合和独立于单一云协议的算力控制。这扩大了 ASIC 的可服务市场，也使其开始正面争夺 NVIDIA 的外部计算需求。 |
+| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf) | 研报 | • **观点 1（第1-3页，Background on TPU-As-A-Service） · 支持**：Google 正尝试把 TPU 从 GCP 内的租赁资源变成可由外部 AI lab 通过 SPV 直接控制的 merchant product；客户获得更深的软件定制、纵向整合和独立于单一云协议的算力控制。这扩大了 ASIC 的可服务市场，也使其开始正面争夺 NVIDIA 的外部计算需求。 |
 
 ##### TSMC
 
@@ -720,7 +761,7 @@ GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根大通：PC 与服务器传导分析](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-PC与服务器：英特尔2026年二季度财报及AMD“Advancing AI 2026”大会传导分析-260724.pdf>) | 研报 | • **观点 1（第2页，18A output and 14A roadmap） · 支持**：Intel 18A 产出环比增长超过 50% 且高于内部目标约 25%，但外部代工收入仅占该分部约 5%；摩根大通预计即使少量 AI 项目采用 Intel，TSMC 在先进前道晶圆仍保持 95% 以上份额。技术可行不等于已形成外部客户规模。 |
+| 2026-07-24<br>[摩根大通：PC 与服务器传导分析](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\摩根大通-PC与服务器：英特尔2026年二季度财报及AMD“Advancing AI 2026”大会传导分析-260724.pdf) | 研报 | • **观点 1（第2页，18A output and 14A roadmap） · 支持**：Intel 18A 产出环比增长超过 50% 且高于内部目标约 25%，但外部代工收入仅占该分部约 5%；摩根大通预计即使少量 AI 项目采用 Intel，TSMC 在先进前道晶圆仍保持 95% 以上份额。技术可行不等于已形成外部客户规模。 |
 
 
 ### 最新结论与趋势
@@ -751,7 +792,7 @@ GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | 研报 | • **观点 1（第3页，Thoughts on the stock） · 反证**：摩根士丹利把 AMD 向客户发行的大额认股权证视为营销费用，认为其可能抵消未来数年 GPU 业务的大部分利润。即使收入增长，股东可获得的盈利弹性仍可能被获客成本和稀释削弱。 |
+| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf) | 研报 | • **观点 1（第3页，Thoughts on the stock） · 反证**：摩根士丹利把 AMD 向客户发行的大额认股权证视为营销费用，认为其可能抵消未来数年 GPU 业务的大部分利润。即使收入增长，股东可获得的盈利弹性仍可能被获客成本和稀释削弱。 |
 
 ##### Alphabet / Google
 
@@ -761,7 +802,7 @@ GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | • **观点 1（第5、7、11页，estimate changes and company model） · 支持**：巴克莱的高情景把 2028 年外部 TPU 收入估至 2,527 亿美元、毛利 632 亿美元，并把 Alphabet 2028 年收入预测上调 40%；但同一模型预计 2027-2028 年资本开支约 3,500 亿和 5,003 亿美元、自由现金流转负。利润上修与资本强度必须同时计价。 |
+| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf) | 研报 | • **观点 1（第5、7、11页，estimate changes and company model） · 支持**：巴克莱的高情景把 2028 年外部 TPU 收入估至 2,527 亿美元、毛利 632 亿美元，并把 Alphabet 2028 年收入预测上调 40%；但同一模型预计 2027-2028 年资本开支约 3,500 亿和 5,003 亿美元、自由现金流转负。利润上修与资本强度必须同时计价。 |
 
 #### 市场一致预期
 
@@ -777,8 +818,8 @@ GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf>) | 研报 | • **观点 1（第1、5页，rating and valuation） · 支持**：摩根大通维持 AMD Neutral，2026 年 12 月目标价 385 美元，而报告股价为 552.33 美元；目标价基于约 35 倍市盈率和约 11 美元的 2026 年末盈利能力。报告认可产品改善，但认为长期份额不确定、研发投入高且股价接近充分定价。 |
-| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | 研报 | • **观点 1（第1、3页，rating table and Thoughts on the stock） · 支持**：摩根士丹利维持 AMD Equal-weight，目标价 410 美元，而 2026 年 7 月 23 日股价为 539.69 美元；报告认为 AMD 叙事改善，但相对 NVIDIA、Broadcom 估值更贵且缺少类似期权，风险收益更好的选择在别处。 |
+| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf) | 研报 | • **观点 1（第1、5页，rating and valuation） · 支持**：摩根大通维持 AMD Neutral，2026 年 12 月目标价 385 美元，而报告股价为 552.33 美元；目标价基于约 35 倍市盈率和约 11 美元的 2026 年末盈利能力。报告认可产品改善，但认为长期份额不确定、研发投入高且股价接近充分定价。 |
+| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf) | 研报 | • **观点 1（第1、3页，rating table and Thoughts on the stock） · 支持**：摩根士丹利维持 AMD Equal-weight，目标价 410 美元，而 2026 年 7 月 23 日股价为 539.69 美元；报告认为 AMD 叙事改善，但相对 NVIDIA、Broadcom 估值更贵且缺少类似期权，风险收益更好的选择在别处。 |
 
 ##### Alphabet / Google
 
@@ -788,7 +829,7 @@ GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | • **观点 1（第5、7、11页，estimate changes and company model） · 支持**：巴克莱的高情景把 2028 年外部 TPU 收入估至 2,527 亿美元、毛利 632 亿美元，并把 Alphabet 2028 年收入预测上调 40%；但同一模型预计 2027-2028 年资本开支约 3,500 亿和 5,003 亿美元、自由现金流转负。利润上修与资本强度必须同时计价。<br>• **观点 2（第1、8页，rating and valuation worksheet） · 支持**：巴克莱维持 Alphabet Overweight 和 425 美元目标价，对应 2026 年 7 月 23 日 317.69 美元股价约 34% 潜在空间；目标价取 2027 年 25 倍 EPS 与 15 倍 EBITDA 的平均结果。赔率来自 TPU 外部商业化和云利润上修，而非纯 GPU 敞口。 |
+| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf) | 研报 | • **观点 1（第5、7、11页，estimate changes and company model） · 支持**：巴克莱的高情景把 2028 年外部 TPU 收入估至 2,527 亿美元、毛利 632 亿美元，并把 Alphabet 2028 年收入预测上调 40%；但同一模型预计 2027-2028 年资本开支约 3,500 亿和 5,003 亿美元、自由现金流转负。利润上修与资本强度必须同时计价。<br>• **观点 2（第1、8页，rating and valuation worksheet） · 支持**：巴克莱维持 Alphabet Overweight 和 425 美元目标价，对应 2026 年 7 月 23 日 317.69 美元股价约 34% 潜在空间；目标价取 2027 年 25 倍 EPS 与 15 倍 EBITDA 的平均结果。赔率来自 TPU 外部商业化和云利润上修，而非纯 GPU 敞口。 |
 
 ##### Meta
 
@@ -798,7 +839,7 @@ GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[德银-Meta：宏大野心需匹配宏大体量](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf>) | 研报 | • **观点 1（第2页，Capex remains a key debate） · 支持**：Meta 2026 年资本开支指引为 1,250 亿至 1,450 亿美元；德银称市场已把 2027 年约 14GW 容量对应的资本开支预期推至 2,000 亿美元低至中段，并给出 2027 年约 2,100 亿至 2,150 亿美元、2028 年约 2,650 亿美元的估计。这是大型客户继续扩大 AI 算力采购的直接预算信号，但后两项属于分析师估计。<br>• **观点 2（第1-2页，rating and valuation） · 支持**：德银维持 Meta Buy，将目标价由 810 美元小幅下调至 800 美元；相对 2026 年 7 月 23 日 606.10 美元股价仍有约 32% 空间。估值基于 24 倍 2027 年 GAAP EPS，核心假设是广告回报已覆盖部分 AI 投入，订阅和云基础设施提供额外变现。 |
+| 2026-07-24<br>[德银-Meta：宏大野心需匹配宏大体量](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf) | 研报 | • **观点 1（第2页，Capex remains a key debate） · 支持**：Meta 2026 年资本开支指引为 1,250 亿至 1,450 亿美元；德银称市场已把 2027 年约 14GW 容量对应的资本开支预期推至 2,000 亿美元低至中段，并给出 2027 年约 2,100 亿至 2,150 亿美元、2028 年约 2,650 亿美元的估计。这是大型客户继续扩大 AI 算力采购的直接预算信号，但后两项属于分析师估计。<br>• **观点 2（第1-2页，rating and valuation） · 支持**：德银维持 Meta Buy，将目标价由 810 美元小幅下调至 800 美元；相对 2026 年 7 月 23 日 606.10 美元股价仍有约 32% 空间。估值基于 24 倍 2027 年 GAAP EPS，核心假设是广告回报已覆盖部分 AI 投入，订阅和云基础设施提供额外变现。 |
 
 ##### Broadcom
 
@@ -808,7 +849,7 @@ GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | 研报 | • **观点 1（第1、3页，rating table and Thoughts on the stock） · 支持**：摩根士丹利维持 AMD Equal-weight，目标价 410 美元，而 2026 年 7 月 23 日股价为 539.69 美元；报告认为 AMD 叙事改善，但相对 NVIDIA、Broadcom 估值更贵且缺少类似期权，风险收益更好的选择在别处。 |
+| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf) | 研报 | • **观点 1（第1、3页，rating table and Thoughts on the stock） · 支持**：摩根士丹利维持 AMD Equal-weight，目标价 410 美元，而 2026 年 7 月 23 日股价为 539.69 美元；报告认为 AMD 叙事改善，但相对 NVIDIA、Broadcom 估值更贵且缺少类似期权，风险收益更好的选择在别处。 |
 
 ##### NVIDIA
 
@@ -818,7 +859,7 @@ GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | 研报 | • **观点 1（第1、3页，rating table and Thoughts on the stock） · 支持**：摩根士丹利维持 AMD Equal-weight，目标价 410 美元，而 2026 年 7 月 23 日股价为 539.69 美元；报告认为 AMD 叙事改善，但相对 NVIDIA、Broadcom 估值更贵且缺少类似期权，风险收益更好的选择在别处。 |
+| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf) | 研报 | • **观点 1（第1、3页，rating table and Thoughts on the stock） · 支持**：摩根士丹利维持 AMD Equal-weight，目标价 410 美元，而 2026 年 7 月 23 日股价为 539.69 美元；报告认为 AMD 叙事改善，但相对 NVIDIA、Broadcom 估值更贵且缺少类似期权，风险收益更好的选择在别处。 |
 
 #### 股价隐含预期
 
@@ -834,8 +875,8 @@ GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf>) | 研报 | • **观点 1（第1、5页，rating and valuation） · 反证**：摩根大通维持 AMD Neutral，2026 年 12 月目标价 385 美元，而报告股价为 552.33 美元；目标价基于约 35 倍市盈率和约 11 美元的 2026 年末盈利能力。报告认可产品改善，但认为长期份额不确定、研发投入高且股价接近充分定价。 |
-| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | 研报 | • **观点 1（第1、3页，rating table and Thoughts on the stock） · 反证**：摩根士丹利维持 AMD Equal-weight，目标价 410 美元，而 2026 年 7 月 23 日股价为 539.69 美元；报告认为 AMD 叙事改善，但相对 NVIDIA、Broadcom 估值更贵且缺少类似期权，风险收益更好的选择在别处。 |
+| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf) | 研报 | • **观点 1（第1、5页，rating and valuation） · 反证**：摩根大通维持 AMD Neutral，2026 年 12 月目标价 385 美元，而报告股价为 552.33 美元；目标价基于约 35 倍市盈率和约 11 美元的 2026 年末盈利能力。报告认可产品改善，但认为长期份额不确定、研发投入高且股价接近充分定价。 |
+| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf) | 研报 | • **观点 1（第1、3页，rating table and Thoughts on the stock） · 反证**：摩根士丹利维持 AMD Equal-weight，目标价 410 美元，而 2026 年 7 月 23 日股价为 539.69 美元；报告认为 AMD 叙事改善，但相对 NVIDIA、Broadcom 估值更贵且缺少类似期权，风险收益更好的选择在别处。 |
 
 ##### Alphabet / Google
 
@@ -845,7 +886,7 @@ GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | • **观点 1（第5、7、11页，estimate changes and company model） · 线索**：巴克莱的高情景把 2028 年外部 TPU 收入估至 2,527 亿美元、毛利 632 亿美元，并把 Alphabet 2028 年收入预测上调 40%；但同一模型预计 2027-2028 年资本开支约 3,500 亿和 5,003 亿美元、自由现金流转负。利润上修与资本强度必须同时计价。<br>• **观点 2（第1、8页，rating and valuation worksheet） · 支持**：巴克莱维持 Alphabet Overweight 和 425 美元目标价，对应 2026 年 7 月 23 日 317.69 美元股价约 34% 潜在空间；目标价取 2027 年 25 倍 EPS 与 15 倍 EBITDA 的平均结果。赔率来自 TPU 外部商业化和云利润上修，而非纯 GPU 敞口。 |
+| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf) | 研报 | • **观点 1（第5、7、11页，estimate changes and company model） · 线索**：巴克莱的高情景把 2028 年外部 TPU 收入估至 2,527 亿美元、毛利 632 亿美元，并把 Alphabet 2028 年收入预测上调 40%；但同一模型预计 2027-2028 年资本开支约 3,500 亿和 5,003 亿美元、自由现金流转负。利润上修与资本强度必须同时计价。<br>• **观点 2（第1、8页，rating and valuation worksheet） · 支持**：巴克莱维持 Alphabet Overweight 和 425 美元目标价，对应 2026 年 7 月 23 日 317.69 美元股价约 34% 潜在空间；目标价取 2027 年 25 倍 EPS 与 15 倍 EBITDA 的平均结果。赔率来自 TPU 外部商业化和云利润上修，而非纯 GPU 敞口。 |
 
 ##### Meta
 
@@ -855,7 +896,7 @@ GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[德银-Meta：宏大野心需匹配宏大体量](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf>) | 研报 | • **观点 1（第1-2页，rating and valuation） · 支持**：德银维持 Meta Buy，将目标价由 810 美元小幅下调至 800 美元；相对 2026 年 7 月 23 日 606.10 美元股价仍有约 32% 空间。估值基于 24 倍 2027 年 GAAP EPS，核心假设是广告回报已覆盖部分 AI 投入，订阅和云基础设施提供额外变现。<br>• **观点 2（第5-6页，cloud sales and capex expectations） · 反证**：德银明确指出 2027 容量、每 GW 成本、利用率、定价和客户需求均有高度不确定性，第三方云收入尚未正式宣布，也未进入其当前盈利预测。把潜在算力销售直接资本化会高估已验证价值。 |
+| 2026-07-24<br>[德银-Meta：宏大野心需匹配宏大体量](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf) | 研报 | • **观点 1（第1-2页，rating and valuation） · 支持**：德银维持 Meta Buy，将目标价由 810 美元小幅下调至 800 美元；相对 2026 年 7 月 23 日 606.10 美元股价仍有约 32% 空间。估值基于 24 倍 2027 年 GAAP EPS，核心假设是广告回报已覆盖部分 AI 投入，订阅和云基础设施提供额外变现。<br>• **观点 2（第5-6页，cloud sales and capex expectations） · 反证**：德银明确指出 2027 容量、每 GW 成本、利用率、定价和客户需求均有高度不确定性，第三方云收入尚未正式宣布，也未进入其当前盈利预测。把潜在算力销售直接资本化会高估已验证价值。 |
 
 ##### Broadcom
 
@@ -865,7 +906,7 @@ GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | 研报 | • **观点 1（第1、3页，rating table and Thoughts on the stock） · 反证**：摩根士丹利维持 AMD Equal-weight，目标价 410 美元，而 2026 年 7 月 23 日股价为 539.69 美元；报告认为 AMD 叙事改善，但相对 NVIDIA、Broadcom 估值更贵且缺少类似期权，风险收益更好的选择在别处。 |
+| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf) | 研报 | • **观点 1（第1、3页，rating table and Thoughts on the stock） · 反证**：摩根士丹利维持 AMD Equal-weight，目标价 410 美元，而 2026 年 7 月 23 日股价为 539.69 美元；报告认为 AMD 叙事改善，但相对 NVIDIA、Broadcom 估值更贵且缺少类似期权，风险收益更好的选择在别处。 |
 
 ##### NVIDIA
 
@@ -875,7 +916,7 @@ GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | 研报 | • **观点 1（第1、3页，rating table and Thoughts on the stock） · 反证**：摩根士丹利维持 AMD Equal-weight，目标价 410 美元，而 2026 年 7 月 23 日股价为 539.69 美元；报告认为 AMD 叙事改善，但相对 NVIDIA、Broadcom 估值更贵且缺少类似期权，风险收益更好的选择在别处。 |
+| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf) | 研报 | • **观点 1（第1、3页，rating table and Thoughts on the stock） · 反证**：摩根士丹利维持 AMD Equal-weight，目标价 410 美元，而 2026 年 7 月 23 日股价为 539.69 美元；报告认为 AMD 叙事改善，但相对 NVIDIA、Broadcom 估值更贵且缺少类似期权，风险收益更好的选择在别处。 |
 
 #### 盈利修正与预期差
 
@@ -899,8 +940,8 @@ GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf>) | 研报 | • **观点 1（第1、5页，rating and valuation） · 反证**：摩根大通维持 AMD Neutral，2026 年 12 月目标价 385 美元，而报告股价为 552.33 美元；目标价基于约 35 倍市盈率和约 11 美元的 2026 年末盈利能力。报告认可产品改善，但认为长期份额不确定、研发投入高且股价接近充分定价。 |
-| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | 研报 | • **观点 1（第1、3页，rating table and Thoughts on the stock） · 反证**：摩根士丹利维持 AMD Equal-weight，目标价 410 美元，而 2026 年 7 月 23 日股价为 539.69 美元；报告认为 AMD 叙事改善，但相对 NVIDIA、Broadcom 估值更贵且缺少类似期权，风险收益更好的选择在别处。<br>• **观点 2（第3页，Thoughts on the stock） · 反证**：摩根士丹利把 AMD 向客户发行的大额认股权证视为营销费用，认为其可能抵消未来数年 GPU 业务的大部分利润。即使收入增长，股东可获得的盈利弹性仍可能被获客成本和稀释削弱。 |
+| 2026-07-24<br>[摩根大通：AMD AAI26 大会纪要](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf) | 研报 | • **观点 1（第1、5页，rating and valuation） · 反证**：摩根大通维持 AMD Neutral，2026 年 12 月目标价 385 美元，而报告股价为 552.33 美元；目标价基于约 35 倍市盈率和约 11 美元的 2026 年末盈利能力。报告认可产品改善，但认为长期份额不确定、研发投入高且股价接近充分定价。 |
+| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf) | 研报 | • **观点 1（第1、3页，rating table and Thoughts on the stock） · 反证**：摩根士丹利维持 AMD Equal-weight，目标价 410 美元，而 2026 年 7 月 23 日股价为 539.69 美元；报告认为 AMD 叙事改善，但相对 NVIDIA、Broadcom 估值更贵且缺少类似期权，风险收益更好的选择在别处。<br>• **观点 2（第3页，Thoughts on the stock） · 反证**：摩根士丹利把 AMD 向客户发行的大额认股权证视为营销费用，认为其可能抵消未来数年 GPU 业务的大部分利润。即使收入增长，股东可获得的盈利弹性仍可能被获客成本和稀释削弱。 |
 
 ##### Meta
 
@@ -910,7 +951,7 @@ GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[德银-Meta：宏大野心需匹配宏大体量](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf>) | 研报 | • **观点 1（第5-6页，cloud sales and capex expectations） · 反证**：德银明确指出 2027 容量、每 GW 成本、利用率、定价和客户需求均有高度不确定性，第三方云收入尚未正式宣布，也未进入其当前盈利预测。把潜在算力销售直接资本化会高估已验证价值。<br>• **观点 2（第1-2页，rating and valuation） · 支持**：德银维持 Meta Buy，将目标价由 810 美元小幅下调至 800 美元；相对 2026 年 7 月 23 日 606.10 美元股价仍有约 32% 空间。估值基于 24 倍 2027 年 GAAP EPS，核心假设是广告回报已覆盖部分 AI 投入，订阅和云基础设施提供额外变现。 |
+| 2026-07-24<br>[德银-Meta：宏大野心需匹配宏大体量](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf) | 研报 | • **观点 1（第5-6页，cloud sales and capex expectations） · 反证**：德银明确指出 2027 容量、每 GW 成本、利用率、定价和客户需求均有高度不确定性，第三方云收入尚未正式宣布，也未进入其当前盈利预测。把潜在算力销售直接资本化会高估已验证价值。<br>• **观点 2（第1-2页，rating and valuation） · 支持**：德银维持 Meta Buy，将目标价由 810 美元小幅下调至 800 美元；相对 2026 年 7 月 23 日 606.10 美元股价仍有约 32% 空间。估值基于 24 倍 2027 年 GAAP EPS，核心假设是广告回报已覆盖部分 AI 投入，订阅和云基础设施提供额外变现。 |
 
 ##### Alphabet / Google
 
@@ -920,7 +961,7 @@ GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | • **观点 1（第1、8页，rating and valuation worksheet） · 支持**：巴克莱维持 Alphabet Overweight 和 425 美元目标价，对应 2026 年 7 月 23 日 317.69 美元股价约 34% 潜在空间；目标价取 2027 年 25 倍 EPS 与 15 倍 EBITDA 的平均结果。赔率来自 TPU 外部商业化和云利润上修，而非纯 GPU 敞口。 |
+| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf) | 研报 | • **观点 1（第1、8页，rating and valuation worksheet） · 支持**：巴克莱维持 Alphabet Overweight 和 425 美元目标价，对应 2026 年 7 月 23 日 317.69 美元股价约 34% 潜在空间；目标价取 2027 年 25 倍 EPS 与 15 倍 EBITDA 的平均结果。赔率来自 TPU 外部商业化和云利润上修，而非纯 GPU 敞口。 |
 
 ##### Broadcom
 
@@ -930,7 +971,7 @@ GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | 研报 | • **观点 1（第1、3页，rating table and Thoughts on the stock） · 反证**：摩根士丹利维持 AMD Equal-weight，目标价 410 美元，而 2026 年 7 月 23 日股价为 539.69 美元；报告认为 AMD 叙事改善，但相对 NVIDIA、Broadcom 估值更贵且缺少类似期权，风险收益更好的选择在别处。 |
+| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf) | 研报 | • **观点 1（第1、3页，rating table and Thoughts on the stock） · 反证**：摩根士丹利维持 AMD Equal-weight，目标价 410 美元，而 2026 年 7 月 23 日股价为 539.69 美元；报告认为 AMD 叙事改善，但相对 NVIDIA、Broadcom 估值更贵且缺少类似期权，风险收益更好的选择在别处。 |
 
 ##### NVIDIA
 
@@ -940,7 +981,7 @@ GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | 研报 | • **观点 1（第1、3页，rating table and Thoughts on the stock） · 反证**：摩根士丹利维持 AMD Equal-weight，目标价 410 美元，而 2026 年 7 月 23 日股价为 539.69 美元；报告认为 AMD 叙事改善，但相对 NVIDIA、Broadcom 估值更贵且缺少类似期权，风险收益更好的选择在别处。 |
+| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf) | 研报 | • **观点 1（第1、3页，rating table and Thoughts on the stock） · 反证**：摩根士丹利维持 AMD Equal-weight，目标价 410 美元，而 2026 年 7 月 23 日股价为 539.69 美元；报告认为 AMD 叙事改善，但相对 NVIDIA、Broadcom 估值更贵且缺少类似期权，风险收益更好的选择在别处。 |
 
 
 ### 最新结论与趋势
@@ -995,7 +1036,7 @@ ESG 只研究会改变可交付算力、可服务市场、资本成本和股东�
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | 研报 | • **观点 1（第3页，Thoughts on the stock） · 反证**：摩根士丹利把 AMD 向客户发行的大额认股权证视为营销费用，认为其可能抵消未来数年 GPU 业务的大部分利润。即使收入增长，股东可获得的盈利弹性仍可能被获客成本和稀释削弱。<br>• **观点 2（第3页，customer warrants） · 反证**：AMD 通过向客户发行认股权证支持生态采用，摩根士丹利认为这相当于高额获客费用，并可能显著稀释 GPU 业务未来利润。它属于资本配置和股东利益问题，而非单纯产品销量问题。 |
+| 2026-07-24<br>[摩根士丹利：AMD AI 技术发布会复盘](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf) | 研报 | • **观点 1（第3页，Thoughts on the stock） · 反证**：摩根士丹利把 AMD 向客户发行的大额认股权证视为营销费用，认为其可能抵消未来数年 GPU 业务的大部分利润。即使收入增长，股东可获得的盈利弹性仍可能被获客成本和稀释削弱。<br>• **观点 2（第3页，customer warrants） · 反证**：AMD 通过向客户发行认股权证支持生态采用，摩根士丹利认为这相当于高额获客费用，并可能显著稀释 GPU 业务未来利润。它属于资本配置和股东利益问题，而非单纯产品销量问题。 |
 
 #### 融资结构与长期承诺
 
@@ -1011,7 +1052,7 @@ SPV、租赁、采购承诺和表外融资把风险留给谁？
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | • **观点 1（第2-4页，TPU-aaS entity structure and unit economics） · 线索**：外部 TPU 由 Google 与 Broadcom 协同设计、TSMC 制造，再由 Apollo/Blackstone 融资的 SPV 购买并交给数据中心运营商管理。这个结构把芯片设计、晶圆制造、资本和机房交付绑定在一起，可扩大供给，也引入跨主体执行和融资风险。<br>• **观点 2（第1-3、7页，TPU-aaS SPV and purchase commitments） · 支持**：TPU 即服务依赖 Apollo/Blackstone 融资 SPV、Google/Broadcom 硬件和数据中心运营商的多层结构；巴克莱同时引用 Alphabet 约 8,110 亿美元采购承诺。结构可加快扩张，但会增加对手方、担保、资产利用率和表外义务的透明度风险。 |
+| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf) | 研报 | • **观点 1（第2-4页，TPU-aaS entity structure and unit economics） · 线索**：外部 TPU 由 Google 与 Broadcom 协同设计、TSMC 制造，再由 Apollo/Blackstone 融资的 SPV 购买并交给数据中心运营商管理。这个结构把芯片设计、晶圆制造、资本和机房交付绑定在一起，可扩大供给，也引入跨主体执行和融资风险。<br>• **观点 2（第1-3、7页，TPU-aaS SPV and purchase commitments） · 支持**：TPU 即服务依赖 Apollo/Blackstone 融资 SPV、Google/Broadcom 硬件和数据中心运营商的多层结构；巴克莱同时引用 Alphabet 约 8,110 亿美元采购承诺。结构可加快扩张，但会增加对手方、担保、资产利用率和表外义务的透明度风险。 |
 
 ##### Apollo
 
@@ -1021,7 +1062,7 @@ SPV、租赁、采购承诺和表外融资把风险留给谁？
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | • **观点 1（第2-4页，TPU-aaS entity structure and unit economics） · 线索**：外部 TPU 由 Google 与 Broadcom 协同设计、TSMC 制造，再由 Apollo/Blackstone 融资的 SPV 购买并交给数据中心运营商管理。这个结构把芯片设计、晶圆制造、资本和机房交付绑定在一起，可扩大供给，也引入跨主体执行和融资风险。<br>• **观点 2（第1-3、7页，TPU-aaS SPV and purchase commitments） · 支持**：TPU 即服务依赖 Apollo/Blackstone 融资 SPV、Google/Broadcom 硬件和数据中心运营商的多层结构；巴克莱同时引用 Alphabet 约 8,110 亿美元采购承诺。结构可加快扩张，但会增加对手方、担保、资产利用率和表外义务的透明度风险。 |
+| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf) | 研报 | • **观点 1（第2-4页，TPU-aaS entity structure and unit economics） · 线索**：外部 TPU 由 Google 与 Broadcom 协同设计、TSMC 制造，再由 Apollo/Blackstone 融资的 SPV 购买并交给数据中心运营商管理。这个结构把芯片设计、晶圆制造、资本和机房交付绑定在一起，可扩大供给，也引入跨主体执行和融资风险。<br>• **观点 2（第1-3、7页，TPU-aaS SPV and purchase commitments） · 支持**：TPU 即服务依赖 Apollo/Blackstone 融资 SPV、Google/Broadcom 硬件和数据中心运营商的多层结构；巴克莱同时引用 Alphabet 约 8,110 亿美元采购承诺。结构可加快扩张，但会增加对手方、担保、资产利用率和表外义务的透明度风险。 |
 
 ##### Blackstone
 
@@ -1031,7 +1072,7 @@ SPV、租赁、采购承诺和表外融资把风险留给谁？
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | • **观点 1（第2-4页，TPU-aaS entity structure and unit economics） · 线索**：外部 TPU 由 Google 与 Broadcom 协同设计、TSMC 制造，再由 Apollo/Blackstone 融资的 SPV 购买并交给数据中心运营商管理。这个结构把芯片设计、晶圆制造、资本和机房交付绑定在一起，可扩大供给，也引入跨主体执行和融资风险。<br>• **观点 2（第1-3、7页，TPU-aaS SPV and purchase commitments） · 支持**：TPU 即服务依赖 Apollo/Blackstone 融资 SPV、Google/Broadcom 硬件和数据中心运营商的多层结构；巴克莱同时引用 Alphabet 约 8,110 亿美元采购承诺。结构可加快扩张，但会增加对手方、担保、资产利用率和表外义务的透明度风险。 |
+| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf) | 研报 | • **观点 1（第2-4页，TPU-aaS entity structure and unit economics） · 线索**：外部 TPU 由 Google 与 Broadcom 协同设计、TSMC 制造，再由 Apollo/Blackstone 融资的 SPV 购买并交给数据中心运营商管理。这个结构把芯片设计、晶圆制造、资本和机房交付绑定在一起，可扩大供给，也引入跨主体执行和融资风险。<br>• **观点 2（第1-3、7页，TPU-aaS SPV and purchase commitments） · 支持**：TPU 即服务依赖 Apollo/Blackstone 融资 SPV、Google/Broadcom 硬件和数据中心运营商的多层结构；巴克莱同时引用 Alphabet 约 8,110 亿美元采购承诺。结构可加快扩张，但会增加对手方、担保、资产利用率和表外义务的透明度风险。 |
 
 ##### Broadcom
 
@@ -1041,7 +1082,7 @@ SPV、租赁、采购承诺和表外融资把风险留给谁？
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | • **观点 1（第2-4页，TPU-aaS entity structure and unit economics） · 线索**：外部 TPU 由 Google 与 Broadcom 协同设计、TSMC 制造，再由 Apollo/Blackstone 融资的 SPV 购买并交给数据中心运营商管理。这个结构把芯片设计、晶圆制造、资本和机房交付绑定在一起，可扩大供给，也引入跨主体执行和融资风险。<br>• **观点 2（第1-3、7页，TPU-aaS SPV and purchase commitments） · 支持**：TPU 即服务依赖 Apollo/Blackstone 融资 SPV、Google/Broadcom 硬件和数据中心运营商的多层结构；巴克莱同时引用 Alphabet 约 8,110 亿美元采购承诺。结构可加快扩张，但会增加对手方、担保、资产利用率和表外义务的透明度风险。 |
+| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf) | 研报 | • **观点 1（第2-4页，TPU-aaS entity structure and unit economics） · 线索**：外部 TPU 由 Google 与 Broadcom 协同设计、TSMC 制造，再由 Apollo/Blackstone 融资的 SPV 购买并交给数据中心运营商管理。这个结构把芯片设计、晶圆制造、资本和机房交付绑定在一起，可扩大供给，也引入跨主体执行和融资风险。<br>• **观点 2（第1-3、7页，TPU-aaS SPV and purchase commitments） · 支持**：TPU 即服务依赖 Apollo/Blackstone 融资 SPV、Google/Broadcom 硬件和数据中心运营商的多层结构；巴克莱同时引用 Alphabet 约 8,110 亿美元采购承诺。结构可加快扩张，但会增加对手方、担保、资产利用率和表外义务的透明度风险。 |
 
 ##### Hyperion
 
@@ -1051,7 +1092,7 @@ SPV、租赁、采购承诺和表外融资把风险留给谁？
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[德银-Meta：宏大野心需匹配宏大体量](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf>) | 研报 | • **观点 1（第5-6页，2027 capex expectations） · 线索**：若 Meta 容量由 2026 年约 7GW 增至 2027 年 14GW，Hyperion 等合作方可能提供 1.0-1.5GW，使 Meta 直接融资的新增容量约为 5.5GW。伙伴资本可以缓解资产负担，但不能消除电力、服务器和建设交付约束。<br>• **观点 2（第2、5-6页，capacity and funding structure） · 支持**：Meta 的容量情景由 7GW 升至 14GW，资本开支预期可能升至 2027 年 2,000 亿美元以上；Hyperion 等伙伴融资可能降低报表内直接负担。对治理分析而言，关键不是只看名义 capex，而是追踪担保、租赁、合作方承诺及最终风险承担者。 |
+| 2026-07-24<br>[德银-Meta：宏大野心需匹配宏大体量](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf) | 研报 | • **观点 1（第5-6页，2027 capex expectations） · 线索**：若 Meta 容量由 2026 年约 7GW 增至 2027 年 14GW，Hyperion 等合作方可能提供 1.0-1.5GW，使 Meta 直接融资的新增容量约为 5.5GW。伙伴资本可以缓解资产负担，但不能消除电力、服务器和建设交付约束。<br>• **观点 2（第2、5-6页，capacity and funding structure） · 支持**：Meta 的容量情景由 7GW 升至 14GW，资本开支预期可能升至 2027 年 2,000 亿美元以上；Hyperion 等伙伴融资可能降低报表内直接负担。对治理分析而言，关键不是只看名义 capex，而是追踪担保、租赁、合作方承诺及最终风险承担者。 |
 
 ##### Meta
 
@@ -1061,7 +1102,7 @@ SPV、租赁、采购承诺和表外融资把风险留给谁？
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[德银-Meta：宏大野心需匹配宏大体量](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf>) | 研报 | • **观点 1（第5-6页，2027 capex expectations） · 线索**：若 Meta 容量由 2026 年约 7GW 增至 2027 年 14GW，Hyperion 等合作方可能提供 1.0-1.5GW，使 Meta 直接融资的新增容量约为 5.5GW。伙伴资本可以缓解资产负担，但不能消除电力、服务器和建设交付约束。<br>• **观点 2（第2、5-6页，capacity and funding structure） · 支持**：Meta 的容量情景由 7GW 升至 14GW，资本开支预期可能升至 2027 年 2,000 亿美元以上；Hyperion 等伙伴融资可能降低报表内直接负担。对治理分析而言，关键不是只看名义 capex，而是追踪担保、租赁、合作方承诺及最终风险承担者。 |
+| 2026-07-24<br>[德银-Meta：宏大野心需匹配宏大体量](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf) | 研报 | • **观点 1（第5-6页，2027 capex expectations） · 线索**：若 Meta 容量由 2026 年约 7GW 增至 2027 年 14GW，Hyperion 等合作方可能提供 1.0-1.5GW，使 Meta 直接融资的新增容量约为 5.5GW。伙伴资本可以缓解资产负担，但不能消除电力、服务器和建设交付约束。<br>• **观点 2（第2、5-6页，capacity and funding structure） · 支持**：Meta 的容量情景由 7GW 升至 14GW，资本开支预期可能升至 2027 年 2,000 亿美元以上；Hyperion 等伙伴融资可能降低报表内直接负担。对治理分析而言，关键不是只看名义 capex，而是追踪担保、租赁、合作方承诺及最终风险承担者。 |
 
 ##### TSMC
 
@@ -1071,7 +1112,7 @@ SPV、租赁、采购承诺和表外融资把风险留给谁？
 
 | 材料（含链接） | 类型 | 观点列表 |
 |---|---|---|
-| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | • **观点 1（第2-4页，TPU-aaS entity structure and unit economics） · 线索**：外部 TPU 由 Google 与 Broadcom 协同设计、TSMC 制造，再由 Apollo/Blackstone 融资的 SPV 购买并交给数据中心运营商管理。这个结构把芯片设计、晶圆制造、资本和机房交付绑定在一起，可扩大供给，也引入跨主体执行和融资风险。 |
+| 2026-07-24<br>[巴克莱：拆解 TPU 即服务](D:\codex\value_invest\research\bom\gpu_asic_bom_live\source\ima\2026\07\24\巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf) | 研报 | • **观点 1（第2-4页，TPU-aaS entity structure and unit economics） · 线索**：外部 TPU 由 Google 与 Broadcom 协同设计、TSMC 制造，再由 Apollo/Blackstone 融资的 SPV 购买并交给数据中心运营商管理。这个结构把芯片设计、晶圆制造、资本和机房交付绑定在一起，可扩大供给，也引入跨主体执行和融资风险。 |
 
 
 ### 最新结论与趋势

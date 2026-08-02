@@ -112,6 +112,20 @@ support/refute rules, observable indicators, downstream nodes, company bridge
 fields, and refresh cadence. The playbook is a judgment structure, not a source
 whitelist.
 
+When the demand lens begins with Q1 `需求方`, keep that node strictly about who
+demands the BOM. Render two mutually exclusive lists: `当前需求方` and
+`潜在未来需求方`. Do not mix business scenarios, workloads/tasks, host systems,
+component specifications, procurement channels, quantities, or as-of change
+assessment into Q1. Q2 owns the current quantity baseline; later demand nodes own
+workload, intensity, budget, orders, and financial realization.
+
+Q2 must inherit the exact Q1 taxonomy and separate its public quantity work into
+two blocks. `分类映射预测` contains quantities, forecasts, samples, or value proxies
+that can be assigned to a current Q1 demander, with mapping quality and caveats.
+`其它预测` contains market totals or forecasts that cannot be allocated reliably.
+Imperfect material stays visible, but must never be forced into a Q1 category or
+summed across incompatible units, periods, samples, or overlapping demanders.
+
 Every source is still parsed into immutable atomic claims. Claims are then mapped
 through a separate reviewed ledger to one primary logic node and optional secondary
 nodes. A mapping records direction, evidence nature, directness, novelty,
@@ -377,6 +391,18 @@ timeline. The Markdown audit sidecar mirrors the same entity hierarchy and
 three-column tables. Local PDF links navigate in the current tab; only HTTP(S)
 sources may use a new tab. Logic nodes and company impacts render as full-width
 rows, not narrow side-by-side cards.
+
+The Q1 `需求方` node is the sole presentation exception. When its playbook uses
+`render_mode: demand_party_list`, render only two compact groups—`当前需求方` and
+`潜在未来需求方`—and omit node state, conclusion, change assessment, evidence
+counts, company/entity disclosures, and material tables from that Q1 block. The
+underlying evidence ledgers remain append-only and available to downstream nodes.
+
+When Q2 uses `render_mode: demand_quantity_matrix`, render `分类映射预测` first and
+`其它预测` second. Every current Q1 demander must have at least one classified row,
+including an explicit `数据缺口` row when no quantity is available. Other forecasts
+must not claim a Q1 demander mapping. Each row shows quantity/forecast, metric and
+period, mapping quality, linked sources, and its principal limitation.
 
 The target section must preserve the profit bridge, valuation evidence, payoff odds, final state, and downgrade triggers in one readable Markdown table. Action states remain `actionable_long`, `watch_only`, or `no_action`.
 

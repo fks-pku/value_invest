@@ -1,0 +1,2901 @@
+
+
+=== PAGE 1 ===
+
+  ? 
+ 
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner 
+But Meituan’s leading market share and moat remain intact. 
+Executive Summary 
+The on-demand delivery price war that started in February 2025 underscores the urgency for Chinese 
+retail internet platforms to identify new growth avenues in an increasingly mature market. Traditional e-
+commerce companies like Alibaba and JD.com are expanding their presence in on-demand delivery to 
+mitigate market share losses to category leader Meituan, and to strengthen their positioning as 
+comprehensive platforms for online consumer goods and services. 
+ 
+Alibaba, with its strong cash reserves, has leveraged its ecosystem resources more effectively than ever, 
+aided by more centralized strategic management under the newly formed Alibaba China E-Commerce 
+group. Therefore, we estimate Meituan will cede gross transaction volume share to Alibaba. By 2027, we 
+expect the on-demand delivery market to be dominated by two major players: Meituan with a 55% gross 
+transaction value share, and Alibaba with 40%. JD will continue to have a small presence with a 6% 
+share. These are shifts from 2024 levels of 73%, 21%, and 5%, respectively.  
+ 
+We believe the competitive landscape will stabilize following Alibaba’s aggressive investments, as it is 
+likely the only player with both the financial capacity and strategic incentive to gain share. Even 
+Bytedance, despite its deep pockets and strong e-commerce track record, has failed to make meaningful 
+inroads. 
+ 
+Exhibit 1  Meituan Expected to Maintain Dominance in GTV Market Share  
+ 
+ 
+Source: Morningstar. Data as of Oct. 19, 2025. 
+ 
+  
+Meituan Alibaba JD
+GTV Market Share0%
+20%
+40%
+60%
+80%
+Calendar Year 2024 Calendar Year 2025 Calendar Year 2026=Forecasts Calendar Year 2027=Forecasts
+Morningstar Equity Research 
+November 18, 2025 
+ 
+ 
+Contents 
+2 Key Takeaways 
+3 Market Too Pessimistic on Meituan and 
+JD— We See Value 
+4 Strong Incentives Push Alibaba and JD 
+Into On-Demand Delivery Subsidy War 
+8 Alibaba Has the Strongest Financial 
+Position and Willingness to Spend 
+10 Alibaba and JD Scaled Their Networks 
+Quickly; Alibaba Emerges as the Biggest 
+Winner 
+14 Improving Unit Economics, Alibaba 
+Positioned Ahead of JD 
+17 Meituan Will Maintain the Largest On-
+Demand Market Share and Preserve Its 
+Narrow Moat 
+21 What Does This Imply About Our Moat 
+Ratings For Alibaba and JD? 
+22 Alibaba Is Our Top Pick Among The 
+Undervalued Trio; Meituan and JD Also 
+Attractive 
+28 Appendix 
+ 
+ 
+Chelsey Tam  
+Senior Equity Analyst 
+chelsey.tam@morningstar.com  
+ 
+Junhao Yang 
+Associate Equity Analyst 
+junhao.yang@morningstar.com  
+ 
+ 
+Disclosure 
+The conduct of Morningstar’s analysts is governed 
+by Code of Ethics, Personal Security Trading Policy 
+(or an equivalent of), and Investment Research 
+Integrity Policy. For more information regarding 
+conflicts of interest, please visit:   
+http://global.morningstar.com/equitydisclosures 
+ 
+ 
+ 
+ 
+
+=== PAGE 2 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 2 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+Key Takeaways  
+▸ Alibaba and JD started an on-demand price war to increase active users and shopping frequency on 
+their main apps. Alibaba’s on-demand delivery business contributed to a 25% year-on-year rise in 
+monthly active customers on the Taobao app in the first three weeks of August. 
+▸ JD’s quarterly active customers and shopping frequency rose over 40% year on year in the June quarter, 
+driven by growth in its food delivery segment. 
+▸ Cross-selling to traditional e-commerce from food delivery is a strategic goal for both Alibaba and JD, 
+though incremental general merchandise volume gains remain limited at this early stage. 
+▸ Alibaba expects approximately 10% year-on-year growth in high-margin e-commerce customer 
+management revenue in the coming quarters, supported by traffic from its on-demand delivery 
+business. 
+▸ With the largest net cash position, Alibaba is the most aggressive investor in on-demand delivery, while 
+JD began scaling back its investments starting in July.  
+▸ Alibaba won the initial scaling battle: its daily order volume stabilized at 80 million, a 2.2-times increase 
+versus the average daily order volume in 2024, as of October 2025. We estimate JD’s daily order volume 
+as of October 2025 is just a fraction of Alibaba's daily order volume.  
+▸ Alibaba’s active rider count rose 2.9 times from April to August but remained at just 38% of Meituan’s 
+level; JD’s rider count increased by 52% during the same period, reaching only 41% of Alibaba’s. 
+▸ The main improvement in unit economics, or profit per order, for Alibaba and JD will come from lower 
+expenses in subsidies, rider costs, and higher average order value in the long run. 
+▸ For JD, the main driver of UE improvement comes from charging commission for merchants after a one-
+year waiver period and advertising fees. 
+▸ We expect Meituan to maintain the highest market share in GTV and order volume, supported by its 
+network-effect moat source, especially in its rider count, extensive data accumulation, scale-driven low-
+cost food and beverages offerings such as Pinhaofan, and membership program. 
+▸ We lowered Meituan’s fair value estimate by 15% to reflect intensifying competition in the on-demand 
+delivery space. We cut our fair value estimate for JD by 27% on Nov. 14, after it released third-quarter 
+results on Nov. 13, to reflect losses in the on-demand delivery, Jingxi, and overseas businesses. We 
+trimmed Alibaba’s fair value estimate by only 3% due to fine-tuning the e-commerce business, as most 
+of the on-demand delivery losses had been accounted for previously. 
+▸ We view Meituan, Alibaba, and JD as undervalued. Alibaba is our top pick mainly due to its promising AI-
+driven revenue potential, detailed in our Alibaba: China’s AI Cloud Giant Select report.  
+ 
+Companies Mentioned 
+ 
+Name/Ticker 
+Economic  
+Moat 
+ 
+Currency 
+Fair Value  
+Estimate 
+Current 
+Price 
+Uncertainty 
+Rating 
+Morningstar  
+Rating 
+Market 
+Cap (Bil) 
+Meituan/03690 Narrow HKD 128.00 100.00 Very High QQQQ 
+ 
+ 
+61,069 
+Alibaba/BABA        
+ 
+Wide USD 258.00 153.80 High QQQQ 380.48 
+Alibaba/09988 Wide HKD 251.00 154.90 High QQQQ 2,956.73 
+JD.com/JD Wide USD 44.00 29.31 High QQQQ 43.63 
+JD.com/09618 Wide HKD 172.00 116.90 High QQQQ 339.04 
+  
+
+=== PAGE 3 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 3 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+Market Too Pessimistic on Meituan and JD— We See Value 
+ 
+Exhibit 2  Shares of Meituan and JD Were Sold Off as Investors Worried About Their Profitability in a Price War 
+Alibaba’s share price increase after August was mainly driven by robust demand for its AI cloud services. 
+ 
+ 
+Source: Morningstar. Data as of Oct. 30, 2025. 
+ 
+Exhibit 3  Market Overreacts to On-Demand Delivery Price War, Meituan and JD Are Cheap in Our View 
+ 
+ 
+    
+ 
+  
+ 
+    
+    
+    
+                  
+  
+  
+  
+  
+      
+  
+  
+       
+       
+      
+  
+  
+          
+  
+  
+     
+    
+      
+  
+  
+         
+ 
+  
+       
+   
+                  
+  
+  
+ 
+  
+     
+      
+  
+      
+      
+       
+     
+  
+  
+    
+ 
+  
+     
+      
+  
+            
+       
+    
+                  
+ 
+ 
+Source: Morningstar. Data as of Oct. 30, 2025. 
+  
+Alibaba JD Meituan
+HKD/Share
+80
+140
+200
+Feb Mar Apr May Jun Jul Aug S ep Oct
+Topic  What Others Are Saying….  K …What We're Saying
+Meituan's On-Demand 
+Delivery Market Position 
+● ●
+● ●
+● ●
+JD's Traditional E-
+Commerce Market 
+Position
+● ●
+●
+● The market is overly pessimistic and the 
+shares are undervalued.
+The market focuses on the cash burn in the 
+near term.
+The market is overly pessimistic; the 
+shares are undervalued.
+The current share price is fair given these 
+challenges.
+JD's key categories —cellphones, 
+laptops, and home appliances— are not 
+impulse purchase driven.
+Meituan faces serious challenges from 
+Alibaba. 
+Meituan will lose market share to 
+Alibaba, but will still remain number one 
+in market share in the long run.
+The market is short-term-focused. 
+Meituan's profitability will recover 
+significantly after the current price war.
+Meituan's on-demand delivery seriously 
+threathens JD's proposition of fast delivery.
+JD's wider assortment, lower sourcing 
+costs from increasing scale, and quality 
+services will still allow it to grow 
+gradually in the next decade.
+
+=== PAGE 4 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 4 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+Strong Incentives Push Alibaba and JD Into On-Demand Delivery Subsidy War 
+The on-demand delivery war began with JD launching its food delivery business in February and starting 
+a CNY 10 billion subsidy program in April. Alibaba recognized that if it didn’t offer subsidies, it would 
+lose market share to JD Food Delivery. Alibaba also realized the benefits that an on-demand delivery 
+business can bring to its traditional e-commerce if it is integrated into Taobao and Tmall. As such, 
+Alibaba started its aggressive subsidies on April 30. The exhibit below illustrates why we think Meituan, 
+Alibaba, and JD entered the subsidy war.  
+ 
+Exhibit 4  Why Meituan, Alibaba, and JD Are Joining the On-Demand Delivery Subsidy War 
+ 
+ 
+Source: Morningstar. Data as of July 15, 2025. 
+ 
+Alibaba and JD Seek to Undermine Meituan’s On-Demand Retail Delivery Growth  
+We believe both Alibaba and JD view Meituan’s instashopping platform (on-demand delivery service for 
+retail products with an average fulfillment time of 34 minutes) as a direct threat to their core traditional 
+e-commerce businesses. Notably, Meituan’s instashopping platform turned profitable in the first quarter 
+of 2025, generating approximately 1% operating income relative to gross transaction volume. As the 
+scale of instashopping grows, Meituan’s on-demand unit delivery costs are expected to decline, making 
+this faster delivery option increasingly appealing to customers. 
+ 
+In particular, Meituan's instashopping platform poses a threat to JD's stronghold in high-tier cities, 
+electronics, and supermarket categories. For example:  
+▸ In 2024, Meituan received instashopping orders for communication devices, consumer electronics, 
+computers, and home appliances, which reached half the volume of JD’s orders, while orders for alcohol, 
+water, snacks, and dairy surpassed that of JD, according to media outlet Leifengwang. 
+▸ In Shenzhen, Meituan’s daily average instashopping order volume exceeded the total of e-commerce, 
+7fresh, and nonfood and beverage on-demand Miao Song orders under JD.  
+ 
+
+
+=== PAGE 5 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 5 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+As a result, Alibaba and JD appear willing to sacrifice short-term earnings to counter Meituan’s 
+expansion, reinforcing our view that this price war should persist through 2027.  
+ 
+These Firms Aim to Build a Comprehensive Online Goods and Services Platform 
+As traditional e-commerce growth slows and more consumers want on-demand food delivery, Alibaba 
+and JD are accelerating their expansion into online services and the faster-growing on-demand retail 
+sector. Meituan continues to attract new users, especially people in younger demographics, who exhibit 
+higher purchase frequency and average order value.  
+ 
+To support this strategic shift, Alibaba has consolidated its on-demand delivery platform Ele.me, travel 
+service provider Fliggy, and its China e-commerce platforms into a unified China e-commerce business 
+unit in June 2025. This integration aligns all the strategies toward a common goal, enabling stronger 
+incentives and more effective tools, such as a unified membership program, to pursue its ambition of 
+becoming a comprehensive platform for online goods and services consumption. In particular, Taobao 
+Instant Commerce (on-demand shopping) is now featured on the homepage of Alibaba’s flagship 
+Taobao app.  
+ 
+Exhibit 5  Alibaba Merges Ele.me and Fliggy Into New China E-Commerce Group 
+ 
+ 
+Source: Alibaba. Data as of August 2025. 
+ 
+On the other hand, JD acquired the remaining stake in on-demand retail delivery platform Dada Nexus 
+earlier this year and is ramping up its travel services.   
+ 
+Additional reasons these companies are integrating on-demand delivery into their traditional e-
+commerce businesses include the following. 
+ 
+Alibaba and JD Target Higher User Engagement and Cross-Sell to Traditional E-Commerce 
+By introducing high-frequency food delivery services, Alibaba and JD seek to increase the daily active 
+user base of their main apps. These services not only drive more frequent app usage but also help 
+attract new customer segments to JD, broadening its reach beyond the traditional core. 
+ 
+ 
+
+
+=== PAGE 6 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 6 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+Exhibit 6  Alibaba and JD See Year-on-Year DAU Growth After Boosting Food Delivery Investment 
+Taobao’s year-on-year DAU growth was the lowest, primarily due to its significantly higher existing DAU base (Exhibit 7).  
+ 
+ 
+Source: LatePost, QuestMobile. Data as of Aug. 25, 2025. 
+ 
+Alibaba disclosed several key metrics during its June-quarter earnings call: 
+▸ Monthly active consumers for “quick commerce,” also known as on-demand delivery, reached 300 
+million in August, marking a 200% increase compared with pre-April levels. This growth contributed to a 
+25% rise in monthly active users on the Taobao app. 
+▸ The quick commerce channel recorded 150 million daily active users, enhancing the likelihood of more 
+frequent shopping activity on Taobao. 
+ 
+JD also shared the following metrics in its June-quarter earnings:  
+▸ Quarterly active customers and shopping frequency rose by more than 40% year on year in the second 
+quarter, a significant improvement from previous quarters and the strongest user momentum in recent 
+years.  
+▸ JD Plus members’ shopping frequency grew by over 50% year on year during the quarter. 
+▸ The conversion rate of food delivery users purchasing e-commerce products is visibly rising and 
+continues to grow steadily. 
+▸ Supermarket categories, lifestyle services, and electronic accessories have seen the greatest gains from 
+cross-selling efforts. 
+  
+DAU YoY Growth (%)
+-10.00
+0.00
+10.00
+20.00
+30.00
+40.00
+50.00
+April May June July
+Meituan
+Alibaba's Taobao
+JD
+
+=== PAGE 7 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 7 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+Exhibit 7  Alibaba’s Taobao Has the Highest Daily Average Users 
+ 
+ 
+ 
+Source: QuestMobile. Data as of Aug. 25, 2025. 
+ 
+As the number of users and purchase frequency on the Taobao and JD apps grow, the potential for 
+cross-selling also increases. Leveraging user preferences, both historical and similar user cohorts, 
+cross-selling can be stimulated through several touchpoints: 
+▸ Recommends traditional e-commerce and on-demand retail products: 
+▸ on the main page of the app. 
+▸ after users complete a food delivery order. 
+▸ Offers targeted coupons for traditional e-commerce and on-demand retail products to food delivery 
+users: 
+▸ when users and members open the main app. 
+▸ after food delivery transactions. 
+ 
+In June, JD founder Richard Liu revealed that 40% of JD’s food delivery consumers, who had either never 
+used JD Retail or had not used it in over a year, made purchases in JD’s traditional e-commerce segment. 
+The same cohort maintained the 40% cross-sell rate through July, suggesting consistent engagement. 
+While JD’s guidance is that its food delivery business will break even in the medium term and become 
+profitable in the long term, Liu emphasized that the current losses are generating more value than 
+equivalent traffic acquisition costs on platforms like Tencent and Douyin. Over time, food delivery is 
+expected to reduce JD’s overall sales and marketing expenses. 
+ 
+Moreover, the increased traffic resulting from on-demand delivery can also boost advertising revenue 
+for traditional e-commerce companies. Alibaba expects to achieve approximately 10% year-on-year 
+growth in customer management revenue in the coming quarters, with higher traffic from on-demand 
+delivery contributing to this momentum. We estimate that 2-3 percentage points of the projected 10% 
+growth are attributable to on-demand delivery. 
+ 
+June 24 June 25
+Million0
+100
+200
+300
+400
+500
+Meituan Alibaba's Taobao JD
+
+=== PAGE 8 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 8 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+However, we note that the incremental traditional e-commerce GMV driven by food delivery remains 
+limited for both JD and Alibaba at this stage. On JD, food delivery users tend to purchase low-ticket 
+items. The company is actively rolling out more tools to enhance cross-selling. 
+ 
+JD Can Leverage JD Logistics’ Network to Provide Supply Chain Services to Restaurants 
+Both express and integrated supply chain delivery personnel, along with food delivery riders, are now 
+managed by JD Logistics to create cost synergies. As of December 2024, JDL employed 370,000 delivery 
+personnel. In June 2025, JD announced plans to increase its food delivery rider count by around 50% to 
+150,000. JDL couriers can deliver fresh food and beverages during mealtimes when they are less 
+occupied, while food delivery riders can support express delivery services during off-peak hours. This 
+flexible deployment model could help reduce overall unit costs. 
+ 
+Liu stated in June that JD does not need to profit directly from selling food to consumers; instead, it can 
+generate profit by providing supply chain services to merchants. In July, JD launched  7Fresh Small 
+Kitchen, a self-operated takeaway kitchen model jointly owned by JD and its business partners. JD will 
+supply food and ingredients to Qixianxiaochu. Although JD announced plans to open 10,000 7Fresh 
+Small Kitchens over the next three years, only one location had opened as of July 22. Given the 
+uncertainty around the scale and potential success of this concept, we have not factored it into our 
+valuation. Similarly, we have not assumed JD will supply fresh food ingredients to restaurants and 
+beverage outlets on its app due to the lack of disclosed details.  
+ 
+We will now take a closer look at the prerequisites for emerging as a winner in this competitive 
+landscape.  
+ 
+Alibaba Has the Strongest Financial Position and Willingness to Spend 
+We believe that winners in this competitive landscape must not only have the capacity but also the 
+determination to spend aggressively relative to their competitors. While free cash flow levels varied 
+among companies in the June quarter of 2025, their net cash positions indicate that they have room to 
+increase leverage if further investment is deemed necessary. On Sept. 11, Alibaba announced plans to 
+raise USD 3.2 billion (CNY 23 billion) through the issuance of a zero-coupon convertible bond to support 
+its aggressive capital expenditure in artificial intelligence and cloud infrastructure. In our view, it could 
+pursue a similar funding strategy for its food delivery business. Meituan also issued bonds, which 
+generated gross proceeds of over CNY 7 billion in late October. 
+ 
+Alibaba held the largest net cash position as of the June quarter. Its guidance of CNY 1 trillion in 
+incremental quick commerce GMV over the next three years, along with higher subsidies per order, 
+underscores its aggressive approach to investment and subsidization in the quick commerce space.  
+ 
+JD, by contrast, refrained from matching its peers in aggressive subsidies since July, which we interpret 
+as a lack of strong commitment to spending. JD has not reported any increase in daily order volume 
+since June, suggesting that its volume may have been hit by competitors’ intensified subsidy strategies. 
+
+=== PAGE 9 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 9 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+Meituan finds itself in a difficult position. It must defend its core food delivery business in China against 
+cash-rich Alibaba, while simultaneously navigating the early stages of its expansion into food delivery 
+markets in the Middle East and Brazil. 
+ 
+We conducted a check in Guangzhou, a first-tier city, to compare the price of the same meal from the 
+same restaurant for the same user at approximately the same time on Nov. 2. Alibaba offered the best 
+deal for the order at a price of only CNY 0.30, JD’s deal came in second at CNY 6.8, and Meituan was 
+third at CNY 22.8. Based on our experience, discounts vary across the three companies depending on a 
+user’s profile. Therefore, this comparison should be viewed as a general reference only. 
+ 
+Exhibit 8  Key Financial Metrics in the June Quarter of 2025 
+ 
+ 
+Source: Meituan, Alibaba, JD, Morningstar. Data as of July 15, 2025. 
+Note: Net cash was calculated by deducting lease liabilities and borrowing. As full cash flow statements were unavailable, estimated free cash flow 
+was derived using the formula: net cash from operating activities minus estimated capex.  
+ 
+Exhibit 9  Strategic Stances: Alibaba Spends, Meituan Defends, and JD Refines   
+ 
+ 
+Source: Meituan, Alibaba, JD, Morningstar. Data as of July 15, 2025. 
+Meituan Alibaba JD
+CNY, billion
+-50
+0
+50
+100
+150
+200
+Net cash Net cash from operating 
+activities
+Estimated capex Estimated free cash flow Year-on-year  
+EBIT/adjusted EBIT A 
+change for the segment 
+that includes food 
+delivery
+Management's Comments Meituan Alibaba JD
+Committed Investment Scale in 
+On-Demand Delivery
+Amount unspecified CNY 50 billion for 12 months 
+starting July 2, 2025
+CNY 10 billion in an unspecified 
+period 
+Comments Alluding to 
+Investment Scale
+Meituan will defend 
+its market position 
+even if competition 
+becomes more fierce 
+Management guided quick 
+commerce to add CNY 1 trillion 
+incremental GMV within the 
+next 3 years
+JD doesn't believe the low-
+quality competition creates any 
+value to the industry and 
+focuses on more refined 
+subsidy strategy
+September Quarter Guidance
+Significant loss for 
+both food delivery 
+and core local 
+commerce segment
+Quick Commerce loss could 
+exceed CNY 30 billion
+Higher food delivery loss in the 
+September quarter versus the 
+June quarter due to seasonality
+
+=== PAGE 10 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 10 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+Next, we will share our perspective on the rationale behind each company’s strategy and assess its 
+effectiveness. 
+ 
+Alibaba and JD Scaled Their Networks Quickly; Alibaba Emerges as the Biggest Winner 
+We share Meituan management’s view that much of the surge in the industry’s food delivery orders, 
+from just over 100 million in January to approximately 250 million in July, reflects a temporary spike 
+driven by subsidies that are unlikely to be maintained in the long term. That said, we think large-scale 
+subsidies have been the most effective strategy for Alibaba and JD to rapidly scale their on-demand 
+delivery networks. Both Taobao Flash Sale and JD Food Delivery are nascent businesses that require 
+subsidies and advertising to simultaneously boost demand (order volume) and supply (active merchants 
+and riders). Low-value items such as fresh beverages, water, and snacks, which require fewer subsidies, 
+offer a cost-effective way to build order volume, expand nationwide presence, and strengthen network 
+density. Alibaba notably gained market share in many cities where its penetration was just 20% in 2024. 
+To retain consumers, merchants, and riders, both Alibaba and JD will need to maintain sizable subsidies 
+over the coming months until order volumes stabilize at an economically viable level.  
+ 
+Another factor behind Alibaba’s high order volume is its subsidy strategy targeting external regional 
+service providers, who are responsible for building and managing the delivery network. According to 
+media company LatePost’s article published on Aug. 29, the higher the order volume, the more subsidies 
+Taobao provides to its service providers, resulting in higher income for them. In contrast, Meituan offers 
+a fixed subsidy per rider, with total subsidies tied to the number of riders rather than the number of 
+orders. Therefore, Taobao Flash’s service providers have stronger incentives to drive up order volume.  
+ 
+A regional service provider for Taobao Flash noted that recruiting existing Meituan merchants is 
+relatively easy. We think many merchants see Taobao as a growth channel, while Meituan remains the 
+foundation of their existing operations.  
+ 
+High subsidies provide these platforms with a critical window to rapidly enhance the efficiency and 
+capabilities of their networks, including: 
+▸ expanding the rider base, 
+▸ improving delivery speed,  
+▸ increasing pickup and drop-off location accuracy,  
+▸ optimizing routing systems,  
+▸ strengthening the ability to handle surges in order volume, and  
+▸ enhancing the retention of the network of participants.  
+ 
+In short, we believe that without aggressive subsidies, achieving long-term market share gains would be 
+extremely difficult.  
+ 
+We examine the extent to which subsidies have contributed to boosting the companies’ order volumes.  
+  
+本报告来源于三个皮匠报告站（www.sgpjbg.com）,由用户Id:865822下载,文档Id:1023393,下载日期:2026-01-04
+
+=== PAGE 11 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 11 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+Exhibit 10  Comparing the Peak Order Volume Period in 2025 With 2024’s Estimated Average Daily Volume 
+ 
+ 
+ 
+Source: Meituan, Alibaba, JD, Morningstar. Data as of July 15, 2025. 
+ 
+According to LatePost, Taobao Flash Sales' daily transaction order volume exceeded 100 million, 
+surpassing Meituan’s fulfilled orders during Aug. 7-9. Meituan’s peak order volume was 150 million on 
+July 12. Alibaba’s peak daily order volume reached 120 million as of Aug. 29, with a weekly average of 80 
+million daily orders throughout August. As of October, Alibaba managed to maintain an average daily 
+order of 80 million, a 2.2 times increase from its 2024 level. JD reported that its daily order volume 
+exceeded 25 million during the 618-shopping festival. As per LatePost, JD’s order volume was around 20 
+million on July 5, which we believe reflects its less aggressive subsidy strategy compared with peers.  
+ 
+Exhibit 11  Alibaba’s August Active Rider Base: 38% of Meituan’s, 144% of JD’s  
+ 
+ 
+ 
+Source: LatePost, Morningstar. Data as of Aug. 25, 2025. 
+ 
+In August, Alibaba’s daily active rider count reached two million, a 300% increase compared with April. 
+Average Daily Volume in 2024 Period With Peak Daily Volume in 2025
+Number of Orders, million
+0
+40
+80
+120
+160
+Meituan Alibaba JD
+July 12
+August 29
+618 Shopping 
+Festival
+April August
+Meituan
+Alibaba
+JD
+0.00 0.50 1.00 1.50 2.00 2.50
+Estimated number of crowdsourced riders working at least six hours per day on average 
+and ful l-time riders, million
+
+=== PAGE 12 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 12 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+We think Alibaba has sufficient delivery capacity to maintain its current order volume for two key 
+reasons. First, peak food delivery hours are concentrated around lunch and dinner, meaning riders don’t 
+need to work six full hours per day to effectively fulfill most orders. On July 28, Alibaba announced that 
+Taobao achieved a 96% delivery timeliness rate while fulfilling 90 million orders over two weekends, 
+excluding free deals and in-store pickup orders. This performance was maintained despite longer 
+estimated waiting times for consumers, according to LatePost’s article published on July 31.  
+ 
+Meanwhile, JD also saw improved delivery timeliness from April to July, supported by an increase in its 
+full-time rider base to 150,000, as announced in June.  
+ 
+We conducted a check on Nov. 2 by ordering the same meal from the same restaurant in Guangzhou, at 
+roughly the same time during a lunch hour. Meituan could deliver the meal fastest, three minutes faster 
+than Alibaba, and JD’s earliest delivery time was 14 minutes later than Meituan. Based on our 
+experience, delivery times vary across the three companies depending on the city and time. Therefore, 
+this comparison should be viewed as a general reference only. 
+ 
+Exhibit 12 Meituan, Alibaba, and JD’s Active Merchant Estimates for May 2025 
+ 
+ 
+Source: QuestMobile, Alibaba, Morningstar. Data as of July 14, 2025. 
+ 
+JD disclosed in its second-quarter update that it has onboarded 1.5 million high-quality restaurants. Its 
+strategy focuses on recruiting establishments that hold restaurant licenses, offer reliable service and 
+delivery, source safe food ingredients, and serve safe meals. According to a Weixin/WeChat post by a JD 
+Food Delivery staff member circulated in aastocks.com, the approval rate for restaurant applications to 
+join the platform was below 40%.  
+ 
+We think rock-bottom promotions like the free deals offered by Meituan and Alibaba are not viable in 
+the long run. The platform that builds out its network and enhances operational efficiency most 
+effectively during the high-subsidy period will ultimately emerge as the winner. Alibaba has been more 
+aggressive than JD in launching large-scale subsidies and benefits from broader resources within its 
+Monthly Active Merchants, million
+0.0
+5.0
+10.0
+15.0
+20.0 17.0
+7.7
+3.8
+Meituan Alibaba JD.com
+
+=== PAGE 13 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 13 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ecosystem, allowing it to establish a stronger foundation in network capabilities. JD, on the other hand, 
+has not participated in free deals since July. Instead, it has focused on targeted subsidies for JD Plus 
+members and specific customer segments—based on factors such as average order value and 
+geographic region.  
+ 
+Having discussed the achievements of Alibaba and JD during the subsidy war, we will now turn to 
+Meituan’s strategy and value proposition.  
+ 
+Meituan Limits Losses by Targeting Service-Conscious High-Value Users  
+Despite its best-in-class capabilities, Meituan continues to provide subsidies to reinforce its reputation 
+as the leading platform—delivering strong value (though not always the lowest prices), with the best 
+services (fastest delivery speed) and the widest product selection.  
+ 
+High order volumes help maintain Meituan’s ecosystem of users, merchants, and riders, while 
+improving system stability, such as delivery timeliness. In a July interview with LatePost, Wang Puzhong, 
+CEO of Meituan’s core commerce business, noted that delivery times had improved despite record order 
+volume. On July 12, Meituan reported an average delivery time of just 34 minutes alongside a record 150 
+million orders.   
+ 
+Thanks to its deep customer insights in the on-demand delivery space, Meituan is more adept at 
+targeting and tailoring coupon distribution—enabling it to  subsidize more efficiently than peers. 
+ 
+Given Meituan’s larger on-demand delivery business compared with Alibaba and JD, matching peer-
+level subsidies would result in greater losses. To mitigate this, Meituan adopts several cost-control 
+strategies: 
+▸ Offers lower subsidies per order. 
+▸ Issues free in-store pickup coupons to reduce delivery costs and curb Alibaba’s July order volume surge. 
+▸ Limits ultralow price promotions like Alibaba’s CNY 0.10 deals after reaching its peak daily order volume 
+in July. 
+▸ Targets subsidies at high-value, loyal users, such as black gold and black diamond members, and those 
+who use delivery regularly without heavy subsidies. 
+▸ Prioritize orders with higher AOV. 
+▸ Leverages Pinhaofan, which offers high value for money food and beverage deals and had double the 
+AOV of its peers in the June quarter, to attract price-sensitive consumers. 
+ 
+Meituan’s six-tiered membership system is based on total spending and task completions, such as daily 
+app logins and specific purchases. We think Meituan will inevitably lose some market share after the 
+subsidy war. While its focus on retaining loyal users is sound, many of its 399 million customers who 
+also use Taobao and JD (as of June 2025, per QuestMobile) may switch platforms depending on the 
+promotions, membership perks, and delivery urgency. If Alibaba and JD offer bigger subsidies but 
+delivery speed in certain use cases isn’t critical, consumers will not need to shop on Meituan.  
+ 
+
+=== PAGE 14 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 14 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+We believe all three players used subsidies inefficiently, with examples such as:  
+▸ Some users abandoned in-store pickups due to long waiting times. 
+▸ Some restaurants ran out of inventory to fulfill orders. 
+▸ Some users were not able to place orders on the day. 
+▸ Alibaba and JD lack Meituan’s depth of insight into new food delivery users, likely subsidizing short-
+term users who won’t stay after the promotions end. 
+▸ JD had to cancel its policy of free orders for late deliveries of over 20 minutes, likely due to the difficulty 
+in delivering orders punctually. 
+ 
+In conclusion, Alibaba has won the initial battle in scaling its network. Given the previous inability of 
+Alibaba’s Ele.me to gain substantial market share in the on-demand delivery market for years, we think 
+Alibaba’s success this time has surprised some investors about its execution under the current 
+management structure. The next challenge for both Alibaba and JD is to focus on operational 
+efficiencies. 
+ 
+Improving Unit Economics; Alibaba Positioned Ahead of JD 
+As competition and subsidies normalize over time, order volumes are expected to drop, reducing rider 
+demand and lowering delivery costs per order.  
+ 
+Alibaba’s Path to Better UE in the Near Term: Reducing Costs and Lifting AOV 
+Alibaba aims to halve its quick commerce UE loss in September and October while maintaining an 
+average of 80 million daily orders. Alibaba said it was able to maintain this order scale during the 
+Double 11 press conference. Key strategies include: 
+▸ Reducing advertising spending. 
+▸ Increasing the share of higher-value meals and nonfood orders to offset unit costs. 
+▸ Subsidizing higher-AOV, higher-margin orders to shape consumer habits. 
+▸ Boosting purchase frequency among existing users. 
+▸ Lowering logistic costs. 
+ 
+With strong consumer awareness—300 million monthly active users as of August —Alibab a can quickly 
+scale back its heavy ad spending on the quick commerce business. It previously invested in widespread 
+ad placements across subways and elevators and enlisted many celebrities to promote its quick 
+commerce offering. 
+  
+
+=== PAGE 15 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 15 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+Exhibit 13  Alibaba Invested Heavily in Taobao Flash Advertising in the Subway and Celebrity Endorsements 
+ 
+ 
+ 
+Source: Sina, 36Kr. Data as of Aug. 7, 2025. 
+ 
+We are optimistic about Alibaba’s ability to grow AOV for three key reasons:  
+▸ In July and August, Alibaba's AOV after subsidies was only 20% below Meituan's. We don’t think the gap 
+is high, and it shouldn’t be difficult for Alibaba to catch up in the future. 
+▸ It has rapidly scaled its quick commerce supply by leveraging its ecosystem. 
+
+
+=== PAGE 16 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 16 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+▸ Alibaba is well positioned to expand quick commerce into high-AOV categories like beauty and fashion, 
+where it holds a strong market presence. 
+ 
+As China’s largest traditional e-commerce player, Alibaba holds several advantages in the non-fresh-
+meal quick commerce segment, which typically yields higher AOV than food delivery.  
+ 
+▸ Tmall brand integration: Over time, Alibaba expects 1 million Tmall offline stores to join Taobao quick 
+commerce—an important long -term supply growth driver. Currently, merchants are still optimizing 
+product selection and warehousing for on-demand delivery.  
+▸ Lightning/on-demand delivery warehouses: Alibaba reported 50,000 on-demand retail warehouses in its 
+June-quarter results, matching Meituan’s scale. Notably, 25% are sourced from Alibaba’s ecosystem.  
+▸ Wholesale platform supply support: Its 1668 platform, China’s largest business-to-business e-commerce 
+marketplace, provides curated inventory ideal for on-demand delivery merchants.   
+▸ Fresh grocery fulfillment: Alibaba leverages Freshippo’s infrastructure to support fresh delivery. 
+Freshippo ranked third in sales in the 2024 China Supermarket Top 100 ranking by the China Chain-
+Store & Franchise Association, with 420 stores across 50 cities as of March 31, and plans to open 100 
+additional stores in 50 new cities during the current fiscal year. 
+▸ Tmall Supermarket shift: The platform has transitioned from a traditional business-to-customer model 
+to a quick commerce format, further enhancing its supply and delivery capabilities.  
+ 
+Alibaba noted that product offerings and front warehouses for nonfood categories have expanded. Some 
+on-demand, non-fresh-meal merchants have expressed interest in joining Taobao’s quick commerce to 
+reduce reliance on Meituan. If Alibaba successfully scales quick commerce into high AOV categories 
+such as beauty and fashion, it could surpass Meituan in AOV and achieve profitability more easily. 
+ 
+From Alibaba’s perspective, Ele.me’s previous losses were primarily due to limited scale rather than 
+operational inefficiencies or execution. However, we think both were contributing factors. In the near 
+term, we believe larger order volumes and improvements in routing systems should help optimize 
+delivery costs per order. Given Alibaba’s higher order density, we expect it to achieve lower delivery 
+costs per order than JD in the long run. In certain cities or counties, such as Hangzhou, Alibaba’s 
+headquarters, the company may even outperform Meituan in delivery efficiency in the future.   
+ 
+We believe Alibaba is on track to meet its UE loss reduction target for the September quarter, supported 
+by:  
+▸ A sequential decline in UE loss in August. 
+▸ Comparable UE performance for Meituan in Shanghai and Hangzhou, despite Meituan having 1.5 times 
+the order volume in those cities. 
+ 
+In our view, Alibaba will prioritize maintaining its current scale over aggressively reducing UE in the 
+near term.  
+ 
+
+=== PAGE 17 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 17 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+In the long term, as Alibaba’s network matures and competitive pressure eases, it should be able to 
+reduce subsidies. If it maintains its current position as a strong number two, merchants are likely to 
+accept higher commission rates and increase advertising spending on the Taobao platform. 
+ 
+JD’s UE Improvement: Monetization Is Key 
+The most significant improvement in JD’s UE is expected to come from monetization, starting in May 
+2026. Key drivers include: 
+▸ Charging commissions and advertising fees. 
+▸ Increasing AOV through higher-priced meals. 
+▸ Reducing subsidies and logistics costs as competitive pressure eases. 
+▸ Improving algorithms and system capabilities for greater efficiency. 
+ 
+JD Food Delivery waived commissions for merchants who joined before May 1 for one year. As a new 
+entrant in the food delivery market, JD currently lacks meaningful monetization from commissions and 
+advertising. Longer-term, JD vowed to keep its commission rate below 5%, lower than Meituan’s 6%-8%. 
+Advertising revenue is expected to grow as merchant participation stabilizes.  
+ 
+JD is currently focused on food delivery, which has a lower AOV compared with on-demand retail—
+represented by Dada Nexus, the on-demand retail logistics firm JD privatized this year. As the food 
+delivery segment matures, JD could benefit from a higher mix of on-demand retail orders, though food 
+delivery will continue to weigh down overall AOV.  Operationally, JD faces higher delivery costs per order 
+compared with Meituan and Alibaba due to higher social benefits for its 150,000 full-time riders and 
+lower order density within each grid (defined delivery zones). According to LatePost’s article published 
+on July 31, Ele.me would likely be close to profitability had it not been for the ongoing price war, thanks 
+to its shift from more costly directly operated teams to third-party agencies responsible for managing 
+food delivery operations in specific regions. We think JD could adopt a similar asset-light model to 
+outsource regional operational responsibilities and reduce costs. However, in both the near and long 
+term, we estimate JD to have lower UE than Meituan and Alibaba, due to its lower commission rate and 
+higher delivery cost per order.  
+ 
+JD’s primary goal is to use high-frequency food delivery to attract new users to its traditional e-
+commerce platform, JD Retail. If the combined profit of JD Retail and JD Food Delivery exceeds JD Retail’s 
+stand-alone profit projections by management, then JD Food Delivery will have fulfilled its strategic 
+mission.  
+ 
+In the next topic, we explain why we believe Meituan will continue to lead in GTV and order share in the 
+on-demand delivery market. 
+ 
+Meituan Will Maintain the Largest On-Demand Market Share and Preserve Its Narrow Moat 
+We think Meituan will remain the leading player in both food delivery and the broader on-demand 
+delivery market in terms of gross transaction volume over the long run. Although Alibaba is positioning 
+itself to become the number-one player in quick commerce, which we define as on-demand delivery of 
+
+=== PAGE 18 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 18 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+both meals and general merchandise, we believe Meituan’s narrow moat, derived from network effects, 
+should endure. 
+ 
+Exhibit 14  Meituan Expected to Maintain Dominance in GTV Market Share…  
+ 
+ 
+ 
+ 
+Source: Morningstar. Data as of Oct. 19, 2025. 
+Note: Calendar year 2026 and 2027 are forecasts.  
+ 
+Exhibit 15  … And Highest Order Volume Share, Followed by Alibaba  
+ 
+ 
+Source: Morningstar. Data as of Oct. 19, 2025. 
+ 
+On our estimate, Meituan’s food delivery revenue in 2024 was almost six times that of its instashopping 
+segment, underscoring its dominance in the most time-sensitive category of on-demand delivery. This 
+suggests that the leading player in food delivery is likely to remain the top player across the broader on-
+demand delivery market in the medium term.  
+ 
+Meituan Alibaba JD
+GTV Market Share0%
+20%
+40%
+60%
+80%
+Calendar Year 2024 Calendar Year 2025 Calendar Year 2026=Forecasts Calendar Year 2027=Forecasts
+Meituan Alibaba JD
+Order Volume Share0%
+10%
+20%
+30%
+40%
+50%
+60%
+70%
+Calendar Year 2024 Calendar Year 2025 Calendar Year 2026=Forecasts Calendar Year 2027=Forecasts
+
+=== PAGE 19 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 19 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+To challenge Meituan’s position, Alibaba would need to match or exceed its active rider base. However, 
+according to LatePost, Meituan's active rider count was still 2.6 times larger than Alibaba's as of August, 
+despite Alibaba offering high compensation to attract riders. We think it will be very difficult for Alibaba 
+to close this gap in the postsubsidy environment.  
+ 
+Competitive Advantages Reinforce Meituan’s Position 
+In addition, Meituan’s network effects moat source—stemming from its large merchant base, broad 
+product selection, and membership program—continues  to support its leadership in on-demand 
+delivery. The membership program helps retain core users who generate the majority of orders. Before 
+the current price war, Meituan held an estimated 70% GTV market share in on-demand delivery. As of 
+the end of August, it still maintained 70% of GTV in food delivery (excluding beverages, based on our 
+estimate) despite intense competition.  
+ 
+Meituan said its UE outperformed peers, with the gap more than doubling at the peak of competition 
+compared with precompetition levels. This demonstrates Meituan’s superior operating efficiency and 
+higher AOV, driven by high-quality users. 
+ 
+Wang Puzhong, CEO of Meituan’s core local commerce business, takes pride in the company’s system 
+capabilities—for example , issuing a coupon for a specific product to a targeted user for self-pickup at a 
+designated store. While this requires real-time integration with the restaurant inventory data, we believe 
+such system connectivity and functionality can be replicated over time. What’s far more difficult to 
+replicate is the depth of on-demand delivery data Meituan has accumulated over the years, which 
+enables highly refined targeting. For instance, Meituan can offer a coupon for a new product to a user 
+who frequently makes purchases from a specific store using Meituan’s Shenqiangshou coupons, 
+thereby enhancing conversion. Users can purchase these Shenqiangshou coupons, which allow them to 
+enjoy discounts across food delivery, in-store restaurant dining, leisure, entertainment, and other 
+services, and hotels and accommodations that would collectively be worth more than the price paid for 
+the coupons.  
+ 
+Meituan also provides valuable data insights to merchants, including:  
+▸ Restaurant competitor density within a specific radius. 
+▸ Delivery order concentration by time slot. 
+▸ Demographic alignment with target consumers. 
+▸ Foot traffic patterns from nearby offices and schools. 
+ 
+Meituan leverages its data and AI capabilities to optimize location selection, product offerings, and 
+inventory management for its “brand satellite store” initiative, enabling restaurants to launch delivery-
+only outlets on its platform. High-order volumes generate rich consumer behavior data, which feeds into 
+predictive algorithms to forecast demand by time and location, allowing for more efficient supply 
+allocation. As of the third quarter of 2024, over 200 brands had opened more than 1,000 brand satellite 
+stores.  
+ 
+
+=== PAGE 20 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 20 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+In addition, Meituan maintains the largest rider database in the industry, as implied by its 70% market 
+share prior to the price war. According to LatePost, Meituan was able to recall full-time riders more 
+efficiently than Alibaba in July, thanks to its deeper rider data. Its extensive experience and data in order 
+fulfillment contribute to lower average delivery costs per order and higher delivery efficiency. Meituan’s 
+years of managing rider networks across all city tiers nationwide remain a key competitive advantage 
+that Alibaba will need time to match. 
+ 
+Meituan’s extensive experience in food delivery competition— with Baidu, Ele.me (both before and after 
+Alibaba’s acquisition), Douyin, and Didi—has equipped it with strong operational tactics such as a 
+subsidy strategy that should prove valuable as it competes with JD and Alibaba.  
+ 
+Its Pinhaofan initiative further reinforces Meituan’s leadership in food delivery. Pinhaofan enables 
+restaurants to deliver high-volume, value-for-money meals by focusing on a limited number of dishes. 
+Hence, these restaurants can improve profitability by reducing unit costs through the sourcing of fewer 
+ingredients in larger quantities. Similarly, rider unit costs decrease when more orders are delivered per 
+trip. We think this strategy is difficult for other players to replicate as cost-effectively as Meituan over 
+the long run, since the platform with the largest scale is best positioned to offer the most value-for-
+money meals. 
+ 
+In our view, Alibaba’s strengths lie more in on-demand product delivery, where it could potentially 
+achieve higher GTV than Meituan in the long term. However, this is not part of our base case due to the 
+early stage of development. According to a 2023 survey by Meituan Research Institute, total on-demand 
+retail consumption in counties was approximately 60% higher than in cities. Notably, only 31% of county 
+respondents cited urgency as their reason for using on-demand delivery platforms. Therefore, we think 
+a longer average delivery time than Meituan’s 34-minute benchmark is acceptable if Taobao Flash can 
+offer better deals or a broader product selection. 
+  
+
+=== PAGE 21 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 21 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+Exhibit 16  Key Success Factors Ranked: What Drives Leadership in On-Demand Delivery War  
+3 = highest, 1= lowest. 
+ 
+ 
+ 
+Source: Morningstar. Data as of Sept. 20, 2025. 
+ 
+We think the increase in daily and monthly active users, driven by the stronger on-demand delivery 
+business, has enhanced the network effect on the Taobao app.  
+ 
+What Does This Imply About Our Moat Ratings for Alibaba and JD? 
+In our view, Alibaba is clearly demonstrating its wide-moat attributes. This should increase the loyalty of 
+existing traditional e-commerce and on-demand delivery merchants, and attract a higher number of 
+new on-demand delivery merchants, which should, in turn, drive more active users to Taobao. Alibaba’s 
+rising market share in the on-demand delivery market allows it to defend its traditional e-commerce 
+market share from the risk of a consumer preference shift toward faster delivery.  
+ 
+The stronger on-demand delivery business also provides an added differentiation— faster delivery—
+compared with the e-commerce platforms of short video companies like Douyin and Kuaishou. We note 
+that the short-video platforms have not been able to establish a meaningful presence in the on-demand 
+delivery market due to the lack of delivery capabilities.  
+ 
+As for JD, its wide-moat rating warrants closer scrutiny over the long run if Meituan and Alibaba can 
+substantially increase the supply and service levels while offering competitive pricing through their on-
+demand delivery platforms. We think the value proposition of JD’s same-day and next-day delivery has 
+been weakened by the rise of on-demand delivery. This is especially the case for JD’s general 
+merchandise segment, which accounted for 29% of revenue in the second quarter of 2025. This segment 
+includes supermarket goods and nonelectronic goods that require a shorter decision-making process 
+and are more driven by impulse purchases compared with electronic goods.  
+ 
+Key Success Factors Meituan Alibaba JD
+Accumulation of data from consumers, merchants ,and riders 3 2 1
+Experience in winning previous food delivery battles 3 2 1
+Experience in managing a fleet of nationwide riders 3 2 1
+Technology and systems 3 2 1
+Ability to invest aggressively 3 3 3
+Willingness to invest aggressively 2 3 1
+Number of restaurants 3 2 1
+On-demand retail product supply resources from its ecosystem 2 3 1
+Traffic support and user base 2 3 2
+Number of active riders 3 2 1
+Customers' association of on-demand delivery to the platform 3 2 1
+
+=== PAGE 22 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 22 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+The higher AOV of home appliances has attracted Meituan to join the race and challenge JD in the home 
+appliance e-commerce segment. The firm joined hands with many home appliance brands, offering 
+half-day delivery and installation through physical stores. Meituan said home appliances achieved 
+200% GTV growth in the June 18 promotion. Although Meituan didn't mention whether the growth is 
+comparable with last year's June 18 promotion or a period immediately before June 18, we still think 
+such a level of growth is very strong. We think Meituan is still in the early stages of developing its home 
+appliance business, but it is important for investors to monitor how much market share it could 
+potentially capture in the future. 
+ 
+Next, we will illustrate how our deep dive into the on-demand delivery market informs our earnings 
+forecasts and fair value estimates for Meituan, Alibaba, and JD.  
+ 
+Alibaba Is Our Top Pick Among Undervalued Trio; Meituan and JD Also Attractive 
+We believe investors are overly focused on the short-term earnings impact of the food delivery price 
+war, which we expect to conclude by the end of 2027. This should pave the way for a recovery in 
+earnings. Among the three major internet retail platforms, Alibaba is our top pick, mainly due to the 
+long-term growth potential of its AI cloud business, and to a lesser extent, its market share gains in the 
+on-demand delivery segment. We trimmed our fair value estimate for Alibaba by only 3% due to fine-
+tuning of our EBIT/GMV forecasts for Alibaba China E-commerce group. Most of the on-demand delivery 
+losses have been previously accounted for. Alibaba remains undervalued in our view.  
+ 
+Meituan, in our view, remains undervalued after we cut our fair value estimate by 15% to HKD 128.00 
+per share on market share loss and operating deleverage in the on-demand delivery segment. The 
+market appears overly pessimistic about its long-term positioning and the cash burn associated with 
+the on-demand delivery market. We expect Meituan to retain its leadership in terms of GTV and on-
+demand order volume, and we do not foresee any competitors with both the resources and strategic 
+incentives to aggressively challenge Meituan’s dominance once the current subsidy war subsides.  
+ 
+JD shares are cheap, despite our 27% fair value estimate cut on Nov. 14. We took a fresh look at losses in 
+the on-demand delivery segment after it released third-quarter results on Nov. 13. We think the market 
+underestimates the strength of its nationwide logistics network and overestimates the competitive 
+threat from on-demand retail. Prior to the recent national subsidy program, we estimate that cellphones, 
+personal computers, and home appliances each contributed approximately one-third to JD’s home 
+appliance and electronics revenue, which collectively accounted for 49% of JD’s total revenue last year.  
+ 
+While Meituan’s and Alibaba’s on-demand delivery services put some competitive pressure on JD’s fast-
+delivery value proposition, we believe it is premature to assume they can meaningfully capture share in 
+these categories, especially home appliances, which typically involve longer decision-making cycles and 
+are less driven by impulse purchases. According to the iPhone 17 Initial Sales Research cited by 
+financial news outlet Eastmoney.com, only 6.82% of respondents used on-demand delivery to purchase 
+this device. Among those, 88.39% chose JD, while only 5.36% and 1.79% opted for Taobao and Meituan, 
+respectively. This highlights customers’ strong perception of JD as the preferred platform for purchasing 
+
+=== PAGE 23 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 23 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+electronics. Moreover, JD’s advantages in bulk procurement through its first-party business, its wide 
+assortment of electronics and home appliance products, and its high-quality service offerings further 
+reinforce its reputation for reliable and fast delivery. 
+ 
+Exhibit 17  On-Demand Delivery Leader Meituan Sees 15% Fair Value Estimate Cut Amid Higher Competition 
+ 
+ 
+ 
+ 
+Source: Morningstar. Data as of Nov. 18, 2025. 
+ 
+We cut Meituan’s revenue and EBIT forecasts by an average of 8% and 15%, respectively, over the next 
+decade, reflecting anticipated GTV share losses and operating deleverage. We now project overall 
+revenue to grow at a 7% CAGR in the next decade, while EBIT is expected to rise at a slightly faster pace 
+of 8%, driven by a turnaround in its new initiatives, which include overseas food delivery, domestic 
+community group purchases, and other emerging businesses. For Meituan’s core local commerce 
+segment, which includes food delivery, instashopping, in-store services, hotels, and travel, we estimate 
+a 6% CAGR in revenue. However, EBIT for CLC is expected to grow at a slower 5% CAGR, as intensified 
+competition continues to pressure on-demand delivery margins.  
+  
+Name/Ticker Currency
+Change From 
+Previous Fair 
+Value Estimate
+New Fair Value 
+Estimate Current Price Price/Fair Value 
+Estimate
+Morningstar 
+Rating 
+Meituan 
+(HKG:03690) HKD -15% 128.00 100.00 78% QQQQ
+Alibaba 
+(NYS:BABA) USD -3% 258.00 153.80 60% QQQQ
+Alibaba 
+(HKG:09988) HKD -3% 251.00 154.90 62% QQQQ
+JD.com (NAS:JD) USD 0% 44.00 29.31 67% QQQQ
+JD.com 
+(HKG:09618) HKD 0% 172.00 116.90 68% QQQQ
+
+=== PAGE 24 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 24 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+Exhibit 18  Meituan’s Revenue and EBIT Forecasts 
+ 
+ 
+Source: Morningstar. Data as of Oct. 19, 2025. 
+Note: Revenue and EBIT from food delivery and instashopping are not disclosed separately; they are reported as part of the CLC segment.  
+ 
+We project Meituan’s overall on-demand delivery EBIT/GTV to increase and stabilize at 2.1% by 2034 
+from negative 1.3% in 2025, reflecting gradual margin recovery. This figure is lower than the 2.6% 
+achieved in 2024 due to intensified competition. Under our assumptions, food delivery EBIT/GTV will rise 
+to 2.5% by 2035 from negative 1.6% in 2025, though still below the 3% recorded in 2024. Meituan 
+continues to target a profit of CNY 1 per order, a goal we believe is achievable for food delivery by 2027 
+and for instashopping by 2032.  
+ 
+Exhibit 19  Meituan’s On-Demand Delivery Segment EBIT/GTV Forecasts 
+ 
+ 
+Source: Morningstar. Data as of Oct. 19, 2025. 
+ 
+For Alibaba, we forecast a 10-year revenue CAGR of 11%, primarily driven by 30% growth in its cloud 
+business and a 13% increase in adjusted EBITA. This reflects a rising contribution from high-margin AI-
+related revenue, and the turnaround of its loss-making segments as guided by management. Quick 
+commerce, a newly introduced revenue stream as of the June 2025 quarter or the first quarter of fiscal 
+2026, is expected to deliver a nine-year revenue CAGR of 4%, supported by market share gains from 
+Meituan and enhanced monetization through commissions and advertising. A meaningful amount of 
+the quick commerce revenue increase occurred in fiscal 2026, which is not captured in our nine-year 
+forecast. 
+  
+Total Revenue Core Local Commerce Revenue EBIT Core Local Commerce EBIT
+EBIT Margin
+CNY, million
+-150,000
+0
+350,000
+700,000
+-5%
+0%
+5%
+10%
+15%
+FY 2024 FY 2025E FY 2026E FY 2027E FY 2028E FY 2029E FY 2030E FY 2031E FY 2032E FY 2033E FY 2034E
+EBIT/GTV 2024 2025 2034
+On-Demand Delivery 2.6% -1.3% 2.1%
+Food Delivery 3.2% -1.6% 2.5%
+Instashopping 0.5% -0.1% 1.6%
+
+=== PAGE 25 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 25 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+Exhibit 20  Alibaba’s Revenue and Adjusted EBITA Forecasts 
+ 
+ 
+ 
+Source: Morningstar. Data as of Oct. 19, 2025. 
+Note: Alibaba’s fiscal year ends on March 31. 
+ 
+According to management, increased traffic from Alibaba’s quick commerce operations has already led 
+to higher monetization rates in its traditional e-commerce business. Alibaba’s more robust consumer 
+data should also improve ad conversion rates and drive higher advertising revenue. We project a 3% 
+CAGR in customer management revenue for the traditional e-commerce segment over the next decade. 
+ 
+Under our assumptions, the newly formed Alibaba China E-commerce Group, which includes Taobao, 
+Tmall, quick commerce, and the Fliggy travel platform, will register an adjusted EBITA/GMV ratio of 2.4% 
+by the end of the decade, consistent with our estimate for the former Taobao Tmall Group in fiscal 2025. 
+This reflects our view that the expansion of quick commerce will support Alibaba in maintaining its 
+margin profile over time. Prior to this expansion, we had assumed that intense competition in the e-
+commerce space would erode adjusted EBITA/GMV margins in the long run. However, the strategic 
+integration of quick commerce is now expected to enhance user engagement, purchase frequency, 
+monetization, and cross-selling opportunities across Alibaba’s broader online shopping ecosystem. 
+ 
+We project Alibaba will generate slightly lower on-demand delivery profit per order than Meituan’s CNY 
+1 target, due to several factors:  
+▸ Greater reliance on subsidies or lower monetization than Meituan to defend market share and offset the 
+lower demand caused by slower on-demand delivery speeds compared with Meituan 
+▸ Traditional e-commerce remains Alibaba’s main business, making traffic acquisition from on-demand 
+delivery more valuable for cross-selling than maximizing per-order profitability.  
+▸ Lower projected order volume and density relative to Meituan, resulting in higher per-order delivery 
+costs. 
+▸ High AOV from on-demand retail products, where Alibaba holds a supply advantage, is expected to 
+remain a smaller portion of the overall on-demand market in the medium term. 
+Total Revenue Quick Commerce Revenue Adjusted EBIT A Adjusted EBITA Margin
+CNY, million
+0
+1,000,000
+2,000,000
+3,000,000
+0%
+5%
+10%
+15%
+20%
+25%
+FY 2025 FY 2026E FY 2027E FY 2028E FY 2029E FY 2030E FY 2031E FY 2032E FY 2033E FY 2034E FY 2035E
+
+=== PAGE 26 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 26 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+We now maintain JD’s forecasts. We had already cut our non-GAAP EBIT estimates by  30%-75% for the 
+next 10 years on Nov. 14, following JD’s third-quarter earnings release on Nov 13, largely due to losses in 
+its on-demand delivery, Jingxi, and overseas business,  and management’s continued commitment to 
+invest in these subsegments. We think the on-demand delivery business will have suboptimal scale in 
+the next 10 years. Our revenue forecasts were broadly unchanged as the incremental gains from on-
+demand delivery are relatively small compared with the core business, JD Retail, and are expected to be 
+offset by heightened competition.  
+ 
+At this stage, cross-selling from on-demand delivery to traditional e-commerce has not resulted in a 
+meaningful uplift in GMV for either JD or Alibaba. Moreover, Alibaba, being the larger on-demand player, 
+also competes for cross-selling opportunities within its traditional e-commerce ecosystem. Given JD’s 
+substantially lower order volume and traffic in on-demand delivery, we do not anticipate a material 
+increase in advertising revenue for JD retail, nor do we expect on-demand delivery revenue to be 
+sufficient to counter competitive pressures. 
+ 
+Looking ahead, we forecast JD’s revenue and non-GAAP EBIT to grow at a 4% CAGR over the next decade, 
+as margin dilution from the lower-margin on-demand delivery business offsets margin expansion in its 
+first-party e-commerce operations. 
+ 
+Exhibit 21  JD’s Revenue Forecasts 
+ 
+ 
+Source: Morningstar. Data as of Nov. 14, 2025. 
+Note: The new business includes on-demand delivery, Jingxi, and others. On-demand delivery business revenue is not reported separately. 
+  
+New Business Revenue Total Revenue
+CNY, million
+0
+500,000
+1,000,000
+1,500,000
+2,000,000
+FY 2024 FY 2025 FY 2026 FY 2027E FY 2028E FY 2029E FY 2030E FY 2031E FY 2032E FY 2033E FY 2034E
+
+=== PAGE 27 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 27 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+Exhibit 22  JD’s Non-GAAP EBIT Forecasts 
+ 
+ 
+ 
+Source: Morningstar. Data as of Nov. 14, 2025. 
+ 
+We forecast JD’s order volume in 2034 will reach a level comparable with Alibaba’s Ele.me’s volume level 
+around 2021-22, when Ele.me was operating at a negative low-single-digit adjusted EBITA/GMV margin. 
+We expect JD’s on-demand delivery non-GAAP EBIT/GMV to gradually break even by 2034, as JD will 
+concentrate its operations in fewer cities to improve order density and outsource city-level food delivery 
+operations to third-party agencies to reduce costs. Based on our estimates, JD’s overall non-GAAP 
+EBIT/GMV will reach 1.1% by 2034, matching the level recorded in 2024, meaning its entry into the on-
+demand delivery space will enable it to remain profitable in the long run, despite intense competition in 
+the e-commerce sector. K 
+  
+Non-GAAP EBIT Non-GAAP EBIT Margin
+CNY, million
+0
+10,000
+20,000
+30,000
+40,000
+50,000
+60,000
+70,000
+0%
+1%
+2%
+3%
+4%
+5%
+FY 2024 FY 2025E FY 2026E FY 2027E FY 2028E FY 2029E FY 2030E FY 2031E FY 2032E FY 2033E FY 2034E
+
+=== PAGE 28 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 28 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+Appendix 
+ 
+Exhibit 23  Meituan Financial Model Summary 
+ 
+ 
+Source: Morningstar Direct. Data as of Nov. 14, 2025 
+  
+Meituan (HKG:03690)
+Star Rating Fair Value Last Price Uncertainty Capital Allocation Economic Moat
+128 HKD 100 HKD Very High Standard Narrow
+Chelsey Tam Five-Star Price 64.15          Estimated COE 10.5%
+0 Fair Value Estimate 128.30        Pre-Tax Cost of Debt 6.5%
+chelsey.tam@morningstar.com One-Star Price 224.53        Estimated WACC 9.3%
+Consumer Products and Services (B2C) Market Price 100.00        ROIC * 14.4%
+Services (Non-Financial) P / FVE 0.78            Adjusted ROIC * 14.4%
+* 5-Yr Projected Average
+Forecast
+Income Statement 2022 2023 2024 2025E 2026E 2027E 2028E 2029E
+Revenue 219,955      276,745      337,592      366,450      375,596      415,163      455,081      492,568      
+Gross Profit 61,753        97,191        129,785      123,250      138,970      151,535      163,829      172,399      
+Operating Income (5,785)         14,628        38,031        (12,351)       12,503        34,409        42,179        49,599        
+Net Income (6,685)         13,857        35,808        (11,011)       11,909        31,645        38,830        45,714        
+Adjusted Income 1,493          (10,631)       (7,616)         (5,805)         33,096        38,860        51,933        62,224        
+Adjusted EPS 0.25            (1.71)           (1.22)           (0.96)           5.46            6.41            8.57            10.27          
+Adjusted EBITDA 2,782          (8,217)         (5,005)         1,862          47,740        54,742        68,927        80,240        
+Growth (% YoY)
+Revenue 22.8% 25.8% 22.0% 8.5% 2.5% 10.5% 9.6% 8.2%
+Gross Profit 45.4% 57.4% 33.5% -5.0% 12.8% 9.0% 8.1% 5.2%
+Operating Income -74.8% -352.9% 160.0% -132.5% -201.2% 175.2% 22.6% 17.6%
+Net Income -71.6% -307.3% 158.4% -130.7% -208.2% 165.7% 22.7% 17.7%
+Adjusted EPS -86.6% -795.9% -28.5% -21.7% -670.2% 17.4% 33.6% 19.8%
+Adjusted EBITDA -77.4% -395.4% -39.1% -137.2% 2463.6% 14.7% 25.9% 16.4%
+Profitability (%)
+Gross Margin 28.1% 35.1% 38.4% 33.6% 37.0% 36.5% 36.0% 35.0%
+Operating Margin -2.6% 5.3% 11.3% -3.4% 3.3% 8.3% 9.3% 10.1%
+Net Margin -3.0% 5.0% 10.6% -3.0% 3.2% 7.6% 8.5% 9.3%
+Adjusted EBITDA Margin 1.3% -3.0% -1.5% 0.5% 12.7% 13.2% 15.1% 16.3%
+Return on Equity -5.3% 9.9% 22.1% -6.6% 7.1% 16.7% 17.3% 17.1%
+Adjusted ROIC 7.6% 25.4% 33.3% 12.3% 9.7% 16.8% 16.9% 16.4%
+Leverage
+Debt / Capital 0.3x 0.3x 0.3x 0.2x 0.2x 0.2x 0.2x 0.1x
+Debt / EBITDA 15.8x 2.5x 1.3x -20.1x 1.7x 0.9x 0.8x 0.7x
+EBITDA / Interest Expense 3.8x 37.4x 1027.0x 9.6x -43.7x -68.4x -50.4x -39.5x
+Cash Flow
+Dividends per Share -              -              -              -              -              -              -              -              
+Free Cash Flow to the Firm (4,932)        
+ 8,823          53,490        (20,262)       2,142          29,041        36,105        42,749        
+Dividend Franking -              -              -              -              -              -              -              -              
+Dividend Payout Ratio 0.0% 0.0% 0.0% 0.0% 0.0% 0.0% 0.0% 0.0%
+
+
+=== PAGE 29 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 29 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+Exhibit 24  Alibaba Financial Model Summary 
+ 
+ 
+Source: Morningstar Direct. Data as of Nov. 14, 2025 
+  
+Alibaba Group (NYS:BABA)
+Star Rating Fair Value Last Price Uncertainty Capital Allocation Economic Moat
+258 USD 170 USD High Standard Wide
+Chelsey Tam Five-Star Price 154.94          Estimated COE 10.5%
+0 Fair Value Estimate 258.23          Pre-Tax Cost of Debt 5.3%
+chelsey.tam@morningstar.com One-Star Price 400.26          Estimated WACC 9.5%
+Financial Services Market Price 170.43          ROIC * -30.9%
+Other Financial Services P / FVE 0.66               Adjusted ROIC * 41.7%
+* 5-Yr Projected Average
+Forecast
+Income Statement 2023 2024 2025 2026E 2027E 2028E 2029E 2030E
+Revenue 867,098        941,168        996,347        1,009,691     1,119,561     1,241,388     1,372,996     1,527,721     
+Gross Profit 317,403        354,845        398,062        453,825        518,882        576,587        637,715        709,579        
+Operating Income 72,537          88,152          158,525        133,312        201,036        221,676        251,038        287,199        
+Net Income 70,920          79,741          128,709        102,221        151,046        165,483        186,607        215,057        
+Adjusted Income 141,379        157,479        158,122        118,192        179,449        194,201        217,287        249,016        
+Adjusted EPS 6.70               7.74               8.19               6.33               9.96               11.18             13.00             15.50             
+Adjusted EBITDA 100,351        113,350        140,905        126,998        194,722        215,362        244,724        280,885        
+Growth (% YoY)
+Revenue 1.6% 8.5% 5.9% 1.3% 10.9% 10.9% 10.6% 11.3%
+Gross Profit 1.2% 11.8% 12.2% 14.0% 14.3% 11.1% 10.6% 11.3%
+Operating Income 9.3% 21.5% 79.8% -15.9% 50.8% 10.3% 13.2% 14.4%
+Net Income 14.5% 12.4% 61.4% -20.6% 47.8% 9.6% 12.8% 15.2%
+Adjusted EPS 7.0% 15.5% 5.8% -22.6% 57.3% 12.3% 16.2% 19.2%
+Adjusted EBITDA 44.1% 13.0% 24.3% -9.9% 53.3% 10.6% 13.6% 14.8%
+Profitability (%)
+Gross Margin 36.6% 37.7% 40.0% 44.9% 46.3% 46.4% 46.4% 46.4%
+Operating Margin 8.4% 9.4% 15.9% 13.2% 18.0% 17.9% 18.3% 18.8%
+Net Margin 8.2% 8.5% 12.9% 10.1% 13.5% 13.3% 13.6% 14.1%
+Adjusted EBITDA Margin 11.6% 12.0% 14.1% 12.6% 17.4% 17.3% 17.8% 18.4%
+Return on Equity 6.4% 7.2% 11.8% 9.4% 13.4% 13.9% 14.7% 15.7%
+Adjusted ROIC 21.4% 45.4% 63.4% 40.4% 41.1% 37.1% 40.3% 49.8%
+Leverage
+Debt / Capital 0.1x 0.1x 0.2x 0.2x 0.2x 0.1x 0.1x 0.1x
+Debt / EBITDA 1.4x 1.3x 1.0x 1.1x 0.7x 0.6x 0.6x 0.5x
+EBITDA / Interest Expense -17.1x -23.2x -94.1x -164.3x 726.7x 216.2x 167.6x -1007.1x
+Cash Flow
+Dividends per Share -                 0.13               0.13               0.75               1.16               1.31               1.54               1.85               
+Free Cash Flow to the Firm 180,513        160,781        7,563             (48,656)         53,779          91,626          213,157        251,879        
+Dividend Franking 0% 0% 0% 0% 0% 0% 0% 0%
+Dividend Payout Ratio 0.0% 9.3% 11.9% 11.8% 11.6% 11.8% 11.9% 11.9%
+QQQQ
+
+=== PAGE 30 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 30 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+Exhibit 25  JD Financial Model Summary 
+ 
+ 
+Source: Morningstar Direct. Data as of Nov. 14, 2025 
+  
+JD.com (HKG:09618)
+Star Rating Fair Value Last Price Uncertainty Capital Allocation Economic Moat
+172 HKD 115 HKD High Exemplary Wide
+Chelsey Tam Five-Star Price 103.06          Estimated COE 9.0%
+0 Fair Value Estimate 171.77          Pre-Tax Cost of Debt 5.8%
+chelsey.tam@morningstar.com One-Star Price 266.24          Estimated WACC 9.9%
+Consumer Products and Services (B2C) Market Price 115.40          ROIC * 21.1%
+Retail P / FVE 0.67              Adjusted ROIC * 13.8%
+* 5-Yr Projected Average
+Forecast
+Income Statement 2022 2023 2024 2025E 2026E 2027E 2028E 2029E
+Revenue 1,046,236     1,084,662     1,158,819     1,344,903     1,441,840     1,499,292     1,427,607     1,468,209     
+Gross Profit 147,073        159,704        183,868        214,342        228,774        245,387        239,365        250,577        
+Operating Income 15,973          34,531          54,434          35,514          28,144          34,114          52,420          52,543          
+Net Income 10,380          24,167          41,359          27,226          19,215          24,067          38,699          39,103          
+Adjusted Income 28,220          35,200          47,827          31,350          25,222          30,291          44,652          45,210          
+Adjusted EPS 8.87              11.10            15.55            10.50            8.56              10.42            15.36            15.55            
+Adjusted EBITDA 23,209          42,823          61,670          43,869          36,327          42,182          60,352          60,208          
+Growth (% YoY)
+Revenue 9.9% 3.7% 6.8% 16.1% 7.2% 4.0% -4.8% 2.8%
+Gross Profit 14.0% 8.6% 15.1% 16.6% 6.7% 7.3% -2.5% 4.7%
+Operating Income -1268.4% 116.2% 57.6% -34.8% -20.8% 21.2% 53.7% 0.2%
+Net Income -391.6% 132.8% 71.1% -34.2% -29.4% 25.3% 60.8% 1.0%
+Adjusted EPS 64.7% 25.1% 40.1% -32.5% -18.5% 21.7% 47.4% 1.2%
+Adjusted EBITDA 377.1% 84.5% 44.0% -28.9% -17.2% 16.1% 43.1% -0.2%
+Profitability (%)
+Gross Margin 14.1% 14.7% 15.9% 15.9% 15.9% 16.4% 16.8% 17.1%
+Operating Margin 1.5% 3.2% 4.7% 2.6% 2.0% 2.3% 3.7% 3.6%
+Net Margin 1.0% 2.2% 3.6% 2.0% 1.3% 1.6% 2.7% 2.7%
+Adjusted EBITDA Margin 2.2% 3.9% 5.3% 3.3% 2.5% 2.8% 4.2% 4.1%
+Return on Equity 4.0% 8.5% 13.6% 8.6% 6.0% 7.3% 11.2% 10.6%
+Adjusted ROIC 48.5% 46.1% 55.1% 9.1% 0.8% 6.8% 25.0% 27.4%
+Leverage
+Debt / Capital 0.2x 0.2x 0.2x 0.2x 0.2x 0.2x 0.2x 0.2x
+Debt / EBITDA 1.8x 1.1x 1.0x 1.5x 1.8x 1.5x 1.1x 1.1x
+EBITDA / Interest Expense 11.0x 14.9x 21.3x 16.2x 11.1x 12.8x 18.4x 18.3x
+Cash Flow
+Dividends per Share -                -                3.62              3.62              2.59              3.29              5.28              5.34              
+Free Cash Flow to the Firm (11,326)         (12,950)         33,561          2,320            (6,925)           (8,483)           16,451          8,351            
+Dividend Franking -                -                -                -                -                -                -                -                
+Dividend Payout Ratio 0.0% 0.0% 23.3% 34.5% 30.2% 31.5% 34.4% 34.3%
+
+
+=== PAGE 31 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 31 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+Links to Related Research 
+Meituan Earnings: Valuation Cut by 8%; Expect Strong Growth in Instashopping and In-Store 
+ 
+Meituan Earnings: Valuation Maintained; Long-Term Earnings Recovery Offsets Medium-Term Pressure 
+ 
+Alibaba: Increasing Investment as AI Infrastructure Demand Exceeds Expectations; Valuation Rises 49%  
+ 
+Alibaba: AI and Customer Management Revenue Growth Drive 17% Valuation Increase 
+ 
+Alibaba Earnings: First Battle in Scaling Quick Commerce Won; Raising Efficiency Is Next 
+ 
+JD.com Earnings: Strong Retail Performance Offset by Food Delivery Losses; Valuation Maintained 
+ 
+JD.com: Valuation Cut by 14% Due to Higher Competition in On-Demand Delivery 
+  
+
+=== PAGE 32 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 32 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+Research Methodology for Valuing Companies 
+ 
+Overview 
+At the heart of our valuation system is a detailed projection of a company’s future cash flows, resulting from our analysts’ 
+research. Analysts create custom industry and company assumptions to feed income statement, balance sheet, and capital 
+investment assumptions into our globally standardized, proprietary discounted cash flow, or DCF, modeling templates. We use 
+scenario analysis, in-depth competitive advantage analysis, and a variety of other analytical tools to augment this process. We 
+think analyzing valuation through discounted cash flows presents a better lens for viewing cyclical companies, high- growth firms, 
+businesses with finite lives (mines, for example), or companies expected to generate negative earnings over the next few years. 
+That said, we don’t dismiss multiples altogether but rather use them as supporting cross-checks for our DCF-based fair value 
+estimates. We also acknowledge that DCF models offer their own challenges (including a potential proliferation of estimated 
+inputs and the possibility that the method may miss short-term market-price movements), but we believe these negatives are 
+mitigated by deep analysis and our long-term approach.  
+ 
+Morningstar’s Equity Research Group (“we,” “our”) believes that a company’s intrinsic worth results from the future cash flows it 
+can generate. The Morningstar Rating for stocks identifies stocks trading at a discount or premium to their intrinsic worth—or fair 
+value estimate in Morningstar terminology. Five-star stocks sell for the biggest risk-adjusted discount to their fair values, whereas 
+1-star stocks trade at premiums to their intrinsic worth.  
+ 
+Four key components drive the Morningstar rating:  
+▸ our assessment of the firm’s economic moat.  
+▸ our estimate of the stock’s fair value.  
+▸ our uncertainty around that fair value estimate.  
+▸ the current market price.  
+ 
+This process ultimately culminates in our single-point star rating.  
+ 
+Economic Moat 
+The Morningstar Economic Moat Rating is a structural feature that Morningstar believes positions a firm to earn durable exces s 
+profits over a long period of time, with excess profits defined as returns on invested capital above our estimate of a firm ’s cost of 
+capital. The economic moat rating is not an indicator of the investment performance of the investment highlighted in this rep ort. 
+Narrow-moat companies are those that Morningstar believes are more likely than not to achieve normalized excess retu rns for at 
+least the next 10 years. Wide-moat companies are those that Morningstar believes will earn excess returns for 10 years, with 
+excess returns more likely than not to remain for at least 20 years. Firms without a moat, including those that have a substantial 
+threat of value destruction-related risks related to environmental, social, and governance; industry disruption; financial health; or 
+other idiosyncratic issues, are more susceptible to competition. Morningstar has identified five sources of economic moats: 
+intangible assets, switching costs, network effect, cost advantage, and efficient scale. 
+ 
+Fair Value Estimate 
+Each stock’s fair value is estimated by using a proprietary discounted cash flow model, which assumes that the stock’s value is 
+equal to the total of the free cash flows of the company is expected to generate in the future, discounted back to the present at the 
+rate commensurate with the riskiness of the cash flows. As with any DCF model, the ending value is highly sensitive to 
+Morningstar’s projections of future growth. 
+ 
+Fair Value Uncertainty 
+The Morningstar Uncertainty Rating represents the analysts’ ability to bound the estimated value of the shares in a company 
+around the fair value estimate, based on the characteristics of the business underlying the stock, including operating and  
+financial leverage, sales sensitivity to the overall economy, product concentration, pricing power, exposure to material ESG risks, 
+and other company-specific factors. Based on these factors, analysts classify the stock into one of several uncertainty levels: Low, 
+Medium, High, Very High, or Extreme. Our recommended margin of safety—the discount to fair value  demanded before we’d 
+recommend buying or selling the stock—widens as our  uncertainty of the estimated value of the equity increases. 
+ 
+Market Price 
+The market prices used in this analysis and noted in the report come from exchanges on which the stock is listed, which we 
+believe is a reliable source. 
+ 
+ 
+
+=== PAGE 33 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 33 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+Morningstar Rating for Stocks 
+The Morningstar Rating for Stocks is a forward-looking, analyst-driven measure of a stock’s current price relative to the analyst’s 
+estimate of what the shares are worth. Stock star ratings indicate whether a stock, in the equity analyst’s educated opinion, is 
+cheap, expensive, or fairly priced. To rate a stock, analysts estimate what they think it is worth (its “fair value”), using a detailed, 
+long-term cash flow forecast for the company. A stock’s star rating depends on whether its current market price is above or below 
+the fair value estimate. Those stocks trading at large discounts to their fair values receive the highest ratings (4 or 5 stars). Stocks 
+trading at large premiums to their fair values receive lower ratings (1 or 2 stars). A 3-star rating means the current stock price is 
+close to the analyst’s fair value estimate. 
+ 
+Risk Warning 
+Please note that investments in securities are subject to market and other risks, and there is no assurance or guarantee that the 
+intended investment objectives will be achieved. Past performance of a security may or may not continue in the future and is no 
+indication of future performance. A security investment’s return and an investor's principal value will fluctuate so that, when 
+redeemed, an investor’s shares may be worth more or less than their original cost. 
+ 
+A security’s current investment performance may be lower or higher than the investment performance noted within the report. 
+Morningstar’s Uncertainty Rating is a useful data point with respect to sensitivity analysis of the assumptions used in our 
+determining a fair value price.  
+ 
+General Disclosure 
+“Morningstar” is used throughout this section to refer to Morningstar, Inc., and/or its affiliates, as applicable. Unless otherwise 
+provided in a separate agreement, recipients of this report may only use it in the country in which the Morningstar distributor is 
+based. Unless stated otherwise, the original distributor of the report is Morningstar Research Services LLC, a USA-domiciled 
+financial institution. 
+ 
+This report is for informational purposes only, should not be the sole piece of information used in making an investment decision, 
+and has no regard to the specific investment objectives, financial situation, or particular needs of any specific recipient. This 
+publication is intended to provide information to assist investors in making their own investment decisions, not to provide 
+investment advice to any specific investor. Therefore, investments discussed and recommendations made herein may not be 
+suitable for all investors; recipients must exercise their own independent judgment as to the suitability of such investments and 
+recommendations in the light of their own investment objectives, experience, taxation status, and financial position.  
+ 
+The information, data, analyses, and opinions presented herein are not warranted to be accurate, correct, complete, or timely . 
+Unless otherwise provided in a separate agreement, neither Morningstar, Inc., nor the Equity Research Group represents that the 
+report contents meet all of the presentation and/or disclosure standards applicable in the jurisdiction the recipient is loca ted. 
+ 
+Except as otherwise required by law or provided for in a separate agreement, the analyst, Morningstar, Inc., and the Equity 
+Research Group and their officers, directors, and employees shall not be responsible or liable for any trading decisions, damages, 
+or other losses resulting from, or related to, the information, data, analyses, or opinions within the report. The Equity Research 
+Group encourages recipients of this report to read all relevant issue documents—a prospectus,  for example) pertaining to the 
+security concerned, including without limitation, information relevant to its investment objectives, risks, and costs before making 
+an investment decision and when deemed necessary, to seek the advice of a legal, tax, and/or accounting professional. 
+ 
+The report and its contents are not directed to, or intended for distribution to or use by, any person or entity who is a citizen or 
+resident of or located in any locality, state, country, or other jurisdiction where such distribution, publication, availabil ity, or use 
+would be contrary to law or regulation or that would subject Morningstar, Inc., or its affiliates to any registration or licensing 
+requirements in such jurisdiction. 
+ 
+Where this report is made available in a language other than English and in the case of inconsistencies between the English a nd 
+translated versions of the report, the English version will control and supersede any ambiguities associated with any part or  
+section of a report that has been issued in a foreign language. Neither the analyst, Morningstar, Inc., nor the Equity Research 
+Group guarantees the accuracy of the translations. 
+ 
+This report may be distributed in certain localities, countries, and/or jurisdictions (“territories”) by independent third parties or 
+independent intermediaries and/or distributors (“distributors”). Such distributors are not acting as agents or representatives of the 
+analyst, Morningstar, Inc., or the Equity Research Group. In territories where a distributor distributes our report, the distributor is 
+
+=== PAGE 34 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 34 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+solely responsible for complying with all applicable regulations, laws, rules, circulars, codes, and guidelines established b y local 
+and/or regional regulatory bodies, including laws in connection with the distribution of third-party research reports. 
+ 
+Conflicts of Interest 
+▸ No material interests are held by the analyst or their immediate family with respect to the securities subject of this investment 
+research report. 
+▸ Morningstar, Inc., may hold a long position in the securities subject of this  
+investment research report that exceeds 0.5% of the total issued share capital of the security. To determine if such is the c ase, 
+please click https://www.morningstar.com/company/disclosures/holdings. 
+▸ Analysts’ compensation is derived from Morningstar, Inc.’s overall earnings and consists of salary, bonus, and in some cases 
+restricted stock. 
+▸ Morningstar’s overall earnings are generated in part by the activities of the Investment Management and Research groups, and 
+other affiliates, that provide services to product issuers. 
+▸ Neither Morningstar, Inc., nor the Equity Research Group receives commissions, compensation, or other material benefits in 
+connection with providing research, nor do they charge companies to be rated. 
+▸ Morningstar employees may not pursue business or employment opportunities outside Morningstar within the investment 
+industry (including, but not limited to, working as a financial planner, an investment professional or investment professional 
+representative, a broker/dealer or broker/dealer agent, a financial writer, reporter, or analyst) without the approval of 
+Morningstar’s Legal and if applicable, Compliance teams. 
+▸ Neither Morningstar, Inc., nor the Equity Research Group is a market maker or a liquidity provider of the securities noted within 
+this report. 
+▸ Neither Morningstar, Inc., nor the Equity Research Group has been a lead manager or  
+co-lead manager over the previous 12 months of any publicly disclosed offer of financial instruments of the issuer. 
+▸ Morningstar, Inc.’s Investment Management group has arrangements with financial institutions to provide portfolio 
+management/investment advice, some of which an analyst may issue investment research reports on. In addition, the Investment 
+Management group creates and maintains model portfolios whose underlying holdings can include financial products, including 
+securities that may be the subject of this report. However, analysts do not have authority over Morningstar’s Investment 
+Management group’s business arrangements or allow employees from the Investment Management group to participate or 
+influence the analysis or opinion prepared by them. 
+▸ Morningstar, Inc., is a publicly traded company (ticker: MORN) and thus a financial institution the security of which is the subject 
+of this report may own more than 5% of Morningstar, Inc.’s total outstanding shares. Please access Morningstar, Inc.’s proxy 
+statement, “Security Ownership of Certain Beneficial Owners and Management” section at 
+https://shareholders.morningstar.com/investor-relations/financials/sec-filings/default.aspx.  
+ 
+Morningstar may provide the product issuer or its related entities with services or products for a fee and on an arm’s-length basis, 
+including software products and licenses, research and consulting services, data services, licenses to republish our ratings and 
+research in their promotional material, event sponsorship, and website advertising. 
+ 
+Further information on Morningstar’s conflict-of-interest policies is available at http://global.morningstar.com/equitydisclosures.  
+Please note analysts are subject to the CFA Institute’s Code of Ethics and Standards of Professional Conduct.  
+For a list of securities the Equity Research Group currently covers and provides written analysis on, or for historical analysis of 
+covered securities, including fair value estimates, please contact your local Morningstar office. Morningstar Equity Research 
+methodologies can be found at Investor Relations | Morningstar, Inc. 
+ 
+For recipients in Australia: This report has been issued and distributed in Australia by Morningstar Australasia Pty. Ltd. (ABN: 95 
+090 665 544; ASFL: 240892). Morningstar Australasia Pty. Ltd. is the provider of the general advice (“the service”) and takes 
+responsibility for the production of this report. The service is provided through the research of investment products. To the extent 
+the report contains general advice, it has been prepared without reference to an investor’s objectives, financial situation, or needs. 
+Investors should consider the advice in light of these matters and, if applicable, the relevant Product Disclosure Statement before 
+making any decision to invest. Refer to our Financial Services Guide, or FSG, for more information at 
+http://www.morningstar.com.au/s/fsg.pdf. 
+ 
+For recipients in New Zealand: This report has been issued and distributed by Morningstar Australasia Pty Ltd and/or 
+Morningstar Research Ltd (together “Morningstar”). This report has been prepared and is intended for distribution in New Zealand 
+to wholesale clients only and has not been prepared for use by New Zealand retail clients (as those terms are defined in the 
+Financial Markets Conduct Act 2013). 
+ 
+
+=== PAGE 35 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 35 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+The information, views and any recommendations in this material are provided for general information purposes only, and solel y 
+relate to the companies and investment opportunities specified within. Our reports do not take into account any particular 
+investor’s financial situation, objectives or appetite for risk, meaning no representation may be implied as to the suitability of any 
+financial product mentioned for any particular investor. We recommend seeking financial advice before making any investment 
+decision. 
+ 
+For recipients in Canada: This research is not prepared subject to Canadian disclosure requirements. 
+ 
+For recipients in Europe: This report is distributed by Morningstar Holland B.V., a wholly-owned subsidiary of Morningstar, Inc. 
+Morningstar Holland B.V. is not required to be regulatory by the European Securities and Markets Authority for the provision of 
+investment research data. The analyst/s involved in the creation of the report do not take into account any particular investor’s 
+financial situation, objectives or appetite for risk, meaning no representation may be implied as to the suitability of any f inancial 
+product mentioned for any particular investor. Registered address: Haaksbergweg 58, 9th Floor, 1101 BZ Amsterdam, North 
+Holland, Netherlands. 
+ 
+For recipients in Hong Kong: The report is distributed by Morningstar Investment Management Asia Limited, which is regulated 
+by the Hong Kong Securities and Futures Commission to provide investment research and investment advisory services to 
+professional investors only. Neither Morningstar Investment Management Asia Limited nor its representatives are acting or wil l be 
+deemed to be acting as an investment advisor to any recipients of this information unless expressly agreed to by Morningstar 
+Investment Management Asia Limited.  
+ 
+For recipients in India:  Morningstar Investment Research India Private Limited (registered with SEBI as a research analyst, 
+registration number INH000008686) does not engage in research services on securities listed or proposed to be listed on stock  
+exchanges in India.  
+ 
+For recipients in Japan: The report is distributed by Morningstar Japan, Inc. for informational purposes only. Neither Morningstar 
+Japan, Inc. nor its representatives are acting or will be deemed to be acting as an investment advisor to any recipients of t his 
+information. 
+ 
+For recipients in Korea: This report is distributed by Morningstar Korea Ltd., which has filed to the Financial Services Committee, 
+for informational purposes only. Neither Morningstar Korea Ltd. nor its representatives are acting or will be deemed to be ac ting 
+as an investment advisor to any recipients of this information. 
+ 
+For recipients in Singapore: The Report is intended for Institutional Investor audiences and is distributed by Morningstar 
+Investment Adviser Singapore Pte. Limited, which is licensed by the Monetary Authority of Singapore to provide financial advisory 
+services in Singapore. Morningstar Investment Adviser Singapore Pte. Limited is the entity responsible for the creation and 
+distribution of the research services described in this Report. This content is provided for informational purposes only and may be 
+shared or redistributed by Institutional Investors to their clients or other permitted persons, subject to obtaining the appropr iate 
+license from Morningstar. Redistribution of this content is subject to any applicable conditions or limitations, including th ose 
+agreed commercially or contractually with Morningstar. The person who shares or redistributes this content shall be solely 
+responsible for compliance with all relevant legal and regulatory obligations in the jurisdictions in which the material is m ade 
+available. Investors should consult a financial adviser regarding the suitability of any investment product, taking into account their 
+specific investment objectives, financial situation or particular needs, before making any investment decision. Morningsta r, Inc., 
+and its affiliates rely on certain exemptions (Financial Advisers Regulations, Section 27(1)(e), Section 32B and 32C) to prov ide its 
+investment research to recipients in Singapore. 
+ 
+For recipients in the United Kingdom: This report is distributed by Morningstar UK Ltd, a wholly-owned subsidiary of 
+Morningstar, Inc. Morningstar UK Ltd. is not required to be registered nor authorized by the Financial Conduct Authority for the 
+distribution of investment research data. The analyst/s involved in the creation of the report do not take into account any 
+particular investor’s financial situation, objectives or appetite for risk, meaning no representation may be implied as to the 
+suitability of any financial product mentioned for any particular investor. There are information barriers in place between 
+Morningstar UK Ltd and Morningstar regulated entities based in the UK. Registered address: 1 Oliver’s Yard 55-71 City Road 
+London EC1Y 1HQ. 
+ 
+ 
+ 
+
+=== PAGE 36 ===
+
+  
+ 
+ 
+ 
+On-Demand Delivery Price War: Alibaba the Main Winner | November 18, 2025 | See disclosures at the end of this report. 
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+ 
+      
+Page 36 of 36 
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+About Morningstar® Equity Research
+TM
+ 
+Morningstar Equity Research provides independent, fundamental equity research differentiated by a 
+consistent focus on durable competitive advantages, or economic moats. 
+ 
+For More Information 
++1 312 696-6869 
+equitysupport@morningstar.com 
+ 
+ 
+ 
+ 
+ 
+ 
+? 
+ 
+22 West Washington Street 
+Chicago, IL 60602 USA 
+ 
+ 
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the 
+country in which its original distributor is based. The information, data, analyses, and opinions presented herein do not con stitute 
+investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are 
+not warranted to be correct, complete, or accurate. The opinions expressed are as of the date written and are subject to chang e 
+without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages, or 
+other losses resulting from, or related to, the information, data, analyses, or opinions or their use. Investment research is  produced 
+and issued by subsidiaries of Morningstar, Inc. including, but not limited to, Morningstar Research Services LLC, registered with 
+the U.S. Securities and Exchange Commission. The information contained herein is the proprietary property of Morning star and 
+may not be reproduced, in whole or in part, or used in any manner, without the prior written consent of Morningstar. To license the 
+research, call +1 312 696-6869. 
+ 

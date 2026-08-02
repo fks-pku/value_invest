@@ -1,0 +1,2721 @@
+
+
+=== PAGE 1 ===
+
+This document is intended for institutional investors and is not subject to all of the
+independence and disclosure standards applicable to debt research reports prepared for retail
+investors under U.S. FINRA Rule 2242. Barclays trades the securities covered in this report for its
+own account and on a discretionary basis on behalf of certain clients. Such trading interests
+may be contrary to the recommendations offered in this report.
+Barclays Capital Inc. and/or one of its affiliates does and seeks to do business with companies
+covered in its research reports. As a result, investors should be aware that the firm may have a
+conflict of interest that could affect the objectivity of this report. Investors should consider this
+report as only a single factor in making their investment decision.
+This research report has been prepared in whole or in part by equity research analysts based
+outside the US who are not registered/qualified as research analysts with FINRA.
+(i) This author is a debt research analyst in the Fixed Income, Currencies and Commodities
+Research department and is neither an equity research analyst nor subject to all of the
+independence and disclosure standards applicable to analysts who produce debt research
+reports under U.S. FINRA Rule 2242.
+(iii) This author is a member of the EMEA Equity Research department who may publish equity
+and debt research
+FOR ANALYST CERTIFICATION(S) PLEASE SEE PAGE 46.
+FOR IMPORTANT EQUITY RESEARCH DISCLOSURES, PLEASE SEE PAGE 46.
+FOR IMPORTANT FIXED INCOME RESEARCH DISCLOSURES, PLEASE SEE PAGE 49.
+European Consumer Staples
+Protein Boom: Be prepared…
+The protein boom looks to be far from over, fuelled by health-
+conscious consumer trends and the growing adoption of
+GLP-1 treatments. We identify Protein Winners,
+including Mowi (upgraded to OW), Danone, Novonesis,
+Glanbia and in the US Tyson, JBS, Bellring, Hormel, Pilgrim's
+Pride and Smithfield.
+Consumers worldwide are increasingly prioritising protein in their diets, driving a boom in
+sales of high-protein foods and beverages since the pandemic. The protein megatrend is still
+in its ascent. If global intake shifts towards health-focused levels, we estimate that protein
+demand could rise by 37%, equating to an incremental uplift of around US$650 billion in
+market value. In collaboration with the Barclays Data Science team, we analyse the
+penetration of protein-related products across different categories and which products/
+brands are most popular among consumers. 
+This note provides an expert cross-sector analysis of the 'protein boom' , identifying the
+leading companies we see as best positioned to benefit from this megatrend. We call out: 1)
+the structural drivers fuelling sustained growth, 2) the scale of investment and innovation
+across the value chain, and 3) the clear outperformance of select 'Protein Winners' in both
+volume and share price terms.
+• Structural Drivers: Health, Wellness and GLP-1 Adoption – Consumer demand for
+protein-rich foods has accelerated, with health and wellness trends now mainstream. The
+Cross Asset Research
+17 December 2025
+SIGNATURE
+European Consumer Staples
+NEUTRAL
+Equity Research - Consumer Staples
+Warren Ackerman
++44 (0)20 3134 1903
+warren.ackerman@barclays.com
+Barclays, UK
+Alex Sloane
++44 (0)20 3555 0645
+alexander.sloane@barclays.com
+Barclays, UK
+Patrick Folan
++44 (0)20 7773 1712
+patrick.folan@barclays.com
+Barclays, UK
+Data Science - Research
+Chris Stevens(iii)
++44 (0)20 3555 1239
+chris.r.stevens@barclays.com
+Barclays, UK
+Luke Seelig(iii)
++44 (0)20 3134 5355
+luke.seelig@barclays.com
+Barclays, UK
+Equity Research - U.S. Food
+Andrew Lazar
++1 212 526 4668
+andrew.lazar@barclays.com
+BCI, US
+Benjamin M. Theurer
++52 55 5241 3322
+benjamin.theurer@barclays.com
+BCCB, Mexico
+Credit Fundamental - Research
+Karine Elias(i)
++971 43 621017
+karine.elias@barclays.com
+Barclays Bank, DIFC
+Completed: 16-Dec-25, 21:12 GMT Released: 17-Dec-25, 04:00 GMT Restricted - External
+
+=== PAGE 2 ===
+
+rise of GLP-1 medications for weight management is intensifying the focus on protein
+intake, as users seek to preserve muscle mass. The global protein market is estimated at
+US$1.7 trillion, and we see potential for a 37% increase in demand if consumption shifts
+towards health-focused levels. This is supported by robust growth in categories such as
+high-protein yoghurts, RTD shakes and protein-enriched snacks, with penetration highest
+in dairy and growing rapidly in other segments. 
+• Investment and Innovation: Scaling to Meet Demand – Major manufacturers are
+committing billions in capital expenditure to expand high-protein production capacity and
+drive innovation. Companies such as Chobani, Danone, Nestlé and Coca-Cola are investing
+in new facilities, product lines and R&D to address supply constraints and capture growth
+opportunities. This wave of investment is unlocking new product formats, improving
+nutritional profiles and supporting the shift towards functional and convenient protein
+options. The market is also responding to GLP-1 trends with a surge in high-protein, low-
+sugar and plant-based offerings.
+• Protein Winners: Outperformance and Competitive Edge – Our 'Protein Winners' are
+outperforming peers in both volume growth and share price terms, reflecting their
+advantaged exposure to the most attractive growth nodes and their capabilities in R&D,
+capacity expansion and brand execution. We see their ability to innovate and adapt to
+evolving health and wellness trends positioning them for continued success as the protein
+boom evolves.
+European Equity Research view: Together with the Barclays EU Ingredients, US Agri and US
+Food equity research teams, we identify the following winners in the space, which we
+explore further below: 
+• Mowi - EU Ingredients - Upgraded to OW from EW, PT to NOK 260 from NOK 210 (link) -
+ Mowi is the world’s largest producer of Atlantic salmon, giving it a dominant position in
+one of the fastest-growing animal protein categories globally.
+• Danone - EU Consumer Staples - OW, PT EUR 85 - Danone is a leader in the protein
+category. Its high protein platforms such as Oikos are delivering DD growth, and its €9
+billion protein-rich yogurt segment is growing at twice the price index of traditional yogurt.
+• Novonesis - EU Ingredients - OW, PT DK 470 - Novonesis has established a leading
+position in protein solutions through its brand-agnostic Food & Beverages biosolutions
+platform. Novonesis’ dairy portfolio is delivering standout double-digit underlying growth
+that is broad-based across high-protein yoghurt.
+• Glanbia - EU Ingredients - OW, PT EUR 17 - Glanbia is a global leader in performance
+nutrition and dairy-based protein ingredients, supported by strong consumer brands
+including Optimum Nutrition (ON) and Isopure. 
+• Tyson Foods Inc. - US Agribusiness - OW, PT USD 75 - Tyson is the US's largest protein
+processor and marketer with a diverse portfolio of beef, pork, chicken and prepared foods.
+• JBS NV - US Agribusiness - OW, PT USD 22 - JBS is the world’s largest protein company
+with worldwide operations covering chicken, beef, pork and prepared foods.
+• Hormel Foods Corp. - US Agribusiness - OW, PT USD 30 - Following a series of
+acquisitions, Hormel is now positioned as a CPG player with a significant protein presence
+through products such as turkey, bacon, peanut butter and pepperoni. 
+17 December 2025 2
+Barclays | European Consumer Staples
+
+=== PAGE 3 ===
+
+• Pilgrim's Price Corp. - US Agribusiness - EW, PT USD 45 - PPC is one of the largest chicken
+players in the US and has seen record-high profits in recent years due to low feed costs and
+very strong chicken fundamentals.
+• Smithfield Foods Inc. - US Agribusiness - OW, PT USD 30 - Smithfield Foods, one of the
+largest US pork players, re-listed on public markets in early 2025 following privatisation in
+2013. 
+• Bellring Brands - US Food - OW, PT USD 32 - BRBR is a pure-play protein company
+focused on the convenient nutrition category with its Premier Protein and Dymatize
+brands. Premier Protein, which makes up ~85% of BRBR sales, has a leading position in the
+fast-growing US ready-to-drink (RTD) protein shake category.
+European Credit Research view: Boparan holds the number one position in the UK poultry
+market (according to the Offering Memorandum from October 2024). Poultry sales have
+continued to exceed management’s expectations and margins have benefited from the
+increased proportion of welfare poultry sales. The company is implementing a capital plan
+for the next 10 years, totalling nearly £1bn, to add capacity, expand capability and drive
+further efficiencies through automation. We see it as well placed to benefit from the ongoing
+'protein boom' . 
+17 December 2025 3
+Barclays | European Consumer Staples
+
+=== PAGE 4 ===
+
+CONTENTS
+The Story in 6 Charts. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+Equity Research: The protein boom looks set to continue, driven by
+health trends and GLP-1 usage. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+The global protein boom. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+Health and wellness. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+Can supply keep up with record demand for high-protein dairy options?. . . . . . . . . . . . . . . . . . . . 15
+GLP-1 usage accelerates protein demand. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+Data Science Research: Protein penetration is increasing across
+multiple channels and categories. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+Equity Research: Protein Winners. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+Mowi . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+Danone. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+Novonesis. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
+Glanbia . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+Tyson Foods. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 36
+JBS NV . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 37
+Hormel Foods . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 38
+Pilgrim's Pride Corp . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39
+Smithfield Foods, Inc. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+BellRing Brands . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 42
+Credit Research: Protein Winner – Boparan. . . . . . . . . . . . . . . . . . . . . . . . 44
+Equity Research: To Summarise.... . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 45
+17 December 2025 4
+Barclays | European Consumer Staples
+
+=== PAGE 5 ===
+
+The Story in 6 Charts
+FIGURE 1. Volume growth YoY (%) of Protein Winners vs. Food ex.
+Winners shows that our selected winners are outperforming in the
+category
+FIGURE 2. Relative share price over the past two years also shows
+outperformance
+-2.0%
+-1.0%
+0.0%
+1.0%
+2.0%
+3.0%
+4.0%
+2023Q1
+2023Q2
+2023Q3
+2023Q4
+2024Q1
+2024Q2
+2024Q3
+2024Q4
+2025Q1
+2025Q2
+2025Q3
+Protein Winners Food ex. Winners
+70
+80
+90
+100
+110
+120
+130
+Dec-23
+Mar-24
+Jun-24
+Sep-24
+Dec-24
+Mar-25
+Jun-25
+Sep-25
+Dec-25
+Protein Winners Food ex. Winners
+Note: Basket indices are market-cap-weighted
+Source: Company data, Barclays Research Source: Bloomberg, Barclays Research
+FIGURE 3. Penetration of US grocery products with 'protein' in the
+name increased from June 2024 to August 2025
+FIGURE 4. Dairy has the highest 'protein' name penetration across all
+product categories
+0.0%
+0.1%
+0.2%
+0.3%
+0.4%
+0.5%
+0.6%
+0.7%
+0.8%
+Jun-24
+Sep-24
+Jun-25
+Jul-25
+Aug-25
+Sep-25
+Oct-25
+Nov-25
+0.0%
+0.5%
+1.0%
+1.5%
+2.0%
+2.5%
+Jun-24
+Sep-24
+Jun-25
+Jul-25
+Aug-25
+Sep-25
+Oct-25
+Nov-25
+Source: Company websites (Albertsons), Barclays Research Source: Company websites (Albertsons), Barclays Research
+17 December 2025 5
+Barclays | European Consumer Staples
+
+
+=== PAGE 6 ===
+
+FIGURE 5. Protein name penetration across 'Grocery' best sellers FIGURE 6. Optimum Nutrition has most appearances in the Sports
+Nutrition best sellers, but is losing share
+0%
+1%
+2%
+3%
+4%
+5%
+6%
+7%
+8%
+9%
+Jan-19
+Jun-19
+Nov-19
+Apr-20
+Sep-20
+Feb-21
+Jul-21
+Dec-21
+May-22
+Oct-22
+Mar-23
+Aug-23
+Jan-24
+Jun-24
+Nov-24
+Apr-25
+Sep-25
+U.S.
+U.K
+0%
+2%
+4%
+6%
+8%
+10%
+12%
+14%
+2019 2020 2021 2022 2023 2024 2025
+% of best 
+sellers
+Optimum Nutrition Nutricost
+Source: Amazon Best Sellers, Barclays Research Source: Amazon Best Sellers, Barclays Research
+17 December 2025 6
+Barclays | European Consumer Staples
+
+=== PAGE 7 ===
+
+1 https://www.numerator.com/resources/blog/protein-trends/
+FIGURE 7. Mentions of 'protein' as a keyword in earnings call transcripts have shot up 12x in the past 25 years, with a particular increase post-
+Covid
+0
+50
+100
+150
+200
+250
+300
+Q4 2005
+Q2 2006
+Q4 2006
+Q2 2007
+Q4 2007
+Q2 2008
+Q4 2008
+Q2 2009
+Q4 2009
+Q2 2010
+Q4 2010
+Q2 2011
+Q4 2011
+Q2 2012
+Q4 2012
+Q2 2013
+Q4 2013
+Q2 2014
+Q4 2014
+Q2 2015
+Q4 2015
+Q2 2016
+Q4 2016
+Q2 2017
+Q4 2017
+Q2 2018
+Q4 2018
+Q2 2019
+Q4 2019
+Q2 2020
+Q4 2020
+Q2 2021
+Q4 2021
+Q2 2022
+Q4 2022
+Q2 2023
+Q4 2023
+Q2 2024
+Q4 2024
+Q2 2025
+Q4 2025
+Source: Bloomberg, Barclays Research
+Equity Research: The protein boom looks set to
+continue, driven by health trends and GLP-1 usage
+The global appetite for protein shows no sign of slowing. Once a niche focus for fitness
+enthusiasts, protein has now become a priority for households, driving robust growth across
+multiple food and beverage categories. From high-protein yoghurts to ready-to-drink (RTD)
+shakes, data shows that consumer demand is accelerating, fuelled by health and wellness
+trends, the rise of GLP-1s and a growing emphasis on functional nutrition. As leading
+brands invest in innovation and capacity, and new entrants vie for market share, the 'protein
+boom' is reshaping the competitive landscape and opening up significant opportunities for
+both established players and agile disruptors. We recently had a call with Jennifer Simpson
+(Director, Chobani LLC, ex-Danone) and Barclays Fundamental & Sustainable Investing analysts,
+discussing the sustainability of the strong trends in protein (link). Here we further demonstrate
+why we think protein has not peaked and the winners in the category still have a growth
+runway.
+The global protein boom
+Consumer demand for high-protein foods has accelerated in recent years, as health and
+wellness comes into focus. The protein category, in particular dairy-based protein, has
+experienced robust growth through 2024-25, most pronounced in the US – but now accelerating
+in Europe. RTD protein shakes, high-protein yogurts and protein-enriched snacks have all seen
+significant volume and household penetration gains. In a recent Numerator study, 78% of US
+households said that they were paying attention to protein in their diets. Attention to
+protein also increases with age, peaking among the baby boomers, with 83% stating that their
+protein goals are important, which also extends internationally1 .
+We estimate the global protein market at approximately US$1.7 trillion, encompassing
+dairy, meat and all other protein sources. If consumption patterns shift towards health-focused
+levels, we estimate that global protein demand could rise by 37% over the next five years.
+Our analysis assumes optimal intake of 120g per adult per day, compared with the current
+weighted average of 82g (UN), creating 38g of 'runway' . We derive this optimal intake
+assumption based on current data, and factoring in the movement of lower-income countries
+17 December 2025 7
+Barclays | European Consumer Staples
+
+=== PAGE 8 ===
+
+2 https://www.pillsorted.com/blog/how-much-protein-do-you-need-on-glp-1-medications/
+FIGURE 8. We estimate that global protein demand could potentially rise by 37%over the next five years, equating to a CAGR in value terms of
+6.6% 
+Protein demand opportunity
+Average protein consumed by a health-focused adult (g/day) 120
+Global average protein intake (g/day) 82
+US and Europe average protein intake (g/day) 107
+ROW average protein intake (g/day) 78
+Global adult population (mn) 5,800
+US and Europe adult population (mn) – 100% shift towards higher protein requirement 800
+ROW adult population (mn) - 75% shift towards higher protein requirement 5,000
+Current protein consumption annually (mn tonnes) 174
+Average price/kg (USD) 10
+Current protein market size (USD bn) 1,736
+Global adult population growth 1.2%
+Protein demand uptick if global population shift to health focused adult average (mn tonnes) 65
+Protein demand uplift % in volume 37%
+Incremental protein demand uplift in value (USD bn) 650
+CAGR for 5 years 6.6%
+Source: Barclays Research estimates
+towards higher GDP per capita and higher-income countries turning increasingly health-
+focused, with an additional impact from higher GLP-1 usage2 . 
+Under a scenario of 100% adoption to 120g in the US and EU and 75% in emerging
+markets, combined with global population growth of 1.2%, we could see consumption of an
+additional 66 million tonnes of protein annually, valued at roughly US$663 billion.
+Achieving this target penetration within five years would imply an incremental CAGR of c7% in
+protein consumption. In practical terms, bridging this gap would require around 6.1 billion
+protein shake bottles per day, assuming protein content of 30g per bottle. 
+High protein food categories are also demonstrating significant growth, outpacing general food
+in many categories. For example, protein-rich snacks are growing at 1.3x the rate of the overall
+snacks market, reaching c$9 billion in sales in 2025. Euromonitor data also shows the growth of
+each protein-rich food category.
+17 December 2025 8
+Barclays | European Consumer Staples
+
+=== PAGE 9 ===
+
+FIGURE 9. The market size of protein-rich product categories is expanding...
+3 3 3 4 4 4 5 5 6 6 6 7 8 8 8.7 9.3 10.1 10.9 11.7 12.64 4 4 5 6 6 7 8 9 9 10 11 13 14 15.6 16.8 17.9 19.0 20.1 21.3
+9 10 10 11 12 13 13 14 15 16 17 18 20 23 24.8 27.0 29.4 31.9 34.6 37.7
+0
+10
+20
+30
+40
+50
+60
+70
+80
+2011 2012 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026e 2027e 2028e 2029e 2030e
+Market Size (in Billions USD)
+Protein/Energy Bars Sports Protein Powder Sports Protein RTD Plain Yoghurt
+e = Euromonitor estimates
+Source: Euromonitor, Barclays Research
+FIGURE 10. ...including meat and seafood categories 
+121 125 129 132 134 135 138 142 146 164 169 183 198 206 214 224 234 244 255 26658 59 61 61 62 63 64 65 67 74 74 78 83 87 90 95 99 104 109 115
+0
+50
+100
+150
+200
+250
+300
+350
+400
+450
+2011 2012 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026e 2027e 2028e 2029e 2030e
+Market Size (in Billions USD)
+Processed Meat Processed Seafood Meat and Seafood Substitutes
+e = Euromonitor estimates
+Source: Euromonitor, Barclays Research
+North America and Europe have led the protein boom so far, with North America accounting for
+c35% of global protein ingredients sales in 2025. However, APAC is now the fastest-growing
+region, with nations such as China, India and Japan seeing surging interest in protein for fitness
+and nutrition. Rising incomes in emerging markets mean more consumers can afford protein
+supplements, dairy and meat, boosting demand. Latin America and the Middle East are also on
+the upswing as awareness spreads. The table below summarises recent sales and Euromonitor's
+growth projections by region and category.
+17 December 2025 9
+Barclays | European Consumer Staples
+
+=== PAGE 10 ===
+
+FIGURE 11. Protein markets globally are expanding...
+Region /
+Market Market Size & Growth Key Drivers
+Global ~$52 B in 2025; ~6% CAGR to ~$76 B by
+2030.
+Health-consciousness, weight
+management, and protein fortification
+trends worldwide.
+North
+America
+Largest market (~$18B in 2025); strong +10%
+growth (2021-25) in RTD protein.
+High awareness; widespread use of protein
+snacks, supplements; heavy marketing of
+'high-protein' diets.
+Europe
+~$13 B in 2025; strong historical growth
+(+10.2% CAGR 2021-25), slowing to ~5.5%
+CAGR through 2030.
+Healthy eating' trend; popularity of products
+such as Greek yoghurt, quark, and protein
+bars across EU.
+Asia-Pacific
+~$13 B in 2025; fastest forward growth
+(~6.3% CAGR 2026-30) after moderate +5.8%
+CAGR historically.
+Urbanisation, rising middle class; traditional
+diets adding supplements; booming
+alternative proteins (plant-based, etc.).
+Middle East &
+Africa
+Small base (~$3.9 B in 2025) but robust
+growth: +13.2% CAGR (2021-25) and +12.7%
+CAGR (2026-30).
+Rapid adoption of health trends;
+premiumisation; growing fitness culture and
+protein fortification in staples.
+Latin America
+~$2.6 B in 2025; strong historical growth
+(+12.9% CAGR), moderating to ~7.4% CAGR
+post-2025.
+Increasing health awareness; local protein-
+rich staples plus imported trends (e.g.
+protein shakes).
+Australasia
+Small but stable (~$1.2 B in 2025); growth
+slows from +8.4% CAGR to ~5.7% CAGR by
+2030.
+Mature market; strong sports nutrition
+culture; innovation in dairy and plant-based
+proteins.
+Note: Projections are per Euromonitor
+Source: Euromonitor, Barclays Research
+17 December 2025 10
+Barclays | European Consumer Staples
+本报告来源于三个皮匠报告站（www.sgpjbg.com）,由用户Id:865822下载,文档Id:999500,下载日期:2025-12-24
+
+=== PAGE 11 ===
+
+FIGURE 12. ...with market size expected to increase in each region and five-year CAGRs expected to rise from 2021-25 to 2026-30E
+0%
+3%
+6%
+9%
+12%
+15%
+0
+5
+10
+15
+20
+25
+North
+America
+Europe Asia Pacific Middle East
+and Africa
+Latin America Australasia
+5yr CAGR
+Market Size (in Billions USD)
+2025 2030e 2021-25 2026-30e
+e = Euromonitor estimates
+Source: Euromonitor, Barclays Research
+The consensus is that demand for protein continues to grow and shows no signs of plateauing,
+particularly in the US. Notably, consumer purchase intention data reinforces that demand
+remains on the upswing. A 2025 Bain & Co survey found that 44% of US consumers planned to
+boost protein intake, up sharply from 34% a year prior. Similarly, NielsenIQ reports that over
+60% of Gen Z and c70% of Millennials actively seek extra protein in foods or consume protein
+snacks daily. By product type, traditional sports nutrition (powders, bars, RTD shakes) remains
+a large and growing segment, while protein-fortified everyday foods are a newer growth
+frontier.
+17 December 2025 11
+Barclays | European Consumer Staples
+
+=== PAGE 12 ===
+
+FIGURE 13. The market size of protein-rich foods is also expanding....
+Category Market Size & Growth Key Drivers
+Protein
+Snacks & Bars
+Global sales ~$8.7 B in 2025; ~6.3%+ CAGR in
+2021-25.
+Convenience and on-the-go nutrition;
+popular among fitness enthusiasts and busy
+consumers.
+Protein
+Powders
+Global sports protein powder ~$15.6 B in
+2025 → $21.3 B by 2030.
+Gym/fitness culture; home workout surge
+during COVID; e-commerce distribution.
+RTD Protein
+Drinks
+Global RTD protein has grown to ~$3.1 B in
+2025 at ~10.5% CAGR in 2021-25.
+Convenience; meal-replacement use;
+innovations in taste and shelf-stability.
+High-Protein
+Dairy
+Plain yogurt market grew at ~8.4% CAGR in 5
+years globally. Traditional yogurt/yogurt
+drinks segment expected to grow from ~$98
+B in 2025 to ~$126 B in 2030.
+Better-for-you' dairy (high protein, low fat)
+appeals for breakfast and snacking; many
+new high-protein SKUs.
+Plant-Based
+Proteins
+Plant-based high-protein foods (meat
+alternatives, pea protein drinks, soy
+concentrate) growing 8-10%+ in many
+markets (APAC, US).
+Vegan/vegetarian diets, sustainability
+concerns; improved taste of alt-proteins
+attracting mainstream consumers.
+Protein-
+Fortified
+Staples
+Products such as protein-enriched pasta,
+bread, cereal and crisps launched by major
+brands. Example: Nestlé's Vital Pursuit
+brand, Barilla’s Protein+ range, etc.
+Consumers seeking protein in everyday
+foods, not just supplements; leveraging
+familiar formats to increase intake.
+Note: Projections are per Euromonitor
+Source: Euromonitor, Barclays Research
+17 December 2025 12
+Barclays | European Consumer Staples
+
+=== PAGE 13 ===
+
+FIGURE 14. ...and CAGRs of each protein-rich food category are expected to rise from 2021-25 to 2026-30E
+0%
+3%
+6%
+9%
+12%
+0
+5
+10
+15
+20
+25
+30
+35
+40
+Plain Yoghurt Sports Protein
+Powder
+Protein/Energy Bars Sports Protein RTD
+5yr CAGR
+Market Size (in Billions USD)
+2025 2030e 2021-25 2026-30e
+e = Euromonitor estimates
+Source: Euromonitor, Barclays Research
+Health and wellness
+Weight management, fitness trends and general health-consciousness are fuelling demand
+for protein-rich options. Protein is a key ingredient in functional foods (foods that provide
+health benefits beyond basic nutrition), with 23% of global consumers seeking protein-rich
+foods, rising to 27% among exercisers. High-protein diets are among the five most popular
+dietary trends in 2025, alongside low-sugar, calorie-restricted, intermittent-fasting and low-
+carbohydrate diets. Protein-rich and low-fat options are especially popular with exercisers and
+those using prescription weight-loss drugs (GLP-1s).
+Consumers typically consume whole foods for protein, but are increasingly consuming other
+options. Two growth engines stand out:
+• Protein-based products such as shakes, powders and supplement bars
+• Protein-fortified foods such as yoghurts and even protein-enhanced beverages including
+waters
+17 December 2025 13
+Barclays | European Consumer Staples
+
+=== PAGE 14 ===
+
+FIGURE 15. Poultry, meat, eggs and dairy are still the most consumed items in the category
+0% 10% 20% 30% 40% 50% 60% 70% 80% 90%
+Poultry
+Eggs
+Dairy
+Red meat
+Fish
+Beans
+Protein bars
+Yoghurt
+RTD protein shakes
+Protein powder
+Percentage of comsumers regularly consuming this protein source
+Source: Numerator, Barclays Research
+US scanner data is showing a boom in yoghurt, protein powders and performance
+nutrition bars and shakes. However, new protein products are also emerging, with different
+sources of protein such as seaweed and mushroom-based proteins for cognitive and immune
+health. Circana has also reported that cottage cheese sales have increased by 20% in the US in
+2025. Customers are also more focused on minimally processed plant-based options with clean
+labels (fewer additives). The use of precision fermentation is also coming into play. As noted in
+our previous research, plant-based beverages are overcoming historical texture challenges with
+innovation and so are gaining in popularity. Everyday items are also being fortified with protein
+such as bread and even crisps and doughnuts. Big players (e.g. General Mills, PepsiCo, Danone,
+Nestlé, etc.) are launching innovative protein-boosted product lines, while startups and private
+labels are looking to join the race. Protein snacks are growing 1.3x faster than overall snacks,
+attracting newcomers.
+17 December 2025 14
+Barclays | European Consumer Staples
+
+=== PAGE 15 ===
+
+3 https://www.idfa.org/news/manufacturing-month-spotlight-u-s-dairy-processors-invest-record-11-billion-to-expand-
+capacity-to-meet-surging-demand-for-american-dairy-nutrition
+FIGURE 16. US scanner data for high-protein categories shows high volume growth in yoghurt, protein powders and performance nutrition
+bars and shakes
+Volume Growth, % Weig
+ht
+Dec-2
+4
+Jan-2
+5
+Feb-2
+5
+Mar-2
+5 Apr-25 May-2
+5
+Jun-2
+5 Jul-25 Aug-2
+5
+Sep-2
+5 Oct-25 Nov-2
+5
+Nov-2
+5
+2yr
+CAGR
+3yr
+CAGR
+FRESH MEAT 40% 1.1% 3.3% 3.8% 2.6% 1.0% -0.2% 1.1% 0.6% -0.9% -1.1% -2.6% -2.5% 1.8% 0.9% 2.6%
+CHEESE 14% 0.6% 2.7% 2.3% 1.7% 2.7% 0.3% 1.3% 1.1% 0.5% 0.9% 0.2% 2.3% 1.4% 1.9% 4.7%
+PROCESSED MEAT 10% -0.5% 1.8% 1.5% -0.8% -1.4% -0.9% -1.7% -0.7% -0.7% -1.1% -3.4% -0.8% -0.2% -0.1% 2.3%
+FULLY COOKED MEAT 9% 3.6% 3.3% 2.9% 2.6% 3.5% 1.7% 3.1% 2.2% 2.7% -0.4% -3.0% 0.6% 2.9% 4.1% 6.4%
+EGGS 8% 3.7% 3.1% 1.5% -8.5% -7.8% -3.6% -2.8% -1.5% -2.3% -0.5% -1.9% 1.4% 0.1% 1.4% 3.9%
+SEAFOOD 5% -2.8% 1.6% -7.9% 3.3% 6.4% 0.6% -0.6% -1.4% -2.1% -3.4% -6.1% -2.4% -2.9% -0.6% 1.5%
+GREEK YOGURT 5% 15.5% 14.3% 17.2% 15.8% 18.2% 12.5% 15.3% 15.7% 17.4% 16.2% 15.6% 16.4% 15.3% 14.3
+%
+14.4
+%
+BEANS 3% 1.3% 2.1% 4.3% 0.6% 0.4% 1.3% 1.9% 0.9% -1.2% -0.5% -8.5% 2.0% 3.3% 1.4% 3.3%
+PERFORMANCE
+NUTRITION SHAKES 2% 22.2% 17.2% 29.8% 30.9% 27.9% 20.4% 24.6% 24.5% 13.0% 11.4% 13.3% 4.1% 1.2% 18.7
+%
+23.8
+%
+PERFORMANCE
+NUTRITION BARS 2% -3.5% -3.7% 0.5% 1.3% 2.5% 0.4% 7.0% 9.7% 3.1% 7.7% 8.0% 8.0% 12.5% 1.1% 4.0%
+HAM 2% 1.3% 12.0% 6.8% -42.7% -12.7% 94.0% 9.7% 0.4% -1.9% 1.6% 2.4% -1.5% -8.1% -2.1% 6.7%
+PERFORMANCE
+NUTRITION POWDER 0% 14.1% 26.1% 44.5% 32.7% 38.4% 26.3% 31.5% 53.0% 23.7% 27.1% 21.6% 32.7% 35.9% 14.4
+%
+10.3
+%
+Protein Volume
+Growth %
+100
+% 2.2% 3.8% 3.8% 1.9% 2.1% 2.4% 2.2% 2.0% 0.8% 0.6% -1.1% 0.4% 2.1% 2.2% 4.4%
+Source: Nielsen IQ, Barclays Research
+Can supply keep up with record demand for high-protein dairy options?
+The International Dairy Foods Association reported that $11bn of capital is being committed to
+expand manufacturing production via 50 discreet projects across all dairy categories in more
+than 19 US states, all of which are due to come on line by 2028. To put this into context, US milk
+production is expected to grow by 15 billion pounds by 2030 to meet US dairy per capita
+consumption which reached a 60-year high in 20243 . Below we pull out some examples of capex
+projects that relate to high protein.
+Chobani has expanded and innovated into protein products including high-protein Greek
+yogurt cups and drinkable yogurt formats. The company has executed a $500 million expansion
+of its Twin Falls, Idaho manufacturing facility to increase production capacity by 50%,
+specifically to meet demand for protein-based products. It has also committed $1.2 billion to
+build a new multi-year yogurt plant New York, with investment tied directly to rising consumer
+demand for high-protein, low-sugar products. Chobani achieved over 20% volume growth in the
+first half of 2025, driven specifically by strong consumer demand for high-protein, low-sugar
+and natural products and reported that its high-protein product categories are far exceeding
+total yogurt category growth rates, with sales growth accelerating to 28.5% in 2025.
+Danone is expanding production capacity at multiple plants across the US West Coast and East
+Coast to address industry-wide capacity constraints for high-protein yogurt formats, which it
+notes are "flying off the shelf" despite current supply limitations. The company has committed
+to increasing yogurt tub production capacity by 40% at its Boucherville facility in Canada, along
+with a 20% increase in raw milk processing capacity, to meet rising demand for high-protein
+yogurt varieties. Danone has also expressed its intention to increase capex from 3-3.5% to
+4-4.5% specifically to invest in high-protein production capabilities and medical nutrition
+infrastructure. The company is prioritising high-protein production even when it requires trade-
+offs, acknowledging that it cannot serve all the demand in yogurt due to current capacity
+limitations. Through the acquisition of Kate Farms, Danone has strengthened its plant-based
+17 December 2025 15
+Barclays | European Consumer Staples
+
+=== PAGE 16 ===
+
+4 https://www.numerator.com/resources/report/glp1-restaurant-behavior/
+5 https://www.numerator.com/resources/blog/consumer-impacts-glp-1/
+protein capabilities, creating a $500 million platform in Medical Nutrition US that complements
+its dairy-based protein production.
+Nestlé is actively expanding its capacity for protein-based products through infrastructure
+investments, strategic acquisitions and advanced R&D. The company views protein as a critical
+growth platform. In November 2024, Nestlé USA announced a USD 150 million expansion of its
+Gaffney, South Carolina facility. This investment adds a new line dedicated to single-serve
+frozen meals, a category driven by demand for convenience and protein-rich options. Nestlé has
+also invested over $675 million to open a new beverage factory in Glendale, Arizona. This
+630,000-square-foot facility is designed with advanced digital and sustainable technologies.
+While the facility heavily supports the creamer category, it is integrated into the broader aseptic
+network that produces high-protein RTD beverages.
+Coca-Cola is aggressively expanding its protein capabilities through its value-added dairy
+brand, Fairlife, to address significant supply constraints and capitalise on the growing consumer
+demand for protein products. The cornerstone of this expansion is a new $650 million
+production facility in Webster, New York, which is expected to increase Fairlife's capacity by
+approximately 30% upon full completion. While the brand has experienced double-digit volume
+growth, it is currently operating under allocation due to production bottlenecks. The new
+capacity, scheduled to ramp up throughout 2026, is projected to unlock unconstrained growth,
+enable further innovation and solidify Coca-Cola's leadership in the value-added dairy
+sector. To alleviate current supply limitations, Coca-Cola and Fairlife broke ground on a massive
+new greenfield facility in April 2024. This project represents a major capital commitment to the
+dairy category.
+PepsiCo has strategically expanded its protein manufacturing capabilities primarily by
+leveraging existing production platforms to support a comprehensive re-launch and
+reformulation of the Muscle Milk brand. Rather than constructing new standalone facilities, the
+company is utilising its established supply chain infrastructure to introduce innovative,
+'cleaner' formulations and plant-based options, aiming to capture the high-growth protein sub-
+segment while optimising overall manufacturing efficiency. For the 36 weeks ended September
+6, 2025, capital spending for PepsiCo Beverages North America (PBNA) was $809 million, up
+from $791 million in the prior-year period, reflecting continued investment in the segment that
+houses Muscle Milk.
+Upstate Niagara Cooperative, Inc. is undertaking a major capital expansion at its West
+Seneca, NY facility, with a total investment of approximately $215 million. This project aims to
+significantly increase production capacity for yogurt and cottage cheese, streamline operations
+and support the New York State dairy industry through increased milk demand. The expansion
+involves the construction of a 165,000 square-foot addition on vacant land adjacent to the
+cooperative's existing 223,000 square-foot plant. The project is designed to meet growing
+customer demand, introduce enhanced products and provide necessary storage space for
+finished goods and ingredients.
+GLP-1 usage accelerates protein demand
+GLP-1 household adoption is up 5.3pts since October 2023 and consideration is up 5.2pts4 . In a
+recent Numerator survey with over 100,000 respondents in the US, 11.8% indicated that they
+had at least one GLP-1 user in their household and another 6.4% said that they were previously
+using GLP-1 medication5 , signalling the scale of use. Households with GLP-1 users are
+expected to make up over 35% of global food and beverage sales by 2030, according to a
+17 December 2025 16
+Barclays | European Consumer Staples
+
+=== PAGE 17 ===
+
+6 https://www.fooddive.com/news/glp1s-weight-loss-food-beverage-sales-2030/806415/?
+utm_source=Sailthru&utm_medium=email&utm_campaign=Issue:%202025-12-04%20Food%20Dive:%20Ingredie
+nts%20%5Bissue:79504%5D&utm_term=Food%20Dive:%20Ingredients
+7 https://www.numerator.com/resources/blog/evolution-glp-1-users/
+8 https://pmc.ncbi.nlm.nih.gov/articles/PMC11936105/
+9 https://www.numerator.com/resources/blog/protein-trends/
+new Circana report 6 . GLP-1 is broadening from initial indication in Type 2 Diabetes
+management, to address overweight and obese patients. A recent study shows that 70% of
+individuals who anticipate using GLP-1 medications in the future say they’ll be doing so for
+weight loss, up from 34% of current users7 . GLP-1 weight-loss users tend to see more extreme
+habits relating to food consumption than their diabetic counterparts, suggesting that the early
+consumer impacts may continue to amplify.
+GLP-1 drugs are intensifying existing nutrition trends, especially the high interest in protein. As
+more people use these drugs, demand for protein-rich foods is expected to rise further in
+order to combat muscle loss that occurs when taking the medication. GLP-1s can cause
+both fat and muscle loss during weight reduction, especially if protein intake and resistance
+exercise are not optimised and therefore adequate protein intake is the 'cornerstone' of
+preventing this muscle loss8 . There is a risk that, after stopping GLP-1s, weight regain may
+occur, and this weight is often more likely to be fat rather than muscle unless active steps are
+taken to rebuild/retain muscle. Protein is therefore a focus of GLP-1 users.
+Data shows that GLP-1 use households significantly outspend non-users in the following
+protein-rich categories and underspend non-users in categories such as snacks and when
+eating out9 . We have explored this further in our note with the Barclays Pharmaceutical
+team (link). The market is responding with a surge in convenient, high-protein formats: protein
+bars, RTD shakes, yoghurts and high-protein cereals, with GLP-1 households consuming three
+times as much yogurt as non-users. Brands are innovating with products that are high in protein
+and fibre, often without explicitly marketing them as 'GLP-1 friendly' but still meeting the needs
+of this growing consumer segment. While fitness and weight management remain key drivers,
+mainstream consumers, including those using GLP-1 weight-loss drugs, are increasingly fuelling
+demand.
+17 December 2025 17
+Barclays | European Consumer Staples
+
+=== PAGE 18 ===
+
+FIGURE 17. Buy rate among GLP-1 users vs. non-users shows that users outspend non-users in certain protein-rich categories
+0%
+5%
+10%
+15%
+20%
+25%
+30%
+Protein shakes Protein water Meat Beans/Grains protein-fortified
+salty snacks
+Cheese
+Increase vs non-users
+Source: Numerator, Barclays Research
+The Barclays Pharma team believes that pricing erosion and US policy reform are pushing
+GLP-1s toward a mass-market, consumer-like pricing curve, with volumes expected to
+grow into 2026. This should provide further growth to the protein market.
+Our Pharma team is expecting significant GLP-1 obesity pricing erosion in 2026, with the
+class behaving more like a consumer market, which should lead to further adoption. US
+monthly list prices for Wegovy, Ozempic and Zepbound are over $1,000 per month. However, as
+supply has normalised and political scrutiny has intensified, manufacturers have aggressively
+expanded discount and cash-pay channels.
+• Novo Nordisk now offers Wegovy (Obesity) and Ozempic (Type 2 Diabetes) strengths at a self-
+pay price of $349 per month ($199 for first two months for new starters), down from ~$500
+prior, through its direct-to-consumer (DTC) and partner pharmacy programs.
+• Similarly, Eli Lilly also recently lowered Zepbound’s self-pay starter dose price to $299-349
+and caps higher doses at c$400. Big-box retailers and online platforms (e.g Costco, Amazon,
+etc.) are now marketing authentic GLP-1s at roughly half legacy retail prices, making price a
+visible, shop-able attribute in a way that is unusual for speciality drugs.
+17 December 2025 18
+Barclays | European Consumer Staples
+
+=== PAGE 19 ===
+
+FIGURE 18. Barclays expects GLP-1 pricing to reduce significantly, having a large impact on usage
+0
+200
+400
+600
+800
+1000
+1200
+1400
+Historic 2026E 'self-pay' 2026E 'MFN'
+USD monthly cost
+Ozempic Wegovy Zepbound
+Note: Estimates are per Barclays Pharmaceutical team
+Source: Barclays Research
+Policy pressure adds a second leg to price compression: MFN and Medicare IRA
+negotiation. Beyond voluntary cash-pay discounts, US policy is pushing GLP-1 net prices lower.
+The Trump administration’s new 'Most-Favored-Nation' (MFN) Executive Order directs HHS/CMS
+to anchor US drug prices, including high-spend classes such as GLP-1s, to international
+reference levels. The recent Trump-Novo-Lilly deal goes further for obesity: starting in mid-2026,
+Medicare and Medicaid will pay around $245 per month for injectable GLP-1s and ~$149 for new
+oral starters, while patient co-pays in Medicare will be capped at $50 per month. CMS has also
+selected Ozempic/Wegovy among the drugs to receive negotiated Medicare prices starting in
+2027 (IRA pricing at $275/month), with the administration projecting billions in annual savings.
+Persistent use of compounded GLP-1s highlights the price sensitivity of patients who lack
+insurance coverage. The significant use of compounded semaglutide during the shortage
+period and continuing compounding pressure until today reflects in part the willingness of
+patients to seek cheaper alternatives. GLP-1s were added to the FDA shortage list in 2022-24,
+enabling pharmacies to produce generic copies and sell unapproved versions at steep
+discounts. Despite the termination of compounding in May 2025, c1-1.5mn users are still using
+compounded drugs, suggesting that at least a subset of consumers are price-sensitive. We
+therefore expect lower GLP-1 prices to be more affordable for this subset of consumers, pointing
+to increased usage.
+Medicare obesity coverage in 2026 is a structural volume tailwind. The FDA added a
+cardiovascular risk-reduction indication to Wegovy in March 2024, opening the door to Medicare
+Part D coverage for appropriate patients. However, pure obesity coverage remained largely
+excluded until recently. The November 2025 Trump-Novo-Lilly deal expands Medicare coverage
+to overweight and obese patients with co-morbidities (definition unclear) from mid-2026. We
+17 December 2025 19
+Barclays | European Consumer Staples
+
+=== PAGE 20 ===
+
+estimate the potential addressable Medicare coverage volume addition will likely be ~5-9
+million in the US, correlating to ~9-16% expansion in the eligible US population by volume.
+Overall, this points to a surge in GLP-1 use, and therefore further growth of protein:
+• We expect significant GLP-1 pricing erosion for obesity in 2026, given: (1) government
+segments migrating to negotiated/MFN-like levels, (2) manufacturers shifting obesity volume
+into lower-priced, high-visibility cash-pay programs, and (3) continuous pricing reduction of
+commercial plans for GLP-1s.
+• This should drive strong volume growth into 2026, driven by: (1) Medicare’s expanded
+obesity coverage with low co-pays, (2) better affordability for cash-pay patients via DTC
+prices, and (3) ongoing employer and commercial plan adoption for high-risk populations.
+The fact that regulators are curbing compounded supply at the same time and the lower DTC
+prices could potentially redirect some less price-sensitive patients back toward branded
+products.
+• We also expect potentially longer duration of treatment. We think the broader coverage,
+lower pricing and more options (i.e. both oral Wegovy and LLY’s small molecule orforglipron
+will likely be launched in the US in 1Q26) for GLP-1s could keep more users on therapy for a
+longer time (current average GLP-1 treatment duration ~7mos), which may further lead to
+changes in consumer habits.
+• Consequently, we forecast that there will be further increased effects on consumer
+spending habits when it comes to grocery, and in particular protein. As more consumers
+pivot towards health trends, and increased GLP-1 usage puts a focus on muscle retention, we
+see GLP-1 growth as a driver of protein growth and the protein boom continuing.
+17 December 2025 20
+Barclays | European Consumer Staples
+
+=== PAGE 21 ===
+
+Data Science Research: Protein penetration is
+increasing across multiple channels and categories
+Chris Stevens(iii) Barclays, UK  |  Luke Seelig(iii) Barclays, UK
+One way to track increased consumer demand for high-protein foods and beverages is to see
+which products at grocery stores contain 'protein' in the name and which products are selling
+the best. Using webscraped data from Albertsons website in the US and Amazon Best Sellers in
+the US and the UK, we are able to track how the prevalence of protein-related product has
+changed over time. 
+The main takeaways from this Data Science analysis are: 
+• The penetration of products with 'protein' in the name has increased over the last five
+years or so for Amazon data and c18 months for Albertsons data.
+• Amazon data shows protein product penetration is slightly higher in the US vs. the UK, but
+both are growing.
+• By category, Dairy has the highest penetration of protein-related products.
+• By brand, Optimum Nutrition (a Glanbia brand) is the brand appearing most frequently in
+the Amazon 'Health & Personal Care > Sports Nutrition' Best Sellers list, but there is evidence
+of it losing market share / fragmentation of the industry (due to low barriers to entry/new
+entrants?)
+Albertsons – tracking the range of protein-related products 
+Using data from June 2024, we analysed ~10,000 products available at Albertsons online, on a
+monthly basis, searching for products that include 'protein' in the name. While we note that a
+product existing/being available on a website doesn't tell us anything about the volume of that
+product being sold, we believe that food manufacturers and grocery stores adapt their product
+ranges to satisfy what they believe to be changing consumer preferences. Therefore, we would
+view increasing penetration of protein-related products as a reflection of increased consumer
+demand for said products. 
+We provide a random sample of products containing 'protein' in the product name below. 
+17 December 2025 21
+Barclays | European Consumer Staples
+
+=== PAGE 22 ===
+
+FIGURE 19. Examples of protein-related products available on Albertsons
+date_scraped category name high_level_category
+2025-07 Dairy, Eggs & Cheese Go Gurt Protein Strawberry Yogurt Tubes 8 Count - 16 OZ Dairy
+2025-11 Dairy, Eggs & Cheese Go Gurt Protein Strawberry Yogurt Tubes 8 Count - 16 Oz Dairy
+2025-08 Beverages Core Power Protein Chocolate Elite 42G Bottle - 14 Oz Beverages
+2025-11 Dairy, Eggs & Cheese Chobani 20g Protein Raspberry Lemon - 6.7 Oz Dairy
+2025-07 Beverages Dont Quit Chocolate Protein Shake - 12 Oz Beverages
+2025-09 Beverages Slate Protein Ultra Vanilla Ready To Drink - 11 FZ Beverages
+2025-10 Dairy, Eggs & Cheese Go Gurt Protein Strawberry Yogurt Tubes 8 Count - 16 Oz Dairy
+2025-08 Beverages Slate Protein Ultra Vanilla Ready To Drink 4-11 Fz - 4-11 FZ Beverages
+2024-06 Dairy Eggs Cheese Yoplait Protein Strawberry Yogurt - 5.6 Oz Dairy
+2025-07 Beverages Kitu Super Coffee Protein + MCT Oil Mocha - 12-12 Fl. Oz. Beverages
+2025-10 Dairy, Eggs & Cheese Rockin Protein Strawberry Buil...Grams - 19.7 Fl. Oz. Dairy
+2025-09 Beverages Slate Protein Vanilla 15fz - 15 FZ Beverages
+2025-11 Dairy, Eggs & Cheese Yoplait Protein Vanilla Yogurt - 5.6 Oz Dairy
+2025-11 Cookies, Snacks & Candy WILDE Protein Chips Buffalo Chicken - 4 OZ Snacks
+2025-10 Beverages Slate Protein 42gram Caramel Ready To Drink - 15 FZ Beverages
+2025-11 Dairy, Eggs & Cheese Yoplait Protein Mixed Berry Yogurt - 5.6 Oz Dairy
+2025-06 Dairy, Eggs & Cheese Ratio Protein Yogurt Vanilla - 5.3 OZ Dairy
+2025-08 Beverages Bolthouse Farms Protein Plus P ... Bean - 15.2 Fl. Oz. Beverages
+2025-09 Dairy, Eggs & Cheese Chobani 20g Protein Cherry Berry - 6.7 Oz Dairy
+2024-09 Dairy Eggs Cheese Yoplait Protein Cherry Yogurt - 5.6 Oz Dairy
+Source: Company websites, Barclays Research
+We found a clear increase in the total number of products that include the word 'protein' within
+the name, rising from 0.35% of products in June 2024, to over 0.6% by August 2025. 
+FIGURE 20. Penetration of products with 'protein' in the name increased from June 2024 to August
+2025
+Source: Company websites, Barclays Research
+Across categories, Dairy has the highest protein name penetration (2-2.5%), followed by
+Beverages (c0.75%). Interestingly, the data suggests that penetration within Bread & Bakery and
+Snacks has also increased since June 2024. Recent months suggest a broad flattening in
+penetration growth, which is worth continuing to observe. 
+17 December 2025 22
+Barclays | European Consumer Staples
+
+=== PAGE 23 ===
+
+FIGURE 21. Dairy has the highest penetration across all product
+categories
+FIGURE 22. Beverages – penetration of protein products
+Source: Company websites, Barclays Research Source: Company websites, Barclays Research
+FIGURE 23. Snacks – penetration of protein products FIGURE 24. Bread & bakery – penetration of protein products
+Source: Company websites, Barclays Research Source: Company websites, Barclays Research
+Amazon Best Sellers - are protein-related products becoming best sellers?
+Whereas scraping the number of products available from a grocer such as Albertsons doesn't
+give us any insight into the volume of products sold, the Amazon Best Sellers dataset is based
+on the most popular products based on sales. Specifically, for a given category, this dataset
+gives us insight into the top 100 'best sellers' on a daily basis. 
+We provide a random sample of products from the Amazon Best Sellers lists containing 'protein'
+in the name.
+17 December 2025 23
+Barclays | European Consumer Staples
+
+=== PAGE 24 ===
+
+FIGURE 25. Example protein-related products available in Amazon Best Sellers US
+parse_date category_name item_name
+2019-11-15 Grocery & Gourmet Food > Breakfast
+Foods > Breakfast & Cereal Bars EPIC Venison with Sea Salt & Pepper, Low-Carb & Grass-Fed Protein Bars, 1.5 Oz, Pack of 12
+2019-07-15 Grocery & Gourmet Food > Snack
+Foods > Bars
+RXBAR, Coconut Chocolate, Protein Bar, 1.83 Ounce (Pack of 12) Breakfast Bar, High Protein
+Snack
+2025-01-15 Grocery & Gourmet Food > Meat
+Substitutes
+Vegan Shroomeats Mushroom Burger Patties - High Protein Meat Substitute from Shiitake
+Mushrooms - Non-GMO, 8 Allergens-Free Plant Based Burger Patties - Nutritious, and Delicious
+Vegan Meat - 8.0 Oz - x2 patties
+2025-09-15 Grocery & Gourmet Food > Snack
+Foods > Snack Cakes & Pastries
+Low Carb Cinnamon Muffins 6 Pcs (1-Pack) by Carb-o-licious – Delicious Keto Mini Muffins with
+Only 2 Net Carbs, 9g Protein – Sugar Free Cupcake Style Healthy Snack Made, Almond Flour, Low-
+Carb Treat
+2023-08-15 Grocery & Gourmet Food > Snack
+Foods > Bars
+KIND Bars, Dark Chocolate Nuts and Sea Salt, Healthy Snacks, Gluten Free, Low Sugar, 6g Protein,
+12 Count
+2023-03-15 Grocery & Gourmet Food > Snack
+Foods > Bars CLIF BUILDERS - Protein Bars - Chocolate Mint - 20g Protein - Gluten Free (2.4 Ounce, 12 Count)
+2022-11-15
+Grocery & Gourmet Food > Canned,
+Jarred & Packaged Foods > Beans &
+Peas
+Jack's | Organic Kidney Beans 13.4 oz.| Packed with Protein and Fiber, Heart Healthy, Low Sodium
+& Non GMO | (8-PACK)
+2023-04-15 Grocery & Gourmet Food > Snack
+Foods > Puffed Snacks
+Outstanding Foods Outstanding Puffs White Chedda - Plant Based Protein Snacks - Gluten Free,
+Soy Free, No Cholesterol, Non-GMO, No Trans Fat and Dairy Free - 3 oz, 3 Pack
+2024-02-15
+Grocery & Gourmet Food > Beverages
+> Coffee > Bottled & Canned Coffee
+Drinks
+Super Coffee, Plant Based Keto Protein Coffee (0g Added Sugar, 10g Pea Protein, 80 Calories)
+[Cinnamon Roll] 12 Fl Oz, 24 Pack | Iced Smart Coffee Drinks
+2024-02-15 Grocery & Gourmet Food > Pantry
+Staples > Nut & Seed Butters
+PB2 Pure Peanut Butter Powder - [2 lb/32 oz Jar] - No Added Sugar, No Added Salt, No Added
+Preservatives - 100% All Natural Roasted Peanuts - 6g of Plant-Based Protein
+2020-05-15 Grocery & Gourmet Food > Snack
+Foods > Jerky & Dried Meats
+Jack Link’s Premium Cuts Beef Steak, Original, 2 oz., 12 Count – Great Protein Snack with 22g of
+Protein and 130 Calories per Serving, Made with 100% Premium Beef
+2020-06-15 Grocery & Gourmet Food > Pasta &
+Noodles > Pasta Barilla Protein Plus Pasta, Elbows, 14.5 Ounce (Packaging may vary)
+2021-10-15 Grocery & Gourmet Food > Snack
+Foods > Jerky & Dried Meats
+The New Primal Lightly Peppered Meat Stick, Whole30 Approved, Paleo, Keto, Pantry Staple,
+Certified Gluten Free, Low Carb, High Protein Snack, Sugar Free, Free Range Turkey, 1 oz, Pack of
+20
+2024-05-15 Grocery & Gourmet Food > Snack
+Foods > Bars
+Orgain Organic Vegan Protein Bars, Peanut Butter Chocolate Chunk - 10g Plant Based Protein,
+Gluten Free Snack Bar, Low Sugar, Dairy Free, Soy Free, Lactose Free, Non GMO, 1.41 Oz (12
+Count)
+2020-12-15
+Grocery & Gourmet Food > Canned,
+Jarred & Packaged Foods > Meat,
+Poultry & Seafood
+Matiz Sardines in Olive Oil, 4.2 Ounce Can (Pack of 5) Spanish Gourmet Wild Caught Natural Fish
+for Tapas, Snacks, or Meals, Protein Rich, Sealed Freshness
+2021-02-15 Grocery & Gourmet Food > Snack
+Foods
+Quest Nutrition- High Protein, Low Carb, Gluten Free, Keto Friendly, 12-2.2 ounce assorted flavors
+variety Pack
+2021-12-15 Grocery & Gourmet Food > Meat &
+Seafood
+Mission Meats Sugar Free Keto Snacks Grass Fed Beef Sticks Whole 30 Gluten Free MSG Free
+Nitrate Nitrite Free Paleo Healthy Snacks Natural Meat Sticks Beef Jerky Zero Sugar Protein
+Snacks Stocking Stuffer
+2021-08-15 Grocery & Gourmet Food > Dairy,
+Cheese & Eggs
+Gourmet Keto Snacks - Healthy Edible Cookie Dough, High Protein Vegan Low Carb Paleo Snack
+Food for Kids & Adults | Zero Sugar Added Diabetic Friendly Sweets, Gluten Grain & Dairy Free |
+Dessert Foods
+2023-10-15
+Grocery & Gourmet Food > Beverages
+> Bottled Beverages, Water & Drink
+Mixes
+Premier Protein Shake Limited Edition 30g 1g Sugar 24 Vitamins Minerals Nutrients to Support
+Immune Health, Pumpkin Spice, 11.5 Fl Oz (Pack of 12)
+2024-08-15
+Grocery & Gourmet Food > Canned,
+Jarred & Packaged Foods > Meat,
+Poultry & Seafood
+Bumble Bee Canned Pink Salmon, 14.75 oz Can - Premium Wild Caught Salmon with Skin &
+Bones - 18g Protein per Serving - MSC Certified Sustainable Seafood, Non-GMO, Gluten Free,
+Kosher
+Source: Company websites, Barclays Research
+Here we quantify the percentage of products within the Grocery category best sellers list that
+contain the word 'protein' within the product name, for both the US and the UK. (NB: while the
+dataset is daily, we take a snapshot of the data on the 15th day of each month). While we must
+account for the fact that Amazon is a different type of sales channel from a pure grocer like
+Albertsons, it is interesting to note that the penetration of products that contain 'protein' in the
+17 December 2025 24
+Barclays | European Consumer Staples
+
+=== PAGE 25 ===
+
+FIGURE 26. Protein name penetration across 'Grocery' best sellers
+0%
+1%
+2%
+3%
+4%
+5%
+6%
+7%
+8%
+9%
+Jan-19
+Apr-19
+Jul-19
+Oct-19
+Jan-20
+Apr-20
+Jul-20
+Oct-20
+Jan-21
+Apr-21
+Jul-21
+Oct-21
+Jan-22
+Apr-22
+Jul-22
+Oct-22
+Jan-23
+Apr-23
+Jul-23
+Oct-23
+Jan-24
+Apr-24
+Jul-24
+Oct-24
+Jan-25
+Apr-25
+Jul-25
+Oct-25
+U.S.
+U.K
+Source: Company websites, Barclays Research
+name is much greater among the most popular products (6-7%) than among the entire selection
+of products at Albertsons (less than 1%). This could indicate that there is indeed greater
+consumer demand for protein-related products than the Albertsons' data would suggest. We
+also note that the 'item name' from Amazon Best Sellers appears to be somewhat longer on
+average than the product name available at Albertsons – i.e. it contains a bit more information
+about the product within the name. This could cause a slight upward bias to the percentage of
+products containing 'protein' in the name (since there is more room to say more things about the
+product). 
+The penetration in the UK is lower than that in the US, but for both countries this penetration
+has been increasing at a steady rate over the last five to six years. 
+To determine which protein-related brands are performing the best, we have counted the
+number of times each brand appears in the 'Health & Personal Care > Sports Nutrition' Best
+Sellers list. Specifically, we take one snapshot of the best sellers list per month and aggregate
+the lists up to an annual basis, so there are 1200 possible entries into the best sellers list in any
+given year (except 2025, for which we are currently missing December data). 
+17 December 2025 25
+Barclays | European Consumer Staples
+
+=== PAGE 26 ===
+
+FIGURE 27. Optimum Nutrition is the brand with the most appearances in the Sports Nutrition best sellers list, but it is losing share
+Source: Company websites, Barclays Research
+The top 20 performers (by number of best seller appearances in 2025) are shown in the table
+below. The full list of 270+ brands that have appeared in the Sports Nutrition best sellers list
+over the last five to six years is available on request. 
+17 December 2025 26
+Barclays | European Consumer Staples
+
+=== PAGE 27 ===
+
+FIGURE 28. Top 20 brands appearing in the Sports Nutrition Amazon Best Sellers list
+2019 2020 2021 2022 2023 2024 2025
+Optimum Nutrition 12% 11% 8% 7% 7% 8% 6%
+Nutricost 0% 0% 0% 2% 3% 5% 6%
+Liquid I.V. 1% 3% 4% 5% 7% 4% 4%
+Orgain 3% 4% 4% 4% 4% 4% 4%
+DripDrop 0% 1% 1% 2% 2% 3% 4%
+Quest Nutrition 8% 5% 3% 3% 4% 4% 3%
+Ultima Replenisher 0% 1% 1% 1% 3% 3% 3%
+Premier Protein 2% 4% 5% 3% 2% 2% 2%
+Dymatize 0% 0% 2% 2% 3% 2% 2%
+Blender Bottle 5% 3% 2% 2% 2% 2% 2%
+Cellucor 1% 2% 3% 2% 4% 2% 2%
+Now Foods 2% 2% 1% 1% 2% 1% 2%
+Muscle Milk 0% 1% 1% 2% 3% 3% 2%
+Drink LMNT 0% 0% 0% 0% 1% 1% 2%
+Sports Research 1% 2% 1% 0% 0% 1% 2%
+Jocko Fuel 0% 0% 0% 0% 0% 1% 2%
+Ensure 0% 1% 1% 1% 1% 1% 2%
+NAKED nutrition 0% 0% 0% 0% 1% 2% 2%
+Atkins 3% 3% 5% 3% 4% 3% 1%
+Scivation 1% 1% 2% 1% 1% 1% 1%
+Source: Company websites, Barclays Research
+17 December 2025 27
+Barclays | European Consumer Staples
+
+=== PAGE 28 ===
+
+FIGURE 29. We have identified the following winners and preferred names
+Winner Category Background Barclays
+rating
+Price
+target
+Companies marked with * are our Barclays preferred names
+Mowi EU Ingredients
+Mowi is the world’s largest producer of Atlantic salmon, giving it a
+dominant position in one of the fastest-growing animal protein
+categories globally.
+OW NOK 260
+Danone* EU Consumer
+Staples
+Danone is a leader in the protein category. Its high-protein platforms
+such as Oikos are delivering DD growth, and its €9 billion protein-rich
+yogurt segment is growing at twice the price index of traditional yogurt.
+OW EUR 85
+Novonesis* EU Ingredients
+Novonesis has established a leading position in protein solutions through
+its brand-agnostic Food & Beverages biosolutions platform. Novonesis’
+dairy portfolio is delivering standout double-digit underlying growth that
+is broad-based across high-protein yoghurt.
+OW DKK 470
+Glanbia EU Ingredients
+Glanbia is a global leader in performance nutrition and dairy-based
+protein ingredients, supported by strong consumer brands including
+Optimum Nutrition (ON) and Isopure.
+OW EUR 17
+Tyson Foods Inc. * US Agribusiness Tyson is the US’s largest protein processor and marketer with a diverse
+portfolio of beef, pork, chicken and prepared foods. OW USD 75
+JBS NV US Agribusiness JBS is the world’s largest protein company with worldwide operations
+covering chicken, beef, pork and prepared foods. OW USD 22
+Hormel Foods
+corp. US Agribusiness
+Following a series of acquisitions, Hormel is now positioned as a CPG
+player with a significant protein presence through products such as
+turkey, bacon, peanut butter and pepperoni.
+OW USD 30
+Pilgrim's Pride
+Corp US Agribusiness
+PPC is one of the largest chicken players in the US and has seen record-
+high profits in recent years due to low feed costs and very strong chicken
+fundamentals.
+EW USD 45
+Smithfield Foods,
+Inc. US Agribusiness Smithfield Foods, one of the largest US pork players, re-listed on public
+markets in early 2025 following privatisation in 2013. OW USD 30
+BellRing Brands* US Food
+BRBR is a pure-play protein company focused on the convenient
+nutrition category with its Premier Protein and Dymatize brands. Premier
+Protein, which makes up ~85% of BRBR sales, has a leading position in
+the fast-growing US ready-to-drink (RTD) protein shake category.
+OW USD 32
+Source: Barclays Research
+Equity Research: Protein Winners
+The Barclays EU Consumer Staples, EU Ingredients, US Agri and US Food teams have
+collaborated to identify Protein Winners in the food category, which we see as follows:
+When separating out the Winners from the other players in the sector, we see clear
+outperformance in terms volume growth, especially since 2024. This reflects the ability of these
+companies to innovate and adapt to evolving health and wellness trends.
+17 December 2025 28
+Barclays | European Consumer Staples
+
+=== PAGE 29 ===
+
+FIGURE 30. Volume growth YoY (%) of Protein Winners vs. Food ex. Winners shows that our selected winners are outperforming in the category
+-2.0%
+-1.0%
+0.0%
+1.0%
+2.0%
+3.0%
+4.0%
+2023Q1 2023Q2 2023Q3 2023Q4 2024Q1 2024Q2 2024Q3 2024Q4 2025Q1 2025Q2 2025Q3
+Protein Winners Food ex. Winners
+Source: Company data, Barclays Research
+FIGURE 31. Relative share price performance over the past two years also shows outperformance of our Protein Winners
+70
+80
+90
+100
+110
+120
+130
+Dec-23 Mar-24 Jun-24 Sep-24 Dec-24 Mar-25 Jun-25 Sep-25 Dec-25
+Protein Winners Food ex. Winners
+Note: Basket indices are market-cap-weighted
+Source: Bloomberg, Barclays Research
+Over the past 12 months, the share prices of our Winners have on average outperformed others
+in the Food category, which has seen significant declines. Overall, growth over the past four
+quarters has been on average 2.1% higher for our Protein Winners than for the Food ex.
+Winners group. In the four quarters before that, it averaged 1.9% higher. While the market
+appears to be pricing in protein growth, we believe this trend remains undervalued. The
+anticipated rise in protein consumption, driven by sustained health-conscious behaviours and
+the growing adoption of GLP-1 treatments, is still under-appreciated by most investors, in our
+view. Below, we identify why each of our Winners has been identified, but also the potential
+headwinds each business faces. 
+17 December 2025 29
+Barclays | European Consumer Staples
+
+=== PAGE 30 ===
+
+10 https://www.seafish.org/media/3jtkuktt/final-report-the-socio-economic-impacts-of-increased-seafood-consumption-
+in-england.pdf
+FIGURE 32. US Scanner data for Mowi Salmon shows recent HDD
+growth
+FIGURE 33. US Scanner data for the Seafood category also
+demonstrates strong performance
+-20%
+-15%
+-10%
+-5%
+0%
+5%
+10%
+15%
+20%
+25%
+30%
+Jan-23
+Mar-23
+May-23
+Jul-23
+Sep-23
+Nov-23
+Jan-24
+Mar-24
+May-24
+Jul-24
+Sep-24
+Nov-24
+Jan-25
+Mar-25
+May-25
+Jul-25
+Sep-25
+Nov-25
+Sales Growth YoY
+SALMON
+-10%
+-5%
+0%
+5%
+10%
+15%
+SEAFOOD
+Volume Growth YoY Price/Mix Growth YoY Sales Growth YoY
+Source: Nielsen IQ, Barclays Research Source: Nielsen IQ, Barclays Research
+Mowi 
+Alex Sloane Barclays, UK
+Upgraded to OW from EW, PT: To NOK 260 from NOK 210
+Why is it a Winner?
+Mowi is the world’s largest producer of Atlantic salmon, giving it a dominant position in one of
+the fastest-growing animal protein categories globally. We upgrade Mowi to OW from EW, and
+raise our PT to DKK 260 from DKK 210. Please see link to our full upgrade note: Norwegian
+Salmon: Protein plays with improved 2026 prospects. 
+Salmon fillets deliver an average of about 20g of protein per 100g serving, with roughly 200
+calories, making them a nutrient-dense option for high-quality protein. Salmon is sold primarily
+as a fresh and unprocessed food that is clearly not an ultra-processed food (UPF) in the NOVA
+classification system. If diets shift away from UPFs, this could see consumers increasing
+consumption of salmon, which is high in protein and omega-3 fatty acids that are beneficial for
+the heart and brain. The Dietary Guidelines for Americans (DGA) recommends eating seafood
+twice a week and replacing high-fat meats with seafood in order to reduce intake of saturated
+fat and sodium. Given that only 6% children and 20% of adults consume seafood twice per
+week10 , there is a significant gap between the amount of seafood Americans currently eat and
+the DGA recommendations. Mowi’s vertical integration – from feed to branded products –
+delivers cost efficiency and margin resilience, giving it a competitive edge as demand for
+salmon protein accelerates. We turn more constructive on the Salmon space, reflecting what we
+see as improved 2026 fundamentals and increasing structural appeal.
+What are the risks?
+Biological challenges such as sea lice and disease outbreaks could disrupt volumes and inflate
+costs for Mowi. Exposure to volatile salmon prices and feed inflation threatens margin stability.
+Regulatory and environmental scrutiny around open-net farming may drive compliance costs or
+restrict operations, and geopolitical trade risks add uncertainty to global distribution. Longer
+term, competition from alternative proteins and plant-based seafood could erode category
+17 December 2025 30
+Barclays | European Consumer Staples
+
+=== PAGE 31 ===
+
+growth, while the capital intensity of closed containment and offshore farming introduces
+execution risk if adoption lags expectations.
+17 December 2025 31
+Barclays | European Consumer Staples
+
+=== PAGE 32 ===
+
+FIGURE 34. Danone operating profit by segment shows that around
+one-third of profit relates to EDP
+FIGURE 35. US Scanner data for Danone shows recent strong growth
+in high-protein categories
+EDP
+32%
+Waters
+16%
+Specialised Nutrition
+52%
+-15%
+-10%
+-5%
+0%
+5%
+10%
+15%
+20%
+25%
+30%
+Jan-23
+Mar-23
+May-23
+Jul-23
+Sep-23
+Nov-23
+Jan-24
+Mar-24
+May-24
+Jul-24
+Sep-24
+Nov-24
+Jan-25
+Mar-25
+May-25
+Jul-25
+Sep-25
+Nov-25
+Sales Growth YoY
+TRADITIONAL DAIRY YOGURT GREEK YOGURT SOY MILK
+Source: Danone, Barclays Research Source: Nielsen IQ, Barclays Research
+Danone
+Warren Ackerman Barclays, UK
+Rating: OW, PT: EUR 85.00
+Why is it a Winner?
+Danone is a global leader in food and beverages, operating across essential dairy and plant-
+based products, waters and specialised nutrition. Danone has established itself as a leader in
+the protein category through decades of R&D in protein and has high-protein sales that we
+estimate will approach €2bn by the end of 2026. The company’s high-protein platforms such as
+Oikos and YoPro are delivering double-digit growth and have been rolled out in more than 30
+countries. 
+The company leverages its decades of nutritional science to target emerging health trends, such
+as launching Oikos Fusion for GLP-1 medication users, while expanding its high-protein
+footprint into Europe, Japan and Latin America, where penetration remains low. Critically,
+Danone’s health-focused portfolio aligns with rising consumer demand for functional benefits
+in fitness, weight management and gut health, driving volume/mix growth even in mature
+markets. The company is expanding manufacturing capacity specifically for high-protein
+products, acknowledging current supply constraints, but this pressure should ease as new
+capacity comes on stream in 2026. High protein categories account for 50% of the EDP market in
+the US, but less than a quarter of the European EDP market, on our estimates, which shows the
+potential for further growth in Europe.
+What are the risks?
+While Danone is seeing booming high-protein demand, because of shortage of supply it is
+directing some of its capacity away from its core ranges in the US, which is impacting its market
+shares. Danone is also undertaking a big push into the ambient protein shake market with its
+Oikos brand and it is not clear how big a growth driver this might be, as we are still awaiting
+repeat purchase data. Clearly, companies are vying for the growth potential in the high-protein
+space and Danone is facing intense competition from competitors such as Chobani. In Europe,
+the high-protein market is also quite crowded and there is the risk that private-label
+competition also increases as the market grows and household penetration surges. 
+17 December 2025 32
+Barclays | European Consumer Staples
+
+=== PAGE 33 ===
+
+Novonesis
+Alex Sloane Barclays, UK
+Rating: OW, PT: DKK 470.00
+Why is it a Winner?
+Novonesis has established a leading position in protein solutions through its brand-agnostic
+Food & Beverages biosolutions platform, serving a broad range of industry players.
+Approximately 60% of this platform’s focus is on dairy applications, which account for c20% of
+the overall group. The company offers a broad portfolio of ingredient solutions, specialising in
+cultures, enzymes and probiotics that are critical in producing high-protein yoghurt and
+cheese – and key inputs for manufacturers to enhance yield, quality, digestibility and
+sustainability. Novonesis’ dairy portfolio is delivering standout double-digit underlying growth
+that is broad-based across high-protein yoghurt, but also boosted by increased penetration of
+Direct Vat Set (DVS) cultures in cheese (with global conversion still at only ~60%, offering
+significant headroom) and productivity/yield-enhancing solutions.
+On its recent results call, the company highlighted strong momentum in both developed and
+emerging markets, with China cited as a long-term opportunity for cheese. Cottage cheese
+demand is also growing strongly on the back of high-protein diet trends. Management indicated
+that it is “excited about dairy growth over the next several years” , which we think partly reflects
+significant investments by customers in new high-protein dairy capacity – Chobani’s $500
+million upgrade in Twin Falls, Idaho (adding 50% capacity) and a new $1.2 billion plant in Rome,
+NY, as well as Danone’s ongoing expansion at its Minster, Ohio facility to meet surging demand.
+At our Boston conference Novonesis highlighted that it can typically sell up to 3x as much into
+high-protein yoghurts as conventional yoghurt formats, driven by the need for more DVS
+cultures but also enzymes that enhance taste and texture as well as selling in biosolutions that
+enhance shelf life naturally through bioprotection.
+Longer term, Novonesis is developing enzyme solutions to maximise protein content in whey
+by-product streams from cheese customers. The commercial appeal of such solutions is clear as
+demand for whey for high-protein claims across CPG brands continues to rise globally. If
+Novonesis can replicate the success it has had in maximising co-product value streams for
+bioenergy customers with its cheese customers, the incremental growth opportunity could be
+very attractive. Additionally, through its Human Health division the company has developed an
+Advanced Protein Solutions business that uses precision fermentation to develop a wide range
+of plant-based protein solutions.
+What are the risks?
+The key risk to Novonesis sustaining top-line growth in F&B biosolutions is reduced end-market
+demand for yoghurt and cheese. Key competitors include IFF (Danisco) and DSFIR – we believe
+the former has been something of a market share donor to NSISB over the past decade as
+disruption associated with major M&A has led to some share loss. In our view, with a credible
+and stable management team now in situ, it is possible that IFF emerges as a stronger
+competitor and recovers some market share in Dairy biosolutions over the next five years. In
+addition, there could be new sources of competition emerging in China. A further risk is that
+Novonesis' cultures production is relatively concentrated in Denmark – should there be a
+quality incident, it could disrupt sales. Exports of cultures from Denmark also create some FX
+transactional exposure, particularly vs. USD. The company is expanding its Milwaukee cultures
+production to mitigate this risk, but this new capacity will not come on stream until H2 26. 
+17 December 2025 33
+Barclays | European Consumer Staples
+
+=== PAGE 34 ===
+
+11 https://datahorizzonresearch.com/high-end-protein-powder-market-58388
+FIGURE 36. US Scanner data demonstrates volume growth for the
+Performance Nutrition Powder category...
+FIGURE 37. ...and also for Performance Nutrition Bars
+-50%
+-40%
+-30%
+-20%
+-10%
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+PERFORMANCE NUTRITION POWDER
+Volume Growth YoY Price/Mix Growth YoY Sales Growth YoY
+-10%
+-5%
+0%
+5%
+10%
+15%
+20%
+25%
+PERFORMANCE NUTRITION BARS
+Volume Growth YoY Price/Mix Growth YoY Sales Growth YoY
+Source: Nielsen IQ, Barclays Research Source: Nielsen IQ, Barclays Research
+Glanbia 
+Alex Sloane Barclays, UK
+Rating: OW, PT: EUR 17.00
+Why is it a Winner?
+Glanbia is a global leader in performance nutrition and dairy-based protein ingredients,
+supported by strong consumer brands including Optimum Nutrition (ON) and Isopure. The
+company is well placed to benefit from the sports and active nutrition boom that is driving
+demand for whey protein. Protein is identified by Glanbia as a “mega trend” with accelerating
+adoption – 80% of US consumers prioritise protein daily, and global searches for 'increase
+protein intake' rose  68% across 2024. Glanbia is positioned mainly in the powder format, which
+is valued at an $8.0 billion addressable market with high-single-digit growth11 , representing a
+significant segment within the broader $13.8 billion protein market.
+The Optimum Nutrition (ON) brand has grown at a 15% CAGR since 2008, helped by increased
+household penetration (ON HHP in US has grown to 5.8% vs. 4.2% in 2022) and international
+growth in UK, Australia, China and India. Performance Nutrition international has delivered a
+solid 12% CAGR in the last three years, with China being a stand-out region at a 47%, followed
+by the UK +18%, India +15% and Australia +10%.
+After subdued growth for powder formats in H2 24, Optimum Nutrition and Isopure delivered
+double-digit volume growth in Q3 25, driving 2.5% like-for-like revenue growth (excluding
+SlimFast/Body & Fit) and prompting an upgrade to full-year Performance Nutrition revenue
+guidance (to 3-4%).
+Recent innovation includes the launch of Isopure protein water (15g protein, 0g sugar) and clear
+protein drinks with hydration benefits, using proprietary FON technology to stabilise botanicals
+in gummy formats.
+On the B2B side of its business, Glanbia is one of the world’s leading producers of whey protein
+isolate. Glanbia’s scale and expertise underpin strong profitability, with protein and bioactives
+contributing 35% of Dairy Nutrition revenue and driving 70% of segment EBITDA.
+17 December 2025 34
+Barclays | European Consumer Staples
+
+=== PAGE 35 ===
+
+What are the risks?
+Exposure to volatile dairy and whey prices can pressure margins, while intensifying competition
+from plant-based and alternative protein players may erode share in performance nutrition.
+Regulatory scrutiny of health claims and evolving consumer preferences toward clean-label or
+non-dairy options add complexity. Additionally, the capital intensity of innovation and
+acquisitions introduces execution risk if returns lag expectations, and any slowdown in sports
+and active nutrition trends could temper demand growth.
+17 December 2025 35
+Barclays | European Consumer Staples
+
+=== PAGE 36 ===
+
+FIGURE 38. US Scanner data shows recent strong performance in all meat categories
+-20%
+-15%
+-10%
+-5%
+0%
+5%
+10%
+15%
+20%
+25%
+Jan-23
+Mar-23
+May-23
+Jul-23
+Sep-23
+Nov-23
+Jan-24
+Mar-24
+May-24
+Jul-24
+Sep-24
+Nov-24
+Jan-25
+Mar-25
+May-25
+Jul-25
+Sep-25
+Nov-25
+Sales Growth YoY
+FRESH MEAT PROCESSED MEAT FULLY COOKED MEAT
+Source: Nielsen IQ, Barclays Research
+Tyson Foods
+Benjamin M. Theurer BCCB, Mexico
+Rating: OW, PT: USD 75.00
+Why is it a Winner?
+Tyson is the US’s largest protein processor and marketer with a diverse portfolio of beef, pork,
+chicken and prepared foods. While profits have been weak in its beef segment due to the
+weakness of US cattle, operational improvements in other segments such as chicken and pork
+have driven earnings of late. Given the broad gains in protein consumption in recent years, TSN
+has benefited across its entire portfolio of legacy fresh meat products. Chicken volumes have
+been strong in recent earnings as customers seek healthier sources of protein, and pork has
+remained relatively stable. Despite lower beef volumes, driven primarily by lower raw material
+availability, management has noted that customers continue to buy beef at a healthy pace
+despite record-high pricing. Management also noted on its 2FQ25 earnings call that 71% of
+consumers are looking to increase their protein consumption, with the company introducing
+new prepared products such as Tyson Chicken Cups that offer a minimum of 30g of protein per
+serving to appeal to this trend. Looking ahead, TSN’s investments into its prepared foods
+segment should continue to help growth as they appeal to a growing consumer need for value
+and convenience through portable packaging, pre-cooked meats and more protein per serving.
+What are the risks?
+TSN’s large focus on US operations leaves it susceptible to regional protein cycle downturns,
+such as the current weakness in US beef, which is driving segment losses. Additionally, while
+Tyson is partially insulated from consumer trade-downs due to its diverse portfolio, shifts away
+from higher-priced items still present downside risk to margins.
+17 December 2025 36
+Barclays | European Consumer Staples
+
+=== PAGE 37 ===
+
+FIGURE 39. US Scanner data for JBS shows significant growth in fully cooked meat
+-40%
+-20%
+0%
+20%
+40%
+60%
+80%
+100%
+120%
+140%
+160%
+Jan-23
+Mar-23
+May-23
+Jul-23
+Sep-23
+Nov-23
+Jan-24
+Mar-24
+May-24
+Jul-24
+Sep-24
+Nov-24
+Jan-25
+Mar-25
+May-25
+Jul-25
+Sep-25
+Nov-25
+Sales Growth YoY
+FULLY COOKED MEAT FRESH MEAT
+Source: Nielsen IQ, Barclays Research
+JBS NV 
+Benjamin M. Theurer BCCB, Mexico
+Rating: OW, PT: USD 22.00
+Why is it a Winner?
+JBS is the world’s largest protein company, with worldwide operations covering chicken, beef,
+pork and prepared foods. As the most globally diversified company within our protein coverage,
+JBS has taken advantage of the worldwide increase in protein consumption. In North America, a
+broader focus on clean products and protein for all occasions has led to the development and
+success of Just Bare prepared chicken (11% market share, 47% CAGR) and entry into new
+categories such as snacking, salami and pepperoni. JBS is also the #1 protein company in Brazil,
+with a 93% household penetration rate. Per Nielsen, it has more than doubled its market share
+over 2013-24 in areas such as frozen food and lunch meats at the same time as overall demand
+has grown. Additionally, the company has utilised its vast production network to reach growth
+regions such as the Middle East and Africa, growing to US$424mn in revenue from $0 over a
+three-year period. Longer term, management sees this as a focus area, evidenced by a new
+production facility in Jeddah that will grow production capacity by 40%. With a strong balance
+sheet, JBS continues to grow through M&A, entering new protein categories such as eggs as it
+looks to utilise its scale to drive operational efficiency and margin gains.
+What are the risks?
+While JBS’s diversified operations allow it to offset regional cycle weakness with other protein
+and regional strength, downturns can still lead to some profitability challenges. Additionally,
+any change to the trend towards more global protein consumption would present greater
+downside risk JBS vs. peers given its reliance on exports, particularly in its Brazilian operations.
+17 December 2025 37
+Barclays | European Consumer Staples
+
+=== PAGE 38 ===
+
+FIGURE 40. US Scanner data for Hormel Foods shows recent growth in fresh meat
+-15%
+-10%
+-5%
+0%
+5%
+10%
+15%
+20%
+Jan-23
+Mar-23
+May-23
+Jul-23
+Sep-23
+Nov-23
+Jan-24
+Mar-24
+May-24
+Jul-24
+Sep-24
+Nov-24
+Jan-25
+Mar-25
+May-25
+Jul-25
+Sep-25
+Nov-25
+Sales Growth YoY
+PROCESSED MEAT FRESH MEAT FULLY COOKED MEAT
+Source: Nielsen IQ, Barclays Research
+Hormel Foods 
+Benjamin M. Theurer BCCB, Mexico
+Rating: OW, PT: USD 30.00
+Why is it a Winner?
+Following a series of acquisitions, Hormel is now positioned as a CPG player with a significant
+protein presence through products such as turkey, bacon, peanut butter and pepperoni. The
+company has benefited from the uptick in consumer snacking, where the market has grown to
+~$69bn, as well as the increased focus on lean protein sources such as poultry. With protein
+becoming a more central part of consumer diets, the company’s versatility throughout its
+portfolio has allowed it to reach customers on all eating occasions. As an industry leader in
+bacon and other prepared proteins, HRL has been able to drive volume gains through appealing
+to changing customer preferences through convenience, new flavours and price.
+What are the risks?
+A lack of vertical integration in its pork operations makes HRL more reliant on spot market
+prices vs. peers, such that unexpected jumps in commodities could damage margins.
+17 December 2025 38
+Barclays | European Consumer Staples
+
+=== PAGE 39 ===
+
+Pilgrim's Pride Corp 
+Benjamin M. Theurer BCCB, Mexico
+Rating: EW, PT: USD 45.00
+Why is it a Winner?
+PPC is one of the largest chicken players in the US and has seen record-high profits in recent
+years due to low feed costs and very strong chicken fundamentals. Chicken is the fastest-
+growing subsegment of the animal protein space, accounting for over 50% of consumption
+gains, and the UN FAO expects it to hold a ~40% share of the animal protein market by 2033.
+Consumer interest in poultry has continually risen due to the broader demand for protein as
+well as a greater focus on healthier diets, where chicken presents lower-calorie and fat content
+than red meat counterparts.
+Additionally, as the price of beef has risen to record highs, the relatively affordability of poultry
+has increased and has driven consumers towards the category. PPC management noted on its
+3Q25 that, despite broadly declining foodservice traffic, volumes for chicken continue to
+improve as customers seek more price-conscious options. The company’s diverse portfolio of
+different bird sizes allows it to reach customers at both the retail and restaurant level,
+responding to specific key customer needs as consumer preferences evolve. Looking ahead,
+PPC will continue to expand through a series of capital projects, including expansions in Mexico
+and a new prepared foods facility in the US. These new facilities allow PPC to better tap into the
+higher-margin, more stable prepared foods and branded products categories, bringing potential
+to improve earnings stability, profitability and market share.
+What are the risks?
+A reversal of the chicken cycle would be detrimental to margins, as oversupply typically drives
+lower pricing. Higher feed costs would also cut into profitability, as would events such as
+disease.
+17 December 2025 39
+Barclays | European Consumer Staples
+
+=== PAGE 40 ===
+
+FIGURE 41. US Scanner data for Smithfield Foods' top categories shows an overall upward trend
+-30%
+-20%
+-10%
+0%
+10%
+20%
+30%
+40%
+Jan-23
+Mar-23
+May-23
+Jul-23
+Sep-23
+Nov-23
+Jan-24
+Mar-24
+May-24
+Jul-24
+Sep-24
+Nov-24
+Jan-25
+Mar-25
+May-25
+Jul-25
+Sep-25
+Nov-25
+Sales Growth YoY
+PROCESSED MEAT FRESH MEAT HAM FULLY COOKED MEAT
+Source: Nielsen IQ, Barclays Research
+Smithfield Foods, Inc. 
+Benjamin M. Theurer BCCB, Mexico
+Rating: OW, PT: USD 30.00
+Why is it a Winner?
+Smithfield Foods, one of the largest US pork players, re-listed on public markets in early 2025
+following privatisation in 2013. With a fully integrated model, the company handles all pieces of
+the production process from the raising of hogs to the processing and selling of finished
+products – in both packaged and fresh formats. The US value-added packaged meats market
+size is roughly $49bn (with key SFD subcategories of bacon/lunch meat and hot dogs/sausages
+at $27bn and $12.3bn, respectively), and Mintel expects the overall category to grow at a 3.6%
+CAGR over 2024-28 as protein consumption grows. As consumers continue to seek convenient
+protein options, we expect SFD’s leadership role in the packaged meats space (~20% market
+share) to drive buyers towards its products and fuel repeat purchases (SFD reported an 81%
+repurchase rate in its S-1 filing).
+Additionally, pork’s versatility unlocks a wide variety of cuts, flavour profiles and use cases,
+which leads to additional consumer pickups. The USDA expects per capita demand to be stable
+in 2026, and, with the SFD packaged meats portfolio selling at between ~$2 and $8 per lb, the
+company should be able to appeal to buyers at all price points, even in the event of a softer
+economy. This wide range of affordability is particularly helpful amid high beef prices as
+consumers seek cheaper sources of animal protein. The company’s large presence in private-
+label goods also presents scope for market share upside in the event of trade downs. SFD’s
+vertical integration provides it with cost savings and margin resilience amid fluctuations in the
+hog cycle.
+17 December 2025 40
+Barclays | European Consumer Staples
+
+=== PAGE 41 ===
+
+What are the risks?
+Shifts in hog macroeconomic conditions can drive higher input costs and lower realised pricing
+at low points in the cycle. Additionally, consumer softness can drive trade-downs into lower-
+priced SFD products, which can potentially have a lower margin profile.
+17 December 2025 41
+Barclays | European Consumer Staples
+
+=== PAGE 42 ===
+
+FIGURE 42. US Scanner data for BellRing Brands' top categories FIGURE 43. US Scanner data for Performance Nutrition Shakes shows
+volume growth in the past two years
+-20%
+0%
+20%
+40%
+60%
+80%
+100%
+120%
+Jan-23
+Mar-23
+May-23
+Jul-23
+Sep-23
+Nov-23
+Jan-24
+Mar-24
+May-24
+Jul-24
+Sep-24
+Nov-24
+Jan-25
+Mar-25
+May-25
+Jul-25
+Sep-25
+Nov-25
+Sales Growth YoY
+PERFORMANCE NUTRITION SHAKES PERFORMANCE NUTRITION POWDER
+-20%
+-10%
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+PERFORMANCE NUTRITION SHAKES
+Volume Growth YoY Price/Mix Growth YoY Sales Growth YoY
+Source: Nielsen IQ, Barclays Research Source: Nielsen IQ, Barclays Research
+BellRing Brands 
+Andrew Lazar BCI, US
+Rating: OW, PT: USD 32.00
+Why is it a Winner?
+BRBR is a pure-play protein company focused on the convenient nutrition category with its
+Premier Protein and Dymatize brands. Premier Protein, which makes up ~85% of BRBR sales,
+has a leading position in the fast-growing US RTD protein shake category and is positioned as a
+mainstream high-protein, low-sugar product that serves consumers looking for supplemental
+protein and not just niche sub-groups such as adult nutrition or muscle building. In the
+company’s most recent F4Q25, Premier Protein led the RTD protein shake category with a 26.4%
+market share, and the company continues to benefit from category tailwinds as the RTD protein
+shake category grew +15% YOY in the quarter and closer to +18% YOY over the past 12 months.
+The company’s more premium Dymatize ready-to-mix (RTM) powder product is also well-
+positioned in an RTM protein powder category that’s grown ~+10% YOY over the past 12
+months.
+Given the recent growth of its categories, BRBR expects to expand distribution of its Premier
+RTD shakes by some +20%+ YoY across the food, drug, mass and e-commerce channels in FY26
+and has also recently partnered with a new broker to significantly expand its store-level
+coverage while concurrently having launched an internal retail sales team that's focused on
+securing in-store displays, with a focus on singles and entry-price-point multi-packs. Plus, in
+late F1Q26, BRBR will enter into a three-month trial across several thousand stores with a major
+mass retailer in the US that includes placements across not only the pharmacy aisle, but the
+grocery aisles as well, along with extensive displays and end caps. And, should the trial prove
+successful, we think BRBR should be able to present the results as a further proof point that
+moving its products outside the pharmacy aisle and into the more mainstream grocery aisles
+could benefit both retailers and the category, which could well present a meaningful medium-
+term growth opportunity.
+What are the risks?
+Given the attractiveness of the RTD protein shake category, BRBR has recently seen several new
+competitors launching products in an effort to capitalise on the category growth, and it remains
+to be seen which, if any, of these new products could present a serious threat to BRBR’s market
+17 December 2025 42
+Barclays | European Consumer Staples
+
+=== PAGE 43 ===
+
+share position. Notably, BRBR’s largest club customer has recently allocated incremental space
+to some of these new entrants, which could result in lower sales growth for Premier Protein in
+the club segment in FY26E. Separately, we estimate that protein, including both milk and whey
+protein concentrate, makes up ~40% of BRBR’s COGS, such that elevated protein input cost
+inflation could, and likely will, impact the company’s margins in FY26.
+17 December 2025 43
+Barclays | European Consumer Staples
+
+=== PAGE 44 ===
+
+Credit Research: Protein Winner – Boparan
+Karine Elias(i) Barclays Bank, DIFC
+Boparan holds the number one position in the UK poultry market with an estimated 28.1%
+market share in terms of volume, and the second-largest position in the ready meals market,
+with an estimated 13.6% market share in terms of value (according to the Offering
+Memorandum from October 2024). The company processes poultry products, including primary
+and added-value products, which are then marketed and sold to consumers primarily via major
+retailers and foodservice manufacturers.
+Boparan has nine poultry processing and manufacturing sites in the UK and its integrated
+British supply chain in the poultry segment helps position the company to grow and take
+advantage of the increased demand for British-sourced chicken. Poultry sales have continued to
+exceed management’s expectations and margins have benefited from the increased proportion
+of welfare poultry sales. During the Q1 26 results (reported on 16 December), management
+commented that supply remains tight following the transition to higher-welfare poultry and
+demand remains high, resulting in better carcass balance and a high proportion of sales to retail
+customers. Importantly, margins also benefited from a better mix as customers traded out of
+whole birds into higher-margin cut products. On the Q4 conference call (30 October),
+management explained that over 80% of poultry sales and 89% of farm space meet the higher
+welfare standard. The company is implementing a capital plan for the next 10 years, totalling
+nearly £1bn, to add capacity, expand capability and drive further efficiencies through
+automation, including: three new poultry factories; deep chill capacity; a new kill line; and
+automatic cutting and deboning machines. We have a Market Weight rating on BOPRLN
+GBP29s.
+17 December 2025 44
+Barclays | European Consumer Staples
+
+=== PAGE 45 ===
+
+Equity Research: To Summarise...
+The protein megatrend is still in its ascent. We estimate the global protein market at ~US$1.7
+trillion today across dairy, meat and alternative sources. As consumption patterns shift toward
+health-focused intake, the data indicate substantial runway potential. If global intake shifts
+towards health-focused levels, we estimate that protein demand could rise by 37%, equating
+to an incremental uplift of around US$650 billion in market value. 
+In this scenario, our analysis points to a compound annual growth rate (CAGR) of 6.6% for
+global protein demand over the next five years, as health trends and GLP-1 adoption
+accelerate. This growth is evident across categories: protein-rich snacks are growing at 1.3x the
+rate of the overall snacks market; RTD protein shakes and high-protein yoghurts are seeing
+significant volume and household penetration gains; and plant-based proteins are expanding at
+8-10%+ CAGRs in key markets. At the same time, natural protein sources such as eggs and meat
+continue to see robust demand. Companies that innovate early and diversify into high-protein
+product lines are capturing incremental sales and positioning for long-term growth as health
+and wellness priorities accelerate globally. 
+Structural tailwinds are intensifying. GLP-1 adoption is broadening beyond diabetes into
+weight management, pushing consumers to prioritise protein to preserve lean mass. We
+expect pricing normalisation and expanded coverage to extend duration on therapy and widen
+the user base, amplifying everyday demand for protein-rich foods. In parallel, supply is scaling:
+manufacturers have committed multi-billion dollar capex to unlock constrained capacity in
+high-protein dairy and adjacent formats. These investments should ease bottlenecks and
+support category innovation from 2026 onward.
+Against this backdrop, our Protein Winners Mowi (upgraded to OW), Danone, Novonesis,
+Glanbia, Tyson Foods, JBS, Hormel Foods, Pilgrim’s Pride, Smithfield Foods and BellRing
+Brands have already outperformed peers in volume and share-price basket terms, reflecting
+advantaged exposure to the most attractive growth nodes and capabilities in R&D, capacity and
+brand execution. In our view, while competition will intensify and growth rates may normalise
+quarter to quarter, consumers have not reached 'peak protein' yet and the secular trend of
+protein as a daily, functional and enjoyable part of mainstream diets remains under-
+appreciated.
+17 December 2025 45
+Barclays | European Consumer Staples
+
+=== PAGE 46 ===
+
+Analyst(s) Certification(s):
+In relation to our respective sections we, Benjamin M. Theurer, Andrew Lazar, Karine Elias, Warren Ackerman, Chris Stevens, Alex Sloane, Patrick Folan
+and Luke Seelig, hereby certify (1) that the views expressed in this research report accurately reflect our personal views about any or all of the subject
+securities or issuers referred to in this research report and (2) no part of our compensation was, is or will be directly or indirectly related to the specific
+recommendations or views expressed in this research report.
+EQUITY: IMPORTANT DISCLOSURES
+Barclays Research is produced by the Investment Bank of Barclays Bank PLC and its affiliates (collectively and each individually, "Barclays"). All
+authors contributing to this research report are Research Analysts unless otherwise indicated. The publication date at the top of the report reflects the
+local time where the report was produced and may differ from the release date provided in GMT .
+Availability of Disclosures:
+Where any companies are the subject of this research report, for current important disclosures regarding those companies please refer to https://
+publicresearch.barclays.com or alternatively send a written request to: Barclays Research Compliance, 745 Seventh Avenue, 13th Floor, New York, NY
+10019 or call +1-212-526-1072.
+The analysts responsible for preparing this research report have received compensation based upon various factors including the firm's total revenues,
+a portion of which is generated by investment banking activities, the profitability and revenues of the Markets business and the potential interest of the
+firm's investing clients in research with respect to the asset class covered by the analyst.
+Research analysts employed outside the US by affiliates of Barclays Capital Inc. are not registered/qualified as research analysts with FINRA. Such non-
+US research analysts may not be associated persons of Barclays Capital Inc., which is a FINRA member, and therefore may not be subject to FINRA Rule
+2241 restrictions on communications with a subject company, public appearances and trading securities held by a research analyst’s account.
+Analysts regularly conduct site visits to view the material operations of covered companies, but Barclays policy prohibits them from accepting payment
+or reimbursement by any covered company of their travel expenses for such visits.
+Barclays Research Department produces various types of research including, but not limited to, fundamental analysis, equity-linked analysis,
+quantitative analysis, and trade ideas. Recommendations contained in one type of Barclays Research may differ from those contained in other types of
+Barclays Research, whether as a result of differing time horizons, methodologies, or otherwise.
+In order to access Barclays Statement regarding Research Dissemination Policies and Procedures, please refer to https://
+publicresearch.barclays.com/S/RD.htm. In order to access Barclays Research Conflict Management Policy Statement, please refer to: https://
+publicresearch.barclays.com/S/CM.htm.
+Materially Mentioned Stocks (Ticker, Date, Price)
+BellRing Brands (BRBR, 15-Dec-2025, USD 32.78), Overweight/Neutral, CD/E/FA/J/L
+Danone (DANO.PA, 15-Dec-2025, EUR 77.04), Overweight/Neutral, A/CD/D/E/J/K/L/M
+Glanbia (GL9.I, 15-Dec-2025, EUR 14.53), Overweight/Neutral, J/K/L/N/Q
+Hormel Foods Corp. (HRL, 15-Dec-2025, USD 24.00), Overweight/Neutral, CD/CE/J/K/M
+JBS NV (JBS, 15-Dec-2025, USD 14.23), Overweight/Neutral, J/K/N
+Mowi (MOWI.OL, 15-Dec-2025, NOK 236.20), Overweight/Neutral, J
+Novonesis (NSISb.CO, 15-Dec-2025, DKK 391.40), Overweight/Negative, D/E/J/L
+Pilgrim's Pride Corp (PPC, 15-Dec-2025, USD 39.64), Equal Weight/Neutral, CD/CE/J/K/M/N
+Smithfield Foods, Inc. (SFD, 15-Dec-2025, USD 22.62), Overweight/Neutral, A/CD/CE/D/E/J/K/L/M/N
+Tyson Foods, Inc. (TSN, 15-Dec-2025, USD 59.53), Overweight/Neutral, CD/CE/J/K/N
+Unless otherwise indicated, prices are sourced from Bloomberg and reflect the closing price in the relevant trading market, which may not be the last
+available closing price at the time of publication.
+Disclosure Legend:
+A: Barclays Bank PLC and/or an affiliate has been lead manager or co-lead manager of a publicly disclosed offer of securities of the issuer in the
+previous 12 months.
+B: An employee or non-executive director of Barclays PLC is a director of this issuer.
+CD: Barclays Bank PLC and/or an affiliate is a market-maker in debt securities issued by this issuer.
+CE: Barclays Bank PLC and/or an affiliate is a market-maker in equity securities issued by this issuer.
+CH: Barclays Bank PLC and/or its group companies makes, or will make, a market in the securities (as defined under paragraph 16.2 (k) of the HK SFC
+Code of Conduct) in respect of this issuer.
+D: Barclays Bank PLC and/or an affiliate has received compensation for investment banking services from this issuer in the past 12 months.
+E: Barclays Bank PLC and/or an affiliate expects to receive or intends to seek compensation for investment banking services from this issuer within the
+next 3 months.
+FA: Barclays Bank PLC and/or an affiliate beneficially owns 1% or more of a class of equity securities of this issuer, as calculated in accordance with US
+regulations.
+FB: Barclays Bank PLC and/or an affiliate beneficially owns a long position of more than 0.5% of a class of equity securities of this issuer, as calculated
+in accordance with EU regulations.
+17 December 2025 46
+Barclays | European Consumer Staples
+
+=== PAGE 47 ===
+
+FC: Barclays Bank PLC and/or an affiliate beneficially owns a short position of more than 0.5% of a class of equity securities of this issuer, as calculated
+in accordance with EU regulations.
+FD: Barclays Bank PLC and/or an affiliate beneficially owns 1% or more of a class of equity securities of this issuer, as calculated in accordance with
+South Korean regulations.
+FE: Barclays Bank PLC and/or its group companies has financial interests in relation to this issuer and such interests aggregate to an amount equal to
+or more than 1% of this issuer’s market capitalization, as calculated in accordance with HK regulations.
+GD: One of the Research Analysts on the fundamental credit coverage team (and/or a member of his or her household) has a long position in the
+common equity securities of this issuer.
+GE: One of the Research Analysts on the fundamental equity coverage team (and/or a member of his or her household) has a long position in the
+common equity securities of this issuer.
+H: This issuer beneficially owns more than 5% of any class of common equity securities of Barclays PLC.
+I: Barclays Bank PLC and/or an affiliate is party to an agreement with this issuer for the provision of financial services to Barclays Bank PLC and/or an
+affiliate.
+J: Barclays Bank PLC and/or an affiliate is a liquidity provider and/or trades regularly in the securities of this issuer and/or in any related derivatives.
+K: Barclays Bank PLC and/or an affiliate has received non-investment banking related compensation (including compensation for brokerage services, if
+applicable) from this issuer within the past 12 months.
+L: This issuer is, or during the past 12 months has been, an investment banking client of Barclays Bank PLC and/or an affiliate.
+M: This issuer is, or during the past 12 months has been, a non-investment banking client (securities related services) of Barclays Bank PLC and/or an
+affiliate.
+N: This issuer is, or during the past 12 months has been, a non-investment banking client (non-securities related services) of Barclays Bank PLC and/or
+an affiliate.
+O: Not in use.
+P: A partner, director or officer of Barclays Capital Canada Inc. has, during the preceding 12 months, provided services to the subject company for
+remuneration, other than normal course investment advisory or trade execution services.
+Q: Barclays Bank PLC and/or an affiliate is a Corporate Broker to this issuer.
+R: Barclays Capital Canada Inc. has received compensation for investment banking services from this issuer in the past 12 months.
+S: This issuer is a Corporate Broker to Barclays PLC.
+T: Barclays Bank PLC and/or an affiliate is providing investor engagement services to this issuer.
+U: The equity securities of this Canadian issuer include subordinate voting restricted shares.
+V: The equity securities of this Canadian issuer include non-voting restricted shares.
+Risk Disclosure(s)
+Master limited partnerships (MLPs) are pass-through entities structured as publicly listed partnerships. For tax purposes, distributions to MLP unit
+holders may be treated as a return of principal. Investors should consult their own tax advisors before investing in MLP units.
+Disclosure(s) regarding Information Sources
+The Nielsen material contained in this report represents Nielsen estimates and does not represent facts. Nielsen has neither reviewed nor approved
+this report and/or any of the statement made herein.
+Bloomberg® is a trademark and service mark of Bloomberg Finance L.P . and its affiliates (collectively “Bloomberg”) and the Bloomberg Indices are
+trademarks of Bloomberg. Bloomberg or Bloomberg’s licensors own all proprietary rights in the Bloomberg Indices. Bloomberg does not approve or
+endorse this material, or guarantee the accuracy or completeness of any information herein, or make any warranty, express or implied, as to the results
+to be obtained therefrom and, to the maximum extent allowed by law, Bloomberg shall have no liability or responsibility for injury or damages arising
+in connection therewith.
+Guide to the Barclays Fundamental Equity Research Rating System:
+Our coverage analysts use a relative rating system in which they rate stocks as Overweight, Equal Weight or Underweight (see definitions below)
+relative to other companies covered by the analyst or a team of analysts that are deemed to be in the same industry (the "industry coverage universe").
+In addition to the stock rating, we provide industry views which rate the outlook for the industry coverage universe as Positive, Neutral or Negative (see
+definitions below). A rating system using terms such as buy, hold and sell is not the equivalent of our rating system. Investors should carefully read the
+entire research report including the definitions of all ratings and not infer its contents from ratings alone.
+Stock Rating
+Overweight - The stock is expected to outperform the unweighted expected total return of the industry coverage universe over a 12-month investment
+horizon.
+Equal Weight - The stock is expected to perform in line with the unweighted expected total return of the industry coverage universe over a 12-month
+investment horizon.
+Underweight - The stock is expected to underperform the unweighted expected total return of the industry coverage universe over a 12-month
+investment horizon.
+17 December 2025 47
+Barclays | European Consumer Staples
+
+=== PAGE 48 ===
+
+Rating Suspended - The rating and target price have been suspended temporarily due to market events that made coverage impracticable or to
+comply with applicable regulations and/or firm policies in certain circumstances including where the Investment Bank of Barclays Bank PLC is acting in
+an advisory capacity in a merger or strategic transaction involving the company.
+Industry View
+Positive - industry coverage universe fundamentals/valuations are improving.
+Neutral - industry coverage universe fundamentals/valuations are steady, neither improving nor deteriorating.
+Negative - industry coverage universe fundamentals/valuations are deteriorating.
+Below is the list of companies that constitute the "industry coverage universe":
+Americas Agribusiness
+AmBev (ABEV) Archer Daniels Midland (ADM) Beyond Meat, Inc. (BYND)
+Bunge Limited (BG) CF Industries (CF) Corteva, Inc. (CTVA)
+FMC Corp. (FMC) Hormel Foods Corp. (HRL) ICL Group (ICL)
+Ingredion Inc. (INGR) JBS NV (JBS) Lavoro Ltd. (LVRO)
+MBRF Global Foods Company SA (MBRF3.SA) Mosaic (MOS) Nutrien (NTR)
+Pilgrim's Pride Corp (PPC) Smithfield Foods, Inc. (SFD) Tyson Foods, Inc. (TSN)
+European Chemicals & Ingredients
+AAK (AAK.ST) Air Liquide (AIRP .PA) AkzoNobel (AKZO.AS)
+Arkema (AKE.PA) Azelis (AZE.BR) BASF (BASFn.DE)
+Brenntag (BNRGn.DE) Clariant (CLN.S) Corbion (CORB.AS)
+Croda (CRDA.L) DSM-Firmenich (DSFIR.AS) Elementis (ELM.L)
+Evonik (EVKn.DE) Fuchs (FPE3_p.DE) Givaudan (GIVN.S)
+IMCD (IMCD.AS) Lanxess (LXSG.DE) Novonesis (NSISb.CO)
+Solvay (SOLB.BR) Syensqo (SYENS.BR) Symrise (SY1G.DE)
+Synthomer (SYNTS.L) Treatt (TET .L) Victrex (VCTX.L)
+Wacker Chemie (WCHG.DE)
+European Consumer Staples
+AG Barr (BAG.L) Altria Group Inc. (MO) Anheuser-Busch InBev (ABI.BR)
+Associated British Foods (ABF.L) Barry Callebaut (BARN.S) Beiersdorf AG (BEIG.DE)
+British American Tobacco Plc (BATS.L) C&C Group (CCR.L) Carlsberg AS-B (CARLb.CO)
+Coca-Cola Hellenic BC AG (CCH.L) Danone (DANO.PA) Davide Campari N.V. (CPRI.MI)
+De'Longhi SpA (DLG.MI) Diageo PLC (DGE.L) Essity (ESSITYb.ST)
+Fever-Tree Drinks PLC (FEVR.L) Glanbia (GL9.I) Haleon (HLN.L)
+Haypp Group (HAYPP .ST) Heineken NV (HEIN.AS) Henkel (HNKG_p.DE)
+Imperial Brands Plc (IMB.L) Japan Tobacco Inc. (JAPAY) JDE Peet’s BV (JDEP .AS)
+Kerry Group (KYGa.L) L'Oréal SA (OREP .PA) Leroy Seafood Group ASA (LSG.OL)
+Lindt & Spruengli (LISN.S) Logista (LOG.MC) Mowi (MOWI.OL)
+Nestle SA (NESN.S) Orkla ASA (ORK.OL) Pernod-Ricard SA (PERP .PA)
+Philip Morris International Inc. (PM) Puig Brands (PUIGb.MC) Reckitt Benckiser Group PLC (RB.L)
+Rémy Cointreau (RCOP .PA) Salmar ASA (SALM.OL) Suedzucker AG (SZUG.DE)
+Tate & Lyle (TATE.L) The Magnum Ice Cream Company B.V. (MICCT .AS)THG plc (THG.L)
+Unilever PLC (ULVR.AS) Unilever PLC (ULVR.L)
+U.S. Food
+B&G Foods (BGS) BellRing Brands (BRBR) Conagra Brands (CAG)
+General Mills (GIS) Hain Celestial (HAIN) Lamb Weston Holdings, Inc. (LW)
+McCormick & Co. (MKC) Mondelez International (MDLZ) Nomad Foods Ltd. (NOMD)
+Oatly Group AB (OTLY) Post Holdings, Inc. (POST) The Campbell’s Company (CPB)
+The Hershey Company (HSY) The J.M. Smucker Company (SJM) The Kraft Heinz Company (KHC)
+TreeHouse Foods (THS) Utz Brands, Inc. (UTZ)
+Distribution of Ratings:
+Barclays Equity Research has 1853 companies under coverage.
+17 December 2025 48
+Barclays | European Consumer Staples
+
+=== PAGE 49 ===
+
+49% have been assigned an Overweight rating which, for purposes of mandatory regulatory disclosures, is classified as a Buy rating; 46% of companies
+with this rating are investment banking clients of the Firm; 65% of the issuers with this rating have received financial services from the Firm.
+36% have been assigned an Equal Weight rating which, for purposes of mandatory regulatory disclosures, is classified as a Hold rating; 38% of
+companies with this rating are investment banking clients of the Firm; 57% of the issuers with this rating have received financial services from the Firm.
+14% have been assigned an Underweight rating which, for purposes of mandatory regulatory disclosures, is classified as a Sell rating; 34% of
+companies with this rating are investment banking clients of the Firm; 60% of the issuers with this rating have received financial services from the Firm.
+Guide to the Barclays Research Price Target:
+Each analyst has a single price target on the stocks that they cover. The price target represents that analyst's expectation of where the stock will trade
+in the next 12 months. Upside/downside scenarios, where provided, represent potential upside/potential downside to each analyst's price target over
+the same 12-month period.
+Types of investment recommendations produced by Barclays Equity Research:
+In addition to any ratings assigned under Barclays’ formal rating systems, this publication may contain investment recommendations in the form of
+trade ideas, thematic screens, scorecards or portfolio recommendations that have been produced by analysts within Equity Research. Any such
+investment recommendations shall remain open until they are subsequently amended, rebalanced or closed in a future research report.
+Barclays may also re-distribute equity research reports produced by third-party research providers that contain recommendations that differ from
+and/or conflict with those published by Barclays’ Equity Research Department.
+ 
+Disclosure of other investment recommendations produced by Barclays Equity Research:
+Barclays Equity Research may have published other investment recommendations in respect of the same securities/instruments recommended in this
+research report during the preceding 12 months. To view all investment recommendations published by Barclays Equity Research in the preceding 12
+months please refer to https://live.barcap.com/go/research/Recommendations.
+Legal entities involved in producing Barclays Research:
+Barclays Bank PLC (Barclays, UK)
+Barclays Capital Inc. (BCI, US)
+Barclays Bank Ireland PLC, Frankfurt Branch (BBI, Frankfurt)
+Barclays Bank Ireland PLC, Paris Branch (BBI, Paris)
+Barclays Bank Ireland PLC, Milan Branch (BBI, Milan)
+Barclays Securities Japan Limited (BSJL, Japan)
+Barclays Bank PLC, Hong Kong Branch (Barclays Bank, Hong Kong)
+Barclays Bank Mexico, S.A. (BBMX, Mexico)
+Barclays Capital Casa de Bolsa, S.A. de C.V. (BCCB, Mexico)
+Barclays Securities (India) Private Limited (BSIPL, India)
+Barclays Bank PLC, Singapore Branch (Barclays Bank, Singapore)
+Barclays Bank PLC, DIFC Branch (Barclays Bank, DIFC)
+FICC: IMPORTANT DISCLOSURES
+Barclays Research is produced by the Investment Bank of Barclays Bank PLC and its affiliates (collectively and each individually, "Barclays").
+All authors contributing to this research report are Research Analysts unless otherwise indicated. The publication date at the top of the report reflects
+the local time where the report was produced and may differ from the release date provided in GMT .
+Availability of Disclosures:
+For current important disclosures regarding any issuers which are the subject of this research report please refer to https://
+publicresearch.barclays.com or alternatively send a written request to: Barclays Research Compliance, 745 Seventh Avenue, 13th Floor, New York, NY
+10019 or call +1-212-526-1072.
+Barclays Capital Inc. and/or one of its affiliates does and seeks to do business with companies covered in its research reports. As a result, investors
+should be aware that Barclays may have a conflict of interest that could affect the objectivity of this report. Barclays Capital Inc. and/or one of its
+affiliates regularly trades, generally deals as principal and generally provides liquidity (as market maker or otherwise) in the debt securities that are the
+subject of this research report (and related derivatives thereof). Barclays trading desks may have either a long and / or short position in such securities,
+other financial instruments and / or derivatives, which may pose a conflict with the interests of investing customers. Where permitted and subject to
+appropriate information barrier restrictions, Barclays fixed income research analysts regularly interact with its trading desk personnel regarding
+current market conditions and prices. Barclays fixed income research analysts receive compensation based on various factors including, but not
+limited to, the quality of their work, the overall performance of the firm (including the profitability of the Investment Banking Department), the
+profitability and revenues of the Markets business and the potential interest of the firm's investing clients in research with respect to the asset class
+covered by the analyst. To the extent that any historical pricing information was obtained from Barclays trading desks, the firm makes no
+representation that it is accurate or complete. All levels, prices and spreads are historical and do not necessarily represent current market levels, prices
+or spreads, some or all of which may have changed since the publication of this document. Barclays Research Department produces various types of
+research including, but not limited to, fundamental analysis, equity-linked analysis, quantitative analysis, and trade ideas. Recommendations and
+trade ideas contained in one type of Barclays Research may differ from those contained in other types of Barclays Research, whether as a result of
+differing time horizons, methodologies, or otherwise.
+17 December 2025 49
+Barclays | European Consumer Staples
+
+=== PAGE 50 ===
+
+In order to access Barclays Statement regarding Research Dissemination Policies and Procedures, please refer to https://
+publicresearch.barclays.com/S/RD.htm. In order to access Barclays Research Conflict Management Policy Statement, please refer to: https://
+publicresearch.barclays.com/S/CM.htm.
+Disclosure(s) regarding Information Sources
+Bloomberg® is a trademark and service mark of Bloomberg Finance L.P . and its affiliates (collectively “Bloomberg”) and the Bloomberg Indices are
+trademarks of Bloomberg. Bloomberg or Bloomberg’s licensors own all proprietary rights in the Bloomberg Indices. Bloomberg does not approve or
+endorse this material, or guarantee the accuracy or completeness of any information herein, or make any warranty, express or implied, as to the results
+to be obtained therefrom and, to the maximum extent allowed by law, Bloomberg shall have no liability or responsibility for injury or damages arising
+in connection therewith.
+Materially Mentioned Issuers/Bonds
+BOPARAN FINANCE PLC, CD/D/J/K/L/N
+BOPRLN 9 3/8 11/07/29, Market Weight (GBP 106.01, 15-Dec-2025)
+Valuation Methodology: The bonds are now trading at the L TM peak of £106.4 and while we remain positive on the group's trajectory, we view current
+valuations as fair given the recent outperformance. We have a Market Weight rating on the BOPRLN £9.375% 2029s.
+Risks that May Impede Achievement of the Rating: Risks include the ability to offset higher labour costs as a result of the UK Budget as well as
+concentration risk (exposure to the UK following the sale of EU Poultry).
+Potential pricing pressure as Asda announced investments in pricing, raising concerns over a potential price war in the UK although this is not our base
+case at the moment. This is especially pertinent as grocers are historically renowned for securing UK-only produce are shifting away from this to remain
+competitive.
+All pricing information is indicative only. Unless otherwise indicated, prices are sourced from LSEG Data & Analytics and reflect the closing price in the
+relevant trading market, which may not be the last available price at the time of publication.
+Disclosure Legend:
+A: Barclays Bank PLC and/or an affiliate has been lead manager or co-lead manager of a publicly disclosed offer of securities of the issuer in the
+previous 12 months.
+B: An employee or non-executive director of Barclays PLC is a director of this issuer.
+CD: Barclays Bank PLC and/or an affiliate is a market-maker in debt securities issued by this issuer.
+CE: Barclays Bank PLC and/or an affiliate is a market-maker in equity securities issued by this issuer.
+CH: Barclays Bank PLC and/or its group companies makes, or will make, a market in the securities (as defined under paragraph 16.2 (k) of the HK SFC
+Code of Conduct) in respect of this issuer.
+D: Barclays Bank PLC and/or an affiliate has received compensation for investment banking services from this issuer in the past 12 months.
+E: Barclays Bank PLC and/or an affiliate expects to receive or intends to seek compensation for investment banking services from this issuer within the
+next 3 months.
+FA: Barclays Bank PLC and/or an affiliate beneficially owns 1% or more of a class of equity securities of this issuer, as calculated in accordance with US
+regulations.
+FB: Barclays Bank PLC and/or an affiliate beneficially owns a long position of more than 0.5% of a class of equity securities of this issuer, as calculated
+in accordance with EU regulations.
+FC: Barclays Bank PLC and/or an affiliate beneficially owns a short position of more than 0.5% of a class of equity securities of this issuer, as calculated
+in accordance with EU regulations.
+FD: Barclays Bank PLC and/or an affiliate beneficially owns 1% or more of a class of equity securities of this issuer, as calculated in accordance with
+South Korean regulations.
+FE: Barclays Bank PLC and/or its group companies has financial interests in relation to this issuer and such interests aggregate to an amount equal to
+or more than 1% of this issuer’s market capitalization, as calculated in accordance with HK regulations.
+GD: One of the Research Analysts on the fundamental credit coverage team (and/or a member of his or her household) has a long position in the
+common equity securities of this issuer.
+GE: One of the Research Analysts on the fundamental equity coverage team (and/or a member of his or her household) has a long position in the
+common equity securities of this issuer.
+H: This issuer beneficially owns more than 5% of any class of common equity securities of Barclays PLC.
+I: Barclays Bank PLC and/or an affiliate is party to an agreement with this issuer for the provision of financial services to Barclays Bank PLC and/or an
+affiliate.
+J: Barclays Bank PLC and/or an affiliate is a liquidity provider and/or trades regularly in the securities of this issuer and/or in any related derivatives.
+K: Barclays Bank PLC and/or an affiliate has received non-investment banking related compensation (including compensation for brokerage services, if
+applicable) from this issuer within the past 12 months.
+L: This issuer is, or during the past 12 months has been, an investment banking client of Barclays Bank PLC and/or an affiliate.
+M: This issuer is, or during the past 12 months has been, a non-investment banking client (securities related services) of Barclays Bank PLC and/or an
+affiliate.
+17 December 2025 50
+Barclays | European Consumer Staples
+
+=== PAGE 51 ===
+
+N: This issuer is, or during the past 12 months has been, a non-investment banking client (non-securities related services) of Barclays Bank PLC and/or
+an affiliate.
+O: Not in use.
+P: A partner, director or officer of Barclays Capital Canada Inc. has, during the preceding 12 months, provided services to the subject company for
+remuneration, other than normal course investment advisory or trade execution services.
+Q: Barclays Bank PLC and/or an affiliate is a Corporate Broker to this issuer.
+R: Barclays Capital Canada Inc. has received compensation for investment banking services from this issuer in the past 12 months.
+S: This issuer is a Corporate Broker to Barclays PLC.
+T: Barclays Bank PLC and/or an affiliate is providing investor engagement services to this issuer.
+U: The equity securities of this Canadian issuer include subordinate voting restricted shares.
+V: The equity securities of this Canadian issuer include non-voting restricted shares.
+Explanation of the Barclays Research Corporate Credit Sector Rating System
+ 
+Overweight (OW):
+For sectors rated against the Bloomberg U.S. Credit Index, the Bloomberg Pan-European Credit Index, the Bloomberg EM Asia USD High Grade Credit
+Index or the Bloomberg EM USD Corporate and Quasi-Sovereign Index, the analyst expects the six-month excess return of the sector to exceed the six-
+month excess return of the relevant index.
+For sectors rated against the Bloomberg U.S. High Yield 2% Issuer Capped Credit Index, the Bloomberg Pan-European High Yield 3% Issuer Capped
+Credit Index excluding Financials, the Bloomberg Pan-European High Yield Finance Index or the Bloomberg EM Asia USD High Yield Corporate Credit
+Index, the analyst expects the six-month total return of the sector to exceed the six-month total return of the relevant index.
+ 
+Market Weight (MW):
+For sectors rated against the Bloomberg U.S. Credit Index, the Bloomberg Pan-European Credit Index, the Bloomberg EM Asia USD High Grade Credit
+Index or the Bloomberg EM USD Corporate and Quasi-Sovereign Index, the analyst expects the six-month excess return of the sector to be in line with
+the six-month excess return of the relevant index.
+For sectors rated against the Bloomberg U.S. High Yield 2% Issuer Capped Credit Index, the Bloomberg Pan-European High Yield 3% Issuer Capped
+Credit Index excluding Financials, the Bloomberg Pan-European High Yield Finance Index or the Bloomberg EM Asia USD High Yield Corporate Credit
+Index, the analyst expects the six-month total return of the sector to be in line with the six-month total return of the relevant index.
+ 
+Underweight (UW):
+For sectors rated against the Bloomberg U.S. Credit Index, the Bloomberg Pan-European Credit Index, the Bloomberg EM Asia USD High Grade Credit
+Index or the Bloomberg EM USD Corporate and Quasi-Sovereign Index, the analyst expects the six-month excess return of the sector to be less than the
+six-month excess return of the relevant index.
+For sectors rated against the Bloomberg U.S. High Yield 2% Issuer Capped Credit Index, the Bloomberg Pan-European High Yield 3% Issuer Capped
+Credit Index excluding Financials, the Bloomberg Pan-European High Yield Finance Index or the Bloomberg EM Asia USD High Yield Corporate Credit
+Index, the analyst expects the six-month total return of the sector to be less than the six-month total return of the relevant index.
+ 
+Sector definitions:
+Sectors in U.S. High Grade Research are defined using the sector definitions of the Bloomberg U.S. Credit Index and are rated against the Bloomberg
+U.S. Credit Index.
+Sectors in U.S. High Yield Research are defined using the sector definitions of the Bloomberg U.S. High Yield 2% Issuer Capped Credit Index and are
+rated against the Bloomberg U.S. High Yield 2% Issuer Capped Credit Index.
+ 
+Sectors in European High Grade Research are defined using the sector definitions of the Bloomberg Pan-European Credit Index and are rated against
+the Bloomberg Pan-European Credit Index.
+Sectors in Industrials and Utilities in European High Yield Research are defined using the sector definitions of the Bloomberg Pan-European High Yield
+3% Issuer Capped Credit Index excluding Financials and are rated against the Bloomberg Pan-European High Yield 3% Issuer Capped Credit Index
+excluding Financials.
+Sectors in Financials in European High Yield Research are defined using the sector definitions of the Bloomberg Pan-European High Yield Finance Index
+and are rated against the Bloomberg Pan-European High Yield Finance Index.
+ 
+Sectors in Asia High Grade Research are defined on Barclays Live and are rated against the Bloomberg EM Asia USD High Grade Credit Index.
+Sectors in Asia High Yield Research are defined on Barclays Live and are rated against the Bloomberg EM Asia USD High Yield Corporate Credit Index.
+ 
+Sectors in EEMEA and Latin America Research are defined on Barclays Live and are rated against the Bloomberg EM USD Corporate and Quasi
+Sovereign Index. These sectors may contain both High Grade and High Yield issuers.
+17 December 2025 51
+Barclays | European Consumer Staples
+
+=== PAGE 52 ===
+
+ 
+To view sector definitions and monthly sector returns for Asia, EEMEA and Latin America Research, go to https://live.barcap.com/go/research/
+EMSectorReturns on Barclays Live.
+ 
+For important information about Asia, EEMEA and LatAm Credit Sector definitions, go to https://live.barcap.com/go/publications/link?
+contentPubID=FC2786307&restriction=DEBT on Barclays Live.
+ 
+ 
+Explanation of the Barclays Research Corporate Credit Rating System
+ 
+For all High Grade issuers covered in the US, Europe or Asia, and for all issuers in Latin America and EEMEA, the credit rating system is based on the
+analyst's view of the expected excess return over a six-month period of the issuer's index-eligible corporate debt securities* relative to the expected
+excess return of the relevant sector, as specified on the report.
+ 
+Overweight (OW): The analyst expects the six-month excess return of the issuer's index-eligible corporate debt securities to exceed the six-month
+expected excess return of the relevant sector.
+Market Weight (MW): The analyst expects the six-month excess return of the issuer's index-eligible corporate debt securities to be in line with the six-
+month expected excess return of the relevant sector.
+Underweight (UW): The analyst expects the six-month excess return of the issuer's index-eligible corporate debt securities to be less than the six-
+month expected excess return of the relevant sector.
+Rating Suspended (RS): The rating has been suspended temporarily due to market events that make coverage impracticable or to comply with
+applicable regulations and/or firm policies in certain circumstances including where the Investment Bank of Barclays Bank PLC is acting in an advisory
+capacity in a merger or strategic transaction involving the company.
+Coverage Suspended (CS): Coverage of this issuer has been temporarily suspended.
+Not Covered (NC): Barclays’ fundamental credit research team does not provide formal, continuous coverage of this issuer and has not assigned a
+rating to the issuer or its debt securities. Any analysis, opinion or trade recommendation provided on a Not Covered issuer or its debt securities is valid
+only as of the publication date of this report and there should be no expectation that additional reports relating to the Not Covered issuer or its debt
+securities will be published thereafter.
+ 
+For all High Yield issuers (excluding those covered in EEMEA or Latin America), the credit rating system is based on the analyst's view of the expected
+total returns over a six-month period of the rated debt security relative to the expected total return of the relevant sector, as specified on the report.
+ 
+Overweight (OW): The analyst expects the six-month total return of the debt security subject to this rating to exceed the six-month expected total
+return of the relevant sector.
+Market Weight (MW): The analyst expects the six-month total return of the debt security subject to this rating to be in line with the six-month expected
+total return of the relevant sector.
+Underweight (UW): The analyst expects the six-month total return of the rated debt security subject to this rating to be less than the six-month
+expected total return of the relevant sector.
+Rating Suspended (RS): The rating has been suspended temporarily due to market events that make coverage impracticable or to comply with
+applicable regulations and/or firm policies in certain circumstances including where the Investment Bank of Barclays Bank PLC is acting in an advisory
+capacity in a merger or strategic transaction involving the company.
+Coverage Suspended (CS): Coverage of this issuer has been temporarily suspended.
+Not Covered (NC): Barclays’ fundamental credit research team does not provide formal, continuous coverage of this issuer and has not assigned a
+rating to the issuer or its debt securities. Any analysis, opinion or trade recommendation provided on a Not Covered issuer or its debt securities is valid
+only as of the publication date of this report and there should be no expectation that additional reports relating to the Not Covered issuer or its debt
+securities will be published thereafter.
+ 
+Where a recommendation is made at the issuer level, it does not apply to any sanctioned securities, where trading in such securities would be
+prohibited under applicable law, including sanctions laws and regulations.
+ 
+*In EEMEA and Latin America (and in certain other limited instances in other regions), analysts may occasionally rate issuers that are not part of the
+Bloomberg U.S. Credit Index, the Bloomberg Pan-European Credit Index, the Bloomberg EM Asia USD High Grade Credit Index or Bloomberg EM USD
+Corporate and Quasi Sovereign Index. In such cases the rating will reflect the analyst’s view of the expected excess return over a six-month period of
+the issuer’s corporate debt securities relative to the expected excess return of the relevant sector, as specified on the report.
+Distribution of ratings assigned by Barclays Corporate Credit Research at the bond level:
+23% have been assigned an Overweight rating which, for purposes of mandatory regulatory disclosures, is classified as a Buy rating; 40% of bonds with
+this rating category are investment banking clients of the Firm; 61% of the issuers with this rating have received financial services from the Firm.
+17 December 2025 52
+Barclays | European Consumer Staples
+
+=== PAGE 53 ===
+
+51% have been assigned Market Weight rating which, for purposes of mandatory regulatory disclosures, is classified as a Hold rating; 41% of bonds
+with this rating category are investment banking clients of the Firm; 64% of the issuers with this rating have received financial services from the Firm.
+26% have been assigned an Underweight rating which, for purposes of mandatory regulatory disclosures, is classified as a Sell rating; 39% of bonds
+with this rating category are investment banking clients of the Firm; 60% of the issuers with this rating have received financial services from the Firm.
+Types of investment recommendations produced by Barclays FICC Research:
+In addition to any ratings assigned under Barclays’ formal rating systems, this publication may contain investment recommendations in the form of
+trade ideas, thematic screens, scorecards or portfolio recommendations that have been produced by analysts in FICC Research. Any such investment
+recommendations produced by non-Credit Research teams shall remain open until they are subsequently amended, rebalanced or closed in a future
+research report. Any such investment recommendations produced by the Credit Research teams are valid at current market conditions and may not be
+otherwise relied upon.
+ 
+Disclosure of other investment recommendations produced by Barclays FICC Research:
+Barclays FICC Research may have published other investment recommendations in respect of the same securities/instruments recommended in this
+research report during the preceding 12 months. To view all investment recommendations published by Barclays FICC Research in the preceding 12
+months please refer to https://live.barcap.com/go/research/Recommendations.
+Barclays does not assign ratings to asset backed securities. Barclays Capital Inc. and/or one of its affiliates may have acted as an underwriter for public
+offerings of any asset backed securities that are otherwise recommended in trade ideas contained within its securitised research reports.
+Legal entities involved in producing Barclays Research:
+Barclays Bank PLC (Barclays, UK)
+Barclays Capital Inc. (BCI, US)
+Barclays Bank Ireland PLC, Frankfurt Branch (BBI, Frankfurt)
+Barclays Bank Ireland PLC, Paris Branch (BBI, Paris)
+Barclays Bank Ireland PLC, Milan Branch (BBI, Milan)
+Barclays Securities Japan Limited (BSJL, Japan)
+Barclays Bank PLC, Hong Kong Branch (Barclays Bank, Hong Kong)
+Barclays Bank Mexico, S.A. (BBMX, Mexico)
+Barclays Capital Casa de Bolsa, S.A. de C.V. (BCCB, Mexico)
+Barclays Securities (India) Private Limited (BSIPL, India)
+Barclays Bank PLC, Singapore Branch (Barclays Bank, Singapore)
+Barclays Bank PLC, DIFC Branch (Barclays Bank, DIFC)
+Disclaimer:
+This publication has been produced by Barclays Research Department in the Investment Bank of Barclays Bank PLC and/or one or more of its affiliates
+(collectively and each individually, "Barclays").
+It has been prepared for institutional investors and not for retail investors. It has been distributed by one or more Barclays affiliated legal entities listed
+below or by an independent and non-affiliated third-party entity (as may be communicated to you by such third-party entity in its communications
+with you). It is provided for information purposes only, and Barclays makes no express or implied warranties, and expressly disclaims all warranties of
+merchantability or fitness for a particular purpose or use with respect to any data included in this publication. To the extent that this publication states
+on the front page that it is intended for institutional investors and is not subject to all of the independence and disclosure standards applicable to debt
+research reports prepared for retail investors under U.S. FINRA Rule 2242, it is an “institutional debt research report” and distribution to retail investors
+is strictly prohibited. Barclays also distributes such institutional debt research reports to various issuers, media, regulatory and academic
+organisations for their own internal informational news gathering, regulatory or academic purposes and not for the purpose of making investment
+decisions regarding any debt securities. Media organisations are prohibited from re-publishing any opinion or recommendation concerning a debt
+issuer or debt security contained in any Barclays institutional debt research report. Any such recipients that do not want to continue receiving Barclays
+institutional debt research reports should contact debtresearch@barclays.com. Unless clients have agreed to receive “institutional debt research
+reports” as required by US FINRA Rule 2242, they will not receive any such reports that may be co-authored by non-debt research analysts. Eligible
+clients may get access to such cross asset reports by contacting debtresearch@barclays.com. Barclays will not treat unauthorized recipients of this
+report as its clients and accepts no liability for use by them of the contents which may not be suitable for their personal use. Prices shown are
+indicative and Barclays is not offering to buy or sell or soliciting offers to buy or sell any financial instrument.
+Without limiting any of the foregoing and to the extent permitted by law, in no event shall Barclays, nor any affiliate, nor any of their respective officers,
+directors, partners, or employees have any liability for (a) any special, punitive, indirect, or consequential damages; or (b) any lost profits, lost revenue,
+loss of anticipated savings or loss of opportunity or other financial loss, even if notified of the possibility of such damages, arising from any use of this
+publication or its contents.
+Other than disclosures relating to Barclays, the information contained in this publication has been obtained from sources that Barclays Research
+believes to be reliable, but Barclays does not represent or warrant that it is accurate or complete. Appearances by Third-Party Speakers: Any views or
+opinions expressed by third-party speakers during this event are solely those of the speaker and do not represent the views or opinions of Barclays.
+Barclays is not responsible for, and makes no warranties whatsoever as to, the information or opinions contained in any written, electronic, audio or
+video presentations by any third-party speakers at the event (“Third-Party Content”). Any such Third-Party Content has not been adopted or endorsed
+by Barclays and does not represent the views or opinions of Barclays. Third-Party Content is provided for information purposes only and has not been
+independently verified by Barclays for its accuracy or completeness.
+17 December 2025 53
+Barclays | European Consumer Staples
+
+=== PAGE 54 ===
+
+The views in this publication are solely and exclusively those of the authoring analyst(s) and are subject to change, and Barclays Research has no
+obligation to update its opinions or the information in this publication. Unless otherwise disclosed herein, the analysts who authored this report have
+not received any compensation from the subject companies in the past 12 months. If this publication contains recommendations, they are general
+recommendations that were prepared independently of any other interests, including those of Barclays and/or its affiliates, and/or the subject
+companies. This publication does not contain personal investment recommendations or investment advice or take into account the individual financial
+circumstances or investment objectives of the clients who receive it. Barclays is not a fiduciary to any recipient of this publication. The securities and
+other investments discussed herein may not be suitable for all investors and may not be available for purchase in all jurisdictions. The United States
+imposed sanctions on certain Chinese companies (https://home.treasury.gov/policy-issues/financial-sanctions/sanctions-programs-and-country-
+information/chinese-military-companies-sanctions), which may restrict U.S. persons from purchasing securities issued by those companies. Investors
+must independently evaluate the merits and risks of the investments discussed herein, including any sanctions restrictions that may apply, consult any
+independent advisors they believe necessary, and exercise independent judgment with regard to any investment decision. The value of and income
+from any investment may fluctuate from day to day as a result of changes in relevant economic markets (including changes in market liquidity). The
+information herein is not intended to predict actual results, which may differ substantially from those reflected. Past performance is not necessarily
+indicative of future results. The information provided does not constitute a financial benchmark and should not be used as a submission or
+contribution of input data for the purposes of determining a financial benchmark.
+This publication is not investment company sales literature as defined by Section 270.24(b) of the US Investment Company Act of 1940, nor is it
+intended to constitute an offer, promotion or recommendation of, and should not be viewed as marketing (including, without limitation, for the
+purposes of the UK Alternative Investment Fund Managers Regulations 2013 (SI 2013/1773) or AIFMD (Directive 2011/61)) or pre-marketing (including,
+without limitation, for the purposes of Directive (EU) 2019/1160) of the securities, products or issuers that are the subject of this report.
+Third Party Distribution: Any views expressed in this communication are solely those of Barclays and have not been adopted or endorsed by any third
+party distributor.
+United Kingdom: This document is being distributed (1) only by or with the approval of an authorised person (Barclays Bank PLC) or (2) to, and is
+directed at (a) persons in the United Kingdom having professional experience in matters relating to investments and who fall within the definition of
+"investment professionals" in Article 19(5) of the Financial Services and Markets Act 2000 (Financial Promotion) Order 2005 (the "Order"); or (b) high
+net worth companies, unincorporated associations and partnerships and trustees of high value trusts as described in Article 49(2) of the Order; or (c)
+other persons to whom it may otherwise lawfully be communicated (all such persons being "Relevant Persons"). Any investment or investment activity
+to which this communication relates is only available to and will only be engaged in with Relevant Persons. Any other persons who receive this
+communication should not rely on or act upon it. Barclays Bank PLC is authorised by the Prudential Regulation Authority and regulated by the
+Financial Conduct Authority and the Prudential Regulation Authority and is a member of the London Stock Exchange.
+European Economic Area (“EEA”): This material is being distributed to any “Authorised User” located in a Restricted EEA Country by Barclays Bank
+Ireland PLC. The Restricted EEA Countries are Austria, Bulgaria, Estonia, Finland, Hungary, Iceland, Liechtenstein, Lithuania, Luxembourg, Malta,
+Portugal, Romania, Slovakia and Slovenia. For any other “Authorised User” located in a country of the European Economic Area, this material is being
+distributed by Barclays Bank PLC. Barclays Bank Ireland PLC is a bank authorised by the Central Bank of Ireland whose registered office is at 1
+Molesworth Street, Dublin 2, Ireland. Barclays Bank PLC is not registered in France with the Autorité des marchés financiers or the Autorité de contrôle
+prudentiel. Authorised User means each individual associated with the Client who is notified by the Client to Barclays and authorised to use the
+Research Services. The Restricted EEA Countries will be amended if required.
+Finland: Notwithstanding Finland’s status as a Restricted EEA Country, Research Services may also be provided by Barclays Bank PLC where permitted
+by the terms of its cross-border license.
+Americas: The Investment Bank of Barclays Bank PLC undertakes U.S. securities business in the name of its wholly owned subsidiary Barclays Capital
+Inc., a FINRA and SIPC member. Barclays Capital Inc., a U.S. registered broker/dealer, is distributing this material in the United States and, in
+connection therewith accepts responsibility for its contents. Any U.S. person wishing to effect a transaction in any security discussed herein should do
+so only by contacting a representative of Barclays Capital Inc. in the U.S. at 745 Seventh Avenue, New York, New York 10019.
+Non-U.S. persons should contact and execute transactions through a Barclays Bank PLC branch or affiliate in their home jurisdiction unless local
+regulations permit otherwise.
+This material is distributed in Canada by Barclays Capital Canada Inc., a registered investment dealer, a Dealer Member of Canadian Investment
+Regulatory Organization (www.ciro.ca), and a Member of the Canadian Investor Protection Fund (CIPF).
+This material is distributed in Mexico by Barclays Bank Mexico, S.A. and/or Barclays Capital Casa de Bolsa, S.A. de C.V. This material is distributed in the
+Cayman Islands and in the Bahamas by Barclays Capital Inc., which it is not licensed or registered to conduct and does not conduct business in, from or
+within those jurisdictions and has not filed this material with any regulatory body in those jurisdictions.
+Japan: This material is being distributed to institutional investors in Japan by Barclays Securities Japan Limited. Barclays Securities Japan Limited is a
+joint-stock company incorporated in Japan with registered office of 6-10-1 Roppongi, Minato-ku, Tokyo 106-6131, Japan. It is a subsidiary of Barclays
+Bank PLC and a registered financial instruments firm regulated by the Financial Services Agency of Japan. Registered Number: Kanto Zaimukyokucho
+(kinsho) No. 143.
+Asia Pacific (excluding Japan): Barclays Bank PLC, Hong Kong Branch is distributing this material in Hong Kong as an authorised institution regulated
+by the Hong Kong Monetary Authority. Registered Office: 41/F, Cheung Kong Center, 2 Queen's Road Central, Hong Kong.
+All Indian securities-related research and other equity research produced by Barclays’ Investment Bank are distributed in India by Barclays Securities
+(India) Private Limited (BSIPL). BSIPL is a company incorporated under the Companies Act, 1956 having CIN U67120MH2006PTC161063. BSIPL is
+registered and regulated by the Securities and Exchange Board of India (SEBI) as a Research Analyst: INH000001519; Portfolio Manager INP000002585;
+Stock Broker INZ000269539 (member of NSE and BSE); Depository Participant with the National Securities & Depositories Limited (NSDL): DP ID: IN-DP-
+NSDL-478-2020; Investment Adviser: INA000000391. BSIPL is also registered as a Mutual Fund Advisor having AMFI ARN No. 53308. The registered office
+of BSIPL is at Nirlon Knowledge Park, 9th floor, Block B-6, Off. Western Express Highway, Goregaon (East), Mumbai – 400063, India. Telephone No: +91
+22 61754000 Fax number: +91 22 61754099. Any other reports produced by Barclays’ Investment Bank are distributed in India by Barclays Bank PLC,
+India Branch, an associate of BSIPL in India that is registered with Reserve Bank of India (RBI) as a Banking Company under the provisions of The
+17 December 2025 54
+Barclays | European Consumer Staples
+
+=== PAGE 55 ===
+
+Banking Regulation Act, 1949 (Regn No BOM43) and registered with SEBI as Merchant Banker (Regn No INM000002129) and also as Banker to the Issue
+(Regn No INBI00000950). Barclays Investments and Loans (India) Limited, registered with RBI as Non Banking Financial Company (Regn No RBI
+CoR-07-00258), and Barclays Wealth Trustees (India) Private Limited, registered with Registrar of Companies (CIN U93000MH2008PTC188438), are
+associates of BSIPL in India that are not authorised to distribute any reports produced by Barclays’ Investment Bank.
+This material is distributed in Singapore by the Singapore Branch of Barclays Bank PLC, a bank licensed in Singapore by the Monetary Authority of
+Singapore. For matters in connection with this material, recipients in Singapore may contact the Singapore branch of Barclays Bank PLC, whose
+registered address is 10 Marina Boulevard, #23-01 Marina Bay Financial Centre Tower 2, Singapore 018983.
+This material, where distributed to persons in Australia, is produced or provided by Barclays Bank PLC.
+This communication is directed at persons who are a “Wholesale Client” as defined by the Australian Corporations Act 2001.
+Please note that the Australian Securities and Investments Commission (ASIC) has provided certain exemptions to Barclays Bank PLC (BBPLC) under
+paragraph 911A(2)(l) of the Corporations Act 2001 from the requirement to hold an Australian financial services licence (AFSL) in respect of financial
+services provided to Australian Wholesale Clients, on the basis that BBPLC is authorised by the Prudential Regulation Authority of the United Kingdom
+(PRA) and regulated by the Financial Conduct Authority (FCA) of the United Kingdom and the PRA under United Kingdom laws. The United Kingdom
+has laws which differ from Australian laws. To the extent that this communication involves the provision of financial services by BBPLC to Australian
+Wholesale Clients, BBPLC relies on the relevant exemption from the requirement to hold an AFSL. Accordingly, BBPLC does not hold an AFSL.
+This communication may be distributed to you by either: (i) Barclays Bank PLC directly, (ii) Barrenjoey Markets Pty Limited (ACN 636 976 059,
+“Barrenjoey”), the holder of Australian Financial Services Licence (AFSL) 521800, a non-affiliated third party distributor, where clearly identified to you
+by Barrenjoey. Barrenjoey is not an agent of Barclays Bank PLC or (iii) such other non-affiliated third-party distributor(s) as may be clearly identified to
+you. Such non-affiliated third-party distributor(s) are not agents of Barclays Bank PLC.
+This material, where distributed in New Zealand, is produced or provided by Barclays Bank PLC. Barclays Bank PLC is not registered, filed with or
+approved by any New Zealand regulatory authority. This material is not provided under or in accordance with the Financial Markets Conduct Act of
+2013 (“FMCA”), and is not a disclosure document or “financial advice” under the FMCA. This material is distributed to you by either: (i) Barclays Bank
+PLC directly or (ii) Barrenjoey Markets Pty Limited (“Barrenjoey”), a non-affiliated third party distributor, where clearly identified to you by Barrenjoey.
+Barrenjoey is not an agent of Barclays Bank PLC. This material may only be distributed to “wholesale investors” that meet the “investment business” ,
+“investment activity” , “large” , or “government agency” criteria specified in Schedule 1 of the FMCA.
+Middle East: Nothing herein should be considered investment advice as defined in the Israeli Regulation of Investment Advisory, Investment Marketing
+and Portfolio Management Law, 1995 (“Advisory Law”). This document is being made to eligible clients (as defined under the Advisory Law) only.
+Barclays Israeli branch previously held an investment marketing license with the Israel Securities Authority but it cancelled such license on 30/11/2014
+as it solely provides its services to eligible clients pursuant to available exemptions under the Advisory Law, therefore a license with the Israel
+Securities Authority is not required. Accordingly, Barclays does not maintain an insurance coverage pursuant to the Advisory Law.
+This material is distributed in the United Arab Emirates (including the Dubai International Financial Centre) and Qatar by Barclays Bank PLC. Barclays
+Bank PLC in the Dubai International Financial Centre (Registered No. 0060) is regulated by the Dubai Financial Services Authority (DFSA). Principal
+place of business in the Dubai International Financial Centre: The Gate Village, Building 4, Level 4, PO Box 506504, Dubai, United Arab Emirates.
+Barclays Bank PLC-DIFC Branch, may only undertake the financial services activities that fall within the scope of its existing DFSA licence. Related
+financial products or services are only available to Professional Clients, as defined by the Dubai Financial Services Authority. Barclays Bank PLC in the
+UAE is regulated by the Central Bank of the UAE and is licensed to conduct business activities as a branch of a commercial bank incorporated outside
+the UAE in Dubai (Licence No.: 13/1844/2008, Registered Office: Building No. 6, Burj Dubai Business Hub, Sheikh Zayed Road, Dubai City) and Abu Dhabi
+(Licence No.: 13/952/2008, Registered Office: Al Jazira Towers, Hamdan Street, PO Box 2734, Abu Dhabi). This material does not constitute or form part
+of any offer to issue or sell, or any solicitation of any offer to subscribe for or purchase, any securities or investment products in the UAE (including the
+Dubai International Financial Centre) and accordingly should not be construed as such. Furthermore, this information is being made available on the
+basis that the recipient acknowledges and understands that the entities and securities to which it may relate have not been approved, licensed by or
+registered with the UAE Central Bank, the Dubai Financial Services Authority or any other relevant licensing authority or governmental agency in the
+UAE. The content of this report has not been approved by or filed with the UAE Central Bank or Dubai Financial Services Authority. Barclays Bank PLC in
+the Qatar Financial Centre (Registered No. 00018) is authorised by the Qatar Financial Centre Regulatory Authority (QFCRA). Barclays Bank PLC-QFC
+Branch may only undertake the regulated activities that fall within the scope of its existing QFCRA licence. Principal place of business in Qatar: Qatar
+Financial Centre, Office 1002, 10th Floor, QFC Tower, Diplomatic Area, West Bay, PO Box 15891, Doha, Qatar. Related financial products or services are
+only available to Business Customers as defined by the Qatar Financial Centre Regulatory Authority.
+Russia: This material is not intended for investors who are not Qualified Investors according to the laws of the Russian Federation as it might contain
+information about or description of the features of financial instruments not admitted for public offering and/or circulation in the Russian Federation
+and thus not eligible for non-Qualified Investors. If you are not a Qualified Investor according to the laws of the Russian Federation, please dispose of
+any copy of this material in your possession.
+Sustainable Investing Related Research: There is currently no globally accepted framework or definition (legal, regulatory or otherwise) of, nor
+market consensus as to what constitutes a ‘sustainable’ , ‘ESG’ , ‘green’ , ‘climate-friendly’ or an equivalent company, investment, strategy or
+consideration or what precise attributes are required to be eligible to be categorised by such terms. This means there are different ways to evaluate a
+company or an investment and so different values may be placed on certain sustainability credentials as well as adverse ESG-related impacts of
+companies and ESG controversies. The evolving nature of sustainable investing considerations, models and methodologies means it can be
+challenging to definitively and universally classify a company or investment under a sustainable investing label and there may be areas where such
+companies and investments could improve or where adverse ESG-related impacts or ESG controversies exist. The evolving nature of sustainable
+finance related regulations and the development of jurisdiction-specific regulatory criteria also means that there is likely to be a degree of divergence
+as to the interpretation of such terms in the market. We expect industry guidance, market practice, and regulations in this field to continue to evolve.
+Any information, data, image, or other content including from a third party source contained, referred to herein or used for whatsoever purpose by
+Barclays or a third party (“Information”), in relation to any actual or potential ‘ESG’ , ‘sustainable' or equivalent objective, issue, factor or consideration
+is not intended to be relied upon for ESG or sustainability classification, regulatory regime or industry initiative purposes (“ESG Regimes”), unless
+otherwise stated. Nothing in these materials, including any images included therein, is intended to convey, suggest or indicate that Barclays considers
+17 December 2025 55
+Barclays | European Consumer Staples
+
+=== PAGE 56 ===
+
+or represents any product, service, person or body mentioned in these materials as meeting or qualifying for any ESG or sustainability classification,
+label or similar standards that may exist under ESG Regimes. Barclays has not conducted any assessment of compliance with ESG Regimes. Parties are
+reminded to make their own assessments for these purposes.
+IRS Circular 230 Prepared Materials Disclaimer: Barclays does not provide tax advice and nothing contained herein should be construed to be tax
+advice. Please be advised that any discussion of U.S. tax matters contained herein (including any attachments) (i) is not intended or written to be used,
+and cannot be used, by you for the purpose of avoiding U.S. tax-related penalties; and (ii) was written to support the promotion or marketing of the
+transactions or other matters addressed herein. Accordingly, you should seek advice based on your particular circumstances from an independent tax
+advisor.
+© Copyright Barclays Bank PLC (2025). All rights reserved. No part of this publication may be reproduced or redistributed in any manner without the
+prior written permission of Barclays. Barclays Bank PLC is registered in England No. 1026167. Registered office 1 Churchill Place, London, E14 5HP .
+Additional information regarding this publication will be furnished upon request.
+BRCF2242
+17 December 2025 56
+Barclays | European Consumer Staples

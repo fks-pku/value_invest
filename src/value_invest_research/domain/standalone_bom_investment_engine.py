@@ -69,9 +69,58 @@ def validate_standalone_bom_playbook(profile: dict[str, Any]) -> dict[str, Any]:
             for field in ("title", "question", "support_rule", "refute_rule"):
                 if not str(node.get(field) or "").strip():
                     raise ValueError(f"{node_id} requires {field}")
+            render_mode = str(node.get("render_mode") or "").strip()
+            if render_mode:
+                if render_mode not in (
+                    "demand_party_list",
+                    "demand_quantity_matrix",
+                ):
+                    raise ValueError(
+                        f"{node_id} uses unsupported render_mode={render_mode!r}"
+                    )
+                if lens_id != "demand":
+                    raise ValueError(
+                        f"{render_mode} is only valid for a demand logic node"
+                    )
+                if render_mode == "demand_party_list":
+                    demand_parties = node.get("demand_parties")
+                    if not isinstance(demand_parties, dict):
+                        raise ValueError(f"{node_id} requires demand_parties")
+                    if list(demand_parties) != ["current", "potential_future"]:
+                        raise ValueError(
+                            f"{node_id} demand_parties must use current then "
+                            "potential_future"
+                        )
+                    for group_id in ("current", "potential_future"):
+                        parties = demand_parties.get(group_id)
+                        if not isinstance(parties, list) or not parties:
+                            raise ValueError(
+                                f"{node_id} demand_parties.{group_id} must be non-empty"
+                            )
+                        if any(not str(party).strip() for party in parties):
+                            raise ValueError(
+                                f"{node_id} demand_parties.{group_id} has empty party"
+                            )
+                if render_mode == "demand_quantity_matrix" and not str(
+                    node.get("classification_node_id") or ""
+                ).strip():
+                    raise ValueError(
+                        f"{node_id} requires classification_node_id"
+                    )
             nodes[node_id] = {**node, "lens_id": lens_id}
 
     for node_id, node in nodes.items():
+        if str(node.get("render_mode") or "") == "demand_quantity_matrix":
+            classification_node_id = str(
+                node.get("classification_node_id") or ""
+            )
+            classification_node = nodes.get(classification_node_id)
+            if not classification_node or str(
+                classification_node.get("render_mode") or ""
+            ) != "demand_party_list":
+                raise ValueError(
+                    f"{node_id} must reference a demand_party_list classification node"
+                )
         for downstream_id in node.get("downstream_node_ids") or []:
             if str(downstream_id) not in nodes:
                 raise ValueError(
@@ -235,6 +284,7 @@ def normalize_logic_state(
     )
     if set(support_claim_ids) & set(refute_claim_ids):
         raise ValueError("One claim cannot support and refute the same logic state")
+    node = index["nodes"][logic_node_id]
     return {
         "logic_node_id": logic_node_id,
         "as_of_date": _require_date(
@@ -251,12 +301,104 @@ def normalize_logic_state(
         "key_metrics": [
             row for row in raw.get("key_metrics") or [] if isinstance(row, dict)
         ],
+        "demand_quantity_rows": _normalize_demand_quantity_rows(
+            raw.get("demand_quantity_rows") or [],
+            node=node,
+            index=index,
+            claims_by_id=claims_by_id,
+        ),
         "evidence_gaps": _unique_strings(raw.get("evidence_gaps") or []),
         "next_validation": str(raw.get("next_validation") or "").strip(),
         "review_status": str(
             raw.get("review_status") or "gpt_verified"
         ).strip(),
     }
+
+
+def _normalize_demand_quantity_rows(
+    raw_rows: Iterable[dict[str, Any]],
+    *,
+    node: dict[str, Any],
+    index: dict[str, Any],
+    claims_by_id: dict[str, dict[str, Any]],
+) -> list[dict[str, Any]]:
+    if str(node.get("render_mode") or "") != "demand_quantity_matrix":
+        return []
+    raw_rows = list(raw_rows)
+    if not raw_rows:
+        return []
+    classification_node = index["nodes"][
+        str(node.get("classification_node_id") or "")
+    ]
+    current_parties = [
+        str(party).strip()
+        for party in dict(classification_node.get("demand_parties") or {}).get(
+            "current"
+        )
+        or []
+    ]
+    rows: list[dict[str, Any]] = []
+    for raw in raw_rows:
+        if not isinstance(raw, dict):
+            continue
+        forecast_group = _choice(
+            raw,
+            "forecast_group",
+            ("classified", "other"),
+            "classified",
+        )
+        demand_party = str(raw.get("demand_party") or "").strip()
+        if forecast_group == "classified" and demand_party not in current_parties:
+            raise ValueError(
+                "Classified demand quantity rows must use a current Q1 demander"
+            )
+        if forecast_group == "other" and demand_party:
+            raise ValueError("Other forecasts must not claim a Q1 demander mapping")
+        metric = str(raw.get("metric") or "").strip()
+        quantity = str(raw.get("quantity") or "").strip()
+        target_period = str(raw.get("target_period") or "").strip()
+        caveat = str(raw.get("caveat") or "").strip()
+        if not metric or not quantity or not target_period or not caveat:
+            raise ValueError(
+                "Demand quantity rows require metric, quantity, target_period, and caveat"
+            )
+        mapping_quality = _choice(
+            raw,
+            "mapping_quality",
+            ("direct", "proxy", "sample", "gap", "unmapped"),
+            "proxy",
+        )
+        claim_ids = _verified_claim_ids(
+            raw.get("claim_ids") or [], claims_by_id
+        )
+        if mapping_quality not in ("gap", "unmapped") and not claim_ids:
+            raise ValueError(
+                "Non-gap demand quantity rows require at least one verified claim"
+            )
+        rows.append(
+            {
+                "forecast_group": forecast_group,
+                "demand_party": demand_party,
+                "metric": metric,
+                "quantity": quantity,
+                "target_period": target_period,
+                "mapping_quality": mapping_quality,
+                "claim_ids": claim_ids,
+                "caveat": caveat,
+            }
+        )
+    covered_parties = {
+        str(row.get("demand_party") or "")
+        for row in rows
+        if row.get("forecast_group") == "classified"
+    }
+    if covered_parties != set(current_parties):
+        raise ValueError(
+            "Classified demand quantity rows must cover every current Q1 demander"
+        )
+    if not any(row.get("forecast_group") == "other" for row in rows):
+        raise ValueError("Demand quantity matrix requires at least one other forecast")
+    return rows
 
 
 def normalize_thesis_revision(
@@ -643,6 +785,25 @@ def validate_standalone_bom_investment_bundle(
             "logic_state_coverage",
             f"missing as-of logic states for {missing_states}",
         )
+    for node_id, node in index["nodes"].items():
+        if str(node.get("render_mode") or "") != "demand_quantity_matrix":
+            continue
+        candidates = sorted(
+            (
+                row
+                for row in state_rows
+                if str(row.get("logic_node_id") or "") == node_id
+                and str(row.get("as_of_date") or "") <= as_of_date
+            ),
+            key=lambda row: str(row.get("as_of_date") or ""),
+            reverse=True,
+        )
+        if not candidates or not candidates[0].get("demand_quantity_rows"):
+            _bundle_issue(
+                issues,
+                "demand_quantity_matrix",
+                f"latest as-of state for {node_id} requires demand quantity rows",
+            )
 
     entity_state_rows = []
     mapping_coordinate_directions: dict[tuple[str, str, str], str] = {}
@@ -912,6 +1073,26 @@ def _build_logic_node_view(
         )
     )
     current = candidates[0] if candidates else {}
+    demand_quantity_rows = []
+    for row in current.get("demand_quantity_rows") or []:
+        sources: dict[str, dict[str, Any]] = {}
+        for claim_id in row.get("claim_ids") or []:
+            claim = claims_by_id.get(str(claim_id) or "")
+            if not claim:
+                continue
+            source_id = str(claim.get("source_id") or "")
+            if source_id and source_id not in sources:
+                sources[source_id] = {
+                    "source_id": source_id,
+                    "source_title": str(
+                        claim.get("source_title") or source_id
+                    ),
+                    "source_url": str(claim.get("source_url") or ""),
+                    "published_at": str(claim.get("published_at") or ""),
+                }
+        demand_quantity_rows.append(
+            {**row, "sources": list(sources.values())}
+        )
     return {
         **node,
         "state": str(current.get("state") or "unresolved"),
@@ -941,6 +1122,7 @@ def _build_logic_node_view(
             }
         ),
         "entities": entities,
+        "demand_quantity_rows": demand_quantity_rows,
         "latest_revision": revision_candidates[0] if revision_candidates else {},
     }
 

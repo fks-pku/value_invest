@@ -1,0 +1,1666 @@
+
+
+=== PAGE 1 ===
+
+Aerospace & Defense
+Seth M. SeifmanAC
+(212) 622-5597
+seth.m.seifman@jpmorgan.com
+JPMA SEIFMAN <GO>
+J.P. Morgan Securities LLC
+North America Equity Research
+December 2025
+See the end pages of this presentation for analyst certification and important disclosures, including non-US analyst disclosures. 
+J.P. Morgan does and seeks to do business with companies covered in its research reports. As a result, investors should be aware that the firm may 
+have a conflict of interest that could affect the objectivity of this report. Investors should consider this report as only a single factor in making their 
+investment decision. 
+Aerospace and Defense
+2026 Outlook: Fundamentals Remain Encouraging for Most of A&D
+Alexander Ladd
+(212) 622-0077 
+Alex.ladd@jpmorgan.com
+Rocco J. Barbero
+(212) 622-2104 
+Rocco.j.barbero@jpmorgan.com
+
+=== PAGE 2 ===
+
+2
+A&D Outlook for 2026 
+The outlook for A&D remains mostly positive into 2026. This is especially true in Aerospace, given strong demand and a gradual supply increase that combine to yield 
+visible growth. There is a similar dynamic in Defense, though the outlook is more nuanced, at least in the US, given changing industry dynamics and political uncertainty. 
+Within Aero, we favor BA, SARO, and ATI, but still see potential in high fliers GE and HWM. In Defense, we lean toward LHX in products and we are downgrading LMT to 
+Neutral. We also favor LDOS in services. Happy holidays!       
+◼ Aero outlook remains quite positive . . . With multiple years of production in Boeing and Airbus backlogs, traffic growing MSD, and an aircraft fleet that is ~2 years 
+older on avg than pre-pandemic, the backdrop for comm’l aero manufacturers is favorable. At times, the market creates a zero-sum dynamic between OE and AM, 
+and eventually, rising aircraft production should boost retirements and dampen aftermarket growth; however, we do not expect this to play out in 2026 and believe 
+both OE and AM can continue to prosper, with a significant backlog of engine maintenance work in particular.
+◼ . . . And we favor BA, SARO, and ATI. BA remains a top pick and the opportunity is straightforward: the company must build and deliver more aircraft. 2026 cash 
+flow expectations have come down, but there should be a visible path to at least $10b by decade-end and getting there means grinding it out through rate increases 
+and improving Defense cash flow. SARO trades below 11x our 2027 adj EBITDA estimate, but engine maintenance demand is strong, SARO has new capacity 
+coming online, margin rate should expand, and mgmt will have cash to deploy. We could see all of this contributing to re-rating and there is ~35% upside to our 12-
+month target. ATI is wrapping 2025 on a high note following ups and downs, but we still see room to run, with multi-year A&D growth that should accelerate when 
+destocking ends later this year. ATI trades at discount to peers and we think the market can increasingly come to appreciate the visibility here.
+◼ 2025 was another banger for GE and HWM, but we remain constructive. In last year’s outlook, we noted that valuations were quite high for these two stocks . . . 
+and yet they have each gone on to appreciate by ~80% YTD vs 17% for the S&P 500. Some of this reflects higher valuations and P/Es north of 40x on 2026 induce 
+a bit of vertigo; nevertheless, the scale of multiple expansion is to some degree a function of larger estimate increases for these two companies. We see potential for 
+more beats and raises, which keep us OW despite multiple years of outperformance. This past year, GE showed the potential for Aftermarket to grow well in excess 
+of departures and while the difference is unlikely to be so stark going forward, we see Services growth remaining robust. HWM should benefit from capacity 
+additions for both aero engines and IGT and we like the fact that HWM can benefit from both OE and AM demand.
+◼ Defense has clear thematic tailwinds . . . Global defense spending is on the upswing as the US pulls back from commitments to defend allies who must now 
+spend more to protect themselves, especially from Russia (in Europe) and from China (in Asia). Allies in these regions are doing more to develop their own defense 
+industrial capabilities, but this takes time, and so US contractors have plenty of export opportunities. This new approach has not, however, resulted in a “peace 
+dividend” for the US, with the administration keen to spend on homeland defense (Golden Dome) and on deterring peer competitors (China). This resulted in a 
+reconciliation bill with roughly half a year of additional investment acct spending.
+
+=== PAGE 3 ===
+
+3
+A&D Outlook for 2026 (cont’d) 
+◼ . . . But it can be tricky as well. Despite a growing market, investors must be a bit more discriminating in Defense. This administration favors expanding the 
+industrial base beyond the traditional prime contractors and encouraging more company-funded investment, creating concerns about share loss and returns for 
+larger companies. As a result, the market has embraced smaller and non-traditional defense stocks, which we see in the fact that KTOS is the best performing stock 
+in our group YTD. The increased focus on non-traditional contractors makes sense, though it requires a different approach than defense investors are accustomed 
+to, with less focus on traditional valuation metrics, a greater need to understand individual programs, and a smaller role for cash return. Defense stocks are also 
+subject to changing and unpredictable US political landscape that includes increasingly irregular budgeting, gov’t shutdowns and award slowdowns, and an 
+upcoming midterm election.
+◼ We favor LHX among larger cap product companies; LDOS in services. We have 20% upside to our 12-month price target for LHX, which is the highest among 
+our larger cap defense stocks. The company seems poised for solid MSD growth in 2026 with a bit of margin expansion. Aerojet’s recovery is progressing and we 
+should see years of accelerated growth here while IMS seems underappreciated. Space is a key opportunity, though SDA awards have slipped and the LEO satellite 
+space is competitive. Our main fundamental concern is domestic radio budgets, but there is visible growth on the international side in the near-to-mid term. In 
+services, we highlight LDOS, where we see opportunity for growth and margin expansion in Defense Systems while expecting VBA profitability to hold up. Valuation 
+is appealing at only 15x next year’s adj EPS and there will be cash to deploy.
+
+=== PAGE 4 ===
+
+4
+J.P. Morgan Aero/Def Comp Sheet
+Source: Bloomberg Finance L.P, J.P. Morgan. Note: Prices as of December 18, 2025. 
+Valuation Metrics
+Price Symbol Rating Shares Market EPS P/E EV/EBITDA EV/Sales P/FCF Price Implied
+Company Out Cap (bn) CY24 CY25E CY26E CY24 CY25E CY26E CY25E CY26E CY25E CY26E CY25E CY26E Target Upside
+Aerospace/Integrated
+ATI $109.76 ATI OW 143.1 15.7 2.46 3.20 3.87 44.6x 34.3x 28.3x 20.2x 17.8x 3.8x 3.4x NM 32.7x $135 23%
+Boeing $208.27 BA OW 605.5 126.1 (20.29) (9.91) (0.93) NM NM NM -75.6x NM 1.9x 1.8x NM NM $245 18%
+Bombardiera C$ 224.81 BBD/B CT N 213.5 34.8 5.16 6.16 7.64 43.6x 36.5x 29.4x 12.4x 11.2x 4.1x 4.0x 34.9x 24.7x $215 -4%
+GE Aerospace $301.69 GE OW 1,073.5 323.9 4.60 6.05 6.95 NM 49.9x 43.4x 33.3x 30.0x 8.2x 7.4x 45.8x 41.1x $325 8%
+Howmet Aerospace $198.00 HWM OW 407.0 80.6 2.69 3.53 4.22 NM NM 46.9x 36.2x NM 10.4x 9.4x 65.1x NM $227 15%
+RTX $178.29 RTX OW 1,358.4 242.2 5.73 6.20 6.55 31.1x 28.7x 27.2x 20.3x 19.1x 3.2x 3.0x 33.4x 28.6x $200 12%
+StandardAero $27.93 SARO OW 334.4 9.3 0.04 0.86 1.17 NM 32.6x 23.9x 14.1x 12.8x 1.9x 1.8x NM 34.5x $38 36%
+Textron $87.96 TXT N 179.2 15.8 5.47 6.15 6.60 16.1x 14.3x 13.3x 10.9x 10.6x 1.2x 1.2x 17.6x 16.6x $88 0%
+TransDigm $1,262.78 TDG N 57.8 73.0 34.65 37.79 43.29 36.4x 33.4x 29.2x 22.7x 16.4x 10.0x 8.7x 48.6x 31.7x $1,435 14%
+$921 34.4x 32.8x 30.2x 21.3x 16.8x 5.0x 4.5x 40.9x 30.0x
+Defense (Large Cap)
+General Dynamics $337.34 GD OW 272.6 92.0 13.64 15.40 17.10 24.7x 21.9x 19.7x 15.6x 14.4x 1.9x 1.8x 23.1x 21.1x $385 14%
+Huntington Ingalls $322.63 HII N 39.4 12.7 13.93 15.15 17.65 23.2x 21.3x 18.3x 15.3x 13.5x 1.2x 1.2x 20.9x 20.7x $342 6%
+L3Harris Technologies $282.72 LHX OW 188.1 53.2 13.11 10.70 12.75 21.6x 26.4x 22.2x 16.6x 15.5x 3.0x 2.8x 20.4x 17.3x $340 20%
+Lockheed Martin $470.14 LMT N 232.8 109.4 22.07 22.30 29.35 21.3x 21.1x 16.0x 13.4x 11.2x 1.7x 1.6x 16.6x 17.3x $515 10%
+Northrop Grumman $559.52 NOC N 144.0 80.6 28.26 26.35 28.80 19.8x 21.2x 19.4x 15.7x 14.7x 2.2x 2.1x 24.9x 22.7x $640 14%
+$348 22.1x 22.4x 19.1x 15.3x 13.9x 2.0x 1.9x 21.2x 19.8x
+Defense Services
+Amentum Holdings $28.69 AMTM N 243.3 7.0 2.02 2.25 2.59 14.2x 12.7x 11.1x 9.2x 8.9x 0.7x 0.8x 13.5x 12.4x $34 19%
+Booz Allen Hamilton $86.01 BAH UW 128.2 11.0 6.06 5.85 5.91 14.2x 14.7x 14.6x 8.2x 8.4x 0.9x 0.9x 11.9x 13.1x $90 5%
+CACI International $548.96 CACI OW 22.5 12.4 24.23 27.27 29.55 22.7x 20.1x 18.6x 14.9x 13.7x 1.7x 1.6x 20.3x 16.8x $645 17%
+Leidos $181.19 LDOS OW 130.0 23.6 10.24 11.85 12.50 17.7x 15.3x 14.5x 11.6x 11.4x 1.6x 1.6x 17.1x 15.3x $230 27%
+Science Applications International $100.74 SAIC N 45.2 4.6 9.12 10.10 9.95 11.0x 10.0x 10.1x 9.8x 9.4x 0.9x 0.9x 7.4x 7.0x $125 24%
+$52 16.4x 15.0x 14.4x 11.1x 10.7x 1.3x 1.2x 14.2x 13.1x
+Defense (Smid Cap)
+Elbit Systems $541.16 ESLT N 47.7 25.8 8.76 12.30 14.30 NM 44.0x 37.8x 27.3x 20.5x 3.3x 3.0x NM NM $580 7%
+Firefly Aerospace $20.07 FLY US OW 146.5 2.9 NA (2.79) (1.06) NA NM NM NM NM 12.7x 4.8x NM NM $28 40%
+Kratos $71.40 KTOS N 164.9 11.8 0.49 0.50 0.66 NM NM NM 93.5x 69.5x 8.3x 7.0x NM NM $83 16%
+Leonardo DRS $33.17 DRS N 268.4 8.9 0.93 1.10 1.21 35.5x 30.2x 27.4x 20.2x 18.0x 2.5x 2.3x 40.2x 35.4x $40 21%
+OSI Systems $266.98 OSIS N 17.4 4.6 7.38 8.62 9.64 36.2x 31.0x 27.7x 17.5x 15.7x 2.8x 2.6x NM 15.6x $255 -4%
+Mercury Systems $68.88 MRCY N 58.8 4.0 (0.02) 0.82 1.27 NM NM NM 31.9x 25.4x 4.7x 4.3x 42.4x 40.0x $72 5%
+Voyager $23.97 VOYG OW 40.2 1.0 (10.51) (2.55) (0.92) NM NM NM NM NM 5.0x 3.6x NM NM $43 79%
+Average/Total: $30 35.8x 30.6x 27.6x 40.8x 32.1x 4.7x 4.0x 41.3x 30.3x
+S&P 500 (Consensus) $6,775 SPX 266.34 309.05 351.21 25.4x 21.9x 19.3x
+A & D discount/(premium) -11% -26% -28%
+
+=== PAGE 5 ===
+
+5
+J.P. Morgan Aero/Def Comp Sheet (cont’d)
+Source: Bloomberg Finance L.P, J.P. Morgan. Note: Prices as of December 18, 2025. 
+Other Financial Metrics
+JPM Consensus JPM Consensus FCF (per share) Sales (bn) Operating Margin Dividend Payout Market Net Debt EV Net Debt / YTD
+Company FY1 EPS FY1 EPS FY2 EPS FY2 EPS CY25E CY26E CY24 CY25E CY26E CY24 CY25E CY26E Yield Ratio '23 Cap '25 EBITDA Return
+Aerospace/Integrated
+ATI 3.20 3.18 3.87 3.90 2.14 3.36 4.4 4.6 5.0 13.1% 14.9% 15.9% 0.0% 0.0% 15.7 1.6 17.3 1.8x 99%
+Boeing (9.84) (9.46) (0.88) 1.94 (2.73) 2.10 66.5 88.1 91.4 -16.1% -4.7% 3.2% 0.0% 0.0% 126.1 38.5 164.6 (17.7x) 18%
+Bombardiera 6.16 6.16 7.64 7.39 6.43 9.10 8.7 9.5 9.9 10.1% 11.2% 12.0% 0.0% 0.0% 34.8 4.4 39.2 1.4x 129%
+GE Aerospace 6.20 6.24 7.00 7.16 6.59 7.35 35.1 40.3 44.7 20.7% 21.5% 21.9% 0.5% 31.3% 323.9 8.0 331.9 0.8x 82%
+Howmet Aerospace 3.69 3.70 4.40 4.45 3.04 3.69 7.4 8.0 8.9 22.0% 25.3% 26.4% 0.2% 17.8% 80.6 2.8 83.4 1.2x 82%
+RTX 6.20 6.20 6.55 6.77 5.33 6.24 80.7 87.1 92.5 11.8% 12.3% 12.4% 1.5% 47.4% 242.2 33.1 275.3 2.4x 57%
+StandardAero 0.86 0.85 1.17 1.20 0.55 0.81 5.2 6.0 6.4 7.7% 9.3% 10.1% 0.0% 0.0% 9.3 2.1 11.5 2.6x 13%
+Textron 6.15 6.12 6.60 6.86 5.00 5.31 13.7 14.8 15.4 7.9% 8.6% 7.4% 0.1% 1.5% 15.8 2.3 18.0 1.4x 15%
+TransDigm 39.95 39.05 46.45 45.83 25.98 39.83 8.2 9.1 10.4 49.0% 49.5% 49.3% 0.0% 0.0% 73.0 17.8 90.7 4.4x 7%
+229.9 267.5 284.6 14.0% 16.4% 17.6% 0.2% 9.8% 61%
+Defense Primes
+General Dynamics 15.40 15.38 17.34 17.25 14.62 15.96 47.7 52.0 54.8 10.1% 10.3% 10.2% 1.8% 44.0% 92.0 5.5 97.5 0.9x 31%
+Huntington Ingalls 15.15 15.15 17.65 17.19 15.43 15.56 11.5 12.1 12.7 4.6% 5.4% 5.9% 1.7% 39.6% 12.7 2.4 15.1 2.4x 75%
+L3Harris Technologies 10.70 10.62 12.75 12.37 13.87 16.32 21.3 22.0 23.2 15.5% 15.8% 16.0% 1.7% 36.6% 53.2 12.1 65.3 3.1x 37%
+Lockheed Martin 21.85 22.16 29.95 29.21 28.29 27.18 71.0 74.5 78.1 9.8% 10.3% 12.1% 2.9% 62.5% 109.4 15.2 124.7 1.6x 0%
+Northrop Grumman 26.35 26.00 28.80 28.96 22.46 24.67 41.0 41.8 44.0 10.6% 10.8% 10.9% 1.7% 32.7% 80.6 13.3 93.8 2.2x 21%
+192.7 202.5 212.8 10.1% 10.5% 11.0% 2.0% 43.1% 21%
+Defense Services
+Amentum Holdings 2.25 2.40 2.59 2.73 2.12 2.32 13.9 14.4 14.2 3.3% 3.3% 5.0% 0.0% 0.0% 7.0 3.7 10.7 3.2x 36%
+Booz Allen Hamilton 5.60 5.56 6.25 5.99 7.24 6.56 11.7 11.6 11.6 11.4% 9.1% 8.6% 2.6% 36.3% 7.0 3.1 10.1 2.5x -32%
+CACI International 28.05 28.25 31.05 31.47 27.00 32.61 8.1 9.0 9.5 9.1% 9.0% 9.1% 0.0% 0.0% 12.4 2.9 15.3 2.8x 36%
+Leidos 11.85 11.80 12.50 12.35 10.57 11.84 16.7 17.2 17.9 11.0% 12.2% 12.1% 0.9% 16.8% 23.6 4.2 27.7 1.7x 27%
+Science Applications International 10.10 9.89 9.95 9.67 13.67 14.47 7.5 7.3 7.5 7.5% 7.1% 7.6% 1.5% 16.2% 4.6 2.3 6.8 3.3x -9%
+57.8 59.5 60.7 8.5% 8.1% 8.5% 1.0% 13.9% 16%
+Defense (Smid Cap)
+Elbit Systems 12.30 12.17 14.30 14.45 10.31 10.66 6.8 7.9 8.8 8.1% 9.2% 10.1% 0.5% 30.8% 25.8 0.5 26.3 0.5x 111%
+Firefly Aerospace (2.79) (2.59) (1.06) (1.22) (2.46) (1.39) 0.1 0.2 0.4 -341.7% -159.3% -36.6% 0.0% 0.0% 2.9 (1.0) 2.0 NM na
+Kratos 0.50 0.53 0.66 0.75 (0.60) (0.29) 1.1 1.3 1.6 2.6% 2.3% 3.0% 0.0% 0.0% 11.8 (0.6) 11.2 (4.9x) 171%
+Leonardo DRS 1.10 1.10 1.21 1.26 0.82 0.94 3.2 3.6 3.8 9.1% 9.6% 7.4% 1.1% 38.6% 8.9 0.0 8.9 0.1x 4%
+OSI Systems 10.50 10.42 11.25 11.39 4.25 17.16 1.5 1.7 1.9 12.3% 12.7% 13.6% 0.0% 0.0% 4.6 0.2 4.8 0.6x 59%
+Mercury Systems 0.96 1.01 1.52 1.50 1.63 1.72 0.9 0.9 1.0 -6.8% -1.5% -3.9% 0.0% 0.0% 4.0 0.3 4.3 2.1x 64%
+Voyager (2.55) (1.94) (0.92) (1.15) (4.07) (5.63) 0.1 0.2 0.2 -33.6% -56.7% -33.4% 0.0% 0.0% 1.0 (0.1) 0.8 NM na
+Average/Total: 13.8 15.8 17.7 -1.4% -4.1% -5.7% 0.2% 9.9% 185%
+S&P 500 1.2% 17%
+Pension Adjustments
+Pension Adjusted EPS (PAEPS) P/PAEPS EBITDAP (bn) EV/EBITDAP Pension Adj FCF P/PAFCF Pension 
+NPVCompany CY24 CY25E CY26E CY24 CY25E CY26E CY24 CY25E CY26E CY24 CY25E CY26E CY25E CY26E CY25E CY26E
+Huntington Ingalls 16.54 18.21 20.83 19.5x 17.7x 15.5x 1.0 1.0 1.1 15.2x 14.6x 13.1x 15.01 15.35 21.5x 21.0x $6 
+Lockheed Martin 16.50 18.08 26.04 28.5x 26.0x 18.1x 6.9 7.7 9.7 17.7x 15.9x 12.6x 21.62 22.83 21.7x 20.6x $12 
+L3Harris Technologies 12.75 10.47 12.60 22.2x 27.0x 22.4x 3.6 3.9 4.1 17.8x 16.8x 15.7x 13.65 16.15 20.7x 17.5x $3 
+Northrop Grumman 24.54 21.90 24.84 22.8x 25.6x 22.5x 5.7 5.7 6.3 16.2x 16.2x 14.7x 19.78 23.27 28.3x 24.0x $10 
+RTX 4.36 4.93 5.53 NM 36.2x 32.2x 11.7 12.8 13.9 23.4x 21.3x 19.7x 4.85 5.87 36.8x 30.4x $2 
+Notes: J.P. Morgan ratings: OW = Overweight; N = Neutral; UW = Underweight; NR = Not Rated. Price targets for Dec -2026. SAIC FY ends in Jan.; TGI and BAH FY ends in March; CACI and MRCY end June; TDG ends 
+Sept. 
+a. BBD stock price in C$ converted based on current exchange rate to calculate ratios. All EPS calculations consistent with B loomberg consensus. Sources: Bloomberg Finance L.P., company reports, and J.P. Morgan estimates. 
+
+
+=== PAGE 6 ===
+
+6
+Source: Bloomberg Finance L.P. (As of 12/18/25) 
+Defense Primes Gov’t Services
+◼ Comm’l Aero stocks have outperformed on avg during 2025
+◼ Exposure to engine manufacturing exposure was a common characteristic among the outperformers 
+◼ BA had a stronger 1H but gave some back as 2026 cash flow declined 
+◼ Investors came into 2025 skeptical on Defense but reconciliation bill, Golden Dome plans helped support several stocks   
+◼ DOGE proved quite company specific amid universally negative sentiment into the year
+◼ Shipbuilding money drove dramatic sentiment reversal for HII and most defense primes ended up outperforming 
+◼ More established SMID defense companies performed well; newer companies still getting their sea legs 
+◼ Bombardier led bizjet stocks again as the company has executed well and improved its balance sheet
+2025 Subsegment Returns: Most of Our A&D Stocks Have Outperformed
+
+
+=== PAGE 7 ===
+
+7
+SMID Defense
+Comm’l Aero
+Source: Bloomberg Finance L.P. (As of 12/18/25). FLY & VOYG performance relative to IPO price 
+Bizjets
+2025 Subsegment Returns
+
+
+=== PAGE 8 ===
+
+8
+Bull and Bear Cases for Commercial Aero 
+◼ Aero remains an end market with structural growth 
+◼ Large backlogs provide visibility for OEMs
+◼ Aircraft production rates beginning to increase more 
+consistently
+◼ Older fleet, further shortfalls in new aircraft 
+production can benefit aftermarket players
+◼ Several players in the industry retain pricing power
+◼ There is pent up demand for engine maintenance 
+that can drive volume growth well ahead of ASKs
+◼ There are no imminent plans to launch a new 
+comm’l aircraft  
+◼ Now that traffic has recovered, the industry is more  
+exposed to potential demand shock (geopolitical, 
+macro, etc)
+◼ Supply chain challenges remain and can disrupt the 
+ramp at any time
+◼ A significant pick up in retirements can cut into 
+growth and pricing power in the aftermarket  
+◼ Several US aero stocks trade at exceptionally rich 
+valuations by historical standards  
+◼ Market may have grown complacent regarding aero 
+prospects   
+Bull Bear
+◼ There is a zero-sum element in bull-bear points between OE and AM  
+◼ But there are periods when both have done well: 2004-2007, for example   
+
+=== PAGE 9 ===
+
+9
+2026 Air Capacity Outlook by Geography, Our Base Case
+Source: OAG Schedules Analyzer, IATA, CAAC, ICAO, JPM estimates. 2026 estimates are by JPM A&D team and may differ vs airline teams.  
+We Project Mid-Single-Digit Global ASK Growth in 2026 
+◼ Our 5% estimate depends on adequate aircraft supply and sufficient macro support on the demand side 
+◼ Asia-Pac / China should contribute most to global growth, with faster international growth
+◼ We see ~5% growth in Europe and GTF availability should help
+◼ North America has lagged on ASK growth and this should remain the case in 2026 
+◼ IATA released 2026 global ASK growth forecast for 4.7% and lowered its 2025 forecast to 4.9% from 5.2%; YTD growth is 5.1%
+◼ The global load factor remains elevated at 84.6% in Oct 2025, which is 260 bps above Oct 2019
+◼ Increasing demand (i.e. traffic) requires more aircraft, as there is little empty space in the existing fleet  
+◼ Covid recovery has been impressive but does not suggest quick return to prior trajectory, perhaps due to supply challenges
+Actual global capacity (ASKs, bns) vs 2019 YoY Growth
+2019A 2020A 2021A 2022A 2023A 2024A 2025E 2026E 20A 21A 22A 23A 24A 25E 26E 20A 21A 22A 23A 24A 25E 26E
+JPMe JPMe
+N.America 2,466 1,240 1,619 2,151 2,453 2,591 2,656 2,722 50% 66% 87% 99% 105% 108% 110% -50% 31% 33% 14% 6% 2% 3%
+Europe 2,598 1,059 1,232 2,090 2,441 2,684 2,837 2,976 41% 47% 80% 94% 103% 109% 115% -59% 16% 70% 17% 10% 6% 5%
+Asia Pac ex China 2,446 1,072 874 1,415 2,016 2,267 2,395 2,551 44% 36% 58% 82% 93% 98% 104% -56% -18% 62% 43% 12% 6% 7%
+China 1,426 867 903 676 1,258 1,424 1,484 1,547 61% 63% 47% 88% 100% 104% 108% -39% 4% -25% 86% 13% 4% 4%
+M.East 691 311 339 559 690 732 779 817 45% 49% 81% 100% 106% 113% 118% -55% 9% 65% 23% 6% 6% 5%
+Lat America 745 351 470 689 775 821 862 899 47% 63% 93% 104% 110% 116% 121% -53% 34% 47% 12% 6% 5% 4%
+Africa 364 199 215 313 339 370 396 423 55% 59% 86% 93% 101% 109% 116% -45% 8% 46% 8% 9% 7% 7%
+FY per OAG 10,737 5,099 5,652 7,894 9,971 10,889 11,410 11,936 47% 53% 74% 93% 101% 106% 111% -53% 11% 40% 26% 9% 5% 5%
+
+=== PAGE 10 ===
+
+10
+Global ASK Composition by Region, 2025 YTD
+Source (for all): OAG Schedule Analyzer, IATA, ICAO.
+Air Traffic and Capacity Trends 
+Load Factor, Oct-19 vs Oct-25
+Global Traffic, 1970-2025F IATA RPK Growth by Month, Jan-25 – Oct-25
+本报告来源于三个皮匠报告站（www.sgpjbg.com）,由用户Id:865822下载,文档Id:1023380,下载日期:2026-01-04
+
+=== PAGE 11 ===
+
+11
+JPM Delivery Forecast
+Source: Company reports and JPM estimates. Airbus estimate from JPM analyst David Perry; Embraer estimates from JPM analyst Marcelo Motta; Freight includes some 747s, 767s and 
+777s. 737 includes P-8. 
+2010 2011 2012 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025E 2026E 2027E 2028E 2029E 2030E
+Boeing
+737 376 372 415 440 485 495 490 529 580 127 43 263 387 396 265 442 500 585 625 660 700 
+747 0 9 31 24 19 18 9 14 6 7 5 7 5 1 0 0 0 0 0 0 0 
+767 12 20 26 21 6 16 13 10 27 43 30 32 33 32 18 27 20 10 10 10 10 
+777 74 73 83 98 99 98 99 74 48 45 26 24 24 26 14 35 20 28 42 49 52 
+787 0 3 46 65 114 135 137 136 145 158 53 14 31 73 51 85 96 115 125 135 150 
+Subtotal 462 477 601 648 723 762 748 763 806 380 157 340 480 528 348 589 636 738 802 854 912 
+Airbus
+A220 0 0 0 0 0 0 7 17 20 48 38 50 53 68 75 90 105 125 145 160 170 
+A320 Family 401 421 455 493 490 491 545 558 626 642 446 483 516 571 602 600 680 730 795 865 891 
+330/340 87 87 101 108 108 103 66 67 49 53 19 18 32 32 32 40 43 44 44 49 54 
+350 0 0 0 0 1 14 49 78 93 112 59 55 60 64 57 60 76 94 114 134 138 
+380 18 26 30 25 30 27 28 15 12 8 4 5 0 0 0 0 0 0 0 0 0 
+Subtotal 510 534 588 626 629 635 688 718 800 863 566 611 661 735 766 790 904 993 1,098 1,208 1,253 
+E190/5 75 92 85 62 29 17 18 22 22 22 12 21 22 39 47 47 55 58 60 60 60 
+Subtotal 75 92 85 62 29 17 25 39 22 22 12 21 22 39 47 47 55 58 60 60 60 
+Narrowbody 852 885 955 995 1,004 1,003 1,060 1,126 1,248 839 539 817 978 1,074 989 1,179 1,340 1,498 1,625 1,745 1,821 
+Widebody 195 218 319 341 377 411 401 394 380 426 196 155 185 228 172 247 255 291 335 377 404 
+Total 1,047 1,103 1,274 1,336 1,381 1,414 1,461 1,520 1,628 1,265 735 972 1,163 1,302 1,161 1,426 1,595 1,789 1,960 2,122 2,225 
+Growth -1.3% 5.3% 15.5% 4.9% 3.4% 2.4% 3.3% 4.0% 7.1% -22.3% -41.9% 32.2% 19.7% 12.0% -10.8% 22.8% 11.9% 12.2% 9.6% 8.3% 4.9%
+Narrowbody Share
+Boeing 44% 42% 43% 44% 48% 49% 46% 47% 46% 15% 8% 32% 40% 37% 27% 37% 37% 39% 38% 38% 38%
+Airbus 47% 48% 48% 50% 49% 49% 52% 51% 52% 82% 90% 65% 58% 59% 68% 59% 59% 57% 58% 59% 58%
+Embraer 9% 10% 9% 6% 3% 2% 2% 2% 2% 3% 2% 3% 2% 4% 5% 4% 4% 4% 4% 3% 3%
+Total 100% 100% 100% 100% 100% 100% 100% 100% 100% 100% 100% 100% 100% 100% 100% 100% 100% 100% 100% 100% 100%
+Widebody Share
+Boeing 44% 48% 58% 61% 63% 65% 64% 59% 59% 59% 58% 50% 50% 58% 48% 60% 53% 53% 53% 51% 52%
+Airbus 54% 52% 41% 39% 37% 35% 36% 41% 41% 41% 42% 50% 50% 42% 52% 40% 47% 47% 47% 49% 48%
+Total 98% 100% 99% 100% 100% 100% 100% 100% 100% 100% 100% 100% 100% 100% 100% 100% 100% 100% 100% 100% 100%
+Total Freighters 12 29 57 45 25 34 22 24 33 50 51 73 71 42 23 33 20 10 10 10 10 
+Total Pax 1,035 1,074 1,217 1,291 1,356 1,380 1,439 1,496 1,595 1,215 684 899 1,092 1,260 1,138 1,393 1,575 1,779 1,950 2,112 2,215 
+Total 1,047 1,103 1,274 1,336 1,381 1,414 1,461 1,520 1,628 1,265 735 972 1,163 1,302 1,161 1,426 1,595 1,789 1,960 2,122 2,225 
+
+=== PAGE 12 ===
+
+12
+Backlogs Support Considerable Production Growth
+Source: Company Reports. 2025 YTD Orders and Backlog is through November. 
+BACKLOG 2019 2020 2021 2022 2023 2024 2025 YTD
+Airbus
+A220 495 487 475 527 600 511 471
+A319 40 81 68 83 44 39 27
+A320 3,014 2,781 2,338 2,325 2,228 1,972 1,773
+A321 3,012 3,023 3,403 3,685 4,923 5,241 5,339
+A330 319 298 312 215 180 221 291
+A350 573 508 458 404 621 705 776
+A380 9 5 0 0 0 0 0
+Total 7,462 7,183 7,054 7,239 8,596 8,689 8,677
+Boeing
+737 4,531 4,018 4,090 4,312 4,775 4,769 4,746
+747 17 15 6 1 0 0 0
+767 54 86 108 106 103 35 21
+777 383 365 396 440 514 562 687
+787 543 512 488 571 797 800 1,069
+Total 5,528 4,996 5,088 5,430 6,189 6,166 6,523
+Boeing & Airbus Backlog by Aircraft Platform, 2019-2025 YTD
+Boeing & Airbus Orders by Aircraft Platform, 2023, 2024, and 2025 YTD
+
+
+=== PAGE 13 ===
+
+13
+Source (for all): Cirium as of 11/30/25. Reflects in service, passenger aircraft only.
+*Note: 737 is indexed to 2018, given MAX groundings in 2019.
+Narrowbody Fleet Avg Age
+◼ Higher 737 production allowing for more growth in the NB fleet this year
+◼ Production is still lagging traffic, however, and the avg age still increased in 2025; it is up nearly a full year to 11.6 since YE23
+◼ This is above the mid-2000s, after 9-11, when a recession and SARS pushed down new aircraft production
+In-Service Fleet, Narrowbodies
+Narrowbody Fleet Age Continues to Rise Despite Production Improvement
+Narrowbody Fleet by Age
+2018 2019 2020 2021 2022 2023 2024 2025 YTD
+0 - 5 38% 32% 36% 34% 31% 28% 25% 24%
+6 - 10 25% 27% 28% 28% 28% 28% 28% 27%
+11 - 15 16% 19% 18% 19% 20% 21% 23% 23%
+16 - 20 14% 14% 10% 10% 11% 11% 12% 14%
+21 - 25 4% 6% 5% 6% 8% 8% 8% 7%
+26 - 30 3% 3% 2% 2% 2% 2% 2% 3%
+31 - 35 0% 0% 0% 1% 1% 1% 1% 1%
+36 - 40 0% 0% 0% 0% 0% 0% 0% 0%
+> 40 0% 0% 0% 0% 0% 0% 0% 0%
+Total 100% 100% 100% 100% 100% 100% 100% 100%
+> 20 yrs 8% 9% 8% 9% 11% 12% 11% 12%
+< 20 yrs 92% 91% 92% 91% 89% 88% 89% 88%
+2018 2019 2020 2021 2022 2023 2024 2025 YTD 25' indexed 
+to 19'
+717 145 142 87 86 98 107 89 96 68%
+737 Family 7,184 6,710 5,360 6,187 6,540 7,226 7,345 7,712 107%
+757 355 335 156 207 204 227 208 180 54%
+A220 (Cseries) 57 99 118 176 202 263 295 385 389%
+A320 Family 7,709 8,118 6,151 7,317 8,205 8,738 9,073 9,392 116%
+MD-80/90 271 154 59 72 60 58 54 63 41%
+E190/195 663 633 450 533 577 656 638 655 103%
+Others 205 164 132 126 110 98 103 97 59%
+Narrowbodies 16,589 16,355 12,513 14,704 15,996 17,373 17,805 18,580 114%
+
+
+=== PAGE 14 ===
+
+14
+Source (for all): Cirium as of 11/30/25. Reflects in service, passenger aircraft only.
+◼ Thus far in 2025, the WB fleet has grown to > 4,500 aircraft, or 97% of YE19 
+◼ WB fleet age has risen, too, and it now stands at 11.8 years, which is above the 2011 peak, before 787 and A350 ramped
+◼ 787, A350, 777 ramps pushed WB avg age down to 9.5 years in late 2010s
+Widebody Avg Age Is Also Still on the Rise
+Widebody Fleet by AgeIn-Service Fleet, Widebodies
+2018 2019 2020 2021 2022 2023 2024 2025 YTD
+0 - 5 43% 39% 49% 41% 32% 26% 22% 17%
+6 - 10 20% 23% 24% 30% 34% 37% 37% 37%
+11 - 15 13% 14% 12% 12% 14% 16% 19% 23%
+16 - 20 15% 13% 8% 8% 8% 9% 10% 10%
+21 - 25 6% 8% 6% 7% 8% 9% 8% 8%
+26 - 30 3% 3% 2% 2% 2% 2% 3% 3%
+31 - 35 0% 0% 0% 0% 1% 1% 1% 1%
+36 - 40 0% 0% 0% 0% 0% 0% 0% 0%
+> 40 0% 0% 0% 0% 0% 0% 0% 0%
+Total 100% 100% 100% 100% 100% 100% 100% 100%
+> 20 yrs 9% 11% 8% 10% 11% 12% 12% 12%
+< 20 yrs 91% 89% 92% 90% 89% 88% 88% 88%
+Widebody Fleet Avg Age
+2018 2019 2020 2021 2022 2023 2024 2025 YTD 25' indexed to 
+19'
+A330/A340 1,381 1,312 740 851 936 1,078 1,085 1,118 81%
+A350 230 330 318 375 436 551 619 672 204%
+A380 230 234 23 80 129 156 163 176 75%
+747 170 149 20 43 43 52 47 49 33%
+767 436 409 205 256 231 229 217 220 54%
+777 1,270 1,259 845 872 988 1,070 1,073 1,072 85%
+787 739 883 809 882 952 1,058 1,098 1,195 135%
+Others 46 35 19 19 16 13 16 18 51%
+Widebodies 4,502 4,611 2,979 3,378 3,731 4,207 4,318 4,520 97%
+
+
+=== PAGE 15 ===
+
+15
+Source (for all): Cirium as of 11/30/25. Reflects in-storage passenger aircraft.
+◼ NB and WB parked fleets remain above the levels we observed prior to the pandemic 
+◼ GTF issues have kept the narrowbody parked fleet elevated and steady 
+◼ Roughly one-third of stored NBs (~760) are GTFs, with operators eager for returns to service 
+◼ Widebodies in storage are closer to pre-pandemic level and continued declining in 2025   
+GTF Keeping Parked Fleet Elevated 
+Narrowbody Parked Fleet Widebody Parked Fleet
+0-5 6-10 11-15 16-20 21-25 26-30 31-35 36-40 41+ Total
+Narrowbodies 524 443 266 310 183 232 235 50 14 2,257
+%age of Fleet 23% 20% 12% 14% 8% 10% 10% 2% 1% 100%
+Widebodies 8 41 74 131 99 81 36 12 2 484
+%age of Fleet 2% 8% 15% 27% 20% 17% 7% 2% 0% 100%
+2025 YTD Narrowbody & Widebody Parked Fleet by Age
+
+
+=== PAGE 16 ===
+
+16
+Source: Cirium, company reports, J.P. Morgan estimates. 
+◼ With near 5% annual fleet growth, our delivery forecasts imply removals reach “normal” ~3% level around 2028 
+◼ Our fleet growth is similar to 4.5% in the 10 years to 2018 and 4.2% in the 40 years to 2018 
+◼ Removals are an aftermarket headwind but in the coming years, they may not ever reach the 4% avg for 2011-15
+◼ NB fleet has grown faster than WB fleet historically with fewer removals (% of fleet) and we assume this continues 
+◼ 2026 deliveries should reach ~7% of the fleet for NBs and ~5% for WBs, still below the 2018 level, though fleet is much older   
+◼ Given high load factor, airlines will likely need more seats to accommodate growth; there are few empty seats on aircraft  
+◼ Return of ~760 GTF powered aircraft should limit net removals from the fleet over 2026-27 
+◼ Any significant slowdown in traffic growth should boost retirements and vice-versa 
+Retirements Likely to Pick Up . . . But Gradually . . . 
+Comm’l Aero Supply & Demand Model, 2018-30E
+2018 2019 2020 2021 2022 2023 2024 2025E 2026E 2027E 2028E 2029E 2030E
+Fleet at Year End 20,814 20,820 15,449 18,052 19,674 21,580 22,076 23,137 24,249 25,366 26,535 27,705 28,900 
+Deliveries 1,599 1,215 684 899 1,092 1,260 1,134 1,393 1,575 1,779 1,950 2,112 2,215 
+Net Removals / (Additions) 524 1,209 6,055 (1,704) (530) (646) 638 332 463 662 781 942 1,020 
+Delivery Contribution (%) 8.1% 5.8% 3.3% 5.8% 6.0% 6.4% 5.3% 6.3% 6.8% 7.3% 7.7% 8.0% 8.0%
+Net Removal Contribution (%) 2.7% 5.8% 29.1% (11.0%) (2.9%) (3.3%) 3.0% 1.5% 2.0% 2.7% 3.1% 3.5% 3.7%
+Net Growth (%) 5.4% 0.0% (25.8%) 16.8% 9.0% 9.7% 2.3% 4.8% 4.8% 4.6% 4.6% 4.4% 4.3%
+
+=== PAGE 17 ===
+
+17
+Source: Cirium, company reports, J.P. Morgan estimates. 
+NB & WB Supply and Demand Models
+WB Comm’l Aero Supply & Demand Model, 2018-30E
+2018 2019 2020 2021 2022 2023 2024E 2025E 2026E 2027E 2028E 2029E 2030E
+Fleet at Year End 4,598 4,582 2,974 3,377 3,730 4,207 4,318 4,491 4,670 4,848 5,032 5,213 5,396 
+Deliveries 380 426 196 155 185 228 172 247 255 291 335 377 404 
+Net Retirements / (Additions) 175 442 1,804 (248) (168) (249) 61 74 75 114 151 196 222
+Delivery Growth (%) 8.7% 9.3% 4.3% 5.2% 5.5% 6.1% 4.1% 5.7% 5.7% 6.2% 6.9% 7.5% 7.7%
+Net Retirement Growth (%) 4.0% 9.6% 39.4% (8.3%) (5.0%) (6.7%) 1.4% 1.7% 1.7% 2.4% 3.1% 3.9% 4.2%
+Net Growth (%) 4.7% (0.3%) (35.1%) 13.6% 10.5% 12.8% 2.6% 4.0% 4.0% 3.8% 3.8% 3.6% 3.5%
+NB Comm’l Aero Supply & Demand Model, 2018-30E
+2018 2019 2020 2021 2022 2023 2024 2025E 2026E 2027E 2028E 2029E 2030E
+Fleet at Year End 16,216 16,238 12,475 14,675 15,944 17,373 17,758 18,646 19,578 20,518 21,503 22,492 23,504 
+Deliveries 1,219 789 488 744 907 1,032 962 1,146 1,320 1,488 1,615 1,735 1,811 
+Net Retirements / (Additions) 349 767 4,251 (1,456) (362) (397) 577 258 388 548 630 746 799
+Delivery Growth (%) 7.9% 4.9% 3.0% 6.0% 6.2% 6.5% 5.5% 6.5% 7.1% 7.6% 7.9% 8.1% 8.1%
+Net Retirement Growth (%) 2.3% 4.7% 26.2% (11.7%) (2.5%) (2.5%) 3.3% 1.5% 2.1% 2.8% 3.1% 3.5% 3.6%
+Net Growth (%) 5.7% 0.1% (23.2%) 17.6% 8.6% 9.0% 2.2% 5.0% 5.0% 4.8% 4.8% 4.6% 4.5%
+
+=== PAGE 18 ===
+
+18
+We’re Still Likely Years Away from New Comm’l NB Aircraft
+◼ It is not unusual to hear chatter about a potential new aircraft but we don’t see most players being in a rush 
+◼ Airbus and CFM seem most willing to explore this topic 
+◼ Has has discussed a potential engine selection in 2027, program launch ~2030 and EIS post-2035  
+◼ GE/CFM appear determined to push RISE, including open fan technology, to generate well over 20% fuel burn gain 
+◼ RISE could bring less wear and tear on some engine parts, addressing durability issues around LEAP  
+◼ RISE would likely require changes to airframe configuration that could offset some fuel burn benefits 
+◼ Boeing is not rushing to bring forward a new aircraft 
+◼ Mgmt does not believe market is ready, does not believe tech is ready, and does not believe company is ready
+◼ Boeing has other certifications, production ramps, and defense programs to focus on, plus balance sheet repair 
+◼ Pratt & Whitney is skeptical of open fan configuration 
+◼ In the meantime, we expect press reports about potential new aircraft and the game theory around them
+◼ It is not surprising for Boeing to talk to Rolls, as WSJ reported; they likely talk to others as well 
+◼ Would Pratt and Rolls re-team for a next gen narrowbody? 
+◼ A new aircraft cannot accommodate both an open fan like RISE and a traditional ducted fan
+◼ We assume Boeing and Airbus will be reluctant to go sole source; what will they do if there is only one open fan?
+◼ CFM plan seems to be selling operators on the benefits of RISE and dragging the rest of the industry along 
+
+=== PAGE 19 ===
+
+19
+Aftermarket Should Decelerate in 2026 . . . But We’ve Said This Before
+Aftermarket Organic y/y Growth Rates, 2022-30E
+Source: Company Reports, J.P. Morgan estimates.
+Note: JPM analyst David Perry covers Safran and MTU and JPM analyst Steve Tusa covers HON. WWD and HEI are not covered.
+*SARO’s reported growth in 2026 includes the elimination of $250m of pass-through revenue. Excluding this, growth would’ve been 10%. 
+◼ ASK growth is likely to decelerate further next year, potentially into the LSDs, but we think AM sales can still grow 9%
+◼ Pricing and pent-up demand for aftermarket services (especially engines MRO work) are the main drivers 
+◼ In particular,  we continue to think that engines outperform with legacy engine lifecycles are extending
+◼ While new aircraft production should pick up further in 2026, we haven’t seen this detract from OE . . . yet
+2022 2023 2024 2025E 2026E 2027E 2028E 2029E 2030E
+Engines
+Pratt & Whitney 23% 20% 14% 21% 11% 10% 9% 8% 7%
+MTU Aero (Spares) 18% 19% 12% 14% 11% 10% 10% 10% 9%
+GE Comm'l Services 43% 38% 12% 24% 14% 12% 11% 9% 8%
+Safran (Spare parts) na na 17% 17% 9% 8% 8% 8% 8%
+StandardAero 19% 10% 15% 15% 6%* 10% 8% 7% 7%
+Systems & Components
+Collins Aerospace 28% 27% 12% 12% 8% 6% 5% 5% 5%
+TransDigm 39% 30% 10% 10% 9% 7% 5% 5% 4%
+Honeywell 23% 15% 15% 10% 7% 6% 6% na na
+Woodward 41% 24% 20% na na na na na na
+Heico 28% 20% 13% na na na na na na
+Simple Average 29% 23% 14% 15% 9% 9% 8% 7% 7%
+
+=== PAGE 20 ===
+
+20
+Engine Material Availability is Improving . . . More to Come in 2026
+◼ LEAP deliveries have improved throughout 2025 and maintaining the Q3 delivery run-rate takes deliveries to ~2k annualized
+◼ This comes from improved material availability, which has supported GE shop visit growth across platforms 
+◼ Slower GTF delivery growth due to Pratt strike earlier this year and continued support for parked fleet  
+◼ Engine supplier growth has been more uneven in 2025
+◼ ATI has led the way, benefitting from Pratt demand for GTF Isothermal Forgings
+◼ HWM’s growth has decelerated a bit alongside CRS
+◼ PCC has lagged the other engine suppliers but this likely reflects loss of non-engine SPS facility earlier this year
+Source: Company reports. Note: Bennett Moore covers CRS. David Perry covers SAF and MTU. JPM does not cover PCC. 
+Comm’l Aero Dashboard: Engines, 1Q23-3Q25 (y/y growth % except deliveries, which are in units)
+1Q23 2Q23 3Q23 4Q23 2023 1Q24 2Q24 3Q24 4Q24 2024 1Q25 2Q25 3Q25
+Engines
+LEAP Deliveries 366 419 389 396 1,570 367 297 365 378 1,407 319 410 511 
+P&W Large Commercial 167 191 261 256 875 232 236 252 276 996 250 227 266 
+GE Aerospace Comm'l OEM Sales Growth (%) 34% 35% 23% 1% 21% 31% -11% 5% 39% 16% 9% 35% 22%
+Pratt & Whitney Comm'l OEM Sales Growth (%) 27% 22% 25% 20% 23% 65% 33% 9% 31% 33% 3% 15% 5%
+GE Aerospace Comm'l AM Growth (%) 35% 31% 31% 23% 30% 12% 14% 10% 12% 12% 17% 29% 28%
+Pratt & Whitney Comm'l AM Growth (%) 14% 26% 21% 18% 20% 9% 15% 13% 17% 14% 28% 19% 23%
+MTU Comm'l AM Growth (%) 25% 19% 10% 15% 17% -5% 13% 18% 18% 11% 15% 6% 18%
+Safran Comm'l AM Growth (%) 38% 35% 39% 20% 33% 27% 32% 21% 21% 25% 25% 19% 16%
+Howmet Comm'l Engines Sales Growth (%) 30% 23% 15% 15% 20% 15% 18% 21% 13% 17% 12% 9% 12%
+ATI Comm'l Engines Sales Growth (%) 58% 37% 5% 15% 25% 0% 3% 11% 21% 9% 35% 27% 19%
+PCC Sales Growth (%) 28% 28% 21% 25% 26% 10% 15% 12% 11% 12% 9% 2% 5%
+Carpenter Aerospace & Defense Sales Growth (%) 59% 65% 42% 23% 46% 30% 28% 34% 35% 32% 18% 2% 11%
+Simple Average 35% 32% 23% 17% 26% 19% 16% 15% 22% 18% 17% 16% 16%
+
+=== PAGE 21 ===
+
+21
+Destocking Was A Big Story in 2025, But Should Abate Gradually in 2026
+◼ Delayed rate increases have resulted in destocking this year 
+◼ This was most evident furthest up the supply chain for aluminum suppliers like Kaiser & Constellium 
+◼ Most other structures and materials companies saw y/y growth rates that were down or flattish 1H25, but improved in Q3 
+◼ Note Spirit delivering at 30/mo last quarter on 737, below Boeing’s reported production rate 
+◼ But there is fuselage inventory to liquidate and as Boeing moves to 42, Spirit should also be ramping up in rate
+◼ Most other suppliers have indicated an expectation to move on from destocking during 2026
+Source: Company reports. 
+Comm’l Aero Dashboard: Structures & Material Suppliers, 1Q23-3Q25 (y/y growth %)
+1Q23 2Q23 3Q23 4Q23 2023 1Q24 2Q24 3Q24 4Q24 2024 1Q25 2Q25 3Q25
+Structures & Materials
+Constellium Aero Rolled Products Shipments Growth (%) 56% 30% 21% 5% 26% 8% -4% 0% 0% 1% -11% -12% -9%
+Kaiser Aero/HS Products Shipments Growth (%) 28% 32% 69% 24% 36% 8% -3% -7% -11% -4% -10% -4% -30%
+ATI Comm'l Airframe Growth (%) 81% 55% 55% 46% 58% 12% 28% -11% -5% 5% 8% -7% 9%
+Hexcel Comm'l Aero Growth (%) 30% 16% 20% 4% 17% 5% 21% 17% 4% 12% -6% -9% -7%
+Howmet Comm'l Aero Structures Growth (%) 39% 31% 33% 19% 29% 27% 42% 10% 8% 21% 0% -6% 8%
+Howmet Comm'l Aero Fasteners Growth (%) 14% 19% 34% 46% 28% 45% 36% 18% 16% 28% 13% 18% 26%
+Spirit Aero Comm'l Aero Growth (%) 22% 5% 10% 43% 20% 18% 8% 0% -17% 1% -14% 9% 3%
+737 Shipset Deliveries (units) 95 74 83 104 356 44 27 64 133 268 127 113 90
+787 Shipset Deliveries (units) 6 10 9 11 36 13 14 9 19 55 9 22 17
+A350 Shipset Deliveries (units) 12 13 12 17 54 16 15 13 15 59 18 17 15
+A220 Shipset Deliveries (units) 13 14 16 20 63 15 22 19 26 82 22 28 20
+Simple Average 39% 27% 35% 27% 31% 18% 18% 4% -1% 9% -3% -1% 0%
+
+=== PAGE 22 ===
+
+22
+The OEM Ramp Should Provide More Opportunity for Suppliers in ‘26  
+◼ Following destocking issues related to Boeing’s strike last year, OEM sales turned mostly positive in Q3
+◼ Collins has weathered the storm better than most
+◼ TDG and Honeywell each reported growth in Q3 after declining earlier in the year
+◼ Most aero suppliers indicating destocking will be fully behind in 2026  
+◼ The pickup in OE growth has not come at the expense of AM sales, which accelerated for suppliers in Q3 
+◼ Investors often pit OE vs AM but there could be a period where both work, prior to aircraft retirements picking up
+Source: Company reports. Note: All results above are calendar quarters.
+Comm’l Aero Dashboard: Component / System Suppliers, 1Q23-3Q25 (y/y growth %)
+1Q23 2Q23 3Q23 4Q23 2023 1Q24 2Q24 3Q24 4Q24 2024 1Q25 2Q25 3Q25
+Systems and Component Suppliers
+Collins Comm'l OEM Growth (%) 12% 14% 27% 17% 18% 14% 10% -8% -6% 2% 2% 1% 16%
+TransDigm Comm'l OEM Growth (%) 25% 25% 22% 25% 24% 21% 23% 13% -4% 16% 0% -7% 7%
+Triumph Comm'l OEM Growth (%) 40% 5% 1% 27% 18% 8% 12% -14% -9% -1% 14% na na
+Honeywell Comm'l OEM Growth (%) 14% 16% 5% 25% 15% 25% 10% 10% -7% 8% -7% -12% 2%
+Woodward Comm'l OEM Growth (%) 30% 41% 30% 23% 31% 15% 2% 16% -10% 5% -9% -8% 0%
+Simple Average (OEM Growth) 24% 20% 17% 24% 21% 17% 11% 3% -7% 6% 0% -6% 6%
+Collins Comm'l AM Growth (%) 24% 29% 30% 23% 23% 14% 12% 9% 12% 12% 13% 13% 13%
+TransDigm Comm'l AM Growth (%) 38% 32% 27% 22% 30% 8% 11% 8% 10% 8% 13% 6% 11%
+Triumph Comm'l AM Growth (%) 49% 45% 48% -58% 21% -51% 16% 5% 40% 10% -2% na na
+Honeywell Comm'l AM Growth (%) 22% 27% 22% 19% 23% 17% 17% 8% 17% 14% 15% 7% 19%
+Woodward Comm'l AM Growth (%) 28% 28% 30% 9% 24% 18% 19% 23% 19% 20% 23% 30% 39%
+Heico Comm'l AM Growth (%) 25% 23% 12% 12% 18% 12% 15% 12% 13% 13% 16% 12% 16%
+Simple Average (AM Growth) 31% 31% 28% 17% 23% 14% 15% 11% 18% 13% 13% 14% 20%
+Parker Hannifin Aerospace Growth (%) 15% 16% 16% 15% 15% 18% 19% 18% 14% 17% 12% 10% 13%
+Eaton Aerospace Growth (%) 13% 14% 10% 10% 12% 9% 13% 9% 8% 10% 12% 13% 13%
+Simple Average (Total) 26% 24% 22% 19% 21% 15% 14% 8% 7% 10% 8% 6% 12%
+
+=== PAGE 23 ===
+
+23
+Expecting Moderate Business Jet Production Growth in 2026
+◼ 2025 deliveries should be > 100% of 2019 with 2026 set to grow more modestly
+◼ Supply chain, labor availability and certification delays are all watch items 
+◼ 2026 growth expectations are muted for most OEMs: 
+◼ Gulfstream began delivering G700s and G800s in 2025; there is some growth left from G800s in 2026 
+◼ Cessna has yet to reach its 2019 level of 200 deliveries, but we aren’t quite expecting this happens in 2026
+◼ Bombardier delivery growth would be more likely in the out-years
+◼ OEMs attuned to limiting production growth to prioritize pricing and backlog and avoid price competition of 2010s  
+Source (for both): Company reports and J.P. Morgan estimates. Note: JPM analyst Marcelo Motta covers Embraer; David Perry covers Dassault.
+Business Jet Deliveries by OEM, FY20-30E Business Jet Delivery Forecast
+2020 2021 2022 2023 2024 2025E 2026E 2027E 2028E 2029E 2030E
+Bombardier 114 120 123 138 146 155 156 156 156 156 156
+Cessna 132 167 178 168 151 181 190 200 205 207 210
+Dassault 34 30 32 26 31 38 41 43 48 53 57
+Embraer 86 93 102 115 130 149 160 170 180 180 180
+Gulfstream 127 119 120 111 136 157 165 166 174 175 175
+Total 493 529 555 558 594 680 712 735 763 771 778
+vs 2019 77% 82% 86% 87% 92% 106% 111% 114% 118% 120% 121%
+
+
+=== PAGE 24 ===
+
+24
+Bizjet Activity Remains Steady-ish and Solidly Above 2019 
+◼ Estimated US flight ops have continued to run in the ~7k flight range vs ~6k in 2019
+◼ The most significant driver of this growth has been fractional activity, which has experienced sustained, structural growth
+◼ Fractional activity was up 93% vs 2019 in Oct and 11% y/y
+◼ Each size category is also above 2019 in Oct: Light (+26%), Medium (+30%), Large (+14%)
+◼ European flight ops are flattish YTD but still 12% above 2019
+◼ Elevated activity has led to more aftermarket sales growth in 2025, though this has moderated after a strong 2024
+◼  Bombardier and GD Aero’s AM sales were 95% and 80% above 3Q19 in 3Q25, while TXT Aviation was +22%
+Source (for both): Argus International, Eurocontrol. 
+US Bizjet Avg. Monthly Flights Per Day Europe Bizjet Flights, Growth vs 2019
+
+
+=== PAGE 25 ===
+
+25
+Used Jet Inventory Remains Low but Is Rising Once Again 
+◼ Jets for sale < 10 yrs old are now 4.9% of fleet vs 3% in Oct-22 but still well below the ~7% seen in Oct-19
+◼ Overall inventories have increased 390 bps, 520 bps, and 520 bps, for Light, Medium and Heavy jets off 1Q22 bottom
+◼ There are 341 young jets < 10 yrs of age available for sale, back to ~80% of Oct-19
+Source (for both): Jetnet. Based on 22 tracked models.
+Business jet inventory, % of active fleet, by OEMs Young Jet Inventory (<10 yrs of Age), % of fleet
+
+
+=== PAGE 26 ===
+
+26
+Strong Aero Returns Continued Yet Again . . . But Valuations Remain High
+◼ Average EV/EBITDA multiples were ~11x from 2017-2019 but are well above that based on next year’s EBITDA
+◼ Similarly, P/E ratios have risen from ~18x in 2017-2019 to ~30x on next year’s earnings, and 2027 numbers point to ~26x
+◼ Aero stock performance has been solid across both the US and Europe, led by RR, HWM, ATI, and GE  
+BA AIR HXL WWD TDG SAF RTX GE
+Avg. Multiple (2017-2019) 11.8x 6.7x 11.1x 11.1x 13.3x 10.7x 10.2x na
+2026 Multiple (Bloomberg) 29.8x 12.9x 16.1x 20.2x 17.2x 16.7x 17.9x 31.5x
+2027 Multiple (Bloomberg) 19.7x 11.2x 13.2x 17.9x 15.9x 15.0x 16.4x 28.4x
+2026 EBITDA ($mm) $6,685 $11,221 $405 $891 $5,726 $7,564 $15,327 $11,554
+BA AIR HXL WWD TDG SAF RTX GE
+Avg. Multiple (2017-2019) 19.2x 17.0x 18.8x 18.5x 20.4x 18.5x 16.4x na
+2026 Multiple (Bloomberg) 107.5x 24.4x 31.3x 31.3x 27.6x 28.6x 26.3x 42.2x
+2027 Multiple (Bloomberg) 35.9x 20.4x 21.6x 27.4x 23.6x 24.9x 23.6x 36.0x
+2026 EPS $1.94 $7.95 $2.35 $9.38 $45.83 $10.56 $6.77 $7.16
+EV/EBITDA Multiples
+P/E Multiples
+Source (for all): Bloomberg Finance L.P.; Data as of 12/18/25. 
+Aero Stock YTD Returns
+
+
+=== PAGE 27 ===
+
+27
+Bull and Bear Cases for US Defense
+◼ Elevated geopolitical tension favors higher global 
+defense budgets
+◼ Geopolitical events could bring headlines that help 
+defense stocks
+◼ Challenges of modern warfare favor increased US 
+defense investment 
+◼ US contractors’ exports will grow as allies invest in 
+previously neglected defense capabilities  
+◼ $150b+ reconciliation bill can contribute to growth 
+over several years
+◼ DoD efforts to expand defense industrial base can 
+continue to benefit small and midsize contractors     
+◼ DoD efforts to expand industrial base can erode 
+market share of traditional contractors    
+◼ DoD wants contractors to invest more, potentially 
+adding risk and diluting RoI    
+◼ Debt and deficits could constrain US defense 
+budget growth
+◼ Political friction could drive future shutdowns and/or 
+budget delays, including after midterms    
+◼ Full year CRs, reconciliation, and more limited DoD 
+disclosure all reduce investor visibility 
+◼ US allies will develop more of their own capabilities 
+longer term  
+Bull Bear
+
+=== PAGE 28 ===
+
+28
+US Defense Spending Is Not Very High as a %age of GDP
+◼ At < 4%, Defense spending is near a post-World War II low as a percentage of GDP   
+◼ This made sense after USSR collapsed but China is now a peer-level competitor and US has other interests too  
+◼ A military and industrial base sized for peer-level conflict likely requires a greater share of national income       
+◼ China has substantial resources and can innovate quickly  
+◼ Interestingly, however, Trump administration has focused more on homeland and Western Hemisphere         
+◼ China hawks reportedly disappointed with National Security Strategy   
+◼ Regardless, US must retain credible deterrent vis-a-vis China
+◼ And Russia-Ukraine conflict has shown need for new capabilities and for defense production at scale    
+Constant Dollar Defense Budget
+Source: DoD, constant dollar spending through FY23 in FY25 dollars.  
+Defense Spending as a % of GDP
+Korea Vietnam Reagan Build Iraq
+
+
+=== PAGE 29 ===
+
+29
+. . . But There May Be Constraints on Defense Budget Growth 
+◼ Bond markets remain calm but there is increasing skepticism about the US fiscal trajectory  
+◼ Debt is > 100% of GDP with an annual deficit over 6%, likely driving interest payments higher 
+◼ Social Security and Medicare have grown their share of GDP and this should continue as the population ages
+◼ Democratic gains in midterm elections could lead to budget gridlock     
+◼ Thus far, the administration has been able to grow defense spending without boosting the civil gov’t budget  
+◼ We tend to discount fears of the elusive bond vigilantes but they are a tail risk for US defense     
+Interest as a % of GDP (left), Debt to GDP (right)
+Source: JPMAM, US Treasury, DoD, CBO. 
+The 2025 Federal Budget
+
+
+=== PAGE 30 ===
+
+30
+Motive and Opportunity Converging to Change Industrial Base 
+◼ Emergence of China as a well-resourced, technologically capable competitor drives need for change in defense industry   
+◼ Ukraine war has highlighted the need for spare capacity and lower unit costs     
+◼ External capital is required to drive changes in the industry and it has become abundantly available
+◼ Defense has become a leading destination for venture capital 
+◼ “Defense disruptors” like Kratos and Aerovironment have seen their valuations rise steeply 
+◼ Scale of private sector capital available is growing relative to scale of public sector capital    
+◼ DoD exploring ways to tap private, foreign capital to transform industrial base; one way to address budget challenges    
+◼ DoD exploring ways to buy products – and software – from providers other than the traditional primes      
+FY26 Inv Accts vs FY26E DC Equipment Capex, $bn
+Sources for both: JPMAM, JPMe, DoD  
+Note: Hyperscalers includes Google, Amazon, Microsoft, Meta. CSPs includes Apple, 
+IBM, Oracle, Coreweave, Equinix, Digital Realty
+Global Defense Technology VC Deal Activity $bn 
+
+
+=== PAGE 31 ===
+
+31
+Budget Has Grown But Mostly Outside of the Base
+◼ Technically, the FY26 Defense budget should be up 13% with all growth coming from Reconciliation       
+◼ But DoD will spend reconciliation money over several years 
+◼ Congressional defense hawks were disappointed in the lack of growth in the base     
+◼ What DoD will request for FY27 request is unclear: Secy Hegseth expects y/y increase but is this base or total? 
+◼ OMB chief Vought has suggested another reconciliation bill that would include Defense and would drive budget higher 
+◼ Another reconciliation bill may be a heavy lift politically and congressional appropriators prefer the regular budget
+◼ For now, we assume a request for ~3% annual base budget growth . . . Though there could be another reconciliation bill 
+◼ Budget request traditionally in early Feb but it can always slip, especially with CR expiring Jan 31 
+DoD Budget, current bb$s
+Source: DoD, Congress, JPMe. 
+FY20 FY21 FY22 FY23 FY24 FY25 FY26R FY27 FY28 FY28 FY29
+Base Budget 633 703 742 816 841 848 848 874 900 927 955
+Growth 0.0% 11.1% 5.5% 9.9% 3.1% 0.8% 0.0% 3.0% 3.0% 3.0% 3.0%
+Supplementals / Reconciliation 71 0 27 36 67 0 113 43 0 0 0
+Total Budget 705 703 769 852 909 848 962 916 900 927 955
+     Growth 2.9% -0.2% 9.3% 10.8% 6.7% -6.6% 13.4% -4.7% -1.8% 3.0% 3.0%
+*        Supplementals exclude disaster relief, Operation Allies Welcome, and other funding that is not core to DoD, in our view.
+**    We assume the remainder of the $150m reconcilation bill in FY27.
+*** Base budget growth for FY27 and beyond are JPM estimates.
+
+=== PAGE 32 ===
+
+32
+Supplementals and Reconciliation Have Made Spending More Opaque
+◼ Procurement and R&D budgets are up > 20% in aggregate for FY26, with > 100% from reconciliation
+◼ Reconciliation replaces Ukraine supplementals, though the latter were not technically part of the investment accounts 
+◼ Reconciliation weighted disproportionately to the inv accts with 80% of the FY26 money assigned to Procurement and RDT&E 
+◼ Defense budgets are getting harder to track, given release of fewer out-year plans and executive branch taking more authority   
+◼ There was a full year continuing resolution (CR) for all of FY25 and another one seems likely for FY26
+◼ Breaking with past precedent, the Trump administration has moved money around under CRs
+◼ Reconciliation had never been used for Defense and gives executive branch more control over funds vs appropriators   
+◼ DoD plans require inv acct budgets to remain elevated: Golden Dome, shipbuilding, munitions, F-47, B-21, Sentinel, etc   
+Source (for both): DoD, Congress, J.P. Morgan estimates. 
+DoD Inv Acct Budget, Current ($bn)
+Shipbuilding 29,176 
+Air and Missile Defense 24,413 
+Munitions and Supply Chain Resiliency 25,381 
+Scaling low-cost weapons 16,049 
+Efficiency and Cybersecurity 380 
+Air Superiority 8,644 
+Nuclear Forces 14,688 
+INDOPACOM Equipment 8,110 
+Improving Readiness 16,343 
+Border Support and Counter Drug Missions 1,000 
+Other (funding for personnel, etc) 12,017 
+Total 156,200 
+FY21 FY22 FY23 FY24 FY25 FY26R
+Procurement 141 145 162 171 167 153 
+R&D 106 119 140 148 141 142 
+Base Budget Inv Accts 247 264 302 319 309 295 
+Growth 0.4% 6.8% 14.3% 5.7% -3.3% -4.3%
+Outside base budget
+Reconciliation 89 
+Ukraine 19 21 41 0 0 
+Israel 0 0 13 0 0 
+PACOM / Submarine Industrial Base 0 0 6 6 0 
+Addressable Supplemental Budgets 19 21 60 6 89 
+Total Budget (incl Supplementals) 247 283 323 379 314 384 
+Growth 3.4% 14.5% 14.1% 17.4% -17.1% 22.2%
+Reconciliation Funding by Category ($mm)
+
+=== PAGE 33 ===
+
+33
+Golden Dome Plans Emerging . . . With More to Come in 2026
+◼ There is still much to learn about Golden Dome and we should find out much more in 2026
+◼ Most recently, MDA named 1,014 contractors for its SHIELD contract vehicle, though we don’t think this is exhaustive
+◼ Separately, the Space Force awarded the first prototype contract for Space-Based Interceptors earlier this month
+◼ It is unclear who the winners and losers will be, but we expect both the primes and new entrants to participate in this effort
+◼ LHX relatively easy to characterize as Golden Dome winner, given company size and its SDA work and Aerojet
+◼ But LMT, NOC, Raytheon should have much to contribute as well, along with smaller, defense tech companies 
+Source: Congress.
+Golden Dome Funding from Reconciliation Bill
+Integrated Air and Missile Defense (Golden Dome) Amount ($mm)
+Next-Generation Missile Defense
+Development, Procurement, and Integration of Military Space-based Sensors 7,200
+Development of Space-based and Boost Phase Intercept Capabilities 5,600
+Development of Military Non-kinetic Missile Defense Effects 2,400
+Air Moving Target Indicator Military Satellites 2,000
+National Security Space Launch Infrastructure 500
+Expansion of Multi-Service Advanced Capability Hypersonic Test Bed Program 400
+Classified Military Space Superiority Programs 300
+Development and Testing of Directed Energy Capabilities 250
+Missile Defense Agency "Special Programs" 183
+Total Next-Generation Missile Defense 18,833
+Layered Homeland Defense
+Acceleration of Hypersonic Defense Systems 2,200
+Improved Ground-Based Missile Defense Radars 1,975
+Accelerated Development and Deployment of Next-Generation Intercontinental Ballistic Missile Defense Systems 800
+Design and Construction of MDA Missile Instrumentation Range Safety Ship 530
+Army Space and Strategic Missile Test Range Infrastructure Restoration and Modernization in the US Indo-Pac Command Area of Operations 408
+Total Layered Homeland Defense 5,913
+Total Integrated Air and Missile Defense 24,746
+
+=== PAGE 34 ===
+
+34
+Source: DoD, Congress.
+DoD Investment Accts with Reconciliation Included in FY26 
+FY10 FY11 FY12 FY13 FY14 FY15 FY16 FY17 FY18 FY19 FY20 FY21 FY22 FY23 FY24 FY25 FY26R
+Army
+Aircraft 6,628 6,517 6,450 5,606 5,083 5,412 6,028 5,340 5,984 4,646 4,342 4,091 3,295 3,848 3,288 3,473 3,045 
+Missiles 1,723 1,723 1,488 1,441 1,694 1,241 1,638 2,892 4,797 4,875 4,256 4,017 3,460 3,849 4,622 5,998 8,548 
+Weapons and Vehicles 3,256 3,460 2,048 1,551 1,611 1,727 2,439 2,829 5,776 5,589 4,523 3,258 4,319 4,505 3,244 3,689 2,887 
+Ammunition 2,385 2,431 1,940 1,799 1,599 1,156 1,467 2,261 2,741 2,575 2,727 2,822 2,277 2,770 2,944 2,857 3,734 
+Other 24,514 17,990 11,493 7,210 6,725 5,522 7,245 8,606 9,840 10,202 8,431 9,511 9,454 8,668 8,626 9,987 10,209 
+Navy
+Aircraft 19,791 19,710 17,944 15,877 16,448 15,001 17,930 16,834 20,103 20,324 18,742 18,996 17,799 19,032 19,827 15,919 17,128 
+Weapons 3,352 3,398 3,208 2,682 2,977 3,204 3,050 3,431 3,622 3,726 4,134 4,458 3,983 4,823 5,877 6,349 7,845 
+Ammunition 1,489 1,474 916 817 719 829 770 806 1,038 1,182 1,001 856 845 921 1,161 1,599 1,260 
+Ships 13,843 13,839 15,028 13,609 15,231 15,954 18,705 20,384 22,963 24,150 22,864 23,132 26,665 31,955 33,665 33,249 47,384 
+Other 5,797 5,609 6,183 5,395 5,690 5,971 6,496 7,425 9,120 9,278 10,578 10,797 11,073 12,139 14,386 15,143 17,905 
+Marine Corps 3,658 2,559 2,757 1,752 1,342 1,001 1,244 1,659 2,019 2,778 2,918 2,670 3,094 3,670 3,905 3,804 3,754 
+Air Force
+Aircraft 13,179 13,522 13,688 9,529 10,608 12,549 15,881 16,001 18,891 18,068 16,645 18,447 18,384 22,196 20,828 19,899 24,795 
+Missiles 6,029 5,944 5,825 4,835 4,310 4,766 3,199 2,675 2,696 3,072 2,636 2,152 2,475 2,999 4,694 4,259 6,159 
+Space 0 0 0 0 0 0 2,811 2,750 3,552 2,329 2,189 2,300 3,023 4,462 4,065 3,901 3,658 
+Ammunition 1,077 1,056 608 653 884 880 1,974 2,135 2,253 2,857 2,299 1,160 666 858 590 551 784 
+Other 20,101 20,264 20,372 17,934 19,175 20,389 21,787 22,974 24,114 24,562 25,174 23,716 26,615 28,034 31,327 30,978 32,204 
+Defense Wide 8,996 14,670 8,368 7,071 6,657 4,679 7,196 6,979 8,714 8,747 7,527 8,509 7,516 7,513 7,981 5,719 13,924 
+Total Procurement 135,818 134,166 118,316 97,761 100,753 100,281 119,860 125,982 148,222 148,961 140,986 140,892 144,943 162,241 171,029 167,374 205,224 
+Check
+Army 11,563 11,472 8,348 7,908 7,299 6,915 7,862 8,853 11,633 11,375 12,691 13,910 14,539 17,150 17,115 14,322 15,396 
+Navy 19,938 20,008 17,658 15,174 15,487 16,773 18,333 17,852 18,465 18,658 20,355 20,064 22,139 26,017 27,965 25,967 29,160 
+Air Force 27,655 28,148 26,373 22,769 24,586 24,435 25,244 28,382 38,078 41,489 45,540 46,277 53,190 61,578 66,010 65,364 91,278 
+Defense Wide 20,599 20,797 19,468 17,287 17,872 17,936 19,007 19,543 23,774 24,062 26,413 25,888 29,066 34,565 36,893 35,329 42,820 
+Other 479 480 188 208 254 212 187 189 209 377 228 257 277 449 337 349 416 
+Total RDT&E 80,234 80,905 72,035 63,346 63,483 63,869 70,633 74,817 92,159 95,960 105,227 106,396 119,211 139,761 148,320 141,331 179,070 
+Other (1,829) 2,055 2,334 936 2,587 
+Total Inv Accounts 216,052 215,071 190,351 161,107 164,236 164,150 190,493 200,800 240,381 244,921 246,213 247,288 264,154 302,002 319,350 308,705 384,294 
+
+=== PAGE 35 ===
+
+35
+Budget Growth Has Been Strong . . . Spending Is Catching Up Gradually 
+◼ LTM inv acct outlays of $302b are $82b below the FY26 budget request + reconciliation funding
+◼ Procurement and R&D are both running ~20% below the latest budget 
+◼ O&M outlays should grow as well, though there is less room to run, highlighting smaller growth opportunity in gov’t services 
+◼ LTM O&M outlays of $331b are ~$29b below the FY26 base budget + reconciliation funding
+◼ The gov’t shutdown is weighing on outlays, with the inv accts falling 20% and 12% y/y, respectively, in Oct and Nov
+◼ Ultimately, outlays should approach budgets . . . But it is possible for funds to expire unused
+◼ Inv acct outlays in 2009-12 did not ever capture the blow-off top in Iraq-related supplemental funding in FY08
+◼ O&M outlays have typically run below budgets    
+O&M LTM Outlays vs. Budget
+Source: US Treasury, DoD. 
+Note: Stars represent FY26 budget inclusive of reconciliation funding.  
+Inv. Acct. LTM Outlays vs. Budget
+
+
+=== PAGE 36 ===
+
+36
+Inv Acct and Sales Growth Post 9-11 and in the Last Recap Cycle . . .
+Defense Primes Organic Growth, 2001-10 & 2015-21
+Source: DoD, Company reports. L3Harris reflects Harris Corp through its FY18 and L3Harris thereafter.   
+Investment Account Outlays
+Iraq War Cycle 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010
+10-yr 
+CAGR
+Investment Account Outlays $89 $95 $107 $121 $137 $148 $158 $173 $193 $209 $211 
+Growth 4% 7% 12% 13% 13% 8% 7% 9% 11% 9% 1% 9%
+Recapitalization Cycle 2015 2016 2017 2018 2019 2020 2021
+6-yr 
+CAGR
+Investment Account Outlays $165 $168 $172 $190 $214 $239 $247 
+Growth -4% 1% 3% 10% 13% 12% 3% 7%
+Iraq War Cycle 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010 CAGR
+Lockheed Martin -1% 10% 20% 10% 4% 5% 6% 2% 2% 4% 6%
+Northrop Grumman 6% -2% 11% 14% 3% 0% 5% 7% 5% 2% 5%
+General Dynamics (Defense) 14% 13% 13% 11% 8% 7% 8% 6% 10% 0% 9%
+Raytheon 5% 7% 9% 11% 6% 7% 8% 9% 7% 2% 7%
+L3 Communications 5% 15% 5% 15% 12% 9% 10% 5% 4% -1% 8%
+Boeing (Defense) 13% 9% 10% 11% 2% 6% 1% 0% 5% -6% 5%
+Recapitalization Cycle 2016 2017 2018 2019 2020 2021 CAGR
+Lockheed Martin 2% 7% 8% 11% 9% 3% 7%
+Northrop Grumman 4% 5% 6% 5% 7% 3% 5%
+General Dynamics (Defense) 1% 0% 10% 5% 2% 2% 3%
+Raytheon Defense 2% 5% 7% 8% 2% 1% 4%
+L3 Communications 2% 2% 6%
+L3Harris Corp -7% -1% 8% 9% 3% 2% 2%
+Boeing (Defense) -3% -7% 10% -1% 0% 1% 0%
+Huntington Ingalls 1% 1% 10% 6% 6% -1% 4%
+
+=== PAGE 37 ===
+
+37
+Global Defense Is (Mostly) an Opportunity for US Contractors 
+◼ The Trump administration has been clear that US allies should spend more to defend themselves, especially in Europe
+◼ European defense budgets should grow at a 9% CAGR in aggregate through 2030
+◼ We do not expect a ceasefire or peace agreement in Ukraine to change the trajectory of European rearmament 
+◼ Each 50 bps of GDP represents $150b of spending; if ~40% goes to equipment and US contractors can take 1/3
+◼ . . . This is $20b of incremental oppty vs US inv acct budget of $384b for FY26, including reconciliation 
+◼ Japan, South Korea, and other US allies in Asia are stepping up spending to protect themselves from China  
+◼ US allies in the Middle East, particularly the Persian Gulf, remain keen to buy US military equipment  
+◼ The Iranian threat has receded for now but Middle East allies remain determined to develop sophisticated capabilities   
+◼ New US posture toward the EU will likely spur Europe to develop its own defense industrial base  
+◼ But this will take many years to build and Europe needs capability urgently    
+◼ Meanwhile, US contractors are seeing European orders for missiles, air defense, aircraft, and other equipment
+
+=== PAGE 38 ===
+
+38
+International Defense Data
+Source (for all): NATO, Company data, Bloomberg.  
+NATO Defense Spending as a % of GDP
+International Defense Sales
+US and European Defense: 
+Consensus Sales Growth
+2026E 2027E 2028E
+US
+Lockheed 4.3% 3.9% 2.3%
+Northrop 5.7% 5.2% 4.1%
+L3Harris 6.1% 5.8% 4.7%
+Raytheon 5.9% 6.0% 4.7%
+US Avg 5.5% 5.2% 4.0%
+Europe
+Rheinmetall 34.0% 35.9% 26.7%
+Thales 7.4% 7.9% 8.5%
+BAE 7.2% 7.3% 7.3%
+Leonardo 8.7% 7.4% 7.9%
+Europe Avg 14.3% 14.6% 12.6%
+
+
+=== PAGE 39 ===
+
+39
+Allied Defense Budget in Asia ($b)
+China Defense Budget (RMB bn)
+Gulf Nations Defense Budget ($b)
+Russia Defense Budget (RUB bn)
+Source: The Military Balance (2010-2023); SIPRI (2024-25) (Note: Assumed FX rate 70.1 
+RUB (2015-25 average).
+International Defense Data (Continued) 
+Source: Centre for Strategic and International Studies.
+Source: 2024 Military Balance; Government reports. Source: S.Arabia Ministry of Finance.
+
+
+=== PAGE 40 ===
+
+40
+Newer, Smaller and Non-traditional Contractors Gaining Share
+◼ Trump administration seeking to overhaul DoD acquisition system to increase competition and accelerate technology
+◼ This should benefit smaller, newer, and non-traditional players more focused on commercial business models 
+◼ This has resulted in significant outperformance for these stocks in 2026 
+◼ Multiples for SMID defense stocks have expanded as well, based on growth expectations   
+◼ SMID Defense companies should take share, though they must continue to prove themselves on earnings, execution  
+◼ DoD pushing defense primes to invest more and return less cash to shareholders but this could be a tough proposition 
+◼ DoD unlikely to let primes make major acquisitions and doesn’t seem to want them to gaining share 
+JPM Defense Coverage YTD Return
+Source (for both): Bloomberg Finance L.P as of December 18, 2025.
+EV/Sales (FY2) P/E (FY2) EV/EBITDA (FY2) P/FCF (FY2)
+General Dynamics 1.8x 19.6x 14.0x 19.0x
+Huntington Ingalls 1.2x 18.8x 13.4x 22.9x
+L3 Harris 2.8x 22.8x 14.7x 28.2x
+Lockheed Martin 1.6x 16.1x 11.6x 23.8x
+Northrop Grumman 2.2x 19.3x 14.2x 43.9x
+Large Caps 1.9x 19.3x 13.6x 27.6x
+Amentum Holdings 0.7x 10.5x 8.1x 13.5x
+Booz Allen 1.2x 14.4x 11.0x 13.1x
+CACI 1.5x 17.4x 12.0x 19.9x
+Leidos 1.5x 14.7x 10.8x 16.9x
+SAIC 1.0x 10.4x 9.1x 11.1x
+Services 1.2x 13.5x 10.2x 14.9x
+Elbit Systems 2.9x 37.5x 22.6x 42.6x
+Firefly Aerospace 5.0x na na na
+Kratos 7.3x 95.5x 72.3x na
+Leonardo DRS 2.2x 26.4x 16.2x 49.4x
+OSI Systems 2.6x 23.4x 14.5x 34.7x
+Mercury Systems 4.3x 45.9x 22.2x 29.8x
+Voyager 5.2x na na na
+Small Caps 4.2x 45.7x 29.6x 39.1x
+JPM Defense Valuations
+
+
+=== PAGE 41 ===
+
+41
+EACs Adjustments Have Trended Down But Show Signs of Improvement
+LMT TTM EAC Adjustments LHX TTM EAC Adjustments HII TTM EAC Adjustments
+RTX TTM EAC Adjustments NOC TTM EAC Adjustments EAC Adjustments, % of Seg Profit
+Source (for all): Company reports. Note: Above data is in $mm. RTX negative EACs in 3Q23 include EAC portion of GTF charge at Pratt & Whitney. LMT negative EACs in 4Q24 include EAC portion 
+of MFC and Aeronautics classified charges.  
+
+
+=== PAGE 42 ===
+
+42
+Defense Valuations
+Defense Primes vs S&P 500 P/E Defense Primes Valuation vs. Industrials P/E
+Defense Primes Valuation vs. Staples P/E 
+Source (all): Bloomberg Finance L.P, J.P. Morgan estimates. Note: Defense Primes are LMT, NOC, RTN till 6/30/19 and LMT, NOC, LHX starting 7/31/19. 
+Defense Services are BAH, CACI, SAIC, LDOS. Staples Index is S5Cons Index. Industrials: CAT, DE, DHR, DOV, EMR, ETN, GE, HON, IR, JCI, MMM, PH, 
+ROK. Pension Adjusted Defense Primes include LMT, NOC and RTN till 6/30/19. Pricing as of 12/18/25.
+Defense Services vs S&P 500 P/E
+
+
+=== PAGE 43 ===
+
+43
+Defense Valuation: Many Ways to Look at It 
+◼ Investors consider several valuation metrics because of pension earnings and cash flow 
+◼ FCF/share ex pension may be “correct,” but experience suggests there is not a uniform way to think about this
+Source: Bloomberg Finance L.P and J.P. Morgan estimates. Note: Pricing as of 12/18/25; EV is from Bloomberg. Recoveries for LHX, HII, GD, and RTX are JPM estimates.
+Defense Valuation Table
+2026 Basis 2027 Basis
+LMT LHX NOC HII GD RTX LMT LHX NOC HII GD RTX
+EPS $29.35 $12.75 $28.80 $17.65 $17.10 $6.55 $31.65 $14.65 $30.80 $20.05 $18.85 $7.15
+PAEPS $25.46 $12.60 $24.84 $20.83 $16.58 $5.53 $27.77 $14.62 $27.17 $23.55 $18.31 $6.33
+EBITDA $11,136 $4,201 $6,381 $1,099 $6,774 $14,409 $11,715 $4,433 $6,708 $1,238 $7,244 $15,539
+EBITDAP $9,613 $4,136 $6,316 $1,140 $6,774 $13,869 $10,217 $4,368 $6,673 $1,273 $7,244 $15,139
+FCF $27.18 $16.32 $24.67 $15.56 $15.96 $6.24 $27.75 $17.84 $27.26 $17.10 $18.18 $7.11
+PAFCF $23.05 $16.15 $23.27 $15.35 $15.60 $6.07 $26.30 $17.75 $26.23 $16.86 $17.81 $7.02
+P/E 16.0x 22.2x 19.4x 18.3x 19.8x 27.2x 14.9x 19.3x 18.2x 16.1x 18.0x 24.9x
+P/PAEPS 18.5x 22.4x 22.5x 15.5x 20.4x 32.2x 16.9x 19.3x 20.6x 13.7x 18.5x 28.2x
+No credit for excess pension recoveries
+EV/EBITDA 11.5x 15.3x 14.9x 13.9x 14.5x 19.1x 10.9x 14.5x 14.2x 12.3x 13.6x 17.7x
+EV/EBITDAP 13.0x 15.5x 14.9x 13.2x 14.5x 19.7x 12.3x 14.6x 14.1x 11.8x 13.5x 18.1x
+Excess pension recoveries included in EV
+P/FCF 17.3x 17.3x 22.7x 20.7x 21.2x 28.6x 16.9x 15.9x 20.5x 18.9x 18.6x 25.1x
+P/PAFCF 20.4x 17.5x 24.0x 21.0x 21.7x 29.4x 17.9x 15.9x 21.3x 19.1x 19.0x 25.4x
+No credit for excess pension recoveries
+NPV of Pension Recoveries 2,200 350 1,100 250 500 2,000 
+
+=== PAGE 44 ===
+
+44
+RTX – Cash Flow and Pratt Likely in Focus for 2026
+◼ FCF is the key valuation metric for RTX with guidance coming in January; we are $200m below consensus at $8.7b 
+◼ There is a path to the high $8b range but it depends on working capital
+◼ Business-wise, Pratt likely has the most potential to drive upside to earnings and multiple over time . . . If GTF gets fixed
+◼ Cirium shows little sign of AOG reduction thus far but MRO output should increase materially in Q4 
+◼ GTF profitability drivers: 1) rolling over maintenance contracts from launch, 2) GTFA, 3) learning curve 
+◼ GTFA cut-in should proceed into 2028; looking to certify Hot Section Plus this coming year
+◼ V2500 SVs can probably remain ~800 near term and there is still strong pricing here
+◼ Raytheon business looks well-positioned and we see potential for growth to accelerate vs ’25’s MSD rate; all about supply
+◼ We assume 9% organic growth at Collins with mid-20s incremental
+Source (for both): Company reports, J.P. Morgan estimates. 
+RTX Sales ($mm) and Margin Expectations, 2025-26 Pratt Aftermarket Growth, 1Q24-4Q26E
+2025E 2026E Growth
+Total Sales 87,137 92,524 6.2%
+Collins 29,895 31,142 8.8%
+Pratt 31,948 34,394 7.7%
+Raytheon 27,898 29,849 7.0%
+Elims (2,605) (2,862)
+Adj Segment EBIT Margin 12.3% 12.6% +30 bps
+Collins 16.2% 16.6% +40 bps
+Pratt 8.3% 8.6% +30 bps
+Raytheon 11.4% 11.7% +30 bps
+
+
+=== PAGE 45 ===
+
+45
+BA – Eyes on the Prize 
+◼ 2026 cash flow forecast proved lower than expected in the low-single-digit billions
+◼ Several temporary drags weighing on cash next year: 1) 777X delay, 2) capex, 3) advances, 4) MAX 10 inventory  
+◼ Forecast includes Spirit, which may consume a bit of cash initially 
+◼ Normalizing for these items and layering rate increases on top, we see a path to at least $10b late in the decade 
+◼ Boeing’s top priority is to build and deliver more 737s and 787s 
+◼ We model 500 737 deliveries this year, with production near 47/mo at YE26
+◼ For now, we model 96 787 deliveries with production at ~8/mo on average  
+◼ Other items to watch in 2026: MAX 7/10 certification, progress on 777X, SPEEA contract, F/A-XX, US-China relations
+◼ Our Dec-25 price target of $245 is a 4% FCF yield of 2028 FCF/sh of $10.60, all discounted back 
+Boeing FCF % of Sales 737 MAX Delivery Expectations
+Source (for both): Company reports, JPM Estimates.
+
+
+=== PAGE 46 ===
+
+46
+GE Aerospace – Set Up For Yet Another Good Year
+◼ Similar to last year, we expect the key debate for GE to be how much upside there might be to EBIT and EBIT margin
+◼ GE’s latest 2025 op profit guide is $750m above the 4Q25 guide; we assume there will be potential for upside again 
+◼ The ~$1.05b of op profit growth we model in 2026 is ~$200m below consensus but likely closer to where guide will be
+◼ AM growth should accelerate vs a stellar 2025 but still be above low double-digits
+◼ Within equipment, 777X headwind should more than 2x from ‘25, though LEAP OE profitability is a partial offset
+◼ LEAP likely to end 2H25 with > 500 quarterly delivery run-rate; we believe > 2k LEAP deliveries are achievable next year
+◼ We anticipate FCF conversion will decline a bit y/y but remain solidly > 100%
+Source (for both): Company reports, J.P. Morgan estimates.
+LEAP Deliveries, 1Q25-4Q26E GE Equipment & Comm’l Services Growth, 1Q25-
+4Q26E
+
+
+=== PAGE 47 ===
+
+47
+TDG – Looking to Rebound After Underperforming in 2025
+◼ Our 9% pro forma AM growth for FY26 is in line with guidance and similar to FY25
+◼ But FY25 guide never increased from HSD-LDD and growth ultimately came in at the low end
+◼ Lack of visibility in TDG AM likely hurting relative some other Aero names 
+◼ TDG AM sales should be more tied to traffic growth than engine exposed names that are out-growing   
+◼ We see potential for continued upside in defense, where sales are highly profitable: ~60% of defense sales are aftermarket 
+◼ Margin guide for FY26 looks conservative but we think it needs to be or investors will be disappointed     
+◼ We do not think M&A needs to drag down margin as much as mgmt has indicated 
+◼ TDG says there is still M&A opportunity in Aero, though post-pandemic deals have been less impressive to investors     
+Source: Company Data, JPMe Source: Company Data, JPMe
+Comm’l AM Growth EBITDA as Defined Margin 
+
+
+=== PAGE 48 ===
+
+48
+◼ HWM has historically viewed investment in IGT capacity cautiously, but mgmt sees demand as structurally higher
+◼ Over the past few years, HWM has made modest investments, and this has contributed to strong growth in Industrial
+◼ But it is planning a more meaningful investment 2H26 to expand IGT blade capacity, which should accelerate growth
+◼ HWM remains judicious: planned capacity expansion does not match stated intentions of OEMs
+◼ HWM is a leading supplier of airfoils for Mitsubishi, GE Vernova, Siemens, and Caterpillar 
+◼ Similar to Aero, IGT airfoils are a critical parts for the hot section of turbines and increasingly sophisticated 
+◼ HWM is expanding capacity in Japan, Europe, and the US to drive IGT growth
+◼ We think this end-market’s sales will reach $925-950m at HWM this year (or ~10% of the total), with potential to grow nicely
+HWM – IGT Capacity Expansions Make Power a Future Growth Driver
+Source: Company Reports. 
+Recent Gas Turbine OEM Commentary on Capacity Additions
+Company Capacity Comments
+Siemens Annual Gas Turbine capacity was 17 GW in ‘24. Looking to increase to 22 GW (+30%) during ‘25-27. During FY28-30, it is expecting capacity to 
+grow to > 30 GW (35%+ growth vs FY25-27). 
+Mitsubishi Planning to double production capacity for gas turbines within the next two years. Original target was for a 30% increase but mgmt can indicated 
+that initial target wasn't enough. 
+GE Vernova Goal to increase annual gas turbine capacity to 20 GW in mid '26 and ~24 GW (+20%) in '28.
+Caterpillar Targeting 2.5x growth in capacity for gas turbines and 50 GW of combined capacity for large engines and gas turbines.
+
+=== PAGE 49 ===
+
+49
+◼ ATI’s stock has nearly doubled in ’25 thus far but has been quite volatile, due in part to destocking in airframe
+◼ As we move to ’26, however, destocking should abate, particularly in 2H; we model 9% Airframe growth for all of ‘26
+◼ The outlook for Jet Engine and Defense remains quite strong as well, and we model double-digit growth for each
+◼ Overall, this is driving an acceleration in y/y growth to 10% in ’26 in our model, vs 6% in ‘25
+◼ ATI has not yet guided for adj EBITDA in 2026 but our $973m estimate is a bit ahead of consensus
+◼ Our 2026 adj EBITDA margin of 19.3% would represent 70 bps of improvement
+◼ This would also put ATI nicely on track to reach ~$1.1b of adj EBITDA in ’27; the mid-point of its target from 2023
+◼ Higher capex for investments is driving FCF conversion of < 90% in ’25 but we see improvement in ’26
+◼ With consistent execution and tightly managed investor expectation, we think ATI can trade at a higher multiple
+ATI – Execution Improving; Confidence Increasing
+Source (for both): Company Reports, J.P. Morgan estimates. 
+ATI Sales and EBITDA ($mm), 1Q25-4Q26E ATI Jet Engine and Airframe Sales Growth, 
+1Q25-4Q26E
+
+
+=== PAGE 50 ===
+
+50
+◼ The capacity expansions SARO has made on LEAP and CFM56 remain a key focus area
+◼ SARO expects to end ’25 with 60 LEAP inductions (vs 10 last year) and its quarterly LEAP revenue in Q3 was 6x Q1
+◼ SARO’s new CFM56 capacity in Dallas remains sold out through ‘26; we assume output can increase beyond
+◼ Together, these programs generate losses – adjusted out as business transformation costs – but these have declined
+◼ By the middle of next year, this work should reach breakeven and then start contributing to earnings 
+◼ New capacity for bizjets and CF34 should also be growth drivers
+◼ Reported growth in 2026 will be misleadingly low due to eliminating $300-400m of low-margin pass through revenue
+◼ This will reduce working capital and improve FCF conversion. . . mainly in 2027 impact
+◼ Lower-than-expected FCF YTD has weighed on SARO, but we expect conversion to improve to 80-90% over time
+SARO – Stock Has Lagged in 2025 but StandardAero Is Making Progress
+Source (for both): Company Reports, J.P. Morgan estimates.
+Note: SARO began recognizing Business Transformation costs in 2Q23.  
+SARO Business Transformation Costs ($mm), 
+2Q23-3Q25
+SARO FCF ($mm) and FCF Conversion, 2024-
+28E
+
+
+=== PAGE 51 ===
+
+51
+◼ Mgmt is guiding for $23b of sales in 2026, or 6% organic growth 
+◼ Part of this reflects excitement around Golden Dome, where LHX should be a key space and SRM player
+◼ But Golden Dome awards haven’t come yet (i.e. SDA Tranche 3, which may slip to next year)
+◼ Separately, we see potential upside in IMS, including aircraft missionization 
+◼ AR is also expected to perform quite well, with 2H25’s strong exit rate expected to pour into 2026  
+◼ Domestic radio demand is a watch item but int’l is growing nicely and mgmt sees mid-single-digit CS growth in 2026 
+◼ LHX investor day in Feb likely to lay out multi-year targets 
+LHX – Looking Promising Into 2026
+LHX Key Financial Metrics, 2024-27E ($mm)
+Source (for both): Company Reports, JPM estimates. 
+2024 2025E 2026E 2027E
+Sales 21,325 22,000 23,221 24,354
+Adj Segment EBIT 3,301 3,471 3,736 3,946 
+Adj Segment EBIT Margin 15.5% 15.8% 16.1% 16.2%
+Adj FCF 2,609 3,007 3,190 3,395 
+LHX Sales ($mm) and Margin Expectations, 2025-26
+2025E 2026E Organic Growth
+Total Sales 22,000 23,221 6.2%
+IMS 6,512 6,760 6.0%
+SAS 7,108 7,378 3.8%
+CS 5,713 6,006 5.1%
+AR 2,901 3,311 14.2%
+Elims (234) (235)
+Adj Segment EBIT Margin 15.8% 16.1% +30 bps
+IMS 12.4% 12.4% 0 bps
+SAS 12.0% 12.5% +50 bps
+CS 25.4% 25.7% +40 bps
+AR 12.5% 13.0% +50 bps
+
+=== PAGE 52 ===
+
+52
+LMT – Struggling to Adapt 
+◼ We see 5% growth in 2026 for the third consecutive year, with ~4% in 2027-28
+◼ MFC growth should be robust, with Space at mid-single, and more modest growth in Aeronautics and RMS 
+◼ MFC can likely grow as fast as productivity will support and DoD may look for more capacity increases  
+◼ Nearly one-quarter of LMT”s 2025 FCF is net pension recoveries that should be gone by 2027 
+◼ LMT faces another ~$600m pension headwind in 2027 yet consensus shows FCF up ~$500m in 2027
+◼ 2028 should see a boost as losses on classified programs abate and so value LMT on 2028 FCF and discount back
+◼ We have grown more comfortable in recent months that LMT can sustain F-35 production at 156/yr 
+◼ But delivering on Block 4 upgrade, where LMT is dependent on others, will be challenging 
+◼ As the biggest US defense contractor, LMT is in a tough spot as DoD tries to alter the industrial base  
+LMT FCF ($mm), 2023-28E
+Source (for both): Company data, J.P. Morgan Estimates.
+*Includes 2025 classified program charges in Aero and RMS. 
+LMT Sales ($mm) and Margin Expectations, 2025-26
+2025E 2026E Growth
+Sales by Segment 74,529 78,143 4.8%
+Aeronautics 29,662 30,554 3.0%
+MFC 14,405 15,970 10.9%
+RMS 17,404 17,913 2.9%
+Space 13,058 13,706 5.0%
+Segment EBIT Margin 9.0% 10.9% +190 bps
+Aeronautics 6.9%* 9.8% +290 bps
+MFC 13.9% 13.8% -10 bps
+RMS 7.6%* 11.0% +240 bps
+Space 10.2% 9.5% -70 bps
+
+
+=== PAGE 53 ===
+
+53
+NOC – Awaiting Implications of B-21 Acceleration  
+◼ Additional reconciliation money for B-21 should help NOC on growth, learning but near-term cash implications less clear 
+◼ DoD likely to seek more NOC investment, though Section 174 reimbursements may help offset this  
+◼ NOC somewhat vulnerable to acquisition reform as a legacy contractor but B-21 and Sentinel offer protection  
+◼ Defense Systems should grow fastest in 2026 thanks to missiles/munitions, Sentinel, and IBCS
+◼ Int’l sales should be a growth and margin driver
+◼ Space should return to growth in 2026 but this is not the growth driver the market had anticipated 
+◼ F/A-XX award is a potential catalyst for NOC 
+Source: Company Data, JPMe Source: Company Data, JPMe
+NOC Sales ($mm) and Margin Expectations, 2025-26Annual Free Cash Flow
+2025E 2026E Growth
+Company-wide Sales 41,847 43,979 5.1%
+Aeronautics 12,801 13,454 5.1%
+Defense Systems 8,091 8,609 6.4%
+Mission Systems 12,515 13,075 4.5%
+Space Systems 10,690 11,010 3.0%
+Segment Margin 10.4% 11.4% +100 bps
+Aeronautics 6.3% 9.8% +350 bps
+Defense Systems 10.9% 10.5% -40 bps
+Mission Systems 14.6% 14.5% -10 bps
+Space Systems 10.9% 11.0% +10 bps
+
+=== PAGE 54 ===
+
+54
+◼ Aerospace margin improvement has slipped out but we expect movement in 2026 
+◼ We see potential to reach 16%+ with G700/800 learning, supply chain improvement, lower R&D    
+◼ But a return to ~20% is not our base case 
+◼ Investments in shipbuilding supply chain are enabling strong growth in Marine; margin expansion should be gradual
+◼ Munitions and European demand should drive Combat growth in 2026 despite US vehicle headwinds
+◼ Technologies been a bright spot despite DOGE concerns; we think GDIT and Mission can both grow in ‘26
+◼ Danny Deep’s promotion to President indicates he’s next in-line for CEO role 
+◼ Net leverage should be < 1x by Dec 31, offering balance sheet flexibility 
+GD – G700/800 Ramp, Shipbuilding Improvement Likely to Drive ‘26
+Source (for both): Company reports, J.P. Morgan estimates. 
+Marine margins, 1Q24-4Q26E
+GD Aero Margins, 2020-28E
+
+=== PAGE 55 ===
+
+55
+◼ HII has rebounded in 2025 – the stock is up > 70% – on stabilizing execution and shipbuilding funds 
+◼ Labor productivity, especially at Newport News, will be the key to improving returns over time and we are in the early days 
+◼ But a wage increase this year is helping and attrition is abating, though we don’t have specifics 
+◼ Investors assume there is upside to 2030 sales target of $15b and mgmt likely to comment after receiving next sub contracts
+◼ These cover 10 VA and 5 Columbia class subs and will reflect a more realistic cost environment 
+◼ These contracts seem unlikely to come in 2025 but we do not see this interfering with 2025 financial targets 
+◼ Even where volume growth is more muted – Ingalls, carriers --  pricing should increase, helping drive sales 
+◼ Navy reportedly considering a new frigate design based on the National Security Cutter that HII built at Ingalls 
+HII – Anticipating More Shipbuilding Growth 
+Source (for both): Company reports, J.P.M organ estimates. 
+Shipbuilding Margin, 1Q24-4Q26E Shipbuilding Growth, 2024-30E ($mm)
+
+
+=== PAGE 56 ===
+
+56
+◼ Cessna should see more y/y bizjet delivery growth as it pushes towards returning to 2019’s 200+ delivery level
+◼ Supply chain issues have slowed growth here but recent certs for Gen 2 M2, M3, and Ascend should drive a pickup
+◼ However, 2025 sales and margin should near the lower ends 
+◼ Elimination of eAviation segment will lower reported Aviation margin though this nets out at the corporate level 
+◼ Army plans to accelerate MV-75 show commitment and are likely to help over time 
+◼ But they likely won’t do much to help Bell grow earnings next year and could pull forward capex investment 
+◼ Bombardier positioned to grow profitably next year, largely due to more defense deliveries and AM growth 
+Bizjets – We See Demand Continuing to Hold Up
+Bombardier Adj EBITDA Margin, 2022-28E Cessna Deliveries, 2025-2028E
+Cessna Deliveries 2025E 2026E 2027E 2028E
+Citation M2 29 28 30 30
+Citation Jet / CJ3 32 34 35 35
+Citation Jet / CJ4 31 34 34 34
+Citation XLS 19 20 26 26
+Citation Latitude 46 44 45 48
+Citation Longitude 24 30 30 32
+Total 181 190 200 205
+Source (for both): Company reports, J.P. Morgan estimates. 
+
+=== PAGE 57 ===
+
+57
+Services – 2025 Was a Year of Winners and Losers 
+◼ Gov’t cuts and administration changes have not hit all players equally, tech heavier names like LDOS and CACI outperformed 
+◼ BAH was impacted first and it is unclear if there are additional declines in civil on deck
+◼ CACI is a growth leader, driven by diversification into tech areas and a lack of civil exposure
+◼ Leidos VA exam business looks secure through 2026 at least; Defense Systems segment has opportunity for smid-like growth 
+◼ SAIC undergoing a CEO change, but focus has shifted towards cost savings and opportunistic bids to drive value 
+◼ Amentum has gained attention recently for nuclear exposure; this is small but plays into emerging theme
+Source: Bloomberg (As of 12/18/25).   
+Post-Election Performance 
+
+
+=== PAGE 58 ===
+
+58
+Small Cap Defense - Growth Potential Interesting but Valuations Expanded  
+◼ Smaller cap defense companies had a strong year before selling off in the momentum unwind to end 2025      
+◼ Kratos has irons in the fire in many key growth areas including; hypersonics, ground stations, engines, drones, etc 
+◼ DRS top line outlook remains solid though margin outlook has faced pressure
+◼ Elbit is well-positioned to drive a third straight year of double-digit growth on the back of its land segment; we model 12%
+◼ MRCY had a year of stabilization, growth should accelerate in FY26-27
+Source: Company Data, J.P. Morgan estimates. 
+Topline Growth, JPM Small Cap Defense Coverage, 
+2025-27E
+Price to 2027 Earnings, JPM Small Cap Defense 
+Coverage
+Source: Bloomberg Finance L.P.
+
+
+=== PAGE 59 ===
+
+59
+FLY and VOYG – Looking to Gain Momentum After IPOs
+◼ FLY has seen delays in its 7th Alpha rocket launch; we assume this can happen in 1Q26
+◼ But longer-term, mgmt will need to get investors more comfortable with its ability to increase its launch cadence
+◼ Demand is not in question with strong launch backlog; focus is on execution
+◼ Recent Scitec deal can provide sales if rest of business takes longer to ramp 
+◼ Voyager continues to have opportunity in both defense and through Starlab 
+◼ Looking for awards on other missile defense interceptors, including new Golden Dome systems and SM-3
+◼ CLD-1 Phase 2 award for Starlab should come between May and July after the RFP release shortly
+Source: Bloomberg Finance L.P. as of December 18, 2025.  
+FLY & VOYG vs Small Cap Peers, FY27 EV/Sales 
+Company Name FY27 EV/Sales (Bbg)
+Firefly (OW) 2.7x
+Voyager (OW) 3.2x
+Kratos (N) 6.0x
+Rocket Lab (NC) 28.0x
+Karman (NC) 13.0x
+AeroVironment (NC) 4.4x
+Intuitive Machines (NC) 3.9x
+Redwire (NC) 2.9x
+Peers Average 8.0x
+
+=== PAGE 60 ===
+
+60
+Disclosures
+Analyst Certification: The Research Analyst(s) denoted by an “AC” on the cover of this report certifies (or, where multiple Research Analysts are primarily responsible for this report, 
+the Research Analyst denoted by an “AC” on the cover or within the document individually certifies, with respect to each security or issuer that the Research Analyst covers in this 
+research) that: (1) all of the views expressed in this report accurately reflect the Research Analyst’s personal views about any and all of the subject securities or issuers; and (2) no part of 
+any of the Research Analyst's compensation was, is, or will be directly or indirectly related to the specific recommendations or views expressed by the Research Analyst(s) in this report. 
+For all Korea-based Research Analysts listed on the front cover, if applicable, they also certify, as per KOFIA requirements, that the Research Analyst’s analysis was made in good faith 
+and that the views reflect the Research Analyst’s own opinion, without undue influence or intervention.
+All authors named within this report are Research Analysts who produce independent research unless otherwise specified. In Europe, Sector Specialists (Sales and Trading) may be 
+shown on this report as contacts but are not authors of the report or part of the Research Department.
+Important Disclosures 
+Company-Specific Disclosures: Important disclosures, including price charts and credit opinion history tables, are available for compendium reports and all J.P. Morgan–covered 
+companies, and certain non-covered companies, by visiting https://www.jpmm.com/research/disclosures, calling 1-800-477-0406, or e-mailing 
+research.disclosure.inquiries@jpmorgan.com with your request.
+Explanation of Equity Research Ratings, Designations and Analyst(s) Coverage Universe: 
+J.P. Morgan uses the following rating system: Overweight (over the duration of the price target indicated in this report, we expect this stock will outperform the average total return of the 
+stocks in the Research Analyst’s, or the Research Analyst’s team’s, coverage universe); Neutral (over the duration of the price target indicated in this report, we expect this stock will 
+perform in line with the average total return of the stocks in the Research Analyst’s, or the Research Analyst’s team’s, coverage universe); and Underweight (over the duration of the 
+price target indicated in this report, we expect this stock will underperform the average total return of the stocks in the Research Analyst’s, or the Research Analyst’s team’s, coverage 
+universe. NR is Not Rated. In this case, J.P. Morgan has removed the rating and, if applicable, the price target, for this stock because of either a lack of a sufficient fundamental basis or 
+for legal, regulatory or policy reasons. The previous rating and, if applicable, the price target, no longer should be relied upon. An NR designation is not a recommendation or a rating. 
+Some stocks under coverage have a rating but no price target; in these cases, we expect the stock will outperform/perform in line/underperform the average total return of the stocks in the 
+Research Analyst’s, or the Research Analyst’s team’s, coverage universe of the relevant duration of the region. In our Asia (ex-Australia and ex-India) and U.K. small- and mid-cap 
+Equity Research, each stock’s expected total return is compared to the expected total return of a benchmark country market index, not to those Research Analysts’ coverage universe. If it 
+does not appear in the Important Disclosures section of this report, the certifying Research Analyst’s coverage universe can be found on J.P. Morgan’s Research website, 
+https://www.jpmorganmarkets.com. 
+
+=== PAGE 61 ===
+
+61
+Disclosures
+J.P. Morgan Equity Research Ratings Distribution, as of October 04, 2025
+*Please note that the percentages may not add to 100% because of rounding.
+**Percentage of subject companies within each of the "buy," "hold" and "sell" categories for which J.P. Morgan has provided investment banking services within the previous 12 months. 
+For purposes of FINRA ratings distribution rules only, our Overweight rating falls into a buy rating category; our Neutral rating falls into a hold rating category; and our Underweight rating falls into a sell 
+rating category. Please note that stocks with an NR designation are not included in the table above. This information is current as of the end of the most recent calendar quarter.
+Equity Valuation and Risks: For valuation methodology and risks associated with covered companies or price targets for covered companies, please see the most recent company-
+specific research report at http://www.jpmorganmarkets.com, contact the primary analyst or your J.P. Morgan representative, or email research.disclosure.inquiries@jpmorgan.com. For 
+material information about the proprietary models used, please see the Summary of Financials in company-specific research reports and the Company Tearsheets, which are available to 
+download on the company pages of our client website, http://www.jpmorganmarkets.com. This report also sets out within it the material underlying assumptions used.
+History of Investment Recommendations: 
+A history of J.P. Morgan investment recommendations disseminated during the preceding 12 months can be accessed on the Research & Commentary page of 
+http://www.jpmorganmarkets.com where you can also search by analyst name, sector or financial instrument.
+Analysts' Compensation: The research analysts responsible for the preparation of this report receive compensation based upon various factors, including the quality and accuracy of 
+research, client feedback, competitive factors, and overall firm revenues. 
+Other Disclosures 
+J.P. Morgan is a marketing name for investment banking businesses of JPMorgan Chase & Co. and its subsidiaries and affiliates worldwide.
+UK MIFID FICC research unbundling exemption: UK clients should refer to UK MIFID Research Unbundling exemption for details of J.P. Morgan’s implementation of the FICC 
+research exemption and guidance on relevant FICC research categorisation. 
+All research material made available to clients are simultaneously available on our client website, J.P. Morgan Markets, unless specifically permitted by relevant laws. Not all research 
+content is redistributed, e-mailed or made available to third-party aggregators. For all research material available on a particular stock, please contact your sales representative.
+Any long form nomenclature for references to China; Hong Kong; Taiwan; and Macau within this research material are Mainland China; Hong Kong SAR (China); Taiwan (China); and 
+Macau SAR (China).
+J .P. Morgan Research may, from time to time, write on issuers or securities targeted by economic or financial sanctions imposed or administered by the governmental authorities of the 
+U.S., EU, UK or other relevant jurisdictions (Sanctioned Securities). Nothing in this report is intended to be read or construed as encouraging, facilitating, promoting or otherwise 
+approving investment or dealing in such Sanctioned Securities. Clients should be aware of their own legal and compliance obligations when making investment decisions.
+Any digital or crypto assets discussed in this research report are subject to a rapidly changing regulatory landscape. For relevant regulatory advisories on crypto assets, including bitcoin 
+and ether, please see https://www.jpmorgan.com/disclosures/cryptoasset-disclosure.
+ 
+Overweight 
+(buy) 
+Neutral 
+(hold) 
+Underweight 
+(sell) 
+J.P. Morgan Global Equity Research Coverage* 50% 38% 12% 
+    IB clients** 50% 48% 35% 
+JPMS Equity Research Coverage* 48% 40% 12% 
+    IB clients** 73% 69% 52% 
+ 
+
+=== PAGE 62 ===
+
+62
+Disclosures
+The author(s) of this research report may not be licensed to carry on regulated activities in your jurisdiction and, if not licensed, do not hold themselves out as being able to do so. 
+Exchange-Traded Funds (ETFs): J.P. Morgan Securities LLC (“JPMS”) acts as authorized participant for substantially all U.S.-listed ETFs. To the extent that any ETFs are 
+mentioned in this report, JPMS may earn commissions and transaction-based compensation in connection with the distribution of those ETF shares and may earn fees for
+performing other trade-related services, such as securities lending to short sellers of the ETF shares. JPMS may also perform services for the ETFs themselves, including acting as 
+a broker or dealer to the ETFs. In addition, affiliates of JPMS may perform services for the ETFs, including trust, custodial, administration, lending, index calculation and/or 
+maintenance and other services. 
+Options and Futures related research: If the information contained herein regards options- or futures-related research, such information is available only to persons who have 
+received the proper options or futures risk disclosure documents. Please contact your J.P. Morgan Representative or visit https://www.theocc.com/components/docs/riskstoc.pdf for 
+a copy of the Option Clearing Corporation's Characteristics and Risks of Standardized Options or https://www.finra.org/sites/default/files/2020-
+08/Security_Futures_Risk_Disclosure_Statement_2020.pdf for a copy of the Security Futures Risk Disclosure Statement. 
+Changes to Interbank Offered Rates (IBORs) and other benchmark rates: Certain interest rate benchmarks are, or may in the future become, subject to ongoing international, 
+national and other regulatory guidance, reform and proposals for reform. For more information, please consult: 
+https://www.jpmorgan.com/global/disclosures/interbank_offered_rates
+Private Bank Clients: Where you are receiving research as a client of the private banking businesses offered by JPMorgan Chase & Co. and its subsidiaries (“J.P. Morgan Private 
+Bank”), research is provided to you by J.P. Morgan Private Bank and not by any other division of J.P. Morgan, including, but not limited to, the J.P. Morgan Corporate and 
+Investment Bank and its Global Research division.
+Legal entity responsible for the production and distribution of research: The legal entity identified below the name of the Reg AC Research Analyst who authored this 
+material is the legal entity responsible for the production of this research. Where multiple Reg AC Research Analysts authored this material with different legal entities identified 
+below their names, these legal entities are jointly responsible for the production of this research. Where more than one legal entity is listed under an analyst’s name, the first legal 
+entity is responsible for the production unless stated otherwise. Research Analysts from various J.P. Morgan affiliates may have contributed to the production of this material but 
+may not be licensed to carry out regulated activities in your jurisdiction (and do not hold themselves out as being able to do so). Unless otherwise stated below in the legal entity 
+disclosures, this material has been distributed by the legal entity responsible for production, or where more than one legal entity is listed under the analyst’s name, the first legal 
+entity will be responsible for distribution. If you have any queries, please contact the relevant Research Analyst in your jurisdiction or the entity in your jurisdiction that has 
+distributed this research material.
+Legal Entities Disclosures and Country-/Region-Specific Disclosures:
+Argentina: JPMorgan Chase Bank N.A Sucursal Buenos Aires is regulated by Banco Central de la República Argentina (“BCRA”- Central Bank of Argentina) and Comisión 
+Nacional de Valores (“CNV”- Argentinian Securities Commission - ALYC y AN Integral N°51). 
+Australia: J.P. Morgan Securities Australia Limited (“JPMSAL”) (ABN 61 003 245 234/AFS Licence No: 238066) is regulated by the Australian Securities and Investments 
+Commission and is a Market Participant of ASX Limited, a Clearing and Settlement Participant of ASX Clear Pty Limited and a Clearing Participant of ASX Clear (Futures) Pty 
+Limited. This material is issued and distributed in Australia by or on behalf of JPMSAL only to "wholesale clients" (as defined in section 761G of the Corporations Act 2001). A 
+list of all financial products covered can be found by visiting https://www.jpmm.com/research/disclosures. J.P. Morgan seeks to cover companies of relevance to the domestic and 
+international investor base across all Global Industry Classification Standard (GICS) sectors, as well as across a range of market capitalisation sizes. If applicable, in the course of 
+conducting public side due diligence on the subject company(ies), the Research Analyst team may at times perform such diligence through corporate engagements such as site 
+visits, discussions with company representatives, management presentations, etc. Research issued by JPMSAL has been prepared in accordance with J.P. Morgan Australia’s 
+Research Independence Policy which can be found at the following link: J.P. Morgan Australia - Research Independence Policy. 
+
+=== PAGE 63 ===
+
+63
+Disclosures
+Brazil: Banco J.P. Morgan S.A. is regulated by the Comissao de Valores Mobiliarios (CVM) and by the Central Bank of Brazil. Ombudsman J.P. Morgan: 0800-7700847 / 0800-
+7700810 (For Hearing Impaired) / ouvidoria.jp.morgan@jpmchase.com. 
+Canada: J.P. Morgan Securities Canada Inc. is a registered investment dealer, regulated by the Canadian Investment Regulatory Organization and the Ontario Securities 
+Commission and is the participating member on Canadian exchanges. This material is distributed in Canada by or on behalf of J.P.Morgan Securities Canada Inc. 
+Chile: Inversiones J.P. Morgan Limitada is an unregulated entity incorporated in Chile. 
+China: J.P. Morgan Securities (China) Company Limited has been approved by CSRC to conduct the securities investment consultancy business. 
+Colombia: Banco J.P. Morgan Colombia S.A. is supervised by the Superintendencia Financiera de Colombia (SFC).
+Dubai International Financial Centre (DIFC): JPMorgan Chase Bank, N.A., Dubai Branch is regulated by the Dubai Financial Services Authority (DFSA) and its registered 
+address is Dubai International Financial Centre - The Gate, West Wing, Level 3 and 9 PO Box 506551, Dubai, UAE. This material has been distributed by JP Morgan  Chase 
+Bank, N.A., Dubai Branch to persons regarded as professional clients or market counterparties as defined under the DFSA rules. 
+European Economic Area (EEA): Unless specified to the contrary, research is distributed in the EEA by J.P. Morgan SE (“JPM SE”), which is authorised as a credit institution 
+by the Federal Financial Supervisory Authority (Bundesanstalt für Finanzdienstleistungsaufsicht, BaFin) and jointly supervised by the BaFin, the German Central Bank (Deutsche 
+Bundesbank) and the European Central Bank (ECB). JPM SE is a company headquartered in Frankfurt with registered address at TaunusTurm, Taunustor 1, Frankfurt am Main, 
+60310, Germany. The material has been distributed in the EEA to persons regarded as professional investors (or equivalent) pursuant to Art. 4 para. 1 no. 10 and Annex II of 
+MiFID II and its respective implementation in their home jurisdictions (“EEA professional investors”). This material must not be acted on or relied on by persons who are not EEA 
+professional investors. Any investment or investment activity to which this material relates is only available to EEA relevant persons and will be engaged in only with EEA 
+relevant persons. 
+Hong Kong: J.P. Morgan Securities (Asia Pacific) Limited (CE number AAJ321) is regulated by the Hong Kong Monetary Authority and the Securities and Futures Commission 
+in Hong Kong, and J.P. Morgan Broking (Hong Kong) Limited (CE number AAB027) is regulated by the Securities and Futures Commission in Hong Kong. JP Morgan Chase 
+Bank, N.A., Hong Kong Branch (CE Number AAL996) is regulated by the Hong Kong Monetary Authority and the Securities and Futures Commission, is organized under the 
+laws of the United States with limited liability. Where the distribution of this material is a regulated activity in Hong Kong, the material is distributed in Hong Kong by or through 
+J.P. Morgan Securities (Asia Pacific) Limited and/or J.P. Morgan Broking (Hong Kong) Limited. 
+India: J.P. Morgan India Private Limited (Corporate Identity Number - U67120MH1992FTC068724), having its registered office at J.P. Morgan Tower, Off. C.S.T. Road, Kalina, 
+Santacruz - East, Mumbai – 400098, is registered with the Securities and Exchange Board of India (SEBI) as a ‘Research Analyst’ having registration number INH000001873. J.P. 
+Morgan India Private Limited is also registered with SEBI as a member of the National Stock Exchange of India Limited and the Bombay Stock Exchange Limited (SEBI 
+Registration Number – INZ000239730) and as a Merchant Banker (SEBI Registration Number - MB/INM000002970). Telephone: 91-22-6157 3000, Facsimile: 91-22-6157 3990 
+and Website: http://www.jpmipl.com. JPMorgan Chase Bank, N.A. - Mumbai Branch is licensed by the Reserve Bank of India (RBI) (Licence No. 53/ Licence No. BY.4/94; SEBI 
+- IN/CUS/014/ CDSL : IN-DP-CDSL-444-2008/ IN-DP-NSDL-285-2008/ INBI00000984/ INE231311239) as a Scheduled Commercial Bank in India, which is its primary license 
+allowing it to carry on Banking business in India and other activities, which a Bank branch in India are permitted to undertake. For non-local research material, this material is not 
+distributed in India by J.P. Morgan India Private Limited. Compliance Officer: Pranav Sata; pranav.d.sata@jpmchase.com; +912261573209. Grievance Officer: Ramprasadh K, 
+jpmipl.research.feedback@jpmorgan.com; +912261573000. Registration granted by SEBI and certification from NISM in no way guarantee performance of the intermediary or 
+provide any assurance of returns to investors. Please visit Terms and Conditions and Most Important Terms and Conditions (MITC). The annual Compliance audit report is 
+available at http://www.jpmipl.com/#research. 
+Indonesia: PT J.P. Morgan Sekuritas Indonesia is a member of the Indonesia Stock Exchange and is registered and supervised by the Otoritas Jasa Keuangan (OJK). 
+Korea: J.P. Morgan Securities (Far East) Limited, Seoul Branch, is a member of the Korea Exchange (KRX). JPMorgan Chase Bank, N.A., Seoul Branch, is licensed as a branch 
+office of foreign bank (JPMorgan Chase Bank, N.A.) in Korea. Both entities are regulated by the Financial Services Commission (FSC) and the Financial Supervisory Service 
+(FSS). For non-macro research material, the material is distributed in Korea by or through J.P. Morgan Securities (Far East) Limited, Seoul Branch. 
+Japan: JPMorgan Securities Japan Co., Ltd. and JPMorgan Chase Bank, N.A., Tokyo Branch are regulated by the Financial Services Agency in Japan. 
+Malaysia: This material is issued and distributed in Malaysia by JPMorgan Securities (Malaysia) Sdn Bhd (18146-X), which is a Participating Organization of Bursa Malaysia 
+Berhad and holds a Capital Markets Services License issued by the Securities Commission in Malaysia. 
+Mexico: J.P. Morgan Casa de Bolsa, S.A. de C.V. and J.P. Morgan Grupo Financiero are members of the Mexican Stock Exchange and are authorized to act as a broker dealer by 
+the National Banking and Securities Exchange Commission. 
+
+=== PAGE 64 ===
+
+64
+Disclosures
+New Zealand: This material is issued and distributed by JPMSAL in New Zealand only to "wholesale clients" (as defined in the Financial Markets Conduct Act 2013). JPMSAL is 
+registered as a Financial Service Provider under the Financial Service providers (Registration and Dispute Resolution) Act of 2008. 
+Philippines: J.P. Morgan Securities Philippines Inc. is a Trading Participant of the Philippine Stock Exchange and a member of the Securities Clearing Corporation of the Philippines and 
+the Securities Investor Protection Fund. It is regulated by the Securities and Exchange Commission. 
+Singapore: This material is issued and distributed in Singapore by or through J.P. Morgan Securities Singapore Private Limited (JPMSS) [MDDI (P) 057/08/2025 and Co. Reg. No.: 
+199405335R], which is a member of the Singapore Exchange Securities Trading Limited, and/or JPMorgan Chase Bank, N.A., Singapore branch (JPMCB Singapore), both of which are 
+regulated by the Monetary Authority of Singapore. This material is issued and distributed in Singapore only to accredited investors, expert investors and institutional investors, as defined 
+in Section 4A of the Securities and Futures Act, Cap. 289 (SFA). This material is not intended to be issued or distributed to any retail investors or any other investors that do not fall into 
+the classes of “accredited investors,” “expert investors” or “institutional investors,” as defined under Section 4A of the SFA. Recipients of this material in Singapore are to contact 
+JPMSS or JPMCB Singapore in respect of any matters arising from, or in connection with, the material. 
+South Africa: J.P. Morgan Equities South Africa Proprietary Limited and JPMorgan Chase Bank, N.A., Johannesburg Branch are members of the Johannesburg Securities Exchange and 
+are regulated by the Financial Services Conduct Authority (FSCA). 
+Taiwan: J.P. Morgan Securities (Taiwan) Limited is a participant of the Taiwan Stock Exchange (company-type) and regulated by the Taiwan Securities and Futures Bureau. Material 
+relating to equity securities is issued and distributed in Taiwan by J.P. Morgan Securities (Taiwan) Limited, subject to the license  scope and the applicable laws and the regulations in 
+Taiwan. To the extent that J.P. Morgan Securities (Taiwan) Limited produces research materials on securities not listed on the Taiwan Stock Exchange or Taipei Exchange (“Non-Taiwan 
+Listed Securities”), these materials shall not constitute securities recommendations for the purpose of applicable Taiwan regulations, and, for the avoidance of doubt, J.P. Morgan 
+Securities (Taiwan) Limited does not act as broker for Non-Taiwan Listed Securities. According to Paragraph 2, Article 7-1 of Operational Regulations Governing Securities Firms 
+Recommending Trades in Securities to Customers (as amended or supplemented) and/or other applicable laws or regulations, please note that the recipient of this material is not 
+permitted to engage in any activities in connection with the material that may give rise to conflicts of interests, unless otherwise disclosed in the “Important Disclosures” in this material. 
+Thailand: This material is issued and distributed in Thailand by JPMorgan Securities (Thailand) Ltd., which is a member of the Stock Exchange of Thailand and is regulated by the 
+Ministry of Finance and the Securities and Exchange Commission, and its registered address is 3rd Floor, 20 North Sathorn Road, Silom, Bangrak, Bangkok 10500. 
+UK: Research is produced in the UK by J.P. Morgan Securities plc (“JPMS plc”) which is a member of the London Stock Exchange and is authorised by the Prudential Regulation 
+Authority and regulated by the Financial Conduct Authority and the Prudential Regulation Authority or J.P. Morgan Markets Limited (“JPMML Ltd”) which is authorised and regulated 
+by the Financial Conduct Authority. Unless specified to the contrary, this material is distributed in the UK by JPMS plc and is directed in the UK only to: (a) persons having professional 
+experience in matters relating to investments falling within article 19(5) of the Financial Services and Markets Act 2000 (Financial Promotion) (Order) 2005 (“the FPO”); (b) persons 
+outlined in article 49 of the FPO (high net worth companies, unincorporated associations or partnerships, the trustees of high value trusts, etc.); or (c) any persons to whom this 
+communication may otherwise lawfully be made; all such persons being referred to as "UK relevant persons". This material must not be acted on or relied on by persons who are not UK 
+relevant persons. Any investment or investment activity to which this material relates is only available to UK relevant persons and will be engaged in only with UK relevant persons. A 
+description of J.P. Morgan EMEA’s policy for prevention and avoidance of conflicts of interest related to the production of Research can be found at the following link: J.P. Morgan 
+EMEA - Research Independence Policy. 
+U.S.: J.P. Morgan Securities LLC (“JPMS”) is a member of the NYSE, FINRA, SIPC, and the NFA. JPMorgan Chase Bank, N.A. is a member of the FDIC. Material published by non-
+U.S. affiliates is distributed in the U.S. by JPMS who accepts responsibility for its content.
+General: Additional information is available upon request. The information in this material has been obtained from sources believed to be reliable. While all reasonable care has been 
+taken to ensure that the facts stated in this material are accurate and that the forecasts, opinions and expectations contained herein are fair and reasonable, JPMorgan Chase & Co. or its 
+affiliates and/or subsidiaries (collectively J.P. Morgan) make no representations or warranties whatsoever to the completeness or accuracy of the material provided, except with respect to 
+any disclosures relative to J.P. Morgan and the Research Analyst's involvement with the issuer that is the subject of the material. Accordingly, no reliance should be placed on the 
+accuracy, fairness or completeness of the information contained in this material. There may be certain discrepancies with data and/or limited content in this material as a result of 
+calculations, adjustments, translations to different languages, and/or local regulatory restrictions, as applicable. These discrepancies should not impact the overall investment analysis, 
+views and/or recommendations of the subject company(ies) that may be discussed in the material. Artificial intelligence tools may have been used in the preparation of this material, 
+including assisting in data analysis, pattern recognition, and content drafting for research material. J.P. Morgan accepts no liability whatsoever for any loss arising from any use of this 
+material or its contents, and neither J.P. Morgan nor any of its respective directors, officers or employees, shall be in any way responsible for the contents hereof, apart from the liabilities
+
+=== PAGE 65 ===
+
+65
+Disclosures
+and responsibilities that may be imposed on them by the relevant regulatory authority in the jurisdiction in question, or the regulatory regime thereunder. Opinions, forecasts or
+projections contained in this material represent J.P. Morgan's current opinions or judgment as of the date of the material only and are therefore subject to change without notice. 
+Periodic updates may be provided on companies/industries based on company-specific developments or announcements, market conditions or any other publicly available 
+information. There can be no assurance that future results or events will be consistent with any such opinions, forecasts or projections, which represent only one possible outcome. 
+Furthermore, such opinions, forecasts or projections are subject to certain risks, uncertainties and assumptions that have not been verified, and future actual results or events could 
+differ materially. The value of, or income from, any investments referred to in this material may fluctuate and/or be affected by
+changes in exchange rates. All pricing is indicative as of the close of market for the securities discussed, unless otherwise stated. Past performance is not indicative of future results. 
+Accordingly, investors may receive back less than originally invested. This material is not intended as an offer or solicitation for the purchase or sale of any financial instrument. The 
+opinions and recommendations herein do not take into account individual client circumstances, objectives, or needs and are not intended as recommendations of particular securities, 
+financial instruments or strategies to particular clients. This material may include views on structured securities, options, futures and other derivatives. These are complex 
+instruments, may involve a high degree of risk and may be appropriate investments only for sophisticated investors who are capable of understanding and assuming the risks 
+involved. The recipients of this material must make their own independent decisions regarding any securities or financial instruments mentioned herein and should seek  advice from 
+such independent financial, legal, tax or other adviser as they deem necessary. J.P. Morgan may trade as a principal on the basis of the Research Analysts’ views and research, and it 
+may also engage in transactions for its own account or for its clients’ accounts in a manner inconsistent with the views taken in this material, and J.P. Morgan is under no obligation 
+to ensure that such other communication is brought to the attention of any recipient of this material. Others within J.P. Morgan, including Strategists, Sales staff and other Research 
+Analysts, may take views that are inconsistent with those taken in this material. Employees of J.P. Morgan not involved in the preparation of this material may have investments in 
+the securities (or derivatives of such securities) mentioned in this material and may trade them in ways different from those discussed in this material. This material is not an 
+advertisement for or marketing of any issuer, its products or services, or its securities in any jurisdiction.
+Confidentiality and Security Notice: This transmission may contain information that is privileged, confidential, legally privileged, and/or exempt from disclosure under applicable 
+law. If you are not the intended recipient, you are hereby notified that any disclosure, copying, distribution, or use of the information contained herein (including any reliance 
+thereon) is STRICTLY PROHIBITED. Although this transmission and any attachments are believed to be free of any virus or other defect that might affect any computer system into 
+which it is received and opened, it is the responsibility of the recipient to ensure that it is virus free and no responsibility is accepted by JPMorgan Chase & Co., its subsidiaries and 
+affiliates, as applicable, for any loss or damage arising in any way from its use. If you received this transmission in error, please immediately contact the sender and destroy the 
+material in its entirety, whether in electronic or hard copy format. This message is subject to electronic monitoring: https://www.jpmorgan.com/disclosures/email 
+MSCI: Certain information herein (“Information”) is reproduced by permission of MSCI Inc., its affiliates and information providers (“MSCI”) ©2025. No reproduction or 
+dissemination of the Information is permitted without an appropriate license. MSCI MAKES NO EXPRESS OR IMPLIED WARRANTIES (INCLUDING MERCHANTABILITY 
+OR FITNESS) AS TO THE INFORMATION AND DISCLAIMS ALL LIABILITY TO THE EXTENT PERMITTED BY LAW. No Information constitutes investment advice, 
+except for any applicable Information from MSCI ESG Research. Subject also to msci.com/disclaimer 
+Sustainalytics: Certain information, data, analyses and opinions contained herein are reproduced by permission of Sustainalytics and: (1) includes the proprietary information of 
+Sustainalytics; (2) may not be copied or redistributed except as specifically authorized; (3) do not constitute investment advice nor an endorsement of any product or project; (4) are 
+provided solely for informational purposes; and (5) are not warranted to be complete, accurate or timely. Sustainalytics is not responsible for any trading decisions, damages or other 
+losses related to it or its use. The use of the data is subject to conditions available at https://www.sustainalytics.com/legal-disclaimers. ©2025 Sustainalytics. All Rights Reserved. 
+"Other Disclosures" last revised November 08, 2025.
+Copyright 2025 JPMorgan Chase & Co. All rights reserved. This material or any portion hereof may not be reprinted, sold or redistributed without the written consent of 
+J.P. Morgan. It is strictly prohibited to use or share without prior written consent from J.P. Morgan any research material received from J.P. Morgan or an authorized 
+third-party (“J.P. Morgan Data”) in any third-party artificial intelligence (“AI”) systems or models when such J.P. Morgan Data is accessible by a third-party. It is 
+permissible to use J.P. Morgan Data for internal business purposes only in an AI system or model that protects the confidentiality of J.P. Morgan Data so as to prevent any 
+and all access to or use of such J.P. Morgan Data by any third-party. #$J&098$#*P 
+Completed 19 Dec 2025 03:20 AM EST Disseminated 19 Dec 2025 03:20 AM EST

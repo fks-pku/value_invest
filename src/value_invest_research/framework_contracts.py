@@ -1367,6 +1367,75 @@ def validate_report_contract_markdown(
                         "instead of repeating a lens-level timeline"
                     ),
                 )
+            demand_party_match = re.search(
+                r"^#### Q1 需求方\s*$([\s\S]*?)(?=^#### |^### 最新结论与趋势)",
+                markdown,
+                flags=re.MULTILINE,
+            )
+            if demand_party_match:
+                demand_party_block = demand_party_match.group(1)
+                current_at = demand_party_block.find("**当前需求方**")
+                future_at = demand_party_block.find("**潜在未来需求方**")
+                if current_at < 0 or future_at <= current_at:
+                    _issue(
+                        issues,
+                        "error",
+                        "markdown_demand_party_groups",
+                        (
+                            "Q1 demand-party list must render current demanders "
+                            "before potential future demanders"
+                        ),
+                    )
+                for forbidden in (
+                    "**当前结论：**",
+                    "**截面变化与评估：**",
+                    "| 材料（含链接） | 类型 | 观点列表 |",
+                ):
+                    if forbidden in demand_party_block:
+                        _issue(
+                            issues,
+                            "error",
+                            "markdown_demand_party_scope",
+                            "Q1 demand-party list must not render snapshot or material detail",
+                        )
+                        break
+            demand_quantity_match = re.search(
+                r"^#### Q2 当前需求量基线\s*$([\s\S]*?)(?=^#### |^### 最新结论与趋势)",
+                markdown,
+                flags=re.MULTILINE,
+            )
+            if demand_quantity_match:
+                demand_quantity_block = demand_quantity_match.group(1)
+                classified_at = demand_quantity_block.find("##### 1. 分类映射预测")
+                other_at = demand_quantity_block.find("##### 2. 其它预测")
+                if classified_at < 0 or other_at <= classified_at:
+                    _issue(
+                        issues,
+                        "error",
+                        "markdown_demand_quantity_groups",
+                        (
+                            "Q2 demand quantity matrix must render classified "
+                            "forecasts before other forecasts"
+                        ),
+                    )
+                for required_header in (
+                    "| Q1 需求方 | 当前数量 / 预测 | 口径与期间 | 映射质量 | 来源与局限 |",
+                    "| 预测对象 | 当前数量 / 预测 | 期间 | 来源与未映射原因 |",
+                ):
+                    if required_header not in demand_quantity_block:
+                        _issue(
+                            issues,
+                            "error",
+                            "markdown_demand_quantity_tables",
+                            "Q2 demand quantity matrix is missing a locked table",
+                        )
+                if "**截面变化与评估：**" in demand_quantity_block:
+                    _issue(
+                        issues,
+                        "error",
+                        "markdown_demand_quantity_scope",
+                        "Q2 demand quantity matrix must not render entity snapshots",
+                    )
             if markdown.count("**截面变化与评估：**") < 1:
                 _issue(
                     issues,
@@ -1651,6 +1720,79 @@ def _validate_standalone_bom_report_html(
                 "standalone_html_claim_bullets",
                 "every entity material row must render at least one bullet claim",
             )
+        demand_party_nodes = re.findall(
+            r'<article\b[^>]*\bdata-render-mode=["\']demand-party-list["\'][^>]*>(.*?)</article>',
+            html,
+            flags=re.IGNORECASE | re.DOTALL,
+        )
+        for demand_party_node in demand_party_nodes:
+            current_at = demand_party_node.find(
+                'data-demand-party-group="current"'
+            )
+            future_at = demand_party_node.find(
+                'data-demand-party-group="potential_future"'
+            )
+            if current_at < 0 or future_at <= current_at:
+                _issue(
+                    issues,
+                    "error",
+                    "standalone_html_demand_party_groups",
+                    (
+                        "Q1 demand-party list must render current demanders "
+                        "before potential future demanders"
+                    ),
+                )
+            if any(
+                marker in demand_party_node
+                for marker in (
+                    'class="state-badge',
+                    'class="logic-conclusion',
+                    'class="entity-module',
+                    'class="entity-table',
+                )
+            ):
+                _issue(
+                    issues,
+                    "error",
+                    "standalone_html_demand_party_scope",
+                    "Q1 demand-party list must not render snapshot or material detail",
+                )
+        demand_quantity_nodes = re.findall(
+            r'<article\b[^>]*\bdata-render-mode=["\']demand-quantity-matrix["\'][^>]*>(.*?)</article>',
+            html,
+            flags=re.IGNORECASE | re.DOTALL,
+        )
+        for demand_quantity_node in demand_quantity_nodes:
+            classified_at = demand_quantity_node.find(
+                'data-demand-forecast-group="classified"'
+            )
+            other_at = demand_quantity_node.find(
+                'data-demand-forecast-group="other"'
+            )
+            if classified_at < 0 or other_at <= classified_at:
+                _issue(
+                    issues,
+                    "error",
+                    "standalone_html_demand_quantity_groups",
+                    (
+                        "Q2 demand quantity matrix must render classified "
+                        "forecasts before other forecasts"
+                    ),
+                )
+            if any(
+                marker in demand_quantity_node
+                for marker in (
+                    'class="entity-module',
+                    'class="entity-table',
+                    'class="logic-node-detail',
+                )
+            ):
+                _issue(
+                    issues,
+                    "error",
+                    "standalone_html_demand_quantity_scope",
+                    "Q2 demand quantity matrix must not render entity snapshots",
+                )
         for table_body in re.findall(
             r'<table class="entity-table">(.*?)</table>',
             html,

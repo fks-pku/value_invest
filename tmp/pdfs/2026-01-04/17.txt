@@ -1,0 +1,85 @@
+
+
+=== PAGE 1 ===
+
+Allen Chang 
+.L.C.  
+Verena Jeng 
++852-2978-1681 |
+Goldman Sachs (As
+Ting Song 
++852-2978-6466 |
+Goldman Sachs (As
+China CPO: RoboTechnik (300757.SZ; NC): Mgmt. call: SiPh driving 
+growth; opto-electronic components automated assembly and testing 
+30 December 2025 | 8:10PM HKT
+We talked to RoboTechnik’s (300757.SZ, Not Covered) management recently. 
+RoboTechnik entered the CPO (Co-Packaged Optics) market via the acquisition of 
+FiconTEC (private, Announcement link), which is a global leader in automated 
+assembly and testing systems for integrated photonic devices and high-end 
+opto-electronic components. In Oct 2025, FiconTEC launched DLT-D1, a multi-site 
+die-level tester for double-sided compact 3D CPO optical engines, capturing the 
+demand for 2.5D and 3D CPO architectures in AI infrastructure (link). Management 
+remains positive on its high-precision automated equipment for assembly and 
+testing, and aims to expand capacity ahead.  
+Read across to Optical modules: Management’s positive tone on the end demand 
+for SiPh (Silicon Photonics) optical modules echoes our positive view on networking 
+under AI infrastructure cycle. SiPh carries a more compact and simple structure that 
+reduces components costs and allows better production efficiency, and we expect to 
+see rising contribution from Silicon Photonics in 800G/ 1.6T optical modules. Buy: 
+Innolight, Eoptolink, Landmark, VPEC, TFC Optical.  
+Company profile: RoboTechnik (300757.SZ) was established in 2011 and started 
+with the photovoltaic cell manufacturing equipment business. In 2020, the company 
+invested in FiconTEC, a German company providing automated assembly and testing 
+equipment for integrated photonic devices and high-end opto-electronic 
+components, leading the company to enter SiPh / CPO market, participating in AI 
+infrastructure. FiconTEC becomes RoboTechnik’s subsidiary in 2025.  
+Key takeaways: 
+1. Automated assembly and testing system: The company owns auto align 
+technology with advanced AI / Machine Learning algorithms, which enables 
+multi-axis and high-precision alignments, fulfilling customers’ requirements on 
+800G+ SiPh or CPO products. For the machine vision, management mentioned that 
+RoboTechnik’s accumulated experiences in image processing and alignment 
+algorithms, along with the multiple camera system used, empowering the precise 
+motion control of their equipment (for example, defects detection as small as 
+0.5μm). 
+2. SiPh and CPO opportunities: Management sees the rising end demand for SiPh 
+solutions, along with increasing data volume for AI model training and higher 
+requirement for computing efficiency. The AI infrastructure cycle drives demand on 
+ 
+Equity Research
+3ab8f2aafeb711dfb52c00215ad26546
+30 December 2025 | 8:10PM HKT
+1
+
+
+=== PAGE 2 ===
+
+(1) automated testing and assembly for opto-electronic components, including 
+wafer-level testing; (2) higher requirement from SiPh given compact and highly 
+integrated PICs; and (3) CPO to further drive demand of precise positioning.  
+3. Business expansion plan: RoboTechnik’s equipment revenues related to optical 
+module / optical engine increased 229% YoY in 1H25, and management aims to keep 
+expanding the business to capture the rising end demand. The company has plants in 
+Germany and Estonia, and plans to set up production lines in mainland China and 
+expand its sales and technical support team, providing localized production and services 
+in key regions. The company aims to increase R&D engineers to support the expansion.  
+ 
+Exhibit 1: ficonTEC end-to-end solution for Silicon photonics products’ testing and 
+manufacturing 
+ 
+ 
+Source: Company data
+Goldman Sachs China CPO
+3ab8f2aafeb711dfb52c00215ad26546
+2
+
+
+=== PAGE 3 ===
+
+Disclosure Appendix 
+ 
+ 
+Goldman Sachs China CPO
+3ab8f2aafeb711dfb52c00215ad26546
+3

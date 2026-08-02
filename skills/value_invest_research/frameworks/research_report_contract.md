@@ -95,6 +95,21 @@ Each HTML section contains exactly:
    entity evidence. Do not render confidence scores; show auditable evidence
    conditions instead.
 
+The demand-side Q1 `需求方` node is one narrow rendering exception. If the
+playbook declares `render_mode: demand_party_list`, the node renders only two
+non-empty groups in this order: `当前需求方`, then `潜在未来需求方`. It does not
+render a state badge, current conclusion, change assessment, evidence counts,
+company/entity disclosures, or material tables. Business scenarios, tasks,
+systems, component specifications, procurement channels, and quantities must not
+appear in this block. Q2 owns the current quantity baseline.
+
+If Q2 declares `render_mode: demand_quantity_matrix`, render exactly two groups in
+this order: `分类映射预测`, then `其它预测`. The first table contains `Q1 需求方 |
+当前数量 / 预测 | 口径与期间 | 映射质量 | 来源与局限`; it covers every current
+Q1 demander and may use explicit gap rows. The second table contains `预测对象 |
+当前数量 / 预测 | 期间 | 来源与未映射原因`. Do not render Q2 entity snapshots or
+material tables in parallel with this matrix, and do not sum incompatible rows.
+
 The locked evidence coordinate is:
 
 ```text

@@ -1,0 +1,3134 @@
+
+
+=== PAGE 1 ===
+
+7T2se3r0Ot6kwoPa
+7T2se3r0Ot6kwoPa
+Distributed on: 03/12/2025 05:05:05 GMT
+Distributed on: 03/12/2025 05:05:05 GMT
+3 December 2025
+Deutsche Bank
+Research
+           Rating          
+           Hold          
+          
+       Europe       
+       Switzerland       
+      
+          Healthcare & Medical 
+Devices          
+          Medical Devices          
+     
+      Company      
+      Ypsomed     
+      Date      
+            
+      
+Initiation of Coverage
+     
+Getting in shape takes time, even with 
+GLP-1 - Initiating with Hold
+Step change in growth/margin algorithm later than hoped; fairly valued
+Ypsomed (YPSN) is a leading developer and manufacturer of drug delivery injection 
+systems for self-medication (autoinjectors/pens). YPSN has recently divested its 
+lower growth/margin Diabetes Care business to focus solely on delivery systems. 
+While this should result in a step change in its growth/margin algorithm, new 
+medium-term targets fell short of expectations on core growth, timing (divestments 
+drag down growth) and margins (slightly declining). With this setup and against our 
+expectation of sales/adj.EBIT/adj.EPS 9%/14%/17% FY25-29 CAGRs, we consider 
+the shares fairly valued at 26x P/E 2026/27. Hold.
+Significant GLP-1 volumes expected from Novo CagriSema contract
+YPSN has struck a partnership with Novo Nordisk to supply the autoinjector for its 
+GLP-1 CagriSema (exp. launch 2027). This should boost volumes significantly and 
+is likely a major part of the ongoing capacity tripling from ~300m to ~1bn devices 
+per year from 2030. Still, no single customer should exceed 15% of sales in the mid 
+term and YPSN claims to work with 27/30 of the largest pharma companies 
+worldwide.
+A global leader supplying the strongly growing injectables market
+YPSN (72% family owned) should be the #2 in the autoinjector market with 30-40% 
+share (#1 private SHL Medical >50% DBe). This market should grow double-digits 
+due to drug innovation in injectables, increasing biosimilar penetration, and trends 
+to more personalized medicine/self-administration (e.g. GLP-1s).
+Initiating coverage with Hold and a target price of CHF 345
+Prepayments, divestments, operating cash flow and low leverage should be 
+sufficient for YPSN's CHF 1.5bn expansion. Still, we consider the shares fairly 
+valued at 26x P/E 2026/27E, also based on our detailed peer group analysis. 
+Combined with a DCF we arrive at our CHF 345 TP. Key risks relate to lesser/greater 
+oral medication adoption, customer/therapeutic area concentration, under/
+overcapacity, competition, lack of innovation, product recalls, supply chain and FX.
+Fynn Scherzler
+Research Analyst
++49-69-910-40764
+Falko Friedrichs
+Research Analyst
++49-69-910-36270
+Jan Koch, CFA
+Research Analyst
++49-69-910-47428
+Sachin Gadilingappa
+Research Associate
+Price/price relative
+     
+Ypsomed – (Rebased)
+2023 2024 2025
+200
+400
+0
+600
+    Performance (%) 1m 3m 12m
+Absolute 4.1-17.0 -8.1
+SPI Swiss Performance IX 4.0 4.6 12.7
+Source: Deutsche Bank
+Deutsche Bank AG
+IMPORTANT RESEARCH DISCLOSURES AND ANALYST CERTIFICATIONS LOCATED IN APPENDIX 1. Deutsche Bank does 
+and seeks to do business with companies covered in its research reports. Thus, investors should be aware that the firm may 
+have a conflict of interest that could affect the objectivity of this report. Investors should consider this report as only a single 
+factor in making their investment decision.    
+Price at 1 Dec 2025 (CHF) 328.00
+Price Target (CHF) 345.00
+52-week range (CHF) 436.00 - 
+306.00
+ Valuation & Risks 
+Reuters Bloomberg Exchange Ticker
+YPSN.S YPSN SW SWX YPSN
+Forecasts and ratios
+Year End Mar 31 2025A 2026E 2027E 2028E
+Revenue (CHF) 749 729 694 776
+EBITDA (CHFm) 193 353 303 341
+P/E (DB EPS) (x) 59.1 33.7 25.8 23.3
+Source: Deutsche Bank estimates, company data
+
+=== PAGE 2 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Page 2 Deutsche Bank AG
+Table Of Contents
+Executive summary............................................................3
+Company snapshot............................................................................................3
+Key points..........................................................................................................3
+Forecasts...........................................................................................................5
+Valuation & risks................................................................................................6
+Company profile.................................................................8
+Ypsomed in charts.............................................................................................8
+Company overview..........................................................................................10
+Market overview...............................................................25
+Market snapshot..............................................................................................25
+Financials.........................................................................34
+Historical performance....................................................................................34
+Outlook............................................................................................................35
+Financial charts................................................................................................38
+Financial statements........................................................................................39
+Valuation..........................................................................42
+Peer group analysis..........................................................................................42
+Risks.................................................................................48
+
+=== PAGE 3 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Deutsche Bank AG Page 3
+Executive summary
+Company snapshot
+Ypsomed is headquartered in Burgdorf, Switzerland and is a leading developer and 
+manufacturer of drug delivery injection systems for self-medication, in particular 
+autoinjectors and pens (60/40). YPSN has divested its lower growth/margin 
+Diabetes Care business in August 2025. Instead, the company intends to focus 
+solely on its delivery system offering catering to the strongly growing biologics 
+market, including GLP-1 drugs, which should result in a step change in its growth 
+and margin algorithm over time as divestments are completed.
+YPSN should be the #2 in the autoinjector device market with 30-40% share , 
+following private peer SHL Medical  that likely holds >50%. YPSN has >130 
+customers and claims to work with 27/30 of the largest pharma companies 
+worldwide. No customer has >15% share of revenue in FY24/25, which the 
+company aims to maintain in the medium term. The company is working on >230 
+projects with them, with 70 thereof being commercial compounds. YPSN shared it 
+has secured 47 GLP-1 deals with >30 clients, including 5-10 "larger" projects.
+The company operates 7 production sites across Switzerland, Germany and China. 
+YPSN plans to open a location in the US as well as an additional site in Germany by 
+2027. YPSN is in the process of tripling its delivery system production capacity 
+from~300m at FY24/25 to ~1bn devices per year by the beginning of the next 
+decade, and the group has ~2,000 employees in its continued operations. By 
+geography, Ypsomed generated 12% of FY24/25 sales in Switzerland, 60% in 
+Europe, 7% in North America, and 21% in the Rest of the World.
+The company was founded >40 years ago in 1984 and is still majority owned by the 
+founding family with ~72% and run by the founder's son as CEO. In FY24/25, the 
+company generated sales from continued operations of CHF 501m and adj. EBIT of 
+CHF 167m (a 33.3% margin).
+Key points
+Step change in growth/margin algorithm later than hoped; fairly valued
+YPSN has decided to focus solely on its drug delivery system business going 
+forward, which caters to the strongly growing biologics market, including GLP-1 
+drugs. As a result, the company divested its lower growth/margin Diabetes Care 
+business in August 2025, as well as other smaller businesses, and intends to 
+discontinue its contract manufacturing in FY26/27 to free up capacity. We consider 
+this a sensible strategic step, which should result in a step change in YPSN's 
+growth and margin algorithm over time.
+However, new medium-term targets fell short of expectations on core growth in 
+the Delivery Systems business (~15% CAGR vs. >20% in recent years), timing, as 
+divestments drag down group growth, and margins, which will likely slightly 
+decline from currently 33% EBIT for Delivery Systems due to lower pricing of GLP-1 
+volumes despite offsetting divestments. With this changed growth and margin 
+profile of sales/adj. EBIT/adj. EPS 9%/14%/17% DBe FY25-29 CAGRs, we consider 
+the shares fairly valued at 26x P/E 2026, towards lower-end of its 5-year trading 
+range (26-40x).
+
+=== PAGE 4 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Page 4 Deutsche Bank AG
+Clear value proposition to customers
+Ypsomed offers a range of pre-developed, customizable device platforms 
+(autoinjectors, pens) that pharmaceutical companies can license, adapt and brand 
+for their own drug products. This presents a straight forward value proposition to 
+pharma companies in our view:
+n Reduced R&D costs: pharma companies can leverage YPSN's existing, 
+proven technology rather than starting from scratch ( YPSN indicates a 
+development time of 3-5 years for an entirely new platform).
+n Faster time-to-market: using an established device platform can expedite 
+regulatory approval and market launch. YPSN indicates 1-2 years from 
+project start to being ready for the clinic for customers using its platforms.
+n Manufacturing expertise: YPSN has specialized expertise in high-volume, 
+high-quality manufacturing of complex medical devices.
+n Customization: while based on platforms, devices can be customized in 
+terms of design, branding, and specific features to meet the drug's 
+requirements.
+This is especially true for smaller and medium-sized pharma companies, but this 
+can also make sense for very large pharma companies, for example, for a next-
+generation delivery system, a biosimiliar, or a regional-specific device - or the 
+companies can outsource part of the production for contract manufacturing. In 
+general, device development is likely not part of a pharma company's core 
+competencies and focus areas.
+Ongoing capacity tripling, likely mainly driven by GLP-1s
+YPSN is in the process of tripling its delivery system production capacity from 
+~300m at FY24/25 to ~1bn devices per year by the beginning of the next decade, 
+adding 100-150m in capacity each year. Regionally, the company indicates a 
+medium-term capacity split of ~50% in Germany, ~25% in Switzerland, ~15% in the 
+US and ~10% in China. The most significant expansion herein is in Germany, which 
+should add 400-500m units/year going forward, followed by the setup of the US 
+site, and YPSN's first own site in China. YPSN expects about CHF 1.5bn of capex for 
+this over the next years, of which ~2/3 should be paid by YPSN and ~1/3 by its 
+customers.
+We assume that a major part of this expansion is linked to the Novo Nordisk 
+CagriSema partnership (expected launch 2027), which should secure significant 
+volumes and growth for YPSN. Still, dependence on a single customer should not 
+exceed 15% of sales in the medium term. Margins will likely decline slightly from the 
+current 33% EBIT for Delivery Systems due to lower pricing of GLP-1 volumes 
+despite offsetting divestments. YPSN predominately grows via expansion, and 
+therefore this expansion should be the key driver to its medium-term target of 
+midpoint of CHF 1bn in sales by FY29/30. The company indicated that in the 
+medium term incretins should account for ~1/3 of sales, up from limited sales in 
+FY24/25. In general, YPSN expects about 2/3 of its sales to stem from originator 
+drugs and 1/3 from biosimilars.
+Regarding US tariffs, YPSN should be rather well-protected in the short term as 
+only 5-6% of its products are shipped directly to the US (currently 100% from Swiss 
+sites) and customers collect products directly from its sites. With the North Carolina 
+site opening expected in H1 2028, Ypsomed aims to establish a "local for local" 
+presence in the US.
+
+=== PAGE 5 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Deutsche Bank AG Page 5
+Catering to the injectables market and GLP-1 in an oligopolistic market
+YPSN should be the #2 in the autoinjector device market with 30-40% share , 
+following private peer SHL Medical that likely holds >50%. This market is positioned 
+to benefit from drug innovation in the injectables, as well as increasing biosimilar 
+penetration, and the overall trends to more personalized medicine and self-
+administration of drugs and should grow at least double-digits. Prominently, 
+YPSN's autoinjectors are used for GLP-1 products and the company has secured 47 
+GLP-1 deals with >30 clients, including 5-10 "larger" projects. In this business 
+quality and reliability of the devices are critical, production scale matters and it 
+usually includes long-running production contracts.
+YPSN's market definition seems to focus on players with own autoinjector IP, 
+wherein SHL Medical and YPSN should remain the two dominant players. Having 
+its own IP autoinjector devices should help YPSN in onboarding, in particular, new 
+and emerging GLP-1 players over coming years - in contrast to contract 
+manufacturers with little or limited own devices.
+Despite a number of oral GLP-1 drugs in the pipeline, YPSN expects the oral drug 
+penetration to remain at roughly ~20% of the GLP-1 market. Aside from the lower 
+efficacy, higher dosage and therefore potentially stronger side effects, YPSN points 
+to the fact that significantly higher API requirements (dosage) likely make orals less 
+lucrative for pharma companies - at least with this current dosage form.
+Financial profile should improve, cash generation likely sufficient
+Once YPSN has completed the discontinuation of several businesses, the company 
+in its new setup of continued operations (only Delivery Systems) should have a 
+meaningfully stronger growth and margin profile. However, given the phasing of 
+divestments and dilutive GLP-1 pricing, our estimates point to sales/adj. EBIT/adj. 
+EPS CAGRs of 9%/14%/17% FY25-29, implying a 31% margin in FY29/30 (vs. 33.3% 
+for Delivery Systems in FY24/25).
+Total capex requirements for ongoing capacity to triple over the coming 5 years 
+should amount to CHF ~1.5bn. YPSN points to an expected CHF ~300-400m in 
+customer prepayments, and combined with a CHF ~300m cash in flow from the 
+Diabetes Care sale, strong operating cash flow generation (due to >30% EBIT 
+margins) and moderate leverage at 1.7x as of FY24/25, we think YPSN should be 
+able to fund these expansion plans. We note that YPSN's expected capex to sales 
+ratio of 1.5 to 1.0 for expansions is below that of, for example, CDMO peers (1 to >1).
+Forecasts
+We summarize our forecasts in the figure below. More details can be found in the 
+Financials section at the end of the report.
+
+
+=== PAGE 6 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Page 6 Deutsche Bank AG
+Figure 1: Forecast summary
+(CHF million) FY19/20 FY20/21 FY21/22 FY22/23 FY23/24 FY24/25 FY25/26E FY26/27E FY 27/28E FY28/29E FY29/30E
+Sales 394 404 465 497 548 749 729 694 776 889 1,017
+EBITDA 62 65 97 139 161 193 353 303 341 390 445
+EBIT 10 9 29 61 86 113 258 213 240 274 313
+Net profit 12 6 23 51 78 88 208 175 194 219 249
+EPS 0.93 0.46 1.83 3.82 5.74 6.41 15.23 12.82 14.19 16.07 18.24
+FCF -69.3 -27.5 -41.7 -39.3 -31.8 -128.8 -46.1 -73.0 12.5 76.9 21 1.7
+Growth rates %
+Sales 2.4% 15.2% 7.0% 10.3% 36.5% -2.6% -4.8% 11.8% 14.5% 14.5%
+EBITDA 4.5% 48.0% 44.0% 15.8% 19.9% 82.7% -14.0% 12.4% 14.4% 14.1%
+EBIT -4.3% 208.3% 112.0% 42.3% 30.9% 128.6% -17.4% 12.7% 14.3% 14 .0%
+EPS -50.5% 296.5% 109.1% 50.3% 11.7% 137.6% -15.8% 10.7% 13.2% 1 3.5%
+Margins %
+EBITDA 15.8% 16.2% 20.8% 28.0% 29.4% 25.8% 48.4% 43.7% 43.9% 43.9% 43.7%
+EBIT 2.5% 2.3% 6.1% 12.2% 15.7% 15.1% 35.4% 30.7% 30.9% 30.9% 30.7 %
+Net profit 3.0% 1.4% 5.0% 10.3% 14.3% 11.7% 28.5% 25.2% 25.0 % 24.7% 24.5%
+FCF conversion (% of net income) -590.8% -472.5% -180.4 % -76.6% -40.6% -147.2% -22.2% -41.7% 6.5% 35.1% 85.1%
+Key ratios % of sales
+Capex 30.1% 28.1% 27.4% 34.0% 35.6% 37.0% 62.0% 63.0% 47.0% 32 .0% 14.0%
+D&A 13.4% 14.0% 14.7% 15.9% 13.7% 10.7% 13.0% 13.0% 13.0% 13.0% 1 3.0%
+NWC 26.9% 21.8% 27.7% 24.0% 23.0% 30.5% 20.9% 18.8% 18.3% 18.3%
+Source : Deutsche Bank estimates, Company data
+Valuation & risks
+We value Ypsomed based on an average of target 2026/27E P/E and DCF valuations. 
+Our target P/E multiple (26x) assumes that 12 months from now, the shares should 
+trade at a premium to Ypsomed's closest European-listed peers (Gerresheimer 9x 
+2026 P/E, SCHOTT Pharma 17x 2026 P/E), and at a discount to US listed peers, 
+based on Bloomberg estimates , (West Pharma 36x 2026E P/E, Stevanato 31x 
+2026E P/E), and toward the lower-end of its 5-year trading range (26-40x), which we 
+consider fair in light of the company's growth and margin profile.
+Key assumptions to our DCF include WACC of 7.8% (based on levered beta of 0.9, 
+a risk-free rate of 4%, and an equity risk premium of 5.5% – in line with Deutsche 
+Bank's European MedTech & Services coverage) and TG of 2% (in line with long-
+term GDP growth). Given the upside potential of ~5% implied by our CHF 345 target 
+price, we initiate coverage with a Hold rating.
+Figure 2: Valuation output
+DCF Output Target P/E output
+PV FCF (explicit) 214 FY25/26E FY26/27E FY27/28E
+PV FCF (transition) 1,917 EPS 9.81 12.82 14.19
+PV FCF (terminal) 3,016 weight 50% 50%
+EV 5,147 Target multiple 26.0 24.1
+Net debt(cash) 331 Fair value per share 337.7
+Minorities
+Pension
+Implied mcap 4,816 DB target price calculation
+no of shares (DBe) 14 Fair value P/E 50% 337.7
+Fair value per share 352.9 Fair value DCF 50% 352.9
+DB target price 345.3
+Key assumptions Up/downside 5%
+WACC 7.8%
+Terminal growth 2.0%
+Source : Deutsche Bank estimates, Company data
+
+=== PAGE 7 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Deutsche Bank AG Page 7
+General upside/downside risks relate to healthcare reform and regulatory changes 
+in the countries in which the company operates. The main company-specific risks 
+relate to lesser/greater-than-expected adoption of oral medications, potentially 
+lessened/heightened customer concentration, potentially lower/higher 
+concentration in individual therapeutic areas, production under/overcapacity, 
+competition, lack of innovation, product recalls, supply chain and FX.
+
+=== PAGE 8 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Page 8 Deutsche Bank AG
+Company profile
+Ypsomed in charts
+Figure 3: Group sales by region
+Europe
+60%
+Switzerland
+12%
+North America
+7%
+RoW
+21%
+Source : Company data; FY24/25
+Figure 4: Delivery Systems sales by device type
+Autoinjectors
+Pens
+Source : Company data; FY24/25
+Figure 5: Commercial sales by therapeutic area
+Diabetes, Obesity
+Autoimmune
+Diabetes, Insulin
+Hormone Therapies
+Neurology
+Cardiovascular
+Rare Diseases
+Oncology
+Infectious Diseases
+Source : Company data, FY24/25
+Figure 6: Sales trend
+2%
+15%
+7%
+10%
+37%
+-3%
+-5%
+12%
+14% 14%
+-10%
+-5%
+0%
+5%
+10%
+15%
+20%
+25%
+30%
+35%
+40%
+0
+200
+400
+600
+800
+1,000
+1,200
+Sales (CHFm) yoy growth (RHS)
+16.7% CAGR FY20-24
+8.7% CAGR FY25-29E
+Source : Deutsche Bank estimates, Company data
+Figure 7: EBITDA trend
+16.2%
+20.8%
+28.0% 29.4%
+25.8%
+38.2%
+43.7% 43.9% 43.9% 43.7%
+0%
+5%
+10%
+15%
+20%
+25%
+30%
+35%
+40%
+45%
+50%
+0
+50
+100
+150
+200
+250
+300
+350
+400
+450
+500
+EBITDA (CHFm) EBITDA margin (RHS)
+31.1% CAGR FY20-24
+12.4% CAGR FY25-29E
+Source : Deutsche Bank estimates, Company data
+Figure 8: EBIT trend
+2.3%
+6.1%
+12.2%
+15.7% 15.1%
+25.2%
+30.7% 30.9% 30.9% 30.7%
+0%
+5%
+10%
+15%
+20%
+25%
+30%
+35%
+0
+50
+100
+150
+200
+250
+300
+350
+EBIT (CHFm) EBIT margin (RHS)
+86.8% CAGR FY20-24
+4.9% CAGR FY25-29E
+Source : Deutsche Bank estimates, Company data
+
+=== PAGE 9 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Deutsche Bank AG Page 9
+Figure 9: EPS trend
+0.46
+1.83
+3.82
+5.74 6.41
+15.23
+12.82
+14.19
+16.07
+18.24
+-50%
+297%
+109%
+50%
+12%
+138%
+-16%
+11% 13% 13%
+-100%
+-50%
+0%
+50%
+100%
+150%
+200%
+250%
+300%
+350%
+0
+5
+10
+15
+20
+EPS (CHF) yoy growth (RHS)
+93.1% CAGR FY20-24
+4.6% CAGR FY25-29E
+Source : Deutsche Bank estimates, Company data
+Figure 10: FCF trend
+-27 -42 -39 -32
+-129
+-46
+-73
+13
+77
+212
+-473%
+-180%
+-77%
+-41%
+-147%
+-22% -42%
+6% 35%
+85%
+-600%
+-500%
+-400%
+-300%
+-200%
+-100%
+0%
+100%
+200%
+-150
+-100
+-50
+0
+50
+100
+150
+200
+250
+FCF (CHFm) FCF conversion (RHS)
+Source : Deutsche Bank estimates, Company data
+Figure 11: NWC & Capex trend
+26.9%
+21.8%
+27.7%
+24.0% 23.0%
+30.5%
+20.9% 18.8% 18.3% 18.3%
+35%
+23%
+36% 37% 36%
+62% 63%
+47%
+32%
+14%
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+70%
+FY20/21 FY21/22 FY22/23 FY23/24R FY24/25 FY25/26EFY26/27EF Y27/28EFY28/29EFY29/30E
+NWC  (% of sales) Capex (PP&E + intangibles; % of sales)
+Source : Deutsche Bank estimates, Company data
+Figure 12: Net debt to adj. EBITDA trend
+2.5
+1.4
+0.9
+1.1
+1.7
+0.5
+0.9 0.9
+0.7
+0.3
+0.0
+0.5
+1.0
+1.5
+2.0
+2.5
+3.0
+FY20/21 FY21/22 FY22/23 FY23/24 FY24/25 FY25/26E FY26/27E FY27/28E FY28/29E FY29/30E
+Net debt to adj. EBITDA
+Source : Deutsche Bank estimates, Company data
+
+=== PAGE 10 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Page 10 Deutsche Bank AG
+Company overview
+Ypsomed is headquartered in Burgdorf, Switzerland and is a leading developer and 
+manufacturer of drug delivery injection systems for self-medication, in particular 
+autoinjectors and pens (60/40). The company offers a range of pre-developed, 
+customizable device platforms (autoinjectors, pens) that pharmaceutical 
+companies can license, adapt and brand for their own drug products. YPSN has 
+completed the sale of its lower growth/margin diabetes care segments in August 
+2025. Instead, the company intends to focus solely on its delivery system offering, 
+catering to the strongly growing biologics market, including GLP-1 drug.
+YPSN should be the #2 in the autoinjector device market with 30-40% share, 
+following private peer SHL Medical that we estimate holds >50%. YPSN has >130 
+customers with no customer having >15% share of revenue in FY24/25, which the 
+company aims to maintain in the medium term, and is working on >230 projects 
+with them, with 70 thereof being commercial compounds. YPSN claims to work 
+with 27 of the 30 largest pharma companies.
+The company operates 7 production sites across Switzerland, Germany and China. 
+YPSN plans to open a location in the US as well as an additional site in Germany by 
+2027. In the FY24/25, the company added capacity of 120m units/year and reached 
+a disposable capacity of ~300m units/year and the group had ~2,000 employees in 
+its continued operations. By geography, YPSN generated 12% of FY24/25 sales in 
+Switzerland, 60% in Europe, 7% in North America, and 21% in the Rest of the World.
+The company was founded >40 years ago in 1984 and is still majority owned by the 
+founding family with ~72%. In FY24/25, the company generated sales from 
+continued operations of CHF 501m and adj. EBIT of CHF 167m (a 33.3% margin).
+Delivery Systems
+The Delivery Systems division provides pharma and biotech customers with 
+autoinjectors and pens designed for administering liquid medications. The 
+segment will be YPSN's sole focus going forward. It is important to note that YPSN 
+produces merely the plastic casing of the autoinjector or pen, not the containment 
+solution (e.g. cartridge, syringe) within the device. The figure below shows 
+autoinjectors on the left, pens on the right, the patch injector YpsoDose in the 
+middle, and the connected solution middle-left.
+Figure 13: Ypsomed Delivery Systems portfolio
+Source : Company data
+The key difference between autoinjectors 
+and pens is that autoinjectors are fixed-
+dosage single-use devices that carry a pre-
+filled syringe (widely adopted in biologics) 
+while in pens the dose can be modulated, 
+they are mostly multi-dose/injection and 
+carry a cartridge (e.g., standard of care in 
+diabetes).
+本报告来源于三个皮匠报告站（www.sgpjbg.com）,由用户Id:865822下载,文档Id:991410,下载日期:2025-12-25
+
+=== PAGE 11 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Deutsche Bank AG Page 11
+Others and divested business segments
+In FY24/25, the company's annual report still comprised the divested Diabetes Care 
+business as well as other businesses:
+n Diabetes Care business (27% of FY24/25 total sales) : a B2C business 
+(brand: mylife) for diabetes customers. Its portfolio includes insulin pumps, 
+infusions sets, pen needles, blood glucose monitoring systems and other 
+diabetes supplies. The products are distributed via subsidiaries to 
+hospitals, doctors, pharmacies and patients, and via distributors (pen 
+needles). The business did CHF 237m of revenue and likely about a CHF 
+~34m EBIT loss in FY24/25. YPSN has completed the sale of the business 
+for CHF 420m to TecMed AG in August 2025, also owned by majority YPSN 
+owner Willy Michel.
+n Other businesses (3% of FY24/25 total sales) : Includes Ypsotec and 
+properties not used for operational purposes. Ypsotec is a subsidiary in 
+Czechia and a supplier of precision-turned parts and components, which 
+was sold in October 2025.
+Customer and therapeutic area concentration
+YPSN states it currently has >130 customers (with ~30 in incretins) and >230 
+clinical and commercial programs with them, split into 160 clinical and 70 
+commercial. As of FY24/25, no single customer contributed >15% of sales, which 
+the company aims to maintain in the medium term, and the Top 6 seem to account 
+for ~50%.
+By therapeutic area, Diabetes and Obesity account for ~10% as of FY24/25, but 
+should increase meaningfully to ~1/3 of group revenue tied to incretins, i.e. GLP-1s. 
+Autoimmune currently accounts for the largest portion of ~35%, followed by 
+Diabetes, Insulin at ~25% and Hormone Therapies at ~20%. These are followed by 
+smaller revenue contributors namely Neurology (~5%), Cardiovascular (~5%), Rare 
+Diseases (~2%), Oncology (~2%) and Infectious Diseases (~2%).
+For GLP-1s, YPSN points to a balanced portfolio between Originators and 
+Biosimilars. The company splits this into geographies, with 7 Originators and 17 
+Biosimilars in the global market and 5 and 18 respective compounds in Emerging 
+markets. Expected launch times for the deals extend for the period from 2025 to 
+2030.
+YPSN's Novo Nordisk CagriSema partnership
+In 2023, YPSN signed a long-term supply agreement with Novo Nordisk for large 
+quantities of autoinjectors, in particular, for its GLP1 CagriSema (exp. launch 2027). 
+YPSN aims to substantially increase its manufacturing capacity in several steps 
+until 2031 and Novo should contribute a significant part of the investment. YPSN 
+expects first significant manufacturing capacity for Novo to become available in the 
+course of 2025.
+In the medium term, incretins should account for ~1/3 of group revenue. In general, 
+YPSN expects about 2/3 of its sales to stem from originator drugs and 1/3 from 
+biosimilars.
+Figure 14: YPSN's GLP-1 
+pipeline
+Ypsomed 
+pipeline
+Emerging 
+market
+Global 
+market
+Originators 5 7
+Biosimilars 18 17
+Source : Company data
+
+=== PAGE 12 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Page 12 Deutsche Bank AG
+Figure 15: Commercial sales by therapeutic area
+Diabetes, Obesity
+Autoimmune
+Diabetes, Insulin
+Hormone Therapies
+Neurology
+Cardiovascular
+Rare Diseases
+Oncology
+Infectious Diseases
+Source : Company data, FY24/25
+Figure 16: Commercial sales by customer (Illustrative)
+Remaining 
+Customers
+Source :Company data, FY24/25
+In terms of therapeutic mix, YPSN provides a rough indication of the number of 
+commercial and clinical projects visible below, as well as an indication for the 
+number of accounts in the respective indications. In total, the company is active in 
+>230 clinical and commercial programs with >130 clients and claims to work with 
+27 of the 30 largest pharma companies. The highest number of accounts are in the 
+areas of Autoimmune, Diabetes/Obesity/Incretins, and Diabetes/Insulin, as well as 
+Hormone therapies. Regarding clinical projects, most are in the areas of 
+Autoimmune, Diabetes/Obesity/Incretins, and Rare diseases. For commercial 
+products, the largest number falls within Diabetes/Insulin, Hormone therapies, and 
+Autoimmune.
+Ypsomed built its sales foundation outside of incretins, but these therapies are now 
+projected to be the strongest growth driver. This is supported by its pipeline of 47 
+GLP-1 projects, including 5-10 "larger" projects, and 34 clients. While in FY24/25, 
+almost all commercial sales originated from non-incretin products, Ypsomed 
+anticipates that ~1/3 of its medium-term commercial sales will come from 
+incretins.
+Figure 17: Ypsomed´s projects by therapeutic area
+Autoimmune
+Diabetes/
+Obesity/
+Incretins
+Diabetes/
+Insulin
+Hormone
+therapies
+Rare diseases
+Cardiovascular
+Neurology
+Oncology
+Infectious
+# clinical projects # commercial products # accounts
+Source : Company data
+Figure 18: Medium-term commercial sales split 
+(illustrative)
+Non-incretins Incretins
+Source : Company data
+
+=== PAGE 13 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Deutsche Bank AG Page 13
+Growth drivers for YPSN's operations
+YPSN's business is positioned to benefit from the following growth drivers:
+n YPSN's products should help simplify self-care by providing innovative, 
+user-friendly injection systems for self-administration and digital solutions 
+that empower patients with chronic conditions to manage their own 
+medication safely and effectively.
+n Biologics are drugs produced in living cells using complex 
+biotechnological processes. They play a significant role in treating many 
+chronic diseases, differing from traditional chemical drugs due to their size 
+and complexity, and are often administered intravenously in liquid form or 
+very often subcutaneously, leading to an increase in demand in Ypsomed´s 
+injectors. Biologics make up a significant proportion of the pipeline of new 
+drugs.
+n Biosimilars are cost-effective, highly similar versions of approved biologic 
+drugs that become available after patent expiration, offering no significant 
+clinical differences from their original counterparts. This should help 
+expand patient access to vital injectable therapies for chronic conditions. 
+Combined with increased affordability and a growing number of biologics 
+losing patent protection, this should drive higher demand for delivery 
+system for companies like Ypsomed.
+n GLP-1 drugs are used to treat diabetes and obesity, currently 
+predominately via subcutaneous self-administration by patients via 
+autoinjectors or pens. The GLP-1 market is expected to experience strong 
+growth, likely resulting in higher delivery system volumes for YPSN.
+n The Hospital-to-home trend, fueled by healthcare budget pressures and 
+rising patient volumes, should likely increase demand for YPSN's self-
+injection systems and digital health offerings by enabling patients to self-
+administer medications and monitor conditions at home.
+Strategic shift
+Over the past years, YPSN has taken steps to focus exclusively on its higher growth/
+margin Delivery Systems business going forward. The most material step was the 
+divestment of its once core business Diabetes Care in August 2025, which had 
+underperformed for a number of years, in our view, reporting declining sales and 
+operating losses. Conversely, the Delivery Systems saw accelerating growth and 
+likely profitability, explaining the eventual strategic shift. The Diabetes Care  
+business was sold to the company TecMed, founded by Ypsomed's founder, Willy 
+Michel, for a total consideration of CHF 420m (including an earn-out component). 
+YPSN also sold its smaller Ypsotec business during 2025 and intends to discontinue 
+its contract manufacturing in FY26/27 to free up capacity. We consider these to be 
+sensible strategic steps that should enable the company to enhance both its growth 
+and margin algorithm over time.
+
+=== PAGE 14 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Page 14 Deutsche Bank AG
+Figure 19: Ypsomed´s transformation timeline
+Source : Company presentation
+Production footprint
+The company operates 7 production sites in Burgdorf and Solothurn (both CH), 
+Schwerin (DE, under expansion), and Suzhou (CN, contract manufacturer) and 
+Changzhou (CN). The company plans to open a production site in the US in 2027 as 
+well as an additional site in Schwerin by 2026 (more detail in "Capacity expansion" 
+below). In FY24/25, the continued operations had ~2,000 employees (additional 
+~750 in the to-be-divested Delivery Systems business). Regarding tariffs between 
+Switzerland and the US, the company intends to relocate some production to 
+Germany and ramp up output in the US.
+Figure 20: Manufacturing footprint
+Source : Company data
+On US tariffs, we think Ypsomed should be rather well-protected in the short term, 
+given only 5-6% of its products are shipped directly to the US (currently 100% from 
+Swiss sites) and customers collect products directly from the sites, meaning 
+Ypsomed is not responsible for paying the tariffs. With the North Carolina site 
+opening expected in H1 2028, Ypsomed is proactively addressing tariff issues in the 
+medium term by establishing a "local for local" presence in the US, enabling direct 
+supply to American customers.
+
+=== PAGE 15 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Deutsche Bank AG Page 15
+Capacity expansion
+YPSN is in the process of tripling its delivery system production capacity from 
+~300m at FY24/25 to ~1bn devices per year by the beginning of the next decade, 
+adding 100-150m in capacity each year. Regionally, the company indicates a 
+medium-term capacity split of ~50% in Schwerin, Germany, ~25% in Solothurn and 
+Burgdorf, Switzerland, ~15% in North Carolina, US and ~10% in Changzhou, China. 
+The most significant expansion herein is Schwerin II, which should add 400-500m 
+units/year going forward, followed by the setup of the US site, and YPSN's first own 
+site in China, in our view. YPSN expects about CHF 1.5bn of capex for this over the 
+next years, whereof ~2/3 should be paid by YPSN and ~1/3 by its customers.
+We assume that a major part of this expansion is linked to Novo's CagriSema 
+product, which should boost volumes significantly. At the same time, this phased 
+roll-out seems sensible to us - opposed to one very large site, for example, to come 
+online all at once. Also, the company should be quite familiar with setting up these 
+product lines.
+Figure 21: YPSN's expected capacity by location by beginning of the next 
+decade
+CH (Solothurn/Burgdorf) DE (Schwerin) CN (Changzhou) US
+~1 billion
+devices
+Source : Company data
+In more detail, YPSN conducts the following expansions by individual sites:
+Germany (Schwerin, ~50% of medium-term capacity)
+In October 2024, YPSN opened its new production hall D (CHF 22m invested) in 
+Schwerin, adding capacity for an additional 100m units/year. Most importantly, the 
+company announced construction start of Schwerin II in January 2025. The 
+construction in two phases should increase YPSN's group production capacity by 
+400-500m units/year. The first phase should take ~2 years, followed by the 2 nd 
+phase expected to begin 2027/28. The planned investment sum amounts to ~CHF 
+0.5bn.
+
+=== PAGE 16 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Page 16 Deutsche Bank AG
+Switzerland (Solothurn & Burgdorf, ~25% of medium-term capacity)
+For its Swiss manufacturing sites, YPSN will start ramping down its contract 
+manufacturing from fall 2025 until early 2026 to replace this capacity with 
+autoinjector manufacturing. In this process, the Solothurn site should become a 
+"pure play" autoinjector site, as moving out pen needles should provide additional 
+space. The Burgdorf site has capacity for ~50 molds per year, and YPSN intends to 
+double this to 80, 90, 100 per year to become less dependent from its mold partners 
+in southern Germany.
+United States (Holly Springs, ~15% of medium-term capacity)
+ Ypsomed is investing CHF 200m to establish its first US manufacturing facility in 
+Holly Springs, North Carolina, which will begin supplying products for the US 
+market by H1 2028. This move, part of Ypsomed's global growth strategy, should 
+expand Ypsomed's production capacity, allowing them to directly serve the US 
+market and strengthen global partnerships. The company acknowledges the 
+importance of local-for-local production, in particular, with regard to the current US 
+administration.
+China (Changzhou, ~10% of medium-term capacity)
+In June 2025, YPSN opened its first own production site in China (next to its contract 
+manufacturing site in Suzhou). Staff is expected to reach ~100 by year-end and 
+going forward up to 100m injection systems will be manufactured each year for the 
+Chinese market. The company indicated it has already enough orders to fill the site 
+within 2 years and has already secured adjacent land that would provide enough 
+space to potentially double the factory size. YPSN points to strong support from 
+local authorities for its operations in China.
+Platform strategy
+YPSN's platform strategy with own IP devices should help enable shorter 
+implementation times for customer projects with a lower risk profile. YPSN bears 
+the development risk of new platforms over a 3-5 year period, which in turn shortens 
+the time its customers require to reach clinical readiness with devices to 1-2 years, 
+with comparatively limited product development risk. These products can then be 
+customized for design and branding.
+This setup of pre-developed platform technologies should be especially helpful for 
+small- and medium-sized pharma companies for whom developing an entirely own 
+device is likely unattractive and frankly not their key competency and business 
+focus. At the same time, YPSN should be able to produce larger quantities for larger 
+customers due to its scalable and automated production setup.
+
+=== PAGE 17 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Deutsche Bank AG Page 17
+Figure 22: Overview of Ypsomed´s platform strategy
+Source : Company data
+Company history
+Ypsomed's history began in 1984 with the founding of Disetronic by brothers Willy 
+and Peter Michel. Disetronic had been founded to develop, manufacture and sell 
+infusion pumps, in particular a small insulin pump, and expanded into the injection 
+systems business in 1986. In 2003, Willy Michel sold the infusion business to 
+Roche, but retained the injection business, which then became Ypsomed. The 
+name is derived from "Ipso" (self) and "med" (medication) to reflect its core focus 
+on self-medication devices. Ypsomed went public on the Swiss Stock Exchange in 
+2003.
+Since its inception, Ypsomed has focused on innovative self-care solutions, 
+investing heavily in research and development. The company adopted a platform 
+model for pen development around 2006, significantly reducing development 
+times. Key milestones include the strategic acquisition of the German company 
+"Diabetes Care" in 2011. Diabetes Care made up the majority of the business and 
+the growth still in FY17, followed then by declines and an acceleration of the 
+Delivery Systems segment from FY18 onwards. Following a period of 
+underperformance, Ypsomed has sold the Diabetes Care business in August 2025 
+to exclusively focus on the growing Delivery Systems business, marking a major 
+strategic step in the company's development. In addition, the company has 
+divested its smaller Ypsotec business and discontinued contract manufacturing.
+Management
+Ypsomed's management team has extensive industry experience, and several 
+members have already spent many working years with Ypsomed. Ypsomed's 
+management team currently includes the following individuals, with the listed vitae 
+and experience:
+
+=== PAGE 18 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Page 18 Deutsche Bank AG
+Figure 23: Management overview
+Name Position Experience Education
+Simon Michel
+Member of the Board 
+of Directors and CEO 
+of Ypsomed Holding 
+AG and the Ypsomed 
+Group
+Simon Michel joined Ypsomed in 2006 and became a Member of the Executive Board in 2008, 
+taking on the role of CEO in July 2014. Prior to Ypsomed, he worked for Orange 
+Communications AG (2003-2006). He also serves on the Board of Directors of Unitectra AG, 
+sitem-insel AG, Forster Rohner AG, and LEM Surgical AG, and has been Chairman of the 
+Board of Directors of DCB Research AG since 2017. He is a Board Member of Swiss Medtech 
+and economiesuisse, and Chairman of the Board of Ahueni AG since 2021. He served on the 
+Cantonal Council of the Canton of Solothurn (2017-2024) and was elected to the National 
+Council of the Swiss Confederation in 2023.
+Economics, University of St. Gallen; 
+Masters in media and communications 
+management.
+Frank Mengis Chief Operating 
+Officer (COO)
+Frank Mengis joined Ypsomed in 2015 as a member of the Executive Board ans is responsible 
+for the areas Production, Supply Chain and QM&RA. He previously served as COO and 
+member of the Executive Management of Nobel Biocare AG. From 2001 to 2012, he held 
+various management positions at the Straumann Group. He began his career at F. Hoffmann-
+La Roche AG (1990-1999). He also served on the Board of Directors at Qualitech AG (2017-
+2021) and has been a member of the Board of Directors of Nemis Technologies AG since 
+2021.
+Dipl. Ing. Mechanical Engineering, 
+Technical University Karlsruhe; Further 
+training at IMD Lausanne and Harvard 
+Business School (AMP Programme).
+Ulrike Bauer
+Chief Business 
+Officer Ypsomed 
+Delivery Systems 
+(CBO YDS)
+Ulrike Bauer has been with Ypsomed (and Disetronic before 2003) since 2001 and a member 
+of the Executive Board since 2014. Previously, she was a Product Manager with Mettler 
+Toledo (1996-2001).
+Dipl. Ing. in chemical engineering and 
+biotechnology, University of Applied 
+Sciences Aachen; Postgraduate diploma 
+in International Management, Kalaidos 
+University of Applied Sciences in Zurich.
+Michael Zaugg Chief Corporate 
+Officer (CCO)
+Michael Zaugg joined Ypsomed in 2017 and has been Chairman of the Board of Trustees of 
+the Ypsomed Group Pension Fund Foundation since 2020. He previously worked in HR at 
+Credit Suisse (1997-2004), Schärpartners AG (2004-2007), Valiant Holding (2007-2008), and 
+BKW FMB AG (2008-2011).
+Economics, University of Basel 
+(lic.rer.pol); Degree in Man – Society – 
+Environment (MSE), University of Basle; 
+Executive Master of Human Resources 
+Management, Institute of Applied 
+Psychology in Zurich.
+Dr. Nicolas Meyer
+Chief Legal Officer 
+(CLO) and Secretary 
+of the Board of 
+Directors of 
+Ypsomed Holding AG
+Dr. Nicolas Meyer joined Ypsomed in 2023 as CLO. Previously, he was General Counsel and 
+Secretary General at RUAG (2020-2023) and General Counsel at the EMS Group (2010-
+2018). He also worked as a lawyer at Lenz Caemmerer and has been on the Legal Committee 
+of the Swiss-American Chamber of Commerce.
+Doctorate in IP law; Master of Law, 
+University of Basel; Executive MBA in 
+General Management, University of St. 
+Gallen.
+Samuel Künzli Chief Financial 
+Officer (CFO)
+Samuel Künzli is a certified auditor and spent three years as CFO at Feintool, before joining 
+Ypsomed in 2024. From 2012 to 2020, he held various managerial functions in finance at 
+Stadler, including as CFO for Central Europe and most recently as CFO of the Swiss division. 
+He worked at KPMG Switzerland from 2008 to 2012 as an auditor and is Chairman of the 
+Board of Directors of Directors of Tewo-Treuhand AG since 2021 and of Frista Retail AG since 
+June 2024.
+Master’s degree in Accounting and 
+Corporate Finance from the University of 
+St. Gallen.
+Source : Company data
+Management compensation
+In our view, compensation for top management is structured to create shareholder 
+value. It is split into base salary, a short-term incentive (STI) cash bonus, and long-
+term incentive (LTI) remuneration, including shares as well as customary 
+nonmonetary benefits. The STI is based on the company's performance against its 
+targets split into 2/3 consolidated EBIT margin and 1/3 consolidated sales. The LTI 
+is ½ based on total shareholder return (TSR) and ½ cumulative absolute CHF EBIT.
+Ownership
+YPSN is ~71.5% majority owned by the founding Michel family shareholder group, 
+consisting of Willy Michel, and his children Simon Michel (~1.3% ownership), 
+member of the Board of Directors of Ypsomed Holding AG as well as CEO of 
+Ypsomed Holding AG and the Ypsomed Group, Serge Michel and Lavinia Camilla 
+Nussio, who each hold the shares directly. YPSN shared it has no other known 
+significant shareholders or significant shareholder groups as of FY24/25.
+Products and solutions / Drug Delivery Systems
+As a leading developer and manufacturer of self-injection systems for liquid 
+medications, YPSN offers an innovative platform portfolio for pens, autoinjectors, 
+and wearable devices. According to the company, ~70 different drugs are based on 
+its platforms in 24 different disease areas worldwide. The company claims that its 
+products are characterized by reliable and sophisticated technical concepts 
+optimized for highly automated mass production. The Drug Delivery business is a 
+B2B business, unlike the divested Diabetes Care business which is B2C.
+
+=== PAGE 19 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Deutsche Bank AG Page 19
+Figure 24: Product and solutions overview
+Source : Company data
+Figure 25: Pen - Autoinjector comparison
+Source : Deutsche Bank, Stevanato
+In FY24/25, autoinjectors made up the largest share of commercial sales (~60%), 
+and even more of the new projects acquired (~80%). YPSN has 47 GLP-1 projects 
+in its pipeline, including 5-10 "larger" projects, and 34 clients.
+Figure 26: Commercial sales (total) 
+by platform
+Autoinjectors Pens
+Source : Company data; FY24/25
+Figure 27: New project Acquisitions 
+in FY24/25 (36 new projects) by 
+platform
+Autoinjectors Pens
+Source : Company data; FY24/25
+Figure 28: New project Acquisitions 
+in FY24/25 (36 new projects) by 
+customer segment
+Existing Customers New Customers
+Source : Company data; FY24/25
+
+=== PAGE 20 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Page 20 Deutsche Bank AG
+Pen Injectors
+Pen injectors are designed to support safe and effective self-injection, especially for 
+people requiring frequent dosing.
+Pen injector portfolio:
+n UnoPen: The UnoPen is a variable dose pen for insulin and other multidose 
+therapies providing a familiar handling experience and high level of patient 
+acceptance.
+n ServoPen: ServoPen is a spring-driven reusable injection pen designed for 
+precision, durability, and premium usability.
+n YpsoPen: A high-quality and cost-effective reusable pen designed for 
+simplicity and value.
+n YpsoFlow: A spring-driven, pre-filled pen platform for GLP-1 and peptide 
+therapies, delivering doses up to 0.80 mL with a low-force mechanism and 
+end-of-dose click.
+n FixPen: An easy-to-use pen for all multidose therapies requiring the 
+injection of a fixed dose.
+n LyoTwist: A dual-chamber monodose device designed to simplify the 
+reconstitution and injection of lyophilised medications.
+n VarioJect: The VarioJect is a simple single use variable dose injector 
+designed for pre-filled syringes or cartridges.
+Figure 29: YPSN's pen injectors
+Source : Company data
+Autoinjectors
+Autoinjectors are single-dose devices for pre-filled syringes and typically feature 
+push-on-skin activation and a shielded needle, making the device convenient and 
+intuitive to use.
+In 2023, Novo Nordisk and Ypsomed concluded a long-term supply contract for 
+large quantities of autoinjectors based on the YpsoMate 1ml autoinjector model for 
+commercial production for its drug candidate CagriSema. Until 2030, the company 
+aims to significantly increase its production capacities in order to supply the 
+devices.
+Ypsomed has been the the second-largest supplier of autoinjectors by sales to the 
+pharma industry, behind SHL Medical. This is in line with our estimates of a 30-40% 
+market share for YPSN in the autoinjector device market, following private peer SHL 
+Medical that we estimate has >50%.
+
+=== PAGE 21 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Deutsche Bank AG Page 21
+Autoinjector portfolio:
+n YpsoMate: An automated injection device for 1 mL pre-filled glass or 
+polymer syringes suitable for all patient groups.
+n YpsoMate 2.25: An automated injection devices designed for 2.25 mL pre-
+filled glass or polymer syringes, suitable for all patient groups.
+n YpsoMate 5.5: An automated injection device designed for 5.5 mL pre-
+filled glass syringes, suitable for all patient groups.
+n SmartPilot for YpsoMate:  The SmartPilot is a device to combine with 
+YpsoMate to capture accurate, unbiased injection data while enabling 
+intuitive, step-by-step user guidance to transform the YpsoMate 
+autoinjector into a fully digital health solution to facilitate Ypsomed's big 
+data strategy.
+n VarioJect: The VarioJect is a simple single-use variable dose injector 
+designed for pre-filled syringes or cartridges.
+Figure 30: YPSN's autoinjectors
+Source : Company data
+Wearable Injectors
+Wearable injectors are single-dose large-volume devices, that deliver medication 
+subcutaneously over an extended period and allow patients to move freely during 
+the injection. The device is worn on the body and is attached to the skin with an 
+adhesive patch.
+Wearable injector:
+n YpsoDose (pre-filled, ready-to-use patch injector designed for 
+subcutaneous delivery of volumes up to 10 mL).
+Figure 31: YpsoDose
+Source : Company data
+
+=== PAGE 22 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Page 22 Deutsche Bank AG
+Digital Health
+With its Digital Health offering, Ypsomed provides pharma companies with fully 
+integrated digital solutions. Ypsomed's platform combines connected devices with 
+digital patient tools that enables patients to self-manage their therapy and pharma 
+companies to benefit from data allowing for shorter market access timelines and 
+improved commercial access of subcutaneous drug formulations.
+Digital Health solutions:
+n Therapy Management: The digital therapy management is one part of 
+Ypsomed Digital Health offering and is seamlessly integrated with 
+connected injection devices to deliver personalized, data-driven digital 
+solutions that meet patient's needs.
+n Connected Devices: The SmartPilot and YpsoDose are connected devices 
+that deliver support for patients throughout the injection process and 
+capture accurate and unbiased real world data. They are designed to allow 
+for an easy communication with the digital therapy management solutions.
+Figure 32: Ypsomed´s Digital Health offering
+Source : Company data
+ESG
+Ypsomed's ESG overview emphasizes a holistic and long-term approach to 
+sustainability, integrated into its corporate strategy. The company serves society by 
+providing devices for self-administration of drugs for patients and helping expand 
+access to healthcare. The company has quantified goals according to the Science 
+Based Targets initiative (SBTi), which is a positive in our view. However, our 
+understanding is they are not yet tied to executive compensation, which could be 
+done in the future to emphasize their importance. In terms of independent 
+governance, Ypsomed is majority controlled by the founding family (71.5% 
+ownership), which limits free float shareholder rights. Ypsomed is increasingly 
+focusing on recycling of its products, which given the limited use-time or single-use 
+nature of its devices and subsequent classification as hazardous waste seems 
+sensible.
+Sustainability is embedded in Ypsomed's mission and corporate strategy, focusing 
+on product stewardship, circular economy principles, ethical conduct, and long-
+term profitability. It aims to be a sustainability leader in its industry.
+
+=== PAGE 23 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Deutsche Bank AG Page 23
+The explicit targets include the following:
+Short-term targets by 2030 (vs. base year 2020):
+n Reducing absolute GHG emissions from Scopes 1 and 2 by 32 % by 2027
+n Reducing Scope 3 emissions by 52 % per million CHF of value added by 
+2030
+Long-term targets by 2040 (vs. base year 2020):
+n Reducing absolute GHG emissions from Scopes 1 and 2 by 90 % by 2030
+n Reducing Scope 3 emissions by 97 % per million CHF of value added by 
+2040
+n Net-zero target by 2040
+Environmental:
+Ypsomed is committed to achieving net-zero emissions across its value chain by 
+2040, with targets validated by the Science Based Targets initiative (SBTi). They 
+prioritize direct emission reduction, supported by a comprehensive NetZero 
+Program that includes using bio-based plastics and optimized packaging for 
+products like the YpsoMate autoinjectors, sustainable procurement in the supply 
+chain, strategic partnerships like the Alliance to Zero, and reducing emissions at 
+their sites. Ypsomed sources 100% renewable electricity and is increasing self-
+produced renewable energy, while also improving transport efficiency through 
+electric cars and promoting public transport. Ypsomed follows product 
+stewardship and circular economy principles, aiming to minimize waste, increase 
+recycling, and use recyclable/renewable materials, supported by Ecodesign 
+Guidelines and exploring reusable transport containers, achieving a 31% recycling 
+rate in 2023/24.
+The illustrative example for a peptide-like product in YpsoMate 1.0 ml illustrates 
+Ypsomates ambitions. The device accounts for 10-15% of the CO2 equivalent of an 
+injectable combination product. Ypsomed includes all possible layers for reduction.
+Figure 33: CO2 equivalent by process step (Illustrative for a Peptide-like product 
+in YpsoMate)
+Source : Company data
+
+=== PAGE 24 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Page 24 Deutsche Bank AG
+Used devices get sorted and mechanically prepared by pharma companies and/or 
+service providers. Ypsomed´s focus is to close the circularity loop by quality 
+checking of recyclates and producing devices out of recycled materials. Ypsomed 
+has launched YpsoLoop, the first autoinjector platform designed for circularity, 
+enabling material recovery through automated disassembly, efficient recycling of 
+its mono-material subassemblies, and significant CO2 reduction using bio-based 
+and sustainable materials.
+Figure 34: Ypsomeds´ Recycling focus
+Source : Company data
+Social:
+Ypsomed supports its workforce through comprehensive employee integration 
+and continuous training, offering flexible working models, robust career 
+development, and family-friendly policies, which contributed to earning the Swiss 
+Employer Award 2024. The company fosters an inclusive environment with diverse 
+employment models and fair pay (ADVANCED fair-pay label), actively promoting 
+young talent. Furthermore, Ypsomed ensures occupational health and safety with 
+rigorous protocols and well-being initiatives (LTI Severity Rate of 0.2 in 2023/24) and 
+expands access to healthcare by providing high-quality, user-friendly products 
+across 15 disease areas, reaching 8.3m people in FY23/24.
+Governance:
+Ypsomed upholds strong corporate governance and compliance through its Code 
+of Conduct, a robust Compliance Management System, and anti-corruption 
+measures, including training and transparent reporting. The company is committed 
+to respecting human rights across its value chain, conducting risk assessments, 
+and ensuring data protection and cybersecurity, evidenced by its ISO 27001 
+certification. Furthermore, Ypsomed fosters a responsible supply chain by 
+requiring adherence to its Supplier Code of Conduct, which covers human rights, 
+ethics, environmental protection, and due diligence on conflict minerals and child 
+labor.
+
+=== PAGE 25 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Deutsche Bank AG Page 25
+Market overview
+Market snapshot
+YPSN should be the #2 in the autoinjector device market with 30-40% share, 
+following private peer SHL Medical that likely holds >50%. This market is positioned 
+to benefit from drug innovation in the injectables, as well as increasing biosimilar 
+penetration, and the overall trends to more personalized medicine and self-
+administration of drugs and should grow at least double digits. Prominently, 
+YPSN's autoinjectors are used for GLP-1 products. In this business, quality and 
+reliability of the devices are critical, production scale matters and it usually includes 
+long-running production contracts. This market should experience strong >10% 
+growth fueled by new injectable drug approvals and be further boosted by the high 
+GLP-1 volumes expected going forward. For the incretin (GLP-1 & others) market, 
+YPSN points to an  18% CAGR from 2024-30E.
+YPSN's market definition seems to focus on players with own autoinjector IP, where 
+SHL Medical and YPSN should remain the two dominant players. Having its own IP 
+autoinjector devices should help YPSN in onboarding, in particular, new and 
+emerging GLP-1 players over coming years - in contrast to contract manufacturers 
+with no or limited own devices.
+YPSN itself does not provide a market size estimate, however, for example, peer 
+Stevanato has pointed to a $2.1bn addressable market for drug delivery systems, 
+expected to grow >10% going forward, which likely has slightly broader definition.
+An oligopolistic market structure with comparably high entry barriers
+The market for drug delivery devices has an oligopolistic market structure and the 
+largest players are YPSN and SHL Medical, mainly producing their own IP devices, 
+and Gerresheimer and West Pharma, mainly active in contract manufacturing. This 
+market should experience strong >10% growth fueled by new injectable drug 
+approvals and further boosted by the high GLP-1 volumes expected going forward.
+Below we describe the market characteristics:
+n In-sourcing risk of the drug delivery device for small- and medium-sized 
+pharma customers is likely limited given cost and development time/risk. 
+However, for the largest players with significant volumes, this could be 
+sensible.
+n Contracts should be rather of strategic nature, likely spanning ~10 years. 
+Pricing power of the manufacturers should be solid, as the delivery device 
+should account only for a small portion of the total cost of a drug and quality 
+and safety are of prime importance. Although we acknowledge the plastic 
+device itself appears rather simple, the importance of a flawless product 
+quality track record and reliability and safety as well as required sterile 
+production conditions make it more challenging at second glance.
+n Entry barriers should be comparably high for green field operations, 
+however, we can see forward integration of players familiar with 
+containment solution manufacturing in sterile conditions as more 
+reasonable (as GXI has done with autoinjectors in recent years). However, 
+a flawless track record and reputation remain important, but also 
+substantial engineering know-how. This business is also characterized by 
+
+=== PAGE 26 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Page 26 Deutsche Bank AG
+strong IP, production scale matters and upfront investment needs in 
+equipment are high, as well as quality and regulatory requirements.
+Figure 35: A market with substantial barriers to entry at scale
+Source : Company presentation
+Focusing on the stronger growth non-captive market segment
+YPSN focuses on the non-captive part of the global market for autoinjectors and 
+pens, i.e. the part that is not captive (in-house) at pharma companies. The non-
+captive part accounted for a smaller portion of ~20% in 2024 and a total of ~1.85bn 
+units.
+Although the global market for autoinjectors and pens experienced growth in 
+recent years, it varies strongly between captive and non-captive. While the captive 
+segment represents a larger market volume, it is expanding at a slower pace with 
+a CAGR of 4%, compared to the non-captive segment, which is growing much 
+faster at a CAGR of 27% (YPSN´s focus). The company anticipates stronger growth 
+in the non-captive segment, primarily attributable to increasing volumes from 
+biosimilars due to upcoming patent expiration of numerous drugs and the fact that 
+most biosimilar companies usually don't develop proprietary devices for their 
+biosimilars.
+Figure 36: Global market for autoinjectors and pens non-captive
+500
+1,000
+1,500
+2,000
+2022 2023 2024
+in million units
+Captive Non-Captive
+Ypsomed
+focus
+4% CAGR
+27% CAGR
+Source : Company data, FY24/25
+
+=== PAGE 27 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Deutsche Bank AG Page 27
+Further distinguishing between pens and autoinjectors, the market for pens is 
+larger, has a smaller non-captive portion, and is growing slower compared to the 
+smaller autoinjector market, with a higher non-captive share and stronger growth.
+n The global market for pens was worth ~1.25bn units in 2024, whereof 
+~<10% were non-captive. The non-captive portion grew at a 20% CAGR 
+from 2022-24, compared to limited growth at a 1% CAGR for the captive 
+portion.
+n The global market for autoinjectors was worth ~0.5bn units in 2024, 
+whereof ~40% were non-captive. The non-captive portion grew at a 34% 
+CAGR from 2022-24, compared to a 21% CAGR for the captive portion.
+Figure 37: Global market for pens
+0
+500
+1,000
+1,500
+2022 2023 2024
+in million units
+Captive Non-Captive
+1% CAGR
+20% CAGR
+Source : Company data, FY24/25
+Figure 38: Global market for autoinjectors
+0
+200
+400
+600
+2022 2023 2024
+in million units
+Captive Non-Captive
+21% CAGR
+34% CAGR
+Source : Company data, FY24/25
+Accelerating growth in the incretin market expected
+Ypsomed´s market in incretins is beginning to open up as innovators and biosimilars 
+without proprietary device IP emerge. The incretin device market is projected to 
+grow steadily from 2025 to 2035, with the non-captive segment expanding at 
+roughly twice the CAGR of the total market till 2035. This trend highlights a growing 
+opportunity for Ypsomed in the non-captive space.
+Figure 39: Incretins device market by device origin (volumes, illustrative)
+2025 2026 2027 2028 2029 2030 2031 2032 2033 2034 2035
+Captive Non-Captive
+CAGRnon-captive = ~ 2x CAGRTotal market
+Source : Company data
+
+=== PAGE 28 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Page 28 Deutsche Bank AG
+Outside the incretin space and large insulin field, Ypsomed observes sizeable and 
+fast-growing self-medication market sub-segments. The following chart illustrates 
+the delivery device market growth in percentage relative to the current size of the 
+delivery market in units. The market for Incretins and Autoimmune delivery devices 
+is already substantial today (over 100m units) and is anticipated to show high 
+growth in the future.The market for Cardiovascular delivery devices is currently in 
+the mid-range with over 15m units, but significant growth is also expected here. For 
+Hormone Tx and Neurology, the market size is also in the mid-range, and moderate 
+growth is projected for these segments.
+Figure 40: Delivery Devices market growth by therapeutic area
+Source : Company data
+GLP-1 drugs as additional growth driver
+The market for GLP-1 drugs has grown rapidly in recent years, driven by the 
+increasing prevalence of Type 2 diabetes and obesity, as well as growing focus on 
+therapies that offer both efficacy and improved patient convenience. The market 
+landscape is shaped not only by pharmaceutical innovations but also advances in 
+drug delivery technologies, which enhance usability and drug delivery 
+technologies. This strong growth is expected to continue and YPSN points to an 
+18% CAGR from 2024-30E for the incretin market, ahead of the already strong 
+>10% growth expected for the injectables market.
+Figure 41: Revenue consensus for global incretin market (GLP-1 & others)
+0
+50
+100
+150
+200
+250
+2021 2022 2023 2024 2025 2026 2027 2028 2029 2030 2031 2032 2033 2034 2035
+in $bn
+Source : Company data
+
+=== PAGE 29 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Deutsche Bank AG Page 29
+YPSN states it has secured 47 GLP-1 deals with >30 clients, including 5-10 "larger" 
+projects. Additionally, it sees >100 additional molecules out in the market. For now, 
+the large GLP-1 volume are concentrated with 2 players, Eli Lilly and Novo Nordisk. 
+This is, however, expected to broaden in the coming years. YPSN points to a 
+balanced GLP-1 portfolio between Originators and Biosimilars. The company splits 
+this into geographies, with 7 Originators and 17 Biosimilars in the global market and 
+5 and 18 respective compounds in Emerging markets.
+Figure 43: Selected injectable obesity products
+Company Product DDS DCS
+Novo Nordisk Wegovy 
+(semaglutide)
+Autoinjector 
++ Pen
+Syringe / 
+Cartridge
+Novo Nordisk
+CagriSema 
+(semglutide+
+cagrilintide)
+Autoinjector Syringe
+Novo Nordisk Saxenda 
+(liraglutide) Pen Cartridge
+Eli Lilly Mounjaro 
+(tirzepatide) Autoinjector Syringe
+Eli Lilly Retatrutide Autoinjector Syringe
+Amgen AMG-133 N/A N/A
+Source : Stevanato, Deutsche Bank
+Competitive risk from oral GLP-1 candidates
+Oral and injectable incretin therapies both have substantial benefits and limitations. 
+Oral incretin therapies  offer advantages in terms of convenience, storage and 
+transport. However, they face challenges such as daily dosing, lower tolerability 
+and reduced bioavailability. Injectable incretin therapies , on the other hand, 
+provide strong efficacy and ease of use with less frequent dosing, ensuring they 
+remain a key part of incretin therapy despite minor drawbacks like needle phobia 
+and supply chain complexity.
+Despite a number of oral GLP-1 drugs in the pipeline, YPSN expects the oral drug 
+penetration to remain at roughly ~20% of the GLP-1 market it has now. Aside from 
+the lower efficacy, higher dosage and therefore potentially stronger side effects, 
+YPSN points to the fact that significantly higher API requirements (dosage) likely 
+make orals less lucrative for pharma companies - at least with this current dosage 
+form.
+Figure 42: Overview 
+Ypsomed pipeline
+Ypsomed 
+pipeline
+Emerging 
+market
+Global 
+market
+Originators 5 7
+Biosimilars 18 17
+Source : Company data
+
+=== PAGE 30 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Page 30 Deutsche Bank AG
+Figure 44: Pros and Cons of Oral and Injectable Incretins
+Source : Company data
+Drug pipeline with increasing injectable share
+When looking into the drug pipeline YPSN points to subQ administration overtaking 
+oral when looking at approvals. In particular, out of 70 new assets, 50 were subQ 
+indications, a couple IV. Therefore, the subQ portion within injectables is growing.
+YPSN points to 47 GLP-1 deals out of >230 projects at the company. The company 
+claims to have a very diverse range of clients and should not be dependent on 1-2 
+large customers or disease areas.
+Figure 45: FDA approvals by route of administration
+55 53
+64
+70
+56
+45 43
+64
+4
+1
+6
+3
+6
+3 4 5
+9 7 8
+11
+0
+10
+20
+30
+40
+50
+60
+70
+80
+2020 2021 2022 2023
+Injectables Oral Inhalation Tropical Others
+Source : Company presentation
+Structural market growth drivers
+The secular growth, in particular in injectables, is driven by the following key drivers:
+n Demographics drive growth, given the growing and ageing population. 
+The size of the global population aged 65 and older is projected to increase 
+by more than 100% from ~720m in 2020 to ~1,550m in 2050, while the 
+share of the 65+ population is set to increase from 9.3% to 15.9% over the 
+same time frame, according to the United Nations. Given that annual 
+
+=== PAGE 31 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Deutsche Bank AG Page 31
+healthcare spending for people aged 65 and over tends to be more than 
+three times as high as that of people in their 20s, according to the Office for 
+Budget Responsibility (OBR) in the UK, this development should fuel 
+considerable market growth in the future.
+n Growing global healthcare infrastructure around the world, especially in 
+developing and emerging markets, is leading to an increase in the number 
+of people with access to healthcare services. This should drive rising 
+injectable drug volumes.
+n The global obese population is increasing steadily. This trend is driving 
+strong momentum in GLP-1 end markets and should lead to an increasing 
+demand in Ypsomed´s delivery devices.
+n Rising share of biological drugs and progress in novel therapies, which 
+should lead to more injections going forward.
+n Biosimilars growth driven by patent expiration, which leads to increasing 
+generic volumes, in particular in the US.
+n Hospital-to-home trend: given constant pressure on healthcare budgets 
+and increasing patient volumes, treatments should increasingly move to a 
+home setting.
+Figure 46: Size of global 65+ population
+9.3%
+15.9%
+728m
+1,549m
+0%
+2%
+4%
+6%
+8%
+10%
+12%
+14%
+16%
+18%
+0
+200
+400
+600
+800
+1,000
+1,200
+1,400
+1,600
+1,800
+2020 2050
+Global 65+ population Share of 65+ of global population
+Source : United Nations
+Figure 47: Share of 65+ population by region
+28%
+12%
+19%
+17%
+38%
+26%
+28%
+22%
+0% 5% 10% 15% 20% 25% 30% 35% 40%
+Japan
+China
+EU
+US
+2050 2020
+Source : United Nations
+The rise of biologics requires more drug injectable solutions
+Small molecules have been dominating the drug manufacturing market for a long 
+time, as more than 80% of current drugs are based on small molecules. These tend 
+to be more established, less complex, and less capital-intensive to produce. 
+However, large molecules (i.e. biologics) are quickly rising in popularity and 
+importance, as they are revolutionizing therapeutic treatment in many major 
+therapeutic areas through ground-breaking progress in molecular biology and 
+genetics.
+The production of biopharmaceuticals is a complex and lengthy process that 
+involves several different steps. It is a challenging manufacturing process because 
+biopharmaceuticals are based on large molecules that are produced by living 
+organisms (bacteria, mammalian cells, etc.) as opposed to chemically synthesised 
+drugs. These chemical medications are based on small molecules and can therefore 
+be absorbed by the gastrointestinal tract (ingested as pills or capsules), whereas 
+biopharmaceuticals are injected or infused. This is the only way that they can be 
+
+=== PAGE 32 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Page 32 Deutsche Bank AG
+absorbed by the human body. Post injection, biopharmaceuticals bind to only 
+specific cell receptors and therefore have a more targeted effect than chemical 
+drugs. Given this effect, they open up new opportunities to treat patients suffering 
+from severe or rare diseases.
+The number of approved biologics has increased significantly in recent years, which 
+is expected to further accelerate going forward. According to Evaluate Pharma, 
+they are expected to account for ~50% of newly-approved drugs by 2025. In the 
+year 2022, biologics made up to 40% of newly approved drugs. This should be the 
+main driver behind the expected increased capacity requirements in the future.
+Figure 48: Number of FDA small and large molecule drug approvals
+Source : FDA
+Figure 49: Biologics market growth trend
+119
+167
+46
+5838
+67
+47
+72
+250
+365
+0
+50
+100
+150
+200
+250
+300
+350
+400
+2020 2024
+US Europe China ROW
+Source : Deutsche Bank estimates, Sartorius
+Figure 50: Biologics market penetration increases
+19% 25%
+34% 37%
+81% 75%
+66% 63%
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+70%
+80%
+90%
+100%
+Sales share biologics Sales share conventional pharmaceuticals
+Source : Deutsche Bank estimates, Sartorius
+Biosimilars should represent a volume boost
+Biosimilars are the generic version of a biological drug. With ~110 approved 
+Biosimilars in the EU, the underlying market is still relatively young. The market was 
+worth ~€14.5bn in 2020 (6% of the total biologics market), according to Sartorius, 
+but is expected to grow significantly going forward (at a 20-25% 2021-26 CAGR), 
+
+=== PAGE 33 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Deutsche Bank AG Page 33
+even outperforming the overall biologics market. Key growth driver should be the 
+patent expiration of several blockbuster biologics over the coming years. For 
+biosimilar manufacturers, time-to-market is essential as the first providers are likely 
+to gain the highest market share and profitability.
+YPSN and the overall pharma packaging market is set to benefit from the increase 
+in biosimilars, as it should increase the demand for containment solutions and 
+delivery systems. YPSN points to 27 subcutaneously delivered molecules that will 
+face Loss of Exclusivity between 2025-35. These compounds delivered volume of 
+270m prefilled pens and 260m autoinjectors in 2024.
+Figure 51: Biosimilars are expected to outperform the 
+biologics market...
+0
+50
+100
+150
+200
+250
+300
+350
+400
+2020 2024
+Other biologics Biosimilars
+Source : Deutsche Bank, Sartorius, Evaluate Pharma
+Figure 52: …based on an increasing amount of approved 
+Biosimilars
+0 0
+3
+1
+7
+22
+20
+15 16
+10
+16
+0
+5
+10
+15
+20
+25
+2012 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022
+Biosimilar apporvals EU and US
+Source : Deutsche Bank, Sartorius, Evaluate Pharma
+
+=== PAGE 34 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Page 34 Deutsche Bank AG
+Financials
+Historical performance
+YPSN's historical performance paints a volatile picture, with group sales growing 
+up to FY17, followed by sales declines and a re-acceleration from FY20 onwards - 
+with similar development for earnings. This is explained by divergent performance 
+of the company's two segments, as Diabetes Care made up the majority of the 
+business and the growth still in FY17, followed then by declines and an acceleration 
+of the Delivery Systems segment from FY18 onwards. In numbers, the group 
+delivered a 5% sales growth CAGR from FY14-20, split into a 14% CAGR for Delivery 
+Systems and -1% for Diabetes Care. Over FY20-23 group growth accelerated to an 
+11% CAGR, mainly driven by a 22% CAGR for Delivery Systems, while Diabetes 
+Care continued to decline (-5% CAGR). This period likely saw accelerating demand 
+for drug delivery devices and comparably softer demand for diabetes care 
+products, couple with resulting divestments in Diabetes Care.
+Profitability (only available for the group) was around a 13-16% EBIT margin 
+between FY15-18 followed by a sharp drop to <3% in FY19 and FY20 driven by a 
+combination of issues in the Diabetes Care segment including weaker growth in 
+insulin pumps, a changed FDA approval strategy as well as termination of a larger 
+manufacturing contract. Over FY21-23 profitability improved as growth in the likely 
+more profitable Delivery Systems segment accelerated. We think the Diabetes Care 
+business fell short of growth and margin expectations over the past couple of years, 
+which likely ultimately resulted in the recent decision to divest this former core 
+business entirely.
+Figure 53: Historic sales trend
+0
+100
+200
+300
+400
+500
+600
+FY14 FY15 FY16 FY17 FY18 FY19 FY20 FY21 FY22 FY23
+Delivery Systems (CHFm) Diabetes Care (CHFm)
+4.7% CAGR FY14-20
+10.8% CAGR FY20-23
+Source : Company data
+Figure 54: Historic EBIT trend
+9.3%
+13.2% 14.2% 13.1%
+16.2%
+2.5% 2.3%
+6.1%
+12.2%
+15.7%
+0%
+5%
+10%
+15%
+20%
+25%
+30%
+35%
+40%
+45%
+50%
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+FY14 FY15 FY16 FY17 FY18 FY19 FY20 FY21 FY22 FY23
+EBIT (CHFm) EBIT margin (RHS)
+-17.1% CAGR FY14-20
+110.3% CAGR FY20-23
+Source : Company data
+The Delivery Systems business posted a FY20/21-FY24/25 CAGR of 24%, growing 
+to CHF 501m in sales at a 33.3% EBIT margin in FY24/25. YPSN points to key growth 
+areas in Autoimmune, Rare Disease, Diabetes and Hormones. Operations seem to 
+continue to run well with YPSN pointing to ~20% revenue growth for the business 
+for FY25/26 as well.
+
+=== PAGE 35 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Deutsche Bank AG Page 35
+Figure 55: Drug Delivery Systems historic sales trend
+10%
+23%
+19%
+25%
+30%
+0%
+5%
+10%
+15%
+20%
+25%
+30%
+35%
+40%
+45%
+0
+100
+200
+300
+400
+500
+600
+FY19/20 FY20/21 FY21/22 FY22/23 FY23/24R FY24/25
+Delivery Systems Sales (CHFm) yoy growth (RHS)
+21.1% CAGR FY19-24
+Source : Company data
+Outlook
+For FY25/26 (year-end March 31st), we forecast a 3% sales decline and 63% EBIT 
+growth, resulting in an 25.2% margin (vs. 15.1% in FY24/25). The reported sales 
+decline is mainly due to the Diabetes Care divestment, while we expected 20% 
+growth in Delivery Systems (in line with company guidance). EBIT is expected to 
+increase due to the improved business mix from the divestment, further boosted by 
+divestment proceeds in FY24/25 (company guidance EBIT 190-210m for Delivery 
+Systems).
+Our outer year forecasts are largely in line with the new medium-term guidance, 
+which calls for CHF 0.9-1.1bn in sales (implying a ~15% CAGR) and EBIT of CHF 
+280-340m, with YPSN pointing to a slightly declining EBIT margin from the 33% in 
+FY24/25. Additionally, the guidance points to a ~20% ROCE.
+Margin drivers
+In terms of profitability drivers, YPSN points to the following factors supporting its 
+margin today:
+n YPSN's products tend to be mission critical for its customers and, in 
+general, high quality requirements seem to prevail
+n The company's focus on product innovation and R&D should result in 
+comparably high differentiation.
+n YPSN tends to reserve idle capacity for its customers to guarantee 
+production flexibility
+In the future, YPSN points to the following moving parts on profitability (positive/
+negative):
++The phase out of contract manufacturing and the focus on its own 
+products
+
+=== PAGE 36 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Page 36 Deutsche Bank AG
++ Increasing economies of scale
++ Efficiency gains through experience
++ The launch of new devices
+- Large volume contracts with staggered pricing
+- Customer capex co-financing
+- Industry maturation for older devices
+Figure 56: YPSN's EBIT margin drivers
+Source : Company presentation
+High capex investments but likely sufficient cash generation
+For its ongoing capacity tripling, YPSN expects about CHF 1.5bn of capex for this 
+over the next years, whereof 2/3 should be paid by YPSN and 1/3 by its customers. 
+The capex phasing is slightly frontloaded due to the Schwerin and US sites and the 
+approved investment includes significant customer upfront capex contribution and 
+capacity reservation fees. YPSN points to a normalization in capex spend post 
+FY27/28. The company explicitly aims to maintain a ROCE of ~20% also through this 
+heavy investment cycle, which should be a testament to its lean and profitable 
+business.
+The combination of an expected CHF ~300m cash inflow from the Diabetes Care 
+sales, customer prepayments of CHF 300-400m, strong operating cash flow 
+generation (due to >30% EBIT margins) on our estimates and moderate leverage at 
+1.7x as of FY24/25 should be sufficient to fund these expansion plans.
+YPSN aims for positive FCF within the next 3 years. The company intends to return 
+excess cash to shareholders via a dividend worth ~35% of net profit. The company 
+spends ~5% of sales on R&D, which is 50/50 expensed in the P&L and capitalized.
+
+=== PAGE 37 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Deutsche Bank AG Page 37
+Figure 57: YPSN's capital allocation strategy
+Cash deployment
+Continuous technology 
+and market monitoring, 
+focus on high strategic fit 
+to ensure long term 
+resilience
+Ambition
+ط ~ 5% R&D of Sales 
+(cash-view) - half of 
+which is innovation 
+(research)
+ط~ 35% dividend of net 
+profit 
+Development of the next 
+generation of autoinjector 
+and pen platforms, to 
+secure our competitive 
+edge
+Excess cash to be returned 
+to our shareholders
+Growth investments in 
+capacity expansion in 
+Schwerin (DE), Changzhou 
+(CN), and US plants, for 
+contracted demand
+ط~  20% ROCE / IRR 
+ambition
+ط~ 1.5:1 (ratio Capex / 
+Sales)
+طAttractive returns
+طHigh strategic fit
+M&ADividendsR&DCapex
+Source : Company presentation
+The figure below illustrates the usual phasing of a new production site in terms of 
+cumulative capex, COGS and annual sales. YPSN indicates a usual production 
+ramp-up takes to up to 2 years. In general, the company looks to achieve a 1.5:1 
+capex to sales ratio in such investments as well as a >20% IRR.
+Figure 58: YPSN'S capex dynamics for a new production site (Illustrative)
+Year 1 Year 2 Year 3 Year 4 Year 5 Year 6 Year 7 Year 8
+COGS Annual Sales Cumulative CAPEX
+Source : Company presentation
+
+=== PAGE 38 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Page 38 Deutsche Bank AG
+Financial charts
+Figure 59: Sales trend
+2%
+15%
+7%
+10%
+37%
+-3%
+-5%
+12%
+14% 14%
+-10%
+-5%
+0%
+5%
+10%
+15%
+20%
+25%
+30%
+35%
+40%
+0
+200
+400
+600
+800
+1,000
+1,200
+Sales (CHFm) yoy growth (RHS)
+16.7% CAGR FY20-24
+8.7% CAGR FY25-29E
+Source : Deutsche Bank estimates, Company data
+Figure 60: EBIT trend
+2.3%
+6.1%
+12.2%
+15.7% 15.1%
+25.2%
+30.7% 30.9% 30.9% 30.7%
+0%
+5%
+10%
+15%
+20%
+25%
+30%
+35%
+0
+50
+100
+150
+200
+250
+300
+350
+EBIT (CHFm) EBIT margin (RHS)
+86.8% CAGR FY20-24
+4.9% CAGR FY25-29E
+Source : Deutsche Bank estimates, Company data
+Figure 61: EPS trend
+0.46
+1.83
+3.82
+5.74 6.41
+15.23
+12.82
+14.19
+16.07
+18.24
+-50%
+297%
+109%
+50%
+12%
+138%
+-16%
+11% 13% 13%
+-100%
+-50%
+0%
+50%
+100%
+150%
+200%
+250%
+300%
+350%
+0
+5
+10
+15
+20
+EPS (CHF) yoy growth (RHS)
+93.1% CAGR FY20-24
+4.6% CAGR FY25-29E
+Source : Deutsche Bank estimates, Company data
+Figure 62: FCF trend
+-27 -42 -39 -32
+-129
+-46
+-73
+13
+77
+212
+-473%
+-180%
+-77%
+-41%
+-147%
+-22% -42%
+6% 35%
+85%
+-600%
+-500%
+-400%
+-300%
+-200%
+-100%
+0%
+100%
+200%
+-150
+-100
+-50
+0
+50
+100
+150
+200
+250
+FCF (CHFm) FCF conversion (RHS)
+Source : Deutsche Bank estimates, Company data
+Figure 63: NWC & Capex trend
+26.9%
+21.8%
+27.7%
+24.0% 23.0%
+30.5%
+20.9% 18.8% 18.3% 18.3%
+35%
+23%
+36% 37% 36%
+62% 63%
+47%
+32%
+14%
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+70%
+FY20/21 FY21/22 FY22/23 FY23/24R FY24/25 FY25/26EFY26/27EF Y27/28EFY28/29EFY29/30E
+NWC  (% of sales) Capex (PP&E + intangibles; % of sales)
+Source : Deutsche Bank estimates, Company data
+Figure 64: Net debt to adj. EBITDA trend
+2.5
+1.4
+0.9
+1.1
+1.7
+0.5
+0.9 0.9
+0.7
+0.3
+0.0
+0.5
+1.0
+1.5
+2.0
+2.5
+3.0
+FY20/21 FY21/22 FY22/23 FY23/24 FY24/25 FY25/26E FY26/27E FY27/28E FY28/29E FY29/30E
+Net debt to adj. EBITDA
+Source : Deutsche Bank estimates, Company data
+
+=== PAGE 39 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Deutsche Bank AG Page 39
+Financial statements
+Figure 65: P&L
+(CHF million) FY19/20 FY20/21 FY21/22 FY22/23 FY23/24 FY24/25 FY25/26E FY26/27E FY 27/28E FY28/29E FY29/30E
+Sales 394.3 403.7 464.8 497.5 548.5 748.9 729.5 694.4 776.4 888.8 1 ,017.5
+yoy 2.4% 15.2% 7.0% 10.3% 36.5% -2.6% -4.8% 11.8% 14.5% 14.5%
+Cost of goods and services sold (303.3) (308.8) (351.0) (356.9) (359.4) (456.8) (321.6) (348.5) (392.7) (455.4) (5 29.1)
+Gross profit 91.0 94.8 113.8 140.6 189.1 292.1 407.9 345.8 3 83.7 433.3 488.3
+margin 23.1% 23.5% 24.5% 28.3% 34.5% 39.0% 55.9% 49.8% 49.4% 48.8% 4 8.0%
+yoy 4.2% 20.0% 23.5% 34.5% 0.0% 0.0% 0.0% 0.0% 0.0%
+Marketing and sales expenses (67.2) (73.0) (66.4) (77.1) (7 8.9) (89.7) (83.8) (76.3) (81.4) (88.7) (96.5)
+% of sales -17.0% -18.1% -14.3% -15.5% -14.4% -12.0% -11.5% -11.0% -10.5% -10.0% -9.5%
+yoy 0.00 8.6% -9.0% 16.1% 2.3% -6.7% -9.0% 6.7% 9.0% 8.7%
+Administration expenses (22.0) (21.1) (23.0) (26.2) (29.1) (35.8) (34.9) (33.2) (37.1) (42.5) (48.6)
+% of sales -5.6% -5.2% -5.0% -5.3% -5.3% -4.8% -4.8% -4.8% -4 .8% -4.8% -4.8%
+yoy 0.00 -4.0% 9.2% 13.9% 11.0% -2.6% -4.8% 11.8% 14.5% 14.5%
+Other operating income 9.4 9.5 5.1 24.5 6.3 1.1 1.0 6.0 6.0 6. 0 6.0
+Other operating expenses (1.5) (1.0) (0.9) (1.2) (1.1) (21 .2) (1.0) (1.0) (1.0) (1.0) (1.0)
+EBIT 9.7 9.3 28.6 60.6 86.2 112.9 258.0 213.0 240.1 274.4 312.8
+margin 2.5% 2.3% 6.1% 12.2% 15.7% 15.1% 35.4% 30.7% 30.9% 30.9% 30.7 %
+yoy -4.3% 208.3% 112.0% 42.3% 128.6% -17.4% 12.7% 14.3% 14.0%
+Depreciation, amortisation and impairments 52.8 56.0 68.1 78.6 74.9 80.3 94.8 90.3 100.9 115.5 132.3
+% of sales 13.4% 13.9% 14.6% 15.8% 13.7% 10.7% 13.0% 13.0% 13 .0% 13.0% 13.0%
+EBITDA 62.5 65.3 96.7 139.2 161.1 193.1 352.8 303.3 341.0 390.0 445. 1
+margin 15.8% 16.2% 20.8% 28.0% 29.4% 25.8% 48.4% 43.7% 43.9% 43.9% 4 3.7%
+yoy 0.00 4.5% 48.0% 44.0% 15.8% 0.0% 0.0% 0.0% 0.0% 0.0%
+Financial income 4.4 5.5 3.0 3.2 4.8 3.7 1.3 1.2 0.2 (0.9) (3.5 )
+Financial expenses (6.3) (8.6) (6.1) (7.1) (9.2) (12.2) (14 .7) (8.4) (12.4) (15.4) (16.4)
+Net financial expenses (1.8) (3.2) (3.0) (4.0) (4.3) (8.5) (1 3.4) (7.2) (12.2) (16.3) (19.9)
+EBT 7.9 6.1 25.5 56.6 81.9 104.3 244.6 205.9 227.9 258.1 292.9
+Income taxes 3.9 (0.3) (2.4) (5.4) (3.5) (16.8) (36.7) (30.9) (34.2) (38.7) (43.9)
+Tax rate -49.4% 4.9% 9.5% 9.5% 4.3% 16.1% 15.0% 15.0% 15.0% 15.0% 15.0 %
+Net profit 11.7 5.8 23.1 51.3 78.4 87.5 207.9 175.0 193.7 219.4 248.9
+Basic shares 12.61 12.61 12.65 13.42 13.65 13.65 13.65 13.65 13.65 13.65 13.65
+Diluted shares 12.61 12.61 12.65 13.42 13.65 13.65 13.65 13 .65 13.65 13.65 13.65
+Earnings per share (diluted) in CHF 0.93 0.46 1.83 3.82 5. 74 6.41 15.23 12.82 14.19 16.07 18.24
+DPS 0.20 1.16 0.60 1.30 2.00 2.20 2.42 3.00 3.40 3.80 4.30
+yoy 480% -48% 117% 54% 10.0% 10.0% 24.0% 13.3% 11.8% 13.2%
+yield 0.1% 0.3% 0.2% 0.4% 0.6% 0.6% 0.7% 0.9% 1.0% 1.1% 1.3%
+Payout ratio 21% 252% 33% 34% 35% 34% 25% 23% 24% 24% 24%
+Source : Deutsche Bank estimates, Company data
+
+=== PAGE 40 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Page 40 Deutsche Bank AG
+Figure 66: Balance sheet
+(CHF million) FY19/20 FY20/21 FY21/22 FY22/23 FY23/24 FY24 /25 FY25/26E FY26/27E FY27/28E FY28/29E FY29/30E
+Assets
+Cash and cash equivalents 13.4 19.3 17.0 25.2 74.0 36.5 62. 4 48.4 89.6 139.6 292.6
+Securities 8.9 3.1 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+Trade receivables 76.3 72.7 87.0 93.3 128.0 173.9 118.6 118 .0 132.0 151.1 173.0
+Other current assets 15.0 12.2 8.3 15.6 15.8 34.5 34.5 34.5 34.5 34.5 34.5
+Accrued income and prepayments 14.7 12.9 10.7 15.1 13.0 29 .6 11.9 11.9 11.9 11.9 11.9
+Current income tax assets 0.1 0.1 0.2 0.1 0.1 0.1 0.1 0.1 0. 1 0.1 0.1
+Inventories 56.3 63.4 68.3 57.7 75.3 85.8 70.2 69.4 77.6 88.9 101.7
+Customer machinery 5.2 1.5 2.1 1.3 31.7 66.6 66.6 66.6 66.6 6 6.6 66.6
+Total current assets 189.9 185.1 193.6 208.3 337.9 426.9 3 64.3 349.0 412.3 492.7 680.5
+Long term receivables 43.5 0.0 0.0 0.0 0.0 2.0 47.0 47.0 47. 0 47.0 47.0
+Financial assets 0.2 2.7 2.6 2.6 2.7 2.7 2.7 2.7 2.7 2.7 2.7
+Deferred income tax assets 33.1 34.8 33.8 31.5 33.9 30.2 1 9.9 19.9 19.9 19.9 19.9
+Fixed assets 309.1 334.4 336.2 387.7 437.6 558.1 840.8 1,05 3.3 1,186.2 1,219.5 1,149.2
+Intangible assets 102.5 160.7 190.8 231.7 281.6 310.4 190. 4 225.1 256.2 291.7 322.3
+Total non-current assets 488.4 532.5 563.3 653.6 755.7 90 3.4 1,100.8 1,348.0 1,512.0 1,580.9 1,541.0
+Total assets 678.2 717.7 756.9 861.9 1,093.7 1,330.3 1,465 .1 1,697.0 1,924.3 2,073.5 2,221.5
+Liabilities and equity
+Financial liabilities 183.0 182.5 157.0 157.0 256.0 267.0 11 0.0 210.0 285.0 310.0 310.0
+Trade payables 24.0 34.6 17.4 19.6 30.9 37.4 43.8 41.7 46.6 5 3.3 61.0
+Prepayments from customers 11.9 19.4 19.5 23.9 74.8 83.1 18 3.1 183.1 183.1 133.1 83.1
+Current income tax payable 23.9 1.2 0.2 2.2 6.2 21.0 21.0 2 1.0 21.0 21.0 21.0
+Other payables 3.9 3.0 3.6 8.1 19.2 11.5 11.5 11.5 11.5 11.5 1 1.5
+Accrued liabilities and deferred income 26.7 29.3 36.8 44.3 49.0 71.4 71.4 71.4 71.4 71.4 71.4
+Provisions (short-term) 2.6 2.5 2.8 3.8 4.2 4.9 4.9 4.9 4.9 4 .9 4.9
+Total current liabilities 276.0 272.4 237.3 259.0 440.2 4 96.2 445.6 543.5 623.4 605.1 562.9
+Non-current liabilities to major shareholder 10.0 32. 5 110.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+State-subsidised payments 0.0 0.0 7.7 8.0 0.0 0.0 0.0 0.0 0. 0 0.0 0.0
+Other long-term liabilities 7.7 8.8 0.0 20.2 24.3 44.0 44. 0 44.0 44.0 44.0 44.0
+Provisions (long-term) 4.7 6.1 6.5 9.8 8.2 10.5 10.5 10.5 10 .5 10.5 10.5
+Deferred income tax liabilities 2.2 2.5 2.8 2.5 3.2 0.0 0. 0 0.0 0.0 0.0 0.0
+Total non-current liabilities 24.6 49.9 127.0 40.6 35.7 1 54.5 154.5 154.5 154.5 154.5 154.5
+Share capital 179.0 179.0 179.0 193.1 193.1 193.1 193.1 193 .1 193.1 193.1 193.1
+Capital reserves 112.2 111.4 104.3 206.3 197.8 184.7 184.7 184.7 184.7 184.7 184.7
+Treasury shares 0.0 (1.0) 0.0 (0.2) 0.0 (1.4) (1.4) (1.4) (1. 4) (1.4) (1.4)
+Translation differences (25.7) (10.8) (23.3) (25.7) (31. 5) (39.1) (39.1) (39.1) (39.1) (39.1) (39.1)
+Goodwill offset (322.9) (322.9) (322.9) (313.8) (313.8) ( 303.6) (303.6) (303.6) (303.6) (303.6) (303.6)
+Retained earnings 435.1 439.6 455.4 502.6 572.1 645.9 831.3 965.3 1,112.7 1,280.2 1,470.4
+Total equity 377.7 395.4 392.5 562.3 617.7 679.7 865.1 999. 1 1,146.4 1,313.9 1,504.2
+Total liabilities and equity 678.2 717.7 756.9 861.9 1,0 93.7 1,330.3 1,465.1 1,697.0 1,924.3 2,073.5 2,221.5
+Source : Deutsche Bank estimates, Company data
+
+=== PAGE 41 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Deutsche Bank AG Page 41
+Figure 67: Cash flow statement
+(CHF million) FY19/20 FY20/21 FY21/22 FY22/23 FY23/24 FY24/25 FY25/26E FY26/27E FY 27/28E FY28/29E FY29/30E
+Net profit 11.7 5.8 23.1 51.3 78.4 87.5 207.9 175.0 193.7 219.4 248.9
+Depreciation and amortisation 52.8 56.0 68.1 78.6 74.9 79.9 9 4.8 90.3 100.9 115.5 132.3
+Change in provisions (29.8) 0.1 1.5 6.6 (3.1) 1.5 0.0 0.0 0. 0 0.0 0.0
+Other expenses/income (0.1) (0.7) 0.1 (0.3) (0.6) 1.4 0.0 0 .0 0.0 0.0 0.0
+Income from disposal of assets (0.2) (6.5) 0.3 (17.4) (0.2) 20.2 0.0 0.0 0.0 0.0 0.0
+change in trade receivables 11.8 5.0 (16.4) (18.3) (35.2) ( 46.2) 13.4 0.6 (13.9) (19.1) (21.9)
+Change in other receivables (4.2) 5.1 5.4 (13.4) 1.9 (38.3) 0.0 0.0 0.0 0.0 0.0
+Change in inventories (4.9) (6.3) (5.9) (4.3) (17.9) (16.0 ) (16.4) 0.8 (8.2) (11.2) (12.9)
+Change in customer machinery (3.5) 3.7 (0.6) 0.8 (16.1) (3 5.4) 0.0 0.0 0.0 0.0 0.0
+Change in trade payables 3.5 (5.9) 2.0 5.6 6.0 10.5 6.4 (2.1) 4.9 6.7 7.7
+Change in prepayments from customers (0.8) 7.5 0.2 4.4 50.9 8.3 100.0 100.0 100.0 50.0 0.0
+Change in other payables 11.8 (21.5) 7.9 15.8 20.2 29.8 0.0 0. 0 0.0 0.0 0.0
+Change in other long-term liabilities 0.0 0.0 0.0 20.2 4.1 1 9.6 0.0 0.0 0.0 0.0 0.0
+Cash flow from operating activities 49.1 85.8 85.7 129.5 163 .2 148.2 406.2 364.5 377.4 361.3 354.2
+Disposal of financial assets 0.1 8.9 2.8 0.0 0.0 0.0 0.0 0.0 0. 0 0.0 0.0
+Acquisition of financial assets 0.0 (2.5) 0.0 0.0 0.0 0.0 0.0 0 .0 0.0 0.0 0.0
+Purchases of fixed assets (76.8) (59.2) (51.6) (98.9) (11 6.4) (205.6) (372.0) (368.0) (295.0) (204.4) (61.0)
+Disposals of fixed assets 0.3 0.3 0.1 0.4 0.2 0.1 0.0 0.0 0.0 0 .0 0.0
+Purchases of intangible assets (42.0) (54.4) (75.8) (70.3 ) (78.9) (71.5) (80.2) (69.4) (69.9) (80.0) (81.4)
+Acquisition of subsidiaries 0.0 0.0 (1.2) 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+Divestment of investments 0.0 0.0 0.0 46.0 0.0 8.2 307.0 0.0 0.0 0.0 0.0
+Cash flow from investing activities (115.8) (106.9) (125.7 ) (122.0) (195.1) (267.3) (190.3) (437.5) (364.9) (284.4) ( 142.4)
+Proceeds from capital increase 0.0 0.0 0.0 35.2 0.0 0.0 0.0 0 .0 0.0 0.0 0.0
+Proceeds of borrowings - shareholder 0.0 22.5 77.5 0.0 0. 0 0.0 0.0 0.0 0.0 0.0 0.0
+Proceeds of borrowings banks 75.0 54.0 2.0 48.0 107.0 91.0 100.0 100.0 75.0 25.0 0.0
+Repayment of borrowings - shareholder 0.0 0.0 0.0 (25.0) 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+Repayment of borrowings - banks (4.0) (54.5) (27.5) (48.0) ( 8.0) (80.0) (257.0) 0.0 0.0 0.0 0.0
+State-subsidised payments 4.6 1.1 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+Purchase of own shares 0.0 6.1 (0.3) (1.8) (1.3) (2.5) 0.0 0 .0 0.0 0.0 0.0
+Distribution of capital reserves (6.9) (2.5) (14.7) (8.2) (17.7) (27.3) (33.0) (40.9) (46.4) (51.9) (58.7)
+Cash flow from financing activities 68.7 26.7 38.1 1.3 81.1 8 2.2 (190.0) 59.1 28.6 (26.9) (58.7)
+Effect of foreign currency translation (0.6) 0.3 (0.4) (0 .6) (0.4) (0.7) 0.0 0.0 0.0 0.0 0.0
+Changes in Cash and Cash Equivalents 1.3 5.9 (2.3) 8.2 48.8 ( 37.5) 25.9 (13.9) 41.1 50.0 153.0
+Cash and cash equivalents as of 01 Apr 12.1 13.4 19.3 17. 0 25.2 74.0 36.5 62.4 48.4 89.6 139.6
+Cash and cash equivalents as of 31 Mar 13.4 19.3 17.0 25.2 74.0 36.5 62.4 48.4 89.6 139.6 292.6
+Source : Deutsche Bank estimates, Company data
+
+=== PAGE 42 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Page 42 Deutsche Bank AG
+Valuation
+We value Ypsomed based on an average of target 2026/27E P/E and DCF valuations. 
+Our target P/E multiple (26x) assumes that 12 months from now, the shares should 
+trade at a premium to Ypsomed's European-listed peers (Gerresheimer 9x 2026 P/E, 
+SCHOTT Pharma 17x 2026 P/E), and at a discount to US-listed peers (West Pharma 
+36x 2026 P/E, Stevanato 31x 2026 P/E), and toward the midpoint of its 5-year 
+trading range (26-40x), which we consider fair in light of the company's growth and 
+margin profile.
+Key assumptions to our DCF include WACC of 7.8% (based on levered beta of 0.9, 
+a risk-free rate of 4%, and an equity risk premium of 5.5% – in line with Deutsche 
+Bank's European MedTech & Services coverage) and TG of 2% (in line with long-
+term GDP growth). Given the upside potential of ~5% implied by our CHF 345 target 
+price, we initiate coverage with a Hold rating.
+Figure 68: Valuation output
+DCF Output Target P/E output
+PV FCF (explicit) 214 FY25/26E FY26/27E FY27/28E
+PV FCF (transition) 1,917 EPS 9.81 12.82 14.19
+PV FCF (terminal) 3,016 weight 50% 50%
+EV 5,147 Target multiple 26.0 24.1
+Net debt(cash) 331 Fair value per share 337.7
+Minorities
+Pension
+Implied mcap 4,816 DB target price calculation
+no of shares (DBe) 14 Fair value P/E 50% 337.7
+Fair value per share 352.9 Fair value DCF 50% 352.9
+DB target price 345.3
+Key assumptions Up/downside 5%
+WACC 7.8%
+Terminal growth 2.0%
+Source : Deutsche Bank estimates, Company data
+Peer group analysis
+Asmall range of listed direct competitors
+Ypsomed competes with numerous different companies in the broader drug 
+containment and drug delivery solutions markets. These can be either privately 
+owned or publicly listed, and range from small local players, through midsize 
+companies, to large global enterprises and conglomerates with sizeable medical 
+delivery solutions divisions.
+However, when considering Ypsomed's focus areas of injection and infusion 
+systems for self-medication, the company operates in relatively concentrated 
+markets with high barriers to entry (regulatory and quality requirements, required 
+know-how, supply chain integrity, investments in manufacturing and R&D). As a 
+global leader in drug delivery solutions, Ypsomed competes with a few dominant 
+players, which together control the majority of the underlying market. Although 
+Ypsomed is the only listed pure-play drug delivery injection systems for self-
+medication, we have identified Stevanato Group, Gerresheimer, SCHOTT Pharma 
+and West Pharmaceutical Services as the most relevant listed peers.
+One can also compare Ypsomed to other companies that offer drug containment 
+and drug delivery solutions, such as Becton Dickinson, Daetwyler and AptarGroup.
+
+=== PAGE 43 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Deutsche Bank AG Page 43
+Leading market position and differentiated offering
+In contrast to competitors (such as Stevanato or Gerresheimer), Ypsomed only 
+offers products that are related to drug delivery injection systems for self-
+medication. It does not offer drug containment solutions, moulded glass or 
+equipment. This focused offering creates a unique investment case that is solely 
+focused on the self administration / home care trend. The company should have 
+limited exposure to Pharma drug pipeline risks, as it works with 27 out of the 30 
+largest pharma companies and no customer contributes >15% of sales, which 
+should be maintained over the mid term despite the large Novo Nordisk CagriSema 
+contract. We note that the Top 6 customers account for ~50% of group sales in 
+FY24/25.
+Certain limitations apply when comparing peers
+With regard to the most relevant publicly listed competitors, we note the following 
+limitations:
+Stevanato provides integrated solutions for drug containment, drug delivery, and 
+diagnostics to the pharmaceutical, biotech, and life sciences sectors. They 
+specialize in glass primary packaging (vials, syringes, cartridges, ampoules) in bulk 
+and ready-to-fill formats. Additionally, they offer machinery for glass conversion, 
+inspection systems, and assembly/packaging solutions, alongside high-quality 
+plastic solutions for medical and diagnostic use.
+The company derives ~85% of group revenue from its Biopharmaceutical and 
+Diagnostic Solutions segment, where the company offers a broad range of Drug 
+Containment Solutions, Drug Delivery Systems (i.e., medical devices) and In-Vitro-
+Diagnostics (IVD) Solutions. However, <10% of group revenue should be directly 
+comparable to Ypsomed's offerings as Ypsomed only provides products that are 
+related to drug delivery injection systems for self-medication (it does not offer Drug 
+Containment or IVD Solutions like Stevanato does).
+In terms of operating performance, we note that Stevanato has seen meaningfully 
+lower EBITDA margins than Ypsomed, despite being the larger company (in terms 
+of revenue). This should be attributable to Ypsomed's focus on high margin 
+products, in our view. Stevanato's sales/earnings growth prospects appear to be 
+lower when looking at YPSN's medium-term targets of its continued operations 
+(midpoint 15% revenue CAGR), although we acknowledge the ongoing 
+divestments make Bloomberg estimates appear lower over 2024-26.
+In addition, the following points stand out when comparing the two companies:
+n Stevanato uses earnings adjustments (e.g., ramp-up costs of newly 
+constructed facilities), while Ypsomed does not.
+n Stevanato has a significantly higher addressable market, given its broad 
+product portfolio.
+n Stevanato has >700 customers, while Ypsomed has >130 customers.
+n Stevanato is spending large capex amounts on major expansion projects 
+(23% of sales net capex guided for FY25), however, still less in total and 
+relative to its size than YPSN (~37% of sales net capex FY25/26 DBe).
+n Stevananto has a comparably lower ROCE (9% in FY24 vs. YPSN pointing 
+to above 20% ROCE over the medium term) due its lower profitability and 
+higher capital intensity.
+
+=== PAGE 44 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Page 44 Deutsche Bank AG
+Gerresheimer is a global leader in pharmaceutical packaging including primary 
+containment solutions made of glass (syringes, cartridges etc) as well as plastic 
+containers and drug delivery devices. Gerresheimer also has an exposure to 
+cosmetics containment. The company operates three divisions: Plastics & Devices 
+(P&D, 55% of FY24 group revenue), Primary Packaging Glass (PPG, 45%) and 
+Advanced Technologies (GAT, <1%). Gerresheimer shared it has won GLP-1 
+contracts and expects related sales to reach €350m over 2025-27E, which is likely 
+mostly contract manufacturing.
+The revenue overlap with Ypsomed should be the highest in Gerresheimer's P&D 
+segment, given that the segment provides drug delivery devices, including pens, 
+inhalers and auto injectors (~20% of group revenue DBe).
+In terms of operating performance, we note that Gerresheimer has seen 
+significantly lower operating margins than Ypsomed, despite being the larger 
+company (in terms of revenue). This should be attributable to Ypsomed's focus on 
+higher margin solutions. While Gerresheimer's medium-term guidance points to an 
+improved adj. EBITDA margin (23-25% vs. 20.4% in FY24), this would still be 
+significantly below Ypsomed's current EBIT margin in Delivery Systems of 33%. 
+Gerresheimer's revenue/earnings growth prospects also appear to be lower when 
+looking at YPSN's medium-term targets of its continued operations (midpoint 15% 
+revenue CAGR), although we acknowledge the ongoing divestments make 
+Bloomberg estimates appear lower over 2024-26.
+In addition, the following points stand out when comparing the two companies:
+n Gerresheimer uses more earnings adjustments.
+n Gerresheimer has much higher leverage.
+n Gerresheimer has a significantly higher addressable market, given its 
+broad product portfolio and integrated offering.
+n Gerresheimer does own some autoinjector or pen injector IP but likely 
+rather acts as contract manufacturer (in particular, for larger GLP-1 
+contracts, we assume).
+n Gerresheimer is spending less capex for major expansion projects (15% of 
+sales in FY25 DBe vs. ~37% of sales net capex FY25/26 DBe for YPSN).
+n Gerresheimer has a comparably lower ROCE (9% in FY24 vs. YPSN pointing 
+to above 20% ROCE over the mid-term) due its lower profitability and higher 
+capital intensity.
+West Pharmaceutical Services is a global manufacturer of integrated containment 
+and delivery components for pharmaceuticals and health care products. It operates 
+through two reporting segments: Proprietary Products (81% of group revenue) and 
+Contract-Manufactured Products (19%). While the revenue overlap with Ypsomed 
+should be the highest in the Contract-Manufactured Products segment where West 
+provides devices for the administration of GLP-1 and glucose monitoring, there 
+should also be an overlap in the Proprietary Products segment. This segment 
+primarily focuses on the supply of seals and stoppers, which are used in syringes, 
+cartridges and vials, but also offers on-Body delivery systems.
+On direct revenue overlap, we (DB analyst Justin Bowers) estimate West is 
+generating ~$300m revenue from autoinjector molding for GLP-1s in FY25, which 
+is equal ~10% of group sales.
+
+=== PAGE 45 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Deutsche Bank AG Page 45
+In terms of operating performance, we note that West has seen lower operating 
+margins than Ypsomed. West Pharma's revenue/earnings growth prospects 
+appear to be lower when looking at YPSN's medium-term targets of its continued 
+operations (midpoint 15% revenue CAGR), although we acknowledge the ongoing 
+divestments make Bloomberg estimates appear lower over 2024-26.
+In addition, the following points stand out when comparing the two companies:
+n West has lower capex requirements, which explains its low capex spending 
+(10% in FY25 guided a vs. ~37% of sales net capex FY25/26 DBe for YPSN).
+n West benefits from a comparably high ROCE (20% in FY24 vs. YPSN 
+pointing to above 20% ROCE over the medium term) due to its higher 
+profitability and rather lean operations.
+SCHOTT Pharma is a global leader and a pure-play company in the injectable 
+primary containment and delivery systems market. The company´s products are 
+mainly used for injectable biological drugs and vaccines. It operates through two 
+reporting segments: Drug Containment Solutions (DCS, 54% of the revenue) and 
+Drug Delivery Systems (DDS, 46%) and offers the following products: vials, 
+ampoules, cartridges, and pre-fillable syringes. In contrast to YPSN, SCHOTT 
+Pharma does not sell autoinjectors or pens. SCHOTT Pharma is well-positioned to 
+benefit from the increasing adoption of GLP-1 and mRNA therapies, as these 
+treatments require advanced primary packaging and drug-delivery solutions. 
+Regarding GLP-1, SCHOTT Pharma appears to have contracts with the two leading 
+pharma companies (Novo Nordisk and Eli Lilly).
+We don't see a direct revenue overlap with YPSN given SCHOTT Pharma does not 
+produce autoinjectors or pens (and indeed partners with YPSN for this), however, 
+consider this close peer in the value chain a worthwhile comparison.
+In terms of operating performance, we note that SCHOTT Pharma has seen lower 
+operating margins than Ypsomed. This should be attributable to Ypsomed's focus 
+on high margin products, in our view. SCHOTT Pharma's sales/earnings growth 
+prospects appear to be lower when looking at YPSN's mid-term targets of its 
+continued operations (mid-point 15% revenue CAGR), although we acknowledge 
+the ongoing divestments make Bloomberg estimates appear lower over 2024-26.
+SCHOTT Pharma's revenue/earnings growth prospects appear to be lower when 
+looking at YPSN's medium-term targets of its continued operations (midpoint 15% 
+revenue CAGR), although we acknowledge the ongoing divestments make 
+Bloomberg estimates appear lower over 2024-26.
+In addition, the following points stand out when comparing the two companies:
+n SCHOTT Pharma has a higher addressable market, given its broad product 
+portfolio and integrated offering.
+n SCHOTT Pharma has lower capex requireme nts (17% in F Y25 DBe vs. 
+~37% of sales net capex FY25/26 DBe for YPSN).
+n SCHOTT Pharma benefits from a comparably high ROCE (18% in FY25 DBe 
+vs. YPSN pointing to above 20% ROCE over the medium term) due to its 
+higher profitability and rather leaner operational footprint.
+
+=== PAGE 46 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Page 46Deutsche Bank AG
+Figure 69: Peer comparison (calendarised) – operating metrics
+Company Market Cap
+(in EUR m) 2024 2025E 2026E 2027E 2024 2025E 2026E 2027E 2024 2025E 2026 E 2027E Sales EBITDA EBIT
+Closest Peers
+Stevanato Group SpA 6,106 955 1,015 1,112 1,227 23.5% 24.9% 26.8% 28.7% 16.2% 17.2% 18.7% 2 0.5% 7.9% 15.4% 16.0%
+Gerresheimer AG 935 2,056 2,299 2,409 2,482 20.6% 18.9% 28.9% 44.5% 11.3% 5.5% 12 .0% 19.1% 8.2% 28.3% 11.5%
+West Pharmaceutical Services I 17,250 2,502 2,650 2,818 3, 016 25.2% 25.2% 26.1% 27.1% 19.8% 19.9% 20.8% 22.0% 6.1% 8.1% 8.8%
+Schott Pharma AG & Co KGaA 2,877 955 997 1,366 2,113 25.4% 28.3% 28.2% 29.2% 18.2% 20.7% 24.2% 30.0% 1 9.6% 25.9% 38.1%
+Avg. Closest Peers 1,838 1,988 2,113 2,242 23.1% 23.0% 27.3% 33.4% 15.7% 14.2% 1 7.2% 20.5% 7.4% 17.3% 12.1%
+Ypsomed Holding AG 4,869 736 813 769 843 27.9% 44.3% 43.4% 44.0% 14.6% 31.3% 29.0% 30.0% 1.8% 1.5% -0. 4%
+Drug containment and delivery solutions
+Becton Dickinson & Co 47,920 17,848 18,873 19,311 19,567 3 4.0% 34.2% 31.0% 35.0% 25.1% 24.5% 24.0% 24.1% 4.0% -0.6% 1.9 %
+Daetwyler Holding AG 2,813 1,192 1,209 1,267 1,335 18.0% 19. 3% 20.3% 20.9% 7.2% 12.0% 13.2% 14.0% 3.1% 9.6% 39.5%
+AptarGroup Inc 7,078 3,098 3,192 3,301 3,473 21.6% 22.0% 21.7% 22.3% 14.3% 14.1% 13.6% 14.4% 3.2% 3.3% 5.5%
+Avg. Closest Peers 7,379 7,758 7,960 8,125 24.5% 25.1% 24.3% 26.0% 15.5% 16.9% 1 7.0% 17.5% 3.5% 4.1% 15.6%
+Ypsomed Holding AG 4,869 736 813 769 843 27.9% 44.3% 43.4% 44.0% 14.6% 31.3% 29.0% 30.0% 1.8% 1.5% -0. 4%
+Life Science Tools/CMOs
+Thermo Fisher Scientific Inc 193,070 37,078 38,287 40,230 42,421 25.3% 25.1% 25.7% 26.2% 22.6% 22.7% 23.3% 23.8% 4.2% 4 .9% 5.6%
+Danaher Corp 138,506 20,645 21,203 22,044 23,401 31.7% 31. 0% 31.9% 32.6% 28.6% 28.1% 29.1% 29.9% 3.3% 3.8% 4.1%
+Sartorius AG 16,837 3,381 3,545 3,824 4,271 28.0% 29.3% 30.6 % 31.7% 11.6% 16.4% 18.2% 20.1% 6.3% 11.2% 33.2%
+Lonza Group AG 42,210 7,073 8,142 8,887 9,920 29.0% 29.8% 3 0.9% 31.9% 20.0% 20.1% 21.6% 22.9% 12.1% 15.6% 16.6%
+Agilent Technologies Inc 37,510 5,642 6,077 6,402 6,776 28. 8% 28.7% 29.4% 29.8% 26.3% 25.6% 26.7% 27.4% 6.5% 7.7% 7.2%
+Avg. Closest Peers 14,764 15,451 16,277 17,358 28.5% 28.8% 29.7% 30.4% 21.8% 22 .6% 23.8% 24.8% 6.5% 8.6% 13.4%
+Ypsomed Holding AG 4,869 736 813 769 843 27.9% 44.3% 43.4% 44.0% 14.6% 31.3% 29.0% 30.0% 1.8% 1.5% -0. 4%
+Avg. ALL 9,225 9,681 10,146 10,717 26.0% 26.2% 27.6% 30.1% 18.5% 18.7 % 20.1% 21.7% 5.9% 9.8% 13.6%
+Ypsomed Holding AG 4,869 736 813 769 843 27.9% 44.3% 43.4% 44.0% 14.6% 31.3% 29.0% 30.0% 1.8% 1.5% -0. 4%
+Sales (in EURm) Adj. EBITDA Margin Adj. EBIT margin CAGRs 2024-26E
+Source : Bloomberg Finance LP; prices as of 28 November 2025
+
+=== PAGE 47 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Deutsche Bank AGPage 47
+Figure 70: Peer comparison (calendarised) – valuation metrics
+Company
+2025E 2026E 2027E 2025E 2026E 2027E 2025E 2026E 2027E 2025E 2 026E 2027E 2025E 2026E 2025E 2026E
+Closest Peers
+Stevanato Group SpA 37.6 31.9 25.0 21.9 18.5 15.7 31.7 26.5 21.9 5.8 5.4 5.0 0.3% 0. 3% -0.3% 0.5%
+Gerresheimer AG 8.9 8.6 7.0 7.1 6.6 6.1 24.4 16.0 12.9 1.5 1.3 1.3 0.3% 1.7% -12.0% 1.4%
+West Pharmaceutical Services I 39.0 36.2 32.1 25.3 22.9 20.7 32.2 28.8 25.4 6.8 6.4 6.0 0.3% 0. 3% 1.9% 2.3%
+Schott Pharma AG & Co KGaA 18.7 16.8 15.2 10.3 9.3 8.4 14.1 12.7 11.2 3.1 2.9 2.7 0.9% 1.0% 1.7% 2.1%
+Avg. Closest Peers 28.5 25.5 21.3 18.1 16.0 14.1 29.4 23.8 20 .1 4.7 4.4 4.1 0.3% 0.8% -3.4% 1.4%
+Ypsomed Holding AG 22.8 25.4 23.5 13.4 14.1 13.0 19.0 20.4 19.1 6.6 5.9 6.3 0.9% 1. 1% -1.0% -0.8%
+Drug containment and delivery solutions
+Becton Dickinson & Co 14.0 12.9 13.2 9.9 10.7 10.7 14.0 13.9 12.8 3.6 3.4 3.3 2.1% 2.1 % 4.0% 11.3%
+Daetwyler Holding AG 31.9 25.6 22.6 14.1 12.8 11.8 22.6 19.6 17.6 2.8 2.7 2.6 2.1% 2. 2% 4.2% 4.1%
+AptarGroup Inc 21.8 22.2 19.7 11.3 11.0 10.2 17.7 17.7 15.9 2.6 2.5 2.4 1.5% 1. 6% 4.8% 5.0%
+Avg. Closest Peers 22.6 20.2 18.5 11.8 11.5 10.9 18.1 17.1 15 .4 3.0 2.9 2.8 1.9% 2.0% 4.3% 6.8%
+Ypsomed Holding AG 22.8 25.4 23.5 13.4 14.1 13.0 19.0 20.4 19.1 6.6 5.9 6.3 0.9% 1. 1% -1.0% -0.8%
+Life Science Tools/CMOs
+Thermo Fisher Scientific Inc 26.1 24.2 21.9 23.0 21.4 19.9 25.4 23.6 21.9 6.0 5.8 5.5 0.3% 0. 3% 3.0% 3.7%
+Danaher Corp 29.4 27.0 24.5 23.1 21.6 19.9 25.6 23.8 21.9 7.4 7.2 6.9 0.5% 0. 6% 3.3% 3.8%
+Sartorius AG 51.0 43.7 35.1 21.1 18.8 16.2 37.5 31.3 25.3 6.5 6.2 5.7 0.3% 0. 4% 1.8% 3.2%
+Lonza Group AG 33.6 28.4 23.8 19.1 16.9 14.6 28.4 24.2 20.4 6.5 5.7 5.2 0.9% 1. 0% 0.2% 1.0%
+Agilent Technologies Inc 27.3 25.4 22.9 22.3 20.7 19.2 25.0 22.8 21.0 6.9 6.4 6.1 0.7% 0. 7% 2.3% 3.7%
+Avg. Closest Peers 33.5 29.7 25.7 21.7 19.8 18.0 28.4 25.2 22 .1 6.7 6.2 5.9 0.5% 0.6% 2.1% 3.1%
+Ypsomed Holding AG 22.8 25.4 23.5 13.4 14.1 13.0 19.0 20.4 19.1 6.6 5.9 6.3 0.9% 1. 1% -1.0% -0.8%
+Avg. ALL 29.1 26.0 22.5 18.0 16.5 15.0 25.9 22.6 19.7 5.1 4.8 4.6 0.8% 1. 0% 1.2% 3.6%
+Ypsomed Holding AG 22.8 25.4 23.5 13.4 14.1 13.0 19.0 20.4 19.1 6.6 5.9 6.3 0.9% 1. 1% -1.0% -0.8%
+Div. Yield FCF YieldEV/SalesP/E EV/EBITDA EV/EBIT
+Source : Bloomberg Finance LP; prices as of 28 November 2025
+
+=== PAGE 48 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Page 48 Deutsche Bank AG
+Risks
+Rate of biological drug approvals
+Ypsomed provides containment solutions for injectable drugs. Therefore, its 
+growth going forward is linked to the rate of biological drug approvals, as these are 
+typically injectable drugs. If the approval rate were to decelerate/accelerate, this 
+would negatively/positively affect the company.
+Oral Adoption
+Ypsomed's strategic focus is on autoinjectors and pens for injectable drugs. While 
+the markets for oral and injectable drugs are often viewed as distinct, each with its 
+own advantages and disadvantages, there's a possibility that oral incretins could 
+increasingly replace their injectable counterparts. Conversely, the market for 
+injectable drugs could also experience expansion due to their superior drug efficacy 
+and higher API requirements which make the drug production more costly for 
+pharmaceutical companies, thereby ensuring continued demand.
+Competitive industry
+Ypsomed operates in a highly competitive industry. The company has leading 
+positions within its industry, and it continues to create, invest in, or acquire 
+advanced technology, which increases its ability to maintain or build on those 
+leading positions. However, any delay in the development, introduction, or 
+marketing of new products or new versions of existing products could impact the 
+company's market share and financial position. On the flip side, faster development 
+and introduction of products could also positively affect YPSN's operations. 
+Similarly, the company could be challenged by the emergence of new technologies, 
+but potentially also invent these new technologies itself and benefit from them.
+Customer Concentration
+Currently, YPSN points to a diversified customer portfolio with no single client 
+accounting for more than 15% of commercial revenue. However, going forward 
+customer concentration is likely to increase given, in particular, the large GLP-1 
+contract YPSN has with Novo Nordisk. This should increase YPSN's dependence on 
+the success of individual customers and their compounds, providing an upside/
+downside risk. Such partnerships with increasing volumes and customer 
+concentration, however, can also help ensure significant volumes in the mid-term 
+and thereby support growth - if successful.
+Therapeutic Area Concentration
+Ypsomed faces a risk of therapeutic area concentration due to its strong focus on 
+injectable drugs, especially for GLP-1s. Therefore, the company's growth is partly 
+linked to the success/failure of these injectable drugs, or stronger/weaker-than-
+anticipated demand. This could lead to vulnerability if demand shifts or if new, non-
+injectable GLP-1 delivery methods emerge. However, strong growth is predicted for 
+the incretin market and also expansion into new medical areas, which could enable 
+YPSN to position itself as a key player in this segment.
+Innovation
+Ypsomed's ability to continue to maintain and grow its business depends on its 
+ability to identify and successfully develop new innovative products. If the company 
+is unable to maintain a cost-effective flow of successful new products that are 
+sufficient to maintain and grow its business, cover any sales erosion due to 
+
+=== PAGE 49 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Deutsche Bank AG Page 49
+competition and take advantage of market opportunities, this could impact the 
+company's business performance and its ability to maintain and grow its market 
+share. On the other hand, it is also possible that Ypsomed itself brings successful 
+innovations to the market.
+Available capacity and capacity constraints
+A risk of Ypsomed's refined strategic focus, particularly its exclusive concentration 
+on pens and autoinjectors following the divestment of its diabetes segment, is the 
+potential for overcapacity. Should the company become overly reliant on the GLP-1 
+market without a sufficiently broad customer base, or if customer requirements 
+shift unexpectedly, a singular focus could lead to substantial excess production 
+capacity. However, this focused allocation of resources and increased production 
+capabilities also could position Ypsomed to benefit more strongly from the GLP-1 
+delivery device market if demand continues or exceeds its projected strong growth 
+trajectory. Ypsomed could also benefit if competitors would be struggling with 
+meeting market needs.
+Healthcare reforms
+Ypsomed operates in a sector that is heavily affected by regulatory framework. 
+Future healthcare reforms or tightening could create headwinds. Reforms might 
+weigh on reimbursement for diagnostic products or solutions. The resulting margin 
+pressure on Ypsomed's customers might be passed on through the value chain, 
+which could make the company's offering less attractive for its customers. On the 
+other hand, this might also positively influence Ypsomed's business model.
+Global economic downturn
+While we consider Ypsomed's business to be largely independent of the economic 
+cycle, we cannot rule out temporary spillover effects and a compression of sector 
+multiples in a broad economic downturn. Ypsomed could also potentially sell/place 
+fewer instruments in an economic downturn, given that utilization of the existing 
+systems tends to be below 100%.
+Product recalls
+The company is subject to a number of laws and regulations that require it to report 
+adverse events associated with its products. Such adverse events and potential 
+health risks may lead to voluntary or mandatory market actions, including product 
+recalls, product withdrawals and field correction actions. These actions could result 
+in significant costs and potential disruptions in the supply of its products. On the 
+other hand, Ypsomed might not be impacted by product recalls.
+Global supply chain
+Ypsomed is engaged in the manufacturing and sourcing of products and materials 
+on a global scale. The company's operations and those of its suppliers could be 
+disrupted by a number of local issues, including: disruptions in logistics, strikes, 
+loss of key suppliers, supplier capacity constraints, quality/safety issues, epidemics 
+and pandemics, and natural and man-made disasters. In addition, the company 
+relies on limited sources of supply for many components in its production, and any 
+disruption from one of these suppliers could impact the company's business.
+Potential gains/losses due to litigation charges
+The company is subject to risks arising from legal disputes involving either the 
+company itself or any third party that it deals with. Any impact on the company may 
+result in financial gains/losses on account of punitive damage payments, equitable 
+remedies, fines, and criminal/civil sanctions.
+
+=== PAGE 50 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Page 50 Deutsche Bank AG
+Appendix 1
+Important Disclosures
+*Other information available upon request
+Disclosure checklist
+Company Ticker Recent price* Disclosure
+Ypsomed YPSN.S 328.0 (CHF) 01 Dec 2025 NA
+*Prices are current as of the end of the previous trading session unless otherwise indicated and are sourced from local exchanges via Reuters, Bloomberg and other vendors . Other 
+information is sourced from Deutsche Bank, subject companies, and other sources. For disclosures pertaining to recommendations or estimates made on securities other than the primary 
+subject of this research, please see the most recently published company report or visit our global disclosure look-up page on our website at https://research.db.com/Research/Disclosures/
+EquityResearchDisclosures. Aside from within this report, important risk and conflict disclosures can also be found at https://research.db.com/Research/Disclosures/Disclaimer. Investors 
+are strongly encouraged to review this information before investing. 
+Important Disclosures Required by U.S. Regulators
+Disclosures marked with an asterisk may also be required by at least one jurisdiction in addition to the United States.See 
+Important Disclosures Required by Non-US Regulators and Explanatory Notes.
+Important Disclosures Required by Non-U.S. Regulators
+Disclosures marked with an asterisk may also be required by at least one jurisdiction in addition to the United States.See 
+Important Disclosures Required by Non-US Regulators and Explanatory Notes.
+For disclosures pertaining to recommendations or estimates made on securities other than the primary subject of this 
+research, please see the most recently published company report or visit our global disclosure look-up page on our website 
+at https://research.db.com/Research/Disclosures/EquityResearchDisclosures. Aside from within this report, important risk 
+and conflict disclosures can also be found at https://research.db.com/Research/Disclosures/Disclaimer. Investors are strongly 
+encouraged to review this information before investing.
+Analyst Certification
+The views expressed in this report accurately reflect the personal views of the undersigned lead analyst(s) about the subject 
+issuer and the securities of the issuer. In addition, the undersigned lead analyst(s) has not and will not receive any 
+compensation for providing a specific recommendation or view in this report. Fynn Scherzler.
+
+=== PAGE 51 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Deutsche Bank AG Page 51
+Historical recommendations and target price: Ypsomed  (YPSN.S)     
+(as of 12/01/2025)
+Current Recommendations
+Buy
+Hold
+Sell
+Not Rated
+Suspended Rating
+** Analyst is no longer at
+Deutsche Bank
+Date
+Security price
+Jan '23 Jul '23 Jan '24 Jul '24 Jan '25 Jul '25
+0.00
+100.00
+200.00
+300.00
+400.00
+500.00
+§§§§$$$$$§§§§§
+    
+
+=== PAGE 52 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Page 52 Deutsche Bank AG
+Equity rating dispersion and banking relationships
+       
+      
+Equity Rating and Dispersion Key
+       The Equity Rating Dispersion Chart depicts the following:       
+       The proportion of recommendations that are rated "buy", "sell" and "hold" over the previous 12 months. This is shown for 
+securities issued in the stated region e.g. "Europe Universe". See rating definitions below. This is represented by the 
+"Companies Covered" bars in the chart. The percentage value displayed above the bar is the proportion as a percentage. 
+E.g. 50% above the “buy” / “Companies Covered” bar means that 50% of DB’s equity research covered companies over 
+the past 12 months  have a “buy” rating.       
+       Next to each of the three respective bars showing the proportion of "buy", "sell" and "hold" recommendations we provide 
+two additional bars to show:       
+       - The proportion of "buy", "sell" or "hold recommendations where Deutsche Bank and or/Affiliates provided MIFID 
+Investment or Ancillary Services in the past 12 months. This is represented in the "MIFID Investment and Ancillary 
+Services" bar. The percentage value displayed above the bar shows the proportion of Companies Covered with the given 
+rating where DB has also provided MIFID Investment and Ancillary Services in the past 12 months. E.g. 50% above the 
+“Cos. w/ MIFID Investment and Ancillary Services” bar means 50% of the Companies Covered with the rating stated have 
+also received MIFID Investment and Ancillary Services from DB.       
+       - The proportion of "buy" (or "sell" or "hold) recommendations where Deutsche Bank and or/Affiliates has provided 
+Investment Banking services in the past 12 months for which it has received compensation. The percentage value 
+displayed above the bar shows the proportion of Companies Covered with the stated rating where DB has also provided 
+Investment Banking services in the past 12 months. E.g. 50% above the “Cos. w/ Investment Banking relationship” bar 
+means 50% of the Companies Covered with the rating stated also have an Investment Banking Relationship with DB.       
+      
+        Buy: Based on a current 12- month view of TSR, we recommend that investors buy the stock.        
+        Sell: Based on a current 12-month view of TSR, we recommend that investors sell the stock.        
+        Hold: We take a neutral view on the stock 12-months out and, based on this time horizon, do not recommend either a 
+Buy or Sell.         
+        TSR = Total Shareholder Return. Percentage change in share price from current price to projected target price plus 
+projected dividend yield        
+        Newly issued research recommendations and target prices supersede previously published research.                
+
+=== PAGE 53 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Deutsche Bank AG Page 53
+Additional Information 
+The information and opinions in this report were prepared by Deutsche Bank AG or one of its affiliates (collectively 'Deutsche 
+Bank'). Though the information herein is believed to be reliable and has been obtained from public sources believed to be 
+reliable, Deutsche Bank makes no representation as to its accuracy or completeness. Hyperlinks to third-party websites in this 
+report are provided for reader convenience only. Deutsche Bank neither endorses the content nor is responsible for the 
+accuracy or security controls of those websites.
+If you use the services of Deutsche Bank in connection with a purchase or sale of a security that is discussed in this report, or 
+is included or discussed in another communication (oral or written) from a Deutsche Bank analyst,  Deutsche Bank may act as 
+principal for its own account or as agent for another person. 
+Deutsche Bank may consider this report in deciding to trade as principal.  It may also engage in transactions, for its own account 
+or with customers, in a manner inconsistent with the views taken in this research report.  Others within Deutsche Bank, 
+including strategists, sales staff and other analysts, may take views that are inconsistent with those taken in this research 
+report. Deutsche Bank issues a variety of research products, including fundamental analysis, equity-linked analysis, 
+quantitative analysis and trade ideas. Recommendations contained in one type of communication may differ from 
+recommendations contained in others, whether as a result of differing time horizons, methodologies, perspectives or 
+otherwise. Deutsche Bank and/or its affiliates may also be holding debt or equity securities of the issuers it writes on. Analysts 
+are paid in part based on the profitability of Deutsche Bank AG and its affiliates, which includes investment banking, trading 
+and principal trading revenues. 
+Opinions, estimates and projections constitute the current judgment of the author as of the date of this report. They do not 
+necessarily reflect the opinions of Deutsche Bank and are subject to change without notice. Deutsche Bank provides liquidity 
+for buyers and sellers of securities issued by the companies it covers. Deutsche Bank research analysts sometimes have 
+shorter-term trade ideas that may be inconsistent with Deutsche Bank's existing longer-term ratings. Some trade ideas for 
+equities are listed as Catalyst Calls on the Research Website (https://research.db.com/Research/) , and can be found on the 
+general coverage list and also on the covered company's page. A Catalyst Call represents a high-conviction belief by an analyst 
+that a stock will outperform or underperform the market and/or a specified sector over a time frame of no less than two weeks 
+and no more than three months. In addition to Catalyst Calls, analysts may occasionally discuss with our clients, and with 
+Deutsche Bank salespersons and traders, trading strategies or ideas that reference catalysts or events that may have a near-
+term or medium-term impact on the market price of the securities discussed in this report, which impact may be directionally 
+counter to the analysts' current 12-month view of total return or investment return as described herein. Deutsche Bank has 
+no obligation to update, modify or amend this report or to otherwise notify a recipient thereof if an opinion, forecast or estimate 
+changes or becomes inaccurate. Coverage and the frequency of changes in market conditions and in both general and 
+company-specific economic prospects make it difficult to update research at defined intervals.  Updates are at the sole 
+discretion of the coverage analyst or of the Research Department Management, and the majority of reports are published at 
+irregular intervals. This report is provided for informational purposes only and does not take into account the particular 
+investment objectives, financial situations, or needs of individual clients. It is not an offer or a solicitation of an offer to buy or 
+sell any financial instruments or to participate in any particular trading strategy. Target prices are inherently imprecise and a 
+product of the analyst's judgment.  The financial instruments discussed in this report may not be suitable for all investors, and 
+investors must make their own informed investment decisions. Prices and availability of financial instruments are subject to 
+change without notice, and investment transactions can lead to losses as a result of price fluctuations and other factors.  If a 
+financial instrument is denominated in a currency other than an investor's currency, a change in exchange rates may adversely 
+affect the investment.  Past performance is not necessarily indicative of future results. Performance calculations exclude 
+transaction costs, unless otherwise indicated. Unless otherwise indicated, prices are current as of the end of the previous 
+trading session and are sourced from local exchanges via Reuters, Bloomberg and other vendors.  Data is also sourced from 
+Deutsche Bank, subject companies, and other parties. Artificial intelligence tools may be used in the preparation of this 
+material, including but not limited to assist in fact-finding, data analysis, pattern recognition, content drafting and editorial 
+corrections pertaining to research material.
+The Deutsche Bank Research Department is independent of other business divisions of the Bank. Details regarding our 
+organizational arrangements and information barriers we have to prevent and avoid conflicts of interest with respect to our 
+research are available on our website (https://research.db.com/Research/) under Disclaimer. 
+Macroeconomic fluctuations often account for most of the risks associated with exposures to instruments that promise to pay 
+fixed or variable interest rates. For an investor who is long fixed-rate instruments (thus receiving these cash flows), increases 
+in interest rates naturally lift the discount factors applied to the expected cash flows and thus cause a loss. The longer the 
+maturity of a certain cash flow and the higher the move in the discount factor, the higher will be the loss. Upside surprises in 
+inflation, fiscal funding needs, and FX depreciation rates are among the most common adverse macroeconomic shocks to 
+receivers. But counterparty exposure, issuer creditworthiness, client segmentation, regulation (including changes in assets 
+holding limits for different types of investors), changes in tax policies, currency convertibility (which may constrain currency 
+conversion, repatriation of profits and/or liquidation of positions), and settlement issues related to local clearing houses are 
+also important risk factors. The sensitivity of fixed-income instruments to macroeconomic shocks may be mitigated by 
+indexing the contracted cash flows to inflation, to FX depreciation, or to specified interest rates - these are common in 
+emerging markets.  The index fixings may - by construction - lag or mis-measure the actual move in the underlying variables 
+they are intended to track. The choice of the proper fixing (or metric) is particularly important in swaps markets, where floating 
+coupon rates (i.e., coupons indexed to a typically short-dated interest rate reference index) are exchanged for fixed coupons. 
+Funding in a currency that differs from the currency in which coupons are denominated carries FX risk. Options on swaps 
+(swaptions) the risks typical to options in addition to the risks related to rates movements. 
+
+=== PAGE 54 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Page 54 Deutsche Bank AG
+Derivative transactions involve numerous risks including market, counterparty default and illiquidity risk.  The appropriateness 
+of these products for use by investors depends on the investors' own circumstances, including their tax position, their 
+regulatory environment and the nature of their other assets and liabilities; as such, investors should take expert legal and 
+financial advice before entering into any transaction similar to or inspired by the contents of this publication. The risk of loss 
+in futures trading and options, foreign or domestic, can be substantial. As a result of the high degree of leverage obtainable 
+in futures and options trading, losses may be incurred that are greater than the amount of funds initially deposited - up to 
+theoretically unlimited losses. Trading in options involves risk and is not suitable for all investors. Prior to buying or selling an 
+option, investors must review the 'Characteristics and Risks of Standardized Options", at https://www.theocc.com/company-
+information/documents-and-archives/options-disclosure-document. If you are unable to access the website, please contact 
+your Deutsche Bank representative for a copy of this important document.
+Participants in foreign exchange transactions may incur risks arising from several factors, including the following: (i) exchange 
+rates can be volatile and are subject to large fluctuations; (ii) the value of currencies may be affected by numerous market 
+factors, including world and national economic, political and regulatory events, events in equity and debt markets and changes 
+in interest rates; and (iii) currencies may be subject to devaluation or government-imposed exchange controls, which could 
+affect the value of the currency. Investors in securities such as ADRs, whose values are affected by the currency of an 
+underlying security, effectively assume currency risk. 
+Unless governing law provides otherwise, all transactions should be executed through the Deutsche Bank entity in the 
+investor's home jurisdiction. Aside from within this report, important conflict disclosures can also be found at https://
+research.db.com/Research/ on each company's research page or under the ‘Disclosures' tab. Investors are strongly 
+encouraged to review this information before investing.   
+Deutsche Bank (which includes Deutsche Bank AG, its branches and affiliated companies) is not acting as a financial adviser, 
+consultant or fiduciary to you or any of your agents (collectively, "You" or "Your") with respect to any information provided in 
+this report. Deutsche Bank does not provide investment, legal, tax or accounting advice, Deutsche Bank is not acting as your 
+impartial adviser, and does not express any opinion or recommendation whatsoever as to any strategies, products or any other 
+information presented in the materials.  Information contained herein is being provided solely on the basis that the recipient 
+will make an independent assessment of the merits of any investment decision, and it does not constitute a recommendation 
+of, or express an opinion on, any product or service or any trading strategy.
+The information presented is general in nature and is not directed to retirement accounts or any specific person or account type, 
+and is therefore provided to You on the express basis that it is not advice, and You may not rely upon it in making Your decision. 
+The information we provide is being directed only to persons we believe to be financially sophisticated, who are capable of 
+evaluating investment risks independently, both in general and with regard to particular transactions and investment 
+strategies, and who understand that Deutsche Bank has financial interests in the offering of its products and services. If this 
+is not the case, or if You are an IRA or other retail investor receiving this directly from us, we ask that you inform us immediately.
+In July 2018, Deutsche Bank revised its rating system for short term ideas whereby the branding has been changed to Catalyst 
+Calls ("CC") from SOLAR ideas; the rating categories for Catalyst Calls originated in the Americas region have been made 
+consistent with the categories used by Analysts globally; and the effective time period for CCs has been reduced from a 
+maximum of 180 days to 90 days.
+United States: Approved and/or distributed by Deutsche Bank Securities Incorporated, a member of FINRA and SIPC.  Analysts 
+located outside of the United States are employed by non-US affiliates and are not registered/qualified as research analysts 
+with FINRA. 
+European Economic Area (exc. United Kingdom) : Approved and/or distributed by Deutsche Bank AG, a joint stock 
+corporation with limited liability incorporated in the Federal Republic of Germany with its principal office in Frankfurt am Main. 
+Deutsche Bank AG is authorized under German Banking Law and is subject to supervision by the European Central Bank and 
+by BaFin, Germany's Federal Financial Supervisory Authority. 
+United Kingdom: Approved and/or distributed by Deutsche Bank AG acting through its London Branch at 21 Moorfields, 
+London EC2Y 9DB. Deutsche Bank AG in the United Kingdom is authorised by the Prudential Regulation Authority and is 
+subject to limited regulation by the Prudential Regulation Authority and Financial Conduct Authority. Details about the extent 
+of our authorisation and regulation are available on request. 
+Hong Kong SAR: Distributed by Deutsche Bank AG, Hong Kong Branch except for any research content relating to futures 
+contracts within the meaning of the Hong Kong Securities and Futures Ordinance Cap. 571. Research reports on such futures 
+contracts are not intended for access by persons who are located, incorporated, constituted or resident in Hong Kong. The 
+author(s) of a research report may not be licensed to carry on regulated activities in Hong Kong and, if not licensed, do not hold 
+themselves out as being able to do so. The provisions set out above in the 'Additional Information' section shall apply to the 
+fullest extent permissible by local laws and regulations, including without limitation the Code of Conduct for Persons Licensed 
+or Registered with the Securities and Futures Commission. This report is intended for distribution only to 'professional 
+investors' as defined in Part 1 of Schedule of the SFO. This document must not be acted or relied on by persons who are not 
+professional investors. Any investment or investment activity to which this document relates is only available to professional 
+investors and will be engaged only with professional investors.
+India: Prepared by Deutsche Equities India Private Limited (DEIPL) having CIN: U65990MH2002PTC137431 and registered 
+
+=== PAGE 55 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Deutsche Bank AG Page 55
+office at 14th Floor, The Capital, C-70, G Block, Bandra Kurla Complex, Mumbai (India) 400051. Tel: + 91 22 7180 4444. It is 
+registered by the Securities and Exchange Board of India (SEBI) as a Stock broker bearing registration no.: INZ000252437; 
+Merchant Banker bearing SEBI Registration no.: INM000010833 and Research Analyst bearing SEBI Registration no.: 
+INH000001741. DEIPL's Compliance / Grievance officer is Ms. Rashmi Poddar (Tel: +91 22 7180 4929 email ID: 
+complaints.deipl@db.com). Registration granted by SEBI and certification from NISM in no way guarantee performance of 
+DEIPL or provide any assurance of returns to investors. Investment in securities market are subject  to market risks.  Read all 
+the related documents carefully before investing. DEIPL may have received administrative warnings from the SEBI for 
+breaches of Indian regulations. Deutsche Bank and/or its affiliate(s) may have debt holdings or positions in the subject 
+company.  With regard to information on associates, please refer to the "Shareholdings" section in the Annual Report at: https://
+www.db.com/ir/en/annual-reports.htm. For latest India research audit report, refer https://country.db.com/india/deutsche-
+equities-india/index?language_id=1.
+Japan: Approved and/or distributed by Deutsche Securities Inc.(DSI). Registration number - Registered as a financial 
+instruments dealer by the Head of the Kanto Local Finance Bureau (Kinsho) No. 117. Member of associations: JSDA, Type II 
+Financial Instruments Firms Association and The Financial Futures Association of Japan. Commissions and risks involved in 
+stock transactions - for stock transactions, we charge stock commissions and consumption tax by multiplying the transaction 
+amount by the commission rate agreed with each customer. Stock transactions can lead to losses as a result of share price 
+fluctuations and other factors. Transactions in foreign stocks can lead to additional losses stemming from foreign exchange 
+fluctuations. We may also charge commissions and fees for certain categories of investment advice, products and services. 
+Recommended investment strategies, products and services carry the risk of losses to principal and other losses as a result 
+of changes in market and/or economic trends, and/or fluctuations in market value. Before deciding on the purchase of financial 
+products and/or services, customers should carefully read the relevant disclosures, prospectuses and other documentation. 
+'Moody's', 'Standard  Poor's', and 'Fitch' mentioned in this report are not registered credit rating agencies in Japan unless 
+Japan or 'Nippon' is specifically designated in the name of the entity. Reports on Japanese listed companies not written by 
+analysts of DSI are written by Deutsche Bank Group's analysts with the coverage companies specified by DSI. Some of the 
+foreign securities stated on this report are not disclosed according to the Financial Instruments and Exchange Law of Japan. 
+Target prices set by Deutsche Bank's equity analysts are based on a 12-month forecast period. 
+Korea: Distributed by Deutsche Securities Korea Co. 
+South Africa: Deutsche Bank AG Johannesburg is incorporated in the Federal Republic of Germany (Branch Register Number 
+in South Africa: 1998/003298/10). 
+Singapore:  This report is issued by Deutsche Bank AG, Singapore Branch (One Raffles Quay #18-00 South Tower Singapore 
+048583, 65 6423 8001), which may be contacted in respect of any matters arising from, or in connection with, this report.  
+Where this report is issued or promulgated by Deutsche Bank in Singapore to a person who is not an accredited investor, expert 
+investor or institutional investor  (as defined in the applicable Singapore laws and regulations), they accept legal responsibility 
+to such person for its contents. 
+Taiwan: Information on securities/investments that trade in Taiwan is for your reference only. Readers should independently 
+evaluate investment risks and are solely responsible for their investment decisions. Deutsche Bank research may not be 
+distributed to the Taiwan public media or quoted or used by the Taiwan public media without written consent. Information on 
+securities/instruments that do not trade in Taiwan is for informational purposes only and is not to be construed as a 
+recommendation to trade in such securities/instruments. 
+Qatar: Deutsche Bank AG in the Qatar Financial Centre (registered no. 00032) is regulated by the Qatar Financial Centre 
+Regulatory Authority. Deutsche Bank AG - QFC Branch may undertake only the financial services activities that fall within the 
+scope of its existing QFCRA license. Its principal place of business in the QFC: Qatar Financial Centre, Tower, West Bay, Level 
+5, PO Box 14928, Doha, Qatar. This information has been distributed by Deutsche Bank AG. Related financial products or 
+services are only available only to Business Customers, as defined by the Qatar Financial Centre Regulatory Authority. 
+Russia: The information, interpretation and opinions submitted herein are not in the context of, and do not constitute, any 
+appraisal or evaluation activity requiring a license in the Russian Federation. 
+Kingdom of Saudi Arabia: Deutsche Securities Saudi Arabia (DSSA) is a closed joint stock company authorized by the Capital 
+Market Authority of the Kingdom of Saudi Arabia with a license number (No. 37-07073) to conduct the following business 
+activities: Dealing, Arranging, Advising, and Custody activities.  DSSA registered office is Faisaliah Tower, 17th Floor, King 
+Fahad Road - Al Olaya District Riyadh, Kingdom of Saudi Arabia P.O. Box 301806.
+United Arab Emirates: Deutsche Bank AG in the Dubai International Financial Centre (registered no. 00045) is regulated by 
+the Dubai Financial Services Authority. Deutsche Bank AG - DIFC Branch may only undertake the financial services activities 
+that fall within the scope of its existing DFSA license. Principal place of business in the DIFC: Dubai International Financial 
+Centre, The Gate Village, Building 5, PO Box 504902, Dubai, U.A.E. This information has been distributed by Deutsche Bank 
+AG. Related financial products or services are available only to Professional Clients, as defined by the Dubai Financial Services 
+Authority. 
+Australia and New Zealand :  This research is intended only for 'wholesale clients' within the meaning of the Australian 
+Corporations Act and New Zealand Financial Advisors Act, respectively. Please refer to Australia-specific research disclosures 
+and related information at https://www.dbresearch.com/PROD/RPS_EN-PROD/PROD0000000000521304.xhtml . Where 
+
+=== PAGE 56 ===
+
+3 December 2025
+Medical Devices
+Ypsomed
+Page 56 Deutsche Bank AG
+research refers to any particular financial product recipients of the research should consider any product disclosure statement, 
+prospectus or other applicable disclosure document before making any decision about whether to acquire the product. In 
+preparing this report, the primary analyst or an individual who assisted in the preparation of this report has likely been in contact 
+with the company that is the subject of this research for confirmation/clarification of data, facts, statements, permission to use 
+company-sourced material in the report, and/or site-visit attendance.  Without prior approval from Research Management, 
+analysts may not accept from current or potential Banking clients the costs of travel, accommodations, or other expenses 
+incurred by analysts attending site visits, conferences, social events, and the like. Similarly, without prior approval from 
+Research Management and Anti-Bribery and Corruption ("ABC") team, analysts may not accept perks or other items of value 
+for their personal use from issuers they cover.
+Additional information relative to securities, other financial products or issuers discussed in this report is available upon 
+request. This report may not be reproduced, distributed or published without Deutsche Bank's prior written consent.  
+Backtested, hypothetical or simulated performance results have inherent limitations. Unlike an actual performance record 
+based on trading actual client portfolios, simulated results are achieved by means of the retroactive application of a backtested 
+model itself designed with the benefit of hindsight. Taking into account historical events the backtesting of performance also 
+differs from actual account performance because an actual investment strategy may be adjusted any time, for any reason, 
+including a response to material, economic or market factors. The backtested performance includes hypothetical results that 
+do not reflect the reinvestment of dividends and other earnings or the deduction of advisory fees, brokerage or other 
+commissions, and any other expenses that a client would have paid or actually paid. No representation is made that any trading 
+strategy or account will or is likely to achieve profits or losses similar to those shown. Alternative modeling techniques or 
+assumptions might produce significantly different results and prove to be more appropriate. Past hypothetical backtest results 
+are neither an indicator nor guarantee of future returns. Actual results will vary, perhaps materially, from the analysis.
+The method for computing individual E,S,G and composite ESG scores set forth herein is a novel method developed by the 
+Research department within Deutsche Bank AG, computed using a systematic approach without human intervention.  
+Different data providers, market sectors and geographies approach ESG analysis and incorporate the findings in a variety of 
+ways.  As such, the ESG scores referred to herein may differ from equivalent ratings developed and implemented by other ESG 
+data providers in the market and may also differ from equivalent ratings developed and implemented by other divisions within 
+the Deutsche Bank Group.  Such ESG scores also differ from other ratings and rankings that have historically been applied in 
+research reports published by Deutsche Bank AG.  Further, such ESG scores do not represent a formal or official view of 
+Deutsche Bank AG. It should be noted that the decision to incorporate ESG factors into any investment strategy may inhibit 
+the ability to participate in certain investment opportunities that otherwise would be consistent with your investment objective 
+and other principal investment strategies. The returns on a portfolio consisting primarily of sustainable investments may be 
+lower or higher than portfolios where ESG factors, exclusions, or other sustainability issues are not considered, and the 
+investment opportunities available to such portfolios may differ. Companies may not necessarily meet high performance 
+standards on all aspects of ESG or sustainable investing issues; there is also no guarantee that any company will meet 
+expectations in connection with corporate responsibility, sustainability, and/or impact performance.
+Copyright © 2025 Deutsche Bank AG
+
+=== PAGE 57 ===
+
+David Folkerts-Landau
+Group Chief Economist and Global Head of Research
+Pam Finelli
+Global Chief Operating Officer 
+Research
+Steve Pollard
+Global Head of Company
+Research and Sales
+Jim Reid
+Global Head of
+Macro and Thematic Research
+Tim Rokossa
+Head of Germany
+Research
+Gerry Gallagher
+Head of European
+Company Research
+Matthew Barnard
+Head of Americas
+Company Research
+Peter Milliken
+Head of APAC
+Company Research
+Debbie Jones
+Global Head of Sustainability
+and Data Innovation, Research
+Sameer Goel
+Global Head of EM & APAC
+Research
+Francis Yared
+Global Head of Rates Research
+George Saravelos
+Global Head of FX Research
+Peter Hooper
+Vice-Chair of Research
+International Production Locations
+Deutsche Bank AG
+Deutsche Bank Place
+Level 16
+Corner of Hunter & Phillip 
+Streets
+Sydney, NSW 2000
+Australia
+Tel: (61) 2 8258 1234
+Deutsche Bank AG
+Equity Research
+Mainzer Landstrasse 11-17
+60329 Frankfurt am Main
+Germany
+Tel: (49) 69 910 00
+Deutsche Bank AG
+Filiale Hongkong
+International Commerce 
+Centre,
+1 Austin Road West,Kowloon,
+Hong Kong
+Tel: (852) 2203 8888
+Deutsche Securities Inc.
+1-3-1 Azabudai
+Azabudai Hills Mori JP Tower
+Minato-ku, Tokyo 106-0041
+Japan
+Tel: (81) 3 6730 1000
+Deutsche Bank AG
+21 Moorfields
+London EC2Y 9DB
+United Kingdom
+Tel: (44) 20 7545 8000
+Deutsche Bank Securities Inc.
+The Deutsche Bank Center
+1 Columbus Circle
+New York, NY 10019
+Tel: (1) 212 250 2500
+Deutsche Bank AG
+Filiale Singapur
+One Raffles Quay, South 
+Tower,
+Singapore 048583
+TeL: +65 6423 8001

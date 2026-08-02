@@ -1,0 +1,2005 @@
+
+
+=== PAGE 1 ===
+
+Morningstar Equity Company Report | Report as of 18 Nov 2025 04:38, UTC | Reporting Currency: CNY | Trading Currency: USD | Exchange: NEW YORK STOCK EXCHANGE, INC. Page 1 of 24
+?
+XPeng Inc ADR XPEV QQQ 17 Nov 2025 22:36, UTC
+Last Price
+22.43 USD
+17 Nov 2025
+Fair Value Estimate
+21.50 USD
+20 Aug 2025 07:03, UTC
+Price/FVE
+1.04
+Market Cap
+21.38 USD Bil
+17 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+Vincent Sun, CFA
+Senior Equity Analyst
+Morningstar
+—
+vincent.sun@morningstar.com
+Contents
+Analyst Note (18 Nov 2025)
+Business Description
+Business Strategy & Outlook (19 Mar 2025)
+Bulls Say / Bears Say (18 Nov 2025)
+Fair Value and Profit Drivers (18 Nov 2025)
+Economic Moat (19 Mar 2025)
+Risk and Uncertainty (19 Mar 2025)
+Financial Strength (18 Nov 2025)
+Capital Allocation (19 Mar 2025)
+Financials
+ESG Risk
+Recent Analyst Notes
+Research Methodology for Valuing 
+Companies
+Important Disclosure
+The conduct of Morningstar’s analysts is governed by Code of 
+Ethics/Code of Conduct Policy, Personal Security Trading Policy 
+(or an equivalent of), and Investment Research Policy. For 
+information regarding conflicts of interest, please visit: http://
+global.morningstar.com/equitydisclosures.
+The primary analyst covering this company does not own its 
+stock.
+Reporting Currency: CNY | Trading Currency: USD
+Currency amounts expressed with "$" are in U.S. dollars 
+(USD) unless otherwise denoted.
+1The ESG Risk Rating Assessment is a representation of 
+Sustainalytics’ ESG Risk Rating.
+XPeng Earnings: Results In Line; Strong Volume and Licensing Fee 
+Offset Weak Vehicle Margin
+Analyst Note Vincent Sun, CFA, Senior Equity Analyst, 18 Nov 2025
+XPeng’s third-quarter revenue was at the midpoint of guidance. Vehicle margin recovered to 13% from 9% a year 
+ago, benefiting from larger vehicle delivery volume and cost-cutting initiatives.
+Why it matters: Despite record quarterly volume, vehicle margin was weaker than we expected, likely due to 
+pressure from price competition. XPeng attributed the sequential vehicle margin decline to new-generation 
+model transition, but guided improvement in the fourth quarter on strong sales.
+gStarting 2027, management expects revenue contribution from robotaxi and humanoid robotics. However, we 
+have not included robotaxi revenue and guidance of 1 million units of humanoid robotics sales by 2030 in our 
+forecast, given the lack of a clear monetization model.
+gWe estimate the firm to break even in the fourth quarter. We raise 2025 vehicle volume by 2% to factor in the 
+company’s guidance. With a lower vehicle margin assumption but higher revenue from licensing income, we 
+reduce our 2025 net loss forecast by 4% but keep the outer years largely unchanged.
+The bottom line: We retain our fair value estimate of USD 21.50 per ADS (HKD 83.50 per share), implying 1.5 
+times 2026 price/sales. With the share price more than doubling year to date, shares trade in 3-star territory and 
+are fairly valued, in our view.
+gWith growing concern about vehicle demand in 2026 with the uncertainty as to China's subsidies, we suggest 
+Financial Summary and Key Statistics 
+Actual Forecast
+2023 2024 2025 2026
+Revenue (CNY Mil) 30,676 40,866 77,214 95,184
+Revenue Growth % 14.2 33.2 88.9 23.3
+Operating Income (Mil) -11,384 -7,482 -3,909 586
+Operating Margin % -37.1 -18.3 -5.1 0.6
+Adjusted EBITDA (Mil) -8,800 -4,704 -840 2,873
+Adjusted EBITDA Margin % -28.7 -11.5 -1.1 3.0
+Earnings Per Share (Diluted) (CNY) -5.96 -3.06 -0.73 1.15
+Adjusted Earnings Per Share (Diluted) (CNY) -5.99 -3.37 -1.37 1.04
+Adjusted EPS Growth % 29.7 -43.8 -59.3 -175.8
+Price/Earnings -8.6 -12.8 -58.2 76.6
+Price/Book 2.5 2.6 5.0 4.7
+EV/EBITDA -9.4 -15.3 -199.1 58.2
+Free Cash Flow Yield % — — — —
+Source: Morningstar Valuation Model. Data as of 17 Nov 2025.
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 2 ===
+
+Morningstar Equity Company Report | Report as of 18 Nov 2025 04:38, UTC | Reporting Currency: CNY | Trading Currency: USD | Exchange: NEW YORK STOCK EXCHANGE, INC. Page 2 of 24
+?
+XPeng Inc ADR XPEV QQQ 17 Nov 2025 22:36, UTC
+Last Price
+22.43 USD
+17 Nov 2025
+Fair Value Estimate
+21.50 USD
+20 Aug 2025 07:03, UTC
+Price/FVE
+1.04
+Market Cap
+21.38 USD Bil
+17 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+investors wait for a more attractive entry point.
+Between the lines: For the fourth quarter, management guided vehicle delivery to grow around 40% year on 
+year to 125,000-132,000 units. The guidance implies monthly sales of around 43,500 units in November and 
+December, which we believe missed market expectations.
+gThe company believes vehicle volume will remain robust, given the model pipeline. It plans to launch three 
+new plug-in hybrid vehicles in the first quarter and another four model refreshes with both pure battery and 
+plug-in hybrid powertrains in 2026.
+XPeng’s third-quarter revenue grew 102% year on year to CNY 20 billion on the back of about a 1.5 times 
+increase in the quarter’s vehicle delivery to 116,007 units. The top-line growth was partly offset by an 18% drop 
+in the average selling price due to 1) a change in product mix, with close to 40% sales volume from the lower-
+priced Mona M03 compared with 23% in the third quarter last year, and 2) retail discounts to defend 
+competition. Vehicle margin for the quarter—due to industry price competition and phase-out of old generation 
+models—narrowed 120 basis points from the previous quarter to 13.1%. Operating expenses increased 51% year 
+over year, largely driven by new model development and sales commissions paid to franchised stores. Together 
+with CNY 140 million in other income, primarily from government subsidies, third-quarter net loss narrowed by 
+79% from the prior-year quarter to CNY 381 million.
+Business Strategy & Outlook Vincent Sun, CFA, Senior Equity Analyst, 19 Mar 2025
+XPeng is a leading electric vehicle manufacturer in China, targeting the midrange to high-end segment and 
+tech-savvy consumers. It is mass producing eight pure electric models, including the G3/G3i compact sport 
+utility vehicle, or SUV; P7 midsize sedan; P5 compact sedan; G9 midsize SUV; G6 compact SUV; X9 multipurpose 
+vehicle and Mona 03 compact sedan. Retail prices of the current model portfolio range from CNY 120,000 to CNY 
+420,000 for popular trims, which offer a driving range of roughly 460-700 km. XPeng plans to launch at least 10 
+new cars for its new model pipeline in 2025-27.
+XPeng has invested a lot of effort into research and development for its in-house developed full-stack 
+autonomous driving technology, which has become a key selling point for its models. The Xpilot software is 
+China’s first Level 3 autonomous driving system, featuring a navigation-guided pilot for highway driving and 
+advanced automated parking functions.
+We see rapid new energy vehicle, or NEV adoption in China, being stimulated by regulatory push and improving 
+charging infrastructure, among others. By 2028, we expect passenger NEVs to account for over 60% of total 
+passenger car sales, from 16% in 2021. Riding on the vehicle electrification tailwind, we forecast XPeng’s vehicle 
+delivery to reach over 560,000 units in 2029 from 190,000 units in 2024, taking about 3% share in China’s 
+passenger NEV market. XPeng is still loss-making, but we forecast improving vehicle sales profit driven mainly 
+by increased vehicle deliveries and lower unit production cost. As such, we expect it to turn profitable in 2026.
+Its contract manufacturing arrangement with Haima Auto expired in 2021, so production was relocated to 
+XPeng’s own Zhaoqing plant in Guangdong with an annual designed capacity of 100,000 units. The firm 
+Sector Industry
+t Consumer CyclicalAuto Manufacturers
+Business Description
+Founded in 2015, XPeng is a leading Chinese 
+smart electric vehicle company that designs, 
+develops, manufactures, and markets EVs in 
+China. Its products primarily target the 
+growing base of technology-savvy middle-
+class consumers in the midrange to high-
+end segment in China’s passenger vehicle 
+market. The company sold over 190,000 EVs 
+in 2024, accounting for about 2% of China’s 
+passenger new energy vehicle market. It is 
+also a leader in autonomous driving 
+technology.
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 3 ===
+
+Morningstar Equity Company Report | Report as of 18 Nov 2025 04:38, UTC | Reporting Currency: CNY | Trading Currency: USD | Exchange: NEW YORK STOCK EXCHANGE, INC. Page 3 of 24
+?
+XPeng Inc ADR XPEV QQQ 17 Nov 2025 22:36, UTC
+Last Price
+22.43 USD
+17 Nov 2025
+Fair Value Estimate
+21.50 USD
+20 Aug 2025 07:03, UTC
+Price/FVE
+1.04
+Market Cap
+21.38 USD Bil
+17 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+expanded Zhaoqing capacity to 200,000 units in 2024 and built two additional production plants in Guangzhou 
+and Wuhan, each with annual designed capacity of 100,000 units. As of 2024, XPeng has total production 
+capacity of 400,000 units, with a maximum of 600,000 by adding shifts.
+Bulls Say Vincent Sun, CFA, Senior Equity Analyst, 18 Nov 2025
+g XPeng’s leadership in autonomous driving technology will differentiate the company and help it defend its 
+market share in the mass market segment amid intensifying competition.
+g Chinese consumers’ soaring demand for EV cars will benefit NEV carmakers such as XPeng. Advancing battery 
+technology and charging solutions will ease range anxiety on electric cars and enable EVs to achieve cost parity 
+with gasoline cars in the midterm.
+g The strategic collaboration and share purchase agreement from Volkswagen Group removes investors’ concern 
+around the company’s near-term liquidity.
+Bears Say Vincent Sun, CFA, Senior Equity Analyst, 18 Nov 2025
+g Rising competition among mass-market NEV models will place heavy pricing pressure on XPeng. As a mass-
+market brand, the company will need to offer aggressive promotions and discounts to consumers, which will 
+weigh on its vehicle margin outlook.
+g Rising competition in China’s NEV market indicates legacy OEMs will defend their market share with aggressive 
+new model launches.
+g A higher level of vehicle autonomy still has a very long way to commercialize, considering regulations, 
+infrastructure and technology development.
+Fair Value and Profit Drivers Vincent Sun, CFA, Senior Equity Analyst, 18 Nov 2025
+Our fair value estimate is USD 21.50 per ADS, based on our expectation for XPeng to continue gaining share from 
+legacy automakers. Riding on the industry electrification trend and increasing consumer adoption of NEVs, we 
+anticipate rising demand for the company’s NEV models and improving profitability on economies of scale over 
+the next few years. Our fair value estimate implies a forward 2026 price/sales ratio of 1.5 times.
+We expect the company’s revenue to expand at a CAGR of 31% in 2024-29, mainly driven by an expansion in 
+vehicle delivery volume. We estimate an increasing NEV penetration rate, coupled with a demand shift to 
+Chinese local brands, should lead to total volume growth of 34% CAGR over the next five years. Despite 
+international and local automakers continuing to aggressively bring new NEV models to market, we believe 
+XPeng enjoys clear leadership in vehicle autonomy technology. In light of competition in the mass market 
+segment and a change in product mix, we anticipate an average 1% decline in average selling price yearly over 
+the next five years.
+Increasing scale effect would improve the company’s profitability, in our view. We project the group’s operating 
+margin to expand to 7.4% in 2029, from negative 18.3% in 2024. While vehicle margins are under pressure in the 
+short term, the diffusion of NEV technology and battery energy density will result in higher profitability over the 
+longer term, reaffirming our improving margin assumptions. As a result, we anticipate the company’s net loss to 
+narrow at 64% CAGR during 2023-25, reaching breakeven in 2026 with CNY 2 billion in net profit.
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 4 ===
+
+Morningstar Equity Company Report | Report as of 18 Nov 2025 04:38, UTC | Reporting Currency: CNY | Trading Currency: USD | Exchange: NEW YORK STOCK EXCHANGE, INC. Page 4 of 24
+?
+XPeng Inc ADR XPEV QQQ 17 Nov 2025 22:36, UTC
+Last Price
+22.43 USD
+17 Nov 2025
+Fair Value Estimate
+21.50 USD
+20 Aug 2025 07:03, UTC
+Price/FVE
+1.04
+Market Cap
+21.38 USD Bil
+17 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+Economic Moat Vincent Sun, CFA, Senior Equity Analyst, 19 Mar 2025
+While we like XPeng’s current technology leadership, we are not convinced that this will allow it to maintain 
+premium pricing over its competitors’ products over at least a 10-year period. As such, we think XPeng has no 
+moat. Generally, we see two moat sources in the auto sector from intangible assets such as brand equity, best 
+exemplified by Ferrari, and from cost advantage. At this stage we do not yet see either moat source to be retained 
+by XPeng.
+We expect technology to play an increasingly important role for NEV makers to attract consumers from internal 
+combustion engine, or ICE, vehicles and to differentiate themselves in competition among NEV models. XPeng 
+leads its domestic peers in developing full-stack technology. Capitalizing on in-house research and development 
+capabilities, the company rolled out Xpilot 3.0 through over-the-air firmware updates in 2021. Xpilot 3.0 is 
+China’s first Level 3 autonomous driving system, featuring navigation guided pilot, or NGP, for highway driving 
+and advanced automated parking functions.
+We like XPeng’s proprietary autonomous driving algorithm and data capability. Instead of relying on third-party 
+software suppliers for autonomous driving algorithms like other original equipment manufacturers, or OEMs, 
+XPeng had dedicated much resources and effort in related R&D since inception. It is currently the only Chinese 
+NEV maker to develop full-stack proprietary autonomous driving software. Leveraging its in-house development 
+approach, Xpilot is tailored to specific road conditions in China. It enables better customer experience and higher 
+adaptiveness to unique driving behavior, compared with solutions from global OEMs and autonomous driving 
+suppliers.
+The first-mover advantage also benefits XPeng regarding road-testing data accumulation for algorithm iteration, 
+which will enhance its autonomous driving software capability. As a result, the improving technology experience 
+would help XPeng sell more EVs for data and corner (unusual) case collection, which forms a closed loop for 
+faster algorithm updates.
+However, as the industry becomes increasingly competitive, it is still uncertain whether the technological lead 
+that XPeng has will be retained over the long run to underpin a moat. Most of the elements of the technological 
+advantages are likely to be replicated with time, given we are still in the early days of the industry. Legacy ICE 
+manufacturing is highly competitive and capital-intensive. We expect the same in the NEV market over time. In 
+addition, the company is still burning cash and we expect it is likely to do that for at least a couple more years, so 
+the risk for the need to raise additional capital for capital-intensive investment is high, in our view.
+Risk and Uncertainty Vincent Sun, CFA, Senior Equity Analyst, 19 Mar 2025
+We have a Very High Morningstar Uncertainty Rating for XPeng because the company operates in a cyclical, 
+capital-intense, and highly competitive auto manufacturing industry. These factors combined can drive huge 
+swings in return on invested capital, even for pure-play NEV automakers. Heavy fixed costs induce fluctuating 
+profitability from relatively small changes in demand, or from lost production due to supply shocks.
+XPeng’s key threats include escalating competition in China’s mass-market NEV segment. Motivated by robust 
+demand in electric vehicles, major automakers have accelerated their NEV product development in recent years. 
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 5 ===
+
+Morningstar Equity Company Report | Report as of 18 Nov 2025 04:38, UTC | Reporting Currency: CNY | Trading Currency: USD | Exchange: NEW YORK STOCK EXCHANGE, INC. Page 5 of 24
+?
+XPeng Inc ADR XPEV QQQ 17 Nov 2025 22:36, UTC
+Last Price
+22.43 USD
+17 Nov 2025
+Fair Value Estimate
+21.50 USD
+20 Aug 2025 07:03, UTC
+Price/FVE
+1.04
+Market Cap
+21.38 USD Bil
+17 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+Whether Chinese or global, legacy automakers continue to bring new electric models onto the market and 
+compete on prices. We believe it will be increasingly challenging for XPeng to increase its market share if it fails 
+to differentiate XPeng models from those of peers.
+The automotive industry is capital-intensive. XPeng will need significant capital to ramp up production capacity, 
+expand its sales and service network, and conduct research and development. Its future capital needs may 
+require the company to obtain external financing through additional equity or debt issuances that may dilute 
+existing shareholders’ interests or introduce covenants that may restrict its operations. In addition, such 
+financing might not be available promptly or on acceptable terms, which would delay its expansion plans.
+Autonomous driving is a key factor differentiating XPeng’s EVs from competing products. However, regulatory 
+restrictions may affect the development of autonomous driving technology. Moreover, the technology is subject 
+to risks, and accidents have occurred from time to time. To the extent accidents associated with autonomous 
+driving systems occur, the company could be subject to liability, government scrutiny, and further regulation. 
+Financial Strength Vincent Sun, CFA, Senior Equity Analyst, 18 Nov 2025
+We believe XPeng is in good financial health. The company had about CNY 32.1 billion in cash and equivalents 
+on its balance sheet and carried a conservative debt/capital ratio of 28% at the end of 2024. Therefore, the firm 
+should have no problem fulfilling its debt obligations and refinancing debts as they are due. Even though the 
+automobile manufacturing business is capital-intensive, we think XPeng’s strong cash position and improving 
+operating cash flows allow it to expand manufacturing facilities during economic downturns through relying on 
+some external financing.
+Capital Allocation Vincent Sun, CFA, Senior Equity Analyst, 19 Mar 2025
+We have assigned a Standard Capital Allocation Rating to XPeng. The rating reflects our assessment of a sound 
+balance sheet, fair investment and shareholder distributions. XPeng's balance sheet looks sound with a 
+conservative level of debt in its book. The company has been in a net cash position since 2018. We think the 
+balance sheet will remain sound, as its access to capital will likely remain solid amid automotive electrification 
+tailwinds. 
+The company has not paid dividends since its founding in 2015. In addition, given the large capital expenditure 
+required for NEV investments, dividends are unlikely to happen in the next five years. We believe this is an 
+appropriate shareholder distribution strategy as management continues to expand its sales network and invest 
+in related technologies. 
+He Xiaopeng, co-founder, chairman and chief executive officer of the company, built one of China's largest 
+electric vehicle manufacturing enterprises from the ground up. He holds over 18% of XPeng's total issued share 
+capital and over 60% voting rights in XPeng, indicating his significant vested interest in the firm’s long-term 
+success. Unlike the case for many other Chinese automakers, the government does not have a direct stake in the 
+listed entity. Such a shareholding structure enables the company to prioritize shareholder interests and be 
+nimbler when it comes to staying on top of the competition. K
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+
+=== PAGE 6 ===
+
+Morningstar Equity Company Report | Report as of 18 Nov 2025 04:38, UTC | Reporting Currency: CNY | Trading Currency: USD | Exchange: NEW YORK STOCK EXCHANGE, INC. Page 6 of 24
+?
+XPeng Inc ADR XPEV QQQ 17 Nov 2025 22:36, UTC
+Price vs. Fair Value 
+0
+15
+30
+45
+60
+Last Close: 22.43
+Fair Value: 21.50
+20 Aug 2025 07:03, UTC
+Overvalued
+Undervalued
+2020 2021 2022 2023 2024 YTD
+— — 0.55 0.92 0.78 1.04 Price/Fair Value
+— 17.51 -80.25 46.78 -18.99 89.76 Total Return %
+Morningstar Rating
+Competitors
+XPeng Inc ADR XPEV
+Fair Value
+21.50
+Uncertainty : Very High
+Last Close
+22.43
+ Tesla Inc TSLA
+Fair Value
+300.00
+Uncertainty : Very High
+Last Close
+408.92
+ BYD Co Ltd Class A 002594
+Fair Value
+101.00
+Uncertainty : High
+Last Close
+98.08
+ Li Auto Inc Or...ares - Class A 02015
+Fair Value
+108.00
+Uncertainty : Very High
+Last Close
+75.40
+Economic Moat
+ None
+ Narrow
+ None
+ None
+Currency USD USD CNY HKD
+Fair Value 21.50 20 Aug 2025 07:03, UTC 300.00 23 Oct 2025 02:21, UTC 101.00 31 Oct 2025 05:44, UTC 108.00 29 Aug 2025 06:09, UTC
+1-Star Price 37.63 525.00 156.55 189.00
+5-Star Price 10.75 150.00 60.60 54.00
+Assessment Fairly Valued 14 Nov 2025 Overvalued 14 Nov 2025 Fairly Valued 17 Nov 2025 Undervalued 17 Nov 2025
+Morningstar Rating QQQ17 Nov 2025 22:36, UTC QQ14 Nov 2025 22:43, UTC QQQ14 Nov 2025 17:41, UTC QQQQ14 Nov 2025 17:23, UTC
+Analyst Vincent Sun, Senior Equity Analyst Seth Goldstein, Senior Equity Analyst Vincent Sun, Senior Equity Analyst Vincent Sun, Senior Equity Analyst
+Capital Allocation Standard Exemplary Standard Standard
+Price/Fair Value 1.04 1.35 0.97 0.72
+Price/Sales 2.84 14.90 1.05 1.07
+Price/Book 5.62 16.81 4.08 1.96
+Price/Earnings — 265.20 61.23 18.53
+Dividend Yield 0.00% 0.00% 1.35% 0.00%
+Market Cap 21.38 Bil 1,359.99 Bil 894.21 Bil 152.80 Bil
+52-Week Range 11.14—28.24 214.25—488.54 88.26—138.99 73.35—138.30
+Investment Style Large Blend Large Blend Large Blend Large Blend
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 7 ===
+
+Morningstar Equity Company Report | Report as of 18 Nov 2025 04:38, UTC | Reporting Currency: CNY | Trading Currency: USD | Exchange: NEW YORK STOCK EXCHANGE, INC. Page 7 of 24
+?
+XPeng Inc ADR XPEV QQQ 17 Nov 2025 22:36, UTC
+Last Price
+22.43 USD
+17 Nov 2025
+Fair Value Estimate
+21.50 USD
+20 Aug 2025 07:03, UTC
+Price/FVE
+1.04
+Market Cap
+21.38 USD Bil
+17 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+Morningstar Valuation Model Summary
+Financials as of 17 Nov 2025 Actual Forecast
+Fiscal Year, ends 31 Dec 2022 2023 2024 2025 2026 2027 2028 2029
+Revenue (CNY Mil) 26,855 30,676 40,866 77,214 95,184 116,829 137,670 155,383
+Operating Income (CNY Mil) -8,815 -11,384 -7,482 -3,909 586 4,473 7,837 11,523
+EBITDA (CNY Mil) -9,009 -9,405 -4,731 -840 2,873 6,997 10,631 14,636
+Adjusted EBITDA (CNY Mil) -9,094 -8,800 -4,704 -840 2,873 6,997 10,631 14,636
+Net Income (CNY Mil) -9,139 -10,376 -5,790 -1,379 2,159 6,309 10,059 14,212
+Adjusted Net Income (CNY Mil) -7,910 -10,430 -6,374 -2,583 1,958 6,108 9,858 14,011
+Free Cash Flow To The Firm (CNY Mil) 4,107 -5,375 1,295 -2,339 -1,779 -652 -242 12
+Weighted Average Diluted Shares Outstanding (Mil) 1,713 1,741 1,891 1,884 1,884 1,884 1,884 1,884
+Earnings Per Share (Diluted) (CNY) -5.34 -5.96 -3.06 -0.73 1.15 3.35 5.34 7.54
+Adjusted Earnings Per Share (Diluted) (CNY) -4.62 -5.99 -3.37 -1.37 1.04 3.24 5.23 7.44
+Dividends Per Share (CNY) 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00
+Margins & Returns as of 17 Nov 2025 Actual Forecast
+3 Year Avg 2022 2023 2024 2025 2026 2027 2028 2029 5 Year Avg
+Operating Margin % -30.4 -32.8 -37.1 -18.3 -5.1 0.6 3.8 5.7 7.4 2.9
+EBITDA Margin % — -33.6 -30.7 -11.6 -1.1 3.0 6.0 7.7 9.4 —
+Adjusted EBITDA Margin % — -33.9 -28.7 -11.5 -1.1 3.0 6.0 7.7 9.4 5.0
+Net Margin % -27.3 -34.0 -33.8 -14.2 -1.8 2.3 5.4 7.3 9.2 4.5
+Adjusted Net Margin % -26.4 -29.5 -34.0 -15.6 -3.4 2.1 5.2 7.2 9.0 4.0
+Free Cash Flow To The Firm Margin % 0.3 15.3 -17.5 3.2 -3.0 -1.9 -0.6 -0.2 0.0 -1.1
+Growth & Ratios as of 17 Nov 2025 Actual Forecast
+3 Year CAGR 2022 2023 2024 2025 2026 2027 2028 2029 5 Year CAGR
+Revenue Growth % 24.9 28.0 14.2 33.2 88.9 23.3 22.7 17.8 12.9 30.6
+Operating Income Growth % 3.3 29.7 29.2 -34.3 -47.8 -115.0 663.9 75.2 47.0 —
+EBITDA Growth % 12.7 83.3 4.4 -49.7 -82.2 -442.0 143.5 51.9 37.7 -58.2
+Adjusted EBITDA Growth % -5.6 62.8 -3.2 -46.6 -82.1 -442.0 143.5 51.9 37.7 -225.5
+Earnings Per Share Growth % 1.1 80.3 11.7 -48.6 -76.1 -256.6 192.3 59.4 41.3 —
+Adjusted Earnings Per Share Growth % 1.1 23.5 29.7 -43.8 -59.3 -175.8 212.0 61.4 42.1 —
+Valuation as of 17 Nov 2025 Actual Forecast
+2022 2023 2024 2025 2026 2027 2028 2029
+Price/Earnings -7.5 -8.6 -12.8 -58.2 76.6 24.6 15.2 10.7
+Price/Sales 2.2 3.2 2.0 2.2 1.8 1.4 1.2 1.1
+Price/Book 1.6 2.5 2.6 5.0 4.7 3.9 3.1 2.4
+Price/Cash Flow — — — — — — — —
+EV/EBITDA -6.4 -9.4 -15.3 -199.1 58.2 23.9 15.7 11.4
+EV/EBIT -6.6 -7.2 -9.6 -42.8 285.7 37.4 21.3 14.5
+Dividend Yield % — — — — — — — —
+Dividend Payout % 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+Free Cash Flow Yield % — — — — — — — —
+Operating Performance / Profitability as of 17 Nov 2025 Actual Forecast
+Fiscal Year, ends 31 Dec 2022 2023 2024 2025 2026 2027 2028 2029
+ROA % -12.8 -12.3 -7.0 -1.3 1.8 4.6 6.3 7.6
+ROE % -24.8 -28.6 -18.5 -4.6 6.7 16.5 20.8 22.7
+ROIC % -160.3 -47.8 2.9 18.0 20.9 19.6 20.0 20.0
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 8 ===
+
+Morningstar Equity Company Report | Report as of 18 Nov 2025 04:38, UTC | Reporting Currency: CNY | Trading Currency: USD | Exchange: NEW YORK STOCK EXCHANGE, INC. Page 8 of 24
+?
+XPeng Inc ADR XPEV QQQ 17 Nov 2025 22:36, UTC
+Last Price
+22.43 USD
+17 Nov 2025
+Fair Value Estimate
+21.50 USD
+20 Aug 2025 07:03, UTC
+Price/FVE
+1.04
+Market Cap
+21.38 USD Bil
+17 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+Financial Leverage (Reporting Currency) Actual Forecast
+Fiscal Year, ends 31 Dec 2022 2023 2024 2025 2026 2027 2028 2029
+Debt/Capital % 60.4 52.9 58.2 9.3 10.0 10.6 10.9 11.1
+Assets/Equity 1.9 2.3 2.6 3.4 3.6 3.6 3.3 3.0
+Net Debt/EBITDA 2.0 2.5 3.5 33.9 -11.8 -6.4 -5.5 -5.1
+Total Debt/EBITDA -1.4 -1.7 -3.4 -18.0 6.3 3.0 2.3 1.9
+EBITDA/ Net Interest Expense 9.8 8.9 4.6 0.6 -2.1 -4.3 -5.4 -6.0
+Forecast Revisions as of 17 Nov 2025 2025 2026 2027
+Prior data as of 20 Aug 2025 Current Prior Current Prior Current Prior
+Fair Value Estimate Change (Trading Currency) 21.50 21.49 — — — —
+Revenue (CNY Mil) 77,214 75,811 95,184 95,515 116,829 117,404
+Operating Income (CNY Mil) -3,909 -3,964 586 425 4,473 4,437
+EBITDA (CNY Mil) -840 -898 2,873 2,707 6,997 6,957
+Net Income (CNY Mil) -2,583 -2,646 1,958 1,791 6,108 6,072
+Earnings Per Share (Diluted) (CNY) -0.73 -0.77 1.15 1.06 3.35 3.33
+Adjusted Earnings Per Share (Diluted) (CNY) -1.37 -1.40 1.04 0.95 3.24 3.22
+Dividends Per Share (CNY) 0.00 0.00 0.00 0.00 0.00 0.00
+Key Valuation Drivers as of 17 Nov 2025
+Cost of Equity % 9.0
+Pre-Tax Cost of Debt % 5.3
+Weighted Average Cost of Capital % 9.8
+Long-Run Tax Rate % 15.0
+Stage II EBI Growth Rate % 3.0
+Stage II Investment Rate % 10.0
+Perpetuity Year 11
+Additional estimates and scenarios available for download at https://pitchbook.com/. 
+Discounted Cash Flow Valuation as of 17 Nov 2025
+CNY Mil
+Present Value Stage I -2,839
+Present Value Stage II 8,821
+Present Value Stage III 103,380
+Total Firm Value 109,363
+Cash and Equivalents 32,081
+Debt 12,132
+Other Adjustments 5,018
+Equity Value 134,329
+Projected Diluted Shares 1,884
+Fair Value per Share (USD) 21.50
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 9 ===
+
+Morningstar Equity Company Report | Report as of 18 Nov 2025 04:38, UTC | Reporting Currency: CNY | Trading Currency: USD | Exchange: NEW YORK STOCK EXCHANGE, INC. Page 9 of 24
+?
+XPeng Inc ADR XPEV QQQ 17 Nov 2025 22:36, UTC
+Last Price
+22.43 USD
+17 Nov 2025
+Fair Value Estimate
+21.50 USD
+20 Aug 2025 07:03, UTC
+Price/FVE
+1.04
+Market Cap
+21.38 USD Bil
+17 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+Income Statement (CNY) Actual Forecast 
+Fiscal Year, ends 31 Dec 2022 2023 2024 2025 2026 2027 2028 2029
+Revenue (Mil) 26,855 30,676 40,866 77,214 95,184 116,829 137,670 155,383
+Cost of Goods Sold (Mil) 23,767 30,225 35,021 63,171 76,275 93,079 108,839 121,718
+Gross Profit (Mil) 3,088 451 5,846 14,043 18,908 23,750 28,831 33,665
+Selling, General, Administrative & Other Expenses (Mil) 6,688 6,559 6,871 9,073 9,280 9,930 10,325 10,877
+Advertising & Marketing Expenses (Mil) 0 0 0 0 0 0 0 0
+Research & Development (Mil) 5,215 5,277 6,457 8,880 9,042 9,346 10,669 11,265
+Depreciation & Amortization (if reported separately) (Mil) 0 0 0 0 0 0 0 0
+Adjusted Operating Income (Mil) -8,815 -11,384 -7,482 -3,909 586 4,473 7,837 11,523
+Financial Non-Cash (Gains)/Losses (Mil) 1,311 -659 -619 -1,200 -200 -200 -200 -200
+Irregular Cash (Gains)/Losses (Mil) -84 605 28 0 0 0 0 0
+Operating Income (Mil) -10,041 -11,330 -6,891 -2,709 786 4,673 8,037 11,723
+Net Interest Expense (Mil) -927 -991 -1,031 -1,335 -1,366 -1,614 -1,987 -2,438
+Income Tax Expense (Mil) 25 37 -70 5 -8 -22 -36 -50
+After-Tax Items (Mil) 0 0 0 0 0 0 0 0
+(Minority Interest) (Mil) 0 0 0 0 0 0 0 0
+Net Income (Mil) -9,139 -10,376 -5,790 -1,379 2,159 6,309 10,059 14,212
+Adjusted Net Income (Mil) -7,910 -10,430 -6,374 -2,583 1,958 6,108 9,858 14,011
+Weighted Average Diluted Shares Outstanding (Mil) 1,713 1,741 1,891 1,884 1,884 1,884 1,884 1,884
+Diluted Earnings Per Share -5.34 -5.96 -3.06 -0.73 1.15 3.35 5.34 7.54
+Diluted Adjusted Earnings Per Share -4.62 -5.99 -3.37 -1.37 1.04 3.24 5.23 7.44
+Dividends Per Common Share (CNY) 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00
+EBITDA (Mil) -9,009 -9,405 -4,731 -840 2,873 6,997 10,631 14,636
+Adjusted EBITDA (Mil) -9,094 -8,800 -4,704 -840 2,873 6,997 10,631 14,636
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 10 ===
+
+Morningstar Equity Company Report | Report as of 18 Nov 2025 04:38, UTC | Reporting Currency: CNY | Trading Currency: USD | Exchange: NEW YORK STOCK EXCHANGE, INC. Page 10 of 24
+?
+XPeng Inc ADR XPEV QQQ 17 Nov 2025 22:36, UTC
+Last Price
+22.43 USD
+17 Nov 2025
+Fair Value Estimate
+21.50 USD
+20 Aug 2025 07:03, UTC
+Price/FVE
+1.04
+Market Cap
+21.38 USD Bil
+17 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+Key Cash Flow Items (CNY) Actual Forecast as of 17 Nov
+Fiscal Year, ends 31 Dec 2022 2023 2024 2025 2026 2027 2028 2029
+Cash from Working Capital (Mil) 4,343 1,754 5,786 2,677 -1,275 -4,146 -6,791 -10,051
+(Capital Expenditures) (Mil) -4,276 -2,096 -2,226 -3,861 -4,283 -4,673 -5,507 -6,215
+Depreciation (Mil) 915 1,646 1,572 1,281 1,547 1,826 2,137 2,492
+Amortization (Mil) 116 279 588 588 541 497 458 421
+Net New (Investment), Organic (Mil) 1,098 1,582 5,720 685 -3,471 -6,496 -9,703 -13,354
+(Purchases)/Sales of Companies & Assets (Mil) 8,956 2,616 952 0 0 0 0 0
+Net New (Investment), Total (Mil) 10,054 4,198 6,671 685 -3,471 -6,496 -9,703 -13,354
+Other Non-Cash Items, From Cash Flows (Mil) 2,811 2,457 2,051 895 1,103 1,354 1,596 1,801
+Free Cash Flow to the Firm (Mil) 4,107 -5,375 1,295 -2,339 -1,779 -652 -242 12
+Balance Sheet (CNY) Actual Forecast 
+Fiscal Year, ends 31 Dec 2022 2023 2024 2025 2026 2027 2028 2029
+Assets 
+Cash and Equivalents (Mil) 29,957 37,939 32,081 43,612 52,054 66,121 82,902 102,191
+Inventory (Mil) 4,521 5,526 5,563 10,034 12,116 14,785 17,289 19,335
+Accounts Receivable (Mil) 3,873 2,716 2,450 4,628 5,706 7,003 8,252 9,314
+Net Property, Plant and Equipment (Mil) 10,607 10,954 11,522 14,101 16,838 19,685 23,055 26,778
+Goodwill (Mil) 0 0 0 0 0 0 0 0
+Other Intangibles (Mil) 3,791 7,738 7,355 6,767 6,227 5,729 5,272 4,851
+Other Operating Assets (Mil) 7,904 8,855 11,404 11,404 11,404 11,404 11,404 11,404
+Non-Operating Assets (Mil) 10,838 10,433 12,332 12,332 12,332 12,332 12,332 12,332
+Total Assets (Mil) 71,491 84,163 82,706 102,880 116,675 137,059 160,505 186,205
+Liabilities 
+Accounts Payable  (Mil) 14,223 22,210 23,080 41,633 50,270 61,344 71,731 80,219
+Debt (Mil) 7,794 10,904 12,132 15,132 18,132 21,132 24,132 27,132
+Other Operating Liabilities (Mil) 9,966 11,555 13,254 13,254 13,254 13,254 13,254 13,254
+Non-Operating Liabilities (Mil) 2,597 3,165 2,965 2,965 2,965 2,965 2,965 2,965
+Total Liabilities (Mil) 34,580 47,834 51,431 72,984 84,620 98,695 112,082 123,570
+Equity 
+Shareholders' Equity (Mil) 36,911 36,329 31,275 29,896 32,055 38,364 48,423 62,635
+Minority Interest (Mil) 0 0 0 0 0 0 0 0
+Total Equity (Mil) 36,911 36,329 31,275 29,896 32,055 38,364 48,423 62,635
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+本报告来源于三个皮匠报告站（www.sgpjbg.com）,由用户Id:865822下载,文档Id:1023374,下载日期:2026-01-04
+
+=== PAGE 11 ===
+
+Morningstar Equity Company Report | Report as of 18 Nov 2025 04:38, UTC | Reporting Currency: CNY | Trading Currency: USD | Exchange: NEW YORK STOCK EXCHANGE, INC. Page 11 of 24
+?
+XPeng Inc ADR XPEV QQQ 17 Nov 2025 22:36, UTC
+Last Price
+22.43 USD
+17 Nov 2025
+Fair Value Estimate
+21.50 USD
+20 Aug 2025 07:03, UTC
+Price/FVE
+1.04
+Market Cap
+21.38 USD Bil
+17 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+Management & Ownership
+Management Activity as of —
+Name Position Share Held Report Date* Insider Activity
+Jixun Foo Director — — —
+Donghao Yang Independent Director — — —
+Hongjiang Zhang Independent Director — — —
+Xiaopeng He Chairman of the Board and Chief Executive Officer — — —
+Brian Hongdi Gu Honorary Vice Chairman of the Board and Co-President — — —
+Fang Qu Independent Director — — —
+Fengying Wang President — — —
+Yonghai Chen Vice President, Product Planning — — —
+Jiaming Wu Vice President, Finance and Accounting — — —
+Fund Ownership as of 31 Oct 2025
+Top Owners % of Shares Held % of Fund Assets Shrs Bought/Sold (k) Portfolio Date
+Vanguard Capital Opportunity Fund 0.94 0.84 -73,100 30 Sep 2025
+PrimeCap Odyssey Aggressive Growth Fund 0.31 1.07 -34,420 30 Sep 2025
+BMO Global Equity Fund 0.27 1.42 2,534,447 31 Oct 2025
+Baron Emerging Markets Fund 0.09 0.52 435,419 30 Sep 2025
+Robo Global® Robotics&Automation ETF 0.07 1.23 0 31 Oct 2025
+Concentrated Holders % of Shares Held % of Fund Assets Shrs Bought/Sold (k) Portfolio Date
+Shin Kong S&P Electric Vehicles ETF 0.00 7.85 -4 31 Mar 2025
+China Unvrsl GlbVhcIdtUg Mix(QDII) 0.00 6.81 -40,000 30 Jun 2025
+Roundhill Humanoid Robotics ETF 0.01 5.84 0 31 Oct 2025
+Kernel KiwiSaver S&P Kensho Ele Veh Innv 0.00 5.26 1 30 Apr 2025
+Samsung Global Humanoid Robot Master Eq 0.01 3.94 11,700 30 Sep 2025
+Institutional Transactions as of 31 Oct 2025
+Top 5 Buyers % of Shares Held % of Fund Assets Shrs Bought/Sold (k) Portfolio Date
+Goldman Sachs Asset Management, L.P. 0.52 0.01 3,782,646 30 Jun 2025
+The Goldman Sachs Group Inc 0.52 0.01 3,782,646 30 Jun 2025
+Temasek Holdings Ltd. 0.13 0.08 1,194,538 30 Jun 2025
+Marshall Wace Asset Management Ltd 0.17 0.03 1,140,593 30 Jun 2025
+Susquehanna International Group, LLP 0.18 0.00 1,109,482 30 Jun 2025
+Top 5 Sellers % of Shares Held % of Fund Assets Shrs Bought/Sold (k) Portfolio Date
+Millennium Management LLC 0.04 0.00 -3,008,139 30 Jun 2025
+BNP Paribas Arbitrage, SA 0.33 0.03 -2,126,368 30 Jun 2025
+VOLORIDGE INVESTMENT MANAGEMENT, LLC 0.06 0.04 -1,866,538 30 Jun 2025
+D. E. Shaw & Co LP 0.51 0.06 -1,783,552 30 Jun 2025
+Morgan Stanley - Brokerage Accounts 0.96 0.01 -1,565,826 30 Jun 2025
+*Represents the date on which the owner's name, position, and common shares held were reported by the holder or issuer.
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 12 ===
+
+Morningstar Equity Company Report | Report as of 18 Nov 2025 04:38, UTC | Reporting Currency: CNY | Trading Currency: USD | Exchange: NEW YORK STOCK EXCHANGE, INC. Page 12 of 24
+?
+XPeng Inc ADR XPEV QQQ 17 Nov 2025 22:36, UTC
+Last Price
+22.43 USD
+17 Nov 2025
+Fair Value Estimate
+21.50 USD
+20 Aug 2025 07:03, UTC
+Price/FVE
+1.04
+Market Cap
+21.38 USD Bil
+17 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+Comparable Company Analysis These companies are chosen by the analyst and the data are shown by nearest calendar year in descending market capitalization order.
+Valuation Analysis as of 17 Nov 2025 Price/Earnings EV/EBITDA Price/Free Cash Flow Price/Book Price/Sales 
+Company/Ticker 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E)
+Tesla Inc TSLA 168.3 276.3 302.9 79.6 112.2 122.6 — — — 19.5 18.7 17.9 13.3 14.3 13.8
+BYD Co Ltd Class A 002594 26.2 30.5 19.7 6.1 7.5 6.1 — — — 4.4 3.5 3.1 1.0 1.1 1.0
+Li Auto Inc Ordin... Shares - Class A 02015 27.5 33.3 18.1 9.3 6.7 4.0 — — — 2.7 2.0 1.8 1.2 1.1 0.9
+Average 74.0 113.4 113.6 31.7 42.1 44.2 — — — 8.9 8.1 7.6 5.2 5.5 5.2
+XPeng Inc ADR XPEV -12.8 -58.2 76.6 -15.3 -199.1 58.2 — — — 2.6 5.0 4.7 2.0 2.2 1.8
+Returns Analysis as of 17 Nov 2025 ROIC % Adjusted ROIC % Return on Equity % Return on Assets % Dividend Yield % 
+Company/Ticker 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E)
+Tesla Inc TSLA 15.3 3.5 2.6 23.0 23.0 23.0 9.7 5.1 4.4 5.7 3.2 2.7 — — —
+BYD Co Ltd Class A 002594 30.3 20.1 19.7 16.3 16.3 16.3 20.3 11.9 15.6 5.1 3.7 5.1 1.4 1.1 1.6
+Li Auto Inc Ordin... Shares - Class A 02015 -47.2 -132.3 262.5 15.0 15.0 15.0 11.3 6.7 10.5 5.0 3.1 4.9 — — —
+Average -0.5 -36.2 94.9 18.1 18.1 18.1 13.8 7.9 10.2 5.3 3.3 4.2 1.4 1.1 1.6
+XPeng Inc ADR XPEV 2.9 18.0 20.9 15.0 15.0 15.0 -18.5 -4.6 6.7 -7.0 -1.3 1.8 — — —
+Growth Analysis as of 17 Nov 2025 Revenue Growth % EBIT Growth % EPS Growth % FCF Growth % DPS Growth % 
+Company/Ticker 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E)
+Tesla Inc TSLA 1.0 -2.3 2.9 -12.7 -43.6 -19.1 -23.2 -38.2 -8.8 -245.7 -145.9 -44.8 — — —
+BYD Co Ltd Class A 002594 29.0 -1.5 15.3 21.8 -19.5 62.9 13.1 -10.7 55.1 -128.4 -210.9 -150.2 28.4 -22.5 48.2
+Li Auto Inc Ordin... Shares - Class A 02015 16.6 -10.2 20.5 -11.0 -43.1 114.4 -33.1 -35.9 83.0 -537.7 -95.6 -213.2 — — —
+Average 15.5 -4.7 12.9 -0.6 -35.4 52.7 -14.4 -28.3 43.1 -303.9 -150.8 -136.1 9.5 -7.5 16.1
+XPeng Inc ADR XPEV 33.2 88.9 23.3 -34.3 -47.8 -115.0 -43.8 -59.3 -175.8 -124.1 -280.6 -23.9 — — —
+Profitability Analysis as of 17 Nov 2025 Gross Margin % EBITDA Margin % Operating Margin % Net Margin % FCF Margin % 
+Company/Ticker 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E)
+Tesla Inc TSLA 17.9 17.6 16.1 16.4 12.5 11.1 7.9 4.6 3.6 8.7 5.5 4.9 — — —
+BYD Co Ltd Class A 002594 17.5 17.8 18.5 15.6 13.9 14.9 5.2 4.3 6.0 4.1 3.7 5.0 — — —
+Li Auto Inc Ordin... Shares - Class A 02015 20.5 20.8 21.0 6.5 5.7 7.9 4.4 2.8 5.0 4.8 3.6 5.4 — — —
+Average 18.6 18.7 18.5 12.8 10.7 11.3 5.8 3.9 4.9 5.9 4.3 5.1 0.0 0.0 0.0
+XPeng Inc ADR XPEV 14.3 18.2 19.9 -11.5 -1.1 3.0 -18.3 -5.1 0.6 -15.6 -3.4 2.1 — — —
+Leverage Analysis as of 17 Nov 2025 Debt/Equity % Debt/Total Cap % EBITDA/Net Int. Exp Total Debt/EBITDA Asset/Equity 
+Company/Ticker 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E)
+Tesla Inc TSLA 1.1 0.5 0.4 1.0 0.5 0.4 -13.2 -9.9 -8.9 0.8 0.5 0.4 1.7 1.6 1.6
+BYD Co Ltd Class A 002594 4.8 3.6 3.5 4.6 3.5 3.4 99.8 -42.0 -78.0 0.3 0.3 0.3 3.9 3.2 3.1
+Li Auto Inc Ordin... Shares - Class A 02015 63.3 4.5 4.8 38.8 4.3 4.6 -5.8 -4.0 -5.4 1.7 1.4 1.0 2.3 2.1 2.2
+Average 23.1 2.9 2.9 14.8 2.8 2.8 26.9 -18.6 -30.8 0.9 0.7 0.6 2.6 2.3 2.3
+XPeng Inc ADR XPEV 139.3 10.2 11.2 58.2 9.3 10.0 4.6 0.6 -2.1 -3.4 -18.0 6.3 2.6 3.4 3.6
+Liquidity Analysis as of 17 Nov 2025 Cash per Share Current Ratio Quick Ratio Cash/Short-Term Debt Payout Ratio % 
+Company/Ticker 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E)
+Tesla Inc TSLA — — — — — — — — — — — — 0.0 0.0 0.0
+BYD Co Ltd Class A 002594 — — — — — — — — — — — — 36.8 31.9 30.5
+Li Auto Inc Ordin... Shares - Class A 02015 — — — — — — — — — — — — 0.0 0.0 0.0
+Average 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 9.2 8.0 7.6
+XPeng Inc ADR XPEV — — — — — — — — — — — — 0.0 0.0 0.0
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 13 ===
+
+Morningstar Equity Company Report | Report as of 18 Nov 2025 04:38, UTC | Reporting Currency: CNY | Trading Currency: USD | Exchange: NEW YORK STOCK EXCHANGE, INC. Page 13 of 24
+?
+XPeng Inc ADR XPEV QQQ 17 Nov 2025 22:36, UTC
+Competitors Price vs. Fair Value
+Tesla Inc TSLA
+14
+104
+194
+284
+374
+Last Close: 408.92
+Fair Value: 300.00
+23 Oct 2025 02:21, UTC
+Overvalued
+Undervalued
+2020 2021 2022 2023 2024 YTD
+2.31 1.55 0.49 1.18 1.92 1.35 Price/Fair Value
+743.44 49.76 -65.03 101.72 62.52 1.26 Total Return %
+Morningstar Rating
+Total Return % as of 17 Nov 2025. Last Close as of 17 Nov 2025. Fair Value as of 23 Oct 2025 02:21, UTC.
+BYD Co Ltd Class A 002594
+15
+40
+65
+90
+115
+Fair Value: 101.00
+31 Oct 2025 05:44, UTC
+Last Close: 98.08
+Overvalued
+Undervalued
+2020 2021 2022 2023 2024 YTD
+— — 1.09 0.70 0.85 0.97 Price/Fair Value
+307.72 38.07 -4.12 -22.50 44.32 5.50 Total Return %
+Morningstar Rating
+Total Return % as of 17 Nov 2025. Last Close as of 17 Nov 2025. Fair Value as of 31 Oct 2025 05:44, UTC.
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 14 ===
+
+Morningstar Equity Company Report | Report as of 18 Nov 2025 04:38, UTC | Reporting Currency: CNY | Trading Currency: USD | Exchange: NEW YORK STOCK EXCHANGE, INC. Page 14 of 24
+?
+XPeng Inc ADR XPEV QQQ 17 Nov 2025 22:36, UTC
+Competitors Price vs. Fair Value
+Li Auto Inc Ordinary Shares - Class A 02015
+49
+79
+109
+139
+169
+Fair Value: 108.00
+29 Aug 2025 06:09, UTC
+Last Close: 75.40
+Overvalued
+Undervalued
+2020 2021 2022 2023 2024 YTD
+— — 0.68 0.97 0.71 0.72 Price/Fair Value
+— — -37.36 91.54 -35.83 -20.13 Total Return %
+Morningstar Rating
+Total Return % as of 17 Nov 2025. Last Close as of 17 Nov 2025. Fair Value as of 29 Aug 2025 06:09, UTC.
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 15 ===
+
+Morningstar Equity Company Report | Report as of 18 Nov 2025 04:38, UTC | Reporting Currency: CNY | Trading Currency: USD | Exchange: NEW YORK STOCK EXCHANGE, INC. Page 15 of 24
+?
+XPeng Inc ADR XPEV QQQ 17 Nov 2025 22:36, UTC
+Last Price
+22.43 USD
+17 Nov 2025
+Fair Value Estimate
+21.50 USD
+20 Aug 2025 07:03, UTC
+Price/FVE
+1.04
+Market Cap
+21.38 USD Bil
+17 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+ESG Risk Rating Breakdown
+Exposure
+Company Exposure1 44.0
+– Manageable Risk 42.1
+Unmanageable Risk2 1.9
+Management
+Manageable Risk 42.1
+– Managed Risk3 19.0
+Management Gap4 23.1
+Overall Unmanaged Risk 25.0
+Subject
+ Subindustry (48.0)
+0 55+
+Low Medium High
+44.0
+Medium
+100 0
+Strong Average Weak
+45.1%
+Average gExposure represents a company’s vulnerability  to ESG 
+risks driven by their business model
+gExposure is assessed at the Subindustry level and then 
+specified at the company level
+gScoring ranges from 0-55+ with categories of low, me-
+dium, and high-risk exposure
+gManagement measures a company’s ability to manage 
+ESG risks through its commitments and actions
+gManagement assesses a company's efficiency on ESG 
+programs, practices, and policies
+gManagement score ranges from 0-100% showing how 
+much manageable risk a company is managing
+ESG Risk Rating
+Negligible Low Medium High Severe
+25.02
+Medium
+ESG Risk Ratings measure the degree to which a company’s value is impacted by environmental, social, and governance 
+risks, by evaluating the company’s ability to manage the ESG risks it faces.
+1. A company's Exposure to material ESG issues 2. Unmanageable Risk refers to risks that are inherent to a particular business model that cannot be managed by 
+programs or initiatives 3. Managed Risk = Manageable Risk multiplied by a Management score of 45.1% 4. Management Gap assesses risks that are not 
+managed, but are considered manageable 5. ESG Risk Rating Assessment = Overall Unmanaged Risk = Management Gap plus Unmanageable Risk
+ESG Risk Rating Assessment5
+ESG Risk Rating is of Sep 03, 2025. Highest Controversy Level is as of Nov 08, 
+2025. Sustainalytics Subindustry: Automobiles. Sustainalytics provides 
+Morningstar with company ESG ratings and metrics on a monthly basis and 
+as such, the ratings in Morningstar may not necessarily reflect current 
+Sustainalytics’ scores for the company. For the most up to date rating and 
+more information, please visit: sustainalytics.com/esg-ratings/.
+Peer Analysis 03 Sep 2025 Peers are selected from the company's Sustainalytics-defined Subindustry and are displayed based on the closest market cap values
+Company Name Exposure Management ESG Risk Rating
+XPeng Inc 44.0 | Medium 0
+ 55+ 45.1 | Average 100
+ 0 25.0 | Medium 0
+ 40+
+BYD Co Ltd 47.4 | Medium 0
+ 55+ 43.5 | Average 100
+ 0 27.8 | Medium 0
+ 40+
+Tesla Inc 41.7 | Medium 0
+ 55+ 42.4 | Average 100
+ 0 24.8 | Medium 0
+ 40+
+NIO Inc 44.8 | Medium 0
+ 55+ 41.7 | Average 100
+ 0 26.9 | Medium 0
+ 40+
+Li Auto Inc 47.1 | Medium 0
+ 55+ 51.6 | Strong 100
+ 0 24.0 | Medium 0
+ 40+
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 16 ===
+
+Morningstar Equity Company Report | Report as of 18 Nov 2025 04:38, UTC | Reporting Currency: CNY | Trading Currency: USD | Exchange: NEW YORK STOCK EXCHANGE, INC. Page 16 of 24
+?
+XPeng Inc ADR XPEV QQQ 17 Nov 2025 22:36, UTC
+Last Price
+22.43 USD
+17 Nov 2025
+Fair Value Estimate
+21.50 USD
+20 Aug 2025 07:03, UTC
+Price/FVE
+1.04
+Market Cap
+21.38 USD Bil
+17 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+Recent Analyst Notes
+XPeng Earnings: Beat Driven by Strong Vehicle Volume and Margin Recovery Vincent Sun, CFA,Senior Equity 
+Analyst,20 Aug 2025
+XPeng’s second-quarter revenue was close to the high end of guidance. Thanks to larger vehicle delivery volume 
+and cost-cutting initiatives, vehicle margin further recovered to 14% from 10% in the first quarter. Why it 
+matters: Driven by record quarterly vehicle volumes, the vehicle margin improvement was stronger than we 
+expected, despite pressure from price competition. We think the margin gain could be explained by the larger 
+production scale and additional contribution from the new generation G6 and G9 models. To improve vehicle 
+pricing, XPeng plans to launch new models targeting the higher price segment in 2026 by leveraging its 
+leadership in autonomous driving technology. We maintain reservations about the success of brand upgrading. 
+We raise the 2025-29 vehicle delivery forecast by 7%-9% to factor in the company’s strong model cycle. With 
+higher vehicle margin assumptions, we reduce our 2025 net loss forecast by 22% and lift 2026-29 net profit by 
+6%-16%. The bottom line: We raise our fair value estimate to USD 21.50 per ADS (HKD 83.50 per share) from USD 
+18 (HKD 70), implying 1.9 times 2025 price/sales. With stock price up more than 70% year-to-date, shares are 
+now trading in 3-star territory and fairly valued, in our view. Looking ahead, we believe volume will retain a 
+robust momentum given XPeng’s new model pipeline. M03 stabilized at 15,000 units monthly delivery, and the 
+company plans to launch the new generation P7 in the third quarter and plug-in hybrid X9 MPV in the fourth 
+quarter. Between the lines: For the third quarter, management guided vehicle delivery to grow around 1.5 times 
+year over year to 113,000-118,000 units. The guidance implies monthly sales of around 40,000 units in August 
+and September, which we believe is above market expectations. Management maintains vehicle margin 
+guidance of an expansion to the high teens in the second half, thanks to strong sales, and maintains the profit 
+turnaround target in the fourth quarter. 
+XPeng Earnings: Revenue in Line but Margin Improvement Disappoints on Price Pressure Vincent Sun, 
+CFA,Senior Equity Analyst,22 May 2025
+XPeng’s first-quarter revenue was at the high end of guidance. Thanks to larger vehicle delivery volume and cost-
+cutting initiatives, vehicle margin further recovered to 10.5% from 10.0% in the fourth quarter. Why it matters: 
+Despite a record quarterly vehicle volume, the vehicle margin improvement was weaker than we expected due to 
+a higher sales contribution from the lower-priced Mona M03, inventory provision and compensation to suppliers, 
+and pressure from price competition. We raise our 2025-29 vehicle delivery forecast by over 30% to factor in the 
+company’s strong new model cycle, such as the Mona M03 and P7+ sedan. However, we only increase 2025-29 
+revenue estimates by 5%-9% due to lower vehicle price assumptions. With slightly lower vehicle margin 
+assumptions, we reduce the 2025 net loss forecast by 12% and lift the 2026-29 net profit by 3%-7%. The bottom 
+line: We raise our fair value estimate to USD 18 per ADS (HKD 70 per share), from USD 17 (HKD 66), implying a 1.8 
+times 2025 price/sales ratio. With the stock price up more than 70% year-to-date, shares are now trading in 3-
+star territory and fairly valued, in our view. Looking ahead, we believe volume will be robust given XPeng’s new 
+model pipeline. M03 ramped up to 15,000 units monthly delivery in the past few months. In addition, the 
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 17 ===
+
+Morningstar Equity Company Report | Report as of 18 Nov 2025 04:38, UTC | Reporting Currency: CNY | Trading Currency: USD | Exchange: NEW YORK STOCK EXCHANGE, INC. Page 17 of 24
+?
+XPeng Inc ADR XPEV QQQ 17 Nov 2025 22:36, UTC
+Last Price
+22.43 USD
+17 Nov 2025
+Fair Value Estimate
+21.50 USD
+20 Aug 2025 07:03, UTC
+Price/FVE
+1.04
+Market Cap
+21.38 USD Bil
+17 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+company plans to introduce a new G7 in the third quarter and a plug-in hybrid G9 in the fourth quarter. We 
+estimate the firm will record a net loss of CNY 1.8 billion in 2025 and break even in 2026 with CNY 1.9 billion net 
+profit. Between the lines: For the second quarter, management guided vehicle delivery to more than triple year 
+over year to 102,000-108,000 units. The guidance implies monthly sales of around 35,000 units in May and June, 
+which we believe is slightly below market expectations. Management is confident in guiding vehicle margin 
+expansion to high teens in the second half, thanks to strong sales, and is maintaining profitability in the fourth 
+quarter. 
+XPeng Earnings: Revenue In Line; Vehicle Margin Beat on Strong Vehicle Volume Vincent Sun, CFA,Senior 
+Equity Analyst,19 Mar 2025
+XPeng’s fourth-quarter revenue was near the high end of company guidance and in line with our expectations. 
+Thanks to larger vehicle delivery volume and cost-cutting initiatives, vehicle margin further recovered to 10.0% 
+from 8.6% in the third quarter. Why it matters: The margin improvement was stronger than we expected, despite 
+pressure from price promotions amid competition. Furthermore, management is confident about guiding for 
+further vehicle margin expansion in 2025, benefiting from strong sales and turning profitable in the fourth 
+quarter of this year. Looking beyond, we believe volume will create robust momentum, given XPeng’s new model 
+pipeline. In the past few months, the Mona M03 sedan ramped up to 15,000 units of monthly delivery. In addition, 
+the company launched the new-generation G6 and G9 early this month, with strong initial order intakes. The 
+bottom line: We raise our fair value estimate to USD 17.00 per ADS (HKD 66.00 per share) from USD 15.20 (HKD 
+59.00), implying a 1.9 times 2025 price/sales ratio. With the stock price having more than doubled year to date, 
+shares are now trading in 2-star territory and overvalued, in our view. We raise our 2025-28 vehicle delivery 
+forecasts by 22%-24% to factor in the company’s strong new model cycle, such as the M03, P7+, and plug-in 
+hybrid G9 later this year. Partly offset by lower vehicle price assumptions, we raise our 2025-28 revenue 
+estimates by 14%-16%. We keep our vehicle margin assumptions but reduce our 2025 net loss forecast by 24% 
+and lift 2026-28 net profit by 6%-13% to reflect positive operating leverage. We estimate the firm to record a net 
+loss of CNY 2.1 billion in 2025 and break even in 2026 with CNY 1.8 billion in net profit. Between the lines: For the 
+first quarter, management guided for vehicle delivery to more than triple year over year to 91,000-93,000 units. 
+The guidance implies March monthly sales of over 31,000 units, which we believe aligns with market 
+expectations. 
+XPeng Earnings: Revenue in Line; Vehicle Margin Slightly Missed but Guided to Further Expand Vincent Sun, 
+CFA,Senior Equity Analyst,20 Nov 2024
+XPeng’s third-quarter revenue was 7% above the midpoint of guidance but largely in line with our expectations. 
+Thanks to larger vehicle deliveries and lower battery costs, vehicle margin recovered further to 8.6% from 6.4% 
+last quarter. Why it matters: The margin improvement was weaker than we expected, likely due to pressure from 
+price promotions amid competition. However, management is confident the firm will continue to record margin 
+recovery in the fourth quarter and next year benefiting from strong sales and cost-cutting. Looking beyond this 
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 18 ===
+
+Morningstar Equity Company Report | Report as of 18 Nov 2025 04:38, UTC | Reporting Currency: CNY | Trading Currency: USD | Exchange: NEW YORK STOCK EXCHANGE, INC. Page 18 of 24
+?
+XPeng Inc ADR XPEV QQQ 17 Nov 2025 22:36, UTC
+Last Price
+22.43 USD
+17 Nov 2025
+Fair Value Estimate
+21.50 USD
+20 Aug 2025 07:03, UTC
+Price/FVE
+1.04
+Market Cap
+21.38 USD Bil
+17 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+quarter, we believe volume will stage a robust pickup given XPeng’s new model pipeline. The Mona M03 sedan 
+has ramped up to 10,000 units of monthly delivery only one month after launch. As well, the firm recently 
+launched the P7+ midsize sedan with strong initial order intakes. The bottom line: We raise our fair value 
+estimate to USD 15.20 per ADS (HKD 59.00 per share), from USD 12.20 (HKD 47.50), implying a 1.9 times 2025 
+price/sales ratio. Despite concern about first-quarter vehicle demand after the national subsidy expiration at 
+year-end, shares are undervalued for long-term investors. We raise our 2024-28 vehicle delivery forecast by 
+about 30% to factor in the firm’s strong new model cycle, such as M03, P7+, and plug-in hybrid G9, next year. 
+Partly offset by lower vehicle price assumptions, we raise 2024-28 revenue estimates by 17%-19%. With a lower 
+vehicle margin, we increase the 2024-25 net loss forecast by 5%-11% but lift 2026-28 net profit forecast by 4%-
+8% to reflect positive operating leverage on larger deliveries. We estimate the firm to record a net loss of CNY 6.6 
+billion in 2024 and break even in 2026 with a net profit of CNY 1.6 billion. Between the lines: For the fourth 
+quarter, management guided vehicle delivery to increase 45%-51% year over year to 87,000-91,000 units. The 
+guidance implies monthly sales of over 32,000 units for November and December, which we believe is above 
+market expectations. 
+XPeng Earnings: Revenue in Line; Vehicle Margin Remains Under Pressure Despite Volume Recovery Vincent 
+Sun, CFA,Senior Equity Analyst,21 Aug 2024
+XPeng’s second-quarter revenue was 3% above the midpoint of its guidance. Thanks to a better product mix and 
+lower battery cost, the vehicle margin further recovered to 6.4% from negative 8.6% in the second quarter of last 
+year. But the margin improvement was weaker than we expected due likely to pressure from price promotions 
+amid competition. Management is confident the company will continue to record margin recovery for the rest of 
+the year. However, with lower volume, softer vehicle margin, and higher operating expense assumptions, we 
+increase our net loss forecast for 2024-25 and cut net profit estimates for outer years. As a result, we reduce our 
+fair value estimate to USD 12.20 per ADS (HKD 47.30 per share), from USD 14.00 per ADS (HKD 54.90 per share), 
+which implies a forward 2025 price/sales ratio of 1.8 times. XPeng is undervalued, but our preferred pick in the 
+China auto space is Geely, based on valuation grounds and market share gains from its new energy vehicle 
+product, Zeekr.Looking beyond the second quarter, we believe volume will recover sequentially, and growth will 
+be skewed toward the last few months, given the company’s new model pipeline. The first sedan model under 
+the Mona brand, M03, will start delivery in August. In addition, the firm will launch a midsize sedan, the P7 Plus, 
+in the fourth quarter. Despite retail price discounts amid continued market competition, we believe vehicle 
+margin will continue to record sequential recovery in the second half, benefiting from recovering sales and 
+higher technical service income.For the third quarter, management guided vehicle delivery to increase by 2%-
+12% year over year to 41,000-45,000 units and total revenue to increase by 7%-15% year over year to CNY 9.1 
+billion-CNY 9.8 billion. The midpoint of the delivery guidance implies a monthly sales volume of around 16,000 
+units for August and September, which we believe is slightly below market expectation, given Mona M03 delivery 
+will start this month. 
+Tariffs of Up to 25% on Chinese EV Manufacturers Won’t Change Our Growth Outlook Vincent Sun, CFA,Senior 
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 19 ===
+
+Morningstar Equity Company Report | Report as of 18 Nov 2025 04:38, UTC | Reporting Currency: CNY | Trading Currency: USD | Exchange: NEW YORK STOCK EXCHANGE, INC. Page 19 of 24
+?
+XPeng Inc ADR XPEV QQQ 17 Nov 2025 22:36, UTC
+Last Price
+22.43 USD
+17 Nov 2025
+Fair Value Estimate
+21.50 USD
+20 Aug 2025 07:03, UTC
+Price/FVE
+1.04
+Market Cap
+21.38 USD Bil
+17 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+Equity Analyst,12 Jun 2024
+Shares of Chinese electric vehicle manufacturers fell 4%-9% on June 12 in Hong Kong on news that the European 
+Commission will provisionally apply additional tariffs of up to 25% on imported electric vehicles made in China 
+starting next month, compared with the 10% standard import duties on EVs. The European Union launched an 
+investigation in October 2023 into subsidies given to EV automakers in China. The EU accused Chinese 
+automakers of unfairly benefiting from incentives and support from the Chinese government and such subsidies 
+have raised overcapacity concerns. The commission alleged that subsidized car imports posed an economic 
+threat to the healthy development of the EV industry in the EU.The move is modest compared with the stiff 100% 
+tariffs on Chinese EV imports into the US, hiked from 25% last month, by the Joe Biden administration and the 
+25% provisional duties are in line with market expectations of 20%-25%, in our view. Unlike the US market where 
+imports of China-made EVs have been negligible, we believe the import levies imposed by the EU will put 
+pressure on sales for Chinese EV manufacturers in the near term. However, we think Chinese producers are still 
+competitive compared with their rivals. The commission estimates that prices of Chinese EVs are typically 20% 
+lower than prices of EU-made equivalent models. With additional tariffs, Chinese cars are at similar prices, but 
+with more attractive designs and vehicle technology. In addition, the tariffs will apply not only to Chinese 
+carmakers including BYD and Geely, but also to global automakers such as Tesla and BMW, which export EVs 
+from China to Europe.In the medium term, we do not think the import levies will derail Chinese EV 
+manufacturers’ expansion plans to set up factories in Europe. The increase in local production in the EU could 
+largely offset the impact of tariffs. For example, BYD announced last year it would build a new manufacturing 
+plant in Hungary for localized production. 
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 20 ===
+
+Morningstar Equity Company Report | Report as of 18 Nov 2025 04:38, UTC | Reporting Currency: CNY | Trading Currency: USD | Exchange: NEW YORK STOCK EXCHANGE, INC. Page 20 of 24
+?
+Research Methodology for Valuing Companies
+Morningstar Equity Research Star Rating Methodology
+Overview
+At the heart of our valuation system is a detailed projec-
+tion of a company’s future cash flows, resulting from our 
+analysts’ research. Analysts create custom industry and 
+company assumptions to feed income statement, balance 
+sheet, and capital investment assumptions into our glob-
+ally standardized,  proprietary  discounted  cash flow, or 
+DCF, modeling templates. We use scenario analysis, inde-
+pth competitive advantage analysis, and a variety of oth-
+er analytical tools to augment this process. Moreover, we 
+think analyzing valuation through discounted cash flows 
+presents  a better  lens for viewing  cyclical  companies, 
+high-growth  firms,  businesses  with  finite  lives  (e.g., 
+mines),  or companies  expected  to generate  negative 
+earnings over the next few years. That said, we don’t dis-
+miss multiples  altogether  but rather  use them as sup-
+porting cross-checks for our DCF-based fair value estim-
+ates. We also acknowledge  that DCF models offer their 
+own challenges (including a potential proliferation of es-
+timated inputs and the possibility  that the method may 
+miss shortterm market-price movements), but we believe 
+these negatives  are mitigated  by deep analysis and our 
+longterm approach.
+Morningstar’s  equity  research  group  (”we,”  “our”)  be-
+lieves that a company’s  intrinsic  worth results from the 
+future cash flows it can generate. The Morningstar Rating 
+for stocks identifies stocks trading at a discount or premi-
+um to their  intrinsic  worth—or  fair value  estimate,  in 
+Morningstar  terminology.  Five-star  stocks  sell for the 
+biggest risk adjusted discount to their fair values, where-
+as 1-star  stocks  trade  at premiums  to their  intrinsic 
+worth.
+Four key components  drive the Morningstar  rating:  (1) 
+our assessment of the firm’s economic moat, (2) our es-
+timate of the stock’s fair value, (3) our uncertainty around 
+that fair value estimate and (4) the current market price. 
+This process ultimately culminates in our singlepoint star 
+rating.
+1. Economic Moat
+The concept  of an economic  moat plays a vital role not 
+only in our qualitative  assessment  of a firm’s long-term 
+investment potential, but also in the actual calculation of 
+our fair value estimates. An economic moat is a structural 
+feature that allows a firm to sustain excess profits over a 
+long period  of time. We define  economic  profits  as re-
+turns on invested capital (or ROIC) over and above our es-
+timate  of a firm’s  cost of capital,  or weighted  average 
+cost of capital  (or WACC).  Without  a moat,  profits  are 
+more susceptible to competition. We have identified five 
+sources of economic moats: intangible assets, switching 
+costs, network effect, cost advantage, and efficient scale.
+Companies with a narrow moat are those we believe are 
+more likely than not to achieve normalized excess returns 
+for at least the next 10 years. Wide-moat companies are 
+those in which we have very high confidence that excess 
+returns will remain for 10 years, with excess returns more 
+likely than not to remain for at least 20 years. The longer 
+a firm generates economic profits, the higher its intrinsic 
+value.  We believe  low-quality,  no-moat  companies  will 
+see their normalized  returns gravitate  toward the firm’s 
+cost of capital more quickly than companies with moats.
+When  considering  a company's  moat,  we also  assess 
+whether there is a substantial threat of value destruction, 
+stemming from risks related to ESG, industry disruption, 
+financial health, or other idiosyncratic issues. In this con-
+text, a risk is considered  potentially  value destructive  if 
+its occurrence  would eliminate  a firm’s economic profit 
+on a cumulative or midcycle basis. If we deem the prob-
+ability of occurrence sufficiently high, we would not char-
+acterize the company as possessing an economic moat.
+2. Estimated Fair Value
+Combining  our analysts’  financial  forecasts  with  the 
+firm’s economic moat helps us assess how long returns 
+on invested capital are likely to exceed the firm’s cost of 
+capital. Returns of firms with a wide economic moat rat-
+ing are assumed to fade to the perpetuity  period over a 
+longer  period  of time than the returns  of narrow-moat 
+firms, and both will fade slower than no-moat firms, in-
+creasing our estimate of their intrinsic value.
+Our model is divided into three distinct stages:
+Stage I: Explicit Forecast
+In this stage,  which  can last five to 10 years,  analysts 
+make full financial statement forecasts, including items 
+such as revenue,  profit  margins,  tax rates,  changes  in 
+workingcapital accounts, and capital spending. Based on 
+these projections,  we calculate earnings before interest, 
+after taxes (EBI) and the net new investment (NNI) to de-
+rive our annual free cash flow forecast.
+Stage II: Fade
+The second stage of our model is the period it will take 
+the company’s  return on new invested  capital—the  re-
+turn on capital of the next dollar invested (“RONIC”)—to 
+decline (or rise) to its cost of capital. During the Stage II 
+period,  we use a formula  to approximate  cash flows in 
+lieu of explicitly modeling the income statement, balance 
+sheet, and cash flow statement as we do in Stage I. The 
+length  of the second  stage depends  on the strength  of 
+the company’s economic moat. We forecast this period to 
+last anywhere from one year (for companies with no eco-
+nomic moat) to 10–15 years or more (for wide-moat com-
+panies). During this period, cash flows are forecast using 
+four assumptions: an average growth rate for EBI over the 
+period, a normalized  investment  rate, average return on 
+new invested  capital (RONIC),  and the number of years 
+until perpetuity,  when excess returns cease. The invest-
+ment rate and return on new invested capital decline un-
+til a perpetuity  value is calculated.  In the case of firms 
+that do not earn their cost of capital, we assume marginal 
+ROICs rise to the firm’s cost of capital (usually attribut-
+able  to less  reinvestment),  and we may truncate  the 
+second stage.
+Stage III: Perpetuity
+Once a company’s marginal ROIC hits its cost of capital, 
+we calculate  a continuing  value, using a standard  per-
+petuity  formula.  At perpetuity,  we assume  that  any 
+growth or decline or investment  in the business neither 
+creates nor destroys value and that any new investment 
+provides a return in line with estimated WACC.
+Because a dollar earned today is worth more than a dol-
+lar earned tomorrow, we discount our projections of cash 
+flows  in stages  I, II, and III to arrive  at a total  present 
+value  of expected  future  cash  flows.  Because  we are 
+modeling free cash flow to the firm—representing  cash 
+available to provide a return to all capital providers—we 
+discount  future cash flows using the WACC, which is a 
+weighted  average  of the costs of equity,  debt, and pre-
+ferred stock (and any other funding sources),  using ex-
+pected  future  proportionate  long-term,  market-value 
+weights.
+3. Uncertainty Around That Fair Value Estimate
+Morningstar’s  Uncertainty Rating is designed to capture 
+the range of potential outcomes for a company’s intrinsic 
+value. This rating is used to assign the margin of safety 
+required before investing, which in turn explicitly drives 
+our stock star rating system.  The Uncertainty  Rating is 
+aimed at identifying  the confidence  we should  have in 
+assigning a fair value estimate for a given stock. 
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 21 ===
+
+Morningstar Equity Company Report | Report as of 18 Nov 2025 04:38, UTC | Reporting Currency: CNY | Trading Currency: USD | Exchange: NEW YORK STOCK EXCHANGE, INC. Page 21 of 24
+?
+Research Methodology for Valuing Companies
+Morningstar Equity Research Star Rating Methodology
+Our Uncertainty Rating is meant to take into account any-
+thing that can increase the potential dispersion of future 
+outcomes for the intrinsic value of a company, and any-
+thing  that  can affect  our ability  to accurately  predict 
+these outcomes. The rating begins with a suggested rat-
+ing produced  by a quantitative  process  based  on the 
+trailing  12-month  standard  deviation  of daily stock re-
+turns. An analyst  overlay  is then applied,  with analysts 
+using the suggested  rating,  historical  rating  data, and 
+their own knowledge  of the company to inform them as 
+they make the final  Uncertainty  Rating  decision.  Ulti-
+mately,  the rating decision  rests with the analyst.  Ana-
+lysts take into account many characteristics  when mak-
+ing their final decision, including cyclical factors, opera-
+tional and financial  factors such as leverage,  company-
+specific events, ESG risks, and anything else that might 
+increase the potential dispersion of future outcomes and 
+our ability to estimate those outcomes. 
+Our recommended margin of safety—the discount to fair 
+value  demanded  before  we’d  recommend  buying  or 
+selling the stock—widens as our uncertainty of the estim-
+ated value of the equity increases. The more uncertain we 
+are about the potential dispersion of outcomes, the great-
+er the discount we require relative to our estimate of the 
+value of the firm before we would recommend  the pur-
+chase of the shares. In addition,  the Uncertainty  Rating 
+provides guidance in portfolio construction based on risk 
+tolerance. 
+Our Uncertainty  Ratings  are: Low, Medium,  High, Very 
+High, and Extreme.
+Margin of Safety
+Qualitative Analysis 
+Uncertainty Ratings QQQQQRating QRating
+Low 20% Discount 25% Premium
+Medium 30% Discount 35% Premium
+High 40% Discount 55% Premium
+Very High 50% Discount 75% Premium
+Extreme 75% Discount 300% Premium
+Our uncertainty  rating  is based  on the interquartile 
+range, or the middle 50% of potential outcomes, covering 
+the 25th  percentile–75th  percentile.  This  means  that 
+when  a stock  hits  5 stars,  we expect  there  is a 75% 
+chance that the intrinsic value of that stock lies above the 
+current market price. Similarly, when a stock hits 1 star, 
+we expect there is a 75% chance that the intrinsic value 
+of that stock lies below the current market price.
+4. Market Price
+The market prices used in this analysis and noted in the 
+report come from exchange on which the stock is listed 
+which we believe is a reliable source.
+For more details about our methodology, please go to 
+https://shareholders.morningstar.com
+Morningstar Star Rating for Stocks
+Once we determine the fair value estimate of a stock, we 
+compare  it with the stock’s  current  market  price  on a 
+daily basis, and the star rating is automatically re-calcu-
+lated  at the market  close  on every  day the market  on 
+which the stock is listed is open. Our analysts keep close 
+tabs on the companies  they follow, and, based on thor-
+ough and ongoing analysis, raise or lower their fair value 
+estimates as warranted.
+Please note, there is no predefined  distribution  of stars. 
+That is, the percentage  of stocks  that earn 5 stars can 
+fluctuate daily, so the star ratings, in the aggregate, can 
+serve as a gauge of the broader market’s valuation. When 
+there are many 5-star stocks, the stock market as a whole 
+is more undervalued, in our opinion, than when very few 
+companies garner our highest rating.
+We expect that if our base-case assumptions are true the 
+market price will converge on our fair value estimate over 
+time  generally  within  three  years  (although  it is im-
+possible to predict the exact time frame in which market 
+prices may adjust).
+Our star ratings are guideposts to a broad audience and 
+individuals must consider their own specific investment 
+goals, risk tolerance,  tax situation,  time horizon, income 
+needs, and complete investment  portfolio,  among other 
+factors.
+The Morningstar  Star Ratings for stocks are defined be-
+low:
+QQQQQ We believe appreciation beyond a fair risk ad-
+justed return is highly likely over a multiyear time frame. 
+Scenario  analysis  developed  by our analysts  indicates 
+that the current market price represents  an excessively 
+pessimistic outlook, limiting downside risk and maximiz-
+ing upside potential.
+QQQQ We believe appreciation  beyond a fair risk-ad-
+justed return is likely.
+QQQ Indicates our belief that investors are likely to re-
+ceive a fair risk-adjusted  return (approximately  cost of 
+equity).
+QQ We believe investors are likely to receive a less than 
+fair risk-adjusted return.
+Q Indicates a high probability of undesirable risk-adjus-
+ted returns from the current market price over a multi-
+year time frame, based on our analysis. Scenario analysis 
+by our analysts indicates that the market is pricing in an 
+excessively  optimistic  outlook, limiting upside potential 
+and leaving the investor exposed to Capital loss.
+Other Definitions
+Last Price: Price of the stock as of the close of the market 
+of the last trading day before date of the report.
+Capital  Allocation  Rating:  Our Capital  Allocation  (or 
+Stewardship)  Rating  represents  our assessment  of the 
+quality of management’s capital allocation, with particu-
+lar emphasis  on the firm’s balance  sheet, investments, 
+and shareholder  distributions.  Analysts  consider  com-
+panies’ investment strategy and valuation, balance sheet 
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 22 ===
+
+Morningstar Equity Company Report | Report as of 18 Nov 2025 04:38, UTC | Reporting Currency: CNY | Trading Currency: USD | Exchange: NEW YORK STOCK EXCHANGE, INC. Page 22 of 24
+?
+Research Methodology for Valuing Companies
+management,  and dividend and share buyback policies. 
+Corporate governance factors are only considered if they 
+are likely to materially impact shareholder value, though 
+either the balance sheet, investment, or shareholder dis-
+tributions.  Analysts  assign one of three ratings:  "Exem-
+plary", "Standard", or "Poor". Analysts judge Capital Alloc-
+ation from an equity holder’s perspective. Ratings are de-
+termined  on a forward  looking  and absolute  basis. The 
+Standard rating is most common as most managers will 
+exhibit neither exceptionally  strong nor poor capital al-
+location.
+Capital  Allocation  (or Stewardship)  analysis  published 
+prior to Dec. 9, 2020, was determined  using a different 
+process. Beyond investment strategy, financial leverage, 
+and dividend  and share buyback policies,  analysts  also 
+considered execution, compensation, related party trans-
+actions, and accounting practices in the rating.
+Capital  Allocation  Rating:  Our Capital  Allocation  (or 
+Stewardship)  Rating  represents  our assessment  of the 
+quality of management’s capital allocation, with particu-
+lar emphasis  on the firm’s balance  sheet, investments, 
+and shareholder  distributions.  Analysts  consider  com-
+panies’ investment strategy and valuation, balance sheet 
+management,  and dividend and share buyback policies. 
+Corporate governance factors are only considered if they 
+are likely to materially impact shareholder value, though 
+either the balance sheet, investment, or shareholder dis-
+tributions.  Analysts  assign one of three ratings:  "Exem-
+plary", "Standard", or "Poor". Analysts judge Capital Alloc-
+ation from an equity holder’s perspective. Ratings are de-
+termined  on a forward  looking  and absolute  basis. The 
+Standard rating is most common as most managers will 
+exhibit neither exceptionally  strong nor poor capital al-
+location.
+Capital  Allocation  (or Stewardship)  analysis  published 
+prior to Dec. 9, 2020, was determined  using a different 
+process. Beyond investment strategy, financial leverage, 
+and dividend  and share buyback policies,  analysts  also 
+considered execution, compensation, related party trans-
+actions, and accounting practices in the rating.
+Sustainalytics  ESG Risk Rating  Assessment: The ESG 
+Risk Rating Assessment  is provided by Sustainalytics;  a 
+Morningstar company.
+Sustainalytics’  ESG Risk Ratings measure the degree to 
+which company’s economic value at risk is driven by en-
+vironment, social and governance (ESG) factors.
+Sustainalytics analyzes over 1,300 data points to assess a 
+company’s exposure to and management of ESG risks. In 
+other words, ESG Risk Ratings measures a company’s un-
+managed ESG Risks represented as a quantitative score. 
+Unmanaged  Risk is measured  on an open-ended  scale 
+starting at zero (no risk) with lower scores representing 
+less unmanaged  risk and, for 95% of cases, the unman-
+aged ESG Risk score is below 50.
+Based  on their  quantitative  scores,  companies  are 
+grouped into one of five Risk Categories (negligible, low, 
+medium, high, severe). These risk categories are absolute, 
+meaning that a ‘high risk’ assessment reflects a compar-
+able degree of unmanaged ESG risk across all subindus-
+tries covered.
+The ESG Risk Rating Assessment  is a visual representa-
+tion of Sustainalytics  ESG Risk Categories  on a 1 to 5 
+scale.  Companies  with Negligible  Risk = 5 Globes,  Low 
+Risk = 4, Medium Risk = 3 Globes, High Risk = 2 Globes, 
+Severe Risk = 1 Globe. For more information, please visit 
+sustainalytics.com/esg-ratings/
+Ratings should not be used as the sole basis in evaluat-
+ing a company or security. Ratings involve unknown risks 
+and uncertainties which may cause our expectations not 
+to occur or to differ significantly from what was expected 
+and should not be considered  an offer or solicitation  to 
+buy or sell a security.
+Risk Warning
+Please note that investments in securities are subject to 
+market and other risks and there is no assurance or guar-
+antee  that the intended  investment  objectives  will be 
+achieved. Past performance of a security may or may not 
+be sustained in future and is no indication of future per-
+formance. A security investment return and an investor’s 
+principal value will fluctuate so that, when redeemed, an 
+investor’s  shares may be worth more or less than their 
+original  cost. A security’s  current  investment  perform-
+ance may be lower or higher  than the investment  per-
+formance noted within the report. Morningstar’s  Uncer-
+tainty Rating serves as a useful data point with respect to 
+sensitivity  analysis  of the assumptions  used in our de-
+termining a fair value price.
+General Disclosure
+Unless otherwise  provided in a separate agreement,  re-
+cipients accessing this report may only use it in the coun-
+try in which the Morningstar distributor is based. Unless 
+stated otherwise,  the original distributor  of the report is 
+Morningstar  Research  Services  LLC, a U.S.A.  domiciled 
+financial institution.
+This Report is for informational  purposes, should not be 
+the sole piece of information  used in making an invest-
+ment decision, and has no regard to the specific invest-
+ment objectives, financial situation or particular needs of 
+any specific  recipient.  This publication  is intended  to 
+provide  information  to assist  investors  in making  their 
+own investment decisions, not to provide investment ad-
+vice to any specific investor. Therefore, investments dis-
+cussed herein may not be suitable  for all investors;  in-
+vestors must exercise  their own independent  judgment 
+as to the suitability of such investments and recommend-
+ations in the light of their own investment objectives, ex-
+perience, taxation status and financial position. Morning-
+star encourages Report recipients to read all relevant is-
+sue documents (e.g., prospectus) pertaining to the secur-
+ity concerned,  including  without limitation,  information 
+relevant to its investment objectives, risks, and costs be-
+fore making an investment  decision  and when deemed 
+necessary,  to seek the advice  of a financial,  legal,  tax, 
+and/or  accounting  professional.  The information,  data, 
+analyses and opinions presented herein are not warran-
+ted to be accurate,  correct,  complete  or timely.  Unless 
+otherwise  provided  in a separate  agreement,  neither 
+Morningstar,  Inc. or the Equity Research  Group repres-
+ents that the report contents meet all of the presentation 
+and/or disclosure standards applicable in the jurisdiction 
+the recipient is located.
+Except as otherwise required by law or provided for in a 
+separate  agreement,  the analyst,  Morningstar,  Inc. and 
+the Equity Research  Group and their officers,  directors 
+and employees shall not be responsible or liable for any 
+trading  decisions,  damages  or other  losses  resulting 
+from,  or related  to, the information,  data,  analyses  or 
+opinions within the report.
+The Report and its contents are not directed to, or inten-
+ded for distribution to or use by, any person or entity who 
+is a citizen or resident of or located in any locality, state, 
+country  or other  jurisdiction  where  such distribution, 
+publication,  availability  or use would be contrary to law 
+or regulation or which would subject Morningstar, Inc. or 
+its affiliates to any registration or licensing requirements 
+in such jurisdiction.
+Where this report is made available in a language other 
+than English and in the case of inconsistencies  between 
+the English and translated versions of the report, the Eng-
+lish version will control and supersede  any ambiguities 
+associated  with any part or section of a report that has 
+been issued in a foreign  language.  Neither  the analyst, 
+Morningstar,  Inc., or the Equity Research Group guaran-
+tees the accuracy of the translations.
+This report may be distributed in certain localities, coun-
+tries and/or jurisdictions  (“Territories”)  by independent 
+third parties or independent  intermediaries  and/or dis-
+tributors (“Distributors”). Such Distributors are not acting 
+as agents or representatives of the analyst, Morningstar, 
+Inc. or the Equity Research Group. In Territories where a 
+Distributor distributes our report, the Distributor is solely 
+responsible for complying with all applicable regulations, 
+laws, rules, circulars,  codes and guidelines  established 
+by local and/or regional regulatory bodies, including laws 
+in connection  with the distribution  third-party  research 
+reports.
+Conflicts of Interest
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 23 ===
+
+Morningstar Equity Company Report | Report as of 18 Nov 2025 04:38, UTC | Reporting Currency: CNY | Trading Currency: USD | Exchange: NEW YORK STOCK EXCHANGE, INC. Page 23 of 24
+?
+Research Methodology for Valuing Companies
+g No interests are held by the analyst with respect to the 
+security subject of this investment research report.
+g Morningstar,  Inc. may hold a long position  in the se-
+curity subject of this investment  research report that 
+exceeds  0.5% of the total issued share capital  of the 
+security. To determine if such is the case, please click 
+http://msi.morningstar.com  and http://mdi.morning-
+star.com
+g Analysts’  compensation  is derived from Morningstar, 
+Inc.’s  overall  earnings  and consists  of salary,  bonus 
+and in some cases restricted stock.
+g Neither Morningstar, Inc. or the Equity Research Group 
+receives  commissions  for providing  research  nor do 
+they charge companies to be rated.
+g Morningstar’s  overall earnings  are generated  in part 
+by the activities  of the Investment  Management  and 
+Research groups, and other affiliates, who provide ser-
+vices to product issuers.
+g Morningstar employees may not pursue business and 
+employment opportunities outside Morningstar within 
+the investment  industry (including  but not limited to, 
+working as a financial planner, an investment profes-
+sional  or investment  professional  representative,  a 
+broker-dealer  or broker-dealer  agent,  a financial 
+writer,  reporter,  or analyst)  without  the approval  of 
+Morningstar’s  Legal  and if applicable,  Compliance 
+teams.
+g Neither Morningstar, Inc. or the Equity Research Group 
+is a market maker or a liquidity provider of the security 
+noted within this report.
+g Neither Morningstar, Inc. or the Equity Research Group 
+has been a lead manager or co-lead manager over the 
+previous 12-months of any publicly disclosed offer of 
+financial instruments of the issuer.
+g Morningstar,  Inc.’s  investment  management  group 
+does have arrangements with financial institutions to 
+provide  portfolio  management/investment  advice 
+some of which an analyst  may issue investment  re-
+search reports on. However, analysts do not have au-
+thority  over Morningstar’s  investment  management 
+group’s business arrangements  nor allow employees 
+from the investment management group to participate 
+or influence the analysis or opinion prepared by them.
+g Morningstar, Inc. is a publicly traded company (Ticker 
+Symbol: MORN) and thus a financial institution the se-
+curity of which is the subject of this report may own 
+more than 5% of Morningstar, Inc.’s total outstanding 
+shares. Please access Morningstar,  Inc.’s proxy state-
+ment, “Security Ownership of Certain Beneficial Own-
+ers  and  Management”  section  https://
+shareholders.morningstar.com/investor-relations/fin-
+ancials/sec-filings/default.aspx
+g Morningstar, Inc. may provide the product issuer or its 
+related entities with services or products for a fee and 
+on an arms’ length basis including software products 
+and licenses,  research  and consulting  services,  data 
+services,  licenses  to republish  our ratings  and re-
+search in their promotional  material,  event sponsor-
+ship and website advertising.
+Further information on Morningstar,  Inc.’s conflict of in-
+terest  policies  is available  from http://global.morning-
+star.com/equitydisclosures .  Also, please  note analysts 
+are subject  to the CFA Institute’s  Code  of Ethics  and 
+Standards of Professional Conduct.
+Risk Warning Please note that investments in securities 
+are subject to market and other risks and there is no as-
+surance or guarantee  that the intended  investment  ob-
+jectives will be achieved. Past performance of a security 
+may or may not be sustained in future and is no indica-
+tion of future performance. A security’s investment return 
+and an investor's  principal  value will fluctuate  so that, 
+when redeemed, an investor's shares may be worth more 
+or less than their original cost. A security's current invest-
+ment performance  may be lower or higher than the in-
+vestment  performance  noted within  the report.  For in-
+vestments in foreign markets there are further risks, gen-
+erally  based  on exchange  rate changes  or changes  in 
+political and social conditions.
+For more information about Morningstar's 
+methodologies, please visit global.morningstar.com/
+equitydisclosures
+For a list of securities  which the Equity Research Group 
+currently covers and provides written analysis on please 
+contact your local Morningstar office. In addition, for his-
+torical analysis of securities covered, including their fair 
+value estimate, please contact your local office.
+For recipients in Australia: This Report has been issued 
+and distributed  in Australia  by Morningstar  Australasia 
+Pty Ltd (ABN: 95 090 665 544; ASFL: 240892). Morningstar 
+Australasia  Pty Ltd is the provider of the general advice 
+(‘the Service’) and takes responsibility for the production 
+of this report.  The Service  is provided  through  the re-
+search of investment products.
+To the extent the Report contains  general  advice it has 
+been prepared without reference to an investor’s object-
+ives, financial  situation  or needs. Investors  should con-
+sider the advice in light of these matters and, if applic-
+able, the relevant  Product  Disclosure  Statement  before 
+making any decision to invest. Refer to our Financial Ser-
+vices  Guide  (FSG)  for  more  information  at http://
+www.morningstar.com.au/fsg.pdf
+For recipients in New Zealand: This report has been is-
+sued and distributed by Morningstar Australasia Pty Ltd 
+and/or  Morningstar  Research  Ltd (together  ‘Morning-
+star’). This report has been prepared and is intended for 
+distribution in New Zealand to wholesale clients only and 
+has not been prepared for use by New Zealand retail cli-
+ents (as those terms are defined in the Financial Markets 
+Conduct  Act 2013).The  information,  views  and any re-
+commendations in this material are provided for general 
+information  purposes  only, and solely relate to the com
+panies  and investment  opportunities  specified  within. 
+Our reports  do not take into account  any particular  in-
+vestor’s financial situation, objectives or appetite for risk, 
+meaning no representation may be implied as to the suit-
+ability of any financial product mentioned for any partic-
+ular investor.  We recommend  seeking  financial  advice 
+before making any investment decision.
+For recipients  in Hong Kong: The Report is distributed 
+by Morningstar  Investment  Management  Asia Limited, 
+which is regulated by the Hong Kong Securities and Fu-
+tures Commission to provide services to professional in-
+vestors  only. Neither  Morningstar  Investment  Manage-
+ment Asia Limited, nor its representatives,  are acting or 
+will be deemed to be acting as an investment profession-
+al to any recipients  of this information  unless expressly 
+agreed to by Morningstar  Investment Management Asia 
+Limited.
+For recipients  in India: This investment  research  is is-
+sued by Morningstar  Investment  Adviser  India  Private 
+Limited.  Morningstar  Investment  Adviser  India  Private 
+Limited  is registered  with SEBI as a Portfolio  Manager 
+(registration  number INP000006156)  and as a Research 
+Entity (registration number INH000008686). Morningstar 
+Investment Adviser India Private Limited has not been the 
+subject  of any disciplinary  action  by SEBI or any other 
+legal/regulatory  body. Morningstar  Investment  Adviser 
+India  Private  Limited  is a wholly  owned  subsidiary  of 
+Morningstar  Investment  Management  LLC.  In India, 
+Morningstar Investment Adviser India Private Limited has 
+one associate,  Morningstar  India Private Limited, which 
+provides  data-related  services,  financial  data analysis, 
+and software development. The research analyst has not 
+served  as an officer,  director,  or employee  of the fund 
+company within the last 12 months, nor have they or their 
+associates  engaged  in market-making  activity  for the 
+fund company.The ESG-related  information,  methodolo-
+gies, tool, ratings, data and opinions contained or reflec-
+ted herein are not directed to or intended for use or dis-
+tribution to India-based clients or users and their distri-
+bution to Indian resident individuals or entities is not per-
+mitted,  and Morningstar/Sustainalytics  accepts  no re-
+sponsibility or liability whatsoever for the actions of third 
+parties in this respect.
+*The Conflicts of Interest disclosure above also applies to 
+relatives and associates of Manager Research Analysts in 
+India # The Conflicts of Interest disclosure above also ap-
+plies to associates  of Manager Research Analysts in In-
+dia. The terms and conditions on which Morningstar  In-
+vestment Adviser India Private Limited offers Investment 
+Research to clients, varies from client to client, and are 
+detailed in the respective client agreement.
+For recipients in Japan: The Report is distributed by Ib-
+botson Associates Japan, Inc., which is regulated by Fin-
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 24 ===
+
+Morningstar Equity Company Report | Report as of 18 Nov 2025 04:38, UTC | Reporting Currency: CNY | Trading Currency: USD | Exchange: NEW YORK STOCK EXCHANGE, INC. Page 24 of 24
+?
+Research Methodology for Valuing Companies
+ancial Services Agency, for informational  purposes only. 
+Neither Ibbotson Associates Japan, Inc., nor its represent-
+atives, are acting or will be deemed to be acting as an in-
+vestment professional  to any recipients  of this informa-
+tion.
+For recipients in Singapore: The Report is intended for 
+Institutional  Investor  audiences  and is distributed  by 
+Morningstar  Investment Adviser Singapore Pte. Limited, 
+which is licensed by the Monetary Authority of Singapore 
+to provide financial advisory services in Singapore. Morn-
+ingstar Investment Adviser Singapore Pte. Limited is the 
+entity responsible for the creation and distribution of the 
+research services described in this Report.
+This content is provided for informational  purposes only 
+and may be shared or redistributed  by Institutional  In-
+vestors to their clients or other permitted  persons, sub-
+ject to obtaining  the appropriate  licence from Morning-
+star. Redistribution  of this content is subject to any ap-
+plicable conditions or limitations, including those agreed 
+commercially or contractually with Morningstar. The per-
+son who shares  or redistributes  this  content  shall  be 
+solely responsible  for compliance with all relevant legal 
+and regulatory  obligations  in the jurisdictions  in which 
+the material is made available.
+Investors should consult a financial adviser regarding the 
+suitability of any investment product, taking into account 
+their specific investment objectives, financial situation or 
+particular needs, before making any investment decision.
+Morningstar, Inc., and its affiliates rely on certain exemp-
+tions (Financial  Advisers  Regulations,  Section  27(1)(e), 
+Section 32B and 32C) to provide its investment research 
+to recipients in Singapore.
+For recipients  in Korea:  The report  is distributed  by 
+Morningstar  Korea Ltd., which has filed to the Financial 
+Services  Committee,  for informational  purposes  only. 
+Neither Morningstar Korea Ltd. nor its representatives are 
+acting or will be deemed to be acting as an investment 
+advisor to any recipients of this information.
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.

@@ -206,6 +206,21 @@ module containing `截面变化与评估` and a newest-to-oldest three-column ta
 Precede the five lenses with one gated `当前投资判断` that separates fundamental,
 consensus, and priced-in changes.
 
+If the demand lens begins with Q1 `需求方`, that node answers only who demands the
+BOM. Its public output is two lists: `当前需求方` and `潜在未来需求方`. Keep
+business scenarios, tasks/workloads, host systems, component specifications,
+procurement channels, quantities, and as-of change assessment out of Q1. Put the
+current quantity baseline in Q2 and demand mechanisms in the later nodes. A Q1
+node using `render_mode: demand_party_list` does not render entity snapshots or
+material tables, although its underlying ledgers remain immutable and auditable.
+
+Q2 inherits every `当前需求方` from Q1. Render two blocks: `分类映射预测` for
+party-level quantities, samples, forecasts, or value proxies, and `其它预测` for
+market totals that cannot be allocated reliably. Cover each current Q1 demander;
+use an explicit gap row when no credible quantity exists. Keep mapping quality,
+period, source, and caveat visible. Never allocate an aggregate mechanically or
+sum incompatible units, overlapping samples, and supplier values.
+
 The standalone workflow is:
 
 `atomic claim -> reviewed logic-node and entity mapping -> as-of logic state + entity state -> baseline/change revision -> company earnings and valuation bridge -> gated investment snapshot`

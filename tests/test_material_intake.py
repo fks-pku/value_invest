@@ -100,6 +100,26 @@ class FakeKnowledgeBaseFeed:
 
 
 class MaterialIntakeTests(unittest.TestCase):
+    def test_pdf_header_is_a_valid_publication_date_source(self):
+        document = normalize_material_document(
+            {
+                "external_id": "meta-transcript",
+                "title": "Meta earnings transcript.pdf",
+                "published_at": "2024-02-01",
+                "publication_date_status": "verified",
+                "publication_date_source": "pdf_header",
+                "publication_date_locator": "第1页页眉",
+                "material_class": "official_company",
+            },
+            ingestion_channel="question_search",
+            provider="meta_ir",
+            discovered_at="2026-08-02",
+            default_bom_node_ids=("gpu_asic",),
+            default_question_numbers=(1,),
+        )
+
+        self.assertEqual(document["publication_date_source"], "pdf_header")
+
     def test_bom_relevance_requires_direct_or_combined_semantic_match(self):
         profile = {
             "direct_terms": ["GPU", "ASIC"],

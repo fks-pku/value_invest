@@ -414,6 +414,65 @@ h1 {
   font-size: 17px;
   line-height: 1.35;
 }
+.demand-party-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+.demand-party-group {
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #f7fafb;
+}
+.demand-party-group h5 {
+  margin: 0;
+  color: #244b66;
+  font-size: 14px;
+}
+.demand-party-group ul {
+  margin: 10px 0 0;
+  padding-left: 18px;
+  color: #354856;
+}
+.demand-party-group li + li { margin-top: 7px; }
+.demand-quantity-group { margin-top: 18px; }
+.demand-quantity-group h5 {
+  margin: 0 0 9px;
+  color: #244b66;
+  font-size: 14px;
+}
+.demand-quantity-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+.demand-quantity-table {
+  width: 100%;
+  min-width: 920px;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.demand-quantity-table th,
+.demand-quantity-table td {
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+  text-align: left;
+}
+.demand-quantity-table th {
+  color: #526a79;
+  background: #f4f7f8;
+  font-size: 11px;
+}
+.demand-quantity-table tbody tr:last-child td { border-bottom: 0; }
+.demand-quantity-table td span { color: var(--muted); }
+.demand-quantity-table td p {
+  margin: 5px 0 0;
+  color: var(--muted);
+}
+.demand-quantity-other-table { min-width: 760px; }
 .state-badge {
   flex: 0 0 auto;
   padding: 2px 7px;
@@ -900,6 +959,8 @@ h1 {
   .section-heading { align-items: flex-start; flex-direction: column; }
   .trend-line { grid-template-columns: 1fr; gap: 4px; }
   .logic-node-detail dl > div { grid-template-columns: 1fr; gap: 2px; }
+  .demand-party-grid { grid-template-columns: 1fr; }
+  .demand-quantity-table { min-width: 840px; }
   .entity-change,
   .entity-next > div { grid-template-columns: 1fr; gap: 2px; }
   .entity-table { min-width: 760px; }
@@ -917,17 +978,17 @@ h1 {
 }
 </style>
 </head>
-<body data-report-scope="standalone-bom" data-bom-node-id="gpu_asic" data-investment-engine-version="2.0">
+<body data-report-scope="standalone-bom" data-bom-node-id="gpu_asic" data-investment-engine-version="2.2">
 <header class="report-header">
   <div class="report-header-inner">
     <div class="report-label">VALUE INVEST · BOM RESEARCH</div>
     <h1>GPU / ASIC BOM 实时跟踪</h1>
     <p class="report-deck">以材料发布时间组织证据，把需求、供给、技术、估值与治理放在同一研究截面内。</p>
     <div class="report-meta" aria-label="报告元数据">
-      <div><span>研究截面</span><strong>2026-07-26</strong></div>
+      <div><span>研究截面</span><strong>2026-08-02</strong></div>
       <div><span>研究视角</span><strong>5</strong></div>
-      <div><span>映射材料</span><strong>5</strong></div>
-      <div><span>原子观点</span><strong>33</strong></div>
+      <div><span>映射材料</span><strong>13</strong></div>
+      <div><span>原子观点</span><strong>43</strong></div>
     </div>
   </div>
 </header>
@@ -941,22 +1002,22 @@ h1 {
   <div class="decision-heading">
     <div>
       <h2>当前投资判断</h2>
-      <p>GPU/ASIC 的需求、替代路线和交付可见性正在增强，但当前证据主要来自五份投行材料，尚未完成官方财务兑现、公司盈利桥、反向估值和量化风险控制。产业逻辑可继续跟踪，证券层面暂不支持统一做多。</p>
+      <p>需求侧已新增可去重的GPU需求地图和当前数量基线：公开数据支持2026年GPU型AI服务器约161万台的指示性系统量，以及NVIDIA单季752.46亿美元的数据中心实现值，但服务器配置、GPU颗数、库存和任务分配仍未闭环。GPU/ASIC路线与交付继续扩张，证券层面仍缺公司盈利桥、反向估值和量化风险控制。</p>
     </div>
     <span class="action-badge action-watch_only">观察</span>
   </div>
   <div class="delta-list">
     <article>
       <span>基本面变化</span>
-      <p>任务、客户预算、Helios/TPU 订单与系统交付线索偏正面；公司级收入、毛利和现金流闭环仍弱。</p>
+      <p>相较7月26日，需求判断从资本开支和订单线索推进到最终需求方分类、系统量和客户价值结构；新增数量是透明模型估算，不是已确认GPU颗数。</p>
     </article>
     <article>
       <span>市场共识变化</span>
-      <p>投行已普遍计入 AI 加速器高增长、ASIC 份额提升和平台竞争，主题本身不再是低共识。</p>
+      <p>AI服务器增长、GPU主导与ASIC份额上升已是公开共识；真正的预期差取决于单系统配置、GPU单位量和终端任务消化。</p>
     </article>
     <article>
       <span>定价变化</span>
-      <p>AMD 在两份报告的截面价格高于目标价；Alphabet、Meta 尚有目标价空间，但并非纯 GPU/ASIC 敞口。</p>
+      <p>本次没有更新证券价格与一致预期，原有估值结论保持不变；需求量框架本身不构成低估证据。</p>
     </article>
   </div>
   <div class="decision-audit">
@@ -966,11 +1027,11 @@ h1 {
     </div>
     <div>
       <h3>覆盖状态</h3>
-      <p>25 / 25 个逻辑节点已有截面；33 / 33 条原子观点完成映射。</p>
+      <p>27 / 27 个逻辑节点已有截面；43 / 43 条原子观点完成映射。</p>
     </div>
     <div>
       <h3>下一催化剂</h3>
-      <ul><li>Helios 2026 年第三季度末首批交付及第四季度量产进度</li><li>外部 TPU 采购合同、SPV 条款与实际交付</li><li>核心公司下一轮收入、毛利、capex 与现金流指引</li><li>同一截面反向估值和一致预期修正序列</li></ul>
+      <ul><li>同一统计机构披露2026年GPU服务器绝对出货和配置矩阵</li><li>主要CSP按内部业务、外部云和任务披露GPU利用量</li><li>Helios首批交付及外部TPU实际合同</li><li>核心公司下一轮收入、毛利、capex与现金流指引</li></ul>
     </div>
   </div>
   <div class="section-heading decision-table-heading">
@@ -984,35 +1045,35 @@ h1 {
       <tbody>
 <tr>
   <td><strong>AMD</strong><small>AMD</small></td>
-  <td>MI450/Helios GPU 与 ROCm 平台直接受益于替代需求。</td>
-  <td>2026 年第三季度末开始交付、第四季度与 2027 年爬坡；利润弹性需扣除客户认股权证和研发投入。</td>
-  <td>两份投行报告均为中性，报告股价显著高于 385/410 美元目标价。</td>
+  <td>MI450/Helios GPU与ROCm平台直接受益于替代需求。</td>
+  <td>2026年第三季度末开始交付、第四季度与2027年爬坡；利润弹性需扣除客户认股权证和研发投入。</td>
+  <td>两份投行报告均为中性，报告股价显著高于385/410美元目标价。</td>
   <td>产品与订单方向改善，但赔率和股东可得利润尚未通过。</td>
   <td><span class="action-inline action-watch_only">观察</span></td>
 </tr>
 
 <tr>
   <td><strong>Alphabet</strong><small>GOOGL</small></td>
-  <td>TPU 自用并可能通过外部所有权/SPV 模式扩大 merchant 市场。</td>
-  <td>高情景可提升 TPU 收入与毛利，但巨额资本开支可能使自由现金流转负。</td>
-  <td>巴克莱 425 美元目标价相对报告股价约有 34% 空间，关键假设仍是外部 TPU 商业化。</td>
-  <td>潜在预期差较 AMD 更有吸引力，但资本强度与合同真实性尚待验证。</td>
+  <td>TPU自用并可能通过外部所有权/SPV模式扩大merchant市场。</td>
+  <td>高情景可提升TPU收入与毛利，但巨额资本开支可能使自由现金流转负。</td>
+  <td>巴克莱425美元目标价相对报告股价约有34%空间，关键假设仍是外部TPU商业化。</td>
+  <td>潜在预期差较AMD更有吸引力，但资本强度与合同真实性尚待验证。</td>
   <td><span class="action-inline action-watch_only">观察</span></td>
 </tr>
 
 <tr>
   <td><strong>Meta</strong><small>META</small></td>
-  <td>AI 广告、商业 agent、自研 MTIA/Iris 与大规模算力采购的综合受益者。</td>
-  <td>广告回报可覆盖部分投入，但 2027-2028 年 capex、合作方融资和第三方云收入高度不确定。</td>
-  <td>德银 800 美元目标价相对报告股价约有 32% 空间。</td>
+  <td>AI广告、商业agent、自研MTIA/Iris与大规模算力采购的综合受益者。</td>
+  <td>广告回报可覆盖部分投入，但2027-2028年capex、合作方融资和第三方云收入高度不确定。</td>
+  <td>德银800美元目标价相对报告股价约有32%空间。</td>
   <td>应用变现提供缓冲，但它不是纯硬件敞口，需穿透资本承诺。</td>
   <td><span class="action-inline action-watch_only">观察</span></td>
 </tr>
 
 <tr>
   <td><strong>Intel</strong><small>INTC</small></td>
-  <td>AI 服务器 CPU、先进代工和 EMIB-T 替代封装的间接受益者。</td>
-  <td>DCAI 收入增长和 capex 上调提供邻近验证，但外部先进代工收入占比仍低。</td>
+  <td>AI服务器CPU、先进代工和EMIB-T替代封装的间接受益者。</td>
+  <td>DCAI收入增长和capex上调提供邻近验证，但外部先进代工收入占比仍低。</td>
   <td>当前材料没有提供同截面可复现估值。</td>
   <td>供给侧可选项存在，尚无足够外部客户规模与估值证据。</td>
   <td><span class="action-inline action-watch_only">观察</span></td>
@@ -1030,13 +1091,13 @@ h1 {
       <p>RESEARCH LENS</p>
       <h2>需求侧</h2>
     </div>
-    <span class="lens-count">5 份材料 · 8 条观点</span>
+    <span class="lens-count">13 份材料 · 18 条观点</span>
     <span class="lens-chevron" aria-hidden="true"></span>
   </summary>
   <div class="lens-body">
     <section class="logic-note" aria-labelledby="logic-demand">
       <h3 id="logic-demand">简单逻辑链</h3>
-      <p>需求判断沿着工作负载增长、单位算力强度、客户预算、订单可见性和收入兑现逐级验证。只有真实任务与算力强度同时增长，客户愿意持续投入，订单能够按期交付并进入收入与利润，才构成可投资的需求上行。</p>
+      <p>Q1 只定义谁在需求 GPU，并将主体分为当前需求方与潜在未来需求方；不在 Q1 展开业务、任务、承载系统、GPU 规格、采购通道、数量或截面变化。Q2 再按需求方清单建立当前需求量基线，后续节点分别验证工作负载、单位算力、预算、订单和财务兑现。</p>
     </section>
 
 
@@ -1049,6 +1110,116 @@ h1 {
         <p>材料先改变节点，再改变投资判断</p>
       </div>
       <div class="logic-node-list">
+<article class="logic-node demand-party-node" data-logic-node-id="demand.demand_universe" data-render-mode="demand-party-list">
+  <div class="logic-node-heading">
+    <div>
+      <span>demand.demand_universe</span>
+      <h4>Q1 需求方</h4>
+    </div>
+  </div>
+  <div class="demand-party-grid">
+
+    <section class="demand-party-group" data-demand-party-group="current">
+      <h5>当前需求方</h5>
+      <ul><li>超大规模云服务商</li><li>AI 模型公司</li><li>GPU 云与算力服务商</li><li>大型互联网平台</li><li>大型企业与工业客户</li><li>科研机构</li><li>主权及公共算力建设主体</li></ul>
+    </section>
+    <section class="demand-party-group" data-demand-party-group="potential_future">
+      <h5>潜在未来需求方</h5>
+      <ul><li>尚未规模化部署 AI 的传统企业</li><li>从租用算力转向自建集群的 AI 应用公司</li><li>电信与边缘云运营商</li><li>机器人及自动驾驶平台运营方</li><li>新进入的区域公共算力主体</li></ul>
+    </section>
+  </div>
+</article>
+
+
+<article class="logic-node demand-quantity-node" data-logic-node-id="demand.current_quantity" data-render-mode="demand-quantity-matrix">
+  <div class="logic-node-heading">
+    <div>
+      <span>demand.current_quantity</span>
+      <h4>Q2 当前需求量基线</h4>
+    </div>
+  </div>
+  <section class="demand-quantity-group" data-demand-forecast-group="classified">
+    <h5>分类映射预测</h5>
+    <div class="demand-quantity-table-wrap" role="region" aria-label="分类映射预测" tabindex="0">
+      <table class="demand-quantity-table">
+        <thead><tr><th>Q1 需求方</th><th>当前数量 / 预测</th><th>口径与期间</th><th>映射质量</th><th>来源与局限</th></tr></thead>
+        <tbody>
+        <tr>
+          <td><strong>超大规模云服务商</strong></td>
+          <td>&gt;70万台（GPU+ASIC合计）</td>
+          <td>北美CSP高端AI服务器采购<br><span>2025E</span></td>
+          <td>代理映射</td>
+          <td>2025-06-10 · <a href="https://www.digitimes.com/reports/item.php?id=20250604RS400" target="_blank" rel="noopener">DIGITIMES Research：Global annual AI server shipments, 2024-2025</a><p>由高端AI服务器超过100万台及北美CSP占70%得到下限；不是GPU专属数量，也未覆盖全部Hyperscaler。</p></td>
+        </tr>
+        <tr>
+          <td><strong>AI 模型公司</strong></td>
+          <td>&gt;100万颗H100等效</td>
+          <td>xAI H100 GPU等效存量<br><span>2025年末</span></td>
+          <td>样本映射</td>
+          <td>2026-01-06 · <a href="https://x.ai/news/series-e?stream=top" target="_blank" rel="noopener">xAI：Series E与2025年末算力规模</a><p>单一模型公司样本；等效算力不等于同型号物理GPU，也不能外推全部模型公司。</p></td>
+        </tr>
+        <tr>
+          <td><strong>GPU 云与算力服务商</strong></td>
+          <td>&gt;850MW活跃；约3.1GW签约</td>
+          <td>CoreWeave活跃与签约功率<br><span>2025年末</span></td>
+          <td>样本映射</td>
+          <td>2026-03-02 · <a href="https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm" target="_blank" rel="noopener">CoreWeave 2025 Form 10-K</a><p>单一GPU云样本；功率包含非GPU设施，签约功率不是已上线需求。</p></td>
+        </tr>
+        <tr>
+          <td><strong>大型互联网平台</strong></td>
+          <td>约60万颗H100等效，其中约35万颗H100</td>
+          <td>Meta H100等效容量计划<br><span>2024年末预测</span></td>
+          <td>样本映射</td>
+          <td>2024-02-01 · <a href="https://s21.q4cdn.com/399680738/files/doc_financials/2023/q4/META-Q4-2023-Earnings-Call-Transcript.pdf" target="_blank" rel="noopener">Meta Q4 2023 Earnings Call Transcript</a><p>公司在2024年初给出的年末计划，当前材料没有独立确认全部转化为实际存量。</p></td>
+        </tr>
+        <tr>
+          <td><strong>大型企业与工业客户</strong></td>
+          <td>未找到可验证的独立数量</td>
+          <td>企业/工业GPU独立需求量<br><span>截至2026-08-02</span></td>
+          <td>数据缺口</td>
+          <td>2026-05-20 · <a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/nvda-20260426.htm" target="_blank" rel="noopener">NVIDIA Form 10-Q（截至2026年4月26日季度）</a><p>NVIDIA仅披露AI云、工业、企业和主权合并收入373.77亿美元，无法拆出本类GPU数量。</p></td>
+        </tr>
+        <tr>
+          <td><strong>科研机构</strong></td>
+          <td>约2.4万颗GH200</td>
+          <td>JUPITER GH200配置<br><span>2025-09已启用</span></td>
+          <td>样本映射</td>
+          <td>2025-09-05 · <a href="https://www.eurohpc-ju.europa.eu/jupiter-launching-europes-exascale-era-2025-09-05_en" target="_blank" rel="noopener">EuroHPC：JUPITER启动欧洲百亿亿次计算时代</a><p>单一欧洲科研超级计算机样本，不代表全球科研机构总需求。</p></td>
+        </tr>
+        <tr>
+          <td><strong>主权及公共算力建设主体</strong></td>
+          <td>首阶段1.8万颗GB300；五年规划数十万颗</td>
+          <td>HUMAIN主权AI工厂部署计划<br><span>首阶段及未来五年</span></td>
+          <td>样本映射</td>
+          <td>2025-05-13 · <a href="https://nvidianews.nvidia.com/news/humain-and-nvidia-announce-strategic-partnership-to-build-ai-factories-of-the-future-in-saudi-arabia" target="_blank" rel="noopener">HUMAIN与NVIDIA沙特AI工厂合作</a><p>属于已宣布部署计划和远期规划，不是当前已安装存量。</p></td>
+        </tr></tbody>
+      </table>
+    </div>
+  </section>
+  <section class="demand-quantity-group" data-demand-forecast-group="other">
+    <h5>其它预测</h5>
+    <div class="demand-quantity-table-wrap" role="region" aria-label="其它预测" tabindex="0">
+      <table class="demand-quantity-table demand-quantity-other-table">
+        <thead><tr><th>预测对象</th><th>当前数量 / 预测</th><th>期间</th><th>来源与未映射原因</th></tr></thead>
+        <tbody>
+        <tr>
+          <td><strong>全球AI服务器出货</strong></td>
+          <td>181万台；其中高端HBM机型&gt;100万台</td>
+          <td>2025E</td>
+          <td>2025-06-10 · <a href="https://www.digitimes.com/reports/item.php?id=20250604RS400" target="_blank" rel="noopener">DIGITIMES Research：Global annual AI server shipments, 2024-2025</a><p>同时包含GPU与ASIC，且无法无重叠地分配到Q1全部需求方。</p></td>
+        </tr>
+        <tr>
+          <td><strong>全球GPU型AI服务器</strong></td>
+          <td>约161万台（跨来源机械估算）</td>
+          <td>2026E</td>
+          <td>2025-06-10 · <a href="https://www.digitimes.com/reports/item.php?id=20250604RS400" target="_blank" rel="noopener">DIGITIMES Research：Global annual AI server shipments, 2024-2025</a><br>2026-01-20 · <a href="https://www.trendforce.com/presscenter/news/20260120-12887.html" target="_blank" rel="noopener">TrendForce：2026年全球AI服务器出货与GPU/ASIC结构</a><p>由181万×1.28×69.7%合成，不是机构直接发布值；系统数不能直接换算GPU颗数。</p></td>
+        </tr></tbody>
+      </table>
+    </div>
+  </section>
+</article>
+
+
 <article class="logic-node" data-logic-node-id="demand.workload_growth">
   <div class="logic-node-heading">
     <div>
@@ -2440,10 +2611,10 @@ h1 {
           <h3 id="conclusion-demand">最新结论与趋势</h3>
         </div>
       </div>
-      <p class="conclusion-text">仅看 7 月 26 日 IMA 批次，GPU/ASIC 需求仍处于扩张阶段，而且已经从单一 NVIDIA GPU 扩展为三条并行路径：大客户继续上调算力预算，AMD 以 MI450/Helios 争夺数 GW 部署，Google TPU 开始从内部自用走向外部 merchant ASIC。最强的现实锚点是 Meta 2026 年 1,250 亿至 1,450 亿美元资本开支指引、MI450 计划在 2026 年第三季度末交付，以及服务器收入和订单仍受供给限制；最激进的 1.4 万亿美元 TAM、11.5GW 外部 TPU 和 3,000 亿美元 backlog 则主要来自公司或投行模型，不能当成已兑现事实。当前判断为：需求方向强且结构性扩散，但远期规模预测明显跑在财务兑现之前。</p>
+      <p class="conclusion-text">Q2已按Q1需求方拆成分类映射预测与其它预测。分类映射中，北美CSP高端AI服务器、xAI GPU等效存量、CoreWeave活跃功率、Meta H100等效计划、JUPITER GH200配置和HUMAIN部署计划提供了不同强度的类别样本；大型企业与工业客户仍只有NVIDIA混合收入桶，无法形成独立数量。其它预测保留全球AI服务器181万台、2026年增速超过28%、GPU型系统占69.7%及约161万台机械估算。所有分项单位、期间和覆盖范围不一致，不能相加为GPU总需求。</p>
       <div class="trend-line">
         <strong>趋势变化</strong>
-        <p>本批次新增的核心变化是 ASIC 外部商业化和 AMD 机架级交付时间表变得更具体，需求判断由“AI capex 高”推进到“客户、路线和交付窗口可识别”。</p>
+        <p>需求量研究从单一市场总量升级为Q1分类映射加未映射总量双层结构；信息覆盖更完整，但多数类别仍是样本或代理而非全类别总量，数量节点维持弱状态。</p>
       </div>
     </section>
   </div>

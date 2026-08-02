@@ -4,6 +4,9 @@ from pathlib import Path
 from value_invest_research.adapters.outbound.standalone_bom_html_renderer import (
     StandaloneBomHtmlRenderer,
 )
+from value_invest_research.adapters.outbound.standalone_bom_markdown_renderer import (
+    StandaloneBomMarkdownRenderer,
+)
 from value_invest_research.domain.standalone_bom_investment_engine import (
     build_standalone_investment_view,
     normalize_claim_mapping,
@@ -71,6 +74,171 @@ class StandaloneBomInvestmentEngineTests(unittest.TestCase):
         invalid["lenses"][0]["logic_nodes"][0]["logic_node_id"] = "supply.wrong"
         with self.assertRaisesRegex(ValueError, "namespaced"):
             validate_standalone_bom_playbook(invalid)
+
+    def test_demand_party_list_requires_two_ordered_non_empty_groups(self):
+        profile = _profile()
+        demand_node = profile["lenses"][0]["logic_nodes"][0]
+        demand_node["render_mode"] = "demand_party_list"
+        demand_node["demand_parties"] = {
+            "current": ["当前主体"],
+            "potential_future": ["未来主体"],
+        }
+        validate_standalone_bom_playbook(profile)
+
+        demand_node["demand_parties"] = {
+            "potential_future": ["未来主体"],
+            "current": ["当前主体"],
+        }
+        with self.assertRaisesRegex(ValueError, "current then potential_future"):
+            validate_standalone_bom_playbook(profile)
+
+    def test_demand_party_list_renders_only_current_and_future_demanders(self):
+        profile = _profile()
+        demand_node = profile["lenses"][0]["logic_nodes"][0]
+        demand_node.update(
+            {
+                "title": "Q1 需求方",
+                "render_mode": "demand_party_list",
+                "demand_parties": {
+                    "current": ["超大规模云服务商", "AI 模型公司"],
+                    "potential_future": ["传统企业", "电信与边缘云运营商"],
+                },
+            }
+        )
+        view = build_standalone_investment_view(
+            project={
+                "title": "GPU / ASIC",
+                "report_scope": "standalone-bom",
+                "bom_node_id": "gpu_asic",
+            },
+            profile=profile,
+            claims=[],
+            conclusions=[],
+            claim_mappings=[],
+            logic_states=[],
+            entity_states=[],
+            thesis_revisions=[],
+            investment_snapshots=[],
+            as_of_date="2026-08-01",
+        )
+
+        html = StandaloneBomHtmlRenderer(Path("/tmp")).render(view)
+        party_html = html.split('data-render-mode="demand-party-list"', 1)[1].split(
+            "</article>", 1
+        )[0]
+        self.assertIn('data-demand-party-group="current"', party_html)
+        self.assertIn('data-demand-party-group="potential_future"', party_html)
+        self.assertIn("超大规模云服务商", party_html)
+        self.assertIn("传统企业", party_html)
+        self.assertNotIn("state-badge", party_html)
+        self.assertNotIn("entity-module", party_html)
+        self.assertNotIn("截面变化与评估", party_html)
+
+        markdown = StandaloneBomMarkdownRenderer(Path("/tmp")).render(view)
+        party_markdown = markdown.split("#### Q1 需求方", 1)[1].split("####", 1)[0]
+        self.assertIn("**当前需求方**", party_markdown)
+        self.assertIn("**潜在未来需求方**", party_markdown)
+        self.assertNotIn("**当前结论：**", party_markdown)
+        self.assertNotIn("**截面变化与评估：**", party_markdown)
+
+    def test_demand_quantity_matrix_inherits_q1_and_separates_other_forecasts(self):
+        profile = _profile()
+        demand_node = profile["lenses"][0]["logic_nodes"][0]
+        demand_node.update(
+            {
+                "title": "Q1 需求方",
+                "render_mode": "demand_party_list",
+                "demand_parties": {
+                    "current": ["云服务商", "模型公司"],
+                    "potential_future": ["传统企业"],
+                },
+            }
+        )
+        profile["lenses"][0]["logic_nodes"].append(
+            {
+                "logic_node_id": "demand.quantity",
+                "title": "Q2 当前需求量基线",
+                "question": "各类需求方当前需求量是多少？",
+                "support_rule": "逐类搜索。",
+                "refute_rule": "不机械分摊。",
+                "downstream_node_ids": [],
+                "render_mode": "demand_quantity_matrix",
+                "classification_node_id": "demand.node",
+            }
+        )
+        state = normalize_logic_state(
+            {
+                "logic_node_id": "demand.quantity",
+                "conclusion": "分类预测与其它预测已分开。",
+                "demand_quantity_rows": [
+                    {
+                        "forecast_group": "classified",
+                        "demand_party": "云服务商",
+                        "metric": "GPU数量",
+                        "quantity": "数据缺口",
+                        "target_period": "当前",
+                        "mapping_quality": "gap",
+                        "caveat": "未披露。",
+                    },
+                    {
+                        "forecast_group": "classified",
+                        "demand_party": "模型公司",
+                        "metric": "GPU数量",
+                        "quantity": "数据缺口",
+                        "target_period": "当前",
+                        "mapping_quality": "gap",
+                        "caveat": "未披露。",
+                    },
+                    {
+                        "forecast_group": "other",
+                        "metric": "全球AI服务器",
+                        "quantity": "100万台",
+                        "target_period": "2026E",
+                        "mapping_quality": "unmapped",
+                        "caveat": "无法分配到需求方。",
+                    },
+                ],
+            },
+            profile=profile,
+            claims_by_id={},
+            as_of_date="2026-08-01",
+        )
+        view = build_standalone_investment_view(
+            project={
+                "title": "GPU / ASIC",
+                "report_scope": "standalone-bom",
+                "bom_node_id": "gpu_asic",
+            },
+            profile=profile,
+            claims=[],
+            conclusions=[],
+            claim_mappings=[],
+            logic_states=[state],
+            entity_states=[],
+            thesis_revisions=[],
+            investment_snapshots=[],
+            as_of_date="2026-08-01",
+        )
+
+        html = StandaloneBomHtmlRenderer(Path("/tmp")).render(view)
+        quantity_html = html.split(
+            'data-render-mode="demand-quantity-matrix"', 1
+        )[1].split("</article>", 1)[0]
+        self.assertLess(quantity_html.find("分类映射预测"), quantity_html.find("其它预测"))
+        self.assertIn("云服务商", quantity_html)
+        self.assertIn("全球AI服务器", quantity_html)
+        self.assertNotIn("entity-module", quantity_html)
+
+        markdown = StandaloneBomMarkdownRenderer(Path("/tmp")).render(view)
+        quantity_markdown = markdown.split("#### Q2 当前需求量基线", 1)[1].split(
+            "\n#### ", 1
+        )[0]
+        self.assertLess(
+            quantity_markdown.find("分类映射预测"),
+            quantity_markdown.find("其它预测"),
+        )
+        self.assertIn("| Q1 需求方 | 当前数量 / 预测", quantity_markdown)
+        self.assertIn("| 预测对象 | 当前数量 / 预测", quantity_markdown)
 
     def test_mapping_is_separate_from_immutable_claim(self):
         claim = _claim()

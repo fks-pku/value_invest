@@ -1,0 +1,836 @@
+
+
+=== PAGE 1 ===
+
+
+
+=== PAGE 2 ===
+
+2025 SKYNET HACK3D REPORT TABLE OF CONTENTS
+01
+Table of Contents
+
+=== PAGE 3 ===
+
+ ↗ These figures represent an approximate 37.0 6% increase in value stolen compared to 2024. 
+However, the number of security incidents year-over-year decreased by 137.
+ ↗ The average amount lost per hack in 2025 was $5,321,935 (a 66.64% increase from the previous 
+year), and the median amount stolen was $103,996  (a 35.75% year-over-year decrease). 
+ ↗ February was the most costly month of the year, with $1,537 ,106,876 lost across 58 incidents, the 
+majority of which was due to the Bybit incident. 
+ ↗ Q1 of 2025 saw the most losses, with $1,671,644,949 stolen in 200 hacks, scams, and exploits. The 
+subsequent quarter saw an approximate 52% decline in the amount stolen. 
+ ↗ Supply Chain was the most costly attack vector in 2025, with $1,450,914,902 lost across 2 
+incidents. This represents almost half of the total amount stolen during the year. 
+ ↗ Phishing compromises followed, with $722,885,398  stolen across 248 incidents. Phishing was the 
+attack vector with the highest number of incidents in 2025, slightly above Code Vulnerabilities at 
+240 incidents.
+ ↗ Ethereum experienced the highest number of security incidents, with a total of 310 hacks, scams, 
+and exploits leading to $1,697 ,833,313 in losses. This resulted in an average of $5,785,179 stolen 
+per incident. 
+ ↗ Hackers also heavily targeted Bitcoin with $528,221,350 stolen across 22 incidents. 
+ ↗ Security breaches affecting multiple chains accounted for $460,769,793 in losses across 29 
+incidents. 
+The 2025 Skynet Hack3D Report covers the stories and trends that defined the direction of Web3, the 
+current state of the industry, and where the next year might take us. 
+Executive Summary
+2025 SKYNET HACK3D REPORT EXECUTIVE SUMMARY
+02
+ ↗ A total of $3,352,850,816 was lost across 630 on-chain security incidents in 2025. 
+
+=== PAGE 4 ===
+
+2025 SKYNET HACK3D REPORT STATISTICS AND GRAPHS:
+2025 YEAR IN REVIEW
+Statistics and Graphs: 
+2025 Y ear in Review
+1.7B
+802M
+370M
+49.7M
+223.2M
+97 .2M
+509M
+153.5M 176.2M 179.4M
+371.8M303.8M
+126.5M
+1.5B
+98.9M
+35.7M
+Amount (Chain Specific)
+Total #Incidents
+0
+Q1 Q2 Q3 Q4Jan Apr Jul OctFeb May Aug NovMar Jun Sep Dec
+250
+200
+150
+$0
+$800M
+$600M
+$400M
+$200M
+100
+50
+Amount Lost x Incidents
+Incidents x Losses By Chain Single Chain lncidents
+Total $Lost
+200
+82
+58
+60
+146
+51 50 45
+142
+34
+54 54
+142
+50 58
+34
+0 $0
+100
+200
+300
+400
+500 $1B
+$600M
+$900M
+$300M
+03
+Arbitrum Base LineaAvalanche EthereumBSC BTC Optimism Polygon Tron zkSyncStacksSolana
+19 2 50
+150
+15
+310
+2 2 4
+15 1
+1 294.5M
+172.7K 13.0M 51.6M
+481.0M
+1.7B
+701.5K 1.2M 8.9M
+153.5M
+16.2M 3.2M 6.3M
+
+=== PAGE 5 ===
+
+2025 SKYNET HACK3D REPORT STATISTICS AND GRAPHS:
+2025 YEAR IN REVIEW
+Statistics and Graphs:
+2025 Y ear in Review
+$0
+$200M
+$600M
+$400M
+$800M
+$1B
+Phishing 
+Victim
+(bc1qxjp)
+CetusBybit Phishing 
+Victim 
+(bc1qhd4)
+PhemexBalancer Nobitex BTC Turk Phishing 
+Victim 
+(0xcb807)
+0xInfini
+Incident Count Amount LostIncidents X Losses -By Incident Type
+Top 10 Most Costly Incidents:
+0 $0
+100
+200
+300 $800M
+$400M
+$600M
+$200M
+Phishing Wallet
+Compromise
+Code 
+Vulnerability
+Price
+Manipulation
+Exit Scam Insider MEV Front End
+$1,447 ,063,421
+$330,700,000
+$225.680,719
+$113.186.248  $91,127 ,110 $89,142,954 $71.714.297 $53,914.665$49,982,750.02$49,514,632
+723M
+557M 555M
+39M 18M 7M 2M 1M
+18
+55
+9
+240248
+3
+52
+3
+04
+
+
+=== PAGE 6 ===
+
+Losses Incident 
+Incidents >$100m Loss (Excluding Phishing)
+$0
+$1,000,000,000
+$2,000,000,000
+$4,000,000,000
+$3,000,000,000
+2022 2023 2024 2025
+2025 SKYNET HACK3D REPORT STATISTICS AND GRAPHS:
+2025 YEAR IN REVIEW
+Statistics and Graphs:
+2025 Y ear in Review
+630
+553
+05
+
+=== PAGE 7 ===
+
+BY TYBEBY MONTH
+2025 SKYNET HACK3D REPORT STATISTICS AND GRAPHS:
+Q1 2025
+Statistics and Graphs:
+Q1 2025
+Incident Count SAmount
+0 0$0 $0
+25 25$50M
+$50M
+50
+75
+50
+75
+$100M
+$100M
+$150M
+100 100$200M $200M
+82
+58 60
+9 7
+80 81
+21
+2
+98.9M
+$1.5B
+35.7M
+Price
+Manipulation
+Exit Scam Phishing Code
+Vulnerability
+Wallet
+Compromise
+Supply ChainJan Feb Mar
+06
+$1.3M $1.3M $16M
+$55M
+$148M
+$1.5B
+BY CHAIN
+8
+14
+53
+1 1 1
+98
+2 6
+$4.5M
+$1.0M
+$6.4M
+$52.5K
+$1.5B
+$1.1M $2.4M $3.2M $716.0K
+0
+50
+100
+150
+$0
+$10M
+$20M
+$40M
+Arbitrum Base EthereumBSC BTC Polygon Tron zkSyncSolana
+
+
+=== PAGE 8 ===
+
+Incident Count SAmount
+BY MONTH
+Statistics and Graphs:
+Q2 2025
+07
+2025 SKYNET HACK3D REPORT STATISTICS AND GRAPHS:
+Q2 2025
+Apr May Jun
+BY CHAIN
+4
+13
+37
+9
+68
+1 1 1 1 1
+$3.6M $2.2M $5.9M
+$373.6M
+$49.5M
+$282.8K $12.5K
+$5.9M
+$16.2M
+$5.6M
+0
+30
+60
+90
+$0
+$100M
+$200M
+$300M
+Arbitrum Base Ethereum LineaBSC BTC Polygon Stacks zkSyncSolana
+0 $0
+25 $100M
+50
+75
+$200M
+$300M
+100 $400M
+51 50
+45
+$371.8M
+$303.8M
+$126.5M
+BY TYBE
+0 $0
+30
+$100M
+40
+60
+$200M
+80 $300M
+$395M
+$112M
+$272M
+$17M $358K $3M $2M $20K
+52
+10
+61
+13
+4 4 1 1
+Phishing
+Wallet
+Compromise
+Code
+Vulnerability
+Price
+Manipulation
+Exit Scam
+Insider MEV
+Front End
+
+=== PAGE 9 ===
+
+Incident Count SAmount
+Statistics and Graphs:
+Q3 2025
+08
+2025 SKYNET HACK3D REPORT STATISTICS AND GRAPHS:
+Q3 2025
+BY TYBE
+0 $0
+25
+$50M
+50
+75
+$100M
+100 $200M
+57
+17
+50
+10
+5
+2 1
+Price
+Manipulation
+Exit ScamPhishing Code
+Vulnerability
+Wallet
+Compromise
+Isider MEV
+$147M
+$253M
+$79M
+$15M $16M
+$391K $300K
+BY MONTH
+0 $0
+25 $50M
+50
+75
+$100M
+$150M
+100 $200M
+34
+5454
+$153.5M
+$176.2M $179.4M
+Jul Aug Sep
+BY CHAIN
+4 1
+5
+32
+1 43
+75
+2
+$85.7M
+$159.9K
+$5.2M
+$33.3M
+$98.6M
+$39.1M
+$1.2M
+$7 .8M
+$92.4M
+0
+20
+40
+60
+$0
+$30M
+$60M
+$90M
+Arbitrum Avalanche OptimismBase EthereumBSC BTC Polygon Solana
+
+
+=== PAGE 10 ===
+
+Statistics and Graphs:
+Q4 2025
+BY TYBE
+Incident Count SAmount
+BY MONTH
+0 $0
+25 $50M
+50
+75
+$100M
+$150M
+100 $200M
+50
+34
+58
+$49.7M
+$223.2M
+$97 .2M
+Oct Nov Dec
+0 $0
+30
+$50M
+40
+60
+$100M
+80 $200M
+$165M
+$45M
+$149M
+$5M $1M $3M $108K $1M
+58
+7
+46
+20
+2 3 1 2
+Phishing
+Wallet
+Compromise
+Code
+Vulnerability
+Price
+Manipulation
+Exit Scam
+Insider MEV
+Front End
+BY CHAIN
+3 1
+18
+28
+4
+2
+69
+1$625.7K $12.8K
+$4.6M
+$6.0M
+$8.7M
+$116M
+$418.7K
+$52.8M
+0
+20
+40
+60
+$0
+$30M
+$60M
+$90M
+Arbitrum Avalanche Base EthereumBSC BTC Solana
+Linea
+09
+2025 SKYNET HACK3D REPORT STATISTICS AND GRAPHS:
+Q4 2025
+本报告来源于三个皮匠报告站（www.sgpjbg.com）,由用户Id:865822下载,文档Id:999701,下载日期:2025-12-25
+
+=== PAGE 11 ===
+
+Overview
+The Web3 ecosystem in 2025 entered a period of renewed activity, driven by a combination of favorable 
+macroeconomic conditions, improving market sentiment, and a markedly more crypto-friendly political 
+climate in the United States. The new U.S. Administration signaled early that digital assets would be 
+treated as a strategic innovation sector rather than a regulatory outlier, restoring confidence among 
+builders and investors. Additionally, decentralized applications broadened their reach into payments, 
+gaming, tokenized assets, and identity, demonstrating crypto’s utility in everyday activities. This 
+resurgence in growth, however, was matched by an equally active threat landscape as adversaries 
+refined both technical and social engineering tactics. 
+Year-over-year comparisons between 2025 and 2024 illustrate the shifting nature of risk. Total losses 
+in 2025 amounted to $3,352,850,816, versus $2,446,285,251  in 2024, representing an approximate 
+37.0 6% increase. However, when isolating the impact of the Bybit incident, which accounted for a 
+disproportionately large share of annual losses at $1,447 ,063,421, the industry would have actually 
+recorded a net decrease in funds stolen compared to 2025. This contrast highlights a key trend: 
+while the frequency of smaller attacks remains persistent, adversaries are increasingly concentrating 
+resources into fewer, but significantly larger, high-impact operations. The Bybit exploit signals that well-
+capitalized, well-coordinated threat actors are becoming more active across the ecosystem. 
+Additionally, when isolating the Bybit impact (which we include in the Supply Chain category of attack 
+vectors), phishing becomes the top attack vector with $722,885,398 stolen across 248 incidents. 
+Code vulnerabilities closely follows, with $554,646,929 stolen in 240 incidents. In the case of code 
+vulnerabilities, however, more than 47% of funds was either frozen or returned, such as in the Cetus 
+incident, which we detail later in this report. 
+ Count Amount Lost
+0 $0
+100
+200
+300 $800M
+$400M
+$600M
+$200M
+Phishing Wallet
+Compromise
+Code 
+Vulnerability
+Price
+Manipulation
+Exit Scam Insider MEV Front End Supply
+Chain
+248
+55
+240
+52
+18 9 3 3
+2
+$772.9M
+$557 ,4M $554,6M
+$38,7M $18,0M $6,8M $2,3M $0.9M
+$1,5B
+Incident Count by Category
+10
+2025 SKYNET HACK3D REPORT OVERVIEW
+
+=== PAGE 12 ===
+
+Artificial intelligence became one of the defining forces in Web3 security this year, which is used by 
+both attackers and their defenders. On the defensive side, developers increasingly used AI-assisted 
+tooling to generate tests, identify contract inefficiencies, and improve audit workflows. On the offensive 
+side, however, attackers also adopted AI at scale. Notable trends included the following: 
+ ↗ AI-generated phishing websites and wallet pop-ups that were nearly indistinguishable from 
+authentic interfaces. 
+ ↗ Automated multi-lingual phishing campaigns, which we discuss in detail in a later section. 
+ ↗ AI-powered reconnaissance, where threat actors scrape on-chain activity and chatroom 
+conversations to identify high-value targets. 
+ ↗ More realistic impersonation attacks, such as fake founder accounts or deepfakes. 
+ ↗ Rapid exploit replication, with attackers using AI tools to produce copycat attacks within short time 
+periods. 
+In 2025, regulatory clarity also continued to improve worldwide. In the U.S., the GENIUS Act set early 
+frameworks for digital asset transparency and stablecoin oversight, while signaling a more cooperative 
+stance toward innovation. This shift, combined with clearer tax guidance and custody rules, provided 
+developers and institutions with long-awaited predictability. 
+These developments, among others, moved the Web3 ecosystem toward more structured and 
+harmonized governance, which in turn influenced how projects approached design, compliance, and 
+operational security. 
+As 2026 approaches, several trends appear likely to define the next phase of Web3 security. Attackers 
+are expected to deepen their use of AI-driven impersonation and large-scale phishing operations. 
+Supply chain attacks may increase in sophistication as adversaries target infrastructure providers and 
+CI/CD pipelines. At the same time, maturing regulatory frameworks, enhanced real-time monitoring, and 
+the broader adoption of AI-assisted defense tools may mitigate some categories of preventable risk. 
+The landscape is evolving quickly, and the projects that succeed will be those that integrate security 
+into every operational decision, from architecture to user experience. 
+As the largest Web3 security services provider, CertiK’s mission is to help fortify the Web3 ecosystem, 
+utilizing industry-leading formal verification technology to protect and monitor blockchain protocols and 
+smart contracts. We apply cutting-edge innovations from academia to enterprise, enabling mission-
+critical applications to scale with safety and correctness. To date, we have worked with more than 
+5,000 enterprise clients, secured more than $600 billion  worth of digital assets, and detected more 
+than 180,000 vulnerabilities in blockchain code. Our clients include industry-leading projects such 
+as Aptos, Ripple, Sandbox, Polygon, BNB Chain, and TON.   Since its inception, CertiK has secured 
+investments from 12 top-tier funds, including Sequoia, Coatue, Goldman Sachs, Shunwei Capital and 
+Insight Partners, with a valuation of more than $2 billion. 
+ ↗ The EU progressed toward full MiCA implementation , elevating standards for issuance, disclosures, 
+and consumer protection. 
+ ↗ Singapore and Hong Kong expanded digital asset sandboxes focusing on tokenized securities and 
+cross-border settlement pilots. 
+ ↗ Brazil and Columbia advanced commodity tokenization frameworks, strengthening oversight of on-
+chain agricultural and mineral products. 
+Globally, regulatory advancements were equally significant: 
+11
+2025 SKYNET HACK3D REPORT OVERVIEW
+
+=== PAGE 13 ===
+
+Phishing Was 2025’s Most
+Common Attack Vector
+Although phishing was not the highest-value attack vector of the year, it accounted for the largest 
+number of recorded incidents at 248, surpassing both supply chain breaches and code vulnerabilities. 
+In total, $722,885,398 was stolen from phishing. This reinforces a persistent reality across Web3 
+security: attackers continue to favor low-cost, high-volume techniques that exploit human trust rather 
+than protocol logic or technical vulnerabilities. 
+It is important to note that our phishing figures are almost certainly conservative. Many phishing-related 
+incidents go unreported, especially when losses are small, spread across individual users, or tied to 
+scams that fall outside traditional “hack” classifications. Our dataset in this report does not include pig 
+butchering schemes, wrench attacks, high-pressure investment scams, or social engineering fraud 
+conducted entirely off-chain, all of which remain widespread across the broader crypto landscape. As 
+reporting standards improve and more ecosystems integrate formal incident disclosures, we expect 
+future editions of Hack3D to capture a more comprehensive view of phishing-related losses. 
+In contrast to supply chain compromises, which remain resource-intensive and rely on breaching 
+infrastructure, phishing requires minimal investment. The barrier to entry is extremely low. Attackers 
+can reproduce proven playbooks, iterate quickly, and reach large audiences in minutes. 
+2025 also marked a turning point in AI-augmented phishing operations. Threat actors are now more 
+often using AI tools to do the following: 
+These shifts will likely continue to increase the frequency of attempts, expand attacker reach, and 
+erode earlier patterns defenders relied on, such as obvious grammatical errors or templated messaging 
+characteristic of scammers. 
+ ↗ Generate more convincing fake interfaces, including Dapps, wallet prompts, and support portals. 
+ ↗ Produce personalized direct messages using scraped on-chain and social media data. 
+ ↗ Automate multi-lingual campaigns to target communities previously insulated by language barriers. 
+ ↗ Scale social engineering at a rapid pace. 
+12
+2025 SKYNET HACK3D REPORT PHISHING WAS 2025’S MOST
+COMMON ATTACK VECTOR
+
+=== PAGE 14 ===
+
+1. Treat Every Wallet Prompt as High-Risk:  
+Always verify the domain, contract, and action being requested. Phishing attacks succeed through 
+signature prompts disguised as routine approvals. 
+2. Use Multi-Factor Signing Policies:  
+Deploy hardware wallets, multi-signature requirements, or transaction simulation tools to introduce 
+friction before funds can move. 
+3. Never Rely on Private Messages for Support:  
+No legitimate project provides support via unsolicited DMs. Users should assume all inbound 
+messages are malicious until proven otherwise. 
+4. Confirm Announcements Across Official Channels:  
+Cross-verify updates in Discord, Telegram, X, GitHub, and official websites before interacting with 
+new contracts or “urgent” upgrades. 
+5. Monitor Allowances and Revoke Regularly:  
+Continuous allowance monitoring reduces the blast radius of a compromised signature. 
+6. Educate Teams on Social Engineering Tactics:  
+For projects, team-level training and standardized communication policies significantly reduce 
+internal phishing risks, especially during major upgrades or emergencies. 
+7. Use Endpoint Security and Anti-Phishing Protection:  
+Phishing often begins outside of Web3 itself, through compromised email, browsers, or infected 
+extensions. Traditional cybersecurity hygiene remains essential. 
+How to Protect Yourself Against Phishing
+13
+2025 SKYNET HACK3D REPORT HOW TO PROTECT YOURSELF
+AGAINST PHISHING
+
+=== PAGE 15 ===
+
+How to Protect Your Crypto in 2025
+Trap Phishing on Trusted Platforms: A New Phishing Trend in The Web3 World
+Ice Phishing Scams
+Additional Reading about Phishing
+14
+2025 SKYNET HACK3D REPORT ADDITIONAL READING ABOUT PHISHING
+Given that phishing attacks are on the rise, it’s important for all Web3 participants to learn how to better 
+protect their cryptocurrency. In this blog, we look at strategies for avoiding phishing and traps you 
+should avoid.
+This strategy involves enticing users to divert from the official websites of influential platforms to 
+phishing sites. By sidestepping checks implemented by exchanges and marketplaces, attackers place 
+their phishing trap links and rogue NFT items in locations where Web3 users tend to place more trust, 
+leading to a decreased level of caution. Consequently, individuals falling prey to these phishing traps 
+unknowingly download malicious software, resulting in the compromise of credentials and loss of crypto 
+assets to attackers.
+A type of phishing unique to the Web3 space, known as ice phishing, is a significant threat to the 
+community. Instead of acquiring users’ private keys and seed phrases, scammers instead trick victims 
+into approving the transfer of assets to the scammer’s wallet. This method has been used to steal users' 
+tokens and NFTs worth millions of dollars.
+
+=== PAGE 16 ===
+
+Bybit Incident Analysis: 
+$1.4 Billion Lost
+On February 21, 2025, Bybit Exchange suffered the largest crypto theft to date, resulting in the loss of 
+approximately $1.4 billion. 
+The attack was carried out by the Lazarus Group, a North Korean state-sponsored hacking group. 
+Instead of attacking Bybit directly, the hackers targeted Safe{Wallet}, a third-party multi-signature 
+wallet provider used by Bybit to secure critical transactions. They infiltrated the system through 
+a Safe{Wallet} developer's compromised machine and injected malicious JavaScript code into the 
+wallet management interface. This code covertly altered transactions approved by Bybit employees, 
+redirecting funds to the hackers despite the multi-signature process that requires multiple human 
+approvals.
+Once the funds were withdrawn, the attackers quickly dispersed the stolen assets across various 
+wallets, blockchains, and decentralized exchanges to obscure the trail. Bybit's internal security systems 
+were not breached; the attack exploited the user interface of the Safe{Wallet} system, leading signers 
+to unknowingly approve malicious transactions. This sophisticated manipulation allowed the Lazarus 
+Group to bypass multi-signature wallet protections. Bybit has since been working with industry experts 
+to trace the stolen assets and has launched a recovery bounty program.
+For a more detailed analysis of the Bybit incident, read our blog, Bybit Incident Technical Analysis .
+15
+2025 SKYNET HACK3D REPORT BYBIT INCIDENT ANAL YSIS: 
+$1.4 BILLION LOST
+
+=== PAGE 17 ===
+
+Other Notable Incidents 
+Phishing Victim (bc1qxjp): $330 Million Lost
+Cetus: $225 Million Lost
+16
+2025 SKYNET HACK3D REPORT OTHER NOTABLE INCIDENTS 
+According to researcher ZachXBT, a BTC whale was the target of a social engineering attack in April 
+2025, resulting in the loss of approximately $330 million. The attacker laundered funds via six instant 
+exchanges and swapped the stolen BTC for Monero (XMR). Since the initial exploit, more than $7 million 
+has been frozen with the help of ZachXBT and Binance, and two suspects have been identified.
+On May 22, 2025, Cetus Protocol, the biggest DEX on the Sui blockchain, suffered a significant security 
+breach, resulting in the theft of around $225 million worth of several digital assets. The attacker 
+exploited a vulnerability in the protocol’s smart contract architecture, specifically targeting the liquidity 
+pool mechanisms. 
+By deploying spoof tokens and manipulating price curves, the hacker was able to extract substantial 
+funds from the platform. Fortunately, Sui validators managed to freeze and return $162 million  of the 
+stolen assets, following a governance proposal for user repayment.
+
+
+=== PAGE 18 ===
+
+Balancer: $113 Million Lost
+17
+2025 SKYNET HACK3D REPORT FUNDS STOLEN IN PERSPECTIVE: 
+MEASURING RISK AMID RISING TVL
+On November 3, 2025, Balancer protocol and its forks, Beets and Bex, were hit by an exploit that caused 
+an initial total loss of around $130 million. The attack was caused by a precision flaw in Balancer’s batch 
+swap logic. The attacker was able to leverage this vulnerability to manipulate the liquidity pool pricing 
+model, artificially increasing the internal token balance held by their contract. After inflating these 
+balances through repeated swaps, they withdrew the funds using the manageUserBalance() function.
+In total, Balancer suffered about $113 million in losses, while Beets and Bex were affected by roughly 
+$3.8 million and $12.4 million, respectively. Although the initial losses were close to $130 million, this 
+amount has so far been reduced to around $96.4 million, thanks to asset freezes and returns by white 
+hat actors.
+For a more detailed analysis of the Balancer incident, read our blog, Balancer Incident Analysis .
+
+
+=== PAGE 19 ===
+
+Individual User Risks and
+Mitigation
+Apart from the major incidents mentioned above, in 2025, attackers increasingly shifted their focus 
+toward individual users, where defenses are often weaker and losses remain underreported. Many 
+types of scams have little to no reporting around them, such as pig butchering and investment scams. 
+With the rise of AI, phishing techniques have become more advanced, leveraging deepfakes and voice 
+spoofing. Wrench attacks targeting crypto holders also surged in 2025, fueled by millions of holder 
+identities leaked from exchange databases and combined with location information.
+The best protection starts with education: understanding the main types of attacks and staying up-
+to-date through reliable resources. From there, holders should segment their assets across multiple 
+wallets with different levels of exposure so that the compromise of a single key or account never puts all 
+their funds at risk. This approach must be complemented by strong access controls (unique and strong 
+passwords, password manager, 2FA). Finally, the user must limit what they expose publicly, and verify 
+every URL, address, and permission before signing.
+18
+2025 SKYNET HACK3D REPORT INDIVIDUAL USER RISKS AND
+MITIGATION
+
+=== PAGE 20 ===
+
+2025 at CertiK
+2025 was a big year at CertiK. Here are some of our notable achievements this year: 
+ ↗ Integrated Token Scan with ChainGPT and Binance Wallet.
+ ↗ Released the Skynet Stablecoin Spotlight Report: H1 2025 , which examines the current stablecoin 
+landscape, vulnerabilities that affect stablecoins, and how CertiK’s Skynet Security Score can help 
+evaluate stablecoin security.
+ ↗ Released the 2025 Skynet RWA Security Report , which offers structured criteria to perform due 
+diligence and review the risks associated with RWA protocols highlighted in this report.
+ ↗ Released the 2025 Skynet Korea Web3 Security & Ecosystem Report , which profiles South Korea’s 
+market landscape and leading Web3 platforms. 
+ ↗ Released the 2025 Skynet Digital Asset Treasuries (DAT) Report , which introduced the Skynet DAT 
+Security & Compliance Framework, a model that moves beyond surface-level metrics to provide an 
+assessment of a DAT's operational integrity.
+ ↗ Released the Skynet U.S. Digital Asset Policy Report , which summarizes the legal mechanics, 
+market-structure impacts, and operational requirements of the GENIUS Act and CLARITY Act in the 
+United States. 
+ ↗ Conducted a comprehensive security assessment of the mint/burn process for USDCx on Canton 
+Network, including an audit of on-chain Daml smart contracts and penetration testing of the off-
+chain infrastructure.
+ ↗ Launched CertiK SkyNode , a node validator service that aims to enhance network reliability, 
+security, and performance across multiple public blockchain ecosystems. 
+ ↗ Jointly released research with Ant Group’s AntChain (Ant Dense Computing) on the formal 
+verification of core components of the Asterinas operating system
+ ↗ CertiK’s Co-Founder, Professor Shao Zhong, introduced the LiDO framework, addressing key 
+security challenges in BFT consensus.
+ ↗ Received two grants from the Ethereum Foundation, taking a leading position in zkEVM formal 
+verification.
+ ↗ Released Skynet leaderboards, the leading security-focused ranking platform to analyze crypto and 
+Web3 project security.
+ ↗ Released ecosystem-dedicated showcase leaderboards to support strategic chain support for 
+Layer 1s such as for BNB Chain and SUI.
+19
+2025 SKYNET HACK3D REPORT 2025 AT CERTIK
+
+=== PAGE 21 ===
+
+CertiK’s Security Suite 
+CertiK offers a wide range of products and services that span the entire lifecycle of development—from 
+incubation and early stages, to growth and maturity—empowering clients’ long-term development in the 
+Web3 ecosystem. 
+CertiK Security  Audit adopts industry-leading auditing methodologies and security tools, combining 
+formal verification technology, AI, and manual audits by a team of security experts to ensure code 
+security for developers. Its service scope covers major Web3 ecosystems, including Ethereum, BNB 
+Chain, Polygon, and more.
+Penetration Testing  is designed to simulate hacks with the goal of identifying security vulnerabilities in 
+systems, networks, or applications. Through this proactive testing approach, CertiK helps clients detect 
+and address potential security issues in advance, thereby enhancing system security.
+Skynet Enterprise is CertiK’s enterprise-grade core security platform built to meet the transparency, 
+risk visibility, and data quality requirements of regulators and large institutions. It provides institutional-
+grade security and risk infrastructure that enables a healthy cycle of mutual enablement between 
+enterprises and regulators. For institutions entering Web3, Skynet Enterprise offers a clear, quantifiable 
+readiness assessment through a unified dashboard covering architecture, compliance maturity, and risk 
+exposure. It also equips regulators with aggregated, tailored views to monitor security scores, real-time 
+risk changes, and ecosystem trends—establishing a more transparent, traceable, and resilient digital 
+asset market.
+Skynet Community  is a one-stop security platform for Web3 users, integrating security analysis, real-
+time alerts, due diligence, and data insights. Users can assess over 16,000 projects by examining their 
+security scores, ranging from real-time ratings to educational tasks and wallet protection.
+ ↗ Skynet Community  also offers comprehensive community support toolkits: 
+ ↗ Quest provides communities with a unique learn-and-earn approach, where users can deepen their 
+understanding of Web3 security through interactive learning modules on Web3 safety topics while 
+earning rewards. 
+ ↗ Pulse curates real-time trends and news for Web3 communities by filtering thousands of 
+information sources. 
+ ↗ Token Scan enables communities to effortlessly evaluate token security. By simply entering a 
+token's contract address, users can instantly obtain detailed analyses to help identify potential 
+risks, including Rug Pull. 
+ ↗ Wallet Scan safeguards users' digital assets by detecting vulnerability authorizations through 
+scans of high-risk wallet permissions. 
+ ↗ Smart Calendar  is a dynamic and user-friendly tool for tracking critical events, empowering users 
+to stay informed and make strategic decisions that may impact their investments.
+20
+2025 SKYNET HACK3D REPORT CERTIK’S SECURITY SUITE 
+
+=== PAGE 22 ===
+
+Security Consultancy provides tailored compliance guidance, technical due diligence, cutting-
+edge security research, and strategic insights to help Web3 projects and institutions make informed 
+decisions. 
+KYC is an identity validation and due diligence service specifically designed for the Web3 ecosystem, 
+providing strong third-party validation for crypto project teams. This service helps establish trust with 
+the community and investors, while promoting transparency without disclosing the project team’s 
+private information.
+SkyNode, by serving as a validator across multiple public blockchain ecosystems, aims to strengthen 
+network reliability, security, and performance.SkyNode supports validator or full nodes for 12 public 
+blockchains. To date, the validator nodes have been securing tokens valued over $1.2 Billion. SkyNode 
+provides 24/7 Monitoring and Advanced Customizable API Data Services, ensuring the stable and 
+efficient operation of clients’ blockchain businesses.
+SkyInsights  provides real-time transaction monitoring, anti-money laundering/anti-terrorist financing 
+(AML/CTF) compliance solutions, and risk analysis to ensure that Virtual Asset Service Providers 
+(VASPs) meet regulatory requirements.
+Bug Bounty is a fully managed, end-to-end supported Web3 vulnerability bounty platform that charges 
+no fees.
+Supported Ecosystems:  CertiK’s security services are available for all projects on all blockchains. A list 
+of ecosystems we’ve worked with includes: 
+21
+2025 SKYNET HACK3D REPORT CERTIK’S SECURITY SUITE 

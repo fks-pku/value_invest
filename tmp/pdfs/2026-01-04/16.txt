@@ -1,0 +1,3595 @@
+
+
+=== PAGE 1 ===
+
+ 
+  
+BofA Securities does and seeks to do business with issuers covered in its research 
+reports. As a result, investors should be aware that the firm may have a conflict of 
+interest that could affect the objectivity of this report. Investors should consider this 
+report as only a single factor in making their investment decision. 
+Refer to important disclosures on page 34 to 38. Analyst Certification on page 33. Price 
+Objective Basis/Risk on page 21.  12912574    
+ 
+Valuation Trends 
+ 
+Val. Trends #908: Data centers in space 
+expanding the AI race 
+ 
+Industry Overview  
+ 
+   
+ 
+  
+   
+ 
+   
+ 
+SpaceX, Blue Origin, others look to the stars to scale AI 
+As demand for data centers supporting AI grows, tech and space companies are 
+increasingly looking to space-based computing platforms as the next stage of capacity 
+expansion. Both Blue Origin’s Jeff Bezos and SpaceX’s Elon Musk have publicly 
+commented that they are exploring the idea. In November, startup Starcloud (supported 
+by Nvidia) deployed an Nvidia GPU aboard a satellite and used it to train an AI model on 
+orbit. Also in November, Google published an outline for its own deployment of TPUs to 
+orbit, named Project Suncatcher, and announced a partnership with Planet (PL; not 
+covered) to test its hardware and AI models on orbit in 2027.   
+Reminder: space is hard (especially for computing) 
+Despite early enthusiasm, the space environment presents a number of technical 
+challenges to scaled deployment of high-performance computing payloads. Orbital 
+deployment of data centers is attractive in large part due to the continuous and higher 
+intensity solar energy available in sun-synchronous orbit, though this is coupled with 
+increased radiation that can damage unshielded electronics including chips. For this 
+reason, computing equipment intended for long-term use in space is radiation hardened, 
+adding cost and payload mass. Thermal management of sensitive chips is made doubly 
+difficult by the vacuum of space. For reference, according to NASA the ISS’s six main 
+radiators measure a combined ~5,000 square feet and ~14,000 pounds and can reject 70 
+kilowatts of heat; a 1-gigawatt hyperscaler-type orbital data center could require 
+~15,000x more heat rejection capacity. 
+Upside to launch demand if data centers take off 
+Access to launch remains an industry capacity constraint today, and scaled deployment 
+of space-based data centers could stand to benefit space launch providers like SpaceX, 
+Blue Origin, and RKLB. In-development super-heavy lift launch vehicles like Starship 
+(150-250 tons to orbit) and New Glenn 9x4 (70 tons to orbit) could require hundreds of 
+flights to fully deploy a single space-based hyperscaler data center. Even at smaller 
+initial scales, demand for launch could continue to outstrip supply, expanding opportunity 
+to support multiple large launch providers. RKLB’s Neutron medium-lift rocket, expected 
+to complete its first test launch in 2026, would provide >40x more mass to orbit 
+capability than its existing Electron launch vehicle. 
+Potential downstream effects across space infrastructure 
+Proliferated space data center deployment could generate demand across space 
+infrastructure, from satellites and payloads to space stations and orbital platforms. 
+Secure high bandwidth data transmission needed for AI applications could expand 
+demand for laser communications, with current providers including SpaceX and Mynaric 
+(being acquired by RKLB). RKLB and LUNR have exposure to satellite buses, with LUNR 
+expected to acquire Lanteris in 1Q26. Deployment of large-scale space assets could 
+provide opportunities for station developers like VOYG Starlab; competitor Axiom 
+(private) plans to deploy its Orbital Datacenter infrastructure node to the ISS in 2027. 
+  
+ 15 December 2025      
+Equity 
+Americas 
+Aerospace/Defense      
+Ronald J. Epstein 
+Research Analyst 
+BofAS 
++1 646 855 5695 
+r.epstein@bofa.com  
+Mariana Perez Mora 
+Research Analyst 
+BofAS 
++1 646 855 5696 
+mariana.perezmora@bofa.com  
+Jordan Lyonnais 
+Research Analyst 
+BofAS 
++1 646 855 5204 
+jordan.lyonnais@bofa.com  
+Samantha Stiroh 
+Research Analyst 
+BofAS 
++1 646 855 5725 
+samantha.stiroh@bofa.com  
+Alexander Preston 
+Research Analyst 
+BofAS 
++1 646 855 3599 
+alexander.preston@bofa.com       
+ 
+RKLB: Rocket Lab Corporation 
+LUNR: Intuitive 
+ 
+Accessible version  
+Timestamp: 15 December 2025 03:00AM EST
+CR 
+
+=== PAGE 2 ===
+
+ 
+ 
+2 Valuation Trends | 15 December 2025  
+ 
+ 
+  
+Valuation analysis 
+Exhibit 1: BofA Aerospace & Defense valuation multiples 
+US Aero & Defense Comp Sheet 
+  Price 12/12/2025 P/E (x) EV/EBITDA (x) FCF Yield (%) Dividend 
+Company Objective Price Upside % BofA Rating Market Cap CY25E CY26E CY27E CY25E CY26E CY27E CY25E CY26E CY27E Yield (%) 
+S&P 500  $6,827    26x 22x 19x 18x 15x 14x     
+LARGE CAP                 
+General Electric $365 $300 22% BUY $316,244 48x 42x 36x 39x 34x 31x 2.1% 2.6% 2.9% 0.5% 
+RTX 215 179 20% BUY 239,542 29x 26x 23x 21x 19x 17x 3.0% 3.5% 3.8% 1.5% 
+Lockheed Martin 535 480 11% NEUTRAL 111,129 21x 16x 15x 14x 12x 11x 6.0% 6.6% 6.3% 2.8% 
+Boeing* 270 204 32% BUY 160,044 NM 151x 38x NM 31x 20x NM 2.3% 3.5% 0.0% 
+General Dynamics  400 337 19% BUY 91,163 22x 19x 16x 16x 14x 13x 4.3% 5.2% 6.0% 1.8% 
+Transdigm 1615 1,295 25% BUY 72,913 35x 32x 26x 22x 20x 18x 2.6% 3.2% 4.1% 0.0% 
+Northrop Grumman 685 570 20% BUY 81,316 22x 20x 18x 16x 16x 15x 4.1% 4.1% 4.6% 1.6% 
+L3Harris Technologies 350 287 22% BUY 53,675 27x 23x 20x 14x 13x 13x 4.6% 5.1% 5.6% 1.7% 
+Average      29x 41x 24x 20x 20x 17x 3.8% 4.1% 4.6%  
+Defense Primes      23x 20x 18x 15x 14x 13x 4.9% 5.3% 5.5%  
+SMID CAP                 
+Howmet Aerospace Inc. $250 $198 26% BUY $79,733 54x 47x 43x 34x 31x 29x 1.7% 1.8% 1.9% 0.2% 
+Garmin 185 208 -11% U/P 40,075 25x 23x 21x 18x 16x 15x 3.3% 3.9% 4.1% 1.7% 
+Heico 400 310 29% BUY 37,450 64x 56x NM 33x 30x NM 2.2% 2.3% NM 0.1% 
+Teledyne Technologies 640 518 23% BUY 24,331 24x 22x 20x 18x 17x 16x 4.8% 5.2% 5.5% 0.0% 
+Textron 90 87 3% NEUTRAL 15,361 14x 14x 12x 10x 10x 9x 5.4% 5.7% 6.2% 0.1% 
+Huntington Ingalls Ind.  300 327 -8% U/P 12,829 20x 17x 15x 17x 14x 13x 5.1% 5.5% 6.0% 1.7% 
+Bombardier CAD 235 CAD225 5% BUY 22,536 26x 20x 15x 14x 12x 12x 4.2% 5.5% 6.5% 0.0% 
+RBC Bearings Inc 500 460 9% BUY 14,547 41x 37x 35x 20x 18x 17x 2.3% 2.2% 2.6% 0.0% 
+Crane Co. 225 192 17% BUY 11,040 32x 30x 27x 22x 20x 18x 3.0% 3.4% 3.7% 0.5% 
+BWX Technologies Inc 230 175 31% BUY 16,002 45x 41x 35x 32x 26x 23x 1.8% 1.9% 2.4% 0.6% 
+CAE Inc  CAD41   13,203 33x 28x 23x 14x 13x 13x 3.7% 3.9% 4.9% 0.0% 
+Leonardo DRS 50 34 45% BUY 9,167 31x 27x 24x 20x 17x 16x 2.6% 3.1% 3.6% 1.0% 
+Hexcel 60 73 -18% U/P 5,815 41x 31x 23x 22x 17x 14x 3.2% 4.0% 4.6% 1.0% 
+Embraer  70 64 9% BUY 11,855 116x 22x 17x 15x 11x 9x 4.3% 4.3% 7.3% 0.2% 
+Albany International 55 52 5% U/P 1,497 19x 15x 13x 24x 7x 7x 4.4% 4.6% 7.9% 2.1% 
+Cadre Holdings Inc 26 44 -41% U/P 1,778 32x 29x 26x 19x 17x 15x 4.1% 4.4% 4.8% 0.9% 
+StandardAero 30 28 8% NEUTRAL 9,298 33x 21x 15x 15x 13x 11x 1.9% 3.7% 5.1% 0.0% 
+Average      38x 28x 23x 20x 17x 15x 3.4% 3.8% 4.8%  
+DEF. SVS                 
+Leidos Holdings $235 $190 24% BUY $24,258 16x 15x 13x 12x 11x 11x 6.5% 6.8% 7.3% 0.9% 
+Booz Allen Hamilton 90 93 -3% U/P 11,254 16x 17x 15x 17x 18x 17x 7.3% 6.3% 6.4% 2.4% 
+CACI International $670 $572 17% BUY $12,640 21x 19x 17x 15x 14x 13x 4.8% 5.3% 5.2% 0.0% 
+KBR Inc. 45 43 3% NEUTRAL 5,522 11x 10x 10x 8x 8x 7x 9.3% 8.5% 9.8% 1.5% 
+OSI Systems $315 $259 21% BUY $4,405 26x 24x 21x 18x 17x 15x NM 5.7% 5.9% 0.0% 
+Parsons Corporation 95 63 50% BUY 6,744 19x 18x 16x 14x 13x 11x 4.9% 6.8% 6.5% 0.0% 
+Amentum  $30   $7,240 13x 12x 10x 11x 10x 9x 7.0% 8.2% 10.6% 0.0% 
+V2X Inc. 65 55 19% BUY 1,725 11x 9x 7x 9x 7x 7x 6.1% 9.3% 10.0% 0.0% 
+Average      17x 15x 14x 13x 12x 11x 6.2% 7.1% 7.7%  
+SPACE & HIGH GROWTH       EV/Sales to Growth  EV/EBITDA to Growth  P/FCF to Growth   
+Palantir Technologies 255 184 39% BUY 437,340 1.8x 1.5x 1.2x 3.6x 3.0x 2.4x 5.0x 3.4x 2.6x 0.0% 
+Axon Enterprise $805 $564 43% BUY $44,528 0.5x 0.5x 0.5x 2.0x 1.9x 1.9x NM 0.2x 1.2x 0.0% 
+Rocket Lab  61   35,671 1.6x 0.4x 0.3x NM NM 3.6x NM 6.0x NM 0.0% 
+Intuitive Machines $10 $12 -21% U/P $2,157 NM 0.0x 0.1x 16.5x 0.1x 1.3x 1.4x NM 0.4x 0.0% 
+Voyager Technologies 41 27 55% BUY 1,580 0.5x 0.2x 0.1x NM 8.9x NM NM NM NM 1.7% 
+Redwire Corp $6 $7 -18% U/P $1,204 0.4x 0.1x 0.1x NM 0.6x 1.0x NM NM 0.1x 0.0% 
+BETA Technologies 35 30 17% BUY 6,875 2.7x NM 0.0x NM NM NM NM NM 1.4x 0.0% 
+AeroVironment $450 $239 88% BUY $11,932 0.1x 0.1x 0.2x 0.6x 1.0x 1.6x NM 3.2x NM 0.0% 
+Average      1.1x 0.4x 0.3x 5.7x 2.6x 2.0x 3.2x 3.2x 1.1x  
+LESSORS       P/E Pre-tax ROE  P/BV   
+AerCap $150 $140 7% BUY $23,751 9x 9x 8x 24% 15% 15% 1.4x 1.3x 1.3x 0.8% 
+Source: Bank of America Securities  
+Note:    
+Enterprise Value equals market value plus straight debt plus straight preferred less cash and equivalents  
+Free cash flow equals cash from operations less capex  
+*Debt excludes finance debt for Boeing  
+Bombardier PO and stock price are in CAD. Multiples based in USD.  
+BofA GLOBAL RESEARCH 
+ 
+CR 
+
+=== PAGE 3 ===
+
+ 
+ Valuation Trends | 15 December 2025    3 
+ 
+ 
+ 
+Exhibit 2: AeroVironment has the highest buy rating consensus among analysts, while Garmin has the highest sell rating consensus 
+Analyst consensus ratings 
+ 
+Bloomberg  
+BofA GLOBAL RESEARCH 
+0% 20% 40% 60% 80% 100%
+Voyager Technologies
+V2X Inc
+Transdigm
+Textron
+Teledyne Technologies
+StandardAero Inc.
+RTX
+Rocket Lab
+Redwire
+RBC Bearings
+Parsons Corporation
+Palantir Technologies
+OSI Systems
+Northrop Grumman
+Lockheed Martin
+Leonardo DRS
+Leidos Holdings
+L3Harris Technologies
+KBR
+Intuitive Machines
+Huntington Ingalls Ind
+Howmet Aerospace Inc.
+Hexcel
+Heico
+General Dynamics
+GE Aerospace
+Garmin
+Embraer
+Elbit Systems Ltd
+Crane
+Crane
+CAE Inc
+Cadre Holdings
+CACI International
+BWX Technologies
+BETA Technologies
+Booz Allen Hamilton
+Bombardier
+Boeing
+Axon
+Amentum
+Albany International
+AeroVironment
+AerCap
+BUY HOLD SELL
+CR 
+
+=== PAGE 4 ===
+
+ 
+ 
+4 Valuation Trends | 15 December 2025  
+ 
+ 
+ 
+Performance Charts 
+Exhibit 3: Week to date performance ranged from -5% to +25% 
+Rocket Lab was up 25% in the last week 
+ 
+Source: BofA Global Research, Bloomberg   
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 4: Last 30 days performance ranged from -27% to +29% 
+Amentum was up 29% in the last 30 days 
+ 
+Source: BofA Global Research, Bloomberg   
+BofA GLOBAL RESEARCH 
+ 
+ 
+ 
+Exhibit 5: Last 52 weeks performance ranged from -37% to +172% 
+Rocket Lab was up 172% in the last 52 weeks 
+ 
+Source: BofA Global Research, Bloomberg   
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 6: YTD performance ranged from -56% to +143% 
+Palantir Technologies was up 143% YTD 
+ 
+Source: BofA Global Research, Bloomberg   
+BofA GLOBAL RESEARCH 
+ 
+ 
+ 
+-5.0%-4.6%-3.9%-3.9%-2.5%-1.9%-1.6%-1.6%-1.4%-0.8%-0.6%-0.5%-0.3% 0.3%1.0%1.2%1.6%1.7%2.0%2.1%2.3%2.4%2.9%3.0%3.5%3.8%3.8%3.8%4.4%4.4%4.7%5.1%5.4%5.6%6.2%6.3%7.3%8.6%11.7% 25.3%
+-20% 0% 20% 40%
+Parsons CorporationHexcelCACI InternationalTransDigmOSI SystemsKBRNASDAQBWX TechnologiesBombardierTeledyne TechnologiesS&P 500HeicoAerCapAir LeasePalantir TechnologiesBoeingLeidos HoldingsLeonardo DRSCadre HoldingsCraneGarminAXONAmentumL3Harris TechnologiesEmbraerRBC BearingsNorthrop GrummanHowmet Aerospace Inc.RTXTextronStandardAero Inc.Albany InternationalBooz Allen HamiltonGE AerospaceLockheed MartinElbit Systems LtdHuntington Ingalls IndCAE IncVoyager TechnologiesRocket Lab
+WTD Performance
+-26.7% -11.0%-8.5%-4.7%-4.4%-3.4%-3.3%-3.0%-2.8%-2.4%-1.7%-1.0%-0.9%-0.9%-0.3%-0.3%-0.2% 0.4%0.4%0.5%0.5%1.1%1.4%2.0%2.2%2.8%3.3%3.6%4.5%4.9%5.1%5.5%5.7%6.3%6.6%6.9%9.3%13.4%16.2%23.1%29.4%
+-40% 0% 40%
+Parsons CorporationBWX TechnologiesOSI SystemsHeicoL3Harris TechnologiesGeneral DynamicsHowmet Aerospace Inc.GE AerospaceLeonardo DRSCACI InternationalLeidos HoldingsTransDigmAXONNASDAQS&P 500Palantir TechnologiesTeledyne TechnologiesAir LeaseCraneRTXEmbraerCadre HoldingsAerCapNorthrop GrummanKBRHuntington Ingalls IndRBC BearingsBombardierBoeingGarminLockheed MartinStandardAero Inc.TextronHexcelElbit Systems LtdCAE IncBooz Allen HamiltonAlbany InternationalVoyager TechnologiesRocket LabAmentum
+30 Day Performance
+-36.9%-36.5%-34.7%-31.6%-25.9%-11.3%-3.5%-3.3% 0.7%4.4%7.5%8.2%12.8%14.3%15.4%16.5%18.3%21.6%21.8%22.2%23.0%24.0%27.9%28.3%29.8%38.2%39.2%42.7%46.9%54.0%71.3%74.3%74.4%81.9%102.3%114.6%150.8%172.3%
+-100% 0% 100% 200%
+RedwireAlbany InternationalParsons CorporationBooz Allen HamiltonKBRAXONGarminLockheed MartinLeonardo DRSTransDigmTextronTeledyne TechnologiesS&P 500HexcelCraneNASDAQNorthrop GrummanHeicoBoeingCadre HoldingsCAE IncLeidos HoldingsL3Harris TechnologiesGeneral DynamicsAir LeaseOSI SystemsRBC BearingsBWX TechnologiesAerCapRTXHuntington Ingalls IndEmbraerHowmet Aerospace Inc.GE AerospaceElbit Systems LtdBombardierPalantir TechnologiesRocket Lab
+Last 52 Weeks Performance
+-55.7%-34.8%-31.3%-27.9%-24.9%-5.1%-1.2% 1.0%2.2%6.7%11.7%12.3%12.6%14.0%15.5%16.1%16.5%20.1%21.4%26.3%28.1%30.6%31.7%33.0%35.4%36.5%41.3%41.7%53.8%54.4%55.0%57.1%73.0%74.6%79.8%81.3%99.7%129.9%141.4%142.7%
+-100% -50% 0% 50% 100% 150% 200%
+RedwireAlbany InternationalParsons CorporationBooz Allen HamiltonKBRAXONLockheed MartinGarminTransDigmLeonardo DRSTeledyne TechnologiesStandardAero Inc.CAE IncTextronBoeingS&P 500HexcelNASDAQNorthrop GrummanCraneGeneral DynamicsHeicoLeidos HoldingsAir LeaseCadre HoldingsL3Harris TechnologiesAmentumCACI InternationalRBC BearingsRTXOSI SystemsBWX TechnologiesHuntington Ingalls IndEmbraerGE AerospaceHowmet Aerospace Inc.Elbit Systems LtdBombardierRocket LabPalantir Technologies
+YTD Performance
+CR 
+
+=== PAGE 5 ===
+
+ 
+ Valuation Trends | 15 December 2025    5 
+ 
+ 
+Exhibit 7: WTD performance ranged from 0% to +4% 
+S&P 500 was up flat in the last week 
+ 
+Source: BofA Global Research, Bloomberg   
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 8: Last 30 days performance ranged from -0% to +14% 
+S&P 500 was flat in the last 30 days 
+ 
+Source: BofA Global Research, Bloomberg   
+BofA GLOBAL RESEARCH 
+ 
+ 
+Exhibit 9: Last 52 weeks performance ranged from 8% to +30% 
+S&P 500 was up 13% in the last 52 weeks 
+ 
+Source: BofA Global Research, Bloomberg   
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 10: YTD performance ranged from -8% to +39% 
+S&P 500 was up 16% YTD 
+ 
+Source: BofA Global Research, Bloomberg   
+BofA GLOBAL RESEARCH 
+ 
+ 
+ 
+-0.6%
+-0.3%
+0.3%
+1.0%
+2.3%
+2.9%
+3.0%
+3.8%
+-1% 0% 1% 2% 3% 4% 5%
+S&P 500
+AerCap
+Air Lease
+DJIA
+MSCI World Financials Index
+MSCI Europe Airlines Index
+MSCI World Airlines USD
+S&P Supercomposite Airlines
+WTD Performance
+-0.3%
+0.4%
+0.4%
+2.3%
+2.3%
+5.3%
+5.8%
+13.6%
+-5% 0% 5% 10% 15%
+S&P 500
+Air Lease
+DJIA
+Russell 1000 Financial Services
+Index
+MSCI World Financials Index
+MSCI Europe Airlines Index
+MSCI World Airlines USD
+S&P Supercomposite Airlines
+30 Day Performance
+8.3%
+10.3%
+12.8%
+13.1%
+16.3%
+21.2%
+27.8%
+29.8%
+0% 5% 10%15%20%25%30%35%
+S&P Supercomposite Airlines
+DJIA
+S&P 500
+Russell 1000 Financial Services Index
+MSCI World Airlines USD
+MSCI World Financials Index
+MSCI Europe Airlines Index
+Air Lease
+Last 52 Weeks Performance
+8.2%
+13.9%
+16.1%
+16.6%
+20.8%
+24.4%
+33.0%
+38.9%
+0% 10% 20% 30% 40% 50%
+S&P Supercomposite Airlines
+DJIA
+S&P 500
+Russell 1000 Financial Services Index
+MSCI World Airlines USD
+MSCI World Financials Index
+Air Lease
+MSCI Europe Airlines Index
+YTD Performance
+CR 
+
+
+=== PAGE 6 ===
+
+ 
+ 
+6 Valuation Trends | 15 December 2025  
+ 
+ 
+Exhibit 11: WTD performance ranged from -3% to +5% 
+S&P Metals & Mining was up 5% in the last week 
+ 
+Source: BofA Global Research, Bloomberg   
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 12: Last 30 days performance ranged from -3% to +10% 
+S&P O&G was up 10% in the last 30 days 
+ 
+Source: BofA Global Research, Bloomberg   
+BofA GLOBAL RESEARCH 
+ 
+ 
+Exhibit 13: Last 52 weeks performance ranged from -6% to +97% 
+S&P SmallCap Aero&Def was up 97% in the last 52 weeks 
+ 
+Source: BofA Global Research, Bloomberg   
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 14: YTD performance ranged from -0% to +98% 
+S&P SmallCap Aero&Def was up 98% YTD 
+ 
+Source: BofA Global Research, Bloomberg   
+BofA GLOBAL RESEARCH 
+ 
+ 
+ 
+ 
+ 
+-2.8%
+-1.6%
+-0.6%
+-0.2%
+-0.2%
+-0.1%
+1.0%
+1.3%
+1.5%
+2.2%
+2.2%
+2.9%
+3.1%
+3.4%
+3.5%
+3.9%
+5.2%
+-4% -2% 0% 2% 4% 6%
+S&P Oil & Gas Expl and Produc
+NASDAQ
+S&P 500
+S&P MidCap Aero&Def
+FTSE 100
+NYSE Mkt Composite
+DJIA
+S&P Oil & Gas Equip and Ss
+S&P Homebuilding
+Bovespa
+MSCI World Aero & Def USD
+S&P Transportation
+S&P SmallCap Aero&Def
+Dow Jones US Aero&Def
+S&P Aero & Defence
+Russell 1000 Aerospace Industry
+S&P Metals & Mining
+WTD Performance
+-2.9%
+-2.6%
+-2.3%
+-1.1%
+-0.9%
+-0.3%
+-0.3%
+0.0%
+0.3%
+0.4%
+1.6%
+2.8%
+8.8%
+9.5%
+9.6%
+10.2%
+-10% 0% 10% 20%
+S&P MidCap Aero&Def
+FTSE 100
+MSCI World Aero & Def USD
+NYSE Mkt Composite
+NASDAQ
+S&P 500
+Dow Jones US Aero&Def
+Russell 1000 Aerospace Industry
+S&P Oil & Gas Expl and Produc
+DJIA
+S&P Aero & Defence
+S&P Homebuilding
+S&P Metals & Mining
+S&P Transportation
+S&P SmallCap Aero&Def
+S&P Oil & Gas Equip and Ss
+30 Day Performance
+-6.0%
+-3.1%
+3.0%
+8.0%
+10.3%
+12.8%
+16.1%
+16.5%
+27.5%
+37.5%
+42.8%
+43.9%
+44.7%
+50.1%
+50.7%
+65.0%
+96.7%
+-20% 0% 20% 40% 60% 80%100%120%
+S&P Homebuilding
+S&P Oil & Gas Expl and Produc
+S&P Transportation
+S&P Oil & Gas Equip and Ss
+DJIA
+S&P 500
+FTSE 100
+NASDAQ
+Bovespa
+Dow Jones US Aero&Def
+NYSE Mkt Composite
+S&P Aero & Defence
+MSCI World Aero & Def USD
+S&P MidCap Aero&Def
+Russell 1000 Aerospace Industry
+S&P Metals & Mining
+S&P SmallCap Aero&Def
+Last 52 Weeks Performance
+-0.2%
+4.3%
+9.1%
+10.7%
+13.9%
+16.1%
+18.1%
+20.1%
+33.7%
+38.3%
+44.2%
+46.2%
+49.4%
+53.3%
+58.5%
+84.7%
+98.1%
+-20%0%20%40%60%80%100%120%
+S&P Oil & Gas Expl and Produc
+S&P Homebuilding
+S&P Transportation
+S&P Oil & Gas Equip and Ss
+DJIA
+S&P 500
+FTSE 100
+NASDAQ
+Bovespa
+Dow Jones US Aero&Def
+S&P Aero & Defence
+MSCI World Aero & Def USD
+Russell 1000 Aerospace Industry
+NYSE Mkt Composite
+S&P MidCap Aero&Def
+S&P Metals & Mining
+S&P SmallCap Aero&Def
+YTD Performance
+CR 
+
+=== PAGE 7 ===
+
+ 
+ Valuation Trends | 15 December 2025    7 
+ 
+ 
+Price to earnings 
+Exhibit 15: LARGE CAP NTM PE 
+Large caps are currently trading in line with 2013-2015 levels, GE has 
+rerated to ~20x 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 16: NTM PE relative to S&P 500 
+Valuations declined, but still in line with 2013-2015 levels aside from GE  
+ 
+Source: BofA Global Research, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+ 
+Exhibit 17: LARGE CAP STM PE 
+Large caps are currently trading in line with 2013-2015 levels, except for BA 
+and GE which have rerated in recent years  
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 18: STM PE relative to S&P 500 
+Valuations declined, but still in line with 2013-2015 levels, aside from BA and 
+GE which have re-rated recently  
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ 
+ 
+Exhibit 19: SMALL & MID CAP STM PE 
+Commercial multiples are up factoring in recovery in air traffic. Most in the 
+20-30x range vs. ~20x a few years ago 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 20: STM PE relative to S&P 500 
+Relative valuation recovering since 2021, HEI is an outlier at 2.5x 
+ 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ 
+ -
+ 10.0x
+ 20.0x
+ 30.0x
+ 40.0x
+ 50.0x
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+BA GD LHX LMT
+NOC RTX GE
+ -
+ 0.4x
+ 0.8x
+ 1.2x
+ 1.6x
+ 2.0x
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+BA GD LHX LMT
+NOC RTX GE
+ -
+ 10.0x
+ 20.0x
+ 30.0x
+ 40.0x
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+BA GD LHX LMT
+NOC RTX GE
+ -
+ 0.5x
+ 1.0x
+ 1.5x
+ 2.0x
+ 2.5x
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+BA GD LHX
+LMT NOC RTX
+GE
+0
+10
+20
+30
+40
+50
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+CR AIN BBD/B CN
+BWXT CAE CN EMBJ
+GRMN HEI HXL
+0
+1
+2
+3
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+CR AIN BBD/B CN
+BWXT CAE CN EMBJ
+GRMN HEI HXL
+HWM
+CR 
+
+=== PAGE 8 ===
+
+ 
+ 
+8 Valuation Trends | 15 December 2025  
+ 
+ 
+Exhibit 21: SMALL & MID CAP NTM PE 
+Multiples trending up in the 10x-30x range 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 22: NTM PE relative to S&P 500 
+Relative valuations broadly trend between 0.5x-1.5x relative to the S&P500 
+ 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ 
+Exhibit 23: SMALL & MID CAP STM PE 
+Multiples are in line with prior peak levels, between 10x and 30x 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 24: STM PE relative to S&P 500 
+Relative valuations mostly in line with previous levels, trending between 
+0.5x-1.5x relative to the S&P 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ 
+Exhibit 25: DEFENSE SERVICES CAP NTM PE 
+Services recovering on IT & cyber exposure with multiples trending in the 
+15x-20x range 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 26: NTM PE relative to S&P 500 
+Relative valuation to the S&P500 has trended down slightly and is in the 
+0.5x-1.0x range 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ 
+0
+10
+20
+30
+40
+50
+60
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+HII RBC TXT TDG TDY
+0
+0.5
+1
+1.5
+2
+2.5
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+HII RBC TXT TDG TDY
+0
+10
+20
+30
+40
+50
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+HII RBC TXT TDG TDY
+0
+1
+2
+3
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+HII RBC TXT TDG TDY
+0
+5
+10
+15
+20
+25
+30
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+BAH CACI LDOS KBR PSN
+0
+0.5
+1
+1.5
+2
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+BAH CACI LDOS PSN KBR
+CR 
+
+=== PAGE 9 ===
+
+ 
+ Valuation Trends | 15 December 2025    9 
+ 
+ 
+Exhibit 27: DEFENSE SERVICES CAP STM PE 
+Services mostly in line with previous levels with multiples in the 10x-20x 
+range 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 28: STM PE relative to S&P 500 
+Relative valuation to the S&P500 in line with previous years, between 0.5x 
+and 1.0x 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ 
+Exhibit 29: LESSORS CAP NTM PE 
+AER recovering from 2018 levels (~6.0x) and are now trading ~9.0x 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 30: NTM PE relative to S&P 500 
+Valuations were in line with previous levels, at around 0.4x relative to the 
+S&P500 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ 
+ 
+ 
+ 
+ 
+EV to EBITDA  
+Exhibit 31: LARGE CAP NTM EV/EBITDA 
+Valuations are trending upwards with multiples in the 10x-20x range 
+(excluding BA and GE trading ~30x)  
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 32: NTM EV/EBITDA relative to S&P 500 
+Relative valuation declines to previous peaks at around 0.8x-1.2x 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ 
+0
+5
+10
+15
+20
+25
+30
+35
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+BAH CACI LDOS PSN KBR
+0
+0.5
+1
+1.5
+2
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+BAH CACI LDOS PSN KBR
+ -
+ 3.0x
+ 6.0x
+ 9.0x
+ 12.0x
+ 15.0x
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+AER
+ -
+ 0.2x
+ 0.4x
+ 0.6x
+ 0.8x
+ 1.0x
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+AER
+ -
+ 10.0x
+ 20.0x
+ 30.0x
+ 40.0x
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+BA GD LHX LMT
+NOC RTX GE
+ -
+ 0.4x
+ 0.8x
+ 1.2x
+ 1.6x
+ 2.0x
+ 2.4x
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+BA GD LHX LLL
+LMT NOC RTX GE
+CR 
+
+=== PAGE 10 ===
+
+ 
+ 
+10 Valuation Trends | 15 December 2025  
+ 
+ 
+Exhibit 33: LARGE CAP STM EV/EBITDA 
+Defense valuations trending upwards, with multiples between 10x and 15x 
+(excluding BA and GE trading around 25x) 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 34: STM EV/EBITDA relative to S&P 500 
+Relative valuation declined to previous year’s peak levels and are ~0.8x -1.2x  
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ 
+Exhibit 35: SMALL & MID CAP NTM EV/EBITDA 
+Valuations expanding since 2008 lows, multiples are ~10x-30x  
+(excluding ERJ at ~4x) 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 36: STM EV/EBITDA relative to S&P 500 
+Expensive relative valuations reflect looming air traffic recovery through 
+2023, relative valuations have increased to ~0.5x-2.0x 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ 
+Exhibit 37: SMALL & MID CAP STM EV/EBITDA 
+Valuations expanding since 2008 lows, and are hovering around 10x 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 38: STM EV/EBITDA relative to S&P 500 
+SMID Caps generally trading better, roughly in line with the market with 1.0x 
+relative valuation 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ 
+ -
+ 5.0x
+ 10.0x
+ 15.0x
+ 20.0x
+ 25.0x
+ 30.0x
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+BA GD LHX LMT
+NOC RTX GE
+ -
+ 0.4x
+ 0.8x
+ 1.2x
+ 1.6x
+ 2.0x
+ 2.4x
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+BA GD LHX LMT
+NOC RTX GE
+0
+10
+20
+30
+40
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+AIN BBD/B CN BWXT
+CAE CN EMBJ GRMN
+HEI HXL HWM
+ -
+ 0.5x
+ 1.0x
+ 1.5x
+ 2.0x
+ 2.5x
+ 3.0x
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+CR AIN BBD/B CN
+BWXT CAE CN EMBJ
+HEI HXL HWM
+0
+10
+20
+30
+40
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+CR AIN BBD/B CN
+BWXT CAE CN EMBJ
+GRMN HEI HXL
+ -
+ 0.5x
+ 1.0x
+ 1.5x
+ 2.0x
+ 2.5x
+ 3.0x
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+CR AIN BBD/B CN
+BWXT CAE CN EMBJ
+HEI HXL HWM
+CR 
+本报告来源于三个皮匠报告站（www.sgpjbg.com）,由用户Id:865822下载,文档Id:1023410,下载日期:2026-01-04
+
+=== PAGE 11 ===
+
+ 
+ Valuation Trends | 15 December 2025    11 
+ 
+ 
+Exhibit 39: SMALL & MID CAP NTM EV/EBITDA 
+Commercial aero names are surpassing pre covid levels, and are trading 
+between 10x and 20x  
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 40: NTM EV/EBITDA relative to S&P 500 
+Multiples in line with 2013-2015 levels, between 0.5x and 1.5x 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ 
+Exhibit 41: SMALL & MID CAP STM EV/EBITDA 
+Commercial aero names trading in line with pre covid levels, with multiples 
+between 10x-20x 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 42: STM EV/EBITDA relative to S&P 500 
+Multiples at 10-year highs 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ 
+Exhibit 43: DEFENSE SERVICES CAP NTM EV/EBITDA 
+Relative valuation trending upwards, with multiples between 10x and 
+15x 
+ 
+Source: BofA Global Research, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+  
+ 
+0
+10
+20
+30
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+HII RBC TXT TDG TDY
+0
+0.5
+1
+1.5
+2
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+HII RBC TXT TDG TDY
+0
+10
+20
+30
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+HII RBC TXT TDG TDY
+0
+0.5
+1
+1.5
+2
+Dec-08
+Dec-10
+Dec-12
+Dec-14
+Dec-16
+Dec-18
+Dec-20
+Dec-22
+Dec-24
+HII RBC TXT TDG TDY
+0
+5
+10
+15
+20
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+BAH CACI LDOS PSN KBR
+CR 
+
+=== PAGE 12 ===
+
+ 
+ 
+12 Valuation Trends | 15 December 2025  
+ 
+ 
+Exhibit 44: DEFENSE SERVICES CAP STM EV/EBITDA 
+Relative valuation generally trending upwards, with multiples between 10x-
+15x 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 45: STM EV/EBITDA relative to S&P 500 
+Relative valuation in line with previous years, at ~1.0x top the S&P500 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ 
+Free Cash Flow Yield 
+Exhibit 46: LARGE CAP NTM FCF Yield 
+A&D large caps are declining, with FCF yield ~5% 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 47: NTM FCF Yield relative to S&P 500 
+Trending towards market multiple or higher, with rel. multiples between 
+1.0x-2.0x 
+ 
+Source: BofA Global Research, Bloomberg, Factset  
+BofA GLOBAL RESEARCH 
+ 
+ 
+Exhibit 48: LARGE CAP STM FCF Yield 
+Large caps have de-rated from recent peak in 2018, and are trading around 
+5% FCF yield 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 49: STM FCF Yield relative to S&P 500 
+Relative valuation recovering from recent 2020 lows and are trading between 
+0.8x-1.2x relative to the S&P500 
+ 
+Source: BofA Global Research, Bloomberg, Factset  
+BofA GLOBAL RESEARCH 
+ 
+ 
+0
+5
+10
+15
+20
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+BAH CACI LDOS KBR PSN
+0
+1
+2
+Dec-08
+Dec-10
+Dec-12
+Dec-14
+Dec-16
+Dec-18
+Dec-20
+Dec-22
+Dec-24
+BAH CACI LDOS PSN KBR
+-5%
+0%
+5%
+10%
+15%
+20%
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+BA GD LHX LMT
+NOC RTX GE
+0
+1
+2
+3
+4
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+CR AIN BBD/B CN
+BWXT CAE CN EMBJ
+GRMN HEI HXL
+0%
+5%
+10%
+15%
+20%
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+BA GD LHX LMT
+NOC RTX GE
+ -
+ 0.4x
+ 0.8x
+ 1.2x
+ 1.6x
+ 2.0x
+ 2.4x
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+BA GD LHX LMT
+NOC RTX GE
+CR 
+
+=== PAGE 13 ===
+
+ 
+ Valuation Trends | 15 December 2025    13 
+ 
+ 
+Exhibit 50: SMALL & MID CAP NTM FCF Yield 
+Most of these SMID players trading below 5% 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 51: NTM FCF Yield relative to S&P 500 
+Most of these SMID players trading at a premium to the S&P 500, with 
+relative multiples between 1.0x and 2.5x 
+ 
+Source: BofA Global Research, Bloomberg, Factset  
+BofA GLOBAL RESEARCH 
+ 
+ 
+Exhibit 52: SMALL & MID CAP NTM FCF Yield 
+Increased valuation divergence since 2015, with FCF yield between 3% and 
+8% 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 53: NTM FCF Yield relative to S&P 500 
+MRCY and TDG trading at highest rel. mult. of group to S&P 500 at around 
+1.5x 
+ 
+Source: BofA Global Research, Bloomberg, Factset  
+BofA GLOBAL RESEARCH 
+ 
+ 
+Exhibit 54: SMALL & MID CAP STM FCF Yield 
+Increased valuation divergence since 2015, between 5% and 100% FCF yield 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 55: STM FCF Yield relative to S&P 500 
+In line with previous years, with relative valuation ~1.0x 
+ 
+Source: BofA Global Research, Bloomberg, Factset  
+BofA GLOBAL RESEARCH 
+ 
+ 
+ 
+0%
+5%
+10%
+15%
+20%
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+CR AIN BBD/B CN
+BWXT CAE CN EMBJ
+GRMN HEI HXL
+HWM
+0
+1
+2
+3
+4
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+CR AIN BBD/B CN
+BWXT CAE CN EMBJ
+GRMN HEI HXL
+0
+0.05
+0.1
+0.15
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+HII RBC TXT TDG TDY
+0
+0.5
+1
+1.5
+2
+2.5
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+HII RBC TXT TDG TDY
+0
+0.05
+0.1
+0.15
+0.2
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+HII RBC TXT TDG TDY
+0
+0.5
+1
+1.5
+2
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+HII RBC TXT TDG TDY
+CR 
+
+=== PAGE 14 ===
+
+ 
+ 
+14 Valuation Trends | 15 December 2025  
+ 
+ 
+Exhibit 56: DEFENSE SERVICES CAP NTM FCF Yield 
+Valuation generally trending back towards lower levels, with FCF yield ~5% 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 57: NTM FCF Yield relative to S&P 500 
+Improving relative valuation from 2020 recent lows, and are now 0.5x-1.0x 
+ 
+Source: BofA Global Research, Bloomberg, Factset  
+BofA GLOBAL RESEARCH 
+ 
+ 
+Exhibit 58: DEFENSE SERVICES CAP STM FCF Yield 
+Re-rating from 10-15 years ago shows the higher tech content, with FCF 
+yield between 5%-10%  
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 59: STM FCF Yield relative to S&P 500 
+Relative valuation trending upwards, with multiples between 0.6x-1.0x 
+ 
+Source: BofA Global Research, Bloomberg, Factset  
+BofA GLOBAL RESEARCH 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Lessors Price to Book Value 
+Exhibit 60: LESSORS CAP NTM P/BV 
+COVID-19 significantly affected the implied value in lessors’ book; multiples 
+are now ~0.6x-1.1x 
+ 
+Source: BofA Global Research, Bloomberg, Factset  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 61: LESSORS CAP STM P/BV 
+COVID-19 significantly affected the implied value in lessors’ book, multiples 
+are now 0.7x-1.1x 
+ 
+Source: BofA Global Research, Bloomberg, Factset  
+BofA GLOBAL RESEARCH 
+ 
+ 
+0
+0.05
+0.1
+0.15
+0.2
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+BAH CACI LDOS PSN KBR
+0
+0.5
+1
+1.5
+2
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+BAH CACI LDOS PSN KBR
+0
+0.05
+0.1
+0.15
+0.2
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+BAH CACI LDOS PSN KBR
+0
+0.5
+1
+1.5
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+BAH CACI LDOS PSN KBR
+ -
+ 0.6x
+ 1.2x
+ 1.8x
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+AER
+ -
+ 0.6x
+ 1.2x
+ 1.8x
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+AER
+CR 
+
+=== PAGE 15 ===
+
+ 
+ Valuation Trends | 15 December 2025    15 
+ 
+ 
+Exhibit 62: LESSORS CAP P/BV 
+Multiples are recovering YTD, between 0.8x-1.2x 
+ 
+Source: BofA Global Research, Bloomberg, Factset  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 63: LESSORS CAP P/BV (Tangible) 
+AER P/BV multiple recovering at ~1.7x 
+ 
+Source: BofA Global Research, Bloomberg, Factset  
+BofA GLOBAL RESEARCH 
+ 
+ 
+Main Aerospace Drivers 
+Exhibit 64: Jet Fuel Price (as of December 12, 2025) 
+Jet fuel spot price is at $695 vs. range of $300-$1500 since end of 1999 
+ 
+Source: BofA Global Research, Bloomberg   
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 65: USD change to £ and Euro (as of December 12, 2025) 
+EUR/USD is up 13% in 2025 YTD, near the bottom of the 20-year range 
+ 
+Source: BofA Global Research, Datastream, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ 
+ -
+ 0.6x
+ 1.2x
+ 1.8x
+ 2.4x
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+AER
+ -
+ 0.6x
+ 1.2x
+ 1.8x
+ 2.4x
+ 3.0x
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Dec-25
+AER
+0
+300
+600
+900
+1,200
+1,500
+Dec-99
+Dec-01
+Dec-03
+Dec-05
+Dec-07
+Dec-09
+Dec-11
+Dec-13
+Dec-15
+Dec-17
+Dec-19
+Dec-21
+Dec-23
+Jet Fuel FOB ARA - Barges ($ / metric tonne)
+Calendar Year Avg.
+0.60
+1.20
+1.80
+1.00
+1.60
+2.20
+Jan-05
+Jan-06
+Jan-07
+Jan-08
+Jan-09
+Jan-10
+Jan-11
+Jan-12
+Jan-13
+Jan-14
+Jan-15
+Jan-16
+Jan-17
+Jan-18
+Jan-19
+Jan-20
+Jan-21
+Jan-22
+Jan-23
+Jan-24
+Jan-25
+US $ TO UK £ (GTIS) - EXCHANGE RATE
+(LHS)
+US $ TO EURO (ECB) - EXCHANGE RATE
+(RHS)
+CR 
+
+=== PAGE 16 ===
+
+ 
+ 
+16 Valuation Trends | 15 December 2025  
+ 
+ 
+Lease Rates 
+Exhibit 66: Ascend Market Lease Rates - Narrowbodies (0 yrs age) 
+Lease rates for new single aisles increasing with BA 737 MAX lease rates of 
+~0.4 
+ 
+Source: Cirium  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 67: Ascend Market Lease Rates - Widebody Twins (0 yrs 
+age) 
+Lease rates for new twin aisles recovering, but in line with pre covid, between 
+0.5-1.2 
+ 
+Source: Cirium  
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 68: Ascend Constant Age Market Lease Rates - A320-200 
+Across age ranges A320-200 lease rates are recovering to pre-pandemic 
+rates, between 0.15-0.25 depending on age 
+ 
+Source: Cirium  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 69: Ascend Constant Age Market Lease Rates - A320-neo 
+Lease rates are recovering for A320-neo, in line with pre covid rates, with 5-
+year old at 0.3 and 0-year old at 0.4 
+ 
+Source: Cirium  
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 70: Ascend Constant Age Market Lease Rates - 737-800 
+Across age ranges 737-800 lease rates are recovering to pre-pandemic rates, 
+with rates between 0.15-0.3 depending on age 
+ 
+Source: Cirium  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 71: Ascend Constant Age Market Lease Rates - 737 Max-8 
+737 Max-8 rates starting to recover, in line with pre-pandemic and FAA 
+grounding rates, between 0.3-0.4 
+ 
+Source: Cirium  
+BofA GLOBAL RESEARCH 
+ 
+ 
+0.00
+0.10
+0.20
+0.30
+0.40
+0.50
+2000
+2001
+2003
+2004
+2006
+2007
+2009
+2011
+2012
+2014
+2015
+2017
+2019
+2020
+2022
+2023
+2025
+Airbus A320-200 (5B/A5)
+Boeing 737 NG-800
+Airbus A320-200 neo
+Boeing 737 Max-8
+0.00
+0.60
+1.20
+1.80
+2000
+2002
+2004
+2006
+2008
+2010
+2012
+2014
+2016
+2018
+2020
+2022
+2024
+Airbus A330-200 Boeing 777-200ER
+Boeing 777-300ER Boeing 787-8
+0.00
+0.10
+0.20
+0.30
+0.40
+0.50
+1993
+1995
+1997
+1999
+2001
+2003
+2005
+2007
+2009
+2011
+2013
+2015
+2017
+2019
+2021
+2023
+2025
+0 5 10 15 20 25
+0.00
+0.10
+0.20
+0.30
+0.40
+0.50
+2014
+2015
+2016
+2017
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+0 5
+0.00
+0.10
+0.20
+0.30
+0.40
+0.50
+1997
+1998
+2000
+2002
+2004
+2005
+2007
+2009
+2011
+2012
+2014
+2016
+2018
+2019
+2021
+2023
+2025
+0 5 10 15 20 25
+0.00
+0.10
+0.20
+0.30
+0.40
+0.50
+2016
+2017
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+0
+5
+CR 
+
+=== PAGE 17 ===
+
+ 
+ Valuation Trends | 15 December 2025    17 
+ 
+ 
+Exhibit 72: Ascend Constant Age Market Lease Rates - A330-200 
+Constant Age Market Lease Rates, in $mn per month 
+ 
+Source: Cirium  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 73: Ascend Constant Age Market Lease Rates - A350-900 
+A350-900 lease rates are recovering to pre-pandemic rates, with younger 
+aircraft trending toward 1.2 and older aircraft trending toward 1.0x 
+ 
+Source: Cirium  
+BofA GLOBAL RESEARCH 
+ 
+ 
+Exhibit 74: Ascend Constant Age Market Lease Rates - 777-200ER 
+Across age ranges 777-200ER lease rates are relatively flat across the last five 
+years, at 0.3 
+ 
+Source: Cirium  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 75: Ascend Constant Market Lease Rates - 777-300ER 
+Across age ranges 777-300ER lease rates are recovering to pre-pandemic 
+rates, trending towards 0.6 
+ 
+Source: Cirium  
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 76: Ascend Constant Market Lease Rates - 787-8 
+787-8 lease rates are recovering to pre-pandemic rates, with rates between 
+0.7-1.0 depending on age 
+ 
+Source: Cirium  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 77: Ascend Constant Market Lease Rates - 787-9 
+787-9 lease rates are recovering to pre-pandemic rates, with rates between 
+0.8 and 1.0 depending on age 
+ 
+Source: Cirium  
+BofA GLOBAL RESEARCH 
+ 
+  
+0.00
+0.30
+0.60
+0.90
+1.20
+1998
+1999
+2001
+2003
+2004
+2006
+2008
+2009
+2011
+2013
+2014
+2016
+2018
+2019
+2021
+2023
+2024
+0 5 10 15 20
+0.00
+0.40
+0.80
+1.20
+1.60
+2013
+2014
+2015
+2016
+2017
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+0
+5
+0.00
+0.40
+0.80
+1.20
+1996
+1998
+2000
+2002
+2004
+2006
+2008
+2010
+2012
+2014
+2016
+2018
+2020
+2022
+2024
+0 5 10 15 20
+0.00
+0.60
+1.20
+1.80
+2003
+2004
+2005
+2007
+2008
+2010
+2011
+2012
+2014
+2015
+2017
+2018
+2020
+2021
+2022
+2024
+2025
+0 5 10 15 20
+0.00
+0.40
+0.80
+1.20
+2010
+2011
+2012
+2013
+2014
+2015
+2016
+2017
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+0
+5
+10
+0.00
+0.40
+0.80
+1.20
+1.60
+2013
+2014
+2015
+2016
+2017
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+0 5
+CR 
+
+=== PAGE 18 ===
+
+ 
+ 
+18 Valuation Trends | 15 December 2025  
+ 
+ 
+Raw Materials 
+Exhibit 78: LME Spot Copper Prices ($/ton) 
+Spot Copper price is at $11500.44, at the upper end of the 40-year range 
+ 
+Source: Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 79: LME Nickel Copper Prices ($/ton) 
+Spot Nickel price is at $14705.74, in the mid-range excluding spikes 
+ 
+Source:  Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ 
+ 
+Exhibit 80: LME Spot Aluminum Prices($/ton) 
+Spot Aluminum price is at $2873.75, towards the upper end of the 40-year 
+range (ex. the spikes) 
+ 
+Source:  Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+  
+ 
+   
+Economic Indicators 
+Exhibit 81: GDP forecast 
+Global GDP is expected to grow 3.4% Y/Y in 2025E. China expected to grow ~5% with most major regions expecting growth of ~3% or less 
+ 
+Source: BofA Global Research Economists  
+BofA GLOBAL RESEARCH 
+ 
+0
+4,000
+8,000
+12,000
+16,000
+May-86 May-93 May-00 May-07 May-14 May-21
+0
+10,000
+20,000
+30,000
+40,000
+50,000
+60,000
+Jan-87 Jan-93 Jan-99 Jan-05 Jan-11 Jan-17 Jan-23
+0
+1,500
+3,000
+4,500
+6,000
+Oct-87 Oct-93 Oct-99 Oct-05 Oct-11 Oct-17 Oct-23
+-9.0%
+-4.0%
+1.0%
+6.0%
+11.0%
+2009 2010 2011 2012 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025E 2026E 2027E
+Global US China Emerging EMEA Latin America European Union
+CR 
+
+=== PAGE 19 ===
+
+ 
+ Valuation Trends | 15 December 2025    19 
+ 
+ 
+Exhibit 82: CPI inflation forecast 
+Global CPI inflation is expected to be 2.4% Y/Y in 2025E 
+CPI inflation, % 
+  2024 2025E 2026E 2027E 
+Global 3.2% 2.4% 2.4% 2.4% 
+US 3.0% 2.8% 2.9% 2.4% 
+China 0.2% -0.1% 0.0% 0.5% 
+Emerging EMEA 13.2% 9.2% 6.8% 5.5% 
+Latin America 4.2% 3.8% 3.7% 3.6% 
+European Union 2.6% 2.5% 1.8% 2.0% 
+Source: BofA Global Research Economists  
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 83: Interest Rates forecast 
+Global interest rate is expected at 3.82% for 2025E 
+ST int rates 
+  Current 2025E 2026E 2027E 
+Global 3.83% 3.82% 3.26% 3.24% 
+US 3.88% 3.88% 3.13% 3.13% 
+China 1.40% 1.40% 1.20% 1.20% 
+Emerging EMEA 8.59% 8.79% 7.00% 6.08% 
+Latin America 8.68% 8.60% 6.94% 6.57% 
+European Union 2.33% 2.33% 2.08% 2.07% 
+Source: BofA Global Research Economists  
+BofA GLOBAL RESEARCH 
+ 
+ 
+CR 
+
+=== PAGE 20 ===
+
+ 
+ 
+20 Valuation Trends | 15 December 2025  
+ 
+ 
+Short Interest Ratio 
+Exhibit 84: Large Caps 
+GD's short interest ratio was 2.7x is the highest among the group 
+ 
+Source: BofA Global Research, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 85: Small & Mid Caps 
+TDY’s short interest ratio was 4.0x is the highest among the group 
+ 
+Source: BofA Global Research, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 86: Multi-industry 
+TXT´s short interest ratio was 3.2x vs. a range of 2x-6x over the last year 
+ 
+Source: BofA Global Research, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 87: Small & Mid Caps 
+HXL’s short interest ratio was 7.1x, the highest among the group 
+ 
+Source: BofA Global Research, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 88: Aircraft Lessors 
+AER´s short interest ratio was 2.6x 
+ 
+Source: BofA Global Research, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+ Exhibit 89: Defense Services 
+PSN’s short interest ratio was 7.3x, the highest among the group 
+ 
+Source: BofA Global Research, Bloomberg 
+BofA GLOBAL RESEARCH 
+ 
+ 
+0
+2
+4
+6
+Short Interest Ratio
+BA GD LMT
+0
+4
+8
+12
+Short Interest Ratio
+ERJ CAE BBD
+0
+2
+4
+6
+Short Interest Ratio
+TXT
+0
+5
+10
+Short Interest Ratio
+RBC HXL HII
+HEI GRMN BWXT
+0
+1
+1
+2
+2
+3
+3
+4
+Short Interest Ratio
+AER
+0
+4
+8
+12
+Short Interest Ratio
+BAH CACI LDOS
+CR 
+
+=== PAGE 21 ===
+
+ 
+ Valuation Trends | 15 December 2025    21 
+ 
+ 
+Credit Default Swaps 
+The following charts show historical Credit Default Swap Spreads for each company, 
+expressed in basis points. 
+Exhibit 90: Large Caps historical CDS 
+BA 5yr CDS declined to 69bps after a drastic post pandemic drop 
+ 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+ 
+ 
+  
+ 
+Price objective basis & risk 
+AerCap Holdings N.V. (AER) 
+We derive our PO of $150 using a 1.3x P/TBV multiple on 2026 estimates excluding 
+goodwill but not premium assets and maintenance rights. Our 1.3x multiple compares to 
+0.3-1.8x of last ten-year range. We think this multiple is justified given the underlying 
+value of AER's existing portfolio (including highly profitable older planes, engines, and 
+ample range to continue to sell aircraft at a gain) as well as opportunistic capital 
+deployment. 
+ 
+Downside risks to our PO are global economic weakness, fuel price spikes, inability to 
+access capital markets at attractive terms, terrorism and geopolitical events, a downturn 
+in aircraft values resulting from rising supply, flattening yield curve, a sharp appreciation 
+of the U.S. dollar, changes in equity risk premiums, overall stock market and financial 
+company valuations, and actual value of GECAS assets is lower than expected. 
+ 
+Upside risks to our PO are higher-than-forecast aircraft trading gains, faster-than-
+expected recovery in air traffic and commercial air travel, higher lease rates, stronger-
+than-expected economic growth, continued weakness in fuel prices, U.S. dollar 
+depreciation, easier access to credit at attractive rates, and higher-than-expected 
+unlocked value from GECAS assets. 
+AeroVironment (AVAV) 
+Our PO of $450 is derived from an 10x EV/Sales multiple on CY2026E. The 10x EV/Sales 
+growth represents a 0.6x EV/Sales/Growth multiple in line with the peer average and 
+above Defense Primes. We see the premium to traditional defense primes as fair given 
+strong growth opportunities in emerging fields and investor appetite for "defense tech" 
+exposure. 
+ 
+Upside risks to our PO are higher than expected growth in defense spending, increased 
+investment in drone programs, continued NATO funding growth and interest, and further 
+strategic M&A. 
+ bps
+200 bps
+400 bps
+600 bps
+Dec-04 Dec-07 Dec-10 Dec-13 Dec-16 Dec-19 Dec-22 Dec-2
+BA GD LMT NOC RTN BA CAP
+CR 
+
+=== PAGE 22 ===
+
+ 
+ 
+22 Valuation Trends | 15 December 2025  
+ 
+ 
+ 
+Downside risks to our PO are increased commercial competition, poor award activity in 
+international markets, diminished funding for drone programs, and integration 
+challenges stemming from the BlueHalo acquisition. 
+Albany International (AIN) 
+Our PO of $55 is based on a sum-of-the-parts (SOTP) valuation reflecting a 7x 2026E 
+EV/EBITDA multiple on Machine Clothing and a 10x multiple on AEC. In our view, a 7x 
+multiple for MC accounts for upcoming challenges at the business while still providing a 
+slight premium to the company's paper/packaging and machining peer group as well as 
+future Heimbach contributions. We also see a 10x multiple for AEC as fairly reflecting 
+potential headwinds in comml and defense. 
+ 
+Downside risks to our price objective are as follows: the Machine Clothing segment is 
+AIN's primary driver of cash. Global slowdown in paper production and/or disruption in 
+the production of paper could hurt AIN's profits and cash profile. A disruption in cash 
+generation in Machine Clothing could hinder management's ability to invest in aerospace 
+and defense. A commercial aerospace downturn that affects narrowbody aircraft that 
+have the CFM Leap engine could materially affect Albany. Unexpected cancellations to 
+programs in both commercial and military could materially impact AIN. Uncertainty 
+around leadership. 
+ 
+Upside risks to our PO are as follows: if the Airbus A320neo, Boeing 737 MAX and 
+Comac C919 announced production rates are increased, AIN would benefit as a sole 
+sourced supplier to the CFM LEAP engine and could provide upside to our estimates. 
+Increased scope of work on existing programs and/or new program wins could provide 
+upside in the medium term. 
+Axon Enterprise Inc (AXON) 
+We derive our valuation of $805 using an EV/Sales 18x multiple on 2026E revenue, 
+which would value Axon at a slight premium to software peers. We view the valuation 
+ahead of peers as fair given Axon's business model is unique in providing for both safety 
+hardware and software, which leverages its multi-tiered subscription model. 
+ 
+Downside risks to our PO are a downturn in overall security/safety spending from local, 
+state, and federal governments which could negatively impact growth opportunities. 
+Additionally, the legal landscape for police surveillance is evolving and could negatively 
+impact Axon's international addressable markets. 
+ 
+Upside risks to our PO are greater adoption of more expensive subscription tiers from 
+their existing customers. Quicker adoption of Axon's Software & Sensor products in 
+international and federal markets. Additionally, we see upside potential from acquisition 
+targets contributing to earnings as well as potentially increasing Axon's addressable 
+market. 
+BETA Technologies (BETA) 
+Our PO of $35 is based on a long term DCF of Base, Bull, and Bear scenarios for both 
+revenue and cash generation between 2025E and 2035E. Given BETA is a company 
+expected to generate negative EPS and free cash flow, we view a long-term cash flow 
+analysis as the best way to value the equity. Our DCF factors in a 14% discount rate and 
+assigns a 33% weighting to the Base case (5% terminal growth rate (TGR)), 33% 
+weighting to the Bull case (7% TGR), and 33% weighting to the Bear case (3% TGR). We 
+employ a lower discount rate relative to peers (15%-20%) to account for the company's 
+mature phase in aircraft development milestones and technologies. In our view, the 
+equal weighting fairly reflects current investor risk appetite, momentum for new 
+technology A&D stocks, and the perceived viability of BETA's business model compared 
+to peers. 
+CR 
+
+=== PAGE 23 ===
+
+ 
+ 
+ Valuation Trends | 15 December 2025    23 
+ 
+ 
+ 
+Upside risks: FAA certifying the CX300 and A250 ahead of the anticipated late 2026/ 
+early 2027 and late 2027 / early 2028 timelines, respectively. BETA developing their 
+military variant ahead of schedule. Significant funding increases to eVTOL infrastructure 
+and demand. Lower-than-expected losses and cash burn. 
+ 
+Downside risks: If the FAA certification is delayed significantly for either platform, or 
+potentially never at all. eVTOL / UAM market not growing meaningfully over the next 
+decade. Supply chain / production delays during BETA's production ramp phase. Any 
+major safety lapses or accidents involving any electric aircraft / eVTOL manufacturer 
+Boeing (BA) 
+Our $270 PO is based on normalized FCF of $10/share and relative value to the S&P 500 
+of 1.0x (1 standard deviations above historical average). In our view, a premium to the 
+market fairly reflects the strong demand for commercial jets and F-47 ramp-up. 
+ 
+Upside risks are the possible involvement of an activist shareholder, better-than-
+expected cash margins at 787 and/or MAX programs, the company's ability to sustain 
+777 delivery rates through the bridge to 777X, lower-than-expected 777X, future single-
+aisle and middle-of-the-market aircraft development costs, F/A-XX potential win. 
+ 
+Downside risks: Tight competition for talent in the labor market could make new product 
+development more challenging. Execution risk on new programs and production ramp-
+ups (737MAX, 777X, KC-46) could result in cost overruns and margin contractions. 
+Changes in trade policy that end in a trade war. A sharp and prolonged surge in oil prices 
+to above $100/barrel would be negative to aircraft demand. A downturn in commercial 
+aviation, due to an exogenous factor, could adversely affect financial results. As aircraft 
+are priced in USD, an unexpected rapid revaluation in the dollar could significantly affect 
+order activity. Also, a strong dollar could improve EU competitor's advantage. 787 fixes 
+could take longer than expected. Reputation risk stemming from recent incidents could 
+result in fewer incremental orders. Asset sales that may not materialize. F-47 execution 
+could be a challenge. 
+Bombardier Inc. (YBBD B / BDRBF) 
+Our PO of C$235 (US$178) is based on a relative 1.3x EV/EBITDA multiple to the 
+Toronto Exchange on 2026E. The multiple implies a 13x EV/EBITDA on 2026E. The 
+Canadian listed stock is based on a 1.32 USD/CAD exchange rate, which implies an $178 
+USD price. 
+ 
+Downside risks to our PO are: Acquisitions which could ultimately be destructive to 
+margin, a distraction to management, and ultimately could disrupt operations and 
+strategy moving forward. A downturn in business jet markets would have an outsized 
+impact on BBD given the company's sole exposure is to BizJets. Additionally, tariffs may 
+pose margin and demand risk. 
+Booz Allen Hamilton (BAH) 
+Our PO of $90 is based on a 0.8x relative EV/EBITDA multiple to the defense primes, at 
+the lower end of the 0.8x-1.4x historical range. This reflects a 12x EV/EBITDA multiple. 
+We think a relative multiple at the lower end of the historical range fairly reflects the 
+downward pressure from Civil exposure and delayed accelerations in Defense We think 
+valuation will remain pressured until BAH can return to a net growth trajectory. 
+ 
+Risks to the upside are a better-than-anticipated upturn in the federal budget, faster-
+than-expected normalization from post-DOGE environment, inexpensive and well-
+integrated M&A activity and unexpected capital return to shareholders in the form of 
+buybacks or special dividends. 
+ 
+CR 
+
+=== PAGE 24 ===
+
+ 
+ 
+24 Valuation Trends | 15 December 2025  
+ 
+ 
+Risks to the downside are cuts to the DoD budget vs. anticipated, unfavorable timing 
+between DOGE-related cuts and the bridge to new tech-oriented solutions. Should BAH 
+run into any problems with integrating M&A, containing its costs or a heightened 
+competitive environment there could be downside risk to our estimates. 
+BWX Technologies, Inc. (BWXT) 
+Our PO of $230 is based on 33x EV/EBITDA multiple on 2026 estimates. This implies a 
+2.2x relative multiple on the defense primes' 15x weighted average multiple, above 
+historical average. The premium to defense primes is supported by the company's 
+exposure to the US Navy, its monopoly on nuclear powered ships, the inflection of the 
+medical business, and the company's diversification into adjacent markets. 
+ 
+Downside risks to our PO are losing US government contracts, changes in contracting 
+terms that could pressure margins, and program procurement changes that result in 
+market share loss. The US government is BWXT's largest customer and drives the 
+majority of BWXT's revenues. Overly optimistic company outlook. 
+ 
+Upside risks to our PO are additional upside from the AUKUS trilateral agreement, better 
+than expected operating performance and margins, and increased demand for nuclear 
+aftermarket for powerplants. Additionally, acquisitions could provide upside to our 
+estimates. 
+CACI International (CACI) 
+Our PO of $670 is based on a relative EV/EBITDA multiple in line with the defense 
+primes on CY26 estimates. This equals a 16x EV/EBITDA. We think CACI is well 
+positioned to long-term DoD and intelligence priorities. We see continued execution and 
+margin expansion bolstering valuation, with opportunities for upside from strategic M&A 
+to gain market share in growing areas of importance (such as electronic warfare, signals 
+intelligence & radio-frequency tech). 
+ 
+Downside risks are cuts to the DoD budget vs. anticipated, problems finding acquisition 
+targets, integrating M&A, hiring the right personnel, containing its costs, estimating 
+costs and executing on fixed price contracts, sustaining reputational risk and future 
+awards. 
+ 
+Upside risks are a better than anticipated federal budget allocated to innovative 
+technologies and modernization, inexpensive and well integrated M&A activity, 
+unexpected capital return to shareholders in the form of dividends, market share gains in 
+the mission technology arena, better than expected margin expansion. 
+Cadre Holdings Inc (CDRE) 
+We value CDRE on a relative EV/EBITDA basis on adjusted 2026 estimates. We assume a 
+10x multiple, which is .7x relative to the S&P500. As a result, we derive a PO of $26. 
+ 
+Upside Risks: Cadre is more acquisitive than we assume and expands margins more 
+rapidly than we anticipate. Increased organic sales outpace our assumption through a 
+combination of market share gains, price pass through, and increased demand for 
+products. 
+ 
+Downside Risks: Cadre's M&A strategy is not successful and the integration of 
+acquisitions is more difficult than anticipated. Synergies are not achieved at the 
+targeted rates, competitors gain market share, and the regulatory environment shifts 
+unfavorably. 
+Crane Co. (CR) 
+We value CR on relative EV/EBITDA multiple on 2026 estimates. We assume a 1.6x 
+relative multiple to the S&P500 on 2026. We believe this fairly reflects the strong 
+CR 
+
+=== PAGE 25 ===
+
+ 
+ 
+ Valuation Trends | 15 December 2025    25 
+ 
+ 
+performance CR has demonstrated as a stand-alone company, the value unlocked from 
+both operational and portfolio shaping over the last seven years, and the upside of 
+inorganic growth as the company aggressively pursues M&A. Applying this multiple we 
+derive a $225 PO. 
+ 
+Downside risks to our PO are another downturn in commercial aviation, due to an 
+exogenous factor or natural business cyclicality, could adversely affect CR's financial 
+results. CR could be materially affected by increased R&D expense if serious 
+complications should arise from new platforms. A decline in US bill circulation could 
+negatively affect Payment. Weakness in chemicals, oil and gas, and power, could 
+materially affect the outlook for Process Flow Technologies. Increasing asbestos claims 
+could result in higher settlement or defense costs and thus affect CR's financial results. 
+ 
+Upside risks to our PO are a faster recovery in its end-markets than expected, 
+particularly in commercial aerospace, acquisitions, which could provide upside to our 
+estimates, better than-expected execution, which could increase the company's earnings 
+power, and share buybacks, which could be greater than anticipated. 
+Elbit Systems Ltd (ESLT / XEBLF) 
+Our PO of USD $550 / ILS 1,843 is derived from a 25x EV/EBITDA multiple on 2026E. 
+The 25x multiple is a premium relative to US defense primes, but in line with SMID Cap 
+US defense companies and European defense names. We see the slight premium as 
+reflecting Elbit's revenue growth, significant demand reflected in the company's backlog, 
+and differentiated technologies. 
+ 
+Upside risks to our PO are: Global defense budgets and spending increasing ahead of 
+expectations, faster- and better-than expected margin expansion, inexpensive and well-
+integrated M&A activity, and market share gains. 
+ 
+Downside risks to our PO are: If the Israel, US, or NATO defense budgets for RDT&E and 
+investment accounts do not increase as we expect, this could affect ELST's defense 
+business. Additionally increased competition from non-traditional defense providers, and 
+risky M&A, could also negatively impact ESLT's financials. 
+Embraer (EMBJ) 
+Our PO of $70 is based on a 0.75x relative EV/EBITDA multiple (including 72% Eve 
+stake), which represents the average since November 2000, on 2026 estimates, and fair, 
+in our view, given similar growth expectations. 
+ 
+Upside risks: a stronger-than-anticipated air traffic recovery, cost reductions and 
+execution better than forecast, sales campaigns proceed better than forecast, greater 
+recovery in light and medium business jets, better Brazilian defense and security budget. 
+ 
+Downside risks: ERJ's products do not have a large enough end market, operational 
+challenges, downturn in commercial and/or business jet markets. ERJ is exposed to 
+currency headwinds, as some of its cost base is denominated in Brazilian reals (BRL). 
+BRL strength relative to the USD could negatively affect its margins. Many view ERJ as a 
+Brazilian entity, even though its cash flow suggests its exposure is global. Last, a 
+Brazilian market selloff could impact ERJ shares. 
+Garmin (GRMN) 
+We derive our PO of $185 using a 0.9x relative PE multiple applied to 2026E as we think 
+it fairly balances strong wearables demand with potential downside risk to AutoOEM 
+demand and potential supply chain impacts from tariffs. 
+ 
+Upside risks to our PO are faster-than-expected growth from new products like smart 
+wearables and the development of an innovative category making product. Increased 
+CR 
+
+=== PAGE 26 ===
+
+ 
+ 
+26 Valuation Trends | 15 December 2025  
+ 
+ 
+demand for wearables could provide upside to our estimates. 
+ 
+Downside risks to our PO are market saturation in the medium term, after some of 
+GRMN's end markets experienced strong tailwinds in the quarters driven by the 
+pandemic. Industry-wide constraints of certain electrical components could also provide 
+some downside to our estimates if disruptions intensify and supply chains deteriorate. 
+FX and freight headwinds could also continue to weigh on margins. 
+GE Aerospace (GE) 
+Our PO of $365 is derived using a 1.7x relative P/FCF multiple vs. the S&P500 on 2026 
+estimates. This implies a 2.2% FCF yield. We see the multiple as fairly capturing the 
+robust demand environment in commercial OE, aftermarket shop-visit growth, strong IP-
+driven portfolio, and anticipated profitability of the LEAP program starting in 2025. 
+ 
+Upside risks to our PO are additionally aftermarket strength, if margins fare better than 
+we are forecasting, if the company executes on existing programs better than expected, 
+or if gains share in the international market or makes a materially accretive acquisition. 
+ 
+Downside risks to our PO are a downturn in commercial aviation due to the natural 
+business cycle or an exogenous event such as a terrorist attack or a pandemic, a severe 
+global economic slowdown affecting top-line growth, execution risk on defense 
+programs or unexpected cancellations to programs, and uncertain timing around orders 
+from international programs. 
+General Dynamics (GD) 
+Our PO of $400 is derived using a 1.1x relative multiple to the S&P 2026e EV/EBITDA. 
+We think a premium to the market fairly considers the strength of the defense portfolio, 
+continued Gulfstream performance, upside opportunities at Marine, and improving Tech 
+operations. 
+ 
+Downside risks to our PO are 1) a downturn could occur in business jets, due to an 
+exogenous factor, 2) given that business jets are priced in dollars, an unexpected 
+devaluation in the dollar could significantly impact order activity, 3) poor execution on 
+defense programs could adversely impact margins, 4) defense budget cuts could limit 
+growth in the medium and long term. 
+HEICO Corporation (HEI) 
+Our PO of $400 is based on a 2.5x relative P/FCF multiple to the S&P 500 on CY26 
+estimates. Historically, HEI has traded between 0.9x and 2.6x NTM relative P/FCF 
+multiple (excluding outlier period in 2013). In our view, a relative multiple above HEI's 5-
+year 1.92x average fairly factors in HEI's unique market positioning, strong management 
+execution and a sound balance sheet. 
+ 
+Downside risks are a longer-than-expected economic slowdown, which would likely lower 
+original equipment manufacturer (OEM) production rates and demand for air travel, 
+higher oil prices, which would likely derail air traffic growth and, therefore, aircraft 
+demand, less acceptance of PMAs from the airline community, a change in acquisition 
+strategy and integration. 
+ 
+Upside risks are increased M&A due to the company's acquisitive history, faster growth 
+in sales, a stronger-than-expected commercial aero recovery, better-than-expected 
+margins, a greater acceptance of parts manufacturer approval (PMA) parts by airlines 
+and lessors. 
+Hexcel Corporation (HXL) 
+We derive our PO of $60 from a 0.7x P/FCF relative to the S&P 500 on 2026E. We note 
+that a 0.7x multiple is near the lower end of HXL's historical range and below its 
+CR 
+
+=== PAGE 27 ===
+
+ 
+ 
+ Valuation Trends | 15 December 2025    27 
+ 
+ 
+historical average of 1.2x P/FCF, which we think is justified given continued uncertainty 
+in the commercial aero market extending into 2026. 
+ 
+Upside risks to our PO are: if Airbus A350, A320neo, and 737MAX production rates 
+continue to ramp up better expected and 787 deliveries recommence, HXL will continue 
+to benefit as a carbon fiber OE pure play and may trade at a higher premium to the 
+market compared to our estimates. An increase in oil prices could also boost demand for 
+newer, more fuel-efficient commercial jetliners and provide upside to estimates in the 
+medium term. 
+ 
+Downside risks to our PO are: the majority of sales are OEM and there is little 
+aftermarket, which could prove problematic if the civil aircraft cycle turns dramatically 
+due to the uncertain economic environment. HXL could be materially impacted if serious 
+complications should arise from new platforms like the 787 and A350. Unexpected 
+cancellations to programs in both commercial and military could materially impact HXL 
+as a result. Should HXL run into any problems with execution, particularly as capacity is 
+expanding, that would impact results. 
+Howmet Aerospace Inc. (HWM) 
+our PO to $250 is derived using a relative P/FCF multiple on 2.5x on 2026E, resulting in 
+a 70x P/FCF multiple. We think a 2.5x relative multiple fairly reflects the potential upside 
+of the ongoing recovery in OEM production rates along with HWM's strong position to 
+increased spares demand, the growing exposure to AI-driven data center demand 
+through IGT and commercial aeroderivative gas turbines (repurposed old jet engines), 
+and a premium associated with demand on high quality names. 
+ 
+ 
+Upside risks to our PO are an accelerated commercial aero upcycle, additional wins from 
+commercial original equipment manufacturers (OEMs) moving away from VSMPO, 
+increased F-35 sales either domestically or internationally, and further pressure on 
+emissions standards, thus benefitting the company's wheels business. 
+ 
+Downside risks are the economic backdrop results in another downturn to the 
+commercial aero cycle that is not offset by the unmet demand of the last few years, F-
+35 program deliveries decline and the trucking industry sees a significant downturn. 
+Huntington Ingalls Industries (HII) 
+Our PO of $300 reflects a 16x P/FCF multiple on 2026E. The 16x P/FCF multiple implies 
+a 0.6x relative multiple to the S&P 500 on 2026E. This is below the 10-year average of 
+0.8x. We think that a relative multiple of 0.6x fairly factors in persistent supply chain, 
+labor, and performance challenges. 
+ 
+Upside risks to our PO are if the US government's "pivot to the Pacific" strategy involves 
+procuring more ships than we forecast and margins continue to expand beyond 
+expected. Higher share repurchases could provide upside to reported EPS. Accretive 
+acquisitions could increase future expected earnings. 
+ 
+Downside risks to our PO are cost overruns derail the company's plan to maintain 
+operating margins above 9%, the Navy takes a budget cut and reduces current fleet 
+procurement, and weaker-than-expected synergies from announced acquisitions. 
+Intuitive Machines (LUNR) 
+Our PO of $9.50 is based on a SOTP valuation that factors in a 3x EV/sales multiple on 
+2026E on legacy LUNR and a 1.6x EV/sales multiple on 2026E on Lanteris. The 1.6x 
+multiple on Lanteris corresponds to a 1x relative EV/EBITDA multiple vs. the S&P500, 
+which is at the higher end of Maxar's historical range when publicly traded. We think this 
+fairly reflects LUNR's relative positioning on existing programs. 
+CR 
+
+=== PAGE 28 ===
+
+ 
+ 
+28 Valuation Trends | 15 December 2025  
+ 
+ 
+ 
+Downside risks to our PO are production delays, setbacks to the economic recovery, and 
+execution challenges. Upside risks to our PO are better-than-expected cost cutting and 
+margin expansion, market share gains, higher utilization levels, and better-than-expected 
+commercialization. 
+KBR (KBR) 
+Our PO of $45 is based on a 0.5x EV/EBITDA multiple to the defense primes on 2026 
+estimates. This equals 8x EV/EBITDA multiple. We think the lower relative multiple fairly 
+accounts for risks to NASA budget, contract losses, and Lake Charles uncertainty, 
+partially offset by upside from SOTP valuation as the spin deal approaches completion. 
+ 
+Downside risks: cuts to the US government budget vs. anticipated, increased 
+competition from non-traditional players, problems integrating M&A, hiring the right 
+personnel, containing costs, executing on fixed price contracts, sustaining reputational 
+risk and earning future awards. On Sustainable Technologies, risks are slower-than-
+expected adoption of sustainable technologies, or higher-than-expected competition, 
+and thus, lower-than-expected profitability. 
+ 
+Upside risks: better-than-anticipated budget allocated to innovative technologies and 
+modernization, inexpensive and well-integrated M&A activity, unexpected capital return 
+to shareholders in the form of dividends or share buybacks, market share gains, and 
+better-than-expected margin expansion. On Sustainable Technologies, upside risks are 
+faster-than-expected adoption of sustainable technologies, market share gains, higher-
+than-expected profitability, and unlocking the SOTP valuation as the deal reaches 
+completion. 
+L3Harris (LHX) 
+Our PO of $350 is based on a 24x 2026e P/FCF multiple. This P/FCF multiple reflects a 
+0.9x relative multiple to the S&P500 on 2026 estimates, slightly above the historical 
+average. We think this relative multiple fairly reflects the defensive nature of the stock 
+in the current environment, and upside from Golden Dome, Space, solid rocket motor 
+exposure. 
+ 
+Upside risk to our PO could result from LHX winning more content on new and existing 
+programs vs. our expectations. Downside risk to our PO could result from continued 
+supply chain challenges and LHX's transformational efforts being delays or unable to 
+meaningfully improve operations across the portfolio. Additionally with future M&A 
+there is a risk integration challenges could put a strain on cash and impact our FCF 
+estimates. 
+Leidos Holdings (LDOS) 
+Our PO of $235 is based on 0.9x relative EV/EBITDA multiple to the defense primes on 
+2026 estimates. We think a multiple slightly below the primes fairly reflects the near-
+term pricing pressure from transitioning some managed services programs to more 
+commercial-terms and the opportunities at defense systems, healthcare, and border 
+security. This equals a 13.5x EV/EBITDA. 
+ 
+Downside risks to our PO are: cuts to the US Government budget vs. anticipated, 
+increased competition from non-traditional players, problems integrating M&A, hiring 
+the right personnel, containing its costs, estimating costs and executing on fixed price 
+contracts, sustaining reputational risk and future awards. 
+ 
+Upside risks to our PO are: a better than anticipated federal budget allocated to 
+innovative technologies and modernization, inexpensive and well integrated M&A 
+activity, unexpected capital return to shareholders in the form of dividends or share 
+buybacks, market share gains, better than expected margin expansion. 
+CR 
+
+=== PAGE 29 ===
+
+ 
+ 
+ Valuation Trends | 15 December 2025    29 
+ 
+ 
+Leonardo DRS, Inc. (DRS) 
+We derive our PO of $50 based on a 25x EV/EBITDA multiple on 2026e. This implies a 
+1.7x relative multiple to the defense primes on 2026 estimates. A multiple above the 
+broader market and in line with SMID cap defense peers alludes to the company's high 
+growth profile and exposure to long-term programs with strongly predictable schedules 
+and funding. 
+ 
+Downside risks to our PO are continued supply chain challenges pertaining to 
+microelectronics, lumpiness of Columbia-class revenues, poor execution on fixed-price 
+programs, continued fixed-price contract awards, poor award activity in the international 
+market, potentially diminished funding for land systems in which DRS supports, and 
+volatility from potential parent company secondary offering. 
+ 
+Upside risks to our PO are even higher-than-expected growth in defense spending, 
+accelerated margin ramp on the Columbia-class program, more cost-plus contract 
+awards, continued strength in the international market, continued funding for land 
+systems, and the gradual reduction in Leonardo SpA's ownership stake. 
+Lockheed Martin (LMT) 
+Our PO of $535 is based on a 13x EV/EBITDA multiple on 2026E estimates. We think a 
+multiple in-line and capped at LMT's 10-year historical average is fair as the company 
+navigates through challenged programs, associated margin compression and potential 
+tax headwinds. 
+ 
+Downside risks: as LMT derives nearly 30% of revenue from the Aeronautics division, 
+should the company run into any execution issues on the F-35 program, we believe this 
+could materially affect the company's financials in addition to posing headline risks. 
+Execution risk on defense programs could result in cost overruns and margin 
+contractions. Unexpected cancellations to programs in both commercial and military 
+could materially impact Lockheed Martin as a result. Orders from international programs 
+are difficult to time due to the complexity of the process. Thus, we could see some 
+lumpiness with regard to international orders. 
+ 
+Upside risks: F-35 program performs better than anticipated, defense spending is higher 
+than expected, and LMT continues to buy back more shares than we forecast, driving 
+higher EPS growth. 
+Northrop Grumman (NOC) 
+We derive our PO of $685 based on 18x 2026e EV/EBITDA vs. the S&P500 of 15x. We 
+see the 1.2x premium to the market as fairly reflecting NOC's strong position on critical 
+legs of the nuclear triad and exposure to growing DoD and international investment 
+spending. 
+ 
+Downside risks to our PO are that execution risk on defense programs could result in 
+cost overruns and margin contractions, and unexpected cancellations to programs in 
+both commercial and military could materially impact NOC. 
+OSI Systems (OSIS) 
+Our PO of $315 is based on a 20x EV/EBITDA multiple on 2026e estimates. This 
+corresponds to a 1.3x relative multiple to the market. We think a 1.3x relative multiple to 
+the market fairly reflects the premium and increased emphasis on border security with 
+upside opportunity from recent acquisitions. 
+ 
+Upside risks to our PO are stronger-than-expected customer demand for security and 
+inspection, a higher contribution of security-as-a-service revenues, and customer 
+destocking unwinding leading to increased orders for electronic and optoelectronic 
+components. Strategic M&A provides another potential avenue for upside. 
+CR 
+
+=== PAGE 30 ===
+
+ 
+ 
+30 Valuation Trends | 15 December 2025  
+ 
+ 
+ 
+Downside risks to our PO are a broader industrial downturn, a significant decline in the 
+Department of Homeland Security or Customs and Border Protection budgets, and a 
+longer-than-expected timeline for the derisking of the Healthcare business. 
+Palantir Technologies (PLTR) 
+Our PO of $255 is based on a 15x EV/EBITDA on 2035E. We use a longer-term valuation 
+methodology to reflect sustained high-growth and profitability profile of the company. 
+We think this valuation fairly captures the beneficial position to national security and US 
+government/allies' digital modernization efforts, a leading role in artificial intelligence 
+(AI)-powered platforms, opportunistic partnerships, strong balance sheet and strong 
+profitability. 
+ 
+Downside risks to our PO are lower-than-expected AI-platforms market growth, faster 
+than expected commoditization, higher success from competitors to catch up with 
+technologies, and/or stronger than expected resistance from government customers to 
+use commercial off the shelf solutions. 
+ 
+Upside risks to our PO are stronger-than-expected growth of the AI-platforms market, 
+higher-than-expected PLTR penetration, better-than-expected profitability, and/or 
+successful agreements and investments. 
+Parsons Corporation (PSN) 
+Our PO of $95 is based on a SOTP valuation that factors in a 13x 2026E EV/EBITDA 
+multiple on Federal Solutions and 21x 2026E EV/EBITDA on Critical Infrastructure. We 
+think this fairly reflects the strength in PSN's end markets and upcoming opportunities 
+across both segments. 
+ 
+Downside risks: cuts to the US Government budget vs. anticipated, slow award 
+environment, increased competition from non-traditional players, problems integrating 
+M&A, hiring the right personnel, containing costs, executing on fixed price contracts, 
+sustaining reputational risk and earning future awards. At Critical Infrastructure: delays 
+in infrastructure build and funding, softness in the Middle East, or higher than expected 
+competition, and thus lower than expected profitability. 
+ 
+Upside risks: better than anticipated budget allocated to innovative technologies and 
+modernization, return of the DOS confidential contract, a pick up in awards, inexpensive 
+and well-integrated M&A activity, unexpected capital return to shareholders in the form 
+of dividends or share buybacks, market share gains, and better than expected margin 
+expansion. On Critical Infrastructure upside risks include faster than expected 
+infrastructure spending, market share gains, and higher than expected profitability. 
+RBC Bearings Inc (RBC) 
+We derive our PO of $500 using 1.7x relative EV/EBITDA multiple on CY2026 estimates. 
+Over the last five years, RBC has traded on average 1.5x the one-year-forward 
+EV/EBITDA multiple. We believe that the 1.7x multiple fairly reflects growth in 
+aerospace, defense, and the industrial aftermarket while considering macro environment 
+uncertainties 
+ 
+Downside risks to our price objective are as follows: 1) Acquisitions are a core part of 
+the company's growth strategy. This is an inherently risky strategy that relies on the 
+availability of attractive acquisition candidates and successful integration. 2) RBC 
+operates in a highly competitive global bearing industry. Some of the company's key 
+competitors are significantly larger or divisions of larger companies. 3) Lower-than-
+expected build rates at its key aerospace and defense customer Boeing could provide 
+downside to our estimates. 4) US government uncertainty could defer military 
+maintenance and procurement programs. 
+CR 
+
+=== PAGE 31 ===
+
+ 
+ 
+ Valuation Trends | 15 December 2025    31 
+ 
+ 
+ 
+Upside risks to our price objective are: 1) growth from acquisitions, 2) better-than-
+expected commercial aerospace growth, 3) improvement in the Industrial end markets, 
+4) stronger-than-expected execution that would increase gross margins. 
+Redwire Corp (RDW) 
+Our PO of $6 is derived from a 0.2x EV/sales/growth multiple on 2026E, which implies a 
+3.0x EV/sales multiple on 2026E. The 0.2x EV/sales/growth multiple is at the lower end 
+of SMID Cap defense tech and space peers. We see the multiple as fairly reflecting 
+Redwire's exposure to growing end markets in defense and space, though we see 
+volatility and lack of visibility as making Redwire less attractive than some of its peers. 
+ 
+Upside risks to our PO are accelerated global defense and/or space spending, faster- and 
+better-than-expected margin expansion, inexpensive and well-integrated M&A activity, 
+and market share gains. 
+ 
+Downside risks to our PO are pressure on defense and/or space investment and 
+procurement funding, increased competition from non-traditional defense providers, 
+risky M&A, and risk associated with concentrated ownership of RDW's equity. 
+RTX Corp (RTX) 
+Our PO of $215 is based on 2026E EV/EBITDA 21x multiple vs. the S&P500 of 15x. We 
+think the 21x fairly reflects the pressures and opportunity for upside at current levels. 
+We think a multiple slightly above the market fairly reflects RTX turning the corner of 
+the recent GTF issue, strong demand tail winds, and defense exposure entering a period 
+of reignited growth. 
+ 
+Upside risks to our PO are if the GTF issues are fixed faster and smoother than 
+anticipated, if the commercial aero and bizjet recoveries are better than expected, if 
+margins fare better than we are forecasting, if the company executes on existing 
+programs better than expected, or if gains share in the international market or makes a 
+materially accretive acquisition. 
+ 
+Downside risks to our PO are a downturn in commercial aviation due to the natural 
+business cycle or an exogenous event such as a terrorist attack or a pandemic, additional 
+complications related to the GTF powder-metal issue present further risks, a severe 
+global economic slowdown affecting top-line growth as 45% of sales are generated 
+outside the US, execution risk on defense programs or unexpected cancellations to 
+programs, and uncertain timing around orders from international programs. 
+StandardAero (SARO) 
+Our $30 price objective is based on a 13x EV/EBITDA multiple on 2026 estimates. Our 
+13x EV/EBITDA multiple is derived from a sum of the parts that factors in a 13x multiple 
+on Engine Services and a 14x multiple on Component Repair Services. Both multiples are 
+in line with the peer group as we account for growth opportunities and increased 
+investor appetite for pure aftermarket exposure, offset by "wrench-making" vs. "part-
+turning" exposure. 
+ 
+Upside risks to our PO are: continued aftermarket strength, margin improvement over 
+our forecast, stronger growth in key platforms, and accretive M&A. 
+ 
+Downside risks to our PO are: a slowdown in aftermarket services, a downturn in 
+commercial aviation due to the natural business cycle or an exogenous event such as a 
+terrorist attack or a pandemic, a severe global economic slowdown affecting top-line 
+growth, and execution risk on component repairs. 
+Teledyne Technologies Inc (TDY) 
+CR 
+
+=== PAGE 32 ===
+
+ 
+ 
+32 Valuation Trends | 15 December 2025  
+ 
+ 
+We value TDY based on a 1.2x EV/EBITDA multiple relative to the S&P500. A 1.2x 
+relative multiple is in-line with the historical average. We see a multiple in-line with the 
+historical average as fairly balancing the near-term headwinds, the recovery in the short-
+cycle business and strong demand in Defense and Aerospace. Applying this to our 2026 
+estimates, we derive a $640 PO. 
+ 
+Upside risks to our PO are higher accretion from acquisitions, a more rapid top- and 
+bottom-line recovery in the industrials businesses and even further operating leverage. 
+ 
+Downside risks are poor integration of acquisitions, another industrials downturn, a 
+significant decline in the Department of Defense (DOD) budget, an exogenous event that 
+prevents international sales. 
+Textron (TXT) 
+Our PO of $90 is based on a based on a relative P/E multiple of 0.6x to the S&P 500 on 
+2026e. This relative multiple is at the lower end of where TXT has traded historically and 
+in line with where the company has traded over the past two years. We think a multiple 
+below the historical average is justified given supply chain challenges hindering 
+execution at Aviation, tepid growth at Systems, and continued headwinds at Industrial. 
+ 
+Upside risks to our PO are: Faster than expected recovery of business jets and the 
+supply chain at Cessna. Higher than expected growth for US Defense related sales. A 
+recovery in oil and gas end-market for helicopters. Better than expected US auto vol. at 
+Kautex business unit. High operating leverage could unlock upside to earnings if sales 
+recover. 
+ 
+Downside risks to our PO are: Bell faces declining V-22 production rates which will be a 
+headwind to revenues and negatively impact segment margins. The recovery in the bizjet 
+market does not last, credit availability shrinks and Cessna is hurt by potential new 
+entrants. Serious complications could arise from the new aircraft development 
+platforms. Bell and/or Cessna could experience supply chain constraints that could 
+materially affect production rates. Given that business jets are priced in dollars, an 
+unexpected rapid revaluation in the dollar could significantly affect order activity. 
+TransDigm Group Inc. (TDG) 
+Our PO of $1,615 is based on a 1.5x EV/EBITDA relative multiple to the S&P 500 on 
+CY26E. The 1.5x multiple is in line with the average relative multiple. In our view, this 
+multiple reflects TDG's strong aftermarket positioning, robust margin performance, and 
+solid cash generation. 
+ 
+Downside risks to our PO are: Higher oil prices would likely derail air traffic growth and, 
+therefore, aircraft demand, resulting in a downturn in commercial aviation. A downturn in 
+commercial aviation, due to exogenous factors, such as a terrorist attack or natural 
+business cyclicality, could adversely impact TDG's financial results. If the defense budget 
+for RDT&E and investment accounts do not increase as we expect, this could affect 
+TDG's defense business. 
+ 
+However, if the commercial aerospace and business aviation jet recoveries are better 
+than we are forecasting, earnings could fare better than our projections and the stock 
+could perform better. If margins fare better than we are forecasting, there could also be 
+upside potential to our valuation. 
+V2X (VVX) 
+Our $65 price objective is based on a 9x EV/EBITDA multiple. This equals a 0.6x relative 
+multiple to the S&P 500. We think that this multiple fairly gives credit for new wins in 
+higher-growth, higher margin arenas as well as V2X's continued leadership position in 
+logistics, sustainment, and aircraft maintenance as well as its strong backlog. 
+CR 
+
+=== PAGE 33 ===
+
+ 
+ 
+ Valuation Trends | 15 December 2025    33 
+ 
+ 
+ 
+Upside risks to our PO are a better-than-anticipated federal budget allocated to 
+readiness and sustainment, market share gains in high-tech arenas, meaningful 
+international awards, and significantly earlier than expected M&A activity. 
+ 
+Downside risks are cuts to the DoD budget, problems hiring the right personnel, 
+containing its costs, estimating costs and executing on fixed price contracts, sustaining 
+reputational risk and future awards. 
+Voyager Technologies (VOYG) 
+Our price objective of $41 is based on a 9x EV/sales multiple on 2026E. A valuation 
+higher than defense tech peers fairly reflects the company's differentiated offerings, 
+exposure to critical and well supported national security and space programs, and upside 
+opportunities presented by Starlab. 
+ 
+Upside risks to our PO are accelerated Golden Dome spend, faster- and better-than 
+expected margin expansion, inexpensive and well-integrated M&A activity, and market 
+share gains. Downside risks to our PO are pressure on US Government budget, delays in 
+Starlab launch and profitability, increased competition from non-traditional providers, 
+risky M&A, and corporate governance risk associated with VOYG's controlled company 
+status. 
+  
+Analyst Certification 
+We, Ronald J. Epstein, Jordan Lyonnais and Mariana Perez Mora, hereby certify that the 
+views each of us has expressed in this research report accurately reflect each of our 
+respective personal views about the subject securities and issuers.  We also certify that 
+no part of our respective compensation was, is, or will be, directly or indirectly, related to 
+the specific recommendations or view expressed in this research report. 
+ 
+   
+CR 
+
+=== PAGE 34 ===
+
+ 
+ 
+34 Valuation Trends | 15 December 2025  
+ 
+ 
+ 
+US - Aerospace and Defense Coverage Cluster 
+Investment rating Company BofA Ticker Bloomberg symbol Analyst 
+BUY 
+ AerCap Holdings N.V. AER AER US Ronald J. Epstein 
+ AeroVironment AVAV AVAV US Ronald J. Epstein 
+ Axon Enterprise Inc AXON AXON US Jordan Lyonnais 
+ BETA Technologies BETA BETA US Ronald J. Epstein 
+ Boeing BA BA US Ronald J. Epstein 
+ Bombardier BDRBF BDRBF US Ronald J. Epstein 
+ Bombardier Inc. YBBD B BBD/B CN Ronald J. Epstein 
+ BWX Technologies, Inc. BWXT BWXT US Ronald J. Epstein 
+ CACI International CACI CACI US Mariana Perez Mora 
+ Crane Co. CR CR US Ronald J. Epstein 
+ Elbit Systems Ltd XEBLF ESLT IT Ronald J. Epstein 
+ Elbit Systems Ltd ESLT ESLT US Ronald J. Epstein 
+ Embraer EMBJ EMBJ US Ronald J. Epstein 
+ GE Aerospace GE GE US Ronald J. Epstein 
+ General Dynamics GD GD US Ronald J. Epstein 
+ HEICO Corporation HEI HEI US Ronald J. Epstein 
+ Howmet Aerospace Inc. HWM HWM US Ronald J. Epstein 
+ L3Harris LHX LHX US Ronald J. Epstein 
+ Leidos Holdings LDOS LDOS US Mariana Perez Mora 
+ Leonardo DRS, Inc. DRS DRS US Ronald J. Epstein 
+ Northrop Grumman NOC NOC US Ronald J. Epstein 
+ OSI Systems OSIS OSIS US Mariana Perez Mora 
+ Palantir Technologies PLTR PLTR US Mariana Perez Mora 
+ Parsons Corporation PSN PSN US Mariana Perez Mora 
+ RBC Bearings Inc RBC RBC US Ronald J. Epstein 
+ Rocket Lab RKLB RKLB US Ronald J. Epstein 
+ RTX Corp RTX RTX US Ronald J. Epstein 
+ Teledyne Technologies Inc TDY TDY US Ronald J. Epstein 
+ TransDigm Group Inc. TDG TDG US Ronald J. Epstein 
+ V2X VVX VVX US Mariana Perez Mora 
+ Voyager Technologies VOYG VOYG US Ronald J. Epstein 
+NEUTRAL  
+ Amentum AMTM AMTM US Mariana Perez Mora 
+ CAE Inc. YCAE CAE CN Ronald J. Epstein 
+ CAE Inc. CAE CAE US Ronald J. Epstein 
+ KBR KBR KBR US Mariana Perez Mora 
+ Lockheed Martin LMT LMT US Ronald J. Epstein 
+ StandardAero SARO SARO US Ronald J. Epstein 
+ Textron TXT TXT US Ronald J. Epstein 
+UNDERPERFORM  
+ Albany International AIN AIN US Ronald J. Epstein 
+ Booz Allen Hamilton BAH BAH US Mariana Perez Mora 
+ Cadre Holdings Inc CDRE CDRE US Ronald J. Epstein 
+ Garmin GRMN GRMN US Ronald J. Epstein 
+ Hexcel Corporation HXL HXL US Ronald J. Epstein 
+ Huntington Ingalls Industries HII HII US Ronald J. Epstein 
+ Intuitive Machines LUNR LUNR US Ronald J. Epstein 
+ Redwire Corp RDW RDW US Ronald J. Epstein 
+ 
+    
+Disclosures 
+Important Disclosures  
+     
+Equity Investment Rating Distribution: Aerospace/Defense Electronics Group (as of 30 Sep 2025) 
+Coverage Universe Count Percent Inv. Banking Relationships R1  Count Percent 
+Buy 38 67.86% Buy 33 86.84% 
+Hold 8 14.29% Hold 5 62.50% 
+Sell 10 17.86% Sell 8 80.00%  
+CR 
+
+=== PAGE 35 ===
+
+ 
+ 
+ Valuation Trends | 15 December 2025    35 
+ 
+ 
+Equity Investment Rating Distribution: Engineering & Construction Group (as of 30 Sep 2025) 
+Coverage Universe Count Percent Inv. Banking Relationships R1  Count Percent 
+Buy 9 42.86% Buy 5 55.56% 
+Hold 6 28.57% Hold 4 66.67% 
+Sell 6 28.57% Sell 4 66.67%  
+Equity Investment Rating Distribution: Industrials/Multi-Industry Group (as of 30 Sep 2025) 
+Coverage Universe Count Percent Inv. Banking Relationships R1  Count Percent 
+Buy 48 54.55% Buy 24 50.00% 
+Hold 18 20.45% Hold 9 50.00% 
+Sell 22 25.00% Sell 12 54.55%  
+Equity Investment Rating Distribution: Technology Group (as of 30 Sep 2025) 
+Coverage Universe Count Percent Inv. Banking Relationships R1  Count Percent 
+Buy 195 51.72% Buy 99 50.77% 
+Hold 103 27.32% Hold 52 50.49% 
+Sell 79 20.95% Sell 23 29.11%   
+Equity Investment Rating Distribution: Global Group (as of 30 Sep 2025) 
+Coverage Universe Count Percent Inv. Banking Relationships R1  Count Percent 
+Buy 1816 53.11% Buy 1062 58.48% 
+Hold 825 24.13% Hold 480 58.18% 
+Sell 778 22.76% Sell 385 49.49% 
+R1 Issuers that were investment banking clients of BofA Securities or one of its affiliates within the past 12 months. For purposes of this Investment Rating Distribution, the coverage universe includes only stocks. A stock 
+rated Neutral is included as a Hold, and a stock rated Underperform is included as a Sell.       FUNDAMENTAL EQUITY OPINION KEY: Opinions include a Volatility Risk Rating, an Investment Rating and an Income Rating. VOLATILITY RISK RATINGS, indicators 
+of potential price fluctuation, are: A - Low, B - Medium and C - High. INVESTMENT RATINGS reflect the analyst’s assessment of both a stock’s absolute total return 
+potential as well as its attractiveness for investment relative to other stocks within its Coverage Cluster (defined below). Our investment ratings are: 1 -  Buy stocks 
+are expected to have a total return of at least 10% and are the most attractive stocks in the coverage cluster; 2 - Neutral stocks are expected to remain flat or 
+increase in value and are less attractive than Buy rated stocks and 3 - Underperform stocks are the least attractive stocks in a coverage cluster. An investment rating 
+of 6 (No Rating) indicates that a stock is no longer trading on the basis of fundamentals. Analysts assign investment ratings considering, among other things, the 0-
+12 month total return expectation for a stock and the firm’s guidelines for ratings dispersions (shown in the table below). The current price objective for a stock 
+should be referenced to better understand the total return expectation at any given time. The price objective reflects the analyst’s view of the potential price 
+appreciation (depreciation). 
+Investment rating Total return expectation (within 12-month period of date of initial 
+rating) 
+Ratings dispersion guidelines for coverage clusterR2 
+Buy ≥ 10% ≤ 70% 
+Neutral ≥ 0% ≤ 30% 
+Underperform N/A ≥ 20% 
+R2Ratings dispersions may vary from time to time where BofA Global Research believes it better reflects the investment prospects of stocks in a Coverage Cluster. 
+INCOME RATINGS, indicators of potential cash dividends, are: 7 - same/higher (dividend considered to be secure), 8 - same/lower (dividend not considered to be secure) 
+and 9 - pays no cash dividend.  Coverage Cluster is comprised of stocks covered by a single analyst or two or more analysts sharing a common industry, sector, 
+region or other classification(s). A stock ’s coverage cluster is included in the most recent BofA Global Research repor t referencing the stock.     
+Price Charts for the securities referenced in this research report are available on the Price Charts website, or call 1-800-MERRILL to have them mailed. 
+BofAS or one of its affiliates acts as a market maker for the equity securities recommended in the report: AerCap, AeroVironment, Albany Int, Axo n Ent. Inc, BETA Technologies, Boeing, Booz 
+Allen Hamilton, BWX Technologies, CACI International, Cadre Holdings Inc, Crane, Elbit Systems, Embraer, Garmin, General Dynamics, General Electric, HEICO, Hexcel Corp, Howmet, Huntington 
+Ing Ind, Intuitive, KBR, L3Harris, Leidos Holdings, Leonardo DRS, Lockheed Martin, Northrop Grumman, OSI Systems, Palantir, Parsons, RBC Bearings, Redwire, RTX, StandardAero, Teledyne Tech. 
+Inc., Textron, TransDigm Group, V2X, Voyager. 
+BofAS or an affiliate was a manager of a public offering of securities of this issuer within the last 12 months: AeroVironmen t, BETA Technologies, CACI Int Inc, Elbit Systems, General Dynamics, 
+General Electric Co, Hexcel Corp., Lockheed Martin, Northrop Grumman, OSI Systems, Redwire Co., StandardAero, Textron, Voyage r. 
+The issuer is or was, within the last 12 months, an investment banking client of BofAS and/or one or more of its affiliates: AerCap, AeroVironment, Albany Intl, BETA Technologies, Boeing, 
+Bombardier Inc., Booz Allen, CACI Int Inc, Cadre Holdings Inc, Crane, Elbit Systems, Embraer, Garmin, General Dynamics, Gener al Electric Co, Hexcel Corp., Howmet, Huntington Ing Ind, Intuitive 
+Machines, KBR Inc, L3Harris, Leidos Holdings, Leonardo DRS, Inc., Lockheed Martin, Northrop Grumman, OSI Systems, Parsons, Re dwire Co., RTX, StandardAero, Teledyne Tech. Inc, Textron, 
+TransDigm, V2X, Voyager. 
+BofAS or an affiliate has received compensation from the issuer for non-investment banking services or products within the past 12 months: AerCap, AeroVironment, Albany Intl, Boeing, 
+Bombardier Inc., Booz Allen, CACI Int Inc, Cadre Holdings Inc, Elbit Systems, Embraer, Garmin, General Dynamics, General Electric Co, HEICO Corp, Hexcel Corp., Howmet, Huntington Ing Ind, 
+Intuitive Machines, KBR Inc, L3Harris, Leidos Holdings, Leonardo DRS, Inc., Lockheed Martin, Northrop Grumman, OSI Systems, P arsons, RBC Bearings, Redwire Co., RTX, StandardAero, Teledyne 
+Tech. Inc, Textron, TransDigm, V2X, Voyager. 
+The issuer is or was, within the last 12 months, a non-securities business client of BofAS and/or one or more of its affiliates: AerCap, AeroVironment, Albany Intl, Boeing, Bombard ier Inc., Booz 
+Allen, CACI Int Inc, Cadre Holdings Inc, Elbit Systems, Embraer, Garmin, General Dynamics, General Electric Co, HEICO Corp, H excel Corp., Howmet, Huntington Ing Ind, Intuitive Machines, KBR Inc, 
+L3Harris, Leidos Holdings, Leonardo DRS, Inc., Lockheed Martin, Northrop Grumman, OSI Systems, Parsons, RBC Bearings, Redwire Co., RTX, StandardAero, Teledyne Tech. Inc, Textron, 
+TransDigm, V2X. 
+In the US, retail sales and/or distribution of this report may be made only in states where these securities are exempt from registration or have been qualified for sale: Bombardier Inc. 
+An officer, director or employee of BofAS or one of its affiliates is an officer or director of this issuer: RTX, Textron.  
+BofAS or an affiliate has received compensation for investment banking services from this issuer within the past 12 months: AerCap, AeroVironment, Albany Intl, BETA Technologies, Boeing, 
+Booz Allen, CACI Int Inc, Cadre Holdings Inc, Elbit Systems, Embraer, General Dynamics, General Electric Co, Hexcel Corp., Hu ntington Ing Ind, Intuitive Machines, KBR Inc, L3Harris, Leidos 
+Holdings, Leonardo DRS, Inc., Lockheed Martin, Northrop Grumman, OSI Systems, Parsons, Redwire Co., RTX, StandardAero, Teledy ne Tech. Inc, Textron, TransDigm, V2X, Voyager. 
+BofAS or an affiliate expects to receive or intends to seek compensation for investment banking services from this issuer or an affiliate of the issuer within the next three months: AerCap, 
+Boeing, Bombardier Inc., Booz Allen, CACI Int Inc, Crane, Embraer, Garmin, General Dynamics, General Electric Co, Howmet, Huntington Ing Ind, KBR Inc, L3Harris, Leidos Holdings, Leonardo DRS, 
+Inc., Lockheed Martin, OSI Systems, Parsons, RTX, StandardAero, Teledyne Tech. Inc, TransDigm. 
+CR 
+
+=== PAGE 36 ===
+
+ 
+ 
+36 Valuation Trends | 15 December 2025  
+ 
+ 
+BofAS together with its affiliates beneficially owns one percent or more of the common stock of this issuer. If this report was issued on or after the 9th day of the month, it reflects the 
+ownership position on the last day of the previous month. Reports issued before the 9th day of a month reflect the ownership position at the end of the second month preceding the date of 
+the report: AerCap, Albany Intl, Boeing, Bombardier Inc., Booz Allen, BWX Technologies, CACI Int Inc, Cadre Holdings Inc, Emb raer, General Dynamics, HEICO Corp, Hexcel Corp., Howmet, 
+Huntington Ing Ind, L3Harris, Leidos Holdings, Lockheed Martin, Northrop Grumman, OSI Systems, RTX, Teledyne Tech. Inc, V2X.  
+BofAS or one of its affiliates is willing to sell to, or buy from, clients the common equity of the issuer on a principal basis: AerCap, AeroVironment , Albany Int, Axon Ent. Inc, BETA Technologies, 
+Boeing, Bombardier, Booz Allen Hamilton, BWX Technologies, CACI International, Cadre Holdings Inc, Crane, Elbit Systems, Embr aer, Garmin, General Dynamics, General Electric, HEICO, Hexcel 
+Corp, Howmet, Huntington Ing Ind, Intuitive, KBR, L3Harris, Leidos Holdings, Leonardo DRS, Lockheed Martin, Northrop Grumman, OSI Systems, Palantir, Parsons, RBC Bearings, Redwire, RTX, 
+StandardAero, Teledyne Tech. Inc., Textron, TransDigm Group, V2X, Voyager. 
+The issuer is or was, within the last 12 months, a securities business client (non-investment banking) of BofAS and/or one or more of its affiliates: AerCap, AeroVironment, Albany Intl, Boeing, 
+Bombardier Inc., Booz Allen, CACI Int Inc, Cadre Holdings Inc, Elbit Systems, Embraer, Garmin, General Dynamics, General Electric Co, HEICO Corp, Hexcel Corp., Howmet, Huntington Ing Ind, KBR 
+Inc, L3Harris, Leidos Holdings, Leonardo DRS, Inc., Lockheed Martin, Northrop Grumman, OSI Systems, Parsons, RBC Bearings, RT X, StandardAero, Teledyne Tech. Inc, Textron, V2X, Voyager. 
+BofA Global Research personnel (including the analyst(s) responsible for this report) receive compensation based upon, among other factors, the overall profitability of Bank of America 
+Corporation, including profits derived from investment banking. The analyst(s) responsible for this report may also receive compensation based upon, among other factors, the overall 
+profitability of the Bank’s sales and trading businesses relating to the class of securities or financial instruments for which such analyst is responsible.  
+ 
+Other Important Disclosures 
+BofAS together with its affiliates beneficially owns a net short position of 0.5% or more of the total issued share capital o f this issuer. Ownership positions speak as of a date no more than three 
+trading days prior to the date of this report: Hexcel Corp. 
+Class B shares are subordinate voting: Bombardier Inc. 
+From time to time research analysts conduct site visits of covered issuers. BofA Global Research policies prohibit research analysts from accepting payment or reimbursement for travel 
+expenses from the issuer for such visits. 
+Prices are indicative and for information purposes only. Except as otherwise stated in the report, for any recommendation in relation to an equity security, the price referenced is the publicly 
+traded price of the security as of close of business on the day prior to the date of the report or, if the report is published during intraday trading, the price referenced is indicative of the trad ed 
+price as of the date and time of the report and in relation to a debt security (including equity preferred and CDS), prices are indicative as of the date and time of the report and are from various 
+sources including BofA Securities trading desks. 
+The date and time of completion of the production of any recommendation in this report shall be the date and time of dissemination of this report as recorded in the report timestamp. 
+ 
+Recipients who are not institutional investors or market professionals should seek the advice of their independent financial advisor before considering information in this report in connection 
+with any investment decision, or for a necessary explanation of its contents. 
+Officers of BofAS or one or more of its affiliates (other than research analysts) may have a financial interest in securities of the issuer(s) or in related investments.  
+Refer to BofA Global Research policies relating to conflicts of interest. 
+"BofA Securities" includes Bof A Securities, Inc. ("BofAS") and its affiliates. Investors should contact their BofA Securities representative or Merrill Glo bal Wealth Management 
+financial advisor if they have questions concerning this report or concerning the appropriateness of any inve stment idea described herein for such investor. "BofA Securities" is a 
+global brand for BofA Global Research.  
+Information relating to Non -US affiliates of BofA Securities and Distribution of Affiliate Research Reports:  
+BofAS and/or Merrill Lynch, Pierce, Fenner & Smith Incorporated ("MLPF&S") may in the future distribute, information of the following non -US affiliates in the US (short name: legal name, 
+regulator): Merrill Lynch (South Africa): Merrill Lynch South Africa (Pty) Ltd., regulated by the Financial Sector Conduct Authority; MLI (UK): Merrill Lynch International, regulated by the Financial 
+Conduct Authority (FCA) and the Prudential Regulation Authority (PRA); BofASE (France): BofA Securities Europe SA is authoriz ed by the Autorité de Contrôle Prudentiel et de Résolution (ACPR) 
+and regulated by the ACPR and the Autorité des Marchés Financiers (AMF). BofA Securities Europe SA ("BofASE") with registered  address at 51, rue La Boétie, 75008 Paris is registered under no 
+842 602 690 RCS Paris. In accordance with the provisions of French Code Monétaire et Financier (Monetary and Financial Code), BofASE is an établissement de créd it et d'investissement (credit 
+and investment institution) that is authorised and supervised by the European Central Bank and the Autorité de Contrôle Prudentiel et de Résolution (ACPR) and regulated by the ACPR and the 
+Autorité des Marchés Financiers. BofASE's share capital can be found at www.bofaml.com/BofASEdisclaimer; BofA Europe (Milan): Bank of America Europe Designated Activity Company, Milan 
+Branch, regulated by the Bank of Italy, the European Central Bank (ECB) and the Central Bank of Ireland (CBI); BofA Europe (F rankfurt): Bank of America Europe Designated Activity Company, 
+Frankfurt Branch regulated by BaFin, the ECB and the CBI; BofA Europe (Zurich): Bank of America Europe Designated Activity Co mpany, Zurich Branch, regulated by the Swiss Financial Market 
+Supervisory Authority FINMA, the ECB and CBI; BofA Europe (Madrid): Bank of America Europe Designated Activity Company, Sucursal en España, regulated by the Bank of Spain, the ECB and the 
+CBI; Merrill Lynch (Australia): Merrill Lynch Equities (Australia) Limited, regulated by the Australian Securities and Investments  Commission; Merrill Lynch (Hong Kong): Merrill Lynch (Asia Pacific) 
+Limited, regulated by the Hong Kong Securities and Futures Commission (HKSFC); Merrill Lynch (Singapore): Merrill Lynch (Sing apore) Pte Ltd, regulated by the Monetary Authority of Singapore 
+(MAS); Merrill Lynch (Canada): Merrill Lynch Canada Inc, regulated by the Canadian Investment Regulatory Organization; Merril l Lynch (Mexico): Merrill Lynch Mexico, SA de CV, Casa de Bolsa, 
+regulated by the Comisión Nacional Bancaria y de Valores; BofAS Japan: BofA Securities Japan Co., Ltd., regulated by the Financial Services Agency; Merrill Lynch (Seoul): Merrill Lynch 
+International, LLC Seoul Branch, regulated by the Financial Supervisory Service; Merrill Lynch (Taiwan): Merrill Lynch Securi ties (Taiwan) Ltd., regulated by the Securities and Futures Bureau; 
+BofAS India: BofA Securities India Limited, regulated by the Securities and Exchange Board of India (SEBI); Merrill Lynch (Is rael): Merrill Lynch Israel Limited, regulated by Israel Securities 
+Authority; Merrill Lynch (DIFC): Merrill Lynch International (DIFC Branch), regulated by the Dubai Financial Services Authority ( DFSA); Merrill Lynch (Brazil): Merrill Lynch S.A. Corretora de Títulos e 
+Valores Mobiliários, regulated by Comissão de Valores Mobiliários; Merrill Lynch KSA Company: Merrill Lynch Kingdom of Saudi Arabia Company, regulated by the Capital Market Authority.  
+This information: has been approved for publication and is distributed in the United Kingdom (UK) to professional clients and  eligible counterparties (as each is defined in the rules of the FCA 
+and the PRA) by MLI (UK), which is authorized by the PRA and regulated by the FCA and the PRA - details about the extent of our regulation by the FCA and PRA are available from us on request; 
+has been approved for publication and is distributed in the European Economic Area (EEA) by BofASE (France), which is authori zed by the ACPR and regulated by the ACPR and the AMF; has 
+been considered and distributed in Japan by BofAS Japan, a registered securities dealer under the Financial Instruments and E xchange Act in Japan, or its permitted affiliates; is issued and 
+distributed in Hong Kong by Merrill Lynch (Hong Kong) which is regulated by HKSFC; is issued and distributed in Taiwan by Merrill Lyn ch (Taiwan); is issued and distributed in India by BofAS 
+India; and is issued and distributed in Singapore to institutional investors and/or accredited investors (each as defined under the Financial Advisers Regulations) by Merrill Lynch (Singapore) 
+(Company Registration No 198602883D). Merrill Lynch (Singapore) is regulated by MAS. Merrill Lynch Equities (Australia) Limited (ABN 65 006 276 795), AFS License 235132 (MLEA) distributes 
+this information in Australia only to 'Wholesale' clients as defined by s.761G of the Corporations Act 2001. With the excepti on of Bank of America N.A., Australia Branch, neither MLEA nor any of 
+its affiliates involved in preparing this information is an Authorised Deposit-Taking Institution under the Banking Act 1959 nor regulated by the Australian Prudential Regulation Authority. No 
+approval is required for publication or distribution of this information in Brazil and its local distribution is by Merrill Lynch (Brazil) in accordance with applicable regulations. Merrill Lynch (D IFC) is 
+authorized and regulated by the DFSA. Information prepared and issued by Merrill Lynch (DIFC) is done so in accordance with the requirements of the DFSA conduct of business rules. BofA 
+Europe (Frankfurt) distributes this information in Germany and is regulated by BaFin, the ECB and the CBI. BofA Securities en tities, including BofA Europe and BofASE (France), may 
+outsource/delegate the marketing and/or provision of certain research services or aspects of research services to other branches or members  of the BofA Securities group. You may be contacted 
+by a different BofA Securities entity acting for and on behalf of your service provider where permitted by applicable law. This does not change your service provider. Please refer to the 
+Electronic 
+Communications Disclaimers for further information. 
+This information has been prepared and issued by BofAS and/or one or more of its non-US affiliates. The author(s) of this information may not be licensed to carry on regulated activities in your 
+jurisdiction and, if not licensed, do not hold themselves out as being able to do so. BofAS and/or MLPF&S is the distributor of this information in the US and accepts full responsibility for 
+information distributed to BofAS and/or MLPF&S clients in the US by its non-US affiliates. Any US person receiving this information and wishing to effect any transaction in any security 
+discussed herein should do so through BofAS and/or MLPF&S and not such foreign affiliates. Hong Kong recipients of this infor mation should contact Merrill Lynch (Asia Pacific) Limited in 
+respect of any matters relating to dealing in securities or provision of specific advice on securities or any other matters arising from, or in connection  with, this information. Singapore recipients 
+of this information should contact Merrill Lynch (Singapore) Pte Ltd in respect of any matters arising from, or in connection with, this information. For clients that are not accredited investors, 
+CR 
+
+=== PAGE 37 ===
+
+ 
+ 
+ Valuation Trends | 15 December 2025    37 
+ 
+ 
+expert investors or institutional investors Merrill Lynch (Singapore) Pte Ltd accepts full responsibility for the contents of this information distributed to such clients in Singapore. 
+General Investment Related Disclosures:  
+Taiwan Readers: Neither the information nor any opinion expressed herein constitutes an offer or a solicitation of an offer t o transact in any securities or other financial instrument. No part of 
+this report may be used or reproduced or quoted in any manner whatsoever in Taiwan by the press or any other person without the express written consent of BofA Securities.  
+This document provides general information only, and has been prepared for, and is intended for general distribution to, BofA Securities clients. Neither the information nor any opinion 
+expressed constitutes an offer or an invitation to make an offer, to buy or sell any securities or other financial instrument or any derivative related to such securities or instruments (e.g., options, 
+futures, warrants, and contracts for differences). This document is not intended to provide personal investment advice and it does not take into account the specific investment objectives , 
+financial situation and the particular needs of, and is not directed to, any specific person(s). This document and its conten t do not constitute, and should not be considered to constitute, 
+investment advice for purposes of ERISA, the US tax code, the Investment Advisers Act or otherwise. Investors should seek financial advice regarding the appropriateness of investing in financial 
+instruments and implementing investment strategies discussed or recommended in this document and should understand that state ments regarding future prospects may not be realized. Any 
+decision to purchase or subscribe for securities in any offering must be based solely on existing public information on such security or the information in the prospectus or other offering 
+document issued in connection with such offering, and not on this document. 
+Securities and other financial instruments referred to herein, or recommended, offered or sold by BofA Securities, are not in sured by the Federal Deposit Insurance Corporation and are not 
+deposits or other obligations of any insured depository institution (including, Bank of America, N.A.). Investments in general and, derivatives, in particular, involve numerous risks, including, 
+among others, market risk, counterparty default risk and liquidity risk. No security, financial instrument or derivative is suitable for all investors. Digital assets are extremely specul ative, volatile 
+and are largely unregulated.  In some cases, securities and other financial instruments may be difficult to value or sell and reliable information about the value or risks related to the security or 
+financial instrument may be difficult to obtain. Investors should note that income from such securities and other financial i nstruments, if any, may fluctuate and that price or value of such 
+securities and instruments may rise or fall and, in some cases, investors may lose their entire principal investment. Past performance is not necessarily a guide to future performance. Levels and 
+basis for taxation may change. 
+This report may contain a short-term trading idea or recommendation, which highlights a specific near-term catalyst or event impacting the issuer or the market that is anticipated to have a 
+short-term price impact on the equity securities of the issuer. Short-term trading ideas and recommendations are different from and do not affect a stock's fundamental equity rating, which 
+reflects both a longer term total return expectation and attractiveness for investment relative to other stocks within its Coverage Cluster. Short-term trading ideas and recommendations may 
+be more or less positive than a stock's fundamental equity rating. 
+BofA Securities is aware that the implementation of the ideas expressed in this report may depend upon an investor's ability to "short" securities or other financial instruments and that such 
+action may be limited by regulations prohibiting or restricting "shortselling" in many jurisdictions. Investors are urged to seek advice regarding the applicability of such regulations prior to 
+executing any short idea contained in this report. 
+Foreign currency rates of exchange may adversely affect the value, price or income of any security or financial instrument mentioned herein. Investors in such securities and instruments, 
+including ADRs, effectively assume currency risk. 
+BofAS or one of its affiliates is a regular issuer of traded financial instruments linked to securities that may have been recommended in this report. BofAS or one of its affiliates may, at any time, 
+hold a trading position (long or short) in the securities and financial instruments discussed in this report. 
+BofA Securities, through business units other than BofA Global Research, may have issued and may in the future issue trading ideas or recommendations that are inconsistent with, and reach 
+different conclusions from, the information presented herein. Such ideas or recommendations may reflect different time frames , assumptions, views and analytical methods of the persons who 
+prepared them, and BofA Securities is under no obligation to ensure that such other trading ideas or recommendations are brought to the attention of any recipient of this information.  
+In the event that the recipient received this information pursuant to a contract between the recipient and BofAS for the prov ision of research services for a separate fee, and in connection 
+therewith BofAS may be deemed to be acting as an investment adviser, such status relates, if at all, solely to the person wit h whom BofAS has contracted directly and does not extend beyond 
+the delivery of this report (unless otherwise agreed specifically in writing by BofAS). If such recipient uses the services of BofAS in connection with the sale or purchase of a security referred to 
+herein, BofAS may act as principal for its own account or as agent for another person. BofAS is and continues to act solely as a broker-dealer in connection with the execution of any transactions, 
+including transactions in any securities referred to herein. 
+Copyright and General Information:  
+Copyright 2025 Bank of America Corporation. All rights reserved. iQdatabase® is a registered service mark of Bank of America Corporation. This information  is prepared for the use of BofA 
+Securities clients and may not be redistributed, retransmitted or disclosed, in whole or in part, or in any form or manner, without the express written consent of BofA Securities. This document 
+and its content is provided solely for informational purposes and cannot be used for training or developing artificial intelligence (AI) models or as an input in any AI application (collectively, an AI 
+tool). Any attempt to utilize this document or any of its content in connection with an AI tool without explicit written perm ission from BofA Global Research is strictly prohibited. BofA Global 
+Research utilizes AI, including machine learning and other technologies, to enhance the services we provide to our clients. These technologies as sist our analysts in various aspects of their work, 
+including but not limited to data analysis, content extraction, content creation, data aggregation and summarization and identifying relevant information from diverse sources. All AI-driven 
+processes are subject to review by BofA Global Research employees. BofA Global Research information is distributed simultaneo usly to internal and client websites and other portals by BofA 
+Securities and is not publicly-available material. Any unauthorized use or disclosure is prohibited. Receipt and review of this information constitutes your  agreement not to redistribute, 
+retransmit, or disclose to others the contents, opinions, conclusion, or information contained herein (including any investment recommendations, estim ates or price targets) without first 
+obtaining express permission from an authorized officer of BofA Securities. 
+Materials prepared by BofA Global Research personnel are based on public information. Facts and views presented in this material have not been r eviewed by, and may not reflect information 
+known to, professionals in other business areas of BofA Securities, including investment banking personnel. BofA Securities has established information barriers between BofA Global Research 
+and certain business groups. As a result, BofA Securities does not disclose certain client relationships with, or compensatio n received from, such issuers. To the extent this material discusses 
+any legal proceeding or issues, it has not been prepared as nor is it intended to express any legal conclusion, opinion or advice. Investors should consult their own legal advisers as to issues of 
+law relating to the subject matter of this material. BofA Global Research personnel’s knowledge of legal proceedings in which any BofA Securities entity and/or its directors, officers and 
+employees may be plaintiffs, defendants, co-defendants or co-plaintiffs with or involving issuers mentioned in this material is based on public information. Facts and views presented in this 
+material that relate to any such proceedings have not been reviewed by, discussed with, and may not reflect information known  to, professionals in other business areas of BofA Securities in 
+connection with the legal proceedings or matters relevant to such proceedings. 
+This information has been prepared independently of any issuer of securities mentioned herein and not in connection with any proposed offering of securities or as agent of any issuer of any 
+securities. None of BofAS any of its affiliates or their research analysts has any authority whatsoever to make any represent ation or warranty on behalf of the issuer(s). BofA Global Research 
+policy prohibits research personnel from disclosing a recommendation, investment rating, or investment thesis for review by an issuer pr ior to the publication of a research report containing 
+such rating, recommendation or investment thesis. 
+Any information relating to sustainability in this material is limited as discussed herein and is not intended to provide a comprehensive view on any s ustainability claim with respect to any 
+issuer or security. 
+Any information relating to the tax status of financial instruments discussed herein is not intended to provide tax advice or to be used by anyone to provide tax advice. Investors are urged to 
+seek tax advice based on their particular circumstances from an independent tax professional. 
+The information herein (other than disclosure information relating to BofA Securities and its affiliates) was obtained from various sources and we do not guaran tee its accuracy. This information 
+may contain links to third-party websites. BofA Securities is not responsible for the content of any third-party website or any linked content contained in a third-party website. Content 
+contained on such third-party websites is not part of this information and is not incorporated by reference. The inclusion of a link does not imply a ny endorsement by or any affiliation with BofA 
+Securities. Access to any third-party website is at your own risk, and you should always review the terms and privacy policies at third-party websites before submitting any personal information 
+to them. BofA Securities is not responsible for such terms and privacy policies and expressly disclaims any liability for them. 
+All opinions, projections and estimates constitute the judgment of the author as of the date of publication and are subject to change without notice. Prices al so are subject to change without 
+notice. BofA Securities is under no obligation to update this information and BofA Securities ability to publish information on the subject issuer(s) in the future is subject to applicable quiet 
+periods. You should therefore assume that BofA Securities will not update any fact, circumstance or opinion contained herein. 
+Subject to the quiet period applicable under laws of the various jurisdictions in which we distribute research reports and other legal and BofA Securities pol icy-related restrictions on the 
+publication of research reports, fundamental equity reports are produced on a regular basis as necessary to keep the investment recommendation current.  
+Certain outstanding reports or investment opinions relating to securities, financial instruments and/or issuers may no longer be current.  Always refer to the most recent research report relating 
+CR 
+
+=== PAGE 38 ===
+
+ 
+ 
+38 Valuation Trends | 15 December 2025  
+ 
+ 
+to an issuer prior to making an investment decision. 
+In some cases, an issuer may be classified as Restricted or may be Under Review or Extended Review. In each case, investors should consider any investment opinion relating to such issuer (or 
+its security and/or financial instruments) to be suspended or withdrawn and should not rely on the analyses and investment op inion(s) pertaining to such issuer (or its securities and/or financial 
+instruments) nor should the analyses or opinion(s) be considered a solicitation of any kind. Sales persons and financial advi sors affiliated with BofAS or any of its affiliates may not solicit 
+purchases of securities or financial instruments that are Restricted or Under Review and may only solicit securities under Extended Revi ew in accordance with firm policies. 
+Neither BofA Securities nor any officer or employee of BofA Securities accepts any liability whatsoever for any direct, indirect or consequential damages or losses arising from any use of this 
+information.    
+CR 

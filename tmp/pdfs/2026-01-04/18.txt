@@ -1,0 +1,101 @@
+
+
+=== PAGE 1 ===
+
+Allen Chang 
+.L.C.  
+Verena Jeng 
++852-2978-1681 |
+Goldman Sachs (As
+Ting Song 
++852-2978-6466 |
+Goldman Sachs (As
+China PCB: Victory Giant (300476.SZ, NC) Factory visit: AI PCB new 
+capacity ramp-up and mix upgrade driven by high-speed data 
+31 December 2025 | 8:33AM HKT
+We visited Victory Giant’s (300476.SZ, Not Covered) HuiYang factory and met 
+management on Dec 30th. Key discussions focused on PCB capacity expansion, 
+technology advantages, and product mix upgrade. Overall, management is 
+constructive on the company’s AI PCB growth ahead, supported by (1) new capacity 
+expansion; (2) dollar content increase on mix upgrade towards new generation of 
+platforms and high-speed solutions; and (3) continuous customer penetration in AI 
+infrastructure. Management highlighted the company’s accumulated know-how on 
+MLPCB (Multi-layer PCB) and HDI with high layers and mass production capabilities.  
+Read-across to China PCB: Management comments on the company’s capacity 
+expansion and mix upgrade echoes our positive view on China PCB. We expect the 
+strong demand of AI PCB to benefit high-end PCB/CCL suppliers ahead, driven by 
+dollar content increase of new AI server platforms with higher data transmission 
+speed. We believe local PCB suppliers will continue capacity expansion to capture 
+the growing demand. Buy: Shennan Circuits.  
+Company profile: Victory Giant (300476.SZ) is a global leading PCB supplier offering 
+MLPCB, HDI, single / double layer PCB, FPC (flexible printed circuit), etc., covering 
+diversified end markets, such as AI data center, automobile, telecom, and smart 
+terminals, with a global footprint in mainland China, Malaysia, Vietnam, and 
+Thailand. On AI infrastructure, the company has covered solutions across AI 
+accelerator card, AI server, data center switch, UBB, SSD/ DDR, and optical 
+transceiver. 
+Key takeaways  
+1. Accelerated AI PCB capacity expansion: The company facilitates capacity 
+expansion of AI PCBs within a shorter period and will continue to expand its own 
+capacity for AI demand. Besides existing product lines, Victory is also working on two 
+new factories with larger scale in HuiYang and is expanding capacity in overseas sites 
+incl. Thailand/ Vietnam. Management noted it is taking less time for the company to 
+ramp up new capacity, supported by deep partnerships with major clients and 
+experiences of product verification.  
+2. MLPCB and HDI accumulated know-how: The company has mass production 
+capabilities of both HDI (28-layers with 8+12+8 build-up) and MLPCB (70-layers), 
+benefiting from the specification upgrade of AI server new platforms. Management 
+noted PCB equipment parameter and formula of materials affects the product 
+ 
+Equity Research
+3ab8f2aafeb711dfb52c00215ad26546
+31 December 2025 | 8:33AM HKT
+1
+
+
+=== PAGE 2 ===
+
+performance and yield rate, especially laser drilling and copper fill plating process, and 
+Victory Giant has accumulated know-how of PCB for AI servers, high-speed switches, 
+and optical transceivers.  
+3. Dollar content upgrade opportunities: Besides capacity expansion, management 
+expects the dollar content upgrades to drive AI PCB revenues growth, driven by mix 
+upgrades toward new generation of AI platforms with higher speed (800G / 1.6T and 
+above). Mgmt attributes the higher dollar content to PCB with more layers and high-end 
+CCL materials (M8 / M9 and above). The company will continue R&D validation of new 
+technology (e.g. 30-layer HDIs, 100+ layer MLPCBs), and working with clients on 
+design-in of the latest products.  
+ 
+ 
+Exhibit 1: Victory Giant high-layer MLPCB and HDI 
+ 
+Exhibit 2: Victory Giant FPC and Rigid-Flex board 
+ 
+ 
+Source: Company data
+ 
+ 
+Source: Company data
+ 
+Exhibit 3: PLB copper plating production line 
+ 
+Exhibit 4: PCB drilling lines 
+ 
+ 
+Source: Company data
+ 
+ 
+Source: Company data
+Goldman Sachs China PCB
+3ab8f2aafeb711dfb52c00215ad26546
+2
+
+
+=== PAGE 3 ===
+
+Disclosure Appendix 
+ 
+ 
+Goldman Sachs China PCB
+3ab8f2aafeb711dfb52c00215ad26546
+3

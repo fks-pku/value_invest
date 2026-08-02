@@ -55,6 +55,7 @@ PUBLICATION_DATE_SOURCES = {
     "source_visible_at",
     "title_suffix",
     "pdf_cover",
+    "pdf_header",
     "manual_verification",
     "unknown",
 }

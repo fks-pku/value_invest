@@ -270,6 +270,79 @@ def _logic_node_lines(
     *,
     project_dir: Path | None,
 ) -> list[str]:
+    if str(node.get("render_mode") or "") == "demand_party_list":
+        demand_parties = dict(node.get("demand_parties") or {})
+        lines = [
+            f"#### {node.get('title') or node.get('logic_node_id') or '需求方'}",
+            "",
+        ]
+        for group_id, label in (
+            ("current", "当前需求方"),
+            ("potential_future", "潜在未来需求方"),
+        ):
+            lines.extend([f"**{label}**", ""])
+            lines.extend(
+                f"- {party}"
+                for party in demand_parties.get(group_id) or []
+            )
+            lines.append("")
+        return lines
+    if str(node.get("render_mode") or "") == "demand_quantity_matrix":
+        rows = list(node.get("demand_quantity_rows") or [])
+        quality_labels = {
+            "direct": "直接映射",
+            "proxy": "代理映射",
+            "sample": "样本映射",
+            "gap": "数据缺口",
+            "unmapped": "不做映射",
+        }
+        lines = [
+            f"#### {node.get('title') or node.get('logic_node_id') or '需求量'}",
+            "",
+            "##### 1. 分类映射预测",
+            "",
+            "| Q1 需求方 | 当前数量 / 预测 | 口径与期间 | 映射质量 | 来源与局限 |",
+            "|---|---|---|---|---|",
+        ]
+        for row in rows:
+            if row.get("forecast_group") != "classified":
+                continue
+            source_text = _demand_quantity_source_text(
+                row,
+                project_dir=project_dir,
+            )
+            lines.append(
+                f"| {_escape_cell(str(row.get('demand_party') or ''))} "
+                f"| {_escape_cell(str(row.get('quantity') or ''))} "
+                f"| {_escape_cell(str(row.get('metric') or ''))}<br>"
+                f"{_escape_cell(str(row.get('target_period') or ''))} "
+                f"| {_escape_cell(quality_labels.get(str(row.get('mapping_quality') or ''), str(row.get('mapping_quality') or '')))} "
+                f"| {source_text}<br>{_escape_cell(str(row.get('caveat') or ''))} |"
+            )
+        lines.extend(
+            [
+                "",
+                "##### 2. 其它预测",
+                "",
+                "| 预测对象 | 当前数量 / 预测 | 期间 | 来源与未映射原因 |",
+                "|---|---|---|---|",
+            ]
+        )
+        for row in rows:
+            if row.get("forecast_group") != "other":
+                continue
+            source_text = _demand_quantity_source_text(
+                row,
+                project_dir=project_dir,
+            )
+            lines.append(
+                f"| {_escape_cell(str(row.get('metric') or ''))} "
+                f"| {_escape_cell(str(row.get('quantity') or ''))} "
+                f"| {_escape_cell(str(row.get('target_period') or ''))} "
+                f"| {source_text}<br>{_escape_cell(str(row.get('caveat') or ''))} |"
+            )
+        lines.append("")
+        return lines
     lines = [
         f"#### {node.get('title') or node.get('logic_node_id') or '逻辑节点'}",
         "",
@@ -317,6 +390,26 @@ def _logic_node_lines(
             lines.append("| 无 | 其他 | 尚无经过复核的实体级材料。 |")
         lines.append("")
     return lines
+
+
+def _demand_quantity_source_text(
+    row: dict[str, Any],
+    *,
+    project_dir: Path | None,
+) -> str:
+    links = []
+    for source in row.get("sources") or []:
+        title = _escape_cell(
+            str(source.get("source_title") or source.get("source_id") or "来源")
+        )
+        url = _rendered_source_url(
+            str(source.get("source_url") or ""),
+            project_dir=project_dir,
+        )
+        link = f"[{title}]({_markdown_link_target(url)})" if url else title
+        published_at = _escape_cell(str(source.get("published_at") or ""))
+        links.append(f"{published_at} · {link}" if published_at else link)
+    return "<br>".join(links) if links else "暂无独立来源"
 
 
 def _entity_source_claim_row(

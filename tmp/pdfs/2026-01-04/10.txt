@@ -1,0 +1,2071 @@
+
+
+=== PAGE 1 ===
+
+Morningstar Equity Company Report | Report as of 20 Nov 2025 04:22, UTC | Reporting Currency: CNY | Trading Currency: HKD | Exchange: HONG KONG EXCHANGES AND CLEARING LTD Page 1 of 25
+?
+GDS Holdings Ltd Class A 09698 QQQ 19 Nov 2025 17:22, UTC
+Last Price
+28.34 HKD
+19 Nov 2025
+Fair Value Estimate
+32.00 HKD
+21 Aug 2025 09:36, UTC
+Price/FVE
+0.89
+Market Cap
+45.90 HKD Bil
+20 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+Dan Baker
+Senior Equity Analyst
+Morningstar
++852 2973 4689
+dan.baker@morningstar.com
+Contents
+Analyst Note (20 Nov 2025)
+Business Description
+Business Strategy & Outlook (21 Aug 2025)
+Bulls Say / Bears Say (20 Nov 2025)
+Fair Value and Profit Drivers (20 Nov 2025)
+Economic Moat (21 Aug 2025)
+Risk and Uncertainty (21 Aug 2025)
+Financial Strength (20 Nov 2025)
+Capital Allocation (21 Aug 2025)
+Financials
+ESG Risk
+Recent Analyst Notes
+Research Methodology for Valuing 
+Companies
+Important Disclosure
+The conduct of Morningstar’s analysts is governed by Code of 
+Ethics/Code of Conduct Policy, Personal Security Trading Policy 
+(or an equivalent of), and Investment Research Policy. For 
+information regarding conflicts of interest, please visit: http://
+global.morningstar.com/equitydisclosures.
+The primary analyst covering this company does not own its 
+stock.
+Reporting Currency: CNY | Trading Currency: HKD
+Currency amounts expressed with "$" are in U.S. dollars 
+(USD) unless otherwise denoted.
+1The ESG Risk Rating Assessment is a representation of 
+Sustainalytics’ ESG Risk Rating.
+GDS Earnings: Getting More Aggressive to Address Surging 
+Demand 
+Analyst Note Dan Baker, Senior Equity Analyst, 20 Nov 2025
+GDS reported decent third-quarter results with revenue up 10.2% and adjusted EBITDA up 11.4%. 2025 revenue 
+and adjusted EBITDA growth guidance of 10.9% and 8.5% was retained, but management estimated that EBITDA 
+would likely be "at or above" the top end of the guidance.
+Why it matters: The Chinese data center market saw strong demand driven by artificial intelligence training in 
+2024. AI demand is now moving to inferencing, which suits GDS' existing Tier 1 city assets. Management 
+estimated that around 65% of new bookings are now AI-related.
+gGDS netted CNY 1.7 billion from its first asset-backed security sale in the first quarter and a further CNY 2.1 
+billion from the C-REIT IPO in the third quarter. Given the industry's current conditions and outlook, management 
+indicated that it would be more aggressive in pursuing new land and power.
+gOver the five- to six-year period, from the construction of a new data center to the sale into the C-REIT, 
+assuming a conservative cap rate, management estimates the internal rate of return is in the low to mid-teens 
+with return on equity well into the 20s.
+The bottom line: We make only small adjustments to our forecasts and retain our fair value estimate of HKD 32 
+(USD 33). The stock is currently 3-star-rated. Our no-moat rating is also retained.
+gManagement indicates that its track record, reputation, and existing government relationships help it gain 
+Financial Summary and Key Statistics 
+Actual Forecast
+2023 2024 2025 2026
+Revenue (CNY Mil) 9,782 10,322 11,378 13,581
+Revenue Growth % 5.6 5.5 10.2 19.4
+Operating Income (Mil) 891 1,179 1,302 1,812
+Operating Margin % 9.1 11.4 11.5 13.4
+Adjusted EBITDA (Mil) 4,366 5,488 4,779 5,300
+Adjusted EBITDA Margin % 44.6 53.2 42.0 39.0
+Earnings Per Share (Diluted) (CNY) -2.92 2.33 1.36 -0.10
+Adjusted Earnings Per Share (Diluted) (CNY) -2.95 2.29 1.32 -0.13
+Adjusted EPS Growth % 284.3 -177.7 -42.4 -110.2
+Price/Earnings -2.8 9.4 19.6 -199.0
+Price/Book 0.6 1.4 1.5 1.5
+EV/EBITDA 12.1 13.8 15.5 14.0
+Free Cash Flow Yield % — — — —
+Source: Morningstar Valuation Model. Data as of 20 Nov 2025.
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 2 ===
+
+Morningstar Equity Company Report | Report as of 20 Nov 2025 04:22, UTC | Reporting Currency: CNY | Trading Currency: HKD | Exchange: HONG KONG EXCHANGES AND CLEARING LTD Page 2 of 25
+?
+GDS Holdings Ltd Class A 09698 QQQ 19 Nov 2025 17:22, UTC
+Last Price
+28.34 HKD
+19 Nov 2025
+Fair Value Estimate
+32.00 HKD
+21 Aug 2025 09:36, UTC
+Price/FVE
+0.89
+Market Cap
+45.90 HKD Bil
+20 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+power quotas, but we do not see these as powerful enough to generate a moat.
+gThe current price/book ratio is around 1.6 times. GDS does not revalue its data centers each year, unlike a 
+property REIT, and we estimate that its early data centers in major city CBD areas have substantially increased in 
+value.
+Long view: With GDS leveraged to long-term growth themes such as the shift of IT to the cloud and AI, we see it 
+as a decent long-term investment. However, the share price has been volatile due to high financial leverage, 
+which is why we assign a Very High Uncertainty Rating.
+Business Strategy & Outlook Dan Baker, Senior Equity Analyst, 21 Aug 2025
+We expect GDS Holdings to continue to purchase and build data centers in and around its focus Tier 1 Chinese 
+cities of Shanghai, Beijing, Shenzhen, Guangzhou, Hong Kong, Chengdu, and Chongqing. As its network of 
+interconnected data centers grows, it can more easily cater to the demand from its key cloud service provider 
+customers, allowing them to expand in a flexible way in their key markets. This also enables key enterprise 
+customers to deploy their hybrid clouds in close proximity to the networked nodes of leading public clouds. The 
+company is also excited about its international expansion into Southeast Asia, but in raising funds for the growth 
+of this business, named DayOne, it has sold down its stake to 38% and has now deconsolidated this business. 
+The most recent capital raise would value GDS' stake at USD 1.3 billion or USD 6.75 per ADR on a USD 400 million 
+investment. Management has indicated that an IPO of this business is a possibility within the next 18 months. In 
+July 2025, GDS listed a C-REIT seeded by some of GDS' mature Chinese data centers and will likely continue to 
+use this as a means for recycling capital.
+GDS does not build data centers unless it has committed demand from hyperscale customers, which allows it to 
+fund the data centers with debt and equity more easily. Therefore, while in a strong growth “land grab” phase, we 
+would expect the company to continue to focus on hyperscale customers. The Chinese data center market was in 
+a slowdown in 2022 and 2023, but saw a strong demand increase from artificial intelligence training in 2024. As 
+of early 2025, AI demand in China is now moving to inferencing, which requires large IDC capacity, quick move-
+in times, and low latency, which suits GDS' existing Tier 1 city assets. The profitability of mature data centers is 
+hidden in the consolidated accounts by the costs associated with fast growth, given the high number of new data 
+centers under construction, and underutilized new data centers. The quicker move-in times for AI inferencing 
+demand should help shorten the payback time for data center owners like GDS.
+Bulls Say Dan Baker, Senior Equity Analyst, 20 Nov 2025
+g GDS’ rapid expansion in the “land grab” stage of the industry should allow it to own data centers in sought after 
+areas such as downtown in Tier 1 cities and in data center clusters.
+g 5G, industrial internet, cloud computing, artificial intelligence and other innovations that increase the demand 
+for data and connectivity leave us in the early stage of a data center renaissance.
+g As an early entrant into the data center business in China GDS has built up expertise and a reputation that 
+should allow it to remain competitive in the data center construction and operations.
+Bears Say Dan Baker, Senior Equity Analyst, 20 Nov 2025
+Sector Industry
+a Technology Information 
+Technology Services
+Business Description
+GDS Holdings started as an IT service 
+provider in 2001 then moved to the data 
+center business with its first self-developed 
+data center opening in 2010. The company 
+now develops and operates data centers in 
+China and also builds, operates and 
+transfers data centers for other clients. It 
+offers colocation and managed services and 
+mainly targets hyperscale cloud service 
+customers who take large areas of its data 
+centers or even whole data centers under 
+long-term contracts. Its data centers are 
+located predominantly in and around the 
+Tier 1 cities in China and it has also started 
+an expanding into Southeast Asia via the 
+now 38% owned DayOne. GDS listed on the 
+Nasdaq in 2016 and completed a secondary 
+listing in Hong Kong in 2020.
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 3 ===
+
+Morningstar Equity Company Report | Report as of 20 Nov 2025 04:22, UTC | Reporting Currency: CNY | Trading Currency: HKD | Exchange: HONG KONG EXCHANGES AND CLEARING LTD Page 3 of 25
+?
+GDS Holdings Ltd Class A 09698 QQQ 19 Nov 2025 17:22, UTC
+Last Price
+28.34 HKD
+19 Nov 2025
+Fair Value Estimate
+32.00 HKD
+21 Aug 2025 09:36, UTC
+Price/FVE
+0.89
+Market Cap
+45.90 HKD Bil
+20 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+g GDS' data centers are not significantly differentiated from those that others, including its biggest customers, 
+could supply. 
+g GDS needs its biggest customers more than they need it, and its highly concentrated customer base (in terms of 
+revenue exposure) leaves the company at their mercy.
+g A Chinese property downturn could leave GDS exposed given it owns around two thirds of its developed and 
+developable capacity of over one million sqm.
+Fair Value and Profit Drivers Dan Baker, Senior Equity Analyst, 20 Nov 2025
+Our fair value estimate for GDS stands at HKD 32 per share. We assume GDS revenue grows at an average of 18% 
+per year over the next five years, with operating income increasing 29% per year. In 2034 we assume a steady 
+state where its data centers are more mature, with EBITDA margins across the portfolio of over 65%. Australian 
+data center company NextDC provides financials for two of its most mature data centers in Melbourne and 
+Sydney that have over 90% utilization rates. The numbers show EBITDA margins of around 80% and returns on 
+invested capital in the midteens, and we see these as illustrative of the types of returns we can expect from GDS 
+once its data centers mature. 
+The company is also excited about its international expansion into Southeast Asia, but in raising funds for the 
+growth of this business, named DayOne, it has sold down its stake to 38% and has now deconsolidated this 
+business. Note the most recent capital raise would value GDS' stake at USD 1.3 billion or USD 6.75 per ADR on a 
+USD 400 million investment and this is how we value it for now. Management has indicated that an IPO of this 
+business is a possibility within the next 18 months. 
+Economic Moat Dan Baker, Senior Equity Analyst, 21 Aug 2025
+We give GDS a no-moat rating as we believe the bargaining power that its large hyperscale customers will have 
+will offset the switching costs normally associated with the data center industry. 
+Moats in data center businesses under Morningstar’s coverage can be derived from network effect, customer 
+switching costs, and cost advantages. We generally rate hyperscale data network businesses (those that lease 
+large spaces to hyperscale tenants on lengthier contracts, such as GDS) as less moaty than retail co-location 
+businesses. Most data center companies do both hyperscale and retail, with GDS focusing more on the 
+hyperscale market. Around 85% of GDS' revenue is from hyperscale customers with the remaining 15% from 
+retail customers. In this respect we see it as similar to CyrusOne in the US which we rate no moat. One difference 
+between CyrusOne and GDS is that GDS does not build data centers without precommitments from existing 
+customers which leaves it less vulnerable in a demand downturn. CyrusOne also does not operate any major 
+internet exchanges, and many of its data centers are outside top-tier locations. GDS’ capacity in service in 
+downtown Shanghai and Beijing represents 65% of existing data center capacity in service and it also has 
+capacity near the center of the key cities in the Greater Bay Area (Guangzhou and Shenzhen). While it is very hard 
+to get data center capacity in these locations so it will be hard for customers in these data centers in particular, 
+to switch to other providers, our moat ratings are forward-looking and we see the bulk of GDS’ new data center 
+capacity being deployed in areas at the fringes of the major cities where large customers will likely have more 
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 4 ===
+
+Morningstar Equity Company Report | Report as of 20 Nov 2025 04:22, UTC | Reporting Currency: CNY | Trading Currency: HKD | Exchange: HONG KONG EXCHANGES AND CLEARING LTD Page 4 of 25
+?
+GDS Holdings Ltd Class A 09698 QQQ 19 Nov 2025 17:22, UTC
+Last Price
+28.34 HKD
+19 Nov 2025
+Fair Value Estimate
+32.00 HKD
+21 Aug 2025 09:36, UTC
+Price/FVE
+0.89
+Market Cap
+45.90 HKD Bil
+20 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+options to switch to other data center suppliers when their contracts expire, or use the threat of moving to keep a 
+lid on returns for GDS. 
+We typically see switching costs as competitive advantages for data centers. If data center tenants leave they 
+need to take significant risks to move critical servers and networking equipment and incur expenses, which 
+according to Align Communications, could cost tens of millions of dollars for multimegawatt customers 
+(generally the hyperscalers that use massive amounts of power). GDS reported average yearly churn of 3.6%, 
+2.0% and 3.2% for 2018, 2019 and 2020, respectively, which are low numbers in themselves and the company 
+indicated that this churn is from smaller retail clients, not the larger hyperscale customers from which it 
+generates most of its revenue. GDS has yet to see any churn from its largest customers. Agreements with the 
+large cloud service providers typically have periods of three to 10 years, whereas other customers typically have 
+contract periods of one to five years. Often the initial contract for data center capacity is a competitive tender, 
+but then expansions are negotiated. Crucially, GDS doesn’t build new data centers unless it has enough 
+committed customers—it does not build a data center and then try to fill it. The data center market has been 
+growing strongly and we believe most of the recontracted data centers have been in inner city areas where 
+demand has been high and supply has been low. We expect that the large hyperscale customers will likely hold 
+better bargaining power in future contracts that expire in outer city data centers.
+GDS is transparent with its large hyperscale customers with its costs, pricing on a “cost plus reasonable return” 
+basis. Its returns for the hyperscale customers are therefore slightly lower than for the retail component of its 
+business, but still above the cost of capital according to the company. The reason we believe hyperscale data 
+centers are less moaty than retail is that given the longer contracts wholesale customers sign, we believe they 
+are far more discerning and more likely able to justify the costs of moving. We are also aware that hyperscale 
+customers have the ability to replace a presence at GDS with one in a self-owned data center. However, GDS’ 
+largest hyperscale customers such as Alibaba and Tencent, after favoring their own data centers in the earlier 
+years have been moving away from self-built and owned data centers and have been almost exclusively using 
+capacity from one of the independent providers. We also believe GDS is helped in the tenders by its experience 
+and reputation for building quality data centers and its growing network of data centers, but do not see this as 
+strong enough to warrant an intangible asset moat. 
+The network effect for data centers is generated in major internet exchanges where key internet service 
+providers are connected, particularly for applications where latency is important. In this situation service 
+providers attract customers to a data center who then attract more service providers. In China the key areas 
+where network effect is likely present are in the CBD areas of Tier 1 cities where new data center capacity is 
+difficult to build such as in Shanghai and Beijing. GDS has a significant capacity in service in these areas. It has 
+100,000 sqm in service in downtown Shanghai and 107,000 sqm in downtown Beijing which represents 65% of 
+existing data center capacity in service. However, most of its area under construction and land held for future 
+expansion is at the edge of these cities where suitable sites are more plentiful so we would expect the amount of 
+capacity in prime downtown areas to fall below 50% within the next two years. In our view, networks are crucial 
+to maintaining a network effect because they make data centers more valuable both to each other and to cloud 
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 5 ===
+
+Morningstar Equity Company Report | Report as of 20 Nov 2025 04:22, UTC | Reporting Currency: CNY | Trading Currency: HKD | Exchange: HONG KONG EXCHANGES AND CLEARING LTD Page 5 of 25
+?
+GDS Holdings Ltd Class A 09698 QQQ 19 Nov 2025 17:22, UTC
+Last Price
+28.34 HKD
+19 Nov 2025
+Fair Value Estimate
+32.00 HKD
+21 Aug 2025 09:36, UTC
+Price/FVE
+0.89
+Market Cap
+45.90 HKD Bil
+20 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+providers, which then draw their own customers. 
+Digital Realty Trust is the only data center company we cover that we think has a cost advantage, and it is mostly 
+due to its scale, which we think gives it negotiating leverage with suppliers and economies of scale. Digital 
+Realty has almost 300 data centers and 27 million net rentable square feet under lease. It claims its scale 
+enables it to get discounts on major expenses such as cooling equipment and power. However, Digital Realty 
+Trust’s data centers are located mostly in the US and Europe. We believe GDS may have a scale advantage over 
+other independent data center operators such as VNET, Chindata, and Sinnet given its total data center capacity 
+is two to three times as large as any of those, but the three Chinese telecom companies have much bigger data 
+center networks than GDS. We note that the Chinese telecom companies have a much greater percentage of their 
+data centers located outside the main Tier 1 markets and in many cases are the main data center providers in 
+Tier 2 and Tier 3 cities. To the extent that any scale-based cost advantages are available in this industry, we 
+would expect the Chinese telecom operators to be the main beneficiaries. Note, in addition to the listed data 
+center operators there are numerous smaller date center owners who own only one or two data centers. GDS has 
+been actively but selectively buying up such small operators.
+GDS has developed a proprietary Data Center Operation Management Platform that provides real-time 
+information on many aspects of data center operating performance and enables it to streamline its data center 
+management processes. STT GDC is a controlling shareholder of GDS and is indirectly owned by ST Telemedia. 
+STT GDC owns a portfolio of data centers in Singapore, Thailand, India, the UK, and China either directly or 
+through investments in data center companies like GDS. It is is able to leverage its customer and supplier 
+relationships as well as through knowledge sharing, enhance technology, operational performance, and 
+customer service. While this may provide competitive advantages over some independent data center operators, 
+there are other, larger, networks of data centers likely with similar systems (especially from the telecom 
+companies) and we do not believe it is enough to drive advantages for the 10-year time frame required for a 
+moat.
+Risk and Uncertainty Dan Baker, Senior Equity Analyst, 21 Aug 2025
+We assign GDS a Very High Morningstar Uncertainty Rating. The main risk we see is for potential competition, 
+particularly if and when demand growth slows. If demand slows quickly we could see a period of oversupply of 
+data centers. The older data centers near the center of major city CBDs would probably still have plenty of 
+demand but there could be issues with the newer data centers in the satellite towns. GDS would probably be 
+somewhat protected with its majority longer three to 10 year contracts, but could see pressure in its retail 
+business. High financial leverage adds to this risk.
+As a privately owned and run business operating in China, GDS also faces risks of unforeseen actions from the 
+Chinese government, similar to what we saw in 2020 and 2021 with large online and education companies. For 
+example, the government could encourage or demand that local governments and SOEs use government cloud 
+service providers instead of the large private cloud service providers that make up the majority of GDS’ customer 
+base. The government could also potentially encourage or demand that government entities and SOEs store their 
+data in government or SOE-owned data centers. 
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+
+=== PAGE 6 ===
+
+Morningstar Equity Company Report | Report as of 20 Nov 2025 04:22, UTC | Reporting Currency: CNY | Trading Currency: HKD | Exchange: HONG KONG EXCHANGES AND CLEARING LTD Page 6 of 25
+?
+GDS Holdings Ltd Class A 09698 QQQ 19 Nov 2025 17:22, UTC
+Last Price
+28.34 HKD
+19 Nov 2025
+Fair Value Estimate
+32.00 HKD
+21 Aug 2025 09:36, UTC
+Price/FVE
+0.89
+Market Cap
+45.90 HKD Bil
+20 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+Due to PRC regulations that limit foreign equity ownership of entities providing IDC services at 50%, GDS uses a 
+Variable Interest Entity structure where it conducts a substantial part of its operations in China through 
+contractual arrangements with VIEs that are ultimately owned by PRC citizens and licensed or authorized to 
+provide IDC services. A ban on Chinese education companies using this structure announced in 2021 has raised 
+the possibility of such a ban being extended to the many other companies using this structure in China. 
+We see few material ESG risks for GDS but note the data center industry is a high user of electricity so the 
+government is continually encouraging companies to increase power efficiency and also assigns power quotas 
+to data center projects. 
+Financial Strength Dan Baker, Senior Equity Analyst, 20 Nov 2025
+GDS has a reasonably aggressive balance sheet with net debt of CNY 32.2 billion as of the end of September 
+2025. This is after raising CNY 3.8 billion in cash proceeds from the C-REIT and asset-backed securities. At a 
+project level, debt investors seem to be comfortable with the company’s financial position, with GDS continuing 
+to finance around 50%-60% of its data center projects with project debt. 
+At the end of the first quarter of 2025, GDS had 1,682MW in service or under construction and a further 900 MW 
+held for future development, for which it has energy quotas, and believes this could be developed over the next 
+four years. With monetization of existing assets, GDS expects it should be able to develop this capacity without 
+further external funding.
+Capital Allocation Dan Baker, Senior Equity Analyst, 21 Aug 2025
+We assign GDS a Standard Morningstar Capital Allocation Rating. Our rating is based on the health of GDS’ 
+balance sheet and our outlook in regard to investment in the business. We think business investment is likely to 
+be the critical factor in determining shareholder returns. 
+GDS Holdings’ business is capital intensive with the company needing to build or buy data centers to grow. Until 
+the past few years, its investment had been biased toward organic growth with acquisitions only making up 
+around 10-12% of incremental invested capital. However, with the huge growth in the data center industry and 
+with a large number of smaller data center investors, many owning only one data center, GDS sees opportunities 
+to consolidate the industry. With limited suitable locations for data centers in its Tier 1 city target markets, the 
+company has begun to use acquisitions as a key means to grow. This involves acquiring data centers at different 
+stages of construction or maturity or acquiring land or rights to build data centers. Individually the acquisitions 
+tend to be small relative to the size of the company and revenue and returns are not disclosed in sufficient detail 
+for us to evaluate them individually. Over 2017 to 2019, the company spent an average of 11% of its investments 
+on acquisitions and this rose to 14% in 2020 and then to 42% in the first half of 2021. The strategy of acquiring 
+existing data centers in good locations makes sense to us.  
+GDS has been very active in capital markets to fund its aggressive expansion strategy. In the three years to the 
+end of 2020 it had six equity-raising events, raising a total of USD 3.5 billion, including its listing in Hong Kong 
+which raised USD 1.9 billion. The average price of these capital raises was USD 56.40 which is above our fair 
+value so we view the raises as at a decent price. However, we believe the company will likely do future raises as 
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 7 ===
+
+Morningstar Equity Company Report | Report as of 20 Nov 2025 04:22, UTC | Reporting Currency: CNY | Trading Currency: HKD | Exchange: HONG KONG EXCHANGES AND CLEARING LTD Page 7 of 25
+?
+GDS Holdings Ltd Class A 09698 QQQ 19 Nov 2025 17:22, UTC
+Last Price
+28.34 HKD
+19 Nov 2025
+Fair Value Estimate
+32.00 HKD
+21 Aug 2025 09:36, UTC
+Price/FVE
+0.89
+Market Cap
+45.90 HKD Bil
+20 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+and when it needs them rather than try to time raises for the best share price. The offshore China Data Center 
+Fund announced in August 2022 should also allow the company to tap into funds looking for direct data center 
+project exposure. The selling of a 43.9% stake in its international business to private equity also shores up equity 
+funding for that business expansion. The sale of equity stakes in certain data centers into a private REIT also 
+allows GDS to monetize some of its data center equity as does the selling of similar stakes into the C-REIT listed 
+in July 2025. 
+Given the strong growth, current lack of current profitability and expect further capital raises we do not expect 
+GDS to return capital to investors in the foreseeable future. K
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 8 ===
+
+Morningstar Equity Company Report | Report as of 20 Nov 2025 04:22, UTC | Reporting Currency: CNY | Trading Currency: HKD | Exchange: HONG KONG EXCHANGES AND CLEARING LTD Page 8 of 25
+?
+GDS Holdings Ltd Class A 09698 QQQ 19 Nov 2025 17:22, UTC
+Price vs. Fair Value 
+0
+20
+40
+60
+80
+Fair Value: 32.00
+21 Aug 2025 09:36, UTC
+Last Close: 28.34
+Overvalued
+Undervalued
+2020 2021 2022 2023 2024 YTD
+— 1.01 0.55 0.32 0.81 0.89 Price/Fair Value
+— -49.92 -54.70 -55.80 153.31 23.49 Total Return %
+Morningstar Rating
+Competitors
+GDS Holdings Ltd Class A 09698
+Fair Value
+32.00
+Uncertainty : Very High
+Last Close
+28.34
+ China Telecom Corp Ltd Class H 00728
+Fair Value
+7.10
+Uncertainty : Low
+Last Close
+5.77
+ China Unicom (Hong Kong) Ltd 00762
+Fair Value
+11.00
+Uncertainty : Low
+Last Close
+9.39
+Economic Moat
+ None
+ None
+ None
+Currency HKD HKD HKD
+Fair Value 32.00 21 Aug 2025 09:36, UTC 7.10 18 Aug 2025 07:12, UTC 11.00 19 Mar 2025 02:05, UTC
+1-Star Price 56.00 8.88 13.75
+5-Star Price 16.00 5.68 8.80
+Assessment Fairly Valued 19 Nov 2025 Undervalued 19 Nov 2025 Undervalued 19 Nov 2025
+Morningstar Rating QQQ19 Nov 2025 17:22, UTC QQQQQ19 Nov 2025 17:22, UTC QQQQ19 Nov 2025 17:20, UTC
+Analyst Dan Baker, Senior Equity Analyst Dan Baker, Senior Equity Analyst Dan Baker, Senior Equity Analyst
+Capital Allocation Standard Standard Standard
+Price/Fair Value 0.89 0.81 0.85
+Price/Sales 4.52 0.92 0.68
+Price/Book 1.55 1.05 0.71
+Price/Earnings 30.49 14.26 10.36
+Dividend Yield 0.00% 5.20% 5.14%
+Market Cap 43.42 Bil 528.00 Bil 287.32 Bil
+52-Week Range 17.00—48.90 4.41—6.98 6.32—11.56
+Investment Style Large Blend Large Value Large Value
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 9 ===
+
+Morningstar Equity Company Report | Report as of 20 Nov 2025 04:22, UTC | Reporting Currency: CNY | Trading Currency: HKD | Exchange: HONG KONG EXCHANGES AND CLEARING LTD Page 9 of 25
+?
+GDS Holdings Ltd Class A 09698 QQQ 19 Nov 2025 17:22, UTC
+Last Price
+28.34 HKD
+19 Nov 2025
+Fair Value Estimate
+32.00 HKD
+21 Aug 2025 09:36, UTC
+Price/FVE
+0.89
+Market Cap
+45.90 HKD Bil
+20 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+Morningstar Valuation Model Summary
+Financials as of 20 Nov 2025 Actual Forecast
+Fiscal Year, ends 31 Dec 2022 2023 2024 2025 2026 2027 2028 2029
+Revenue (CNY Mil) 9,268 9,782 10,322 11,378 13,581 16,378 20,078 23,999
+Operating Income (CNY Mil) 821 891 1,179 1,302 1,812 2,464 3,322 4,367
+EBITDA (CNY Mil) 4,229 1,376 5,529 4,779 5,300 5,987 6,894 7,990
+Adjusted EBITDA (CNY Mil) 4,042 4,366 5,488 4,779 5,300 5,987 6,894 7,990
+Net Income (CNY Mil) -1,074 -4,280 3,438 2,003 -144 341 1,010 1,855
+Adjusted Net Income (CNY Mil) -1,125 -4,334 3,384 1,949 -198 287 956 1,801
+Free Cash Flow To The Firm (CNY Mil) -11,430 -4,943 11,039 4,523 592 929 1,435 2,289
+Weighted Average Diluted Shares Outstanding (Mil) 1,464 1,468 1,475 1,475 1,475 1,475 1,475 1,475
+Earnings Per Share (Diluted) (CNY) -0.73 -2.92 2.33 1.36 -0.10 0.23 0.69 1.26
+Adjusted Earnings Per Share (Diluted) (CNY) -0.77 -2.95 2.29 1.32 -0.13 0.19 0.65 1.22
+Dividends Per Share (CNY) 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00
+Margins & Returns as of 20 Nov 2025 Actual Forecast
+3 Year Avg 2022 2023 2024 2025 2026 2027 2028 2029 5 Year Avg
+Operating Margin % 0.4 8.9 9.1 11.4 11.5 13.4 15.0 16.6 18.2 15.1
+EBITDA Margin % — 45.6 14.1 53.6 42.0 39.0 36.6 34.3 33.3 —
+Adjusted EBITDA Margin % — 43.6 44.6 53.2 42.0 39.0 36.6 34.3 33.3 37.0
+Net Margin % -7.4 -11.6 -43.8 33.3 17.6 -1.1 2.1 5.0 7.7 6.3
+Adjusted Net Margin % -7.9 -12.1 -44.3 32.8 17.1 -1.5 1.8 4.8 7.5 5.9
+Free Cash Flow To The Firm Margin % -22.3 -123.3 -50.5 106.9 39.8 4.4 5.7 7.1 9.5 13.3
+Growth & Ratios as of 20 Nov 2025 Actual Forecast
+3 Year CAGR 2022 2023 2024 2025 2026 2027 2028 2029 5 Year CAGR
+Revenue Growth % 9.7 18.5 5.6 5.5 10.2 19.4 20.6 22.6 19.5 18.4
+Operating Income Growth % 21.0 23.5 8.5 32.4 10.4 39.2 36.0 34.8 31.5 29.9
+EBITDA Growth % 87.2 27.4 -67.5 301.7 -13.6 10.9 13.0 15.1 15.9 8.3
+Adjusted EBITDA Growth % 18.2 21.7 8.0 25.7 -12.9 10.9 13.0 15.1 15.9 7.8
+Earnings Per Share Growth % — -4.1 297.7 -180.0 -41.7 -107.2 -337.3 195.9 83.6 -11.6
+Adjusted Earnings Per Share Growth % — -3.7 284.3 -177.7 -42.4 -110.2 -245.0 232.9 88.4 -11.6
+Valuation as of 20 Nov 2025 Actual Forecast
+2022 2023 2024 2025 2026 2027 2028 2029
+Price/Earnings -23.7 -2.8 9.4 19.6 -199.0 136.2 39.8 21.2
+Price/Sales 3.0 1.3 3.2 3.5 2.9 2.4 2.0 1.7
+Price/Book 1.1 0.6 1.4 1.5 1.5 1.5 1.4 1.3
+Price/Cash Flow — — — — — — — —
+EV/EBITDA 15.4 12.1 13.8 15.5 14.0 12.4 10.8 9.3
+EV/EBIT 75.8 59.1 64.4 57.0 40.9 30.1 22.3 17.0
+Dividend Yield % — — — — — — — —
+Dividend Payout % 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+Free Cash Flow Yield % — — — — — — — —
+Operating Performance / Profitability as of 20 Nov 2025 Actual Forecast
+Fiscal Year, ends 31 Dec 2022 2023 2024 2025 2026 2027 2028 2029
+ROA % -1.4 -5.8 4.7 2.6 -0.2 0.4 1.3 2.2
+ROE % -4.4 -21.3 14.5 7.8 -0.6 1.3 3.8 6.4
+ROIC % 1.5 1.6 2.0 2.1 2.8 3.6 4.7 5.8
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 10 ===
+
+Morningstar Equity Company Report | Report as of 20 Nov 2025 04:22, UTC | Reporting Currency: CNY | Trading Currency: HKD | Exchange: HONG KONG EXCHANGES AND CLEARING LTD Page 10 of 25
+?
+GDS Holdings Ltd Class A 09698 QQQ 19 Nov 2025 17:22, UTC
+Last Price
+28.34 HKD
+19 Nov 2025
+Fair Value Estimate
+32.00 HKD
+21 Aug 2025 09:36, UTC
+Price/FVE
+0.89
+Market Cap
+45.90 HKD Bil
+20 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+Financial Leverage (Reporting Currency) Actual Forecast
+Fiscal Year, ends 31 Dec 2022 2023 2024 2025 2026 2027 2028 2029
+Debt/Capital % 58.9 76.3 55.5 51.5 48.6 45.8 43.0 40.3
+Assets/Equity 3.1 3.7 3.1 3.0 3.0 3.0 3.0 2.9
+Net Debt/EBITDA 8.5 26.6 6.6 7.1 6.6 6.0 5.2 4.4
+Total Debt/EBITDA 11.1 10.1 8.1 9.3 8.4 7.4 6.4 5.6
+EBITDA/ Net Interest Expense 2.2 2.4 3.0 2.2 2.6 2.9 3.2 3.7
+Forecast Revisions as of 19 Nov 2025 2025 2026 2027
+Prior data as of 21 Aug 2025 Current Prior Current Prior Current Prior
+Fair Value Estimate Change (Trading Currency) 32.00 32.01 — — — —
+Revenue (CNY Mil) 11,378 11,378 13,581 13,581 16,378 16,378
+Operating Income (CNY Mil) 1,302 1,268 1,812 1,772 2,464 2,448
+EBITDA (CNY Mil) 4,779 4,787 5,300 5,298 5,987 6,008
+Net Income (CNY Mil) 1,949 1,921 -198 -231 287 275
+Earnings Per Share (Diluted) (CNY) 1.36 1.34 -0.10 -0.12 0.23 0.22
+Adjusted Earnings Per Share (Diluted) (CNY) 1.32 1.30 -0.13 -0.16 0.19 0.19
+Dividends Per Share (CNY) 0.00 0.00 0.00 0.00 0.00 0.00
+Key Valuation Drivers as of 20 Nov 2025
+Cost of Equity % 11.0
+Pre-Tax Cost of Debt % 6.5
+Weighted Average Cost of Capital % 11.7
+Long-Run Tax Rate % 22.0
+Stage II EBI Growth Rate % 11.0
+Stage II Investment Rate % 18.0
+Perpetuity Year 11
+Additional estimates and scenarios available for download at https://pitchbook.com/. 
+Discounted Cash Flow Valuation as of 20 Nov 2025
+CNY Mil
+Present Value Stage I 22,594
+Present Value Stage II 3,333
+Present Value Stage III 38,714
+Total Firm Value 64,640
+Cash and Equivalents 7,868
+Debt 44,460
+Other Adjustments 9,386
+Equity Value 37,434
+Projected Diluted Shares 1,475
+Fair Value per Share (HKD) 32.00
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+本报告来源于三个皮匠报告站（www.sgpjbg.com）,由用户Id:865822下载,文档Id:1023372,下载日期:2026-01-04
+
+=== PAGE 11 ===
+
+Morningstar Equity Company Report | Report as of 20 Nov 2025 04:22, UTC | Reporting Currency: CNY | Trading Currency: HKD | Exchange: HONG KONG EXCHANGES AND CLEARING LTD Page 11 of 25
+?
+GDS Holdings Ltd Class A 09698 QQQ 19 Nov 2025 17:22, UTC
+Last Price
+28.34 HKD
+19 Nov 2025
+Fair Value Estimate
+32.00 HKD
+21 Aug 2025 09:36, UTC
+Price/FVE
+0.89
+Market Cap
+45.90 HKD Bil
+20 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+Income Statement (CNY) Actual Forecast 
+Fiscal Year, ends 31 Dec 2022 2023 2024 2025 2026 2027 2028 2029
+Revenue (Mil) 9,268 9,782 10,322 11,378 13,581 16,378 20,078 23,999
+Cost of Goods Sold (Mil) 7,317 7,831 8,099 8,773 10,267 12,137 14,577 17,064
+Gross Profit (Mil) 1,951 1,951 2,223 2,605 3,313 4,242 5,501 6,935
+Selling, General, Administrative & Other Expenses (Mil) 952 882 891 1,117 1,292 1,542 1,870 2,211
+Advertising & Marketing Expenses (Mil) 147 141 116 120 116 107 131 121
+Research & Development (Mil) 32 38 36 67 93 129 178 236
+Depreciation & Amortization (if reported separately) (Mil) 0 0 0 0 0 0 0 0
+Adjusted Operating Income (Mil) 821 891 1,179 1,302 1,812 2,464 3,322 4,367
+Financial Non-Cash (Gains)/Losses (Mil) 11 2 -19 0 0 0 0 0
+Irregular Cash (Gains)/Losses (Mil) -198 2,988 -22 -24 -29 -35 -42 -51
+Operating Income (Mil) 1,008 -2,099 1,220 1,326 1,841 2,499 3,364 4,418
+Net Interest Expense (Mil) 1,836 1,843 1,835 2,196 2,030 2,093 2,138 2,155
+Income Tax Expense (Mil) 276 -16 156 -165 -36 77 233 430
+After-Tax Items (Mil) -162 -359 4,203 2,700 0 0 0 0
+(Minority Interest) (Mil) 193 5 6 7 9 13 17 22
+Net Income (Mil) -1,074 -4,280 3,438 2,003 -144 341 1,010 1,855
+Adjusted Net Income (Mil) -1,125 -4,334 3,384 1,949 -198 287 956 1,801
+Weighted Average Diluted Shares Outstanding (Mil) 1,464 1,468 1,475 1,475 1,475 1,475 1,475 1,475
+Diluted Earnings Per Share -0.73 -2.92 2.33 1.36 -0.10 0.23 0.69 1.26
+Diluted Adjusted Earnings Per Share -0.77 -2.95 2.29 1.32 -0.13 0.19 0.65 1.22
+Dividends Per Common Share (CNY) 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00
+EBITDA (Mil) 4,229 1,376 5,529 4,779 5,300 5,987 6,894 7,990
+Adjusted EBITDA (Mil) 4,042 4,366 5,488 4,779 5,300 5,987 6,894 7,990
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 12 ===
+
+Morningstar Equity Company Report | Report as of 20 Nov 2025 04:22, UTC | Reporting Currency: CNY | Trading Currency: HKD | Exchange: HONG KONG EXCHANGES AND CLEARING LTD Page 12 of 25
+?
+GDS Holdings Ltd Class A 09698 QQQ 19 Nov 2025 17:22, UTC
+Last Price
+28.34 HKD
+19 Nov 2025
+Fair Value Estimate
+32.00 HKD
+21 Aug 2025 09:36, UTC
+Price/FVE
+0.89
+Market Cap
+45.90 HKD Bil
+20 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+Key Cash Flow Items (CNY) Actual Forecast as of 20 Nov
+Fiscal Year, ends 31 Dec 2022 2023 2024 2025 2026 2027 2028 2029
+Cash from Working Capital (Mil) -3,081 -351 -559 -10 22 14 3 -44
+(Capital Expenditures) (Mil) -8,110 -3,407 -3,009 -2,700 -4,390 -4,610 -4,840 -4,840
+Depreciation (Mil) 3,221 3,475 4,309 3,452 3,459 3,488 3,529 3,573
+Amortization (Mil) 0 0 0 0 0 0 0 0
+Net New (Investment), Organic (Mil) -7,969 -283 741 742 -909 -1,107 -1,308 -1,312
+(Purchases)/Sales of Companies & Assets (Mil) -4,846 -2,217 4,579 0 0 0 0 0
+Net New (Investment), Total (Mil) -12,815 -2,500 5,320 742 -909 -1,107 -1,308 -1,312
+Other Non-Cash Items, From Cash Flows (Mil) 0 0 0 0 0 0 0 0
+Free Cash Flow to the Firm (Mil) -11,430 -4,943 11,039 4,523 592 929 1,435 2,289
+Balance Sheet (CNY) Actual Forecast 
+Fiscal Year, ends 31 Dec 2022 2023 2024 2025 2026 2027 2028 2029
+Assets 
+Cash and Equivalents (Mil) 8,608 7,355 7,868 10,619 9,576 8,822 8,542 9,108
+Inventory (Mil) 0 0 0 0 0 0 0 0
+Accounts Receivable (Mil) 2,571 2,707 3,262 3,596 4,292 5,177 6,346 7,585
+Net Property, Plant and Equipment (Mil) 52,551 45,409 45,398 44,645 45,576 46,698 48,008 49,276
+Goodwill (Mil) 7,077 5,886 5,886 5,886 5,886 5,886 5,886 5,886
+Other Intangibles (Mil) 1,686 1,629 1,557 1,557 1,557 1,557 1,557 1,557
+Other Operating Assets (Mil) 1,500 1,791 2,029 2,029 2,029 2,029 2,029 2,029
+Non-Operating Assets (Mil) 821 9,668 7,649 7,649 7,649 7,649 7,649 7,649
+Total Assets (Mil) 74,814 74,447 73,649 75,982 76,565 77,818 80,017 83,090
+Liabilities 
+Accounts Payable  (Mil) 4,110 3,895 3,891 4,215 4,933 5,831 7,004 8,199
+Debt (Mil) 44,685 44,024 44,460 44,460 44,460 44,460 44,460 44,460
+Other Operating Liabilities (Mil) 1,737 6,347 1,600 1,600 1,600 1,600 1,600 1,600
+Non-Operating Liabilities (Mil) 98 56 29 29 29 29 29 29
+Total Liabilities (Mil) 50,629 54,323 49,980 50,304 51,022 51,920 53,092 54,287
+Equity 
+Shareholders' Equity (Mil) 24,068 19,958 23,539 25,541 25,398 25,739 26,749 28,605
+Minority Interest (Mil) 117 166 130 137 146 159 176 198
+Total Equity (Mil) 24,185 20,124 23,669 25,678 25,544 25,898 26,925 28,803
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 13 ===
+
+Morningstar Equity Company Report | Report as of 20 Nov 2025 04:22, UTC | Reporting Currency: CNY | Trading Currency: HKD | Exchange: HONG KONG EXCHANGES AND CLEARING LTD Page 13 of 25
+?
+GDS Holdings Ltd Class A 09698 QQQ 19 Nov 2025 17:22, UTC
+Last Price
+28.34 HKD
+19 Nov 2025
+Fair Value Estimate
+32.00 HKD
+21 Aug 2025 09:36, UTC
+Price/FVE
+0.89
+Market Cap
+45.90 HKD Bil
+20 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+Management & Ownership
+Management Activity as of —
+Name Position Share Held Report Date* Insider Activity
+Gary J. Wojtaszek Director — — —
+Chang Sun Independent Director — — —
+Bin Yu Independent Director — — —
+Tat Hiang Sio Vice Chairman of the Board — — —
+Ah Doo Lim Independent Director — — —
+Satoshi Okada Director — — —
+Wei William Huang Chairman of the Board and Chief Executive Officer — — —
+Daniel Newman Chief Financial Officer — — —
+Bruno Lopez Director — — —
+Baharudin Zulkifli Independent Director — — —
+Fund Ownership as of 31 Oct 2025
+Top Owners % of Shares Held % of Fund Assets Shrs Bought/Sold (k) Portfolio Date
+Vanguard Total Intl Stock Idx Fund 0.83 0.01 1,675,500 30 Sep 2025
+Vanguard Emerging Markets Stock Idx Fund 0.76 0.04 1,475,800 30 Sep 2025
+Invesco China Technology ETF 0.70 1.55 0 31 Oct 2025
+iShares Core MSCI Emerging Markets ETF 0.68 0.04 0 31 Oct 2025
+Vanguard Instl Ttl Intl Stk Mkt Idx TrII 0.43 0.01 915,100 30 Sep 2025
+Concentrated Holders % of Shares Held % of Fund Assets Shrs Bought/Sold (k) Portfolio Date
+Xtrackers Cybersecurity Select Eq ETF 0.01 5.36 0 30 Oct 2025
+KraneShares MSCI China Clean Tech ETF 0.04 4.21 0 31 Oct 2025
+Samsung Emerging Dynamic Master Equity 0.00 4.11 21,000 30 Sep 2025
+Hana Asian REITs RE FoF 0.00 3.40 0 30 Sep 2025
+HSBC Discretionary Asia Equity Portfolio 0.00 2.90 1,800 30 Sep 2025
+Institutional Transactions as of —
+Top 5 Buyers % of Shares Held % of Fund Assets Shrs Bought/Sold (k) Portfolio Date
+— — — — —
+Top 5 Sellers % of Shares Held % of Fund Assets Shrs Bought/Sold (k) Portfolio Date
+— — — — —
+*Represents the date on which the owner's name, position, and common shares held were reported by the holder or issuer.
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 14 ===
+
+Morningstar Equity Company Report | Report as of 20 Nov 2025 04:22, UTC | Reporting Currency: CNY | Trading Currency: HKD | Exchange: HONG KONG EXCHANGES AND CLEARING LTD Page 14 of 25
+?
+GDS Holdings Ltd Class A 09698 QQQ 19 Nov 2025 17:22, UTC
+Last Price
+28.34 HKD
+19 Nov 2025
+Fair Value Estimate
+32.00 HKD
+21 Aug 2025 09:36, UTC
+Price/FVE
+0.89
+Market Cap
+45.90 HKD Bil
+20 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+Comparable Company Analysis These companies are chosen by the analyst and the data are shown by nearest calendar year in descending market capitalization order.
+Valuation Analysis as of 20 Nov 2025 Price/Earnings EV/EBITDA Price/Free Cash Flow Price/Book Price/Sales 
+Company/Ticker 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E)
+China Telecom Corp Ltd Class H 00728 12.7 13.5 12.6 4.1 3.6 3.6 — — — 0.9 1.0 1.0 1.2 1.1 1.1
+China Unicom (Hong Kong) Ltd 00762 10.2 11.9 11.1 1.8 2.4 2.5 — — — 0.6 0.7 0.7 0.5 0.7 0.6
+Average 11.4 12.7 11.8 2.9 3.0 3.0 — — — 0.8 0.8 0.8 0.8 0.9 0.9
+GDS Holdings Ltd Class A 09698 9.4 19.6 -199.0 13.8 15.5 14.0 — — — 1.4 1.5 1.5 3.2 3.5 2.9
+Returns Analysis as of 20 Nov 2025 ROIC % Adjusted ROIC % Return on Equity % Return on Assets % Dividend Yield % 
+Company/Ticker 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E)
+China Telecom Corp Ltd Class H 00728 7.0 7.2 7.0 22.0 22.0 22.0 7.2 7.6 8.0 3.8 3.8 3.9 5.7 5.5 6.1
+China Unicom (Hong Kong) Ltd 00762 4.4 5.0 5.1 22.0 22.0 22.0 5.7 5.9 6.3 3.1 3.2 3.4 5.8 5.5 6.3
+Average 5.7 6.1 6.0 22.0 22.0 22.0 6.5 6.8 7.2 3.5 3.5 3.6 5.8 5.5 6.2
+GDS Holdings Ltd Class A 09698 2.0 2.1 2.8 22.0 22.0 22.0 14.5 7.8 -0.6 4.7 2.6 -0.2 — — —
+Growth Analysis as of 20 Nov 2025 Revenue Growth % EBIT Growth % EPS Growth % FCF Growth % DPS Growth % 
+Company/Ticker 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E)
+China Telecom Corp Ltd Class H 00728 3.1 1.1 3.8 7.2 12.6 6.8 8.4 7.4 7.2 -175.4 -544.7 -53.2 11.4 10.4 10.1
+China Unicom (Hong Kong) Ltd 00762 4.6 1.3 4.0 -36.4 11.3 6.8 10.7 5.9 7.2 149.3 115.8 -6.7 20.1 15.3 15.4
+Average 3.9 1.2 3.9 -14.6 12.0 6.8 9.5 6.7 7.2 -13.0 -214.5 -30.0 15.8 12.9 12.8
+GDS Holdings Ltd Class A 09698 5.5 10.2 19.4 32.4 10.4 39.2 -177.7 -42.4 -110.2 -323.3 -59.0 -86.9 — — —
+Profitability Analysis as of 20 Nov 2025 Gross Margin % EBITDA Margin % Operating Margin % Net Margin % FCF Margin % 
+Company/Ticker 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E)
+China Telecom Corp Ltd Class H 00728 56.7 56.8 56.7 27.1 27.8 26.8 7.5 8.4 8.6 6.2 6.6 6.8 — — —
+China Unicom (Hong Kong) Ltd 00762 71.0 70.4 70.1 25.6 25.0 23.4 4.2 4.6 4.7 5.3 5.6 5.7 — — —
+Average 63.9 63.6 63.4 26.4 26.4 25.1 5.9 6.5 6.7 5.8 6.1 6.3 0.0 0.0 0.0
+GDS Holdings Ltd Class A 09698 21.5 22.9 24.4 53.2 42.0 39.0 11.4 11.5 13.4 32.8 17.1 -1.5 — — —
+Leverage Analysis as of 20 Nov 2025 Debt/Equity % Debt/Total Cap % EBITDA/Net Int. Exp Total Debt/EBITDA Asset/Equity 
+Company/Ticker 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E)
+China Telecom Corp Ltd Class H 00728 9.2 7.6 7.1 8.4 7.1 6.7 919.1 NM -464.6 0.4 0.3 0.3 1.9 2.0 2.0
+China Unicom (Hong Kong) Ltd 00762 17.6 8.4 7.8 15.0 7.7 7.3 -505.3 -263.0 -128.0 0.4 0.3 0.3 1.9 1.9 1.9
+Average 13.4 8.0 7.4 11.7 7.4 7.0 206.9 -263.0 -296.3 0.4 0.3 0.3 1.9 1.9 1.9
+GDS Holdings Ltd Class A 09698 124.6 106.0 94.7 55.5 51.5 48.6 3.0 2.2 2.6 8.1 9.3 8.4 3.1 3.0 3.0
+Liquidity Analysis as of 20 Nov 2025 Cash per Share Current Ratio Quick Ratio Cash/Short-Term Debt Payout Ratio % 
+Company/Ticker 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E) 2024 2025(E) 2026(E)
+China Telecom Corp Ltd Class H 00728 — — — — — — — — — — — — 72.0 74.0 76.0
+China Unicom (Hong Kong) Ltd 00762 — — — — — — — — — — — — 59.7 65.0 70.0
+Average 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 43.9 46.3 48.7
+GDS Holdings Ltd Class A 09698 — — — — — — — — — — — — 0.0 0.0 0.0
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 15 ===
+
+Morningstar Equity Company Report | Report as of 20 Nov 2025 04:22, UTC | Reporting Currency: CNY | Trading Currency: HKD | Exchange: HONG KONG EXCHANGES AND CLEARING LTD Page 15 of 25
+?
+GDS Holdings Ltd Class A 09698 QQQ 19 Nov 2025 17:22, UTC
+Competitors Price vs. Fair Value
+China Telecom Corp Ltd Class H 00728
+1
+3
+5
+7
+9
+Fair Value: 7.10
+18 Aug 2025 07:12, UTC
+Last Close: 5.77
+Overvalued
+Undervalued
+2020 2021 2022 2023 2024 YTD
+0.48 0.55 0.64 0.75 0.85 0.81 Price/Fair Value
+-28.82 26.16 31.03 29.69 37.46 24.90 Total Return %
+Morningstar Rating
+Total Return % as of 19 Nov 2025. Last Close as of 19 Nov 2025. Fair Value as of 18 Aug 2025 07:12, UTC.
+China Unicom (Hong Kong) Ltd 00762
+2
+5
+8
+11
+14
+Fair Value: 11.00
+19 Mar 2025 02:05, UTC
+Last Close: 9.39
+Overvalued
+Undervalued
+2020 2021 2022 2023 2024 YTD
+0.41 0.36 0.50 0.47 0.70 0.85 Price/Fair Value
+-36.76 -5.30 31.63 8.58 59.12 33.78 Total Return %
+Morningstar Rating
+Total Return % as of 19 Nov 2025. Last Close as of 19 Nov 2025. Fair Value as of 19 Mar 2025 02:05, UTC.
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 16 ===
+
+Morningstar Equity Company Report | Report as of 20 Nov 2025 04:22, UTC | Reporting Currency: CNY | Trading Currency: HKD | Exchange: HONG KONG EXCHANGES AND CLEARING LTD Page 16 of 25
+?
+GDS Holdings Ltd Class A 09698 QQQ 19 Nov 2025 17:22, UTC
+Last Price
+28.34 HKD
+19 Nov 2025
+Fair Value Estimate
+32.00 HKD
+21 Aug 2025 09:36, UTC
+Price/FVE
+0.89
+Market Cap
+45.90 HKD Bil
+20 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+ESG Risk Rating Breakdown
+Exposure
+Company Exposure1 30.0
+– Manageable Risk 29.4
+Unmanageable Risk2 0.6
+Management
+Manageable Risk 29.4
+– Managed Risk3 14.6
+Management Gap4 14.8
+Overall Unmanaged Risk 15.4
+Subject
+ Subindustry (28.0)
+0 55+
+Low Medium High
+30.0
+Low
+100 0
+Strong Average Weak
+49.7%
+Average gExposure represents a company’s vulnerability  to ESG 
+risks driven by their business model
+gExposure is assessed at the Subindustry level and then 
+specified at the company level
+gScoring ranges from 0-55+ with categories of low, me-
+dium, and high-risk exposure
+gManagement measures a company’s ability to manage 
+ESG risks through its commitments and actions
+gManagement assesses a company's efficiency on ESG 
+programs, practices, and policies
+gManagement score ranges from 0-100% showing how 
+much manageable risk a company is managing
+ESG Risk Rating
+Negligible Low Medium High Severe
+15.36
+Low
+ESG Risk Ratings measure the degree to which a company’s value is impacted by environmental, social, and governance 
+risks, by evaluating the company’s ability to manage the ESG risks it faces.
+1. A company's Exposure to material ESG issues 2. Unmanageable Risk refers to risks that are inherent to a particular business model that cannot be managed by 
+programs or initiatives 3. Managed Risk = Manageable Risk multiplied by a Management score of 49.7% 4. Management Gap assesses risks that are not 
+managed, but are considered manageable 5. ESG Risk Rating Assessment = Overall Unmanaged Risk = Management Gap plus Unmanageable Risk
+ESG Risk Rating Assessment5
+ESG Risk Rating is of Sep 03, 2025. Highest Controversy Level is as of Nov 08, 
+2025. Sustainalytics Subindustry: Real Estate Management. Sustainalytics 
+provides Morningstar with company ESG ratings and metrics on a monthly 
+basis and as such, the ratings in Morningstar may not necessarily reflect 
+current Sustainalytics’ scores for the company. For the most up to date 
+rating and more information, please visit: sustainalytics.com/esg-ratings/.
+Peer Analysis 03 Sep 2025 Peers are selected from the company's Sustainalytics-defined Subindustry and are displayed based on the closest market cap values
+Company Name Exposure Management ESG Risk Rating
+GDS Holdings Ltd 30.0 | Low 0
+ 55+ 49.7 | Average 100
+ 0 15.4 | Low 0
+ 40+
+CK Hutchison Holdings Ltd 62.4 | High 0
+ 55+ 59.8 | Strong 100
+ 0 28.6 | Medium 0
+ 40+
+China Telecom Corp Ltd 43.8 | Medium 0
+ 55+ 28.8 | Average 100
+ 0 32.6 | High 0
+ 40+
+China Unicom (Hong Kong) Ltd 45.8 | Medium 0
+ 55+ 23.1 | Weak 100
+ 0 36.4 | High 0
+ 40+
+Vicinity Centres 27.5 | Low 0
+ 55+ 57.9 | Strong 100
+ 0 11.8 | Low 0
+ 40+
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 17 ===
+
+Morningstar Equity Company Report | Report as of 20 Nov 2025 04:22, UTC | Reporting Currency: CNY | Trading Currency: HKD | Exchange: HONG KONG EXCHANGES AND CLEARING LTD Page 17 of 25
+?
+GDS Holdings Ltd Class A 09698 QQQ 19 Nov 2025 17:22, UTC
+Last Price
+28.34 HKD
+19 Nov 2025
+Fair Value Estimate
+32.00 HKD
+21 Aug 2025 09:36, UTC
+Price/FVE
+0.89
+Market Cap
+45.90 HKD Bil
+20 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+Recent Analyst Notes
+GDS Earnings: Asset Monetization Should Allow GDS to Develop Excess Capacity Without External Funds Dan 
+Baker,Senior Equity Analyst,21 May 2025
+GDS reported decent first-quarter results with underlying revenue up 12% and adjusted EBITDA up 16%. The 
+deconsolidation of the international business, now named "DayOne," at the end of 2024 means the remaining 
+consolidated business is focused on China. Why it matters: The Chinese data center market slowed down in 2022 
+and 2023, but saw a strong demand increase from artificial intelligence training in 2024. AI demand is now 
+moving to inferencing, which requires large IDC capacity, quick move-in times and low latency so suits GDS' 
+existing Tier 1 city assets. GDS has 1,682MW in service or under construction now and has a further 900 MW held 
+for future development, for which it has energy quotas, and believes this could be developed over the next four 
+years for CNY 5 billion. With monetization of existing assets, GDS should be able to develop this capacity without 
+further external funding. GDS made its first asset-backed security sale in the first quarter, netting it CNY 1.7 
+billion. It expects C-REIT to IPO in the second half of 2025, subject to approvals. The bottom line: We retain our 
+fair value estimate of HKD 28 (USD 29). Our no-moat rating is retained. The share price has been volatile this year 
+but the stock is currently in 3-star territory. The current price/book ratio is around 1.8 times. GDS does not 
+revalue its data centers each year like a property REIT does and we estimate that its early data centers in major 
+city CBD areas have substantially increased in value over time. Overall data center utilization has been gradually 
+increasing to 75.7% this quarter. Management expects utilization in the high 70s by the end of 2025, but we don’t 
+expect profits (ex-asset sales) until 2027. Long view: With GDS leveraged to long-term growth themes such as the 
+shift of IT to the cloud and AI, we see it as a decent long-term investment. However, high financial leverage gives 
+it a Very High Uncertainty Rating and makes for a volatile share price. 
+GDS Earnings: Demand Rising From AI Inferencing Dan Baker,Senior Equity Analyst,20 Mar 2025
+GDS' fourth quarter showed underlying revenue rose 22% and adjusted EBITDA grew 24%. The deconsolidation of 
+the international business, now named DayOne, at the end of 2024 means the remaining consolidated business 
+is focused on China. Why it matters: The Chinese data center market was in a slowdown in 2022-23, but saw a 
+strong demand increase from artificial intelligence training in 2024. AI demand is now moving to inferencing, 
+which requires large internet data center capacity, quick move-in times, and low latency, suiting no-moat GDS' 
+existing Tier 1 city assets. In the first quarter of 2025 GDS signed a new AI inferencing-driven deal to provide 152 
+megawatts on existing sites with a 12-month timeframe from order to customer billing. This compares with 
+greater than three-year cycles previously. In 2024, DayOne raised USD 1 billion in convertible preference shares, 
+which would value GDS' 37.5% stake at USD 1.3 billion. This is what we use to value DayOne now that it is 
+deconsolidated. The bottom line: We adjust our model to deconsolidate DayOne but keep our fair value estimate 
+of HKD 28 (USD 29). The share price is up 40% over the past seven weeks but still in 3-star territory. The recent 
+share price rise has lifted the price/book ratio to around 2.2 times. GDS doesn't revalue its data centers each year 
+like a property REIT does, and we estimate that its early data centers in major city CBD areas have substantially 
+increased in value over time. Like many data center companies, GDS continues to report negative free cash flow 
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 18 ===
+
+Morningstar Equity Company Report | Report as of 20 Nov 2025 04:22, UTC | Reporting Currency: CNY | Trading Currency: HKD | Exchange: HONG KONG EXCHANGES AND CLEARING LTD Page 18 of 25
+?
+GDS Holdings Ltd Class A 09698 QQQ 19 Nov 2025 17:22, UTC
+Last Price
+28.34 HKD
+19 Nov 2025
+Fair Value Estimate
+32.00 HKD
+21 Aug 2025 09:36, UTC
+Price/FVE
+0.89
+Market Cap
+45.90 HKD Bil
+20 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+and net losses in its growth phase as overall data center utilization remains at around 74.4%. Management 
+expects utilization in the high 70s by end-2025, but we don’t expect profits until 2027. Long view: With GDS 
+leveraged to long-term growth themes such as the shift of IT to the cloud and AI, we see it as a decent long-term 
+investment. However, high financial leverage gives it a Very High Morningstar Uncertainty Rating. 
+GDS Earnings: Increase in 2024 Capex Due to Data Center Market Confidence and Capital Raise Dan 
+Baker,Senior Equity Analyst,21 Nov 2024
+GDS reported its third-quarter results and raised its 2024 capital expenditure guidance to CNY 11 billion from 
+CNY 6.5 billion, which we believe indicates the company's increased confidence in the data center market. Why it 
+matters: The Chinese data center market was in a slowdown in 2022 and 2023, but is now rebounding due to 
+demand from artificial intelligence. The international data center market is also in strong growth mode, with GDS 
+expanding in Southeast Asia via a capital raise for that business. Third-quarter growth in additional data center 
+area utilized was a record of over 25,000 square meters and management expects 2024 growth of around 60,000 
+sqm—similar to its peak year in 2020. GDS' international business, GDSH, raised USD 1 billion in convertible 
+preference shares, reducing GDS' stake in this business to 37.6% on a postclosing and as-converted basis. This 
+would value GDS' stake at USD 1.3 billion or USD 6.75 per ADR on a USD 400 million investment. The bottom line: 
+We increase capex forecasts in line with guidance but keep our fair value estimate of HKD 28 per share (USD 29 
+per ADR). Our no-moat rating is also retained. The share price is up 56% over the past three months but still in 4-
+star territory. The recent share price rise has lifted the price/book ratio to around 1.5 times. GDS does not revalue 
+its data centers each year like a property REIT does, and we estimate that its early data centers in major city CBD 
+areas have substantially increased in value over time. Like many data center companies, GDS continues to report 
+negative free cash flow and net losses in its growth phase, as overall data center utilization remains at about 
+74.4%. We don’t expect profits until 2027. Long view: With GDS leveraged to long-term growth themes such as 
+the shift of IT to the cloud and AI, we see it as a decent long-term investment. However, high financial leverage 
+gives it a Very High Morningstar Uncertainty Rating and makes for a volatile share price. 
+GDS Earnings: Strong Utilization in China and Large International Orders   Dan Baker,Senior Equity Analyst,26 
+Aug 2024
+No-moat GDS announced strong second-quarter results in both its China-focused GDSH business and its 
+international-focused GDSI business. GDSH is focused on steadily increasing its EBITDA and reaching cash flow 
+breakeven through increasing the utilization of existing data centers by signing new business with fast move-in 
+rates and that do not require much capital expenditure. In the first half, the company managed to increase the 
+gross area utilized by 37,097 square meters, which is a pace faster than any of the previous four years. It also 
+brought an additional 46,002 sqm into service, which is higher than the previous two years. Net revenue for the 
+China business rose 8.9% year on year, while adjusted EBITDA increased by 4.3%. The EBITDA margin for GDSH 
+fell 210 basis points to 47.8% because of increased power tariffs introduced in the second half of 2023. GDSI is 
+focused on growth and added a whopping 206 megawatts of new orders to bring total IT power committed to 388 
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 19 ===
+
+Morningstar Equity Company Report | Report as of 20 Nov 2025 04:22, UTC | Reporting Currency: CNY | Trading Currency: HKD | Exchange: HONG KONG EXCHANGES AND CLEARING LTD Page 19 of 25
+?
+GDS Holdings Ltd Class A 09698 QQQ 19 Nov 2025 17:22, UTC
+Last Price
+28.34 HKD
+19 Nov 2025
+Fair Value Estimate
+32.00 HKD
+21 Aug 2025 09:36, UTC
+Price/FVE
+0.89
+Market Cap
+45.90 HKD Bil
+20 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+MW. Management also indicated that most of these new orders would be converted to revenue within 24 
+months.GDS retained its existing management guidance for 2024 of midpoint revenue growth of 15.7% and 
+midpoint adjusted EBITDA growth of 9.2% and we make no changes to our fair value estimate of HKD 28 (USD 29) 
+per share. The stock price has generally declined since early 2021 when it peaked at over HKD 110 per share. 
+Despite the positive market reaction to this result, we see GDS as undervalued, trading on a historical price/book 
+ratio of around 1 times. GDS does not revalue its data centers each year like a property REIT does and we 
+estimate that its early data centers in major-city CBD areas have substantially increased in value over time. We 
+continue to believe a price/book ratio of over 1 is justified. 
+GDS Earnings: More Capital Raised for the International Business  Dan Baker,Senior Equity Analyst,23 May 
+2024
+No-moat GDS has increased the size of its private capital raise for its international data center business GDSI to 
+USD 672 million from the previously announced USD 587 million, at the same premoney equity valuation of USD 
+750 million, so effectively reducing its equity interest in GDSI to 52.7% from the previously announced 56.1%. 
+Management also indicated that if recent strong international demand continued it was likely that the 
+international business would require a further equity capital raise, which could see GDS’s stake in the 
+international business fall below 50%. Note, GDS has an option to IPO the international business in the future if it 
+believes this is in the best interest of its existing shareholders. While the equity raises in the international 
+business are positive for the company’s ability to fund the fast-growing business, there is a sense that GDS 
+shareholders’ exposure to what is currently the most attractive part of its business is being diluted. First-quarter 
+net revenue increased by 9.1% year over year with adjusted EBITDA up by 4.7% on the same basis, both slightly 
+below the growth rates for full-year guidance, but management left guidance unchanged given a strong sales 
+pipeline.Management seemed more positive about the prospects for demand in China than on recent investor 
+calls. Artificial intelligence-led data center demand is now happening for AI training, but because this is not 
+latency-sensitive, customers were using data center capacity in less-expensive rural areas for this. GDS sees this 
+as a leading indicator for more latency-sensitive inference and AI-enabled applications that will require data 
+center capacity in the large metropolitan areas where GDS’ data centers are located. GDS retained its existing 
+management guidance for 2024 of midpoint revenue growth of 15.7% and midpoint adjusted EBITDA growth of 
+9.2%, and we make no changes to our forecasts or our fair value estimate of HKD 28 (USD 29). 
+GDS Earnings: Capital Raising for the International Business and Strong Guidance Dan Baker,Senior Equity 
+Analyst,27 Mar 2024
+No-moat GDS has announced a USD 587 million capital raising for its international business, dubbed GDSI for 
+now. A number of private equity investors, including Hillhouse, Rava Partners, Boyu, Princeville Capital, and 
+Tekne Capital, will take a 43.9% stake in GDSI, with GDS retaining a 56.1% stake. GDSI will have USD 1 billion of 
+paid-up share capital after the raising closes, which should be sufficient to capitalize the 330-megawatt current 
+portfolio with a total development cost of USD 2.5 billion. However, given the very strong demand GDS is seeing 
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 20 ===
+
+Morningstar Equity Company Report | Report as of 20 Nov 2025 04:22, UTC | Reporting Currency: CNY | Trading Currency: HKD | Exchange: HONG KONG EXCHANGES AND CLEARING LTD Page 20 of 25
+?
+GDS Holdings Ltd Class A 09698 QQQ 19 Nov 2025 17:22, UTC
+Last Price
+28.34 HKD
+19 Nov 2025
+Fair Value Estimate
+32.00 HKD
+21 Aug 2025 09:36, UTC
+Price/FVE
+0.89
+Market Cap
+45.90 HKD Bil
+20 Nov 2025
+Economic MoatTM
+None
+Equity Style Box
+2 Large Blend
+Uncertainty
+Very High
+Capital Allocation
+Standard
+ESG Risk Rating Assessment1
+;;;;;
+3 Sep 2025 05:00, UTC
+in Southeast Asia and the potential for further expansion in North Asia and Europe, we believe GDSI will likely 
+continue to expand. Given the investor base, a GDSI IPO at some stage down the track could be a source of future 
+funding, in our view. While management expects demand conditions in China are likely to remain subdued for 
+most of 2024, it is expecting some recovery at the back end of the year and into 2025. China has not yet seen the 
+same artificial intelligence-led data center demand that the US is seeing, partly because of uncertainty around 
+high-end chip supply. GDS management guidance for 2024 of midpoint revenue growth of 15.7% and midpoint 
+adjusted EBITDA growth of 9.2% imply a stronger 2024 than the 6.8% revenue growth and 8.8% adjusted EBITDA 
+growth reported in 2023, with the revenue line helped dramatically by the GDSI pipeline.We make small 
+adjustments to our forecasts and retain our fair value estimate of HKD 28 per share (USD 29). The stock price has 
+generally declined since early 2021, when it peaked at over HKD 110 per share. At current levels, we see GDS as 
+undervalued, trading at a historical price/book ratio of around 0.5 times. GDS does not revalue its data centers 
+each year like a property REIT does, and we estimate that its early data centers in major city central business 
+district areas have substantially increased in value. We believe a price/book ratio of over 1 is justified. 
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 21 ===
+
+Morningstar Equity Company Report | Report as of 20 Nov 2025 04:22, UTC | Reporting Currency: CNY | Trading Currency: HKD | Exchange: HONG KONG EXCHANGES AND CLEARING LTD Page 21 of 25
+?
+Research Methodology for Valuing Companies
+Morningstar Equity Research Star Rating Methodology
+Overview
+At the heart of our valuation system is a detailed projec-
+tion of a company’s future cash flows, resulting from our 
+analysts’ research. Analysts create custom industry and 
+company assumptions to feed income statement, balance 
+sheet, and capital investment assumptions into our glob-
+ally standardized,  proprietary  discounted  cash flow, or 
+DCF, modeling templates. We use scenario analysis, inde-
+pth competitive advantage analysis, and a variety of oth-
+er analytical tools to augment this process. Moreover, we 
+think analyzing valuation through discounted cash flows 
+presents  a better  lens for viewing  cyclical  companies, 
+high-growth  firms,  businesses  with  finite  lives  (e.g., 
+mines),  or companies  expected  to generate  negative 
+earnings over the next few years. That said, we don’t dis-
+miss multiples  altogether  but rather  use them as sup-
+porting cross-checks for our DCF-based fair value estim-
+ates. We also acknowledge  that DCF models offer their 
+own challenges (including a potential proliferation of es-
+timated inputs and the possibility  that the method may 
+miss shortterm market-price movements), but we believe 
+these negatives  are mitigated  by deep analysis and our 
+longterm approach.
+Morningstar’s  equity  research  group  (”we,”  “our”)  be-
+lieves that a company’s  intrinsic  worth results from the 
+future cash flows it can generate. The Morningstar Rating 
+for stocks identifies stocks trading at a discount or premi-
+um to their  intrinsic  worth—or  fair value  estimate,  in 
+Morningstar  terminology.  Five-star  stocks  sell for the 
+biggest risk adjusted discount to their fair values, where-
+as 1-star  stocks  trade  at premiums  to their  intrinsic 
+worth.
+Four key components  drive the Morningstar  rating:  (1) 
+our assessment of the firm’s economic moat, (2) our es-
+timate of the stock’s fair value, (3) our uncertainty around 
+that fair value estimate and (4) the current market price. 
+This process ultimately culminates in our singlepoint star 
+rating.
+1. Economic Moat
+The concept  of an economic  moat plays a vital role not 
+only in our qualitative  assessment  of a firm’s long-term 
+investment potential, but also in the actual calculation of 
+our fair value estimates. An economic moat is a structural 
+feature that allows a firm to sustain excess profits over a 
+long period  of time. We define  economic  profits  as re-
+turns on invested capital (or ROIC) over and above our es-
+timate  of a firm’s  cost of capital,  or weighted  average 
+cost of capital  (or WACC).  Without  a moat,  profits  are 
+more susceptible to competition. We have identified five 
+sources of economic moats: intangible assets, switching 
+costs, network effect, cost advantage, and efficient scale.
+Companies with a narrow moat are those we believe are 
+more likely than not to achieve normalized excess returns 
+for at least the next 10 years. Wide-moat companies are 
+those in which we have very high confidence that excess 
+returns will remain for 10 years, with excess returns more 
+likely than not to remain for at least 20 years. The longer 
+a firm generates economic profits, the higher its intrinsic 
+value.  We believe  low-quality,  no-moat  companies  will 
+see their normalized  returns gravitate  toward the firm’s 
+cost of capital more quickly than companies with moats.
+When  considering  a company's  moat,  we also  assess 
+whether there is a substantial threat of value destruction, 
+stemming from risks related to ESG, industry disruption, 
+financial health, or other idiosyncratic issues. In this con-
+text, a risk is considered  potentially  value destructive  if 
+its occurrence  would eliminate  a firm’s economic profit 
+on a cumulative or midcycle basis. If we deem the prob-
+ability of occurrence sufficiently high, we would not char-
+acterize the company as possessing an economic moat.
+2. Estimated Fair Value
+Combining  our analysts’  financial  forecasts  with  the 
+firm’s economic moat helps us assess how long returns 
+on invested capital are likely to exceed the firm’s cost of 
+capital. Returns of firms with a wide economic moat rat-
+ing are assumed to fade to the perpetuity  period over a 
+longer  period  of time than the returns  of narrow-moat 
+firms, and both will fade slower than no-moat firms, in-
+creasing our estimate of their intrinsic value.
+Our model is divided into three distinct stages:
+Stage I: Explicit Forecast
+In this stage,  which  can last five to 10 years,  analysts 
+make full financial statement forecasts, including items 
+such as revenue,  profit  margins,  tax rates,  changes  in 
+workingcapital accounts, and capital spending. Based on 
+these projections,  we calculate earnings before interest, 
+after taxes (EBI) and the net new investment (NNI) to de-
+rive our annual free cash flow forecast.
+Stage II: Fade
+The second stage of our model is the period it will take 
+the company’s  return on new invested  capital—the  re-
+turn on capital of the next dollar invested (“RONIC”)—to 
+decline (or rise) to its cost of capital. During the Stage II 
+period,  we use a formula  to approximate  cash flows in 
+lieu of explicitly modeling the income statement, balance 
+sheet, and cash flow statement as we do in Stage I. The 
+length  of the second  stage depends  on the strength  of 
+the company’s economic moat. We forecast this period to 
+last anywhere from one year (for companies with no eco-
+nomic moat) to 10–15 years or more (for wide-moat com-
+panies). During this period, cash flows are forecast using 
+four assumptions: an average growth rate for EBI over the 
+period, a normalized  investment  rate, average return on 
+new invested  capital (RONIC),  and the number of years 
+until perpetuity,  when excess returns cease. The invest-
+ment rate and return on new invested capital decline un-
+til a perpetuity  value is calculated.  In the case of firms 
+that do not earn their cost of capital, we assume marginal 
+ROICs rise to the firm’s cost of capital (usually attribut-
+able  to less  reinvestment),  and we may truncate  the 
+second stage.
+Stage III: Perpetuity
+Once a company’s marginal ROIC hits its cost of capital, 
+we calculate  a continuing  value, using a standard  per-
+petuity  formula.  At perpetuity,  we assume  that  any 
+growth or decline or investment  in the business neither 
+creates nor destroys value and that any new investment 
+provides a return in line with estimated WACC.
+Because a dollar earned today is worth more than a dol-
+lar earned tomorrow, we discount our projections of cash 
+flows  in stages  I, II, and III to arrive  at a total  present 
+value  of expected  future  cash  flows.  Because  we are 
+modeling free cash flow to the firm—representing  cash 
+available to provide a return to all capital providers—we 
+discount  future cash flows using the WACC, which is a 
+weighted  average  of the costs of equity,  debt, and pre-
+ferred stock (and any other funding sources),  using ex-
+pected  future  proportionate  long-term,  market-value 
+weights.
+3. Uncertainty Around That Fair Value Estimate
+Morningstar’s  Uncertainty Rating is designed to capture 
+the range of potential outcomes for a company’s intrinsic 
+value. This rating is used to assign the margin of safety 
+required before investing, which in turn explicitly drives 
+our stock star rating system.  The Uncertainty  Rating is 
+aimed at identifying  the confidence  we should  have in 
+assigning a fair value estimate for a given stock. 
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 22 ===
+
+Morningstar Equity Company Report | Report as of 20 Nov 2025 04:22, UTC | Reporting Currency: CNY | Trading Currency: HKD | Exchange: HONG KONG EXCHANGES AND CLEARING LTD Page 22 of 25
+?
+Research Methodology for Valuing Companies
+Morningstar Equity Research Star Rating Methodology
+Our Uncertainty Rating is meant to take into account any-
+thing that can increase the potential dispersion of future 
+outcomes for the intrinsic value of a company, and any-
+thing  that  can affect  our ability  to accurately  predict 
+these outcomes. The rating begins with a suggested rat-
+ing produced  by a quantitative  process  based  on the 
+trailing  12-month  standard  deviation  of daily stock re-
+turns. An analyst  overlay  is then applied,  with analysts 
+using the suggested  rating,  historical  rating  data, and 
+their own knowledge  of the company to inform them as 
+they make the final  Uncertainty  Rating  decision.  Ulti-
+mately,  the rating decision  rests with the analyst.  Ana-
+lysts take into account many characteristics  when mak-
+ing their final decision, including cyclical factors, opera-
+tional and financial  factors such as leverage,  company-
+specific events, ESG risks, and anything else that might 
+increase the potential dispersion of future outcomes and 
+our ability to estimate those outcomes. 
+Our recommended margin of safety—the discount to fair 
+value  demanded  before  we’d  recommend  buying  or 
+selling the stock—widens as our uncertainty of the estim-
+ated value of the equity increases. The more uncertain we 
+are about the potential dispersion of outcomes, the great-
+er the discount we require relative to our estimate of the 
+value of the firm before we would recommend  the pur-
+chase of the shares. In addition,  the Uncertainty  Rating 
+provides guidance in portfolio construction based on risk 
+tolerance. 
+Our Uncertainty  Ratings  are: Low, Medium,  High, Very 
+High, and Extreme.
+Margin of Safety
+Qualitative Analysis 
+Uncertainty Ratings QQQQQRating QRating
+Low 20% Discount 25% Premium
+Medium 30% Discount 35% Premium
+High 40% Discount 55% Premium
+Very High 50% Discount 75% Premium
+Extreme 75% Discount 300% Premium
+Our uncertainty  rating  is based  on the interquartile 
+range, or the middle 50% of potential outcomes, covering 
+the 25th  percentile–75th  percentile.  This  means  that 
+when  a stock  hits  5 stars,  we expect  there  is a 75% 
+chance that the intrinsic value of that stock lies above the 
+current market price. Similarly, when a stock hits 1 star, 
+we expect there is a 75% chance that the intrinsic value 
+of that stock lies below the current market price.
+4. Market Price
+The market prices used in this analysis and noted in the 
+report come from exchange on which the stock is listed 
+which we believe is a reliable source.
+For more details about our methodology, please go to 
+https://shareholders.morningstar.com
+Morningstar Star Rating for Stocks
+Once we determine the fair value estimate of a stock, we 
+compare  it with the stock’s  current  market  price  on a 
+daily basis, and the star rating is automatically re-calcu-
+lated  at the market  close  on every  day the market  on 
+which the stock is listed is open. Our analysts keep close 
+tabs on the companies  they follow, and, based on thor-
+ough and ongoing analysis, raise or lower their fair value 
+estimates as warranted.
+Please note, there is no predefined  distribution  of stars. 
+That is, the percentage  of stocks  that earn 5 stars can 
+fluctuate daily, so the star ratings, in the aggregate, can 
+serve as a gauge of the broader market’s valuation. When 
+there are many 5-star stocks, the stock market as a whole 
+is more undervalued, in our opinion, than when very few 
+companies garner our highest rating.
+We expect that if our base-case assumptions are true the 
+market price will converge on our fair value estimate over 
+time  generally  within  three  years  (although  it is im-
+possible to predict the exact time frame in which market 
+prices may adjust).
+Our star ratings are guideposts to a broad audience and 
+individuals must consider their own specific investment 
+goals, risk tolerance,  tax situation,  time horizon, income 
+needs, and complete investment  portfolio,  among other 
+factors.
+The Morningstar  Star Ratings for stocks are defined be-
+low:
+QQQQQ We believe appreciation beyond a fair risk ad-
+justed return is highly likely over a multiyear time frame. 
+Scenario  analysis  developed  by our analysts  indicates 
+that the current market price represents  an excessively 
+pessimistic outlook, limiting downside risk and maximiz-
+ing upside potential.
+QQQQ We believe appreciation  beyond a fair risk-ad-
+justed return is likely.
+QQQ Indicates our belief that investors are likely to re-
+ceive a fair risk-adjusted  return (approximately  cost of 
+equity).
+QQ We believe investors are likely to receive a less than 
+fair risk-adjusted return.
+Q Indicates a high probability of undesirable risk-adjus-
+ted returns from the current market price over a multi-
+year time frame, based on our analysis. Scenario analysis 
+by our analysts indicates that the market is pricing in an 
+excessively  optimistic  outlook, limiting upside potential 
+and leaving the investor exposed to Capital loss.
+Other Definitions
+Last Price: Price of the stock as of the close of the market 
+of the last trading day before date of the report.
+Capital  Allocation  Rating:  Our Capital  Allocation  (or 
+Stewardship)  Rating  represents  our assessment  of the 
+quality of management’s capital allocation, with particu-
+lar emphasis  on the firm’s balance  sheet, investments, 
+and shareholder  distributions.  Analysts  consider  com-
+panies’ investment strategy and valuation, balance sheet 
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 23 ===
+
+Morningstar Equity Company Report | Report as of 20 Nov 2025 04:22, UTC | Reporting Currency: CNY | Trading Currency: HKD | Exchange: HONG KONG EXCHANGES AND CLEARING LTD Page 23 of 25
+?
+Research Methodology for Valuing Companies
+management,  and dividend and share buyback policies. 
+Corporate governance factors are only considered if they 
+are likely to materially impact shareholder value, though 
+either the balance sheet, investment, or shareholder dis-
+tributions.  Analysts  assign one of three ratings:  "Exem-
+plary", "Standard", or "Poor". Analysts judge Capital Alloc-
+ation from an equity holder’s perspective. Ratings are de-
+termined  on a forward  looking  and absolute  basis. The 
+Standard rating is most common as most managers will 
+exhibit neither exceptionally  strong nor poor capital al-
+location.
+Capital  Allocation  (or Stewardship)  analysis  published 
+prior to Dec. 9, 2020, was determined  using a different 
+process. Beyond investment strategy, financial leverage, 
+and dividend  and share buyback policies,  analysts  also 
+considered execution, compensation, related party trans-
+actions, and accounting practices in the rating.
+Capital  Allocation  Rating:  Our Capital  Allocation  (or 
+Stewardship)  Rating  represents  our assessment  of the 
+quality of management’s capital allocation, with particu-
+lar emphasis  on the firm’s balance  sheet, investments, 
+and shareholder  distributions.  Analysts  consider  com-
+panies’ investment strategy and valuation, balance sheet 
+management,  and dividend and share buyback policies. 
+Corporate governance factors are only considered if they 
+are likely to materially impact shareholder value, though 
+either the balance sheet, investment, or shareholder dis-
+tributions.  Analysts  assign one of three ratings:  "Exem-
+plary", "Standard", or "Poor". Analysts judge Capital Alloc-
+ation from an equity holder’s perspective. Ratings are de-
+termined  on a forward  looking  and absolute  basis. The 
+Standard rating is most common as most managers will 
+exhibit neither exceptionally  strong nor poor capital al-
+location.
+Capital  Allocation  (or Stewardship)  analysis  published 
+prior to Dec. 9, 2020, was determined  using a different 
+process. Beyond investment strategy, financial leverage, 
+and dividend  and share buyback policies,  analysts  also 
+considered execution, compensation, related party trans-
+actions, and accounting practices in the rating.
+Sustainalytics  ESG Risk Rating  Assessment: The ESG 
+Risk Rating Assessment  is provided by Sustainalytics;  a 
+Morningstar company.
+Sustainalytics’  ESG Risk Ratings measure the degree to 
+which company’s economic value at risk is driven by en-
+vironment, social and governance (ESG) factors.
+Sustainalytics analyzes over 1,300 data points to assess a 
+company’s exposure to and management of ESG risks. In 
+other words, ESG Risk Ratings measures a company’s un-
+managed ESG Risks represented as a quantitative score. 
+Unmanaged  Risk is measured  on an open-ended  scale 
+starting at zero (no risk) with lower scores representing 
+less unmanaged  risk and, for 95% of cases, the unman-
+aged ESG Risk score is below 50.
+Based  on their  quantitative  scores,  companies  are 
+grouped into one of five Risk Categories (negligible, low, 
+medium, high, severe). These risk categories are absolute, 
+meaning that a ‘high risk’ assessment reflects a compar-
+able degree of unmanaged ESG risk across all subindus-
+tries covered.
+The ESG Risk Rating Assessment  is a visual representa-
+tion of Sustainalytics  ESG Risk Categories  on a 1 to 5 
+scale.  Companies  with Negligible  Risk = 5 Globes,  Low 
+Risk = 4, Medium Risk = 3 Globes, High Risk = 2 Globes, 
+Severe Risk = 1 Globe. For more information, please visit 
+sustainalytics.com/esg-ratings/
+Ratings should not be used as the sole basis in evaluat-
+ing a company or security. Ratings involve unknown risks 
+and uncertainties which may cause our expectations not 
+to occur or to differ significantly from what was expected 
+and should not be considered  an offer or solicitation  to 
+buy or sell a security.
+Risk Warning
+Please note that investments in securities are subject to 
+market and other risks and there is no assurance or guar-
+antee  that the intended  investment  objectives  will be 
+achieved. Past performance of a security may or may not 
+be sustained in future and is no indication of future per-
+formance. A security investment return and an investor’s 
+principal value will fluctuate so that, when redeemed, an 
+investor’s  shares may be worth more or less than their 
+original  cost. A security’s  current  investment  perform-
+ance may be lower or higher  than the investment  per-
+formance noted within the report. Morningstar’s  Uncer-
+tainty Rating serves as a useful data point with respect to 
+sensitivity  analysis  of the assumptions  used in our de-
+termining a fair value price.
+General Disclosure
+Unless otherwise  provided in a separate agreement,  re-
+cipients accessing this report may only use it in the coun-
+try in which the Morningstar distributor is based. Unless 
+stated otherwise,  the original distributor  of the report is 
+Morningstar  Research  Services  LLC, a U.S.A.  domiciled 
+financial institution.
+This Report is for informational  purposes, should not be 
+the sole piece of information  used in making an invest-
+ment decision, and has no regard to the specific invest-
+ment objectives, financial situation or particular needs of 
+any specific  recipient.  This publication  is intended  to 
+provide  information  to assist  investors  in making  their 
+own investment decisions, not to provide investment ad-
+vice to any specific investor. Therefore, investments dis-
+cussed herein may not be suitable  for all investors;  in-
+vestors must exercise  their own independent  judgment 
+as to the suitability of such investments and recommend-
+ations in the light of their own investment objectives, ex-
+perience, taxation status and financial position. Morning-
+star encourages Report recipients to read all relevant is-
+sue documents (e.g., prospectus) pertaining to the secur-
+ity concerned,  including  without limitation,  information 
+relevant to its investment objectives, risks, and costs be-
+fore making an investment  decision  and when deemed 
+necessary,  to seek the advice  of a financial,  legal,  tax, 
+and/or  accounting  professional.  The information,  data, 
+analyses and opinions presented herein are not warran-
+ted to be accurate,  correct,  complete  or timely.  Unless 
+otherwise  provided  in a separate  agreement,  neither 
+Morningstar,  Inc. or the Equity Research  Group repres-
+ents that the report contents meet all of the presentation 
+and/or disclosure standards applicable in the jurisdiction 
+the recipient is located.
+Except as otherwise required by law or provided for in a 
+separate  agreement,  the analyst,  Morningstar,  Inc. and 
+the Equity Research  Group and their officers,  directors 
+and employees shall not be responsible or liable for any 
+trading  decisions,  damages  or other  losses  resulting 
+from,  or related  to, the information,  data,  analyses  or 
+opinions within the report.
+The Report and its contents are not directed to, or inten-
+ded for distribution to or use by, any person or entity who 
+is a citizen or resident of or located in any locality, state, 
+country  or other  jurisdiction  where  such distribution, 
+publication,  availability  or use would be contrary to law 
+or regulation or which would subject Morningstar, Inc. or 
+its affiliates to any registration or licensing requirements 
+in such jurisdiction.
+Where this report is made available in a language other 
+than English and in the case of inconsistencies  between 
+the English and translated versions of the report, the Eng-
+lish version will control and supersede  any ambiguities 
+associated  with any part or section of a report that has 
+been issued in a foreign  language.  Neither  the analyst, 
+Morningstar,  Inc., or the Equity Research Group guaran-
+tees the accuracy of the translations.
+This report may be distributed in certain localities, coun-
+tries and/or jurisdictions  (“Territories”)  by independent 
+third parties or independent  intermediaries  and/or dis-
+tributors (“Distributors”). Such Distributors are not acting 
+as agents or representatives of the analyst, Morningstar, 
+Inc. or the Equity Research Group. In Territories where a 
+Distributor distributes our report, the Distributor is solely 
+responsible for complying with all applicable regulations, 
+laws, rules, circulars,  codes and guidelines  established 
+by local and/or regional regulatory bodies, including laws 
+in connection  with the distribution  third-party  research 
+reports.
+Conflicts of Interest
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 24 ===
+
+Morningstar Equity Company Report | Report as of 20 Nov 2025 04:22, UTC | Reporting Currency: CNY | Trading Currency: HKD | Exchange: HONG KONG EXCHANGES AND CLEARING LTD Page 24 of 25
+?
+Research Methodology for Valuing Companies
+g No interests are held by the analyst with respect to the 
+security subject of this investment research report.
+g Morningstar,  Inc. may hold a long position  in the se-
+curity subject of this investment  research report that 
+exceeds  0.5% of the total issued share capital  of the 
+security. To determine if such is the case, please click 
+http://msi.morningstar.com  and http://mdi.morning-
+star.com
+g Analysts’  compensation  is derived from Morningstar, 
+Inc.’s  overall  earnings  and consists  of salary,  bonus 
+and in some cases restricted stock.
+g Neither Morningstar, Inc. or the Equity Research Group 
+receives  commissions  for providing  research  nor do 
+they charge companies to be rated.
+g Morningstar’s  overall earnings  are generated  in part 
+by the activities  of the Investment  Management  and 
+Research groups, and other affiliates, who provide ser-
+vices to product issuers.
+g Morningstar employees may not pursue business and 
+employment opportunities outside Morningstar within 
+the investment  industry (including  but not limited to, 
+working as a financial planner, an investment profes-
+sional  or investment  professional  representative,  a 
+broker-dealer  or broker-dealer  agent,  a financial 
+writer,  reporter,  or analyst)  without  the approval  of 
+Morningstar’s  Legal  and if applicable,  Compliance 
+teams.
+g Neither Morningstar, Inc. or the Equity Research Group 
+is a market maker or a liquidity provider of the security 
+noted within this report.
+g Neither Morningstar, Inc. or the Equity Research Group 
+has been a lead manager or co-lead manager over the 
+previous 12-months of any publicly disclosed offer of 
+financial instruments of the issuer.
+g Morningstar,  Inc.’s  investment  management  group 
+does have arrangements with financial institutions to 
+provide  portfolio  management/investment  advice 
+some of which an analyst  may issue investment  re-
+search reports on. However, analysts do not have au-
+thority  over Morningstar’s  investment  management 
+group’s business arrangements  nor allow employees 
+from the investment management group to participate 
+or influence the analysis or opinion prepared by them.
+g Morningstar, Inc. is a publicly traded company (Ticker 
+Symbol: MORN) and thus a financial institution the se-
+curity of which is the subject of this report may own 
+more than 5% of Morningstar, Inc.’s total outstanding 
+shares. Please access Morningstar,  Inc.’s proxy state-
+ment, “Security Ownership of Certain Beneficial Own-
+ers  and  Management”  section  https://
+shareholders.morningstar.com/investor-relations/fin-
+ancials/sec-filings/default.aspx
+g Morningstar, Inc. may provide the product issuer or its 
+related entities with services or products for a fee and 
+on an arms’ length basis including software products 
+and licenses,  research  and consulting  services,  data 
+services,  licenses  to republish  our ratings  and re-
+search in their promotional  material,  event sponsor-
+ship and website advertising.
+Further information on Morningstar,  Inc.’s conflict of in-
+terest  policies  is available  from http://global.morning-
+star.com/equitydisclosures .  Also, please  note analysts 
+are subject  to the CFA Institute’s  Code  of Ethics  and 
+Standards of Professional Conduct.
+Risk Warning Please note that investments in securities 
+are subject to market and other risks and there is no as-
+surance or guarantee  that the intended  investment  ob-
+jectives will be achieved. Past performance of a security 
+may or may not be sustained in future and is no indica-
+tion of future performance. A security’s investment return 
+and an investor's  principal  value will fluctuate  so that, 
+when redeemed, an investor's shares may be worth more 
+or less than their original cost. A security's current invest-
+ment performance  may be lower or higher than the in-
+vestment  performance  noted within  the report.  For in-
+vestments in foreign markets there are further risks, gen-
+erally  based  on exchange  rate changes  or changes  in 
+political and social conditions.
+For more information about Morningstar's 
+methodologies, please visit global.morningstar.com/
+equitydisclosures
+For a list of securities  which the Equity Research Group 
+currently covers and provides written analysis on please 
+contact your local Morningstar office. In addition, for his-
+torical analysis of securities covered, including their fair 
+value estimate, please contact your local office.
+For recipients in Australia: This Report has been issued 
+and distributed  in Australia  by Morningstar  Australasia 
+Pty Ltd (ABN: 95 090 665 544; ASFL: 240892). Morningstar 
+Australasia  Pty Ltd is the provider of the general advice 
+(‘the Service’) and takes responsibility for the production 
+of this report.  The Service  is provided  through  the re-
+search of investment products.
+To the extent the Report contains  general  advice it has 
+been prepared without reference to an investor’s object-
+ives, financial  situation  or needs. Investors  should con-
+sider the advice in light of these matters and, if applic-
+able, the relevant  Product  Disclosure  Statement  before 
+making any decision to invest. Refer to our Financial Ser-
+vices  Guide  (FSG)  for  more  information  at http://
+www.morningstar.com.au/fsg.pdf
+For recipients in New Zealand: This report has been is-
+sued and distributed by Morningstar Australasia Pty Ltd 
+and/or  Morningstar  Research  Ltd (together  ‘Morning-
+star’). This report has been prepared and is intended for 
+distribution in New Zealand to wholesale clients only and 
+has not been prepared for use by New Zealand retail cli-
+ents (as those terms are defined in the Financial Markets 
+Conduct  Act 2013).The  information,  views  and any re-
+commendations in this material are provided for general 
+information  purposes  only, and solely relate to the com
+panies  and investment  opportunities  specified  within. 
+Our reports  do not take into account  any particular  in-
+vestor’s financial situation, objectives or appetite for risk, 
+meaning no representation may be implied as to the suit-
+ability of any financial product mentioned for any partic-
+ular investor.  We recommend  seeking  financial  advice 
+before making any investment decision.
+For recipients  in Hong Kong: The Report is distributed 
+by Morningstar  Investment  Management  Asia Limited, 
+which is regulated by the Hong Kong Securities and Fu-
+tures Commission to provide services to professional in-
+vestors  only. Neither  Morningstar  Investment  Manage-
+ment Asia Limited, nor its representatives,  are acting or 
+will be deemed to be acting as an investment profession-
+al to any recipients  of this information  unless expressly 
+agreed to by Morningstar  Investment Management Asia 
+Limited.
+For recipients  in India: This investment  research  is is-
+sued by Morningstar  Investment  Adviser  India  Private 
+Limited.  Morningstar  Investment  Adviser  India  Private 
+Limited  is registered  with SEBI as a Portfolio  Manager 
+(registration  number INP000006156)  and as a Research 
+Entity (registration number INH000008686). Morningstar 
+Investment Adviser India Private Limited has not been the 
+subject  of any disciplinary  action  by SEBI or any other 
+legal/regulatory  body. Morningstar  Investment  Adviser 
+India  Private  Limited  is a wholly  owned  subsidiary  of 
+Morningstar  Investment  Management  LLC.  In India, 
+Morningstar Investment Adviser India Private Limited has 
+one associate,  Morningstar  India Private Limited, which 
+provides  data-related  services,  financial  data analysis, 
+and software development. The research analyst has not 
+served  as an officer,  director,  or employee  of the fund 
+company within the last 12 months, nor have they or their 
+associates  engaged  in market-making  activity  for the 
+fund company.The ESG-related  information,  methodolo-
+gies, tool, ratings, data and opinions contained or reflec-
+ted herein are not directed to or intended for use or dis-
+tribution to India-based clients or users and their distri-
+bution to Indian resident individuals or entities is not per-
+mitted,  and Morningstar/Sustainalytics  accepts  no re-
+sponsibility or liability whatsoever for the actions of third 
+parties in this respect.
+*The Conflicts of Interest disclosure above also applies to 
+relatives and associates of Manager Research Analysts in 
+India # The Conflicts of Interest disclosure above also ap-
+plies to associates  of Manager Research Analysts in In-
+dia. The terms and conditions on which Morningstar  In-
+vestment Adviser India Private Limited offers Investment 
+Research to clients, varies from client to client, and are 
+detailed in the respective client agreement.
+For recipients in Japan: The Report is distributed by Ib-
+botson Associates Japan, Inc., which is regulated by Fin-
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.
+
+=== PAGE 25 ===
+
+Morningstar Equity Company Report | Report as of 20 Nov 2025 04:22, UTC | Reporting Currency: CNY | Trading Currency: HKD | Exchange: HONG KONG EXCHANGES AND CLEARING LTD Page 25 of 25
+?
+Research Methodology for Valuing Companies
+ancial Services Agency, for informational  purposes only. 
+Neither Ibbotson Associates Japan, Inc., nor its represent-
+atives, are acting or will be deemed to be acting as an in-
+vestment professional  to any recipients  of this informa-
+tion.
+For recipients in Singapore: The Report is intended for 
+Institutional  Investor  audiences  and is distributed  by 
+Morningstar  Investment Adviser Singapore Pte. Limited, 
+which is licensed by the Monetary Authority of Singapore 
+to provide financial advisory services in Singapore. Morn-
+ingstar Investment Adviser Singapore Pte. Limited is the 
+entity responsible for the creation and distribution of the 
+research services described in this Report.
+This content is provided for informational  purposes only 
+and may be shared or redistributed  by Institutional  In-
+vestors to their clients or other permitted  persons, sub-
+ject to obtaining  the appropriate  licence from Morning-
+star. Redistribution  of this content is subject to any ap-
+plicable conditions or limitations, including those agreed 
+commercially or contractually with Morningstar. The per-
+son who shares  or redistributes  this  content  shall  be 
+solely responsible  for compliance with all relevant legal 
+and regulatory  obligations  in the jurisdictions  in which 
+the material is made available.
+Investors should consult a financial adviser regarding the 
+suitability of any investment product, taking into account 
+their specific investment objectives, financial situation or 
+particular needs, before making any investment decision.
+Morningstar, Inc., and its affiliates rely on certain exemp-
+tions (Financial  Advisers  Regulations,  Section  27(1)(e), 
+Section 32B and 32C) to provide its investment research 
+to recipients in Singapore.
+For recipients  in Korea:  The report  is distributed  by 
+Morningstar  Korea Ltd., which has filed to the Financial 
+Services  Committee,  for informational  purposes  only. 
+Neither Morningstar Korea Ltd. nor its representatives are 
+acting or will be deemed to be acting as an investment 
+advisor to any recipients of this information.
+©2025 Morningstar. All Rights Reserved. Unless otherwise provided in a separate agreement, you may use this report only in the country in which its original distributor is based. The information, data, analyses and opinions 
+presented herein do not constitute investment advice; are provided solely for informational purposes and therefore are not an offer to buy or sell a security; and are not warranted to be correct, complete or accurate. The 
+opinions expressed are as of the date written and are subject to change without notice. Except as otherwise required by law, Morningstar shall not be responsible for any trading decisions, damages or other losses resulting 
+from, or related to, the information, data, analyses or opinions or their use. The information contained herein is the proprietary property of Morningstar and may not be reproduced, in whole or in part, or used in any manner, 
+without the prior written consent of Morningstar.  Investment research is produced and issued by subsidiaries  of Morningstar,  Inc. including, but not limited to, Morningstar  Research Services LLC, registered with and 
+governed by the U.S. Securities and Exchange Commission. To order reprints, call +1 312-696-6100. To license the research, call +1 312-696-6869. Please see important disclosures at the end of this report.

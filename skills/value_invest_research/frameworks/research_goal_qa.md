@@ -194,6 +194,20 @@ table `材料（含链接） | 类型 | 观点列表`. One source occupies one r
 all locator-backed atomic claims plus their support/refute direction as
 `• 观点 N（原文位置）：原子观点` bullets in the final cell.
 
+For a demand-side question tree, Q1 is a pure demander taxonomy. It asks only:
+`当前有哪些需求方？哪些主体是潜在未来需求方？` The two groups must be
+mutually exclusive at the selected as-of date. Do not put business, task,
+workload, system, specification, channel, quantity, or snapshot-change branches
+under Q1. Q2 measures current demand by the Q1 groups; later leaves test workload,
+intensity, budget, orders, and realization.
+
+Q2 has two child groups. `分类映射预测` searches each Q1 current demander for the
+best available current quantity, forecast, disclosed sample, or value proxy and
+records whether the mapping is direct, proxy, sample, or gap. `其它预测` preserves
+industry totals and other useful forecasts that cannot be allocated without false
+precision. All current Q1 demanders must be covered; potential-future demanders are
+not included in the current base until evidence moves them into the current group.
+
 Each standalone BOM keeps its report, source index, selected IMA originals, inbox,
 temporal ledger, and intake audit at `research/bom/<bom_project_id>/`. Repository
 `source/ima/` remains the complete provider mirror; project copies are intentionally

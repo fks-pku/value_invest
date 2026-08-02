@@ -1,12 +1,57 @@
 {
-  "schema_version": "2.0",
+  "schema_version": "2.2",
   "bom_node_id": "gpu_asic",
   "lenses": [
     {
       "lens_id": "demand",
       "label": "需求侧",
-      "logic_chain": "需求判断沿着工作负载增长、单位算力强度、客户预算、订单可见性和收入兑现逐级验证。只有真实任务与算力强度同时增长，客户愿意持续投入，订单能够按期交付并进入收入与利润，才构成可投资的需求上行。",
+      "logic_chain": "Q1 只定义谁在需求 GPU，并将主体分为当前需求方与潜在未来需求方；不在 Q1 展开业务、任务、承载系统、GPU 规格、采购通道、数量或截面变化。Q2 再按需求方清单建立当前需求量基线，后续节点分别验证工作负载、单位算力、预算、订单和财务兑现。",
       "logic_nodes": [
+        {
+          "logic_node_id": "demand.demand_universe",
+          "title": "Q1 需求方",
+          "question": "当前有哪些数据中心 GPU 需求方，哪些主体可能成为潜在未来需求方？",
+          "causal_role": "input",
+          "indicators": ["需求主体身份", "当前或潜在未来标签", "需求形成状态"],
+          "support_rule": "当前需求方已有可验证的采购、部署或算力消费；潜在未来需求方尚未形成规模需求，但具备可验证的进入条件。",
+          "refute_rule": "把 OEM/ODM、分销商等采购通道列作需求方，或把同一主体同时列入当前和潜在未来两组。",
+          "downstream_node_ids": ["demand.current_quantity"],
+          "company_bridge_fields": ["需求方类别", "当前或潜在未来"],
+          "render_mode": "demand_party_list",
+          "demand_parties": {
+            "current": [
+              "超大规模云服务商",
+              "AI 模型公司",
+              "GPU 云与算力服务商",
+              "大型互联网平台",
+              "大型企业与工业客户",
+              "科研机构",
+              "主权及公共算力建设主体"
+            ],
+            "potential_future": [
+              "尚未规模化部署 AI 的传统企业",
+              "从租用算力转向自建集群的 AI 应用公司",
+              "电信与边缘云运营商",
+              "机器人及自动驾驶平台运营方",
+              "新进入的区域公共算力主体"
+            ]
+          },
+          "update_cadence": "quarterly"
+        },
+        {
+          "logic_node_id": "demand.current_quantity",
+          "title": "Q2 当前需求量基线",
+          "question": "按 Q1 当前需求方逐类搜索，当前可验证的需求量、预测、样本或价值代理分别是多少；哪些其它预测无法可靠映射？",
+          "causal_role": "mechanism",
+          "indicators": ["Q1需求方覆盖", "当前数量或预测", "口径与期间", "映射质量", "其它未映射预测"],
+          "support_rule": "每个Q1当前需求方都有一条直接、代理、样本或缺口记录；无法可靠分配的总量预测单独进入其它预测。",
+          "refute_rule": "把行业总量机械分摊到需求方，遗漏无数据类别，或把不同单位、期间、样本和重叠主体直接相加。",
+          "downstream_node_ids": ["demand.workload_growth"],
+          "company_bridge_fields": ["系统数量", "GPU数量", "采购客户", "供应商实现收入", "估算区间"],
+          "render_mode": "demand_quantity_matrix",
+          "classification_node_id": "demand.demand_universe",
+          "update_cadence": "quarterly"
+        },
         {
           "logic_node_id": "demand.workload_growth",
           "title": "真实 AI 工作负载",
