@@ -14,6 +14,16 @@ MATERIAL_LABELS = {
     "other": "其他",
 }
 
+DEMAND_INFORMATION_TYPE_LABELS = {
+    "official_filing": "官方财报",
+    "authoritative_third_party": "第三方研究",
+    "sell_side_research": "机构研报",
+    "official_company": "市场消息",
+    "market_news": "市场消息",
+    "expert_opinion": "市场消息",
+    "other": "市场消息",
+}
+
 DIRECTION_LABELS = {
     "support": "支持",
     "refute": "反证",
@@ -296,52 +306,87 @@ def _logic_node_lines(
             "gap": "数据缺口",
             "unmapped": "不做映射",
         }
+
+        def table_row(row: dict[str, Any]) -> str:
+            source_text = _demand_quantity_source_text(
+                row,
+                project_dir=project_dir,
+            )
+            information_type = _demand_quantity_information_type(row)
+            mapping_quality = quality_labels.get(
+                str(row.get("mapping_quality") or ""),
+                str(row.get("mapping_quality") or ""),
+            )
+            return (
+                f"| {source_text} "
+                f"| {_escape_cell(str(row.get('target_period') or ''))} "
+                f"| {_escape_cell(information_type)} "
+                f"| **{_escape_cell(str(row.get('metric') or ''))}："
+                f"{_escape_cell(str(row.get('quantity') or ''))}**<br>"
+                f"{_escape_cell(mapping_quality)} · "
+                f"{_escape_cell(str(row.get('caveat') or ''))} |"
+            )
+
+        def append_category(
+            target: list[str],
+            category: str,
+            category_rows: list[dict[str, Any]],
+        ) -> None:
+            target.extend(
+                [
+                    f"###### {category}",
+                    "",
+                    "| 来源 | 期间 | 信息类型 | 具体信息 |",
+                    "|---|---|---|---|",
+                ]
+            )
+            if category_rows:
+                target.extend(table_row(row) for row in category_rows)
+            else:
+                target.append("| 暂无独立来源 | — | — | 暂无已登记信息。 |")
+            target.append("")
+
+        def group_by_party(
+            group_rows: list[dict[str, Any]],
+        ) -> dict[str, list[dict[str, Any]]]:
+            grouped: dict[str, list[dict[str, Any]]] = {}
+            for row in group_rows:
+                grouped.setdefault(str(row.get("demand_party") or ""), []).append(
+                    row
+                )
+            return grouped
+
+        current_by_party = group_by_party(
+            [row for row in rows if row.get("forecast_group") == "classified"]
+        )
+        potential_by_party = group_by_party(
+            [row for row in rows if row.get("forecast_group") == "potential_future"]
+        )
+        demand_parties = dict(node.get("demand_parties") or {})
         lines = [
             f"#### {node.get('title') or node.get('logic_node_id') or '需求量'}",
             "",
-            "##### 1. 分类映射预测",
+            "##### 1. 当前需求方",
             "",
-            "| Q1 需求方 | 当前数量 / 预测 | 口径与期间 | 映射质量 | 来源与局限 |",
-            "|---|---|---|---|---|",
         ]
+        for party in demand_parties.get("current") or []:
+            append_category(lines, str(party), current_by_party.get(str(party), []))
+        lines.extend(["##### 2. 潜在未来需求方", ""])
+        for party in demand_parties.get("potential_future") or []:
+            append_category(
+                lines,
+                str(party),
+                potential_by_party.get(str(party), []),
+            )
+        lines.extend(["##### 3. 其它分类", ""])
+        other_by_category: dict[str, list[dict[str, Any]]] = {}
         for row in rows:
-            if row.get("forecast_group") != "classified":
-                continue
-            source_text = _demand_quantity_source_text(
-                row,
-                project_dir=project_dir,
-            )
-            lines.append(
-                f"| {_escape_cell(str(row.get('demand_party') or ''))} "
-                f"| {_escape_cell(str(row.get('quantity') or ''))} "
-                f"| {_escape_cell(str(row.get('metric') or ''))}<br>"
-                f"{_escape_cell(str(row.get('target_period') or ''))} "
-                f"| {_escape_cell(quality_labels.get(str(row.get('mapping_quality') or ''), str(row.get('mapping_quality') or '')))} "
-                f"| {source_text}<br>{_escape_cell(str(row.get('caveat') or ''))} |"
-            )
-        lines.extend(
-            [
-                "",
-                "##### 2. 其它预测",
-                "",
-                "| 预测对象 | 当前数量 / 预测 | 期间 | 来源与未映射原因 |",
-                "|---|---|---|---|",
-            ]
-        )
-        for row in rows:
-            if row.get("forecast_group") != "other":
-                continue
-            source_text = _demand_quantity_source_text(
-                row,
-                project_dir=project_dir,
-            )
-            lines.append(
-                f"| {_escape_cell(str(row.get('metric') or ''))} "
-                f"| {_escape_cell(str(row.get('quantity') or ''))} "
-                f"| {_escape_cell(str(row.get('target_period') or ''))} "
-                f"| {source_text}<br>{_escape_cell(str(row.get('caveat') or ''))} |"
-            )
-        lines.append("")
+            if row.get("forecast_group") == "other":
+                other_by_category.setdefault(
+                    str(row.get("metric") or "其它信息"), []
+                ).append(row)
+        for category, category_rows in other_by_category.items():
+            append_category(lines, category, category_rows)
         return lines
     lines = [
         f"#### {node.get('title') or node.get('logic_node_id') or '逻辑节点'}",
@@ -410,6 +455,19 @@ def _demand_quantity_source_text(
         published_at = _escape_cell(str(source.get("published_at") or ""))
         links.append(f"{published_at} · {link}" if published_at else link)
     return "<br>".join(links) if links else "暂无独立来源"
+
+
+def _demand_quantity_information_type(row: dict[str, Any]) -> str:
+    labels = list(
+        dict.fromkeys(
+            DEMAND_INFORMATION_TYPE_LABELS.get(
+                str(source.get("material_class") or "other"),
+                "市场消息",
+            )
+            for source in row.get("sources") or []
+        )
+    )
+    return " / ".join(labels) or "暂无来源"
 
 
 def _entity_source_claim_row(

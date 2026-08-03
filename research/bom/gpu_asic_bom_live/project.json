@@ -6,9 +6,9 @@
   "domain_playbook": "semiconductor_hardware",
   "bom_node_id": "gpu_asic",
   "run_mode": "live_prediction",
-  "as_of_date": "2026-08-02",
-  "report_date": "2026-08-02",
-  "generated_at": "2026-08-02",
+  "as_of_date": "2026-08-03",
+  "report_date": "2026-08-03",
+  "generated_at": "2026-08-03",
   "question_model": "five-lens-investment-engine",
   "investment_engine_version": "2.2",
   "question_labels": [

@@ -201,12 +201,22 @@ workload, system, specification, channel, quantity, or snapshot-change branches
 under Q1. Q2 measures current demand by the Q1 groups; later leaves test workload,
 intensity, budget, orders, and realization.
 
-Q2 has two child groups. `分类映射预测` searches each Q1 current demander for the
-best available current quantity, forecast, disclosed sample, or value proxy and
-records whether the mapping is direct, proxy, sample, or gap. `其它预测` preserves
-industry totals and other useful forecasts that cannot be allocated without false
-precision. All current Q1 demanders must be covered; potential-future demanders are
-not included in the current base until evidence moves them into the current group.
+Q2 has three child groups: `当前需求方`, `潜在未来需求方`, and `其它分类`.
+`当前需求方` searches every Q1 current demander for the best available current
+quantity, forecast, disclosed sample, or value proxy and records whether the mapping
+is direct, proxy, sample, or gap. `潜在未来需求方` reuses every Q1 potential-future
+demander and preserves its relevant observations without adding them to the current
+base. `其它分类` preserves industry totals and useful forecasts that cannot be
+allocated without false precision, grouped by their own information category. All
+current Q1 demanders must be covered; potential-future categories may show a clear
+empty state until evidence arrives. One specific category may own multiple relevant
+facts, forecasts, samples, or proxies. Render one table per specific category rather
+than flattening categories into one row each. Every table uses exactly `来源 | 期间 |
+信息类型 | 具体信息`. `信息类型` is the normalized source-material class:
+`官方财报`, `第三方研究`, `市场消息`, or `机构研报`. The final cell keeps the metric,
+value, mapping quality, and caveat together. HTML uses collapsed outer disclosures
+with collapsed specific-category disclosures nested inside; Markdown mirrors the
+same numbered hierarchy.
 
 Each standalone BOM keeps its report, source index, selected IMA originals, inbox,
 temporal ledger, and intake audit at `research/bom/<bom_project_id>/`. Repository

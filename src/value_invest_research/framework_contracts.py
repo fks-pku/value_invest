@@ -1406,28 +1406,44 @@ def validate_report_contract_markdown(
             )
             if demand_quantity_match:
                 demand_quantity_block = demand_quantity_match.group(1)
-                classified_at = demand_quantity_block.find("##### 1. 分类映射预测")
-                other_at = demand_quantity_block.find("##### 2. 其它预测")
-                if classified_at < 0 or other_at <= classified_at:
+                current_at = demand_quantity_block.find("##### 1. 当前需求方")
+                potential_at = demand_quantity_block.find(
+                    "##### 2. 潜在未来需求方"
+                )
+                other_at = demand_quantity_block.find("##### 3. 其它分类")
+                valid_group_order = (
+                    0 <= current_at < potential_at < other_at
+                )
+                if not valid_group_order:
                     _issue(
                         issues,
                         "error",
                         "markdown_demand_quantity_groups",
                         (
-                            "Q2 demand quantity matrix must render classified "
-                            "forecasts before other forecasts"
+                            "Q2 demand quantity matrix must render current, "
+                            "potential-future, and other groups in order"
                         ),
                     )
-                for required_header in (
-                    "| Q1 需求方 | 当前数量 / 预测 | 口径与期间 | 映射质量 | 来源与局限 |",
-                    "| 预测对象 | 当前数量 / 预测 | 期间 | 来源与未映射原因 |",
-                ):
-                    if required_header not in demand_quantity_block:
+                required_header = "| 来源 | 期间 | 信息类型 | 具体信息 |"
+                if valid_group_order:
+                    group_blocks = (
+                        demand_quantity_block[current_at:potential_at],
+                        demand_quantity_block[potential_at:other_at],
+                        demand_quantity_block[other_at:],
+                    )
+                    if any(
+                        "###### " not in group_block
+                        or required_header not in group_block
+                        for group_block in group_blocks
+                    ):
                         _issue(
                             issues,
                             "error",
                             "markdown_demand_quantity_tables",
-                            "Q2 demand quantity matrix is missing a locked table",
+                            (
+                                "Q2 requires one four-column table per specific "
+                                "category in all three groups"
+                            ),
                         )
                 if "**截面变化与评估：**" in demand_quantity_block:
                     _issue(
@@ -1763,20 +1779,67 @@ def _validate_standalone_bom_report_html(
             flags=re.IGNORECASE | re.DOTALL,
         )
         for demand_quantity_node in demand_quantity_nodes:
-            classified_at = demand_quantity_node.find(
-                'data-demand-forecast-group="classified"'
+            current_at = demand_quantity_node.find(
+                'data-demand-forecast-group="current"'
+            )
+            potential_at = demand_quantity_node.find(
+                'data-demand-forecast-group="potential_future"'
             )
             other_at = demand_quantity_node.find(
                 'data-demand-forecast-group="other"'
             )
-            if classified_at < 0 or other_at <= classified_at:
+            if not (0 <= current_at < potential_at < other_at):
                 _issue(
                     issues,
                     "error",
                     "standalone_html_demand_quantity_groups",
                     (
-                        "Q2 demand quantity matrix must render classified "
-                        "forecasts before other forecasts"
+                        "Q2 demand quantity matrix must render current, "
+                        "potential-future, and other groups in order"
+                    ),
+                )
+            tier_tags = re.findall(
+                r'<details\b[^>]*class="demand-quantity-tier"[^>]*>',
+                demand_quantity_node,
+                flags=re.IGNORECASE,
+            )
+            category_tags = re.findall(
+                r'<details\b[^>]*class="demand-quantity-category"[^>]*>',
+                demand_quantity_node,
+                flags=re.IGNORECASE,
+            )
+            if (
+                len(tier_tags) != 3
+                or not category_tags
+                or any(re.search(r"\bopen(?:\s|=|>)", tag) for tag in tier_tags)
+                or any(
+                    re.search(r"\bopen(?:\s|=|>)", tag)
+                    for tag in category_tags
+                )
+            ):
+                _issue(
+                    issues,
+                    "error",
+                    "standalone_html_demand_quantity_disclosures",
+                    (
+                        "Q2 requires three collapsed outer disclosures with "
+                        "collapsed specific-category disclosures nested inside"
+                    ),
+                )
+            if (
+                'data-demand-category-table' not in demand_quantity_node
+                or demand_quantity_node.count(
+                    "<th>来源</th><th>期间</th><th>信息类型</th><th>具体信息</th>"
+                )
+                < 3
+            ):
+                _issue(
+                    issues,
+                    "error",
+                    "standalone_html_demand_quantity_tables",
+                    (
+                        "Q2 requires one four-column table per specific "
+                        "category in all three groups"
                     ),
                 )
             if any(

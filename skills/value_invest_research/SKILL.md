@@ -214,12 +214,20 @@ current quantity baseline in Q2 and demand mechanisms in the later nodes. A Q1
 node using `render_mode: demand_party_list` does not render entity snapshots or
 material tables, although its underlying ledgers remain immutable and auditable.
 
-Q2 inherits every `当前需求方` from Q1. Render two blocks: `分类映射预测` for
-party-level quantities, samples, forecasts, or value proxies, and `其它预测` for
-market totals that cannot be allocated reliably. Cover each current Q1 demander;
-use an explicit gap row when no credible quantity exists. Keep mapping quality,
-period, source, and caveat visible. Never allocate an aggregate mechanically or
-sum incompatible units, overlapping samples, and supplier values.
+Q2 inherits both Q1 demander lists. Render three outer groups in this exact order:
+`当前需求方`, `潜在未来需求方`, and `其它分类`. The first two groups contain one
+specific category per Q1 demander; the third groups unallocatable totals and
+forecasts by their own information category. Every specific category owns one table
+and may contain multiple information rows. Each table uses `来源 | 期间 | 信息类型 |
+具体信息`; use an explicit gap row when no credible current quantity exists, and
+allow a clear empty state for a potential-future category. `信息类型` classifies
+source material as `官方财报`, `第三方研究`, `市场消息`, or `机构研报`. Keep the
+metric, quantity or forecast, mapping quality, and caveat together in `具体信息`.
+Potential-future observations do not enter the current baseline, and other
+forecasts never claim a Q1 demander mapping. In HTML, both the outer groups and
+their specific categories are collapsed disclosures by default; Markdown mirrors
+the same numbered hierarchy. Never allocate an aggregate mechanically or sum
+incompatible units, overlapping samples, and supplier values.
 
 The standalone workflow is:
 

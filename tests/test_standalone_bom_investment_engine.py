@@ -142,6 +142,24 @@ class StandaloneBomInvestmentEngineTests(unittest.TestCase):
         self.assertNotIn("**截面变化与评估：**", party_markdown)
 
     def test_demand_quantity_matrix_inherits_q1_and_separates_other_forecasts(self):
+        claims = []
+        for claim_id, source_id, material_class, title in (
+            ("CLM-OFFICIAL", "SRC-OFFICIAL", "official_filing", "Official filing"),
+            ("CLM-SELLSIDE", "SRC-SELLSIDE", "sell_side_research", "Sell-side report"),
+            ("CLM-COMPANY", "SRC-COMPANY", "official_company", "Company release"),
+            ("CLM-THIRD", "SRC-THIRD", "authoritative_third_party", "Third-party research"),
+            ("CLM-FUTURE", "SRC-FUTURE", "market_news", "Future demander news"),
+        ):
+            claims.append(
+                {
+                    **_claim(),
+                    "claim_id": claim_id,
+                    "source_id": source_id,
+                    "material_class": material_class,
+                    "source_title": title,
+                }
+            )
+        claims_by_id = {row["claim_id"]: row for row in claims}
         profile = _profile()
         demand_node = profile["lenses"][0]["logic_nodes"][0]
         demand_node.update(
@@ -169,25 +187,47 @@ class StandaloneBomInvestmentEngineTests(unittest.TestCase):
         state = normalize_logic_state(
             {
                 "logic_node_id": "demand.quantity",
-                "conclusion": "分类预测与其它预测已分开。",
+                "conclusion": "当前、潜在未来与其它分类已分开。",
                 "demand_quantity_rows": [
                     {
                         "forecast_group": "classified",
                         "demand_party": "云服务商",
                         "metric": "GPU数量",
-                        "quantity": "数据缺口",
+                        "quantity": "10万颗",
                         "target_period": "当前",
-                        "mapping_quality": "gap",
-                        "caveat": "未披露。",
+                        "mapping_quality": "direct",
+                        "claim_ids": ["CLM-OFFICIAL"],
+                        "caveat": "官方披露。",
+                    },
+                    {
+                        "forecast_group": "classified",
+                        "demand_party": "云服务商",
+                        "metric": "供应商收入",
+                        "quantity": "100亿元",
+                        "target_period": "当前",
+                        "mapping_quality": "proxy",
+                        "claim_ids": ["CLM-SELLSIDE"],
+                        "caveat": "收入是数量代理。",
                     },
                     {
                         "forecast_group": "classified",
                         "demand_party": "模型公司",
                         "metric": "GPU数量",
-                        "quantity": "数据缺口",
+                        "quantity": "20万颗",
                         "target_period": "当前",
-                        "mapping_quality": "gap",
-                        "caveat": "未披露。",
+                        "mapping_quality": "sample",
+                        "claim_ids": ["CLM-COMPANY"],
+                        "caveat": "单一公司样本。",
+                    },
+                    {
+                        "forecast_group": "potential_future",
+                        "demand_party": "传统企业",
+                        "metric": "试点部署",
+                        "quantity": "3个项目",
+                        "target_period": "2027E",
+                        "mapping_quality": "sample",
+                        "claim_ids": ["CLM-FUTURE"],
+                        "caveat": "仅为潜在需求方样本。",
                     },
                     {
                         "forecast_group": "other",
@@ -195,12 +235,13 @@ class StandaloneBomInvestmentEngineTests(unittest.TestCase):
                         "quantity": "100万台",
                         "target_period": "2026E",
                         "mapping_quality": "unmapped",
+                        "claim_ids": ["CLM-THIRD"],
                         "caveat": "无法分配到需求方。",
                     },
                 ],
             },
             profile=profile,
-            claims_by_id={},
+            claims_by_id=claims_by_id,
             as_of_date="2026-08-01",
         )
         view = build_standalone_investment_view(
@@ -210,7 +251,7 @@ class StandaloneBomInvestmentEngineTests(unittest.TestCase):
                 "bom_node_id": "gpu_asic",
             },
             profile=profile,
-            claims=[],
+            claims=claims,
             conclusions=[],
             claim_mappings=[],
             logic_states=[state],
@@ -224,9 +265,45 @@ class StandaloneBomInvestmentEngineTests(unittest.TestCase):
         quantity_html = html.split(
             'data-render-mode="demand-quantity-matrix"', 1
         )[1].split("</article>", 1)[0]
-        self.assertLess(quantity_html.find("分类映射预测"), quantity_html.find("其它预测"))
+        self.assertLess(
+            quantity_html.find("当前需求方"),
+            quantity_html.find("潜在未来需求方"),
+        )
+        self.assertLess(
+            quantity_html.find("潜在未来需求方"),
+            quantity_html.find("其它分类"),
+        )
         self.assertIn("云服务商", quantity_html)
+        self.assertIn("传统企业", quantity_html)
         self.assertIn("全球AI服务器", quantity_html)
+        self.assertEqual(quantity_html.count('class="demand-quantity-tier"'), 3)
+        self.assertEqual(
+            quantity_html.count('class="demand-quantity-category"'),
+            4,
+        )
+        self.assertEqual(quantity_html.count("data-demand-category-table"), 4)
+        self.assertEqual(
+            quantity_html.count('data-demand-quantity-category="云服务商"'),
+            1,
+        )
+        self.assertIn('data-demand-forecast-group="current"', quantity_html)
+        self.assertIn(
+            'data-demand-forecast-group="potential_future"', quantity_html
+        )
+        self.assertIn('data-demand-forecast-group="other"', quantity_html)
+        self.assertNotIn('<details class="demand-quantity-tier" open', quantity_html)
+        self.assertNotIn(
+            '<details class="demand-quantity-category" open', quantity_html
+        )
+        self.assertIn("2 条信息", quantity_html)
+        self.assertEqual(
+            quantity_html.count(
+                "<th>来源</th><th>期间</th><th>信息类型</th><th>具体信息</th>"
+            ),
+            4,
+        )
+        for label in ("官方财报", "第三方研究", "市场消息", "机构研报"):
+            self.assertIn(label, quantity_html)
         self.assertNotIn("entity-module", quantity_html)
 
         markdown = StandaloneBomMarkdownRenderer(Path("/tmp")).render(view)
@@ -234,11 +311,27 @@ class StandaloneBomInvestmentEngineTests(unittest.TestCase):
             "\n#### ", 1
         )[0]
         self.assertLess(
-            quantity_markdown.find("分类映射预测"),
-            quantity_markdown.find("其它预测"),
+            quantity_markdown.find("##### 1. 当前需求方"),
+            quantity_markdown.find("##### 2. 潜在未来需求方"),
         )
-        self.assertIn("| Q1 需求方 | 当前数量 / 预测", quantity_markdown)
-        self.assertIn("| 预测对象 | 当前数量 / 预测", quantity_markdown)
+        self.assertLess(
+            quantity_markdown.find("##### 2. 潜在未来需求方"),
+            quantity_markdown.find("##### 3. 其它分类"),
+        )
+        self.assertEqual(quantity_markdown.count("###### 云服务商"), 1)
+        self.assertEqual(quantity_markdown.count("###### 传统企业"), 1)
+        self.assertEqual(quantity_markdown.count("###### 全球AI服务器"), 1)
+        self.assertIn("GPU数量", quantity_markdown)
+        self.assertIn("供应商收入", quantity_markdown)
+        self.assertIn("试点部署", quantity_markdown)
+        self.assertEqual(
+            quantity_markdown.count(
+                "| 来源 | 期间 | 信息类型 | 具体信息 |"
+            ),
+            4,
+        )
+        for label in ("官方财报", "第三方研究", "市场消息", "机构研报"):
+            self.assertIn(label, quantity_markdown)
 
     def test_mapping_is_separate_from_immutable_claim(self):
         claim = _claim()

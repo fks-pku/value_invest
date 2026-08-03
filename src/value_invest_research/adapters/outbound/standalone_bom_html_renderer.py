@@ -15,6 +15,16 @@ MATERIAL_LABELS = {
     "other": "其他",
 }
 
+DEMAND_INFORMATION_TYPE_LABELS = {
+    "official_filing": "官方财报",
+    "authoritative_third_party": "第三方研究",
+    "sell_side_research": "机构研报",
+    "official_company": "市场消息",
+    "market_news": "市场消息",
+    "expert_opinion": "市场消息",
+    "other": "市场消息",
+}
+
 STATE_LABELS = {
     "unresolved": "待验证",
     "weak": "证据偏弱",
@@ -440,8 +450,11 @@ class StandaloneBomHtmlRenderer:
 
     def _render_demand_quantity_matrix(self, node: dict[str, Any]) -> str:
         rows = list(node.get("demand_quantity_rows") or [])
-        classified_rows = [
+        current_rows = [
             row for row in rows if row.get("forecast_group") == "classified"
+        ]
+        potential_future_rows = [
+            row for row in rows if row.get("forecast_group") == "potential_future"
         ]
         other_rows = [
             row for row in rows if row.get("forecast_group") == "other"
@@ -453,26 +466,113 @@ class StandaloneBomHtmlRenderer:
             "gap": "数据缺口",
             "unmapped": "不做映射",
         }
-        classified_html = "".join(
-            f"""
+
+        def render_row(row: dict[str, Any]) -> str:
+            mapping_quality = str(row.get("mapping_quality") or "")
+            information_types = list(
+                dict.fromkeys(
+                    DEMAND_INFORMATION_TYPE_LABELS.get(
+                        str(source.get("material_class") or "other"),
+                        "市场消息",
+                    )
+                    for source in row.get("sources") or []
+                )
+            )
+            information_type_text = " / ".join(information_types) or "暂无来源"
+            return f"""
         <tr>
-          <td><strong>{escape(str(row.get("demand_party") or ""))}</strong></td>
-          <td>{escape(str(row.get("quantity") or ""))}</td>
-          <td>{escape(str(row.get("metric") or ""))}<br><span>{escape(str(row.get("target_period") or ""))}</span></td>
-          <td>{escape(quality_labels.get(str(row.get("mapping_quality") or ""), str(row.get("mapping_quality") or "")))}</td>
-          <td>{self._render_demand_quantity_sources(row)}<p>{escape(str(row.get("caveat") or ""))}</p></td>
-        </tr>"""
-            for row in classified_rows
-        )
-        other_html = "".join(
-            f"""
-        <tr>
-          <td><strong>{escape(str(row.get("metric") or ""))}</strong></td>
-          <td>{escape(str(row.get("quantity") or ""))}</td>
+          <td>{self._render_demand_quantity_sources(row)}</td>
           <td>{escape(str(row.get("target_period") or ""))}</td>
-          <td>{self._render_demand_quantity_sources(row)}<p>{escape(str(row.get("caveat") or ""))}</p></td>
+          <td>{escape(information_type_text)}</td>
+          <td><strong>{escape(str(row.get("metric") or ""))}</strong><div class="demand-quantity-value">{escape(str(row.get("quantity") or ""))}</div><p>{escape(quality_labels.get(mapping_quality, mapping_quality))} · {escape(str(row.get("caveat") or ""))}</p></td>
         </tr>"""
-            for row in other_rows
+
+        def group_by_party(
+            group_rows: list[dict[str, Any]],
+        ) -> dict[str, list[dict[str, Any]]]:
+            grouped: dict[str, list[dict[str, Any]]] = {}
+            for row in group_rows:
+                grouped.setdefault(str(row.get("demand_party") or ""), []).append(
+                    row
+                )
+            return grouped
+
+        def render_category(
+            category: str,
+            category_rows: list[dict[str, Any]],
+        ) -> str:
+            table_rows = "".join(render_row(row) for row in category_rows)
+            if not table_rows:
+                table_rows = (
+                    '<tr><td colspan="4" class="empty-state">'
+                    "暂无已登记信息。</td></tr>"
+                )
+            return f"""
+    <details class="demand-quantity-category" data-demand-quantity-category="{escape(category, quote=True)}">
+      <summary>
+        <strong>{escape(category)}</strong>
+        <span>{len(category_rows)} 条信息</span>
+      </summary>
+      <div class="demand-quantity-table-wrap" role="region" aria-label="{escape(category, quote=True)}需求信息" tabindex="0" data-demand-category-table>
+        <table class="demand-quantity-table">
+          <thead><tr><th>来源</th><th>期间</th><th>信息类型</th><th>具体信息</th></tr></thead>
+          <tbody>{table_rows}</tbody>
+        </table>
+      </div>
+    </details>"""
+
+        current_by_party = group_by_party(current_rows)
+        potential_by_party = group_by_party(potential_future_rows)
+        demand_parties = dict(node.get("demand_parties") or {})
+        current_categories = [
+            (str(party), current_by_party.get(str(party), []))
+            for party in demand_parties.get("current") or []
+        ]
+        potential_categories = [
+            (str(party), potential_by_party.get(str(party), []))
+            for party in demand_parties.get("potential_future") or []
+        ]
+        other_by_category: dict[str, list[dict[str, Any]]] = {}
+        for row in other_rows:
+            other_by_category.setdefault(
+                str(row.get("metric") or "其它信息"), []
+            ).append(row)
+        other_categories = list(other_by_category.items())
+
+        def render_tier(
+            number: int,
+            label: str,
+            group_id: str,
+            categories: list[tuple[str, list[dict[str, Any]]]],
+        ) -> str:
+            category_html = "\n".join(
+                render_category(category, category_rows)
+                for category, category_rows in categories
+            )
+            information_count = sum(
+                len(category_rows) for _, category_rows in categories
+            )
+            return f"""
+  <details class="demand-quantity-tier" data-demand-forecast-group="{group_id}">
+    <summary>
+      <span class="demand-tier-number">{number:02d}</span>
+      <strong>{escape(label)}</strong>
+      <span class="demand-tier-count">{len(categories)} 类 · {information_count} 条信息</span>
+    </summary>
+    <div class="demand-quantity-tier-body">{category_html}</div>
+  </details>"""
+
+        tiers_html = "\n".join(
+            (
+                render_tier(1, "当前需求方", "current", current_categories),
+                render_tier(
+                    2,
+                    "潜在未来需求方",
+                    "potential_future",
+                    potential_categories,
+                ),
+                render_tier(3, "其它分类", "other", other_categories),
+            )
         )
         return f"""
 <article class="logic-node demand-quantity-node" data-logic-node-id="{escape(str(node.get("logic_node_id") or ""))}" data-render-mode="demand-quantity-matrix">
@@ -482,24 +582,7 @@ class StandaloneBomHtmlRenderer:
       <h4>{escape(str(node.get("title") or ""))}</h4>
     </div>
   </div>
-  <section class="demand-quantity-group" data-demand-forecast-group="classified">
-    <h5>分类映射预测</h5>
-    <div class="demand-quantity-table-wrap" role="region" aria-label="分类映射预测" tabindex="0">
-      <table class="demand-quantity-table">
-        <thead><tr><th>Q1 需求方</th><th>当前数量 / 预测</th><th>口径与期间</th><th>映射质量</th><th>来源与局限</th></tr></thead>
-        <tbody>{classified_html}</tbody>
-      </table>
-    </div>
-  </section>
-  <section class="demand-quantity-group" data-demand-forecast-group="other">
-    <h5>其它预测</h5>
-    <div class="demand-quantity-table-wrap" role="region" aria-label="其它预测" tabindex="0">
-      <table class="demand-quantity-table demand-quantity-other-table">
-        <thead><tr><th>预测对象</th><th>当前数量 / 预测</th><th>期间</th><th>来源与未映射原因</th></tr></thead>
-        <tbody>{other_html}</tbody>
-      </table>
-    </div>
-  </section>
+  <div class="demand-quantity-tier-list">{tiers_html}</div>
 </article>
 """
 
@@ -1191,20 +1274,93 @@ h1 {
   color: #354856;
 }
 .demand-party-group li + li { margin-top: 7px; }
-.demand-quantity-group { margin-top: 18px; }
-.demand-quantity-group h5 {
-  margin: 0 0 9px;
+.demand-quantity-tier-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+.demand-quantity-tier {
+  border: 1px solid #d9e3e8;
+  border-radius: 6px;
+  background: #fbfcfc;
+  overflow: hidden;
+}
+.demand-quantity-tier > summary,
+.demand-quantity-category > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  user-select: none;
+}
+.demand-quantity-tier > summary::-webkit-details-marker,
+.demand-quantity-category > summary::-webkit-details-marker {
+  display: none;
+}
+.demand-quantity-tier > summary {
+  padding: 13px 15px;
+  color: #183e58;
+  background: #f5f8f9;
+  font-size: 13px;
+}
+.demand-quantity-tier > summary::after,
+.demand-quantity-category > summary::after {
+  content: "+";
+  margin-left: auto;
+  color: #607887;
+  font-size: 16px;
+  font-weight: 650;
+}
+.demand-quantity-tier[open] > summary::after,
+.demand-quantity-category[open] > summary::after {
+  content: "−";
+}
+.demand-tier-number {
+  color: #7391a3;
+  font-size: 10px;
+  letter-spacing: .08em;
+}
+.demand-tier-count {
+  margin-left: 2px;
+  color: var(--muted);
+  font-size: 11px;
+}
+.demand-quantity-tier-body {
+  display: grid;
+  gap: 9px;
+  padding: 11px;
+  border-top: 1px solid #d9e3e8;
+}
+.demand-quantity-category {
+  border: 1px solid #e0e7ea;
+  border-radius: 5px;
+  background: #fff;
+  overflow: hidden;
+}
+.demand-quantity-category > summary {
+  padding: 10px 12px;
   color: #244b66;
-  font-size: 14px;
+  font-size: 12px;
+}
+.demand-quantity-category > summary span {
+  color: var(--muted);
+  font-size: 11px;
+}
+.demand-quantity-category .demand-quantity-table-wrap {
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
 }
 .demand-quantity-table-wrap {
   overflow-x: auto;
   border: 1px solid var(--line);
   border-radius: 4px;
+  background: #fff;
 }
 .demand-quantity-table {
   width: 100%;
-  min-width: 920px;
+  min-width: 820px;
   border-collapse: collapse;
   font-size: 12px;
 }
@@ -1220,13 +1376,21 @@ h1 {
   background: #f4f7f8;
   font-size: 11px;
 }
+.demand-quantity-table th:nth-child(1) { width: 29%; }
+.demand-quantity-table th:nth-child(2) { width: 14%; }
+.demand-quantity-table th:nth-child(3) { width: 13%; }
+.demand-quantity-table th:nth-child(4) { width: 44%; }
 .demand-quantity-table tbody tr:last-child td { border-bottom: 0; }
 .demand-quantity-table td span { color: var(--muted); }
+.demand-quantity-value {
+  margin-top: 4px;
+  color: #213a49;
+}
 .demand-quantity-table td p {
   margin: 5px 0 0;
   color: var(--muted);
 }
-.demand-quantity-other-table { min-width: 760px; }
+.demand-quantity-other-table { min-width: 820px; }
 .state-badge {
   flex: 0 0 auto;
   padding: 2px 7px;

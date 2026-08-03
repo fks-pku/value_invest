@@ -103,11 +103,20 @@ company/entity disclosures, or material tables. Business scenarios, tasks,
 systems, component specifications, procurement channels, and quantities must not
 appear in this block. Q2 owns the current quantity baseline.
 
-If Q2 declares `render_mode: demand_quantity_matrix`, render exactly two groups in
-this order: `分类映射预测`, then `其它预测`. The first table contains `Q1 需求方 |
-当前数量 / 预测 | 口径与期间 | 映射质量 | 来源与局限`; it covers every current
-Q1 demander and may use explicit gap rows. The second table contains `预测对象 |
-当前数量 / 预测 | 期间 | 来源与未映射原因`. Do not render Q2 entity snapshots or
+If Q2 declares `render_mode: demand_quantity_matrix`, render exactly three outer
+groups in this order: `当前需求方`, `潜在未来需求方`, and `其它分类`. The first two
+groups reuse their respective Q1 demander lists; `其它分类` groups rows that cannot
+be assigned to a Q1 demander by their own information category. In HTML, every
+outer group is a collapsed disclosure, and every specific demander or other
+information category is a second collapsed disclosure nested inside it. Markdown
+mirrors the same numbered hierarchy. Every specific category has one separately
+titled table and may have multiple information rows. Use an explicit gap row when
+no credible current quantity exists; a potential-future category may show a clear
+empty state and must not enter the current baseline. Every table uses exactly
+`来源 | 期间 | 信息类型 | 具体信息`. `信息类型` normalizes source material into
+`官方财报`, `第三方研究`, `市场消息`, or `机构研报`; `具体信息` keeps the metric,
+quantity or forecast, mapping quality, and principal limitation together. Other
+categories do not claim a Q1 demander mapping. Do not render Q2 entity snapshots or
 material tables in parallel with this matrix, and do not sum incompatible rows.
 
 The locked evidence coordinate is:

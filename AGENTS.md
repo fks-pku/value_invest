@@ -120,9 +120,12 @@ assessment into Q1. Q2 owns the current quantity baseline; later demand nodes ow
 workload, intensity, budget, orders, and financial realization.
 
 Q2 must inherit the exact Q1 taxonomy and separate its public quantity work into
-two blocks. `分类映射预测` contains quantities, forecasts, samples, or value proxies
-that can be assigned to a current Q1 demander, with mapping quality and caveats.
-`其它预测` contains market totals or forecasts that cannot be allocated reliably.
+three groups in this order: `当前需求方`, `潜在未来需求方`, and `其它分类`.
+The first two groups reuse their respective Q1 demander lists; each specific
+demander may own multiple quantities, forecasts, samples, or value proxies with
+mapping quality and caveats. Potential-future observations remain separate from
+the current quantity baseline. `其它分类` contains market totals or forecasts that
+cannot be allocated reliably and groups them by their own information category.
 Imperfect material stays visible, but must never be forced into a Q1 category or
 summed across incompatible units, periods, samples, or overlapping demanders.
 
@@ -398,11 +401,19 @@ The Q1 `需求方` node is the sole presentation exception. When its playbook us
 counts, company/entity disclosures, and material tables from that Q1 block. The
 underlying evidence ledgers remain append-only and available to downstream nodes.
 
-When Q2 uses `render_mode: demand_quantity_matrix`, render `分类映射预测` first and
-`其它预测` second. Every current Q1 demander must have at least one classified row,
-including an explicit `数据缺口` row when no quantity is available. Other forecasts
-must not claim a Q1 demander mapping. Each row shows quantity/forecast, metric and
-period, mapping quality, linked sources, and its principal limitation.
+When Q2 uses `render_mode: demand_quantity_matrix`, render exactly three outer
+groups in this order: `当前需求方`, `潜在未来需求方`, and `其它分类`. HTML renders
+each outer group as a collapsed disclosure and every specific demander or other
+information category as a second collapsed disclosure inside it. Markdown mirrors
+the same numbered hierarchy. Every current Q1 demander owns one separate table and
+may contain multiple information rows; use an explicit `数据缺口` row when no
+quantity is available. Every potential-future Q1 demander also owns a table and may
+show an empty state without entering the current baseline. `其它分类` groups
+unallocatable rows by their own information category. Every table uses exactly
+`来源 | 期间 | 信息类型 | 具体信息`. `信息类型` classifies source material as
+`官方财报`, `第三方研究`, `市场消息`, or `机构研报`; `具体信息` keeps the metric,
+quantity or forecast, mapping quality, and principal limitation together. Other
+forecasts must not claim a Q1 demander mapping.
 
 The target section must preserve the profit bridge, valuation evidence, payoff odds, final state, and downgrade triggers in one readable Markdown table. Action states remain `actionable_long`, `watch_only`, or `no_action`.
 

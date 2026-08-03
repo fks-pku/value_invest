@@ -337,6 +337,13 @@ def _normalize_demand_quantity_rows(
         )
         or []
     ]
+    potential_future_parties = [
+        str(party).strip()
+        for party in dict(classification_node.get("demand_parties") or {}).get(
+            "potential_future"
+        )
+        or []
+    ]
     rows: list[dict[str, Any]] = []
     for raw in raw_rows:
         if not isinstance(raw, dict):
@@ -344,13 +351,20 @@ def _normalize_demand_quantity_rows(
         forecast_group = _choice(
             raw,
             "forecast_group",
-            ("classified", "other"),
+            ("classified", "potential_future", "other"),
             "classified",
         )
         demand_party = str(raw.get("demand_party") or "").strip()
         if forecast_group == "classified" and demand_party not in current_parties:
             raise ValueError(
                 "Classified demand quantity rows must use a current Q1 demander"
+            )
+        if (
+            forecast_group == "potential_future"
+            and demand_party not in potential_future_parties
+        ):
+            raise ValueError(
+                "Potential-future demand quantity rows must use a potential Q1 demander"
             )
         if forecast_group == "other" and demand_party:
             raise ValueError("Other forecasts must not claim a Q1 demander mapping")
@@ -618,6 +632,7 @@ def build_standalone_investment_view(
         lens["logic_nodes"] = [
             _build_logic_node_view(
                 node=node,
+                nodes_by_id=index["nodes"],
                 state_rows=state_rows,
                 entity_state_rows=entity_state_rows,
                 revisions=revisions,
@@ -955,6 +970,7 @@ def validate_standalone_bom_investment_bundle(
 def _build_logic_node_view(
     *,
     node: dict[str, Any],
+    nodes_by_id: dict[str, dict[str, Any]],
     state_rows: list[dict[str, Any]],
     entity_state_rows: list[dict[str, Any]],
     revisions: list[dict[str, Any]],
@@ -1073,6 +1089,14 @@ def _build_logic_node_view(
         )
     )
     current = candidates[0] if candidates else {}
+    demand_parties: dict[str, list[str]] = dict(
+        node.get("demand_parties") or {}
+    )
+    if str(node.get("render_mode") or "") == "demand_quantity_matrix":
+        classification_node = nodes_by_id.get(
+            str(node.get("classification_node_id") or ""), {}
+        )
+        demand_parties = dict(classification_node.get("demand_parties") or {})
     demand_quantity_rows = []
     for row in current.get("demand_quantity_rows") or []:
         sources: dict[str, dict[str, Any]] = {}
@@ -1089,6 +1113,7 @@ def _build_logic_node_view(
                     ),
                     "source_url": str(claim.get("source_url") or ""),
                     "published_at": str(claim.get("published_at") or ""),
+                    "material_class": str(claim.get("material_class") or "other"),
                 }
         demand_quantity_rows.append(
             {**row, "sources": list(sources.values())}
@@ -1123,6 +1148,7 @@ def _build_logic_node_view(
         ),
         "entities": entities,
         "demand_quantity_rows": demand_quantity_rows,
+        "demand_parties": demand_parties,
         "latest_revision": revision_candidates[0] if revision_candidates else {},
     }
 
