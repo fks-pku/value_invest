@@ -95,6 +95,12 @@ Each HTML section contains exactly:
    entity evidence. Do not render confidence scores; show auditable evidence
    conditions instead.
 
+An explicit user request may narrow one lens's public logic-node modules through
+`public_logic_node_ids`. Render only that ordered subset, while retaining omitted
+nodes and their ledgers internally. This is a presentation filter, not evidence
+deletion. If Q2 uses `demand_quantity_matrix`, its Q1 `demand_party_list`
+classification node must remain in the same public subset.
+
 The demand-side Q1 `需求方` node is one narrow rendering exception. If the
 playbook declares `render_mode: demand_party_list`, the node renders only two
 non-empty groups in this order: `当前需求方`, then `潜在未来需求方`. It does not

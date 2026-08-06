@@ -92,6 +92,88 @@ class StandaloneBomInvestmentEngineTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "current then potential_future"):
             validate_standalone_bom_playbook(profile)
 
+    def test_public_logic_node_subset_preserves_internal_research_nodes(self):
+        profile = _profile()
+        demand_nodes = profile["lenses"][0]["logic_nodes"]
+        demand_nodes.append(
+            {
+                "logic_node_id": "demand.internal",
+                "title": "内部研究节点",
+                "question": "内部研究是否继续保留？",
+                "support_rule": "内部证据支持。",
+                "refute_rule": "内部证据反证。",
+                "downstream_node_ids": [],
+            }
+        )
+        profile["lenses"][0]["public_logic_node_ids"] = ["demand.node"]
+
+        index = validate_standalone_bom_playbook(profile)
+        self.assertEqual(len(index["lens_nodes"]["demand"]), 2)
+        self.assertEqual(len(index["public_lens_nodes"]["demand"]), 1)
+
+        view = build_standalone_investment_view(
+            project={
+                "title": "GPU / ASIC",
+                "report_scope": "standalone-bom",
+                "bom_node_id": "gpu_asic",
+            },
+            profile=profile,
+            claims=[],
+            conclusions=[],
+            claim_mappings=[],
+            logic_states=[],
+            entity_states=[],
+            thesis_revisions=[],
+            investment_snapshots=[],
+            as_of_date="2026-08-06",
+        )
+        self.assertEqual(
+            [node["logic_node_id"] for node in view["lenses"][0]["logic_nodes"]],
+            ["demand.node"],
+        )
+        self.assertEqual(view["engine_coverage"]["logic_nodes"], 6)
+        self.assertEqual(view["engine_coverage"]["public_logic_nodes"], 5)
+        html = StandaloneBomHtmlRenderer(Path("/tmp")).render(view)
+        markdown = StandaloneBomMarkdownRenderer(Path("/tmp")).render(view)
+        self.assertNotIn("内部研究节点", html)
+        self.assertNotIn("内部研究节点", markdown)
+
+        profile["lenses"][0]["public_logic_node_ids"] = [
+            "demand.internal",
+            "demand.node",
+        ]
+        with self.assertRaisesRegex(ValueError, "preserve logic-node order"):
+            validate_standalone_bom_playbook(profile)
+
+    def test_public_quantity_matrix_requires_public_q1_classification(self):
+        profile = _profile()
+        demand_node = profile["lenses"][0]["logic_nodes"][0]
+        demand_node.update(
+            {
+                "title": "Q1 需求方",
+                "render_mode": "demand_party_list",
+                "demand_parties": {
+                    "current": ["云服务商"],
+                    "potential_future": ["传统企业"],
+                },
+            }
+        )
+        profile["lenses"][0]["logic_nodes"].append(
+            {
+                "logic_node_id": "demand.quantity",
+                "title": "Q2 当前需求量基线",
+                "question": "各类需求方当前需求量是多少？",
+                "support_rule": "逐类搜索。",
+                "refute_rule": "不机械分摊。",
+                "downstream_node_ids": [],
+                "render_mode": "demand_quantity_matrix",
+                "classification_node_id": "demand.node",
+            }
+        )
+        profile["lenses"][0]["public_logic_node_ids"] = ["demand.quantity"]
+        with self.assertRaisesRegex(ValueError, "requires classification node"):
+            validate_standalone_bom_playbook(profile)
+
     def test_demand_party_list_renders_only_current_and_future_demanders(self):
         profile = _profile()
         demand_node = profile["lenses"][0]["logic_nodes"][0]

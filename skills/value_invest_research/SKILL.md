@@ -206,6 +206,12 @@ module containing `截面变化与评估` and a newest-to-oldest three-column ta
 Precede the five lenses with one gated `当前投资判断` that separates fundamental,
 consensus, and priced-in changes.
 
+If the user explicitly requests fewer public modules in one lens, keep the full
+internal playbook and append-only evidence ledgers, and use that lens's
+`public_logic_node_ids` to select the rendered nodes in canonical order. Never use
+public narrowing to delete research history. A visible Q2 demand quantity matrix
+must retain its visible Q1 demand-party classification node.
+
 If the demand lens begins with Q1 `需求方`, that node answers only who demands the
 BOM. Its public output is two lists: `当前需求方` and `潜在未来需求方`. Keep
 business scenarios, tasks/workloads, host systems, component specifications,

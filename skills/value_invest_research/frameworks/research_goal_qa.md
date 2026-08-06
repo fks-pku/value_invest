@@ -218,6 +218,11 @@ value, mapping quality, and caveat together. HTML uses collapsed outer disclosur
 with collapsed specific-category disclosures nested inside; Markdown mirrors the
 same numbered hierarchy.
 
+Public module selection does not rewrite this internal question architecture. When
+the user narrows a lens for reading, preserve all internal leaves and append-only
+evidence, and record the public subset separately with `public_logic_node_ids` in
+canonical order. Q2 cannot be exposed without its Q1 classification node.
+
 Each standalone BOM keeps its report, source index, selected IMA originals, inbox,
 temporal ledger, and intake audit at `research/bom/<bom_project_id>/`. Repository
 `source/ima/` remains the complete provider mirror; project copies are intentionally

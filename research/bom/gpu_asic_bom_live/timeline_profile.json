@@ -5,7 +5,11 @@
     {
       "lens_id": "demand",
       "label": "需求侧",
-      "logic_chain": "Q1 只定义谁在需求 GPU，并将主体分为当前需求方与潜在未来需求方；不在 Q1 展开业务、任务、承载系统、GPU 规格、采购通道、数量或截面变化。Q2 再按需求方清单建立当前需求量基线，后续节点分别验证工作负载、单位算力、预算、订单和财务兑现。",
+      "logic_chain": "Q1 只定义谁在需求 GPU，并将主体分为当前需求方与潜在未来需求方；Q2 再按这两份需求方清单建立当前需求量基线，并把无法可靠分配的行业总量或预测单列为其它分类。当前公开需求侧只保留这两个基础模块。",
+      "public_logic_node_ids": [
+        "demand.demand_universe",
+        "demand.current_quantity"
+      ],
       "logic_nodes": [
         {
           "logic_node_id": "demand.demand_universe",

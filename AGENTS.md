@@ -369,6 +369,12 @@ contains collapsible company/entity modules, followed by `最新结论与趋势`
 does not inherit the four-section industry shell or the six-question BOM-child
 layout.
 
+When the user explicitly narrows one lens's public modules, the playbook may set
+`public_logic_node_ids` for that lens. The listed nodes render in their canonical
+order; all omitted nodes, mappings, states, and claims remain in the internal
+append-only research structure. A public Q2 demand quantity matrix must keep its Q1
+demand-party classification node visible with it.
+
 The investment snapshot is generated only after logic-node states. It separates
 `fundamental_delta`, `consensus_delta`, and `priced_in_delta`, shows company
 exposure/earnings/valuation bridges, semantic gates, catalysts, and quantitative

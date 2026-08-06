@@ -50,6 +50,7 @@ def validate_standalone_bom_playbook(profile: dict[str, Any]) -> dict[str, Any]:
 
     nodes: dict[str, dict[str, Any]] = {}
     lens_nodes: dict[str, list[dict[str, Any]]] = {}
+    public_lens_nodes: dict[str, list[dict[str, Any]]] = {}
     for lens in profile_lenses:
         lens_id = str(lens.get("lens_id") or "")
         logic_nodes = [
@@ -126,10 +127,61 @@ def validate_standalone_bom_playbook(profile: dict[str, Any]) -> dict[str, Any]:
                 raise ValueError(
                     f"{node_id} references unknown downstream node={downstream_id}"
                 )
+    for lens_id, logic_nodes in lens_nodes.items():
+        lens = next(row for row in profile_lenses if row["lens_id"] == lens_id)
+        public_node_ids = lens.get("public_logic_node_ids")
+        if public_node_ids is None:
+            public_lens_nodes[lens_id] = logic_nodes
+            continue
+        if not isinstance(public_node_ids, list) or not public_node_ids:
+            raise ValueError(
+                f"{lens_id} public_logic_node_ids must be a non-empty list"
+            )
+        normalized_public_ids = [str(node_id).strip() for node_id in public_node_ids]
+        if any(not node_id for node_id in normalized_public_ids):
+            raise ValueError(
+                f"{lens_id} public_logic_node_ids cannot contain empty node IDs"
+            )
+        if len(normalized_public_ids) != len(set(normalized_public_ids)):
+            raise ValueError(
+                f"{lens_id} public_logic_node_ids cannot contain duplicates"
+            )
+        logic_node_ids = [str(node["logic_node_id"]) for node in logic_nodes]
+        unknown_ids = [
+            node_id
+            for node_id in normalized_public_ids
+            if node_id not in logic_node_ids
+        ]
+        if unknown_ids:
+            raise ValueError(
+                f"{lens_id} public_logic_node_ids references unknown nodes={unknown_ids}"
+            )
+        public_id_set = set(normalized_public_ids)
+        canonical_public_ids = [
+            node_id for node_id in logic_node_ids if node_id in public_id_set
+        ]
+        if normalized_public_ids != canonical_public_ids:
+            raise ValueError(
+                f"{lens_id} public_logic_node_ids must preserve logic-node order"
+            )
+        for node_id in normalized_public_ids:
+            node = nodes[node_id]
+            if str(node.get("render_mode") or "") != "demand_quantity_matrix":
+                continue
+            classification_node_id = str(node.get("classification_node_id") or "")
+            if classification_node_id not in normalized_public_ids:
+                raise ValueError(
+                    f"{node_id} public rendering requires classification node="
+                    f"{classification_node_id}"
+                )
+        public_lens_nodes[lens_id] = [
+            nodes[node_id] for node_id in normalized_public_ids
+        ]
     return {
         "lenses": {str(row["lens_id"]): row for row in profile_lenses},
         "nodes": nodes,
         "lens_nodes": lens_nodes,
+        "public_lens_nodes": public_lens_nodes,
     }
 
 
@@ -639,7 +691,7 @@ def build_standalone_investment_view(
                 mappings=mappings,
                 claims_by_id=claims_by_id,
             )
-            for node in index["lens_nodes"][lens_id]
+            for node in index["public_lens_nodes"][lens_id]
         ]
 
     base["investment_engine_version"] = str(
@@ -661,6 +713,9 @@ def build_standalone_investment_view(
     }
     base["engine_coverage"] = {
         "logic_nodes": len(index["nodes"]),
+        "public_logic_nodes": sum(
+            len(rows) for rows in index["public_lens_nodes"].values()
+        ),
         "mapped_claims": len(mappings_by_claim),
         "total_claims": sum(len(lens["claims"]) for lens in base["lenses"]),
         "state_nodes": len(
