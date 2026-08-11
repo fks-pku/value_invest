@@ -1330,7 +1330,19 @@ def validate_report_contract_markdown(
                 flags=re.MULTILINE,
             )
         )
-        for label in ("简单逻辑链", "最新结论与趋势"):
+        logic_chain_centered = bool(
+            re.search(
+                r"^research_model:\s*logic-chain-centered\s*$",
+                markdown,
+                flags=re.MULTILINE,
+            )
+        )
+        subsection_labels = (
+            ("第一性原理逻辑链", "节点状态与观点时间线", "全局结论与趋势")
+            if logic_chain_centered
+            else ("简单逻辑链", "最新结论与趋势")
+        )
+        for label in subsection_labels:
             if markdown.count(f"### {label}") != 5:
                 _issue(
                     issues,
@@ -1339,18 +1351,23 @@ def validate_report_contract_markdown(
                     f"every standalone BOM lens must include exactly one {label}",
                 )
         if is_engine_report:
-            if markdown.count("### 逻辑节点与公司信息") != 5:
+            node_section_label = (
+                "### 节点状态与观点时间线"
+                if logic_chain_centered
+                else "### 逻辑节点与公司信息"
+            )
+            if markdown.count(node_section_label) != 5:
                 _issue(
                     issues,
                     "error",
                     "markdown_standalone_bom_entity_hierarchy",
                     (
                         "structured standalone BOM reports must render one "
-                        "logic-node/entity section per lens"
+                        "logic-node evidence section per lens"
                     ),
                 )
             entity_header = "| 材料（含链接） | 类型 | 观点列表 |"
-            if markdown.count(entity_header) < 1:
+            if not logic_chain_centered and markdown.count(entity_header) < 1:
                 _issue(
                     issues,
                     "error",
@@ -1367,8 +1384,47 @@ def validate_report_contract_markdown(
                         "instead of repeating a lens-level timeline"
                     ),
                 )
+            if logic_chain_centered:
+                if not re.search(
+                    r"^logic_chain_version:\s*\S+\s*$",
+                    markdown,
+                    flags=re.MULTILINE,
+                ):
+                    _issue(
+                        issues,
+                        "error",
+                        "markdown_logic_chain_version",
+                        "logic-chain-centered Markdown requires logic_chain_version",
+                    )
+                causal_node_count = len(
+                    re.findall(r"^#### \d{2}\. ", markdown, flags=re.MULTILINE)
+                )
+                for heading, issue_code in (
+                    ("##### 节点状态历史", "markdown_logic_state_history"),
+                    ("##### 信息事件历史", "markdown_logic_event_history"),
+                ):
+                    if (
+                        causal_node_count < 5
+                        or markdown.count(heading) != causal_node_count
+                    ):
+                        _issue(
+                            issues,
+                            "error",
+                            issue_code,
+                            (
+                                "every causal node must expose both its real "
+                                "state history and market-known event history"
+                            ),
+                        )
+                if "主轴使用市场可知的发布时间" not in markdown:
+                    _issue(
+                        issues,
+                        "error",
+                        "markdown_logic_event_time_axis",
+                        "event history must identify published_at as its main axis",
+                    )
             demand_party_match = re.search(
-                r"^#### Q1 需求方\s*$([\s\S]*?)(?=^#### |^### 最新结论与趋势)",
+                r"^#### Q1 需求方\s*$([\s\S]*?)(?=^#### |^### (?:最新|全局)结论与趋势)",
                 markdown,
                 flags=re.MULTILINE,
             )
@@ -1400,7 +1456,7 @@ def validate_report_contract_markdown(
                         )
                         break
             demand_quantity_match = re.search(
-                r"^#### Q2 当前需求量基线\s*$([\s\S]*?)(?=^#### |^### 最新结论与趋势)",
+                r"^#### Q2 当前需求量基线\s*$([\s\S]*?)(?=^#### |^### (?:最新|全局)结论与趋势)",
                 markdown,
                 flags=re.MULTILINE,
             )
@@ -1452,7 +1508,12 @@ def validate_report_contract_markdown(
                         "markdown_demand_quantity_scope",
                         "Q2 demand quantity matrix must not render entity snapshots",
                     )
-            if markdown.count("**截面变化与评估：**") < 1:
+            entity_assessment_marker = (
+                "**截面评估：**"
+                if logic_chain_centered
+                else "**截面变化与评估：**"
+            )
+            if markdown.count(entity_assessment_marker) < 1:
                 _issue(
                     issues,
                     "error",
@@ -1600,6 +1661,13 @@ def _validate_standalone_bom_report_html(
         flags=re.IGNORECASE,
     )
     is_engine_report = bool(engine_match)
+    logic_chain_centered = bool(
+        re.search(
+            r"<body\b[^>]*\bdata-research-model\s*=\s*(['\"])logic-chain-centered\1",
+            html,
+            flags=re.IGNORECASE,
+        )
+    )
     lens_ids = ("demand", "supply", "technology", "valuation", "esg")
     lens_labels = ("需求侧", "供给侧", "技术侧", "估值侧", "ESG")
     positions = [html.find(f'id="lens-{lens_id}"') for lens_id in lens_ids]
@@ -1641,10 +1709,18 @@ def _validate_standalone_bom_report_html(
         "top-nav",
         "lens-section",
         "logic-note",
-        "claim-list",
-        "claim-index",
         "conclusion-panel",
     )
+    if logic_chain_centered:
+        common_required_classes += (
+            "logic-chain-map",
+            "node-state-history",
+            "claim-month-group",
+            "claim-source-group",
+            "claim-event",
+        )
+    else:
+        common_required_classes += ("claim-list", "claim-index")
     for class_name in common_required_classes:
         if _class_count(html, class_name) == 0:
             _issue(
@@ -1666,16 +1742,35 @@ def _validate_standalone_bom_report_html(
                 f"standalone BOM HTML must render five {class_name} components",
             )
     if is_engine_report:
-        for class_name in (
+        required_engine_classes = [
             "decision-section",
             "logic-state-section",
             "company-table",
-            "entity-module",
-            "entity-evaluation",
-            "entity-table-wrap",
-            "entity-table",
-            "entity-source-row",
-        ):
+        ]
+        if logic_chain_centered:
+            required_engine_classes.extend(
+                [
+                    "logic-chain-map",
+                    "causal-node",
+                    "node-state-history",
+                    "state-history-track",
+                    "event-history-toolbar",
+                    "claim-month-group",
+                    "claim-source-group",
+                    "claim-event",
+                ]
+            )
+        else:
+            required_engine_classes.extend(
+                [
+                    "entity-module",
+                    "entity-evaluation",
+                    "entity-table-wrap",
+                    "entity-table",
+                    "entity-source-row",
+                ]
+            )
+        for class_name in required_engine_classes:
             if _class_count(html, class_name) == 0:
                 _issue(
                     issues,
@@ -1698,6 +1793,65 @@ def _validate_standalone_bom_report_html(
                         f"{expected_count} {class_name} component(s)"
                     ),
                 )
+        if logic_chain_centered:
+            if _class_count(html, "logic-chain-map") != 5:
+                _issue(
+                    issues,
+                    "error",
+                    "standalone_html_logic_chain_map",
+                    "logic-chain-centered reports require one causal map per lens",
+                )
+            if not re.search(
+                r"<body\b[^>]*\bdata-logic-chain-version\s*=\s*(['\"])[^'\"]+\1",
+                html,
+                flags=re.IGNORECASE,
+            ):
+                _issue(
+                    issues,
+                    "error",
+                    "standalone_html_logic_chain_version",
+                    "logic-chain-centered reports must expose the logic-chain version",
+                )
+            causal_node_count = _class_count(html, "causal-node")
+            if _class_count(html, "node-state-history") != causal_node_count:
+                _issue(
+                    issues,
+                    "error",
+                    "standalone_html_node_state_history_count",
+                    "every causal node must render one node-state history",
+                )
+            for history_body in re.findall(
+                r'<ol\b[^>]*class="[^"]*\bstate-history-track\b[^"]*"[^>]*>(.*?)</ol>',
+                html,
+                flags=re.IGNORECASE | re.DOTALL,
+            ):
+                dates = re.findall(
+                    r'data-history-cutoff="(\d{4}-\d{2}-\d{2})"',
+                    history_body,
+                    flags=re.IGNORECASE,
+                )
+                if not dates or dates != sorted(dates):
+                    _issue(
+                        issues,
+                        "error",
+                        "standalone_html_state_history_order",
+                        "node state snapshots must be ordered oldest to newest",
+                    )
+            source_group_count = _class_count(html, "claim-source-group")
+            source_date_count = len(
+                re.findall(
+                    r'class="[^"]*\bclaim-source-group\b[^"]*"[^>]*\bdata-published-at="\d{4}-\d{2}-\d{2}"',
+                    html,
+                    flags=re.IGNORECASE,
+                )
+            )
+            if source_group_count != source_date_count:
+                _issue(
+                    issues,
+                    "error",
+                    "standalone_html_event_publication_time",
+                    "every source event group must expose its published_at date",
+                )
         entity_table_count = _class_count(html, "entity-table")
         for label in ("材料（含链接）", "类型", "观点列表"):
             if html.count(f'<th scope="col">{label}</th>') != entity_table_count:
@@ -1706,8 +1860,8 @@ def _validate_standalone_bom_report_html(
                     "error",
                     "standalone_html_entity_table_header",
                     (
-                        "every entity module must render the locked three-column "
-                        f"table; missing header {label}"
+                        "every rendered entity audit must keep the locked "
+                        f"three-column table; missing header {label}"
                     ),
                 )
         if _class_count(html, "timeline"):
@@ -1727,9 +1881,7 @@ def _validate_standalone_bom_report_html(
                 "standalone_html_logic_nodes",
                 "structured standalone BOM HTML must render structured logic nodes",
             )
-        if _class_count(html, "claim-index") < _class_count(
-            html, "entity-source-row"
-        ):
+        if _class_count(html, "claim-index") < _class_count(html, "entity-source-row"):
             _issue(
                 issues,
                 "error",

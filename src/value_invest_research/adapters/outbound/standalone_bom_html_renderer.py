@@ -51,7 +51,19 @@ GATE_LABELS = {
 DIRECTION_LABELS = {
     "support": "支持",
     "refute": "反证",
+    "boundary": "改变边界",
+    "constraint": "新增约束",
+    "new_branch": "新增分支",
+    "conflict": "证据冲突",
+    "unresolved": "暂未判断",
     "neutral": "线索",
+}
+
+EVIDENCE_NATURE_LABELS = {
+    "fact": "事实",
+    "forecast": "预测",
+    "opinion": "观点",
+    "lead": "线索",
 }
 
 ENTITY_EFFECT_LABELS = {
@@ -60,6 +72,18 @@ ENTITY_EFFECT_LABELS = {
     "mixed": "多空并存",
     "unclear": "待判断",
 }
+
+
+def _direction_filter_group(direction: str) -> str:
+    if direction == "support":
+        return "support"
+    if direction in ("refute", "conflict"):
+        return "adverse"
+    if direction in ("boundary", "constraint"):
+        return "boundary"
+    if direction == "new_branch":
+        return "branch"
+    return "unresolved"
 
 
 class StandaloneBomHtmlRenderer:
@@ -106,6 +130,18 @@ class StandaloneBomHtmlRenderer:
             if engine_version
             else ""
         )
+        research_model = str(view.get("research_model") or "")
+        model_attribute = (
+            ' data-research-model="logic-chain-centered"'
+            if research_model == "logic_chain_centered"
+            else ""
+        )
+        logic_chain_version = str(view.get("logic_chain_version") or "")
+        chain_attribute = (
+            f' data-logic-chain-version="{escape(logic_chain_version)}"'
+            if logic_chain_version
+            else ""
+        )
         html = "\n".join(
             [
                 "<!doctype html>",
@@ -119,15 +155,15 @@ class StandaloneBomHtmlRenderer:
                 (
                     '<body data-report-scope="standalone-bom" '
                     f'data-bom-node-id="{escape(str(view.get("bom_node_id") or ""))}"'
-                    f"{engine_attribute}>"
+                    f"{engine_attribute}{model_attribute}{chain_attribute}>"
                 ),
                 '<header class="report-header">',
                 '  <div class="report-header-inner">',
                 '    <div class="report-label">VALUE INVEST · BOM RESEARCH</div>',
                 f"    <h1>{escape(title)}</h1>",
                 (
-                    '    <p class="report-deck">以材料发布时间组织证据，'
-                    "把需求、供给、技术、估值与治理放在同一研究截面内。</p>"
+                    '    <p class="report-deck">以第一性原理逻辑链组织研究；'
+                    "原子观点先改变节点，再改变全局投资判断。</p>"
                 ),
                 '    <div class="report-meta" aria-label="报告元数据">',
                 (
@@ -161,6 +197,15 @@ class StandaloneBomHtmlRenderer:
     def _render_decision(self, view: dict[str, Any]) -> str:
         decision = dict(view.get("decision") or {})
         coverage = dict(view.get("engine_coverage") or {})
+        stored_summary = str(decision.get("summary") or "")
+        logic_chain_judgment = str(
+            view.get("logic_chain_judgment") or stored_summary
+        )
+        evidence_update = (
+            stored_summary
+            if stored_summary and stored_summary != logic_chain_judgment
+            else ""
+        )
         action_state = str(decision.get("action_state") or "watch_only")
         action_label = ACTION_LABELS.get(action_state, "观察")
         gate_results = dict(decision.get("gate_results") or {})
@@ -193,10 +238,11 @@ class StandaloneBomHtmlRenderer:
   <div class="decision-heading">
     <div>
       <h2>当前投资判断</h2>
-      <p>{escape(str(decision.get("summary") or ""))}</p>
+      <p>{escape(logic_chain_judgment)}</p>
     </div>
     <span class="action-badge action-{escape(action_state)}">{escape(action_label)}</span>
   </div>
+  {f'<div class="decision-update"><strong>本期证据变化</strong><p>{escape(evidence_update)}</p></div>' if evidence_update else ''}
   <div class="delta-list">
     <article>
       <span>基本面变化</span>
@@ -272,8 +318,11 @@ class StandaloneBomHtmlRenderer:
             )
         claim_count = sum(len(group.get("claims") or []) for group in groups)
         logic_nodes = list(lens.get("logic_nodes") or [])
+        causal_nodes = list(lens.get("causal_nodes") or logic_nodes)
+        derived_views = list(lens.get("derived_views") or [])
         logic_node_rows = "\n".join(
-            self._render_logic_node(node) for node in logic_nodes
+            self._render_logic_node(node, position=position)
+            for position, node in enumerate(causal_nodes, start=1)
         )
         logic_state_section = ""
         if logic_nodes:
@@ -282,11 +331,29 @@ class StandaloneBomHtmlRenderer:
       <div class="section-heading">
         <div>
           <span>01</span>
-          <h3 id="logic-state-{lens_id}">逻辑节点状态</h3>
+          <h3 id="logic-state-{lens_id}">节点状态与观点时间线</h3>
         </div>
-        <p>材料先改变节点，再改变投资判断</p>
+        <p>点击节点查看原子观点如何增强、削弱或改变因果关系</p>
       </div>
-      <div class="logic-node-list">{logic_node_rows}</div>
+      <div class="logic-chain-map">{logic_node_rows}</div>
+    </section>
+"""
+        derived_section = ""
+        if derived_views:
+            derived_rows = "\n".join(
+                self._render_logic_node(node, position=position)
+                for position, node in enumerate(derived_views, start=1)
+            )
+            derived_section = f"""
+    <section class="derived-view-section" aria-labelledby="derived-{lens_id}">
+      <div class="section-heading">
+        <div>
+          <span>02</span>
+          <h3 id="derived-{lens_id}">派生证据视图</h3>
+        </div>
+        <p>用于查阅需求方、数量矩阵等局部证据，不直接替代因果判断</p>
+      </div>
+      <div class="derived-view-list">{derived_rows}</div>
     </section>
 """
         timeline_section = ""
@@ -323,7 +390,7 @@ class StandaloneBomHtmlRenderer:
       </div>
     </section>
 """
-        conclusion_number = "02"
+        conclusion_number = "03" if derived_views else "02"
         return f"""
 <details id="lens-{lens_id}" class="lens-section" open>
   <summary class="lens-heading">
@@ -337,18 +404,19 @@ class StandaloneBomHtmlRenderer:
   </summary>
   <div class="lens-body">
     <section class="logic-note" aria-labelledby="logic-{lens_id}">
-      <h3 id="logic-{lens_id}">简单逻辑链</h3>
+      <h3 id="logic-{lens_id}">第一性原理逻辑链</h3>
       <p>{logic}</p>
     </section>
 
 {logic_state_section}
+{derived_section}
 {timeline_section}
 
     <section class="conclusion-panel" aria-labelledby="conclusion-{lens_id}">
       <div class="section-heading">
         <div>
           <span>{conclusion_number}</span>
-          <h3 id="conclusion-{lens_id}">最新结论与趋势</h3>
+          <h3 id="conclusion-{lens_id}">全局结论与趋势</h3>
         </div>
       </div>
       <p class="conclusion-text">{conclusion}</p>
@@ -361,7 +429,12 @@ class StandaloneBomHtmlRenderer:
 </details>
 """
 
-    def _render_logic_node(self, node: dict[str, Any]) -> str:
+    def _render_logic_node(
+        self,
+        node: dict[str, Any],
+        *,
+        position: int = 1,
+    ) -> str:
         if str(node.get("render_mode") or "") == "demand_party_list":
             return self._render_demand_party_list(node)
         if str(node.get("render_mode") or "") == "demand_quantity_matrix":
@@ -371,10 +444,15 @@ class StandaloneBomHtmlRenderer:
         entity_modules = "\n".join(
             self._render_entity_module(entity) for entity in entities
         )
-        if not entity_modules:
-            entity_modules = (
-                '<p class="empty-entity">当前没有映射到具体公司或实体的材料。</p>'
-            )
+        entity_audit = ""
+        if entity_modules:
+            entity_audit = f"""
+  <details class="node-audit">
+    <summary>按公司 / 实体查看原始材料</summary>
+    <div class="entity-list" aria-label="公司与实体信息">{entity_modules}</div>
+  </details>"""
+        state_history = self._render_state_history(node)
+        event_history = self._render_event_history(node)
         gaps = "".join(
             f"<li>{escape(str(item))}</li>"
             for item in node.get("evidence_gaps") or []
@@ -385,35 +463,270 @@ class StandaloneBomHtmlRenderer:
             str(node.get("next_validation") or "等待下一份相关材料验证。")
         )
         return f"""
-<article class="logic-node" data-logic-node-id="{escape(str(node.get("logic_node_id") or ""))}">
-  <div class="logic-node-heading">
-    <div>
+<details class="logic-node causal-node" data-logic-node-id="{escape(str(node.get("logic_node_id") or ""))}">
+  <summary class="logic-node-summary">
+    <span class="logic-step">{position:02d}</span>
+    <div class="logic-node-heading">
       <span>{escape(str(node.get("logic_node_id") or ""))}</span>
       <h4>{escape(str(node.get("title") or ""))}</h4>
+      <p>{escape(str(node.get("conclusion") or ""))}</p>
+      <small>本期变化：{escape(str(node.get("change_summary") or ""))}</small>
     </div>
     <span class="state-badge state-{escape(state)}">{escape(STATE_LABELS.get(state, state))}</span>
-  </div>
-  <p class="logic-question">{escape(str(node.get("question") or ""))}</p>
-  <p class="logic-conclusion">{escape(str(node.get("conclusion") or ""))}</p>
-  <div class="logic-node-meta">
-    <span>{int(node.get("support_count") or 0)} 支持</span>
-    <span>{int(node.get("refute_count") or 0)} 反证</span>
-    <span>{int(node.get("mapped_claim_count") or 0)} 条映射观点</span>
-    <span>{len(entities)} 个公司 / 实体</span>
-  </div>
-  <div class="entity-list" aria-label="公司与实体信息">
-    {entity_modules}
-  </div>
-  <details class="logic-node-detail">
-    <summary>查看变化、缺口与下一验证</summary>
-    <dl>
-      <div><dt>本期变化</dt><dd>{escape(str(node.get("change_summary") or ""))}</dd></div>
+    <span class="logic-node-chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="logic-node-body">
+    <section class="node-thesis">
+      <span>要验证的因果命题</span>
+      <p>{escape(str(node.get("question") or ""))}</p>
+    </section>
+    {state_history}
+    <section class="claim-event-section">
+      <div class="node-subheading">
+        <div><span>MARKET-KNOWN TIME</span><h5>信息事件历史</h5></div>
+        <span>{int(node.get("mapped_claim_count") or 0)} 条观点 · {len(entities)} 个实体</span>
+      </div>
+      {event_history}
+    </section>
+    <dl class="node-follow-up">
       <div><dt>证据缺口</dt><dd><ul>{gaps}</ul></dd></div>
       <div><dt>下一验证</dt><dd>{next_validation}</dd></div>
     </dl>
-  </details>
-</article>
+    {entity_audit}
+  </div>
+</details>
 """
+
+    def _render_state_history(self, node: dict[str, Any]) -> str:
+        history = list(node.get("state_history") or [])
+        if not history:
+            return """
+    <section class="node-state-history">
+      <div class="node-subheading"><div><span>NODE STATE</span><h5>节点状态历史</h5></div></div>
+      <p class="empty-entity">当前没有可复现的节点状态截面。</p>
+    </section>"""
+        points = []
+        for index, snapshot in enumerate(history):
+            state = str(snapshot.get("state") or "unresolved")
+            previous_state = str(snapshot.get("previous_state") or "")
+            revision_type = str(snapshot.get("revision_type") or "")
+            if revision_type == "baseline" or not previous_state:
+                transition = "建立基线"
+            else:
+                transition = (
+                    f"{STATE_LABELS.get(previous_state, previous_state)} → "
+                    f"{STATE_LABELS.get(state, state)}"
+                )
+            current_class = " is-current" if index == len(history) - 1 else ""
+            points.append(
+                f"""
+        <li class="state-history-item{current_class}">
+          <button class="state-history-point state-{escape(state)}" type="button"
+            data-history-cutoff="{escape(str(snapshot.get('as_of_date') or ''))}"
+            data-history-state-label="{escape(STATE_LABELS.get(state, state), quote=True)}"
+            data-history-conclusion="{escape(str(snapshot.get('conclusion') or ''), quote=True)}"
+            aria-pressed="false"
+            title="{escape(str(snapshot.get('conclusion') or ''), quote=True)}">
+            <time>{escape(str(snapshot.get('as_of_date') or ''))}</time>
+            <span class="state-history-dot" aria-hidden="true"></span>
+            <strong>{escape(STATE_LABELS.get(state, state))}</strong>
+            <small>{escape(transition)}</small>
+            <em>{escape(str(snapshot.get('change_summary') or snapshot.get('revision_rationale') or ''))}</em>
+          </button>
+        </li>"""
+            )
+        current = history[-1]
+        current_state = str(current.get("state") or "unresolved")
+        current_title = (
+            f"当前截面 · {current.get('as_of_date') or ''} · "
+            f"{STATE_LABELS.get(current_state, current_state)}"
+        )
+        return f"""
+    <section class="node-state-history">
+      <div class="node-subheading">
+        <div><span>NODE STATE</span><h5>节点状态历史</h5></div>
+        <button class="history-reset" type="button" data-history-reset>显示全部历史</button>
+      </div>
+      <p class="state-history-help">从左到右为真实研究截面；点击某个截面，只回看当时已经公开的信息。</p>
+      <div class="state-history-scroll">
+        <ol class="state-history-track">{''.join(points)}</ol>
+      </div>
+      <div class="history-selection" aria-live="polite">
+        <strong data-history-selection-title>{escape(current_title)}</strong>
+        <span data-history-selection-conclusion>{escape(str(current.get('conclusion') or ''))}</span>
+      </div>
+    </section>"""
+
+    def _render_event_history(self, node: dict[str, Any]) -> str:
+        groups = list(node.get("event_history_groups") or [])
+        if not groups:
+            return '<p class="empty-entity">当前没有映射到该节点的原子观点。</p>'
+        filter_specs = (
+            ("all", "全部"),
+            ("support", "支持"),
+            ("adverse", "反证 / 冲突"),
+            ("boundary", "边界 / 约束"),
+            ("branch", "新分支"),
+            ("unresolved", "待判断"),
+        )
+        filters = "".join(
+            (
+                f'<button type="button" data-history-filter="{filter_id}"'
+                f' class="history-filter{" is-active" if filter_id == "all" else ""}"'
+                f' aria-pressed="{"true" if filter_id == "all" else "false"}">{label}</button>'
+            )
+            for filter_id, label in filter_specs
+        )
+        rendered_groups = []
+        source_serial = 0
+        for group_index, group in enumerate(groups):
+            source_blocks = []
+            for source in group.get("sources") or []:
+                source_serial += 1
+                source_blocks.append(
+                    self._render_claim_source_group(
+                        source,
+                        open_by_default=group_index == 0 and source_serial <= 2,
+                    )
+                )
+            revisions = list(group.get("state_revisions") or [])
+            if revisions:
+                revision_text = "；".join(
+                    str(row.get("rationale") or "") for row in revisions
+                )
+                period_note = (
+                    '<p class="period-interpretation"><strong>本期节点修订：</strong>'
+                    f"{escape(revision_text)}</p>"
+                )
+            else:
+                period_note = (
+                    '<p class="period-interpretation">本期信息已进入节点账本；'
+                    "是否改变判断以上方状态历史线为准。</p>"
+                )
+            open_attribute = " open" if group_index == 0 else ""
+            rendered_groups.append(
+                f"""
+      <details class="claim-month-group" data-period="{escape(str(group.get('period_key') or ''))}"{open_attribute}>
+        <summary>
+          <span class="month-label">{escape(str(group.get('period_label') or ''))}</span>
+          <span>{int(group.get('claim_count') or 0)} 条观点 · {len(group.get('sources') or [])} 份材料</span>
+        </summary>
+        <div class="claim-month-body">
+          {period_note}
+          {''.join(source_blocks)}
+        </div>
+      </details>"""
+            )
+        return f"""
+      <div class="event-history-toolbar" role="toolbar" aria-label="信息事件筛选">
+        <div class="history-filters">{filters}</div>
+        <button type="button" class="history-expand" data-history-expand aria-pressed="false">展开全部历史</button>
+      </div>
+      <div class="claim-event-list">{''.join(rendered_groups)}</div>"""
+
+    def _render_claim_source_group(
+        self,
+        source_group: dict[str, Any],
+        *,
+        open_by_default: bool,
+    ) -> str:
+        title = escape(
+            str(source_group.get("source_title") or source_group.get("source_id") or "来源")
+        )
+        source_url = _rendered_source_url(
+            str(source_group.get("source_url") or ""),
+            project_dir=self.project_dir,
+        )
+        if source_url:
+            escaped_url = escape(source_url, quote=True)
+            if source_url.startswith(("http://", "https://")):
+                source_link = (
+                    f'<a href="{escaped_url}" target="_blank" rel="noopener">打开原文 ↗</a>'
+                )
+            else:
+                source_link = f'<a href="{escaped_url}">打开原文 PDF</a>'
+        else:
+            source_link = '<span>原文链接未登记</span>'
+        events = "".join(
+            self._render_claim_event(event)
+            for event in source_group.get("events") or []
+        )
+        open_attribute = " open" if open_by_default else ""
+        published_at = escape(str(source_group.get("published_at") or "日期未明"))
+        material_label = escape(
+            MATERIAL_LABELS.get(
+                str(source_group.get("material_class") or "other"), "其他"
+            )
+        )
+        return f"""
+          <details class="claim-source-group" data-published-at="{published_at}"{open_attribute}>
+            <summary>
+              <time datetime="{published_at}">{published_at}</time>
+              <span class="source-group-title">{title}</span>
+              <span class="source-group-count">{int(source_group.get('claim_count') or 0)} 条</span>
+            </summary>
+            <div class="claim-source-body">
+              <div class="source-group-origin"><span class="material-tag">{material_label}</span>{source_link}</div>
+              {events}
+            </div>
+          </details>"""
+
+    def _render_claim_event(self, event: dict[str, Any]) -> str:
+        direction = str(event.get("direction") or "neutral")
+        direction_label = DIRECTION_LABELS.get(direction, "线索")
+        published_at = escape(str(event.get("published_at") or ""))
+        effect_group = _direction_filter_group(direction)
+        period_parts = []
+        effective_period = str(event.get("effective_period") or "").strip()
+        target_period = str(event.get("target_period") or "").strip()
+        if effective_period:
+            period_parts.append(
+                f'<span class="period-chip actual-period">实际：{escape(effective_period)}</span>'
+            )
+        if target_period:
+            period_parts.append(
+                f'<span class="period-chip target-period">预测：{escape(target_period)}</span>'
+            )
+        entities = "".join(
+            f'<span class="entity-tag">{escape(str(entity))}</span>'
+            for entity in event.get("entities") or []
+        )
+        downstream = "、".join(
+            escape(str(item)) for item in event.get("downstream_impacts") or []
+        )
+        revisions = list(event.get("triggered_revisions") or [])
+        revision_marker = ""
+        if revisions:
+            revision = revisions[0]
+            previous_state = str(revision.get("previous_state") or "")
+            new_state = str(revision.get("new_state") or "unresolved")
+            transition = (
+                f"{STATE_LABELS.get(previous_state, previous_state)} → "
+                f"{STATE_LABELS.get(new_state, new_state)}"
+                if previous_state
+                else f"建立{STATE_LABELS.get(new_state, new_state)}基线"
+            )
+            revision_marker = (
+                '<p class="claim-revision-marker"><strong>触发节点修订：</strong>'
+                f"{escape(transition)}；{escape(str(revision.get('rationale') or ''))}</p>"
+            )
+        return f"""
+<article class="claim-event effect-{escape(direction)}" data-direction="{escape(direction)}" data-effect-group="{escape(effect_group)}" data-published-at="{published_at}">
+  <div class="claim-event-rail" aria-hidden="true"></div>
+  <div class="claim-event-content">
+    <div class="claim-event-meta">
+      <span class="effect-label">{escape(direction_label)}</span>
+      <span class="evidence-nature">{escape(EVIDENCE_NATURE_LABELS.get(str(event.get('evidence_nature') or 'opinion'), '观点'))}</span>
+      {entities}
+      {''.join(period_parts)}
+    </div>
+    <div class="claim-event-source"><span>{escape(str(event.get("source_location") or "原文位置未标注"))}</span></div>
+    <p class="claim-event-statement">{escape(str(event.get("statement") or ""))}</p>
+    <p class="claim-event-rationale"><strong>影响逻辑：</strong>{escape(str(event.get("rationale") or "尚未记录映射依据。"))}</p>
+    {revision_marker}
+    {f'<p class="claim-event-downstream"><strong>向下游传导：</strong>{downstream}</p>' if downstream else ''}
+  </div>
+</article>"""
 
     def _render_demand_party_list(self, node: dict[str, Any]) -> str:
         demand_parties = dict(node.get("demand_parties") or {})
@@ -1016,6 +1329,28 @@ h1 {
   color: #455565;
 }
 
+.decision-update {
+  display: grid;
+  grid-template-columns: 108px minmax(0, 1fr);
+  gap: 14px;
+  margin: -8px 0 28px;
+  padding: 14px 16px;
+  border-left: 2px solid var(--rust);
+  background: #f7f9fa;
+}
+
+.decision-update strong {
+  color: var(--rust);
+  font-size: 11px;
+  letter-spacing: .08em;
+}
+
+.decision-update p {
+  margin: 0;
+  color: #52616e;
+  font-size: 13px;
+}
+
 .action-badge,
 .action-inline {
   display: inline-block;
@@ -1218,11 +1553,18 @@ h1 {
   margin-top: 42px;
 }
 
-.logic-node-list {
+.logic-node-list,
+.logic-chain-map,
+.derived-view-list {
   display: grid;
   grid-template-columns: 1fr;
   gap: 12px;
 }
+
+.logic-chain-map { gap: 0; }
+
+.derived-view-section { margin-top: 42px; }
+.derived-view-list { gap: 10px; }
 
 .logic-node {
   padding: 20px 22px;
@@ -1231,6 +1573,473 @@ h1 {
   border-radius: 5px;
   background: var(--surface);
 }
+
+.causal-node {
+  position: relative;
+  padding: 0;
+  border-left-width: 1px;
+  border-radius: 0;
+  overflow: visible;
+}
+
+.causal-node + .causal-node { margin-top: 18px; }
+.causal-node:not(:last-child)::after {
+  position: absolute;
+  z-index: 2;
+  bottom: -19px;
+  left: 42px;
+  width: 1px;
+  height: 18px;
+  background: var(--rust);
+  content: "";
+}
+
+.logic-node-summary {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) auto 18px;
+  gap: 16px;
+  align-items: center;
+  min-height: 116px;
+  padding: 18px 20px;
+  cursor: pointer;
+  list-style: none;
+  background: linear-gradient(90deg, #ffffff 0%, #fbfcfd 100%);
+}
+.logic-node-summary::-webkit-details-marker { display: none; }
+.logic-step {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid #c8d7df;
+  border-radius: 50%;
+  background: #f2f6f8;
+  color: var(--blue);
+  font-family: "Baskerville", "Songti SC", serif;
+  font-size: 17px;
+}
+.causal-node .logic-node-heading {
+  display: block;
+  min-width: 0;
+}
+.causal-node .logic-node-heading > span {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .03em;
+}
+.causal-node .logic-node-heading h4 { margin-top: 2px; }
+.causal-node .logic-node-heading p {
+  margin: 6px 0 0;
+  color: #344957;
+  font-size: 14px;
+}
+.causal-node .logic-node-heading small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 11px;
+}
+.logic-node-chevron {
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid var(--blue);
+  border-bottom: 2px solid var(--blue);
+  transform: rotate(45deg);
+  transition: transform 180ms ease;
+}
+.causal-node[open] .logic-node-chevron { transform: rotate(225deg); }
+.logic-node-body {
+  padding: 0 20px 24px 88px;
+  border-top: 1px solid var(--line);
+  background: #fcfdfd;
+  animation: reveal 180ms ease both;
+}
+.node-thesis {
+  display: grid;
+  grid-template-columns: 142px minmax(0, 1fr);
+  gap: 18px;
+  padding: 17px 0;
+  border-bottom: 1px solid var(--line);
+}
+.node-thesis span,
+.node-subheading span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+}
+.node-thesis p {
+  margin: 0;
+  color: #334b5b;
+  font-size: 14px;
+}
+.node-state-history {
+  padding: 20px 0 22px;
+  border-bottom: 1px solid var(--line);
+}
+.node-subheading > div > span {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--rust);
+  font-size: 9px;
+  font-weight: 780;
+  letter-spacing: .12em;
+}
+.history-reset,
+.history-expand,
+.history-filter {
+  border: 1px solid var(--line-strong);
+  border-radius: 3px;
+  background: #fff;
+  color: #536676;
+  cursor: pointer;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 700;
+}
+.history-reset,
+.history-expand { padding: 6px 9px; }
+.history-reset:hover,
+.history-expand:hover,
+.history-filter:hover,
+.history-filter.is-active {
+  border-color: #6d8899;
+  background: #eef3f6;
+  color: var(--blue);
+}
+.state-history-help,
+.history-selection {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+.history-selection {
+  color: #5a6e7c;
+  font-weight: 650;
+}
+.history-selection {
+  display: grid;
+  gap: 3px;
+  padding: 9px 11px;
+  border-left: 2px solid #8da4b2;
+  background: #f5f8f9;
+}
+.history-selection strong { color: #31536a; font-size: 11px; }
+.history-selection span { color: #637381; font-size: 11px; font-weight: 500; }
+.state-history-scroll {
+  overflow-x: auto;
+  margin-top: 14px;
+  padding: 4px 2px 10px;
+}
+.state-history-track {
+  display: flex;
+  min-width: max-content;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.state-history-item {
+  position: relative;
+  width: 196px;
+  padding-right: 24px;
+}
+.state-history-item:not(:last-child)::after {
+  position: absolute;
+  top: 32px;
+  right: -1px;
+  left: 18px;
+  height: 1px;
+  background: #b8c8d1;
+  content: "";
+}
+.state-history-point {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: start;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+.state-history-point time {
+  color: var(--muted);
+  font-family: "Baskerville", "Songti SC", serif;
+  font-size: 12px;
+}
+.state-history-dot {
+  width: 12px;
+  height: 12px;
+  margin: 7px 0 8px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  outline: 1px solid #8aa0ad;
+  background: #90a4b1;
+}
+.state-strengthening .state-history-dot,
+.state-confirmed .state-history-dot { background: var(--green); }
+.state-weakening .state-history-dot,
+.state-refuted .state-history-dot { background: #a45345; }
+.state-weak .state-history-dot { background: #b47a34; }
+.state-history-point[aria-pressed="true"] .state-history-dot,
+.state-history-item.is-current .state-history-dot {
+  outline: 2px solid var(--rust);
+  outline-offset: 2px;
+}
+.state-history-point strong {
+  color: #274b63;
+  font-size: 12px;
+}
+.state-history-point small {
+  margin-top: 2px;
+  color: var(--rust);
+  font-size: 10px;
+  font-weight: 700;
+}
+.state-history-point em {
+  display: -webkit-box;
+  overflow: hidden;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 10px;
+  font-style: normal;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.claim-event-section { padding-top: 20px; }
+.node-subheading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+}
+.node-subheading h5 {
+  margin: 0;
+  color: #234b66;
+  font-size: 15px;
+}
+.claim-event-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+.event-history-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+  padding: 9px 10px;
+  border: 1px solid var(--line);
+  background: #f7f9fa;
+}
+.history-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.history-filter { padding: 5px 8px; }
+.claim-month-group,
+.claim-source-group {
+  border: 1px solid var(--line);
+  background: #fff;
+}
+.claim-month-group > summary,
+.claim-source-group > summary {
+  display: grid;
+  align-items: center;
+  cursor: pointer;
+  list-style: none;
+}
+.claim-month-group > summary::-webkit-details-marker,
+.claim-source-group > summary::-webkit-details-marker { display: none; }
+.claim-month-group > summary {
+  grid-template-columns: minmax(120px, .5fr) minmax(0, 1fr);
+  gap: 16px;
+  padding: 12px 15px;
+  background: #edf2f5;
+  color: var(--muted);
+  font-size: 11px;
+}
+.month-label {
+  color: #234b66;
+  font-family: "Baskerville", "Songti SC", serif;
+  font-size: 16px;
+  font-weight: 700;
+}
+.claim-month-body {
+  padding: 10px;
+  background: #f8fafb;
+}
+.period-interpretation {
+  margin: 0 0 9px;
+  padding: 8px 10px;
+  border-left: 2px solid var(--rust);
+  background: #fff;
+  color: #637381;
+  font-size: 11px;
+}
+.claim-source-group + .claim-source-group { margin-top: 8px; }
+.claim-source-group > summary {
+  grid-template-columns: 92px minmax(0, 1fr) auto;
+  gap: 12px;
+  padding: 11px 12px;
+  color: #3c5262;
+}
+.claim-source-group > summary time {
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 760;
+}
+.source-group-title {
+  overflow: hidden;
+  font-size: 12px;
+  font-weight: 680;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.source-group-count {
+  color: var(--muted);
+  font-size: 10px;
+}
+.claim-source-body {
+  padding: 0 12px 12px;
+  border-top: 1px solid var(--line);
+}
+.source-group-origin {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 9px 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+.source-group-origin a { font-weight: 700; text-decoration: none; }
+.source-group-origin a:hover { text-decoration: underline; }
+.claim-event + .claim-event { margin-top: 9px; }
+.claim-month-group[hidden],
+.claim-source-group[hidden],
+.claim-event[hidden] { display: none; }
+.claim-event {
+  display: grid;
+  grid-template-columns: 5px minmax(0, 1fr);
+  gap: 13px;
+}
+.claim-event-rail {
+  border-radius: 3px;
+  background: #90a4b1;
+}
+.effect-support .claim-event-rail { background: var(--green); }
+.effect-refute .claim-event-rail,
+.effect-conflict .claim-event-rail { background: #a45345; }
+.effect-boundary .claim-event-rail,
+.effect-constraint .claim-event-rail { background: #b47a34; }
+.effect-new_branch .claim-event-rail { background: #526f9a; }
+.claim-event-content {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+.claim-event-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 9px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 10px;
+}
+.claim-event-meta time {
+  color: #244b66;
+  font-size: 11px;
+  font-weight: 760;
+}
+.effect-label {
+  padding: 1px 6px;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  color: #77604a;
+  font-weight: 720;
+}
+.effect-support .effect-label { color: var(--green); }
+.effect-refute .effect-label,
+.effect-conflict .effect-label { color: #995344; }
+.effect-new_branch .effect-label { color: #4c6791; }
+.evidence-nature,
+.entity-tag,
+.period-chip {
+  padding: 2px 6px;
+  border-radius: 2px;
+  background: #eef2f4;
+  color: #5c6d79;
+  font-size: 9px;
+  font-weight: 680;
+}
+.entity-tag { background: #f4f0ea; color: #755f49; }
+.actual-period { background: #edf5f1; color: #486f5c; }
+.target-period { background: #eef1f7; color: #536b91; }
+.claim-event-source {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 12px;
+  margin-top: 7px;
+  font-size: 12px;
+  font-weight: 680;
+}
+.claim-event-source a { text-decoration: none; }
+.claim-event-source a:hover { text-decoration: underline; }
+.claim-event-source span { color: var(--muted); font-weight: 500; }
+.claim-event-statement {
+  margin: 9px 0 0;
+  color: #344957;
+  font-size: 14px;
+}
+.claim-event-rationale,
+.claim-event-downstream,
+.claim-revision-marker {
+  margin: 7px 0 0;
+  color: #637381;
+  font-size: 12px;
+}
+.claim-event-rationale strong,
+.claim-event-downstream strong,
+.claim-revision-marker strong { color: #486274; }
+.claim-revision-marker {
+  padding: 7px 9px;
+  border-left: 2px solid var(--rust);
+  background: #fbf6ef;
+  color: #735c43;
+}
+.node-follow-up {
+  margin: 20px 0 0;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  background: #f4f7f9;
+}
+.node-follow-up > div {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  gap: 12px;
+}
+.node-follow-up > div + div { margin-top: 8px; }
+.node-follow-up dt { color: var(--muted); font-size: 11px; }
+.node-follow-up dd { margin: 0; color: #455565; font-size: 12px; }
+.node-follow-up ul { margin: 0; padding-left: 17px; }
+.node-audit {
+  margin-top: 18px;
+  border-top: 1px solid var(--line-strong);
+}
+.node-audit > summary {
+  padding: 12px 0;
+  color: var(--blue);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+}
+.node-audit .entity-list { margin-top: 0; }
 
 .logic-node-heading {
   display: flex;
@@ -1846,6 +2655,7 @@ h1 {
   .report-deck { font-size: 16px; }
   .report-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .decision-heading { flex-direction: column; gap: 12px; }
+  .decision-update { grid-template-columns: 1fr; gap: 4px; }
   .delta-list,
   .decision-audit { grid-template-columns: 1fr; }
   .delta-list article,
@@ -1873,6 +2683,31 @@ h1 {
   }
 
   .lens-body { padding: 0 0 42px; }
+  .logic-node-summary {
+    grid-template-columns: 42px minmax(0, 1fr) 16px;
+    gap: 10px;
+    padding: 16px 14px;
+  }
+  .logic-step { width: 38px; height: 38px; }
+  .logic-node-summary .state-badge {
+    grid-column: 2;
+    justify-self: start;
+  }
+  .logic-node-chevron {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+  }
+  .logic-node-body { padding: 0 14px 20px; }
+  .node-thesis,
+  .node-follow-up > div { grid-template-columns: 1fr; gap: 3px; }
+  .event-history-toolbar { align-items: stretch; flex-direction: column; }
+  .history-expand { align-self: flex-start; }
+  .state-history-item { width: 168px; }
+  .claim-month-group > summary { grid-template-columns: 1fr; gap: 2px; }
+  .claim-source-group > summary {
+    grid-template-columns: 78px minmax(0, 1fr);
+  }
+  .source-group-count { grid-column: 2; }
   .timeline-table { min-width: 880px; }
   .section-heading { align-items: flex-start; flex-direction: column; }
   .trend-line { grid-template-columns: 1fr; gap: 4px; }
@@ -1911,4 +2746,84 @@ const observer = new IntersectionObserver((entries) => {
   linkById.get(visible.target.id)?.classList.add('is-active');
 }, { rootMargin: '-18% 0px -72% 0px', threshold: [0.05, 0.2, 0.5] });
 sections.forEach((section) => observer.observe(section));
+
+document.querySelectorAll('.causal-node').forEach((node) => {
+  let activeFilter = 'all';
+  let cutoff = '';
+  const events = Array.from(node.querySelectorAll('.claim-event'));
+  const sources = Array.from(node.querySelectorAll('.claim-source-group'));
+  const months = Array.from(node.querySelectorAll('.claim-month-group'));
+  const filterButtons = Array.from(node.querySelectorAll('[data-history-filter]'));
+  const statePoints = Array.from(node.querySelectorAll('[data-history-cutoff]'));
+  const selectionTitle = node.querySelector('[data-history-selection-title]');
+  const selectionConclusion = node.querySelector('[data-history-selection-conclusion]');
+  const currentPoint = statePoints[statePoints.length - 1];
+
+  const applyHistoryView = () => {
+    events.forEach((event) => {
+      const matchesFilter = activeFilter === 'all'
+        || event.dataset.effectGroup === activeFilter;
+      const eventDate = event.dataset.publishedAt || '';
+      const matchesCutoff = !cutoff || (!!eventDate && eventDate <= cutoff);
+      event.hidden = !(matchesFilter && matchesCutoff);
+    });
+    sources.forEach((source) => {
+      source.hidden = !Array.from(source.querySelectorAll('.claim-event'))
+        .some((event) => !event.hidden);
+      if (!source.hidden && (activeFilter !== 'all' || cutoff)) source.open = true;
+    });
+    months.forEach((month) => {
+      month.hidden = !Array.from(month.querySelectorAll('.claim-source-group'))
+        .some((source) => !source.hidden);
+      if (!month.hidden && (activeFilter !== 'all' || cutoff)) month.open = true;
+    });
+    filterButtons.forEach((button) => {
+      const active = button.dataset.historyFilter === activeFilter;
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+    statePoints.forEach((point) => {
+      point.setAttribute(
+        'aria-pressed',
+        String(!!cutoff && point.dataset.historyCutoff === cutoff),
+      );
+    });
+    const selectedPoint = cutoff
+      ? statePoints.find((point) => point.dataset.historyCutoff === cutoff)
+      : currentPoint;
+    if (selectionTitle && selectedPoint) {
+      selectionTitle.textContent = cutoff
+        ? `回看截面 · ${cutoff} · ${selectedPoint.dataset.historyStateLabel || ''}`
+        : `当前截面 · ${selectedPoint.dataset.historyCutoff || ''} · ${selectedPoint.dataset.historyStateLabel || ''}`;
+    }
+    if (selectionConclusion && selectedPoint) {
+      selectionConclusion.textContent = selectedPoint.dataset.historyConclusion || '';
+    }
+  };
+
+  filterButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      activeFilter = button.dataset.historyFilter || 'all';
+      applyHistoryView();
+    });
+  });
+  statePoints.forEach((point) => {
+    point.addEventListener('click', () => {
+      cutoff = point.dataset.historyCutoff || '';
+      applyHistoryView();
+    });
+  });
+  node.querySelector('[data-history-reset]')?.addEventListener('click', () => {
+    cutoff = '';
+    applyHistoryView();
+  });
+  node.querySelector('[data-history-expand]')?.addEventListener('click', (event) => {
+    const button = event.currentTarget;
+    const expanded = button.getAttribute('aria-pressed') === 'true';
+    months.forEach((month) => { if (!month.hidden) month.open = !expanded; });
+    sources.forEach((source) => { if (!source.hidden) source.open = !expanded; });
+    button.setAttribute('aria-pressed', String(!expanded));
+    button.textContent = expanded ? '展开全部历史' : '收起历史材料';
+  });
+});
 """

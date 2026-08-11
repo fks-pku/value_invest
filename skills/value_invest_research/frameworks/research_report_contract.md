@@ -83,25 +83,41 @@ industry parent. The report is intentionally narrower than an industry report:
 
 The report begins with one `当前投资判断` snapshot. It must show action state,
 fundamental/consensus/priced-in deltas, semantic gate results, company exposure and
-earnings/valuation bridges, catalysts, and monitorable downgrade tests.
+earnings/valuation bridges, catalysts, and monitorable downgrade tests. In a
+logic-chain-centered report, its lead paragraph is the global rollup of strengthened
+causal nodes, main breakpoints, failed gates, and action state. Preserve a source
+batch or Q2-specific update separately as `本期证据变化`; never present that local
+update as the global judgment.
 
 Each HTML section contains exactly:
 
-1. `简单逻辑链`: one natural-language paragraph explaining the causal test.
-2. `逻辑节点与公司信息`: full-width node rows showing state, conclusion, evidence
-   balance, baseline/change, gap, and next validation. Each node contains
-   company/entity disclosures.
-3. `最新结论与趋势`: a natural-language synthesis derived from the displayed
-   entity evidence. Do not render confidence scores; show auditable evidence
-   conditions instead.
+1. `第一性原理逻辑链`: one natural-language paragraph explaining the causal test.
+2. `节点状态与观点时间线`: full-width causal nodes in canonical order. The visible
+   node summary shows current state, conclusion, and real baseline/change. The
+   collapsed body first shows `节点状态历史`, using only real as-of snapshots from
+   oldest to newest. It then shows `信息事件历史`, grouped by publication month,
+   source, and atomic claim. The event axis is `published_at`; `effective_period`
+   and `target_period` remain claim labels. Each event keeps locator, mapping effect
+   and rationale, downstream impact, and a revision marker only when a real revision
+   names that claim. Selecting a state point displays its stored contemporaneous
+   conclusion and hides events published after that cutoff; it never synthesizes a
+   missing state. Effect filters change visibility only. Evidence gap and next
+   validation follow.
+3. Optional `派生证据视图`: Q1/Q2 or another structured projection that supports
+   navigation or comparison but does not replace the causal chain or generate the
+   lens conclusion.
+4. `全局结论与趋势`: a natural-language synthesis derived from the causal-node
+   states and displayed events. Do not render confidence scores; show auditable
+   evidence conditions instead.
 
 An explicit user request may narrow one lens's public logic-node modules through
-`public_logic_node_ids`. Render only that ordered subset, while retaining omitted
-nodes and their ledgers internally. This is a presentation filter, not evidence
-deletion. If Q2 uses `demand_quantity_matrix`, its Q1 `demand_party_list`
-classification node must remain in the same public subset.
+`public_logic_node_ids`. In a `logic_chain_centered` report, the ordered subset must
+retain every causal node and may omit only derived views. Retain omitted views and
+all underlying ledgers internally; presentation filtering never deletes evidence.
+If Q2 uses `demand_quantity_matrix`, its Q1 `demand_party_list` classification view
+must remain in the same public subset.
 
-The demand-side Q1 `需求方` node is one narrow rendering exception. If the
+The demand-side Q1 `需求方` derived view is one narrow rendering exception. If the
 playbook declares `render_mode: demand_party_list`, the node renders only two
 non-empty groups in this order: `当前需求方`, then `潜在未来需求方`. It does not
 render a state badge, current conclusion, change assessment, evidence counts,
@@ -109,7 +125,7 @@ company/entity disclosures, or material tables. Business scenarios, tasks,
 systems, component specifications, procurement channels, and quantities must not
 appear in this block. Q2 owns the current quantity baseline.
 
-If Q2 declares `render_mode: demand_quantity_matrix`, render exactly three outer
+If the Q2 derived view declares `render_mode: demand_quantity_matrix`, render exactly three outer
 groups in this order: `当前需求方`, `潜在未来需求方`, and `其它分类`. The first two
 groups reuse their respective Q1 demander lists; `其它分类` groups rows that cannot
 be assigned to a Q1 demander by their own information category. In HTML, every
@@ -125,13 +141,36 @@ quantity or forecast, mapping quality, and principal limitation together. Other
 categories do not claim a Q1 demander mapping. Do not render Q2 entity snapshots or
 material tables in parallel with this matrix, and do not sum incompatible rows.
 
-The locked evidence coordinate is:
+The locked state coordinate remains:
 
 ```text
 BOM x lens/question x logic node x company/entity x as_of_date
 ```
 
-Every company/entity is one full-width `<details>` module and is collapsed by
+For public interpretation, the primary hierarchy is:
+
+```text
+BOM x lens x causal logic node x publication month x source x atomic-claim event
+```
+
+The rendered expansion of that coordinate is:
+
+```text
+logic node -> oldest-to-newest real state history
+logic node -> publication month -> source -> atomic claim
+```
+
+Do not stretch a forecast across the publication axis. A claim published once but
+covering several business periods stays one publication event with effective/target
+period tags.
+
+Atomic claims use the minimum audit envelope and remain immutable. A separate
+reviewed mapping records `support`, `refute`, `boundary`, `constraint`,
+`new_branch`, `conflict`, `unresolved`, or compatibility `neutral`, plus rationale
+and downstream impacts. Company/entity is a secondary audit dimension under each
+causal node, not the organizing spine of the public reasoning.
+
+Every audited company/entity is one full-width `<details>` module and is collapsed by
 default. Before the table it renders `截面变化与评估`, including the evidence-backed
 current assessment and a real comparison with the prior entity snapshot. The first
 snapshot says it is a baseline and never invents prior change.
@@ -158,8 +197,9 @@ path. They navigate in the current tab because opening local files with
 `target="_blank"` can produce an empty browser tab. Only HTTP(S) links may use
 `target="_blank"`.
 The location preserves its page, item, heading, table, or paragraph locator. It is
-not a document-level abstract. The Markdown sidecar mirrors the same entity
-hierarchy and `材料（含链接） | 类型 | 观点列表` table.
+not a document-level abstract. The Markdown sidecar mirrors the causal-node event
+timeline plus the secondary entity hierarchy and
+`材料（含链接） | 类型 | 观点列表` table.
 
 ```text
 | 材料（含链接） | 类型 | 观点列表 |
@@ -361,7 +401,7 @@ Freeze recommendations before attaching labels.
 3. Parent, manifest, and child paths preserve one-to-one BOM identity.
 4. BOM ID and public name come from the canonical registry.
 5. Every `bom-node` child keeps the same six semantic questions; every `standalone-bom` keeps the five professional lenses.
-6. Every six-question module keeps its temporal sequence; every standalone report keeps `当前投资判断`, then each lens keeps `简单逻辑链 -> 逻辑节点 -> 公司/实体 -> 最新结论与趋势` and claim-level source links.
+6. Every six-question module keeps its temporal sequence; every logic-chain-centered standalone report keeps `当前投资判断`, then each lens keeps `第一性原理逻辑链 -> 节点状态与观点时间线 -> 可选派生证据视图 -> 全局结论与趋势` and claim-level source links.
 7. Backtest cutoff and label isolation remain enforced.
 8. Public reports contain no raw process traces or change logs.
 

@@ -1,14 +1,21 @@
 {
-  "schema_version": "2.2",
+  "schema_version": "3.1",
+  "research_model": "logic_chain_centered",
+  "logic_chain_version": "2026-08-11.v1",
   "bom_node_id": "gpu_asic",
   "lenses": [
     {
       "lens_id": "demand",
       "label": "需求侧",
-      "logic_chain": "Q1 只定义谁在需求 GPU，并将主体分为当前需求方与潜在未来需求方；Q2 再按这两份需求方清单建立当前需求量基线，并把无法可靠分配的行业总量或预测单列为其它分类。当前公开需求侧只保留这两个基础模块。",
+      "logic_chain": "GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力强度、客户预算与资本承诺、订单和交付可见性，最终进入收入、毛利与现金流。需求方分类和当前数量矩阵只作为局部证据视图；它们不能替代对整条因果链的判断。GPU 与 ASIC 的承接份额由技术侧平台竞争节点共同约束。",
       "public_logic_node_ids": [
         "demand.demand_universe",
-        "demand.current_quantity"
+        "demand.current_quantity",
+        "demand.workload_growth",
+        "demand.compute_intensity",
+        "demand.customer_compute_budget",
+        "demand.order_visibility",
+        "demand.revenue_realization"
       ],
       "logic_nodes": [
         {
@@ -21,6 +28,7 @@
           "refute_rule": "把 OEM/ODM、分销商等采购通道列作需求方，或把同一主体同时列入当前和潜在未来两组。",
           "downstream_node_ids": ["demand.current_quantity"],
           "company_bridge_fields": ["需求方类别", "当前或潜在未来"],
+          "presentation_role": "derived_view",
           "render_mode": "demand_party_list",
           "demand_parties": {
             "current": [
@@ -52,6 +60,7 @@
           "refute_rule": "把行业总量机械分摊到需求方，遗漏无数据类别，或把不同单位、期间、样本和重叠主体直接相加。",
           "downstream_node_ids": ["demand.workload_growth"],
           "company_bridge_fields": ["系统数量", "GPU数量", "采购客户", "供应商实现收入", "估算区间"],
+          "presentation_role": "derived_view",
           "render_mode": "demand_quantity_matrix",
           "classification_node_id": "demand.demand_universe",
           "update_cadence": "quarterly"

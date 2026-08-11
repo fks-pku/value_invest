@@ -199,18 +199,37 @@ parent. Markdown mirrors the public content for auditability.
 When the research object is explicitly one BOM rather than an industry chain, use
 `report_scope: standalone-bom`. Render five collapsible top-level HTML sections:
 `需求侧`, `供给侧`, `技术侧`, `估值侧`, and `ESG`. Every section contains one
-`简单逻辑链`, full-width logic nodes, and one `最新结论与趋势`. Every logic node
-is further organized by company/entity. Each entity is a collapsed-by-default
-module containing `截面变化与评估` and a newest-to-oldest three-column table:
-`材料（含链接） | 类型 | 观点列表`. Do not repeat a lens-level material timeline.
-Precede the five lenses with one gated `当前投资判断` that separates fundamental,
-consensus, and priced-in changes.
+`第一性原理逻辑链`, full-width `节点状态与观点时间线`, optional `派生证据视图`,
+and one `全局结论与趋势`. The primary evidence hierarchy is
+`lens -> causal node -> publication month -> source -> atomic-claim event`. Inside
+each node, `节点状态历史` shows only real snapshots from oldest to newest, while
+`信息事件历史` uses `published_at` as its main axis. Effective and target periods
+remain claim tags rather than timeline coordinates. Each event preserves source,
+locator, mapping effect and rationale, relevant period, downstream impact, and an
+actual revision marker only when the revision ledger names that claim.
+Selecting a state point shows that stored conclusion and hides events published
+after its cutoff; it never synthesizes a missing historical conclusion.
+Company/entity remains a secondary audit under the same node. Each entity audit is
+a collapsed-by-default module containing `截面变化与评估` and a newest-to-oldest
+three-column table: `材料（含链接） | 类型 | 观点列表`. Precede the five lenses
+with one gated `当前投资判断` that separates fundamental, consensus, and priced-in
+changes. Its lead paragraph rolls up strengthened causal nodes, main breakpoints,
+and failed gates. Keep source-batch or Q2-specific updates in a separate
+`本期证据变化` line so a local view never substitutes for the global judgment.
 
 If the user explicitly requests fewer public modules in one lens, keep the full
 internal playbook and append-only evidence ledgers, and use that lens's
-`public_logic_node_ids` to select the rendered nodes in canonical order. Never use
-public narrowing to delete research history. A visible Q2 demand quantity matrix
-must retain its visible Q1 demand-party classification node.
+`public_logic_node_ids` to select the rendered modules in canonical order. A
+`logic_chain_centered` playbook must keep every causal node public; narrowing may
+omit only derived views and never deletes research history. A visible Q2 demand
+quantity matrix must retain its visible Q1 demand-party classification view.
+
+In `logic_chain_centered` research, the playbook declares a versioned
+`logic_chain_version`. Atomic claims use a minimum audit envelope instead of one
+universal metric table. A separate reviewed mapping records `support`, `refute`,
+`boundary`, `constraint`, `new_branch`, `conflict`, `unresolved`, or `neutral`,
+plus rationale and downstream impacts. A claim stays immutable and is interpreted
+once at its primary causal node; new mechanisms remain visible for chain revision.
 
 If the demand lens begins with Q1 `需求方`, that node answers only who demands the
 BOM. Its public output is two lists: `当前需求方` and `潜在未来需求方`. Keep
@@ -219,6 +238,11 @@ procurement channels, quantities, and as-of change assessment out of Q1. Put the
 current quantity baseline in Q2 and demand mechanisms in the later nodes. A Q1
 node using `render_mode: demand_party_list` does not render entity snapshots or
 material tables, although its underlying ledgers remain immutable and auditable.
+
+Treat Q1 and Q2 as `presentation_role: derived_view`. They support navigation and
+local quantity comparison but do not replace the demand chain or generate the lens
+conclusion. Keep the full causal path from workload through compute intensity,
+budget, orders/delivery, and financial realization visible before these views.
 
 Q2 inherits both Q1 demander lists. Render three outer groups in this exact order:
 `当前需求方`, `潜在未来需求方`, and `其它分类`. The first two groups contain one

@@ -134,8 +134,9 @@ Research proceeds as:
 
 Mappings are separate from immutable claims and preserve direction, directness,
 novelty, materiality, expectation delta, entities, and rationale. Each public lens
-shows its concise logic paragraph, then logic nodes. Every node groups evidence by
-company/entity; each entity keeps an append-only as-of assessment and a
+shows its concise logic paragraph, then logic nodes. Every node first separates its
+real state history from its publication-event history; company/entity remains a
+secondary audit, where each entity keeps an append-only as-of assessment and a
 reverse-chronological source table. The report begins with a gated investment
 snapshot. This structure does not waive canonical target recommendation gates.
 
@@ -188,10 +189,23 @@ must not assume six questions. Each relevant document is archived once, but pars
 separately against every potentially affected lens. Only non-empty, GPT-reviewed
 lens claims enter the temporal ledger. A second reviewed step maps each claim to one
 primary logic node, optional secondary nodes, and one or more companies/entities.
-HTML renders the hierarchy `lens -> logic node -> company/entity`. Every entity is
-collapsed by default, starts with `截面变化与评估`, and keeps one three-column
-table `材料（含链接） | 类型 | 观点列表`. One source occupies one row and keeps
-all locator-backed atomic claims plus their support/refute direction as
+For a `logic_chain_centered` profile, the versioned causal chain is the primary
+research schema. Atomic claims keep only a minimum audit envelope; a separate
+mapping records `support`, `refute`, `boundary`, `constraint`, `new_branch`,
+`conflict`, `unresolved`, or `neutral`, plus rationale and downstream impacts.
+Claims remain immutable, and mechanisms that do not fit remain visible for chain
+revision.
+
+HTML renders the primary hierarchy
+`lens -> causal logic node -> publication month -> source -> atomic-claim event`.
+Every node also renders a separate oldest-to-newest state history drawn only from
+real as-of states and revisions. Event history uses market-known `published_at`;
+`effective_period` and `target_period` remain labels on the claim. Selecting a state
+cutoff may hide later-published events but never reconstruct or invent a historical
+conclusion. Company/entity is a secondary audit dimension under the node. Every entity audit is collapsed by
+default, starts with `截面变化与评估`, and keeps one three-column table
+`材料（含链接） | 类型 | 观点列表`. One source occupies one row and keeps all
+locator-backed atomic claims plus their mapping effect as
 `• 观点 N（原文位置）：原子观点` bullets in the final cell.
 
 For a demand-side question tree, Q1 is a pure demander taxonomy. It asks only:
@@ -200,6 +214,12 @@ mutually exclusive at the selected as-of date. Do not put business, task,
 workload, system, specification, channel, quantity, or snapshot-change branches
 under Q1. Q2 measures current demand by the Q1 groups; later leaves test workload,
 intensity, budget, orders, and realization.
+
+Q1 and Q2 are `presentation_role: derived_view`. They are useful classification and
+quantity projections of the evidence but are not the demand research backbone.
+The public lens must preserve every causal node from workload through compute
+intensity, budget, orders/delivery, and financial realization before rendering the
+collapsed Q1/Q2 supporting views.
 
 Q2 has three child groups: `当前需求方`, `潜在未来需求方`, and `其它分类`.
 `当前需求方` searches every Q1 current demander for the best available current
@@ -221,7 +241,9 @@ same numbered hierarchy.
 Public module selection does not rewrite this internal question architecture. When
 the user narrows a lens for reading, preserve all internal leaves and append-only
 evidence, and record the public subset separately with `public_logic_node_ids` in
-canonical order. Q2 cannot be exposed without its Q1 classification node.
+canonical order. In `logic_chain_centered` mode this subset must keep every causal
+node; it may omit only derived views. Q2 cannot be exposed without its Q1
+classification view.
 
 Each standalone BOM keeps its report, source index, selected IMA originals, inbox,
 temporal ledger, and intake audit at `research/bom/<bom_project_id>/`. Repository

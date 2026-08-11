@@ -112,12 +112,34 @@ support/refute rules, observable indicators, downstream nodes, company bridge
 fields, and refresh cadence. The playbook is a judgment structure, not a source
 whitelist.
 
+Standalone BOM research is logic-chain-centered, not table-centered. The playbook
+declares `research_model: logic_chain_centered` and a versioned
+`logic_chain_version`. Its causal nodes form the first-principles chain that explains
+how heterogeneous facts can change BOM commercial scale and investment value.
+Atomic claims keep only the minimum audit envelope needed to preserve source,
+locator, market-known time, evidence nature, and any reliably stated business
+period. Do not require every claim to fit one universal metric table.
+
+Every reviewed claim-to-node mapping records how the claim changes the chain:
+`support`, `refute`, `boundary`, `constraint`, `new_branch`, `conflict`,
+`unresolved`, or compatibility `neutral`. The original claim remains immutable.
+One primary node avoids duplicate interpretation; optional secondary nodes and
+downstream impacts preserve real multi-node effects. New mechanisms that do not fit
+the current chain remain visible for chain revision instead of being forced into a
+convenient node.
+
 When the demand lens begins with Q1 `需求方`, keep that node strictly about who
 demands the BOM. Render two mutually exclusive lists: `当前需求方` and
 `潜在未来需求方`. Do not mix business scenarios, workloads/tasks, host systems,
 component specifications, procurement channels, quantities, or as-of change
 assessment into Q1. Q2 owns the current quantity baseline; later demand nodes own
 workload, intensity, budget, orders, and financial realization.
+
+Q1 and Q2 are `presentation_role: derived_view`, not the demand research backbone.
+The public demand lens must retain every causal node from workload through compute
+intensity, budget, orders, and financial realization. Q1/Q2 may appear afterwards
+as collapsed supporting views. A quantity matrix never substitutes for the
+first-principles causal chain or directly generates the lens conclusion.
 
 Q2 must inherit the exact Q1 taxonomy and separate its public quantity work into
 three groups in this order: `当前需求方`, `潜在未来需求方`, and `其它分类`.
@@ -131,7 +153,7 @@ summed across incompatible units, periods, samples, or overlapping demanders.
 
 Every source is still parsed into immutable atomic claims. Claims are then mapped
 through a separate reviewed ledger to one primary logic node and optional secondary
-nodes. A mapping records direction, evidence nature, directness, novelty,
+nodes. A mapping records effect direction, evidence nature, directness, novelty,
 materiality, expectation delta, one or more companies/entities, metric, rationale,
 and downstream impact.
 Never rewrite an atomic claim merely to reuse it in another lens.
@@ -364,21 +386,35 @@ modules stay inside the relevant BOM child unless they are truly chain-wide.
 An explicitly isolated BOM may instead use `report_scope: standalone-bom`. Its
 public HTML contains one `当前投资判断` snapshot followed by five collapsible
 top-level sections in this order: `需求侧`, `供给侧`, `技术侧`, `估值侧`, `ESG`.
-Each section contains `简单逻辑链`, then full-width logic nodes. Every logic node
-contains collapsible company/entity modules, followed by `最新结论与趋势`. It
-does not inherit the four-section industry shell or the six-question BOM-child
-layout.
+Each section renders `第一性原理逻辑链`, then `节点状态与观点时间线`, optional
+`派生证据视图`, and `全局结论与趋势`. Causal nodes are full-width,
+collapsed-by-default disclosures. Their visible summary shows current node state,
+conclusion, and real change. Their body uses two distinct histories: `节点状态历史`
+lists only real as-of states from oldest to newest, while `信息事件历史` uses
+`published_at` as the primary axis and groups events by publication month, source,
+and atomic claim. Effective and target periods remain claim labels, never main-axis
+dates. Snapshot controls may hide information published after the selected cutoff;
+they also display that stored snapshot's contemporaneous conclusion and must never
+invent a historical state. Event filters affect reading only, not
+node judgment. Every event keeps mapping effect and rationale, and a revision marker
+only when an actual thesis revision names that claim. Evidence gaps, next validation,
+and the secondary company/entity audit follow. The report does not inherit the
+four-section industry shell or the six-question BOM-child layout.
 
 When the user explicitly narrows one lens's public modules, the playbook may set
-`public_logic_node_ids` for that lens. The listed nodes render in their canonical
-order; all omitted nodes, mappings, states, and claims remain in the internal
-append-only research structure. A public Q2 demand quantity matrix must keep its Q1
-demand-party classification node visible with it.
+`public_logic_node_ids` for that lens. In a logic-chain-centered profile, this list
+must retain every causal node in canonical order; it may omit only derived views.
+All omitted derived-view modules, mappings, states, and claims remain in the
+internal append-only research structure. A public Q2 demand quantity matrix must
+keep its Q1 demand-party classification view visible with it.
 
 The investment snapshot is generated only after logic-node states. It separates
 `fundamental_delta`, `consensus_delta`, and `priced_in_delta`, shows company
 exposure/earnings/valuation bridges, semantic gates, catalysts, and quantitative
-kill tests. `actionable_long` is forbidden unless every required gate passes.
+kill tests. In logic-chain-centered reports, `当前投资判断` leads with a rollup of
+the strengthened nodes, main breakpoints, and failed gates; source-batch or Q2
+changes appear separately as `本期证据变化`. `actionable_long` is forbidden unless
+every required gate passes.
 
 The parent owns chain taxonomy, navigation, and aggregated targets. Each child owns
 its `project.json`, filtered `sources.jsonl`, `source/`, `material_intake/`,
@@ -388,26 +424,31 @@ state `partial_research`; it must not imply research completion.
 
 Inside each public BOM question module, render one compact `基本理解思路`, followed by `当前结论`, `相较上一截面的变化`, `时间演化`, `映射材料`, and `信息覆盖`. Do not render mandatory per-stage evidence cards. Logic hints orient the reader; they never constrain which material may enter the ledger. Every mapped material keeps a source link, `material_class`, and `ingestion_channel` next to the supported claim. Past conclusions may be shown only when a real prior snapshot exists. Raw IMA IDs, credentials, internal search queries, and pending parse tasks never appear in public Markdown.
 
-Structured standalone BOM evidence renders in this exact hierarchy:
-`BOM x lens/question x logic node x company/entity`. Every company/entity is one
-collapsed-by-default, full-width disclosure module. Before its evidence table,
-render `截面变化与评估` plus the real change from its previous snapshot. The module
-then renders one horizontally scrollable table with exactly
+Structured standalone BOM evidence renders primarily in this exact hierarchy:
+`BOM x lens x causal logic node x publication month x source x atomic-claim event`.
+The parallel node-state track is `logic node x as_of_date` and only contains real
+snapshots. Each event keeps the linked source, original locator, atomic statement,
+mapping effect and rationale, relevant business period, and downstream impact.
+Company/entity is a secondary audit dimension under the same node, not the main
+organizing spine. Every audited
+company/entity is one collapsed-by-default, full-width disclosure module. Before
+its evidence table, render `截面变化与评估` plus the real change from its previous
+snapshot. The module then renders one horizontally scrollable table with exactly
 `材料（含链接） | 类型 | 观点列表`. One source occupies one row; publication date
 appears inside the material cell, and every bullet preserves `观点 N / 原文位置 /
 原子观点 / 支持或反证方向`. Do not repeat the same material in a lens-level
-timeline. The Markdown audit sidecar mirrors the same entity hierarchy and
-three-column tables. Local PDF links navigate in the current tab; only HTTP(S)
-sources may use a new tab. Logic nodes and company impacts render as full-width
-rows, not narrow side-by-side cards.
+timeline. The Markdown audit sidecar mirrors the causal-node event timeline and the
+secondary entity three-column tables. Local PDF links navigate in the current tab;
+only HTTP(S) sources may use a new tab. Logic nodes and company impacts render as
+full-width rows, not narrow side-by-side cards.
 
-The Q1 `需求方` node is the sole presentation exception. When its playbook uses
+The Q1 `需求方` derived view is the sole presentation exception. When its playbook uses
 `render_mode: demand_party_list`, render only two compact groups—`当前需求方` and
 `潜在未来需求方`—and omit node state, conclusion, change assessment, evidence
 counts, company/entity disclosures, and material tables from that Q1 block. The
 underlying evidence ledgers remain append-only and available to downstream nodes.
 
-When Q2 uses `render_mode: demand_quantity_matrix`, render exactly three outer
+When the Q2 derived view uses `render_mode: demand_quantity_matrix`, render exactly three outer
 groups in this order: `当前需求方`, `潜在未来需求方`, and `其它分类`. HTML renders
 each outer group as a collapsed disclosure and every specific demander or other
 information category as a second collapsed disclosure inside it. Markdown mirrors
@@ -454,5 +495,5 @@ Before calling a framework change complete:
 3. Run `validate-material-intake` when search or knowledge-base intake artifacts exist.
 4. Run `validate-ima-archive` after an IMA daily archive run.
 5. Run `validate-research-artifacts --require-l3` when artifacts exist.
-6. Run a Markdown/static smoke check for the selected report scope: four-section order and parent-child links for industry reports, or five-lens order plus reverse-chronological entity-material tables for `standalone-bom`; always verify readable tables, source links, no public process text, and no `actionable_long` target with a failed research gate.
+6. Run a Markdown/static smoke check for the selected report scope: four-section order and parent-child links for industry reports, or five-lens order plus oldest-to-newest real state tracks, newest-to-oldest publication event groups, and reverse-chronological entity-material tables for `standalone-bom`; always verify readable tables, source links, no public process text, and no `actionable_long` target with a failed research gate.
 7. Run `git diff --check`.

@@ -18,8 +18,18 @@ LOGIC_STATES = (
     "weakening",
     "refuted",
 )
-MAPPING_DIRECTIONS = ("support", "refute", "neutral")
+MAPPING_DIRECTIONS = (
+    "support",
+    "refute",
+    "boundary",
+    "constraint",
+    "new_branch",
+    "conflict",
+    "unresolved",
+    "neutral",
+)
 MAPPING_ROLES = ("primary", "secondary")
+PRESENTATION_ROLES = ("causal_node", "derived_view")
 EVIDENCE_NATURES = ("fact", "forecast", "opinion", "lead")
 NOVELTY_LEVELS = ("new", "confirming", "repeated")
 MATERIALITY_LEVELS = ("thesis_change", "high", "medium", "low")
@@ -33,10 +43,31 @@ REQUIRED_ACTIONABLE_GATES = (
     "refutation",
     "risk_control",
 )
+GATE_PUBLIC_NAMES = {
+    "logic_coverage": "逻辑覆盖",
+    "company_financial_bridge": "公司财务桥",
+    "valuation": "估值",
+    "refutation": "反证",
+    "risk_control": "风险控制",
+}
+ACTION_PUBLIC_NAMES = {
+    "actionable_long": "可行动观察",
+    "watch_only": "观察",
+    "no_action": "不行动",
+}
 
 
 def validate_standalone_bom_playbook(profile: dict[str, Any]) -> dict[str, Any]:
     """Validate a structured five-lens BOM playbook and return lookup indexes."""
+
+    research_model = str(profile.get("research_model") or "").strip()
+    logic_chain_centered = research_model == "logic_chain_centered"
+    if logic_chain_centered and not str(
+        profile.get("logic_chain_version") or ""
+    ).strip():
+        raise ValueError(
+            "logic_chain_centered playbooks require logic_chain_version"
+        )
 
     expected_lenses = [lens_id for lens_id, _ in STANDALONE_LENSES]
     profile_lenses = [
@@ -53,6 +84,8 @@ def validate_standalone_bom_playbook(profile: dict[str, Any]) -> dict[str, Any]:
     public_lens_nodes: dict[str, list[dict[str, Any]]] = {}
     for lens in profile_lenses:
         lens_id = str(lens.get("lens_id") or "")
+        if logic_chain_centered and not str(lens.get("logic_chain") or "").strip():
+            raise ValueError(f"{lens_id} requires a first-principles logic_chain")
         logic_nodes = [
             row for row in lens.get("logic_nodes") or [] if isinstance(row, dict)
         ]
@@ -71,6 +104,19 @@ def validate_standalone_bom_playbook(profile: dict[str, Any]) -> dict[str, Any]:
                 if not str(node.get(field) or "").strip():
                     raise ValueError(f"{node_id} requires {field}")
             render_mode = str(node.get("render_mode") or "").strip()
+            presentation_role = str(
+                node.get("presentation_role")
+                or ("derived_view" if render_mode else "causal_node")
+            ).strip()
+            if presentation_role not in PRESENTATION_ROLES:
+                raise ValueError(
+                    f"{node_id} uses unsupported presentation_role="
+                    f"{presentation_role!r}"
+                )
+            if render_mode and presentation_role != "derived_view":
+                raise ValueError(
+                    f"{node_id} render_mode requires presentation_role=derived_view"
+                )
             if render_mode:
                 if render_mode not in (
                     "demand_party_list",
@@ -108,7 +154,18 @@ def validate_standalone_bom_playbook(profile: dict[str, Any]) -> dict[str, Any]:
                     raise ValueError(
                         f"{node_id} requires classification_node_id"
                     )
-            nodes[node_id] = {**node, "lens_id": lens_id}
+            nodes[node_id] = {
+                **node,
+                "lens_id": lens_id,
+                "presentation_role": presentation_role,
+            }
+
+        if logic_chain_centered and not any(
+            str(nodes[str(node.get("logic_node_id") or "")].get("presentation_role"))
+            == "causal_node"
+            for node in logic_nodes
+        ):
+            raise ValueError(f"{lens_id} requires at least one causal node")
 
     for node_id, node in nodes.items():
         if str(node.get("render_mode") or "") == "demand_quantity_matrix":
@@ -177,6 +234,22 @@ def validate_standalone_bom_playbook(profile: dict[str, Any]) -> dict[str, Any]:
         public_lens_nodes[lens_id] = [
             nodes[node_id] for node_id in normalized_public_ids
         ]
+        if logic_chain_centered:
+            public_causal_ids = {
+                str(node["logic_node_id"])
+                for node in public_lens_nodes[lens_id]
+                if str(node.get("presentation_role") or "") == "causal_node"
+            }
+            all_causal_ids = {
+                str(node["logic_node_id"])
+                for node in logic_nodes
+                if str(nodes[str(node["logic_node_id"])].get("presentation_role") or "")
+                == "causal_node"
+            }
+            if public_causal_ids != all_causal_ids:
+                raise ValueError(
+                    f"{lens_id} public rendering must preserve all causal nodes"
+                )
     return {
         "lenses": {str(row["lens_id"]): row for row in profile_lenses},
         "nodes": nodes,
@@ -222,10 +295,10 @@ def normalize_claim_mapping(
     mapping_id = str(raw.get("mapping_id") or "").strip() or _mapping_id(
         claim_id, logic_node_id
     )
-    entities = _unique_strings(
-        raw.get("entities")
-        or [raw.get("entity")]
-    )
+    raw_entities = raw.get("entities") or []
+    if not raw_entities and raw.get("entity"):
+        raw_entities = [raw.get("entity")]
+    entities = _unique_strings(raw_entities)
     if not entities:
         entities = ["行业 / 多主体"]
     return {
@@ -693,9 +766,24 @@ def build_standalone_investment_view(
             )
             for node in index["public_lens_nodes"][lens_id]
         ]
+        lens["causal_nodes"] = [
+            node
+            for node in lens["logic_nodes"]
+            if str(node.get("presentation_role") or "causal_node")
+            == "causal_node"
+        ]
+        lens["derived_views"] = [
+            node
+            for node in lens["logic_nodes"]
+            if str(node.get("presentation_role") or "") == "derived_view"
+        ]
 
     base["investment_engine_version"] = str(
         profile.get("schema_version") or "2.0"
+    )
+    base["research_model"] = str(profile.get("research_model") or "")
+    base["logic_chain_version"] = str(
+        profile.get("logic_chain_version") or ""
     )
     base["decision"] = snapshots[0] if snapshots else {
         "as_of_date": as_of_date,
@@ -711,6 +799,11 @@ def build_standalone_investment_view(
         "kill_tests": [],
         "next_catalysts": [],
     }
+    if base["research_model"] == "logic_chain_centered":
+        base["logic_chain_judgment"] = _build_logic_chain_judgment(
+            decision=base["decision"],
+            nodes_by_id=index["nodes"],
+        )
     base["engine_coverage"] = {
         "logic_nodes": len(index["nodes"]),
         "public_logic_nodes": sum(
@@ -738,6 +831,51 @@ def build_standalone_investment_view(
         ),
     }
     return base
+
+
+def _build_logic_chain_judgment(
+    *,
+    decision: dict[str, Any],
+    nodes_by_id: dict[str, dict[str, Any]],
+) -> str:
+    """Roll node effects and failed gates into one evidence-bounded judgment."""
+
+    def causal_titles(node_ids: Iterable[Any]) -> list[str]:
+        titles: list[str] = []
+        for raw_node_id in node_ids:
+            node_id = str(raw_node_id or "")
+            node = nodes_by_id.get(node_id) or {}
+            if str(node.get("presentation_role") or "causal_node") != "causal_node":
+                continue
+            title = str(node.get("title") or node_id).strip()
+            if title and title not in titles:
+                titles.append(title)
+        return titles
+
+    positive_titles = causal_titles(decision.get("positive_node_ids") or [])
+    negative_titles = causal_titles(decision.get("negative_node_ids") or [])
+    failed_gates = [
+        GATE_PUBLIC_NAMES.get(gate, gate)
+        for gate, passed in (decision.get("gate_results") or {}).items()
+        if not bool(passed)
+    ]
+    action_state = str(decision.get("action_state") or "watch_only")
+    action_label = ACTION_PUBLIC_NAMES.get(action_state, action_state)
+
+    parts = []
+    if positive_titles:
+        parts.append(f"逻辑链当前相对增强的环节是：{'、'.join(positive_titles)}")
+    if negative_titles:
+        parts.append(f"主要断点或约束环节是：{'、'.join(negative_titles)}")
+    if not parts:
+        parts.append("现有节点证据尚未形成可区分的增强与削弱环节")
+    if failed_gates:
+        parts.append(
+            f"由于{'、'.join(failed_gates)}尚未通过，当前投资动作维持{action_label}"
+        )
+    else:
+        parts.append(f"全部语义门槛已通过，当前投资动作是{action_label}")
+    return "；".join(parts) + "。"
 
 
 def validate_standalone_bom_investment_bundle(
@@ -1051,11 +1189,58 @@ def _build_logic_node_view(
         key=lambda row: str(row.get("as_of_date") or ""),
         reverse=True,
     )
+    revisions_by_claim: dict[str, list[dict[str, Any]]] = {}
+    for revision in revision_candidates:
+        for claim_id in revision.get("trigger_claim_ids") or []:
+            revisions_by_claim.setdefault(str(claim_id), []).append(
+                {**revision, "revision_claim_role": "trigger"}
+            )
+        for claim_id in revision.get("conflicting_claim_ids") or []:
+            revisions_by_claim.setdefault(str(claim_id), []).append(
+                {**revision, "revision_claim_role": "conflict"}
+            )
     node_mappings = [
         row
         for row in mappings
         if str(row.get("logic_node_id") or "") == node_id
     ]
+    claim_events = []
+    for mapping in node_mappings:
+        claim_id = str(mapping.get("claim_id") or "")
+        claim = claims_by_id.get(claim_id)
+        if claim is None:
+            continue
+        claim_events.append(
+            {
+                **claim,
+                "direction": str(mapping.get("direction") or "neutral"),
+                "rationale": str(mapping.get("rationale") or ""),
+                "mapping_role": str(mapping.get("mapping_role") or "primary"),
+                "evidence_nature": str(
+                    mapping.get("evidence_nature") or "opinion"
+                ),
+                "directness": str(mapping.get("directness") or "indirect"),
+                "novelty": str(mapping.get("novelty") or "new"),
+                "entities": _unique_strings(
+                    mapping.get("entities")
+                    or [mapping.get("entity") or "行业 / 多主体"]
+                ),
+                "downstream_impacts": list(
+                    mapping.get("downstream_impacts") or []
+                ),
+                "triggered_revisions": list(
+                    revisions_by_claim.get(claim_id) or []
+                ),
+            }
+        )
+    claim_events.sort(
+        key=lambda row: (
+            str(row.get("published_at") or ""),
+            str(row.get("source_id") or ""),
+            str(row.get("claim_id") or ""),
+        ),
+        reverse=True,
+    )
     entity_claims: dict[str, dict[str, Any]] = {}
     for mapping in node_mappings:
         claim_id = str(mapping.get("claim_id") or "")
@@ -1144,6 +1329,55 @@ def _build_logic_node_view(
         )
     )
     current = candidates[0] if candidates else {}
+    revisions_by_date: dict[str, list[dict[str, Any]]] = {}
+    for revision in revision_candidates:
+        revisions_by_date.setdefault(
+            str(revision.get("as_of_date") or ""), []
+        ).append(revision)
+    state_history = []
+    for state_row in reversed(candidates):
+        snapshot_date = str(state_row.get("as_of_date") or "")
+        state_revisions = revisions_by_date.get(snapshot_date) or []
+        state_history.append(
+            {
+                "as_of_date": snapshot_date,
+                "state": str(state_row.get("state") or "unresolved"),
+                "previous_state": str(
+                    state_row.get("previous_state") or ""
+                ),
+                "conclusion": str(state_row.get("conclusion") or ""),
+                "change_summary": str(
+                    state_row.get("change_summary") or ""
+                ),
+                "revision_type": str(
+                    (state_revisions[0] if state_revisions else {}).get(
+                        "revision_type"
+                    )
+                    or ("baseline" if not state_history else "change")
+                ),
+                "change_direction": str(
+                    (state_revisions[0] if state_revisions else {}).get(
+                        "change_direction"
+                    )
+                    or "unchanged"
+                ),
+                "revision_rationale": str(
+                    (state_revisions[0] if state_revisions else {}).get(
+                        "rationale"
+                    )
+                    or ""
+                ),
+                "trigger_claim_ids": _unique_strings(
+                    claim_id
+                    for revision in state_revisions
+                    for claim_id in revision.get("trigger_claim_ids") or []
+                ),
+            }
+        )
+    event_history_groups = _build_event_history_groups(
+        claim_events=claim_events,
+        revisions=revision_candidates,
+    )
     demand_parties: dict[str, list[str]] = dict(
         node.get("demand_parties") or {}
     )
@@ -1202,10 +1436,80 @@ def _build_logic_node_view(
             }
         ),
         "entities": entities,
+        "claim_events": claim_events,
+        "state_history": state_history,
+        "event_history_groups": event_history_groups,
         "demand_quantity_rows": demand_quantity_rows,
         "demand_parties": demand_parties,
         "latest_revision": revision_candidates[0] if revision_candidates else {},
     }
+
+
+def _build_event_history_groups(
+    *,
+    claim_events: list[dict[str, Any]],
+    revisions: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    """Group immutable claim events by market-known month, then by source."""
+
+    groups: list[dict[str, Any]] = []
+    groups_by_key: dict[str, dict[str, Any]] = {}
+    source_indexes: dict[str, dict[str, dict[str, Any]]] = {}
+    for event in claim_events:
+        published_at = str(event.get("published_at") or "")
+        period_key = published_at[:7] if len(published_at) >= 7 else "date-unknown"
+        if period_key == "date-unknown":
+            period_label = "日期未明"
+        else:
+            year, month = period_key.split("-", 1)
+            period_label = f"{year}年{month}月"
+        if period_key not in groups_by_key:
+            group = {
+                "period_key": period_key,
+                "period_label": period_label,
+                "claim_count": 0,
+                "sources": [],
+                "state_revisions": [
+                    revision
+                    for revision in revisions
+                    if str(revision.get("as_of_date") or "").startswith(
+                        period_key
+                    )
+                ],
+            }
+            groups_by_key[period_key] = group
+            source_indexes[period_key] = {}
+            groups.append(group)
+        group = groups_by_key[period_key]
+        group["claim_count"] += 1
+        source_id = str(event.get("source_id") or "")
+        source_key = "|".join(
+            (
+                published_at,
+                source_id,
+                str(event.get("source_title") or ""),
+            )
+        )
+        source = source_indexes[period_key].get(source_key)
+        if source is None:
+            source = {
+                "source_id": source_id,
+                "source_title": str(
+                    event.get("source_title") or source_id or "来源"
+                ),
+                "source_url": str(event.get("source_url") or ""),
+                "published_at": published_at,
+                "material_class": str(
+                    event.get("material_class") or "other"
+                ),
+                "claim_count": 0,
+                "events": [],
+            }
+            source_indexes[period_key][source_key] = source
+            group["sources"].append(source)
+        source["claim_count"] += 1
+        source["events"].append(event)
+    return groups
 
 
 def _normalize_company_impact(

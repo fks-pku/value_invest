@@ -66,6 +66,38 @@ def _claim():
 
 
 class StandaloneBomInvestmentEngineTests(unittest.TestCase):
+    def test_logic_chain_centered_playbook_requires_version_and_public_causal_nodes(self):
+        profile = _profile()
+        profile["research_model"] = "logic_chain_centered"
+        with self.assertRaisesRegex(ValueError, "logic_chain_version"):
+            validate_standalone_bom_playbook(profile)
+
+        profile["logic_chain_version"] = "2026-08-11.v1"
+        profile["lenses"][0]["logic_nodes"].append(
+            {
+                "logic_node_id": "demand.derived",
+                "title": "需求方派生视图",
+                "question": "谁在产生需求？",
+                "support_rule": "主体有可验证采购。",
+                "refute_rule": "采购通道被误作最终需求方。",
+                "downstream_node_ids": [],
+                "presentation_role": "derived_view",
+            }
+        )
+        profile["lenses"][0]["public_logic_node_ids"] = ["demand.derived"]
+        with self.assertRaisesRegex(ValueError, "causal nodes"):
+            validate_standalone_bom_playbook(profile)
+
+        profile["lenses"][0]["public_logic_node_ids"] = [
+            "demand.node",
+            "demand.derived",
+        ]
+        index = validate_standalone_bom_playbook(profile)
+        self.assertEqual(
+            index["nodes"]["demand.derived"]["presentation_role"],
+            "derived_view",
+        )
+
     def test_playbook_requires_all_five_lenses_and_namespaced_nodes(self):
         index = validate_standalone_bom_playbook(_profile())
         self.assertEqual(len(index["nodes"]), 5)
@@ -91,6 +123,22 @@ class StandaloneBomInvestmentEngineTests(unittest.TestCase):
         }
         with self.assertRaisesRegex(ValueError, "current then potential_future"):
             validate_standalone_bom_playbook(profile)
+
+    def test_claim_mapping_accepts_boundary_effect(self):
+        profile = _profile()
+        claim = _claim()
+        mapping = normalize_claim_mapping(
+            {
+                "claim_id": "CLM-1",
+                "logic_node_id": "demand.node",
+                "direction": "boundary",
+                "rationale": "该观点改变需求传导成立的适用边界。",
+            },
+            claims_by_id={"CLM-1": claim},
+            profile=profile,
+            mapped_at="2026-08-11",
+        )
+        self.assertEqual(mapping["direction"], "boundary")
 
     def test_public_logic_node_subset_preserves_internal_research_nodes(self):
         profile = _profile()
@@ -663,6 +711,183 @@ class StandaloneBomInvestmentEngineTests(unittest.TestCase):
             as_of_date="2026-07-24",
         )
         self.assertTrue(validation["ok"], validation["issues"])
+
+    def test_logic_chain_view_separates_causal_nodes_and_derived_views(self):
+        profile = _profile()
+        profile.update(
+            {
+                "schema_version": "3.0",
+                "research_model": "logic_chain_centered",
+                "logic_chain_version": "2026-08-11.v1",
+            }
+        )
+        demand_lens = profile["lenses"][0]
+        demand_lens["logic_nodes"][0]["presentation_role"] = "causal_node"
+        demand_lens["logic_nodes"].append(
+            {
+                "logic_node_id": "demand.parties",
+                "title": "需求方视图",
+                "question": "谁在产生需求？",
+                "support_rule": "主体有可验证采购。",
+                "refute_rule": "采购通道被误作最终需求方。",
+                "downstream_node_ids": [],
+                "presentation_role": "derived_view",
+                "render_mode": "demand_party_list",
+                "demand_parties": {
+                    "current": ["云服务商"],
+                    "potential_future": ["传统企业"],
+                },
+            }
+        )
+        claim = _claim()
+        mapping = normalize_claim_mapping(
+            {
+                "claim_id": "CLM-1",
+                "logic_node_id": "demand.node",
+                "direction": "boundary",
+                "rationale": "订单增长仍受交付窗口约束。",
+                "downstream_impacts": ["supply.node"],
+            },
+            claims_by_id={"CLM-1": claim},
+            profile=profile,
+            mapped_at="2026-08-11",
+        )
+        state = normalize_logic_state(
+            {
+                "logic_node_id": "demand.node",
+                "state": "strengthening",
+                "conclusion": "订单证据增强，但兑现边界仍需验证。",
+                "change_summary": "新增交付窗口约束。",
+            },
+            profile=profile,
+            claims_by_id={"CLM-1": claim},
+            as_of_date="2026-08-11",
+        )
+        older_state = normalize_logic_state(
+            {
+                "logic_node_id": "demand.node",
+                "state": "weak",
+                "conclusion": "订单线索存在，但尚未形成可验证交付。",
+                "change_summary": "首个结构化截面。",
+            },
+            profile=profile,
+            claims_by_id={"CLM-1": claim},
+            as_of_date="2026-08-10",
+        )
+        baseline_revision = normalize_thesis_revision(
+            {
+                "revision_type": "baseline",
+                "logic_node_id": "demand.node",
+                "new_state": "weak",
+                "rationale": "建立节点历史基线。",
+            },
+            profile=profile,
+            claims_by_id={"CLM-1": claim},
+            as_of_date="2026-08-10",
+        )
+        change_revision = normalize_thesis_revision(
+            {
+                "revision_type": "change",
+                "logic_node_id": "demand.node",
+                "previous_state": "weak",
+                "new_state": "strengthening",
+                "change_direction": "up",
+                "rationale": "订单观点增强，但仍受交付窗口约束。",
+                "trigger_claim_ids": ["CLM-1"],
+            },
+            profile=profile,
+            claims_by_id={"CLM-1": claim},
+            as_of_date="2026-08-11",
+        )
+        snapshot = normalize_investment_snapshot(
+            {
+                "action_state": "watch_only",
+                "summary": "本期新增订单材料，但仍需验证交付。",
+                "positive_node_ids": ["demand.node"],
+                "negative_node_ids": ["valuation.node"],
+                "gate_results": {
+                    "logic_coverage": True,
+                    "company_financial_bridge": False,
+                    "valuation": False,
+                    "refutation": False,
+                    "risk_control": False,
+                },
+            },
+            profile=profile,
+            claims_by_id={"CLM-1": claim},
+            as_of_date="2026-08-11",
+        )
+        view = build_standalone_investment_view(
+            project={
+                "title": "GPU / ASIC",
+                "report_scope": "standalone-bom",
+                "bom_node_id": "gpu_asic",
+            },
+            profile=profile,
+            claims=[claim],
+            conclusions=[],
+            claim_mappings=[mapping],
+            logic_states=[older_state, state],
+            entity_states=[],
+            thesis_revisions=[baseline_revision, change_revision],
+            investment_snapshots=[snapshot],
+            as_of_date="2026-08-11",
+        )
+
+        demand = view["lenses"][0]
+        self.assertEqual(view["research_model"], "logic_chain_centered")
+        self.assertEqual(view["logic_chain_version"], "2026-08-11.v1")
+        self.assertIn("需求节点", view["logic_chain_judgment"])
+        self.assertIn("估值节点", view["logic_chain_judgment"])
+        self.assertIn("公司财务桥", view["logic_chain_judgment"])
+        self.assertEqual(
+            [node["logic_node_id"] for node in demand["causal_nodes"]],
+            ["demand.node"],
+        )
+        self.assertEqual(
+            [node["logic_node_id"] for node in demand["derived_views"]],
+            ["demand.parties"],
+        )
+        event = demand["causal_nodes"][0]["claim_events"][0]
+        self.assertEqual(event["direction"], "boundary")
+        self.assertEqual(event["rationale"], "订单增长仍受交付窗口约束。")
+        self.assertEqual(
+            [row["as_of_date"] for row in demand["causal_nodes"][0]["state_history"]],
+            ["2026-08-10", "2026-08-11"],
+        )
+        history_group = demand["causal_nodes"][0]["event_history_groups"][0]
+        self.assertEqual(history_group["period_key"], "2026-07")
+        self.assertEqual(history_group["claim_count"], 1)
+        self.assertEqual(history_group["sources"][0]["claim_count"], 1)
+        self.assertEqual(
+            event["triggered_revisions"][0]["as_of_date"],
+            "2026-08-11",
+        )
+
+        html = StandaloneBomHtmlRenderer(Path("/tmp")).render(view)
+        self.assertIn('data-research-model="logic-chain-centered"', html)
+        self.assertIn('class="logic-chain-map"', html)
+        self.assertIn('class="claim-event effect-boundary"', html)
+        self.assertIn('class="node-state-history"', html)
+        self.assertIn('class="claim-month-group"', html)
+        self.assertIn('class="claim-source-group"', html)
+        self.assertIn('data-history-filter="boundary"', html)
+        self.assertIn("节点状态历史", html)
+        self.assertIn("信息事件历史", html)
+        self.assertIn("改变边界", html)
+        self.assertIn("派生证据视图", html)
+        self.assertIn("本期证据变化", html)
+
+        markdown = StandaloneBomMarkdownRenderer(Path("/tmp")).render(view)
+        self.assertIn("research_model: logic-chain-centered", markdown)
+        self.assertIn("### 第一性原理逻辑链", markdown)
+        self.assertIn("### 节点状态与观点时间线", markdown)
+        self.assertIn("### 派生证据视图", markdown)
+        self.assertIn("##### 节点状态历史", markdown)
+        self.assertIn("##### 信息事件历史", markdown)
+        self.assertIn("###### 2026年07月", markdown)
+        self.assertIn("改变边界", markdown)
+        self.assertIn("**本期证据变化：**", markdown)
 
 
 if __name__ == "__main__":

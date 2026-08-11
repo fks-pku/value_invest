@@ -9,8 +9,9 @@
   "as_of_date": "2026-08-04",
   "report_date": "2026-08-04",
   "generated_at": "2026-08-04",
-  "question_model": "five-lens-investment-engine",
-  "investment_engine_version": "2.2",
+  "question_model": "logic-chain-centered-five-lens",
+  "investment_engine_version": "3.1",
+  "logic_chain_version": "2026-08-11.v1",
   "question_labels": [
     "需求侧",
     "供给侧",
