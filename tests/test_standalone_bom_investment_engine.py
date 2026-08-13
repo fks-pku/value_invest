@@ -486,6 +486,98 @@ class StandaloneBomInvestmentEngineTests(unittest.TestCase):
         self.assertEqual(mapping["entities"], ["AMD"])
         self.assertNotIn("logic_node_id", claim)
 
+    def test_causal_support_requires_direct_rule_match_and_unmapped_is_audit_only(self):
+        claim = _claim()
+        with self.assertRaisesRegex(ValueError, "direct node fit"):
+            normalize_claim_mapping(
+                {
+                    "claim_id": "CLM-1",
+                    "logic_node_id": "demand.node",
+                    "direction": "support",
+                    "directness": "indirect",
+                    "rationale": "A forecast is only a demand proxy.",
+                },
+                claims_by_id={"CLM-1": claim},
+                profile=_profile(),
+                mapped_at="2026-07-24",
+            )
+        unmapped = normalize_claim_mapping(
+            {
+                "claim_id": "CLM-1",
+                "logic_node_id": "demand.node",
+                "direction": "unmapped",
+                "node_fit": "unmapped",
+                "rule_match": "neither",
+                "rationale": "Server CPU revenue is not GPU or ASIC revenue.",
+            },
+            claims_by_id={"CLM-1": claim},
+            profile=_profile(),
+            mapped_at="2026-07-24",
+        )
+        self.assertEqual(unmapped["direction"], "unmapped")
+
+    def test_mapping_correction_preserves_old_cutoff_and_replaces_current_effect(self):
+        profile = _profile()
+        profile["strict_mapping_effects_from"] = "2026-08-12"
+        claim = _claim()
+        old_mapping = normalize_claim_mapping(
+            {
+                "mapping_id": "MAP-OLD",
+                "claim_id": "CLM-1",
+                "logic_node_id": "demand.node",
+                "direction": "support",
+                "directness": "direct",
+                "rationale": "The order directly supports demand.",
+                "mapped_at": "2026-07-24",
+            },
+            claims_by_id={"CLM-1": claim},
+            profile=profile,
+            mapped_at="2026-07-24",
+        )
+        corrected_mapping = normalize_claim_mapping(
+            {
+                "mapping_id": "MAP-NEW",
+                "supersedes_mapping_id": "MAP-OLD",
+                "claim_id": "CLM-1",
+                "logic_node_id": "demand.node",
+                "direction": "neutral",
+                "node_fit": "proxy",
+                "rule_match": "neither",
+                "rationale": "The forecast is only a demand lead.",
+                "mapped_at": "2026-08-12",
+            },
+            claims_by_id={"CLM-1": claim},
+            profile=profile,
+            mapped_at="2026-08-12",
+        )
+
+        def view(as_of_date):
+            return build_standalone_investment_view(
+                project={
+                    "title": "GPU / ASIC",
+                    "report_scope": "standalone-bom",
+                    "bom_node_id": "gpu_asic",
+                },
+                profile=profile,
+                claims=[claim],
+                conclusions=[],
+                claim_mappings=[old_mapping, corrected_mapping],
+                logic_states=[],
+                entity_states=[],
+                thesis_revisions=[],
+                investment_snapshots=[],
+                as_of_date=as_of_date,
+            )
+
+        old_event = view("2026-07-24")["lenses"][0]["logic_nodes"][0][
+            "claim_events"
+        ][0]
+        current_event = view("2026-08-12")["lenses"][0]["logic_nodes"][0][
+            "claim_events"
+        ][0]
+        self.assertEqual(old_event["direction"], "support")
+        self.assertEqual(current_event["direction"], "neutral")
+
     def test_first_snapshot_can_be_a_baseline_without_fake_previous_state(self):
         claim = _claim()
         revision = normalize_thesis_revision(
@@ -543,7 +635,7 @@ class StandaloneBomInvestmentEngineTests(unittest.TestCase):
                 "mapping_role": "secondary",
                 "direction": "support",
                 "evidence_nature": "fact",
-                "directness": "indirect",
+                "directness": "direct",
                 "novelty": "new",
                 "materiality": "medium",
                 "rationale": "The same order also tests effective supply.",
@@ -650,9 +742,10 @@ class StandaloneBomInvestmentEngineTests(unittest.TestCase):
         )
         self.assertEqual(view["decision"]["action_state"], "watch_only")
         html = StandaloneBomHtmlRenderer(Path("/tmp")).render(view)
-        self.assertIn('class="entity-module"', html)
-        self.assertIn("截面变化与评估", html)
-        self.assertIn('<th scope="col">材料（含链接）</th>', html)
+        self.assertIn('class="node-material-table"', html)
+        self.assertIn('<th scope="col">发布日期</th>', html)
+        self.assertIn('<th scope="col">对逻辑点的影响</th>', html)
+        self.assertNotIn('class="entity-module"', html)
         self.assertNotIn("<h3 id=\"timeline-demand\">信息时间线</h3>", html)
 
         revisions = [
@@ -867,25 +960,38 @@ class StandaloneBomInvestmentEngineTests(unittest.TestCase):
         html = StandaloneBomHtmlRenderer(Path("/tmp")).render(view)
         self.assertIn('data-research-model="logic-chain-centered"', html)
         self.assertIn('class="logic-chain-map"', html)
-        self.assertIn('class="claim-event effect-boundary"', html)
-        self.assertIn('class="node-state-history"', html)
-        self.assertIn('class="claim-month-group"', html)
-        self.assertIn('class="claim-source-group"', html)
-        self.assertIn('data-history-filter="boundary"', html)
-        self.assertIn("节点状态历史", html)
-        self.assertIn("信息事件历史", html)
+        self.assertIn('class="node-material-table"', html)
+        self.assertIn('<th scope="col">发布日期</th>', html)
+        self.assertIn('<th scope="col">报告名称</th>', html)
+        self.assertIn('<th scope="col">材料类型</th>', html)
+        self.assertIn('<th scope="col">原子观点</th>', html)
+        self.assertIn('<th scope="col">对逻辑点的影响</th>', html)
+        self.assertIn('class="atomic-claim-list"', html)
+        self.assertIn('class="claim-impact-list"', html)
+        self.assertIn(".lens-body {\n  padding: 0 0 56px;", html)
+        self.assertNotIn("padding: 0 0 56px 76px;", html)
+        self.assertIn("padding: 0 20px 24px;", html)
+        self.assertNotIn("padding: 0 20px 24px 88px;", html)
+        self.assertNotIn("节点状态历史", html)
+        self.assertNotIn("信息事件历史", html)
         self.assertIn("改变边界", html)
         self.assertIn("派生证据视图", html)
+        self.assertNotIn("全局结论与趋势", html)
+        self.assertNotIn('class="conclusion-panel"', html)
         self.assertIn("本期证据变化", html)
 
         markdown = StandaloneBomMarkdownRenderer(Path("/tmp")).render(view)
         self.assertIn("research_model: logic-chain-centered", markdown)
         self.assertIn("### 第一性原理逻辑链", markdown)
-        self.assertIn("### 节点状态与观点时间线", markdown)
+        self.assertIn("### 逻辑节点与原子观点材料", markdown)
         self.assertIn("### 派生证据视图", markdown)
-        self.assertIn("##### 节点状态历史", markdown)
-        self.assertIn("##### 信息事件历史", markdown)
-        self.assertIn("###### 2026年07月", markdown)
+        self.assertNotIn("### 全局结论与趋势", markdown)
+        self.assertIn(
+            "| 发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响 |",
+            markdown,
+        )
+        self.assertNotIn("##### 节点状态历史", markdown)
+        self.assertNotIn("##### 信息事件历史", markdown)
         self.assertIn("改变边界", markdown)
         self.assertIn("**本期证据变化：**", markdown)
 

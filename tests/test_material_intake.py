@@ -679,6 +679,53 @@ class MaterialIntakeTests(unittest.TestCase):
             )
             self.assertEqual(tasks[0]["source_content_path"], relative_path)
 
+    def test_manual_import_original_is_persisted_under_manual_source(self):
+        with TemporaryDirectory() as tmp:
+            project_dir = Path(tmp)
+            (project_dir / "project.json").write_text(
+                json.dumps(
+                    {
+                        "report_scope": "standalone-bom",
+                        "bom_node_id": "gpu_asic",
+                    }
+                ),
+                encoding="utf-8",
+            )
+            repository = FileSystemMaterialIntakeRepository(project_dir)
+            result = ingest_material_batch(
+                repository=repository,
+                raw_documents=[
+                    {
+                        "external_id": "manual-report-1",
+                        "title": "GPU 手工导入报告",
+                        "published_at": "2026-07-27",
+                        "material_class": "sell_side_research",
+                    }
+                ],
+                provider="manual_folder",
+                feed_id="manual-feed",
+                ingestion_channel="manual_import",
+                discovered_at="2026-08-13",
+                known_bom_node_ids=["gpu_asic"],
+                mode="live_prediction",
+                as_of_date="2026-08-13",
+                default_bom_node_ids=["gpu_asic"],
+                default_question_numbers=[1],
+            )
+
+            relative_path = repository.persist_material_content(
+                document=result["documents"][0],
+                content=b"%PDF-1.4 manual",
+                filename="GPU 手工导入报告.pdf",
+                content_type="application/pdf",
+            )
+
+            self.assertEqual(
+                relative_path,
+                "source/manual/GPU 手工导入报告.pdf",
+            )
+            self.assertTrue((project_dir / relative_path).is_file())
+
     def test_directory_review_moves_search_result_into_verified_ima_folder(self):
         with TemporaryDirectory() as tmp:
             project_dir = Path(tmp)

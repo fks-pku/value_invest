@@ -672,19 +672,18 @@ def _safe_filename(filename: str) -> str:
 
 
 def _dated_source_dir(document: dict[str, Any]) -> Path:
-    if str(document.get("provider") or "") == "ima":
-        raw_date = str(document.get("published_at") or "")
-        if not raw_date:
-            source_id = str(document.get("source_id") or "").strip()
-            if not source_id:
-                raise ValueError("Unmapped IMA originals require source_id")
-            return Path("source") / "ima" / "unmapped" / source_id
-    else:
-        raw_date = str(
-            document.get("published_at")
-            or document.get("discovered_at")
-            or ""
-        )
+    provider = str(document.get("provider") or "")
+    source_id = str(document.get("source_id") or "").strip()
+    is_ima = provider == "ima" or (
+        not provider and source_id.startswith("SRC-IMA-")
+    )
+    if not is_ima:
+        return Path("source") / "manual"
+    raw_date = str(document.get("published_at") or "")
+    if not raw_date:
+        if not source_id:
+            raise ValueError("Unmapped IMA originals require source_id")
+        return Path("source") / "ima" / "unmapped" / source_id
     if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", raw_date):
         raise ValueError(
             "Material originals require a valid storage date"

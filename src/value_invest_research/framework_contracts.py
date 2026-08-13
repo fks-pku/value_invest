@@ -1338,9 +1338,9 @@ def validate_report_contract_markdown(
             )
         )
         subsection_labels = (
-            ("第一性原理逻辑链", "节点状态与观点时间线", "全局结论与趋势")
+            ("第一性原理逻辑链", "逻辑节点与原子观点材料")
             if logic_chain_centered
-            else ("简单逻辑链", "最新结论与趋势")
+            else ("简单逻辑链",)
         )
         for label in subsection_labels:
             if markdown.count(f"### {label}") != 5:
@@ -1352,7 +1352,7 @@ def validate_report_contract_markdown(
                 )
         if is_engine_report:
             node_section_label = (
-                "### 节点状态与观点时间线"
+                "### 逻辑节点与原子观点材料"
                 if logic_chain_centered
                 else "### 逻辑节点与公司信息"
             )
@@ -1399,30 +1399,33 @@ def validate_report_contract_markdown(
                 causal_node_count = len(
                     re.findall(r"^#### \d{2}\. ", markdown, flags=re.MULTILINE)
                 )
-                for heading, issue_code in (
-                    ("##### 节点状态历史", "markdown_logic_state_history"),
-                    ("##### 信息事件历史", "markdown_logic_event_history"),
+                material_header = (
+                    "| 发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响 |"
+                )
+                if (
+                    causal_node_count < 5
+                    or markdown.count(material_header) != causal_node_count
                 ):
-                    if (
-                        causal_node_count < 5
-                        or markdown.count(heading) != causal_node_count
-                    ):
-                        _issue(
-                            issues,
-                            "error",
-                            issue_code,
-                            (
-                                "every causal node must expose both its real "
-                                "state history and market-known event history"
-                            ),
-                        )
-                if "主轴使用市场可知的发布时间" not in markdown:
                     _issue(
                         issues,
                         "error",
-                        "markdown_logic_event_time_axis",
-                        "event history must identify published_at as its main axis",
+                        "markdown_logic_node_material_table",
+                        (
+                            "every causal node must render one locked five-column "
+                            "atomic-claim material table"
+                        ),
                     )
+                for forbidden_heading in (
+                    "##### 节点状态历史",
+                    "##### 信息事件历史",
+                ):
+                    if forbidden_heading in markdown:
+                        _issue(
+                            issues,
+                            "error",
+                            "markdown_logic_node_legacy_history",
+                            "causal nodes must not render the retired dual-history UI",
+                        )
             demand_party_match = re.search(
                 r"^#### Q1 需求方\s*$([\s\S]*?)(?=^#### |^### (?:最新|全局)结论与趋势)",
                 markdown,
@@ -1508,12 +1511,10 @@ def validate_report_contract_markdown(
                         "markdown_demand_quantity_scope",
                         "Q2 demand quantity matrix must not render entity snapshots",
                     )
-            entity_assessment_marker = (
-                "**截面评估：**"
-                if logic_chain_centered
-                else "**截面变化与评估：**"
-            )
-            if markdown.count(entity_assessment_marker) < 1:
+            if (
+                not logic_chain_centered
+                and markdown.count("**截面变化与评估：**") < 1
+            ):
                 _issue(
                     issues,
                     "error",
@@ -1709,15 +1710,11 @@ def _validate_standalone_bom_report_html(
         "top-nav",
         "lens-section",
         "logic-note",
-        "conclusion-panel",
     )
     if logic_chain_centered:
         common_required_classes += (
             "logic-chain-map",
-            "node-state-history",
-            "claim-month-group",
-            "claim-source-group",
-            "claim-event",
+            "node-material-table",
         )
     else:
         common_required_classes += ("claim-list", "claim-index")
@@ -1732,7 +1729,6 @@ def _validate_standalone_bom_report_html(
     for class_name in (
         "lens-section",
         "logic-note",
-        "conclusion-panel",
     ):
         if _class_count(html, class_name) != 5:
             _issue(
@@ -1752,12 +1748,10 @@ def _validate_standalone_bom_report_html(
                 [
                     "logic-chain-map",
                     "causal-node",
-                    "node-state-history",
-                    "state-history-track",
-                    "event-history-toolbar",
-                    "claim-month-group",
-                    "claim-source-group",
-                    "claim-event",
+                    "node-material-table",
+                    "atomic-claim-list",
+                    "claim-impact-list",
+                    "node-material-title",
                 ]
             )
         else:
@@ -1813,45 +1807,112 @@ def _validate_standalone_bom_report_html(
                     "logic-chain-centered reports must expose the logic-chain version",
                 )
             causal_node_count = _class_count(html, "causal-node")
-            if _class_count(html, "node-state-history") != causal_node_count:
+            node_table_count = _class_count(html, "node-material-table")
+            if node_table_count != causal_node_count:
                 _issue(
                     issues,
                     "error",
-                    "standalone_html_node_state_history_count",
-                    "every causal node must render one node-state history",
+                    "standalone_html_node_material_table_count",
+                    "every causal node must render one atomic-claim material table",
                 )
-            for history_body in re.findall(
-                r'<ol\b[^>]*class="[^"]*\bstate-history-track\b[^"]*"[^>]*>(.*?)</ol>',
+            for label in (
+                "发布日期",
+                "报告名称",
+                "材料类型",
+                "原子观点",
+                "对逻辑点的影响",
+            ):
+                if html.count(f'<th scope="col">{label}</th>') != node_table_count:
+                    _issue(
+                        issues,
+                        "error",
+                        "standalone_html_node_material_table_header",
+                        f"every causal-node table must include the locked header {label}",
+                    )
+            for table_body in re.findall(
+                r'<table\b[^>]*class="[^"]*\bnode-material-table\b[^"]*"[^>]*>(.*?)</table>',
                 html,
                 flags=re.IGNORECASE | re.DOTALL,
             ):
                 dates = re.findall(
-                    r'data-history-cutoff="(\d{4}-\d{2}-\d{2})"',
-                    history_body,
+                    r'<time\b[^>]*datetime="(\d{4}-\d{2}-\d{2})"',
+                    table_body,
                     flags=re.IGNORECASE,
                 )
-                if not dates or dates != sorted(dates):
+                if dates != sorted(dates, reverse=True):
                     _issue(
                         issues,
                         "error",
-                        "standalone_html_state_history_order",
-                        "node state snapshots must be ordered oldest to newest",
+                        "standalone_html_node_material_order",
+                        "causal-node material rows must be ordered newest to oldest",
                     )
-            source_group_count = _class_count(html, "claim-source-group")
-            source_date_count = len(
-                re.findall(
-                    r'class="[^"]*\bclaim-source-group\b[^"]*"[^>]*\bdata-published-at="\d{4}-\d{2}-\d{2}"',
-                    html,
+            for row_body in re.findall(
+                r'<tr\b[^>]*class="[^"]*\bnode-material-row\b[^"]*"[^>]*>(.*?)</tr>',
+                html,
+                flags=re.IGNORECASE | re.DOTALL,
+            ):
+                atomic_match = re.search(
+                    r'<ol\b[^>]*class="[^"]*\batomic-claim-list\b[^"]*"[^>]*>(.*?)</ol>',
+                    row_body,
+                    flags=re.IGNORECASE | re.DOTALL,
+                )
+                impact_match = re.search(
+                    r'<ol\b[^>]*class="[^"]*\bclaim-impact-list\b[^"]*"[^>]*>(.*?)</ol>',
+                    row_body,
+                    flags=re.IGNORECASE | re.DOTALL,
+                )
+                atomic_count = (
+                    len(re.findall(r"<li\b", atomic_match.group(1), re.IGNORECASE))
+                    if atomic_match
+                    else 0
+                )
+                impact_count = (
+                    len(re.findall(r"<li\b", impact_match.group(1), re.IGNORECASE))
+                    if impact_match
+                    else 0
+                )
+                if not atomic_count or atomic_count != impact_count:
+                    _issue(
+                        issues,
+                        "error",
+                        "standalone_html_node_material_numbering",
+                        "every atomic claim must have one parallel numbered mapping effect",
+                    )
+                if not re.search(
+                    r'<time\b[^>]*datetime="\d{4}-\d{2}-\d{2}"',
+                    row_body,
                     flags=re.IGNORECASE,
-                )
-            )
-            if source_group_count != source_date_count:
-                _issue(
-                    issues,
-                    "error",
-                    "standalone_html_event_publication_time",
-                    "every source event group must expose its published_at date",
-                )
+                ):
+                    _issue(
+                        issues,
+                        "error",
+                        "standalone_html_node_material_date",
+                        "every causal-node material row requires a publication date",
+                    )
+                if not re.search(
+                    r'<td\b[^>]*class="[^"]*\bnode-material-title\b[^"]*"[^>]*>\s*<a\b',
+                    row_body,
+                    flags=re.IGNORECASE,
+                ):
+                    _issue(
+                        issues,
+                        "error",
+                        "standalone_html_node_material_link",
+                        "every causal-node material row requires a linked report name",
+                    )
+            for retired_class in (
+                "node-state-history",
+                "claim-month-group",
+                "claim-source-group",
+                "claim-event",
+            ):
+                if _class_count(html, retired_class):
+                    _issue(
+                        issues,
+                        "error",
+                        "standalone_html_legacy_history",
+                        f"causal-node report must not render retired class {retired_class}",
+                    )
         entity_table_count = _class_count(html, "entity-table")
         for label in ("材料（含链接）", "类型", "观点列表"):
             if html.count(f'<th scope="col">{label}</th>') != entity_table_count:

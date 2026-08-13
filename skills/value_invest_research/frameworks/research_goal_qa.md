@@ -132,13 +132,19 @@ Research proceeds as:
 
 `atomic claim -> reviewed claim-to-node/entity mapping -> as-of node and entity state -> thesis revision -> company earnings/expectation/valuation bridge -> investment snapshot`
 
-Mappings are separate from immutable claims and preserve direction, directness,
-novelty, materiality, expectation delta, entities, and rationale. Each public lens
-shows its concise logic paragraph, then logic nodes. Every node first separates its
-real state history from its publication-event history; company/entity remains a
-secondary audit, where each entity keeps an append-only as-of assessment and a
-reverse-chronological source table. The report begins with a gated investment
-snapshot. This structure does not waive canonical target recommendation gates.
+Mappings are separate from immutable claims and preserve direction, node fit,
+support/refute rule match, directness, novelty, materiality, expectation delta,
+entities, and claim-specific rationale. `support`/`refute` require direct node fit
+and an explicit rule match. Topic-related forecasts, proxies, and context use
+boundary, constraint, lead, unresolved, conflict, or new-branch effects. Rejected
+claim-to-node proposals remain `unmapped` in the audit ledger and do not enter node
+state or the public node table. Each public lens
+shows its concise logic paragraph, then logic nodes. Every node shows one
+newest-to-oldest source table with exactly
+`发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响`; claims and effects use
+matching numbered lists. Real state history, revisions, gaps, and company/entity
+assessments remain append-only internal coordinates. The report begins with a gated
+investment snapshot. This structure does not waive canonical target recommendation gates.
 
 ## 5. Minimum Research Unit Execution
 
@@ -197,16 +203,18 @@ Claims remain immutable, and mechanisms that do not fit remain visible for chain
 revision.
 
 HTML renders the primary hierarchy
-`lens -> causal logic node -> publication month -> source -> atomic-claim event`.
-Every node also renders a separate oldest-to-newest state history drawn only from
-real as-of states and revisions. Event history uses market-known `published_at`;
-`effective_period` and `target_period` remain labels on the claim. Selecting a state
-cutoff may hide later-published events but never reconstruct or invent a historical
-conclusion. Company/entity is a secondary audit dimension under the node. Every entity audit is collapsed by
-default, starts with `截面变化与评估`, and keeps one three-column table
-`材料（含链接） | 类型 | 观点列表`. One source occupies one row and keeps all
-locator-backed atomic claims plus their mapping effect as
-`• 观点 N（原文位置）：原子观点` bullets in the final cell.
+`lens -> causal logic node -> source row -> numbered atomic claim`. Every node
+contains one table with exactly
+`发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响`, ordered by market-known
+`published_at` from newest to oldest. One source occupies one row. Atomic claims
+and mapping effects use parallel `1, 2, 3...` numbering; locator-backed
+`effective_period` and `target_period` stay in the claim cell. Internal real state
+history, revisions, mapping rationale, downstream effects, and company/entity
+coordinates are retained but are not expanded into duplicate public modules.
+The public lens stops after its causal-node evidence and any explicitly retained
+derived view. It does not render a separate lens-level `全局结论与趋势`; the leading
+`当前投资判断` owns global synthesis, while internal lens conclusions and trends
+remain available for audit and snapshot construction.
 
 For a demand-side question tree, Q1 is a pure demander taxonomy. It asks only:
 `当前有哪些需求方？哪些主体是潜在未来需求方？` The two groups must be

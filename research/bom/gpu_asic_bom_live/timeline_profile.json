@@ -1,7 +1,8 @@
 {
-  "schema_version": "3.1",
+  "schema_version": "3.3",
   "research_model": "logic_chain_centered",
-  "logic_chain_version": "2026-08-11.v1",
+  "logic_chain_version": "2026-08-12.v2",
+  "strict_mapping_effects_from": "2026-08-12",
   "bom_node_id": "gpu_asic",
   "lenses": [
     {
@@ -9,8 +10,6 @@
       "label": "需求侧",
       "logic_chain": "GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力强度、客户预算与资本承诺、订单和交付可见性，最终进入收入、毛利与现金流。需求方分类和当前数量矩阵只作为局部证据视图；它们不能替代对整条因果链的判断。GPU 与 ASIC 的承接份额由技术侧平台竞争节点共同约束。",
       "public_logic_node_ids": [
-        "demand.demand_universe",
-        "demand.current_quantity",
         "demand.workload_growth",
         "demand.compute_intensity",
         "demand.customer_compute_budget",

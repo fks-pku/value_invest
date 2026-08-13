@@ -167,7 +167,17 @@ class StandaloneBomTimelineTests(unittest.TestCase):
             )
             self.assertEqual(markdown.count("GPU demand report"), 1)
             self.assertIn("| 时间 | 信息类型 | Source | 观点列表 |", markdown)
-            self.assertIn("需求预期继续上修", markdown)
+            self.assertNotIn("需求预期继续上修", markdown)
+            conclusions = [
+                json.loads(line)
+                for line in (project_dir / "ledger/conclusions.jsonl").read_text(
+                    encoding="utf-8"
+                ).splitlines()
+            ]
+            self.assertEqual(
+                conclusions[0]["conclusion"],
+                "需求预期继续上修，但需要订单兑现。",
+            )
             self.assertIn(
                 (
                     f"](<{project_dir.resolve() / 'source/ima/2026/07/23/report.pdf'}>)"

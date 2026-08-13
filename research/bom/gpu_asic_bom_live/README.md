@@ -22,4 +22,9 @@ archived as one research unit.
 The 2026-08-07 discussion about moving from table-centered demand research to a
 logic-chain-centered, temporal atomic-claim model is preserved in
 [`docs/superpowers/specs/2026-08-07-logic-chain-centered-bom-research.md`](../../../docs/superpowers/specs/2026-08-07-logic-chain-centered-bom-research.md).
-It is a discussion baseline, not an implemented framework contract.
+The baseline is now implemented by the versioned `logic_chain_centered` profile.
+As of `2026-08-12.v2`, claim-to-node review distinguishes direct support/refute
+from boundaries, constraints, leads, unresolved relations, new branches, and
+explicitly rejected `unmapped` relations. The executable framework contracts,
+validators, ledgers, and generated reports are authoritative when this earlier
+discussion note differs from the implementation.

@@ -33,22 +33,19 @@ DIRECTION_LABELS = {
     "conflict": "证据冲突",
     "unresolved": "暂未判断",
     "neutral": "线索",
+    "unmapped": "不映射",
 }
 
-STATE_LABELS = {
-    "unresolved": "待验证",
-    "weak": "证据偏弱",
-    "strengthening": "正在增强",
-    "confirmed": "已验证",
-    "weakening": "正在减弱",
-    "refuted": "已反证",
-}
-
-EVIDENCE_NATURE_LABELS = {
-    "fact": "事实",
-    "forecast": "预测",
-    "opinion": "观点",
-    "lead": "线索",
+CLAIM_IMPACT_LABELS = {
+    "support": "增强",
+    "refute": "减弱",
+    "boundary": "改变边界",
+    "constraint": "新增约束",
+    "new_branch": "新增分支",
+    "conflict": "冲突",
+    "unresolved": "待判断",
+    "neutral": "线索",
+    "unmapped": "不映射",
 }
 
 
@@ -111,7 +108,7 @@ class StandaloneBomMarkdownRenderer:
             logic_nodes = list(lens.get("logic_nodes") or [])
             if logic_nodes:
                 if logic_chain_centered:
-                    lines.extend(["### 节点状态与观点时间线", ""])
+                    lines.extend(["### 逻辑节点与原子观点材料", ""])
                     for position, node in enumerate(
                         lens.get("causal_nodes") or [], start=1
                     ):
@@ -161,21 +158,6 @@ class StandaloneBomMarkdownRenderer:
                         f"| {view['as_of_date']} | 其他 | 无 | "
                         "尚无经过问题化解析和复核的材料。 |"
                     )
-            lines.extend(
-                [
-                    "",
-                    (
-                        "### 全局结论与趋势"
-                        if logic_chain_centered
-                        else "### 最新结论与趋势"
-                    ),
-                    "",
-                    lens["conclusion"],
-                    "",
-                ]
-            )
-            if lens.get("trend"):
-                lines.extend([f"**趋势变化：** {lens['trend']}", ""])
         return "\n".join(lines).rstrip() + "\n"
 
 
@@ -349,177 +331,69 @@ def _logic_chain_node_lines(
     lines = [
         f"#### {position:02d}. {node.get('title') or node.get('logic_node_id') or '逻辑节点'}",
         "",
-        f"**要验证的因果命题：** {node.get('question') or ''}",
-        "",
         f"**当前节点状态：** {node.get('state') or 'unresolved'}",
         "",
         f"**当前结论：** {node.get('conclusion') or ''}",
         "",
         f"**相较上一截面：** {node.get('change_summary') or ''}",
         "",
-    ]
-    lines.extend(_state_history_lines(node))
-    lines.extend(_event_history_lines(node, project_dir=project_dir))
-    lines.extend(["", "##### 缺口与下一验证", ""])
-    gaps = list(node.get("evidence_gaps") or [])
-    lines.append(
-        "- 证据缺口："
-        + ("；".join(str(item) for item in gaps) if gaps else "当前未登记额外缺口。")
-    )
-    lines.append(
-        f"- 下一验证：{node.get('next_validation') or '等待下一份相关材料验证。'}"
-    )
-    lines.append("")
-
-    entities = list(node.get("entities") or [])
-    if entities:
-        lines.extend(["##### 实体材料审计", ""])
-    for entity in entities:
-        lines.extend(
-            [
-                f"###### {entity.get('entity_name') or '未命名实体'}",
-                "",
-                f"**截面评估：** {entity.get('assessment') or ''}",
-                "",
-                f"**相较上一截面：** {entity.get('change_summary') or ''}",
-                "",
-                "| 材料（含链接） | 类型 | 观点列表 |",
-                "|---|---|---|",
-            ]
-        )
-        groups = _group_claims_by_source(list(entity.get("claims") or []))
-        if groups:
-            lines.extend(
-                _entity_source_claim_row(group, project_dir=project_dir)
-                for group in groups
-            )
-        else:
-            lines.append("| 无 | 其他 | 尚无经过复核的实体级材料。 |")
-        lines.append("")
-    return lines
-
-
-def _state_history_lines(node: dict[str, Any]) -> list[str]:
-    lines = [
-        "##### 节点状态历史",
-        "",
-        "> 从早到晚列出真实研究截面；没有结构化快照时，不补写历史状态。",
-        "",
-        "| 研究截面 | 节点状态 | 状态变化 | 当时结论 | 修订依据 |",
+        "| 发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响 |",
         "|---|---|---|---|---|",
     ]
-    history = list(node.get("state_history") or [])
-    if not history:
-        lines.append("| 无 | 待验证 | 无 | 尚无可复现截面 | - |")
-        return lines + [""]
-    for snapshot in history:
-        state = str(snapshot.get("state") or "unresolved")
-        previous_state = str(snapshot.get("previous_state") or "")
-        if str(snapshot.get("revision_type") or "") == "baseline" or not previous_state:
-            transition = "建立基线"
-        else:
-            transition = (
-                f"{STATE_LABELS.get(previous_state, previous_state)} → "
-                f"{STATE_LABELS.get(state, state)}"
-            )
-        lines.append(
-            f"| {_escape_cell(str(snapshot.get('as_of_date') or ''))} "
-            f"| {_escape_cell(STATE_LABELS.get(state, state))} "
-            f"| {_escape_cell(transition)} "
-            f"| {_escape_cell(str(snapshot.get('conclusion') or ''))} "
-            f"| {_escape_cell(str(snapshot.get('revision_rationale') or snapshot.get('change_summary') or ''))} |"
+    source_groups = [
+        source
+        for period_group in node.get("event_history_groups") or []
+        for source in period_group.get("sources") or []
+    ]
+    if source_groups:
+        lines.extend(
+            _logic_chain_material_row(source, project_dir=project_dir)
+            for source in source_groups
         )
+    else:
+        lines.append("| — | 暂无报告 | 其他 | 当前没有映射到该节点的原子观点。 | 待判断 |")
     return lines + [""]
 
 
-def _event_history_lines(
-    node: dict[str, Any],
+def _logic_chain_material_row(
+    source_group: dict[str, Any],
     *,
     project_dir: Path | None,
-) -> list[str]:
-    lines = [
-        "##### 信息事件历史",
-        "",
-        "> 主轴使用市场可知的发布时间；实际期间和预测期间只作为原子观点标签。",
-        "",
-    ]
-    groups = list(node.get("event_history_groups") or [])
-    if not groups:
-        return lines + ["- 当前没有映射到该节点的原子观点。", ""]
-    for group in groups:
-        lines.extend([f"###### {group.get('period_label') or '日期未明'}", ""])
-        revisions = list(group.get("state_revisions") or [])
-        if revisions:
-            lines.append(
-                "**本期节点修订：** "
-                + "；".join(str(row.get("rationale") or "") for row in revisions)
-            )
-        else:
-            lines.append(
-                "**本期解释：** 信息已进入节点账本；是否改变判断以上方状态历史为准。"
-            )
-        lines.append("")
-        for source_group in group.get("sources") or []:
-            title = _escape_cell(
-                str(
-                    source_group.get("source_title")
-                    or source_group.get("source_id")
-                    or "来源"
-                )
-            )
-            url = _rendered_source_url(
-                str(source_group.get("source_url") or ""),
-                project_dir=project_dir,
-            )
-            source = f"[{title}]({_markdown_link_target(url)})" if url else title
-            material = MATERIAL_LABELS.get(
-                str(source_group.get("material_class") or ""), "其他"
-            )
-            lines.extend(
-                [
-                    (
-                        f"**{source_group.get('published_at') or '日期未明'} · {source} · "
-                        f"{material}**（{int(source_group.get('claim_count') or 0)}条）"
-                    ),
-                    "",
-                ]
-            )
-            for index, event in enumerate(source_group.get("events") or [], start=1):
-                direction = DIRECTION_LABELS.get(
-                    str(event.get("direction") or "neutral"), "线索"
-                )
-                nature = EVIDENCE_NATURE_LABELS.get(
-                    str(event.get("evidence_nature") or "opinion"), "观点"
-                )
-                labels = [direction, nature]
-                labels.extend(str(entity) for entity in event.get("entities") or [])
-                if event.get("effective_period"):
-                    labels.append(f"实际：{event['effective_period']}")
-                if event.get("target_period"):
-                    labels.append(f"预测：{event['target_period']}")
-                lines.extend(
-                    [
-                        f"- **观点 {index} · {' · '.join(labels)}**",
-                        f"  - 原文位置：{event.get('source_location') or '未标注'}",
-                        f"  - 原子观点：{event.get('statement') or ''}",
-                        f"  - 影响逻辑：{event.get('rationale') or '尚未记录映射依据。'}",
-                    ]
-                )
-                revisions = list(event.get("triggered_revisions") or [])
-                if revisions:
-                    lines.append(
-                        "  - 触发节点修订："
-                        + "；".join(
-                            str(row.get("rationale") or "") for row in revisions
-                        )
-                    )
-                downstream = "、".join(
-                    str(item) for item in event.get("downstream_impacts") or []
-                )
-                if downstream:
-                    lines.append(f"  - 向下游传导：{downstream}")
-            lines.append("")
-    return lines
+) -> str:
+    title = _escape_cell(
+        str(source_group.get("source_title") or source_group.get("source_id") or "来源")
+    )
+    url = _rendered_source_url(
+        str(source_group.get("source_url") or ""),
+        project_dir=project_dir,
+    )
+    report_name = f"[{title}]({_markdown_link_target(url)})" if url else title
+    atomic_claims = []
+    impacts = []
+    for index, event in enumerate(source_group.get("events") or [], start=1):
+        labels = []
+        if event.get("source_location"):
+            labels.append(str(event["source_location"]))
+        if event.get("effective_period"):
+            labels.append(f"实际：{event['effective_period']}")
+        if event.get("target_period"):
+            labels.append(f"预测：{event['target_period']}")
+        suffix = f"（{'；'.join(labels)}）" if labels else ""
+        atomic_claims.append(
+            f"{index}. {_escape_cell(str(event.get('statement') or ''))}{_escape_cell(suffix)}"
+        )
+        impact = CLAIM_IMPACT_LABELS.get(
+            str(event.get("direction") or "neutral"),
+            "待判断",
+        )
+        impacts.append(f"{index}. {_escape_cell(impact)}")
+    return (
+        f"| {_escape_cell(str(source_group.get('published_at') or '日期未明'))} "
+        f"| {report_name} "
+        f"| {_escape_cell(MATERIAL_LABELS.get(str(source_group.get('material_class') or ''), '其他'))} "
+        f"| {'<br>'.join(atomic_claims) or '暂无原子观点'} "
+        f"| {'<br>'.join(impacts) or '待判断'} |"
+    )
 
 
 def _logic_node_lines(

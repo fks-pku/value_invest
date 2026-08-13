@@ -199,19 +199,18 @@ parent. Markdown mirrors the public content for auditability.
 When the research object is explicitly one BOM rather than an industry chain, use
 `report_scope: standalone-bom`. Render five collapsible top-level HTML sections:
 `需求侧`, `供给侧`, `技术侧`, `估值侧`, and `ESG`. Every section contains one
-`第一性原理逻辑链`, full-width `节点状态与观点时间线`, optional `派生证据视图`,
-and one `全局结论与趋势`. The primary evidence hierarchy is
-`lens -> causal node -> publication month -> source -> atomic-claim event`. Inside
-each node, `节点状态历史` shows only real snapshots from oldest to newest, while
-`信息事件历史` uses `published_at` as its main axis. Effective and target periods
-remain claim tags rather than timeline coordinates. Each event preserves source,
-locator, mapping effect and rationale, relevant period, downstream impact, and an
-actual revision marker only when the revision ledger names that claim.
-Selecting a state point shows that stored conclusion and hides events published
-after its cutoff; it never synthesizes a missing historical conclusion.
-Company/entity remains a secondary audit under the same node. Each entity audit is
-a collapsed-by-default module containing `截面变化与评估` and a newest-to-oldest
-three-column table: `材料（含链接） | 类型 | 观点列表`. Precede the five lenses
+`第一性原理逻辑链`, full-width `逻辑节点与原子观点材料`, and optional
+`派生证据视图`. Do not render a separate lens-level `全局结论与趋势`; keep the
+global synthesis only in the leading `当前投资判断`, with node conclusions attached
+to their evidence. The primary evidence hierarchy is
+`lens -> causal node -> source row -> numbered atomic claim`. Every causal node
+body contains exactly one newest-to-oldest table with
+`发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响`. One source occupies one
+row; claims and effects use matching `1, 2, 3...` numbering. The report-name link
+is blue. Locator, effective period, and target period remain compact labels in the
+atomic-claim cell. Do not render separate public state-history, event-history,
+filter, or company/entity audit modules. Internal mappings, real as-of states,
+revisions, gaps, and entity states remain append-only and auditable. Precede the five lenses
 with one gated `当前投资判断` that separates fundamental, consensus, and priced-in
 changes. Its lead paragraph rolls up strengthened causal nodes, main breakpoints,
 and failed gates. Keep source-batch or Q2-specific updates in a separate
@@ -227,9 +226,14 @@ quantity matrix must retain its visible Q1 demand-party classification view.
 In `logic_chain_centered` research, the playbook declares a versioned
 `logic_chain_version`. Atomic claims use a minimum audit envelope instead of one
 universal metric table. A separate reviewed mapping records `support`, `refute`,
-`boundary`, `constraint`, `new_branch`, `conflict`, `unresolved`, or `neutral`,
-plus rationale and downstream impacts. A claim stays immutable and is interpreted
-once at its primary causal node; new mechanisms remain visible for chain revision.
+`boundary`, `constraint`, `new_branch`, `conflict`, `unresolved`, `neutral`, or
+`unmapped`, plus node fit, support/refute rule match, claim-specific rationale, and
+downstream impacts. `support` and `refute` require direct node fit and an explicit
+match to the node rule; forecasts, proxies, contextual inputs, and incomplete
+observations use the other effects. A rejected claim-to-node proposal remains
+`unmapped`, is excluded from the public node table and node state, and preserves
+its audit trail. A claim stays immutable and is interpreted once at its primary
+causal node; new mechanisms remain visible for chain revision.
 
 If the demand lens begins with Q1 `需求方`, that node answers only who demands the
 BOM. Its public output is two lists: `当前需求方` and `潜在未来需求方`. Keep
@@ -274,13 +278,11 @@ passing the company financial, valuation, refutation, and risk-control gates.
 Do not compute or display numeric or qualitative confidence scores. Explain the
 judgment through supporting claims, refuting claims, source conditions, gaps, and
 the next falsifiable validation instead.
-Each entity module uses one full-width, horizontally scrollable table with exactly
-`材料（含链接） | 类型 | 观点列表`. One material occupies one row; the material
-cell includes `published_at` and links directly to the original PDF. Multiple
-atomic claims from the same source, node, and entity stay in one real bullet list
-using `观点 N / 原文位置 / 原子观点 / 支持或反证方向`. The Markdown audit sidecar
-mirrors the same entity tables. Local PDF links navigate in the current tab; only
-HTTP(S) sources open a new tab. Do not expose source-search process fields.
+The Markdown audit sidecar mirrors each causal node's five-column material table.
+Local PDF links navigate in the current tab; only HTTP(S) sources open a new tab.
+Do not expose source-search process fields. Company/entity coordinates remain in
+the append-only internal ledger and investment snapshot rather than a duplicate
+public evidence module.
 
 Every standalone BOM and every `boms/<node_id>/` child is a self-contained project
 directory. It owns `project.json`, `professional_report.html`,

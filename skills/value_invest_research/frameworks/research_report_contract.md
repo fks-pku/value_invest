@@ -92,23 +92,27 @@ update as the global judgment.
 Each HTML section contains exactly:
 
 1. `第一性原理逻辑链`: one natural-language paragraph explaining the causal test.
-2. `节点状态与观点时间线`: full-width causal nodes in canonical order. The visible
-   node summary shows current state, conclusion, and real baseline/change. The
-   collapsed body first shows `节点状态历史`, using only real as-of snapshots from
-   oldest to newest. It then shows `信息事件历史`, grouped by publication month,
-   source, and atomic claim. The event axis is `published_at`; `effective_period`
-   and `target_period` remain claim labels. Each event keeps locator, mapping effect
-   and rationale, downstream impact, and a revision marker only when a real revision
-   names that claim. Selecting a state point displays its stored contemporaneous
-   conclusion and hides events published after that cutoff; it never synthesizes a
-   missing state. Effect filters change visibility only. Evidence gap and next
-   validation follow.
+2. `逻辑节点与原子观点材料`: full-width causal nodes in canonical order. The
+   visible node summary shows current state, conclusion, and real baseline/change.
+   The collapsed body contains exactly one horizontally scrollable table:
+   `发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响`. Rows use
+   `published_at` from newest to oldest, and one source occupies one row. The report
+   name is a blue link. Atomic claims are numbered `1, 2, 3...`; the final cell
+   uses a matching numbered list of `增强`, `减弱`, `边界`, `约束`, `线索`,
+   `待判断`, `新分支`, `冲突`, or another explicit active mapping effect. Original
+   locator, `effective_period`, and `target_period` stay as compact
+   labels in the atomic-claim cell. Do not add public state-history, event-history,
+   filter, gap, next-validation, or company/entity audit modules. Those records stay
+   in the append-only internal ledgers.
 3. Optional `派生证据视图`: Q1/Q2 or another structured projection that supports
    navigation or comparison but does not replace the causal chain or generate the
    lens conclusion.
-4. `全局结论与趋势`: a natural-language synthesis derived from the causal-node
-   states and displayed events. Do not render confidence scores; show auditable
-   evidence conditions instead.
+
+Do not render a separate lens-level `全局结论与趋势`. The leading
+`当前投资判断` is the only public global synthesis. Node conclusions remain visible
+with their evidence, while lens conclusions and trend records remain internal inputs
+to snapshots and audit ledgers. Do not render confidence scores; show auditable
+evidence conditions instead.
 
 An explicit user request may narrow one lens's public logic-node modules through
 `public_logic_node_ids`. In a `logic_chain_centered` report, the ordered subset must
@@ -150,14 +154,14 @@ BOM x lens/question x logic node x company/entity x as_of_date
 For public interpretation, the primary hierarchy is:
 
 ```text
-BOM x lens x causal logic node x publication month x source x atomic-claim event
+BOM x lens x causal logic node x source row x numbered atomic claim
 ```
 
 The rendered expansion of that coordinate is:
 
 ```text
-logic node -> oldest-to-newest real state history
-logic node -> publication month -> source -> atomic claim
+logic node -> newest-to-oldest source rows -> numbered atomic claims
+                                       -> matching numbered mapping effects
 ```
 
 Do not stretch a forecast across the publication axis. A claim published once but
@@ -168,27 +172,30 @@ Atomic claims use the minimum audit envelope and remain immutable. A separate
 reviewed mapping records `support`, `refute`, `boundary`, `constraint`,
 `new_branch`, `conflict`, `unresolved`, or compatibility `neutral`, plus rationale
 and downstream impacts. Company/entity is a secondary audit dimension under each
-causal node, not the organizing spine of the public reasoning.
+causal node, not the organizing spine of the public reasoning. Real node snapshots,
+entity snapshots, mapping rationale, downstream impacts, gaps, and next validation
+remain in the internal audit structure; they do not create duplicate public tables.
 
-Every audited company/entity is one full-width `<details>` module and is collapsed by
-default. Before the table it renders `截面变化与评估`, including the evidence-backed
-current assessment and a real comparison with the prior entity snapshot. The first
-snapshot says it is a baseline and never invents prior change.
-
-Every entity module contains one horizontally scrollable table with exactly:
+Every causal node contains one horizontally scrollable table with exactly:
 
 ```text
-材料（含链接） | 类型 | 观点列表
+发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响
 ```
 
-One source occupies one row. `材料（含链接）` contains `published_at` plus one
-clickable official or project-local original-material link. `类型` uses the public
-material classes `官方财报`, `官方公司`, `研报`, `第三方权威`, `市场消息`,
-`专家观点`, or `其他`. `观点列表` groups only the GPT-reviewed atomic claims that
-map to both the current logic node and the current company/entity. Every bullet
-visibly separates `观点 N`, `原文位置`, atomic claim, and support/refute direction.
-Mapping metadata never replaces the source quotation locator. Do not repeat the
-same evidence in a lens-level timeline.
+One source occupies one row. `报告名称` is the official or project-local original-material link.
+`材料类型` uses the public material classes `官方财报`, `官方公司`,
+`研报`, `第三方权威`, `市场消息`, `专家观点`, or `其他`. `原子观点` groups only
+the GPT-reviewed atomic claims mapped to the current causal node and numbers them
+`1, 2, 3...`. `对逻辑点的影响` uses the same numbering so every impact maps visually
+to exactly one claim. Mapping metadata never replaces the source locator. Do not
+repeat the same evidence in another public module.
+
+`增强` and `减弱` are reserved for direct claim-to-node relationships that
+explicitly satisfy the node support/refute rule. Forecasts, proxies, contextual
+inputs, and incomplete observations render as `边界`, `约束`, `线索`, `待判断`,
+`新分支`, or `冲突`. Reviewed rejected relationships remain internally as
+`unmapped`; they are not rendered in a causal-node table and do not contribute to
+node state.
 
 `published_at` is the market-visible publication date, not the fiscal period
 described by the source. Local PDF links use the renderer-resolved project-relative
@@ -197,19 +204,18 @@ path. They navigate in the current tab because opening local files with
 `target="_blank"` can produce an empty browser tab. Only HTTP(S) links may use
 `target="_blank"`.
 The location preserves its page, item, heading, table, or paragraph locator. It is
-not a document-level abstract. The Markdown sidecar mirrors the causal-node event
-timeline plus the secondary entity hierarchy and
-`材料（含链接） | 类型 | 观点列表` table.
+not a document-level abstract. The Markdown sidecar mirrors the causal-node
+five-column table.
 
 ```text
-| 材料（含链接） | 类型 | 观点列表 |
+| 发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响 |
 ```
 
 The same source may appear under several entities or nodes only after a separate
 mapping confirms that the atomic claim applies to each coordinate. Rows are never
 padded with model priors. The conclusion must distinguish facts, forecasts,
 disagreement, and the strongest boundary condition. A standalone BOM report does
-not require a duplicate source-index section because its entity tables are the
+not require a duplicate source-index section because its causal-node tables are the
 claim-level index; `sources.jsonl` remains the structured audit ledger.
 
 ## 1. Current Research Goal
@@ -401,7 +407,7 @@ Freeze recommendations before attaching labels.
 3. Parent, manifest, and child paths preserve one-to-one BOM identity.
 4. BOM ID and public name come from the canonical registry.
 5. Every `bom-node` child keeps the same six semantic questions; every `standalone-bom` keeps the five professional lenses.
-6. Every six-question module keeps its temporal sequence; every logic-chain-centered standalone report keeps `当前投资判断`, then each lens keeps `第一性原理逻辑链 -> 节点状态与观点时间线 -> 可选派生证据视图 -> 全局结论与趋势` and claim-level source links.
+6. Every six-question module keeps its temporal sequence; every logic-chain-centered standalone report keeps `当前投资判断`, then each lens keeps `第一性原理逻辑链 -> 逻辑节点与原子观点材料 -> 可选派生证据视图` and one five-column claim-level source table per causal node, without a separate lens-level `全局结论与趋势`.
 7. Backtest cutoff and label isolation remain enforced.
 8. Public reports contain no raw process traces or change logs.
 
@@ -413,7 +419,7 @@ Before publication:
 2. run `validate-report-contract` on `professional_report.html` and the Markdown sidecar;
 3. run `validate-material-intake` when intake artifacts exist;
 4. run `validate-research-artifacts --require-l3` when artifacts exist;
-5. verify scope-specific section order, parent-child links where applicable, six-question or five-lens identity, timeline order, Markdown tables, source links, and no public process text;
+5. verify scope-specific section order, parent-child links where applicable, six-question or five-lens identity, newest-to-oldest causal-node material tables, parallel claim/effect numbering, source links, and no public process text;
 6. run `git diff --check`.
 
 HTML visual and contract validation is the publication gate; Markdown validation

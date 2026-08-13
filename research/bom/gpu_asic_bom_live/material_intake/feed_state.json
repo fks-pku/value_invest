@@ -13,6 +13,20 @@
         "pdf_19ee3075e13eb6fc6b0a6821afb4b957_e0e87585bbd606fcc7a0e6071f9840ef7442602265681522",
         "pdf_19ee3075e13eb6fc6b0a6821afb4b957_ee9d3901959510b9ce70c08b4de5cc327442602265681522"
       ]
+    },
+    "manual_folder:gpu-asic-2026-07-28": {
+      "provider": "manual_folder",
+      "feed_id": "gpu-asic-2026-07-28",
+      "last_scan_at": "2026-08-13",
+      "last_scan_id": "SCAN-MANUAL_FOLDER-DF268ACDE1B1A3CE",
+      "seen_external_ids": [
+        "2026-07-28/德银-甲骨文-CFO会谈-260727.pdf",
+        "2026-07-28/摩根大通-自动驾驶到人形机器人-260727.pdf",
+        "2026-07-28/大摩-先进封装玻璃基板-260726.pdf",
+        "2026-07-28/花旗-蓝思科技Intel玻璃基板-260726.pdf",
+        "2026-07-28/摩根大通-亚太电子元器件路演-260727.pdf",
+        "2026-07-28/伯恩斯坦-UMC-Vanguard-260727.pdf"
+      ]
     }
   }
 }

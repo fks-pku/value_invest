@@ -122,7 +122,13 @@ period. Do not require every claim to fit one universal metric table.
 
 Every reviewed claim-to-node mapping records how the claim changes the chain:
 `support`, `refute`, `boundary`, `constraint`, `new_branch`, `conflict`,
-`unresolved`, or compatibility `neutral`. The original claim remains immutable.
+`unresolved`, `neutral`, or `unmapped`. `support` and `refute` are reserved for
+claims that directly fit the node and explicitly satisfy its support or refute
+rule. Topic relevance, forecasts, proxies, and contextual inputs use the other
+effects; they never become support merely because they concern the same BOM.
+`unmapped` is a reviewed decision that the proposed claim-to-node relationship
+does not hold; the rejected node remains only as an audit coordinate and is not
+rendered or counted in node state. The original claim remains immutable.
 One primary node avoids duplicate interpretation; optional secondary nodes and
 downstream impacts preserve real multi-node effects. New mechanisms that do not fit
 the current chain remain visible for chain revision instead of being forced into a
@@ -386,20 +392,23 @@ modules stay inside the relevant BOM child unless they are truly chain-wide.
 An explicitly isolated BOM may instead use `report_scope: standalone-bom`. Its
 public HTML contains one `当前投资判断` snapshot followed by five collapsible
 top-level sections in this order: `需求侧`, `供给侧`, `技术侧`, `估值侧`, `ESG`.
-Each section renders `第一性原理逻辑链`, then `节点状态与观点时间线`, optional
-`派生证据视图`, and `全局结论与趋势`. Causal nodes are full-width,
+Each section renders `第一性原理逻辑链`, then `逻辑节点与原子观点材料`, optional
+`派生证据视图`. Do not render a separate lens-level `全局结论与趋势`; global
+synthesis belongs only in the leading `当前投资判断`, while node conclusions stay
+beside their evidence. Causal nodes are full-width,
 collapsed-by-default disclosures. Their visible summary shows current node state,
-conclusion, and real change. Their body uses two distinct histories: `节点状态历史`
-lists only real as-of states from oldest to newest, while `信息事件历史` uses
-`published_at` as the primary axis and groups events by publication month, source,
-and atomic claim. Effective and target periods remain claim labels, never main-axis
-dates. Snapshot controls may hide information published after the selected cutoff;
-they also display that stored snapshot's contemporaneous conclusion and must never
-invent a historical state. Event filters affect reading only, not
-node judgment. Every event keeps mapping effect and rationale, and a revision marker
-only when an actual thesis revision names that claim. Evidence gaps, next validation,
-and the secondary company/entity audit follow. The report does not inherit the
-four-section industry shell or the six-question BOM-child layout.
+conclusion, and real change. Their body contains exactly one horizontally scrollable
+table with `发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响`. Rows use
+`published_at` and run newest to oldest; one source occupies one row. The report
+name is a blue source link. Atomic claims are numbered `1, 2, 3...`, and the final
+cell keeps a parallel numbered list using `增强`, `减弱`, `边界`, `约束`, `线索`,
+`待判断`, `新分支`, `冲突`, or another explicit active mapping effect. Original
+locator, effective period, and target period stay compact
+labels inside the atomic-claim cell. Local sources navigate in the current tab;
+only HTTP(S) sources open a new tab. Do not render separate public state-history,
+event-history, filter, or company/entity audit modules. The append-only state,
+revision, mapping, and entity ledgers remain the internal audit source. The report
+does not inherit the four-section industry shell or the six-question BOM-child layout.
 
 When the user explicitly narrows one lens's public modules, the playbook may set
 `public_logic_node_ids` for that lens. In a logic-chain-centered profile, this list
@@ -424,23 +433,16 @@ state `partial_research`; it must not imply research completion.
 
 Inside each public BOM question module, render one compact `基本理解思路`, followed by `当前结论`, `相较上一截面的变化`, `时间演化`, `映射材料`, and `信息覆盖`. Do not render mandatory per-stage evidence cards. Logic hints orient the reader; they never constrain which material may enter the ledger. Every mapped material keeps a source link, `material_class`, and `ingestion_channel` next to the supported claim. Past conclusions may be shown only when a real prior snapshot exists. Raw IMA IDs, credentials, internal search queries, and pending parse tasks never appear in public Markdown.
 
-Structured standalone BOM evidence renders primarily in this exact hierarchy:
-`BOM x lens x causal logic node x publication month x source x atomic-claim event`.
-The parallel node-state track is `logic node x as_of_date` and only contains real
-snapshots. Each event keeps the linked source, original locator, atomic statement,
-mapping effect and rationale, relevant business period, and downstream impact.
-Company/entity is a secondary audit dimension under the same node, not the main
-organizing spine. Every audited
-company/entity is one collapsed-by-default, full-width disclosure module. Before
-its evidence table, render `截面变化与评估` plus the real change from its previous
-snapshot. The module then renders one horizontally scrollable table with exactly
-`材料（含链接） | 类型 | 观点列表`. One source occupies one row; publication date
-appears inside the material cell, and every bullet preserves `观点 N / 原文位置 /
-原子观点 / 支持或反证方向`. Do not repeat the same material in a lens-level
-timeline. The Markdown audit sidecar mirrors the causal-node event timeline and the
-secondary entity three-column tables. Local PDF links navigate in the current tab;
-only HTTP(S) sources may use a new tab. Logic nodes and company impacts render as
-full-width rows, not narrow side-by-side cards.
+Structured standalone BOM evidence renders publicly in this exact hierarchy:
+`BOM x lens x causal logic node x source row x numbered atomic claim`. Every
+causal node owns the same five-column table:
+`发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响`. The Markdown audit
+sidecar mirrors that table. The internal parallel coordinates remain
+`logic node x as_of_date` and
+`logic node x company/entity x as_of_date`; they preserve real snapshots,
+mapping rationale, downstream impact, gaps, and next validation without expanding
+the public page. Logic nodes and company impacts render as full-width rows, not
+narrow side-by-side cards.
 
 The Q1 `需求方` derived view is the sole presentation exception. When its playbook uses
 `render_mode: demand_party_list`, render only two compact groups—`当前需求方` and
@@ -495,5 +497,8 @@ Before calling a framework change complete:
 3. Run `validate-material-intake` when search or knowledge-base intake artifacts exist.
 4. Run `validate-ima-archive` after an IMA daily archive run.
 5. Run `validate-research-artifacts --require-l3` when artifacts exist.
-6. Run a Markdown/static smoke check for the selected report scope: four-section order and parent-child links for industry reports, or five-lens order plus oldest-to-newest real state tracks, newest-to-oldest publication event groups, and reverse-chronological entity-material tables for `standalone-bom`; always verify readable tables, source links, no public process text, and no `actionable_long` target with a failed research gate.
-7. Run `git diff --check`.
+6. Run a Markdown/static smoke check for the selected report scope: four-section order and parent-child links for industry reports, or five-lens order plus one newest-to-oldest five-column atomic-claim material table per causal node for `standalone-bom`; always verify readable tables, source links, parallel claim/effect numbering, no separate lens-level `全局结论与趋势`, no retired dual-history UI, no public process text, and no `actionable_long` target with a failed research gate.
+7. Verify causal `support`/`refute` mappings have direct node fit and explicitly
+   match the node support/refute rule; proxies, context, and rejected relations use
+   another effect including `unmapped`.
+8. Run `git diff --check`.

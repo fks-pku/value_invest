@@ -22,10 +22,6 @@ def _report(*, reverse_dates: bool = True) -> str:
                     "|---|---|---|---|",
                     f"| {dates[0]} | 官方财报 | [来源](https://example.com/{index}/a) Item 1 | 事实。 |",
                     f"| {dates[1]} | 第三方权威 | [来源](https://example.com/{index}/b) 第 2 页 | 观点。 |",
-                    "",
-                    "### 最新结论与趋势",
-                    "",
-                    "结论。",
                 ]
             )
         )

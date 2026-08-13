@@ -27,8 +27,11 @@ MAPPING_DIRECTIONS = (
     "conflict",
     "unresolved",
     "neutral",
+    "unmapped",
 )
 MAPPING_ROLES = ("primary", "secondary")
+NODE_FITS = ("direct", "proxy", "contextual", "unmapped")
+RULE_MATCHES = ("support_rule", "refute_rule", "neither")
 PRESENTATION_ROLES = ("causal_node", "derived_view")
 EVIDENCE_NATURES = ("fact", "forecast", "opinion", "lead")
 NOVELTY_LEVELS = ("new", "confirming", "repeated")
@@ -284,6 +287,30 @@ def normalize_claim_mapping(
         raw, "evidence_nature", EVIDENCE_NATURES, "opinion"
     )
     directness = _choice(raw, "directness", ("direct", "indirect"), "indirect")
+    node_fit = _choice(
+        raw,
+        "node_fit",
+        NODE_FITS,
+        (
+            "unmapped"
+            if direction == "unmapped"
+            else "direct"
+            if direction in ("support", "refute")
+            else "proxy"
+        ),
+    )
+    rule_match = _choice(
+        raw,
+        "rule_match",
+        RULE_MATCHES,
+        (
+            "support_rule"
+            if direction == "support"
+            else "refute_rule"
+            if direction == "refute"
+            else "neither"
+        ),
+    )
     novelty = _choice(raw, "novelty", NOVELTY_LEVELS, "new")
     materiality = _choice(raw, "materiality", MATERIALITY_LEVELS, "medium")
     expectation_delta = _choice(
@@ -292,6 +319,40 @@ def normalize_claim_mapping(
     rationale = str(raw.get("rationale") or "").strip()
     if not rationale:
         raise ValueError("Claim mappings require a question-specific rationale")
+    normalized_mapped_at = _require_date(
+        str(raw.get("mapped_at") or mapped_at), "mapped_at"
+    )
+    presentation_role = str(node.get("presentation_role") or "causal_node")
+    strict_from = str(profile.get("strict_mapping_effects_from") or "").strip()
+    strict_effects = not strict_from or normalized_mapped_at >= strict_from
+    if presentation_role == "causal_node" and strict_effects:
+        if direction == "support" and (
+            node_fit != "direct"
+            or rule_match != "support_rule"
+            or directness != "direct"
+        ):
+            raise ValueError(
+                "Causal support mappings require direct node fit, directness, "
+                "and an explicit support_rule match"
+            )
+        if direction == "refute" and (
+            node_fit != "direct"
+            or rule_match != "refute_rule"
+            or directness != "direct"
+        ):
+            raise ValueError(
+                "Causal refute mappings require direct node fit, directness, "
+                "and an explicit refute_rule match"
+            )
+        if direction not in ("support", "refute") and rule_match != "neither":
+            raise ValueError(
+                "Boundary, constraint, lead, unresolved, new-branch, conflict, "
+                "and unmapped relations must not claim a support/refute rule match"
+            )
+        if direction == "unmapped" and node_fit != "unmapped":
+            raise ValueError("Unmapped relations require node_fit=unmapped")
+        if direction != "unmapped" and node_fit == "unmapped":
+            raise ValueError("Only unmapped relations may use node_fit=unmapped")
     mapping_id = str(raw.get("mapping_id") or "").strip() or _mapping_id(
         claim_id, logic_node_id
     )
@@ -308,6 +369,8 @@ def normalize_claim_mapping(
         "logic_node_id": logic_node_id,
         "mapping_role": role,
         "direction": direction,
+        "node_fit": node_fit,
+        "rule_match": rule_match,
         "evidence_nature": evidence_nature,
         "directness": directness,
         "novelty": novelty,
@@ -320,13 +383,39 @@ def normalize_claim_mapping(
         "downstream_impacts": _unique_strings(
             raw.get("downstream_impacts") or []
         ),
-        "mapped_at": _require_date(
-            str(raw.get("mapped_at") or mapped_at), "mapped_at"
-        ),
+        "supersedes_mapping_id": str(
+            raw.get("supersedes_mapping_id") or ""
+        ).strip(),
+        "mapped_at": normalized_mapped_at,
         "review_status": str(
             raw.get("review_status") or "gpt_verified"
         ).strip(),
     }
+
+
+def _active_claim_mappings(
+    mappings: Iterable[dict[str, Any]], *, as_of_date: str
+) -> list[dict[str, Any]]:
+    """Resolve append-only mapping corrections reproducibly for one cutoff."""
+
+    visible = sorted(
+        (
+            dict(row)
+            for row in mappings
+            if str(row.get("mapped_at") or "") <= as_of_date
+        ),
+        key=lambda row: (
+            str(row.get("mapped_at") or ""),
+            str(row.get("mapping_id") or ""),
+        ),
+    )
+    active: dict[str, dict[str, Any]] = {}
+    for row in visible:
+        superseded_id = str(row.get("supersedes_mapping_id") or "").strip()
+        if superseded_id:
+            active.pop(superseded_id, None)
+        active[str(row.get("mapping_id") or "")] = row
+    return list(active.values())
 
 
 def normalize_entity_state(
@@ -696,11 +785,7 @@ def build_standalone_investment_view(
     if not _profile_has_logic_nodes(profile):
         return base
     index = validate_standalone_bom_playbook(profile)
-    mappings = [
-        dict(row)
-        for row in claim_mappings
-        if str(row.get("mapped_at") or "") <= as_of_date
-    ]
+    mappings = _active_claim_mappings(claim_mappings, as_of_date=as_of_date)
     mappings_by_claim: dict[str, list[dict[str, Any]]] = {}
     for mapping in mappings:
         mappings_by_claim.setdefault(str(mapping.get("claim_id") or ""), []).append(
@@ -746,6 +831,14 @@ def build_standalone_investment_view(
                 }
                 for mapping in mappings_by_claim.get(str(claim.get("claim_id") or ""), [])
             ]
+            claim["logic_mappings"].sort(
+                key=lambda mapping: (
+                    0
+                    if str(mapping.get("mapping_role") or "primary") == "primary"
+                    else 1,
+                    str(mapping.get("logic_node_id") or ""),
+                )
+            )
     claims_by_id = {
         str(claim.get("claim_id") or ""): claim
         for lens in base["lenses"]
@@ -809,7 +902,17 @@ def build_standalone_investment_view(
         "public_logic_nodes": sum(
             len(rows) for rows in index["public_lens_nodes"].values()
         ),
-        "mapped_claims": len(mappings_by_claim),
+        "mapped_claims": len(
+            {
+                str(mapping.get("claim_id") or "")
+                for mapping in mappings
+                if str(mapping.get("direction") or "") != "unmapped"
+            }
+        ),
+        "unmapped_relations": sum(
+            str(mapping.get("direction") or "") == "unmapped"
+            for mapping in mappings
+        ),
         "total_claims": sum(len(lens["claims"]) for lens in base["lenses"]),
         "state_nodes": len(
             {
@@ -918,10 +1021,10 @@ def validate_standalone_bom_investment_bundle(
         if str(row.get("claim_id") or "")
     }
     mapping_rows = [dict(row) for row in claim_mappings]
-    normalized_mappings = []
+    normalized_mapping_history = []
     for row in mapping_rows:
         try:
-            normalized_mappings.append(
+            normalized_mapping_history.append(
                 normalize_claim_mapping(
                     row,
                     claims_by_id=claims_by_id,
@@ -931,6 +1034,10 @@ def validate_standalone_bom_investment_bundle(
             )
         except ValueError as exc:
             _bundle_issue(issues, "claim_mapping", str(exc))
+    normalized_mappings = _active_claim_mappings(
+        normalized_mapping_history,
+        as_of_date=as_of_date,
+    )
     primary_counts = {
         claim_id: sum(
             row.get("claim_id") == claim_id
@@ -946,14 +1053,6 @@ def validate_standalone_bom_investment_bundle(
                 "primary_mapping",
                 f"{claim_id} requires exactly one primary mapping, found {count}",
             )
-    mapping_directions = {
-        (
-            str(row.get("claim_id") or ""),
-            str(row.get("logic_node_id") or ""),
-        ): str(row.get("direction") or "")
-        for row in normalized_mappings
-    }
-
     state_rows = []
     for row in logic_states:
         try:
@@ -965,15 +1064,25 @@ def validate_standalone_bom_investment_bundle(
             )
             state_rows.append(state)
             node_id = str(state["logic_node_id"])
+            state_mapping_directions = {
+                (
+                    str(mapping.get("claim_id") or ""),
+                    str(mapping.get("logic_node_id") or ""),
+                ): str(mapping.get("direction") or "")
+                for mapping in _active_claim_mappings(
+                    normalized_mapping_history,
+                    as_of_date=str(state.get("as_of_date") or as_of_date),
+                )
+            }
             for claim_id in state["support_claim_ids"]:
-                if mapping_directions.get((claim_id, node_id)) != "support":
+                if state_mapping_directions.get((claim_id, node_id)) != "support":
                     _bundle_issue(
                         issues,
                         "state_support_mapping",
                         f"{claim_id} is support evidence for {node_id} without a support mapping",
                     )
             for claim_id in state["refute_claim_ids"]:
-                if mapping_directions.get((claim_id, node_id)) != "refute":
+                if state_mapping_directions.get((claim_id, node_id)) != "refute":
                     _bundle_issue(
                         issues,
                         "state_refute_mapping",
@@ -1014,17 +1123,15 @@ def validate_standalone_bom_investment_bundle(
             )
 
     entity_state_rows = []
-    mapping_coordinate_directions: dict[tuple[str, str, str], str] = {}
     mapped_entity_coordinates: set[tuple[str, str]] = set()
     for mapping in normalized_mappings:
+        if str(mapping.get("direction") or "") == "unmapped":
+            continue
         node_id = str(mapping.get("logic_node_id") or "")
         claim_id = str(mapping.get("claim_id") or "")
         for entity_name in mapping.get("entities") or []:
             entity_id = _entity_id(str(entity_name))
             mapped_entity_coordinates.add((node_id, entity_id))
-            mapping_coordinate_directions[
-                (node_id, entity_id, claim_id)
-            ] = str(mapping.get("direction") or "")
     for row in entity_states:
         try:
             state = normalize_entity_state(
@@ -1038,7 +1145,28 @@ def validate_standalone_bom_investment_bundle(
                 str(state["logic_node_id"]),
                 str(state["entity_id"]),
             )
-            if coordinate not in mapped_entity_coordinates:
+            state_mapping_coordinate_directions: dict[
+                tuple[str, str, str], str
+            ] = {}
+            state_mapped_entity_coordinates: set[tuple[str, str]] = set()
+            for mapping in _active_claim_mappings(
+                normalized_mapping_history,
+                as_of_date=str(state.get("as_of_date") or as_of_date),
+            ):
+                if str(mapping.get("direction") or "") == "unmapped":
+                    continue
+                mapping_node_id = str(mapping.get("logic_node_id") or "")
+                mapping_claim_id = str(mapping.get("claim_id") or "")
+                for entity_name in mapping.get("entities") or []:
+                    mapping_coordinate = (
+                        mapping_node_id,
+                        _entity_id(str(entity_name)),
+                    )
+                    state_mapped_entity_coordinates.add(mapping_coordinate)
+                    state_mapping_coordinate_directions[
+                        (*mapping_coordinate, mapping_claim_id)
+                    ] = str(mapping.get("direction") or "")
+            if coordinate not in state_mapped_entity_coordinates:
                 _bundle_issue(
                     issues,
                     "entity_state_mapping",
@@ -1048,7 +1176,7 @@ def validate_standalone_bom_investment_bundle(
                     ),
                 )
             for claim_id in state["support_claim_ids"]:
-                if mapping_coordinate_directions.get(
+                if state_mapping_coordinate_directions.get(
                     (*coordinate, claim_id)
                 ) != "support":
                     _bundle_issue(
@@ -1061,7 +1189,7 @@ def validate_standalone_bom_investment_bundle(
                         ),
                     )
             for claim_id in state["refute_claim_ids"]:
-                if mapping_coordinate_directions.get(
+                if state_mapping_coordinate_directions.get(
                     (*coordinate, claim_id)
                 ) != "refute":
                     _bundle_issue(
@@ -1150,6 +1278,11 @@ def validate_standalone_bom_investment_bundle(
         "summary": {
             "claims": len(claims_by_id),
             "mappings": len(normalized_mappings),
+            "mapping_history": len(normalized_mapping_history),
+            "unmapped_relations": sum(
+                str(row.get("direction") or "") == "unmapped"
+                for row in normalized_mappings
+            ),
             "logic_nodes": len(index["nodes"]),
             "state_nodes": len(covered_nodes),
             "entity_states": len(covered_entity_coordinates),
@@ -1203,6 +1336,7 @@ def _build_logic_node_view(
         row
         for row in mappings
         if str(row.get("logic_node_id") or "") == node_id
+        and str(row.get("direction") or "") != "unmapped"
     ]
     claim_events = []
     for mapping in node_mappings:
@@ -1214,6 +1348,8 @@ def _build_logic_node_view(
             {
                 **claim,
                 "direction": str(mapping.get("direction") or "neutral"),
+                "node_fit": str(mapping.get("node_fit") or "proxy"),
+                "rule_match": str(mapping.get("rule_match") or "neither"),
                 "rationale": str(mapping.get("rationale") or ""),
                 "mapping_role": str(mapping.get("mapping_role") or "primary"),
                 "evidence_nature": str(
