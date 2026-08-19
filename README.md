@@ -1,235 +1,272 @@
 # Value Invest Research
 
-File-system-first investment research assistant for US equities. The project stores research objects as plain files, keeps structured evidence alongside memos, and provides CLI workflows for stock, event, sector, SEC, price, and LLM-assisted research.
+一个以文件系统为事实源、以第一性原理逻辑链为中心的专业投资研究系统。
 
-The stock workflow is foundation-first: every company should first get an eight-section company foundation analysis. FengHe 3C3D5M3T is then used as the downstream message-flow layer for events, catalysts, marginal changes, time frames, and thesis updates.
+它把研究目标、问题架构、原始材料、原子观点、逻辑节点、历史截面和投资判断保存为可审计工件，避免把“搜索到材料”“生成了报告”和“投资结论已经成立”混为一谈。
 
-This is not an automated trading system. It does not place orders or issue final buy/sell instructions; it helps preserve evidence and produce auditable research drafts for human review.
+> 本项目不是自动交易系统，不下单，也不把模型输出当作最终买卖建议。所有结论都需要可追溯证据、反证检查和人工复核。
 
-## Current Status
+## 核心投资逻辑
 
-- Core scaffolding and validation are implemented.
-- CLI commands exist for stocks, events, SEC ingestion, price ingestion, foundation-first stock research, structured research-system generation, memo updates, event research, and sector/theme research.
-- A simplified research-system layer currently focuses on foundation coverage, business nodes, KPI snippets, assumptions, risk monitors, eight section detail pages, and a foundation dashboard.
-- A deterministic research graph pipeline exists for FengHe consensus baselines, 3T questions, hypotheses, assumption tests, and forward reports.
-- The primary stock research sequence is company foundation first, then FengHe message-flow analysis.
-- Third-party integrations are optional. Core commands work without `openai`, `pyyaml`, or `yfinance`; integration commands report a clear install hint when their package is missing.
-- The repository includes sample AAPL, event, and sector research artifacts.
+系统围绕一条固定的投资链工作：
 
-## Install
+1. 证明一条足够大、持久且接近拐点的 S 曲线真实存在。
+2. 找到会被该趋势放大的 BOM / 价值链节点。
+3. 判断节点是否稀缺、难替代，并由谁控制供给。
+4. 验证公司能否把节点优势转成收入、毛利、自由现金流或估值重估。
+5. 判断市场是否已经充分定价，并定义可监控的反证和下行边界。
 
-Core editable install:
+主题热度、TAM 标题、方便交易的股票代码和事后股价表现都不能单独构成投资证据。
 
-```powershell
-python -m pip install -e . --no-deps
+## 研究工作流
+
+```mermaid
+flowchart LR
+    A["Research Goal"] --> B["Question Architecture"]
+    B --> C["Source Plan"]
+    C --> D["Material Intake"]
+    D --> E["Atomic Claims"]
+    E --> F["Claim-to-Node Mapping"]
+    F --> G["As-of Logic States"]
+    G --> H["Investment Snapshot"]
+    H --> I["HTML + Markdown Report"]
 ```
 
-Optional integrations:
+关键边界：
 
-```powershell
-python -m pip install -e ".[all]"
+- 搜索结果只是候选材料，不是证据。
+- 一份报告可以服务多个问题，但每个问题都需要独立解析。
+- 原始材料先拆成不可变的原子观点，再通过独立映射影响逻辑节点。
+- 预测、代理指标和背景信息不能因为方向一致就升级为直接支持。
+- 当前结论来自必要条件与关键因果桥，不是“支持材料数量减反对材料数量”。
+- 历史研究使用严格的 `as_of_date`；截面之后的信息只能隔离或作为事后标签。
+
+## 当前支持的研究模式
+
+### 1. 行业 / S 曲线 / 产业链研究
+
+行业项目先建立统一 BOM taxonomy，再为每个 canonical BOM 节点创建独立子项目。每个节点研究六个问题：
+
+1. 当前 BOM 的需求是否会被 S 曲线放大拉动？
+2. 供给能否跟上？
+3. 谁控制供给？
+4. 是否已经财务兑现？
+5. 市场是否已定价？
+6. 反证是什么？
+
+父项目负责产业链索引和聚合标的；`boms/<node_id>/` 子项目拥有自己的来源、时间账本、六问结论和报告。
+
+### 2. 独立 BOM 五视角研究
+
+当研究对象明确收窄到一个 BOM 节点时，使用 `report_scope: standalone-bom`。公开报告固定为：
+
+1. `当前投资判断`
+2. `需求侧`
+3. `供给侧`
+4. `技术侧`
+5. `估值侧`
+6. `ESG`
+
+每个视角以第一性原理因果链组织。每个逻辑节点先给当前状态和节点结论，再展示按发布日期倒序排列的原子观点材料：
+
+`发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响`
+
+映射影响包括 `support`、`refute`、`boundary`、`constraint`、`new_branch`、`conflict`、`unresolved`、`neutral` 和 `unmapped`。其中 `support` / `refute` 只用于直接适配且明确满足节点规则的证据。
+
+当前可阅读示例：
+
+- [GPU / ASIC BOM 项目说明](research/bom/gpu_asic_bom_live/README.md)
+- [GPU / ASIC BOM Markdown 审计报告](research/bom/gpu_asic_bom_live/professional_report.md)
+
+### 3. 公司基础研究
+
+公司研究采用 foundation-first 顺序。先回答“这家公司是什么”，再用 FengHe 处理消息流、催化剂、边际变化和 thesis revision。
+
+八个公司基础模块是：起源、历史、当前业务、价值链位置、竞争格局、战略、组织文化与治理、风险扫描。
+
+### 4. 通用问题研究
+
+Meta-QA 工作流可以从一个公司、行业、事件或自定义问题生成最多五层的内部问题架构，随后执行来源规划、材料搜集、叶子问题解析、答案综合和报告输出。
+
+## 证据与时间模型
+
+每条原子观点尽可能保留四个时间字段：
+
+- `published_at`：市场何时可以知道这条信息。
+- `effective_period`：事实描述的实际期间。
+- `target_period`：预测指向的未来期间。
+- `ingested_at`：系统何时收到材料。
+
+来源同时保留两个正交分类：
+
+- `material_class`：官方财报、公司材料、卖方研报、权威第三方、市场消息、专家观点等。
+- `ingestion_channel`：问题搜索、知识库扫描或手工导入。
+
+IMA 等知识库的目录日期、上传时间和真实发布日期不是同一个字段。未经原文封面或明确字段验证的 `published_at`，不能进入公开时间线或历史回测证据账本。
+
+## 项目工件
+
+一个独立 BOM 项目的核心目录如下：
+
+```text
+research/bom/<project_id>/
+  project.json
+  timeline_profile.json
+  sources.jsonl
+  professional_report.html
+  professional_report.md
+  source/
+    ima/
+    manual/
+  material_intake/
+    documents.jsonl
+    directory_candidates.jsonl
+    scan_events.jsonl
+  inbox/
+    materials.jsonl
+    parse_tasks.jsonl
+  ledger/
+    claims.jsonl
+    claim_mappings.jsonl
+    logic_states.jsonl
+    entity_states.jsonl
+    thesis_revisions.jsonl
+    investment_snapshots.jsonl
 ```
 
-Use narrower extras when preferred:
+`claims.jsonl` 保存不可变观点；映射、状态和投资判断使用独立的追加式账本。修改逻辑链或纠正映射时不会重写原始观点历史。
 
-```powershell
-python -m pip install -e ".[ingest]"
-python -m pip install -e ".[llm]"
-python -m pip install -e ".[research]"
+## 安装
+
+要求 Python 3.11 或更高版本。
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -e ".[dev]"
 ```
 
-## Run
+可选集成：
 
-Without installing, use `PYTHONPATH=src` or the test runner in this repo.
-
-```powershell
-$env:PYTHONPATH = "src"
-python -m value_invest_research --help
+```bash
+python3 -m pip install -e ".[ingest]"   # market data
+python3 -m pip install -e ".[llm]"      # OpenAI-compatible LLM
+python3 -m pip install -e ".[research]" # YAML research config
+python3 -m pip install -e ".[all]"
 ```
 
-After editable install:
+安装后：
 
-```powershell
+```bash
 value-invest-research --help
 ```
 
-Examples:
+不安装也可以直接运行：
 
-```powershell
+```bash
+PYTHONPATH=src python3 -m value_invest_research --help
+```
+
+## 常用命令
+
+### 独立 BOM 报告
+
+```bash
+PROJECT=research/bom/gpu_asic_bom_live
+
+PYTHONPATH=src python3 -m value_invest_research \
+  refresh-standalone-bom-report "$PROJECT" --as-of-date 2026-08-13
+
+PYTHONPATH=src python3 -m value_invest_research \
+  validate-standalone-bom-engine "$PROJECT" --as-of-date 2026-08-13
+
+PYTHONPATH=src python3 -m value_invest_research \
+  validate-material-intake "$PROJECT"
+
+PYTHONPATH=src python3 -m value_invest_research \
+  validate-report-contract "$PROJECT/professional_report.html" \
+  --mode live_prediction --require-l3
+```
+
+### 公司研究
+
+```bash
 value-invest-research init-stock MSFT --company-name "Microsoft Corporation"
-value-invest-research init-event 2026-05-06 "US Iran Conflict"
-value-invest-research build-evidence AAPL
-value-invest-research build-research-system AAPL
-value-invest-research validate-qa-system AAPL
-value-invest-research run-stock-qa-pipeline AAPL --task-limit 80 --run-local-collection --synthesize-answers
-value-invest-research add-research-question AAPL --parent-id foundation.history --question "这次战略转型是否改变利润池？"
-value-invest-research add-research-question AAPL --parent-id foundation.history --question "这次历史问题是否已能直接回答？" --terminal
-value-invest-research record-question-information AAPL --node-id current_business.profit-cash.segment-profit-pool --category research_report --source-type sell_side_report --source-name "Segment margin note" --url "https://example.com/report" --summary "服务和硬件利润池需要分开验证。"
-value-invest-research build-collection-tasks AAPL --limit 20
-value-invest-research run-collection-tasks AAPL --limit 20 --min-score 8
-value-invest-research discover-source-candidates AAPL --limit 20 --results-per-task 3
-value-invest-research apply-source-candidates AAPL --path stocks/AAPL/research_system/source_candidates.jsonl
-value-invest-research import-question-information AAPL --path collected_sources.jsonl
-value-invest-research fetch-question-information-url AAPL --node-id current_business.profit-cash.segment-profit-pool --category evidence --url "https://example.com/source"
-value-invest-research build-synthesis-tasks AAPL --limit 20
-value-invest-research run-answer-synthesis AAPL --limit 20
-value-invest-research run-answer-synthesis AAPL --limit 20 --use-llm --api-key $env:LLM_API_KEY
-value-invest-research import-answer-synthesis AAPL --path synthesized_answers.jsonl
-value-invest-research write-professional-report AAPL
-value-invest-research write-professional-report AAPL --use-llm --api-key $env:LLM_API_KEY
-value-invest-research validate-qa-system AAPL --require-professional-report
-value-invest-research apply-question-queue AAPL --path queued_questions.jsonl
-value-invest-research apply-question-queue AAPL --path queued_questions.jsonl --synthesize-answers --write-professional-report
-value-invest-research build-meta-qa --object-type industry --object-id "AI 眼镜" --meta-question "了解 AI 眼镜行业是否有长期投资价值" --project-id ai_glasses
-value-invest-research build-meta-qa --object-type industry --object-id "AI 眼镜" --meta-question "了解 AI 眼镜行业是否有长期投资价值" --project-id ai_glasses --planner-use-llm --planner-api-key $env:LLM_API_KEY --force-plan
-value-invest-research run-meta-qa-pipeline --object-type industry --object-id "AI 眼镜" --meta-question "了解 AI 眼镜行业是否有长期投资价值" --project-id ai_glasses --task-limit 80 --synthesize-answers
-value-invest-research run-meta-qa-pipeline --object-type industry --object-id "AI 眼镜" --meta-question "了解 AI 眼镜行业是否有长期投资价值" --project-id ai_glasses --planner-use-llm --planner-api-key $env:LLM_API_KEY --force-plan --synthesize-answers --synthesis-use-llm --synthesis-api-key $env:LLM_API_KEY --write-professional-report --professional-report-use-llm --professional-report-api-key $env:LLM_API_KEY
-value-invest-research plan-meta-qa --object-type industry --object-id "AI 眼镜" --meta-question "了解 AI 眼镜行业是否有长期投资价值" --project-id ai_glasses
-value-invest-research plan-meta-qa --object-type industry --object-id "AI 眼镜" --meta-question "了解 AI 眼镜行业是否有长期投资价值" --project-id ai_glasses --use-llm --api-key $env:LLM_API_KEY --force
-value-invest-research add-meta-qa-question --project-id ai_glasses --parent-id l1.demand.market_size --question "AI 眼镜出货是否能形成真实消费电子新品类？"
-value-invest-research add-meta-qa-question --project-id ai_glasses --parent-id l1.demand.market_size --question "AI 眼镜留存问题是否已能直接回答？" --terminal
-value-invest-research record-meta-qa-information --project-id ai_glasses --node-id <node_id> --category evidence --source-type industry_data --source-name "Shipment tracker" --url "https://example.com/report" --summary "行业数据跟踪出货和留存。"
-value-invest-research build-meta-qa-collection-tasks --project-id ai_glasses --limit 20
-value-invest-research run-meta-qa-collection-tasks --project-id ai_glasses --limit 20 --min-score 8
-value-invest-research discover-meta-qa-source-candidates --project-id ai_glasses --limit 20 --results-per-task 3
-value-invest-research apply-meta-qa-source-candidates --project-id ai_glasses --path research/bom/ai_glasses/source_candidates.jsonl
-value-invest-research import-meta-qa-information --project-id ai_glasses --path collected_sources.jsonl
-value-invest-research fetch-meta-qa-information-url --project-id ai_glasses --node-id <node_id> --category research_report --url "https://example.com/report"
-value-invest-research build-meta-qa-synthesis-tasks --project-id ai_glasses --limit 20
-value-invest-research run-meta-qa-answer-synthesis --project-id ai_glasses --limit 20
-value-invest-research run-meta-qa-answer-synthesis --project-id ai_glasses --limit 20 --use-llm --api-key $env:LLM_API_KEY
-value-invest-research import-meta-qa-answer-synthesis --project-id ai_glasses --path synthesized_answers.jsonl
-value-invest-research write-meta-qa-professional-report --project-id ai_glasses
-value-invest-research write-meta-qa-professional-report --project-id ai_glasses --use-llm --api-key $env:LLM_API_KEY
-value-invest-research validate-meta-qa-system --project-id ai_glasses --require-professional-report
-value-invest-research apply-meta-qa-question-queue --project-id ai_glasses --path queued_questions.jsonl
-value-invest-research apply-meta-qa-question-queue --project-id ai_glasses --path queued_questions.jsonl --synthesize-answers --write-professional-report
-value-invest-research build-research-graph AAPL
-value-invest-research validate-evidence stocks/AAPL/evidence.jsonl
-value-invest-research research-stock AAPL --api-key $env:LLM_API_KEY
+value-invest-research build-evidence MSFT
+value-invest-research run-stock-qa-pipeline MSFT \
+  --run-local-collection --synthesize-answers --write-professional-report
+value-invest-research validate-qa-system MSFT --require-professional-report
 ```
 
-`research-stock` writes a timestamped Markdown report and structured signal JSON under `stocks/<TICKER>/research_reports/`.
-`build-evidence` converts structured SEC facts and price CSV rows into stable evidence IDs under `stocks/<TICKER>/evidence.jsonl`.
-`build-research-system` converts local evidence into the layered QA research system under `stocks/<TICKER>/research_system/`: `foundation_graph.json`, `qa_tree.json`, `information_collection.jsonl`, compatibility placeholders for `question_graph.jsonl` and `message_flow.jsonl`, eight section pages under `pages/`, `research_dashboard.html`, and the aggregated `research_report.html`.
-`validate-qa-system` checks whether the current stock QA artifacts satisfy the layered research contract: L0 question, node links, max-depth boundary, every terminal question's four information categories, leaf answers, dashboard, and report. Add `--require-professional-report` when the final prose report must also exist.
-`run-stock-qa-pipeline` orchestrates the stock layered QA workflow from object to report: build the foundation QA system, optionally run local evidence matching, build collection tasks, optionally discover/apply candidate sources, build answer-synthesis tasks, and, with `--synthesize-answers`, generate/apply professional answers before writing `pipeline_run.json` plus `pipeline_runs.jsonl`. Add `--synthesis-use-llm --synthesis-api-key <KEY>` when the answer synthesis stage should call the configured LLM instead of the deterministic local draft. Add `--write-professional-report` to write `professional_report.md/html`, and `--professional-report-use-llm --professional-report-api-key <KEY>` for an LLM-written final report.
-`add-research-question` appends a user question to `stocks/<TICKER>/research_system/custom_questions.jsonl`, attaches it to the requested QA node, expands follow-up questions up to the three-layer limit when needed, and rebuilds the dashboard/report. Add `--terminal` when the question is already at answerable granularity; the system will not add auto drill-down children and will instead create the four information categories directly for that node.
-`record-question-information` appends or updates one `evidence.jsonl` source, binds it to a specific QA node through `used_in=research_system:<node_id>`, refreshes the four-bucket information index, and rebuilds the dashboard/report.
-`build-collection-tasks` turns the leaf-question information checklist into executable collection tasks under `stocks/<TICKER>/research_system/collection_tasks.jsonl`; each task includes priority, search query, recommended source types, acceptance criteria, expected fields, and the binding command.
-`run-collection-tasks` executes those tasks against the local `evidence.jsonl` corpus, writes `collection_results.jsonl`, binds matching sources to the right QA nodes, and refreshes the dashboard/report. Use `--dry-run` to inspect matches before applying them.
-`discover-source-candidates` turns collection tasks into `source_candidates.jsonl` by querying the web or consuming a JSONL search-results export with `task_id`, `title`, `url`, and `snippet`. Each candidate is screened by category, domain, source type, reliability, materiality, score, and an executable fetch command.
-`apply-source-candidates` fetches accepted candidates from `source_candidates.jsonl`, binds them to the relevant stock QA node, writes `candidate_import_results.jsonl`, and refreshes the evidence/report loop. Use `--dry-run` before applying a candidate set.
-`import-question-information` batch-imports collected stock sources from JSONL, validates required fields, binds each source to the target QA node, and refreshes the dashboard/report.
-`fetch-question-information-url` fetches one URL, extracts the page title and readable text when possible, writes a `fetched_sources.jsonl` audit row, binds the source to a stock QA node, and refreshes the dashboard/report. Use `--summary` when the source is a PDF or another format that cannot be extracted reliably.
-`build-synthesis-tasks` exports `synthesis_tasks.jsonl` for professional answer writing. Each task carries the node question, parent question, current answer, four-bucket source index, source balance, expected output fields, and import command.
-`run-answer-synthesis` reads `synthesis_tasks.jsonl`, generates structured professional answers into `synthesized_answers.jsonl`, and applies them by default. By default it uses a deterministic local draft; add `--use-llm --api-key <KEY>` for LLM-written answers. Use `--no-apply` to only draft answers for review.
-`import-answer-synthesis` imports `synthesized_answers.jsonl`, appends durable rows to `synthesis_overrides.jsonl`, applies the latest answer per node, and rebuilds the dashboard/report so human or LLM-written professional answers flow back into the QA tree.
-`write-professional-report` reads the current stock `qa_tree.json` and writes `professional_report.md` plus `professional_report.html`. It is the final prose synthesis layer after question planning, information collection, and node-level answer synthesis.
-`apply-question-queue` batch-applies user-added stock QA questions from JSONL/JSON. Each row needs `parent_id` and `question`; add `"terminal": true` or `"should_drill_down": false` in a row when that question should directly enter four-bucket information collection instead of auto drill-down. The command writes formal custom question nodes, expands auto drill-down children when needed, refreshes the report, and rebuilds collection tasks unless `--no-build-tasks` is passed. Add `--synthesize-answers --write-professional-report` when a queued user question should immediately flow through node answer synthesis and the final `professional_report.md/html`; the same `--synthesis-use-llm` and `--professional-report-use-llm` options are available when those stages should call the configured LLM.
-`build-meta-qa` creates a generic layered QA project for a company, industry, event, or custom meta-question under `research/bom/<PROJECT_ID>/`. By default it uses the deterministic planning baseline; add `--planner-use-llm --planner-api-key <KEY>` to let the configured LLM draft `question_plan.json`, and `--force-plan` when intentionally replacing an existing plan.
-`run-meta-qa-pipeline` orchestrates the generic meta-question workflow from one question to report: create or refresh the question plan/tree, build collection tasks, optionally run local matching, optionally discover/apply candidate sources, build answer-synthesis tasks, and, with `--synthesize-answers`, generate/apply professional answers before writing pipeline manifests. Add `--planner-use-llm --planner-api-key <KEY>` for LLM question planning, `--synthesis-use-llm --synthesis-api-key <KEY>` to make the synthesis stage use the configured LLM, and `--write-professional-report` to write the final `professional_report.md/html`.
-`plan-meta-qa` creates or refreshes the auditable `question_plan.json` used to expand a meta-question into L1/L2/L3 questions. The QA tree and reports are generated from this plan, so the system's question-expansion logic is inspectable before evidence collection. Add `--use-llm --api-key <KEY> --force` when the plan should be generated by the configured LLM instead of the deterministic baseline.
-`add-meta-qa-question` and `record-meta-qa-information` provide the same update loop for generic QA projects: add a user question at any layer, bind four-bucket information to the relevant node, and rebuild the dashboard/report. Use `--terminal` when the new question should stop at that layer and become the direct information-collection unit.
-`build-meta-qa-collection-tasks`, `run-meta-qa-collection-tasks`, `discover-meta-qa-source-candidates`, `apply-meta-qa-source-candidates`, and `import-meta-qa-information` provide the same task generation, local-corpus execution, candidate discovery, candidate fetching, and batch-import loop for generic QA projects.
-`fetch-meta-qa-information-url` provides the same URL fetch, summary extraction, fetched-source audit log, node binding, and report refresh loop for generic QA projects.
-`build-meta-qa-synthesis-tasks`, `run-meta-qa-answer-synthesis`, and `import-meta-qa-answer-synthesis` provide the same professional answer task/export, generated answer draft, and answer override/import loop for generic QA projects. `run-meta-qa-answer-synthesis --use-llm --api-key <KEY>` uses the configured LLM for the answer-writing step.
-`write-meta-qa-professional-report` reads the current generic QA tree and writes `professional_report.md` plus `professional_report.html`; add `--use-llm --api-key <KEY>` for an LLM-written final research report.
-`validate-meta-qa-system` applies the same contract checks to a generic meta-QA project under `research/bom/<PROJECT_ID>/`.
-`apply-meta-qa-question-queue` applies queued generic QA questions with the same `parent_id` and `question` row schema; queue rows can also set `"terminal": true` or `"should_drill_down": false`. The command then refreshes the project report and collection tasks. Add `--synthesize-answers --write-professional-report` to run the complete interactive update loop from added question to synthesized node answers and final professional report output.
-`build-research-graph` runs the full deterministic graph pipeline and writes `nodes.jsonl`, `edges.jsonl`, and `forward_report.html` under `stocks/<TICKER>/research_graph/`.
+### 通用 Meta-QA
 
-Graph stages are also callable one by one:
-
-```powershell
-value-invest-research build-consensus AAPL
-value-invest-research generate-questions AAPL
-value-invest-research build-hypotheses AAPL
-value-invest-research test-hypotheses AAPL
-value-invest-research write-forward-report AAPL
+```bash
+value-invest-research build-meta-qa \
+  --object-type industry \
+  --object-id "AI glasses" \
+  --meta-question "Does the industry have durable investment value?" \
+  --project-id ai_glasses
 ```
 
-## Test
+## 质量门槛
 
-The repository test runner adds `src` to `sys.path` and avoids platform temp-directory permission issues by using a local ignored `.test_tmp/` folder.
+研究完成不是“文件存在”，而是语义门槛已经通过。系统会检查：
 
-```powershell
-python tools/run_tests.py
+- 来源计划、主动搜索和外部材料入口是否留痕。
+- 事实、预测、代理、观点和反证是否被区分。
+- 原子观点是否拥有来源、定位和可见时间。
+- `support` / `refute` 是否直接适配节点规则。
+- 关键问题是否具有来源多样性、时效性、冲突和缺口记录。
+- 公司财务桥、估值、反证和风险控制是否足以支持投资动作。
+
+`actionable_long` 只有在逻辑覆盖、公司财务桥、估值、反证和风险控制全部通过时才允许出现；否则状态保持 `watch_only` 或 `no_action`。
+
+## 测试与验证
+
+```bash
+python3 tools/run_tests.py
 ```
 
-## Layout
+或者：
 
-- `src/value_invest_research/`: Python package and CLI workflows.
-- `tests/`: unittest suite and test helpers.
-- `skills/value_invest_research/`: reusable research protocol, frameworks, prompts, and checklists.
-- `config/`: editable watchlist, source priority, research objects, and event playbooks.
-- `stocks/`: stock-level research objects.
-- `research/`: event, sector, and theme research objects.
-- `docs/superpowers/`: design specs and implementation plans.
+```bash
+PYTHONPATH=src python3 -m unittest discover -s tests
+```
 
-## Company Foundation Analysis
+框架或报告变更完成前，至少运行相关单元测试、报告契约校验、材料入口校验、研究工件校验和 `git diff --check`。
 
-Each company memo starts with an eight-section baseline:
+## 代码架构
 
-1. Source and origin.
-2. Company history.
-3. Current business.
-4. Value chain position.
-5. Competitive landscape.
-6. Strategy analysis.
-7. Organization, culture, and governance.
-8. Risk sweep.
+项目遵守六边形依赖方向：
 
-This baseline answers "what is this company?" before asking what new information changes the thesis.
+```text
+adapters/inbound  -> application -> domain
+adapters/outbound -> ports       -> application
+application       -> ports + domain
+domain            -> pure research rules
+```
 
-## Research System Layer
+- `src/value_invest_research/domain/`：纯研究规则、实体、状态、评分和质量门槛。
+- `src/value_invest_research/application/`：研究用例和编排。
+- `src/value_invest_research/ports/`：仓库、搜索、解析和渲染协议。
+- `src/value_invest_research/adapters/`：文件系统、搜索、LLM、市场数据、CLI 和报告渲染。
+- `skills/value_invest_research/`：规范化研究流程、领域框架和公共呈现契约。
+- `config/`：来源 universe、材料 feed、研究对象和 provider 配置。
 
-The research-system layer is the professional stock workspace between raw evidence and final reports. The active generator is intentionally foundation-only: first build the company baseline, then add downstream FengHe message-flow work later.
+进一步阅读：
 
-- `foundation_graph.json`: eight-section foundation coverage, facts, inferences, judgments, gaps, business nodes, KPIs, assumptions, risks, key questions, and four-bucket information mapping.
-- `qa_tree.json`: L0/L1/L2/L3 question nodes with current answer, rollup conclusion, evidence buckets, synthesis, and child links.
-- `information_collection.jsonl`: leaf-question collection checklist by evidence, research report, message, and opinion category.
-- `collection_tasks.jsonl`: optional executable collection task list generated from the checklist, with priority, source requirements, acceptance criteria, and binding commands.
-- `collection_results.jsonl`: optional local-corpus matching output from `run-collection-tasks`, ready to import or already applied depending on `--dry-run`.
-- `source_candidates.jsonl`: optional candidate URL pool generated from collection tasks, with category screening, score, source type, reliability, materiality, and fetch commands.
-- `candidate_import_results.jsonl`: optional application log from accepted source candidates.
-- `synthesis_tasks.jsonl`: optional professional answer task list; each row packages one QA node, parent context, four-bucket source index, source balance, and required answer fields.
-- `synthesized_answers.jsonl`: generated professional answer drafts from `run-answer-synthesis`, ready for review or automatic application.
-- `synthesis_overrides.jsonl`: append-only imported professional answers. The latest row per `node_id` overrides the generated rule summary and is rolled back into pages and reports.
-- `professional_report.md` and `professional_report.html`: final prose report generated from the current QA tree, node answers, source structure, and research gaps.
-- `pages/*.html`: one detail page per foundation section.
-- `question_graph.jsonl`: empty compatibility placeholder until downstream question generation is re-enabled.
-- `message_flow.jsonl`: empty compatibility placeholder until downstream message-flow analysis is re-enabled.
-- `research_dashboard.html`: a readable foundation dashboard for the first-layer company baseline.
-- `research_report.html`: aggregated QA synthesis that rolls L3 findings into L2, L1, and the company foundation layer.
-- `pipeline_run.json` and `pipeline_runs.jsonl`: current and historical end-to-end QA pipeline manifests, listing each stage, output path, and final report artifacts.
+- [六边形研究系统架构](docs/architecture/hexagonal_research_system.md)
+- [公共研究报告契约](skills/value_invest_research/frameworks/research_report_contract.md)
+- [项目级执行约束](AGENTS.md)
 
-This layer should be built before writing polished reports. Reports are outputs; the durable research asset at this stage is the structured company baseline.
+## 数据与安全边界
 
-## Generic Meta-QA Layer
+- 仓库级 `source/ima/` 是私有原文镜像，默认不进入 Git。
+- IMA 归档只使用用户可见、已登录的页面逐项点击下载，不读取 Cookie、令牌或隐藏下载地址。
+- 受限 PDF 不会在没有明确授权时发送给外部模型。
+- 密钥、凭据、原始知识库 ID 和浏览器会话信息不得持久化。
+- HTML 是默认阅读产物，Markdown 是可移植审计侧车；两者来自同一研究状态。
 
-For non-stock-foundation questions, use `build-meta-qa`. It creates a standalone QA project from one meta-question and expands it into L1/L2/L3 question nodes. Leaf questions receive four-bucket information collection rows:
+## 边界声明
 
-- Evidence: verified facts, announcements, official data, public reports, and other high-reliability inputs.
-- Research report: commercial research, sell-side reports, industry notes, and structured third-party analysis.
-- Message: public but unverified news, rumors, or emerging updates.
-- Opinion: expert, industry, investor, or KOL views.
-
-Outputs live under `research/bom/<PROJECT_ID>/`: `project.json`, `question_plan.json`, `qa_tree.json`, `information_collection.jsonl`, `collection_tasks.jsonl`, `collection_results.jsonl`, `source_candidates.jsonl`, `candidate_import_results.jsonl`, `synthesis_tasks.jsonl`, `synthesized_answers.jsonl`, `synthesis_overrides.jsonl`, `pipeline_run.json`, `pipeline_runs.jsonl`, `evidence.jsonl`, `research_dashboard.html`, `research_report.html`, `professional_report.md`, and `professional_report.html`.
-
-## Research Graph Pipeline
-
-The graph pipeline is the FengHe message-flow graph. It treats current facts and market consensus as the priced baseline after company foundation work exists. It then creates a local graph:
-
-- Evidence nodes: validated `EvidenceRecord` entries.
-- Framework nodes: FengHe 3C, 3D, 5M, and 3T concepts for message-flow analysis.
-- Consensus nodes: what the current local evidence can support as baseline.
-- Question nodes: what could change by T1/T2/T3.
-- Hypothesis nodes: mechanisms that could move D1/D2/D3.
-- Assumption-test nodes: what evidence would support or disconfirm each hypothesis.
-
-The forward report is an HTML synthesis of the graph, not a final trading instruction.
-
-## Boundaries
-
-Research outputs must separate facts, inferences, and judgments. Material claims should cite evidence IDs. Low-reliability sources can create research questions, but should not change a thesis by themselves. Generic "good company" language is not enough: every stock view must state foundation status and gaps first, then cycle, marginal change, certainty, dominant D driver, 5M value/defect drivers, time frame, and disconfirming tests when analyzing message flow.
+研究输出必须区分事实、推断和判断。低可靠性材料可以创建研究问题，但不能单独提高结论强度。任何标的结论都必须明确对应的 BOM / thesis 节点、盈利传导、市场定价、主要反证和可执行降级条件。
