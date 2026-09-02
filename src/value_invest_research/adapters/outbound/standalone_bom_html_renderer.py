@@ -102,12 +102,19 @@ class StandaloneBomHtmlRenderer:
             }
         )
         engine_version = str(view.get("investment_engine_version") or "")
+        has_l3_plan = bool(view.get("l3_plan_coverage"))
+        plan_nav = (
+            '<a class="plan-nav-link" href="research_plan.html">'
+            "研究计划书 · L3→L5</a>"
+            if has_l3_plan
+            else ""
+        )
         decision_nav = (
             '<a href="#investment-decision">00 投资判断</a>'
             if engine_version
             else ""
         )
-        nav = decision_nav + "".join(
+        nav = plan_nav + decision_nav + "".join(
             (
                 f'<a href="#lens-{escape(str(lens["lens_id"]))}">'
                 f'{index:02d} {escape(str(lens["label"]))}</a>'
@@ -136,6 +143,21 @@ class StandaloneBomHtmlRenderer:
             if logic_chain_version
             else ""
         )
+        plan_attribute = (
+            ' data-l3-plan-contract="leaf-search-v2"'
+            if has_l3_plan
+            else ""
+        )
+        plan_coverage = dict(view.get("l3_plan_coverage") or {})
+        plan_cta = (
+            '    <a class="plan-cta" href="research_plan.html">'
+            '<span>独立研究计划书</span>'
+            f'<strong>{int(plan_coverage.get("planned_l3_nodes") or 0)} 个 L3 · '
+            f'{int(plan_coverage.get("leaf_steps") or 0)} 个 L5</strong>'
+            '<b aria-hidden="true">查看完整计划 →</b></a>'
+            if has_l3_plan
+            else ""
+        )
         html = "\n".join(
             [
                 "<!doctype html>",
@@ -149,7 +171,7 @@ class StandaloneBomHtmlRenderer:
                 (
                     '<body data-report-scope="standalone-bom" '
                     f'data-bom-node-id="{escape(str(view.get("bom_node_id") or ""))}"'
-                    f"{engine_attribute}{model_attribute}{chain_attribute}>"
+                    f"{engine_attribute}{model_attribute}{chain_attribute}{plan_attribute}>"
                 ),
                 '<header class="report-header">',
                 '  <div class="report-header-inner">',
@@ -159,6 +181,7 @@ class StandaloneBomHtmlRenderer:
                     '    <p class="report-deck">以第一性原理逻辑链组织研究；'
                     "原子观点先改变节点，再改变全局投资判断。</p>"
                 ),
+                plan_cta,
                 '    <div class="report-meta" aria-label="报告元数据">',
                 (
                     '      <div><span>研究截面</span>'
@@ -417,6 +440,8 @@ class StandaloneBomHtmlRenderer:
         if str(node.get("render_mode") or "") == "demand_quantity_matrix":
             return self._render_demand_quantity_matrix(node)
         state = str(node.get("state") or "unresolved")
+        research_question = self._render_logic_node_question(node)
+        research_plan = self._render_l3_research_plan(node)
         material_table = self._render_node_material_table(node)
         return f"""
 <details class="logic-node causal-node" data-logic-node-id="{escape(str(node.get("logic_node_id") or ""))}">
@@ -425,16 +450,62 @@ class StandaloneBomHtmlRenderer:
     <div class="logic-node-heading">
       <span>{escape(str(node.get("logic_node_id") or ""))}</span>
       <h4>{escape(str(node.get("title") or ""))}</h4>
-      <p>{escape(str(node.get("conclusion") or ""))}</p>
+      {research_question}
+      <p class="logic-node-conclusion">{escape(str(node.get("conclusion") or ""))}</p>
       <small>本期变化：{escape(str(node.get("change_summary") or ""))}</small>
     </div>
     <span class="state-badge state-{escape(state)}">{escape(STATE_LABELS.get(state, state))}</span>
     <span class="logic-node-chevron" aria-hidden="true"></span>
   </summary>
   <div class="logic-node-body">
+    {research_plan}
     {material_table}
   </div>
 </details>
+"""
+
+    def _render_logic_node_question(self, node: dict[str, Any]) -> str:
+        return (
+            '<p class="logic-node-question">'
+            '<span class="logic-node-question-label">研究问题</span>'
+            f'<span>{escape(str(node.get("question") or ""))}</span>'
+            "</p>"
+        )
+
+    def _render_l3_research_plan(self, node: dict[str, Any]) -> str:
+        plan = dict(node.get("research_plan") or {})
+        if not plan:
+            return ""
+        units = []
+        for position, unit in enumerate(plan.get("l4_units") or [], start=1):
+            leaves = "".join(
+                (
+                    '<li class="leaf-plan-step" '
+                    f'data-leaf-question-id="{escape(str(leaf.get("leaf_question_id") or ""), quote=True)}">'
+                    f'<p>{escape(str(leaf.get("question") or ""))}</p>'
+                    '<small>定向材料：'
+                    f'{escape("；".join(leaf.get("required_source_types") or []))}'
+                    "</small>"
+                    f'<span class="leaf-status">{escape(_plan_status_label(str(leaf.get("status") or "pending")))}</span>'
+                    "</li>"
+                )
+                for leaf in unit.get("leaves") or []
+            )
+            units.append(
+                '<li class="l4-plan-unit">'
+                f'<div><span>{position:02d}</span><strong>{escape(str(unit.get("title") or ""))}</strong></div>'
+                f'<p>{escape(str(unit.get("question") or ""))}</p>'
+                f'<ol>{leaves}</ol>'
+                "</li>"
+            )
+        return f"""
+    <details class="l3-research-plan" data-l3-plan-id="{escape(str(plan.get("plan_id") or ""), quote=True)}">
+      <summary>
+        <div><span>L3 独立研究计划</span><strong>{escape(str(plan.get("completed_leaf_steps") or 0))} / {escape(str(plan.get("leaf_steps") or 0))} 个最细叶子已完成</strong></div>
+        <small>{escape(str(plan.get("material_collection_policy") or "按最细叶子问题单独搜集材料"))}</small>
+      </summary>
+      <ol class="l4-plan-list">{''.join(units)}</ol>
+    </details>
 """
 
     def _render_node_material_table(self, node: dict[str, Any]) -> str:
@@ -537,6 +608,8 @@ class StandaloneBomHtmlRenderer:
 
     def _render_demand_party_list(self, node: dict[str, Any]) -> str:
         demand_parties = dict(node.get("demand_parties") or {})
+        research_question = self._render_logic_node_question(node)
+        research_plan = self._render_l3_research_plan(node)
         group_specs = (
             ("current", "当前需求方"),
             ("potential_future", "潜在未来需求方"),
@@ -560,16 +633,20 @@ class StandaloneBomHtmlRenderer:
     <div>
       <span>{escape(str(node.get("logic_node_id") or ""))}</span>
       <h4>{escape(str(node.get("title") or ""))}</h4>
+      {research_question}
     </div>
   </div>
   <div class="demand-party-grid">
     {''.join(groups)}
   </div>
+  {research_plan}
 </article>
 """
 
     def _render_demand_quantity_matrix(self, node: dict[str, Any]) -> str:
         rows = list(node.get("demand_quantity_rows") or [])
+        research_question = self._render_logic_node_question(node)
+        research_plan = self._render_l3_research_plan(node)
         current_rows = [
             row for row in rows if row.get("forecast_group") == "classified"
         ]
@@ -700,9 +777,11 @@ class StandaloneBomHtmlRenderer:
     <div>
       <span>{escape(str(node.get("logic_node_id") or ""))}</span>
       <h4>{escape(str(node.get("title") or ""))}</h4>
+      {research_question}
     </div>
   </div>
   <div class="demand-quantity-tier-list">{tiers_html}</div>
+  {research_plan}
 </article>
 """
 
@@ -960,6 +1039,17 @@ def _rendered_source_url(url: str, *, project_dir: Path) -> str:
     return path.as_posix()
 
 
+def _plan_status_label(status: str) -> str:
+    return {
+        "pending": "待搜集",
+        "in_progress": "搜集中",
+        "review_pending": "待复核",
+        "blocked": "证据阻塞",
+        "completed": "已完成",
+        "planned": "已规划",
+    }.get(status, status or "待搜集")
+
+
 def _report_css() -> str:
     return """
 :root {
@@ -1040,6 +1130,27 @@ h1 {
   font-size: 18px;
 }
 
+.plan-cta {
+  display: grid;
+  grid-template-columns: minmax(150px, .75fr) minmax(180px, 1fr) auto;
+  align-items: center;
+  gap: 20px;
+  max-width: 760px;
+  margin-top: 26px;
+  padding: 15px 18px;
+  border: 1px solid #b9c8cf;
+  border-left: 4px solid var(--rust);
+  background: #f2f6f7;
+  color: #24445c;
+  text-decoration: none;
+  transition: border-color 160ms ease, background 160ms ease;
+}
+
+.plan-cta:hover { border-color: #7494a4; background: #eaf1f3; }
+.plan-cta span { color: var(--rust); font-size: 11px; font-weight: 750; letter-spacing: .08em; }
+.plan-cta strong { font-size: 15px; }
+.plan-cta b { color: var(--blue); font-size: 12px; }
+
 .report-meta {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1097,6 +1208,14 @@ h1 {
 .top-nav a.is-active {
   border-color: var(--blue);
   color: var(--blue);
+}
+
+.top-nav .plan-nav-link {
+  margin-right: 10px;
+  padding-left: 12px;
+  padding-right: 12px;
+  border-left: 3px solid var(--rust);
+  color: var(--rust);
 }
 
 .report-main { padding: 24px 0 80px; }
@@ -1441,6 +1560,24 @@ h1 {
   color: #344957;
   font-size: 14px;
 }
+.causal-node .logic-node-heading p.logic-node-question,
+.logic-node-heading p.logic-node-question {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  margin: 8px 0 0;
+  color: #536a78;
+  font-size: 12px;
+  line-height: 1.55;
+}
+.logic-node-question-label {
+  flex: 0 0 auto;
+  color: var(--blue);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  white-space: nowrap;
+}
 .causal-node .logic-node-heading small {
   display: block;
   margin-top: 5px;
@@ -1461,6 +1598,66 @@ h1 {
   border-top: 1px solid var(--line);
   background: #fcfdfd;
   animation: reveal 180ms ease both;
+}
+.l3-research-plan {
+  margin: 16px 0;
+  border: 1px solid #cedbe3;
+  border-radius: 8px;
+  background: #f4f8fa;
+}
+.demand-party-node > .l3-research-plan,
+.demand-quantity-node > .l3-research-plan { margin: 16px; }
+.l3-research-plan > summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+  padding: 13px 15px;
+  cursor: pointer;
+  list-style: none;
+}
+.l3-research-plan > summary::-webkit-details-marker { display: none; }
+.l3-research-plan > summary div { display: grid; gap: 3px; }
+.l3-research-plan > summary span {
+  color: var(--blue);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .09em;
+}
+.l3-research-plan > summary strong { color: #2e4656; font-size: 13px; }
+.l3-research-plan > summary small { color: var(--muted); font-size: 11px; }
+.l4-plan-list {
+  margin: 0;
+  padding: 0 15px 15px;
+  list-style: none;
+  counter-reset: none;
+}
+.l4-plan-unit {
+  padding: 12px 0;
+  border-top: 1px solid #d7e2e8;
+}
+.l4-plan-unit > div { display: flex; gap: 9px; align-items: baseline; }
+.l4-plan-unit > div span { color: var(--rust); font: 700 12px "Baskerville", serif; }
+.l4-plan-unit > div strong { color: #2f4655; font-size: 13px; }
+.l4-plan-unit > p { margin: 6px 0; color: #5a6e7b; font-size: 11px; }
+.l4-plan-unit > ol { margin: 0; padding: 0; list-style: none; }
+.leaf-plan-step {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 16px;
+  padding: 8px 10px;
+  border-left: 2px solid #a9c5d4;
+  background: #fff;
+}
+.leaf-plan-step p { grid-column: 1; margin: 0; color: #314957; font-size: 12px; }
+.leaf-plan-step small { grid-column: 1; color: #7a8892; font-size: 10px; }
+.leaf-status {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  color: #6c7e89;
+  font-size: 10px;
+  white-space: nowrap;
 }
 .node-material-table-wrap {
   overflow-x: auto;
@@ -2122,6 +2319,9 @@ h1 {
   .report-header-inner { padding: 38px 0 28px; }
   h1 { font-size: 38px; }
   .report-deck { font-size: 16px; }
+  .plan-cta { grid-template-columns: 1fr auto; gap: 6px 14px; }
+  .plan-cta strong { grid-column: 1; }
+  .plan-cta b { grid-column: 2; grid-row: 1 / span 2; }
   .report-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .decision-heading { flex-direction: column; gap: 12px; }
   .decision-update { grid-template-columns: 1fr; gap: 4px; }

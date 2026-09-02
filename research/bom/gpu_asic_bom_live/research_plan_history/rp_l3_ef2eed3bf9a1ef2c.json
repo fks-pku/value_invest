@@ -1,0 +1,1379 @@
+{
+  "execution_policy": {
+    "between_stages": "dependency_gated",
+    "broad_material_pool": "candidate_only_not_completion_evidence",
+    "completion": "all_required_l3_child_plans_complete",
+    "event_log": "append_only",
+    "material_collection": "finest_leaf_question_only",
+    "within_stage": "parallel_when_independent"
+  },
+  "l3_plan_index_path": "l3_research_plans/index.json",
+  "plan_id": "rp_l3_ef2eed3bf9a1ef2c",
+  "question_architecture": {
+    "artifact_path": "qa_tree.json",
+    "planner_rationale": "The standalone GPU/ASIC profile is causal-chain centered. Five L2 lenses preserve all 27 stable L3 nodes; execution order follows the directed node dependencies rather than public display order.",
+    "playbook_id": "standalone_bom:gpu_asic:2026-08-12.v2"
+  },
+  "research_goal": {
+    "as_of_date": "2026-09-02",
+    "decision_boundary": "research observation, not trading instruction",
+    "domain_hint": "semiconductor_hardware",
+    "object_id": "gpu_asic",
+    "q_map": {
+      "demand": "需求侧",
+      "esg": "ESG",
+      "supply": "供给侧",
+      "technology": "技术侧",
+      "valuation": "估值侧"
+    },
+    "report_date": "2026-09-02",
+    "research_type": "technology_route",
+    "run_mode": "live_prediction",
+    "topic": "GPU / ASIC BOM 实时端到端投资研究"
+  },
+  "schema_version": "2.0",
+  "steps": [
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/demand.demand_universe/research_plan.json",
+      "decision_use": "验证真实工作负载如何转成算力、预算、订单和财务兑现。 Apply support rule: 当前需求方已有可验证的采购、部署或算力消费；潜在未来需求方尚未形成规模需求，但具备可验证的进入条件。",
+      "depends_on_step_ids": [],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+      },
+      "preferred_specialty_skill": "financial-statement-analysis",
+      "question": "当前有哪些数据中心 GPU 需求方，哪些主体可能成为潜在未来需求方？",
+      "question_node_id": "demand.demand_universe",
+      "refuting_source_plan": [
+        "Search primary and independent evidence that would establish: 把 OEM/ODM、分销商等采购通道列作需求方，或把同一主体同时列入当前和潜在未来两组。"
+      ],
+      "required_materials": [
+        "需求主体身份",
+        "当前或潜在未来标签",
+        "需求形成状态"
+      ],
+      "sequence": 1,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "demand",
+      "step_id": "step:demand.demand_universe",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/supply.advanced_wafer_capacity/research_plan.json",
+      "decision_use": "识别最终可交付系统的最短板、释放周期和价值捕获。 Apply support rule: 交期、预付款或客户分配显示晶圆持续紧张。",
+      "depends_on_step_ids": [],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+      },
+      "preferred_specialty_skill": "supply-chain-chokepoint-analysis",
+      "question": "先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？",
+      "question_node_id": "supply.advanced_wafer_capacity",
+      "refuting_source_plan": [
+        "Search primary and independent evidence that would establish: 扩产和良率提升使可用晶圆明显快于需求增长。"
+      ],
+      "required_materials": [
+        "先进节点产能",
+        "良率",
+        "wafer allocation",
+        "代工 capex"
+      ],
+      "sequence": 2,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "supply",
+      "step_id": "step:supply.advanced_wafer_capacity",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/supply.packaging_memory_capacity/research_plan.json",
+      "decision_use": "识别最终可交付系统的最短板、释放周期和价值捕获。 Apply support rule: 多个供应商确认交期、预订或良率约束，且扩产需要较长周期。",
+      "depends_on_step_ids": [],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+      },
+      "preferred_specialty_skill": "supply-chain-chokepoint-analysis",
+      "question": "HBM、先进封装、基板和测试是否成为可交付芯片的约束？",
+      "question_node_id": "supply.packaging_memory_capacity",
+      "refuting_source_plan": [
+        "Search primary and independent evidence that would establish: 替代路线或扩产使交期和价格快速回落。"
+      ],
+      "required_materials": [
+        "HBM 产能",
+        "CoWoS 产能",
+        "封装良率",
+        "基板交期"
+      ],
+      "sequence": 3,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "supply",
+      "step_id": "step:supply.packaging_memory_capacity",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/supply.system_integration/research_plan.json",
+      "decision_use": "识别最终可交付系统的最短板、释放周期和价值捕获。 Apply support rule: 系统交付显著晚于芯片可用时间，客户或厂商披露调试约束。",
+      "depends_on_step_ids": [],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: monthly.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+      },
+      "preferred_specialty_skill": "supply-chain-chokepoint-analysis",
+      "question": "ODM、机架、网络和软件调试是否限制芯片转化为可用系统？",
+      "question_node_id": "supply.system_integration",
+      "refuting_source_plan": [
+        "Search primary and independent evidence that would establish: 标准化设计和成熟 ODM 使机架交付周期显著缩短。"
+      ],
+      "required_materials": [
+        "机架发货",
+        "ODM 产能",
+        "调试周期",
+        "系统验收"
+      ],
+      "sequence": 4,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "supply",
+      "step_id": "step:supply.system_integration",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/technology.workload_fit/research_plan.json",
+      "decision_use": "判断 GPU、ASIC 和其他路线在真实任务中的平台竞争与采用。 Apply support rule: 真实客户部署证明某路线对目标工作负载有稳定优势。",
+      "depends_on_step_ids": [],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+      },
+      "preferred_specialty_skill": "industry-report-analysis",
+      "question": "GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？",
+      "question_node_id": "technology.workload_fit",
+      "refuting_source_plan": [
+        "Search primary and independent evidence that would establish: 路线优势只存在于厂商选择性基准，无法迁移到客户任务。"
+      ],
+      "required_materials": [
+        "训练/推理占比",
+        "模型变化速度",
+        "延迟与吞吐要求"
+      ],
+      "sequence": 5,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "technology",
+      "step_id": "step:technology.workload_fit",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/technology.software_ecosystem/research_plan.json",
+      "decision_use": "判断 GPU、ASIC 和其他路线在真实任务中的平台竞争与采用。 Apply support rule: 客户生产部署和开发者使用证明生态缩短上线时间并提高利用率。",
+      "depends_on_step_ids": [],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: monthly.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+      },
+      "preferred_specialty_skill": "industry-report-analysis",
+      "question": "编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？",
+      "question_node_id": "technology.software_ecosystem",
+      "refuting_source_plan": [
+        "Search primary and independent evidence that would establish: 软件改进停留在演示，客户仍承担显著迁移和运维成本。"
+      ],
+      "required_materials": [
+        "软件发布节奏",
+        "框架支持",
+        "迁移时间",
+        "开发者采用"
+      ],
+      "sequence": 6,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "technology",
+      "step_id": "step:technology.software_ecosystem",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/esg.energy_water/research_plan.json",
+      "decision_use": "识别会改变交付、市场准入、资本成本和股东回报的约束。 Apply support rule: 项目延期、成本或监管文件明确指向资源约束。",
+      "depends_on_step_ids": [],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+      },
+      "preferred_specialty_skill": "financial-statement-analysis",
+      "question": "绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？",
+      "question_node_id": "esg.energy_water",
+      "refuting_source_plan": [
+        "Search primary and independent evidence that would establish: 效率、能源供应和选址使资源约束不再影响部署。"
+      ],
+      "required_materials": [
+        "PUE",
+        "电力需求",
+        "水耗",
+        "许可周期"
+      ],
+      "sequence": 7,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "esg",
+      "step_id": "step:esg.energy_water",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/esg.export_market_access/research_plan.json",
+      "decision_use": "识别会改变交付、市场准入、资本成本和股东回报的约束。 Apply support rule: 官方规则和公司披露能量化收入、产品与成本影响。",
+      "depends_on_step_ids": [],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Event-driven; refresh immediately when the governing rule or event changes.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+      },
+      "preferred_specialty_skill": "financial-statement-analysis",
+      "question": "出口限制和本地化要求如何改变可服务市场与库存风险？",
+      "question_node_id": "esg.export_market_access",
+      "refuting_source_plan": [
+        "Search primary and independent evidence that would establish: 影响仅来自传闻，或替代产品和许可完全抵消限制。"
+      ],
+      "required_materials": [
+        "许可范围",
+        "受限收入",
+        "库存损失",
+        "替代产品"
+      ],
+      "sequence": 8,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "esg",
+      "step_id": "step:esg.export_market_access",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/esg.concentration/research_plan.json",
+      "decision_use": "识别会改变交付、市场准入、资本成本和股东回报的约束。 Apply support rule: 集中度高且替代、认证或切换周期长。",
+      "depends_on_step_ids": [],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+      },
+      "preferred_specialty_skill": "financial-statement-analysis",
+      "question": "关键供应商、客户和地区集中是否放大经营波动？",
+      "question_node_id": "esg.concentration",
+      "refuting_source_plan": [
+        "Search primary and independent evidence that would establish: 客户和供应商多元化显著改善，切换已被生产验证。"
+      ],
+      "required_materials": [
+        "前五客户占比",
+        "单一代工占比",
+        "地区收入",
+        "替代供应"
+      ],
+      "sequence": 9,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "esg",
+      "step_id": "step:esg.concentration",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/esg.governance_capital_allocation/research_plan.json",
+      "decision_use": "识别会改变交付、市场准入、资本成本和股东回报的约束。 Apply support rule: 资本配置带来可验证的增量利润和合理股东回报。",
+      "depends_on_step_ids": [],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Event-driven; refresh immediately when the governing rule or event changes.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+      },
+      "preferred_specialty_skill": "financial-statement-analysis",
+      "question": "补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？",
+      "question_node_id": "esg.governance_capital_allocation",
+      "refuting_source_plan": [
+        "Search primary and independent evidence that would establish: 收入增长依赖高额稀释、担保或无法验证的生态投资。"
+      ],
+      "required_materials": [
+        "股权稀释",
+        "获客补贴",
+        "关联交易",
+        "投资回报"
+      ],
+      "sequence": 10,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "esg",
+      "step_id": "step:esg.governance_capital_allocation",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/esg.financing_commitments/research_plan.json",
+      "decision_use": "识别会改变交付、市场准入、资本成本和股东回报的约束。 Apply support rule: 风险分担、现金流义务和资产利用率可被清晰识别。",
+      "depends_on_step_ids": [],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+      },
+      "preferred_specialty_skill": "financial-statement-analysis",
+      "question": "SPV、租赁、采购承诺和表外融资把风险留给谁？",
+      "question_node_id": "esg.financing_commitments",
+      "refuting_source_plan": [
+        "Search primary and independent evidence that would establish: 结构复杂且最终担保、闲置资产或对手方风险无法穿透。"
+      ],
+      "required_materials": [
+        "采购承诺",
+        "担保",
+        "租赁负债",
+        "SPV 对手方"
+      ],
+      "sequence": 11,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "esg",
+      "step_id": "step:esg.financing_commitments",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/demand.current_quantity/research_plan.json",
+      "decision_use": "验证真实工作负载如何转成算力、预算、订单和财务兑现。 Apply support rule: 每个Q1当前需求方都有一条直接、代理、样本或缺口记录；无法可靠分配的总量预测单独进入其它预测。",
+      "depends_on_step_ids": [
+        "step:demand.demand_universe"
+      ],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+      },
+      "preferred_specialty_skill": "financial-statement-analysis",
+      "question": "按 Q1 当前需求方逐类搜索，当前可验证的需求量、预测、样本或价值代理分别是多少；哪些其它预测无法可靠映射？",
+      "question_node_id": "demand.current_quantity",
+      "refuting_source_plan": [
+        "Search primary and independent evidence that would establish: 把行业总量机械分摊到需求方，遗漏无数据类别，或把不同单位、期间、样本和重叠主体直接相加。"
+      ],
+      "required_materials": [
+        "Q1需求方覆盖",
+        "当前数量或预测",
+        "口径与期间",
+        "映射质量",
+        "其它未映射预测"
+      ],
+      "sequence": 12,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "demand",
+      "step_id": "step:demand.current_quantity",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/supply.datacenter_readiness/research_plan.json",
+      "decision_use": "识别最终可交付系统的最短板、释放周期和价值捕获。 Apply support rule: 客户明确把机房、电力或融资列为部署节奏的主要约束。",
+      "depends_on_step_ids": [
+        "step:esg.energy_water"
+      ],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+      },
+      "preferred_specialty_skill": "supply-chain-chokepoint-analysis",
+      "question": "数据中心电力、冷却、建设和融资是否限制设备上线？",
+      "question_node_id": "supply.datacenter_readiness",
+      "refuting_source_plan": [
+        "Search primary and independent evidence that would establish: 可用数据中心容量提前释放，设备上线不再受基础设施限制。"
+      ],
+      "required_materials": [
+        "可用 MW/GW",
+        "建设周期",
+        "液冷就绪",
+        "项目融资"
+      ],
+      "sequence": 13,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "supply",
+      "step_id": "step:supply.datacenter_readiness",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/technology.performance_tco/research_plan.json",
+      "decision_use": "判断 GPU、ASIC 和其他路线在真实任务中的平台竞争与采用。 Apply support rule: 独立同口径测试或客户数据验证性能和 TCO 优势。",
+      "depends_on_step_ids": [
+        "step:technology.workload_fit"
+      ],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+      },
+      "preferred_specialty_skill": "industry-report-analysis",
+      "question": "在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？",
+      "question_node_id": "technology.performance_tco",
+      "refuting_source_plan": [
+        "Search primary and independent evidence that would establish: 优势依赖不可比参数、补贴、低利用率假设或未计软件迁移成本。"
+      ],
+      "required_materials": [
+        "token/s",
+        "延迟",
+        "每 token 成本",
+        "性能功耗比",
+        "集群利用率"
+      ],
+      "sequence": 14,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "technology",
+      "step_id": "step:technology.performance_tco",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/demand.workload_growth/research_plan.json",
+      "decision_use": "验证真实工作负载如何转成算力、预算、订单和财务兑现。 Apply support rule: 多个不同性质的使用量指标持续增长，并出现付费或业务采用。",
+      "depends_on_step_ids": [
+        "step:demand.current_quantity"
+      ],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: monthly.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+      },
+      "preferred_specialty_skill": "financial-statement-analysis",
+      "question": "训练、推理和 agent 任务是否在真实增长，而非只有主题热度？",
+      "question_node_id": "demand.workload_growth",
+      "refuting_source_plan": [
+        "Search primary and independent evidence that would establish: 用户或调用增长停滞，任务被一次性试用、软件优化或低价值流量替代。"
+      ],
+      "required_materials": [
+        "活跃用户与调用量",
+        "token 或任务量",
+        "AI 生成代码与商业流程渗透"
+      ],
+      "sequence": 15,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "demand",
+      "step_id": "step:demand.workload_growth",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/supply.shippable_system/research_plan.json",
+      "decision_use": "识别最终可交付系统的最短板、释放周期和价值捕获。 Apply support rule: 交期高位、价格坚挺且订单覆盖持续，说明供给仍低于需求。",
+      "depends_on_step_ids": [
+        "step:esg.concentration",
+        "step:supply.advanced_wafer_capacity",
+        "step:supply.datacenter_readiness",
+        "step:supply.packaging_memory_capacity",
+        "step:supply.system_integration"
+      ],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: monthly.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+      },
+      "preferred_specialty_skill": "supply-chain-chokepoint-analysis",
+      "question": "所有约束合并后，GPU/ASIC 系统供给能否追上订单？",
+      "question_node_id": "supply.shippable_system",
+      "refuting_source_plan": [
+        "Search primary and independent evidence that would establish: 交期、价格和利用率同步走弱，库存与渠道供给上升。"
+      ],
+      "required_materials": [
+        "端到端交期",
+        "发货量",
+        "价格",
+        "库存",
+        "客户等待时间"
+      ],
+      "sequence": 16,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "supply",
+      "step_id": "step:supply.shippable_system",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/technology.customer_adoption/research_plan.json",
+      "decision_use": "判断 GPU、ASIC 和其他路线在真实任务中的平台竞争与采用。 Apply support rule: 多个客户进入生产并扩大采购，不依赖单一补贴或股权激励。",
+      "depends_on_step_ids": [
+        "step:technology.performance_tco",
+        "step:technology.software_ecosystem"
+      ],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+      },
+      "preferred_specialty_skill": "industry-report-analysis",
+      "question": "技术优势是否转化为生产部署、复购和规模量产？",
+      "question_node_id": "technology.customer_adoption",
+      "refuting_source_plan": [
+        "Search primary and independent evidence that would establish: 采用停留在试点，或必须以大额认股权证和补贴换取。"
+      ],
+      "required_materials": [
+        "生产客户",
+        "部署 GW",
+        "复购",
+        "量产时间"
+      ],
+      "sequence": 17,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "technology",
+      "step_id": "step:technology.customer_adoption",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/demand.compute_intensity/research_plan.json",
+      "decision_use": "验证真实工作负载如何转成算力、预算、订单和财务兑现。 Apply support rule: 模型和 agent 路线使单位任务计算量增长快于效率改善。",
+      "depends_on_step_ids": [
+        "step:demand.workload_growth"
+      ],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+      },
+      "preferred_specialty_skill": "financial-statement-analysis",
+      "question": "每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？",
+      "question_node_id": "demand.compute_intensity",
+      "refuting_source_plan": [
+        "Search primary and independent evidence that would establish: 模型压缩、蒸馏、稀疏化和软件优化使单位任务硬件需求持续下降。"
+      ],
+      "required_materials": [
+        "训练规模",
+        "推理 token 成本",
+        "上下文长度",
+        "test-time compute"
+      ],
+      "sequence": 18,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "demand",
+      "step_id": "step:demand.compute_intensity",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/technology.platform_competition/research_plan.json",
+      "decision_use": "判断 GPU、ASIC 和其他路线在真实任务中的平台竞争与采用。 Apply support rule: 份额、订单和客户部署共同显示平台价值捕获变化。",
+      "depends_on_step_ids": [
+        "step:technology.customer_adoption"
+      ],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+      },
+      "preferred_specialty_skill": "industry-report-analysis",
+      "question": "竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？",
+      "question_node_id": "technology.platform_competition",
+      "refuting_source_plan": [
+        "Search primary and independent evidence that would establish: 市场份额结论混用 PC GPU、数据中心芯片和系统收入等不同口径。"
+      ],
+      "required_materials": [
+        "加速器份额",
+        "merchant/custom 占比",
+        "平台收入",
+        "切换案例"
+      ],
+      "sequence": 19,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "technology",
+      "step_id": "step:technology.platform_competition",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/demand.customer_compute_budget/research_plan.json",
+      "decision_use": "验证真实工作负载如何转成算力、预算、订单和财务兑现。 Apply support rule: 客户资本开支、长期承诺和融资能力同步提高。",
+      "depends_on_step_ids": [
+        "step:demand.compute_intensity",
+        "step:esg.financing_commitments"
+      ],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+      },
+      "preferred_specialty_skill": "financial-statement-analysis",
+      "question": "云厂商、模型公司和企业是否把需求转化为可持续预算？",
+      "question_node_id": "demand.customer_compute_budget",
+      "refuting_source_plan": [
+        "Search primary and independent evidence that would establish: 客户自由现金流恶化、ROI 不足或融资约束导致预算下修。"
+      ],
+      "required_materials": [
+        "AI capex",
+        "采购承诺",
+        "预付款",
+        "租赁与项目融资"
+      ],
+      "sequence": 20,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "demand",
+      "step_id": "step:demand.customer_compute_budget",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/demand.order_visibility/research_plan.json",
+      "decision_use": "验证真实工作负载如何转成算力、预算、订单和财务兑现。 Apply support rule: 订单、部署计划和交付窗口由多个客户或官方材料交叉验证。",
+      "depends_on_step_ids": [
+        "step:demand.customer_compute_budget",
+        "step:technology.platform_competition"
+      ],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+      },
+      "preferred_specialty_skill": "financial-statement-analysis",
+      "question": "预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？",
+      "question_node_id": "demand.order_visibility",
+      "refuting_source_plan": [
+        "Search primary and independent evidence that would establish: 订单仅为分析师情景，或客户机房延期、项目取消和重复计算明显。"
+      ],
+      "required_materials": [
+        "backlog",
+        "客户部署计划",
+        "机架发货",
+        "取消与延期"
+      ],
+      "sequence": 21,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "demand",
+      "step_id": "step:demand.order_visibility",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/demand.revenue_realization/research_plan.json",
+      "decision_use": "验证真实工作负载如何转成算力、预算、订单和财务兑现。 Apply support rule: 收入、毛利与指引同步上修，且现金流没有明显背离。",
+      "depends_on_step_ids": [
+        "step:demand.order_visibility",
+        "step:esg.export_market_access",
+        "step:supply.shippable_system"
+      ],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+      },
+      "preferred_specialty_skill": "financial-statement-analysis",
+      "question": "订单是否进入收入、毛利、现金流和下一期指引？",
+      "question_node_id": "demand.revenue_realization",
+      "refuting_source_plan": [
+        "Search primary and independent evidence that would establish: 收入仅来自一次性预付款、低毛利获客或应收与库存堆积。"
+      ],
+      "required_materials": [
+        "数据中心收入",
+        "AI 芯片收入",
+        "毛利率",
+        "经营现金流",
+        "管理层指引"
+      ],
+      "sequence": 22,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "demand",
+      "step_id": "step:demand.revenue_realization",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/valuation.fundamental_earnings/research_plan.json",
+      "decision_use": "把盈利路径与市场共识和股价隐含预期比较，形成赔率判断。 Apply support rule: 结构化公司/分部桥能把节点变化量化到盈利。",
+      "depends_on_step_ids": [
+        "step:demand.revenue_realization",
+        "step:technology.platform_competition"
+      ],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+      },
+      "preferred_specialty_skill": "valuation-analysis",
+      "question": "GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？",
+      "question_node_id": "valuation.fundamental_earnings",
+      "refuting_source_plan": [
+        "Search primary and independent evidence that would establish: 仅有主题敞口，或收入增长被低毛利、稀释和资本强度抵消。"
+      ],
+      "required_materials": [
+        "分部收入",
+        "增量毛利",
+        "研发与获客成本",
+        "FCF",
+        "EPS"
+      ],
+      "sequence": 23,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "valuation",
+      "step_id": "step:valuation.fundamental_earnings",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/valuation.consensus_expectation/research_plan.json",
+      "decision_use": "把盈利路径与市场共识和股价隐含预期比较，形成赔率判断。 Apply support rule: 同一截面、同一口径的多家机构预期可被比较。",
+      "depends_on_step_ids": [
+        "step:valuation.fundamental_earnings"
+      ],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: weekly.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+      },
+      "preferred_specialty_skill": "valuation-analysis",
+      "question": "市场当前对收入、利润、份额和资本开支的主流预期是什么？",
+      "question_node_id": "valuation.consensus_expectation",
+      "refuting_source_plan": [
+        "Search primary and independent evidence that would establish: 使用不同年份、盈利口径或旧目标价制造虚假分歧。"
+      ],
+      "required_materials": [
+        "一致预期",
+        "目标价",
+        "机构情景",
+        "多空分歧"
+      ],
+      "sequence": 24,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "valuation",
+      "step_id": "step:valuation.consensus_expectation",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/valuation.implied_expectation/research_plan.json",
+      "decision_use": "把盈利路径与市场共识和股价隐含预期比较，形成赔率判断。 Apply support rule: 以截面股价和可复现模型还原市场已经计入的路径。",
+      "depends_on_step_ids": [
+        "step:valuation.consensus_expectation"
+      ],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: weekly.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+      },
+      "preferred_specialty_skill": "valuation-analysis",
+      "question": "当前股价要求公司实现怎样的增长、份额和利润率路径？",
+      "question_node_id": "valuation.implied_expectation",
+      "refuting_source_plan": [
+        "Search primary and independent evidence that would establish: 只引用目标价上行空间而没有隐含假设和下行情景。"
+      ],
+      "required_materials": [
+        "PE/EV-EBITDA",
+        "反向 DCF",
+        "隐含收入增速",
+        "隐含利润率"
+      ],
+      "sequence": 25,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "valuation",
+      "step_id": "step:valuation.implied_expectation",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/valuation.revision_momentum/research_plan.json",
+      "decision_use": "把盈利路径与市场共识和股价隐含预期比较，形成赔率判断。 Apply support rule: 多期盈利预期持续上修，估值没有更快透支。",
+      "depends_on_step_ids": [
+        "step:valuation.implied_expectation"
+      ],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: weekly.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+      },
+      "preferred_specialty_skill": "valuation-analysis",
+      "question": "新信息是否使基本面上修速度快于市场预期和估值扩张？",
+      "question_node_id": "valuation.revision_momentum",
+      "refuting_source_plan": [
+        "Search primary and independent evidence that would establish: 股价上涨主要来自倍数扩张，盈利修正停滞或转负。"
+      ],
+      "required_materials": [
+        "EPS 修正",
+        "收入修正",
+        "目标价修正",
+        "业绩后股价反应"
+      ],
+      "sequence": 26,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "valuation",
+      "step_id": "step:valuation.revision_momentum",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/valuation.payoff_asymmetry/research_plan.json",
+      "decision_use": "把盈利路径与市场共识和股价隐含预期比较，形成赔率判断。 Apply support rule: 上行赔率显著高于可量化下行，且反证触发器可及时监控。",
+      "depends_on_step_ids": [
+        "step:esg.financing_commitments",
+        "step:esg.governance_capital_allocation",
+        "step:valuation.revision_momentum"
+      ],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: weekly.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+      },
+      "preferred_specialty_skill": "valuation-analysis",
+      "question": "综合情景概率后，上行、下行和可监控性是否支持行动？",
+      "question_node_id": "valuation.payoff_asymmetry",
+      "refuting_source_plan": [
+        "Search primary and independent evidence that would establish: 高增长已充分定价、下行无法量化或缺少退出触发器。"
+      ],
+      "required_materials": [
+        "情景收益",
+        "概率",
+        "最大回撤风险",
+        "kill test"
+      ],
+      "sequence": 27,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "valuation",
+      "step_id": "step:valuation.payoff_asymmetry",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    }
+  ]
+}

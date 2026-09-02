@@ -30,6 +30,8 @@ src/value_invest_research/
     research_goal.py           # research objective and research-type mapping
     domain_playbooks.py        # domain-specific question adapters
     question_architecture.py   # adaptive QA architecture, maximum depth five
+    research_plan.py           # executable steps, event projection, completion gates
+    l3_research_plan.py        # one L4/L5 child plan per L3 and leaf-search contract
     bom_research_readiness.py  # semantic completion, evidence gates, target gating
     report_view_model.py       # renderer-facing public report model
     research_artifacts.py      # pure data objects for research artifacts
@@ -39,6 +41,9 @@ src/value_invest_research/
     use_cases/
       validate_research_project.py
       plan_research_goal.py
+      build_research_plan.py
+      build_l3_research_plans.py
+      research_plan_execution.py
       build_report_view_model.py
       render_research_project_report.py
     orchestration/
@@ -56,8 +61,10 @@ src/value_invest_research/
     outbound/
       filesystem_research_artifacts.py
       filesystem_research_project.py
+      filesystem_research_plan.py
       canonical_html_report_renderer.py
       canonical_markdown_report_renderer.py # canonical public renderer
+      standalone_bom_research_plan_html_renderer.py # explicit L3-L5 plan document
       report_sections/          # compatibility HTML section adapters
       ...                      # planned: LLM, DeepSeek, SEC, yfinance, renderer adapters
 ```
@@ -321,6 +328,29 @@ ResearchGoal
   -> domain.resolve_domain_playbook + build_question_architecture
   -> QuestionArchitecture
 
+QuestionArchitecture
+  -> BuildResearchPlan use case
+  -> domain.research_plan.build_research_plan
+  -> ResearchPlanRepository port
+  -> qa_tree.json + research_plan.json
+  -> immutable research_plan_history/<plan_id>.json
+  -> l3_research_plans/index.json
+  -> one l3_research_plans/<l3_node_id>/research_plan.json per L3
+  -> L4 units + finest L5 executable steps
+  -> research_plan.html generated from the active child plans
+
+plan step execution
+  -> RecordResearchStepEvent use case
+  -> append-only research_step_events.jsonl
+  -> domain.research_plan.validate_research_plan_execution
+  -> current step state + evidence/dependency gate
+
+leaf material collection
+  -> select one active L5 leaf
+  -> leaf-specific search with l3/l4/l5/search-run trace
+  -> one parse and GPT review per leaf x source
+  -> broad provider/knowledge-base intake remains candidate-only
+
 research project files
   -> FileSystemResearchProjectRepository
   -> project.json + qa_tree.json + sources/evidence + investment_workbench.json
@@ -341,8 +371,18 @@ source/ima/
 
 <industry_project>/
   project.json                         # project_scope=industry_chain
+  research_plan.json                   # active executable plan
+  research_plan_history/<plan_id>.json # immutable plan versions
+  research_step_events.jsonl           # append-only execution trace
+  l3_research_plans/
+    index.json                         # exact L3 child-plan coverage
+    <l3_node_id>/
+      research_plan.json              # active L4/L5 plan
+      research_plan_history/<plan_id>.json
+      research_step_events.jsonl       # leaf execution trace
   professional_report.html            # default chain map + BOM navigation + aggregate targets
   professional_report.md              # portable audit sidecar
+  research_plan.html                  # explicit L3 -> L4 -> L5 execution workbench
   qa_tree.json / workbench / sources
   material_intake/
     documents.jsonl                    # classified search/IMA discoveries
@@ -432,6 +472,8 @@ The compact public default is exactly `当前研究的问题 -> 行业概况 -> 
 | `leaf_research.py` | compatibility facade over leaf use cases/adapters | Provider execution, raw-response storage, task/result/answer files, merged result persistence, task construction, leaf answer synthesis, parent rollup construction, and provider prompts/parsing now live in domain/application/adapters. The workflow adapter and stock QA pipeline no longer call this module directly. |
 | L3 source parsing | `ports/source_parsers.py` + `application/use_cases/parse_l3_source_materials.py` + parser adapters | Parser and reviewer are separate ports. DeepSeek/GPT review can plug in without touching leaf research, report rendering, or domain playbooks. |
 | research question planning | `domain/research_goal.py`, `domain/domain_playbooks.py`, `domain/question_architecture.py` | New topics should start from `ResearchGoal -> DomainPlaybook -> QuestionArchitecture`, adaptively drilling to at most five layers, not from hard-coded report templates. |
+| executable research planning | `domain/research_plan.py` + `BuildResearchPlan` + `ResearchPlanRepository` | Every terminal question becomes a dependency-aware step with source/refutation plans, evidence and answer gates, and a stable trace coordinate shared by tasks, extractions, reviews, and answers. |
+| research step execution | `domain/research_plan.py` + `RecordResearchStepEvent` / `ValidateResearchPlanExecution` + filesystem plan adapter | Execution is append-only. Current status is projected from events; completed steps require auditable evidence, review, answer, refutation, and dependency closure. |
 | source-universe resolution | `ports/repositories.py` + `adapters/outbound/filesystem_source_universe.py` | Professional source selection is an outbound repository decision persisted per minimum question; report code must not hard-code it. |
 | dual-loop material intake | `domain/material_intake.py` + `application/use_cases/ingest_materials.py` + `MaterialIntakeRepository` / `KnowledgeBaseMaterialFeed` ports | Question search and IMA scanning share classification, cutoff, deduplication, BOM routing, and pending-parse semantics without coupling providers to the evidence ledger. |
 | IMA central archive | visible browser UI + `application/use_cases/archive_ima_ui.py` | Attended year/month/day enumeration and visible download clicks; browser credentials, cookies, tokens, hidden URLs, and raw knowledge-base IDs are never read or persisted. |
@@ -464,6 +506,7 @@ PYTHONPATH=src python3 -m unittest
 PYTHONPATH=src python3 -m value_invest_research validate-report-contract <project>/professional_report.html
 PYTHONPATH=src python3 -m value_invest_research validate-report-contract <project>/professional_report.md
 PYTHONPATH=src python3 -m value_invest_research validate-research-artifacts tests/fixtures/research_quality_gold --require-l3
+PYTHONPATH=src python3 -m value_invest_research validate-research-plan <project>
 ```
 
 Architecture-specific regression:

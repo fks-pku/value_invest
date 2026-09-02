@@ -283,11 +283,13 @@ def build_material_parse_tasks(
     *,
     question_ids_by_node: dict[str, dict[int, str]] | None = None,
     question_labels_by_node: dict[str, dict[int, str]] | None = None,
+    leaf_context: dict[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     """Create narrow parse tasks without upgrading documents into evidence."""
 
     question_ids_by_node = question_ids_by_node or {}
     question_labels_by_node = question_labels_by_node or {}
+    leaf_context = dict(leaf_context or {})
     if document.get("mapping_status") in {"quarantined_post_cutoff", "rejected"}:
         return []
     nodes = _string_list(document.get("matched_bom_node_ids"))
@@ -306,11 +308,16 @@ def build_material_parse_tasks(
         )
         for number in questions:
             question_id = question_ids.get(number) or f"{node_id}_q{number}"
-            rows.append(
-                {
+            leaf_suffix = (
+                f"-{_slug(str(leaf_context.get('leaf_question_id') or ''))}"
+                if leaf_context.get("leaf_question_id")
+                else ""
+            )
+            row = {
                     "task_id": (
                         f"PARSE-{_slug(node_id)}-q{number}-"
                         f"{_slug(str(document.get('source_id') or 'source'))}"
+                        f"{leaf_suffix}"
                     ),
                     "source_id": document.get("source_id"),
                     "bom_node_id": node_id,
@@ -353,7 +360,25 @@ def build_material_parse_tasks(
                         "stance, four time fields, gaps, and contradictions"
                     ),
                 }
-            )
+            if leaf_context:
+                row.update(
+                    {
+                        "research_contract_version": "2.0",
+                        "collection_origin": "leaf_question_search",
+                        **{
+                            field_name: str(leaf_context.get(field_name) or "")
+                            for field_name in (
+                                "l3_plan_id",
+                                "l3_node_id",
+                                "l4_question_id",
+                                "leaf_question_id",
+                                "leaf_step_id",
+                                "search_run_id",
+                            )
+                        },
+                    }
+                )
+            rows.append(row)
     return rows
 
 
@@ -470,6 +495,21 @@ def validate_material_intake_bundle(bundle: dict[str, Any]) -> dict[str, Any]:
         ).items()
     }
     issues = list(bundle.get("load_issues") or [])
+    leaf_search_contract_active = bool(
+        bundle.get("leaf_search_contract_active")
+    )
+    valid_leaf_coordinates = {
+        (
+            str(row.get("l3_plan_id") or ""),
+            str(row.get("l3_node_id") or ""),
+            str(row.get("l4_question_id") or ""),
+            str(row.get("leaf_question_id") or ""),
+            str(row.get("leaf_step_id") or ""),
+        )
+        for row in bundle.get("leaf_plan_coordinates") or []
+        if isinstance(row, dict)
+    }
+    legacy_non_leaf_tasks = 0
     mode = str(
         project.get("mode")
         or project.get("run_mode")
@@ -612,6 +652,40 @@ def validate_material_intake_bundle(bundle: dict[str, Any]) -> dict[str, Any]:
                     f"{task_id} points to missing source_id={source_id}",
                 )
                 continue
+            contract_version = str(
+                task.get("research_contract_version") or ""
+            )
+            if leaf_search_contract_active and contract_version != "2.0":
+                legacy_non_leaf_tasks += 1
+            if contract_version == "2.0":
+                leaf_coordinate = tuple(
+                    str(task.get(field_name) or "")
+                    for field_name in (
+                        "l3_plan_id",
+                        "l3_node_id",
+                        "l4_question_id",
+                        "leaf_question_id",
+                        "leaf_step_id",
+                    )
+                )
+                if task.get("collection_origin") != "leaf_question_search":
+                    _validation_issue(
+                        issues,
+                        "invalid_leaf_collection_origin",
+                        f"{task_id} must originate from leaf_question_search",
+                    )
+                if not str(task.get("search_run_id") or "").strip():
+                    _validation_issue(
+                        issues,
+                        "leaf_parse_task_missing_search_run",
+                        f"{task_id} is missing search_run_id",
+                    )
+                if leaf_coordinate not in valid_leaf_coordinates:
+                    _validation_issue(
+                        issues,
+                        "unknown_leaf_plan_coordinate",
+                        f"{task_id} does not match an active L3 leaf plan",
+                    )
             if source_id not in inbox_source_ids:
                 _validation_issue(
                     issues,
@@ -665,7 +739,6 @@ def validate_material_intake_bundle(bundle: dict[str, Any]) -> dict[str, Any]:
             for field_name in (
                 "material_class",
                 "source_bucket",
-                "ingestion_channel",
                 "published_at",
                 "publication_date_status",
                 "publication_date_source",
@@ -676,6 +749,15 @@ def validate_material_intake_bundle(bundle: dict[str, Any]) -> dict[str, Any]:
                         "material_parse_metadata_drift",
                         f"{task_id} {field_name} differs from source metadata",
                     )
+            if contract_version != "2.0" and (
+                task.get("ingestion_channel")
+                != document.get("ingestion_channel")
+            ):
+                _validation_issue(
+                    issues,
+                    "material_parse_metadata_drift",
+                    f"{task_id} ingestion_channel differs from source metadata",
+                )
 
     return {
         "ok": not any(issue.get("severity") == "error" for issue in issues),
@@ -689,6 +771,9 @@ def validate_material_intake_bundle(bundle: dict[str, Any]) -> dict[str, Any]:
                 row.get("mapping_status") == "quarantined_post_cutoff"
                 for row in documents
             ),
+            "leaf_search_contract_active": leaf_search_contract_active,
+            "leaf_plan_coordinates": len(valid_leaf_coordinates),
+            "legacy_non_leaf_tasks": legacy_non_leaf_tasks,
         },
     }
 

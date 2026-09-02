@@ -11,6 +11,7 @@ Examples:
 - leaf research result repositories for merged results and source indexes
 - leaf research artifact repositories for task, result, answer, and rollup files
 - research project repositories for project metadata, QA trees, source indexes, and target lists
+- research plan repositories for immutable parent/L3 plan versions and append-only step events
 - LLM/source parser interfaces
 - source material parser and extraction reviewer interfaces
 - market data interfaces

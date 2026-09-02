@@ -17,6 +17,9 @@ from value_invest_research.domain.standalone_bom_timeline import (
     normalize_timeline_claim,
     normalize_timeline_conclusion,
 )
+from value_invest_research.domain.l3_research_plan import (
+    attach_l3_plan_summaries,
+)
 
 
 def apply_standalone_bom_updates(
@@ -24,6 +27,7 @@ def apply_standalone_bom_updates(
     repository: Any,
     renderer: Any,
     html_renderer: Any | None = None,
+    plan_html_renderer: Any | None = None,
     raw_claims: list[dict[str, Any]],
     raw_conclusions: list[dict[str, Any]],
     as_of_date: str | None = None,
@@ -87,6 +91,7 @@ def apply_standalone_bom_updates(
         repository=repository,
         renderer=renderer,
         html_renderer=html_renderer,
+        plan_html_renderer=plan_html_renderer,
         as_of_date=as_of_date,
         applied_claims=len(claims),
         applied_conclusions=len(conclusions),
@@ -129,6 +134,7 @@ def refresh_standalone_bom_report(
     repository: Any,
     renderer: Any,
     html_renderer: Any | None = None,
+    plan_html_renderer: Any | None = None,
     as_of_date: str | None = None,
     applied_claims: int = 0,
     applied_conclusions: int = 0,
@@ -159,14 +165,35 @@ def refresh_standalone_bom_report(
             conclusions=repository.load_conclusions(),
             as_of_date=as_of_date,
         )
+    l3_bundle: dict[str, Any] = {}
+    if hasattr(repository, "load_l3_research_plan_bundle"):
+        l3_bundle = repository.load_l3_research_plan_bundle()
+        if l3_bundle.get("plans"):
+            attach_l3_plan_summaries(
+                view,
+                plans=l3_bundle["plans"],
+                events_by_node=l3_bundle.get("events_by_node") or {},
+            )
     markdown_path = repository.write_report(renderer.render(view))
     html_path = None
     if html_renderer is not None and hasattr(repository, "write_html_report"):
         html_path = repository.write_html_report(html_renderer.render(view))
+    plan_html_path = None
+    if (
+        plan_html_renderer is not None
+        and l3_bundle.get("plans")
+        and hasattr(repository, "write_research_plan_html")
+    ):
+        plan_html_path = repository.write_research_plan_html(
+            plan_html_renderer.render(project=project, bundle=l3_bundle)
+        )
     return {
         "report_path": str(html_path or markdown_path),
         "html_report_path": str(html_path) if html_path else "",
         "markdown_report_path": str(markdown_path),
+        "research_plan_html_path": (
+            str(plan_html_path) if plan_html_path else ""
+        ),
         "as_of_date": as_of_date,
         "claims": sum(len(lens["claims"]) for lens in view["lenses"]),
         "applied_claims": applied_claims,
@@ -181,6 +208,7 @@ def apply_standalone_bom_engine_updates(
     repository: Any,
     renderer: Any,
     html_renderer: Any | None = None,
+    plan_html_renderer: Any | None = None,
     raw_mappings: list[dict[str, Any]],
     raw_logic_states: list[dict[str, Any]],
     raw_entity_states: list[dict[str, Any]],
@@ -251,6 +279,7 @@ def apply_standalone_bom_engine_updates(
         repository=repository,
         renderer=renderer,
         html_renderer=html_renderer,
+        plan_html_renderer=plan_html_renderer,
         as_of_date=as_of_date,
     )
     result.update(

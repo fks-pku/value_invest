@@ -157,6 +157,9 @@ Adapters 是当前基础设施的具体实现。
 research/bom/storage_memory_opportunities_live_20260601/
   project.json
   qa_tree.json
+  research_plan.json
+  research_plan_history/<plan_id>.json
+  research_step_events.jsonl
   sources.jsonl
   source_extractions.jsonl
   leaf_source_reviews.jsonl
@@ -249,6 +252,32 @@ Q2 哪些存储环节最可能捕获增量利润？
 - `skill_dispatch`
 
 这保证研究不会只停留在泛泛叙述。
+
+### Step 3A：把每个 L3 变成独立、可执行的深度研究计划
+
+QA 树回答“应该问什么”。根 `ResearchPlan` 只索引 L3；每个 L3 必须在
+`l3_research_plans/<l3_node_id>/` 拥有独立计划，再下钻为 L4 研究维度和 L5
+最细叶子。只有 L5 会变成可执行步骤：
+
+```text
+leaf:Q2.1.1:actual
+  问题：HBM/高端 DRAM 谁真正拥有稀缺性和定价权？
+  前置步骤：Q1 的需求验证步骤
+  资料计划：财报/公告、公司口径、行业数据、消息、反方观点
+  完成门槛：source -> extraction -> GPT review -> answer -> refutation result
+  下一步：通过门禁后才允许上卷到 Q2
+```
+
+根计划写入 `research_plan.json`，L3 计划分别写入自己的目录；每个
+`plan_id` 的不可变副本保存在相邻 `research_plan_history/`。执行过程不修改历史记录，而是向
+`research_step_events.jsonl` 追加 `collection_started`、
+`evidence_attached`、`answer_recorded`、`gate_evaluated` 等事件。
+
+当前状态由事件账本投影出来。材料搜集必须由一个最细 L5 叶子发起，并携带
+L3 计划、L4、L5、步骤和 `search_run_id`。IMA 日归档或宽泛材料池只能形成
+候选，不能先堆材料再批量映射成多个问题的证据。一个来源若服务多个叶子，
+必须分别创建叶子附件、提取和 GPT 复核。缺数据时必须记录 `step_blocked`、
+具体缺口和下一项验证，不能把“搜过”当成“答完”。
 
 ### Step 4：构建产业链全景
 
@@ -461,6 +490,8 @@ ResearchGoal
   -> DomainPlaybook
   -> QuestionArchitecture
   -> qa_tree.json
+  -> BuildResearchPlan
+  -> research_plan.json
 ```
 
 例子：
@@ -476,6 +507,23 @@ ResearchGoal
 - 想改问题深度：改 `domain_playbooks.py`
 - 想改研究类型：改 `research_goal.py`
 - 想改 QA 生成规则：改 `question_architecture.py`
+- 想改步骤依赖和完成门禁：改 `research_plan.py`
+
+### 链路 A2：研究计划到逐步可追溯答案
+
+```text
+research_plan.json
+  -> question-specific collection
+  -> source_id
+  -> source_extraction_id
+  -> source_review_id
+  -> step answer + refutation result
+  -> gate_evaluated
+  -> research_step_events.jsonl
+```
+
+计划本身不等于完成。只有来源、逐来源提取、GPT 复核、回答、反证检索结果
+和前置步骤全部闭合，步骤状态才会投影为 `completed`。
 
 ### 链路 B：资料到可用结论
 
@@ -728,6 +776,7 @@ renderer 只能展示排序，不应该决定排序。
 
 - 改研究视角：有 DomainPlaybook。
 - 改 QA 生成：有 QuestionArchitecture。
+- 改研究执行顺序和门禁：有 ResearchPlan / append-only step events。
 - 改 source parsing：有 SourceMaterialParser / SourceExtractionReviewer。
 - 改 leaf provider：有 LeafResearchProvider。
 - 改报告样式：有 CanonicalReportRenderer。
@@ -753,6 +802,7 @@ PYTHONPATH=src python3 -m unittest
 PYTHONPATH=src python3 -m unittest tests.test_hexagonal_architecture
 PYTHONPATH=src python3 -m value_invest_research validate-report-contract research/bom/storage_memory_opportunities_live_20260601/professional_report.html --require-l3
 PYTHONPATH=src python3 -m value_invest_research validate-research-artifacts research/bom/storage_memory_opportunities_live_20260601 --require-l3
+PYTHONPATH=src python3 -m value_invest_research validate-research-plan research/bom/storage_memory_opportunities_live_20260601
 git diff --check
 ```
 
@@ -763,4 +813,3 @@ git diff --check
 - `最终标的推荐` 是否仍是独立 section
 - `来源索引` 是否默认折叠
 - final HTML 是否没有过程日志和升级说明
-

@@ -7,6 +7,10 @@ from value_invest_research.adapters.outbound.standalone_bom_html_renderer import
 from value_invest_research.adapters.outbound.standalone_bom_markdown_renderer import (
     StandaloneBomMarkdownRenderer,
 )
+from value_invest_research.framework_contracts import (
+    validate_report_contract_html,
+    validate_report_contract_markdown,
+)
 from value_invest_research.domain.standalone_bom_investment_engine import (
     build_standalone_investment_view,
     normalize_claim_mapping,
@@ -260,6 +264,8 @@ class StandaloneBomInvestmentEngineTests(unittest.TestCase):
         self.assertIn('data-demand-party-group="potential_future"', party_html)
         self.assertIn("超大规模云服务商", party_html)
         self.assertIn("传统企业", party_html)
+        self.assertIn("研究问题", party_html)
+        self.assertIn("需求是否成立？", party_html)
         self.assertNotIn("state-badge", party_html)
         self.assertNotIn("entity-module", party_html)
         self.assertNotIn("截面变化与评估", party_html)
@@ -268,6 +274,7 @@ class StandaloneBomInvestmentEngineTests(unittest.TestCase):
         party_markdown = markdown.split("#### Q1 需求方", 1)[1].split("####", 1)[0]
         self.assertIn("**当前需求方**", party_markdown)
         self.assertIn("**潜在未来需求方**", party_markdown)
+        self.assertIn("**研究问题：** 需求是否成立？", party_markdown)
         self.assertNotIn("**当前结论：**", party_markdown)
         self.assertNotIn("**截面变化与评估：**", party_markdown)
 
@@ -406,6 +413,8 @@ class StandaloneBomInvestmentEngineTests(unittest.TestCase):
         self.assertIn("云服务商", quantity_html)
         self.assertIn("传统企业", quantity_html)
         self.assertIn("全球AI服务器", quantity_html)
+        self.assertIn("研究问题", quantity_html)
+        self.assertIn("各类需求方当前需求量是多少？", quantity_html)
         self.assertEqual(quantity_html.count('class="demand-quantity-tier"'), 3)
         self.assertEqual(
             quantity_html.count('class="demand-quantity-category"'),
@@ -454,6 +463,10 @@ class StandaloneBomInvestmentEngineTests(unittest.TestCase):
         self.assertIn("GPU数量", quantity_markdown)
         self.assertIn("供应商收入", quantity_markdown)
         self.assertIn("试点部署", quantity_markdown)
+        self.assertIn(
+            "**研究问题：** 各类需求方当前需求量是多少？",
+            quantity_markdown,
+        )
         self.assertEqual(
             quantity_markdown.count(
                 "| 来源 | 期间 | 信息类型 | 具体信息 |"
@@ -959,6 +972,9 @@ class StandaloneBomInvestmentEngineTests(unittest.TestCase):
 
         html = StandaloneBomHtmlRenderer(Path("/tmp")).render(view)
         self.assertIn('data-research-model="logic-chain-centered"', html)
+        self.assertEqual(html.count('class="logic-node-question"'), 6)
+        self.assertIn("<span>需求是否成立？</span>", html)
+        self.assertIn("<span>谁在产生需求？</span>", html)
         self.assertIn('class="logic-chain-map"', html)
         self.assertIn('class="node-material-table"', html)
         self.assertIn('<th scope="col">发布日期</th>', html)
@@ -979,9 +995,30 @@ class StandaloneBomInvestmentEngineTests(unittest.TestCase):
         self.assertNotIn("全局结论与趋势", html)
         self.assertNotIn('class="conclusion-panel"', html)
         self.assertIn("本期证据变化", html)
+        html_validation = validate_report_contract_html(
+            html,
+            mode="live_prediction",
+        )
+        self.assertTrue(html_validation["ok"], html_validation["issues"])
+        html_without_one_question = html.replace(
+            'class="logic-node-question"',
+            'class="logic-node-question-missing"',
+            1,
+        )
+        invalid_html = validate_report_contract_html(
+            html_without_one_question,
+            mode="live_prediction",
+        )
+        self.assertIn(
+            "standalone_html_logic_node_question",
+            {issue["code"] for issue in invalid_html["issues"]},
+        )
 
         markdown = StandaloneBomMarkdownRenderer(Path("/tmp")).render(view)
         self.assertIn("research_model: logic-chain-centered", markdown)
+        self.assertEqual(markdown.count("**研究问题：**"), 6)
+        self.assertIn("**研究问题：** 需求是否成立？", markdown)
+        self.assertIn("**研究问题：** 谁在产生需求？", markdown)
         self.assertIn("### 第一性原理逻辑链", markdown)
         self.assertIn("### 逻辑节点与原子观点材料", markdown)
         self.assertIn("### 派生证据视图", markdown)
@@ -994,6 +1031,23 @@ class StandaloneBomInvestmentEngineTests(unittest.TestCase):
         self.assertNotIn("##### 信息事件历史", markdown)
         self.assertIn("改变边界", markdown)
         self.assertIn("**本期证据变化：**", markdown)
+        markdown_validation = validate_report_contract_markdown(markdown)
+        self.assertTrue(
+            markdown_validation["ok"],
+            markdown_validation["issues"],
+        )
+        markdown_without_one_question = markdown.replace(
+            "**研究问题：**",
+            "**问题：**",
+            1,
+        )
+        invalid_markdown = validate_report_contract_markdown(
+            markdown_without_one_question
+        )
+        self.assertIn(
+            "markdown_standalone_bom_logic_node_question",
+            {issue["code"] for issue in invalid_markdown["issues"]},
+        )
 
 
 if __name__ == "__main__":

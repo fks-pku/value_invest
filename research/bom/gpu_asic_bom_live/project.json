@@ -6,10 +6,13 @@
   "domain_playbook": "semiconductor_hardware",
   "bom_node_id": "gpu_asic",
   "run_mode": "live_prediction",
-  "as_of_date": "2026-08-13",
-  "report_date": "2026-08-13",
-  "generated_at": "2026-08-13",
+  "as_of_date": "2026-09-02",
+  "report_date": "2026-09-02",
+  "generated_at": "2026-09-02",
   "question_model": "logic-chain-centered-five-lens",
+  "research_plan_model": "one-independent-plan-per-l3",
+  "l3_plan_index": "l3_research_plans/index.json",
+  "material_collection_policy": "finest-leaf-question-only",
   "investment_engine_version": "3.3",
   "logic_chain_version": "2026-08-12.v2",
   "question_labels": [
@@ -22,6 +25,7 @@
   "timeline_order": "published_at_desc",
   "status": "active",
   "public_artifact": "professional_report.html",
+  "research_plan_artifact": "research_plan.html",
   "audit_artifact": "professional_report.md",
   "material_relevance_profile": {
     "direct_terms": [

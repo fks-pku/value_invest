@@ -97,6 +97,96 @@ L3_SKILL_DISPATCH_REQUIRED_FIELDS = [
     "gpt_verification_status",
 ]
 
+
+def validate_research_plan_html_contract(
+    html: str,
+    *,
+    plans: list[dict[str, Any]],
+) -> dict[str, Any]:
+    """Validate the explicit L3 -> L4 -> L5 research-plan document."""
+
+    issues: list[dict[str, str]] = []
+    if 'data-report-scope="research-plan"' not in html:
+        _issue(
+            issues,
+            "error",
+            "missing_research_plan_scope",
+            "research_plan.html must declare data-report-scope=research-plan.",
+        )
+    if 'data-plan-contract="leaf-search-v2"' not in html:
+        _issue(
+            issues,
+            "error",
+            "missing_leaf_search_plan_contract",
+            "research_plan.html must declare the leaf-search-v2 contract.",
+        )
+    if 'href="professional_report.html"' not in html:
+        _issue(
+            issues,
+            "error",
+            "missing_professional_report_back_link",
+            "research_plan.html must link back to professional_report.html.",
+        )
+
+    expected_leaf_ids = [
+        str(step.get("leaf_question_id") or "")
+        for plan in plans
+        for step in plan.get("steps") or []
+        if str(step.get("leaf_question_id") or "")
+    ]
+    rendered_l3 = len(re.findall(r'class="l3-plan"', html))
+    rendered_leaves = len(
+        re.findall(r'class="leaf"\s+data-leaf-question-id=', html)
+    )
+    if rendered_l3 != len(plans):
+        _issue(
+            issues,
+            "error",
+            "research_plan_l3_count_mismatch",
+            f"Expected {len(plans)} L3 plans, found {rendered_l3}.",
+        )
+    if rendered_leaves != len(expected_leaf_ids):
+        _issue(
+            issues,
+            "error",
+            "research_plan_leaf_count_mismatch",
+            f"Expected {len(expected_leaf_ids)} L5 leaves, found {rendered_leaves}.",
+        )
+    for plan in plans:
+        plan_id = escape_regex_attribute(str(plan.get("plan_id") or ""))
+        if plan_id and not re.search(
+            rf'data-l3-plan-id="{plan_id}"', html
+        ):
+            _issue(
+                issues,
+                "error",
+                "missing_rendered_l3_plan",
+                f"Missing rendered L3 plan {plan.get('plan_id')!s}.",
+            )
+    for leaf_id in expected_leaf_ids:
+        if not re.search(
+            rf'data-leaf-question-id="{escape_regex_attribute(leaf_id)}"',
+            html,
+        ):
+            _issue(
+                issues,
+                "error",
+                "missing_rendered_leaf_question",
+                f"Missing rendered L5 leaf {leaf_id}.",
+            )
+    return {
+        "ok": not any(issue["severity"] == "error" for issue in issues),
+        "issues": issues,
+        "summary": {
+            "l3_plans": rendered_l3,
+            "leaf_steps": rendered_leaves,
+        },
+    }
+
+
+def escape_regex_attribute(value: str) -> str:
+    return re.escape(value)
+
 SOURCE_EXTRACTION_REQUIRED_FIELDS = [
     "extraction_id",
     "l3_question_id",
@@ -1384,6 +1474,62 @@ def validate_report_contract_markdown(
                         "instead of repeating a lens-level timeline"
                     ),
                 )
+            lens_bodies = re.findall(
+                r"^##\s+\d+\.\s+.+?\n(.*?)(?=^##\s+\d+\.|\Z)",
+                markdown,
+                flags=re.MULTILINE | re.DOTALL,
+            )
+            l3_blocks = [
+                (title, body)
+                for lens_body in lens_bodies
+                for title, body in re.findall(
+                    r"^####\s+([^\n]+)\n(.*?)(?=^####\s+|\Z)",
+                    lens_body,
+                    flags=re.MULTILINE | re.DOTALL,
+                )
+            ]
+            missing_question_titles = [
+                title
+                for title, body in l3_blocks
+                if not re.search(
+                    r"^\*\*研究问题：\*\*\s+\S",
+                    body,
+                    flags=re.MULTILINE,
+                )
+            ]
+            if not l3_blocks or missing_question_titles:
+                _issue(
+                    issues,
+                    "error",
+                    "markdown_standalone_bom_logic_node_question",
+                    "every standalone BOM L3 node must visibly render one non-empty research question",
+                )
+            if re.search(
+                r"^l3_plan_contract:\s*leaf-search-v2\s*$",
+                markdown,
+                flags=re.MULTILINE,
+            ):
+                missing_plan_titles = [
+                    title
+                    for title, body in l3_blocks
+                    if body.count("**L3 独立研究计划：**") != 1
+                    or len(
+                        re.findall(
+                            r"^\d+\. \*\*L4 · ",
+                            body,
+                            flags=re.MULTILINE,
+                        )
+                    )
+                    != 7
+                    or body.count("**L5 叶子：**") != 7
+                ]
+                if missing_plan_titles:
+                    _issue(
+                        issues,
+                        "error",
+                        "markdown_standalone_bom_l3_research_plan",
+                        "every L3 must render one seven-unit L4/L5 leaf-search plan",
+                    )
             if logic_chain_centered:
                 if not re.search(
                     r"^logic_chain_version:\s*\S+\s*$",
@@ -1942,6 +2088,49 @@ def _validate_standalone_bom_report_html(
                 "standalone_html_logic_nodes",
                 "structured standalone BOM HTML must render structured logic nodes",
             )
+        logic_node_count = _class_count(html, "logic-node")
+        question_blocks = re.findall(
+            r'<p\b[^>]*class\s*=\s*(["\'])[^"\']*\blogic-node-question\b[^"\']*\1[^>]*>(.*?)</p>',
+            html,
+            flags=re.IGNORECASE | re.DOTALL,
+        )
+        valid_question_count = sum(
+            1
+            for _, block in question_blocks
+            if re.match(r"^研究问题\s*\S", _strip_html(block))
+        )
+        if (
+            _class_count(html, "logic-node-question") != logic_node_count
+            or valid_question_count != logic_node_count
+        ):
+            _issue(
+                issues,
+                "error",
+                "standalone_html_logic_node_question",
+                "every standalone BOM L3 node must visibly render one non-empty research question",
+            )
+        if re.search(
+            r"<body\b[^>]*\bdata-l3-plan-contract\s*=\s*(['\"])leaf-search-v2\1",
+            html,
+            flags=re.IGNORECASE,
+        ):
+            plan_blocks = re.findall(
+                r'<details\b[^>]*class="[^"]*\bl3-research-plan\b[^"]*"[^>]*data-l3-plan-id="([^"]+)"[^>]*>(.*?)</details>',
+                html,
+                flags=re.IGNORECASE | re.DOTALL,
+            )
+            if len(plan_blocks) != logic_node_count or any(
+                not plan_id
+                or _class_count(block, "l4-plan-unit") != 7
+                or _class_count(block, "leaf-plan-step") != 7
+                for plan_id, block in plan_blocks
+            ):
+                _issue(
+                    issues,
+                    "error",
+                    "standalone_html_l3_research_plan",
+                    "every L3 must render one seven-unit L4/L5 leaf-search plan with a stable plan id",
+                )
         if _class_count(html, "claim-index") < _class_count(html, "entity-source-row"):
             _issue(
                 issues,
@@ -2644,10 +2833,29 @@ def validate_qa_tree_schema(qa_tree: dict[str, Any], *, require_l3: bool = False
 
     for node in research_unit_nodes:
         node_id = str(node.get("id", ""))
-        for field in L3_REQUIRED_FIELDS:
+        child_plan_rollup = (
+            _level_number(node.get("level")) == 3
+            and str(node.get("execution_mode") or "")
+            == "child_plan_rollup"
+        )
+        required_fields = [
+            field
+            for field in L3_REQUIRED_FIELDS
+            if not (child_plan_rollup and field == "source_plan")
+        ]
+        for field in required_fields:
             if _is_empty(node.get(field)):
                 _issue(issues, "error", "l3_missing_field", f"{node_id} is missing {field}")
-        _validate_l3_source_plan(node, node_id, issues)
+        if child_plan_rollup:
+            if _is_empty(node.get("child_plan_path")):
+                _issue(
+                    issues,
+                    "error",
+                    "l3_missing_child_plan",
+                    f"{node_id} must reference its independent L3 child plan",
+                )
+        else:
+            _validate_l3_source_plan(node, node_id, issues)
         _validate_l3_skill_dispatch(node, node_id, issues)
         _validate_l3_score_component(node, node_id, issues)
         logic_values = {

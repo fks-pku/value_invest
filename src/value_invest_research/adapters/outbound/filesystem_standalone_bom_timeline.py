@@ -57,6 +57,15 @@ class FileSystemStandaloneBomTimelineRepository:
             self.project_dir / "material_intake" / "documents.jsonl"
         )
 
+    def load_l3_research_plan_bundle(self) -> dict[str, Any]:
+        from value_invest_research.adapters.outbound.filesystem_research_plan import (
+            FileSystemResearchPlanRepository,
+        )
+
+        return FileSystemResearchPlanRepository(
+            self.project_dir
+        ).load_l3_research_plan_bundle()
+
     def write_report(self, markdown: str) -> Path:
         path = self.project_dir / "professional_report.md"
         path.write_text(markdown, encoding="utf-8")
@@ -64,6 +73,11 @@ class FileSystemStandaloneBomTimelineRepository:
 
     def write_html_report(self, html: str) -> Path:
         path = self.project_dir / "professional_report.html"
+        path.write_text(html, encoding="utf-8")
+        return path
+
+    def write_research_plan_html(self, html: str) -> Path:
+        path = self.project_dir / "research_plan.html"
         path.write_text(html, encoding="utf-8")
         return path
 

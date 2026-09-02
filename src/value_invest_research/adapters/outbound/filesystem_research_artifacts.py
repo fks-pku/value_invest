@@ -25,6 +25,8 @@ class FileSystemResearchArtifactRepository:
         leaf_source_reviews_path = self.project_dir / "leaf_source_reviews.jsonl"
         sources_path = self.project_dir / "sources.jsonl"
         workbench_path = self.project_dir / "investment_workbench.json"
+        research_plan_path = self.project_dir / "research_plan.json"
+        research_step_events_path = self.project_dir / "research_step_events.jsonl"
 
         issues: list[Issue] = []
         qa_tree: dict[str, Any] = {}
@@ -33,6 +35,11 @@ class FileSystemResearchArtifactRepository:
         leaf_source_reviews: list[dict[str, Any]] = []
         workbench: dict[str, Any] = {}
         targets: list[dict[str, Any]] = []
+        research_plan: dict[str, Any] = {}
+        research_step_events: list[dict[str, Any]] = []
+        l3_research_plan_index: dict[str, Any] = {}
+        l3_research_plans: list[dict[str, Any]] = []
+        l3_research_step_events: dict[str, list[dict[str, Any]]] = {}
 
         if qa_path.exists():
             qa_tree = json.loads(qa_path.read_text(encoding="utf-8"))
@@ -66,6 +73,27 @@ class FileSystemResearchArtifactRepository:
         elif not standalone_bom:
             issues.append({"severity": "error", "code": "missing_workbench", "message": f"{workbench_path} does not exist"})
 
+        if research_plan_path.exists():
+            research_plan = _read_json(research_plan_path)
+        if research_step_events_path.exists():
+            research_step_events = _read_jsonl(research_step_events_path)
+        l3_index_path = self.project_dir / "l3_research_plans" / "index.json"
+        if l3_index_path.exists():
+            l3_research_plan_index = _read_json(l3_index_path)
+            for row in l3_research_plan_index.get("plans") or []:
+                if not isinstance(row, dict):
+                    continue
+                node_id = str(row.get("l3_node_id") or "")
+                plan = _read_json(
+                    self.project_dir / str(row.get("path") or "")
+                )
+                if plan:
+                    l3_research_plans.append(plan)
+                event_path = self.project_dir / str(row.get("event_path") or "")
+                l3_research_step_events[node_id] = (
+                    _read_jsonl(event_path) if event_path.is_file() else []
+                )
+
         return ResearchArtifacts(
             qa_tree=qa_tree,
             sources=sources,
@@ -73,6 +101,11 @@ class FileSystemResearchArtifactRepository:
             leaf_source_reviews=leaf_source_reviews,
             workbench=workbench,
             targets=targets,
+            research_plan=research_plan,
+            research_step_events=research_step_events,
+            l3_research_plan_index=l3_research_plan_index,
+            l3_research_plans=l3_research_plans,
+            l3_research_step_events=l3_research_step_events,
             load_issues=issues,
         )
 

@@ -31,10 +31,39 @@ def ingest_material_batch(
     default_question_numbers: Iterable[int] = (),
     question_ids_by_node: dict[str, dict[int, str]] | None = None,
     question_labels_by_node: dict[str, dict[int, str]] | None = None,
+    leaf_context: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Normalize, deduplicate, route, and queue one material batch."""
 
     known_nodes = set(str(item) for item in known_bom_node_ids)
+    leaf_search_required = bool(
+        getattr(repository, "leaf_search_required", False)
+    )
+    if (
+        leaf_search_required
+        and ingestion_channel == "question_search"
+        and not leaf_context
+    ):
+        raise ValueError(
+            "This project requires an L3 plan and finest-leaf question for every material search"
+        )
+    if leaf_context:
+        missing_leaf_fields = [
+            field_name
+            for field_name in (
+                "l3_plan_id",
+                "l3_node_id",
+                "l4_question_id",
+                "leaf_question_id",
+                "leaf_step_id",
+            )
+            if not str(leaf_context.get(field_name) or "").strip()
+        ]
+        if missing_leaf_fields:
+            raise ValueError(
+                "Leaf material search is missing trace fields: "
+                + ", ".join(missing_leaf_fields)
+            )
     defaults = list(dict.fromkeys(str(item) for item in default_bom_node_ids))
     unknown_defaults = sorted(set(defaults) - known_nodes)
     if unknown_defaults:
@@ -80,17 +109,28 @@ def ingest_material_batch(
             )
         documents.append(document)
 
-    parse_tasks = [
-        task
-        for document in documents
-        for task in build_material_parse_tasks(
-            document,
-            question_ids_by_node=question_ids_by_node,
-            question_labels_by_node=question_labels_by_node,
-        )
-    ]
+    scan_id = _scan_id(provider, feed_id, discovered_at, documents)
+    resolved_leaf_context = (
+        {**dict(leaf_context or {}), "search_run_id": scan_id}
+        if leaf_context
+        else None
+    )
+    parse_tasks = (
+        [
+            task
+            for document in documents
+            for task in build_material_parse_tasks(
+                document,
+                question_ids_by_node=question_ids_by_node,
+                question_labels_by_node=question_labels_by_node,
+                leaf_context=resolved_leaf_context,
+            )
+        ]
+        if not leaf_search_required or resolved_leaf_context
+        else []
+    )
     scan_event = {
-        "scan_id": _scan_id(provider, feed_id, discovered_at, documents),
+        "scan_id": scan_id,
         "provider": provider,
         "feed_id": feed_id,
         "ingestion_channel": ingestion_channel,
@@ -104,7 +144,16 @@ def ingest_material_batch(
             for document in documents
         ),
         "parse_task_count": len(parse_tasks),
+        "evidence_eligibility": (
+            "leaf_specific"
+            if resolved_leaf_context
+            else "candidate_only"
+            if leaf_search_required
+            else "legacy_question_coordinate"
+        ),
     }
+    if resolved_leaf_context:
+        scan_event.update(resolved_leaf_context)
     persisted = repository.persist_material_batch(
         documents=documents,
         parse_tasks=parse_tasks,
@@ -529,6 +578,7 @@ def ingest_question_search_result(
     discovered_at: str | None = None,
     question_ids_by_node: dict[str, dict[int, str]] | None = None,
     question_labels_by_node: dict[str, dict[int, str]] | None = None,
+    leaf_context: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Route one Exa/AI-search result through the same material contract."""
 
@@ -537,7 +587,12 @@ def ingest_question_search_result(
         repository=repository,
         raw_documents=search_result.get("sources") or [],
         provider=provider,
-        feed_id=f"{bom_node_id}:q{question_number}",
+        feed_id=(
+            f"{bom_node_id}:q{question_number}:"
+            f"{(leaf_context or {}).get('leaf_question_id')}"
+            if leaf_context
+            else f"{bom_node_id}:q{question_number}"
+        ),
         ingestion_channel="question_search",
         discovered_at=discovered_at,
         known_bom_node_ids=known_bom_node_ids,
@@ -547,6 +602,7 @@ def ingest_question_search_result(
         default_question_numbers=[question_number],
         question_ids_by_node=question_ids_by_node,
         question_labels_by_node=question_labels_by_node,
+        leaf_context=leaf_context,
     )
 
 

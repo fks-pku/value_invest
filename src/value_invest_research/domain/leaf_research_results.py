@@ -17,6 +17,7 @@ def normalize_provider_result(row: dict[str, Any]) -> dict[str, Any]:
         "provider": row.get("provider", "manual"),
         "provider_model": row.get("provider_model", ""),
         "task_id": row.get("task_id", ""),
+        "research_step_id": row.get("research_step_id") or f"step:{row.get('node_id', '')}",
         "node_id": row.get("node_id", ""),
         "query": row.get("query", ""),
         "executed_at": executed_at,
@@ -90,7 +91,7 @@ def merge_leaf_result_rows(
 
 def _normalize_source(source: dict[str, Any], accessed_at: str) -> dict[str, Any]:
     category = source.get("information_category") or _infer_information_category(source)
-    return {
+    normalized = {
         "url": source.get("url", ""),
         "title": source.get("title", "") or source.get("source_name", ""),
         "publisher": source.get("publisher", ""),
@@ -104,6 +105,8 @@ def _normalize_source(source: dict[str, Any], accessed_at: str) -> dict[str, Any
         "summary": source.get("summary", ""),
         "quoted_or_extracted_points": _text_list(source.get("quoted_or_extracted_points")),
     }
+    normalized["source_id"] = source.get("source_id") or _stable_source_id(_source_key(normalized))
+    return normalized
 
 
 def _infer_information_category(source: dict[str, Any]) -> str:

@@ -6,7 +6,7 @@ This is the only active internal research framework. Public presentation is gove
 
 Turn a user goal into an auditable decision chain:
 
-`ResearchGoal -> DomainPlaybook -> QuestionArchitecture -> SourcePlan -> Per-Source Parse -> Evidence Synthesis -> Target Gate`
+`ResearchGoal -> DomainPlaybook -> QuestionArchitecture -> ResearchPlan -> PlanStepExecution -> Per-Source Parse -> StepAnswer -> Evidence Synthesis -> Target Gate`
 
 The framework is universal; concrete questions, metrics, sources, and thresholds adapt by domain.
 
@@ -42,7 +42,8 @@ Maximum depth is five:
 - L1: adapted research direction.
 - L2: one coherent mechanism bucket.
 - L3: one investment decision question.
-- L4/L5: optional minimum units when L3 still mixes mechanisms, companies, routes, metrics, or models.
+- L4: mandatory research dimensions owned by one independent L3 plan.
+- L5: finest executable leaf questions; searches and evidence gates bind here.
 
 Every L3-L5 unit records:
 
@@ -58,7 +59,51 @@ Every L3-L5 unit records:
 - `skill_dispatch`
 - `fact`, `inference`, `judgment`, `gap`, `trigger`, `source_links`
 
-Stop drilling down when one source plan and one extraction schema can answer the unit clearly.
+Every L3 must own a separate plan even when its wording appears simple. Stop
+drilling only at L5, when one targeted search plan and one extraction schema can
+answer that leaf without mixing entities, metrics, periods, routes, or mechanisms.
+
+## 3A. Build the Executable Research Plan
+
+The QA tree explains what must be answered. The parent `research_plan.json` indexes
+L3 rollups. Every L3 then owns an independent plan at
+`l3_research_plans/<l3_node_id>/research_plan.json`; that plan drills through L4 and
+converts only L5 leaves into stable executable steps:
+
+- `step_id` / `question_node_id` and canonical stage;
+- explicit dependencies on earlier research stages;
+- `decision_use` and required materials;
+- professional `source_universe_plan` and question-specific `source_plan`;
+- `minimum_evidence_gate`, `refuting_source_plan`, and freshness/cutoff rule;
+- specialty parser, answer contract, and traceability contract.
+
+Steps within one L3 plan may run in parallel when independent. A later step cannot
+complete before its declared dependencies, and the parent L3 rollup cannot complete
+until all mandatory L5 leaves pass. Save every parent and child plan version
+immutably in its local `research_plan_history/<plan_id>.json`; each
+`research_plan.json` points to the active version.
+
+Each L5 source collection must be initiated from that leaf and preserve
+`l3_plan_id`, `l3_node_id`, `l4_question_id`, `leaf_question_id`, `leaf_step_id`,
+and `search_run_id`. Provider archives and broad knowledge-base scans are candidate
+intake only. They never satisfy a leaf or L3 gate through later bulk mapping. If one
+document helps several leaves, create a separate attachment, extraction, and GPT
+review for every leaf.
+
+When an explicit research-plan document is requested, render the same active child
+plans into `research_plan.html`: every L3 is visible at the first disclosure level,
+and its body contains the complete L4/L5 questions, leaf source/search plan,
+dependencies, evidence gate, and event-projected status. The document is regenerated
+with plan builds and report refreshes; it never becomes a second source of truth.
+
+Execution is an append-only event stream in `research_step_events.jsonl`:
+
+`collection_started -> evidence_attached -> answer_recorded -> gate_evaluated`
+
+Blocked and reopened work uses `step_blocked` and `step_reopened`. Never overwrite
+past status or answers. Project the current step state from all events. The common
+`research_step_id` must flow through leaf tasks, source extractions, GPT reviews,
+and synthesized answers.
 
 ## 4. S-Curve and BOM Adaptation
 
@@ -139,7 +184,8 @@ and an explicit rule match. Topic-related forecasts, proxies, and context use
 boundary, constraint, lead, unresolved, conflict, or new-branch effects. Rejected
 claim-to-node proposals remain `unmapped` in the audit ledger and do not enter node
 state or the public node table. Each public lens
-shows its concise logic paragraph, then logic nodes. Every node shows one
+shows its concise logic paragraph, then logic nodes. Every public L3 node first
+shows its exact playbook `question`, including demand-side derived views, then shows one
 newest-to-oldest source table with exactly
 `发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响`; claims and effects use
 matching numbered lists. Real state history, revisions, gaps, and company/entity
@@ -149,6 +195,8 @@ investment snapshot. This structure does not waive canonical target recommendati
 ## 5. Minimum Research Unit Execution
 
 For every minimum question:
+
+Execute the matching research-plan step; do not run an unplanned generic search.
 
 ### A. Judgment model
 
@@ -300,6 +348,12 @@ The same source may yield several claims and map to several questions. Unmapped 
 
 A BOM question is complete only when `source_universe_plan`, direct/Exa search plan, and `claim_mapping_plan` are non-empty and active search, per-source parsing, source IDs, and evidence summary are complete. `claim_mapping_plan` must preserve atomic claim types, the four time fields, and the unmapped-material policy. Q6 additionally requires explicit `refuting_source_ids` and `refutation_evidence_summary`.
 
+The linked plan step must also contain a non-empty answer, source IDs, extraction
+IDs, GPT review IDs, at least one support/refute finding, an explicit result from
+the refutation search, a passed minimum evidence gate, and completed dependencies.
+If any item is missing, keep the step `in_progress`, `review_pending`, or `blocked`
+with a concrete gap and next action.
+
 All six questions must pass before a BOM S-curve stage becomes a formal conclusion.
 
 Missing data is not completion. Persist `gap`, scope caveat, and next evidence needed.
@@ -386,6 +440,7 @@ The parent report owns the chain map, BOM navigation, and aggregated targets. It
 Before publication:
 
 - validate QA and per-source parser/review schemas;
+- validate the executable plan and append-only step ledger;
 - validate BOM semantic readiness and target research gates;
 - validate cutoff visibility and label isolation;
 - validate the four-section Markdown contract and source-link/static structure;

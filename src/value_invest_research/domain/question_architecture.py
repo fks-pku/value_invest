@@ -62,7 +62,7 @@ class QuestionArchitecture:
 
 
 def build_question_architecture(goal: ResearchGoal, playbook: DomainPlaybook) -> QuestionArchitecture:
-    """Build a max-three-layer QA tree from a goal and domain playbook."""
+    """Build the L1-L3 decision tree; each L3 receives a separate L4/L5 plan."""
     nodes: list[QuestionNode] = []
     for qid in ("Q1", "Q2", "Q3", "Q4"):
         l2_templates = playbook.l2_templates.get(qid, [])
@@ -110,7 +110,8 @@ def build_question_architecture(goal: ResearchGoal, playbook: DomainPlaybook) ->
         playbook=playbook,
         planner_rationale=(
             f"{playbook.playbook_id} playbook maps the research goal to Q1-Q4, "
-            "then decomposes each direction into L2 mechanism buckets and L3 evidence units."
+            "then decomposes each direction into L2 mechanisms and L3 decision questions; "
+            "independent child plans own the L4/L5 evidence depth."
         ),
         nodes=nodes,
     )

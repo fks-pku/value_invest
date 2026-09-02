@@ -1,0 +1,203 @@
+{
+  "execution_policy": {
+    "broad_material_pool": "candidate_only_not_completion_evidence",
+    "executable_unit": "finest_leaf_question",
+    "l3_completion": "all_mandatory_leaf_steps_complete",
+    "material_collection": "leaf_question_search_only",
+    "planning_unit": "one_independent_plan_per_l3"
+  },
+  "parent_research_plan_id": "rp_l3_ef2eed3bf9a1ef2c",
+  "plan_type": "l3_deep_research_index",
+  "plans": [
+    {
+      "event_path": "l3_research_plans/demand.demand_universe/research_step_events.jsonl",
+      "l3_node_id": "demand.demand_universe",
+      "l3_plan_id": "l3rp_demand_demand_universe_5574a9cd1872eab3",
+      "leaf_steps": 7,
+      "path": "l3_research_plans/demand.demand_universe/research_plan.json"
+    },
+    {
+      "event_path": "l3_research_plans/demand.current_quantity/research_step_events.jsonl",
+      "l3_node_id": "demand.current_quantity",
+      "l3_plan_id": "l3rp_demand_current_quantity_c77dafd4dc372ff0",
+      "leaf_steps": 7,
+      "path": "l3_research_plans/demand.current_quantity/research_plan.json"
+    },
+    {
+      "event_path": "l3_research_plans/demand.workload_growth/research_step_events.jsonl",
+      "l3_node_id": "demand.workload_growth",
+      "l3_plan_id": "l3rp_demand_workload_growth_6e94bdc8afe514d5",
+      "leaf_steps": 7,
+      "path": "l3_research_plans/demand.workload_growth/research_plan.json"
+    },
+    {
+      "event_path": "l3_research_plans/demand.compute_intensity/research_step_events.jsonl",
+      "l3_node_id": "demand.compute_intensity",
+      "l3_plan_id": "l3rp_demand_compute_intensity_7fe2e8e1c0308e4c",
+      "leaf_steps": 7,
+      "path": "l3_research_plans/demand.compute_intensity/research_plan.json"
+    },
+    {
+      "event_path": "l3_research_plans/demand.customer_compute_budget/research_step_events.jsonl",
+      "l3_node_id": "demand.customer_compute_budget",
+      "l3_plan_id": "l3rp_demand_customer_compute_budget_140f422917cee9ce",
+      "leaf_steps": 7,
+      "path": "l3_research_plans/demand.customer_compute_budget/research_plan.json"
+    },
+    {
+      "event_path": "l3_research_plans/demand.order_visibility/research_step_events.jsonl",
+      "l3_node_id": "demand.order_visibility",
+      "l3_plan_id": "l3rp_demand_order_visibility_944a0df29b503cfc",
+      "leaf_steps": 7,
+      "path": "l3_research_plans/demand.order_visibility/research_plan.json"
+    },
+    {
+      "event_path": "l3_research_plans/demand.revenue_realization/research_step_events.jsonl",
+      "l3_node_id": "demand.revenue_realization",
+      "l3_plan_id": "l3rp_demand_revenue_realization_9753cf27f161564d",
+      "leaf_steps": 7,
+      "path": "l3_research_plans/demand.revenue_realization/research_plan.json"
+    },
+    {
+      "event_path": "l3_research_plans/supply.advanced_wafer_capacity/research_step_events.jsonl",
+      "l3_node_id": "supply.advanced_wafer_capacity",
+      "l3_plan_id": "l3rp_supply_advanced_wafer_capacity_168e0c1cc54109c6",
+      "leaf_steps": 7,
+      "path": "l3_research_plans/supply.advanced_wafer_capacity/research_plan.json"
+    },
+    {
+      "event_path": "l3_research_plans/supply.packaging_memory_capacity/research_step_events.jsonl",
+      "l3_node_id": "supply.packaging_memory_capacity",
+      "l3_plan_id": "l3rp_supply_packaging_memory_capacity_9c39cdfd27dce2b5",
+      "leaf_steps": 7,
+      "path": "l3_research_plans/supply.packaging_memory_capacity/research_plan.json"
+    },
+    {
+      "event_path": "l3_research_plans/supply.system_integration/research_step_events.jsonl",
+      "l3_node_id": "supply.system_integration",
+      "l3_plan_id": "l3rp_supply_system_integration_64eb204857b53526",
+      "leaf_steps": 7,
+      "path": "l3_research_plans/supply.system_integration/research_plan.json"
+    },
+    {
+      "event_path": "l3_research_plans/supply.datacenter_readiness/research_step_events.jsonl",
+      "l3_node_id": "supply.datacenter_readiness",
+      "l3_plan_id": "l3rp_supply_datacenter_readiness_2beffb300d667428",
+      "leaf_steps": 7,
+      "path": "l3_research_plans/supply.datacenter_readiness/research_plan.json"
+    },
+    {
+      "event_path": "l3_research_plans/supply.shippable_system/research_step_events.jsonl",
+      "l3_node_id": "supply.shippable_system",
+      "l3_plan_id": "l3rp_supply_shippable_system_550e885b8eb418a3",
+      "leaf_steps": 7,
+      "path": "l3_research_plans/supply.shippable_system/research_plan.json"
+    },
+    {
+      "event_path": "l3_research_plans/technology.workload_fit/research_step_events.jsonl",
+      "l3_node_id": "technology.workload_fit",
+      "l3_plan_id": "l3rp_technology_workload_fit_b2f2421570e0d6bb",
+      "leaf_steps": 7,
+      "path": "l3_research_plans/technology.workload_fit/research_plan.json"
+    },
+    {
+      "event_path": "l3_research_plans/technology.performance_tco/research_step_events.jsonl",
+      "l3_node_id": "technology.performance_tco",
+      "l3_plan_id": "l3rp_technology_performance_tco_a8165e8b91de0a3f",
+      "leaf_steps": 7,
+      "path": "l3_research_plans/technology.performance_tco/research_plan.json"
+    },
+    {
+      "event_path": "l3_research_plans/technology.software_ecosystem/research_step_events.jsonl",
+      "l3_node_id": "technology.software_ecosystem",
+      "l3_plan_id": "l3rp_technology_software_ecosystem_8428235961a51941",
+      "leaf_steps": 7,
+      "path": "l3_research_plans/technology.software_ecosystem/research_plan.json"
+    },
+    {
+      "event_path": "l3_research_plans/technology.customer_adoption/research_step_events.jsonl",
+      "l3_node_id": "technology.customer_adoption",
+      "l3_plan_id": "l3rp_technology_customer_adoption_825c3cccc3554cbf",
+      "leaf_steps": 7,
+      "path": "l3_research_plans/technology.customer_adoption/research_plan.json"
+    },
+    {
+      "event_path": "l3_research_plans/technology.platform_competition/research_step_events.jsonl",
+      "l3_node_id": "technology.platform_competition",
+      "l3_plan_id": "l3rp_technology_platform_competition_fe025057c11aeb2f",
+      "leaf_steps": 7,
+      "path": "l3_research_plans/technology.platform_competition/research_plan.json"
+    },
+    {
+      "event_path": "l3_research_plans/valuation.fundamental_earnings/research_step_events.jsonl",
+      "l3_node_id": "valuation.fundamental_earnings",
+      "l3_plan_id": "l3rp_valuation_fundamental_earnings_bdb8b5ed710d73a8",
+      "leaf_steps": 7,
+      "path": "l3_research_plans/valuation.fundamental_earnings/research_plan.json"
+    },
+    {
+      "event_path": "l3_research_plans/valuation.consensus_expectation/research_step_events.jsonl",
+      "l3_node_id": "valuation.consensus_expectation",
+      "l3_plan_id": "l3rp_valuation_consensus_expectation_050d08e26a4d7e1f",
+      "leaf_steps": 7,
+      "path": "l3_research_plans/valuation.consensus_expectation/research_plan.json"
+    },
+    {
+      "event_path": "l3_research_plans/valuation.implied_expectation/research_step_events.jsonl",
+      "l3_node_id": "valuation.implied_expectation",
+      "l3_plan_id": "l3rp_valuation_implied_expectation_6f642ef111ece676",
+      "leaf_steps": 7,
+      "path": "l3_research_plans/valuation.implied_expectation/research_plan.json"
+    },
+    {
+      "event_path": "l3_research_plans/valuation.revision_momentum/research_step_events.jsonl",
+      "l3_node_id": "valuation.revision_momentum",
+      "l3_plan_id": "l3rp_valuation_revision_momentum_49b0efd37ea8528d",
+      "leaf_steps": 7,
+      "path": "l3_research_plans/valuation.revision_momentum/research_plan.json"
+    },
+    {
+      "event_path": "l3_research_plans/valuation.payoff_asymmetry/research_step_events.jsonl",
+      "l3_node_id": "valuation.payoff_asymmetry",
+      "l3_plan_id": "l3rp_valuation_payoff_asymmetry_96c48de1535aff15",
+      "leaf_steps": 7,
+      "path": "l3_research_plans/valuation.payoff_asymmetry/research_plan.json"
+    },
+    {
+      "event_path": "l3_research_plans/esg.energy_water/research_step_events.jsonl",
+      "l3_node_id": "esg.energy_water",
+      "l3_plan_id": "l3rp_esg_energy_water_83105d3666a26572",
+      "leaf_steps": 7,
+      "path": "l3_research_plans/esg.energy_water/research_plan.json"
+    },
+    {
+      "event_path": "l3_research_plans/esg.export_market_access/research_step_events.jsonl",
+      "l3_node_id": "esg.export_market_access",
+      "l3_plan_id": "l3rp_esg_export_market_access_820d80c60e287326",
+      "leaf_steps": 7,
+      "path": "l3_research_plans/esg.export_market_access/research_plan.json"
+    },
+    {
+      "event_path": "l3_research_plans/esg.concentration/research_step_events.jsonl",
+      "l3_node_id": "esg.concentration",
+      "l3_plan_id": "l3rp_esg_concentration_7b49deacf342a22b",
+      "leaf_steps": 7,
+      "path": "l3_research_plans/esg.concentration/research_plan.json"
+    },
+    {
+      "event_path": "l3_research_plans/esg.governance_capital_allocation/research_step_events.jsonl",
+      "l3_node_id": "esg.governance_capital_allocation",
+      "l3_plan_id": "l3rp_esg_governance_capital_allocation_316c36151321bd93",
+      "leaf_steps": 7,
+      "path": "l3_research_plans/esg.governance_capital_allocation/research_plan.json"
+    },
+    {
+      "event_path": "l3_research_plans/esg.financing_commitments/research_step_events.jsonl",
+      "l3_node_id": "esg.financing_commitments",
+      "l3_plan_id": "l3rp_esg_financing_commitments_26a2452f80e8b67f",
+      "leaf_steps": 7,
+      "path": "l3_research_plans/esg.financing_commitments/research_plan.json"
+    }
+  ],
+  "schema_version": "2.0"
+}

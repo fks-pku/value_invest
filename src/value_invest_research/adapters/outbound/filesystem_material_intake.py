@@ -23,6 +23,10 @@ class FileSystemMaterialIntakeRepository:
     def project_dir_label(self) -> str:
         return str(self.project_dir)
 
+    @property
+    def leaf_search_required(self) -> bool:
+        return (self.project_dir / "l3_research_plans" / "index.json").is_file()
+
     def load_seen_external_ids(self, provider: str, feed_id: str) -> set[str]:
         state = _read_json(self.project_dir / "material_intake" / "feed_state.json")
         feed_key = _feed_key(provider, feed_id)
@@ -600,6 +604,31 @@ class FileSystemMaterialIntakeValidationRepository:
                     required=False,
                 ),
             }
+        l3_index = _read_json(
+            self.project_dir / "l3_research_plans" / "index.json"
+        )
+        leaf_plan_coordinates: list[dict[str, str]] = []
+        for plan_row in l3_index.get("plans") or []:
+            if not isinstance(plan_row, dict):
+                continue
+            plan = _read_json(
+                self.project_dir / str(plan_row.get("path") or "")
+            )
+            for step in plan.get("steps") or []:
+                if not isinstance(step, dict):
+                    continue
+                leaf_plan_coordinates.append(
+                    {
+                        field_name: str(step.get(field_name) or "")
+                        for field_name in (
+                            "l3_plan_id",
+                            "l3_node_id",
+                            "l4_question_id",
+                            "leaf_question_id",
+                            "leaf_step_id",
+                        )
+                    }
+                )
         return {
             "project": project,
             "known_bom_node_ids": known_nodes,
@@ -607,6 +636,8 @@ class FileSystemMaterialIntakeValidationRepository:
             "documents": documents,
             "directory_candidates": directory_candidates,
             "node_inboxes": node_inboxes,
+            "leaf_search_contract_active": bool(l3_index),
+            "leaf_plan_coordinates": leaf_plan_coordinates,
             "load_issues": load_issues,
         }
 
@@ -754,6 +785,27 @@ def _merge_material_documents(
             continue
         previous = merged.get(source_id) or {}
         combined = {**previous, **row}
+        combined["ingestion_channel"] = (
+            previous.get("ingestion_channel")
+            or row.get("ingestion_channel")
+        )
+        combined["ingestion_channels"] = list(
+            dict.fromkeys(
+                [
+                    *(previous.get("ingestion_channels") or []),
+                    *(
+                        [previous.get("ingestion_channel")]
+                        if previous.get("ingestion_channel")
+                        else []
+                    ),
+                    *(
+                        [row.get("ingestion_channel")]
+                        if row.get("ingestion_channel")
+                        else []
+                    ),
+                ]
+            )
+        )
         combined["matched_bom_node_ids"] = list(
             dict.fromkeys(
                 [

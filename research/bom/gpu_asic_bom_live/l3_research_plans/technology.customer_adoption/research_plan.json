@@ -1,0 +1,873 @@
+{
+  "completion_policy": {
+    "l3_complete_when": "all_mandatory_leaf_steps_complete",
+    "legacy_broad_search": "audit_only_not_retroactive_completion",
+    "missing_leaf_evidence": "blocked_not_inferred"
+  },
+  "l3_node_id": "technology.customer_adoption",
+  "l3_question": "技术优势是否转化为生产部署、复购和规模量产？",
+  "l3_title": "客户采用与量产",
+  "l4_units": [
+    {
+      "l4_question_id": "technology.customer_adoption.l4.scope",
+      "leaf_question_ids": [
+        "technology.customer_adoption.l4.scope.l5.answer"
+      ],
+      "level": 4,
+      "question": "边界与口径：需要回答哪些最细问题，才能完成 L3“技术优势是否转化为生产部署、复购和规模量产？”？",
+      "title": "边界与口径"
+    },
+    {
+      "l4_question_id": "technology.customer_adoption.l4.actual",
+      "leaf_question_ids": [
+        "technology.customer_adoption.l4.actual.l5.answer"
+      ],
+      "level": 4,
+      "question": "当前事实：需要回答哪些最细问题，才能完成 L3“技术优势是否转化为生产部署、复购和规模量产？”？",
+      "title": "当前事实"
+    },
+    {
+      "l4_question_id": "technology.customer_adoption.l4.history",
+      "leaf_question_ids": [
+        "technology.customer_adoption.l4.history.l5.answer"
+      ],
+      "level": 4,
+      "question": "历史变化：需要回答哪些最细问题，才能完成 L3“技术优势是否转化为生产部署、复购和规模量产？”？",
+      "title": "历史变化"
+    },
+    {
+      "l4_question_id": "technology.customer_adoption.l4.forward",
+      "leaf_question_ids": [
+        "technology.customer_adoption.l4.forward.l5.answer"
+      ],
+      "level": 4,
+      "question": "前瞻路径：需要回答哪些最细问题，才能完成 L3“技术优势是否转化为生产部署、复购和规模量产？”？",
+      "title": "前瞻路径"
+    },
+    {
+      "l4_question_id": "technology.customer_adoption.l4.mechanism",
+      "leaf_question_ids": [
+        "technology.customer_adoption.l4.mechanism.l5.answer"
+      ],
+      "level": 4,
+      "question": "因果与财务传导：需要回答哪些最细问题，才能完成 L3“技术优势是否转化为生产部署、复购和规模量产？”？",
+      "title": "因果与财务传导"
+    },
+    {
+      "l4_question_id": "technology.customer_adoption.l4.triangulation",
+      "leaf_question_ids": [
+        "technology.customer_adoption.l4.triangulation.l5.answer"
+      ],
+      "level": 4,
+      "question": "交叉验证：需要回答哪些最细问题，才能完成 L3“技术优势是否转化为生产部署、复购和规模量产？”？",
+      "title": "交叉验证"
+    },
+    {
+      "l4_question_id": "technology.customer_adoption.l4.refutation",
+      "leaf_question_ids": [
+        "technology.customer_adoption.l4.refutation.l5.answer"
+      ],
+      "level": 4,
+      "question": "反证与失效条件：需要回答哪些最细问题，才能完成 L3“技术优势是否转化为生产部署、复购和规模量产？”？",
+      "title": "反证与失效条件"
+    }
+  ],
+  "lens_id": "technology",
+  "logic_contract": {
+    "company_bridge_fields": [
+      "客户数",
+      "量产",
+      "复购",
+      "获客成本"
+    ],
+    "downstream_node_ids": [
+      "technology.platform_competition"
+    ],
+    "indicators": [
+      "生产客户",
+      "部署 GW",
+      "复购",
+      "量产时间"
+    ],
+    "refute_rule": "采用停留在试点，或必须以大额认股权证和补贴换取。",
+    "support_rule": "多个客户进入生产并扩大采购，不依赖单一补贴或股权激励。",
+    "update_cadence": "quarterly"
+  },
+  "material_collection_policy": {
+    "bulk_pool_mapping_eligible": false,
+    "push_ingestion_role": "candidate_only",
+    "required_origin": "leaf_question_search",
+    "required_trace_fields": [
+      "l3_plan_id",
+      "l3_node_id",
+      "l4_question_id",
+      "leaf_question_id",
+      "leaf_step_id",
+      "search_run_id"
+    ],
+    "source_reuse_rule": "The same source may serve another leaf only through a separate leaf attachment, extraction, and GPT review for that leaf."
+  },
+  "parent_research_plan_id": "rp_l3_ef2eed3bf9a1ef2c",
+  "plan_id": "l3rp_technology_customer_adoption_825c3cccc3554cbf",
+  "plan_type": "l3_deep_research",
+  "research_goal": {
+    "as_of_date": "2026-09-02",
+    "decision_boundary": "research observation, not trading instruction",
+    "domain_hint": "semiconductor_hardware",
+    "logic_chain_version": "2026-08-12.v2",
+    "object_id": "gpu_asic",
+    "q_map": {
+      "demand": "需求侧",
+      "esg": "ESG",
+      "supply": "供给侧",
+      "technology": "技术侧",
+      "valuation": "估值侧"
+    },
+    "report_date": "2026-09-02",
+    "research_type": "technology_route",
+    "run_mode": "live_prediction",
+    "topic": "GPU / ASIC BOM 实时端到端投资研究"
+  },
+  "schema_version": "2.0",
+  "steps": [
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Answer only this leaf; separate facts, inference, judgment, refutation, and gaps."
+      },
+      "collection_contract": {
+        "bulk_pool_mapping_forbidden": true,
+        "origin": "leaf_question_search",
+        "query_must_name_leaf_question": true,
+        "required_trace_fields": [
+          "l3_plan_id",
+          "l3_node_id",
+          "l4_question_id",
+          "leaf_question_id",
+          "leaf_step_id",
+          "search_run_id"
+        ]
+      },
+      "decision_use": "Complete the scope evidence unit for L3 technology.customer_adoption.",
+      "depends_on_step_ids": [],
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: quarterly.",
+      "initial_status": "pending",
+      "l3_node_id": "technology.customer_adoption",
+      "l3_plan_id": "l3rp_technology_customer_adoption_825c3cccc3554cbf",
+      "l4_question_id": "technology.customer_adoption.l4.scope",
+      "leaf_question_id": "technology.customer_adoption.l4.scope.l5.answer",
+      "leaf_step_id": "leaf:technology.customer_adoption:scope",
+      "level": 5,
+      "minimum_evidence_gate": {
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "leaf_search_run_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": false,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "A leaf-specific search run, source attachment, per-source extraction, GPT review, answer, explicit support/refute result, and dependency closure are required.",
+        "search_run_id_required": true
+      },
+      "preferred_specialty_skill": "industry-report-analysis",
+      "question": "回答“技术优势是否转化为生产部署、复购和规模量产？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？",
+      "question_node_id": "technology.customer_adoption.l4.scope.l5.answer",
+      "refuting_source_plan": [
+        "Search specifically for evidence that establishes: 采用停留在试点，或必须以大额认股权证和补贴换取。"
+      ],
+      "required_materials": [
+        "生产客户",
+        "部署 GW",
+        "复购",
+        "量产时间"
+      ],
+      "research_dimension": "scope",
+      "sequence": 1,
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "回答“技术优势是否转化为生产部署、复购和规模量产？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ 官方 定义 统计口径"
+          ],
+          "expected_fields": [
+            "definition",
+            "inclusion",
+            "exclusion",
+            "unit",
+            "locator"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "evidence",
+          "source_type": "official definition, standard, or company methodology",
+          "why_needed": "Fixes the denominator and prevents category drift."
+        }
+      ],
+      "source_universe_plan": {
+        "domain_id": "",
+        "priority_source_ids": [],
+        "registry": "config/source_universes.json"
+      },
+      "stage_id": "technology.customer_adoption.l4.scope",
+      "step_id": "leaf:technology.customer_adoption:scope",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "search_run_id",
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Answer only this leaf; separate facts, inference, judgment, refutation, and gaps."
+      },
+      "collection_contract": {
+        "bulk_pool_mapping_forbidden": true,
+        "origin": "leaf_question_search",
+        "query_must_name_leaf_question": true,
+        "required_trace_fields": [
+          "l3_plan_id",
+          "l3_node_id",
+          "l4_question_id",
+          "leaf_question_id",
+          "leaf_step_id",
+          "search_run_id"
+        ]
+      },
+      "decision_use": "Complete the actual evidence unit for L3 technology.customer_adoption.",
+      "depends_on_step_ids": [
+        "leaf:technology.customer_adoption:scope"
+      ],
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: quarterly.",
+      "initial_status": "pending",
+      "l3_node_id": "technology.customer_adoption",
+      "l3_plan_id": "l3rp_technology_customer_adoption_825c3cccc3554cbf",
+      "l4_question_id": "technology.customer_adoption.l4.actual",
+      "leaf_question_id": "technology.customer_adoption.l4.actual.l5.answer",
+      "leaf_step_id": "leaf:technology.customer_adoption:actual",
+      "level": 5,
+      "minimum_evidence_gate": {
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "leaf_search_run_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": false,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "A leaf-specific search run, source attachment, per-source extraction, GPT review, answer, explicit support/refute result, and dependency closure are required.",
+        "search_run_id_required": true
+      },
+      "preferred_specialty_skill": "industry-report-analysis",
+      "question": "围绕“技术优势是否转化为生产部署、复购和规模量产？”，当前有哪些关于生产客户、部署 GW、复购、量产时间的可验证实际事实？",
+      "question_node_id": "technology.customer_adoption.l4.actual.l5.answer",
+      "refuting_source_plan": [
+        "Search specifically for evidence that establishes: 采用停留在试点，或必须以大额认股权证和补贴换取。"
+      ],
+      "required_materials": [
+        "生产客户",
+        "部署 GW",
+        "复购",
+        "量产时间"
+      ],
+      "research_dimension": "actual",
+      "sequence": 2,
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "围绕“技术优势是否转化为生产部署、复购和规模量产？”，当前有哪些关于生产客户、部署 GW、复购、量产时间的可验证实际事实？ 生产客户 / 部署 GW / 复购 / 量产时间 actual latest filing"
+          ],
+          "expected_fields": [
+            "published_at",
+            "effective_period",
+            "entity",
+            "metric",
+            "value",
+            "unit",
+            "locator"
+          ],
+          "preferred_skill": "financial-statement-analysis",
+          "source_bucket": "evidence",
+          "source_type": "latest filing, official dataset, customer or supplier disclosure",
+          "why_needed": "Anchors the current answer in observed facts."
+        }
+      ],
+      "source_universe_plan": {
+        "domain_id": "",
+        "priority_source_ids": [],
+        "registry": "config/source_universes.json"
+      },
+      "stage_id": "technology.customer_adoption.l4.actual",
+      "step_id": "leaf:technology.customer_adoption:actual",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "search_run_id",
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Answer only this leaf; separate facts, inference, judgment, refutation, and gaps."
+      },
+      "collection_contract": {
+        "bulk_pool_mapping_forbidden": true,
+        "origin": "leaf_question_search",
+        "query_must_name_leaf_question": true,
+        "required_trace_fields": [
+          "l3_plan_id",
+          "l3_node_id",
+          "l4_question_id",
+          "leaf_question_id",
+          "leaf_step_id",
+          "search_run_id"
+        ]
+      },
+      "decision_use": "Complete the history evidence unit for L3 technology.customer_adoption.",
+      "depends_on_step_ids": [
+        "leaf:technology.customer_adoption:scope"
+      ],
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: quarterly.",
+      "initial_status": "pending",
+      "l3_node_id": "technology.customer_adoption",
+      "l3_plan_id": "l3rp_technology_customer_adoption_825c3cccc3554cbf",
+      "l4_question_id": "technology.customer_adoption.l4.history",
+      "leaf_question_id": "technology.customer_adoption.l4.history.l5.answer",
+      "leaf_step_id": "leaf:technology.customer_adoption:history",
+      "level": 5,
+      "minimum_evidence_gate": {
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "leaf_search_run_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": false,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "A leaf-specific search run, source attachment, per-source extraction, GPT review, answer, explicit support/refute result, and dependency closure are required.",
+        "search_run_id_required": true
+      },
+      "preferred_specialty_skill": "industry-report-analysis",
+      "question": "围绕“技术优势是否转化为生产部署、复购和规模量产？”，生产客户、部署 GW、复购、量产时间在同口径历史序列中如何变化，是否存在结构性拐点？",
+      "question_node_id": "technology.customer_adoption.l4.history.l5.answer",
+      "refuting_source_plan": [
+        "Search specifically for evidence that establishes: 采用停留在试点，或必须以大额认股权证和补贴换取。"
+      ],
+      "required_materials": [
+        "生产客户",
+        "部署 GW",
+        "复购",
+        "量产时间"
+      ],
+      "research_dimension": "history",
+      "sequence": 3,
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "围绕“技术优势是否转化为生产部署、复购和规模量产？”，生产客户、部署 GW、复购、量产时间在同口径历史序列中如何变化，是否存在结构性拐点？ 生产客户 / 部署 GW / 复购 / 量产时间 historical series YoY"
+          ],
+          "expected_fields": [
+            "period",
+            "metric",
+            "value",
+            "unit",
+            "definition_change",
+            "locator"
+          ],
+          "preferred_skill": "financial-statement-analysis",
+          "source_bucket": "evidence",
+          "source_type": "same-definition historical filing or official dataset",
+          "why_needed": "Tests direction and acceleration on a comparable basis."
+        }
+      ],
+      "source_universe_plan": {
+        "domain_id": "",
+        "priority_source_ids": [],
+        "registry": "config/source_universes.json"
+      },
+      "stage_id": "technology.customer_adoption.l4.history",
+      "step_id": "leaf:technology.customer_adoption:history",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "search_run_id",
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Answer only this leaf; separate facts, inference, judgment, refutation, and gaps."
+      },
+      "collection_contract": {
+        "bulk_pool_mapping_forbidden": true,
+        "origin": "leaf_question_search",
+        "query_must_name_leaf_question": true,
+        "required_trace_fields": [
+          "l3_plan_id",
+          "l3_node_id",
+          "l4_question_id",
+          "leaf_question_id",
+          "leaf_step_id",
+          "search_run_id"
+        ]
+      },
+      "decision_use": "Complete the forward evidence unit for L3 technology.customer_adoption.",
+      "depends_on_step_ids": [
+        "leaf:technology.customer_adoption:actual",
+        "leaf:technology.customer_adoption:history"
+      ],
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: quarterly.",
+      "initial_status": "pending",
+      "l3_node_id": "technology.customer_adoption",
+      "l3_plan_id": "l3rp_technology_customer_adoption_825c3cccc3554cbf",
+      "l4_question_id": "technology.customer_adoption.l4.forward",
+      "leaf_question_id": "technology.customer_adoption.l4.forward.l5.answer",
+      "leaf_step_id": "leaf:technology.customer_adoption:forward",
+      "level": 5,
+      "minimum_evidence_gate": {
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "leaf_search_run_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": false,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "A leaf-specific search run, source attachment, per-source extraction, GPT review, answer, explicit support/refute result, and dependency closure are required.",
+        "search_run_id_required": true
+      },
+      "preferred_specialty_skill": "industry-report-analysis",
+      "question": "围绕“技术优势是否转化为生产部署、复购和规模量产？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？",
+      "question_node_id": "technology.customer_adoption.l4.forward.l5.answer",
+      "refuting_source_plan": [
+        "Search specifically for evidence that establishes: 采用停留在试点，或必须以大额认股权证和补贴换取。"
+      ],
+      "required_materials": [
+        "生产客户",
+        "部署 GW",
+        "复购",
+        "量产时间"
+      ],
+      "research_dimension": "forward",
+      "sequence": 4,
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "围绕“技术优势是否转化为生产部署、复购和规模量产？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ guidance backlog capacity target period"
+          ],
+          "expected_fields": [
+            "published_at",
+            "target_period",
+            "guidance",
+            "commitment",
+            "assumption",
+            "locator"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "evidence",
+          "source_type": "official guidance, backlog, order, capacity, or customer plan",
+          "why_needed": "Establishes a dated forward anchor."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "围绕“技术优势是否转化为生产部署、复购和规模量产？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ independent forecast bear case assumptions"
+          ],
+          "expected_fields": [
+            "target_period",
+            "forecast",
+            "methodology",
+            "assumptions",
+            "bear_case"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent forecast with disclosed assumptions",
+          "why_needed": "Makes forecast disagreement and failure conditions visible."
+        }
+      ],
+      "source_universe_plan": {
+        "domain_id": "",
+        "priority_source_ids": [],
+        "registry": "config/source_universes.json"
+      },
+      "stage_id": "technology.customer_adoption.l4.forward",
+      "step_id": "leaf:technology.customer_adoption:forward",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "search_run_id",
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Answer only this leaf; separate facts, inference, judgment, refutation, and gaps."
+      },
+      "collection_contract": {
+        "bulk_pool_mapping_forbidden": true,
+        "origin": "leaf_question_search",
+        "query_must_name_leaf_question": true,
+        "required_trace_fields": [
+          "l3_plan_id",
+          "l3_node_id",
+          "l4_question_id",
+          "leaf_question_id",
+          "leaf_step_id",
+          "search_run_id"
+        ]
+      },
+      "decision_use": "Complete the mechanism evidence unit for L3 technology.customer_adoption.",
+      "depends_on_step_ids": [
+        "leaf:technology.customer_adoption:actual",
+        "leaf:technology.customer_adoption:forward"
+      ],
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: quarterly.",
+      "initial_status": "pending",
+      "l3_node_id": "technology.customer_adoption",
+      "l3_plan_id": "l3rp_technology_customer_adoption_825c3cccc3554cbf",
+      "l4_question_id": "technology.customer_adoption.l4.mechanism",
+      "leaf_question_id": "technology.customer_adoption.l4.mechanism.l5.answer",
+      "leaf_step_id": "leaf:technology.customer_adoption:mechanism",
+      "level": 5,
+      "minimum_evidence_gate": {
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "leaf_search_run_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": false,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "A leaf-specific search run, source attachment, per-source extraction, GPT review, answer, explicit support/refute result, and dependency closure are required.",
+        "search_run_id_required": true
+      },
+      "preferred_specialty_skill": "industry-report-analysis",
+      "question": "围绕“技术优势是否转化为生产部署、复购和规模量产？”，证据通过什么因果机制传导到technology.platform_competition以及客户数、量产、复购、获客成本？",
+      "question_node_id": "technology.customer_adoption.l4.mechanism.l5.answer",
+      "refuting_source_plan": [
+        "Search specifically for evidence that establishes: 采用停留在试点，或必须以大额认股权证和补贴换取。"
+      ],
+      "required_materials": [
+        "生产客户",
+        "部署 GW",
+        "复购",
+        "量产时间"
+      ],
+      "research_dimension": "mechanism",
+      "sequence": 5,
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "围绕“技术优势是否转化为生产部署、复购和规模量产？”，证据通过什么因果机制传导到technology.platform_competition以及客户数、量产、复购、获客成本？ mechanism revenue margin cash flow segment"
+          ],
+          "expected_fields": [
+            "mechanism",
+            "downstream_entity",
+            "revenue_bridge",
+            "margin_bridge",
+            "cash_flow_bridge",
+            "locator"
+          ],
+          "preferred_skill": "financial-statement-analysis",
+          "source_bucket": "evidence",
+          "source_type": "engineering disclosure plus company segment economics",
+          "why_needed": "Connects the node to delivery and investable financial outcomes."
+        }
+      ],
+      "source_universe_plan": {
+        "domain_id": "",
+        "priority_source_ids": [],
+        "registry": "config/source_universes.json"
+      },
+      "stage_id": "technology.customer_adoption.l4.mechanism",
+      "step_id": "leaf:technology.customer_adoption:mechanism",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "search_run_id",
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Answer only this leaf; separate facts, inference, judgment, refutation, and gaps."
+      },
+      "collection_contract": {
+        "bulk_pool_mapping_forbidden": true,
+        "origin": "leaf_question_search",
+        "query_must_name_leaf_question": true,
+        "required_trace_fields": [
+          "l3_plan_id",
+          "l3_node_id",
+          "l4_question_id",
+          "leaf_question_id",
+          "leaf_step_id",
+          "search_run_id"
+        ]
+      },
+      "decision_use": "Complete the triangulation evidence unit for L3 technology.customer_adoption.",
+      "depends_on_step_ids": [
+        "leaf:technology.customer_adoption:actual"
+      ],
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: quarterly.",
+      "initial_status": "pending",
+      "l3_node_id": "technology.customer_adoption",
+      "l3_plan_id": "l3rp_technology_customer_adoption_825c3cccc3554cbf",
+      "l4_question_id": "technology.customer_adoption.l4.triangulation",
+      "leaf_question_id": "technology.customer_adoption.l4.triangulation.l5.answer",
+      "leaf_step_id": "leaf:technology.customer_adoption:triangulation",
+      "level": 5,
+      "minimum_evidence_gate": {
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "leaf_search_run_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": false,
+        "required_source_buckets": [],
+        "rule": "A leaf-specific search run, source attachment, per-source extraction, GPT review, answer, explicit support/refute result, and dependency closure are required.",
+        "search_run_id_required": true
+      },
+      "preferred_specialty_skill": "industry-report-analysis",
+      "question": "围绕“技术优势是否转化为生产部署、复购和规模量产？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？",
+      "question_node_id": "technology.customer_adoption.l4.triangulation.l5.answer",
+      "refuting_source_plan": [
+        "Search specifically for evidence that establishes: 采用停留在试点，或必须以大额认股权证和补贴换取。"
+      ],
+      "required_materials": [
+        "生产客户",
+        "部署 GW",
+        "复购",
+        "量产时间"
+      ],
+      "research_dimension": "triangulation",
+      "sequence": 6,
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "围绕“技术优势是否转化为生产部署、复购和规模量产？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ customer supplier cross check"
+          ],
+          "expected_fields": [
+            "counterparty",
+            "period",
+            "confirming_fact",
+            "conflict",
+            "locator"
+          ],
+          "preferred_skill": "financial-statement-analysis",
+          "source_bucket": "evidence",
+          "source_type": "counterparty filing or customer/supplier disclosure",
+          "why_needed": "Checks the claim from the other side of the transaction."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "围绕“技术优势是否转化为生产部署、复购和规模量产？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ independent dataset methodology"
+          ],
+          "expected_fields": [
+            "methodology",
+            "sample",
+            "metric",
+            "period",
+            "limitation"
+          ],
+          "preferred_skill": "industry-report-analysis",
+          "source_bucket": "research_report",
+          "source_type": "independent specialist dataset or channel study",
+          "why_needed": "Tests whether official claims survive independent measurement."
+        }
+      ],
+      "source_universe_plan": {
+        "domain_id": "",
+        "priority_source_ids": [],
+        "registry": "config/source_universes.json"
+      },
+      "stage_id": "technology.customer_adoption.l4.triangulation",
+      "step_id": "leaf:technology.customer_adoption:triangulation",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "search_run_id",
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Answer only this leaf; separate facts, inference, judgment, refutation, and gaps."
+      },
+      "collection_contract": {
+        "bulk_pool_mapping_forbidden": true,
+        "origin": "leaf_question_search",
+        "query_must_name_leaf_question": true,
+        "required_trace_fields": [
+          "l3_plan_id",
+          "l3_node_id",
+          "l4_question_id",
+          "leaf_question_id",
+          "leaf_step_id",
+          "search_run_id"
+        ]
+      },
+      "decision_use": "Complete the refutation evidence unit for L3 technology.customer_adoption.",
+      "depends_on_step_ids": [
+        "leaf:technology.customer_adoption:actual"
+      ],
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: quarterly.",
+      "initial_status": "pending",
+      "l3_node_id": "technology.customer_adoption",
+      "l3_plan_id": "l3rp_technology_customer_adoption_825c3cccc3554cbf",
+      "l4_question_id": "technology.customer_adoption.l4.refutation",
+      "leaf_question_id": "technology.customer_adoption.l4.refutation.l5.answer",
+      "leaf_step_id": "leaf:technology.customer_adoption:refutation",
+      "level": 5,
+      "minimum_evidence_gate": {
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "leaf_search_run_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [],
+        "rule": "A leaf-specific search run, source attachment, per-source extraction, GPT review, answer, explicit support/refute result, and dependency closure are required.",
+        "search_run_id_required": true
+      },
+      "preferred_specialty_skill": "industry-report-analysis",
+      "question": "哪些直接证据能够满足反证条件“采用停留在试点，或必须以大额认股权证和补贴换取。”，并推翻、削弱或限定支持规则“多个客户进入生产并扩大采购，不依赖单一补贴或股权激励。”？",
+      "question_node_id": "technology.customer_adoption.l4.refutation.l5.answer",
+      "refuting_source_plan": [
+        "Search specifically for evidence that establishes: 采用停留在试点，或必须以大额认股权证和补贴换取。"
+      ],
+      "required_materials": [
+        "生产客户",
+        "部署 GW",
+        "复购",
+        "量产时间"
+      ],
+      "research_dimension": "refutation",
+      "sequence": 7,
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "哪些直接证据能够满足反证条件“采用停留在试点，或必须以大额认股权证和补贴换取。”，并推翻、削弱或限定支持规则“多个客户进入生产并扩大采购，不依赖单一补贴或股权激励。”？ contrary evidence cancellation substitution delay"
+          ],
+          "expected_fields": [
+            "refuting_fact",
+            "event_date",
+            "metric",
+            "threshold",
+            "duration",
+            "locator"
+          ],
+          "preferred_skill": "industry-report-analysis",
+          "source_bucket": "evidence",
+          "source_type": "official contrary fact, cancellation, substitution, or regulatory record",
+          "why_needed": "Directly searches for evidence that would weaken or overturn the L3 conclusion."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "哪些直接证据能够满足反证条件“采用停留在试点，或必须以大额认股权证和补贴换取。”，并推翻、削弱或限定支持规则“多个客户进入生产并扩大采购，不依赖单一补贴或股权激励。”？ bear case downside boundary"
+          ],
+          "expected_fields": [
+            "bear_case",
+            "assumptions",
+            "trigger",
+            "probability",
+            "monitoring_metric"
+          ],
+          "preferred_skill": "industry-report-analysis",
+          "source_bucket": "research_report",
+          "source_type": "independent bear case or boundary analysis",
+          "why_needed": "Defines the strongest credible alternative explanation."
+        }
+      ],
+      "source_universe_plan": {
+        "domain_id": "",
+        "priority_source_ids": [],
+        "registry": "config/source_universes.json"
+      },
+      "stage_id": "technology.customer_adoption.l4.refutation",
+      "step_id": "leaf:technology.customer_adoption:refutation",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "search_run_id",
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    }
+  ]
+}

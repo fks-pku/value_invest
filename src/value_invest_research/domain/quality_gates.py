@@ -9,6 +9,10 @@ from value_invest_research.domain.research_artifacts import (
     TimeSliceAuditResult,
 )
 from value_invest_research.domain.bom_research_readiness import validate_bom_research_decision_gates
+from value_invest_research.domain.research_plan import validate_research_plan_execution
+from value_invest_research.domain.l3_research_plan import (
+    validate_l3_research_plan_set,
+)
 from value_invest_research.framework_contracts import (
     audit_time_slice_sources,
     validate_backtest_leakage_controls,
@@ -69,6 +73,24 @@ def validate_research_artifacts(
         artifacts.workbench,
         artifacts.targets,
     )
+    plan_result = (
+        validate_research_plan_execution(
+            artifacts.research_plan,
+            artifacts.research_step_events,
+        )
+        if artifacts.research_plan or artifacts.research_step_events
+        else {"ok": True, "issues": [], "summary": {}}
+    )
+    l3_plan_result = (
+        validate_l3_research_plan_set(
+            parent_plan=artifacts.research_plan,
+            index=artifacts.l3_research_plan_index,
+            plans=artifacts.l3_research_plans,
+            events_by_node=artifacts.l3_research_step_events,
+        )
+        if artifacts.research_plan and artifacts.l3_research_plan_index
+        else {"ok": True, "issues": [], "summary": {}}
+    )
 
     all_issues = (
         list(artifacts.load_issues)
@@ -79,6 +101,8 @@ def validate_research_artifacts(
         + list(leakage_result.get("issues", []))
         + list(industry_space_source_search_result.get("issues", []))
         + list(bom_decision_gate_result.get("issues", []))
+        + list(plan_result.get("issues", []))
+        + list(l3_plan_result.get("issues", []))
     )
     ok = not any(issue.get("severity") == "error" for issue in all_issues)
     return ResearchArtifactValidationResult(
@@ -88,6 +112,8 @@ def validate_research_artifacts(
         source_extractions=int(extraction_result.get("summary", {}).get("source_extractions", 0) or 0),
         leaf_source_reviews=int(review_result.get("summary", {}).get("leaf_source_reviews", 0) or 0),
         targets=int(target_result.get("summary", {}).get("targets", 0) or 0),
+        plan_steps=int(plan_result.get("summary", {}).get("steps", 0) or 0),
+        research_step_events=int(plan_result.get("summary", {}).get("events", 0) or 0),
         issues=all_issues,
     )
 

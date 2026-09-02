@@ -1,42 +1,40 @@
 ---
 report_scope: standalone-bom
 bom_node_id: gpu_asic
-as_of_date: 2026-08-13
+as_of_date: 2026-09-02
 investment_engine_version: 3.3
 research_model: logic-chain-centered
 logic_chain_version: 2026-08-12.v2
+l3_plan_contract: leaf-search-v2
 ---
 
 # GPU / ASIC BOM 实时跟踪
 
-> 研究截面：2026-08-13。时间线按材料发布时间由近及远；同一材料只有经过当前问题的独立解析和复核后，才进入该问题。
+> 研究截面：2026-09-02。时间线按材料发布时间由近及远；同一材料只有经过当前问题的独立解析和复核后，才进入该问题。
 
 ### 当前投资判断
 
 **动作状态：** watch_only
 
-主要断点或约束环节是：单位任务算力强度、收入与利润兑现、客户采用与量产、市场一致预期、股价隐含预期、上下行赔率与动作、治理与资本配置、融资结构与长期承诺；由于逻辑覆盖、公司财务桥、估值、风险控制尚未通过，当前投资动作维持观察。
+逻辑链当前相对增强的环节是：收入与利润兑现、客户采用与量产、能源、水与基础设施许可、股价隐含预期；主要断点或约束环节是：先进制程晶圆、HBM、封装与基板、机房、电力与融资、融资结构与长期承诺、盈利修正与预期差、上下行赔率与动作；由于逻辑覆盖、公司财务桥、估值尚未通过，当前投资动作维持观察。
 
-**本期证据变化：** 7月26至27日新增材料补充了三条重要但尚未闭环的路径：Oracle AI基础设施合同如何在预算、园区准备和融资之间传导；自动驾驶与人形机器人如何共享训练算力；玻璃芯基板、EMIB-T和外包中介层如何形成2027年后的封装供给。上述材料主要是管理层会议纪要与机构判断，尚未提供合同金额、真实工作负载、单位任务算力、量产良率、客户认证或反向估值，因此没有新增逻辑节点达到直接增强，整体仍为观察。
+**本期证据变化：** 完整端到端研究支持一个克制结论：GPU/ASIC需求S曲线正在兑现，NVIDIA与AMD均有官方数据中心收入和产品采用，TSMC与具名1.2GW园区材料也验证了供应链正在扩张；但可发货系统仍受先进晶圆、CoWoS/HBM、机房并网和融资承诺的串联约束。证券层面，9月1日价格反向要求NVDA约22.3%、AMD约32.1%的十年FCF复合增速（统一简化模型），都不是低预期资产，AMD更依赖高执行。由于GPU专属盈利桥、同截面一致预期、多期修正和项目级资源许可尚未闭环，所有标的维持观察，不给出actionable_long。
 
 | 基本面变化 | 市场共识变化 | 定价变化 |
 |---|---|---|
-| 本期新增6份相关材料、10条原子观点。Oracle改善了合同经济性和项目准备度的可解释性，同时暴露融资约束；物理AI形成新需求分支；多种先进封装路线增加未来产能释放路径，但均未达到当前兑现证据标准。 | 新增观点来自德银、摩根大通、摩根士丹利、花旗和Bernstein等机构，能显示卖方关注方向，不能替代市场一致预期或官方经营指引。 | 新材料没有提供同截面股价隐含经营路径；Oracle、Tesla及封装供应链的目标价或盈利预测均不能证明错价。 |
+| 新增AMD官方数据中心分部收入67.18亿美元、经营利润21.03亿美元，使研究从单一NVIDIA龙头扩展到第二GPU平台；同时AMD Q2 FCF环比下降、capex上升。TSMC确认先进制程高占比及CoWoS替代成熟约需一年，OpenAI/SB Energy提供1.2GW在建项目坐标，Microsoft提供水效量化。 | 本轮没有取得同一截面、多家机构、同口径的收入/EPS/FCF一致预期，也没有至少三个版本的修正序列。管理层指引和单家机构目标价继续只作为前瞻或观点，不能升级为市场共识。 | 首次加入2026年9月1日NVDA 217.43美元与AMD 459.61美元。以Q2年化FCF、10%折现率、3%永续增长和十年显性期反推，NVDA约需22.3%、AMD约需32.1%的十年FCF增长；敏感性区间极宽，说明价格已经隐含高增长且结果受正常化FCF和终值主导。 |
 
-**研究覆盖：** 27 / 27 个逻辑节点已有截面；69 / 72 条原子观点完成映射。
+**研究覆盖：** 27 / 27 个逻辑节点已有截面；88 / 92 条原子观点完成映射。
 
 #### 公司影响、预期差与动作
 
 | 公司 | 敞口 | 盈利传导 | 市场定价 | 当前结论 | 动作 |
 |---|---|---|---|---|---|
-| AMD（AMD） | MI450/Helios、ROCm及客户交付计划提供GPU路线直接敞口。 | 具名客户和交付窗口仍待实际收入、毛利和现金流验证；客户权证可能显著稀释利润。 | 现有目标价只是单家卖方观点，尚未完成反向估值。 | 产品和交付线索存在，但客户量产、股东可得利润和赔率均未通过。 | watch_only |
-| Alphabet（GOOGL） | TPU外部所有权模式可能扩展merchant ASIC市场。 | 外部TPU收入、backlog和容量主要来自巴克莱模型，capex与FCF压力尚未由合同和报表验证。 | 目标价不能替代当前股价隐含路径。 | 属于值得验证的新分支，不是已成立的订单、盈利或错价证据。 | watch_only |
-| Meta（META） | 实际AI对话量和正式capex指引支持应用及预算端需求。 | GPU/ASIC用量、广告回报与伙伴融资最终义务尚未形成完整桥。 | 德银目标价只是机构样本，尚无反向估值。 | 需求输入较直接，但硬件传导、资本回报和风险承担仍待验证。 | watch_only |
-| Intel（INTC） | 服务器CPU、先进代工和替代封装是相邻供给线索。 | DCAI收入不等于GPU/ASIC收入，18A份额也不等于GPU与ASIC平台竞争。 | 当前材料没有可复现估值。 | 现有材料不能建立GPU/ASIC直接投资映射。 | no_action |
-| Oracle（ORCL） | AI基础设施合同、RPO承接和数据中心建设把GPU/ASIC需求连接到云基础设施运营方。 | 成本加成、5至6年合同和目标ROIC提供经济性框架，但合同金额、芯片清单、预付款、BYOHW及资本回收尚未由原始披露验证。 | 会议纪要没有反向估值或市场隐含经营路径。 | 合同传导机制更清晰，但融资约束和风险承担未闭环，仅适合观察。 | watch_only |
-| Tesla（TSLA） | 自动驾驶和Optimus可能共享训练集群与定制AI芯片，形成物理AI算力需求。 | 缺少机器人部署、训练GPU小时、芯片采购、付费收入和资本回报桥。 | 当前材料没有可复现估值。 | 物理AI是新增需求分支，不是已兑现的GPU/ASIC工作负载证据。 | watch_only |
-| Lens Tech（300433.SZ） | 与Intel合作的玻璃芯基板可能进入先进封装替代路线。 | 认证、良率、产能、客户订单和收入贡献均未验证。 | 机构报告未建立可复现反向估值。 | 路线进展可跟踪，但当前不能映射为GPU/ASIC供给兑现或公司利润。 | watch_only |
-| Vanguard（5347.TW） | VSMC可能承接TSMC外包的CoWoS中介层产能。 | 44KWPM、长期协议覆盖和2027年量产主要来自机构模型，缺少业务拆分、良率和客户验收。 | 当前材料没有反向估值。 | 具名产能释放路径存在，但尚未形成可验证盈利桥。 | watch_only |
+| NVIDIA（NVDA） | GPU、网络与机架系统构成最直接的AI加速器敞口，Rubin已在五家伙伴运行。 | Q2 FY27数据中心收入890亿美元，集团毛利率75.0%，Q2 FCF 213.41亿美元；应收、库存、供应承诺和AI云/园区承诺使现金转换需要持续验证。 | 9月1日217.43美元对应约5.24万亿美元市值；简化反向DCF要求约22.3%的十年FCF复合增速，15%至28%增长敏感性约127至327美元每股。该区间不是目标价。 | 基本面兑现最强，但当前价格要求长期高增长，现金转换、客户集中、中国市场和承诺风险尚未完全定价验证，维持观察。 | watch_only |
+| AMD（AMD） | MI/Helios与ROCm提供第二GPU平台的直接敞口，具名部署和最高2GW合作扩大采用管线。 | Q2 2026数据中心收入67.18亿美元、分部经营利润21.03亿美元，但口径混合CPU/GPU；集团FCF环比下降且capex上升。 | 9月1日459.61美元对应估算市值约7650亿美元；简化反向DCF要求约32.1%的十年FCF复合增速，20%至40%增长敏感性约194至792美元每股。该区间不是目标价。 | 份额与盈利改善可能带来高弹性，但当前价格要求极高执行，GPU盈利拆分、客户交付和稀释仍未闭环，维持观察。 | watch_only |
+| TSMC（TSM） | 先进制程与CoWoS是GPU/ASIC共同依赖的晶圆及封装控制点。 | Q2先进制程占晶圆收入77%，需求强；但研究没有CoWoS分部利润、GPU/ASIC专属产能、良率和价格桥。 | 本轮没有加入TSM同截面价格和反向估值，不能由稀缺性直接推出证券低估。 | 供应链位置稀缺、替代周期长，但公司盈利弹性和估值门槛未完成，维持观察。 | watch_only |
+| Alphabet（GOOGL） | TPU与云服务构成自研ASIC和外部算力服务敞口。 | 外部TPU收入、容量和利润率主要仍来自机构模型，缺少官方产品级收入、订单和FCF桥。 | 本轮没有用9月1日价格更新Alphabet反向估值。 | ASIC路线重要但盈利桥与估值均未达门槛，维持观察。 | watch_only |
+| Broadcom（AVGO） | 定制ASIC设计与网络互连使其位于自研加速器价值链。 | 现有材料缺少同一截面的AI收入、增量毛利、客户集中和FCF连续桥。 | 本轮未加入当前价格和反向估值，不能依据主题敞口判断错价。 | 具备ASIC直接敞口但证据与估值未闭环，当前不形成动作。 | no_action |
 
 ## 1. 需求侧
 
@@ -47,6 +45,25 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 ### 逻辑节点与原子观点材料
 
 #### 01. 真实 AI 工作负载
+
+**研究问题：** 训练、推理和 agent 任务是否在真实增长，而非只有主题热度？
+
+**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
+
+1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”？
+   - **L5 叶子：** 回答“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
+2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”？
+   - **L5 叶子：** 围绕“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”，当前有哪些关于活跃用户与调用量、token 或任务量、AI 生成代码与商业流程渗透的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
+3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”？
+   - **L5 叶子：** 围绕“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”，活跃用户与调用量、token 或任务量、AI 生成代码与商业流程渗透在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
+4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”？
+   - **L5 叶子：** 围绕“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
+5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”？
+   - **L5 叶子：** 围绕“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”，证据通过什么因果机制传导到demand.compute_intensity以及客户采用、工作负载结构、付费使用？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
+6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”？
+   - **L5 叶子：** 围绕“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
+7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”？
+   - **L5 叶子：** 哪些直接证据能够满足反证条件“用户或调用增长停滞，任务被一次性试用、软件优化或低价值流量替代。”，并推翻、削弱或限定支持规则“多个不同性质的使用量指标持续增长，并出现付费或业务采用。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
 
 **当前节点状态：** weak
 
@@ -62,6 +79,25 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 
 #### 02. 单位任务算力强度
 
+**研究问题：** 每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？
+
+**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
+
+1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”？
+   - **L5 叶子：** 回答“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
+2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”？
+   - **L5 叶子：** 围绕“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”，当前有哪些关于训练规模、推理 token 成本、上下文长度、test-time compute的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
+3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”？
+   - **L5 叶子：** 围绕“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”，训练规模、推理 token 成本、上下文长度、test-time compute在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
+4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”？
+   - **L5 叶子：** 围绕“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
+5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”？
+   - **L5 叶子：** 围绕“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”，证据通过什么因果机制传导到demand.customer_compute_budget以及单位算力用量、产品组合、ASP？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
+6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”？
+   - **L5 叶子：** 围绕“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
+7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”？
+   - **L5 叶子：** 哪些直接证据能够满足反证条件“模型压缩、蒸馏、稀疏化和软件优化使单位任务硬件需求持续下降。”，并推翻、削弱或限定支持规则“模型和 agent 路线使单位任务计算量增长快于效率改善。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
+
 **当前节点状态：** unresolved
 
 **当前结论：** Optimus训练更耗算力的机构表述提示物理AI可能抬升计算强度，但未提供单位任务测量，也没有与算法、芯片和系统效率改善比较；当前仍无满足本节点规则的直接证据。
@@ -73,6 +109,25 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 | 2026-07-27 | [摩根大通：从自动驾驶到人形机器人](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/manual/摩根大通-从自动驾驶到人形机器人：汽车行业全面拥抱人形机器人赛道-260727.pdf>) | 研报 | 1. 报告称Optimus训练相较车辆显著更耗算力，并由Cortex集群和未来Dojo 3提供训练基础设施，推理由Samsung和TSMC制造的AI5芯片承担；该表述没有提供同口径任务计算量、效率改善或独立客户测量，不能证明单位任务算力已经上升。（第26页，Tesla Optimus technology description；实际：2026；预测：2026-2027） | 1. 改变边界 |
 
 #### 03. 客户预算与资本承诺
+
+**研究问题：** 云厂商、模型公司和企业是否把需求转化为可持续预算？
+
+**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
+
+1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“云厂商、模型公司和企业是否把需求转化为可持续预算？”？
+   - **L5 叶子：** 回答“云厂商、模型公司和企业是否把需求转化为可持续预算？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
+2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“云厂商、模型公司和企业是否把需求转化为可持续预算？”？
+   - **L5 叶子：** 围绕“云厂商、模型公司和企业是否把需求转化为可持续预算？”，当前有哪些关于AI capex、采购承诺、预付款、租赁与项目融资的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
+3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“云厂商、模型公司和企业是否把需求转化为可持续预算？”？
+   - **L5 叶子：** 围绕“云厂商、模型公司和企业是否把需求转化为可持续预算？”，AI capex、采购承诺、预付款、租赁与项目融资在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
+4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“云厂商、模型公司和企业是否把需求转化为可持续预算？”？
+   - **L5 叶子：** 围绕“云厂商、模型公司和企业是否把需求转化为可持续预算？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
+5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“云厂商、模型公司和企业是否把需求转化为可持续预算？”？
+   - **L5 叶子：** 围绕“云厂商、模型公司和企业是否把需求转化为可持续预算？”，证据通过什么因果机制传导到demand.order_visibility以及客户预算、采购承诺、订单覆盖？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
+6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“云厂商、模型公司和企业是否把需求转化为可持续预算？”？
+   - **L5 叶子：** 围绕“云厂商、模型公司和企业是否把需求转化为可持续预算？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
+7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“云厂商、模型公司和企业是否把需求转化为可持续预算？”？
+   - **L5 叶子：** 哪些直接证据能够满足反证条件“客户自由现金流恶化、ROI 不足或融资约束导致预算下修。”，并推翻、削弱或限定支持规则“客户资本开支、长期承诺和融资能力同步提高。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
 
 **当前节点状态：** weak
 
@@ -88,29 +143,71 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 
 #### 04. 订单与交付可见性
 
+**研究问题：** 预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？
+
+**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
+
+1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”？
+   - **L5 叶子：** 回答“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
+2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”？
+   - **L5 叶子：** 围绕“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”，当前有哪些关于backlog、客户部署计划、机架发货、取消与延期的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
+3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”？
+   - **L5 叶子：** 围绕“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”，backlog、客户部署计划、机架发货、取消与延期在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
+4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”？
+   - **L5 叶子：** 围绕“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
+5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”？
+   - **L5 叶子：** 围绕“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”，证据通过什么因果机制传导到demand.revenue_realization以及订单、backlog、交付节奏？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
+6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”？
+   - **L5 叶子：** 围绕“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
+7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”？
+   - **L5 叶子：** 哪些直接证据能够满足反证条件“订单仅为分析师情景，或客户机房延期、项目取消和重复计算明显。”，并推翻、削弱或限定支持规则“订单、部署计划和交付窗口由多个客户或官方材料交叉验证。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
+
 **当前节点状态：** weak
 
-**当前结论：** MI450/Helios具名客户和交付窗口提供直接订单线索；其它TPU backlog和容量为投行模型，尚缺客户或合同交叉验证。
+**当前结论：** AMD最高2GW合作与NVIDIA伙伴部署扩大了订单线索，但前瞻容量上限、伙伴运行和管理层指引都不是不可取消订单；缺少客户交付表、验收和预付款，订单可见性仍弱。
 
-**相较上一截面：** 本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。
+**相较上一截面：** 新增AMD-Anthropic最高2GW合作边界，管线扩大但未转化为可核验交付。
 
 | 发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响 |
 |---|---|---|---|---|
+| 2026-08-26 | [NVIDIA：2027财年第二季度业绩](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/default.aspx) | 官方公司 | 1. NVIDIA指引Q3 FY27收入1080亿美元、上下浮动2%，较Q2实际收入对应约12%的中值环比增长；GAAP与非GAAP毛利率均指引74.0%、上下浮动50个基点。该指引没有计入任何中国数据中心计算收入。它提供供应商收入可见性，但不是客户不可取消订单、GPU颗数或实际交付的直接证明。（Outlook；预测：2027财年Q3） | 1. 改变边界 |
+| 2026-08-04 | [AMD：2026年第二季度业绩](https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results) | 官方财报 | 1. AMD称Helios平台已被具名实验室和云客户部署，并披露与Anthropic建立最高2GW的合作安排。最高2GW是前瞻上限而非已交付数量；公告未给出客户验收、利用率、复购、GPU收入或是否依赖商业激励，因此属于采用边界证据。（Data Center highlights；实际：2026-Q2；预测：2026-2027） | 1. 改变边界 |
 | 2026-07-24 | [巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | 1. 巴克莱根据 Broadcom/Blackstone/Apollo 的 20GW AI XPV 计划与 Google-Blackstone 合资项目，估计外部 TPU 容量可由 2026 年 1.4GW 增至 2028 年 11.5GW，对应约 100 万颗、203 万颗和 474 万颗 TPU。它说明定制 ASIC 正从云厂内部自用扩展到外部客户，但数量是投行模型而非公司正式指引。（第2、4-5页，External TPU sales framework；实际：2026；预测：2028）<br>2. 巴克莱依据已披露数据中心供应商项目估算，2026 年第二季度 Google 外部 TPU 收入 backlog 约 880 亿美元，长期累计潜在收入超过 3,000 亿美元；该估计只覆盖首批已识别项目，必须与实际采购承诺和交付节奏交叉验证。（第6页，What's Already Been Announced；实际：2026Q2；预测：2028） | 1. 线索<br>2. 线索 |
 | 2026-07-24 | [摩根大通：AMD AAI26 大会纪要](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf>) | 研报 | 1. MI450 GPU 与 Helios 机架系统计划于 2026 年 9 月开始交付，2026 年第四季度和 2027 年上半年加速爬坡；报告称 Anthropic、OpenAI、Meta 等客户已有数 GW 部署排至 2027 年。订单计划提供了可见性，但实际收入仍取决于系统交付和客户数据中心按期完工。（第1、3页，MI450/Helios ramp；实际：2026；预测：2027） | 1. 增强 |
 | 2026-07-24 | [摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | 研报 | 1. 摩根士丹利称 Helios 在关键客户处的采用进展顺利，客户证言显示 2027 年将强劲爬坡，并把 coding agent 视为 AMD GPU 生态采用的明确加速器；但该报告同时认为 AMD 本代产品仍未取得领导地位。（第1页，Key Takeaways；实际：2026；预测：2027） | 1. 线索 |
 
 #### 05. 收入与利润兑现
 
-**当前节点状态：** unresolved
+**研究问题：** 订单是否进入收入、毛利、现金流和下一期指引？
 
-**当前结论：** Intel DCAI收入属于服务器CPU邻近验证，不能代表GPU/ASIC收入与利润兑现；本节点目前没有合格直接证据。
+**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
 
-**相较上一截面：** 本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。
+1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“订单是否进入收入、毛利、现金流和下一期指引？”？
+   - **L5 叶子：** 回答“订单是否进入收入、毛利、现金流和下一期指引？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
+2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“订单是否进入收入、毛利、现金流和下一期指引？”？
+   - **L5 叶子：** 围绕“订单是否进入收入、毛利、现金流和下一期指引？”，当前有哪些关于数据中心收入、AI 芯片收入、毛利率、经营现金流、管理层指引的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
+3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“订单是否进入收入、毛利、现金流和下一期指引？”？
+   - **L5 叶子：** 围绕“订单是否进入收入、毛利、现金流和下一期指引？”，数据中心收入、AI 芯片收入、毛利率、经营现金流、管理层指引在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
+4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“订单是否进入收入、毛利、现金流和下一期指引？”？
+   - **L5 叶子：** 围绕“订单是否进入收入、毛利、现金流和下一期指引？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
+5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“订单是否进入收入、毛利、现金流和下一期指引？”？
+   - **L5 叶子：** 围绕“订单是否进入收入、毛利、现金流和下一期指引？”，证据通过什么因果机制传导到valuation.fundamental_earnings以及收入、毛利、现金流、指引？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
+6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“订单是否进入收入、毛利、现金流和下一期指引？”？
+   - **L5 叶子：** 围绕“订单是否进入收入、毛利、现金流和下一期指引？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
+7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“订单是否进入收入、毛利、现金流和下一期指引？”？
+   - **L5 叶子：** 哪些直接证据能够满足反证条件“收入仅来自一次性预付款、低毛利获客或应收与库存堆积。”，并推翻、削弱或限定支持规则“收入、毛利与指引同步上修，且现金流没有明显背离。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
+
+**当前节点状态：** weak
+
+**当前结论：** NVIDIA与AMD均提供了官方数据中心收入和公司/分部盈利输入，需求兑现不再依赖单一供应商；但AMD没有拆分GPU，NVIDIA和AMD单季FCF都提示收入增长不能直接等同现金增长，节点仍为弱证据。
+
+**相较上一截面：** 新增AMD数据中心收入67.18亿美元、分部经营利润21.03亿美元与集团现金流，使第二平台盈利桥明显改善但未闭环。
 
 | 发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响 |
 |---|---|---|---|---|
-| — | 暂无报告 | 其他 | 当前没有映射到该节点的原子观点。 | 待判断 |
+| 2026-08-26 | [NVIDIA：2027财年第二季度业绩](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/default.aspx) | 官方公司 | 1. NVIDIA Q2 FY27总收入962.21亿美元，数据中心收入890亿美元，分别同比增长106%和117%，GAAP毛利率75.0%；季度自由现金流213.41亿美元，高于上年同期134.50亿美元但低于Q1的485.54亿美元。期末应收账款630.59亿美元、库存315.75亿美元，分别高于1月末的384.66亿美元和214.03亿美元。收入与利润兑现很强，但季度现金转换和营运资本变化构成需要继续验证的冲突信号。（Q2 Fiscal 2027 Summary、Balance Sheets、Free Cash Flow Reconciliation；实际：2027财年Q2（截至2026-07-26）） | 1. 冲突 |
+| 2026-08-26 | [NVIDIA Form 10-Q（截至2026年7月26日季度）](https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm) | 官方财报 | 1. NVIDIA 2027财年上半年经营现金流744.21亿美元，高于上年同期427.79亿美元；公司说明收入增长带来的现金增量被应收账款上升部分抵消，原因包括向部分投资级客户的大额多季度协议提供延长付款条款。期末应收账款630.59亿美元，五家直接客户合计占应收70%。经营现金流仍增长，但回款期限和客户集中提高了现金转换质量的验证要求。（第13、31页，Note 7—Direct Customers、Liquidity；实际：2027财年上半年（截至2026-07-26）） | 1. 新增约束 |
+| 2026-08-04 | [AMD：2026年第二季度业绩](https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results) | 官方财报 | 1. AMD 2026年第二季度数据中心分部收入67.18亿美元、同比增长107%，分部经营利润21.03亿美元；公司总收入115.36亿美元、毛利率54%。数据中心分部同时包含EPYC CPU与Instinct GPU，官方材料没有拆分GPU收入或GPU分部利润，因此只能确认AMD数据中心业务兑现，不能把全部增量归因于GPU。（Financial highlights and segment table；实际：2026-Q2） | 1. 改变边界 |
 
 ## 2. 供给侧
 
@@ -122,23 +219,62 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 
 #### 01. 先进制程晶圆
 
+**研究问题：** 先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？
+
+**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
+
+1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”？
+   - **L5 叶子：** 回答“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
+2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”？
+   - **L5 叶子：** 围绕“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”，当前有哪些关于先进节点产能、良率、wafer allocation、代工 capex的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
+3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”？
+   - **L5 叶子：** 围绕“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”，先进节点产能、良率、wafer allocation、代工 capex在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
+4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”？
+   - **L5 叶子：** 围绕“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
+5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”？
+   - **L5 叶子：** 围绕“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”，证据通过什么因果机制传导到supply.shippable_system以及晶圆供应、采购承诺、产品良率？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
+6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”？
+   - **L5 叶子：** 围绕“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
+7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”？
+   - **L5 叶子：** 哪些直接证据能够满足反证条件“扩产和良率提升使可用晶圆明显快于需求增长。”，并推翻、削弱或限定支持规则“交期、预付款或客户分配显示晶圆持续紧张。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
+
 **当前节点状态：** unresolved
 
-**当前结论：** Intel扩产只说明供给响应，不能证明GPU/ASIC先进晶圆当前仍受交期、预付款或客户分配限制。
+**当前结论：** TSMC先进制程收入占比77%并继续看到强需求，证明领先节点高利用背景；但材料没有GPU/ASIC专属产能、交期、预付款、客户分配或良率，无法判断晶圆是否构成当前稀缺瓶颈。
 
-**相较上一截面：** 本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。
+**相较上一截面：** 首次加入TSMC当季官方先进制程结构，补充需求背景但没有供需缺口坐标。
 
 | 发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响 |
 |---|---|---|---|---|
 | 2026-07-24 | [摩根大通：PC 与服务器传导分析](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-PC与服务器：英特尔2026年二季度财报及AMD“Advancing AI 2026”大会传导分析-260724.pdf>) | 研报 | 1. Intel 将 2026 年资本开支指引上调至超过 200 亿美元，并称 2027 年还会显著增长，用于洁净室扩建和锁定设备订单。供给正在响应高价和短缺，因此当前稀缺性不能外推为永久稀缺。（第2页，Intel capex guidance；实际：2026；预测：2027） | 1. 改变边界 |
+| 2026-07-16 | [TSMC：2026年第二季度业绩](https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-07/a80d7933be643644081584087731f73b22ea5a2c/2Q26%20EarningsRelease.pdf) | 官方财报 | 1. TSMC 2026年第二季度美元收入约402亿美元，7纳米及更先进制程占晶圆收入77%，并预计第三季度继续受领先制程强劲需求支持。该披露证明先进制程需求强，但没有GPU/ASIC专属产能、交期、预付款、客户分配或良率，不能直接判断晶圆缺口大小。（第1至3页，季度业绩及技术收入结构；实际：2026-Q2；预测：2026-Q3） | 1. 改变边界 |
 
 #### 02. HBM、封装与基板
 
+**研究问题：** HBM、先进封装、基板和测试是否成为可交付芯片的约束？
+
+**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
+
+1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”？
+   - **L5 叶子：** 回答“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
+2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”？
+   - **L5 叶子：** 围绕“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”，当前有哪些关于HBM 产能、CoWoS 产能、封装良率、基板交期的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
+3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”？
+   - **L5 叶子：** 围绕“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”，HBM 产能、CoWoS 产能、封装良率、基板交期在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
+4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”？
+   - **L5 叶子：** 围绕“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
+5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”？
+   - **L5 叶子：** 围绕“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”，证据通过什么因果机制传导到supply.shippable_system以及封装供应、HBM 配置、产能承诺？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
+6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”？
+   - **L5 叶子：** 围绕“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
+7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”？
+   - **L5 叶子：** 哪些直接证据能够满足反证条件“替代路线或扩产使交期和价格快速回落。”，并推翻、削弱或限定支持规则“多个供应商确认交期、预订或良率约束，且扩产需要较长周期。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
+
 **当前节点状态：** weak
 
-**当前结论：** 既有材料显示内存、基板和CoWoS存在紧张线索；新增玻璃芯基板、EMIB-T与Vanguard中介层计划表明替代封装供给正在形成，但商业化集中于2027年以后，且良率、认证、资本开支和客户订单均未验证，不能据此判断当前瓶颈已解除。
+**当前结论：** TSMC确认CoWoS仍占当前先进封装大多数，替代路线成熟并进入生产大约需要一年，短期替代不可能瞬间解除约束；但没有月产能、良率、交期、HBM联动或客户预订，瓶颈强度仍未量化。
 
-**相较上一截面：** 新增三个未来供给分支及其执行约束，扩大了产能释放路径的可见度；由于材料主要为机构预测和公司线索，节点状态不变。
+**相较上一截面：** 新增TSMC官方的路线与成熟周期边界，替代时间约束更清晰，状态仍弱。
 
 | 发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响 |
 |---|---|---|---|---|
@@ -147,8 +283,28 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 | 2026-07-26 | [花旗：Lens Tech与Intel玻璃基板合作](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/manual/花旗-蓝思科技（300433.SZ）：携手英特尔推进玻璃基板合作-260726.pdf>) | 研报 | 1. 花旗称Intel与Lens Tech合作开发玻璃芯基板，Intel目标在2027-2028年推进玻璃基板与EMIB-T商业化；花旗预计2026年进行部分资格验证、潜在产品最早次年由客户推出。该判断提供替代基板路线的交叉来源，但尚无认证通过、良率、产能或客户订单。（第1页，Citi's Take；实际：2026；预测：2027-2028） | 1. 新增分支 |
 | 2026-07-26 | [摩根士丹利：先进封装玻璃基板进展](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/manual/大摩-大中华区科技硬件：先进封装玻璃基板取得进展-260726.pdf>) | 研报 | 1. 摩根士丹利认为玻璃芯基板的主要障碍不是单纯设备能力，而是高精度、高密度条件下的工艺控制和良率；只有持续改善良率，供应商才可能在量产阶段取得较高价值份额。报告没有披露当前良率、认证门槛或客户量产结果。（第1页，Challenges remain to be overcome；实际：2026）<br>2. 摩根士丹利渠道检查预计Lens Tech在2026年底建成玻璃芯基板试验线、较有意义的出货或从2027年下半年开始；Innolux与TSMC/Ibiden项目量产可能在2028年下半年或2029年，BOE若进展顺利则计划2027年建产能、2028年量产。时间表均为机构渠道判断，不是厂商正式产能或订单承诺。（第1页，Progress among players in the display supply chain；实际：2026；预测：2026H2-2029） | 1. 新增约束<br>2. 新增分支 |
 | 2026-07-24 | [摩根大通：PC 与服务器传导分析](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-PC与服务器：英特尔2026年二季度财报及AMD“Advancing AI 2026”大会传导分析-260724.pdf>) | 研报 | 1. 摩根大通把先进逻辑晶圆、硅片、内存和基板列为服务器供应链的持续约束，并预计供给改善会推动 2026 年第四季度收入进一步上行。有效供给仍由多项输入的最小值决定，而不是只看 GPU 晶圆数量。（第1页，AI-driven general server demand strength；实际：2026Q2；预测：2027）<br>2. 报告称 Intel EMIB-T 当前良率约 60%，目标 2027 年进入高量产；多个 AI 加速器项目因 CoWoS 紧张而评估 EMIB-T，但预计先从小批量开始，最大项目 TPU v9 或到 2027 年末至 2028 年才量产。替代封装路线正在形成，但短期无法立刻消除瓶颈。（第2页，EMIB-T high volume ramp；实际：2026Q2；预测：2027-2028） | 1. 新增约束<br>2. 新增约束 |
+| 2026-07-16 | [TSMC：2026年第二季度业绩电话会](https://investor.tsmc.com/schinese/encrypt/files/encrypt_file/reports/2026-07/547d1696765e05ce3adb81c108ce1c8c1682b80c/TSMC%202Q26%20Transcript.pdf) | 官方公司 | 1. TSMC管理层表示CoWoS仍占当前先进封装的大部分，替代方案从客户验证到成熟并进入生产大约需要一年。该表述说明短期替代并非即时可用，但未披露CoWoS月产能、良率、交期、HBM联动或客户预订，不能证明当前缺口或解除速度。（CoWoS and alternative packaging discussion；实际：2026-Q2；预测：2027） | 1. 新增约束 |
 
 #### 03. 系统集成与调试
+
+**研究问题：** ODM、机架、网络和软件调试是否限制芯片转化为可用系统？
+
+**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
+
+1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”？
+   - **L5 叶子：** 回答“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
+2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”？
+   - **L5 叶子：** 围绕“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”，当前有哪些关于机架发货、ODM 产能、调试周期、系统验收的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
+3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”？
+   - **L5 叶子：** 围绕“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”，机架发货、ODM 产能、调试周期、系统验收在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
+4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”？
+   - **L5 叶子：** 围绕“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
+5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”？
+   - **L5 叶子：** 围绕“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”，证据通过什么因果机制传导到supply.shippable_system以及系统发货、ODM 交付、验收？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
+6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”？
+   - **L5 叶子：** 围绕“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
+7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”？
+   - **L5 叶子：** 哪些直接证据能够满足反证条件“标准化设计和成熟 ODM 使机架交付周期显著缩短。”，并推翻、削弱或限定支持规则“系统交付显著晚于芯片可用时间，客户或厂商披露调试约束。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
 
 **当前节点状态：** weak
 
@@ -163,28 +319,69 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 
 #### 04. 机房、电力与融资
 
+**研究问题：** 数据中心电力、冷却、建设和融资是否限制设备上线？
+
+**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
+
+1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“数据中心电力、冷却、建设和融资是否限制设备上线？”？
+   - **L5 叶子：** 回答“数据中心电力、冷却、建设和融资是否限制设备上线？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
+2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“数据中心电力、冷却、建设和融资是否限制设备上线？”？
+   - **L5 叶子：** 围绕“数据中心电力、冷却、建设和融资是否限制设备上线？”，当前有哪些关于可用 MW/GW、建设周期、液冷就绪、项目融资的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
+3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“数据中心电力、冷却、建设和融资是否限制设备上线？”？
+   - **L5 叶子：** 围绕“数据中心电力、冷却、建设和融资是否限制设备上线？”，可用 MW/GW、建设周期、液冷就绪、项目融资在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
+4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“数据中心电力、冷却、建设和融资是否限制设备上线？”？
+   - **L5 叶子：** 围绕“数据中心电力、冷却、建设和融资是否限制设备上线？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
+5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“数据中心电力、冷却、建设和融资是否限制设备上线？”？
+   - **L5 叶子：** 围绕“数据中心电力、冷却、建设和融资是否限制设备上线？”，证据通过什么因果机制传导到supply.shippable_system以及上线容量、项目进度、融资义务？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
+6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“数据中心电力、冷却、建设和融资是否限制设备上线？”？
+   - **L5 叶子：** 围绕“数据中心电力、冷却、建设和融资是否限制设备上线？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
+7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“数据中心电力、冷却、建设和融资是否限制设备上线？”？
+   - **L5 叶子：** 哪些直接证据能够满足反证条件“可用数据中心容量提前释放，设备上线不再受基础设施限制。”，并推翻、削弱或限定支持规则“客户明确把机房、电力或融资列为部署节奏的主要约束。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
+
 **当前节点状态：** weak
 
-**当前结论：** Oracle管理层称多数AI园区已完成土地、许可、电力和初始融资环节，为项目落地提供正向边界；但新墨西哥最终空气许可仍待完成，且没有独立的可用电力、冷却就绪和建设进度数据，无法判断设备上线约束是否已实质解除。
+**当前结论：** OpenAI/SB Energy披露1.2GW具名项目正在建设并计划2026年开始服务，使数据中心准备度有了项目级坐标；但并网、许可、ready-for-service验收、实际IT负载和加速器安装量未披露，不能当作已可用容量。
 
-**相较上一截面：** 新增具名客户对多个园区准备度的描述，但仍是管理层会议纪要且包含未决许可，节点状态不变。
+**相较上一截面：** 新增具名1.2GW项目边界，但未解除NVIDIA承诺对应园区准备度缺口。
 
 | 发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响 |
 |---|---|---|---|---|
+| 2026-08-26 | [NVIDIA Form 10-Q（截至2026年7月26日季度）](https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm) | 官方财报 | 1. NVIDIA明确把土地、电力、园区外壳和资本列为AI基础设施部署关键条件，并称这些短缺可推迟客户上线和收入。公司在2026年8月为SB Energy俄亥俄PORTS项目约4.25GW IT负载提供信用支持，园区原则上由OpenAI签署20年租约，NVIDIA担保总额上限1050亿美元；九座数据中心预计自2029财年开始陆续投入服务。该项目缓解未来场地约束，也显示设备需求需要大规模长期担保才能落地。（第18、26页，Additional Commitments and Guarantees、Recent Developments；实际：2026-08；预测：2029财年起） | 1. 新增约束 |
 | 2026-07-27 | [德银：Oracle CFO会议—AI基础设施合同、融资与回报](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/manual/德银-甲骨文（ORCL.US）：与CFO会谈核心要点-260727.pdf>) | 研报 | 1. 德银转述Oracle CFO称，多数大型AI基础设施项目已通过土地、许可、电力采购和初始融资等最高风险阶段；New Mexico项目仍等待最终空气许可，但公司预计不会影响启动时间，仅影响满负荷爬坡。该判断来自管理层会议纪要，未逐项目提供许可文件、功率或实际设备上线进度。（第1页，Execution & Buildout；实际：2026；预测：2026-2027） | 1. 改变边界 |
 | 2026-07-24 | [巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | 1. 外部 TPU 由 Google 与 Broadcom 协同设计、TSMC 制造，再由 Apollo/Blackstone 融资的 SPV 购买并交给数据中心运营商管理。这个结构把芯片设计、晶圆制造、资本和机房交付绑定在一起，可扩大供给，也引入跨主体执行和融资风险。（第2-4页，TPU-aaS entity structure and unit economics；实际：2026；预测：2028） | 1. 新增约束 |
 | 2026-07-24 | [德银-Meta：宏大野心需匹配宏大体量](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf>) | 研报 | 1. 若 Meta 容量由 2026 年约 7GW 增至 2027 年 14GW，Hyperion 等合作方可能提供 1.0-1.5GW，使 Meta 直接融资的新增容量约为 5.5GW。伙伴资本可以缓解资产负担，但不能消除电力、服务器和建设交付约束。（第5-6页，2027 capex expectations；实际：2026；预测：2027） | 1. 改变边界 |
+| 2026-01-09 | [OpenAI与SB Energy：1.2GW Milam County数据中心合作](https://openai.com/index/stargate-sb-energy-partnership/) | 官方公司 | 1. OpenAI与SB Energy披露美国Milam County 1.2GW数据中心租约，设施正在建设并计划自2026年开始提供服务，同时规划新增发电。该材料给出具名项目和功率规模，但没有披露并网、许可、ready-for-service验收、实际IT负载或GPU/ASIC安装量，不能把规划容量视作已可用供给。（Partnership scope and Milam County project sections；实际：2026；预测：2026 onward）<br>2. OpenAI与SB Energy披露美国Milam County 1.2GW数据中心租约，设施正在建设并计划自2026年开始提供服务，同时规划新增发电。该材料给出具名项目和功率规模，但没有披露并网、许可、ready-for-service验收、实际IT负载或GPU/ASIC安装量，不能把规划容量视作已可用供给。（Partnership scope and Milam County project sections；实际：2026；预测：2026 onward） | 1. 改变边界<br>2. 改变边界 |
 
 #### 05. 最终可交付供给
 
+**研究问题：** 所有约束合并后，GPU/ASIC 系统供给能否追上订单？
+
+**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
+
+1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”？
+   - **L5 叶子：** 回答“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
+2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”？
+   - **L5 叶子：** 围绕“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”，当前有哪些关于端到端交期、发货量、价格、库存、客户等待时间的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
+3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”？
+   - **L5 叶子：** 围绕“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”，端到端交期、发货量、价格、库存、客户等待时间在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
+4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”？
+   - **L5 叶子：** 围绕“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
+5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”？
+   - **L5 叶子：** 围绕“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”，证据通过什么因果机制传导到demand.revenue_realization以及出货量、交期、库存、ASP？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
+6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”？
+   - **L5 叶子：** 围绕“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
+7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”？
+   - **L5 叶子：** 哪些直接证据能够满足反证条件“交期、价格和利用率同步走弱，库存与渠道供给上升。”，并推翻、削弱或限定支持规则“交期高位、价格坚挺且订单覆盖持续，说明供给仍低于需求。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
+
 **当前节点状态：** weak
 
-**当前结论：** 多项输入约束和未来交付计划提示系统供给仍受最小瓶颈影响，但缺少端到端交期、价格、库存和利用率验证。
+**当前结论：** Rubin已经开始生产发货，供应与产能承诺由1190亿美元增至2790亿美元，说明NVIDIA正大幅扩张未来供给；公司同时确认仍有供应约束，且部分承诺可取消、改期或调整。缺少端到端交期、价格、渠道库存、客户等待时间和利用率，尚不能判断最终系统供给是否追上订单。
 
-**相较上一截面：** 本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。
+**相较上一截面：** 新增生产发货与供应承诺的官方事实，供给扩张方向更清楚，但未满足最终可交付节点的交期、价格和订单覆盖验证要求。
 
 | 发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响 |
 |---|---|---|---|---|
+| 2026-08-26 | [NVIDIA Form 10-Q（截至2026年7月26日季度）](https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm) | 官方财报 | 1. NVIDIA称Rubin在Q3 FY27开始生产发货，同时Blackwell与Rubin仍面临部分供应约束；为满足未来数年需求，公司把供应与产能承诺从上季度1190亿美元提高到2790亿美元，主要覆盖内存和制造设施。部分协议在正式下单前可以取消、改期或调整。该披露证明供给扩张正在加速，但缺少端到端交期、价格、客户等待时间和库存消化，不能直接判定最终系统供给仍低于订单。（第17、25页，Note 10及Recent Developments；实际：截至2026-07-26及2027财年Q3；预测：未来数年） | 1. 改变边界 |
 | 2026-07-24 | [摩根大通：AMD AAI26 大会纪要](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf>) | 研报 | 1. MI450 GPU 与 Helios 机架系统计划于 2026 年 9 月开始交付，2026 年第四季度和 2027 年上半年加速爬坡；报告称 Anthropic、OpenAI、Meta 等客户已有数 GW 部署排至 2027 年。订单计划提供了可见性，但实际收入仍取决于系统交付和客户数据中心按期完工。（第1、3页，MI450/Helios ramp；实际：2026；预测：2027） | 1. 线索 |
 | 2026-07-24 | [摩根大通：PC 与服务器传导分析](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-PC与服务器：英特尔2026年二季度财报及AMD“Advancing AI 2026”大会传导分析-260724.pdf>) | 研报 | 1. 摩根大通把先进逻辑晶圆、硅片、内存和基板列为服务器供应链的持续约束，并预计供给改善会推动 2026 年第四季度收入进一步上行。有效供给仍由多项输入的最小值决定，而不是只看 GPU 晶圆数量。（第1页，AI-driven general server demand strength；实际：2026Q2；预测：2027） | 1. 新增约束 |
 
@@ -198,6 +395,25 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 
 #### 01. 工作负载适配
 
+**研究问题：** GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？
+
+**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
+
+1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”？
+   - **L5 叶子：** 回答“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
+2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”？
+   - **L5 叶子：** 围绕“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”，当前有哪些关于训练/推理占比、模型变化速度、延迟与吞吐要求的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
+3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”？
+   - **L5 叶子：** 围绕“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”，训练/推理占比、模型变化速度、延迟与吞吐要求在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
+4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”？
+   - **L5 叶子：** 围绕“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
+5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”？
+   - **L5 叶子：** 围绕“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”，证据通过什么因果机制传导到technology.performance_tco以及产品适配、工作负载组合、客户案例？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
+6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”？
+   - **L5 叶子：** 围绕“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
+7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”？
+   - **L5 叶子：** 哪些直接证据能够满足反证条件“路线优势只存在于厂商选择性基准，无法迁移到客户任务。”，并推翻、削弱或限定支持规则“真实客户部署证明某路线对目标工作负载有稳定优势。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
+
 **当前节点状态：** weak
 
 **当前结论：** 稳定推理适合ASIC的判断仍来自分析师预测；GPU份额预测不回答具体工作负载适配，缺少真实客户部署。
@@ -209,6 +425,25 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 | 2026-07-24 | [德银-Meta：宏大野心需匹配宏大体量](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf>) | 研报 | 1. 德银预计 Meta 会用 Iris/MTIA 内部芯片承接部分推理和推荐工作负载，以降低相对 merchant GPU 的单位算力成本；在合作方容量和自研芯片共同作用下，直接融资成本可能低于简单按新增 GW 外推。稳定、可控的推理任务是 ASIC 替代最明确的场景。（第6页，internal Iris/MTIA roadmap；实际：2026；预测：2027） | 1. 改变边界 |
 
 #### 02. 端到端性能与 TCO
+
+**研究问题：** 在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？
+
+**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
+
+1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”？
+   - **L5 叶子：** 回答“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
+2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”？
+   - **L5 叶子：** 围绕“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”，当前有哪些关于token/s、延迟、每 token 成本、性能功耗比、集群利用率的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
+3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”？
+   - **L5 叶子：** 围绕“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”，token/s、延迟、每 token 成本、性能功耗比、集群利用率在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
+4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”？
+   - **L5 叶子：** 围绕“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
+5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”？
+   - **L5 叶子：** 围绕“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”，证据通过什么因果机制传导到technology.customer_adoption以及性能、TCO、产品定价？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
+6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”？
+   - **L5 叶子：** 围绕“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
+7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”？
+   - **L5 叶子：** 哪些直接证据能够满足反证条件“优势依赖不可比参数、补贴、低利用率假设或未计软件迁移成本。”，并推翻、削弱或限定支持规则“独立同口径测试或客户数据验证性能和 TCO 优势。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
 
 **当前节点状态：** weak
 
@@ -223,6 +458,25 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 
 #### 03. 软件生态与迁移成本
 
+**研究问题：** 编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？
+
+**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
+
+1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”？
+   - **L5 叶子：** 回答“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
+2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”？
+   - **L5 叶子：** 围绕“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”，当前有哪些关于软件发布节奏、框架支持、迁移时间、开发者采用的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
+3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”？
+   - **L5 叶子：** 围绕“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”，软件发布节奏、框架支持、迁移时间、开发者采用在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
+4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”？
+   - **L5 叶子：** 围绕“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
+5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”？
+   - **L5 叶子：** 围绕“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”，证据通过什么因果机制传导到technology.customer_adoption以及软件采用、开发者生态、切换成本？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
+6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”？
+   - **L5 叶子：** 围绕“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
+7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”？
+   - **L5 叶子：** 哪些直接证据能够满足反证条件“软件改进停留在演示，客户仍承担显著迁移和运维成本。”，并推翻、削弱或限定支持规则“客户生产部署和开发者使用证明生态缩短上线时间并提高利用率。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
+
 **当前节点状态：** weak
 
 **当前结论：** ROCm发布节奏和演示性能改善是边界信息，尚无客户生产使用、迁移时间和开发者采用证明生态锁定变化。
@@ -235,18 +489,58 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 
 #### 04. 客户采用与量产
 
+**研究问题：** 技术优势是否转化为生产部署、复购和规模量产？
+
+**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
+
+1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“技术优势是否转化为生产部署、复购和规模量产？”？
+   - **L5 叶子：** 回答“技术优势是否转化为生产部署、复购和规模量产？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
+2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“技术优势是否转化为生产部署、复购和规模量产？”？
+   - **L5 叶子：** 围绕“技术优势是否转化为生产部署、复购和规模量产？”，当前有哪些关于生产客户、部署 GW、复购、量产时间的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
+3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“技术优势是否转化为生产部署、复购和规模量产？”？
+   - **L5 叶子：** 围绕“技术优势是否转化为生产部署、复购和规模量产？”，生产客户、部署 GW、复购、量产时间在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
+4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“技术优势是否转化为生产部署、复购和规模量产？”？
+   - **L5 叶子：** 围绕“技术优势是否转化为生产部署、复购和规模量产？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
+5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“技术优势是否转化为生产部署、复购和规模量产？”？
+   - **L5 叶子：** 围绕“技术优势是否转化为生产部署、复购和规模量产？”，证据通过什么因果机制传导到technology.platform_competition以及客户数、量产、复购、获客成本？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
+6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“技术优势是否转化为生产部署、复购和规模量产？”？
+   - **L5 叶子：** 围绕“技术优势是否转化为生产部署、复购和规模量产？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
+7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“技术优势是否转化为生产部署、复购和规模量产？”？
+   - **L5 叶子：** 哪些直接证据能够满足反证条件“采用停留在试点，或必须以大额认股权证和补贴换取。”，并推翻、削弱或限定支持规则“多个客户进入生产并扩大采购，不依赖单一补贴或股权激励。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
+
 **当前节点状态：** weak
 
-**当前结论：** 合作、产品量产和卖方客户反馈均是采用线索，尚未证明多个客户生产部署、扩大采购和复购。
+**当前结论：** NVIDIA Rubin在五家伙伴运行，AMD Helios也出现具名部署和最高2GW合作，平台采用从发布推进到实际部署线索；但缺少采购扩张、复购、利用率、独立性能和激励条款，尚不满足生产扩采规则。
 
-**相较上一截面：** 本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。
+**相较上一截面：** 新增第二GPU平台的官方客户采用线索，平台竞争覆盖扩大，状态因复购与商业条件缺失保持不变。
 
 | 发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响 |
 |---|---|---|---|---|
+| 2026-08-26 | [NVIDIA：2027财年第二季度业绩](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/default.aspx) | 官方公司 | 1. NVIDIA披露Vera Rubin正在进入全面生产，Rubin机架已在CoreWeave、Google Cloud、Microsoft Azure、Oracle Cloud Infrastructure和Nebius运行。五家具名伙伴的运行状态比单纯产品发布更接近生产采用，但材料未披露各客户采购扩张、复购、利用率或是否依赖融资支持。（Data Center Highlights；实际：2026-08-26） | 1. 改变边界 |
+| 2026-08-04 | [AMD：2026年第二季度业绩](https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results) | 官方财报 | 1. AMD称Helios平台已被具名实验室和云客户部署，并披露与Anthropic建立最高2GW的合作安排。最高2GW是前瞻上限而非已交付数量；公告未给出客户验收、利用率、复购、GPU收入或是否依赖商业激励，因此属于采用边界证据。（Data Center highlights；实际：2026-Q2；预测：2026-2027） | 1. 改变边界 |
 | 2026-07-24 | [巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | 1. Google 正尝试把 TPU 从 GCP 内的租赁资源变成可由外部 AI lab 通过 SPV 直接控制的 merchant product；客户获得更深的软件定制、纵向整合和独立于单一云协议的算力控制。这扩大了 ASIC 的可服务市场，也使其开始正面争夺 NVIDIA 的外部计算需求。（第1-3页，Background on TPU-As-A-Service；实际：2026；预测：2028） | 1. 线索 |
 | 2026-07-24 | [摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | 研报 | 1. 摩根士丹利称 Helios 在关键客户处的采用进展顺利，客户证言显示 2027 年将强劲爬坡，并把 coding agent 视为 AMD GPU 生态采用的明确加速器；但该报告同时认为 AMD 本代产品仍未取得领导地位。（第1页，Key Takeaways；实际：2026；预测：2027）<br>2. Helios 已进入量产，计划 2026 年第三季度开始发货、第四季度爬坡。该进度支持 AMD 供给增加，但客户采用、ODM 调试和机房配套仍决定收入确认速度。（第1页，Compute leadership；实际：2026Q3；预测：2026Q4）<br>3. AMD 与 Cerebras 宣布把 Helios 机架和晶圆级引擎组合成解耦推理方案，目标在超低延迟场景获得约 5 倍吞吐。它表明竞争单位正在从单颗 GPU 转为异构系统，但量产可用性和客户采用尚待验证。（第1-2页，Cerebras disaggregated inference；实际：2026；预测：2026H2） | 1. 线索<br>2. 线索<br>3. 线索 |
 
 #### 05. 平台格局与替代路径
+
+**研究问题：** 竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？
+
+**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
+
+1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”？
+   - **L5 叶子：** 回答“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
+2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”？
+   - **L5 叶子：** 围绕“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”，当前有哪些关于加速器份额、merchant/custom 占比、平台收入、切换案例的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
+3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”？
+   - **L5 叶子：** 围绕“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”，加速器份额、merchant/custom 占比、平台收入、切换案例在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
+4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”？
+   - **L5 叶子：** 围绕“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
+5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”？
+   - **L5 叶子：** 围绕“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”，证据通过什么因果机制传导到demand.order_visibility、valuation.fundamental_earnings以及市场份额、平台收入、竞争位置？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
+6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”？
+   - **L5 叶子：** 围绕“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
+7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”？
+   - **L5 叶子：** 哪些直接证据能够满足反证条件“市场份额结论混用 PC GPU、数据中心芯片和系统收入等不同口径。”，并推翻、削弱或限定支持规则“份额、订单和客户部署共同显示平台价值捕获变化。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
 
 **当前节点状态：** weak
 
@@ -269,18 +563,59 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 
 #### 01. 基本面盈利路径
 
+**研究问题：** GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？
+
+**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
+
+1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”？
+   - **L5 叶子：** 回答“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
+2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”？
+   - **L5 叶子：** 围绕“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”，当前有哪些关于分部收入、增量毛利、研发与获客成本、FCF、EPS的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
+3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”？
+   - **L5 叶子：** 围绕“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”，分部收入、增量毛利、研发与获客成本、FCF、EPS在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
+4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”？
+   - **L5 叶子：** 围绕“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
+5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”？
+   - **L5 叶子：** 围绕“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”，证据通过什么因果机制传导到valuation.consensus_expectation以及收入桥、毛利桥、FCF 桥、EPS 桥？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
+6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”？
+   - **L5 叶子：** 围绕“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
+7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”？
+   - **L5 叶子：** 哪些直接证据能够满足反证条件“仅有主题敞口，或收入增长被低毛利、稀释和资本强度抵消。”，并推翻、削弱或限定支持规则“结构化公司/分部桥能把节点变化量化到盈利。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
+
 **当前节点状态：** weak
 
-**当前结论：** 巴克莱高情景只提供预测边界，AMD客户权证则直接削弱股东可得利润；尚无官方公司/分部盈利桥。
+**当前结论：** NVIDIA官方报表已有收入、毛利、经营现金流和FCF桥；AMD新增数据中心收入67.18亿美元、分部经营利润21.03亿美元，但GPU未拆分，集团FCF环比下降且capex上升。两家公司盈利桥均明显改善，仍不足以通过GPU专属股东盈利门槛。
 
-**相较上一截面：** 本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。
+**相较上一截面：** 新增AMD官方分部利润和现金流，使多公司比较成为可能；产品混合与资本强度缺口使状态维持弱。
 
 | 发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响 |
 |---|---|---|---|---|
+| 2026-08-26 | [NVIDIA：2027财年第二季度业绩](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/default.aspx) | 官方公司 | 1. NVIDIA Q2 FY27总收入962.21亿美元，数据中心收入890亿美元，分别同比增长106%和117%，GAAP毛利率75.0%；季度自由现金流213.41亿美元，高于上年同期134.50亿美元但低于Q1的485.54亿美元。期末应收账款630.59亿美元、库存315.75亿美元，分别高于1月末的384.66亿美元和214.03亿美元。收入与利润兑现很强，但季度现金转换和营运资本变化构成需要继续验证的冲突信号。（Q2 Fiscal 2027 Summary、Balance Sheets、Free Cash Flow Reconciliation；实际：2027财年Q2（截至2026-07-26）） | 1. 改变边界 |
+| 2026-08-26 | [NVIDIA Form 10-Q（截至2026年7月26日季度）](https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm) | 官方财报 | 1. NVIDIA 2027财年上半年经营现金流744.21亿美元，高于上年同期427.79亿美元；公司说明收入增长带来的现金增量被应收账款上升部分抵消，原因包括向部分投资级客户的大额多季度协议提供延长付款条款。期末应收账款630.59亿美元，五家直接客户合计占应收70%。经营现金流仍增长，但回款期限和客户集中提高了现金转换质量的验证要求。（第13、31页，Note 7—Direct Customers、Liquidity；实际：2027财年上半年（截至2026-07-26）） | 1. 改变边界 |
+| 2026-08-04 | [AMD：2026年第二季度业绩](https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results) | 官方财报 | 1. AMD 2026年第二季度自由现金流15.58亿美元，低于第一季度25.66亿美元；资本开支由第一季度3.89亿美元升至8.08亿美元。单季现金流受营运资本和付款节奏影响，不能用一个季度证明长期恶化，但收入高增并未在本季同步转化为更高自由现金流。（Selected corporate data and cash flow table；实际：2026-Q2） | 1. 新增约束 |
 | 2026-07-24 | [巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | 1. 巴克莱的高情景把 2028 年外部 TPU 收入估至 2,527 亿美元、毛利 632 亿美元，并把 Alphabet 2028 年收入预测上调 40%；但同一模型预计 2027-2028 年资本开支约 3,500 亿和 5,003 亿美元、自由现金流转负。利润上修与资本强度必须同时计价。（第5、7、11页，estimate changes and company model；实际：2026；预测：2028） | 1. 改变边界 |
 | 2026-07-24 | [摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | 研报 | 1. 摩根士丹利把 AMD 向客户发行的大额认股权证视为营销费用，认为其可能抵消未来数年 GPU 业务的大部分利润。即使收入增长，股东可获得的盈利弹性仍可能被获客成本和稀释削弱。（第3页，Thoughts on the stock；实际：2026；预测：2027-2028） | 1. 减弱 |
 
 #### 02. 市场一致预期
+
+**研究问题：** 市场当前对收入、利润、份额和资本开支的主流预期是什么？
+
+**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
+
+1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“市场当前对收入、利润、份额和资本开支的主流预期是什么？”？
+   - **L5 叶子：** 回答“市场当前对收入、利润、份额和资本开支的主流预期是什么？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
+2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“市场当前对收入、利润、份额和资本开支的主流预期是什么？”？
+   - **L5 叶子：** 围绕“市场当前对收入、利润、份额和资本开支的主流预期是什么？”，当前有哪些关于一致预期、目标价、机构情景、多空分歧的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
+3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“市场当前对收入、利润、份额和资本开支的主流预期是什么？”？
+   - **L5 叶子：** 围绕“市场当前对收入、利润、份额和资本开支的主流预期是什么？”，一致预期、目标价、机构情景、多空分歧在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
+4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“市场当前对收入、利润、份额和资本开支的主流预期是什么？”？
+   - **L5 叶子：** 围绕“市场当前对收入、利润、份额和资本开支的主流预期是什么？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
+5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“市场当前对收入、利润、份额和资本开支的主流预期是什么？”？
+   - **L5 叶子：** 围绕“市场当前对收入、利润、份额和资本开支的主流预期是什么？”，证据通过什么因果机制传导到valuation.implied_expectation以及一致预期、目标价、机构分歧？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
+6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“市场当前对收入、利润、份额和资本开支的主流预期是什么？”？
+   - **L5 叶子：** 围绕“市场当前对收入、利润、份额和资本开支的主流预期是什么？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
+7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“市场当前对收入、利润、份额和资本开支的主流预期是什么？”？
+   - **L5 叶子：** 哪些直接证据能够满足反证条件“使用不同年份、盈利口径或旧目标价制造虚假分歧。”，并推翻、削弱或限定支持规则“同一截面、同一口径的多家机构预期可被比较。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
 
 **当前节点状态：** unresolved
 
@@ -297,40 +632,102 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 
 #### 03. 股价隐含预期
 
-**当前节点状态：** unresolved
+**研究问题：** 当前股价要求公司实现怎样的增长、份额和利润率路径？
 
-**当前结论：** 投行目标价不是市场隐含预期；当前没有以截面股价和可复现模型反推出经营路径。
+**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
 
-**相较上一截面：** 本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。
+1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“当前股价要求公司实现怎样的增长、份额和利润率路径？”？
+   - **L5 叶子：** 回答“当前股价要求公司实现怎样的增长、份额和利润率路径？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
+2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“当前股价要求公司实现怎样的增长、份额和利润率路径？”？
+   - **L5 叶子：** 围绕“当前股价要求公司实现怎样的增长、份额和利润率路径？”，当前有哪些关于PE/EV-EBITDA、反向 DCF、隐含收入增速、隐含利润率的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
+3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“当前股价要求公司实现怎样的增长、份额和利润率路径？”？
+   - **L5 叶子：** 围绕“当前股价要求公司实现怎样的增长、份额和利润率路径？”，PE/EV-EBITDA、反向 DCF、隐含收入增速、隐含利润率在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
+4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“当前股价要求公司实现怎样的增长、份额和利润率路径？”？
+   - **L5 叶子：** 围绕“当前股价要求公司实现怎样的增长、份额和利润率路径？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
+5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“当前股价要求公司实现怎样的增长、份额和利润率路径？”？
+   - **L5 叶子：** 围绕“当前股价要求公司实现怎样的增长、份额和利润率路径？”，证据通过什么因果机制传导到valuation.revision_momentum以及现价、倍数、隐含增速、隐含利润率？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
+6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“当前股价要求公司实现怎样的增长、份额和利润率路径？”？
+   - **L5 叶子：** 围绕“当前股价要求公司实现怎样的增长、份额和利润率路径？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
+7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“当前股价要求公司实现怎样的增长、份额和利润率路径？”？
+   - **L5 叶子：** 哪些直接证据能够满足反证条件“只引用目标价上行空间而没有隐含假设和下行情景。”，并推翻、削弱或限定支持规则“以截面股价和可复现模型还原市场已经计入的路径。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
+
+**当前节点状态：** weak
+
+**当前结论：** 按9月1日价格与最新季度年化FCF，10%折现率、3%永续增速、十年显性期的简化反向DCF显示：NVDA约需22.3%、AMD约需32.1%的十年FCF复合增速才能解释价格。模型可复现但高度依赖单季年化和终值，且缺少一致预期交叉验证，状态由未解决推进为弱。
+
+**相较上一截面：** 首次以当前价格、股本和官方FCF建立反向增长坐标，替代单纯目标价比较。
 
 | 发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响 |
 |---|---|---|---|---|
+| 2026-09-01 | [NVDA 2026年9月1日历史收盘价](https://chartexchange.com/symbol/nasdaq-nvda/historical/) | 第三方权威 | 1. NVDA于2026年9月1日收于217.43美元；8月26日、27日、28日收盘分别为209.66、227.98和217.55美元。价格序列可作为反向估值输入，但业绩后的短期涨跌不能替代一致预期修正或长期盈利路径。（Historical prices：2026-08-26至2026-09-01；实际：2026-09-01） | 1. 改变边界 |
+| 2026-09-01 | [AMD 2026年9月1日市场价格](https://www.investing.com/equities/adv-micro-device) | 第三方权威 | 1. AMD于2026年9月1日报459.61美元，前收470.72美元。该截面价格可与Q2 EPS、FCF和估算股本建立简化反向估值，但单日价格不能说明盈利预期修正。（As of Sep 01, 2026；实际：2026-09-01） | 1. 改变边界 |
 | 2026-07-24 | [巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | 1. 巴克莱的高情景把 2028 年外部 TPU 收入估至 2,527 亿美元、毛利 632 亿美元，并把 Alphabet 2028 年收入预测上调 40%；但同一模型预计 2027-2028 年资本开支约 3,500 亿和 5,003 亿美元、自由现金流转负。利润上修与资本强度必须同时计价。（第5、7、11页，estimate changes and company model；实际：2026；预测：2028） | 1. 改变边界 |
 | 2026-07-24 | [德银-Meta：宏大野心需匹配宏大体量](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf>) | 研报 | 1. 德银明确指出 2027 容量、每 GW 成本、利用率、定价和客户需求均有高度不确定性，第三方云收入尚未正式宣布，也未进入其当前盈利预测。把潜在算力销售直接资本化会高估已验证价值。（第5-6页，cloud sales and capex expectations；实际：2026；预测：2027-2028） | 1. 改变边界 |
 | 2026-07-24 | [摩根士丹利：AMD AI 技术发布会复盘](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf>) | 研报 | 1. 摩根士丹利维持 AMD Equal-weight，目标价 410 美元，而 2026 年 7 月 23 日股价为 539.69 美元；报告认为 AMD 叙事改善，但相对 NVIDIA、Broadcom 估值更贵且缺少类似期权，风险收益更好的选择在别处。（第1、3页，rating table and Thoughts on the stock；实际：2026-07-23；预测：2027） | 1. 线索 |
 
 #### 04. 盈利修正与预期差
 
+**研究问题：** 新信息是否使基本面上修速度快于市场预期和估值扩张？
+
+**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
+
+1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“新信息是否使基本面上修速度快于市场预期和估值扩张？”？
+   - **L5 叶子：** 回答“新信息是否使基本面上修速度快于市场预期和估值扩张？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
+2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“新信息是否使基本面上修速度快于市场预期和估值扩张？”？
+   - **L5 叶子：** 围绕“新信息是否使基本面上修速度快于市场预期和估值扩张？”，当前有哪些关于EPS 修正、收入修正、目标价修正、业绩后股价反应的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
+3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“新信息是否使基本面上修速度快于市场预期和估值扩张？”？
+   - **L5 叶子：** 围绕“新信息是否使基本面上修速度快于市场预期和估值扩张？”，EPS 修正、收入修正、目标价修正、业绩后股价反应在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
+4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“新信息是否使基本面上修速度快于市场预期和估值扩张？”？
+   - **L5 叶子：** 围绕“新信息是否使基本面上修速度快于市场预期和估值扩张？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
+5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“新信息是否使基本面上修速度快于市场预期和估值扩张？”？
+   - **L5 叶子：** 围绕“新信息是否使基本面上修速度快于市场预期和估值扩张？”，证据通过什么因果机制传导到valuation.payoff_asymmetry以及盈利修正、价格反应、预期差？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
+6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“新信息是否使基本面上修速度快于市场预期和估值扩张？”？
+   - **L5 叶子：** 围绕“新信息是否使基本面上修速度快于市场预期和估值扩张？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
+7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“新信息是否使基本面上修速度快于市场预期和估值扩张？”？
+   - **L5 叶子：** 哪些直接证据能够满足反证条件“股价上涨主要来自倍数扩张，盈利修正停滞或转负。”，并推翻、削弱或限定支持规则“多期盈利预期持续上修，估值没有更快透支。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
+
 **当前节点状态：** unresolved
 
-**当前结论：** 当前没有多期同口径盈利预期修正和估值倍数序列。
+**当前结论：** 新增NVDA业绩窗口价格和AMD单日价格只建立市场反应坐标，没有多期同口径收入、EPS和FCF预期修正序列，无法判断价格变化来自盈利上修还是倍数扩张。
 
-**相较上一截面：** 本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。
+**相较上一截面：** 从完全无价格序列推进到单一业绩窗口，但仍不足以判断修正动量。
 
 | 发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响 |
 |---|---|---|---|---|
-| — | 暂无报告 | 其他 | 当前没有映射到该节点的原子观点。 | 待判断 |
+| 2026-09-01 | [NVDA 2026年9月1日历史收盘价](https://chartexchange.com/symbol/nasdaq-nvda/historical/) | 第三方权威 | 1. NVDA于2026年9月1日收于217.43美元；8月26日、27日、28日收盘分别为209.66、227.98和217.55美元。价格序列可作为反向估值输入，但业绩后的短期涨跌不能替代一致预期修正或长期盈利路径。（Historical prices：2026-08-26至2026-09-01；实际：2026-09-01） | 1. 改变边界 |
+| 2026-09-01 | [AMD 2026年9月1日市场价格](https://www.investing.com/equities/adv-micro-device) | 第三方权威 | 1. AMD于2026年9月1日报459.61美元，前收470.72美元。该截面价格可与Q2 EPS、FCF和估算股本建立简化反向估值，但单日价格不能说明盈利预期修正。（As of Sep 01, 2026；实际：2026-09-01） | 1. 改变边界 |
 
 #### 05. 上下行赔率与动作
 
-**当前节点状态：** unresolved
+**研究问题：** 综合情景概率后，上行、下行和可监控性是否支持行动？
 
-**当前结论：** 目标价上行和中性评级只是单家机构意见；AMD权证及商业化不确定性构成约束，但没有概率加权的牛熊情景和退出触发器。
+**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
 
-**相较上一截面：** 本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。
+1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“综合情景概率后，上行、下行和可监控性是否支持行动？”？
+   - **L5 叶子：** 回答“综合情景概率后，上行、下行和可监控性是否支持行动？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
+2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“综合情景概率后，上行、下行和可监控性是否支持行动？”？
+   - **L5 叶子：** 围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，当前有哪些关于情景收益、概率、最大回撤风险、kill test的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
+3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“综合情景概率后，上行、下行和可监控性是否支持行动？”？
+   - **L5 叶子：** 围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，情景收益、概率、最大回撤风险、kill test在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
+4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“综合情景概率后，上行、下行和可监控性是否支持行动？”？
+   - **L5 叶子：** 围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
+5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“综合情景概率后，上行、下行和可监控性是否支持行动？”？
+   - **L5 叶子：** 围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，证据通过什么因果机制传导到下游节点以及情景赔率、动作状态、降级阈值？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
+6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“综合情景概率后，上行、下行和可监控性是否支持行动？”？
+   - **L5 叶子：** 围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
+7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“综合情景概率后，上行、下行和可监控性是否支持行动？”？
+   - **L5 叶子：** 哪些直接证据能够满足反证条件“高增长已充分定价、下行无法量化或缺少退出触发器。”，并推翻、削弱或限定支持规则“上行赔率显著高于可量化下行，且反证触发器可及时监控。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
+
+**当前节点状态：** weak
+
+**当前结论：** 统一简化DCF敏感性下，NVDA十年FCF增速15%/22%/28%对应每股约127/212/327美元，AMD 20%/32%/40%对应约194/458/792美元；25%/50%/25%的机械权重结果接近现价，但区间极宽，说明结论由长期增长假设主导而非形成安全边际。该结果是敏感性检查，不是目标价。
+
+**相较上一截面：** 首次建立统一牛基熊敏感性和量化降级条件，仍因概率与正常化FCF缺失而保持弱。
 
 | 发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响 |
 |---|---|---|---|---|
+| 2026-09-01 | [NVDA 2026年9月1日历史收盘价](https://chartexchange.com/symbol/nasdaq-nvda/historical/) | 第三方权威 | 1. NVDA于2026年9月1日收于217.43美元；8月26日、27日、28日收盘分别为209.66、227.98和217.55美元。价格序列可作为反向估值输入，但业绩后的短期涨跌不能替代一致预期修正或长期盈利路径。（Historical prices：2026-08-26至2026-09-01；实际：2026-09-01） | 1. 改变边界 |
+| 2026-09-01 | [AMD 2026年9月1日市场价格](https://www.investing.com/equities/adv-micro-device) | 第三方权威 | 1. AMD于2026年9月1日报459.61美元，前收470.72美元。该截面价格可与Q2 EPS、FCF和估算股本建立简化反向估值，但单日价格不能说明盈利预期修正。（As of Sep 01, 2026；实际：2026-09-01） | 1. 新增约束 |
 | 2026-07-24 | [巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | 1. 巴克莱维持 Alphabet Overweight 和 425 美元目标价，对应 2026 年 7 月 23 日 317.69 美元股价约 34% 潜在空间；目标价取 2027 年 25 倍 EPS 与 15 倍 EBITDA 的平均结果。赔率来自 TPU 外部商业化和云利润上修，而非纯 GPU 敞口。（第1、8页，rating and valuation worksheet；实际：2026-07-23；预测：2027） | 1. 线索 |
 | 2026-07-24 | [摩根大通：AMD AAI26 大会纪要](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf>) | 研报 | 1. 摩根大通维持 AMD Neutral，2026 年 12 月目标价 385 美元，而报告股价为 552.33 美元；目标价基于约 35 倍市盈率和约 11 美元的 2026 年末盈利能力。报告认可产品改善，但认为长期份额不确定、研发投入高且股价接近充分定价。（第1、5页，rating and valuation；实际：2026-07-22；预测：2026-12） | 1. 线索 |
 | 2026-07-24 | [德银-Meta：宏大野心需匹配宏大体量](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf>) | 研报 | 1. 德银维持 Meta Buy，将目标价由 810 美元小幅下调至 800 美元；相对 2026 年 7 月 23 日 606.10 美元股价仍有约 32% 空间。估值基于 24 倍 2027 年 GAAP EPS，核心假设是广告回报已覆盖部分 AI 投入，订阅和云基础设施提供额外变现。（第1-2页，rating and valuation；实际：2026-07-23；预测：2027）<br>2. 德银明确指出 2027 容量、每 GW 成本、利用率、定价和客户需求均有高度不确定性，第三方云收入尚未正式宣布，也未进入其当前盈利预测。把潜在算力销售直接资本化会高估已验证价值。（第5-6页，cloud sales and capex expectations；实际：2026；预测：2027-2028） | 1. 线索<br>2. 新增约束 |
@@ -346,41 +743,118 @@ ESG 只研究会改变可交付算力、可服务市场、资本成本和股东�
 
 #### 01. 能源、水与基础设施许可
 
-**当前节点状态：** unresolved
+**研究问题：** 绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？
 
-**当前结论：** 当前没有能源、水耗、项目延期和资源监管的节点证据。
+**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
 
-**相较上一截面：** 本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。
+1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”？
+   - **L5 叶子：** 回答“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
+2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”？
+   - **L5 叶子：** 围绕“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”，当前有哪些关于PUE、电力需求、水耗、许可周期的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
+3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”？
+   - **L5 叶子：** 围绕“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”，PUE、电力需求、水耗、许可周期在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
+4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”？
+   - **L5 叶子：** 围绕“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
+5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”？
+   - **L5 叶子：** 围绕“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”，证据通过什么因果机制传导到supply.datacenter_readiness以及能源成本、项目延期、许可？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
+6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”？
+   - **L5 叶子：** 围绕“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
+7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”？
+   - **L5 叶子：** 哪些直接证据能够满足反证条件“效率、能源供应和选址使资源约束不再影响部署。”，并推翻、削弱或限定支持规则“项目延期、成本或监管文件明确指向资源约束。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
+
+**当前节点状态：** weak
+
+**当前结论：** Microsoft把数据中心WUE降至0.27升/千瓦时并大规模采用低水/零水冷却，说明单位资源强度可显著改善；OpenAI/SB Energy也规划新增发电和降低用水。但缺少项目绝对用水、当地水权、电力并网和许可，资源约束只形成弱证据基线。
+
+**相较上一截面：** 从无一手量化材料推进到水效与具名项目目标，但不能推断绝对资源约束已解除。
 
 | 发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响 |
 |---|---|---|---|---|
-| — | 暂无报告 | 其他 | 当前没有映射到该节点的原子观点。 | 待判断 |
+| 2026-06-24 | [Microsoft：数据中心水强度与零蒸发冷却进展](https://blogs.microsoft.com/blog/2026/06/24/inside-microsofts-two-decade-push-to-cut-water-intensity-while-scaling-for-growth/) | 官方公司 | 1. Microsoft称其数据中心WUE由约2.3升/千瓦时降至2025年的0.27升/千瓦时，约90%的机队使用低水或零水冷却，并为新AI数据中心采用零蒸发用水冷却设计。单位强度改善降低边际水约束，但材料没有披露各项目绝对用水、当地水权、电力并网与许可，不能证明资源约束已消失。（Official blog, water-use effectiveness and cooling design sections；实际：2025；预测：2026 onward） | 1. 改变边界 |
+| 2026-01-09 | [OpenAI与SB Energy：1.2GW Milam County数据中心合作](https://openai.com/index/stargate-sb-energy-partnership/) | 官方公司 | 1. 1.2GW租约把长期容量需求与SB Energy项目连接起来，双方还表述将新增发电并尽量降低用水；公告未披露租约金额、担保、利用率、闲置责任、对手方穿透或绝对水资源许可，因此只能确认承诺结构存在，不能判断最终风险承担。（Partnership scope, energy and water sections；实际：2026；预测：2026 onward） | 1. 改变边界 |
 
 #### 02. 出口管制与市场准入
 
-**当前节点状态：** unresolved
+**研究问题：** 出口限制和本地化要求如何改变可服务市场与库存风险？
 
-**当前结论：** 当前没有可量化GPU/ASIC收入、产品和成本影响的官方出口规则证据。
+**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
 
-**相较上一截面：** 本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。
+1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“出口限制和本地化要求如何改变可服务市场与库存风险？”？
+   - **L5 叶子：** 回答“出口限制和本地化要求如何改变可服务市场与库存风险？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
+2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“出口限制和本地化要求如何改变可服务市场与库存风险？”？
+   - **L5 叶子：** 围绕“出口限制和本地化要求如何改变可服务市场与库存风险？”，当前有哪些关于许可范围、受限收入、库存损失、替代产品的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
+3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“出口限制和本地化要求如何改变可服务市场与库存风险？”？
+   - **L5 叶子：** 围绕“出口限制和本地化要求如何改变可服务市场与库存风险？”，许可范围、受限收入、库存损失、替代产品在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
+4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“出口限制和本地化要求如何改变可服务市场与库存风险？”？
+   - **L5 叶子：** 围绕“出口限制和本地化要求如何改变可服务市场与库存风险？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
+5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“出口限制和本地化要求如何改变可服务市场与库存风险？”？
+   - **L5 叶子：** 围绕“出口限制和本地化要求如何改变可服务市场与库存风险？”，证据通过什么因果机制传导到demand.revenue_realization以及受限收入、库存损失、市场准入？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
+6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“出口限制和本地化要求如何改变可服务市场与库存风险？”？
+   - **L5 叶子：** 围绕“出口限制和本地化要求如何改变可服务市场与库存风险？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
+7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“出口限制和本地化要求如何改变可服务市场与库存风险？”？
+   - **L5 叶子：** 哪些直接证据能够满足反证条件“影响仅来自传闻，或替代产品和许可完全抵消限制。”，并推翻、削弱或限定支持规则“官方规则和公司披露能量化收入、产品与成本影响。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
+
+**当前节点状态：** confirmed
+
+**当前结论：** NVIDIA官方10-Q量化了中国数据中心市场限制：H200发运不足数据中心收入1%，上半年计提4亿美元库存及采购义务费用，25%关税无法向客户转嫁，公司称实际上无法在中国数据中心计算市场竞争。市场准入约束已从数据缺口升级为确认。
+
+**相较上一截面：** 新增官方产品、收入、费用和关税量化，直接满足支持规则，节点由待判断上调为确认。
 
 | 发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响 |
 |---|---|---|---|---|
-| — | 暂无报告 | 其他 | 当前没有映射到该节点的原子观点。 | 待判断 |
+| 2026-08-26 | [NVIDIA Form 10-Q（截至2026年7月26日季度）](https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm) | 官方财报 | 1. NVIDIA披露美国许可允许向特定中国客户小量发运H200，但受中国政府限制，获许可产品未能全部销售；2027财年上半年因H200需求下降计提4亿美元库存及采购义务费用，Q2实际H200发运不足数据中心收入1%，且美国检查流程触发25%进口关税，公司无法向客户转嫁。公司判断当前实际上无法在中国数据中心计算市场竞争。（第26页，Recent Developments；实际：2027财年上半年及Q2） | 1. 增强 |
 
 #### 03. 供应与客户集中
 
-**当前节点状态：** unresolved
+**研究问题：** 关键供应商、客户和地区集中是否放大经营波动？
 
-**当前结论：** 当前没有同口径客户、供应商集中度和切换周期证据。
+**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
 
-**相较上一截面：** 本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。
+1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“关键供应商、客户和地区集中是否放大经营波动？”？
+   - **L5 叶子：** 回答“关键供应商、客户和地区集中是否放大经营波动？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
+2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“关键供应商、客户和地区集中是否放大经营波动？”？
+   - **L5 叶子：** 围绕“关键供应商、客户和地区集中是否放大经营波动？”，当前有哪些关于前五客户占比、单一代工占比、地区收入、替代供应的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
+3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“关键供应商、客户和地区集中是否放大经营波动？”？
+   - **L5 叶子：** 围绕“关键供应商、客户和地区集中是否放大经营波动？”，前五客户占比、单一代工占比、地区收入、替代供应在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
+4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“关键供应商、客户和地区集中是否放大经营波动？”？
+   - **L5 叶子：** 围绕“关键供应商、客户和地区集中是否放大经营波动？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
+5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“关键供应商、客户和地区集中是否放大经营波动？”？
+   - **L5 叶子：** 围绕“关键供应商、客户和地区集中是否放大经营波动？”，证据通过什么因果机制传导到supply.shippable_system以及客户集中、供应集中、地区集中？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
+6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“关键供应商、客户和地区集中是否放大经营波动？”？
+   - **L5 叶子：** 围绕“关键供应商、客户和地区集中是否放大经营波动？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
+7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“关键供应商、客户和地区集中是否放大经营波动？”？
+   - **L5 叶子：** 哪些直接证据能够满足反证条件“客户和供应商多元化显著改善，切换已被生产验证。”，并推翻、削弱或限定支持规则“集中度高且替代、认证或切换周期长。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
+
+**当前节点状态：** weak
+
+**当前结论：** NVIDIA前五大直接客户合计占应收账款70%，并可为大型数据中心建设提供最长一年的延长付款期限，客户集中和信用敞口已可量化；但客户身份、终端需求去重、替代难度、账龄和违约概率未披露，尚不能确认集中风险的可控程度。
+
+**相较上一截面：** 新增官方应收集中度和付款期限，节点从无数据改善为弱证据；因缺少切换周期和客户质量，不满足完整支持规则。
 
 | 发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响 |
 |---|---|---|---|---|
-| — | 暂无报告 | 其他 | 当前没有映射到该节点的原子观点。 | 待判断 |
+| 2026-08-26 | [NVIDIA Form 10-Q（截至2026年7月26日季度）](https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm) | 官方财报 | 1. 截至2026年7月26日，NVIDIA五家直接客户分别占应收账款22%、14%、13%、11%和10%，合计70%；公司还可能为投资级客户的大型数据中心建设提供90天至一年的延长付款期限。该披露量化了应收集中和信用期限，但没有披露这五家客户的替代难度、终端需求去重或违约概率。（第13页，Note 7—Direct Customers；实际：截至2026-07-26） | 1. 改变边界 |
 
 #### 04. 治理与资本配置
+
+**研究问题：** 补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？
+
+**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
+
+1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”？
+   - **L5 叶子：** 回答“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
+2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”？
+   - **L5 叶子：** 围绕“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”，当前有哪些关于股权稀释、获客补贴、关联交易、投资回报的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
+3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”？
+   - **L5 叶子：** 围绕“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”，股权稀释、获客补贴、关联交易、投资回报在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
+4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”？
+   - **L5 叶子：** 围绕“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
+5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”？
+   - **L5 叶子：** 围绕“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”，证据通过什么因果机制传导到valuation.payoff_asymmetry以及稀释、获客成本、资本回报？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
+6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”？
+   - **L5 叶子：** 围绕“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
+7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”？
+   - **L5 叶子：** 哪些直接证据能够满足反证条件“收入增长依赖高额稀释、担保或无法验证的生态投资。”，并推翻、削弱或限定支持规则“资本配置带来可验证的增量利润和合理股东回报。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
 
 **当前节点状态：** weakening
 
@@ -394,14 +868,35 @@ ESG 只研究会改变可交付算力、可服务市场、资本成本和股东�
 
 #### 05. 融资结构与长期承诺
 
+**研究问题：** SPV、租赁、采购承诺和表外融资把风险留给谁？
+
+**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
+
+1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“SPV、租赁、采购承诺和表外融资把风险留给谁？”？
+   - **L5 叶子：** 回答“SPV、租赁、采购承诺和表外融资把风险留给谁？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
+2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“SPV、租赁、采购承诺和表外融资把风险留给谁？”？
+   - **L5 叶子：** 围绕“SPV、租赁、采购承诺和表外融资把风险留给谁？”，当前有哪些关于采购承诺、担保、租赁负债、SPV 对手方的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
+3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“SPV、租赁、采购承诺和表外融资把风险留给谁？”？
+   - **L5 叶子：** 围绕“SPV、租赁、采购承诺和表外融资把风险留给谁？”，采购承诺、担保、租赁负债、SPV 对手方在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
+4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“SPV、租赁、采购承诺和表外融资把风险留给谁？”？
+   - **L5 叶子：** 围绕“SPV、租赁、采购承诺和表外融资把风险留给谁？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
+5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“SPV、租赁、采购承诺和表外融资把风险留给谁？”？
+   - **L5 叶子：** 围绕“SPV、租赁、采购承诺和表外融资把风险留给谁？”，证据通过什么因果机制传导到demand.customer_compute_budget、valuation.payoff_asymmetry以及采购承诺、担保、租赁、表外义务？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
+6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“SPV、租赁、采购承诺和表外融资把风险留给谁？”？
+   - **L5 叶子：** 围绕“SPV、租赁、采购承诺和表外融资把风险留给谁？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
+7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“SPV、租赁、采购承诺和表外融资把风险留给谁？”？
+   - **L5 叶子：** 哪些直接证据能够满足反证条件“结构复杂且最终担保、闲置资产或对手方风险无法穿透。”，并推翻、削弱或限定支持规则“风险分担、现金流义务和资产利用率可被清晰识别。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
+
 **当前节点状态：** weakening
 
-**当前结论：** Oracle承认杠杆和近期融资需求限制新增RPO，并依赖BYOHW和客户预付款降低资本占用；这与既有合作方融资不透明问题一致。成本加成机制改善毛利保护，但最终担保、闲置资产、客户集中和违约责任仍无法穿透。
+**当前结论：** OpenAI/SB Energy 1.2GW长期租约与NVIDIA既有AI云、园区和供应承诺表明容量扩张依赖复杂的长期义务；租约金额、担保、利用率和闲置责任未穿透，风险承担仍不透明。
 
-**相较上一截面：** 新增Oracle管理层对融资约束和风险转移工具的直接讨论，强化了该风险需要穿透原始条款的必要性；因未披露条款，节点状态不变。
+**相较上一截面：** 新增1.2GW长期租约的具名承诺边界，但未补齐合同经济性，状态不变。
 
 | 发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响 |
 |---|---|---|---|---|
+| 2026-08-26 | [NVIDIA Form 10-Q（截至2026年7月26日季度）](https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm) | 官方财报 | 1. 截至2026年7月26日，NVIDIA对部分AI云伙伴的云服务承诺为360亿美元、典型期限六年；AI云可单方面停止向NVIDIA提供容量并以更有利价格售予第三方。土地、电力和园区外壳担保的最大毛敞口为35亿美元。公司还与大型资本提供方签署备忘录，计划长期动员超过5000亿美元第三方资本，但明确这些初步安排可能不会形成最终协议。义务、退出权和部分风险分担已更透明，资产利用率、对手方信用和潜在剩余价值支持仍待逐项目验证。（第18、26页，AI cloud agreements、Guarantees、Recent Developments；实际：截至2026-07-26及2026-08；预测：未来六年及更长期） | 1. 增强 |
 | 2026-07-27 | [德银：Oracle CFO会议—AI基础设施合同、融资与回报](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/manual/德银-甲骨文（ORCL.US）：与CFO会谈核心要点-260727.pdf>) | 研报 | 1. Oracle CFO承认杠杆和近期融资需求限制了短期新增RPO承接量，并把BYOHW与客户预付款视为降低资本占用的工具；大合同成本加成机制可降低元件涨价对毛利率的冲击。材料没有披露各项目最终担保、预付款规模、资产闲置风险和客户集中度。（第1-2页，Funding, Credit & Capital Allocation；Contracts, Pricing & Inflation Protection；实际：2026；预测：FY2030） | 1. 新增约束 |
 | 2026-07-24 | [巴克莱：拆解 TPU 即服务](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf>) | 研报 | 1. TPU 即服务依赖 Apollo/Blackstone 融资 SPV、Google/Broadcom 硬件和数据中心运营商的多层结构；巴克莱同时引用 Alphabet 约 8,110 亿美元采购承诺。结构可加快扩张，但会增加对手方、担保、资产利用率和表外义务的透明度风险。（第1-3、7页，TPU-aaS SPV and purchase commitments；实际：2026Q2；预测：2028）<br>2. 外部 TPU 由 Google 与 Broadcom 协同设计、TSMC 制造，再由 Apollo/Blackstone 融资的 SPV 购买并交给数据中心运营商管理。这个结构把芯片设计、晶圆制造、资本和机房交付绑定在一起，可扩大供给，也引入跨主体执行和融资风险。（第2-4页，TPU-aaS entity structure and unit economics；实际：2026；预测：2028） | 1. 减弱<br>2. 新增约束 |
 | 2026-07-24 | [德银-Meta：宏大野心需匹配宏大体量](</Users/bytedance/Desktop/vk/value_invest/research/bom/gpu_asic_bom_live/source/ima/2026/07/24/德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf>) | 研报 | 1. 若 Meta 容量由 2026 年约 7GW 增至 2027 年 14GW，Hyperion 等合作方可能提供 1.0-1.5GW，使 Meta 直接融资的新增容量约为 5.5GW。伙伴资本可以缓解资产负担，但不能消除电力、服务器和建设交付约束。（第5-6页，2027 capex expectations；实际：2026；预测：2027）<br>2. Meta 的容量情景由 7GW 升至 14GW，资本开支预期可能升至 2027 年 2,000 亿美元以上；Hyperion 等伙伴融资可能降低报表内直接负担。对治理分析而言，关键不是只看名义 capex，而是追踪担保、租赁、合作方承诺及最终风险承担者。（第2、5-6页，capacity and funding structure；实际：2026；预测：2027-2028） | 1. 改变边界<br>2. 减弱 |
+| 2026-01-09 | [OpenAI与SB Energy：1.2GW Milam County数据中心合作](https://openai.com/index/stargate-sb-energy-partnership/) | 官方公司 | 1. 1.2GW租约把长期容量需求与SB Energy项目连接起来，双方还表述将新增发电并尽量降低用水；公告未披露租约金额、担保、利用率、闲置责任、对手方穿透或绝对水资源许可，因此只能确认承诺结构存在，不能判断最终风险承担。（Partnership scope, energy and water sections；实际：2026；预测：2026 onward）<br>2. 1.2GW租约把长期容量需求与SB Energy项目连接起来，双方还表述将新增发电并尽量降低用水；公告未披露租约金额、担保、利用率、闲置责任、对手方穿透或绝对水资源许可，因此只能确认承诺结构存在，不能判断最终风险承担。（Partnership scope, energy and water sections；实际：2026；预测：2026 onward） | 1. 改变边界<br>2. 改变边界 |

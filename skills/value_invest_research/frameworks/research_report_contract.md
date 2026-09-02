@@ -14,6 +14,14 @@ professional_report.html
 portable audit sidecar. HTML and Markdown must not diverge in research claims,
 source mappings, dates, or conclusions.
 
+If the user explicitly requests a research-plan document, generate
+`research_plan.html` beside the professional report. This is a separate execution
+workbench generated from `research_plan.json` plus the active per-L3 child plans.
+Every L3 is visible at the first disclosure level; opening it exposes all L4/L5
+questions, leaf-specific source/search plans, dependencies, evidence gates, and
+ledger-derived status. `professional_report.html` and `research_plan.html` must link
+to each other and be regenerated together. The plan HTML is not a second plan store.
+
 HTML must work as a self-contained local file, remain readable without a server,
 and link directly to project-local PDF originals. Presentation JavaScript may
 enhance navigation but may not hide research content or fetch evidence at runtime.
@@ -29,8 +37,11 @@ in this locked order; HTML renders the same semantic section sequence:
 3. `标的推荐`
 4. `来源索引`
 
-Internal QA trees, source plans, raw queries, parser outputs, reviews, score worksheets, tool traces, credentials, and change logs are excluded unless the user explicitly asks for a workbench.
+Internal QA trees, raw source queries, parser outputs, reviews, score worksheets, tool traces, credentials, and change logs are excluded unless the user explicitly asks for a workbench.
 Public `下钻 QA` is therefore opt-in. Do not render raw search queries in a public report.
+For `standalone-bom`, a reader-safe L3 plan outline is required: each visible L3
+shows its L4 units, L5 leaf questions, required material types, and current status.
+This outline does not expose raw search queries, parser prompts, or internal traces.
 
 `report_scope: standalone-bom` is the only exception. It contains five collapsible
 top-level sections: `需求侧`, `供给侧`, `技术侧`, `估值侧`, and `ESG`.
@@ -42,6 +53,7 @@ Industry, theme, and S-curve research uses one parent index and one child projec
 ```text
 <industry_project>/professional_report.md
 <industry_project>/professional_report.html                 # default public view
+<industry_project>/research_plan.html                       # explicit execution workbench
 <industry_project>/boms/manifest.json
 <industry_project>/boms/<node_id>/professional_report.md
 <industry_project>/boms/<node_id>/professional_report.html # default public view
@@ -93,8 +105,10 @@ Each HTML section contains exactly:
 
 1. `第一性原理逻辑链`: one natural-language paragraph explaining the causal test.
 2. `逻辑节点与原子观点材料`: full-width causal nodes in canonical order. The
-   visible node summary shows current state, conclusion, and real baseline/change.
-   The collapsed body contains exactly one horizontally scrollable table:
+   visible node summary labels and shows the exact L3 research question, current
+   state, conclusion, and real baseline/change.
+   The collapsed body first contains the L3's own collapsed L4/L5 research-plan
+   outline, then exactly one horizontally scrollable table:
    `发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响`. Rows use
    `published_at` from newest to oldest, and one source occupies one row. The report
    name is a blue link. Atomic claims are numbered `1, 2, 3...`; the final cell
@@ -127,12 +141,14 @@ non-empty groups in this order: `当前需求方`, then `潜在未来需求方`.
 render a state badge, current conclusion, change assessment, evidence counts,
 company/entity disclosures, or material tables. Business scenarios, tasks,
 systems, component specifications, procurement channels, and quantities must not
-appear in this block. Q2 owns the current quantity baseline.
+appear in this block. Its exact L3 research question remains visible in the node
+heading. Q2 owns the current quantity baseline.
 
 If the Q2 derived view declares `render_mode: demand_quantity_matrix`, render exactly three outer
 groups in this order: `当前需求方`, `潜在未来需求方`, and `其它分类`. The first two
 groups reuse their respective Q1 demander lists; `其它分类` groups rows that cannot
-be assigned to a Q1 demander by their own information category. In HTML, every
+be assigned to a Q1 demander by their own information category. Its exact L3 research
+question remains visible above the matrix. In HTML, every
 outer group is a collapsed disclosure, and every specific demander or other
 information category is a second collapsed disclosure nested inside it. Markdown
 mirrors the same numbered hierarchy. Every specific category has one separately
@@ -407,9 +423,11 @@ Freeze recommendations before attaching labels.
 3. Parent, manifest, and child paths preserve one-to-one BOM identity.
 4. BOM ID and public name come from the canonical registry.
 5. Every `bom-node` child keeps the same six semantic questions; every `standalone-bom` keeps the five professional lenses.
-6. Every six-question module keeps its temporal sequence; every logic-chain-centered standalone report keeps `当前投资判断`, then each lens keeps `第一性原理逻辑链 -> 逻辑节点与原子观点材料 -> 可选派生证据视图` and one five-column claim-level source table per causal node, without a separate lens-level `全局结论与趋势`.
+6. Every six-question module keeps its temporal sequence; every logic-chain-centered standalone report keeps `当前投资判断`, then each lens keeps `第一性原理逻辑链 -> 逻辑节点与原子观点材料 -> 可选派生证据视图`, visibly renders the exact research question on every L3 node, and keeps one five-column claim-level source table per causal node, without a separate lens-level `全局结论与趋势`.
 7. Backtest cutoff and label isolation remain enforced.
 8. Public reports contain no raw process traces or change logs.
+9. When requested, the dedicated plan HTML preserves exact L3 coverage and renders
+   every active L5 leaf; broad-material counts never imply leaf completion.
 
 ## Validation
 
@@ -421,6 +439,9 @@ Before publication:
 4. run `validate-research-artifacts --require-l3` when artifacts exist;
 5. verify scope-specific section order, parent-child links where applicable, six-question or five-lens identity, newest-to-oldest causal-node material tables, parallel claim/effect numbering, source links, and no public process text;
 6. run `git diff --check`.
+7. when `research_plan.html` is present, verify exact L3/L5 counts, leaf questions,
+   source/search plans, dependencies, gates, bidirectional report links, and status
+   derived from the append-only child ledgers.
 
 HTML visual and contract validation is the publication gate; Markdown validation
 protects audit portability.

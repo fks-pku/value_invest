@@ -85,6 +85,50 @@ def build_parser() -> argparse.ArgumentParser:
     research_artifacts_parser.add_argument("project_dir")
     research_artifacts_parser.add_argument("--require-l3", action="store_true")
 
+    plan_research_parser = subparsers.add_parser(
+        "plan-research",
+        help="Create an executable, source-planned research plan from one investment goal",
+    )
+    plan_research_parser.add_argument("project_dir")
+    plan_research_parser.add_argument("--topic", required=True)
+    plan_research_parser.add_argument(
+        "--research-type",
+        default="custom",
+        choices=["industry", "theme", "company", "event", "policy", "technology", "product", "target_update", "custom"],
+    )
+    plan_research_parser.add_argument("--object-id", default="")
+    plan_research_parser.add_argument(
+        "--run-mode",
+        default="historical_backtest",
+        choices=["historical_backtest", "live_prediction"],
+    )
+    plan_research_parser.add_argument("--report-date", default="")
+    plan_research_parser.add_argument("--as-of-date", default="")
+    plan_research_parser.add_argument("--domain-hint", default="")
+    plan_research_parser.add_argument(
+        "--decision-boundary",
+        default="research observation, not trading instruction",
+    )
+
+    record_research_step_parser = subparsers.add_parser(
+        "record-research-step",
+        help="Validate and append one research-step event from a JSON file",
+    )
+    record_research_step_parser.add_argument("project_dir")
+    record_research_step_parser.add_argument("--event", required=True)
+
+    validate_research_plan_parser = subparsers.add_parser(
+        "validate-research-plan",
+        help="Validate a research plan and project its append-only step history",
+    )
+    validate_research_plan_parser.add_argument("project_dir")
+
+    l3_plan_parser = subparsers.add_parser(
+        "build-l3-research-plans",
+        help="Create one nested L4/L5, leaf-search-driven plan for every standalone-BOM L3",
+    )
+    l3_plan_parser.add_argument("project_dir")
+
     material_intake_parser = subparsers.add_parser(
         "validate-material-intake",
         help="Validate material classification, BOM routing, parse tasks, and cutoff isolation",
@@ -128,11 +172,12 @@ def build_parser() -> argparse.ArgumentParser:
     search_bom_materials_parser.add_argument("--bom-node-id", required=True)
     search_bom_materials_parser.add_argument(
         "--question-number",
-        required=True,
         type=int,
         choices=range(1, 7),
     )
-    search_bom_materials_parser.add_argument("--query", required=True)
+    search_bom_materials_parser.add_argument("--l3-node-id", default="")
+    search_bom_materials_parser.add_argument("--leaf-question-id", default="")
+    search_bom_materials_parser.add_argument("--query", default="")
     search_bom_materials_parser.add_argument(
         "--provider",
         default="exa",
@@ -897,6 +942,14 @@ def main(argv: list[str] | None = None) -> int:
             return run_audit_time_slice_cmd(root, args)
         if args.command == "validate-research-artifacts":
             return run_validate_research_artifacts_cmd(root, args)
+        if args.command == "plan-research":
+            return run_plan_research_cmd(root, args)
+        if args.command == "record-research-step":
+            return run_record_research_step_cmd(root, args)
+        if args.command == "validate-research-plan":
+            return run_validate_research_plan_cmd(root, args)
+        if args.command == "build-l3-research-plans":
+            return run_build_l3_research_plans_cmd(root, args)
         if args.command == "validate-material-intake":
             return run_validate_material_intake_cmd(root, args)
         if args.command == "validate-standalone-bom-engine":
@@ -1128,6 +1181,8 @@ def run_validate_research_artifacts_cmd(root: Path, args) -> int:
         f"source_extractions={result.source_extractions}, "
         f"leaf_source_reviews={result.leaf_source_reviews}, "
         f"targets={result.targets}, "
+        f"plan_steps={result.plan_steps}, "
+        f"research_step_events={result.research_step_events}, "
         f"bom_children={layout_result.get('summary', {}).get('child_projects', 0)}, "
         f"intake_documents={intake_result.get('summary', {}).get('documents', 0)}, "
         f"pending_parse_tasks={intake_result.get('summary', {}).get('parse_tasks', 0)}, "
@@ -1140,6 +1195,196 @@ def run_validate_research_artifacts_cmd(root: Path, args) -> int:
     ][:10]:
         print(f"{issue.get('severity', 'error')}:{issue.get('code', '')}: {issue.get('message', '')}")
     return 0 if ok else 1
+
+
+def run_plan_research_cmd(root: Path, args) -> int:
+    from value_invest_research.adapters.outbound.filesystem_research_plan import (
+        FileSystemResearchPlanRepository,
+    )
+    from value_invest_research.adapters.outbound.filesystem_source_universe import (
+        FileSystemSourceUniverseRepository,
+    )
+    from value_invest_research.adapters.outbound.standalone_bom_research_plan_html_renderer import (
+        StandaloneBomResearchPlanHtmlRenderer,
+    )
+    from value_invest_research.application.orchestration.research_orchestrator import (
+        ResearchOrchestrator,
+    )
+    from value_invest_research.domain.research_goal import ResearchGoal
+
+    project_dir = _resolve_cli_path(root, args.project_dir)
+    repository = FileSystemResearchPlanRepository(project_dir)
+    result = ResearchOrchestrator().build_executable_plan(
+        ResearchGoal(
+            topic=args.topic,
+            research_type=args.research_type,
+            object_id=args.object_id,
+            run_mode=args.run_mode,
+            report_date=args.report_date,
+            as_of_date=args.as_of_date,
+            decision_boundary=args.decision_boundary,
+            domain_hint=args.domain_hint,
+        ),
+        repository,
+        source_universe_repository=FileSystemSourceUniverseRepository(
+            root / "config" / "source_universes.json"
+        ),
+    )
+    plan_html_path = repository.write_research_plan_html(
+        StandaloneBomResearchPlanHtmlRenderer().render(
+            project={
+                "title": args.topic,
+                "report_date": args.report_date or args.as_of_date,
+            },
+            bundle=repository.load_l3_research_plan_bundle(),
+        )
+    )
+    print(
+        f"Research plan created: plan_id={result['plan_id']}, "
+        f"l3_steps={result['steps']}, l3_plans={result['l3_plans']}, "
+        f"leaf_steps={result['leaf_steps']}, plan={result['plan_path']}, "
+        f"events={result['event_path']}, html={plan_html_path}"
+    )
+    return 0
+
+
+def run_record_research_step_cmd(root: Path, args) -> int:
+    from value_invest_research.adapters.outbound.filesystem_research_plan import (
+        FileSystemResearchPlanRepository,
+    )
+    from value_invest_research.application.use_cases.research_plan_execution import (
+        RecordResearchStepEvent,
+    )
+
+    project_dir = _resolve_cli_path(root, args.project_dir)
+    event_path = _resolve_cli_path(root, args.event)
+    event = json.loads(event_path.read_text(encoding="utf-8"))
+    if not isinstance(event, dict):
+        raise ValueError("research step event file must contain one JSON object")
+    result = RecordResearchStepEvent(
+        FileSystemResearchPlanRepository(project_dir)
+    ).execute(event)
+    summary = result["progress"]["summary"]
+    print(
+        f"Research step event recorded: event_id={result['event_id']}, "
+        f"step_id={result['step_id']}, appended={result['appended']}, "
+        f"status={summary['status']}, completed={summary['completed']}/{summary['steps']}, "
+        f"events={result['event_path']}"
+    )
+    return 0
+
+
+def run_validate_research_plan_cmd(root: Path, args) -> int:
+    from value_invest_research.adapters.outbound.filesystem_research_plan import (
+        FileSystemResearchPlanRepository,
+    )
+    from value_invest_research.application.use_cases.research_plan_execution import (
+        ValidateResearchPlanExecution,
+    )
+    from value_invest_research.framework_contracts import (
+        validate_research_plan_html_contract,
+    )
+
+    project_dir = _resolve_cli_path(root, args.project_dir)
+    repository = FileSystemResearchPlanRepository(project_dir)
+    result = ValidateResearchPlanExecution(repository).execute()
+    bundle = repository.load_l3_research_plan_bundle()
+    plan_document_summary: dict[str, int] = {}
+    if bundle.get("plans"):
+        plan_html_path = project_dir / "research_plan.html"
+        if not plan_html_path.is_file():
+            result["issues"].append(
+                {
+                    "severity": "error",
+                    "code": "missing_research_plan_html",
+                    "message": (
+                        "L3 child plans exist but research_plan.html has not "
+                        "been generated."
+                    ),
+                }
+            )
+        else:
+            document_validation = validate_research_plan_html_contract(
+                plan_html_path.read_text(encoding="utf-8"),
+                plans=bundle["plans"],
+            )
+            result["issues"].extend(document_validation["issues"])
+            plan_document_summary = document_validation["summary"]
+        result["ok"] = not any(
+            issue.get("severity") == "error" for issue in result["issues"]
+        )
+    summary = result["summary"]
+    status = "OK" if result["ok"] else "FAILED"
+    print(
+        f"Research plan validation {status}: plan_id={summary['plan_id']}, "
+        f"status={summary['status']}, steps={summary['steps']}, "
+        f"completed={summary['completed']}, blocked={summary['blocked']}, "
+        f"events={summary['events']}, "
+        f"historical_plan_events={summary['historical_plan_events']}, "
+        f"issues={len(result['issues'])}"
+    )
+    nested = summary.get("nested") or {}
+    if nested:
+        print(
+            "Nested L3 plan coverage: "
+            f"l3_plans={nested.get('l3_plans', 0)}, "
+            f"completed_l3={nested.get('completed_l3_plans', 0)}, "
+            f"leaf_steps={nested.get('leaf_steps', 0)}, "
+            f"completed_leaf_steps={nested.get('completed_leaf_steps', 0)}"
+        )
+    if plan_document_summary:
+        print(
+            "Research plan HTML coverage: "
+            f"l3_plans={plan_document_summary.get('l3_plans', 0)}, "
+            f"leaf_steps={plan_document_summary.get('leaf_steps', 0)}"
+        )
+    for issue in result["issues"][:10]:
+        print(
+            f"{issue.get('severity', 'error')}:{issue.get('code', '')}: "
+            f"{issue.get('message', '')}"
+        )
+    return 0 if result["ok"] else 1
+
+
+def run_build_l3_research_plans_cmd(root: Path, args) -> int:
+    from value_invest_research.adapters.outbound.filesystem_research_plan import (
+        FileSystemResearchPlanRepository,
+    )
+    from value_invest_research.adapters.outbound.standalone_bom_research_plan_html_renderer import (
+        StandaloneBomResearchPlanHtmlRenderer,
+    )
+    from value_invest_research.application.use_cases.build_l3_research_plans import (
+        BuildStandaloneL3ResearchPlans,
+    )
+
+    project_dir = _resolve_cli_path(root, args.project_dir)
+    project = json.loads(
+        (project_dir / "project.json").read_text(encoding="utf-8")
+    )
+    if project.get("report_scope") != "standalone-bom":
+        raise ValueError(
+            "build-l3-research-plans currently requires report_scope=standalone-bom"
+        )
+    profile = json.loads(
+        (project_dir / "timeline_profile.json").read_text(encoding="utf-8")
+    )
+    repository = FileSystemResearchPlanRepository(project_dir)
+    result = BuildStandaloneL3ResearchPlans(repository).execute(profile=profile)
+    plan_html_path = repository.write_research_plan_html(
+        StandaloneBomResearchPlanHtmlRenderer().render(
+            project=project,
+            bundle=repository.load_l3_research_plan_bundle(),
+        )
+    )
+    print(
+        "L3 research plans created: "
+        f"parent_plan_id={result['parent_plan_id']}, "
+        f"l3_plans={result['l3_plans']}, "
+        f"leaf_steps={result['leaf_steps']}, "
+        f"index={result['index_path']}, "
+        f"html={plan_html_path}"
+    )
+    return 0
 
 
 def run_validate_material_intake_cmd(root: Path, args) -> int:
@@ -1238,17 +1483,60 @@ def run_search_bom_materials_cmd(root: Path, args) -> int:
     context = _load_material_project_context(project_dir)
     if args.bom_node_id not in context["known_bom_node_ids"]:
         raise ValueError(f"Unknown BOM node: {args.bom_node_id}")
+    leaf_context = _resolve_leaf_search_context(
+        project_dir,
+        l3_node_id=args.l3_node_id,
+        leaf_question_id=args.leaf_question_id,
+    )
+    question_number = args.question_number
+    query = str(args.query or "").strip()
+    if leaf_context:
+        lens_number_by_id = {
+            lens_id: number
+            for number, lens_id in enumerate(
+                ("demand", "supply", "technology", "valuation", "esg"),
+                start=1,
+            )
+        }
+        expected_number = lens_number_by_id.get(
+            str(leaf_context.get("lens_id") or "")
+        )
+        if not expected_number:
+            raise ValueError(
+                f"Unknown leaf-plan lens_id={leaf_context.get('lens_id')!r}"
+            )
+        if question_number and question_number != expected_number:
+            raise ValueError(
+                f"Leaf {args.leaf_question_id} belongs to question_number={expected_number}"
+            )
+        question_number = expected_number
+        query = query or str(leaf_context.get("default_query") or "")
+    elif (project_dir / "l3_research_plans" / "index.json").is_file():
+        raise ValueError(
+            "This project requires --l3-node-id and --leaf-question-id for every material search"
+        )
+    if not question_number or not query:
+        raise ValueError(
+            "Material search requires a question number and query, or a valid L3 leaf-plan coordinate"
+        )
     question_ids = context["question_ids_by_node"].get(args.bom_node_id) or {}
-    question_id = question_ids.get(args.question_number) or (
-        f"{args.bom_node_id}_q{args.question_number}"
+    question_id = (
+        str(leaf_context.get("leaf_question_id") or "")
+        if leaf_context
+        else question_ids.get(question_number)
+        or f"{args.bom_node_id}_q{question_number}"
     )
     provider = provider_for_name(args.provider)
     search_result = provider.search(
         {
             "task_id": f"{question_id}_material_search",
             "node_id": question_id,
-            "question": args.query,
-            "parent_question": _six_question_label(args.question_number),
+            "question": query,
+            "parent_question": (
+                str(leaf_context.get("l3_question") or "")
+                if leaf_context
+                else _six_question_label(question_number)
+            ),
             "required_evidence": [
                 "actual facts",
                 "forward expectations",
@@ -1280,18 +1568,20 @@ def run_search_bom_materials_cmd(root: Path, args) -> int:
         repository=FileSystemMaterialIntakeRepository(project_dir),
         provider=args.provider,
         bom_node_id=args.bom_node_id,
-        question_number=args.question_number,
+        question_number=question_number,
         known_bom_node_ids=context["known_bom_node_ids"],
         mode=context["mode"],
         as_of_date=context["as_of_date"],
         discovered_at=args.discovered_at,
         question_ids_by_node=context["question_ids_by_node"],
+        leaf_context=leaf_context or None,
     )
     event = result["scan_event"]
     print(
         "BOM material search completed: "
         f"node={args.bom_node_id}, "
-        f"question={args.question_number}, "
+        f"question={question_number}, "
+        f"leaf={question_id if leaf_context else '<legacy-coordinate>'}, "
         f"provider={args.provider}, "
         f"new_documents={event['discovered_count']}, "
         f"quarantined={event['quarantined_count']}, "
@@ -1856,6 +2146,9 @@ def run_refresh_standalone_bom_report_cmd(root: Path, args) -> int:
     from value_invest_research.adapters.outbound.standalone_bom_markdown_renderer import (
         StandaloneBomMarkdownRenderer,
     )
+    from value_invest_research.adapters.outbound.standalone_bom_research_plan_html_renderer import (
+        StandaloneBomResearchPlanHtmlRenderer,
+    )
     from value_invest_research.application.use_cases.refresh_standalone_bom_timeline import (
         refresh_standalone_bom_report,
     )
@@ -1865,11 +2158,13 @@ def run_refresh_standalone_bom_report_cmd(root: Path, args) -> int:
         repository=FileSystemStandaloneBomTimelineRepository(project_dir),
         renderer=StandaloneBomMarkdownRenderer(project_dir=project_dir),
         html_renderer=StandaloneBomHtmlRenderer(project_dir=project_dir),
+        plan_html_renderer=StandaloneBomResearchPlanHtmlRenderer(),
         as_of_date=args.as_of_date,
     )
     print(
         "Standalone BOM report refreshed: "
         f"path={result['report_path']}, "
+        f"research_plan={result['research_plan_html_path']}, "
         f"as_of_date={result['as_of_date']}, "
         f"claims={result['claims']}"
     )
@@ -1917,6 +2212,9 @@ def run_apply_standalone_bom_updates_cmd(root: Path, args) -> int:
     from value_invest_research.adapters.outbound.standalone_bom_markdown_renderer import (
         StandaloneBomMarkdownRenderer,
     )
+    from value_invest_research.adapters.outbound.standalone_bom_research_plan_html_renderer import (
+        StandaloneBomResearchPlanHtmlRenderer,
+    )
     from value_invest_research.application.use_cases.refresh_standalone_bom_timeline import (
         apply_standalone_bom_updates,
     )
@@ -1928,6 +2226,7 @@ def run_apply_standalone_bom_updates_cmd(root: Path, args) -> int:
         repository=FileSystemStandaloneBomTimelineRepository(project_dir),
         renderer=StandaloneBomMarkdownRenderer(project_dir=project_dir),
         html_renderer=StandaloneBomHtmlRenderer(project_dir=project_dir),
+        plan_html_renderer=StandaloneBomResearchPlanHtmlRenderer(),
         raw_claims=claims,
         raw_conclusions=conclusions,
         as_of_date=args.as_of_date,
@@ -1953,6 +2252,9 @@ def run_apply_standalone_bom_engine_updates_cmd(root: Path, args) -> int:
     from value_invest_research.adapters.outbound.standalone_bom_markdown_renderer import (
         StandaloneBomMarkdownRenderer,
     )
+    from value_invest_research.adapters.outbound.standalone_bom_research_plan_html_renderer import (
+        StandaloneBomResearchPlanHtmlRenderer,
+    )
     from value_invest_research.application.use_cases.refresh_standalone_bom_timeline import (
         apply_standalone_bom_engine_updates,
     )
@@ -1962,6 +2264,7 @@ def run_apply_standalone_bom_engine_updates_cmd(root: Path, args) -> int:
         repository=FileSystemStandaloneBomTimelineRepository(project_dir),
         renderer=StandaloneBomMarkdownRenderer(project_dir=project_dir),
         html_renderer=StandaloneBomHtmlRenderer(project_dir=project_dir),
+        plan_html_renderer=StandaloneBomResearchPlanHtmlRenderer(),
         raw_mappings=_read_jsonl(_resolve_cli_path(root, args.mappings)),
         raw_logic_states=_read_jsonl(
             _resolve_cli_path(root, args.logic_states)
@@ -2030,6 +2333,66 @@ def run_review_material_directory_location_cmd(root: Path, args) -> int:
         f"status={args.status}, local_path={local_path or '<not-downloaded>'}"
     )
     return 0
+
+
+def _resolve_leaf_search_context(
+    project_dir: Path,
+    *,
+    l3_node_id: str,
+    leaf_question_id: str,
+) -> dict[str, str]:
+    index_path = project_dir / "l3_research_plans" / "index.json"
+    if not index_path.is_file():
+        return {}
+    if not l3_node_id or not leaf_question_id:
+        return {}
+    index = json.loads(index_path.read_text(encoding="utf-8"))
+    row = next(
+        (
+            item
+            for item in index.get("plans") or []
+            if isinstance(item, dict)
+            and str(item.get("l3_node_id") or "") == l3_node_id
+        ),
+        None,
+    )
+    if row is None:
+        raise ValueError(f"Unknown L3 research plan: {l3_node_id}")
+    plan = json.loads(
+        (project_dir / str(row.get("path") or "")).read_text(encoding="utf-8")
+    )
+    step = next(
+        (
+            item
+            for item in plan.get("steps") or []
+            if isinstance(item, dict)
+            and str(item.get("leaf_question_id") or "") == leaf_question_id
+        ),
+        None,
+    )
+    if step is None:
+        raise ValueError(
+            f"Unknown leaf question {leaf_question_id} under L3 {l3_node_id}"
+        )
+    default_query = next(
+        (
+            str(query)
+            for source in step.get("source_plan") or []
+            for query in source.get("examples_or_search_queries") or []
+            if str(query).strip()
+        ),
+        "",
+    )
+    return {
+        "l3_plan_id": str(plan.get("plan_id") or ""),
+        "l3_node_id": l3_node_id,
+        "l3_question": str(plan.get("l3_question") or ""),
+        "lens_id": str(plan.get("lens_id") or ""),
+        "l4_question_id": str(step.get("l4_question_id") or ""),
+        "leaf_question_id": leaf_question_id,
+        "leaf_step_id": str(step.get("leaf_step_id") or ""),
+        "default_query": default_query,
+    }
 
 
 def _load_material_project_context(project_dir: Path) -> dict[str, Any]:

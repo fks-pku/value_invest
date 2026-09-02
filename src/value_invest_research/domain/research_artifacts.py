@@ -17,6 +17,11 @@ class ResearchArtifacts:
     leaf_source_reviews: list[dict[str, Any]] = field(default_factory=list)
     workbench: dict[str, Any] = field(default_factory=dict)
     targets: list[dict[str, Any]] = field(default_factory=list)
+    research_plan: dict[str, Any] = field(default_factory=dict)
+    research_step_events: list[dict[str, Any]] = field(default_factory=list)
+    l3_research_plan_index: dict[str, Any] = field(default_factory=dict)
+    l3_research_plans: list[dict[str, Any]] = field(default_factory=list)
+    l3_research_step_events: dict[str, list[dict[str, Any]]] = field(default_factory=dict)
     load_issues: list[Issue] = field(default_factory=list)
 
 
@@ -30,6 +35,8 @@ class ResearchArtifactValidationResult:
     source_extractions: int
     leaf_source_reviews: int
     targets: int
+    plan_steps: int
+    research_step_events: int
     issues: list[Issue]
 
     def to_dict(self) -> dict[str, Any]:
@@ -41,6 +48,8 @@ class ResearchArtifactValidationResult:
                 "source_extractions": self.source_extractions,
                 "leaf_source_reviews": self.leaf_source_reviews,
                 "targets": self.targets,
+                "plan_steps": self.plan_steps,
+                "research_step_events": self.research_step_events,
             },
             "issues": list(self.issues),
         }

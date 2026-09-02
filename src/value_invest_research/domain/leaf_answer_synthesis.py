@@ -20,6 +20,7 @@ def synthesize_leaf_answer_from_result(row: dict[str, Any]) -> dict[str, Any]:
         "source": "leaf_research",
         "synthesis_source": "leaf_research",
         "node_id": row.get("node_id", ""),
+        "research_step_id": row.get("research_step_id") or f"step:{row.get('node_id', '')}",
         "answer": row.get("answer", ""),
         "facts": _text_list(row.get("facts")),
         "inferences": _text_list(row.get("inferences")),

@@ -4,11 +4,13 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from value_invest_research.application.use_cases.plan_research_goal import PlanResearchGoal
+from value_invest_research.application.use_cases.build_research_plan import BuildResearchPlan
 from value_invest_research.application.use_cases.render_research_project_report import RenderResearchProjectReport
 from value_invest_research.domain.question_architecture import QuestionArchitecture
 from value_invest_research.domain.research_goal import ResearchGoal
 from value_invest_research.ports.renderers import CanonicalReportRenderer
 from value_invest_research.ports.repositories import ResearchProjectRepository
+from value_invest_research.ports.repositories import ResearchPlanRepository, SourceUniverseRepository
 
 
 @dataclass(frozen=True)
@@ -23,6 +25,16 @@ class ResearchOrchestrator:
 
     def plan(self, goal: ResearchGoal) -> QuestionArchitecture:
         return self.question_planner.execute(goal)
+
+    def build_executable_plan(
+        self,
+        goal: ResearchGoal,
+        repository: ResearchPlanRepository,
+        *,
+        source_universe_repository: SourceUniverseRepository | None = None,
+    ) -> dict[str, Any]:
+        architecture = self.plan(goal)
+        return BuildResearchPlan(repository, source_universe_repository).execute(architecture)
 
     def render_report(
         self,

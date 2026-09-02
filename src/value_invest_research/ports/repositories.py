@@ -68,6 +68,51 @@ class ResearchProjectRepository(Protocol):
         """Load target ranking records for public report rendering."""
 
 
+class ResearchPlanRepository(Protocol):
+    """Outbound port for immutable plans and append-only step events."""
+
+    @property
+    def project_dir_label(self) -> str:
+        """Stable project label used in summaries and validation output."""
+
+    @property
+    def plan_path_label(self) -> str:
+        """Stable label for the active research_plan.json artifact."""
+
+    @property
+    def event_path_label(self) -> str:
+        """Stable label for the append-only step-event ledger."""
+
+    def save_question_architecture(self, qa_tree: dict) -> None:
+        """Persist the QA tree bound to the active plan."""
+
+    def save_plan(self, plan: dict) -> None:
+        """Persist the active plan and an immutable plan-history copy."""
+
+    def load_plan(self) -> dict:
+        """Load the active research plan."""
+
+    def append_step_event(self, event: dict) -> bool:
+        """Append a new event, returning false when its event id already exists."""
+
+    def load_step_events(self) -> list[dict]:
+        """Load step events in append order."""
+
+    def save_l3_research_plans(self, index: dict, plans: list[dict]) -> None:
+        """Persist one independent versioned research plan per L3."""
+
+    def load_l3_research_plan_bundle(self) -> dict:
+        """Load the L3 plan index, child plans, and their event ledgers."""
+
+    def write_research_plan_html(self, html: str) -> str:
+        """Persist the dedicated human-readable research-plan document."""
+
+    def bind_l3_plans_to_question_architecture(
+        self, *, parent_plan: dict, index: dict
+    ) -> None:
+        """Bind QA L3 nodes to child plans without embedding leaf source searches."""
+
+
 class BomProjectLayoutRepository(Protocol):
     """Outbound port for loading one industry project and its BOM children."""
 

@@ -60,6 +60,7 @@ def build_leaf_task(
     return {
         "schema_version": "1.0",
         "task_id": _stable_task_id(ticker, node_id),
+        "research_step_id": research_step_id(node_id),
         "ticker": ticker,
         "company_name": company_name,
         "node_id": node_id,
@@ -78,6 +79,17 @@ def build_leaf_task(
         "preferred_source_types": preferred_source_types(node),
         "source_search_plan": source_search_plan,
         "source_universe_plan": source_universe_plan,
+        "minimum_evidence_gate": node.get("minimum_evidence_gate") or {
+            "rule": "Require question-fit sources, per-source extraction, GPT review, an answer, and a refutation-search result.",
+            "per_source_parse_required": True,
+            "gpt_review_required": True,
+            "refutation_search_required": True,
+        },
+        "refuting_source_plan": _text_list(node.get("refuting_source_plan"))
+        or [f"Search for evidence that would refute or bound: {question}"],
+        "freshness_requirement": node.get("freshness_requirement")
+        or node.get("time_frame")
+        or "latest_available_and_historical_context",
         "task_family": task_family,
         "selected_skill": selected_skill,
         "extraction_schema": extraction_schema,
@@ -208,6 +220,8 @@ def source_search_plan_for_task(node: dict[str, Any], parent: dict[str, Any], ta
         item["question_link"] = question
         item["parent_link"] = parent_question
         item["preferred_skill"] = selected_skill_for_task_family(task_family if bucket in {"evidence", "research_report"} else bucket.replace("message", "news_event"))
+        item["examples_or_search_queries"] = [f"{question} {item['source_type']}".strip()]
+        item["deepseek_allowed"] = bucket in {"research_report", "opinion"}
         plan.append(item)
     return plan
 
@@ -270,6 +284,11 @@ def is_leaf_node(qa_tree: dict[str, Any], node: dict[str, Any]) -> bool:
 
 def leaf_question_count(qa_tree: dict[str, Any]) -> int:
     return sum(1 for node in qa_tree.get("nodes", []) if is_leaf_node(qa_tree, node))
+
+
+def research_step_id(question_node_id: str) -> str:
+    """Stable trace coordinate shared by plans, tasks, evidence, and answers."""
+    return f"step:{question_node_id}"
 
 
 def _contains_any(text: str, needles: list[str]) -> bool:

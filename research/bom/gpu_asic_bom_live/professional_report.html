@@ -83,6 +83,27 @@ h1 {
   font-size: 18px;
 }
 
+.plan-cta {
+  display: grid;
+  grid-template-columns: minmax(150px, .75fr) minmax(180px, 1fr) auto;
+  align-items: center;
+  gap: 20px;
+  max-width: 760px;
+  margin-top: 26px;
+  padding: 15px 18px;
+  border: 1px solid #b9c8cf;
+  border-left: 4px solid var(--rust);
+  background: #f2f6f7;
+  color: #24445c;
+  text-decoration: none;
+  transition: border-color 160ms ease, background 160ms ease;
+}
+
+.plan-cta:hover { border-color: #7494a4; background: #eaf1f3; }
+.plan-cta span { color: var(--rust); font-size: 11px; font-weight: 750; letter-spacing: .08em; }
+.plan-cta strong { font-size: 15px; }
+.plan-cta b { color: var(--blue); font-size: 12px; }
+
 .report-meta {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -140,6 +161,14 @@ h1 {
 .top-nav a.is-active {
   border-color: var(--blue);
   color: var(--blue);
+}
+
+.top-nav .plan-nav-link {
+  margin-right: 10px;
+  padding-left: 12px;
+  padding-right: 12px;
+  border-left: 3px solid var(--rust);
+  color: var(--rust);
 }
 
 .report-main { padding: 24px 0 80px; }
@@ -484,6 +513,24 @@ h1 {
   color: #344957;
   font-size: 14px;
 }
+.causal-node .logic-node-heading p.logic-node-question,
+.logic-node-heading p.logic-node-question {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  margin: 8px 0 0;
+  color: #536a78;
+  font-size: 12px;
+  line-height: 1.55;
+}
+.logic-node-question-label {
+  flex: 0 0 auto;
+  color: var(--blue);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  white-space: nowrap;
+}
 .causal-node .logic-node-heading small {
   display: block;
   margin-top: 5px;
@@ -504,6 +551,66 @@ h1 {
   border-top: 1px solid var(--line);
   background: #fcfdfd;
   animation: reveal 180ms ease both;
+}
+.l3-research-plan {
+  margin: 16px 0;
+  border: 1px solid #cedbe3;
+  border-radius: 8px;
+  background: #f4f8fa;
+}
+.demand-party-node > .l3-research-plan,
+.demand-quantity-node > .l3-research-plan { margin: 16px; }
+.l3-research-plan > summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+  padding: 13px 15px;
+  cursor: pointer;
+  list-style: none;
+}
+.l3-research-plan > summary::-webkit-details-marker { display: none; }
+.l3-research-plan > summary div { display: grid; gap: 3px; }
+.l3-research-plan > summary span {
+  color: var(--blue);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .09em;
+}
+.l3-research-plan > summary strong { color: #2e4656; font-size: 13px; }
+.l3-research-plan > summary small { color: var(--muted); font-size: 11px; }
+.l4-plan-list {
+  margin: 0;
+  padding: 0 15px 15px;
+  list-style: none;
+  counter-reset: none;
+}
+.l4-plan-unit {
+  padding: 12px 0;
+  border-top: 1px solid #d7e2e8;
+}
+.l4-plan-unit > div { display: flex; gap: 9px; align-items: baseline; }
+.l4-plan-unit > div span { color: var(--rust); font: 700 12px "Baskerville", serif; }
+.l4-plan-unit > div strong { color: #2f4655; font-size: 13px; }
+.l4-plan-unit > p { margin: 6px 0; color: #5a6e7b; font-size: 11px; }
+.l4-plan-unit > ol { margin: 0; padding: 0; list-style: none; }
+.leaf-plan-step {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 16px;
+  padding: 8px 10px;
+  border-left: 2px solid #a9c5d4;
+  background: #fff;
+}
+.leaf-plan-step p { grid-column: 1; margin: 0; color: #314957; font-size: 12px; }
+.leaf-plan-step small { grid-column: 1; color: #7a8892; font-size: 10px; }
+.leaf-status {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  color: #6c7e89;
+  font-size: 10px;
+  white-space: nowrap;
 }
 .node-material-table-wrap {
   overflow-x: auto;
@@ -1165,6 +1272,9 @@ h1 {
   .report-header-inner { padding: 38px 0 28px; }
   h1 { font-size: 38px; }
   .report-deck { font-size: 16px; }
+  .plan-cta { grid-template-columns: 1fr auto; gap: 6px 14px; }
+  .plan-cta strong { grid-column: 1; }
+  .plan-cta b { grid-column: 2; grid-row: 1 / span 2; }
   .report-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .decision-heading { flex-direction: column; gap: 12px; }
   .decision-update { grid-template-columns: 1fr; gap: 4px; }
@@ -1235,22 +1345,23 @@ h1 {
 }
 </style>
 </head>
-<body data-report-scope="standalone-bom" data-bom-node-id="gpu_asic" data-investment-engine-version="3.3" data-research-model="logic-chain-centered" data-logic-chain-version="2026-08-12.v2">
+<body data-report-scope="standalone-bom" data-bom-node-id="gpu_asic" data-investment-engine-version="3.3" data-research-model="logic-chain-centered" data-logic-chain-version="2026-08-12.v2" data-l3-plan-contract="leaf-search-v2">
 <header class="report-header">
   <div class="report-header-inner">
     <div class="report-label">VALUE INVEST · BOM RESEARCH</div>
     <h1>GPU / ASIC BOM 实时跟踪</h1>
     <p class="report-deck">以第一性原理逻辑链组织研究；原子观点先改变节点，再改变全局投资判断。</p>
+    <a class="plan-cta" href="research_plan.html"><span>独立研究计划书</span><strong>27 个 L3 · 189 个 L5</strong><b aria-hidden="true">查看完整计划 →</b></a>
     <div class="report-meta" aria-label="报告元数据">
-      <div><span>研究截面</span><strong>2026-08-13</strong></div>
+      <div><span>研究截面</span><strong>2026-09-02</strong></div>
       <div><span>研究视角</span><strong>5</strong></div>
-      <div><span>映射材料</span><strong>34</strong></div>
-      <div><span>原子观点</span><strong>72</strong></div>
+      <div><span>映射材料</span><strong>43</strong></div>
+      <div><span>原子观点</span><strong>92</strong></div>
     </div>
   </div>
 </header>
 <nav class="top-nav" aria-label="报告章节">
-  <div class="top-nav-inner"><a href="#investment-decision">00 投资判断</a><a href="#lens-demand">01 需求侧</a><a href="#lens-supply">02 供给侧</a><a href="#lens-technology">03 技术侧</a><a href="#lens-valuation">04 估值侧</a><a href="#lens-esg">05 ESG</a></div>
+  <div class="top-nav-inner"><a class="plan-nav-link" href="research_plan.html">研究计划书 · L3→L5</a><a href="#investment-decision">00 投资判断</a><a href="#lens-demand">01 需求侧</a><a href="#lens-supply">02 供给侧</a><a href="#lens-technology">03 技术侧</a><a href="#lens-valuation">04 估值侧</a><a href="#lens-esg">05 ESG</a></div>
 </nav>
 <main class="report-main">
 
@@ -1259,37 +1370,37 @@ h1 {
   <div class="decision-heading">
     <div>
       <h2>当前投资判断</h2>
-      <p>主要断点或约束环节是：单位任务算力强度、收入与利润兑现、客户采用与量产、市场一致预期、股价隐含预期、上下行赔率与动作、治理与资本配置、融资结构与长期承诺；由于逻辑覆盖、公司财务桥、估值、风险控制尚未通过，当前投资动作维持观察。</p>
+      <p>逻辑链当前相对增强的环节是：收入与利润兑现、客户采用与量产、能源、水与基础设施许可、股价隐含预期；主要断点或约束环节是：先进制程晶圆、HBM、封装与基板、机房、电力与融资、融资结构与长期承诺、盈利修正与预期差、上下行赔率与动作；由于逻辑覆盖、公司财务桥、估值尚未通过，当前投资动作维持观察。</p>
     </div>
     <span class="action-badge action-watch_only">观察</span>
   </div>
-  <div class="decision-update"><strong>本期证据变化</strong><p>7月26至27日新增材料补充了三条重要但尚未闭环的路径：Oracle AI基础设施合同如何在预算、园区准备和融资之间传导；自动驾驶与人形机器人如何共享训练算力；玻璃芯基板、EMIB-T和外包中介层如何形成2027年后的封装供给。上述材料主要是管理层会议纪要与机构判断，尚未提供合同金额、真实工作负载、单位任务算力、量产良率、客户认证或反向估值，因此没有新增逻辑节点达到直接增强，整体仍为观察。</p></div>
+  <div class="decision-update"><strong>本期证据变化</strong><p>完整端到端研究支持一个克制结论：GPU/ASIC需求S曲线正在兑现，NVIDIA与AMD均有官方数据中心收入和产品采用，TSMC与具名1.2GW园区材料也验证了供应链正在扩张；但可发货系统仍受先进晶圆、CoWoS/HBM、机房并网和融资承诺的串联约束。证券层面，9月1日价格反向要求NVDA约22.3%、AMD约32.1%的十年FCF复合增速（统一简化模型），都不是低预期资产，AMD更依赖高执行。由于GPU专属盈利桥、同截面一致预期、多期修正和项目级资源许可尚未闭环，所有标的维持观察，不给出actionable_long。</p></div>
   <div class="delta-list">
     <article>
       <span>基本面变化</span>
-      <p>本期新增6份相关材料、10条原子观点。Oracle改善了合同经济性和项目准备度的可解释性，同时暴露融资约束；物理AI形成新需求分支；多种先进封装路线增加未来产能释放路径，但均未达到当前兑现证据标准。</p>
+      <p>新增AMD官方数据中心分部收入67.18亿美元、经营利润21.03亿美元，使研究从单一NVIDIA龙头扩展到第二GPU平台；同时AMD Q2 FCF环比下降、capex上升。TSMC确认先进制程高占比及CoWoS替代成熟约需一年，OpenAI/SB Energy提供1.2GW在建项目坐标，Microsoft提供水效量化。</p>
     </article>
     <article>
       <span>市场共识变化</span>
-      <p>新增观点来自德银、摩根大通、摩根士丹利、花旗和Bernstein等机构，能显示卖方关注方向，不能替代市场一致预期或官方经营指引。</p>
+      <p>本轮没有取得同一截面、多家机构、同口径的收入/EPS/FCF一致预期，也没有至少三个版本的修正序列。管理层指引和单家机构目标价继续只作为前瞻或观点，不能升级为市场共识。</p>
     </article>
     <article>
       <span>定价变化</span>
-      <p>新材料没有提供同截面股价隐含经营路径；Oracle、Tesla及封装供应链的目标价或盈利预测均不能证明错价。</p>
+      <p>首次加入2026年9月1日NVDA 217.43美元与AMD 459.61美元。以Q2年化FCF、10%折现率、3%永续增长和十年显性期反推，NVDA约需22.3%、AMD约需32.1%的十年FCF增长；敏感性区间极宽，说明价格已经隐含高增长且结果受正常化FCF和终值主导。</p>
     </article>
   </div>
   <div class="decision-audit">
     <div>
       <h3>研究门槛</h3>
-      <ul class="gate-list"><li class="gate-fail"><span aria-hidden="true">·</span>逻辑覆盖</li><li class="gate-fail"><span aria-hidden="true">·</span>公司财务桥</li><li class="gate-fail"><span aria-hidden="true">·</span>估值</li><li class="gate-pass"><span aria-hidden="true">✓</span>反证</li><li class="gate-fail"><span aria-hidden="true">·</span>风险控制</li></ul>
+      <ul class="gate-list"><li class="gate-fail"><span aria-hidden="true">·</span>逻辑覆盖</li><li class="gate-fail"><span aria-hidden="true">·</span>公司财务桥</li><li class="gate-fail"><span aria-hidden="true">·</span>估值</li><li class="gate-pass"><span aria-hidden="true">✓</span>反证</li><li class="gate-pass"><span aria-hidden="true">✓</span>风险控制</li></ul>
     </div>
     <div>
       <h3>覆盖状态</h3>
-      <p>27 / 27 个逻辑节点已有截面；69 / 72 条原子观点完成映射。</p>
+      <p>27 / 27 个逻辑节点已有截面；88 / 92 条原子观点完成映射。</p>
     </div>
     <div>
       <h3>下一催化剂</h3>
-      <ul><li>Oracle合同、RPO、客户预付款、BYOHW和项目融资原始披露</li><li>物理AI训练集群、机器人部署量和GPU/ASIC采购</li><li>玻璃芯基板认证与良率、Ibiden资本开支、Vanguard中介层量产验收</li><li>MI450/Helios实际交付、验收与收入</li><li>同截面一致预期和反向估值</li></ul>
+      <ul><li>NVIDIA Q3 FY27收入、数据中心利润、FCF、应收与库存</li><li>AMD下一季度GPU收入拆分、Helios/Anthropic交付与现金转换</li><li>TSMC CoWoS/HBM产能、良率、交期与客户预订</li><li>Milam County并网、许可与ready-for-service验收</li><li>同截面一致预期、至少三个版本的盈利修正和正常化FCF反向估值</li></ul>
     </div>
   </div>
   <div class="section-heading decision-table-heading">
@@ -1302,75 +1413,48 @@ h1 {
       </tr></thead>
       <tbody>
 <tr>
+  <td><strong>NVIDIA</strong><small>NVDA</small></td>
+  <td>GPU、网络与机架系统构成最直接的AI加速器敞口，Rubin已在五家伙伴运行。</td>
+  <td>Q2 FY27数据中心收入890亿美元，集团毛利率75.0%，Q2 FCF 213.41亿美元；应收、库存、供应承诺和AI云/园区承诺使现金转换需要持续验证。</td>
+  <td>9月1日217.43美元对应约5.24万亿美元市值；简化反向DCF要求约22.3%的十年FCF复合增速，15%至28%增长敏感性约127至327美元每股。该区间不是目标价。</td>
+  <td>基本面兑现最强，但当前价格要求长期高增长，现金转换、客户集中、中国市场和承诺风险尚未完全定价验证，维持观察。</td>
+  <td><span class="action-inline action-watch_only">观察</span></td>
+</tr>
+
+<tr>
   <td><strong>AMD</strong><small>AMD</small></td>
-  <td>MI450/Helios、ROCm及客户交付计划提供GPU路线直接敞口。</td>
-  <td>具名客户和交付窗口仍待实际收入、毛利和现金流验证；客户权证可能显著稀释利润。</td>
-  <td>现有目标价只是单家卖方观点，尚未完成反向估值。</td>
-  <td>产品和交付线索存在，但客户量产、股东可得利润和赔率均未通过。</td>
+  <td>MI/Helios与ROCm提供第二GPU平台的直接敞口，具名部署和最高2GW合作扩大采用管线。</td>
+  <td>Q2 2026数据中心收入67.18亿美元、分部经营利润21.03亿美元，但口径混合CPU/GPU；集团FCF环比下降且capex上升。</td>
+  <td>9月1日459.61美元对应估算市值约7650亿美元；简化反向DCF要求约32.1%的十年FCF复合增速，20%至40%增长敏感性约194至792美元每股。该区间不是目标价。</td>
+  <td>份额与盈利改善可能带来高弹性，但当前价格要求极高执行，GPU盈利拆分、客户交付和稀释仍未闭环，维持观察。</td>
+  <td><span class="action-inline action-watch_only">观察</span></td>
+</tr>
+
+<tr>
+  <td><strong>TSMC</strong><small>TSM</small></td>
+  <td>先进制程与CoWoS是GPU/ASIC共同依赖的晶圆及封装控制点。</td>
+  <td>Q2先进制程占晶圆收入77%，需求强；但研究没有CoWoS分部利润、GPU/ASIC专属产能、良率和价格桥。</td>
+  <td>本轮没有加入TSM同截面价格和反向估值，不能由稀缺性直接推出证券低估。</td>
+  <td>供应链位置稀缺、替代周期长，但公司盈利弹性和估值门槛未完成，维持观察。</td>
   <td><span class="action-inline action-watch_only">观察</span></td>
 </tr>
 
 <tr>
   <td><strong>Alphabet</strong><small>GOOGL</small></td>
-  <td>TPU外部所有权模式可能扩展merchant ASIC市场。</td>
-  <td>外部TPU收入、backlog和容量主要来自巴克莱模型，capex与FCF压力尚未由合同和报表验证。</td>
-  <td>目标价不能替代当前股价隐含路径。</td>
-  <td>属于值得验证的新分支，不是已成立的订单、盈利或错价证据。</td>
+  <td>TPU与云服务构成自研ASIC和外部算力服务敞口。</td>
+  <td>外部TPU收入、容量和利润率主要仍来自机构模型，缺少官方产品级收入、订单和FCF桥。</td>
+  <td>本轮没有用9月1日价格更新Alphabet反向估值。</td>
+  <td>ASIC路线重要但盈利桥与估值均未达门槛，维持观察。</td>
   <td><span class="action-inline action-watch_only">观察</span></td>
 </tr>
 
 <tr>
-  <td><strong>Meta</strong><small>META</small></td>
-  <td>实际AI对话量和正式capex指引支持应用及预算端需求。</td>
-  <td>GPU/ASIC用量、广告回报与伙伴融资最终义务尚未形成完整桥。</td>
-  <td>德银目标价只是机构样本，尚无反向估值。</td>
-  <td>需求输入较直接，但硬件传导、资本回报和风险承担仍待验证。</td>
-  <td><span class="action-inline action-watch_only">观察</span></td>
-</tr>
-
-<tr>
-  <td><strong>Intel</strong><small>INTC</small></td>
-  <td>服务器CPU、先进代工和替代封装是相邻供给线索。</td>
-  <td>DCAI收入不等于GPU/ASIC收入，18A份额也不等于GPU与ASIC平台竞争。</td>
-  <td>当前材料没有可复现估值。</td>
-  <td>现有材料不能建立GPU/ASIC直接投资映射。</td>
+  <td><strong>Broadcom</strong><small>AVGO</small></td>
+  <td>定制ASIC设计与网络互连使其位于自研加速器价值链。</td>
+  <td>现有材料缺少同一截面的AI收入、增量毛利、客户集中和FCF连续桥。</td>
+  <td>本轮未加入当前价格和反向估值，不能依据主题敞口判断错价。</td>
+  <td>具备ASIC直接敞口但证据与估值未闭环，当前不形成动作。</td>
   <td><span class="action-inline action-no_action">不行动</span></td>
-</tr>
-
-<tr>
-  <td><strong>Oracle</strong><small>ORCL</small></td>
-  <td>AI基础设施合同、RPO承接和数据中心建设把GPU/ASIC需求连接到云基础设施运营方。</td>
-  <td>成本加成、5至6年合同和目标ROIC提供经济性框架，但合同金额、芯片清单、预付款、BYOHW及资本回收尚未由原始披露验证。</td>
-  <td>会议纪要没有反向估值或市场隐含经营路径。</td>
-  <td>合同传导机制更清晰，但融资约束和风险承担未闭环，仅适合观察。</td>
-  <td><span class="action-inline action-watch_only">观察</span></td>
-</tr>
-
-<tr>
-  <td><strong>Tesla</strong><small>TSLA</small></td>
-  <td>自动驾驶和Optimus可能共享训练集群与定制AI芯片，形成物理AI算力需求。</td>
-  <td>缺少机器人部署、训练GPU小时、芯片采购、付费收入和资本回报桥。</td>
-  <td>当前材料没有可复现估值。</td>
-  <td>物理AI是新增需求分支，不是已兑现的GPU/ASIC工作负载证据。</td>
-  <td><span class="action-inline action-watch_only">观察</span></td>
-</tr>
-
-<tr>
-  <td><strong>Lens Tech</strong><small>300433.SZ</small></td>
-  <td>与Intel合作的玻璃芯基板可能进入先进封装替代路线。</td>
-  <td>认证、良率、产能、客户订单和收入贡献均未验证。</td>
-  <td>机构报告未建立可复现反向估值。</td>
-  <td>路线进展可跟踪，但当前不能映射为GPU/ASIC供给兑现或公司利润。</td>
-  <td><span class="action-inline action-watch_only">观察</span></td>
-</tr>
-
-<tr>
-  <td><strong>Vanguard</strong><small>5347.TW</small></td>
-  <td>VSMC可能承接TSMC外包的CoWoS中介层产能。</td>
-  <td>44KWPM、长期协议覆盖和2027年量产主要来自机构模型，缺少业务拆分、良率和客户验收。</td>
-  <td>当前材料没有反向估值。</td>
-  <td>具名产能释放路径存在，但尚未形成可验证盈利桥。</td>
-  <td><span class="action-inline action-watch_only">观察</span></td>
 </tr>
 </tbody>
     </table>
@@ -1385,7 +1469,7 @@ h1 {
       <p>RESEARCH LENS</p>
       <h2>需求侧</h2>
     </div>
-    <span class="lens-count">30 份材料 · 40 条观点</span>
+    <span class="lens-count">33 份材料 · 45 条观点</span>
     <span class="lens-chevron" aria-hidden="true"></span>
   </summary>
   <div class="lens-body">
@@ -1410,13 +1494,23 @@ h1 {
     <div class="logic-node-heading">
       <span>demand.workload_growth</span>
       <h4>真实 AI 工作负载</h4>
-      <p>Meta业务AI对话量仍是当前唯一较直接的真实使用增长证据；新增物理AI材料提出自动驾驶与人形机器人共享训练算力的新分支，但没有多平台用量、付费部署或GPU/ASIC消耗序列，尚不能把该分支视为已兑现的工作负载增长。</p>
+      <p class="logic-node-question"><span class="logic-node-question-label">研究问题</span><span>训练、推理和 agent 任务是否在真实增长，而非只有主题热度？</span></p>
+      <p class="logic-node-conclusion">Meta业务AI对话量仍是当前唯一较直接的真实使用增长证据；新增物理AI材料提出自动驾驶与人形机器人共享训练算力的新分支，但没有多平台用量、付费部署或GPU/ASIC消耗序列，尚不能把该分支视为已兑现的工作负载增长。</p>
       <small>本期变化：新增物理AI工作负载机制，扩展了未来需求边界；由于证据仍是卖方判断且缺少使用量，节点状态不变。</small>
     </div>
     <span class="state-badge state-weak">证据偏弱</span>
     <span class="logic-node-chevron" aria-hidden="true"></span>
   </summary>
   <div class="logic-node-body">
+
+    <details class="l3-research-plan" data-l3-plan-id="l3rp_demand_workload_growth_6e94bdc8afe514d5">
+      <summary>
+        <div><span>L3 独立研究计划</span><strong>0 / 7 个最细叶子已完成</strong></div>
+        <small>按每个 L5 叶子问题单独搜索、单独解析、单独复核</small>
+      </summary>
+      <ol class="l4-plan-list"><li class="l4-plan-unit"><div><span>01</span><strong>边界与口径</strong></div><p>边界与口径：需要回答哪些最细问题，才能完成 L3“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.workload_growth.l4.scope.l5.answer"><p>回答“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？</p><small>定向材料：official definition, standard, or company methodology</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>02</span><strong>当前事实</strong></div><p>当前事实：需要回答哪些最细问题，才能完成 L3“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.workload_growth.l4.actual.l5.answer"><p>围绕“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”，当前有哪些关于活跃用户与调用量、token 或任务量、AI 生成代码与商业流程渗透的可验证实际事实？</p><small>定向材料：latest filing, official dataset, customer or supplier disclosure</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>03</span><strong>历史变化</strong></div><p>历史变化：需要回答哪些最细问题，才能完成 L3“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.workload_growth.l4.history.l5.answer"><p>围绕“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”，活跃用户与调用量、token 或任务量、AI 生成代码与商业流程渗透在同口径历史序列中如何变化，是否存在结构性拐点？</p><small>定向材料：same-definition historical filing or official dataset</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>04</span><strong>前瞻路径</strong></div><p>前瞻路径：需要回答哪些最细问题，才能完成 L3“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.workload_growth.l4.forward.l5.answer"><p>围绕“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？</p><small>定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>05</span><strong>因果与财务传导</strong></div><p>因果与财务传导：需要回答哪些最细问题，才能完成 L3“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.workload_growth.l4.mechanism.l5.answer"><p>围绕“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”，证据通过什么因果机制传导到demand.compute_intensity以及客户采用、工作负载结构、付费使用？</p><small>定向材料：engineering disclosure plus company segment economics</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>06</span><strong>交叉验证</strong></div><p>交叉验证：需要回答哪些最细问题，才能完成 L3“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.workload_growth.l4.triangulation.l5.answer"><p>围绕“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？</p><small>定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>07</span><strong>反证与失效条件</strong></div><p>反证与失效条件：需要回答哪些最细问题，才能完成 L3“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.workload_growth.l4.refutation.l5.answer"><p>哪些直接证据能够满足反证条件“用户或调用增长停滞，任务被一次性试用、软件优化或低价值流量替代。”，并推翻、削弱或限定支持规则“多个不同性质的使用量指标持续增长，并出现付费或业务采用。”？</p><small>定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis</small><span class="leaf-status">待搜集</span></li></ol></li></ol>
+    </details>
+
 
     <div class="node-material-table-wrap" role="region" aria-label="原子观点材料" tabindex="0">
       <table class="node-material-table">
@@ -1461,13 +1555,23 @@ h1 {
     <div class="logic-node-heading">
       <span>demand.compute_intensity</span>
       <h4>单位任务算力强度</h4>
-      <p>Optimus训练更耗算力的机构表述提示物理AI可能抬升计算强度，但未提供单位任务测量，也没有与算法、芯片和系统效率改善比较；当前仍无满足本节点规则的直接证据。</p>
+      <p class="logic-node-question"><span class="logic-node-question-label">研究问题</span><span>每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？</span></p>
+      <p class="logic-node-conclusion">Optimus训练更耗算力的机构表述提示物理AI可能抬升计算强度，但未提供单位任务测量，也没有与算法、芯片和系统效率改善比较；当前仍无满足本节点规则的直接证据。</p>
       <small>本期变化：新增一个物理AI计算强度代理，但没有可量化序列，节点状态不变。</small>
     </div>
     <span class="state-badge state-unresolved">待验证</span>
     <span class="logic-node-chevron" aria-hidden="true"></span>
   </summary>
   <div class="logic-node-body">
+
+    <details class="l3-research-plan" data-l3-plan-id="l3rp_demand_compute_intensity_7fe2e8e1c0308e4c">
+      <summary>
+        <div><span>L3 独立研究计划</span><strong>0 / 7 个最细叶子已完成</strong></div>
+        <small>按每个 L5 叶子问题单独搜索、单独解析、单独复核</small>
+      </summary>
+      <ol class="l4-plan-list"><li class="l4-plan-unit"><div><span>01</span><strong>边界与口径</strong></div><p>边界与口径：需要回答哪些最细问题，才能完成 L3“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.compute_intensity.l4.scope.l5.answer"><p>回答“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？</p><small>定向材料：official definition, standard, or company methodology</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>02</span><strong>当前事实</strong></div><p>当前事实：需要回答哪些最细问题，才能完成 L3“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.compute_intensity.l4.actual.l5.answer"><p>围绕“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”，当前有哪些关于训练规模、推理 token 成本、上下文长度、test-time compute的可验证实际事实？</p><small>定向材料：latest filing, official dataset, customer or supplier disclosure</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>03</span><strong>历史变化</strong></div><p>历史变化：需要回答哪些最细问题，才能完成 L3“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.compute_intensity.l4.history.l5.answer"><p>围绕“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”，训练规模、推理 token 成本、上下文长度、test-time compute在同口径历史序列中如何变化，是否存在结构性拐点？</p><small>定向材料：same-definition historical filing or official dataset</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>04</span><strong>前瞻路径</strong></div><p>前瞻路径：需要回答哪些最细问题，才能完成 L3“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.compute_intensity.l4.forward.l5.answer"><p>围绕“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？</p><small>定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>05</span><strong>因果与财务传导</strong></div><p>因果与财务传导：需要回答哪些最细问题，才能完成 L3“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.compute_intensity.l4.mechanism.l5.answer"><p>围绕“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”，证据通过什么因果机制传导到demand.customer_compute_budget以及单位算力用量、产品组合、ASP？</p><small>定向材料：engineering disclosure plus company segment economics</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>06</span><strong>交叉验证</strong></div><p>交叉验证：需要回答哪些最细问题，才能完成 L3“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.compute_intensity.l4.triangulation.l5.answer"><p>围绕“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？</p><small>定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>07</span><strong>反证与失效条件</strong></div><p>反证与失效条件：需要回答哪些最细问题，才能完成 L3“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.compute_intensity.l4.refutation.l5.answer"><p>哪些直接证据能够满足反证条件“模型压缩、蒸馏、稀疏化和软件优化使单位任务硬件需求持续下降。”，并推翻、削弱或限定支持规则“模型和 agent 路线使单位任务计算量增长快于效率改善。”？</p><small>定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis</small><span class="leaf-status">待搜集</span></li></ol></li></ol>
+    </details>
+
 
     <div class="node-material-table-wrap" role="region" aria-label="原子观点材料" tabindex="0">
       <table class="node-material-table">
@@ -1498,13 +1602,23 @@ h1 {
     <div class="logic-node-heading">
       <span>demand.customer_compute_budget</span>
       <h4>客户预算与资本承诺</h4>
-      <p>Meta官方capex仍确认大客户预算高位；Oracle CFO材料进一步给出成本加成、长期合同、客户预付款和BYOHW的经济边界，但没有合同金额、芯片数量或原始条款，预算持续性和最终风险承担仍未闭环。</p>
+      <p class="logic-node-question"><span class="logic-node-question-label">研究问题</span><span>云厂商、模型公司和企业是否把需求转化为可持续预算？</span></p>
+      <p class="logic-node-conclusion">Meta官方capex仍确认大客户预算高位；Oracle CFO材料进一步给出成本加成、长期合同、客户预付款和BYOHW的经济边界，但没有合同金额、芯片数量或原始条款，预算持续性和最终风险承担仍未闭环。</p>
       <small>本期变化：新增Oracle AI基础设施合同与融资边界，改善了预算如何传导到长期合同的可解释性，但不足以提升节点状态。</small>
     </div>
     <span class="state-badge state-weak">证据偏弱</span>
     <span class="logic-node-chevron" aria-hidden="true"></span>
   </summary>
   <div class="logic-node-body">
+
+    <details class="l3-research-plan" data-l3-plan-id="l3rp_demand_customer_compute_budget_140f422917cee9ce">
+      <summary>
+        <div><span>L3 独立研究计划</span><strong>0 / 7 个最细叶子已完成</strong></div>
+        <small>按每个 L5 叶子问题单独搜索、单独解析、单独复核</small>
+      </summary>
+      <ol class="l4-plan-list"><li class="l4-plan-unit"><div><span>01</span><strong>边界与口径</strong></div><p>边界与口径：需要回答哪些最细问题，才能完成 L3“云厂商、模型公司和企业是否把需求转化为可持续预算？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.customer_compute_budget.l4.scope.l5.answer"><p>回答“云厂商、模型公司和企业是否把需求转化为可持续预算？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？</p><small>定向材料：official definition, standard, or company methodology</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>02</span><strong>当前事实</strong></div><p>当前事实：需要回答哪些最细问题，才能完成 L3“云厂商、模型公司和企业是否把需求转化为可持续预算？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.customer_compute_budget.l4.actual.l5.answer"><p>围绕“云厂商、模型公司和企业是否把需求转化为可持续预算？”，当前有哪些关于AI capex、采购承诺、预付款、租赁与项目融资的可验证实际事实？</p><small>定向材料：latest filing, official dataset, customer or supplier disclosure</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>03</span><strong>历史变化</strong></div><p>历史变化：需要回答哪些最细问题，才能完成 L3“云厂商、模型公司和企业是否把需求转化为可持续预算？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.customer_compute_budget.l4.history.l5.answer"><p>围绕“云厂商、模型公司和企业是否把需求转化为可持续预算？”，AI capex、采购承诺、预付款、租赁与项目融资在同口径历史序列中如何变化，是否存在结构性拐点？</p><small>定向材料：same-definition historical filing or official dataset</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>04</span><strong>前瞻路径</strong></div><p>前瞻路径：需要回答哪些最细问题，才能完成 L3“云厂商、模型公司和企业是否把需求转化为可持续预算？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.customer_compute_budget.l4.forward.l5.answer"><p>围绕“云厂商、模型公司和企业是否把需求转化为可持续预算？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？</p><small>定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>05</span><strong>因果与财务传导</strong></div><p>因果与财务传导：需要回答哪些最细问题，才能完成 L3“云厂商、模型公司和企业是否把需求转化为可持续预算？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.customer_compute_budget.l4.mechanism.l5.answer"><p>围绕“云厂商、模型公司和企业是否把需求转化为可持续预算？”，证据通过什么因果机制传导到demand.order_visibility以及客户预算、采购承诺、订单覆盖？</p><small>定向材料：engineering disclosure plus company segment economics</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>06</span><strong>交叉验证</strong></div><p>交叉验证：需要回答哪些最细问题，才能完成 L3“云厂商、模型公司和企业是否把需求转化为可持续预算？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.customer_compute_budget.l4.triangulation.l5.answer"><p>围绕“云厂商、模型公司和企业是否把需求转化为可持续预算？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？</p><small>定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>07</span><strong>反证与失效条件</strong></div><p>反证与失效条件：需要回答哪些最细问题，才能完成 L3“云厂商、模型公司和企业是否把需求转化为可持续预算？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.customer_compute_budget.l4.refutation.l5.answer"><p>哪些直接证据能够满足反证条件“客户自由现金流恶化、ROI 不足或融资约束导致预算下修。”，并推翻、削弱或限定支持规则“客户资本开支、长期承诺和融资能力同步提高。”？</p><small>定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis</small><span class="leaf-status">待搜集</span></li></ol></li></ol>
+    </details>
+
 
     <div class="node-material-table-wrap" role="region" aria-label="原子观点材料" tabindex="0">
       <table class="node-material-table">
@@ -1549,13 +1663,23 @@ h1 {
     <div class="logic-node-heading">
       <span>demand.order_visibility</span>
       <h4>订单与交付可见性</h4>
-      <p>MI450/Helios具名客户和交付窗口提供直接订单线索；其它TPU backlog和容量为投行模型，尚缺客户或合同交叉验证。</p>
-      <small>本期变化：本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。</small>
+      <p class="logic-node-question"><span class="logic-node-question-label">研究问题</span><span>预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？</span></p>
+      <p class="logic-node-conclusion">AMD最高2GW合作与NVIDIA伙伴部署扩大了订单线索，但前瞻容量上限、伙伴运行和管理层指引都不是不可取消订单；缺少客户交付表、验收和预付款，订单可见性仍弱。</p>
+      <small>本期变化：新增AMD-Anthropic最高2GW合作边界，管线扩大但未转化为可核验交付。</small>
     </div>
     <span class="state-badge state-weak">证据偏弱</span>
     <span class="logic-node-chevron" aria-hidden="true"></span>
   </summary>
   <div class="logic-node-body">
+
+    <details class="l3-research-plan" data-l3-plan-id="l3rp_demand_order_visibility_944a0df29b503cfc">
+      <summary>
+        <div><span>L3 独立研究计划</span><strong>0 / 7 个最细叶子已完成</strong></div>
+        <small>按每个 L5 叶子问题单独搜索、单独解析、单独复核</small>
+      </summary>
+      <ol class="l4-plan-list"><li class="l4-plan-unit"><div><span>01</span><strong>边界与口径</strong></div><p>边界与口径：需要回答哪些最细问题，才能完成 L3“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.order_visibility.l4.scope.l5.answer"><p>回答“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？</p><small>定向材料：official definition, standard, or company methodology</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>02</span><strong>当前事实</strong></div><p>当前事实：需要回答哪些最细问题，才能完成 L3“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.order_visibility.l4.actual.l5.answer"><p>围绕“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”，当前有哪些关于backlog、客户部署计划、机架发货、取消与延期的可验证实际事实？</p><small>定向材料：latest filing, official dataset, customer or supplier disclosure</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>03</span><strong>历史变化</strong></div><p>历史变化：需要回答哪些最细问题，才能完成 L3“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.order_visibility.l4.history.l5.answer"><p>围绕“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”，backlog、客户部署计划、机架发货、取消与延期在同口径历史序列中如何变化，是否存在结构性拐点？</p><small>定向材料：same-definition historical filing or official dataset</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>04</span><strong>前瞻路径</strong></div><p>前瞻路径：需要回答哪些最细问题，才能完成 L3“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.order_visibility.l4.forward.l5.answer"><p>围绕“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？</p><small>定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>05</span><strong>因果与财务传导</strong></div><p>因果与财务传导：需要回答哪些最细问题，才能完成 L3“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.order_visibility.l4.mechanism.l5.answer"><p>围绕“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”，证据通过什么因果机制传导到demand.revenue_realization以及订单、backlog、交付节奏？</p><small>定向材料：engineering disclosure plus company segment economics</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>06</span><strong>交叉验证</strong></div><p>交叉验证：需要回答哪些最细问题，才能完成 L3“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.order_visibility.l4.triangulation.l5.answer"><p>围绕“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？</p><small>定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>07</span><strong>反证与失效条件</strong></div><p>反证与失效条件：需要回答哪些最细问题，才能完成 L3“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.order_visibility.l4.refutation.l5.answer"><p>哪些直接证据能够满足反证条件“订单仅为分析师情景，或客户机房延期、项目取消和重复计算明显。”，并推翻、削弱或限定支持规则“订单、部署计划和交付窗口由多个客户或官方材料交叉验证。”？</p><small>定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis</small><span class="leaf-status">待搜集</span></li></ol></li></ol>
+    </details>
+
 
     <div class="node-material-table-wrap" role="region" aria-label="原子观点材料" tabindex="0">
       <table class="node-material-table">
@@ -1567,6 +1691,20 @@ h1 {
           <th scope="col">对逻辑点的影响</th>
         </tr></thead>
         <tbody>
+        <tr class="node-material-row">
+          <td><time datetime="2026-08-26">2026-08-26</time></td>
+          <td class="node-material-title"><a href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/default.aspx" target="_blank" rel="noopener">NVIDIA：2027财年第二季度业绩 ↗</a></td>
+          <td><span class="material-tag">官方公司</span></td>
+          <td><ol class="atomic-claim-list"><li><p>NVIDIA指引Q3 FY27收入1080亿美元、上下浮动2%，较Q2实际收入对应约12%的中值环比增长；GAAP与非GAAP毛利率均指引74.0%、上下浮动50个基点。该指引没有计入任何中国数据中心计算收入。它提供供应商收入可见性，但不是客户不可取消订单、GPU颗数或实际交付的直接证明。</p><small>Outlook · 预测：2027财年Q3</small></li></ol></td>
+          <td><ol class="claim-impact-list"><li><span class="claim-impact impact-boundary">改变边界</span></li></ol></td>
+        </tr>
+        <tr class="node-material-row">
+          <td><time datetime="2026-08-04">2026-08-04</time></td>
+          <td class="node-material-title"><a href="https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results" target="_blank" rel="noopener">AMD：2026年第二季度业绩 ↗</a></td>
+          <td><span class="material-tag">官方财报</span></td>
+          <td><ol class="atomic-claim-list"><li><p>AMD称Helios平台已被具名实验室和云客户部署，并披露与Anthropic建立最高2GW的合作安排。最高2GW是前瞻上限而非已交付数量；公告未给出客户验收、利用率、复购、GPU收入或是否依赖商业激励，因此属于采用边界证据。</p><small>Data Center highlights · 实际：2026-Q2 · 预测：2026-2027</small></li></ol></td>
+          <td><ol class="claim-impact-list"><li><span class="claim-impact impact-boundary">改变边界</span></li></ol></td>
+        </tr>
         <tr class="node-material-row">
           <td><time datetime="2026-07-24">2026-07-24</time></td>
           <td class="node-material-title"><a href="source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf">巴克莱：拆解 TPU 即服务</a></td>
@@ -1600,13 +1738,23 @@ h1 {
     <div class="logic-node-heading">
       <span>demand.revenue_realization</span>
       <h4>收入与利润兑现</h4>
-      <p>Intel DCAI收入属于服务器CPU邻近验证，不能代表GPU/ASIC收入与利润兑现；本节点目前没有合格直接证据。</p>
-      <small>本期变化：本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。</small>
+      <p class="logic-node-question"><span class="logic-node-question-label">研究问题</span><span>订单是否进入收入、毛利、现金流和下一期指引？</span></p>
+      <p class="logic-node-conclusion">NVIDIA与AMD均提供了官方数据中心收入和公司/分部盈利输入，需求兑现不再依赖单一供应商；但AMD没有拆分GPU，NVIDIA和AMD单季FCF都提示收入增长不能直接等同现金增长，节点仍为弱证据。</p>
+      <small>本期变化：新增AMD数据中心收入67.18亿美元、分部经营利润21.03亿美元与集团现金流，使第二平台盈利桥明显改善但未闭环。</small>
     </div>
-    <span class="state-badge state-unresolved">待验证</span>
+    <span class="state-badge state-weak">证据偏弱</span>
     <span class="logic-node-chevron" aria-hidden="true"></span>
   </summary>
   <div class="logic-node-body">
+
+    <details class="l3-research-plan" data-l3-plan-id="l3rp_demand_revenue_realization_9753cf27f161564d">
+      <summary>
+        <div><span>L3 独立研究计划</span><strong>0 / 7 个最细叶子已完成</strong></div>
+        <small>按每个 L5 叶子问题单独搜索、单独解析、单独复核</small>
+      </summary>
+      <ol class="l4-plan-list"><li class="l4-plan-unit"><div><span>01</span><strong>边界与口径</strong></div><p>边界与口径：需要回答哪些最细问题，才能完成 L3“订单是否进入收入、毛利、现金流和下一期指引？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.revenue_realization.l4.scope.l5.answer"><p>回答“订单是否进入收入、毛利、现金流和下一期指引？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？</p><small>定向材料：official definition, standard, or company methodology</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>02</span><strong>当前事实</strong></div><p>当前事实：需要回答哪些最细问题，才能完成 L3“订单是否进入收入、毛利、现金流和下一期指引？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.revenue_realization.l4.actual.l5.answer"><p>围绕“订单是否进入收入、毛利、现金流和下一期指引？”，当前有哪些关于数据中心收入、AI 芯片收入、毛利率、经营现金流、管理层指引的可验证实际事实？</p><small>定向材料：latest filing, official dataset, customer or supplier disclosure</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>03</span><strong>历史变化</strong></div><p>历史变化：需要回答哪些最细问题，才能完成 L3“订单是否进入收入、毛利、现金流和下一期指引？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.revenue_realization.l4.history.l5.answer"><p>围绕“订单是否进入收入、毛利、现金流和下一期指引？”，数据中心收入、AI 芯片收入、毛利率、经营现金流、管理层指引在同口径历史序列中如何变化，是否存在结构性拐点？</p><small>定向材料：same-definition historical filing or official dataset</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>04</span><strong>前瞻路径</strong></div><p>前瞻路径：需要回答哪些最细问题，才能完成 L3“订单是否进入收入、毛利、现金流和下一期指引？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.revenue_realization.l4.forward.l5.answer"><p>围绕“订单是否进入收入、毛利、现金流和下一期指引？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？</p><small>定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>05</span><strong>因果与财务传导</strong></div><p>因果与财务传导：需要回答哪些最细问题，才能完成 L3“订单是否进入收入、毛利、现金流和下一期指引？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.revenue_realization.l4.mechanism.l5.answer"><p>围绕“订单是否进入收入、毛利、现金流和下一期指引？”，证据通过什么因果机制传导到valuation.fundamental_earnings以及收入、毛利、现金流、指引？</p><small>定向材料：engineering disclosure plus company segment economics</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>06</span><strong>交叉验证</strong></div><p>交叉验证：需要回答哪些最细问题，才能完成 L3“订单是否进入收入、毛利、现金流和下一期指引？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.revenue_realization.l4.triangulation.l5.answer"><p>围绕“订单是否进入收入、毛利、现金流和下一期指引？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？</p><small>定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>07</span><strong>反证与失效条件</strong></div><p>反证与失效条件：需要回答哪些最细问题，才能完成 L3“订单是否进入收入、毛利、现金流和下一期指引？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="demand.revenue_realization.l4.refutation.l5.answer"><p>哪些直接证据能够满足反证条件“收入仅来自一次性预付款、低毛利获客或应收与库存堆积。”，并推翻、削弱或限定支持规则“收入、毛利与指引同步上修，且现金流没有明显背离。”？</p><small>定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis</small><span class="leaf-status">待搜集</span></li></ol></li></ol>
+    </details>
+
 
     <div class="node-material-table-wrap" role="region" aria-label="原子观点材料" tabindex="0">
       <table class="node-material-table">
@@ -1617,7 +1765,28 @@ h1 {
           <th scope="col">原子观点</th>
           <th scope="col">对逻辑点的影响</th>
         </tr></thead>
-        <tbody><tr><td colspan="5" class="empty-state">当前没有映射到该节点的原子观点。</td></tr></tbody>
+        <tbody>
+        <tr class="node-material-row">
+          <td><time datetime="2026-08-26">2026-08-26</time></td>
+          <td class="node-material-title"><a href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/default.aspx" target="_blank" rel="noopener">NVIDIA：2027财年第二季度业绩 ↗</a></td>
+          <td><span class="material-tag">官方公司</span></td>
+          <td><ol class="atomic-claim-list"><li><p>NVIDIA Q2 FY27总收入962.21亿美元，数据中心收入890亿美元，分别同比增长106%和117%，GAAP毛利率75.0%；季度自由现金流213.41亿美元，高于上年同期134.50亿美元但低于Q1的485.54亿美元。期末应收账款630.59亿美元、库存315.75亿美元，分别高于1月末的384.66亿美元和214.03亿美元。收入与利润兑现很强，但季度现金转换和营运资本变化构成需要继续验证的冲突信号。</p><small>Q2 Fiscal 2027 Summary、Balance Sheets、Free Cash Flow Reconciliation · 实际：2027财年Q2（截至2026-07-26）</small></li></ol></td>
+          <td><ol class="claim-impact-list"><li><span class="claim-impact impact-conflict">冲突</span></li></ol></td>
+        </tr>
+        <tr class="node-material-row">
+          <td><time datetime="2026-08-26">2026-08-26</time></td>
+          <td class="node-material-title"><a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm" target="_blank" rel="noopener">NVIDIA Form 10-Q（截至2026年7月26日季度） ↗</a></td>
+          <td><span class="material-tag">官方财报</span></td>
+          <td><ol class="atomic-claim-list"><li><p>NVIDIA 2027财年上半年经营现金流744.21亿美元，高于上年同期427.79亿美元；公司说明收入增长带来的现金增量被应收账款上升部分抵消，原因包括向部分投资级客户的大额多季度协议提供延长付款条款。期末应收账款630.59亿美元，五家直接客户合计占应收70%。经营现金流仍增长，但回款期限和客户集中提高了现金转换质量的验证要求。</p><small>第13、31页，Note 7—Direct Customers、Liquidity · 实际：2027财年上半年（截至2026-07-26）</small></li></ol></td>
+          <td><ol class="claim-impact-list"><li><span class="claim-impact impact-constraint">新增约束</span></li></ol></td>
+        </tr>
+        <tr class="node-material-row">
+          <td><time datetime="2026-08-04">2026-08-04</time></td>
+          <td class="node-material-title"><a href="https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results" target="_blank" rel="noopener">AMD：2026年第二季度业绩 ↗</a></td>
+          <td><span class="material-tag">官方财报</span></td>
+          <td><ol class="atomic-claim-list"><li><p>AMD 2026年第二季度数据中心分部收入67.18亿美元、同比增长107%，分部经营利润21.03亿美元；公司总收入115.36亿美元、毛利率54%。数据中心分部同时包含EPYC CPU与Instinct GPU，官方材料没有拆分GPU收入或GPU分部利润，因此只能确认AMD数据中心业务兑现，不能把全部增量归因于GPU。</p><small>Financial highlights and segment table · 实际：2026-Q2</small></li></ol></td>
+          <td><ol class="claim-impact-list"><li><span class="claim-impact impact-boundary">改变边界</span></li></ol></td>
+        </tr></tbody>
       </table>
     </div>
   </div>
@@ -1638,7 +1807,7 @@ h1 {
       <p>RESEARCH LENS</p>
       <h2>供给侧</h2>
     </div>
-    <span class="lens-count">10 份材料 · 13 条观点</span>
+    <span class="lens-count">14 份材料 · 18 条观点</span>
     <span class="lens-chevron" aria-hidden="true"></span>
   </summary>
   <div class="lens-body">
@@ -1663,13 +1832,23 @@ h1 {
     <div class="logic-node-heading">
       <span>supply.advanced_wafer_capacity</span>
       <h4>先进制程晶圆</h4>
-      <p>Intel扩产只说明供给响应，不能证明GPU/ASIC先进晶圆当前仍受交期、预付款或客户分配限制。</p>
-      <small>本期变化：本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。</small>
+      <p class="logic-node-question"><span class="logic-node-question-label">研究问题</span><span>先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？</span></p>
+      <p class="logic-node-conclusion">TSMC先进制程收入占比77%并继续看到强需求，证明领先节点高利用背景；但材料没有GPU/ASIC专属产能、交期、预付款、客户分配或良率，无法判断晶圆是否构成当前稀缺瓶颈。</p>
+      <small>本期变化：首次加入TSMC当季官方先进制程结构，补充需求背景但没有供需缺口坐标。</small>
     </div>
     <span class="state-badge state-unresolved">待验证</span>
     <span class="logic-node-chevron" aria-hidden="true"></span>
   </summary>
   <div class="logic-node-body">
+
+    <details class="l3-research-plan" data-l3-plan-id="l3rp_supply_advanced_wafer_capacity_168e0c1cc54109c6">
+      <summary>
+        <div><span>L3 独立研究计划</span><strong>0 / 7 个最细叶子已完成</strong></div>
+        <small>按每个 L5 叶子问题单独搜索、单独解析、单独复核</small>
+      </summary>
+      <ol class="l4-plan-list"><li class="l4-plan-unit"><div><span>01</span><strong>边界与口径</strong></div><p>边界与口径：需要回答哪些最细问题，才能完成 L3“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.advanced_wafer_capacity.l4.scope.l5.answer"><p>回答“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？</p><small>定向材料：official definition, standard, or company methodology</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>02</span><strong>当前事实</strong></div><p>当前事实：需要回答哪些最细问题，才能完成 L3“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.advanced_wafer_capacity.l4.actual.l5.answer"><p>围绕“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”，当前有哪些关于先进节点产能、良率、wafer allocation、代工 capex的可验证实际事实？</p><small>定向材料：latest filing, official dataset, customer or supplier disclosure</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>03</span><strong>历史变化</strong></div><p>历史变化：需要回答哪些最细问题，才能完成 L3“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.advanced_wafer_capacity.l4.history.l5.answer"><p>围绕“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”，先进节点产能、良率、wafer allocation、代工 capex在同口径历史序列中如何变化，是否存在结构性拐点？</p><small>定向材料：same-definition historical filing or official dataset</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>04</span><strong>前瞻路径</strong></div><p>前瞻路径：需要回答哪些最细问题，才能完成 L3“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.advanced_wafer_capacity.l4.forward.l5.answer"><p>围绕“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？</p><small>定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>05</span><strong>因果与财务传导</strong></div><p>因果与财务传导：需要回答哪些最细问题，才能完成 L3“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.advanced_wafer_capacity.l4.mechanism.l5.answer"><p>围绕“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”，证据通过什么因果机制传导到supply.shippable_system以及晶圆供应、采购承诺、产品良率？</p><small>定向材料：engineering disclosure plus company segment economics</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>06</span><strong>交叉验证</strong></div><p>交叉验证：需要回答哪些最细问题，才能完成 L3“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.advanced_wafer_capacity.l4.triangulation.l5.answer"><p>围绕“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？</p><small>定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>07</span><strong>反证与失效条件</strong></div><p>反证与失效条件：需要回答哪些最细问题，才能完成 L3“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.advanced_wafer_capacity.l4.refutation.l5.answer"><p>哪些直接证据能够满足反证条件“扩产和良率提升使可用晶圆明显快于需求增长。”，并推翻、削弱或限定支持规则“交期、预付款或客户分配显示晶圆持续紧张。”？</p><small>定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis</small><span class="leaf-status">待搜集</span></li></ol></li></ol>
+    </details>
+
 
     <div class="node-material-table-wrap" role="region" aria-label="原子观点材料" tabindex="0">
       <table class="node-material-table">
@@ -1687,6 +1866,13 @@ h1 {
           <td><span class="material-tag">研报</span></td>
           <td><ol class="atomic-claim-list"><li><p>Intel 将 2026 年资本开支指引上调至超过 200 亿美元，并称 2027 年还会显著增长，用于洁净室扩建和锁定设备订单。供给正在响应高价和短缺，因此当前稀缺性不能外推为永久稀缺。</p><small>第2页，Intel capex guidance · 实际：2026 · 预测：2027</small></li></ol></td>
           <td><ol class="claim-impact-list"><li><span class="claim-impact impact-boundary">改变边界</span></li></ol></td>
+        </tr>
+        <tr class="node-material-row">
+          <td><time datetime="2026-07-16">2026-07-16</time></td>
+          <td class="node-material-title"><a href="https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-07/a80d7933be643644081584087731f73b22ea5a2c/2Q26%20EarningsRelease.pdf" target="_blank" rel="noopener">TSMC：2026年第二季度业绩 ↗</a></td>
+          <td><span class="material-tag">官方财报</span></td>
+          <td><ol class="atomic-claim-list"><li><p>TSMC 2026年第二季度美元收入约402亿美元，7纳米及更先进制程占晶圆收入77%，并预计第三季度继续受领先制程强劲需求支持。该披露证明先进制程需求强，但没有GPU/ASIC专属产能、交期、预付款、客户分配或良率，不能直接判断晶圆缺口大小。</p><small>第1至3页，季度业绩及技术收入结构 · 实际：2026-Q2 · 预测：2026-Q3</small></li></ol></td>
+          <td><ol class="claim-impact-list"><li><span class="claim-impact impact-boundary">改变边界</span></li></ol></td>
         </tr></tbody>
       </table>
     </div>
@@ -1700,13 +1886,23 @@ h1 {
     <div class="logic-node-heading">
       <span>supply.packaging_memory_capacity</span>
       <h4>HBM、封装与基板</h4>
-      <p>既有材料显示内存、基板和CoWoS存在紧张线索；新增玻璃芯基板、EMIB-T与Vanguard中介层计划表明替代封装供给正在形成，但商业化集中于2027年以后，且良率、认证、资本开支和客户订单均未验证，不能据此判断当前瓶颈已解除。</p>
-      <small>本期变化：新增三个未来供给分支及其执行约束，扩大了产能释放路径的可见度；由于材料主要为机构预测和公司线索，节点状态不变。</small>
+      <p class="logic-node-question"><span class="logic-node-question-label">研究问题</span><span>HBM、先进封装、基板和测试是否成为可交付芯片的约束？</span></p>
+      <p class="logic-node-conclusion">TSMC确认CoWoS仍占当前先进封装大多数，替代路线成熟并进入生产大约需要一年，短期替代不可能瞬间解除约束；但没有月产能、良率、交期、HBM联动或客户预订，瓶颈强度仍未量化。</p>
+      <small>本期变化：新增TSMC官方的路线与成熟周期边界，替代时间约束更清晰，状态仍弱。</small>
     </div>
     <span class="state-badge state-weak">证据偏弱</span>
     <span class="logic-node-chevron" aria-hidden="true"></span>
   </summary>
   <div class="logic-node-body">
+
+    <details class="l3-research-plan" data-l3-plan-id="l3rp_supply_packaging_memory_capacity_9c39cdfd27dce2b5">
+      <summary>
+        <div><span>L3 独立研究计划</span><strong>0 / 7 个最细叶子已完成</strong></div>
+        <small>按每个 L5 叶子问题单独搜索、单独解析、单独复核</small>
+      </summary>
+      <ol class="l4-plan-list"><li class="l4-plan-unit"><div><span>01</span><strong>边界与口径</strong></div><p>边界与口径：需要回答哪些最细问题，才能完成 L3“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.packaging_memory_capacity.l4.scope.l5.answer"><p>回答“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？</p><small>定向材料：official definition, standard, or company methodology</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>02</span><strong>当前事实</strong></div><p>当前事实：需要回答哪些最细问题，才能完成 L3“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.packaging_memory_capacity.l4.actual.l5.answer"><p>围绕“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”，当前有哪些关于HBM 产能、CoWoS 产能、封装良率、基板交期的可验证实际事实？</p><small>定向材料：latest filing, official dataset, customer or supplier disclosure</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>03</span><strong>历史变化</strong></div><p>历史变化：需要回答哪些最细问题，才能完成 L3“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.packaging_memory_capacity.l4.history.l5.answer"><p>围绕“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”，HBM 产能、CoWoS 产能、封装良率、基板交期在同口径历史序列中如何变化，是否存在结构性拐点？</p><small>定向材料：same-definition historical filing or official dataset</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>04</span><strong>前瞻路径</strong></div><p>前瞻路径：需要回答哪些最细问题，才能完成 L3“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.packaging_memory_capacity.l4.forward.l5.answer"><p>围绕“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？</p><small>定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>05</span><strong>因果与财务传导</strong></div><p>因果与财务传导：需要回答哪些最细问题，才能完成 L3“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.packaging_memory_capacity.l4.mechanism.l5.answer"><p>围绕“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”，证据通过什么因果机制传导到supply.shippable_system以及封装供应、HBM 配置、产能承诺？</p><small>定向材料：engineering disclosure plus company segment economics</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>06</span><strong>交叉验证</strong></div><p>交叉验证：需要回答哪些最细问题，才能完成 L3“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.packaging_memory_capacity.l4.triangulation.l5.answer"><p>围绕“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？</p><small>定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>07</span><strong>反证与失效条件</strong></div><p>反证与失效条件：需要回答哪些最细问题，才能完成 L3“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.packaging_memory_capacity.l4.refutation.l5.answer"><p>哪些直接证据能够满足反证条件“替代路线或扩产使交期和价格快速回落。”，并推翻、削弱或限定支持规则“多个供应商确认交期、预订或良率约束，且扩产需要较长周期。”？</p><small>定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis</small><span class="leaf-status">待搜集</span></li></ol></li></ol>
+    </details>
+
 
     <div class="node-material-table-wrap" role="region" aria-label="原子观点材料" tabindex="0">
       <table class="node-material-table">
@@ -1752,6 +1948,13 @@ h1 {
           <td><span class="material-tag">研报</span></td>
           <td><ol class="atomic-claim-list"><li><p>摩根大通把先进逻辑晶圆、硅片、内存和基板列为服务器供应链的持续约束，并预计供给改善会推动 2026 年第四季度收入进一步上行。有效供给仍由多项输入的最小值决定，而不是只看 GPU 晶圆数量。</p><small>第1页，AI-driven general server demand strength · 实际：2026Q2 · 预测：2027</small></li><li><p>报告称 Intel EMIB-T 当前良率约 60%，目标 2027 年进入高量产；多个 AI 加速器项目因 CoWoS 紧张而评估 EMIB-T，但预计先从小批量开始，最大项目 TPU v9 或到 2027 年末至 2028 年才量产。替代封装路线正在形成，但短期无法立刻消除瓶颈。</p><small>第2页，EMIB-T high volume ramp · 实际：2026Q2 · 预测：2027-2028</small></li></ol></td>
           <td><ol class="claim-impact-list"><li><span class="claim-impact impact-constraint">新增约束</span></li><li><span class="claim-impact impact-constraint">新增约束</span></li></ol></td>
+        </tr>
+        <tr class="node-material-row">
+          <td><time datetime="2026-07-16">2026-07-16</time></td>
+          <td class="node-material-title"><a href="https://investor.tsmc.com/schinese/encrypt/files/encrypt_file/reports/2026-07/547d1696765e05ce3adb81c108ce1c8c1682b80c/TSMC%202Q26%20Transcript.pdf" target="_blank" rel="noopener">TSMC：2026年第二季度业绩电话会 ↗</a></td>
+          <td><span class="material-tag">官方公司</span></td>
+          <td><ol class="atomic-claim-list"><li><p>TSMC管理层表示CoWoS仍占当前先进封装的大部分，替代方案从客户验证到成熟并进入生产大约需要一年。该表述说明短期替代并非即时可用，但未披露CoWoS月产能、良率、交期、HBM联动或客户预订，不能证明当前缺口或解除速度。</p><small>CoWoS and alternative packaging discussion · 实际：2026-Q2 · 预测：2027</small></li></ol></td>
+          <td><ol class="claim-impact-list"><li><span class="claim-impact impact-constraint">新增约束</span></li></ol></td>
         </tr></tbody>
       </table>
     </div>
@@ -1765,13 +1968,23 @@ h1 {
     <div class="logic-node-heading">
       <span>supply.system_integration</span>
       <h4>系统集成与调试</h4>
-      <p>AMD明确分阶段爬坡需要ODM调试并与客户机房对齐，证明系统集成影响节奏；尚无实际验收周期和延期数据。</p>
+      <p class="logic-node-question"><span class="logic-node-question-label">研究问题</span><span>ODM、机架、网络和软件调试是否限制芯片转化为可用系统？</span></p>
+      <p class="logic-node-conclusion">AMD明确分阶段爬坡需要ODM调试并与客户机房对齐，证明系统集成影响节奏；尚无实际验收周期和延期数据。</p>
       <small>本期变化：本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。</small>
     </div>
     <span class="state-badge state-weak">证据偏弱</span>
     <span class="logic-node-chevron" aria-hidden="true"></span>
   </summary>
   <div class="logic-node-body">
+
+    <details class="l3-research-plan" data-l3-plan-id="l3rp_supply_system_integration_64eb204857b53526">
+      <summary>
+        <div><span>L3 独立研究计划</span><strong>0 / 7 个最细叶子已完成</strong></div>
+        <small>按每个 L5 叶子问题单独搜索、单独解析、单独复核</small>
+      </summary>
+      <ol class="l4-plan-list"><li class="l4-plan-unit"><div><span>01</span><strong>边界与口径</strong></div><p>边界与口径：需要回答哪些最细问题，才能完成 L3“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.system_integration.l4.scope.l5.answer"><p>回答“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？</p><small>定向材料：official definition, standard, or company methodology</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>02</span><strong>当前事实</strong></div><p>当前事实：需要回答哪些最细问题，才能完成 L3“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.system_integration.l4.actual.l5.answer"><p>围绕“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”，当前有哪些关于机架发货、ODM 产能、调试周期、系统验收的可验证实际事实？</p><small>定向材料：latest filing, official dataset, customer or supplier disclosure</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>03</span><strong>历史变化</strong></div><p>历史变化：需要回答哪些最细问题，才能完成 L3“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.system_integration.l4.history.l5.answer"><p>围绕“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”，机架发货、ODM 产能、调试周期、系统验收在同口径历史序列中如何变化，是否存在结构性拐点？</p><small>定向材料：same-definition historical filing or official dataset</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>04</span><strong>前瞻路径</strong></div><p>前瞻路径：需要回答哪些最细问题，才能完成 L3“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.system_integration.l4.forward.l5.answer"><p>围绕“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？</p><small>定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>05</span><strong>因果与财务传导</strong></div><p>因果与财务传导：需要回答哪些最细问题，才能完成 L3“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.system_integration.l4.mechanism.l5.answer"><p>围绕“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”，证据通过什么因果机制传导到supply.shippable_system以及系统发货、ODM 交付、验收？</p><small>定向材料：engineering disclosure plus company segment economics</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>06</span><strong>交叉验证</strong></div><p>交叉验证：需要回答哪些最细问题，才能完成 L3“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.system_integration.l4.triangulation.l5.answer"><p>围绕“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？</p><small>定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>07</span><strong>反证与失效条件</strong></div><p>反证与失效条件：需要回答哪些最细问题，才能完成 L3“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.system_integration.l4.refutation.l5.answer"><p>哪些直接证据能够满足反证条件“标准化设计和成熟 ODM 使机架交付周期显著缩短。”，并推翻、削弱或限定支持规则“系统交付显著晚于芯片可用时间，客户或厂商披露调试约束。”？</p><small>定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis</small><span class="leaf-status">待搜集</span></li></ol></li></ol>
+    </details>
+
 
     <div class="node-material-table-wrap" role="region" aria-label="原子观点材料" tabindex="0">
       <table class="node-material-table">
@@ -1809,13 +2022,23 @@ h1 {
     <div class="logic-node-heading">
       <span>supply.datacenter_readiness</span>
       <h4>机房、电力与融资</h4>
-      <p>Oracle管理层称多数AI园区已完成土地、许可、电力和初始融资环节，为项目落地提供正向边界；但新墨西哥最终空气许可仍待完成，且没有独立的可用电力、冷却就绪和建设进度数据，无法判断设备上线约束是否已实质解除。</p>
-      <small>本期变化：新增具名客户对多个园区准备度的描述，但仍是管理层会议纪要且包含未决许可，节点状态不变。</small>
+      <p class="logic-node-question"><span class="logic-node-question-label">研究问题</span><span>数据中心电力、冷却、建设和融资是否限制设备上线？</span></p>
+      <p class="logic-node-conclusion">OpenAI/SB Energy披露1.2GW具名项目正在建设并计划2026年开始服务，使数据中心准备度有了项目级坐标；但并网、许可、ready-for-service验收、实际IT负载和加速器安装量未披露，不能当作已可用容量。</p>
+      <small>本期变化：新增具名1.2GW项目边界，但未解除NVIDIA承诺对应园区准备度缺口。</small>
     </div>
     <span class="state-badge state-weak">证据偏弱</span>
     <span class="logic-node-chevron" aria-hidden="true"></span>
   </summary>
   <div class="logic-node-body">
+
+    <details class="l3-research-plan" data-l3-plan-id="l3rp_supply_datacenter_readiness_2beffb300d667428">
+      <summary>
+        <div><span>L3 独立研究计划</span><strong>0 / 7 个最细叶子已完成</strong></div>
+        <small>按每个 L5 叶子问题单独搜索、单独解析、单独复核</small>
+      </summary>
+      <ol class="l4-plan-list"><li class="l4-plan-unit"><div><span>01</span><strong>边界与口径</strong></div><p>边界与口径：需要回答哪些最细问题，才能完成 L3“数据中心电力、冷却、建设和融资是否限制设备上线？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.datacenter_readiness.l4.scope.l5.answer"><p>回答“数据中心电力、冷却、建设和融资是否限制设备上线？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？</p><small>定向材料：official definition, standard, or company methodology</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>02</span><strong>当前事实</strong></div><p>当前事实：需要回答哪些最细问题，才能完成 L3“数据中心电力、冷却、建设和融资是否限制设备上线？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.datacenter_readiness.l4.actual.l5.answer"><p>围绕“数据中心电力、冷却、建设和融资是否限制设备上线？”，当前有哪些关于可用 MW/GW、建设周期、液冷就绪、项目融资的可验证实际事实？</p><small>定向材料：latest filing, official dataset, customer or supplier disclosure</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>03</span><strong>历史变化</strong></div><p>历史变化：需要回答哪些最细问题，才能完成 L3“数据中心电力、冷却、建设和融资是否限制设备上线？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.datacenter_readiness.l4.history.l5.answer"><p>围绕“数据中心电力、冷却、建设和融资是否限制设备上线？”，可用 MW/GW、建设周期、液冷就绪、项目融资在同口径历史序列中如何变化，是否存在结构性拐点？</p><small>定向材料：same-definition historical filing or official dataset</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>04</span><strong>前瞻路径</strong></div><p>前瞻路径：需要回答哪些最细问题，才能完成 L3“数据中心电力、冷却、建设和融资是否限制设备上线？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.datacenter_readiness.l4.forward.l5.answer"><p>围绕“数据中心电力、冷却、建设和融资是否限制设备上线？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？</p><small>定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>05</span><strong>因果与财务传导</strong></div><p>因果与财务传导：需要回答哪些最细问题，才能完成 L3“数据中心电力、冷却、建设和融资是否限制设备上线？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.datacenter_readiness.l4.mechanism.l5.answer"><p>围绕“数据中心电力、冷却、建设和融资是否限制设备上线？”，证据通过什么因果机制传导到supply.shippable_system以及上线容量、项目进度、融资义务？</p><small>定向材料：engineering disclosure plus company segment economics</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>06</span><strong>交叉验证</strong></div><p>交叉验证：需要回答哪些最细问题，才能完成 L3“数据中心电力、冷却、建设和融资是否限制设备上线？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.datacenter_readiness.l4.triangulation.l5.answer"><p>围绕“数据中心电力、冷却、建设和融资是否限制设备上线？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？</p><small>定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>07</span><strong>反证与失效条件</strong></div><p>反证与失效条件：需要回答哪些最细问题，才能完成 L3“数据中心电力、冷却、建设和融资是否限制设备上线？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.datacenter_readiness.l4.refutation.l5.answer"><p>哪些直接证据能够满足反证条件“可用数据中心容量提前释放，设备上线不再受基础设施限制。”，并推翻、削弱或限定支持规则“客户明确把机房、电力或融资列为部署节奏的主要约束。”？</p><small>定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis</small><span class="leaf-status">待搜集</span></li></ol></li></ol>
+    </details>
+
 
     <div class="node-material-table-wrap" role="region" aria-label="原子观点材料" tabindex="0">
       <table class="node-material-table">
@@ -1827,6 +2050,13 @@ h1 {
           <th scope="col">对逻辑点的影响</th>
         </tr></thead>
         <tbody>
+        <tr class="node-material-row">
+          <td><time datetime="2026-08-26">2026-08-26</time></td>
+          <td class="node-material-title"><a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm" target="_blank" rel="noopener">NVIDIA Form 10-Q（截至2026年7月26日季度） ↗</a></td>
+          <td><span class="material-tag">官方财报</span></td>
+          <td><ol class="atomic-claim-list"><li><p>NVIDIA明确把土地、电力、园区外壳和资本列为AI基础设施部署关键条件，并称这些短缺可推迟客户上线和收入。公司在2026年8月为SB Energy俄亥俄PORTS项目约4.25GW IT负载提供信用支持，园区原则上由OpenAI签署20年租约，NVIDIA担保总额上限1050亿美元；九座数据中心预计自2029财年开始陆续投入服务。该项目缓解未来场地约束，也显示设备需求需要大规模长期担保才能落地。</p><small>第18、26页，Additional Commitments and Guarantees、Recent Developments · 实际：2026-08 · 预测：2029财年起</small></li></ol></td>
+          <td><ol class="claim-impact-list"><li><span class="claim-impact impact-constraint">新增约束</span></li></ol></td>
+        </tr>
         <tr class="node-material-row">
           <td><time datetime="2026-07-27">2026-07-27</time></td>
           <td class="node-material-title"><a href="source/manual/德银-甲骨文（ORCL.US）：与CFO会谈核心要点-260727.pdf">德银：Oracle CFO会议—AI基础设施合同、融资与回报</a></td>
@@ -1847,6 +2077,13 @@ h1 {
           <td><span class="material-tag">研报</span></td>
           <td><ol class="atomic-claim-list"><li><p>若 Meta 容量由 2026 年约 7GW 增至 2027 年 14GW，Hyperion 等合作方可能提供 1.0-1.5GW，使 Meta 直接融资的新增容量约为 5.5GW。伙伴资本可以缓解资产负担，但不能消除电力、服务器和建设交付约束。</p><small>第5-6页，2027 capex expectations · 实际：2026 · 预测：2027</small></li></ol></td>
           <td><ol class="claim-impact-list"><li><span class="claim-impact impact-boundary">改变边界</span></li></ol></td>
+        </tr>
+        <tr class="node-material-row">
+          <td><time datetime="2026-01-09">2026-01-09</time></td>
+          <td class="node-material-title"><a href="https://openai.com/index/stargate-sb-energy-partnership/" target="_blank" rel="noopener">OpenAI与SB Energy：1.2GW Milam County数据中心合作 ↗</a></td>
+          <td><span class="material-tag">官方公司</span></td>
+          <td><ol class="atomic-claim-list"><li><p>OpenAI与SB Energy披露美国Milam County 1.2GW数据中心租约，设施正在建设并计划自2026年开始提供服务，同时规划新增发电。该材料给出具名项目和功率规模，但没有披露并网、许可、ready-for-service验收、实际IT负载或GPU/ASIC安装量，不能把规划容量视作已可用供给。</p><small>Partnership scope and Milam County project sections · 实际：2026 · 预测：2026 onward</small></li><li><p>OpenAI与SB Energy披露美国Milam County 1.2GW数据中心租约，设施正在建设并计划自2026年开始提供服务，同时规划新增发电。该材料给出具名项目和功率规模，但没有披露并网、许可、ready-for-service验收、实际IT负载或GPU/ASIC安装量，不能把规划容量视作已可用供给。</p><small>Partnership scope and Milam County project sections · 实际：2026 · 预测：2026 onward</small></li></ol></td>
+          <td><ol class="claim-impact-list"><li><span class="claim-impact impact-boundary">改变边界</span></li><li><span class="claim-impact impact-boundary">改变边界</span></li></ol></td>
         </tr></tbody>
       </table>
     </div>
@@ -1860,13 +2097,23 @@ h1 {
     <div class="logic-node-heading">
       <span>supply.shippable_system</span>
       <h4>最终可交付供给</h4>
-      <p>多项输入约束和未来交付计划提示系统供给仍受最小瓶颈影响，但缺少端到端交期、价格、库存和利用率验证。</p>
-      <small>本期变化：本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。</small>
+      <p class="logic-node-question"><span class="logic-node-question-label">研究问题</span><span>所有约束合并后，GPU/ASIC 系统供给能否追上订单？</span></p>
+      <p class="logic-node-conclusion">Rubin已经开始生产发货，供应与产能承诺由1190亿美元增至2790亿美元，说明NVIDIA正大幅扩张未来供给；公司同时确认仍有供应约束，且部分承诺可取消、改期或调整。缺少端到端交期、价格、渠道库存、客户等待时间和利用率，尚不能判断最终系统供给是否追上订单。</p>
+      <small>本期变化：新增生产发货与供应承诺的官方事实，供给扩张方向更清楚，但未满足最终可交付节点的交期、价格和订单覆盖验证要求。</small>
     </div>
     <span class="state-badge state-weak">证据偏弱</span>
     <span class="logic-node-chevron" aria-hidden="true"></span>
   </summary>
   <div class="logic-node-body">
+
+    <details class="l3-research-plan" data-l3-plan-id="l3rp_supply_shippable_system_550e885b8eb418a3">
+      <summary>
+        <div><span>L3 独立研究计划</span><strong>0 / 7 个最细叶子已完成</strong></div>
+        <small>按每个 L5 叶子问题单独搜索、单独解析、单独复核</small>
+      </summary>
+      <ol class="l4-plan-list"><li class="l4-plan-unit"><div><span>01</span><strong>边界与口径</strong></div><p>边界与口径：需要回答哪些最细问题，才能完成 L3“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.shippable_system.l4.scope.l5.answer"><p>回答“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？</p><small>定向材料：official definition, standard, or company methodology</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>02</span><strong>当前事实</strong></div><p>当前事实：需要回答哪些最细问题，才能完成 L3“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.shippable_system.l4.actual.l5.answer"><p>围绕“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”，当前有哪些关于端到端交期、发货量、价格、库存、客户等待时间的可验证实际事实？</p><small>定向材料：latest filing, official dataset, customer or supplier disclosure</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>03</span><strong>历史变化</strong></div><p>历史变化：需要回答哪些最细问题，才能完成 L3“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.shippable_system.l4.history.l5.answer"><p>围绕“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”，端到端交期、发货量、价格、库存、客户等待时间在同口径历史序列中如何变化，是否存在结构性拐点？</p><small>定向材料：same-definition historical filing or official dataset</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>04</span><strong>前瞻路径</strong></div><p>前瞻路径：需要回答哪些最细问题，才能完成 L3“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.shippable_system.l4.forward.l5.answer"><p>围绕“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？</p><small>定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>05</span><strong>因果与财务传导</strong></div><p>因果与财务传导：需要回答哪些最细问题，才能完成 L3“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.shippable_system.l4.mechanism.l5.answer"><p>围绕“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”，证据通过什么因果机制传导到demand.revenue_realization以及出货量、交期、库存、ASP？</p><small>定向材料：engineering disclosure plus company segment economics</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>06</span><strong>交叉验证</strong></div><p>交叉验证：需要回答哪些最细问题，才能完成 L3“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.shippable_system.l4.triangulation.l5.answer"><p>围绕“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？</p><small>定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>07</span><strong>反证与失效条件</strong></div><p>反证与失效条件：需要回答哪些最细问题，才能完成 L3“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="supply.shippable_system.l4.refutation.l5.answer"><p>哪些直接证据能够满足反证条件“交期、价格和利用率同步走弱，库存与渠道供给上升。”，并推翻、削弱或限定支持规则“交期高位、价格坚挺且订单覆盖持续，说明供给仍低于需求。”？</p><small>定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis</small><span class="leaf-status">待搜集</span></li></ol></li></ol>
+    </details>
+
 
     <div class="node-material-table-wrap" role="region" aria-label="原子观点材料" tabindex="0">
       <table class="node-material-table">
@@ -1878,6 +2125,13 @@ h1 {
           <th scope="col">对逻辑点的影响</th>
         </tr></thead>
         <tbody>
+        <tr class="node-material-row">
+          <td><time datetime="2026-08-26">2026-08-26</time></td>
+          <td class="node-material-title"><a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm" target="_blank" rel="noopener">NVIDIA Form 10-Q（截至2026年7月26日季度） ↗</a></td>
+          <td><span class="material-tag">官方财报</span></td>
+          <td><ol class="atomic-claim-list"><li><p>NVIDIA称Rubin在Q3 FY27开始生产发货，同时Blackwell与Rubin仍面临部分供应约束；为满足未来数年需求，公司把供应与产能承诺从上季度1190亿美元提高到2790亿美元，主要覆盖内存和制造设施。部分协议在正式下单前可以取消、改期或调整。该披露证明供给扩张正在加速，但缺少端到端交期、价格、客户等待时间和库存消化，不能直接判定最终系统供给仍低于订单。</p><small>第17、25页，Note 10及Recent Developments · 实际：截至2026-07-26及2027财年Q3 · 预测：未来数年</small></li></ol></td>
+          <td><ol class="claim-impact-list"><li><span class="claim-impact impact-boundary">改变边界</span></li></ol></td>
+        </tr>
         <tr class="node-material-row">
           <td><time datetime="2026-07-24">2026-07-24</time></td>
           <td class="node-material-title"><a href="source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf">摩根大通：AMD AAI26 大会纪要</a></td>
@@ -1912,7 +2166,7 @@ h1 {
       <p>RESEARCH LENS</p>
       <h2>技术侧</h2>
     </div>
-    <span class="lens-count">5 份材料 · 8 条观点</span>
+    <span class="lens-count">7 份材料 · 10 条观点</span>
     <span class="lens-chevron" aria-hidden="true"></span>
   </summary>
   <div class="lens-body">
@@ -1937,13 +2191,23 @@ h1 {
     <div class="logic-node-heading">
       <span>technology.workload_fit</span>
       <h4>工作负载适配</h4>
-      <p>稳定推理适合ASIC的判断仍来自分析师预测；GPU份额预测不回答具体工作负载适配，缺少真实客户部署。</p>
+      <p class="logic-node-question"><span class="logic-node-question-label">研究问题</span><span>GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？</span></p>
+      <p class="logic-node-conclusion">稳定推理适合ASIC的判断仍来自分析师预测；GPU份额预测不回答具体工作负载适配，缺少真实客户部署。</p>
       <small>本期变化：本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。</small>
     </div>
     <span class="state-badge state-weak">证据偏弱</span>
     <span class="logic-node-chevron" aria-hidden="true"></span>
   </summary>
   <div class="logic-node-body">
+
+    <details class="l3-research-plan" data-l3-plan-id="l3rp_technology_workload_fit_b2f2421570e0d6bb">
+      <summary>
+        <div><span>L3 独立研究计划</span><strong>0 / 7 个最细叶子已完成</strong></div>
+        <small>按每个 L5 叶子问题单独搜索、单独解析、单独复核</small>
+      </summary>
+      <ol class="l4-plan-list"><li class="l4-plan-unit"><div><span>01</span><strong>边界与口径</strong></div><p>边界与口径：需要回答哪些最细问题，才能完成 L3“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.workload_fit.l4.scope.l5.answer"><p>回答“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？</p><small>定向材料：official definition, standard, or company methodology</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>02</span><strong>当前事实</strong></div><p>当前事实：需要回答哪些最细问题，才能完成 L3“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.workload_fit.l4.actual.l5.answer"><p>围绕“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”，当前有哪些关于训练/推理占比、模型变化速度、延迟与吞吐要求的可验证实际事实？</p><small>定向材料：latest filing, official dataset, customer or supplier disclosure</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>03</span><strong>历史变化</strong></div><p>历史变化：需要回答哪些最细问题，才能完成 L3“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.workload_fit.l4.history.l5.answer"><p>围绕“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”，训练/推理占比、模型变化速度、延迟与吞吐要求在同口径历史序列中如何变化，是否存在结构性拐点？</p><small>定向材料：same-definition historical filing or official dataset</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>04</span><strong>前瞻路径</strong></div><p>前瞻路径：需要回答哪些最细问题，才能完成 L3“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.workload_fit.l4.forward.l5.answer"><p>围绕“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？</p><small>定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>05</span><strong>因果与财务传导</strong></div><p>因果与财务传导：需要回答哪些最细问题，才能完成 L3“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.workload_fit.l4.mechanism.l5.answer"><p>围绕“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”，证据通过什么因果机制传导到technology.performance_tco以及产品适配、工作负载组合、客户案例？</p><small>定向材料：engineering disclosure plus company segment economics</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>06</span><strong>交叉验证</strong></div><p>交叉验证：需要回答哪些最细问题，才能完成 L3“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.workload_fit.l4.triangulation.l5.answer"><p>围绕“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？</p><small>定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>07</span><strong>反证与失效条件</strong></div><p>反证与失效条件：需要回答哪些最细问题，才能完成 L3“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.workload_fit.l4.refutation.l5.answer"><p>哪些直接证据能够满足反证条件“路线优势只存在于厂商选择性基准，无法迁移到客户任务。”，并推翻、削弱或限定支持规则“真实客户部署证明某路线对目标工作负载有稳定优势。”？</p><small>定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis</small><span class="leaf-status">待搜集</span></li></ol></li></ol>
+    </details>
+
 
     <div class="node-material-table-wrap" role="region" aria-label="原子观点材料" tabindex="0">
       <table class="node-material-table">
@@ -1974,13 +2238,23 @@ h1 {
     <div class="logic-node-heading">
       <span>technology.performance_tco</span>
       <h4>端到端性能与 TCO</h4>
-      <p>AMD性能声明和巴克莱TPU模型均依赖厂商或分析师假设，没有独立同工作负载、同利用率的端到端TCO比较。</p>
+      <p class="logic-node-question"><span class="logic-node-question-label">研究问题</span><span>在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？</span></p>
+      <p class="logic-node-conclusion">AMD性能声明和巴克莱TPU模型均依赖厂商或分析师假设，没有独立同工作负载、同利用率的端到端TCO比较。</p>
       <small>本期变化：本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。</small>
     </div>
     <span class="state-badge state-weak">证据偏弱</span>
     <span class="logic-node-chevron" aria-hidden="true"></span>
   </summary>
   <div class="logic-node-body">
+
+    <details class="l3-research-plan" data-l3-plan-id="l3rp_technology_performance_tco_a8165e8b91de0a3f">
+      <summary>
+        <div><span>L3 独立研究计划</span><strong>0 / 7 个最细叶子已完成</strong></div>
+        <small>按每个 L5 叶子问题单独搜索、单独解析、单独复核</small>
+      </summary>
+      <ol class="l4-plan-list"><li class="l4-plan-unit"><div><span>01</span><strong>边界与口径</strong></div><p>边界与口径：需要回答哪些最细问题，才能完成 L3“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.performance_tco.l4.scope.l5.answer"><p>回答“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？</p><small>定向材料：official definition, standard, or company methodology</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>02</span><strong>当前事实</strong></div><p>当前事实：需要回答哪些最细问题，才能完成 L3“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.performance_tco.l4.actual.l5.answer"><p>围绕“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”，当前有哪些关于token/s、延迟、每 token 成本、性能功耗比、集群利用率的可验证实际事实？</p><small>定向材料：latest filing, official dataset, customer or supplier disclosure</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>03</span><strong>历史变化</strong></div><p>历史变化：需要回答哪些最细问题，才能完成 L3“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.performance_tco.l4.history.l5.answer"><p>围绕“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”，token/s、延迟、每 token 成本、性能功耗比、集群利用率在同口径历史序列中如何变化，是否存在结构性拐点？</p><small>定向材料：same-definition historical filing or official dataset</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>04</span><strong>前瞻路径</strong></div><p>前瞻路径：需要回答哪些最细问题，才能完成 L3“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.performance_tco.l4.forward.l5.answer"><p>围绕“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？</p><small>定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>05</span><strong>因果与财务传导</strong></div><p>因果与财务传导：需要回答哪些最细问题，才能完成 L3“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.performance_tco.l4.mechanism.l5.answer"><p>围绕“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”，证据通过什么因果机制传导到technology.customer_adoption以及性能、TCO、产品定价？</p><small>定向材料：engineering disclosure plus company segment economics</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>06</span><strong>交叉验证</strong></div><p>交叉验证：需要回答哪些最细问题，才能完成 L3“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.performance_tco.l4.triangulation.l5.answer"><p>围绕“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？</p><small>定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>07</span><strong>反证与失效条件</strong></div><p>反证与失效条件：需要回答哪些最细问题，才能完成 L3“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.performance_tco.l4.refutation.l5.answer"><p>哪些直接证据能够满足反证条件“优势依赖不可比参数、补贴、低利用率假设或未计软件迁移成本。”，并推翻、削弱或限定支持规则“独立同口径测试或客户数据验证性能和 TCO 优势。”？</p><small>定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis</small><span class="leaf-status">待搜集</span></li></ol></li></ol>
+    </details>
+
 
     <div class="node-material-table-wrap" role="region" aria-label="原子观点材料" tabindex="0">
       <table class="node-material-table">
@@ -2018,13 +2292,23 @@ h1 {
     <div class="logic-node-heading">
       <span>technology.software_ecosystem</span>
       <h4>软件生态与迁移成本</h4>
-      <p>ROCm发布节奏和演示性能改善是边界信息，尚无客户生产使用、迁移时间和开发者采用证明生态锁定变化。</p>
+      <p class="logic-node-question"><span class="logic-node-question-label">研究问题</span><span>编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？</span></p>
+      <p class="logic-node-conclusion">ROCm发布节奏和演示性能改善是边界信息，尚无客户生产使用、迁移时间和开发者采用证明生态锁定变化。</p>
       <small>本期变化：本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。</small>
     </div>
     <span class="state-badge state-weak">证据偏弱</span>
     <span class="logic-node-chevron" aria-hidden="true"></span>
   </summary>
   <div class="logic-node-body">
+
+    <details class="l3-research-plan" data-l3-plan-id="l3rp_technology_software_ecosystem_8428235961a51941">
+      <summary>
+        <div><span>L3 独立研究计划</span><strong>0 / 7 个最细叶子已完成</strong></div>
+        <small>按每个 L5 叶子问题单独搜索、单独解析、单独复核</small>
+      </summary>
+      <ol class="l4-plan-list"><li class="l4-plan-unit"><div><span>01</span><strong>边界与口径</strong></div><p>边界与口径：需要回答哪些最细问题，才能完成 L3“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.software_ecosystem.l4.scope.l5.answer"><p>回答“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？</p><small>定向材料：official definition, standard, or company methodology</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>02</span><strong>当前事实</strong></div><p>当前事实：需要回答哪些最细问题，才能完成 L3“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.software_ecosystem.l4.actual.l5.answer"><p>围绕“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”，当前有哪些关于软件发布节奏、框架支持、迁移时间、开发者采用的可验证实际事实？</p><small>定向材料：latest filing, official dataset, customer or supplier disclosure</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>03</span><strong>历史变化</strong></div><p>历史变化：需要回答哪些最细问题，才能完成 L3“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.software_ecosystem.l4.history.l5.answer"><p>围绕“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”，软件发布节奏、框架支持、迁移时间、开发者采用在同口径历史序列中如何变化，是否存在结构性拐点？</p><small>定向材料：same-definition historical filing or official dataset</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>04</span><strong>前瞻路径</strong></div><p>前瞻路径：需要回答哪些最细问题，才能完成 L3“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.software_ecosystem.l4.forward.l5.answer"><p>围绕“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？</p><small>定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>05</span><strong>因果与财务传导</strong></div><p>因果与财务传导：需要回答哪些最细问题，才能完成 L3“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.software_ecosystem.l4.mechanism.l5.answer"><p>围绕“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”，证据通过什么因果机制传导到technology.customer_adoption以及软件采用、开发者生态、切换成本？</p><small>定向材料：engineering disclosure plus company segment economics</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>06</span><strong>交叉验证</strong></div><p>交叉验证：需要回答哪些最细问题，才能完成 L3“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.software_ecosystem.l4.triangulation.l5.answer"><p>围绕“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？</p><small>定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>07</span><strong>反证与失效条件</strong></div><p>反证与失效条件：需要回答哪些最细问题，才能完成 L3“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.software_ecosystem.l4.refutation.l5.answer"><p>哪些直接证据能够满足反证条件“软件改进停留在演示，客户仍承担显著迁移和运维成本。”，并推翻、削弱或限定支持规则“客户生产部署和开发者使用证明生态缩短上线时间并提高利用率。”？</p><small>定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis</small><span class="leaf-status">待搜集</span></li></ol></li></ol>
+    </details>
+
 
     <div class="node-material-table-wrap" role="region" aria-label="原子观点材料" tabindex="0">
       <table class="node-material-table">
@@ -2055,13 +2339,23 @@ h1 {
     <div class="logic-node-heading">
       <span>technology.customer_adoption</span>
       <h4>客户采用与量产</h4>
-      <p>合作、产品量产和卖方客户反馈均是采用线索，尚未证明多个客户生产部署、扩大采购和复购。</p>
-      <small>本期变化：本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。</small>
+      <p class="logic-node-question"><span class="logic-node-question-label">研究问题</span><span>技术优势是否转化为生产部署、复购和规模量产？</span></p>
+      <p class="logic-node-conclusion">NVIDIA Rubin在五家伙伴运行，AMD Helios也出现具名部署和最高2GW合作，平台采用从发布推进到实际部署线索；但缺少采购扩张、复购、利用率、独立性能和激励条款，尚不满足生产扩采规则。</p>
+      <small>本期变化：新增第二GPU平台的官方客户采用线索，平台竞争覆盖扩大，状态因复购与商业条件缺失保持不变。</small>
     </div>
     <span class="state-badge state-weak">证据偏弱</span>
     <span class="logic-node-chevron" aria-hidden="true"></span>
   </summary>
   <div class="logic-node-body">
+
+    <details class="l3-research-plan" data-l3-plan-id="l3rp_technology_customer_adoption_825c3cccc3554cbf">
+      <summary>
+        <div><span>L3 独立研究计划</span><strong>0 / 7 个最细叶子已完成</strong></div>
+        <small>按每个 L5 叶子问题单独搜索、单独解析、单独复核</small>
+      </summary>
+      <ol class="l4-plan-list"><li class="l4-plan-unit"><div><span>01</span><strong>边界与口径</strong></div><p>边界与口径：需要回答哪些最细问题，才能完成 L3“技术优势是否转化为生产部署、复购和规模量产？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.customer_adoption.l4.scope.l5.answer"><p>回答“技术优势是否转化为生产部署、复购和规模量产？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？</p><small>定向材料：official definition, standard, or company methodology</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>02</span><strong>当前事实</strong></div><p>当前事实：需要回答哪些最细问题，才能完成 L3“技术优势是否转化为生产部署、复购和规模量产？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.customer_adoption.l4.actual.l5.answer"><p>围绕“技术优势是否转化为生产部署、复购和规模量产？”，当前有哪些关于生产客户、部署 GW、复购、量产时间的可验证实际事实？</p><small>定向材料：latest filing, official dataset, customer or supplier disclosure</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>03</span><strong>历史变化</strong></div><p>历史变化：需要回答哪些最细问题，才能完成 L3“技术优势是否转化为生产部署、复购和规模量产？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.customer_adoption.l4.history.l5.answer"><p>围绕“技术优势是否转化为生产部署、复购和规模量产？”，生产客户、部署 GW、复购、量产时间在同口径历史序列中如何变化，是否存在结构性拐点？</p><small>定向材料：same-definition historical filing or official dataset</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>04</span><strong>前瞻路径</strong></div><p>前瞻路径：需要回答哪些最细问题，才能完成 L3“技术优势是否转化为生产部署、复购和规模量产？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.customer_adoption.l4.forward.l5.answer"><p>围绕“技术优势是否转化为生产部署、复购和规模量产？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？</p><small>定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>05</span><strong>因果与财务传导</strong></div><p>因果与财务传导：需要回答哪些最细问题，才能完成 L3“技术优势是否转化为生产部署、复购和规模量产？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.customer_adoption.l4.mechanism.l5.answer"><p>围绕“技术优势是否转化为生产部署、复购和规模量产？”，证据通过什么因果机制传导到technology.platform_competition以及客户数、量产、复购、获客成本？</p><small>定向材料：engineering disclosure plus company segment economics</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>06</span><strong>交叉验证</strong></div><p>交叉验证：需要回答哪些最细问题，才能完成 L3“技术优势是否转化为生产部署、复购和规模量产？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.customer_adoption.l4.triangulation.l5.answer"><p>围绕“技术优势是否转化为生产部署、复购和规模量产？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？</p><small>定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>07</span><strong>反证与失效条件</strong></div><p>反证与失效条件：需要回答哪些最细问题，才能完成 L3“技术优势是否转化为生产部署、复购和规模量产？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.customer_adoption.l4.refutation.l5.answer"><p>哪些直接证据能够满足反证条件“采用停留在试点，或必须以大额认股权证和补贴换取。”，并推翻、削弱或限定支持规则“多个客户进入生产并扩大采购，不依赖单一补贴或股权激励。”？</p><small>定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis</small><span class="leaf-status">待搜集</span></li></ol></li></ol>
+    </details>
+
 
     <div class="node-material-table-wrap" role="region" aria-label="原子观点材料" tabindex="0">
       <table class="node-material-table">
@@ -2073,6 +2367,20 @@ h1 {
           <th scope="col">对逻辑点的影响</th>
         </tr></thead>
         <tbody>
+        <tr class="node-material-row">
+          <td><time datetime="2026-08-26">2026-08-26</time></td>
+          <td class="node-material-title"><a href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/default.aspx" target="_blank" rel="noopener">NVIDIA：2027财年第二季度业绩 ↗</a></td>
+          <td><span class="material-tag">官方公司</span></td>
+          <td><ol class="atomic-claim-list"><li><p>NVIDIA披露Vera Rubin正在进入全面生产，Rubin机架已在CoreWeave、Google Cloud、Microsoft Azure、Oracle Cloud Infrastructure和Nebius运行。五家具名伙伴的运行状态比单纯产品发布更接近生产采用，但材料未披露各客户采购扩张、复购、利用率或是否依赖融资支持。</p><small>Data Center Highlights · 实际：2026-08-26</small></li></ol></td>
+          <td><ol class="claim-impact-list"><li><span class="claim-impact impact-boundary">改变边界</span></li></ol></td>
+        </tr>
+        <tr class="node-material-row">
+          <td><time datetime="2026-08-04">2026-08-04</time></td>
+          <td class="node-material-title"><a href="https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results" target="_blank" rel="noopener">AMD：2026年第二季度业绩 ↗</a></td>
+          <td><span class="material-tag">官方财报</span></td>
+          <td><ol class="atomic-claim-list"><li><p>AMD称Helios平台已被具名实验室和云客户部署，并披露与Anthropic建立最高2GW的合作安排。最高2GW是前瞻上限而非已交付数量；公告未给出客户验收、利用率、复购、GPU收入或是否依赖商业激励，因此属于采用边界证据。</p><small>Data Center highlights · 实际：2026-Q2 · 预测：2026-2027</small></li></ol></td>
+          <td><ol class="claim-impact-list"><li><span class="claim-impact impact-boundary">改变边界</span></li></ol></td>
+        </tr>
         <tr class="node-material-row">
           <td><time datetime="2026-07-24">2026-07-24</time></td>
           <td class="node-material-title"><a href="source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf">巴克莱：拆解 TPU 即服务</a></td>
@@ -2099,13 +2407,23 @@ h1 {
     <div class="logic-node-heading">
       <span>technology.platform_competition</span>
       <h4>平台格局与替代路径</h4>
-      <p>GPU份额预测和外部TPU所有权模式提示ASIC可能打开新分支；实际份额、订单、客户部署和平台利润池尚未验证。</p>
+      <p class="logic-node-question"><span class="logic-node-question-label">研究问题</span><span>竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？</span></p>
+      <p class="logic-node-conclusion">GPU份额预测和外部TPU所有权模式提示ASIC可能打开新分支；实际份额、订单、客户部署和平台利润池尚未验证。</p>
       <small>本期变化：本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。</small>
     </div>
     <span class="state-badge state-weak">证据偏弱</span>
     <span class="logic-node-chevron" aria-hidden="true"></span>
   </summary>
   <div class="logic-node-body">
+
+    <details class="l3-research-plan" data-l3-plan-id="l3rp_technology_platform_competition_fe025057c11aeb2f">
+      <summary>
+        <div><span>L3 独立研究计划</span><strong>0 / 7 个最细叶子已完成</strong></div>
+        <small>按每个 L5 叶子问题单独搜索、单独解析、单独复核</small>
+      </summary>
+      <ol class="l4-plan-list"><li class="l4-plan-unit"><div><span>01</span><strong>边界与口径</strong></div><p>边界与口径：需要回答哪些最细问题，才能完成 L3“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.platform_competition.l4.scope.l5.answer"><p>回答“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？</p><small>定向材料：official definition, standard, or company methodology</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>02</span><strong>当前事实</strong></div><p>当前事实：需要回答哪些最细问题，才能完成 L3“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.platform_competition.l4.actual.l5.answer"><p>围绕“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”，当前有哪些关于加速器份额、merchant/custom 占比、平台收入、切换案例的可验证实际事实？</p><small>定向材料：latest filing, official dataset, customer or supplier disclosure</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>03</span><strong>历史变化</strong></div><p>历史变化：需要回答哪些最细问题，才能完成 L3“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.platform_competition.l4.history.l5.answer"><p>围绕“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”，加速器份额、merchant/custom 占比、平台收入、切换案例在同口径历史序列中如何变化，是否存在结构性拐点？</p><small>定向材料：same-definition historical filing or official dataset</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>04</span><strong>前瞻路径</strong></div><p>前瞻路径：需要回答哪些最细问题，才能完成 L3“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.platform_competition.l4.forward.l5.answer"><p>围绕“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？</p><small>定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>05</span><strong>因果与财务传导</strong></div><p>因果与财务传导：需要回答哪些最细问题，才能完成 L3“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.platform_competition.l4.mechanism.l5.answer"><p>围绕“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”，证据通过什么因果机制传导到demand.order_visibility、valuation.fundamental_earnings以及市场份额、平台收入、竞争位置？</p><small>定向材料：engineering disclosure plus company segment economics</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>06</span><strong>交叉验证</strong></div><p>交叉验证：需要回答哪些最细问题，才能完成 L3“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.platform_competition.l4.triangulation.l5.answer"><p>围绕“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？</p><small>定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>07</span><strong>反证与失效条件</strong></div><p>反证与失效条件：需要回答哪些最细问题，才能完成 L3“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="technology.platform_competition.l4.refutation.l5.answer"><p>哪些直接证据能够满足反证条件“市场份额结论混用 PC GPU、数据中心芯片和系统收入等不同口径。”，并推翻、削弱或限定支持规则“份额、订单和客户部署共同显示平台价值捕获变化。”？</p><small>定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis</small><span class="leaf-status">待搜集</span></li></ol></li></ol>
+    </details>
+
 
     <div class="node-material-table-wrap" role="region" aria-label="原子观点材料" tabindex="0">
       <table class="node-material-table">
@@ -2151,7 +2469,7 @@ h1 {
       <p>RESEARCH LENS</p>
       <h2>估值侧</h2>
     </div>
-    <span class="lens-count">4 份材料 · 7 条观点</span>
+    <span class="lens-count">7 份材料 · 10 条观点</span>
     <span class="lens-chevron" aria-hidden="true"></span>
   </summary>
   <div class="lens-body">
@@ -2176,13 +2494,23 @@ h1 {
     <div class="logic-node-heading">
       <span>valuation.fundamental_earnings</span>
       <h4>基本面盈利路径</h4>
-      <p>巴克莱高情景只提供预测边界，AMD客户权证则直接削弱股东可得利润；尚无官方公司/分部盈利桥。</p>
-      <small>本期变化：本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。</small>
+      <p class="logic-node-question"><span class="logic-node-question-label">研究问题</span><span>GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？</span></p>
+      <p class="logic-node-conclusion">NVIDIA官方报表已有收入、毛利、经营现金流和FCF桥；AMD新增数据中心收入67.18亿美元、分部经营利润21.03亿美元，但GPU未拆分，集团FCF环比下降且capex上升。两家公司盈利桥均明显改善，仍不足以通过GPU专属股东盈利门槛。</p>
+      <small>本期变化：新增AMD官方分部利润和现金流，使多公司比较成为可能；产品混合与资本强度缺口使状态维持弱。</small>
     </div>
     <span class="state-badge state-weak">证据偏弱</span>
     <span class="logic-node-chevron" aria-hidden="true"></span>
   </summary>
   <div class="logic-node-body">
+
+    <details class="l3-research-plan" data-l3-plan-id="l3rp_valuation_fundamental_earnings_bdb8b5ed710d73a8">
+      <summary>
+        <div><span>L3 独立研究计划</span><strong>0 / 7 个最细叶子已完成</strong></div>
+        <small>按每个 L5 叶子问题单独搜索、单独解析、单独复核</small>
+      </summary>
+      <ol class="l4-plan-list"><li class="l4-plan-unit"><div><span>01</span><strong>边界与口径</strong></div><p>边界与口径：需要回答哪些最细问题，才能完成 L3“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.fundamental_earnings.l4.scope.l5.answer"><p>回答“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？</p><small>定向材料：official definition, standard, or company methodology</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>02</span><strong>当前事实</strong></div><p>当前事实：需要回答哪些最细问题，才能完成 L3“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.fundamental_earnings.l4.actual.l5.answer"><p>围绕“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”，当前有哪些关于分部收入、增量毛利、研发与获客成本、FCF、EPS的可验证实际事实？</p><small>定向材料：latest filing, official dataset, customer or supplier disclosure</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>03</span><strong>历史变化</strong></div><p>历史变化：需要回答哪些最细问题，才能完成 L3“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.fundamental_earnings.l4.history.l5.answer"><p>围绕“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”，分部收入、增量毛利、研发与获客成本、FCF、EPS在同口径历史序列中如何变化，是否存在结构性拐点？</p><small>定向材料：same-definition historical filing or official dataset</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>04</span><strong>前瞻路径</strong></div><p>前瞻路径：需要回答哪些最细问题，才能完成 L3“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.fundamental_earnings.l4.forward.l5.answer"><p>围绕“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？</p><small>定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>05</span><strong>因果与财务传导</strong></div><p>因果与财务传导：需要回答哪些最细问题，才能完成 L3“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.fundamental_earnings.l4.mechanism.l5.answer"><p>围绕“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”，证据通过什么因果机制传导到valuation.consensus_expectation以及收入桥、毛利桥、FCF 桥、EPS 桥？</p><small>定向材料：engineering disclosure plus company segment economics</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>06</span><strong>交叉验证</strong></div><p>交叉验证：需要回答哪些最细问题，才能完成 L3“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.fundamental_earnings.l4.triangulation.l5.answer"><p>围绕“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？</p><small>定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>07</span><strong>反证与失效条件</strong></div><p>反证与失效条件：需要回答哪些最细问题，才能完成 L3“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.fundamental_earnings.l4.refutation.l5.answer"><p>哪些直接证据能够满足反证条件“仅有主题敞口，或收入增长被低毛利、稀释和资本强度抵消。”，并推翻、削弱或限定支持规则“结构化公司/分部桥能把节点变化量化到盈利。”？</p><small>定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis</small><span class="leaf-status">待搜集</span></li></ol></li></ol>
+    </details>
+
 
     <div class="node-material-table-wrap" role="region" aria-label="原子观点材料" tabindex="0">
       <table class="node-material-table">
@@ -2194,6 +2522,27 @@ h1 {
           <th scope="col">对逻辑点的影响</th>
         </tr></thead>
         <tbody>
+        <tr class="node-material-row">
+          <td><time datetime="2026-08-26">2026-08-26</time></td>
+          <td class="node-material-title"><a href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/default.aspx" target="_blank" rel="noopener">NVIDIA：2027财年第二季度业绩 ↗</a></td>
+          <td><span class="material-tag">官方公司</span></td>
+          <td><ol class="atomic-claim-list"><li><p>NVIDIA Q2 FY27总收入962.21亿美元，数据中心收入890亿美元，分别同比增长106%和117%，GAAP毛利率75.0%；季度自由现金流213.41亿美元，高于上年同期134.50亿美元但低于Q1的485.54亿美元。期末应收账款630.59亿美元、库存315.75亿美元，分别高于1月末的384.66亿美元和214.03亿美元。收入与利润兑现很强，但季度现金转换和营运资本变化构成需要继续验证的冲突信号。</p><small>Q2 Fiscal 2027 Summary、Balance Sheets、Free Cash Flow Reconciliation · 实际：2027财年Q2（截至2026-07-26）</small></li></ol></td>
+          <td><ol class="claim-impact-list"><li><span class="claim-impact impact-boundary">改变边界</span></li></ol></td>
+        </tr>
+        <tr class="node-material-row">
+          <td><time datetime="2026-08-26">2026-08-26</time></td>
+          <td class="node-material-title"><a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm" target="_blank" rel="noopener">NVIDIA Form 10-Q（截至2026年7月26日季度） ↗</a></td>
+          <td><span class="material-tag">官方财报</span></td>
+          <td><ol class="atomic-claim-list"><li><p>NVIDIA 2027财年上半年经营现金流744.21亿美元，高于上年同期427.79亿美元；公司说明收入增长带来的现金增量被应收账款上升部分抵消，原因包括向部分投资级客户的大额多季度协议提供延长付款条款。期末应收账款630.59亿美元，五家直接客户合计占应收70%。经营现金流仍增长，但回款期限和客户集中提高了现金转换质量的验证要求。</p><small>第13、31页，Note 7—Direct Customers、Liquidity · 实际：2027财年上半年（截至2026-07-26）</small></li></ol></td>
+          <td><ol class="claim-impact-list"><li><span class="claim-impact impact-boundary">改变边界</span></li></ol></td>
+        </tr>
+        <tr class="node-material-row">
+          <td><time datetime="2026-08-04">2026-08-04</time></td>
+          <td class="node-material-title"><a href="https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results" target="_blank" rel="noopener">AMD：2026年第二季度业绩 ↗</a></td>
+          <td><span class="material-tag">官方财报</span></td>
+          <td><ol class="atomic-claim-list"><li><p>AMD 2026年第二季度自由现金流15.58亿美元，低于第一季度25.66亿美元；资本开支由第一季度3.89亿美元升至8.08亿美元。单季现金流受营运资本和付款节奏影响，不能用一个季度证明长期恶化，但收入高增并未在本季同步转化为更高自由现金流。</p><small>Selected corporate data and cash flow table · 实际：2026-Q2</small></li></ol></td>
+          <td><ol class="claim-impact-list"><li><span class="claim-impact impact-constraint">新增约束</span></li></ol></td>
+        </tr>
         <tr class="node-material-row">
           <td><time datetime="2026-07-24">2026-07-24</time></td>
           <td class="node-material-title"><a href="source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf">巴克莱：拆解 TPU 即服务</a></td>
@@ -2220,13 +2569,23 @@ h1 {
     <div class="logic-node-heading">
       <span>valuation.consensus_expectation</span>
       <h4>市场一致预期</h4>
-      <p>现有目标价和预测来自不同公司、年份与口径，都是单家机构样本，不能构成可比较的一致预期。</p>
+      <p class="logic-node-question"><span class="logic-node-question-label">研究问题</span><span>市场当前对收入、利润、份额和资本开支的主流预期是什么？</span></p>
+      <p class="logic-node-conclusion">现有目标价和预测来自不同公司、年份与口径，都是单家机构样本，不能构成可比较的一致预期。</p>
       <small>本期变化：本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。</small>
     </div>
     <span class="state-badge state-unresolved">待验证</span>
     <span class="logic-node-chevron" aria-hidden="true"></span>
   </summary>
   <div class="logic-node-body">
+
+    <details class="l3-research-plan" data-l3-plan-id="l3rp_valuation_consensus_expectation_050d08e26a4d7e1f">
+      <summary>
+        <div><span>L3 独立研究计划</span><strong>0 / 7 个最细叶子已完成</strong></div>
+        <small>按每个 L5 叶子问题单独搜索、单独解析、单独复核</small>
+      </summary>
+      <ol class="l4-plan-list"><li class="l4-plan-unit"><div><span>01</span><strong>边界与口径</strong></div><p>边界与口径：需要回答哪些最细问题，才能完成 L3“市场当前对收入、利润、份额和资本开支的主流预期是什么？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.consensus_expectation.l4.scope.l5.answer"><p>回答“市场当前对收入、利润、份额和资本开支的主流预期是什么？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？</p><small>定向材料：official definition, standard, or company methodology</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>02</span><strong>当前事实</strong></div><p>当前事实：需要回答哪些最细问题，才能完成 L3“市场当前对收入、利润、份额和资本开支的主流预期是什么？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.consensus_expectation.l4.actual.l5.answer"><p>围绕“市场当前对收入、利润、份额和资本开支的主流预期是什么？”，当前有哪些关于一致预期、目标价、机构情景、多空分歧的可验证实际事实？</p><small>定向材料：latest filing, official dataset, customer or supplier disclosure</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>03</span><strong>历史变化</strong></div><p>历史变化：需要回答哪些最细问题，才能完成 L3“市场当前对收入、利润、份额和资本开支的主流预期是什么？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.consensus_expectation.l4.history.l5.answer"><p>围绕“市场当前对收入、利润、份额和资本开支的主流预期是什么？”，一致预期、目标价、机构情景、多空分歧在同口径历史序列中如何变化，是否存在结构性拐点？</p><small>定向材料：same-definition historical filing or official dataset</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>04</span><strong>前瞻路径</strong></div><p>前瞻路径：需要回答哪些最细问题，才能完成 L3“市场当前对收入、利润、份额和资本开支的主流预期是什么？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.consensus_expectation.l4.forward.l5.answer"><p>围绕“市场当前对收入、利润、份额和资本开支的主流预期是什么？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？</p><small>定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>05</span><strong>因果与财务传导</strong></div><p>因果与财务传导：需要回答哪些最细问题，才能完成 L3“市场当前对收入、利润、份额和资本开支的主流预期是什么？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.consensus_expectation.l4.mechanism.l5.answer"><p>围绕“市场当前对收入、利润、份额和资本开支的主流预期是什么？”，证据通过什么因果机制传导到valuation.implied_expectation以及一致预期、目标价、机构分歧？</p><small>定向材料：engineering disclosure plus company segment economics</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>06</span><strong>交叉验证</strong></div><p>交叉验证：需要回答哪些最细问题，才能完成 L3“市场当前对收入、利润、份额和资本开支的主流预期是什么？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.consensus_expectation.l4.triangulation.l5.answer"><p>围绕“市场当前对收入、利润、份额和资本开支的主流预期是什么？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？</p><small>定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>07</span><strong>反证与失效条件</strong></div><p>反证与失效条件：需要回答哪些最细问题，才能完成 L3“市场当前对收入、利润、份额和资本开支的主流预期是什么？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.consensus_expectation.l4.refutation.l5.answer"><p>哪些直接证据能够满足反证条件“使用不同年份、盈利口径或旧目标价制造虚假分歧。”，并推翻、削弱或限定支持规则“同一截面、同一口径的多家机构预期可被比较。”？</p><small>定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis</small><span class="leaf-status">待搜集</span></li></ol></li></ol>
+    </details>
+
 
     <div class="node-material-table-wrap" role="region" aria-label="原子观点材料" tabindex="0">
       <table class="node-material-table">
@@ -2278,13 +2637,23 @@ h1 {
     <div class="logic-node-heading">
       <span>valuation.implied_expectation</span>
       <h4>股价隐含预期</h4>
-      <p>投行目标价不是市场隐含预期；当前没有以截面股价和可复现模型反推出经营路径。</p>
-      <small>本期变化：本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。</small>
+      <p class="logic-node-question"><span class="logic-node-question-label">研究问题</span><span>当前股价要求公司实现怎样的增长、份额和利润率路径？</span></p>
+      <p class="logic-node-conclusion">按9月1日价格与最新季度年化FCF，10%折现率、3%永续增速、十年显性期的简化反向DCF显示：NVDA约需22.3%、AMD约需32.1%的十年FCF复合增速才能解释价格。模型可复现但高度依赖单季年化和终值，且缺少一致预期交叉验证，状态由未解决推进为弱。</p>
+      <small>本期变化：首次以当前价格、股本和官方FCF建立反向增长坐标，替代单纯目标价比较。</small>
     </div>
-    <span class="state-badge state-unresolved">待验证</span>
+    <span class="state-badge state-weak">证据偏弱</span>
     <span class="logic-node-chevron" aria-hidden="true"></span>
   </summary>
   <div class="logic-node-body">
+
+    <details class="l3-research-plan" data-l3-plan-id="l3rp_valuation_implied_expectation_6f642ef111ece676">
+      <summary>
+        <div><span>L3 独立研究计划</span><strong>0 / 7 个最细叶子已完成</strong></div>
+        <small>按每个 L5 叶子问题单独搜索、单独解析、单独复核</small>
+      </summary>
+      <ol class="l4-plan-list"><li class="l4-plan-unit"><div><span>01</span><strong>边界与口径</strong></div><p>边界与口径：需要回答哪些最细问题，才能完成 L3“当前股价要求公司实现怎样的增长、份额和利润率路径？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.implied_expectation.l4.scope.l5.answer"><p>回答“当前股价要求公司实现怎样的增长、份额和利润率路径？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？</p><small>定向材料：official definition, standard, or company methodology</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>02</span><strong>当前事实</strong></div><p>当前事实：需要回答哪些最细问题，才能完成 L3“当前股价要求公司实现怎样的增长、份额和利润率路径？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.implied_expectation.l4.actual.l5.answer"><p>围绕“当前股价要求公司实现怎样的增长、份额和利润率路径？”，当前有哪些关于PE/EV-EBITDA、反向 DCF、隐含收入增速、隐含利润率的可验证实际事实？</p><small>定向材料：latest filing, official dataset, customer or supplier disclosure</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>03</span><strong>历史变化</strong></div><p>历史变化：需要回答哪些最细问题，才能完成 L3“当前股价要求公司实现怎样的增长、份额和利润率路径？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.implied_expectation.l4.history.l5.answer"><p>围绕“当前股价要求公司实现怎样的增长、份额和利润率路径？”，PE/EV-EBITDA、反向 DCF、隐含收入增速、隐含利润率在同口径历史序列中如何变化，是否存在结构性拐点？</p><small>定向材料：same-definition historical filing or official dataset</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>04</span><strong>前瞻路径</strong></div><p>前瞻路径：需要回答哪些最细问题，才能完成 L3“当前股价要求公司实现怎样的增长、份额和利润率路径？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.implied_expectation.l4.forward.l5.answer"><p>围绕“当前股价要求公司实现怎样的增长、份额和利润率路径？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？</p><small>定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>05</span><strong>因果与财务传导</strong></div><p>因果与财务传导：需要回答哪些最细问题，才能完成 L3“当前股价要求公司实现怎样的增长、份额和利润率路径？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.implied_expectation.l4.mechanism.l5.answer"><p>围绕“当前股价要求公司实现怎样的增长、份额和利润率路径？”，证据通过什么因果机制传导到valuation.revision_momentum以及现价、倍数、隐含增速、隐含利润率？</p><small>定向材料：engineering disclosure plus company segment economics</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>06</span><strong>交叉验证</strong></div><p>交叉验证：需要回答哪些最细问题，才能完成 L3“当前股价要求公司实现怎样的增长、份额和利润率路径？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.implied_expectation.l4.triangulation.l5.answer"><p>围绕“当前股价要求公司实现怎样的增长、份额和利润率路径？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？</p><small>定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>07</span><strong>反证与失效条件</strong></div><p>反证与失效条件：需要回答哪些最细问题，才能完成 L3“当前股价要求公司实现怎样的增长、份额和利润率路径？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.implied_expectation.l4.refutation.l5.answer"><p>哪些直接证据能够满足反证条件“只引用目标价上行空间而没有隐含假设和下行情景。”，并推翻、削弱或限定支持规则“以截面股价和可复现模型还原市场已经计入的路径。”？</p><small>定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis</small><span class="leaf-status">待搜集</span></li></ol></li></ol>
+    </details>
+
 
     <div class="node-material-table-wrap" role="region" aria-label="原子观点材料" tabindex="0">
       <table class="node-material-table">
@@ -2296,6 +2665,20 @@ h1 {
           <th scope="col">对逻辑点的影响</th>
         </tr></thead>
         <tbody>
+        <tr class="node-material-row">
+          <td><time datetime="2026-09-01">2026-09-01</time></td>
+          <td class="node-material-title"><a href="https://chartexchange.com/symbol/nasdaq-nvda/historical/" target="_blank" rel="noopener">NVDA 2026年9月1日历史收盘价 ↗</a></td>
+          <td><span class="material-tag">第三方权威</span></td>
+          <td><ol class="atomic-claim-list"><li><p>NVDA于2026年9月1日收于217.43美元；8月26日、27日、28日收盘分别为209.66、227.98和217.55美元。价格序列可作为反向估值输入，但业绩后的短期涨跌不能替代一致预期修正或长期盈利路径。</p><small>Historical prices：2026-08-26至2026-09-01 · 实际：2026-09-01</small></li></ol></td>
+          <td><ol class="claim-impact-list"><li><span class="claim-impact impact-boundary">改变边界</span></li></ol></td>
+        </tr>
+        <tr class="node-material-row">
+          <td><time datetime="2026-09-01">2026-09-01</time></td>
+          <td class="node-material-title"><a href="https://www.investing.com/equities/adv-micro-device" target="_blank" rel="noopener">AMD 2026年9月1日市场价格 ↗</a></td>
+          <td><span class="material-tag">第三方权威</span></td>
+          <td><ol class="atomic-claim-list"><li><p>AMD于2026年9月1日报459.61美元，前收470.72美元。该截面价格可与Q2 EPS、FCF和估算股本建立简化反向估值，但单日价格不能说明盈利预期修正。</p><small>As of Sep 01, 2026 · 实际：2026-09-01</small></li></ol></td>
+          <td><ol class="claim-impact-list"><li><span class="claim-impact impact-boundary">改变边界</span></li></ol></td>
+        </tr>
         <tr class="node-material-row">
           <td><time datetime="2026-07-24">2026-07-24</time></td>
           <td class="node-material-title"><a href="source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf">巴克莱：拆解 TPU 即服务</a></td>
@@ -2329,13 +2712,23 @@ h1 {
     <div class="logic-node-heading">
       <span>valuation.revision_momentum</span>
       <h4>盈利修正与预期差</h4>
-      <p>当前没有多期同口径盈利预期修正和估值倍数序列。</p>
-      <small>本期变化：本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。</small>
+      <p class="logic-node-question"><span class="logic-node-question-label">研究问题</span><span>新信息是否使基本面上修速度快于市场预期和估值扩张？</span></p>
+      <p class="logic-node-conclusion">新增NVDA业绩窗口价格和AMD单日价格只建立市场反应坐标，没有多期同口径收入、EPS和FCF预期修正序列，无法判断价格变化来自盈利上修还是倍数扩张。</p>
+      <small>本期变化：从完全无价格序列推进到单一业绩窗口，但仍不足以判断修正动量。</small>
     </div>
     <span class="state-badge state-unresolved">待验证</span>
     <span class="logic-node-chevron" aria-hidden="true"></span>
   </summary>
   <div class="logic-node-body">
+
+    <details class="l3-research-plan" data-l3-plan-id="l3rp_valuation_revision_momentum_49b0efd37ea8528d">
+      <summary>
+        <div><span>L3 独立研究计划</span><strong>0 / 7 个最细叶子已完成</strong></div>
+        <small>按每个 L5 叶子问题单独搜索、单独解析、单独复核</small>
+      </summary>
+      <ol class="l4-plan-list"><li class="l4-plan-unit"><div><span>01</span><strong>边界与口径</strong></div><p>边界与口径：需要回答哪些最细问题，才能完成 L3“新信息是否使基本面上修速度快于市场预期和估值扩张？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.revision_momentum.l4.scope.l5.answer"><p>回答“新信息是否使基本面上修速度快于市场预期和估值扩张？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？</p><small>定向材料：official definition, standard, or company methodology</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>02</span><strong>当前事实</strong></div><p>当前事实：需要回答哪些最细问题，才能完成 L3“新信息是否使基本面上修速度快于市场预期和估值扩张？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.revision_momentum.l4.actual.l5.answer"><p>围绕“新信息是否使基本面上修速度快于市场预期和估值扩张？”，当前有哪些关于EPS 修正、收入修正、目标价修正、业绩后股价反应的可验证实际事实？</p><small>定向材料：latest filing, official dataset, customer or supplier disclosure</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>03</span><strong>历史变化</strong></div><p>历史变化：需要回答哪些最细问题，才能完成 L3“新信息是否使基本面上修速度快于市场预期和估值扩张？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.revision_momentum.l4.history.l5.answer"><p>围绕“新信息是否使基本面上修速度快于市场预期和估值扩张？”，EPS 修正、收入修正、目标价修正、业绩后股价反应在同口径历史序列中如何变化，是否存在结构性拐点？</p><small>定向材料：same-definition historical filing or official dataset</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>04</span><strong>前瞻路径</strong></div><p>前瞻路径：需要回答哪些最细问题，才能完成 L3“新信息是否使基本面上修速度快于市场预期和估值扩张？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.revision_momentum.l4.forward.l5.answer"><p>围绕“新信息是否使基本面上修速度快于市场预期和估值扩张？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？</p><small>定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>05</span><strong>因果与财务传导</strong></div><p>因果与财务传导：需要回答哪些最细问题，才能完成 L3“新信息是否使基本面上修速度快于市场预期和估值扩张？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.revision_momentum.l4.mechanism.l5.answer"><p>围绕“新信息是否使基本面上修速度快于市场预期和估值扩张？”，证据通过什么因果机制传导到valuation.payoff_asymmetry以及盈利修正、价格反应、预期差？</p><small>定向材料：engineering disclosure plus company segment economics</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>06</span><strong>交叉验证</strong></div><p>交叉验证：需要回答哪些最细问题，才能完成 L3“新信息是否使基本面上修速度快于市场预期和估值扩张？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.revision_momentum.l4.triangulation.l5.answer"><p>围绕“新信息是否使基本面上修速度快于市场预期和估值扩张？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？</p><small>定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>07</span><strong>反证与失效条件</strong></div><p>反证与失效条件：需要回答哪些最细问题，才能完成 L3“新信息是否使基本面上修速度快于市场预期和估值扩张？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.revision_momentum.l4.refutation.l5.answer"><p>哪些直接证据能够满足反证条件“股价上涨主要来自倍数扩张，盈利修正停滞或转负。”，并推翻、削弱或限定支持规则“多期盈利预期持续上修，估值没有更快透支。”？</p><small>定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis</small><span class="leaf-status">待搜集</span></li></ol></li></ol>
+    </details>
+
 
     <div class="node-material-table-wrap" role="region" aria-label="原子观点材料" tabindex="0">
       <table class="node-material-table">
@@ -2346,7 +2739,21 @@ h1 {
           <th scope="col">原子观点</th>
           <th scope="col">对逻辑点的影响</th>
         </tr></thead>
-        <tbody><tr><td colspan="5" class="empty-state">当前没有映射到该节点的原子观点。</td></tr></tbody>
+        <tbody>
+        <tr class="node-material-row">
+          <td><time datetime="2026-09-01">2026-09-01</time></td>
+          <td class="node-material-title"><a href="https://chartexchange.com/symbol/nasdaq-nvda/historical/" target="_blank" rel="noopener">NVDA 2026年9月1日历史收盘价 ↗</a></td>
+          <td><span class="material-tag">第三方权威</span></td>
+          <td><ol class="atomic-claim-list"><li><p>NVDA于2026年9月1日收于217.43美元；8月26日、27日、28日收盘分别为209.66、227.98和217.55美元。价格序列可作为反向估值输入，但业绩后的短期涨跌不能替代一致预期修正或长期盈利路径。</p><small>Historical prices：2026-08-26至2026-09-01 · 实际：2026-09-01</small></li></ol></td>
+          <td><ol class="claim-impact-list"><li><span class="claim-impact impact-boundary">改变边界</span></li></ol></td>
+        </tr>
+        <tr class="node-material-row">
+          <td><time datetime="2026-09-01">2026-09-01</time></td>
+          <td class="node-material-title"><a href="https://www.investing.com/equities/adv-micro-device" target="_blank" rel="noopener">AMD 2026年9月1日市场价格 ↗</a></td>
+          <td><span class="material-tag">第三方权威</span></td>
+          <td><ol class="atomic-claim-list"><li><p>AMD于2026年9月1日报459.61美元，前收470.72美元。该截面价格可与Q2 EPS、FCF和估算股本建立简化反向估值，但单日价格不能说明盈利预期修正。</p><small>As of Sep 01, 2026 · 实际：2026-09-01</small></li></ol></td>
+          <td><ol class="claim-impact-list"><li><span class="claim-impact impact-boundary">改变边界</span></li></ol></td>
+        </tr></tbody>
       </table>
     </div>
   </div>
@@ -2359,13 +2766,23 @@ h1 {
     <div class="logic-node-heading">
       <span>valuation.payoff_asymmetry</span>
       <h4>上下行赔率与动作</h4>
-      <p>目标价上行和中性评级只是单家机构意见；AMD权证及商业化不确定性构成约束，但没有概率加权的牛熊情景和退出触发器。</p>
-      <small>本期变化：本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。</small>
+      <p class="logic-node-question"><span class="logic-node-question-label">研究问题</span><span>综合情景概率后，上行、下行和可监控性是否支持行动？</span></p>
+      <p class="logic-node-conclusion">统一简化DCF敏感性下，NVDA十年FCF增速15%/22%/28%对应每股约127/212/327美元，AMD 20%/32%/40%对应约194/458/792美元；25%/50%/25%的机械权重结果接近现价，但区间极宽，说明结论由长期增长假设主导而非形成安全边际。该结果是敏感性检查，不是目标价。</p>
+      <small>本期变化：首次建立统一牛基熊敏感性和量化降级条件，仍因概率与正常化FCF缺失而保持弱。</small>
     </div>
-    <span class="state-badge state-unresolved">待验证</span>
+    <span class="state-badge state-weak">证据偏弱</span>
     <span class="logic-node-chevron" aria-hidden="true"></span>
   </summary>
   <div class="logic-node-body">
+
+    <details class="l3-research-plan" data-l3-plan-id="l3rp_valuation_payoff_asymmetry_96c48de1535aff15">
+      <summary>
+        <div><span>L3 独立研究计划</span><strong>0 / 7 个最细叶子已完成</strong></div>
+        <small>按每个 L5 叶子问题单独搜索、单独解析、单独复核</small>
+      </summary>
+      <ol class="l4-plan-list"><li class="l4-plan-unit"><div><span>01</span><strong>边界与口径</strong></div><p>边界与口径：需要回答哪些最细问题，才能完成 L3“综合情景概率后，上行、下行和可监控性是否支持行动？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.payoff_asymmetry.l4.scope.l5.answer"><p>回答“综合情景概率后，上行、下行和可监控性是否支持行动？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？</p><small>定向材料：official definition, standard, or company methodology</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>02</span><strong>当前事实</strong></div><p>当前事实：需要回答哪些最细问题，才能完成 L3“综合情景概率后，上行、下行和可监控性是否支持行动？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.payoff_asymmetry.l4.actual.l5.answer"><p>围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，当前有哪些关于情景收益、概率、最大回撤风险、kill test的可验证实际事实？</p><small>定向材料：latest filing, official dataset, customer or supplier disclosure</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>03</span><strong>历史变化</strong></div><p>历史变化：需要回答哪些最细问题，才能完成 L3“综合情景概率后，上行、下行和可监控性是否支持行动？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.payoff_asymmetry.l4.history.l5.answer"><p>围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，情景收益、概率、最大回撤风险、kill test在同口径历史序列中如何变化，是否存在结构性拐点？</p><small>定向材料：same-definition historical filing or official dataset</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>04</span><strong>前瞻路径</strong></div><p>前瞻路径：需要回答哪些最细问题，才能完成 L3“综合情景概率后，上行、下行和可监控性是否支持行动？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.payoff_asymmetry.l4.forward.l5.answer"><p>围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？</p><small>定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>05</span><strong>因果与财务传导</strong></div><p>因果与财务传导：需要回答哪些最细问题，才能完成 L3“综合情景概率后，上行、下行和可监控性是否支持行动？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.payoff_asymmetry.l4.mechanism.l5.answer"><p>围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，证据通过什么因果机制传导到下游节点以及情景赔率、动作状态、降级阈值？</p><small>定向材料：engineering disclosure plus company segment economics</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>06</span><strong>交叉验证</strong></div><p>交叉验证：需要回答哪些最细问题，才能完成 L3“综合情景概率后，上行、下行和可监控性是否支持行动？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.payoff_asymmetry.l4.triangulation.l5.answer"><p>围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？</p><small>定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>07</span><strong>反证与失效条件</strong></div><p>反证与失效条件：需要回答哪些最细问题，才能完成 L3“综合情景概率后，上行、下行和可监控性是否支持行动？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="valuation.payoff_asymmetry.l4.refutation.l5.answer"><p>哪些直接证据能够满足反证条件“高增长已充分定价、下行无法量化或缺少退出触发器。”，并推翻、削弱或限定支持规则“上行赔率显著高于可量化下行，且反证触发器可及时监控。”？</p><small>定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis</small><span class="leaf-status">待搜集</span></li></ol></li></ol>
+    </details>
+
 
     <div class="node-material-table-wrap" role="region" aria-label="原子观点材料" tabindex="0">
       <table class="node-material-table">
@@ -2377,6 +2794,20 @@ h1 {
           <th scope="col">对逻辑点的影响</th>
         </tr></thead>
         <tbody>
+        <tr class="node-material-row">
+          <td><time datetime="2026-09-01">2026-09-01</time></td>
+          <td class="node-material-title"><a href="https://chartexchange.com/symbol/nasdaq-nvda/historical/" target="_blank" rel="noopener">NVDA 2026年9月1日历史收盘价 ↗</a></td>
+          <td><span class="material-tag">第三方权威</span></td>
+          <td><ol class="atomic-claim-list"><li><p>NVDA于2026年9月1日收于217.43美元；8月26日、27日、28日收盘分别为209.66、227.98和217.55美元。价格序列可作为反向估值输入，但业绩后的短期涨跌不能替代一致预期修正或长期盈利路径。</p><small>Historical prices：2026-08-26至2026-09-01 · 实际：2026-09-01</small></li></ol></td>
+          <td><ol class="claim-impact-list"><li><span class="claim-impact impact-boundary">改变边界</span></li></ol></td>
+        </tr>
+        <tr class="node-material-row">
+          <td><time datetime="2026-09-01">2026-09-01</time></td>
+          <td class="node-material-title"><a href="https://www.investing.com/equities/adv-micro-device" target="_blank" rel="noopener">AMD 2026年9月1日市场价格 ↗</a></td>
+          <td><span class="material-tag">第三方权威</span></td>
+          <td><ol class="atomic-claim-list"><li><p>AMD于2026年9月1日报459.61美元，前收470.72美元。该截面价格可与Q2 EPS、FCF和估算股本建立简化反向估值，但单日价格不能说明盈利预期修正。</p><small>As of Sep 01, 2026 · 实际：2026-09-01</small></li></ol></td>
+          <td><ol class="claim-impact-list"><li><span class="claim-impact impact-constraint">新增约束</span></li></ol></td>
+        </tr>
         <tr class="node-material-row">
           <td><time datetime="2026-07-24">2026-07-24</time></td>
           <td class="node-material-title"><a href="source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf">巴克莱：拆解 TPU 即服务</a></td>
@@ -2425,7 +2856,7 @@ h1 {
       <p>RESEARCH LENS</p>
       <h2>ESG</h2>
     </div>
-    <span class="lens-count">4 份材料 · 4 条观点</span>
+    <span class="lens-count">7 份材料 · 9 条观点</span>
     <span class="lens-chevron" aria-hidden="true"></span>
   </summary>
   <div class="lens-body">
@@ -2450,13 +2881,23 @@ h1 {
     <div class="logic-node-heading">
       <span>esg.energy_water</span>
       <h4>能源、水与基础设施许可</h4>
-      <p>当前没有能源、水耗、项目延期和资源监管的节点证据。</p>
-      <small>本期变化：本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。</small>
+      <p class="logic-node-question"><span class="logic-node-question-label">研究问题</span><span>绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？</span></p>
+      <p class="logic-node-conclusion">Microsoft把数据中心WUE降至0.27升/千瓦时并大规模采用低水/零水冷却，说明单位资源强度可显著改善；OpenAI/SB Energy也规划新增发电和降低用水。但缺少项目绝对用水、当地水权、电力并网和许可，资源约束只形成弱证据基线。</p>
+      <small>本期变化：从无一手量化材料推进到水效与具名项目目标，但不能推断绝对资源约束已解除。</small>
     </div>
-    <span class="state-badge state-unresolved">待验证</span>
+    <span class="state-badge state-weak">证据偏弱</span>
     <span class="logic-node-chevron" aria-hidden="true"></span>
   </summary>
   <div class="logic-node-body">
+
+    <details class="l3-research-plan" data-l3-plan-id="l3rp_esg_energy_water_83105d3666a26572">
+      <summary>
+        <div><span>L3 独立研究计划</span><strong>0 / 7 个最细叶子已完成</strong></div>
+        <small>按每个 L5 叶子问题单独搜索、单独解析、单独复核</small>
+      </summary>
+      <ol class="l4-plan-list"><li class="l4-plan-unit"><div><span>01</span><strong>边界与口径</strong></div><p>边界与口径：需要回答哪些最细问题，才能完成 L3“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.energy_water.l4.scope.l5.answer"><p>回答“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？</p><small>定向材料：official definition, standard, or company methodology</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>02</span><strong>当前事实</strong></div><p>当前事实：需要回答哪些最细问题，才能完成 L3“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.energy_water.l4.actual.l5.answer"><p>围绕“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”，当前有哪些关于PUE、电力需求、水耗、许可周期的可验证实际事实？</p><small>定向材料：latest filing, official dataset, customer or supplier disclosure</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>03</span><strong>历史变化</strong></div><p>历史变化：需要回答哪些最细问题，才能完成 L3“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.energy_water.l4.history.l5.answer"><p>围绕“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”，PUE、电力需求、水耗、许可周期在同口径历史序列中如何变化，是否存在结构性拐点？</p><small>定向材料：same-definition historical filing or official dataset</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>04</span><strong>前瞻路径</strong></div><p>前瞻路径：需要回答哪些最细问题，才能完成 L3“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.energy_water.l4.forward.l5.answer"><p>围绕“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？</p><small>定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>05</span><strong>因果与财务传导</strong></div><p>因果与财务传导：需要回答哪些最细问题，才能完成 L3“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.energy_water.l4.mechanism.l5.answer"><p>围绕“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”，证据通过什么因果机制传导到supply.datacenter_readiness以及能源成本、项目延期、许可？</p><small>定向材料：engineering disclosure plus company segment economics</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>06</span><strong>交叉验证</strong></div><p>交叉验证：需要回答哪些最细问题，才能完成 L3“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.energy_water.l4.triangulation.l5.answer"><p>围绕“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？</p><small>定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>07</span><strong>反证与失效条件</strong></div><p>反证与失效条件：需要回答哪些最细问题，才能完成 L3“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.energy_water.l4.refutation.l5.answer"><p>哪些直接证据能够满足反证条件“效率、能源供应和选址使资源约束不再影响部署。”，并推翻、削弱或限定支持规则“项目延期、成本或监管文件明确指向资源约束。”？</p><small>定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis</small><span class="leaf-status">待搜集</span></li></ol></li></ol>
+    </details>
+
 
     <div class="node-material-table-wrap" role="region" aria-label="原子观点材料" tabindex="0">
       <table class="node-material-table">
@@ -2467,7 +2908,21 @@ h1 {
           <th scope="col">原子观点</th>
           <th scope="col">对逻辑点的影响</th>
         </tr></thead>
-        <tbody><tr><td colspan="5" class="empty-state">当前没有映射到该节点的原子观点。</td></tr></tbody>
+        <tbody>
+        <tr class="node-material-row">
+          <td><time datetime="2026-06-24">2026-06-24</time></td>
+          <td class="node-material-title"><a href="https://blogs.microsoft.com/blog/2026/06/24/inside-microsofts-two-decade-push-to-cut-water-intensity-while-scaling-for-growth/" target="_blank" rel="noopener">Microsoft：数据中心水强度与零蒸发冷却进展 ↗</a></td>
+          <td><span class="material-tag">官方公司</span></td>
+          <td><ol class="atomic-claim-list"><li><p>Microsoft称其数据中心WUE由约2.3升/千瓦时降至2025年的0.27升/千瓦时，约90%的机队使用低水或零水冷却，并为新AI数据中心采用零蒸发用水冷却设计。单位强度改善降低边际水约束，但材料没有披露各项目绝对用水、当地水权、电力并网与许可，不能证明资源约束已消失。</p><small>Official blog, water-use effectiveness and cooling design sections · 实际：2025 · 预测：2026 onward</small></li></ol></td>
+          <td><ol class="claim-impact-list"><li><span class="claim-impact impact-boundary">改变边界</span></li></ol></td>
+        </tr>
+        <tr class="node-material-row">
+          <td><time datetime="2026-01-09">2026-01-09</time></td>
+          <td class="node-material-title"><a href="https://openai.com/index/stargate-sb-energy-partnership/" target="_blank" rel="noopener">OpenAI与SB Energy：1.2GW Milam County数据中心合作 ↗</a></td>
+          <td><span class="material-tag">官方公司</span></td>
+          <td><ol class="atomic-claim-list"><li><p>1.2GW租约把长期容量需求与SB Energy项目连接起来，双方还表述将新增发电并尽量降低用水；公告未披露租约金额、担保、利用率、闲置责任、对手方穿透或绝对水资源许可，因此只能确认承诺结构存在，不能判断最终风险承担。</p><small>Partnership scope, energy and water sections · 实际：2026 · 预测：2026 onward</small></li></ol></td>
+          <td><ol class="claim-impact-list"><li><span class="claim-impact impact-boundary">改变边界</span></li></ol></td>
+        </tr></tbody>
       </table>
     </div>
   </div>
@@ -2480,13 +2935,23 @@ h1 {
     <div class="logic-node-heading">
       <span>esg.export_market_access</span>
       <h4>出口管制与市场准入</h4>
-      <p>当前没有可量化GPU/ASIC收入、产品和成本影响的官方出口规则证据。</p>
-      <small>本期变化：本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。</small>
+      <p class="logic-node-question"><span class="logic-node-question-label">研究问题</span><span>出口限制和本地化要求如何改变可服务市场与库存风险？</span></p>
+      <p class="logic-node-conclusion">NVIDIA官方10-Q量化了中国数据中心市场限制：H200发运不足数据中心收入1%，上半年计提4亿美元库存及采购义务费用，25%关税无法向客户转嫁，公司称实际上无法在中国数据中心计算市场竞争。市场准入约束已从数据缺口升级为确认。</p>
+      <small>本期变化：新增官方产品、收入、费用和关税量化，直接满足支持规则，节点由待判断上调为确认。</small>
     </div>
-    <span class="state-badge state-unresolved">待验证</span>
+    <span class="state-badge state-confirmed">已验证</span>
     <span class="logic-node-chevron" aria-hidden="true"></span>
   </summary>
   <div class="logic-node-body">
+
+    <details class="l3-research-plan" data-l3-plan-id="l3rp_esg_export_market_access_820d80c60e287326">
+      <summary>
+        <div><span>L3 独立研究计划</span><strong>0 / 7 个最细叶子已完成</strong></div>
+        <small>按每个 L5 叶子问题单独搜索、单独解析、单独复核</small>
+      </summary>
+      <ol class="l4-plan-list"><li class="l4-plan-unit"><div><span>01</span><strong>边界与口径</strong></div><p>边界与口径：需要回答哪些最细问题，才能完成 L3“出口限制和本地化要求如何改变可服务市场与库存风险？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.export_market_access.l4.scope.l5.answer"><p>回答“出口限制和本地化要求如何改变可服务市场与库存风险？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？</p><small>定向材料：official definition, standard, or company methodology</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>02</span><strong>当前事实</strong></div><p>当前事实：需要回答哪些最细问题，才能完成 L3“出口限制和本地化要求如何改变可服务市场与库存风险？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.export_market_access.l4.actual.l5.answer"><p>围绕“出口限制和本地化要求如何改变可服务市场与库存风险？”，当前有哪些关于许可范围、受限收入、库存损失、替代产品的可验证实际事实？</p><small>定向材料：latest filing, official dataset, customer or supplier disclosure</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>03</span><strong>历史变化</strong></div><p>历史变化：需要回答哪些最细问题，才能完成 L3“出口限制和本地化要求如何改变可服务市场与库存风险？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.export_market_access.l4.history.l5.answer"><p>围绕“出口限制和本地化要求如何改变可服务市场与库存风险？”，许可范围、受限收入、库存损失、替代产品在同口径历史序列中如何变化，是否存在结构性拐点？</p><small>定向材料：same-definition historical filing or official dataset</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>04</span><strong>前瞻路径</strong></div><p>前瞻路径：需要回答哪些最细问题，才能完成 L3“出口限制和本地化要求如何改变可服务市场与库存风险？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.export_market_access.l4.forward.l5.answer"><p>围绕“出口限制和本地化要求如何改变可服务市场与库存风险？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？</p><small>定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>05</span><strong>因果与财务传导</strong></div><p>因果与财务传导：需要回答哪些最细问题，才能完成 L3“出口限制和本地化要求如何改变可服务市场与库存风险？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.export_market_access.l4.mechanism.l5.answer"><p>围绕“出口限制和本地化要求如何改变可服务市场与库存风险？”，证据通过什么因果机制传导到demand.revenue_realization以及受限收入、库存损失、市场准入？</p><small>定向材料：engineering disclosure plus company segment economics</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>06</span><strong>交叉验证</strong></div><p>交叉验证：需要回答哪些最细问题，才能完成 L3“出口限制和本地化要求如何改变可服务市场与库存风险？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.export_market_access.l4.triangulation.l5.answer"><p>围绕“出口限制和本地化要求如何改变可服务市场与库存风险？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？</p><small>定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>07</span><strong>反证与失效条件</strong></div><p>反证与失效条件：需要回答哪些最细问题，才能完成 L3“出口限制和本地化要求如何改变可服务市场与库存风险？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.export_market_access.l4.refutation.l5.answer"><p>哪些直接证据能够满足反证条件“影响仅来自传闻，或替代产品和许可完全抵消限制。”，并推翻、削弱或限定支持规则“官方规则和公司披露能量化收入、产品与成本影响。”？</p><small>定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis</small><span class="leaf-status">待搜集</span></li></ol></li></ol>
+    </details>
+
 
     <div class="node-material-table-wrap" role="region" aria-label="原子观点材料" tabindex="0">
       <table class="node-material-table">
@@ -2497,7 +2962,14 @@ h1 {
           <th scope="col">原子观点</th>
           <th scope="col">对逻辑点的影响</th>
         </tr></thead>
-        <tbody><tr><td colspan="5" class="empty-state">当前没有映射到该节点的原子观点。</td></tr></tbody>
+        <tbody>
+        <tr class="node-material-row">
+          <td><time datetime="2026-08-26">2026-08-26</time></td>
+          <td class="node-material-title"><a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm" target="_blank" rel="noopener">NVIDIA Form 10-Q（截至2026年7月26日季度） ↗</a></td>
+          <td><span class="material-tag">官方财报</span></td>
+          <td><ol class="atomic-claim-list"><li><p>NVIDIA披露美国许可允许向特定中国客户小量发运H200，但受中国政府限制，获许可产品未能全部销售；2027财年上半年因H200需求下降计提4亿美元库存及采购义务费用，Q2实际H200发运不足数据中心收入1%，且美国检查流程触发25%进口关税，公司无法向客户转嫁。公司判断当前实际上无法在中国数据中心计算市场竞争。</p><small>第26页，Recent Developments · 实际：2027财年上半年及Q2</small></li></ol></td>
+          <td><ol class="claim-impact-list"><li><span class="claim-impact impact-support">增强</span></li></ol></td>
+        </tr></tbody>
       </table>
     </div>
   </div>
@@ -2510,13 +2982,23 @@ h1 {
     <div class="logic-node-heading">
       <span>esg.concentration</span>
       <h4>供应与客户集中</h4>
-      <p>当前没有同口径客户、供应商集中度和切换周期证据。</p>
-      <small>本期变化：本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。</small>
+      <p class="logic-node-question"><span class="logic-node-question-label">研究问题</span><span>关键供应商、客户和地区集中是否放大经营波动？</span></p>
+      <p class="logic-node-conclusion">NVIDIA前五大直接客户合计占应收账款70%，并可为大型数据中心建设提供最长一年的延长付款期限，客户集中和信用敞口已可量化；但客户身份、终端需求去重、替代难度、账龄和违约概率未披露，尚不能确认集中风险的可控程度。</p>
+      <small>本期变化：新增官方应收集中度和付款期限，节点从无数据改善为弱证据；因缺少切换周期和客户质量，不满足完整支持规则。</small>
     </div>
-    <span class="state-badge state-unresolved">待验证</span>
+    <span class="state-badge state-weak">证据偏弱</span>
     <span class="logic-node-chevron" aria-hidden="true"></span>
   </summary>
   <div class="logic-node-body">
+
+    <details class="l3-research-plan" data-l3-plan-id="l3rp_esg_concentration_7b49deacf342a22b">
+      <summary>
+        <div><span>L3 独立研究计划</span><strong>0 / 7 个最细叶子已完成</strong></div>
+        <small>按每个 L5 叶子问题单独搜索、单独解析、单独复核</small>
+      </summary>
+      <ol class="l4-plan-list"><li class="l4-plan-unit"><div><span>01</span><strong>边界与口径</strong></div><p>边界与口径：需要回答哪些最细问题，才能完成 L3“关键供应商、客户和地区集中是否放大经营波动？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.concentration.l4.scope.l5.answer"><p>回答“关键供应商、客户和地区集中是否放大经营波动？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？</p><small>定向材料：official definition, standard, or company methodology</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>02</span><strong>当前事实</strong></div><p>当前事实：需要回答哪些最细问题，才能完成 L3“关键供应商、客户和地区集中是否放大经营波动？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.concentration.l4.actual.l5.answer"><p>围绕“关键供应商、客户和地区集中是否放大经营波动？”，当前有哪些关于前五客户占比、单一代工占比、地区收入、替代供应的可验证实际事实？</p><small>定向材料：latest filing, official dataset, customer or supplier disclosure</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>03</span><strong>历史变化</strong></div><p>历史变化：需要回答哪些最细问题，才能完成 L3“关键供应商、客户和地区集中是否放大经营波动？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.concentration.l4.history.l5.answer"><p>围绕“关键供应商、客户和地区集中是否放大经营波动？”，前五客户占比、单一代工占比、地区收入、替代供应在同口径历史序列中如何变化，是否存在结构性拐点？</p><small>定向材料：same-definition historical filing or official dataset</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>04</span><strong>前瞻路径</strong></div><p>前瞻路径：需要回答哪些最细问题，才能完成 L3“关键供应商、客户和地区集中是否放大经营波动？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.concentration.l4.forward.l5.answer"><p>围绕“关键供应商、客户和地区集中是否放大经营波动？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？</p><small>定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>05</span><strong>因果与财务传导</strong></div><p>因果与财务传导：需要回答哪些最细问题，才能完成 L3“关键供应商、客户和地区集中是否放大经营波动？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.concentration.l4.mechanism.l5.answer"><p>围绕“关键供应商、客户和地区集中是否放大经营波动？”，证据通过什么因果机制传导到supply.shippable_system以及客户集中、供应集中、地区集中？</p><small>定向材料：engineering disclosure plus company segment economics</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>06</span><strong>交叉验证</strong></div><p>交叉验证：需要回答哪些最细问题，才能完成 L3“关键供应商、客户和地区集中是否放大经营波动？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.concentration.l4.triangulation.l5.answer"><p>围绕“关键供应商、客户和地区集中是否放大经营波动？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？</p><small>定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>07</span><strong>反证与失效条件</strong></div><p>反证与失效条件：需要回答哪些最细问题，才能完成 L3“关键供应商、客户和地区集中是否放大经营波动？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.concentration.l4.refutation.l5.answer"><p>哪些直接证据能够满足反证条件“客户和供应商多元化显著改善，切换已被生产验证。”，并推翻、削弱或限定支持规则“集中度高且替代、认证或切换周期长。”？</p><small>定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis</small><span class="leaf-status">待搜集</span></li></ol></li></ol>
+    </details>
+
 
     <div class="node-material-table-wrap" role="region" aria-label="原子观点材料" tabindex="0">
       <table class="node-material-table">
@@ -2527,7 +3009,14 @@ h1 {
           <th scope="col">原子观点</th>
           <th scope="col">对逻辑点的影响</th>
         </tr></thead>
-        <tbody><tr><td colspan="5" class="empty-state">当前没有映射到该节点的原子观点。</td></tr></tbody>
+        <tbody>
+        <tr class="node-material-row">
+          <td><time datetime="2026-08-26">2026-08-26</time></td>
+          <td class="node-material-title"><a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm" target="_blank" rel="noopener">NVIDIA Form 10-Q（截至2026年7月26日季度） ↗</a></td>
+          <td><span class="material-tag">官方财报</span></td>
+          <td><ol class="atomic-claim-list"><li><p>截至2026年7月26日，NVIDIA五家直接客户分别占应收账款22%、14%、13%、11%和10%，合计70%；公司还可能为投资级客户的大型数据中心建设提供90天至一年的延长付款期限。该披露量化了应收集中和信用期限，但没有披露这五家客户的替代难度、终端需求去重或违约概率。</p><small>第13页，Note 7—Direct Customers · 实际：截至2026-07-26</small></li></ol></td>
+          <td><ol class="claim-impact-list"><li><span class="claim-impact impact-boundary">改变边界</span></li></ol></td>
+        </tr></tbody>
       </table>
     </div>
   </div>
@@ -2540,13 +3029,23 @@ h1 {
     <div class="logic-node-heading">
       <span>esg.governance_capital_allocation</span>
       <h4>治理与资本配置</h4>
-      <p>AMD客户认股权证可能形成高额获客成本和稀释，直接削弱股东可得盈利弹性；证据仍集中于单份研报。</p>
+      <p class="logic-node-question"><span class="logic-node-question-label">研究问题</span><span>补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？</span></p>
+      <p class="logic-node-conclusion">AMD客户认股权证可能形成高额获客成本和稀释，直接削弱股东可得盈利弹性；证据仍集中于单份研报。</p>
       <small>本期变化：本期没有新增外部材料；经严格映射复核，将主题相关、预测和代理指标从增强/减弱中剥离。</small>
     </div>
     <span class="state-badge state-weakening">正在减弱</span>
     <span class="logic-node-chevron" aria-hidden="true"></span>
   </summary>
   <div class="logic-node-body">
+
+    <details class="l3-research-plan" data-l3-plan-id="l3rp_esg_governance_capital_allocation_316c36151321bd93">
+      <summary>
+        <div><span>L3 独立研究计划</span><strong>0 / 7 个最细叶子已完成</strong></div>
+        <small>按每个 L5 叶子问题单独搜索、单独解析、单独复核</small>
+      </summary>
+      <ol class="l4-plan-list"><li class="l4-plan-unit"><div><span>01</span><strong>边界与口径</strong></div><p>边界与口径：需要回答哪些最细问题，才能完成 L3“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.governance_capital_allocation.l4.scope.l5.answer"><p>回答“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？</p><small>定向材料：official definition, standard, or company methodology</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>02</span><strong>当前事实</strong></div><p>当前事实：需要回答哪些最细问题，才能完成 L3“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.governance_capital_allocation.l4.actual.l5.answer"><p>围绕“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”，当前有哪些关于股权稀释、获客补贴、关联交易、投资回报的可验证实际事实？</p><small>定向材料：latest filing, official dataset, customer or supplier disclosure</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>03</span><strong>历史变化</strong></div><p>历史变化：需要回答哪些最细问题，才能完成 L3“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.governance_capital_allocation.l4.history.l5.answer"><p>围绕“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”，股权稀释、获客补贴、关联交易、投资回报在同口径历史序列中如何变化，是否存在结构性拐点？</p><small>定向材料：same-definition historical filing or official dataset</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>04</span><strong>前瞻路径</strong></div><p>前瞻路径：需要回答哪些最细问题，才能完成 L3“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.governance_capital_allocation.l4.forward.l5.answer"><p>围绕“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？</p><small>定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>05</span><strong>因果与财务传导</strong></div><p>因果与财务传导：需要回答哪些最细问题，才能完成 L3“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.governance_capital_allocation.l4.mechanism.l5.answer"><p>围绕“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”，证据通过什么因果机制传导到valuation.payoff_asymmetry以及稀释、获客成本、资本回报？</p><small>定向材料：engineering disclosure plus company segment economics</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>06</span><strong>交叉验证</strong></div><p>交叉验证：需要回答哪些最细问题，才能完成 L3“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.governance_capital_allocation.l4.triangulation.l5.answer"><p>围绕“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？</p><small>定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>07</span><strong>反证与失效条件</strong></div><p>反证与失效条件：需要回答哪些最细问题，才能完成 L3“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.governance_capital_allocation.l4.refutation.l5.answer"><p>哪些直接证据能够满足反证条件“收入增长依赖高额稀释、担保或无法验证的生态投资。”，并推翻、削弱或限定支持规则“资本配置带来可验证的增量利润和合理股东回报。”？</p><small>定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis</small><span class="leaf-status">待搜集</span></li></ol></li></ol>
+    </details>
+
 
     <div class="node-material-table-wrap" role="region" aria-label="原子观点材料" tabindex="0">
       <table class="node-material-table">
@@ -2577,13 +3076,23 @@ h1 {
     <div class="logic-node-heading">
       <span>esg.financing_commitments</span>
       <h4>融资结构与长期承诺</h4>
-      <p>Oracle承认杠杆和近期融资需求限制新增RPO，并依赖BYOHW和客户预付款降低资本占用；这与既有合作方融资不透明问题一致。成本加成机制改善毛利保护，但最终担保、闲置资产、客户集中和违约责任仍无法穿透。</p>
-      <small>本期变化：新增Oracle管理层对融资约束和风险转移工具的直接讨论，强化了该风险需要穿透原始条款的必要性；因未披露条款，节点状态不变。</small>
+      <p class="logic-node-question"><span class="logic-node-question-label">研究问题</span><span>SPV、租赁、采购承诺和表外融资把风险留给谁？</span></p>
+      <p class="logic-node-conclusion">OpenAI/SB Energy 1.2GW长期租约与NVIDIA既有AI云、园区和供应承诺表明容量扩张依赖复杂的长期义务；租约金额、担保、利用率和闲置责任未穿透，风险承担仍不透明。</p>
+      <small>本期变化：新增1.2GW长期租约的具名承诺边界，但未补齐合同经济性，状态不变。</small>
     </div>
     <span class="state-badge state-weakening">正在减弱</span>
     <span class="logic-node-chevron" aria-hidden="true"></span>
   </summary>
   <div class="logic-node-body">
+
+    <details class="l3-research-plan" data-l3-plan-id="l3rp_esg_financing_commitments_26a2452f80e8b67f">
+      <summary>
+        <div><span>L3 独立研究计划</span><strong>0 / 7 个最细叶子已完成</strong></div>
+        <small>按每个 L5 叶子问题单独搜索、单独解析、单独复核</small>
+      </summary>
+      <ol class="l4-plan-list"><li class="l4-plan-unit"><div><span>01</span><strong>边界与口径</strong></div><p>边界与口径：需要回答哪些最细问题，才能完成 L3“SPV、租赁、采购承诺和表外融资把风险留给谁？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.financing_commitments.l4.scope.l5.answer"><p>回答“SPV、租赁、采购承诺和表外融资把风险留给谁？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？</p><small>定向材料：official definition, standard, or company methodology</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>02</span><strong>当前事实</strong></div><p>当前事实：需要回答哪些最细问题，才能完成 L3“SPV、租赁、采购承诺和表外融资把风险留给谁？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.financing_commitments.l4.actual.l5.answer"><p>围绕“SPV、租赁、采购承诺和表外融资把风险留给谁？”，当前有哪些关于采购承诺、担保、租赁负债、SPV 对手方的可验证实际事实？</p><small>定向材料：latest filing, official dataset, customer or supplier disclosure</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>03</span><strong>历史变化</strong></div><p>历史变化：需要回答哪些最细问题，才能完成 L3“SPV、租赁、采购承诺和表外融资把风险留给谁？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.financing_commitments.l4.history.l5.answer"><p>围绕“SPV、租赁、采购承诺和表外融资把风险留给谁？”，采购承诺、担保、租赁负债、SPV 对手方在同口径历史序列中如何变化，是否存在结构性拐点？</p><small>定向材料：same-definition historical filing or official dataset</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>04</span><strong>前瞻路径</strong></div><p>前瞻路径：需要回答哪些最细问题，才能完成 L3“SPV、租赁、采购承诺和表外融资把风险留给谁？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.financing_commitments.l4.forward.l5.answer"><p>围绕“SPV、租赁、采购承诺和表外融资把风险留给谁？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？</p><small>定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>05</span><strong>因果与财务传导</strong></div><p>因果与财务传导：需要回答哪些最细问题，才能完成 L3“SPV、租赁、采购承诺和表外融资把风险留给谁？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.financing_commitments.l4.mechanism.l5.answer"><p>围绕“SPV、租赁、采购承诺和表外融资把风险留给谁？”，证据通过什么因果机制传导到demand.customer_compute_budget、valuation.payoff_asymmetry以及采购承诺、担保、租赁、表外义务？</p><small>定向材料：engineering disclosure plus company segment economics</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>06</span><strong>交叉验证</strong></div><p>交叉验证：需要回答哪些最细问题，才能完成 L3“SPV、租赁、采购承诺和表外融资把风险留给谁？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.financing_commitments.l4.triangulation.l5.answer"><p>围绕“SPV、租赁、采购承诺和表外融资把风险留给谁？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？</p><small>定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study</small><span class="leaf-status">待搜集</span></li></ol></li><li class="l4-plan-unit"><div><span>07</span><strong>反证与失效条件</strong></div><p>反证与失效条件：需要回答哪些最细问题，才能完成 L3“SPV、租赁、采购承诺和表外融资把风险留给谁？”？</p><ol><li class="leaf-plan-step" data-leaf-question-id="esg.financing_commitments.l4.refutation.l5.answer"><p>哪些直接证据能够满足反证条件“结构复杂且最终担保、闲置资产或对手方风险无法穿透。”，并推翻、削弱或限定支持规则“风险分担、现金流义务和资产利用率可被清晰识别。”？</p><small>定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis</small><span class="leaf-status">待搜集</span></li></ol></li></ol>
+    </details>
+
 
     <div class="node-material-table-wrap" role="region" aria-label="原子观点材料" tabindex="0">
       <table class="node-material-table">
@@ -2595,6 +3104,13 @@ h1 {
           <th scope="col">对逻辑点的影响</th>
         </tr></thead>
         <tbody>
+        <tr class="node-material-row">
+          <td><time datetime="2026-08-26">2026-08-26</time></td>
+          <td class="node-material-title"><a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm" target="_blank" rel="noopener">NVIDIA Form 10-Q（截至2026年7月26日季度） ↗</a></td>
+          <td><span class="material-tag">官方财报</span></td>
+          <td><ol class="atomic-claim-list"><li><p>截至2026年7月26日，NVIDIA对部分AI云伙伴的云服务承诺为360亿美元、典型期限六年；AI云可单方面停止向NVIDIA提供容量并以更有利价格售予第三方。土地、电力和园区外壳担保的最大毛敞口为35亿美元。公司还与大型资本提供方签署备忘录，计划长期动员超过5000亿美元第三方资本，但明确这些初步安排可能不会形成最终协议。义务、退出权和部分风险分担已更透明，资产利用率、对手方信用和潜在剩余价值支持仍待逐项目验证。</p><small>第18、26页，AI cloud agreements、Guarantees、Recent Developments · 实际：截至2026-07-26及2026-08 · 预测：未来六年及更长期</small></li></ol></td>
+          <td><ol class="claim-impact-list"><li><span class="claim-impact impact-support">增强</span></li></ol></td>
+        </tr>
         <tr class="node-material-row">
           <td><time datetime="2026-07-27">2026-07-27</time></td>
           <td class="node-material-title"><a href="source/manual/德银-甲骨文（ORCL.US）：与CFO会谈核心要点-260727.pdf">德银：Oracle CFO会议—AI基础设施合同、融资与回报</a></td>
@@ -2615,6 +3131,13 @@ h1 {
           <td><span class="material-tag">研报</span></td>
           <td><ol class="atomic-claim-list"><li><p>若 Meta 容量由 2026 年约 7GW 增至 2027 年 14GW，Hyperion 等合作方可能提供 1.0-1.5GW，使 Meta 直接融资的新增容量约为 5.5GW。伙伴资本可以缓解资产负担，但不能消除电力、服务器和建设交付约束。</p><small>第5-6页，2027 capex expectations · 实际：2026 · 预测：2027</small></li><li><p>Meta 的容量情景由 7GW 升至 14GW，资本开支预期可能升至 2027 年 2,000 亿美元以上；Hyperion 等伙伴融资可能降低报表内直接负担。对治理分析而言，关键不是只看名义 capex，而是追踪担保、租赁、合作方承诺及最终风险承担者。</p><small>第2、5-6页，capacity and funding structure · 实际：2026 · 预测：2027-2028</small></li></ol></td>
           <td><ol class="claim-impact-list"><li><span class="claim-impact impact-boundary">改变边界</span></li><li><span class="claim-impact impact-refute">减弱</span></li></ol></td>
+        </tr>
+        <tr class="node-material-row">
+          <td><time datetime="2026-01-09">2026-01-09</time></td>
+          <td class="node-material-title"><a href="https://openai.com/index/stargate-sb-energy-partnership/" target="_blank" rel="noopener">OpenAI与SB Energy：1.2GW Milam County数据中心合作 ↗</a></td>
+          <td><span class="material-tag">官方公司</span></td>
+          <td><ol class="atomic-claim-list"><li><p>1.2GW租约把长期容量需求与SB Energy项目连接起来，双方还表述将新增发电并尽量降低用水；公告未披露租约金额、担保、利用率、闲置责任、对手方穿透或绝对水资源许可，因此只能确认承诺结构存在，不能判断最终风险承担。</p><small>Partnership scope, energy and water sections · 实际：2026 · 预测：2026 onward</small></li><li><p>1.2GW租约把长期容量需求与SB Energy项目连接起来，双方还表述将新增发电并尽量降低用水；公告未披露租约金额、担保、利用率、闲置责任、对手方穿透或绝对水资源许可，因此只能确认承诺结构存在，不能判断最终风险承担。</p><small>Partnership scope, energy and water sections · 实际：2026 · 预测：2026 onward</small></li></ol></td>
+          <td><ol class="claim-impact-list"><li><span class="claim-impact impact-boundary">改变边界</span></li><li><span class="claim-impact impact-boundary">改变边界</span></li></ol></td>
         </tr></tbody>
       </table>
     </div>

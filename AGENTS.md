@@ -30,7 +30,7 @@ Follow the hexagonal dependency rule in `docs/architecture/hexagonal_research_sy
 
 New topics enter through:
 
-`ResearchGoal -> DomainPlaybook -> QuestionArchitecture -> SourcePlan -> SourceParse -> Synthesis -> TargetGate -> ReportViewModel -> CanonicalReportRenderer`
+`ResearchGoal -> DomainPlaybook -> QuestionArchitecture -> ResearchPlan -> PlanStepExecution -> SourceParse -> StepAnswer -> Synthesis -> TargetGate -> ReportViewModel -> CanonicalReportRenderer`
 
 Do not start a new topic from copied reports. Renderers do not design questions or parse sources. Playbooks do not know presentation syntax or CSS classes.
 
@@ -49,9 +49,36 @@ Use `investment-question-architect` and a domain playbook. Internal QA is adapti
 - L1: research direction.
 - L2: mechanism bucket.
 - L3: investment decision question.
-- L4/L5: optional research units when L3 still mixes companies, mechanisms, metrics, or models.
+- L4: the independent research dimensions required to answer one L3.
+- L5: the finest executable leaf questions. Material search, parsing, review, and
+  answers occur only at this level.
 
 Internal QA depth is preserved in `qa_tree.json`; it is not public Markdown by default.
+
+After the QA tree is fixed, persist an executable `research_plan.json`. The parent
+plan treats every L3 as a rollup and points to one independent versioned plan under
+`l3_research_plans/<l3_node_id>/research_plan.json`. Each L3 plan must drill through
+L4 into L5 leaf questions. Every L5 leaf becomes one stable step with a
+`research_step_id`, dependency, leaf-specific source plan, freshness rule, minimum
+evidence gate, refuting source plan, specialty parser, answer contract, and
+traceability contract. Persist parent and L3 plan revisions immutably in their
+respective `research_plan_history/<plan_id>.json` directories.
+
+Material collection is leaf-originated. Every evidence-eligible parse task must
+carry `l3_plan_id`, `l3_node_id`, `l4_question_id`, `leaf_question_id`,
+`leaf_step_id`, and `search_run_id`. A broad material pool, provider archive, or
+knowledge-base scan may preserve candidates, but cannot create completion evidence
+by bulk-mapping those candidates to questions. Reusing one source across leaves
+requires a separate leaf attachment, extraction, and GPT review for each leaf.
+
+Step execution is append-only in `research_step_events.jsonl`. Collection, source
+attachment, answer recording, gate evaluation, blocking, and reopening are events;
+do not overwrite history with a mutable status field. Project the current state
+from the ledger. A step is complete only when it has a non-empty answer, source IDs,
+question-specific extraction IDs, GPT review IDs, support/refute findings, a recorded
+refutation-search result, a passed evidence gate, and completed dependencies.
+Missing evidence records a blocked step with gaps and next actions; it is never
+silently upgraded to completion.
 
 ### 3. Establish the BOM taxonomy
 
@@ -200,6 +227,15 @@ source/ima/
 
 research/bom/<bom_project_id>/
   project.json
+  research_plan.json
+  research_plan_history/<plan_id>.json
+  research_step_events.jsonl
+  l3_research_plans/
+    index.json
+    <l3_node_id>/
+      research_plan.json
+      research_plan_history/<plan_id>.json
+      research_step_events.jsonl
   professional_report.html
   professional_report.md
   timeline_profile.json
@@ -250,6 +286,8 @@ GPT is the research director and chooses the source universe. For every minimum 
 - include a refuting or boundary-check source plan;
 - enforce cutoff visibility before parsing in backtest mode;
 - create one source extraction and one GPT review per `question x source` pair;
+- start every pull search from one active L5 leaf and persist its full leaf/search
+  trace; never search at L3 and fan the results out across leaves;
 - treat messages and opinions as leads unless separately verified;
 - parse long material with the appropriate specialty skill or DeepSeek adapter when available;
 - preserve explicit gaps instead of filling them with model priors.
@@ -296,17 +334,18 @@ The system uses one provider archive loop and two evidence loops:
    rows, and click each visible download control without a BOM relevance filter.
    Import the completed browser downloads into repository
    `source/ima/<directory_date>/`.
-2. `question_search`: pull research driven by one `BOM x question` coverage gap,
-   using the professional universe plus Exa/AI search.
+2. `question_search`: pull research driven by one unfinished
+   `BOM x L3 plan x L5 leaf` gap, using the professional universe plus Exa/AI
+   search and preserving the leaf/search-run trace.
 3. `knowledge_base_scan`: read the central IMA archive manifest, judge each report
    against enabled BOM profiles, verify selected originals, copy them into the
    matching BOM's `source/ima/<published_at>/`, and create local intake/inbox rows.
 
 The archive loop preserves originals and audit metadata only; it does not create
-evidence. Both evidence loops enter the BOM material-intake ledger first. A selected
-document creates narrow `BOM x question x source` parse tasks; only
-question-specific parsing and GPT review may promote atomic claims into the temporal
-evidence ledger. A source that cannot yet be mapped remains in
+evidence. Both loops enter the BOM material-intake ledger first. Knowledge-base
+routing creates candidates only. A specific L5 search or selection creates narrow
+`BOM x L3 x L4 x L5 x search-run x source` parse tasks; only leaf-specific parsing
+and GPT review may promote atomic claims into the temporal evidence ledger. A source that cannot yet be mapped remains in
 `unmapped/new_theme`; it must not be silently discarded or forced into an unsuitable
 question.
 
@@ -319,7 +358,7 @@ frozen backtest.
 
 For a daily IMA feed such as `环球研报直通车`, the executable sequence is:
 
-`reuse logged-in IMA page -> open previous year/month/day folder -> enumerate every visible PDF across all pages -> click each visible download control -> import completed PDFs into source/ima/<directory_date> plus archive manifest -> downstream BOM relevance review -> verify selected PDF publication date -> copy selected original into BOM source/ima/<published_at> -> create one parse task per relevant research coordinate -> specialty/DeepSeek first-pass reading -> GPT review -> append atomic claims -> refresh the question timeline and current conclusion`
+`reuse logged-in IMA page -> open previous year/month/day folder -> enumerate every visible PDF across all pages -> click each visible download control -> import completed PDFs into source/ima/<directory_date> plus archive manifest -> downstream BOM relevance review -> candidate intake -> select one L5 leaf -> verify selected PDF publication date -> copy selected original into BOM source/ima/<published_at> -> create one leaf-specific parse task -> specialty/DeepSeek first-pass reading -> GPT review -> append atomic claims -> refresh the question timeline and current conclusion`
 
 The material feed must support both canonical six-question BOM children and
 `standalone-bom` five-lens projects. It derives the allowed question coordinates
@@ -347,6 +386,10 @@ A BOM question is complete only when:
 - actual facts, forward expectations, source diversity, recency, and explicit gaps are recorded;
 - supporting and conflicting claims remain distinguishable;
 - Q6 additionally contains explicit refuting source IDs and refutation evidence.
+- its linked research-plan step passes the step evidence gate and retains source,
+  extraction, review, answer, refutation-search, and dependency traceability.
+- every mandatory L5 step in its independent L3 plan passes; direct evidence events
+  on the parent L3 rollup never complete it.
 
 A BOM S-curve stage may be asserted only after all six questions pass.
 
@@ -381,6 +424,14 @@ Default industry/project top-level order is exactly:
 
 Do not render public `下钻 QA`, source plans, raw search queries, parser traces, score worksheets, tool traces, or change logs unless the user explicitly asks for the workbench.
 
+When the user explicitly asks for a research-plan document, generate a separate
+`research_plan.html` beside the professional report. It is the human-readable
+execution workbench, not a substitute for `professional_report.html`. It must show
+every L3 as a first-level disclosure and, on opening it, the complete L4/L5 plan,
+leaf-specific source/search plan, dependencies, evidence gate, and current status.
+Both HTML files link to each other. Regenerate the plan document whenever L3 plans
+are built or the standalone report is refreshed.
+
 HTML is the default public reading artifact; Markdown is the portable audit
 sidecar. Both are generated from the same view model and must contain the same
 research claims. Industry/theme/S-curve output uses two report scopes. The parent
@@ -396,8 +447,8 @@ Each section renders `第一性原理逻辑链`, then `逻辑节点与原子观�
 `派生证据视图`. Do not render a separate lens-level `全局结论与趋势`; global
 synthesis belongs only in the leading `当前投资判断`, while node conclusions stay
 beside their evidence. Causal nodes are full-width,
-collapsed-by-default disclosures. Their visible summary shows current node state,
-conclusion, and real change. Their body contains exactly one horizontally scrollable
+collapsed-by-default disclosures. Their visible summary shows the exact research
+question, current node state, conclusion, and real change. Their body contains exactly one horizontally scrollable
 table with `发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响`. Rows use
 `published_at` and run newest to oldest; one source occupies one row. The report
 name is a blue source link. Atomic claims are numbered `1, 2, 3...`, and the final
@@ -431,7 +482,7 @@ its `project.json`, filtered `sources.jsonl`, `source/`, `material_intake/`,
 cadence, and node-level targets. A child without a completed node-specific run must
 state `partial_research`; it must not imply research completion.
 
-Inside each public BOM question module, render one compact `基本理解思路`, followed by `当前结论`, `相较上一截面的变化`, `时间演化`, `映射材料`, and `信息覆盖`. Do not render mandatory per-stage evidence cards. Logic hints orient the reader; they never constrain which material may enter the ledger. Every mapped material keeps a source link, `material_class`, and `ingestion_channel` next to the supported claim. Past conclusions may be shown only when a real prior snapshot exists. Raw IMA IDs, credentials, internal search queries, and pending parse tasks never appear in public Markdown.
+Inside each public BOM question module, render one compact `基本理解思路`, followed by `当前结论`, `相较上一截面的变化`, `时间演化`, `映射材料`, and `信息覆盖`. For a standalone BOM, every visible L3 also renders one collapsed reader-safe research-plan outline: L4 unit, L5 leaf question, required material type, and status. Do not expose raw queries or parser traces. Logic hints orient the reader; they never constrain which material may enter the ledger. Every mapped material keeps a source link, `material_class`, and `ingestion_channel` next to the supported claim. Past conclusions may be shown only when a real prior snapshot exists. Raw IMA IDs, credentials, internal search queries, and pending parse tasks never appear in public Markdown.
 
 Structured standalone BOM evidence renders publicly in this exact hierarchy:
 `BOM x lens x causal logic node x source row x numbered atomic claim`. Every
@@ -448,13 +499,15 @@ The Q1 `需求方` derived view is the sole presentation exception. When its pla
 `render_mode: demand_party_list`, render only two compact groups—`当前需求方` and
 `潜在未来需求方`—and omit node state, conclusion, change assessment, evidence
 counts, company/entity disclosures, and material tables from that Q1 block. The
-underlying evidence ledgers remain append-only and available to downstream nodes.
+L3 research question remains visible in the heading. The underlying evidence ledgers
+remain append-only and available to downstream nodes.
 
 When the Q2 derived view uses `render_mode: demand_quantity_matrix`, render exactly three outer
 groups in this order: `当前需求方`, `潜在未来需求方`, and `其它分类`. HTML renders
 each outer group as a collapsed disclosure and every specific demander or other
 information category as a second collapsed disclosure inside it. Markdown mirrors
-the same numbered hierarchy. Every current Q1 demander owns one separate table and
+the same numbered hierarchy. Its L3 research question remains visible above the
+matrix. Every current Q1 demander owns one separate table and
 may contain multiple information rows; use an explicit `数据缺口` row when no
 quantity is available. Every potential-future Q1 demander also owns a table and may
 show an empty state without entering the current baseline. `其它分类` groups
@@ -502,3 +555,7 @@ Before calling a framework change complete:
    match the node support/refute rule; proxies, context, and rejected relations use
    another effect including `unmapped`.
 8. Run `git diff --check`.
+9. Run `validate-research-plan` whenever `research_plan.json` exists and verify that
+   no completed step is missing source, extraction, GPT review, answer, refutation,
+   search-run, or dependency evidence; also verify exact one-to-one L3 child-plan
+   coverage and that parent L3 rollups are not completed by direct evidence events.
