@@ -15,12 +15,15 @@ portable audit sidecar. HTML and Markdown must not diverge in research claims,
 source mappings, dates, or conclusions.
 
 If the user explicitly requests a research-plan document, generate
-`research_plan.html` beside the professional report. This is a separate execution
-workbench generated from `research_plan.json` plus the active per-L3 child plans.
-Every L3 is visible at the first disclosure level; opening it exposes all L4/L5
-questions, leaf-specific source/search plans, dependencies, evidence gates, and
-ledger-derived status. `professional_report.html` and `research_plan.html` must link
-to each other and be regenerated together. The plan HTML is not a second plan store.
+`research_plan.md` beside the professional report. It is a separate human-readable
+question hierarchy generated from `research_plan.json` plus the active per-L3 child
+plans. The initial document contains only L1/L2/L3. Every L3 is a parent section;
+later versions show only child questions actually created by failed answerability
+gates, in their hierarchy up to L5. Every current terminal question lists required data, analysis,
+and no other repeated execution metadata. Source plans, dependencies, evidence gates,
+and ledger-derived status remain in structured artifacts. Display wording may remove
+boilerplate but must preserve canonical question IDs. Regenerate the Markdown plan
+with plan builds, dynamic expansions, and report refreshes. Do not generate a plan HTML.
 
 HTML must work as a self-contained local file, remain readable without a server,
 and link directly to project-local PDF originals. Presentation JavaScript may
@@ -39,9 +42,9 @@ in this locked order; HTML renders the same semantic section sequence:
 
 Internal QA trees, raw source queries, parser outputs, reviews, score worksheets, tool traces, credentials, and change logs are excluded unless the user explicitly asks for a workbench.
 Public `下钻 QA` is therefore opt-in. Do not render raw search queries in a public report.
-For `standalone-bom`, a reader-safe L3 plan outline is required: each visible L3
-shows its L4 units, L5 leaf questions, required material types, and current status.
-This outline does not expose raw search queries, parser prompts, or internal traces.
+For `standalone-bom`, every L3 research question remains visible in the public
+report, but its nested research plan belongs only in `research_plan.md`; do not
+duplicate the plan tree in the HTML report or Markdown audit sidecar.
 
 `report_scope: standalone-bom` is the only exception. It contains five collapsible
 top-level sections: `需求侧`, `供给侧`, `技术侧`, `估值侧`, and `ESG`.
@@ -53,7 +56,7 @@ Industry, theme, and S-curve research uses one parent index and one child projec
 ```text
 <industry_project>/professional_report.md
 <industry_project>/professional_report.html                 # default public view
-<industry_project>/research_plan.html                       # explicit execution workbench
+<industry_project>/research_plan.md                         # adaptive question hierarchy
 <industry_project>/boms/manifest.json
 <industry_project>/boms/<node_id>/professional_report.md
 <industry_project>/boms/<node_id>/professional_report.html # default public view
@@ -107,8 +110,7 @@ Each HTML section contains exactly:
 2. `逻辑节点与原子观点材料`: full-width causal nodes in canonical order. The
    visible node summary labels and shows the exact L3 research question, current
    state, conclusion, and real baseline/change.
-   The collapsed body first contains the L3's own collapsed L4/L5 research-plan
-   outline, then exactly one horizontally scrollable table:
+   The collapsed body contains exactly one horizontally scrollable table:
    `发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响`. Rows use
    `published_at` from newest to oldest, and one source occupies one row. The report
    name is a blue link. Atomic claims are numbered `1, 2, 3...`; the final cell
@@ -426,8 +428,8 @@ Freeze recommendations before attaching labels.
 6. Every six-question module keeps its temporal sequence; every logic-chain-centered standalone report keeps `当前投资判断`, then each lens keeps `第一性原理逻辑链 -> 逻辑节点与原子观点材料 -> 可选派生证据视图`, visibly renders the exact research question on every L3 node, and keeps one five-column claim-level source table per causal node, without a separate lens-level `全局结论与趋势`.
 7. Backtest cutoff and label isolation remain enforced.
 8. Public reports contain no raw process traces or change logs.
-9. When requested, the dedicated plan HTML preserves exact L3 coverage and renders
-   every active L5 leaf; broad-material counts never imply leaf completion.
+9. When requested, the dedicated plan Markdown preserves exact L3 coverage and renders
+   every current terminal question; broad-material counts never imply completion.
 
 ## Validation
 
@@ -439,8 +441,8 @@ Before publication:
 4. run `validate-research-artifacts --require-l3` when artifacts exist;
 5. verify scope-specific section order, parent-child links where applicable, six-question or five-lens identity, newest-to-oldest causal-node material tables, parallel claim/effect numbering, source links, and no public process text;
 6. run `git diff --check`.
-7. when `research_plan.html` is present, verify exact L3/L5 counts, leaf questions,
-   source/search plans, dependencies, gates, bidirectional report links, and status
+7. when `research_plan.md` is present, verify exact L3/leaf counts, maximum depth
+   five, parent-child continuity, leaf data and analysis requirements, and status
    derived from the append-only child ledgers.
 
 HTML visual and contract validation is the publication gate; Markdown validation

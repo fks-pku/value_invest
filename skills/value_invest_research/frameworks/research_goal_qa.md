@@ -42,10 +42,15 @@ Maximum depth is five:
 - L1: adapted research direction.
 - L2: one coherent mechanism bucket.
 - L3: one investment decision question.
-- L4: mandatory research dimensions owned by one independent L3 plan.
-- L5: finest executable leaf questions; searches and evidence gates bind here.
+- L4: questions created only after an L3 answerability gate exposes a concrete gap.
+- L5: questions created only after an L4 answerability gate exposes a concrete gap.
 
-Every L3-L5 unit records:
+The initial architecture stops at L3. Every L3 is initially the executable terminal
+question and records the data and analysis needed for a first answer attempt. Search
+and analysis run before decomposition. If the evidence gate passes, the branch
+stops. If it fails, preserve the gap and add only one next level containing the
+smallest questions necessary to close that gap. Every current terminal question at
+L3, L4, or L5 records:
 
 - `decision_use`
 - `materiality`
@@ -59,42 +64,50 @@ Every L3-L5 unit records:
 - `skill_dispatch`
 - `fact`, `inference`, `judgment`, `gap`, `trigger`, `source_links`
 
-Every L3 must own a separate plan even when its wording appears simple. Stop
-drilling only at L5, when one targeted search plan and one extraction schema can
-answer that leaf without mixing entities, metrics, periods, routes, or mechanisms.
+Every L3 must own a separate plan even when its wording appears simple. Do not
+pre-generate L4/L5 for symmetry or completeness. Continue drilling only when the
+current material and analysis demonstrate that the question still mixes entities,
+metrics, periods, routes, mechanisms, or unresolved contradictions. Add one level
+per failed gate. No branch may exceed L5.
 
 ## 3A. Build the Executable Research Plan
 
 The QA tree explains what must be answered. The parent `research_plan.json` indexes
 L3 rollups. Every L3 then owns an independent plan at
-`l3_research_plans/<l3_node_id>/research_plan.json`; that plan drills through L4 and
-converts only L5 leaves into stable executable steps:
+`l3_research_plans/<l3_node_id>/research_plan.json`; that plan records an adaptive
+question tree. The first version contains only the L3 root as a stable executable
+step; later immutable versions replace an unanswerable terminal with its L4 or L5
+children:
 
 - `step_id` / `question_node_id` and canonical stage;
 - explicit dependencies on earlier research stages;
-- `decision_use` and required materials;
+- `decision_use`, required data, and analysis plan;
 - professional `source_universe_plan` and question-specific `source_plan`;
 - `minimum_evidence_gate`, `refuting_source_plan`, and freshness/cutoff rule;
 - specialty parser, answer contract, and traceability contract.
 
 Steps within one L3 plan may run in parallel when independent. A later step cannot
 complete before its declared dependencies, and the parent L3 rollup cannot complete
-until all mandatory L5 leaves pass. Save every parent and child plan version
+until the current question passes or all mandatory descendants created from a
+failed gate pass. Save every parent and child plan version
 immutably in its local `research_plan_history/<plan_id>.json`; each
 `research_plan.json` points to the active version.
 
-Each L5 source collection must be initiated from that leaf and preserve
-`l3_plan_id`, `l3_node_id`, `l4_question_id`, `leaf_question_id`, `leaf_step_id`,
-and `search_run_id`. Provider archives and broad knowledge-base scans are candidate
-intake only. They never satisfy a leaf or L3 gate through later bulk mapping. If one
-document helps several leaves, create a separate attachment, extraction, and GPT
-review for every leaf.
+Each source collection must be initiated from the current terminal question and
+preserve `l3_plan_id`, `l3_node_id`, `question_node_id`, `question_level`,
+`research_step_id`, and `search_run_id`. Provider archives and broad knowledge-base
+scans are candidate intake only. They never satisfy a question gate through later
+bulk mapping. If one document helps several questions, create a separate attachment,
+extraction, and GPT review for every question.
 
 When an explicit research-plan document is requested, render the same active child
-plans into `research_plan.html`: every L3 is visible at the first disclosure level,
-and its body contains the complete L4/L5 questions, leaf source/search plan,
-dependencies, evidence gate, and event-projected status. The document is regenerated
-with plan builds and report refreshes; it never becomes a second source of truth.
+plans into `research_plan.md`: the initial document contains L1/L2/L3 only; later
+versions add only child questions created by failed gates. Current terminal questions
+list required data and analysis. Keep source plans, dependencies, evidence gates, and event-projected
+status in the structured plans and append-only ledgers instead of repeating them
+under every leaf. The renderer may shorten boilerplate while preserving canonical
+question IDs. The document is regenerated with plan builds, expansions, and report
+refreshes; it never becomes a second source of truth. Do not generate a plan HTML.
 
 Execution is an append-only event stream in `research_step_events.jsonl`:
 
@@ -102,7 +115,7 @@ Execution is an append-only event stream in `research_step_events.jsonl`:
 
 Blocked and reopened work uses `step_blocked` and `step_reopened`. Never overwrite
 past status or answers. Project the current step state from all events. The common
-`research_step_id` must flow through leaf tasks, source extractions, GPT reviews,
+`research_step_id` must flow through question tasks, source extractions, GPT reviews,
 and synthesized answers.
 
 ## 4. S-Curve and BOM Adaptation

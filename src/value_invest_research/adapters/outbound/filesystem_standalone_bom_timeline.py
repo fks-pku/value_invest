@@ -76,9 +76,9 @@ class FileSystemStandaloneBomTimelineRepository:
         path.write_text(html, encoding="utf-8")
         return path
 
-    def write_research_plan_html(self, html: str) -> Path:
-        path = self.project_dir / "research_plan.html"
-        path.write_text(html, encoding="utf-8")
+    def write_research_plan_markdown(self, markdown: str) -> Path:
+        path = self.project_dir / "research_plan.md"
+        path.write_text(markdown, encoding="utf-8")
         return path
 
     def merge_claims(self, rows: list[dict[str, Any]]) -> int:

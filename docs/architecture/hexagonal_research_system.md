@@ -31,7 +31,7 @@ src/value_invest_research/
     domain_playbooks.py        # domain-specific question adapters
     question_architecture.py   # adaptive QA architecture, maximum depth five
     research_plan.py           # executable steps, event projection, completion gates
-    l3_research_plan.py        # one L4/L5 child plan per L3 and leaf-search contract
+    l3_research_plan.py        # L3-first dynamic tree and active-question search contract
     bom_research_readiness.py  # semantic completion, evidence gates, target gating
     report_view_model.py       # renderer-facing public report model
     research_artifacts.py      # pure data objects for research artifacts
@@ -64,7 +64,7 @@ src/value_invest_research/
       filesystem_research_plan.py
       canonical_html_report_renderer.py
       canonical_markdown_report_renderer.py # canonical public renderer
-      standalone_bom_research_plan_html_renderer.py # explicit L3-L5 plan document
+      research_plan_markdown_renderer.py # adaptive question-tree plan document
       report_sections/          # compatibility HTML section adapters
       ...                      # planned: LLM, DeepSeek, SEC, yfinance, renderer adapters
 ```
@@ -336,8 +336,8 @@ QuestionArchitecture
   -> immutable research_plan_history/<plan_id>.json
   -> l3_research_plans/index.json
   -> one l3_research_plans/<l3_node_id>/research_plan.json per L3
-  -> L4 units + finest L5 executable steps
-  -> research_plan.html generated from the active child plans
+  -> initial L3 executable step; gap-triggered L4/L5 expansion, one level at a time
+  -> research_plan.md generated from the active child plans
 
 plan step execution
   -> RecordResearchStepEvent use case
@@ -345,10 +345,11 @@ plan step execution
   -> domain.research_plan.validate_research_plan_execution
   -> current step state + evidence/dependency gate
 
-leaf material collection
-  -> select one active L5 leaf
-  -> leaf-specific search with l3/l4/l5/search-run trace
-  -> one parse and GPT review per leaf x source
+active-question material collection
+  -> select the current deepest unanswered question (initially L3)
+  -> question-specific search with l3/question/level/search-run trace
+  -> one parse and GPT review per question x source
+  -> answerability gate: stop, or expand the concrete gap by one level
   -> broad provider/knowledge-base intake remains candidate-only
 
 research project files
@@ -377,12 +378,12 @@ source/ima/
   l3_research_plans/
     index.json                         # exact L3 child-plan coverage
     <l3_node_id>/
-      research_plan.json              # active L4/L5 plan
+      research_plan.json              # active adaptive question tree and leaf steps
       research_plan_history/<plan_id>.json
       research_step_events.jsonl       # leaf execution trace
   professional_report.html            # default chain map + BOM navigation + aggregate targets
   professional_report.md              # portable audit sidecar
-  research_plan.html                  # explicit L3 -> L4 -> L5 execution workbench
+  research_plan.md                    # concise parent-child questions; leaf data and analysis only
   qa_tree.json / workbench / sources
   material_intake/
     documents.jsonl                    # classified search/IMA discoveries

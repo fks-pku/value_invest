@@ -162,18 +162,26 @@ class ResearchPlanTests(unittest.TestCase):
                     encoding="utf-8"
                 )
             )
-            self.assertEqual(len(child["l4_units"]), 7)
-            self.assertEqual(len(child["steps"]), 7)
+            self.assertEqual(child["question_tree"]["level"], 3)
+            self.assertEqual(child["question_tree"]["children"], [])
+            self.assertEqual(len(child["steps"]), 1)
+            self.assertEqual(child["steps"][0]["level"], 3)
+            self.assertTrue(
+                all(step["required_data"] for step in child["steps"])
+            )
+            self.assertTrue(
+                all(step["analysis_plan"] for step in child["steps"])
+            )
             self.assertTrue(
                 all(
                     step["collection_contract"]["origin"]
-                    == "leaf_question_search"
+                    == "active_question_search"
                     for step in child["steps"]
                 )
             )
             qa_tree = json.loads((project_dir / "qa_tree.json").read_text(encoding="utf-8"))
             leaf = next(node for node in qa_tree["nodes"] if node.get("research_step_id"))
-            self.assertEqual(leaf["research_step_id"], f"step:{leaf['id']}")
+            self.assertEqual(leaf["research_step_id"], f"question:{leaf['id']}")
 
             out = StringIO()
             with redirect_stdout(out):

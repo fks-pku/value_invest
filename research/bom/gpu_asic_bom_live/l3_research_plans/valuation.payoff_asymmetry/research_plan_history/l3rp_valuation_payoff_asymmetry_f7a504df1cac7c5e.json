@@ -1,0 +1,1264 @@
+{
+  "completion_policy": {
+    "l3_complete_when": "all_mandatory_leaf_steps_complete",
+    "legacy_broad_search": "audit_only_not_retroactive_completion",
+    "missing_leaf_evidence": "blocked_not_inferred"
+  },
+  "l3_node_id": "valuation.payoff_asymmetry",
+  "l3_question": "综合情景概率后，上行、下行和可监控性是否支持行动？",
+  "l3_title": "上下行赔率与动作",
+  "lens_id": "valuation",
+  "logic_contract": {
+    "company_bridge_fields": [
+      "情景赔率",
+      "动作状态",
+      "降级阈值"
+    ],
+    "downstream_node_ids": [],
+    "indicators": [
+      "情景收益",
+      "概率",
+      "最大回撤风险",
+      "kill test"
+    ],
+    "refute_rule": "高增长已充分定价、下行无法量化或缺少退出触发器。",
+    "support_rule": "上行赔率显著高于可量化下行，且反证触发器可及时监控。",
+    "update_cadence": "weekly"
+  },
+  "material_collection_policy": {
+    "bulk_pool_mapping_eligible": false,
+    "push_ingestion_role": "candidate_only",
+    "required_origin": "leaf_question_search",
+    "required_trace_fields": [
+      "l3_plan_id",
+      "l3_node_id",
+      "l4_question_id",
+      "leaf_question_id",
+      "leaf_step_id",
+      "search_run_id"
+    ],
+    "source_reuse_rule": "The same source may serve another leaf only through a separate leaf attachment, extraction, and GPT review for that leaf."
+  },
+  "parent_research_plan_id": "rp_l3_ad2f75d22ff6dec8",
+  "plan_id": "l3rp_valuation_payoff_asymmetry_f7a504df1cac7c5e",
+  "plan_type": "l3_deep_research",
+  "question_tree": {
+    "children": [
+      {
+        "children": [
+          {
+            "analysis_plan": [
+              "统一定义、单位和期间，剔除不可比口径",
+              "比较当前、历史与前瞻，判断方向、速度和是否出现拐点",
+              "区分实际事实、管理层预期和第三方预测，并记录分歧"
+            ],
+            "depends_on_question_ids": [],
+            "level": 5,
+            "question": "围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，情景收益应按什么口径衡量，当前值、可比历史和已披露前瞻分别是什么？",
+            "question_id": "valuation.payoff_asymmetry.facts.indicator_01",
+            "required_data": [
+              "情景收益的实际值或可核验定性事实",
+              "统计对象、纳入排除边界、定义、单位与样本范围",
+              "发布日期、事实所属期间、预测目标期间与原文定位",
+              "至少一项可比历史或前瞻锚点；不存在时明确记录缺口"
+            ],
+            "requires_refutation_search": false,
+            "research_dimension": "indicator",
+            "title": "情景收益"
+          },
+          {
+            "analysis_plan": [
+              "统一定义、单位和期间，剔除不可比口径",
+              "比较当前、历史与前瞻，判断方向、速度和是否出现拐点",
+              "区分实际事实、管理层预期和第三方预测，并记录分歧"
+            ],
+            "depends_on_question_ids": [],
+            "level": 5,
+            "question": "围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，概率应按什么口径衡量，当前值、可比历史和已披露前瞻分别是什么？",
+            "question_id": "valuation.payoff_asymmetry.facts.indicator_02",
+            "required_data": [
+              "概率的实际值或可核验定性事实",
+              "统计对象、纳入排除边界、定义、单位与样本范围",
+              "发布日期、事实所属期间、预测目标期间与原文定位",
+              "至少一项可比历史或前瞻锚点；不存在时明确记录缺口"
+            ],
+            "requires_refutation_search": false,
+            "research_dimension": "indicator",
+            "title": "概率"
+          },
+          {
+            "analysis_plan": [
+              "统一定义、单位和期间，剔除不可比口径",
+              "比较当前、历史与前瞻，判断方向、速度和是否出现拐点",
+              "区分实际事实、管理层预期和第三方预测，并记录分歧"
+            ],
+            "depends_on_question_ids": [],
+            "level": 5,
+            "question": "围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，最大回撤风险应按什么口径衡量，当前值、可比历史和已披露前瞻分别是什么？",
+            "question_id": "valuation.payoff_asymmetry.facts.indicator_03",
+            "required_data": [
+              "最大回撤风险的实际值或可核验定性事实",
+              "统计对象、纳入排除边界、定义、单位与样本范围",
+              "发布日期、事实所属期间、预测目标期间与原文定位",
+              "至少一项可比历史或前瞻锚点；不存在时明确记录缺口"
+            ],
+            "requires_refutation_search": false,
+            "research_dimension": "indicator",
+            "title": "最大回撤风险"
+          },
+          {
+            "analysis_plan": [
+              "统一定义、单位和期间，剔除不可比口径",
+              "比较当前、历史与前瞻，判断方向、速度和是否出现拐点",
+              "区分实际事实、管理层预期和第三方预测，并记录分歧"
+            ],
+            "depends_on_question_ids": [],
+            "level": 5,
+            "question": "围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，kill test应按什么口径衡量，当前值、可比历史和已披露前瞻分别是什么？",
+            "question_id": "valuation.payoff_asymmetry.facts.indicator_04",
+            "required_data": [
+              "kill test的实际值或可核验定性事实",
+              "统计对象、纳入排除边界、定义、单位与样本范围",
+              "发布日期、事实所属期间、预测目标期间与原文定位",
+              "至少一项可比历史或前瞻锚点；不存在时明确记录缺口"
+            ],
+            "requires_refutation_search": false,
+            "research_dimension": "indicator",
+            "title": "kill test"
+          }
+        ],
+        "level": 4,
+        "question": "要回答“综合情景概率后，上行、下行和可监控性是否支持行动？”，每个核心指标的可验证状态分别是什么？",
+        "question_id": "valuation.payoff_asymmetry.facts",
+        "title": "关键事实"
+      },
+      {
+        "children": [
+          {
+            "analysis_plan": [
+              "还原因果链并区分相关性、领先指标与真实驱动",
+              "检查机制是否跨实体、跨期间成立，并识别替代解释",
+              "明确哪些证据直接支持、仅构成边界或仍待判断"
+            ],
+            "depends_on_question_ids": [
+              "valuation.payoff_asymmetry.facts.indicator_01",
+              "valuation.payoff_asymmetry.facts.indicator_02",
+              "valuation.payoff_asymmetry.facts.indicator_03",
+              "valuation.payoff_asymmetry.facts.indicator_04"
+            ],
+            "level": 5,
+            "question": "支持条件“上行赔率显著高于可量化下行，且反证触发器可及时监控。”是否有直接因果证据，而非只有相关性？",
+            "question_id": "valuation.payoff_asymmetry.mechanism.support",
+            "required_data": [
+              "能够连接原因、约束、行为和结果的直接证据",
+              "客户、供应商或竞争者对同一机制的交叉材料",
+              "机制生效的对象、时间、边界条件与原文定位"
+            ],
+            "requires_refutation_search": false,
+            "research_dimension": "mechanism",
+            "title": "核心机制"
+          },
+          {
+            "analysis_plan": [
+              "建立从业务量到收入、利润和现金流的可复算桥接",
+              "做基准、上行和下行情景，避免把主题暴露当作盈利兑现",
+              "标出最敏感假设和下一节点需要继承的结论"
+            ],
+            "depends_on_question_ids": [
+              "valuation.payoff_asymmetry.mechanism.support"
+            ],
+            "level": 5,
+            "question": "该机制如何传导到下游决策节点，并改变情景赔率、动作状态、降级阈值？",
+            "question_id": "valuation.payoff_asymmetry.mechanism.bridge",
+            "required_data": [
+              "下游节点：待明确 的可观测变化",
+              "公司桥接字段：情景赔率、动作状态、降级阈值 的披露",
+              "数量、价格、份额、成本、利润率或现金流之间的连接数据",
+              "公司/分部、期间、会计口径与原文定位"
+            ],
+            "requires_refutation_search": false,
+            "research_dimension": "financial_bridge",
+            "title": "下游与财务桥"
+          }
+        ],
+        "level": 4,
+        "question": "关键事实为什么会改变父问题的答案，并如何传导到下游和财务结果？",
+        "question_id": "valuation.payoff_asymmetry.mechanism",
+        "title": "因果与商业传导"
+      },
+      {
+        "analysis_plan": [
+          "主动搜索最强反例，而不是只对支持材料做风险附注",
+          "比较正反证据的直接性、时效、口径和解释力",
+          "给出推翻、削弱、边界或未决判断，并定义可监测失效条件"
+        ],
+        "depends_on_question_ids": [
+          "valuation.payoff_asymmetry.facts.indicator_01",
+          "valuation.payoff_asymmetry.facts.indicator_02",
+          "valuation.payoff_asymmetry.facts.indicator_03",
+          "valuation.payoff_asymmetry.facts.indicator_04"
+        ],
+        "level": 4,
+        "question": "哪些证据会满足反证条件“高增长已充分定价、下行无法量化或缺少退出触发器。”，从而推翻、削弱或限定父问题的答案？",
+        "question_id": "valuation.payoff_asymmetry.refutation",
+        "required_data": [
+          "与支持证据同口径的反向指标、取消、延期、替代或监管事实",
+          "最强可信反方观点及其数据和假设",
+          "失效阈值、持续时间、监测频率与原文定位"
+        ],
+        "requires_refutation_search": true,
+        "research_dimension": "refutation",
+        "title": "反证与边界"
+      }
+    ],
+    "level": 3,
+    "question": "综合情景概率后，上行、下行和可监控性是否支持行动？",
+    "question_id": "valuation.payoff_asymmetry",
+    "title": "上下行赔率与动作"
+  },
+  "question_tree_policy": {
+    "branching": "adaptive_to_parent_question",
+    "leaf_definition": "a terminal question with required data and analysis",
+    "maximum_depth": 5,
+    "root_level": 3
+  },
+  "research_goal": {
+    "as_of_date": "2026-09-02",
+    "decision_boundary": "research observation, not trading instruction",
+    "domain_hint": "semiconductor_hardware",
+    "logic_chain_version": "2026-08-12.v2",
+    "object_id": "gpu_asic",
+    "q_map": {
+      "demand": "需求侧",
+      "esg": "ESG",
+      "supply": "供给侧",
+      "technology": "技术侧",
+      "valuation": "估值侧"
+    },
+    "report_date": "2026-09-02",
+    "research_type": "technology_route",
+    "run_mode": "live_prediction",
+    "topic": "GPU / ASIC BOM 实时端到端投资研究"
+  },
+  "schema_version": "3.0",
+  "steps": [
+    {
+      "analysis_plan": [
+        "统一定义、单位和期间，剔除不可比口径",
+        "比较当前、历史与前瞻，判断方向、速度和是否出现拐点",
+        "区分实际事实、管理层预期和第三方预测，并记录分歧"
+      ],
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Answer only this leaf; separate facts, inference, judgment, refutation, and gaps."
+      },
+      "collection_contract": {
+        "bulk_pool_mapping_forbidden": true,
+        "origin": "leaf_question_search",
+        "query_must_name_leaf_question": true,
+        "required_trace_fields": [
+          "l3_plan_id",
+          "l3_node_id",
+          "l4_question_id",
+          "leaf_question_id",
+          "leaf_step_id",
+          "search_run_id"
+        ]
+      },
+      "decision_use": "Answer this terminal leaf before rolling up L3 valuation.payoff_asymmetry.",
+      "depends_on_step_ids": [],
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: weekly.",
+      "initial_status": "pending",
+      "l3_node_id": "valuation.payoff_asymmetry",
+      "l3_plan_id": "l3rp_valuation_payoff_asymmetry_f7a504df1cac7c5e",
+      "l4_question_id": "valuation.payoff_asymmetry.facts",
+      "leaf_question_id": "valuation.payoff_asymmetry.facts.indicator_01",
+      "leaf_step_id": "leaf:valuation.payoff_asymmetry.facts.indicator_01",
+      "level": 5,
+      "minimum_evidence_gate": {
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "leaf_search_run_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "A leaf-specific search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
+      },
+      "preferred_specialty_skill": "valuation-analysis",
+      "question": "围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，情景收益应按什么口径衡量，当前值、可比历史和已披露前瞻分别是什么？",
+      "question_node_id": "valuation.payoff_asymmetry.facts.indicator_01",
+      "question_path": [
+        {
+          "level": 3,
+          "question": "综合情景概率后，上行、下行和可监控性是否支持行动？",
+          "question_id": "valuation.payoff_asymmetry"
+        },
+        {
+          "level": 4,
+          "question": "要回答“综合情景概率后，上行、下行和可监控性是否支持行动？”，每个核心指标的可验证状态分别是什么？",
+          "question_id": "valuation.payoff_asymmetry.facts"
+        },
+        {
+          "level": 5,
+          "question": "围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，情景收益应按什么口径衡量，当前值、可比历史和已披露前瞻分别是什么？",
+          "question_id": "valuation.payoff_asymmetry.facts.indicator_01"
+        }
+      ],
+      "refuting_source_plan": [
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 高增长已充分定价、下行无法量化或缺少退出触发器。."
+      ],
+      "required_data": [
+        "情景收益的实际值或可核验定性事实",
+        "统计对象、纳入排除边界、定义、单位与样本范围",
+        "发布日期、事实所属期间、预测目标期间与原文定位",
+        "至少一项可比历史或前瞻锚点；不存在时明确记录缺口"
+      ],
+      "required_materials": [
+        "情景收益的实际值或可核验定性事实",
+        "统计对象、纳入排除边界、定义、单位与样本范围",
+        "发布日期、事实所属期间、预测目标期间与原文定位",
+        "至少一项可比历史或前瞻锚点；不存在时明确记录缺口"
+      ],
+      "research_dimension": "indicator",
+      "sequence": 1,
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，情景收益应按什么口径衡量，当前值、可比历史和已披露前瞻分别是什么？ 情景收益的实际值或可核验定性事实 / 统计对象、纳入排除边界、定义、单位与样本范围 / 发布日期、事实所属期间、预测目标期间与原文定位"
+          ],
+          "expected_fields": [
+            "published_at",
+            "effective_period",
+            "target_period",
+            "entity",
+            "metric",
+            "value",
+            "unit",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "financial-statement-analysis",
+          "source_bucket": "evidence",
+          "source_type": "official filing, official dataset, customer or supplier disclosure",
+          "why_needed": "Provides the directly measured fact and a comparable time anchor."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，情景收益应按什么口径衡量，当前值、可比历史和已披露前瞻分别是什么？ 情景收益的实际值或可核验定性事实 / 统计对象、纳入排除边界、定义、单位与样本范围 / 发布日期、事实所属期间、预测目标期间与原文定位"
+          ],
+          "expected_fields": [
+            "methodology",
+            "sample",
+            "period",
+            "estimate",
+            "assumptions",
+            "limitations"
+          ],
+          "preferred_skill": "industry-report-analysis",
+          "source_bucket": "research_report",
+          "source_type": "independent specialist dataset or disclosed-method forecast",
+          "why_needed": "Tests the official data against an independent measure or forecast."
+        }
+      ],
+      "source_universe_plan": {
+        "domain_id": "",
+        "priority_source_ids": [],
+        "registry": "config/source_universes.json"
+      },
+      "stage_id": "valuation.payoff_asymmetry.facts",
+      "step_id": "leaf:valuation.payoff_asymmetry.facts.indicator_01",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "search_run_id",
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "analysis_plan": [
+        "统一定义、单位和期间，剔除不可比口径",
+        "比较当前、历史与前瞻，判断方向、速度和是否出现拐点",
+        "区分实际事实、管理层预期和第三方预测，并记录分歧"
+      ],
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Answer only this leaf; separate facts, inference, judgment, refutation, and gaps."
+      },
+      "collection_contract": {
+        "bulk_pool_mapping_forbidden": true,
+        "origin": "leaf_question_search",
+        "query_must_name_leaf_question": true,
+        "required_trace_fields": [
+          "l3_plan_id",
+          "l3_node_id",
+          "l4_question_id",
+          "leaf_question_id",
+          "leaf_step_id",
+          "search_run_id"
+        ]
+      },
+      "decision_use": "Answer this terminal leaf before rolling up L3 valuation.payoff_asymmetry.",
+      "depends_on_step_ids": [],
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: weekly.",
+      "initial_status": "pending",
+      "l3_node_id": "valuation.payoff_asymmetry",
+      "l3_plan_id": "l3rp_valuation_payoff_asymmetry_f7a504df1cac7c5e",
+      "l4_question_id": "valuation.payoff_asymmetry.facts",
+      "leaf_question_id": "valuation.payoff_asymmetry.facts.indicator_02",
+      "leaf_step_id": "leaf:valuation.payoff_asymmetry.facts.indicator_02",
+      "level": 5,
+      "minimum_evidence_gate": {
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "leaf_search_run_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "A leaf-specific search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
+      },
+      "preferred_specialty_skill": "valuation-analysis",
+      "question": "围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，概率应按什么口径衡量，当前值、可比历史和已披露前瞻分别是什么？",
+      "question_node_id": "valuation.payoff_asymmetry.facts.indicator_02",
+      "question_path": [
+        {
+          "level": 3,
+          "question": "综合情景概率后，上行、下行和可监控性是否支持行动？",
+          "question_id": "valuation.payoff_asymmetry"
+        },
+        {
+          "level": 4,
+          "question": "要回答“综合情景概率后，上行、下行和可监控性是否支持行动？”，每个核心指标的可验证状态分别是什么？",
+          "question_id": "valuation.payoff_asymmetry.facts"
+        },
+        {
+          "level": 5,
+          "question": "围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，概率应按什么口径衡量，当前值、可比历史和已披露前瞻分别是什么？",
+          "question_id": "valuation.payoff_asymmetry.facts.indicator_02"
+        }
+      ],
+      "refuting_source_plan": [
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 高增长已充分定价、下行无法量化或缺少退出触发器。."
+      ],
+      "required_data": [
+        "概率的实际值或可核验定性事实",
+        "统计对象、纳入排除边界、定义、单位与样本范围",
+        "发布日期、事实所属期间、预测目标期间与原文定位",
+        "至少一项可比历史或前瞻锚点；不存在时明确记录缺口"
+      ],
+      "required_materials": [
+        "概率的实际值或可核验定性事实",
+        "统计对象、纳入排除边界、定义、单位与样本范围",
+        "发布日期、事实所属期间、预测目标期间与原文定位",
+        "至少一项可比历史或前瞻锚点；不存在时明确记录缺口"
+      ],
+      "research_dimension": "indicator",
+      "sequence": 2,
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，概率应按什么口径衡量，当前值、可比历史和已披露前瞻分别是什么？ 概率的实际值或可核验定性事实 / 统计对象、纳入排除边界、定义、单位与样本范围 / 发布日期、事实所属期间、预测目标期间与原文定位"
+          ],
+          "expected_fields": [
+            "published_at",
+            "effective_period",
+            "target_period",
+            "entity",
+            "metric",
+            "value",
+            "unit",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "financial-statement-analysis",
+          "source_bucket": "evidence",
+          "source_type": "official filing, official dataset, customer or supplier disclosure",
+          "why_needed": "Provides the directly measured fact and a comparable time anchor."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，概率应按什么口径衡量，当前值、可比历史和已披露前瞻分别是什么？ 概率的实际值或可核验定性事实 / 统计对象、纳入排除边界、定义、单位与样本范围 / 发布日期、事实所属期间、预测目标期间与原文定位"
+          ],
+          "expected_fields": [
+            "methodology",
+            "sample",
+            "period",
+            "estimate",
+            "assumptions",
+            "limitations"
+          ],
+          "preferred_skill": "industry-report-analysis",
+          "source_bucket": "research_report",
+          "source_type": "independent specialist dataset or disclosed-method forecast",
+          "why_needed": "Tests the official data against an independent measure or forecast."
+        }
+      ],
+      "source_universe_plan": {
+        "domain_id": "",
+        "priority_source_ids": [],
+        "registry": "config/source_universes.json"
+      },
+      "stage_id": "valuation.payoff_asymmetry.facts",
+      "step_id": "leaf:valuation.payoff_asymmetry.facts.indicator_02",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "search_run_id",
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "analysis_plan": [
+        "统一定义、单位和期间，剔除不可比口径",
+        "比较当前、历史与前瞻，判断方向、速度和是否出现拐点",
+        "区分实际事实、管理层预期和第三方预测，并记录分歧"
+      ],
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Answer only this leaf; separate facts, inference, judgment, refutation, and gaps."
+      },
+      "collection_contract": {
+        "bulk_pool_mapping_forbidden": true,
+        "origin": "leaf_question_search",
+        "query_must_name_leaf_question": true,
+        "required_trace_fields": [
+          "l3_plan_id",
+          "l3_node_id",
+          "l4_question_id",
+          "leaf_question_id",
+          "leaf_step_id",
+          "search_run_id"
+        ]
+      },
+      "decision_use": "Answer this terminal leaf before rolling up L3 valuation.payoff_asymmetry.",
+      "depends_on_step_ids": [],
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: weekly.",
+      "initial_status": "pending",
+      "l3_node_id": "valuation.payoff_asymmetry",
+      "l3_plan_id": "l3rp_valuation_payoff_asymmetry_f7a504df1cac7c5e",
+      "l4_question_id": "valuation.payoff_asymmetry.facts",
+      "leaf_question_id": "valuation.payoff_asymmetry.facts.indicator_03",
+      "leaf_step_id": "leaf:valuation.payoff_asymmetry.facts.indicator_03",
+      "level": 5,
+      "minimum_evidence_gate": {
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "leaf_search_run_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "A leaf-specific search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
+      },
+      "preferred_specialty_skill": "valuation-analysis",
+      "question": "围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，最大回撤风险应按什么口径衡量，当前值、可比历史和已披露前瞻分别是什么？",
+      "question_node_id": "valuation.payoff_asymmetry.facts.indicator_03",
+      "question_path": [
+        {
+          "level": 3,
+          "question": "综合情景概率后，上行、下行和可监控性是否支持行动？",
+          "question_id": "valuation.payoff_asymmetry"
+        },
+        {
+          "level": 4,
+          "question": "要回答“综合情景概率后，上行、下行和可监控性是否支持行动？”，每个核心指标的可验证状态分别是什么？",
+          "question_id": "valuation.payoff_asymmetry.facts"
+        },
+        {
+          "level": 5,
+          "question": "围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，最大回撤风险应按什么口径衡量，当前值、可比历史和已披露前瞻分别是什么？",
+          "question_id": "valuation.payoff_asymmetry.facts.indicator_03"
+        }
+      ],
+      "refuting_source_plan": [
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 高增长已充分定价、下行无法量化或缺少退出触发器。."
+      ],
+      "required_data": [
+        "最大回撤风险的实际值或可核验定性事实",
+        "统计对象、纳入排除边界、定义、单位与样本范围",
+        "发布日期、事实所属期间、预测目标期间与原文定位",
+        "至少一项可比历史或前瞻锚点；不存在时明确记录缺口"
+      ],
+      "required_materials": [
+        "最大回撤风险的实际值或可核验定性事实",
+        "统计对象、纳入排除边界、定义、单位与样本范围",
+        "发布日期、事实所属期间、预测目标期间与原文定位",
+        "至少一项可比历史或前瞻锚点；不存在时明确记录缺口"
+      ],
+      "research_dimension": "indicator",
+      "sequence": 3,
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，最大回撤风险应按什么口径衡量，当前值、可比历史和已披露前瞻分别是什么？ 最大回撤风险的实际值或可核验定性事实 / 统计对象、纳入排除边界、定义、单位与样本范围 / 发布日期、事实所属期间、预测目标期间与原文定位"
+          ],
+          "expected_fields": [
+            "published_at",
+            "effective_period",
+            "target_period",
+            "entity",
+            "metric",
+            "value",
+            "unit",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "financial-statement-analysis",
+          "source_bucket": "evidence",
+          "source_type": "official filing, official dataset, customer or supplier disclosure",
+          "why_needed": "Provides the directly measured fact and a comparable time anchor."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，最大回撤风险应按什么口径衡量，当前值、可比历史和已披露前瞻分别是什么？ 最大回撤风险的实际值或可核验定性事实 / 统计对象、纳入排除边界、定义、单位与样本范围 / 发布日期、事实所属期间、预测目标期间与原文定位"
+          ],
+          "expected_fields": [
+            "methodology",
+            "sample",
+            "period",
+            "estimate",
+            "assumptions",
+            "limitations"
+          ],
+          "preferred_skill": "industry-report-analysis",
+          "source_bucket": "research_report",
+          "source_type": "independent specialist dataset or disclosed-method forecast",
+          "why_needed": "Tests the official data against an independent measure or forecast."
+        }
+      ],
+      "source_universe_plan": {
+        "domain_id": "",
+        "priority_source_ids": [],
+        "registry": "config/source_universes.json"
+      },
+      "stage_id": "valuation.payoff_asymmetry.facts",
+      "step_id": "leaf:valuation.payoff_asymmetry.facts.indicator_03",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "search_run_id",
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "analysis_plan": [
+        "统一定义、单位和期间，剔除不可比口径",
+        "比较当前、历史与前瞻，判断方向、速度和是否出现拐点",
+        "区分实际事实、管理层预期和第三方预测，并记录分歧"
+      ],
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Answer only this leaf; separate facts, inference, judgment, refutation, and gaps."
+      },
+      "collection_contract": {
+        "bulk_pool_mapping_forbidden": true,
+        "origin": "leaf_question_search",
+        "query_must_name_leaf_question": true,
+        "required_trace_fields": [
+          "l3_plan_id",
+          "l3_node_id",
+          "l4_question_id",
+          "leaf_question_id",
+          "leaf_step_id",
+          "search_run_id"
+        ]
+      },
+      "decision_use": "Answer this terminal leaf before rolling up L3 valuation.payoff_asymmetry.",
+      "depends_on_step_ids": [],
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: weekly.",
+      "initial_status": "pending",
+      "l3_node_id": "valuation.payoff_asymmetry",
+      "l3_plan_id": "l3rp_valuation_payoff_asymmetry_f7a504df1cac7c5e",
+      "l4_question_id": "valuation.payoff_asymmetry.facts",
+      "leaf_question_id": "valuation.payoff_asymmetry.facts.indicator_04",
+      "leaf_step_id": "leaf:valuation.payoff_asymmetry.facts.indicator_04",
+      "level": 5,
+      "minimum_evidence_gate": {
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "leaf_search_run_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "A leaf-specific search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
+      },
+      "preferred_specialty_skill": "valuation-analysis",
+      "question": "围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，kill test应按什么口径衡量，当前值、可比历史和已披露前瞻分别是什么？",
+      "question_node_id": "valuation.payoff_asymmetry.facts.indicator_04",
+      "question_path": [
+        {
+          "level": 3,
+          "question": "综合情景概率后，上行、下行和可监控性是否支持行动？",
+          "question_id": "valuation.payoff_asymmetry"
+        },
+        {
+          "level": 4,
+          "question": "要回答“综合情景概率后，上行、下行和可监控性是否支持行动？”，每个核心指标的可验证状态分别是什么？",
+          "question_id": "valuation.payoff_asymmetry.facts"
+        },
+        {
+          "level": 5,
+          "question": "围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，kill test应按什么口径衡量，当前值、可比历史和已披露前瞻分别是什么？",
+          "question_id": "valuation.payoff_asymmetry.facts.indicator_04"
+        }
+      ],
+      "refuting_source_plan": [
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 高增长已充分定价、下行无法量化或缺少退出触发器。."
+      ],
+      "required_data": [
+        "kill test的实际值或可核验定性事实",
+        "统计对象、纳入排除边界、定义、单位与样本范围",
+        "发布日期、事实所属期间、预测目标期间与原文定位",
+        "至少一项可比历史或前瞻锚点；不存在时明确记录缺口"
+      ],
+      "required_materials": [
+        "kill test的实际值或可核验定性事实",
+        "统计对象、纳入排除边界、定义、单位与样本范围",
+        "发布日期、事实所属期间、预测目标期间与原文定位",
+        "至少一项可比历史或前瞻锚点；不存在时明确记录缺口"
+      ],
+      "research_dimension": "indicator",
+      "sequence": 4,
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，kill test应按什么口径衡量，当前值、可比历史和已披露前瞻分别是什么？ kill test的实际值或可核验定性事实 / 统计对象、纳入排除边界、定义、单位与样本范围 / 发布日期、事实所属期间、预测目标期间与原文定位"
+          ],
+          "expected_fields": [
+            "published_at",
+            "effective_period",
+            "target_period",
+            "entity",
+            "metric",
+            "value",
+            "unit",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "financial-statement-analysis",
+          "source_bucket": "evidence",
+          "source_type": "official filing, official dataset, customer or supplier disclosure",
+          "why_needed": "Provides the directly measured fact and a comparable time anchor."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，kill test应按什么口径衡量，当前值、可比历史和已披露前瞻分别是什么？ kill test的实际值或可核验定性事实 / 统计对象、纳入排除边界、定义、单位与样本范围 / 发布日期、事实所属期间、预测目标期间与原文定位"
+          ],
+          "expected_fields": [
+            "methodology",
+            "sample",
+            "period",
+            "estimate",
+            "assumptions",
+            "limitations"
+          ],
+          "preferred_skill": "industry-report-analysis",
+          "source_bucket": "research_report",
+          "source_type": "independent specialist dataset or disclosed-method forecast",
+          "why_needed": "Tests the official data against an independent measure or forecast."
+        }
+      ],
+      "source_universe_plan": {
+        "domain_id": "",
+        "priority_source_ids": [],
+        "registry": "config/source_universes.json"
+      },
+      "stage_id": "valuation.payoff_asymmetry.facts",
+      "step_id": "leaf:valuation.payoff_asymmetry.facts.indicator_04",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "search_run_id",
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "analysis_plan": [
+        "还原因果链并区分相关性、领先指标与真实驱动",
+        "检查机制是否跨实体、跨期间成立，并识别替代解释",
+        "明确哪些证据直接支持、仅构成边界或仍待判断"
+      ],
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Answer only this leaf; separate facts, inference, judgment, refutation, and gaps."
+      },
+      "collection_contract": {
+        "bulk_pool_mapping_forbidden": true,
+        "origin": "leaf_question_search",
+        "query_must_name_leaf_question": true,
+        "required_trace_fields": [
+          "l3_plan_id",
+          "l3_node_id",
+          "l4_question_id",
+          "leaf_question_id",
+          "leaf_step_id",
+          "search_run_id"
+        ]
+      },
+      "decision_use": "Answer this terminal leaf before rolling up L3 valuation.payoff_asymmetry.",
+      "depends_on_step_ids": [
+        "leaf:valuation.payoff_asymmetry.facts.indicator_01",
+        "leaf:valuation.payoff_asymmetry.facts.indicator_02",
+        "leaf:valuation.payoff_asymmetry.facts.indicator_03",
+        "leaf:valuation.payoff_asymmetry.facts.indicator_04"
+      ],
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: weekly.",
+      "initial_status": "pending",
+      "l3_node_id": "valuation.payoff_asymmetry",
+      "l3_plan_id": "l3rp_valuation_payoff_asymmetry_f7a504df1cac7c5e",
+      "l4_question_id": "valuation.payoff_asymmetry.mechanism",
+      "leaf_question_id": "valuation.payoff_asymmetry.mechanism.support",
+      "leaf_step_id": "leaf:valuation.payoff_asymmetry.mechanism.support",
+      "level": 5,
+      "minimum_evidence_gate": {
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "leaf_search_run_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "A leaf-specific search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
+      },
+      "preferred_specialty_skill": "valuation-analysis",
+      "question": "支持条件“上行赔率显著高于可量化下行，且反证触发器可及时监控。”是否有直接因果证据，而非只有相关性？",
+      "question_node_id": "valuation.payoff_asymmetry.mechanism.support",
+      "question_path": [
+        {
+          "level": 3,
+          "question": "综合情景概率后，上行、下行和可监控性是否支持行动？",
+          "question_id": "valuation.payoff_asymmetry"
+        },
+        {
+          "level": 4,
+          "question": "关键事实为什么会改变父问题的答案，并如何传导到下游和财务结果？",
+          "question_id": "valuation.payoff_asymmetry.mechanism"
+        },
+        {
+          "level": 5,
+          "question": "支持条件“上行赔率显著高于可量化下行，且反证触发器可及时监控。”是否有直接因果证据，而非只有相关性？",
+          "question_id": "valuation.payoff_asymmetry.mechanism.support"
+        }
+      ],
+      "refuting_source_plan": [
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 高增长已充分定价、下行无法量化或缺少退出触发器。."
+      ],
+      "required_data": [
+        "能够连接原因、约束、行为和结果的直接证据",
+        "客户、供应商或竞争者对同一机制的交叉材料",
+        "机制生效的对象、时间、边界条件与原文定位"
+      ],
+      "required_materials": [
+        "能够连接原因、约束、行为和结果的直接证据",
+        "客户、供应商或竞争者对同一机制的交叉材料",
+        "机制生效的对象、时间、边界条件与原文定位"
+      ],
+      "research_dimension": "mechanism",
+      "sequence": 5,
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "支持条件“上行赔率显著高于可量化下行，且反证触发器可及时监控。”是否有直接因果证据，而非只有相关性？ 能够连接原因、约束、行为和结果的直接证据 / 客户、供应商或竞争者对同一机制的交叉材料 / 机制生效的对象、时间、边界条件与原文定位"
+          ],
+          "expected_fields": [
+            "cause",
+            "mechanism",
+            "observed_effect",
+            "boundary",
+            "entity",
+            "period",
+            "locator"
+          ],
+          "preferred_skill": "financial-statement-analysis",
+          "source_bucket": "evidence",
+          "source_type": "technical disclosure, customer deployment, or counterparty filing",
+          "why_needed": "Tests causality with observable operating evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "支持条件“上行赔率显著高于可量化下行，且反证触发器可及时监控。”是否有直接因果证据，而非只有相关性？ 能够连接原因、约束、行为和结果的直接证据 / 客户、供应商或竞争者对同一机制的交叉材料 / 机制生效的对象、时间、边界条件与原文定位"
+          ],
+          "expected_fields": [
+            "methodology",
+            "alternative_explanation",
+            "support",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent mechanism study or channel cross-check",
+          "why_needed": "Challenges correlation and surfaces alternative explanations."
+        }
+      ],
+      "source_universe_plan": {
+        "domain_id": "",
+        "priority_source_ids": [],
+        "registry": "config/source_universes.json"
+      },
+      "stage_id": "valuation.payoff_asymmetry.mechanism",
+      "step_id": "leaf:valuation.payoff_asymmetry.mechanism.support",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "search_run_id",
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "analysis_plan": [
+        "建立从业务量到收入、利润和现金流的可复算桥接",
+        "做基准、上行和下行情景，避免把主题暴露当作盈利兑现",
+        "标出最敏感假设和下一节点需要继承的结论"
+      ],
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Answer only this leaf; separate facts, inference, judgment, refutation, and gaps."
+      },
+      "collection_contract": {
+        "bulk_pool_mapping_forbidden": true,
+        "origin": "leaf_question_search",
+        "query_must_name_leaf_question": true,
+        "required_trace_fields": [
+          "l3_plan_id",
+          "l3_node_id",
+          "l4_question_id",
+          "leaf_question_id",
+          "leaf_step_id",
+          "search_run_id"
+        ]
+      },
+      "decision_use": "Answer this terminal leaf before rolling up L3 valuation.payoff_asymmetry.",
+      "depends_on_step_ids": [
+        "leaf:valuation.payoff_asymmetry.mechanism.support"
+      ],
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: weekly.",
+      "initial_status": "pending",
+      "l3_node_id": "valuation.payoff_asymmetry",
+      "l3_plan_id": "l3rp_valuation_payoff_asymmetry_f7a504df1cac7c5e",
+      "l4_question_id": "valuation.payoff_asymmetry.mechanism",
+      "leaf_question_id": "valuation.payoff_asymmetry.mechanism.bridge",
+      "leaf_step_id": "leaf:valuation.payoff_asymmetry.mechanism.bridge",
+      "level": 5,
+      "minimum_evidence_gate": {
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "leaf_search_run_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "A leaf-specific search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
+      },
+      "preferred_specialty_skill": "financial-statement-analysis",
+      "question": "该机制如何传导到下游决策节点，并改变情景赔率、动作状态、降级阈值？",
+      "question_node_id": "valuation.payoff_asymmetry.mechanism.bridge",
+      "question_path": [
+        {
+          "level": 3,
+          "question": "综合情景概率后，上行、下行和可监控性是否支持行动？",
+          "question_id": "valuation.payoff_asymmetry"
+        },
+        {
+          "level": 4,
+          "question": "关键事实为什么会改变父问题的答案，并如何传导到下游和财务结果？",
+          "question_id": "valuation.payoff_asymmetry.mechanism"
+        },
+        {
+          "level": 5,
+          "question": "该机制如何传导到下游决策节点，并改变情景赔率、动作状态、降级阈值？",
+          "question_id": "valuation.payoff_asymmetry.mechanism.bridge"
+        }
+      ],
+      "refuting_source_plan": [
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 高增长已充分定价、下行无法量化或缺少退出触发器。."
+      ],
+      "required_data": [
+        "下游节点：待明确 的可观测变化",
+        "公司桥接字段：情景赔率、动作状态、降级阈值 的披露",
+        "数量、价格、份额、成本、利润率或现金流之间的连接数据",
+        "公司/分部、期间、会计口径与原文定位"
+      ],
+      "required_materials": [
+        "下游节点：待明确 的可观测变化",
+        "公司桥接字段：情景赔率、动作状态、降级阈值 的披露",
+        "数量、价格、份额、成本、利润率或现金流之间的连接数据",
+        "公司/分部、期间、会计口径与原文定位"
+      ],
+      "research_dimension": "financial_bridge",
+      "sequence": 6,
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "该机制如何传导到下游决策节点，并改变情景赔率、动作状态、降级阈值？ 下游节点：待明确 的可观测变化 / 公司桥接字段：情景赔率、动作状态、降级阈值 的披露 / 数量、价格、份额、成本、利润率或现金流之间的连接数据"
+          ],
+          "expected_fields": [
+            "company",
+            "segment",
+            "volume",
+            "price",
+            "share",
+            "revenue",
+            "margin",
+            "cash_flow",
+            "period",
+            "locator"
+          ],
+          "preferred_skill": "financial-statement-analysis",
+          "source_bucket": "evidence",
+          "source_type": "company filing, earnings call, segment disclosure, or counterparty order data",
+          "why_needed": "Builds a reproducible bridge from operating change to company economics."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "该机制如何传导到下游决策节点，并改变情景赔率、动作状态、降级阈值？ 下游节点：待明确 的可观测变化 / 公司桥接字段：情景赔率、动作状态、降级阈值 的披露 / 数量、价格、份额、成本、利润率或现金流之间的连接数据"
+          ],
+          "expected_fields": [
+            "base_case",
+            "upside_case",
+            "downside_case",
+            "sensitivity",
+            "assumptions"
+          ],
+          "preferred_skill": "financial-statement-analysis",
+          "source_bucket": "research_report",
+          "source_type": "independent earnings bridge or scenario model with assumptions",
+          "why_needed": "Makes earnings sensitivity and disagreement explicit."
+        }
+      ],
+      "source_universe_plan": {
+        "domain_id": "",
+        "priority_source_ids": [],
+        "registry": "config/source_universes.json"
+      },
+      "stage_id": "valuation.payoff_asymmetry.mechanism",
+      "step_id": "leaf:valuation.payoff_asymmetry.mechanism.bridge",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "search_run_id",
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "analysis_plan": [
+        "主动搜索最强反例，而不是只对支持材料做风险附注",
+        "比较正反证据的直接性、时效、口径和解释力",
+        "给出推翻、削弱、边界或未决判断，并定义可监测失效条件"
+      ],
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Answer only this leaf; separate facts, inference, judgment, refutation, and gaps."
+      },
+      "collection_contract": {
+        "bulk_pool_mapping_forbidden": true,
+        "origin": "leaf_question_search",
+        "query_must_name_leaf_question": true,
+        "required_trace_fields": [
+          "l3_plan_id",
+          "l3_node_id",
+          "l4_question_id",
+          "leaf_question_id",
+          "leaf_step_id",
+          "search_run_id"
+        ]
+      },
+      "decision_use": "Answer this terminal leaf before rolling up L3 valuation.payoff_asymmetry.",
+      "depends_on_step_ids": [
+        "leaf:valuation.payoff_asymmetry.facts.indicator_01",
+        "leaf:valuation.payoff_asymmetry.facts.indicator_02",
+        "leaf:valuation.payoff_asymmetry.facts.indicator_03",
+        "leaf:valuation.payoff_asymmetry.facts.indicator_04"
+      ],
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: weekly.",
+      "initial_status": "pending",
+      "l3_node_id": "valuation.payoff_asymmetry",
+      "l3_plan_id": "l3rp_valuation_payoff_asymmetry_f7a504df1cac7c5e",
+      "l4_question_id": "valuation.payoff_asymmetry.refutation",
+      "leaf_question_id": "valuation.payoff_asymmetry.refutation",
+      "leaf_step_id": "leaf:valuation.payoff_asymmetry.refutation",
+      "level": 4,
+      "minimum_evidence_gate": {
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "leaf_search_run_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "A leaf-specific search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
+      },
+      "preferred_specialty_skill": "industry-report-analysis",
+      "question": "哪些证据会满足反证条件“高增长已充分定价、下行无法量化或缺少退出触发器。”，从而推翻、削弱或限定父问题的答案？",
+      "question_node_id": "valuation.payoff_asymmetry.refutation",
+      "question_path": [
+        {
+          "level": 3,
+          "question": "综合情景概率后，上行、下行和可监控性是否支持行动？",
+          "question_id": "valuation.payoff_asymmetry"
+        },
+        {
+          "level": 4,
+          "question": "哪些证据会满足反证条件“高增长已充分定价、下行无法量化或缺少退出触发器。”，从而推翻、削弱或限定父问题的答案？",
+          "question_id": "valuation.payoff_asymmetry.refutation"
+        }
+      ],
+      "refuting_source_plan": [
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 高增长已充分定价、下行无法量化或缺少退出触发器。."
+      ],
+      "required_data": [
+        "与支持证据同口径的反向指标、取消、延期、替代或监管事实",
+        "最强可信反方观点及其数据和假设",
+        "失效阈值、持续时间、监测频率与原文定位"
+      ],
+      "required_materials": [
+        "与支持证据同口径的反向指标、取消、延期、替代或监管事实",
+        "最强可信反方观点及其数据和假设",
+        "失效阈值、持续时间、监测频率与原文定位"
+      ],
+      "research_dimension": "refutation",
+      "sequence": 7,
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "哪些证据会满足反证条件“高增长已充分定价、下行无法量化或缺少退出触发器。”，从而推翻、削弱或限定父问题的答案？ 与支持证据同口径的反向指标、取消、延期、替代或监管事实 / 最强可信反方观点及其数据和假设 / 失效阈值、持续时间、监测频率与原文定位"
+          ],
+          "expected_fields": [
+            "refuting_fact",
+            "event_date",
+            "metric",
+            "threshold",
+            "duration",
+            "locator"
+          ],
+          "preferred_skill": "industry-report-analysis",
+          "source_bucket": "evidence",
+          "source_type": "official contrary fact, cancellation, substitution, delay, or regulatory record",
+          "why_needed": "Directly searches for evidence that overturns or bounds the parent answer."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "哪些证据会满足反证条件“高增长已充分定价、下行无法量化或缺少退出触发器。”，从而推翻、削弱或限定父问题的答案？ 与支持证据同口径的反向指标、取消、延期、替代或监管事实 / 最强可信反方观点及其数据和假设 / 失效阈值、持续时间、监测频率与原文定位"
+          ],
+          "expected_fields": [
+            "bear_case",
+            "assumptions",
+            "trigger",
+            "monitoring_metric",
+            "limitation"
+          ],
+          "preferred_skill": "industry-report-analysis",
+          "source_bucket": "research_report",
+          "source_type": "independent bear case or boundary analysis",
+          "why_needed": "Defines the strongest credible alternative hypothesis."
+        }
+      ],
+      "source_universe_plan": {
+        "domain_id": "",
+        "priority_source_ids": [],
+        "registry": "config/source_universes.json"
+      },
+      "stage_id": "valuation.payoff_asymmetry.refutation",
+      "step_id": "leaf:valuation.payoff_asymmetry.refutation",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "search_run_id",
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    }
+  ]
+}

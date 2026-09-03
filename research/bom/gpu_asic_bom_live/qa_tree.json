@@ -46,11 +46,16 @@
       "target_implications": ""
     },
     {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
       "child_plan_path": "l3_research_plans/demand.demand_universe/research_plan.json",
       "decision_use": "验证真实工作负载如何转成算力、预算、订单和财务兑现。 Causal role: input; downstream: demand.current_quantity",
       "execution_mode": "child_plan_rollup",
       "fact": "NVIDIA披露当季三家直接客户分别占总收入21%、17%和16%，同时估计一家AI研究与部署公司通过购买其客户的云服务，对NVIDIA收入形成了有意义的间接贡献。这证明直接采购方、云服务提供方和最终AI需求方不是同一层，需求分类必须按最终任务归属去重。",
-      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: quarterly.",
       "gap": "缺少工业/企业和主权客户按任务拆分的GPU用量。；同一模型公司通过多家云平台租用GPU时仍缺少公开去重数据。",
       "id": "demand.demand_universe",
       "inference": "需求地图已按最终需求而非采购通道建立：L1为Hyperscaler自用、AI云/模型服务、工业/企业、主权/公共部门；L2为各主体的商业业务；L3拆成训练、后训练、推理/agent、推荐/搜索/广告和工业/HPC任务；L4记录专用AI服务器、云租赁集群或一般服务器；L5记录GPU代际与配置。NVIDIA官方披露证明直接客户与最终模型公司可能不同，因此OEM/ODM、云平台和租赁商只作为采购通道另记。当前分类边界已经可用，但企业和主权客户仍缺少独立任务与数量披露。",
@@ -61,22 +66,31 @@
       "minimum_evidence_gate": {
         "all_mandatory_leaf_steps_required": true,
         "direct_parent_evidence_forbidden": true,
-        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+        "rule": "The L3 rollup completes when its current terminal question passes, or after every required child created by a failed answerability gate passes."
       },
-      "next_question_ids": [],
+      "next_question_ids": [
+        "demand.demand_universe.current_named",
+        "demand.demand_universe.future_named",
+        "demand.demand_universe.identity_dedup"
+      ],
       "parent_id": "lens.demand",
-      "preferred_specialty_skill": "financial-statement-analysis",
+      "preferred_specialty_skill": "industry-report-analysis",
       "question": "当前有哪些数据中心 GPU 需求方，哪些主体可能成为潜在未来需求方？",
       "refute_evidence": "把 OEM/ODM、分销商等采购通道列作需求方，或把同一主体同时列入当前和潜在未来两组。",
       "refuting_source_plan": [
-        "Search primary and independent evidence that would establish: 把 OEM/ODM、分销商等采购通道列作需求方，或把同一主体同时列入当前和潜在未来两组。"
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 把 OEM/ODM、分销商等采购通道列作需求方，或把同一主体同时列入当前和潜在未来两组。."
+      ],
+      "required_data": [
+        "需求主体身份",
+        "当前或潜在未来标签",
+        "需求形成状态"
       ],
       "required_materials": [
         "需求主体身份",
         "当前或潜在未来标签",
         "需求形成状态"
       ],
-      "research_step_id": "step:demand.demand_universe",
+      "research_step_id": "question:demand.demand_universe",
       "score_component": "future_space",
       "skill_dispatch": {
         "concrete_materials": [
@@ -109,11 +123,16 @@
       "trigger": "逐一建立主要终端需求方的业务、任务、承载系统、GPU规格和直接购买方坐标。"
     },
     {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
       "child_plan_path": "l3_research_plans/demand.current_quantity/research_plan.json",
       "decision_use": "验证真实工作负载如何转成算力、预算、订单和财务兑现。 Causal role: mechanism; downstream: demand.workload_growth",
-      "execution_mode": "child_plan_rollup",
+      "execution_mode": "direct_evidence_step",
       "fact": "MI450 GPU 与 Helios 机架系统计划于 2026 年 9 月开始交付，2026 年第四季度和 2027 年上半年加速爬坡；报告称 Anthropic、OpenAI、Meta 等客户已有数 GW 部署排至 2027 年。订单计划提供了可见性，但实际收入仍取决于系统交付和客户数据中心按期完工。；德银记录Amazon当前2026年资本开支指引约2000亿美元，并把自身2027年资本开支估计上调至约3000亿美元，对比一致预期约2350亿美元；同时其渠道检查称AWS推理容量持续上线、A100容量对小客户要求一年承诺。资本开支覆盖AWS以外业务，且包含新增容量、价格、伙伴融资及内部芯片影响，不能直接换算为GPU采购量。；摩根大通估计Broadcom在2026-2030年的累计AI收入超过1万亿美元，隐含约60%以上CAGR，并列举Google、Meta、OpenAI、Anthropic等ASIC XPU客户。该数字是分析师对ASIC加网络收入的合并预测，不是Broadcom正式订单或加速器颗数，客户项目和收入类别也可能重叠。",
-      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: quarterly.",
       "gap": "缺少七类当前需求方在同一期间、同一单位下可去重的GPU安装、采购与利用量。；新增研报以情景、资本开支、功率、token和供应商收入为主，仍需回到公司官方交付和利用率核验。；多数项目披露把已安装、已下单、签约、连接、在建与远期规划混合，状态转换率未知。；潜在未来需求方虽均有入口或项目样本，但传统企业和应用公司仍只有代理证据。",
       "id": "demand.current_quantity",
       "inference": "Q2在原有24行基础上新增6条机构研报信息，达到30行。新增材料为超大规模云服务商补入1GW约41万颗GB300的单位容量情景和Amazon资本开支代理，为大型互联网平台补入Naver 200MW至1GW AIDC规划；其它分类补入美国数据中心118GW/160GW功率情景、OpenRouter token活动样本及Broadcom未来五年AI收入预测。覆盖与交叉验证继续增强，但新增内容仍是情景、资本开支、功率、token和收入代理，不能与GPU颗数直接相加，也不能取代官方交付与利用率。",
@@ -122,17 +141,31 @@
       "level": 3,
       "materiality": "验证真实工作负载如何转成算力、预算、订单和财务兑现。 Apply support rule: 每个Q1当前需求方都有一条直接、代理、样本或缺口记录；无法可靠分配的总量预测单独进入其它预测。",
       "minimum_evidence_gate": {
-        "all_mandatory_leaf_steps_required": true,
-        "direct_parent_evidence_forbidden": true,
-        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
       },
       "next_question_ids": [],
       "parent_id": "lens.demand",
-      "preferred_specialty_skill": "financial-statement-analysis",
+      "preferred_specialty_skill": "industry-report-analysis",
       "question": "按 Q1 当前需求方逐类搜索，当前可验证的需求量、预测、样本或价值代理分别是多少；哪些其它预测无法可靠映射？",
       "refute_evidence": "把行业总量机械分摊到需求方，遗漏无数据类别，或把不同单位、期间、样本和重叠主体直接相加。",
       "refuting_source_plan": [
-        "Search primary and independent evidence that would establish: 把行业总量机械分摊到需求方，遗漏无数据类别，或把不同单位、期间、样本和重叠主体直接相加。"
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 把行业总量机械分摊到需求方，遗漏无数据类别，或把不同单位、期间、样本和重叠主体直接相加。."
+      ],
+      "required_data": [
+        "Q1需求方覆盖",
+        "当前数量或预测",
+        "口径与期间",
+        "映射质量",
+        "其它未映射预测"
       ],
       "required_materials": [
         "Q1需求方覆盖",
@@ -141,7 +174,7 @@
         "映射质量",
         "其它未映射预测"
       ],
-      "research_step_id": "step:demand.current_quantity",
+      "research_step_id": "question:demand.current_quantity",
       "score_component": "future_space",
       "skill_dispatch": {
         "concrete_materials": [
@@ -265,18 +298,59 @@
         "https://www.trendforce.com/presscenter/news/20260120-12887.html",
         "https://x.ai/news/series-e?stream=top"
       ],
-      "source_plan": [],
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "按 Q1 当前需求方逐类搜索，当前可验证的需求量、预测、样本或价值代理分别是多少；哪些其它预测无法可靠映射？ Q1需求方覆盖 / 当前数量或预测 / 口径与期间"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "按 Q1 当前需求方逐类搜索，当前可验证的需求量、预测、样本或价值代理分别是多少；哪些其它预测无法可靠映射？ Q1需求方覆盖 / 当前数量或预测 / 口径与期间"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
       "source_universe_plan": {},
       "support_evidence": "每个Q1当前需求方都有一条直接、代理、样本或缺口记录；无法可靠分配的总量预测单独进入其它预测。",
       "target_implications": "Changes the GPU/ASIC company exposure, earnings, valuation, or risk gate when directly mapped.",
       "trigger": "优先用Amazon、Naver、Broadcom及数据中心运营商的官方文件核验本轮投行口径，并把资本开支、功率和收入代理转成已上线加速器、利用率与客户可去重采购量；在此之前不计算分类合计。"
     },
     {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
       "child_plan_path": "l3_research_plans/demand.workload_growth/research_plan.json",
       "decision_use": "验证真实工作负载如何转成算力、预算、订单和财务兑现。 Causal role: input; downstream: demand.compute_intensity",
-      "execution_mode": "child_plan_rollup",
+      "execution_mode": "direct_evidence_step",
       "fact": "Meta 各消息平台中，用户与商业 AI 的对话约为每周 1,000 万次，较年初增长约十倍；德银把这视为 2027 年可能通过订阅和按量收费变现的应用需求。该指标证明工作负载在增长，但尚未直接披露其对应 GPU/ASIC 用量。；AMD 将 2030 年 AI 加速器 TAM 上调至约 1.4 万亿美元，相对 2025 年约 2,000 亿美元隐含超过 45% 的五年复合增速；摩根大通判断增长将由训练扩展到推理和 agent 工作负载。该数字是公司口径与投行解释，不是已兑现收入。；摩根大通认为自动驾驶与人形机器人可共享视觉神经网络、训练算力和定制芯片，使同一AI基础设施同时服务车辆、机器人和储能场景；这提供了物理AI成为新增算力工作负载的机制，但报告没有给出训练集群用量、GPU/ASIC采购或付费使用序列。",
-      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: monthly.",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: monthly.",
       "gap": "补充不同平台的调用量、付费率、token量及其硬件消耗。；追踪机器人训练集群规模、GPU/ASIC采购、部署数量和商业化收入。",
       "id": "demand.workload_growth",
       "inference": "Meta业务AI对话量仍是当前唯一较直接的真实使用增长证据；新增物理AI材料提出自动驾驶与人形机器人共享训练算力的新分支，但没有多平台用量、付费部署或GPU/ASIC消耗序列，尚不能把该分支视为已兑现的工作负载增长。",
@@ -285,24 +359,36 @@
       "level": 3,
       "materiality": "验证真实工作负载如何转成算力、预算、订单和财务兑现。 Apply support rule: 多个不同性质的使用量指标持续增长，并出现付费或业务采用。",
       "minimum_evidence_gate": {
-        "all_mandatory_leaf_steps_required": true,
-        "direct_parent_evidence_forbidden": true,
-        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
       },
       "next_question_ids": [],
       "parent_id": "lens.demand",
-      "preferred_specialty_skill": "financial-statement-analysis",
+      "preferred_specialty_skill": "industry-report-analysis",
       "question": "训练、推理和 agent 任务是否在真实增长，而非只有主题热度？",
       "refute_evidence": "用户或调用增长停滞，任务被一次性试用、软件优化或低价值流量替代。",
       "refuting_source_plan": [
-        "Search primary and independent evidence that would establish: 用户或调用增长停滞，任务被一次性试用、软件优化或低价值流量替代。"
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 用户或调用增长停滞，任务被一次性试用、软件优化或低价值流量替代。."
+      ],
+      "required_data": [
+        "活跃用户与调用量",
+        "token 或任务量",
+        "AI 生成代码与商业流程渗透"
       ],
       "required_materials": [
         "活跃用户与调用量",
         "token 或任务量",
         "AI 生成代码与商业流程渗透"
       ],
-      "research_step_id": "step:demand.workload_growth",
+      "research_step_id": "question:demand.workload_growth",
       "score_component": "future_space",
       "skill_dispatch": {
         "concrete_materials": [
@@ -336,18 +422,59 @@
         "source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf",
         "source/manual/摩根大通-从自动驾驶到人形机器人：汽车行业全面拥抱人形机器人赛道-260727.pdf"
       ],
-      "source_plan": [],
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "训练、推理和 agent 任务是否在真实增长，而非只有主题热度？ 活跃用户与调用量 / token 或任务量 / AI 生成代码与商业流程渗透"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "训练、推理和 agent 任务是否在真实增长，而非只有主题热度？ 活跃用户与调用量 / token 或任务量 / AI 生成代码与商业流程渗透"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
       "source_universe_plan": {},
       "support_evidence": "多个不同性质的使用量指标持续增长，并出现付费或业务采用。",
       "target_implications": "Changes the GPU/ASIC company exposure, earnings, valuation, or risk gate when directly mapped.",
       "trigger": "用Tesla及其他机器人平台的官方训练集群、推理芯片、部署量和付费使用数据验证物理AI新分支。"
     },
     {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
       "child_plan_path": "l3_research_plans/demand.compute_intensity/research_plan.json",
       "decision_use": "验证真实工作负载如何转成算力、预算、订单和财务兑现。 Causal role: mechanism; downstream: demand.customer_compute_budget",
-      "execution_mode": "child_plan_rollup",
+      "execution_mode": "direct_evidence_step",
       "fact": "报告称Optimus训练相较车辆显著更耗算力，并由Cortex集群和未来Dojo 3提供训练基础设施，推理由Samsung和TSMC制造的AI5芯片承担；该表述没有提供同口径任务计算量、效率改善或独立客户测量，不能证明单位任务算力已经上升。",
-      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: quarterly.",
       "gap": "建立模型规模、上下文、test-time compute与每token硬件成本的同口径序列。；建立机器人训练每轮数据、每任务推理量与硬件效率的跨期比较。",
       "id": "demand.compute_intensity",
       "inference": "Optimus训练更耗算力的机构表述提示物理AI可能抬升计算强度，但未提供单位任务测量，也没有与算法、芯片和系统效率改善比较；当前仍无满足本节点规则的直接证据。",
@@ -356,17 +483,30 @@
       "level": 3,
       "materiality": "验证真实工作负载如何转成算力、预算、订单和财务兑现。 Apply support rule: 模型和 agent 路线使单位任务计算量增长快于效率改善。",
       "minimum_evidence_gate": {
-        "all_mandatory_leaf_steps_required": true,
-        "direct_parent_evidence_forbidden": true,
-        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
       },
       "next_question_ids": [],
       "parent_id": "lens.demand",
-      "preferred_specialty_skill": "financial-statement-analysis",
+      "preferred_specialty_skill": "industry-report-analysis",
       "question": "每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？",
       "refute_evidence": "模型压缩、蒸馏、稀疏化和软件优化使单位任务硬件需求持续下降。",
       "refuting_source_plan": [
-        "Search primary and independent evidence that would establish: 模型压缩、蒸馏、稀疏化和软件优化使单位任务硬件需求持续下降。"
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 模型压缩、蒸馏、稀疏化和软件优化使单位任务硬件需求持续下降。."
+      ],
+      "required_data": [
+        "训练规模",
+        "推理 token 成本",
+        "上下文长度",
+        "test-time compute"
       ],
       "required_materials": [
         "训练规模",
@@ -374,7 +514,7 @@
         "上下文长度",
         "test-time compute"
       ],
-      "research_step_id": "step:demand.compute_intensity",
+      "research_step_id": "question:demand.compute_intensity",
       "score_component": "future_space",
       "skill_dispatch": {
         "concrete_materials": [
@@ -401,18 +541,59 @@
       "source_links": [
         "source/manual/摩根大通-从自动驾驶到人形机器人：汽车行业全面拥抱人形机器人赛道-260727.pdf"
       ],
-      "source_plan": [],
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？ 训练规模 / 推理 token 成本 / 上下文长度"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？ 训练规模 / 推理 token 成本 / 上下文长度"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
       "source_universe_plan": {},
       "support_evidence": "模型和 agent 路线使单位任务计算量增长快于效率改善。",
       "target_implications": "Changes the GPU/ASIC company exposure, earnings, valuation, or risk gate when directly mapped.",
       "trigger": "寻找具名物理AI训练项目的GPU小时、数据规模、训练周期及同代硬件效率数据。"
     },
     {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
       "child_plan_path": "l3_research_plans/demand.customer_compute_budget/research_plan.json",
       "decision_use": "验证真实工作负载如何转成算力、预算、订单和财务兑现。 Causal role: mechanism; downstream: demand.order_visibility",
-      "execution_mode": "child_plan_rollup",
+      "execution_mode": "direct_evidence_step",
       "fact": "巴克莱根据 Broadcom/Blackstone/Apollo 的 20GW AI XPV 计划与 Google-Blackstone 合资项目，估计外部 TPU 容量可由 2026 年 1.4GW 增至 2028 年 11.5GW，对应约 100 万颗、203 万颗和 474 万颗 TPU。它说明定制 ASIC 正从云厂内部自用扩展到外部客户，但数量是投行模型而非公司正式指引。；Meta 2026 年资本开支指引为 1,250 亿至 1,450 亿美元；德银称市场已把 2027 年约 14GW 容量对应的资本开支预期推至 2,000 亿美元低至中段，并给出 2027 年约 2,100 亿至 2,150 亿美元、2028 年约 2,650 亿美元的估计。这是大型客户继续扩大 AI 算力采购的直接预算信号，但后两项属于分析师估计。；Meta 的容量情景由 7GW 升至 14GW，资本开支预期可能升至 2027 年 2,000 亿美元以上；Hyperion 等伙伴融资可能降低报表内直接负担。对治理分析而言，关键不是只看名义 capex，而是追踪担保、租赁、合作方承诺及最终风险承担者。",
-      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: quarterly.",
       "gap": "用主要客户官方capex、长期采购承诺、自由现金流与融资条款交叉验证。；核验Oracle具名合同金额、客户预付款、BYOHW比例、设备清单和融资关闭条件。",
       "id": "demand.customer_compute_budget",
       "inference": "Meta官方capex仍确认大客户预算高位；Oracle CFO材料进一步给出成本加成、长期合同、客户预付款和BYOHW的经济边界，但没有合同金额、芯片数量或原始条款，预算持续性和最终风险承担仍未闭环。",
@@ -421,17 +602,30 @@
       "level": 3,
       "materiality": "验证真实工作负载如何转成算力、预算、订单和财务兑现。 Apply support rule: 客户资本开支、长期承诺和融资能力同步提高。",
       "minimum_evidence_gate": {
-        "all_mandatory_leaf_steps_required": true,
-        "direct_parent_evidence_forbidden": true,
-        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
       },
       "next_question_ids": [],
       "parent_id": "lens.demand",
-      "preferred_specialty_skill": "financial-statement-analysis",
+      "preferred_specialty_skill": "industry-report-analysis",
       "question": "云厂商、模型公司和企业是否把需求转化为可持续预算？",
       "refute_evidence": "客户自由现金流恶化、ROI 不足或融资约束导致预算下修。",
       "refuting_source_plan": [
-        "Search primary and independent evidence that would establish: 客户自由现金流恶化、ROI 不足或融资约束导致预算下修。"
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 客户自由现金流恶化、ROI 不足或融资约束导致预算下修。."
+      ],
+      "required_data": [
+        "AI capex",
+        "采购承诺",
+        "预付款",
+        "租赁与项目融资"
       ],
       "required_materials": [
         "AI capex",
@@ -439,7 +633,7 @@
         "预付款",
         "租赁与项目融资"
       ],
-      "research_step_id": "step:demand.customer_compute_budget",
+      "research_step_id": "question:demand.customer_compute_budget",
       "score_component": "future_space",
       "skill_dispatch": {
         "concrete_materials": [
@@ -474,18 +668,59 @@
         "source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf",
         "source/manual/德银-甲骨文（ORCL.US）：与CFO会谈核心要点-260727.pdf"
       ],
-      "source_plan": [],
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "云厂商、模型公司和企业是否把需求转化为可持续预算？ AI capex / 采购承诺 / 预付款"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "云厂商、模型公司和企业是否把需求转化为可持续预算？ AI capex / 采购承诺 / 预付款"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
       "source_universe_plan": {},
       "support_evidence": "客户资本开支、长期承诺和融资能力同步提高。",
       "target_implications": "Changes the GPU/ASIC company exposure, earnings, valuation, or risk gate when directly mapped.",
       "trigger": "对照Oracle财报、合同披露和客户资料，验证RPO、现金投入、GPU/ASIC采购及回报兑现。"
     },
     {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
       "child_plan_path": "l3_research_plans/demand.order_visibility/research_plan.json",
       "decision_use": "验证真实工作负载如何转成算力、预算、订单和财务兑现。 Causal role: output; downstream: demand.revenue_realization",
-      "execution_mode": "child_plan_rollup",
+      "execution_mode": "direct_evidence_step",
       "fact": "巴克莱根据 Broadcom/Blackstone/Apollo 的 20GW AI XPV 计划与 Google-Blackstone 合资项目，估计外部 TPU 容量可由 2026 年 1.4GW 增至 2028 年 11.5GW，对应约 100 万颗、203 万颗和 474 万颗 TPU。它说明定制 ASIC 正从云厂内部自用扩展到外部客户，但数量是投行模型而非公司正式指引。；巴克莱依据已披露数据中心供应商项目估算，2026 年第二季度 Google 外部 TPU 收入 backlog 约 880 亿美元，长期累计潜在收入超过 3,000 亿美元；该估计只覆盖首批已识别项目，必须与实际采购承诺和交付节奏交叉验证。；摩根士丹利称 Helios 在关键客户处的采用进展顺利，客户证言显示 2027 年将强劲爬坡，并把 coding agent 视为 AMD GPU 生态采用的明确加速器；但该报告同时认为 AMD 本代产品仍未取得领导地位。",
-      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: quarterly.",
       "gap": "逐客户交付窗口、验收、预付款与取消条款",
       "id": "demand.order_visibility",
       "inference": "AMD最高2GW合作与NVIDIA伙伴部署扩大了订单线索，但前瞻容量上限、伙伴运行和管理层指引都不是不可取消订单；缺少客户交付表、验收和预付款，订单可见性仍弱。",
@@ -494,17 +729,30 @@
       "level": 3,
       "materiality": "验证真实工作负载如何转成算力、预算、订单和财务兑现。 Apply support rule: 订单、部署计划和交付窗口由多个客户或官方材料交叉验证。",
       "minimum_evidence_gate": {
-        "all_mandatory_leaf_steps_required": true,
-        "direct_parent_evidence_forbidden": true,
-        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
       },
       "next_question_ids": [],
       "parent_id": "lens.demand",
-      "preferred_specialty_skill": "financial-statement-analysis",
+      "preferred_specialty_skill": "industry-report-analysis",
       "question": "预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？",
       "refute_evidence": "订单仅为分析师情景，或客户机房延期、项目取消和重复计算明显。",
       "refuting_source_plan": [
-        "Search primary and independent evidence that would establish: 订单仅为分析师情景，或客户机房延期、项目取消和重复计算明显。"
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 订单仅为分析师情景，或客户机房延期、项目取消和重复计算明显。."
+      ],
+      "required_data": [
+        "backlog",
+        "客户部署计划",
+        "机架发货",
+        "取消与延期"
       ],
       "required_materials": [
         "backlog",
@@ -512,7 +760,7 @@
         "机架发货",
         "取消与延期"
       ],
-      "research_step_id": "step:demand.order_visibility",
+      "research_step_id": "question:demand.order_visibility",
       "score_component": "future_space",
       "skill_dispatch": {
         "concrete_materials": [
@@ -555,18 +803,59 @@
         "https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results",
         "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/default.aspx"
       ],
-      "source_plan": [],
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？ backlog / 客户部署计划 / 机架发货"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？ backlog / 客户部署计划 / 机架发货"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
       "source_universe_plan": {},
       "support_evidence": "订单、部署计划和交付窗口由多个客户或官方材料交叉验证。",
       "target_implications": "Changes the GPU/ASIC company exposure, earnings, valuation, or risk gate when directly mapped.",
       "trigger": "核对未来季度客户验收、收入确认和实际上线功率。"
     },
     {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
       "child_plan_path": "l3_research_plans/demand.revenue_realization/research_plan.json",
       "decision_use": "验证真实工作负载如何转成算力、预算、订单和财务兑现。 Causal role: output; downstream: valuation.fundamental_earnings",
-      "execution_mode": "child_plan_rollup",
+      "execution_mode": "direct_evidence_step",
       "fact": "AMD 2026年第二季度数据中心分部收入67.18亿美元、同比增长107%，分部经营利润21.03亿美元；公司总收入115.36亿美元、毛利率54%。数据中心分部同时包含EPYC CPU与Instinct GPU，官方材料没有拆分GPU收入或GPU分部利润，因此只能确认AMD数据中心业务兑现，不能把全部增量归因于GPU。；NVIDIA 2027财年上半年经营现金流744.21亿美元，高于上年同期427.79亿美元；公司说明收入增长带来的现金增量被应收账款上升部分抵消，原因包括向部分投资级客户的大额多季度协议提供延长付款条款。期末应收账款630.59亿美元，五家直接客户合计占应收70%。经营现金流仍增长，但回款期限和客户集中提高了现金转换质量的验证要求。；NVIDIA Q2 FY27总收入962.21亿美元，数据中心收入890亿美元，分别同比增长106%和117%，GAAP毛利率75.0%；季度自由现金流213.41亿美元，高于上年同期134.50亿美元但低于Q1的485.54亿美元。期末应收账款630.59亿美元、库存315.75亿美元，分别高于1月末的384.66亿美元和214.03亿美元。收入与利润兑现很强，但季度现金转换和营运资本变化构成需要继续验证的冲突信号。",
-      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: quarterly.",
       "gap": "AMD GPU收入、毛利和现金流拆分；NVIDIA与AMD连续季度FCF、应收和库存桥",
       "id": "demand.revenue_realization",
       "inference": "NVIDIA与AMD均提供了官方数据中心收入和公司/分部盈利输入，需求兑现不再依赖单一供应商；但AMD没有拆分GPU，NVIDIA和AMD单季FCF都提示收入增长不能直接等同现金增长，节点仍为弱证据。",
@@ -575,17 +864,31 @@
       "level": 3,
       "materiality": "验证真实工作负载如何转成算力、预算、订单和财务兑现。 Apply support rule: 收入、毛利与指引同步上修，且现金流没有明显背离。",
       "minimum_evidence_gate": {
-        "all_mandatory_leaf_steps_required": true,
-        "direct_parent_evidence_forbidden": true,
-        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
       },
       "next_question_ids": [],
       "parent_id": "lens.demand",
-      "preferred_specialty_skill": "financial-statement-analysis",
+      "preferred_specialty_skill": "industry-report-analysis",
       "question": "订单是否进入收入、毛利、现金流和下一期指引？",
       "refute_evidence": "收入仅来自一次性预付款、低毛利获客或应收与库存堆积。",
       "refuting_source_plan": [
-        "Search primary and independent evidence that would establish: 收入仅来自一次性预付款、低毛利获客或应收与库存堆积。"
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 收入仅来自一次性预付款、低毛利获客或应收与库存堆积。."
+      ],
+      "required_data": [
+        "数据中心收入",
+        "AI 芯片收入",
+        "毛利率",
+        "经营现金流",
+        "管理层指引"
       ],
       "required_materials": [
         "数据中心收入",
@@ -594,7 +897,7 @@
         "经营现金流",
         "管理层指引"
       ],
-      "research_step_id": "step:demand.revenue_realization",
+      "research_step_id": "question:demand.revenue_realization",
       "score_component": "future_space",
       "skill_dispatch": {
         "concrete_materials": [
@@ -630,7 +933,43 @@
         "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
         "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/default.aspx"
       ],
-      "source_plan": [],
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "订单是否进入收入、毛利、现金流和下一期指引？ 数据中心收入 / AI 芯片收入 / 毛利率"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "订单是否进入收入、毛利、现金流和下一期指引？ 数据中心收入 / AI 芯片收入 / 毛利率"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
       "source_universe_plan": {},
       "support_evidence": "收入、毛利与指引同步上修，且现金流没有明显背离。",
       "target_implications": "Changes the GPU/ASIC company exposure, earnings, valuation, or risk gate when directly mapped.",
@@ -658,11 +997,16 @@
       "target_implications": ""
     },
     {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
       "child_plan_path": "l3_research_plans/supply.advanced_wafer_capacity/research_plan.json",
       "decision_use": "识别最终可交付系统的最短板、释放周期和价值捕获。 Causal role: constraint; downstream: supply.shippable_system",
-      "execution_mode": "child_plan_rollup",
+      "execution_mode": "direct_evidence_step",
       "fact": "Intel 将 2026 年资本开支指引上调至超过 200 亿美元，并称 2027 年还会显著增长，用于洁净室扩建和锁定设备订单。供给正在响应高价和短缺，因此当前稀缺性不能外推为永久稀缺。；TSMC 2026年第二季度美元收入约402亿美元，7纳米及更先进制程占晶圆收入77%，并预计第三季度继续受领先制程强劲需求支持。该披露证明先进制程需求强，但没有GPU/ASIC专属产能、交期、预付款、客户分配或良率，不能直接判断晶圆缺口大小。",
-      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: quarterly.",
       "gap": "GPU/ASIC专属晶圆产能、交期、预付款、分配和良率",
       "id": "supply.advanced_wafer_capacity",
       "inference": "TSMC先进制程收入占比77%并继续看到强需求，证明领先节点高利用背景；但材料没有GPU/ASIC专属产能、交期、预付款、客户分配或良率，无法判断晶圆是否构成当前稀缺瓶颈。",
@@ -671,9 +1015,16 @@
       "level": 3,
       "materiality": "识别最终可交付系统的最短板、释放周期和价值捕获。 Apply support rule: 交期、预付款或客户分配显示晶圆持续紧张。",
       "minimum_evidence_gate": {
-        "all_mandatory_leaf_steps_required": true,
-        "direct_parent_evidence_forbidden": true,
-        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
       },
       "next_question_ids": [],
       "parent_id": "lens.supply",
@@ -681,7 +1032,13 @@
       "question": "先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？",
       "refute_evidence": "扩产和良率提升使可用晶圆明显快于需求增长。",
       "refuting_source_plan": [
-        "Search primary and independent evidence that would establish: 扩产和良率提升使可用晶圆明显快于需求增长。"
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 扩产和良率提升使可用晶圆明显快于需求增长。."
+      ],
+      "required_data": [
+        "先进节点产能",
+        "良率",
+        "wafer allocation",
+        "代工 capex"
       ],
       "required_materials": [
         "先进节点产能",
@@ -689,7 +1046,7 @@
         "wafer allocation",
         "代工 capex"
       ],
-      "research_step_id": "step:supply.advanced_wafer_capacity",
+      "research_step_id": "question:supply.advanced_wafer_capacity",
       "score_component": "chokepoint_strength",
       "skill_dispatch": {
         "concrete_materials": [
@@ -720,18 +1077,59 @@
         "source/ima/2026/07/24/摩根大通-PC与服务器：英特尔2026年二季度财报及AMD“Advancing AI 2026”大会传导分析-260724.pdf",
         "https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-07/a80d7933be643644081584087731f73b22ea5a2c/2Q26%20EarningsRelease.pdf"
       ],
-      "source_plan": [],
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？ 先进节点产能 / 良率 / wafer allocation"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？ 先进节点产能 / 良率 / wafer allocation"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
       "source_universe_plan": {},
       "support_evidence": "交期、预付款或客户分配显示晶圆持续紧张。",
       "target_implications": "Changes the GPU/ASIC company exposure, earnings, valuation, or risk gate when directly mapped.",
       "trigger": "收集TSMC与客户对同一节点交期、预付款和分配的交叉披露。"
     },
     {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
       "child_plan_path": "l3_research_plans/supply.packaging_memory_capacity/research_plan.json",
       "decision_use": "识别最终可交付系统的最短板、释放周期和价值捕获。 Causal role: constraint; downstream: supply.shippable_system",
-      "execution_mode": "child_plan_rollup",
+      "execution_mode": "direct_evidence_step",
       "fact": "摩根大通把先进逻辑晶圆、硅片、内存和基板列为服务器供应链的持续约束，并预计供给改善会推动 2026 年第四季度收入进一步上行。有效供给仍由多项输入的最小值决定，而不是只看 GPU 晶圆数量。；报告称 Intel EMIB-T 当前良率约 60%，目标 2027 年进入高量产；多个 AI 加速器项目因 CoWoS 紧张而评估 EMIB-T，但预计先从小批量开始，最大项目 TPU v9 或到 2027 年末至 2028 年才量产。替代封装路线正在形成，但短期无法立刻消除瓶颈。；花旗称Intel与Lens Tech合作开发玻璃芯基板，Intel目标在2027-2028年推进玻璃基板与EMIB-T商业化；花旗预计2026年进行部分资格验证、潜在产品最早次年由客户推出。该判断提供替代基板路线的交叉来源，但尚无认证通过、良率、产能或客户订单。",
-      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: quarterly.",
       "gap": "CoWoS月产能、良率、交期、客户预订与HBM配套",
       "id": "supply.packaging_memory_capacity",
       "inference": "TSMC确认CoWoS仍占当前先进封装大多数，替代路线成熟并进入生产大约需要一年，短期替代不可能瞬间解除约束；但没有月产能、良率、交期、HBM联动或客户预订，瓶颈强度仍未量化。",
@@ -740,9 +1138,16 @@
       "level": 3,
       "materiality": "识别最终可交付系统的最短板、释放周期和价值捕获。 Apply support rule: 多个供应商确认交期、预订或良率约束，且扩产需要较长周期。",
       "minimum_evidence_gate": {
-        "all_mandatory_leaf_steps_required": true,
-        "direct_parent_evidence_forbidden": true,
-        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
       },
       "next_question_ids": [],
       "parent_id": "lens.supply",
@@ -750,7 +1155,13 @@
       "question": "HBM、先进封装、基板和测试是否成为可交付芯片的约束？",
       "refute_evidence": "替代路线或扩产使交期和价格快速回落。",
       "refuting_source_plan": [
-        "Search primary and independent evidence that would establish: 替代路线或扩产使交期和价格快速回落。"
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 替代路线或扩产使交期和价格快速回落。."
+      ],
+      "required_data": [
+        "HBM 产能",
+        "CoWoS 产能",
+        "封装良率",
+        "基板交期"
       ],
       "required_materials": [
         "HBM 产能",
@@ -758,7 +1169,7 @@
         "封装良率",
         "基板交期"
       ],
-      "research_step_id": "step:supply.packaging_memory_capacity",
+      "research_step_id": "question:supply.packaging_memory_capacity",
       "score_component": "chokepoint_strength",
       "skill_dispatch": {
         "concrete_materials": [
@@ -805,18 +1216,59 @@
         "source/manual/花旗-蓝思科技（300433.SZ）：携手英特尔推进玻璃基板合作-260726.pdf",
         "https://investor.tsmc.com/schinese/encrypt/files/encrypt_file/reports/2026-07/547d1696765e05ce3adb81c108ce1c8c1682b80c/TSMC%202Q26%20Transcript.pdf"
       ],
-      "source_plan": [],
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "HBM、先进封装、基板和测试是否成为可交付芯片的约束？ HBM 产能 / CoWoS 产能 / 封装良率"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "HBM、先进封装、基板和测试是否成为可交付芯片的约束？ HBM 产能 / CoWoS 产能 / 封装良率"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
       "source_universe_plan": {},
       "support_evidence": "多个供应商确认交期、预订或良率约束，且扩产需要较长周期。",
       "target_implications": "Changes the GPU/ASIC company exposure, earnings, valuation, or risk gate when directly mapped.",
       "trigger": "按季度追踪CoWoS/HBM扩产、良率、交期和客户验收。"
     },
     {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
       "child_plan_path": "l3_research_plans/supply.system_integration/research_plan.json",
       "decision_use": "识别最终可交付系统的最短板、释放周期和价值捕获。 Causal role: constraint; downstream: supply.shippable_system",
-      "execution_mode": "child_plan_rollup",
+      "execution_mode": "direct_evidence_step",
       "fact": "Helios 已进入量产，计划 2026 年第三季度开始发货、第四季度爬坡。该进度支持 AMD 供给增加，但客户采用、ODM 调试和机房配套仍决定收入确认速度。；AMD 将 MI450/Helios 的首批交付定在 2026 年第三季度末，再于第四季度和 2027 年上半年提速；管理层称分阶段爬坡是为了给 ODM 调试制造并与客户机房建设对齐。GPU 供给的可用单位已经是按期调试完成的机架系统，而非单颗芯片。",
-      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: monthly.",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: monthly.",
       "gap": "追踪机架发货、ODM调试、客户验收和芯片可用到系统上线的时间差。",
       "id": "supply.system_integration",
       "inference": "AMD明确分阶段爬坡需要ODM调试并与客户机房对齐，证明系统集成影响节奏；尚无实际验收周期和延期数据。",
@@ -825,9 +1277,16 @@
       "level": 3,
       "materiality": "识别最终可交付系统的最短板、释放周期和价值捕获。 Apply support rule: 系统交付显著晚于芯片可用时间，客户或厂商披露调试约束。",
       "minimum_evidence_gate": {
-        "all_mandatory_leaf_steps_required": true,
-        "direct_parent_evidence_forbidden": true,
-        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
       },
       "next_question_ids": [],
       "parent_id": "lens.supply",
@@ -835,7 +1294,13 @@
       "question": "ODM、机架、网络和软件调试是否限制芯片转化为可用系统？",
       "refute_evidence": "标准化设计和成熟 ODM 使机架交付周期显著缩短。",
       "refuting_source_plan": [
-        "Search primary and independent evidence that would establish: 标准化设计和成熟 ODM 使机架交付周期显著缩短。"
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 标准化设计和成熟 ODM 使机架交付周期显著缩短。."
+      ],
+      "required_data": [
+        "机架发货",
+        "ODM 产能",
+        "调试周期",
+        "系统验收"
       ],
       "required_materials": [
         "机架发货",
@@ -843,7 +1308,7 @@
         "调试周期",
         "系统验收"
       ],
-      "research_step_id": "step:supply.system_integration",
+      "research_step_id": "question:supply.system_integration",
       "score_component": "chokepoint_strength",
       "skill_dispatch": {
         "concrete_materials": [
@@ -874,18 +1339,59 @@
         "source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf",
         "source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf"
       ],
-      "source_plan": [],
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "ODM、机架、网络和软件调试是否限制芯片转化为可用系统？ 机架发货 / ODM 产能 / 调试周期"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "ODM、机架、网络和软件调试是否限制芯片转化为可用系统？ 机架发货 / ODM 产能 / 调试周期"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
       "source_universe_plan": {},
       "support_evidence": "系统交付显著晚于芯片可用时间，客户或厂商披露调试约束。",
       "target_implications": "Changes the GPU/ASIC company exposure, earnings, valuation, or risk gate when directly mapped.",
       "trigger": "追踪机架发货、ODM调试、客户验收和芯片可用到系统上线的时间差。"
     },
     {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
       "child_plan_path": "l3_research_plans/supply.datacenter_readiness/research_plan.json",
       "decision_use": "识别最终可交付系统的最短板、释放周期和价值捕获。 Causal role: constraint; downstream: supply.shippable_system",
-      "execution_mode": "child_plan_rollup",
+      "execution_mode": "direct_evidence_step",
       "fact": "外部 TPU 由 Google 与 Broadcom 协同设计、TSMC 制造，再由 Apollo/Blackstone 融资的 SPV 购买并交给数据中心运营商管理。这个结构把芯片设计、晶圆制造、资本和机房交付绑定在一起，可扩大供给，也引入跨主体执行和融资风险。；若 Meta 容量由 2026 年约 7GW 增至 2027 年 14GW，Hyperion 等合作方可能提供 1.0-1.5GW，使 Meta 直接融资的新增容量约为 5.5GW。伙伴资本可以缓解资产负担，但不能消除电力、服务器和建设交付约束。；NVIDIA明确把土地、电力、园区外壳和资本列为AI基础设施部署关键条件，并称这些短缺可推迟客户上线和收入。公司在2026年8月为SB Energy俄亥俄PORTS项目约4.25GW IT负载提供信用支持，园区原则上由OpenAI签署20年租约，NVIDIA担保总额上限1050亿美元；九座数据中心预计自2029财年开始陆续投入服务。该项目缓解未来场地约束，也显示设备需求需要大规模长期担保才能落地。",
-      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: quarterly.",
       "gap": "并网、许可、ready-for-service验收、实际IT负载和加速器安装量",
       "id": "supply.datacenter_readiness",
       "inference": "OpenAI/SB Energy披露1.2GW具名项目正在建设并计划2026年开始服务，使数据中心准备度有了项目级坐标；但并网、许可、ready-for-service验收、实际IT负载和加速器安装量未披露，不能当作已可用容量。",
@@ -894,9 +1400,16 @@
       "level": 3,
       "materiality": "识别最终可交付系统的最短板、释放周期和价值捕获。 Apply support rule: 客户明确把机房、电力或融资列为部署节奏的主要约束。",
       "minimum_evidence_gate": {
-        "all_mandatory_leaf_steps_required": true,
-        "direct_parent_evidence_forbidden": true,
-        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
       },
       "next_question_ids": [],
       "parent_id": "lens.supply",
@@ -904,7 +1417,13 @@
       "question": "数据中心电力、冷却、建设和融资是否限制设备上线？",
       "refute_evidence": "可用数据中心容量提前释放，设备上线不再受基础设施限制。",
       "refuting_source_plan": [
-        "Search primary and independent evidence that would establish: 可用数据中心容量提前释放，设备上线不再受基础设施限制。"
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 可用数据中心容量提前释放，设备上线不再受基础设施限制。."
+      ],
+      "required_data": [
+        "可用 MW/GW",
+        "建设周期",
+        "液冷就绪",
+        "项目融资"
       ],
       "required_materials": [
         "可用 MW/GW",
@@ -912,7 +1431,7 @@
         "液冷就绪",
         "项目融资"
       ],
-      "research_step_id": "step:supply.datacenter_readiness",
+      "research_step_id": "question:supply.datacenter_readiness",
       "score_component": "chokepoint_strength",
       "skill_dispatch": {
         "concrete_materials": [
@@ -955,18 +1474,59 @@
         "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
         "https://openai.com/index/stargate-sb-energy-partnership/"
       ],
-      "source_plan": [],
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "数据中心电力、冷却、建设和融资是否限制设备上线？ 可用 MW/GW / 建设周期 / 液冷就绪"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "数据中心电力、冷却、建设和融资是否限制设备上线？ 可用 MW/GW / 建设周期 / 液冷就绪"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
       "source_universe_plan": {},
       "support_evidence": "客户明确把机房、电力或融资列为部署节奏的主要约束。",
       "target_implications": "Changes the GPU/ASIC company exposure, earnings, valuation, or risk gate when directly mapped.",
       "trigger": "跟踪项目并网和验收日期，并与服务器上线及收入确认匹配。"
     },
     {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
       "child_plan_path": "l3_research_plans/supply.shippable_system/research_plan.json",
       "decision_use": "识别最终可交付系统的最短板、释放周期和价值捕获。 Causal role: output; downstream: demand.revenue_realization",
-      "execution_mode": "child_plan_rollup",
+      "execution_mode": "direct_evidence_step",
       "fact": "摩根大通把先进逻辑晶圆、硅片、内存和基板列为服务器供应链的持续约束，并预计供给改善会推动 2026 年第四季度收入进一步上行。有效供给仍由多项输入的最小值决定，而不是只看 GPU 晶圆数量。；MI450 GPU 与 Helios 机架系统计划于 2026 年 9 月开始交付，2026 年第四季度和 2027 年上半年加速爬坡；报告称 Anthropic、OpenAI、Meta 等客户已有数 GW 部署排至 2027 年。订单计划提供了可见性，但实际收入仍取决于系统交付和客户数据中心按期完工。；NVIDIA称Rubin在Q3 FY27开始生产发货，同时Blackwell与Rubin仍面临部分供应约束；为满足未来数年需求，公司把供应与产能承诺从上季度1190亿美元提高到2790亿美元，主要覆盖内存和制造设施。部分协议在正式下单前可以取消、改期或调整。该披露证明供给扩张正在加速，但缺少端到端交期、价格、客户等待时间和库存消化，不能直接判定最终系统供给仍低于订单。",
-      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: monthly.",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: monthly.",
       "gap": "缺少Blackwell/Rubin整机交期、成交价格、出货量、客户等待时间、取消率和渠道库存。",
       "id": "supply.shippable_system",
       "inference": "Rubin已经开始生产发货，供应与产能承诺由1190亿美元增至2790亿美元，说明NVIDIA正大幅扩张未来供给；公司同时确认仍有供应约束，且部分承诺可取消、改期或调整。缺少端到端交期、价格、渠道库存、客户等待时间和利用率，尚不能判断最终系统供给是否追上订单。",
@@ -975,9 +1535,16 @@
       "level": 3,
       "materiality": "识别最终可交付系统的最短板、释放周期和价值捕获。 Apply support rule: 交期高位、价格坚挺且订单覆盖持续，说明供给仍低于需求。",
       "minimum_evidence_gate": {
-        "all_mandatory_leaf_steps_required": true,
-        "direct_parent_evidence_forbidden": true,
-        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
       },
       "next_question_ids": [],
       "parent_id": "lens.supply",
@@ -985,7 +1552,14 @@
       "question": "所有约束合并后，GPU/ASIC 系统供给能否追上订单？",
       "refute_evidence": "交期、价格和利用率同步走弱，库存与渠道供给上升。",
       "refuting_source_plan": [
-        "Search primary and independent evidence that would establish: 交期、价格和利用率同步走弱，库存与渠道供给上升。"
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 交期、价格和利用率同步走弱，库存与渠道供给上升。."
+      ],
+      "required_data": [
+        "端到端交期",
+        "发货量",
+        "价格",
+        "库存",
+        "客户等待时间"
       ],
       "required_materials": [
         "端到端交期",
@@ -994,7 +1568,7 @@
         "库存",
         "客户等待时间"
       ],
-      "research_step_id": "step:supply.shippable_system",
+      "research_step_id": "question:supply.shippable_system",
       "score_component": "chokepoint_strength",
       "skill_dispatch": {
         "concrete_materials": [
@@ -1030,7 +1604,43 @@
         "source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf",
         "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm"
       ],
-      "source_plan": [],
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "所有约束合并后，GPU/ASIC 系统供给能否追上订单？ 端到端交期 / 发货量 / 价格"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "所有约束合并后，GPU/ASIC 系统供给能否追上订单？ 端到端交期 / 发货量 / 价格"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
       "source_universe_plan": {},
       "support_evidence": "交期高位、价格坚挺且订单覆盖持续，说明供给仍低于需求。",
       "target_implications": "Changes the GPU/ASIC company exposure, earnings, valuation, or risk gate when directly mapped.",
@@ -1058,11 +1668,16 @@
       "target_implications": ""
     },
     {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
       "child_plan_path": "l3_research_plans/technology.workload_fit/research_plan.json",
       "decision_use": "判断 GPU、ASIC 和其他路线在真实任务中的平台竞争与采用。 Causal role: input; downstream: technology.performance_tco",
-      "execution_mode": "child_plan_rollup",
+      "execution_mode": "direct_evidence_step",
       "fact": "德银预计 Meta 会用 Iris/MTIA 内部芯片承接部分推理和推荐工作负载，以降低相对 merchant GPU 的单位算力成本；在合作方容量和自研芯片共同作用下，直接融资成本可能低于简单按新增 GW 外推。稳定、可控的推理任务是 ASIC 替代最明确的场景。",
-      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: quarterly.",
       "gap": "收集同一客户训练、推理和agent任务在GPU与ASIC上的生产部署结果。",
       "id": "technology.workload_fit",
       "inference": "稳定推理适合ASIC的判断仍来自分析师预测；GPU份额预测不回答具体工作负载适配，缺少真实客户部署。",
@@ -1071,9 +1686,16 @@
       "level": 3,
       "materiality": "判断 GPU、ASIC 和其他路线在真实任务中的平台竞争与采用。 Apply support rule: 真实客户部署证明某路线对目标工作负载有稳定优势。",
       "minimum_evidence_gate": {
-        "all_mandatory_leaf_steps_required": true,
-        "direct_parent_evidence_forbidden": true,
-        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
       },
       "next_question_ids": [],
       "parent_id": "lens.technology",
@@ -1081,14 +1703,19 @@
       "question": "GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？",
       "refute_evidence": "路线优势只存在于厂商选择性基准，无法迁移到客户任务。",
       "refuting_source_plan": [
-        "Search primary and independent evidence that would establish: 路线优势只存在于厂商选择性基准，无法迁移到客户任务。"
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 路线优势只存在于厂商选择性基准，无法迁移到客户任务。."
+      ],
+      "required_data": [
+        "训练/推理占比",
+        "模型变化速度",
+        "延迟与吞吐要求"
       ],
       "required_materials": [
         "训练/推理占比",
         "模型变化速度",
         "延迟与吞吐要求"
       ],
-      "research_step_id": "step:technology.workload_fit",
+      "research_step_id": "question:technology.workload_fit",
       "score_component": "evidence_quality",
       "skill_dispatch": {
         "concrete_materials": [
@@ -1114,18 +1741,59 @@
       "source_links": [
         "source/ima/2026/07/24/德银-Meta（META.US）：宏大野心需匹配宏大体量-260724.pdf"
       ],
-      "source_plan": [],
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？ 训练/推理占比 / 模型变化速度 / 延迟与吞吐要求"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？ 训练/推理占比 / 模型变化速度 / 延迟与吞吐要求"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
       "source_universe_plan": {},
       "support_evidence": "真实客户部署证明某路线对目标工作负载有稳定优势。",
       "target_implications": "Changes the GPU/ASIC company exposure, earnings, valuation, or risk gate when directly mapped.",
       "trigger": "收集同一客户训练、推理和agent任务在GPU与ASIC上的生产部署结果。"
     },
     {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
       "child_plan_path": "l3_research_plans/technology.performance_tco/research_plan.json",
       "decision_use": "判断 GPU、ASIC 和其他路线在真实任务中的平台竞争与采用。 Causal role: mechanism; downstream: technology.customer_adoption",
-      "execution_mode": "child_plan_rollup",
+      "execution_mode": "direct_evidence_step",
       "fact": "Helios 由 72 颗 MI455X GPU、18 颗 EPYC Venice CPU 和 Pensando NIC 组成；AMD 声称凭借约 15% 更多计算、50% 更多 HBM 容量/带宽和 50% 更多横向扩展带宽，可较 NVIDIA 提供最高约 30% 的每美元推理 token 优势。该结果是公司展示，尚非独立同工作负载基准。；巴克莱假设 Google 2026 年以约 2 万美元单价向 SPV 销售 TPU、硬件毛利率约 25%，每 GW 约容纳 70 万颗 TPU；与 GCP 租赁相比，外部 TPU 所有权模型提高客户资本支出和折旧，但给予更强控制权。该比较是分析师模型，关键参数需用实际合同验证。",
-      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: quarterly.",
       "gap": "验证独立token/s、延迟、功耗、利用率、软件迁移和折旧成本。",
       "id": "technology.performance_tco",
       "inference": "AMD性能声明和巴克莱TPU模型均依赖厂商或分析师假设，没有独立同工作负载、同利用率的端到端TCO比较。",
@@ -1134,9 +1802,16 @@
       "level": 3,
       "materiality": "判断 GPU、ASIC 和其他路线在真实任务中的平台竞争与采用。 Apply support rule: 独立同口径测试或客户数据验证性能和 TCO 优势。",
       "minimum_evidence_gate": {
-        "all_mandatory_leaf_steps_required": true,
-        "direct_parent_evidence_forbidden": true,
-        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
       },
       "next_question_ids": [],
       "parent_id": "lens.technology",
@@ -1144,7 +1819,14 @@
       "question": "在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？",
       "refute_evidence": "优势依赖不可比参数、补贴、低利用率假设或未计软件迁移成本。",
       "refuting_source_plan": [
-        "Search primary and independent evidence that would establish: 优势依赖不可比参数、补贴、低利用率假设或未计软件迁移成本。"
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 优势依赖不可比参数、补贴、低利用率假设或未计软件迁移成本。."
+      ],
+      "required_data": [
+        "token/s",
+        "延迟",
+        "每 token 成本",
+        "性能功耗比",
+        "集群利用率"
       ],
       "required_materials": [
         "token/s",
@@ -1153,7 +1835,7 @@
         "性能功耗比",
         "集群利用率"
       ],
-      "research_step_id": "step:technology.performance_tco",
+      "research_step_id": "question:technology.performance_tco",
       "score_component": "evidence_quality",
       "skill_dispatch": {
         "concrete_materials": [
@@ -1185,18 +1867,59 @@
         "source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf",
         "source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf"
       ],
-      "source_plan": [],
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？ token/s / 延迟 / 每 token 成本"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？ token/s / 延迟 / 每 token 成本"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
       "source_universe_plan": {},
       "support_evidence": "独立同口径测试或客户数据验证性能和 TCO 优势。",
       "target_implications": "Changes the GPU/ASIC company exposure, earnings, valuation, or risk gate when directly mapped.",
       "trigger": "验证独立token/s、延迟、功耗、利用率、软件迁移和折旧成本。"
     },
     {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
       "child_plan_path": "l3_research_plans/technology.software_ecosystem/research_plan.json",
       "decision_use": "判断 GPU、ASIC 和其他路线在真实任务中的平台竞争与采用。 Causal role: mechanism; downstream: technology.customer_adoption",
-      "execution_mode": "child_plan_rollup",
+      "execution_mode": "direct_evidence_step",
       "fact": "AMD 将 ROCm 发布周期由约四个月缩短到六周，并展示 coding agent 自动优化 MiniMax M3 在 MI355 上的内核后，token/s 提升 38%；公司还宣称相对 ROCm 7，DeepSeek 模型训练加速 2.4 倍、推理加速 3.3 倍。软件迭代速度正在改善，但数据仍来自厂商演示。",
-      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: monthly.",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: monthly.",
       "gap": "补充客户生产案例、迁移工时、框架覆盖、开发者使用和集群利用率。",
       "id": "technology.software_ecosystem",
       "inference": "ROCm发布节奏和演示性能改善是边界信息，尚无客户生产使用、迁移时间和开发者采用证明生态锁定变化。",
@@ -1205,9 +1928,16 @@
       "level": 3,
       "materiality": "判断 GPU、ASIC 和其他路线在真实任务中的平台竞争与采用。 Apply support rule: 客户生产部署和开发者使用证明生态缩短上线时间并提高利用率。",
       "minimum_evidence_gate": {
-        "all_mandatory_leaf_steps_required": true,
-        "direct_parent_evidence_forbidden": true,
-        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
       },
       "next_question_ids": [],
       "parent_id": "lens.technology",
@@ -1215,7 +1945,13 @@
       "question": "编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？",
       "refute_evidence": "软件改进停留在演示，客户仍承担显著迁移和运维成本。",
       "refuting_source_plan": [
-        "Search primary and independent evidence that would establish: 软件改进停留在演示，客户仍承担显著迁移和运维成本。"
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 软件改进停留在演示，客户仍承担显著迁移和运维成本。."
+      ],
+      "required_data": [
+        "软件发布节奏",
+        "框架支持",
+        "迁移时间",
+        "开发者采用"
       ],
       "required_materials": [
         "软件发布节奏",
@@ -1223,7 +1959,7 @@
         "迁移时间",
         "开发者采用"
       ],
-      "research_step_id": "step:technology.software_ecosystem",
+      "research_step_id": "question:technology.software_ecosystem",
       "score_component": "evidence_quality",
       "skill_dispatch": {
         "concrete_materials": [
@@ -1250,18 +1986,59 @@
       "source_links": [
         "source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf"
       ],
-      "source_plan": [],
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？ 软件发布节奏 / 框架支持 / 迁移时间"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？ 软件发布节奏 / 框架支持 / 迁移时间"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
       "source_universe_plan": {},
       "support_evidence": "客户生产部署和开发者使用证明生态缩短上线时间并提高利用率。",
       "target_implications": "Changes the GPU/ASIC company exposure, earnings, valuation, or risk gate when directly mapped.",
       "trigger": "补充客户生产案例、迁移工时、框架覆盖、开发者使用和集群利用率。"
     },
     {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
       "child_plan_path": "l3_research_plans/technology.customer_adoption/research_plan.json",
       "decision_use": "判断 GPU、ASIC 和其他路线在真实任务中的平台竞争与采用。 Causal role: output; downstream: technology.platform_competition",
-      "execution_mode": "child_plan_rollup",
+      "execution_mode": "direct_evidence_step",
       "fact": "Google 正尝试把 TPU 从 GCP 内的租赁资源变成可由外部 AI lab 通过 SPV 直接控制的 merchant product；客户获得更深的软件定制、纵向整合和独立于单一云协议的算力控制。这扩大了 ASIC 的可服务市场，也使其开始正面争夺 NVIDIA 的外部计算需求。；AMD 与 Cerebras 宣布把 Helios 机架和晶圆级引擎组合成解耦推理方案，目标在超低延迟场景获得约 5 倍吞吐。它表明竞争单位正在从单颗 GPU 转为异构系统，但量产可用性和客户采用尚待验证。；Helios 已进入量产，计划 2026 年第三季度开始发货、第四季度爬坡。该进度支持 AMD 供给增加，但客户采用、ODM 调试和机房配套仍决定收入确认速度。",
-      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: quarterly.",
       "gap": "客户采购扩张、复购、利用率、独立生产TCO和商业激励条件",
       "id": "technology.customer_adoption",
       "inference": "NVIDIA Rubin在五家伙伴运行，AMD Helios也出现具名部署和最高2GW合作，平台采用从发布推进到实际部署线索；但缺少采购扩张、复购、利用率、独立性能和激励条款，尚不满足生产扩采规则。",
@@ -1270,9 +2047,16 @@
       "level": 3,
       "materiality": "判断 GPU、ASIC 和其他路线在真实任务中的平台竞争与采用。 Apply support rule: 多个客户进入生产并扩大采购，不依赖单一补贴或股权激励。",
       "minimum_evidence_gate": {
-        "all_mandatory_leaf_steps_required": true,
-        "direct_parent_evidence_forbidden": true,
-        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
       },
       "next_question_ids": [],
       "parent_id": "lens.technology",
@@ -1280,7 +2064,13 @@
       "question": "技术优势是否转化为生产部署、复购和规模量产？",
       "refute_evidence": "采用停留在试点，或必须以大额认股权证和补贴换取。",
       "refuting_source_plan": [
-        "Search primary and independent evidence that would establish: 采用停留在试点，或必须以大额认股权证和补贴换取。"
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 采用停留在试点，或必须以大额认股权证和补贴换取。."
+      ],
+      "required_data": [
+        "生产客户",
+        "部署 GW",
+        "复购",
+        "量产时间"
       ],
       "required_materials": [
         "生产客户",
@@ -1288,7 +2078,7 @@
         "复购",
         "量产时间"
       ],
-      "research_step_id": "step:technology.customer_adoption",
+      "research_step_id": "question:technology.customer_adoption",
       "score_component": "evidence_quality",
       "skill_dispatch": {
         "concrete_materials": [
@@ -1327,18 +2117,59 @@
         "https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results",
         "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/default.aspx"
       ],
-      "source_plan": [],
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "技术优势是否转化为生产部署、复购和规模量产？ 生产客户 / 部署 GW / 复购"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "技术优势是否转化为生产部署、复购和规模量产？ 生产客户 / 部署 GW / 复购"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
       "source_universe_plan": {},
       "support_evidence": "多个客户进入生产并扩大采购，不依赖单一补贴或股权激励。",
       "target_implications": "Changes the GPU/ASIC company exposure, earnings, valuation, or risk gate when directly mapped.",
       "trigger": "获取同一客户连续季度部署规模、利用率、复购和单位工作负载成本。"
     },
     {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
       "child_plan_path": "l3_research_plans/technology.platform_competition/research_plan.json",
       "decision_use": "判断 GPU、ASIC 和其他路线在真实任务中的平台竞争与采用。 Causal role: output; downstream: demand.order_visibility, valuation.fundamental_earnings",
-      "execution_mode": "child_plan_rollup",
+      "execution_mode": "direct_evidence_step",
       "fact": "摩根大通认为 GPU 在整体 AI 加速器 TAM 中的占比可能由 2025 年约 85% 降至 2030 年 60%-70%，原因是定制 XPU/ASIC 增长更快；但 GPU 绝对市场仍可能以接近 40% 的复合增速扩张。技术替代更可能表现为份额稀释，而不是 GPU 需求收缩。；Google 正尝试把 TPU 从 GCP 内的租赁资源变成可由外部 AI lab 通过 SPV 直接控制的 merchant product；客户获得更深的软件定制、纵向整合和独立于单一云协议的算力控制。这扩大了 ASIC 的可服务市场，也使其开始正面争夺 NVIDIA 的外部计算需求。",
-      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: quarterly.",
       "gap": "用同口径数据中心加速器份额、订单、客户部署和平台收入验证价值捕获。",
       "id": "technology.platform_competition",
       "inference": "GPU份额预测和外部TPU所有权模式提示ASIC可能打开新分支；实际份额、订单、客户部署和平台利润池尚未验证。",
@@ -1347,9 +2178,16 @@
       "level": 3,
       "materiality": "判断 GPU、ASIC 和其他路线在真实任务中的平台竞争与采用。 Apply support rule: 份额、订单和客户部署共同显示平台价值捕获变化。",
       "minimum_evidence_gate": {
-        "all_mandatory_leaf_steps_required": true,
-        "direct_parent_evidence_forbidden": true,
-        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
       },
       "next_question_ids": [],
       "parent_id": "lens.technology",
@@ -1357,7 +2195,13 @@
       "question": "竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？",
       "refute_evidence": "市场份额结论混用 PC GPU、数据中心芯片和系统收入等不同口径。",
       "refuting_source_plan": [
-        "Search primary and independent evidence that would establish: 市场份额结论混用 PC GPU、数据中心芯片和系统收入等不同口径。"
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 市场份额结论混用 PC GPU、数据中心芯片和系统收入等不同口径。."
+      ],
+      "required_data": [
+        "加速器份额",
+        "merchant/custom 占比",
+        "平台收入",
+        "切换案例"
       ],
       "required_materials": [
         "加速器份额",
@@ -1365,7 +2209,7 @@
         "平台收入",
         "切换案例"
       ],
-      "research_step_id": "step:technology.platform_competition",
+      "research_step_id": "question:technology.platform_competition",
       "score_component": "evidence_quality",
       "skill_dispatch": {
         "concrete_materials": [
@@ -1396,7 +2240,43 @@
         "source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf",
         "source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf"
       ],
-      "source_plan": [],
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？ 加速器份额 / merchant/custom 占比 / 平台收入"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？ 加速器份额 / merchant/custom 占比 / 平台收入"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
       "source_universe_plan": {},
       "support_evidence": "份额、订单和客户部署共同显示平台价值捕获变化。",
       "target_implications": "Changes the GPU/ASIC company exposure, earnings, valuation, or risk gate when directly mapped.",
@@ -1424,11 +2304,16 @@
       "target_implications": ""
     },
     {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
       "child_plan_path": "l3_research_plans/valuation.fundamental_earnings/research_plan.json",
       "decision_use": "把盈利路径与市场共识和股价隐含预期比较，形成赔率判断。 Causal role: input; downstream: valuation.consensus_expectation",
-      "execution_mode": "child_plan_rollup",
+      "execution_mode": "direct_evidence_step",
       "fact": "巴克莱的高情景把 2028 年外部 TPU 收入估至 2,527 亿美元、毛利 632 亿美元，并把 Alphabet 2028 年收入预测上调 40%；但同一模型预计 2027-2028 年资本开支约 3,500 亿和 5,003 亿美元、自由现金流转负。利润上修与资本强度必须同时计价。；摩根士丹利把 AMD 向客户发行的大额认股权证视为营销费用，认为其可能抵消未来数年 GPU 业务的大部分利润。即使收入增长，股东可获得的盈利弹性仍可能被获客成本和稀释削弱。；AMD 2026年第二季度自由现金流15.58亿美元，低于第一季度25.66亿美元；资本开支由第一季度3.89亿美元升至8.08亿美元。单季现金流受营运资本和付款节奏影响，不能用一个季度证明长期恶化，但收入高增并未在本季同步转化为更高自由现金流。",
-      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: quarterly.",
       "gap": "AMD GPU收入与利润拆分；NVIDIA数据中心分部利润；连续季度FCF、稀释和资本承诺现金流",
       "id": "valuation.fundamental_earnings",
       "inference": "NVIDIA官方报表已有收入、毛利、经营现金流和FCF桥；AMD新增数据中心收入67.18亿美元、分部经营利润21.03亿美元，但GPU未拆分，集团FCF环比下降且capex上升。两家公司盈利桥均明显改善，仍不足以通过GPU专属股东盈利门槛。",
@@ -1437,9 +2322,16 @@
       "level": 3,
       "materiality": "把盈利路径与市场共识和股价隐含预期比较，形成赔率判断。 Apply support rule: 结构化公司/分部桥能把节点变化量化到盈利。",
       "minimum_evidence_gate": {
-        "all_mandatory_leaf_steps_required": true,
-        "direct_parent_evidence_forbidden": true,
-        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
       },
       "next_question_ids": [],
       "parent_id": "lens.valuation",
@@ -1447,7 +2339,14 @@
       "question": "GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？",
       "refute_evidence": "仅有主题敞口，或收入增长被低毛利、稀释和资本强度抵消。",
       "refuting_source_plan": [
-        "Search primary and independent evidence that would establish: 仅有主题敞口，或收入增长被低毛利、稀释和资本强度抵消。"
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 仅有主题敞口，或收入增长被低毛利、稀释和资本强度抵消。."
+      ],
+      "required_data": [
+        "分部收入",
+        "增量毛利",
+        "研发与获客成本",
+        "FCF",
+        "EPS"
       ],
       "required_materials": [
         "分部收入",
@@ -1456,7 +2355,7 @@
         "FCF",
         "EPS"
       ],
-      "research_step_id": "step:valuation.fundamental_earnings",
+      "research_step_id": "question:valuation.fundamental_earnings",
       "score_component": "valuation_odds",
       "skill_dispatch": {
         "concrete_materials": [
@@ -1500,18 +2399,59 @@
         "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
         "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/default.aspx"
       ],
-      "source_plan": [],
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？ 分部收入 / 增量毛利 / 研发与获客成本"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？ 分部收入 / 增量毛利 / 研发与获客成本"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
       "source_universe_plan": {},
       "support_evidence": "结构化公司/分部桥能把节点变化量化到盈利。",
       "target_implications": "Changes the GPU/ASIC company exposure, earnings, valuation, or risk gate when directly mapped.",
       "trigger": "建立两家公司连续四季GPU相关收入到FCF/EPS桥。"
     },
     {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
       "child_plan_path": "l3_research_plans/valuation.consensus_expectation/research_plan.json",
       "decision_use": "把盈利路径与市场共识和股价隐含预期比较，形成赔率判断。 Causal role: mechanism; downstream: valuation.implied_expectation",
-      "execution_mode": "child_plan_rollup",
+      "execution_mode": "direct_evidence_step",
       "fact": "巴克莱的高情景把 2028 年外部 TPU 收入估至 2,527 亿美元、毛利 632 亿美元，并把 Alphabet 2028 年收入预测上调 40%；但同一模型预计 2027-2028 年资本开支约 3,500 亿和 5,003 亿美元、自由现金流转负。利润上修与资本强度必须同时计价。；巴克莱维持 Alphabet Overweight 和 425 美元目标价，对应 2026 年 7 月 23 日 317.69 美元股价约 34% 潜在空间；目标价取 2027 年 25 倍 EPS 与 15 倍 EBITDA 的平均结果。赔率来自 TPU 外部商业化和云利润上修，而非纯 GPU 敞口。；Meta 2026 年资本开支指引为 1,250 亿至 1,450 亿美元；德银称市场已把 2027 年约 14GW 容量对应的资本开支预期推至 2,000 亿美元低至中段，并给出 2027 年约 2,100 亿至 2,150 亿美元、2028 年约 2,650 亿美元的估计。这是大型客户继续扩大 AI 算力采购的直接预算信号，但后两项属于分析师估计。",
-      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: weekly.",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: weekly.",
       "gap": "收集同一截面、同一盈利口径的多机构收入、EPS、capex和份额预期。",
       "id": "valuation.consensus_expectation",
       "inference": "现有目标价和预测来自不同公司、年份与口径，都是单家机构样本，不能构成可比较的一致预期。",
@@ -1520,9 +2460,16 @@
       "level": 3,
       "materiality": "把盈利路径与市场共识和股价隐含预期比较，形成赔率判断。 Apply support rule: 同一截面、同一口径的多家机构预期可被比较。",
       "minimum_evidence_gate": {
-        "all_mandatory_leaf_steps_required": true,
-        "direct_parent_evidence_forbidden": true,
-        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
       },
       "next_question_ids": [],
       "parent_id": "lens.valuation",
@@ -1530,7 +2477,13 @@
       "question": "市场当前对收入、利润、份额和资本开支的主流预期是什么？",
       "refute_evidence": "使用不同年份、盈利口径或旧目标价制造虚假分歧。",
       "refuting_source_plan": [
-        "Search primary and independent evidence that would establish: 使用不同年份、盈利口径或旧目标价制造虚假分歧。"
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 使用不同年份、盈利口径或旧目标价制造虚假分歧。."
+      ],
+      "required_data": [
+        "一致预期",
+        "目标价",
+        "机构情景",
+        "多空分歧"
       ],
       "required_materials": [
         "一致预期",
@@ -1538,7 +2491,7 @@
         "机构情景",
         "多空分歧"
       ],
-      "research_step_id": "step:valuation.consensus_expectation",
+      "research_step_id": "question:valuation.consensus_expectation",
       "score_component": "valuation_odds",
       "skill_dispatch": {
         "concrete_materials": [
@@ -1577,18 +2530,59 @@
         "source/ima/2026/07/24/摩根大通-超微半导体（AMD.US）AAI26大会纪要：AI与CPU总可寻址市场（TAM）预期上调，MI450与Helios机柜放量在即，AI版图持续拓宽；借CPU东风追赶GPU龙头-260724.pdf",
         "source/ima/2026/07/24/巴克莱-Alphabet（GOOGL.US）：拆解“TPU即服务”-260724.pdf"
       ],
-      "source_plan": [],
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "市场当前对收入、利润、份额和资本开支的主流预期是什么？ 一致预期 / 目标价 / 机构情景"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "市场当前对收入、利润、份额和资本开支的主流预期是什么？ 一致预期 / 目标价 / 机构情景"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
       "source_universe_plan": {},
       "support_evidence": "同一截面、同一口径的多家机构预期可被比较。",
       "target_implications": "Changes the GPU/ASIC company exposure, earnings, valuation, or risk gate when directly mapped.",
       "trigger": "收集同一截面、同一盈利口径的多机构收入、EPS、capex和份额预期。"
     },
     {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
       "child_plan_path": "l3_research_plans/valuation.implied_expectation/research_plan.json",
       "decision_use": "把盈利路径与市场共识和股价隐含预期比较，形成赔率判断。 Causal role: mechanism; downstream: valuation.revision_momentum",
-      "execution_mode": "child_plan_rollup",
+      "execution_mode": "direct_evidence_step",
       "fact": "德银明确指出 2027 容量、每 GW 成本、利用率、定价和客户需求均有高度不确定性，第三方云收入尚未正式宣布，也未进入其当前盈利预测。把潜在算力销售直接资本化会高估已验证价值。；摩根士丹利维持 AMD Equal-weight，目标价 410 美元，而 2026 年 7 月 23 日股价为 539.69 美元；报告认为 AMD 叙事改善，但相对 NVIDIA、Broadcom 估值更贵且缺少类似期权，风险收益更好的选择在别处。；巴克莱的高情景把 2028 年外部 TPU 收入估至 2,527 亿美元、毛利 632 亿美元，并把 Alphabet 2028 年收入预测上调 40%；但同一模型预计 2027-2028 年资本开支约 3,500 亿和 5,003 亿美元、自由现金流转负。利润上修与资本强度必须同时计价。",
-      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: weekly.",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: weekly.",
       "gap": "同截面一致预期、正常化FCF、净现金、股权稀释和终值敏感性",
       "id": "valuation.implied_expectation",
       "inference": "按9月1日价格与最新季度年化FCF，10%折现率、3%永续增速、十年显性期的简化反向DCF显示：NVDA约需22.3%、AMD约需32.1%的十年FCF复合增速才能解释价格。模型可复现但高度依赖单季年化和终值，且缺少一致预期交叉验证，状态由未解决推进为弱。",
@@ -1597,9 +2591,16 @@
       "level": 3,
       "materiality": "把盈利路径与市场共识和股价隐含预期比较，形成赔率判断。 Apply support rule: 以截面股价和可复现模型还原市场已经计入的路径。",
       "minimum_evidence_gate": {
-        "all_mandatory_leaf_steps_required": true,
-        "direct_parent_evidence_forbidden": true,
-        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
       },
       "next_question_ids": [],
       "parent_id": "lens.valuation",
@@ -1607,7 +2608,13 @@
       "question": "当前股价要求公司实现怎样的增长、份额和利润率路径？",
       "refute_evidence": "只引用目标价上行空间而没有隐含假设和下行情景。",
       "refuting_source_plan": [
-        "Search primary and independent evidence that would establish: 只引用目标价上行空间而没有隐含假设和下行情景。"
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 只引用目标价上行空间而没有隐含假设和下行情景。."
+      ],
+      "required_data": [
+        "PE/EV-EBITDA",
+        "反向 DCF",
+        "隐含收入增速",
+        "隐含利润率"
       ],
       "required_materials": [
         "PE/EV-EBITDA",
@@ -1615,7 +2622,7 @@
         "隐含收入增速",
         "隐含利润率"
       ],
-      "research_step_id": "step:valuation.implied_expectation",
+      "research_step_id": "question:valuation.implied_expectation",
       "score_component": "valuation_odds",
       "skill_dispatch": {
         "concrete_materials": [
@@ -1658,18 +2665,59 @@
         "https://www.investing.com/equities/adv-micro-device",
         "https://chartexchange.com/symbol/nasdaq-nvda/historical/"
       ],
-      "source_plan": [],
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "当前股价要求公司实现怎样的增长、份额和利润率路径？ PE/EV-EBITDA / 反向 DCF / 隐含收入增速"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "当前股价要求公司实现怎样的增长、份额和利润率路径？ PE/EV-EBITDA / 反向 DCF / 隐含收入增速"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
       "source_universe_plan": {},
       "support_evidence": "以截面股价和可复现模型还原市场已经计入的路径。",
       "target_implications": "Changes the GPU/ASIC company exposure, earnings, valuation, or risk gate when directly mapped.",
       "trigger": "以TTM/正常化FCF和多家一致预期重跑反向DCF，披露净现金与稀释。"
     },
     {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
       "child_plan_path": "l3_research_plans/valuation.revision_momentum/research_plan.json",
       "decision_use": "把盈利路径与市场共识和股价隐含预期比较，形成赔率判断。 Causal role: output; downstream: valuation.payoff_asymmetry",
-      "execution_mode": "child_plan_rollup",
+      "execution_mode": "direct_evidence_step",
       "fact": "AMD于2026年9月1日报459.61美元，前收470.72美元。该截面价格可与Q2 EPS、FCF和估算股本建立简化反向估值，但单日价格不能说明盈利预期修正。；NVDA于2026年9月1日收于217.43美元；8月26日、27日、28日收盘分别为209.66、227.98和217.55美元。价格序列可作为反向估值输入，但业绩后的短期涨跌不能替代一致预期修正或长期盈利路径。",
-      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: weekly.",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: weekly.",
       "gap": "至少三个截面的一致收入、EPS、FCF和估值倍数修正",
       "id": "valuation.revision_momentum",
       "inference": "新增NVDA业绩窗口价格和AMD单日价格只建立市场反应坐标，没有多期同口径收入、EPS和FCF预期修正序列，无法判断价格变化来自盈利上修还是倍数扩张。",
@@ -1678,9 +2726,16 @@
       "level": 3,
       "materiality": "把盈利路径与市场共识和股价隐含预期比较，形成赔率判断。 Apply support rule: 多期盈利预期持续上修，估值没有更快透支。",
       "minimum_evidence_gate": {
-        "all_mandatory_leaf_steps_required": true,
-        "direct_parent_evidence_forbidden": true,
-        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
       },
       "next_question_ids": [],
       "parent_id": "lens.valuation",
@@ -1688,7 +2743,13 @@
       "question": "新信息是否使基本面上修速度快于市场预期和估值扩张？",
       "refute_evidence": "股价上涨主要来自倍数扩张，盈利修正停滞或转负。",
       "refuting_source_plan": [
-        "Search primary and independent evidence that would establish: 股价上涨主要来自倍数扩张，盈利修正停滞或转负。"
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 股价上涨主要来自倍数扩张，盈利修正停滞或转负。."
+      ],
+      "required_data": [
+        "EPS 修正",
+        "收入修正",
+        "目标价修正",
+        "业绩后股价反应"
       ],
       "required_materials": [
         "EPS 修正",
@@ -1696,7 +2757,7 @@
         "目标价修正",
         "业绩后股价反应"
       ],
-      "research_step_id": "step:valuation.revision_momentum",
+      "research_step_id": "question:valuation.revision_momentum",
       "score_component": "valuation_odds",
       "skill_dispatch": {
         "concrete_materials": [
@@ -1727,18 +2788,59 @@
         "https://www.investing.com/equities/adv-micro-device",
         "https://chartexchange.com/symbol/nasdaq-nvda/historical/"
       ],
-      "source_plan": [],
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "新信息是否使基本面上修速度快于市场预期和估值扩张？ EPS 修正 / 收入修正 / 目标价修正"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "新信息是否使基本面上修速度快于市场预期和估值扩张？ EPS 修正 / 收入修正 / 目标价修正"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
       "source_universe_plan": {},
       "support_evidence": "多期盈利预期持续上修，估值没有更快透支。",
       "target_implications": "Changes the GPU/ASIC company exposure, earnings, valuation, or risk gate when directly mapped.",
       "trigger": "建立逐周一致预期版本和股价反应序列。"
     },
     {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
       "child_plan_path": "l3_research_plans/valuation.payoff_asymmetry/research_plan.json",
       "decision_use": "把盈利路径与市场共识和股价隐含预期比较，形成赔率判断。 Causal role: output; downstream: final decision",
-      "execution_mode": "child_plan_rollup",
+      "execution_mode": "direct_evidence_step",
       "fact": "摩根大通维持 AMD Neutral，2026 年 12 月目标价 385 美元，而报告股价为 552.33 美元；目标价基于约 35 倍市盈率和约 11 美元的 2026 年末盈利能力。报告认可产品改善，但认为长期份额不确定、研发投入高且股价接近充分定价。；巴克莱维持 Alphabet Overweight 和 425 美元目标价，对应 2026 年 7 月 23 日 317.69 美元股价约 34% 潜在空间；目标价取 2027 年 25 倍 EPS 与 15 倍 EBITDA 的平均结果。赔率来自 TPU 外部商业化和云利润上修，而非纯 GPU 敞口。；德银明确指出 2027 容量、每 GW 成本、利用率、定价和客户需求均有高度不确定性，第三方云收入尚未正式宣布，也未进入其当前盈利预测。把潜在算力销售直接资本化会高估已验证价值。",
-      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: weekly.",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: weekly.",
       "gap": "正常化FCF、概率依据、净现金、稀释与可比较估值",
       "id": "valuation.payoff_asymmetry",
       "inference": "统一简化DCF敏感性下，NVDA十年FCF增速15%/22%/28%对应每股约127/212/327美元，AMD 20%/32%/40%对应约194/458/792美元；25%/50%/25%的机械权重结果接近现价，但区间极宽，说明结论由长期增长假设主导而非形成安全边际。该结果是敏感性检查，不是目标价。",
@@ -1747,9 +2849,16 @@
       "level": 3,
       "materiality": "把盈利路径与市场共识和股价隐含预期比较，形成赔率判断。 Apply support rule: 上行赔率显著高于可量化下行，且反证触发器可及时监控。",
       "minimum_evidence_gate": {
-        "all_mandatory_leaf_steps_required": true,
-        "direct_parent_evidence_forbidden": true,
-        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
       },
       "next_question_ids": [],
       "parent_id": "lens.valuation",
@@ -1757,7 +2866,13 @@
       "question": "综合情景概率后，上行、下行和可监控性是否支持行动？",
       "refute_evidence": "高增长已充分定价、下行无法量化或缺少退出触发器。",
       "refuting_source_plan": [
-        "Search primary and independent evidence that would establish: 高增长已充分定价、下行无法量化或缺少退出触发器。"
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 高增长已充分定价、下行无法量化或缺少退出触发器。."
+      ],
+      "required_data": [
+        "情景收益",
+        "概率",
+        "最大回撤风险",
+        "kill test"
       ],
       "required_materials": [
         "情景收益",
@@ -1765,7 +2880,7 @@
         "最大回撤风险",
         "kill test"
       ],
-      "research_step_id": "step:valuation.payoff_asymmetry",
+      "research_step_id": "question:valuation.payoff_asymmetry",
       "score_component": "valuation_odds",
       "skill_dispatch": {
         "concrete_materials": [
@@ -1812,7 +2927,43 @@
         "https://www.investing.com/equities/adv-micro-device",
         "https://chartexchange.com/symbol/nasdaq-nvda/historical/"
       ],
-      "source_plan": [],
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "综合情景概率后，上行、下行和可监控性是否支持行动？ 情景收益 / 概率 / 最大回撤风险"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "综合情景概率后，上行、下行和可监控性是否支持行动？ 情景收益 / 概率 / 最大回撤风险"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
       "source_universe_plan": {},
       "support_evidence": "上行赔率显著高于可量化下行，且反证触发器可及时监控。",
       "target_implications": "Changes the GPU/ASIC company exposure, earnings, valuation, or risk gate when directly mapped.",
@@ -1840,11 +2991,16 @@
       "target_implications": ""
     },
     {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
       "child_plan_path": "l3_research_plans/esg.energy_water/research_plan.json",
       "decision_use": "识别会改变交付、市场准入、资本成本和股东回报的约束。 Causal role: constraint; downstream: supply.datacenter_readiness",
-      "execution_mode": "child_plan_rollup",
+      "execution_mode": "direct_evidence_step",
       "fact": "Microsoft称其数据中心WUE由约2.3升/千瓦时降至2025年的0.27升/千瓦时，约90%的机队使用低水或零水冷却，并为新AI数据中心采用零蒸发用水冷却设计。单位强度改善降低边际水约束，但材料没有披露各项目绝对用水、当地水权、电力并网与许可，不能证明资源约束已消失。；1.2GW租约把长期容量需求与SB Energy项目连接起来，双方还表述将新增发电并尽量降低用水；公告未披露租约金额、担保、利用率、闲置责任、对手方穿透或绝对水资源许可，因此只能确认承诺结构存在，不能判断最终风险承担。",
-      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: quarterly.",
       "gap": "逐项目绝对用水、水权、电力并网、许可和延期成本",
       "id": "esg.energy_water",
       "inference": "Microsoft把数据中心WUE降至0.27升/千瓦时并大规模采用低水/零水冷却，说明单位资源强度可显著改善；OpenAI/SB Energy也规划新增发电和降低用水。但缺少项目绝对用水、当地水权、电力并网和许可，资源约束只形成弱证据基线。",
@@ -1853,17 +3009,30 @@
       "level": 3,
       "materiality": "识别会改变交付、市场准入、资本成本和股东回报的约束。 Apply support rule: 项目延期、成本或监管文件明确指向资源约束。",
       "minimum_evidence_gate": {
-        "all_mandatory_leaf_steps_required": true,
-        "direct_parent_evidence_forbidden": true,
-        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
       },
       "next_question_ids": [],
       "parent_id": "lens.esg",
-      "preferred_specialty_skill": "financial-statement-analysis",
+      "preferred_specialty_skill": "news-event-analysis",
       "question": "绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？",
       "refute_evidence": "效率、能源供应和选址使资源约束不再影响部署。",
       "refuting_source_plan": [
-        "Search primary and independent evidence that would establish: 效率、能源供应和选址使资源约束不再影响部署。"
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 效率、能源供应和选址使资源约束不再影响部署。."
+      ],
+      "required_data": [
+        "PUE",
+        "电力需求",
+        "水耗",
+        "许可周期"
       ],
       "required_materials": [
         "PUE",
@@ -1871,7 +3040,7 @@
         "水耗",
         "许可周期"
       ],
-      "research_step_id": "step:esg.energy_water",
+      "research_step_id": "question:esg.energy_water",
       "score_component": "risk_control",
       "skill_dispatch": {
         "concrete_materials": [
@@ -1902,18 +3071,59 @@
         "https://blogs.microsoft.com/blog/2026/06/24/inside-microsofts-two-decade-push-to-cut-water-intensity-while-scaling-for-growth/",
         "https://openai.com/index/stargate-sb-energy-partnership/"
       ],
-      "source_plan": [],
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？ PUE / 电力需求 / 水耗"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？ PUE / 电力需求 / 水耗"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
       "source_universe_plan": {},
       "support_evidence": "项目延期、成本或监管文件明确指向资源约束。",
       "target_implications": "Changes the GPU/ASIC company exposure, earnings, valuation, or risk gate when directly mapped.",
       "trigger": "采集具名园区监管文件、并网里程碑和绝对水电预算。"
     },
     {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
       "child_plan_path": "l3_research_plans/esg.export_market_access/research_plan.json",
       "decision_use": "识别会改变交付、市场准入、资本成本和股东回报的约束。 Causal role: constraint; downstream: demand.revenue_realization",
-      "execution_mode": "child_plan_rollup",
+      "execution_mode": "direct_evidence_step",
       "fact": "NVIDIA披露美国许可允许向特定中国客户小量发运H200，但受中国政府限制，获许可产品未能全部销售；2027财年上半年因H200需求下降计提4亿美元库存及采购义务费用，Q2实际H200发运不足数据中心收入1%，且美国检查流程触发25%进口关税，公司无法向客户转嫁。公司判断当前实际上无法在中国数据中心计算市场竞争。",
-      "freshness_requirement": "Event-driven; refresh immediately when the governing rule or event changes.",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: event_driven.",
       "gap": "需跟踪许可数量、实际中国收入、替代产品、后续库存费用和竞争生态份额变化。",
       "id": "esg.export_market_access",
       "inference": "NVIDIA官方10-Q量化了中国数据中心市场限制：H200发运不足数据中心收入1%，上半年计提4亿美元库存及采购义务费用，25%关税无法向客户转嫁，公司称实际上无法在中国数据中心计算市场竞争。市场准入约束已从数据缺口升级为确认。",
@@ -1922,17 +3132,30 @@
       "level": 3,
       "materiality": "识别会改变交付、市场准入、资本成本和股东回报的约束。 Apply support rule: 官方规则和公司披露能量化收入、产品与成本影响。",
       "minimum_evidence_gate": {
-        "all_mandatory_leaf_steps_required": true,
-        "direct_parent_evidence_forbidden": true,
-        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
       },
       "next_question_ids": [],
       "parent_id": "lens.esg",
-      "preferred_specialty_skill": "financial-statement-analysis",
+      "preferred_specialty_skill": "news-event-analysis",
       "question": "出口限制和本地化要求如何改变可服务市场与库存风险？",
       "refute_evidence": "影响仅来自传闻，或替代产品和许可完全抵消限制。",
       "refuting_source_plan": [
-        "Search primary and independent evidence that would establish: 影响仅来自传闻，或替代产品和许可完全抵消限制。"
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 影响仅来自传闻，或替代产品和许可完全抵消限制。."
+      ],
+      "required_data": [
+        "许可范围",
+        "受限收入",
+        "库存损失",
+        "替代产品"
       ],
       "required_materials": [
         "许可范围",
@@ -1940,7 +3163,7 @@
         "库存损失",
         "替代产品"
       ],
-      "research_step_id": "step:esg.export_market_access",
+      "research_step_id": "question:esg.export_market_access",
       "score_component": "risk_control",
       "skill_dispatch": {
         "concrete_materials": [
@@ -1967,18 +3190,59 @@
       "source_links": [
         "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm"
       ],
-      "source_plan": [],
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "出口限制和本地化要求如何改变可服务市场与库存风险？ 许可范围 / 受限收入 / 库存损失"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "出口限制和本地化要求如何改变可服务市场与库存风险？ 许可范围 / 受限收入 / 库存损失"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
       "source_universe_plan": {},
       "support_evidence": "官方规则和公司披露能量化收入、产品与成本影响。",
       "target_implications": "Changes the GPU/ASIC company exposure, earnings, valuation, or risk gate when directly mapped.",
       "trigger": "逐季核验中国许可、发运、关税、库存计提与替代产品收入。"
     },
     {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
       "child_plan_path": "l3_research_plans/esg.concentration/research_plan.json",
       "decision_use": "识别会改变交付、市场准入、资本成本和股东回报的约束。 Causal role: constraint; downstream: supply.shippable_system",
-      "execution_mode": "child_plan_rollup",
+      "execution_mode": "direct_evidence_step",
       "fact": "截至2026年7月26日，NVIDIA五家直接客户分别占应收账款22%、14%、13%、11%和10%，合计70%；公司还可能为投资级客户的大型数据中心建设提供90天至一年的延长付款期限。该披露量化了应收集中和信用期限，但没有披露这五家客户的替代难度、终端需求去重或违约概率。",
-      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: quarterly.",
       "gap": "缺少客户身份、应收账龄、终端需求去重、客户切换周期和坏账压力测试。",
       "id": "esg.concentration",
       "inference": "NVIDIA前五大直接客户合计占应收账款70%，并可为大型数据中心建设提供最长一年的延长付款期限，客户集中和信用敞口已可量化；但客户身份、终端需求去重、替代难度、账龄和违约概率未披露，尚不能确认集中风险的可控程度。",
@@ -1987,17 +3251,30 @@
       "level": 3,
       "materiality": "识别会改变交付、市场准入、资本成本和股东回报的约束。 Apply support rule: 集中度高且替代、认证或切换周期长。",
       "minimum_evidence_gate": {
-        "all_mandatory_leaf_steps_required": true,
-        "direct_parent_evidence_forbidden": true,
-        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
       },
       "next_question_ids": [],
       "parent_id": "lens.esg",
-      "preferred_specialty_skill": "financial-statement-analysis",
+      "preferred_specialty_skill": "news-event-analysis",
       "question": "关键供应商、客户和地区集中是否放大经营波动？",
       "refute_evidence": "客户和供应商多元化显著改善，切换已被生产验证。",
       "refuting_source_plan": [
-        "Search primary and independent evidence that would establish: 客户和供应商多元化显著改善，切换已被生产验证。"
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 客户和供应商多元化显著改善，切换已被生产验证。."
+      ],
+      "required_data": [
+        "前五客户占比",
+        "单一代工占比",
+        "地区收入",
+        "替代供应"
       ],
       "required_materials": [
         "前五客户占比",
@@ -2005,7 +3282,7 @@
         "地区收入",
         "替代供应"
       ],
-      "research_step_id": "step:esg.concentration",
+      "research_step_id": "question:esg.concentration",
       "score_component": "risk_control",
       "skill_dispatch": {
         "concrete_materials": [
@@ -2032,18 +3309,59 @@
       "source_links": [
         "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm"
       ],
-      "source_plan": [],
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "关键供应商、客户和地区集中是否放大经营波动？ 前五客户占比 / 单一代工占比 / 地区收入"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "关键供应商、客户和地区集中是否放大经营波动？ 前五客户占比 / 单一代工占比 / 地区收入"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
       "source_universe_plan": {},
       "support_evidence": "集中度高且替代、认证或切换周期长。",
       "target_implications": "Changes the GPU/ASIC company exposure, earnings, valuation, or risk gate when directly mapped.",
       "trigger": "跟踪客户集中、DSO、应收账龄、坏账准备和主要客户资本回报。"
     },
     {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
       "child_plan_path": "l3_research_plans/esg.governance_capital_allocation/research_plan.json",
       "decision_use": "识别会改变交付、市场准入、资本成本和股东回报的约束。 Causal role: risk; downstream: valuation.payoff_asymmetry",
-      "execution_mode": "child_plan_rollup",
+      "execution_mode": "direct_evidence_step",
       "fact": "AMD 通过向客户发行认股权证支持生态采用，摩根士丹利认为这相当于高额获客费用，并可能显著稀释 GPU 业务未来利润。它属于资本配置和股东利益问题，而非单纯产品销量问题。",
-      "freshness_requirement": "Event-driven; refresh immediately when the governing rule or event changes.",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: event_driven.",
       "gap": "核验权证条款、完全摊薄成本、对应订单利润和管理层资本回报解释。",
       "id": "esg.governance_capital_allocation",
       "inference": "AMD客户认股权证可能形成高额获客成本和稀释，直接削弱股东可得盈利弹性；证据仍集中于单份研报。",
@@ -2052,17 +3370,30 @@
       "level": 3,
       "materiality": "识别会改变交付、市场准入、资本成本和股东回报的约束。 Apply support rule: 资本配置带来可验证的增量利润和合理股东回报。",
       "minimum_evidence_gate": {
-        "all_mandatory_leaf_steps_required": true,
-        "direct_parent_evidence_forbidden": true,
-        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
       },
       "next_question_ids": [],
       "parent_id": "lens.esg",
-      "preferred_specialty_skill": "financial-statement-analysis",
+      "preferred_specialty_skill": "news-event-analysis",
       "question": "补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？",
       "refute_evidence": "收入增长依赖高额稀释、担保或无法验证的生态投资。",
       "refuting_source_plan": [
-        "Search primary and independent evidence that would establish: 收入增长依赖高额稀释、担保或无法验证的生态投资。"
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 收入增长依赖高额稀释、担保或无法验证的生态投资。."
+      ],
+      "required_data": [
+        "股权稀释",
+        "获客补贴",
+        "关联交易",
+        "投资回报"
       ],
       "required_materials": [
         "股权稀释",
@@ -2070,7 +3401,7 @@
         "关联交易",
         "投资回报"
       ],
-      "research_step_id": "step:esg.governance_capital_allocation",
+      "research_step_id": "question:esg.governance_capital_allocation",
       "score_component": "risk_control",
       "skill_dispatch": {
         "concrete_materials": [
@@ -2097,18 +3428,59 @@
       "source_links": [
         "source/ima/2026/07/24/大摩-超威半导体（AMD.US）：AMD AI 技术发布会复盘及核心观点-260724.pdf"
       ],
-      "source_plan": [],
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？ 股权稀释 / 获客补贴 / 关联交易"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？ 股权稀释 / 获客补贴 / 关联交易"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
       "source_universe_plan": {},
       "support_evidence": "资本配置带来可验证的增量利润和合理股东回报。",
       "target_implications": "Changes the GPU/ASIC company exposure, earnings, valuation, or risk gate when directly mapped.",
       "trigger": "核验权证条款、完全摊薄成本、对应订单利润和管理层资本回报解释。"
     },
     {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
       "child_plan_path": "l3_research_plans/esg.financing_commitments/research_plan.json",
       "decision_use": "识别会改变交付、市场准入、资本成本和股东回报的约束。 Causal role: risk; downstream: demand.customer_compute_budget, valuation.payoff_asymmetry",
-      "execution_mode": "child_plan_rollup",
+      "execution_mode": "direct_evidence_step",
       "fact": "外部 TPU 由 Google 与 Broadcom 协同设计、TSMC 制造，再由 Apollo/Blackstone 融资的 SPV 购买并交给数据中心运营商管理。这个结构把芯片设计、晶圆制造、资本和机房交付绑定在一起，可扩大供给，也引入跨主体执行和融资风险。；TPU 即服务依赖 Apollo/Blackstone 融资 SPV、Google/Broadcom 硬件和数据中心运营商的多层结构；巴克莱同时引用 Alphabet 约 8,110 亿美元采购承诺。结构可加快扩张，但会增加对手方、担保、资产利用率和表外义务的透明度风险。；若 Meta 容量由 2026 年约 7GW 增至 2027 年 14GW，Hyperion 等合作方可能提供 1.0-1.5GW，使 Meta 直接融资的新增容量约为 5.5GW。伙伴资本可以缓解资产负担，但不能消除电力、服务器和建设交付约束。",
-      "freshness_requirement": "Use latest available evidence as of 2026-09-02; normal refresh cadence: quarterly.",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: quarterly.",
       "gap": "租约金额、担保、最低利用率、闲置责任、对手方和现金流时间表",
       "id": "esg.financing_commitments",
       "inference": "OpenAI/SB Energy 1.2GW长期租约与NVIDIA既有AI云、园区和供应承诺表明容量扩张依赖复杂的长期义务；租约金额、担保、利用率和闲置责任未穿透，风险承担仍不透明。",
@@ -2117,17 +3489,30 @@
       "level": 3,
       "materiality": "识别会改变交付、市场准入、资本成本和股东回报的约束。 Apply support rule: 风险分担、现金流义务和资产利用率可被清晰识别。",
       "minimum_evidence_gate": {
-        "all_mandatory_leaf_steps_required": true,
-        "direct_parent_evidence_forbidden": true,
-        "rule": "The L3 rollup completes only after every mandatory leaf step in its independent child plan passes."
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
       },
       "next_question_ids": [],
       "parent_id": "lens.esg",
-      "preferred_specialty_skill": "financial-statement-analysis",
+      "preferred_specialty_skill": "news-event-analysis",
       "question": "SPV、租赁、采购承诺和表外融资把风险留给谁？",
       "refute_evidence": "结构复杂且最终担保、闲置资产或对手方风险无法穿透。",
       "refuting_source_plan": [
-        "Search primary and independent evidence that would establish: 结构复杂且最终担保、闲置资产或对手方风险无法穿透。"
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 结构复杂且最终担保、闲置资产或对手方风险无法穿透。."
+      ],
+      "required_data": [
+        "采购承诺",
+        "担保",
+        "租赁负债",
+        "SPV 对手方"
       ],
       "required_materials": [
         "采购承诺",
@@ -2135,7 +3520,7 @@
         "租赁负债",
         "SPV 对手方"
       ],
-      "research_step_id": "step:esg.financing_commitments",
+      "research_step_id": "question:esg.financing_commitments",
       "score_component": "risk_control",
       "skill_dispatch": {
         "concrete_materials": [
@@ -2178,11 +3563,286 @@
         "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
         "https://openai.com/index/stargate-sb-energy-partnership/"
       ],
-      "source_plan": [],
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "SPV、租赁、采购承诺和表外融资把风险留给谁？ 采购承诺 / 担保 / 租赁负债"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "SPV、租赁、采购承诺和表外融资把风险留给谁？ 采购承诺 / 担保 / 租赁负债"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
       "source_universe_plan": {},
       "support_evidence": "风险分担、现金流义务和资产利用率可被清晰识别。",
       "target_implications": "Changes the GPU/ASIC company exposure, earnings, valuation, or risk gate when directly mapped.",
       "trigger": "从双方申报和融资文件穿透租约、担保与利用率义务。"
+    },
+    {
+      "analysis_plan": [
+        "只把已形成合同、部署或使用的主体列为当前",
+        "区分采购运营方和最终使用方并逐主体核验",
+        "输出明确名单、证据强度和缺口"
+      ],
+      "execution_mode": "direct_evidence_step",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: quarterly.",
+      "id": "demand.demand_universe.current_named",
+      "level": 4,
+      "minimum_evidence_gate": {
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
+      },
+      "next_question_ids": [],
+      "parent_id": "demand.demand_universe",
+      "preferred_specialty_skill": "industry-report-analysis",
+      "question": "截至2026-09-02，哪些具名主体已有合同、采购、部署或实际使用证据，足以列为当前需求方？",
+      "refuting_source_plan": [
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 把 OEM/ODM、分销商等采购通道列作需求方，或把同一主体同时列入当前和潜在未来两组。."
+      ],
+      "required_data": [
+        "逐主体名称与需求角色",
+        "合同、采购、部署或使用状态及日期",
+        "来源、期间、原文定位与缺失口径"
+      ],
+      "required_materials": [
+        "逐主体名称与需求角色",
+        "合同、采购、部署或使用状态及日期",
+        "来源、期间、原文定位与缺失口径"
+      ],
+      "research_step_id": "question:demand.demand_universe.current_named",
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "截至2026-09-02，哪些具名主体已有合同、采购、部署或实际使用证据，足以列为当前需求方？ 逐主体名称与需求角色 / 合同、采购、部署或使用状态及日期 / 来源、期间、原文定位与缺失口径"
+          ],
+          "expected_fields": [
+            "published_at",
+            "effective_period",
+            "target_period",
+            "entity",
+            "metric",
+            "value",
+            "unit",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "financial-statement-analysis",
+          "source_bucket": "evidence",
+          "source_type": "official filing, official dataset, customer or supplier disclosure",
+          "why_needed": "Provides the directly measured fact and a comparable time anchor."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "截至2026-09-02，哪些具名主体已有合同、采购、部署或实际使用证据，足以列为当前需求方？ 逐主体名称与需求角色 / 合同、采购、部署或使用状态及日期 / 来源、期间、原文定位与缺失口径"
+          ],
+          "expected_fields": [
+            "methodology",
+            "sample",
+            "period",
+            "estimate",
+            "assumptions",
+            "limitations"
+          ],
+          "preferred_skill": "industry-report-analysis",
+          "source_bucket": "research_report",
+          "source_type": "independent specialist dataset or disclosed-method forecast",
+          "why_needed": "Tests the official data against an independent measure or forecast."
+        }
+      ]
+    },
+    {
+      "analysis_plan": [
+        "把未形成当前合同、部署或使用的主体与当前名单互斥分开",
+        "识别从规划到投运的关键断点",
+        "为每个主体定义可验证升级条件"
+      ],
+      "execution_mode": "direct_evidence_step",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: quarterly.",
+      "id": "demand.demand_universe.future_named",
+      "level": 4,
+      "minimum_evidence_gate": {
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
+      },
+      "next_question_ids": [],
+      "parent_id": "demand.demand_universe",
+      "preferred_specialty_skill": "industry-report-analysis",
+      "question": "哪些具名主体目前只有意向、规划或待投运项目，应列为潜在未来需求方；转为当前需求方需要什么可观测条件？",
+      "refuting_source_plan": [
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 把 OEM/ODM、分销商等采购通道列作需求方，或把同一主体同时列入当前和潜在未来两组。."
+      ],
+      "required_data": [
+        "逐主体意向、规划、融资、建设与预计投运状态",
+        "尚未满足的场地、资金、监管或订单条件",
+        "转为当前需求的触发指标、日期与来源定位"
+      ],
+      "required_materials": [
+        "逐主体意向、规划、融资、建设与预计投运状态",
+        "尚未满足的场地、资金、监管或订单条件",
+        "转为当前需求的触发指标、日期与来源定位"
+      ],
+      "research_step_id": "question:demand.demand_universe.future_named",
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "哪些具名主体目前只有意向、规划或待投运项目，应列为潜在未来需求方；转为当前需求方需要什么可观测条件？ 逐主体意向、规划、融资、建设与预计投运状态 / 尚未满足的场地、资金、监管或订单条件 / 转为当前需求的触发指标、日期与来源定位"
+          ],
+          "expected_fields": [
+            "refuting_fact",
+            "event_date",
+            "metric",
+            "threshold",
+            "duration",
+            "locator"
+          ],
+          "preferred_skill": "industry-report-analysis",
+          "source_bucket": "evidence",
+          "source_type": "official contrary fact, cancellation, substitution, delay, or regulatory record",
+          "why_needed": "Directly searches for evidence that overturns or bounds the parent answer."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "哪些具名主体目前只有意向、规划或待投运项目，应列为潜在未来需求方；转为当前需求方需要什么可观测条件？ 逐主体意向、规划、融资、建设与预计投运状态 / 尚未满足的场地、资金、监管或订单条件 / 转为当前需求的触发指标、日期与来源定位"
+          ],
+          "expected_fields": [
+            "bear_case",
+            "assumptions",
+            "trigger",
+            "monitoring_metric",
+            "limitation"
+          ],
+          "preferred_skill": "industry-report-analysis",
+          "source_bucket": "research_report",
+          "source_type": "independent bear case or boundary analysis",
+          "why_needed": "Defines the strongest credible alternative hypothesis."
+        }
+      ]
+    },
+    {
+      "analysis_plan": [
+        "建立购买方—运营方—最终使用方三层关系",
+        "以最终任务归属为主分类并保留中间通道",
+        "匿名或无法穿透关系保留缺口且不重复计数"
+      ],
+      "execution_mode": "direct_evidence_step",
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: quarterly.",
+      "id": "demand.demand_universe.identity_dedup",
+      "level": 4,
+      "minimum_evidence_gate": {
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
+      },
+      "next_question_ids": [],
+      "parent_id": "demand.demand_universe",
+      "preferred_specialty_skill": "industry-report-analysis",
+      "question": "同一笔算力需求跨直接采购方、云容量运营方和最终使用方时，如何识别关系并避免重复计数？",
+      "refuting_source_plan": [
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 把 OEM/ODM、分销商等采购通道列作需求方，或把同一主体同时列入当前和潜在未来两组。."
+      ],
+      "required_data": [
+        "芯片/系统购买方、容量运营方和最终任务使用方之间的合同或披露关系",
+        "同一主体跨云、关联公司和项目SPV的身份映射",
+        "无法穿透的匿名客户与代理证据"
+      ],
+      "required_materials": [
+        "芯片/系统购买方、容量运营方和最终任务使用方之间的合同或披露关系",
+        "同一主体跨云、关联公司和项目SPV的身份映射",
+        "无法穿透的匿名客户与代理证据"
+      ],
+      "research_step_id": "question:demand.demand_universe.identity_dedup",
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "同一笔算力需求跨直接采购方、云容量运营方和最终使用方时，如何识别关系并避免重复计数？ 芯片/系统购买方、容量运营方和最终任务使用方之间的合同或披露关系 / 同一主体跨云、关联公司和项目SPV的身份映射 / 无法穿透的匿名客户与代理证据"
+          ],
+          "expected_fields": [
+            "cause",
+            "mechanism",
+            "observed_effect",
+            "boundary",
+            "entity",
+            "period",
+            "locator"
+          ],
+          "preferred_skill": "financial-statement-analysis",
+          "source_bucket": "evidence",
+          "source_type": "technical disclosure, customer deployment, or counterparty filing",
+          "why_needed": "Tests causality with observable operating evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "同一笔算力需求跨直接采购方、云容量运营方和最终使用方时，如何识别关系并避免重复计数？ 芯片/系统购买方、容量运营方和最终任务使用方之间的合同或披露关系 / 同一主体跨云、关联公司和项目SPV的身份映射 / 无法穿透的匿名客户与代理证据"
+          ],
+          "expected_fields": [
+            "methodology",
+            "alternative_explanation",
+            "support",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent mechanism study or channel cross-check",
+          "why_needed": "Challenges correlation and surfaces alternative explanations."
+        }
+      ]
     }
   ],
   "planner_rationale": "The standalone GPU/ASIC profile is causal-chain centered. Five L2 lenses preserve all 27 stable L3 nodes; execution order follows the directed node dependencies rather than public display order.",
@@ -2207,6 +3867,7 @@
     "research_type": "technology_route",
     "supply_chain_layers": []
   },
+  "question_tree_contract": "adaptive-depth-max-5",
   "research_goal": {
     "as_of_date": "2026-09-02",
     "decision_boundary": "research observation, not trading instruction",
@@ -2224,6 +3885,6 @@
     "run_mode": "live_prediction",
     "topic": "GPU / ASIC BOM 实时端到端投资研究"
   },
-  "research_plan_id": "rp_l3_ef2eed3bf9a1ef2c",
+  "research_plan_id": "rp_l3_662e595ff497fd4a",
   "research_plan_path": "research_plan.json"
 }

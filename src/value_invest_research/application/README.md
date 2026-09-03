@@ -20,10 +20,10 @@ Use cases should be testable with in-memory ports.
 Canonical research flow:
 
 1. `PlanResearchGoal` converts `ResearchGoal` into `QuestionArchitecture`.
-2. `BuildResearchPlan` persists the QA tree, parent L3 rollups, and one independent L4/L5 plan per L3.
+2. `BuildResearchPlan` persists the QA tree, parent L3 rollups, and one independent adaptive question tree per L3, capped at L5.
 3. `BuildStandaloneL3ResearchPlans` applies the same child-plan contract to an existing standalone-BOM playbook.
 4. `RecordResearchStepEvent` appends validated collection/evidence/answer/gate events; `ValidateResearchPlanExecution` projects parent plus nested progress.
-5. Evidence collection starts from one finest L5 leaf and carries the same plan, leaf, step, and search-run trace through parsing and review.
+5. Evidence collection starts from the current deepest unanswered question, initially L3, and carries the same plan, question, level, step, and search-run trace through parsing and review.
 6. `BuildReportViewModel` assembles public report data from a `ResearchProjectRepository`, including workbench artifacts that feed industry overview, BOM coverage, competition, chokepoints, and target profit bridges.
 7. `RenderResearchProjectReport` writes the report through a `CanonicalReportRenderer`.
 
@@ -37,7 +37,7 @@ Leaf research flow:
 
 Source parsing flow:
 
-1. Source parsing receives leaf-specific L5 source jobs from orchestration; legacy L3 jobs remain audit-only during migration.
+1. Source parsing receives current-question source jobs from orchestration; legacy leaf-coordinate jobs remain audit-only during migration.
 2. A `SourceMaterialParser` adapter extracts structured source facts.
 3. A `SourceExtractionReviewer` adapter verifies whether the extraction may strengthen conclusions.
 4. `SourceParsingArtifactWriter` persists `source_extractions.jsonl` and `leaf_source_reviews.jsonl`.

@@ -5,7 +5,6 @@ as_of_date: 2026-09-02
 investment_engine_version: 3.3
 research_model: logic-chain-centered
 logic_chain_version: 2026-08-12.v2
-l3_plan_contract: leaf-search-v2
 ---
 
 # GPU / ASIC BOM 实时跟踪
@@ -48,23 +47,6 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 
 **研究问题：** 训练、推理和 agent 任务是否在真实增长，而非只有主题热度？
 
-**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
-
-1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”？
-   - **L5 叶子：** 回答“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
-2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”？
-   - **L5 叶子：** 围绕“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”，当前有哪些关于活跃用户与调用量、token 或任务量、AI 生成代码与商业流程渗透的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
-3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”？
-   - **L5 叶子：** 围绕“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”，活跃用户与调用量、token 或任务量、AI 生成代码与商业流程渗透在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
-4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”？
-   - **L5 叶子：** 围绕“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
-5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”？
-   - **L5 叶子：** 围绕“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”，证据通过什么因果机制传导到demand.compute_intensity以及客户采用、工作负载结构、付费使用？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
-6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”？
-   - **L5 叶子：** 围绕“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
-7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“训练、推理和 agent 任务是否在真实增长，而非只有主题热度？”？
-   - **L5 叶子：** 哪些直接证据能够满足反证条件“用户或调用增长停滞，任务被一次性试用、软件优化或低价值流量替代。”，并推翻、削弱或限定支持规则“多个不同性质的使用量指标持续增长，并出现付费或业务采用。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
-
 **当前节点状态：** weak
 
 **当前结论：** Meta业务AI对话量仍是当前唯一较直接的真实使用增长证据；新增物理AI材料提出自动驾驶与人形机器人共享训练算力的新分支，但没有多平台用量、付费部署或GPU/ASIC消耗序列，尚不能把该分支视为已兑现的工作负载增长。
@@ -81,23 +63,6 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 
 **研究问题：** 每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？
 
-**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
-
-1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”？
-   - **L5 叶子：** 回答“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
-2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”？
-   - **L5 叶子：** 围绕“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”，当前有哪些关于训练规模、推理 token 成本、上下文长度、test-time compute的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
-3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”？
-   - **L5 叶子：** 围绕“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”，训练规模、推理 token 成本、上下文长度、test-time compute在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
-4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”？
-   - **L5 叶子：** 围绕“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
-5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”？
-   - **L5 叶子：** 围绕“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”，证据通过什么因果机制传导到demand.customer_compute_budget以及单位算力用量、产品组合、ASP？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
-6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”？
-   - **L5 叶子：** 围绕“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
-7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“每项任务所需的 GPU/ASIC 算力是否上升，形成需求弹性？”？
-   - **L5 叶子：** 哪些直接证据能够满足反证条件“模型压缩、蒸馏、稀疏化和软件优化使单位任务硬件需求持续下降。”，并推翻、削弱或限定支持规则“模型和 agent 路线使单位任务计算量增长快于效率改善。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
-
 **当前节点状态：** unresolved
 
 **当前结论：** Optimus训练更耗算力的机构表述提示物理AI可能抬升计算强度，但未提供单位任务测量，也没有与算法、芯片和系统效率改善比较；当前仍无满足本节点规则的直接证据。
@@ -111,23 +76,6 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 #### 03. 客户预算与资本承诺
 
 **研究问题：** 云厂商、模型公司和企业是否把需求转化为可持续预算？
-
-**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
-
-1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“云厂商、模型公司和企业是否把需求转化为可持续预算？”？
-   - **L5 叶子：** 回答“云厂商、模型公司和企业是否把需求转化为可持续预算？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
-2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“云厂商、模型公司和企业是否把需求转化为可持续预算？”？
-   - **L5 叶子：** 围绕“云厂商、模型公司和企业是否把需求转化为可持续预算？”，当前有哪些关于AI capex、采购承诺、预付款、租赁与项目融资的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
-3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“云厂商、模型公司和企业是否把需求转化为可持续预算？”？
-   - **L5 叶子：** 围绕“云厂商、模型公司和企业是否把需求转化为可持续预算？”，AI capex、采购承诺、预付款、租赁与项目融资在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
-4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“云厂商、模型公司和企业是否把需求转化为可持续预算？”？
-   - **L5 叶子：** 围绕“云厂商、模型公司和企业是否把需求转化为可持续预算？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
-5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“云厂商、模型公司和企业是否把需求转化为可持续预算？”？
-   - **L5 叶子：** 围绕“云厂商、模型公司和企业是否把需求转化为可持续预算？”，证据通过什么因果机制传导到demand.order_visibility以及客户预算、采购承诺、订单覆盖？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
-6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“云厂商、模型公司和企业是否把需求转化为可持续预算？”？
-   - **L5 叶子：** 围绕“云厂商、模型公司和企业是否把需求转化为可持续预算？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
-7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“云厂商、模型公司和企业是否把需求转化为可持续预算？”？
-   - **L5 叶子：** 哪些直接证据能够满足反证条件“客户自由现金流恶化、ROI 不足或融资约束导致预算下修。”，并推翻、削弱或限定支持规则“客户资本开支、长期承诺和融资能力同步提高。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
 
 **当前节点状态：** weak
 
@@ -144,23 +92,6 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 #### 04. 订单与交付可见性
 
 **研究问题：** 预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？
-
-**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
-
-1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”？
-   - **L5 叶子：** 回答“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
-2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”？
-   - **L5 叶子：** 围绕“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”，当前有哪些关于backlog、客户部署计划、机架发货、取消与延期的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
-3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”？
-   - **L5 叶子：** 围绕“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”，backlog、客户部署计划、机架发货、取消与延期在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
-4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”？
-   - **L5 叶子：** 围绕“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
-5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”？
-   - **L5 叶子：** 围绕“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”，证据通过什么因果机制传导到demand.revenue_realization以及订单、backlog、交付节奏？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
-6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”？
-   - **L5 叶子：** 围绕“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
-7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“预算是否转化为有客户、有时间表的 GPU/ASIC 与系统订单？”？
-   - **L5 叶子：** 哪些直接证据能够满足反证条件“订单仅为分析师情景，或客户机房延期、项目取消和重复计算明显。”，并推翻、削弱或限定支持规则“订单、部署计划和交付窗口由多个客户或官方材料交叉验证。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
 
 **当前节点状态：** weak
 
@@ -179,23 +110,6 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 #### 05. 收入与利润兑现
 
 **研究问题：** 订单是否进入收入、毛利、现金流和下一期指引？
-
-**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
-
-1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“订单是否进入收入、毛利、现金流和下一期指引？”？
-   - **L5 叶子：** 回答“订单是否进入收入、毛利、现金流和下一期指引？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
-2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“订单是否进入收入、毛利、现金流和下一期指引？”？
-   - **L5 叶子：** 围绕“订单是否进入收入、毛利、现金流和下一期指引？”，当前有哪些关于数据中心收入、AI 芯片收入、毛利率、经营现金流、管理层指引的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
-3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“订单是否进入收入、毛利、现金流和下一期指引？”？
-   - **L5 叶子：** 围绕“订单是否进入收入、毛利、现金流和下一期指引？”，数据中心收入、AI 芯片收入、毛利率、经营现金流、管理层指引在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
-4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“订单是否进入收入、毛利、现金流和下一期指引？”？
-   - **L5 叶子：** 围绕“订单是否进入收入、毛利、现金流和下一期指引？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
-5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“订单是否进入收入、毛利、现金流和下一期指引？”？
-   - **L5 叶子：** 围绕“订单是否进入收入、毛利、现金流和下一期指引？”，证据通过什么因果机制传导到valuation.fundamental_earnings以及收入、毛利、现金流、指引？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
-6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“订单是否进入收入、毛利、现金流和下一期指引？”？
-   - **L5 叶子：** 围绕“订单是否进入收入、毛利、现金流和下一期指引？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
-7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“订单是否进入收入、毛利、现金流和下一期指引？”？
-   - **L5 叶子：** 哪些直接证据能够满足反证条件“收入仅来自一次性预付款、低毛利获客或应收与库存堆积。”，并推翻、削弱或限定支持规则“收入、毛利与指引同步上修，且现金流没有明显背离。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
 
 **当前节点状态：** weak
 
@@ -221,23 +135,6 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 
 **研究问题：** 先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？
 
-**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
-
-1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”？
-   - **L5 叶子：** 回答“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
-2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”？
-   - **L5 叶子：** 围绕“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”，当前有哪些关于先进节点产能、良率、wafer allocation、代工 capex的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
-3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”？
-   - **L5 叶子：** 围绕“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”，先进节点产能、良率、wafer allocation、代工 capex在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
-4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”？
-   - **L5 叶子：** 围绕“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
-5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”？
-   - **L5 叶子：** 围绕“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”，证据通过什么因果机制传导到supply.shippable_system以及晶圆供应、采购承诺、产品良率？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
-6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”？
-   - **L5 叶子：** 围绕“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
-7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“先进逻辑晶圆的产能、良率和客户分配是否限制 GPU/ASIC 供给？”？
-   - **L5 叶子：** 哪些直接证据能够满足反证条件“扩产和良率提升使可用晶圆明显快于需求增长。”，并推翻、削弱或限定支持规则“交期、预付款或客户分配显示晶圆持续紧张。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
-
 **当前节点状态：** unresolved
 
 **当前结论：** TSMC先进制程收入占比77%并继续看到强需求，证明领先节点高利用背景；但材料没有GPU/ASIC专属产能、交期、预付款、客户分配或良率，无法判断晶圆是否构成当前稀缺瓶颈。
@@ -252,23 +149,6 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 #### 02. HBM、封装与基板
 
 **研究问题：** HBM、先进封装、基板和测试是否成为可交付芯片的约束？
-
-**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
-
-1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”？
-   - **L5 叶子：** 回答“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
-2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”？
-   - **L5 叶子：** 围绕“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”，当前有哪些关于HBM 产能、CoWoS 产能、封装良率、基板交期的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
-3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”？
-   - **L5 叶子：** 围绕“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”，HBM 产能、CoWoS 产能、封装良率、基板交期在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
-4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”？
-   - **L5 叶子：** 围绕“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
-5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”？
-   - **L5 叶子：** 围绕“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”，证据通过什么因果机制传导到supply.shippable_system以及封装供应、HBM 配置、产能承诺？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
-6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”？
-   - **L5 叶子：** 围绕“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
-7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“HBM、先进封装、基板和测试是否成为可交付芯片的约束？”？
-   - **L5 叶子：** 哪些直接证据能够满足反证条件“替代路线或扩产使交期和价格快速回落。”，并推翻、削弱或限定支持规则“多个供应商确认交期、预订或良率约束，且扩产需要较长周期。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
 
 **当前节点状态：** weak
 
@@ -289,23 +169,6 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 
 **研究问题：** ODM、机架、网络和软件调试是否限制芯片转化为可用系统？
 
-**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
-
-1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”？
-   - **L5 叶子：** 回答“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
-2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”？
-   - **L5 叶子：** 围绕“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”，当前有哪些关于机架发货、ODM 产能、调试周期、系统验收的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
-3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”？
-   - **L5 叶子：** 围绕“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”，机架发货、ODM 产能、调试周期、系统验收在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
-4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”？
-   - **L5 叶子：** 围绕“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
-5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”？
-   - **L5 叶子：** 围绕“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”，证据通过什么因果机制传导到supply.shippable_system以及系统发货、ODM 交付、验收？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
-6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”？
-   - **L5 叶子：** 围绕“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
-7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“ODM、机架、网络和软件调试是否限制芯片转化为可用系统？”？
-   - **L5 叶子：** 哪些直接证据能够满足反证条件“标准化设计和成熟 ODM 使机架交付周期显著缩短。”，并推翻、削弱或限定支持规则“系统交付显著晚于芯片可用时间，客户或厂商披露调试约束。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
-
 **当前节点状态：** weak
 
 **当前结论：** AMD明确分阶段爬坡需要ODM调试并与客户机房对齐，证明系统集成影响节奏；尚无实际验收周期和延期数据。
@@ -320,23 +183,6 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 #### 04. 机房、电力与融资
 
 **研究问题：** 数据中心电力、冷却、建设和融资是否限制设备上线？
-
-**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
-
-1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“数据中心电力、冷却、建设和融资是否限制设备上线？”？
-   - **L5 叶子：** 回答“数据中心电力、冷却、建设和融资是否限制设备上线？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
-2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“数据中心电力、冷却、建设和融资是否限制设备上线？”？
-   - **L5 叶子：** 围绕“数据中心电力、冷却、建设和融资是否限制设备上线？”，当前有哪些关于可用 MW/GW、建设周期、液冷就绪、项目融资的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
-3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“数据中心电力、冷却、建设和融资是否限制设备上线？”？
-   - **L5 叶子：** 围绕“数据中心电力、冷却、建设和融资是否限制设备上线？”，可用 MW/GW、建设周期、液冷就绪、项目融资在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
-4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“数据中心电力、冷却、建设和融资是否限制设备上线？”？
-   - **L5 叶子：** 围绕“数据中心电力、冷却、建设和融资是否限制设备上线？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
-5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“数据中心电力、冷却、建设和融资是否限制设备上线？”？
-   - **L5 叶子：** 围绕“数据中心电力、冷却、建设和融资是否限制设备上线？”，证据通过什么因果机制传导到supply.shippable_system以及上线容量、项目进度、融资义务？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
-6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“数据中心电力、冷却、建设和融资是否限制设备上线？”？
-   - **L5 叶子：** 围绕“数据中心电力、冷却、建设和融资是否限制设备上线？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
-7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“数据中心电力、冷却、建设和融资是否限制设备上线？”？
-   - **L5 叶子：** 哪些直接证据能够满足反证条件“可用数据中心容量提前释放，设备上线不再受基础设施限制。”，并推翻、削弱或限定支持规则“客户明确把机房、电力或融资列为部署节奏的主要约束。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
 
 **当前节点状态：** weak
 
@@ -355,23 +201,6 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 #### 05. 最终可交付供给
 
 **研究问题：** 所有约束合并后，GPU/ASIC 系统供给能否追上订单？
-
-**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
-
-1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”？
-   - **L5 叶子：** 回答“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
-2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”？
-   - **L5 叶子：** 围绕“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”，当前有哪些关于端到端交期、发货量、价格、库存、客户等待时间的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
-3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”？
-   - **L5 叶子：** 围绕“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”，端到端交期、发货量、价格、库存、客户等待时间在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
-4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”？
-   - **L5 叶子：** 围绕“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
-5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”？
-   - **L5 叶子：** 围绕“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”，证据通过什么因果机制传导到demand.revenue_realization以及出货量、交期、库存、ASP？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
-6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”？
-   - **L5 叶子：** 围绕“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
-7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“所有约束合并后，GPU/ASIC 系统供给能否追上订单？”？
-   - **L5 叶子：** 哪些直接证据能够满足反证条件“交期、价格和利用率同步走弱，库存与渠道供给上升。”，并推翻、削弱或限定支持规则“交期高位、价格坚挺且订单覆盖持续，说明供给仍低于需求。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
 
 **当前节点状态：** weak
 
@@ -397,23 +226,6 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 
 **研究问题：** GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？
 
-**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
-
-1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”？
-   - **L5 叶子：** 回答“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
-2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”？
-   - **L5 叶子：** 围绕“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”，当前有哪些关于训练/推理占比、模型变化速度、延迟与吞吐要求的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
-3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”？
-   - **L5 叶子：** 围绕“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”，训练/推理占比、模型变化速度、延迟与吞吐要求在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
-4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”？
-   - **L5 叶子：** 围绕“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
-5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”？
-   - **L5 叶子：** 围绕“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”，证据通过什么因果机制传导到technology.performance_tco以及产品适配、工作负载组合、客户案例？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
-6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”？
-   - **L5 叶子：** 围绕“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
-7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“GPU、云厂 ASIC 和其他加速器各自最适合哪些训练与推理任务？”？
-   - **L5 叶子：** 哪些直接证据能够满足反证条件“路线优势只存在于厂商选择性基准，无法迁移到客户任务。”，并推翻、削弱或限定支持规则“真实客户部署证明某路线对目标工作负载有稳定优势。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
-
 **当前节点状态：** weak
 
 **当前结论：** 稳定推理适合ASIC的判断仍来自分析师预测；GPU份额预测不回答具体工作负载适配，缺少真实客户部署。
@@ -427,23 +239,6 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 #### 02. 端到端性能与 TCO
 
 **研究问题：** 在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？
-
-**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
-
-1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”？
-   - **L5 叶子：** 回答“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
-2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”？
-   - **L5 叶子：** 围绕“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”，当前有哪些关于token/s、延迟、每 token 成本、性能功耗比、集群利用率的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
-3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”？
-   - **L5 叶子：** 围绕“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”，token/s、延迟、每 token 成本、性能功耗比、集群利用率在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
-4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”？
-   - **L5 叶子：** 围绕“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
-5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”？
-   - **L5 叶子：** 围绕“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”，证据通过什么因果机制传导到technology.customer_adoption以及性能、TCO、产品定价？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
-6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”？
-   - **L5 叶子：** 围绕“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
-7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“在同一工作负载下，哪条路线提供更好的性能、功耗和总拥有成本？”？
-   - **L5 叶子：** 哪些直接证据能够满足反证条件“优势依赖不可比参数、补贴、低利用率假设或未计软件迁移成本。”，并推翻、削弱或限定支持规则“独立同口径测试或客户数据验证性能和 TCO 优势。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
 
 **当前节点状态：** weak
 
@@ -460,23 +255,6 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 
 **研究问题：** 编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？
 
-**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
-
-1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”？
-   - **L5 叶子：** 回答“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
-2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”？
-   - **L5 叶子：** 围绕“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”，当前有哪些关于软件发布节奏、框架支持、迁移时间、开发者采用的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
-3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”？
-   - **L5 叶子：** 围绕“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”，软件发布节奏、框架支持、迁移时间、开发者采用在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
-4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”？
-   - **L5 叶子：** 围绕“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
-5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”？
-   - **L5 叶子：** 围绕“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”，证据通过什么因果机制传导到technology.customer_adoption以及软件采用、开发者生态、切换成本？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
-6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”？
-   - **L5 叶子：** 围绕“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
-7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“编译器、框架、开发者和运维生态是否形成持续锁定或加速替代？”？
-   - **L5 叶子：** 哪些直接证据能够满足反证条件“软件改进停留在演示，客户仍承担显著迁移和运维成本。”，并推翻、削弱或限定支持规则“客户生产部署和开发者使用证明生态缩短上线时间并提高利用率。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
-
 **当前节点状态：** weak
 
 **当前结论：** ROCm发布节奏和演示性能改善是边界信息，尚无客户生产使用、迁移时间和开发者采用证明生态锁定变化。
@@ -490,23 +268,6 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 #### 04. 客户采用与量产
 
 **研究问题：** 技术优势是否转化为生产部署、复购和规模量产？
-
-**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
-
-1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“技术优势是否转化为生产部署、复购和规模量产？”？
-   - **L5 叶子：** 回答“技术优势是否转化为生产部署、复购和规模量产？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
-2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“技术优势是否转化为生产部署、复购和规模量产？”？
-   - **L5 叶子：** 围绕“技术优势是否转化为生产部署、复购和规模量产？”，当前有哪些关于生产客户、部署 GW、复购、量产时间的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
-3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“技术优势是否转化为生产部署、复购和规模量产？”？
-   - **L5 叶子：** 围绕“技术优势是否转化为生产部署、复购和规模量产？”，生产客户、部署 GW、复购、量产时间在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
-4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“技术优势是否转化为生产部署、复购和规模量产？”？
-   - **L5 叶子：** 围绕“技术优势是否转化为生产部署、复购和规模量产？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
-5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“技术优势是否转化为生产部署、复购和规模量产？”？
-   - **L5 叶子：** 围绕“技术优势是否转化为生产部署、复购和规模量产？”，证据通过什么因果机制传导到technology.platform_competition以及客户数、量产、复购、获客成本？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
-6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“技术优势是否转化为生产部署、复购和规模量产？”？
-   - **L5 叶子：** 围绕“技术优势是否转化为生产部署、复购和规模量产？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
-7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“技术优势是否转化为生产部署、复购和规模量产？”？
-   - **L5 叶子：** 哪些直接证据能够满足反证条件“采用停留在试点，或必须以大额认股权证和补贴换取。”，并推翻、削弱或限定支持规则“多个客户进入生产并扩大采购，不依赖单一补贴或股权激励。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
 
 **当前节点状态：** weak
 
@@ -524,23 +285,6 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 #### 05. 平台格局与替代路径
 
 **研究问题：** 竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？
-
-**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
-
-1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”？
-   - **L5 叶子：** 回答“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
-2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”？
-   - **L5 叶子：** 围绕“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”，当前有哪些关于加速器份额、merchant/custom 占比、平台收入、切换案例的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
-3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”？
-   - **L5 叶子：** 围绕“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”，加速器份额、merchant/custom 占比、平台收入、切换案例在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
-4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”？
-   - **L5 叶子：** 围绕“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
-5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”？
-   - **L5 叶子：** 围绕“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”，证据通过什么因果机制传导到demand.order_visibility、valuation.fundamental_earnings以及市场份额、平台收入、竞争位置？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
-6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”？
-   - **L5 叶子：** 围绕“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
-7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“竞争单位转向平台后，GPU 与定制 ASIC 的份额和价值捕获如何变化？”？
-   - **L5 叶子：** 哪些直接证据能够满足反证条件“市场份额结论混用 PC GPU、数据中心芯片和系统收入等不同口径。”，并推翻、削弱或限定支持规则“份额、订单和客户部署共同显示平台价值捕获变化。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
 
 **当前节点状态：** weak
 
@@ -565,23 +309,6 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 
 **研究问题：** GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？
 
-**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
-
-1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”？
-   - **L5 叶子：** 回答“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
-2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”？
-   - **L5 叶子：** 围绕“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”，当前有哪些关于分部收入、增量毛利、研发与获客成本、FCF、EPS的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
-3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”？
-   - **L5 叶子：** 围绕“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”，分部收入、增量毛利、研发与获客成本、FCF、EPS在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
-4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”？
-   - **L5 叶子：** 围绕“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
-5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”？
-   - **L5 叶子：** 围绕“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”，证据通过什么因果机制传导到valuation.consensus_expectation以及收入桥、毛利桥、FCF 桥、EPS 桥？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
-6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”？
-   - **L5 叶子：** 围绕“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
-7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“GPU/ASIC 敞口如何转化为公司收入、毛利、自由现金流和每股收益？”？
-   - **L5 叶子：** 哪些直接证据能够满足反证条件“仅有主题敞口，或收入增长被低毛利、稀释和资本强度抵消。”，并推翻、削弱或限定支持规则“结构化公司/分部桥能把节点变化量化到盈利。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
-
 **当前节点状态：** weak
 
 **当前结论：** NVIDIA官方报表已有收入、毛利、经营现金流和FCF桥；AMD新增数据中心收入67.18亿美元、分部经营利润21.03亿美元，但GPU未拆分，集团FCF环比下降且capex上升。两家公司盈利桥均明显改善，仍不足以通过GPU专属股东盈利门槛。
@@ -600,23 +327,6 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 
 **研究问题：** 市场当前对收入、利润、份额和资本开支的主流预期是什么？
 
-**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
-
-1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“市场当前对收入、利润、份额和资本开支的主流预期是什么？”？
-   - **L5 叶子：** 回答“市场当前对收入、利润、份额和资本开支的主流预期是什么？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
-2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“市场当前对收入、利润、份额和资本开支的主流预期是什么？”？
-   - **L5 叶子：** 围绕“市场当前对收入、利润、份额和资本开支的主流预期是什么？”，当前有哪些关于一致预期、目标价、机构情景、多空分歧的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
-3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“市场当前对收入、利润、份额和资本开支的主流预期是什么？”？
-   - **L5 叶子：** 围绕“市场当前对收入、利润、份额和资本开支的主流预期是什么？”，一致预期、目标价、机构情景、多空分歧在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
-4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“市场当前对收入、利润、份额和资本开支的主流预期是什么？”？
-   - **L5 叶子：** 围绕“市场当前对收入、利润、份额和资本开支的主流预期是什么？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
-5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“市场当前对收入、利润、份额和资本开支的主流预期是什么？”？
-   - **L5 叶子：** 围绕“市场当前对收入、利润、份额和资本开支的主流预期是什么？”，证据通过什么因果机制传导到valuation.implied_expectation以及一致预期、目标价、机构分歧？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
-6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“市场当前对收入、利润、份额和资本开支的主流预期是什么？”？
-   - **L5 叶子：** 围绕“市场当前对收入、利润、份额和资本开支的主流预期是什么？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
-7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“市场当前对收入、利润、份额和资本开支的主流预期是什么？”？
-   - **L5 叶子：** 哪些直接证据能够满足反证条件“使用不同年份、盈利口径或旧目标价制造虚假分歧。”，并推翻、削弱或限定支持规则“同一截面、同一口径的多家机构预期可被比较。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
-
 **当前节点状态：** unresolved
 
 **当前结论：** 现有目标价和预测来自不同公司、年份与口径，都是单家机构样本，不能构成可比较的一致预期。
@@ -633,23 +343,6 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 #### 03. 股价隐含预期
 
 **研究问题：** 当前股价要求公司实现怎样的增长、份额和利润率路径？
-
-**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
-
-1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“当前股价要求公司实现怎样的增长、份额和利润率路径？”？
-   - **L5 叶子：** 回答“当前股价要求公司实现怎样的增长、份额和利润率路径？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
-2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“当前股价要求公司实现怎样的增长、份额和利润率路径？”？
-   - **L5 叶子：** 围绕“当前股价要求公司实现怎样的增长、份额和利润率路径？”，当前有哪些关于PE/EV-EBITDA、反向 DCF、隐含收入增速、隐含利润率的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
-3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“当前股价要求公司实现怎样的增长、份额和利润率路径？”？
-   - **L5 叶子：** 围绕“当前股价要求公司实现怎样的增长、份额和利润率路径？”，PE/EV-EBITDA、反向 DCF、隐含收入增速、隐含利润率在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
-4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“当前股价要求公司实现怎样的增长、份额和利润率路径？”？
-   - **L5 叶子：** 围绕“当前股价要求公司实现怎样的增长、份额和利润率路径？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
-5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“当前股价要求公司实现怎样的增长、份额和利润率路径？”？
-   - **L5 叶子：** 围绕“当前股价要求公司实现怎样的增长、份额和利润率路径？”，证据通过什么因果机制传导到valuation.revision_momentum以及现价、倍数、隐含增速、隐含利润率？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
-6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“当前股价要求公司实现怎样的增长、份额和利润率路径？”？
-   - **L5 叶子：** 围绕“当前股价要求公司实现怎样的增长、份额和利润率路径？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
-7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“当前股价要求公司实现怎样的增长、份额和利润率路径？”？
-   - **L5 叶子：** 哪些直接证据能够满足反证条件“只引用目标价上行空间而没有隐含假设和下行情景。”，并推翻、削弱或限定支持规则“以截面股价和可复现模型还原市场已经计入的路径。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
 
 **当前节点状态：** weak
 
@@ -669,23 +362,6 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 
 **研究问题：** 新信息是否使基本面上修速度快于市场预期和估值扩张？
 
-**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
-
-1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“新信息是否使基本面上修速度快于市场预期和估值扩张？”？
-   - **L5 叶子：** 回答“新信息是否使基本面上修速度快于市场预期和估值扩张？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
-2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“新信息是否使基本面上修速度快于市场预期和估值扩张？”？
-   - **L5 叶子：** 围绕“新信息是否使基本面上修速度快于市场预期和估值扩张？”，当前有哪些关于EPS 修正、收入修正、目标价修正、业绩后股价反应的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
-3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“新信息是否使基本面上修速度快于市场预期和估值扩张？”？
-   - **L5 叶子：** 围绕“新信息是否使基本面上修速度快于市场预期和估值扩张？”，EPS 修正、收入修正、目标价修正、业绩后股价反应在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
-4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“新信息是否使基本面上修速度快于市场预期和估值扩张？”？
-   - **L5 叶子：** 围绕“新信息是否使基本面上修速度快于市场预期和估值扩张？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
-5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“新信息是否使基本面上修速度快于市场预期和估值扩张？”？
-   - **L5 叶子：** 围绕“新信息是否使基本面上修速度快于市场预期和估值扩张？”，证据通过什么因果机制传导到valuation.payoff_asymmetry以及盈利修正、价格反应、预期差？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
-6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“新信息是否使基本面上修速度快于市场预期和估值扩张？”？
-   - **L5 叶子：** 围绕“新信息是否使基本面上修速度快于市场预期和估值扩张？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
-7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“新信息是否使基本面上修速度快于市场预期和估值扩张？”？
-   - **L5 叶子：** 哪些直接证据能够满足反证条件“股价上涨主要来自倍数扩张，盈利修正停滞或转负。”，并推翻、削弱或限定支持规则“多期盈利预期持续上修，估值没有更快透支。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
-
 **当前节点状态：** unresolved
 
 **当前结论：** 新增NVDA业绩窗口价格和AMD单日价格只建立市场反应坐标，没有多期同口径收入、EPS和FCF预期修正序列，无法判断价格变化来自盈利上修还是倍数扩张。
@@ -700,23 +376,6 @@ GPU/ASIC 商业需求由真实 AI 工作负载出发，经过单位任务算力�
 #### 05. 上下行赔率与动作
 
 **研究问题：** 综合情景概率后，上行、下行和可监控性是否支持行动？
-
-**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
-
-1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“综合情景概率后，上行、下行和可监控性是否支持行动？”？
-   - **L5 叶子：** 回答“综合情景概率后，上行、下行和可监控性是否支持行动？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
-2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“综合情景概率后，上行、下行和可监控性是否支持行动？”？
-   - **L5 叶子：** 围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，当前有哪些关于情景收益、概率、最大回撤风险、kill test的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
-3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“综合情景概率后，上行、下行和可监控性是否支持行动？”？
-   - **L5 叶子：** 围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，情景收益、概率、最大回撤风险、kill test在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
-4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“综合情景概率后，上行、下行和可监控性是否支持行动？”？
-   - **L5 叶子：** 围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
-5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“综合情景概率后，上行、下行和可监控性是否支持行动？”？
-   - **L5 叶子：** 围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，证据通过什么因果机制传导到下游节点以及情景赔率、动作状态、降级阈值？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
-6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“综合情景概率后，上行、下行和可监控性是否支持行动？”？
-   - **L5 叶子：** 围绕“综合情景概率后，上行、下行和可监控性是否支持行动？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
-7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“综合情景概率后，上行、下行和可监控性是否支持行动？”？
-   - **L5 叶子：** 哪些直接证据能够满足反证条件“高增长已充分定价、下行无法量化或缺少退出触发器。”，并推翻、削弱或限定支持规则“上行赔率显著高于可量化下行，且反证触发器可及时监控。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
 
 **当前节点状态：** weak
 
@@ -745,23 +404,6 @@ ESG 只研究会改变可交付算力、可服务市场、资本成本和股东�
 
 **研究问题：** 绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？
 
-**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
-
-1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”？
-   - **L5 叶子：** 回答“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
-2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”？
-   - **L5 叶子：** 围绕“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”，当前有哪些关于PUE、电力需求、水耗、许可周期的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
-3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”？
-   - **L5 叶子：** 围绕“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”，PUE、电力需求、水耗、许可周期在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
-4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”？
-   - **L5 叶子：** 围绕“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
-5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”？
-   - **L5 叶子：** 围绕“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”，证据通过什么因果机制传导到supply.datacenter_readiness以及能源成本、项目延期、许可？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
-6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”？
-   - **L5 叶子：** 围绕“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
-7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“绝对用电、用水和许可是否限制 GPU/ASIC 部署或推高成本？”？
-   - **L5 叶子：** 哪些直接证据能够满足反证条件“效率、能源供应和选址使资源约束不再影响部署。”，并推翻、削弱或限定支持规则“项目延期、成本或监管文件明确指向资源约束。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
-
 **当前节点状态：** weak
 
 **当前结论：** Microsoft把数据中心WUE降至0.27升/千瓦时并大规模采用低水/零水冷却，说明单位资源强度可显著改善；OpenAI/SB Energy也规划新增发电和降低用水。但缺少项目绝对用水、当地水权、电力并网和许可，资源约束只形成弱证据基线。
@@ -777,23 +419,6 @@ ESG 只研究会改变可交付算力、可服务市场、资本成本和股东�
 
 **研究问题：** 出口限制和本地化要求如何改变可服务市场与库存风险？
 
-**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
-
-1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“出口限制和本地化要求如何改变可服务市场与库存风险？”？
-   - **L5 叶子：** 回答“出口限制和本地化要求如何改变可服务市场与库存风险？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
-2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“出口限制和本地化要求如何改变可服务市场与库存风险？”？
-   - **L5 叶子：** 围绕“出口限制和本地化要求如何改变可服务市场与库存风险？”，当前有哪些关于许可范围、受限收入、库存损失、替代产品的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
-3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“出口限制和本地化要求如何改变可服务市场与库存风险？”？
-   - **L5 叶子：** 围绕“出口限制和本地化要求如何改变可服务市场与库存风险？”，许可范围、受限收入、库存损失、替代产品在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
-4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“出口限制和本地化要求如何改变可服务市场与库存风险？”？
-   - **L5 叶子：** 围绕“出口限制和本地化要求如何改变可服务市场与库存风险？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
-5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“出口限制和本地化要求如何改变可服务市场与库存风险？”？
-   - **L5 叶子：** 围绕“出口限制和本地化要求如何改变可服务市场与库存风险？”，证据通过什么因果机制传导到demand.revenue_realization以及受限收入、库存损失、市场准入？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
-6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“出口限制和本地化要求如何改变可服务市场与库存风险？”？
-   - **L5 叶子：** 围绕“出口限制和本地化要求如何改变可服务市场与库存风险？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
-7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“出口限制和本地化要求如何改变可服务市场与库存风险？”？
-   - **L5 叶子：** 哪些直接证据能够满足反证条件“影响仅来自传闻，或替代产品和许可完全抵消限制。”，并推翻、削弱或限定支持规则“官方规则和公司披露能量化收入、产品与成本影响。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
-
 **当前节点状态：** confirmed
 
 **当前结论：** NVIDIA官方10-Q量化了中国数据中心市场限制：H200发运不足数据中心收入1%，上半年计提4亿美元库存及采购义务费用，25%关税无法向客户转嫁，公司称实际上无法在中国数据中心计算市场竞争。市场准入约束已从数据缺口升级为确认。
@@ -807,23 +432,6 @@ ESG 只研究会改变可交付算力、可服务市场、资本成本和股东�
 #### 03. 供应与客户集中
 
 **研究问题：** 关键供应商、客户和地区集中是否放大经营波动？
-
-**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
-
-1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“关键供应商、客户和地区集中是否放大经营波动？”？
-   - **L5 叶子：** 回答“关键供应商、客户和地区集中是否放大经营波动？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
-2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“关键供应商、客户和地区集中是否放大经营波动？”？
-   - **L5 叶子：** 围绕“关键供应商、客户和地区集中是否放大经营波动？”，当前有哪些关于前五客户占比、单一代工占比、地区收入、替代供应的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
-3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“关键供应商、客户和地区集中是否放大经营波动？”？
-   - **L5 叶子：** 围绕“关键供应商、客户和地区集中是否放大经营波动？”，前五客户占比、单一代工占比、地区收入、替代供应在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
-4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“关键供应商、客户和地区集中是否放大经营波动？”？
-   - **L5 叶子：** 围绕“关键供应商、客户和地区集中是否放大经营波动？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
-5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“关键供应商、客户和地区集中是否放大经营波动？”？
-   - **L5 叶子：** 围绕“关键供应商、客户和地区集中是否放大经营波动？”，证据通过什么因果机制传导到supply.shippable_system以及客户集中、供应集中、地区集中？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
-6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“关键供应商、客户和地区集中是否放大经营波动？”？
-   - **L5 叶子：** 围绕“关键供应商、客户和地区集中是否放大经营波动？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
-7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“关键供应商、客户和地区集中是否放大经营波动？”？
-   - **L5 叶子：** 哪些直接证据能够满足反证条件“客户和供应商多元化显著改善，切换已被生产验证。”，并推翻、削弱或限定支持规则“集中度高且替代、认证或切换周期长。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
 
 **当前节点状态：** weak
 
@@ -839,23 +447,6 @@ ESG 只研究会改变可交付算力、可服务市场、资本成本和股东�
 
 **研究问题：** 补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？
 
-**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
-
-1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”？
-   - **L5 叶子：** 回答“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
-2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”？
-   - **L5 叶子：** 围绕“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”，当前有哪些关于股权稀释、获客补贴、关联交易、投资回报的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
-3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”？
-   - **L5 叶子：** 围绕“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”，股权稀释、获客补贴、关联交易、投资回报在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
-4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”？
-   - **L5 叶子：** 围绕“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
-5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”？
-   - **L5 叶子：** 围绕“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”，证据通过什么因果机制传导到valuation.payoff_asymmetry以及稀释、获客成本、资本回报？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
-6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”？
-   - **L5 叶子：** 围绕“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
-7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“补贴、认股权证、并购和关联投资是否损害股东获得的盈利弹性？”？
-   - **L5 叶子：** 哪些直接证据能够满足反证条件“收入增长依赖高额稀释、担保或无法验证的生态投资。”，并推翻、削弱或限定支持规则“资本配置带来可验证的增量利润和合理股东回报。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
-
 **当前节点状态：** weakening
 
 **当前结论：** AMD客户认股权证可能形成高额获客成本和稀释，直接削弱股东可得盈利弹性；证据仍集中于单份研报。
@@ -869,23 +460,6 @@ ESG 只研究会改变可交付算力、可服务市场、资本成本和股东�
 #### 05. 融资结构与长期承诺
 
 **研究问题：** SPV、租赁、采购承诺和表外融资把风险留给谁？
-
-**L3 独立研究计划：** 0 / 7 个最细叶子已完成；按每个 L5 叶子问题单独搜索、单独解析、单独复核。
-
-1. **L4 · 边界与口径** — 边界与口径：需要回答哪些最细问题，才能完成 L3“SPV、租赁、采购承诺和表外融资把风险留给谁？”？
-   - **L5 叶子：** 回答“SPV、租赁、采购承诺和表外融资把风险留给谁？”时，研究对象、纳入排除边界、指标口径、单位和期间分别是什么？ （状态：pending；定向材料：official definition, standard, or company methodology）
-2. **L4 · 当前事实** — 当前事实：需要回答哪些最细问题，才能完成 L3“SPV、租赁、采购承诺和表外融资把风险留给谁？”？
-   - **L5 叶子：** 围绕“SPV、租赁、采购承诺和表外融资把风险留给谁？”，当前有哪些关于采购承诺、担保、租赁负债、SPV 对手方的可验证实际事实？ （状态：pending；定向材料：latest filing, official dataset, customer or supplier disclosure）
-3. **L4 · 历史变化** — 历史变化：需要回答哪些最细问题，才能完成 L3“SPV、租赁、采购承诺和表外融资把风险留给谁？”？
-   - **L5 叶子：** 围绕“SPV、租赁、采购承诺和表外融资把风险留给谁？”，采购承诺、担保、租赁负债、SPV 对手方在同口径历史序列中如何变化，是否存在结构性拐点？ （状态：pending；定向材料：same-definition historical filing or official dataset）
-4. **L4 · 前瞻路径** — 前瞻路径：需要回答哪些最细问题，才能完成 L3“SPV、租赁、采购承诺和表外融资把风险留给谁？”？
-   - **L5 叶子：** 围绕“SPV、租赁、采购承诺和表外融资把风险留给谁？”，已披露的指引、订单、产能、客户计划或独立预测给出怎样的前瞻路径和假设？ （状态：pending；定向材料：official guidance, backlog, order, capacity, or customer plan；independent forecast with disclosed assumptions）
-5. **L4 · 因果与财务传导** — 因果与财务传导：需要回答哪些最细问题，才能完成 L3“SPV、租赁、采购承诺和表外融资把风险留给谁？”？
-   - **L5 叶子：** 围绕“SPV、租赁、采购承诺和表外融资把风险留给谁？”，证据通过什么因果机制传导到demand.customer_compute_budget、valuation.payoff_asymmetry以及采购承诺、担保、租赁、表外义务？ （状态：pending；定向材料：engineering disclosure plus company segment economics）
-6. **L4 · 交叉验证** — 交叉验证：需要回答哪些最细问题，才能完成 L3“SPV、租赁、采购承诺和表外融资把风险留给谁？”？
-   - **L5 叶子：** 围绕“SPV、租赁、采购承诺和表外融资把风险留给谁？”，客户、供应商、竞争者或独立数据能否交叉验证，主要冲突和样本偏差是什么？ （状态：pending；定向材料：counterparty filing or customer/supplier disclosure；independent specialist dataset or channel study）
-7. **L4 · 反证与失效条件** — 反证与失效条件：需要回答哪些最细问题，才能完成 L3“SPV、租赁、采购承诺和表外融资把风险留给谁？”？
-   - **L5 叶子：** 哪些直接证据能够满足反证条件“结构复杂且最终担保、闲置资产或对手方风险无法穿透。”，并推翻、削弱或限定支持规则“风险分担、现金流义务和资产利用率可被清晰识别。”？ （状态：pending；定向材料：official contrary fact, cancellation, substitution, or regulatory record；independent bear case or boundary analysis）
 
 **当前节点状态：** weakening
 

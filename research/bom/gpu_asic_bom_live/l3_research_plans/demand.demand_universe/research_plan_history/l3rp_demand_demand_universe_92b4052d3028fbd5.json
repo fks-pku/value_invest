@@ -1,0 +1,226 @@
+{
+  "completion_policy": {
+    "l3_complete_when": "current_question_answerable_or_all_required_descendants_complete",
+    "legacy_broad_search": "audit_only_not_retroactive_completion",
+    "missing_evidence": "block_then_expand_only_the_observed_gap"
+  },
+  "expansion_history": [],
+  "l3_node_id": "demand.demand_universe",
+  "l3_question": "当前有哪些数据中心 GPU 需求方，哪些主体可能成为潜在未来需求方？",
+  "l3_title": "Q1 需求方",
+  "lens_id": "demand",
+  "logic_contract": {
+    "company_bridge_fields": [
+      "需求方类别",
+      "当前或潜在未来"
+    ],
+    "downstream_node_ids": [
+      "demand.current_quantity"
+    ],
+    "indicators": [
+      "需求主体身份",
+      "当前或潜在未来标签",
+      "需求形成状态"
+    ],
+    "refute_rule": "把 OEM/ODM、分销商等采购通道列作需求方，或把同一主体同时列入当前和潜在未来两组。",
+    "support_rule": "当前需求方已有可验证的采购、部署或算力消费；潜在未来需求方尚未形成规模需求，但具备可验证的进入条件。",
+    "update_cadence": "quarterly"
+  },
+  "material_collection_policy": {
+    "bulk_pool_mapping_eligible": false,
+    "push_ingestion_role": "candidate_only",
+    "required_origin": "active_question_search",
+    "required_trace_fields": [
+      "l3_plan_id",
+      "l3_node_id",
+      "question_node_id",
+      "question_level",
+      "research_step_id",
+      "search_run_id"
+    ],
+    "source_reuse_rule": "The same source may serve another active question only through a separate attachment, extraction, and GPT review for that question."
+  },
+  "parent_research_plan_id": "rp_l3_662e595ff497fd4a",
+  "plan_id": "l3rp_demand_demand_universe_92b4052d3028fbd5",
+  "plan_type": "l3_deep_research",
+  "question_tree": {
+    "analysis_plan": [
+      "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+      "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+      "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+    ],
+    "children": [],
+    "depends_on_question_ids": [],
+    "level": 3,
+    "question": "当前有哪些数据中心 GPU 需求方，哪些主体可能成为潜在未来需求方？",
+    "question_id": "demand.demand_universe",
+    "required_data": [
+      "需求主体身份",
+      "当前或潜在未来标签",
+      "需求形成状态"
+    ],
+    "requires_refutation_search": true,
+    "research_dimension": "l3_initial",
+    "title": "Q1 需求方"
+  },
+  "question_tree_policy": {
+    "branching": "only_after_failed_answerability_gate",
+    "initial_depth": 3,
+    "maximum_depth": 5,
+    "root_level": 3,
+    "terminal_definition": "the current deepest unanswered question"
+  },
+  "research_goal": {
+    "as_of_date": "2026-09-02",
+    "decision_boundary": "research observation, not trading instruction",
+    "domain_hint": "semiconductor_hardware",
+    "logic_chain_version": "2026-08-12.v2",
+    "object_id": "gpu_asic",
+    "q_map": {
+      "demand": "需求侧",
+      "esg": "ESG",
+      "supply": "供给侧",
+      "technology": "技术侧",
+      "valuation": "估值侧"
+    },
+    "report_date": "2026-09-02",
+    "research_type": "technology_route",
+    "run_mode": "live_prediction",
+    "topic": "GPU / ASIC BOM 实时端到端投资研究"
+  },
+  "schema_version": "4.0",
+  "steps": [
+    {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Answer only the current question; separate facts, inference, judgment, refutation, and gaps."
+      },
+      "collection_contract": {
+        "bulk_pool_mapping_forbidden": true,
+        "origin": "active_question_search",
+        "query_must_name_active_question": true,
+        "required_trace_fields": [
+          "l3_plan_id",
+          "l3_node_id",
+          "question_node_id",
+          "question_level",
+          "research_step_id",
+          "search_run_id"
+        ]
+      },
+      "decision_use": "Answer the current terminal question before rolling up L3 demand.demand_universe.",
+      "depends_on_step_ids": [],
+      "freshness_requirement": "Use the latest available source as of 2026-09-02. Refresh cadence: quarterly.",
+      "initial_status": "pending",
+      "l3_node_id": "demand.demand_universe",
+      "l3_plan_id": "l3rp_demand_demand_universe_92b4052d3028fbd5",
+      "l4_question_id": "",
+      "leaf_question_id": "demand.demand_universe",
+      "leaf_step_id": "question:demand.demand_universe",
+      "level": 3,
+      "minimum_evidence_gate": {
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
+      },
+      "preferred_specialty_skill": "industry-report-analysis",
+      "question": "当前有哪些数据中心 GPU 需求方，哪些主体可能成为潜在未来需求方？",
+      "question_level": 3,
+      "question_node_id": "demand.demand_universe",
+      "question_path": [
+        {
+          "level": 3,
+          "question": "当前有哪些数据中心 GPU 需求方，哪些主体可能成为潜在未来需求方？",
+          "question_id": "demand.demand_universe"
+        }
+      ],
+      "refuting_source_plan": [
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 把 OEM/ODM、分销商等采购通道列作需求方，或把同一主体同时列入当前和潜在未来两组。."
+      ],
+      "required_data": [
+        "需求主体身份",
+        "当前或潜在未来标签",
+        "需求形成状态"
+      ],
+      "required_materials": [
+        "需求主体身份",
+        "当前或潜在未来标签",
+        "需求形成状态"
+      ],
+      "research_dimension": "l3_initial",
+      "research_step_id": "question:demand.demand_universe",
+      "sequence": 1,
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "当前有哪些数据中心 GPU 需求方，哪些主体可能成为潜在未来需求方？ 需求主体身份 / 当前或潜在未来标签 / 需求形成状态"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "当前有哪些数据中心 GPU 需求方，哪些主体可能成为潜在未来需求方？ 需求主体身份 / 当前或潜在未来标签 / 需求形成状态"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "leaf-research-deepseek",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
+      "source_universe_plan": {
+        "domain_id": "",
+        "priority_source_ids": [],
+        "registry": "config/source_universes.json"
+      },
+      "stage_id": "demand.demand_universe",
+      "step_id": "question:demand.demand_universe",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "search_run_id",
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    }
+  ]
+}

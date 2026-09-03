@@ -608,6 +608,7 @@ class FileSystemMaterialIntakeValidationRepository:
             self.project_dir / "l3_research_plans" / "index.json"
         )
         leaf_plan_coordinates: list[dict[str, str]] = []
+        historical_question_plan_coordinates: list[dict[str, str]] = []
         for plan_row in l3_index.get("plans") or []:
             if not isinstance(plan_row, dict):
                 continue
@@ -623,12 +624,36 @@ class FileSystemMaterialIntakeValidationRepository:
                         for field_name in (
                             "l3_plan_id",
                             "l3_node_id",
-                            "l4_question_id",
-                            "leaf_question_id",
-                            "leaf_step_id",
+                            "question_node_id",
+                            "question_level",
+                            "research_step_id",
                         )
                     }
                 )
+            history_dir = (
+                self.project_dir / str(plan_row.get("path") or "")
+            ).parent / "research_plan_history"
+            for history_path in history_dir.glob("*.json"):
+                historical_plan = _read_json(history_path)
+                if str(historical_plan.get("plan_id") or "") == str(
+                    plan.get("plan_id") or ""
+                ):
+                    continue
+                for step in historical_plan.get("steps") or []:
+                    if not isinstance(step, dict):
+                        continue
+                    historical_question_plan_coordinates.append(
+                        {
+                            field_name: str(step.get(field_name) or "")
+                            for field_name in (
+                                "l3_plan_id",
+                                "l3_node_id",
+                                "question_node_id",
+                                "question_level",
+                                "research_step_id",
+                            )
+                        }
+                    )
         return {
             "project": project,
             "known_bom_node_ids": known_nodes,
@@ -638,6 +663,7 @@ class FileSystemMaterialIntakeValidationRepository:
             "node_inboxes": node_inboxes,
             "leaf_search_contract_active": bool(l3_index),
             "leaf_plan_coordinates": leaf_plan_coordinates,
+            "historical_question_plan_coordinates": historical_question_plan_coordinates,
             "load_issues": load_issues,
         }
 

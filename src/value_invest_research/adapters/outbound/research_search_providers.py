@@ -20,7 +20,7 @@ class MockResearchSearchProvider:
 
     def search(self, task: dict[str, Any]) -> dict[str, Any]:
         question = task.get("question", "")
-        source_url = f"https://example.com/mock-leaf-research/{task.get('task_id', '')}"
+        source_url = f"https://example.com/mock-question-research/{task.get('task_id', '')}"
         return {
             "provider": self.name,
             "provider_model": self.model,
@@ -33,13 +33,13 @@ class MockResearchSearchProvider:
             "extraction_schema": task.get("extraction_schema", {}),
             "skill_dispatch_trace": task.get("skill_dispatch_trace", {}),
             "answer": f"Mock answer: {question} needs primary evidence, third-party research, timely messages, and expert opinions before parent rollup.",
-            "facts": [f"Mock fact: task {task.get('task_id', '')} preserves the leaf question and required evidence contract."],
-            "inferences": ["Mock inference: a leaf-level answer should be sourced before being rolled up."],
+            "facts": [f"Mock fact: task {task.get('task_id', '')} preserves the active question and required evidence contract."],
+            "inferences": ["Mock inference: the current-question answer should be sourced before being rolled up."],
             "judgment": "Mock judgment: provisional until a real search provider supplies cited material.",
             "supporting_evidence": ["Mock support: provider result contains one cited research-report source."],
             "refuting_evidence": [],
             "research_leads": ["Replace mock output with Perplexity/Tavily/Exa/OpenAI Search adapter results."],
-            "gaps": task.get("required_evidence", [])[:3] or ["Need direct sources for the leaf question."],
+            "gaps": task.get("required_evidence", [])[:3] or ["Need direct sources for the active question."],
             "confidence": "low",
             "sources": [
                 {
@@ -235,7 +235,7 @@ def provider_user_prompt(task: dict[str, Any]) -> str:
         "max_sources": task.get("max_sources", 8),
     }
     output_contract = {
-        "answer": "direct answer to the leaf question",
+        "answer": "direct answer to the active question",
         "facts": ["verifiable facts with source context"],
         "inferences": ["mechanisms or assumptions inferred from facts"],
         "judgment": "bounded current judgment",
@@ -273,13 +273,13 @@ def provider_user_prompt(task: dict[str, Any]) -> str:
     }
     return "\n".join(
         [
-            "Research this leaf question. Prefer primary filings/company releases, then high-quality third-party research, then messages/news, then opinions.",
+            "Research this active question. Prefer primary filings/company releases, then high-quality third-party research, then messages/news, then opinions.",
             "Classify every source into exactly one information category: evidence, research_report, message, or opinion.",
             "Separate facts, inferences, judgment, refuting evidence, research leads, and gaps.",
             "Return JSON only with this output contract:",
             json.dumps(output_contract, ensure_ascii=False, indent=2),
             "",
-            "Leaf task:",
+            "Active-question task:",
             json.dumps(compact_task, ensure_ascii=False, indent=2, sort_keys=True),
         ]
     )
@@ -344,7 +344,7 @@ def provider_result_from_exa_response(
         "node_id": task.get("node_id", ""),
         "query": query,
         "answer": (
-            f"Exa source discovery found {len(sources)} candidate sources for this leaf question. "
+            f"Exa source discovery found {len(sources)} candidate sources for this active question. "
             "Use DeepSeek/source-parser to read the selected materials before strengthening the conclusion."
         ),
         "facts": facts,

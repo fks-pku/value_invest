@@ -27,6 +27,26 @@
         "2026-07-28/摩根大通-亚太电子元器件路演-260727.pdf",
         "2026-07-28/伯恩斯坦-UMC-Vanguard-260727.pdf"
       ]
+    },
+    "web_primary:gpu_asic:demand.demand_universe:first_dynamic_pass": {
+      "provider": "web_primary",
+      "feed_id": "gpu_asic:demand.demand_universe:first_dynamic_pass",
+      "last_scan_at": "2026-09-03",
+      "last_scan_id": "SCAN-WEB_PRIMARY-3C0EE09E6604AAE3",
+      "seen_external_ids": [
+        "0001193125-26-323660",
+        "0001018724-26-000026",
+        "0001769628-26-000366"
+      ]
+    },
+    "web_primary:gpu_asic:demand.demand_universe:refutation_pass": {
+      "provider": "web_primary",
+      "feed_id": "gpu_asic:demand.demand_universe:refutation_pass",
+      "last_scan_at": "2026-09-03",
+      "last_scan_id": "SCAN-WEB_PRIMARY-46931E2EC703A5B0",
+      "seen_external_ids": [
+        "0001045810-26-000075"
+      ]
     }
   }
 }

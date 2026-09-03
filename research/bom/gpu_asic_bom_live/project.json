@@ -22,10 +22,24 @@
     "估值侧",
     "ESG"
   ],
+  "active_research_scope": {
+    "mode": "focused_lenses",
+    "lens_ids": [
+      "demand"
+    ],
+    "paused_lens_ids": [
+      "supply",
+      "technology",
+      "valuation",
+      "esg"
+    ],
+    "reason": "当前阶段只研究需求侧；其它视角保留历史结构但不进入当前执行与结构视图。"
+  },
   "timeline_order": "published_at_desc",
   "status": "active",
   "public_artifact": "professional_report.html",
-  "research_plan_artifact": "research_plan.html",
+  "research_plan_artifact": "research_plan.md",
+  "research_structure_artifact": "demand_research_structure.html",
   "audit_artifact": "professional_report.md",
   "material_relevance_profile": {
     "direct_terms": [

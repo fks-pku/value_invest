@@ -62,7 +62,7 @@ class QuestionArchitecture:
 
 
 def build_question_architecture(goal: ResearchGoal, playbook: DomainPlaybook) -> QuestionArchitecture:
-    """Build the L1-L3 decision tree; each L3 receives a separate L4/L5 plan."""
+    """Build L1-L3; each L3 receives an adaptive child tree through at most L5."""
     nodes: list[QuestionNode] = []
     for qid in ("Q1", "Q2", "Q3", "Q4"):
         l2_templates = playbook.l2_templates.get(qid, [])

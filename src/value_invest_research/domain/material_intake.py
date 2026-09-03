@@ -308,9 +308,14 @@ def build_material_parse_tasks(
         )
         for number in questions:
             question_id = question_ids.get(number) or f"{node_id}_q{number}"
+            active_question_id = str(
+                leaf_context.get("question_node_id")
+                or leaf_context.get("leaf_question_id")
+                or ""
+            )
             leaf_suffix = (
-                f"-{_slug(str(leaf_context.get('leaf_question_id') or ''))}"
-                if leaf_context.get("leaf_question_id")
+                f"-{_slug(active_question_id)}"
+                if active_question_id
                 else ""
             )
             row = {
@@ -363,19 +368,27 @@ def build_material_parse_tasks(
             if leaf_context:
                 row.update(
                     {
-                        "research_contract_version": "2.0",
-                        "collection_origin": "leaf_question_search",
+                        "research_contract_version": "3.0",
+                        "collection_origin": "active_question_search",
                         **{
                             field_name: str(leaf_context.get(field_name) or "")
                             for field_name in (
                                 "l3_plan_id",
                                 "l3_node_id",
-                                "l4_question_id",
-                                "leaf_question_id",
-                                "leaf_step_id",
+                                "question_node_id",
+                                "question_level",
+                                "research_step_id",
                                 "search_run_id",
                             )
                         },
+                        # Compatibility aliases keep older audit readers usable.
+                        "l4_question_id": str(leaf_context.get("l4_question_id") or ""),
+                        "leaf_question_id": active_question_id,
+                        "leaf_step_id": str(
+                            leaf_context.get("research_step_id")
+                            or leaf_context.get("leaf_step_id")
+                            or ""
+                        ),
                     }
                 )
             rows.append(row)
@@ -502,11 +515,22 @@ def validate_material_intake_bundle(bundle: dict[str, Any]) -> dict[str, Any]:
         (
             str(row.get("l3_plan_id") or ""),
             str(row.get("l3_node_id") or ""),
-            str(row.get("l4_question_id") or ""),
-            str(row.get("leaf_question_id") or ""),
-            str(row.get("leaf_step_id") or ""),
+            str(row.get("question_node_id") or row.get("leaf_question_id") or ""),
+            str(row.get("question_level") or row.get("level") or ""),
+            str(row.get("research_step_id") or row.get("leaf_step_id") or ""),
         )
         for row in bundle.get("leaf_plan_coordinates") or []
+        if isinstance(row, dict)
+    }
+    historical_question_coordinates = {
+        (
+            str(row.get("l3_plan_id") or ""),
+            str(row.get("l3_node_id") or ""),
+            str(row.get("question_node_id") or ""),
+            str(row.get("question_level") or ""),
+            str(row.get("research_step_id") or ""),
+        )
+        for row in bundle.get("historical_question_plan_coordinates") or []
         if isinstance(row, dict)
     }
     legacy_non_leaf_tasks = 0
@@ -655,36 +679,52 @@ def validate_material_intake_bundle(bundle: dict[str, Any]) -> dict[str, Any]:
             contract_version = str(
                 task.get("research_contract_version") or ""
             )
-            if leaf_search_contract_active and contract_version != "2.0":
+            if leaf_search_contract_active and contract_version not in {"2.0", "3.0"}:
                 legacy_non_leaf_tasks += 1
             if contract_version == "2.0":
+                # Version 2 tasks remain immutable historical audit rows. Their
+                # former leaf coordinates do not complete a dynamic v3 question.
+                legacy_non_leaf_tasks += 1
+            if contract_version == "3.0":
                 leaf_coordinate = tuple(
                     str(task.get(field_name) or "")
                     for field_name in (
                         "l3_plan_id",
                         "l3_node_id",
-                        "l4_question_id",
-                        "leaf_question_id",
-                        "leaf_step_id",
+                        "question_node_id",
+                        "question_level",
+                        "research_step_id",
                     )
                 )
-                if task.get("collection_origin") != "leaf_question_search":
+                if task.get("collection_origin") != "active_question_search":
                     _validation_issue(
                         issues,
-                        "invalid_leaf_collection_origin",
-                        f"{task_id} must originate from leaf_question_search",
+                        "invalid_active_question_collection_origin",
+                        f"{task_id} must originate from active_question_search",
                     )
                 if not str(task.get("search_run_id") or "").strip():
                     _validation_issue(
                         issues,
-                        "leaf_parse_task_missing_search_run",
+                        "active_question_parse_task_missing_search_run",
                         f"{task_id} is missing search_run_id",
                     )
-                if leaf_coordinate not in valid_leaf_coordinates:
+                if (
+                    leaf_coordinate in historical_question_coordinates
+                    and str(task.get("status") or "") not in {"completed", "reviewed"}
+                ):
                     _validation_issue(
                         issues,
-                        "unknown_leaf_plan_coordinate",
-                        f"{task_id} does not match an active L3 leaf plan",
+                        "stale_active_question_plan_coordinate",
+                        f"{task_id} remains open on a superseded question-plan version",
+                    )
+                elif (
+                    leaf_coordinate not in valid_leaf_coordinates
+                    and leaf_coordinate not in historical_question_coordinates
+                ):
+                    _validation_issue(
+                        issues,
+                        "unknown_active_question_plan_coordinate",
+                        f"{task_id} does not match an active terminal question",
                     )
             if source_id not in inbox_source_ids:
                 _validation_issue(

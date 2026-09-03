@@ -125,9 +125,18 @@ def build_parser() -> argparse.ArgumentParser:
 
     l3_plan_parser = subparsers.add_parser(
         "build-l3-research-plans",
-        help="Create one nested L4/L5, leaf-search-driven plan for every standalone-BOM L3",
+        help="Create one L3-first, evidence-triggered dynamic plan for every standalone-BOM L3",
     )
     l3_plan_parser.add_argument("project_dir")
+
+    expand_l3_plan_parser = subparsers.add_parser(
+        "expand-l3-research-plan",
+        help="Expand one blocked active question by one level from a JSON child-question list",
+    )
+    expand_l3_plan_parser.add_argument("project_dir")
+    expand_l3_plan_parser.add_argument("--l3-node-id", required=True)
+    expand_l3_plan_parser.add_argument("--parent-question-id", required=True)
+    expand_l3_plan_parser.add_argument("--children", required=True)
 
     material_intake_parser = subparsers.add_parser(
         "validate-material-intake",
@@ -166,7 +175,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     search_bom_materials_parser = subparsers.add_parser(
         "search-bom-materials",
-        help="Search one BOM x six-question coordinate and route sources into its parse inbox",
+        help="Search one BOM x current terminal question and route sources into its parse inbox",
     )
     search_bom_materials_parser.add_argument("project_dir")
     search_bom_materials_parser.add_argument("--bom-node-id", required=True)
@@ -176,6 +185,8 @@ def build_parser() -> argparse.ArgumentParser:
         choices=range(1, 7),
     )
     search_bom_materials_parser.add_argument("--l3-node-id", default="")
+    search_bom_materials_parser.add_argument("--question-node-id", default="")
+    # Deprecated compatibility flag; use --question-node-id.
     search_bom_materials_parser.add_argument("--leaf-question-id", default="")
     search_bom_materials_parser.add_argument("--query", default="")
     search_bom_materials_parser.add_argument(
@@ -950,6 +961,8 @@ def main(argv: list[str] | None = None) -> int:
             return run_validate_research_plan_cmd(root, args)
         if args.command == "build-l3-research-plans":
             return run_build_l3_research_plans_cmd(root, args)
+        if args.command == "expand-l3-research-plan":
+            return run_expand_l3_research_plan_cmd(root, args)
         if args.command == "validate-material-intake":
             return run_validate_material_intake_cmd(root, args)
         if args.command == "validate-standalone-bom-engine":
@@ -1204,8 +1217,8 @@ def run_plan_research_cmd(root: Path, args) -> int:
     from value_invest_research.adapters.outbound.filesystem_source_universe import (
         FileSystemSourceUniverseRepository,
     )
-    from value_invest_research.adapters.outbound.standalone_bom_research_plan_html_renderer import (
-        StandaloneBomResearchPlanHtmlRenderer,
+    from value_invest_research.adapters.outbound.research_plan_markdown_renderer import (
+        ResearchPlanMarkdownRenderer,
     )
     from value_invest_research.application.orchestration.research_orchestrator import (
         ResearchOrchestrator,
@@ -1230,8 +1243,8 @@ def run_plan_research_cmd(root: Path, args) -> int:
             root / "config" / "source_universes.json"
         ),
     )
-    plan_html_path = repository.write_research_plan_html(
-        StandaloneBomResearchPlanHtmlRenderer().render(
+    plan_markdown_path = repository.write_research_plan_markdown(
+        ResearchPlanMarkdownRenderer().render(
             project={
                 "title": args.topic,
                 "report_date": args.report_date or args.as_of_date,
@@ -1243,7 +1256,7 @@ def run_plan_research_cmd(root: Path, args) -> int:
         f"Research plan created: plan_id={result['plan_id']}, "
         f"l3_steps={result['steps']}, l3_plans={result['l3_plans']}, "
         f"leaf_steps={result['leaf_steps']}, plan={result['plan_path']}, "
-        f"events={result['event_path']}, html={plan_html_path}"
+        f"events={result['event_path']}, markdown={plan_markdown_path}"
     )
     return 0
 
@@ -1282,7 +1295,7 @@ def run_validate_research_plan_cmd(root: Path, args) -> int:
         ValidateResearchPlanExecution,
     )
     from value_invest_research.framework_contracts import (
-        validate_research_plan_html_contract,
+        validate_research_plan_markdown_contract,
     )
 
     project_dir = _resolve_cli_path(root, args.project_dir)
@@ -1291,21 +1304,21 @@ def run_validate_research_plan_cmd(root: Path, args) -> int:
     bundle = repository.load_l3_research_plan_bundle()
     plan_document_summary: dict[str, int] = {}
     if bundle.get("plans"):
-        plan_html_path = project_dir / "research_plan.html"
-        if not plan_html_path.is_file():
+        plan_markdown_path = project_dir / "research_plan.md"
+        if not plan_markdown_path.is_file():
             result["issues"].append(
                 {
                     "severity": "error",
-                    "code": "missing_research_plan_html",
+                    "code": "missing_research_plan_markdown",
                     "message": (
-                        "L3 child plans exist but research_plan.html has not "
+                        "L3 child plans exist but research_plan.md has not "
                         "been generated."
                     ),
                 }
             )
         else:
-            document_validation = validate_research_plan_html_contract(
-                plan_html_path.read_text(encoding="utf-8"),
+            document_validation = validate_research_plan_markdown_contract(
+                plan_markdown_path.read_text(encoding="utf-8"),
                 plans=bundle["plans"],
             )
             result["issues"].extend(document_validation["issues"])
@@ -1334,7 +1347,7 @@ def run_validate_research_plan_cmd(root: Path, args) -> int:
         )
     if plan_document_summary:
         print(
-            "Research plan HTML coverage: "
+            "Research plan Markdown coverage: "
             f"l3_plans={plan_document_summary.get('l3_plans', 0)}, "
             f"leaf_steps={plan_document_summary.get('leaf_steps', 0)}"
         )
@@ -1350,8 +1363,8 @@ def run_build_l3_research_plans_cmd(root: Path, args) -> int:
     from value_invest_research.adapters.outbound.filesystem_research_plan import (
         FileSystemResearchPlanRepository,
     )
-    from value_invest_research.adapters.outbound.standalone_bom_research_plan_html_renderer import (
-        StandaloneBomResearchPlanHtmlRenderer,
+    from value_invest_research.adapters.outbound.research_plan_markdown_renderer import (
+        ResearchPlanMarkdownRenderer,
     )
     from value_invest_research.application.use_cases.build_l3_research_plans import (
         BuildStandaloneL3ResearchPlans,
@@ -1370,8 +1383,8 @@ def run_build_l3_research_plans_cmd(root: Path, args) -> int:
     )
     repository = FileSystemResearchPlanRepository(project_dir)
     result = BuildStandaloneL3ResearchPlans(repository).execute(profile=profile)
-    plan_html_path = repository.write_research_plan_html(
-        StandaloneBomResearchPlanHtmlRenderer().render(
+    plan_markdown_path = repository.write_research_plan_markdown(
+        ResearchPlanMarkdownRenderer().render(
             project=project,
             bundle=repository.load_l3_research_plan_bundle(),
         )
@@ -1382,7 +1395,77 @@ def run_build_l3_research_plans_cmd(root: Path, args) -> int:
         f"l3_plans={result['l3_plans']}, "
         f"leaf_steps={result['leaf_steps']}, "
         f"index={result['index_path']}, "
-        f"html={plan_html_path}"
+        f"markdown={plan_markdown_path}"
+    )
+    return 0
+
+
+def run_expand_l3_research_plan_cmd(root: Path, args) -> int:
+    from value_invest_research.adapters.outbound.filesystem_research_plan import (
+        FileSystemResearchPlanRepository,
+    )
+    from value_invest_research.adapters.outbound.filesystem_source_universe import (
+        FileSystemSourceUniverseRepository,
+    )
+    from value_invest_research.adapters.outbound.research_plan_markdown_renderer import (
+        ResearchPlanMarkdownRenderer,
+    )
+    from value_invest_research.application.use_cases.expand_l3_research_plan import (
+        ExpandL3ResearchPlan,
+    )
+
+    project_dir = _resolve_cli_path(root, args.project_dir)
+    children_path = _resolve_cli_path(root, args.children)
+    payload = json.loads(children_path.read_text(encoding="utf-8"))
+    child_questions = (
+        payload.get("child_questions") if isinstance(payload, dict) else payload
+    )
+    if not isinstance(child_questions, list):
+        raise ValueError("--children must contain a JSON list or child_questions list")
+    repository = FileSystemResearchPlanRepository(project_dir)
+    qa_tree = json.loads((project_dir / "qa_tree.json").read_text(encoding="utf-8"))
+    project = json.loads((project_dir / "project.json").read_text(encoding="utf-8"))
+    active_lens_ids = {
+        str(item)
+        for item in (project.get("active_research_scope") or {}).get("lens_ids") or []
+        if str(item).strip()
+    }
+    l3_plan = next(
+        (
+            row
+            for row in repository.load_l3_research_plan_bundle().get("plans") or []
+            if str(row.get("l3_node_id") or "") == args.l3_node_id
+        ),
+        {},
+    )
+    if (
+        active_lens_ids
+        and str(l3_plan.get("lens_id") or "") not in active_lens_ids
+    ):
+        raise ValueError(
+            f"L3 {args.l3_node_id} is outside the active research lenses: "
+            f"{sorted(active_lens_ids)}"
+        )
+    source_universe = FileSystemSourceUniverseRepository(
+        root / "config" / "source_universes.json"
+    ).resolve_for_research(qa_tree)
+    result = ExpandL3ResearchPlan(repository).execute(
+        l3_node_id=args.l3_node_id,
+        parent_question_id=args.parent_question_id,
+        child_questions=child_questions,
+        source_universe=source_universe,
+    )
+    plan_path = repository.write_research_plan_markdown(
+        ResearchPlanMarkdownRenderer().render(
+            project=project,
+            bundle=repository.load_l3_research_plan_bundle(),
+        )
+    )
+    print(
+        "L3 research plan expanded: "
+        f"l3={result['l3_node_id']}, parent={result['parent_question_id']}, "
+        f"plan_id={result['plan_id']}, children={len(result['child_question_ids'])}, "
+        f"markdown={plan_path}"
     )
     return 0
 
@@ -1486,8 +1569,23 @@ def run_search_bom_materials_cmd(root: Path, args) -> int:
     leaf_context = _resolve_leaf_search_context(
         project_dir,
         l3_node_id=args.l3_node_id,
-        leaf_question_id=args.leaf_question_id,
+        question_node_id=(args.question_node_id or args.leaf_question_id),
     )
+    project = json.loads((project_dir / "project.json").read_text(encoding="utf-8"))
+    active_lens_ids = {
+        str(item)
+        for item in (project.get("active_research_scope") or {}).get("lens_ids") or []
+        if str(item).strip()
+    }
+    if (
+        leaf_context
+        and active_lens_ids
+        and str(leaf_context.get("lens_id") or "") not in active_lens_ids
+    ):
+        raise ValueError(
+            f"Question {leaf_context.get('question_node_id')} is outside the "
+            f"active research lenses: {sorted(active_lens_ids)}"
+        )
     question_number = args.question_number
     query = str(args.query or "").strip()
     if leaf_context:
@@ -1507,21 +1605,21 @@ def run_search_bom_materials_cmd(root: Path, args) -> int:
             )
         if question_number and question_number != expected_number:
             raise ValueError(
-                f"Leaf {args.leaf_question_id} belongs to question_number={expected_number}"
+                f"Question {leaf_context.get('question_node_id')} belongs to question_number={expected_number}"
             )
         question_number = expected_number
         query = query or str(leaf_context.get("default_query") or "")
     elif (project_dir / "l3_research_plans" / "index.json").is_file():
         raise ValueError(
-            "This project requires --l3-node-id and --leaf-question-id for every material search"
+            "This project requires --l3-node-id and the current --question-node-id for every material search"
         )
     if not question_number or not query:
         raise ValueError(
-            "Material search requires a question number and query, or a valid L3 leaf-plan coordinate"
+            "Material search requires a question number and query, or a valid active-question coordinate"
         )
     question_ids = context["question_ids_by_node"].get(args.bom_node_id) or {}
     question_id = (
-        str(leaf_context.get("leaf_question_id") or "")
+        str(leaf_context.get("question_node_id") or "")
         if leaf_context
         else question_ids.get(question_number)
         or f"{args.bom_node_id}_q{question_number}"
@@ -1581,7 +1679,7 @@ def run_search_bom_materials_cmd(root: Path, args) -> int:
         "BOM material search completed: "
         f"node={args.bom_node_id}, "
         f"question={question_number}, "
-        f"leaf={question_id if leaf_context else '<legacy-coordinate>'}, "
+        f"active_question={question_id if leaf_context else '<legacy-coordinate>'}, "
         f"provider={args.provider}, "
         f"new_documents={event['discovered_count']}, "
         f"quarantined={event['quarantined_count']}, "
@@ -2146,8 +2244,8 @@ def run_refresh_standalone_bom_report_cmd(root: Path, args) -> int:
     from value_invest_research.adapters.outbound.standalone_bom_markdown_renderer import (
         StandaloneBomMarkdownRenderer,
     )
-    from value_invest_research.adapters.outbound.standalone_bom_research_plan_html_renderer import (
-        StandaloneBomResearchPlanHtmlRenderer,
+    from value_invest_research.adapters.outbound.research_plan_markdown_renderer import (
+        ResearchPlanMarkdownRenderer,
     )
     from value_invest_research.application.use_cases.refresh_standalone_bom_timeline import (
         refresh_standalone_bom_report,
@@ -2158,13 +2256,13 @@ def run_refresh_standalone_bom_report_cmd(root: Path, args) -> int:
         repository=FileSystemStandaloneBomTimelineRepository(project_dir),
         renderer=StandaloneBomMarkdownRenderer(project_dir=project_dir),
         html_renderer=StandaloneBomHtmlRenderer(project_dir=project_dir),
-        plan_html_renderer=StandaloneBomResearchPlanHtmlRenderer(),
+        plan_markdown_renderer=ResearchPlanMarkdownRenderer(),
         as_of_date=args.as_of_date,
     )
     print(
         "Standalone BOM report refreshed: "
         f"path={result['report_path']}, "
-        f"research_plan={result['research_plan_html_path']}, "
+        f"research_plan={result['research_plan_markdown_path']}, "
         f"as_of_date={result['as_of_date']}, "
         f"claims={result['claims']}"
     )
@@ -2212,8 +2310,8 @@ def run_apply_standalone_bom_updates_cmd(root: Path, args) -> int:
     from value_invest_research.adapters.outbound.standalone_bom_markdown_renderer import (
         StandaloneBomMarkdownRenderer,
     )
-    from value_invest_research.adapters.outbound.standalone_bom_research_plan_html_renderer import (
-        StandaloneBomResearchPlanHtmlRenderer,
+    from value_invest_research.adapters.outbound.research_plan_markdown_renderer import (
+        ResearchPlanMarkdownRenderer,
     )
     from value_invest_research.application.use_cases.refresh_standalone_bom_timeline import (
         apply_standalone_bom_updates,
@@ -2226,7 +2324,7 @@ def run_apply_standalone_bom_updates_cmd(root: Path, args) -> int:
         repository=FileSystemStandaloneBomTimelineRepository(project_dir),
         renderer=StandaloneBomMarkdownRenderer(project_dir=project_dir),
         html_renderer=StandaloneBomHtmlRenderer(project_dir=project_dir),
-        plan_html_renderer=StandaloneBomResearchPlanHtmlRenderer(),
+        plan_markdown_renderer=ResearchPlanMarkdownRenderer(),
         raw_claims=claims,
         raw_conclusions=conclusions,
         as_of_date=args.as_of_date,
@@ -2252,8 +2350,8 @@ def run_apply_standalone_bom_engine_updates_cmd(root: Path, args) -> int:
     from value_invest_research.adapters.outbound.standalone_bom_markdown_renderer import (
         StandaloneBomMarkdownRenderer,
     )
-    from value_invest_research.adapters.outbound.standalone_bom_research_plan_html_renderer import (
-        StandaloneBomResearchPlanHtmlRenderer,
+    from value_invest_research.adapters.outbound.research_plan_markdown_renderer import (
+        ResearchPlanMarkdownRenderer,
     )
     from value_invest_research.application.use_cases.refresh_standalone_bom_timeline import (
         apply_standalone_bom_engine_updates,
@@ -2264,7 +2362,7 @@ def run_apply_standalone_bom_engine_updates_cmd(root: Path, args) -> int:
         repository=FileSystemStandaloneBomTimelineRepository(project_dir),
         renderer=StandaloneBomMarkdownRenderer(project_dir=project_dir),
         html_renderer=StandaloneBomHtmlRenderer(project_dir=project_dir),
-        plan_html_renderer=StandaloneBomResearchPlanHtmlRenderer(),
+        plan_markdown_renderer=ResearchPlanMarkdownRenderer(),
         raw_mappings=_read_jsonl(_resolve_cli_path(root, args.mappings)),
         raw_logic_states=_read_jsonl(
             _resolve_cli_path(root, args.logic_states)
@@ -2339,12 +2437,12 @@ def _resolve_leaf_search_context(
     project_dir: Path,
     *,
     l3_node_id: str,
-    leaf_question_id: str,
+    question_node_id: str,
 ) -> dict[str, str]:
     index_path = project_dir / "l3_research_plans" / "index.json"
     if not index_path.is_file():
         return {}
-    if not l3_node_id or not leaf_question_id:
+    if not l3_node_id:
         return {}
     index = json.loads(index_path.read_text(encoding="utf-8"))
     row = next(
@@ -2361,18 +2459,20 @@ def _resolve_leaf_search_context(
     plan = json.loads(
         (project_dir / str(row.get("path") or "")).read_text(encoding="utf-8")
     )
+    question_node_id = question_node_id or l3_node_id
     step = next(
         (
             item
             for item in plan.get("steps") or []
             if isinstance(item, dict)
-            and str(item.get("leaf_question_id") or "") == leaf_question_id
+            and str(item.get("question_node_id") or item.get("leaf_question_id") or "")
+            == question_node_id
         ),
         None,
     )
     if step is None:
         raise ValueError(
-            f"Unknown leaf question {leaf_question_id} under L3 {l3_node_id}"
+            f"Unknown active question {question_node_id} under L3 {l3_node_id}"
         )
     default_query = next(
         (
@@ -2389,8 +2489,11 @@ def _resolve_leaf_search_context(
         "l3_question": str(plan.get("l3_question") or ""),
         "lens_id": str(plan.get("lens_id") or ""),
         "l4_question_id": str(step.get("l4_question_id") or ""),
-        "leaf_question_id": leaf_question_id,
-        "leaf_step_id": str(step.get("leaf_step_id") or ""),
+        "question_node_id": question_node_id,
+        "question_level": str(step.get("question_level") or step.get("level") or ""),
+        "research_step_id": str(step.get("research_step_id") or step.get("step_id") or ""),
+        "leaf_question_id": question_node_id,
+        "leaf_step_id": str(step.get("research_step_id") or step.get("step_id") or ""),
         "default_query": default_query,
     }
 

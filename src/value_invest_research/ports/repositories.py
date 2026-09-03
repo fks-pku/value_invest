@@ -99,18 +99,18 @@ class ResearchPlanRepository(Protocol):
         """Load step events in append order."""
 
     def save_l3_research_plans(self, index: dict, plans: list[dict]) -> None:
-        """Persist one independent versioned research plan per L3."""
+        """Persist one independent, runtime-growing versioned plan per L3."""
 
     def load_l3_research_plan_bundle(self) -> dict:
         """Load the L3 plan index, child plans, and their event ledgers."""
 
-    def write_research_plan_html(self, html: str) -> str:
-        """Persist the dedicated human-readable research-plan document."""
+    def write_research_plan_markdown(self, markdown: str) -> str:
+        """Persist the human-readable active question-tree plan."""
 
     def bind_l3_plans_to_question_architecture(
         self, *, parent_plan: dict, index: dict
     ) -> None:
-        """Bind QA L3 nodes to child plans without embedding leaf source searches."""
+        """Bind QA nodes to active child-plan questions without embedding raw searches."""
 
 
 class BomProjectLayoutRepository(Protocol):

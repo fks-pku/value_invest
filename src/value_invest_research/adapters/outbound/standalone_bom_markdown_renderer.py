@@ -76,8 +76,6 @@ class StandaloneBomMarkdownRenderer:
                     f"logic_chain_version: {view.get('logic_chain_version') or ''}",
                 ]
             )
-        if view.get("l3_plan_coverage"):
-            front_matter.append("l3_plan_contract: leaf-search-v2")
         lines = [
             *front_matter,
             "---",
@@ -335,7 +333,6 @@ def _logic_chain_node_lines(
         "",
         f"**研究问题：** {node.get('question') or ''}",
         "",
-        *_l3_research_plan_lines(node),
         f"**当前节点状态：** {node.get('state') or 'unresolved'}",
         "",
         f"**当前结论：** {node.get('conclusion') or ''}",
@@ -413,7 +410,6 @@ def _logic_node_lines(
             "",
             f"**研究问题：** {node.get('question') or ''}",
             "",
-            *_l3_research_plan_lines(node),
         ]
         for group_id, label in (
             ("current", "当前需求方"),
@@ -497,7 +493,6 @@ def _logic_node_lines(
             "",
             f"**研究问题：** {node.get('question') or ''}",
             "",
-            *_l3_research_plan_lines(node),
             "##### 1. 当前需求方",
             "",
         ]
@@ -525,7 +520,6 @@ def _logic_node_lines(
         "",
         f"**研究问题：** {node.get('question') or ''}",
         "",
-        *_l3_research_plan_lines(node),
         f"**当前结论：** {node.get('conclusion') or ''}",
         "",
     ]
@@ -568,36 +562,6 @@ def _logic_node_lines(
             lines.append("| 无 | 其他 | 尚无经过复核的实体级材料。 |")
         lines.append("")
     return lines
-
-
-def _l3_research_plan_lines(node: dict[str, Any]) -> list[str]:
-    plan = dict(node.get("research_plan") or {})
-    if not plan:
-        return []
-    lines = [
-        (
-            "**L3 独立研究计划：** "
-            f"{plan.get('completed_leaf_steps', 0)} / "
-            f"{plan.get('leaf_steps', 0)} 个最细叶子已完成；"
-            f"{plan.get('material_collection_policy') or '按每个叶子单独搜集材料'}。"
-        ),
-        "",
-    ]
-    for position, unit in enumerate(plan.get("l4_units") or [], start=1):
-        lines.append(
-            f"{position}. **L4 · {unit.get('title') or ''}** — "
-            f"{unit.get('question') or ''}"
-        )
-        for leaf in unit.get("leaves") or []:
-            source_types = "；".join(
-                str(item) for item in leaf.get("required_source_types") or []
-            )
-            lines.append(
-                f"   - **L5 叶子：** {leaf.get('question') or ''} "
-                f"（状态：{leaf.get('status') or 'pending'}；"
-                f"定向材料：{source_types or '待定义'}）"
-            )
-    return [*lines, ""]
 
 
 def _demand_quantity_source_text(

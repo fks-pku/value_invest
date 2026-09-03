@@ -118,10 +118,21 @@ class FileSystemResearchPlanRepository:
             "index": index,
             "plans": plans,
             "events_by_node": events_by_node,
+            "qa_tree": _read_json(self.project_dir / "qa_tree.json"),
         }
 
-    def write_research_plan_html(self, html: str) -> str:
-        path = self.project_dir / "research_plan.html"
+    def write_research_plan_markdown(self, markdown: str) -> str:
+        path = self.project_dir / "research_plan.md"
+        path.write_text(markdown, encoding="utf-8")
+        return str(path)
+
+    def write_research_plan_structure_html(
+        self,
+        html: str,
+        *,
+        filename: str = "demand_research_structure.html",
+    ) -> str:
+        path = self.project_dir / filename
         path.write_text(html, encoding="utf-8")
         return str(path)
 
@@ -167,7 +178,105 @@ class FileSystemResearchPlanRepository:
         qa_tree["research_plan_id"] = str(parent_plan.get("plan_id") or "")
         qa_tree["research_plan_path"] = "research_plan.json"
         qa_tree["l3_plan_index_path"] = "l3_research_plans/index.json"
+        qa_tree["question_tree_contract"] = "adaptive-depth-max-5"
+        qa_tree["nodes"] = [
+            row
+            for row in qa_tree.get("nodes") or []
+            if int(row.get("level") or 0) <= 3
+        ]
+        nodes_by_id = {
+            str(row.get("id") or ""): row
+            for row in qa_tree.get("nodes") or []
+            if isinstance(row, dict)
+        }
+        for plan in self.load_l3_research_plan_bundle().get("plans") or []:
+            root = plan.get("question_tree") or {}
+            l3_node = nodes_by_id.get(str(plan.get("l3_node_id") or ""))
+            if not l3_node:
+                continue
+            children = [
+                row for row in root.get("children") or [] if isinstance(row, dict)
+            ]
+            l3_node["next_question_ids"] = [
+                str(row.get("question_id") or "") for row in children
+            ]
+            step_by_leaf = {
+                str(row.get("question_node_id") or row.get("leaf_question_id") or ""): row
+                for row in plan.get("steps") or []
+                if isinstance(row, dict)
+            }
+            if not children:
+                step = step_by_leaf.get(str(plan.get("l3_node_id") or "")) or {}
+                l3_node.update(
+                    {
+                        "research_step_id": str(step.get("step_id") or ""),
+                        "required_data": list(root.get("required_data") or []),
+                        "analysis_plan": list(root.get("analysis_plan") or []),
+                        "required_materials": list(step.get("required_materials") or []),
+                        "source_plan": list(step.get("source_plan") or []),
+                        "minimum_evidence_gate": dict(step.get("minimum_evidence_gate") or {}),
+                        "refuting_source_plan": list(step.get("refuting_source_plan") or []),
+                        "freshness_requirement": str(step.get("freshness_requirement") or ""),
+                        "preferred_specialty_skill": str(step.get("preferred_specialty_skill") or ""),
+                        "execution_mode": "direct_evidence_step",
+                    }
+                )
+            self._append_question_descendants(
+                qa_tree["nodes"],
+                children,
+                parent_id=str(plan.get("l3_node_id") or ""),
+                step_by_leaf=step_by_leaf,
+            )
         self._write_json(qa_path, qa_tree)
+
+    def _append_question_descendants(
+        self,
+        output: list[dict[str, Any]],
+        children: list[dict[str, Any]],
+        *,
+        parent_id: str,
+        step_by_leaf: dict[str, dict[str, Any]],
+    ) -> None:
+        for child in children:
+            question_id = str(child.get("question_id") or "")
+            grandchildren = [
+                row
+                for row in child.get("children") or []
+                if isinstance(row, dict)
+            ]
+            row: dict[str, Any] = {
+                "id": question_id,
+                "level": int(child.get("level") or 0),
+                "question": str(child.get("question") or ""),
+                "parent_id": parent_id,
+                "next_question_ids": [
+                    str(item.get("question_id") or "")
+                    for item in grandchildren
+                ],
+            }
+            if not grandchildren:
+                step = step_by_leaf.get(question_id) or {}
+                row.update(
+                    {
+                        "research_step_id": str(step.get("step_id") or ""),
+                        "required_data": list(child.get("required_data") or []),
+                        "analysis_plan": list(child.get("analysis_plan") or []),
+                        "required_materials": list(step.get("required_materials") or []),
+                        "source_plan": list(step.get("source_plan") or []),
+                        "minimum_evidence_gate": dict(step.get("minimum_evidence_gate") or {}),
+                        "refuting_source_plan": list(step.get("refuting_source_plan") or []),
+                        "freshness_requirement": str(step.get("freshness_requirement") or ""),
+                        "preferred_specialty_skill": str(step.get("preferred_specialty_skill") or ""),
+                        "execution_mode": "direct_evidence_step",
+                    }
+                )
+            output.append(row)
+            self._append_question_descendants(
+                output,
+                grandchildren,
+                parent_id=question_id,
+                step_by_leaf=step_by_leaf,
+            )
 
     @staticmethod
     def _write_json(path: Path, payload: dict) -> None:

@@ -45,23 +45,24 @@ def ingest_material_batch(
         and not leaf_context
     ):
         raise ValueError(
-            "This project requires an L3 plan and finest-leaf question for every material search"
+            "This project requires the current active question for every material search"
         )
     if leaf_context:
+        leaf_context = _normalize_active_question_context(leaf_context)
         missing_leaf_fields = [
             field_name
             for field_name in (
                 "l3_plan_id",
                 "l3_node_id",
-                "l4_question_id",
-                "leaf_question_id",
-                "leaf_step_id",
+                "question_node_id",
+                "question_level",
+                "research_step_id",
             )
             if not str(leaf_context.get(field_name) or "").strip()
         ]
         if missing_leaf_fields:
             raise ValueError(
-                "Leaf material search is missing trace fields: "
+                "Active-question material search is missing trace fields: "
                 + ", ".join(missing_leaf_fields)
             )
     defaults = list(dict.fromkeys(str(item) for item in default_bom_node_ids))
@@ -145,7 +146,7 @@ def ingest_material_batch(
         ),
         "parse_task_count": len(parse_tasks),
         "evidence_eligibility": (
-            "leaf_specific"
+            "active_question_specific"
             if resolved_leaf_context
             else "candidate_only"
             if leaf_search_required
@@ -165,6 +166,16 @@ def ingest_material_batch(
         "parse_tasks": parse_tasks,
         "persistence": persisted,
     }
+
+
+def _normalize_active_question_context(context: dict[str, Any]) -> dict[str, Any]:
+    """Accept legacy leaf names while persisting the level-agnostic coordinates."""
+
+    row = dict(context)
+    row.setdefault("question_node_id", row.get("leaf_question_id"))
+    row.setdefault("question_level", row.get("level"))
+    row.setdefault("research_step_id", row.get("leaf_step_id"))
+    return row
 
 
 def scan_knowledge_base_materials(
@@ -589,7 +600,7 @@ def ingest_question_search_result(
         provider=provider,
         feed_id=(
             f"{bom_node_id}:q{question_number}:"
-            f"{(leaf_context or {}).get('leaf_question_id')}"
+            f"{(leaf_context or {}).get('question_node_id') or (leaf_context or {}).get('leaf_question_id')}"
             if leaf_context
             else f"{bom_node_id}:q{question_number}"
         ),

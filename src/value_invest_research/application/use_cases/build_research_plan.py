@@ -39,6 +39,10 @@ class BuildResearchPlan:
         self.repository.save_question_architecture(enrich_question_architecture(architecture, plan))
         self.repository.save_plan(plan_payload)
         self.repository.save_l3_research_plans(l3_index, l3_plans)
+        self.repository.bind_l3_plans_to_question_architecture(
+            parent_plan=plan_payload,
+            index=l3_index,
+        )
         return {
             "plan_id": plan.plan_id,
             "plan_path": self.repository.plan_path_label,

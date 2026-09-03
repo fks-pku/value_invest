@@ -21,11 +21,11 @@ Do not mix another report template into this workflow.
 ## End-to-End Sequence
 
 1. Convert the request into `ResearchGoal` with mode, date, decision, scope, and domain hint.
-2. Use `investment-question-architect` plus the domain playbook to build internal QA to maximum depth five.
-3. Make the parent plan an L3 index. Create one independent, versioned research plan per L3, drill it through L4, and execute only its L5 leaves.
+2. Use `investment-question-architect` plus the domain playbook to build the initial internal QA through L3 only; L5 is a hard maximum, not an initial target.
+3. Make the parent plan an L3 index. Create one independent, versioned plan per L3 with the L3 root as its first executable question. Search and analyze it; expand one level only when its answerability gate fails with a concrete gap.
 4. For S-curve work, define a canonical BOM taxonomy and run the six-question research loop for every node.
 5. Mirror all PDFs from the user's IMA daily directory into the central provider archive, then run two evidence loops: question-driven Universe/Exa search and BOM routing from that archive.
-6. Classify every discovered document by `material_class` and `ingestion_channel`. Broad push ingestion remains candidate-only; only an L5-originated search or selection creates a parse task carrying the full L3/L4/L5/search-run trace.
+6. Classify every discovered document by `material_class` and `ingestion_channel`. Broad push ingestion remains candidate-only; only a current-question-originated search or selection creates a parse task carrying the full L3/question/level/search-run trace.
 7. Parse one source at a time against the current question with the appropriate specialty skill. DeepSeek may perform first-pass reading when available; GPT verifies every adopted claim.
 8. Record collection, evidence, answer, gate, block, and reopen events in the append-only step ledger; derive status instead of overwriting it.
 9. Roll facts, inference, judgment, gaps, refutation, and triggers upward only after the step gate passes.
@@ -38,12 +38,13 @@ Do not mix another report template into this workflow.
 
 - Facts, inferences, judgments, leads, and gaps are distinct.
 - Every material claim has a claim-near source link or traceable source ID.
-- Every L3 owns one independent versioned plan. Every task, extraction, review, and answer for one L5 leaf shares one stable `research_step_id` plus its L3/L4/L5/search-run trace.
+- Every L3 owns one independent versioned plan. Its first version stops at L3. Every current terminal L3/L4/L5 question states required data and analysis and shares one stable `research_step_id` across task, extraction, review, and answer records.
 - `research_plan.json` is immutable by plan ID; execution history is append-only in `research_step_events.jsonl`.
 - A completed step requires sources, per-source extraction, GPT review, an answer, a recorded refutation-search result, a passed evidence gate, and completed dependencies.
 - Messages/opinions are leads unless independently verified.
 - The same source is re-parsed for every question dimension it serves.
-- Search is active at the finest L5 leaf. Searching once at L3 and fanning a broad source pool out across leaves is forbidden and cannot satisfy completion.
+- Search is active only at the current deepest unanswered question. L3 search is the required first pass; its sources cannot be fanned out across children created later.
+- Create L4 or L5 only after the current answerability gate fails, preserve the concrete evidence gap, and add exactly one level at a time.
 - Active search starts from explicit evidence gaps, while external reports may introduce previously unknown metrics or mechanisms through atomic claim mapping.
 - Discovery is not evidence: unparsed search or IMA material stays in the intake ledger and BOM inbox until question-specific parsing plus GPT review.
 - Actual history and forward expectations remain separate.
@@ -110,10 +111,10 @@ archive path never supplies `published_at`. Its manifest preserves directory
 provenance, content hash, size, and local path without raw knowledge-base IDs or
 signed URLs.
 
-Question search routes only to the requested `BOM x L3 plan x L5 leaf`. Downstream IMA
+Question search routes only to the requested `BOM x L3 plan x current terminal question`. Downstream IMA
 routing reads the central archive and classifies candidates against each configured
 BOM profile, but it does not create evidence-eligible parse work until a specific
-leaf attaches the material. A matched report is copied into
+question attaches the material. A matched report is copied into
 that project's `source/ima/<published_at>/` only after publication-date verification;
 the complete provider mirror remains in repository `source/ima/<directory_date>/`.
 A report may route to several BOMs and must be parsed separately for each relevant
@@ -123,7 +124,7 @@ beside the report; the Markdown renderer uses an absolute filesystem link.
 
 The intake sequence is:
 
-`daily full-PDF archive -> BOM classify -> candidate intake -> L5 leaf selection/search -> publication-date/cutoff gate -> leaf-specific parse inbox -> DeepSeek/specialty parse -> GPT review -> atomic claim ledger`
+`daily full-PDF archive -> BOM classify -> candidate intake -> current-question selection/search -> publication-date/cutoff gate -> question-specific parse inbox -> DeepSeek/specialty parse -> GPT review -> answerability gate -> stop or expand one level`
 
 The central archive uses the user's visible, logged-in IMA page. Do not call IMA
 OpenAPI, hidden download URLs, `archive-ima-day`, or `archive-ima-daily`; do not
@@ -140,7 +141,7 @@ missing or failed originals. BOM routing is a separate downstream operation that
 relevance decisions so omissions remain auditable; under the L3-plan contract it
 creates candidates, not evidence-eligible parse tasks.
 Canonical BOM children retain their six-question coordinates and a `standalone-bom`
-retains its five lenses, but actual search/parse work starts only from one active L5
+retains its five lenses, but actual search/parse work starts only from one active terminal
 leaf. The parser must answer that leaf from the original
 report, record page/section, data or argument, time fields, stance, and gaps, then
 GPT reviews the result before it enters `ledger/claims.jsonl`. Only reviewed claims
@@ -218,9 +219,9 @@ body contains exactly one newest-to-oldest table with
 `发布日期 | 报告名称 | 材料类型 | 原子观点 | 对逻辑点的影响`. One source occupies one
 row; claims and effects use matching `1, 2, 3...` numbering. The report-name link
 is blue. Locator, effective period, and target period remain compact labels in the
-atomic-claim cell. Before the evidence table, every visible L3 renders a collapsed
-reader-safe outline of its L4 units, L5 leaf questions, required material types,
-and leaf status; raw search queries and parser traces remain private. Do not render separate public state-history, event-history,
+atomic-claim cell. The exact L3 question remains visible, while the question tree
+is kept in the separate `research_plan.md`; do not duplicate it inside the public
+HTML or its Markdown audit sidecar. Raw search queries and parser traces remain private. Do not render separate public state-history, event-history,
 filter, or company/entity audit modules. Internal mappings, real as-of states,
 revisions, gaps, and entity states remain append-only and auditable. Precede the five lenses
 with one gated `当前投资判断` that separates fundamental, consensus, and priced-in
@@ -228,11 +229,14 @@ changes. Its lead paragraph rolls up strengthened causal nodes, main breakpoints
 and failed gates. Keep source-batch or Q2-specific updates in a separate
 `本期证据变化` line so a local view never substitutes for the global judgment.
 
-If the user asks for the research plan as a document, also render
-`research_plan.html`. This explicit execution-workbench artifact lists every L3 at
-the first disclosure level and exposes its L4/L5 questions, leaf-specific source
-plan and search anchors, dependencies, evidence gate, and ledger-derived status.
-Link it bidirectionally with `professional_report.html` and refresh both together.
+If the user asks for the research plan as a document, render `research_plan.md`.
+Its initial version lists L1/L2/L3 only. Later versions add only the child questions
+actually triggered by failed answerability gates, up to L5. Current terminal
+questions expose required data and required analysis. Keep source plans,
+dependencies, evidence gates, and ledger-derived status in structured artifacts so
+the human-readable question tree stays concise. Display wording may remove repeated
+boilerplate but must preserve canonical IDs and meaning. Refresh it with plan builds,
+expansions, and report refreshes; do not create a plan HTML.
 
 If the user explicitly requests fewer public modules in one lens, keep the full
 internal playbook and append-only evidence ledgers, and use that lens's

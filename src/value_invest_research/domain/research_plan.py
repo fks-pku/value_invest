@@ -34,7 +34,7 @@ EVENT_STATUS = {
 
 @dataclass(frozen=True)
 class ResearchPlanStep:
-    """One executable, evidence-gated unit derived from a leaf question."""
+    """One evidence-gated L3 rollup linked to its dynamic child plan."""
 
     step_id: str
     stage_id: str
@@ -102,7 +102,7 @@ class ResearchPlan:
     playbook_id: str
     planner_rationale: str
     steps: list[ResearchPlanStep]
-    schema_version: str = "2.0"
+    schema_version: str = "4.0"
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -115,11 +115,14 @@ class ResearchPlan:
                 "planner_rationale": self.planner_rationale,
             },
             "execution_policy": {
+                "question_tree": "adaptive_depth_max_5",
+                "initial_depth": "L3_only",
                 "within_stage": "parallel_when_independent",
                 "between_stages": "dependency_gated",
                 "event_log": "append_only",
                 "completion": "all_required_l3_child_plans_complete",
-                "material_collection": "finest_leaf_question_only",
+                "material_collection": "current_terminal_question_only",
+                "branch_creation": "only_after_failed_answerability_gate",
                 "broad_material_pool": "candidate_only_not_completion_evidence",
             },
             "l3_plan_index_path": "l3_research_plans/index.json",
@@ -132,7 +135,7 @@ def build_research_plan(
     *,
     source_universe: dict[str, Any] | None = None,
 ) -> ResearchPlan:
-    """Convert leaf questions into ordered, source-planned execution steps."""
+    """Convert initial L3 questions into ordered child-plan rollups."""
     leaves = [node for node in architecture.nodes if not node.next_question_ids]
     nodes_by_id = {node.id: node for node in architecture.nodes}
     stage_step_ids: dict[str, list[str]] = {}
@@ -357,8 +360,8 @@ def _build_step(
         source_plan=[],
         minimum_evidence_gate={
             "rule": (
-                "The L3 rollup completes only after every mandatory leaf step in "
-                "its independent child plan passes the leaf evidence gate."
+                "The L3 rollup completes when its active question is answerable, "
+                "or when every required descendant created by a failed gate passes."
             ),
             "all_mandatory_leaf_steps_required": True,
             "direct_parent_evidence_forbidden": True,
@@ -492,13 +495,13 @@ def _event_shape_issues(plan: dict[str, Any], event: dict[str, Any]) -> list[dic
     if (
         event_type == "evidence_attached"
         and (step.get("collection_contract") or {}).get("origin")
-        == "leaf_question_search"
+        == "active_question_search"
         and not str(event.get("search_run_id") or "").strip()
     ):
         issues.append(
             _issue(
-                "leaf_evidence_missing_search_run",
-                "Leaf evidence must reference the leaf-specific search run that collected it.",
+                "active_question_evidence_missing_search_run",
+                "Evidence must reference the active-question search run that collected it.",
                 step_id,
             )
         )
@@ -539,7 +542,7 @@ def _completion_issues(
         "refuting_findings": bool(state["refuting_findings"]),
         "passed_evidence_gate": bool(state["evidence_gate"].get("passed")),
     }
-    if (step.get("collection_contract") or {}).get("origin") == "leaf_question_search":
+    if (step.get("collection_contract") or {}).get("origin") == "active_question_search":
         required["search_run_id"] = bool(state["search_run_id"])
     for field_name, present in required.items():
         if not present:
