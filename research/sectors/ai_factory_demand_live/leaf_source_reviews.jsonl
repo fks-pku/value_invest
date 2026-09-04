@@ -1,0 +1,30 @@
+{"review_id":"REV-AFD-L21-001","extraction_id":"EXT-AFD-L21-001","question_id":"AFD-L2-1","reviewed_at":"2026-09-04T16:00:01+08:00","status":"verified_with_caveat","judgment":"边界定义有效；不作规模证据。"}
+{"review_id":"REV-AFD-L21-002","extraction_id":"EXT-AFD-L21-002","question_id":"AFD-L2-1","reviewed_at":"2026-09-04T16:00:02+08:00","status":"verified_with_caveat","judgment":"客户层级披露直接相关；保留匿名去重缺口。"}
+{"review_id":"REV-AFD-L21-003","extraction_id":"EXT-AFD-L21-003","question_id":"AFD-L2-1","reviewed_at":"2026-09-04T16:00:03+08:00","status":"verified_with_caveat","judgment":"客户类型有效；承诺与使用分开。"}
+{"review_id":"REV-AFD-L21-004","extraction_id":"EXT-AFD-L21-004","question_id":"AFD-L2-1","reviewed_at":"2026-09-04T16:00:04+08:00","status":"verified_with_caveat","judgment":"具名客户扩展了主体范围；不推断相同规模。"}
+{"review_id":"REV-AFD-L22-001","extraction_id":"EXT-AFD-L22-001","question_id":"AFD-L2-2","reviewed_at":"2026-09-04T16:01:01+08:00","status":"verified_with_caveat","judgment":"GAAP 收入数据可靠；不是终端用量纯度量。"}
+{"review_id":"REV-AFD-L22-002","extraction_id":"EXT-AFD-L22-002","question_id":"AFD-L2-2","reviewed_at":"2026-09-04T16:01:02+08:00","status":"verified_with_caveat","judgment":"实际收入、token 与席位同向；保留业务混合口径。"}
+{"review_id":"REV-AFD-L22-003","extraction_id":"EXT-AFD-L22-003","question_id":"AFD-L2-2","reviewed_at":"2026-09-04T16:01:03+08:00","status":"verified_with_caveat","judgment":"公司披露支持增长；年化速度不是独立分部。"}
+{"review_id":"REV-AFD-L23-001","extraction_id":"EXT-AFD-L23-001","question_id":"AFD-L2-3","reviewed_at":"2026-09-04T16:02:01+08:00","status":"verified_with_caveat","judgment":"10-Q 合同披露有效；总 RPO 不归类为纯 AI。"}
+{"review_id":"REV-AFD-L23-002","extraction_id":"EXT-AFD-L23-002","question_id":"AFD-L2-3","reviewed_at":"2026-09-04T16:02:02+08:00","status":"verified_with_caveat","judgment":"资本意图和变现时间有效；全公司口径已标注。"}
+{"review_id":"REV-AFD-L23-003","extraction_id":"EXT-AFD-L23-003","question_id":"AFD-L2-3","reviewed_at":"2026-09-04T16:02:03+08:00","status":"verified_with_caveat","judgment":"资本和 RPO 可靠；非 AI 混合及 OpenAI 影响保留。"}
+{"review_id":"REV-AFD-L23-004","extraction_id":"EXT-AFD-L23-004","question_id":"AFD-L2-3","reviewed_at":"2026-09-04T16:02:04+08:00","status":"verified_with_caveat","judgment":"资本与承诺有效；AI/核心业务不可拆分。"}
+{"review_id":"REV-AFD-L23-005","extraction_id":"EXT-AFD-L23-005","question_id":"AFD-L2-3","reviewed_at":"2026-09-04T16:02:05+08:00","status":"verified_with_caveat","judgment":"IaaS 增长与 RPO 同向；不把 RPO 全归 AI。"}
+{"review_id":"REV-AFD-L23-006","extraction_id":"EXT-AFD-L23-006","question_id":"AFD-L2-3","reviewed_at":"2026-09-04T16:02:06+08:00","status":"verified_with_caveat","judgment":"backlog 可验证；交付条件明确保留。"}
+{"review_id":"REV-AFD-L24-001","extraction_id":"EXT-AFD-L24-001","question_id":"AFD-L2-4","reviewed_at":"2026-09-04T16:03:01+08:00","status":"verified_with_caveat","judgment":"权威基准情景有效；不等同纯 AI TAM。"}
+{"review_id":"REV-AFD-L24-002","extraction_id":"EXT-AFD-L24-002","question_id":"AFD-L2-4","reviewed_at":"2026-09-04T16:03:02+08:00","status":"verified_with_caveat","judgment":"实际用电增长提供落地校验；AI 拆分不可得。"}
+{"review_id":"REV-AFD-L24-003","extraction_id":"EXT-AFD-L24-003","question_id":"AFD-L2-4","reviewed_at":"2026-09-04T16:03:03+08:00","status":"verified_with_caveat","judgment":"容量计划与变现描述有效；缺利用率序列。"}
+{"review_id":"REV-AFD-L24-004","extraction_id":"EXT-AFD-L24-004","question_id":"AFD-L2-4","reviewed_at":"2026-09-04T16:03:04+08:00","status":"verified_with_caveat","judgment":"容量扩张和供需状态有效；计划不视为已交付。"}
+{"review_id":"REV-AFD-L24-005","extraction_id":"EXT-AFD-L24-005","question_id":"AFD-L2-4","reviewed_at":"2026-09-04T16:03:05+08:00","status":"verified","judgment":"电网延迟是直接边界证据。"}
+{"review_id":"REV-AFD-L351-001","extraction_id":"EXT-AFD-L351-001","question_id":"AFD-L3-5-1","reviewed_at":"2026-09-04T16:04:01+08:00","status":"verified_with_caveat","judgment":"付费和生产部署直接相关；客户 ROI 分布缺失。"}
+{"review_id":"REV-AFD-L351-002","extraction_id":"EXT-AFD-L351-002","question_id":"AFD-L3-5-1","reviewed_at":"2026-09-04T16:04:02+08:00","status":"verified_with_caveat","judgment":"消费增长有效；生产占比和 ROI 未披露。"}
+{"review_id":"REV-AFD-L351-003","extraction_id":"EXT-AFD-L351-003","question_id":"AFD-L3-5-1","reviewed_at":"2026-09-04T16:04:03+08:00","status":"verified_with_caveat","judgment":"调查支持广度和代理早期边界；不当作企业普查。"}
+{"review_id":"REV-AFD-L351-004","extraction_id":"EXT-AFD-L351-004","question_id":"AFD-L3-5-1","reviewed_at":"2026-09-04T16:04:04+08:00","status":"verified_with_caveat","judgment":"官方统计支持扩散；与其他调查不做水平比较。"}
+{"review_id":"REV-AFD-L352-001","extraction_id":"EXT-AFD-L352-001","question_id":"AFD-L3-5-2","reviewed_at":"2026-09-04T16:05:01+08:00","status":"verified_with_caveat","judgment":"集中度和对手方风险有效；直接客户不等于最终客户。"}
+{"review_id":"REV-AFD-L352-002","extraction_id":"EXT-AFD-L352-002","question_id":"AFD-L3-5-2","reviewed_at":"2026-09-04T16:05:02+08:00","status":"verified_with_caveat","judgment":"季度集中度有效；间接客户集中仍不可见。"}
+{"review_id":"REV-AFD-L352-003","extraction_id":"EXT-AFD-L352-003","question_id":"AFD-L3-5-2","reviewed_at":"2026-09-04T16:05:03+08:00","status":"verified_with_caveat","judgment":"合同保护与客户集中同时成立。"}
+{"review_id":"REV-AFD-L352-004","extraction_id":"EXT-AFD-L352-004","question_id":"AFD-L3-5-2","reviewed_at":"2026-09-04T16:05:04+08:00","status":"verified_with_caveat","judgment":"Microsoft 自身分散证据有效；不外推全行业。"}
+{"review_id":"REV-AFD-L353-001","extraction_id":"EXT-AFD-L353-001","question_id":"AFD-L3-5-3","reviewed_at":"2026-09-04T16:06:01+08:00","status":"verified_with_caveat","judgment":"同能力价格下降证据有效；不视为物理效率纯度量。"}
+{"review_id":"REV-AFD-L353-002","extraction_id":"EXT-AFD-L353-002","question_id":"AFD-L3-5-3","reviewed_at":"2026-09-04T16:06:02+08:00","status":"verified_with_caveat","judgment":"效率和总需求同页可比但产品不同，不估精确弹性。"}
+{"review_id":"REV-AFD-L353-003","extraction_id":"EXT-AFD-L353-003","question_id":"AFD-L3-5-3","reviewed_at":"2026-09-04T16:06:03+08:00","status":"verified_with_caveat","judgment":"成本下降与 token 增长同向；缺绝对 token 基数。"}
+{"review_id":"REV-AFD-L353-004","extraction_id":"EXT-AFD-L353-004","question_id":"AFD-L3-5-3","reviewed_at":"2026-09-04T16:06:04+08:00","status":"verified","judgment":"高效率情景是直接反证边界。"}

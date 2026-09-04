@@ -1,0 +1,15 @@
+{
+  "project_id": "ai_factory_demand_live",
+  "title": "AI 工厂行业需求侧前景",
+  "research_mode": "live",
+  "report_scope": "industry-demand",
+  "as_of_date": "2026-09-04",
+  "geography": "global",
+  "horizon": "未来 3-5 年",
+  "l1_question_id": "AFD-L1",
+  "l1_question": "未来 3-5 年，AI 工厂需求是否处于大而持久的 S 曲线上升阶段，并能转化为可兑现的基础设施使用量和支出？",
+  "decision_boundary": "仅研究需求侧前景；不评价供给链瓶颈、证券估值或个股买卖。",
+  "completion_standard": "能够用可追溯的一手和权威数据分别回答需求主体、实际使用、资本承诺、未来空间及主要反证，并说明 0-2 年与 3-5 年判断的边界。",
+  "max_depth": 5,
+  "workflow": "dynamic-question-tree-v1"
+}

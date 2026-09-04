@@ -1,0 +1,1511 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>AI 工厂需求侧前景｜动态研究工作台</title>
+    <style>
+      :root {
+        --paper: #f2efe7;
+        --surface: #fffdfa;
+        --ink: #18211d;
+        --muted: #66716b;
+        --line: #d7d7cc;
+        --line-strong: #a6ada7;
+        --green: #165c45;
+        --green-soft: #e5efe9;
+        --amber: #8a5a11;
+        --amber-soft: #f6ebd1;
+        --red: #8f3d34;
+        --shadow: 0 20px 54px rgba(25, 42, 34, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 92% 0, rgba(22, 92, 69, 0.09), transparent 28rem),
+          linear-gradient(rgba(24, 33, 29, 0.022) 1px, transparent 1px),
+          var(--paper);
+        background-size: auto, 100% 34px, auto;
+        font-family: "Avenir Next", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+        line-height: 1.72;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      a {
+        color: var(--green);
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+      }
+
+      .page {
+        width: min(1440px, calc(100% - 40px));
+        margin: 0 auto;
+        padding: 36px 0 58px;
+      }
+
+      .report-header {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 30px;
+        align-items: end;
+        margin-bottom: 24px;
+        padding: 0 3px 20px;
+        border-bottom: 2px solid var(--ink);
+      }
+
+      .eyebrow {
+        margin: 0 0 7px;
+        color: var(--green);
+        font-size: 10px;
+        font-weight: 850;
+        letter-spacing: 0.17em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        margin-bottom: 7px;
+        font-family: "Iowan Old Style", "Songti SC", "STSong", serif;
+        font-size: clamp(34px, 4.5vw, 58px);
+        font-weight: 650;
+        letter-spacing: -0.035em;
+        line-height: 1.08;
+      }
+
+      .deck {
+        max-width: 780px;
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .meta {
+        display: grid;
+        gap: 4px;
+        color: var(--muted);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 10px;
+        text-align: right;
+      }
+
+      .workspace {
+        display: grid;
+        grid-template-columns: 310px minmax(0, 1fr);
+        gap: 22px;
+        align-items: start;
+      }
+
+      .tree-pane {
+        position: sticky;
+        top: 18px;
+        min-height: 620px;
+        padding: 22px 18px;
+        color: #d5e2dc;
+        background: #183c31;
+        border-radius: 16px;
+        box-shadow: var(--shadow);
+      }
+
+      .pane-kicker {
+        margin-bottom: 4px;
+        color: #acd0c0;
+        font-size: 10px;
+        font-weight: 850;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .tree-pane h2 {
+        margin-bottom: 18px;
+        color: #f4f7f5;
+        font-family: "Iowan Old Style", "Songti SC", "STSong", serif;
+        font-size: 22px;
+      }
+
+      .tree-list,
+      .tree-list ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .tree-list ul {
+        position: relative;
+        margin-left: 11px;
+        padding-left: 18px;
+      }
+
+      .tree-list ul::before {
+        position: absolute;
+        top: -3px;
+        bottom: 18px;
+        left: 0;
+        width: 1px;
+        background: rgba(223, 238, 231, 0.28);
+        content: "";
+      }
+
+      .tree-list li {
+        position: relative;
+        margin: 3px 0;
+      }
+
+      .tree-list ul > li::before {
+        position: absolute;
+        top: 23px;
+        left: -18px;
+        width: 15px;
+        height: 1px;
+        background: rgba(223, 238, 231, 0.28);
+        content: "";
+      }
+
+      .tree-item {
+        display: grid;
+        grid-template-columns: 39px minmax(0, 1fr) 8px;
+        gap: 7px;
+        align-items: start;
+        width: 100%;
+        padding: 9px 8px;
+        color: #d5e2dc;
+        background: transparent;
+        border: 0;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: left;
+        transition: background 150ms ease, color 150ms ease, transform 150ms ease;
+      }
+
+      .tree-item:hover {
+        color: white;
+        background: rgba(255, 255, 255, 0.075);
+      }
+
+      .tree-item:focus-visible {
+        outline: 2px solid #bddcca;
+        outline-offset: 2px;
+      }
+
+      .tree-item.is-on-path {
+        color: #e7f1ec;
+        background: rgba(255, 255, 255, 0.045);
+      }
+
+      .tree-item.is-active {
+        color: #173c30;
+        background: #f2ead8;
+        transform: translateX(3px);
+      }
+
+      .tree-level {
+        padding-top: 2px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 9px;
+        font-weight: 850;
+      }
+
+      .tree-question {
+        font-size: 11px;
+        font-weight: 650;
+        line-height: 1.5;
+      }
+
+      .tree-status {
+        width: 7px;
+        height: 7px;
+        margin-top: 6px;
+        background: #78bf9e;
+        border-radius: 50%;
+      }
+
+      .tree-status.was-expanded {
+        background: #e1a946;
+      }
+
+      .tree-legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin: 21px 8px 0;
+        padding-top: 14px;
+        color: #b9cbc2;
+        border-top: 1px solid rgba(223, 238, 231, 0.16);
+        font-size: 9px;
+      }
+
+      .tree-legend span {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .tree-legend i {
+        display: inline-block;
+        margin: 0;
+      }
+
+      .detail-pane {
+        min-width: 0;
+        min-height: 620px;
+        padding: 38px 42px 34px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        box-shadow: var(--shadow);
+      }
+
+      .node-detail {
+        animation: reveal 230ms ease-out both;
+      }
+
+      @keyframes reveal {
+        from {
+          opacity: 0;
+          transform: translateY(5px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .breadcrumb {
+        margin-bottom: 15px;
+        color: var(--muted);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 10px;
+        letter-spacing: 0.03em;
+      }
+
+      .breadcrumb span + span::before {
+        margin: 0 8px;
+        color: var(--line-strong);
+        content: "→";
+      }
+
+      .detail-title-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 20px;
+        align-items: start;
+        padding-bottom: 24px;
+        border-bottom: 2px solid var(--ink);
+      }
+
+      .node-id {
+        margin-bottom: 8px;
+        color: var(--green);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 10px;
+        font-weight: 850;
+        letter-spacing: 0.08em;
+      }
+
+      .detail-title {
+        max-width: 900px;
+        margin-bottom: 0;
+        font-family: "Iowan Old Style", "Songti SC", "STSong", serif;
+        font-size: clamp(26px, 3.4vw, 42px);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.28;
+      }
+
+      .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 6px 10px;
+        color: var(--green);
+        background: var(--green-soft);
+        border-radius: 999px;
+        font-size: 10px;
+        font-weight: 850;
+        white-space: nowrap;
+      }
+
+      .status-badge::before {
+        width: 7px;
+        height: 7px;
+        background: currentColor;
+        border-radius: 50%;
+        content: "";
+      }
+
+      .status-badge.expanded {
+        color: var(--amber);
+        background: var(--amber-soft);
+      }
+
+      .chapter-index {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px 17px;
+        margin: 19px 0 3px;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .chapter-index button {
+        padding: 0;
+        color: var(--muted);
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+      }
+
+      .chapter-index button:hover {
+        color: var(--green);
+      }
+
+      .chapter-section {
+        padding: 31px 0 35px;
+        border-bottom: 1px solid var(--line);
+        scroll-margin-top: 18px;
+      }
+
+      .section-heading {
+        display: grid;
+        grid-template-columns: 54px minmax(0, 1fr);
+        gap: 15px;
+        align-items: baseline;
+        margin-bottom: 18px;
+      }
+
+      .section-number {
+        color: var(--green);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 10px;
+        font-weight: 850;
+        letter-spacing: 0.08em;
+      }
+
+      .section-heading h3 {
+        margin: 0;
+        font-family: "Iowan Old Style", "Songti SC", "STSong", serif;
+        font-size: 25px;
+        line-height: 1.25;
+      }
+
+      .section-lead {
+        max-width: 900px;
+        margin: -7px 0 20px 69px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .scope-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px 32px;
+        margin-left: 69px;
+      }
+
+      .scope-item {
+        padding-top: 12px;
+        border-top: 2px solid var(--ink);
+      }
+
+      .scope-label {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--muted);
+        font-size: 9px;
+        font-weight: 850;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .scope-item p,
+      .scope-item ul {
+        margin: 0;
+        font-size: 13px;
+      }
+
+      .plain-list {
+        padding-left: 18px;
+      }
+
+      .plain-list li + li {
+        margin-top: 5px;
+      }
+
+      .collection-summary {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        margin: 0 0 22px 69px;
+        border-top: 2px solid var(--ink);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .summary-stat {
+        min-height: 84px;
+        padding: 14px 13px 12px 0;
+      }
+
+      .summary-stat + .summary-stat {
+        padding-left: 16px;
+        border-left: 1px solid var(--line);
+      }
+
+      .summary-stat strong {
+        display: block;
+        font-family: "Iowan Old Style", "Songti SC", "STSong", serif;
+        font-size: 25px;
+        line-height: 1.1;
+      }
+
+      .summary-stat span {
+        color: var(--muted);
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+      }
+
+      .evidence-wrap {
+        margin-left: 69px;
+        overflow-x: auto;
+        border-top: 2px solid var(--ink);
+      }
+
+      .evidence-table {
+        width: 100%;
+        min-width: 830px;
+        border-collapse: collapse;
+        table-layout: fixed;
+      }
+
+      .evidence-table th {
+        padding: 10px 11px 9px 0;
+        color: var(--muted);
+        border-bottom: 1px solid var(--line-strong);
+        font-size: 9px;
+        font-weight: 850;
+        letter-spacing: 0.07em;
+        text-align: left;
+        vertical-align: bottom;
+      }
+
+      .evidence-table td {
+        padding: 15px 14px 15px 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 11px;
+        line-height: 1.62;
+        vertical-align: top;
+      }
+
+      .evidence-table th:nth-child(1),
+      .evidence-table td:nth-child(1) { width: 18%; }
+      .evidence-table th:nth-child(2),
+      .evidence-table td:nth-child(2) { width: 42%; }
+      .evidence-table th:nth-child(3),
+      .evidence-table td:nth-child(3) { width: 13%; }
+      .evidence-table th:nth-child(4),
+      .evidence-table td:nth-child(4) { width: 27%; }
+
+      .source-date,
+      .source-meta,
+      .locator {
+        display: block;
+        color: var(--muted);
+        font-size: 9px;
+        line-height: 1.55;
+      }
+
+      .source-title {
+        display: block;
+        margin: 3px 0;
+        font-weight: 800;
+        line-height: 1.45;
+      }
+
+      .evidence-claim {
+        color: var(--ink);
+        font-family: "Iowan Old Style", "Songti SC", "STSong", serif;
+        font-size: 13px;
+        font-weight: 650;
+      }
+
+      .effect {
+        display: inline-block;
+        padding: 3px 7px;
+        color: var(--green);
+        background: var(--green-soft);
+        border-radius: 999px;
+        font-size: 9px;
+        font-weight: 850;
+        white-space: nowrap;
+      }
+
+      .effect.refute {
+        color: var(--red);
+        background: #f4e5e2;
+      }
+
+      .effect.boundary {
+        color: var(--amber);
+        background: var(--amber-soft);
+      }
+
+      .review-mark {
+        display: block;
+        margin-top: 7px;
+        color: var(--green);
+        font-size: 9px;
+        font-weight: 800;
+      }
+
+      .analysis-flow {
+        margin: 0 0 0 69px;
+        padding: 0;
+        list-style: none;
+        counter-reset: analysis-step;
+      }
+
+      .analysis-flow li {
+        position: relative;
+        display: grid;
+        grid-template-columns: 45px minmax(0, 1fr);
+        gap: 16px;
+        padding: 0 0 24px;
+        counter-increment: analysis-step;
+      }
+
+      .analysis-flow li::before {
+        display: grid;
+        width: 35px;
+        height: 35px;
+        place-items: center;
+        color: var(--surface);
+        background: var(--green);
+        border-radius: 50%;
+        content: counter(analysis-step, decimal-leading-zero);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 9px;
+        font-weight: 850;
+      }
+
+      .analysis-flow li:not(:last-child)::after {
+        position: absolute;
+        top: 36px;
+        bottom: 0;
+        left: 17px;
+        width: 1px;
+        background: var(--line-strong);
+        content: "";
+      }
+
+      .analysis-flow strong {
+        display: block;
+        margin-bottom: 4px;
+        font-family: "Iowan Old Style", "Songti SC", "STSong", serif;
+        font-size: 16px;
+      }
+
+      .analysis-flow p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .logic-result {
+        margin: 2px 0 0 69px;
+        padding: 17px 20px;
+        color: #e9f2ee;
+        background: #183c31;
+        border-radius: 7px;
+        font-family: "Iowan Old Style", "Songti SC", "STSong", serif;
+        font-size: 16px;
+        font-weight: 650;
+      }
+
+      .rollup-table {
+        width: calc(100% - 69px);
+        margin-left: 69px;
+        border-collapse: collapse;
+        border-top: 2px solid var(--ink);
+      }
+
+      .rollup-table th,
+      .rollup-table td {
+        padding: 13px 12px 13px 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 11px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .rollup-table th {
+        color: var(--muted);
+        font-size: 9px;
+        letter-spacing: 0.06em;
+      }
+
+      .rollup-link {
+        padding: 0;
+        color: var(--green);
+        background: transparent;
+        border: 0;
+        font-weight: 800;
+        cursor: pointer;
+        text-align: left;
+      }
+
+      .conclusion-block {
+        margin-left: 69px;
+        padding: 22px 0 4px;
+        border-top: 3px solid var(--green);
+      }
+
+      .answer {
+        max-width: 890px;
+        margin-bottom: 20px;
+        font-family: "Iowan Old Style", "Songti SC", "STSong", serif;
+        font-size: 21px;
+        font-weight: 700;
+        line-height: 1.62;
+      }
+
+      .judgment-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px 30px;
+      }
+
+      .judgment-grid > div {
+        padding-top: 11px;
+        border-top: 1px solid var(--line-strong);
+        font-size: 12px;
+      }
+
+      .judgment-grid strong {
+        display: block;
+        margin-bottom: 5px;
+        color: var(--muted);
+        font-size: 9px;
+        letter-spacing: 0.06em;
+      }
+
+      .process-note {
+        margin: 0 0 20px 69px;
+        padding: 11px 14px;
+        color: var(--amber);
+        background: var(--amber-soft);
+        border-left: 3px solid #c58a28;
+        font-size: 11px;
+      }
+
+      .pass {
+        color: var(--green);
+        font-weight: 850;
+      }
+
+      .fail {
+        color: var(--red);
+        font-weight: 850;
+      }
+
+      .generated-children {
+        display: grid;
+        gap: 7px;
+      }
+
+      .child-jump {
+        display: grid;
+        grid-template-columns: 70px minmax(0, 1fr) auto;
+        gap: 12px;
+        align-items: center;
+        width: 100%;
+        padding: 11px 13px;
+        color: var(--ink);
+        background: #f6f3ea;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: left;
+      }
+
+      .child-jump:hover {
+        border-color: var(--green);
+      }
+
+      .child-jump code {
+        color: var(--green);
+        font-size: 10px;
+        font-weight: 850;
+      }
+
+      .child-jump span {
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .child-jump::after {
+        color: var(--green);
+        content: "→";
+      }
+
+      .audit-footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 12px 24px;
+        margin-top: 22px;
+        padding: 15px 3px 0;
+        color: var(--muted);
+        border-top: 1px solid var(--line-strong);
+        font-size: 10px;
+      }
+
+      .audit-links a + a::before {
+        margin: 0 7px;
+        color: var(--line-strong);
+        content: "/";
+      }
+
+      @media (max-width: 960px) {
+        .workspace {
+          grid-template-columns: 260px minmax(0, 1fr);
+        }
+
+        .detail-pane {
+          padding: 30px 27px;
+        }
+
+        .tree-pane {
+          padding: 19px 13px;
+        }
+
+      }
+
+      @media (max-width: 720px) {
+        .page {
+          width: min(100% - 18px, 1440px);
+          padding-top: 22px;
+        }
+
+        .report-header,
+        .workspace,
+        .detail-title-row {
+          grid-template-columns: 1fr;
+        }
+
+        .meta {
+          text-align: left;
+        }
+
+        .tree-pane {
+          position: static;
+          min-height: 0;
+        }
+
+        .detail-pane {
+          min-height: 0;
+          padding: 25px 18px;
+        }
+
+        .section-heading {
+          grid-template-columns: 42px minmax(0, 1fr);
+          gap: 8px;
+        }
+
+        .section-lead,
+        .scope-grid,
+        .collection-summary,
+        .evidence-wrap,
+        .analysis-flow,
+        .logic-result,
+        .conclusion-block,
+        .process-note {
+          margin-left: 0;
+        }
+
+        .scope-grid,
+        .judgment-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .collection-summary {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .summary-stat:nth-child(3) {
+          padding-left: 0;
+          border-left: 0;
+          border-top: 1px solid var(--line);
+        }
+
+        .summary-stat:nth-child(4) {
+          border-top: 1px solid var(--line);
+        }
+
+        .rollup-table {
+          width: 100%;
+          margin-left: 0;
+        }
+
+        .child-jump {
+          grid-template-columns: 62px minmax(0, 1fr) auto;
+        }
+      }
+
+      @media print {
+        body {
+          background: white;
+        }
+
+        .page {
+          width: 100%;
+          padding: 0;
+        }
+
+        .workspace {
+          display: block;
+        }
+
+        .tree-pane {
+          display: none;
+        }
+
+        .detail-pane {
+          padding: 0;
+          border: 0;
+          box-shadow: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="report-header">
+        <div>
+          <p class="eyebrow">Dynamic research workspace</p>
+          <h1>AI 工厂需求侧前景</h1>
+          <p class="deck">左侧选择问题，右侧把每个节点作为一篇独立研究章节展开：先定义取数口径，再呈现逐问题证据、推理过程、反证边界与充分性判断。</p>
+        </div>
+        <div class="meta">
+          <span>AS OF 2026-09-04</span>
+          <span>GLOBAL · 3–5 YEARS</span>
+          <span>DEMAND SIDE ONLY</span>
+          <span>9 NODES · 17 SOURCES</span>
+        </div>
+      </header>
+
+      <div class="workspace">
+        <aside class="tree-pane" aria-label="研究问题树">
+          <p class="pane-kicker">Question tree</p>
+          <h2>研究问题</h2>
+          <nav id="question-tree" aria-label="选择研究节点"></nav>
+          <div class="tree-legend">
+            <span><i class="tree-status"></i> 已回答</span>
+            <span><i class="tree-status was-expanded"></i> 曾因不足下钻</span>
+          </div>
+        </aside>
+
+        <main class="detail-pane" id="detail-pane" aria-live="polite"></main>
+      </div>
+
+      <footer class="audit-footer">
+        <span>“通过”表示足以回答当前节点，不表示不存在剩余不确定性。</span>
+        <span class="audit-links">
+          <a href="research_plan.md">研究计划</a>
+          <a href="research_state.json">研究状态</a>
+          <a href="research_events.jsonl">事件账本</a>
+          <a href="source_extractions.jsonl">证据抽取</a>
+          <a href="leaf_source_reviews.jsonl">复核记录</a>
+          <a href="sources.jsonl">来源登记</a>
+        </span>
+      </footer>
+    </div>
+
+    <script>
+      const sources = {
+        nvda10q: ["NVIDIA 10-Q", "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm"],
+        nvdaAnnual: ["NVIDIA 年报", "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000038/a2026-annualxreportxwebxfi.pdf"],
+        nvdaDefinition: ["NVIDIA 定义", "https://www.nvidia.com/en-us/glossary/ai-factory/"],
+        microsoft: ["Microsoft FY26 Q4", "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4"],
+        amazonQ2: ["Amazon Q2", "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000024/amzn-20260630xex991.htm"],
+        amazon10q: ["Amazon 10-Q", "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000026/amzn-20260630.htm"],
+        amazonLetter: ["Amazon 股东信", "https://www.sec.gov/Archives/edgar/data/1018724/000110465926041034/tm263815d3_ex99-1.htm"],
+        meta10q: ["Meta 10-Q", "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm"],
+        oracle: ["Oracle", "https://investor.oracle.com/investor-news/news-details/2026/Oracle-Announces-Record-Q4-and-FY-2026-Results-Driven-by-Cloud-Infrastructure--Cloud-Applications/"],
+        coreweave: ["CoreWeave Q2", "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000362/coreweave2q26earningspress.htm"],
+        coreweave10q: ["CoreWeave 10-Q", "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/crwv-20260630.htm"],
+        iea: ["IEA Energy and AI", "https://www.iea.org/reports/energy-and-ai/executive-summary"],
+        iea2026: ["IEA 2026 更新", "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary"],
+        ieaGrid: ["IEA 电网约束", "https://www.iea.org/reports/energy-and-ai/ai-and-energy-security"],
+        stanford2026: ["Stanford AI Index 2026", "https://hai.stanford.edu/ai-index/2026-ai-index-report/economy"],
+        stanford2025: ["Stanford AI Index 2025", "https://hai.stanford.edu/news/ai-index-2025-state-of-ai-in-10-charts"],
+        oecd: ["OECD", "https://www.oecd.org/en/about/news/announcements/2026/01/ai-use-by-individuals-surges-across-the-oecd-as-adoption-by-firms-continues-to-expand.html"]
+      };
+
+      const sourceMeta = {
+        nvdaDefinition: { date: "未披露", type: "公司官网", publisher: "NVIDIA" },
+        nvda10q: { date: "2026-08-26", type: "官方财报", publisher: "NVIDIA / SEC" },
+        nvdaAnnual: { date: "2026-05-12", type: "官方财报", publisher: "NVIDIA / SEC" },
+        microsoft: { date: "2026-07-29", type: "公司披露", publisher: "Microsoft" },
+        amazonQ2: { date: "2026-07-30", type: "公司披露", publisher: "Amazon / SEC" },
+        amazon10q: { date: "2026-07-31", type: "官方财报", publisher: "Amazon / SEC" },
+        amazonLetter: { date: "2026-04-09", type: "公司披露", publisher: "Amazon / SEC" },
+        meta10q: { date: "2026-07-30", type: "官方财报", publisher: "Meta / SEC" },
+        oracle: { date: "2026-06-10", type: "公司披露", publisher: "Oracle" },
+        coreweave: { date: "2026-08-11", type: "公司披露", publisher: "CoreWeave / SEC" },
+        coreweave10q: { date: "2026-08-12", type: "官方财报", publisher: "CoreWeave / SEC" },
+        iea: { date: "2025-04-10", type: "权威第三方", publisher: "IEA" },
+        iea2026: { date: "2026-05", type: "权威第三方", publisher: "IEA" },
+        ieaGrid: { date: "2025-04-10", type: "权威第三方", publisher: "IEA" },
+        stanford2026: { date: "2026-04", type: "权威第三方", publisher: "Stanford HAI" },
+        stanford2025: { date: "2025-04-07", type: "权威第三方", publisher: "Stanford HAI" },
+        oecd: { date: "2026-01-28", type: "权威第三方", publisher: "OECD" }
+      };
+
+      const evidenceByNode = {
+        "AFD-L2-1": [
+          { source: "nvdaDefinition", locator: "AI factory definition and primary product", claim: "AI 工厂覆盖数据摄取、训练、微调和高量推理，其主要产出是以 token 吞吐量衡量的智能服务，而不是单一芯片。", effect: "support", caveat: "公司定义用于划定边界，不用于证明市场规模。", trace: "EXT-AFD-L21-001 · REV-AFD-L21-001" },
+          { source: "nvda10q", locator: "MD&A — customers and Data Center end users", claim: "需求终端包括超大规模云、AI 云、模型开发者、企业和公共部门；直接采购客户与间接最终使用方并不相同。", effect: "support", caveat: "匿名间接客户难以完全穿透和去重。", trace: "EXT-AFD-L21-002 · REV-AFD-L21-002" },
+          { source: "amazonQ2", locator: "Q2 highlights — Trainium commitments and Bedrock customers", claim: "Anthropic、OpenAI、初创企业及 Uber、Pinterest 等大型公司均形成芯片或 AI 平台使用承诺，需求主体已从模型公司扩到企业。", effect: "support", caveat: "承诺规模和当前实际使用不能混为一谈。", trace: "EXT-AFD-L21-003 · REV-AFD-L21-003" },
+          { source: "coreweave", locator: "customer wins", claim: "CoreWeave 披露客户横跨 AI labs、hyperscalers 与企业，企业客户包括 Bentley、Caterpillar、Grammarly 等。", effect: "support", caveat: "具名客户不等于同等规模的算力需求。", trace: "EXT-AFD-L21-004 · REV-AFD-L21-004" }
+        ],
+        "AFD-L2-2": [
+          { source: "nvda10q", locator: "Revenue by specialized market", claim: "NVIDIA 数据中心季度收入 890.23 亿美元，同比增 117%；AI Clouds / Industrial / Enterprise 收入 403.13 亿美元，同比增 138%。", effect: "support", caveat: "供应商收入包含价格、代际和渠道因素，不等同于终端使用量。", trace: "EXT-AFD-L22-001 · REV-AFD-L22-001" },
+          { source: "microsoft", locator: "CEO and CFO prepared remarks", claim: "Azure 增长 43%，新增容量在季度内快速变现；达到年化 1 万亿 token 的 Foundry 客户数同比 4 倍，M365 Copilot 付费席位超过 3000 万。", effect: "support", caveat: "Azure 和 Microsoft Cloud 均包含非 AI 业务。", trace: "EXT-AFD-L22-002 · REV-AFD-L22-002" },
+          { source: "amazonQ2", locator: "Q2 results and Bedrock update", claim: "AWS 收入同比增长 37%；AI 与芯片业务各自超过 250 亿美元年化收入速度，Bedrock Q2 客户支出高于此前所有季度合计。", effect: "support", caveat: "年化速度不是 GAAP 分部收入，且由公司自行定义。", trace: "EXT-AFD-L22-003 · REV-AFD-L22-003" }
+        ],
+        "AFD-L2-3": [
+          { source: "amazon10q", locator: "Note — commitments and remaining performance obligations", claim: "AWS 客户未来履约义务约 4960 亿美元；OpenAI 协议新增约 1000 亿美元 / 8 年，Anthropic 协议新增超过 1000 亿美元 / 10 年。", effect: "support", caveat: "总 RPO 包含非 AI 云服务，确认收入受容量交付和合同条件约束。", trace: "EXT-AFD-L23-001 · REV-AFD-L23-001" },
+          { source: "amazonLetter", locator: "paragraphs 89–93", claim: "Amazon 计划 2026 年约 2000 亿美元资本开支，AWS 很大一部分 2026 年资本开支已有客户承诺，预计多在 2027–2028 年变现。", effect: "support", caveat: "2000 亿美元是 Amazon 全公司资本开支，不是纯 AI 口径。", trace: "EXT-AFD-L23-002 · REV-AFD-L23-002" },
+          { source: "microsoft", locator: "CFO remarks — capex and commercial RPO", claim: "Microsoft 当季资本开支 410 亿美元，其中约三分之二为 CPU / GPU 等短寿命资产；商业 RPO 达 6780 亿美元、同比增 84%。", effect: "support", caveat: "资本开支和 RPO 均包括非 AI 业务；OpenAI 合同对总额有影响。", trace: "EXT-AFD-L23-003 · REV-AFD-L23-003" },
+          { source: "meta10q", locator: "MD&A — capital expenditures and commitments", claim: "Meta 预计 2026 年资本开支 1300–1450 亿美元，并披露未来五年最高 147.2 亿美元云容量义务及 108 亿美元受限资金支持多年基础设施采购。", effect: "support", caveat: "资本开支同时支持 AI 与核心业务，不能全部归为 AI 工厂。", trace: "EXT-AFD-L23-004 · REV-AFD-L23-004" },
+          { source: "oracle", locator: "FY2026 results highlights", claim: "Oracle RPO 从 5530 亿美元升至 6380 亿美元，Q4 IaaS 收入同比增长 93%。", effect: "support", caveat: "RPO 含云应用及其他合同，不能视为纯 AI backlog。", trace: "EXT-AFD-L23-005 · REV-AFD-L23-005" },
+          { source: "coreweave", locator: "Q2 additional financial highlights", claim: "CoreWeave 6 月末收入 backlog 约 1040 亿美元，且三季度初新增客户承诺超过 250 亿美元。", effect: "support", caveat: "backlog 受交付和服务可用性条件约束。", trace: "EXT-AFD-L23-006 · REV-AFD-L23-006" }
+        ],
+        "AFD-L2-4": [
+          { source: "iea", locator: "Executive summary — demand outlook", claim: "IEA 基准情景预计全球数据中心用电从 2024 年约 415 TWh 增至 2030 年约 945 TWh；加速服务器用电基准增速约 30% / 年。", effect: "support", caveat: "数据中心不全是 AI，且属于情景模型而非已签需求。", trace: "EXT-AFD-L24-001 · REV-AFD-L24-001" },
+          { source: "iea2026", locator: "Executive summary", claim: "IEA 记录 2025 年全球数据中心用电需求增长 17%，与此前预测大体一致。", effect: "support", caveat: "用电增长不能单独区分 AI 和传统云。", trace: "EXT-AFD-L24-002 · REV-AFD-L24-002" },
+          { source: "amazonLetter", locator: "paragraphs 75–80", claim: "AWS 2025 年新增 3.9GW 电力容量，计划到 2027 年底将总电力容量翻倍，并称容量上线后快速变现且仍有未满足需求。", effect: "support", caveat: "属于公司管理层陈述，缺少区域利用率序列。", trace: "EXT-AFD-L24-003 · REV-AFD-L24-003" },
+          { source: "microsoft", locator: "CEO remarks — capacity", claim: "Microsoft 单季新增约 1GW 容量，计划两年内把整体容量约翻倍，并称需求明显超过可用供给。", effect: "support", caveat: "整体容量不等于纯 AI 容量，且计划可能调整。", trace: "EXT-AFD-L24-004 · REV-AFD-L24-004" },
+          { source: "ieaGrid", locator: "Connecting data centres to electricity grids", claim: "电网约束可能使计划在 2030 年前建设的全球数据中心容量约 20% 延迟接入。", effect: "refute", caveat: "延迟不是取消，但会推迟需求兑现。", trace: "EXT-AFD-L24-005 · REV-AFD-L24-005" }
+        ],
+        "AFD-L3-5-1": [
+          { source: "microsoft", locator: "CEO remarks — Foundry, Copilot and agents", claim: "Foundry 客户达 10 万且收入同比翻倍；M365 Copilot 付费席位超 3000 万，多个大型机构扩至 6 万至 50.5 万席位。", effect: "support", caveat: "公司未单独披露 Copilot 利润率与客户 ROI 分布。", trace: "EXT-AFD-L351-001 · REV-AFD-L351-001" },
+          { source: "amazonQ2", locator: "Q2 Bedrock customer and spend update", claim: "Bedrock 已有数十万客户，最近六个月新增客户多于上线后最初两年，且 Q2 客户支出高于此前所有季度合计。", effect: "support", caveat: "未披露生产环境占比和客户 ROI。", trace: "EXT-AFD-L351-002 · REV-AFD-L351-002" },
+          { source: "stanford2026", locator: "Economy — corporate adoption", claim: "调查中 88% 组织至少一个职能使用 AI、79% 经常使用生成式 AI，但代理在多数业务职能的部署仍为个位数。", effect: "boundary", caveat: "基于自报调查，样本不是所有企业的代表性普查。", trace: "EXT-AFD-L351-003 · REV-AFD-L351-003" },
+          { source: "oecd", locator: "firm adoption statistics", claim: "有可比数据的 OECD 国家中，企业 AI 使用率从 2023 年 8.7% 升至 2025 年 20.2%；大企业为 52%，小企业为 17.4%。", effect: "support", caveat: "国家覆盖和调查口径与 Stanford 不同，不能直接比较水平。", trace: "EXT-AFD-L351-004 · REV-AFD-L351-004" }
+        ],
+        "AFD-L3-5-2": [
+          { source: "nvdaAnnual", locator: "Risk factors — customer concentration and commercial arrangements", claim: "NVIDIA FY2026 两家直接客户分别占收入 22% 和 14%，并明确提示客户融资、基础设施延迟和对手方财务压力风险。", effect: "refute", caveat: "直接客户可能是采购通道，不能等同于最终工作负载集中度。", trace: "EXT-AFD-L352-001 · REV-AFD-L352-001" },
+          { source: "nvda10q", locator: "Customer concentration", claim: "NVIDIA Q2 FY2027 一家直接客户占总收入 16%，且公司再次说明直接采购者与间接最终客户不同。", effect: "refute", caveat: "单季度直接客户占比不能完整揭示间接客户集中。", trace: "EXT-AFD-L352-002 · REV-AFD-L352-002" },
+          { source: "coreweave10q", locator: "Revenue note — significant customers", claim: "CoreWeave Q2 收入中三大客户分别占 36%、26% 和 10%；98% 收入来自客户承诺。", effect: "boundary", caveat: "take-or-pay 增强近期保护，但不消除对手方和再融资风险。", trace: "EXT-AFD-L352-003 · REV-AFD-L352-003" },
+          { source: "microsoft", locator: "CFO remarks — cloud mix and RPO", claim: "Microsoft 全年云收入约九成来自前沿模型公司之外，且当季 RPO 顺序增长全部来自前沿模型公司之外的客户。", effect: "support", caveat: "这证明 Microsoft 自身业务分散，不代表整个 AI 基础设施产业同样分散。", trace: "EXT-AFD-L352-004 · REV-AFD-L352-004" }
+        ],
+        "AFD-L3-5-3": [
+          { source: "stanford2025", locator: "Models become cheaper to use", claim: "达到近似 GPT-3.5 能力的推理价格从 2022 年每百万 token 20 美元降至 2024 年 0.07 美元，约下降 280 倍以上。", effect: "refute", caveat: "价格下降不是物理算力效率的纯度量，也受模型结构与定价竞争影响。", trace: "EXT-AFD-L353-001 · REV-AFD-L353-001" },
+          { source: "microsoft", locator: "CEO remarks — efficiency and usage", claim: "Microsoft 年内将 Copilot 工作负载吞吐提高 4 倍，并将部分 Dynamics / PowerPoint 工作负载 GPU 成本降低 84%–89%，同时新增容量快速变现、Azure 增长 43%。", effect: "boundary", caveat: "不同产品指标不能推导统一价格弹性。", trace: "EXT-AFD-L353-002 · REV-AFD-L353-002" },
+          { source: "amazonLetter", locator: "paragraphs 78–80 and 97", claim: "Trainium 代际持续提升价格性能，但 Trainium2 大体售罄、Trainium3 近乎满订；Bedrock Q1 token 量超过此前所有年份合计。", effect: "support", caveat: "管理层数据缺少统一基期和绝对 token 数。", trace: "EXT-AFD-L353-003 · REV-AFD-L353-003" },
+          { source: "iea", locator: "Executive summary — sensitivity cases", claim: "IEA 高效率情景下 2035 年数据中心用电比基准情景低 20%，全部情景范围约为 700–1700 TWh。", effect: "refute", caveat: "效率影响显著，但仍是情景模型而非已实现数据。", trace: "EXT-AFD-L353-004 · REV-AFD-L353-004" }
+        ]
+      };
+
+      const nodes = [
+        {
+          id: "AFD-L1",
+          level: "L1",
+          short: "AI 工厂需求是否进入大而持久的 S 曲线？",
+          question: "未来 3–5 年，AI 工厂需求是否处于大而持久的 S 曲线上升阶段，并能转化为可兑现的基础设施使用量和支出？",
+          parent: null,
+          status: "已回答",
+          expanded: false,
+          what: "AI 工厂是否已经从概念和试验进入规模化需求，以及这种需求在近期和中期分别有多强。",
+          data: "需求主体、云与数据中心收入、token/付费席位、资本开支、长期合同、RPO/backlog、GW 容量、数据中心用电及反向情景。",
+          analysis: "建立“需求主体 → 真实工作负载 → 商业兑现 → 资本承诺 → 实物扩容”的因果链；分别处理企业兑现、集中/融资和效率反证。",
+          conclusion: "AI 工厂需求已进入规模化 S 曲线：0–2 年能见度高；3–5 年仍偏上行，但更依赖企业生产级兑现、客户融资韧性和效率提升后的新增工作负载。",
+          sufficiency: "<span class=\"pass\">通过。</span>实际使用、收入、合同、资本和实物容量同向；三项主要反证已单独下钻。公开数据仍不能构造无重叠的纯 AI 工厂 TAM。",
+          sources: ["nvda10q", "microsoft", "amazonQ2", "iea"]
+        },
+        {
+          id: "AFD-L2-1",
+          level: "L2.1",
+          short: "谁在需求 AI 工厂？",
+          question: "谁在需求 AI 工厂？",
+          parent: "AFD-L1",
+          status: "通过",
+          expanded: false,
+          what: "真实付款方、容量运营方和最终使用方是谁，避免把采购通道重复算作需求。",
+          data: "公司披露的客户类型、具名合同、部署和使用证据，以及采购方—运营方—最终使用方关系。",
+          analysis: "以最终工作负载归属为主分类，把 OEM、云平台和最终模型客户分层；具名客户不自动代表相同需求规模。",
+          conclusion: "当前需求覆盖超大规模云、前沿模型公司、AI 云、企业和公共部门；支付与大规模部署仍以大型平台和模型公司为核心。",
+          sufficiency: "<span class=\"pass\">通过。</span>主体类型有多份一手材料交叉验证；匿名间接客户虽难完全去重，但不改变分类。",
+          sources: ["nvdaDefinition", "nvda10q", "amazonQ2", "coreweave"]
+        },
+        {
+          id: "AFD-L2-2",
+          level: "L2.2",
+          short: "实际使用和收入是否在加速？",
+          question: "实际使用和收入是否在加速？",
+          parent: "AFD-L1",
+          status: "通过",
+          expanded: false,
+          what: "需求是否已经形成实际工作负载和收入，而非只有建设计划与主题热度。",
+          data: "NVIDIA 数据中心收入、Azure/AWS 增速、Foundry 大用量客户、Copilot 付费席位、Bedrock 客户支出和新增容量变现。",
+          analysis: "只用实际收入、消费、token 和付费指标判断；不把资本开支替代使用量，也不相加不同平台口径。",
+          conclusion: "实际使用已经加速：NVIDIA 数据中心收入同比增 117%，Azure 增长 43%，AWS 增长 37%；Foundry、Copilot 和 Bedrock 同时出现更高使用或付费。",
+          sufficiency: "<span class=\"pass\">通过。</span>跨平台方向一致。混合业务口径阻止精确拆分纯 AI 收入，但不影响“实际加速”的判断。",
+          sources: ["nvda10q", "microsoft", "amazonQ2"]
+        },
+        {
+          id: "AFD-L2-3",
+          level: "L2.3",
+          short: "是否转化为资本与合同承诺？",
+          question: "需求是否转化为资本与合同承诺？",
+          parent: "AFD-L1",
+          status: "通过",
+          expanded: false,
+          what: "未来容量建设是否已有真实客户、合同和预算支持。",
+          data: "2026 年资本开支、AI 专属长期合同、RPO/backlog、已签云与功率容量义务。",
+          analysis: "区分 AI 专属合同和混合口径资本/RPO；不跨公司求和，避免重复计算同一上下游合同。",
+          conclusion: "需求已转化为大额资本和多年合同。Amazon、Microsoft、Meta、Oracle 与 CoreWeave 的披露共同把大量需求锁定到 2027–2028 年以后。",
+          sufficiency: "<span class=\"pass\">通过。</span>足以判断承诺强度；总额含非 AI 业务且存在交付条件，因此不用于计算纯 AI TAM。",
+          sources: ["amazon10q", "amazonLetter", "microsoft", "meta10q", "oracle", "coreweave"]
+        },
+        {
+          id: "AFD-L2-4",
+          level: "L2.4",
+          short: "未来空间与持续性如何？",
+          question: "未来 3–5 年空间与持续性如何？",
+          parent: "AFD-L1",
+          status: "通过",
+          expanded: false,
+          what: "当前需求能否延续为 2030 年前的实物基础设施扩张。",
+          data: "数据中心与加速服务器用电、AWS/Microsoft 的 GW 扩容、实际用电增速，以及效率和电网延迟情景。",
+          analysis: "以用电和 GW 作实物代理，同时纳入采用、效率和电网约束；延迟不等于取消，但会后移兑现。",
+          conclusion: "方向继续向上：IEA 基准情景预计数据中心用电从 2024 年约 415 TWh 增至 2030 年约 945 TWh，AI 加速服务器贡献核心增量；平台仍以 GW 规模扩容。",
+          sufficiency: "<span class=\"pass\">通过。</span>能回答方向和持续性，但 2035 年情景范围约 700–1700 TWh，不能输出单点精确预测。",
+          sources: ["iea", "iea2026", "ieaGrid", "amazonLetter", "microsoft"]
+        },
+        {
+          id: "AFD-L2-5",
+          level: "L2.5",
+          short: "哪些因素可能使需求不够持久？",
+          question: "哪些因素可能使需求不够持久？",
+          parent: "AFD-L1",
+          status: "失败后下钻",
+          expanded: true,
+          what: "哪些失效机制会使当前强需求无法持续到 3–5 年。",
+          data: "企业付费和 ROI、客户集中与合同融资、单位任务成本与总 token/收入增长。",
+          analysis: "第一次回答无法区分三种独立机制，因此没有强行得出总括结论；先拆成三个 L3 分别取证。",
+          conclusion: "三项风险都限制中期斜率，但目前没有一项推翻需求上行：商业化已发生、合同有保护、单位成本下降与总使用增长同时发生。",
+          sufficiency: "<span class=\"fail\">首次不通过</span> → 三个 L3 完成后 <span class=\"pass\">通过</span>。未来优先刷新企业 ROI、容量利用率和大客户融资。",
+          sources: []
+        },
+        {
+          id: "AFD-L3-5-1",
+          level: "L3.5.1",
+          short: "企业采用是否转为付费与回报？",
+          question: "企业采用是否转为生产级付费与回报？",
+          parent: "AFD-L2-5",
+          status: "通过",
+          expanded: false,
+          what: "企业需求是否仍停留在试用和 PoC，还是已形成生产使用、付费和可观测收益。",
+          data: "Copilot 付费席位、Foundry/Bedrock 客户和消费、企业采用率、代理部署深度及已实现收益。",
+          analysis: "把“至少一个职能使用 AI”与生产级深度、收入贡献和 ROI 分开；调查只作方向证据。",
+          conclusion: "企业商业化已真实发生，但处于“广度快于深度”阶段：大型客户扩席和消费加速，代理在多数业务职能仍是个位数部署，多数财务收益幅度有限。",
+          sufficiency: "<span class=\"pass\">通过。</span>足以回答是否已兑现；跨行业同口径 ROI 序列仍需季度刷新。",
+          sources: ["microsoft", "amazonQ2", "stanford2026", "oecd"]
+        },
+        {
+          id: "AFD-L3-5-2",
+          level: "L3.5.2",
+          short: "集中与融资会否放大回撤？",
+          question: "需求集中与融资结构会否放大回撤？",
+          parent: "AFD-L2-5",
+          status: "通过",
+          expanded: false,
+          what: "长期合同是否主要依赖少数前沿客户及其融资能力。",
+          data: "直接/间接客户集中度、take-or-pay、合同期限、融资结构和对手方风险。",
+          analysis: "同时检验合同保护与信用风险；用前沿模型公司之外的云收入和 RPO 增长验证扩散。",
+          conclusion: "需求正在扩散，但基础设施收入和远期合同仍集中。CoreWeave Q2 三大客户分别占收入 36%、26%、10%；少数客户融资或项目失速会放大行业回撤。",
+          sufficiency: "<span class=\"pass\">通过。</span>集中与扩散证据均有一手来源；匿名间接客户仍不能完全去重。",
+          sources: ["nvdaAnnual", "nvda10q", "coreweave10q", "microsoft"]
+        },
+        {
+          id: "AFD-L3-5-3",
+          level: "L3.5.3",
+          short: "效率提升会压低总需求吗？",
+          question: "效率提升会压低还是扩大总需求？",
+          parent: "AFD-L2-5",
+          status: "通过，有边界",
+          expanded: false,
+          what: "单位任务所需算力下降，是否会抵消新增工作负载带来的总需求。",
+          data: "同能力推理价格、吞吐/美元、单位工作负载 GPU 成本，以及总 token、消费和收入增长。",
+          analysis: "比较单位任务资源下降与总任务量增长，不把效率改善机械等同为总需求下降。",
+          conclusion: "效率显著压低单位任务算力，但当前总使用增长更快：吞吐提升、GPU 成本下降与新增容量快速变现同时发生。3–5 年净弹性方向偏正、幅度未知。",
+          sufficiency: "<span class=\"pass\">通过，有边界。</span>缺少跨厂商、跨工作负载的同口径价格—使用弹性，不应给出伪精确系数。",
+          sources: ["stanford2025", "microsoft", "amazonLetter", "iea"]
+        }
+      ];
+
+      const chapterByNode = {
+        "AFD-L1": {
+          mode: "rollup",
+          rule: "只有需求主体、实际使用、资本承诺、实物空间和主要反证都被回答，并且能够区分 0–2 年与 3–5 年，元问题才算充分。",
+          required: ["需求由谁产生", "使用和收入是否兑现", "合同与资本是否锁定", "实物容量是否继续扩张", "需求持久性的失效条件"],
+          note: "本节点没有重新把 17 份材料混合搜索一遍。它只汇总已经完成证据闭环的 L2 结论，避免同一材料被无差别映射到父问题。",
+          steps: [
+            ["确认需求不是单一主体", "L2.1 先区分采购方、运营方与最终工作负载归属，避免渠道重复计算。"],
+            ["确认建设已经转成使用", "L2.2 用收入、token、付费席位和消费指标排除“只有资本开支、没有使用”的解释。"],
+            ["确认近期能见度", "L2.3 检查资本开支、RPO、backlog 与多年合同，但不跨公司相加重叠承诺。"],
+            ["确认中期实物空间", "L2.4 将用电、GW 扩容与电网约束并列，给出方向和情景区间而非单点 TAM。"],
+            ["用反证限制结论", "L2.5 对企业兑现、客户融资集中和效率弹性分别下钻；因此把 0–2 年高能见度与 3–5 年条件性上行分开。"]
+          ],
+          result: "主体扩散、真实使用、合同资本与实物容量四条证据链同向；反证限制远期斜率，但尚未逆转方向。"
+        },
+        "AFD-L2-1": {
+          mode: "evidence",
+          rule: "必须识别真实需求主体，并解释采购渠道与最终工作负载归属的差异；具名客户只能证明主体存在，不能推导需求规模。",
+          required: ["直接采购方与间接最终客户", "云容量运营方、模型开发者与企业用户", "当前合同、部署或使用实例"],
+          steps: [
+            ["先定义研究对象", "使用 NVIDIA 对 AI 工厂的定义，把产出限定为训练、微调和推理形成的智能服务，而不是把所有服务器采购都算作需求。"],
+            ["拆开三种角色", "将采购方、容量运营方和最终使用方分层。NVIDIA 10-Q 明确提示直接客户和最终客户并不相同，因此不能用供应商客户名单直接去重。"],
+            ["用具名案例验证范围", "Amazon 与 CoreWeave 的披露显示需求从模型公司、超大规模云延伸到 Uber、Pinterest、Bentley、Caterpillar 等企业。"],
+            ["保留规模缺口", "证据足以回答“谁在需求”，但无法用匿名间接客户数据量化各类主体份额，也不将客户数量视作等量需求。"]
+          ],
+          result: "需求主体已经多元化，但最大的付款与部署能力仍集中在超大规模平台和前沿模型公司。"
+        },
+        "AFD-L2-2": {
+          mode: "evidence",
+          rule: "至少需要三家独立平台给出实际收入、消费、token 或付费指标；资本开支和规划容量不能替代真实使用。",
+          required: ["数据中心与云收入增速", "token 或高用量客户增长", "付费席位与客户消费", "新增容量上线后的变现情况"],
+          steps: [
+            ["只选择已实现指标", "将 NVIDIA 数据中心收入、Azure / AWS 增速、Foundry token 客户、Copilot 付费席位和 Bedrock 支出作为观察量，不用未来资本计划代替使用。"],
+            ["跨平台看方向而不求和", "NVIDIA、Microsoft、Amazon 的口径不同，不能构造统一总量；但供应商收入、云收入和产品消费同时加速，可用于判断方向。"],
+            ["检查是否只是价格贡献", "NVIDIA 收入可能受价格和产品代际推动，因此用 token 门槛客户、付费席位和 Bedrock 客户支出补充终端活动证据。"],
+            ["限定结论强度", "证据支持“实际使用在加速”，但混合业务口径不支持精确计算纯 AI 收入或跨平台市场份额。"]
+          ],
+          result: "收入、token、席位和消费四类实际指标同向，足以排除需求仅停留在建设计划的解释。"
+        },
+        "AFD-L2-3": {
+          mode: "evidence",
+          rule: "资本、合同和待履约义务至少覆盖两类主体，并明确区分 AI 专属与全公司混合口径；重叠合同不得跨公司求和。",
+          required: ["2026 年资本开支", "AI 专属多年合同", "商业 RPO 与收入 backlog", "容量采购义务和预计兑现时间"],
+          steps: [
+            ["把投入与订单分开", "资本开支说明供给方愿意建设；RPO、backlog 和客户承诺说明未来容量有需求支持。二者同时出现才构成更强证据。"],
+            ["标记纯 AI 与混合口径", "OpenAI / Anthropic 协议更接近 AI 专属；Amazon、Microsoft、Meta 的总资本开支和 RPO 包含传统云与核心业务，因此只用于方向判断。"],
+            ["映射兑现时间", "Amazon 披露部分 2026 年 AWS 资本开支预计在 2027–2028 年变现，显示合同能见度跨越单一季度。"],
+            ["执行去重约束", "同一需求可能同时出现在客户合同、云厂商 RPO 和基础设施供应商 backlog 中，因此不把 4960 亿、6780 亿、6380 亿等数字横向相加。"],
+            ["检查交付条件", "所有远期承诺仍受容量交付、服务可用性和对手方履约约束，不能把 backlog 等同于已确认收入。"]
+          ],
+          result: "未来两到数年的建设已有合同和预算支撑，但公开数字不能被合成为纯 AI TAM。"
+        },
+        "AFD-L2-4": {
+          mode: "evidence",
+          rule: "必须同时看到实际增量、平台扩容计划和反向约束情景；只凭管理层计划或单一 TAM 预测均不足。",
+          required: ["全球数据中心实际用电增长", "2030 年基准用电情景", "平台 GW 级容量扩张", "电网延迟和高效率情景"],
+          steps: [
+            ["建立实际基线", "IEA 记录 2025 年全球数据中心用电增长 17%，先用已发生数据校验预测方向。"],
+            ["读取中期情景", "基准情景从 2024 年约 415 TWh 增至 2030 年约 945 TWh，加速服务器用电年增约 30%，用于判断实物空间而非纯 AI TAM。"],
+            ["用公司计划交叉验证", "AWS 2025 年新增 3.9GW，Microsoft 单季新增约 1GW，两者仍计划大幅扩容，且管理层称上线容量快速变现。"],
+            ["加入交付约束", "IEA 估计约 20% 的计划容量可能因电网而延迟接入。延迟会后移收入与设备需求，但不能直接当作取消。"],
+            ["用区间代替单点", "效率和采用速度使 2035 年情景分叉明显，所以结论只保留持续扩张的方向，不输出伪精确长期规模。"]
+          ],
+          result: "实际用电与平台扩容验证了上行方向；电网和效率决定兑现速度，远期必须采用情景区间。"
+        },
+        "AFD-L2-5": {
+          mode: "rollup",
+          rule: "每个可能改变 3–5 年需求方向的失效机制都要独立取证；笼统列风险不能通过。",
+          required: ["企业付费和 ROI", "客户集中、合同保护与融资", "效率改善后的总量弹性"],
+          note: "第一次研究只得到三类异质风险，无法用一个总括段落判断它们是否会推翻需求。因此本节点充分性失败，并按缺口新增三个 L3；当前结论来自这三个 L3 的独立证据闭环。",
+          steps: [
+            ["首次闸门失败", "“企业兑现、客户融资、效率弹性”属于不同机制，所需指标和反证不同，不能共享一组宽泛材料。"],
+            ["按缺口最小下钻", "分别创建 L3.5.1、L3.5.2、L3.5.3，每个问题重新制定所需数据并独立附着来源。"],
+            ["比较能否推翻父结论", "企业商业化已发生但深度较早；合同保护强但集中度高；单位成本下降很快但总使用增长更快。"],
+            ["形成有边界的总括", "没有单项证据足以推翻近期上行，但三者都能改变 3–5 年斜率，因此保留持续刷新条件。"]
+          ],
+          result: "主要风险尚未逆转上行方向，却使中期判断从“确定增长”降为“条件性增长”。"
+        },
+        "AFD-L3-5-1": {
+          mode: "evidence",
+          rule: "必须把采用广度、生产级使用、付费消费和财务回报分开；调查中的“使用过”不能直接视作生产级兑现。",
+          required: ["付费席位与扩席规模", "消费型平台收入或支出", "生产客户数量", "企业采用率", "代理部署深度与已实现收益"],
+          steps: [
+            ["判断是否真的付费", "Microsoft 披露 M365 Copilot 付费席位超过 3000 万，多个机构扩至 6 万–50.5 万席位；这比试用或意向更接近商业兑现。"],
+            ["判断消费是否加深", "Foundry 客户达 10 万且收入同比翻倍；Bedrock Q2 客户支出高于此前所有季度合计，说明使用扩张不仅是客户数量增加。"],
+            ["区分广度和深度", "OECD 显示企业 AI 使用率两年由 8.7% 升至 20.2%；Stanford 调查显示 88% 组织至少一个职能使用 AI，但代理在多数职能仍为个位数部署。"],
+            ["检查财务回报证据", "公司披露没有提供可比的 Copilot 利润率或客户 ROI 分布；因此只能确认商业化发生，不能推断大多数企业已经获得高回报。"],
+            ["决定是否继续下钻", "剩余缺口是跨行业同口径 ROI 序列，但它不会改变“已经付费、深度仍早”的答案，本轮停止下钻并设为季度刷新项。"]
+          ],
+          result: "付费和消费证据确认商业化已经发生；部署深度与 ROI 证据限制其成熟度，形成“广度快、深度早”的结论。"
+        },
+        "AFD-L3-5-2": {
+          mode: "evidence",
+          rule: "同时检验收入/客户集中、合同保护、融资与对手方风险、以及需求向更广客户扩散的证据。",
+          required: ["直接与间接客户集中度", "take-or-pay 或客户承诺比例", "融资及对手方风险披露", "前沿模型公司之外的收入与 RPO"],
+          steps: [
+            ["测量可见集中度", "NVIDIA FY2026 两家直接客户占收入 22% 和 14%，Q2 FY2027 一家直接客户占 16%；CoreWeave 三大客户合计占 Q2 收入 72%。"],
+            ["校正客户口径", "NVIDIA 的直接客户可能只是采购通道，不能把其集中度等同于最终工作负载集中度；因此结论保留匿名间接客户缺口。"],
+            ["评估合同缓冲", "CoreWeave 98% 收入来自客户承诺，说明 take-or-pay 或类似安排可以保护近期收入，但不能消除客户信用和再融资风险。"],
+            ["寻找扩散反证", "Microsoft 全年云收入约九成来自前沿模型公司之外，且当季 RPO 顺序增长全部来自这类客户，说明至少部分平台需求正在扩散。"],
+            ["合成风险方向", "合同降低短期取消风险，集中度和融资依赖放大尾部回撤，两者同时成立；因此不能简单归类为安全或泡沫。"]
+          ],
+          result: "近期合同保护较强，但客户和融资集中构成真实的非线性回撤风险；需求扩散只能部分对冲。"
+        },
+        "AFD-L3-5-3": {
+          mode: "evidence",
+          rule: "必须把单位任务成本下降与总任务量增长分开，并同时寻找效率压缩需求与价格下降扩大使用的证据。",
+          required: ["同等能力推理价格", "系统吞吐与单位 GPU 成本", "总 token、消费与收入增长", "高效率情景下的实物需求"],
+          steps: [
+            ["确认单位成本快速下降", "近似 GPT-3.5 能力的推理价格在约两年内从每百万 token 20 美元降至 0.07 美元；Microsoft 部分工作负载 GPU 成本下降 84%–89%。"],
+            ["观察效率是否释放新使用", "Microsoft 同期吞吐提高 4 倍、Azure 增长 43%，且新增容量快速变现；Amazon 的 Bedrock token 量和 Trainium 预订仍快速增长。"],
+            ["建立净需求判断框架", "总算力需求近似等于单位任务资源乘以任务量。当前观测显示第二项增长快于第一项下降，但跨平台无法统一量纲。"],
+            ["使用反向情景约束", "IEA 高效率情景使 2035 年数据中心用电比基准低 20%，说明效率足以改变长期斜率，不能假设 Jevons 效应必然无限放大。"],
+            ["拒绝伪精确弹性", "缺少跨厂商、跨工作负载的同口径价格—使用序列，因此只判断当前净方向偏正，不估算具体弹性系数。"]
+          ],
+          result: "现阶段任务量增长快于单位成本下降带来的压缩；效率更可能降低斜率，而不是立即扭转总需求，但长期幅度未知。"
+        }
+      };
+
+      const nodeById = new Map(nodes.map((node) => [node.id, node]));
+      const childrenByParent = new Map();
+
+      nodes.forEach((node) => {
+        const key = node.parent || "root";
+        const siblings = childrenByParent.get(key) || [];
+        siblings.push(node);
+        childrenByParent.set(key, siblings);
+      });
+
+      function treeMarkup(parentId) {
+        const children = childrenByParent.get(parentId || "root") || [];
+        if (!children.length) return "";
+        return `<ul class="tree-list">${children.map((node) => `
+          <li>
+            <button class="tree-item" type="button" data-target="${node.id}" aria-selected="false">
+              <span class="tree-level">${node.level}</span>
+              <span class="tree-question">${node.short}</span>
+              <span class="tree-status${node.expanded ? " was-expanded" : ""}" aria-label="${node.status}"></span>
+            </button>
+            ${treeMarkup(node.id)}
+          </li>`).join("")}
+        </ul>`;
+      }
+
+      function breadcrumb(node) {
+        const path = [];
+        let current = node;
+        while (current) {
+          path.unshift(`<span>${current.level} ${current.short}</span>`);
+          current = current.parent ? nodeById.get(current.parent) : null;
+        }
+        return path.join("");
+      }
+
+      function childMarkup(node) {
+        const children = childrenByParent.get(node.id) || [];
+        if (!children.length) return "不需要。当前证据足以回答本节点。";
+        return `<div class="generated-children">${children.map((child) => `
+          <button class="child-jump" type="button" data-jump="${child.id}">
+            <code>${child.level}</code>
+            <span>${child.question}</span>
+          </button>`).join("")}
+        </div>`;
+      }
+
+      function listMarkup(items) {
+        return `<ul class="plain-list">${items.map((item) => `<li>${item}</li>`).join("")}</ul>`;
+      }
+
+      function effectLabel(effect) {
+        return { support: "支持", refute: "反证", boundary: "边界" }[effect] || effect;
+      }
+
+      function evidenceRows(nodeId) {
+        const evidence = evidenceByNode[nodeId] || [];
+        return evidence.map((item) => {
+          const [title, url] = sources[item.source];
+          const meta = sourceMeta[item.source];
+          return `
+            <tr>
+              <td>
+                <span class="source-date">${meta.date}</span>
+                <a class="source-title" href="${url}">${title}</a>
+                <span class="source-meta">${meta.type} · ${meta.publisher}</span>
+                <span class="locator">定位：${item.locator}</span>
+              </td>
+              <td>
+                <span class="evidence-claim">${item.claim}</span>
+                <span class="review-mark">✓ 已逐问题抽取并复核 · ${item.trace}</span>
+              </td>
+              <td><span class="effect ${item.effect}">${effectLabel(item.effect)}</span></td>
+              <td>${item.caveat}</td>
+            </tr>`;
+        }).join("");
+      }
+
+      function evidenceMarkup(node, chapter) {
+        const evidence = evidenceByNode[node.id] || [];
+        if (chapter.mode === "rollup") {
+          const children = childrenByParent.get(node.id) || [];
+          return `
+            <p class="process-note">${chapter.note}</p>
+            <table class="rollup-table">
+              <thead><tr><th>输入节点</th><th>已验证的子结论</th><th>节点状态</th></tr></thead>
+              <tbody>${children.map((child) => `
+                <tr>
+                  <td><button class="rollup-link" type="button" data-jump="${child.id}">${child.level} · ${child.short}</button></td>
+                  <td>${child.conclusion}</td>
+                  <td><span class="pass">${child.status}</span></td>
+                </tr>`).join("")}</tbody>
+            </table>`;
+        }
+
+        const uniqueSources = new Set(evidence.map((item) => item.source)).size;
+        const firstParty = evidence.filter((item) => ["官方财报", "公司披露", "公司官网"].includes(sourceMeta[item.source].type)).length;
+        const support = evidence.filter((item) => item.effect === "support").length;
+        const contrary = evidence.length - support;
+        return `
+          <p class="section-lead">搜集动作直接绑定 ${node.id}；每份材料都单独抽取、记录原文位置、标注作用方向，再经 GPT 复核。下表不是来源摘要，而是用于回答本问题的关键数据。</p>
+          <div class="collection-summary">
+            <div class="summary-stat"><strong>${uniqueSources}</strong><span>独立来源</span></div>
+            <div class="summary-stat"><strong>${evidence.length}</strong><span>逐问题证据抽取</span></div>
+            <div class="summary-stat"><strong>${firstParty}</strong><span>一手披露条目</span></div>
+            <div class="summary-stat"><strong>${contrary}</strong><span>反证 / 边界条目</span></div>
+          </div>
+          <div class="evidence-wrap" tabindex="0" aria-label="${node.id} 关键证据表">
+            <table class="evidence-table">
+              <thead><tr><th>材料与原文定位</th><th>抽取的关键数据 / 事实</th><th>作用</th><th>口径限制与反向解释</th></tr></thead>
+              <tbody>${evidenceRows(node.id)}</tbody>
+            </table>
+          </div>`;
+      }
+
+      function analysisMarkup(chapter) {
+        return `
+          <ol class="analysis-flow">${chapter.steps.map(([title, text]) => `
+            <li><div><strong>${title}</strong><p>${text}</p></div></li>`).join("")}
+          </ol>
+          <p class="logic-result">推理落点：${chapter.result}</p>`;
+      }
+
+      function scopeMarkup(node, chapter) {
+        return `
+          <div class="scope-grid">
+            <div class="scope-item"><span class="scope-label">本层要回答</span><p>${node.what}</p></div>
+            <div class="scope-item"><span class="scope-label">通过标准</span><p>${chapter.rule}</p></div>
+            <div class="scope-item"><span class="scope-label">预先规定的数据</span>${listMarkup(chapter.required)}</div>
+            <div class="scope-item"><span class="scope-label">实际展开的子问题</span>${childMarkup(node)}</div>
+          </div>`;
+      }
+
+      function detailMarkup(node) {
+        const chapter = chapterByNode[node.id];
+        const dataTitle = chapter.mode === "rollup" ? "子节点输入与汇总依据" : "数据搜集与关键证据";
+        return `
+          <article class="node-detail" data-active-node="${node.id}">
+            <p class="breadcrumb">${breadcrumb(node)}</p>
+            <div class="detail-title-row">
+              <div>
+                <p class="node-id">${node.id}</p>
+                <h2 class="detail-title">${node.question}</h2>
+              </div>
+              <span class="status-badge${node.expanded ? " expanded" : ""}">${node.status}</span>
+            </div>
+            <nav class="chapter-index" aria-label="本节点章节目录">
+              <button type="button" data-section="scope-${node.id}">01 研究定义</button>
+              <button type="button" data-section="data-${node.id}">02 ${dataTitle}</button>
+              <button type="button" data-section="analysis-${node.id}">03 分析过程</button>
+              <button type="button" data-section="conclusion-${node.id}">04 结论与充分性</button>
+            </nav>
+            <section class="chapter-section" id="scope-${node.id}">
+              <div class="section-heading"><span class="section-number">01</span><h3>研究定义</h3></div>
+              ${scopeMarkup(node, chapter)}
+            </section>
+            <section class="chapter-section" id="data-${node.id}">
+              <div class="section-heading"><span class="section-number">02</span><h3>${dataTitle}</h3></div>
+              ${evidenceMarkup(node, chapter)}
+            </section>
+            <section class="chapter-section" id="analysis-${node.id}">
+              <div class="section-heading"><span class="section-number">03</span><h3>分析过程</h3></div>
+              <p class="section-lead">以下步骤说明数据如何被转化为判断，并明确哪些口径不能比较、哪些替代解释必须保留。</p>
+              ${analysisMarkup(chapter)}
+            </section>
+            <section class="chapter-section" id="conclusion-${node.id}">
+              <div class="section-heading"><span class="section-number">04</span><h3>结论与充分性判断</h3></div>
+              <div class="conclusion-block">
+                <p class="answer">${node.conclusion}</p>
+                <div class="judgment-grid">
+                  <div><strong>SUFFICIENCY · 是否回答充分</strong>${node.sufficiency}</div>
+                  <div><strong>NEXT · 后续动作</strong>${node.next_action || (node.expanded ? "子节点已完成；未来按关键风险指标刷新。" : "关闭当前分支；当关键指标或反证变化时重新打开。")}</div>
+                </div>
+              </div>
+            </section>
+          </article>`;
+      }
+
+      const treeRoot = document.getElementById("question-tree");
+      const detailPane = document.getElementById("detail-pane");
+      treeRoot.innerHTML = treeMarkup(null);
+
+      function ancestors(nodeId) {
+        const result = new Set();
+        let current = nodeById.get(nodeId);
+        while (current && current.parent) {
+          result.add(current.parent);
+          current = nodeById.get(current.parent);
+        }
+        return result;
+      }
+
+      function showNode(requestedId, updateHash = true) {
+        const node = nodeById.get(requestedId) || nodeById.get("AFD-L1");
+        const path = ancestors(node.id);
+        document.querySelectorAll(".tree-item").forEach((button) => {
+          const isActive = button.dataset.target === node.id;
+          button.classList.toggle("is-active", isActive);
+          button.classList.toggle("is-on-path", path.has(button.dataset.target));
+          button.setAttribute("aria-selected", String(isActive));
+        });
+        detailPane.innerHTML = detailMarkup(node);
+        detailPane.querySelectorAll("[data-jump]").forEach((button) => {
+          button.addEventListener("click", () => showNode(button.dataset.jump));
+        });
+        detailPane.querySelectorAll("[data-section]").forEach((button) => {
+          button.addEventListener("click", () => {
+            document.getElementById(button.dataset.section)?.scrollIntoView({ behavior: "smooth", block: "start" });
+          });
+        });
+        if (updateHash && window.location.hash !== `#${node.id}`) {
+          history.replaceState(null, "", `#${node.id}`);
+        }
+      }
+
+      treeRoot.addEventListener("click", (event) => {
+        const button = event.target.closest(".tree-item");
+        if (button) showNode(button.dataset.target);
+      });
+
+      window.addEventListener("hashchange", () => showNode(window.location.hash.slice(1), false));
+      showNode(window.location.hash.slice(1) || "AFD-L1", false);
+    </script>
+  </body>
+</html>

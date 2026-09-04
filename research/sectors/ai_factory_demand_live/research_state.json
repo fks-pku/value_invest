@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.0",
+  "project_id": "ai_factory_demand_live",
+  "as_of_date": "2026-09-04",
+  "next_execution_node": null,
+  "nodes": [
+    {
+      "question_id": "AFD-L1",
+      "level": 1,
+      "parent_id": null,
+      "question": "未来 3-5 年，AI 工厂需求是否处于大而持久的 S 曲线上升阶段，并能转化为可兑现的基础设施使用量和支出？",
+      "why_it_matters": "决定 AI 工厂是否具备行业需求侧长期扩张基础。",
+      "status": "answered",
+      "children": ["AFD-L2-1", "AFD-L2-2", "AFD-L2-3", "AFD-L2-4", "AFD-L2-5"],
+      "conclusion": "AI 工厂需求已经从早期试验进入规模化扩张：0-2 年具有高能见度，3-5 年仍向上但条件性增强。",
+      "sufficiency": {
+        "passed": true,
+        "reasons": ["实际使用、收入、合同、资本和实物容量代理同向", "企业兑现、集中度和效率反证已分别处理"],
+        "gaps": ["无法用公开数据给出无重叠的纯 AI 工厂 TAM", "长期需求弹性仍取决于企业 ROI 与单位成本下降后的新增工作负载"]
+      }
+    },
+    {
+      "question_id": "AFD-L2-1",
+      "level": 2,
+      "parent_id": "AFD-L1",
+      "question": "谁在需求 AI 工厂？",
+      "why_it_matters": "确认真实付款方、运营方和最终使用方，避免把渠道重复算作需求。",
+      "status": "answered",
+      "children": [],
+      "conclusion": "超大规模云、模型公司、AI 云、企业和公共部门共同构成当前需求，支付仍集中于大平台和模型公司。",
+      "sufficiency": {"passed": true, "reasons": ["官方定义和多家公司客户结构可交叉验证"], "gaps": ["匿名最终客户难以完全穿透"]}
+    },
+    {
+      "question_id": "AFD-L2-2",
+      "level": 2,
+      "parent_id": "AFD-L1",
+      "question": "实际使用和收入是否在加速？",
+      "why_it_matters": "排除只建设、不使用的伪需求。",
+      "status": "answered",
+      "children": [],
+      "conclusion": "数据中心、云 AI 收入、token、付费席位与可变消费均显著加速。",
+      "sufficiency": {"passed": true, "reasons": ["至少三家平台披露实际收入或使用指标", "支持与边界均已记录"], "gaps": ["跨平台指标口径不可直接相加"]}
+    },
+    {
+      "question_id": "AFD-L2-3",
+      "level": 2,
+      "parent_id": "AFD-L1",
+      "question": "需求是否转化为资本与合同承诺？",
+      "why_it_matters": "决定未来容量建设是否已有客户和资金支持。",
+      "status": "answered",
+      "children": [],
+      "conclusion": "资本开支、长期合同、RPO/backlog 和功率承诺已显著锁定未来需求。",
+      "sufficiency": {"passed": true, "reasons": ["公司一手合同与财务披露覆盖资本和收入两端"], "gaps": ["部分总额包含非 AI 业务", "不同公司的合同可能存在上下游重叠"]}
+    },
+    {
+      "question_id": "AFD-L2-4",
+      "level": 2,
+      "parent_id": "AFD-L1",
+      "question": "未来 3-5 年空间与持续性如何？",
+      "why_it_matters": "验证短期热度是否能延续为实物基础设施需求。",
+      "status": "answered",
+      "children": [],
+      "conclusion": "IEA 基准情景和平台扩容计划共同支持 2030 年前持续扩张，但情景区间很宽。",
+      "sufficiency": {"passed": true, "reasons": ["权威行业模型与公司容量计划互相印证"], "gaps": ["采用速度、效率和电网使 2035 年需求区间显著分叉"]}
+    },
+    {
+      "question_id": "AFD-L2-5",
+      "level": 2,
+      "parent_id": "AFD-L1",
+      "question": "哪些因素可能使需求不够持久？",
+      "why_it_matters": "避免把当前短缺和资本承诺直接外推为长期确定性。",
+      "status": "answered",
+      "children": ["AFD-L3-5-1", "AFD-L3-5-2", "AFD-L3-5-3"],
+      "conclusion": "主要断点是企业生产级兑现不足、少数客户/融资集中，以及效率改善后的总量弹性；三项均未推翻当前上行判断，但限制了 3-5 年确定性。",
+      "sufficiency": {"passed": true, "reasons": ["首次失败后按三个具体缺口下钻", "三个子节点均形成可追溯结论"], "gaps": ["需持续刷新企业 ROI 与利用率"]}
+    },
+    {
+      "question_id": "AFD-L3-5-1",
+      "level": 3,
+      "parent_id": "AFD-L2-5",
+      "question": "企业采用是否转为生产级付费与回报？",
+      "why_it_matters": "关闭企业需求可能停留在试验层的缺口。",
+      "status": "answered",
+      "children": [],
+      "data_required": ["付费席位", "消费型收入", "生产客户", "采用率", "已实现财务收益"],
+      "sources": ["SRC-MSFT-Q4FY26", "SRC-AMZN-Q22026", "SRC-STANFORD-AI-INDEX-2026", "SRC-OECD-AI-USE-2026"],
+      "analysis": "区分广度采用、生产级深度和财务收益；用公司实际付费指标校验调查数据。",
+      "supporting_evidence": ["Microsoft 365 Copilot 付费席位超过 3000 万，Foundry 收入同比翻倍", "AWS Bedrock 客户达到数十万且 Q2 支出高于此前所有季度合计", "OECD 统计企业 AI 采用率两年翻倍"],
+      "contrary_evidence": ["Stanford AI Index 显示代理在多数业务职能的部署仍为个位数", "多数报告的成本或收入收益幅度仍较低"],
+      "conclusion": "企业商业化已真实发生，但处于广度快于深度的阶段。",
+      "sufficiency": {"passed": true, "reasons": ["付费、使用和收益边界均有证据"], "gaps": ["缺少跨行业同口径 ROI 序列"]},
+      "next_action": "结束；季度刷新付费消费和生产部署深度。"
+    },
+    {
+      "question_id": "AFD-L3-5-2",
+      "level": 3,
+      "parent_id": "AFD-L2-5",
+      "question": "需求集中与融资结构会否放大回撤？",
+      "why_it_matters": "关闭长期合同可能只是少数客户杠杆扩张的缺口。",
+      "status": "answered",
+      "children": [],
+      "data_required": ["客户集中度", "合同期限", "take-or-pay", "融资结构", "对手方风险"],
+      "sources": ["SRC-NVDA-FY26-10K", "SRC-NVDA-Q2FY27-10Q", "SRC-COREWEAVE-Q22026-10Q", "SRC-MSFT-Q4FY26"],
+      "analysis": "比较直接/间接客户集中度、合同保护与需求向企业扩散的证据。",
+      "supporting_evidence": ["Microsoft 云收入约九成来自前沿模型公司之外", "CoreWeave 98% 收入来自客户承诺"],
+      "contrary_evidence": ["CoreWeave Q2 三大客户分别占 36%、26%、10% 收入", "NVIDIA 明确披露客户、融资和基础设施延迟风险"],
+      "conclusion": "合同保护很强，但需求和融资仍集中，单一客户失速可放大行业波动。",
+      "sufficiency": {"passed": true, "reasons": ["集中和扩散两侧均有一手证据"], "gaps": ["匿名间接客户无法完全去重"]},
+      "next_action": "结束；监测前沿客户融资、合同取消与利用率。"
+    },
+    {
+      "question_id": "AFD-L3-5-3",
+      "level": 3,
+      "parent_id": "AFD-L2-5",
+      "question": "效率提升会压低还是扩大总需求？",
+      "why_it_matters": "关闭单位算力需求下降可能抵消工作负载增长的缺口。",
+      "status": "answered",
+      "children": [],
+      "data_required": ["同能力推理成本", "吞吐/美元", "单位工作负载 GPU 成本", "token 与收入增长"],
+      "sources": ["SRC-STANFORD-AI-INDEX-2025", "SRC-MSFT-Q4FY26", "SRC-AMZN-SHAREHOLDER-2025", "SRC-IEA-ENERGY-AI-2025"],
+      "analysis": "将单位任务资源下降与总任务量、付费消费及收入增长分开比较。",
+      "supporting_evidence": ["Microsoft Copilot 吞吐年内提高 4 倍，但新增容量仍快速变现", "AWS Bedrock token 与支出同时陡增"],
+      "contrary_evidence": ["同等能力推理价格曾在约 18 个月下降 280 倍以上", "IEA 高效率情景的 2035 年数据中心用电较基准低 20%"],
+      "conclusion": "效率明显压低单位任务算力，但当前总使用增长更快；3-5 年净弹性方向偏正、幅度未知。",
+      "sufficiency": {"passed": true, "reasons": ["同时处理单位成本与总量证据", "保留不能精确测定长期弹性的边界"], "gaps": ["缺少跨厂商同口径价格-使用弹性"]},
+      "next_action": "结束；半年刷新单位成本和总 token/收入弹性。"
+    }
+  ]
+}
