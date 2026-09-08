@@ -717,6 +717,166 @@
         font-size: 11px;
       }
 
+      .research-abstract {
+        margin: 26px 0 2px;
+        padding: 20px 23px 22px;
+        color: #ecf4f0;
+        background: #183c31;
+        border-left: 5px solid #d3a149;
+      }
+
+      .research-abstract span {
+        display: block;
+        margin-bottom: 7px;
+        color: #b8d1c5;
+        font-size: 9px;
+        font-weight: 850;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .research-abstract p {
+        max-width: 950px;
+        margin: 0;
+        font-family: "Iowan Old Style", "Songti SC", "STSong", serif;
+        font-size: 19px;
+        font-weight: 650;
+        line-height: 1.7;
+      }
+
+      .metric-ribbon {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        margin: 0 0 26px 69px;
+        border-top: 3px solid var(--ink);
+        border-bottom: 1px solid var(--line-strong);
+      }
+
+      .metric-cell {
+        min-height: 126px;
+        padding: 17px 14px 14px 0;
+      }
+
+      .metric-cell + .metric-cell {
+        padding-left: 17px;
+        border-left: 1px solid var(--line);
+      }
+
+      .metric-value {
+        display: block;
+        margin-bottom: 7px;
+        color: var(--green);
+        font-family: "Iowan Old Style", "Songti SC", "STSong", serif;
+        font-size: clamp(21px, 2.2vw, 31px);
+        font-weight: 700;
+        letter-spacing: -0.025em;
+        line-height: 1.05;
+      }
+
+      .metric-label {
+        display: block;
+        color: var(--ink);
+        font-size: 10px;
+        font-weight: 850;
+        line-height: 1.45;
+      }
+
+      .metric-note {
+        display: block;
+        margin-top: 5px;
+        color: var(--muted);
+        font-size: 9px;
+        line-height: 1.45;
+      }
+
+      .metric-note a {
+        font-weight: 700;
+      }
+
+      .article-copy {
+        max-width: 910px;
+        margin-left: 69px;
+      }
+
+      .article-copy section + section {
+        margin-top: 31px;
+        padding-top: 28px;
+        border-top: 1px solid var(--line);
+      }
+
+      .article-copy h4 {
+        margin: 0 0 13px;
+        color: var(--ink);
+        font-family: "Iowan Old Style", "Songti SC", "STSong", serif;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 1.35;
+      }
+
+      .article-copy h4::before {
+        display: inline-block;
+        width: 18px;
+        height: 2px;
+        margin: 0 10px 6px 0;
+        background: var(--green);
+        content: "";
+      }
+
+      .article-copy p {
+        margin-bottom: 13px;
+        color: #26332d;
+        font-family: "Iowan Old Style", "Songti SC", "STSong", serif;
+        font-size: 15px;
+        line-height: 1.95;
+        text-align: justify;
+      }
+
+      .article-copy p:last-child {
+        margin-bottom: 0;
+      }
+
+      .article-copy a {
+        font-family: "Avenir Next", "PingFang SC", sans-serif;
+        font-size: 0.78em;
+        font-weight: 800;
+        white-space: nowrap;
+      }
+
+      .inline-cite {
+        display: inline-block;
+        margin-left: 4px;
+        font-family: "Avenir Next", "PingFang SC", sans-serif;
+        font-size: 10px;
+        font-style: normal;
+        vertical-align: 0.08em;
+      }
+
+      .parent-bridge {
+        margin: 30px 0 0 69px;
+        padding: 15px 18px;
+        color: #493b23;
+        background: #f6ebd1;
+        border-left: 3px solid #c58a28;
+        font-size: 12px;
+        line-height: 1.75;
+      }
+
+      .parent-bridge strong {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--amber);
+        font-size: 9px;
+        letter-spacing: 0.07em;
+      }
+
+      .evidence-caption {
+        margin: 28px 0 9px 69px;
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+      }
+
       .pass {
         color: var(--green);
         font-weight: 850;
@@ -838,7 +998,11 @@
         .analysis-flow,
         .logic-result,
         .conclusion-block,
-        .process-note {
+        .process-note,
+        .metric-ribbon,
+        .article-copy,
+        .parent-bridge,
+        .evidence-caption {
           margin-left: 0;
         }
 
@@ -849,6 +1013,20 @@
 
         .collection-summary {
           grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .metric-ribbon {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .metric-cell:nth-child(3) {
+          padding-left: 0;
+          border-top: 1px solid var(--line);
+          border-left: 0;
+        }
+
+        .metric-cell:nth-child(4) {
+          border-top: 1px solid var(--line);
         }
 
         .summary-stat:nth-child(3) {
@@ -1285,6 +1463,350 @@
         }
       };
 
+      const articleByNode = {
+        "AFD-L1": {
+          kind: "parent",
+          thesis: "AI 工厂需求已经越过单纯主题投资阶段，进入由真实使用、合同承诺和实物扩容共同推动的规模化建设期。0–2 年需求能见度较高；3–5 年仍偏上行，但斜率取决于企业 ROI、客户融资韧性以及效率改善后新增工作负载能否持续快于单位成本下降。",
+          sections: [
+            {
+              title: "需求链已经形成闭环，而非只在某一个指标上繁荣",
+              paragraphs: [
+                "判断 AI 工厂是否进入 S 曲线，不能只看 GPU 销售或云厂商资本开支。完整需求链应当是：<strong>需求主体扩大 → 实际工作负载增长 → 云与基础设施收入兑现 → 长期合同锁定 → 电力和数据中心容量扩张</strong>。本报告的五个 L2 分别验证了这五个环节，因此父结论不是把一组新闻重新摘要，而是检查各环节是否能够首尾相接。",
+                "L2.1 显示最终需求已覆盖超大规模云、前沿模型公司、AI 云、企业和公共部门；L2.2 进一步证明这不是只有名单扩张，因为 NVIDIA 数据中心收入、Azure 与 AWS 增速、Foundry 高用量客户、Copilot 席位和 Bedrock 支出同时上行；L2.3 则把当期使用连接到未来合同和预算；L2.4 用用电与 GW 级扩容验证需求已经进入实物基础设施。"
+              ]
+            },
+            {
+              title: "0–2 年：需求的核心特征是可见度，而不是精确 TAM",
+              paragraphs: [
+                "近期判断最强的依据来自已经发生的收入和已经签署的承诺。NVIDIA 数据中心季度收入达到 890.23 亿美元、同比增长 117%；Microsoft 单季资本开支 410 亿美元，商业 RPO 达到 6780 亿美元、同比增长 84%；AWS 客户未来履约义务约 4960 亿美元。{{nvda10q}}{{microsoft}}{{amazon10q}} 这些数字不能横向相加，因为同一 AI 工作负载可能同时出现在芯片收入、云厂商 RPO 和基础设施供应商 backlog 中，但它们从不同位置验证了同一方向：近期容量并非在没有客户的情况下盲目建设。",
+                "因此，0–2 年最合适的表述是“高能见度”，而不是给出一个看似精确的纯 AI 工厂 TAM。合同仍受交付条件约束，资本开支也包含传统云与核心业务，但这些口径缺陷更多影响规模测算，而不是改变需求仍在加速的方向判断。"
+              ]
+            },
+            {
+              title: "3–5 年：方向仍向上，但必须经过三道持续性检验",
+              paragraphs: [
+                "中期不能简单外推近期订单。L2.5 的第一次充分性判断失败，正是因为企业兑现、客户集中和效率弹性是三种不同的失效机制。下钻后得到的组合结论是：企业端已经形成付费与消费，但生产深度和 ROI 仍早；长期合同缓冲了取消风险，却把信用和融资风险集中到少数大客户；单位推理成本快速下降，目前释放的任务量更多，但长期价格—使用弹性仍不可精确测定。",
+                "这意味着 AI 工厂的中期需求更像一条有条件的 S 曲线：只要生产级工作负载持续扩大、客户融资未出现系统性断裂、总任务量增速继续高于单位资源下降，需求仍会向上；反之，任何一个条件转弱都可能显著压低斜率，却不一定立即令需求绝对下降。"
+              ]
+            },
+            {
+              title: "最终判断：S 曲线成立，但结论必须带边界",
+              paragraphs: [
+                "IEA 基准情景预计全球数据中心用电由 2024 年约 415 TWh 增至 2030 年约 945 TWh，隐含年复合增速约 14.7%；同时，电网约束可能使约 20% 的计划容量延迟接入。{{iea}}{{ieaGrid}} 这组数据很好地概括了本报告的结论：需求空间足够大且仍在扩张，但实际兑现路径会被基础设施、效率和客户经济性重新塑形。",
+                "所以当前结论不是“未来五年线性高增长”，而是“近期高能见度、中期条件性上行”。这一判断已经足以支持后续供给侧和 BOM 节点研究，但不足以直接推出任何证券的可投资性，也不能代替公司敞口、估值和风险收益分析。"
+              ]
+            }
+          ]
+        },
+        "AFD-L2-1": {
+          kind: "leaf",
+          thesis: "AI 工厂的需求主体已经从少数超大规模云和前沿模型公司扩展到 AI 云、企业和公共部门，但当前最大的付款能力与边际基础设施需求仍集中在大型平台和模型公司；企业客户数量的增加不能直接等同于同等规模的算力需求。",
+          metrics: [
+            { value: "5 类", label: "已验证的需求主体", note: "超大规模云、AI 云、模型开发者、企业、公共部门", source: "nvda10q" },
+            { value: "3 层", label: "需求角色必须拆分", note: "采购方 → 容量运营方 → 最终使用方", source: "nvda10q" },
+            { value: "数十万", label: "Bedrock 客户规模", note: "覆盖模型公司、初创企业和大型公司", source: "amazonQ2" },
+            { value: "4 份", label: "逐问题独立材料", note: "均已抽取原文位置并复核", source: null }
+          ],
+          sections: [
+            {
+              title: "先定义需求：AI 工厂卖的不是芯片，而是可持续产出的智能服务",
+              paragraphs: [
+                "如果把所有 GPU 采购都当作 AI 工厂需求，研究会在一开始就发生重复计算。NVIDIA 将 AI 工厂描述为覆盖数据摄取、训练、微调和高量推理的系统，其核心产出是 token 形式的智能服务。{{nvdaDefinition}} 因此，本节点识别的需求方不是“谁买过服务器”，而是“谁为训练或推理工作负载承担预算，或者运营承载这些工作负载的容量”。",
+                "在这个口径下，需求链至少有三层：硬件直接采购方、云或 AI 基础设施运营方、最终模型与应用使用方。三者经常重叠，但不能机械合并。例如云厂商既采购硬件又向外出售算力，模型公司可能通过云厂商间接形成 GPU 需求，企业客户则可能只购买 API 或 Copilot 席位。"
+              ]
+            },
+            {
+              title: "当前需求结构：核心资金来源集中，使用场景开始扩散",
+              paragraphs: [
+                "NVIDIA 10-Q 披露，数据中心的最终用户包括超大规模云、AI 云、模型开发者、企业和公共部门，并明确指出直接采购客户与间接最终客户不同。{{nvda10q}} 这说明产业链中“客户集中度”和“终端需求集中度”不是同一个指标：一家 ODM 或云厂商可能代表多个终端工作负载，反过来一个模型公司也可能同时出现在多家云与基础设施供应商的订单中。",
+                "Amazon 的披露提供了需求扩散的具名证据：Anthropic、OpenAI、初创企业以及 Uber、Pinterest 等大型公司都形成了芯片或 AI 平台使用承诺；CoreWeave 则披露客户横跨 AI labs、hyperscalers 和 Bentley、Caterpillar、Grammarly 等企业。{{amazonQ2}}{{coreweave}} 这些案例证明企业需求已经真实存在，但由于未披露可比的用量和合同金额，不能把一个企业客户与一个前沿模型公司视为同等需求单位。"
+              ]
+            },
+            {
+              title: "需求侧含义：客户广度改善了持久性，却尚未改变资本主导权",
+              paragraphs: [
+                "从需求持久性看，主体由模型训练扩展到企业推理和公共部门是积极变化，因为工作负载来源更加多元。但从当前资本形成看，大型云平台和前沿模型公司仍掌握最大的融资、采购和部署能力，它们决定了新增数据中心何时开工、采用何种加速器，以及多少容量能够被提前签约。",
+                "因此，本节点的结论是“需求主体已经多元化，但边际支出仍集中”，而不是“企业已成为主要需求方”。要改变这一结论，需要看到企业和公共部门的可比消费额、持续利用率或独立于超大平台的容量合同；现有公开资料尚不足以做这种份额拆分。"
+              ]
+            }
+          ],
+          parentBridge: "本节点为 L1 提供需求边界和去重规则：后续收入、合同与容量数据必须按最终工作负载理解，不能把采购渠道重复计为新增需求。"
+        },
+        "AFD-L2-2": {
+          kind: "leaf",
+          thesis: "AI 工厂需求已经转化为实际使用和收入，而非只停留在资本开支计划。上游数据中心收入、云平台增速以及 token、付费席位和客户支出三类指标同步加速，方向证据较强；但不同平台口径不可相加，无法据此计算纯 AI 收入总额。",
+          metrics: [
+            { value: "$890.23亿", label: "NVIDIA 数据中心季度收入", note: "同比 +117%", source: "nvda10q" },
+            { value: "+43%", label: "Azure 收入增速", note: "新增容量在季度内快速变现", source: "microsoft" },
+            { value: "+37%", label: "AWS 收入增速", note: "AI 与芯片业务各超 250 亿美元年化速度", source: "amazonQ2" },
+            { value: ">3000万", label: "M365 Copilot 付费席位", note: "用于验证企业付费而非试用", source: "microsoft" }
+          ],
+          sections: [
+            {
+              title: "判断真实需求，需要同时看到上游收入、平台收入和工作负载活动",
+              paragraphs: [
+                "单看资本开支无法排除过度建设，单看芯片收入也可能混入涨价、产品代际和渠道库存。本节点因此采用三层验证：第一层是加速计算供应商的已实现收入；第二层是云平台收入；第三层是 token、高用量客户、付费席位和客户支出等工作负载指标。只有三层方向一致，才足以判断需求已经进入使用阶段。",
+                "NVIDIA 数据中心季度收入达到 890.23 亿美元、同比增长 117%，其中 AI Clouds / Industrial / Enterprise 收入为 403.13 亿美元、同比增长 138%。{{nvda10q}} 这证明上游 sell-through 非常强，但收入同时受产品结构和价格影响，所以它只能作为第一层证据，不能单独代表终端使用量。"
+              ]
+            },
+            {
+              title: "云收入与产品消费补足了终端使用证据",
+              paragraphs: [
+                "Microsoft 披露 Azure 增长 43%，新增容量在季度内快速变现；达到年化 1 万亿 token 的 Foundry 客户数同比增长 4 倍，M365 Copilot 付费席位超过 3000 万。{{microsoft}} 这组数据的价值在于同时覆盖平台收入、重度 token 使用与企业付费，降低了“收入增长只来自硬件涨价”的解释力度。",
+                "Amazon 同期披露 AWS 收入增长 37%，AI 与芯片业务各自超过 250 亿美元年化收入速度，Bedrock 在 Q2 的客户支出高于此前所有季度合计。{{amazonQ2}} 年化速度不是独立 GAAP 分部，Bedrock 也没有公开绝对支出额，但客户消费加速度与 AWS 收入方向一致，进一步确认实际工作负载在扩大。"
+              ]
+            },
+            {
+              title: "为什么不能把这些数字相加，但仍可以判断加速",
+              paragraphs: [
+                "NVIDIA 的收入是供应商口径，Azure 和 AWS 是平台口径，Copilot 席位与 Bedrock 支出又是产品口径。同一工作负载可能同时贡献给多层收入，若直接加总会严重重复计算；而 Azure 与 AWS 又包含传统云，因此也不能反推出纯 AI 市场规模。",
+                "但本节点只回答“实际使用和收入是否在加速”，并不要求精确 TAM。三家公司、三个产业位置、四类实际指标均指向更高的使用和收入，且新增容量能够快速变现，因此证据足以通过。未来若云增速放缓、重度 token 客户不再增长或新增容量利用率下降，应重新打开本节点。"
+              ]
+            }
+          ],
+          parentBridge: "本节点关闭了“只建设、不使用”的核心反证，使 L1 可以把当前扩容解释为真实工作负载驱动，而非单纯的资本市场叙事。"
+        },
+        "AFD-L2-3": {
+          kind: "leaf",
+          thesis: "需求已经转化为大额资本开支、多年合同和待履约义务，近期建设具有客户与预算支持。合同能见度延伸至 2027–2028 年以后，但 RPO、backlog 和资本开支口径包含非 AI 业务且存在上下游重叠，适合判断强度，不适合求和计算纯 AI TAM。",
+          metrics: [
+            { value: "$4960亿", label: "AWS 客户未来履约义务", note: "包含非 AI 云服务", source: "amazon10q" },
+            { value: "$6780亿", label: "Microsoft 商业 RPO", note: "同比 +84%", source: "microsoft" },
+            { value: "$6380亿", label: "Oracle RPO", note: "由 5530 亿美元继续上升", source: "oracle" },
+            { value: "$1040亿", label: "CoreWeave 收入 backlog", note: "另有超过 250 亿美元新增承诺", source: "coreweave" }
+          ],
+          sections: [
+            {
+              title: "资本开支说明建设意愿，合同与 RPO 才说明需求约束",
+              paragraphs: [
+                "AI 基础设施周期最容易误判的地方，是把巨额资本开支自动解释为终端需求。资本开支首先反映供给方愿意建设，只有与客户承诺、RPO 或收入 backlog 同时出现，才能说明未来容量并非完全建立在未验证需求上。本节点因此把投入端和订单端并列分析。",
+                "Amazon 计划 2026 年资本开支约 2000 亿美元，并称 AWS 很大一部分当年资本开支已经有客户承诺，预计多在 2027–2028 年形成收入。{{amazonLetter}} Microsoft 单季资本开支 410 亿美元，其中约三分之二投向 CPU、GPU 等短寿命资产，同时商业 RPO 达到 6780 亿美元、同比增长 84%。{{microsoft}} 这两组披露表明资金投入与远期收入机会之间存在明确连接。"
+              ]
+            },
+            {
+              title: "多年合同把能见度拉长，但兑现依赖容量交付",
+              paragraphs: [
+                "Amazon 10-Q 披露 AWS 客户未来履约义务约 4960 亿美元，其中 OpenAI 协议新增约 1000 亿美元、期限 8 年，Anthropic 协议新增超过 1000 亿美元、期限 10 年。{{amazon10q}} 这些 AI 专属协议比全公司 RPO 更直接，说明头部客户愿意用多年承诺锁定算力和云容量。",
+                "Oracle RPO 由 5530 亿美元升至 6380 亿美元，Q4 IaaS 收入增长 93%；CoreWeave 6 月末收入 backlog 约 1040 亿美元，三季度初又新增超过 250 亿美元客户承诺。{{oracle}}{{coreweave}} 这些数据将合同覆盖从 hyperscaler 延伸到 AI 基础设施运营商，但确认收入仍取决于数据中心、电力和服务能力按期交付。"
+              ]
+            },
+            {
+              title: "重叠和混合口径决定了这些数字只能验证方向",
+              paragraphs: [
+                "AWS 的 RPO、Microsoft 的商业 RPO、Oracle 的 RPO 与 CoreWeave backlog 并不是四份互不重叠的终端需求。同一个模型公司的需求可能先形成云合同，再形成基础设施租赁与芯片采购；将这些数字相加，会把同一条需求链重复计算多次。",
+                "此外，Amazon、Microsoft 和 Meta 的资本开支同时支持传统云、广告、推荐系统和其他核心业务。Meta 预计 2026 年资本开支 1300–1450 亿美元，并披露云容量义务和多年采购支持资金，但这些不能全部归为 AI 工厂。{{meta10q}} 因此，本节点能得出的专业结论是“资本与合同承诺强、持续期长”，而不是“纯 AI 市场规模等于若干千亿美元之和”。"
+              ]
+            },
+            {
+              title: "风险含义：合同降低需求取消风险，却提高交付和信用风险的重要性",
+              paragraphs: [
+                "多年合同把近期需求从可选支出转化为更高可见度的承诺，但风险并没有消失，只是从“有没有需求”迁移到“客户能否履约、供应商能否交付、融资能否持续”。如果电力或数据中心延期，收入确认会后移；如果头部客户融资承压，远期合同价值也可能折价。",
+                "这正是本节点通过但保留边界的原因：现有一手披露足以判断未来两到数年的建设不是无客户投机，但不足以判断所有承诺都能按原时间和原金额兑现。"
+              ]
+            }
+          ],
+          parentBridge: "本节点把 L1 的近期需求从当期使用延伸到多年预算和合同，为“0–2 年高能见度”提供主要依据，同时把交付和对手方风险传递给 L2.5。"
+        },
+        "AFD-L2-4": {
+          kind: "leaf",
+          thesis: "全球数据中心用电和头部平台 GW 级容量仍处在快速扩张通道，基准情景支持 2030 年前需求持续增长。电网接入和效率改善会显著改变兑现速度，因此未来空间应表达为方向与情景区间，而不是单点容量或纯 AI TAM。",
+          metrics: [
+            { value: "415→945 TWh", label: "全球数据中心用电", note: "2024–2030 IEA 基准情景", source: "iea" },
+            { value: "≈14.7%", label: "隐含年复合增速", note: "由 415→945 TWh 推导，非来源原值", source: "iea" },
+            { value: "+17%", label: "2025 年实际用电增速", note: "与此前预测大体一致", source: "iea2026" },
+            { value: "约20%", label: "可能延迟接入的计划容量", note: "电网约束，延迟不等于取消", source: "ieaGrid" }
+          ],
+          sections: [
+            {
+              title: "从已发生数据出发，需求并未只存在于远期预测",
+              paragraphs: [
+                "长期行业预测经常高估拐点，因此本节点先寻找实际基线。IEA 记录 2025 年全球数据中心用电需求增长 17%，与此前预测大体一致。{{iea2026}} 这并不能拆分 AI 与传统云，但至少说明数据中心这一实物载体已经出现明显增长，而不是只有 2030 年的纸面情景。",
+                "在此基础上，IEA 基准情景预计全球数据中心用电由 2024 年约 415 TWh 增至 2030 年约 945 TWh，按首尾值推导的年复合增速约为 14.7%；加速服务器用电基准增速约 30% / 年。{{iea}} 加速服务器明显快于整体数据中心，是 AI 工作负载贡献核心增量的直接线索。"
+              ]
+            },
+            {
+              title: "平台扩容计划与用电情景相互印证",
+              paragraphs: [
+                "AWS 2025 年新增 3.9GW 电力容量，并计划到 2027 年底将总电力容量翻倍；管理层称容量上线后能够快速变现，且仍有未满足需求。{{amazonLetter}} Microsoft 单季新增约 1GW 容量，计划两年内把整体容量约翻倍，并称需求明显超过可用供给。{{microsoft}}",
+                "公司披露容易带有乐观偏差，但 AWS 与 Microsoft 的独立计划同向，且与 IEA 的实际用电增速和中期情景相符。这种“宏观实物数据 + 微观容量计划”的交叉验证，比单独引用某一机构 TAM 更能说明需求持续性。"
+              ]
+            },
+            {
+              title: "电网是兑现节奏约束，不应被误读为需求取消",
+              paragraphs: [
+                "IEA 估计，电网约束可能使计划在 2030 年前建设的全球数据中心容量约 20% 延迟接入。{{ieaGrid}} 对产业链而言，这会使服务器部署、设备收入和云容量上线时间后移，造成季度或年度波动；但只要最终客户需求与融资仍在，延迟并不自动等于项目永久取消。",
+                "与此同时，效率提升会降低单位任务所需电力，使 2035 年远期用电情景显著分叉。因此，本节点拒绝用 945 TWh 直接外推单一长期收入曲线，而是把它视为基准路径，并让电网、采用速度和效率分别承担下行情景。"
+              ]
+            },
+            {
+              title: "持续性判断：增长方向清晰，远期斜率不确定",
+              paragraphs: [
+                "实际用电增长、加速服务器高增速和两家头部平台 GW 级扩容共同支持 2030 年前的上行方向。公开资料不足以精确拆分纯 AI 容量，也缺少区域利用率序列，但这些缺口不会推翻“实物基础设施仍在扩张”的回答。",
+                "真正需要监测的是投运而非公告：新增容量能否按期接电、上线后是否快速被使用、以及单位工作负载效率改善是否持续快于任务量增长。若其中两项同时转弱，本节点应重新打开。"
+              ]
+            }
+          ],
+          parentBridge: "本节点为 L1 提供中期实物上限和兑现约束：方向支持 S 曲线继续，但电网与效率要求父结论放弃单点长期预测。"
+        },
+        "AFD-L2-5": {
+          kind: "parent",
+          thesis: "AI 工厂需求的三条主要断点——企业商业化深度、客户与融资集中、效率后的净需求弹性——目前均不足以推翻上行方向，但三者会共同决定 3–5 年增长斜率，因此中期判断只能是条件性上行。",
+          sections: [
+            {
+              title: "为什么第一次回答不充分：三个风险不能共用一个摘要",
+              paragraphs: [
+                "“需求可能不持久”本身不是一个可直接取证的问题。企业是否愿意持续付费，需要席位、消费和 ROI 数据；客户集中是否危险，需要合同保护、集中度和融资结构；效率是否压低需求，则需要单位任务成本与总任务量的对比。三类风险的指标、因果机制和反证完全不同。",
+                "因此，本节点第一次充分性闸门没有通过，而是只创建三个最小 L3。每个 L3 均从自身问题出发重新指定数据、附着来源并完成复核，父节点不拥有一套可以批量分发给子问题的宽泛材料池。"
+              ]
+            },
+            {
+              title: "三条断点的当前状态：都有风险，但没有一条已经反转",
+              paragraphs: [
+                "企业端方面，超过 3000 万 Copilot 付费席位、Foundry 收入翻倍和 Bedrock 客户支出加速证明商业化已经发生；但代理在多数业务职能仍为个位数部署，跨行业 ROI 也缺乏同口径序列。客户结构方面，CoreWeave 三大客户占 Q2 收入 72%，显示高度集中；同时 98% 收入来自客户承诺，Microsoft 约九成云收入来自前沿模型公司之外，说明合同保护和需求扩散也真实存在。",
+                "效率方面，近似 GPT-3.5 能力的推理价格由每百万 token 20 美元降至 0.07 美元，单位成本压缩极快；但 Microsoft 吞吐提升、Azure 增长和 AWS token / 芯片预订显示任务量扩张目前更快。三项证据共同指向“斜率风险”，尚未形成“绝对需求下降”的证据。"
+              ]
+            },
+            {
+              title: "风险之间存在联动，不能逐项孤立外推",
+              paragraphs: [
+                "最值得警惕的并不是某个单项指标，而是三项风险同时恶化。例如效率改善若未能带来更多使用，企业 ROI 就可能弱于预期；ROI 转弱又会降低企业扩席和云消费，最终把需求重新压回少数融资驱动的模型公司，放大集中度风险。",
+                "相反，如果单位成本下降持续释放新任务、企业付费从席位扩展到生产级代理、需求主体继续向前沿模型公司之外扩散，那么效率改善反而会延长 S 曲线。父节点因此不对三项风险做简单加总，而是把它们作为一组互相影响的持续性条件。"
+              ]
+            },
+            {
+              title: "汇总结论：近期不被推翻，中期需要持续验证",
+              paragraphs: [
+                "三个 L3 均通过各自充分性门槛，所以 L2.5 可以关闭：现有反证足以限制乐观程度，却不足以否定当前需求扩张。父结论应把 0–2 年和 3–5 年分开，前者更多由已签合同和正在变现的容量支撑，后者取决于生产级 ROI、融资韧性和价格—使用弹性。",
+                "未来刷新顺序应当先看企业付费消费与代理生产部署，再看头部客户融资和容量利用率，最后比较单位推理成本下降与总 token / 收入增长。若企业深度和总量弹性同时转弱，应重新打开 L1，而不是继续沿用本次结论。"
+              ]
+            }
+          ]
+        },
+        "AFD-L3-5-1": {
+          kind: "leaf",
+          thesis: "企业 AI 商业化已经真实发生，付费席位、平台消费和采用率均明显增长；但当前更接近“广度快速扩散、生产深度仍早”的阶段。公开证据足以确认企业需求不是纯 PoC，却不足以证明大多数企业已经获得稳定、高水平 ROI。",
+          metrics: [
+            { value: ">3000万", label: "M365 Copilot 付费席位", note: "大型机构扩至 6 万–50.5 万席位", source: "microsoft" },
+            { value: "10万", label: "Microsoft Foundry 客户", note: "收入同比翻倍", source: "microsoft" },
+            { value: "8.7→20.2%", label: "OECD 企业 AI 使用率", note: "2023–2025，提升 11.5 个百分点", source: "oecd" },
+            { value: "88% / <10%", label: "采用广度 / 多数职能代理部署", note: "至少一个职能使用 AI；多数职能代理部署仍为个位数", source: "stanford2026" }
+          ],
+          sections: [
+            {
+              title: "第一层验证：企业是否从试用跨入真实付费",
+              paragraphs: [
+                "企业 AI 需求最容易被高估的指标是“试用客户数”。本节点首先寻找不可逆程度更高的付费和扩席数据。Microsoft 披露 M365 Copilot 付费席位超过 3000 万，多个大型机构已扩至 6 万至 50.5 万席位；Foundry 客户达到 10 万，收入同比翻倍。{{microsoft}} 这些指标不能证明最终 ROI，但足以说明部分企业已从小规模试验进入预算化采购。",
+                "Amazon 的证据来自消费而非席位：Bedrock 已有数十万客户，最近六个月新增客户多于上线后最初两年，且 Q2 客户支出高于此前所有季度合计。{{amazonQ2}} 这表明客户不仅在注册或测试，至少一部分正在显著提高调用和消费。"
+              ]
+            },
+            {
+              title: "第二层验证：广泛采用并不等于生产级深度",
+              paragraphs: [
+                "OECD 的可比统计显示，企业 AI 使用率由 2023 年 8.7% 升至 2025 年 20.2%，两年提升 11.5 个百分点，水平约为原来的 2.3 倍；大企业采用率为 52%，小企业为 17.4%。{{oecd}} 规模差异说明 AI 采用仍受预算、数据、人才和系统整合能力约束，大企业更容易把试验转成持续投入。",
+                "Stanford AI Index 的调查进一步揭示广度与深度差异：88% 的组织至少在一个职能使用 AI，79% 经常使用生成式 AI，但代理在多数业务职能的部署仍为个位数。{{stanford2026}} 这意味着“组织已采用”主要证明覆盖面，不能自动推导核心流程已经重构，更不能直接推导高算力强度。"
+              ]
+            },
+            {
+              title: "第三层验证：收入兑现存在，ROI 兑现仍缺少统一证据",
+              paragraphs: [
+                "Foundry 收入翻倍和 Bedrock 支出加速说明平台端已经收到钱，Copilot 扩席说明企业愿意支付。但公司没有单独披露 Copilot 利润率、生产环境占比或客户 ROI 分布，第三方调查中的成本节省和收入提升又高度依赖样本与自报口径。",
+                "因此，研究不能从“付费发生”跳到“投资回报已经广泛成立”。更严谨的判断是：商业化越过零到一，但从工具使用扩展到自主代理、核心流程和可量化利润贡献，仍处于早期。对 AI 工厂需求而言，这意味着企业端已经提供增量，却尚未成为可以无条件外推的中期主引擎。"
+              ]
+            },
+            {
+              title: "充分性与监测：为什么本轮停止下钻",
+              paragraphs: [
+                "本节点要回答的是“企业采用是否已经转成生产级付费与回报”。现有席位、平台收入、客户支出、采用率和部署深度足以回答前半部分：付费和生产使用确实存在；ROI 证据则只能支持“局部兑现、整体仍早”。这个有边界的答案已经能够关闭父节点的具体缺口。",
+                "尚未解决的是跨行业、同口径、可连续跟踪的 ROI 序列。由于这一缺口不会推翻“商业化已经发生但深度不足”的当前结论，本轮不再创建 L4，而将其设为季度刷新项。"
+              ]
+            }
+          ],
+          parentBridge: "本节点告诉 L2.5：企业需求不是纯试验，但还不能承担无条件的五年外推；父节点应把企业生产级深度列为中期增长条件。"
+        },
+        "AFD-L3-5-2": {
+          kind: "leaf",
+          thesis: "AI 基础设施需求正在向更广客户扩散，但收入、远期合同和融资仍高度集中。长期承诺能缓冲近期取消风险，却不能消除头部客户信用、项目延期和再融资压力；一旦少数客户失速，行业回撤可能被非线性放大。",
+          metrics: [
+            { value: "22% + 14%", label: "NVIDIA FY2026 两大直接客户占比", note: "直接采购者不等于最终客户", source: "nvdaAnnual" },
+            { value: "72%", label: "CoreWeave Q2 前三大客户占比", note: "36% + 26% + 10%", source: "coreweave10q" },
+            { value: "98%", label: "CoreWeave 承诺型收入占比", note: "增强近期保护，不消除信用风险", source: "coreweave10q" },
+            { value: "约90%", label: "Microsoft 云收入来自前沿模型公司之外", note: "公司层面的扩散证据", source: "microsoft" }
+          ],
+          sections: [
+            {
+              title: "集中度确实很高，但必须先分清直接客户与最终需求",
+              paragraphs: [
+                "NVIDIA FY2026 两家直接客户分别占收入 22% 和 14%，Q2 FY2027 一家直接客户占总收入 16%。{{nvdaAnnual}}{{nvda10q}} 这些数字显示销售渠道高度集中，但 NVIDIA 同时说明直接采购者与间接最终客户不同。直接客户可能是云厂商、ODM 或分销通道，其背后承载多个终端工作负载，因此不能把直接客户占比原样解释为最终 AI 需求集中度。",
+                "CoreWeave 的披露更接近基础设施运营商的收入集中：Q2 三大客户分别占收入 36%、26% 和 10%，合计 72%。{{coreweave10q}} 这意味着单一客户的项目节奏、信用变化或战略调整都可能显著影响收入和利用率，是比一般 SaaS 客户集中更强的尾部风险。"
+              ]
+            },
+            {
+              title: "长期合同提供缓冲，但风险只是被重新分配",
+              paragraphs: [
+                "CoreWeave 同时披露 98% 收入来自客户承诺。{{coreweave10q}} take-or-pay 或类似安排降低了客户短期削减用量对收入的直接冲击，也帮助供应商为数据中心建设融资。单看这一指标，近期收入保护很强。",
+                "但合同无法凭空创造对手方偿付能力。如果客户依赖外部融资、模型收入未按预期增长或项目受电力与交付延迟影响，风险会从“用量下降”转成“合同重谈、信用损失、再融资困难或资产闲置”。NVIDIA 在风险因素中主动提示客户融资、基础设施延迟和对手方财务压力，说明这一传导并非纯理论风险。{{nvdaAnnual}}"
+              ]
+            },
+            {
+              title: "需求扩散正在发生，但尚不足以抵消行业尾部集中",
+              paragraphs: [
+                "Microsoft 披露全年云收入约九成来自前沿模型公司之外，当季 RPO 的顺序增长也全部来自这类客户。{{microsoft}} 这说明至少在 Microsoft 平台，需求并非只由少数 frontier labs 驱动，企业和更广客户群正在贡献新增合同。",
+                "然而，这是一家平台的业务结构，不能外推为整个 AI 基础设施行业已经分散。模型公司、云平台、GPU 供应商和 AI 云之间还存在交叉合同与间接客户，公开资料无法建立无重复的终端集中度矩阵。因此，扩散证据降低了系统性风险概率，却不能否定少数大客户失速会放大行业波动。"
+              ]
+            },
+            {
+              title: "组合判断：合同保护短期，集中决定尾部",
+              paragraphs: [
+                "对未来 0–2 年，已签承诺意味着需求突然归零的可能性较低；对 3–5 年，合同到期、客户融资和终端变现能力的重要性会上升。集中度越高，行业就越可能表现为“平时能见度很好、压力情景下回撤很快”。",
+                "所以本节点既不接受“有 take-or-pay 就没有风险”，也不接受“客户集中就等于泡沫”。最合理的结论是：近期合同保护较强，远期存在真实的非线性回撤风险，需要持续跟踪客户融资、合同修改、项目延期和容量利用率。"
+              ]
+            }
+          ],
+          parentBridge: "本节点告诉 L2.5：合同把近期需求锁住，但也把风险集中到少数对手方；父节点必须把融资与利用率作为中期 S 曲线的条件。"
+        },
+        "AFD-L3-5-3": {
+          kind: "leaf",
+          thesis: "单位推理成本和 GPU 使用效率正在快速改善，但截至当前，任务量、云收入和新增容量变现的增长更快，总需求净方向仍偏正。效率会降低长期需求斜率并扩大预测区间，现有数据不足以估计跨厂商、跨工作负载的精确价格弹性。",
+          metrics: [
+            { value: "$20→$0.07", label: "近似 GPT-3.5 能力推理价格", note: "每百万 token，约下降 99.65%", source: "stanford2025" },
+            { value: "4×", label: "Microsoft Copilot 吞吐提升", note: "同年新增容量仍快速变现", source: "microsoft" },
+            { value: "-84%至-89%", label: "部分工作负载 GPU 成本", note: "Dynamics / PowerPoint", source: "microsoft" },
+            { value: "-20%", label: "IEA 高效率情景相对基准用电", note: "2035 年敏感性结果", source: "iea" }
+          ],
+          sections: [
+            {
+              title: "第一性原理：总需求取决于单位资源与任务量的乘积",
+              paragraphs: [
+                "讨论效率是否压低 AI 工厂需求，需要使用一个简单但严格的框架：<strong>总算力需求 ≈ 单位任务所需算力 × 任务总量</strong>。效率改善直接降低第一项，但更低价格和更好体验可能扩大第二项。只有比较两者的相对变化，才能判断净需求，而不能把芯片或模型效率提升机械等同于基础设施需求下降。",
+                "Stanford AI Index 显示，达到近似 GPT-3.5 能力的推理价格由 2022 年每百万 token 20 美元降至 2024 年 0.07 美元，约下降 99.65%，或便宜约 286 倍。{{stanford2025}} 这一指标还受模型结构与市场定价影响，不是纯硬件能效，但足以证明用户面对的单位智能成本发生了数量级下降。"
+              ]
+            },
+            {
+              title: "当前观测：效率改善与总使用增长同时发生",
+              paragraphs: [
+                "Microsoft 年内将 Copilot 工作负载吞吐提高 4 倍，并将部分 Dynamics / PowerPoint 工作负载的 GPU 成本降低 84%–89%；同一时期 Azure 增长 43%，新增容量仍能快速变现。{{microsoft}} 如果效率提升只带来算力节省而没有新使用，平台容量需求理应走弱；实际数据却显示效率和收入、容量利用同步增长。",
+                "Amazon 的证据方向相同：Trainium 代际持续提升价格性能，但 Trainium2 大体售罄、Trainium3 近乎满订，Bedrock Q1 token 量超过此前所有年份合计。{{amazonLetter}} 这说明至少在当前阶段，价格性能提升释放的新工作负载超过了单位任务资源下降带来的压缩。"
+              ]
+            },
+            {
+              title: "为什么不能直接宣布 Jevons 效应永久成立",
+              paragraphs: [
+                "上述证据来自不同产品和不同指标：吞吐、GPU 成本、Azure 收入、Trainium 预订和 Bedrock token 没有共同基期，也无法建立统一价格—使用曲线。它们足以判断方向，却不足以估算需求弹性，更不能证明任务量会永远以快于效率的速度增长。",
+                "IEA 的高效率情景显示，2035 年数据中心用电可能比基准情景低 20%，全部情景范围约 700–1700 TWh。{{iea}} 这说明效率对长期实物需求有实质影响。即便总需求继续增长，其斜率、设备更新节奏和电力强度仍可能明显低于基准。"
+              ]
+            },
+            {
+              title: "净判断：当前弹性偏正，长期幅度未知",
+              paragraphs: [
+                "现有证据支持一个有限结论：单位智能成本快速下降的同时，token、云收入和容量使用增长更快，净需求方向仍偏正。效率更像是在降低单位成本、打开新场景，并部分压低基础设施增速，而不是立即令总需求见顶。",
+                "本节点不继续下钻，是因为缺少精确弹性并不会改变当前方向判断；但它会限制五年预测的精度。未来应以同一平台、同一工作负载的单位成本和总 token / 收入序列为优先监测数据，一旦任务量增速持续低于单位资源下降，父节点的中期结论就需要下调。"
+              ]
+            }
+          ],
+          parentBridge: "本节点告诉 L2.5：效率目前没有抵消总需求，但足以改变中期斜率；父结论应采用条件性增长和情景区间，不能线性外推。"
+        }
+      };
+
       const nodeById = new Map(nodes.map((node) => [node.id, node]));
       const childrenByParent = new Map();
 
@@ -1378,19 +1900,8 @@
                 </tr>`).join("")}</tbody>
             </table>`;
         }
-
-        const uniqueSources = new Set(evidence.map((item) => item.source)).size;
-        const firstParty = evidence.filter((item) => ["官方财报", "公司披露", "公司官网"].includes(sourceMeta[item.source].type)).length;
-        const support = evidence.filter((item) => item.effect === "support").length;
-        const contrary = evidence.length - support;
         return `
-          <p class="section-lead">搜集动作直接绑定 ${node.id}；每份材料都单独抽取、记录原文位置、标注作用方向，再经 GPT 复核。下表不是来源摘要，而是用于回答本问题的关键数据。</p>
-          <div class="collection-summary">
-            <div class="summary-stat"><strong>${uniqueSources}</strong><span>独立来源</span></div>
-            <div class="summary-stat"><strong>${evidence.length}</strong><span>逐问题证据抽取</span></div>
-            <div class="summary-stat"><strong>${firstParty}</strong><span>一手披露条目</span></div>
-            <div class="summary-stat"><strong>${contrary}</strong><span>反证 / 边界条目</span></div>
-          </div>
+          <p class="evidence-caption">原始证据底稿 · ${node.id} × ${evidence.length} 条逐问题抽取 · 每条均保留原文位置、口径限制和复核编号</p>
           <div class="evidence-wrap" tabindex="0" aria-label="${node.id} 关键证据表">
             <table class="evidence-table">
               <thead><tr><th>材料与原文定位</th><th>抽取的关键数据 / 事实</th><th>作用</th><th>口径限制与反向解释</th></tr></thead>
@@ -1399,12 +1910,38 @@
           </div>`;
       }
 
-      function analysisMarkup(chapter) {
+      function richText(text) {
+        return text.replace(/\{\{([a-zA-Z0-9]+)\}\}/g, (_, key) => {
+          if (!sources[key]) return "";
+          const [label, url] = sources[key];
+          return `<cite class="inline-cite">〔<a href="${url}">${label}</a>〕</cite>`;
+        });
+      }
+
+      function metricMarkup(article) {
+        if (!article.metrics?.length) return "";
+        return `<div class="metric-ribbon">${article.metrics.map((metric) => {
+          const citation = metric.source && sources[metric.source]
+            ? `<a href="${sources[metric.source][1]}">${sources[metric.source][0]}</a>`
+            : "研究台账";
+          return `
+            <div class="metric-cell">
+              <span class="metric-value">${metric.value}</span>
+              <span class="metric-label">${metric.label}</span>
+              <span class="metric-note">${metric.note} · ${citation}</span>
+            </div>`;
+        }).join("")}</div>`;
+      }
+
+      function articleMarkup(article) {
         return `
-          <ol class="analysis-flow">${chapter.steps.map(([title, text]) => `
-            <li><div><strong>${title}</strong><p>${text}</p></div></li>`).join("")}
-          </ol>
-          <p class="logic-result">推理落点：${chapter.result}</p>`;
+          <div class="article-copy">${article.sections.map((section) => `
+            <section>
+              <h4>${section.title}</h4>
+              ${section.paragraphs.map((paragraph) => `<p>${richText(paragraph)}</p>`).join("")}
+            </section>`).join("")}
+          </div>
+          ${article.parentBridge ? `<div class="parent-bridge"><strong>对父问题的贡献</strong>${article.parentBridge}</div>` : ""}`;
       }
 
       function scopeMarkup(node, chapter) {
@@ -1419,7 +1956,11 @@
 
       function detailMarkup(node) {
         const chapter = chapterByNode[node.id];
-        const dataTitle = chapter.mode === "rollup" ? "子节点输入与汇总依据" : "数据搜集与关键证据";
+        const article = articleByNode[node.id];
+        const isParent = article.kind === "parent";
+        const scopeTitle = isParent ? "汇总问题与口径" : "研究问题与口径";
+        const dataTitle = isParent ? "下层结论与汇总依据" : "核心数据与原始证据";
+        const analysisTitle = isParent ? "综合分析" : "分析正文";
         return `
           <article class="node-detail" data-active-node="${node.id}">
             <p class="breadcrumb">${breadcrumb(node)}</p>
@@ -1430,24 +1971,25 @@
               </div>
               <span class="status-badge${node.expanded ? " expanded" : ""}">${node.status}</span>
             </div>
+            <div class="research-abstract"><span>${isParent ? "Synthesis view" : "Research conclusion"}</span><p>${article.thesis}</p></div>
             <nav class="chapter-index" aria-label="本节点章节目录">
-              <button type="button" data-section="scope-${node.id}">01 研究定义</button>
+              <button type="button" data-section="scope-${node.id}">01 ${scopeTitle}</button>
               <button type="button" data-section="data-${node.id}">02 ${dataTitle}</button>
-              <button type="button" data-section="analysis-${node.id}">03 分析过程</button>
+              <button type="button" data-section="analysis-${node.id}">03 ${analysisTitle}</button>
               <button type="button" data-section="conclusion-${node.id}">04 结论与充分性</button>
             </nav>
             <section class="chapter-section" id="scope-${node.id}">
-              <div class="section-heading"><span class="section-number">01</span><h3>研究定义</h3></div>
+              <div class="section-heading"><span class="section-number">01</span><h3>${scopeTitle}</h3></div>
               ${scopeMarkup(node, chapter)}
             </section>
             <section class="chapter-section" id="data-${node.id}">
               <div class="section-heading"><span class="section-number">02</span><h3>${dataTitle}</h3></div>
+              ${metricMarkup(article)}
               ${evidenceMarkup(node, chapter)}
             </section>
             <section class="chapter-section" id="analysis-${node.id}">
-              <div class="section-heading"><span class="section-number">03</span><h3>分析过程</h3></div>
-              <p class="section-lead">以下步骤说明数据如何被转化为判断，并明确哪些口径不能比较、哪些替代解释必须保留。</p>
-              ${analysisMarkup(chapter)}
+              <div class="section-heading"><span class="section-number">03</span><h3>${analysisTitle}</h3></div>
+              ${articleMarkup(article)}
             </section>
             <section class="chapter-section" id="conclusion-${node.id}">
               <div class="section-heading"><span class="section-number">04</span><h3>结论与充分性判断</h3></div>
@@ -1494,6 +2036,9 @@
             document.getElementById(button.dataset.section)?.scrollIntoView({ behavior: "smooth", block: "start" });
           });
         });
+        if (updateHash) {
+          detailPane.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
         if (updateHash && window.location.hash !== `#${node.id}`) {
           history.replaceState(null, "", `#${node.id}`);
         }

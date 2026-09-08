@@ -1,0 +1,23 @@
+{
+  "skill_name": "ima-single-day-bom-scan",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "把 IMA 环球研报直通车 2026-07-27 目录全部研报用鼠标点下来，只做中央归档。",
+      "expected_output": "使用可见 IMA UI 完整枚举日期目录，逐项点击下载，导入 source/ima/2026/07/27 并验证中央清单。",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "补齐昨天 IMA 原始 source，API 很慢，不要再走接口。",
+      "expected_output": "明确禁止 API 下载，复用已登录页面，通过可见下载按钮补齐缺失 PDF，并按既有记录幂等对账。",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "扫描 7 月 27 日 IMA 并把相关报告解析到 GPU/ASIC 账本。",
+      "expected_output": "先仅完成 UI 中央归档并清楚区分下游 BOM 路由；未经用户继续授权不把中央归档步骤混同为解析完成。",
+      "files": []
+    }
+  ]
+}

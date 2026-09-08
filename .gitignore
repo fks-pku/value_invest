@@ -1,5 +1,7 @@
 .DS_Store
-.agents/
+.agents/*
+!.agents/skills/
+!.agents/skills/**
 .worktrees
 .worktrees/
 __pycache__/
