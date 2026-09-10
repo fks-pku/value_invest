@@ -26,7 +26,8 @@ Follow the hexagonal dependency rule in `docs/architecture/hexagonal_research_sy
 - `src/value_invest_research/adapters/`: file system, Exa/search, LLM/DeepSeek,
   market data, CLI, default HTML, and Markdown audit renderers.
 - `config/source_universes.json`: professional source universe registry.
-- `skills/value_invest_research/`: canonical workflow and presentation contracts.
+- `.agents/skills/dynamic-research-agent/SKILL.md`: the sole investment research skill.
+- `skills/value_invest_research/frameworks/`: existing data, domain, quality, and presentation contracts, not separate skills.
 
 New topics enter through:
 
@@ -44,7 +45,9 @@ Historical backtest is the default unless the user explicitly asks for live/curr
 
 ### 2. Build the internal question architecture
 
-Use `investment-question-architect` and a domain playbook. Internal QA is adaptive to maximum depth five:
+Use `dynamic-research-agent`; reuse a domain playbook when applicable. It directly
+owns decomposition, source planning, parsing, analysis, and sufficiency judgment;
+do not dispatch to retired investment skills. Internal QA is adaptive to maximum depth five:
 
 - L1: research direction.
 - L2: mechanism bucket.
@@ -301,7 +304,7 @@ GPT is the research director and chooses the source universe. For every minimum 
   full question/search trace; L3 search is valid before any gap-triggered expansion,
   but results may never be fanned out across later children;
 - treat messages and opinions as leads unless separately verified;
-- parse long material with the appropriate specialty skill or DeepSeek adapter when available;
+- use `dynamic-research-agent` for question-specific material analysis; an available reading adapter may assist, but GPT verifies the extraction;
 - preserve explicit gaps instead of filling them with model priors.
 
 The same document may be parsed multiple times for different questions. Every parse must use that question's dimensions.
@@ -428,6 +431,14 @@ Backtest recommendations are frozen before future-return labels are attached. La
 
 The sole presentation contract is `skills/value_invest_research/frameworks/research_report_contract.md`.
 
+Dynamic question-driven HTML uses the shared `question-tree-v1` presentation
+profile, matching the AI-factory report: left question tree, right node article,
+fixed four-section leaf/parent structure. Use `CanonicalHtmlReportRenderer` with
+validated `project.question_tree` data; do not invent a new topic-specific HTML/CSS
+layout. This profile is an explicit exception to the default four-H2 HTML shell
+below, not a new research skill. Existing standalone-BOM and industry-index reports
+retain their contracts unless the user requests the question-tree profile.
+
 Default industry/project top-level order is exactly:
 
 1. `当前研究的问题`
@@ -552,7 +563,7 @@ In historical mode:
 Framework changes are persistent unless the user says they are one-off. Update together:
 
 - `AGENTS.md`
-- `skills/value_invest_research/SKILL.md`
+- `.agents/skills/dynamic-research-agent/SKILL.md`
 - `skills/value_invest_research/frameworks/research_goal_qa.md`
 - `skills/value_invest_research/frameworks/research_report_contract.md` for presentation changes
 - relevant domain playbooks for domain-specific question/metric changes

@@ -6,8 +6,16 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class ResearchFrameworkQualityTests(unittest.TestCase):
-    def test_specialty_skills_exist_for_canonical_dispatch(self):
-        required_skills = [
+    def test_dynamic_research_agent_is_the_only_investment_skill(self):
+        path = ROOT / ".agents/skills/dynamic-research-agent/SKILL.md"
+        text = path.read_text(encoding="utf-8")
+        self.assertIn("name: dynamic-research-agent", text)
+        self.assertIn("description:", text)
+        self.assertIn("独立完成研究", text)
+        self.assertIn("专业报告的文章化要求", text)
+        self.assertFalse((ROOT / "skills/value_invest_research/SKILL.md").exists())
+        self.assertEqual(list((ROOT / "skills/value_invest_research/specialty_skills").rglob("SKILL.md")), [])
+        retired_skills = [
             "investment-question-architect",
             "research-source-planner",
             "leaf-research-deepseek",
@@ -19,14 +27,45 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
             "company-exposure-analysis",
             "target-recommendation-analysis",
             "target-ranking-analysis",
+            "conference-transcript-analysis",
+            "event-to-investment-analysis",
+            "ima-single-day-bom-scan",
+            "s-curve-investment-research",
+            "supply-chain-chokepoint-analysis",
+            "supply-chain-panorama-explainer",
+            "quant-research-fks",
+            "quantitative-research",
         ]
-        for skill in required_skills:
-            path = ROOT / "skills" / "value_invest_research" / "specialty_skills" / skill / "SKILL.md"
+        for skill in retired_skills:
             with self.subTest(skill=skill):
-                self.assertTrue(path.exists(), f"missing skill: {path}")
-                text = path.read_text(encoding="utf-8")
-                self.assertIn(f"name: {skill}", text)
-                self.assertIn("description:", text)
+                self.assertFalse((ROOT / ".agents/skills" / skill / "SKILL.md").exists())
+                self.assertNotIn(f"`{skill}`", text)
+
+    def test_one_skill_keeps_material_specific_extraction_and_source_plans(self):
+        from value_invest_research.domain.leaf_research_tasks import (
+            extraction_schema_for_task,
+            selected_skill_for_task_family,
+            source_search_plan_for_task,
+        )
+        from value_invest_research.domain.l3_research_plan import _preferred_skill, _skill_for_source
+        from value_invest_research.meta_qa_research import _meta_selected_skill, _meta_source_plan
+
+        families = ["financial_statement", "valuation", "industry_report", "news_event", "opinion", "target_recommendation", "leaf_research", "unknown"]
+        for family in families:
+            with self.subTest(family=family):
+                self.assertEqual(selected_skill_for_task_family(family), "dynamic-research-agent")
+                self.assertEqual(_meta_selected_skill(family), "dynamic-research-agent")
+                plans = source_search_plan_for_task({"question": "test"}, {}, family) + _meta_source_plan("test", {}, family)
+                self.assertTrue(plans)
+                self.assertEqual({row["preferred_skill"] for row in plans}, {"dynamic-research-agent"})
+        for lens in ["demand", "supply", "technology", "valuation", "esg"]:
+            for dimension in ["baseline", "financial_bridge", "refutation"]:
+                self.assertEqual(_preferred_skill(lens, dimension), "dynamic-research-agent")
+                for source in ["filing", "research", "dataset", "news"]:
+                    self.assertEqual(_skill_for_source(source, dimension), "dynamic-research-agent")
+        self.assertIn("cash_flow_quality", extraction_schema_for_task("financial_statement")["family_specific_fields"])
+        self.assertIn("priced_in_assumptions", extraction_schema_for_task("valuation")["family_specific_fields"])
+        self.assertIn("verification_source", extraction_schema_for_task("news_event")["family_specific_fields"])
 
     def test_canonical_documents_share_one_four_section_contract(self):
         docs = self._canonical_docs()
@@ -53,12 +92,7 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
             "SourceUniverseRepository",
             "direct/Exa",
             "question x source",
-            "financial-statement-analysis",
-            "valuation-analysis",
-            "industry-report-analysis",
-            "news-event-analysis",
-            "opinion-analysis",
-            "leaf-research-deepseek",
+            "dynamic-research-agent",
             "ReportViewModel",
             "CanonicalReportRenderer",
         ]:
@@ -66,7 +100,7 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
                 self.assertIn(phrase, combined)
 
     def test_framework_records_dual_material_intake_contract(self):
-        combined = "\n".join(self._canonical_docs().values())
+        combined = " ".join("\n".join(self._canonical_docs().values()).split())
         for phrase in [
             "material_class",
             "ingestion_channel",
@@ -191,7 +225,6 @@ class ResearchFrameworkQualityTests(unittest.TestCase):
     def _canonical_docs() -> dict[str, str]:
         paths = {
             "AGENTS.md": ROOT / "AGENTS.md",
-            "SKILL.md": ROOT / "skills" / "value_invest_research" / "SKILL.md",
             "research_goal_qa.md": ROOT / "skills" / "value_invest_research" / "frameworks" / "research_goal_qa.md",
             "research_report_contract.md": ROOT / "skills" / "value_invest_research" / "frameworks" / "research_report_contract.md",
         }

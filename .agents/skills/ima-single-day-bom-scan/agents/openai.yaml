@@ -1,4 +1,0 @@
-interface:
-  display_name: "IMA 单日 UI 点击归档"
-  short_description: "逐项点击下载指定 IMA 日期目录的全部 PDF"
-  default_prompt: "使用 $ima-single-day-bom-scan 打开 IMA 可见页面，完整枚举指定日期目录并逐项点击下载，只更新中央 source/ima 归档。"

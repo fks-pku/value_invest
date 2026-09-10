@@ -373,10 +373,7 @@ class HexagonalArchitectureTests(unittest.TestCase):
             for node in architecture.nodes
             if node.level == 3
         }
-        self.assertIn("event-to-investment-analysis", leaf_skills)
-        self.assertIn("conference-transcript-analysis", leaf_skills)
-        self.assertIn("company-exposure-analysis", leaf_skills)
-        self.assertIn("target-ranking-analysis", leaf_skills)
+        self.assertEqual(leaf_skills, {"dynamic-research-agent"})
 
     def test_research_goal_defaults_to_historical_backtest(self):
         goal = ResearchGoal(topic="光模块产业投资机会", research_type="industry")
@@ -587,7 +584,7 @@ class HexagonalArchitectureTests(unittest.TestCase):
 
         self.assertEqual(len(tasks), 1)
         self.assertEqual(tasks[0]["node_id"], "Q1.1.1")
-        self.assertEqual(tasks[0]["selected_skill"], "financial-statement-analysis")
+        self.assertEqual(tasks[0]["selected_skill"], "dynamic-research-agent")
         self.assertEqual(tasks[0]["skill_dispatch_trace"]["skill_output_status"], "pending")
 
     def test_leaf_task_and_answer_use_cases_have_ports(self):

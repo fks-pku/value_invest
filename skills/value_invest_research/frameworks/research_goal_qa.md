@@ -1,6 +1,9 @@
 # Research Goal QA Framework
 
-This is the only active internal research framework. Public presentation is governed by `research_report_contract.md`.
+This document preserves the existing structured research and validation contracts;
+it is not a separate skill. The sole research skill is `dynamic-research-agent`
+at `.agents/skills/dynamic-research-agent/SKILL.md`. Public presentation is governed
+by `research_report_contract.md`.
 
 ## Purpose
 
@@ -30,7 +33,7 @@ Use the playbook to own:
 - L3 decision questions;
 - metric families and threshold rules;
 - source universe aliases;
-- specialty parser routing;
+- material-specific extraction schemas within `dynamic-research-agent`;
 - update triggers and kill tests.
 
 Do not put domain-specific questions into the public presentation contract.
@@ -339,15 +342,12 @@ One broad query cannot stand in for active question-specific research. The reade
 
 Create one extraction per `question x source`. Parse the source against the current question's dimensions, even if the same document was parsed elsewhere. Unparsed intake documents remain pending materials, not support/refute evidence.
 
-Use:
-
-- `financial-statement-analysis`
-- `valuation-analysis`
-- `industry-report-analysis`
-- `news-event-analysis`
-- `opinion-analysis`
-- `company-exposure-analysis`
-- `leaf-research-deepseek` for long selected materials when available
+Use `dynamic-research-agent` for all material types. Preserve `task_family` and
+the question-specific `extraction_schema`: financial statements still require
+accounting and period checks; reports require model and assumption checks; news
+and opinions require independent verification. An available long-document reading
+adapter may assist, but no retired specialty skill is required. Historical skill
+labels remain audit metadata, not the active dispatch registry.
 
 Create one GPT verification record per extraction. Messages/opinions remain leads unless primary evidence verifies them.
 

@@ -250,7 +250,8 @@ domain            -> pure research rules
 - `src/value_invest_research/application/`：研究用例和编排。
 - `src/value_invest_research/ports/`：仓库、搜索、解析和渲染协议。
 - `src/value_invest_research/adapters/`：文件系统、搜索、LLM、市场数据、CLI 和报告渲染。
-- `skills/value_invest_research/`：规范化研究流程、领域框架和公共呈现契约。
+- [dynamic-research-agent](.agents/skills/dynamic-research-agent/SKILL.md)：唯一的投资研究 Skill，逐题取证、分析、判断充分性，再按缺口下钻。
+- `skills/value_invest_research/frameworks/`：保留既有数据、领域、质量和公共呈现契约，不再维护独立专业 Skill。
 - `config/`：来源 universe、材料 feed、研究对象和 provider 配置。
 
 进一步阅读：

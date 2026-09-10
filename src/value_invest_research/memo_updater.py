@@ -12,7 +12,11 @@ SKILLS_DIR = Path(__file__).resolve().parent.parent.parent / "skills" / "value_i
 
 
 def _load_skill_file(relative_path: str) -> str:
-    path = SKILLS_DIR / relative_path
+    path = (
+        SKILLS_DIR.parents[1] / ".agents/skills/dynamic-research-agent/SKILL.md"
+        if relative_path == "SKILL.md"
+        else SKILLS_DIR / relative_path
+    )
     if path.exists():
         return path.read_text(encoding="utf-8")
     return ""
@@ -119,8 +123,8 @@ def _build_user_prompt(ticker: str, context: dict[str, Any]) -> str:
         "Based on the data above, use the single Research Goal QA framework and produce:",
         "",
         "1. **Current Research Goal**: research object, investment relevance, time frame, decision boundary, current constrained judgment, and biggest uncertainty.",
-        "2. **Research Execution Plan**: for L0/L1/L2/L3, state what questions to ask, how to collect information, how to connect information into reasoning, and how to present it.",
-        "3. **QA Drilldown**: use at most three layers; each L3 must include fact, inference, judgment, gap, trigger, and source links.",
+        "2. **Research Execution Plan**: start from one L1 meta-question; state current questions, required data, analysis, and sufficiency criteria. Preserve the existing question tree and its evidence history when updating.",
+        "3. **QA Drilldown**: expand only the necessary next level, never beyond L5. Research each terminal question before drilling deeper on a concrete gap: data, analysis, conclusion, sufficiency judgment, gaps, triggers, and source links. Parents synthesize their children.",
         "4. **Four-Bucket Information Table**: classify every input as evidence, research_report, opinion, or message; mark support/refute/lead.",
         "5. **Proposed Memo Updates**: markdown for memo sections that should change.",
         "6. **Specific Target Observation** (YAML format):",

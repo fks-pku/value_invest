@@ -30,9 +30,62 @@ and link directly to project-local PDF originals. Presentation JavaScript may
 enhance navigation but may not hide research content or fetch evidence at runtime.
 Markdown remains readable as plain text.
 
+## Dynamic Question-Tree Template · question-tree-v1
+
+Dynamic question-driven studies use the repository's `question-tree-v1` reading
+profile, extracted from `research/sectors/ai_factory_demand_live/professional_report.html`.
+This is a versioned HTML presentation template, not another investment skill.
+The existing standalone-BOM and industry-index/BOM-child profiles remain unchanged
+unless the user explicitly selects this question-tree reading profile.
+
+The shell is fixed: compact report title/date, left hierarchical question tree,
+right selected-node article, and a compact source index/audit footer. Do not add an
+independent hero dashboard, KPI panels, or a competing top-level report outline.
+The question hierarchy is the only primary navigation. Preserve stable node IDs
+and existing deep links; support L1 through L5 without pre-creating questions.
+
+Every leaf has exactly four numbered sections, in this order:
+
+1. `研究问题与口径`: this node's question, pass criterion, required data, actual children.
+2. `核心数据与原始证据`: question-specific evidence with source/date, original locator,
+   data/fact, effect and limitations. Review identifiers appear only when supplied
+   by actual research records. Missing evidence renders an explicit empty state.
+3. `分析正文`: substantial prose, comparisons, formulas/scenarios as needed, and
+   the contribution to the parent question when present in the research artifacts.
+4. `结论与充分性判断`: bounded conclusion, passed/not-passed, reasons, gaps and next action.
+
+Parents use the same four slots, with the first three headings replaced by
+`汇总问题与口径`, `下层结论与汇总依据`, and `综合分析`.
+Their data section lists every direct child, its current conclusion and sufficiency.
+Unpassed child findings remain visibly unverified gaps, never completed evidence.
+Parents may not add a leaf evidence table or pass while a mandatory child remains
+unpassed. Summary prose must come from the research artifacts, not the renderer.
+
+Implementation and reuse:
+
+- Template assets: `src/value_invest_research/adapters/outbound/report_templates/question_tree_v1.{html,css,js}`.
+- Shared entry: `CanonicalHtmlReportRenderer`, using `project.presentation_profile: question-tree-v1`
+  and `project.question_tree` (the validated presentation data).
+- Portable data artifact: `question_tree_report.json`. The schema and validator
+  live in `domain/question_tree_report.py`; content is separate from layout.
+- Render an existing dataset with `PYTHONPATH=src python3 tools/render_question_tree_report.py <project>/question_tree_report.json`.
+- Do not create a new CSS/JS renderer per topic. A topic-specific projection may
+  format existing artifacts into the shared data contract, but may not create new
+  research claims or override evidence gates.
+- All articles must be pre-rendered. JavaScript only selects a node and enhances
+  navigation; `查看全文`, disabled-JavaScript reading and print retain all articles.
+  No runtime evidence fetch, no blank body dependent on script execution.
+- `validate-report-contract` routes this profile to strict four-slot, tree-coverage,
+  source-link, parent/leaf and sufficiency checks. Passing presentation validation
+  does not imply research or investment completion.
+
+This user-selected profile supersedes the four-H2 shell below for its HTML only.
+The portable Markdown audit sidecar may keep the four-H2 organization, but must
+preserve the same claims, evidence, conclusions and gaps.
+
 ## Top-Level Order
 
-Every default industry/project report contains exactly four numbered H2 sections
+Every default industry/project report outside the question-tree reading profile contains exactly four numbered H2 sections
 in this locked order; HTML renders the same semantic section sequence:
 
 1. `当前研究的问题`
@@ -46,7 +99,7 @@ For `standalone-bom`, every L3 research question remains visible in the public
 report, but its nested research plan belongs only in `research_plan.md`; do not
 duplicate the plan tree in the HTML report or Markdown audit sidecar.
 
-`report_scope: standalone-bom` is the only exception. It contains five collapsible
+`report_scope: standalone-bom` is the scope-level exception. It contains five collapsible
 top-level sections: `需求侧`, `供给侧`, `技术侧`, `估值侧`, and `ESG`.
 
 ## Report Scopes and Layout

@@ -34,6 +34,8 @@ class MemoUpdaterTests(unittest.TestCase):
     def test_system_prompt_uses_research_goal_qa_framework(self):
         prompt = _build_system_prompt()
         self.assertIn("Research Goal QA Framework", prompt)
+        self.assertIn("# Dynamic Research Agent", prompt)
+        self.assertIn("独立完成研究", prompt)
 
     def test_update_stock_memo_creates_proposal(self):
         with project_tmp_dir() as root:

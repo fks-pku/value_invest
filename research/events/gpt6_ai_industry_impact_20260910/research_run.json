@@ -1,0 +1,25 @@
+{
+  "status": "partial_research",
+  "as_of_date": "2026-09-10",
+  "summary": {
+    "parent_plan_id": "rp_d93bd54a572cf2b8",
+    "status": "blocked",
+    "l3_plans": 6,
+    "completed_l3_plans": 4,
+    "leaf_steps": 8,
+    "completed_leaf_steps": 6,
+    "blocked_leaf_steps": 2,
+    "max_depth": 4
+  },
+  "scope": "event-study; not a full BOM investment run",
+  "visual_review": "not_completed: local file navigation blocked by browser security policy",
+  "external_archive_scan": "not_performed",
+  "market_price_analysis": "not_performed",
+  "unanswered_leaf_ids": [
+    "Q1.2.1",
+    "Q1.2.2.2"
+  ],
+  "source_count": 13,
+  "claim_count": 28,
+  "reproduce": "PYTHONPATH=src <Python 3.10+> tools/gpt6_impact_research.py"
+}

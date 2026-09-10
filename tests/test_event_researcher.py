@@ -18,6 +18,8 @@ class EventResearcherTests(unittest.TestCase):
     def test_system_prompt_uses_research_goal_qa_framework(self):
         prompt = _build_system_prompt()
         self.assertIn("Research Goal QA Framework", prompt)
+        self.assertIn("# Dynamic Research Agent", prompt)
+        self.assertIn("独立完成研究", prompt)
 
     def test_build_user_prompt_includes_playbook(self):
         playbook = {"first_questions": ["What happened?"], "transmission_channels": ["oil_prices"]}

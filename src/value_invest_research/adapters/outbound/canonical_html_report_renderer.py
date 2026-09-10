@@ -21,6 +21,9 @@ class CanonicalHtmlReportRenderer:
         self.sections = sections
 
     def render(self, view_model: ReportViewModel) -> str:
+        if view_model.project.get("presentation_profile") == "question-tree-v1":
+            from value_invest_research.adapters.outbound.question_tree_html_renderer import QuestionTreeHtmlRenderer
+            return QuestionTreeHtmlRenderer().render(view_model)
         data = view_model.to_dict()
         source_url_by_id = _source_url_lookup(data.get("sources", []))
         context = ReportRenderContext(data=data, source_url_by_id=source_url_by_id)

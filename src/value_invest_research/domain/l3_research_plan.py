@@ -1369,25 +1369,11 @@ def _freshness_requirement(goal: dict[str, Any], cadence: str) -> str:
 
 
 def _preferred_skill(lens_id: str, dimension: str) -> str:
-    if dimension == "refutation":
-        return "industry-report-analysis"
-    if dimension == "financial_bridge":
-        return "financial-statement-analysis"
-    return {
-        "valuation": "valuation-analysis",
-        "esg": "news-event-analysis",
-        "technology": "industry-report-analysis",
-        "supply": "supply-chain-chokepoint-analysis",
-        "demand": "industry-report-analysis",
-    }.get(lens_id, "leaf-research-deepseek")
+    return "dynamic-research-agent"
 
 
 def _skill_for_source(source_type: str, dimension: str) -> str:
-    if "filing" in source_type or dimension == "financial_bridge":
-        return "financial-statement-analysis"
-    if "research" in source_type or "dataset" in source_type or dimension == "refutation":
-        return "industry-report-analysis"
-    return "leaf-research-deepseek"
+    return "dynamic-research-agent"
 
 
 def _safe_node_id(node_id: str) -> str:

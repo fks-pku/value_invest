@@ -5,8 +5,9 @@ description: >-
   that starts from one L1 meta-question, expands the hierarchy only as needed, and
   repeatedly collects data, analyzes evidence, reaches a conclusion, and decides
   whether the current node is sufficiently answered. Also use for recursive research,
-  adaptive question trees, evolving research plans, or research workflows where an
-  insufficient answer must create the next level of questions. Do not use for a
+  adaptive question trees, evolving research plans, investment research on industries,
+  companies or events, and research workflows where an insufficient answer must
+  create the next level of questions. Do not use for a
   one-off factual lookup, simple summarization, or a fixed procedure with no research
   judgment.
 ---
@@ -314,16 +315,19 @@ L1 元问题
 - 遇到关键数据不可得时，输出阻塞原因和可执行的补证动作，不用模型先验填空。
 - 研究报告只汇总已经通过充分性判断的结论；未通过节点作为缺口展示。
 
-## 与专业研究技能协作
+## 独立完成研究
 
-本 skill 负责编排问题树和研究循环。具体任务可调用更专业的能力：
+本 skill 是唯一的投资研究入口，直接完成问题拆解、来源规划、材料解析、分析和汇总，
+不依赖其它投资研究 skill，也不要求先安装一组专业技能。
 
-- 问题拆解：`investment-question-architect`
-- 来源规划：`research-source-planner`
-- 财报、行业报告、新闻或观点解析：对应专业分析 skill
-- 长材料初读：材料已经选定时使用 `leaf-research-deepseek`
+- 财报：核对期间、单位、分部和现金流，区分实际值与管理层指引。
+- 行业报告：提取模型、假设和预测口径，检验它是否真正回答当前问题。
+- 新闻、会议和观点：区分官方事实、计划、预测和个人判断；未经验证的消息只作线索。
+- 公司与估值：需要时验证业务敞口、盈利兑现和市场已计入的预期，不从主题相关性直接跳到推荐。
+- 长材料：可使用已可用的阅读工具辅助提取，但逐题核对原文、反证和充分性的责任不转移。
 
-专业 skill 提供数据和分析，但节点是否充分、是否继续展开，始终由本 skill 按当前问题判断。
+这些是随当前问题选择的分析方法，不是必须逐项执行的固定清单。仓库既有的数据契约、
+验证器和报告契约仍可复用；它们不构成额外 skill，也不替代本 skill 的动态研究循环。
 
 ## 禁止事项
 

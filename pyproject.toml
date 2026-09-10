@@ -30,3 +30,6 @@ testpaths = ["tests"]
 
 [tool.coverage.run]
 source = ["src"]
+
+[tool.setuptools.package-data]
+value_invest_research = ["adapters/outbound/report_templates/*.html", "adapters/outbound/report_templates/*.css", "adapters/outbound/report_templates/*.js"]

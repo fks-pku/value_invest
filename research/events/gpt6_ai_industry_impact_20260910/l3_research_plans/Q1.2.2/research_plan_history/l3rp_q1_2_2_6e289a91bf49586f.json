@@ -1,0 +1,443 @@
+{
+  "completion_policy": {
+    "l3_complete_when": "current_question_answerable_or_all_required_descendants_complete",
+    "legacy_broad_search": "audit_only_not_retroactive_completion",
+    "missing_evidence": "block_then_expand_only_the_observed_gap"
+  },
+  "expansion_history": [
+    {
+      "child_question_ids": [
+        "Q1.2.2.1",
+        "Q1.2.2.2"
+      ],
+      "evidence_gaps": [
+        "每任务效率提升与新增任务量的净算力阈值未知",
+        "缺少可归因于 GPT-6 的采购、资本开支或财务增量披露"
+      ],
+      "from_plan_id": "l3rp_q1_2_2_ab84b0f6671c5d43",
+      "parent_level": 3,
+      "parent_question_id": "Q1.2.2",
+      "trigger": "failed_answerability_gate"
+    }
+  ],
+  "l3_node_id": "Q1.2.2",
+  "l3_question": "GPT-6 对推理算力、GPU 和配套基础设施的净需求方向及规模能否被验证？",
+  "l3_title": "GPT-6 对推理算力、GPU 和配套基础设施的净需求方向及规模能否被验证？",
+  "lens_id": "Q1",
+  "logic_contract": {
+    "company_bridge_fields": [],
+    "downstream_node_ids": [],
+    "indicators": [
+      "每项任务的 token、计算与时延变化",
+      "任务量增长、工作负载结构和硬件效率",
+      "云厂商资本开支、采购和供货的发布前后区分"
+    ],
+    "refute_rule": "检验推理效率提高、低价模型分流和既有产能消化是否抵消新增任务量。",
+    "support_rule": "直接回答问题的可复核事实与有边界的推导",
+    "update_cadence": "quarterly"
+  },
+  "material_collection_policy": {
+    "bulk_pool_mapping_eligible": false,
+    "push_ingestion_role": "candidate_only",
+    "required_origin": "active_question_search",
+    "required_trace_fields": [
+      "l3_plan_id",
+      "l3_node_id",
+      "question_node_id",
+      "question_level",
+      "research_step_id",
+      "search_run_id"
+    ],
+    "source_reuse_rule": "The same source may serve another active question only through a separate attachment, extraction, and GPT review for that question."
+  },
+  "parent_research_plan_id": "rp_d93bd54a572cf2b8",
+  "plan_id": "l3rp_q1_2_2_6e289a91bf49586f",
+  "plan_type": "l3_deep_research",
+  "question_tree": {
+    "analysis_plan": [
+      "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+      "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+      "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+    ],
+    "children": [
+      {
+        "analysis_plan": [
+          "建立任务量乘强度除效率的恒等关系",
+          "用明确假设测算阈值而非给出预测"
+        ],
+        "depends_on_question_ids": [],
+        "expansion_trigger": {
+          "evidence_gaps": [
+            "每任务效率提升与新增任务量的净算力阈值未知"
+          ],
+          "type": "failed_answerability_gate"
+        },
+        "level": 4,
+        "question": "推理效率提高时，任务量须增加多少才拉动净算力需求？",
+        "question_id": "Q1.2.2.1",
+        "required_data": [
+          "任务量、每任务真实计算量、有效硬件吞吐",
+          "token 与 FLOPs 是否可等价"
+        ],
+        "requires_refutation_search": true,
+        "research_dimension": "custom",
+        "title": "推理效率提高时，任务量须增加多少才拉动净算力需求？"
+      },
+      {
+        "analysis_plan": [
+          "剔除发布前基数与不相关业务",
+          "区分未披露、没有增量与无法归因"
+        ],
+        "depends_on_question_ids": [],
+        "expansion_trigger": {
+          "evidence_gaps": [
+            "缺少可归因于 GPT-6 的采购、资本开支或财务增量披露"
+          ],
+          "type": "failed_answerability_gate"
+        },
+        "level": 4,
+        "question": "是否已经出现能归因于 GPT-6 的采购、资本开支或财务增量？",
+        "question_id": "Q1.2.2.2",
+        "required_data": [
+          "发布日期后的可识别订单、预算调整、使用与收入披露",
+          "财报期间和预算会计口径"
+        ],
+        "requires_refutation_search": true,
+        "research_dimension": "custom",
+        "title": "是否已经出现能归因于 GPT-6 的采购、资本开支或财务增量？"
+      }
+    ],
+    "depends_on_question_ids": [],
+    "expansion_trigger": {
+      "evidence_gaps": [
+        "每任务效率提升与新增任务量的净算力阈值未知",
+        "缺少可归因于 GPT-6 的采购、资本开支或财务增量披露"
+      ],
+      "from_plan_id": "l3rp_q1_2_2_ab84b0f6671c5d43",
+      "type": "failed_answerability_gate"
+    },
+    "level": 3,
+    "question": "GPT-6 对推理算力、GPU 和配套基础设施的净需求方向及规模能否被验证？",
+    "question_id": "Q1.2.2",
+    "required_data": [
+      "每项任务的 token、计算与时延变化",
+      "任务量增长、工作负载结构和硬件效率",
+      "云厂商资本开支、采购和供货的发布前后区分"
+    ],
+    "requires_refutation_search": true,
+    "research_dimension": "l3_initial",
+    "title": "GPT-6 对推理算力、GPU 和配套基础设施的净需求方向及规模能否被验证？"
+  },
+  "question_tree_policy": {
+    "branching": "only_after_failed_answerability_gate",
+    "initial_depth": 3,
+    "maximum_depth": 5,
+    "root_level": 3,
+    "terminal_definition": "the current deepest unanswered question"
+  },
+  "research_goal": {
+    "as_of_date": "2026-09-10",
+    "decision_boundary": "事实核实与条件性行业判断；未验证增量盈利、稀缺性和估值时不形成 actionable_long",
+    "domain_hint": "gpt6_launch_event",
+    "object_id": "gpt6_ai_industry_impact_20260910",
+    "q_map": {
+      "Q1": "Event facts and scope",
+      "Q2": "Transmission mechanism",
+      "Q3": "Beneficiaries, losers, and second-order effects",
+      "Q4": "Disconfirming tests and watchlist"
+    },
+    "report_date": "2026-09-10",
+    "research_type": "event_policy",
+    "run_mode": "historical_backtest",
+    "topic": "截至 2026-09-10，GPT-6 Astra 的发布改变了 AI 行业的哪些经济机制，哪些影响已有证据、哪些仍待验证？"
+  },
+  "schema_version": "4.0",
+  "steps": [
+    {
+      "analysis_plan": [
+        "建立任务量乘强度除效率的恒等关系",
+        "用明确假设测算阈值而非给出预测"
+      ],
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Answer only the current question; separate facts, inference, judgment, refutation, and gaps."
+      },
+      "collection_contract": {
+        "bulk_pool_mapping_forbidden": true,
+        "origin": "active_question_search",
+        "query_must_name_active_question": true,
+        "required_trace_fields": [
+          "l3_plan_id",
+          "l3_node_id",
+          "question_node_id",
+          "question_level",
+          "research_step_id",
+          "search_run_id"
+        ]
+      },
+      "decision_use": "Answer the current terminal question before rolling up L3 Q1.2.2.",
+      "depends_on_step_ids": [],
+      "freshness_requirement": "Only sources visible on or before 2026-09-10; preserve visibility proof. Refresh cadence: quarterly.",
+      "initial_status": "pending",
+      "l3_node_id": "Q1.2.2",
+      "l3_plan_id": "l3rp_q1_2_2_6e289a91bf49586f",
+      "l4_question_id": "Q1.2.2.1",
+      "leaf_question_id": "Q1.2.2.1",
+      "leaf_step_id": "question:Q1.2.2.1",
+      "level": 4,
+      "minimum_evidence_gate": {
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
+      },
+      "preferred_specialty_skill": "dynamic-research-agent",
+      "question": "推理效率提高时，任务量须增加多少才拉动净算力需求？",
+      "question_level": 4,
+      "question_node_id": "Q1.2.2.1",
+      "question_path": [
+        {
+          "level": 3,
+          "question": "GPT-6 对推理算力、GPU 和配套基础设施的净需求方向及规模能否被验证？",
+          "question_id": "Q1.2.2"
+        },
+        {
+          "level": 4,
+          "question": "推理效率提高时，任务量须增加多少才拉动净算力需求？",
+          "question_id": "Q1.2.2.1"
+        }
+      ],
+      "refuting_source_plan": [
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 检验推理效率提高、低价模型分流和既有产能消化是否抵消新增任务量。."
+      ],
+      "required_data": [
+        "任务量、每任务真实计算量、有效硬件吞吐",
+        "token 与 FLOPs 是否可等价"
+      ],
+      "required_materials": [
+        "任务量、每任务真实计算量、有效硬件吞吐",
+        "token 与 FLOPs 是否可等价"
+      ],
+      "research_dimension": "custom",
+      "research_step_id": "question:Q1.2.2.1",
+      "sequence": 1,
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "推理效率提高时，任务量须增加多少才拉动净算力需求？ 任务量、每任务真实计算量、有效硬件吞吐 / token 与 FLOPs 是否可等价"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "dynamic-research-agent",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "推理效率提高时，任务量须增加多少才拉动净算力需求？ 任务量、每任务真实计算量、有效硬件吞吐 / token 与 FLOPs 是否可等价"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "dynamic-research-agent",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
+      "source_universe_plan": {
+        "domain_id": "ai_factory",
+        "priority_source_ids": [
+          "semianalysis",
+          "trendforce",
+          "techinsights",
+          "omdia",
+          "delloro",
+          "lightcounting",
+          "the_information",
+          "serve_the_home"
+        ],
+        "registry": "config/source_universes.json"
+      },
+      "stage_id": "Q1.2.2.1",
+      "step_id": "question:Q1.2.2.1",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "search_run_id",
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "analysis_plan": [
+        "剔除发布前基数与不相关业务",
+        "区分未披露、没有增量与无法归因"
+      ],
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Answer only the current question; separate facts, inference, judgment, refutation, and gaps."
+      },
+      "collection_contract": {
+        "bulk_pool_mapping_forbidden": true,
+        "origin": "active_question_search",
+        "query_must_name_active_question": true,
+        "required_trace_fields": [
+          "l3_plan_id",
+          "l3_node_id",
+          "question_node_id",
+          "question_level",
+          "research_step_id",
+          "search_run_id"
+        ]
+      },
+      "decision_use": "Answer the current terminal question before rolling up L3 Q1.2.2.",
+      "depends_on_step_ids": [],
+      "freshness_requirement": "Only sources visible on or before 2026-09-10; preserve visibility proof. Refresh cadence: quarterly.",
+      "initial_status": "pending",
+      "l3_node_id": "Q1.2.2",
+      "l3_plan_id": "l3rp_q1_2_2_6e289a91bf49586f",
+      "l4_question_id": "Q1.2.2.2",
+      "leaf_question_id": "Q1.2.2.2",
+      "leaf_step_id": "question:Q1.2.2.2",
+      "level": 4,
+      "minimum_evidence_gate": {
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
+      },
+      "preferred_specialty_skill": "dynamic-research-agent",
+      "question": "是否已经出现能归因于 GPT-6 的采购、资本开支或财务增量？",
+      "question_level": 4,
+      "question_node_id": "Q1.2.2.2",
+      "question_path": [
+        {
+          "level": 3,
+          "question": "GPT-6 对推理算力、GPU 和配套基础设施的净需求方向及规模能否被验证？",
+          "question_id": "Q1.2.2"
+        },
+        {
+          "level": 4,
+          "question": "是否已经出现能归因于 GPT-6 的采购、资本开支或财务增量？",
+          "question_id": "Q1.2.2.2"
+        }
+      ],
+      "refuting_source_plan": [
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 检验推理效率提高、低价模型分流和既有产能消化是否抵消新增任务量。."
+      ],
+      "required_data": [
+        "发布日期后的可识别订单、预算调整、使用与收入披露",
+        "财报期间和预算会计口径"
+      ],
+      "required_materials": [
+        "发布日期后的可识别订单、预算调整、使用与收入披露",
+        "财报期间和预算会计口径"
+      ],
+      "research_dimension": "custom",
+      "research_step_id": "question:Q1.2.2.2",
+      "sequence": 2,
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "是否已经出现能归因于 GPT-6 的采购、资本开支或财务增量？ 发布日期后的可识别订单、预算调整、使用与收入披露 / 财报期间和预算会计口径"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "dynamic-research-agent",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "是否已经出现能归因于 GPT-6 的采购、资本开支或财务增量？ 发布日期后的可识别订单、预算调整、使用与收入披露 / 财报期间和预算会计口径"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "dynamic-research-agent",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
+      "source_universe_plan": {
+        "domain_id": "ai_factory",
+        "priority_source_ids": [
+          "semianalysis",
+          "trendforce",
+          "techinsights",
+          "omdia",
+          "delloro",
+          "lightcounting",
+          "the_information",
+          "serve_the_home"
+        ],
+        "registry": "config/source_universes.json"
+      },
+      "stage_id": "Q1.2.2.2",
+      "step_id": "question:Q1.2.2.2",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "search_run_id",
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    }
+  ]
+}

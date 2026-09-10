@@ -1,0 +1,47 @@
+"""Project-specific projection of existing research into the shared reading template.
+
+No searches, ledger writes, answer changes, or sufficiency decisions happen here.
+"""
+from copy import deepcopy
+
+
+def build_question_tree_view(vm, qa, states, brief, extracts):
+    syn = vm.project["synthesis"]
+    leaf = {r["id"]: r for r in vm.qa_roots}
+    rollups = {r["id"]: r for r in syn["nodes"]}
+    initial = {q["id"]: q for q in brief["questions"]}
+    extraction_by_pair = {(x["question_node_id"], x["source_id"]): x for x in extracts if "_leaf_" in x["extraction_id"]}
+    nodes = []
+    for q in qa["nodes"]:
+        nid = q["id"]
+        state = states[nid]
+        child_ids = q.get("next_question_ids", [])
+        row = leaf.get(nid) or rollups.get(nid) or {}
+        analysis = deepcopy(row.get("analysis") or [{"heading": "子结论如何汇总", "paragraphs": row.get("paragraphs") or syn["root_paragraphs"]}])
+        data = initial.get(nid, {}).get("data") or q.get("required_data") or ["直接子问题的结论、通过状态、反向证据和未闭环缺口"]
+        node = dict(id=nid, parent_id=q.get("parent_id") or "", level=q["level"], question=q["question"],
+                    short=q["question"], what=q["question"], data_required=data,
+                    acceptance_rule=("所有必要子问题充分回答，综合分析处理相互制约及实质缺口；有未通过的必要子节点，本层不得通过。" if child_ids else "核心事实可追溯，研究对象与期间口径可比，反向证据已处理；剩余缺口不实质改变本题答案。"),
+                    mode="rollup" if child_ids else "leaf", conclusion=state["conclusion"], passed=state["passed"],
+                    gaps=state["gaps"], was_expanded=nid in {"Q1.1.2", "Q1.2.2"}, analysis=analysis,
+                    reasons=[row.get("gate_reason") or ("必要子结论与当前判断的边界已经明确。" if state["passed"] else "必要下层问题仍未充分回答，父节点继承其缺口。")],
+                    next_actions=row.get("next_actions") or [syn["next_validation"]], evidence=[], refutation=row.get("refutation", ""), tables=[])
+        for pair in row.get("evidence", []):
+            x = extraction_by_pair[(nid, pair["source"])]
+            node["evidence"].append({**pair, "trace": x["extraction_id"] + " · " + x["source_review_id"]})
+        if row.get("scenario_table"):
+            node["tables"].append({**row["scenario_table"], "caption": "机制情景 · 全部为假设，不是预测"})
+        if nid == "Q1":
+            node["analysis"].append({"heading": "研究边界与资料限制", "paragraphs": [syn["boundary"], syn["research_limit"]]})
+            node["tables"].append({"headers": ["传导环节", "当前证据状态"], "rows": syn["causal_chain"], "caption": "能力到投资判断的传导链"})
+        if nid == "Q1.3.1":
+            node["analysis"].append({"heading": "观察对象，不作标的推荐", "paragraphs": [syn["target_boundary"], syn["next_validation"]]})
+            node["tables"].append({"headers": ["观察对象／状态", "已验证的业务敞口", "升级判断前必须验证", "反向风险"], "rows": [
+                [f"{t['company']} · {t['ticker']} / no_action", t["exposure"], t["needed"], t["risk"]] for t in vm.targets]})
+        nodes.append(node)
+    return dict(template_version="question-tree-v1", title=vm.project["title"], as_of_date=vm.project["as_of_date"],
+                subtitle="左侧选择问题；右侧严格按问题与口径、数据证据、分析正文、结论与充分性展开。父节点汇总下层，不重复取证。",
+                status_label="阶段性研究 · 2 个终端问题仍有缺口", nodes=nodes, sources=vm.sources,
+                source_note="下列均为本轮实际打开并核读的来源。S04、S05 为评测作者原文；其他为官方资料或厂商刊载客户案例。事实、研究者推导与假设情景分别表述；来源链接会随网站更新，摘录、定位与逐题复核记录保存在项目审计文件中。",
+                attachments=[{"label": "研究计划", "href": "research_plan.md"}, {"label": "完整 Markdown", "href": "professional_report.md"},
+                             {"label": "来源登记", "href": "sources.jsonl"}, {"label": "复核记录", "href": "source_reviews.jsonl"}])

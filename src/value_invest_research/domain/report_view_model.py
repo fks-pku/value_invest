@@ -48,6 +48,8 @@ def build_report_view_model(
     qa_roots = [_view_node(node, nodes_by_parent, sources) for node in nodes_by_parent.get("", [])]
     return ReportViewModel(
         project={
+            **({"presentation_profile": project["presentation_profile"], "question_tree": project.get("question_tree", {})}
+               if project.get("presentation_profile") else {}),
             "project_id": project.get("project_id") or qa_tree.get("project_id", ""),
             "title": project.get("title") or qa_tree.get("title") or goal.topic,
             "run_mode": project.get("run_mode") or qa_tree.get("run_mode") or goal.run_mode,

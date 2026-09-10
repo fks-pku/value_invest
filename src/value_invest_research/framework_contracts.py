@@ -256,7 +256,10 @@ L3_BACKTEST_GROUNDING_REQUIRED_FIELDS = [
     "non_source_claims",
 ]
 
+# Accepted audit labels, not the installed-skill registry. Keep historical
+# artifacts valid without dispatching new research to retired skills.
 KNOWN_SPECIALTY_SKILLS = {
+    "dynamic-research-agent",
     "investment-question-architect",
     "research-source-planner",
     "financial-statement-analysis",
@@ -530,6 +533,9 @@ def validate_report_contract_html(
     require_l3: bool = False,
 ) -> dict[str, Any]:
     """Validate the public HTML report against the locked presentation contract."""
+    if re.search(r'<body\b[^>]*\bdata-presentation-profile=["\']question-tree-v1["\']', html):
+        from value_invest_research.domain.question_tree_report import validate_question_tree_html
+        return validate_question_tree_html(html, mode=mode)
     report_scope = _report_scope(html)
     if report_scope == "standalone-bom":
         return _validate_standalone_bom_report_html(html, mode=mode)

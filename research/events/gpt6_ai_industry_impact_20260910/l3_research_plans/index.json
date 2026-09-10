@@ -1,0 +1,71 @@
+{
+  "execution_policy": {
+    "branch_creation": "only_after_failed_answerability_gate",
+    "broad_material_pool": "candidate_only_not_completion_evidence",
+    "executable_unit": "current_terminal_question",
+    "initial_depth": "L3_only",
+    "l3_completion": "current_question_or_required_descendants_complete",
+    "material_collection": "active_question_search_only",
+    "planning_unit": "one_independent_plan_per_l3",
+    "question_tree": "adaptive_depth_max_5"
+  },
+  "parent_research_plan_id": "rp_d93bd54a572cf2b8",
+  "plan_type": "l3_deep_research_index",
+  "plans": [
+    {
+      "active_steps": 1,
+      "event_path": "l3_research_plans/Q1.1.1/research_step_events.jsonl",
+      "l3_node_id": "Q1.1.1",
+      "l3_plan_id": "l3rp_q1_1_1_3dd2ba077cc25a55",
+      "leaf_steps": 1,
+      "max_depth": 3,
+      "path": "l3_research_plans/Q1.1.1/research_plan.json"
+    },
+    {
+      "active_steps": 2,
+      "event_path": "l3_research_plans/Q1.1.2/research_step_events.jsonl",
+      "l3_node_id": "Q1.1.2",
+      "l3_plan_id": "l3rp_q1_1_2_e204f1eb82f707dd",
+      "leaf_steps": 2,
+      "max_depth": 4,
+      "path": "l3_research_plans/Q1.1.2/research_plan.json"
+    },
+    {
+      "active_steps": 1,
+      "event_path": "l3_research_plans/Q1.2.1/research_step_events.jsonl",
+      "l3_node_id": "Q1.2.1",
+      "l3_plan_id": "l3rp_q1_2_1_7319b2f3c22a7b60",
+      "leaf_steps": 1,
+      "max_depth": 3,
+      "path": "l3_research_plans/Q1.2.1/research_plan.json"
+    },
+    {
+      "active_steps": 2,
+      "event_path": "l3_research_plans/Q1.2.2/research_step_events.jsonl",
+      "l3_node_id": "Q1.2.2",
+      "l3_plan_id": "l3rp_q1_2_2_6e289a91bf49586f",
+      "leaf_steps": 2,
+      "max_depth": 4,
+      "path": "l3_research_plans/Q1.2.2/research_plan.json"
+    },
+    {
+      "active_steps": 1,
+      "event_path": "l3_research_plans/Q1.2.3/research_step_events.jsonl",
+      "l3_node_id": "Q1.2.3",
+      "l3_plan_id": "l3rp_q1_2_3_a125f85d847ed62a",
+      "leaf_steps": 1,
+      "max_depth": 3,
+      "path": "l3_research_plans/Q1.2.3/research_plan.json"
+    },
+    {
+      "active_steps": 1,
+      "event_path": "l3_research_plans/Q1.3.1/research_step_events.jsonl",
+      "l3_node_id": "Q1.3.1",
+      "l3_plan_id": "l3rp_q1_3_1_367f56bcdd8cf723",
+      "leaf_steps": 1,
+      "max_depth": 3,
+      "path": "l3_research_plans/Q1.3.1/research_plan.json"
+    }
+  ],
+  "schema_version": "4.0"
+}

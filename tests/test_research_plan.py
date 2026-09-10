@@ -37,6 +37,7 @@ class ResearchPlanTests(unittest.TestCase):
         self.assertTrue(all(not step.source_plan for step in plan.steps))
         self.assertTrue(all(step.execution_mode == "child_plan_rollup" for step in plan.steps))
         self.assertTrue(all(step.child_plan_path for step in plan.steps))
+        self.assertEqual({step.preferred_specialty_skill for step in plan.steps}, {"dynamic-research-agent"})
         self.assertTrue(all(step.refuting_source_plan for step in plan.steps))
         self.assertTrue(all(step.minimum_evidence_gate for step in plan.steps))
         self.assertTrue(all(step.step_id == f"step:{step.question_node_id}" for step in plan.steps))

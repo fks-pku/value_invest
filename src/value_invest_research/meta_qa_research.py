@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from value_invest_research.answer_synthesis import apply_synthesis_overrides, load_synthesis_overrides
+from value_invest_research.domain.leaf_research_tasks import selected_skill_for_task_family
 from value_invest_research.models import EvidenceRecord, ValidationError
 from value_invest_research.research_system import (
     INFO_CATEGORY_LABEL_ZH,
@@ -1174,15 +1175,7 @@ def _meta_task_family(question: str, plan_node: dict[str, Any]) -> str:
 
 
 def _meta_selected_skill(task_family: str) -> str:
-    return {
-        "financial_statement": "financial-statement-analysis",
-        "valuation": "valuation-analysis",
-        "industry_report": "industry-report-analysis",
-        "news_event": "news-event-analysis",
-        "opinion": "opinion-analysis",
-        "target_recommendation": "target-recommendation-analysis",
-        "leaf_research": "leaf-research-deepseek",
-    }.get(task_family, "leaf-research-deepseek")
+    return selected_skill_for_task_family(task_family)
 
 
 def _meta_source_plan(question: str, plan_node: dict[str, Any], task_family: str) -> list[dict[str, str]]:
@@ -1193,25 +1186,25 @@ def _meta_source_plan(question: str, plan_node: dict[str, Any], task_family: str
             "source_bucket": "evidence",
             "source_type": "official filing / earnings release / regulator or exchange document",
             "why_needed": focus.get("evidence", f"用一手证据直接验证“{question}”。"),
-            "preferred_skill": preferred if task_family in {"financial_statement", "valuation", "target_recommendation"} else "leaf-research-deepseek",
+            "preferred_skill": preferred,
         },
         {
             "source_bucket": "research_report",
             "source_type": "industry report / sell-side report / third-party dataset",
             "why_needed": focus.get("research_report", f"用第三方模型和数据校验“{question}”。"),
-            "preferred_skill": preferred if task_family in {"industry_report", "valuation"} else "industry-report-analysis",
+            "preferred_skill": preferred,
         },
         {
             "source_bucket": "message",
             "source_type": "news / policy update / supply-chain message",
             "why_needed": focus.get("message", f"用消息捕捉“{question}”的最新线索和触发器。"),
-            "preferred_skill": "news-event-analysis",
+            "preferred_skill": preferred,
         },
         {
             "source_bucket": "opinion",
             "source_type": "expert view / investor view / interview",
             "why_needed": focus.get("opinion", f"用观点提炼“{question}”的反方质询和待验证假设。"),
-            "preferred_skill": "opinion-analysis",
+            "preferred_skill": preferred,
         },
     ]
 

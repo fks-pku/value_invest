@@ -1,0 +1,29 @@
+{
+  "markdown_contract": {
+    "ok": true,
+    "issues": [],
+    "summary": {
+      "mode": "historical_backtest",
+      "report_scope": "event-study",
+      "level1_cards": 0,
+      "level2_cards": 0,
+      "level3_cards": 0,
+      "require_l3": false
+    }
+  },
+  "existing_html_contract": {
+    "ok": true,
+    "issues": [],
+    "summary": {
+      "mode": "historical_backtest",
+      "presentation_profile": "question-tree-v1",
+      "nodes": 14,
+      "parents": 6,
+      "leaves": 8
+    }
+  },
+  "html_compatibility_note": "采用共享 question-tree-v1 模板；按父/叶固定四节结构校验，不再套用全 BOM 报告样式门禁。",
+  "event_static_tests": "tools/test_gpt6_impact_research.py: trace, dates, calculations, identical claims, headings, local links, no runtime fetch",
+  "visual_review": "blocked_by_local_file_browser_policy; not claimed",
+  "presentation_profile": "question-tree-v1"
+}

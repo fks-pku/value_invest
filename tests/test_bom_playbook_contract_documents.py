@@ -9,7 +9,6 @@ class BomPlaybookContractDocumentTests(unittest.TestCase):
     def test_canonical_contracts_require_one_node_specific_playbook_per_bom(self):
         documents = {
             "AGENTS.md": ROOT / "AGENTS.md",
-            "canonical skill": ROOT / "skills/value_invest_research/SKILL.md",
             "QA contract": ROOT / "skills/value_invest_research/frameworks/research_goal_qa.md",
             "domain playbooks": ROOT / "skills/value_invest_research/frameworks/domain_playbooks.md",
             "report contract": ROOT / "skills/value_invest_research/frameworks/research_report_contract.md",
@@ -21,29 +20,18 @@ class BomPlaybookContractDocumentTests(unittest.TestCase):
                 self.assertRegex(text, r"node-specific|six-question playbook|六问 Playbook|六问 playbook")
                 self.assertRegex(text, r"generic fallback|generic-fallback|通用模板|通用静态|通用链条")
 
-    def test_both_s_curve_skill_copies_keep_the_per_node_temporal_rule(self):
-        skill_paths = (
-            ROOT / ".agents/skills/s-curve-investment-research/SKILL.md",
-            ROOT / "skills/value_invest_research/specialty_skills/s-curve-investment-research/SKILL.md",
-        )
-
-        for path in skill_paths:
-            with self.subTest(skill=str(path)):
-                text = path.read_text(encoding="utf-8")
-                self.assertIn("每个 BOM 必须有独立 Playbook", text)
-                self.assertIn("一个 BOM 节点 -> 一个六问 Playbook", text)
-                self.assertIn("时间证据账本", text)
-                self.assertIn("不需要先修改逻辑链", text)
+    def test_domain_contract_preserves_per_node_temporal_rule_without_extra_skills(self):
+        text = (ROOT / "skills/value_invest_research/frameworks/domain_playbooks.md").read_text(encoding="utf-8")
+        self.assertIn("one canonical BOM node -> one six-question playbook -> one temporal ledger", text)
+        self.assertIn("reproducible as-of snapshots", text)
+        self.assertIn("discovering a new mechanism does not require rewriting old evidence", text)
 
     def test_public_contract_uses_temporal_six_question_sequence(self):
         documents = (
             ROOT / "AGENTS.md",
-            ROOT / "skills/value_invest_research/SKILL.md",
             ROOT / "skills/value_invest_research/frameworks/research_goal_qa.md",
             ROOT / "skills/value_invest_research/frameworks/domain_playbooks.md",
             ROOT / "skills/value_invest_research/frameworks/research_report_contract.md",
-            ROOT / "skills/value_invest_research/specialty_skills/s-curve-investment-research/SKILL.md",
-            ROOT / ".agents/skills/s-curve-investment-research/SKILL.md",
         )
 
         for path in documents:
@@ -52,7 +40,7 @@ class BomPlaybookContractDocumentTests(unittest.TestCase):
                 self.assertIn("基本理解思路", text)
                 self.assertIn("时间演化", text)
 
-        report_contract = documents[4].read_text(encoding="utf-8")
+        report_contract = (ROOT / "skills/value_invest_research/frameworks/research_report_contract.md").read_text(encoding="utf-8")
         self.assertIn("Basic Understanding", report_contract)
         self.assertIn("Time Evolution", report_contract)
         self.assertIn("evidence whitelist", report_contract)

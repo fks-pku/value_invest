@@ -1,0 +1,228 @@
+{
+  "completion_policy": {
+    "l3_complete_when": "current_question_answerable_or_all_required_descendants_complete",
+    "legacy_broad_search": "audit_only_not_retroactive_completion",
+    "missing_evidence": "block_then_expand_only_the_observed_gap"
+  },
+  "expansion_history": [],
+  "l3_node_id": "Q1.1.2",
+  "l3_question": "相对 GPT-5.6 Sol，能力提升是否意味着可验收任务的总成本下降？",
+  "l3_title": "相对 GPT-5.6 Sol，能力提升是否意味着可验收任务的总成本下降？",
+  "lens_id": "Q1",
+  "logic_contract": {
+    "company_bridge_fields": [],
+    "downstream_node_ids": [],
+    "indicators": [
+      "同任务评测、执行耗时、输入输出量和成功率",
+      "截至截面的 API 单价、缓存与计费条件",
+      "人工复核、重试和错误成本"
+    ],
+    "refute_rule": "寻找没有改善的评测、溢价和人工成本未下降的场景。",
+    "support_rule": "直接回答问题的可复核事实与有边界的推导",
+    "update_cadence": "quarterly"
+  },
+  "material_collection_policy": {
+    "bulk_pool_mapping_eligible": false,
+    "push_ingestion_role": "candidate_only",
+    "required_origin": "active_question_search",
+    "required_trace_fields": [
+      "l3_plan_id",
+      "l3_node_id",
+      "question_node_id",
+      "question_level",
+      "research_step_id",
+      "search_run_id"
+    ],
+    "source_reuse_rule": "The same source may serve another active question only through a separate attachment, extraction, and GPT review for that question."
+  },
+  "parent_research_plan_id": "rp_d93bd54a572cf2b8",
+  "plan_id": "l3rp_q1_1_2_198019bd02ec249a",
+  "plan_type": "l3_deep_research",
+  "question_tree": {
+    "analysis_plan": [
+      "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+      "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+      "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+    ],
+    "children": [],
+    "depends_on_question_ids": [],
+    "level": 3,
+    "question": "相对 GPT-5.6 Sol，能力提升是否意味着可验收任务的总成本下降？",
+    "question_id": "Q1.1.2",
+    "required_data": [
+      "同任务评测、执行耗时、输入输出量和成功率",
+      "截至截面的 API 单价、缓存与计费条件",
+      "人工复核、重试和错误成本"
+    ],
+    "requires_refutation_search": true,
+    "research_dimension": "l3_initial",
+    "title": "相对 GPT-5.6 Sol，能力提升是否意味着可验收任务的总成本下降？"
+  },
+  "question_tree_policy": {
+    "branching": "only_after_failed_answerability_gate",
+    "initial_depth": 3,
+    "maximum_depth": 5,
+    "root_level": 3,
+    "terminal_definition": "the current deepest unanswered question"
+  },
+  "research_goal": {
+    "as_of_date": "2026-09-10",
+    "decision_boundary": "事实核实与条件性行业判断；未验证增量盈利、稀缺性和估值时不形成 actionable_long",
+    "domain_hint": "gpt6_launch_event",
+    "object_id": "gpt6_ai_industry_impact_20260910",
+    "q_map": {
+      "Q1": "Event facts and scope",
+      "Q2": "Transmission mechanism",
+      "Q3": "Beneficiaries, losers, and second-order effects",
+      "Q4": "Disconfirming tests and watchlist"
+    },
+    "report_date": "2026-09-10",
+    "research_type": "event_policy",
+    "run_mode": "historical_backtest",
+    "topic": "截至 2026-09-10，GPT-6 Astra 的发布改变了 AI 行业的哪些经济机制，哪些影响已有证据、哪些仍待验证？"
+  },
+  "schema_version": "4.0",
+  "steps": [
+    {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Answer only the current question; separate facts, inference, judgment, refutation, and gaps."
+      },
+      "collection_contract": {
+        "bulk_pool_mapping_forbidden": true,
+        "origin": "active_question_search",
+        "query_must_name_active_question": true,
+        "required_trace_fields": [
+          "l3_plan_id",
+          "l3_node_id",
+          "question_node_id",
+          "question_level",
+          "research_step_id",
+          "search_run_id"
+        ]
+      },
+      "decision_use": "Answer the current terminal question before rolling up L3 Q1.1.2.",
+      "depends_on_step_ids": [],
+      "freshness_requirement": "Only sources visible on or before 2026-09-10; preserve visibility proof. Refresh cadence: quarterly.",
+      "initial_status": "pending",
+      "l3_node_id": "Q1.1.2",
+      "l3_plan_id": "l3rp_q1_1_2_198019bd02ec249a",
+      "l4_question_id": "",
+      "leaf_question_id": "Q1.1.2",
+      "leaf_step_id": "question:Q1.1.2",
+      "level": 3,
+      "minimum_evidence_gate": {
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
+      },
+      "preferred_specialty_skill": "dynamic-research-agent",
+      "question": "相对 GPT-5.6 Sol，能力提升是否意味着可验收任务的总成本下降？",
+      "question_level": 3,
+      "question_node_id": "Q1.1.2",
+      "question_path": [
+        {
+          "level": 3,
+          "question": "相对 GPT-5.6 Sol，能力提升是否意味着可验收任务的总成本下降？",
+          "question_id": "Q1.1.2"
+        }
+      ],
+      "refuting_source_plan": [
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 寻找没有改善的评测、溢价和人工成本未下降的场景。."
+      ],
+      "required_data": [
+        "同任务评测、执行耗时、输入输出量和成功率",
+        "截至截面的 API 单价、缓存与计费条件",
+        "人工复核、重试和错误成本"
+      ],
+      "required_materials": [
+        "同任务评测、执行耗时、输入输出量和成功率",
+        "截至截面的 API 单价、缓存与计费条件",
+        "人工复核、重试和错误成本"
+      ],
+      "research_dimension": "l3_initial",
+      "research_step_id": "question:Q1.1.2",
+      "sequence": 1,
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "相对 GPT-5.6 Sol，能力提升是否意味着可验收任务的总成本下降？ 同任务评测、执行耗时、输入输出量和成功率 / 截至截面的 API 单价、缓存与计费条件 / 人工复核、重试和错误成本"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "dynamic-research-agent",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "相对 GPT-5.6 Sol，能力提升是否意味着可验收任务的总成本下降？ 同任务评测、执行耗时、输入输出量和成功率 / 截至截面的 API 单价、缓存与计费条件 / 人工复核、重试和错误成本"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "dynamic-research-agent",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
+      "source_universe_plan": {
+        "domain_id": "ai_factory",
+        "priority_source_ids": [
+          "semianalysis",
+          "trendforce",
+          "techinsights",
+          "omdia",
+          "delloro",
+          "lightcounting",
+          "the_information",
+          "serve_the_home"
+        ],
+        "registry": "config/source_universes.json"
+      },
+      "stage_id": "Q1.1.2",
+      "step_id": "question:Q1.1.2",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "search_run_id",
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    }
+  ]
+}

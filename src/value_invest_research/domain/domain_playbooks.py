@@ -1017,7 +1017,8 @@ def _l3(question: str, score_component: str, skill: str) -> dict[str, Any]:
         "support_evidence": "能直接支持该问题判断的收入、利润、订单、价格、客户或估值证据。",
         "refute_evidence": "能推翻该问题判断的反向数据、替代供应、价格反转或估值透支证据。",
         "target_implications": "决定相关标的是 actionable_long、watch_only 还是 no_action。",
-        "preferred_specialty_skill": skill,
+        # Legacy templates may pass old labels; new plans use the sole skill.
+        "preferred_specialty_skill": "dynamic-research-agent",
         "score_component": score_component if score_component in SCORE_COMPONENTS or score_component == "action_state" else "future_space",
     }
 

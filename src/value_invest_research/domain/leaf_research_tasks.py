@@ -164,15 +164,8 @@ def classify_task_family(node: dict[str, Any], parent: dict[str, Any]) -> str:
 
 
 def selected_skill_for_task_family(task_family: str) -> str:
-    return {
-        "financial_statement": "financial-statement-analysis",
-        "valuation": "valuation-analysis",
-        "industry_report": "industry-report-analysis",
-        "news_event": "news-event-analysis",
-        "opinion": "opinion-analysis",
-        "target_recommendation": "target-recommendation-analysis",
-        "leaf_research": "leaf-research-deepseek",
-    }.get(task_family, "leaf-research-deepseek")
+    # Families still select extraction schemas, not separately installed skills.
+    return "dynamic-research-agent"
 
 
 def source_search_plan_for_task(node: dict[str, Any], parent: dict[str, Any], task_family: str) -> list[dict[str, str]]:

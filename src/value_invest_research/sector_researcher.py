@@ -12,7 +12,11 @@ SKILLS_DIR = Path(__file__).resolve().parent.parent.parent / "skills" / "value_i
 
 
 def _load_skill_file(relative_path: str) -> str:
-    path = SKILLS_DIR / relative_path
+    path = (
+        SKILLS_DIR.parents[1] / ".agents/skills/dynamic-research-agent/SKILL.md"
+        if relative_path == "SKILL.md"
+        else SKILLS_DIR / relative_path
+    )
     if path.exists():
         return path.read_text(encoding="utf-8")
     return ""
@@ -64,11 +68,11 @@ def _build_user_prompt(
         "- Research object, investment relevance, time frame, decision boundary, current constrained judgment, and biggest uncertainty.",
         "",
         "### 2. Research Execution Plan",
-        "- For L0/L1/L2/L3, state what questions to ask, how to collect information, how to connect information into reasoning, and how to present it.",
+        "- Start from one L1 meta-question; state the current questions, required data, analysis, and sufficiency criteria.",
         "",
         "### 3. QA Drilldown",
-        "- Use at most three layers: Q1, Q1.1, Q1.1.1.",
-        "- Each L3 must include fact, inference, judgment, gap, trigger, and source links.",
+        "- Expand only the necessary next level, never beyond L5; research the current terminal question before drilling deeper on a concrete gap.",
+        "- Each researched leaf must include data, analysis, conclusion, sufficiency judgment, gaps, triggers, and source links; parents synthesize their children.",
         "",
         "### 4. Four-Bucket Information Table",
         "- Classify every input as evidence, research_report, opinion, or message.",

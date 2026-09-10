@@ -368,7 +368,7 @@ def _build_step(
         },
         refuting_source_plan=[f"Search for primary or independent evidence that would establish: {refute_rule}"],
         freshness_requirement=_freshness_requirement(architecture),
-        preferred_specialty_skill=node.preferred_specialty_skill or selected_skill_for_task_family(task_family),
+        preferred_specialty_skill=selected_skill_for_task_family(task_family),
         execution_mode="child_plan_rollup",
         child_plan_path=f"l3_research_plans/{node.id}/research_plan.json",
     )

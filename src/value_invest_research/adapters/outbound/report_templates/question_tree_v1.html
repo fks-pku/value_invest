@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="presentation-profile" content="question-tree-v1">
+  <title>$title</title>
+  <style>$css</style>
+</head>
+<body data-presentation-profile="question-tree-v1">
+<a class="skip-link" href="#$root_id">跳到正文</a>
+<div class="page">
+  <header class="report-header">
+    <div><p class="eyebrow">Dynamic research · Question tree v1</p><h1>$title</h1><p class="deck">$subtitle</p></div>
+    <div class="meta">$metadata</div>
+  </header>
+  <div class="workspace">
+    <aside class="tree-pane" aria-label="研究问题树">
+      <p class="pane-kicker">Question tree</p><h2>研究问题</h2>
+      <nav id="question-tree" aria-label="选择研究节点">$tree</nav>
+      <div class="tree-legend"><span>● 已回答</span><span class="waiting">● 未充分</span><span>↳ 按缺口下钻</span></div>
+      <div class="reading-controls"><button type="button" id="reading-mode">查看全文</button><a href="#source-index">来源索引</a></div>
+    </aside>
+    <main class="detail-pane" id="detail-pane">$articles</main>
+  </div>
+  <details class="source-index" id="source-index"><summary>来源索引 · $source_count 份材料</summary>$sources</details>
+  <footer class="audit-footer"><span>“通过”仅指足以回答当前问题；不等于投资门槛通过。</span><span>$attachments</span></footer>
+</div>
+<script>$javascript</script>
+</body>
+</html>
