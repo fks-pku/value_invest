@@ -40,6 +40,14 @@ Do not put domain-specific questions into the public presentation contract.
 
 ## 3. Build Adaptive Internal QA
 
+Before decomposition, follow the first-principles question-design rules in
+`dynamic-research-agent`: identify the decision and shortest causal chain, then
+retain only questions whose answers could materially change the parent judgment.
+Keep each question plain and single-focus; metrics and calculation detail belong
+in its data/analysis contract. Event studies verify the event premise and compare
+against a no-event baseline. Playbook mechanisms are candidates, not a requirement
+to expand every branch; required investment gates still apply before a recommendation.
+
 Maximum depth is five:
 
 - L1: adapted research direction.

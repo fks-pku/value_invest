@@ -47,7 +47,15 @@ Historical backtest is the default unless the user explicitly asks for live/curr
 
 Use `dynamic-research-agent`; reuse a domain playbook when applicable. It directly
 owns decomposition, source planning, parsing, analysis, and sufficiency judgment;
-do not dispatch to retired investment skills. Internal QA is adaptive to maximum depth five:
+do not dispatch to retired investment skills.
+
+Question design starts from the shortest first-principles causal chain, not a
+report outline. Use plain, single-focus questions and keep a branch only when its
+answer could change the parent judgment's direction, magnitude, timing, or failure
+condition. Put metric detail in the data/analysis contract. For event research,
+verify the premise and distinguish incremental effects from the no-event baseline.
+
+Internal QA is adaptive to maximum depth five:
 
 - L1: research direction.
 - L2: mechanism bucket.

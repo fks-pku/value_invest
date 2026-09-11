@@ -1,0 +1,22 @@
+{
+  "revision_id": "20260911_first_principles",
+  "verified_on": "2026-09-11",
+  "python_tests_passed": 72,
+  "suites": {
+    "tools/test_gpt6_impact_research.py": 11,
+    "tests/test_question_tree_report_template.py": 11,
+    "tests/test_research_framework_quality.py": 11,
+    "tests/test_research_plan.py": 6,
+    "tests/test_hexagonal_architecture.py": 33
+  },
+  "javascript_test": "tests/test_question_tree_template_js.cjs passed with mocked DOM; not a browser visual test",
+  "html_markdown_claim_parity": "passed",
+  "plan_and_question_trace": "passed; 8 terminal questions, 5 passed, 3 blocked",
+  "historical_ledger_prefixes": "unchanged",
+  "new_l4_or_l5_created": false,
+  "repeat_render_and_legacy_entrypoint": "identical report, extraction, review and node-state hashes; no duplicate evidence",
+  "git_diff_check": "passed",
+  "visual_review": "not completed; local-file browser policy restriction previously observed, no bypass attempted",
+  "research_completion": "partial_research",
+  "git_push": "not requested or performed"
+}

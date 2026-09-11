@@ -28,17 +28,31 @@ def blocks(vm):
     add("heading", level=2, id="industry", text="2. 行业概况")
     by_id = {r["id"]: r for r in vm.qa_roots}
     groups = {r["id"]: r for r in syn["nodes"]}
-    order = ["Q1.1", "Q1.1.1", "Q1.1.2", "Q1.1.2.1", "Q1.1.2.2", "Q1.2", "Q1.2.1", "Q1.2.2", "Q1.2.2.1", "Q1.2.2.2", "Q1.2.3", "Q1.3", "Q1.3.1"]
+    tree = vm.project.get("question_tree", {}).get("nodes", [])
+    order = []
+    def visit(parent):
+        for node in tree:
+            if node.get("parent_id") == parent:
+                order.append(node["id"])
+                visit(node["id"])
+    visit("Q1")
+    if not tree:
+        raise ValueError("Event Markdown requires the same question tree as HTML")
+    display = {n["id"]: n for n in tree}
     for qid in order:
         if qid in groups:
             row = groups[qid]
-            add("heading", level=3, id=qid, text=row["title"], qid=qid, rollup=True)
+            add("heading", level=min(display[qid]["level"] + 1, 5), id=qid, text=display[qid]["question"], qid=qid, rollup=True)
             add("paragraph", text=row["conclusion"], style="lead")
             for p in row["paragraphs"]:
                 add("paragraph", text=p)
+            state = display[qid]
+            add("paragraph", text=("充分性：通过（限本题边界）。" if state["passed"] else "充分性：未通过。") + "；".join(state["reasons"]))
+            if state["gaps"]:
+                add("paragraph", text="缺口：" + "；".join(state["gaps"]))
             continue
         row = by_id[qid]
-        add("heading", level=4, id=qid, text=row["title"], qid=qid, passed=row["passed"])
+        add("heading", level=min(display[qid]["level"] + 1, 5), id=qid, text=display[qid]["question"], qid=qid, passed=row["passed"])
         add("paragraph", text=row["question"], style="question")
         add("paragraph", text=row["conclusion"], style="conclusion")
         add("evidence", pairs=row["evidence"])
@@ -59,7 +73,7 @@ def blocks(vm):
         [f"{t['company']} · {t['ticker']} / no_action", t["exposure"], t["needed"], t["risk"]] for t in vm.targets])
     add("paragraph", text=syn["next_validation"], style="note")
     add("heading", level=2, id="sources", text="4. 来源索引")
-    add("paragraph", text="下列均为本轮实际打开并核读的来源。S04、S05 为评测作者原文；其他为官方资料或厂商刊载客户案例。事实、研究者推导与假设情景分别表述；来源链接会随网站更新，摘录、定位与逐题复核记录保存在项目审计文件中。", style="note")
+    add("paragraph", text=vm.project.get("source_note") or "下列均为本轮实际打开并核读的来源。S04、S05 为评测作者原文；其他为官方资料或厂商刊载客户案例。事实、研究者推导与假设情景分别表述；来源链接会随网站更新，摘录、定位与逐题复核记录保存在项目审计文件中。", style="note")
     for s in vm.sources:
         add("source", source=s)
     return result

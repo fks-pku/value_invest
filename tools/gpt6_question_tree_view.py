@@ -19,8 +19,9 @@ def build_question_tree_view(vm, qa, states, brief, extracts):
         row = leaf.get(nid) or rollups.get(nid) or {}
         analysis = deepcopy(row.get("analysis") or [{"heading": "子结论如何汇总", "paragraphs": row.get("paragraphs") or syn["root_paragraphs"]}])
         data = initial.get(nid, {}).get("data") or q.get("required_data") or ["直接子问题的结论、通过状态、反向证据和未闭环缺口"]
-        node = dict(id=nid, parent_id=q.get("parent_id") or "", level=q["level"], question=q["question"],
-                    short=q["question"], what=q["question"], data_required=data,
+        question = q.get("display_question") or q["question"]
+        node = dict(id=nid, parent_id=q.get("parent_id") or "", level=q["level"], question=question,
+                    short=question, what=q["question"], data_required=data,
                     acceptance_rule=("所有必要子问题充分回答，综合分析处理相互制约及实质缺口；有未通过的必要子节点，本层不得通过。" if child_ids else "核心事实可追溯，研究对象与期间口径可比，反向证据已处理；剩余缺口不实质改变本题答案。"),
                     mode="rollup" if child_ids else "leaf", conclusion=state["conclusion"], passed=state["passed"],
                     gaps=state["gaps"], was_expanded=nid in {"Q1.1.2", "Q1.2.2"}, analysis=analysis,
@@ -41,7 +42,7 @@ def build_question_tree_view(vm, qa, states, brief, extracts):
         nodes.append(node)
     return dict(template_version="question-tree-v1", title=vm.project["title"], as_of_date=vm.project["as_of_date"],
                 subtitle="左侧选择问题；右侧严格按问题与口径、数据证据、分析正文、结论与充分性展开。父节点汇总下层，不重复取证。",
-                status_label="阶段性研究 · 2 个终端问题仍有缺口", nodes=nodes, sources=vm.sources,
-                source_note="下列均为本轮实际打开并核读的来源。S04、S05 为评测作者原文；其他为官方资料或厂商刊载客户案例。事实、研究者推导与假设情景分别表述；来源链接会随网站更新，摘录、定位与逐题复核记录保存在项目审计文件中。",
+                status_label=f"阶段性研究 · {sum(not n['passed'] and n['mode'] == 'leaf' for n in nodes)} 个终端问题仍有缺口", nodes=nodes, sources=vm.sources,
+                source_note=vm.project.get("source_note") or "下列均为本轮实际打开并核读的来源。S04、S05 为评测作者原文；其他为官方资料或厂商刊载客户案例。事实、研究者推导与假设情景分别表述；来源链接会随网站更新，摘录、定位与逐题复核记录保存在项目审计文件中。",
                 attachments=[{"label": "研究计划", "href": "research_plan.md"}, {"label": "完整 Markdown", "href": "professional_report.md"},
                              {"label": "来源登记", "href": "sources.jsonl"}, {"label": "复核记录", "href": "source_reviews.jsonl"}])

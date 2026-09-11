@@ -1,4 +1,15 @@
 {
+  "existing_html_contract": {
+    "ok": true,
+    "issues": [],
+    "summary": {
+      "mode": "historical_backtest",
+      "presentation_profile": "question-tree-v1",
+      "nodes": 15,
+      "parents": 7,
+      "leaves": 8
+    }
+  },
   "markdown_contract": {
     "ok": true,
     "issues": [],
@@ -11,19 +22,7 @@
       "require_l3": false
     }
   },
-  "existing_html_contract": {
-    "ok": true,
-    "issues": [],
-    "summary": {
-      "mode": "historical_backtest",
-      "presentation_profile": "question-tree-v1",
-      "nodes": 14,
-      "parents": 6,
-      "leaves": 8
-    }
-  },
-  "html_compatibility_note": "采用共享 question-tree-v1 模板；按父/叶固定四节结构校验，不再套用全 BOM 报告样式门禁。",
-  "event_static_tests": "tools/test_gpt6_impact_research.py: trace, dates, calculations, identical claims, headings, local links, no runtime fetch",
-  "visual_review": "blocked_by_local_file_browser_policy; not claimed",
-  "presentation_profile": "question-tree-v1"
+  "presentation_profile": "question-tree-v1",
+  "visual_review": "not_performed_this_revision; existing local-file browser policy restriction",
+  "html_compatibility_note": "共享四节问题树模板；结构通过不等于研究完成。"
 }

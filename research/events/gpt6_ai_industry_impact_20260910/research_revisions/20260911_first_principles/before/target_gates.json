@@ -1,0 +1,70 @@
+[
+  {
+    "company": "Microsoft",
+    "ticker": "MSFT",
+    "exposure": "云与企业 AI 工作入口 [S07]",
+    "needed": "同口径增量消耗、交付毛利、资本回报及截面估值",
+    "risk": "消耗增长可能伴随更高推理与折旧成本",
+    "action_state": "no_action",
+    "candidate_action_state": "watch_only",
+    "research_gate": {
+      "passed": false,
+      "reasons": [
+        "未验证 canonical BOM 稀缺映射",
+        "事件增量盈利未验证",
+        "未做 as-of 估值与错定价分析"
+      ]
+    }
+  },
+  {
+    "company": "Amazon",
+    "ticker": "AMZN",
+    "exposure": "Bedrock 模型分发与治理 [S06]",
+    "needed": "Astra 消费归属、增量而非渠道迁移、利润分成与估值",
+    "risk": "多模型、多云竞争；上线不等于新收入",
+    "action_state": "no_action",
+    "candidate_action_state": "watch_only",
+    "research_gate": {
+      "passed": false,
+      "reasons": [
+        "未验证 canonical BOM 稀缺映射",
+        "事件增量盈利未验证",
+        "未做 as-of 估值与错定价分析"
+      ]
+    }
+  },
+  {
+    "company": "Salesforce",
+    "ticker": "CRM",
+    "exposure": "企业业务系统与 Agent 工作流 [S08] [S10]",
+    "needed": "可比代理收入、净留存、席位替代与毛利桥梁",
+    "risk": "统计范围扩展、模型平台捆绑和计费转换",
+    "action_state": "no_action",
+    "candidate_action_state": "watch_only",
+    "research_gate": {
+      "passed": false,
+      "reasons": [
+        "未验证 canonical BOM 稀缺映射",
+        "事件增量盈利未验证",
+        "未做 as-of 估值与错定价分析"
+      ]
+    }
+  },
+  {
+    "company": "NVIDIA",
+    "ticker": "NVDA",
+    "exposure": "数据中心计算基础设施 [S09]",
+    "needed": "用途可识别的新增订单、利用率、技术替代、盈利与估值",
+    "risk": "效率提升、客户提前投入及算力路线分配",
+    "action_state": "no_action",
+    "candidate_action_state": "watch_only",
+    "research_gate": {
+      "passed": false,
+      "reasons": [
+        "未验证 canonical BOM 稀缺映射",
+        "事件增量盈利未验证",
+        "未做 as-of 估值与错定价分析"
+      ]
+    }
+  }
+]

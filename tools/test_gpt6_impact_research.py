@@ -47,7 +47,7 @@ class EventArtifactChecks(unittest.TestCase):
         result = json.loads((PROJECT / "plan_validation.json").read_text())
         self.assertTrue(result["ok"], result["issues"])
         nested = result["summary"]["nested"]
-        self.assertEqual((nested["leaf_steps"], nested["completed_leaf_steps"], nested["blocked_leaf_steps"]), (8,6,2))
+        self.assertEqual((nested["leaf_steps"], nested["completed_leaf_steps"], nested["blocked_leaf_steps"]), (8,5,3))
         self.assertEqual(nested["max_depth"], 4)
         self.assertEqual(self.vm.project["research_status"], "partial_research")
 
@@ -83,7 +83,7 @@ class EventArtifactChecks(unittest.TestCase):
             self.assertEqual(target["action_state"], "no_action")
             self.assertFalse(target["research_gate"]["passed"])
         states = {s["question_id"]:s for s in read_lines(PROJECT / "ledger/node_states.jsonl")}
-        self.assertEqual(len(states["Q1"]["gaps"]), 2)
+        self.assertEqual(len(states["Q1"]["gaps"]), 3)
         self.assertFalse(states["Q1"]["passed"])
 
     def test_same_claims_in_html_and_markdown(self):
@@ -125,6 +125,43 @@ class EventArtifactChecks(unittest.TestCase):
         scenarios = next(c["scenario_table"] for c in self.vm.qa_roots if c.get("scenario_table"))
         for _, n, c, h, outcome in scenarios["rows"]:
             self.assertEqual(round(float(n)*float(c)/float(h),2),float(outcome))
+
+    def test_first_principles_tree_and_preserved_links(self):
+        tree = self.vm.project["question_tree"]["nodes"]
+        groups = [n for n in tree if n["parent_id"] == "Q1"]
+        self.assertEqual([n["id"] for n in groups], ["Q1.1", "Q1.2", "Q1.4", "Q1.3"])
+        self.assertTrue(all(len(n["question"]) < 40 for n in tree))
+        old = json.loads((PROJECT / "research_revisions/20260911_first_principles/before/qa_tree.json").read_text())
+        self.assertTrue({n["id"] for n in old["nodes"]}.issubset({n["id"] for n in tree}))
+        self.assertEqual({n["id"] for n in tree if n["level"] > 3}, {n["id"] for n in old["nodes"] if n["level"] > 3})
+
+    def test_changed_profit_question_does_not_inherit_pass(self):
+        states = read_lines(PROJECT / "ledger/node_states.jsonl")
+        profit = [s for s in states if s["question_id"] == "Q1.3.1"]
+        self.assertTrue(any(s["passed"] for s in profit[:-1]))
+        self.assertFalse(profit[-1]["passed"])
+        latest = {s["question_id"]: s for s in states}
+        self.assertFalse(latest["Q1.3"]["passed"])
+        self.assertTrue(set(profit[-1]["gaps"]).issubset(latest["Q1"]["gaps"]))
+        reviews = [r for r in read_lines(PROJECT / "source_reviews.jsonl") if "_first_principles_leaf_" in r["review_id"]]
+        self.assertEqual({r["question_node_id"] for r in reviews}, {"Q1.1.2.2", "Q1.3.1"})
+        self.assertTrue(all(r["recorded_at"].startswith("2026-09-11") for r in reviews))
+
+    def test_revision_preserves_append_only_history(self):
+        import hashlib
+        folder = PROJECT / "research_revisions/20260911_first_principles"
+        manifest = json.loads((folder / "before_manifest.json").read_text())
+        for name, row in manifest.items():
+            self.assertEqual(hashlib.sha256((PROJECT / name).read_bytes()[:row["bytes"]]).hexdigest(), row["sha256"], name)
+        self.assertEqual(self.vm.project["as_of_date"], "2026-09-10")
+        self.assertEqual(self.vm.project["revised_on"], "2026-09-11")
+
+    def test_new_cost_refutation_is_question_specific(self):
+        pairs = [r for r in read_lines(PROJECT / "source_extractions.jsonl") if r["source_id"] == "S14"]
+        self.assertEqual(len(pairs), 1)
+        self.assertEqual(pairs[0]["question_node_id"], "Q1.1.2.2")
+        self.assertEqual(self.sources["S14"]["published_at"], "2026-09-09")
+        self.assertEqual(round(2.49 / 1.03, 2), 2.42)
 
 
 if __name__ == "__main__":

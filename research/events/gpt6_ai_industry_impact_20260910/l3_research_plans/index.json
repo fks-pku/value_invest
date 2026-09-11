@@ -9,7 +9,7 @@
     "planning_unit": "one_independent_plan_per_l3",
     "question_tree": "adaptive_depth_max_5"
   },
-  "parent_research_plan_id": "rp_d93bd54a572cf2b8",
+  "parent_research_plan_id": "rp_fp_7352613eb6c5ef78",
   "plan_type": "l3_deep_research_index",
   "plans": [
     {
@@ -61,7 +61,7 @@
       "active_steps": 1,
       "event_path": "l3_research_plans/Q1.3.1/research_step_events.jsonl",
       "l3_node_id": "Q1.3.1",
-      "l3_plan_id": "l3rp_q1_3_1_367f56bcdd8cf723",
+      "l3_plan_id": "l3rp_q1_3_1_5c9ffaa8c4c2dd3e",
       "leaf_steps": 1,
       "max_depth": 3,
       "path": "l3_research_plans/Q1.3.1/research_plan.json"

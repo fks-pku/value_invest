@@ -39,7 +39,7 @@ def read_lines(path):
     return [json.loads(s) for s in path.read_text().splitlines() if s.strip()] if path.exists() else []
 
 
-def record_question(row, stage):
+def record_question(row, stage, *, performed_on="2026-09-10"):
     """Persist explicitly authored question/source pairs, not a broad source-pool mapping."""
     l3 = row["l3_id"]
     repo = FileSystemResearchPlanRepository(PROJECT / "l3_research_plans" / l3)
@@ -50,7 +50,7 @@ def record_question(row, stage):
                  question_level=step["level"], research_step_id=step["step_id"], search_run_id=run)
     now = datetime.now(timezone.utc).isoformat()
     append_unique(PROJECT / "search_runs.jsonl", [{**trace, "recorded_at": now,
-        "performed_on": "2026-09-10", "queries_or_selections": row["searches"],
+        "performed_on": performed_on, "queries_or_selections": row["searches"],
         "refutation_search_result": row["refutation"], "timing_note": "从本次实际浏览记录登记；不伪造每次检索的精确时间。",
         "acquisition": "question_search_and_question_specific_source_selection",
         "external_archive_scan": "not_performed; no archive evidence claimed"}], "search_run_id")
@@ -205,7 +205,7 @@ def render_plan(qa, project):
     def visit(node):
         level = node["level"]
         indent = "  " * (level - 1)
-        lines.extend([f"{indent}- L{level} · {node['id']}：{node['question']}", ""])
+        lines.extend([f"{indent}- L{level} · {node['id']}：{node.get('display_question') or node['question']}", ""])
         children = [n for n in qa["nodes"] if n.get("parent_id") == node["id"]]
         if not children:
             orig = original.get(node["id"], {})
@@ -286,6 +286,10 @@ if __name__ == "__main__":
     parser.add_argument("--render-only", action="store_true")
     if parser.parse_args().render_only:
         render_existing()
+    elif (PROJECT / "research_revisions/20260911_first_principles/completed.json").exists():
+        # A historical bootstrap must not overwrite a later, reviewed revision.
+        from refine_gpt6_report import refresh_report
+        refresh_report()
     else:
         initialize()
         if (PROJECT / "initial_findings.json").exists():

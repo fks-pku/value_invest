@@ -1,0 +1,428 @@
+{
+  "project_id": "gpt6_ai_industry_impact_20260910",
+  "title": "GPT-6 Astra 发布对 AI 行业的影响",
+  "meta_question": "截至 2026-09-10，GPT-6 Astra 的发布改变了 AI 行业的哪些经济机制，哪些影响已有证据、哪些仍待验证？",
+  "research_type": "event",
+  "run_mode": "historical_backtest",
+  "as_of_date": "2026-09-10",
+  "report_date": "2026-09-10",
+  "horizon": "发布后一周事实截面；未来 6—24 个月机制情景，不使用截面后数据",
+  "scope": "模型、企业软件/Agent、云与 AI 算力的事件传导；非全产业链逐 BOM 评级，不给买卖指令",
+  "decision_boundary": "事实核实与条件性行业判断；未验证增量盈利、稀缺性和估值时不形成 actionable_long",
+  "domain_playbook": "gpt6_launch_event",
+  "max_depth": 5,
+  "groups": [
+    {
+      "id": "Q1.1",
+      "question": "发布带来的可验证增量是什么？"
+    },
+    {
+      "id": "Q1.2",
+      "question": "这些增量如何传导到行业需求和价值分配？"
+    },
+    {
+      "id": "Q1.3",
+      "question": "哪些投资判断可以成立，如何证伪？"
+    }
+  ],
+  "questions": [
+    {
+      "id": "Q1.1.1",
+      "parent_id": "Q1.1",
+      "question": "GPT-6 Astra 何时发布、提供哪些能力、哪些尚不是可用产品或商业事实？",
+      "data": [
+        "官方发布日志、模型文档与产品接入范围",
+        "限制、可用性和营销措辞的边界"
+      ],
+      "analysis": "拆分发布日期、产品功能、官方评测和未来承诺，不把知识截止日当发布日期。",
+      "refute": "寻找未上线、受限接入和基准不适用的说明。"
+    },
+    {
+      "id": "Q1.1.2",
+      "parent_id": "Q1.1",
+      "question": "相对 GPT-5.6 Sol，能力提升是否意味着可验收任务的总成本下降？",
+      "data": [
+        "同任务评测、执行耗时、输入输出量和成功率",
+        "截至截面的 API 单价、缓存与计费条件",
+        "人工复核、重试和错误成本"
+      ],
+      "analysis": "从每 token 价格转为每个验收任务的全成本；统一 harness、难度和推理设置。",
+      "refute": "寻找没有改善的评测、溢价和人工成本未下降的场景。"
+    },
+    {
+      "id": "Q1.2.1",
+      "parent_id": "Q1.2",
+      "question": "哪些 AI 应用需求最可能被放大，能否从试用跨到企业付费工作流？",
+      "data": [
+        "软件、研究、文档等具体任务的能力边界",
+        "企业采用、付费与生产环境约束",
+        "客户试用与真实收入的区分"
+      ],
+      "analysis": "按可验收性、错误代价、工作频率及集成成本排序，不把基准分数换算成市场规模。",
+      "refute": "寻找人类复核、安全、数据权限和部署瓶颈。"
+    },
+    {
+      "id": "Q1.2.2",
+      "parent_id": "Q1.2",
+      "question": "GPT-6 对推理算力、GPU 和配套基础设施的净需求方向及规模能否被验证？",
+      "data": [
+        "每项任务的 token、计算与时延变化",
+        "任务量增长、工作负载结构和硬件效率",
+        "云厂商资本开支、采购和供货的发布前后区分"
+      ],
+      "analysis": "拆分任务量、单任务计算强度、模型路由和硬件效率，验证需求反弹阈值和采购归因。",
+      "refute": "检验推理效率提高、低价模型分流和既有产能消化是否抵消新增任务量。"
+    },
+    {
+      "id": "Q1.2.3",
+      "parent_id": "Q1.2",
+      "question": "模型平台、云渠道和应用软件之间的竞争与价值分配会怎样改变？",
+      "data": [
+        "独立评测与竞争模型能力、价格和渠道",
+        "平台工具与企业软件的业务边界",
+        "分销、业务数据、权限、责任和工作流控制"
+      ],
+      "analysis": "区分模型能力护城河与渠道/系统记录护城河；识别既受益又受挤压的公司。",
+      "refute": "检验多模型路由、竞品追赶及模型平台跨入应用层的替代风险。"
+    },
+    {
+      "id": "Q1.3.1",
+      "parent_id": "Q1.3",
+      "question": "哪些行业和公司观察值得保留，什么数据会推翻本次判断？",
+      "data": [
+        "子问题的可验证结论与未闭环缺口",
+        "公司业务敞口、增量盈利与估值验证是否齐备",
+        "可执行的接受率、成本、收入和风险阈值"
+      ],
+      "analysis": "区分基本面变化、市场共识与已定价；只汇总已验证部分，未验证的盈利和估值不打分。",
+      "refute": "设定全成本恶化、事故、付费不转化和采购不兑现时的降级条件。"
+    }
+  ],
+  "research_status": "partial_research",
+  "report_scope": "event-study",
+  "source_universe": {
+    "domain_id": "ai_factory",
+    "label": "AI factory and semiconductor hardware",
+    "aliases": [
+      "ai_factory",
+      "semiconductor_hardware",
+      "memory_industry",
+      "optical_module",
+      "data_center_ai"
+    ],
+    "priority_sources": [
+      {
+        "id": "semianalysis",
+        "name": "SemiAnalysis",
+        "domain": "semianalysis.com",
+        "access": "mixed_public_and_paywalled",
+        "reliability": "high",
+        "categories": [
+          "third_party",
+          "company_tam",
+          "customer_guidance"
+        ],
+        "node_keywords": [
+          "AI factory",
+          "GPU",
+          "ASIC",
+          "HBM",
+          "CoWoS",
+          "networking",
+          "interconnect",
+          "datacenter capex"
+        ],
+        "query_hints": [
+          "BOM",
+          "supply chain",
+          "cluster",
+          "TCO",
+          "capacity",
+          "AI datacenter"
+        ]
+      },
+      {
+        "id": "trendforce",
+        "name": "TrendForce",
+        "domain": "trendforce.com",
+        "access": "public_summary_and_paid_data",
+        "reliability": "high",
+        "categories": [
+          "third_party",
+          "company_tam"
+        ],
+        "node_keywords": [
+          "HBM",
+          "DRAM",
+          "NAND",
+          "AI server",
+          "CoWoS",
+          "supply demand"
+        ],
+        "query_hints": [
+          "forecast",
+          "capacity",
+          "ASP",
+          "market size",
+          "supply demand"
+        ]
+      },
+      {
+        "id": "techinsights",
+        "name": "TechInsights",
+        "domain": "techinsights.com",
+        "access": "mixed_public_and_paid",
+        "reliability": "high",
+        "categories": [
+          "third_party",
+          "company_tam"
+        ],
+        "node_keywords": [
+          "semiconductor",
+          "HBM",
+          "advanced packaging",
+          "AI accelerator",
+          "datacenter"
+        ],
+        "query_hints": [
+          "market analysis",
+          "forecast",
+          "supply chain",
+          "competitive analysis"
+        ]
+      },
+      {
+        "id": "omdia",
+        "name": "Omdia",
+        "domain": "omdia.tech.informa.com",
+        "access": "mixed_public_and_paid",
+        "reliability": "high",
+        "categories": [
+          "third_party",
+          "company_tam",
+          "customer_guidance"
+        ],
+        "node_keywords": [
+          "AI data center",
+          "semiconductor",
+          "server",
+          "networking",
+          "memory"
+        ],
+        "query_hints": [
+          "forecast",
+          "market size",
+          "datacenter",
+          "cloud capex"
+        ]
+      },
+      {
+        "id": "delloro",
+        "name": "Dell'Oro Group",
+        "domain": "delloro.com",
+        "access": "public_summary_and_paid_data",
+        "reliability": "high",
+        "categories": [
+          "third_party",
+          "company_tam"
+        ],
+        "node_keywords": [
+          "data center switch",
+          "Ethernet",
+          "AI networking",
+          "server",
+          "telecom"
+        ],
+        "query_hints": [
+          "forecast",
+          "market share",
+          "Ethernet AI",
+          "switch"
+        ]
+      },
+      {
+        "id": "lightcounting",
+        "name": "LightCounting",
+        "domain": "lightcounting.com",
+        "access": "public_summary_and_paid_data",
+        "reliability": "high",
+        "categories": [
+          "third_party",
+          "company_tam"
+        ],
+        "node_keywords": [
+          "optical transceiver",
+          "800G",
+          "1.6T",
+          "datacenter interconnect",
+          "AEC"
+        ],
+        "query_hints": [
+          "forecast",
+          "shipments",
+          "optical modules",
+          "AI cluster"
+        ]
+      },
+      {
+        "id": "the_information",
+        "name": "The Information",
+        "domain": "theinformation.com",
+        "access": "paywalled",
+        "reliability": "medium_high",
+        "categories": [
+          "customer_guidance",
+          "message"
+        ],
+        "node_keywords": [
+          "OpenAI",
+          "Microsoft",
+          "Meta",
+          "Google",
+          "Amazon",
+          "AI datacenter"
+        ],
+        "query_hints": [
+          "capex",
+          "orders",
+          "AI infrastructure",
+          "customer demand"
+        ]
+      },
+      {
+        "id": "serve_the_home",
+        "name": "ServeTheHome",
+        "domain": "servethehome.com",
+        "access": "public",
+        "reliability": "medium_high",
+        "categories": [
+          "third_party",
+          "financial_evidence"
+        ],
+        "node_keywords": [
+          "AI server",
+          "rack",
+          "networking",
+          "GPU",
+          "liquid cooling"
+        ],
+        "query_hints": [
+          "systems",
+          "rack scale",
+          "BOM",
+          "datacenter"
+        ]
+      },
+      {
+        "id": "semi_engineering",
+        "name": "Semiconductor Engineering",
+        "domain": "semiengineering.com",
+        "access": "public",
+        "reliability": "medium_high",
+        "categories": [
+          "third_party"
+        ],
+        "node_keywords": [
+          "advanced packaging",
+          "chiplet",
+          "HBM",
+          "interconnect",
+          "thermal"
+        ],
+        "query_hints": [
+          "engineering constraint",
+          "capacity",
+          "roadmap",
+          "yield"
+        ]
+      },
+      {
+        "id": "semi",
+        "name": "SEMI",
+        "domain": "semi.org",
+        "access": "public_summary_and_paid_data",
+        "reliability": "high",
+        "categories": [
+          "third_party",
+          "company_tam"
+        ],
+        "node_keywords": [
+          "semiconductor equipment",
+          "fab",
+          "capex",
+          "wafer",
+          "packaging"
+        ],
+        "query_hints": [
+          "forecast",
+          "equipment spending",
+          "capacity",
+          "fab"
+        ]
+      },
+      {
+        "id": "company_ir",
+        "name": "Company IR and SEC filings",
+        "domain": "",
+        "access": "public",
+        "reliability": "primary",
+        "categories": [
+          "company_guidance",
+          "company_tam",
+          "financial_evidence"
+        ],
+        "node_keywords": [
+          "investor relations",
+          "earnings",
+          "10-K",
+          "10-Q",
+          "press release"
+        ],
+        "query_hints": [
+          "guidance",
+          "TAM",
+          "revenue",
+          "gross margin",
+          "backlog",
+          "capex"
+        ]
+      },
+      {
+        "id": "customer_ir",
+        "name": "Customer IR and filings",
+        "domain": "",
+        "access": "public",
+        "reliability": "primary",
+        "categories": [
+          "customer_guidance",
+          "financial_evidence"
+        ],
+        "node_keywords": [
+          "Microsoft",
+          "Amazon",
+          "Alphabet",
+          "Meta",
+          "Oracle",
+          "capex",
+          "RPO"
+        ],
+        "query_hints": [
+          "capex guidance",
+          "RPO",
+          "PPE purchases",
+          "cloud revenue",
+          "AI demand"
+        ]
+      }
+    ],
+    "event_supplement": [
+      "OpenAI official release/docs",
+      "benchmark authors",
+      "competitor official docs",
+      "customer/company IR",
+      "primary adoption studies"
+    ]
+  },
+  "current_judgment": "更值得关注的变化，是 AI 能否以可接受的全成本接手更复杂、可验收的工作；不是所有模型调用突然更便宜，也不是所有 AI 资产同时受益。应用与执行系统的机会得到更多线索，新增付费与净算力采购仍缺归因证据。",
+  "biggest_uncertainty": "Astra 带来的新增企业付费与净算力采购尚不可归因。"
+}

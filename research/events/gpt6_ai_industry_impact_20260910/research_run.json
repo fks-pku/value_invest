@@ -2,13 +2,13 @@
   "status": "partial_research",
   "as_of_date": "2026-09-10",
   "summary": {
-    "parent_plan_id": "rp_d93bd54a572cf2b8",
+    "parent_plan_id": "rp_fp_7352613eb6c5ef78",
     "status": "blocked",
     "l3_plans": 6,
-    "completed_l3_plans": 4,
+    "completed_l3_plans": 3,
     "leaf_steps": 8,
-    "completed_leaf_steps": 6,
-    "blocked_leaf_steps": 2,
+    "completed_leaf_steps": 5,
+    "blocked_leaf_steps": 3,
     "max_depth": 4
   },
   "scope": "event-study; not a full BOM investment run",
@@ -17,9 +17,13 @@
   "market_price_analysis": "not_performed",
   "unanswered_leaf_ids": [
     "Q1.2.1",
-    "Q1.2.2.2"
+    "Q1.2.2.2",
+    "Q1.3.1"
   ],
-  "source_count": 13,
-  "claim_count": 28,
-  "reproduce": "PYTHONPATH=src <Python 3.10+> tools/gpt6_impact_research.py"
+  "source_count": 14,
+  "claim_count": 32,
+  "reproduce": "PYTHONPATH=src <Python 3.10+> tools/refine_gpt6_report.py",
+  "revision_id": "20260911_first_principles",
+  "revised_on": "2026-09-11",
+  "revision_note": "Same historical cutoff; new cost refutation and independently reviewed profit question; no new L4/L5."
 }

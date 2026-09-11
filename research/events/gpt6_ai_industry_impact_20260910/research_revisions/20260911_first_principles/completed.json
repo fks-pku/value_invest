@@ -1,0 +1,16 @@
+{
+  "revision_id": "20260911_first_principles",
+  "recorded_at": "2026-09-11T08:03:44.430124+00:00",
+  "input_sha256": "04347c98d6c06318d2a9fd3d0103066fbca5e30b45a2be8eb3e9db9001f79413",
+  "append_only_prefixes_verified": true,
+  "plan_validation": {
+    "parent_plan_id": "rp_fp_7352613eb6c5ef78",
+    "status": "blocked",
+    "l3_plans": 6,
+    "completed_l3_plans": 3,
+    "leaf_steps": 8,
+    "completed_leaf_steps": 5,
+    "blocked_leaf_steps": 3,
+    "max_depth": 4
+  }
+}
