@@ -95,7 +95,7 @@ class EventArtifactChecks(unittest.TestCase):
         for chapter in self.vm.qa_roots:
             self.assertIn(chapter["conclusion"], visible)
             self.assertIn(chapter["conclusion"], self.md)
-            self.assertGreater(sum(len(p) for part in chapter["analysis"] for p in part["paragraphs"]), 400)
+            self.assertTrue(any(p.strip() for part in chapter["analysis"] if not part.get("supplementary", False) for p in part["paragraphs"]))
             for pair in chapter["evidence"]:
                 self.assertIn(pair["fact"], visible)
                 self.assertIn(pair["fact"], self.md)
@@ -154,12 +154,14 @@ class EventArtifactChecks(unittest.TestCase):
         for name, row in manifest.items():
             self.assertEqual(hashlib.sha256((PROJECT / name).read_bytes()[:row["bytes"]]).hexdigest(), row["sha256"], name)
         self.assertEqual(self.vm.project["as_of_date"], "2026-09-10")
-        self.assertEqual(self.vm.project["revised_on"], "2026-09-11")
+        self.assertEqual(self.vm.project["revised_on"], "2026-09-18")
 
     def test_new_cost_refutation_is_question_specific(self):
         pairs = [r for r in read_lines(PROJECT / "source_extractions.jsonl") if r["source_id"] == "S14"]
-        self.assertEqual(len(pairs), 1)
-        self.assertEqual(pairs[0]["question_node_id"], "Q1.1.2.2")
+        self.assertEqual(len(pairs), 2)
+        self.assertEqual({r["question_node_id"] for r in pairs}, {"Q1.1.2.2"})
+        self.assertTrue(any("_first_principles_leaf_" in r["extraction_id"] for r in pairs))
+        self.assertTrue(any("_cost_case_leaf_" in r["extraction_id"] for r in pairs))
         self.assertEqual(self.sources["S14"]["published_at"], "2026-09-09")
         self.assertEqual(round(2.49 / 1.03, 2), 2.42)
 

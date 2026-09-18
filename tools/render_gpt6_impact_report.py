@@ -55,13 +55,23 @@ def blocks(vm):
         add("heading", level=min(display[qid]["level"] + 1, 5), id=qid, text=display[qid]["question"], qid=qid, passed=row["passed"])
         add("paragraph", text=row["question"], style="question")
         add("paragraph", text=row["conclusion"], style="conclusion")
-        add("evidence", pairs=row["evidence"])
-        for part in row["analysis"]:
+        main = [p for p in row["analysis"] if not p.get("supplementary", False)]
+        supplements = [p for p in row["analysis"] if p.get("supplementary", False)]
+        for i, part in enumerate(main + supplements):
+            if i == len(main):
+                if row.get("scenario_table"):
+                    add("table", **row["scenario_table"])
+                add("heading", level=5, text="补充测算与方法说明")
             add("heading", level=5, text=part["heading"])
             for p in part["paragraphs"]:
                 add("paragraph", text=p)
-        if row.get("scenario_table"):
+            for table in part.get("tables", []):
+                if table.get("caption"):
+                    add("paragraph", text=table["caption"])
+                add("table", headers=table["headers"], rows=table["rows"])
+        if row.get("scenario_table") and not supplements:
             add("table", **row["scenario_table"])
+        add("evidence", pairs=row["evidence"])
         add("paragraph", text="反向证据与边界：" + row["refutation"], style="note")
         add("paragraph", text=("充分性：通过（限本题边界）。" if row["passed"] else "充分性：未通过。") + row["gate_reason"], style="gate" if row["passed"] else "gap")
         if row["gaps"]:

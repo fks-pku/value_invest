@@ -1,0 +1,23 @@
+{
+  "scope": "Editorial readability and shared presentation components; no new research or evidence gate changes",
+  "focused_tests": {"run": 51, "failures": 0},
+  "repository_tests": {"run": 288, "skipped": 11, "failures": 0},
+  "javascript_navigation": "passed: deep links, supporting-anchor expansion, full reading, print open/restore, history",
+  "skill_quick_validate": "passed",
+  "html_and_markdown_contract": "passed",
+  "idempotence": "rerun leaves root/claim JSONL ledgers and rendered reports unchanged",
+  "editorial_review": {
+    "main_argument": "observed bill premium -> total task cost -> hypothetical labor break-even -> realized ROI still unverified",
+    "visible_limits": "Sonnet is not Sol; rounded score is not acceptance probability; matched example is not trial mean; labor rate/time and comparable delivery remain assumptions or unknowns",
+    "unchanged": "evidence, conclusions, gates, cutoff, targets and other seven leaf analyses",
+    "supplementary": "full matched configuration table, general equation, independent-study context, routing, Sol comparison and validation protocol remain accessible"
+  },
+  "behavioral_eval_prompts": "Added cases 7 and 8 for future skill evaluation; no independent model benchmark was run",
+  "visual_review": "not performed; existing local-file browser access restriction",
+  "generic_validators": {
+    "material_intake_issues": 240,
+    "research_artifact_issues": 782,
+    "research_plan_cli_issues": 22,
+    "status": "Existing event/generic-schema compatibility failures remain; counts unchanged from pre-editorial revision. No end-to-end evidence validation claimed."
+  }
+}

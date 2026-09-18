@@ -73,6 +73,7 @@ def _build_user_prompt(
         "### 3. QA Drilldown",
         "- Expand only the necessary next level, never beyond L5; research the current terminal question before drilling deeper on a concrete gap.",
         "- Each researched leaf must include data, analysis, conclusion, sufficiency judgment, gaps, triggers, and source links; parents synthesize their children.",
+        "- Public analysis is a continuous argument, not those fields as panels: answer first, decisive facts, explain their implication, then a bounded conclusion. Keep major assumptions and unresolved evidence visible; move secondary methodology to supporting prose. Explain a simple example before formulas, keep comparators consistent, and synthesize parents before listing child findings.",
         "",
         "### 4. Four-Bucket Information Table",
         "- Classify every input as evidence, research_report, opinion, or message.",

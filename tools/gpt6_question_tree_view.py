@@ -4,6 +4,18 @@ No searches, ledger writes, answer changes, or sufficiency decisions happen here
 """
 from copy import deepcopy
 
+# Editorial question relationships only; no new facts, evidence or gate decisions.
+QUESTION_PURPOSES = {
+    "Q1.1": "先确认实际可用能力与完成任务的成本变化，确定行业影响的起点。",
+    "Q1.2": "检验能力改善能否转成客户付费，而不是把技术进步直接当作需求增长。",
+    "Q1.4": "把任务增长与单位算力消耗、存量利用率联系起来，判断资源需求。",
+    "Q1.3": "沿价值归属和盈利兑现两条线，判断需求能否变成供应商利润。",
+    "Q1.1.2.1": "检验评测提升能否用于真实工作，为比较任务全成本提供能力边界。",
+    "Q1.1.2.2": "比较可验收任务的总成本，识别模型溢价被效率收益抵消的条件。",
+    "Q1.2.2.1": "建立任务量、单任务算力和硬件效率的关系，确定算力增长门槛。",
+    "Q1.2.2.2": "检验用量变化是否已转成新增采购，区分机制可能性和实际订单。",
+}
+
 
 def build_question_tree_view(vm, qa, states, brief, extracts):
     syn = vm.project["synthesis"]
@@ -22,6 +34,7 @@ def build_question_tree_view(vm, qa, states, brief, extracts):
         question = q.get("display_question") or q["question"]
         node = dict(id=nid, parent_id=q.get("parent_id") or "", level=q["level"], question=question,
                     short=question, what=q["question"], data_required=data,
+                    why_it_matters=q.get("why_it_matters") or QUESTION_PURPOSES.get(nid) or q.get("decision_use", ""),
                     acceptance_rule=("所有必要子问题充分回答，综合分析处理相互制约及实质缺口；有未通过的必要子节点，本层不得通过。" if child_ids else "核心事实可追溯，研究对象与期间口径可比，反向证据已处理；剩余缺口不实质改变本题答案。"),
                     mode="rollup" if child_ids else "leaf", conclusion=state["conclusion"], passed=state["passed"],
                     gaps=state["gaps"], was_expanded=nid in {"Q1.1.2", "Q1.2.2"}, analysis=analysis,
@@ -41,7 +54,7 @@ def build_question_tree_view(vm, qa, states, brief, extracts):
                 [f"{t['company']} · {t['ticker']} / no_action", t["exposure"], t["needed"], t["risk"]] for t in vm.targets]})
         nodes.append(node)
     return dict(template_version="question-tree-v1", title=vm.project["title"], as_of_date=vm.project["as_of_date"],
-                subtitle="左侧选择问题；右侧严格按问题与口径、数据证据、分析正文、结论与充分性展开。父节点汇总下层，不重复取证。",
+                subtitle="左侧选择问题；父节点列出研究子问题并综合判断，叶子节点呈现完整分析与结论。",
                 status_label=f"阶段性研究 · {sum(not n['passed'] and n['mode'] == 'leaf' for n in nodes)} 个终端问题仍有缺口", nodes=nodes, sources=vm.sources,
                 source_note=vm.project.get("source_note") or "下列均为本轮实际打开并核读的来源。S04、S05 为评测作者原文；其他为官方资料或厂商刊载客户案例。事实、研究者推导与假设情景分别表述；来源链接会随网站更新，摘录、定位与逐题复核记录保存在项目审计文件中。",
                 attachments=[{"label": "研究计划", "href": "research_plan.md"}, {"label": "完整 Markdown", "href": "professional_report.md"},

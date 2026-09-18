@@ -6,9 +6,10 @@ from html.parser import HTMLParser
 from urllib.parse import urlsplit
 
 PROFILE = "question-tree-v1"
-SECTIONS = ("scope", "data", "analysis", "conclusion")
-LEAF_TITLES = ("研究问题与口径", "核心数据与原始证据", "分析正文", "结论与充分性判断")
-PARENT_TITLES = ("汇总问题与口径", "下层结论与汇总依据", "综合分析", "结论与充分性判断")
+LEAF_SECTIONS = ("analysis",)
+PARENT_SECTIONS = ("questions", "analysis")
+LEAF_TITLES = ("分析与结论",)
+PARENT_TITLES = ("研究子问题", "分析与结论")
 
 
 def safe_link(url: str) -> bool:
@@ -54,6 +55,8 @@ def validate_question_tree_report(report: dict) -> list[str]:
         if not isinstance(level, int) or not 1 <= level <= 5:
             errors.append(f"{nid}: depth must be L1-L5")
         parent = by_id.get(node.get("parent_id"))
+        if node.get("parent_id") and not str(node.get("why_it_matters", "")).strip():
+            errors.append(f"{nid}: child requires why_it_matters for its parent")
         if node.get("parent_id") and (not parent or level != parent.get("level", -1) + 1):
             errors.append(f"{nid}: invalid parent or level")
         children = [c for c in nodes if c.get("parent_id") == nid]
@@ -71,6 +74,10 @@ def validate_question_tree_report(report: dict) -> list[str]:
         for section in node.get("analysis", []):
             if not section.get("heading") or not section.get("paragraphs"):
                 errors.append(f"{nid}: analysis requires titled paragraphs")
+            if not isinstance(section.get("supplementary", False), bool):
+                errors.append(f"{nid}: supplementary must be boolean")
+        if node.get("analysis") and all(s.get("supplementary", False) for s in node["analysis"]):
+            errors.append(f"{nid}: main analysis cannot be entirely supplementary")
     return errors
 
 
@@ -92,12 +99,16 @@ class _TemplateParser(HTMLParser):
         if tag == "a":
             self.links.append(a)
         if tag == "article" and "node-detail" in a.get("class", "").split():
-            self.current = {**a, "sections": [], "rollups": [], "tables": [], "titles": []}
+            self.current = {**a, "sections": [], "rollups": [], "summaries": [], "tables": [], "titles": [], "purposes": []}
             self.nodes.append(self.current)
         if self.current and tag == "section" and a.get("data-section"):
             self.current["sections"].append(a["data-section"])
         if self.current and a.get("data-child-id"):
             self.current["rollups"].append(a["data-child-id"])
+        if self.current and a.get("data-child-summary"):
+            self.current["summaries"].append(a["data-child-summary"])
+        if self.current and a.get("data-child-purpose"):
+            self.current["purposes"].append(a["data-child-purpose"])
         if self.current and tag == "table":
             self.current["tables"].append(a.get("class", ""))
         if self.current and tag == "h3":
@@ -133,15 +144,19 @@ def validate_question_tree_html(html: str, *, mode="historical_backtest") -> dic
     if len(roots) != 1:
         fail("root_coverage", "Template must have one root")
     for node in parsed.nodes:
-        if node["sections"] != list(SECTIONS):
-            fail("node_section_order", f"{node.get('id')} must render exactly scope/data/analysis/conclusion")
         children = [n for n in parsed.nodes if n.get("data-parent-id") == node.get("id")]
+        if node["sections"] != list(PARENT_SECTIONS if children else LEAF_SECTIONS):
+            fail("node_section_order", f"{node.get('id')}: parents require questions/analysis; leaves require analysis only")
         if node["titles"] != list(PARENT_TITLES if children else LEAF_TITLES):
-            fail("node_section_titles", "The four section headings are fixed, not project-specific")
+            fail("node_section_titles", "Node module headings must match the parent/leaf reading contract")
         if node.get("data-kind") != ("rollup" if children else "leaf"):
             fail("node_mode", "Parent and leaf structures must match the tree")
-        if children and set(node["rollups"]) != {c.get("id") for c in children}:
-            fail("rollup_coverage", "Parent must show all direct children and their states")
+        child_ids = {c.get("id") for c in children}
+        for field in ("rollups", "purposes", "summaries"):
+            if len(node[field]) != len(child_ids) or set(node[field]) != child_ids:
+                fail("rollup_coverage", "Show each direct child, purpose and bounded finding once; no grandchildren or leaf child modules")
+        if children and "evidence-table" in node["tables"]:
+            fail("parent_leaf_evidence", "Parents synthesize child findings, not fresh leaf evidence")
         if children and node.get("data-passed") == "true" and any(c.get("data-passed") != "true" for c in children):
             fail("false_parent_completion", "Parent cannot pass while required children remain unpassed")
         if not children and "evidence-table" not in node["tables"]:

@@ -169,5 +169,35 @@
     "note": "开发者团队原始小样本测试，每个配置运行五次；表中为匹配运行示例，采用 GitHub Copilot 当时计价，不等于裸 API 账单，也不是行业平均。",
     "ingestion_channel": "question_search",
     "retrieved_on": "2026-09-11"
+  },
+  {
+    "source_id": "S15",
+    "title": "METR：早期 2025 AI 对资深开源开发者生产率的随机实验",
+    "url": "https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/",
+    "publisher": "METR",
+    "published_at": "2025-07-10",
+    "effective_period": "2025 年早期工具与资深开源开发者任务",
+    "material_class": "authoritative_third_party",
+    "publication_date_status": "verified",
+    "publication_date_source": "原文 DATE: July 10, 2025；Methodology / Core Result",
+    "note": "旧工具与特定熟悉仓库的实验；只作方法与人工时间边界，不外推 Astra 或 SPFx。",
+    "target_period": "",
+    "ingestion_channel": "question_search",
+    "retrieved_on": "2026-09-18"
+  },
+  {
+    "source_id": "S16",
+    "title": "METR：开发者生产率实验设计更新",
+    "url": "https://metr.org/blog/2026-02-24-uplift-update/",
+    "publisher": "METR",
+    "published_at": "2026-02-24",
+    "effective_period": "2025 年 8 月起的后续实验；2026 年 2 月方法更新",
+    "material_class": "authoritative_third_party",
+    "publication_date_status": "verified",
+    "publication_date_source": "原文 DATE: February 24, 2026；opening findings / Wider adoption / Details",
+    "note": "后续结果受参与者、任务选择及并行计时问题影响；不是 Astra 的生产率估计。",
+    "target_period": "",
+    "ingestion_channel": "question_search",
+    "retrieved_on": "2026-09-18"
   }
 ]

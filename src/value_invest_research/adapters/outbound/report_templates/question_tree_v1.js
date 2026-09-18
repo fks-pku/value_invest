@@ -32,6 +32,7 @@
     }
     root.classList.add('js-ready');
     const target = destination || article;
+    for (let detail = target.closest('details'); detail; detail = detail.parentElement?.closest('details')) detail.open = true;
     if (target.id === 'source-index' || target.closest('.source-index')) document.getElementById('source-index').open = true;
     if (scroll) target.scrollIntoView({behavior, block:'start'});
   }
@@ -47,15 +48,16 @@
     const all = root.classList.toggle('show-all');
     toggle.textContent = all ? '单节点阅读' : '查看全文';
     toggle.setAttribute('aria-pressed', String(all));
+    if (all) for (const detail of document.querySelectorAll('.supplementary-analysis')) detail.open = true;
     if (!all) select('#' + active.id, true);
   });
   addEventListener('hashchange', () => select(location.hash, true));
   addEventListener('popstate', () => select(location.hash, true));
-  let sourcesWereOpen = false;
+  let printStates = [];
   addEventListener('beforeprint', () => {
-    sourcesWereOpen = document.getElementById('source-index').open;
-    document.getElementById('source-index').open = true;
+    printStates = [...document.querySelectorAll('details')].map(detail => [detail, detail.open]);
+    for (const [detail] of printStates) detail.open = true;
   });
-  addEventListener('afterprint', () => { document.getElementById('source-index').open = sourcesWereOpen; });
+  addEventListener('afterprint', () => { for (const [detail, open] of printStates) detail.open = open; });
   select(location.hash || '#' + fallback.id);
 })();

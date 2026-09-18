@@ -1,0 +1,134 @@
+{
+  "data_nature": "published matched example plus hypothetical sensitivity; not own benchmark or production forecast",
+  "source_id": "S14",
+  "premium_usd": 1.46,
+  "price_multiple": 2.4174757281553396,
+  "breakeven_minutes": {
+    "30": 2.92,
+    "60": 1.46,
+    "120": 0.73
+  },
+  "sensitivity": [
+    {
+      "saved_minutes": -2,
+      "labor_usd_per_hour": 30,
+      "net_saving_usd": -2.46
+    },
+    {
+      "saved_minutes": -2,
+      "labor_usd_per_hour": 60,
+      "net_saving_usd": -3.46
+    },
+    {
+      "saved_minutes": -2,
+      "labor_usd_per_hour": 120,
+      "net_saving_usd": -5.46
+    },
+    {
+      "saved_minutes": 0,
+      "labor_usd_per_hour": 30,
+      "net_saving_usd": -1.46
+    },
+    {
+      "saved_minutes": 0,
+      "labor_usd_per_hour": 60,
+      "net_saving_usd": -1.46
+    },
+    {
+      "saved_minutes": 0,
+      "labor_usd_per_hour": 120,
+      "net_saving_usd": -1.46
+    },
+    {
+      "saved_minutes": 1,
+      "labor_usd_per_hour": 30,
+      "net_saving_usd": -0.96
+    },
+    {
+      "saved_minutes": 1,
+      "labor_usd_per_hour": 60,
+      "net_saving_usd": -0.46
+    },
+    {
+      "saved_minutes": 1,
+      "labor_usd_per_hour": 120,
+      "net_saving_usd": 0.54
+    },
+    {
+      "saved_minutes": 2,
+      "labor_usd_per_hour": 30,
+      "net_saving_usd": -0.46
+    },
+    {
+      "saved_minutes": 2,
+      "labor_usd_per_hour": 60,
+      "net_saving_usd": 0.54
+    },
+    {
+      "saved_minutes": 2,
+      "labor_usd_per_hour": 120,
+      "net_saving_usd": 2.54
+    },
+    {
+      "saved_minutes": 5,
+      "labor_usd_per_hour": 30,
+      "net_saving_usd": 1.04
+    },
+    {
+      "saved_minutes": 5,
+      "labor_usd_per_hour": 60,
+      "net_saving_usd": 3.54
+    },
+    {
+      "saved_minutes": 5,
+      "labor_usd_per_hour": 120,
+      "net_saving_usd": 8.54
+    }
+  ],
+  "routing_threshold": 0.5863453815261044,
+  "routing": [
+    {
+      "escalation_rate": 0.1,
+      "bill_usd": 1.279,
+      "saving_vs_all_astra_usd": 1.211
+    },
+    {
+      "escalation_rate": 0.3,
+      "bill_usd": 1.777,
+      "saving_vs_all_astra_usd": 0.713
+    },
+    {
+      "escalation_rate": 0.6,
+      "bill_usd": 2.524,
+      "saving_vs_all_astra_usd": -0.034
+    }
+  ],
+  "assumptions": {
+    "labor_usd_per_hour": [
+      30,
+      60,
+      120
+    ],
+    "saved_human_minutes": [
+      -2,
+      0,
+      1,
+      2,
+      5
+    ],
+    "route_escalation_rates": [
+      0.1,
+      0.3,
+      0.6
+    ],
+    "extra_nonlabor_cost_usd": 0,
+    "qualification": "所有人工费率、节省时间、升级比例均为敏感性假设，不是观测分布或预测；全成本比较须有相同最终验收标准。"
+  },
+  "unmeasured": [
+    "human_minutes",
+    "acceptance_rate",
+    "error_loss",
+    "implementation_cost",
+    "conditional_escalation_cost"
+  ]
+}

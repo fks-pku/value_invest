@@ -1,0 +1,20 @@
+{
+  "verified_on": "2026-09-18",
+  "focused_tests": {"run": 81, "failures": 0},
+  "repository_tests": {"run": 286, "skipped": 11, "failures": 0},
+  "html_contract": "passed",
+  "markdown_contract": "passed",
+  "domain_plan_execution": "passed; 8 terminal questions, 5 completed, 3 blocked",
+  "idempotence": "rerun leaves all JSONL files and HTML/Markdown byte-identical",
+  "history_and_scope": "existing ledger prefixes preserved; other seven leaf chapters and target gates unchanged",
+  "git_diff_check": "passed",
+  "visual_review": "not performed; local-file browser access restricted",
+  "generic_validator_limitations": {
+    "material_intake": {"passed": false, "issues": 240},
+    "research_artifacts": {"passed": false, "issues": 782},
+    "research_plan_cli": {"passed": false, "issues": 22},
+    "note": "The event project's existing evidence schema is not compatible with all generic artifact/intake validators. New records retain that schema, so failures are not all unchanged in count. This revision does not claim canonical end-to-end artifact validation or migrate unrelated research artifacts."
+  },
+  "actual_roi_verified": false,
+  "research_status": "partial_research"
+}

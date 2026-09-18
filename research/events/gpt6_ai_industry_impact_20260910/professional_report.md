@@ -22,9 +22,11 @@ GPT-6 的可验证变化，是部分复杂工作的完成能力改善；它没�
 
 当前最值得继续验证的不是新增更多行业分支，而是一个更短的闭环：固定客户、固定工作内容和验收标准，观察有效任务的总成本、净付费、实际资源使用及交付毛利。若净付费没有增加，需求放大的假设就必须收回；若用量增长但利润不增，行业规模与投资回报就必须给出不同结论。
 
+本次成本案例收敛出一个优先验证点：先测人工接管，而不是继续争论价格倍数。SPFx 样例的 $1.46 账单差额可由少量人工节省抵消，但没有实测跨过门槛。这个局部条件支持有选择地验证升级或分层调用，不足以升级全行业净付费、采购或盈利判断。
+
 实际能力与任务全成本（局部改善、有适用边界） → 客户净增付费（未验证） → 净算力与设备采购（未归因） → 公司增量利润（未验证）
 
-事实截面为 2026-09-10，距 9 月 3 日发布一周；仅用截至截面可见资料。未来 6—24 个月只讨论条件机制，不做行业规模或收益率预测。范围覆盖模型、企业应用、云与算力传导；不扩展为机器人、音视频、全产业链 BOM 或逐公司估值报告。 本次按新问题设计规则修订，修订日为 2026-09-11，事实截止日不变；不构成新市场截面。
+事实截面为 2026-09-10，距 9 月 3 日发布一周；仅用截至截面可见资料。未来 6—24 个月只讨论条件机制，不做行业规模或收益率预测。范围覆盖模型、企业应用、云与算力传导；不扩展为机器人、音视频、全产业链 BOM 或逐公司估值报告。 本次按新问题设计规则修订，修订日为 2026-09-11，事实截止日不变；不构成新市场截面。 9 月 18 日仅深化任务成本叶子及必要上层汇总，仍使用原截止日前资料。
 
 资料以官方发布、公司财务披露和评测作者原文为主。客户案例存在选择偏差；没有完成付费卖方研报或 IMA 全目录扫描，没有企业级对照队列。动态文档按读取日保留事实边界，未假装获得历史网页快照。
 
@@ -32,11 +34,11 @@ GPT-6 的可验证变化，是部分复杂工作的完成能力改善；它没�
 
 ### Q1.1 · 它真正改变了什么？
 
-已确认的是产品可用和局部能力提升；是否值得采用，仍取决于同一任务的质量、人工负担与总成本。
+产品可用与局部能力进步已有依据；本次成本案例将采用判断具体化为人工接管门槛，尚未证明企业普遍降本或增购。
 
-两个直接子问题分别确认产品边界和任务经济性。产品可用性说明客户有机会部署，能力与成本子问题说明只有把错误率、复核和重试算进去，才能判断部署是否划算。前者是进入市场的条件，后者是持续使用的条件，二者不能互相替代。
+两个子问题分别约束可以买到什么，以及在什么条件下值得用。成本案例说明，客户关心的是每项合格交付的净成本，而不是价格倍数：小额模型溢价可以由少量人工节省覆盖，但没有人工与验收数据就不能认定收益已经实现。
 
-第一性原理上的变化，是一部分工作从‘做不到或不值得做’走向‘可能达到验收要求且有经济价值’。本轮支持这个有边界的变化，不支持把所有工作都划为新增市场。父节点通过只表示能力与经济性的已知边界得到回答；不包含下一个分支尚未验证的企业增购。
+综合而言，最值得优先验证的是可明确验收、返工较高的工作流，而不是整家公司统一更换模型。产品开放给了试验机会，真实工作流的成本验证才构成采用理由；客户是否因此增加总预算和任务量，仍要交给需求分支取证。
 
 充分性：通过（限本题边界）。必要子结论与当前判断的边界已经明确。
 
@@ -45,13 +47,6 @@ GPT-6 的可验证变化，是部分复杂工作的完成能力改善；它没�
 GPT-6 Astra 何时发布、提供哪些能力、哪些尚不是可用产品或商业事实？
 
 发布与商业可用性已确认；被验证的是产品和渠道，不是全企业采用、全模态突破或新增行业收入。
-
-| 资料／日期 | 关键数据与事实 | 口径、限制与原文定位 |
-| --- | --- | --- |
-| [S01 · OpenAI API Changelog：Astra 发布与 Sol 价格](https://developers.openai.com/api/docs/changelog) · 2026-09-03 | 2026 年 9 月 3 日 API 日志记录发布 gpt-6-astra。 | 发布日期，不是模型知识截止日。 原文定位：September 3, 2026 |
-| [S02 · GPT-6 Astra：发布说明](https://openai.com/index/gpt-6-astra/) · 2026-09-03 | 首发采用逐步开放；Enterprise 需管理员开启，默认关闭。监控可使任务暂停或终止。 | 开放资格和可执行性不等同于企业实际采用。 原文定位：Availability; Aligning and deploying responsibly |
-| [S03 · GPT-6 Astra API 模型规格与计费](https://developers.openai.com/api/docs/models/gpt-6-astra) · 读取日 2026-09-10 | 支持文本与图像输入、文本输出；原生音频和视频不受支持；上下文 1,050,000 tokens。 | 有工具不代表模型具备原生音视频输出；长上下文不代表整段都能可靠利用。 原文定位：Modalities; Context; Pricing |
-| [S06 · AWS：GPT-6 Astra 在 Bedrock 正式可用](https://aws.amazon.com/about-aws/whats-new/2026/09/openai-gpt-6-astra-on-amazon-bedrock/) · 2026-09-08 | 9 月 8 日 AWS 宣布在 Bedrock 正式可用，并提供既有访问控制与审计。 | 截至本截面可验证的分发渠道，未披露 Astra 消费额。 原文定位：Sep 8 announcement, availability and controls |
 
 ##### 先确认买得到什么，再讨论行业影响
 
@@ -73,6 +68,13 @@ GPT-6 Astra 何时发布、提供哪些能力、哪些尚不是可用产品或�
 
 下一阶段应以实际启用组织、重复完成的业务任务、付费转化和单位任务结果衡量采用，而不是追踪账户是否‘获得访问资格’。若只有开放名单扩大，没有工作流留存和付费增加，则渠道改善仍停留在潜在需求层面。这个边界会约束后文所有需求与财务推导。
 
+| 资料／日期 | 关键数据与事实 | 口径、限制与原文定位 |
+| --- | --- | --- |
+| [S01 · OpenAI API Changelog：Astra 发布与 Sol 价格](https://developers.openai.com/api/docs/changelog) · 2026-09-03 | 2026 年 9 月 3 日 API 日志记录发布 gpt-6-astra。 | 发布日期，不是模型知识截止日。 原文定位：September 3, 2026 |
+| [S02 · GPT-6 Astra：发布说明](https://openai.com/index/gpt-6-astra/) · 2026-09-03 | 首发采用逐步开放；Enterprise 需管理员开启，默认关闭。监控可使任务暂停或终止。 | 开放资格和可执行性不等同于企业实际采用。 原文定位：Availability; Aligning and deploying responsibly |
+| [S03 · GPT-6 Astra API 模型规格与计费](https://developers.openai.com/api/docs/models/gpt-6-astra) · 读取日 2026-09-10 | 支持文本与图像输入、文本输出；原生音频和视频不受支持；上下文 1,050,000 tokens。 | 有工具不代表模型具备原生音视频输出；长上下文不代表整段都能可靠利用。 原文定位：Modalities; Context; Pricing |
+| [S06 · AWS：GPT-6 Astra 在 Bedrock 正式可用](https://aws.amazon.com/about-aws/whats-new/2026/09/openai-gpt-6-astra-on-amazon-bedrock/) · 2026-09-08 | 9 月 8 日 AWS 宣布在 Bedrock 正式可用，并提供既有访问控制与审计。 | 截至本截面可验证的分发渠道，未披露 Astra 消费额。 原文定位：Sep 8 announcement, availability and controls |
+
 反向证据与边界：核读不支持的模态、Enterprise 默认关闭与任务运行限制，未将可访问性当成采用量。
 
 充分性：通过（限本题边界）。事实边界明确；足以作为下游机制研究的事件起点。
@@ -81,11 +83,11 @@ GPT-6 Astra 何时发布、提供哪些能力、哪些尚不是可用产品或�
 
 #### Q1.1.2 · 完成同样的工作更划算了吗？
 
-不能普遍认定更划算；必须把能力改善换成同一验收标准下节省的人工、重试和错误损失，再与新增费用比较。
+不能普遍认定更划算。经济性已从价格倍数推进到人工接管门槛，但真实 ROI 仍未验证；SPFx 的竞品案例辅助检验采购逻辑，不替代 Astra/Sol 对照。
 
-历史取证已发现评测环境和任务费用的冲突，因此实际展开了能力迁移与成本两个子问题；本次没有为目录完整新增 L4。能力子结论限定能够迁移的任务，成本子结论给出采用门槛。只有质量和全成本在同一任务上同时过关，才能把技术进步转成采购理由。
+能力子题限定可迁移的任务，成本子题把采用理由量化为绝对差额：在 SPFx 匹配样例中，$1.46 的账单溢价，只需在 $60/小时假设下净省 1.46 分钟即可持平，但评分不是验收率，也没有真实人工时间记录。因此，既不应因 2.42 倍账单直接否定采用，也不能据高跑分认定已经降本。
 
-用户不必让所有任务使用最强模型。将难任务交给 Astra、简单任务交给更便宜模型，是需要检验的替代方案；若只比较‘全部切换’和‘完全不用’，就会高估成本或错过局部价值。这个条件分析也说明，不能把能力指数的加分直接乘到企业预算或生产率上。
+这个结果改变的是下一步研究优先级：先测相同工作流的人工接管与错误损失，再讨论默认模型和分层调用。原有对 Sol 的计费与 AA 比较独立保留；不同竞品、任务和平台的结果不合并成一个行业平均。当前通过仅覆盖条件关系及证据边界，并不代表企业实际 ROI 或需求增量已经确认。
 
 充分性：通过（限本题边界）。必要子结论与当前判断的边界已经明确。
 
@@ -94,11 +96,6 @@ GPT-6 Astra 何时发布、提供哪些能力、哪些尚不是可用产品或�
 能力提升在同口径评测中是否成立，能否直接迁移到生产任务？
 
 可比评测中存在实质进步，但进步并非全任务通用；企业购买的是模型、执行环境与验收体系的组合。
-
-| 资料／日期 | 关键数据与事实 | 口径、限制与原文定位 |
-| --- | --- | --- |
-| [S05 · Artificial Analysis：Benchmarking GPT-6 Astra](https://artificialanalysis.ai/articles/benchmarking-gpt-6-astra) · 2026-09-09 | AA 综合指数 Astra 53、Sol 47；编码代理指数 Astra 62、Sol 55；但 DeepSWE 为 68% 对 72%。 | 同篇同日口径；编码项是模型与各自代理系统的组合，不是孤立权重比较。 原文定位：Intelligence Index and Coding Agent Index key takeaways, Sep 9 body |
-| [S04 · ARC Prize：GPT-6 Astra on ARC-AGI-3](https://arcprize.org/blog/astra) · 2026-09-03 | ARC 同为 max：标准环境 62.7%，Provider Adapter 98.6%；费用分别 $26,098 与 $17,332。 | 固定任务集中的执行环境对比；不是生产完成率，也不是 AGI 证明。 原文定位：Astra Results, max row; concluding caveat |
 
 ##### 核心判断：是否少了一次人工接手
 
@@ -120,6 +117,11 @@ GPT-6 Astra 何时发布、提供哪些能力、哪些尚不是可用产品或�
 
 建议客户采用固定任务样本与盲审结果，记录一次完成率、失败后的人工恢复时间和严重错误。样本应包含常见任务，也包含低频高损失任务；不能只挑新模型擅长的演示。若相同交付标准下的验收率没有改善，则能力指标再高也不能形成这一工作流的商业理由。现有证据足以回答‘有条件的提升’，不足以回答任何指定企业已经实现多少生产率增幅。
 
+| 资料／日期 | 关键数据与事实 | 口径、限制与原文定位 |
+| --- | --- | --- |
+| [S05 · Artificial Analysis：Benchmarking GPT-6 Astra](https://artificialanalysis.ai/articles/benchmarking-gpt-6-astra) · 2026-09-09 | AA 综合指数 Astra 53、Sol 47；编码代理指数 Astra 62、Sol 55；但 DeepSWE 为 68% 对 72%。 | 同篇同日口径；编码项是模型与各自代理系统的组合，不是孤立权重比较。 原文定位：Intelligence Index and Coding Agent Index key takeaways, Sep 9 body |
+| [S04 · ARC Prize：GPT-6 Astra on ARC-AGI-3](https://arcprize.org/blog/astra) · 2026-09-03 | ARC 同为 max：标准环境 62.7%，Provider Adapter 98.6%；费用分别 $26,098 与 $17,332。 | 固定任务集中的执行环境对比；不是生产完成率，也不是 AGI 证明。 原文定位：Astra Results, max row; concluding caveat |
+
 反向证据与边界：主动核读 AA 的 DeepSWE 退步项及 ARC 对基准局限的说明，排除全面改善与 AGI 推断。
 
 充分性：通过（限本题边界）。已回答增量是否存在及为何不能直接外推；未作企业生产率数值承诺。
@@ -130,48 +132,113 @@ GPT-6 Astra 何时发布、提供哪些能力、哪些尚不是可用产品或�
 
 什么条件下每个验收任务的全成本才会下降，现有证据支持普遍下降吗？
 
-相对 Sol，普遍降本没有得到支持；Astra 的商业机会更可能来自高价值任务的质量提升、人工节省与有选择的模型路由。
+不能认定普遍降本。SPFx 匹配样例中 Astra 比 Sonnet 4.6 每次贵 $1.46；若最终验收相同、其它成本不变，在 $60/小时的人工假设下，净省 1.46 分钟即可持平。因此先验证人工接管差异，再决定是否升级；这不是已验证的企业 ROI，也不是 Astra 对 Sol 的生产实测。
+
+##### 这个任务里，模型账单多了 $1.46，人工时间却还不知道
+
+先看一个具体任务：让代理把 SPFx（SharePoint 开发框架）项目升级到 v1.22.0。微软开发者文章展示的匹配样例中，Sonnet 4.6 花了 $1.03，GPT-6 Astra 花了 $2.49，两者评估分数都是 98%。因此能确认的是：Astra 这次调用贵了 $1.46，约为对照的 2.42 倍，展示的评分没有提高。[S14 · Microsoft Developer：Your work might not need the smartest model](https://developer.microsoft.com/blog/your-work-might-not-need-the-smartest-model/)
+
+但评分相同不等于交付质量完全相同，98% 也不是成功率。这些数字是匹配样例，不是完整五次运行的平均值；文章没有提供本题需要的人工检查与返工时间。因此，它能证明这个样例的账单更贵，不能证明完成工作的总成本更贵或更便宜。这里比较的是 Astra 与 Sonnet，不能代替父问题要求的 Astra 与 Sol 直接比较。
+
+##### 客户真正付出的，是模型费用加上把工作完成的人工成本
+
+为什么不能只看账单？因为模型输出以后，人可能还要检查、修改、重试。完成同一项合格工作的总成本，除了模型费用，还包括这些人工投入，以及实施维护和错误造成的损失。Astra 即使调用更贵，只要减少的其他成本超过 $1.46，就可能更划算。
+
+反过来，如果它让人花更多时间接管或返工，总成本会进一步上升。关键不是模型分数高不高，而是相同交付标准下，客户实际少付出了什么。人工效果目前没有实测，所以接下来只能算采用门槛，不能把可能的节省写成已经发生的收益。
+
+##### 假设人工每小时 $60，净省 1.46 分钟才刚好持平
+
+用最简单的算例说明门槛：假设人工机会成本是每小时 $60，即每分钟 $1；两方案达到相同最终验收标准，且实施和错误成本不变。Astra 多花 $1.46，就需要净省 1.46 分钟人工才能持平。省一分钟仍贵 $0.46，省两分钟才便宜 $0.54；如果反而多用两分钟人工，总成本会增加 $3.46。
+
+下面各格都按“人工每分钟成本 × 净省分钟数 − $1.46”计算。正数代表 Astra 更省钱，负数代表更贵。工资、节省分钟数与其他成本不变都是假设，不是本次测试观察到的数据；若生产账单不同，必须替换 $1.46。更完整的成本公式、附加成本和分层调用测算放在篇末补充说明。
+
+条件测算：每任务净节省（美元）；正数有利于 Astra。价差来自 S14，人工与其它成本条件均为假设，非实际 ROI。
+
+| 净省人工分钟 | 人工 $30/小时 | 人工 $60/小时 | 人工 $120/小时 |
+| --- | --- | --- | --- |
+| -2 | -2.46 | -3.46 | -5.46 |
+| 0 | -1.46 | -1.46 | -1.46 |
+| 1 | -0.96 | -0.46 | +0.54 |
+| 2 | -0.46 | +0.54 | +2.54 |
+| 5 | +1.04 | +3.54 | +8.54 |
+
+##### 现在算出了值得采用的条件，还没证明条件已经满足
+
+本题能给出的答案是：当可回收的人工与风险成本节省足以覆盖模型和实施成本的增量时，升级才更划算。当前案例没有人工时间、统一最终验收和错误损失数据，所以不能认定已经降本，也不能把实际企业 ROI 标成已验证。即使释放了员工时间，也不必然减少现金工资；代理的等待时间同样不等于人的工作时间。
+
+反向证据也要求保留这个未知。METR 早期实验曾观察到 AI 使用增加工时，后续研究又指出参与者与任务选择偏差限制了提效估计。它们都不是 Astra/SPFx 的效果测量，不能套用其百分比，却说明不能用跑分或主观感受替代人工时间记录。[S15 · METR：早期 2025 AI 对资深开源开发者生产率的随机实验](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/)[S16 · METR：开发者生产率实验设计更新](https://metr.org/blog/2026-02-24-uplift-update/)
+
+下一步应优先补同一工作流的逐次账单、独立验收、人工检查及返工记录，再看实际节省是否超过门槛。这给父问题提供的是一个可检验的采用条件，不是已实现的收益。即便某个任务最终验证了降本，也还不能直接推出客户总预算、全行业需求或供应商利润会上升。
+
+##### 补充测算与方法说明
+
+##### 原测试究竟比较了什么：样例账单不是平均 ROI
+
+以下是原文报告的配置与匹配结果。主案例固定到一个 SPFx 升级配置；其余行只检验结论是否会随任务和工具改变。相同的两个模型，在 JDK 场景中加入迁移 skill 前后，评分排序发生反转，说明采购对象应是模型与工具配置的组合，而不是脱离环境的模型名。[S14 · Microsoft Developer：Your work might not need the smartest model](https://developer.microsoft.com/blog/your-work-might-not-need-the-smartest-model/)
+
+每配置五次运行不等于表中是五次均值；本轮未取得逐次分布，不能计算方差、显著性或行业平均价格。98% 是四舍五入后的评估分数，不是 98% 的交付成功概率，也不证明两个方案遗漏了相同检查项。因此不能用 $2.49÷98% 来包装成每次成功交付成本。账单口径是 Copilot 当时计价，不与裸 API 单价直接合并。
+
+原文匹配样例 [S14 · Microsoft Developer：Your work might not need the smartest model](https://developer.microsoft.com/blog/your-work-might-not-need-the-smartest-model/)；美元/次，评分为四舍五入值，非五次均值或验收率。最后两列为研究者计算。
+
+| 任务 / 配置 | Sonnet 4.6：分数 / 账单 | Astra：分数 / 账单 | Astra 多付 | 费用倍数 |
+| --- | --- | --- | --- | --- |
+| SPFx 升级至 v1.22.0 · 同 CLI 指令 | 98% / $1.03 | 98% / $2.49 | $1.46 | 2.42× |
+| SPFx v1.21.1→v1.22.2 · 同 skill | 98% / $0.92 | 99% / $5.14 | $4.22 | 5.59× |
+| JDK 8→25 · 同迁移 skill | 97% / $12.71 | 93% / $67.33 | $54.62 | 5.30× |
+| JDK 8→25 · 无额外扩展 | 76% / $1.68 | 93% / $8.59 | $6.91 | 5.11× |
+
+##### 把账单接到人工：先计算改变决策的门槛
+
+完整指标应是固定任务集合的总投入除以最终合格交付数。总投入包含所有模型调用、复核、返工、实施维护及错误损失；拒收和失败任务的投入不能消失。由于本例没有真实验收率，以下仅在两方案达到相同最终交付标准、重试已完整入账的条件下，比较每项业务任务的成本差。
+
+记 s 为 Astra 相对对照减少的净人工分钟，w 为每小时人工机会成本，ΔF 为额外实施/路由等成本分摊，ΔE 为额外预期错误损失，正数表示 Astra 增加成本。以匹配账单作为起点，Δ成本＝1.46−w×s÷60＋ΔF＋ΔE。于是 s 大于 60×(1.46＋ΔF＋ΔE)÷w 时才更省钱；等于阈值仅是持平。若生产中的账单不同，必须首先替换 1.46，不能将这个样例常数永久化。
+
+在 ΔF＝ΔE＝0 的假设下，w 为 $30/$60/$120 每小时，持平所需人工净节省分别为 2.92/1.46/0.73 分钟。这不是工资调查或测得的节省范围，而是采购门槛的敏感性。如果 w＝$60、额外实施费用分摊为每任务 $1，门槛升至 2.46 分钟；若还多出 $1 的预期错误损失，则升至 3.46 分钟。不能因为 API 差价低就忽略组织与风险成本。
+
+这里的人工时间必须是可重新利用的注意力时间，不能把代理运行十分钟等同于员工工作十分钟。固定薪酬团队即使释放时间，也未必立即减少现金工资；只有减少加班/外包或把时间转成有价值的交付，机会成本节省才可能转成现金或产出收益。
+
+##### 反向检查：人工提效不能用旧经验或主观感受填空
+
+独立的 METR 2025 年随机实验在特定资深开发者和仓库样本中观察到 AI 使用反而增加工时；其 2026 年更新又指出，后续参与者与任务选择以及并行计时使提效幅度难以可靠识别。新旧证据并列后，正确结论不是所有 AI 都拖慢开发，而是人工时间需要测量，且测量本身容易受样本选择影响。[S15 · METR：早期 2025 AI 对资深开源开发者生产率的随机实验](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/)[S16 · METR：开发者生产率实验设计更新](https://metr.org/blog/2026-02-24-uplift-update/)
+
+这两项研究的模型、对照、任务和期间与 SPFx 案例不同，不能把其中的 19% 减速或任何后续提效值填入 s，也不能把受试者报酬当作行业工资。当前模型中的 s、ΔE、实际验收率仍是未知数。这个缺口并不妨碍得到采用门槛，但阻止我们声称门槛已经被跨过。
+
+##### 不止全切换：分层调用也有成本上限
+
+考虑便宜模型先做、未达到标准才升级的两阶段策略。仅作账单筛选，并假设每次便宜调用为 $1.03、升级调用仍为 $2.49，且升级后交付质量不劣于全部使用 Astra，则期望模型账单为 $1.03＋q×$2.49，q 为升级比例。它比全部 Astra 的 $2.49 便宜，需要 q＜58.6%。升级比例为 30% 时，账单约 $1.78，比全部 Astra 少 $0.71，但仍比只用便宜模型高；它不是无条件的最优方案。
+
+58.6% 只是这个假设中的账单临界点，不是实测失败率。真实升级任务通常更难，成本不一定仍为 $2.49；还应加入路由、重复上下文、延迟与漏检风险。任务能被自动验收、异常能被及时识别时，分层调用才更值得测试；高后果任务可能需要人工复核或直接使用更合适的模型，不能只按最低账单排序。
+
+##### 回到 Sol 对照和行业判断：有质量溢价，不等于普遍降本
+
+原有 Astra/Sol 分析仍成立但不与 SPFx 混算。报告留存的当期标准价格下，100K 输入和 20K 输出、无缓存请求分别为 $2.00 与 $0.80；若输入输出同步缩减，Astra 计费量需降至四成才使账单不升。AA 的编码任务账单则是 Astra $7.09、比 Sol 约贵 15%，任务定义和执行环境均与上述请求例不同。[S01 · OpenAI API Changelog：Astra 发布与 Sol 价格](https://developers.openai.com/api/docs/changelog)[S03 · GPT-6 Astra API 模型规格与计费](https://developers.openai.com/api/docs/models/gpt-6-astra)[S05 · Artificial Analysis：Benchmarking GPT-6 Astra](https://artificialanalysis.ai/articles/benchmarking-gpt-6-astra)
+
+以 AA 近似价差推导的人工门槛约 55 秒（$60/小时假设），与 SPFx 的 87.6 秒并非同一实验的两个估计，更不是企业平均工时。这些差异说明，即便每 token 单价较高，实际采购仍取决于任务、调用量和人工接管，而非单一价格倍数。
+
+对父问题的贡献是把泛泛的质量溢价变成可检验条件：当前不支持全任务强制替换；更值得优先验证的是能减少人工接管、又能可靠验收的任务，以及可控制重复成本的分层调用。即便验证了客户降本，也只完成采用理由，不能直接推出客户净增付费、全行业任务弹性或供应商利润率。这些仍由其他问题独立回答。
+
+##### 本题做到哪一步，下一份证据必须改变什么
+
+已经完成的是公开案例核读、账单差额和采用阈值计算；没有执行新的模型跑测、客户访谈或真实生产试验。两个关键未知是最终验收是否可比，以及人工与错误损失净变化。因而本题仅对条件性经济关系作通过判断，不把实际企业 ROI 标成已验证，也不以外部旧实验代填。
+
+下一轮应在预先定义的升级任务集合上固定平台、代码版本和验收规则，记录所有尝试、拒收、重试账单、人工关注/返工和严重错误。任务分组或运行顺序应控制难度和学习效应，复核者尽可能不知道模型标签；并行任务的墙钟等待与人的实际注意力时间分开。完整记录用于计算每个最终验收任务成本，而不是只挑匹配的好样例。
+
+判断规则也先写明：若账单、质量和风险口径可比，且实测人工净节省持续超过按实际附加成本重算的门槛，才支持该工作流的升级；若未超过，则不支持单凭本案例扩大预算。原始逐次数据或人工工时拿不到时，保留未知，不继续堆积相同公告或凭空增加 L5。
 
 | 资料／日期 | 关键数据与事实 | 口径、限制与原文定位 |
 | --- | --- | --- |
 | [S01 · OpenAI API Changelog：Astra 发布与 Sol 价格](https://developers.openai.com/api/docs/changelog) · 2026-08-21 | Sol 当期标准价格为每百万输入 $4、输出 $20；公告保证促销至少持续至 11 月 21 日。 | 不是长期不变的前代价格。 原文定位：August 21, 2026, Sol promotional prices |
 | [S03 · GPT-6 Astra API 模型规格与计费](https://developers.openai.com/api/docs/models/gpt-6-astra) · 读取日 2026-09-10 | Astra 标准价每百万输入 $10、输出 $50；超过 272K 输入时整次请求输入费率为 2 倍、输出为 1.5 倍。 | 缓存、Batch/Flex、Fast 另计，不能交叉比较服务档位。 原文定位：Pricing |
-| [S05 · Artificial Analysis：Benchmarking GPT-6 Astra](https://artificialanalysis.ai/articles/benchmarking-gpt-6-astra) · 2026-09-09 | AA 编码任务 Astra $7.09，较 Sol 约贵 15%；综合任务 $3.26，较 Sol 约贵 60%，较 Fable 5.1 的 $7.63 低。 | 评测任务账单；没有人工、集成、质量事故成本，不能视为每个验收任务全成本。 原文定位：Cost per task, both indices |
-| [S14 · Microsoft Developer：Your work might not need the smartest model](https://developer.microsoft.com/blog/your-work-might-not-need-the-smartest-model/) · 2026-09-09 | 相同 CLI 指令的 SPFx 升级示例中，Sonnet 4.6 与 Astra 的四舍五入评分均为 98%，对应每次费用为 $1.03 与 $2.49。 | 每配置五次测试中的一组匹配示例；费用基于 GitHub Copilot，不是全样本均值或 Astra 对 Sol 的 API 价格比较。 原文定位：What the upgrade buys you; SPFx upgrade to v1.22.0 row |
+| [S05 · Artificial Analysis：Benchmarking GPT-6 Astra](https://artificialanalysis.ai/articles/benchmarking-gpt-6-astra) · 2026-09-09 | AA 编码任务 Astra $7.09，较 Sol 约贵 15%；综合任务 $3.26，较 Sol 约贵 60%，较 Fable 5.1 的 $7.63 低。 | 与 SPFx 的平台、任务分布和对照模型不同；不得将该成本或指数分数移植为 SPFx 单位成本或验收率。 原文定位：September 9 body: Cost per task, Intelligence and Coding Agent Indices |
+| [S14 · Microsoft Developer：Your work might not need the smartest model](https://developer.microsoft.com/blog/your-work-might-not-need-the-smartest-model/) · 2026-09-09 | SPFx v1.22.0 同 CLI 样例：Sonnet 4.6/Astra 评分均为 98%，费用 $1.03/$2.49。另一 SPFx skill 样例为 98%/99%、$0.92/$5.14。JDK 同 skill 为 97%/93%、$12.71/$67.33；无扩展为 76%/93%、$1.68/$8.59。 | Windows、VS Code、Copilot；每配置五次，公开数字为匹配样例，非全样本均值。评分不是验收成功率；不同配置不可当同一工作流总体。 原文定位：What the upgrade buys you: methodology paragraph, three-row matched table and following JDK without extensions paragraph |
+| [S15 · METR：早期 2025 AI 对资深开源开发者生产率的随机实验](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/) · 2025-07-10 | METR 2025 年实验覆盖 16 名资深开发者、246 个真实任务；允许使用当时 AI 工具的任务平均耗时增加 19%。 | 原模型、仓库和任务与本案例不同，不能作为 Astra 的人工时间参数；旧负向结果须与后续更新同时阅读。 原文定位：DATE; Methodology; Core Result; Table 2 |
+| [S16 · METR：开发者生产率实验设计更新](https://metr.org/blog/2026-02-24-uplift-update/) · 2026-02-24 | METR 后续样本为 57 名开发者、143 个仓库和 800 多个任务；作者认为参与者与任务选择偏差、并行任务计时限制了对提效幅度的可靠估计。 | 作者倾向认为后续工具更有帮助，但没有给出可移植到 Astra/SPFx 的可靠幅度；不能只拿旧实验的 19% 当当前结论。 原文定位：DATE; opening paragraphs; Wider adoption; Details of the productivity study |
 
-##### 把省钱落实到一个可验收结果
+反向证据与边界：S14 显示匹配样例账单溢价及配置变化带来的评分反转；S05 的不同对照模型给出不同相对成本。S15/S16 同时说明人工时间不可由跑分代替，且旧负向实验也不能直接外推当前工具。没有取得 S14 完整逐次明细，不能估计显著性或平均节省。
 
-客户的比较单位应是同等质量的一项交付。把费用分成模型与工具账单、人工复核、重试恢复、实施维护分摊和预期错误损失，再比较新旧方案。若只看到每 token 降低或减少调用次数，而没有同口径验收结果，仍不能确定全成本降低。该关系也解释了为什么高工资、高返工任务可能先采用，而低价值任务未必需要最强模型。
+充分性：通过（限本题边界）。通过对象仅为降本条件与反对普遍降本的证据边界：完成了案例账单核对、可复算阈值和反向检查。实际工时、验收与错误损失未测量，因此企业实际 ROI 未通过验证；不将条件测算标签解释为已实现降本。
 
-##### 第一层：API 账单的盈亏平衡
-
-以一次 100K 输入、20K 输出、无缓存的 Standard 请求为例：Sol 为 0.1×4＋0.02×20＝$0.80，Astra 为 0.1×10＋0.02×50＝$2.00。这是相同请求量的计费演算，不是性能相同的生产实测。若输入与输出同步按比例 r 缩减、其余条件不变，则账单比为 2.5r；只有 r≤0.4，即计费量至少减少 60%，才能不涨价。 [S01 · OpenAI API Changelog：Astra 发布与 Sol 价格](https://developers.openai.com/api/docs/changelog) [S03 · GPT-6 Astra API 模型规格与计费](https://developers.openai.com/api/docs/models/gpt-6-astra)
-
-更容易忽视的是输入不能同比缩减的情形：在这个示例中，Astra 仅固定输入就花 $1，已超过旧模型整次 $0.80 的账单。因此，输出再短也不够；必须减少重复读取、利用缓存，或以更高验收率、较少人工复核来抵消溢价。大型资料库任务尤其要把输入、输出和缓存拆开，不能只看输出 token 的降幅。
-
-##### 第二层：以验收结果为分母
-
-真正适合企业的指标是：每个验收任务成本＝（整批 API 支出＋工具支出＋人工复核与返工＋分摊集成费用＋预期错误损失）÷通过验收的任务数。重试和失败调用仍计入分子；交付更多但无人使用的内容不能增加分母。预期错误损失使用实际损失分布或明确情景，不以一个统一‘幻觉率’替代。
-
-以评测编码费用溢价为演算入口：旧模型隐含费用约为 7.09÷1.15＝$6.17，差额约 $0.92。假设复核人员综合成本为 $60/小时，平均每个尝试任务少花约 55 秒即可抵消这部分 API 差额，前提是验收率、返工和错误损失均不恶化。人工费率是假设，15% 为原文近似值；这不是已经测到的节省，却给出了客户试验可以直接检验的门槛。 [S05 · Artificial Analysis：Benchmarking GPT-6 Astra](https://artificialanalysis.ai/articles/benchmarking-gpt-6-astra)
-
-##### 谁愿意支付溢价
-
-高价值复杂任务的需求可能对质量更敏感：一次错误可能触发昂贵返工，额外推理费只是小项。相反，低风险、短文本、大批量任务未必值得全面切换。合理的采购形态可能是便宜模型处理常规任务，难例升级到 Astra；这会扩大高级模型可服务的工作范围，却未必让它承接最多调用次数。
-
-所以本轮不下‘全面降本’结论。经济性需要在固定质量底线下，联合看账单、复核与验收。若测得全成本不降，但交付质量确实提高且客户愿意付费，它仍可以是有效需求；只是商业逻辑应写成质量溢价，而不是成本革命。
-
-##### 反向实测：同等评分也可能付出更高费用
-
-9 月 9 日微软开发者文章的一组 SPFx 升级示例，在相同 CLI 指令下取得相同的四舍五入评分，但 Astra 费用为 $2.49，对照 Sonnet 4.6 为 $1.03，约为 2.42 倍（2.49÷1.03）。这不是和 Sol 的裸 API 比较，也不是完整人工成本；它仍提供一个直接反例：更强模型的定位不能保证某一具体任务有更好的账单经济性。 [S14 · Microsoft Developer：Your work might not need the smartest model](https://developer.microsoft.com/blog/your-work-might-not-need-the-smartest-model/)
-
-测试规模有限，表格展示的是匹配运行而非五次运行的均值；评分相同也不代表错误类型和业务损失相同。因此正确结论不是‘Astra 不值得买’，而是先定义任务必须通过哪些检查，再选择满足要求的最低总成本方案。若改善发生在高损失错误上，较高账单仍可能合理；若只是生成更多内容而没有提高验收价值，溢价就未必值得支付。
-
-反向证据与边界：专门检查相对 Sol 的任务费用与长上下文计费；现有评测并不支持所有任务 API 账单下降。；新增 S14 同等四舍五入评分但账单更高的特定代码升级反例，不外推为全部任务。
-
-充分性：通过（限本题边界）。条件关系及普遍降本命题已回答；企业实际 ROI 留待任务级验证，不作已兑现断言。
-
-下一步：同一企业任务样本补齐复核、失败损失与验收率
+下一步：先取得 SPFx 同配置逐次账单、独立复核工时、返工及严重错误记录；按统一最终验收口径比较，不以 98% 评分充当成功概率。；以实测人工净节省及新增实施/错误成本替换敏感性假设；对条件不满足的任务维持原方案，不把建议验证的路由策略写成已部署事实。
 
 ### Q1.2 · 会带来多少真实需求？
 
@@ -192,13 +259,6 @@ GPT-6 Astra 何时发布、提供哪些能力、哪些尚不是可用产品或�
 哪些 AI 应用需求最可能被放大，能否从试用跨到企业付费工作流？
 
 可验收、可回退的复杂工作流最值得优先观察；早期使用案例与既有付费市场存在，但 GPT-6 引发多少新增付费仍未验证。
-
-| 资料／日期 | 关键数据与事实 | 口径、限制与原文定位 |
-| --- | --- | --- |
-| [S11 · Legora：Astra 财务报表核对案例](https://openai.com/index/legora-financial-statement-review-with-astra/) · 2026-09-03 | Legora 报告单次处理 41 份文件；财报核对流程改善近 40%，全 BAR 任务平均约 3%；最终判断仍由专业人员负责。 | 厂商刊载客户自报；没有新增订单、可比付费队列或持续生产样本。 原文定位：Processing complex financial context; Improving accuracy |
-| [S13 · Playco：Astra 游戏原型案例](https://openai.com/index/playco-game-prototyping-with-astra/) · 2026-09-03 | Playco 在少量游戏原型测试中报告人工修正次数减少 50%。 | 修正次数不等于工时；原型不是商业化游戏收入。 原文定位：Building three playable worlds; Cutting manual fixes in half |
-| [S07 · Microsoft FY2026 Q4 业绩电话会](https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4) · 2026-07-29 | FY26 Q4 M365 Copilot 付费席位超过 3,000 万。 | 发布前存量付费基线，非 GPT-6 新增席位；席位不是活跃任务。 原文定位：CFO, M365 Commercial cloud, paid seats |
-| [S08 · Salesforce FY2027 Q2 业绩公告](https://investor.salesforce.com/news/news-details/2026/Salesforce-Delivers-Record-Second-Quarter-Fiscal-2027-Results/default.aspx) · 2026-08-26 | Agentforce ARR 超 $1.5B，本季已纳入 Slackbot 和 Headless 360；当季 AWU 3.2B。 | ARR 为年化合同口径，AWU 为工作单位；两者不能相除推出实际任务价格。 原文定位：Agentforce ARR; AWU footnotes |
 
 ##### 新增需求，还是把原有需求搬了家
 
@@ -223,6 +283,13 @@ GPT-6 Astra 何时发布、提供哪些能力、哪些尚不是可用产品或�
 需要比较启用 Astra 的客户与未升级客户，观察相同任务类别在启用前后的验收量、单任务支出、续用和新增合同，同时剔除促销与产品打包变化。以‘新客户签了多少合同、旧客户加了多少消耗、多少原有收入被替代’拆出净增量，才有可能进入收入预测。现有 ARR、席位及工作单位分别描述不同阶段，不能拼成一条已经闭合的因果链。
 
 截至本截面，方向上的筛选已有答案，付费转化的事件增量仍没有答案。这里暂停在 L3，记录需要补充的真实队列数据；继续增加抽象子问题不会创造发布后尚未积累的观察期。后续若出现具体客户数据冲突，再围绕该客户的转化问题下钻。
+
+| 资料／日期 | 关键数据与事实 | 口径、限制与原文定位 |
+| --- | --- | --- |
+| [S11 · Legora：Astra 财务报表核对案例](https://openai.com/index/legora-financial-statement-review-with-astra/) · 2026-09-03 | Legora 报告单次处理 41 份文件；财报核对流程改善近 40%，全 BAR 任务平均约 3%；最终判断仍由专业人员负责。 | 厂商刊载客户自报；没有新增订单、可比付费队列或持续生产样本。 原文定位：Processing complex financial context; Improving accuracy |
+| [S13 · Playco：Astra 游戏原型案例](https://openai.com/index/playco-game-prototyping-with-astra/) · 2026-09-03 | Playco 在少量游戏原型测试中报告人工修正次数减少 50%。 | 修正次数不等于工时；原型不是商业化游戏收入。 原文定位：Building three playable worlds; Cutting manual fixes in half |
+| [S07 · Microsoft FY2026 Q4 业绩电话会](https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4) · 2026-07-29 | FY26 Q4 M365 Copilot 付费席位超过 3,000 万。 | 发布前存量付费基线，非 GPT-6 新增席位；席位不是活跃任务。 原文定位：CFO, M365 Commercial cloud, paid seats |
+| [S08 · Salesforce FY2027 Q2 业绩公告](https://investor.salesforce.com/news/news-details/2026/Salesforce-Delivers-Record-Second-Quarter-Fiscal-2027-Results/default.aspx) · 2026-08-26 | Agentforce ARR 超 $1.5B，本季已纳入 Slackbot 和 Headless 360；当季 AWU 3.2B。 | ARR 为年化合同口径，AWU 为工作单位；两者不能相除推出实际任务价格。 原文定位：Agentforce ARR; AWU footnotes |
 
 反向证据与边界：核对案例样本与全评测平均、ARR 范围变动及发布前期间；无法用这些材料证明新增付费。
 
@@ -264,11 +331,6 @@ GPT-6 Astra 何时发布、提供哪些能力、哪些尚不是可用产品或�
 
 净算力取决于任务量增长能否越过计算与硬件效率的共同阈值；不能从 token 变化直接推出 GPU 需求方向。
 
-| 资料／日期 | 关键数据与事实 | 口径、限制与原文定位 |
-| --- | --- | --- |
-| [S12 · OpenAI：GPT-6 Astra 安全概览](https://openai.com/index/safety-overview-gpt-6-astra/) · 2026-09-03 | OpenAI 表示对外部工具调用推理增加失配监控，并称其有显著计算成本。 | 没有公开新增 FLOPs、硬件小时或该项成本占比。 原文定位：Safety overview, numbered item 4 |
-| [S03 · GPT-6 Astra API 模型规格与计费](https://developers.openai.com/api/docs/models/gpt-6-astra) · 读取日 2026-09-10 | 产品公开的是 token 计费和推理设置，而不是每 token 的内部计算量或 GPU 型号利用率。 | 本次已查文档没有足以估算每任务实际计算强度的参数。 原文定位：Pricing and reasoning support |
-
 ##### 先统一任务定义，避免把重试算两遍
 
 下文关系式使用的是实际尝试次数 N，每次尝试的计算量 C 不再重复包含已计入 N 的失败重试。若改用客户提交的业务任务数，就要把重试开销纳入每任务计算量；两种定义均可，但不能交叉使用。硬件效率也只能计算一次：C 用真实计算工作量，H 用每硬件小时的有效处理能力，不能先在 C 中扣一次提效，再在 H 中扣一次。
@@ -297,6 +359,11 @@ GPT-6 Astra 何时发布、提供哪些能力、哪些尚不是可用产品或�
 | 适度扩张 | 2.00 | 0.70 | 1.20 | 1.17 |
 | 新任务释放 | 3.00 | 0.80 | 1.20 | 2.00 |
 
+| 资料／日期 | 关键数据与事实 | 口径、限制与原文定位 |
+| --- | --- | --- |
+| [S12 · OpenAI：GPT-6 Astra 安全概览](https://openai.com/index/safety-overview-gpt-6-astra/) · 2026-09-03 | OpenAI 表示对外部工具调用推理增加失配监控，并称其有显著计算成本。 | 没有公开新增 FLOPs、硬件小时或该项成本占比。 原文定位：Safety overview, numbered item 4 |
+| [S03 · GPT-6 Astra API 模型规格与计费](https://developers.openai.com/api/docs/models/gpt-6-astra) · 读取日 2026-09-10 | 产品公开的是 token 计费和推理设置，而不是每 token 的内部计算量或 GPU 型号利用率。 | 本次已查文档没有足以估算每任务实际计算强度的参数。 原文定位：Pricing and reasoning support |
+
 反向证据与边界：搜索每任务 FLOPs 与硬件效率披露，并检查额外监控成本；未发现足以把账单 token 换算为总计算量的公开系数。
 
 充分性：通过（限本题边界）。阈值问题已回答，情景明确不充当实际预测；事件实际规模由兄弟节点判断。
@@ -308,12 +375,6 @@ GPT-6 Astra 何时发布、提供哪些能力、哪些尚不是可用产品或�
 是否已经出现能归因于 GPT-6 的采购、资本开支或财务增量？
 
 截至 9 月 10 日，本轮未识别出可单独归因于 GPT-6 的净采购或财务增量；现有数字仅支持发布前 AI 投资基数很高。
-
-| 资料／日期 | 关键数据与事实 | 口径、限制与原文定位 |
-| --- | --- | --- |
-| [S09 · NVIDIA FY2027 Q2 业绩公告](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/default.aspx) · 2026-08-26 | NVIDIA 截至 7 月 26 日的季度数据中心收入 $89.0B；8 月 26 日给出下一季总收入 $108B±2% 指引。 | 前者是发布前实绩，后者是发布前前瞻；指引不是已实现收入，也未单列 GPT-6。 原文定位：Q2 highlights; Q3 FY2027 outlook |
-| [S07 · Microsoft FY2026 Q4 业绩电话会](https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4) · 2026-07-29 | Microsoft Q4 CapEx $41B、现金 PP&E $35.8B；未来部分租赁转为经营租赁，管理层称剔除此影响后投资预期不变。 | CapEx 不是纯 GPU 采购，也不等于现金支出；列报减少不自动代表物理投资下降。 原文定位：CFO capex paragraph; useful-life and leasing guidance |
-| [S06 · AWS：GPT-6 Astra 在 Bedrock 正式可用](https://aws.amazon.com/about-aws/whats-new/2026/09/openai-gpt-6-astra-on-amazon-bedrock/) · 2026-09-08 | 事件后的 AWS 公告验证了可采购渠道，但没有单列 Astra 订单、收入或资本开支。 | 未披露不同于没有发生；查证范围为本轮所列官方资料与问题检索。 原文定位：GA announcement, Sep 8 |
 
 ##### 没有这次发布，哪些订单本来也会发生
 
@@ -336,6 +397,12 @@ GPT-6 Astra 何时发布、提供哪些能力、哪些尚不是可用产品或�
 本轮查到强劲的发布前基础设施收入和投资，但没有得到可用来量化 GPT-6 净增量的订单或使用披露。因而既不能把整个 AI 基础设施增长归因于 Astra，也不能据此断言其毫无影响。可报告的结论是‘尚未识别’，不是‘增量为零’。
 
 不进一步虚构 L5 来填补时间。下一次能够改变判断的材料是工作负载拆分、可识别客户采购、可比资本预算修订或供应商的用途归因说明。取得其中至少一项后，再针对断裂的桥梁展开精确子问题。
+
+| 资料／日期 | 关键数据与事实 | 口径、限制与原文定位 |
+| --- | --- | --- |
+| [S09 · NVIDIA FY2027 Q2 业绩公告](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/default.aspx) · 2026-08-26 | NVIDIA 截至 7 月 26 日的季度数据中心收入 $89.0B；8 月 26 日给出下一季总收入 $108B±2% 指引。 | 前者是发布前实绩，后者是发布前前瞻；指引不是已实现收入，也未单列 GPT-6。 原文定位：Q2 highlights; Q3 FY2027 outlook |
+| [S07 · Microsoft FY2026 Q4 业绩电话会](https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4) · 2026-07-29 | Microsoft Q4 CapEx $41B、现金 PP&E $35.8B；未来部分租赁转为经营租赁，管理层称剔除此影响后投资预期不变。 | CapEx 不是纯 GPU 采购，也不等于现金支出；列报减少不自动代表物理投资下降。 原文定位：CFO capex paragraph; useful-life and leasing guidance |
+| [S06 · AWS：GPT-6 Astra 在 Bedrock 正式可用](https://aws.amazon.com/about-aws/whats-new/2026/09/openai-gpt-6-astra-on-amazon-bedrock/) · 2026-09-08 | 事件后的 AWS 公告验证了可采购渠道，但没有单列 Astra 订单、收入或资本开支。 | 未披露不同于没有发生；查证范围为本轮所列官方资料与问题检索。 原文定位：GA announcement, Sep 8 |
 
 反向证据与边界：以 GPT-6、订单和增量 CapEx 定向检索官方渠道，检查时间与租赁口径；没有找到闭合的用途—数量—收入证据链。
 
@@ -365,12 +432,6 @@ GPT-6 Astra 何时发布、提供哪些能力、哪些尚不是可用产品或�
 
 竞争更可能围绕任务入口、受控执行和业务数据重分配；通用包装层承压是机制假设，系统记录层并未因模型升级而自动失去价值。
 
-| 资料／日期 | 关键数据与事实 | 口径、限制与原文定位 |
-| --- | --- | --- |
-| [S10 · Salesforce 与 Anthropic：Claudeforce 合作](https://www.salesforce.com/ap/news/press-releases/2026/08/27/sg-salesforce-and-anthropic-announce-claudeforce-the-1-ai-meets-the-1-ai-crm/) · 2026-08-27 | 合作把 Salesforce 数据、业务规则与受控操作接入 Claude；公告当时仅精选客户试点，9 月公开测试为计划。 | 发布前竞争格局证据；不是 GPT-6 导致合作，也不是已全面正式部署。 原文定位：Salesforce inside Claude; Availability |
-| [S06 · AWS：GPT-6 Astra 在 Bedrock 正式可用](https://aws.amazon.com/about-aws/whats-new/2026/09/openai-gpt-6-astra-on-amazon-bedrock/) · 2026-09-08 | Astra 可经 Bedrock 调用并使用 AWS 治理与审计控制。 | 模型和客户采购云并非一对一绑定；没有合同利润分成披露。 原文定位：Supported APIs; governance and auditing |
-| [S12 · OpenAI：GPT-6 Astra 安全概览](https://openai.com/index/safety-overview-gpt-6-astra/) · 2026-09-03 | 安全说明同时披露监控部署与在对抗条件下的可监控性限制。 | 风险控制改进不等于错误、越权或事故风险清零。 原文定位：Items 4–5: monitoring and monitorability |
-
 ##### 价值有用，不代表可以留下利润
 
 先把‘交付必须经过某个环节’与‘该环节难以被替换’分开。日志、权限和路由可能是必要功能，但如果由平台免费捆绑，独立供应商未必能收费；业务数据可能提高切换成本，但客户也可能要求互操作。因此，本节点给出的是各环节怎样参与价值分配的机制，不是已经验证的稀缺性评分，实际利润留在下一个问题核验。
@@ -393,6 +454,12 @@ Claudeforce 的结构显示，用户界面可以转移到助手，但关键操�
 
 但这些功能可以由模型平台、云或业务系统捆绑提供。独立治理或执行工具要获得持久价值，仍需证明跨模型中立、实施难替代或特定合规能力，并证明客户愿意单独付费。本轮只确认这是一项待验证需求，不据此创造未经研究的安全股或软件股推荐。
 
+| 资料／日期 | 关键数据与事实 | 口径、限制与原文定位 |
+| --- | --- | --- |
+| [S10 · Salesforce 与 Anthropic：Claudeforce 合作](https://www.salesforce.com/ap/news/press-releases/2026/08/27/sg-salesforce-and-anthropic-announce-claudeforce-the-1-ai-meets-the-1-ai-crm/) · 2026-08-27 | 合作把 Salesforce 数据、业务规则与受控操作接入 Claude；公告当时仅精选客户试点，9 月公开测试为计划。 | 发布前竞争格局证据；不是 GPT-6 导致合作，也不是已全面正式部署。 原文定位：Salesforce inside Claude; Availability |
+| [S06 · AWS：GPT-6 Astra 在 Bedrock 正式可用](https://aws.amazon.com/about-aws/whats-new/2026/09/openai-gpt-6-astra-on-amazon-bedrock/) · 2026-09-08 | Astra 可经 Bedrock 调用并使用 AWS 治理与审计控制。 | 模型和客户采购云并非一对一绑定；没有合同利润分成披露。 原文定位：Supported APIs; governance and auditing |
+| [S12 · OpenAI：GPT-6 Astra 安全概览](https://openai.com/index/safety-overview-gpt-6-astra/) · 2026-09-03 | 安全说明同时披露监控部署与在对抗条件下的可监控性限制。 | 风险控制改进不等于错误、越权或事故风险清零。 原文定位：Items 4–5: monitoring and monitorability |
+
 反向证据与边界：竞争方合作早于 GPT-6；多渠道与业务系统参与反驳一家独占或全 SaaS 被替代；治理功能也可能被平台捆绑。
 
 充分性：通过（限本题边界）。已形成有反证边界的竞争机制；不声称份额、利润分成或长期赢家已经确定。
@@ -404,12 +471,6 @@ Claudeforce 的结构显示，用户界面可以转移到助手，但关键操�
 需求增长能变成利润吗？
 
 尚未证明 Astra 带来的需求增长能转成公司增量利润；已有财务材料只能建立基线和反证，缺少同口径的事件收入—成本桥梁。
-
-| 资料／日期 | 关键数据与事实 | 口径、限制与原文定位 |
-| --- | --- | --- |
-| [S07 · Microsoft FY2026 Q4 业绩电话会](https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4) · 2026-07-29 | Microsoft FY26 Q4 Cloud 毛利率为 65%，同比下降；公司列举 Azure 收入结构、AI 基建投入与产品使用增加等影响。 | 发生在 Astra 发布前，且为混合业务毛利率；只能反驳使用量与利润率必然同步，不能证明 Astra 本身亏损。 原文定位：CFO: Microsoft Cloud gross margin percentage |
-| [S08 · Salesforce FY2027 Q2 业绩公告](https://investor.salesforce.com/news/news-details/2026/Salesforce-Delivers-Record-Second-Quarter-Fiscal-2027-Results/default.aspx) · 2026-08-26 | Salesforce 在 FY27 Q2 将 Slackbot 与 Headless 360 纳入 Agentforce ARR 统计范围。 | ARR 是年化合同指标，不是当期利润；范围扩展会影响增长可比性，不能据此量化 GPT-6 增量。 原文定位：Company Highlights; Agentforce ARR definition footnote |
-| [S09 · NVIDIA FY2027 Q2 业绩公告](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/default.aspx) · 2026-08-26 | NVIDIA FY27 Q2 财季截至 2026-07-26，业绩于 2026-08-26 发布，均早于 9 月 3 日的 Astra 发布。 | 相关收入和利润提供事件前行业基线，没有单独的 Astra 收入、成本或利润拆分。 原文定位：Aug. 26, 2026 release opening paragraph; quarter ended July 26 |
 
 ##### 核心关系：新增收入要覆盖被替代收入和新增成本
 
@@ -435,6 +496,12 @@ Salesforce 的指标范围变化要求先做口径桥梁。把 Slackbot 和 Head
 
 最小补证是同一公司、同一期间、同一 Astra 工作负载的净收费及对应成本或利润披露。它尚未出现时，不机械新增一个只会重复索取未来财报的 L4。取得具体数据后，再判断是收入替代、成本口径还是定价权构成下一层缺口。所有证券对象仍为 no_action，估值研究不在本轮凭空补齐。
 
+| 资料／日期 | 关键数据与事实 | 口径、限制与原文定位 |
+| --- | --- | --- |
+| [S07 · Microsoft FY2026 Q4 业绩电话会](https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4) · 2026-07-29 | Microsoft FY26 Q4 Cloud 毛利率为 65%，同比下降；公司列举 Azure 收入结构、AI 基建投入与产品使用增加等影响。 | 发生在 Astra 发布前，且为混合业务毛利率；只能反驳使用量与利润率必然同步，不能证明 Astra 本身亏损。 原文定位：CFO: Microsoft Cloud gross margin percentage |
+| [S08 · Salesforce FY2027 Q2 业绩公告](https://investor.salesforce.com/news/news-details/2026/Salesforce-Delivers-Record-Second-Quarter-Fiscal-2027-Results/default.aspx) · 2026-08-26 | Salesforce 在 FY27 Q2 将 Slackbot 与 Headless 360 纳入 Agentforce ARR 统计范围。 | ARR 是年化合同指标，不是当期利润；范围扩展会影响增长可比性，不能据此量化 GPT-6 增量。 原文定位：Company Highlights; Agentforce ARR definition footnote |
+| [S09 · NVIDIA FY2027 Q2 业绩公告](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/default.aspx) · 2026-08-26 | NVIDIA FY27 Q2 财季截至 2026-07-26，业绩于 2026-08-26 发布，均早于 9 月 3 日的 Astra 发布。 | 相关收入和利润提供事件前行业基线，没有单独的 Astra 收入、成本或利润拆分。 原文定位：Aug. 26, 2026 release opening paragraph; quarter ended July 26 |
+
 反向证据与边界：逐题核对毛利率下降、ARR 统计范围扩展和发布前财季；这些材料反驳需求或名义收入增长自动变成利润，但不证明 Astra 的利润贡献为零。
 
 充分性：未通过。缺少事件专属、同公司同期间的净收入与成本配对；完成研究边界说明不等于完成利润验证。
@@ -458,7 +525,7 @@ Salesforce 的指标范围变化要求先做口径桥梁。把 Slackbot 和 Head
 
 ## 4. 来源索引
 
-来源索引包含原截面逐题研究使用的材料，不表示本次全部重新搜索。9 月 11 日的更新仅使用截止日前资料；S14 是本次新增的 9 月 9 日反向案例，单独用于任务成本问题。未定发布日期的现行网页不被倒推为历史快照。新利润问题另有独立抽取和复核，未进行 IMA 扫描或更新证券估值。
+来源索引包含原截面逐题研究使用的材料，不表示本次全部重新搜索。9 月 11 日的更新仅使用截止日前资料；S14 是本次新增的 9 月 9 日反向案例，单独用于任务成本问题。未定发布日期的现行网页不被倒推为历史快照。新利润问题另有独立抽取和复核，未进行 IMA 扫描或更新证券估值。 9 月 18 日仅对 Q1.1.2.2 重读 S05/S14，另增 S15/S16 的人工时间边界证据。新增表格是公开匹配样例和条件测算，不是新跑测或实际 ROI；未取得完整逐次测试数据，也未重搜其它叶子。
 
 [S01 · OpenAI API Changelog：Astra 发布与 Sol 价格](https://developers.openai.com/api/docs/changelog)
 
@@ -515,3 +582,11 @@ Salesforce 的指标范围变化要求先做口径桥梁。把 Slackbot 和 Head
 [S14 · Microsoft Developer：Your work might not need the smartest model](https://developer.microsoft.com/blog/your-work-might-not-need-the-smartest-model/)
 
 2026-09-09｜Microsoft Developer / Waldek Mastykarz｜official_company。9 月 9 日文中的代码升级测试。开发者团队原始小样本测试，每个配置运行五次；表中为匹配运行示例，采用 GitHub Copilot 当时计价，不等于裸 API 账单，也不是行业平均。
+
+[S15 · METR：早期 2025 AI 对资深开源开发者生产率的随机实验](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/)
+
+2025-07-10｜METR｜authoritative_third_party。2025 年早期工具与资深开源开发者任务。旧工具与特定熟悉仓库的实验；只作方法与人工时间边界，不外推 Astra 或 SPFx。
+
+[S16 · METR：开发者生产率实验设计更新](https://metr.org/blog/2026-02-24-uplift-update/)
+
+2026-02-24｜METR｜authoritative_third_party。2025 年 8 月起的后续实验；2026 年 2 月方法更新。后续结果受参与者、任务选择及并行计时问题影响；不是 Astra 的生产率估计。

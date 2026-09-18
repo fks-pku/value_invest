@@ -7,7 +7,7 @@ import re
 from string import Template
 
 from value_invest_research.domain.question_tree_report import (
-    LEAF_TITLES, PARENT_TITLES, SECTIONS, validate_question_tree_report,
+    LEAF_TITLES, PARENT_TITLES, LEAF_SECTIONS, PARENT_SECTIONS, validate_question_tree_report,
 )
 
 ASSETS = Path(__file__).parent / "report_templates"
@@ -41,9 +41,6 @@ class QuestionTreeHtmlRenderer:
         def paragraphs(items):
             return ''.join(f'<p>{text(p)}</p>' for p in items)
 
-        def listing(items):
-            return '<ul class="plain-list">' + ''.join(f'<li>{text(i)}</li>' for i in items) + '</ul>'
-
         def status(node):
             return "通过 · 限本题" if node["passed"] else "未充分"
 
@@ -62,14 +59,13 @@ class QuestionTreeHtmlRenderer:
                 rows = []
                 for child in children(node):
                     gap = f'<span class="child-gap">未作为已验证结论：{text("；".join(child["gaps"]))}</span>' if not child["passed"] else ''
-                    rows.append(f'<tr data-child-id="{child["id"]}"><td><a class="rollup-link" href="#{child["id"]}">L{child["level"]} · {text(child["question"])}</a></td><td>{text(child["conclusion"])}{gap}</td><td>{status(child)}</td></tr>')
-                return '<p class="process-note">汇总直接子节点。未充分节点按缺口展示，不当作已验证结论；本层不重新附着一批宽泛材料。</p>' + table(["输入子问题", "子节点当前判断与边界", "充分性"], rows, "rollup-table")
+                    rows.append(f'<div data-child-summary="{child["id"]}"><dt><a href="#{child["id"]}">{text(child["question"])}</a><small>{status(child)}</small></dt><dd>{text(child["conclusion"])}{gap}</dd></div>')
+                return '<h4>下层结论依据</h4><dl class="child-findings">' + ''.join(rows) + '</dl>'
             rows = []
             for item in node.get("evidence", []):
                 source = sources[item["source"]]
                 date = item.get("published_at") or source.get("published_at") or "未披露发布日期"
-                trace = f'<span class="review-mark">抽取 / 复核：{text(item["trace"])}</span>' if item.get("trace") else ''
-                rows.append('<tr><td>' + f'<span class="source-date">{text(date)}</span><span class="source-title">{link(item["source"], source["title"])}</span><span class="source-meta">{text(MATERIALS.get(source.get("material_class"), source.get("material_class", "资料")))} · {text(source.get("publisher", ""))}</span><span class="locator">定位：{text(item["locator"])}</span>' + '</td><td>' + text(item["fact"]) + trace + '</td><td><span class="effect ' + escape(item.get("effect", "boundary"), quote=True) + '">' + text(EFFECTS.get(item.get("effect"), "边界")) + '</span></td><td>' + text(item["boundary"]) + '</td></tr>')
+                rows.append('<tr><td>' + f'<span class="source-date">{text(date)}</span><span class="source-title">{link(item["source"], source["title"])}</span><span class="source-meta">{text(MATERIALS.get(source.get("material_class"), source.get("material_class", "资料")))} · {text(source.get("publisher", ""))}</span><span class="locator">定位：{text(item["locator"])}</span>' + '</td><td>' + text(item["fact"]) + '</td><td><span class="effect ' + escape(item.get("effect", "boundary"), quote=True) + '">' + text(EFFECTS.get(item.get("effect"), "边界")) + '</span></td><td>' + text(item["boundary"]) + '</td></tr>')
             if not rows:
                 rows = ['<tr><td colspan="4">尚无可展示的本题证据；不据此认定问题已经回答。</td></tr>']
             return table(["材料与原文定位", "抽取的关键数据 / 事实", "作用", "口径限制与反向解释"], rows, "evidence-table", f'{node["id"]} · 逐问题证据')
@@ -78,32 +74,50 @@ class QuestionTreeHtmlRenderer:
             nid = node["id"]
             child_nodes = children(node)
             titles = PARENT_TITLES if child_nodes else LEAF_TITLES
+            parts = PARENT_SECTIONS if child_nodes else LEAF_SECTIONS
             path = [node]
             while path[0].get("parent_id"):
                 path.insert(0, nodes[path[0]["parent_id"]])
             crumb = '<p class="breadcrumb">' + ''.join(f'<a href="#{n["id"]}">L{n["level"]} · {text(n.get("short") or n["question"])}</a>' for n in path) + '</p>'
-            child_links = ''.join(f'<a class="child-jump" href="#{n["id"]}"><small>L{n["level"]}</small>{text(n["question"])}</a>' for n in child_nodes)
-            if not child_links:
-                child_links = '<p>' + ("未展开子问题，当前节点是终端问题。" if not node["passed"] else "本节点已在限定边界内回答，无需继续下钻。") + '</p>'
-            scope = '<div class="scope-grid">' + ''.join(f'<div class="scope-item"><span class="scope-label">{label}</span>{body}</div>' for label, body in [
-                ("本层要回答", paragraphs([node["what"]])), ("通过标准", paragraphs([node["acceptance_rule"]])),
-                ("预先规定的数据", listing(node["data_required"])), ("实际展开的子问题", child_links)]) + '</div>'
-            analysis = '<div class="article-copy">' + ''.join(f'<h4>{text(s["heading"])}</h4>' + paragraphs(s["paragraphs"]) for s in node["analysis"]) + '</div>'
+            child_links = '<ol class="research-questions">' + ''.join(
+                f'<li data-child-id="{n["id"]}"><a href="#{n["id"]}">{text(n["question"])}</a><p data-child-purpose="{n["id"]}">{text(n["why_it_matters"])}</p></li>' for n in child_nodes) + '</ol>'
+            analysis = f'<div class="article-copy"><p class="answer">{text(node["conclusion"])}</p>'
+            analysis += paragraphs([node["what"]]) if node["what"] != node["question"] else ''
+            supplements = []
+            for section in node["analysis"]:
+                content = f'<h4>{text(section["heading"])}</h4>' + paragraphs(section["paragraphs"])
+                for t in section.get("tables", []):
+                    rows = ['<tr>' + ''.join(f'<td>{text(c)}</td>' for c in row) + '</tr>' for row in t["rows"]]
+                    content += table(t["headers"], rows, "analysis-table", t.get("caption", ""))
+                if section.get("supplementary", False):
+                    supplements.append(content)
+                else:
+                    analysis += content
             for t in node.get("tables", []):
                 rows = ['<tr>' + ''.join(f'<td>{text(c)}</td>' for c in row) + '</tr>' for row in t["rows"]]
                 analysis += table(t["headers"], rows, "analysis-table", t.get("caption", ""))
             if node.get("parent_bridge"):
-                analysis += '<div class="parent-bridge"><strong>对父问题的贡献</strong>' + paragraphs([node["parent_bridge"]]) + '</div>'
-            conclusion = '<div class="conclusion-block"><p class="answer">' + text(node["conclusion"]) + '</p><div class="judgment-grid"><div><strong>SUFFICIENCY · 是否回答充分</strong>' + paragraphs([("充分性：通过（限本题边界）。" if node["passed"] else "充分性：未通过。") + "；".join(node["reasons"])]) + '</div><div><strong>NEXT · 后续动作</strong>' + paragraphs(["下一步：" + "；".join(node["next_actions"])]) + '</div></div>'
+                analysis += '<p class="parent-bridge">对父问题的贡献：' + text(node["parent_bridge"]) + '</p>'
+            if supplements:
+                analysis += '<details class="supplementary-analysis"><summary>补充测算与方法说明</summary>' + ''.join(supplements) + '</details>'
+            if child_nodes:
+                analysis += evidence(node)
+            if not child_nodes:
+                analysis += '<h4 id="data-' + nid + '">数据与来源依据</h4>' + evidence(node)
+            conclusion = f'<footer class="node-assessment" id="conclusion-{nid}">' + paragraphs([("充分性：通过（限本题边界）。" if node["passed"] else "充分性：未通过。") + "；".join(node["reasons"])])
             if node.get("gaps"):
-                conclusion += '<div class="gap-box">缺口：' + text("；".join(node["gaps"])) + '</div>'
+                conclusion += '<p class="gap-note">缺口：' + text("；".join(node["gaps"])) + '</p>'
             if node.get("refutation"):
                 conclusion += '<p class="boundary-note">反向证据与边界：' + text(node["refutation"]) + '</p>'
-            conclusion += '</div>'
-            sections = [scope, evidence(node), analysis, conclusion]
-            index = '<nav class="chapter-index" aria-label="本节点章节目录">' + ''.join(f'<a href="#{part}-{nid}">{i:02d} {text(title)}</a>' for i, (part, title) in enumerate(zip(SECTIONS, titles), 1)) + '</nav>'
-            body = ''.join(f'<section class="chapter-section" id="{part}-{nid}" data-section="{part}"><div class="section-heading"><span class="section-number">{i:02d}</span><h3>{text(title)}</h3></div>{content}</section>' for i, (part, title, content) in enumerate(zip(SECTIONS, titles, sections), 1))
-            return f'<article class="node-detail" id="{nid}" data-kind="{node["mode"]}" data-level="{node["level"]}" data-parent-id="{node.get("parent_id") or ""}" data-passed="{str(node["passed"]).lower()}">{crumb}<div class="detail-title-row"><div><p class="node-id">{nid}</p><h2 class="detail-title">{text(node["question"])}</h2></div><span class="status-badge{"" if node["passed"] else " waiting"}">{status(node)}</span></div><div class="research-abstract"><span>{"Synthesis view" if child_nodes else "Research conclusion"}</span><p>{text(node["conclusion"])}</p></div>{index}{body}</article>'
+            conclusion += paragraphs(["下一步：" + "；".join(node["next_actions"])]) + '</footer>'
+            analysis += conclusion + '</div>'
+            sections = [child_links, analysis] if child_nodes else [analysis]
+            # Keep old section bookmarks valid without restoring old visible panels.
+            aliases = f'<span id="scope-{nid}" class="anchor-alias"></span>'
+            if child_nodes:
+                aliases += f'<span id="data-{nid}" class="anchor-alias"></span>'
+            body = ''.join(f'<section class="chapter-section" id="{part}-{nid}" data-section="{part}"><div class="section-heading"><span class="section-number">{i:02d}</span><h3>{text(title)}</h3></div>{content}</section>' for i, (part, title, content) in enumerate(zip(parts, titles, sections), 1))
+            return f'<article class="node-detail" id="{nid}" data-kind="{node["mode"]}" data-level="{node["level"]}" data-parent-id="{node.get("parent_id") or ""}" data-passed="{str(node["passed"]).lower()}">{crumb}<div class="detail-title-row"><div><p class="node-id">{nid}</p><h2 class="detail-title">{text(node["question"])}</h2></div><span class="status-badge{"" if node["passed"] else " waiting"}">{status(node)}</span></div>{aliases}{body}</article>'
 
         ordered = []
         def visit(node):
@@ -116,7 +130,7 @@ class QuestionTreeHtmlRenderer:
             source_html += f'<div class="source-entry" id="source-{escape(sid, quote=True)}">{link(sid, sid + " · " + source["title"])}' + paragraphs([f'{source.get("published_at") or "无固定发布日期"}｜{source.get("publisher", "")}｜{source.get("material_class", "")}。{source.get("effective_period", "")}。{source.get("note", "")}']) + '</div>'
         return Template((ASSETS / "question_tree_v1.html").read_text()).substitute(
             title=escape(report["title"]), root_id=root["id"],
-            subtitle=text(report.get("subtitle", "左侧选择问题；右侧按数据、分析、结论与充分性展开独立研究章节。")),
+            subtitle=text(report.get("subtitle", "左侧选择问题；父节点列出研究子问题并综合判断，叶子节点呈现完整分析与结论。")),
             css=(ASSETS / "question_tree_v1.css").read_text(), javascript=(ASSETS / "question_tree_v1.js").read_text(),
             metadata=''.join(f'<span>{text(s)}</span>' for s in ["AS OF " + report.get("as_of_date", ""), f'{len(nodes)} NODES · {len(sources)} SOURCES', report.get("status_label", "")]),
             tree=tree([root]), articles='\n'.join(ordered), sources=source_html, source_count=len(sources),

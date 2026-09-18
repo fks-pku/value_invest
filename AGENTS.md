@@ -441,7 +441,15 @@ The sole presentation contract is `skills/value_invest_research/frameworks/resea
 
 Dynamic question-driven HTML uses the shared `question-tree-v1` presentation
 profile, matching the AI-factory report: left question tree, right node article,
-fixed four-section leaf/parent structure. Use `CanonicalHtmlReportRenderer` with
+parents show exactly `研究子问题` then `分析与结论`; leaves show only
+`分析与结论`. List direct children with their purpose, then synthesize their
+bounded findings level by level; leaf articles integrate evidence, reasoning and
+necessary charts as professional prose. Keep sufficiency/gaps at the article end,
+not separate panels. Within the analysis module, lead with the answer and a clear
+facts-to-implication argument; place the child-finding register after synthesis.
+Secondary derivations may be authored as supplementary analysis, but decisive
+assumptions, counterevidence and unresolved dependencies remain in the main prose.
+Do not use length or heading counts as a proxy for research depth. Use `CanonicalHtmlReportRenderer` with
 validated `project.question_tree` data; do not invent a new topic-specific HTML/CSS
 layout. This profile is an explicit exception to the default four-H2 HTML shell
 below, not a new research skill. Existing standalone-BOM and industry-index reports

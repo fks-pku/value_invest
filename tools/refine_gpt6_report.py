@@ -61,7 +61,7 @@ def refresh_report():
                   "markdown_contract": validate_report_contract_markdown(md),
                   "presentation_profile": "question-tree-v1",
                   "visual_review": "not_performed_this_revision; existing local-file browser policy restriction",
-                  "html_compatibility_note": "共享四节问题树模板；结构通过不等于研究完成。"}
+                  "html_compatibility_note": "共享问题树模板：父节点两模块、叶子节点单篇分析；结构通过不等于研究完成。"}
     for surface in ("existing_html_contract", "markdown_contract"):
         if not validation[surface]["ok"]:
             raise ValueError(validation[surface]["issues"])

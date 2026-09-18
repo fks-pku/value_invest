@@ -240,7 +240,7 @@ def render_existing():
     renderer.write(PROJECT, vm)
     previous = json.loads((PROJECT / "presentation_validation.json").read_text())
     previous.update(existing_html_contract=validation, presentation_profile="question-tree-v1",
-                    html_compatibility_note="采用共享 question-tree-v1 模板；按父/叶固定四节结构校验，不再套用全 BOM 报告样式门禁。")
+                    html_compatibility_note="采用共享 question-tree-v1 模板；按父节点双模块、叶子节点单篇分析校验，不再套用全 BOM 报告样式门禁。")
     write_json(PROJECT / "presentation_validation.json", previous)
     print(json.dumps(validation, ensure_ascii=False))
 

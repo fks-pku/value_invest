@@ -1,0 +1,66 @@
+{
+  "research_events.jsonl": {
+    "bytes": 2571,
+    "sha256": "ce02b599c51dbffb6eb430569f9e2d51f6aaac953c95b529f216f9401dd290e2"
+  },
+  "sources.jsonl": {
+    "bytes": 8428,
+    "sha256": "080522b9d48da8d83074e337611ab6766039c8cd371806a53cc729623cac51ee"
+  },
+  "source_extractions.jsonl": {
+    "bytes": 20257,
+    "sha256": "beba8ec10c4b6f5a49d3e043cdcf9252e04fc46e4128d5ec59292a49ae1df837"
+  },
+  "search_runs.jsonl": {
+    "bytes": 12193,
+    "sha256": "84d05b268e37e4d1b2f5a2140637482fcb1358667926f5a83f729edd13e8a4ee"
+  },
+  "source_reviews.jsonl": {
+    "bytes": 16709,
+    "sha256": "7a1669c02dc54307038a903607ee515d3de1dcbd71b2012b82b0d95e6f18d4b6"
+  },
+  "ledger/claims.jsonl": {
+    "bytes": 22023,
+    "sha256": "24f899c6338ae10ee81fe3586942c579223bc44e73da935a47e45efe28b08f41"
+  },
+  "ledger/node_states.jsonl": {
+    "bytes": 29714,
+    "sha256": "f53a880efed21268446b96060740137b4376d9fd159d18113296c532d81160d5"
+  },
+  "ledger/conclusions.jsonl": {
+    "bytes": 35579,
+    "sha256": "681ca1f483088d8f4beafc1908ac62171e8e2763fbb9ae524c54d5d9fe107859"
+  },
+  "ledger/claim_temporal_envelopes.jsonl": {
+    "bytes": 10340,
+    "sha256": "0b296f8d5bd231c3150efca2600e2d7c172e61fdde0bbea7881c90fbc5a58537"
+  },
+  "inbox/parse_tasks.jsonl": {
+    "bytes": 15556,
+    "sha256": "a1f20c82d9e33966a8cd5de4f515afb12df327d7134ae1cc34daf8a2b1842195"
+  },
+  "l3_research_plans/Q1.2.2/research_step_events.jsonl": {
+    "bytes": 8658,
+    "sha256": "403823442ef7c1a1e77829be50693e3f63d44dc666dcbe42b7729d108eb89bc8"
+  },
+  "l3_research_plans/Q1.2.3/research_step_events.jsonl": {
+    "bytes": 2868,
+    "sha256": "ef5a09709d78762286b803e41c7c2170a5894bd7846897f634a246d039d92118"
+  },
+  "l3_research_plans/Q1.3.1/research_step_events.jsonl": {
+    "bytes": 6202,
+    "sha256": "2f585ef5681277e02c101772c159cdb1fa1a0ba96ad573ffa8970bfbc03ee22a"
+  },
+  "l3_research_plans/Q1.1.2/research_step_events.jsonl": {
+    "bytes": 11307,
+    "sha256": "409a9617578f27298a20522b432b4f6ee8f65ccc010b4f9195f1c035db9bfa2a"
+  },
+  "l3_research_plans/Q1.2.1/research_step_events.jsonl": {
+    "bytes": 3041,
+    "sha256": "63bd80b74faf536887b04ffa11bb74d064c1259c91528649e99af38e01643a2e"
+  },
+  "l3_research_plans/Q1.1.1/research_step_events.jsonl": {
+    "bytes": 2731,
+    "sha256": "b913dd3c056f32b5f5b81278aa551e79afa50535ce6f87a562ede672df7e63b2"
+  }
+}

@@ -48,6 +48,18 @@ in its data/analysis contract. Event studies verify the event premise and compar
 against a no-event baseline. Playbook mechanisms are candidates, not a requirement
 to expand every branch; required investment gates still apply before a recommendation.
 
+Each non-root question records `why_it_matters`: the specific angle through which
+it helps answer its parent (existing decision-use text may supply this when apt).
+This is authored question-design metadata, not a conclusion invented by rendering.
+The public question-tree profile shows direct children and their purpose only at
+non-leaves, followed by level-by-level synthesis. Leaves show one integrated
+analysis/conclusion article. See `research_report_contract.md`; this presentation
+does not alter evidence gates, expansion rules, or the append-only research state.
+The article leads with the answer, explains decisive facts and their implication,
+and states what remains unproven. Parent synthesis precedes its finding register;
+secondary methods may be supplementary, but material limitations stay in the main
+argument. Readability is reviewed semantically, not by word or heading counts.
+
 Maximum depth is five:
 
 - L1: adapted research direction.
