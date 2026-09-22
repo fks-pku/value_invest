@@ -47,8 +47,8 @@ class EventArtifactChecks(unittest.TestCase):
         result = json.loads((PROJECT / "plan_validation.json").read_text())
         self.assertTrue(result["ok"], result["issues"])
         nested = result["summary"]["nested"]
-        self.assertEqual((nested["leaf_steps"], nested["completed_leaf_steps"], nested["blocked_leaf_steps"]), (8,5,3))
-        self.assertEqual(nested["max_depth"], 4)
+        self.assertEqual((nested["leaf_steps"], nested["completed_leaf_steps"], nested["blocked_leaf_steps"]), (10,3,7))
+        self.assertEqual(nested["max_depth"], 3)
         self.assertEqual(self.vm.project["research_status"], "partial_research")
 
     def test_native_expansion_keeps_prior_failure(self):
@@ -67,7 +67,8 @@ class EventArtifactChecks(unittest.TestCase):
         rs = {r["review_id"]:r for r in read_lines(PROJECT / "source_reviews.jsonl")}
         searches = {r["search_run_id"]:r for r in read_lines(PROJECT / "search_runs.jsonl")}
         times = {r["claim_id"]:r for r in read_lines(PROJECT / "ledger/claim_temporal_envelopes.jsonl")}
-        for claim in claims:
+        active = {n["id"] for n in self.vm.project["question_tree"]["nodes"]}
+        for claim in [c for c in claims if c["question_node_id"] in active and "_leaf_20260922_" in c["claim_id"]]:
             self.assertIn(claim["source_id"], self.sources)
             for related in [xs[claim["extraction_id"]], rs[claim["review_id"]], searches[claim["search_run_id"]]]:
                 for key in ("l3_plan_id", "l3_node_id", "question_node_id", "question_level", "research_step_id", "search_run_id"):
@@ -83,8 +84,8 @@ class EventArtifactChecks(unittest.TestCase):
             self.assertEqual(target["action_state"], "no_action")
             self.assertFalse(target["research_gate"]["passed"])
         states = {s["question_id"]:s for s in read_lines(PROJECT / "ledger/node_states.jsonl")}
-        self.assertEqual(len(states["Q1"]["gaps"]), 3)
-        self.assertFalse(states["Q1"]["passed"])
+        self.assertGreater(len(states["F1"]["gaps"]), 3)
+        self.assertFalse(states["F1"]["passed"])
 
     def test_same_claims_in_html_and_markdown(self):
         visible = ''.join(self.page.text)
@@ -100,12 +101,21 @@ class EventArtifactChecks(unittest.TestCase):
                 self.assertIn(pair["fact"], visible)
                 self.assertIn(pair["fact"], self.md)
 
+    def test_markdown_keeps_three_modules_for_every_node_including_root(self):
+        content = blocks(self.vm)
+        for node in self.vm.project["question_tree"]["nodes"]:
+            titles = [b["text"] for b in content if b.get("module_node") == node["id"]]
+            expected = (["研究子问题", "子问题核心结论", "欠缺的方向"] if node["mode"] == "rollup"
+                        else ["核心观点", "关键论证", "数据列表"])
+            self.assertEqual(titles, [f"{i}. {title}" for i, title in enumerate(expected, 1)])
+            self.assertIn(f'<a id="{node["id"]}"></a>', self.md)
+
     def test_links_and_section_order(self):
         self.assertEqual(len(self.page.ids), len(set(self.page.ids)))
         result = validate_report_contract_html(self.html)
         self.assertTrue(result["ok"], result["issues"])
         self.assertEqual(result["summary"]["presentation_profile"], "question-tree-v1")
-        self.assertEqual(result["summary"]["leaves"], 8)
+        self.assertEqual(result["summary"]["leaves"], 10)
         for url in self.page.hrefs:
             if url.startswith("#"):
                 self.assertIn(url[1:], self.page.ids)
@@ -122,18 +132,24 @@ class EventArtifactChecks(unittest.TestCase):
         self.assertAlmostEqual(1/2.5, .4)
         self.assertEqual(round(1-17332/26098, 3), .336)
         self.assertEqual(round((7.09-7.09/1.15)*60),55)
-        scenarios = next(c["scenario_table"] for c in self.vm.qa_roots if c.get("scenario_table"))
+        upstream = next(c for c in self.vm.qa_roots if c["id"] == "F1.2.1")
+        scenarios = next(t for a in upstream["analysis"] for t in a.get("tables", []))
         for _, n, c, h, outcome in scenarios["rows"]:
-            self.assertEqual(round(float(n)*float(c)/float(h),2),float(outcome))
+            self.assertEqual(round(float(n)*float(c)/float(h),3),float(outcome))
+        self.assertEqual(round(218.36/(2.22*4), 1), 24.6)
+        self.assertEqual(round(492.44/(4.74*4), 1), 26.0)
+        self.assertEqual(round(243/10.23, 1), 23.8)
+        self.assertEqual(round(243/16.69, 1), 14.6)
+        self.assertEqual(round(10*.7*.83/24.285, 3), .239)
 
     def test_first_principles_tree_and_preserved_links(self):
         tree = self.vm.project["question_tree"]["nodes"]
-        groups = [n for n in tree if n["parent_id"] == "Q1"]
-        self.assertEqual([n["id"] for n in groups], ["Q1.1", "Q1.2", "Q1.4", "Q1.3"])
+        groups = [n for n in tree if n["parent_id"] == "F1"]
+        self.assertEqual([n["id"] for n in groups], ["F1.1", "F1.2", "F1.3"])
         self.assertTrue(all(len(n["question"]) < 40 for n in tree))
-        old = json.loads((PROJECT / "research_revisions/20260911_first_principles/before/qa_tree.json").read_text())
-        self.assertTrue({n["id"] for n in old["nodes"]}.issubset({n["id"] for n in tree}))
-        self.assertEqual({n["id"] for n in tree if n["level"] > 3}, {n["id"] for n in old["nodes"] if n["level"] > 3})
+        old = json.loads((PROJECT / "research_revisions/20260922_object_industry_company_execution/before/qa_tree.json").read_text())
+        self.assertTrue({n["id"] for n in old["nodes"]}.isdisjoint({n["id"] for n in tree}))
+        self.assertEqual({n["id"] for n in tree if n["level"] > 3}, set())
 
     def test_changed_profit_question_does_not_inherit_pass(self):
         states = read_lines(PROJECT / "ledger/node_states.jsonl")
@@ -149,12 +165,12 @@ class EventArtifactChecks(unittest.TestCase):
 
     def test_revision_preserves_append_only_history(self):
         import hashlib
-        folder = PROJECT / "research_revisions/20260911_first_principles"
+        folder = PROJECT / "research_revisions/20260922_object_industry_company_execution"
         manifest = json.loads((folder / "before_manifest.json").read_text())
         for name, row in manifest.items():
             self.assertEqual(hashlib.sha256((PROJECT / name).read_bytes()[:row["bytes"]]).hexdigest(), row["sha256"], name)
         self.assertEqual(self.vm.project["as_of_date"], "2026-09-10")
-        self.assertEqual(self.vm.project["revised_on"], "2026-09-18")
+        self.assertEqual(self.vm.project["revised_on"], "2026-09-22")
 
     def test_new_cost_refutation_is_question_specific(self):
         pairs = [r for r in read_lines(PROJECT / "source_extractions.jsonl") if r["source_id"] == "S14"]
@@ -162,7 +178,8 @@ class EventArtifactChecks(unittest.TestCase):
         self.assertEqual({r["question_node_id"] for r in pairs}, {"Q1.1.2.2"})
         self.assertTrue(any("_first_principles_leaf_" in r["extraction_id"] for r in pairs))
         self.assertTrue(any("_cost_case_leaf_" in r["extraction_id"] for r in pairs))
-        self.assertEqual(self.sources["S14"]["published_at"], "2026-09-09")
+        all_sources = {r["source_id"]: r for r in read_lines(PROJECT / "sources.jsonl")}
+        self.assertEqual(all_sources["S14"]["published_at"], "2026-09-09")
         self.assertEqual(round(2.49 / 1.03, 2), 2.42)
 
 

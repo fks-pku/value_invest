@@ -1,0 +1,28 @@
+{
+  "existing_html_contract": {
+    "ok": true,
+    "issues": [],
+    "summary": {
+      "mode": "historical_backtest",
+      "presentation_profile": "question-tree-v1",
+      "nodes": 15,
+      "parents": 7,
+      "leaves": 8
+    }
+  },
+  "markdown_contract": {
+    "ok": true,
+    "issues": [],
+    "summary": {
+      "mode": "historical_backtest",
+      "report_scope": "event-study",
+      "level1_cards": 0,
+      "level2_cards": 0,
+      "level3_cards": 0,
+      "require_l3": false
+    }
+  },
+  "presentation_profile": "question-tree-v1",
+  "visual_review": "not_performed_this_revision; existing local-file browser policy restriction",
+  "html_compatibility_note": "共享问题树模板：非叶子为研究子问题/子问题核心结论/欠缺的方向；叶子为核心观点/关键论证/数据列表。结构通过不等于研究完成。"
+}

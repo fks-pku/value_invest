@@ -1,0 +1,35 @@
+{
+  "verified_on": "2026-09-22",
+  "research_status": "partial_research",
+  "publication_status": "generated_pending_visual_review",
+  "active_framework": "object_industry_company",
+  "active_l3_plans": 10,
+  "current_leaves": 10,
+  "passed_leaves": 3,
+  "blocked_leaves": 7,
+  "maximum_actual_depth": 3,
+  "active_sources": 20,
+  "company_selection": {
+    "trigger": "F1.3.1 completed exposure screening but could not substitute for individual company analysis",
+    "screen_event_stage": "screen_20260922",
+    "added_l3_ids": ["F1.3.2", "F1.3.3", "F1.3.4"],
+    "old_question_states_inherited": false
+  },
+  "checks": {
+    "question_tree_html_contract": "passed",
+    "markdown_report_contract": "passed",
+    "research_plan_with_markdown_coverage": "passed",
+    "event_artifact_checks": "12 passed; includes trace, dates, calculations, identical claims and append-only preservation",
+    "framework_template_architecture_regressions": "71 passed",
+    "diff_whitespace": "passed",
+    "browser_visual_review": "blocked: browser security policy rejects local file URL; no alternate browser or server workaround attempted",
+    "full_research_artifact_validator": "failed: 1662 issues. Event-project audit schema does not meet full unified artifact contract, including missing leaf_source_reviews/workbench and required fields in historical and current extraction rows. Not claimed passed.",
+    "full_bom_material_intake_validator": "failed: 520 issues. Missing BOM manifest/context and required intake fields in the event-project schema. Not claimed passed."
+  },
+  "scope_limits": [
+    "No private research archive scan or exhaustive web coverage claimed.",
+    "Historical cutoff remains 2026-09-10; prices use that US regular-market close.",
+    "Scenario calculations are not observed event earnings or price targets.",
+    "No actionable_long; full BOM scarcity and mispricing gates remain unpassed."
+  ]
+}

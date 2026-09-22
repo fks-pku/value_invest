@@ -54,7 +54,7 @@ def build_question_tree_view(vm, qa, states, brief, extracts):
                 [f"{t['company']} · {t['ticker']} / no_action", t["exposure"], t["needed"], t["risk"]] for t in vm.targets]})
         nodes.append(node)
     return dict(template_version="question-tree-v1", title=vm.project["title"], as_of_date=vm.project["as_of_date"],
-                subtitle="左侧选择问题；父节点列出研究子问题并综合判断，叶子节点呈现完整分析与结论。",
+                subtitle="左侧选择问题；非叶子查看子问题、核心结论与欠缺方向，叶子查看核心观点、关键论证与数据列表。",
                 status_label=f"阶段性研究 · {sum(not n['passed'] and n['mode'] == 'leaf' for n in nodes)} 个终端问题仍有缺口", nodes=nodes, sources=vm.sources,
                 source_note=vm.project.get("source_note") or "下列均为本轮实际打开并核读的来源。S04、S05 为评测作者原文；其他为官方资料或厂商刊载客户案例。事实、研究者推导与假设情景分别表述；来源链接会随网站更新，摘录、定位与逐题复核记录保存在项目审计文件中。",
                 attachments=[{"label": "研究计划", "href": "research_plan.md"}, {"label": "完整 Markdown", "href": "professional_report.md"},

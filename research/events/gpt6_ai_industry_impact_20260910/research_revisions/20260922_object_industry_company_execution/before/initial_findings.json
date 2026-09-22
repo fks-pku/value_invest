@@ -1,0 +1,40 @@
+[
+  {
+    "id":"Q1.1.2", "l3_id":"Q1.1.2",
+    "searches":["GPT-6 Astra benchmark results ARC Prize September 2026; domains: arcprize.org, artificialanalysis.ai", "GPT-6 Astra cost per task output tokens; domains: artificialanalysis.ai, developers.openai.com"],
+    "evidence":[
+      {"source":"S04", "locator":"Results, max reasoning row", "fact":"ARC 同为 max：Standard 62.7% / $26,098；Provider Adapter 98.6% / $17,332。", "boundary":"相同模型、不同执行环境；测试总费用，不是企业任务成本。", "effect":"boundary", "review":"已核对同一 max 行，没有把 high 的 99.9% 与 max 混比。"},
+      {"source":"S05", "locator":"Coding Agent Index - key takeaways", "fact":"Astra 编码任务费用 $7.09，约比 Sol 高 15%，虽然后者 token 用量更多。", "boundary":"2026-09-09 评测截面；特定代理与任务集，不是全成本。", "effect":"refute", "review":"使用已打开的 9 月 9 日正文，弃用搜索缓存中的旧分数。"}
+    ],
+    "analysis":["评测成绩与任务账单都受模型之外的条件影响；必须把可迁移性与全成本分开研究。"],
+    "conclusion":"不能由能力或 token 效率提高直接认定业务任务成本下降。",
+    "support":["出现同模型不同执行环境的显著差异", "同代升级的独立评测费用仍有溢价"],
+    "refutation":"直接检索费用与无改善场景；AA 报告相对 Sol 溢价，ARC 揭示环境依赖。",
+    "passed":false, "gate_reason":"关键机制尚未分离，无法形成任务全成本答案。",
+    "gaps":["评测提升是否依赖执行环境，不能直接迁移到生产任务", "token 节省与单价溢价、人工复核之间的全成本关系未拆清"],
+    "next_actions":["针对两个已观察到的缺口各展开一个 L4"],
+    "children":[
+      {"question_id":"Q1.1.2.1", "question":"能力提升在同口径评测中是否成立，能否直接迁移到生产任务？", "trigger_gaps":["评测提升是否依赖执行环境，不能直接迁移到生产任务"], "required_data":["相同日期、任务、推理档位的评测", "执行环境变化和反向子项"], "analysis_plan":["区分模型、工具环境和数据集贡献", "界定生产迁移所需验证"], "requires_refutation_search":true},
+      {"question_id":"Q1.1.2.2", "question":"什么条件下每个验收任务的全成本才会下降，现有证据支持普遍下降吗？", "trigger_gaps":["token 节省与单价溢价、人工复核之间的全成本关系未拆清"], "required_data":["Sol 与 Astra 同口径 API 单价", "任务费用、复核和错误成本"], "analysis_plan":["计算账单与全成本盈亏平衡点", "区分实测与情景假设"], "requires_refutation_search":true}
+    ]
+  },
+  {
+    "id":"Q1.2.2", "l3_id":"Q1.2.2",
+    "searches":["NVIDIA second quarter fiscal 2027 results August 2026 data center revenue; domain: investor.nvidia.com", "GPT-6 Astra September 2026 GPU orders capital expenditure revenue; domains: microsoft.com, investor.nvidia.com, aws.amazon.com"],
+    "evidence":[
+      {"source":"S09", "locator":"Q2 highlights; Q3 outlook", "fact":"NVIDIA FY27 Q2 数据中心收入 $89.0B，披露日 8 月 26 日。", "boundary":"季度截至 7 月 26 日，早于 GPT-6 发布，不能证明事件增量。", "effect":"boundary", "review":"核对财季与公布时间；剥离事件归因。"},
+      {"source":"S07", "locator":"CFO remarks, capital expenditures", "fact":"Microsoft FY26 Q4 资本开支 $41B。", "boundary":"发布前已有投资，且包括非 GPU 支出和租赁口径。", "effect":"boundary", "review":"不是 GPT-6 订单，也不是纯 GPU 支出。"}
+    ],
+    "analysis":["大规模既有投入不能填补发布后的增量归因；需求规模还受每任务真实计算量及硬件效率影响。"],
+    "conclusion":"AI 算力处于高基数投入期，但 GPT-6 的净需求方向与新增规模尚不能用既有财报回答。",
+    "support":["两家基础设施相关公司的发布前投入与收入基数很大"],
+    "refutation":"搜索 GPT-6 相关采购与资本开支；未找到可归因的增量披露，只有既有财报与渠道上线。未检出不等于不存在。",
+    "passed":false, "gate_reason":"效率、用量与采购之间缺少可归因桥梁。",
+    "gaps":["每任务效率提升与新增任务量的净算力阈值未知", "缺少可归因于 GPT-6 的采购、资本开支或财务增量披露"],
+    "next_actions":["分别研究净算力阈值与事件归因证据"],
+    "children":[
+      {"question_id":"Q1.2.2.1", "question":"推理效率提高时，任务量须增加多少才拉动净算力需求？", "trigger_gaps":["每任务效率提升与新增任务量的净算力阈值未知"], "required_data":["任务量、每任务真实计算量、有效硬件吞吐", "token 与 FLOPs 是否可等价"], "analysis_plan":["建立任务量乘强度除效率的恒等关系", "用明确假设测算阈值而非给出预测"], "requires_refutation_search":true},
+      {"question_id":"Q1.2.2.2", "question":"是否已经出现能归因于 GPT-6 的采购、资本开支或财务增量？", "trigger_gaps":["缺少可归因于 GPT-6 的采购、资本开支或财务增量披露"], "required_data":["发布日期后的可识别订单、预算调整、使用与收入披露", "财报期间和预算会计口径"], "analysis_plan":["剔除发布前基数与不相关业务", "区分未披露、没有增量与无法归因"], "requires_refutation_search":true}
+    ]
+  }
+]

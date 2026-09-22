@@ -223,6 +223,9 @@ def render_plan(qa, project):
 
 def render_existing():
     """Refresh presentation only; never append or alter research evidence/events."""
+    if json.loads((PROJECT / "project.json").read_text()).get("framework_revision") == "20260922_object_industry_company_execution":
+        from research_gpt6_new_framework import finish
+        return finish()
     from gpt6_question_tree_view import build_question_tree_view
     from render_gpt6_impact_report import EventHtmlReportRenderer
     from value_invest_research.framework_contracts import validate_report_contract_html
@@ -240,7 +243,7 @@ def render_existing():
     renderer.write(PROJECT, vm)
     previous = json.loads((PROJECT / "presentation_validation.json").read_text())
     previous.update(existing_html_contract=validation, presentation_profile="question-tree-v1",
-                    html_compatibility_note="采用共享 question-tree-v1 模板；按父节点双模块、叶子节点单篇分析校验，不再套用全 BOM 报告样式门禁。")
+                    html_compatibility_note="采用共享 question-tree-v1 模板；非叶子与叶子分别按各自三模块校验，不套用全 BOM 报告样式门禁。")
     write_json(PROJECT / "presentation_validation.json", previous)
     print(json.dumps(validation, ensure_ascii=False))
 

@@ -1,0 +1,361 @@
+{
+  "execution_policy": {
+    "between_stages": "dependency_gated",
+    "branch_creation": "only_after_failed_answerability_gate",
+    "broad_material_pool": "candidate_only_not_completion_evidence",
+    "completion": "all_required_l3_child_plans_complete",
+    "event_log": "append_only",
+    "initial_depth": "L3_only",
+    "material_collection": "current_terminal_question_only",
+    "question_tree": "adaptive_depth_max_5",
+    "within_stage": "parallel_when_independent"
+  },
+  "l3_plan_index_path": "l3_research_plans/index.json",
+  "plan_id": "rp_106c8fa35bf43f33",
+  "question_architecture": {
+    "artifact_path": "qa_tree.json",
+    "planner_rationale": "用户指定三部分主线；初始只到L3，按真实研究缺口扩展。",
+    "playbook_id": "gpt6_object_industry_company"
+  },
+  "research_goal": {
+    "as_of_date": "2026-09-10",
+    "decision_boundary": "事实核实与条件性行业判断；未验证增量盈利、稀缺性和估值时不形成 actionable_long",
+    "domain_hint": "gpt6_launch_event",
+    "object_id": "gpt6_ai_industry_impact_20260910",
+    "q_map": {
+      "Q1": "Event facts and scope",
+      "Q2": "Transmission mechanism",
+      "Q3": "Beneficiaries, losers, and second-order effects",
+      "Q4": "Disconfirming tests and watchlist"
+    },
+    "report_date": "2026-09-10",
+    "research_type": "event_policy",
+    "run_mode": "historical_backtest",
+    "topic": "GPT-6 发布对 AI 行业及相关公司有什么影响？"
+  },
+  "schema_version": "4.0",
+  "steps": [
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/F1.1.1/research_plan.json",
+      "decision_use": "区分首发、后续上线、知识截止日期；建立无此次发布的比较基线。",
+      "depends_on_step_ids": [],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Only sources visible on or before 2026-09-10; preserve historical baseline and visibility proof.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes when its active question is answerable, or when every required descendant created by a failed gate passes."
+      },
+      "preferred_specialty_skill": "dynamic-research-agent",
+      "question": "GPT-6 是什么，背景与定位是什么？",
+      "question_node_id": "F1.1.1",
+      "refuting_source_plan": [
+        "Search for primary or independent evidence that would establish: 查接入限制和仍未交付的功能。"
+      ],
+      "required_materials": [
+        "具日期官方发布、接入范围和限制",
+        "前代与替代模型定位"
+      ],
+      "sequence": 1,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "F1",
+      "step_id": "step:F1.1.1",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/F1.1.2/research_plan.json",
+      "decision_use": "分离模型、运行框架及任务贡献，不跨评测版本相减。",
+      "depends_on_step_ids": [],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Only sources visible on or before 2026-09-10; preserve historical baseline and visibility proof.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes when its active question is answerable, or when every required descendant created by a failed gate passes."
+      },
+      "preferred_specialty_skill": "dynamic-research-agent",
+      "question": "GPT-6 的技术特性与能力边界怎样变化？",
+      "question_node_id": "F1.1.2",
+      "refuting_source_plan": [
+        "Search for primary or independent evidence that would establish: 寻找不提升的任务、评测框架差异和生产外推限制。"
+      ],
+      "required_materials": [
+        "同版本基准对照、独立评测、失败案例",
+        "架构披露和工具条件"
+      ],
+      "sequence": 2,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "F1",
+      "step_id": "step:F1.1.2",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/F1.1.3/research_plan.json",
+      "decision_use": "分开厂商成本、报价和用户合格任务总成本；给可复算盈亏平衡条件。",
+      "depends_on_step_ids": [],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Only sources visible on or before 2026-09-10; preserve historical baseline and visibility proof.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes when its active question is answerable, or when every required descendant created by a failed gate passes."
+      },
+      "preferred_specialty_skill": "dynamic-research-agent",
+      "question": "GPT-6 的成本与使用经济性怎样变化？",
+      "question_node_id": "F1.1.3",
+      "refuting_source_plan": [
+        "Search for primary or independent evidence that would establish: 查质量接近但价格更高的任务，以及集成和复核成本。"
+      ],
+      "required_materials": [
+        "历史API价格、任务级费用和质量",
+        "训练、服务成本披露及人工复核成本"
+      ],
+      "sequence": 3,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "F1",
+      "step_id": "step:F1.1.3",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/F1.2.1/research_plan.json",
+      "decision_use": "区分训练存量与推理增量；按任务量×资源强度÷有效供给效率推演。",
+      "depends_on_step_ids": [],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Only sources visible on or before 2026-09-10; preserve historical baseline and visibility proof.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes when its active question is answerable, or when every required descendant created by a failed gate passes."
+      },
+      "preferred_specialty_skill": "dynamic-research-agent",
+      "question": "怎样影响上游算力与基础设施？",
+      "question_node_id": "F1.2.1",
+      "refuting_source_plan": [
+        "Search for primary or independent evidence that would establish: 查效率提升、存量利用率、订单先于发布和替代路线。"
+      ],
+      "required_materials": [
+        "单位任务资源、硬件效率、利用率与订单",
+        "canonical BOM边界和供应商财报"
+      ],
+      "sequence": 4,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "F1",
+      "step_id": "step:F1.2.1",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/F1.2.2/research_plan.json",
+      "decision_use": "分开模型定价权和平台分发价值，处理竞争追赶及多模型路由。",
+      "depends_on_step_ids": [],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Only sources visible on or before 2026-09-10; preserve historical baseline and visibility proof.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes when its active question is answerable, or when every required descendant created by a failed gate passes."
+      },
+      "preferred_specialty_skill": "dynamic-research-agent",
+      "question": "怎样影响中游模型与服务平台？",
+      "question_node_id": "F1.2.2",
+      "refuting_source_plan": [
+        "Search for primary or independent evidence that would establish: 寻找不领先任务、渠道非独占和单位利润被竞争侵蚀。"
+      ],
+      "required_materials": [
+        "竞品同口径性能费用、上线渠道与合同",
+        "云平台分部收入和利润"
+      ],
+      "sequence": 5,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "F1",
+      "step_id": "step:F1.2.2",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/F1.2.3/research_plan.json",
+      "decision_use": "比较新增需求、替代需求和原有需求升级，识别高价值可验收任务。",
+      "depends_on_step_ids": [],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Only sources visible on or before 2026-09-10; preserve historical baseline and visibility proof.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes when its active question is answerable, or when every required descendant created by a failed gate passes."
+      },
+      "preferred_specialty_skill": "dynamic-research-agent",
+      "question": "怎样影响下游应用与最终需求？",
+      "question_node_id": "F1.2.3",
+      "refuting_source_plan": [
+        "Search for primary or independent evidence that would establish: 查设计伙伴不是付费客户、成本无优势和软件替代风险。"
+      ],
+      "required_materials": [
+        "客户、具体任务、产品上线与付费基线",
+        "生产转化、续用、预算及替代支出"
+      ],
+      "sequence": 6,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "F1",
+      "step_id": "step:F1.2.3",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    },
+    {
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Separate facts, inference, judgment, refutation, gaps, and next validation."
+      },
+      "child_plan_path": "l3_research_plans/F1.3.1/research_plan.json",
+      "decision_use": "筛出基础设施、平台、应用代表，分别标明关联与可投资性的区别。",
+      "depends_on_step_ids": [],
+      "execution_mode": "child_plan_rollup",
+      "freshness_requirement": "Only sources visible on or before 2026-09-10; preserve historical baseline and visibility proof.",
+      "initial_status": "pending",
+      "minimum_evidence_gate": {
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true,
+        "rule": "The L3 rollup completes when its active question is answerable, or when every required descendant created by a failed gate passes."
+      },
+      "preferred_specialty_skill": "dynamic-research-agent",
+      "question": "哪些公司具有可验证的业务敞口，值得进一步研究？",
+      "question_node_id": "F1.3.1",
+      "refuting_source_plan": [
+        "Search for primary or independent evidence that would establish: 查事件增量是否实际属于发布前既有业务。"
+      ],
+      "required_materials": [
+        "相关分部收入、产品和客户披露",
+        "竞争位置、成本和订单"
+      ],
+      "sequence": 7,
+      "source_plan": [],
+      "source_universe_plan": {},
+      "stage_id": "F1",
+      "step_id": "step:F1.3.1",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    }
+  ]
+}

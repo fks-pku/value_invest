@@ -23,6 +23,7 @@
 .node-assessment{border-top:1px solid var(--line);margin-top:28px;padding-top:20px;color:var(--muted);font-size:12px;line-height:1.9}
 .node-assessment p{margin:0 0 10px}
 .node-assessment .gap-note{color:var(--amber)}
+.chapter-section[data-section="gaps"] .node-assessment{border-top:0;margin-top:0;padding-top:0}
 .supplementary-analysis{margin:26px 0;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:14px}
 .supplementary-analysis summary{cursor:pointer;color:var(--green);font-size:13px}
 .supplementary-analysis summary:focus-visible{outline:2px solid #96bcac;outline-offset:3px}

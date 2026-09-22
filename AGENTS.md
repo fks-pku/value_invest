@@ -49,16 +49,22 @@ Use `dynamic-research-agent`; reuse a domain playbook when applicable. It direct
 owns decomposition, source planning, parsing, analysis, and sufficiency judgment;
 do not dispatch to retired investment skills.
 
-Question design starts from the shortest first-principles causal chain, not a
-report outline. Use plain, single-focus questions and keep a branch only when its
-answer could change the parent judgment's direction, magnitude, timing, or failure
-condition. Put metric detail in the data/analysis contract. For event research,
-verify the premise and distinguish incremental effects from the no-event baseline.
+For complete industry, technology, or event investment research, organize the
+question architecture as `研究对象 -> 行业与 BOM 影响 -> 具体公司` (what it is,
+what it affects, which companies). Establish the object's background, relevant
+features and economics first; split industry impacts into clearly bounded upstream,
+midstream and downstream segments where appropriate; then select and research
+individual companies from verified business exposure. First-principles causal
+analysis belongs inside these branches, not in place of this top-level structure.
+Keep questions plain and retain necessary object context as well as questions that
+change the parent judgment. Put metrics in data/analysis requirements. Verify event
+premises and compare against a no-event baseline. Explicitly narrowed tasks and
+existing standalone-BOM/report presentation contracts retain their scope.
 
 Internal QA is adaptive to maximum depth five:
 
 - L1: research direction.
-- L2: mechanism bucket.
+- L2: object, industry/BOM impact, company analysis for complete research; an adapted mechanism bucket for explicitly narrowed scopes.
 - L3: investment decision question.
 - L4: child questions created only after L3 research exposes a concrete evidence gap.
 - L5: optional further child questions created only after an L4 answerability gate fails.
@@ -441,12 +447,13 @@ The sole presentation contract is `skills/value_invest_research/frameworks/resea
 
 Dynamic question-driven HTML uses the shared `question-tree-v1` presentation
 profile, matching the AI-factory report: left question tree, right node article,
-parents show exactly `研究子问题` then `分析与结论`; leaves show only
-`分析与结论`. List direct children with their purpose, then synthesize their
-bounded findings level by level; leaf articles integrate evidence, reasoning and
-necessary charts as professional prose. Keep sufficiency/gaps at the article end,
-not separate panels. Within the analysis module, lead with the answer and a clear
-facts-to-implication argument; place the child-finding register after synthesis.
+parents show exactly `研究子问题`, `子问题核心结论`, `欠缺的方向`;
+leaves show exactly `核心观点`, `关键论证`, `数据列表`, in that order at every level.
+List direct children and their purpose, then their bounded findings plus synthesis;
+parent gaps and next validation belong in the third module. Leaf reasoning remains
+continuous professional prose with necessary charts; its sufficiency and remaining
+uncertainty stay at the end of `关键论证`, not in a fourth module. `数据列表` retains
+actual question-specific facts, sources, dates, locators and limitations.
 Secondary derivations may be authored as supplementary analysis, but decisive
 assumptions, counterevidence and unresolved dependencies remain in the main prose.
 Do not use length or heading counts as a proxy for research depth. Use `CanonicalHtmlReportRenderer` with

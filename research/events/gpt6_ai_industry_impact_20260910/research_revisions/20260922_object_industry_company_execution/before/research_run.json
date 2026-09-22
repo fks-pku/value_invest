@@ -1,0 +1,29 @@
+{
+  "status": "partial_research",
+  "as_of_date": "2026-09-10",
+  "summary": {
+    "parent_plan_id": "rp_fp_7352613eb6c5ef78",
+    "status": "blocked",
+    "l3_plans": 6,
+    "completed_l3_plans": 3,
+    "leaf_steps": 8,
+    "completed_leaf_steps": 5,
+    "blocked_leaf_steps": 3,
+    "max_depth": 4
+  },
+  "scope": "event-study; not a full BOM investment run",
+  "visual_review": "not_completed: local file navigation blocked by browser security policy",
+  "external_archive_scan": "not_performed",
+  "market_price_analysis": "not_performed",
+  "unanswered_leaf_ids": [
+    "Q1.2.1",
+    "Q1.2.2.2",
+    "Q1.3.1"
+  ],
+  "source_count": 16,
+  "claim_count": 36,
+  "reproduce": "PYTHONPATH=src python3 tools/deepen_gpt6_cost_case.py",
+  "revision_id": "20260918_cost_case",
+  "revised_on": "2026-09-18",
+  "revision_note": "只深化成本叶子及 Q1.1.2、Q1.1、Q1 的必要汇总；不更换事实截面、不扩树、不重研其他叶子、不新增证券推荐。"
+}

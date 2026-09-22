@@ -3,18 +3,17 @@
   "nodes": [
     {
       "decision_use": "",
-      "id": "Q1",
+      "id": "F1",
       "investment_relevance": "",
       "level": 1,
       "next_question_ids": [
-        "Q1.1",
-        "Q1.2",
-        "Q1.4",
-        "Q1.3"
+        "F1.1",
+        "F1.2",
+        "F1.3"
       ],
       "parent_id": "",
       "preferred_specialty_skill": "",
-      "question": "GPT-6 会怎样改变 AI 行业的需求和利润？",
+      "question": "GPT-6 发布对 AI 行业及相关公司有什么影响？",
       "refute_evidence": "",
       "required_materials": [],
       "score_component": "",
@@ -23,16 +22,17 @@
     },
     {
       "decision_use": "",
-      "id": "Q1.1",
+      "id": "F1.1",
       "investment_relevance": "",
       "level": 2,
       "next_question_ids": [
-        "Q1.1.1",
-        "Q1.1.2"
+        "F1.1.1",
+        "F1.1.2",
+        "F1.1.3"
       ],
-      "parent_id": "Q1",
+      "parent_id": "F1",
       "preferred_specialty_skill": "",
-      "question": "它真正改变了什么？",
+      "question": "研究对象是什么，发生了什么变化？",
       "refute_evidence": "",
       "required_materials": [],
       "score_component": "",
@@ -45,15 +45,14 @@
         "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
         "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
       ],
-      "child_plan_path": "l3_research_plans/Q1.1.1/research_plan.json",
-      "decision_use": "拆分发布日期、产品功能、官方评测和未来承诺，不把知识截止日当发布日期。",
-      "display_question": "哪些能力已经可以使用？",
+      "child_plan_path": "l3_research_plans/F1.1.1/research_plan.json",
+      "decision_use": "区分首发、后续上线、知识截止日期；建立无此次发布的比较基线。",
       "execution_mode": "direct_evidence_step",
       "freshness_requirement": "Only sources visible on or before 2026-09-10; preserve visibility proof. Refresh cadence: quarterly.",
-      "id": "Q1.1.1",
+      "id": "F1.1.1",
       "investment_relevance": "",
       "level": 3,
-      "materiality": "拆分发布日期、产品功能、官方评测和未来承诺，不把知识截止日当发布日期。",
+      "materiality": "区分首发、后续上线、知识截止日期；建立无此次发布的比较基线。",
       "minimum_evidence_gate": {
         "active_question_search_run_required": true,
         "direct_node_fit_required": true,
@@ -67,28 +66,28 @@
         "search_run_id_required": true
       },
       "next_question_ids": [],
-      "parent_id": "Q1.1",
+      "parent_id": "F1.1",
       "preferred_specialty_skill": "dynamic-research-agent",
-      "question": "GPT-6 Astra 何时发布、提供哪些能力、哪些尚不是可用产品或商业事实？",
-      "refute_evidence": "寻找未上线、受限接入和基准不适用的说明。",
+      "question": "GPT-6 是什么，背景与定位是什么？",
+      "refute_evidence": "查接入限制和仍未交付的功能。",
       "refuting_source_plan": [
-        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 寻找未上线、受限接入和基准不适用的说明。."
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 查接入限制和仍未交付的功能。."
       ],
       "required_data": [
-        "官方发布日志、模型文档与产品接入范围",
-        "限制、可用性和营销措辞的边界"
+        "具日期官方发布、接入范围和限制",
+        "前代与替代模型定位"
       ],
       "required_materials": [
-        "官方发布日志、模型文档与产品接入范围",
-        "限制、可用性和营销措辞的边界"
+        "具日期官方发布、接入范围和限制",
+        "前代与替代模型定位"
       ],
-      "research_step_id": "question:Q1.1.1",
+      "research_step_id": "question:F1.1.1",
       "score_component": "",
       "source_plan": [
         {
           "deepseek_allowed": false,
           "examples_or_search_queries": [
-            "GPT-6 Astra 何时发布、提供哪些能力、哪些尚不是可用产品或商业事实？ 官方发布日志、模型文档与产品接入范围 / 限制、可用性和营销措辞的边界"
+            "GPT-6 是什么，背景与定位是什么？ 具日期官方发布、接入范围和限制 / 前代与替代模型定位"
           ],
           "expected_fields": [
             "published_at",
@@ -106,7 +105,7 @@
         {
           "deepseek_allowed": true,
           "examples_or_search_queries": [
-            "GPT-6 Astra 何时发布、提供哪些能力、哪些尚不是可用产品或商业事实？ 官方发布日志、模型文档与产品接入范围 / 限制、可用性和营销措辞的边界"
+            "GPT-6 是什么，背景与定位是什么？ 具日期官方发布、接入范围和限制 / 前代与替代模型定位"
           ],
           "expected_fields": [
             "methodology",
@@ -122,7 +121,7 @@
         }
       ],
       "source_universe_plan": {},
-      "support_evidence": "直接回答问题的可复核事实与有边界的推导",
+      "support_evidence": "官方日期、产品和范围相互一致。",
       "target_implications": ""
     },
     {
@@ -131,58 +130,99 @@
         "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
         "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
       ],
-      "child_plan_path": "l3_research_plans/Q1.1.2/research_plan.json",
-      "decision_use": "从每 token 价格转为每个验收任务的全成本；统一 harness、难度和推理设置。",
-      "display_question": "完成同样的工作更划算了吗？",
-      "execution_mode": "child_plan_rollup",
+      "child_plan_path": "l3_research_plans/F1.1.2/research_plan.json",
+      "decision_use": "分离模型、运行框架及任务贡献，不跨评测版本相减。",
+      "execution_mode": "direct_evidence_step",
       "freshness_requirement": "Only sources visible on or before 2026-09-10; preserve visibility proof. Refresh cadence: quarterly.",
-      "id": "Q1.1.2",
+      "id": "F1.1.2",
       "investment_relevance": "",
       "level": 3,
-      "materiality": "从每 token 价格转为每个验收任务的全成本；统一 harness、难度和推理设置。",
+      "materiality": "分离模型、运行框架及任务贡献，不跨评测版本相减。",
       "minimum_evidence_gate": {
-        "all_mandatory_leaf_steps_required": true,
-        "direct_parent_evidence_forbidden": true,
-        "rule": "The L3 rollup completes when its active question is answerable, or when every required descendant created by a failed gate passes."
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
       },
-      "next_question_ids": [
-        "Q1.1.2.1",
-        "Q1.1.2.2"
-      ],
-      "parent_id": "Q1.1",
+      "next_question_ids": [],
+      "parent_id": "F1.1",
       "preferred_specialty_skill": "dynamic-research-agent",
-      "question": "相对 GPT-5.6 Sol，能力提升是否意味着可验收任务的总成本下降？",
-      "refute_evidence": "寻找没有改善的评测、溢价和人工成本未下降的场景。",
+      "question": "GPT-6 的技术特性与能力边界怎样变化？",
+      "refute_evidence": "寻找不提升的任务、评测框架差异和生产外推限制。",
       "refuting_source_plan": [
-        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 寻找没有改善的评测、溢价和人工成本未下降的场景。."
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 寻找不提升的任务、评测框架差异和生产外推限制。."
       ],
       "required_data": [
-        "同任务评测、执行耗时、输入输出量和成功率",
-        "截至截面的 API 单价、缓存与计费条件",
-        "人工复核、重试和错误成本"
+        "同版本基准对照、独立评测、失败案例",
+        "架构披露和工具条件"
       ],
       "required_materials": [
-        "同任务评测、执行耗时、输入输出量和成功率",
-        "截至截面的 API 单价、缓存与计费条件",
-        "人工复核、重试和错误成本"
+        "同版本基准对照、独立评测、失败案例",
+        "架构披露和工具条件"
       ],
-      "research_step_id": "question:Q1.1.2",
+      "research_step_id": "question:F1.1.2",
       "score_component": "",
-      "source_plan": [],
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "GPT-6 的技术特性与能力边界怎样变化？ 同版本基准对照、独立评测、失败案例 / 架构披露和工具条件"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "dynamic-research-agent",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "GPT-6 的技术特性与能力边界怎样变化？ 同版本基准对照、独立评测、失败案例 / 架构披露和工具条件"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "dynamic-research-agent",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
       "source_universe_plan": {},
-      "support_evidence": "直接回答问题的可复核事实与有边界的推导",
+      "support_evidence": "至少有可定位的同任务对照并处理反向结果。",
       "target_implications": ""
     },
     {
       "analysis_plan": [
-        "区分模型、工具环境和数据集贡献",
-        "界定生产迁移所需验证"
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
       ],
-      "display_question": "能力提升能用于真实工作吗？",
+      "child_plan_path": "l3_research_plans/F1.1.3/research_plan.json",
+      "decision_use": "分开厂商成本、报价和用户合格任务总成本；给可复算盈亏平衡条件。",
       "execution_mode": "direct_evidence_step",
       "freshness_requirement": "Only sources visible on or before 2026-09-10; preserve visibility proof. Refresh cadence: quarterly.",
-      "id": "Q1.1.2.1",
-      "level": 4,
+      "id": "F1.1.3",
+      "investment_relevance": "",
+      "level": 3,
+      "materiality": "分开厂商成本、报价和用户合格任务总成本；给可复算盈亏平衡条件。",
       "minimum_evidence_gate": {
         "active_question_search_run_required": true,
         "direct_node_fit_required": true,
@@ -196,26 +236,28 @@
         "search_run_id_required": true
       },
       "next_question_ids": [],
-      "parent_id": "Q1.1.2",
+      "parent_id": "F1.1",
       "preferred_specialty_skill": "dynamic-research-agent",
-      "question": "能力提升在同口径评测中是否成立，能否直接迁移到生产任务？",
+      "question": "GPT-6 的成本与使用经济性怎样变化？",
+      "refute_evidence": "查质量接近但价格更高的任务，以及集成和复核成本。",
       "refuting_source_plan": [
-        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 寻找没有改善的评测、溢价和人工成本未下降的场景。."
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 查质量接近但价格更高的任务，以及集成和复核成本。."
       ],
       "required_data": [
-        "相同日期、任务、推理档位的评测",
-        "执行环境变化和反向子项"
+        "历史API价格、任务级费用和质量",
+        "训练、服务成本披露及人工复核成本"
       ],
       "required_materials": [
-        "相同日期、任务、推理档位的评测",
-        "执行环境变化和反向子项"
+        "历史API价格、任务级费用和质量",
+        "训练、服务成本披露及人工复核成本"
       ],
-      "research_step_id": "question:Q1.1.2.1",
+      "research_step_id": "question:F1.1.3",
+      "score_component": "",
       "source_plan": [
         {
           "deepseek_allowed": false,
           "examples_or_search_queries": [
-            "能力提升在同口径评测中是否成立，能否直接迁移到生产任务？ 相同日期、任务、推理档位的评测 / 执行环境变化和反向子项"
+            "GPT-6 的成本与使用经济性怎样变化？ 历史API价格、任务级费用和质量 / 训练、服务成本披露及人工复核成本"
           ],
           "expected_fields": [
             "published_at",
@@ -233,7 +275,7 @@
         {
           "deepseek_allowed": true,
           "examples_or_search_queries": [
-            "能力提升在同口径评测中是否成立，能否直接迁移到生产任务？ 相同日期、任务、推理档位的评测 / 执行环境变化和反向子项"
+            "GPT-6 的成本与使用经济性怎样变化？ 历史API价格、任务级费用和质量 / 训练、服务成本披露及人工复核成本"
           ],
           "expected_fields": [
             "methodology",
@@ -247,95 +289,24 @@
           "source_type": "independent source that supports, challenges, or bounds the answer",
           "why_needed": "Provides independent verification and a contrary test."
         }
-      ]
-    },
-    {
-      "analysis_plan": [
-        "计算账单与全成本盈亏平衡点",
-        "区分实测与情景假设"
       ],
-      "display_question": "什么情况下完成任务更省钱？",
-      "execution_mode": "direct_evidence_step",
-      "freshness_requirement": "Only sources visible on or before 2026-09-10; preserve visibility proof. Refresh cadence: quarterly.",
-      "id": "Q1.1.2.2",
-      "level": 4,
-      "minimum_evidence_gate": {
-        "active_question_search_run_required": true,
-        "direct_node_fit_required": true,
-        "gpt_review_required": true,
-        "per_source_parse_required": true,
-        "refutation_search_required": true,
-        "required_source_buckets": [
-          "evidence"
-        ],
-        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
-        "search_run_id_required": true
-      },
-      "next_question_ids": [],
-      "parent_id": "Q1.1.2",
-      "preferred_specialty_skill": "dynamic-research-agent",
-      "question": "什么条件下每个验收任务的全成本才会下降，现有证据支持普遍下降吗？",
-      "refuting_source_plan": [
-        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 寻找没有改善的评测、溢价和人工成本未下降的场景。."
-      ],
-      "required_data": [
-        "Sol 与 Astra 同口径 API 单价",
-        "任务费用、复核和错误成本"
-      ],
-      "required_materials": [
-        "Sol 与 Astra 同口径 API 单价",
-        "任务费用、复核和错误成本"
-      ],
-      "research_step_id": "question:Q1.1.2.2",
-      "source_plan": [
-        {
-          "deepseek_allowed": false,
-          "examples_or_search_queries": [
-            "什么条件下每个验收任务的全成本才会下降，现有证据支持普遍下降吗？ Sol 与 Astra 同口径 API 单价 / 任务费用、复核和错误成本"
-          ],
-          "expected_fields": [
-            "published_at",
-            "period",
-            "entity",
-            "fact",
-            "definition",
-            "locator"
-          ],
-          "preferred_skill": "dynamic-research-agent",
-          "source_bucket": "evidence",
-          "source_type": "primary source that directly answers this leaf",
-          "why_needed": "Anchors the leaf answer in direct evidence."
-        },
-        {
-          "deepseek_allowed": true,
-          "examples_or_search_queries": [
-            "什么条件下每个验收任务的全成本才会下降，现有证据支持普遍下降吗？ Sol 与 Astra 同口径 API 单价 / 任务费用、复核和错误成本"
-          ],
-          "expected_fields": [
-            "methodology",
-            "finding",
-            "assumption",
-            "conflict",
-            "limitation"
-          ],
-          "preferred_skill": "dynamic-research-agent",
-          "source_bucket": "research_report",
-          "source_type": "independent source that supports, challenges, or bounds the answer",
-          "why_needed": "Provides independent verification and a contrary test."
-        }
-      ]
+      "source_universe_plan": {},
+      "support_evidence": "价格可追溯、任务口径可比，未披露成本不反推。",
+      "target_implications": ""
     },
     {
       "decision_use": "",
-      "id": "Q1.2",
+      "id": "F1.2",
       "investment_relevance": "",
       "level": 2,
       "next_question_ids": [
-        "Q1.2.1"
+        "F1.2.1",
+        "F1.2.2",
+        "F1.2.3"
       ],
-      "parent_id": "Q1",
+      "parent_id": "F1",
       "preferred_specialty_skill": "",
-      "question": "会带来多少真实需求？",
+      "question": "怎样影响行业和 BOM？",
       "refute_evidence": "",
       "required_materials": [],
       "score_component": "",
@@ -348,15 +319,14 @@
         "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
         "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
       ],
-      "child_plan_path": "l3_research_plans/Q1.2.1/research_plan.json",
-      "decision_use": "按可验收性、错误代价、工作频率及集成成本排序，不把基准分数换算成市场规模。",
-      "display_question": "客户会为哪些工作多付钱？",
+      "child_plan_path": "l3_research_plans/F1.2.1/research_plan.json",
+      "decision_use": "区分训练存量与推理增量；按任务量×资源强度÷有效供给效率推演。",
       "execution_mode": "direct_evidence_step",
       "freshness_requirement": "Only sources visible on or before 2026-09-10; preserve visibility proof. Refresh cadence: quarterly.",
-      "id": "Q1.2.1",
+      "id": "F1.2.1",
       "investment_relevance": "",
       "level": 3,
-      "materiality": "按可验收性、错误代价、工作频率及集成成本排序，不把基准分数换算成市场规模。",
+      "materiality": "区分训练存量与推理增量；按任务量×资源强度÷有效供给效率推演。",
       "minimum_evidence_gate": {
         "active_question_search_run_required": true,
         "direct_node_fit_required": true,
@@ -370,30 +340,28 @@
         "search_run_id_required": true
       },
       "next_question_ids": [],
-      "parent_id": "Q1.2",
+      "parent_id": "F1.2",
       "preferred_specialty_skill": "dynamic-research-agent",
-      "question": "哪些 AI 应用需求最可能被放大，能否从试用跨到企业付费工作流？",
-      "refute_evidence": "寻找人类复核、安全、数据权限和部署瓶颈。",
+      "question": "怎样影响上游算力与基础设施？",
+      "refute_evidence": "查效率提升、存量利用率、订单先于发布和替代路线。",
       "refuting_source_plan": [
-        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 寻找人类复核、安全、数据权限和部署瓶颈。."
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 查效率提升、存量利用率、订单先于发布和替代路线。."
       ],
       "required_data": [
-        "软件、研究、文档等具体任务的能力边界",
-        "企业采用、付费与生产环境约束",
-        "客户试用与真实收入的区分"
+        "单位任务资源、硬件效率、利用率与订单",
+        "canonical BOM边界和供应商财报"
       ],
       "required_materials": [
-        "软件、研究、文档等具体任务的能力边界",
-        "企业采用、付费与生产环境约束",
-        "客户试用与真实收入的区分"
+        "单位任务资源、硬件效率、利用率与订单",
+        "canonical BOM边界和供应商财报"
       ],
-      "research_step_id": "question:Q1.2.1",
+      "research_step_id": "question:F1.2.1",
       "score_component": "",
       "source_plan": [
         {
           "deepseek_allowed": false,
           "examples_or_search_queries": [
-            "哪些 AI 应用需求最可能被放大，能否从试用跨到企业付费工作流？ 软件、研究、文档等具体任务的能力边界 / 企业采用、付费与生产环境约束 / 客户试用与真实收入的区分"
+            "怎样影响上游算力与基础设施？ 单位任务资源、硬件效率、利用率与订单 / canonical BOM边界和供应商财报"
           ],
           "expected_fields": [
             "published_at",
@@ -411,7 +379,7 @@
         {
           "deepseek_allowed": true,
           "examples_or_search_queries": [
-            "哪些 AI 应用需求最可能被放大，能否从试用跨到企业付费工作流？ 软件、研究、文档等具体任务的能力边界 / 企业采用、付费与生产环境约束 / 客户试用与真实收入的区分"
+            "怎样影响上游算力与基础设施？ 单位任务资源、硬件效率、利用率与订单 / canonical BOM边界和供应商财报"
           ],
           "expected_fields": [
             "methodology",
@@ -427,17 +395,8 @@
         }
       ],
       "source_universe_plan": {},
-      "support_evidence": "直接回答问题的可复核事实与有边界的推导",
+      "support_evidence": "有任务到资源再到订单的证据；情景不得替代实际。",
       "target_implications": ""
-    },
-    {
-      "id": "Q1.4",
-      "level": 2,
-      "next_question_ids": [
-        "Q1.2.2"
-      ],
-      "parent_id": "Q1",
-      "question": "总算力需求会增加吗？"
     },
     {
       "analysis_plan": [
@@ -445,58 +404,99 @@
         "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
         "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
       ],
-      "child_plan_path": "l3_research_plans/Q1.2.2/research_plan.json",
-      "decision_use": "拆分任务量、单任务计算强度、模型路由和硬件效率，验证需求反弹阈值和采购归因。",
-      "display_question": "任务增长会带来新增算力采购吗？",
-      "execution_mode": "child_plan_rollup",
+      "child_plan_path": "l3_research_plans/F1.2.2/research_plan.json",
+      "decision_use": "分开模型定价权和平台分发价值，处理竞争追赶及多模型路由。",
+      "execution_mode": "direct_evidence_step",
       "freshness_requirement": "Only sources visible on or before 2026-09-10; preserve visibility proof. Refresh cadence: quarterly.",
-      "id": "Q1.2.2",
+      "id": "F1.2.2",
       "investment_relevance": "",
       "level": 3,
-      "materiality": "拆分任务量、单任务计算强度、模型路由和硬件效率，验证需求反弹阈值和采购归因。",
+      "materiality": "分开模型定价权和平台分发价值，处理竞争追赶及多模型路由。",
       "minimum_evidence_gate": {
-        "all_mandatory_leaf_steps_required": true,
-        "direct_parent_evidence_forbidden": true,
-        "rule": "The L3 rollup completes when its active question is answerable, or when every required descendant created by a failed gate passes."
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
       },
-      "next_question_ids": [
-        "Q1.2.2.1",
-        "Q1.2.2.2"
-      ],
-      "parent_id": "Q1.4",
+      "next_question_ids": [],
+      "parent_id": "F1.2",
       "preferred_specialty_skill": "dynamic-research-agent",
-      "question": "GPT-6 对推理算力、GPU 和配套基础设施的净需求方向及规模能否被验证？",
-      "refute_evidence": "检验推理效率提高、低价模型分流和既有产能消化是否抵消新增任务量。",
+      "question": "怎样影响中游模型与服务平台？",
+      "refute_evidence": "寻找不领先任务、渠道非独占和单位利润被竞争侵蚀。",
       "refuting_source_plan": [
-        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 检验推理效率提高、低价模型分流和既有产能消化是否抵消新增任务量。."
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 寻找不领先任务、渠道非独占和单位利润被竞争侵蚀。."
       ],
       "required_data": [
-        "每项任务的 token、计算与时延变化",
-        "任务量增长、工作负载结构和硬件效率",
-        "云厂商资本开支、采购和供货的发布前后区分"
+        "竞品同口径性能费用、上线渠道与合同",
+        "云平台分部收入和利润"
       ],
       "required_materials": [
-        "每项任务的 token、计算与时延变化",
-        "任务量增长、工作负载结构和硬件效率",
-        "云厂商资本开支、采购和供货的发布前后区分"
+        "竞品同口径性能费用、上线渠道与合同",
+        "云平台分部收入和利润"
       ],
-      "research_step_id": "question:Q1.2.2",
+      "research_step_id": "question:F1.2.2",
       "score_component": "",
-      "source_plan": [],
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "怎样影响中游模型与服务平台？ 竞品同口径性能费用、上线渠道与合同 / 云平台分部收入和利润"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "dynamic-research-agent",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "怎样影响中游模型与服务平台？ 竞品同口径性能费用、上线渠道与合同 / 云平台分部收入和利润"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "dynamic-research-agent",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
       "source_universe_plan": {},
-      "support_evidence": "直接回答问题的可复核事实与有边界的推导",
+      "support_evidence": "渠道与竞争事实可验证，盈利幅度有依据。",
       "target_implications": ""
     },
     {
       "analysis_plan": [
-        "建立任务量乘强度除效率的恒等关系",
-        "用明确假设测算阈值而非给出预测"
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
       ],
-      "display_question": "任务量要增长多少才需要更多算力？",
+      "child_plan_path": "l3_research_plans/F1.2.3/research_plan.json",
+      "decision_use": "比较新增需求、替代需求和原有需求升级，识别高价值可验收任务。",
       "execution_mode": "direct_evidence_step",
       "freshness_requirement": "Only sources visible on or before 2026-09-10; preserve visibility proof. Refresh cadence: quarterly.",
-      "id": "Q1.2.2.1",
-      "level": 4,
+      "id": "F1.2.3",
+      "investment_relevance": "",
+      "level": 3,
+      "materiality": "比较新增需求、替代需求和原有需求升级，识别高价值可验收任务。",
       "minimum_evidence_gate": {
         "active_question_search_run_required": true,
         "direct_node_fit_required": true,
@@ -510,26 +510,28 @@
         "search_run_id_required": true
       },
       "next_question_ids": [],
-      "parent_id": "Q1.2.2",
+      "parent_id": "F1.2",
       "preferred_specialty_skill": "dynamic-research-agent",
-      "question": "推理效率提高时，任务量须增加多少才拉动净算力需求？",
+      "question": "怎样影响下游应用与最终需求？",
+      "refute_evidence": "查设计伙伴不是付费客户、成本无优势和软件替代风险。",
       "refuting_source_plan": [
-        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 检验推理效率提高、低价模型分流和既有产能消化是否抵消新增任务量。."
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 查设计伙伴不是付费客户、成本无优势和软件替代风险。."
       ],
       "required_data": [
-        "任务量、每任务真实计算量、有效硬件吞吐",
-        "token 与 FLOPs 是否可等价"
+        "客户、具体任务、产品上线与付费基线",
+        "生产转化、续用、预算及替代支出"
       ],
       "required_materials": [
-        "任务量、每任务真实计算量、有效硬件吞吐",
-        "token 与 FLOPs 是否可等价"
+        "客户、具体任务、产品上线与付费基线",
+        "生产转化、续用、预算及替代支出"
       ],
-      "research_step_id": "question:Q1.2.2.1",
+      "research_step_id": "question:F1.2.3",
+      "score_component": "",
       "source_plan": [
         {
           "deepseek_allowed": false,
           "examples_or_search_queries": [
-            "推理效率提高时，任务量须增加多少才拉动净算力需求？ 任务量、每任务真实计算量、有效硬件吞吐 / token 与 FLOPs 是否可等价"
+            "怎样影响下游应用与最终需求？ 客户、具体任务、产品上线与付费基线 / 生产转化、续用、预算及替代支出"
           ],
           "expected_fields": [
             "published_at",
@@ -547,7 +549,7 @@
         {
           "deepseek_allowed": true,
           "examples_or_search_queries": [
-            "推理效率提高时，任务量须增加多少才拉动净算力需求？ 任务量、每任务真实计算量、有效硬件吞吐 / token 与 FLOPs 是否可等价"
+            "怎样影响下游应用与最终需求？ 客户、具体任务、产品上线与付费基线 / 生产转化、续用、预算及替代支出"
           ],
           "expected_fields": [
             "methodology",
@@ -561,96 +563,25 @@
           "source_type": "independent source that supports, challenges, or bounds the answer",
           "why_needed": "Provides independent verification and a contrary test."
         }
-      ]
-    },
-    {
-      "analysis_plan": [
-        "剔除发布前基数与不相关业务",
-        "区分未披露、没有增量与无法归因"
       ],
-      "display_question": "已经出现新增采购了吗？",
-      "execution_mode": "direct_evidence_step",
-      "freshness_requirement": "Only sources visible on or before 2026-09-10; preserve visibility proof. Refresh cadence: quarterly.",
-      "id": "Q1.2.2.2",
-      "level": 4,
-      "minimum_evidence_gate": {
-        "active_question_search_run_required": true,
-        "direct_node_fit_required": true,
-        "gpt_review_required": true,
-        "per_source_parse_required": true,
-        "refutation_search_required": true,
-        "required_source_buckets": [
-          "evidence"
-        ],
-        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
-        "search_run_id_required": true
-      },
-      "next_question_ids": [],
-      "parent_id": "Q1.2.2",
-      "preferred_specialty_skill": "dynamic-research-agent",
-      "question": "是否已经出现能归因于 GPT-6 的采购、资本开支或财务增量？",
-      "refuting_source_plan": [
-        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 检验推理效率提高、低价模型分流和既有产能消化是否抵消新增任务量。."
-      ],
-      "required_data": [
-        "发布日期后的可识别订单、预算调整、使用与收入披露",
-        "财报期间和预算会计口径"
-      ],
-      "required_materials": [
-        "发布日期后的可识别订单、预算调整、使用与收入披露",
-        "财报期间和预算会计口径"
-      ],
-      "research_step_id": "question:Q1.2.2.2",
-      "source_plan": [
-        {
-          "deepseek_allowed": false,
-          "examples_or_search_queries": [
-            "是否已经出现能归因于 GPT-6 的采购、资本开支或财务增量？ 发布日期后的可识别订单、预算调整、使用与收入披露 / 财报期间和预算会计口径"
-          ],
-          "expected_fields": [
-            "published_at",
-            "period",
-            "entity",
-            "fact",
-            "definition",
-            "locator"
-          ],
-          "preferred_skill": "dynamic-research-agent",
-          "source_bucket": "evidence",
-          "source_type": "primary source that directly answers this leaf",
-          "why_needed": "Anchors the leaf answer in direct evidence."
-        },
-        {
-          "deepseek_allowed": true,
-          "examples_or_search_queries": [
-            "是否已经出现能归因于 GPT-6 的采购、资本开支或财务增量？ 发布日期后的可识别订单、预算调整、使用与收入披露 / 财报期间和预算会计口径"
-          ],
-          "expected_fields": [
-            "methodology",
-            "finding",
-            "assumption",
-            "conflict",
-            "limitation"
-          ],
-          "preferred_skill": "dynamic-research-agent",
-          "source_bucket": "research_report",
-          "source_type": "independent source that supports, challenges, or bounds the answer",
-          "why_needed": "Provides independent verification and a contrary test."
-        }
-      ]
+      "source_universe_plan": {},
+      "support_evidence": "区分产品供给与已付费需求；可持续新增需客户数据。",
+      "target_implications": ""
     },
     {
       "decision_use": "",
-      "id": "Q1.3",
+      "id": "F1.3",
       "investment_relevance": "",
       "level": 2,
       "next_question_ids": [
-        "Q1.2.3",
-        "Q1.3.1"
+        "F1.3.1",
+        "F1.3.2",
+        "F1.3.3",
+        "F1.3.4"
       ],
-      "parent_id": "Q1",
+      "parent_id": "F1",
       "preferred_specialty_skill": "",
-      "question": "新增利润会留在哪一环？",
+      "question": "具体公司有哪些投资机会或风险？",
       "refute_evidence": "",
       "required_materials": [],
       "score_component": "",
@@ -663,15 +594,14 @@
         "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
         "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
       ],
-      "child_plan_path": "l3_research_plans/Q1.2.3/research_plan.json",
-      "decision_use": "区分模型能力护城河与渠道/系统记录护城河；识别既受益又受挤压的公司。",
-      "display_question": "哪些环节能留下价值？",
+      "child_plan_path": "l3_research_plans/F1.3.1/research_plan.json",
+      "decision_use": "筛出基础设施、平台、应用代表，分别标明关联与可投资性的区别。",
       "execution_mode": "direct_evidence_step",
       "freshness_requirement": "Only sources visible on or before 2026-09-10; preserve visibility proof. Refresh cadence: quarterly.",
-      "id": "Q1.2.3",
+      "id": "F1.3.1",
       "investment_relevance": "",
       "level": 3,
-      "materiality": "区分模型能力护城河与渠道/系统记录护城河；识别既受益又受挤压的公司。",
+      "materiality": "筛出基础设施、平台、应用代表，分别标明关联与可投资性的区别。",
       "minimum_evidence_gate": {
         "active_question_search_run_required": true,
         "direct_node_fit_required": true,
@@ -685,30 +615,28 @@
         "search_run_id_required": true
       },
       "next_question_ids": [],
-      "parent_id": "Q1.3",
+      "parent_id": "F1.3",
       "preferred_specialty_skill": "dynamic-research-agent",
-      "question": "模型平台、云渠道和应用软件之间的竞争与价值分配会怎样改变？",
-      "refute_evidence": "检验多模型路由、竞品追赶及模型平台跨入应用层的替代风险。",
+      "question": "哪些公司具有可验证的业务敞口，值得进一步研究？",
+      "refute_evidence": "查事件增量是否实际属于发布前既有业务。",
       "refuting_source_plan": [
-        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 检验多模型路由、竞品追赶及模型平台跨入应用层的替代风险。."
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 查事件增量是否实际属于发布前既有业务。."
       ],
       "required_data": [
-        "独立评测与竞争模型能力、价格和渠道",
-        "平台工具与企业软件的业务边界",
-        "分销、业务数据、权限、责任和工作流控制"
+        "相关分部收入、产品和客户披露",
+        "竞争位置、成本和订单"
       ],
       "required_materials": [
-        "独立评测与竞争模型能力、价格和渠道",
-        "平台工具与企业软件的业务边界",
-        "分销、业务数据、权限、责任和工作流控制"
+        "相关分部收入、产品和客户披露",
+        "竞争位置、成本和订单"
       ],
-      "research_step_id": "question:Q1.2.3",
+      "research_step_id": "question:F1.3.1",
       "score_component": "",
       "source_plan": [
         {
           "deepseek_allowed": false,
           "examples_or_search_queries": [
-            "模型平台、云渠道和应用软件之间的竞争与价值分配会怎样改变？ 独立评测与竞争模型能力、价格和渠道 / 平台工具与企业软件的业务边界 / 分销、业务数据、权限、责任和工作流控制"
+            "哪些公司具有可验证的业务敞口，值得进一步研究？ 相关分部收入、产品和客户披露 / 竞争位置、成本和订单"
           ],
           "expected_fields": [
             "published_at",
@@ -726,7 +654,7 @@
         {
           "deepseek_allowed": true,
           "examples_or_search_queries": [
-            "模型平台、云渠道和应用软件之间的竞争与价值分配会怎样改变？ 独立评测与竞争模型能力、价格和渠道 / 平台工具与企业软件的业务边界 / 分销、业务数据、权限、责任和工作流控制"
+            "哪些公司具有可验证的业务敞口，值得进一步研究？ 相关分部收入、产品和客户披露 / 竞争位置、成本和订单"
           ],
           "expected_fields": [
             "methodology",
@@ -742,22 +670,23 @@
         }
       ],
       "source_universe_plan": {},
-      "support_evidence": "直接回答问题的可复核事实与有边界的推导",
+      "support_evidence": "每个候选有独立可核对业务敞口来源。",
       "target_implications": ""
     },
     {
       "analysis_plan": [
-        "用新增收入减去被替代收入及新增成本判断利润，而不是用行业增长或研究边界已明确代替盈利兑现。"
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
       ],
-      "child_plan_path": "l3_research_plans/Q1.3.1/research_plan.json",
-      "decision_use": "用新增收入减去被替代收入及新增成本判断利润，而不是用行业增长或研究边界已明确代替盈利兑现。",
-      "display_question": "需求增长能变成利润吗？",
+      "child_plan_path": "l3_research_plans/F1.3.2/research_plan.json",
+      "decision_use": "区分行业基线与事件增量，建立收入到EPS的敏感性桥接及估值约束。",
       "execution_mode": "direct_evidence_step",
       "freshness_requirement": "Only sources visible on or before 2026-09-10; preserve visibility proof. Refresh cadence: quarterly.",
-      "id": "Q1.3.1",
+      "id": "F1.3.2",
       "investment_relevance": "",
       "level": 3,
-      "materiality": "区分基本面变化、市场共识与已定价；只汇总已验证部分，未验证的盈利和估值不打分。",
+      "materiality": "区分行业基线与事件增量，建立收入到EPS的敏感性桥接及估值约束。",
       "minimum_evidence_gate": {
         "active_question_search_run_required": true,
         "direct_node_fit_required": true,
@@ -771,30 +700,28 @@
         "search_run_id_required": true
       },
       "next_question_ids": [],
-      "parent_id": "Q1.3",
+      "parent_id": "F1.3",
       "preferred_specialty_skill": "dynamic-research-agent",
-      "question": "需求增长能变成利润吗？",
-      "refute_evidence": "复核微软毛利率下降、Salesforce ARR 定义变化及 NVIDIA 财报早于发布；检索截至截面的 GPT-6 专属收入或毛利披露。",
+      "question": "NVIDIA 能把这次模型升级转成多少新增利润？",
+      "refute_evidence": "效率、自研芯片替代、订单已在基线、毛利下行。",
       "refuting_source_plan": [
-        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 设定全成本恶化、事故、付费不转化和采购不兑现时的降级条件。."
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 效率、自研芯片替代、订单已在基线、毛利下行。."
       ],
       "required_data": [
-        "同口径新增收入与被替代的原有收入",
-        "推理、交付、折旧和服务成本",
-        "客户、工作负载、收入与利润的事件归因"
+        "分部收入、毛利率、股数和发布前指引",
+        "Astra增量订单、历史股价及一致预期"
       ],
       "required_materials": [
-        "同口径新增收入与被替代的原有收入",
-        "推理、交付、折旧和服务成本",
-        "客户、工作负载、收入与利润的事件归因"
+        "分部收入、毛利率、股数和发布前指引",
+        "Astra增量订单、历史股价及一致预期"
       ],
-      "research_step_id": "question:Q1.3.1",
+      "research_step_id": "question:F1.3.2",
       "score_component": "",
       "source_plan": [
         {
           "deepseek_allowed": false,
           "examples_or_search_queries": [
-            "需求增长能变成利润吗？ 同口径新增收入与被替代的原有收入 / 推理、交付、折旧和服务成本 / 客户、工作负载、收入与利润的事件归因"
+            "NVIDIA 能把这次模型升级转成多少新增利润？ 分部收入、毛利率、股数和发布前指引 / Astra增量订单、历史股价及一致预期"
           ],
           "expected_fields": [
             "published_at",
@@ -812,7 +739,7 @@
         {
           "deepseek_allowed": true,
           "examples_or_search_queries": [
-            "需求增长能变成利润吗？ 同口径新增收入与被替代的原有收入 / 推理、交付、折旧和服务成本 / 客户、工作负载、收入与利润的事件归因"
+            "NVIDIA 能把这次模型升级转成多少新增利润？ 分部收入、毛利率、股数和发布前指引 / Astra增量订单、历史股价及一致预期"
           ],
           "expected_fields": [
             "methodology",
@@ -828,118 +755,347 @@
         }
       ],
       "source_universe_plan": {},
-      "support_evidence": "同口径净增收入与成本证明事件增量利润",
+      "support_evidence": "财务计算可复算；事件归因和估值均有证据才形成投资结论。",
+      "target_implications": ""
+    },
+    {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
+      "child_plan_path": "l3_research_plans/F1.3.3/research_plan.json",
+      "decision_use": "分别桥接云和应用，解释收入、利润与自由现金流差异，不混租赁口径。",
+      "execution_mode": "direct_evidence_step",
+      "freshness_requirement": "Only sources visible on or before 2026-09-10; preserve visibility proof. Refresh cadence: quarterly.",
+      "id": "F1.3.3",
+      "investment_relevance": "",
+      "level": 3,
+      "materiality": "分别桥接云和应用，解释收入、利润与自由现金流差异，不混租赁口径。",
+      "minimum_evidence_gate": {
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
+      },
+      "next_question_ids": [],
+      "parent_id": "F1.3",
+      "preferred_specialty_skill": "dynamic-research-agent",
+      "question": "微软的云与应用收益能否覆盖新增AI投入？",
+      "refute_evidence": "更多使用侵蚀毛利、渠道非独占、资本开支先于回报。",
+      "refuting_source_plan": [
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 更多使用侵蚀毛利、渠道非独占、资本开支先于回报。."
+      ],
+      "required_data": [
+        "Azure、Cloud毛利、经营现金流、现金资本开支",
+        "付费增量、模型成本、同日估值"
+      ],
+      "required_materials": [
+        "Azure、Cloud毛利、经营现金流、现金资本开支",
+        "付费增量、模型成本、同日估值"
+      ],
+      "research_step_id": "question:F1.3.3",
+      "score_component": "",
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "微软的云与应用收益能否覆盖新增AI投入？ Azure、Cloud毛利、经营现金流、现金资本开支 / 付费增量、模型成本、同日估值"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "dynamic-research-agent",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "微软的云与应用收益能否覆盖新增AI投入？ Azure、Cloud毛利、经营现金流、现金资本开支 / 付费增量、模型成本、同日估值"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "dynamic-research-agent",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
+      "source_universe_plan": {},
+      "support_evidence": "业务桥接、投入与历史估值可验证。",
+      "target_implications": ""
+    },
+    {
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
+      "child_plan_path": "l3_research_plans/F1.3.4/research_plan.json",
+      "decision_use": "拆开AI收入、原有席位流失与模型费用，检验企业数据权限护城河。",
+      "execution_mode": "direct_evidence_step",
+      "freshness_requirement": "Only sources visible on or before 2026-09-10; preserve visibility proof. Refresh cadence: quarterly.",
+      "id": "F1.3.4",
+      "investment_relevance": "",
+      "level": 3,
+      "materiality": "拆开AI收入、原有席位流失与模型费用，检验企业数据权限护城河。",
+      "minimum_evidence_gate": {
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
+      },
+      "next_question_ids": [],
+      "parent_id": "F1.3",
+      "preferred_specialty_skill": "dynamic-research-agent",
+      "question": "Salesforce 会被替代，还是能保住并扩大利润？",
+      "refute_evidence": "ARR口径扩大、免费捆绑、客户绕过原有收费。",
+      "refuting_source_plan": [
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: ARR口径扩大、免费捆绑、客户绕过原有收费。."
+      ],
+      "required_data": [
+        "Agentforce ARR定义、收入基线和付費留存",
+        "模型合作、订阅蚕食、服务成本及估值"
+      ],
+      "required_materials": [
+        "Agentforce ARR定义、收入基线和付費留存",
+        "模型合作、订阅蚕食、服务成本及估值"
+      ],
+      "research_step_id": "question:F1.3.4",
+      "score_component": "",
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "Salesforce 会被替代，还是能保住并扩大利润？ Agentforce ARR定义、收入基线和付費留存 / 模型合作、订阅蚕食、服务成本及估值"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "dynamic-research-agent",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "Salesforce 会被替代，还是能保住并扩大利润？ Agentforce ARR定义、收入基线和付費留存 / 模型合作、订阅蚕食、服务成本及估值"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "dynamic-research-agent",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
+      "source_universe_plan": {},
+      "support_evidence": "同口径净增收入、毛利与估值桥接。",
       "target_implications": ""
     }
   ],
-  "planner_rationale": "四个第一性原理主问题；保留已实际取证的终端问题与缺口触发的 L4，不预生成新分支。",
+  "planner_rationale": "用户指定三部分主线；初始只到L3，按真实研究缺口扩展。",
   "playbook": {
     "l2_templates": {
-      "Q1": [
+      "F1": [
         {
-          "id": "Q1.1",
+          "id": "F1.1",
           "l3_questions": [
             {
-              "analysis": "拆分发布日期、产品功能、官方评测和未来承诺，不把知识截止日当发布日期。",
+              "analysis": "区分首发、后续上线、知识截止日期；建立无此次发布的比较基线。",
               "data": [
-                "官方发布日志、模型文档与产品接入范围",
-                "限制、可用性和营销措辞的边界"
+                "具日期官方发布、接入范围和限制",
+                "前代与替代模型定位"
               ],
-              "id": "Q1.1.1",
-              "parent_id": "Q1.1",
-              "question": "GPT-6 Astra 何时发布、提供哪些能力、哪些尚不是可用产品或商业事实？",
-              "refute": "寻找未上线、受限接入和基准不适用的说明。"
+              "id": "F1.1.1",
+              "parent_id": "F1.1",
+              "purpose": "确定研究事件与可采购产品，不把演示当交付。",
+              "question": "GPT-6 是什么，背景与定位是什么？",
+              "refute": "查接入限制和仍未交付的功能。",
+              "support_rule": "官方日期、产品和范围相互一致。"
             },
             {
-              "analysis": "从每 token 价格转为每个验收任务的全成本；统一 harness、难度和推理设置。",
+              "analysis": "分离模型、运行框架及任务贡献，不跨评测版本相减。",
               "data": [
-                "同任务评测、执行耗时、输入输出量和成功率",
-                "截至截面的 API 单价、缓存与计费条件",
-                "人工复核、重试和错误成本"
+                "同版本基准对照、独立评测、失败案例",
+                "架构披露和工具条件"
               ],
-              "id": "Q1.1.2",
-              "parent_id": "Q1.1",
-              "question": "相对 GPT-5.6 Sol，能力提升是否意味着可验收任务的总成本下降？",
-              "refute": "寻找没有改善的评测、溢价和人工成本未下降的场景。"
+              "id": "F1.1.2",
+              "parent_id": "F1.1",
+              "purpose": "确定哪些任务真的改善，以及改善是否依赖特定运行框架。",
+              "question": "GPT-6 的技术特性与能力边界怎样变化？",
+              "refute": "寻找不提升的任务、评测框架差异和生产外推限制。",
+              "support_rule": "至少有可定位的同任务对照并处理反向结果。"
+            },
+            {
+              "analysis": "分开厂商成本、报价和用户合格任务总成本；给可复算盈亏平衡条件。",
+              "data": [
+                "历史API价格、任务级费用和质量",
+                "训练、服务成本披露及人工复核成本"
+              ],
+              "id": "F1.1.3",
+              "parent_id": "F1.1",
+              "purpose": "判断能力改善能否抵消更贵的模型调用。",
+              "question": "GPT-6 的成本与使用经济性怎样变化？",
+              "refute": "查质量接近但价格更高的任务，以及集成和复核成本。",
+              "support_rule": "价格可追溯、任务口径可比，未披露成本不反推。"
             }
           ],
-          "question": "发布带来的可验证增量是什么？",
-          "why_this_depth": "回答元问题的必要机制"
+          "question": "研究对象是什么，发生了什么变化？",
+          "why_this_depth": "先区分真实产品变化、能力边界和经济性，为行业传导建立基线。"
         },
         {
-          "id": "Q1.2",
+          "id": "F1.2",
           "l3_questions": [
             {
-              "analysis": "按可验收性、错误代价、工作频率及集成成本排序，不把基准分数换算成市场规模。",
+              "analysis": "区分训练存量与推理增量；按任务量×资源强度÷有效供给效率推演。",
               "data": [
-                "软件、研究、文档等具体任务的能力边界",
-                "企业采用、付费与生产环境约束",
-                "客户试用与真实收入的区分"
+                "单位任务资源、硬件效率、利用率与订单",
+                "canonical BOM边界和供应商财报"
               ],
-              "id": "Q1.2.1",
-              "parent_id": "Q1.2",
-              "question": "哪些 AI 应用需求最可能被放大，能否从试用跨到企业付费工作流？",
-              "refute": "寻找人类复核、安全、数据权限和部署瓶颈。"
+              "id": "F1.2.1",
+              "parent_id": "F1.2",
+              "purpose": "把任务需求变成资源消耗，再检验采购和收入桥接。",
+              "question": "怎样影响上游算力与基础设施？",
+              "refute": "查效率提升、存量利用率、订单先于发布和替代路线。",
+              "support_rule": "有任务到资源再到订单的证据；情景不得替代实际。"
             },
             {
-              "analysis": "拆分任务量、单任务计算强度、模型路由和硬件效率，验证需求反弹阈值和采购归因。",
+              "analysis": "分开模型定价权和平台分发价值，处理竞争追赶及多模型路由。",
               "data": [
-                "每项任务的 token、计算与时延变化",
-                "任务量增长、工作负载结构和硬件效率",
-                "云厂商资本开支、采购和供货的发布前后区分"
+                "竞品同口径性能费用、上线渠道与合同",
+                "云平台分部收入和利润"
               ],
-              "id": "Q1.2.2",
-              "parent_id": "Q1.2",
-              "question": "GPT-6 对推理算力、GPU 和配套基础设施的净需求方向及规模能否被验证？",
-              "refute": "检验推理效率提高、低价模型分流和既有产能消化是否抵消新增任务量。"
+              "id": "F1.2.2",
+              "parent_id": "F1.2",
+              "purpose": "判断模型领先能否转成渠道、客户和利润的控制力。",
+              "question": "怎样影响中游模型与服务平台？",
+              "refute": "寻找不领先任务、渠道非独占和单位利润被竞争侵蚀。",
+              "support_rule": "渠道与竞争事实可验证，盈利幅度有依据。"
             },
             {
-              "analysis": "区分模型能力护城河与渠道/系统记录护城河；识别既受益又受挤压的公司。",
+              "analysis": "比较新增需求、替代需求和原有需求升级，识别高价值可验收任务。",
               "data": [
-                "独立评测与竞争模型能力、价格和渠道",
-                "平台工具与企业软件的业务边界",
-                "分销、业务数据、权限、责任和工作流控制"
+                "客户、具体任务、产品上线与付费基线",
+                "生产转化、续用、预算及替代支出"
               ],
-              "id": "Q1.2.3",
-              "parent_id": "Q1.2",
-              "question": "模型平台、云渠道和应用软件之间的竞争与价值分配会怎样改变？",
-              "refute": "检验多模型路由、竞品追赶及模型平台跨入应用层的替代风险。"
+              "id": "F1.2.3",
+              "parent_id": "F1.2",
+              "purpose": "检验能力提升是否进入持续付费，而不是只有试用热度。",
+              "question": "怎样影响下游应用与最终需求？",
+              "refute": "查设计伙伴不是付费客户、成本无优势和软件替代风险。",
+              "support_rule": "区分产品供给与已付费需求；可持续新增需客户数据。"
             }
           ],
-          "question": "这些增量如何传导到行业需求和价值分配？",
-          "why_this_depth": "回答元问题的必要机制"
+          "question": "怎样影响行业和 BOM？",
+          "why_this_depth": "沿上中下游说明技术变化如何转成业务变量，避免把同一交易重复计数。"
         },
         {
-          "id": "Q1.3",
+          "id": "F1.3",
           "l3_questions": [
             {
-              "analysis": "区分基本面变化、市场共识与已定价；只汇总已验证部分，未验证的盈利和估值不打分。",
+              "analysis": "筛出基础设施、平台、应用代表，分别标明关联与可投资性的区别。",
               "data": [
-                "子问题的可验证结论与未闭环缺口",
-                "公司业务敞口、增量盈利与估值验证是否齐备",
-                "可执行的接受率、成本、收入和风险阈值"
+                "相关分部收入、产品和客户披露",
+                "竞争位置、成本和订单"
               ],
-              "id": "Q1.3.1",
-              "parent_id": "Q1.3",
-              "question": "哪些行业和公司观察值得保留，什么数据会推翻本次判断？",
-              "refute": "设定全成本恶化、事故、付费不转化和采购不兑现时的降级条件。"
+              "id": "F1.3.1",
+              "parent_id": "F1.3",
+              "purpose": "从已验证业务挑选公司，不从热门股票名单倒推。",
+              "question": "哪些公司具有可验证的业务敞口，值得进一步研究？",
+              "refute": "查事件增量是否实际属于发布前既有业务。",
+              "support_rule": "每个候选有独立可核对业务敞口来源。"
+            },
+            {
+              "analysis": "区分行业基线与事件增量，建立收入到EPS的敏感性桥接及估值约束。",
+              "data": [
+                "分部收入、毛利率、股数和发布前指引",
+                "Astra增量订单、历史股价及一致预期"
+              ],
+              "id": "F1.3.2",
+              "parent_id": "F1.3",
+              "purpose": "检验上游受益是否有新增订单和利润证据。",
+              "question": "NVIDIA 能把这次模型升级转成多少新增利润？",
+              "refute": "效率、自研芯片替代、订单已在基线、毛利下行。",
+              "support_rule": "财务计算可复算；事件归因和估值均有证据才形成投资结论。"
+            },
+            {
+              "analysis": "分别桥接云和应用，解释收入、利润与自由现金流差异，不混租赁口径。",
+              "data": [
+                "Azure、Cloud毛利、经营现金流、现金资本开支",
+                "付费增量、模型成本、同日估值"
+              ],
+              "id": "F1.3.3",
+              "parent_id": "F1.3",
+              "purpose": "同时检验平台收入与现金投入，避免只看云收入增长。",
+              "question": "微软的云与应用收益能否覆盖新增AI投入？",
+              "refute": "更多使用侵蚀毛利、渠道非独占、资本开支先于回报。",
+              "support_rule": "业务桥接、投入与历史估值可验证。"
+            },
+            {
+              "analysis": "拆开AI收入、原有席位流失与模型费用，检验企业数据权限护城河。",
+              "data": [
+                "Agentforce ARR定义、收入基线和付費留存",
+                "模型合作、订阅蚕食、服务成本及估值"
+              ],
+              "id": "F1.3.4",
+              "parent_id": "F1.3",
+              "purpose": "区分前端界面被替代和后台业务系统继续收费。",
+              "question": "Salesforce 会被替代，还是能保住并扩大利润？",
+              "refute": "ARR口径扩大、免费捆绑、客户绕过原有收费。",
+              "support_rule": "同口径净增收入、毛利与估值桥接。"
             }
           ],
-          "question": "哪些投资判断可以成立，如何证伪？",
-          "why_this_depth": "回答元问题的必要机制"
+          "question": "具体公司有哪些投资机会或风险？",
+          "why_this_depth": "把产业判断落实到可验证的公司敞口、利润、估值和反证。"
         }
       ]
     },
     "mechanism_buckets": [
-      "发布带来的可验证增量是什么？",
-      "这些增量如何传导到行业需求和价值分配？",
-      "哪些投资判断可以成立，如何证伪？"
+      "研究对象是什么，发生了什么变化？",
+      "怎样影响行业和 BOM？",
+      "具体公司有哪些投资机会或风险？"
     ],
-    "playbook_id": "gpt6_launch_event",
+    "playbook_id": "gpt6_object_industry_company",
     "q_map": {
-      "Q1": "截至 2026-09-10，GPT-6 Astra 的发布改变了 AI 行业的哪些经济机制，哪些影响已有证据、哪些仍待验证？"
+      "F1": "GPT-6 发布对 AI 行业及相关公司有什么影响？"
     },
-    "quality_rule": "逐题搜集、分析、复核、充分性；不预生成 L4/L5；事件影响不等于因果归因。",
+    "quality_rule": "研究对象→行业与BOM→具体公司；逐题取证，不继承旧问题通过状态。",
     "research_type": "event_policy",
     "supply_chain_layers": []
   },
@@ -958,9 +1114,8 @@
     "report_date": "2026-09-10",
     "research_type": "event_policy",
     "run_mode": "historical_backtest",
-    "topic": "GPT-6 会怎样改变 AI 行业的需求和利润？"
+    "topic": "GPT-6 发布对 AI 行业及相关公司有什么影响？"
   },
-  "research_plan_id": "rp_fp_7352613eb6c5ef78",
-  "research_plan_path": "research_plan.json",
-  "revision_id": "20260911_first_principles"
+  "research_plan_id": "rp_66082cd7d69e7db2",
+  "research_plan_path": "research_plan.json"
 }

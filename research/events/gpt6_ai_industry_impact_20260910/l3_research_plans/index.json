@@ -9,62 +9,98 @@
     "planning_unit": "one_independent_plan_per_l3",
     "question_tree": "adaptive_depth_max_5"
   },
-  "parent_research_plan_id": "rp_fp_7352613eb6c5ef78",
+  "parent_research_plan_id": "rp_66082cd7d69e7db2",
   "plan_type": "l3_deep_research_index",
   "plans": [
     {
       "active_steps": 1,
-      "event_path": "l3_research_plans/Q1.1.1/research_step_events.jsonl",
-      "l3_node_id": "Q1.1.1",
-      "l3_plan_id": "l3rp_q1_1_1_3dd2ba077cc25a55",
+      "event_path": "l3_research_plans/F1.1.1/research_step_events.jsonl",
+      "l3_node_id": "F1.1.1",
+      "l3_plan_id": "l3rp_f1_1_1_5c129d063d2fe10c",
       "leaf_steps": 1,
       "max_depth": 3,
-      "path": "l3_research_plans/Q1.1.1/research_plan.json"
-    },
-    {
-      "active_steps": 2,
-      "event_path": "l3_research_plans/Q1.1.2/research_step_events.jsonl",
-      "l3_node_id": "Q1.1.2",
-      "l3_plan_id": "l3rp_q1_1_2_e204f1eb82f707dd",
-      "leaf_steps": 2,
-      "max_depth": 4,
-      "path": "l3_research_plans/Q1.1.2/research_plan.json"
+      "path": "l3_research_plans/F1.1.1/research_plan.json"
     },
     {
       "active_steps": 1,
-      "event_path": "l3_research_plans/Q1.2.1/research_step_events.jsonl",
-      "l3_node_id": "Q1.2.1",
-      "l3_plan_id": "l3rp_q1_2_1_7319b2f3c22a7b60",
+      "event_path": "l3_research_plans/F1.1.2/research_step_events.jsonl",
+      "l3_node_id": "F1.1.2",
+      "l3_plan_id": "l3rp_f1_1_2_23e54a602251f0c8",
       "leaf_steps": 1,
       "max_depth": 3,
-      "path": "l3_research_plans/Q1.2.1/research_plan.json"
-    },
-    {
-      "active_steps": 2,
-      "event_path": "l3_research_plans/Q1.2.2/research_step_events.jsonl",
-      "l3_node_id": "Q1.2.2",
-      "l3_plan_id": "l3rp_q1_2_2_6e289a91bf49586f",
-      "leaf_steps": 2,
-      "max_depth": 4,
-      "path": "l3_research_plans/Q1.2.2/research_plan.json"
+      "path": "l3_research_plans/F1.1.2/research_plan.json"
     },
     {
       "active_steps": 1,
-      "event_path": "l3_research_plans/Q1.2.3/research_step_events.jsonl",
-      "l3_node_id": "Q1.2.3",
-      "l3_plan_id": "l3rp_q1_2_3_a125f85d847ed62a",
+      "event_path": "l3_research_plans/F1.1.3/research_step_events.jsonl",
+      "l3_node_id": "F1.1.3",
+      "l3_plan_id": "l3rp_f1_1_3_2cf776c93a96817b",
       "leaf_steps": 1,
       "max_depth": 3,
-      "path": "l3_research_plans/Q1.2.3/research_plan.json"
+      "path": "l3_research_plans/F1.1.3/research_plan.json"
     },
     {
       "active_steps": 1,
-      "event_path": "l3_research_plans/Q1.3.1/research_step_events.jsonl",
-      "l3_node_id": "Q1.3.1",
-      "l3_plan_id": "l3rp_q1_3_1_5c9ffaa8c4c2dd3e",
+      "event_path": "l3_research_plans/F1.2.1/research_step_events.jsonl",
+      "l3_node_id": "F1.2.1",
+      "l3_plan_id": "l3rp_f1_2_1_70b722c91de955f7",
       "leaf_steps": 1,
       "max_depth": 3,
-      "path": "l3_research_plans/Q1.3.1/research_plan.json"
+      "path": "l3_research_plans/F1.2.1/research_plan.json"
+    },
+    {
+      "active_steps": 1,
+      "event_path": "l3_research_plans/F1.2.2/research_step_events.jsonl",
+      "l3_node_id": "F1.2.2",
+      "l3_plan_id": "l3rp_f1_2_2_e80a3a2271c444c3",
+      "leaf_steps": 1,
+      "max_depth": 3,
+      "path": "l3_research_plans/F1.2.2/research_plan.json"
+    },
+    {
+      "active_steps": 1,
+      "event_path": "l3_research_plans/F1.2.3/research_step_events.jsonl",
+      "l3_node_id": "F1.2.3",
+      "l3_plan_id": "l3rp_f1_2_3_52548b8c67894eae",
+      "leaf_steps": 1,
+      "max_depth": 3,
+      "path": "l3_research_plans/F1.2.3/research_plan.json"
+    },
+    {
+      "active_steps": 1,
+      "event_path": "l3_research_plans/F1.3.1/research_step_events.jsonl",
+      "l3_node_id": "F1.3.1",
+      "l3_plan_id": "l3rp_f1_3_1_1330cfac70762e35",
+      "leaf_steps": 1,
+      "max_depth": 3,
+      "path": "l3_research_plans/F1.3.1/research_plan.json"
+    },
+    {
+      "active_steps": 1,
+      "event_path": "l3_research_plans/F1.3.2/research_step_events.jsonl",
+      "l3_node_id": "F1.3.2",
+      "l3_plan_id": "l3rp_f1_3_2_6d7391137dfb0bd7",
+      "leaf_steps": 1,
+      "max_depth": 3,
+      "path": "l3_research_plans/F1.3.2/research_plan.json"
+    },
+    {
+      "active_steps": 1,
+      "event_path": "l3_research_plans/F1.3.3/research_step_events.jsonl",
+      "l3_node_id": "F1.3.3",
+      "l3_plan_id": "l3rp_f1_3_3_ebb39e145d6ef9e2",
+      "leaf_steps": 1,
+      "max_depth": 3,
+      "path": "l3_research_plans/F1.3.3/research_plan.json"
+    },
+    {
+      "active_steps": 1,
+      "event_path": "l3_research_plans/F1.3.4/research_step_events.jsonl",
+      "l3_node_id": "F1.3.4",
+      "l3_plan_id": "l3rp_f1_3_4_336ef0e0c3c8185f",
+      "leaf_steps": 1,
+      "max_depth": 3,
+      "path": "l3_research_plans/F1.3.4/research_plan.json"
     }
   ],
   "schema_version": "4.0"

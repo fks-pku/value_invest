@@ -40,30 +40,37 @@ Do not put domain-specific questions into the public presentation contract.
 
 ## 3. Build Adaptive Internal QA
 
-Before decomposition, follow the first-principles question-design rules in
-`dynamic-research-agent`: identify the decision and shortest causal chain, then
-retain only questions whose answers could materially change the parent judgment.
-Keep each question plain and single-focus; metrics and calculation detail belong
-in its data/analysis contract. Event studies verify the event premise and compare
-against a no-event baseline. Playbook mechanisms are candidates, not a requirement
-to expand every branch; required investment gates still apply before a recommendation.
+Follow `dynamic-research-agent`: complete industry, technology, or event investment
+research uses `研究对象 -> 行业与 BOM 影响 -> 具体公司`. First explain the object,
+its background, features and economics; then trace changes through clearly bounded
+industry segments (normally upstream/midstream/downstream) and canonical BOM nodes;
+finally select and analyze actual companies with verified exposure. Do not replace
+this spine with abstract adoption/payment/profit buckets or a method checklist.
+First-principles reasoning tests the causal links within the branches. Necessary
+object context is retained, while deeper questions must contribute to the parent
+judgment. Candidate selection is not company research completion: add individual
+company nodes when the remaining parent gap requires them, preserving revisions.
+Keep each question plain; metrics belong in its data/analysis contract. Event studies
+verify the premise and no-event baseline. Explicitly narrowed tasks and existing
+standalone-BOM/report profiles retain their scope. Required investment gates still
+apply before a recommendation; this architecture does not authorize recommendation.
 
 Each non-root question records `why_it_matters`: the specific angle through which
 it helps answer its parent (existing decision-use text may supply this when apt).
 This is authored question-design metadata, not a conclusion invented by rendering.
-The public question-tree profile shows direct children and their purpose only at
-non-leaves, followed by level-by-level synthesis. Leaves show one integrated
-analysis/conclusion article. See `research_report_contract.md`; this presentation
+The public question-tree profile shows `研究子问题`, `子问题核心结论`, `欠缺的方向`
+at non-leaves, and `核心观点`, `关键论证`, `数据列表` at leaves. See
+`research_report_contract.md`; this presentation
 does not alter evidence gates, expansion rules, or the append-only research state.
 The article leads with the answer, explains decisive facts and their implication,
-and states what remains unproven. Parent synthesis precedes its finding register;
+and states what remains unproven. Parent findings and synthesis share the second module;
 secondary methods may be supplementary, but material limitations stay in the main
 argument. Readability is reviewed semantically, not by word or heading counts.
 
 Maximum depth is five:
 
 - L1: adapted research direction.
-- L2: one coherent mechanism bucket.
+- L2: object, industry/BOM impact, company analysis for complete research; a coherent adapted bucket for narrower scopes.
 - L3: one investment decision question.
 - L4: questions created only after an L3 answerability gate exposes a concrete gap.
 - L5: questions created only after an L4 answerability gate exposes a concrete gap.

@@ -2,10 +2,10 @@
   "ok": true,
   "issues": [],
   "summary": {
-    "plan_id": "rp_fp_7352613eb6c5ef78",
+    "plan_id": "rp_66082cd7d69e7db2",
     "status": "planned",
-    "steps": 6,
-    "pending": 6,
+    "steps": 10,
+    "pending": 10,
     "in_progress": 0,
     "review_pending": 0,
     "blocked": 0,
@@ -13,19 +13,19 @@
     "events": 0,
     "historical_plan_events": 0,
     "nested": {
-      "parent_plan_id": "rp_fp_7352613eb6c5ef78",
+      "parent_plan_id": "rp_66082cd7d69e7db2",
       "status": "blocked",
-      "l3_plans": 6,
+      "l3_plans": 10,
       "completed_l3_plans": 3,
-      "leaf_steps": 8,
-      "completed_leaf_steps": 5,
-      "blocked_leaf_steps": 3,
-      "max_depth": 4
+      "leaf_steps": 10,
+      "completed_leaf_steps": 3,
+      "blocked_leaf_steps": 7,
+      "max_depth": 3
     }
   },
   "step_states": [
     {
-      "step_id": "step:Q1.1.1",
+      "step_id": "step:F1.1.1",
       "status": "pending",
       "answer": "",
       "search_run_id": "",
@@ -45,7 +45,7 @@
       "event_count": 0
     },
     {
-      "step_id": "step:Q1.1.2",
+      "step_id": "step:F1.1.2",
       "status": "pending",
       "answer": "",
       "search_run_id": "",
@@ -65,7 +65,7 @@
       "event_count": 0
     },
     {
-      "step_id": "step:Q1.2.1",
+      "step_id": "step:F1.1.3",
       "status": "pending",
       "answer": "",
       "search_run_id": "",
@@ -85,7 +85,7 @@
       "event_count": 0
     },
     {
-      "step_id": "step:Q1.2.2",
+      "step_id": "step:F1.2.1",
       "status": "pending",
       "answer": "",
       "search_run_id": "",
@@ -105,7 +105,7 @@
       "event_count": 0
     },
     {
-      "step_id": "step:Q1.2.3",
+      "step_id": "step:F1.2.2",
       "status": "pending",
       "answer": "",
       "search_run_id": "",
@@ -125,7 +125,87 @@
       "event_count": 0
     },
     {
-      "step_id": "step:Q1.3.1",
+      "step_id": "step:F1.2.3",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "step:F1.3.1",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "step:F1.3.2",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "step:F1.3.3",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "step:F1.3.4",
       "status": "pending",
       "answer": "",
       "search_run_id": "",
@@ -147,8 +227,8 @@
   ],
   "l3_plans": [
     {
-      "l3_node_id": "Q1.1.1",
-      "plan_id": "l3rp_q1_1_1_3dd2ba077cc25a55",
+      "l3_node_id": "F1.1.1",
+      "plan_id": "l3rp_f1_1_1_5c129d063d2fe10c",
       "max_depth": 3,
       "status": "completed",
       "steps": 1,
@@ -161,22 +241,22 @@
       "historical_plan_events": 0
     },
     {
-      "l3_node_id": "Q1.1.2",
-      "plan_id": "l3rp_q1_1_2_e204f1eb82f707dd",
-      "max_depth": 4,
+      "l3_node_id": "F1.1.2",
+      "plan_id": "l3rp_f1_1_2_23e54a602251f0c8",
+      "max_depth": 3,
       "status": "completed",
-      "steps": 2,
+      "steps": 1,
       "pending": 0,
       "in_progress": 0,
       "review_pending": 0,
       "blocked": 0,
-      "completed": 2,
-      "events": 17,
-      "historical_plan_events": 4
+      "completed": 1,
+      "events": 4,
+      "historical_plan_events": 0
     },
     {
-      "l3_node_id": "Q1.2.1",
-      "plan_id": "l3rp_q1_2_1_7319b2f3c22a7b60",
+      "l3_node_id": "F1.1.3",
+      "plan_id": "l3rp_f1_1_3_2cf776c93a96817b",
       "max_depth": 3,
       "status": "blocked",
       "steps": 1,
@@ -189,36 +269,8 @@
       "historical_plan_events": 0
     },
     {
-      "l3_node_id": "Q1.2.2",
-      "plan_id": "l3rp_q1_2_2_6e289a91bf49586f",
-      "max_depth": 4,
-      "status": "blocked",
-      "steps": 2,
-      "pending": 0,
-      "in_progress": 0,
-      "review_pending": 0,
-      "blocked": 1,
-      "completed": 1,
-      "events": 8,
-      "historical_plan_events": 4
-    },
-    {
-      "l3_node_id": "Q1.2.3",
-      "plan_id": "l3rp_q1_2_3_a125f85d847ed62a",
-      "max_depth": 3,
-      "status": "completed",
-      "steps": 1,
-      "pending": 0,
-      "in_progress": 0,
-      "review_pending": 0,
-      "blocked": 0,
-      "completed": 1,
-      "events": 4,
-      "historical_plan_events": 0
-    },
-    {
-      "l3_node_id": "Q1.3.1",
-      "plan_id": "l3rp_q1_3_1_5c9ffaa8c4c2dd3e",
+      "l3_node_id": "F1.2.1",
+      "plan_id": "l3rp_f1_2_1_70b722c91de955f7",
       "max_depth": 3,
       "status": "blocked",
       "steps": 1,
@@ -228,7 +280,91 @@
       "blocked": 1,
       "completed": 0,
       "events": 4,
+      "historical_plan_events": 0
+    },
+    {
+      "l3_node_id": "F1.2.2",
+      "plan_id": "l3rp_f1_2_2_e80a3a2271c444c3",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 4,
+      "historical_plan_events": 0
+    },
+    {
+      "l3_node_id": "F1.2.3",
+      "plan_id": "l3rp_f1_2_3_52548b8c67894eae",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 4,
+      "historical_plan_events": 0
+    },
+    {
+      "l3_node_id": "F1.3.1",
+      "plan_id": "l3rp_f1_3_1_1330cfac70762e35",
+      "max_depth": 3,
+      "status": "completed",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 0,
+      "completed": 1,
+      "events": 4,
       "historical_plan_events": 4
+    },
+    {
+      "l3_node_id": "F1.3.2",
+      "plan_id": "l3rp_f1_3_2_6d7391137dfb0bd7",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 4,
+      "historical_plan_events": 0
+    },
+    {
+      "l3_node_id": "F1.3.3",
+      "plan_id": "l3rp_f1_3_3_ebb39e145d6ef9e2",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 4,
+      "historical_plan_events": 0
+    },
+    {
+      "l3_node_id": "F1.3.4",
+      "plan_id": "l3rp_f1_3_4_336ef0e0c3c8185f",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 4,
+      "historical_plan_events": 0
     }
   ]
 }

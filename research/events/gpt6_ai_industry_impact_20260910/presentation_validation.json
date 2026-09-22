@@ -1,16 +1,16 @@
 {
-  "existing_html_contract": {
+  "html": {
     "ok": true,
     "issues": [],
     "summary": {
       "mode": "historical_backtest",
       "presentation_profile": "question-tree-v1",
-      "nodes": 15,
-      "parents": 7,
-      "leaves": 8
+      "nodes": 14,
+      "parents": 4,
+      "leaves": 10
     }
   },
-  "markdown_contract": {
+  "markdown": {
     "ok": true,
     "issues": [],
     "summary": {
@@ -22,7 +22,5 @@
       "require_l3": false
     }
   },
-  "presentation_profile": "question-tree-v1",
-  "visual_review": "not_performed_this_revision; existing local-file browser policy restriction",
-  "html_compatibility_note": "共享问题树模板：父节点两模块、叶子节点单篇分析；结构通过不等于研究完成。"
+  "visual_review": "blocked_by_browser_local_file_url_policy; not_claimed"
 }

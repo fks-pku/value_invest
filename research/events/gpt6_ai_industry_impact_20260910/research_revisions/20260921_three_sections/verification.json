@@ -1,0 +1,21 @@
+{
+  "revision_date": "2026-09-21",
+  "scope": "Presentation only: shared skill/contract/renderer and current event HTML/Markdown",
+  "parent_modules": ["研究子问题", "子问题核心结论", "欠缺的方向"],
+  "leaf_modules": ["核心观点", "关键论证", "数据列表"],
+  "coverage": {"nodes": 15, "parents": 7, "leaves": 8},
+  "research_preservation": "All node content and source objects unchanged against pre-edit HEAD. Question tree, chapters, synthesis, sources, research plan, targets and project inputs byte-identical. No evidence, research status or cutoff changes.",
+  "checks": {
+    "focused_tests": {"run": 55, "failures": 0},
+    "repository_tests": {"run": 291, "skipped": 11, "failures": 0},
+    "navigation": "passed: deep links, history, full reading, supporting material and print",
+    "skill_quick_validate": "passed",
+    "html_and_markdown_contract": "passed",
+    "rerender": "HTML and Markdown byte-identical on repeated refresh",
+    "git_diff_check": "passed",
+    "module_semantics": "Tested child finding/gap placements, leaf evidence placement, root leaf, L1-L5 chain, empty evidence and sufficient-parent no-gap state"
+  },
+  "visual_review": "not performed; prior local-file browser access restriction",
+  "existing_generic_validation_issues": {"material_intake": 240, "research_artifacts": 782, "research_plan_cli": 22},
+  "note": "The generic event/schema compatibility failures remain unchanged. Presentation validation is not evidence completion."
+}

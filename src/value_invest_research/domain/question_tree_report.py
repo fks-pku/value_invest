@@ -6,10 +6,10 @@ from html.parser import HTMLParser
 from urllib.parse import urlsplit
 
 PROFILE = "question-tree-v1"
-LEAF_SECTIONS = ("analysis",)
-PARENT_SECTIONS = ("questions", "analysis")
-LEAF_TITLES = ("分析与结论",)
-PARENT_TITLES = ("研究子问题", "分析与结论")
+LEAF_SECTIONS = ("conclusion", "analysis", "data")
+PARENT_SECTIONS = ("questions", "analysis", "gaps")
+LEAF_TITLES = ("核心观点", "关键论证", "数据列表")
+PARENT_TITLES = ("研究子问题", "子问题核心结论", "欠缺的方向")
 
 
 def safe_link(url: str) -> bool:
@@ -88,6 +88,7 @@ class _TemplateParser(HTMLParser):
         self.links = []
         self.ids = []
         self.current = None
+        self.current_section = None
         self.heading = False
         self.runtime_fetch = False
         self.feed(html)
@@ -99,10 +100,19 @@ class _TemplateParser(HTMLParser):
         if tag == "a":
             self.links.append(a)
         if tag == "article" and "node-detail" in a.get("class", "").split():
-            self.current = {**a, "sections": [], "rollups": [], "summaries": [], "tables": [], "titles": [], "purposes": []}
+            self.current = {**a, "sections": [], "rollups": [], "summaries": [], "tables": [], "titles": [], "purposes": [], "child_gaps": [], "placements": []}
             self.nodes.append(self.current)
         if self.current and tag == "section" and a.get("data-section"):
             self.current["sections"].append(a["data-section"])
+            self.current_section = a["data-section"]
+        if self.current:
+            for attribute, role in (("data-child-id", "question"), ("data-child-summary", "finding"), ("data-child-gap", "gap")):
+                if a.get(attribute):
+                    self.current["placements"].append((role, self.current_section))
+            if a.get("data-child-gap"):
+                self.current["child_gaps"].append(a["data-child-gap"])
+            if tag == "table" and a.get("class") == "evidence-table":
+                self.current["placements"].append(("evidence", self.current_section))
         if self.current and a.get("data-child-id"):
             self.current["rollups"].append(a["data-child-id"])
         if self.current and a.get("data-child-summary"):
@@ -117,6 +127,8 @@ class _TemplateParser(HTMLParser):
             self.runtime_fetch = True
 
     def handle_endtag(self, tag):
+        if tag == "section":
+            self.current_section = None
         if tag == "h3":
             self.heading = False
         if tag == "article":
@@ -146,7 +158,7 @@ def validate_question_tree_html(html: str, *, mode="historical_backtest") -> dic
     for node in parsed.nodes:
         children = [n for n in parsed.nodes if n.get("data-parent-id") == node.get("id")]
         if node["sections"] != list(PARENT_SECTIONS if children else LEAF_SECTIONS):
-            fail("node_section_order", f"{node.get('id')}: parents require questions/analysis; leaves require analysis only")
+            fail("node_section_order", f"{node.get('id')}: parent and leaf each require their own three ordered modules")
         if node["titles"] != list(PARENT_TITLES if children else LEAF_TITLES):
             fail("node_section_titles", "Node module headings must match the parent/leaf reading contract")
         if node.get("data-kind") != ("rollup" if children else "leaf"):
@@ -155,6 +167,12 @@ def validate_question_tree_html(html: str, *, mode="historical_backtest") -> dic
         for field in ("rollups", "purposes", "summaries"):
             if len(node[field]) != len(child_ids) or set(node[field]) != child_ids:
                 fail("rollup_coverage", "Show each direct child, purpose and bounded finding once; no grandchildren or leaf child modules")
+        expected_gaps = {c.get("id") for c in children if c.get("data-passed") != "true"}
+        if len(node["child_gaps"]) != len(expected_gaps) or set(node["child_gaps"]) != expected_gaps:
+            fail("child_gap_coverage", "Parent missing directions must retain every unpassed direct child")
+        roles = {"question": "questions", "finding": "analysis", "gap": "gaps", "evidence": "data"}
+        if any(roles[role] != section for role, section in node["placements"]):
+            fail("misplaced_module_content", "Questions, findings, gaps and leaf evidence must occupy their designated modules")
         if children and "evidence-table" in node["tables"]:
             fail("parent_leaf_evidence", "Parents synthesize child findings, not fresh leaf evidence")
         if children and node.get("data-passed") == "true" and any(c.get("data-passed") != "true" for c in children):

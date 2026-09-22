@@ -60,7 +60,7 @@ class QuestionTreeHtmlRenderer:
                 for child in children(node):
                     gap = f'<span class="child-gap">未作为已验证结论：{text("；".join(child["gaps"]))}</span>' if not child["passed"] else ''
                     rows.append(f'<div data-child-summary="{child["id"]}"><dt><a href="#{child["id"]}">{text(child["question"])}</a><small>{status(child)}</small></dt><dd>{text(child["conclusion"])}{gap}</dd></div>')
-                return '<h4>下层结论依据</h4><dl class="child-findings">' + ''.join(rows) + '</dl>'
+                return '<dl class="child-findings">' + ''.join(rows) + '</dl>'
             rows = []
             for item in node.get("evidence", []):
                 source = sources[item["source"]]
@@ -81,7 +81,10 @@ class QuestionTreeHtmlRenderer:
             crumb = '<p class="breadcrumb">' + ''.join(f'<a href="#{n["id"]}">L{n["level"]} · {text(n.get("short") or n["question"])}</a>' for n in path) + '</p>'
             child_links = '<ol class="research-questions">' + ''.join(
                 f'<li data-child-id="{n["id"]}"><a href="#{n["id"]}">{text(n["question"])}</a><p data-child-purpose="{n["id"]}">{text(n["why_it_matters"])}</p></li>' for n in child_nodes) + '</ol>'
-            analysis = f'<div class="article-copy"><p class="answer">{text(node["conclusion"])}</p>'
+            viewpoint = f'<div class="article-copy"><p class="answer">{text(node["conclusion"])}</p></div>'
+            analysis = '<div class="article-copy">'
+            if child_nodes:
+                analysis += evidence(node) + '<h4>综合判断</h4>' + f'<p class="answer">{text(node["conclusion"])}</p>'
             analysis += paragraphs([node["what"]]) if node["what"] != node["question"] else ''
             supplements = []
             for section in node["analysis"]:
@@ -100,22 +103,29 @@ class QuestionTreeHtmlRenderer:
                 analysis += '<p class="parent-bridge">对父问题的贡献：' + text(node["parent_bridge"]) + '</p>'
             if supplements:
                 analysis += '<details class="supplementary-analysis"><summary>补充测算与方法说明</summary>' + ''.join(supplements) + '</details>'
-            if child_nodes:
-                analysis += evidence(node)
-            if not child_nodes:
-                analysis += '<h4 id="data-' + nid + '">数据与来源依据</h4>' + evidence(node)
-            conclusion = f'<footer class="node-assessment" id="conclusion-{nid}">' + paragraphs([("充分性：通过（限本题边界）。" if node["passed"] else "充分性：未通过。") + "；".join(node["reasons"])])
+            conclusion = '<div class="node-assessment">' + paragraphs([("充分性：通过（限本题边界）。" if node["passed"] else "充分性：未通过。") + "；".join(node["reasons"])])
             if node.get("gaps"):
                 conclusion += '<p class="gap-note">缺口：' + text("；".join(node["gaps"])) + '</p>'
+            if child_nodes:
+                missing_children = [c for c in child_nodes if not c["passed"]]
+                if not node.get("gaps") and not missing_children:
+                    conclusion += paragraphs(["本题边界内暂无已记录的重大缺口。"])
+                for child in missing_children:
+                    conclusion += f'<div class="child-gap" data-child-gap="{child["id"]}"><a href="#{child["id"]}">{text(child["question"])}</a>'
+                    conclusion += paragraphs(["缺口：" + "；".join(child["gaps"]), "下一步：" + "；".join(child["next_actions"])]) + '</div>'
             if node.get("refutation"):
                 conclusion += '<p class="boundary-note">反向证据与边界：' + text(node["refutation"]) + '</p>'
-            conclusion += paragraphs(["下一步：" + "；".join(node["next_actions"])]) + '</footer>'
-            analysis += conclusion + '</div>'
-            sections = [child_links, analysis] if child_nodes else [analysis]
+            conclusion += paragraphs(["下一步：" + "；".join(node["next_actions"])]) + '</div>'
+            if child_nodes:
+                sections = [child_links, analysis + '</div>', '<div class="article-copy">' + conclusion + '</div>']
+            else:
+                sections = [viewpoint, analysis + conclusion + '</div>', '<div class="article-copy">' + evidence(node) + '</div>']
             # Keep old section bookmarks valid without restoring old visible panels.
             aliases = f'<span id="scope-{nid}" class="anchor-alias"></span>'
             if child_nodes:
-                aliases += f'<span id="data-{nid}" class="anchor-alias"></span>'
+                # Existing data/conclusion bookmarks point into the corresponding modules.
+                sections[1] = f'<span id="data-{nid}" class="anchor-alias"></span>' + sections[1]
+                sections[2] = f'<span id="conclusion-{nid}" class="anchor-alias"></span>' + sections[2]
             body = ''.join(f'<section class="chapter-section" id="{part}-{nid}" data-section="{part}"><div class="section-heading"><span class="section-number">{i:02d}</span><h3>{text(title)}</h3></div>{content}</section>' for i, (part, title, content) in enumerate(zip(parts, titles, sections), 1))
             return f'<article class="node-detail" id="{nid}" data-kind="{node["mode"]}" data-level="{node["level"]}" data-parent-id="{node.get("parent_id") or ""}" data-passed="{str(node["passed"]).lower()}">{crumb}<div class="detail-title-row"><div><p class="node-id">{nid}</p><h2 class="detail-title">{text(node["question"])}</h2></div><span class="status-badge{"" if node["passed"] else " waiting"}">{status(node)}</span></div>{aliases}{body}</article>'
 
@@ -130,7 +140,7 @@ class QuestionTreeHtmlRenderer:
             source_html += f'<div class="source-entry" id="source-{escape(sid, quote=True)}">{link(sid, sid + " · " + source["title"])}' + paragraphs([f'{source.get("published_at") or "无固定发布日期"}｜{source.get("publisher", "")}｜{source.get("material_class", "")}。{source.get("effective_period", "")}。{source.get("note", "")}']) + '</div>'
         return Template((ASSETS / "question_tree_v1.html").read_text()).substitute(
             title=escape(report["title"]), root_id=root["id"],
-            subtitle=text(report.get("subtitle", "左侧选择问题；父节点列出研究子问题并综合判断，叶子节点呈现完整分析与结论。")),
+            subtitle=text(report.get("subtitle", "左侧选择问题；非叶子查看子问题、核心结论与欠缺方向，叶子查看核心观点、关键论证与数据列表。")),
             css=(ASSETS / "question_tree_v1.css").read_text(), javascript=(ASSETS / "question_tree_v1.js").read_text(),
             metadata=''.join(f'<span>{text(s)}</span>' for s in ["AS OF " + report.get("as_of_date", ""), f'{len(nodes)} NODES · {len(sources)} SOURCES', report.get("status_label", "")]),
             tree=tree([root]), articles='\n'.join(ordered), sources=source_html, source_count=len(sources),

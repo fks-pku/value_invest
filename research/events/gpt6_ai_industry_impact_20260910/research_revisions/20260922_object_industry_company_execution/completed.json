@@ -1,0 +1,30 @@
+{
+  "revision_id": "20260922_object_industry_company_execution",
+  "input_sha256": "f530f51fc85e4eb414b0380b455b4c0b4eb9497586396bf98b0cb9c941038ba9",
+  "status": "partial_research",
+  "validation": {
+    "html": {
+      "ok": true,
+      "issues": [],
+      "summary": {
+        "mode": "historical_backtest",
+        "presentation_profile": "question-tree-v1",
+        "nodes": 14,
+        "parents": 4,
+        "leaves": 10
+      }
+    },
+    "markdown": {
+      "ok": true,
+      "issues": [],
+      "summary": {
+        "mode": "historical_backtest",
+        "report_scope": "event-study",
+        "level1_cards": 0,
+        "level2_cards": 0,
+        "level3_cards": 0,
+        "require_l3": false
+      }
+    }
+  }
+}

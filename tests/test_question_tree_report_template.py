@@ -37,18 +37,18 @@ class QuestionTreeTemplateTests(unittest.TestCase):
         self.assertNotIn("AFD-", html)
         self.assertIn('data-child-id="OTHER.child"', html)
 
-    def test_parent_two_modules_leaf_one_module_are_locked(self):
+    def test_parent_and_leaf_three_modules_are_locked(self):
         html = CanonicalHtmlReportRenderer().render(vm(sample()))
         parent, leaf = _TemplateParser(html).nodes
-        self.assertEqual(parent["sections"], ["questions", "analysis"])
-        self.assertEqual(leaf["sections"], ["analysis"])
-        self.assertEqual(parent["titles"], ["研究子问题", "分析与结论"])
-        self.assertEqual(leaf["titles"], ["分析与结论"])
+        self.assertEqual(parent["sections"], ["questions", "analysis", "gaps"])
+        self.assertEqual(leaf["sections"], ["conclusion", "analysis", "data"])
+        self.assertEqual(parent["titles"], ["研究子问题", "子问题核心结论", "欠缺的方向"])
+        self.assertEqual(leaf["titles"], ["核心观点", "关键论证", "数据列表"])
         self.assertNotIn('class="scope-grid"', html)
         self.assertNotIn('class="research-abstract"', html)
         missing = html.replace('data-section="analysis"', 'data-section="missing"', 1)
         self.assertFalse(validate_report_contract_html(missing)["ok"])
-        renamed = html.replace('<h3>分析与结论</h3>', '<h3>随意面板</h3>')
+        renamed = html.replace('<h3>关键论证</h3>', '<h3>随意面板</h3>')
         self.assertFalse(validate_report_contract_html(renamed)["ok"])
 
     def test_child_purpose_is_authored_not_invented(self):
@@ -98,7 +98,7 @@ class QuestionTreeTemplateTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             CanonicalHtmlReportRenderer().render(vm(data))
 
-    def test_main_argument_precedes_supporting_work_and_child_findings(self):
+    def test_findings_precede_synthesis_and_main_argument_precedes_supplements(self):
         data = sample()
         parent, leaf = data["nodes"]
         parent["analysis"][0]["paragraphs"] = ["父节点先解释结论之间的关系。"]
@@ -108,11 +108,51 @@ class QuestionTreeTemplateTests(unittest.TestCase):
             {"heading": "主论点", "paragraphs": ["关键假设与尚未验证的边界留在主文。"]},
         ]
         html = CanonicalHtmlReportRenderer().render(vm(data))
-        self.assertLess(html.index("父节点先解释"), html.index('data-child-summary='))
+        self.assertLess(html.index('data-child-summary='), html.index("父节点先解释"))
         self.assertLess(html.index("关键假设与尚未验证"), html.index('<details class="supplementary-analysis">'))
         self.assertLess(html.index("详细推导"), html.index("补充数值"))
         self.assertIn("补充口径说明。", html)
         self.assertNotIn('<details class="supplementary-analysis" open', html)
+        self.assertTrue(validate_report_contract_html(html)["ok"])
+
+    def test_module_content_and_unpassed_directions_are_not_only_renamed(self):
+        html = CanonicalHtmlReportRenderer().render(vm(sample()))
+        parent, leaf = _TemplateParser(html).nodes
+        self.assertEqual(parent["child_gaps"], ["OTHER.child"])
+        self.assertIn(("finding", "analysis"), parent["placements"])
+        self.assertIn(("gap", "gaps"), parent["placements"])
+        self.assertIn(("evidence", "data"), leaf["placements"])
+        omitted = html.replace('data-child-gap="OTHER.child"', '', 1)
+        self.assertFalse(validate_report_contract_html(omitted)["ok"])
+        misplaced = html.replace('data-child-gap="OTHER.child"', '', 1).replace('data-child-summary="OTHER.child"', 'data-child-summary="OTHER.child" data-child-gap="OTHER.child"', 1)
+        self.assertTrue(any(i["code"] == "misplaced_module_content" for i in validate_report_contract_html(misplaced)["issues"]))
+
+    def test_no_gaps_are_invented_for_sufficient_parent(self):
+        data = sample()
+        for n in data["nodes"]:
+            n.update(passed=True, gaps=[])
+        html = CanonicalHtmlReportRenderer().render(vm(data))
+        self.assertIn("本题边界内暂无已记录的重大缺口。", html)
+        self.assertNotIn('data-child-gap=', html)
+        self.assertTrue(validate_report_contract_html(html)["ok"])
+
+    def test_node_type_not_depth_selects_the_modules(self):
+        data = sample()
+        data["nodes"] = [deepcopy(data["nodes"][1])]
+        data["nodes"][0].update(id="SINGLE", parent_id="", level=1)
+        html = CanonicalHtmlReportRenderer().render(vm(data))
+        self.assertEqual(_TemplateParser(html).nodes[0]["titles"], ["核心观点", "关键论证", "数据列表"])
+        for level in range(2, 6):
+            previous = data["nodes"][-1]
+            following = deepcopy(previous)
+            following.update(id=f"NODE{level}", parent_id=previous["id"], level=level)
+            previous.update(mode="rollup", evidence=[])
+            data["nodes"].append(following)
+        html = CanonicalHtmlReportRenderer().render(vm(data))
+        parsed = _TemplateParser(html).nodes
+        for parent in parsed[:-1]:
+            self.assertEqual(parent["titles"], ["研究子问题", "子问题核心结论", "欠缺的方向"])
+        self.assertEqual(parsed[-1]["titles"], ["核心观点", "关键论证", "数据列表"])
         self.assertTrue(validate_report_contract_html(html)["ok"])
 
     def test_supplementary_flag_cannot_hide_entire_analysis(self):

@@ -49,6 +49,9 @@ def archive_before(folder):
 
 
 def refresh_report():
+    if read("project.json").get("framework_revision") == "20260922_object_industry_company_execution":
+        from research_gpt6_new_framework import finish
+        return finish()
     project, qa, chapters, syn = (read(n) for n in ("project.json", "qa_tree.json", "research_chapters.json", "report_synthesis.json"))
     states = {s["question_id"]: s for s in read_lines(PROJECT / "ledger/node_states.jsonl")}
     vm = ReportViewModel(project={**project, "synthesis": syn}, goal={"topic": project["meta_question"]},
@@ -61,7 +64,7 @@ def refresh_report():
                   "markdown_contract": validate_report_contract_markdown(md),
                   "presentation_profile": "question-tree-v1",
                   "visual_review": "not_performed_this_revision; existing local-file browser policy restriction",
-                  "html_compatibility_note": "共享问题树模板：父节点两模块、叶子节点单篇分析；结构通过不等于研究完成。"}
+                  "html_compatibility_note": "共享问题树模板：非叶子为研究子问题/子问题核心结论/欠缺的方向；叶子为核心观点/关键论证/数据列表。结构通过不等于研究完成。"}
     for surface in ("existing_html_contract", "markdown_contract"):
         if not validation[surface]["ok"]:
             raise ValueError(validation[surface]["issues"])
