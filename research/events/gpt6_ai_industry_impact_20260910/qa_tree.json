@@ -2,6 +2,7 @@
   "l3_plan_index_path": "l3_research_plans/index.json",
   "nodes": [
     {
+      "conclusion": "能力评估支持有条件的技术进步，尚不支持从模型升级直接推出全产业链增量利润或具体证券投资机会；本研究维持部分完成。",
       "decision_use": "",
       "id": "F1",
       "investment_relevance": "",
@@ -12,15 +13,62 @@
         "F1.3"
       ],
       "parent_id": "",
+      "passed": false,
       "preferred_specialty_skill": "",
       "question": "GPT-6 发布对 AI 行业及相关公司有什么影响？",
       "refute_evidence": "",
       "required_materials": [],
+      "revision_id": "edit_20260924T091813_4ec5e2d5",
       "score_component": "",
+      "status": "blocked",
+      "sufficiency": {
+        "passed": false,
+        "gaps": [
+          "缺截至9月10日按渠道、套餐和地区逐项确认的实际接入清单。",
+          "缺目标生产工作流在相同权限、工具、验收标准下的重复运行成功率、严重错误率及人工复核负担。",
+          "现有原文不足以量化评测差异的统计显著性；代码审查样本缺独立人类裁判与重复种子。",
+          "缺生产任务的重试、人工验收、集成摊销与时延成本。",
+          "缺训练、推理及监控开销的金额或单位成本。",
+          "需官方历史价目存档；同期独立评测不覆盖全部合同折扣和计费条件。",
+          "需求规模、物理资源、采购和平台利润之间仍有桥接缺口。",
+          "缺Astra生产资源强度、部署配置、利用率和相对发布前计划的净订单。",
+          "HBM及网络等具体BOM的增量配比、稀缺性和供给约束尚未验证。",
+          "缺Astra合同分成、实际客户迁移及单位服务毛利，无法确定价值分配幅度。",
+          "缺同客户试点转生产、留存和净预算数据，无法量化发布引发的新增付费。",
+          "缺事件归因、持续盈利与一致预期/错定价的完整验证；BOM稀缺性和全套投资门禁未完成。",
+          "缺可归因Astra的新增订单、收入和相对既有指引的净变化。",
+          "缺完整同截面一致预期、供给控制及长期盈利检验，未证明错误定价。",
+          "缺Astra新增外部收入、调用成本、固定投入及现金回报的分业务桥接。",
+          "季度年化EPS不是一致预期；现有估值计算不能证明错定价，平台稀缺性门禁未完成。",
+          "缺同口径AI净收入、留存、旧席位蚕食、服务成本与净贡献。",
+          "现有倍数差异已解释，但持续盈利与市场一致预期缺口仍妨碍错定价判断。"
+        ],
+        "reasons": [
+          "缺截至9月10日按渠道、套餐和地区逐项确认的实际接入清单。",
+          "缺目标生产工作流在相同权限、工具、验收标准下的重复运行成功率、严重错误率及人工复核负担。",
+          "现有原文不足以量化评测差异的统计显著性；代码审查样本缺独立人类裁判与重复种子。",
+          "缺生产任务的重试、人工验收、集成摊销与时延成本。",
+          "缺训练、推理及监控开销的金额或单位成本。",
+          "需官方历史价目存档；同期独立评测不覆盖全部合同折扣和计费条件。",
+          "需求规模、物理资源、采购和平台利润之间仍有桥接缺口。",
+          "缺Astra生产资源强度、部署配置、利用率和相对发布前计划的净订单。",
+          "HBM及网络等具体BOM的增量配比、稀缺性和供给约束尚未验证。",
+          "缺Astra合同分成、实际客户迁移及单位服务毛利，无法确定价值分配幅度。",
+          "缺同客户试点转生产、留存和净预算数据，无法量化发布引发的新增付费。",
+          "缺事件归因、持续盈利与一致预期/错定价的完整验证；BOM稀缺性和全套投资门禁未完成。",
+          "缺可归因Astra的新增订单、收入和相对既有指引的净变化。",
+          "缺完整同截面一致预期、供给控制及长期盈利检验，未证明错误定价。",
+          "缺Astra新增外部收入、调用成本、固定投入及现金回报的分业务桥接。",
+          "季度年化EPS不是一致预期；现有估值计算不能证明错定价，平台稀缺性门禁未完成。",
+          "缺同口径AI净收入、留存、旧席位蚕食、服务成本与净贡献。",
+          "现有倍数差异已解释，但持续盈利与市场一致预期缺口仍妨碍错定价判断。"
+        ]
+      },
       "support_evidence": "",
       "target_implications": ""
     },
     {
+      "conclusion": "技术背景可限定为已发布产品、因任务和框架而异的能力提升，以及尚未普遍改善的使用经济性；生产可靠性、接入范围和净成本仍约束采用判断。",
       "decision_use": "",
       "id": "F1.1",
       "investment_relevance": "",
@@ -31,21 +79,43 @@
         "F1.1.3"
       ],
       "parent_id": "F1",
+      "passed": false,
       "preferred_specialty_skill": "",
-      "question": "研究对象是什么，发生了什么变化？",
+      "question": "gpt6的技术背景介绍",
       "refute_evidence": "",
       "required_materials": [],
+      "revision_id": "edit_20260924T091813_4ec5e2d5",
       "score_component": "",
+      "status": "blocked",
+      "sufficiency": {
+        "passed": false,
+        "gaps": [
+          "缺截至9月10日按渠道、套餐和地区逐项确认的实际接入清单。",
+          "缺目标生产工作流在相同权限、工具、验收标准下的重复运行成功率、严重错误率及人工复核负担。",
+          "现有原文不足以量化评测差异的统计显著性；代码审查样本缺独立人类裁判与重复种子。",
+          "缺生产任务的重试、人工验收、集成摊销与时延成本。",
+          "缺训练、推理及监控开销的金额或单位成本。",
+          "需官方历史价目存档；同期独立评测不覆盖全部合同折扣和计费条件。"
+        ],
+        "reasons": [
+          "缺截至9月10日按渠道、套餐和地区逐项确认的实际接入清单。",
+          "缺目标生产工作流在相同权限、工具、验收标准下的重复运行成功率、严重错误率及人工复核负担。",
+          "现有原文不足以量化评测差异的统计显著性；代码审查样本缺独立人类裁判与重复种子。",
+          "缺生产任务的重试、人工验收、集成摊销与时延成本。",
+          "缺训练、推理及监控开销的金额或单位成本。",
+          "需官方历史价目存档；同期独立评测不覆盖全部合同折扣和计费条件。"
+        ]
+      },
       "support_evidence": "",
       "target_implications": ""
     },
     {
       "analysis_plan": [
-        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
-        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
-        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+        "先核实发布前提及产品名称，再区分宣布、开放与实际交付",
+        "检验GPT-6与Astra是否有官方对应关系，不继承旧报告身份假设"
       ],
       "child_plan_path": "l3_research_plans/F1.1.1/research_plan.json",
+      "conclusion": "GPT-6在本截面对应已于9月3日宣布发布的Astra；技术背景包含能力提升与更强部署防护，但发布不等于全部用户获得全部能力。",
       "decision_use": "区分首发、后续上线、知识截止日期；建立无此次发布的比较基线。",
       "execution_mode": "direct_evidence_step",
       "freshness_requirement": "Only sources visible on or before 2026-09-10; preserve visibility proof. Refresh cadence: quarterly.",
@@ -67,70 +137,64 @@
       },
       "next_question_ids": [],
       "parent_id": "F1.1",
+      "passed": false,
       "preferred_specialty_skill": "dynamic-research-agent",
       "question": "GPT-6 是什么，背景与定位是什么？",
       "refute_evidence": "查接入限制和仍未交付的功能。",
       "refuting_source_plan": [
-        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 查接入限制和仍未交付的功能。."
+        "GPT-6 release availability limitations before:2026-09-11"
       ],
       "required_data": [
-        "具日期官方发布、接入范围和限制",
-        "前代与替代模型定位"
+        "具日期的GPT-6官方发布及API模型身份",
+        "截至2026-09-10可用范围、上线限制及前代定位"
       ],
       "required_materials": [
         "具日期官方发布、接入范围和限制",
         "前代与替代模型定位"
       ],
       "research_step_id": "question:F1.1.1",
+      "revision_id": "edit_20260924T084930_98e31175",
       "score_component": "",
       "source_plan": [
         {
           "deepseek_allowed": false,
           "examples_or_search_queries": [
-            "GPT-6 是什么，背景与定位是什么？ 具日期官方发布、接入范围和限制 / 前代与替代模型定位"
+            "GPT-6 release availability limitations before:2026-09-11"
           ],
           "expected_fields": [
             "published_at",
-            "period",
-            "entity",
             "fact",
-            "definition",
-            "locator"
+            "locator",
+            "boundary"
           ],
           "preferred_skill": "dynamic-research-agent",
           "source_bucket": "evidence",
-          "source_type": "primary source that directly answers this leaf",
-          "why_needed": "Anchors the leaf answer in direct evidence."
-        },
-        {
-          "deepseek_allowed": true,
-          "examples_or_search_queries": [
-            "GPT-6 是什么，背景与定位是什么？ 具日期官方发布、接入范围和限制 / 前代与替代模型定位"
-          ],
-          "expected_fields": [
-            "methodology",
-            "finding",
-            "assumption",
-            "conflict",
-            "limitation"
-          ],
-          "preferred_skill": "dynamic-research-agent",
-          "source_bucket": "research_report",
-          "source_type": "independent source that supports, challenges, or bounds the answer",
-          "why_needed": "Provides independent verification and a contrary test."
+          "source_type": "dated official original",
+          "why_needed": "Direct dated evidence for the active question and explicit contrary findings."
         }
       ],
       "source_universe_plan": {},
+      "status": "blocked",
+      "sufficiency": {
+        "gaps": [
+          "缺截至9月10日按渠道、套餐和地区逐项确认的实际接入清单。"
+        ],
+        "passed": false,
+        "reasons": [
+          "缺截至9月10日按渠道、套餐和地区逐项确认的实际接入清单。"
+        ]
+      },
       "support_evidence": "官方日期、产品和范围相互一致。",
       "target_implications": ""
     },
     {
       "analysis_plan": [
-        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
-        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
-        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+        "先核实发布前提，剔除截面后更新和无历史可见性资料",
+        "按任务分别比较成功率或得分，百分比差用百分点；不混合基准或把Elo当成功率",
+        "区分模型、工具和推理预算贡献；对照退步任务，判断可迁移能力与生产可靠性未知项"
       ],
       "child_plan_path": "l3_research_plans/F1.1.2/research_plan.json",
+      "conclusion": "GPT-6 Astra的综合能力与部分编码表现提高，但提升取决于任务和运行框架；不能据此认定所有专业工作都更可靠，或已能无监督替代人工。",
       "decision_use": "分离模型、运行框架及任务贡献，不跨评测版本相减。",
       "execution_mode": "direct_evidence_step",
       "freshness_requirement": "Only sources visible on or before 2026-09-10; preserve visibility proof. Refresh cadence: quarterly.",
@@ -152,70 +216,69 @@
       },
       "next_question_ids": [],
       "parent_id": "F1.1",
+      "passed": false,
       "preferred_specialty_skill": "dynamic-research-agent",
-      "question": "GPT-6 的技术特性与能力边界怎样变化？",
+      "question": "GPT-6 的能力评估",
       "refute_evidence": "寻找不提升的任务、评测框架差异和生产外推限制。",
       "refuting_source_plan": [
-        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 寻找不提升的任务、评测框架差异和生产外推限制。."
+        "GPT-6 Astra regression limitations DeepSWE GDPval before:2026-09-11"
       ],
       "required_data": [
-        "同版本基准对照、独立评测、失败案例",
-        "架构披露和工具条件"
+        "截至2026-09-10具日期的GPT-6发布身份、模型版本和实际评测配置",
+        "同一基准版本下的推理、编码、专业任务分数及前代或可用替代方案",
+        "失败、退步、运行框架影响以及重复运行可靠性和生产外推边界"
       ],
       "required_materials": [
-        "同版本基准对照、独立评测、失败案例",
-        "架构披露和工具条件"
+        "截至2026-09-10具日期的GPT-6发布身份、模型版本和实际评测配置",
+        "同一基准版本下的推理、编码、专业任务分数及前代或可用替代方案",
+        "失败、退步、运行框架影响以及重复运行可靠性和生产外推边界"
       ],
       "research_step_id": "question:F1.1.2",
+      "revision_id": "edit_20260924T091813_4ec5e2d5",
       "score_component": "",
       "source_plan": [
         {
           "deepseek_allowed": false,
           "examples_or_search_queries": [
-            "GPT-6 的技术特性与能力边界怎样变化？ 同版本基准对照、独立评测、失败案例 / 架构披露和工具条件"
+            "site:openai.com GPT-6 Astra release evaluation before:2026-09-11",
+            "GPT-6 Astra benchmark evaluation September 2026 before:2026-09-11",
+            "GPT-6 Astra regression limitations DeepSWE GDPval before:2026-09-11"
           ],
           "expected_fields": [
             "published_at",
-            "period",
-            "entity",
             "fact",
-            "definition",
-            "locator"
+            "locator",
+            "boundary"
           ],
           "preferred_skill": "dynamic-research-agent",
           "source_bucket": "evidence",
-          "source_type": "primary source that directly answers this leaf",
-          "why_needed": "Anchors the leaf answer in direct evidence."
-        },
-        {
-          "deepseek_allowed": true,
-          "examples_or_search_queries": [
-            "GPT-6 的技术特性与能力边界怎样变化？ 同版本基准对照、独立评测、失败案例 / 架构披露和工具条件"
-          ],
-          "expected_fields": [
-            "methodology",
-            "finding",
-            "assumption",
-            "conflict",
-            "limitation"
-          ],
-          "preferred_skill": "dynamic-research-agent",
-          "source_bucket": "research_report",
-          "source_type": "independent source that supports, challenges, or bounds the answer",
-          "why_needed": "Provides independent verification and a contrary test."
+          "source_type": "dated primary release and benchmark-author evaluation",
+          "why_needed": "核验事件身份、逐任务能力与退步，区分测试配置及实际可靠性。"
         }
       ],
       "source_universe_plan": {},
+      "status": "blocked",
+      "sufficiency": {
+        "passed": false,
+        "gaps": [
+          "缺目标生产工作流在相同权限、工具、验收标准下的重复运行成功率、严重错误率及人工复核负担。",
+          "现有原文不足以量化评测差异的统计显著性；代码审查样本缺独立人类裁判与重复种子。"
+        ],
+        "reasons": [
+          "缺目标生产工作流在相同权限、工具、验收标准下的重复运行成功率、严重错误率及人工复核负担。",
+          "现有原文不足以量化评测差异的统计显著性；代码审查样本缺独立人类裁判与重复种子。"
+        ]
+      },
       "support_evidence": "至少有可定位的同任务对照并处理反向结果。",
       "target_implications": ""
     },
     {
       "analysis_plan": [
-        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
-        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
-        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+        "分开客户报价、合格任务总成本与厂商生产成本",
+        "检验效率提升能否抵消单价；没有同口径用量不计算节省"
       ],
       "child_plan_path": "l3_research_plans/F1.1.3/research_plan.json",
+      "conclusion": "Astra的token单价高于Sol，较少token用量并未使相对前代的任务费用普遍降低；企业合格任务总成本和厂商利润仍无法确定。",
       "decision_use": "分开厂商成本、报价和用户合格任务总成本；给可复算盈亏平衡条件。",
       "execution_mode": "direct_evidence_step",
       "freshness_requirement": "Only sources visible on or before 2026-09-10; preserve visibility proof. Refresh cadence: quarterly.",
@@ -237,60 +300,57 @@
       },
       "next_question_ids": [],
       "parent_id": "F1.1",
+      "passed": false,
       "preferred_specialty_skill": "dynamic-research-agent",
       "question": "GPT-6 的成本与使用经济性怎样变化？",
       "refute_evidence": "查质量接近但价格更高的任务，以及集成和复核成本。",
       "refuting_source_plan": [
-        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 查质量接近但价格更高的任务，以及集成和复核成本。."
+        "GPT-6 pricing cost tokens expensive before:2026-09-11"
       ],
       "required_data": [
-        "历史API价格、任务级费用和质量",
-        "训练、服务成本披露及人工复核成本"
+        "GPT-6截面时API价格及计费条件",
+        "同任务质量、重试、人工复核、延迟与厂商资源成本"
       ],
       "required_materials": [
         "历史API价格、任务级费用和质量",
         "训练、服务成本披露及人工复核成本"
       ],
       "research_step_id": "question:F1.1.3",
+      "revision_id": "edit_20260924T084930_98e31175",
       "score_component": "",
       "source_plan": [
         {
           "deepseek_allowed": false,
           "examples_or_search_queries": [
-            "GPT-6 的成本与使用经济性怎样变化？ 历史API价格、任务级费用和质量 / 训练、服务成本披露及人工复核成本"
+            "GPT-6 pricing cost tokens expensive before:2026-09-11"
           ],
           "expected_fields": [
             "published_at",
-            "period",
-            "entity",
             "fact",
-            "definition",
-            "locator"
+            "locator",
+            "boundary"
           ],
           "preferred_skill": "dynamic-research-agent",
           "source_bucket": "evidence",
-          "source_type": "primary source that directly answers this leaf",
-          "why_needed": "Anchors the leaf answer in direct evidence."
-        },
-        {
-          "deepseek_allowed": true,
-          "examples_or_search_queries": [
-            "GPT-6 的成本与使用经济性怎样变化？ 历史API价格、任务级费用和质量 / 训练、服务成本披露及人工复核成本"
-          ],
-          "expected_fields": [
-            "methodology",
-            "finding",
-            "assumption",
-            "conflict",
-            "limitation"
-          ],
-          "preferred_skill": "dynamic-research-agent",
-          "source_bucket": "research_report",
-          "source_type": "independent source that supports, challenges, or bounds the answer",
-          "why_needed": "Provides independent verification and a contrary test."
+          "source_type": "dated official original",
+          "why_needed": "Direct dated evidence for the active question and explicit contrary findings."
         }
       ],
       "source_universe_plan": {},
+      "status": "blocked",
+      "sufficiency": {
+        "gaps": [
+          "缺生产任务的重试、人工验收、集成摊销与时延成本。",
+          "缺训练、推理及监控开销的金额或单位成本。",
+          "需官方历史价目存档；同期独立评测不覆盖全部合同折扣和计费条件。"
+        ],
+        "passed": false,
+        "reasons": [
+          "缺生产任务的重试、人工验收、集成摊销与时延成本。",
+          "缺训练、推理及监控开销的金额或单位成本。",
+          "需官方历史价目存档；同期独立评测不覆盖全部合同折扣和计费条件。"
+        ]
+      },
       "support_evidence": "价格可追溯、任务口径可比，未披露成本不反推。",
       "target_implications": ""
     },
@@ -1116,6 +1176,7 @@
     "run_mode": "historical_backtest",
     "topic": "GPT-6 发布对 AI 行业及相关公司有什么影响？"
   },
-  "research_plan_id": "rp_66082cd7d69e7db2",
-  "research_plan_path": "research_plan.json"
+  "research_plan_id": "rp_edit_20260924T091813_4ec5e2d5",
+  "research_plan_path": "research_plan.json",
+  "revision_id": "edit_20260924T091813_4ec5e2d5"
 }

@@ -30,6 +30,13 @@ and link directly to project-local PDF originals. Presentation JavaScript may
 enhance navigation but may not hide research content or fetch evidence at runtime.
 Markdown remains readable as plain text.
 
+When the user requests interactive research, a separate loopback workbench may edit
+questions, preview invalidation, poll real research jobs and embed this canonical
+snapshot. It must not redefine the static report profile or count editing as research.
+New versions publish only after question-specific evidence/plan checks; failed or
+cancelled jobs keep the prior report. The workbench marks pending questions explicitly
+and never displays a prior answer as the answer to a newly edited question.
+
 ## Dynamic Question-Tree Template · question-tree-v1
 
 Dynamic question-driven studies use the repository's `question-tree-v1` reading

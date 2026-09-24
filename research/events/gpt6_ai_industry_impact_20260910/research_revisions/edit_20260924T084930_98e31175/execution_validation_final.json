@@ -1,0 +1,385 @@
+{
+  "ok": true,
+  "issues": [],
+  "summary": {
+    "plan_id": "rp_edit_20260924T084930_98e31175",
+    "status": "blocked",
+    "steps": 10,
+    "pending": 7,
+    "in_progress": 0,
+    "review_pending": 0,
+    "blocked": 3,
+    "completed": 0,
+    "events": 3,
+    "historical_plan_events": 0,
+    "nested": {
+      "parent_plan_id": "rp_edit_20260924T084930_98e31175",
+      "status": "blocked",
+      "l3_plans": 10,
+      "completed_l3_plans": 1,
+      "leaf_steps": 10,
+      "completed_leaf_steps": 1,
+      "blocked_leaf_steps": 9,
+      "max_depth": 3
+    }
+  },
+  "step_states": [
+    {
+      "step_id": "step:F1.1.1",
+      "status": "blocked",
+      "answer": "GPT-6在本截面对应已于9月3日宣布发布的Astra；技术背景包含能力提升与更强部署防护，但发布不等于全部用户获得全部能力。",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [
+        "缺截至9月10日按渠道、套餐和地区逐项确认的实际接入清单。"
+      ],
+      "next_actions": [
+        "下一执行节点F1.1.1：补取截面前具日期的渠道开放与权限公告，不新增层级。"
+      ],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "edit_20260924T084930_98e31175_parent_F1.1.1_blocked",
+      "latest_recorded_at": "2026-09-24T08:59:28.512638+00:00",
+      "event_count": 1
+    },
+    {
+      "step_id": "step:F1.1.2",
+      "status": "blocked",
+      "answer": "相对GPT-5.6 Sol，Astra在部分编码任务上改善，但并非全部专业任务均提升；内部架构及生产可靠性不能由基准分数推定。",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [
+        "缺公开且可核对的参数、架构和训练配比披露。",
+        "缺同一生产工作流、权限配置和验收条件下的重复运行失败率。"
+      ],
+      "next_actions": [
+        "补取截面前技术披露及同任务独立复测；未公开项保留未知，不自行扩展子题。"
+      ],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "edit_20260924T084930_98e31175_parent_F1.1.2_blocked",
+      "latest_recorded_at": "2026-09-24T08:59:28.513248+00:00",
+      "event_count": 1
+    },
+    {
+      "step_id": "step:F1.1.3",
+      "status": "blocked",
+      "answer": "Astra的token单价高于Sol，较少token用量并未使相对前代的任务费用普遍降低；企业合格任务总成本和厂商利润仍无法确定。",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [
+        "缺生产任务的重试、人工验收、集成摊销与时延成本。",
+        "缺训练、推理及监控开销的金额或单位成本。",
+        "需官方历史价目存档；同期独立评测不覆盖全部合同折扣和计费条件。"
+      ],
+      "next_actions": [
+        "同一验收标准下补任务账单、失败重试及人工工时，取得历史官方价目与厂商成本披露。"
+      ],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "edit_20260924T084930_98e31175_parent_F1.1.3_blocked",
+      "latest_recorded_at": "2026-09-24T08:59:28.521366+00:00",
+      "event_count": 1
+    },
+    {
+      "step_id": "step:F1.2.1",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "step:F1.2.2",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "step:F1.2.3",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "step:F1.3.1",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "step:F1.3.2",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "step:F1.3.3",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "step:F1.3.4",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    }
+  ],
+  "l3_plans": [
+    {
+      "l3_node_id": "F1.1.1",
+      "plan_id": "l3rp_F1_1_1_edit_20260924T084930_98e31175_v2",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 5,
+      "historical_plan_events": 9
+    },
+    {
+      "l3_node_id": "F1.1.2",
+      "plan_id": "l3rp_F1_1_2_edit_20260924T084930_98e31175_v2",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 5,
+      "historical_plan_events": 9
+    },
+    {
+      "l3_node_id": "F1.1.3",
+      "plan_id": "l3rp_F1_1_3_edit_20260924T084930_98e31175_v2",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 5,
+      "historical_plan_events": 9
+    },
+    {
+      "l3_node_id": "F1.2.1",
+      "plan_id": "l3rp_f1_2_1_70b722c91de955f7",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 4,
+      "historical_plan_events": 0
+    },
+    {
+      "l3_node_id": "F1.2.2",
+      "plan_id": "l3rp_f1_2_2_e80a3a2271c444c3",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 4,
+      "historical_plan_events": 0
+    },
+    {
+      "l3_node_id": "F1.2.3",
+      "plan_id": "l3rp_f1_2_3_52548b8c67894eae",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 4,
+      "historical_plan_events": 0
+    },
+    {
+      "l3_node_id": "F1.3.1",
+      "plan_id": "l3rp_f1_3_1_1330cfac70762e35",
+      "max_depth": 3,
+      "status": "completed",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 0,
+      "completed": 1,
+      "events": 4,
+      "historical_plan_events": 4
+    },
+    {
+      "l3_node_id": "F1.3.2",
+      "plan_id": "l3rp_f1_3_2_6d7391137dfb0bd7",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 4,
+      "historical_plan_events": 0
+    },
+    {
+      "l3_node_id": "F1.3.3",
+      "plan_id": "l3rp_f1_3_3_ebb39e145d6ef9e2",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 4,
+      "historical_plan_events": 0
+    },
+    {
+      "l3_node_id": "F1.3.4",
+      "plan_id": "l3rp_f1_3_4_336ef0e0c3c8185f",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 4,
+      "historical_plan_events": 0
+    }
+  ]
+}

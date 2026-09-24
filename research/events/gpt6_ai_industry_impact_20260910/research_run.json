@@ -1,9 +1,11 @@
 {
   "status": "partial_research",
-  "revision_id": "20260922_object_industry_company_execution",
+  "revision_id": "edit_20260924T091813_4ec5e2d5",
   "as_of_date": "2026-09-10",
-  "performed_on": "2026-09-22",
+  "performed_on": "2026-09-24",
   "unanswered_leaf_ids": [
+    "F1.1.1",
+    "F1.1.2",
     "F1.1.3",
     "F1.2.1",
     "F1.2.2",
@@ -12,10 +14,28 @@
     "F1.3.3",
     "F1.3.4"
   ],
-  "source_count": 20,
+  "source_count": 24,
   "claim_count": 37,
   "external_archive_scan": "not_performed",
   "visual_review": "blocked_by_browser_local_file_url_policy; not_claimed",
-  "reproduce": "PYTHONPATH=src python3 tools/research_gpt6_new_framework.py finish",
-  "market_price_analysis": "9/10 unadjusted closes cross-checked; mechanical valuation scenarios only"
+  "market_price_analysis": "9/10 unadjusted closes cross-checked; mechanical valuation scenarios only",
+  "research_status": "partial_research",
+  "affected_ids": [
+    "F1",
+    "F1.1",
+    "F1.1.2"
+  ],
+  "research_ids": [
+    "F1.1.2"
+  ],
+  "rollup_ids": [
+    "F1.1",
+    "F1"
+  ],
+  "next_node_id": "F1.1.2",
+  "execution_validation_path": "research_revisions/edit_20260924T091813_4ec5e2d5/execution_validation_final.json",
+  "research_completion_passed": false,
+  "host_publication_pending": true,
+  "current_revision_source_count": 4,
+  "current_revision_extraction_count": 7
 }

@@ -1,0 +1,21 @@
+{
+  "revision_id": "edit_20260924T084930_98e31175",
+  "status": "partial_research",
+  "research_ids": [
+    "F1.1.1",
+    "F1.1.2",
+    "F1.1.3"
+  ],
+  "rollup_ids": [
+    "F1.1",
+    "F1"
+  ],
+  "active_evidence_count": 7,
+  "execution_structure_valid": true,
+  "research_sufficiency_passed": false,
+  "all_writes_under": "project/",
+  "unaffected_nodes_preserved": true,
+  "historical_records_preserved": true,
+  "rendering": "host responsibility; no HTML or public Markdown generated",
+  "next_node_id": "F1.1.1"
+}

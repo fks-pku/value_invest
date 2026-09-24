@@ -15,12 +15,13 @@
     "issues": [],
     "summary": {
       "mode": "historical_backtest",
-      "report_scope": "event-study",
+      "report_scope": "research-project",
       "level1_cards": 0,
       "level2_cards": 0,
       "level3_cards": 0,
       "require_l3": false
     }
   },
-  "visual_review": "blocked_by_browser_local_file_url_policy; not_claimed"
+  "visual_review": "not_performed_by_background_worker",
+  "full_legacy_audit": "not_claimed"
 }

@@ -1,0 +1,13 @@
+{
+  "revision_id": "edit_20260924T084930_98e31175",
+  "repair_type": "unpublished_candidate_contract_alignment",
+  "original_candidate_preserved_in_private_audit": "candidate_before_contract_repair",
+  "changes": [
+    "Synchronized report_view_model.sources with the existing question-tree source objects.",
+    "Normalized only unpublished source registrations: removed per-question execution metadata and repeated registrations; original published ledger prefix is unchanged. Question-specific search, extraction and review traces are retained.",
+    "Added review_id aliases to unpublished claims from their existing source_review_id after checking source, extraction, question, plan and search-run identities. No new review or evidence was invented."
+  ],
+  "research_claims_changed": false,
+  "historical_published_records_changed": false,
+  "new_research_execution": false
+}

@@ -1,0 +1,375 @@
+{
+  "ok": true,
+  "issues": [],
+  "summary": {
+    "plan_id": "rp_edit_20260924T091813_4ec5e2d5",
+    "status": "blocked",
+    "steps": 10,
+    "pending": 9,
+    "in_progress": 0,
+    "review_pending": 0,
+    "blocked": 1,
+    "completed": 0,
+    "events": 2,
+    "historical_plan_events": 3,
+    "nested": {
+      "parent_plan_id": "rp_edit_20260924T091813_4ec5e2d5",
+      "status": "blocked",
+      "l3_plans": 10,
+      "completed_l3_plans": 1,
+      "leaf_steps": 10,
+      "completed_leaf_steps": 1,
+      "blocked_leaf_steps": 9,
+      "max_depth": 3
+    }
+  },
+  "step_states": [
+    {
+      "step_id": "step:F1.1.1",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "step:F1.1.2",
+      "status": "blocked",
+      "answer": "GPT-6 Astra的综合能力与部分编码表现提高，但提升取决于任务和运行框架；不能据此认定所有专业工作都更可靠，或已能无监督替代人工。",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [
+        "缺目标生产工作流在相同权限、工具、验收标准下的重复运行成功率、严重错误率及人工复核负担。",
+        "现有原文不足以量化评测差异的统计显著性；代码审查样本缺独立人类裁判与重复种子。"
+      ],
+      "next_actions": [
+        "下一执行节点F1.1.2：补截止日前可核查的同任务重复评测、配置和独立验收记录；如无则保留阻塞，不新增问题。"
+      ],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "edit_20260924T091813_4ec5e2d5_parent_step_blocked",
+      "latest_recorded_at": "2026-09-24T09:27:28.658194+00:00",
+      "event_count": 2
+    },
+    {
+      "step_id": "step:F1.1.3",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "step:F1.2.1",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "step:F1.2.2",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "step:F1.2.3",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "step:F1.3.1",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "step:F1.3.2",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "step:F1.3.3",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "step:F1.3.4",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    }
+  ],
+  "l3_plans": [
+    {
+      "l3_node_id": "F1.1.1",
+      "plan_id": "l3rp_F1_1_1_edit_20260924T084930_98e31175_v2",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 5,
+      "historical_plan_events": 9
+    },
+    {
+      "l3_node_id": "F1.1.2",
+      "plan_id": "l3rp_F1_1_2_edit_20260924T091813_4ec5e2d5",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 5,
+      "historical_plan_events": 14
+    },
+    {
+      "l3_node_id": "F1.1.3",
+      "plan_id": "l3rp_F1_1_3_edit_20260924T084930_98e31175_v2",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 5,
+      "historical_plan_events": 9
+    },
+    {
+      "l3_node_id": "F1.2.1",
+      "plan_id": "l3rp_f1_2_1_70b722c91de955f7",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 4,
+      "historical_plan_events": 0
+    },
+    {
+      "l3_node_id": "F1.2.2",
+      "plan_id": "l3rp_f1_2_2_e80a3a2271c444c3",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 4,
+      "historical_plan_events": 0
+    },
+    {
+      "l3_node_id": "F1.2.3",
+      "plan_id": "l3rp_f1_2_3_52548b8c67894eae",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 4,
+      "historical_plan_events": 0
+    },
+    {
+      "l3_node_id": "F1.3.1",
+      "plan_id": "l3rp_f1_3_1_1330cfac70762e35",
+      "max_depth": 3,
+      "status": "completed",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 0,
+      "completed": 1,
+      "events": 4,
+      "historical_plan_events": 4
+    },
+    {
+      "l3_node_id": "F1.3.2",
+      "plan_id": "l3rp_f1_3_2_6d7391137dfb0bd7",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 4,
+      "historical_plan_events": 0
+    },
+    {
+      "l3_node_id": "F1.3.3",
+      "plan_id": "l3rp_f1_3_3_ebb39e145d6ef9e2",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 4,
+      "historical_plan_events": 0
+    },
+    {
+      "l3_node_id": "F1.3.4",
+      "plan_id": "l3rp_f1_3_4_336ef0e0c3c8185f",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 4,
+      "historical_plan_events": 0
+    }
+  ]
+}

@@ -99,6 +99,8 @@ def initialize():
 
 
 def finish():
+    if read("project.json").get("interactive_revision"):
+        raise ValueError("This project has an interactive research revision; the legacy authored-input materializer cannot overwrite it. Use the local researcher or render the current question_tree_report.json.")
     data = {**read(INPUT.name), **read("object_industry_company_findings.json")}
     digest = hashlib.sha256(json.dumps(data, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
     completion = PROJECT / "research_revisions" / RID / "completed.json"

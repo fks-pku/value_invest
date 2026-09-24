@@ -1,0 +1,63 @@
+{
+  "revision_id": "edit_20260924T084930_98e31175",
+  "targets": [
+    {
+      "company": "NVIDIA",
+      "ticker": "NVDA",
+      "thesis_node_id": "compute",
+      "exposure": "数据中心业务与算力供给；详见F1.3.2。[S109]",
+      "needed": "发布前基线外的净订单、供给控制与错定价。",
+      "risk": "效率及替代稀释采购，毛利和增长持续性。",
+      "candidate_action_state": "watch_only",
+      "action_state": "no_action",
+      "research_gate": {
+        "passed": false,
+        "reasons": [
+          "事件增量盈利与错定价未验证",
+          "未完成canonical BOM六问与稀缺性门禁",
+          "Technical-background revision does not establish universal task improvement, production net savings or attributable company earnings."
+        ],
+        "revision_id": "edit_20260924T084930_98e31175"
+      }
+    },
+    {
+      "company": "Microsoft",
+      "ticker": "MSFT",
+      "thesis_node_id": "",
+      "exposure": "Azure与Copilot渠道及付费基础；详见F1.3.3。[S110]",
+      "needed": "Astra分业务净收益与现金回报、canonical投资映射。",
+      "risk": "用量增加先推高成本，渠道非独占，资本投入沉重。",
+      "candidate_action_state": "watch_only",
+      "action_state": "no_action",
+      "research_gate": {
+        "passed": false,
+        "reasons": [
+          "事件增量盈利与错定价未验证",
+          "未完成canonical BOM六问与稀缺性门禁",
+          "Technical-background revision does not establish universal task improvement, production net savings or attributable company earnings."
+        ],
+        "revision_id": "edit_20260924T084930_98e31175"
+      }
+    },
+    {
+      "company": "Salesforce",
+      "ticker": "CRM",
+      "thesis_node_id": "",
+      "exposure": "企业数据、工作流与AI合同基础；详见F1.3.4。[S111]",
+      "needed": "同口径净留存、AI净贡献与估值、canonical投资映射。",
+      "risk": "旧席位蚕食、ARR口径变化、股权激励的经济成本。",
+      "candidate_action_state": "watch_only",
+      "action_state": "no_action",
+      "research_gate": {
+        "passed": false,
+        "reasons": [
+          "事件增量盈利与错定价未验证",
+          "未完成canonical BOM六问与稀缺性门禁",
+          "Technical-background revision does not establish universal task improvement, production net savings or attributable company earnings."
+        ],
+        "revision_id": "edit_20260924T084930_98e31175"
+      }
+    }
+  ],
+  "decision": "No upgrades; no_action preserved. Company nodes not re-researched."
+}

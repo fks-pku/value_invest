@@ -1,0 +1,53 @@
+{
+  "checks": [
+    {
+      "node_id": "F1.1.1",
+      "evidence_count": 2,
+      "trace_valid": true,
+      "passed": false
+    },
+    {
+      "node_id": "F1.1.2",
+      "evidence_count": 3,
+      "trace_valid": true,
+      "passed": false
+    },
+    {
+      "node_id": "F1.1.3",
+      "evidence_count": 2,
+      "trace_valid": true,
+      "passed": false
+    }
+  ],
+  "unaffected_nodes_unchanged": true,
+  "unrelated_l3_plans_and_events_unchanged": true,
+  "historical_files_unchanged": true,
+  "view_models_equal": true,
+  "changed_existing_files": [
+    "research_events.jsonl",
+    "research_plan.json",
+    "project.json",
+    "sources.jsonl",
+    "source_extractions.jsonl",
+    "qa_tree.json",
+    "report_view_model.json",
+    "research_plan.md",
+    "plan_validation.json",
+    "search_runs.jsonl",
+    "target_gates.json",
+    "source_reviews.jsonl",
+    "question_tree_report.json",
+    "ledger/claims.jsonl",
+    "ledger/conclusions.jsonl",
+    "inbox/parse_tasks.jsonl",
+    "l3_research_plans/index.json",
+    "l3_research_plans/F1.1.1/research_plan.json",
+    "l3_research_plans/F1.1.1/research_step_events.jsonl",
+    "l3_research_plans/F1.1.2/research_plan.json",
+    "l3_research_plans/F1.1.2/research_step_events.jsonl",
+    "l3_research_plans/F1.1.3/research_plan.json",
+    "l3_research_plans/F1.1.3/research_step_events.jsonl"
+  ],
+  "all_writes": "project/",
+  "research_status": "partial_research"
+}

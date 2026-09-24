@@ -18,6 +18,9 @@ class CanonicalMarkdownReportRenderer:
     """Markdown adapter for the canonical public research-report contract."""
 
     def render(self, view_model: ReportViewModel) -> str:
+        if view_model.project.get("presentation_profile") == "question-tree-v1":
+            from value_invest_research.adapters.outbound.question_tree_markdown_renderer import QuestionTreeMarkdownRenderer
+            return QuestionTreeMarkdownRenderer().render(view_model)
         data = view_model.to_dict()
         project = data["project"]
         title = str(project.get("title") or data["goal"].get("topic") or "专业投研报告")

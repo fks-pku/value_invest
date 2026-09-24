@@ -1,0 +1,38 @@
+[
+  {
+    "source_id": "S_R98_01",
+    "title": "Safety overview: GPT-6 Astra",
+    "url": "https://openai.com/index/safety-overview-gpt-6-astra/",
+    "published_at": "2026-09-03",
+    "material_class": "official_company",
+    "publication_date_source": "正文页首日期及第1—7项，排除页尾推荐",
+    "publication_date_status": "verified_dated_original",
+    "retrieved_on": "2026-09-24",
+    "ingestion_channel": "question_search",
+    "revision_id": "edit_20260924T084930_98e31175"
+  },
+  {
+    "source_id": "S_R98_02",
+    "title": "Path to Astra: critical capabilities and frontier safeguards",
+    "url": "https://openai.com/index/path-to-astra/",
+    "published_at": "2026-09-01",
+    "material_class": "official_company",
+    "publication_date_source": "正文页首日期与发布前说明",
+    "publication_date_status": "verified_dated_original",
+    "retrieved_on": "2026-09-24",
+    "ingestion_channel": "question_search",
+    "revision_id": "edit_20260924T084930_98e31175"
+  },
+  {
+    "source_id": "S_R98_03",
+    "title": "Benchmarking GPT-6 Astra",
+    "url": "https://artificialanalysis.ai/articles/benchmarking-gpt-6-astra",
+    "published_at": "2026-09-09",
+    "material_class": "authoritative_third_party",
+    "publication_date_source": "正文September 9, 2026及两个Index小节；排除页尾推荐",
+    "publication_date_status": "verified_dated_original",
+    "retrieved_on": "2026-09-24",
+    "ingestion_channel": "question_search",
+    "revision_id": "edit_20260924T084930_98e31175"
+  }
+]

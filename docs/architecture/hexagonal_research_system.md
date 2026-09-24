@@ -463,6 +463,20 @@ The compact public default is exactly `当前研究的问题 -> 行业概况 -> 
 
 ## Migration Map
 
+### Interactive question-tree workbench
+
+`adapters/inbound/researcher_server.py` exposes a loopback-only, single-project editor.
+`domain/interactive_research.py` computes edited subtree/ancestor invalidation;
+`application/use_cases/interactive_research.py` serializes jobs through ports.
+The Codex execution adapter researches a disposable project copy outside the Git root.
+The filesystem adapter verifies immutable history, fresh per-question provenance,
+plan gates and the shared report contract before a journaled publication. No renderer
+researches, and no user text becomes a shell command. The interactive shell may poll
+job state; `professional_report.html` remains a self-contained read-only snapshot.
+
+See [interactive_researcher.md](../interactive_researcher.md) for execution, cancellation,
+recovery and current editing limits.
+
 | Compatibility area | Target home | Migration rule |
 |---|---|---|
 | `framework_contracts.py` validation rules | `domain/quality_gates.py` and focused domain services | Move gradually; keep compatibility imports until call sites are migrated. |

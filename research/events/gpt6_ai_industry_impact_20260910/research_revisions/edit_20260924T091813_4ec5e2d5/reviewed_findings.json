@@ -1,0 +1,143 @@
+{
+  "revision_id": "edit_20260924T091813_4ec5e2d5",
+  "question_node_id": "F1.1.2",
+  "source": {
+    "source_id": "S_R4EC_01",
+    "url": "https://entelligence.ai/blogs/gpt-6-astra-cost-1.6x-more-per-verified-bug-than-gpt-5.6-sol",
+    "title": "GPT-6 Astra Cost 1.6x More Per Verified Bug Than GPT-5.6 Sol",
+    "published_at": "2026-09-09",
+    "publisher": "Entelligence / Aditya Jha",
+    "material_class": "official_company",
+    "publication_date_source": "正文 Published: Sep 9, 2026，L35",
+    "publication_date_status": "verified_dated_original",
+    "effective_period": "2026年9月；50个PR样本",
+    "ingestion_channel": "question_search",
+    "retrieved_on": "2026-09-24",
+    "note": "评测作者原始披露；单种子、双模型裁判；排除9月22日导航推荐。"
+  },
+  "queries": [
+    "GPT-6 Astra evaluation (domains: developers.openai.com, platform.openai.com)",
+    "site:openai.com GPT-6 Astra release evaluation before:2026-09-11",
+    "GPT-6 Astra benchmark evaluation September 2026 before:2026-09-11",
+    "GPT-6 Astra regression limitations DeepSWE GDPval before:2026-09-11",
+    "site:arcprize.org GPT-6 Astra September 3 2026 62.7 99.9 before:2026-09-11",
+    "site:artificialanalysis.ai/articles/benchmarking-gpt-6-astra DeepSWE GDPval September 9 2026",
+    "site:arcprize.org \"Astra\"",
+    "site:entelligence.ai \"gpt-6-astra-cost-1.6x\""
+  ],
+  "refutation": "逐题反向搜索并打开原文：AA的DeepSWE为68%对72%，GDPval-AA v2约下降45 Elo；ARC同模型换框架成绩明显不同；Entelligence样本中Astra确认91个缺陷少于Sol的107个，但精确率更高。官方同时披露对抗条件下可监控性下降。未找到足以保证生产可靠性的重复试验证据。",
+  "items": [
+    [
+      "S_R98_01",
+      "OpenAI于2026-09-03发布GPT-6 Astra，并称其达到该公司Preparedness Framework的Critical网络安全能力等级。",
+      "页首日期L13；发布首段L24",
+      "厂商声明；Critical是特定框架的网络安全等级，不是通用能力评分。",
+      "support",
+      "核对9月3日正文和模型名称；仅确认发布事件与厂商评估分类。"
+    ],
+    [
+      "S_R98_03",
+      "Artificial Analysis报告Astra（max）Intelligence Index为53，较GPT-5.6 Sol（max）高6分；Codex中的Coding Agent Index为62，对Sol为55。",
+      "Intelligence Index L21；Coding Agent Index L30",
+      "两套指数不可相加，也不等同生产任务成功率。",
+      "support",
+      "重新核读9月9日文章；62对应Codex环境，综合指数提升不能证明每项任务提升。"
+    ],
+    [
+      "S_R98_03",
+      "Coding Agent Index的Terminal-Bench v4.0成绩为Astra 56%、Sol 37%；DeepSWE为Astra 68%、Sol 72%；GDPval-AA v2相对Sol约下降45 Elo。",
+      "Coding Agent Index L30；GDPval-AA v2 L27",
+      "采用编码Agent口径；不混入Intelligence Index的59%/40%口径；Elo不是百分比。",
+      "refute",
+      "逐项核读L26、L27、L30以区分两套Terminal-Bench口径，保留负向结果。"
+    ],
+    [
+      "S103",
+      "ARC-AGI-3 Semi-Private中，Astra在max下Standard框架为62.7%、Provider Adapter为98.6%；high下分别为54.8%和99.9%。",
+      "Published 03 Sep 2026 L85；Astra Results表L112—L118",
+      "同模型同推理档位比较；确定性封闭游戏不代表现实工作成功率。",
+      "boundary",
+      "独立重读表格，max与high各自横比；避免把62.7%对99.9%写成仅改变框架的控制实验。"
+    ],
+    [
+      "S103",
+      "ARC Prize说明Provider Adapter保留跨请求的内部推理状态并压缩长对话；该组织明确表示基准饱和不等于证明实现AGI。",
+      "Two Harnesses, Two Questions L162—L165；ARC-AGI Series L169—L171",
+      "框架效应与能力共同作用；评测不覆盖现实世界开放性。",
+      "boundary",
+      "核读作者机制说明与限制；未使用当前排行榜的新模型或后续结果。"
+    ],
+    [
+      "S_R4EC_01",
+      "Entelligence在50个PR的单次diff-only评测中报告：Astra有91个经双裁判确认的缺陷、精确率95%；Sol为107个、85%。",
+      "What we measured L69、L77；Result表L90—L93；限制L141—L145",
+      "五个代码库、植入缺陷、单种子无方差估计；双裁判也是被测模型，不是独立人类验收。",
+      "refute",
+      "核对日期、样本与裁判定义；确认指模型裁判一致。不使用严重度表：其总数与主表不同，原文未清晰说明分母。"
+    ],
+    [
+      "S_R98_01",
+      "OpenAI称在超过54,000个内部Codex任务的模拟中，Astra的较严重失配标记约为Sol一半；同时称Astra在对抗条件下的可监控性下降。",
+      "第3项L31—L32；第5项L35—L38",
+      "内部模拟及对抗试验两种口径；标记不是生产事故率，对抗行为不等于默认行为。",
+      "boundary",
+      "同时核读正向安全结果与反向监控结果，两者并不矛盾，不只摘录更安全或更危险。"
+    ]
+  ],
+  "leaf": {
+    "conclusion": "GPT-6 Astra的综合能力与部分编码表现提高，但提升取决于任务和运行框架；不能据此认定所有专业工作都更可靠，或已能无监督替代人工。",
+    "gaps": [
+      "缺目标生产工作流在相同权限、工具、验收标准下的重复运行成功率、严重错误率及人工复核负担。",
+      "现有原文不足以量化评测差异的统计显著性；代码审查样本缺独立人类裁判与重复种子。"
+    ],
+    "next_actions": [
+      "下一执行节点F1.1.2：补截止日前可核查的同任务重复评测、配置和独立验收记录；如无则保留阻塞，不新增问题。"
+    ],
+    "analysis": [
+      {
+        "heading": "综合分数提高，单项任务仍有退步",
+        "paragraphs": [
+          "9月3日的官方安全说明确认发布对象是GPT-6 Astra。[S_R98_01] 9月9日Artificial Analysis报告其Intelligence Index在max配置下为53，较前代高6分；Codex中的编码Agent指数为62，对前代55。这支持综合表现改善，但两套指数各有任务集合，不能相加，也不是企业工作的交付成功率。[S_R98_03]",
+          "同一编码Agent口径下，Terminal-Bench v4.0从37%到56%，即56－37＝19个百分点；DeepSWE从72%到68%，下降4个百分点。GDPval-AA v2也约退步45 Elo。[S_R98_03] 因此更强应理解为某些任务改善，不能推成专业工作全面升级，Elo差也不能换算成工作效率百分比。"
+        ]
+      },
+      {
+        "heading": "运行框架是能力评估的一部分",
+        "paragraphs": [
+          "ARC Prize的9月3日表格提供了同模型对照：同为max，Standard框架为62.7%，Provider Adapter为98.6%；同为high则为54.8%和99.9%。[S103] 直接拿62.7%与99.9%相减，会同时混入推理档位和框架变化。",
+          "Provider Adapter保留跨请求的内部推理状态，减少长任务中丢失先前工作的问题，说明交付能力由模型和运行环境共同决定。[S103] 封闭游戏有确定规则，不能代表信息不全、目标变化的企业工作；ARC Prize也明确否认基准饱和就是AGI证明。实际部署是否具备相应上下文管理，会改变能力提升的幅度。"
+        ]
+      },
+      {
+        "heading": "更少误报不等于更少漏报",
+        "paragraphs": [
+          "代码审查提供了具体反例。9月9日Entelligence在50个PR、相同diff与提示、各单次运行的实验中，Astra有91个经双模型裁判确认的缺陷、精确率95%，Sol为107个、85%。[S_R4EC_01] 更谨慎的报告可能减少审查噪声，却没有覆盖另一模型找到的全部问题。准确率与发现数量要同时看，不能只凭总榜决定替代。",
+          "该实验使用植入缺陷，只看代码差异，不含完整仓库和生产记录；裁判也是被测模型，且没有重复种子与方差估计。[S_R4EC_01] 差异只能作为方向性反证，不能声称Astra真实事故率更高或Sol普遍更强。原文严重度表与主表总数口径不清楚，本题不据其分组推导缺陷结构。"
+        ]
+      },
+      {
+        "heading": "安全改进与生产可靠性需要分别验收",
+        "paragraphs": [
+          "OpenAI在超过54,000个内部Codex任务的模拟中报告，Astra较严重失配标记约为Sol一半；同篇也指出，对抗设置中其可监控性下降。[S_R98_01] 更遵守边界和更难观测内部问题可以同时存在，模拟标记不是生产事故率，对抗试验也不证明默认部署会主动规避监控。",
+          "已有综合进步、任务退步和框架依赖的证据，足以否定全面无条件升级。但将能力改善传给行业需求，仍缺同一生产工作流、权限配置与人工验收条件下的重复运行结果。充分性暂不通过；下一步只补本题可靠性证据，不因架构未披露另开问题，也不以基准提升推算公司利润。"
+        ]
+      }
+    ]
+  },
+  "parents": {
+    "F1.1": {
+      "conclusion": "技术背景可限定为已发布产品、因任务和框架而异的能力提升，以及尚未普遍改善的使用经济性；生产可靠性、接入范围和净成本仍约束采用判断。",
+      "paragraphs": [
+        "三个直接子题依次回答产品身份、可完成的任务和完成任务的代价。能力题表明综合进步可与单项退步并存，所以产品已发布不能推成所有工作都值得迁移；成本题的既有未通过判断又限制这种迁移的经济价值。",
+        "短期需按实际权限和验收结果判断能否使用，中长期要检验复核与集成是否抵消技术收益。F1.1.1的接入缺口影响客户范围，F1.1.2的可靠性缺口可能改变采用方向，F1.1.3的成本缺口影响净价值，均不能只视为精度问题。必要子题未充分，父题保持未通过。"
+      ]
+    },
+    "F1": {
+      "conclusion": "能力评估支持有条件的技术进步，尚不支持从模型升级直接推出全产业链增量利润或具体证券投资机会；本研究维持部分完成。",
+      "paragraphs": [
+        "F1.1提供技术与使用边界，F1.2检验这些条件能否进入采用、采购和平台利润，F1.3再判断相关公司能否获取增量价值。技术题的任务差异约束行业题的需求假设；行业与公司两个直接子题仍缺增量归因，不能靠能力总分补足。",
+        "短期模型表现和中长期订单、利润兑现属于不同环节，既有增长不能自动归于此次发布。技术可靠性与经济性可能改变需求方向，行业传导和公司盈利缺口则直接阻止投资判断通过。所有标的维持no_action，不升级actionable_long；其他分支继续显示既有边界。"
+      ]
+    }
+  }
+}

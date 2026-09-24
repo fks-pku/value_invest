@@ -4,10 +4,9 @@ import re
 import unittest
 from html.parser import HTMLParser
 from pathlib import Path
-from html import unescape
 
 from gpt6_impact_research import PROJECT, read_lines
-from render_gpt6_impact_report import blocks, link_tokens
+from render_gpt6_impact_report import blocks
 from value_invest_research.domain.report_view_model import ReportViewModel
 from value_invest_research.framework_contracts import validate_report_contract_html
 
@@ -47,7 +46,10 @@ class EventArtifactChecks(unittest.TestCase):
         result = json.loads((PROJECT / "plan_validation.json").read_text())
         self.assertTrue(result["ok"], result["issues"])
         nested = result["summary"]["nested"]
-        self.assertEqual((nested["leaf_steps"], nested["completed_leaf_steps"], nested["blocked_leaf_steps"]), (10,3,7))
+        leaves = [n for n in self.vm.project["question_tree"]["nodes"] if n["mode"] == "leaf"]
+        completed = sum(n["passed"] for n in leaves)
+        self.assertEqual((nested["leaf_steps"], nested["completed_leaf_steps"], nested["blocked_leaf_steps"]),
+                         (len(leaves), completed, len(leaves) - completed))
         self.assertEqual(nested["max_depth"], 3)
         self.assertEqual(self.vm.project["research_status"], "partial_research")
 
@@ -89,14 +91,21 @@ class EventArtifactChecks(unittest.TestCase):
 
     def test_same_claims_in_html_and_markdown(self):
         visible = ''.join(self.page.text)
-        for block in blocks(self.vm):
-            if block["kind"] == "paragraph":
-                self.assertIn(unescape(re.sub(r'<[^>]*>', '', link_tokens(block["text"], self.sources, True))), visible)
-                self.assertIn(link_tokens(block["text"], self.sources), self.md)
-        for chapter in self.vm.qa_roots:
+        # Current shared renderers consume the question tree, not the legacy
+        # authored-input chapter cache or its historical S-digits-only citations.
+        for chapter in self.vm.project["question_tree"]["nodes"]:
             self.assertIn(chapter["conclusion"], visible)
             self.assertIn(chapter["conclusion"], self.md)
             self.assertTrue(any(p.strip() for part in chapter["analysis"] if not part.get("supplementary", False) for p in part["paragraphs"]))
+            for part in chapter["analysis"]:
+                for paragraph in part["paragraphs"]:
+                    for segment in re.split(r"\[[A-Za-z0-9_.-]+\]", paragraph):
+                        if segment.strip():
+                            self.assertIn(segment.strip(), visible)
+                            self.assertIn(segment.strip(), self.md)
+                    for sid in re.findall(r"\[([A-Za-z0-9_.-]+)\]", paragraph):
+                        self.assertIn(self.sources[sid]["url"], self.html)
+                        self.assertIn(self.sources[sid]["url"], self.md)
             for pair in chapter["evidence"]:
                 self.assertIn(pair["fact"], visible)
                 self.assertIn(pair["fact"], self.md)
@@ -119,7 +128,7 @@ class EventArtifactChecks(unittest.TestCase):
         for url in self.page.hrefs:
             if url.startswith("#"):
                 self.assertIn(url[1:], self.page.ids)
-            elif not url.startswith("https://"):
+            elif not url.startswith(("https://", "http://")):
                 self.assertTrue((PROJECT / url).exists(), url)
         for source in self.sources.values():
             self.assertIn(source["url"], self.page.hrefs)

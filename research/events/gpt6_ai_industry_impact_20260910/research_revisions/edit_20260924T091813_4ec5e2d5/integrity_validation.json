@@ -1,0 +1,17 @@
+{
+  "revision_id": "edit_20260924T091813_4ec5e2d5",
+  "structural_errors": [],
+  "execution_validator_ok": true,
+  "research_completion_passed": false,
+  "unaffected_report_nodes_unchanged": true,
+  "source_registry_unique": true,
+  "source_arrays_identical_and_verbatim": true,
+  "fresh_claim_extraction_review_links_verified": true,
+  "state_complete_and_consistent": true,
+  "unaffected_l3_plans_equal_immutable_history": true,
+  "historical_audit_artifacts_preserved": true,
+  "new_evidence_count": 7,
+  "new_registered_sources": 1,
+  "reopened_primary_sources": 4,
+  "host_render_and_publication": "pending"
+}

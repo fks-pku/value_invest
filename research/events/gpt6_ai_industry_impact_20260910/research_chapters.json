@@ -2,277 +2,364 @@
   {
     "id": "F1.1.1",
     "l3_id": "F1.1.1",
-    "conclusion": "GPT-6 Astra 是面向复杂、多步骤专业工作的模型升级，2026年9月3日开始分批发布；它改变的是可交付任务的范围，不是宣布所有工作已经自动化。",
-    "passed": true,
+    "conclusion": "GPT-6在本截面对应已于9月3日宣布发布的Astra；技术背景包含能力提升与更强部署防护，但发布不等于全部用户获得全部能力。",
+    "passed": false,
     "analysis": [
       {
-        "heading": "先确定事件，而不是从名称推断能力",
+        "heading": "先确认发布，再区分模型能力与交付产品",
         "paragraphs": [
-          "本次研究的事件日是9月3日，9月10日是证据截止日，二者相差一周。官方安全说明确认当日发布；发布页将专业工作与电脑操作作为核心定位，并列出 ChatGPT、API、Azure 与 Bedrock 的接入安排。[S102][S101] 因而分析对象不是一颗新芯片，也不是独立的软件行业，而是进入已有应用和基础设施的一种新生产工具。",
-          "比较基线应是“没有 Astra、企业仍可使用 Sol 和其他模型”，不能设成“此前完全没有AI”。如果一项工作原本已经能由旧模型完成，新模型带来的可能只是质量、时间或费用的改善；只有原本不可接受的工作变为可验收，才可能扩大可服务市场。两类变化对新增需求和采购的含义不同。"
-        ],
-        "tables": []
-      },
-      {
-        "heading": "可以使用，不等于已经形成收入",
-        "paragraphs": [
-          "AWS在9月8日明确宣布Bedrock正式可用，提供了比首发的分批开放承诺更具体的交付证据。[S106] 但渠道上线只回答“客户能否买到”，没有回答“买多少、持续多久、供应商赚多少”。因此，本报告把产品可用性和后面的需求、利润结论分开。",
-          "公开发布还附带权限与安全限制，不能把无生产防护条件下的极限能力直接当作所有客户可采购的功能。[S102] 本题至此可停止：事件和产品边界已明确；能力强弱交给下一题逐任务比较，商业效果则进入产业分析。"
-        ],
-        "tables": []
+          "9月3日的官方安全说明将发布对象明确命名为GPT-6 Astra，本题因而有可核对的事件前提。[S_R98_01] 模型在测试中能完成什么，只是用户最终可以使用什么的一个条件；部署权限和安全控制也决定实际用途。",
+          "9月1日的发布前说明称强化防护曾延迟部分开发和发布，先进网络安全能力初期限制接入。[S_R98_02] 安全措施是产品边界的一部分，不能从发布推导所有渠道同日开放，也不能把受限测试配置当成默认产品。前代比较以同期材料中的GPT-5.6 Sol为基线，后续家族扩展不属于本截面。",
+          "因此背景应理解为已经发生的模型发布及受约束部署。尚未充分的是交付范围：完整的历史渠道权限清单仍不可得，这会改变行业分析所覆盖的客户范围。本题暂不关闭，下一步补相同层级的接入证据。"
+        ]
       }
     ],
     "evidence": [
       {
-        "source": "S102",
-        "locator": "正文日期与发布首段",
-        "fact": "2026-09-03 发布 Astra；安全级别与保障措施同步说明。",
-        "boundary": "厂商发布事实；不代表所有用户同日拥有全部权限。",
+        "revision_id": "edit_20260924T084930_98e31175",
+        "l3_plan_id": "l3rp_F1_1_1_edit_20260924T084930_98e31175_v2",
+        "l3_node_id": "F1.1.1",
+        "question_node_id": "F1.1.1",
+        "question_level": 3,
+        "research_step_id": "question:F1.1.1",
+        "search_run_id": "search_edit_20260924T084930_98e31175_F1.1.1_v2",
+        "recorded_at": "2026-09-24T08:58:45.887445+00:00",
+        "source": "S_R98_01",
+        "source_id": "S_R98_01",
+        "extraction_id": "ex_edit_20260924T084930_98e31175_F1.1.1_1_v2",
+        "review_id": "review_edit_20260924T084930_98e31175_F1.1.1_1_v2",
+        "source_extraction_id": "ex_edit_20260924T084930_98e31175_F1.1.1_1_v2",
+        "source_review_id": "review_edit_20260924T084930_98e31175_F1.1.1_1_v2",
+        "locator": "正文日期及首段，L13、L24",
+        "fact": "OpenAI于2026-09-03宣布发布GPT-6 Astra。",
+        "boundary": "发布不证明所有套餐、渠道和地区同日可用。",
         "effect": "support",
-        "review": "核对本题所需原文、日期、数值与限制；不把相关性升级为事件因果。"
+        "review": "GPT independently checked the opened original, publication date, exact comparison and stated boundary; accepted only dated body text visible by cutoff. This does not close the remaining question gaps."
       },
       {
-        "source": "S101",
-        "locator": "Availability",
-        "fact": "首发为分批开放，列出ChatGPT、API、Azure、Bedrock渠道。",
-        "boundary": "安排与实际可用性分开；当前网页可能后续更新。",
-        "effect": "support",
-        "review": "核对本题所需原文、日期、数值与限制；不把相关性升级为事件因果。"
-      },
-      {
-        "source": "S106",
-        "locator": "2026-09-08 公告首段",
-        "fact": "Astra 在 Amazon Bedrock 正式可用。",
-        "boundary": "未披露该模型消费量或收入。",
-        "effect": "support",
-        "review": "核对本题所需原文、日期、数值与限制；不把相关性升级为事件因果。"
+        "revision_id": "edit_20260924T084930_98e31175",
+        "l3_plan_id": "l3rp_F1_1_1_edit_20260924T084930_98e31175_v2",
+        "l3_node_id": "F1.1.1",
+        "question_node_id": "F1.1.1",
+        "question_level": 3,
+        "research_step_id": "question:F1.1.1",
+        "search_run_id": "search_edit_20260924T084930_98e31175_F1.1.1_v2",
+        "recorded_at": "2026-09-24T08:58:45.887445+00:00",
+        "source": "S_R98_02",
+        "source_id": "S_R98_02",
+        "extraction_id": "ex_edit_20260924T084930_98e31175_F1.1.1_2_v2",
+        "review_id": "review_edit_20260924T084930_98e31175_F1.1.1_2_v2",
+        "source_extraction_id": "ex_edit_20260924T084930_98e31175_F1.1.1_2_v2",
+        "source_review_id": "review_edit_20260924T084930_98e31175_F1.1.1_2_v2",
+        "locator": "发布前说明，L38—L42",
+        "fact": "OpenAI称强化防护曾延迟部分开发与发布，先进网络安全能力初期限制接入。",
+        "boundary": "9月1日计划和限制，不是9月10日完整交付清单。",
+        "effect": "boundary",
+        "review": "GPT independently checked the opened original, publication date, exact comparison and stated boundary; accepted only dated body text visible by cutoff. This does not close the remaining question gaps."
       }
     ],
-    "gaps": [],
-    "refutation": "安全限制及分批接入否定“首发即全面、无限制交付”。",
+    "gaps": [
+      "缺截至9月10日按渠道、套餐和地区逐项确认的实际接入清单。"
+    ],
+    "refutation": "9月1日官方说明先进网络安全能力限制接入；当前主发布页含9月22日更新，不能整体回填历史截面。",
     "next_actions": [
-      "转入技术与成本题；不再扩展背景目录。"
+      "下一执行节点F1.1.1：补取截面前具日期的渠道开放与权限公告，不新增层级。"
+    ],
+    "gate_reason": "缺截至9月10日按渠道、套餐和地区逐项确认的实际接入清单。",
+    "support": [
+      "OpenAI于2026-09-03宣布发布GPT-6 Astra。"
     ],
     "searches": [
-      "F1.1.1：定向打开官方发布、安全说明，检索并核对AWS具日期上线公告；核查限制而非只读营销标题。"
-    ],
-    "support": [
-      "2026-09-03 发布 Astra；安全级别与保障措施同步说明。",
-      "首发为分批开放，列出ChatGPT、API、Azure、Bedrock渠道。",
-      "Astra 在 Amazon Bedrock 正式可用。"
-    ],
-    "gate_reason": "本题限定的事实与比较已核实，反证不推翻其边界内答案。"
+      "GPT-6 release availability before:2026-09-11",
+      "GPT-6 Astra limitations release before:2026-09-11",
+      "GPT-6 release availability before:2026-09-11",
+      "GPT-6 Astra limitations release before:2026-09-11"
+    ]
   },
   {
     "id": "F1.1.2",
     "l3_id": "F1.1.2",
-    "conclusion": "可确认的进步集中在部分工具执行和长流程任务；效果取决于任务及运行框架，不能用一次高分证明普遍替代专业人员。",
-    "passed": true,
+    "conclusion": "GPT-6 Astra的综合能力与部分编码表现提高，但提升取决于任务和运行框架；不能据此认定所有专业工作都更可靠，或已能无监督替代人工。",
+    "passed": false,
     "analysis": [
       {
-        "heading": "要看具体能力在哪个任务中改善",
+        "heading": "综合分数提高，单项任务仍有退步",
         "paragraphs": [
-          "采用同一评测机构9月9日的对照：Terminal-Bench v4.0为59%对40%，AutomationBench-AA为69%对60%；但其Coding Agent评测内DeepSWE为68%对72%。[S104] 前两项改善分别为19和9个百分点，后一项下降4个百分点。这说明“操作与执行能力进步”可以成立，“所有编码任务均领先”则不成立。",
-          "这些是各自评分体系中的分数，不是企业员工能被替代的比例。尤其不能把官方发布页的旧版指数与独立评测的新版本相减，再当成能力增幅。对产业而言，有意义的检验是客户原本失败的那一类任务是否转为可验收，而不是把所有榜单压成一个总分。"
-        ],
-        "tables": [
-          {
-            "caption": "同文、同任务对照；单位为评测分数百分比，差值为百分点。[S104]",
-            "headers": [
-              "任务",
-              "Sol",
-              "Astra",
-              "差值（计算）"
-            ],
-            "rows": [
-              [
-                "Terminal-Bench v4.0",
-                "40%",
-                "59%",
-                "+19"
-              ],
-              [
-                "AutomationBench-AA",
-                "60%",
-                "69%",
-                "+9"
-              ],
-              [
-                "DeepSWE（Coding Agent设置）",
-                "72%",
-                "68%",
-                "−4"
-              ]
-            ]
-          }
+          "9月3日的官方安全说明确认发布对象是GPT-6 Astra。[S_R98_01] 9月9日Artificial Analysis报告其Intelligence Index在max配置下为53，较前代高6分；Codex中的编码Agent指数为62，对前代55。这支持综合表现改善，但两套指数各有任务集合，不能相加，也不是企业工作的交付成功率。[S_R98_03]",
+          "同一编码Agent口径下，Terminal-Bench v4.0从37%到56%，即56－37＝19个百分点；DeepSWE从72%到68%，下降4个百分点。GDPval-AA v2也约退步45 Elo。[S_R98_03] 因此更强应理解为某些任务改善，不能推成专业工作全面升级，Elo差也不能换算成工作效率百分比。"
         ]
       },
       {
-        "heading": "模型之外，执行系统本身也决定结果",
+        "heading": "运行框架是能力评估的一部分",
         "paragraphs": [
-          "ARC Prize的同一Semi-Private集合中，标准框架max设置为62.7%，保留厂商状态的框架high设置为99.9%；整套评测费用分别约2.6万与1.9万美元。[S103] 这里同时改变了框架和推理档位，不能把37.2个百分点全归因于某一个变量。但它足以否定“离开执行条件讨论模型能力仍然可靠”的做法。",
-          "运行框架可以理解为模型工作时的记事本、工具、权限和任务调度。企业要获得能力收益，需要这些配套与实际数据系统协同。由此推导的产业含义是：模型进步未必消灭所有中间层，能够保存业务状态、校验结果、执行权限的软件仍可能提供价值。这是机制推断，不是已经测出的平台利润。"
-        ],
-        "tables": []
+          "ARC Prize的9月3日表格提供了同模型对照：同为max，Standard框架为62.7%，Provider Adapter为98.6%；同为high则为54.8%和99.9%。[S103] 直接拿62.7%与99.9%相减，会同时混入推理档位和框架变化。",
+          "Provider Adapter保留跨请求的内部推理状态，减少长任务中丢失先前工作的问题，说明交付能力由模型和运行环境共同决定。[S103] 封闭游戏有确定规则，不能代表信息不全、目标变化的企业工作；ARC Prize也明确否认基准饱和就是AGI证明。实际部署是否具备相应上下文管理，会改变能力提升的幅度。"
+        ]
       },
       {
-        "heading": "技术披露缺口不应由猜测补齐",
+        "heading": "更少误报不等于更少漏报",
         "paragraphs": [
-          "原始访谈中，Brockman披露训练使用超过10万块GPU，同时明确没有公开内部架构细节。[S114] 因此不在本报告填写参数量、激活参数、每token FLOPs或猜测某一架构比例。缺少这些并不妨碍确认已观测的能力变化，却会限制下一步计算硬件需求。",
-          "本题回答的是已公开、可比较的技术表现，不宣称真实工作可靠性已全面验证。当前不需要再拆出一串基准子问题；后续若某个投资判断具体依赖任务成功率，应为该任务独立取证。"
-        ],
-        "tables": []
+          "代码审查提供了具体反例。9月9日Entelligence在50个PR、相同diff与提示、各单次运行的实验中，Astra有91个经双模型裁判确认的缺陷、精确率95%，Sol为107个、85%。[S_R4EC_01] 更谨慎的报告可能减少审查噪声，却没有覆盖另一模型找到的全部问题。准确率与发现数量要同时看，不能只凭总榜决定替代。",
+          "该实验使用植入缺陷，只看代码差异，不含完整仓库和生产记录；裁判也是被测模型，且没有重复种子与方差估计。[S_R4EC_01] 差异只能作为方向性反证，不能声称Astra真实事故率更高或Sol普遍更强。原文严重度表与主表总数口径不清楚，本题不据其分组推导缺陷结构。"
+        ]
+      },
+      {
+        "heading": "安全改进与生产可靠性需要分别验收",
+        "paragraphs": [
+          "OpenAI在超过54,000个内部Codex任务的模拟中报告，Astra较严重失配标记约为Sol一半；同篇也指出，对抗设置中其可监控性下降。[S_R98_01] 更遵守边界和更难观测内部问题可以同时存在，模拟标记不是生产事故率，对抗试验也不证明默认部署会主动规避监控。",
+          "已有综合进步、任务退步和框架依赖的证据，足以否定全面无条件升级。但将能力改善传给行业需求，仍缺同一生产工作流、权限配置与人工验收条件下的重复运行结果。充分性暂不通过；下一步只补本题可靠性证据，不因架构未披露另开问题，也不以基准提升推算公司利润。"
+        ]
       }
     ],
     "evidence": [
       {
-        "source": "S104",
-        "locator": "Intelligence Index 要点与 Coding Agent Index 要点",
-        "fact": "Terminal-Bench 59/40；AutomationBench-AA 69/60；Coding Agent设置DeepSWE 68/72（Astra/Sol）。",
-        "boundary": "不同评测不可相加；DeepSWE限定该执行设置。",
+        "revision_id": "edit_20260924T091813_4ec5e2d5",
+        "l3_plan_id": "l3rp_F1_1_2_edit_20260924T091813_4ec5e2d5",
+        "l3_node_id": "F1.1.2",
+        "question_node_id": "F1.1.2",
+        "question_level": 3,
+        "research_step_id": "question:F1.1.2",
+        "search_run_id": "search_edit_20260924T091813_4ec5e2d5_F1.1.2",
+        "recorded_at": "2026-09-24T09:26:19.488726+00:00",
+        "source": "S_R98_01",
+        "source_id": "S_R98_01",
+        "extraction_id": "ex_edit_20260924T091813_4ec5e2d5_1",
+        "review_id": "review_edit_20260924T091813_4ec5e2d5_1",
+        "source_extraction_id": "ex_edit_20260924T091813_4ec5e2d5_1",
+        "source_review_id": "review_edit_20260924T091813_4ec5e2d5_1",
+        "fact": "OpenAI于2026-09-03发布GPT-6 Astra，并称其达到该公司Preparedness Framework的Critical网络安全能力等级。",
+        "locator": "页首日期L13；发布首段L24",
+        "boundary": "厂商声明；Critical是特定框架的网络安全等级，不是通用能力评分。",
         "effect": "support",
-        "review": "核对本题所需原文、日期、数值与限制；不把相关性升级为事件因果。"
+        "review": "核对9月3日正文和模型名称；仅确认发布事件与厂商评估分类。"
       },
       {
+        "revision_id": "edit_20260924T091813_4ec5e2d5",
+        "l3_plan_id": "l3rp_F1_1_2_edit_20260924T091813_4ec5e2d5",
+        "l3_node_id": "F1.1.2",
+        "question_node_id": "F1.1.2",
+        "question_level": 3,
+        "research_step_id": "question:F1.1.2",
+        "search_run_id": "search_edit_20260924T091813_4ec5e2d5_F1.1.2",
+        "recorded_at": "2026-09-24T09:26:19.488726+00:00",
+        "source": "S_R98_03",
+        "source_id": "S_R98_03",
+        "extraction_id": "ex_edit_20260924T091813_4ec5e2d5_2",
+        "review_id": "review_edit_20260924T091813_4ec5e2d5_2",
+        "source_extraction_id": "ex_edit_20260924T091813_4ec5e2d5_2",
+        "source_review_id": "review_edit_20260924T091813_4ec5e2d5_2",
+        "fact": "Artificial Analysis报告Astra（max）Intelligence Index为53，较GPT-5.6 Sol（max）高6分；Codex中的Coding Agent Index为62，对Sol为55。",
+        "locator": "Intelligence Index L21；Coding Agent Index L30",
+        "boundary": "两套指数不可相加，也不等同生产任务成功率。",
+        "effect": "support",
+        "review": "重新核读9月9日文章；62对应Codex环境，综合指数提升不能证明每项任务提升。"
+      },
+      {
+        "revision_id": "edit_20260924T091813_4ec5e2d5",
+        "l3_plan_id": "l3rp_F1_1_2_edit_20260924T091813_4ec5e2d5",
+        "l3_node_id": "F1.1.2",
+        "question_node_id": "F1.1.2",
+        "question_level": 3,
+        "research_step_id": "question:F1.1.2",
+        "search_run_id": "search_edit_20260924T091813_4ec5e2d5_F1.1.2",
+        "recorded_at": "2026-09-24T09:26:19.488726+00:00",
+        "source": "S_R98_03",
+        "source_id": "S_R98_03",
+        "extraction_id": "ex_edit_20260924T091813_4ec5e2d5_3",
+        "review_id": "review_edit_20260924T091813_4ec5e2d5_3",
+        "source_extraction_id": "ex_edit_20260924T091813_4ec5e2d5_3",
+        "source_review_id": "review_edit_20260924T091813_4ec5e2d5_3",
+        "fact": "Coding Agent Index的Terminal-Bench v4.0成绩为Astra 56%、Sol 37%；DeepSWE为Astra 68%、Sol 72%；GDPval-AA v2相对Sol约下降45 Elo。",
+        "locator": "Coding Agent Index L30；GDPval-AA v2 L27",
+        "boundary": "采用编码Agent口径；不混入Intelligence Index的59%/40%口径；Elo不是百分比。",
+        "effect": "refute",
+        "review": "逐项核读L26、L27、L30以区分两套Terminal-Bench口径，保留负向结果。"
+      },
+      {
+        "revision_id": "edit_20260924T091813_4ec5e2d5",
+        "l3_plan_id": "l3rp_F1_1_2_edit_20260924T091813_4ec5e2d5",
+        "l3_node_id": "F1.1.2",
+        "question_node_id": "F1.1.2",
+        "question_level": 3,
+        "research_step_id": "question:F1.1.2",
+        "search_run_id": "search_edit_20260924T091813_4ec5e2d5_F1.1.2",
+        "recorded_at": "2026-09-24T09:26:19.488726+00:00",
         "source": "S103",
-        "locator": "Astra Results 表、Two Harnesses",
-        "fact": "标准max 62.7%、$26,098；Provider Adapter high 99.9%、$18,817。",
-        "boundary": "框架和推理档位不同；费用为整套评测，不是普通单任务报价。",
+        "source_id": "S103",
+        "extraction_id": "ex_edit_20260924T091813_4ec5e2d5_4",
+        "review_id": "review_edit_20260924T091813_4ec5e2d5_4",
+        "source_extraction_id": "ex_edit_20260924T091813_4ec5e2d5_4",
+        "source_review_id": "review_edit_20260924T091813_4ec5e2d5_4",
+        "fact": "ARC-AGI-3 Semi-Private中，Astra在max下Standard框架为62.7%、Provider Adapter为98.6%；high下分别为54.8%和99.9%。",
+        "locator": "Published 03 Sep 2026 L85；Astra Results表L112—L118",
+        "boundary": "同模型同推理档位比较；确定性封闭游戏不代表现实工作成功率。",
         "effect": "boundary",
-        "review": "核对本题所需原文、日期、数值与限制；不把相关性升级为事件因果。"
+        "review": "独立重读表格，max与high各自横比；避免把62.7%对99.9%写成仅改变框架的控制实验。"
       },
       {
-        "source": "S114",
-        "locator": "Astra 问答开头",
-        "fact": "训练规模超过100,000 GPU；不公开内部架构。",
-        "boundary": "管理层自述，非成本审计；不能推算参数或GPU小时。",
+        "revision_id": "edit_20260924T091813_4ec5e2d5",
+        "l3_plan_id": "l3rp_F1_1_2_edit_20260924T091813_4ec5e2d5",
+        "l3_node_id": "F1.1.2",
+        "question_node_id": "F1.1.2",
+        "question_level": 3,
+        "research_step_id": "question:F1.1.2",
+        "search_run_id": "search_edit_20260924T091813_4ec5e2d5_F1.1.2",
+        "recorded_at": "2026-09-24T09:26:19.488726+00:00",
+        "source": "S103",
+        "source_id": "S103",
+        "extraction_id": "ex_edit_20260924T091813_4ec5e2d5_5",
+        "review_id": "review_edit_20260924T091813_4ec5e2d5_5",
+        "source_extraction_id": "ex_edit_20260924T091813_4ec5e2d5_5",
+        "source_review_id": "review_edit_20260924T091813_4ec5e2d5_5",
+        "fact": "ARC Prize说明Provider Adapter保留跨请求的内部推理状态并压缩长对话；该组织明确表示基准饱和不等于证明实现AGI。",
+        "locator": "Two Harnesses, Two Questions L162—L165；ARC-AGI Series L169—L171",
+        "boundary": "框架效应与能力共同作用；评测不覆盖现实世界开放性。",
         "effect": "boundary",
-        "review": "核对本题所需原文、日期、数值与限制；不把相关性升级为事件因果。"
+        "review": "核读作者机制说明与限制；未使用当前排行榜的新模型或后续结果。"
+      },
+      {
+        "revision_id": "edit_20260924T091813_4ec5e2d5",
+        "l3_plan_id": "l3rp_F1_1_2_edit_20260924T091813_4ec5e2d5",
+        "l3_node_id": "F1.1.2",
+        "question_node_id": "F1.1.2",
+        "question_level": 3,
+        "research_step_id": "question:F1.1.2",
+        "search_run_id": "search_edit_20260924T091813_4ec5e2d5_F1.1.2",
+        "recorded_at": "2026-09-24T09:26:19.488726+00:00",
+        "source": "S_R4EC_01",
+        "source_id": "S_R4EC_01",
+        "extraction_id": "ex_edit_20260924T091813_4ec5e2d5_6",
+        "review_id": "review_edit_20260924T091813_4ec5e2d5_6",
+        "source_extraction_id": "ex_edit_20260924T091813_4ec5e2d5_6",
+        "source_review_id": "review_edit_20260924T091813_4ec5e2d5_6",
+        "fact": "Entelligence在50个PR的单次diff-only评测中报告：Astra有91个经双裁判确认的缺陷、精确率95%；Sol为107个、85%。",
+        "locator": "What we measured L69、L77；Result表L90—L93；限制L141—L145",
+        "boundary": "五个代码库、植入缺陷、单种子无方差估计；双裁判也是被测模型，不是独立人类验收。",
+        "effect": "refute",
+        "review": "核对日期、样本与裁判定义；确认指模型裁判一致。不使用严重度表：其总数与主表不同，原文未清晰说明分母。"
+      },
+      {
+        "revision_id": "edit_20260924T091813_4ec5e2d5",
+        "l3_plan_id": "l3rp_F1_1_2_edit_20260924T091813_4ec5e2d5",
+        "l3_node_id": "F1.1.2",
+        "question_node_id": "F1.1.2",
+        "question_level": 3,
+        "research_step_id": "question:F1.1.2",
+        "search_run_id": "search_edit_20260924T091813_4ec5e2d5_F1.1.2",
+        "recorded_at": "2026-09-24T09:26:19.488726+00:00",
+        "source": "S_R98_01",
+        "source_id": "S_R98_01",
+        "extraction_id": "ex_edit_20260924T091813_4ec5e2d5_7",
+        "review_id": "review_edit_20260924T091813_4ec5e2d5_7",
+        "source_extraction_id": "ex_edit_20260924T091813_4ec5e2d5_7",
+        "source_review_id": "review_edit_20260924T091813_4ec5e2d5_7",
+        "fact": "OpenAI称在超过54,000个内部Codex任务的模拟中，Astra的较严重失配标记约为Sol一半；同时称Astra在对抗条件下的可监控性下降。",
+        "locator": "第3项L31—L32；第5项L35—L38",
+        "boundary": "内部模拟及对抗试验两种口径；标记不是生产事故率，对抗行为不等于默认行为。",
+        "effect": "boundary",
+        "review": "同时核读正向安全结果与反向监控结果，两者并不矛盾，不只摘录更安全或更危险。"
       }
     ],
-    "gaps": [],
-    "refutation": "独立评测有退步项；不同框架产生显著差异，反对无条件能力外推。",
+    "gaps": [
+      "缺目标生产工作流在相同权限、工具、验收标准下的重复运行成功率、严重错误率及人工复核负担。",
+      "现有原文不足以量化评测差异的统计显著性；代码审查样本缺独立人类裁判与重复种子。"
+    ],
+    "refutation": "逐题反向搜索并打开原文：AA的DeepSWE为68%对72%，GDPval-AA v2约下降45 Elo；ARC同模型换框架成绩明显不同；Entelligence样本中Astra确认91个缺陷少于Sol的107个，但精确率更高。官方同时披露对抗条件下可监控性下降。未找到足以保证生产可靠性的重复试验证据。",
     "next_actions": [
-      "以应用实际任务复验；未知架构留空，不继续空泛下钻。"
+      "下一执行节点F1.1.2：补截止日前可核查的同任务重复评测、配置和独立验收记录；如无则保留阻塞，不新增问题。"
+    ],
+    "gate_reason": "缺目标生产工作流在相同权限、工具、验收标准下的重复运行成功率、严重错误率及人工复核负担。；现有原文不足以量化评测差异的统计显著性；代码审查样本缺独立人类裁判与重复种子。",
+    "support": [
+      "OpenAI于2026-09-03发布GPT-6 Astra，并称其达到该公司Preparedness Framework的Critical网络安全能力等级。",
+      "Artificial Analysis报告Astra（max）Intelligence Index为53，较GPT-5.6 Sol（max）高6分；Codex中的Coding Agent Index为62，对Sol为55。"
     ],
     "searches": [
-      "F1.1.2：独立打开AA 9/9评测、ARC 9/3原文和Brockman 9/4访谈；重点核对失败项、设置差异及未披露架构。"
-    ],
-    "support": [
-      "Terminal-Bench 59/40；AutomationBench-AA 69/60；Coding Agent设置DeepSWE 68/72（Astra/Sol）。"
-    ],
-    "gate_reason": "本题限定的事实与比较已核实，反证不推翻其边界内答案。"
+      "GPT-6 Astra evaluation (domains: developers.openai.com, platform.openai.com)",
+      "site:openai.com GPT-6 Astra release evaluation before:2026-09-11",
+      "GPT-6 Astra benchmark evaluation September 2026 before:2026-09-11",
+      "GPT-6 Astra regression limitations DeepSWE GDPval before:2026-09-11",
+      "site:arcprize.org GPT-6 Astra September 3 2026 62.7 99.9 before:2026-09-11",
+      "site:artificialanalysis.ai/articles/benchmarking-gpt-6-astra DeepSWE GDPval September 9 2026",
+      "site:arcprize.org \"Astra\"",
+      "site:entelligence.ai \"gpt-6-astra-cost-1.6x\""
+    ]
   },
   {
     "id": "F1.1.3",
     "l3_id": "F1.1.3",
-    "conclusion": "API单价上涨是事实，完成合格任务是否更便宜则因场景而异；训练总成本和单位推理成本仍无法可靠定量。",
+    "conclusion": "Astra的token单价高于Sol，较少token用量并未使相对前代的任务费用普遍降低；企业合格任务总成本和厂商利润仍无法确定。",
     "passed": false,
     "analysis": [
       {
-        "heading": "先把四种成本分开",
+        "heading": "单价、任务费用与厂商成本是三个问题",
         "paragraphs": [
-          "历史定价对照为：Sol每百万输入/输出token 4/20美元，Astra为10/50美元，均是2.5倍；这属于销售价格，不是OpenAI的生产成本。[S104] 客户付出的总成本还要加工具调用、失败重试、集成和人工验收。训练投入则是另一笔前期投资，不能直接由API报价倒算。",
-          "在输入输出比例、缓存和质量不变的简化条件下，调用费用要不增加，计费token需降到原来的40%以下。比如旧任务消耗10万输入与2万输出token，费用为0.8美元；Astra等量调用为2美元，token同时降至40%才回到0.8美元。这里的任务量是假设，用于说明门槛，不是实测。"
-        ],
-        "tables": [
-          {
-            "caption": "报价与简化测算：美元；历史单价据[S104]，任务token为研究假设。",
-            "headers": [
-              "方案",
-              "输入token",
-              "输出token",
-              "费用"
-            ],
-            "rows": [
-              [
-                "Sol基线",
-                "100,000",
-                "20,000",
-                "0.80"
-              ],
-              [
-                "Astra等量",
-                "100,000",
-                "20,000",
-                "2.00"
-              ],
-              [
-                "Astra均降至40%",
-                "40,000",
-                "8,000",
-                "0.80"
-              ]
-            ]
-          }
+          "9月9日的评测记录Astra输入和输出单价为每百万token 10和50美元，Sol为4和20美元；Intelligence Index的max任务费用约高60%，编码Agent任务为7.09美元、约高15%。[S_R98_03] 更少token并不自动意味着相对前代更便宜；不同任务集合的费用不能混合平均，也不能当成企业预算降幅。",
+          "若只比较相同输入输出构成、无缓存差异的计费量，单价2.5倍意味着计费量须降至原来的40%才使调用费持平；这是10÷4及1÷2.5的条件计算，不是观测到的节省。实际合格任务还包括失败重试、人工检查和集成，质量提升可能减少这些费用，也可能因难例和权限限制增加复核，当前资料不能确定净方向。",
+          "厂商成本不能用客户账单替代。9月3日官方说明外部工具推理加入监控并产生显著算力开销，没有提供可用于本题核算的金额。[S_R98_01] token减少与监控增加可能同时发生，无法据此推算服务毛利或训练投资回收。成本题未充分，父题应保留采用速度和盈利传导的不确定性，继续补实际任务账单及资源数据。"
         ]
-      },
-      {
-        "heading": "是否划算，最终取决于省掉多少返工",
-        "paragraphs": [
-          "微软公布的SPFx升级配对样本中，两模型质量分数均98%，Sonnet 4.6为1.03美元、Astra为2.49美元；有迁移技能的JDK任务则为97%/93%、12.71/67.33美元。[S105] 这些不是五次运行的平均值，也不是成功概率，但至少是“贵模型未必更经济”的实际反例。",
-          "取第一个样本，额外API费用为1.46美元。若人工完全成本假设为60美元/小时，只需净减少1.46分钟返工便可抵消；若为30美元/小时，则需2.92分钟。原文没有量出这项人工节约，因此两种结论都不能抢跑：不能仅因调用更贵就说用户一定亏，也不能凭感觉说少返工足以覆盖。合格任务总成本必须在固定验收标准下测量。"
-        ],
-        "tables": []
-      },
-      {
-        "heading": "厂商成本：有资源线索，没有完整成本表",
-        "paragraphs": [
-          "训练规模超过10万GPU只提供设备规模，不提供运行小时、采购/租赁价格、失败实验和研发费用。[S114] 训练总成本至少还依赖GPU小时、资源单价以及数据与人员投入。把GPU数量乘市场整机售价，会把拥有设备的资本支出错当一次训练费用。",
-          "另一个常被漏掉的变量是安全开销。OpenAI在8月18日估计，监控开销约为被监控推理算力的20%，且训练和评估工作负载间差异很大。[S113] 这不是每个生产API请求固定加20%的证明，却说明更少的输出token不必然对应同比例更少的服务算力。本题的未知是单位合格任务的全成本及厂商资源成本；需要实际遥测或披露，不需要再增加抽象层级。"
-        ],
-        "tables": []
       }
     ],
     "evidence": [
       {
-        "source": "S104",
-        "locator": "价格段",
-        "fact": "Sol 4/20美元、Astra 10/50美元每百万输入/输出token。",
-        "boundary": "历史Standard价格；未纳入缓存、工具及不同服务档位。",
-        "effect": "support",
-        "review": "核对本题所需原文、日期、数值与限制；不把相关性升级为事件因果。"
-      },
-      {
-        "source": "S105",
-        "locator": "What the upgrade buys you 表",
-        "fact": "SPFx同CLI：98/98分，$1.03/$2.49；JDK同skill：97/93分，$12.71/$67.33（Sonnet/Astra）。",
-        "boundary": "公布的是配对单次样本而非均值；质量分数不是成功率。",
+        "revision_id": "edit_20260924T084930_98e31175",
+        "l3_plan_id": "l3rp_F1_1_3_edit_20260924T084930_98e31175_v2",
+        "l3_node_id": "F1.1.3",
+        "question_node_id": "F1.1.3",
+        "question_level": 3,
+        "research_step_id": "question:F1.1.3",
+        "search_run_id": "search_edit_20260924T084930_98e31175_F1.1.3_v2",
+        "recorded_at": "2026-09-24T08:58:45.887445+00:00",
+        "source": "S_R98_03",
+        "source_id": "S_R98_03",
+        "extraction_id": "ex_edit_20260924T084930_98e31175_F1.1.3_1_v2",
+        "review_id": "review_edit_20260924T084930_98e31175_F1.1.3_1_v2",
+        "source_extraction_id": "ex_edit_20260924T084930_98e31175_F1.1.3_1_v2",
+        "source_review_id": "review_edit_20260924T084930_98e31175_F1.1.3_1_v2",
+        "locator": "定价段L16；成本前沿L22、L31",
+        "fact": "Astra输入/输出报价为每百万token 10/50美元，Sol为4/20美元；max下Intelligence Index任务费用约高60%，编码Agent任务7.09美元、约高15%。",
+        "boundary": "同期评测；不同任务集合不可相加，不含人工、集成与全部合同条件。",
         "effect": "refute",
-        "review": "核对本题所需原文、日期、数值与限制；不把相关性升级为事件因果。"
+        "review": "GPT independently checked the opened original, publication date, exact comparison and stated boundary; accepted only dated body text visible by cutoff. This does not close the remaining question gaps."
       },
       {
-        "source": "S114",
-        "locator": "Astra 问答",
-        "fact": "披露超过10万GPU训练规模，未给训练成本。",
-        "boundary": "规模不等于GPU小时、训练花费或资本开支。",
+        "revision_id": "edit_20260924T084930_98e31175",
+        "l3_plan_id": "l3rp_F1_1_3_edit_20260924T084930_98e31175_v2",
+        "l3_node_id": "F1.1.3",
+        "question_node_id": "F1.1.3",
+        "question_level": 3,
+        "research_step_id": "question:F1.1.3",
+        "search_run_id": "search_edit_20260924T084930_98e31175_F1.1.3_v2",
+        "recorded_at": "2026-09-24T08:58:45.887445+00:00",
+        "source": "S_R98_01",
+        "source_id": "S_R98_01",
+        "extraction_id": "ex_edit_20260924T084930_98e31175_F1.1.3_2_v2",
+        "review_id": "review_edit_20260924T084930_98e31175_F1.1.3_2_v2",
+        "source_extraction_id": "ex_edit_20260924T084930_98e31175_F1.1.3_2_v2",
+        "source_review_id": "review_edit_20260924T084930_98e31175_F1.1.3_2_v2",
+        "locator": "第4项部署监控，L33—L34",
+        "fact": "OpenAI称Astra外部部署的工具推理加入失配监控，带来显著算力成本。",
+        "boundary": "只披露方向，未给金额，不能推算厂商单位成本或毛利。",
         "effect": "boundary",
-        "review": "核对本题所需原文、日期、数值与限制；不把相关性升级为事件因果。"
-      },
-      {
-        "source": "S113",
-        "locator": "Expanding chain-of-thought monitoring",
-        "fact": "估计监控开销约为所监控推理算力的20%，因工作负载而异。",
-        "boundary": "研发/评估背景，不当作生产API统一附加费。",
-        "effect": "boundary",
-        "review": "核对本题所需原文、日期、数值与限制；不把相关性升级为事件因果。"
+        "review": "GPT independently checked the opened original, publication date, exact comparison and stated boundary; accepted only dated body text visible by cutoff. This does not close the remaining question gaps."
       }
     ],
     "gaps": [
-      "缺少同验收标准的重试、人工复核、集成摊销与时延数据。",
-      "缺少训练GPU小时及厂商单位推理成本，不能计算厂商Astra毛利率。"
+      "缺生产任务的重试、人工验收、集成摊销与时延成本。",
+      "缺训练、推理及监控开销的金额或单位成本。",
+      "需官方历史价目存档；同期独立评测不覆盖全部合同折扣和计费条件。"
     ],
-    "refutation": "任务实测出现高费用而质量无优势；监控与环境成本使token效率不能直接替代总体经济性。",
+    "refutation": "同期评测中Astra相对Sol的Intelligence Index任务费用约高60%，编码任务约高15%；官方称工具推理监控有显著算力成本。",
     "next_actions": [
-      "收集同一工作流新旧模型的完整费用、验收率与人工分钟；等待厂商成本披露。"
+      "同一验收标准下补任务账单、失败重试及人工工时，取得历史官方价目与厂商成本披露。"
     ],
+    "gate_reason": "缺生产任务的重试、人工验收、集成摊销与时延成本。；缺训练、推理及监控开销的金额或单位成本。；需官方历史价目存档；同期独立评测不覆盖全部合同折扣和计费条件。",
+    "support": [],
     "searches": [
-      "F1.1.3：核对AA历史报价及微软9/9任务成本反例；检索并打开OpenAI 8/18监控开销原文、训练规模访谈，查是否有可用总成本。"
-    ],
-    "support": [
-      "Sol 4/20美元、Astra 10/50美元每百万输入/输出token。"
-    ],
-    "gate_reason": "已有阶段性判断，但缺口仍影响幅度、兑现或投资价值，不能视为回答充分。"
+      "GPT-6 Astra pricing cost per task September 2026 before:2026-09-11",
+      "GPT-6 Astra expensive cost tokens benchmark before:2026-09-11",
+      "GPT-6 Astra pricing cost per task September 2026 before:2026-09-11",
+      "GPT-6 Astra expensive cost tokens benchmark before:2026-09-11"
+    ]
   },
   {
     "id": "F1.2.1",
