@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 from typing import Any
 
+from value_invest_research.domain.research_answer import answer_contract
 
 INFO_CATEGORIES = ["evidence", "research_report", "message", "opinion"]
 
@@ -66,6 +67,7 @@ def build_leaf_task(
         "node_id": node_id,
         "section_id": node.get("section_id", ""),
         "question": question,
+        "answer_contract": answer_contract(),
         "parent_id": parent.get("id", ""),
         "parent_question": parent_question,
         "framework_context": framework_context(qa_tree, node, parent),

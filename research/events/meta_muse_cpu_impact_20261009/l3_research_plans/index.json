@@ -1,0 +1,108 @@
+{
+  "execution_policy": {
+    "branch_creation": "only_after_failed_answerability_gate",
+    "broad_material_pool": "candidate_only_not_completion_evidence",
+    "executable_unit": "current_terminal_question",
+    "initial_depth": "L3_only",
+    "l3_completion": "current_question_or_required_descendants_complete",
+    "material_collection": "active_question_search_only",
+    "planning_unit": "one_independent_plan_per_l3",
+    "question_tree": "adaptive_depth_max_5"
+  },
+  "parent_research_plan_id": "rp_edit_20261009T095113_fd9815e7",
+  "plan_type": "l3_deep_research_index",
+  "plans": [
+    {
+      "active_steps": 1,
+      "event_path": "l3_research_plans/O1/research_step_events.jsonl",
+      "l3_node_id": "O1",
+      "l3_plan_id": "l3rp_o1_edit_20261009T075817_8089e507",
+      "leaf_steps": 1,
+      "max_depth": 3,
+      "path": "l3_research_plans/O1/research_plan.json"
+    },
+    {
+      "active_steps": 1,
+      "event_path": "l3_research_plans/O2/research_step_events.jsonl",
+      "l3_node_id": "O2",
+      "l3_plan_id": "l3rp_o2_edit_20261009T090937_a1258264",
+      "leaf_steps": 1,
+      "max_depth": 3,
+      "path": "l3_research_plans/O2/research_plan.json"
+    },
+    {
+      "active_steps": 1,
+      "event_path": "l3_research_plans/D1/research_step_events.jsonl",
+      "l3_node_id": "D1",
+      "l3_plan_id": "l3rp_d1_edit_20261009T092333_321fabff",
+      "leaf_steps": 1,
+      "max_depth": 3,
+      "path": "l3_research_plans/D1/research_plan.json"
+    },
+    {
+      "active_steps": 1,
+      "event_path": "l3_research_plans/D2/research_step_events.jsonl",
+      "l3_node_id": "D2",
+      "l3_plan_id": "l3rp_d2_edit_20261009T092333_321fabff",
+      "leaf_steps": 1,
+      "max_depth": 3,
+      "path": "l3_research_plans/D2/research_plan.json"
+    },
+    {
+      "active_steps": 1,
+      "event_path": "l3_research_plans/T1/research_step_events.jsonl",
+      "l3_node_id": "T1",
+      "l3_plan_id": "l3rp_t1_edit_20261009T092333_321fabff",
+      "leaf_steps": 1,
+      "max_depth": 3,
+      "path": "l3_research_plans/T1/research_plan.json"
+    },
+    {
+      "active_steps": 1,
+      "event_path": "l3_research_plans/C0/research_step_events.jsonl",
+      "l3_node_id": "C0",
+      "l3_plan_id": "l3rp_c0_edit_20261009T095113_fd9815e7",
+      "leaf_steps": 1,
+      "max_depth": 3,
+      "path": "l3_research_plans/C0/research_plan.json"
+    },
+    {
+      "active_steps": 1,
+      "event_path": "l3_research_plans/AMD/research_step_events.jsonl",
+      "l3_node_id": "AMD",
+      "l3_plan_id": "l3rp_amd_edit_20261009T095113_fd9815e7",
+      "leaf_steps": 1,
+      "max_depth": 3,
+      "path": "l3_research_plans/AMD/research_plan.json"
+    },
+    {
+      "active_steps": 1,
+      "event_path": "l3_research_plans/INTC/research_step_events.jsonl",
+      "l3_node_id": "INTC",
+      "l3_plan_id": "l3rp_intc_edit_20261009T095113_fd9815e7",
+      "leaf_steps": 1,
+      "max_depth": 3,
+      "path": "l3_research_plans/INTC/research_plan.json"
+    },
+    {
+      "active_steps": 1,
+      "event_path": "l3_research_plans/ARM/research_step_events.jsonl",
+      "l3_node_id": "ARM",
+      "l3_plan_id": "l3rp_arm_edit_20261009T095113_fd9815e7",
+      "leaf_steps": 1,
+      "max_depth": 3,
+      "path": "l3_research_plans/ARM/research_plan.json"
+    },
+    {
+      "active_steps": 1,
+      "event_path": "l3_research_plans/NVDA/research_step_events.jsonl",
+      "l3_node_id": "NVDA",
+      "l3_plan_id": "l3rp_nvda_edit_20261009T095113_fd9815e7",
+      "leaf_steps": 1,
+      "max_depth": 3,
+      "path": "l3_research_plans/NVDA/research_plan.json"
+    }
+  ],
+  "revision_id": "edit_20261009T095113_fd9815e7",
+  "schema_version": "4.0"
+}

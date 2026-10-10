@@ -1,0 +1,30 @@
+{
+  "revision_id": "edit_20261009T092333_321fabff",
+  "l3_plan_id": "l3rp_d2_edit_20261009T092333_321fabff",
+  "l3_node_id": "D2",
+  "question_node_id": "D2",
+  "question_level": 3,
+  "research_step_id": "question:D2",
+  "search_run_id": "edit_20261009T092333_321fabff_D2_01",
+  "recorded_at": "2026-10-09T09:38:37.743327+00:00",
+  "question": "Muse 对服务器 CPU 市场的增量有多大？",
+  "queries": [
+    "Muse CPU incremental demand 2026 AMD 220 billion 2030 overcapacity",
+    "site.ir.amd.com 2026 second quarter 220 billion server CPU 70%",
+    "Meta Muse CPU incremental orders September October 2026 unused capacity demand uncertainty"
+  ],
+  "source_ids": [
+    "S01",
+    "S02",
+    "EA125_STARK",
+    "E321_SCENARIO",
+    "E321_MAY",
+    "E321_Q2",
+    "E321_AAI"
+  ],
+  "origin": "active_question_search",
+  "status": "searched_and_sources_opened_with_recorded_failures",
+  "refutation_result": "反向检索与8月AMD原始电话会显示发布前CPU销售已增长且上半年供给已紧张；原始156万估算明示不超配强假设。未找到Muse专项采购或存量吸收率，不能认定净新增或把涨价归因于Muse。",
+  "reviewer": "GPT primary agent",
+  "open_method": "web search; original page open and find; Q2 PDF linked by AMD official calendar"
+}

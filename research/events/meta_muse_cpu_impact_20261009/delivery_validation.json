@@ -1,0 +1,9 @@
+{
+  "visual_preview": "not_completed",
+  "browser_policy": "Local file URL was blocked by Browser Use URL security policy; no workaround attempted.",
+  "headless_renderer": "Bundled Playwright browser executable absent.",
+  "static_html_contract": "passed",
+  "html_markdown_claim_parity": "passed",
+  "scenario_recalculation": "passed",
+  "source_trace_and_cutoff": "passed"
+}

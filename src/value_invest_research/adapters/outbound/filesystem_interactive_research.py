@@ -9,8 +9,9 @@ import shutil
 import tempfile
 import uuid
 
-from value_invest_research.domain.interactive_research import validate_researched_tree, validate_research_state
+from value_invest_research.domain.interactive_research import validate_researched_tree, validate_research_state, validate_qa_tree
 from value_invest_research.domain.report_view_model import ReportViewModel
+from value_invest_research.domain.research_answer import ANSWER_PROTOCOL, validate_answer_review
 from value_invest_research.domain.research_plan import validate_research_plan_execution
 from value_invest_research.adapters.outbound.filesystem_research_plan import FileSystemResearchPlanRepository
 from value_invest_research.application.use_cases.research_plan_execution import ValidateResearchPlanExecution
@@ -129,7 +130,7 @@ class FileSystemInteractiveResearch:
             for destination in (folder / "before" / name, workspace / "project" / name):
                 destination.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(path, destination)
-        job = {"id": identifier, "status": "queued", "message": "等待研究执行",
+        job = {"id": identifier, "status": "queued", "message": "等待研究执行", "answer_protocol": ANSWER_PROTOCOL,
                "created_at": datetime.now(timezone.utc).isoformat(), "workspace": str(workspace),
                "audit_dir": str(folder),
                "proposal": proposal, "baseline": hashes(self.project)}
@@ -159,6 +160,10 @@ class FileSystemInteractiveResearch:
                 raise ValueError(f"候选写入超出研究数据范围：{name}")
         tree = read(stage / "question_tree_report.json")
         validate_researched_tree(read(before / "question_tree_report.json"), job["proposal"], tree)
+        if job.get("answer_protocol") == ANSWER_PROTOCOL:
+            nodes = {n["id"]: n for n in tree["nodes"]}
+            for nid in job["proposal"]["research_ids"]:
+                validate_answer_review(nodes[nid])
         if (stage / "research_state.json").exists():
             validate_research_state(read(stage / "research_state.json"), tree, job["id"])
         vm = ReportViewModel(**read(stage / "report_view_model.json"))
@@ -167,10 +172,7 @@ class FileSystemInteractiveResearch:
         project = read(stage / "project.json")
         if project.get("question_tree") != tree:
             raise ValueError("project.json 的问题树未同步。")
-        qa = {n["id"]: n for n in read(stage / "qa_tree.json")["nodes"]}
-        if set(qa) != {n["id"] for n in tree["nodes"]} or any(
-            any(qa[n["id"]].get(k) != n.get(k) for k in ("question", "parent_id", "level")) for n in tree["nodes"]):
-            raise ValueError("研究 QA 与显示问题树不一致。")
+        validate_qa_tree(read(stage / "qa_tree.json"), tree)
         original_project = read(before / "project.json")
         for field in ("as_of_date", "run_mode", "project_id"):
             if vm.project.get(field) != original_project.get(field) or project.get(field) != original_project.get(field):
@@ -208,6 +210,10 @@ class FileSystemInteractiveResearch:
               "created_at": job["created_at"], "as_of_date": tree["as_of_date"],
               "prior_tree_sha256": job["baseline"]["question_tree_report.json"]})
         atomic(revision / "before_question_tree.json", (before / "question_tree_report.json").read_bytes())
+        for nid in job["proposal"]["research_ids"]:
+            original = Path(job["audit_dir"]) / "direct_answers" / f"{nid}.md"
+            if original.is_file():
+                atomic(revision / "direct_answers" / f"{nid}.md", original.read_bytes())
         self._publish(job, stage, before)
 
     def _validate_fresh_evidence(self, stage, before, job, tree):

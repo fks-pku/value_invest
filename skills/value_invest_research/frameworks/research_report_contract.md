@@ -30,9 +30,17 @@ and link directly to project-local PDF originals. Presentation JavaScript may
 enhance navigation but may not hide research content or fetch evidence at runtime.
 Markdown remains readable as plain text.
 
-When the user requests interactive research, a separate loopback workbench may edit
-questions, preview invalidation, poll real research jobs and embed this canonical
-snapshot. It must not redefine the static report profile or count editing as research.
+Default report opening is editable. Start or reuse the target project's loopback
+workbench, verify `/api/state` matches that project, and open
+`http://127.0.0.1:<port>/professional_report.html`. Both this route and `/` serve the
+editor; `/professional_report.offline.html` serves the explicit offline export.
+The on-disk `professional_report.html` remains the canonical self-contained snapshot,
+but `file://` is not the default delivery/opening entry. Do not silently reuse a port
+serving another project. If a legacy profile lacks editing support or the service
+cannot start, state the limitation instead of calling a static preview editable.
+
+The workbench may edit questions, preview invalidation, poll real research jobs and
+embed the canonical snapshot. It must not redefine the static report profile or count editing as research.
 New versions publish only after question-specific evidence/plan checks; failed or
 cancelled jobs keep the prior report. The workbench marks pending questions explicitly
 and never displays a prior answer as the answer to a newly edited question.
@@ -69,15 +77,25 @@ Parents have exactly three numbered modules at every level, in order:
 
 Leaves have exactly three numbered modules, in order:
 
-1. `核心观点`: directly answer the question with its material boundary.
-2. `关键论证`: continuous professional prose connecting decisive data, calculations,
-   causal reasoning and refutation to the viewpoint. Keep necessary charts beside
-   arguments. Compact sufficiency, gaps and next actions belong at its end.
+1. `核心观点`: give a substantive, direct answer to the complete question with any
+   decisive qualification. This is an answer, not a report-purpose statement.
+2. `关键论证`: expand that answer as a standalone article. Use question-specific
+   subheadings, concrete facts, explanations, examples, lists or comparison tables
+   as appropriate. Causal reasoning, calculations and refutation are included when
+   needed to answer the question, not compulsory paragraphs for every topic.
+   Keep sources beside facts. Parent/investment implications follow the actual
+   answer. Compact material gaps belong at the end; do not narrate workflow or
+   explain that the branch is stopping instead of answering it.
 3. `数据列表`: question-specific observed data/facts, linked sources, dates, original
    locators, effects and limitations. Show a truthful empty state if evidence is absent.
    A required-data/search checklist is not collected data.
 
 No empty child-question module or fourth assessment module is permitted on a leaf.
+The `direct-answer-v1` workflow drafts an independent sourced answer before report
+assembly. Preserve its verified substance during assembly; HTML must not be a
+compressed investment abstract of a better answer. Its internal `answer_review`
+maps every material request to main prose or an explicit gap. A narrower claim,
+filled fields, word counts or citation counts cannot establish sufficiency.
 Use descriptive argument subheadings, not a mechanical sequence of field panels.
 Key data and their sources remain visible alongside the prose; a supporting
 evidence table retains source/date, original locator, fact, effect and limitations.

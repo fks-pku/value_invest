@@ -45,7 +45,7 @@ def handler_for(service, project, token):
                 return self.respond({"error": "仅允许本机同源访问。"}, 403)
             path = unquote(urlsplit(self.path).path)
             try:
-                if path == "/":
+                if path in {"/", "/professional_report.html"}:
                     return self.respond((ASSETS / "researcher.html").read_text().replace("__CSRF_TOKEN__", token), mime="text/html; charset=utf-8")
                 if path in {"/assets/researcher.js", "/assets/researcher.css"}:
                     name = path.rsplit("/", 1)[1]
@@ -59,7 +59,7 @@ def handler_for(service, project, token):
                     return self.respond(state)
                 if path == "/api/process":
                     return self.respond(service.process())
-                if path in {"/report", "/professional_report.html"}:
+                if path in {"/report", "/professional_report.offline.html"}:
                     with service.lock:
                         html = (project / "professional_report.html").read_text()
                     if path == "/report":
@@ -126,7 +126,7 @@ def main():
             parser.error("该项目的研究器已经运行。")
         service = InteractiveResearch(FileSystemInteractiveResearch(project), CodexResearchRunner(root))
         server = ThreadingHTTPServer(("127.0.0.1", args.port), handler_for(service, project, secrets.token_hex(32)))
-        print(f"研究器已启动：http://127.0.0.1:{server.server_port} · {project.name}", flush=True)
+        print(f"可编辑报告：http://127.0.0.1:{server.server_port}/professional_report.html · {project.name}", flush=True)
         try:
             server.serve_forever(poll_interval=.5)
         except KeyboardInterrupt:

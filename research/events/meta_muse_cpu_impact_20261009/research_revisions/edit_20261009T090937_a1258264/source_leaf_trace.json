@@ -1,0 +1,131 @@
+{
+  "revision_id": "edit_20261009T090937_a1258264",
+  "node_id": "O2",
+  "evidence": [
+    {
+      "source": "S01",
+      "fact": "Meta 于 2026 年 9 月 8 日发布由 Muse Spark 驱动的个人智能体 Muse；公告称关闭应用后它仍可继续任务，需要批准或出现变化时再联系用户。",
+      "locator": "标题日期及 How It Works，L241、254–259",
+      "boundary": "公告更新至 2026-09-30；产品设计与能力声明，不是任务成功率或 CPU 忙碌时间实测。",
+      "effect": "support",
+      "extraction_id": "edit_20261009T090937_a1258264_ext_1",
+      "review_id": "edit_20261009T090937_a1258264_review_1",
+      "search_run_id": "edit_20261009T090937_a1258264_O2_01",
+      "effective_period": "2026-09-08",
+      "target_period": ""
+    },
+    {
+      "source": "S02",
+      "fact": "Muse 的隔离 Linux VM 提供 CPU、内存与存储，用于编译代码、自建工具、并发子智能体和定时任务。",
+      "locator": "An agent in your own cloud computer，L26–28",
+      "boundary": "官方未在此披露统一 vCPU 配额或独占物理核心数。",
+      "effect": "support",
+      "extraction_id": "edit_20261009T090937_a1258264_ext_2",
+      "review_id": "edit_20261009T090937_a1258264_review_2",
+      "search_run_id": "edit_20261009T090937_a1258264_O2_01",
+      "effective_period": "2026-09-08",
+      "target_period": ""
+    },
+    {
+      "source": "S02",
+      "fact": "Muse 将运行区与权限、凭据、连接器和持久化状态服务分开，并通过推理代理访问外部基础设施；需要用户批准时执行停止。",
+      "locator": "Muse Secure VM，L41–50；Human in the Loop，L65–67",
+      "boundary": "服务隔离不说明安全模型都在 CPU 推理；执行 VM 配置不代表模型服务硬件。",
+      "effect": "boundary",
+      "extraction_id": "edit_20261009T090937_a1258264_ext_3",
+      "review_id": "edit_20261009T090937_a1258264_review_3",
+      "search_run_id": "edit_20261009T090937_a1258264_O2_01",
+      "effective_period": "2026-09-08",
+      "target_period": ""
+    },
+    {
+      "source": "S02",
+      "fact": "Muse 浏览器由独立 broker 管理，浏览器控制接口位于运行区之外。",
+      "locator": "Least Privilege，L83；Browser，L109–114",
+      "boundary": "官方说明接口隔离，并未证明浏览器始终在用户运行区内，也未披露整个浏览器池配置。",
+      "effect": "boundary",
+      "extraction_id": "edit_20261009T090937_a1258264_ext_4",
+      "review_id": "edit_20261009T090937_a1258264_review_4",
+      "search_run_id": "edit_20261009T090937_a1258264_O2_01",
+      "effective_period": "2026-09-08",
+      "target_period": ""
+    },
+    {
+      "source": "EA125_DESIGN",
+      "fact": "Muse 有文件系统、终端和浏览器，可生成文档、PDF 和网页，并按计划或相关事件推进后台任务。",
+      "locator": "Muse Is an Agent That Can Actually Do Things，L30–35；标题月份 L7",
+      "boundary": "2026 年 9 月产品设计说明；持续工作措辞不是 CPU 全天满载遥测。",
+      "effect": "support",
+      "extraction_id": "edit_20261009T090937_a1258264_ext_5",
+      "review_id": "edit_20261009T090937_a1258264_review_5",
+      "search_run_id": "edit_20261009T090937_a1258264_O2_01",
+      "effective_period": "2026-09",
+      "target_period": ""
+    },
+    {
+      "source": "EA125_DESIGN",
+      "fact": "Meta 产品设计者描述让 Muse 跟踪学校邮件和网站、将关键日期加入家庭日历并准备购物车的使用案例。",
+      "locator": "Muse Is an Agent That Can Actually Do Things，L24–27",
+      "boundary": "厂商人员的使用叙述，不是独立 CPU 性能测试或普遍成功保证。",
+      "effect": "support",
+      "extraction_id": "edit_20261009T090937_a1258264_ext_6",
+      "review_id": "edit_20261009T090937_a1258264_review_6",
+      "search_run_id": "edit_20261009T090937_a1258264_O2_01",
+      "effective_period": "2026-09",
+      "target_period": ""
+    },
+    {
+      "source": "EA125_STARK",
+      "fact": "Clinton Stark 在 9 月 22 日文章中报告 9 月 20 日一个 Muse 环境显示 2 vCPU、7.7 GB 内存和 100 GB 主目录卷；作者明确称它只是一个智能体对自身环境的测量，不是 Meta 规格承诺。",
+      "locator": "署名日期；First, the box，L23–35",
+      "boundary": "经智能体返回的单样本，未独立检查宿主机；不能外推全账户或独占物理核。",
+      "effect": "boundary",
+      "extraction_id": "edit_20261009T090937_a1258264_ext_7",
+      "review_id": "edit_20261009T090937_a1258264_review_7",
+      "search_run_id": "edit_20261009T090937_a1258264_O2_01",
+      "effective_period": "2026-09-20 单样本",
+      "target_period": ""
+    },
+    {
+      "source": "EA125_STARK",
+      "fact": "该体验记录称运行区没有本地浏览器或 GPU，浏览器 broker 会租用独立浏览器环境，模型请求经内部代理发往外部。",
+      "locator": "Then, the browser，L42–52；The brain is somewhere else entirely",
+      "boundary": "仅作者样本的可见环境；不能断定全服务无 GPU、浏览器池规模或模型服务引擎。",
+      "effect": "boundary",
+      "extraction_id": "edit_20261009T090937_a1258264_ext_8",
+      "review_id": "edit_20261009T090937_a1258264_review_8",
+      "search_run_id": "edit_20261009T090937_a1258264_O2_01",
+      "effective_period": "2026-09-20 单样本",
+      "target_period": ""
+    },
+    {
+      "source": "S17",
+      "fact": "Firecracker 原论文说明隔离的 MicroVM 可共享宿主硬件，资源按需分配；空闲状态与忙碌状态的 CPU 资源用量不同。",
+      "locator": "NSDI 2020 论文封面；§2 Soft Allocation，印刷页421；§4.2，印刷页426（PDF第9页）",
+      "boundary": "2020 年 AWS Lambda/Firecracker 原始研究；证明共享机制可行，不证明 Muse 使用 Firecracker 或相同超配比例。",
+      "effect": "boundary",
+      "extraction_id": "edit_20261009T090937_a1258264_ext_9",
+      "review_id": "edit_20261009T090937_a1258264_review_9",
+      "search_run_id": "edit_20261009T090937_a1258264_O2_02",
+      "effective_period": "2020-02",
+      "target_period": ""
+    },
+    {
+      "source": "S18",
+      "fact": "Meta 于 2026 年 8 月 10 日发布 Muse Glimmer 开放权重，称这个 300 亿参数模型可在 Mac 或 PC 的单张消费级 GPU 上运行本地智能体工作流。",
+      "locator": "标题日期 L8；导言 L10–14",
+      "boundary": "Glimmer 是另一模型；不能作为 Muse 个人智能体已改为本地运行或仅靠 CPU 推理的证明。",
+      "effect": "refute",
+      "extraction_id": "edit_20261009T090937_a1258264_ext_10",
+      "review_id": "edit_20261009T090937_a1258264_review_10",
+      "search_run_id": "edit_20261009T090937_a1258264_O2_02",
+      "effective_period": "2026-08-10",
+      "target_period": ""
+    }
+  ],
+  "excluded_source_ids": [
+    "EA125_REDHAT"
+  ],
+  "reviewer": "GPT primary agent",
+  "cutoff": "2026-10-09"
+}

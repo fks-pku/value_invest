@@ -1,0 +1,18 @@
+{
+  "review_id": "root_review_20261009_O1_geography",
+  "parent_revision": "edit_20261009T075817_8089e507",
+  "recorded_at": "2026-10-09T08:16:01.381516+00:00",
+  "reason": "主代理对新回答做最终原文复核，补入同一问题下遗漏的墨西哥官方地区声明。",
+  "changed_nodes": [
+    "O1",
+    "O"
+  ],
+  "gate": "仍为 partial_research；动态页日期缺口未消除。",
+  "checks": [
+    "完整原题回答复核",
+    "本轮逐题证据链",
+    "嵌套研究计划",
+    "QA 与状态一致性",
+    "共享 HTML 与 Markdown 契约"
+  ]
+}

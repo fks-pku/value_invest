@@ -1,0 +1,12 @@
+{
+  "reason": "Assembly engine stopped producing output after evidence and drafts were written; primary agent completed semantic coverage and presentation cleanup.",
+  "nodes": [
+    "C0",
+    "AMD",
+    "INTC",
+    "ARM",
+    "NVDA"
+  ],
+  "evidence_changed": false,
+  "validation": "normal host publication gate required"
+}

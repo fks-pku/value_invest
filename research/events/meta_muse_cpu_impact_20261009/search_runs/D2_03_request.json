@@ -1,0 +1,32 @@
+{
+  "l3_plan_id": "l3rp_d2_b4a54eb86593c40a",
+  "l3_node_id": "D2",
+  "question_node_id": "D2",
+  "question_level": 3,
+  "research_step_id": "question:D2",
+  "search_run_id": "D2_03",
+  "origin": "active_question_search",
+  "request": {
+    "open": [
+      {
+        "ref_id": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx"
+      }
+    ],
+    "find": [
+      {
+        "ref_id": "turn8search9",
+        "pattern": "Market demand exceeded"
+      },
+      {
+        "ref_id": "turn8search9",
+        "pattern": "DCAI revenue increased"
+      },
+      {
+        "ref_id": "turn11view0",
+        "pattern": "13%"
+      }
+    ],
+    "response_length": "short"
+  },
+  "recorded_at": "2026-10-09T03:42:32.373Z"
+}

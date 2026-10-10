@@ -1,0 +1,519 @@
+{
+  "revision_id": "edit_20261009T075817_8089e507",
+  "plan_execution": {
+    "ok": true,
+    "issues": [],
+    "summary": {
+      "plan_id": "rp_edit_20261009T075817_8089e507",
+      "status": "in_progress",
+      "steps": 10,
+      "pending": 9,
+      "in_progress": 0,
+      "review_pending": 1,
+      "blocked": 0,
+      "completed": 0,
+      "events": 1,
+      "historical_plan_events": 10,
+      "nested": {
+        "parent_plan_id": "rp_edit_20261009T075817_8089e507",
+        "status": "blocked",
+        "l3_plans": 10,
+        "completed_l3_plans": 3,
+        "leaf_steps": 10,
+        "completed_leaf_steps": 3,
+        "blocked_leaf_steps": 7,
+        "max_depth": 3
+      }
+    },
+    "step_states": [
+      {
+        "step_id": "rollup:O1",
+        "status": "review_pending",
+        "answer": "Meta 于 2026 年 9 月 8 日发布的是个人 AI 智能体 Muse：用户交代目标后，它能浏览网页、连接应用并持续执行任务，背后的模型是 Muse Spark。截至 10 月 9 日，官方确认美国和加拿大、18 岁及以上用户是可用范围；入口包括 iOS、Android、网页和 WhatsApp，Mac 也已有官方使用说明，但地区、账户和功能仍有有限测试限制。服务有免费额度；Power 为每月 20 美元、Max 为每月 100 美元。小企业技能已推出，眼镜、Charm 和 Confidential VM 等仍须区分后续计划与实际交付。[S01][S03][E8089_AVATAR][E8089_SUB][E8089_MAC]",
+        "search_run_id": "",
+        "source_ids": [],
+        "source_extraction_ids": [],
+        "source_review_ids": [],
+        "supporting_findings": [
+          "来自本轮 O1 独立子计划的已复核结论，父计划不直接取证。"
+        ],
+        "refuting_findings": [
+          "反向检索发现：官方订阅页明确有限测试、地区和账户权益不同；首发美国不能代表后续加拿大状态；Connect 的眼镜、邮箱、Expedia 使用未来时态；技术演示不等于应用全部可用。第三方价格指南对免费额度和最高档名称存在口径差异，采用官方 Power/Max 和未公布免费精确额度的口径。未找到中国大陆正式开放的官方确认。"
+        ],
+        "gaps": [],
+        "next_actions": [
+          "若用户下一轮要求精确免费额度、加拿大最终价格或特定账户资格，再取得相应官方公开口径；本轮不扩大问题树。"
+        ],
+        "evidence_gate": {
+          "passed": false,
+          "reasons": []
+        },
+        "latest_event_id": "edit_20261009T075817_8089e507_parent_rollup_O1",
+        "latest_recorded_at": "2026-10-09T08:07:55.751612+00:00",
+        "event_count": 1
+      },
+      {
+        "step_id": "rollup:O2",
+        "status": "pending",
+        "answer": "",
+        "search_run_id": "",
+        "source_ids": [],
+        "source_extraction_ids": [],
+        "source_review_ids": [],
+        "supporting_findings": [],
+        "refuting_findings": [],
+        "gaps": [],
+        "next_actions": [],
+        "evidence_gate": {
+          "passed": false,
+          "reasons": []
+        },
+        "latest_event_id": "",
+        "latest_recorded_at": "",
+        "event_count": 0
+      },
+      {
+        "step_id": "rollup:D1",
+        "status": "pending",
+        "answer": "",
+        "search_run_id": "",
+        "source_ids": [],
+        "source_extraction_ids": [],
+        "source_review_ids": [],
+        "supporting_findings": [],
+        "refuting_findings": [],
+        "gaps": [],
+        "next_actions": [],
+        "evidence_gate": {
+          "passed": false,
+          "reasons": []
+        },
+        "latest_event_id": "",
+        "latest_recorded_at": "",
+        "event_count": 0
+      },
+      {
+        "step_id": "rollup:D2",
+        "status": "pending",
+        "answer": "",
+        "search_run_id": "",
+        "source_ids": [],
+        "source_extraction_ids": [],
+        "source_review_ids": [],
+        "supporting_findings": [],
+        "refuting_findings": [],
+        "gaps": [],
+        "next_actions": [],
+        "evidence_gate": {
+          "passed": false,
+          "reasons": []
+        },
+        "latest_event_id": "",
+        "latest_recorded_at": "",
+        "event_count": 0
+      },
+      {
+        "step_id": "rollup:T1",
+        "status": "pending",
+        "answer": "",
+        "search_run_id": "",
+        "source_ids": [],
+        "source_extraction_ids": [],
+        "source_review_ids": [],
+        "supporting_findings": [],
+        "refuting_findings": [],
+        "gaps": [],
+        "next_actions": [],
+        "evidence_gate": {
+          "passed": false,
+          "reasons": []
+        },
+        "latest_event_id": "",
+        "latest_recorded_at": "",
+        "event_count": 0
+      },
+      {
+        "step_id": "rollup:C0",
+        "status": "pending",
+        "answer": "",
+        "search_run_id": "",
+        "source_ids": [],
+        "source_extraction_ids": [],
+        "source_review_ids": [],
+        "supporting_findings": [],
+        "refuting_findings": [],
+        "gaps": [],
+        "next_actions": [],
+        "evidence_gate": {
+          "passed": false,
+          "reasons": []
+        },
+        "latest_event_id": "",
+        "latest_recorded_at": "",
+        "event_count": 0
+      },
+      {
+        "step_id": "rollup:AMD",
+        "status": "pending",
+        "answer": "",
+        "search_run_id": "",
+        "source_ids": [],
+        "source_extraction_ids": [],
+        "source_review_ids": [],
+        "supporting_findings": [],
+        "refuting_findings": [],
+        "gaps": [],
+        "next_actions": [],
+        "evidence_gate": {
+          "passed": false,
+          "reasons": []
+        },
+        "latest_event_id": "",
+        "latest_recorded_at": "",
+        "event_count": 0
+      },
+      {
+        "step_id": "rollup:INTC",
+        "status": "pending",
+        "answer": "",
+        "search_run_id": "",
+        "source_ids": [],
+        "source_extraction_ids": [],
+        "source_review_ids": [],
+        "supporting_findings": [],
+        "refuting_findings": [],
+        "gaps": [],
+        "next_actions": [],
+        "evidence_gate": {
+          "passed": false,
+          "reasons": []
+        },
+        "latest_event_id": "",
+        "latest_recorded_at": "",
+        "event_count": 0
+      },
+      {
+        "step_id": "rollup:ARM",
+        "status": "pending",
+        "answer": "",
+        "search_run_id": "",
+        "source_ids": [],
+        "source_extraction_ids": [],
+        "source_review_ids": [],
+        "supporting_findings": [],
+        "refuting_findings": [],
+        "gaps": [],
+        "next_actions": [],
+        "evidence_gate": {
+          "passed": false,
+          "reasons": []
+        },
+        "latest_event_id": "",
+        "latest_recorded_at": "",
+        "event_count": 0
+      },
+      {
+        "step_id": "rollup:NVDA",
+        "status": "pending",
+        "answer": "",
+        "search_run_id": "",
+        "source_ids": [],
+        "source_extraction_ids": [],
+        "source_review_ids": [],
+        "supporting_findings": [],
+        "refuting_findings": [],
+        "gaps": [],
+        "next_actions": [],
+        "evidence_gate": {
+          "passed": false,
+          "reasons": []
+        },
+        "latest_event_id": "",
+        "latest_recorded_at": "",
+        "event_count": 0
+      }
+    ],
+    "l3_plans": [
+      {
+        "l3_node_id": "O1",
+        "plan_id": "l3rp_o1_edit_20261009T075817_8089e507",
+        "max_depth": 3,
+        "status": "blocked",
+        "steps": 1,
+        "pending": 0,
+        "in_progress": 0,
+        "review_pending": 0,
+        "blocked": 1,
+        "completed": 0,
+        "events": 11,
+        "historical_plan_events": 4
+      },
+      {
+        "l3_node_id": "O2",
+        "plan_id": "l3rp_o2_027155bf51737945",
+        "max_depth": 3,
+        "status": "completed",
+        "steps": 1,
+        "pending": 0,
+        "in_progress": 0,
+        "review_pending": 0,
+        "blocked": 0,
+        "completed": 1,
+        "events": 4,
+        "historical_plan_events": 0
+      },
+      {
+        "l3_node_id": "D1",
+        "plan_id": "l3rp_d1_a2263a4c076b8be5",
+        "max_depth": 3,
+        "status": "blocked",
+        "steps": 1,
+        "pending": 0,
+        "in_progress": 0,
+        "review_pending": 0,
+        "blocked": 1,
+        "completed": 0,
+        "events": 5,
+        "historical_plan_events": 0
+      },
+      {
+        "l3_node_id": "D2",
+        "plan_id": "l3rp_d2_b4a54eb86593c40a",
+        "max_depth": 3,
+        "status": "blocked",
+        "steps": 1,
+        "pending": 0,
+        "in_progress": 0,
+        "review_pending": 0,
+        "blocked": 1,
+        "completed": 0,
+        "events": 5,
+        "historical_plan_events": 0
+      },
+      {
+        "l3_node_id": "T1",
+        "plan_id": "l3rp_t1_218fc5c25892828c",
+        "max_depth": 3,
+        "status": "completed",
+        "steps": 1,
+        "pending": 0,
+        "in_progress": 0,
+        "review_pending": 0,
+        "blocked": 0,
+        "completed": 1,
+        "events": 4,
+        "historical_plan_events": 0
+      },
+      {
+        "l3_node_id": "C0",
+        "plan_id": "l3rp_c0_b0f77599b303e169",
+        "max_depth": 3,
+        "status": "completed",
+        "steps": 1,
+        "pending": 0,
+        "in_progress": 0,
+        "review_pending": 0,
+        "blocked": 0,
+        "completed": 1,
+        "events": 4,
+        "historical_plan_events": 0
+      },
+      {
+        "l3_node_id": "AMD",
+        "plan_id": "l3rp_amd_9fee216dcf58382c",
+        "max_depth": 3,
+        "status": "blocked",
+        "steps": 1,
+        "pending": 0,
+        "in_progress": 0,
+        "review_pending": 0,
+        "blocked": 1,
+        "completed": 0,
+        "events": 5,
+        "historical_plan_events": 0
+      },
+      {
+        "l3_node_id": "INTC",
+        "plan_id": "l3rp_intc_523eb03937fd3aa2",
+        "max_depth": 3,
+        "status": "blocked",
+        "steps": 1,
+        "pending": 0,
+        "in_progress": 0,
+        "review_pending": 0,
+        "blocked": 1,
+        "completed": 0,
+        "events": 5,
+        "historical_plan_events": 0
+      },
+      {
+        "l3_node_id": "ARM",
+        "plan_id": "l3rp_arm_987ba7b1e9d30304",
+        "max_depth": 3,
+        "status": "blocked",
+        "steps": 1,
+        "pending": 0,
+        "in_progress": 0,
+        "review_pending": 0,
+        "blocked": 1,
+        "completed": 0,
+        "events": 5,
+        "historical_plan_events": 0
+      },
+      {
+        "l3_node_id": "NVDA",
+        "plan_id": "l3rp_nvda_015311d1b0232324",
+        "max_depth": 3,
+        "status": "blocked",
+        "steps": 1,
+        "pending": 0,
+        "in_progress": 0,
+        "review_pending": 0,
+        "blocked": 1,
+        "completed": 0,
+        "events": 5,
+        "historical_plan_events": 0
+      }
+    ]
+  },
+  "O1_execution": {
+    "ok": true,
+    "issues": [],
+    "summary": {
+      "plan_id": "l3rp_o1_edit_20261009T075817_8089e507",
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 11,
+      "historical_plan_events": 4
+    },
+    "step_states": [
+      {
+        "step_id": "question:O1",
+        "status": "blocked",
+        "answer": "Meta 于 2026 年 9 月 8 日发布个人 AI 智能体 Muse，由 Muse Spark 驱动，可浏览网页、连接应用并在用户离开后继续执行任务。截至 10 月 9 日，带日期官方公告确认美国、加拿大及 18 岁及以上用户范围，入口包括 iOS、Android、网页和 WhatsApp；免费使用有上限，两档月费 20/100 美元有同期报道。官方动态帮助页另列 Power/Max 额度、有限测试和 Meta 账户条件，并说明 Mac 用法，但这些细节缺少精确日期版本证明。小企业技能已推出；眼镜、Charm、Confidential VM 等仍按后续计划区分，不能视为全面上线。[S01][S03][E8089_AVATAR][E8089_AXIOS][E8089_SUB][E8089_MAC]",
+        "search_run_id": "edit_20261009T075817_8089e507_O1_01",
+        "source_ids": [
+          "E8089_AVATAR",
+          "E8089_AXIOS",
+          "E8089_CONNECT",
+          "E8089_HELP",
+          "E8089_MAC",
+          "E8089_START",
+          "E8089_SUB",
+          "S01",
+          "S02",
+          "S03"
+        ],
+        "source_extraction_ids": [
+          "edit_20261009T075817_8089e507_ext_01",
+          "edit_20261009T075817_8089e507_ext_02",
+          "edit_20261009T075817_8089e507_ext_03",
+          "edit_20261009T075817_8089e507_ext_04",
+          "edit_20261009T075817_8089e507_ext_05",
+          "edit_20261009T075817_8089e507_ext_06",
+          "edit_20261009T075817_8089e507_ext_07",
+          "edit_20261009T075817_8089e507_ext_08",
+          "edit_20261009T075817_8089e507_ext_09",
+          "edit_20261009T075817_8089e507_ext_10",
+          "edit_20261009T075817_8089e507_ext_11",
+          "edit_20261009T075817_8089e507_ext_12",
+          "edit_20261009T075817_8089e507_ext_13",
+          "edit_20261009T075817_8089e507_ext_14",
+          "edit_20261009T075817_8089e507_ext_15"
+        ],
+        "source_review_ids": [
+          "edit_20261009T075817_8089e507_gpt_01",
+          "edit_20261009T075817_8089e507_gpt_02",
+          "edit_20261009T075817_8089e507_gpt_03",
+          "edit_20261009T075817_8089e507_gpt_04",
+          "edit_20261009T075817_8089e507_gpt_05",
+          "edit_20261009T075817_8089e507_gpt_06",
+          "edit_20261009T075817_8089e507_gpt_07",
+          "edit_20261009T075817_8089e507_gpt_08",
+          "edit_20261009T075817_8089e507_gpt_09",
+          "edit_20261009T075817_8089e507_gpt_10",
+          "edit_20261009T075817_8089e507_gpt_11",
+          "edit_20261009T075817_8089e507_gpt_12",
+          "edit_20261009T075817_8089e507_gpt_13",
+          "edit_20261009T075817_8089e507_gpt_14",
+          "edit_20261009T075817_8089e507_gpt_15",
+          "edit_20261009T075817_8089e507_verified_1",
+          "edit_20261009T075817_8089e507_verified_2",
+          "edit_20261009T075817_8089e507_verified_3",
+          "edit_20261009T075817_8089e507_verified_4",
+          "edit_20261009T075817_8089e507_verified_5",
+          "edit_20261009T075817_8089e507_verified_6",
+          "edit_20261009T075817_8089e507_verified_7",
+          "edit_20261009T075817_8089e507_verified_8",
+          "edit_20261009T075817_8089e507_verified_9"
+        ],
+        "supporting_findings": [
+          "Meta 于 2026 年 9 月 8 日发布个人智能体 Muse，由 Muse Spark 驱动，可浏览网页、处理任务并在用户关闭应用后继续工作。",
+          "Muse 首发在美国通过 iOS、Android、muse.ai 推出，也可在 WhatsApp 与其通信。",
+          "Muse 的隔离 Linux VM 带浏览器、存储、CPU 和内存，可执行代码、并发子智能体和定时任务；Sentinel 独立控制连接器及网络操作权限。",
+          "9 月 29 日的小企业公告在 10 月 8 日更新后的版本中明确 Muse 在美国和加拿大可用，并在 Muse 内增加经营业务的技能和连接器。",
+          "小企业连接器包括 Facebook、Instagram 商业账户以及 Shopify、Stripe、QuickBooks、Notion、Slack、Canva 等；发布、发送和花钱需要用户批准。",
+          "官方订阅页列明 Power 每月 20 美元、每周 5 亿 Muse tokens；Max 每月 100 美元、每周 30 亿 Muse tokens。免费使用有额度限制，用尽可等待刷新或升级。",
+          "官方 Mac 帮助页说明 Muse 可在获得 macOS 权限后整理本地文件并读取或操作部分应用；用户可选择关闭、只读或读写，并撤销权限。",
+          "Muse 手机应用和网页使用 Meta 账户；没有账户者可用 Facebook、Instagram、邮箱或电话号码创建账户。",
+          "Axios 于 9 月 29 日报道 Muse 两档月费为 20 美元和 100 美元。"
+        ],
+        "refuting_findings": [
+          "反向检索发现：官方订阅页明确有限测试、地区和账户权益不同；首发美国不能代表后续加拿大状态；Connect 的眼镜、邮箱、Expedia 使用未来时态；技术演示不等于应用全部可用。第三方价格指南对免费额度和最高档名称存在口径差异，采用官方 Power/Max 和未公布免费精确额度的口径。未找到中国大陆正式开放的官方确认。"
+        ],
+        "gaps": [
+          "官方订阅、账户入门与 Mac 帮助页仅有相对更新时间或无精确发布日期，未取得带可验证日历日期的版本；其中付费额度、账户细则和 Mac 截止日交付状态未通过日期证据门禁。"
+        ],
+        "next_actions": [
+          "若用户下一轮要求精确免费额度、加拿大最终价格或特定账户资格，再取得相应官方公开口径；本轮不扩大问题树。",
+          "下一轮优先取得订阅、账户和 Mac 帮助页带日期的官方版本或可靠网页存档，再复核截止日适用性；不新增问题树节点。"
+        ],
+        "evidence_gate": {
+          "passed": false,
+          "reasons": []
+        },
+        "latest_event_id": "edit_20261009T075817_8089e507_final_step_blocked",
+        "latest_recorded_at": "2026-10-09T08:10:03.226836+00:00",
+        "event_count": 11
+      }
+    ]
+  },
+  "answer_review": "passed_consistency_check; research sufficiency false",
+  "tree_state_qa_sources_and_fresh_trace": "passed",
+  "report_render_in_memory": {
+    "html": {
+      "ok": true,
+      "issues": [],
+      "summary": {
+        "mode": "historical_backtest",
+        "presentation_profile": "question-tree-v1",
+        "nodes": 14,
+        "parents": 4,
+        "leaves": 10
+      }
+    },
+    "markdown": {
+      "ok": true,
+      "issues": [],
+      "summary": {
+        "mode": "historical_backtest",
+        "report_scope": "research-project",
+        "level1_cards": 0,
+        "level2_cards": 0,
+        "level3_cards": 0,
+        "require_l3": false
+      }
+    }
+  },
+  "research_status": "partial_research",
+  "remaining_gap": [
+    "官方订阅、账户入门与 Mac 帮助页仅有相对更新时间或无精确发布日期，未取得带可验证日历日期的版本；其中付费额度、账户细则和 Mac 截止日交付状态未通过日期证据门禁。"
+  ],
+  "legacy_full_audit": "not_rerun; prior results preserved",
+  "publication": "not_performed; host owns publication"
+}

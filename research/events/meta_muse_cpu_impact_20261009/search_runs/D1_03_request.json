@@ -1,0 +1,27 @@
+{
+  "l3_plan_id": "l3rp_d1_a2263a4c076b8be5",
+  "l3_node_id": "D1",
+  "question_node_id": "D1",
+  "question_level": 3,
+  "research_step_id": "question:D1",
+  "search_run_id": "D1_03",
+  "origin": "active_question_search",
+  "request": {
+    "find": [
+      {
+        "ref_id": "turn19view0",
+        "pattern": "Our independent"
+      },
+      {
+        "ref_id": "turn19view0",
+        "pattern": "browser.geekbench"
+      },
+      {
+        "ref_id": "turn19view0",
+        "pattern": "Muse's runs"
+      }
+    ],
+    "response_length": "short"
+  },
+  "recorded_at": "2026-10-09T03:42:29.728Z"
+}

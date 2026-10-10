@@ -10,6 +10,7 @@ from datetime import datetime, timezone
 from typing import Any
 
 from value_invest_research.domain.leaf_research_tasks import INFO_CATEGORIES
+from value_invest_research.domain.research_answer import ANSWER_RULES
 
 
 class MockResearchSearchProvider:
@@ -235,7 +236,7 @@ def provider_user_prompt(task: dict[str, Any]) -> str:
         "max_sources": task.get("max_sources", 8),
     }
     output_contract = {
-        "answer": "direct answer to the active question",
+        "answer": "complete standalone answer to the full active question, with concrete details and inline source links; not a one-line summary or research plan",
         "facts": ["verifiable facts with source context"],
         "inferences": ["mechanisms or assumptions inferred from facts"],
         "judgment": "bounded current judgment",
@@ -274,6 +275,7 @@ def provider_user_prompt(task: dict[str, Any]) -> str:
     return "\n".join(
         [
             "Research this active question. Prefer primary filings/company releases, then high-quality third-party research, then messages/news, then opinions.",
+            ANSWER_RULES,
             "Classify every source into exactly one information category: evidence, research_report, message, or opinion.",
             "Separate facts, inferences, judgment, refuting evidence, research leads, and gaps.",
             "Return JSON only with this output contract:",

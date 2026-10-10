@@ -1,0 +1,64 @@
+{
+  "ok": true,
+  "issues": [],
+  "summary": {
+    "plan_id": "l3rp_d1_a2263a4c076b8be5",
+    "status": "blocked",
+    "steps": 1,
+    "pending": 0,
+    "in_progress": 0,
+    "review_pending": 0,
+    "blocked": 1,
+    "completed": 0,
+    "events": 5,
+    "historical_plan_events": 0
+  },
+  "step_states": [
+    {
+      "step_id": "question:D1",
+      "status": "blocked",
+      "answer": "不能从用户数直接得到 CPU 销量。CPU 同时执行比例和内存驻留比例是两个不同的瓶颈；在相同用户数下，假设变化足以让服务器需求跨越数十倍。",
+      "search_run_id": "D1_04",
+      "source_ids": [
+        "S21",
+        "S15",
+        "S16",
+        "S17"
+      ],
+      "source_extraction_ids": [
+        "ext_D1_S21_v1",
+        "ext_D1_S15_v1",
+        "ext_D1_S16_v1",
+        "ext_D1_S17_v1"
+      ],
+      "source_review_ids": [
+        "gpt_D1_S21_v1",
+        "gpt_D1_S15_v1",
+        "gpt_D1_S16_v1",
+        "gpt_D1_S17_v1"
+      ],
+      "supporting_findings": [],
+      "refuting_findings": [
+        "作者提供 Muse 亲自跑分结果，并报告观察实例的内存约 7.75GB。 限制：小样本；无全量硬件、常驻率、专属核或采购数量证明。",
+        "许多 EC2 实例把一个 SMT 线程表示为一个 vCPU。 限制：AWS 概念示例；不能倒推 Meta 的 e 参数。",
+        "M7a 的每个 vCPU 对应一个物理核心，未使用 SMT。 限制：说明映射必须逐平台核验。",
+        "原始论文讨论 microVM 的资源复用与软分配。 限制：不是 Muse 系统，不移植其复用倍率。",
+        "用户账户、长期保存的文件和 24 小时可响应，都不等于 24 小时占满 CPU。"
+      ],
+      "gaps": [
+        "Muse 的物理核/虚拟核映射、峰值并发、CPU 忙碌度、内存驻留和闲置回收政策未公开。",
+        "缺少现有服务器余量与容量利用率，不能从容量计算跳到新增订单。"
+      ],
+      "next_actions": [
+        "优先取得每活跃用户每日物理核秒、GiB 小时、峰值并发及池化策略。"
+      ],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "D1_step_blocked_v1",
+      "latest_recorded_at": "2026-10-09T03:52:17.248530+00:00",
+      "event_count": 5
+    }
+  ]
+}

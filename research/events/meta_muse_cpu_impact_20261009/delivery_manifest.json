@@ -1,0 +1,18 @@
+{
+  "professional_report.html": {
+    "bytes": 114244,
+    "sha256": "aff56fc49213af361fa055bcddd88bd9c63b5285d424dc02b461b367d78867ab"
+  },
+  "professional_report.md": {
+    "bytes": 58815,
+    "sha256": "c49793e934caab93be9ebc88dea5ada8487e98ed7b02226eb0f50e11a0c7a6ea"
+  },
+  "research_plan.md": {
+    "bytes": 3968,
+    "sha256": "b0ce4a77447eb1e7b42352e7cfe86368582bc1261727bafaa24d2e450d1c1815"
+  },
+  "question_tree_report.json": {
+    "bytes": 72488,
+    "sha256": "1e3d8527c3f57a78400992195c4272f76bcf6e7f6290c475bdd9f9bf52414e0f"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "research_object": "Meta Muse personal agent release and CPU market impact",
+  "mode": "live",
+  "run_mode": "live",
+  "as_of_date": "2026-10-09",
+  "report_date": "2026-10-09",
+  "event_date": "2026-09-08",
+  "investment_decision": "行业方向、条件规模与公司敞口；不作买卖建议",
+  "scope": "全球服务器 CPU 为主；端侧仅检验替代边界。事件研究，不扩展完整行业链或 standalone-BOM 项目。",
+  "biggest_uncertainty": "每活跃用户的真实 CPU/内存驻留时间及其增量采购转化",
+  "counterfactual": "无 Muse 时已有云服务、AI 执行环境与服务器更新需求",
+  "maximum_depth": 5
+}

@@ -6,6 +6,7 @@ import re
 from copy import deepcopy
 from typing import Any, Iterable, Iterator
 
+from value_invest_research.domain.research_answer import answer_contract
 from value_invest_research.domain.research_plan import validate_research_plan_execution
 
 
@@ -1014,6 +1015,7 @@ def _leaf_step(
             "bulk_pool_mapping_forbidden": True,
         },
         "answer_contract": {
+            **answer_contract(),
             "required_fields": [
                 "answer",
                 "supporting_findings",
@@ -1021,7 +1023,6 @@ def _leaf_step(
                 "gaps",
                 "next_actions",
             ],
-            "rule": "Answer only the current question; separate facts, inference, judgment, refutation, and gaps.",
         },
         "traceability_contract": {
             "required_references": [

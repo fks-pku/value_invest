@@ -1,0 +1,34 @@
+{
+  "l3_plan_id": "l3rp_amd_9fee216dcf58382c",
+  "l3_node_id": "AMD",
+  "question_node_id": "AMD",
+  "question_level": 3,
+  "research_step_id": "question:AMD",
+  "search_run_id": "AMD_01",
+  "origin": "active_question_search",
+  "request": {
+    "search_query": [
+      {
+        "q": "AMD Reports Second Quarter 2026 results EPYC data center",
+        "domains": [
+          "ir.amd.com",
+          "newsroom.amd.com"
+        ]
+      },
+      {
+        "q": "Meta EPYC Venice Verano partnership February 24 2026",
+        "domains": [
+          "amd.com",
+          "ir.amd.com"
+        ]
+      }
+    ],
+    "open": [
+      {
+        "ref_id": "https://newsroom.amd.com/news/meta-ai-infrastructure-update/"
+      }
+    ],
+    "response_length": "short"
+  },
+  "recorded_at": "2026-10-09T03:40:57.917Z"
+}

@@ -1,0 +1,32 @@
+{
+  "revision_id": "edit_20261009T092333_321fabff",
+  "l3_plan_id": "l3rp_t1_edit_20261009T092333_321fabff",
+  "l3_node_id": "T1",
+  "question_node_id": "T1",
+  "question_level": 3,
+  "research_step_id": "question:T1",
+  "search_run_id": "edit_20261009T092333_321fabff_T1_01",
+  "recorded_at": "2026-10-09T09:38:37.743327+00:00",
+  "question": "哪些 CPU 路线和终端会受益或被替代？",
+  "queries": [
+    "Muse server CPU routes Arm x86 Glimmer local PC replacement Meta 2026",
+    "Meta Muse Glimmer cloud local PC replacement Intel Arm x86 no dedicated physical cores"
+  ],
+  "source_ids": [
+    "S02",
+    "S01",
+    "E321_AMDMETA",
+    "E321_AAI",
+    "S07",
+    "S10",
+    "S18",
+    "E321_AMDLOCAL",
+    "E321_INTELLOCAL",
+    "E8089_CONNECT"
+  ],
+  "origin": "active_question_search",
+  "status": "searched_and_sources_opened_with_recorded_failures",
+  "refutation_result": "Glimmer官方本地运行直接反驳所有智能体都必须在云端；NVIDIA原文把Vera写为2027潜在部署、Connect将眼镜写为未来，AMD线程代理非实测。未找到Muse导致终端出货下降或x86全面替代的原始证据。",
+  "reviewer": "GPT primary agent",
+  "open_method": "web search; original page open and find; Q2 PDF linked by AMD official calendar"
+}

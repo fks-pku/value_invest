@@ -1,0 +1,27 @@
+{
+  "l3_plan_id": "l3rp_arm_987ba7b1e9d30304",
+  "l3_node_id": "ARM",
+  "question_node_id": "ARM",
+  "question_level": 3,
+  "research_step_id": "question:ARM",
+  "search_run_id": "ARM_01",
+  "origin": "active_question_search",
+  "request": {
+    "open": [
+      {
+        "ref_id": "https://newsroom.arm.com/news/arm-agi-cpu-launch"
+      }
+    ],
+    "search_query": [
+      {
+        "q": "Arm first quarter fiscal 2027 results AGI CPU revenue 2026",
+        "domains": [
+          "investors.arm.com",
+          "newsroom.arm.com"
+        ]
+      }
+    ],
+    "response_length": "short"
+  },
+  "recorded_at": "2026-10-09T03:40:57.917Z"
+}

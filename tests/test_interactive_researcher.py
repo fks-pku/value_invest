@@ -11,7 +11,7 @@ from urllib.error import HTTPError
 
 import pytest
 
-from value_invest_research.domain.interactive_research import propose_edit, tree_version, validate_researched_tree
+from value_invest_research.domain.interactive_research import propose_edit, tree_version, validate_researched_tree, validate_qa_tree
 from value_invest_research.application.use_cases.interactive_research import InteractiveResearch
 from value_invest_research.adapters.inbound.researcher_server import handler_for
 from value_invest_research.adapters.outbound.filesystem_interactive_research import FileSystemInteractiveResearch, write, read, atomic, hashes, project_files
@@ -232,6 +232,8 @@ def test_shared_markdown_preserves_every_paragraph(tree):
 
 
 def test_http_origin_token_traversal_and_preview(tree, tmp_path):
+    snapshot = '<html><head></head><body><a href="source/example.pdf">原文</a>OFFLINE SNAPSHOT</body></html>'
+    (tmp_path / "professional_report.html").write_text(snapshot)
     repo, runner = MemoryRepository(tree), ControlledRunner()
     service = InteractiveResearch(repo, runner)
     server = ThreadingHTTPServer(("127.0.0.1", 0), handler_for(service, tmp_path, "test-secret"))
@@ -244,7 +246,16 @@ def test_http_origin_token_traversal_and_preview(tree, tmp_path):
         with urlopen(request, timeout=3) as response:
             return response.read()
     try:
-        assert b"RESEARCH / WORKSPACE" in call("/")
+        home = call("/")
+        assert b"RESEARCH / WORKSPACE" in home
+        assert call("/professional_report.html") == home
+        assert call("/professional_report.html?view=default") == home
+        assert b'id="edit"' in home and b'id="add"' in home
+        assert b'href="/professional_report.offline.html" download=' in home
+        assert call("/professional_report.offline.html").decode() == snapshot
+        embedded = call("/report").decode()
+        assert "OFFLINE SNAPSHOT" in embedded and "research-node" in embedded
+        assert "RESEARCH / WORKSPACE" not in embedded  # No recursive editor iframe.
         assert json.loads(call("/api/process")) == {"job_id": None, "updates": [], "nodes": []}
         assert json.loads(call("/api/preview", change(tree)))["research_ids"] == ["F1.1.3"]
         assert repo.current_job() is None  # Preview never consumes model quota.
@@ -279,6 +290,11 @@ def candidate(tmp_path, monkeypatch):
     for node in tree["nodes"]:
         if node["id"] in proposal["affected_ids"]:
             node["conclusion"] = "合成测试：未找到足够材料，保留缺口。"
+        if node["id"] in proposal["research_ids"]:
+            node["answer_review"] = {
+                "question": node["question"], "direct_answer_excerpt": node["conclusion"],
+                "coverage": [{"requirement": node["question"], "status": "unresolved", "gap": node["gaps"][0]}],
+                "draft_comparison": "合成测试未提供事实，保留原题的证据缺口。"}
     qa = read(stage / "qa_tree.json")
     next(n for n in qa["nodes"] if n["id"] == "F1.1.3")["question"] = proposal["edit"]["question"]
     write(stage / "qa_tree.json", qa)
@@ -319,7 +335,11 @@ def candidate(tmp_path, monkeypatch):
 
 def test_full_validated_publication_of_partial_research(candidate):
     repository, job, stage = candidate
+    original = "独立检索原稿：保留完整原题与已知边界。"
+    atomic(Path(job["audit_dir"]) / "direct_answers/F1.1.3.md", original.encode())
+    atomic(Path(job["workspace"]) / "direct_answers/F1.1.3.md", b"changed working copy")
     repository.validate_and_publish(job)
+    assert (repository.project / "research_revisions" / job["id"] / "direct_answers/F1.1.3.md").read_text() == original
     assert repository.tree() == read(stage / "question_tree_report.json")
     assert "合成测试：未找到足够材料" in (repository.project / "professional_report.html").read_text()
     assert "合成测试：未找到足够材料" in (repository.project / "professional_report.md").read_text()
@@ -330,6 +350,54 @@ def test_full_validated_publication_of_partial_research(candidate):
         chapter = next(c for c in chapters if c["id"] == "F1.1.3")
         for field in ("conclusion", "passed", "analysis", "evidence", "gaps"):
             assert chapter[field] == current["F1.1.3"][field]
+
+
+def nested_qa(tree):
+    def branch(node):
+        return {"id": node["id"], "question": node["question"], "level": node["level"],
+                "children": [branch(n) for n in tree["nodes"] if n.get("parent_id") == node["id"]]}
+    return {"schema_version": "4.0", "root": branch(next(n for n in tree["nodes"] if not n.get("parent_id")))}
+
+
+def test_nested_qa_edit_publishes_and_survives_reload(candidate):
+    repository, job, stage = candidate
+    tree = read(stage / "question_tree_report.json")
+    qa = nested_qa(tree)
+    write(stage / "qa_tree.json", qa)
+    repository.validate_and_publish(job)
+    reloaded = FileSystemInteractiveResearch(repository.project)
+    assert reloaded.tree() == tree
+    assert read(repository.project / "qa_tree.json") == qa
+    assert read(repository.home / "jobs" / job["id"] / "publication.json")["committed"]
+
+
+@pytest.mark.parametrize("fault", ["question", "parent", "level", "missing", "duplicate"])
+def test_nested_qa_mismatch_never_publishes(candidate, fault):
+    repository, job, stage = candidate
+    qa = nested_qa(read(stage / "question_tree_report.json"))
+    branch = qa["root"]["children"][0]
+    if fault == "question":
+        branch["question"] = "过期问题"
+    elif fault == "parent":
+        branch["parent_id"] = "incorrect-parent"
+    elif fault == "level":
+        branch["level"] = 5
+    elif fault == "missing":
+        qa["root"]["children"].pop()
+    else:
+        qa["root"]["children"].append(deepcopy(branch))
+    write(stage / "qa_tree.json", qa)
+    baseline = hashes(repository.project)
+    with pytest.raises(ValueError, match="QA"):
+        repository.validate_and_publish(job)
+    assert hashes(repository.project) == baseline
+
+
+def test_flat_qa_rejects_duplicate_ids(tree):
+    qa = {"nodes": deepcopy(tree["nodes"])}
+    qa["nodes"].append(deepcopy(qa["nodes"][0]))
+    with pytest.raises(ValueError, match="QA"):
+        validate_qa_tree(qa, tree)
 
 
 def test_skill_state_snapshot_passes_full_publication(candidate):
@@ -381,6 +449,45 @@ def test_worker_prompt_specifies_source_and_claim_contract(tree):
     assert "每个 source_id 只注册一次" in prompt
     assert "review_id,claim" in prompt
     assert "sufficiency.passed/gaps" in prompt
+    assert "direct_answers/<id>.md" in prompt and "answer_review" in prompt
+
+
+def test_independent_question_prompt_excludes_old_answer_and_report_schema(tree):
+    proposal = propose_edit(tree, change(tree))
+    node = next(n for n in tree["nodes"] if n["id"] == "F1.1.3")
+    prompt = CodexResearchRunner(ROOT).direct_prompt({"proposal": proposal}, node)
+    assert node["question"] in prompt and tree["as_of_date"] in prompt
+    parent = next(n for n in tree["nodes"] if n["id"] == node["parent_id"])
+    assert parent["question"] in prompt and parent["conclusion"] not in prompt
+    assert node["conclusion"] not in prompt
+    assert "source_extractions.jsonl" not in prompt and "project.json" not in prompt
+
+
+@pytest.mark.parametrize("stop", ["cancel", "timeout"])
+def test_second_pass_honors_cancellation_and_shared_deadline(tmp_path, monkeypatch, tree, stop):
+    audit, work = tmp_path / "audit", tmp_path / "work"
+    audit.mkdir(); work.mkdir()
+    runner = CodexResearchRunner(ROOT, timeout=60)
+    runner.executable = "/test/codex"
+    stopped, now, calls = False, 0, []
+    real_run = runner._run_cli
+    def run_pass(*args, **kwargs):
+        nonlocal stopped, now
+        calls.append(kwargs["sandbox"])
+        if kwargs["sandbox"] == "read-only":
+            stopped, now = stop == "cancel", 61
+            return "已完成的独立回答应保留。"
+        return real_run(*args, **kwargs)
+    monkeypatch.setattr(runner, "_run_cli", run_pass)
+    monkeypatch.setattr("value_invest_research.adapters.outbound.codex_research_runner.time.monotonic", lambda: now)
+    def unexpected_process(*args, **kwargs):
+        pytest.fail("取消或耗尽总时间后不应启动第二阶段进程")
+    monkeypatch.setattr("value_invest_research.adapters.outbound.codex_research_runner.subprocess.Popen", unexpected_process)
+    job = {"id": "stopped", "audit_dir": str(audit), "proposal": propose_edit(tree, change(tree))}
+    with pytest.raises(InterruptedError if stop == "cancel" else ValueError):
+        runner.run(work, job, lambda *_: None, lambda: stopped)
+    assert calls == ["read-only", "workspace-write"]
+    assert (audit / "direct_answers/F1.1.3.md").read_text() == "已完成的独立回答应保留。"
 
 
 @pytest.mark.parametrize("location", ["progress.json", "project/progress.json"])
@@ -392,6 +499,7 @@ def test_engine_reads_progress_from_supported_locations(tmp_path, monkeypatch, t
     runner.executable = "/test/codex"
     def process(*args, **kwargs):
         kwargs["stdout"].write(json.dumps({"type": "item.completed", "item": {"type": "web_search"}}) + "\n")
+        kwargs["stdout"].write(json.dumps({"type": "item.completed", "item": {"type": "agent_message", "text": "合成独立答案"}}) + "\n")
         class FakeProcess:
             returncode = 0
             stdin = io.StringIO()
@@ -405,7 +513,8 @@ def test_engine_reads_progress_from_supported_locations(tmp_path, monkeypatch, t
     messages = []
     job = {"id": "test-progress", "audit_dir": str(audit), "proposal": propose_edit(tree, change(tree))}
     runner.run(str(work), job, messages.append, lambda: False)
-    assert messages == ["正在汇总父问题与投资边界 · F1"]
+    assert "正在独立检索并直接回答问题 · F1.1.3" in messages
+    assert messages[-1] == "正在汇总父问题与投资边界 · F1"
 
 
 def test_fresh_search_required_even_for_blocked_answer(candidate):
@@ -431,7 +540,7 @@ def test_changed_question_cannot_reuse_old_source_review(candidate):
         repository.validate_and_publish(job)
 
 
-@pytest.mark.parametrize("with_search", [False, True])
+@pytest.mark.parametrize("with_search", [False, True, "first_only"])
 def test_engine_uses_stdin_sandbox_and_requires_real_search_transcript(tmp_path, monkeypatch, tree, with_search):
     audit = tmp_path / "private-audit"
     work = tmp_path / "worker"
@@ -439,10 +548,13 @@ def test_engine_uses_stdin_sandbox_and_requires_real_search_transcript(tmp_path,
     runner = CodexResearchRunner(ROOT)
     runner.executable = "/test/codex"
     captured = {}
+    calls = []
     def process(command, **kwargs):
+        calls.append(command)
         captured.update(command=command, kwargs=kwargs)
-        if with_search:
+        if with_search is True or with_search == "first_only" and len(calls) == 1:
             kwargs["stdout"].write(json.dumps({"type":"item.completed", "item":{"type":"web_search", "query":"test only"}}) + "\n")
+        kwargs["stdout"].write(json.dumps({"type":"item.completed", "item":{"type":"agent_message", "text":"完整的合成独立回答。"}}) + "\n")
         class FakeProcess:
             returncode = 0
             stdin = io.StringIO()
@@ -450,14 +562,19 @@ def test_engine_uses_stdin_sandbox_and_requires_real_search_transcript(tmp_path,
         return FakeProcess()
     monkeypatch.setattr("value_invest_research.adapters.outbound.codex_research_runner.subprocess.Popen", process)
     job = {"id":"synthetic", "audit_dir":str(audit), "proposal":propose_edit(tree, change(tree))}
-    if with_search:
+    if with_search is True:
         runner.run(str(work), job, lambda *_: None, lambda: False)
+        assert len(calls) == 2
+        assert calls[0][calls[0].index("--sandbox") + 1] == "read-only"
+        assert calls[0][calls[0].index("-C") + 1] != str(work)
+        assert (work / "direct_answers/F1.1.3.md").read_text() == "完整的合成独立回答。"
+        assert (audit / "direct_answers/F1.1.3.md").read_text() == "完整的合成独立回答。"
     else:
         with pytest.raises(ValueError, match="没有完成的联网检索"):
             runner.run(str(work), job, lambda *_: None, lambda: False)
     command = captured["command"]
     assert command[-1] == "-" and "--ignore-user-config" in command
-    assert command[command.index("--sandbox") + 1] == "workspace-write"
+    assert command[command.index("--sandbox") + 1] == ("read-only" if with_search is False else "workspace-write")
     assert captured["kwargs"].get("shell") is None
     assert not any(job["proposal"]["edit"]["question"] in arg for arg in command)
     assert (audit / "engine.jsonl").exists() and not (work / "engine.jsonl").exists()

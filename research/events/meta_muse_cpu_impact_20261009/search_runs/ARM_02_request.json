@@ -1,0 +1,28 @@
+{
+  "l3_plan_id": "l3rp_arm_987ba7b1e9d30304",
+  "l3_node_id": "ARM",
+  "question_node_id": "ARM",
+  "question_level": 3,
+  "research_step_id": "question:ARM",
+  "search_run_id": "ARM_02",
+  "origin": "active_question_search",
+  "request": {
+    "open": [
+      {
+        "ref_id": "https://newsroom.arm.com/news/arm-agi-cpu-launch",
+        "lineno": 40
+      }
+    ],
+    "search_query": [
+      {
+        "q": "\"Arm\" \"July 29, 2026\" \"silicon\" \"1,289\"",
+        "domains": [
+          "investors.arm.com",
+          "newsroom.arm.com"
+        ]
+      }
+    ],
+    "response_length": "short"
+  },
+  "recorded_at": "2026-10-09T03:41:21.631Z"
+}

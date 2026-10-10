@@ -1,0 +1,27 @@
+{
+  "l3_plan_id": "l3rp_intc_523eb03937fd3aa2",
+  "l3_node_id": "INTC",
+  "question_node_id": "INTC",
+  "question_level": 3,
+  "research_step_id": "question:INTC",
+  "search_run_id": "INTC_02",
+  "origin": "active_question_search",
+  "request": {
+    "find": [
+      {
+        "ref_id": "turn11view1",
+        "pattern": "Data Center"
+      },
+      {
+        "ref_id": "turn8search9",
+        "pattern": "9%"
+      },
+      {
+        "ref_id": "turn8search9",
+        "pattern": "ASP"
+      }
+    ],
+    "response_length": "short"
+  },
+  "recorded_at": "2026-10-09T03:41:14.707Z"
+}

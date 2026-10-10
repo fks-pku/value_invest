@@ -1,0 +1,1 @@
+{"event_id": "ima_availability_20261009", "recorded_at": "2026-10-09T03:52:17.248530+00:00", "ingestion_channel": "knowledge_base_scan", "status": "unavailable", "reason": "repository source/ima/archive_manifest.jsonl does not exist; no archive enumeration or PDF parsing claimed", "evidence_eligible": false}

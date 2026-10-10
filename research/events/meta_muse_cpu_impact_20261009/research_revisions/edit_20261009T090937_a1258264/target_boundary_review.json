@@ -1,0 +1,13 @@
+{
+  "revision_id": "edit_20261009T090937_a1258264",
+  "affected_nodes": [
+    "O2",
+    "O",
+    "MUSE"
+  ],
+  "decision": "既有标的状态保持；O2 机制确认不证明公司订单、盈利或估值，不升级 actionable_long。",
+  "targets": [],
+  "gaps": [
+    "公司级增量收益和定价仍由原 C 分支明确保留。"
+  ]
+}

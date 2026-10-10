@@ -1,0 +1,32 @@
+{
+  "l3_plan_id": "l3rp_intc_523eb03937fd3aa2",
+  "l3_node_id": "INTC",
+  "question_node_id": "INTC",
+  "question_level": 3,
+  "research_step_id": "question:INTC",
+  "search_run_id": "INTC_01",
+  "origin": "active_question_search",
+  "request": {
+    "open": [
+      {
+        "ref_id": "https://www.intc.com/news-events/press-releases/detail/1776/intel-reports-second-quarter-2026-financial-results",
+        "lineno": 70
+      },
+      {
+        "ref_id": "https://www.intc.com/filings-reports/all-sec-filings/content/0000050863-26-000157/intc-20260627.htm"
+      }
+    ],
+    "search_query": [
+      {
+        "q": "Meta Muse Xeon Intel CPU deployment 2026",
+        "domains": [
+          "intel.com",
+          "intc.com",
+          "engineering.fb.com"
+        ]
+      }
+    ],
+    "response_length": "short"
+  },
+  "recorded_at": "2026-10-09T03:40:57.917Z"
+}

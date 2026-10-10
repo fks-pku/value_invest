@@ -1,0 +1,33 @@
+{
+  "revision_id": "edit_20261009T095113_fd9815e7",
+  "edit": {
+    "node_id": "C",
+    "operation": "rerun",
+    "question": "",
+    "reason": "用户要求用新的 direct-answer-v1 更新 HTML 的其他问题。按完整原题独立联网检索、打开原始来源并直接回答，截止 2026-10-09；给出具体事实、解释和可复算数据，再整理报告，不把答案缩成缺口/投资摘要。数量或归因未知时先说明已知基线、机制与边界，情景假设不能伪装实测。逐项核对 final answer_review 并保留独立回答信息。公司题区分 CPU 与 GPU、实际与承诺、行业增长与 Muse 增量。上层按更新子结论重做汇总；保留 O1 最新答案不变。"
+  },
+  "affected_ids": [
+    "AMD",
+    "ARM",
+    "C",
+    "C0",
+    "INTC",
+    "MUSE",
+    "NVDA"
+  ],
+  "research_ids": [
+    "C0",
+    "AMD",
+    "INTC",
+    "ARM",
+    "NVDA"
+  ],
+  "rollup_ids": [
+    "C",
+    "MUSE"
+  ],
+  "removed_ids": [],
+  "created_at": "2026-10-09T09:51:14.100404+00:00",
+  "as_of_date": "2026-10-09",
+  "prior_tree_sha256": "a0c1a9ecac5ca4cb59e335506b001cf1e61ccf72109b11106cdac901dee5fcb2"
+}

@@ -1,0 +1,39 @@
+{
+  "l3_plan_id": "l3rp_t1_218fc5c25892828c",
+  "l3_node_id": "T1",
+  "question_node_id": "T1",
+  "question_level": 3,
+  "research_step_id": "question:T1",
+  "search_run_id": "T1_01",
+  "origin": "active_question_search",
+  "request": {
+    "search_query": [
+      {
+        "q": "Muse Glimmer on device August 10 2026",
+        "domains": [
+          "research.meta.ai"
+        ]
+      },
+      {
+        "q": "Meta Grace standalone CPUs Vera 2027",
+        "domains": [
+          "nvidianews.nvidia.com"
+        ]
+      },
+      {
+        "q": "AMD EPYC 9005 192 cores 12 channels",
+        "domains": [
+          "amd.com"
+        ]
+      },
+      {
+        "q": "EPYC 9D25 Muse 2 7.75",
+        "domains": [
+          "browser.geekbench.com"
+        ]
+      }
+    ],
+    "response_length": "long"
+  },
+  "recorded_at": "2026-10-09T03:40:03.447Z"
+}

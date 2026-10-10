@@ -1,0 +1,225 @@
+{
+  "schema_version": "4.0",
+  "plan_type": "l3_deep_research",
+  "plan_id": "l3rp_nvda_015311d1b0232324",
+  "parent_research_plan_id": "rp_l3_d63fb6c328e7697a",
+  "l3_node_id": "NVDA",
+  "l3_title": "NVIDIA 能否从 Muse 的 CPU 需求中受益？",
+  "l3_question": "NVIDIA 能否从 Muse 的 CPU 需求中受益？",
+  "lens_id": "NVDA",
+  "research_goal": {
+    "research_object": "Meta Muse personal agent release and CPU market impact",
+    "mode": "live",
+    "run_mode": "live",
+    "as_of_date": "2026-10-09",
+    "report_date": "2026-10-09",
+    "event_date": "2026-09-08",
+    "investment_decision": "行业方向、条件规模与公司敞口；不作买卖建议",
+    "scope": "全球服务器 CPU 为主；端侧仅检验替代边界。事件研究，不扩展完整行业链或 standalone-BOM 项目。",
+    "biggest_uncertainty": "每活跃用户的真实 CPU/内存驻留时间及其增量采购转化",
+    "counterfactual": "无 Muse 时已有云服务、AI 执行环境与服务器更新需求",
+    "maximum_depth": 5
+  },
+  "question_tree_policy": {
+    "root_level": 3,
+    "maximum_depth": 5,
+    "initial_depth": 3,
+    "branching": "only_after_failed_answerability_gate",
+    "terminal_definition": "the current deepest unanswered question"
+  },
+  "logic_contract": {
+    "indicators": [
+      "与 Meta 已确认的 CPU 业务关系",
+      "CPU/数据中心最新收入及包含业务",
+      "增量订单、竞争和财务传导证据"
+    ],
+    "support_rule": "官方供货关系和财务敞口可核验",
+    "refute_rule": "订单属于既有计划、GPU 而非 CPU，或竞争者替代；无 Muse 单独财务拆分",
+    "downstream_node_ids": [],
+    "company_bridge_fields": [],
+    "update_cadence": "event_driven"
+  },
+  "material_collection_policy": {
+    "required_origin": "active_question_search",
+    "required_trace_fields": [
+      "l3_plan_id",
+      "l3_node_id",
+      "question_node_id",
+      "question_level",
+      "research_step_id",
+      "search_run_id"
+    ],
+    "bulk_pool_mapping_eligible": false,
+    "push_ingestion_role": "candidate_only",
+    "source_reuse_rule": "The same source may serve another active question only through a separate attachment, extraction, and GPT review for that question."
+  },
+  "completion_policy": {
+    "l3_complete_when": "current_question_answerable_or_all_required_descendants_complete",
+    "missing_evidence": "block_then_expand_only_the_observed_gap",
+    "legacy_broad_search": "audit_only_not_retroactive_completion"
+  },
+  "expansion_history": [],
+  "question_tree": {
+    "question_id": "NVDA",
+    "level": 3,
+    "title": "NVIDIA 能否从 Muse 的 CPU 需求中受益？",
+    "question": "NVIDIA 能否从 Muse 的 CPU 需求中受益？",
+    "children": [],
+    "research_dimension": "l3_initial",
+    "required_data": [
+      "与 Meta 已确认的 CPU 业务关系",
+      "CPU/数据中心最新收入及包含业务",
+      "增量订单、竞争和财务传导证据"
+    ],
+    "analysis_plan": [
+      "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+      "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+      "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+    ],
+    "depends_on_question_ids": [],
+    "requires_refutation_search": true
+  },
+  "steps": [
+    {
+      "step_id": "question:NVDA",
+      "stage_id": "NVDA",
+      "sequence": 1,
+      "question_node_id": "NVDA",
+      "question_level": 3,
+      "research_step_id": "question:NVDA",
+      "l3_plan_id": "l3rp_nvda_015311d1b0232324",
+      "l3_node_id": "NVDA",
+      "l4_question_id": "",
+      "leaf_question_id": "NVDA",
+      "leaf_step_id": "question:NVDA",
+      "level": 3,
+      "research_dimension": "l3_initial",
+      "question": "NVIDIA 能否从 Muse 的 CPU 需求中受益？",
+      "question_path": [
+        {
+          "question_id": "NVDA",
+          "level": 3,
+          "question": "NVIDIA 能否从 Muse 的 CPU 需求中受益？"
+        }
+      ],
+      "decision_use": "Answer the current terminal question before rolling up L3 NVDA.",
+      "depends_on_step_ids": [],
+      "required_data": [
+        "与 Meta 已确认的 CPU 业务关系",
+        "CPU/数据中心最新收入及包含业务",
+        "增量订单、竞争和财务传导证据"
+      ],
+      "required_materials": [
+        "与 Meta 已确认的 CPU 业务关系",
+        "CPU/数据中心最新收入及包含业务",
+        "增量订单、竞争和财务传导证据"
+      ],
+      "analysis_plan": [
+        "先在 L3 层尝试形成事实、推断、判断和反证分离的答案",
+        "检验证据是否直接、口径一致、来源多样且足以回答当前问题",
+        "若不能回答，只把已观察到的证据缺口转化为下一层子问题"
+      ],
+      "source_universe_plan": {
+        "registry": "config/source_universes.json",
+        "domain_id": "ai_factory",
+        "priority_source_ids": [
+          "semianalysis",
+          "trendforce",
+          "techinsights",
+          "omdia",
+          "delloro",
+          "lightcounting",
+          "the_information",
+          "serve_the_home"
+        ]
+      },
+      "source_plan": [
+        {
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "examples_or_search_queries": [
+            "NVIDIA 能否从 Muse 的 CPU 需求中受益？ 与 Meta 已确认的 CPU 业务关系 / CPU/数据中心最新收入及包含业务 / 增量订单、竞争和财务传导证据"
+          ],
+          "why_needed": "Anchors the leaf answer in direct evidence.",
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "dynamic-research-agent",
+          "deepseek_allowed": false
+        },
+        {
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "examples_or_search_queries": [
+            "NVIDIA 能否从 Muse 的 CPU 需求中受益？ 与 Meta 已确认的 CPU 业务关系 / CPU/数据中心最新收入及包含业务 / 增量订单、竞争和财务传导证据"
+          ],
+          "why_needed": "Provides independent verification and a contrary test.",
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "dynamic-research-agent",
+          "deepseek_allowed": true
+        }
+      ],
+      "minimum_evidence_gate": {
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "active_question_search_run_required": true,
+        "search_run_id_required": true,
+        "per_source_parse_required": true,
+        "gpt_review_required": true,
+        "direct_node_fit_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ]
+      },
+      "refuting_source_plan": [
+        "Search specifically for evidence that would make this leaf answer false, temporary, or bounded; parent refute rule: 订单属于既有计划、GPU 而非 CPU，或竞争者替代；无 Muse 单独财务拆分."
+      ],
+      "freshness_requirement": "Use the latest available source as of 2026-10-09. Refresh cadence: event_driven.",
+      "preferred_specialty_skill": "dynamic-research-agent",
+      "collection_contract": {
+        "origin": "active_question_search",
+        "required_trace_fields": [
+          "l3_plan_id",
+          "l3_node_id",
+          "question_node_id",
+          "question_level",
+          "research_step_id",
+          "search_run_id"
+        ],
+        "query_must_name_active_question": true,
+        "bulk_pool_mapping_forbidden": true
+      },
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Answer only the current question; separate facts, inference, judgment, refutation, and gaps."
+      },
+      "traceability_contract": {
+        "required_references": [
+          "search_run_id",
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ],
+        "event_ledger": "research_step_events.jsonl"
+      },
+      "initial_status": "pending"
+    }
+  ]
+}

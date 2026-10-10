@@ -445,6 +445,31 @@ Backtest recommendations are frozen before future-return labels are attached. La
 
 The sole presentation contract is `skills/value_invest_research/frameworks/research_report_contract.md`.
 
+Every terminal L3/L4/L5 uses `direct-answer-v1`: research and draft a complete
+standalone answer as if the user asked that exact question directly in Codex, then
+adapt it to the canonical report. Begin with the substantive answer and preserve
+all material parts of the original question. Let its type determine the structure:
+facts, explanations, quantities, comparisons, and decisions need different prose.
+Parent/investment context follows the answer and must not replace it. Known facts,
+examples and decisive conditions belong in the main prose, with adjacent sources;
+use paragraphs, lists or tables when useful, without word-count or section quotas.
+Review the final article against the full question and the independent draft.
+Missing substantive parts prevent sufficiency; confirming a smaller convenient
+claim does not pass the original question. Record this review internally, not as
+public workflow narration. Structural validators check review consistency; GPT
+still owns semantic coverage and factual review.
+
+Default report opening is editable (persistent user preference). For every new
+research delivery or report-opening request, start or reuse the target project's
+local research workbench, verify its `/api/state` matches that project, and open
+`http://127.0.0.1:<port>/professional_report.html`. This route and `/` are the editable
+entry; `/professional_report.offline.html` is the explicit offline export. Do not
+default to `file://` or silently reuse a port serving another project. Preserve
+the canonical self-contained HTML/Markdown snapshots and existing presentation
+contracts. If a legacy profile lacks editing support or the service cannot start,
+state the limitation; never label a static report as editable. See
+`docs/interactive_researcher.md` for startup and delivery.
+
 Dynamic question-driven HTML uses the shared `question-tree-v1` presentation
 profile, matching the AI-factory report: left question tree, right node article,
 parents show exactly `研究子问题`, `子问题核心结论`, `欠缺的方向`;

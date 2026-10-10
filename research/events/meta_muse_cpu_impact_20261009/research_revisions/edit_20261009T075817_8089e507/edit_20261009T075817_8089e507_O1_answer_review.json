@@ -1,0 +1,110 @@
+{
+  "question": "Muse 发布了什么，目前谁能使用？",
+  "direct_answer_excerpt": "Meta 于 2026 年 9 月 8 日发布的是个人 AI 智能体 Muse：用户交代目标后，它能浏览网页、连接应用并持续执行任务，背后的模型是 Muse Spark。截至 10 月 9 日，官方确认美国和加拿大、18 岁及以上用户是可用范围；入口包括 iOS、Android、网页和 WhatsApp，Mac 也已有官方使用说明，但地区、账户和功能仍有有限测试限制。服务有免费额度；Power 为每月 20 美元、Max 为每月 100 美元。小企业技能已推出，眼镜、Charm 和 Confidential VM 等仍须区分后续计划与实际交付。[S01][S03][E8089_AVATAR][E8089_SUB][E8089_MAC]",
+  "coverage": [
+    {
+      "requirement": "发布的对象、日期及 Muse Spark 区别",
+      "status": "answered",
+      "answer_excerpt": "Meta 于 2026 年 9 月 8 日发布的是个人 AI 智能体 Muse：用户交代目标后，它能浏览网页、连接应用并持续执行任务，背后的模型是 Muse Spark。截至 10 月 9 日，官方确认美国和加拿大、18 岁及以上用户是可用范围；入口包括 iOS、Android、网页和 WhatsApp，Mac 也已有官方使用说明，但地区、账户和功能仍有有限测试限制。服务有免费额度；Power 为每月 20 美元、Max 为每月 100 美元。小企业技能已推出，眼镜、Charm 和 Confidential VM 等仍须区分后续计划与实际交付。[S01][S03][E8089_AVATAR][E8089_SUB][E8089_MAC]"
+    },
+    {
+      "requirement": "主要用途、后台任务与敏感操作批准",
+      "status": "answered",
+      "answer_excerpt": "Muse 是交付给用户使用的智能体产品，Muse Spark 是驱动它的模型。用户可以让它处理邮件、安排旅行、监测事项，或把长期目标拆成计划；它可在关闭应用后继续工作，敏感动作例如发送邮件、购物需要批准。这些是 Meta 公布的能力和工作方式，不能理解为每项任务都能成功。[S01]"
+    },
+    {
+      "requirement": "Secure VM 工作方式及安全限制",
+      "status": "answered",
+      "answer_excerpt": "执行环境叫 Muse Secure VM，即每位用户拥有隔离的云端 Linux 虚拟机，内含浏览器、存储、CPU 和内存，可运行代码、定时任务与多个子智能体。用户连接服务的凭据存于隔离环境，独立的 Sentinel 决定外部操作可否执行。Meta 明确承认仍会出错，现行隔离也不等于 Meta 在运营服务时绝对无法访问数据。[S02]"
+    },
+    {
+      "requirement": "国家、年龄和未开放地区",
+      "status": "answered",
+      "answer_excerpt": "截至 2026 年 10 月 9 日，已获官方明确确认的地区是美国、加拿大；Muse 面向 18 岁及以上用户。首发公告仅列美国，后续小企业公告已列加拿大。面向大众、不需技术经验是产品定位，不能据此理解为全球开放。中国大陆及其他未列明地区，本轮没有找到截止日前正式开放的官方确认。[S01][S03][E8089_AVATAR]"
+    },
+    {
+      "requirement": "Meta 账户与订阅资格及有限测试",
+      "status": "answered",
+      "answer_excerpt": "手机应用和网页通过 Meta 账户登录；可用 Facebook、Instagram、邮箱或电话号码创建账户。订阅还要求位于支持国家，并达到 18 岁或当地成年年龄。官方帮助页明确服务仍在有限测试，权益可能随地区及账户变化，因此满足年龄和国家要求并不保证立即得到全部功能。[E8089_START][E8089_SUB][E8089_HELP]"
+    },
+    {
+      "requirement": "iOS、Android 与网页入口",
+      "status": "answered",
+      "answer_excerpt": "Muse 手机应用及 muse.ai。[S01]"
+    },
+    {
+      "requirement": "WhatsApp 入口",
+      "status": "answered",
+      "answer_excerpt": "可直接与 Muse 通信。[S01]"
+    },
+    {
+      "requirement": "Mac 使用与授权条件",
+      "status": "answered",
+      "answer_excerpt": "官方说明可整理文件、读取或操作 iMessage、Notes、日历等部分应用。[E8089_MAC]"
+    },
+    {
+      "requirement": "小企业发布内容与连接器",
+      "status": "answered",
+      "answer_excerpt": "9 月 29 日发布、10 月 8 日更新的公告，把 Muse 扩展到经营业务的技能与连接器。它可接入 Facebook 和 Instagram 商业账户，以及 Shopify、Stripe、QuickBooks、Notion、Slack、Canva 等，帮助查看销售和财务表现、准备广告内容、整理待办并制定业务计划；这是在 Muse 内增加能力。内容发布、消息发送和花钱仍需批准，不能等同把企业决策与经营结果交给系统保证。[S03]"
+    },
+    {
+      "requirement": "免费机制、付费美元价格及每周额度",
+      "status": "answered",
+      "answer_excerpt": "官方已给出美元月费和付费额度，不必只依赖媒体报价。免费用户达到上限后，可以等待刷新或升级；Power 为每月 20 美元、每周 5 亿 Muse tokens，Max 为每月 100 美元、每周 30 亿 Muse tokens。Muse tokens 是服务用量单位，不能直接换成固定任务数。[E8089_SUB]"
+    },
+    {
+      "requirement": "免费精确额度与地方最终账单的未知",
+      "status": "answered",
+      "answer_excerpt": "官方帮助页没有列出免费的精确 token 数；不能把第三方所写“每周 1 亿”当作本页承诺。页面也不提供加拿大本地币种、税费和各支付渠道的最终扣款额；这里的 20/100 美元是官方美元月费口径。订阅按月自动续费，可取消，实际可用权益在订阅前的开通流程展示。[E8089_SUB]"
+    },
+    {
+      "requirement": "Muse Realtime Avatar 的发布或计划状态",
+      "status": "answered",
+      "answer_excerpt": "9 月 23 日公布实时语音与形象技术。[E8089_AVATAR]"
+    },
+    {
+      "requirement": "Muse 进入 AI 眼镜 的发布或计划状态",
+      "status": "answered",
+      "answer_excerpt": "Connect 公告写未来数月推出。[E8089_CONNECT]"
+    },
+    {
+      "requirement": "Muse Charm 的发布或计划状态",
+      "status": "answered",
+      "answer_excerpt": "已宣布便携设备，年内再分享信息。[E8089_CONNECT]"
+    },
+    {
+      "requirement": "自有邮箱、Expedia 连接 的发布或计划状态",
+      "status": "answered",
+      "answer_excerpt": "公告使用将来时或即将推出。[E8089_CONNECT]"
+    },
+    {
+      "requirement": "Muse Confidential VM 的发布或计划状态",
+      "status": "answered",
+      "answer_excerpt": "目标是以加密阻止 Meta 访问 VM 数据，计划年内交付；已有少量可信测试者。[S02]"
+    },
+    {
+      "requirement": "公告更新与动态页面的时间适用性",
+      "status": "answered",
+      "answer_excerpt": "首发公告显示 9 月 8 日发布、9 月 30 日更新；小企业公告显示 9 月 29 日发布、10 月 8 日更新。订阅、入门和 Mac 帮助页是截至 10 月 9 日读取的动态说明，没有可核实的首次发布日期，不能把现有内容全部回填到首发当天。[S01][S03][E8089_SUB][E8089_START][E8089_MAC]"
+    }
+  ],
+  "draft_comparison": {
+    "retained": [
+      "保留独立回答的发布对象、模型区别、功能实例、Secure VM、安全边界、美国加拿大与 18+、手机网页 WhatsApp、Mac、小企业连接器、未来功能表和截止日。"
+    ],
+    "corrected": [
+      "草稿仅有媒体价格且称官方没有完整价目：本轮打开官方订阅页，改为 Power USD20/500M 与 Max USD100/3B 每周。",
+      "补充 Meta 账户、有限测试、地区与账户权益差异；避免成年用户全部可用的暗示。",
+      "Mac 产品页本轮打开失败，改由官方 Mac 帮助原文核实，不将搜索摘要当证据。",
+      "Confidential VM 补充少量可信测试者及当前 Secure VM 不绝对阻止运营访问。"
+    ],
+    "omitted": [
+      "不采用未经核实的免费 1 亿 token 承诺；保留精确额度未知及原因。",
+      "未把网页下载入口抓取失败表述成产品不存在；未推定首次上线日期。"
+    ]
+  },
+  "passed": true,
+  "reviewer": "GPT",
+  "revision_id": "edit_20261009T075817_8089e507",
+  "unknowns_assessment": "问题询问发布内容和可用对象，已给出官方公开范围与限制。单账户授权、未公布免费精确额度和本地含税价不能从公开资料确定；明确未知可完整回答这些边界，不以缺失数据推造数值。"
+}

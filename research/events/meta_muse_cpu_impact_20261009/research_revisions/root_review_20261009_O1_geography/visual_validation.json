@@ -1,0 +1,37 @@
+{
+  "html": {
+    "ok": true,
+    "issues": [],
+    "summary": {
+      "mode": "historical_backtest",
+      "presentation_profile": "question-tree-v1",
+      "nodes": 14,
+      "parents": 4,
+      "leaves": 10
+    }
+  },
+  "markdown": {
+    "ok": true,
+    "issues": [],
+    "summary": {
+      "mode": "historical_backtest",
+      "report_scope": "research-project",
+      "level1_cards": 0,
+      "level2_cards": 0,
+      "level3_cards": 0,
+      "require_l3": false
+    }
+  },
+  "visual_review": {
+    "reviewer": "GPT primary agent",
+    "surface": "http://127.0.0.1:8765/professional_report.html#O1",
+    "as_of_date": "2026-10-09",
+    "verified": [
+      "编辑按钮可用",
+      "完成后研究过程默认收起",
+      "Muse 首题直接答案、地区差异与具体信息在主文可见",
+      "现有共享模板截图无可见溢出或遮挡"
+    ]
+  },
+  "full_legacy_audit": "not_claimed"
+}

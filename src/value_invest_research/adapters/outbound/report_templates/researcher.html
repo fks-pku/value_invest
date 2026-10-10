@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="research-token" content="__CSRF_TOKEN__"><title>动态研究器</title><link rel="stylesheet" href="/assets/researcher.css"></head>
 <body>
-<header class="masthead"><div><span class="eyebrow">RESEARCH / WORKSPACE</span><h1 id="title">动态研究器</h1></div><div class="exports"><span id="cutoff"></span><a href="/professional_report.html" target="_blank" rel="noopener">完整报告 ↗</a><a href="/research_plan.md" target="_blank" rel="noopener">研究计划</a></div></header>
+<header class="masthead"><div><span class="eyebrow">RESEARCH / WORKSPACE</span><h1 id="title">动态研究器</h1></div><div class="exports"><span id="cutoff"></span><a href="/professional_report.offline.html" download="professional_report.html">导出离线 HTML ↓</a><a href="/research_plan.md" target="_blank" rel="noopener">研究计划</a></div></header>
 <div class="workbench">
   <aside aria-label="可编辑问题树"><div class="tree-heading"><span>研究问题</span><small>选择 · 编辑 · 重新研究</small></div><nav id="tree" aria-label="问题树"><p>正在读取问题树…</p></nav><div class="tree-actions"><span id="selected-label">尚未选择</span><div><button id="edit" disabled>编辑问题</button><button id="add" disabled>＋ 子问题</button><button id="remove" disabled>移除分支</button></div><button class="rerun" id="rerun" disabled>↻ 重新研究当前分支</button><p>只重研受影响分支，再向上汇总。原始证据截面不变。</p></div></aside>
   <main><div class="run-strip" role="status" aria-live="polite"><span class="status-dot"></span><div><strong id="run-title">连接本地研究服务</strong><p id="run-message">研究结果先验证，后更新报告。</p></div><button id="cancel-run" hidden>取消研究</button><button id="retry" hidden>重试</button></div>

@@ -1,0 +1,27 @@
+{
+  "l3_plan_id": "l3rp_o2_027155bf51737945",
+  "l3_node_id": "O2",
+  "question_node_id": "O2",
+  "question_level": 3,
+  "research_step_id": "question:O2",
+  "search_run_id": "O2_01",
+  "origin": "active_question_search",
+  "role": "support_and_refutation",
+  "request": {
+    "open": [
+      {
+        "ref_id": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse"
+      }
+    ],
+    "search_query": [
+      {
+        "q": "site.research.meta.ai Muse VM idle suspend CPU dedicated inference memory"
+      },
+      {
+        "q": "site.engineering.fb.com Muse virtual machine CPU EPYC memory"
+      }
+    ],
+    "response_length": "long"
+  },
+  "recorded_at": "2026-10-09T03:39:01.585Z"
+}

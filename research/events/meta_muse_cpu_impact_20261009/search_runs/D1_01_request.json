@@ -1,0 +1,24 @@
+{
+  "l3_plan_id": "l3rp_d1_a2263a4c076b8be5",
+  "l3_node_id": "D1",
+  "question_node_id": "D1",
+  "question_level": 3,
+  "research_step_id": "question:D1",
+  "search_run_id": "D1_01",
+  "origin": "active_question_search",
+  "request": {
+    "search_query": [
+      {
+        "q": "site.docs.aws.amazon.com vCPU threads physical core SMT"
+      },
+      {
+        "q": "site.kernel.org cgroup cpu.max quota bandwidth CPU"
+      },
+      {
+        "q": "site.usenix.org Firecracker microVM oversubscription memory 2020"
+      }
+    ],
+    "response_length": "short"
+  },
+  "recorded_at": "2026-10-09T03:39:35.433Z"
+}

@@ -1,0 +1,16 @@
+{
+  "revision_id": "edit_20261009T092333_321fabff",
+  "validator": "value_invest_research.domain.research_answer.validate_answer_review",
+  "validated_nodes": [
+    "D1",
+    "D2",
+    "T1"
+  ],
+  "excerpt_and_gap_checks": "passed",
+  "semantic_sufficiency": {
+    "D1": false,
+    "D2": false,
+    "T1": false
+  },
+  "note": "字段一致性通过不等于回答充分；所有实质缺口保留。"
+}

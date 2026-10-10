@@ -1,0 +1,30 @@
+{
+  "l3_plan_id": "l3rp_o1_0fc426f284271611",
+  "l3_node_id": "O1",
+  "question_node_id": "O1",
+  "question_level": 3,
+  "research_step_id": "question:O1",
+  "search_run_id": "O1_01",
+  "origin": "active_question_search",
+  "role": "support_and_refutation",
+  "request": {
+    "open": [
+      {
+        "ref_id": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/"
+      },
+      {
+        "ref_id": "https://about.fb.com/news/2026/09/introducing-muse-small-business/"
+      }
+    ],
+    "search_query": [
+      {
+        "q": "site.about.fb.com Muse daily active users 500000 September October 2026"
+      },
+      {
+        "q": "site.about.fb.com Muse Canada September 2026 available free subscription"
+      }
+    ],
+    "response_length": "long"
+  },
+  "recorded_at": "2026-10-09T03:39:01.434Z"
+}

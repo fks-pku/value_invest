@@ -1,0 +1,78 @@
+{
+  "ok": true,
+  "issues": [],
+  "summary": {
+    "plan_id": "l3rp_d1_edit_20261009T092333_321fabff",
+    "status": "blocked",
+    "steps": 1,
+    "pending": 0,
+    "in_progress": 0,
+    "review_pending": 0,
+    "blocked": 1,
+    "completed": 0,
+    "events": 5,
+    "historical_plan_events": 5
+  },
+  "step_states": [
+    {
+      "step_id": "question:D1",
+      "status": "blocked",
+      "answer": "Muse 用户增长会增加服务器 CPU 工作量，但截至 2026 年 10 月 9 日，公开资料不足以确定“每新增多少用户，Meta 就采购多少颗 CPU”。可以给出两种不同口径：沿用用户观察到的每台虚拟机 2 vCPU 配置，新增 100 万个已配置账户对应 200 万个 vCPU 的名义配额；若新增的是 100 万日活用户，并假设每人每天消耗 1 个物理核小时、峰值为平均负载的两倍、目标利用率 60%，则约需 724 颗 192 核服务器 CPU 的容量。前者不是物理核心数，后者是可复算情景，均不是 Meta 已披露的采购量。 [S01][EA125_STARK][E321_9965]",
+      "search_run_id": "edit_20261009T092333_321fabff_D1_01",
+      "source_ids": [
+        "S01",
+        "S02",
+        "EA125_STARK",
+        "E321_EARLY",
+        "S20",
+        "E321_VMTEST",
+        "E321_9965"
+      ],
+      "source_extraction_ids": [
+        "edit_20261009T092333_321fabff_D1_ext_1",
+        "edit_20261009T092333_321fabff_D1_ext_2",
+        "edit_20261009T092333_321fabff_D1_ext_3",
+        "edit_20261009T092333_321fabff_D1_ext_4",
+        "edit_20261009T092333_321fabff_D1_ext_5",
+        "edit_20261009T092333_321fabff_D1_ext_7",
+        "edit_20261009T092333_321fabff_D1_ext_8"
+      ],
+      "source_review_ids": [
+        "edit_20261009T092333_321fabff_D1_review_1",
+        "edit_20261009T092333_321fabff_D1_review_2",
+        "edit_20261009T092333_321fabff_D1_review_3",
+        "edit_20261009T092333_321fabff_D1_review_4",
+        "edit_20261009T092333_321fabff_D1_review_5",
+        "edit_20261009T092333_321fabff_D1_review_7",
+        "edit_20261009T092333_321fabff_D1_review_8"
+      ],
+      "supporting_findings": [
+        "Meta 于 9 月 8 日发布 Muse，9 月 30 日更新的公告说明关闭应用后仍能继续任务。",
+        "Muse 的用户环境是带 CPU、内存、存储的隔离 Linux VM，可编译代码、运行并发子智能体及定时任务；推理代理连接外部基础设施。",
+        "AMD 在 2024 年 10 月 10 日的发布稿确认 EPYC 9965 为 192 核处理器。"
+      ],
+      "refuting_findings": [
+        "9 月 20 日单账户观察显示 2 vCPU、7.7 GB 内存、100 GB 主目录卷及 EPYC 9D25 标识；作者称配置并非 Meta 承诺。 9月22日发布；经智能体观察，126核/252线程标识不能证明全站拓扑或持续独占配额。",
+        "9月22日报道：首周尝试用户超50万，日活超25万。 媒体查看内部数据的报道；付费正文不可完整读取，不能视为官方公开遥测。",
+        "9月30日报道：每周发提示超300万人，每日超100万人。 统计发提示用户；付费原页只显示标题，索引内容不等于本研究取得内部原始数据。",
+        "9 月 30 日单用户测试见 2 vCPU；作者称一小时测试未见降频，并推断两线程共享一核，但承认没有观察到超分配证据。 1.44倍及约2倍基准倍率不能唯一识别宿主拓扑；不得把作者猜测当成全站SMT或超配政策。"
+      ],
+      "gaps": [
+        "未取得 Muse 每用户实际物理核时、峰均比、全站物理核/vCPU映射、利用率和内存驻留/回收率，不能确定实际容量转换系数。",
+        "未取得已有可用容量、故障冗余和采购记录，不能把容量换算为新增CPU订单。",
+        "用户基线来自媒体所见内部数据及第三方估计；Meta统一口径原始遥测未公开，Yahoo原页与Similarweb原表未取得。"
+      ],
+      "next_actions": [
+        "下一轮优先取得带定义的活跃/后台账户遥测和每账户核时、内存驻留、峰值及既有余量；对照订单，不新增问题。",
+        "补取Similarweb统计原表与可读取的同期原报道，确认平台覆盖和去重口径。"
+      ],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "edit_20261009T092333_321fabff_D1_step_blocked",
+      "latest_recorded_at": "2026-10-09T09:45:00.520210+00:00",
+      "event_count": 5
+    }
+  ]
+}

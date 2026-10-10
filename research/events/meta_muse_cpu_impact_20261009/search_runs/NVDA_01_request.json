@@ -1,0 +1,33 @@
+{
+  "l3_plan_id": "l3rp_nvda_015311d1b0232324",
+  "l3_node_id": "NVDA",
+  "question_node_id": "NVDA",
+  "question_level": 3,
+  "research_step_id": "question:NVDA",
+  "search_run_id": "NVDA_01",
+  "origin": "active_question_search",
+  "request": {
+    "search_query": [
+      {
+        "q": "Meta Builds AI Infrastructure With NVIDIA February 17 2026",
+        "domains": [
+          "nvidianews.nvidia.com"
+        ]
+      },
+      {
+        "q": "NVIDIA second quarter fiscal 2027 results CPU data center",
+        "domains": [
+          "nvidianews.nvidia.com",
+          "investor.nvidia.com"
+        ]
+      }
+    ],
+    "open": [
+      {
+        "ref_id": "https://nvidianews.nvidia.com/news/nvidia-launches-vera-cpu-purpose-built-for-agentic-ai"
+      }
+    ],
+    "response_length": "short"
+  },
+  "recorded_at": "2026-10-09T03:40:57.917Z"
+}

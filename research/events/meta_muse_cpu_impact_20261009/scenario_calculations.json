@@ -1,0 +1,46 @@
+{
+  "type": "hypothetical_sensitivity_not_forecast",
+  "assumptions": {
+    "v": 2,
+    "b": 0.5,
+    "h": 1.15,
+    "u": 0.7,
+    "e": 1,
+    "K_cores_per_host": 256,
+    "m_GiB_per_resident": 8,
+    "M_GiB_per_host": 2048,
+    "memory_utilization": 0.85
+  },
+  "rows": [
+    {
+      "name": "间歇执行",
+      "U": 1000000,
+      "p_cpu": 0.01,
+      "r_mem": 0.01,
+      "cpu_hosts": 65,
+      "memory_hosts": 46,
+      "hosts": 65,
+      "sockets": 130
+    },
+    {
+      "name": "较高并发",
+      "U": 1000000,
+      "p_cpu": 0.1,
+      "r_mem": 0.1,
+      "cpu_hosts": 642,
+      "memory_hosts": 460,
+      "hosts": 642,
+      "sockets": 1284
+    },
+    {
+      "name": "高驻留压力",
+      "U": 1000000,
+      "p_cpu": 0.5,
+      "r_mem": 1.0,
+      "cpu_hosts": 3209,
+      "memory_hosts": 4596,
+      "hosts": 4596,
+      "sockets": 9192
+    }
+  ]
+}

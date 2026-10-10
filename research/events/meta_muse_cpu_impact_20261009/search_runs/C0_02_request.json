@@ -1,0 +1,31 @@
+{
+  "l3_plan_id": "l3rp_c0_b0f77599b303e169",
+  "l3_node_id": "C0",
+  "question_node_id": "C0",
+  "question_level": 3,
+  "research_step_id": "question:C0",
+  "search_run_id": "C0_02",
+  "origin": "active_question_search",
+  "request": {
+    "open": [
+      {
+        "ref_id": "https://newsroom.amd.com/news/amd-and-meta-announce-expanded-strategic-partnersh/",
+        "lineno": 50
+      },
+      {
+        "ref_id": "https://newsroom.arm.com/news/arm-agi-cpu-launch",
+        "lineno": 42
+      },
+      {
+        "ref_id": "https://nvidianews.nvidia.com/news/meta-builds-ai-infrastructure-with-nvidia",
+        "lineno": 38
+      },
+      {
+        "ref_id": "https://www.intc.com/news-events/press-releases/detail/1776/intel-reports-second-quarter-2026-financial-results",
+        "lineno": 80
+      }
+    ],
+    "response_length": "short"
+  },
+  "recorded_at": "2026-10-09T03:42:01.092Z"
+}

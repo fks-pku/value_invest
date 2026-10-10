@@ -1,0 +1,64 @@
+{
+  "ok": true,
+  "issues": [],
+  "summary": {
+    "plan_id": "l3rp_amd_9fee216dcf58382c",
+    "status": "blocked",
+    "steps": 1,
+    "pending": 0,
+    "in_progress": 0,
+    "review_pending": 0,
+    "blocked": 1,
+    "completed": 0,
+    "events": 5,
+    "historical_plan_events": 0
+  },
+  "step_states": [
+    {
+      "step_id": "question:AMD",
+      "status": "blocked",
+      "answer": "AMD 具备已验证的 EPYC 客户基础，是直接跟踪对象；但 Muse 的增量 CPU 收入无法单列，且 Meta 已布局其他架构，不能从主机线索推导独占或确定利润增幅。",
+      "search_run_id": "AMD_02",
+      "source_ids": [
+        "S05",
+        "S06",
+        "S07",
+        "S10"
+      ],
+      "source_extraction_ids": [
+        "ext_AMD_S05_v1",
+        "ext_AMD_S06_v1",
+        "ext_AMD_S07_v1",
+        "ext_AMD_S10_v1"
+      ],
+      "source_review_ids": [
+        "gpt_AMD_S05_v1",
+        "gpt_AMD_S06_v1",
+        "gpt_AMD_S07_v1",
+        "gpt_AMD_S10_v1"
+      ],
+      "supporting_findings": [
+        "Meta 已有数百万颗 EPYC 部署，并为 Venice/Verano 主要客户。"
+      ],
+      "refuting_findings": [
+        "Q2 数据中心收入 67 亿美元，同比增长 107%，由 EPYC 和 Instinct 驱动。 限制：CPU 与 GPU 混合口径；发生于 Muse 发布前。",
+        "Meta 已有独立 Grace CPU 合作。 限制：对长期 CPU 排他性的反证，不证明 Muse 当前已迁移。",
+        "Meta 与 Arm 共同开发 AGI CPU。 限制：另一供应路线，份额未披露。",
+        "既有 EPYC 存量、GPU 混合财务、Arm 竞争都会削弱 Muse 到 EPS 的直接推导。"
+      ],
+      "gaps": [
+        "未披露 Muse 对应 EPYC 订单、净售价、替代比例及增量毛利。"
+      ],
+      "next_actions": [
+        "核验 EPYC 专项出货/收入、客户执行池中 AMD 份额，而非只看数据中心总收入。"
+      ],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "AMD_step_blocked_v1",
+      "latest_recorded_at": "2026-10-09T03:52:17.248530+00:00",
+      "event_count": 5
+    }
+  ]
+}

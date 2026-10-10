@@ -1,0 +1,231 @@
+{
+  "completion_policy": {
+    "l3_complete_when": "current_question_answerable_or_all_required_descendants_complete",
+    "legacy_broad_search": "audit_only_not_retroactive_completion",
+    "missing_evidence": "block_then_expand_only_the_observed_gap"
+  },
+  "expansion_history": [],
+  "l3_node_id": "C0",
+  "l3_question": "哪些公司有可验证的业务敞口？",
+  "l3_title": "哪些公司有可验证的业务敞口？",
+  "lens_id": "C0",
+  "logic_contract": {
+    "company_bridge_fields": [],
+    "downstream_node_ids": [],
+    "indicators": [
+      "Meta CPU供应商、云服务商、上游制造商及历史关系",
+      "芯片颗数/核心/加速器GW各自口径",
+      "Muse直接实例与全公司合作归因边界"
+    ],
+    "refute_rule": "存在相反部署、成本或需求证据，或关键量化变量尚未披露",
+    "support_rule": "当前问题的原始材料直接支持限定结论",
+    "update_cadence": "event_driven"
+  },
+  "material_collection_policy": {
+    "bulk_pool_mapping_eligible": false,
+    "push_ingestion_role": "candidate_only",
+    "required_origin": "active_question_search",
+    "required_trace_fields": [
+      "l3_plan_id",
+      "l3_node_id",
+      "question_node_id",
+      "question_level",
+      "research_step_id",
+      "search_run_id"
+    ],
+    "source_reuse_rule": "The same source may serve another active question only through a separate attachment, extraction, and GPT review for that question."
+  },
+  "parent_research_plan_id": "rp_edit_20261009T095113_fd9815e7",
+  "plan_id": "l3rp_c0_edit_20261009T095113_fd9815e7",
+  "plan_type": "l3_deep_research",
+  "previous_plan_id": "l3rp_c0_b0f77599b303e169",
+  "question_tree": {
+    "analysis_plan": [
+      "逐项核对完整独立回答，按原题说明业务、机制、数量与时间口径",
+      "对照无Muse既有增长；分离CPU/GPU、实际/承诺、样本/全量",
+      "反向检索竞争者、未完成交付和未公开的Muse归因；不得以缺口代替已知答案"
+    ],
+    "children": [],
+    "depends_on_question_ids": [],
+    "level": 3,
+    "question": "哪些公司有可验证的业务敞口？",
+    "question_id": "C0",
+    "required_data": [
+      "Meta CPU供应商、云服务商、上游制造商及历史关系",
+      "芯片颗数/核心/加速器GW各自口径",
+      "Muse直接实例与全公司合作归因边界"
+    ],
+    "requires_refutation_search": true,
+    "research_dimension": "l3_initial",
+    "title": "哪些公司有可验证的业务敞口？"
+  },
+  "question_tree_policy": {
+    "branching": "only_after_failed_answerability_gate",
+    "initial_depth": 3,
+    "maximum_depth": 5,
+    "root_level": 3,
+    "terminal_definition": "the current deepest unanswered question"
+  },
+  "research_goal": {
+    "as_of_date": "2026-10-09",
+    "biggest_uncertainty": "每活跃用户的真实 CPU/内存驻留时间及其增量采购转化",
+    "counterfactual": "无 Muse 时已有云服务、AI 执行环境与服务器更新需求",
+    "event_date": "2026-09-08",
+    "investment_decision": "行业方向、条件规模与公司敞口；不作买卖建议",
+    "maximum_depth": 5,
+    "mode": "live",
+    "report_date": "2026-10-09",
+    "research_object": "Meta Muse personal agent release and CPU market impact",
+    "run_mode": "live",
+    "scope": "全球服务器 CPU 为主；端侧仅检验替代边界。事件研究，不扩展完整行业链或 standalone-BOM 项目。"
+  },
+  "revision_id": "edit_20261009T095113_fd9815e7",
+  "schema_version": "4.0",
+  "steps": [
+    {
+      "analysis_plan": [
+        "逐项核对完整独立回答，按原题说明业务、机制、数量与时间口径",
+        "对照无Muse既有增长；分离CPU/GPU、实际/承诺、样本/全量",
+        "反向检索竞争者、未完成交付和未公开的Muse归因；不得以缺口代替已知答案"
+      ],
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Answer only the current question; separate facts, inference, judgment, refutation, and gaps."
+      },
+      "collection_contract": {
+        "bulk_pool_mapping_forbidden": true,
+        "origin": "active_question_search",
+        "query_must_name_active_question": true,
+        "required_trace_fields": [
+          "l3_plan_id",
+          "l3_node_id",
+          "question_node_id",
+          "question_level",
+          "research_step_id",
+          "search_run_id"
+        ]
+      },
+      "decision_use": "Answer the current terminal question before rolling up L3 C0.",
+      "depends_on_step_ids": [],
+      "freshness_requirement": "Use the latest available source as of 2026-10-09. Refresh cadence: event_driven.",
+      "initial_status": "pending",
+      "l3_node_id": "C0",
+      "l3_plan_id": "l3rp_c0_edit_20261009T095113_fd9815e7",
+      "l4_question_id": "",
+      "leaf_question_id": "C0",
+      "leaf_step_id": "question:C0",
+      "level": 3,
+      "minimum_evidence_gate": {
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
+      },
+      "preferred_specialty_skill": "dynamic-research-agent",
+      "question": "哪些公司有可验证的业务敞口？",
+      "question_level": 3,
+      "question_node_id": "C0",
+      "question_path": [
+        {
+          "level": 3,
+          "question": "哪些公司有可验证的业务敞口？",
+          "question_id": "C0"
+        }
+      ],
+      "refuting_source_plan": [
+        "C0 Meta Muse CPU orders revenue competing suppliers not disclosed before:2026-10-10"
+      ],
+      "required_data": [
+        "Meta CPU供应商、云服务商、上游制造商及历史关系",
+        "芯片颗数/核心/加速器GW各自口径",
+        "Muse直接实例与全公司合作归因边界"
+      ],
+      "required_materials": [
+        "Meta CPU供应商、云服务商、上游制造商及历史关系",
+        "芯片颗数/核心/加速器GW各自口径",
+        "Muse直接实例与全公司合作归因边界"
+      ],
+      "research_dimension": "l3_initial",
+      "research_step_id": "question:C0",
+      "sequence": 1,
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "C0 Meta Muse CPU Meta CPU供应商、云服务商、上游制造商及历史关系 before:2026-10-10",
+            "C0 Meta Muse CPU 芯片颗数/核心/加速器GW各自口径 before:2026-10-10",
+            "C0 Meta Muse CPU Muse直接实例与全公司合作归因边界 before:2026-10-10"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "dynamic-research-agent",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "C0 Meta Muse CPU Meta CPU供应商、云服务商、上游制造商及历史关系 before:2026-10-10",
+            "C0 Meta Muse CPU 芯片颗数/核心/加速器GW各自口径 before:2026-10-10",
+            "C0 Meta Muse CPU Muse直接实例与全公司合作归因边界 before:2026-10-10"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "dynamic-research-agent",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
+      "source_universe_plan": {
+        "domain_id": "ai_factory",
+        "priority_source_ids": [
+          "semianalysis",
+          "trendforce",
+          "techinsights",
+          "omdia",
+          "delloro",
+          "lightcounting",
+          "the_information",
+          "serve_the_home"
+        ],
+        "registry": "config/source_universes.json"
+      },
+      "stage_id": "C0",
+      "step_id": "question:C0",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "search_run_id",
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    }
+  ]
+}

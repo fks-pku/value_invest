@@ -1,0 +1,60 @@
+{
+  "ok": true,
+  "issues": [],
+  "summary": {
+    "plan_id": "l3rp_nvda_015311d1b0232324",
+    "status": "blocked",
+    "steps": 1,
+    "pending": 0,
+    "in_progress": 0,
+    "review_pending": 0,
+    "blocked": 1,
+    "completed": 0,
+    "events": 5,
+    "historical_plan_events": 0
+  },
+  "step_states": [
+    {
+      "step_id": "question:NVDA",
+      "status": "blocked",
+      "answer": "NVIDIA 在 Meta 已有独立 CPU 合作，CPU 需求上升并不自然构成其损失。但 Grace/Vera 的 Muse 份额和独立收入未披露，不能把整个数据中心增长视为 CPU 盈利弹性。",
+      "search_run_id": "NVDA_03",
+      "source_ids": [
+        "S07",
+        "S08",
+        "S09"
+      ],
+      "source_extraction_ids": [
+        "ext_NVDA_S07_v1",
+        "ext_NVDA_S08_v1",
+        "ext_NVDA_S09_v1"
+      ],
+      "source_review_ids": [
+        "gpt_NVDA_S07_v1",
+        "gpt_NVDA_S08_v1",
+        "gpt_NVDA_S09_v1"
+      ],
+      "supporting_findings": [
+        "Meta 独立 Grace 部署已获双方披露，Vera 大规模部署潜在时点为 2027 年。"
+      ],
+      "refuting_findings": [
+        "Vera 产品定位涵盖智能体执行，规格列示 88 核。 限制：厂商规格，不能与其他 CPU 只按核数比较。",
+        "Q2 FY2027 数据中心收入 890 亿美元。 限制：不是 CPU 独立收入，且早于 Muse 发布。",
+        "其他 CPU 路线竞争及 CPU 在总业务中的占比，可能限制事件对整体利润的影响。"
+      ],
+      "gaps": [
+        "Muse 的 Grace/Vera 份额与 CPU 独立收入未披露。"
+      ],
+      "next_actions": [
+        "跟踪 Grace/Vera 的独立量产、客户定点和每任务成本，不用全数据中心收入替代。"
+      ],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "NVDA_step_blocked_v1",
+      "latest_recorded_at": "2026-10-09T03:52:17.248530+00:00",
+      "event_count": 5
+    }
+  ]
+}

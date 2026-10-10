@@ -1,0 +1,25 @@
+{
+  "revision_id": "edit_20261009T075817_8089e507",
+  "edit": {
+    "node_id": "O1",
+    "operation": "rerun",
+    "question": "Muse 发布了什么，目前谁能使用？",
+    "reason": "使用新的通用 direct-answer-v1 流程重新回答完整原题。先直接说明发布内容、已可用对象与入口、收费及已发布和计划的区别，再整理到报告；不要用 CPU 投资边界替代本题答案。"
+  },
+  "affected_ids": [
+    "MUSE",
+    "O",
+    "O1"
+  ],
+  "research_ids": [
+    "O1"
+  ],
+  "rollup_ids": [
+    "O",
+    "MUSE"
+  ],
+  "removed_ids": [],
+  "created_at": "2026-10-09T07:58:18.102842+00:00",
+  "as_of_date": "2026-10-09",
+  "prior_tree_sha256": "1e3d8527c3f57a78400992195c4272f76bcf6e7f6290c475bdd9f9bf52414e0f"
+}

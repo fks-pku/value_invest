@@ -1,0 +1,53 @@
+{
+  "revision_id": "edit_20261009T092333_321fabff",
+  "affected_ids": [
+    "D1",
+    "D2",
+    "I",
+    "MUSE",
+    "T1"
+  ],
+  "research_ids": [
+    "D1",
+    "D2",
+    "T1"
+  ],
+  "question_state_qa_and_unaffected_nodes": "passed",
+  "answer_review_excerpt_validation": "passed",
+  "fresh_evidence_trace_count": 24,
+  "fresh_source_leaf_review_claim_links": "passed",
+  "execution_validation_ok": true,
+  "in_memory_html_contract": {
+    "ok": true,
+    "issues": [],
+    "summary": {
+      "mode": "historical_backtest",
+      "presentation_profile": "question-tree-v1",
+      "nodes": 14,
+      "parents": 4,
+      "leaves": 10
+    }
+  },
+  "in_memory_markdown_contract": {
+    "ok": true,
+    "issues": [],
+    "summary": {
+      "mode": "historical_backtest",
+      "report_scope": "research-project",
+      "level1_cards": 0,
+      "level2_cards": 0,
+      "level3_cards": 0,
+      "require_l3": false
+    }
+  },
+  "research_status": "partial_research",
+  "semantic_passed": {
+    "D1": false,
+    "D2": false,
+    "T1": false
+  },
+  "html_md_written": false,
+  "full_legacy_audit": "not_rerun_or_claimed_passed",
+  "host_publication": "pending",
+  "legacy_validation_projection": "Reconstructed base parent_execution_validation from immutable rp_l3_d63fb6c328e7697a and pre-edit ledgers after unintended overwrite; exact prior byte equality cannot be independently confirmed in this workspace."
+}

@@ -1,0 +1,188 @@
+{
+  "scope": "Update the nine remaining leaf questions using direct-answer-v1; retain O1 and stable hierarchy; refresh ancestor synthesis.",
+  "cutoff": "2026-10-09",
+  "reviews": {
+    "O2": {
+      "reader_review": "Directly explains CPU execution, cloud persistence, local alternative, model inference separation, browser service scope and virtual CPU semantics. Concrete example retained; not reduced to an investment-risk summary.",
+      "source_review": "Opened Meta launch/security/local-model sources, introducing.muse.ai and original Stark account report. September-only design date and February-only Firecracker record retained without invented day. Single-account agent-reported specifications explicitly bounded.",
+      "visual_review": "Verified actual editable browser page at #O2 shows new opening, prose and source links; three standard modules; background market batch active.",
+      "semantic_changes_required": []
+    }
+  },
+  "draft_checks": {
+    "D1": {
+      "arithmetic": "Independently recomputed all 9 capacity cells: 73/724/5788, 724/7234/57871, 7234/72338/578704; 2 vCPU x 100m / 126 = 1,587,301.6 under explicitly dedicated-physical-core assumption; decimal memory/storage examples 800/10000 PB correct.",
+      "source_boundary": "The Information current direct open shows only title/paywall. Yahoo direct open returned 429. Do not treat indexed/transcribed user counts as verified Meta telemetry. Original Stark and Substack sample pages opened; SMT mapping not independently proven."
+    },
+    "D2": {
+      "arithmetic": "Recomputed 100m-account scenario at f=1/5/20/100 percent: 15625/78125/312500/1562500 CPUs, USD 78.125m/390.625m/1.5625bn/7.8125bn. Relative to vendor 2030 USD 220bn TAM: 0.0355/0.1776/0.7102/3.5511 percent, only if all purchased in that year.",
+      "source_review": "Opened AMD May 7 blog (USD120bn 2030 forecast) and official Q2 earnings transcript via IR calendar Transcript link (USD220bn 2030 forecast, over70-percent server cloud/enterprise growth). Forecast dates precede Muse launch; no inference of Muse realized procurement.",
+      "comparison_check_pending": "Final D1 uses DAU/core-hours/192-core equivalents; D2 uses configured accounts/capacity fraction/128-core equivalents. These are distinct assumptions and must not be combined as same forecast."
+    },
+    "T1": {
+      "reader_review": "Comparison now includes x86 and Arm server routes, cloud-only thin clients, local high-memory GPU PCs/Macs, glasses/Charm roadmap and conditional substitutions. Muse cloud service versus Glimmer local model explicitly separated.",
+      "source_review": "Opened Meta Glimmer release confirming M4-Max/M5-Max/RTX5090 and 24/32GB envelope, AMD local deployment blog and Intel support page. Product/partner announcements do not prove Muse allocation. Intel test date is not publication date.",
+      "arithmetic": "30bn parameters x 4 bits / 8 = 15bn bytes theoretical weights, excluding overhead. This is not a CPU benchmark."
+    },
+    "C0": {
+      "directness": "Concrete company list plus CPU/cloud/IP/accelerator/foundry distinctions; actual vs future and Meta-wide vs Muse-specific all visible",
+      "primary_spot_checks": [
+        "AMD and NVIDIA cooperation original releases already read; deployment and future rollout distinguished",
+        "AWS April24 bilateral statements verified; tens of millions of cores not chips or recognized revenue",
+        "Meta April14 Broadcom announcement confirms MTIA inference/recommendation accelerator and network cooperation, not Muse VM CPU",
+        "Arm March24 6-K explicitly names TSMC as AGI CPU manufacturer on 3nm"
+      ],
+      "pending_final_check": "TSMC declaration is on PDF physical page 7 (zero-based page 6), not physical page 6; draft locator should be corrected if retained. Original VM sample vs media repost provenance must remain explicit."
+    },
+    "AMD": {
+      "directness": "Conditional yes first; execution and inference-host CPU separated; Meta baseline, actual measured instance and future procurement paths explained",
+      "arithmetic": [
+        {
+          "concurrency": 0.01,
+          "cpus": 157,
+          "usd": 785000
+        },
+        {
+          "concurrency": 0.1,
+          "cpus": 1563,
+          "usd": 7815000
+        },
+        {
+          "concurrency": 1,
+          "cpus": 15625,
+          "usd": 78125000
+        }
+      ],
+      "all_inputs_explicit_hypotheses": true,
+      "actual_revenue_not_claimed": true,
+      "source_spot_check": {
+        "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/geekbench-7-results-suggest-openais-dots-agent-runs-on-nine-core-amd-epyc-vms-with-nearly-10gb-of-memory-newest-runs-score-about-six-times-meta-muse-in-multi-core",
+        "date": "2026-09-30",
+        "locator": "Published at L511; Muse sample & independent run L541-549",
+        "verified": "Author reports independent Muse benchmark and VM-visible EPYC9D25/7.75GB; not official fleet procurement data"
+      },
+      "other_checks": [
+        "AMD Q2 data center 6.7B includes EPYC and Instinct",
+        "6GW is GPU commitment, not CPU or Muse sales",
+        "Capacity purchase amount not annual recurring revenue; existing capacity/supplier split/delivery remain conditional"
+      ]
+    },
+    "INTC": {
+      "directness": "Answers simultaneous revenue benefit and share pressure; competitors have clearer Meta CPU evidence than Intel-specific Muse orders",
+      "arithmetic": {
+        "server_revenue_proxy_percent": 61.32,
+        "hypothetical_revenue_growth_percent": 8.33
+      },
+      "verified_prior": "Intel Q2 10Q server volume +9% and ASP +48%, chiefly premium mix; prior to Muse release",
+      "new_source_check": {
+        "url": "https://newsroom.intel.com/data-center/intel-puts-agentic-ai-xeon-6-networking-ai-systems",
+        "result": "Original Intel indexed article contains 18A, up to288 E-cores,12-channel DDR5. Header Published May31 while Taipei dateline June1. Direct opens with and without trailing slash return404 via redirect. Final should disclose index-only retrieval if no independently accessible original replacement."
+      },
+      "remaining_checks": [
+        "No share-loss number inferred from competitor deal",
+        "No Muse-wide supplier share or Intel exclusive-order claim",
+        "Capacity vs core count separated from purchase volume"
+      ]
+    },
+    "ARM": {
+      "directness": "Explains TLA/ALA and access bundles, licensing timing, per-chip royalty equations/examples, reported revenue categories, and own silicon product route",
+      "arithmetic": {
+        "FY26_royalty_percent": 53.1,
+        "Q1FY27_royalty_percent": 55.5,
+        "example_fixed_usd": 500000.0,
+        "example_rate_usd": 500000.0
+      },
+      "primary_checks": [
+        "FY26 results 2613 royalty +2307 licenses/other =4920 million verified in May6 filing",
+        "Q1FY27 715 +574 =1289 million verified in July29 filing",
+        "20-F specifies per-chip fixed or ASP-based royalties and shipment-quarter accrual; usage time is not a separate per-chip royalty event"
+      ],
+      "pending_final_check": "July29 shareholder letter says initial AGI CPU product delivered to multiple customers; capacity secured for 1B opportunity FY27/FY28; demand exceeds2B, not recognized revenue. Latest delivery progress should be added if final still stops at March launch. Source https://investors.arm.com/node/8356/html L106-109.",
+      "quarterly_filing_boundary": {
+        "url": "https://investors.arm.com/static-files/69c13c55-810b-4de8-93b6-7cea395659ea",
+        "published_at": "2026-07-29",
+        "locator": "PDF physical page31 (zero-based30), L1155-1162",
+        "verified": "Quarterly report says AGI CPU production expected by end of calendar2026. Shareholder letter on same date says initial product delivered to multiple customers. Final should preserve both stages without inventing that delivery means mass production or recognized revenue; exact delivery scope not supplied."
+      }
+    },
+    "NVDA": {
+      "directness": "Conditional direct benefit via standalone Grace/Vera and inference-host CPU, then customer basis, engineering conditions, numeric scope and unknown allocation",
+      "source_spot_checks": [
+        {
+          "url": "https://investor.nvidia.com/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf",
+          "locator": "physical page4 (zero-based3), L126-135",
+          "verified": "Aug26 company statement Grace trailing12months revenue exceeds5B; Vera full production, lead partner shipments; no Muse-specific revenue or standalone-only Grace breakout"
+        },
+        {
+          "url": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Unveils-Vera-the-CPU-for-Agents/default.aspx",
+          "verified": "Original dated production/system-release announcement opened; must distinguish general production from Meta potential2027 deployment"
+        }
+      ],
+      "arithmetic": {
+        "environments_per_cpu_lower_bound": 87.890625
+      },
+      "limits": [
+        "Vendor environments not comparable to Muse accounts",
+        "VM-visible AMD sample does not imply NVIDIA share zero",
+        "CPU revenue/shipments before Muse not event increment",
+        "ISA migration and workload fit are inferences, not observed Muse benchmark"
+      ]
+    }
+  },
+  "industry_candidate_semantic_review": {
+    "status": "reviewed awaiting final publication",
+    "nodes": [
+      "D1",
+      "D2",
+      "T1"
+    ],
+    "preserved_substantive_answer": true,
+    "checks": [
+      "D1 independently recomputed all 9 CPU capacity cells and retained real telemetry gaps",
+      "D2 independently recomputed 4 capacity and USD scenarios; stock capacity value separated from annual new purchases; 2030 vendor forecast not treated as 2026 market fact",
+      "D1 DAU/core-hour model and D2 account-capacity-share model remain explicitly distinct",
+      "T1 x86 and Arm cooperation stages distinguished; Muse cloud service and Glimmer local model separated",
+      "Paywall, third-party estimates, undated Intel page and test-date limitations explicit; future glasses and Charm capabilities not treated as delivered"
+    ],
+    "minor_editorial_observations": [
+      "Final worker version addressed paragraph splitting, nearby tables and redundant punctuation in main prose before publication. No manual content correction needed."
+    ]
+  },
+  "industry_final_review": {
+    "job_id": "edit_20261009T092333_321fabff",
+    "status": "published and visually inspected",
+    "nodes": [
+      "D1",
+      "D2",
+      "T1"
+    ],
+    "reader_answer": "Each original question answered with factual baseline, explicit calculations/comparisons and source-specific limitations",
+    "numbers": "All 9 D1 capacity cells and 4 D2 amount scenarios independently recalculated",
+    "cross_question_consistency": "D1 daily-active physical-core-hour method distinct from D2 configured-account capacity-share method; neither presented as orders or annual revenue",
+    "presentation": "D1 final version splits baseline, work, capacity scenarios, exclusive-core assumption and memory/installed-capacity limits; browser confirmed updated answer and tables",
+    "immutable_history": "Existing research_revisions, research_plan_history and revisions files unchanged",
+    "host_repair": "Protected parent_execution_validation.json restored exactly from job before snapshot; normal host validate_and_publish then committed",
+    "publication_receipt": "committed=true",
+    "source_spot_checks": [
+      {
+        "url": "https://www.theinformation.com/briefings/exclusive-metas-muse-surpassed-500-000-users-first-week",
+        "result": "Sep22 and 500k/250k visible in original-site search index; open page paywalled; final clearly labels limitation"
+      },
+      {
+        "url": "https://www.amd.com/zh-cn/blogs/2026/run-meta-muse-glimmer-30b-on-amd-ryzen-ai-max-and-radeon-gpus.html",
+        "result": "Aug10 date and footnotes confirm Aug tests, Ryzen AI Max+395,128GB system/64GB VGM; not CPU-only inference"
+      }
+    ]
+  },
+  "company_source_spot_checks": [
+    {
+      "subject": "AWS Graviton / Meta",
+      "urls": [
+        "https://press.aboutamazon.com/2026/4/meta-signs-agreement-with-aws-to-power-agentic-ai-on-aws-graviton-chips",
+        "https://about.fb.com/news/2026/04/meta-partners-with-aws-on-graviton-chips-to-power-agentic-ai/"
+      ],
+      "published_at": "2026-04-24",
+      "verified": "Both companies announce agreement starting with tens of millions of Graviton cores for multiple Meta workloads / agentic AI; CPU cores are not CPU chips; predates Muse; not a Muse-only allocation or recognized revenue disclosure; cloud services and chip sales must be distinguished."
+    }
+  ]
+}

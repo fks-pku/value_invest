@@ -1,0 +1,254 @@
+{
+  "plan_id": "rp_l3_ac8943d3c20e1a06",
+  "research_goal": {
+    "research_object": "Meta Muse personal agent release and CPU market impact",
+    "mode": "live",
+    "run_mode": "live",
+    "as_of_date": "2026-10-09",
+    "report_date": "2026-10-09",
+    "event_date": "2026-09-08",
+    "investment_decision": "行业方向、条件规模与公司敞口；不作买卖建议",
+    "scope": "全球服务器 CPU 为主；端侧仅检验替代边界。事件研究，不扩展完整行业链或 standalone-BOM 项目。",
+    "biggest_uncertainty": "每活跃用户的真实 CPU/内存驻留时间及其增量采购转化",
+    "counterfactual": "无 Muse 时已有云服务、AI 执行环境与服务器更新需求",
+    "maximum_depth": 5
+  },
+  "steps": [
+    {
+      "step_id": "rollup:O1",
+      "question_node_id": "O1",
+      "stage_id": "O",
+      "sequence": 1,
+      "question": "Muse 发布了什么，目前谁能使用？",
+      "decision_use": "核实事件对象、可用性和采用，避免把模型更新当作个人智能体发布。",
+      "depends_on_step_ids": [],
+      "freshness_requirement": "资料发布日期不晚于 2026-10-09；当前网页记录抓取日与更新日。",
+      "refuting_source_plan": [
+        "存在相反部署、成本或需求证据，或关键量化变量尚未披露"
+      ],
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ]
+      },
+      "traceability_contract": {
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      },
+      "execution_mode": "child_plan_rollup",
+      "child_plan_path": "l3_research_plans/O1/research_plan.json",
+      "source_universe_plan": {},
+      "source_plan": [],
+      "minimum_evidence_gate": {
+        "rule": "The L3 rollup completes when its current terminal question passes, or after every required child created by a failed answerability gate passes.",
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true
+      }
+    },
+    {
+      "step_id": "rollup:O2",
+      "question_node_id": "O2",
+      "stage_id": "O",
+      "sequence": 2,
+      "question": "Muse 为什么需要云端 CPU？",
+      "decision_use": "确认 CPU 负责什么以及资源成本边界。",
+      "depends_on_step_ids": [],
+      "freshness_requirement": "资料发布日期不晚于 2026-10-09；当前网页记录抓取日与更新日。",
+      "refuting_source_plan": [
+        "存在相反部署、成本或需求证据，或关键量化变量尚未披露"
+      ],
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ]
+      },
+      "traceability_contract": {
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      },
+      "execution_mode": "child_plan_rollup",
+      "child_plan_path": "l3_research_plans/O2/research_plan.json",
+      "source_universe_plan": {},
+      "source_plan": [],
+      "minimum_evidence_gate": {
+        "rule": "The L3 rollup completes when its current terminal question passes, or after every required child created by a failed answerability gate passes.",
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true
+      }
+    },
+    {
+      "step_id": "rollup:D1",
+      "question_node_id": "D1",
+      "stage_id": "I",
+      "sequence": 3,
+      "question": "用户增长会变成多少 CPU 需求？",
+      "decision_use": "把用户规模转为可检查的计算模型，避免按用户数直接乘核心数。",
+      "depends_on_step_ids": [],
+      "freshness_requirement": "资料发布日期不晚于 2026-10-09；当前网页记录抓取日与更新日。",
+      "refuting_source_plan": [
+        "存在相反部署、成本或需求证据，或关键量化变量尚未披露"
+      ],
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ]
+      },
+      "traceability_contract": {
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      },
+      "execution_mode": "child_plan_rollup",
+      "child_plan_path": "l3_research_plans/D1/research_plan.json",
+      "source_universe_plan": {},
+      "source_plan": [],
+      "minimum_evidence_gate": {
+        "rule": "The L3 rollup completes when its current terminal question passes, or after every required child created by a failed answerability gate passes.",
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true
+      }
+    },
+    {
+      "step_id": "rollup:D2",
+      "question_node_id": "D2",
+      "stage_id": "I",
+      "sequence": 4,
+      "question": "Muse 对服务器 CPU 市场的增量有多大？",
+      "decision_use": "与没有 Muse 的既有增长比较，检查供给与价格传导。",
+      "depends_on_step_ids": [],
+      "freshness_requirement": "资料发布日期不晚于 2026-10-09；当前网页记录抓取日与更新日。",
+      "refuting_source_plan": [
+        "存在相反部署、成本或需求证据，或关键量化变量尚未披露"
+      ],
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ]
+      },
+      "traceability_contract": {
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      },
+      "execution_mode": "child_plan_rollup",
+      "child_plan_path": "l3_research_plans/D2/research_plan.json",
+      "source_universe_plan": {},
+      "source_plan": [],
+      "minimum_evidence_gate": {
+        "rule": "The L3 rollup completes when its current terminal question passes, or after every required child created by a failed answerability gate passes.",
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true
+      }
+    },
+    {
+      "step_id": "rollup:T1",
+      "question_node_id": "T1",
+      "stage_id": "I",
+      "sequence": 5,
+      "question": "哪些 CPU 路线和终端会受益或被替代？",
+      "decision_use": "区分高密度服务器 x86、Arm、GPU 与端侧处理器。",
+      "depends_on_step_ids": [],
+      "freshness_requirement": "资料发布日期不晚于 2026-10-09；当前网页记录抓取日与更新日。",
+      "refuting_source_plan": [
+        "存在相反部署、成本或需求证据，或关键量化变量尚未披露"
+      ],
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ]
+      },
+      "traceability_contract": {
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      },
+      "execution_mode": "child_plan_rollup",
+      "child_plan_path": "l3_research_plans/T1/research_plan.json",
+      "source_universe_plan": {},
+      "source_plan": [],
+      "minimum_evidence_gate": {
+        "rule": "The L3 rollup completes when its current terminal question passes, or after every required child created by a failed answerability gate passes.",
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true
+      }
+    },
+    {
+      "step_id": "rollup:C0",
+      "question_node_id": "C0",
+      "stage_id": "C",
+      "sequence": 6,
+      "question": "哪些公司有可验证的业务敞口？",
+      "decision_use": "先筛选真实供应与竞争关系，再决定需要独立研究的公司。",
+      "depends_on_step_ids": [],
+      "freshness_requirement": "资料发布日期不晚于 2026-10-09；当前网页记录抓取日与更新日。",
+      "refuting_source_plan": [
+        "存在相反部署、成本或需求证据，或关键量化变量尚未披露"
+      ],
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ]
+      },
+      "traceability_contract": {
+        "required_references": [
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      },
+      "execution_mode": "child_plan_rollup",
+      "child_plan_path": "l3_research_plans/C0/research_plan.json",
+      "source_universe_plan": {},
+      "source_plan": [],
+      "minimum_evidence_gate": {
+        "rule": "The L3 rollup completes when its current terminal question passes, or after every required child created by a failed answerability gate passes.",
+        "all_mandatory_leaf_steps_required": true,
+        "direct_parent_evidence_forbidden": true
+      }
+    }
+  ],
+  "schema_version": "4.0",
+  "execution_policy": {
+    "question_tree": "adaptive_depth_max_5",
+    "completion": "all_required_l3_child_plans_complete",
+    "material_collection": "current_terminal_question_only",
+    "broad_material_pool": "candidate_only_not_completion_evidence"
+  },
+  "l3_plan_index_path": "l3_research_plans/index.json"
+}

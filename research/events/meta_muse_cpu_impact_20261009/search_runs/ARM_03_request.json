@@ -1,0 +1,27 @@
+{
+  "l3_plan_id": "l3rp_arm_987ba7b1e9d30304",
+  "l3_node_id": "ARM",
+  "question_node_id": "ARM",
+  "question_level": 3,
+  "research_step_id": "question:ARM",
+  "search_run_id": "ARM_03",
+  "origin": "active_question_search",
+  "request": {
+    "find": [
+      {
+        "ref_id": "turn18search1",
+        "pattern": "production expected"
+      },
+      {
+        "ref_id": "turn7search5",
+        "pattern": "Meta serves"
+      },
+      {
+        "ref_id": "turn14search12",
+        "pattern": "Initial product"
+      }
+    ],
+    "response_length": "short"
+  },
+  "recorded_at": "2026-10-09T03:42:59.150Z"
+}

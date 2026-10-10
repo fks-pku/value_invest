@@ -1,0 +1,27 @@
+{
+  "l3_plan_id": "l3rp_o2_027155bf51737945",
+  "l3_node_id": "O2",
+  "question_node_id": "O2",
+  "question_level": 3,
+  "research_step_id": "question:O2",
+  "search_run_id": "O2_02",
+  "origin": "active_question_search",
+  "request": {
+    "find": [
+      {
+        "ref_id": "turn6view0",
+        "pattern": "Inference"
+      },
+      {
+        "ref_id": "turn6view0",
+        "pattern": "CPU"
+      },
+      {
+        "ref_id": "turn6view0",
+        "pattern": "suspend"
+      }
+    ],
+    "response_length": "short"
+  },
+  "recorded_at": "2026-10-09T03:41:58.593Z"
+}

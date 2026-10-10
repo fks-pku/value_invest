@@ -1,0 +1,31 @@
+{
+  "l3_plan_id": "l3rp_amd_9fee216dcf58382c",
+  "l3_node_id": "AMD",
+  "question_node_id": "AMD",
+  "question_level": 3,
+  "research_step_id": "question:AMD",
+  "search_run_id": "AMD_02",
+  "origin": "active_question_search",
+  "request": {
+    "open": [
+      {
+        "ref_id": "https://newsroom.arm.com/news/arm-agi-cpu-launch"
+      },
+      {
+        "ref_id": "https://nvidianews.nvidia.com/news/meta-builds-ai-infrastructure-with-nvidia"
+      }
+    ],
+    "find": [
+      {
+        "ref_id": "turn12search8",
+        "pattern": "EPYC"
+      },
+      {
+        "ref_id": "turn12view0",
+        "pattern": "Published"
+      }
+    ],
+    "response_length": "short"
+  },
+  "recorded_at": "2026-10-09T03:42:38.045Z"
+}

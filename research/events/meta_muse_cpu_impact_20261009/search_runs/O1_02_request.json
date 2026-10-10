@@ -1,0 +1,18 @@
+{
+  "l3_plan_id": "l3rp_o1_0fc426f284271611",
+  "l3_node_id": "O1",
+  "question_node_id": "O1",
+  "question_level": 3,
+  "research_step_id": "question:O1",
+  "search_run_id": "O1_02",
+  "origin": "active_question_search",
+  "request": {
+    "open": [
+      {
+        "ref_id": "https://www.theinformation.com/briefings/exclusive-metas-muse-tops-3-million-weekly-users"
+      }
+    ],
+    "response_length": "short"
+  },
+  "recorded_at": "2026-10-09T03:43:04.796Z"
+}

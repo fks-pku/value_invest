@@ -1,0 +1,35 @@
+{
+  "l3_plan_id": "l3rp_d2_b4a54eb86593c40a",
+  "l3_node_id": "D2",
+  "question_node_id": "D2",
+  "question_level": 3,
+  "research_step_id": "question:D2",
+  "search_run_id": "D2_02",
+  "origin": "active_question_search",
+  "request": {
+    "search_query": [
+      {
+        "q": "Meta second quarter 2026 results capital expenditures 2026 2027",
+        "domains": [
+          "investor.atmeta.com"
+        ]
+      },
+      {
+        "q": "2026 server shipments general purpose CPU September",
+        "domains": [
+          "trendforce.com"
+        ]
+      }
+    ],
+    "open": [
+      {
+        "ref_id": "https://www.trendforce.com/presscenter/news/20260415-13013.html"
+      },
+      {
+        "ref_id": "https://www.intc.com/news-events/press-releases/detail/1776/intel-reports-second-quarter-2026-financial-results"
+      }
+    ],
+    "response_length": "long"
+  },
+  "recorded_at": "2026-10-09T03:40:03.447Z"
+}

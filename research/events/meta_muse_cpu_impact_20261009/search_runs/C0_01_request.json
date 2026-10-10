@@ -1,0 +1,24 @@
+{
+  "l3_plan_id": "l3rp_c0_b0f77599b303e169",
+  "l3_node_id": "C0",
+  "question_node_id": "C0",
+  "question_level": 3,
+  "research_step_id": "question:C0",
+  "search_run_id": "C0_01",
+  "origin": "active_question_search",
+  "request": {
+    "search_query": [
+      {
+        "q": "site.amd.com 2026 Meta EPYC Venice Verano CPU"
+      },
+      {
+        "q": "site.nvidianews.nvidia.com 2026 Meta Grace Vera CPU standalone"
+      },
+      {
+        "q": "site.newsroom.arm.com Meta AGI CPU 2026 March"
+      }
+    ],
+    "response_length": "short"
+  },
+  "recorded_at": "2026-10-09T03:39:35.433Z"
+}

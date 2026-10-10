@@ -1,0 +1,508 @@
+{
+  "schema_version": "4.0",
+  "project_id": "meta_muse_cpu_impact_20261009",
+  "root": {
+    "id": "MUSE",
+    "level": 1,
+    "question": "Meta Muse 发布将怎样影响 CPU 市场？",
+    "children": [
+      {
+        "id": "O",
+        "level": 2,
+        "question": "Muse 是什么，发生了什么变化？",
+        "children": [
+          {
+            "id": "O1",
+            "parent_id": "O",
+            "level": 3,
+            "question": "Muse 发布了什么，目前谁能使用？",
+            "why_it_matters": "核实事件对象、可用性和采用，避免把模型更新当作个人智能体发布。",
+            "required_materials": [
+              "发布对象、发布日期、Muse 与 Muse Spark 的区别和主要用途",
+              "截至 2026-10-09 的国家、年龄、账号资格与手机、网页、WhatsApp、Mac 入口",
+              "免费额度、订阅金额及币种、价格出处与限制",
+              "已交付功能、小企业能力与眼镜、Charm、邮箱、Expedia、Confidential VM 的计划状态"
+            ],
+            "indicators": [
+              "发布对象、发布日期、Muse 与 Muse Spark 的区别和主要用途",
+              "截至 2026-10-09 的国家、年龄、账号资格与手机、网页、WhatsApp、Mac 入口",
+              "免费额度、订阅金额及币种、价格出处与限制",
+              "已交付功能、小企业能力与眼镜、Charm、邮箱、Expedia、Confidential VM 的计划状态"
+            ],
+            "analysis_plan": [
+              "先核实个人智能体发布事件，分开首发与更新日期",
+              "逐项核对地区、年龄和入口，不将全球宣传等同全球开放",
+              "区分官方价目与媒体报道，不虚构未公开额度",
+              "对照发布公告、后续更新和未来时态，识别草稿错误与未知"
+            ],
+            "support_rule": "当前问题的原始材料直接支持限定结论",
+            "refute_rule": "存在相反部署、成本或需求证据，或关键量化变量尚未披露",
+            "update_cadence": "event_driven",
+            "status": "blocked",
+            "conclusion": "Meta 于 2026 年 9 月 8 日发布个人 AI 智能体 Muse，由 Muse Spark 驱动，可浏览网页、连接应用并在用户离开后继续执行任务。截至 10 月 9 日，英文官方公告确认美国、加拿大，法国版 Connect 公告另列墨西哥；Muse 面向 18 岁及以上用户，入口包括 iOS、Android、网页和 WhatsApp；免费使用有上限，两档月费 20/100 美元有同期报道。官方动态帮助页另列 Power/Max 额度、有限测试和 Meta 账户条件，并说明 Mac 用法，但这些细节缺少精确日期版本证明。小企业技能已推出；眼镜、Charm、Confidential VM 等仍按后续计划区分，不能视为全面上线。[S01][S03][E8089_AVATAR][E8089_AXIOS][E8089_SUB][E8089_MAC][E8089_CONNECT_FR]",
+            "sufficiency": {
+              "passed": false,
+              "gaps": [
+                "官方订阅、账户入门与 Mac 帮助页仅有相对更新时间或无精确发布日期，未取得带可验证日历日期的版本；其中付费额度、账户细则和 Mac 截止日交付状态未通过日期证据门禁。"
+              ],
+              "reasons": [
+                "发布事件、地区、年龄、核心入口、小企业内容及未来计划已有带日期原文；动态官方帮助页提供具体补充，但精确日期证明缺失，不能宣称完整门禁通过。"
+              ]
+            },
+            "refuting_source_plan": [
+              "检索 Muse 同名产品、未发布/候补/地区限制和计划功能，查验产品是否真实开放",
+              "反向核对免费是否无限量、Mac 和新连接器是否有截止日前交付证明"
+            ]
+          },
+          {
+            "id": "O2",
+            "parent_id": "O",
+            "level": 3,
+            "question": "Muse 为什么需要云端 CPU？",
+            "why_it_matters": "确认 CPU 负责什么以及资源成本边界。",
+            "required_materials": [
+              "Muse 发布事件及云端 Linux VM 的官方架构和发布日期",
+              "文件、终端、浏览器、定时及并发任务如何形成 CPU 执行负载",
+              "关闭应用后的持续执行与设备侧替代条件",
+              "推理代理、权限服务边界；vCPU 样本与物理 CPU 的区别"
+            ],
+            "indicators": [
+              "Muse 发布事件及云端 Linux VM 的官方架构和发布日期",
+              "文件、终端、浏览器、定时及并发任务如何形成 CPU 执行负载",
+              "关闭应用后的持续执行与设备侧替代条件",
+              "推理代理、权限服务边界；vCPU 样本与物理 CPU 的区别"
+            ],
+            "analysis_plan": [
+              "逐项解释模型决策如何由软件执行，区分执行与推理",
+              "将官方承诺、工程解释和第三方单样本分开",
+              "反查本地执行、外部推理、等待时间和非独占配置，检验云端 CPU 必要性的适用范围"
+            ],
+            "support_rule": "当前问题的原始材料直接支持限定结论",
+            "refute_rule": "存在相反部署、成本或需求证据，或关键量化变量尚未披露",
+            "update_cadence": "event_driven",
+            "status": "blocked",
+            "conclusion": "Muse 需要云端 CPU，是因为它要把模型作出的决定变成真实的软件操作，并在用户关闭应用后继续代办任务。Muse Spark 负责理解与决策，云端通用计算环境负责运行工具、处理文件和保存进度；模型推理可以经代理交给外部服务。云端是 Muse 为持续代办选择的架构，不是所有智能体的必然要求，也不表示每位用户永久独占两个物理核心。[S01][S02][S18]",
+            "sufficiency": {
+              "passed": false,
+              "gaps": [
+                "产品设计说明只列 2026 年 9 月、Firecracker 来源注册日期仅为 2020 年 2 月；已确认月份早于截止日，但未取得本轮逐条证据门禁要求的精确发布日期，相关案例与共享机制保留为正文背景，未计入完成证据。"
+              ],
+              "reasons": [
+                "已正面回答完整机制问题，并保留独立草稿的实质信息；部分补充原始材料只有月份日期，严格证据门禁尚未完整通过。"
+              ]
+            },
+            "refuting_source_plan": [
+              "Meta Muse cloud CPU local execution inference proxy dedicated physical cores before:2026-10-10",
+              "Muse specs vCPU browser proxy single agent measurement limitations before:2026-10-10"
+            ]
+          }
+        ],
+        "status": "expanded",
+        "conclusion": "Muse 把模型决策、应用连接与云端软件执行组合成个人智能体：O1 说明 9 月 8 日发布的产品及后续小企业扩展，O2 解释它如何在用户离开后继续操作工具。变化是从回复走向持续代办，模型推理与执行环境分开；云端专属 VM 不代表永久独占物理核。当前可用性部分细则仍受 O1 的日期证据缺口约束。 O2 的补充材料亦有精确发布日期缺口。",
+        "sufficiency": {
+          "passed": false,
+          "gaps": [
+            "O1：官方订阅、账户入门与 Mac 帮助页仅有相对更新时间或无精确发布日期，未取得带可验证日历日期的版本；其中付费额度、账户细则和 Mac 截止日交付状态未通过日期证据门禁。",
+            "O2：产品设计说明只列 2026 年 9 月、Firecracker 来源注册日期仅为 2020 年 2 月；已确认月份早于截止日，但未取得本轮逐条证据门禁要求的精确发布日期，相关案例与共享机制保留为正文背景，未计入完成证据。"
+          ],
+          "reasons": [
+            "O1 可用性细则与 O2 补充材料的精确日期门禁未完整通过。"
+          ]
+        },
+        "parent_id": "MUSE"
+      },
+      {
+        "id": "I",
+        "level": 2,
+        "question": "它怎样影响 CPU 市场？",
+        "children": [
+          {
+            "id": "D1",
+            "parent_id": "I",
+            "level": 3,
+            "question": "用户增长会变成多少 CPU 需求？",
+            "why_it_matters": "把用户规模转为可检查的计算模型，避免按用户数直接乘核心数。",
+            "required_materials": [
+              "带日期的用户尝试量、DAU/WAU及统计定义",
+              "单账户配置与全站CPU核时、峰均比、利用率、SMT和内存驻留",
+              "新增用户到容量再到采购的算例及存量余量"
+            ],
+            "indicators": [
+              "活跃率、运行时长、并发、CPU 忙碌比例",
+              "物理核与 vCPU、SMT、CPU/内存约束"
+            ],
+            "analysis_plan": [
+              "区分名义vCPU与物理核心，核对活跃口径",
+              "复算核时/峰值容量和内存瓶颈，不能推为采购"
+            ],
+            "support_rule": "当前问题的原始材料直接支持限定结论",
+            "refute_rule": "存在相反部署、成本或需求证据，或关键量化变量尚未披露",
+            "update_cadence": "event_driven",
+            "status": "blocked",
+            "conclusion": "Muse 用户增长会增加服务器 CPU 工作量，但截至 2026 年 10 月 9 日，公开资料不足以确定“每新增多少用户，Meta 就采购多少颗 CPU”。可以给出两种不同口径：沿用用户观察到的每台虚拟机 2 vCPU 配置，新增 100 万个已配置账户对应 200 万个 vCPU 的名义配额；若新增的是 100 万日活用户，并假设每人每天消耗 1 个物理核小时、峰值为平均负载的两倍、目标利用率 60%，则约需 724 颗 192 核服务器 CPU 的容量。前者不是物理核心数，后者是可复算情景，均不是 Meta 已披露的采购量。 [S01][EA125_STARK][E321_9965]",
+            "sufficiency": {
+              "passed": false,
+              "gaps": [
+                "未取得 Muse 每用户实际物理核时、峰均比、全站物理核/vCPU映射、利用率和内存驻留/回收率，不能确定实际容量转换系数。",
+                "未取得已有可用容量、故障冗余和采购记录，不能把容量换算为新增CPU订单。",
+                "用户基线来自媒体所见内部数据及第三方估计；Meta统一口径原始遥测未公开，Yahoo原页与Similarweb原表未取得。"
+              ],
+              "reasons": [
+                "已逐项回答已知事实、机制和条件情景；所列缺口仍影响原题完整答案，未宣称研究充分。"
+              ]
+            },
+            "required_data": [
+              "带日期的用户尝试量、DAU/WAU及统计定义",
+              "单账户配置与全站CPU核时、峰均比、利用率、SMT和内存驻留",
+              "新增用户到容量再到采购的算例及存量余量"
+            ],
+            "refuting_source_plan": [
+              "核实事件和反向材料；不得从配额推断独占核心或订单"
+            ]
+          },
+          {
+            "id": "D2",
+            "parent_id": "I",
+            "level": 3,
+            "question": "Muse 对服务器 CPU 市场的增量有多大？",
+            "why_it_matters": "与没有 Muse 的既有增长比较，检查供给与价格传导。",
+            "required_materials": [
+              "Muse专属采购量、ASP、交付期间及净新增归因",
+              "发布前服务器CPU收入与当年市场基线、2030预测分别核对",
+              "128核CPU容量金额情景、分年部署与市场占比的可比性"
+            ],
+            "indicators": [
+              "发布前服务器 CPU 需求与市场份额基线",
+              "Meta 采购、资本开支、CPU 供给及 ASP 变化"
+            ],
+            "analysis_plan": [
+              "剥离GPU、存量替换及发布前增长",
+              "复算情景金额；不得以2030预测充当2026实绩"
+            ],
+            "support_rule": "当前问题的原始材料直接支持限定结论",
+            "refute_rule": "存在相反部署、成本或需求证据，或关键量化变量尚未披露",
+            "update_cadence": "event_driven",
+            "status": "blocked",
+            "conclusion": "截至 2026 年 10 月 9 日，Muse 已经带来服务器 CPU 工作负载，但公开资料尚不能量出它新增了多少颗 CPU、多少采购收入，或拉动了市场几个百分点。可以明确的是：增量主要来自每个用户的云端执行环境、工具调用和后台任务；流传的“1 亿用户需要约 158 万颗 CPU”是按物理核心完全专用计算的情景，不能当作实际订单。 [S02][E321_SCENARIO]",
+            "sufficiency": {
+              "passed": false,
+              "gaps": [
+                "未取得 Muse 专属CPU核时、存量吸收率、被替代负载、实际采购颗数、净成交价与交付年份，不能给出市场净增收入。",
+                "未取得与Muse采购期间一致的2026年服务器CPU市场绝对实绩分母，2030年2200亿美元预测不能替代当前市场占比。"
+              ],
+              "reasons": [
+                "已逐项回答已知事实、机制和条件情景；所列缺口仍影响原题完整答案，未宣称研究充分。"
+              ]
+            },
+            "required_data": [
+              "Muse专属采购量、ASP、交付期间及净新增归因",
+              "发布前服务器CPU收入与当年市场基线、2030预测分别核对",
+              "128核CPU容量金额情景、分年部署与市场占比的可比性"
+            ],
+            "refuting_source_plan": [
+              "核实事件和反向材料；不得从配额推断独占核心或订单"
+            ]
+          },
+          {
+            "id": "T1",
+            "parent_id": "I",
+            "level": 3,
+            "question": "哪些 CPU 路线和终端会受益或被替代？",
+            "why_it_matters": "区分高密度服务器 x86、Arm、GPU 与端侧处理器。",
+            "required_materials": [
+              "EPYC、Xeon、Grace/Vera、Arm AGI的官方部署或合作阶段",
+              "云端Muse与本地Glimmer的平台、内存、加速器要求",
+              "手机PC眼镜Charm的入口交付和替代边界"
+            ],
+            "indicators": [
+              "x86 与 Arm 的软件、性能功耗、内存及安全条件",
+              "Muse 本地执行与云端部署边界",
+              "GPU offload 与无事件替代方案"
+            ],
+            "analysis_plan": [
+              "按相同任务比较服务器架构与终端功能",
+              "区分软件支持、实验验证、生产部署、未来承诺和销量"
+            ],
+            "support_rule": "当前问题的原始材料直接支持限定结论",
+            "refute_rule": "存在相反部署、成本或需求证据，或关键量化变量尚未披露",
+            "update_cadence": "event_driven",
+            "status": "blocked",
+            "conclusion": "从工作负载看，最直接的潜在受益对象是承载云端智能体的服务器 CPU；端侧则分成两类：普通手机、电脑可以作为轻量入口，高内存、带 GPU 的电脑可以运行本地智能体。存在替代压力的是部分低效率服务器、为后台代理专门常开的个人电脑，以及某些必须手动打开应用的操作方式，尚不能判断手机、PC 或某一种 CPU 架构会被整体淘汰。 [S02][S18][S07][S10]",
+            "sufficiency": {
+              "passed": false,
+              "gaps": [
+                "Intel Glimmer支持页没有可核实的精确发布日期；8月14日仅为测试日，其具体配置和截止日可用性未通过日期门禁。",
+                "未取得 Muse 专属CPU供应商份额、同任务跨架构成本/能效实测及终端替换量，不能判定哪条路线已实现净销量受益或替代规模。"
+              ],
+              "reasons": [
+                "已逐项回答已知事实、机制和条件情景；所列缺口仍影响原题完整答案，未宣称研究充分。"
+              ]
+            },
+            "required_data": [
+              "EPYC、Xeon、Grace/Vera、Arm AGI的官方部署或合作阶段",
+              "云端Muse与本地Glimmer的平台、内存、加速器要求",
+              "手机PC眼镜Charm的入口交付和替代边界"
+            ],
+            "refuting_source_plan": [
+              "核实事件和反向材料；不得从配额推断独占核心或订单"
+            ]
+          }
+        ],
+        "status": "expanded",
+        "conclusion": "Muse 把持续代办任务带入服务器CPU执行层，但用户增长首先增加的是核时和容量需求，尚不能确定净新增采购或市场增幅。高密度、低任务成本的x86与Arm服务器都有机会；普通手机和PC可作为云端入口，高内存本地设备则有Glimmer路线。当前没有证据支持把一亿用户直接换成百万颗订单，或认定手机、PC和x86被全面替代。",
+        "sufficiency": {
+          "passed": false,
+          "gaps": [
+            "D1：未取得 Muse 每用户实际物理核时、峰均比、全站物理核/vCPU映射、利用率和内存驻留/回收率，不能确定实际容量转换系数。",
+            "D1：未取得已有可用容量、故障冗余和采购记录，不能把容量换算为新增CPU订单。",
+            "D1：用户基线来自媒体所见内部数据及第三方估计；Meta统一口径原始遥测未公开，Yahoo原页与Similarweb原表未取得。",
+            "D2：未取得 Muse 专属CPU核时、存量吸收率、被替代负载、实际采购颗数、净成交价与交付年份，不能给出市场净增收入。",
+            "D2：未取得与Muse采购期间一致的2026年服务器CPU市场绝对实绩分母，2030年2200亿美元预测不能替代当前市场占比。",
+            "T1：Intel Glimmer支持页没有可核实的精确发布日期；8月14日仅为测试日，其具体配置和截止日可用性未通过日期门禁。",
+            "T1：未取得 Muse 专属CPU供应商份额、同任务跨架构成本/能效实测及终端替换量，不能判定哪条路线已实现净销量受益或替代规模。"
+          ],
+          "reasons": [
+            "D1、D2、T1均有影响原题完整判断的实质缺口；不能由条件情景宣布市场研究完成。"
+          ]
+        },
+        "parent_id": "MUSE"
+      },
+      {
+        "id": "C",
+        "level": 2,
+        "question": "具体影响哪些公司？",
+        "children": [
+          {
+            "id": "C0",
+            "parent_id": "C",
+            "level": 3,
+            "question": "哪些公司有可验证的业务敞口？",
+            "why_it_matters": "先筛选真实供应与竞争关系，再决定需要独立研究的公司。",
+            "required_materials": [
+              "Meta 与 CPU 供应商官方合作",
+              "厂商产品收入拆分与既有竞争关系"
+            ],
+            "indicators": [
+              "Meta 与 CPU 供应商官方合作",
+              "厂商产品收入拆分与既有竞争关系"
+            ],
+            "analysis_plan": [
+              "逐项核对完整独立回答，按原题说明业务、机制、数量与时间口径",
+              "对照无Muse既有增长；分离CPU/GPU、实际/承诺、样本/全量",
+              "反向检索竞争者、未完成交付和未公开的Muse归因；不得以缺口代替已知答案"
+            ],
+            "support_rule": "当前问题的原始材料直接支持限定结论",
+            "refute_rule": "存在相反部署、成本或需求证据，或关键量化变量尚未披露",
+            "update_cadence": "event_driven",
+            "status": "blocked",
+            "conclusion": "截至 2026 年 10 月 9 日，与 Meta 的 CPU 需求有明确业务联系的核心公司是 AMD、NVIDIA、Arm 和亚马逊 AWS；台积电有可验证的上游制造敞口，博通有 Meta 定制 AI 加速器敞口。Intel 有历史供货关系，但尚不能据此确认 Muse 新增订单。其中，“向 Meta 供应算力”与“已经获得 Muse 带来的新增收入”是两回事：公开披露足以确认上述业务联系，却不足以分拆各公司的 Muse 专属销量、收入或份额。",
+            "sufficiency": {
+              "passed": false,
+              "gaps": [
+                "Meta未公开Muse全机群CPU供应商、数量与份额，现有公司筛选不能认定完整Muse供应商清单；AMD实例与Meta级采购必须分开。"
+              ],
+              "reasons": [
+                "已完整保留可核实业务、机制、基线及条件解释；所列实际归因或日期缺口仍未解决，不以形式校验替代充分性。"
+              ]
+            },
+            "required_data": [
+              "Meta CPU供应商、云服务商、上游制造商及历史关系",
+              "芯片颗数/核心/加速器GW各自口径",
+              "Muse直接实例与全公司合作归因边界"
+            ]
+          },
+          {
+            "id": "AMD",
+            "parent_id": "C",
+            "level": 3,
+            "question": "AMD 的 CPU 收入能否因 Muse 增长？",
+            "why_it_matters": "EPYC 部署和竞争份额向 CPU 收入传导",
+            "indicators": [
+              "与 Meta 已确认的 CPU 业务关系",
+              "CPU/数据中心最新收入及包含业务",
+              "增量订单、竞争和财务传导证据"
+            ],
+            "analysis_plan": [
+              "逐项核对完整独立回答，按原题说明业务、机制、数量与时间口径",
+              "对照无Muse既有增长；分离CPU/GPU、实际/承诺、样本/全量",
+              "反向检索竞争者、未完成交付和未公开的Muse归因；不得以缺口代替已知答案"
+            ],
+            "support_rule": "官方供货关系和财务敞口可核验",
+            "refute_rule": "订单属于既有计划、GPU 而非 CPU，或竞争者替代；无 Muse 单独财务拆分",
+            "update_cadence": "event_driven",
+            "status": "blocked",
+            "conclusion": "能，但截至 2026 年 10 月 9 日，能够确认的是 AMD 的 EPYC 服务器 CPU 存在受益路径，尚不能确认 Muse 已为 AMD 带来多少新增 CPU 收入。 Muse 把个人 AI 的工作扩展到云端浏览器、代码执行和后台任务，这些都需要 CPU；如果这些负载超出现有服务器的承载能力，并由新增 EPYC 承接，就会增加 AMD 的 CPU 销售。Meta 已经是 EPYC 的大客户，因此这条路径具有实际业务基础。[S02]、[E321_AMDMETA]",
+            "sufficiency": {
+              "passed": false,
+              "gaps": [
+                "未取得Muse专属EPYC净新增订单、可复用存量、成交价及收入确认额，不能量化Muse使AMD CPU收入增长多少。"
+              ],
+              "reasons": [
+                "已完整保留可核实业务、机制、基线及条件解释；所列实际归因或日期缺口仍未解决，不以形式校验替代充分性。"
+              ]
+            },
+            "required_data": [
+              "EPYC已部署数量及Venice/Verano合作状态",
+              "Q2数据中心收入与CPU/GPU拆分限制",
+              "Muse实例、净新增订单、净价及非AMD路线"
+            ]
+          },
+          {
+            "id": "INTC",
+            "parent_id": "C",
+            "level": 3,
+            "question": "Intel 会受益于增量需求还是承受份额压力？",
+            "why_it_matters": "将市场扩张和架构份额变化分别判断",
+            "indicators": [
+              "与 Meta 已确认的 CPU 业务关系",
+              "CPU/数据中心最新收入及包含业务",
+              "增量订单、竞争和财务传导证据"
+            ],
+            "analysis_plan": [
+              "逐项核对完整独立回答，按原题说明业务、机制、数量与时间口径",
+              "对照无Muse既有增长；分离CPU/GPU、实际/承诺、样本/全量",
+              "反向检索竞争者、未完成交付和未公开的Muse归因；不得以缺口代替已知答案"
+            ],
+            "support_rule": "官方供货关系和财务敞口可核验",
+            "refute_rule": "订单属于既有计划、GPU 而非 CPU，或竞争者替代；无 Muse 单独财务拆分",
+            "update_cadence": "event_driven",
+            "status": "blocked",
+            "conclusion": "Intel 有机会受益于 CPU 需求增长，同时承受新增需求被竞争对手分走的压力。就 Meta Muse 而言，截至 2026 年 10 月 9 日，竞争对手进入 Meta CPU 供应体系的证据，比 Intel 获得 Muse 专属增量订单的证据更明确。因此，较有依据的判断是：Intel 有行业增长带来的受益机会，但不能把 Muse 的增长直接计为 Xeon 的增长；即使 Intel 收入增加，市场份额也可能下降。[S13]、[F981_AWS]支持这一判断。",
+            "sufficiency": {
+              "passed": false,
+              "gaps": [
+                "未取得Muse的Xeon订单、全机群CPU供应商分配及被替代Xeon数量，不能量化Intel净增收入或份额损失。"
+              ],
+              "reasons": [
+                "已完整保留可核实业务、机制、基线及条件解释；所列实际归因或日期缺口仍未解决，不以形式校验替代充分性。"
+              ]
+            },
+            "required_data": [
+              "Xeon产品及Q2服务器销量、ASP与供给约束",
+              "Meta采用EPYC、Grace、Graviton、Arm的状态",
+              "Muse Xeon订单与份额未知、增长和份额关系"
+            ]
+          },
+          {
+            "id": "ARM",
+            "parent_id": "C",
+            "level": 3,
+            "question": "Arm 如何通过 CPU 与授权获得收入？",
+            "why_it_matters": "识别自有芯片与 IP 收入，避免混淆商业模式",
+            "indicators": [
+              "与 Meta 已确认的 CPU 业务关系",
+              "CPU/数据中心最新收入及包含业务",
+              "增量订单、竞争和财务传导证据"
+            ],
+            "analysis_plan": [
+              "逐项核对完整独立回答，按原题说明业务、机制、数量与时间口径",
+              "对照无Muse既有增长；分离CPU/GPU、实际/承诺、样本/全量",
+              "反向检索竞争者、未完成交付和未公开的Muse归因；不得以缺口代替已知答案"
+            ],
+            "support_rule": "官方供货关系和财务敞口可核验",
+            "refute_rule": "订单属于既有计划、GPU 而非 CPU，或竞争者替代；无 Muse 单独财务拆分",
+            "update_cadence": "event_driven",
+            "status": "blocked",
+            "conclusion": "Arm 主要把 CPU 技术变成两类收入：客户获得设计或架构使用权时支付授权费，采用这些技术的芯片出货后再支付版税。 2026 年又增加了自有 CPU 芯片产品这条商业化路径，因此截至 2026 年 10 月 9 日，将 Arm 描述成“只授权、不卖芯片”已经不准确；但其已披露收入仍主要来自授权及版税。[F981_ARM20F]、[S10]",
+            "sufficiency": {
+              "passed": false,
+              "gaps": [
+                "未取得AGI CPU截至截止日实际销售收入、Meta验收数量及合同价格，无法量化自有CPU和Muse增量收入；全公司收入不等于CPU收入。",
+                "Flexible Access每年8.5万美元示例来自无精确发布日期的动态页，截止日适用价格未通过日期证据门禁。"
+              ],
+              "reasons": [
+                "已完整保留可核实业务、机制、基线及条件解释；所列实际归因或日期缺口仍未解决，不以形式校验替代充分性。"
+              ]
+            },
+            "required_data": [
+              "TLA/ALA、Total/Flexible Access收费与收入确认",
+              "FY2026与FY2027Q1版税及授权其他收入",
+              "AGI CPU供货、Meta合作、自有芯片收入与IP模式区别"
+            ]
+          },
+          {
+            "id": "NVDA",
+            "parent_id": "C",
+            "level": 3,
+            "question": "NVIDIA 能否从 Muse 的 CPU 需求中受益？",
+            "why_it_matters": "区分独立 CPU 机会和原有 GPU 敞口",
+            "indicators": [
+              "与 Meta 已确认的 CPU 业务关系",
+              "CPU/数据中心最新收入及包含业务",
+              "增量订单、竞争和财务传导证据"
+            ],
+            "analysis_plan": [
+              "逐项核对完整独立回答，按原题说明业务、机制、数量与时间口径",
+              "对照无Muse既有增长；分离CPU/GPU、实际/承诺、样本/全量",
+              "反向检索竞争者、未完成交付和未公开的Muse归因；不得以缺口代替已知答案"
+            ],
+            "support_rule": "官方供货关系和财务敞口可核验",
+            "refute_rule": "订单属于既有计划、GPU 而非 CPU，或竞争者替代；无 Muse 单独财务拆分",
+            "update_cadence": "event_driven",
+            "status": "blocked",
+            "conclusion": "能，但截至 2026 年 10 月 9 日，能够确认的是 NVIDIA 已具备承接 Muse 类 CPU 需求的产品和 Meta 客户关系；尚不能确认 Muse 已为它带来多少新增 CPU 订单或收入。 NVIDIA 的直接受益路径是销售独立的 Grace、Vera CPU；模型推理带来的 GPU 收益则属于另一条路径。Meta 与 NVIDIA 的 CPU 部署合作已有官方公告，但公开的 Muse 单用户沙箱观察指向 AMD EPYC，不能把 Meta 整体采购 NVIDIA 的计划全部归因于 Muse。[S07]；[EA125_STARK]",
+            "sufficiency": {
+              "passed": false,
+              "gaps": [
+                "未取得Muse在Grace/Vera上的工作负载分配、净新增采购、成交价及同任务成本测试，不能量化NVIDIA的Muse CPU收益或判定已实际受益。"
+              ],
+              "reasons": [
+                "已完整保留可核实业务、机制、基线及条件解释；所列实际归因或日期缺口仍未解决，不以形式校验替代充分性。"
+              ]
+            },
+            "required_data": [
+              "Meta Grace-only及Vera合作实际/计划边界",
+              "Grace过去12个月收入、Vera投产及机架环境口径",
+              "Muse实例CPU与NVIDIA实际承接订单、竞争适配条件"
+            ]
+          }
+        ],
+        "status": "expanded",
+        "conclusion": "有可验证CPU业务基础的公司包括AMD、NVIDIA、Arm及云服务商AWS；Intel有产品与历史客户基础，也面临新增需求分流。AMD最直接的Muse联系来自EPYC实例，NVIDIA已有Meta Grace合作，Arm通过授权、版税及自有CPU销售路径变现。台积电制造、博通加速器及OEM生态关系须与Muse执行CPU订单分开。上述敞口不能量化Muse专属净新增收入，四家公司均不构成已完成的投资判断。",
+        "sufficiency": {
+          "passed": false,
+          "gaps": [
+            "C0：Meta未公开Muse全机群CPU供应商、数量与份额，现有公司筛选不能认定完整Muse供应商清单；AMD实例与Meta级采购必须分开。",
+            "AMD：未取得Muse专属EPYC净新增订单、可复用存量、成交价及收入确认额，不能量化Muse使AMD CPU收入增长多少。",
+            "INTC：未取得Muse的Xeon订单、全机群CPU供应商分配及被替代Xeon数量，不能量化Intel净增收入或份额损失。",
+            "ARM：未取得AGI CPU截至截止日实际销售收入、Meta验收数量及合同价格，无法量化自有CPU和Muse增量收入；全公司收入不等于CPU收入。",
+            "ARM：Flexible Access每年8.5万美元示例来自无精确发布日期的动态页，截止日适用价格未通过日期证据门禁。",
+            "NVDA：未取得Muse在Grace/Vera上的工作负载分配、净新增采购、成交价及同任务成本测试，不能量化NVIDIA的Muse CPU收益或判定已实际受益。"
+          ],
+          "reasons": [
+            "五个直接子问题尚有供应商覆盖、收入归因或日期缺口。"
+          ]
+        },
+        "parent_id": "MUSE"
+      }
+    ],
+    "status": "expanded",
+    "conclusion": "Muse把个人AI从回答延伸到持续运行工具、代码和后台任务，为服务器CPU增加执行工作量；它也使需求在x86、Arm CPU和云服务之间竞争分配。现有子结论支持这一机制及公司承接渠道，但截至2026年10月9日，仍不能量出Muse独立新增的CPU销量、市场收入和公司收益。产品可用性细则、实际资源强度和净新增采购仍有缺口，整体为部分研究。",
+    "sufficiency": {
+      "passed": false,
+      "gaps": [
+        "O: O1：官方订阅、账户入门与 Mac 帮助页仅有相对更新时间或无精确发布日期，未取得带可验证日历日期的版本；其中付费额度、账户细则和 Mac 截止日交付状态未通过日期证据门禁。",
+        "O: O2：产品设计说明只列 2026 年 9 月、Firecracker 来源注册日期仅为 2020 年 2 月；已确认月份早于截止日，但未取得本轮逐条证据门禁要求的精确发布日期，相关案例与共享机制保留为正文背景，未计入完成证据。",
+        "I: D1：未取得 Muse 每用户实际物理核时、峰均比、全站物理核/vCPU映射、利用率和内存驻留/回收率，不能确定实际容量转换系数。",
+        "I: D1：未取得已有可用容量、故障冗余和采购记录，不能把容量换算为新增CPU订单。",
+        "I: D1：用户基线来自媒体所见内部数据及第三方估计；Meta统一口径原始遥测未公开，Yahoo原页与Similarweb原表未取得。",
+        "I: D2：未取得 Muse 专属CPU核时、存量吸收率、被替代负载、实际采购颗数、净成交价与交付年份，不能给出市场净增收入。",
+        "I: D2：未取得与Muse采购期间一致的2026年服务器CPU市场绝对实绩分母，2030年2200亿美元预测不能替代当前市场占比。",
+        "I: T1：Intel Glimmer支持页没有可核实的精确发布日期；8月14日仅为测试日，其具体配置和截止日可用性未通过日期门禁。",
+        "I: T1：未取得 Muse 专属CPU供应商份额、同任务跨架构成本/能效实测及终端替换量，不能判定哪条路线已实现净销量受益或替代规模。",
+        "C: C0：Meta未公开Muse全机群CPU供应商、数量与份额，现有公司筛选不能认定完整Muse供应商清单；AMD实例与Meta级采购必须分开。",
+        "C: AMD：未取得Muse专属EPYC净新增订单、可复用存量、成交价及收入确认额，不能量化Muse使AMD CPU收入增长多少。",
+        "C: INTC：未取得Muse的Xeon订单、全机群CPU供应商分配及被替代Xeon数量，不能量化Intel净增收入或份额损失。",
+        "C: ARM：未取得AGI CPU截至截止日实际销售收入、Meta验收数量及合同价格，无法量化自有CPU和Muse增量收入；全公司收入不等于CPU收入。",
+        "C: ARM：Flexible Access每年8.5万美元示例来自无精确发布日期的动态页，截止日适用价格未通过日期证据门禁。",
+        "C: NVDA：未取得Muse在Grace/Vera上的工作负载分配、净新增采购、成交价及同任务成本测试，不能量化NVIDIA的Muse CPU收益或判定已实际受益。"
+      ],
+      "reasons": [
+        "O、I、C均有未通过的必要子问题；机制与情景不能替代事件增量证据。"
+      ]
+    },
+    "parent_id": null
+  },
+  "research_plan_id": "rp_edit_20261009T095113_fd9815e7",
+  "revision_id": "edit_20261009T095113_fd9815e7"
+}

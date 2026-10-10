@@ -1,0 +1,27 @@
+{
+  "html": {
+    "ok": true,
+    "issues": [],
+    "summary": {
+      "mode": "historical_backtest",
+      "presentation_profile": "question-tree-v1",
+      "nodes": 14,
+      "parents": 4,
+      "leaves": 10
+    }
+  },
+  "markdown": {
+    "ok": true,
+    "issues": [],
+    "summary": {
+      "mode": "historical_backtest",
+      "report_scope": "research-project",
+      "level1_cards": 0,
+      "level2_cards": 0,
+      "level3_cards": 0,
+      "require_l3": false
+    }
+  },
+  "visual_review": "not_performed_by_background_worker",
+  "full_legacy_audit": "not_claimed"
+}

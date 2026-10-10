@@ -6,6 +6,26 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class ResearchFrameworkQualityTests(unittest.TestCase):
+    def test_terminal_answer_rules_preserve_complete_question_scope(self):
+        for name in ["AGENTS.md", ".agents/skills/dynamic-research-agent/SKILL.md",
+                     "skills/value_invest_research/frameworks/research_goal_qa.md",
+                     "skills/value_invest_research/frameworks/research_report_contract.md"]:
+            with self.subTest(document=name):
+                text = (ROOT / name).read_text(encoding="utf-8")
+                self.assertIn("direct-answer-v1", text)
+        from value_invest_research.domain.research_answer import answer_contract
+        self.assertTrue(answer_contract()["preserve_full_question_scope"])
+
+    def test_default_report_opening_is_editable_across_framework_contracts(self):
+        for name in ["AGENTS.md", ".agents/skills/dynamic-research-agent/SKILL.md",
+                     "skills/value_invest_research/frameworks/research_goal_qa.md",
+                     "skills/value_invest_research/frameworks/research_report_contract.md"]:
+            with self.subTest(document=name):
+                text = (ROOT / name).read_text(encoding="utf-8")
+                self.assertIn("Default report opening is editable", text)
+                self.assertIn("http://127.0.0.1:<port>/professional_report.html", text)
+                self.assertIn("/professional_report.offline.html", text)
+
     def test_dynamic_research_agent_is_the_only_investment_skill(self):
         path = ROOT / ".agents/skills/dynamic-research-agent/SKILL.md"
         text = path.read_text(encoding="utf-8")

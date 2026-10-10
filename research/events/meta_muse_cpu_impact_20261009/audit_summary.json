@@ -1,0 +1,20 @@
+{
+  "as_of_date": "2026-10-09",
+  "source_count": 22,
+  "question_count": 14,
+  "terminal_questions": 10,
+  "completed_terminal_questions": 4,
+  "blocked_terminal_questions": 6,
+  "question_source_pairs": 32,
+  "gpt_reviews": 32,
+  "atomic_observations": 35,
+  "search_runs": 28,
+  "source_trace_checked": true,
+  "cutoff_checked": true,
+  "scenario_type": "hypothetical_not_forecast",
+  "ima_archive": "unavailable_not_scanned",
+  "gate_validation": true,
+  "presentation_validation": true,
+  "research_complete": false,
+  "reason": "Direction and supplier exposure researched; missing operational and purchase data prevent quantified completion."
+}

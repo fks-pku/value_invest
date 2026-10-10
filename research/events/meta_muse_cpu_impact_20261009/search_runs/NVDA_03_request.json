@@ -1,0 +1,23 @@
+{
+  "l3_plan_id": "l3rp_nvda_015311d1b0232324",
+  "l3_node_id": "NVDA",
+  "question_node_id": "NVDA",
+  "question_level": 3,
+  "research_step_id": "question:NVDA",
+  "search_run_id": "NVDA_03",
+  "origin": "active_question_search",
+  "request": {
+    "find": [
+      {
+        "ref_id": "turn17view0",
+        "pattern": "Grace-only"
+      },
+      {
+        "ref_id": "turn7search0",
+        "pattern": "March 16"
+      }
+    ],
+    "response_length": "short"
+  },
+  "recorded_at": "2026-10-09T03:43:02.078Z"
+}

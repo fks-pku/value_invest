@@ -1,0 +1,37 @@
+{
+  "recorded_at": "2026-10-09T11:16:29.576402+00:00",
+  "updated_questions": [
+    "O2",
+    "D1",
+    "D2",
+    "T1",
+    "C0",
+    "AMD",
+    "INTC",
+    "ARM",
+    "NVDA"
+  ],
+  "O1_unchanged": true,
+  "checks": {
+    "answer_review": true,
+    "nested_plan_execution": true,
+    "qa_and_state_consistency": true,
+    "html_contract": true,
+    "markdown_contract": true,
+    "append_only_ledgers_and_immutable_history": true,
+    "committed_publication_receipts": 3
+  },
+  "visual_review": {
+    "surface": "http://127.0.0.1:8765/professional_report.html#ARM",
+    "new_text_visible": true,
+    "edit_controls_enabled": true,
+    "screenshot_review": "Direct answer, question navigation, editable controls and article layout verified in browser."
+  },
+  "source_spotchecks": [
+    "AMD AAI July23: 72 MI455X and18 Venice; Meta validation stage",
+    "Intel official Japanese page May31:18A,288 E-cores,12 DDR5 channels",
+    "Arm July29 shareholder letter: initial products delivered to multiple customers",
+    "Arm July29 quarterly filing: production expected by calendar2026 year-end"
+  ],
+  "completion_boundary": "Research and publication finished; question sufficiency remains false where actual usage, procurement, attribution or exact publication dates remain unverified. Full legacy audit not claimed."
+}

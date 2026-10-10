@@ -1,0 +1,391 @@
+{
+  "ok": true,
+  "issues": [],
+  "summary": {
+    "plan_id": "rp_edit_20261009T095113_fd9815e7",
+    "status": "blocked",
+    "steps": 10,
+    "pending": 5,
+    "in_progress": 0,
+    "review_pending": 0,
+    "blocked": 5,
+    "completed": 0,
+    "events": 5,
+    "historical_plan_events": 21,
+    "nested": {
+      "parent_plan_id": "rp_edit_20261009T095113_fd9815e7",
+      "status": "blocked",
+      "l3_plans": 10,
+      "completed_l3_plans": 0,
+      "leaf_steps": 10,
+      "completed_leaf_steps": 0,
+      "blocked_leaf_steps": 10,
+      "max_depth": 3
+    }
+  },
+  "step_states": [
+    {
+      "step_id": "rollup:O1",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "rollup:O2",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "rollup:D1",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "rollup:D2",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "rollup:T1",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "rollup:C0",
+      "status": "blocked",
+      "answer": "截至 2026 年 10 月 9 日，与 Meta 的 CPU 需求有明确业务联系的核心公司是 AMD、NVIDIA、Arm 和亚马逊 AWS；台积电有可验证的上游制造敞口，博通有 Meta 定制 AI 加速器敞口。Intel 有历史供货关系，但尚不能据此确认 Muse 新增订单。其中，“向 Meta 供应算力”与“已经获得 Muse 带来的新增收入”是两回事：公开披露足以确认上述业务联系，却不足以分拆各公司的 Muse 专属销量、收入或份额。",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [
+        "Meta未公开Muse全机群CPU供应商、数量与份额，现有公司筛选不能认定完整Muse供应商清单；AMD实例与Meta级采购必须分开。"
+      ],
+      "next_actions": [
+        "取得Meta按工作负载的供应商部署说明；核对AWS启用核心和Arm验收量，未披露前保留筛选边界，不新增问题。"
+      ],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "edit_20261009T095113_fd9815e7_parent_C0",
+      "latest_recorded_at": "2026-10-09T10:14:55.893017+00:00",
+      "event_count": 1
+    },
+    {
+      "step_id": "rollup:AMD",
+      "status": "blocked",
+      "answer": "能，但截至 2026 年 10 月 9 日，能够确认的是 AMD 的 EPYC 服务器 CPU 存在受益路径，尚不能确认 Muse 已为 AMD 带来多少新增 CPU 收入。 Muse 把个人 AI 的工作扩展到云端浏览器、代码执行和后台任务，这些都需要 CPU；如果这些负载超出现有服务器的承载能力，并由新增 EPYC 承接，就会增加 AMD 的 CPU 销售。Meta 已经是 EPYC 的大客户，因此这条路径具有实际业务基础。[S02]、[E321_AMDMETA]",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [
+        "未取得Muse专属EPYC净新增订单、可复用存量、成交价及收入确认额，不能量化Muse使AMD CPU收入增长多少。"
+      ],
+      "next_actions": [
+        "取得Muse专属EPYC部署、存量吸收与净新增订单数据，并核对交付和收入确认；不得把GPU协议计作CPU收入。"
+      ],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "edit_20261009T095113_fd9815e7_parent_AMD",
+      "latest_recorded_at": "2026-10-09T10:14:55.893017+00:00",
+      "event_count": 1
+    },
+    {
+      "step_id": "rollup:INTC",
+      "status": "blocked",
+      "answer": "Intel 有机会受益于 CPU 需求增长，同时承受新增需求被竞争对手分走的压力。就 Meta Muse 而言，截至 2026 年 10 月 9 日，竞争对手进入 Meta CPU 供应体系的证据，比 Intel 获得 Muse 专属增量订单的证据更明确。因此，较有依据的判断是：Intel 有行业增长带来的受益机会，但不能把 Muse 的增长直接计为 Xeon 的增长；即使 Intel 收入增加，市场份额也可能下降。[S13]、[F981_AWS]支持这一判断。",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [
+        "未取得Muse的Xeon订单、全机群CPU供应商分配及被替代Xeon数量，不能量化Intel净增收入或份额损失。"
+      ],
+      "next_actions": [
+        "取得Muse供应商分配与Xeon采购/退役记录，分别计算市场增长、产品组合、份额和供给约束的影响。"
+      ],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "edit_20261009T095113_fd9815e7_parent_INTC",
+      "latest_recorded_at": "2026-10-09T10:14:55.893017+00:00",
+      "event_count": 1
+    },
+    {
+      "step_id": "rollup:ARM",
+      "status": "blocked",
+      "answer": "Arm 主要把 CPU 技术变成两类收入：客户获得设计或架构使用权时支付授权费，采用这些技术的芯片出货后再支付版税。 2026 年又增加了自有 CPU 芯片产品这条商业化路径，因此截至 2026 年 10 月 9 日，将 Arm 描述成“只授权、不卖芯片”已经不准确；但其已披露收入仍主要来自授权及版税。[F981_ARM20F]、[S10]",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [
+        "未取得AGI CPU截至截止日实际销售收入、Meta验收数量及合同价格，无法量化自有CPU和Muse增量收入；全公司收入不等于CPU收入。",
+        "Flexible Access每年8.5万美元示例来自无精确发布日期的动态页，截止日适用价格未通过日期证据门禁。"
+      ],
+      "next_actions": [
+        "取得AGI CPU销售及Meta验收的正式分拆，补齐Flexible Access价格带日期版本；授权与芯片销售分别核算。"
+      ],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "edit_20261009T095113_fd9815e7_parent_ARM",
+      "latest_recorded_at": "2026-10-09T10:14:55.893017+00:00",
+      "event_count": 1
+    },
+    {
+      "step_id": "rollup:NVDA",
+      "status": "blocked",
+      "answer": "能，但截至 2026 年 10 月 9 日，能够确认的是 NVIDIA 已具备承接 Muse 类 CPU 需求的产品和 Meta 客户关系；尚不能确认 Muse 已为它带来多少新增 CPU 订单或收入。 NVIDIA 的直接受益路径是销售独立的 Grace、Vera CPU；模型推理带来的 GPU 收益则属于另一条路径。Meta 与 NVIDIA 的 CPU 部署合作已有官方公告，但公开的 Muse 单用户沙箱观察指向 AMD EPYC，不能把 Meta 整体采购 NVIDIA 的计划全部归因于 Muse。[S07]；[EA125_STARK]",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [
+        "未取得Muse在Grace/Vera上的工作负载分配、净新增采购、成交价及同任务成本测试，不能量化NVIDIA的Muse CPU收益或判定已实际受益。"
+      ],
+      "next_actions": [
+        "取得Muse Grace/Vera部署及同任务测试，核对新采购、实际交付和CPU成交价格；保留Grace整体收入与Muse归因区别。"
+      ],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "edit_20261009T095113_fd9815e7_parent_NVDA",
+      "latest_recorded_at": "2026-10-09T10:14:55.893017+00:00",
+      "event_count": 1
+    }
+  ],
+  "l3_plans": [
+    {
+      "l3_node_id": "O1",
+      "plan_id": "l3rp_o1_edit_20261009T075817_8089e507",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 13,
+      "historical_plan_events": 4
+    },
+    {
+      "l3_node_id": "O2",
+      "plan_id": "l3rp_o2_edit_20261009T090937_a1258264",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 5,
+      "historical_plan_events": 4
+    },
+    {
+      "l3_node_id": "D1",
+      "plan_id": "l3rp_d1_edit_20261009T092333_321fabff",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 8,
+      "historical_plan_events": 5
+    },
+    {
+      "l3_node_id": "D2",
+      "plan_id": "l3rp_d2_edit_20261009T092333_321fabff",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 8,
+      "historical_plan_events": 5
+    },
+    {
+      "l3_node_id": "T1",
+      "plan_id": "l3rp_t1_edit_20261009T092333_321fabff",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 8,
+      "historical_plan_events": 4
+    },
+    {
+      "l3_node_id": "C0",
+      "plan_id": "l3rp_c0_edit_20261009T095113_fd9815e7",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 5,
+      "historical_plan_events": 4
+    },
+    {
+      "l3_node_id": "AMD",
+      "plan_id": "l3rp_amd_edit_20261009T095113_fd9815e7",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 5,
+      "historical_plan_events": 5
+    },
+    {
+      "l3_node_id": "INTC",
+      "plan_id": "l3rp_intc_edit_20261009T095113_fd9815e7",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 5,
+      "historical_plan_events": 5
+    },
+    {
+      "l3_node_id": "ARM",
+      "plan_id": "l3rp_arm_edit_20261009T095113_fd9815e7",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 8,
+      "historical_plan_events": 5
+    },
+    {
+      "l3_node_id": "NVDA",
+      "plan_id": "l3rp_nvda_edit_20261009T095113_fd9815e7",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 5,
+      "historical_plan_events": 5
+    }
+  ]
+}

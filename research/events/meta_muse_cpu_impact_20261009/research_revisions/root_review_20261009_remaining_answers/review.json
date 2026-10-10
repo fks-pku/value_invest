@@ -1,0 +1,17 @@
+{
+  "review_id": "root_review_20261009_remaining_answers",
+  "parent_revision": "edit_20261009T095113_fd9815e7",
+  "recorded_at": "2026-10-09T11:11:21.734275+00:00",
+  "reason": "主代理原文复核补齐Arm初始交付进展，并完成其余九题的数字、来源、结构及页面校对。",
+  "changed_nodes": [
+    "ARM"
+  ],
+  "gate": "研究充分性仍未通过；实际Muse采购和收入缺口保留。",
+  "checks": [
+    "原题覆盖复核",
+    "新增逐题抽取和GPT复核",
+    "嵌套研究计划",
+    "QA与状态一致性",
+    "共享HTML与Markdown契约"
+  ]
+}

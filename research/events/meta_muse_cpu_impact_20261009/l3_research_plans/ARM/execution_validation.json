@@ -1,0 +1,60 @@
+{
+  "ok": true,
+  "issues": [],
+  "summary": {
+    "plan_id": "l3rp_arm_987ba7b1e9d30304",
+    "status": "blocked",
+    "steps": 1,
+    "pending": 0,
+    "in_progress": 0,
+    "review_pending": 0,
+    "blocked": 1,
+    "completed": 0,
+    "events": 5,
+    "historical_plan_events": 0
+  },
+  "step_states": [
+    {
+      "step_id": "question:ARM",
+      "status": "blocked",
+      "answer": "Arm 已有 Meta 共同开发的 AGI CPU 路线，且保留 IP 授权与版税模式。它是结构性竞争变量，但生产爬坡与 Muse 采购分配仍缺证据，不能把所有 Arm 服务器销售额都算成 Arm 收入。",
+      "search_run_id": "ARM_04",
+      "source_ids": [
+        "S10",
+        "S11",
+        "S22"
+      ],
+      "source_extraction_ids": [
+        "ext_ARM_S10_v1",
+        "ext_ARM_S11_v1",
+        "ext_ARM_S22_v1"
+      ],
+      "source_review_ids": [
+        "gpt_ARM_S10_v1",
+        "gpt_ARM_S11_v1",
+        "gpt_ARM_S22_v1"
+      ],
+      "supporting_findings": [
+        "Arm 推出自有 AGI CPU，Meta 为主要伙伴及共同开发方。"
+      ],
+      "refuting_findings": [
+        "Q1 FYE2027 收入 12.89 亿美元；版税 7.15 亿、授权及其他 5.74 亿。 限制：三者为公司总口径；不代表数据中心或 Muse 单项。",
+        "业务文件预计自有 AGI CPU 于 2026 年底生产；IP 仍按许可与芯片版税收费。 限制：管理层未来预期，不是截至研究日已量产事实。",
+        "合作、样品与潜在需求不等于量产收入；自有芯片也改变成本和现金流风险。"
+      ],
+      "gaps": [
+        "未披露 Muse 的 AGI CPU 采购规模、量产收入与净利润。"
+      ],
+      "next_actions": [
+        "核验量产交付与自有芯片收入分类；把 IP 版税和芯片销售分开跟踪。"
+      ],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "ARM_step_blocked_v1",
+      "latest_recorded_at": "2026-10-09T03:52:17.248530+00:00",
+      "event_count": 5
+    }
+  ]
+}

@@ -444,9 +444,31 @@ In historical mode:
 
 ## 9. Public Rendering
 
+Terminal answers use `direct-answer-v1`. First answer the full active question in
+a standalone, source-backed article, then map it into the report fields. Preserve
+the user's information need before considering the parent investment conclusion.
+Adapt exposition to the question; do not impose causal/valuation/refutation essays
+on simple object or availability questions. A missing material part of the title
+is an answerability gap even if the narrower factual statement is correct.
+The internal `answer_review` names the original question, quotes its direct answer,
+maps each material requirement to visible prose or an unresolved gap, and compares
+the report with the independent draft. Unresolved requirements cannot pass. This
+is a semantic GPT review, with mechanical consistency checks, not a length score.
+Write the review after the final prose: excerpts must quote that version verbatim,
+and unresolved gap strings must match the node's gaps. Run `validate_answer_review`
+before publication; a quote from a superseded draft is not a review of the report.
+
 Assemble through:
 
 `ResearchProjectRepository -> ReportViewModel -> CanonicalReportRenderer`
+
+Default report opening is editable. Deliver the target project's verified local
+workbench at `http://127.0.0.1:<port>/professional_report.html`; keep the on-disk HTML
+and Markdown as reproducible snapshots. `/professional_report.offline.html` is the
+explicit offline export. Follow `docs/interactive_researcher.md`; a static preview
+or an unsupported legacy profile must not be described as editable. Editing still
+invalidates affected questions and ancestor rollups and requires the existing
+question-specific research, version-history, and publication gates.
 
 Default public order:
 

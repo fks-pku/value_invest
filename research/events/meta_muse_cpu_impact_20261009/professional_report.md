@@ -1,0 +1,1387 @@
+---
+report_scope: research-project
+project_id: meta_muse_cpu_impact_20261009
+run_mode: live
+as_of_date: 2026-10-09
+---
+
+# Meta Muse 发布对 CPU 市场的影响
+
+## 1. 当前研究的问题
+
+Meta Muse 发布将怎样影响 CPU 市场？
+
+实时事件研究｜2026-09-08 发布，证据截至 2026-10-09｜服务器 CPU 为主，检验端侧替代｜方向可判断，销量与收益未充分
+
+## 2. 行业概况
+
+<a id="MUSE"></a>
+
+### MUSE · Meta Muse 发布将怎样影响 CPU 市场？
+
+#### 1. 研究子问题
+
+- [Muse 是什么，发生了什么变化？](#O)
+
+建立产品事实和资源机制。
+
+- [它怎样影响 CPU 市场？](#I)
+
+将需求数量、市场增量与技术竞争连接起来。
+
+- [具体影响哪些公司？](#C)
+
+按业务事实分配潜在收益和风险。
+
+#### 2. 子问题核心结论
+
+- [Muse 是什么，发生了什么变化？](#O)：Muse 把模型决策、应用连接与云端软件执行组合成个人智能体：O1 说明 9 月 8 日发布的产品及后续小企业扩展，O2 解释它如何在用户离开后继续操作工具。变化是从回复走向持续代办，模型推理与执行环境分开；云端专属 VM 不代表永久独占物理核。当前可用性部分细则仍受 O1 的日期证据缺口约束。 O2 的补充材料亦有精确发布日期缺口。
+
+未充分；O1：官方订阅、账户入门与 Mac 帮助页仅有相对更新时间或无精确发布日期，未取得带可验证日历日期的版本；其中付费额度、账户细则和 Mac 截止日交付状态未通过日期证据门禁。；O2：产品设计说明只列 2026 年 9 月、Firecracker 来源注册日期仅为 2020 年 2 月；已确认月份早于截止日，但未取得本轮逐条证据门禁要求的精确发布日期，相关案例与共享机制保留为正文背景，未计入完成证据。
+
+- [它怎样影响 CPU 市场？](#I)：Muse 把持续代办任务带入服务器CPU执行层，但用户增长首先增加的是核时和容量需求，尚不能确定净新增采购或市场增幅。高密度、低任务成本的x86与Arm服务器都有机会；普通手机和PC可作为云端入口，高内存本地设备则有Glimmer路线。当前没有证据支持把一亿用户直接换成百万颗订单，或认定手机、PC和x86被全面替代。
+
+未充分；D1：未取得 Muse 每用户实际物理核时、峰均比、全站物理核/vCPU映射、利用率和内存驻留/回收率，不能确定实际容量转换系数。；D1：未取得已有可用容量、故障冗余和采购记录，不能把容量换算为新增CPU订单。；D1：用户基线来自媒体所见内部数据及第三方估计；Meta统一口径原始遥测未公开，Yahoo原页与Similarweb原表未取得。；D2：未取得 Muse 专属CPU核时、存量吸收率、被替代负载、实际采购颗数、净成交价与交付年份，不能给出市场净增收入。；D2：未取得与Muse采购期间一致的2026年服务器CPU市场绝对实绩分母，2030年2200亿美元预测不能替代当前市场占比。；T1：Intel Glimmer支持页没有可核实的精确发布日期；8月14日仅为测试日，其具体配置和截止日可用性未通过日期门禁。；T1：未取得 Muse 专属CPU供应商份额、同任务跨架构成本/能效实测及终端替换量，不能判定哪条路线已实现净销量受益或替代规模。
+
+- [具体影响哪些公司？](#C)：有可验证CPU业务基础的公司包括AMD、NVIDIA、Arm及云服务商AWS；Intel有产品与历史客户基础，也面临新增需求分流。AMD最直接的Muse联系来自EPYC实例，NVIDIA已有Meta Grace合作，Arm通过授权、版税及自有CPU销售路径变现。台积电制造、博通加速器及OEM生态关系须与Muse执行CPU订单分开。上述敞口不能量化Muse专属净新增收入，四家公司均不构成已完成的投资判断。
+
+未充分；C0：Meta未公开Muse全机群CPU供应商、数量与份额，现有公司筛选不能认定完整Muse供应商清单；AMD实例与Meta级采购必须分开。；AMD：未取得Muse专属EPYC净新增订单、可复用存量、成交价及收入确认额，不能量化Muse使AMD CPU收入增长多少。；INTC：未取得Muse的Xeon订单、全机群CPU供应商分配及被替代Xeon数量，不能量化Intel净增收入或份额损失。；ARM：未取得AGI CPU截至截止日实际销售收入、Meta验收数量及合同价格，无法量化自有CPU和Muse增量收入；全公司收入不等于CPU收入。；ARM：Flexible Access每年8.5万美元示例来自无精确发布日期的动态页，截止日适用价格未通过日期证据门禁。；NVDA：未取得Muse在Grace/Vera上的工作负载分配、净新增采购、成交价及同任务成本测试，不能量化NVIDIA的Muse CPU收益或判定已实际受益。
+
+综合判断：Muse把个人AI从回答延伸到持续运行工具、代码和后台任务，为服务器CPU增加执行工作量；它也使需求在x86、Arm CPU和云服务之间竞争分配。现有子结论支持这一机制及公司承接渠道，但截至2026年10月9日，仍不能量出Muse独立新增的CPU销量、市场收入和公司收益。产品可用性细则、实际资源强度和净新增采购仍有缺口，整体为部分研究。
+
+##### 产品机制、行业容量和公司收入是连续的三步
+
+[O](#O)解释Muse产品与持续执行机制：智能体执行环境增加CPU用途，但专属VM不是永久独占物理核心；该分支仍保留可用性及补充材料日期缺口。[I](#I)把工作量与物理容量、净新增采购和不同CPU路线联系起来，情景有可复算关系，实际负载与采购转换率尚未知。[C](#C)说明公司收入承接渠道，并验证它们各自的业务口径；不能把合作规模倒推为Muse已产生的收入。
+
+三个分支互相约束：产品开放不等于持续使用，持续使用不等于立即扩容，扩容也不等于某一供应商独占。公司分支的多路线竞争支持行业分支的替代判断，也限制从个别EPYC实例外推全市场的解释。
+
+##### 近期消耗多少存量，决定中长期采购幅度
+
+近期Muse可能先使用已采购资源，公开收入增长与合作多数早于发布；因此CPU工作量方向比新增采购金额更容易判断。中长期如果使用规模、执行强度与持续性提升并超过现有容量，服务器CPU扩容机会才会传到供应商销售、Arm版税或云服务收入；效率提高和竞争分流会改变规模及分配。
+
+O、I、C三个必要直接子问题均未充分。主要数量缺口在实际核时、资源复用、净新增采购和供应商分配；日期缺口影响截至截止日细节的认定。不能用有条件的机制判断替代真实销量与财务兑现。
+
+#### 3. 欠缺的方向
+
+充分性：未通过。O、I、C均有未通过的必要子问题；机制与情景不能替代事件增量证据。
+
+缺口：O: O1：官方订阅、账户入门与 Mac 帮助页仅有相对更新时间或无精确发布日期，未取得带可验证日历日期的版本；其中付费额度、账户细则和 Mac 截止日交付状态未通过日期证据门禁。；O: O2：产品设计说明只列 2026 年 9 月、Firecracker 来源注册日期仅为 2020 年 2 月；已确认月份早于截止日，但未取得本轮逐条证据门禁要求的精确发布日期，相关案例与共享机制保留为正文背景，未计入完成证据。；I: D1：未取得 Muse 每用户实际物理核时、峰均比、全站物理核/vCPU映射、利用率和内存驻留/回收率，不能确定实际容量转换系数。；I: D1：未取得已有可用容量、故障冗余和采购记录，不能把容量换算为新增CPU订单。；I: D1：用户基线来自媒体所见内部数据及第三方估计；Meta统一口径原始遥测未公开，Yahoo原页与Similarweb原表未取得。；I: D2：未取得 Muse 专属CPU核时、存量吸收率、被替代负载、实际采购颗数、净成交价与交付年份，不能给出市场净增收入。；I: D2：未取得与Muse采购期间一致的2026年服务器CPU市场绝对实绩分母，2030年2200亿美元预测不能替代当前市场占比。；I: T1：Intel Glimmer支持页没有可核实的精确发布日期；8月14日仅为测试日，其具体配置和截止日可用性未通过日期门禁。；I: T1：未取得 Muse 专属CPU供应商份额、同任务跨架构成本/能效实测及终端替换量，不能判定哪条路线已实现净销量受益或替代规模。；C: C0：Meta未公开Muse全机群CPU供应商、数量与份额，现有公司筛选不能认定完整Muse供应商清单；AMD实例与Meta级采购必须分开。；C: AMD：未取得Muse专属EPYC净新增订单、可复用存量、成交价及收入确认额，不能量化Muse使AMD CPU收入增长多少。；C: INTC：未取得Muse的Xeon订单、全机群CPU供应商分配及被替代Xeon数量，不能量化Intel净增收入或份额损失。；C: ARM：未取得AGI CPU截至截止日实际销售收入、Meta验收数量及合同价格，无法量化自有CPU和Muse增量收入；全公司收入不等于CPU收入。；C: ARM：Flexible Access每年8.5万美元示例来自无精确发布日期的动态页，截止日适用价格未通过日期证据门禁。；C: NVDA：未取得Muse在Grace/Vera上的工作负载分配、净新增采购、成交价及同任务成本测试，不能量化NVIDIA的Muse CPU收益或判定已实际受益。
+
+- [Muse 是什么，发生了什么变化？](#O)：O1：官方订阅、账户入门与 Mac 帮助页仅有相对更新时间或无精确发布日期，未取得带可验证日历日期的版本；其中付费额度、账户细则和 Mac 截止日交付状态未通过日期证据门禁。；O2：产品设计说明只列 2026 年 9 月、Firecracker 来源注册日期仅为 2020 年 2 月；已确认月份早于截止日，但未取得本轮逐条证据门禁要求的精确发布日期，相关案例与共享机制保留为正文背景，未计入完成证据。；下一轮优先取得订阅、账户和 Mac 帮助页带日期的官方版本或可靠网页存档，再复核截止日适用性；不新增问题树节点。；下一轮取得设计说明与 Firecracker 原材料的精确发布日期或可核实日期版本；数量与采购仍由已有 D1、D2 节点研究。
+
+- [它怎样影响 CPU 市场？](#I)：D1：未取得 Muse 每用户实际物理核时、峰均比、全站物理核/vCPU映射、利用率和内存驻留/回收率，不能确定实际容量转换系数。；D1：未取得已有可用容量、故障冗余和采购记录，不能把容量换算为新增CPU订单。；D1：用户基线来自媒体所见内部数据及第三方估计；Meta统一口径原始遥测未公开，Yahoo原页与Similarweb原表未取得。；D2：未取得 Muse 专属CPU核时、存量吸收率、被替代负载、实际采购颗数、净成交价与交付年份，不能给出市场净增收入。；D2：未取得与Muse采购期间一致的2026年服务器CPU市场绝对实绩分母，2030年2200亿美元预测不能替代当前市场占比。；T1：Intel Glimmer支持页没有可核实的精确发布日期；8月14日仅为测试日，其具体配置和截止日可用性未通过日期门禁。；T1：未取得 Muse 专属CPU供应商份额、同任务跨架构成本/能效实测及终端替换量，不能判定哪条路线已实现净销量受益或替代规模。；优先补D1每用户核时、峰值和存量余量，再在D2按实际交付量与当期市场比较；T1补日期版本和同任务路线实测。
+
+- [具体影响哪些公司？](#C)：C0：Meta未公开Muse全机群CPU供应商、数量与份额，现有公司筛选不能认定完整Muse供应商清单；AMD实例与Meta级采购必须分开。；AMD：未取得Muse专属EPYC净新增订单、可复用存量、成交价及收入确认额，不能量化Muse使AMD CPU收入增长多少。；INTC：未取得Muse的Xeon订单、全机群CPU供应商分配及被替代Xeon数量，不能量化Intel净增收入或份额损失。；ARM：未取得AGI CPU截至截止日实际销售收入、Meta验收数量及合同价格，无法量化自有CPU和Muse增量收入；全公司收入不等于CPU收入。；ARM：Flexible Access每年8.5万美元示例来自无精确发布日期的动态页，截止日适用价格未通过日期证据门禁。；NVDA：未取得Muse在Grace/Vera上的工作负载分配、净新增采购、成交价及同任务成本测试，不能量化NVIDIA的Muse CPU收益或判定已实际受益。；先取得Meta按Muse工作负载的供应商分配和增量采购；对应回到已有C0及各公司题补证，不自动扩树。
+
+反向证据与边界：既有增长、存量资源和效率提升可吸收工作量；公司供货敞口不等于Muse净新增收入。
+
+下一步：优先补齐Muse资源用量、存量吸收和分供应商新增采购；同时保留O分支已有日期补证任务，不扩展未经确认的问题。
+
+<a id="O"></a>
+
+### O · Muse 是什么，发生了什么变化？
+
+#### 1. 研究子问题
+
+- [Muse 发布了什么，目前谁能使用？](#O1)
+
+确认事件对象与商业可达范围。
+
+- [Muse 为什么需要云端 CPU？](#O2)
+
+建立任务、资源和成本之间的第一条因果链。
+
+#### 2. 子问题核心结论
+
+- [Muse 发布了什么，目前谁能使用？](#O1)：Meta 于 2026 年 9 月 8 日发布个人 AI 智能体 Muse，由 Muse Spark 驱动，可浏览网页、连接应用并在用户离开后继续执行任务。截至 10 月 9 日，英文官方公告确认美国、加拿大，法国版 Connect 公告另列墨西哥；Muse 面向 18 岁及以上用户，入口包括 iOS、Android、网页和 WhatsApp；免费使用有上限，两档月费 20/100 美元有同期报道。官方动态帮助页另列 Power/Max 额度、有限测试和 Meta 账户条件，并说明 Mac 用法，但这些细节缺少精确日期版本证明。小企业技能已推出；眼镜、Charm、Confidential VM 等仍按后续计划区分，不能视为全面上线。[S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/)[S03 · The Future Is for Everyone: Muse for Small Business](https://about.fb.com/news/2026/09/introducing-muse-small-business/)[E8089_AVATAR · Bringing Your Muse to Life](https://research.meta.ai/blog/bringing-your-muse-to-life)[E8089_AXIOS · Meta courts small business with new Muse agent](https://www.axios.com/2026/09/29/meta-muse-ai-small-business)[E8089_SUB · About Muse subscriptions](https://www.meta.com/en-gb/help/subscriptions/1021145227643680/)[E8089_MAC · How Muse works with files and apps in your Mac](https://www.meta.com/help/artificial-intelligence/1126304576638594/)[E8089_CONNECT_FR · Meta Connect 2026 — 法国版官方公告](https://about.fb.com/fr/news/2026/09/meta-connect-2026-meta-annonce-de-nouvelles-lunettes-ia-des-nouveautes-pour-muse-et-les-meta-vr-glasses/?noamp=mobile)
+
+未充分；官方订阅、账户入门与 Mac 帮助页仅有相对更新时间或无精确发布日期，未取得带可验证日历日期的版本；其中付费额度、账户细则和 Mac 截止日交付状态未通过日期证据门禁。
+
+- [Muse 为什么需要云端 CPU？](#O2)：Muse 需要云端 CPU，是因为它要把模型作出的决定变成真实的软件操作，并在用户关闭应用后继续代办任务。Muse Spark 负责理解与决策，云端通用计算环境负责运行工具、处理文件和保存进度；模型推理可以经代理交给外部服务。云端是 Muse 为持续代办选择的架构，不是所有智能体的必然要求，也不表示每位用户永久独占两个物理核心。[S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/)[S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse)[S18 · Introducing Muse Glimmer: An Open Agentic Model That Runs on Your Device](https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model)
+
+未充分；产品设计说明只列 2026 年 9 月、Firecracker 来源注册日期仅为 2020 年 2 月；已确认月份早于截止日，但未取得本轮逐条证据门禁要求的精确发布日期，相关案例与共享机制保留为正文背景，未计入完成证据。
+
+综合判断：Muse 把模型决策、应用连接与云端软件执行组合成个人智能体：O1 说明 9 月 8 日发布的产品及后续小企业扩展，O2 解释它如何在用户离开后继续操作工具。变化是从回复走向持续代办，模型推理与执行环境分开；云端专属 VM 不代表永久独占物理核。当前可用性部分细则仍受 O1 的日期证据缺口约束。 O2 的补充材料亦有精确发布日期缺口。
+
+##### 产品可用与持续执行共同解释变化
+
+[O1](#O1) 的发布事实和地区、入口、收费说明，回答用户拿到什么；其完整答案未通过，动态帮助页的账户细则、付费额度及 Mac 截止日交付状态仍缺日期证明。[O2](#O2) 本轮说明 CPU 的执行角色、云端选择与推理分离，但补充设计案例及共享机制材料的精确日期门禁未通过，说明持续代办需要怎样的软件环境。两个子结论互相连接，产品开放范围仍由 O1 的限制约束。
+
+近期变化是能在用户关闭应用后继续任务，而非每次对话后结束。中长期能否形成大量 CPU 消耗，还取决于实际使用、等待与资源共享；O2 的单样本不能代表全平台。用户订阅价格也不等于提供服务的 CPU 成本。
+
+##### 尚未确认的可用性细节
+
+[O1](#O1) 的日期缺口不会推翻已发布及云端执行架构，但会影响截止日功能和资格的完整认定。因此父问题仍未充分；下一轮可取得带日期的官方版本，再复核这些细则。
+
+[O2](#O2) 保留了完整机制说明，但设计页与虚拟化论文的登记日期仅到月份，相关背景未进入完成证据；仍需精确日期版本。
+
+#### 3. 欠缺的方向
+
+充分性：未通过。O1 可用性细则与 O2 补充材料的精确日期门禁未完整通过。
+
+缺口：O1：官方订阅、账户入门与 Mac 帮助页仅有相对更新时间或无精确发布日期，未取得带可验证日历日期的版本；其中付费额度、账户细则和 Mac 截止日交付状态未通过日期证据门禁。；O2：产品设计说明只列 2026 年 9 月、Firecracker 来源注册日期仅为 2020 年 2 月；已确认月份早于截止日，但未取得本轮逐条证据门禁要求的精确发布日期，相关案例与共享机制保留为正文背景，未计入完成证据。
+
+- [Muse 发布了什么，目前谁能使用？](#O1)：官方订阅、账户入门与 Mac 帮助页仅有相对更新时间或无精确发布日期，未取得带可验证日历日期的版本；其中付费额度、账户细则和 Mac 截止日交付状态未通过日期证据门禁。；下一轮优先取得订阅、账户和 Mac 帮助页带日期的官方版本或可靠网页存档，再复核截止日适用性；不新增问题树节点。
+
+- [Muse 为什么需要云端 CPU？](#O2)：产品设计说明只列 2026 年 9 月、Firecracker 来源注册日期仅为 2020 年 2 月；已确认月份早于截止日，但未取得本轮逐条证据门禁要求的精确发布日期，相关案例与共享机制保留为正文背景，未计入完成证据。；下一轮取得设计说明与 Firecracker 原材料的精确发布日期或可核实日期版本；数量与采购仍由已有 D1、D2 节点研究。
+
+反向证据与边界：有限测试不等于全球开放；云端专属环境不等于独占物理核。
+
+下一步：下一轮优先取得订阅、账户和 Mac 帮助页带日期的官方版本或可靠网页存档，再复核截止日适用性；不新增问题树节点。；下一轮取得设计说明与 Firecracker 原材料的精确发布日期或可核实日期版本；数量与采购仍由已有 D1、D2 节点研究。
+
+<a id="O1"></a>
+
+### O1 · Muse 发布了什么，目前谁能使用？
+
+#### 1. 核心观点
+
+Meta 于 2026 年 9 月 8 日发布个人 AI 智能体 Muse，由 Muse Spark 驱动，可浏览网页、连接应用并在用户离开后继续执行任务。截至 10 月 9 日，英文官方公告确认美国、加拿大，法国版 Connect 公告另列墨西哥；Muse 面向 18 岁及以上用户，入口包括 iOS、Android、网页和 WhatsApp；免费使用有上限，两档月费 20/100 美元有同期报道。官方动态帮助页另列 Power/Max 额度、有限测试和 Meta 账户条件，并说明 Mac 用法，但这些细节缺少精确日期版本证明。小企业技能已推出；眼镜、Charm、Confidential VM 等仍按后续计划区分，不能视为全面上线。[S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/)[S03 · The Future Is for Everyone: Muse for Small Business](https://about.fb.com/news/2026/09/introducing-muse-small-business/)[E8089_AVATAR · Bringing Your Muse to Life](https://research.meta.ai/blog/bringing-your-muse-to-life)[E8089_AXIOS · Meta courts small business with new Muse agent](https://www.axios.com/2026/09/29/meta-muse-ai-small-business)[E8089_SUB · About Muse subscriptions](https://www.meta.com/en-gb/help/subscriptions/1021145227643680/)[E8089_MAC · How Muse works with files and apps in your Mac](https://www.meta.com/help/artificial-intelligence/1126304576638594/)[E8089_CONNECT_FR · Meta Connect 2026 — 法国版官方公告](https://about.fb.com/fr/news/2026/09/meta-connect-2026-meta-annonce-de-nouvelles-lunettes-ia-des-nouveautes-pour-muse-et-les-meta-vr-glasses/?noamp=mobile)
+
+#### 2. 关键论证
+
+##### 发布的是能执行任务的个人智能体
+
+Muse 是交付给用户使用的智能体产品，Muse Spark 是驱动它的模型。用户可以让它处理邮件、安排旅行、监测事项，或把长期目标拆成计划；它可在关闭应用后继续工作，敏感动作例如发送邮件、购物需要批准。这些是 Meta 公布的能力和工作方式，不能理解为每项任务都能成功。[S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/)
+
+执行环境叫 Muse Secure VM，即每位用户拥有隔离的云端 Linux 虚拟机，内含浏览器、存储、CPU 和内存，可运行代码、定时任务与多个子智能体。用户连接服务的凭据存于隔离环境，独立的 Sentinel 决定外部操作可否执行。Meta 明确承认仍会出错，现行隔离也不等于 Meta 在运营服务时绝对无法访问数据。[S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse)
+
+##### 谁能用，以及如何进入
+
+地区方面，英文小企业公告确认美国、加拿大；Meta 法国版 9 月 24 日 Connect 公告还明确列出墨西哥。两页列举范围不同，英文未提及墨西哥并不等于否认开放，也不能据法文公告保证每个墨西哥账户或功能均已开通。Muse 面向 18 岁及以上用户，订阅还受当地成年年龄、账户及地区条件约束。中国大陆本轮未找到正式开放的官方确认；面向大众的定位不能理解为全球开放。[S03 · The Future Is for Everyone: Muse for Small Business](https://about.fb.com/news/2026/09/introducing-muse-small-business/)[E8089_CONNECT_FR · Meta Connect 2026 — 法国版官方公告](https://about.fb.com/fr/news/2026/09/meta-connect-2026-meta-annonce-de-nouvelles-lunettes-ia-des-nouveautes-pour-muse-et-les-meta-vr-glasses/?noamp=mobile)[E8089_AVATAR · Bringing Your Muse to Life](https://research.meta.ai/blog/bringing-your-muse-to-life)[E8089_SUB · About Muse subscriptions](https://www.meta.com/en-gb/help/subscriptions/1021145227643680/)
+
+手机应用和网页通过 Meta 账户登录；可用 Facebook、Instagram、邮箱或电话号码创建账户。订阅还要求位于支持国家，并达到 18 岁或当地成年年龄。官方帮助页明确服务仍在有限测试，权益可能随地区及账户变化，因此满足年龄和国家要求并不保证立即得到全部功能。[E8089_START · How to get started with Muse](https://www.meta.com/en-gb/help/artificial-intelligence/1331373868832401/)[E8089_SUB · About Muse subscriptions](https://www.meta.com/en-gb/help/subscriptions/1021145227643680/)[E8089_HELP · Muse Help Centre](https://www.meta.com/en-gb/help/artificial-intelligence/1303670544995562/)
+
+截至 2026-10-09 的使用入口与条件
+
+| 入口或人群 | 已知可用方式 | 适用限制 |
+| --- | --- | --- |
+| iOS、Android、网页 | Muse 手机应用及 muse.ai。[S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/) | 需 Meta 账户和当地可用资格。[E8089_START · How to get started with Muse](https://www.meta.com/en-gb/help/artificial-intelligence/1331373868832401/)[E8089_HELP · Muse Help Centre](https://www.meta.com/en-gb/help/artificial-intelligence/1303670544995562/) |
+| WhatsApp | 可直接与 Muse 通信。[S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/) | WhatsApp 全球覆盖不代表 Muse 全球开放。 |
+| Mac | 官方说明可整理文件、读取或操作 iMessage、Notes、日历等部分应用。[E8089_MAC · How Muse works with files and apps in your Mac](https://www.meta.com/help/artificial-intelligence/1126304576638594/) | 须授予 macOS 权限，可设只读或撤销；本页未列首次上线日和最低系统版本。 |
+| 小企业经营者 | 在现有 Muse 内连接经营工具。[S03 · The Future Is for Everyone: Muse for Small Business](https://about.fb.com/news/2026/09/introducing-muse-small-business/) | 须连接相关业务账户、授权权限；具体连接器以账户设置为准。 |
+
+##### 小企业扩展增加了哪些能力
+
+9 月 29 日发布、10 月 8 日更新的公告，把 Muse 扩展到经营业务的技能与连接器。它可接入 Facebook 和 Instagram 商业账户，以及 Shopify、Stripe、QuickBooks、Notion、Slack、Canva 等，帮助查看销售和财务表现、准备广告内容、整理待办并制定业务计划；这是在 Muse 内增加能力。内容发布、消息发送和花钱仍需批准，不能等同把企业决策与经营结果交给系统保证。[S03 · The Future Is for Everyone: Muse for Small Business](https://about.fb.com/news/2026/09/introducing-muse-small-business/)
+
+##### 免费有上限，付费提高每周额度
+
+截至本次读取，官方动态订阅页给出了比同期媒体更细的口径：免费用户用尽上限后可等待刷新或升级；Power 每月 20 美元、每周 5 亿 Muse tokens，Max 每月 100 美元、每周 30 亿 Muse tokens。两档月费另有 9 月 29 日 Axios 报道支持。官方页面仅标相对更新时间，付费额度尚缺精确日期版本证明，因此作为当前页面所示信息保留，不认定其已通过截止日证据门禁。Muse tokens 是服务用量单位，不能直接换成固定任务数。[E8089_SUB · About Muse subscriptions](https://www.meta.com/en-gb/help/subscriptions/1021145227643680/)[E8089_AXIOS · Meta courts small business with new Muse agent](https://www.axios.com/2026/09/29/meta-muse-ai-small-business)
+
+官方帮助页没有列出免费的精确 token 数；不能把第三方所写“每周 1 亿”当作本页承诺。页面也不提供加拿大本地币种、税费和各支付渠道的最终扣款额；这里的 20/100 美元是官方美元月费口径。订阅按月自动续费，可取消，实际可用权益在订阅前的开通流程展示。[E8089_SUB · About Muse subscriptions](https://www.meta.com/en-gb/help/subscriptions/1021145227643680/)
+
+##### 已提供的功能与未来计划要分开
+
+核心智能体与 Secure VM 已开始提供，小企业能力也已宣布推出。其余扩展按对应公告的交付措辞判断，技术演示或设备概念不等于普通用户已能使用。[S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/)[S03 · The Future Is for Everyone: Muse for Small Business](https://about.fb.com/news/2026/09/introducing-muse-small-business/)
+
+发布、演示与计划的不同状态
+
+| 内容 | 截至截止日能确认什么 | 不能据此认定什么 |
+| --- | --- | --- |
+| Muse Realtime Avatar | 9 月 23 日公布实时语音与形象技术。[E8089_AVATAR · Bringing Your Muse to Life](https://research.meta.ai/blog/bringing-your-muse-to-life) | 官方说明示例并非全部已在应用提供。 |
+| Muse 进入 AI 眼镜 | Connect 公告写未来数月推出。[E8089_CONNECT · The Biggest News From Connect 2026](https://about.fb.com/news/2026/09/the-biggest-news-from-connect-2026/) | 不是截至 10 月 9 日普遍可用的承诺。 |
+| Muse Charm | 已宣布便携设备，年内再分享信息。[E8089_CONNECT · The Biggest News From Connect 2026](https://about.fb.com/news/2026/09/the-biggest-news-from-connect-2026/) | 不能视为已经发售。 |
+| 自有邮箱、Expedia 连接 | 公告使用将来时或即将推出。[E8089_CONNECT · The Biggest News From Connect 2026](https://about.fb.com/news/2026/09/the-biggest-news-from-connect-2026/) | 未获得全面上线的确认。 |
+| Muse Confidential VM | 目标是以加密阻止 Meta 访问 VM 数据，计划年内交付；已有少量可信测试者。[S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse) | 少量测试不等于公开可用；它与当前 Secure VM 不同。 |
+
+##### 时间口径与父问题的联系
+
+首发公告显示 9 月 8 日发布、9 月 30 日更新；小企业公告显示 9 月 29 日发布、10 月 8 日更新。订阅、入门和 Mac 帮助页是截至 10 月 9 日读取的动态说明，没有可核实的首次发布日期，不能把现有内容全部回填到首发当天。[S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/)[S03 · The Future Is for Everyone: Muse for Small Business](https://about.fb.com/news/2026/09/introducing-muse-small-business/)[E8089_SUB · About Muse subscriptions](https://www.meta.com/en-gb/help/subscriptions/1021145227643680/)[E8089_START · How to get started with Muse](https://www.meta.com/en-gb/help/artificial-intelligence/1331373868832401/)[E8089_MAC · How Muse works with files and apps in your Mac](https://www.meta.com/help/artificial-intelligence/1126304576638594/)
+
+公开资料无法逐一确定单个账户是否开通、免费精确额度和地方最终账单；动态帮助页也未给出可核实的精确发布日期。因此，账户细则、付费额度及 Mac 截止日状态仍有日期证明缺口；这些页面所示内容可以说明现有规则，但不能回溯断定每项功能何时交付。对父问题而言，已交付的云端执行环境提供了 CPU 工作负载的产品基础；资源强度与采购规模仍由其他子问题回答。[S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse)[E8089_SUB · About Muse subscriptions](https://www.meta.com/en-gb/help/subscriptions/1021145227643680/)[E8089_MAC · How Muse works with files and apps in your Mac](https://www.meta.com/help/artificial-intelligence/1126304576638594/)
+
+充分性：未通过。发布事件、地区、年龄、核心入口、小企业内容及未来计划已有带日期原文；动态官方帮助页提供具体补充，但精确日期证明缺失，不能宣称完整门禁通过。
+
+缺口：官方订阅、账户入门与 Mac 帮助页仅有相对更新时间或无精确发布日期，未取得带可验证日历日期的版本；其中付费额度、账户细则和 Mac 截止日交付状态未通过日期证据门禁。
+
+反向证据与边界：反向检索发现：官方订阅页明确有限测试、地区和账户权益不同；首发美国不能代表后续加拿大状态；Connect 的眼镜、邮箱、Expedia 使用未来时态；技术演示不等于应用全部可用。第三方价格指南对免费额度和最高档名称存在口径差异，采用官方 Power/Max 和未公布免费精确额度的口径。未找到中国大陆正式开放的官方确认。 法国版 Connect 公告另列墨西哥，英文公告未列举不能当成排除；具体账户资格仍有边界。[E8089_CONNECT_FR · Meta Connect 2026 — 法国版官方公告](https://about.fb.com/fr/news/2026/09/meta-connect-2026-meta-annonce-de-nouvelles-lunettes-ia-des-nouveautes-pour-muse-et-les-meta-vr-glasses/?noamp=mobile)
+
+下一步：下一轮优先取得订阅、账户和 Mac 帮助页带日期的官方版本或可靠网页存档，再复核截止日适用性；不新增问题树节点。
+
+#### 3. 数据列表
+
+| 材料、日期与原文定位 | 关键数据与事实 | 作用 | 口径限制与反向解释 |
+| --- | --- | --- | --- |
+| [S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/) · 2026-09-08 · 标题日期；How It Works，L241、254–259 | Meta 于 2026 年 9 月 8 日发布个人智能体 Muse，由 Muse Spark 驱动，可浏览网页、处理任务并在用户关闭应用后继续工作。 | support | 页面更新至 9 月 30 日；用途是官方能力描述，不是独立成功率实测。 |
+| [S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/) · 2026-09-08 · 首段与 Looking Ahead，L254、287 | Muse 首发在美国通过 iOS、Android、muse.ai 推出，也可在 WhatsApp 与其通信。 | support | 首发地区不能替代后续地区更新；WhatsApp 入口不等于全球开放。 |
+| [S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse) · 2026-09-08 · An agent in your own cloud computer；A Built-In Sentinel，L26–28、52–57 | Muse 的隔离 Linux VM 带浏览器、存储、CPU 和内存，可执行代码、并发子智能体和定时任务；Sentinel 独立控制连接器及网络操作权限。 | support | 官方架构说明；未披露物理 CPU 配额或任务成功率。 |
+| [S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse) · 2026-09-08 · Defense in Depth；Coming Soon: Muse Confidential VM；Conclusion，L88、129–144 | Meta 说明 Muse 仍可能出错；现行 Secure VM 不阻止 Meta 为运营等必要目的访问数据，Confidential VM 计划年内提供，当时仅有少量可信测试者。 | boundary | 测试不等于公开交付；不能把未来加密承诺当现行服务保证。 |
+| [S03 · The Future Is for Everyone: Muse for Small Business](https://about.fb.com/news/2026/09/introducing-muse-small-business/) · 2026-09-29 · 标题日期；Takeaways 后首段，L241、249–253 | 9 月 29 日的小企业公告在 10 月 8 日更新后的版本中明确 Muse 在美国和加拿大可用，并在 Muse 内增加经营业务的技能和连接器。 | support | 确认截止日范围；不能确认加拿大首次开放日或所有账户开通。 |
+| [S03 · The Future Is for Everyone: Muse for Small Business](https://about.fb.com/news/2026/09/introducing-muse-small-business/) · 2026-09-29 · Takeaways；Built to Work With the Tools People Already Use，L251–266 | 小企业连接器包括 Facebook、Instagram 商业账户以及 Shopify、Stripe、QuickBooks、Notion、Slack、Canva 等；发布、发送和花钱需要用户批准。 | support | 连接器需用户授权，具体可用清单以账户设置为准。 |
+| [E8089_AVATAR · Bringing Your Muse to Life](https://research.meta.ai/blog/bringing-your-muse-to-life) · 2026-09-23 · 标题日期；Building Embodied AI Responsibly，L8、68–70 | 9 月 23 日的 Muse Realtime Avatar 技术文章说明示例展示模型能力，并非全部形象均已在 Muse 应用内提供；Muse 面向 18 岁及以上用户。 | boundary | 模型演示不等于每个账户的产品交付。 |
+| [E8089_CONNECT · The Biggest News From Connect 2026](https://about.fb.com/news/2026/09/the-biggest-news-from-connect-2026/) · 2026-09-24 · Bringing Muse to AI Glasses；Muse Charm，L253–264 | Connect 公告称 Muse 将在未来数月进入 AI 眼镜，Muse 自有邮箱和 Expedia 连接仍用将来时描述；Muse Charm 年内再提供更多信息。 | boundary | 这些表述证明宣布了计划，不能证明截止日已普遍交付。 |
+| [E8089_AXIOS · Meta courts small business with new Muse agent](https://www.axios.com/2026/09/29/meta-muse-ai-small-business) · 2026-09-29 · The intrigue，L56 | Axios 于 9 月 29 日报道 Muse 两档月费为 20 美元和 100 美元。 | support | 媒体核对线索；正式正文报价采用本轮独立打开的官方订阅页。 |
+| [E8089_CONNECT_FR · Meta Connect 2026 — 法国版官方公告](https://about.fb.com/fr/news/2026/09/meta-connect-2026-meta-annonce-de-nouvelles-lunettes-ia-des-nouveautes-pour-muse-et-les-meta-vr-glasses/?noamp=mobile) · 2026-09-24 · 标题下发布日期（L202）；Muse sur les lunettes IA 后的地区说明（L213）。 | Meta 法国版 2026 年 9 月 24 日 Connect 公告明确写 Muse 当时在美国、加拿大和墨西哥可用，并计划扩展其他市场。 | boundary | 这是官方地区可用性声明，不保证每个账户或功能已开通；英文小企业公告仅列美加，不能将未提及墨西哥当作明确否认。 |
+
+<a id="O2"></a>
+
+### O2 · Muse 为什么需要云端 CPU？
+
+#### 1. 核心观点
+
+Muse 需要云端 CPU，是因为它要把模型作出的决定变成真实的软件操作，并在用户关闭应用后继续代办任务。Muse Spark 负责理解与决策，云端通用计算环境负责运行工具、处理文件和保存进度；模型推理可以经代理交给外部服务。云端是 Muse 为持续代办选择的架构，不是所有智能体的必然要求，也不表示每位用户永久独占两个物理核心。[S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/)[S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse)[S18 · Introducing Muse Glimmer: An Open Agentic Model That Runs on Your Device](https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model)
+
+#### 2. 关键论证
+
+##### 模型给出下一步，计算机把它做出来
+
+这里的 Muse 是 Meta 于 2026 年 9 月 8 日发布的个人智能体产品，Muse Spark 是驱动它的模型。它不只生成回复，还能按目标推进工作。仅生成“整理文件”或“打开网站”的指令不会自动改变文件和网页，仍须由操作系统及应用程序执行。[S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/)
+
+官方技术说明给出的基础是隔离 Linux VM：CPU、内存、存储支持编译代码、自建工具、并发子智能体和定时任务。VM 即虚拟机，是由软件提供的计算机运行环境。CPU 在这里承担通用程序执行；这解释了为什么模型更强也不能省去执行层。[S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse)
+
+任务还需要跨步骤保留状态。Meta 的设计说明列出文件系统、终端、浏览器及生成文档、PDF、网页的能力，并说明任务按时间安排或相关事件继续推进。工程上的含义是，一次模型调用结束后，程序仍要保存结果、安排后续动作；“完成一次推理”与“完成整个任务”是两回事。[EA125_DESIGN · How We Designed Muse](https://introducing.muse.ai/)
+
+##### 云端使后台任务不依赖手机应用一直开着
+
+Meta 明确表示，关闭应用后 Muse 仍会工作，遇到变化或需要批准时再联系用户。因此，云端计算机把持续执行与手机、网页交互分开；用户不用一直守着对话窗口。这是产品架构提供的能力，不代表任何任务都保证成功。[S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/)
+
+从工程角度，采用云端还可免去用户自行维护运行环境、保持个人电脑开机的负担，并减少长任务持续占用手机后台和电量的需要。这是架构收益的解释，不能当作 Meta 实测过的省电数据。本地设备同样可以执行工具，但要承担运行环境、可用硬件以及访问外部服务时的联网条件。
+
+反例就在 Meta 自己的产品中：8 月 10 日发布的 Muse Glimmer 是 300 亿参数开放模型，官方称可在单张消费级 GPU 的 Mac 或 PC 上运行本地智能体工作流。它证明智能体并非天然必须上云；但它是另一模型，不能据此说 Muse 个人智能体已经本地化，或普通 CPU 足以替代所有模型加速计算。[S18 · Introducing Muse Glimmer: An Open Agentic Model That Runs on Your Device](https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model)
+
+##### 一个家庭事务例子：理解内容与执行动作相互配合
+
+Meta 产品设计者曾描述，让 Muse 跟踪学校邮件和网站、把日期写入家庭日历并准备购物车。这是厂商人员的使用案例，不是 CPU 压力测试。[EA125_DESIGN · How We Designed Muse](https://introducing.muse.ai/)
+
+按这个例子拆解，“哪些邮件重要、下一步该做什么”属于模型判断；获取内容、操作网站、调用日历接口、写文件和保存进度，则需要软件执行。程序完成一步后把结果交回模型，再进入下一步。等待新邮件或用户批准时可以保留任务状态，但不能由等待时长推出 CPU 持续忙碌。
+
+##### 执行环境、浏览器和模型推理不是同一份硬件清单
+
+官方把运行区与凭据、连接器、权限及持久化状态服务隔离，并通过代理访问外部推理基础设施。需用户批准时执行会暂停。因此，CPU 执行、模型计算和等待是不同环节；服务在 VM 内并不能证明其安全模型全由 CPU 推理，单个 VM 也不能代表整个服务的 GPU 配置或成本占比。[S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse)
+
+浏览器的边界也要分清。官方说明由独立 broker 管理浏览器接口；Clinton Stark 的第一手体验进一步报告，用户运行区里看不到本地浏览器，其代理会租用独立浏览器环境。后者只是一个账户的观察，不能升格为全平台部署规格，但足以提醒：统计用户 VM 的进程和配额，可能漏掉浏览器服务与远端推理。[S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse)[EA125_STARK · Meta Muse: The $0 AI Agent Running on a $40 Server](https://www.starkinsider.com/2026/09/meta-muse-specs-what-it-runs-on.html)
+
+##### 2 vCPU 是观察到的虚拟配置，不是两颗独占物理核
+
+Stark 的文章发表于 2026 年 9 月 22 日，报告的测量发生在 9 月 20 日：一个 Muse 环境显示 2 vCPU、7.7 GB 内存、100 GB 主目录卷。作者明示这是智能体返回的单样本，不是 Meta 公布的规格或承诺；“VM 内没有 GPU”也不能推成整个 Muse 不使用 GPU。[EA125_STARK · Meta Muse: The $0 AI Agent Running on a $40 Server](https://www.starkinsider.com/2026/09/meta-muse-specs-what-it-runs-on.html)
+
+vCPU 是虚拟机可见的处理器资源，物理核心是芯片实际执行指令的硬件单元。两者能否独占、怎样映射，取决于平台调度。2020 年 Firecracker 原论文说明，隔离 MicroVM 可以共享宿主硬件，空闲与忙碌阶段的 CPU 使用不同。它证明隔离与共享兼容，不证明 Muse 使用相同系统或相同超配比例。[S17 · Firecracker: Lightweight Virtualization for Serverless Applications](https://www.usenix.org/system/files/nsdi20-paper-agache.pdf)
+
+举一个只说明口径的假设：若 100 万个环境各配置 2 vCPU，乘积是 200 万个已配置 vCPU。这既不是 200 万个独占物理核心，也不是 200 万颗处理器。仍须知道并发、忙碌时间、映射和共享方式；“持续可用”本身不能补齐这些变量。
+
+##### 能够解释 CPU 的作用，尚不能量出实际消耗
+
+截至 2026 年 10 月 9 日，以上原始资料足以说明 Muse 为什么需要云端执行计算，但没有给出平台统一配额、CPU 利用率、并发峰值、超配比例或新增采购量；推理硬件完整配置与 CPU/GPU 成本分配也未公开。它们限制的是资源数量与采购归因，不能把样本配置当成答案。这些量化问题应在已有数量分支继续核实。
+
+日期口径为：产品公告首发 9 月 8 日、更新至 9 月 30 日；安全技术说明标示 9 月 8 日；设计说明只标示 2026 年 9 月，不补造具体日；样本文章发布日期与测量日分别记录。上述材料均不晚于截止日。[S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/)[S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse)[EA125_DESIGN · How We Designed Muse](https://introducing.muse.ai/)[EA125_STARK · Meta Muse: The $0 AI Agent Running on a $40 Server](https://www.starkinsider.com/2026/09/meta-muse-specs-what-it-runs-on.html)
+
+产品设计说明与 Firecracker 论文的来源登记仅到月份，虽早于截止日，但精确发布日期尚未核实；相关案例和共享机制按原文背景保留，不计作完成证据。CPU 作用与云端执行路径另有 9 月 8 日的官方说明支持。
+
+对父问题而言，变化在于产品从回答问题延伸到持续操作软件，因此出现模型推理之外的云端执行负载。它提供 CPU 需求的具体机制；实际增加多少服务器仍取决于任务量、资源效率及已有容量，不能由注册人数直接得出。
+
+充分性：未通过。已正面回答完整机制问题，并保留独立草稿的实质信息；部分补充原始材料只有月份日期，严格证据门禁尚未完整通过。
+
+缺口：产品设计说明只列 2026 年 9 月、Firecracker 来源注册日期仅为 2020 年 2 月；已确认月份早于截止日，但未取得本轮逐条证据门禁要求的精确发布日期，相关案例与共享机制保留为正文背景，未计入完成证据。
+
+反向证据与边界：Glimmer 提供本地路线；外部推理、独立浏览器与虚拟资源复用说明云端 VM 不代表全部资源，更不代表永久独占物理核。
+
+下一步：下一轮取得设计说明与 Firecracker 原材料的精确发布日期或可核实日期版本；数量与采购仍由已有 D1、D2 节点研究。
+
+#### 3. 数据列表
+
+| 材料、日期与原文定位 | 关键数据与事实 | 作用 | 口径限制与反向解释 |
+| --- | --- | --- | --- |
+| [S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/) · 2026-09-08 · 标题日期及 How It Works，L241、254–259 | Meta 于 2026 年 9 月 8 日发布由 Muse Spark 驱动的个人智能体 Muse；公告称关闭应用后它仍可继续任务，需要批准或出现变化时再联系用户。 | support | 公告更新至 2026-09-30；产品设计与能力声明，不是任务成功率或 CPU 忙碌时间实测。 |
+| [S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse) · 2026-09-08 · An agent in your own cloud computer，L26–28 | Muse 的隔离 Linux VM 提供 CPU、内存与存储，用于编译代码、自建工具、并发子智能体和定时任务。 | support | 官方未在此披露统一 vCPU 配额或独占物理核心数。 |
+| [S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse) · 2026-09-08 · Muse Secure VM，L41–50；Human in the Loop，L65–67 | Muse 将运行区与权限、凭据、连接器和持久化状态服务分开，并通过推理代理访问外部基础设施；需要用户批准时执行停止。 | boundary | 服务隔离不说明安全模型都在 CPU 推理；执行 VM 配置不代表模型服务硬件。 |
+| [S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse) · 2026-09-08 · Least Privilege，L83；Browser，L109–114 | Muse 浏览器由独立 broker 管理，浏览器控制接口位于运行区之外。 | boundary | 官方说明接口隔离，并未证明浏览器始终在用户运行区内，也未披露整个浏览器池配置。 |
+| [EA125_STARK · Meta Muse: The $0 AI Agent Running on a $40 Server](https://www.starkinsider.com/2026/09/meta-muse-specs-what-it-runs-on.html) · 2026-09-22 · 署名日期；First, the box，L23–35 | Clinton Stark 在 9 月 22 日文章中报告 9 月 20 日一个 Muse 环境显示 2 vCPU、7.7 GB 内存和 100 GB 主目录卷；作者明确称它只是一个智能体对自身环境的测量，不是 Meta 规格承诺。 | boundary | 经智能体返回的单样本，未独立检查宿主机；不能外推全账户或独占物理核。 |
+| [EA125_STARK · Meta Muse: The $0 AI Agent Running on a $40 Server](https://www.starkinsider.com/2026/09/meta-muse-specs-what-it-runs-on.html) · 2026-09-22 · Then, the browser，L42–52；The brain is somewhere else entirely | 该体验记录称运行区没有本地浏览器或 GPU，浏览器 broker 会租用独立浏览器环境，模型请求经内部代理发往外部。 | boundary | 仅作者样本的可见环境；不能断定全服务无 GPU、浏览器池规模或模型服务引擎。 |
+| [S18 · Introducing Muse Glimmer: An Open Agentic Model That Runs on Your Device](https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model) · 2026-08-10 · 标题日期 L8；导言 L10–14 | Meta 于 2026 年 8 月 10 日发布 Muse Glimmer 开放权重，称这个 300 亿参数模型可在 Mac 或 PC 的单张消费级 GPU 上运行本地智能体工作流。 | refute | Glimmer 是另一模型；不能作为 Muse 个人智能体已改为本地运行或仅靠 CPU 推理的证明。 |
+
+<a id="I"></a>
+
+### I · 它怎样影响 CPU 市场？
+
+#### 1. 研究子问题
+
+- [用户增长会变成多少 CPU 需求？](#D1)
+
+把用户与硬件建立可审计的数量关系。
+
+- [Muse 对服务器 CPU 市场的增量有多大？](#D2)
+
+区分事件增量与已经存在的 CPU 景气。
+
+- [哪些 CPU 路线和终端会受益或被替代？](#T1)
+
+确定受影响的具体市场与技术边界。
+
+#### 2. 子问题核心结论
+
+- [用户增长会变成多少 CPU 需求？](#D1)：Muse 用户增长会增加服务器 CPU 工作量，但截至 2026 年 10 月 9 日，公开资料不足以确定“每新增多少用户，Meta 就采购多少颗 CPU”。可以给出两种不同口径：沿用用户观察到的每台虚拟机 2 vCPU 配置，新增 100 万个已配置账户对应 200 万个 vCPU 的名义配额；若新增的是 100 万日活用户，并假设每人每天消耗 1 个物理核小时、峰值为平均负载的两倍、目标利用率 60%，则约需 724 颗 192 核服务器 CPU 的容量。前者不是物理核心数，后者是可复算情景，均不是 Meta 已披露的采购量。 [S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/)[EA125_STARK · Meta Muse: The $0 AI Agent Running on a $40 Server](https://www.starkinsider.com/2026/09/meta-muse-specs-what-it-runs-on.html)[E321_9965 · AMD Launches 5th Gen AMD EPYC CPUs](https://www.amd.com/en/newsroom/press-releases/2024-10-10-amd-launches-5th-gen-amd-epyc-cpus-maintaining-le.html)
+
+未充分；未取得 Muse 每用户实际物理核时、峰均比、全站物理核/vCPU映射、利用率和内存驻留/回收率，不能确定实际容量转换系数。；未取得已有可用容量、故障冗余和采购记录，不能把容量换算为新增CPU订单。；用户基线来自媒体所见内部数据及第三方估计；Meta统一口径原始遥测未公开，Yahoo原页与Similarweb原表未取得。
+
+- [Muse 对服务器 CPU 市场的增量有多大？](#D2)：截至 2026 年 10 月 9 日，Muse 已经带来服务器 CPU 工作负载，但公开资料尚不能量出它新增了多少颗 CPU、多少采购收入，或拉动了市场几个百分点。可以明确的是：增量主要来自每个用户的云端执行环境、工具调用和后台任务；流传的“1 亿用户需要约 158 万颗 CPU”是按物理核心完全专用计算的情景，不能当作实际订单。 [S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse)[E321_SCENARIO · What It Takes to Give Every Personal Agent a Computer](https://nextsignalprediction.substack.com/p/what-it-takes-to-give-every-personal)
+
+未充分；未取得 Muse 专属CPU核时、存量吸收率、被替代负载、实际采购颗数、净成交价与交付年份，不能给出市场净增收入。；未取得与Muse采购期间一致的2026年服务器CPU市场绝对实绩分母，2030年2200亿美元预测不能替代当前市场占比。
+
+- [哪些 CPU 路线和终端会受益或被替代？](#T1)：从工作负载看，最直接的潜在受益对象是承载云端智能体的服务器 CPU；端侧则分成两类：普通手机、电脑可以作为轻量入口，高内存、带 GPU 的电脑可以运行本地智能体。存在替代压力的是部分低效率服务器、为后台代理专门常开的个人电脑，以及某些必须手动打开应用的操作方式，尚不能判断手机、PC 或某一种 CPU 架构会被整体淘汰。 [S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse)[S18 · Introducing Muse Glimmer: An Open Agentic Model That Runs on Your Device](https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model)[S07 · Meta Builds AI Infrastructure With NVIDIA](https://nvidianews.nvidia.com/news/meta-builds-ai-infrastructure-with-nvidia)[S10 · Arm expands compute platform to silicon products](https://newsroom.arm.com/news/arm-agi-cpu-launch)
+
+未充分；Intel Glimmer支持页没有可核实的精确发布日期；8月14日仅为测试日，其具体配置和截止日可用性未通过日期门禁。；未取得 Muse 专属CPU供应商份额、同任务跨架构成本/能效实测及终端替换量，不能判定哪条路线已实现净销量受益或替代规模。
+
+综合判断：Muse 把持续代办任务带入服务器CPU执行层，但用户增长首先增加的是核时和容量需求，尚不能确定净新增采购或市场增幅。高密度、低任务成本的x86与Arm服务器都有机会；普通手机和PC可作为云端入口，高内存本地设备则有Glimmer路线。当前没有证据支持把一亿用户直接换成百万颗订单，或认定手机、PC和x86被全面替代。
+
+##### 用量、采购与硬件路线回答不同环节
+
+[D1](#D1)给出用户报道基线和核时容量模型：每百万日活、每人每日一核小时的特定假设对应724颗192核CPU容量，但实际强度与存量余量未知，未通过充分性判断。[D2](#D2)将容量进一步换成条件金额，指出发布前CPU业务已经增长；其假设金额只能与同一交付年度的市场口径比较，实际采购归因尚未公开，也未通过。两题共同说明工作负载存在，并不能直接证明销量与市场收入增加。
+
+[T1](#T1)解释谁有能力承接这些工作：x86和Arm合作并存，本地Glimmer使终端既可能获得新用途，也可能替代部分云调用。Intel支持页日期与Muse专属份额仍有缺口，保持未通过；这一分支约束D1、D2的部署假设，不能把所有用户都当成某一家服务器供应商的固定客户。
+
+##### 近期可能由余量承接，中长期取决于持续使用和效率
+
+近期，新增任务可能落在已有执行池，资源共享能减轻采购需求；这是机制上的可能性，尚无实际吸收比例。中长期若活跃用户和每用户核时持续上升、超出存量余量，才需要扩容；更高单芯片吞吐和本地运行也可能抵消部分颗数增长。因此方向判断比销量幅度更有依据。
+
+#### 3. 欠缺的方向
+
+充分性：未通过。D1、D2、T1均有影响原题完整判断的实质缺口；不能由条件情景宣布市场研究完成。
+
+缺口：D1：未取得 Muse 每用户实际物理核时、峰均比、全站物理核/vCPU映射、利用率和内存驻留/回收率，不能确定实际容量转换系数。；D1：未取得已有可用容量、故障冗余和采购记录，不能把容量换算为新增CPU订单。；D1：用户基线来自媒体所见内部数据及第三方估计；Meta统一口径原始遥测未公开，Yahoo原页与Similarweb原表未取得。；D2：未取得 Muse 专属CPU核时、存量吸收率、被替代负载、实际采购颗数、净成交价与交付年份，不能给出市场净增收入。；D2：未取得与Muse采购期间一致的2026年服务器CPU市场绝对实绩分母，2030年2200亿美元预测不能替代当前市场占比。；T1：Intel Glimmer支持页没有可核实的精确发布日期；8月14日仅为测试日，其具体配置和截止日可用性未通过日期门禁。；T1：未取得 Muse 专属CPU供应商份额、同任务跨架构成本/能效实测及终端替换量，不能判定哪条路线已实现净销量受益或替代规模。
+
+- [用户增长会变成多少 CPU 需求？](#D1)：未取得 Muse 每用户实际物理核时、峰均比、全站物理核/vCPU映射、利用率和内存驻留/回收率，不能确定实际容量转换系数。；未取得已有可用容量、故障冗余和采购记录，不能把容量换算为新增CPU订单。；用户基线来自媒体所见内部数据及第三方估计；Meta统一口径原始遥测未公开，Yahoo原页与Similarweb原表未取得。；下一轮优先取得带定义的活跃/后台账户遥测和每账户核时、内存驻留、峰值及既有余量；对照订单，不新增问题。；补取Similarweb统计原表与可读取的同期原报道，确认平台覆盖和去重口径。
+
+- [Muse 对服务器 CPU 市场的增量有多大？](#D2)：未取得 Muse 专属CPU核时、存量吸收率、被替代负载、实际采购颗数、净成交价与交付年份，不能给出市场净增收入。；未取得与Muse采购期间一致的2026年服务器CPU市场绝对实绩分母，2030年2200亿美元预测不能替代当前市场占比。；取得Muse执行池扩容与采购归因、同期服务器CPU实际市场规模；用真实用量替换情景参数并按交付年度比较。
+
+- [哪些 CPU 路线和终端会受益或被替代？](#T1)：Intel Glimmer支持页没有可核实的精确发布日期；8月14日仅为测试日，其具体配置和截止日可用性未通过日期门禁。；未取得 Muse 专属CPU供应商份额、同任务跨架构成本/能效实测及终端替换量，不能判定哪条路线已实现净销量受益或替代规模。；取得Intel页面带日历发布日期的版本；补充Muse按工作负载的CPU部署份额与同任务测试，核对眼镜/Charm交付及终端使用替代数据。
+
+反向证据与边界：发布前既有增长、存量余量和本地运行可限制Muse净新增采购；厂商合作不能证明Muse专属份额。
+
+下一步：优先补D1每用户核时、峰值和存量余量，再在D2按实际交付量与当期市场比较；T1补日期版本和同任务路线实测。
+
+<a id="D1"></a>
+
+### D1 · 用户增长会变成多少 CPU 需求？
+
+#### 1. 核心观点
+
+Muse 用户增长会增加服务器 CPU 工作量，但截至 2026 年 10 月 9 日，公开资料不足以确定“每新增多少用户，Meta 就采购多少颗 CPU”。可以给出两种不同口径：沿用用户观察到的每台虚拟机 2 vCPU 配置，新增 100 万个已配置账户对应 200 万个 vCPU 的名义配额；若新增的是 100 万日活用户，并假设每人每天消耗 1 个物理核小时、峰值为平均负载的两倍、目标利用率 60%，则约需 724 颗 192 核服务器 CPU 的容量。前者不是物理核心数，后者是可复算情景，均不是 Meta 已披露的采购量。 [S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/)[EA125_STARK · Meta Muse: The $0 AI Agent Running on a $40 Server](https://www.starkinsider.com/2026/09/meta-muse-specs-what-it-runs-on.html)[E321_9965 · AMD Launches 5th Gen AMD EPYC CPUs](https://www.amd.com/en/newsroom/press-releases/2024-10-10-amd-launches-5th-gen-amd-epyc-cpus-maintaining-le.html)
+
+#### 2. 关键论证
+
+##### 已知用户规模和单账户资源
+
+这里的 Muse 指 2026 年 9 月发布、拥有个人云端运行环境的智能体产品；Muse Spark 是驱动它的模型。官方确认每位用户拥有独立的 Muse Secure VM，任务可以在用户关闭应用后继续执行，但没有在发布说明中承诺每用户独占多少物理核心。[S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/)
+
+截至截止日，能确认的用户与资源基线如下。
+
+上述 The Information 原始页面有付费限制，数字可见于公开索引摘要；Similarweb 数字来自媒体转述，其原始统计表未取得，原报道页面仍无法打开。这些报道提示用户已到百万量级，但不等于 Meta 公开了统一用户遥测；Yahoo 原页打开失败，218.2 万仅保留为索引中的转述，其数值尚无法从原文核实，也不与内部发提示人数拼接。本文网页检索、抓取日为 2026 年 10 月 9 日，不同于表中发布日期和数据观察日。
+
+用户、观察日期和资源口径；报道不能直接换算采购
+
+| 项目 | 已知事实及日期 | 能否直接换算 CPU |
+| --- | --- | --- |
+| 早期用户报道 | 9月22日报道：首周尝试超50万、日活超25万。[E321_EARLY · Muse Surpassed 500,000 Users After First Week](https://www.theinformation.com/briefings/exclusive-metas-muse-surpassed-500-000-users-first-week) | 媒体内部数据报道；不能当作同时运行人数。 |
+| 后续发提示用户报道 | 9月30日报道：周超300万、日超100万。[S20 · Meta’s Muse Tops 3 Million Weekly Users](https://www.theinformation.com/briefings/exclusive-metas-muse-tops-3-million-weekly-users) | “至少发一次提示”的人数，不是CPU运行时长。 |
+| 第三方估计线索 | Yahoo索引援引Similarweb：10月5日日活218.2万。[E321_YAHOO · Meta bulls have a new Muse stat to love. Amazon could spoil it.](https://ca.finance.yahoo.com/news/meta-bulls-have-a-new-muse-stat-to-love-amazon-could-spoil-it-165920814.html) | 原页打开失败、统计原表未取得；数值未获原文核实，不与上一行拼增长率。 |
+| 单账户运行环境 | Clinton Stark 于 9 月 20 日观察、9 月 22 日发表：2 vCPU、约 7.7 GB 内存、100 GB 主目录卷，显示 AMD EPYC 9D25。 | 只是单账户观察，作者明确说明不是 Meta 配置承诺。[EA125_STARK · Meta Muse: The $0 AI Agent Running on a $40 Server](https://www.starkinsider.com/2026/09/meta-muse-specs-what-it-runs-on.html) |
+| 全站 CPU 部署 | 未找到 Meta 披露的 Muse 主机数量、平均 CPU 利用率、同时运行 VM 数或采购数量。 | 实际物理 CPU 总量和新增采购量无法据此确定。 |
+
+##### 任务量和实际核时决定CPU工作量
+
+从用户增长到 CPU，需要经过“任务量—计算时间—峰值容量”三步。
+
+Muse 的 CPU 工作包括运行智能体程序、执行代码、处理文件、调度定时任务及子智能体，以及浏览器和安全控制等服务。Meta 的技术说明确认了这些功能，并明确推理所需数据会离开用户 VM。因此，用户 VM 的 CPU 需求与模型推理的 GPU／加速器需求，应分别核算，不能把模型 token 数直接当成用户 VM 的 CPU 用量。[S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse)
+
+这里有三个关键区别：
+
+vCPU 是虚拟处理器，不是整颗芯片，也不必等于一个独占物理核心。它表示虚拟机能够调度的处理器资源；背后的物理核心可能使用 SMT，也可能由多个 VM 分时共享。
+
+任务持续时间不等于 CPU 忙碌时间。一次购物任务持续十分钟，其中可能大量时间在等待模型、网页或用户批准。应累计真正消耗的 CPU 时间。
+
+应用日活不等于后台计算活跃。用户不打开应用，定时任务仍可能运行；打开应用的用户也可能只问一句话。官方支持后台工作，但未披露后台执行率。[S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/)
+
+在其他条件不变时，用户翻倍、每人任务量翻倍，CPU 工作量会变成四倍；若每任务 CPU 时间同时减半，才回落为两倍。这是工作量关系，尚不是采购关系。
+
+##### 每百万日活对应多少容量：三个强度情景
+
+可用下式计算容量：
+
+CPU容量颗数 = 向上取整〔D × H × K ÷ (24 × u × C)〕。D为日活用户数，H为每用户每日物理核小时，K为峰均比，u为目标利用率，C为每颗物理核心数。
+
+其中，1 个“物理核小时”表示一个基准物理核心满负荷运行一小时的工作量。不同芯片性能不同，必须以相同任务校准，不能只比较核心数量。若 D 采用应用日活人数，H 应把全站后台任务也分摊进去，否则会漏算。
+
+下面统一采用已上市的 AMD EPYC 9965 的 192 个物理核心作为换算单位；这只是有公开规格的容量标尺，不代表 Meta 为 Muse 选择了该型号。[E321_9965 · AMD Launches 5th Gen AMD EPYC CPUs](https://www.amd.com/en/newsroom/press-releases/2024-10-10-amd-launches-5th-gen-amd-epyc-cpus-maintaining-le.html)
+
+假设峰均比为 2、目标利用率为 60%，得到：
+
+表中全部是情景假设，不是实测范围或用户增长预测。例如中间一格：
+
+100万×1×2÷(24×60%×192) =723.38
+
+向上取整就是 724 颗；采用双路服务器，相当于 362 台服务器的 CPU 容量，尚未检验内存、存储、网络及容灾约束。0.1、1、8 核小时代表不同使用强度，目前没有依据认定哪一档最接近 Muse 的实际平均值。
+
+容量敏感性：192核/颗、峰均比2、利用率60%；全部是假设，颗数向上取整
+
+| 日活用户规模 | 每人每天 0.1 核小时 | 每人每天 1 核小时 | 每人每天 8 核小时 |
+| --- | --- | --- | --- |
+| 100 万 | 73 颗 | 724 颗 | 5,788 颗 |
+| 1,000 万 | 724 颗 | 7,234 颗 | 57,871 颗 |
+| 1 亿 | 7,234 颗 | 72,338 颗 | 578,704 颗 |
+
+##### 158万颗的独占核心假设为什么不能当作预测
+
+“1 亿用户需要约 158 万颗 CPU”的说法，隐含了非常强的资源独占假设。
+
+这个数字可以复算：
+
+1亿用户×2核/用户÷126核/颗 ≈158.73万颗
+
+但它把观察到的 2 vCPU按 2 个独占物理核心处理，并为全部用户同时保留这些核心。单账户观察并没有证明这些条件成立。另一位用户 9 月 30 日的原始测试也看到 2 vCPU，但对 SMT 映射作出了不同解释；虚拟机内的拓扑和少量基准测试不足以证明全站物理核心分配方式。[E321_VMTEST · Meta Muse gives you a pretty nice VM for free](https://unexcitedneurons.substack.com/p/meta-muse-gives-you-a-pretty-nice)
+
+因此，158.73 万颗可以作为上述假设下的算术结果，不能当成 Meta 的需求预测，也不是完整系统的需求上限：时间共享、空闲回收会降低 CPU 需求，浏览器等外部服务及冗余又可能增加需求。
+
+##### 内存和存量余量会改变最终采购
+
+即使 CPU 时间共享非常有效，内存也可能先限制每台服务器的用户密度。例如，假设每用户真要常驻 8 GB 内存，一台提供 2,000 GB 可用内存的服务器，忽略开销也只能容纳 250 位用户；即便 CPU 尚有空闲，仍可能因内存不足而扩容。按十进制单位、每用户 8 GB、100 GB 存储的假设，1 亿用户分别对应 800 PB 内存、10,000 PB 存储逻辑容量，但逻辑容量不等于立即装满的物理容量；休眠、按需分配、复制和备份都会改变结果。这里的配置仍来自用户观察，不能视为全站保证。[EA125_STARK · Meta Muse: The $0 AI Agent Running on a $40 Server](https://www.starkinsider.com/2026/09/meta-muse-specs-what-it-runs-on.html)
+
+最后，算出的服务容量仍需扣除已有可用容量，才能讨论新增采购。已有服务器的空闲资源、迁移腾挪、软件优化或外部云资源，都可能承接新增用户；反过来，区域部署、故障冗余和扩容提前量也会增加安装需求。Meta 没有公开足够数据，无法把这些因素落实为 Muse 的新增 CPU 订单数。
+
+对父问题“Meta Muse 怎样影响 CPU 市场”的意义是：Muse 确实增加了运行工具、浏览器和持续后台任务的 CPU 使用场景；其规模取决于活跃用户数与每用户实际计算强度的乘积。目前能够建立可复算的容量情景，但不能把百万用户直接解释为百万颗芯片，更不能将 Meta 或整个 AI 行业的 CPU 扩张全部归因于 Muse。
+
+##### 哪些量仍无法确定
+
+截至2026-10-09，未取得 Muse 每用户实际物理核时、峰均比、全站物理核/vCPU映射、利用率和内存驻留/回收率，不能确定实际容量转换系数；未取得已有可用容量、故障冗余和采购记录，不能把容量换算为新增CPU订单；用户基线来自媒体所见内部数据及第三方估计；Meta统一口径原始遥测未公开，Yahoo原页与Similarweb原表未取得。
+
+充分性：未通过。已逐项回答已知事实、机制和条件情景；所列缺口仍影响原题完整答案，未宣称研究充分。
+
+缺口：未取得 Muse 每用户实际物理核时、峰均比、全站物理核/vCPU映射、利用率和内存驻留/回收率，不能确定实际容量转换系数。；未取得已有可用容量、故障冗余和采购记录，不能把容量换算为新增CPU订单。；用户基线来自媒体所见内部数据及第三方估计；Meta统一口径原始遥测未公开，Yahoo原页与Similarweb原表未取得。
+
+反向证据与边界：vCPU配额与后台可用性不等于持续独占物理核心；单样本SMT推断不能外推机群。
+
+下一步：下一轮优先取得带定义的活跃/后台账户遥测和每账户核时、内存驻留、峰值及既有余量；对照订单，不新增问题。；补取Similarweb统计原表与可读取的同期原报道，确认平台覆盖和去重口径。
+
+#### 3. 数据列表
+
+| 材料、日期与原文定位 | 关键数据与事实 | 作用 | 口径限制与反向解释 |
+| --- | --- | --- | --- |
+| [S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/) · 2026-09-08 · 标题日期 L241；How It Works L255–259 | Meta 于 9 月 8 日发布 Muse，9 月 30 日更新的公告说明关闭应用后仍能继续任务。 | support | 官方功能说明，不提供活跃人数、核时或采购数量。 |
+| [S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse) · 2026-09-08 · An agent in your own cloud computer L26–31；Muse Secure VM L44–50 | Muse 的用户环境是带 CPU、内存、存储的隔离 Linux VM，可编译代码、运行并发子智能体及定时任务；推理代理连接外部基础设施。 | support | 说明执行层与推理服务分开，不能推定两者芯片配比或每账户独占物理核心。 |
+| [EA125_STARK · Meta Muse: The $0 AI Agent Running on a $40 Server](https://www.starkinsider.com/2026/09/meta-muse-specs-what-it-runs-on.html) · 2026-09-22 · First, the box L23–33 | 9 月 20 日单账户观察显示 2 vCPU、7.7 GB 内存、100 GB 主目录卷及 EPYC 9D25 标识；作者称配置并非 Meta 承诺。 | boundary | 9月22日发布；经智能体观察，126核/252线程标识不能证明全站拓扑或持续独占配额。 |
+| [E321_EARLY · Muse Surpassed 500,000 Users After First Week](https://www.theinformation.com/briefings/exclusive-metas-muse-surpassed-500-000-users-first-week) · 2026-09-22 · 原站搜索索引导言；打开页面标题 L164 | 9月22日报道：首周尝试用户超50万，日活超25万。 | boundary | 媒体查看内部数据的报道；付费正文不可完整读取，不能视为官方公开遥测。 |
+| [S20 · Meta’s Muse Tops 3 Million Weekly Users](https://www.theinformation.com/briefings/exclusive-metas-muse-tops-3-million-weekly-users) · 2026-09-30 · 原站搜索索引标题、副标题和导言；打开标题 L164 | 9月30日报道：每周发提示超300万人，每日超100万人。 | boundary | 统计发提示用户；付费原页只显示标题，索引内容不等于本研究取得内部原始数据。 |
+| [E321_VMTEST · Meta Muse gives you a pretty nice VM for free](https://unexcitedneurons.substack.com/p/meta-muse-gives-you-a-pretty-nice) · 2026-09-30 · 配置 L11–19；Does Meta throttle the machine? L26–38 | 9 月 30 日单用户测试见 2 vCPU；作者称一小时测试未见降频，并推断两线程共享一核，但承认没有观察到超分配证据。 | boundary | 1.44倍及约2倍基准倍率不能唯一识别宿主拓扑；不得把作者猜测当成全站SMT或超配政策。 |
+| [E321_9965 · AMD Launches 5th Gen AMD EPYC CPUs](https://www.amd.com/en/newsroom/press-releases/2024-10-10-amd-launches-5th-gen-amd-epyc-cpus-maintaining-le.html) · 2024-10-10 · 发布行 L456；型号描述 L473 | AMD 在 2024 年 10 月 10 日的发布稿确认 EPYC 9965 为 192 核处理器。 | support | 只提供本题假设计算的公开容量标尺；不是Muse采购型号证明。 |
+
+<a id="D2"></a>
+
+### D2 · Muse 对服务器 CPU 市场的增量有多大？
+
+#### 1. 核心观点
+
+截至 2026 年 10 月 9 日，Muse 已经带来服务器 CPU 工作负载，但公开资料尚不能量出它新增了多少颗 CPU、多少采购收入，或拉动了市场几个百分点。可以明确的是：增量主要来自每个用户的云端执行环境、工具调用和后台任务；流传的“1 亿用户需要约 158 万颗 CPU”是按物理核心完全专用计算的情景，不能当作实际订单。 [S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse)[E321_SCENARIO · What It Takes to Give Every Personal Agent a Computer](https://nextsignalprediction.substack.com/p/what-it-takes-to-give-every-personal)
+
+#### 2. 关键论证
+
+##### 已知规模与条件金额
+
+给出一个可复算的量级：假设未来有 1 亿个 Muse 账户，每账户配置 2 vCPU，经过闲时共享后，所需物理容量相当于名义配额的 1%—20%，则用户虚拟机这一层约需 1.56 万—31.25 万颗 128 核 CPU。若再假设每颗成交价为 5,000 美元，对应 CPU 部署金额约 0.78 亿—15.63 亿美元。这些比例和价格均是敏感性假设，不是 Meta 披露的利用率、报价或预测；也尚未扣除现有服务器承接的部分。
+
+##### 已经确认的需求是什么
+
+这里的 Muse 指 Meta 于 2026 年 9 月 8 日发布的个人 AI 智能体产品，由 Muse Spark 模型驱动。Meta 宣布为用户提供独立的 Muse Secure VM，支持浏览器操作、发送邮件、预订行程，以及关闭应用后继续执行任务。“面向数十亿人设计”是产品定位，不是已经达到的用户数。发布页标注 9 月 8 日发布、9 月 30 日更新。[S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/)
+
+Meta 同日发布的技术说明确认，每个虚拟环境拥有 CPU、内存和存储，用于编译代码、运行工具、并发子代理和定时任务；推理请求则可以通过代理送往外部基础设施。因此，Muse 增加的是模型推理之外的执行层计算。不能把模型训练、GPU 推理和整个数据中心建设金额都计入服务器 CPU 增量。[S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse)
+
+CPU 需求因此有三部分：
+
+用户执行环境：运行代码、维护进程、执行定时任务。
+
+共享后台服务：浏览器服务、数据访问、连接器、权限检查和调度。
+
+推理基础设施的配套 CPU：随模型服务扩容而增加，但需与前两部分分别统计，避免重复。
+
+其中，官方披露足以确认前两类工作存在，却没有给出每个账户的平均 CPU 时间、峰值并发、资源复用率和采购计划。独立虚拟机意味着环境隔离，不意味着独占一颗处理器，或全天独占两个物理核心。
+
+##### “158 万颗 CPU”的数字如何得到，为什么不能直接采用
+
+一份 9 月的第一手使用记录报告，其账户看到 2 vCPU、约 7.7GB 内存、AMD EPYC 9D25 标识，以及 126 核／252 线程的主机信息。作者同时明确说明，这是单个账户的观察，Meta 没有发布这套规格，也不承诺所有账户相同。它可以作为情景输入，不能作为全平台硬件标准。[EA125_STARK · Meta Muse: The $0 AI Agent Running on a $40 Server](https://www.starkinsider.com/2026/09/meta-muse-specs-what-it-runs-on.html)
+
+按这一配置，158 万颗的算法是：
+
+1亿账户×2个物理核心/账户÷126核/颗
+=158.73万颗CPU
+
+这个算式隐含了三个强条件：1 亿账户均已部署；每个 vCPU 按一个完整物理核心配置；全部配额持续预留、不做 CPU 超分配。9 月 24 日发布的一份原始估算也明确采用“每个 vCPU 对应一个物理核心、无超分配”，按 128 核得到约 156 万颗，并声明这是资源情景，非已部署机群观察。[E321_SCENARIO · What It Takes to Give Every Personal Agent a Computer](https://nextsignalprediction.substack.com/p/what-it-takes-to-give-every-personal)
+
+这里至少需要三项修正：
+
+vCPU 不等于物理核心。它是虚拟机获得的处理器执行资源；硬件线程、物理核心和调度配额不能直接混用。252 个线程也不意味着具有 252 个完整物理核心的吞吐能力。
+
+后台可运行不等于持续满负荷。等待邮件、网页、网络或模型返回的时间，不能全部计为 CPU 忙碌时间；但关闭手机应用也不代表后台负载归零。
+
+容量需求不等于新增采购。部分负载可以由已有机群承担；同时，浏览器、共享服务和冗余又可能增加额外容量。
+
+因此，158 万颗是“完全预留两颗物理核心”的用户虚拟机配置情景，既不是实际需求，也不是整个 Muse 系统的严格上限。
+
+##### 可复算的规模：关键在每账户实际占用多少物理容量
+
+为避免把日活率、任务时长、并发率和超分配重复相乘，可将它们归并为一个变量 f：
+
+f＝满足实际工作负载和服务质量后，所需物理核心容量占“账户数 × 2 个名义核心”的比例。
+
+以下统一假设 1 亿账户、每颗 CPU 128 个物理核心、每颗 5,000 美元。所有情景不计 SMT 的额外收益；价格仅为换算假设。
+
+CPU数量=(1亿 × 2 × f) ÷ 128
+
+这张表不是预测区间，公开证据还不能判断 Muse 落在哪一行。它说明，同样是“1 亿用户、2 vCPU”，资源共享和任务强度就足以让 CPU 数量相差两个数量级。
+
+可以进一步直接复算：
+
+若账户数只有 1,000 万，表内数量和金额均除以 10。
+
+若 CPU 实际成交价为 3,000 或 8,000 美元，金额分别乘以 0.6 或 1.6。
+
+若采用更高核心数的 CPU，满足同等核心容量所需颗数下降；实际还受单核性能、内存容量和带宽约束。AMD 自己也明确提醒，其按线程数估算的智能体承载量会随工作负载、内存和软件配置变化。[E321_AAI · AAI 2026: AMD Delivers Full-Stack Compute for the Agentic AI Era](https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era)
+
+表中金额是建立相应容量的 CPU 存量价值，不是每年自动重复发生的收入。若跨多年部署，需要按交付年份分摊；稳定运行后，年度需求由新增用户、工作负载增长和硬件替换共同决定。内存、SSD、服务器机箱、电力和 GPU 均不包含在这笔金额中。
+
+可复算的规模：关键在每账户实际占用多少物理容量
+
+| 用户虚拟机容量情景 | f | 每账户折算物理核心 | 所需 CPU 数量 | CPU 部署金额 |
+| --- | --- | --- | --- | --- |
+| 较低容量占用 | 1% | 0.02 核 | 约 1.56 万颗 | 约 0.78 亿美元 |
+| 中间敏感性情景 | 5% | 0.10 核 | 约 7.81 万颗 | 约 3.91 亿美元 |
+| 较高容量占用 | 20% | 0.40 核 | 约 31.25 万颗 | 约 15.63 亿美元 |
+| 两个物理核心全额预留 | 100% | 2.00 核 | 约 156.25 万颗 | 约 78.13 亿美元 |
+
+##### 相对于整个服务器 CPU 市场，能确认到什么程度
+
+截止日前，服务器 CPU 市场已经处于扩张中，不能将其增长全部归因于 Muse。AMD 在 8 月电话会还表示，上半年服务器 CPU 供应链已经紧张；当时智能体沙箱仍是三类需求中最小的一类，成为最大类别是对 2030 年的预测。[E321_Q2 · AMD 2Q26 Earnings Call Transcript](https://d1io3yog0oux5.cloudfront.net/_e6fb18640ea7bfff80a48dc92268a25f/amd/db/841/9237/webcast_transcript/AMD2Q26EarningsCallTranscript.pdf)
+
+来源：[E321_MAY · Agentic AI Changes the CPU/GPU Equation](https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html)、[E321_Q2 · AMD 2Q26 Earnings Call Transcript](https://d1io3yog0oux5.cloudfront.net/_e6fb18640ea7bfff80a48dc92268a25f/amd/db/841/9237/webcast_transcript/AMD2Q26EarningsCallTranscript.pdf)。
+
+这里的 2,200 亿美元是供应商对 2030 年的市场预测，不是 2026 年市场实绩。仅作规模参照，如果表中 1%—20% 情景的 CPU 全部在 2030 年新购，其金额相当于该年度预测市场的约 0.04%—0.71%；全额预留情景约为 3.55%。若分年采购、复用存量，或市场规模偏离预测，这些比例都会改变。它们不能被称作 Muse 已实现的市场贡献率。
+
+截至截止日，仍无法回答的具体数字是：Meta 官方统一口径的 Muse 活跃账户遥测、全平台 CPU 核时、已新增采购颗数、实际成交价，以及由其带来的市场净增收入。公开原始资料没有把这些数据连接起来；已知的产品架构、账户样本和行业预测不足以补出实际金额。这不意味着增量为零，而是其采购归因尚未公开。用户方面已有 [D1](#D1) 所列百万量级媒体报道，不能把“缺少官方统一遥测”写成完全没有用户基线；这些人数仍缺少与CPU核时的连接。
+
+对父问题的意义是：Muse 确认了个人智能体会扩大服务器 CPU 执行层需求，但还不能证明单一产品已经造成百万颗级采购或显著抬升整个市场。影响大小最终取决于用户规模、后台任务强度、资源共享效率，以及新增负载中有多少必须通过购买新 CPU 来满足。
+
+日期口径：本文网页读取日为 2026-10-09；发布日期和明确更新日期按各原文列示。动态网页读取日不视为内容发布日期，所有情景计算均使用截止日前已公开的资料或明确标注的假设。
+
+相对于整个服务器 CPU 市场，能确认到什么程度
+
+| 披露日期 | 原始来源中的基线或预测 | 与 Muse 增量的关系 |
+| --- | --- | --- |
+| 2026-05-07 | AMD 将 2030 年服务器 CPU 可服务市场预测提高至 超过 1,200 亿美元，预计年增长超过 35% [E321_MAY · Agentic AI Changes the CPU/GPU Equation](https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html) | 是全行业预测，早于 Muse 产品发布 |
+| 2026-08-04 | AMD 披露第二季度服务器 CPU 收入再创新高，云与企业销售均同比增长超过 70% [E321_Q2 · AMD 2Q26 Earnings Call Transcript](https://d1io3yog0oux5.cloudfront.net/_e6fb18640ea7bfff80a48dc92268a25f/amd/db/841/9237/webcast_transcript/AMD2Q26EarningsCallTranscript.pdf) | 是 AMD 已实现业务增长，不能归因于 9 月发布 |
+| 2026-08-04 | AMD 重申 2030 年服务器 CPU 市场预测约 2,200 亿美元，预计年增长超过 50%；预计智能体沙箱届时成为最大类别 [E321_Q2 · AMD 2Q26 Earnings Call Transcript](https://d1io3yog0oux5.cloudfront.net/_e6fb18640ea7bfff80a48dc92268a25f/amd/db/841/9237/webcast_transcript/AMD2Q26EarningsCallTranscript.pdf) | 覆盖全部客户及应用，不是 Muse 专属市场 |
+
+##### 哪些量仍无法确定
+
+截至2026-10-09，未取得 Muse 专属CPU核时、存量吸收率、被替代负载、实际采购颗数、净成交价与交付年份，不能给出市场净增收入；未取得与Muse采购期间一致的2026年服务器CPU市场绝对实绩分母，2030年2200亿美元预测不能替代当前市场占比。
+
+充分性：未通过。已逐项回答已知事实、机制和条件情景；所列缺口仍影响原题完整答案，未宣称研究充分。
+
+缺口：未取得 Muse 专属CPU核时、存量吸收率、被替代负载、实际采购颗数、净成交价与交付年份，不能给出市场净增收入。；未取得与Muse采购期间一致的2026年服务器CPU市场绝对实绩分母，2030年2200亿美元预测不能替代当前市场占比。
+
+反向证据与边界：发布前CPU业务已强劲增长且供给已紧张；共享和存量容量可吸收负载，行业预测不是Muse已实现贡献。
+
+下一步：取得Muse执行池扩容与采购归因、同期服务器CPU实际市场规模；用真实用量替换情景参数并按交付年度比较。
+
+#### 3. 数据列表
+
+| 材料、日期与原文定位 | 关键数据与事实 | 作用 | 口径限制与反向解释 |
+| --- | --- | --- | --- |
+| [S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/) · 2026-09-08 · 标题日期 L241；How It Works L255–259 | Muse 个人智能体已发布，并能在用户关闭应用后继续处理任务。 | support | 9月8日发布、9月30日更新；功能存在不是市场净新增硬件的计量。 |
+| [S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse) · 2026-09-08 · An agent in your own cloud computer L28–31；服务列表 L44–50 | Muse 的隔离执行 VM 使用 CPU、内存和存储，运行代码及定时任务，并经代理访问外部推理基础设施。 | support | 执行负载、共享服务、推理配套CPU需分别核算，官方未单列采购归因。 |
+| [EA125_STARK · Meta Muse: The $0 AI Agent Running on a $40 Server](https://www.starkinsider.com/2026/09/meta-muse-specs-what-it-runs-on.html) · 2026-09-22 · First, the box L23–33 | 单账户报告显示 2 vCPU 及 EPYC 9D25 的126核/252线程标识；作者明确称不是官方规格保证。 | boundary | 不能把2 vCPU外推为每账户两独占物理核心；样本不是机群盘点。 |
+| [E321_SCENARIO · What It Takes to Give Every Personal Agent a Computer](https://nextsignalprediction.substack.com/p/what-it-takes-to-give-every-personal) · 2026-09-24 · 开头 L16–18；Start with the Assumptions L21–25 | 9 月 24 日估算以每 vCPU 对应一物理核、持续运行且不超配为假设，计算一亿 Muse VM 约需156万颗CPU。 | boundary | 原作者明确是资源估算，非部署观察；其账户增长和用量也不是Meta遥测。 |
+| [E321_MAY · Agentic AI Changes the CPU/GPU Equation](https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html) · 2026-05-07 · 标题日期 L452；市场预测 L461 | AMD 5 月 7 日预计服务器 CPU 市场到 2030 年超过1200亿美元，年增长超过35%。 | boundary | 供应商预测；早于Muse发布，不能作为2026已实现市场基线。 |
+| [E321_Q2 · AMD 2Q26 Earnings Call Transcript](https://d1io3yog0oux5.cloudfront.net/_e6fb18640ea7bfff80a48dc92268a25f/amd/db/841/9237/webcast_transcript/AMD2Q26EarningsCallTranscript.pdf) · 2026-08-04 · PDF p2 L104–110、p4 L201–206、p11 L582–584（页码为1起算） | AMD 8 月 4 日电话会披露第二季度云和企业服务器CPU销售各同比增长超过70%；同时预计2030年服务器CPU市场约2200亿美元、年增长超过50%。 | boundary | 70%是AMD实际增长；2200亿是行业未来预测，非Muse收入、非2026市场实绩。 |
+| [E321_Q2 · AMD 2Q26 Earnings Call Transcript](https://d1io3yog0oux5.cloudfront.net/_e6fb18640ea7bfff80a48dc92268a25f/amd/db/841/9237/webcast_transcript/AMD2Q26EarningsCallTranscript.pdf) · 2026-08-04 · PDF p12 L640–655；p15 L804–807 | AMD 在8月电话会称智能体沙箱当前是三类服务器CPU需求中最小一类，预计2030年成为最大一类；并称供应链在2026年上半年已经紧张。 | boundary | 管理层判断和预测；发布前的供需紧张不能归因于9月Muse事件。 |
+| [E321_AAI · AAI 2026: AMD Delivers Full-Stack Compute for the Agentic AI Era](https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era) · 2026-07-23 · 脚注4–6 L110–114 | AMD 7月公告的智能体承载量按CPU线程资源代理推算，实际容量和吞吐会随工作负载、模型、内存、软件与配置变化。 | boundary | 理论线程密度不是Muse的实测并发、利用率或市场订单。 |
+
+<a id="T1"></a>
+
+### T1 · 哪些 CPU 路线和终端会受益或被替代？
+
+#### 1. 核心观点
+
+从工作负载看，最直接的潜在受益对象是承载云端智能体的服务器 CPU；端侧则分成两类：普通手机、电脑可以作为轻量入口，高内存、带 GPU 的电脑可以运行本地智能体。存在替代压力的是部分低效率服务器、为后台代理专门常开的个人电脑，以及某些必须手动打开应用的操作方式，尚不能判断手机、PC 或某一种 CPU 架构会被整体淘汰。 [S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse)[S18 · Introducing Muse Glimmer: An Open Agentic Model That Runs on Your Device](https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model)[S07 · Meta Builds AI Infrastructure With NVIDIA](https://nvidianews.nvidia.com/news/meta-builds-ai-infrastructure-with-nvidia)[S10 · Arm expands compute platform to silicon products](https://newsroom.arm.com/news/arm-agi-cpu-launch)
+
+#### 2. 关键论证
+
+##### 云端服务和本地模型对应两条硬件路线
+
+这里的关键区别是：2026 年 9 月发布的 Muse 是云端个人智能体服务；8 月发布的 Muse Glimmer 是可在本地运行的开放权重模型。前者把执行工作带向数据中心，后者给本地电脑增加用途，不能混为同一条硬件需求线。[S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse)；[S18 · Introducing Muse Glimmer: An Open Agentic Model That Runs on Your Device](https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model)
+
+下文以 2026 年 10 月 9 日为截止日。所引网页均于该日访问；正文标注的发布日期、测试日期与访问日分别处理，无明确发布日期的动态页面不倒推其首次上线时间。
+
+##### 服务器 CPU：x86 和 Arm 都有机会，竞争转向执行任务的效率
+
+Muse 为用户提供独立的云端 Linux 虚拟机，里面有浏览器、CPU、内存和存储，可以编译代码、执行工具、运行并发子任务和定时任务；模型推理通过独立接口调用。这意味着 模型生成答案之后，还会产生一批普通计算机程序的执行工作，并非所有新增计算都由 GPU 承担。[S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse)
+
+据此，受益方向是多核、内存配置充足、虚拟化成熟、每项任务耗电和成本较低的服务器。以下是架构推断与实际合作证据的区别：
+
+因此，不能简单写成“Arm 受益、x86 被替代”。 从机制推断，AMD 可能同时受益于智能体总量增长，又面对 Arm 争夺新增服务器份额；Intel 也可能在部分云端份额上承压，同时受益于本地智能体部署。
+
+真正可能被替换的是在具体任务下成本、功耗或内存效率较差的旧服务器配置。兼容性、迁移成本和任务响应速度仍然重要，核心数量本身不能决定胜负。尤其 AMD 自己注明，其部分“每机架智能体数量”比较是以线程资源推算的理论值，不是 Muse 实际并发测试。[E321_AAI · AAI 2026: AMD Delivers Full-Stack Compute for the Agentic AI Era](https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era)
+
+另一个潜在受益方向是支持更强隔离、加密和验证的服务器平台。Meta 在 9 月 8 日宣布 Confidential VM 正由小范围测试者使用，并计划年内推出；这提供了技术需求方向，但没有给出足以确认 CPU 供应商或采购数量的信息。[S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse)
+
+一、服务器 CPU：x86 和 Arm 都有机会，竞争转向执行任务的效率
+
+| CPU 路线 | 受益机制及具体证据 | 截止日能确认的边界 |
+| --- | --- | --- |
+| AMD EPYC：x86 多核服务器路线 | 适合承载大量 Linux 执行环境。AMD 与 Meta 在 2 月 24 日公布的合作包含 EPYC Venice、Verano；7 月 23 日 AMD 已发布第六代 EPYC，并称 Meta 正在实验室验证相关平台及 Helios 工作负载。[E321_AMDMETA · AMD and Meta expanded strategic partnership, EX-99.1](https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000045/pressreleasedatedfebruary2.htm)、[E321_AAI · AAI 2026: AMD Delivers Full-Stack Compute for the Agentic AI Era](https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era) | 是已有客户基础和产品验证证据，不能把整个合作额归因于 Muse。6GW 指 GPU 部署协议规模，不是 CPU 采购量。 |
+| NVIDIA Grace／Vera：Arm 服务器路线 | 已进入独立 CPU 服务器，而不只是 GPU 的配套主机。2 月 17 日官方确认 Meta 推进用于生产应用的大规模 Grace-only 部署。[S07 · Meta Builds AI Infrastructure With NVIDIA](https://nvidianews.nvidia.com/news/meta-builds-ai-infrastructure-with-nvidia) | Grace 有实际部署合作；该公告把 Vera 在 Meta 的大规模部署表述为 2027 年的可能安排。没有披露 Muse 占用其中多少容量。 |
+| Arm AGI CPU：面向云端编排和任务执行的路线 | 3 月 24 日发布，Meta 是主要合作方和共同开发者；最高 136 个 Neoverse V3 核心、300W TDP，目标包括任务托管、控制和加速器管理。[S10 · Arm expands compute platform to silicon products](https://newsroom.arm.com/news/arm-agi-cpu-launch) | 是明确的产品和合作方向，但不能据此宣称 Muse 已整体迁到 Arm，或已替换多少 EPYC／Xeon。 |
+| Intel Xeon：x86 通用计算及本地部署路线 | 可以承接同类执行任务；Intel 已公布 Glimmer 对 Xeon、Core Ultra、Arc 平台的支持。[E321_INTELLOCAL · Day 0 Local Agentic AI Support on Intel Platforms with Meta’s Muse Glimmer](https://www.intel.com/content/www/us/en/developer/articles/community/day-0-local-agentic-ai-with-metas-muse-glimmer.html) | 软件支持不等于 Meta 的云端 Muse 采购订单。现有材料不足以把 Xeon 列为 Muse 已确认的大规模新增供应商。 该Intel动态支持页未显示精确发布日期；平台细节保留为日期未核实背景。 |
+
+##### 普通手机、平板和浏览器电脑：功能受益，未必带来 CPU 升级
+
+Muse 发布时在美国向 iOS、Android 和网页用户推出。手机或电脑可以负责输入、显示和授权，后台执行环境位于云端，因此不能从“能使用 Muse”推导出“必须购买更强 CPU 或 NPU”。[S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/)
+
+推断：仅为了邮件处理、网页购物、日程管理等云端任务而升级高端处理器的必要性可能减弱，现有兼容设备的使用价值反而提高。但本地游戏、视频制作、开发和离线应用的算力需求仍然存在，尚无证据显示 Muse 已导致手机或 PC 出货下降。
+
+##### 高内存 Mac、AMD／Intel AI PC、GPU 工作站：本地路线有具体支撑
+
+Glimmer 为端侧带来的机会更直接，但受益的是完整平台能力：CPU 执行工具，GPU 等计算单元运行模型，内存容纳模型和上下文；不能全部记成 CPU 算力收益。
+
+已有原始资料中的例子包括：
+
+Apple Silicon Mac：Meta 公布了在 M4 Max、M5 Max MacBook 上运行 Glimmer 的测试。支持的是这些具体平台，不能泛化为所有 Mac 都有相同体验。[S18 · Introducing Muse Glimmer: An Open Agentic Model That Runs on Your Device](https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model)
+
+AMD Ryzen AI Max+ 迷你机／电脑：AMD 的 2026 年 8 月测试使用 Ryzen AI Max+ 395、128GB 系统内存，并将 64GB 设置为图形内存；另有 Radeon AI PRO R9700 独显路线。这里不是仅靠 Ryzen CPU 核心完成模型推理。[E321_AMDLOCAL · 在 AMD 锐龙 AI Max+ Agentic PC 和 Radeon GPU 上运行 Meta Muse Glimmer 30B](https://www.amd.com/zh-cn/blogs/2026/run-meta-muse-glimmer-30b-on-amd-ryzen-ai-max-and-radeon-gpus.html)
+
+Intel Core Ultra／Arc 电脑及 Xeon 工作站：Intel 公布了集成 GPU、Arc Pro B70 和 Xeon 支持；其中 B70 示例具有 32GB 显存。该动态页面的公开日期尚未核实，下述细节作为日期未核实背景保留；测试配置标注 2026 年 8 月 14 日，本次访问日为 10 月 9 日。[E321_INTELLOCAL · Day 0 Local Agentic AI Support on Intel Platforms with Meta’s Muse Glimmer](https://www.intel.com/content/www/us/en/developer/articles/community/day-0-local-agentic-ai-with-metas-muse-glimmer.html)
+
+配备 NVIDIA 消费级 GPU 的 PC：Meta 公布了 RTX 5090 测试。这首先证明 GPU 平台能运行该模型，并没有证明与之配套的某家 CPU 因 Muse 获得新增销量。[S18 · Introducing Muse Glimmer: An Open Agentic Model That Runs on Your Device](https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model)
+
+本地路线有一个可复算的容量门槛：300 亿参数 × 4 bit ÷ 8 = 150 亿字节，即约 15GB 的理想权重体积。这还没有计入量化附加数据、上下文缓存和其他模型组件；Meta 给出的实际语言模型权重为不足 20GB，完整运行目标为约 24GB 或 32GB 的内存容量范围。[S18 · Introducing Muse Glimmer: An Open Agentic Model That Runs on Your Device](https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model)
+
+所以，不能因为一台设备标有“AI PC”或较高 NPU TOPS，就认定它能流畅运行这套本地模型。内存容量、带宽、软件后端和实际加速单元比标签更有解释力。现有证据也不足以确认普通手机已具备同等的完整本地运行体验。
+
+##### AI 眼镜、Muse Charm：可能增加入口设备需求，仍要区分发布与交付
+
+Meta 在 9 月 24 日的 Connect 总结中宣布，未来数月将把 Muse 带到 AI 眼镜，并展示可放入口袋、用于与 Muse 语音交互的 Muse Charm，称年内还会披露更多信息。[E8089_CONNECT · The Biggest News From Connect 2026](https://about.fb.com/news/2026/09/the-biggest-news-from-connect-2026/)
+
+这意味着低功耗、音视频输入和连接能力好的终端平台有潜在机会，用户也可能减少“拿出手机—打开应用—逐步操作”的次数。但截至截止日，这些公告不能证明 Muse 眼镜功能已全面交付，也不能确认 Charm 的 CPU 型号、销量或本地推理比例。“眼镜接入 Muse”不等于“眼镜独立运行完整大模型”，更不等于手机已被替代。
+
+##### 哪些替代可以成立，哪些仍不能成立？
+
+目前无法量化的是 Muse 独立带来的 CPU 出货、各架构份额变化和终端替换量。官方已知基线是“一名用户拥有独立云端执行环境”，而不是“一名用户独占一颗物理 CPU”；公开材料未给出足以换算采购量的活跃并发、CPU 占用、超配和已有容量利用率。因此，用户数量不能直接乘以某个虚拟机规格，就当成新增物理芯片需求。
+
+对上级问题的意义是：Muse 对 CPU 市场的影响主要体现为增加智能体执行工作、重新分配云端与本地任务，并让服务器竞争更重视任务成本和能效。这支持“服务器 CPU 承接执行工作、部分高内存端侧平台具备本地运行用途”的判断，但不足以推出某一家独占增量，或传统终端被全面替代。
+
+三、哪些替代可以成立，哪些仍不能成立？
+
+| 替代关系 | 判断与适用条件 |
+| --- | --- |
+| 云端 VM 替代专门常开的个人电脑／迷你机 | 对主要运行联网浏览器、脚本、定时任务的用途，存在替代可能；这是从 Muse 云端执行架构得出的推断。需要本地设备访问、离线运行或本地数据处理时，替代范围受限。 |
+| Glimmer 本地电脑替代部分云端模型调用 | 已有本地运行能力支撑。适用于模型能力足够、硬件容量合适的任务；不等于能够完整复制 Muse 服务的连接器、托管和安全体系。[S18 · Introducing Muse Glimmer: An Open Agentic Model That Runs on Your Device](https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model) |
+| Arm 服务器替代部分 x86 服务器 | Meta 已存在多条 Arm 合作路线，具备竞争现实基础；但 Muse 专属迁移数量及供应商份额未知。[S07 · Meta Builds AI Infrastructure With NVIDIA](https://nvidianews.nvidia.com/news/meta-builds-ai-infrastructure-with-nvidia)、[S10 · Arm expands compute platform to silicon products](https://newsroom.arm.com/news/arm-agi-cpu-launch) |
+| GPU／NPU 替代整个 CPU | 现有证据不支持。模型推理可由专用计算单元承担，操作系统、浏览器、工具和任务执行仍有 CPU 工作。 |
+| Muse 使手机、PC 整机或 RISC-V 路线退出市场 | 没有足够证据。尚不能确认整机替代规模，也没有原始资料支持 Muse 已选定 RISC-V 为主要部署路线。 |
+
+##### 哪些量仍无法确定
+
+截至2026-10-09，Intel Glimmer支持页没有可核实的精确发布日期；8月14日仅为测试日，其具体配置和截止日可用性缺少截至日已公开的日期证明；未取得 Muse 专属CPU供应商份额、同任务跨架构成本/能效实测及终端替换量，不能判定哪条路线已实现净销量受益或替代规模。
+
+充分性：未通过。已逐项回答已知事实、机制和条件情景；所列缺口仍影响原题完整答案，未宣称研究充分。
+
+缺口：Intel Glimmer支持页没有可核实的精确发布日期；8月14日仅为测试日，其具体配置和截止日可用性未通过日期门禁。；未取得 Muse 专属CPU供应商份额、同任务跨架构成本/能效实测及终端替换量，不能判定哪条路线已实现净销量受益或替代规模。
+
+反向证据与边界：本地Glimmer构成全云端替代论的反例；Arm/x86多路线并存，设备入口与模型本地运行不可混同。
+
+下一步：取得Intel页面带日历发布日期的版本；补充Muse按工作负载的CPU部署份额与同任务测试，核对眼镜/Charm交付及终端使用替代数据。
+
+#### 3. 数据列表
+
+| 材料、日期与原文定位 | 关键数据与事实 | 作用 | 口径限制与反向解释 |
+| --- | --- | --- | --- |
+| [S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse) · 2026-09-08 · An agent in your own cloud computer L28；Coming Soon L129–134 | Muse 的云端 Linux VM 执行代码和工具；Confidential VM 在9月8日处于少量可信用户测试，计划年内提供。 | support | 架构支持服务器执行层需求；保密能力计划不证明已普及或已选定CPU供应商。 |
+| [S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/) · 2026-09-08 · How It Works L259；Looking Ahead L287 | Muse 首发提供 iOS、Android 与网页入口，长任务可在关闭应用后继续。 | support | 终端入口不证明需升级CPU/NPU；首发地区和后续开放范围由O1研究。 |
+| [E321_AMDMETA · AMD and Meta expanded strategic partnership, EX-99.1](https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000045/pressreleasedatedfebruary2.htm) · 2026-02-24 · 新闻要点 L56；CPU合作 L67–69 | AMD与Meta在2月24日公布EPYC Venice、Verano合作；同一公告中的最多6GW部署指Instinct GPU。 | support | 早于Muse发布；CPU客户关系不是Muse独立订单，6GW不可当作CPU采购量。 |
+| [E321_AAI · AAI 2026: AMD Delivers Full-Stack Compute for the Agentic AI Era](https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era) · 2026-07-23 · 发布要点 L40–44；Meta L55；脚注 L110–114 | 7月23日AMD发布第六代EPYC；Meta当时在实验室验证CPU平台和Helios工作负载；智能体密度比较含线程数理论代理。 | boundary | 上市、客户验证与客户大规模交付是不同阶段；不构成Muse实际并发测试。 |
+| [S07 · Meta Builds AI Infrastructure With NVIDIA](https://nvidianews.nvidia.com/news/meta-builds-ai-infrastructure-with-nvidia) · 2026-02-17 · Expanded NVIDIA CPU Deployment L60–64 | NVIDIA 2月17日确认Meta推进Grace-only生产应用部署合作；Vera的大规模部署表述为2027年的可能安排。 | support | Arm路线已有客户基础，公告未披露Muse占用容量；2027潜在部署不是2026交付。 |
+| [S10 · Arm expands compute platform to silicon products](https://newsroom.arm.com/news/arm-agi-cpu-launch) · 2026-03-24 · 日期 L0；产品规格 L24–27；合作 L31 | Arm 3月24日推出AGI CPU，最高136个Neoverse V3核心、300W TDP，Meta为主要合作方与共同开发者。 | support | 规格与合作证据，不证明Muse已从x86整体迁往Arm；厂商性能比较非本题同任务实测。 |
+| [S18 · Introducing Muse Glimmer: An Open Agentic Model That Runs on Your Device](https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model) · 2026-08-10 · 标题 L8；导言 L10–14；Fitting the Model L47–48；The Result L60 | Meta 8月10日发布300亿参数Glimmer开放权重；量化语言模型不足20GB，目标24/32GB运行空间，公布M4 Max、M5 Max与RTX 5090测试。 | boundary | Glimmer本地模型与Muse托管服务不同；平台能力不等于纯CPU推理或整机销量。 |
+| [E321_AMDLOCAL · 在 AMD 锐龙 AI Max+ Agentic PC 和 Radeon GPU 上运行 Meta Muse Glimmer 30B](https://www.amd.com/zh-cn/blogs/2026/run-meta-muse-glimmer-30b-on-amd-ryzen-ai-max-and-radeon-gpus.html) · 2026-08-10 · 日期 L440；方案 L475；附注SHO-77 L478–479、RPW-537 L480–481 | AMD 8月10日页面展示Glimmer本地路线；8月测试使用Ryzen AI Max+395、128GB系统内存且VGM设64GB，另有Radeon AI PRO R9700方案。 | support | 依赖GPU/统一内存和软件后端；不是仅靠CPU核心完成推理。 |
+| [E8089_CONNECT · The Biggest News From Connect 2026](https://about.fb.com/news/2026/09/the-biggest-news-from-connect-2026/) · 2026-09-24 · 标题日期 L241；Bringing Muse to AI Glasses L253–256；Muse Charm L262–264 | 9月24日Connect公告称未来数月把Muse带到AI眼镜；Muse Charm已展示，年内再披露更多信息。 | boundary | 不证明Muse眼镜功能全面交付或Charm上市；未披露CPU型号和本地推理比例。 |
+
+<a id="C"></a>
+
+### C · 具体影响哪些公司？
+
+#### 1. 研究子问题
+
+- [哪些公司有可验证的业务敞口？](#C0)
+
+从 CPU 业务关系筛选真实研究对象。
+
+- [AMD 的 CPU 收入能否因 Muse 增长？](#AMD)
+
+检验 EPYC 执行需求能否转成净新增收入。
+
+- [Intel 会受益于增量需求还是承受份额压力？](#INTC)
+
+区分总市场扩张与本公司份额变化。
+
+- [Arm 如何通过 CPU 与授权获得收入？](#ARM)
+
+分别核算 IP 和自有 CPU 两种收入路径。
+
+- [NVIDIA 能否从 Muse 的 CPU 需求中受益？](#NVDA)
+
+核验其独立 CPU 业务，而非仅看 GPU。
+
+#### 2. 子问题核心结论
+
+- [哪些公司有可验证的业务敞口？](#C0)：截至 2026 年 10 月 9 日，与 Meta 的 CPU 需求有明确业务联系的核心公司是 AMD、NVIDIA、Arm 和亚马逊 AWS；台积电有可验证的上游制造敞口，博通有 Meta 定制 AI 加速器敞口。Intel 有历史供货关系，但尚不能据此确认 Muse 新增订单。其中，“向 Meta 供应算力”与“已经获得 Muse 带来的新增收入”是两回事：公开披露足以确认上述业务联系，却不足以分拆各公司的 Muse 专属销量、收入或份额。
+
+未充分；Meta未公开Muse全机群CPU供应商、数量与份额，现有公司筛选不能认定完整Muse供应商清单；AMD实例与Meta级采购必须分开。
+
+- [AMD 的 CPU 收入能否因 Muse 增长？](#AMD)：能，但截至 2026 年 10 月 9 日，能够确认的是 AMD 的 EPYC 服务器 CPU 存在受益路径，尚不能确认 Muse 已为 AMD 带来多少新增 CPU 收入。 Muse 把个人 AI 的工作扩展到云端浏览器、代码执行和后台任务，这些都需要 CPU；如果这些负载超出现有服务器的承载能力，并由新增 EPYC 承接，就会增加 AMD 的 CPU 销售。Meta 已经是 EPYC 的大客户，因此这条路径具有实际业务基础。[S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse)、[E321_AMDMETA · AMD and Meta expanded strategic partnership, EX-99.1](https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000045/pressreleasedatedfebruary2.htm)
+
+未充分；未取得Muse专属EPYC净新增订单、可复用存量、成交价及收入确认额，不能量化Muse使AMD CPU收入增长多少。
+
+- [Intel 会受益于增量需求还是承受份额压力？](#INTC)：Intel 有机会受益于 CPU 需求增长，同时承受新增需求被竞争对手分走的压力。就 Meta Muse 而言，截至 2026 年 10 月 9 日，竞争对手进入 Meta CPU 供应体系的证据，比 Intel 获得 Muse 专属增量订单的证据更明确。因此，较有依据的判断是：Intel 有行业增长带来的受益机会，但不能把 Muse 的增长直接计为 Xeon 的增长；即使 Intel 收入增加，市场份额也可能下降。[S13 · Intel Q2 2026 Form 10-Q](https://www.intc.com/filings-reports/all-sec-filings/content/0000050863-26-000157/intc-20260627.htm)、[F981_AWS · Meta Partners With AWS on Graviton Chips to Power Agentic AI](https://about.fb.com/news/2026/04/meta-partners-with-aws-on-graviton-chips-to-power-agentic-ai/)支持这一判断。
+
+未充分；未取得Muse的Xeon订单、全机群CPU供应商分配及被替代Xeon数量，不能量化Intel净增收入或份额损失。
+
+- [Arm 如何通过 CPU 与授权获得收入？](#ARM)：Arm 主要把 CPU 技术变成两类收入：客户获得设计或架构使用权时支付授权费，采用这些技术的芯片出货后再支付版税。 2026 年又增加了自有 CPU 芯片产品这条商业化路径，因此截至 2026 年 10 月 9 日，将 Arm 描述成“只授权、不卖芯片”已经不准确；但其已披露收入仍主要来自授权及版税。[F981_ARM20F · Arm FY2026 Form 20-F](https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/arm-20260331.htm)、[S10 · Arm expands compute platform to silicon products](https://newsroom.arm.com/news/arm-agi-cpu-launch)
+
+未充分；未取得AGI CPU截至截止日实际销售收入、Meta验收数量及合同价格，无法量化自有CPU和Muse增量收入；全公司收入不等于CPU收入。；Flexible Access每年8.5万美元示例来自无精确发布日期的动态页，截止日适用价格未通过日期证据门禁。
+
+- [NVIDIA 能否从 Muse 的 CPU 需求中受益？](#NVDA)：能，但截至 2026 年 10 月 9 日，能够确认的是 NVIDIA 已具备承接 Muse 类 CPU 需求的产品和 Meta 客户关系；尚不能确认 Muse 已为它带来多少新增 CPU 订单或收入。 NVIDIA 的直接受益路径是销售独立的 Grace、Vera CPU；模型推理带来的 GPU 收益则属于另一条路径。Meta 与 NVIDIA 的 CPU 部署合作已有官方公告，但公开的 Muse 单用户沙箱观察指向 AMD EPYC，不能把 Meta 整体采购 NVIDIA 的计划全部归因于 Muse。[S07 · Meta Builds AI Infrastructure With NVIDIA](https://nvidianews.nvidia.com/news/meta-builds-ai-infrastructure-with-nvidia)；[EA125_STARK · Meta Muse: The $0 AI Agent Running on a $40 Server](https://www.starkinsider.com/2026/09/meta-muse-specs-what-it-runs-on.html)
+
+未充分；未取得Muse在Grace/Vera上的工作负载分配、净新增采购、成交价及同任务成本测试，不能量化NVIDIA的Muse CPU收益或判定已实际受益。
+
+综合判断：有可验证CPU业务基础的公司包括AMD、NVIDIA、Arm及云服务商AWS；Intel有产品与历史客户基础，也面临新增需求分流。AMD最直接的Muse联系来自EPYC实例，NVIDIA已有Meta Grace合作，Arm通过授权、版税及自有CPU销售路径变现。台积电制造、博通加速器及OEM生态关系须与Muse执行CPU订单分开。上述敞口不能量化Muse专属净新增收入，四家公司均不构成已完成的投资判断。
+
+##### 已知业务关系与收入传导相互衔接
+
+[C0](#C0)把CPU供货、云服务、制造和相邻加速器分开，为后续公司分析确定对象。[AMD](#AMD)显示既有EPYC客户基础和Muse被测实例之间有直接联系，但CPU工作量需经过存量吸收、实际采购和供应商分配才能形成新收入；[NVDA](#NVDA)证明NVIDIA也能直接竞争CPU预算，Grace整体收入不是Muse收入。
+
+[INTC](#INTC)的Q2销量及售价增长说明市场扩张可以帮助Intel，即使增量份额流向竞争者；它与AMD、NVIDIA的机会共同指向多路线竞争。[ARM](#ARM)进一步说明Arm架构份额只有经过芯片出货、合同收费或成品CPU交付才成为Arm收入。Arm IP收入和使用Arm架构的其它公司CPU收入属于产业链不同层，不能简单相加。
+
+##### 近期利用存量，中长期由交付与份额决定
+
+近期财务基线和多项合作早于Muse发布，不能当作事件新增收入。中长期若持续任务需要额外执行能力，AMD、NVIDIA和Arm路线都有承接渠道；Intel能否同步增长还受供给和份额影响。公司题已说明这些机制与基线，但没有一家披露Muse专属净订单、净价或利润。
+
+五个直接子问题均保留重要边界。筛选列表不是完整Muse供应商名单；没有份额、验收和净新增采购数据时，不能据样本或发布计划排列确定性受益程度。
+
+#### 3. 欠缺的方向
+
+充分性：未通过。五个直接子问题尚有供应商覆盖、收入归因或日期缺口。
+
+缺口：C0：Meta未公开Muse全机群CPU供应商、数量与份额，现有公司筛选不能认定完整Muse供应商清单；AMD实例与Meta级采购必须分开。；AMD：未取得Muse专属EPYC净新增订单、可复用存量、成交价及收入确认额，不能量化Muse使AMD CPU收入增长多少。；INTC：未取得Muse的Xeon订单、全机群CPU供应商分配及被替代Xeon数量，不能量化Intel净增收入或份额损失。；ARM：未取得AGI CPU截至截止日实际销售收入、Meta验收数量及合同价格，无法量化自有CPU和Muse增量收入；全公司收入不等于CPU收入。；ARM：Flexible Access每年8.5万美元示例来自无精确发布日期的动态页，截止日适用价格未通过日期证据门禁。；NVDA：未取得Muse在Grace/Vera上的工作负载分配、净新增采购、成交价及同任务成本测试，不能量化NVIDIA的Muse CPU收益或判定已实际受益。
+
+- [哪些公司有可验证的业务敞口？](#C0)：Meta未公开Muse全机群CPU供应商、数量与份额，现有公司筛选不能认定完整Muse供应商清单；AMD实例与Meta级采购必须分开。；取得Meta按工作负载的供应商部署说明；核对AWS启用核心和Arm验收量，未披露前保留筛选边界，不新增问题。
+
+- [AMD 的 CPU 收入能否因 Muse 增长？](#AMD)：未取得Muse专属EPYC净新增订单、可复用存量、成交价及收入确认额，不能量化Muse使AMD CPU收入增长多少。；取得Muse专属EPYC部署、存量吸收与净新增订单数据，并核对交付和收入确认；不得把GPU协议计作CPU收入。
+
+- [Intel 会受益于增量需求还是承受份额压力？](#INTC)：未取得Muse的Xeon订单、全机群CPU供应商分配及被替代Xeon数量，不能量化Intel净增收入或份额损失。；取得Muse供应商分配与Xeon采购/退役记录，分别计算市场增长、产品组合、份额和供给约束的影响。
+
+- [Arm 如何通过 CPU 与授权获得收入？](#ARM)：未取得AGI CPU截至截止日实际销售收入、Meta验收数量及合同价格，无法量化自有CPU和Muse增量收入；全公司收入不等于CPU收入。；Flexible Access每年8.5万美元示例来自无精确发布日期的动态页，截止日适用价格未通过日期证据门禁。；取得AGI CPU销售及Meta验收的正式分拆，补齐Flexible Access价格带日期版本；授权与芯片销售分别核算。
+
+- [NVIDIA 能否从 Muse 的 CPU 需求中受益？](#NVDA)：未取得Muse在Grace/Vera上的工作负载分配、净新增采购、成交价及同任务成本测试，不能量化NVIDIA的Muse CPU收益或判定已实际受益。；取得Muse Grace/Vera部署及同任务测试，核对新采购、实际交付和CPU成交价格；保留Grace整体收入与Muse归因区别。
+
+反向证据与边界：业务敞口与Muse净增收入不同；CPU销量、GPU容量、IP版税与云服务收入不可混算。
+
+下一步：先取得Meta按Muse工作负载的供应商分配和增量采购；对应回到已有C0及各公司题补证，不自动扩树。
+
+<a id="C0"></a>
+
+### C0 · 哪些公司有可验证的业务敞口？
+
+#### 1. 核心观点
+
+截至 2026 年 10 月 9 日，与 Meta 的 CPU 需求有明确业务联系的核心公司是 AMD、NVIDIA、Arm 和亚马逊 AWS；台积电有可验证的上游制造敞口，博通有 Meta 定制 AI 加速器敞口。Intel 有历史供货关系，但尚不能据此确认 Muse 新增订单。其中，“向 Meta 供应算力”与“已经获得 Muse 带来的新增收入”是两回事：公开披露足以确认上述业务联系，却不足以分拆各公司的 Muse 专属销量、收入或份额。
+
+#### 2. 关键论证
+
+##### 业务基础与问题边界
+
+这里的 Muse 指 2026 年 9 月 8 日发布的个人 AI 智能体，由 Muse Spark 模型驱动。它为用户提供独立的云端虚拟机，运行浏览器、代码、工具和后台任务，因此既涉及执行任务的 CPU，也涉及模型推理使用的加速计算，不能把两者合并成“CPU 订单”。[S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/)、[S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse)
+
+##### 直接涉及 CPU 的四家公司
+
+AMD 与 Muse 的直接联系来自小样本，不能外推机群。9 月 25 日报道转述的两名用户终端观察，可作为线索；更直接的原始记录是 Clinton Stark 9 月 22 日发布、记录 9 月 20 日测量的文章：其代理报告 EPYC 9D25、2 vCPU、约7.7GB内存。作者明确这是一个智能体对自身环境的测量，Meta未公开统一规格，其它账户可能不同。因此可确认公开样本指向EPYC，但不能认定全量Muse均由AMD供应。[EA125_STARK · Meta Muse: The $0 AI Agent Running on a $40 Server](https://www.starkinsider.com/2026/09/meta-muse-specs-what-it-runs-on.html)
+
+Meta 原始架构文档确认 Linux VM、CPU和内存以及外部推理通路，没有公布CPU品牌或机群份额。执行环境有浏览器能力，但浏览器由单独broker管理，不能把浏览器池资源全部视作每个用户运行区内的固定配置。[S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse)
+
+直接涉及 CPU 的四家公司
+
+| 公司 | 可验证的业务及规模 | 已发生、计划与 Muse 归因边界 |
+| --- | --- | --- |
+| AMD | CPU：EPYC。2 月 24 日官方公告确认，Meta 已在全球基础设施部署数百万颗 EPYC CPU，并将成为第六代 Venice 和后续 Verano 的主要客户。7 月 23 日公告进一步确认 Meta 正在实验室验证第六代 EPYC 平台，并测试 Helios 工作负载。[S05 · AMD and Meta Expanded Strategic Partnership](https://newsroom.amd.com/news/amd-and-meta-announce-expanded-strategic-partnersh/)、[E321_AAI · AAI 2026: AMD Delivers Full-Stack Compute for the Agentic AI Era](https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era) | 既有 EPYC 部署是已实现业务；新平台验证不能等同于全面部署。AMD 是有 Muse 具体实例线索的供应商，但其数百万颗存量覆盖 Meta 整体业务，不能全部算作 Muse。 |
+| NVIDIA | CPU：Grace、Vera；另有 GPU 和网络产品。2 月 17 日公告确认，双方正为 Meta 生产应用部署 Grace，并称这是首次大规模 Grace-only 部署；Vera 的大规模部署则是 2027 年的潜在安排。[S07 · Meta Builds AI Infrastructure With NVIDIA](https://nvidianews.nvidia.com/news/meta-builds-ai-infrastructure-with-nvidia) | Grace-only 表明 NVIDIA 的业务并不限于“GPU 搭配一颗主机 CPU”。但公告没有披露 Grace 数量、Muse 占比，也没有确认 Muse 虚拟机运行于 Grace。Vera 不能计作截止日已经实现的部署。 |
+| Arm | CPU 成品：Arm AGI CPU；另有架构/IP 业务。3 月 24 日，Meta 与 Arm 确认共同开发 AGI CPU，Meta 是主要合作伙伴和共同开发者，产品面向通用计算、AI 编排，并与 MTIA 配合。Arm 公布最高 136 核、300W TDP，早期系统当时已可提供，更广泛供货原定下半年。[F981_METARM · Meta Partners With Arm to Develop New Class of Data Center Silicon](https://about.fb.com/news/2026/03/meta-partners-with-arm-to-develop-new-class-of-data-center-silicon/)、[S10 · Arm expands compute platform to silicon products](https://newsroom.arm.com/news/arm-agi-cpu-launch) | 这是具体产品和客户关系，不能只把 Arm 视作抽象的架构受益者。但未披露 Meta 已验收数量或 Muse 部署份额。9 月 8 日更新仍将 Meta 列为围绕 AGI CPU 开发解决方案的伙伴，不能从产品可供货推导 Meta 已完成大规模部署。[F981_ARMSEP · Arm expands AI infrastructure with AGI CPU and Neoverse CSS N4](https://newsroom.arm.com/news/arm-agi-cpu-neoverse-css-n4-agentic-ai) |
+| 亚马逊 AWS | 云端 CPU 服务：Graviton。4 月 24 日，Meta 公告将把数千万个 Graviton 核心纳入算力组合，首批部署即以数千万核心为目标，明确用于智能体 AI 的 CPU 密集型工作负载，并点名 Graviton5。[F981_AWS · Meta Partners With AWS on Graviton Chips to Power Agentic AI](https://about.fb.com/news/2026/04/meta-partners-with-aws-on-graviton-chips-to-power-agentic-ai/)、[F981_AWS2 · Meta expands Amazon partnership with AWS Graviton chips for AI](https://www.aboutamazon.com/news/aws/meta-aws-graviton-ai-partnership) | 这是有明确数量级的协议，AWS 的业务形式是提供云计算能力。数千万核心不是数千万颗 CPU；公告没有提供截止日实际启用核心数，也没有说明其中多少用于 Muse。 |
+
+##### 上游、相邻业务和历史供应商
+
+类似地，美光、SK 海力士、三星出现在 Arm 的生态合作声明中，说明其存储、内存或制造能力与平台相关；这些声明并没有披露 Muse 服务器的物料清单、供货份额或订单金额，因而不足以列为“已确认 Muse 供应商”。[F981_ARMMAR · Arm Form 6-K filed March 24, 2026](https://investors.arm.com/static-files/073df49d-58d8-451e-a196-a725319a9b7e)
+
+上游、相邻业务和历史供应商
+
+| 公司或公司群 | 能确认的敞口 | 不能据此确认什么 |
+| --- | --- | --- |
+| 台积电 | Arm 于 3 月 24 日提交的 6-K 收录台积电声明，明确其为 Arm AGI CPU 制造商，采用 3nm 工艺。这构成“Meta—Arm CPU—台积电制造”的具体上游链条。[F981_ARMMAR · Arm Form 6-K filed March 24, 2026](https://investors.arm.com/static-files/073df49d-58d8-451e-a196-a725319a9b7e) | 未披露用于 Meta 的晶圆数量、收入及 Muse 占比。只能确认制造关系，不能把台积电全部 AI 业务增长归因于 Muse。 |
+| 博通 Broadcom | Meta 于 4 月 14 日确认扩大合作，共同开发多代 MTIA 定制 AI 加速器，服务推理、推荐及后续生成式 AI 工作负载。[F981_AVGO · Meta Partners With Broadcom to Co-Develop Custom AI Silicon](https://about.fb.com/news/2026/04/meta-partners-with-broadcom-to-co-develop-custom-ai-silicon/) | MTIA 是加速器，不是通用 CPU，也不应直接称作 GPU。该合作证明 Meta AI 芯片敞口，但没有证明博通供应 Muse 的 VM CPU，或已获得 Muse 专属加速器收入。 |
+| Intel | Meta 的前身 Facebook 于 2016 年 3 月 9 日披露与 Intel 联合设计 Xeon-D/Broadwell-D，用于其前端服务器；历史 CPU 客户关系有原始资料支持。[F981_INTHIST · Facebook's new front-end server design](https://engineering.fb.com/2016/03/09/data-center-engineering/facebook-s-new-front-end-server-design-delivers-on-performance-without-sucking-up-power/) | 历史关系不能证明 2026 年 Muse 采购。截止日可核验资料不足以确认 Muse 使用 Xeon、相关新增订单，或 Intel 因 Muse 丢失多少份额。 |
+| 广达、联想、Supermicro、ASRock Rack | Arm 在 3 月 24 日公告中将它们列为 AGI CPU 的主要 OEM/ODM 合作伙伴，存在具体平台业务联系。[S10 · Arm expands compute platform to silicon products](https://newsroom.arm.com/news/arm-agi-cpu-launch) | 平台合作名单不是 Meta 采购清单，不能据此认定这些公司承接了 Muse 服务器订单。 |
+
+##### 数量上能确认到哪里
+
+已知基线包括 AMD 的数百万颗存量 EPYC、AWS 协议的数千万个核心，以及 NVIDIA 的大规模 Grace-only 部署；未知的是其中有多少服务于 Muse，更未知 Muse 发布后净新增了多少采购。这三个口径分别是芯片颗数、核心数和未量化的部署规模，不能直接相加。
+
+还需把两项容易误读的 GPU 承诺分开：
+
+AMD 的最高 6GW 合作属于 Instinct GPU 部署协议。首个 1GW 配套使用 Venice CPU，原公告计划于 2026 年下半年开始出货；它没有给出可将 6GW 换算成 CPU 颗数的固定配比，也不代表截止日 6GW 已全部交付。[S05 · AMD and Meta Expanded Strategic Partnership](https://newsroom.amd.com/news/amd-and-meta-announce-expanded-strategic-partnersh/)
+
+NVIDIA 的“数百万”指 Blackwell 和 Rubin GPU 的多年部署安排。它既不是 Grace/Vera CPU 数量，也不是 Muse 的专属采购量。[S07 · Meta Builds AI Infrastructure With NVIDIA](https://nvidianews.nvidia.com/news/meta-builds-ai-infrastructure-with-nvidia)
+
+即使采用公开实例的“每个 VM 两个 vCPU”作说明，100 万个同时配置的 VM × 2 vCPU＝200 万个逻辑 vCPU 配额，也不能推导需要 200 万个物理核心。物理需求还取决于并发活跃程度、超售、调度、每核线程数及内存约束；上述 100 万仅为算术示例，不是已披露的 Muse 用户数或部署量。
+
+对父问题的意义是：Muse 带来的 CPU 需求有明确的潜在承接渠道，而且同时覆盖 x86、Arm CPU 和云服务。现有证据支持分析这些公司如何承接需求，但尚不支持给任何一家填入“Muse 增量收入”，也不支持把 Meta 整体 AI 扩张等同于 Muse 发布的效果。
+
+充分性：未通过。已完整保留可核实业务、机制、基线及条件解释；所列实际归因或日期缺口仍未解决，不以形式校验替代充分性。
+
+缺口：Meta未公开Muse全机群CPU供应商、数量与份额，现有公司筛选不能认定完整Muse供应商清单；AMD实例与Meta级采购必须分开。
+
+反向证据与边界：反向检索发现AMD独占及大规模订单说法；官方多路线合作反驳独占，单账户EPYC不代表机群。10月1日DIGITIMES排单消息正文无法读取，未用为已确认Muse订单。
+
+下一步：取得Meta按工作负载的供应商部署说明；核对AWS启用核心和Arm验收量，未披露前保留筛选边界，不新增问题。
+
+#### 3. 数据列表
+
+| 材料、日期与原文定位 | 关键数据与事实 | 作用 | 口径限制与反向解释 |
+| --- | --- | --- | --- |
+| [S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/) · 2026-09-08 · 标题日期；How It Works，L241、254–259 | Meta 于 2026 年 9 月 8 日发布由 Muse Spark 驱动的个人智能体 Muse，长任务可在用户关闭应用后继续。 | support | 发布页更新于9月30日；不是Muse Spark模型首次发布。 |
+| [S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse) · 2026-09-08 · An agent in your own cloud computer；Muse Secure VM，L28、41–50 | Muse Secure VM 是有 CPU、内存、存储和浏览器能力的隔离 Linux 环境，可运行代码、子智能体与定时任务；推理通过代理访问外部基础设施。 | support | 产品执行CPU与外部推理硬件须分开；文档未给CPU品牌或统一配额。 |
+| [E321_AMDMETA · AMD and Meta expanded strategic partnership, EX-99.1](https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000045/pressreleasedatedfebruary2.htm) · 2026-02-24 · EX-99.1，L56–68 | AMD 2月24日披露 Meta 跨代部署数百万颗 EPYC，并将成为 Venice、Verano 的主要客户；最高6GW协议指 Instinct GPU。 | support | 数百万是全基础设施存量，6GW不是CPU数量，也不是Muse净新增采购。 |
+| [E321_AAI · AAI 2026: AMD Delivers Full-Stack Compute for the Agentic AI Era](https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era) · 2026-07-23 · 合作伙伴进展，L55 | AMD 7月23日称 Meta 正在实验室验证第六代 EPYC 平台并测试 Helios 工作负载，准备规模部署。 | boundary | 实验室验证不是全量部署完成；没有Muse单列。 |
+| [S07 · Meta Builds AI Infrastructure With NVIDIA](https://nvidianews.nvidia.com/news/meta-builds-ai-infrastructure-with-nvidia) · 2026-02-17 · Expanded NVIDIA CPU Deployment，L60–64 | NVIDIA 2月17日称与 Meta 推进用于生产应用的 Grace-only 大规模部署，Vera 大规模部署为2027年的潜在安排。 | support | 未披露CPU颗数或Muse用途；另述数百万是Blackwell/Rubin GPU。 |
+| [S10 · Arm expands compute platform to silicon products](https://newsroom.arm.com/news/arm-agi-cpu-launch) · 2026-03-24 · 产品规格及 Broad ecosystem support，L25–34 | Arm 3月24日发布最高136核、300W TDP的 AGI CPU；Meta 是主要合作方与共同开发者，早期系统已可用，更广供货当时预计下半年。 | support | 产品发布、早期系统与Meta实际验收数量不同。 |
+| [F981_ARMSEP · Arm expands AI infrastructure with AGI CPU and Neoverse CSS N4](https://newsroom.arm.com/news/arm-agi-cpu-neoverse-css-n4-agentic-ai) · 2026-09-08 · Arm CPUs powering agentic AI at scale，L25–29 | Arm 9月8日仍将 Meta 列为围绕 AGI CPU 开发方案的伙伴；公告另称火山引擎把首批基于 AGI CPU 的智能体沙箱推向市场。 | boundary | 火山引擎进展不是Meta或Muse已经规模采用的证明。 |
+| [F981_AWS · Meta Partners With AWS on Graviton Chips to Power Agentic AI](https://about.fb.com/news/2026/04/meta-partners-with-aws-on-graviton-chips-to-power-agentic-ai/) · 2026-04-24 · Takeaways；Our Portfolio Approach，L250–266 | Meta 4月24日宣布把数千万个 AWS Graviton 核心纳入算力组合，首批部署即计划数千万核心，用于智能体AI的CPU密集型工作。 | support | 这是协议与首批部署安排；核心不是芯片颗数，实际启用和Muse占比未披露。 |
+| [F981_ARMMAR · Arm Form 6-K filed March 24, 2026](https://investors.arm.com/static-files/073df49d-58d8-451e-a196-a725319a9b7e) · 2026-03-24 · PDF第7页（零基P6）TSMC声明，L147–153 | Arm 3月24日6-K收录台积电声明：台积电是 Arm AGI CPU 制造商，采用其3nm工艺。 | support | 制造关系明确；Meta晶圆量和Muse收入未知。 |
+| [F981_AVGO · Meta Partners With Broadcom to Co-Develop Custom AI Silicon](https://about.fb.com/news/2026/04/meta-partners-with-broadcom-to-co-develop-custom-ai-silicon/) · 2026-04-14 · 正文 MTIA定义及合作，L252–258 | Meta 4月14日宣布与博通共同开发多代 MTIA 定制AI加速器，用于推理、推荐及后续生成式AI工作负载。 | boundary | MTIA不是通用CPU；没有Muse执行VM CPU订单。 |
+| [F981_INTHIST · Facebook's new front-end server design](https://engineering.fb.com/2016/03/09/data-center-engineering/facebook-s-new-front-end-server-design-delivers-on-performance-without-sucking-up-power/) · 2016-03-09 · 正文处理器协作及 Mono Lake，L28–36 | Facebook 2016年3月9日说明与 Intel 联合设计 Xeon-D／Broadwell-D 并用于前端服务器。 | boundary | 历史客户关系不能证明2026年Muse新增订单。 |
+| [S10 · Arm expands compute platform to silicon products](https://newsroom.arm.com/news/arm-agi-cpu-launch) · 2026-03-24 · Broad ecosystem support，L34–35 | Arm 将 ASRock Rack、Lenovo、Quanta Computer、Supermicro 列为 AGI CPU 的主要OEM/ODM伙伴，并列出美光、三星、SK海力士等生态支持者。 | boundary | 平台合作名单不是Meta采购名单，更不是Muse BOM。 |
+| [EA125_STARK · Meta Muse: The $0 AI Agent Running on a $40 Server](https://www.starkinsider.com/2026/09/meta-muse-specs-what-it-runs-on.html) · 2026-09-22 · Musey's spec sheet；限制，L23–33 | Clinton Stark 9月22日文章记载9月20日一个Muse环境报告 AMD EPYC 9D25、2 vCPU、7.7GB内存；作者强调只是一名智能体的自身测量。 | boundary | 单账户、经智能体返回的观察，不是Meta规格或AMD独供证明。 |
+
+<a id="AMD"></a>
+
+### AMD · AMD 的 CPU 收入能否因 Muse 增长？
+
+#### 1. 核心观点
+
+能，但截至 2026 年 10 月 9 日，能够确认的是 AMD 的 EPYC 服务器 CPU 存在受益路径，尚不能确认 Muse 已为 AMD 带来多少新增 CPU 收入。 Muse 把个人 AI 的工作扩展到云端浏览器、代码执行和后台任务，这些都需要 CPU；如果这些负载超出现有服务器的承载能力，并由新增 EPYC 承接，就会增加 AMD 的 CPU 销售。Meta 已经是 EPYC 的大客户，因此这条路径具有实际业务基础。[S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse)、[E321_AMDMETA · AMD and Meta expanded strategic partnership, EX-99.1](https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000045/pressreleasedatedfebruary2.htm)
+
+#### 2. 关键论证
+
+##### 业务基础与问题边界
+
+这里的 Muse 指 Meta 9 月 8 日发布的个人 AI 代理，而不只是此前发布的 Muse Spark 模型。资料截止日为2026年10月9日；发布日期与业务发生期间分开标注。
+
+##### Muse 为什么会带来 CPU 需求
+
+Meta 的原始技术文档明确说明：每位用户的 Muse 拥有独立的 Linux 云端虚拟机，内含浏览器、CPU、内存和存储，可以编译代码、运行工具、处理并发子代理和定时任务；模型推理则通过受约束的接口连接外部基础设施。也就是说，模型生成行动方案之外，还需要一台计算机实际执行这些行动。[S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse)
+
+由此可以推导出两条 CPU 收入路径：
+
+代理执行服务器扩容。 更多用户、更长的后台运行时间、更多浏览器和代码任务，会增加 CPU 执行负载。若新增服务器采用 EPYC，AMD 就能获得相应销售。
+
+模型基础设施扩容带动配套 CPU。 Muse 的推理需求可能推动 AI 服务器扩容，其中也有主机 CPU。不过这部分必须按实际系统配置计算，不能把 GPU 采购金额计入 CPU 收入。
+
+这里最重要的限制是：“每人一台虚拟机”不等于“每人独占一颗物理 CPU”，也不证明每位用户一直占用固定的物理核心。 注册用户数、日活用户数和同时需要执行任务的虚拟机数量，是不同口径。Meta 公布的架构没有给出可据此计算采购量的并发率、物理核心分配或资源复用数据。
+
+##### AMD 已有的业务基础，和不能归给 Muse 的部分
+
+下表所列合作事实来自 [E321_AMDMETA · AMD and Meta expanded strategic partnership, EX-99.1](https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000045/pressreleasedatedfebruary2.htm)。这些合作早于 Muse 的公开发布，支持“AMD 有能力承接需求”，不能单独证明“采购是 Muse 新增带来的”。
+
+关于 Muse 当前硬件，还有一项更直接但范围较小的观察：Tom’s Hardware 在 9 月 30 日的自行测试中报告，其 Muse 实例对应 EPYC 9D25，虚拟机显示约两个核心、7.75GB 内存。这属于测试者的一手样本证据，支持至少被测实例使用 AMD 平台，不等于 Meta 对全量部署、专用物理核心或采购数量的确认。[S21 · Geekbench 7 results and independent Muse run](https://www.tomshardware.com/tech-industry/artificial-intelligence/geekbench-7-results-suggest-openais-dots-agent-runs-on-nine-core-amd-epyc-vms-with-nearly-10gb-of-memory-newest-runs-score-about-six-times-meta-muse-in-multi-core)
+
+AMD 已有的业务基础，和不能归给 Muse 的部分
+
+| 已知事实 | 对 AMD CPU 收入的意义 | 归因边界 |
+| --- | --- | --- |
+| AMD 在 2026 年 2 月披露，Meta 已部署数百万颗 EPYC CPU | AMD 已进入 Meta 的大规模生产基础设施，有现成供货关系 | 是跨代、全基础设施的部署量，不是 Muse 专用数量，更不是 2026 年新增销量 |
+| Meta 将成为第六代 EPYC Venice 及下一代 Verano 的主要早期客户 | CPU 合作明确延续，未来扩容有承接基础 | 公告没有给出 Muse 对应的 CPU 订单、单价或收入 |
+| 双方签署最高 6GW 的 Instinct GPU 合作，首个 1GW 项目原计划于 2026 年下半年开始供货，系统包含 Venice CPU | GPU 系统也可能带来配套 CPU 销售 | 6GW 是 GPU 合作规模；供货计划不等于全部交付，更不能把整个合作视为 Muse 增量 |
+
+##### 收入能增加多少：已知基线与可复算的条件
+
+AMD 于 8 月 4 日公布的第二季度业绩，是 Muse 9 月公开发布前的财务基线：数据中心收入约 67 亿美元，同比增长 107%，增长由 EPYC CPU 和 Instinct GPU 共同推动。这是混合口径，不能当作 EPYC 单独收入，更不能用其增速代表 Muse 带来的 CPU 增长。[S06 · AMD Q2 2026 Financial Results](https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results)
+
+截至截止日，所查原始披露没有提供 Muse 专属 EPYC 出货量、成交均价或已确认收入，所以无法给出实际增量金额，也不能给出它占 AMD CPU 收入的百分比。未知不等于零：上线前可能已经采购，上线后也可能首先消耗已有容量。
+
+下面仅说明数量级如何变化，全部参数均为演示假设，不是 Meta 实测或 AMD 预测：
+
+假定某个新增部署阶段需要额外支持 100 万个 Muse 用户；每个同时运行的实例需要 2 个“物理核心等效”的处理能力；每颗 CPU 扣除系统开销后可提供 128 个此类核心等效容量；没有可复用的闲置容量；全部新增 CPU 采用 AMD，净售价每颗假设为 5,000 美元。
+
+这个演示说明，同样是新增 100 万用户，资源是否常驻、同时运行比例是多少，会使采购需求相差很大。虚拟机显示的“两个核心”不能直接代入“两个物理核心等效”；实际还受内存容量、峰值冗余和工作负载影响。上述金额也是部署采购对应的销售额，不是每年自动重复的收入，且尚未考虑交付和收入确认时间。
+
+现实中还要扣除三类因素：
+
+已有容量和原定采购。 Muse 如果使用闲置服务器，或只是使用原本就会购买的 EPYC，短期未必增加 AMD 收入；它也可能只是把采购时间提前。
+
+每颗 CPU 可承载的任务增加。 更高核心密度、调度优化和软件效率提高，都可能让工作量增长快于 CPU 颗数增长。
+
+供应商分流。 Meta 同时采用其他 CPU。NVIDIA 在 2 月 17 日宣布与 Meta 扩大独立 Grace CPU 部署，并讨论可能于 2027 年大规模部署 Vera。因此不能假设 Muse 的所有新增 CPU 需求都归 AMD；这份公告本身也没有证明 Muse 已使用 Grace 或 Vera。[S07 · Meta Builds AI Infrastructure With NVIDIA](https://nvidianews.nvidia.com/news/meta-builds-ai-infrastructure-with-nvidia)
+
+因此，对“AMD 的 CPU 收入能否因 Muse 增长”的准确判断是：可以，最直接的是 EPYC 承接代理执行负载；已有客户关系和被测实例提供了支持，但新增采购规模、收入金额和增长幅度尚未披露。 没有相应证据可把这一路径扩展为 Ryzen 客户端 CPU 的已实现增长，也不能把 Instinct GPU 收入混入其中。
+
+对父问题的意义是：Muse 说明个人 AI 代理能够增加独立于模型推理的 CPU 执行需求，AMD 是有实际承接基础的受益公司之一；但行业工作量增长、AMD 获得的订单，以及其中真正由 Muse 新增的部分，仍是三个不同层次。
+
+收入能增加多少：已知基线与可复算的条件
+
+| 假设的同时运行比例 | 同时运行实例 | CPU 数量，向上取整 | 对应 CPU 销售额 |
+| --- | --- | --- | --- |
+| 1% | 10,000 | 10,000 × 2 ÷ 128 → 157 颗 | 78.5 万美元 |
+| 10% | 100,000 | 100,000 × 2 ÷ 128 → 1,563 颗 | 781.5 万美元 |
+| 100% | 1,000,000 | 1,000,000 × 2 ÷ 128 → 15,625 颗 | 7,812.5 万美元 |
+
+##### 已公开的机架配比能说明什么
+
+7月23日的Helios标准机架配置是72颗MI455X GPU与18颗Venice CPU，即GPU与CPU颗数比4:1；同一公告说明Meta仍在验证平台和工作负载。这个配比可以说明推理系统为何带动配套CPU，但它不是Muse沙箱的服务器配置，也不能直接把6GW协议换算成CPU订单；还缺实际机架数量、功率口径和部署完成量。[E321_AAI · AAI 2026: AMD Delivers Full-Stack Compute for the Agentic AI Era](https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era)
+
+充分性：未通过。已完整保留可核实业务、机制、基线及条件解释；所列实际归因或日期缺口仍未解决，不以形式校验替代充分性。
+
+缺口：未取得Muse专属EPYC净新增订单、可复用存量、成交价及收入确认额，不能量化Muse使AMD CPU收入增长多少。
+
+反向证据与边界：反向查询找到未披露Muse核时及订单的评论，也找到DIGITIMES排单主张（正文打开失败）。以官方Grace竞争路线、发布前AMD财务和GPU协议口径为可复核反证，未把未知收入记为零。
+
+下一步：取得Muse专属EPYC部署、存量吸收与净新增订单数据，并核对交付和收入确认；不得把GPU协议计作CPU收入。
+
+#### 3. 数据列表
+
+| 材料、日期与原文定位 | 关键数据与事实 | 作用 | 口径限制与反向解释 |
+| --- | --- | --- | --- |
+| [S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/) · 2026-09-08 · 标题；How It Works，L241、254–259 | Muse 是9月8日发布的个人智能体，可在用户关闭应用后继续长任务。 | support | 产品功能说明，不是已实现硬件订单。 |
+| [S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse) · 2026-09-08 · An agent in your own cloud computer；Muse Secure VM，L28、42–50 | Muse 的隔离 Linux VM 提供CPU执行代码、工具、子智能体和定时任务，外部推理由代理通路连接。 | support | 环境隔离不等于永久独占物理核；未披露并发率、物理核用量。 |
+| [E321_AMDMETA · AMD and Meta expanded strategic partnership, EX-99.1](https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000045/pressreleasedatedfebruary2.htm) · 2026-02-24 · AMD EX-99.1，L67–68 | Meta 已跨代部署数百万颗 AMD EPYC，且将成为 Venice、Verano 的主要客户。 | support | 存量覆盖Meta基础设施，不能全归给Muse。 |
+| [E321_AMDMETA · AMD and Meta expanded strategic partnership, EX-99.1](https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000045/pressreleasedatedfebruary2.htm) · 2026-02-24 · AMD EX-99.1，L56–64 | AMD与Meta最高6GW合作为 Instinct GPU；首个1GW计划于2026年下半年开始出货，配套 Venice CPU 和 Helios。 | boundary | 计划不等于全量交付；GPU瓦数无法直接换算CPU颗数。 |
+| [S06 · AMD Q2 2026 Financial Results](https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results) · 2026-08-04 · Financial Segment Summary，L64 | AMD 8月4日披露2026年第二季度数据中心收入67亿美元，同比增长107%，由 EPYC CPU 与 Instinct GPU 共同推动。 | support | 混合分部收入；期间早于Muse发布，非Muse增量或EPYC单独收入。 |
+| [S21 · Geekbench 7 results and independent Muse run](https://www.tomshardware.com/tech-industry/artificial-intelligence/geekbench-7-results-suggest-openais-dots-agent-runs-on-nine-core-amd-epyc-vms-with-nearly-10gb-of-memory-newest-runs-score-about-six-times-meta-muse-in-multi-core) · 2026-09-30 · Muse比较及作者独立测试，L541–549 | Tom’s Hardware 9月30日文章称 Muse 跑分环境报告 EPYC 9D25、约两个核心与7.75GB内存；作者自行跑分为单核1000、多核1433。 | boundary | 一手测试样本，不代表全机群或专属物理核心；分数不是实际任务CPU核时。 |
+| [S07 · Meta Builds AI Infrastructure With NVIDIA](https://nvidianews.nvidia.com/news/meta-builds-ai-infrastructure-with-nvidia) · 2026-02-17 · Expanded NVIDIA CPU Deployment，L60–64 | Meta 与 NVIDIA 已推进 Grace-only 生产应用部署合作，Vera 2027年规模部署仅为潜在安排。 | refute | 竞争路线限制AMD独占假设，不证明Muse已用Grace。 |
+| [E321_AAI · AAI 2026: AMD Delivers Full-Stack Compute for the Agentic AI Era](https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era) · 2026-07-23 · Helios架构及Meta段，L48、55 | 7月23日 AMD 公布 Helios 标准机架包含72颗MI455X GPU和18颗Venice CPU，Meta仍在验证平台及工作负载。 | boundary | 标准机架4:1的GPU/CPU颗数比不是6GW固定转换率，也不是Muse执行VM配置。 |
+
+<a id="INTC"></a>
+
+### INTC · Intel 会受益于增量需求还是承受份额压力？
+
+#### 1. 核心观点
+
+Intel 有机会受益于 CPU 需求增长，同时承受新增需求被竞争对手分走的压力。就 Meta Muse 而言，截至 2026 年 10 月 9 日，竞争对手进入 Meta CPU 供应体系的证据，比 Intel 获得 Muse 专属增量订单的证据更明确。因此，较有依据的判断是：Intel 有行业增长带来的受益机会，但不能把 Muse 的增长直接计为 Xeon 的增长；即使 Intel 收入增加，市场份额也可能下降。[S13 · Intel Q2 2026 Form 10-Q](https://www.intc.com/filings-reports/all-sec-filings/content/0000050863-26-000157/intc-20260627.htm)、[F981_AWS · Meta Partners With AWS on Graviton Chips to Power Agentic AI](https://about.fb.com/news/2026/04/meta-partners-with-aws-on-graviton-chips-to-power-agentic-ai/)支持这一判断。
+
+#### 2. 关键论证
+
+##### 业务基础与问题边界
+
+这里的 Muse 指 Meta 于 2026 年 9 月 8 日发布的个人 AI 代理：它由 Muse Spark 模型驱动，在专属云端虚拟机中使用浏览器、调用工具和执行任务，用户关闭应用后仍可继续工作。它带来的 CPU 机会，主要是运行这些执行环境及配套服务，不能与模型训练、推理所需的 GPU 混为一谈。[S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/)
+
+##### Intel 为什么仍能受益
+
+Muse 将 AI 从“生成回答”延伸到持续执行任务。浏览器、脚本、文件处理、连接器和隔离环境都会消耗 CPU、内存及存储资源。Meta 的技术说明确认，Muse 采用 Linux 隔离机制，并可在后台工作、调度子代理和构建工具。这支持“代理使用增加会带来 CPU 工作量”的机制，但并不意味着每个账户都永久独占物理核心。[S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse)
+
+Intel 已有承接此类负载的产品。其 Computex 2026 官方产品公告推出 Xeon 6+（日文重定向页标5月31日，搜索索引标6月1日），采用 Intel 18A，最高 288 个能效核、12 通道 DDR5，面向高并发、云原生和代理工作负载。这说明 Intel 具备参与竞争的产品基础；核心数本身不能证明它在 Muse 上的单位任务成本最低，也不是 Meta 采用该产品的证明。[F981_INTJP · Intel Xeon 6+、ネットワーキング、AIシステム（官方日文版）](https://www.intel.co.jp/content/www/jp/ja/newsroom/news/data-center/intel-puts-agentic-ai-to-work-with-xeon-6-networking-and-ai-systems.html)
+
+更直接的已实现基线来自 Intel 7 月 24 日提交的第二季度 10-Q：
+
+服务器产品销量同比增长 9%，平均售价增长 48%；高端产品占比提升是售价增长的主要原因，提价贡献较小。
+
+按四舍五入后的披露数复算，收入增幅约为 1.09 × 1.48 − 1 = 61.3%，不能将其全部解释为出货量增长。
+
+公司同时披露，需求超过内部供给能力，并预计行业供应限制延续至下一年。[S13 · Intel Q2 2026 Form 10-Q](https://www.intc.com/filings-reports/all-sec-filings/content/0000050863-26-000157/intc-20260627.htm)
+
+这些增长发生在 Muse 9 月发布之前，不能归因于此次发布。它们证明 Intel 已受益于服务器市场需求，也说明供货能力会限制它承接后续增量。另需注意，Intel 的 DCAI 部门还包含加速器、网络和专用芯片，整个部门收入不能直接当作 CPU 收入。
+
+##### 为什么份额压力更具体
+
+Meta 已公开选择多条 CPU 路线，覆盖自建数据中心、加速器主机和外购云服务：
+
+这里尤其容易混淆的是 AMD 协议中的 最高 6GW：它是多年、多代 Instinct GPU 部署协议的口径，不能换算成 6GW 的 CPU 采购，更不能全部归因于 Muse。协议中的 EPYC 合作是独立且明确的 CPU 证据。[S05 · AMD and Meta Expanded Strategic Partnership](https://newsroom.amd.com/news/amd-and-meta-announce-expanded-strategic-partnersh/)
+
+Muse 本身也有偏向 AMD 的早期样本：Clinton Stark 在 9 月 22 日发表的亲历记录中，展示了 9 月 20 日由其 Muse 代理报告的配置，包括 2 个 vCPU、AMD EPYC 9D25、约 7.7GB 内存。但作者明确说明，这是单一代理对自身环境的报告，Meta 没有发布这些规格，其他账户可能不同。因此，它只能作为个别环境的线索，不能证明 AMD 独家供应，也不能证明 Intel 份额为零。[EA125_STARK · Meta Muse: The $0 AI Agent Running on a $40 Server](https://www.starkinsider.com/2026/09/meta-muse-specs-what-it-runs-on.html)
+
+为什么份额压力更具体
+
+| CPU 路线 | 截止日前已公开的事实与状态 | 对 Intel 的含义 |
+| --- | --- | --- |
+| AMD EPYC | 2 月 24 日公告称，Meta 已部署数百万颗 EPYC，并将成为 Venice、Verano 的领先客户；7 月 23 日更新称，Meta 正在验证第六代 EPYC 平台和 Helios 工作负载。[S05 · AMD and Meta Expanded Strategic Partnership](https://newsroom.amd.com/news/amd-and-meta-announce-expanded-strategic-partnersh/)、[E321_AAI · AAI 2026: AMD Delivers Full-Stack Compute for the Agentic AI Era](https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era) | AMD 已有实际客户基础，并进入下一代平台验证阶段；但不能把验证当成全部部署完成。 |
+| NVIDIA Grace／Vera | 2 月 17 日公告确认双方推进用于 Meta 生产应用的 Grace CPU 部署，包括大规模纯 Grace 系统；Vera 的大规模部署表述为 2027 年的可能安排。[S07 · Meta Builds AI Infrastructure With NVIDIA](https://nvidianews.nvidia.com/news/meta-builds-ai-infrastructure-with-nvidia) | NVIDIA 直接竞争通用 CPU 预算，其影响不限于销售 GPU。 |
+| AWS Graviton | Meta 4 月 24 日宣布协议，将数千万个 Graviton 核心纳入算力组合，明确用于代理 AI 的 CPU 密集型工作；这是协议及部署安排，不等于截止日全部交付。[F981_AWS · Meta Partners With AWS on Graviton Chips to Power Agentic AI](https://about.fb.com/news/2026/04/meta-partners-with-aws-on-graviton-chips-to-power-agentic-ai/) | Meta 外购云算力也可能绕过 Xeon；“数千万核心”不能误写为数千万颗 CPU。 |
+| Arm AGI CPU | Meta 3 月 24 日宣布作为领先合作伙伴与共同开发者，联合开发多代 CPU，并与自研 MTIA 加速器配合；9 月 8 日 Arm 仍将 Meta 列为围绕该 CPU 开发方案的公司。[F981_METARM · Meta Partners With Arm to Develop New Class of Data Center Silicon](https://about.fb.com/news/2026/03/meta-partners-with-arm-to-develop-new-class-of-data-center-silicon/)、[F981_ARMSEP · Arm expands AI infrastructure with AGI CPU and Neoverse CSS N4](https://newsroom.arm.com/news/arm-agi-cpu-neoverse-css-n4-agentic-ai) | 对 Intel 构成长期架构替代压力，但公告没有给出 Muse 专属装机量。 |
+
+##### 增长与份额下降如何同时发生
+
+按相同收入口径：
+
+Intel 服务器 CPU 收入＝服务器 CPU 市场收入 × Intel 收入份额。
+
+一个纯说明性的情景：假设市场从 100 增至 130，Intel 份额从 60% 降至 50%，则收入从 60 增至 65，仍增长 8.3%。份额下降 10 个百分点，并没有阻止绝对收入增长。这里的数字是情景假设，并非 Intel 实际份额或预测。
+
+对 Muse 的新增采购，则还要经过“工作量增加—现有容量是否足够—新增服务器采购—供应商分配”几步。专属虚拟机代表用户环境隔离，并不自动等于持续占满 CPU；后台等待、并发率、超售、每颗芯片核心数、内存容量和现有余量都会影响采购量。Meta 的公开架构说明没有给出足以完成这一换算的运营数据。[S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse)
+
+截至截止日，无法给出 Intel 因 Muse 新增多少颗 CPU、多少收入，或因此损失多少份额的可信数值。公开资料没有披露 Muse 全部 CPU 供应商分配、Intel 专属订单及新增采购量。这也意味着，竞争对手获得新项目只能证明 Intel 面临增量份额压力，不能据此认定 Meta 已撤换相同数量的 Xeon。
+
+对父问题的意义是：Muse 支持“代理 AI 会扩大 CPU 工作量”的判断，但公司受益并不均匀。Intel 应被视为具备产品和现有业务基础的潜在增量受益者，同时面临 AMD 与多条 Arm 路线的竞争；目前不能把它列为已证实获得 Muse 专属订单的赢家。
+
+充分性：未通过。已完整保留可核实业务、机制、基线及条件解释；所列实际归因或日期缺口仍未解决，不以形式校验替代充分性。
+
+缺口：未取得Muse的Xeon订单、全机群CPU供应商分配及被替代Xeon数量，不能量化Intel净增收入或份额损失。
+
+反向证据与边界：反向搜索核到Q2服务器销量/ASP增长，说明行业增长并非只有竞争者受益；官方Graviton、Grace和EPYC合作又限制Xeon新增份额假设。没有找到可复核Muse Xeon专属订单。
+
+下一步：取得Muse供应商分配与Xeon采购/退役记录，分别计算市场增长、产品组合、份额和供给约束的影响。
+
+#### 3. 数据列表
+
+| 材料、日期与原文定位 | 关键数据与事实 | 作用 | 口径限制与反向解释 |
+| --- | --- | --- | --- |
+| [S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/) · 2026-09-08 · 日期与产品定义，L241、254–259 | Muse 9月8日发布为持续执行任务的个人智能体，Muse Spark 是其驱动模型。 | support | 模型推理与产品执行环境不可混为一谈。 |
+| [S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse) · 2026-09-08 · The Lay of the Land；Muse Secure VM，L28、42–50 | Muse 使用隔离Linux执行环境运行工具、代码与后台子任务，并通过外部推理代理调用模型。 | support | 未给按账户永久物理核配额；工作量不自动等于新增CPU采购。 |
+| [F981_INTJP · Intel Xeon 6+、ネットワーキング、AIシステム（官方日文版）](https://www.intel.co.jp/content/www/jp/ja/newsroom/news/data-center/intel-puts-agentic-ai-to-work-with-xeon-6-networking-and-ai-systems.html) · 2026-05-31 · 页面日期L21；产品说明L38、47–48 | Intel 官方日文产品页说明 Xeon 6+ 采用 Intel 18A，最高288个能效核、12通道DDR5，面向云原生、高并发及智能体工作负载。 | support | 重定向后的页标May 31,2026，搜索索引为June 1；不把规格或厂商比较当Muse采用实绩。 |
+| [S13 · Intel Q2 2026 Form 10-Q](https://www.intc.com/filings-reports/all-sec-filings/content/0000050863-26-000157/intc-20260627.htm) · 2026-07-24 · Q2 10-Q MD&A第30页，L1479–1480 | Intel 2026年第二季度服务器销量同比增9%、平均售价增48%；售价增长主要来自高端产品组合，提价贡献较小。 | support | 服务器产品口径，不是整个DCAI；披露百分比已四舍五入且早于Muse发布。 |
+| [S13 · Intel Q2 2026 Form 10-Q](https://www.intc.com/filings-reports/all-sec-filings/content/0000050863-26-000157/intc-20260627.htm) · 2026-07-24 · Q2 10-Q MD&A第30、34页，L1480–1481、1618–1619 | Intel 披露第二季度服务器需求超过内部供给，并预计行业供给限制持续至下一年；其它DCAI收入包含ASIC业务。 | boundary | 供给约束限制兑现；不能据整体DCAI收入反推CPU颗数。 |
+| [E321_AMDMETA · AMD and Meta expanded strategic partnership, EX-99.1](https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000045/pressreleasedatedfebruary2.htm) · 2026-02-24 · EX-99.1，L56–68 | AMD与Meta2月24日已确认数百万颗存量EPYC及Venice、Verano后续合作；6GW为GPU协议。 | refute | 确证竞争者客户基础，不能证明已撤换相同数量Xeon。 |
+| [E321_AAI · AAI 2026: AMD Delivers Full-Stack Compute for the Agentic AI Era](https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era) · 2026-07-23 · 7月23日发布稿，L55 | Meta 7月在实验室验证第六代EPYC和Helios工作负载。 | boundary | 验证阶段不能写成全量交付。 |
+| [S07 · Meta Builds AI Infrastructure With NVIDIA](https://nvidianews.nvidia.com/news/meta-builds-ai-infrastructure-with-nvidia) · 2026-02-17 · Expanded NVIDIA CPU Deployment，L60–64 | Meta 与 NVIDIA 推进 Grace-only 生产应用部署，Vera可能于2027年规模部署。 | refute | 新增CPU预算竞争，不是Intel已损失的Muse份额。 |
+| [F981_AWS · Meta Partners With AWS on Graviton Chips to Power Agentic AI](https://about.fb.com/news/2026/04/meta-partners-with-aws-on-graviton-chips-to-power-agentic-ai/) · 2026-04-24 · Takeaways及首批安排，L250–266 | Meta 4月24日协议计划引入数千万Graviton核心，明确面向智能体AI的CPU密集型工作。 | refute | 外购云算力可分流CPU需求；实际启用数和Muse占比未知。 |
+| [F981_METARM · Meta Partners With Arm to Develop New Class of Data Center Silicon](https://about.fb.com/news/2026/03/meta-partners-with-arm-to-develop-new-class-of-data-center-silicon/) · 2026-03-24 · Takeaways及首款产品，L250–258 | Meta 3月24日宣布与Arm共同开发多代CPU，首个AGI CPU将与MTIA配合。 | refute | 合作与未来安排，不是已实现Muse装机。 |
+| [F981_ARMSEP · Arm expands AI infrastructure with AGI CPU and Neoverse CSS N4](https://newsroom.arm.com/news/arm-agi-cpu-neoverse-css-n4-agentic-ai) · 2026-09-08 · Arm CPUs powering agentic AI at scale，L27 | Arm 9月8日列出Meta正在围绕AGI CPU开发方案。 | boundary | 未单列Muse或Meta已验收CPU数量。 |
+| [EA125_STARK · Meta Muse: The $0 AI Agent Running on a $40 Server](https://www.starkinsider.com/2026/09/meta-muse-specs-what-it-runs-on.html) · 2026-09-22 · Musey's spec sheet及限制，L23–33 | 9月22日原始用户记录展示单个Muse代理9月20日报告2 vCPU、EPYC 9D25及约7.7GB内存，并明确其它账户可能不同。 | boundary | 样本偏向AMD，不证明Intel份额为零。 |
+
+<a id="ARM"></a>
+
+### ARM · Arm 如何通过 CPU 与授权获得收入？
+
+#### 1. 核心观点
+
+Arm 主要把 CPU 技术变成两类收入：客户获得设计或架构使用权时支付授权费，采用这些技术的芯片出货后再支付版税。 2026 年又增加了自有 CPU 芯片产品这条商业化路径，因此截至 2026 年 10 月 9 日，将 Arm 描述成“只授权、不卖芯片”已经不准确；但其已披露收入仍主要来自授权及版税。[F981_ARM20F · Arm FY2026 Form 20-F](https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/arm-20260331.htm)、[S10 · Arm expands compute platform to silicon products](https://newsroom.arm.com/news/arm-agi-cpu-launch)
+
+#### 2. 关键论证
+
+##### 客户向 Arm 买什么？
+
+Arm 的传统产品是芯片设计所需的知识产权（IP）。其中，指令集架构规定处理器能执行什么指令，CPU 核设计则是实现这些指令的具体设计。两者对应不同的授权：
+
+前两项区别在于买现成设计还是自行设计；后两项主要是如何打包、取得和支付技术使用权，并不是四种互斥的 CPU 类型。[F981_ARM20F · Arm FY2026 Form 20-F](https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/arm-20260331.htm)、[F981_TOTAL · Arm Total Access](https://www.arm.com/products/licensing/arm-total-access)、[F981_FLEX · Arm Flexible Access](https://www.arm.com/products/flexible-access)
+
+例如，Flexible Access 动态产品页列出的标准会员费是 每年 8.5 万美元，但这只是接入费，不是量产芯片的全部授权成本；部分初创企业可以零接入费参加，最终产品仍可能产生流片授权费及出货版税。该页面未标明发布日期，此处是 2026 年 10 月 9 日抓取口径，不能据此推定所有历史合同都采用这一价格，也无法确定该费率何时开始适用。[F981_FLEX · Arm Flexible Access](https://www.arm.com/products/flexible-access)
+
+客户向 Arm 买什么？
+
+| 授权对象或方式 | 客户获得什么 | Arm 如何收费 |
+| --- | --- | --- |
+| CPU 核等技术授权（TLA） | 使用 Arm 已设计好的 CPU 核或其他技术，整合进自己的芯片 | 固定授权费；芯片出货后通常另付版税 |
+| 架构授权（ALA） | 自行设计符合 Arm 指令集架构的 CPU 核 | 固定架构授权费，并依合同承担版税等义务；自研 CPU 不等于免费使用 Arm 架构 |
+| Total Access | 在合同范围内使用一组 CPU、其他 IP、工具和支持服务 | 年度订阅费，包含相应制造权；出货版税仍依合同计算 |
+| Flexible Access | 先获得一组 IP 进行试验、选型和设计 | 接入费；在设计交付制造，即“流片”时，为最终使用且需要付费的 IP 支付授权费；出货后付版税 |
+
+##### 钱在什么时候产生，怎样计算？
+
+授权收入对应“交付技术或持续提供技术访问权”，版税对应“客户实际出货”。
+
+授权费并非全部在签约当天确认为收入：独立 IP 通常在交付或授权期开始、两者较晚时确认；持续提供 IP 库访问权的合同，则可能在合同期内分期确认。版税一般按客户出货季度计提，后续取得实际申报数据时调整。因此，签约金额、当期收入和现金到账金额并不相同。[F981_ARMQ · Arm Form 6-K quarterly report June 30, 2026](https://investors.arm.com/static-files/69c13c55-810b-4de8-93b6-7cea395659ea)
+
+Arm 披露的版税计算主要有两种：
+
+固定单价方式：版税＝符合合同条件的芯片出货量 × 每颗芯片约定版税。
+
+售价比例方式：版税＝芯片出货量 × 客户芯片平均售价 × 约定费率。
+
+计费基础通常是客户的 Arm 芯片，不能直接拿整台服务器售价或云服务收入乘一个比例来计算。具体合同费率并无统一公开价目表。[F981_ARM20F · Arm FY2026 Form 20-F](https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/arm-20260331.htm)
+
+举一个纯计算示例，并非 Arm 实际报价：若客户出货 100 万颗芯片，每颗约定版税为 0.50 美元，Arm 获得 50 万美元版税；若合同改为按芯片平均售价 50 美元的 1% 收费，同样得到 50 万美元。此前支付的授权费另计。芯片已经部署之后，增加运行时长或模型调用次数，本身并不会再次触发这种按出货计算的版税。
+
+##### 已实现收入有多大？
+
+以下均为 Arm 全公司收入，单位为百万美元，不能全部视为服务器 CPU 收入，更不能全部视为 AI 收入。
+
+年度结果于 2026 年 5 月 6 日公布，季度报告于 2026 年 7 月 29 日提交；两者都在资料截止日前。2026 财年总收入同比增长约 23%，版税增长约 21%，授权及其他收入增长约 25%。[F981_ARMFY · Arm FY2026 annual results and shareholder letter](https://investors.arm.com/node/8141/html)、[F981_ARMQ · Arm Form 6-K quarterly report June 30, 2026](https://investors.arm.com/static-files/69c13c55-810b-4de8-93b6-7cea395659ea)
+
+这里有两个口径限制：
+
+“授权及其他收入”不只是 CPU 授权费，还包括软件工具、设计服务、培训和支持等。
+
+公司收入不等于 CPU 收入。Arm 也提供 GPU、NPU 和系统 IP；公开的这两类收入表没有给出可直接拆算的 CPU、GPU 独立收入，因而无法据此回答“CPU 单独贡献了多少美元”。[F981_ARM20F · Arm FY2026 Form 20-F](https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/arm-20260331.htm)
+
+已实现收入有多大？
+
+| 收入口径 | 2026 财年：截至 2026-03-31 的一年 | 2027 财年第一季度：截至 2026-06-30 的三个月 |
+| --- | --- | --- |
+| 版税收入 | 2,613 | 715 |
+| 授权及其他收入 | 2,307 | 574 |
+| 总收入 | 4,920 | 1,289 |
+| 版税占总收入，自行计算 | 2,613 ÷ 4,920＝53.1% | 715 ÷ 1,289＝55.5% |
+
+##### CPU 业务怎样带动收入增长？
+
+主要有三个机制：更多芯片采用 Arm、每颗芯片带来的版税提高，以及客户购买更多技术授权。 同样的出货量，如果采用的 IP、合同费率或芯片售价不同，Arm 收入也会不同，不能把 CPU 核数量的增长直接等同于收入同比例增长。
+
+除了单独 CPU 核，Arm 还提供 CSS（计算子系统）：把多项计算技术预先集成、验证，帮助客户减少自行整合工作。2026 年 9 月 8 日推出的 Neoverse CSS N4，仍是供客户构建自己芯片的技术基础；它与客户直接部署 Arm 自有芯片是不同路径。[F981_ARMSEP · Arm expands AI infrastructure with AGI CPU and Neoverse CSS N4](https://newsroom.arm.com/news/arm-agi-cpu-neoverse-css-n4-agentic-ai)
+
+##### 自有 CPU 芯片业务已经走到哪一步？
+
+2026 年 3 月 24 日，Arm 发布 Arm AGI CPU，首次把业务扩展到自有成品芯片。 Meta 是主要合作伙伴及共同开发者。商业上，这增加了向客户提供实际 CPU 芯片的路径，而不只是让客户取得 IP 后自行造芯片。[S10 · Arm expands compute platform to silicon products](https://newsroom.arm.com/news/arm-agi-cpu-launch)
+
+必须区分发布、承诺和收入：
+
+已实现：产品已经发布；Arm 年报明确表示，该业务对截至 2026 年 3 月 31 日的财年收入没有重大影响。
+
+当时的计划：3 月公告称早期系统已经可用，更广泛供应预计在 2026 年下半年展开。Meta 表示将与其 MTIA 加速器配合使用，并共同开发多代 CPU。
+
+截至截止日无法量化：上述披露没有提供可独立复算的 AGI CPU 实际销售收入、Meta 采购单价或累计采购金额。7月29日季度报告仍预计于2026年底前投产；9月公告称Meta等正在围绕AGI CPU开发方案，另称火山引擎把首批相关智能体沙箱推向市场。这不提供Meta已验收数量，不能替代销售收入披露。[F981_ARM20F · Arm FY2026 Form 20-F](https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/arm-20260331.htm)、[F981_METARM · Meta Partners With Arm to Develop New Class of Data Center Silicon](https://about.fb.com/news/2026/03/meta-partners-with-arm-to-develop-new-class-of-data-center-silicon/)、[F981_ARMSEP · Arm expands AI infrastructure with AGI CPU and Neoverse CSS N4](https://newsroom.arm.com/news/arm-agi-cpu-neoverse-css-n4-agentic-ai)[F981_ARMQ · Arm Form 6-K quarterly report June 30, 2026](https://investors.arm.com/static-files/69c13c55-810b-4de8-93b6-7cea395659ea)
+
+交付进展方面，7月29日股东信已披露AGI CPU初始产品交付给多家客户；同日季度报告仍把投产列为预计于2026年底前实现。两份披露使用的阶段口径不同，并未说明初始交付的全部范围；不能把它自行认定为仅交付样品，也不能据此认定已规模投产。它们确认了初始交付进展，但未披露Meta验收数量、Muse用途或可单独复算的销售收入。[S11 · Arm Q1 FYE2027 Shareholder Letter / Form 6-K](https://investors.arm.com/node/8356/html)[F981_ARMQ · Arm Form 6-K quarterly report June 30, 2026](https://investors.arm.com/static-files/69c13c55-810b-4de8-93b6-7cea395659ea)
+
+对父问题而言，Arm 的收入传导需要落实到新增授权、采用 Arm 技术的芯片出货，或自有 CPU 销售。Meta 与 Arm 的合作是已知基础，但它不能证明某次 Muse 发布带来了多少增量订单；更多 GPU 使用或更多模型调用，也不能自动折算成 Arm 的 CPU 收入。
+
+##### 成品芯片收入不能照搬授权业务的利润结构
+
+自有CPU若交付给客户，销售对象是成品芯片，其收入逻辑是交付数量与成交价格；IP模式则是授权及客户芯片出货版税，不能对同一片Arm自有CPU再假定一个未披露的内部授权收费并重复计数。季度报告明确提示成品硅业务可能有不同的毛利、收入确认及销售周期；年报还指出它可能与传统授权客户产生竞争冲突。因此新业务扩大收入来源，但净收益仍取决于制造、库存和客户选择。[F981_ARMQ · Arm Form 6-K quarterly report June 30, 2026](https://investors.arm.com/static-files/69c13c55-810b-4de8-93b6-7cea395659ea)、[F981_ARM20F · Arm FY2026 Form 20-F](https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/arm-20260331.htm)
+
+充分性：未通过。已完整保留可核实业务、机制、基线及条件解释；所列实际归因或日期缺口仍未解决，不以形式校验替代充分性。
+
+缺口：未取得AGI CPU截至截止日实际销售收入、Meta验收数量及合同价格，无法量化自有CPU和Muse增量收入；全公司收入不等于CPU收入。；Flexible Access每年8.5万美元示例来自无精确发布日期的动态页，截止日适用价格未通过日期证据门禁。
+
+反向证据与边界：反向检索核到年报成品芯片与授权客户竞争风险，以及Q1仍预计年底前投产；因此纠正把发布或生态合作当芯片收入的解读。动态访问费缺精确发布日期。
+
+下一步：取得AGI CPU销售及Meta验收的正式分拆，补齐Flexible Access价格带日期版本；授权与芯片销售分别核算。
+
+#### 3. 数据列表
+
+| 材料、日期与原文定位 | 关键数据与事实 | 作用 | 口径限制与反向解释 |
+| --- | --- | --- | --- |
+| [F981_ARM20F · Arm FY2026 Form 20-F](https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/arm-20260331.htm) · 2026-05-26 · Business Model，L1718–1736 | TLA授权现成CPU或其它技术设计，ALA允许自研兼容Arm指令集的CPU；两者收固定授权费，出货后一般另产生芯片版税。 | support | 合同条款个别议定；架构授权不是免费使用ISA。 |
+| [F981_ARM20F · Arm FY2026 Form 20-F](https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/arm-20260331.htm) · 2026-05-26 · Business Model及License revenue，L1721–1727、1747–1754 | Total Access按年取得技术组合且含制造权；Flexible Access收年度访问费，最终设计流片时再为采用的IP支付相应授权费。 | support | 两者是授权组合/支付方式，不是互斥CPU类型；版税另依合同。 |
+| [F981_ARM20F · Arm FY2026 Form 20-F](https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/arm-20260331.htm) · 2026-05-26 · License and Other Revenue；Royalty Revenue，L1741、1756–1758 | Arm版税通常为每颗芯片固定费用，或客户Arm芯片平均售价的一定比例；授权及其它收入还包括工具、设计、培训和支持。 | support | 不能以服务器整机售价、云服务收入或运行小时替代芯片出货计费。 |
+| [F981_ARMQ · Arm Form 6-K quarterly report June 30, 2026](https://investors.arm.com/static-files/69c13c55-810b-4de8-93b6-7cea395659ea) · 2026-07-29 · PDF第13–15页（P12–P14），收入确认政策 | IP收入一般在交付与许可期开始两者较晚时确认，持续技术库访问义务按期确认；版税在客户出货季度计提，收到实际申报后调整。 | support | 签约额、现金与收入不同；具体合同仍有不同履约义务。 |
+| [F981_ARMFY · Arm FY2026 annual results and shareholder letter](https://investors.arm.com/node/8141/html) · 2026-05-06 · 年度结果，L187–189 | Arm 2026财年总收入4920百万美元，其中版税2613百万、授权及其它2307百万；分别同比增长23%、21%、25%。 | support | 截至3月31日全公司全年，不是CPU或AI独立收入。 |
+| [F981_ARMQ · Arm Form 6-K quarterly report June 30, 2026](https://investors.arm.com/static-files/69c13c55-810b-4de8-93b6-7cea395659ea) · 2026-07-29 · PDF第15页（P14）Revenue分类表，L493–500 | Arm 截至2026年6月30日季度收入1289百万美元，版税715百万、授权及其它574百万。 | support | FY2027Q1全公司收入；不可与全年直接做增速比较。 |
+| [S10 · Arm expands compute platform to silicon products](https://newsroom.arm.com/news/arm-agi-cpu-launch) · 2026-03-24 · 发布定义及Broad ecosystem support，L11–14、31–34 | Arm 3月24日发布自有成品AGI CPU，Meta为主要合作方与共同开发者；公告称早期系统已可用、更广供货预计下半年。 | support | 产品商业化路径已扩展，不等于已经获得重大芯片销售收入。 |
+| [F981_ARM20F · Arm FY2026 Form 20-F](https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/arm-20260331.htm) · 2026-05-26 · Revenue说明，L1863 | Arm 年报说明AGI CPU业务对截至2026年3月31日财年收入没有重大影响。 | boundary | 不能推断全年收入绝对为零或9月之后仍为零。 |
+| [F981_ARMQ · Arm Form 6-K quarterly report June 30, 2026](https://investors.arm.com/static-files/69c13c55-810b-4de8-93b6-7cea395659ea) · 2026-07-29 · PDF第31–32页（P30–P31），L1158–1161、1204 | Arm 7月29日季度报告仍预计AGI CPU于2026年底前投产，并说明成品硅业务可能有不同的毛利、收入确认和销售周期。 | boundary | 最新财务口径的计划，不否认早期系统，也不证明Meta已大规模验收。 |
+| [F981_ARMSEP · Arm expands AI infrastructure with AGI CPU and Neoverse CSS N4](https://newsroom.arm.com/news/arm-agi-cpu-neoverse-css-n4-agentic-ai) · 2026-09-08 · CSS N4及AGI CPU，L16–27 | Arm 9月8日公布Neoverse CSS N4作为客户构建自有芯片的集成技术基础，同时列Meta等围绕AGI CPU开发方案。 | support | CSS技术授权与出售自有成品芯片是不同变现路径。 |
+| [F981_METARM · Meta Partners With Arm to Develop New Class of Data Center Silicon](https://about.fb.com/news/2026/03/meta-partners-with-arm-to-develop-new-class-of-data-center-silicon/) · 2026-03-24 · 首款产品及多代计划，L250–258 | Meta 3月24日确认是AGI CPU主要伙伴与共同开发者，并将与其MTIA配合、共同开发多代CPU。 | support | 未给Muse订单、采购单价和已确认收入。 |
+| [F981_ARM20F · Arm FY2026 Form 20-F](https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/arm-20260331.htm) · 2026-05-26 · Risk Factors，L445–446 | Arm 年报提示自有成品芯片可能与传统授权客户形成实际或被感知的竞争冲突，客户也可能继续选择自建而非集成产品。 | refute | 新增收入路径也新增客户竞争和制造交付风险，非必然净收益。 |
+| [S11 · Arm Q1 FYE2027 Shareholder Letter / Form 6-K](https://investors.arm.com/node/8356/html) · 2026-07-29 · 股东信 Arm AGI CPU Is Exceeding Initial Expectations，L106–109；发布日期见L99。 | Arm 2026年7月29日股东信披露，AGI CPU初始产品已经交付给多家客户。 | boundary | 初始产品交付、投产计划与确认销售收入是不同口径。两份同日披露没有解释初始交付的全部范围，不能自行将其限定为样品，也不能据此推定规模投产、Meta验收数量或Muse收入。 |
+| [F981_ARMQ · Arm Form 6-K quarterly report June 30, 2026](https://investors.arm.com/static-files/69c13c55-810b-4de8-93b6-7cea395659ea) · 2026-07-29 · 季度报告 Business Model，PDF第31页（零基P30），L1155–1162。 | Arm 同日提交的季度报告仍将AGI CPU投产列为预计于2026日历年底前实现。 | boundary | 初始产品交付、投产计划与确认销售收入是不同口径。两份同日披露没有解释初始交付的全部范围，不能自行将其限定为样品，也不能据此推定规模投产、Meta验收数量或Muse收入。 |
+
+<a id="NVDA"></a>
+
+### NVDA · NVIDIA 能否从 Muse 的 CPU 需求中受益？
+
+#### 1. 核心观点
+
+能，但截至 2026 年 10 月 9 日，能够确认的是 NVIDIA 已具备承接 Muse 类 CPU 需求的产品和 Meta 客户关系；尚不能确认 Muse 已为它带来多少新增 CPU 订单或收入。 NVIDIA 的直接受益路径是销售独立的 Grace、Vera CPU；模型推理带来的 GPU 收益则属于另一条路径。Meta 与 NVIDIA 的 CPU 部署合作已有官方公告，但公开的 Muse 单用户沙箱观察指向 AMD EPYC，不能把 Meta 整体采购 NVIDIA 的计划全部归因于 Muse。[S07 · Meta Builds AI Infrastructure With NVIDIA](https://nvidianews.nvidia.com/news/meta-builds-ai-infrastructure-with-nvidia)；[EA125_STARK · Meta Muse: The $0 AI Agent Running on a $40 Server](https://www.starkinsider.com/2026/09/meta-muse-specs-what-it-runs-on.html)
+
+#### 2. 关键论证
+
+##### Muse 为什么会给 NVIDIA 带来 CPU 机会？
+
+这里的 Muse 指 Meta 于 2026 年 9 月 8 日发布的个人 AI 智能体产品。它由 Muse Spark 模型驱动，但整个产品还包括每位用户的云端计算环境。Meta 明确说明，Muse Secure VM 是隔离的 Linux 虚拟机，具备 CPU、内存、存储与浏览器能力，可以编译代码、执行工具、运行并发子智能体及定时任务；需要模型推理时，通过代理调用外部基础设施。[S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/)；[S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse)
+
+因此，Muse 的计算需求至少要分成两部分：
+
+这个匹配有具体产品依据：NVIDIA 的 Vera 可以部署为独立 CPU 服务器，也可作为 Vera Rubin 平台的主机处理器；其公布的目标工作负载包括 Python 运行时、沙箱代码执行、编排和数据处理。这些能力与 Muse 的执行环节相符，但“适合运行”并不等于“已被 Muse 采购”。[F981_VERAMAY · NVIDIA Unveils Vera, the CPU for Agents](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Unveils-Vera-the-CPU-for-Agents/default.aspx)
+
+Muse 为什么会给 NVIDIA 带来 CPU 机会？
+
+| 计算环节 | CPU 需求与 NVIDIA 的关系 |
+| --- | --- |
+| 用户虚拟机、工具执行、代码编译、任务调度等 | 能形成独立 CPU 服务器需求。NVIDIA 可以用 Grace、Vera 竞争这些工作负载，无须每个用户沙箱都配一块 GPU。 |
+| 模型推理及其配套服务器 | 如果采用 NVIDIA 的 CPU–GPU 平台，可能同时带来主机 CPU 和 GPU 销售；但这是推理基础设施采购，不能与用户沙箱的 CPU 数量混算。 |
+
+##### NVIDIA 的受益基础已经到哪一步？
+
+NVIDIA 已有 Meta 的 Grace 部署合作，Vera 已宣布投产，Grace 也已有收入基线；下表逐项区分客户合作、投产和收入，保留各自的适用范围。[S07 · Meta Builds AI Infrastructure With NVIDIA](https://nvidianews.nvidia.com/news/meta-builds-ai-infrastructure-with-nvidia)[F981_VERAMAY · NVIDIA Unveils Vera, the CPU for Agents](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Unveils-Vera-the-CPU-for-Agents/default.aspx)[F981_NVQ · NVIDIA Q2 FY2027 earnings call transcript](https://investor.nvidia.com/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf)
+
+5月31日公告还给出了Grace累计接近250万颗的出货基线：这是全客户累计CPU出货，不是Meta订单或Muse采购。[F981_VERAMAY · NVIDIA Unveils Vera, the CPU for Agents](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Unveils-Vera-the-CPU-for-Agents/default.aspx)
+
+这也说明了归因上的关键限制：NVIDIA 的 CPU 业务增长和 Meta 的采购合作都早于 Muse 的公开发布。它们证明 NVIDIA 有能力获得这类业务，却不能单独证明增长由 Muse 引起。
+
+NVIDIA 的受益基础已经到哪一步？
+
+| 截止日前的事实 | 可以得出的结论 | 不能据此推出的结论 |
+| --- | --- | --- |
+| 2 月 17 日，NVIDIA 公布与 Meta 的多年合作：双方正在为 Meta 数据中心生产应用部署 Arm 架构 Grace CPU，并称之为首个大规模 Grace-only 部署。 | NVIDIA 已进入 Meta 的独立 CPU 部署合作，具有实际客户基础；公告未给全部部署完成量。 | 公告没有披露 Muse 专属用途、CPU 数量、合同金额或部署完成比例。 |
+| 同一公告称，双方合作部署 Vera，有可能在 2027 年大规模部署。 | Vera 有机会承接 Meta 后续 CPU 扩容。 | 这是未来部署表述，不能当成截至截止日已经完成的 Muse 装机。 |
+| 5 月 31 日，NVIDIA 宣布 Vera 已全面投产，系统厂商和云伙伴的系统计划从当年秋季开始供应。 | Vera 已超出概念和路线图阶段。 | 芯片投产不等于 Meta 或 Muse 已完成规模部署。 |
+| 8 月 26 日，NVIDIA 财报电话会称，Grace 过去 12 个月收入超过 50 亿美元，Vera 已向领先伙伴开始出货。 | NVIDIA 的服务器 CPU 业务已有收入基础。 | 这 50 亿美元没有被披露为独立 CPU 服务器收入，更没有被披露为 Muse 收入。 |
+
+##### 当前 Muse 用什么 CPU？NVIDIA 要获益还需要什么条件？
+
+一份可打开的第一手用户观察，由 Clinton Stark 于 9 月 22 日发表，记录的是 9 月 20 日的测量：其 Muse 环境显示 AMD EPYC 9D25、2 vCPU、约 7.7 GB 内存及 x86_64 架构，该沙箱中未发现本地 GPU。作者明确强调，这是一个账号环境的观察，Meta 未公布这些配置，也不承诺其他账号相同。[EA125_STARK · Meta Muse: The $0 AI Agent Running on a $40 Server](https://www.starkinsider.com/2026/09/meta-muse-specs-what-it-runs-on.html)
+
+这项证据支持“至少已有 Muse 环境使用 AMD CPU”，并不支持“所有 Muse 都用 AMD”，更不能据此确定 NVIDIA 的份额为零。Meta 的官方架构说明没有给出 CPU 厂商分配。
+
+NVIDIA 若要获得 Muse 沙箱扩容订单，至少需要满足以下条件：
+
+获得实际工作负载分配。Meta 已经采购 Grace，并不意味着所有新增虚拟机都会部署在 Grace 或 Vera 上。
+
+完成软件与系统适配。从已观察到的 x86_64 环境转到 Arm CPU，需要适配镜像、原生依赖、工具和隔离机制。Meta–NVIDIA 合作本身包含 CPU 软件库优化，但没有公布 Muse 迁移结果。
+
+在整机成本和任务体验上胜出。应比较每项任务的 CPU 时间、内存占用、并发能力、功耗和延迟。NVIDIA 公布的 Vera 通用性能优势不能直接当作 Muse 的实测提升。
+
+后两点是根据现有架构与产品差异作出的工程判断；截止日前没有查到 Muse 在 Grace、Vera 与 EPYC 之间的公开对照测试。[S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse)；[S07 · Meta Builds AI Infrastructure With NVIDIA](https://nvidianews.nvidia.com/news/meta-builds-ai-infrastructure-with-nvidia)
+
+##### 能否估算 NVIDIA 会卖多少 CPU？
+
+目前不能可靠给出 Muse 为 NVIDIA 带来的 CPU 颗数或收入，但可以明确已知数量的口径。
+
+以观察到的每个沙箱 2 vCPU 为例，假设有 100 万个同配置沙箱，得到的是：
+
+100 万个沙箱 × 2 vCPU／沙箱＝200 万个配置上的 vCPU。
+
+这不是 200 万个持续独占的物理核心，也不是对应数量的 CPU 芯片。专属虚拟机描述的是用户环境隔离，不能自动推出物理核心独占；实际服务器需求还取决于活跃率、平均负载、超分配、内存、浏览器池及宿主机开销。上述 100 万只是算例，并非 Muse 已披露的部署规模。
+
+NVIDIA 另于 3 月 16 日公布，单个 Vera CPU 机架配置 256 颗 CPU，支持超过 22,500 个并发 CPU 环境；按公布数字相除，相当于平均每颗 CPU 超过 87.9 个该口径环境。但这些环境不是经过验证的 Muse 用户配置，不能据此推算每机架可服务多少 Muse 用户。[S08 · NVIDIA Launches Vera CPU, Purpose-Built for Agentic AI](https://nvidianews.nvidia.com/news/nvidia-launches-vera-cpu-purpose-built-for-agentic-ai)
+
+截至截止日，缺少的是 Muse 实际资源消耗、NVIDIA 承接比例、由新增采购满足的比例，以及成交价格。因此，既不能把全部潜在虚拟机需求算成 NVIDIA 订单，也不能把没有披露的收入写成零。
+
+对父问题的意义是：NVIDIA 应列入 Muse 所代表的 CPU 需求增长的潜在直接受益公司，而且它已有 Meta 客户基础；但现有 Muse 沙箱观察对 AMD 的指向更直接。NVIDIA 的一般 CPU 业务增长、Meta 整体采购和 Muse 专属增量，仍需分别表述。
+
+充分性：未通过。已完整保留可核实业务、机制、基线及条件解释；所列实际归因或日期缺口仍未解决，不以形式校验替代充分性。
+
+缺口：未取得Muse在Grace/Vera上的工作负载分配、净新增采购、成交价及同任务成本测试，不能量化NVIDIA的Muse CPU收益或判定已实际受益。
+
+反向证据与边界：反向检索及原始用户观察指向AMD EPYC单账户，限制Muse默认用NVIDIA假设；官方Grace收入和Vera部署均不能拆出Muse份额。未找到Muse跨CPU同任务对照。
+
+下一步：取得Muse Grace/Vera部署及同任务测试，核对新采购、实际交付和CPU成交价格；保留Grace整体收入与Muse归因区别。
+
+#### 3. 数据列表
+
+| 材料、日期与原文定位 | 关键数据与事实 | 作用 | 口径限制与反向解释 |
+| --- | --- | --- | --- |
+| [S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/) · 2026-09-08 · 标题及How It Works，L241、254–259 | Meta 9月8日发布的Muse个人智能体由Muse Spark驱动，可在用户关闭应用后继续任务。 | support | 产品发布与GPU模型需求不同。 |
+| [S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse) · 2026-09-08 · The Lay of the Land；Muse Secure VM，L28、42–50 | Muse执行环境有CPU、内存和存储，可编译代码、运行工具、子智能体和定时任务；模型推理经代理访问外部基础设施。 | support | 说明CPU机会，未公开Muse CPU厂商配置。 |
+| [S07 · Meta Builds AI Infrastructure With NVIDIA](https://nvidianews.nvidia.com/news/meta-builds-ai-infrastructure-with-nvidia) · 2026-02-17 · Expanded NVIDIA CPU Deployment，L60–64 | NVIDIA 2月17日与Meta宣布Grace-only生产应用大规模部署合作；Vera的大规模部署是2027年的潜在安排。 | support | 已进入CPU合作体系，不是Muse专项采购或全量部署完成证明。 |
+| [F981_VERAMAY · NVIDIA Unveils Vera, the CPU for Agents](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Unveils-Vera-the-CPU-for-Agents/default.aspx) · 2026-05-31 · News Summary；CPU for Agents；Availability，L108、113、128–140 | NVIDIA 5月31日称Vera已全面投产，可用于独立CPU服务器或Vera Rubin主机，面向Python运行、沙箱代码与编排；合作伙伴系统预计秋季供应。 | support | 产品适配方向与投产不等于Muse验收；厂商任务性能不是Muse实测。 |
+| [F981_VERAMAY · NVIDIA Unveils Vera, the CPU for Agents](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Unveils-Vera-the-CPU-for-Agents/default.aspx) · 2026-05-31 · 正文，L114 | NVIDIA 5月31日披露Grace累计出货接近250万颗。 | support | 全客户、累计CPU出货，不是Meta订单或Muse数量。 |
+| [F981_NVQ · NVIDIA Q2 FY2027 earnings call transcript](https://investor.nvidia.com/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf) · 2026-08-26 · PDF第4页（P3），L126–132 | NVIDIA 8月26日电话会称Grace过去12个月收入超过50亿美元，Vera已向领先伙伴开始出货。 | support | Grace全业务口径，未拆独立CPU服务器或Muse；点名伙伴为OCI、SpaceXAI及当季AWS。 |
+| [EA125_STARK · Meta Muse: The $0 AI Agent Running on a $40 Server](https://www.starkinsider.com/2026/09/meta-muse-specs-what-it-runs-on.html) · 2026-09-22 · Musey's spec sheet与限制，L23–33 | 9月22日原始用户记录展示9月20日单个Muse环境为EPYC 9D25、2 vCPU、7.7GB内存、x86_64且未发现本地GPU；作者明确这是单账户自身测量。 | refute | 反对默认Muse全用NVIDIA；不证明NVIDIA全机群份额为零。 |
+| [S08 · NVIDIA Launches Vera CPU, Purpose-Built for Agentic AI](https://nvidianews.nvidia.com/news/nvidia-launches-vera-cpu-purpose-built-for-agentic-ai) · 2026-03-16 · Configurable for Every Data Center，L62 | NVIDIA 3月16日称Vera机架整合256颗CPU、支持超过22500个并发CPU环境。 | boundary | 厂商环境定义不等于Muse用户VM；不能据此计算每架Muse用户数。 |
+
+## 3. 标的推荐
+
+投资判断及其边界以问题树对应公司章节为准；研究回答充分不等于投资门禁通过。
+
+## 4. 来源索引
+
+[S01 · Introducing Muse: Personal AI Agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/) · 2026-09-08 · official_company
+
+[S02 · How We Built Safety Into Muse](https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse) · 2026-09-08 · official_company
+
+[S03 · The Future Is for Everyone: Muse for Small Business](https://about.fb.com/news/2026/09/introducing-muse-small-business/) · 2026-09-29 · official_company
+
+[S04 · Meta Q2 2026 Results](https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx) · 2026-07-29 · official_filing
+
+[S05 · AMD and Meta Expanded Strategic Partnership](https://newsroom.amd.com/news/amd-and-meta-announce-expanded-strategic-partnersh/) · 2026-02-24 · official_company
+
+[S06 · AMD Q2 2026 Financial Results](https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results) · 2026-08-04 · official_filing
+
+[S07 · Meta Builds AI Infrastructure With NVIDIA](https://nvidianews.nvidia.com/news/meta-builds-ai-infrastructure-with-nvidia) · 2026-02-17 · official_company
+
+[S08 · NVIDIA Launches Vera CPU, Purpose-Built for Agentic AI](https://nvidianews.nvidia.com/news/nvidia-launches-vera-cpu-purpose-built-for-agentic-ai) · 2026-03-16 · official_company
+
+[S09 · NVIDIA Q2 FY2027 Financial Results](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/) · 2026-08-26 · official_filing
+
+[S10 · Arm expands compute platform to silicon products](https://newsroom.arm.com/news/arm-agi-cpu-launch) · 2026-03-24 · official_company
+
+[S11 · Arm Q1 FYE2027 Shareholder Letter / Form 6-K](https://investors.arm.com/node/8356/html) · 2026-07-29 · official_filing
+
+[S12 · Intel Q2 2026 Financial Results](https://www.intc.com/news-events/press-releases/detail/1776/intel-reports-second-quarter-2026-financial-results) · 2026-07-23 · official_filing
+
+[S13 · Intel Q2 2026 Form 10-Q](https://www.intc.com/filings-reports/all-sec-filings/content/0000050863-26-000157/intc-20260627.htm) · 2026-07-24 · official_filing
+
+[S14 · Extended Component Lead Times Weigh on General Server Growth](https://www.trendforce.com/presscenter/news/20260415-13013.html) · 2026-04-15 · authoritative_third_party
+
+[S15 · CPU options for Amazon EC2 instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html) ·  · official_company
+
+[S16 · Amazon EC2 M7a Instances](https://aws.amazon.com/ec2/instance-types/m7a/) ·  · official_company
+
+[S17 · Firecracker: Lightweight Virtualization for Serverless Applications](https://www.usenix.org/system/files/nsdi20-paper-agache.pdf) · 2020-02 · authoritative_third_party
+
+[S18 · Introducing Muse Glimmer: An Open Agentic Model That Runs on Your Device](https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model) · 2026-08-10 · official_company
+
+[S19 · AMD EPYC 9965 specifications](https://www.amd.com/en/products/processors/server/epyc/9005-series/amd-epyc-9965.html) ·  · official_company
+
+[S20 · Meta’s Muse Tops 3 Million Weekly Users](https://www.theinformation.com/briefings/exclusive-metas-muse-tops-3-million-weekly-users) · 2026-09-30 · market_news
+
+[S21 · Geekbench 7 results and independent Muse run](https://www.tomshardware.com/tech-industry/artificial-intelligence/geekbench-7-results-suggest-openais-dots-agent-runs-on-nine-core-amd-epyc-vms-with-nearly-10gb-of-memory-newest-runs-score-about-six-times-meta-muse-in-multi-core) · 2026-09-30 · authoritative_third_party
+
+[S22 · Arm Q1 FYE2027 Financial Statements and Business Model](https://investors.arm.com/node/8361/html) · 2026-07-29 · official_filing
+
+[E8089_AVATAR · Bringing Your Muse to Life](https://research.meta.ai/blog/bringing-your-muse-to-life) · 2026-09-23 · official_company
+
+[E8089_CONNECT · The Biggest News From Connect 2026](https://about.fb.com/news/2026/09/the-biggest-news-from-connect-2026/) · 2026-09-24 · official_company
+
+[E8089_SUB · About Muse subscriptions](https://www.meta.com/en-gb/help/subscriptions/1021145227643680/) ·  · official_company
+
+[E8089_MAC · How Muse works with files and apps in your Mac](https://www.meta.com/help/artificial-intelligence/1126304576638594/) ·  · official_company
+
+[E8089_START · How to get started with Muse](https://www.meta.com/en-gb/help/artificial-intelligence/1331373868832401/) ·  · official_company
+
+[E8089_HELP · Muse Help Centre](https://www.meta.com/en-gb/help/artificial-intelligence/1303670544995562/) ·  · official_company
+
+[E8089_AXIOS · Meta courts small business with new Muse agent](https://www.axios.com/2026/09/29/meta-muse-ai-small-business) · 2026-09-29 · market_news
+
+[E8089_CONNECT_FR · Meta Connect 2026 — 法国版官方公告](https://about.fb.com/fr/news/2026/09/meta-connect-2026-meta-annonce-de-nouvelles-lunettes-ia-des-nouveautes-pour-muse-et-les-meta-vr-glasses/?noamp=mobile) · 2026-09-24 · official_company
+
+[EA125_DESIGN · How We Designed Muse](https://introducing.muse.ai/) · 2026-09 · official_company
+
+[EA125_STARK · Meta Muse: The $0 AI Agent Running on a $40 Server](https://www.starkinsider.com/2026/09/meta-muse-specs-what-it-runs-on.html) · 2026-09-22 · market_news
+
+[EA125_REDHAT · 7.3. Overcommitting Virtualized CPUs](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/virtualization_deployment_and_administration_guide/sect-overcommitting_with_kvm-overcommitting_virtualized_cpus) ·  · official_company
+
+[E321_EARLY · Muse Surpassed 500,000 Users After First Week](https://www.theinformation.com/briefings/exclusive-metas-muse-surpassed-500-000-users-first-week) · 2026-09-22 · market_news
+
+[E321_YAHOO · Meta bulls have a new Muse stat to love. Amazon could spoil it.](https://ca.finance.yahoo.com/news/meta-bulls-have-a-new-muse-stat-to-love-amazon-could-spoil-it-165920814.html) · 2026-10-08 · market_news
+
+[E321_VMTEST · Meta Muse gives you a pretty nice VM for free](https://unexcitedneurons.substack.com/p/meta-muse-gives-you-a-pretty-nice) · 2026-09-30 · expert_opinion
+
+[E321_9965 · AMD Launches 5th Gen AMD EPYC CPUs](https://www.amd.com/en/newsroom/press-releases/2024-10-10-amd-launches-5th-gen-amd-epyc-cpus-maintaining-le.html) · 2024-10-10 · official_company
+
+[E321_SCENARIO · What It Takes to Give Every Personal Agent a Computer](https://nextsignalprediction.substack.com/p/what-it-takes-to-give-every-personal) · 2026-09-24 · expert_opinion
+
+[E321_MAY · Agentic AI Changes the CPU/GPU Equation](https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html) · 2026-05-07 · official_company
+
+[E321_Q2 · AMD 2Q26 Earnings Call Transcript](https://d1io3yog0oux5.cloudfront.net/_e6fb18640ea7bfff80a48dc92268a25f/amd/db/841/9237/webcast_transcript/AMD2Q26EarningsCallTranscript.pdf) · 2026-08-04 · official_filing
+
+[E321_AAI · AAI 2026: AMD Delivers Full-Stack Compute for the Agentic AI Era](https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era) · 2026-07-23 · official_company
+
+[E321_AMDMETA · AMD and Meta expanded strategic partnership, EX-99.1](https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000045/pressreleasedatedfebruary2.htm) · 2026-02-24 · official_filing
+
+[E321_AMDLOCAL · 在 AMD 锐龙 AI Max+ Agentic PC 和 Radeon GPU 上运行 Meta Muse Glimmer 30B](https://www.amd.com/zh-cn/blogs/2026/run-meta-muse-glimmer-30b-on-amd-ryzen-ai-max-and-radeon-gpus.html) · 2026-08-10 · official_company
+
+[E321_INTELLOCAL · Day 0 Local Agentic AI Support on Intel Platforms with Meta’s Muse Glimmer](https://www.intel.com/content/www/us/en/developer/articles/community/day-0-local-agentic-ai-with-metas-muse-glimmer.html) ·  · official_company
+
+[F981_AWS · Meta Partners With AWS on Graviton Chips to Power Agentic AI](https://about.fb.com/news/2026/04/meta-partners-with-aws-on-graviton-chips-to-power-agentic-ai/) · 2026-04-24 · official_company
+
+[F981_AWS2 · Meta expands Amazon partnership with AWS Graviton chips for AI](https://www.aboutamazon.com/news/aws/meta-aws-graviton-ai-partnership) · 2026-04-24 · official_company
+
+[F981_METARM · Meta Partners With Arm to Develop New Class of Data Center Silicon](https://about.fb.com/news/2026/03/meta-partners-with-arm-to-develop-new-class-of-data-center-silicon/) · 2026-03-24 · official_company
+
+[F981_ARMSEP · Arm expands AI infrastructure with AGI CPU and Neoverse CSS N4](https://newsroom.arm.com/news/arm-agi-cpu-neoverse-css-n4-agentic-ai) · 2026-09-08 · official_company
+
+[F981_ARMMAR · Arm Form 6-K filed March 24, 2026](https://investors.arm.com/static-files/073df49d-58d8-451e-a196-a725319a9b7e) · 2026-03-24 · official_filing
+
+[F981_AVGO · Meta Partners With Broadcom to Co-Develop Custom AI Silicon](https://about.fb.com/news/2026/04/meta-partners-with-broadcom-to-co-develop-custom-ai-silicon/) · 2026-04-14 · official_company
+
+[F981_INTHIST · Facebook's new front-end server design](https://engineering.fb.com/2016/03/09/data-center-engineering/facebook-s-new-front-end-server-design-delivers-on-performance-without-sucking-up-power/) · 2016-03-09 · official_company
+
+[F981_INTJP · Intel Xeon 6+、ネットワーキング、AIシステム（官方日文版）](https://www.intel.co.jp/content/www/jp/ja/newsroom/news/data-center/intel-puts-agentic-ai-to-work-with-xeon-6-networking-and-ai-systems.html) · 2026-05-31 · official_company
+
+[F981_ARM20F · Arm FY2026 Form 20-F](https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/arm-20260331.htm) · 2026-05-26 · official_filing
+
+[F981_ARMFY · Arm FY2026 annual results and shareholder letter](https://investors.arm.com/node/8141/html) · 2026-05-06 · official_filing
+
+[F981_ARMQ · Arm Form 6-K quarterly report June 30, 2026](https://investors.arm.com/static-files/69c13c55-810b-4de8-93b6-7cea395659ea) · 2026-07-29 · official_filing
+
+[F981_TOTAL · Arm Total Access](https://www.arm.com/products/licensing/arm-total-access) ·  · official_company
+
+[F981_FLEX · Arm Flexible Access](https://www.arm.com/products/flexible-access) ·  · official_company
+
+[F981_VERAMAY · NVIDIA Unveils Vera, the CPU for Agents](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Unveils-Vera-the-CPU-for-Agents/default.aspx) · 2026-05-31 · official_company
+
+[F981_NVQ · NVIDIA Q2 FY2027 earnings call transcript](https://investor.nvidia.com/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf) · 2026-08-26 · official_filing
+
+[F981_TH25 · Meta Muse runs agents on AMD EPYC Turin hosts](https://www.tomshardware.com/pc-components/cpus/meta-muse-runs-agents-on-amd-epyc-turin-hosts-with-two-cores-and-8gb-of-memory-ai-agent-can-pass-terminal-commands-to-ubuntu-host-system) · 2026-09-25 · market_news

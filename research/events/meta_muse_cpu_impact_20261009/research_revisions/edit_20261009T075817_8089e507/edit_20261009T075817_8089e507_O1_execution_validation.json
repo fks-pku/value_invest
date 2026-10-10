@@ -1,0 +1,95 @@
+{
+  "ok": true,
+  "issues": [],
+  "summary": {
+    "plan_id": "l3rp_o1_edit_20261009T075817_8089e507",
+    "status": "completed",
+    "steps": 1,
+    "pending": 0,
+    "in_progress": 0,
+    "review_pending": 0,
+    "blocked": 0,
+    "completed": 1,
+    "events": 4,
+    "historical_plan_events": 4
+  },
+  "step_states": [
+    {
+      "step_id": "question:O1",
+      "status": "completed",
+      "answer": "Meta 于 2026 年 9 月 8 日发布的是个人 AI 智能体 Muse：用户交代目标后，它能浏览网页、连接应用并持续执行任务，背后的模型是 Muse Spark。截至 10 月 9 日，官方确认美国和加拿大、18 岁及以上用户是可用范围；入口包括 iOS、Android、网页和 WhatsApp，Mac 也已有官方使用说明，但地区、账户和功能仍有有限测试限制。服务有免费额度；Power 为每月 20 美元、Max 为每月 100 美元。小企业技能已推出，眼镜、Charm 和 Confidential VM 等仍须区分后续计划与实际交付。[S01][S03][E8089_AVATAR][E8089_SUB][E8089_MAC]",
+      "search_run_id": "edit_20261009T075817_8089e507_O1_01",
+      "source_ids": [
+        "E8089_AVATAR",
+        "E8089_AXIOS",
+        "E8089_CONNECT",
+        "E8089_HELP",
+        "E8089_MAC",
+        "E8089_START",
+        "E8089_SUB",
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "source_extraction_ids": [
+        "edit_20261009T075817_8089e507_ext_01",
+        "edit_20261009T075817_8089e507_ext_02",
+        "edit_20261009T075817_8089e507_ext_03",
+        "edit_20261009T075817_8089e507_ext_04",
+        "edit_20261009T075817_8089e507_ext_05",
+        "edit_20261009T075817_8089e507_ext_06",
+        "edit_20261009T075817_8089e507_ext_07",
+        "edit_20261009T075817_8089e507_ext_08",
+        "edit_20261009T075817_8089e507_ext_09",
+        "edit_20261009T075817_8089e507_ext_10",
+        "edit_20261009T075817_8089e507_ext_11",
+        "edit_20261009T075817_8089e507_ext_12",
+        "edit_20261009T075817_8089e507_ext_13",
+        "edit_20261009T075817_8089e507_ext_14"
+      ],
+      "source_review_ids": [
+        "edit_20261009T075817_8089e507_gpt_01",
+        "edit_20261009T075817_8089e507_gpt_02",
+        "edit_20261009T075817_8089e507_gpt_03",
+        "edit_20261009T075817_8089e507_gpt_04",
+        "edit_20261009T075817_8089e507_gpt_05",
+        "edit_20261009T075817_8089e507_gpt_06",
+        "edit_20261009T075817_8089e507_gpt_07",
+        "edit_20261009T075817_8089e507_gpt_08",
+        "edit_20261009T075817_8089e507_gpt_09",
+        "edit_20261009T075817_8089e507_gpt_10",
+        "edit_20261009T075817_8089e507_gpt_11",
+        "edit_20261009T075817_8089e507_gpt_12",
+        "edit_20261009T075817_8089e507_gpt_13",
+        "edit_20261009T075817_8089e507_gpt_14"
+      ],
+      "supporting_findings": [
+        "Meta 于 2026 年 9 月 8 日发布个人智能体 Muse，由 Muse Spark 驱动，可浏览网页、处理任务并在用户关闭应用后继续工作。",
+        "Muse 首发在美国通过 iOS、Android、muse.ai 推出，也可在 WhatsApp 与其通信。",
+        "Muse 的隔离 Linux VM 带浏览器、存储、CPU 和内存，可执行代码、并发子智能体和定时任务；Sentinel 独立控制连接器及网络操作权限。",
+        "9 月 29 日的小企业公告在 10 月 8 日更新后的版本中明确 Muse 在美国和加拿大可用，并在 Muse 内增加经营业务的技能和连接器。",
+        "小企业连接器包括 Facebook、Instagram 商业账户以及 Shopify、Stripe、QuickBooks、Notion、Slack、Canva 等；发布、发送和花钱需要用户批准。",
+        "官方订阅页列明 Power 每月 20 美元、每周 5 亿 Muse tokens；Max 每月 100 美元、每周 30 亿 Muse tokens。免费使用有额度限制，用尽可等待刷新或升级。",
+        "官方 Mac 帮助页说明 Muse 可在获得 macOS 权限后整理本地文件并读取或操作部分应用；用户可选择关闭、只读或读写，并撤销权限。",
+        "Muse 手机应用和网页使用 Meta 账户；没有账户者可用 Facebook、Instagram、邮箱或电话号码创建账户。",
+        "Axios 于 9 月 29 日报道 Muse 两档月费为 20 美元和 100 美元。"
+      ],
+      "refuting_findings": [
+        "反向检索发现：官方订阅页明确有限测试、地区和账户权益不同；首发美国不能代表后续加拿大状态；Connect 的眼镜、邮箱、Expedia 使用未来时态；技术演示不等于应用全部可用。第三方价格指南对免费额度和最高档名称存在口径差异，采用官方 Power/Max 和未公布免费精确额度的口径。未找到中国大陆正式开放的官方确认。"
+      ],
+      "gaps": [],
+      "next_actions": [
+        "若用户下一轮要求精确免费额度、加拿大最终价格或特定账户资格，再取得相应官方公开口径；本轮不扩大问题树。"
+      ],
+      "evidence_gate": {
+        "passed": true,
+        "reasons": [
+          "完整覆盖发布内容、地区年龄账户、入口、免费和官方付费口径、已交付与计划；未公开的个别额度和账户状态作为对应限制，不影响产品与适用范围的回答。"
+        ]
+      },
+      "latest_event_id": "edit_20261009T075817_8089e507_gate_evaluated",
+      "latest_recorded_at": "2026-10-09T08:06:34.937351+00:00",
+      "event_count": 4
+    }
+  ]
+}

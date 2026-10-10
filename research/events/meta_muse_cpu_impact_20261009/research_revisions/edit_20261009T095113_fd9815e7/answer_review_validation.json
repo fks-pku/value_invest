@@ -1,0 +1,19 @@
+{
+  "revision_id": "edit_20261009T095113_fd9815e7",
+  "validated_ids": [
+    "C0",
+    "AMD",
+    "INTC",
+    "ARM",
+    "NVDA"
+  ],
+  "excerpt_consistency_passed": true,
+  "semantic_sufficiency": {
+    "C0": false,
+    "AMD": false,
+    "INTC": false,
+    "ARM": false,
+    "NVDA": false
+  },
+  "note": "validate_answer_review只验证文本一致性；实质未解问题保留gaps。"
+}

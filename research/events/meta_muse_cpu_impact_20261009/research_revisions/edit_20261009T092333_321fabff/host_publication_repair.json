@@ -1,0 +1,8 @@
+{
+  "recorded_at": "2026-10-09T09:50:55.770595+00:00",
+  "repair": "Restore protected legacy validation summary byte for byte from immutable before snapshot; retain newly computed execution checks in current revision and plan_validation.json.",
+  "restored_file": "parent_execution_validation.json",
+  "restored_exactly": true,
+  "research_prose_changed": false,
+  "history_changed": false
+}

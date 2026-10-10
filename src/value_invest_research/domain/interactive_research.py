@@ -75,6 +75,7 @@ def propose_edit(tree: dict, edit: dict) -> dict:
         children = [n for n in current.values() if n.get("parent_id") == node["id"]]
         node["mode"] = "rollup" if children else "leaf"
         if node["id"] in affected:
+            node.pop("answer_review", None)
             node.update(passed=False, evidence=[], tables=[], refutation="",
                         conclusion="问题范围已变化，等待本轮研究；旧结论不作为当前答案。",
                         analysis=[{"heading": "等待重新验证", "paragraphs": ["按新问题重新取证、分析并检查充分性，之后逐层汇总。"]}],
@@ -107,6 +108,32 @@ def validate_researched_tree(before: dict, proposal: dict, after: dict) -> None:
             raise ValueError(f"无关问题 {nid} 被修改。")
         if nid in proposal["affected_ids"] and node["conclusion"] == expected[nid]["conclusion"]:
             raise ValueError(f"{nid} 尚未产生本轮分析。")
+
+
+def validate_qa_tree(qa: dict, tree: dict) -> None:
+    """Accept flat and nested QA contracts without dropping hierarchy checks."""
+    nodes = qa.get("nodes")
+    if nodes is None and isinstance(qa.get("root"), dict):
+        nodes = []
+
+        def visit(node, parent_id=None):
+            if not isinstance(node, dict) or (node.get("parent_id", parent_id) or "") != (parent_id or ""):
+                raise ValueError("研究 QA 的嵌套父子关系不一致。")
+            nodes.append({**node, "parent_id": parent_id})
+            children = node.get("children", [])
+            if not isinstance(children, list):
+                raise ValueError("研究 QA 的子问题必须为列表。")
+            for child in children:
+                visit(child, node.get("id"))
+
+        visit(qa["root"])
+    expected = {n["id"]: n for n in tree["nodes"]}
+    if (not isinstance(nodes, list) or any(not isinstance(n, dict) for n in nodes)
+            or len(nodes) != len(expected) or {n.get("id") for n in nodes} != set(expected)
+            or any((n.get("parent_id") or "") != (expected[n["id"]].get("parent_id") or "")
+                   or any(n.get(k) != expected[n["id"]].get(k) for k in ("question", "level"))
+                   for n in nodes)):
+        raise ValueError("研究 QA 与显示问题树不一致。")
 
 
 def validate_research_state(state: dict, tree: dict, revision_id: str) -> None:

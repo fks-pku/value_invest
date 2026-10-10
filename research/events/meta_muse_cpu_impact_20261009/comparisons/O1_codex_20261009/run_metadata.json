@@ -1,0 +1,17 @@
+{
+  "exit_code": 0,
+  "elapsed_seconds": 82.7,
+  "answer_written": true,
+  "question_id": "O1",
+  "as_of_date": "2026-10-09",
+  "comparison_type": "one_independent_codex_answer",
+  "model_setting": "CLI default; no model override",
+  "prompt_context": "question and cutoff only; no original answer or repository framework supplied",
+  "web_actions_completed": 6,
+  "report_modified": false,
+  "files": {
+    "prompt.txt": "29d36a5d790117f364fa5cff817ab622dfd91a018fac22b2ea9d7d709f537a6f",
+    "codex_answer.md": "ee4aaf473eec4406f69592c89ab85649841444c10e763dda5c1da4f4c14c18f9",
+    "html_original.txt": "c85b1745d6b3d22cd47ee6dc6c3f1fc2334c5201cb8ad137c6f5cf2f9e0f8e03"
+  }
+}

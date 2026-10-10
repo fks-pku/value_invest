@@ -1,0 +1,58 @@
+{
+  "ok": true,
+  "issues": [],
+  "summary": {
+    "plan_id": "l3rp_intc_523eb03937fd3aa2",
+    "status": "blocked",
+    "steps": 1,
+    "pending": 0,
+    "in_progress": 0,
+    "review_pending": 0,
+    "blocked": 1,
+    "completed": 0,
+    "events": 5,
+    "historical_plan_events": 0
+  },
+  "step_states": [
+    {
+      "step_id": "question:INTC",
+      "status": "blocked",
+      "answer": "Intel 可受益于服务器 CPU 的既有需求和供给紧张，但 Muse 直接供货尚未核实。新增需求与份额压力可能同时发生，收入改善不等于 Muse 带来的新增订单。",
+      "search_run_id": "INTC_03",
+      "source_ids": [
+        "S12",
+        "S13"
+      ],
+      "source_extraction_ids": [
+        "ext_INTC_S12_v1",
+        "ext_INTC_S13_v1"
+      ],
+      "source_review_ids": [
+        "gpt_INTC_S12_v1",
+        "gpt_INTC_S13_v1"
+      ],
+      "supporting_findings": [
+        "Q2 DCAI 收入 63 亿美元，同比增长 59%。"
+      ],
+      "refuting_findings": [
+        "服务器量同比增 9%、ASP 增 48%；其他 DCAI 收入受 ASIC 需求驱动。 限制：ASP 主要是高端组合，不代表同款普涨 48%。",
+        "服务器可供给量受内部产能限制，行业组件约束可能延续。 限制：是公司供应与行业组件风险；不能推广为所有 CPU 供应商均同幅短缺。",
+        "市场扩大可伴随 Intel 份额下降；高 ASP 也可能来自产品组合而非事件定价权。"
+      ],
+      "gaps": [
+        "未核实 Muse/Meta 新执行池的 Xeon 定点与份额。",
+        "缺少收入到增量利润的 CPU 独立口径。"
+      ],
+      "next_actions": [
+        "跟踪 Xeon 定点、服务器量和同款净售价；未取得供货证据前保持行业竞争者定位。"
+      ],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "INTC_step_blocked_v1",
+      "latest_recorded_at": "2026-10-09T03:52:17.248530+00:00",
+      "event_count": 5
+    }
+  ]
+}

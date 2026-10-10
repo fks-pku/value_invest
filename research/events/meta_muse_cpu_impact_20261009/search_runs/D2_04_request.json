@@ -1,0 +1,23 @@
+{
+  "l3_plan_id": "l3rp_d2_b4a54eb86593c40a",
+  "l3_node_id": "D2",
+  "question_node_id": "D2",
+  "question_level": 3,
+  "research_step_id": "question:D2",
+  "search_run_id": "D2_04",
+  "origin": "active_question_search",
+  "request": {
+    "find": [
+      {
+        "ref_id": "turn11view0",
+        "pattern": "13%"
+      },
+      {
+        "ref_id": "turn23view0",
+        "pattern": "$130-145"
+      }
+    ],
+    "response_length": "short"
+  },
+  "recorded_at": "2026-10-09T03:49:30.683Z"
+}

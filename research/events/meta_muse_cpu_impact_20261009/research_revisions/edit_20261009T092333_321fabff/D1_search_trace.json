@@ -1,0 +1,34 @@
+{
+  "revision_id": "edit_20261009T092333_321fabff",
+  "l3_plan_id": "l3rp_d1_edit_20261009T092333_321fabff",
+  "l3_node_id": "D1",
+  "question_node_id": "D1",
+  "question_level": 3,
+  "research_step_id": "question:D1",
+  "search_run_id": "edit_20261009T092333_321fabff_D1_01",
+  "recorded_at": "2026-10-09T09:38:37.743327+00:00",
+  "question": "用户增长会变成多少 CPU 需求？",
+  "queries": [
+    "Meta Muse September 2026 users 3 million CPU virtual machine 2 vCPU",
+    "Meta Muse CPU demand overcommit physical cores benchmark September 2026",
+    "Meta Muse Similarweb October 5 2026 2.182 million daily users Yahoo",
+    "site.theinformation.com/briefings/exclusive-metas-muse-surpassed-500-000-users-first-week September 22 250000",
+    "site.theinformation.com/briefings/exclusive-metas-muse-tops-3-million-weekly-users million daily September 30",
+    "site.amd.com EPYC 9965 October 10 2024 192"
+  ],
+  "source_ids": [
+    "S01",
+    "S02",
+    "EA125_STARK",
+    "E321_EARLY",
+    "S20",
+    "E321_YAHOO",
+    "E321_VMTEST",
+    "E321_9965"
+  ],
+  "origin": "active_question_search",
+  "status": "searched_and_sources_opened_with_recorded_failures",
+  "refutation_result": "单用户测试未见降频却不能辨认全站SMT；官方只说隔离和足够资源，未承诺双物理核；网络等待、后台任务与应用DAU不等价。Yahoo原页打开失败，TI为索引可见报道。",
+  "reviewer": "GPT primary agent",
+  "open_method": "web search; original page open and find; Q2 PDF linked by AMD official calendar"
+}

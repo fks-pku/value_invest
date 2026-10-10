@@ -1,12 +1,22 @@
 # 本地交互研究器
 
-启动：双击 `tools/start_researcher.command`，或在仓库根目录执行：
+研究报告默认打开可编辑版本。先在仓库根目录启动目标项目：
 
 ```bash
-PYTHONPATH=src python3 -m value_invest_research.adapters.inbound.researcher_server research/events/gpt6_ai_industry_impact_20260910 --port 8765
+bash tools/start_researcher.command research/events/meta_muse_cpu_impact_20261009 --port 8765
 ```
 
-打开 <http://127.0.0.1:8765>。页面必须通过本地服务访问；`file://` 报告仍是离线阅读版，不能直接启动研究。
+默认打开 <http://127.0.0.1:8765/professional_report.html>；根路径也进入同一编辑器。
+页面右上角“导出离线 HTML”提供静态副本。磁盘上的 `professional_report.html`
+保留可离线阅读的内容；`file://` 不是默认交付入口，也不能直接启动研究。
+
+交付新报告或重新打开报告时，先启动或复用对应项目的服务，检查 `/api/state`
+确实返回目标项目的问题树，再打开可编辑 URL。端口被其它项目占用时另选端口；
+不要中断其它项目的研究，也不要把固定端口误当成目标项目。服务不可用时明确说明，
+不能把静态预览称为可编辑版。通用启动器必须指定项目目录，不再默认打开 GPT-6 项目。
+
+Muse 项目可双击 `research/events/meta_muse_cpu_impact_20261009/start_researcher.command`。
+同一端口只能运行一个项目；切换项目时先结束原服务。编辑器兼容平铺 `nodes` 和嵌套 `root/children` 的 QA 格式，发布时均校验完整问题层级。
 
 ## 使用
 
@@ -21,6 +31,17 @@ PYTHONPATH=src python3 -m value_invest_research.adapters.inbound.researcher_serv
 研究仍使用项目原有 `as_of_date` 与 `run_mode`，不会自动变成今日实时研究。GPT-6 项目仍是 2026-09-10 截面。
 
 ## 实际执行与发布
+
+每个当前叶子使用 `direct-answer-v1`，分两步执行：先在独立、只读的空工作目录
+里按原问题检索并形成普通 Codex 式的完整答案，再由整理阶段逐项核读来源、补证并
+写入共享报告和账本。第一步只得到题目、截止日、消歧背景和用户补充要求，不带旧答案
+或整套报告字段。它不等于证据门禁通过。两步共同使用本轮超时预算；取消在两步均生效。
+
+整理阶段按原题检查信息覆盖，保留内部 `answer_review`；未答部分保留缺口并禁止通过。
+程序检查摘录是否确实出现在主文及缺口/状态是否一致，语义完整性仍由 GPT 复核。
+原始独立回答保存在本轮本机记录，成功发布后归档到
+`research_revisions/<revision>/direct_answers/`，可检查整理是否丢失重要信息。
+多问题重研现在会先逐题独立回答，再统一整理，因此可能增加执行时间和用量。
 
 后端调用本机登录的 Codex CLI，启用真实联网检索；没有 mock fallback。根据 [Codex 官方非交互执行文档](https://learn.chatgpt.com/docs/non-interactive-mode)，CLI 可用于自动化执行并复用既有登录。需要可用登录、网络和额度，可能耗时数分钟到一小时。用 `codex login status` 检查登录；应用不读取或保存凭据。
 

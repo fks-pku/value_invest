@@ -1,0 +1,61 @@
+{
+  "ok": true,
+  "issues": [],
+  "summary": {
+    "plan_id": "l3rp_d2_b4a54eb86593c40a",
+    "status": "blocked",
+    "steps": 1,
+    "pending": 0,
+    "in_progress": 0,
+    "review_pending": 0,
+    "blocked": 1,
+    "completed": 0,
+    "events": 5,
+    "historical_plan_events": 0
+  },
+  "step_states": [
+    {
+      "step_id": "question:D2",
+      "status": "blocked",
+      "answer": "方向上增加执行需求，规模和新增采购尚不能可靠归因。发布前 CPU 市场已经增长并受供应约束；Muse 更像新增需求来源的验证点，目前不足以单独解释全行业涨价。",
+      "search_run_id": "D2_04",
+      "source_ids": [
+        "S14",
+        "S13",
+        "S04"
+      ],
+      "source_extraction_ids": [
+        "ext_D2_S14_v1",
+        "ext_D2_S13_v1",
+        "ext_D2_S04_v1"
+      ],
+      "source_review_ids": [
+        "gpt_D2_S14_v1",
+        "gpt_D2_S13_v1",
+        "gpt_D2_S04_v1"
+      ],
+      "supporting_findings": [],
+      "refuting_findings": [
+        "4 月预测 2026 年总体服务器出货增长 13%，并提示组件交期约束。 限制：旧预测；服务器不是 CPU 颗数，不能与虚拟核相除。",
+        "Q2 服务器量同比增长 9%、ASP 增长 48%；高端产品组合是 ASP 增长主因。 限制：供应商口径；不能当全市场同幅涨价。",
+        "服务器需求超过可供给量，受内部产能限制；部分行业组件约束预计延续至下一年。 限制：区别 CCPG 与 DCAI，不能把客户端约束缓解误读为服务器全部缓解。",
+        "发布前全年资本开支指引已为 1,300–1,450 亿美元。 限制：全公司支出，含融资租赁本金；不是 Muse 或 CPU 预算。",
+        "发布前增长、产品高端化、闲置容量复用及其他 AI 项目均能解释部分观察变化。"
+      ],
+      "gaps": [
+        "未披露 Muse 可归因 CPU 采购、当前利用率和被替代负载。",
+        "缺少一致口径的当期 CPU 市场绝对基线，不能输出占比。"
+      ],
+      "next_actions": [
+        "核验下一期资本开支与 CPU 订单中是否单列智能体容量及供应商。"
+      ],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "D2_step_blocked_v1",
+      "latest_recorded_at": "2026-10-09T03:52:17.248530+00:00",
+      "event_count": 5
+    }
+  ]
+}

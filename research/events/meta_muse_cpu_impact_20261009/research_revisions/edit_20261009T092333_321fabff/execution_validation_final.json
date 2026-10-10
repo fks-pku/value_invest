@@ -1,0 +1,387 @@
+{
+  "ok": true,
+  "issues": [],
+  "summary": {
+    "plan_id": "rp_edit_20261009T092333_321fabff",
+    "status": "blocked",
+    "steps": 10,
+    "pending": 7,
+    "in_progress": 0,
+    "review_pending": 0,
+    "blocked": 3,
+    "completed": 0,
+    "events": 9,
+    "historical_plan_events": 12,
+    "nested": {
+      "parent_plan_id": "rp_edit_20261009T092333_321fabff",
+      "status": "blocked",
+      "l3_plans": 10,
+      "completed_l3_plans": 1,
+      "leaf_steps": 10,
+      "completed_leaf_steps": 1,
+      "blocked_leaf_steps": 9,
+      "max_depth": 3
+    }
+  },
+  "step_states": [
+    {
+      "step_id": "rollup:O1",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "rollup:O2",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "rollup:D1",
+      "status": "blocked",
+      "answer": "Muse 用户增长会增加服务器 CPU 工作量，但截至 2026 年 10 月 9 日，公开资料不足以确定“每新增多少用户，Meta 就采购多少颗 CPU”。可以给出两种不同口径：沿用用户观察到的每台虚拟机 2 vCPU 配置，新增 100 万个已配置账户对应 200 万个 vCPU 的名义配额；若新增的是 100 万日活用户，并假设每人每天消耗 1 个物理核小时、峰值为平均负载的两倍、目标利用率 60%，则约需 724 颗 192 核服务器 CPU 的容量。前者不是物理核心数，后者是可复算情景，均不是 Meta 已披露的采购量。 [S01][EA125_STARK][E321_9965]",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [
+        "未取得 Muse 每用户实际物理核时、峰均比、全站物理核/vCPU映射、利用率和内存驻留/回收率，不能确定实际容量转换系数。",
+        "未取得已有可用容量、故障冗余和采购记录，不能把容量换算为新增CPU订单。",
+        "用户基线来自媒体所见内部数据及第三方估计；Meta统一口径原始遥测未公开，Yahoo原页与Similarweb原表未取得。"
+      ],
+      "next_actions": [
+        "下一轮优先取得带定义的活跃/后台账户遥测和每账户核时、内存驻留、峰值及既有余量；对照订单，不新增问题。",
+        "补取Similarweb统计原表与可读取的同期原报道，确认平台覆盖和去重口径。"
+      ],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "edit_20261009T092333_321fabff_parent_D1_step_blocked",
+      "latest_recorded_at": "2026-10-09T09:48:50.564339+00:00",
+      "event_count": 3
+    },
+    {
+      "step_id": "rollup:D2",
+      "status": "blocked",
+      "answer": "截至 2026 年 10 月 9 日，Muse 已经带来服务器 CPU 工作负载，但公开资料尚不能量出它新增了多少颗 CPU、多少采购收入，或拉动了市场几个百分点。可以明确的是：增量主要来自每个用户的云端执行环境、工具调用和后台任务；流传的“1 亿用户需要约 158 万颗 CPU”是按物理核心完全专用计算的情景，不能当作实际订单。 [S02][E321_SCENARIO]",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [
+        "未取得 Muse 专属CPU核时、存量吸收率、被替代负载、实际采购颗数、净成交价与交付年份，不能给出市场净增收入。",
+        "未取得与Muse采购期间一致的2026年服务器CPU市场绝对实绩分母，2030年2200亿美元预测不能替代当前市场占比。"
+      ],
+      "next_actions": [
+        "取得Muse执行池扩容与采购归因、同期服务器CPU实际市场规模；用真实用量替换情景参数并按交付年度比较。"
+      ],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "edit_20261009T092333_321fabff_parent_D2_step_blocked",
+      "latest_recorded_at": "2026-10-09T09:48:50.564339+00:00",
+      "event_count": 3
+    },
+    {
+      "step_id": "rollup:T1",
+      "status": "blocked",
+      "answer": "从工作负载看，最直接的潜在受益对象是承载云端智能体的服务器 CPU；端侧则分成两类：普通手机、电脑可以作为轻量入口，高内存、带 GPU 的电脑可以运行本地智能体。存在替代压力的是部分低效率服务器、为后台代理专门常开的个人电脑，以及某些必须手动打开应用的操作方式，尚不能判断手机、PC 或某一种 CPU 架构会被整体淘汰。 [S02][S18][S07][S10]",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [
+        "Intel Glimmer支持页没有可核实的精确发布日期；8月14日仅为测试日，其具体配置和截止日可用性未通过日期门禁。",
+        "未取得 Muse 专属CPU供应商份额、同任务跨架构成本/能效实测及终端替换量，不能判定哪条路线已实现净销量受益或替代规模。"
+      ],
+      "next_actions": [
+        "取得Intel页面带日历发布日期的版本；补充Muse按工作负载的CPU部署份额与同任务测试，核对眼镜/Charm交付及终端使用替代数据。"
+      ],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "edit_20261009T092333_321fabff_parent_T1_step_blocked",
+      "latest_recorded_at": "2026-10-09T09:48:50.564339+00:00",
+      "event_count": 3
+    },
+    {
+      "step_id": "rollup:C0",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "rollup:AMD",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "rollup:INTC",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "rollup:ARM",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "rollup:NVDA",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    }
+  ],
+  "l3_plans": [
+    {
+      "l3_node_id": "O1",
+      "plan_id": "l3rp_o1_edit_20261009T075817_8089e507",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 13,
+      "historical_plan_events": 4
+    },
+    {
+      "l3_node_id": "O2",
+      "plan_id": "l3rp_o2_edit_20261009T090937_a1258264",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 5,
+      "historical_plan_events": 4
+    },
+    {
+      "l3_node_id": "D1",
+      "plan_id": "l3rp_d1_edit_20261009T092333_321fabff",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 8,
+      "historical_plan_events": 5
+    },
+    {
+      "l3_node_id": "D2",
+      "plan_id": "l3rp_d2_edit_20261009T092333_321fabff",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 8,
+      "historical_plan_events": 5
+    },
+    {
+      "l3_node_id": "T1",
+      "plan_id": "l3rp_t1_edit_20261009T092333_321fabff",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 8,
+      "historical_plan_events": 4
+    },
+    {
+      "l3_node_id": "C0",
+      "plan_id": "l3rp_c0_b0f77599b303e169",
+      "max_depth": 3,
+      "status": "completed",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 0,
+      "completed": 1,
+      "events": 4,
+      "historical_plan_events": 0
+    },
+    {
+      "l3_node_id": "AMD",
+      "plan_id": "l3rp_amd_9fee216dcf58382c",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 5,
+      "historical_plan_events": 0
+    },
+    {
+      "l3_node_id": "INTC",
+      "plan_id": "l3rp_intc_523eb03937fd3aa2",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 5,
+      "historical_plan_events": 0
+    },
+    {
+      "l3_node_id": "ARM",
+      "plan_id": "l3rp_arm_987ba7b1e9d30304",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 5,
+      "historical_plan_events": 0
+    },
+    {
+      "l3_node_id": "NVDA",
+      "plan_id": "l3rp_nvda_015311d1b0232324",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 5,
+      "historical_plan_events": 0
+    }
+  ]
+}

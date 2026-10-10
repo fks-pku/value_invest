@@ -1,0 +1,60 @@
+{
+  "revision_id": "edit_20261009T075817_8089e507",
+  "question": "Muse 发布了什么，目前谁能使用？",
+  "search_run_id": "edit_20261009T075817_8089e507_O1_01",
+  "queries": [
+    "Meta Muse September 8 2026 personal agent Canada availability pricing",
+    "Meta Muse agent restrictions waitlist 18 free subscription 20 100",
+    "site.meta.com/help Muse subscriptions 500",
+    "site:ai.meta.com/muse Mac free",
+    "site:meta.com About Muse subscriptions",
+    "site:meta.com/help/muse subscriptions",
+    "site:ai.meta.com/muse free limit",
+    "site:about.fb.com Muse October 2026 glasses available Canada"
+  ],
+  "opened_sources": [
+    "https://research.meta.ai/blog/bringing-your-muse-to-life",
+    "https://about.fb.com/news/2026/09/the-biggest-news-from-connect-2026/",
+    "https://www.meta.com/en-gb/help/subscriptions/1021145227643680/",
+    "https://www.meta.com/help/artificial-intelligence/1126304576638594/",
+    "https://www.meta.com/en-gb/help/artificial-intelligence/1331373868832401/",
+    "https://www.meta.com/en-gb/help/artificial-intelligence/1303670544995562/",
+    "https://www.axios.com/2026/09/29/meta-muse-ai-small-business",
+    "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+    "https://about.fb.com/news/2026/09/introducing-muse-small-business/",
+    "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse"
+  ],
+  "extraction_ids": [
+    "edit_20261009T075817_8089e507_ext_01",
+    "edit_20261009T075817_8089e507_ext_02",
+    "edit_20261009T075817_8089e507_ext_03",
+    "edit_20261009T075817_8089e507_ext_04",
+    "edit_20261009T075817_8089e507_ext_05",
+    "edit_20261009T075817_8089e507_ext_06",
+    "edit_20261009T075817_8089e507_ext_07",
+    "edit_20261009T075817_8089e507_ext_08",
+    "edit_20261009T075817_8089e507_ext_09",
+    "edit_20261009T075817_8089e507_ext_10",
+    "edit_20261009T075817_8089e507_ext_11",
+    "edit_20261009T075817_8089e507_ext_12",
+    "edit_20261009T075817_8089e507_ext_13",
+    "edit_20261009T075817_8089e507_ext_14"
+  ],
+  "review_ids": [
+    "edit_20261009T075817_8089e507_gpt_01",
+    "edit_20261009T075817_8089e507_gpt_02",
+    "edit_20261009T075817_8089e507_gpt_03",
+    "edit_20261009T075817_8089e507_gpt_04",
+    "edit_20261009T075817_8089e507_gpt_05",
+    "edit_20261009T075817_8089e507_gpt_06",
+    "edit_20261009T075817_8089e507_gpt_07",
+    "edit_20261009T075817_8089e507_gpt_08",
+    "edit_20261009T075817_8089e507_gpt_09",
+    "edit_20261009T075817_8089e507_gpt_10",
+    "edit_20261009T075817_8089e507_gpt_11",
+    "edit_20261009T075817_8089e507_gpt_12",
+    "edit_20261009T075817_8089e507_gpt_13",
+    "edit_20261009T075817_8089e507_gpt_14"
+  ],
+  "refutation_result": "反向检索发现：官方订阅页明确有限测试、地区和账户权益不同；首发美国不能代表后续加拿大状态；Connect 的眼镜、邮箱、Expedia 使用未来时态；技术演示不等于应用全部可用。第三方价格指南对免费额度和最高档名称存在口径差异，采用官方 Power/Max 和未公布免费精确额度的口径。未找到中国大陆正式开放的官方确认。"
+}

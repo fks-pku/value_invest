@@ -1,0 +1,24 @@
+{
+  "l3_plan_id": "l3rp_d2_b4a54eb86593c40a",
+  "l3_node_id": "D2",
+  "question_node_id": "D2",
+  "question_level": 3,
+  "research_step_id": "question:D2",
+  "search_run_id": "D2_01",
+  "origin": "active_question_search",
+  "request": {
+    "search_query": [
+      {
+        "q": "site.trendforce.com 2026 server CPU demand shipment general purpose agentic"
+      },
+      {
+        "q": "site.investor.fb.com 2026 second quarter results capital expenditures 2026"
+      },
+      {
+        "q": "site.intc.com 2026 second quarter results data center CPU demand supply"
+      }
+    ],
+    "response_length": "short"
+  },
+  "recorded_at": "2026-10-09T03:39:35.433Z"
+}

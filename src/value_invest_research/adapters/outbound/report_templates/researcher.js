@@ -90,7 +90,10 @@
           if (progress.job_id === job.id) {
             const key = JSON.stringify(progress);
             if (key !== processKey) {
-              if (processState?.job_id !== progress.job_id) $('process').open = true;
+              if (processState?.job_id !== progress.job_id ||
+                  (activeStates.has(processState?.status) && !activeStates.has(progress.status))) {
+                $('process').open = Boolean(busy);
+              }
               processState = progress; processKey = key; renderProcess();
             }
           }
