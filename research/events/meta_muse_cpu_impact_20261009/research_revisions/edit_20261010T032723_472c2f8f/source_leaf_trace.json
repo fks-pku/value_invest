@@ -1,0 +1,265 @@
+{
+  "revision_id": "edit_20261010T032723_472c2f8f",
+  "checked_at": "2026-10-10T03:49:44.160958+00:00",
+  "links": [
+    {
+      "question_node_id": "O1",
+      "source_id": "S01",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_1",
+      "review_id": "edit_20261010T032723_472c2f8f_O1_review_1",
+      "claim_exact_match": true,
+      "fact_locator_exact_match": true,
+      "cutoff_passed": true
+    },
+    {
+      "question_node_id": "O1",
+      "source_id": "S01",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_2",
+      "review_id": "edit_20261010T032723_472c2f8f_O1_review_2",
+      "claim_exact_match": true,
+      "fact_locator_exact_match": true,
+      "cutoff_passed": true
+    },
+    {
+      "question_node_id": "O1",
+      "source_id": "S03",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_3",
+      "review_id": "edit_20261010T032723_472c2f8f_O1_review_3",
+      "claim_exact_match": true,
+      "fact_locator_exact_match": true,
+      "cutoff_passed": true
+    },
+    {
+      "question_node_id": "O1",
+      "source_id": "E472_FR",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_4",
+      "review_id": "edit_20261010T032723_472c2f8f_O1_review_4",
+      "claim_exact_match": true,
+      "fact_locator_exact_match": true,
+      "cutoff_passed": true
+    },
+    {
+      "question_node_id": "O1",
+      "source_id": "E472_AP",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_5",
+      "review_id": "edit_20261010T032723_472c2f8f_O1_review_5",
+      "claim_exact_match": true,
+      "fact_locator_exact_match": true,
+      "cutoff_passed": true
+    },
+    {
+      "question_node_id": "O1",
+      "source_id": "E472_MAC",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_6",
+      "review_id": "edit_20261010T032723_472c2f8f_O1_review_6",
+      "claim_exact_match": true,
+      "fact_locator_exact_match": true,
+      "cutoff_passed": true
+    },
+    {
+      "question_node_id": "O1",
+      "source_id": "E8089_AXIOS",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_7",
+      "review_id": "edit_20261010T032723_472c2f8f_O1_review_7",
+      "claim_exact_match": true,
+      "fact_locator_exact_match": true,
+      "cutoff_passed": true
+    },
+    {
+      "question_node_id": "O1",
+      "source_id": "S03",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_8",
+      "review_id": "edit_20261010T032723_472c2f8f_O1_review_8",
+      "claim_exact_match": true,
+      "fact_locator_exact_match": true,
+      "cutoff_passed": true
+    },
+    {
+      "question_node_id": "O1",
+      "source_id": "E8089_CONNECT",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_9",
+      "review_id": "edit_20261010T032723_472c2f8f_O1_review_9",
+      "claim_exact_match": true,
+      "fact_locator_exact_match": true,
+      "cutoff_passed": true
+    },
+    {
+      "question_node_id": "O1",
+      "source_id": "S02",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_10",
+      "review_id": "edit_20261010T032723_472c2f8f_O1_review_10",
+      "claim_exact_match": true,
+      "fact_locator_exact_match": true,
+      "cutoff_passed": true
+    },
+    {
+      "question_node_id": "O2",
+      "source_id": "S01",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O2_01",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O2_ext_1",
+      "review_id": "edit_20261010T032723_472c2f8f_O2_review_1",
+      "claim_exact_match": true,
+      "fact_locator_exact_match": true,
+      "cutoff_passed": true
+    },
+    {
+      "question_node_id": "O2",
+      "source_id": "S02",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O2_01",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O2_ext_2",
+      "review_id": "edit_20261010T032723_472c2f8f_O2_review_2",
+      "claim_exact_match": true,
+      "fact_locator_exact_match": true,
+      "cutoff_passed": true
+    },
+    {
+      "question_node_id": "O2",
+      "source_id": "S02",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O2_01",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O2_ext_3",
+      "review_id": "edit_20261010T032723_472c2f8f_O2_review_3",
+      "claim_exact_match": true,
+      "fact_locator_exact_match": true,
+      "cutoff_passed": true
+    },
+    {
+      "question_node_id": "O2",
+      "source_id": "S02",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O2_01",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O2_ext_4",
+      "review_id": "edit_20261010T032723_472c2f8f_O2_review_4",
+      "claim_exact_match": true,
+      "fact_locator_exact_match": true,
+      "cutoff_passed": true
+    },
+    {
+      "question_node_id": "O2",
+      "source_id": "E472_COMPUTE",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O2_01",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O2_ext_5",
+      "review_id": "edit_20261010T032723_472c2f8f_O2_review_5",
+      "claim_exact_match": true,
+      "fact_locator_exact_match": true,
+      "cutoff_passed": true
+    },
+    {
+      "question_node_id": "O2",
+      "source_id": "S18",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O2_01",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O2_ext_6",
+      "review_id": "edit_20261010T032723_472c2f8f_O2_review_6",
+      "claim_exact_match": true,
+      "fact_locator_exact_match": true,
+      "cutoff_passed": true
+    },
+    {
+      "question_node_id": "O2",
+      "source_id": "EA125_STARK",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O2_01",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O2_ext_7",
+      "review_id": "edit_20261010T032723_472c2f8f_O2_review_7",
+      "claim_exact_match": true,
+      "fact_locator_exact_match": true,
+      "cutoff_passed": true
+    },
+    {
+      "question_node_id": "O.u1",
+      "source_id": "S01",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O.u1_01",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O.u1_ext_1",
+      "review_id": "edit_20261010T032723_472c2f8f_O.u1_review_1",
+      "claim_exact_match": true,
+      "fact_locator_exact_match": true,
+      "cutoff_passed": true
+    },
+    {
+      "question_node_id": "O.u1",
+      "source_id": "E321_EARLY",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O.u1_01",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O.u1_ext_2",
+      "review_id": "edit_20261010T032723_472c2f8f_O.u1_review_2",
+      "claim_exact_match": true,
+      "fact_locator_exact_match": true,
+      "cutoff_passed": true
+    },
+    {
+      "question_node_id": "O.u1",
+      "source_id": "E472_TC",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O.u1_01",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O.u1_ext_3",
+      "review_id": "edit_20261010T032723_472c2f8f_O.u1_review_3",
+      "claim_exact_match": true,
+      "fact_locator_exact_match": true,
+      "cutoff_passed": true
+    },
+    {
+      "question_node_id": "O.u1",
+      "source_id": "E472_WR",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O.u1_01",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O.u1_ext_4",
+      "review_id": "edit_20261010T032723_472c2f8f_O.u1_review_4",
+      "claim_exact_match": true,
+      "fact_locator_exact_match": true,
+      "cutoff_passed": true
+    },
+    {
+      "question_node_id": "O.u1",
+      "source_id": "S20",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O.u1_01",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O.u1_ext_5",
+      "review_id": "edit_20261010T032723_472c2f8f_O.u1_review_5",
+      "claim_exact_match": true,
+      "fact_locator_exact_match": true,
+      "cutoff_passed": true
+    },
+    {
+      "question_node_id": "O.u1",
+      "source_id": "E472_SW",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O.u1_01",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O.u1_ext_6",
+      "review_id": "edit_20261010T032723_472c2f8f_O.u1_review_6",
+      "claim_exact_match": true,
+      "fact_locator_exact_match": true,
+      "cutoff_passed": true
+    },
+    {
+      "question_node_id": "O.u1",
+      "source_id": "E472_CITI",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O.u1_01",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O.u1_ext_7",
+      "review_id": "edit_20261010T032723_472c2f8f_O.u1_review_7",
+      "claim_exact_match": true,
+      "fact_locator_exact_match": true,
+      "cutoff_passed": true
+    },
+    {
+      "question_node_id": "O.u1",
+      "source_id": "E472_PLATEAU",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O.u1_01",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O.u1_ext_8",
+      "review_id": "edit_20261010T032723_472c2f8f_O.u1_review_8",
+      "claim_exact_match": true,
+      "fact_locator_exact_match": true,
+      "cutoff_passed": true
+    }
+  ],
+  "source_registry_exact": true,
+  "report_sources_exact": true,
+  "new_claims": 25,
+  "quarantined_extractions": [
+    "edit_20261010T032723_472c2f8f_O1_ext_11",
+    "edit_20261010T032723_472c2f8f_O1_ext_12",
+    "edit_20261010T032723_472c2f8f_O.u1_ext_9",
+    "edit_20261010T032723_472c2f8f_O.u1_ext_10"
+  ]
+}

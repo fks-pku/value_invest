@@ -1,0 +1,95 @@
+{
+  "scope": "industry_impact_only",
+  "valuation_performed": false,
+  "targets": [
+    {
+      "ticker": "AMD",
+      "candidate_action_state": "watch_only",
+      "action_state": "no_action",
+      "research_gate": {
+        "passed": false,
+        "reasons": [
+          "No canonical investable BOM thesis mapping in this narrow event study",
+          "Muse earnings bridge incomplete",
+          "As-of valuation and mispricing not researched",
+          "No six-question BOM completion or quantitative security kill-test gate"
+        ]
+      },
+      "revision_id": "edit_20261009T095113_fd9815e7",
+      "exposure_boundary": "能，但截至 2026 年 10 月 9 日，能够确认的是 AMD 的 EPYC 服务器 CPU 存在受益路径，尚不能确认 Muse 已为 AMD 带来多少新增 CPU 收入。 Muse 把个人 AI 的工作扩展到云端浏览器、代码执行和后台任务，这些都需要 CPU；如果这些负载超出现有服务器的承载能力，并由新增 EPYC 承接，就会增加 AMD 的 CPU 销售。Meta 已经是 EPYC 的大客户，因此这条路径具有实际业务基础。[S02]、[E321_AMDMETA]",
+      "unresolved_gaps": [
+        "未取得Muse专属EPYC净新增订单、可复用存量、成交价及收入确认额，不能量化Muse使AMD CPU收入增长多少。"
+      ]
+    },
+    {
+      "ticker": "INTC",
+      "candidate_action_state": "watch_only",
+      "action_state": "no_action",
+      "research_gate": {
+        "passed": false,
+        "reasons": [
+          "No canonical investable BOM thesis mapping in this narrow event study",
+          "Muse earnings bridge incomplete",
+          "As-of valuation and mispricing not researched",
+          "No six-question BOM completion or quantitative security kill-test gate"
+        ]
+      },
+      "revision_id": "edit_20261009T095113_fd9815e7",
+      "exposure_boundary": "Intel 有机会受益于 CPU 需求增长，同时承受新增需求被竞争对手分走的压力。就 Meta Muse 而言，截至 2026 年 10 月 9 日，竞争对手进入 Meta CPU 供应体系的证据，比 Intel 获得 Muse 专属增量订单的证据更明确。因此，较有依据的判断是：Intel 有行业增长带来的受益机会，但不能把 Muse 的增长直接计为 Xeon 的增长；即使 Intel 收入增加，市场份额也可能下降。[S13]、[F981_AWS]支持这一判断。",
+      "unresolved_gaps": [
+        "未取得Muse的Xeon订单、全机群CPU供应商分配及被替代Xeon数量，不能量化Intel净增收入或份额损失。"
+      ]
+    },
+    {
+      "ticker": "ARM",
+      "candidate_action_state": "watch_only",
+      "action_state": "no_action",
+      "research_gate": {
+        "passed": false,
+        "reasons": [
+          "No canonical investable BOM thesis mapping in this narrow event study",
+          "Muse earnings bridge incomplete",
+          "As-of valuation and mispricing not researched",
+          "No six-question BOM completion or quantitative security kill-test gate"
+        ]
+      },
+      "revision_id": "edit_20261009T095113_fd9815e7",
+      "exposure_boundary": "Arm 主要把 CPU 技术变成两类收入：客户获得设计或架构使用权时支付授权费，采用这些技术的芯片出货后再支付版税。 2026 年又增加了自有 CPU 芯片产品这条商业化路径，因此截至 2026 年 10 月 9 日，将 Arm 描述成“只授权、不卖芯片”已经不准确；但其已披露收入仍主要来自授权及版税。[F981_ARM20F]、[S10]",
+      "unresolved_gaps": [
+        "未取得AGI CPU截至截止日实际销售收入、Meta验收数量及合同价格，无法量化自有CPU和Muse增量收入；全公司收入不等于CPU收入。",
+        "Flexible Access每年8.5万美元示例来自无精确发布日期的动态页，截止日适用价格未通过日期证据门禁。"
+      ]
+    },
+    {
+      "ticker": "NVDA",
+      "candidate_action_state": "watch_only",
+      "action_state": "no_action",
+      "research_gate": {
+        "passed": false,
+        "reasons": [
+          "No canonical investable BOM thesis mapping in this narrow event study",
+          "Muse earnings bridge incomplete",
+          "As-of valuation and mispricing not researched",
+          "No six-question BOM completion or quantitative security kill-test gate"
+        ]
+      },
+      "revision_id": "edit_20261009T095113_fd9815e7",
+      "exposure_boundary": "能，但截至 2026 年 10 月 9 日，能够确认的是 NVIDIA 已具备承接 Muse 类 CPU 需求的产品和 Meta 客户关系；尚不能确认 Muse 已为它带来多少新增 CPU 订单或收入。 NVIDIA 的直接受益路径是销售独立的 Grace、Vera CPU；模型推理带来的 GPU 收益则属于另一条路径。Meta 与 NVIDIA 的 CPU 部署合作已有官方公告，但公开的 Muse 单用户沙箱观察指向 AMD EPYC，不能把 Meta 整体采购 NVIDIA 的计划全部归因于 Muse。[S07]；[EA125_STARK]",
+      "unresolved_gaps": [
+        "未取得Muse在Grace/Vera上的工作负载分配、净新增采购、成交价及同任务成本测试，不能量化NVIDIA的Muse CPU收益或判定已实际受益。"
+      ]
+    }
+  ],
+  "revision_id": "edit_20261009T095113_fd9815e7",
+  "incremental_boundary_review": {
+    "revision_id": "edit_20261009T095113_fd9815e7",
+    "nodes": [
+      "C0",
+      "AMD",
+      "INTC",
+      "ARM",
+      "NVDA"
+    ],
+    "conclusion": "逐公司核验CPU业务，但Muse专属订单、净价、利润及估值门禁未完成；维持no_action，不升级actionable_long。"
+  }
+}

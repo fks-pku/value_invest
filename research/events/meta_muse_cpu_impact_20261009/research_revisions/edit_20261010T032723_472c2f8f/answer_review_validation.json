@@ -1,0 +1,15 @@
+{
+  "revision_id": "edit_20261010T032723_472c2f8f",
+  "nodes": [
+    "O1",
+    "O2",
+    "O.u1"
+  ],
+  "ok": true,
+  "semantic_passed": {
+    "O1": false,
+    "O2": true,
+    "O.u1": false
+  },
+  "note": "字段检查与逐项语义复核分开；O1和O.u1保留未解决范围。"
+}

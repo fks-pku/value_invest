@@ -18,7 +18,7 @@
       "关闭应用后的持续执行与设备侧替代条件",
       "推理代理、权限服务边界；vCPU 样本与物理 CPU 的区别"
     ],
-    "refute_rule": "云端是 Muse 的交付选择而非所有智能体的必然要求；执行 VM 不等于全部模型硬件或独占物理核。",
+    "refute_rule": "Meta Muse local execution Glimmer browser broker dedicated vCPU before:2026-10-10",
     "support_rule": "当前问题的原始材料直接支持限定结论",
     "update_cadence": "event_driven"
   },
@@ -36,15 +36,14 @@
     ],
     "source_reuse_rule": "The same source may serve another active question only through a separate attachment, extraction, and GPT review for that question."
   },
-  "parent_research_plan_id": "rp_edit_20261009T090937_a1258264",
-  "plan_id": "l3rp_o2_edit_20261009T090937_a1258264",
+  "parent_research_plan_id": "rp_edit_20261010T032723_472c2f8f",
+  "plan_id": "l3rp_o2_edit_20261010T032723_472c2f8f",
   "plan_type": "l3_deep_research",
   "previous_plan_id": "l3rp_o2_027155bf51737945",
   "question_tree": {
     "analysis_plan": [
-      "逐项解释模型决策如何由软件执行，区分执行与推理",
-      "将官方承诺、工程解释和第三方单样本分开",
-      "反查本地执行、外部推理、等待时间和非独占配置，检验云端 CPU 必要性的适用范围"
+      "解释软件执行、任务持续性与推理服务的不同角色",
+      "核对浏览器位置、权限隔离、设备侧替代和物理CPU与vCPU边界"
     ],
     "children": [],
     "depends_on_question_ids": [],
@@ -81,14 +80,13 @@
     "run_mode": "live",
     "scope": "全球服务器 CPU 为主；端侧仅检验替代边界。事件研究，不扩展完整行业链或 standalone-BOM 项目。"
   },
-  "revision_id": "edit_20261009T090937_a1258264",
+  "revision_id": "edit_20261010T032723_472c2f8f",
   "schema_version": "4.0",
   "steps": [
     {
       "analysis_plan": [
-        "逐项解释模型决策如何由软件执行，区分执行与推理",
-        "将官方承诺、工程解释和第三方单样本分开",
-        "反查本地执行、外部推理、等待时间和非独占配置，检验云端 CPU 必要性的适用范围"
+        "解释软件执行、任务持续性与推理服务的不同角色",
+        "核对浏览器位置、权限隔离、设备侧替代和物理CPU与vCPU边界"
       ],
       "answer_contract": {
         "required_fields": [
@@ -113,12 +111,12 @@
           "search_run_id"
         ]
       },
-      "decision_use": "解释 Muse 为什么需要云端通用执行计算，不把本题替换成采购数量。",
+      "decision_use": "完整回答Muse 为什么需要云端 CPU？",
       "depends_on_step_ids": [],
       "freshness_requirement": "Use the latest available source as of 2026-10-09. Refresh cadence: event_driven.",
       "initial_status": "pending",
       "l3_node_id": "O2",
-      "l3_plan_id": "l3rp_o2_edit_20261009T090937_a1258264",
+      "l3_plan_id": "l3rp_o2_edit_20261010T032723_472c2f8f",
       "l4_question_id": "",
       "leaf_question_id": "O2",
       "leaf_step_id": "question:O2",
@@ -147,8 +145,7 @@
         }
       ],
       "refuting_source_plan": [
-        "Meta Muse cloud CPU local execution inference proxy dedicated physical cores before:2026-10-10",
-        "Muse specs vCPU browser proxy single agent measurement limitations before:2026-10-10"
+        "Meta Muse local execution Glimmer browser broker dedicated vCPU before:2026-10-10"
       ],
       "required_data": [
         "Muse 发布事件及云端 Linux VM 的官方架构和发布日期",
@@ -169,8 +166,8 @@
         {
           "deepseek_allowed": false,
           "examples_or_search_queries": [
-            "Meta Muse cloud CPU local execution inference proxy dedicated physical cores before:2026-10-10",
-            "Muse specs vCPU browser proxy single agent measurement limitations before:2026-10-10"
+            "Meta Muse security safety agents Linux VM inference proxy CPU before:2026-10-10",
+            "Meta Muse local execution Glimmer browser broker dedicated vCPU before:2026-10-10"
           ],
           "expected_fields": [
             "published_at",
@@ -188,8 +185,8 @@
         {
           "deepseek_allowed": false,
           "examples_or_search_queries": [
-            "Meta Muse cloud CPU local execution inference proxy dedicated physical cores before:2026-10-10",
-            "Muse specs vCPU browser proxy single agent measurement limitations before:2026-10-10"
+            "Meta Muse security safety agents Linux VM inference proxy CPU before:2026-10-10",
+            "Meta Muse local execution Glimmer browser broker dedicated vCPU before:2026-10-10"
           ],
           "expected_fields": [
             "methodology",
@@ -205,18 +202,11 @@
         }
       ],
       "source_universe_plan": {
-        "domain_id": "ai_factory",
         "priority_source_ids": [
-          "semianalysis",
-          "trendforce",
-          "techinsights",
-          "omdia",
-          "delloro",
-          "lightcounting",
-          "the_information",
-          "serve_the_home"
-        ],
-        "registry": "config/source_universes.json"
+          "meta_official",
+          "original_reporting",
+          "measurement_provider"
+        ]
       },
       "stage_id": "O2",
       "step_id": "question:O2",
@@ -230,5 +220,6 @@
         ]
       }
     }
-  ]
+  ],
+  "supersedes_plan_id": "l3rp_o2_edit_20261009T090937_a1258264"
 }

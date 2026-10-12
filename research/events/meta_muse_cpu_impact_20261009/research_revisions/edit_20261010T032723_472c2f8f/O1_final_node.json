@@ -1,0 +1,337 @@
+{
+  "id": "O1",
+  "parent_id": "O",
+  "level": 3,
+  "question": "Muse 发布了什么，目前谁能使用？",
+  "short": "Muse 发布了什么，目前谁能使用？",
+  "why_it_matters": "确认事件对象与商业可达范围。",
+  "what": "Muse 发布了什么，目前谁能使用？",
+  "conclusion": "Meta 于2026年9月8日发布 Muse，一款由 Muse Spark 驱动、能代用户执行任务并在关闭应用后继续工作的个人AI智能体。截至10月9日，美国和加拿大的开放已获英文官方公告确认；法文官方公告另列墨西哥，不能断言仅美加可用。它面向18岁及以上用户，已有手机、网页、WhatsApp及Mac入口，9月29日又增加小企业技能。免费使用有额度限制，两档月费20/100美元有同期报道；眼镜接入、Charm和Confidential VM等预告不能当作全面交付。[S01][S03][E472_FR][E472_AP][E472_MAC][E8089_AXIOS][E8089_CONNECT][S02]",
+  "analysis": [
+    {
+      "heading": "发布的是能办事的产品，Muse Spark是底层模型",
+      "paragraphs": [
+        "Muse让用户交付一个目标，由智能体安排步骤、使用连接的应用并推进工作；Muse Spark是为它提供理解和决策能力的模型。例子包括处理邮件、规划与预订旅行、填写表单、购买商品及推进长期计划。用户离开聊天或关闭App后任务仍能继续，需要批准发送或购买时再联系用户。这是厂商公布的功能，不代表每个任务都能正确完成。[S01]",
+        "Muse Secure VM是用户的隔离云端计算环境，CPU、内存和存储支持工具执行；浏览器通过单独的管理服务控制。它把回答扩展为可保存进度的软件操作，同时需要权限与数据隔离。现行Secure VM与计划中的Confidential VM不是同一个隐私承诺，Meta仍可在运营、安全和支持需要时访问现行环境中的数据。[S02]"
+      ]
+    },
+    {
+      "heading": "地区、年龄和入口要分别看",
+      "paragraphs": [
+        "美国是首发市场。英文小企业公告（9月29日发布、10月8日更新）明确列美国和加拿大；9月24日法文Connect公告还列墨西哥。两份官方文本的范围不同，英文未提墨西哥不构成明确否认，但也不能仅凭法文一句话保证墨西哥所有账户和功能立即开放。没有取得截止日前确认其它国家普遍开放的官方名单。[S01][S03][E472_FR]",
+        "年龄方面，9月8日美联社报道为18岁及以上。普通用户不需要编程经验；小企业经营者可在同一产品中连接经营工具。地区与年龄满足条件，也不等于每个账户得到相同功能或额度。[E472_AP][S01][S03]",
+        "账户方面，当前官方入门页要求Meta账户，可用已有Facebook、Instagram账户或邮箱、电话号码创建。但该动态页缺精确发布日期，不能据当前文字完整还原10月9日的邀请、候补或逐账户开通规则；这些账户细则保留日期缺口。[E8089_START]"
+      ],
+      "tables": [
+        {
+          "caption": "入口及适用条件（截至2026-10-09）",
+          "headers": [
+            "入口／人群",
+            "能够确认的内容",
+            "限制"
+          ],
+          "rows": [
+            [
+              "iOS、Android、网页",
+              "首发公告列Muse应用与muse.ai。[S01]",
+              "入口存在不等于全球可用。"
+            ],
+            [
+              "WhatsApp",
+              "可直接与Muse通信。[S01]",
+              "WhatsApp覆盖国家不能代替Muse开放国家。"
+            ],
+            [
+              "Mac",
+              "9月17日同期报道已确认应用推出，并转载扎克伯格当日上线声明。[E472_MAC]",
+              "9月18日是后续报道日期，不是必须采用的首次发布日期；不能把后来帮助页的所有能力追溯到首日。"
+            ],
+            [
+              "小企业经营者",
+              "9月29日发布Muse for Small Business，在Muse内增添技能与连接器。[S03]",
+              "须连接相应业务账户并授权。"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "免费额度和月费分别能确认到哪一步",
+      "paragraphs": [
+        "截至截止日，有同期报道支持免费使用及每月20美元、100美元两档订阅；这里是报道的美元口径，不是加拿大或墨西哥本地税后账单。[E8089_AXIOS]",
+        "当前官方帮助页把两档称为Power和Maximum，分别显示每周5亿和30亿Muse tokens；它还说明免费用尽后可等待刷新或升级、订阅按月自动续费，并提示权益因地区和账户而异。该页只标相对更新时间，故这些精确付费额度作为当前页面信息列明，不能认定已完整通过10月9日截面证明。Muse tokens是服务的用量单位，不能等同于固定任务数或CPU核时。[E472_SUB]",
+        "免费档的截止日精确额度、重置细则、各国币种税费及账户最终可订阅状态，目前不能可靠确定；网上流传的免费每周1亿tokens不能替代本题所需的带日期官方规则。月费可以核实，精确权益和最终账单仍有缺口。"
+      ]
+    },
+    {
+      "heading": "小企业扩展已宣布，后续设备和隐私方案仍须区分",
+      "paragraphs": [
+        "小企业扩展可连接Facebook、Instagram商业账户及Shopify、QuickBooks、Slack等工具，用于分析销售、准备营销内容和处理经营事务。它增加的是既有Muse的用途，连接与执行仍需授权，内容发布、发消息、花钱都需批准；不能把经营辅助能力理解为保证销售增长。[S03]"
+      ],
+      "tables": [
+        {
+          "caption": "已交付与计划状态",
+          "headers": [
+            "项目",
+            "截至截止日的状态",
+            "依据与边界"
+          ],
+          "rows": [
+            [
+              "Muse核心产品／Secure VM",
+              "已发布",
+              "可后台执行；能力与成功率是不同概念。[S01][S02]"
+            ],
+            [
+              "小企业技能与连接器",
+              "9月29日宣布扩展",
+              "在现有产品内提供，依赖账户授权。[S03]"
+            ],
+            [
+              "AI眼镜接入",
+              "未来数月",
+              "Connect公告仍用未来时态。[E8089_CONNECT]"
+            ],
+            [
+              "Muse Charm",
+              "预告设备",
+              "公告称年内再分享信息，非上市证明。[E8089_CONNECT]"
+            ],
+            [
+              "Muse自有邮箱、Expedia",
+              "未来／即将推出",
+              "没有取得足以改判全面上线的截止日前公告。[E8089_CONNECT]"
+            ],
+            [
+              "Confidential VM",
+              "少量可信测试者；计划年内推出",
+              "拟以密码学限制Meta访问，不等同普通用户现有Secure VM。[S02]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "已知产品边界与仍缺的使用细则",
+      "paragraphs": [
+        "首发文章标注9月8日发布、9月30日更新，小企业公告标注9月29日发布、10月8日更新；它们可以支撑截止日的产品描述，但不能把所有更新内容回填为首发能力。上述公开页面本次读取日为10月10日，读取日不充当发布日期。[S01][S03]",
+        "本题仍缺带日期的官方账户资格、精确免费与付费额度、地方账单规则，因而可用性细则尚未全部回答。对父问题而言，已发布的个人云端智能体提供CPU执行需求的产品基础；用户使用规模与硬件增量须分别看日活和资源用量。"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "source": "S01",
+      "fact": "Meta 于 2026 年 9 月 8 日发布个人智能体 Muse，由 Muse Spark 模型驱动，能处理任务并在关闭应用后继续工作。",
+      "locator": "Introducing Muse：标题日期；How It Works，L241、254–259",
+      "boundary": "页面更新至9月30日；官方能力描述，不是任务成功率实测。",
+      "effect": "support",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_1",
+      "review_id": "edit_20261010T032723_472c2f8f_O1_review_1",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+      "revision_id": "edit_20261010T032723_472c2f8f",
+      "effective_period": "截至2026-10-09",
+      "target_period": ""
+    },
+    {
+      "source": "S01",
+      "fact": "首发公告列出美国、iOS、Android、muse.ai 与 WhatsApp 入口。",
+      "locator": "Looking Ahead；首段L254及发布可用性段",
+      "boundary": "这是首发范围；不排除后续扩区。",
+      "effect": "support",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_2",
+      "review_id": "edit_20261010T032723_472c2f8f_O1_review_2",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+      "revision_id": "edit_20261010T032723_472c2f8f",
+      "effective_period": "截至2026-10-09",
+      "target_period": ""
+    },
+    {
+      "source": "S03",
+      "fact": "9月29日发布、10月8日更新的小企业公告称 Muse 在美国和加拿大可用，并在现有 Muse 内增加经营技能和连接器。",
+      "locator": "标题日期L241；Takeaways及正文L249–255",
+      "boundary": "不能从更新后文字确定加拿大最早开放日。",
+      "effect": "support",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_3",
+      "review_id": "edit_20261010T032723_472c2f8f_O1_review_3",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+      "revision_id": "edit_20261010T032723_472c2f8f",
+      "effective_period": "截至2026-10-09",
+      "target_period": ""
+    },
+    {
+      "source": "E472_FR",
+      "fact": "Meta 法国版9月24日Connect公告明确写 Muse 当前在美国、加拿大和墨西哥可用。",
+      "locator": "L202发布日期；L213地区句",
+      "boundary": "与英文列举范围不同；不证明墨西哥所有账户、入口和功能均已开放。",
+      "effect": "boundary",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_4",
+      "review_id": "edit_20261010T032723_472c2f8f_O1_review_4",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+      "revision_id": "edit_20261010T032723_472c2f8f",
+      "effective_period": "截至2026-10-09",
+      "target_period": ""
+    },
+    {
+      "source": "E472_AP",
+      "fact": "美联社9月8日报道 Muse 面向18岁及以上用户。",
+      "locator": "标题、日期与正文首段：for people 18 and over",
+      "boundary": "首发报道，不是各地区、各账户资格的完整合同。",
+      "effect": "support",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_5",
+      "review_id": "edit_20261010T032723_472c2f8f_O1_review_5",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+      "revision_id": "edit_20261010T032723_472c2f8f",
+      "effective_period": "截至2026-10-09",
+      "target_period": ""
+    },
+    {
+      "source": "E472_MAC",
+      "fact": "9to5Mac于9月17日更新称Muse Mac应用已推出，并嵌入扎克伯格当日的上线声明。",
+      "locator": "L68、74、95–97",
+      "boundary": "已核读同期转载；X原帖本轮打开失败，不把帮助页现有全部功能追溯至首日。",
+      "effect": "support",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_6",
+      "review_id": "edit_20261010T032723_472c2f8f_O1_review_6",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+      "revision_id": "edit_20261010T032723_472c2f8f",
+      "effective_period": "截至2026-10-09",
+      "target_period": ""
+    },
+    {
+      "source": "E8089_AXIOS",
+      "fact": "Axios于9月29日报道Muse有免费使用及每月20美元、100美元两档订阅。",
+      "locator": "The intrigue：free for most uses；$20/$100 per month",
+      "boundary": "媒体同期美元报价；不是所有国家税费、币种或免费精确额度。",
+      "effect": "support",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_7",
+      "review_id": "edit_20261010T032723_472c2f8f_O1_review_7",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+      "revision_id": "edit_20261010T032723_472c2f8f",
+      "effective_period": "截至2026-10-09",
+      "target_period": ""
+    },
+    {
+      "source": "S03",
+      "fact": "Muse小企业扩展可连接Facebook、Instagram商业账户及Shopify、QuickBooks、Slack等工具，发布、发送和支出需批准。",
+      "locator": "Takeaways L251–253",
+      "boundary": "公告描述已提供能力，经营效果仍取决于账户权限、输入及任务。",
+      "effect": "support",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_8",
+      "review_id": "edit_20261010T032723_472c2f8f_O1_review_8",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+      "revision_id": "edit_20261010T032723_472c2f8f",
+      "effective_period": "截至2026-10-09",
+      "target_period": ""
+    },
+    {
+      "source": "E8089_CONNECT",
+      "fact": "9月24日Connect公告把眼镜接入列为未来数月，Expedia列为即将加入、自有邮箱列为未来功能，Charm仍待年内更多信息。",
+      "locator": "Bringing Muse to AI Glasses / Muse Charm，L255–264",
+      "boundary": "预告与连接器扩展不能统称全面交付。",
+      "effect": "boundary",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_9",
+      "review_id": "edit_20261010T032723_472c2f8f_O1_review_9",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+      "revision_id": "edit_20261010T032723_472c2f8f",
+      "effective_period": "截至2026-10-09",
+      "target_period": ""
+    },
+    {
+      "source": "S02",
+      "fact": "Meta在9月8日说明Confidential VM仅用于少量可信测试者，计划年内推出；现行Secure VM并未以密码学阻止Meta为运营服务访问数据。",
+      "locator": "Coming Soon: Muse Confidential VM，L129–134",
+      "boundary": "区分现行隔离方案与未来更强隐私方案。",
+      "effect": "boundary",
+      "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_10",
+      "review_id": "edit_20261010T032723_472c2f8f_O1_review_10",
+      "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+      "revision_id": "edit_20261010T032723_472c2f8f",
+      "effective_period": "截至2026-10-09",
+      "target_period": ""
+    }
+  ],
+  "passed": false,
+  "gaps": [
+    "未取得截至2026-10-09带精确日期的官方账户开通/邀请规则、免费精确额度及付费token权益版本，不能完整复原截止日使用资格和额度。",
+    "加拿大、墨西哥的当地结算币种、税费与逐账户最终可订阅状态未得到截止日原始价目确认。"
+  ],
+  "next_actions": [
+    "补充截止日前官方帮助页存档、当地价目及账户资格说明；不新增问题节点。"
+  ],
+  "refutation": "官方法文页面列墨西哥，反驳仅美加的绝对表述；同期Mac报道证明已推出。地区名单与宣传不保证逐账户权益，计划功能与已交付功能分开。",
+  "data_required": [
+    "发布对象、发布日期、Muse 与 Muse Spark 的区别和主要用途",
+    "截至 2026-10-09 的国家、年龄、账号资格与手机、网页、WhatsApp、Mac 入口",
+    "免费额度、订阅金额及币种、价格出处与限制",
+    "已交付功能、小企业能力与眼镜、Charm、邮箱、Expedia、Confidential VM 的计划状态"
+  ],
+  "acceptance_rule": "核心事实可追溯、口径可比、反证已处理，重大缺口不得改变所声明的本题答案。",
+  "reasons": [
+    "发布内容、年龄、入口及功能阶段已得到本轮证据支持；账户与额度的截面规则仍存在实质缺口。"
+  ],
+  "mode": "leaf",
+  "tables": [],
+  "revision_id": "edit_20261010T032723_472c2f8f",
+  "answer_review": {
+    "question": "Muse 发布了什么，目前谁能使用？",
+    "direct_answer_excerpt": "Meta 于2026年9月8日发布 Muse，一款由 Muse Spark 驱动、能代用户执行任务并在关闭应用后继续工作的个人AI智能体。截至10月9日，美国和加拿大的开放已获英文官方公告确认；法文官方公告另列墨西哥，不能断言仅美加可用。它面向18岁及以上用户，已有手机、网页、WhatsApp及Mac入口，9月29日又增加小企业技能。免费使用有额度限制，两档月费20/100美元有同期报道；眼镜接入、Charm和Confidential VM等预告不能当作全面交付。[S01][S03][E472_FR][E472_AP][E472_MAC][E8089_AXIOS][E8089_CONNECT][S02]",
+    "coverage": [
+      {
+        "requirement": "发布对象与主要用途",
+        "status": "answered",
+        "answer_excerpt": "Muse让用户交付一个目标，由智能体安排步骤、使用连接的应用并推进工作；Muse Spark是为它提供理解和决策能力的模型。例子包括处理邮件、规划与预订旅行、填写表单、购买商品及推进长期计划。用户离开聊天或关闭App后任务仍能继续，需要批准发送或购买时再联系用户。这是厂商公布的功能，不代表每个任务都能正确完成。[S01]"
+      },
+      {
+        "requirement": "国家、年龄、人群及账户",
+        "status": "answered",
+        "answer_excerpt": "美国是首发市场。英文小企业公告（9月29日发布、10月8日更新）明确列美国和加拿大；9月24日法文Connect公告还列墨西哥。两份官方文本的范围不同，英文未提墨西哥不构成明确否认，但也不能仅凭法文一句话保证墨西哥所有账户和功能立即开放。没有取得截止日前确认其它国家普遍开放的官方名单。[S01][S03][E472_FR]"
+      },
+      {
+        "requirement": "入口和小企业能力",
+        "status": "answered",
+        "answer_excerpt": "美国是首发市场。英文小企业公告（9月29日发布、10月8日更新）明确列美国和加拿大；9月24日法文Connect公告还列墨西哥。两份官方文本的范围不同，英文未提墨西哥不构成明确否认，但也不能仅凭法文一句话保证墨西哥所有账户和功能立即开放。没有取得截止日前确认其它国家普遍开放的官方名单。[S01][S03][E472_FR]"
+      },
+      {
+        "requirement": "收费和免费限制",
+        "status": "answered",
+        "answer_excerpt": "截至截止日，有同期报道支持免费使用及每月20美元、100美元两档订阅；这里是报道的美元口径，不是加拿大或墨西哥本地税后账单。[E8089_AXIOS]"
+      },
+      {
+        "requirement": "已交付与计划功能",
+        "status": "answered",
+        "answer_excerpt": "小企业扩展可连接Facebook、Instagram商业账户及Shopify、QuickBooks、Slack等工具，用于分析销售、准备营销内容和处理经营事务。它增加的是既有Muse的用途，连接与执行仍需授权，内容发布、发消息、花钱都需批准；不能把经营辅助能力理解为保证销售增长。[S03]"
+      },
+      {
+        "requirement": "时间边界与父题联系",
+        "status": "answered",
+        "answer_excerpt": "首发文章标注9月8日发布、9月30日更新，小企业公告标注9月29日发布、10月8日更新；它们可以支撑截止日的产品描述，但不能把所有更新内容回填为首发能力。上述公开页面本次读取日为10月10日，读取日不充当发布日期。[S01][S03]"
+      },
+      {
+        "requirement": "未取得截至2026-10-09带精确日期的官方账户开通/邀请规则、免费精确额度及付费token权益版本，不能完整复原截止日使用资格和额度。",
+        "status": "unresolved",
+        "gap": "未取得截至2026-10-09带精确日期的官方账户开通/邀请规则、免费精确额度及付费token权益版本，不能完整复原截止日使用资格和额度。"
+      },
+      {
+        "requirement": "加拿大、墨西哥的当地结算币种、税费与逐账户最终可订阅状态未得到截止日原始价目确认。",
+        "status": "unresolved",
+        "gap": "加拿大、墨西哥的当地结算币种、税费与逐账户最终可订阅状态未得到截止日原始价目确认。"
+      }
+    ],
+    "draft_comparison": {
+      "retained": [
+        "保留产品与模型区别、后台执行、成人用户、手机网页WhatsApp及Mac、小企业用途、权限和未来设备/隐私方案。"
+      ],
+      "corrected": [
+        "补入法文官方公告的墨西哥，纠正草稿把美加外一概当作未确认开放的说法。",
+        "Mac补到9月17日同期上线报道，不把9月18日报道日当上线日。",
+        "草稿未展开收费，补入同期20/100美元月费及当前帮助页额度，明确截面缺口；Maximum按原文命名。"
+      ],
+      "omitted": [
+        "未把动态帮助页现有权益直接认定为截止日有效规则；保留具体已知值及未知原因。"
+      ]
+    },
+    "reviewer": "GPT primary agent",
+    "revision_id": "edit_20261010T032723_472c2f8f"
+  }
+}

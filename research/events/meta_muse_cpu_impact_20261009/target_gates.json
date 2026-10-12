@@ -80,16 +80,15 @@
       ]
     }
   ],
-  "revision_id": "edit_20261009T095113_fd9815e7",
+  "revision_id": "edit_20261010T032723_472c2f8f",
   "incremental_boundary_review": {
-    "revision_id": "edit_20261009T095113_fd9815e7",
-    "nodes": [
-      "C0",
-      "AMD",
-      "INTC",
-      "ARM",
-      "NVDA"
-    ],
-    "conclusion": "逐公司核验CPU业务，但Muse专属订单、净价、利润及估值门禁未完成；维持no_action，不升级actionable_long。"
+    "revision_id": "edit_20261010T032723_472c2f8f",
+    "answer": "日活起量不改变任何公司增量采购、收入或估值门禁；保留既有no_action/watch_only状态。",
+    "changed_action_states": false,
+    "affected_product_nodes": [
+      "O1",
+      "O2",
+      "O.u1"
+    ]
   }
 }

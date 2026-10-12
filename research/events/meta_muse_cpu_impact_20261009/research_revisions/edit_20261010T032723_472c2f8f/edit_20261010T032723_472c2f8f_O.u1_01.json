@@ -1,0 +1,50 @@
+{
+  "revision_id": "edit_20261010T032723_472c2f8f",
+  "l3_plan_id": "l3rp_o.u1_edit_20261010T032723_472c2f8f",
+  "l3_node_id": "O.u1",
+  "question_node_id": "O.u1",
+  "question_level": 3,
+  "research_step_id": "question:O.u1",
+  "search_run_id": "edit_20261010T032723_472c2f8f_O.u1_01",
+  "question": "muse的日活发展曲线",
+  "queries": [
+    "Meta Muse daily active users September October 2026 Similarweb Apptopia before:2026-10-10",
+    "Meta Muse daily users plateau slowdown TickerTrends October 2026 before:2026-10-10",
+    "site.theinformation.com/briefings/exclusive-metas-muse-tops-3-million-weekly-users \"million\" \"Sep\"",
+    "site.hntrbrk.com/breaking-news/muse-tickertrends \"October\" \"1:30\"",
+    "site.apptopia.com Muse \"642\" September 2026",
+    "site.similarweb.com Muse October 5 2026 \"2.18\"",
+    "Meta Muse daily active users October 9 2026 retention data before:2026-10-10"
+  ],
+  "source_ids": [
+    "S01",
+    "E321_EARLY",
+    "E472_TC",
+    "E472_WR",
+    "S20",
+    "E472_SW",
+    "E472_CITI",
+    "E472_PLATEAU",
+    "E472_DAUDEF",
+    "E472_HUNTER"
+  ],
+  "origin": "active_question_search",
+  "status": "searched_and_sources_opened",
+  "refutation_result": "已查到250万—300万平台期说法，但原始序列与供应商不清；Hunterbrook减速报道在北京时间10月10日才公开，排除。180万与218.2万属于不同来源，不能算下降。",
+  "recorded_at": "2026-10-10T03:44:27.720739+00:00",
+  "retrieved_at": "2026-10-10T03:44:27.720739+00:00",
+  "cutoff": "2026-10-09T23:59:59+08:00",
+  "reviewer": "GPT primary agent",
+  "raw_trace_paths": [
+    "search_runs/edit_20261010T032723_472c2f8f_O.u1_web.txt",
+    "search_runs/edit_20261010T032723_472c2f8f_dau_open.txt",
+    "search_runs/edit_20261010T032723_472c2f8f_details2.txt",
+    "search_runs/edit_20261010T032723_472c2f8f_detail3.txt"
+  ],
+  "open_failures": [
+    "The Information pages subscription gated; public index inspected",
+    "Similarweb X post inaccessible",
+    "Hunterbrook article inaccessible; homepage timestamp is post-cutoff",
+    "Reuters page inaccessible; AOL syndication readable"
+  ]
+}

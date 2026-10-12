@@ -1,0 +1,25 @@
+{
+  "revision_id": "edit_20261010T032723_472c2f8f",
+  "queries": {
+    "O1": [
+      "Meta Muse September 8 2026 availability Canada Mexico pricing Mac before:2026-10-10",
+      "Meta Muse limited testing age subscription coming soon before:2026-10-10"
+    ],
+    "O2": [
+      "Meta Muse security safety agents Linux VM inference proxy CPU before:2026-10-10",
+      "Meta Muse local execution Glimmer browser broker dedicated vCPU before:2026-10-10"
+    ],
+    "O.u1": [
+      "Meta Muse daily active users September October 2026 Similarweb Apptopia before:2026-10-10",
+      "Meta Muse daily users plateau slowdown TickerTrends October 2026 before:2026-10-10"
+    ]
+  },
+  "design_review": "可执行；日活独立取证，不以CPU采购门槛替代用户曲线。",
+  "affected_ids": [
+    "MUSE",
+    "O",
+    "O.u1",
+    "O1",
+    "O2"
+  ]
+}

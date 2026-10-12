@@ -1,0 +1,41 @@
+{
+  "revision_id": "edit_20261010T032723_472c2f8f",
+  "l3_plan_id": "l3rp_o1_edit_20261010T032723_472c2f8f",
+  "l3_node_id": "O1",
+  "question_node_id": "O1",
+  "question_level": 3,
+  "research_step_id": "question:O1",
+  "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+  "question": "Muse 发布了什么，目前谁能使用？",
+  "queries": [
+    "Meta Muse September 8 2026 availability Canada Mexico pricing Mac before:2026-10-10",
+    "Meta Muse limited testing age subscription coming soon before:2026-10-10",
+    "site.meta.com/help \"Muse\" \"500 million\" subscriptions"
+  ],
+  "source_ids": [
+    "S01",
+    "S03",
+    "E472_FR",
+    "E472_AP",
+    "E472_MAC",
+    "E8089_AXIOS",
+    "E8089_CONNECT",
+    "S02",
+    "E472_SUB",
+    "E8089_START"
+  ],
+  "origin": "active_question_search",
+  "status": "searched_and_sources_opened",
+  "refutation_result": "官方法文页面列墨西哥，反驳仅美加的绝对表述；同期Mac报道证明已推出。地区名单与宣传不保证逐账户权益，计划功能与已交付功能分开。",
+  "recorded_at": "2026-10-10T03:44:27.720739+00:00",
+  "retrieved_at": "2026-10-10T03:44:27.720739+00:00",
+  "cutoff": "2026-10-09T23:59:59+08:00",
+  "reviewer": "GPT primary agent",
+  "raw_trace_paths": [
+    "search_runs/edit_20261010T032723_472c2f8f_O1_web.txt"
+  ],
+  "open_failures": [
+    "Meta en-gb subscription path failed; general help path readable but undated",
+    "Zuckerberg X post failed; contemporary 9to5Mac embed readable"
+  ]
+}

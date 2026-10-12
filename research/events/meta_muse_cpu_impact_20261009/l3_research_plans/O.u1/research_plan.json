@@ -1,0 +1,216 @@
+{
+  "completion_policy": {
+    "l3_complete_when": "current_question_answerable_or_all_required_descendants_complete",
+    "legacy_broad_search": "audit_only_not_retroactive_completion",
+    "missing_evidence": "block_then_expand_only_the_observed_gap"
+  },
+  "expansion_history": [],
+  "l3_node_id": "O.u1",
+  "l3_question": "muse的日活发展曲线",
+  "l3_title": "muse的日活发展曲线",
+  "lens_id": "O.u1",
+  "logic_contract": {
+    "company_bridge_fields": [],
+    "downstream_node_ids": [],
+    "indicators": [
+      "从发布至2026-10-09的日活观察日期、数值、地域、平台、活跃定义及原始出处",
+      "同一机构的逐日序列、增长或平台期反证；报道日期与时区边界"
+    ],
+    "refute_rule": "Meta Muse daily users plateau slowdown TickerTrends October 2026 before:2026-10-10",
+    "support_rule": "当前问题的原始材料直接支持限定结论",
+    "update_cadence": "event_driven"
+  },
+  "material_collection_policy": {
+    "bulk_pool_mapping_eligible": false,
+    "push_ingestion_role": "candidate_only",
+    "required_origin": "active_question_search",
+    "required_trace_fields": [
+      "l3_plan_id",
+      "l3_node_id",
+      "question_node_id",
+      "question_level",
+      "research_step_id",
+      "search_run_id"
+    ],
+    "source_reuse_rule": "The same source may serve another active question only through a separate attachment, extraction, and GPT review for that question."
+  },
+  "parent_research_plan_id": "rp_edit_20261010T032723_472c2f8f",
+  "plan_id": "l3rp_o.u1_edit_20261010T032723_472c2f8f",
+  "plan_type": "l3_deep_research",
+  "question_tree": {
+    "analysis_plan": [
+      "按观察日期排列日活，分开国家/全球、移动/网页及提示/打开定义",
+      "只在同一序列内比较增长；审查平台期、留存与截止时区，禁止插值补造"
+    ],
+    "children": [],
+    "depends_on_question_ids": [],
+    "level": 3,
+    "question": "muse的日活发展曲线",
+    "question_id": "O.u1",
+    "required_data": [
+      "从发布至2026-10-09的日活观察日期、数值、地域、平台、活跃定义及原始出处",
+      "同一机构的逐日序列、增长或平台期反证；报道日期与时区边界"
+    ],
+    "requires_refutation_search": true,
+    "research_dimension": "l3_initial",
+    "title": "muse的日活发展曲线"
+  },
+  "question_tree_policy": {
+    "branching": "only_after_failed_answerability_gate",
+    "initial_depth": 3,
+    "maximum_depth": 5,
+    "root_level": 3,
+    "terminal_definition": "the current deepest unanswered question"
+  },
+  "research_goal": {
+    "as_of_date": "2026-10-09",
+    "biggest_uncertainty": "每活跃用户的真实 CPU/内存驻留时间及其增量采购转化",
+    "counterfactual": "无 Muse 时已有云服务、AI 执行环境与服务器更新需求",
+    "event_date": "2026-09-08",
+    "investment_decision": "行业方向、条件规模与公司敞口；不作买卖建议",
+    "maximum_depth": 5,
+    "mode": "live",
+    "report_date": "2026-10-09",
+    "research_object": "Meta Muse personal agent release and CPU market impact",
+    "run_mode": "live",
+    "scope": "全球服务器 CPU 为主；端侧仅检验替代边界。事件研究，不扩展完整行业链或 standalone-BOM 项目。"
+  },
+  "revision_id": "edit_20261010T032723_472c2f8f",
+  "schema_version": "4.0",
+  "steps": [
+    {
+      "analysis_plan": [
+        "按观察日期排列日活，分开国家/全球、移动/网页及提示/打开定义",
+        "只在同一序列内比较增长；审查平台期、留存与截止时区，禁止插值补造"
+      ],
+      "answer_contract": {
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "rule": "Answer only the current question; separate facts, inference, judgment, refutation, and gaps."
+      },
+      "collection_contract": {
+        "bulk_pool_mapping_forbidden": true,
+        "origin": "active_question_search",
+        "query_must_name_active_question": true,
+        "required_trace_fields": [
+          "l3_plan_id",
+          "l3_node_id",
+          "question_node_id",
+          "question_level",
+          "research_step_id",
+          "search_run_id"
+        ]
+      },
+      "decision_use": "完整回答muse的日活发展曲线",
+      "depends_on_step_ids": [],
+      "freshness_requirement": "Use the latest available source as of 2026-10-09. Refresh cadence: event_driven.",
+      "initial_status": "pending",
+      "l3_node_id": "O.u1",
+      "l3_plan_id": "l3rp_o.u1_edit_20261010T032723_472c2f8f",
+      "l4_question_id": "",
+      "leaf_question_id": "O.u1",
+      "leaf_step_id": "question:O.u1",
+      "level": 3,
+      "minimum_evidence_gate": {
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
+      },
+      "preferred_specialty_skill": "dynamic-research-agent",
+      "question": "muse的日活发展曲线",
+      "question_level": 3,
+      "question_node_id": "O.u1",
+      "question_path": [
+        {
+          "level": 3,
+          "question": "muse的日活发展曲线",
+          "question_id": "O.u1"
+        }
+      ],
+      "refuting_source_plan": [
+        "Meta Muse daily users plateau slowdown TickerTrends October 2026 before:2026-10-10"
+      ],
+      "required_data": [
+        "从发布至2026-10-09的日活观察日期、数值、地域、平台、活跃定义及原始出处",
+        "同一机构的逐日序列、增长或平台期反证；报道日期与时区边界"
+      ],
+      "required_materials": [
+        "从发布至2026-10-09的日活观察日期、数值、地域、平台、活跃定义及原始出处",
+        "同一机构的逐日序列、增长或平台期反证；报道日期与时区边界"
+      ],
+      "research_dimension": "l3_initial",
+      "research_step_id": "question:O.u1",
+      "sequence": 1,
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "Meta Muse daily active users September October 2026 Similarweb Apptopia before:2026-10-10",
+            "Meta Muse daily users plateau slowdown TickerTrends October 2026 before:2026-10-10"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "dynamic-research-agent",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "Meta Muse daily active users September October 2026 Similarweb Apptopia before:2026-10-10",
+            "Meta Muse daily users plateau slowdown TickerTrends October 2026 before:2026-10-10"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "dynamic-research-agent",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
+      "source_universe_plan": {
+        "priority_source_ids": [
+          "meta_official",
+          "original_reporting",
+          "measurement_provider"
+        ]
+      },
+      "stage_id": "O.u1",
+      "step_id": "question:O.u1",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "search_run_id",
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    }
+  ],
+  "supersedes_plan_id": null
+}

@@ -1,0 +1,18 @@
+{
+  "review_id": "root_review_20261012_158_source_correction",
+  "parent_revision": "edit_20261010T032723_472c2f8f",
+  "recorded_at": "2026-10-12T03:47:59.753129+00:00",
+  "reason": "纠正158万颗数字的来源归属和取整，补充原文156.25万与派生158.73万两种口径。",
+  "changed_nodes": [
+    "D1",
+    "D2"
+  ],
+  "gate": "研究仍为partial_research，实际容量和采购缺口不变。",
+  "checks": [
+    "两份原文逐题抽取和GPT复核",
+    "公式复算",
+    "QA和状态一致性",
+    "嵌套研究计划",
+    "共享HTML与Markdown契约"
+  ]
+}

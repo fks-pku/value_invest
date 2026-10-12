@@ -1,0 +1,33 @@
+{
+  "revision_id": "edit_20261010T032723_472c2f8f",
+  "question_tree_scope_unchanged": true,
+  "unaffected_nodes_exact": true,
+  "qa_tree_consistent": true,
+  "research_state_consistent": true,
+  "answer_review_validated": [
+    "O1",
+    "O2",
+    "O.u1"
+  ],
+  "source_trace_links": 25,
+  "plan_execution_ok": true,
+  "semantic_passed": {
+    "O1": false,
+    "O2": true,
+    "O.u1": false
+  },
+  "research_status": "partial_research",
+  "remaining_gaps": {
+    "O1": [
+      "未取得截至2026-10-09带精确日期的官方账户开通/邀请规则、免费精确额度及付费token权益版本，不能完整复原截止日使用资格和额度。",
+      "加拿大、墨西哥的当地结算币种、税费与逐账户最终可订阅状态未得到截止日原始价目确认。"
+    ],
+    "O2": [],
+    "O.u1": [
+      "未取得从9月8日发布至10月9日、地域/平台/活跃定义一致的完整逐日原始数据，不能给出精确日活曲线或10月9日当天数值。",
+      "平台期报道缺原券商报告、底层数据商与去重方法；亦缺同口径队列留存，不能确认平台期及增长持续性。"
+    ]
+  },
+  "rendering_and_publication": "pending_host; no new HTML/MD report generated",
+  "full_legacy_audit": "not claimed; prior schema differences left untouched"
+}

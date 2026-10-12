@@ -1,0 +1,12 @@
+{
+  "revision_id": "edit_20261010T032723_472c2f8f",
+  "recorded_at": "2026-10-12T03:28:45.001061+00:00",
+  "restored_file": "parent_execution_validation.json",
+  "reason": "Worker changed a protected derived validation summary. Its candidate copy is preserved in this revision; the baseline file was restored before normal host validation and publication.",
+  "source_spotchecks": [
+    "TechCrunch/Apptopia Sept 21: US mobile DAU 642,000, third-party estimate",
+    "AI Industry Today quoting Similarweb Oct 8: Oct 5 global mobile DAU 2.182 million; Similarweb original X post inaccessible, qualified secondary",
+    "Reuters syndication on AOL Oct 6: Citi says DAU 1.8 million; observation date/definition not specified"
+  ],
+  "scope": "Add O.u1 Muse DAU trajectory, rerun O1 and O2, update O and MUSE rollups."
+}

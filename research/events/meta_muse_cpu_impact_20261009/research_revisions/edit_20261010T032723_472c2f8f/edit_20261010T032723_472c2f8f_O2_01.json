@@ -1,0 +1,32 @@
+{
+  "revision_id": "edit_20261010T032723_472c2f8f",
+  "l3_plan_id": "l3rp_o2_edit_20261010T032723_472c2f8f",
+  "l3_node_id": "O2",
+  "question_node_id": "O2",
+  "question_level": 3,
+  "research_step_id": "question:O2",
+  "search_run_id": "edit_20261010T032723_472c2f8f_O2_01",
+  "question": "Muse 为什么需要云端 CPU？",
+  "queries": [
+    "Meta Muse security safety agents Linux VM inference proxy CPU before:2026-10-10",
+    "Meta Muse local execution Glimmer browser broker dedicated vCPU before:2026-10-10"
+  ],
+  "source_ids": [
+    "S01",
+    "S02",
+    "E472_COMPUTE",
+    "S18",
+    "EA125_STARK"
+  ],
+  "origin": "active_question_search",
+  "status": "searched_and_sources_opened",
+  "refutation_result": "Glimmer的官方本地路线反驳云端绝对必需；推理代理与浏览器broker反驳所有计算都在用户VM；单账户vCPU观察不能代表独占物理核心。",
+  "recorded_at": "2026-10-10T03:44:27.720739+00:00",
+  "retrieved_at": "2026-10-10T03:44:27.720739+00:00",
+  "cutoff": "2026-10-09T23:59:59+08:00",
+  "reviewer": "GPT primary agent",
+  "raw_trace_paths": [
+    "search_runs/edit_20261010T032723_472c2f8f_O2_web.txt"
+  ],
+  "open_failures": []
+}

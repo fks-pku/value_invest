@@ -1,0 +1,53 @@
+{
+ "sources":[
+  ["E472_FR","https://about.fb.com/fr/news/2026/09/meta-connect-2026-meta-annonce-de-nouvelles-lunettes-ia-des-nouveautes-pour-muse-et-les-meta-vr-glasses/","Meta Connect 2026 — France","2026-09-24","Meta","official_company"],
+  ["E472_AP","https://apnews.com/article/meta-muse-ai-agent-3a4572eb4cf4e95d8a0dfdad6e6ca065","Meta launches personal AI agent, Muse","2026-09-08","Associated Press","market_news"],
+  ["E472_MAC","https://9to5mac.com/2026/09/17/meta-ai-launches-muse-personal-agent-including-a-new-mobile-app-for-iphone/","Meta AI launches Muse personal agent, including apps for iPhone and Mac","2026-09-17","9to5Mac","market_news"],
+  ["E472_COMPUTE","https://about.fb.com/news/2026/06/what-is-compute-power-meta-ai-infrastructure/","Infrastructure Explained: Compute Power","2026-06-10","Meta","official_company"],
+  ["E472_TC","https://techcrunch.com/2026/09/21/metas-muse-is-outpacing-chatgpts-early-mobile-launch/","Meta’s Muse is outpacing ChatGPT’s early mobile launch","2026-09-21","TechCrunch / Apptopia estimates","market_news"],
+  ["E472_WR","https://windowsreport.com/meta-muse-hits-700000-daily-users-as-service-issues-appear/","Meta Muse Hits 700,000 Daily Users as Service Issues Appear","2026-09-25","Windows Report","market_news"],
+  ["E472_SW","https://aiindustrytoday.com/news/metas-muse-tops-2-18-million-daily-mobile-users-four-weeks-after-launch-similarweb-estimates/","Muse Tops 2.18 Million Daily Mobile Users, Similarweb Estimates","2026-10-08","AI Industry Today","market_news"],
+  ["E472_CITI","https://www.aol.com/articles/citigroup-bets-metas-muse-ais-134712000.html","Citigroup bets on Meta’s Muse as AI’s front door to the internet","2026-10-06","Reuters via AOL","market_news"],
+  ["E472_PLATEAU","https://explainx.ai/blog/meta-muse-daily-users-plateau-2-5-3-million-what-it-means-2026","Meta Muse Daily Users Reportedly Plateau at 2.5 to 3 Million","2026-10-06","ExplainX","market_news"],
+  ["E472_SUB","https://www.meta.com/help/subscriptions/1021145227643680/","About Muse subscriptions — 2026-10-10 retrieval","","Meta Help Center","official_company"],
+  ["E472_DAUDEF","https://support.similarweb.com/hc/en-us/articles/213493945-Daily-Active-Users-App","Daily Active Users (App)","","Similarweb","authoritative_third_party"],
+  ["E472_HUNTER","https://hntrbrk.com/","Hunterbrook homepage — Muse Growth Slows publication timestamp","2026-10-09","Hunterbrook","market_news"]
+ ],
+ "facts":{
+ "O1":[
+  ["S01","Meta 于 2026 年 9 月 8 日发布个人智能体 Muse，由 Muse Spark 模型驱动，能处理任务并在关闭应用后继续工作。","Introducing Muse：标题日期；How It Works，L241、254–259","页面更新至9月30日；官方能力描述，不是任务成功率实测。","support"],
+  ["S01","首发公告列出美国、iOS、Android、muse.ai 与 WhatsApp 入口。","Looking Ahead；首段L254及发布可用性段","这是首发范围；不排除后续扩区。","support"],
+  ["S03","9月29日发布、10月8日更新的小企业公告称 Muse 在美国和加拿大可用，并在现有 Muse 内增加经营技能和连接器。","标题日期L241；Takeaways及正文L249–255","不能从更新后文字确定加拿大最早开放日。","support"],
+  ["E472_FR","Meta 法国版9月24日Connect公告明确写 Muse 当前在美国、加拿大和墨西哥可用。","L202发布日期；L213地区句","与英文列举范围不同；不证明墨西哥所有账户、入口和功能均已开放。","boundary"],
+  ["E472_AP","美联社9月8日报道 Muse 面向18岁及以上用户。","标题、日期与正文首段：for people 18 and over","首发报道，不是各地区、各账户资格的完整合同。","support"],
+  ["E472_MAC","9to5Mac于9月17日更新称Muse Mac应用已推出，并嵌入扎克伯格当日的上线声明。","L68、74、95–97","已核读同期转载；X原帖本轮打开失败，不把帮助页现有全部功能追溯至首日。","support"],
+  ["E8089_AXIOS","Axios于9月29日报道Muse有免费使用及每月20美元、100美元两档订阅。","The intrigue：free for most uses；$20/$100 per month","媒体同期美元报价；不是所有国家税费、币种或免费精确额度。","support"],
+  ["S03","Muse小企业扩展可连接Facebook、Instagram商业账户及Shopify、QuickBooks、Slack等工具，发布、发送和支出需批准。","Takeaways L251–253","公告描述已提供能力，经营效果仍取决于账户权限、输入及任务。","support"],
+  ["E8089_CONNECT","9月24日Connect公告把眼镜接入列为未来数月，Expedia列为即将加入、自有邮箱列为未来功能，Charm仍待年内更多信息。","Bringing Muse to AI Glasses / Muse Charm，L255–264","预告与连接器扩展不能统称全面交付。","boundary"],
+  ["S02","Meta在9月8日说明Confidential VM仅用于少量可信测试者，计划年内推出；现行Secure VM并未以密码学阻止Meta为运营服务访问数据。","Coming Soon: Muse Confidential VM，L129–134","区分现行隔离方案与未来更强隐私方案。","boundary"],
+  ["E472_SUB","当前订阅帮助页列Power每月$20、每周5亿Muse tokens，Maximum每月$100、每周30亿tokens，并称服务仍有限测试、权益因地区和账户不同。","L187–218：Updated 4 weeks ago；Muse subscription plans/availability/eligibility","页面无精确发布日期，2026-10-10抓取；不作为2026-10-09完成证据。","context_only"],
+  ["E8089_START","当前入门页说明手机与网页通过Meta账户登录，可用Facebook、Instagram、邮箱或电话号码创建账户。","Before you start，L202–204","动态帮助页缺精确日期；不确认这些细则截止日已完全相同。","context_only"]
+ ],
+ "O2":[
+  ["S01","Muse是9月8日发布、由Muse Spark驱动的个人智能体，用户关闭应用后仍可推进任务，需要批准时再联系用户。","标题日期；How It Works，L254–259","后台可运行不等于全天CPU满载。","support"],
+  ["S02","Muse为用户提供隔离Linux VM，配有CPU、内存、存储和浏览器访问，可编译代码、开发自定义工具、执行并发子智能体和定时任务。","An agent in your own cloud computer，L26–28","说明软件执行需求，不承诺固定物理CPU配额。","support"],
+  ["S02","Muse运行区执行工具和文件操作，权限、凭据、持久化状态及推理代理分离；推理与遥测代理通向外部基础设施。","Muse Secure VM，L41–50","不能将用户VM的CPU资源当作整个模型推理资源；安全模型硬件未单列。","boundary"],
+  ["S02","Muse浏览器由独立broker管理；浏览器子智能体获得可访问性树，用户接管或填入凭据时智能体暂停。","Browser，L107–114","未披露浏览器池完整部署位置；不能声称所有浏览器进程在用户运行区。","boundary"],
+  ["E472_COMPUTE","Meta将CPU角色解释为运行应用逻辑、管理网络流量和协调跨系统工作流，将GPU角色解释为大规模并行计算。","The Building Blocks of Compute，L260–263；标题6月10日、更新6月16日","通用基础设施说明，未分拆Muse CPU与GPU工作量比例。","support"],
+  ["S18","Meta于8月10日发布300亿参数Muse Glimmer开放模型，支持Mac或PC单张消费级GPU上的本地智能体工作流。","标题日期L8；L10–14","另一模型与部署路线；不能证明Muse个人云服务已本地化或不需要GPU。","refute"],
+  ["EA125_STARK","Clinton Stark在9月22日发表的9月20日单账户观察显示2 vCPU、7.7 GB内存和100 GB主目录卷，并明确说明不代表Meta规格承诺。","Musey’s spec sheet，L11、23–33","第一手用户向智能体询问得到的样本；未独立测宿主机，不能推全站配置或独占物理核心。","boundary"]
+ ],
+ "O.u1":[
+  ["S01","本题日活对象为Meta于9月8日发布的个人智能体Muse，而非Muse Spark模型或整个Meta AI产品。","标题日期；首段与How It Works，L241、254–259","定义研究对象，不把Meta全家族用户作为Muse用户。","support"],
+  ["E321_EARLY","9月22日The Information报道：Muse上线约一周的日活超过25万。","原站公开检索摘要：Sep 22, 2026及daily active users；原页L164标题","本轮打开原页仅见订阅入口；数字来自公开索引，原始遥测未获得；不指定精确观察日。","boundary"],
+  ["E472_TC","9月21日TechCrunch引述Apptopia：Muse美国移动端日活64.2万。","正文L119–121；标题日期L108","上线前12天窗口；第三方估算，非Meta遥测，不是美加下载量。","support"],
+  ["E472_WR","9月25日Windows Report引述Similarweb称Muse约70万日活、约为11天前十倍。","正文L36、42–43；内嵌9月24日帖L50–52","未给出完整地区、平台及精确观测日；不用于跨来源增速计算。","boundary"],
+  ["S20","9月30日The Information报道：每日向Muse发送至少一次提示词的用户超过100万。","原站公开检索摘要：Sep 30, 2026及daily prompt users；原页L164标题","打开原页有订阅限制；不是只打开App人数，也不是全部后台任务用户。","boundary"],
+  ["E472_SW","10月8日13:34 UTC的报道引述Similarweb：10月5日Muse全球iOS与Android日活估算为218.2万。","L14发布日期；L15–19数值、平台与统计范围","同期二手报道；Similarweb原帖打开失败，未取得原始逐日表；全球测量不表示全球开放。","support"],
+  ["E472_CITI","10月6日路透社报道（AOL转载）引述花旗称Muse日活达180万。","标题日期L19；L29","未披露精确观察日、地域、平台及去重方法；不能视为10月6日的同源数据点。","boundary"],
+  ["E472_PLATEAU","10月6日ExplainX称9月下旬至10月1日日活在250万至300万之间，并承认报道没有注明底层跟踪数据商。","L80发布日期；What is reported L115–119","仅证实有平台期说法；原券商报告与逐日数据未取得，不能确认实际横盘。","refute"],
+  ["E472_DAUDEF","Similarweb定义应用日活为某日打开应用的去重用户，通过多种加权数据源推算所分析国家移动用户总体。","Daily Active Users (App)，L15–17","动态无日期方法页，仅说明当前定义；截止日前方法说明由10月8日有日期报道L18交叉印证。","context_only"],
+  ["E472_HUNTER","Hunterbrook首页将Muse增长减速报道标为2026年10月9日13:30 EST。","首页L0–18标题与时间戳","换算北京时间已到10月10日；按本轮北京时间10月9日截面排除。原文章路径两次打开失败。","excluded_post_cutoff"]
+ ]
+ }
+}

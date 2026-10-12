@@ -18,7 +18,7 @@
       "免费额度、订阅金额及币种、价格出处与限制",
       "已交付功能、小企业能力与眼镜、Charm、邮箱、Expedia、Confidential VM 的计划状态"
     ],
-    "refute_rule": "公开原文否定或限定发布、资格、价格及交付状态",
+    "refute_rule": "Meta Muse limited testing age subscription coming soon before:2026-10-10",
     "support_rule": "当前问题的原始材料直接支持限定结论",
     "update_cadence": "event_driven"
   },
@@ -36,15 +36,13 @@
     ],
     "source_reuse_rule": "The same source may serve another active question only through a separate attachment, extraction, and GPT review for that question."
   },
-  "parent_research_plan_id": "rp_edit_20261009T075817_8089e507",
-  "plan_id": "l3rp_o1_edit_20261009T075817_8089e507",
+  "parent_research_plan_id": "rp_edit_20261010T032723_472c2f8f",
+  "plan_id": "l3rp_o1_edit_20261010T032723_472c2f8f",
   "plan_type": "l3_deep_research",
   "question_tree": {
     "analysis_plan": [
-      "先核实个人智能体发布事件，分开首发与更新日期",
-      "逐项核对地区、年龄和入口，不将全球宣传等同全球开放",
-      "区分官方价目与媒体报道，不虚构未公开额度",
-      "对照发布公告、后续更新和未来时态，识别草稿错误与未知"
+      "核实发布前提及产品与模型区别",
+      "按国家、年龄、账户、入口、收费及交付状态逐项核对"
     ],
     "children": [],
     "depends_on_question_ids": [],
@@ -81,15 +79,13 @@
     "run_mode": "live",
     "scope": "全球服务器 CPU 为主；端侧仅检验替代边界。事件研究，不扩展完整行业链或 standalone-BOM 项目。"
   },
-  "revision_id": "edit_20261009T075817_8089e507",
+  "revision_id": "edit_20261010T032723_472c2f8f",
   "schema_version": "4.0",
   "steps": [
     {
       "analysis_plan": [
-        "先核实个人智能体发布事件，分开首发与更新日期",
-        "逐项核对地区、年龄和入口，不将全球宣传等同全球开放",
-        "区分官方价目与媒体报道，不虚构未公开额度",
-        "对照发布公告、后续更新和未来时态，识别草稿错误与未知"
+        "核实发布前提及产品与模型区别",
+        "按国家、年龄、账户、入口、收费及交付状态逐项核对"
       ],
       "answer_contract": {
         "required_fields": [
@@ -114,12 +110,12 @@
           "search_run_id"
         ]
       },
-      "decision_use": "Answer the current terminal question before rolling up L3 O1.",
+      "decision_use": "完整回答Muse 发布了什么，目前谁能使用？",
       "depends_on_step_ids": [],
       "freshness_requirement": "Use the latest available source as of 2026-10-09. Refresh cadence: event_driven.",
       "initial_status": "pending",
       "l3_node_id": "O1",
-      "l3_plan_id": "l3rp_o1_edit_20261009T075817_8089e507",
+      "l3_plan_id": "l3rp_o1_edit_20261010T032723_472c2f8f",
       "l4_question_id": "",
       "leaf_question_id": "O1",
       "leaf_step_id": "question:O1",
@@ -148,8 +144,7 @@
         }
       ],
       "refuting_source_plan": [
-        "检索 Muse 同名产品、未发布/候补/地区限制和计划功能，查验产品是否真实开放",
-        "反向核对免费是否无限量、Mac 和新连接器是否有截止日前交付证明"
+        "Meta Muse limited testing age subscription coming soon before:2026-10-10"
       ],
       "required_data": [
         "发布对象、发布日期、Muse 与 Muse Spark 的区别和主要用途",
@@ -170,8 +165,8 @@
         {
           "deepseek_allowed": false,
           "examples_or_search_queries": [
-            "Meta Muse September 8 2026 personal agent availability Canada age 18 pricing",
-            "Meta Muse free limits 20 100 Mac glasses Charm Confidential VM coming soon"
+            "Meta Muse September 8 2026 availability Canada Mexico pricing Mac before:2026-10-10",
+            "Meta Muse limited testing age subscription coming soon before:2026-10-10"
           ],
           "expected_fields": [
             "published_at",
@@ -187,10 +182,10 @@
           "why_needed": "Anchors the leaf answer in direct evidence."
         },
         {
-          "deepseek_allowed": true,
+          "deepseek_allowed": false,
           "examples_or_search_queries": [
-            "Meta Muse September 8 2026 personal agent availability Canada age 18 pricing",
-            "Meta Muse free limits 20 100 Mac glasses Charm Confidential VM coming soon"
+            "Meta Muse September 8 2026 availability Canada Mexico pricing Mac before:2026-10-10",
+            "Meta Muse limited testing age subscription coming soon before:2026-10-10"
           ],
           "expected_fields": [
             "methodology",
@@ -207,10 +202,9 @@
       ],
       "source_universe_plan": {
         "priority_source_ids": [
-          "meta_newsroom",
-          "meta_research",
-          "meta_product",
-          "axios"
+          "meta_official",
+          "original_reporting",
+          "measurement_provider"
         ]
       },
       "stage_id": "O1",
@@ -226,5 +220,5 @@
       }
     }
   ],
-  "supersedes_plan_id": "l3rp_o1_0fc426f284271611"
+  "supersedes_plan_id": "l3rp_o1_edit_20261009T075817_8089e507"
 }

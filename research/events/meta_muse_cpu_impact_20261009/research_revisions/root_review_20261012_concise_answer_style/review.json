@@ -1,0 +1,27 @@
+{
+  "review_id": "root_review_20261012_concise_answer_style",
+  "parent_revision": "edit_20261010T032723_472c2f8f",
+  "recorded_at": "2026-10-12T07:12:59.108083+00:00",
+  "reason": "将公共回答压缩为当前核心结论、关键数据与必要边界；移除正文中的编辑过程和重复的父题桥接。",
+  "changed_nodes": [
+    "AMD",
+    "ARM",
+    "C0",
+    "D1",
+    "D2",
+    "INTC",
+    "NVDA",
+    "O.u1",
+    "O1",
+    "O2",
+    "T1"
+  ],
+  "removed_public_paragraphs": 11,
+  "gate": "仅为编辑压缩，事实、来源、研究截面和充分性不变。",
+  "checks": [
+    "全部叶子回答摘录",
+    "问题树与状态一致性",
+    "嵌套研究计划",
+    "共享HTML与Markdown契约"
+  ]
+}

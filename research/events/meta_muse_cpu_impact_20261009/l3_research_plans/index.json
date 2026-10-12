@@ -9,27 +9,9 @@
     "planning_unit": "one_independent_plan_per_l3",
     "question_tree": "adaptive_depth_max_5"
   },
-  "parent_research_plan_id": "rp_edit_20261009T095113_fd9815e7",
+  "parent_research_plan_id": "rp_edit_20261010T032723_472c2f8f",
   "plan_type": "l3_deep_research_index",
   "plans": [
-    {
-      "active_steps": 1,
-      "event_path": "l3_research_plans/O1/research_step_events.jsonl",
-      "l3_node_id": "O1",
-      "l3_plan_id": "l3rp_o1_edit_20261009T075817_8089e507",
-      "leaf_steps": 1,
-      "max_depth": 3,
-      "path": "l3_research_plans/O1/research_plan.json"
-    },
-    {
-      "active_steps": 1,
-      "event_path": "l3_research_plans/O2/research_step_events.jsonl",
-      "l3_node_id": "O2",
-      "l3_plan_id": "l3rp_o2_edit_20261009T090937_a1258264",
-      "leaf_steps": 1,
-      "max_depth": 3,
-      "path": "l3_research_plans/O2/research_plan.json"
-    },
     {
       "active_steps": 1,
       "event_path": "l3_research_plans/D1/research_step_events.jsonl",
@@ -101,8 +83,35 @@
       "leaf_steps": 1,
       "max_depth": 3,
       "path": "l3_research_plans/NVDA/research_plan.json"
+    },
+    {
+      "active_steps": 1,
+      "event_path": "l3_research_plans/O1/research_step_events.jsonl",
+      "l3_node_id": "O1",
+      "l3_plan_id": "l3rp_o1_edit_20261010T032723_472c2f8f",
+      "leaf_steps": 1,
+      "max_depth": 3,
+      "path": "l3_research_plans/O1/research_plan.json"
+    },
+    {
+      "active_steps": 1,
+      "event_path": "l3_research_plans/O2/research_step_events.jsonl",
+      "l3_node_id": "O2",
+      "l3_plan_id": "l3rp_o2_edit_20261010T032723_472c2f8f",
+      "leaf_steps": 1,
+      "max_depth": 3,
+      "path": "l3_research_plans/O2/research_plan.json"
+    },
+    {
+      "active_steps": 1,
+      "event_path": "l3_research_plans/O.u1/research_step_events.jsonl",
+      "l3_node_id": "O.u1",
+      "l3_plan_id": "l3rp_o.u1_edit_20261010T032723_472c2f8f",
+      "leaf_steps": 1,
+      "max_depth": 3,
+      "path": "l3_research_plans/O.u1/research_plan.json"
     }
   ],
-  "revision_id": "edit_20261009T095113_fd9815e7",
+  "revision_id": "edit_20261010T032723_472c2f8f",
   "schema_version": "4.0"
 }

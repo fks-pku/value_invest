@@ -84,8 +84,15 @@ Leaves have exactly three numbered modules, in order:
    as appropriate. Causal reasoning, calculations and refutation are included when
    needed to answer the question, not compulsory paragraphs for every topic.
    Keep sources beside facts. Parent/investment implications follow the actual
-   answer. Compact material gaps belong at the end; do not narrate workflow or
-   explain that the branch is stopping instead of answering it.
+   answer. Compact material gaps belong at the end; answerability appears in the
+   node status, while execution reasons and next actions stay in the audit ledger.
+   Do not narrate workflow or explain that the branch is stopping instead of answering it.
+   Keep each subheading to the decision-relevant facts, derivation and material
+   boundary. State the current best answer without editorial history such as what
+   an earlier report said, what this revision added, or how the research was run;
+   that history belongs in versioned audit records. Do not repeat the same caveat
+   under several subheadings. Attribute the original source and label any derived
+   value directly, with its inputs and calculation.
 3. `数据列表`: question-specific observed data/facts, linked sources, dates, original
    locators, effects and limitations. Show a truthful empty state if evidence is absent.
    A required-data/search checklist is not collected data.
@@ -103,8 +110,10 @@ Missing evidence is explicit. An evidence table is never a substitute for analys
 Use comparison, trend or sensitivity charts/tables only when supported and useful;
 state units, periods, assumptions and derivations, never fabricate data for layout.
 
-Both kinds retain sufficiency, reasons, material gaps and next actions in their
-designated module above. Do not duplicate the same conclusion in a separate abstract
+Parent nodes retain sufficiency, reasons, material gaps and next actions in their
+designated module. Leaf nodes show answerability in their status and only material
+unresolved facts at the end of the argument; detailed reasons and next actions stay
+in structured audit records. Do not duplicate the same conclusion in a separate abstract
 and conclusion panel. Search plans, required-data checklists, acceptance-rule fields,
 extraction/review IDs and execution traces stay in structured audit artifacts.
 Sources sit beside the supported facts; an overall source index only supplements them.

@@ -1,0 +1,19 @@
+{
+  "review_id": "root_review_20261012_leaf_assessment_punctuation",
+  "recorded_at": "2026-10-12T07:15:34.279563+00:00",
+  "reason": "叶子问题正文不再自动重复研究验收理由和下一执行动作；仅在末尾保留实质未解事项。",
+  "changed_nodes": [],
+  "facts_and_sources_unchanged": true,
+  "old_report_sha256": {
+    "professional_report.html": "43239a838b75662f3f57301104db1b924717f4cef57266c98353b7c7da1d2636",
+    "professional_report.md": "91638e81c4a233591f95e7345b2718d6ce3f03f500c05c41163728344964780f"
+  },
+  "new_report_sha256": {
+    "professional_report.html": "1fcbb7c3d7c7c1a8e0b3f93d51d125bc26df8f404a87a5d1f6d0648960c40109",
+    "professional_report.md": "ea5c399fb10edbdfc17842e7c5f6181a2352d3c13f5fec2b433f5aa75cae6097"
+  },
+  "checks": [
+    "HTML及Markdown报告契约",
+    "D1正文无修订历史和验收流水"
+  ]
+}

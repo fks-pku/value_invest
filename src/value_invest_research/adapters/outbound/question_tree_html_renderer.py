@@ -103,19 +103,24 @@ class QuestionTreeHtmlRenderer:
                 analysis += '<p class="parent-bridge">对父问题的贡献：' + text(node["parent_bridge"]) + '</p>'
             if supplements:
                 analysis += '<details class="supplementary-analysis"><summary>补充测算与方法说明</summary>' + ''.join(supplements) + '</details>'
-            conclusion = '<div class="node-assessment">' + paragraphs([("充分性：通过（限本题边界）。" if node["passed"] else "充分性：未通过。") + "；".join(node["reasons"])])
-            if node.get("gaps"):
-                conclusion += '<p class="gap-note">缺口：' + text("；".join(node["gaps"])) + '</p>'
             if child_nodes:
+                conclusion = '<div class="node-assessment">' + paragraphs([("充分性：通过（限本题边界）。" if node["passed"] else "充分性：未通过。") + "；".join(node["reasons"])])
+                if node.get("gaps"):
+                    conclusion += '<p class="gap-note">缺口：' + text("；".join(node["gaps"])) + '</p>'
                 missing_children = [c for c in child_nodes if not c["passed"]]
                 if not node.get("gaps") and not missing_children:
                     conclusion += paragraphs(["本题边界内暂无已记录的重大缺口。"])
                 for child in missing_children:
                     conclusion += f'<div class="child-gap" data-child-gap="{child["id"]}"><a href="#{child["id"]}">{text(child["question"])}</a>'
                     conclusion += paragraphs(["缺口：" + "；".join(child["gaps"]), "下一步：" + "；".join(child["next_actions"])]) + '</div>'
-            if node.get("refutation"):
-                conclusion += '<p class="boundary-note">反向证据与边界：' + text(node["refutation"]) + '</p>'
-            conclusion += paragraphs(["下一步：" + "；".join(node["next_actions"])]) + '</div>'
+                if node.get("refutation"):
+                    conclusion += '<p class="boundary-note">反向证据与边界：' + text(node["refutation"]) + '</p>'
+                conclusion += paragraphs(["下一步：" + "；".join(node["next_actions"])]) + '</div>'
+            else:
+                # The badge already shows answerability. Keep only unresolved facts in reader prose.
+                gap_sentence = "；".join(str(g).rstrip("。； ") for g in node.get("gaps", []))
+                conclusion = ('<div class="node-assessment"><p class="gap-note">'
+                              + text(gap_sentence + '。') + '</p></div>') if gap_sentence else ''
             if child_nodes:
                 sections = [child_links, analysis + '</div>', '<div class="article-copy">' + conclusion + '</div>']
             else:

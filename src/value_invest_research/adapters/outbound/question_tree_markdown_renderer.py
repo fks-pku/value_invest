@@ -70,14 +70,16 @@ class QuestionTreeMarkdownRenderer:
                         p("对父问题的贡献：" + node["parent_bridge"])
             if children:
                 p("#### 3. " + titles[2])
-            p(("充分性：通过（限本题）。" if node["passed"] else "充分性：未通过。") + "；".join(node["reasons"]))
-            p("缺口：" + ("；".join(node["gaps"]) or "本题边界内暂无已记录的重大缺口。"))
-            for child in children:
-                if not child["passed"]:
-                    p(f"- [{child['question']}](#{child['id']})：" + "；".join(child["gaps"] + child["next_actions"]))
-            if node.get("refutation"):
-                p("反向证据与边界：" + node["refutation"])
-            p("下一步：" + "；".join(node["next_actions"]))
+                p(("充分性：通过（限本题）。" if node["passed"] else "充分性：未通过。") + "；".join(node["reasons"]))
+                p("缺口：" + ("；".join(node["gaps"]) or "本题边界内暂无已记录的重大缺口。"))
+                for child in children:
+                    if not child["passed"]:
+                        p(f"- [{child['question']}](#{child['id']})：" + "；".join(child["gaps"] + child["next_actions"]))
+                if node.get("refutation"):
+                    p("反向证据与边界：" + node["refutation"])
+                p("下一步：" + "；".join(node["next_actions"]))
+            elif node.get("gaps"):
+                p("；".join(str(g).rstrip("。； ") for g in node["gaps"]) + "。")
             if not children:
                 p("#### 3. " + titles[2])
                 table(["材料、日期与原文定位", "关键数据与事实", "作用", "口径限制与反向解释"],

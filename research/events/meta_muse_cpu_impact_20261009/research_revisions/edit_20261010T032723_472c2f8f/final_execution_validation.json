@@ -1,0 +1,416 @@
+{
+  "ok": true,
+  "issues": [],
+  "summary": {
+    "plan_id": "rp_edit_20261010T032723_472c2f8f",
+    "status": "blocked",
+    "steps": 11,
+    "pending": 8,
+    "in_progress": 0,
+    "review_pending": 1,
+    "blocked": 2,
+    "completed": 0,
+    "events": 5,
+    "historical_plan_events": 26,
+    "nested": {
+      "parent_plan_id": "rp_edit_20261010T032723_472c2f8f",
+      "status": "blocked",
+      "l3_plans": 11,
+      "completed_l3_plans": 1,
+      "leaf_steps": 11,
+      "completed_leaf_steps": 1,
+      "blocked_leaf_steps": 10,
+      "max_depth": 3
+    }
+  },
+  "step_states": [
+    {
+      "step_id": "rollup:O1",
+      "status": "blocked",
+      "answer": "Meta 于2026年9月8日发布 Muse，一款由 Muse Spark 驱动、能代用户执行任务并在关闭应用后继续工作的个人AI智能体。截至10月9日，美国和加拿大的开放已获英文官方公告确认；法文官方公告另列墨西哥，不能断言仅美加可用。它面向18岁及以上用户，已有手机、网页、WhatsApp及Mac入口，9月29日又增加小企业技能。免费使用有额度限制，两档月费20/100美元有同期报道；眼镜接入、Charm和Confidential VM等预告不能当作全面交付。[S01][S03][E472_FR][E472_AP][E472_MAC][E8089_AXIOS][E8089_CONNECT][S02]",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [
+        "未取得截至2026-10-09带精确日期的官方账户开通/邀请规则、免费精确额度及付费token权益版本，不能完整复原截止日使用资格和额度。",
+        "加拿大、墨西哥的当地结算币种、税费与逐账户最终可订阅状态未得到截止日原始价目确认。"
+      ],
+      "next_actions": [
+        "补充截止日前官方帮助页存档、当地价目及账户资格说明；不新增问题节点。"
+      ],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "edit_20261010T032723_472c2f8f_O1_parent_blocked",
+      "latest_recorded_at": "2026-10-10T03:48:10.304788+00:00",
+      "event_count": 2
+    },
+    {
+      "step_id": "rollup:O.u1",
+      "status": "blocked",
+      "answer": "Muse发布首月的日活轨迹是从早期数十万快速进入百万级：9月21日报道的美国移动端估算为64.2万；9月30日报道的每日发提示用户超过100万；10月5日全球iOS与Android日活的Similarweb估算为218.2万，10月6日报道的花旗估算为180万。它们是不同口径的观察点，足以说明起量，不能连成一条精确逐日曲线，也不能据218.2万与180万的差值断言日活下降。截至2026年10月9日（北京时间），完整同口径逐日数据与留存尚未取得，“已进入平台期”仍缺可靠确认。[E472_TC][S20][E472_SW][E472_CITI]",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [
+        "未取得从9月8日发布至10月9日、地域/平台/活跃定义一致的完整逐日原始数据，不能给出精确日活曲线或10月9日当天数值。",
+        "平台期报道缺原券商报告、底层数据商与去重方法；亦缺同口径队列留存，不能确认平台期及增长持续性。"
+      ],
+      "next_actions": [
+        "下一轮优先取得Similarweb或Apptopia带定义的逐日历史导出及原券商图表，再补7日/28日队列留存；保留本轮截面，不自动扩展问题。"
+      ],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "edit_20261010T032723_472c2f8f_O.u1_parent_blocked",
+      "latest_recorded_at": "2026-10-10T03:48:10.334335+00:00",
+      "event_count": 2
+    },
+    {
+      "step_id": "rollup:O2",
+      "status": "review_pending",
+      "answer": "Muse需要云端CPU，是因为模型决定下一步之后，还要有计算机执行代码、处理文件、调用工具、协调任务并保存进度；它还要在用户关闭App后继续工作。Meta为此给用户提供隔离的Linux虚拟机，并将推理代理连接到外部基础设施。CPU执行环境与模型推理是互补环节；云端是Muse为持续代办选择的架构，不是所有智能体都必须走的路线，也不表示每用户独占一颗或固定两个物理核心。[S01][S02][E472_COMPUTE][S18]",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [
+        "本题机制已回答；实际CPU核时、资源复用及采购转换继续由既有D1、D2问题承接，不另建下钻节点。"
+      ],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "edit_20261010T032723_472c2f8f_O2_parent_answer",
+      "latest_recorded_at": "2026-10-10T03:48:10.315017+00:00",
+      "event_count": 1
+    },
+    {
+      "step_id": "rollup:D1",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "rollup:D2",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "rollup:T1",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "rollup:C0",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "rollup:AMD",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "rollup:INTC",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "rollup:ARM",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "rollup:NVDA",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    }
+  ],
+  "l3_plans": [
+    {
+      "l3_node_id": "D1",
+      "plan_id": "l3rp_d1_edit_20261009T092333_321fabff",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 8,
+      "historical_plan_events": 5
+    },
+    {
+      "l3_node_id": "D2",
+      "plan_id": "l3rp_d2_edit_20261009T092333_321fabff",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 8,
+      "historical_plan_events": 5
+    },
+    {
+      "l3_node_id": "T1",
+      "plan_id": "l3rp_t1_edit_20261009T092333_321fabff",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 8,
+      "historical_plan_events": 4
+    },
+    {
+      "l3_node_id": "C0",
+      "plan_id": "l3rp_c0_edit_20261009T095113_fd9815e7",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 5,
+      "historical_plan_events": 4
+    },
+    {
+      "l3_node_id": "AMD",
+      "plan_id": "l3rp_amd_edit_20261009T095113_fd9815e7",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 5,
+      "historical_plan_events": 5
+    },
+    {
+      "l3_node_id": "INTC",
+      "plan_id": "l3rp_intc_edit_20261009T095113_fd9815e7",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 5,
+      "historical_plan_events": 5
+    },
+    {
+      "l3_node_id": "ARM",
+      "plan_id": "l3rp_arm_edit_20261009T095113_fd9815e7",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 8,
+      "historical_plan_events": 5
+    },
+    {
+      "l3_node_id": "NVDA",
+      "plan_id": "l3rp_nvda_edit_20261009T095113_fd9815e7",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 5,
+      "historical_plan_events": 5
+    },
+    {
+      "l3_node_id": "O1",
+      "plan_id": "l3rp_o1_edit_20261010T032723_472c2f8f",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 4,
+      "historical_plan_events": 17
+    },
+    {
+      "l3_node_id": "O2",
+      "plan_id": "l3rp_o2_edit_20261010T032723_472c2f8f",
+      "max_depth": 3,
+      "status": "completed",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 0,
+      "completed": 1,
+      "events": 4,
+      "historical_plan_events": 9
+    },
+    {
+      "l3_node_id": "O.u1",
+      "plan_id": "l3rp_o.u1_edit_20261010T032723_472c2f8f",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 4,
+      "historical_plan_events": 0
+    }
+  ]
+}
