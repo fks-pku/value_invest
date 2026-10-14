@@ -5,12 +5,14 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import tempfile
 import uuid
 
 from value_invest_research.domain.interactive_research import validate_researched_tree, validate_research_state, validate_qa_tree
 from value_invest_research.domain.report_view_model import ReportViewModel
+from value_invest_research.domain.passage_comments import validate_passage_result
 from value_invest_research.domain.research_answer import ANSWER_PROTOCOL, validate_answer_review
 from value_invest_research.domain.research_plan import validate_research_plan_execution
 from value_invest_research.adapters.outbound.filesystem_research_plan import FileSystemResearchPlanRepository
@@ -46,6 +48,12 @@ def atomic(path, data):
 
 def rows(path):
     return [json.loads(line) for line in path.read_text().splitlines() if line.strip()] if path.exists() else []
+
+
+def append_row(path, row):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a") as stream:
+        stream.write(json.dumps(row, ensure_ascii=False) + "\n")
 
 
 def project_files(folder):
@@ -137,11 +145,163 @@ class FileSystemInteractiveResearch:
         self.save_job(job)
         return job
 
+    def validate_and_publish_comment(self, job):
+        """Only the host edits the selected paragraph after a read-only search worker returns."""
+        stage = Path(job["workspace"]) / "project"
+        before = self.home / "jobs" / job["id"] / "before"
+        if hashes(self.project) != job["baseline"]:
+            raise ValueError("研究期间原项目被其它操作修改。原段保留，请重新选中后追问。")
+        if hashes(stage) != job["baseline"]:
+            raise ValueError("局部研究器修改了项目副本；原段保留。")
+        target = job["proposal"]["target"]
+        tree = read(stage / "question_tree_report.json")
+        node = next(n for n in tree["nodes"] if n["id"] == target["node_id"])
+        section, paragraph = target["section"], target["paragraph"]
+        if node["analysis"][section]["paragraphs"][paragraph] != target["original"]:
+            raise ValueError("段落已变化，不能覆盖。")
+        result = validate_passage_result(read(Path(job["workspace"]) / "comment_result.json"),
+                                         original=target["original"], as_of_date=tree["as_of_date"])
+        if result["status"] != "ready":
+            return result
+
+        plan_node = node
+        by_id = {n["id"]: n for n in tree["nodes"]}
+        while plan_node["level"] > 3:
+            plan_node = by_id[plan_node["parent_id"]]
+        l3id = plan_node["id"]
+        plan = read(stage / "l3_research_plans" / l3id / "research_plan.json")
+        step = next((s for s in plan["steps"] if s["question_node_id"] == node["id"]), None)
+        if not step:
+            raise ValueError("当前问题没有可追溯的研究步骤，不能局部发布。")
+        trace = {"revision_id": job["id"], "l3_plan_id": plan["plan_id"],
+                 "l3_node_id": l3id, "question_node_id": node["id"], "question_level": node["level"],
+                 "research_step_id": step["step_id"], "search_run_id": job["id"] + "_search"}
+        now = datetime.now(timezone.utc).isoformat()
+        registered = rows(stage / "sources.jsonl")
+        known = {(s.get("url"), s.get("published_at")): s for s in registered}
+        existing_ids = {s["source_id"] for s in registered}
+        source_ids = []
+        for index, found in enumerate(result["sources"], 1):
+            key = (found["url"], found["published_at"])
+            source = known.get(key)
+            if source is None:
+                source_id = f"PC{job['id'].rsplit('_', 1)[-1].upper()}_{index}"
+                if source_id in existing_ids:
+                    raise ValueError("局部研究来源编号冲突。")
+                material = found["material_class"]
+                bucket = ("evidence" if material in {"official_filing", "official_company"} else
+                          "research_report" if material in {"sell_side_research", "authoritative_third_party"} else
+                          "message" if material == "market_news" else "opinion")
+                source = {"source_id": source_id, "title": found["title"], "url": found["url"],
+                          "publisher": found["publisher"], "published_at": found["published_at"],
+                          "material_class": material, "source_bucket": bucket,
+                          "ingestion_channel": "question_search", "publication_date_status": "verified",
+                          "publication_date_source": found["locator"],
+                          "note": "针对段落追问逐题复核。"}
+                append_row(stage / "sources.jsonl", source)
+                known[key] = source
+                existing_ids.add(source_id)
+            source_ids.append(source["source_id"])
+            if not any(s["source_id"] == source["source_id"] for s in tree["sources"]):
+                tree["sources"].append(source)
+
+        replacement = re.sub(r"\[(\d+)\]", lambda match: f"[{source_ids[int(match[1]) - 1]}]",
+                             result["replacement"])
+        node["analysis"][section]["paragraphs"][paragraph] = replacement
+        for coverage in node.get("answer_review", {}).get("coverage", []):
+            excerpt = coverage.get("answer_excerpt", "")
+            if coverage.get("status") == "answered" and excerpt and excerpt in target["original"] and excerpt not in replacement:
+                coverage["answer_excerpt"] = replacement
+        if node.get("answer_review"):
+            node["answer_review"]["manual_review_id"] = job["id"]
+            from value_invest_research.domain.research_answer import validate_answer_review
+            validate_answer_review(node)
+        tree["revision_id"] = job["id"]
+        node["revision_id"] = job["id"]
+        append_row(stage / "search_runs.jsonl", {**trace, "queries": result["search_queries"],
+                   "refutation_result": result["refutation_result"], "source_ids": source_ids,
+                   "searched_at": now, "as_of_date": tree["as_of_date"],
+                   "origin": "passage_comment_search", "status": "searched_and_opened"})
+        for index, (source_id, found) in enumerate(zip(source_ids, result["sources"]), 1):
+            extraction_id = f"{job['id']}_ext_{index}"
+            review_id = f"{job['id']}_review_{index}"
+            append_row(stage / "source_extractions.jsonl", {**trace, "extraction_id": extraction_id,
+                       "source_id": source_id, "fact": found["fact"], "locator": found["locator"],
+                       "boundary": found["boundary"], "effect": found["effect"],
+                       "published_at": found["published_at"], "extracted_at": now})
+            append_row(stage / "source_reviews.jsonl", {**trace, "review_id": review_id,
+                       "extraction_id": extraction_id, "source_id": source_id,
+                       "decision": "verified_with_stated_boundary", "review": found["review"],
+                       "reviewer": "GPT", "reviewed_at": now})
+            append_row(stage / "ledger/claims.jsonl", {**trace, "claim_id": f"{job['id']}_claim_{index}",
+                       "source_id": source_id, "extraction_id": extraction_id, "review_id": review_id,
+                       "claim": found["fact"], "locator": found["locator"],
+                       "boundary": found["boundary"], "recorded_at": now})
+            append_row(stage / "inbox/parse_tasks.jsonl", {**trace, "task_id": f"{job['id']}_parse_{index}",
+                       "source_id": source_id, "status": "completed", "extraction_id": extraction_id,
+                       "review_id": review_id, "parser": "GPT direct source reading", "recorded_at": now})
+            node.setdefault("evidence", []).append({"source": source_id, "fact": found["fact"],
+                       "locator": found["locator"], "boundary": found["boundary"],
+                       "effect": found["effect"], "extraction_id": extraction_id, "review_id": review_id,
+                       "search_run_id": trace["search_run_id"], "revision_id": job["id"]})
+        append_row(stage / "research_events.jsonl", {**trace, "event_id": job["id"] + "_passage_updated",
+                   "event_type": "passage_updated", "recorded_at": now,
+                   "section": section, "paragraph": paragraph, "comment": target["comment"],
+                   "source_ids": source_ids, "change_note": result.get("change_note", "")})
+
+        from value_invest_research.domain.question_tree_report import validate_question_tree_report
+        errors = validate_question_tree_report(tree)
+        if errors:
+            raise ValueError("局部更新后报告结构无效：" + "; ".join(errors))
+        write(stage / "question_tree_report.json", tree)
+        project = read(stage / "project.json")
+        project["question_tree"] = tree
+        project["interactive_revision"] = job["id"]
+        write(stage / "project.json", project)
+        vm_data = read(stage / "report_view_model.json")
+        vm_data["project"]["question_tree"] = tree
+        vm_data["project"]["interactive_revision"] = job["id"]
+        vm_data["sources"] = tree["sources"]
+        searches = rows(stage / "search_runs.jsonl")
+        vm_data["qa_roots"] = project_chapter_cache(vm_data["qa_roots"], tree, searches, job)
+        write(stage / "report_view_model.json", vm_data)
+        if (stage / "research_chapters.json").exists():
+            write(stage / "research_chapters.json",
+                  project_chapter_cache(read(stage / "research_chapters.json"), tree, searches, job))
+        if (stage / "research_state.json").exists():
+            state = read(stage / "research_state.json")
+            state["revision_id"] = job["id"]
+            state["current_node_id"] = node["id"]
+            write(stage / "research_state.json", state)
+            from value_invest_research.domain.interactive_research import validate_research_state
+            validate_research_state(state, tree, job["id"])
+        vm = ReportViewModel(**vm_data)
+        html = CanonicalHtmlReportRenderer().render(vm)
+        markdown = CanonicalMarkdownReportRenderer().render(vm)
+        html_check, md_check = validate_report_contract_html(html), validate_report_contract_markdown(markdown)
+        if not html_check["ok"] or not md_check["ok"]:
+            raise ValueError("局部更新未通过报告格式校验，原段保留。")
+        atomic(stage / "professional_report.html", html.encode())
+        atomic(stage / "professional_report.md", markdown.encode())
+        write(stage / "presentation_validation.json", {"html": html_check, "markdown": md_check,
+              "visual_review": "not_performed_by_background_worker", "full_legacy_audit": "not_claimed"})
+        revision = stage / "research_revisions" / job["id"]
+        write(revision / "before_question_tree.json", read(before / "question_tree_report.json"))
+        write(revision / "after_question_tree.json", tree)
+        write(revision / "passage_comment.json", {"revision_id": job["id"], "recorded_at": now,
+              "target": target, "replacement": replacement, "source_ids": source_ids,
+              "change_note": result.get("change_note", "")})
+        if hashes(self.project) != job["baseline"]:
+            raise ValueError("发布前报告被其它操作更新，原段保留。")
+        self._publish(job, stage, before)
+        return result
+
     def validate_and_publish(self, job):
         stage = Path(job["workspace"]) / "project"
         before = self.home / "jobs" / job["id"] / "before"
         if hashes(self.project) != job["baseline"]:
             raise ValueError("研究期间原项目被其它操作修改。候选版本已保留，请刷新重试，避免覆盖。")
+        self._quarantine_worker_diagnostics(job, stage, before)
         files = project_files(stage)
         missing = set(job["baseline"]) - set(files)
         if missing:
@@ -215,6 +375,36 @@ class FileSystemInteractiveResearch:
             if original.is_file():
                 atomic(revision / "direct_answers" / f"{nid}.md", original.read_bytes())
         self._publish(job, stage, before)
+
+    def _quarantine_worker_diagnostics(self, job, stage, before):
+        """Keep worker diagnostics for audit without publishing protected projections."""
+        prefix = f"revision_audits/{job['id']}/"
+        audit = self.home / "jobs" / job["id"] / "worker_diagnostics"
+        captured = []
+        for name, path in project_files(stage).items():
+            prior = before / name
+            if prior.exists() and path.read_bytes() == prior.read_bytes():
+                continue
+            validation = name == "parent_execution_validation.json" or (
+                name.startswith("l3_research_plans/") and name.endswith("/execution_validation.json")
+            )
+            scratch = name.startswith(prefix) and not prior.exists()
+            if not validation and not scratch:
+                continue
+            content = path.read_bytes()
+            destination = audit / name
+            if destination.exists() and destination.read_bytes() != content:
+                raise ValueError(f"候选诊断文件在复核期间发生变化：{name}")
+            atomic(destination, content)
+            captured.append({"path": name, "sha256": hashlib.sha256(content).hexdigest(),
+                             "action": "restored_prior" if prior.exists() else "audit_only"})
+            if prior.exists():
+                atomic(path, prior.read_bytes())
+            else:
+                path.unlink()
+        if captured:
+            write(audit / "manifest.json", {"job_id": job["id"], "files": captured,
+                  "note": "Worker diagnostics were retained outside the publishable research project."})
 
     def _validate_fresh_evidence(self, stage, before, job, tree):
         def fresh(name):

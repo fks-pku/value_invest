@@ -1,0 +1,12 @@
+{
+  "review_id": "root_review_20261013_question_focus_citation_tighten",
+  "parent_revision": "edit_20261010T032723_472c2f8f",
+  "recorded_at": "2026-10-13T03:45:15.590891+00:00",
+  "reason": "正文引用只使用本题已复核证据；删除未在节点证据表中的动态页面信息。",
+  "changed_nodes": [
+    "O1",
+    "D1",
+    "O.u1"
+  ],
+  "gate": "证据充分性与截止日不变。"
+}

@@ -3,6 +3,7 @@ from threading import RLock, Event
 from concurrent.futures import ThreadPoolExecutor
 
 from value_invest_research.domain.interactive_research import propose_edit, tree_version
+from value_invest_research.domain.passage_comments import propose_passage_comment
 from value_invest_research.ports.interactive_research import InteractiveResearchRepository, InteractiveResearchRunner
 
 ACTIVE = {"queued", "running", "validating", "publishing"}
@@ -26,6 +27,10 @@ class InteractiveResearch:
                 raise ValueError("报告已被其他操作更新，请刷新后重试。")
             return propose_edit(tree, request)
 
+    def preview_comment(self, request):
+        with self.lock:
+            return propose_passage_comment(self.repository.tree(), request)
+
     def process(self):
         with self.lock:
             return self.repository.process()
@@ -36,6 +41,17 @@ class InteractiveResearch:
             if job and job["status"] in ACTIVE:
                 raise ValueError("已有研究正在运行，请等待或取消后再编辑。")
             proposal = self.preview(request)
+            job = self.repository.prepare(proposal)
+            self.cancelled.clear()
+            self.pool.submit(self._execute, job)
+            return job
+
+    def submit_comment(self, request):
+        with self.lock:
+            current = self.repository.current_job()
+            if current and current["status"] in ACTIVE:
+                raise ValueError("已有研究正在运行，请等待或取消后再追问。")
+            proposal = self.preview_comment(request)
             job = self.repository.prepare(proposal)
             self.cancelled.clear()
             self.pool.submit(self._execute, job)
@@ -57,15 +73,26 @@ class InteractiveResearch:
                 self.repository.save_job(job)
         try:
             update("正在启动研究引擎，逐题检索与复核。")
-            self.runner.run(job["workspace"], job, update, self.cancelled.is_set)
+            is_comment = job["proposal"].get("kind") == "passage_comment"
+            if is_comment:
+                self.runner.run_comment(job["workspace"], job, update, self.cancelled.is_set)
+            else:
+                self.runner.run(job["workspace"], job, update, self.cancelled.is_set)
             if self.cancelled.is_set():
                 raise InterruptedError("用户取消")
             update("正在检查问题范围、证据链、计划与报告；尚未覆盖正式报告。", "validating")
             with self.lock:
                 if self.cancelled.is_set():
                     raise InterruptedError("用户取消")
-                self.repository.validate_and_publish(job)
-                update("报告已更新。研究不足的节点仍标注缺口，不等于投资结论通过。", "updated")
+                if is_comment:
+                    result = self.repository.validate_and_publish_comment(job)
+                    if result["status"] != "ready":
+                        update(result["reason"] + " 原段保持不变。", "unchanged")
+                    else:
+                        update("所选段落已补证并更新；其它正文保持不变。", "updated")
+                else:
+                    self.repository.validate_and_publish(job)
+                    update("报告已更新。研究不足的节点仍标注缺口，不等于投资结论通过。", "updated")
         except InterruptedError:
             update("研究已取消；草稿与执行记录保留，正式报告未变。", "cancelled")
         except Exception as exc:

@@ -1,0 +1,8 @@
+{
+  "revision_id": "editorial_core_points_20261014",
+  "kind": "presentation_editorial",
+  "scope": "all question-tree leaf nodes",
+  "source_change": false,
+  "conclusion_change": false,
+  "description": "Core viewpoints are bullet points mapped in order to main analysis sections."
+}

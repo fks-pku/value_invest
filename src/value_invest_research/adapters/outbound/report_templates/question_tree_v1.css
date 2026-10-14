@@ -15,6 +15,12 @@
 .research-questions li::marker{color:var(--green);font-size:12px}
 .research-questions a{font-size:16px;font-weight:600;text-decoration:none}
 .research-questions p{margin:5px 0 0;color:var(--muted);font-size:13px}
+.core-points{margin:0;padding-left:24px;list-style:disc;font-size:17px;line-height:1.85}
+.core-points li{padding:0 0 13px 5px;overflow-wrap:anywhere}
+.core-points li:last-child{padding-bottom:0}
+.core-points li::marker{color:var(--green);font-size:15px}
+.argument-point-label{display:block;margin:28px 0 -18px;color:var(--green);font-size:10px;font-weight:800;letter-spacing:.09em}
+.argument-point-label:first-child{margin-top:0}
 .child-findings{margin:0;font-size:14px}
 .child-findings>div{padding:14px 0;border-bottom:1px solid var(--line)}
 .child-findings dt{font-weight:600}

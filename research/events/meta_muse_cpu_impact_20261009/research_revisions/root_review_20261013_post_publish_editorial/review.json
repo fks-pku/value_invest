@@ -1,0 +1,10 @@
+{
+  "review_id": "root_review_20261013_post_publish_editorial",
+  "parent_revision": "edit_20261013T082701_4c49cd59",
+  "recorded_at": "2026-10-13T09:30:29.689511+00:00",
+  "reason": "D1 正文改用本题已复核且有精确发布日期的 Meta 来源；重渲染报告以应用问答展示改进。",
+  "changed_nodes": [
+    "D1"
+  ],
+  "gate": "研究结论和证据门禁不变；HTML/Markdown 合同校验通过。"
+}

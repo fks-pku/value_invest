@@ -62,6 +62,10 @@ and existing deep links; support L1 through L5 without pre-creating questions.
 Every node's title states the question it answers. Its actual children, not its
 level number, determine the public modules. This replaces the former four-slot
 layout within the shared profile; existing node and section bookmarks remain valid.
+At every node and subheading, lead with the information that answers that exact
+question. Keep each material qualification next to the claim it changes, once;
+put granular source limitations in `数据列表` and process details in the audit trail.
+Parent synthesis answers the parent question rather than reciting all child caveats.
 
 Parents have exactly three numbered modules at every level, in order:
 
@@ -77,9 +81,16 @@ Parents have exactly three numbered modules at every level, in order:
 
 Leaves have exactly three numbered modules, in order:
 
-1. `核心观点`: give a substantive, direct answer to the complete question with any
-   decisive qualification. This is an answer, not a report-purpose statement.
-2. `关键论证`: expand that answer as a standalone article. Use question-specific
+1. `核心观点`: give a short list of substantive bullet points that together answer
+   the complete question. Each bullet states one decision-relevant finding, not a
+   report-purpose statement or a list of caveats. Preserve decisive qualifications
+   beside the finding they change. Author the leaf's `core_points[]` with `text`
+   and ordered `analysis_sections` indices; the points partition every main
+   argument section in reading order. Keep `conclusion` as the canonical compact
+   answer used by parent rollups, with the same claims as the bullets.
+2. `关键论证`: expand those bullets in the same order as a standalone article.
+   Each main section must be traceable to one bullet, with concrete evidence and
+   reasoning rather than a second summary list. Use question-specific
    subheadings, concrete facts, explanations, examples, lists or comparison tables
    as appropriate. Causal reasoning, calculations and refutation are included when
    needed to answer the question, not compulsory paragraphs for every topic.
@@ -93,6 +104,14 @@ Leaves have exactly three numbered modules, in order:
    that history belongs in versioned audit records. Do not repeat the same caveat
    under several subheadings. Attribute the original source and label any derived
    value directly, with its inputs and calculation.
+   For a why/how question, lead with the task, mechanism and causal explanation.
+   Do not replace that explanation with a catalogue of what cannot be inferred.
+   Keep only limits that materially change this question's answer in the main prose;
+   route resource sizing, substitutes and other side questions to their own nodes
+   while retaining the full evidence and refutation trail internally.
+   Author material uncertainty once in the argument; do not append the raw internal
+   gap list after the answer. The node status and parent gap module retain the
+   answerability context.
 3. `数据列表`: question-specific observed data/facts, linked sources, dates, original
    locators, effects and limitations. Show a truthful empty state if evidence is absent.
    A required-data/search checklist is not collected data.

@@ -80,15 +80,16 @@
       ]
     }
   ],
-  "revision_id": "edit_20261010T032723_472c2f8f",
+  "revision_id": "edit_20261013T082701_4c49cd59",
   "incremental_boundary_review": {
-    "revision_id": "edit_20261010T032723_472c2f8f",
-    "answer": "日活起量不改变任何公司增量采购、收入或估值门禁；保留既有no_action/watch_only状态。",
-    "changed_action_states": false,
+    "revision_id": "edit_20261013T082701_4c49cd59",
     "affected_product_nodes": [
-      "O1",
-      "O2",
-      "O.u1"
-    ]
+      "D1",
+      "D2",
+      "T1",
+      "I.u1"
+    ],
+    "changed_action_states": false,
+    "answer": "一亿DAU情景形成CPU容量采购池，不证明AMD全部取得该收入；EPYC分部、供货份额与交付未知。EPYC、Arm和Grace合作仅提供承接路径，保持全部既有no_action/watch_only。"
   }
 }

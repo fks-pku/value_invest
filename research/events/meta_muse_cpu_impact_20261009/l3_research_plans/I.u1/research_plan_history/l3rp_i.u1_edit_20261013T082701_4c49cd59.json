@@ -1,0 +1,219 @@
+{
+  "completion_policy": {
+    "l3_complete_when": "current_question_answerable_or_all_required_descendants_complete",
+    "legacy_broad_search": "audit_only_not_retroactive_completion",
+    "missing_evidence": "block_then_expand_only_the_observed_gap"
+  },
+  "expansion_history": [],
+  "l3_node_id": "I.u1",
+  "l3_question": "假设1亿的dau，对应的cpu增量有多少，对比amd的cpu业务，量级多大？",
+  "l3_title": "假设1亿的dau，对应的cpu增量有多少，对比amd的cpu业务，量级多大？",
+  "lens_id": "I",
+  "logic_contract": {
+    "company_bridge_fields": [],
+    "downstream_node_ids": [],
+    "indicators": [
+      "一亿DAU、2 vCPU配额、128核/256线程的情景换算",
+      "资源共享、CPU价格、存量余量及年度交付假设",
+      "AMD年报与季度分部收入、EPYC未单列限制及量级比较"
+    ],
+    "refute_rule": "共享、存量复用、未交付、收入分部混合或缺少实际用量可改变数量与受益判断",
+    "support_rule": "原始材料与可复算的情景直接回答原题各项要求",
+    "update_cadence": "event_driven"
+  },
+  "material_collection_policy": {
+    "bulk_pool_mapping_eligible": false,
+    "push_ingestion_role": "candidate_only",
+    "required_origin": "active_question_search",
+    "required_trace_fields": [
+      "l3_plan_id",
+      "l3_node_id",
+      "question_node_id",
+      "question_level",
+      "research_step_id",
+      "search_run_id"
+    ],
+    "source_reuse_rule": "The same source may serve another active question only through a separate attachment, extraction, and GPT review for that question."
+  },
+  "parent_research_plan_id": "rp_edit_20261013T082701_4c49cd59",
+  "plan_id": "l3rp_i.u1_edit_20261013T082701_4c49cd59",
+  "plan_type": "l3_deep_research",
+  "question_tree": {
+    "analysis_plan": [
+      "逐行复算CPU/双路服务器/采购额敏感性",
+      "按新增比例、AMD份额、建设年数计算年度收入，与可比财务口径比较"
+    ],
+    "children": [],
+    "depends_on_question_ids": [],
+    "level": 3,
+    "question": "假设1亿的dau，对应的cpu增量有多少，对比amd的cpu业务，量级多大？",
+    "question_id": "I.u1",
+    "required_data": [
+      "一亿DAU、2 vCPU配额、128核/256线程的情景换算",
+      "资源共享、CPU价格、存量余量及年度交付假设",
+      "AMD年报与季度分部收入、EPYC未单列限制及量级比较"
+    ],
+    "requires_refutation_search": true,
+    "research_dimension": "l3_initial",
+    "title": "假设1亿的dau，对应的cpu增量有多少，对比amd的cpu业务，量级多大？"
+  },
+  "question_tree_policy": {
+    "branching": "only_after_failed_answerability_gate",
+    "initial_depth": 3,
+    "maximum_depth": 5,
+    "root_level": 3,
+    "terminal_definition": "the current deepest unanswered question"
+  },
+  "research_goal": {
+    "as_of_date": "2026-10-09",
+    "biggest_uncertainty": "每活跃用户的真实 CPU/内存驻留时间及其增量采购转化",
+    "counterfactual": "无 Muse 时已有云服务、AI 执行环境与服务器更新需求",
+    "event_date": "2026-09-08",
+    "investment_decision": "行业方向、条件规模与公司敞口；不作买卖建议",
+    "maximum_depth": 5,
+    "mode": "live",
+    "report_date": "2026-10-09",
+    "research_object": "Meta Muse personal agent release and CPU market impact",
+    "run_mode": "live",
+    "scope": "全球服务器 CPU 为主；端侧仅检验替代边界。事件研究，不扩展完整行业链或 standalone-BOM 项目。"
+  },
+  "revision_id": "edit_20261013T082701_4c49cd59",
+  "schema_version": "4.0",
+  "steps": [
+    {
+      "analysis_plan": [
+        "逐行复算CPU/双路服务器/采购额敏感性",
+        "按新增比例、AMD份额、建设年数计算年度收入，与可比财务口径比较"
+      ],
+      "answer_contract": {
+        "preserve_full_question_scope": true,
+        "protocol": "direct-answer-v1",
+        "required_fields": [
+          "answer",
+          "supporting_findings",
+          "refuting_findings",
+          "gaps",
+          "next_actions"
+        ],
+        "review_required": true,
+        "rule": "先把当前问题当成用户单独提出的问题来回答。\n开头给实质答案：是什么就解释对象，谁就列清人群，如何就说明过程，多少就给口径和数值，\n比较就给同维度差异，是否/为什么就给判断及原因。按问题选择展开方式，不套统一投资段落。\n覆盖题目中每一个实质提问；提供理解答案所需的定义、具体事实、例子、日期和适用条件。\n依据紧跟事实，区分已实现、计划、预测和未知；关键限制随对应答案出现。\n查不到时明确哪一部分无法回答、已知什么及原因，不能用方法论或“需进一步验证”替代已知答案。\n先完成本题，再简短说明对父问题的意义；父题背景只能消歧，不能把本题偷换成投资价值或采购判断。\n自然段、小标题、清单、对比表按信息需要使用，不固定段数、字数或材料数。\n正文是给读者的回答，不叙述搜索步骤、验收过程或“本题到此停止”；研究状态留在内部记录。\n公共正文只呈现当前最准确的答案：关键事实或数字、必要的计算或因果、会改变判断的限制。\n这适用于整棵问题树的父节点、叶节点和每个小标题。每段应直接回答当前问题的一部分；\n父节点综合回答父问题，不逐条复述子题限制。证据适用范围的细节留在对应数据行或审计，\n只有改变判断的缺口、反证和决定性假设在对应答案旁简短出现一次。\n按信息价值压缩段落；同一事实和限制只在最相关的位置解释一次，不为了显示研究过程而重复。\n默认先提供读者要的信息。回答“为什么”时，围绕实际任务、机制和因果展开；\n不要用一串“不能据此”“不等于”代替正面解释。只有某个限制会实质改变本题答案，\n才在对应事实旁简短说明；其它限制留在证据审计或更相关的数量、替代与风险问题中。\n修订前写过什么、这次补了什么、原稿漏了什么留在版本和复核记录，不写进标题、核心观点或论证。\n不要用“本报告此前”“本轮检索”“本题的准确答案”“对父问题的意义”等编辑或工作流措辞；\n必要的来源归属直接写来源及其主张，推算值直接标明输入、公式和情景性质。\n充分性按原题完整范围判断；不能自行缩窄为容易确认的小结论后宣布通过。",
+        "standalone_answer_first": true
+      },
+      "collection_contract": {
+        "bulk_pool_mapping_forbidden": true,
+        "origin": "active_question_search",
+        "query_must_name_active_question": true,
+        "required_trace_fields": [
+          "l3_plan_id",
+          "l3_node_id",
+          "question_node_id",
+          "question_level",
+          "research_step_id",
+          "search_run_id"
+        ]
+      },
+      "decision_use": "Answer the current terminal question before rolling up L3 I.u1.",
+      "depends_on_step_ids": [],
+      "freshness_requirement": "Use the latest available source as of 2026-10-09. Refresh cadence: event_driven.",
+      "initial_status": "pending",
+      "l3_node_id": "I.u1",
+      "l3_plan_id": "l3rp_i.u1_edit_20261013T082701_4c49cd59",
+      "l4_question_id": "",
+      "leaf_question_id": "I.u1",
+      "leaf_step_id": "question:I.u1",
+      "level": 3,
+      "minimum_evidence_gate": {
+        "active_question_search_run_required": true,
+        "direct_node_fit_required": true,
+        "gpt_review_required": true,
+        "per_source_parse_required": true,
+        "refutation_search_required": true,
+        "required_source_buckets": [
+          "evidence"
+        ],
+        "rule": "An active-question search run, source attachment, per-source extraction, GPT review, answer, support/refute result, refutation-search result, and dependency closure are required.",
+        "search_run_id_required": true
+      },
+      "preferred_specialty_skill": "dynamic-research-agent",
+      "question": "假设1亿的dau，对应的cpu增量有多少，对比amd的cpu业务，量级多大？",
+      "question_level": 3,
+      "question_node_id": "I.u1",
+      "question_path": [
+        {
+          "level": 3,
+          "question": "假设1亿的dau，对应的cpu增量有多少，对比amd的cpu业务，量级多大？",
+          "question_id": "I.u1"
+        }
+      ],
+      "refuting_source_plan": [
+        "假设1亿的dau，对应的cpu增量有多少，对比amd的cpu业务，量级多大？ Meta Muse sharing CPU utilization existing capacity not disclosed before:2026-10-10"
+      ],
+      "required_data": [
+        "一亿DAU、2 vCPU配额、128核/256线程的情景换算",
+        "资源共享、CPU价格、存量余量及年度交付假设",
+        "AMD年报与季度分部收入、EPYC未单列限制及量级比较"
+      ],
+      "required_materials": [
+        "一亿DAU、2 vCPU配额、128核/256线程的情景换算",
+        "资源共享、CPU价格、存量余量及年度交付假设",
+        "AMD年报与季度分部收入、EPYC未单列限制及量级比较"
+      ],
+      "research_dimension": "l3_initial",
+      "research_step_id": "question:I.u1",
+      "sequence": 1,
+      "source_plan": [
+        {
+          "deepseek_allowed": false,
+          "examples_or_search_queries": [
+            "假设1亿的dau，对应的cpu增量有多少，对比amd的cpu业务，量级多大？ 一亿DAU、2 vCPU配额、128核/256线程的情景换算 / 资源共享、CPU价格、存量余量及年度交付假设 / AMD年报与季度分部收入、EPYC未单列限制及量级比较"
+          ],
+          "expected_fields": [
+            "published_at",
+            "period",
+            "entity",
+            "fact",
+            "definition",
+            "locator"
+          ],
+          "preferred_skill": "dynamic-research-agent",
+          "source_bucket": "evidence",
+          "source_type": "primary source that directly answers this leaf",
+          "why_needed": "Anchors the leaf answer in direct evidence."
+        },
+        {
+          "deepseek_allowed": true,
+          "examples_or_search_queries": [
+            "假设1亿的dau，对应的cpu增量有多少，对比amd的cpu业务，量级多大？ 一亿DAU、2 vCPU配额、128核/256线程的情景换算 / 资源共享、CPU价格、存量余量及年度交付假设 / AMD年报与季度分部收入、EPYC未单列限制及量级比较"
+          ],
+          "expected_fields": [
+            "methodology",
+            "finding",
+            "assumption",
+            "conflict",
+            "limitation"
+          ],
+          "preferred_skill": "dynamic-research-agent",
+          "source_bucket": "research_report",
+          "source_type": "independent source that supports, challenges, or bounds the answer",
+          "why_needed": "Provides independent verification and a contrary test."
+        }
+      ],
+      "source_universe_plan": {
+        "domain_id": "",
+        "priority_source_ids": [],
+        "registry": "config/source_universes.json"
+      },
+      "stage_id": "I.u1",
+      "step_id": "question:I.u1",
+      "traceability_contract": {
+        "event_ledger": "research_step_events.jsonl",
+        "required_references": [
+          "search_run_id",
+          "source_ids",
+          "source_extraction_ids",
+          "source_review_ids"
+        ]
+      }
+    }
+  ]
+}

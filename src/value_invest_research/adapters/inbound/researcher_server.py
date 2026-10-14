@@ -47,7 +47,7 @@ def handler_for(service, project, token):
             try:
                 if path in {"/", "/professional_report.html"}:
                     return self.respond((ASSETS / "researcher.html").read_text().replace("__CSRF_TOKEN__", token), mime="text/html; charset=utf-8")
-                if path in {"/assets/researcher.js", "/assets/researcher.css"}:
+                if path in {"/assets/researcher.js", "/assets/researcher.css", "/assets/researcher_bridge.js"}:
                     name = path.rsplit("/", 1)[1]
                     return self.respond((ASSETS / name).read_bytes(), mime="text/javascript; charset=utf-8" if name.endswith(".js") else "text/css; charset=utf-8")
                 if path == "/api/state":
@@ -64,8 +64,13 @@ def handler_for(service, project, token):
                         html = (project / "professional_report.html").read_text()
                     if path == "/report":
                         html = html.replace("</head>", "<style>.report-header,.tree-pane,.audit-footer{display:none}.workspace{display:block}.page{width:100%;padding:0}.detail-pane{border:0;border-radius:0;box-shadow:none;padding:34px 42px}.source-index{margin:20px}body{background:#fffdfa}@media(max-width:760px){.detail-pane{padding:24px 20px}}</style></head>")
-                        bridge = "<script>document.addEventListener('click',e=>{const a=e.target.closest('a[href^=\"#\"]');if(a){const id=decodeURIComponent(a.hash.slice(1));if(document.getElementById(id)?.classList.contains('node-detail'))parent.postMessage({type:'research-node',node:id},'*');}});</script>"
-                        html = html.replace("</body>", bridge + "</body>")
+                        # The sandboxed iframe has an opaque origin. Append the bridge to the
+                        # report's already-running inline script instead of loading a new URL.
+                        bridge = (ASSETS / "researcher_bridge.js").read_text()
+                        if "</script>" in html:
+                            html = html.replace("</script>", "\n" + bridge + "\n</script>", 1)
+                        else:
+                            html = html.replace("</body>", "<script>" + bridge + "</script></body>")
                     return self.respond(html, mime="text/html; charset=utf-8")
                 if path in {"/professional_report.md", "/research_plan.md"}:
                     with service.lock:
@@ -94,8 +99,17 @@ def handler_for(service, project, token):
                 if path == "/api/preview":
                     proposal = service.preview(request)
                     return self.respond({k: proposal[k] for k in ("affected_ids", "research_ids", "rollup_ids", "removed_ids")})
+                if path == "/api/comment/preview":
+                    proposal = service.preview_comment(request)
+                    target = proposal["target"]
+                    return self.respond({"node_id": target["node_id"], "section": target["section"],
+                                         "paragraph": target["paragraph"], "original": target["original"],
+                                         "scope": "仅更新所选关键论证段落，并补入对应来源与审计记录。"})
                 if path == "/api/research":
                     job = service.submit(request)
+                    return self.respond({"id": job["id"], "status": "queued"}, 202)
+                if path == "/api/comment":
+                    job = service.submit_comment(request)
                     return self.respond({"id": job["id"], "status": "queued"}, 202)
                 if path == "/api/cancel":
                     service.cancel()

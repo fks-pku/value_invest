@@ -68,6 +68,26 @@ def validate_question_tree_report(report: dict) -> list[str]:
             errors.append(f"{nid}: parent cannot pass with an unpassed mandatory child")
         if not children and node.get("passed") and not node.get("evidence"):
             errors.append(f"{nid}: passed leaf requires evidence")
+        points = node.get("core_points")
+        if points is not None:
+            if children or not isinstance(points, list) or not 1 <= len(points) <= 6:
+                errors.append(f"{nid}: core_points must be a nonempty leaf list")
+            else:
+                main_sections = [i for i, section in enumerate(node.get("analysis", []))
+                                 if not section.get("supplementary", False)]
+                covered = []
+                for point in points:
+                    if not isinstance(point, dict) or not str(point.get("text", "")).strip():
+                        errors.append(f"{nid}: core point needs a substantive statement")
+                        continue
+                    sections = point.get("analysis_sections")
+                    if not isinstance(sections, list) or not sections or any(
+                            not isinstance(i, int) or isinstance(i, bool) for i in sections):
+                        errors.append(f"{nid}: core point needs linked argument sections")
+                        continue
+                    covered.extend(sections)
+                if covered != main_sections:
+                    errors.append(f"{nid}: core points must expand every main argument section in order")
         for item in node.get("evidence", []):
             if item.get("source") not in sources or not item.get("locator") or not item.get("fact") or not item.get("boundary"):
                 errors.append(f"{nid}: evidence needs source, locator, fact and boundary")

@@ -1,0 +1,4164 @@
+{
+  "template_version": "question-tree-v1",
+  "title": "Meta Muse 发布对 CPU 市场的影响",
+  "subtitle": "实时事件研究｜2026-09-08 发布，证据截至 2026-10-09｜服务器 CPU 为主，检验端侧替代｜方向可判断，销量与收益未充分",
+  "as_of_date": "2026-10-09",
+  "status_label": "PARTIAL RESEARCH · 非证券推荐",
+  "nodes": [
+    {
+      "id": "MUSE",
+      "parent_id": null,
+      "level": 1,
+      "question": "Meta Muse 发布将怎样影响 CPU 市场？",
+      "short": "Meta Muse 发布将怎样影响 CPU 市场？",
+      "why_it_matters": "回答行业影响，而非直接生成买卖建议。",
+      "what": "Meta Muse 发布将怎样影响 CPU 市场？",
+      "conclusion": "Muse把个人智能体的代码、工具和后台任务带入数据中心，为服务器CPU增加持续执行的工作负载。发布首月的使用报道已达百万级，AMD EPYC、NVIDIA Grace及Arm路线都有承接基础；市场最终增加多少CPU销量与收入，取决于每名用户的实际核时、现有容量和新增采购分配，截至2026年10月9日尚无可归因的净增金额。",
+      "analysis": [
+        {
+          "heading": "从产品使用到服务器需求",
+          "paragraphs": [
+            "[O](#O)确认Muse已发布、云端CPU承担工具和后台任务，首月日活报道从数十万进入百万级。[I](#I)把活跃使用转成核时、容量和采购：任务强度越高、持续时间越长，CPU负载越大；现有服务器可以先吸收部分负载。"
+          ]
+        },
+        {
+          "heading": "市场与公司受益",
+          "paragraphs": [
+            "[C](#C)识别AMD、NVIDIA、Arm和Intel等公司的产品与客户联系。真正进入公司收入，还要由新增服务器订单、供应商份额、成交价格和交付确认连接起来；目前产品需求方向已有依据，事件专属销量和利润尚未披露。"
+          ]
+        }
+      ],
+      "evidence": [],
+      "passed": false,
+      "gaps": [
+        "O：O1：未取得截至2026-10-09带精确日期的官方账户开通/邀请规则、免费精确额度及付费token权益版本，不能完整复原截止日使用资格和额度。",
+        "O：O1：加拿大、墨西哥的当地结算币种、税费与逐账户最终可订阅状态未得到截止日原始价目确认。",
+        "O：O.u1：未取得从9月8日发布至10月9日、地域/平台/活跃定义一致的完整逐日原始数据，不能给出精确日活曲线或10月9日当天数值。",
+        "O：O.u1：平台期报道缺原券商报告、底层数据商与去重方法；亦缺同口径队列留存，不能确认平台期及增长持续性。",
+        "I：D1：未取得 Muse 每用户实际物理核时、峰均比、全站物理核/vCPU映射、利用率和内存驻留/回收率，不能确定实际容量转换系数。",
+        "I：D1：未取得已有可用容量、故障冗余和采购记录，不能把容量换算为新增CPU订单。",
+        "I：D1：用户基线来自媒体所见内部数据及第三方估计；Meta统一口径原始遥测未公开，Yahoo原页与Similarweb原表未取得。",
+        "I：D2：未取得 Muse 专属CPU核时、存量吸收率、被替代负载、实际采购颗数、净成交价与交付年份，不能给出市场净增收入。",
+        "I：D2：未取得与Muse采购期间一致的2026年服务器CPU市场绝对实绩分母，2030年2200亿美元预测不能替代当前市场占比。",
+        "I：T1：Intel Glimmer支持页没有可核实的精确发布日期；8月14日仅为测试日，其具体配置和截止日可用性未通过日期门禁。",
+        "I：T1：未取得 Muse 专属CPU供应商份额、同任务跨架构成本/能效实测及终端替换量，不能判定哪条路线已实现净销量受益或替代规模。",
+        "C：C0：Meta未公开Muse全机群CPU供应商、数量与份额，现有公司筛选不能认定完整Muse供应商清单；AMD实例与Meta级采购必须分开。",
+        "C：AMD：未取得Muse专属EPYC净新增订单、可复用存量、成交价及收入确认额，不能量化Muse使AMD CPU收入增长多少。",
+        "C：INTC：未取得Muse的Xeon订单、全机群CPU供应商分配及被替代Xeon数量，不能量化Intel净增收入或份额损失。",
+        "C：ARM：未取得AGI CPU截至截止日实际销售收入、Meta验收数量及合同价格，无法量化自有CPU和Muse增量收入；全公司收入不等于CPU收入。",
+        "C：ARM：Flexible Access每年8.5万美元示例来自无精确发布日期的动态页，截止日适用价格未通过日期证据门禁。",
+        "C：NVDA：未取得Muse在Grace/Vera上的工作负载分配、净新增采购、成交价及同任务成本测试，不能量化NVIDIA的Muse CPU收益或判定已实际受益。"
+      ],
+      "next_actions": [
+        "补O分支日活原表与账户规则；I和C保留既有核时、采购与公司归因缺口，待用户确认后继续。"
+      ],
+      "refutation": "日活不等于核时；存量容量、资源共享、效率与本地替代可限制采购；业务敞口不证明Muse净新增收入。",
+      "data_required": [
+        "问题计划中的官方事实、量化口径与反向材料"
+      ],
+      "acceptance_rule": "核心事实可追溯、口径可比、反证已处理，重大缺口不得改变所声明的本题答案。",
+      "reasons": [
+        "O、I、C三个直接分支仍未充分，不将机制或起量升级为市场增幅和公司利润结论。"
+      ],
+      "mode": "rollup",
+      "tables": [],
+      "revision_id": "edit_20261010T032723_472c2f8f"
+    },
+    {
+      "id": "O",
+      "parent_id": "MUSE",
+      "level": 2,
+      "question": "Muse 是什么，发生了什么变化？",
+      "short": "Muse 是什么，发生了什么变化？",
+      "why_it_matters": "建立产品事实和资源机制。",
+      "what": "Muse 是什么，发生了什么变化？",
+      "conclusion": "Muse是由Muse Spark驱动、可代用户持续执行任务的云端个人智能体。Meta于9月8日发布产品，云端CPU运行代码、工具和定时任务，用户关闭App后仍可继续；首月日活报道从数十万进入百万级。使用范围、完整同口径日活曲线和长期留存仍有数据缺口。",
+      "analysis": [
+        {
+          "heading": "产品能力和使用规模",
+          "paragraphs": [
+            "[O1](#O1)交代发布内容、可用地区、人群、入口和订阅。[O2](#O2)解释模型决定动作之后，云端CPU如何执行并保留任务状态。[O.u1](#O.u1)整理首月日活观察点；这些观察显示早期起量，持续使用强度仍要靠留存和任务数据验证。"
+          ]
+        }
+      ],
+      "evidence": [],
+      "passed": false,
+      "gaps": [
+        "O1：未取得截至2026-10-09带精确日期的官方账户开通/邀请规则、免费精确额度及付费token权益版本，不能完整复原截止日使用资格和额度。",
+        "O1：加拿大、墨西哥的当地结算币种、税费与逐账户最终可订阅状态未得到截止日原始价目确认。",
+        "O.u1：未取得从9月8日发布至10月9日、地域/平台/活跃定义一致的完整逐日原始数据，不能给出精确日活曲线或10月9日当天数值。",
+        "O.u1：平台期报道缺原券商报告、底层数据商与去重方法；亦缺同口径队列留存，不能确认平台期及增长持续性。"
+      ],
+      "next_actions": [
+        "优先补O.u1逐日日活及留存原表，同时保留O1账户与额度截面存档任务。"
+      ],
+      "refutation": "本地模型、共享虚拟资源与不同日活定义限制从产品发布直接推断持续硬件采购。",
+      "data_required": [
+        "问题计划中的官方事实、量化口径与反向材料"
+      ],
+      "acceptance_rule": "核心事实可追溯、口径可比、反证已处理，重大缺口不得改变所声明的本题答案。",
+      "reasons": [
+        "O1和O.u1必要子题尚有实质缺口；O2机制通过不意味着整个产品分支充分。"
+      ],
+      "mode": "rollup",
+      "tables": [],
+      "revision_id": "edit_20261010T032723_472c2f8f"
+    },
+    {
+      "id": "O1",
+      "parent_id": "O",
+      "level": 3,
+      "question": "Muse 发布了什么，目前谁能使用？",
+      "short": "Muse 发布了什么，目前谁能使用？",
+      "why_it_matters": "确认事件对象与商业可达范围。",
+      "what": "Muse 发布了什么，目前谁能使用？",
+      "conclusion": "Meta于2026年9月8日发布Muse：由Muse Spark驱动、能调用工具代用户办事并在关闭App后继续工作的个人AI智能体。截至10月9日，官方材料确认美国、加拿大开放，法文公告另列墨西哥；服务面向18岁及以上用户，提供手机、网页、WhatsApp和Mac入口。免费档有使用额度，同期报道的月费为20美元和100美元；9月29日又扩展小企业工具。[S01][S03][E472_FR][E472_AP][E472_MAC][E8089_AXIOS]",
+      "analysis": [
+        {
+          "heading": "发布了什么",
+          "paragraphs": [
+            "Muse接收用户目标，安排步骤，调用连接的应用处理邮件、旅行、表单和购物等任务；需要发送信息或支付时再征求批准。Muse Spark负责理解和决策，云端执行环境运行实际操作并保存进度。[S01][S02]",
+            "9月29日的小企业扩展可连接Facebook、Instagram商业账户以及Shopify、QuickBooks、Slack等工具，用于销售分析、营销准备和日常经营。[S03]"
+          ]
+        },
+        {
+          "heading": "谁能使用、从哪里使用",
+          "paragraphs": [
+            "美国是首发市场；9月29日英文官方公告列美国和加拿大，9月24日法文官方公告另列墨西哥。年龄门槛为18岁；已有iOS、Android、网页、WhatsApp及Mac入口。[S01][S03][E472_FR][E472_AP][E472_MAC]"
+          ],
+          "tables": [
+            {
+              "caption": "入口及适用条件（截至2026-10-09）",
+              "headers": [
+                "入口／人群",
+                "能够确认的内容",
+                "限制"
+              ],
+              "rows": [
+                [
+                  "iOS、Android、网页",
+                  "首发公告列Muse应用与muse.ai。[S01]",
+                  "入口存在不等于全球可用。"
+                ],
+                [
+                  "WhatsApp",
+                  "可直接与Muse通信。[S01]",
+                  "WhatsApp覆盖国家不能代替Muse开放国家。"
+                ],
+                [
+                  "Mac",
+                  "9月17日同期报道已确认应用推出，并转载扎克伯格当日上线声明。[E472_MAC]",
+                  "9月18日是后续报道日期，不是必须采用的首次发布日期；不能把后来帮助页的所有能力追溯到首日。"
+                ],
+                [
+                  "小企业经营者",
+                  "9月29日发布Muse for Small Business，在Muse内增添技能与连接器。[S03]",
+                  "须连接相应业务账户并授权。"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "费用与功能进度",
+          "paragraphs": [
+            "同期报道列免费档和每月20美元、100美元两档。当前帮助页称付费档为Power和Maximum，并显示每周5亿、30亿Muse tokens；该动态页缺精确发布日，因而10月9日的逐账户权益和免费精确额度仍待带日期的价目确认。[E8089_AXIOS][E472_SUB]",
+            "眼镜接入、Muse Charm和Confidential VM属于后续计划或有限测试，已有产品入口与这些预告功能分阶段交付。[E8089_CONNECT][S02]"
+          ],
+          "tables": [
+            {
+              "caption": "已交付与计划状态",
+              "headers": [
+                "项目",
+                "截至截止日的状态",
+                "依据与边界"
+              ],
+              "rows": [
+                [
+                  "Muse核心产品／Secure VM",
+                  "已发布",
+                  "可后台执行；能力与成功率是不同概念。[S01][S02]"
+                ],
+                [
+                  "小企业技能与连接器",
+                  "9月29日宣布扩展",
+                  "在现有产品内提供，依赖账户授权。[S03]"
+                ],
+                [
+                  "AI眼镜接入",
+                  "未来数月",
+                  "Connect公告仍用未来时态。[E8089_CONNECT]"
+                ],
+                [
+                  "Muse Charm",
+                  "预告设备",
+                  "公告称年内再分享信息，非上市证明。[E8089_CONNECT]"
+                ],
+                [
+                  "Muse自有邮箱、Expedia",
+                  "未来／即将推出",
+                  "没有取得足以改判全面上线的截止日前公告。[E8089_CONNECT]"
+                ],
+                [
+                  "Confidential VM",
+                  "少量可信测试者；计划年内推出",
+                  "拟以密码学限制Meta访问，不等同普通用户现有Secure VM。[S02]"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "source": "S01",
+          "fact": "Meta 于 2026 年 9 月 8 日发布个人智能体 Muse，由 Muse Spark 模型驱动，能处理任务并在关闭应用后继续工作。",
+          "locator": "Introducing Muse：标题日期；How It Works，L241、254–259",
+          "boundary": "页面更新至9月30日；官方能力描述，不是任务成功率实测。",
+          "effect": "support",
+          "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_1",
+          "review_id": "edit_20261010T032723_472c2f8f_O1_review_1",
+          "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+          "revision_id": "edit_20261010T032723_472c2f8f",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S01",
+          "fact": "首发公告列出美国、iOS、Android、muse.ai 与 WhatsApp 入口。",
+          "locator": "Looking Ahead；首段L254及发布可用性段",
+          "boundary": "这是首发范围；不排除后续扩区。",
+          "effect": "support",
+          "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_2",
+          "review_id": "edit_20261010T032723_472c2f8f_O1_review_2",
+          "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+          "revision_id": "edit_20261010T032723_472c2f8f",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S03",
+          "fact": "9月29日发布、10月8日更新的小企业公告称 Muse 在美国和加拿大可用，并在现有 Muse 内增加经营技能和连接器。",
+          "locator": "标题日期L241；Takeaways及正文L249–255",
+          "boundary": "不能从更新后文字确定加拿大最早开放日。",
+          "effect": "support",
+          "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_3",
+          "review_id": "edit_20261010T032723_472c2f8f_O1_review_3",
+          "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+          "revision_id": "edit_20261010T032723_472c2f8f",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E472_FR",
+          "fact": "Meta 法国版9月24日Connect公告明确写 Muse 当前在美国、加拿大和墨西哥可用。",
+          "locator": "L202发布日期；L213地区句",
+          "boundary": "与英文列举范围不同；不证明墨西哥所有账户、入口和功能均已开放。",
+          "effect": "boundary",
+          "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_4",
+          "review_id": "edit_20261010T032723_472c2f8f_O1_review_4",
+          "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+          "revision_id": "edit_20261010T032723_472c2f8f",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E472_AP",
+          "fact": "美联社9月8日报道 Muse 面向18岁及以上用户。",
+          "locator": "标题、日期与正文首段：for people 18 and over",
+          "boundary": "首发报道，不是各地区、各账户资格的完整合同。",
+          "effect": "support",
+          "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_5",
+          "review_id": "edit_20261010T032723_472c2f8f_O1_review_5",
+          "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+          "revision_id": "edit_20261010T032723_472c2f8f",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E472_MAC",
+          "fact": "9to5Mac于9月17日更新称Muse Mac应用已推出，并嵌入扎克伯格当日的上线声明。",
+          "locator": "L68、74、95–97",
+          "boundary": "已核读同期转载；X原帖本轮打开失败，不把帮助页现有全部功能追溯至首日。",
+          "effect": "support",
+          "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_6",
+          "review_id": "edit_20261010T032723_472c2f8f_O1_review_6",
+          "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+          "revision_id": "edit_20261010T032723_472c2f8f",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E8089_AXIOS",
+          "fact": "Axios于9月29日报道Muse有免费使用及每月20美元、100美元两档订阅。",
+          "locator": "The intrigue：free for most uses；$20/$100 per month",
+          "boundary": "媒体同期美元报价；不是所有国家税费、币种或免费精确额度。",
+          "effect": "support",
+          "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_7",
+          "review_id": "edit_20261010T032723_472c2f8f_O1_review_7",
+          "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+          "revision_id": "edit_20261010T032723_472c2f8f",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S03",
+          "fact": "Muse小企业扩展可连接Facebook、Instagram商业账户及Shopify、QuickBooks、Slack等工具，发布、发送和支出需批准。",
+          "locator": "Takeaways L251–253",
+          "boundary": "公告描述已提供能力，经营效果仍取决于账户权限、输入及任务。",
+          "effect": "support",
+          "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_8",
+          "review_id": "edit_20261010T032723_472c2f8f_O1_review_8",
+          "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+          "revision_id": "edit_20261010T032723_472c2f8f",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E8089_CONNECT",
+          "fact": "9月24日Connect公告把眼镜接入列为未来数月，Expedia列为即将加入、自有邮箱列为未来功能，Charm仍待年内更多信息。",
+          "locator": "Bringing Muse to AI Glasses / Muse Charm，L255–264",
+          "boundary": "预告与连接器扩展不能统称全面交付。",
+          "effect": "boundary",
+          "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_9",
+          "review_id": "edit_20261010T032723_472c2f8f_O1_review_9",
+          "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+          "revision_id": "edit_20261010T032723_472c2f8f",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S02",
+          "fact": "Meta在9月8日说明Confidential VM仅用于少量可信测试者，计划年内推出；现行Secure VM并未以密码学阻止Meta为运营服务访问数据。",
+          "locator": "Coming Soon: Muse Confidential VM，L129–134",
+          "boundary": "区分现行隔离方案与未来更强隐私方案。",
+          "effect": "boundary",
+          "extraction_id": "edit_20261010T032723_472c2f8f_O1_ext_10",
+          "review_id": "edit_20261010T032723_472c2f8f_O1_review_10",
+          "search_run_id": "edit_20261010T032723_472c2f8f_O1_01",
+          "revision_id": "edit_20261010T032723_472c2f8f",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        }
+      ],
+      "passed": false,
+      "gaps": [
+        "未取得截至2026-10-09带精确日期的官方账户开通/邀请规则、免费精确额度及付费token权益版本，不能完整复原截止日使用资格和额度。",
+        "加拿大、墨西哥的当地结算币种、税费与逐账户最终可订阅状态未得到截止日原始价目确认。"
+      ],
+      "next_actions": [
+        "补充截止日前官方帮助页存档、当地价目及账户资格说明；不新增问题节点。"
+      ],
+      "refutation": "官方法文页面列墨西哥，反驳仅美加的绝对表述；同期Mac报道证明已推出。地区名单与宣传不保证逐账户权益，计划功能与已交付功能分开。",
+      "data_required": [
+        "发布对象、发布日期、Muse 与 Muse Spark 的区别和主要用途",
+        "截至 2026-10-09 的国家、年龄、账号资格与手机、网页、WhatsApp、Mac 入口",
+        "免费额度、订阅金额及币种、价格出处与限制",
+        "已交付功能、小企业能力与眼镜、Charm、邮箱、Expedia、Confidential VM 的计划状态"
+      ],
+      "acceptance_rule": "核心事实可追溯、口径可比、反证已处理，重大缺口不得改变所声明的本题答案。",
+      "reasons": [
+        "发布内容、年龄、入口及功能阶段已得到本轮证据支持；账户与额度的截面规则仍存在实质缺口。"
+      ],
+      "mode": "leaf",
+      "tables": [],
+      "revision_id": "edit_20261010T032723_472c2f8f",
+      "answer_review": {
+        "question": "Muse 发布了什么，目前谁能使用？",
+        "direct_answer_excerpt": "Meta于2026年9月8日发布Muse：由Muse Spark驱动、能调用工具代用户办事并在关闭App后继续工作的个人AI智能体。截至10月9日，官方材料确认美国、加拿大开放，法文公告另列墨西哥；服务面向18岁及以上用户，提供手机、网页、WhatsApp和Mac入口。免费档有使用额度，同期报道的月费为20美元和100美元；9月29日又扩展小企业工具。[S01][S03][E472_FR][E472_AP][E472_MAC][E8089_AXIOS]",
+        "coverage": [
+          {
+            "requirement": "回答Muse 发布了什么，目前谁能使用？的核心结论",
+            "status": "answered",
+            "answer_excerpt": "Meta于2026年9月8日发布Muse：由Muse Spark驱动、能调用工具代用户办事并在关闭App后继续工作的个人AI智能体。截至10月9日，官方材料确认美国、加拿大开放，法文公告另列墨西哥；服务面向18岁及以上用户，提供手机、网页、WhatsApp和Mac入口。免费档有使用额度，同期报道的月费为20美元和100美元；9月29日又扩展小企业工具。[S01][S03][E472_FR][E472_AP][E472_MAC][E8089_AXIOS]"
+          },
+          {
+            "requirement": "发布了什么",
+            "status": "answered",
+            "answer_excerpt": "Muse接收用户目标，安排步骤，调用连接的应用处理邮件、旅行、表单和购物等任务；需要发送信息或支付时再征求批准。Muse Spark负责理解和决策，云端执行环境运行实际操作并保存进度。[S01][S02]"
+          },
+          {
+            "requirement": "谁能使用、从哪里使用",
+            "status": "answered",
+            "answer_excerpt": "美国是首发市场；9月29日英文官方公告列美国和加拿大，9月24日法文官方公告另列墨西哥。年龄门槛为18岁；已有iOS、Android、网页、WhatsApp及Mac入口。[S01][S03][E472_FR][E472_AP][E472_MAC]"
+          },
+          {
+            "requirement": "费用与功能进度",
+            "status": "answered",
+            "answer_excerpt": "同期报道列免费档和每月20美元、100美元两档。当前帮助页称付费档为Power和Maximum，并显示每周5亿、30亿Muse tokens；该动态页缺精确发布日，因而10月9日的逐账户权益和免费精确额度仍待带日期的价目确认。[E8089_AXIOS][E472_SUB]"
+          },
+          {
+            "requirement": "未取得截至2026-10-09带精确日期的官方账户开通/邀请规则、免费精确额度及付费token权益版本，不能完整复原截止日使用资格和额度。",
+            "status": "unresolved",
+            "gap": "未取得截至2026-10-09带精确日期的官方账户开通/邀请规则、免费精确额度及付费token权益版本，不能完整复原截止日使用资格和额度。"
+          },
+          {
+            "requirement": "加拿大、墨西哥的当地结算币种、税费与逐账户最终可订阅状态未得到截止日原始价目确认。",
+            "status": "unresolved",
+            "gap": "加拿大、墨西哥的当地结算币种、税费与逐账户最终可订阅状态未得到截止日原始价目确认。"
+          }
+        ],
+        "draft_comparison": {
+          "retained": [
+            "保留产品与模型区别、后台执行、成人用户、手机网页WhatsApp及Mac、小企业用途、权限和未来设备/隐私方案。"
+          ],
+          "corrected": [
+            "补入法文官方公告的墨西哥，纠正草稿把美加外一概当作未确认开放的说法。",
+            "Mac补到9月17日同期上线报道，不把9月18日报道日当上线日。",
+            "草稿未展开收费，补入同期20/100美元月费及当前帮助页额度，明确截面缺口；Maximum按原文命名。",
+            "公共正文压缩为当前结论、关键事实及必要边界；修订过程保留在研究版本记录。",
+            "将正文收束为直接答案、事实与因果；细节口径留在数据列表和内部审计。"
+          ],
+          "omitted": [
+            "未把动态帮助页现有权益直接认定为截止日有效规则；保留具体已知值及未知原因。"
+          ]
+        },
+        "reviewer": "GPT primary agent",
+        "revision_id": "edit_20261010T032723_472c2f8f",
+        "manual_review_id": "root_review_20261013_all_questions_direct_answer"
+      }
+    },
+    {
+      "id": "O2",
+      "parent_id": "O",
+      "level": 3,
+      "question": "Muse 为什么需要云端 CPU？",
+      "short": "Muse 为什么需要云端 CPU？",
+      "why_it_matters": "建立任务、资源和成本之间的第一条因果链。",
+      "what": "Muse 为什么需要云端 CPU？",
+      "conclusion": "Muse使用云端CPU运行智能体的执行层：模型决定下一步后，服务器上的Linux环境执行代码、处理文件、调用工具、协调子代理和定时任务，并保存工作状态。用户关闭App后，任务仍能继续；手机和网页是访问入口。模型推理由独立服务提供，云端CPU主要承担软件执行与调度。[S01][S02][E472_COMPUTE]",
+      "analysis": [
+        {
+          "heading": "CPU把模型决定变成实际操作",
+          "paragraphs": [
+            "Muse Spark负责理解请求并决定下一步；Meta为用户提供带CPU、内存和存储的Linux运行环境，由其中的软件执行脚本、读写文件、调用工具和网络接口，并协调并发子代理。Meta对CPU用途的说明也包括应用逻辑、网络管理和跨系统工作流协调。[S02][E472_COMPUTE]",
+            "例如让Muse每天汇总一批文件，模型负责理解内容和形成摘要；CPU运行读取、处理、写回与定时调度程序。CPU的价值在于把模型输出接到可持续执行的工具和工作环境。[S02]"
+          ]
+        },
+        {
+          "heading": "云端让任务在App关闭后继续",
+          "paragraphs": [
+            "Meta明确说明，用户关闭App后Muse仍可继续处理任务，需要批准时再通知用户。云端运行环境保留文件与任务状态，并可运行定时工作；手机或网页无需一直保持前台，用户仍能从入口访问自己的代理。[S01][S02]"
+          ]
+        },
+        {
+          "heading": "模型推理、网页操作和执行环境各有分工",
+          "paragraphs": [
+            "用户的Linux环境运行代码、工具和任务调度；模型推理请求通过代理进入独立基础设施；网页操作由浏览器broker提供，并通过受控接口与代理协作。凭据和权限服务也与执行环境分离。这种分工使云端CPU负责持续的软件执行与服务协调，模型服务负责生成和理解内容。[S02]"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "source": "S01",
+          "fact": "Muse是9月8日发布、由Muse Spark驱动的个人智能体，用户关闭应用后仍可推进任务，需要批准时再联系用户。",
+          "locator": "标题日期；How It Works，L254–259",
+          "boundary": "后台可运行不等于全天CPU满载。",
+          "effect": "support",
+          "extraction_id": "edit_20261010T032723_472c2f8f_O2_ext_1",
+          "review_id": "edit_20261010T032723_472c2f8f_O2_review_1",
+          "search_run_id": "edit_20261010T032723_472c2f8f_O2_01",
+          "revision_id": "edit_20261010T032723_472c2f8f",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S02",
+          "fact": "Muse为用户提供隔离Linux VM，配有CPU、内存、存储和浏览器访问，可编译代码、开发自定义工具、执行并发子智能体和定时任务。",
+          "locator": "An agent in your own cloud computer，L26–28",
+          "boundary": "说明软件执行需求，不承诺固定物理CPU配额。",
+          "effect": "support",
+          "extraction_id": "edit_20261010T032723_472c2f8f_O2_ext_2",
+          "review_id": "edit_20261010T032723_472c2f8f_O2_review_2",
+          "search_run_id": "edit_20261010T032723_472c2f8f_O2_01",
+          "revision_id": "edit_20261010T032723_472c2f8f",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S02",
+          "fact": "Muse运行区执行工具和文件操作，权限、凭据、持久化状态及推理代理分离；推理与遥测代理通向外部基础设施。",
+          "locator": "Muse Secure VM，L41–50",
+          "boundary": "不能将用户VM的CPU资源当作整个模型推理资源；安全模型硬件未单列。",
+          "effect": "boundary",
+          "extraction_id": "edit_20261010T032723_472c2f8f_O2_ext_3",
+          "review_id": "edit_20261010T032723_472c2f8f_O2_review_3",
+          "search_run_id": "edit_20261010T032723_472c2f8f_O2_01",
+          "revision_id": "edit_20261010T032723_472c2f8f",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S02",
+          "fact": "Muse浏览器由独立broker管理；浏览器子智能体获得可访问性树，用户接管或填入凭据时智能体暂停。",
+          "locator": "Browser，L107–114",
+          "boundary": "未披露浏览器池完整部署位置；不能声称所有浏览器进程在用户运行区。",
+          "effect": "boundary",
+          "extraction_id": "edit_20261010T032723_472c2f8f_O2_ext_4",
+          "review_id": "edit_20261010T032723_472c2f8f_O2_review_4",
+          "search_run_id": "edit_20261010T032723_472c2f8f_O2_01",
+          "revision_id": "edit_20261010T032723_472c2f8f",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E472_COMPUTE",
+          "fact": "Meta将CPU角色解释为运行应用逻辑、管理网络流量和协调跨系统工作流，将GPU角色解释为大规模并行计算。",
+          "locator": "The Building Blocks of Compute，L260–263；标题6月10日、更新6月16日",
+          "boundary": "通用基础设施说明，未分拆Muse CPU与GPU工作量比例。",
+          "effect": "support",
+          "extraction_id": "edit_20261010T032723_472c2f8f_O2_ext_5",
+          "review_id": "edit_20261010T032723_472c2f8f_O2_review_5",
+          "search_run_id": "edit_20261010T032723_472c2f8f_O2_01",
+          "revision_id": "edit_20261010T032723_472c2f8f",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        }
+      ],
+      "passed": true,
+      "gaps": [],
+      "next_actions": [
+        "本题机制已回答；实际CPU核时、资源复用及采购转换继续由既有D1、D2问题承接，不另建下钻节点。"
+      ],
+      "refutation": "Glimmer的官方本地路线反驳云端绝对必需；推理代理与浏览器broker反驳所有计算都在用户VM；单账户vCPU观察不能代表独占物理核心。",
+      "data_required": [
+        "Muse 发布事件及云端 Linux VM 的官方架构和发布日期",
+        "文件、终端、浏览器、定时及并发任务如何形成 CPU 执行负载",
+        "关闭应用后的持续执行与设备侧替代条件",
+        "推理代理、权限服务边界；vCPU 样本与物理 CPU 的区别"
+      ],
+      "acceptance_rule": "核心事实可追溯、口径可比、反证已处理，重大缺口不得改变所声明的本题答案。",
+      "reasons": [
+        "官方产品与架构材料直接说明持续任务、云端执行环境及模型服务分工；本题的机制已得到回答。"
+      ],
+      "mode": "leaf",
+      "tables": [],
+      "revision_id": "edit_20261010T032723_472c2f8f",
+      "answer_review": {
+        "question": "Muse 为什么需要云端 CPU？",
+        "direct_answer_excerpt": "Muse使用云端CPU运行智能体的执行层：模型决定下一步后，服务器上的Linux环境执行代码、处理文件、调用工具、协调子代理和定时任务，并保存工作状态。用户关闭App后，任务仍能继续；手机和网页是访问入口。模型推理由独立服务提供，云端CPU主要承担软件执行与调度。[S01][S02][E472_COMPUTE]",
+        "coverage": [
+          {
+            "requirement": "CPU执行代码、文件、工具与协调任务的作用",
+            "status": "answered",
+            "answer_excerpt": "Muse Spark负责理解请求并决定下一步；Meta为用户提供带CPU、内存和存储的Linux运行环境，由其中的软件执行脚本、读写文件、调用工具和网络接口，并协调并发子代理。Meta对CPU用途的说明也包括应用逻辑、网络管理和跨系统工作流协调。[S02][E472_COMPUTE]"
+          },
+          {
+            "requirement": "云端环境支持关闭App后的持续工作",
+            "status": "answered",
+            "answer_excerpt": "Meta明确说明，用户关闭App后Muse仍可继续处理任务，需要批准时再通知用户。云端运行环境保留文件与任务状态，并可运行定时工作；手机或网页无需一直保持前台，用户仍能从入口访问自己的代理。[S01][S02]"
+          },
+          {
+            "requirement": "CPU执行层与推理、浏览器及权限服务的分工",
+            "status": "answered",
+            "answer_excerpt": "用户的Linux环境运行代码、工具和任务调度；模型推理请求通过代理进入独立基础设施；网页操作由浏览器broker提供，并通过受控接口与代理协作。凭据和权限服务也与执行环境分离。这种分工使云端CPU负责持续的软件执行与服务协调，模型服务负责生成和理解内容。[S02]"
+          }
+        ],
+        "draft_comparison": {
+          "retained": [
+            "保留CPU三类工作、云端持续代办、文件与任务状态、多入口、权限服务及推理分离，保留每用户VM不等于独占CPU的解释。",
+            "保留邮件、日历和购物等场景，作为机制说明而非性能实测。"
+          ],
+          "corrected": [
+            "细化浏览器独立broker边界，避免将浏览器及所有辅助服务都说成运行区内执行。",
+            "增加Glimmer官方本地模型反证及2 vCPU第一手样本边界。",
+            "公共正文压缩为当前结论、关键事实及必要边界；修订过程保留在研究版本记录。",
+            "将O2正文收束为执行任务、持续运行和服务分工；本地替代与物理核心换算保留在T1、D1及审计材料。"
+          ],
+          "omitted": [
+            "设计师家庭经历的个人叙事不再当作实测证据；该设计页只给月份，正文保留其任务类型为明确的说明性场景。未用旧Firecracker月份日期论文支撑本轮结论，虚拟资源边界由公开架构与第一手样本支持。"
+          ]
+        },
+        "reviewer": "GPT primary agent",
+        "revision_id": "edit_20261010T032723_472c2f8f",
+        "manual_review_id": "root_review_20261013_o2_positive_answer"
+      }
+    },
+    {
+      "id": "I",
+      "parent_id": "MUSE",
+      "level": 2,
+      "question": "它怎样影响 CPU 市场？",
+      "short": "它怎样影响 CPU 市场？",
+      "why_it_matters": "将需求数量、市场增量与技术竞争连接起来。",
+      "what": "它怎样影响 CPU 市场？",
+      "conclusion": "Muse首先增加服务器CPU的执行工作量：用户越多、任务越频繁、每项任务占用核时越长，所需容量越高。云端部署使x86和Arm服务器都可竞争；普通手机与PC主要充当入口，高内存电脑还可通过Glimmer运行本地路线。实际市场增量要看工作量超过现有容量后形成多少新订单，截至10月9日尚未量化。",
+      "analysis": [
+        {
+          "heading": "需求如何形成",
+          "paragraphs": [
+            "[D1](#D1)从用户数、每人每日核时、峰值和利用率计算所需CPU容量；[D2](#D2)再把容量需求接到新采购、成交价和交付年度。两步之间的现有机群余量决定多少工作量真正变成新增销量。"
+          ]
+        },
+        {
+          "heading": "哪些硬件承接",
+          "paragraphs": [
+            "[T1](#T1)显示x86 EPYC、Arm Grace与AGI CPU等服务器路线有客户或产品基础；普通终端可访问云端Muse，本地Glimmer则增加高内存电脑的用途。份额变化取决于实际部署和同任务成本。"
+          ]
+        }
+      ],
+      "evidence": [],
+      "passed": false,
+      "gaps": [
+        "D1：未取得 Muse 每用户实际物理核时、峰均比、全站物理核/vCPU映射、利用率和内存驻留/回收率，不能确定实际容量转换系数。",
+        "D1：未取得已有可用容量、故障冗余和采购记录，不能把容量换算为新增CPU订单。",
+        "D1：用户基线来自媒体所见内部数据及第三方估计；Meta统一口径原始遥测未公开，Yahoo原页与Similarweb原表未取得。",
+        "D2：未取得 Muse 专属CPU核时、存量吸收率、被替代负载、实际采购颗数、净成交价与交付年份，不能给出市场净增收入。",
+        "D2：未取得与Muse采购期间一致的2026年服务器CPU市场绝对实绩分母，2030年2200亿美元预测不能替代当前市场占比。",
+        "T1：Intel Glimmer支持页没有可核实的精确发布日期；8月14日仅为测试日，其具体配置和截止日可用性未通过日期门禁。",
+        "T1：未取得 Muse 专属CPU供应商份额、同任务跨架构成本/能效实测及终端替换量，不能判定哪条路线已实现净销量受益或替代规模。"
+      ],
+      "next_actions": [
+        "优先补D1每用户核时、峰值和存量余量，再在D2按实际交付量与当期市场比较；T1补日期版本和同任务路线实测。"
+      ],
+      "refutation": "发布前既有增长、存量余量和本地运行可限制Muse净新增采购；厂商合作不能证明Muse专属份额。",
+      "data_required": [
+        "问题计划中的官方事实、量化口径与反向材料"
+      ],
+      "acceptance_rule": "核心事实可追溯、口径可比、反证已处理，重大缺口不得改变所声明的本题答案。",
+      "reasons": [
+        "D1、D2、T1均有影响原题完整判断的实质缺口；不能由条件情景宣布市场研究完成。"
+      ],
+      "mode": "rollup"
+    },
+    {
+      "id": "D1",
+      "parent_id": "I",
+      "level": 3,
+      "question": "用户增长会变成多少 CPU 需求？",
+      "short": "用户增长会变成多少 CPU 需求？",
+      "why_it_matters": "把用户与硬件建立可审计的数量关系。",
+      "what": "用户增长会变成多少 CPU 需求？",
+      "conclusion": "Muse用户增长先变成CPU工作量，再变成服务器容量。以100万日活、每人每日1物理核小时、峰均比2、目标利用率60%、每颗192核为例，需要约724颗CPU的服务容量；这是可复算的强度情景。单账户2 vCPU观察只能说明名义配额，实际所需颗数由每人核时、并发峰值、内存驻留及现有机群余量决定。[S02][EA125_STARK][E321_9965]",
+      "analysis": [
+        {
+          "heading": "用户基线和工作量",
+          "paragraphs": [
+            "9月30日报道每日发提示用户超过100万；另一份10月5日全球移动日活估算为218.2万，统计行为与覆盖平台不同。Meta确认云端环境运行代码、工具、子代理及定时任务；总CPU工作量应按实际任务消耗的核时计，而非按打开App的时长计。[S20][E472_SW][S02]",
+            "单账户记录显示2 vCPU和约7.7GB内存；若配置100万个同类账户，名义配额为200万vCPU。vCPU是虚拟资源配置，后续须用实测核时和并发换算物理容量。[EA125_STARK]"
+          ],
+          "tables": [
+            {
+              "caption": "用户、观察日期和资源口径；报道不能直接换算采购",
+              "headers": [
+                "项目",
+                "已知事实及日期",
+                "能否直接换算 CPU"
+              ],
+              "rows": [
+                [
+                  "早期用户报道",
+                  "9月22日报道：首周尝试超50万、日活超25万。[E321_EARLY]",
+                  "媒体内部数据报道；不能当作同时运行人数。"
+                ],
+                [
+                  "后续发提示用户报道",
+                  "9月30日报道：周超300万、日超100万。[S20]",
+                  "“至少发一次提示”的人数，不是CPU运行时长。"
+                ],
+                [
+                  "第三方估计线索",
+                  "Yahoo索引援引Similarweb：10月5日日活218.2万。[E321_YAHOO]",
+                  "原页打开失败、统计原表未取得；数值未获原文核实，不与上一行拼增长率。"
+                ],
+                [
+                  "单账户运行环境",
+                  "Clinton Stark 于 9 月 20 日观察、9 月 22 日发表：2 vCPU、约 7.7 GB 内存、100 GB 主目录卷，显示 AMD EPYC 9D25。",
+                  "只是单账户观察，作者明确说明不是 Meta 配置承诺。[EA125_STARK]"
+                ],
+                [
+                  "全站 CPU 部署",
+                  "未找到 Meta 披露的 Muse 主机数量、平均 CPU 利用率、同时运行 VM 数或采购数量。",
+                  "实际物理 CPU 总量和新增采购量无法据此确定。"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "容量怎样计算",
+          "paragraphs": [
+            "容量颗数＝向上取整〔日活人数 × 每人每日物理核小时 × 峰均比 ÷（24 × 目标利用率 × 每颗可用核心数）〕。采用上述100万、1核小时、2倍、60%和192核输入，算得723.38，向上取整为724颗；192核取自EPYC 9965的公开规格，仅作容量标尺。[E321_9965]",
+            "表内不同任务强度展示容量对核时的敏感性。最终新增采购还要考虑内存密度、已有服务器余量、地区冗余和硬件效率。"
+          ],
+          "tables": [
+            {
+              "caption": "容量敏感性：192核/颗、峰均比2、利用率60%；全部是假设，颗数向上取整",
+              "headers": [
+                "日活用户规模",
+                "每人每天 0.1 核小时",
+                "每人每天 1 核小时",
+                "每人每天 8 核小时"
+              ],
+              "rows": [
+                [
+                  "100 万",
+                  "73 颗",
+                  "724 颗",
+                  "5,788 颗"
+                ],
+                [
+                  "1,000 万",
+                  "724 颗",
+                  "7,234 颗",
+                  "57,871 颗"
+                ],
+                [
+                  "1 亿",
+                  "7,234 颗",
+                  "72,338 颗",
+                  "578,704 颗"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "百万颗情景的来源",
+          "paragraphs": [
+            "Next Signal Prediction设定1亿台持续运行的云电脑、每台2个独占物理核心、每颗128核，得到1亿×2÷128＝156.25万颗。若把分母改为单账户观察中的126核，算术结果为158.73万颗。两项是全额独占配置情景；Muse实际容量应由任务核时和共享程度估计。[E321_SCENARIO][EA125_STARK]"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "source": "S01",
+          "fact": "Meta 于 9 月 8 日发布 Muse，9 月 30 日更新的公告说明关闭应用后仍能继续任务。",
+          "locator": "标题日期 L241；How It Works L255–259",
+          "boundary": "官方功能说明，不提供活跃人数、核时或采购数量。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T092333_321fabff_D1_01",
+          "extraction_id": "edit_20261009T092333_321fabff_D1_ext_1",
+          "review_id": "edit_20261009T092333_321fabff_D1_review_1_verified",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S02",
+          "fact": "Muse 的用户环境是带 CPU、内存、存储的隔离 Linux VM，可编译代码、运行并发子智能体及定时任务；推理代理连接外部基础设施。",
+          "locator": "An agent in your own cloud computer L26–31；Muse Secure VM L44–50",
+          "boundary": "说明执行层与推理服务分开，不能推定两者芯片配比或每账户独占物理核心。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T092333_321fabff_D1_01",
+          "extraction_id": "edit_20261009T092333_321fabff_D1_ext_2",
+          "review_id": "edit_20261009T092333_321fabff_D1_review_2_verified",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "EA125_STARK",
+          "fact": "9 月 20 日单账户观察显示 2 vCPU、7.7 GB 内存、100 GB 主目录卷及 EPYC 9D25 标识；作者称配置并非 Meta 承诺。",
+          "locator": "First, the box L23–33",
+          "boundary": "9月22日发布；经智能体观察，126核/252线程标识不能证明全站拓扑或持续独占配额。",
+          "effect": "boundary",
+          "search_run_id": "edit_20261009T092333_321fabff_D1_01",
+          "extraction_id": "edit_20261009T092333_321fabff_D1_ext_3",
+          "review_id": "edit_20261009T092333_321fabff_D1_review_3_verified",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E321_EARLY",
+          "fact": "9月22日报道：首周尝试用户超50万，日活超25万。",
+          "locator": "原站搜索索引导言；打开页面标题 L164",
+          "boundary": "媒体查看内部数据的报道；付费正文不可完整读取，不能视为官方公开遥测。",
+          "effect": "boundary",
+          "search_run_id": "edit_20261009T092333_321fabff_D1_01",
+          "extraction_id": "edit_20261009T092333_321fabff_D1_ext_4",
+          "review_id": "edit_20261009T092333_321fabff_D1_review_4_verified",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S20",
+          "fact": "9月30日报道：每周发提示超300万人，每日超100万人。",
+          "locator": "原站搜索索引标题、副标题和导言；打开标题 L164",
+          "boundary": "统计发提示用户；付费原页只显示标题，索引内容不等于本研究取得内部原始数据。",
+          "effect": "boundary",
+          "search_run_id": "edit_20261009T092333_321fabff_D1_01",
+          "extraction_id": "edit_20261009T092333_321fabff_D1_ext_5",
+          "review_id": "edit_20261009T092333_321fabff_D1_review_5_verified",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E321_VMTEST",
+          "fact": "9 月 30 日单用户测试见 2 vCPU；作者称一小时测试未见降频，并推断两线程共享一核，但承认没有观察到超分配证据。",
+          "locator": "配置 L11–19；Does Meta throttle the machine? L26–38",
+          "boundary": "1.44倍及约2倍基准倍率不能唯一识别宿主拓扑；不得把作者猜测当成全站SMT或超配政策。",
+          "effect": "boundary",
+          "search_run_id": "edit_20261009T092333_321fabff_D1_01",
+          "extraction_id": "edit_20261009T092333_321fabff_D1_ext_7",
+          "review_id": "edit_20261009T092333_321fabff_D1_review_7_verified",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E321_9965",
+          "fact": "AMD 在 2024 年 10 月 10 日的发布稿确认 EPYC 9965 为 192 核处理器。",
+          "locator": "发布行 L456；型号描述 L473",
+          "boundary": "只提供本题假设计算的公开容量标尺；不是Muse采购型号证明。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T092333_321fabff_D1_01",
+          "extraction_id": "edit_20261009T092333_321fabff_D1_ext_8",
+          "review_id": "edit_20261009T092333_321fabff_D1_review_8_verified",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E321_SCENARIO",
+          "fact": "9月24日第三方情景文章假设1亿个持续运行的Muse云电脑、每台2 vCPU、每vCPU独占一个物理核心、不超配；双路服务器每颗128物理核，计算约156万颗CPU。按其输入精算为1亿×2÷128＝156.25万颗。",
+          "locator": "文章日期 L7；情景与非机群观察 L15–18；假设 L21–24；双路128核与约156万颗 L37–42",
+          "boundary": "这是作者设定的容量情景和本文复算的精确值，不是Meta实测容量、采购预测或订单。",
+          "effect": "boundary",
+          "search_run_id": "root_review_20261012_158_source_correction_D1_search",
+          "extraction_id": "root_review_20261012_158_source_correction_D1_ext_1",
+          "review_id": "root_review_20261012_158_source_correction_D1_review_1"
+        },
+        {
+          "source": "EA125_STARK",
+          "fact": "9月22日单账户使用记录在9月20日看到2 vCPU及标识为126核/252线程的AMD EPYC 9D25主机信息；作者明确称只观察到一台虚拟机，Meta未承诺统一规格。",
+          "locator": "作者与日期 L7–11；First, the box L20–33",
+          "boundary": "126核只是单账户所见的主机标识，不能证明全站都用126核，也不能证明每个vCPU独占物理核；原文没有给出158万颗预测。",
+          "effect": "boundary",
+          "search_run_id": "root_review_20261012_158_source_correction_D1_search",
+          "extraction_id": "root_review_20261012_158_source_correction_D1_ext_2",
+          "review_id": "root_review_20261012_158_source_correction_D1_review_2"
+        }
+      ],
+      "passed": false,
+      "gaps": [
+        "未取得 Muse 每用户实际物理核时、峰均比、全站物理核/vCPU映射、利用率和内存驻留/回收率，不能确定实际容量转换系数。",
+        "未取得已有可用容量、故障冗余和采购记录，不能把容量换算为新增CPU订单。",
+        "用户基线来自媒体所见内部数据及第三方估计；Meta统一口径原始遥测未公开，Yahoo原页与Similarweb原表未取得。"
+      ],
+      "next_actions": [
+        "下一轮优先取得带定义的活跃/后台账户遥测和每账户核时、内存驻留、峰值及既有余量；对照订单，不新增问题。",
+        "补取Similarweb统计原表与可读取的同期原报道，确认平台覆盖和去重口径。"
+      ],
+      "refutation": "vCPU配额与后台可用性不等于持续独占物理核心；单样本SMT推断不能外推机群。",
+      "data_required": [
+        "带日期的用户尝试量、DAU/WAU及统计定义",
+        "单账户配置与全站CPU核时、峰均比、利用率、SMT和内存驻留",
+        "新增用户到容量再到采购的算例及存量余量"
+      ],
+      "acceptance_rule": "核心事实可追溯、口径可比、反证已处理，重大缺口不得改变所声明的本题答案。",
+      "reasons": [
+        "已逐项回答已知事实、机制和条件情景；所列缺口仍影响原题完整答案，未宣称研究充分。"
+      ],
+      "mode": "leaf",
+      "tables": [],
+      "answer_review": {
+        "question": "用户增长会变成多少 CPU 需求？",
+        "direct_answer_excerpt": "Muse用户增长先变成CPU工作量，再变成服务器容量。以100万日活、每人每日1物理核小时、峰均比2、目标利用率60%、每颗192核为例，需要约724颗CPU的服务容量；这是可复算的强度情景。单账户2 vCPU观察只能说明名义配额，实际所需颗数由每人核时、并发峰值、内存驻留及现有机群余量决定。[S02][EA125_STARK][E321_9965]",
+        "coverage": [
+          {
+            "requirement": "回答用户增长会变成多少 CPU 需求？的核心结论",
+            "status": "answered",
+            "answer_excerpt": "Muse用户增长先变成CPU工作量，再变成服务器容量。以100万日活、每人每日1物理核小时、峰均比2、目标利用率60%、每颗192核为例，需要约724颗CPU的服务容量；这是可复算的强度情景。单账户2 vCPU观察只能说明名义配额，实际所需颗数由每人核时、并发峰值、内存驻留及现有机群余量决定。[S02][EA125_STARK][E321_9965]"
+          },
+          {
+            "requirement": "用户基线和工作量",
+            "status": "answered",
+            "answer_excerpt": "9月30日报道每日发提示用户超过100万；另一份10月5日全球移动日活估算为218.2万，统计行为与覆盖平台不同。Meta确认云端环境运行代码、工具、子代理及定时任务；总CPU工作量应按实际任务消耗的核时计，而非按打开App的时长计。[S20][E472_SW][S02]"
+          },
+          {
+            "requirement": "容量怎样计算",
+            "status": "answered",
+            "answer_excerpt": "容量颗数＝向上取整〔日活人数 × 每人每日物理核小时 × 峰均比 ÷（24 × 目标利用率 × 每颗可用核心数）〕。采用上述100万、1核小时、2倍、60%和192核输入，算得723.38，向上取整为724颗；192核取自EPYC 9965的公开规格，仅作容量标尺。[E321_9965]"
+          },
+          {
+            "requirement": "百万颗情景的来源",
+            "status": "answered",
+            "answer_excerpt": "Next Signal Prediction设定1亿台持续运行的云电脑、每台2个独占物理核心、每颗128核，得到1亿×2÷128＝156.25万颗。若把分母改为单账户观察中的126核，算术结果为158.73万颗。两项是全额独占配置情景；Muse实际容量应由任务核时和共享程度估计。[E321_SCENARIO][EA125_STARK]"
+          },
+          {
+            "requirement": "未取得 Muse 每用户实际物理核时、峰均比、全站物理核/vCPU映射、利用率和内存驻留/回收率，不能确定实际容量转换系数。",
+            "status": "unresolved",
+            "gap": "未取得 Muse 每用户实际物理核时、峰均比、全站物理核/vCPU映射、利用率和内存驻留/回收率，不能确定实际容量转换系数。"
+          },
+          {
+            "requirement": "未取得已有可用容量、故障冗余和采购记录，不能把容量换算为新增CPU订单。",
+            "status": "unresolved",
+            "gap": "未取得已有可用容量、故障冗余和采购记录，不能把容量换算为新增CPU订单。"
+          },
+          {
+            "requirement": "用户基线来自媒体所见内部数据及第三方估计；Meta统一口径原始遥测未公开，Yahoo原页与Similarweb原表未取得。",
+            "status": "unresolved",
+            "gap": "用户基线来自媒体所见内部数据及第三方估计；Meta统一口径原始遥测未公开，Yahoo原页与Similarweb原表未取得。"
+          }
+        ],
+        "draft_comparison": {
+          "retained": [
+            "保留每百万账户200万名义vCPU、每百万日活724颗条件算例、九格敏感性、156.25万和158.73万颗独占情景、内存/存储瓶颈及存量采购区别。",
+            "保留两期The Information用户数字及发提示定义，明确是索引可见的媒体内部数据报道，保留单用户配置和另一份测试的反向限制。"
+          ],
+          "corrected": [
+            "Yahoo原页多次打开失败，218.2万只列为索引转述并记录缺口；不据此建立同口径增长率。",
+            "192核规格改用2024-10-10带日期官方发布稿；内存PB算例注明十进制；SMT观察不认定全站映射。",
+            "补明原始128核情景为156.25万颗；126核单账户变体为本报告派生的158.73万颗，约数应是159万颗，并给出各自来源和非预测边界。",
+            "公共正文压缩为当前结论、关键事实及必要边界；修订过程保留在研究版本记录。",
+            "将正文收束为直接答案、事实与因果；细节口径留在数据列表和内部审计。"
+          ],
+          "omitted": [
+            "未删去已核实的重要答案信息；Yahoo和未公开机群数据未进入完成证据。"
+          ]
+        },
+        "reviewer": "GPT primary agent",
+        "revision_id": "edit_20261009T092333_321fabff",
+        "manual_review_id": "root_review_20261013_all_questions_direct_answer"
+      }
+    },
+    {
+      "id": "D2",
+      "parent_id": "I",
+      "level": 3,
+      "question": "Muse 对服务器 CPU 市场的增量有多大？",
+      "short": "Muse 对服务器 CPU 市场的增量有多大？",
+      "why_it_matters": "区分事件增量与已经存在的 CPU 景气。",
+      "what": "Muse 对服务器 CPU 市场的增量有多大？",
+      "conclusion": "Muse为服务器CPU市场增加了执行层工作负载，但截至2026年10月9日，没有可验证的Muse专属净增采购颗数或金额。条件情景下，若未来有1亿账户、每账户2 vCPU、每颗128核，实际物理容量占名义配额的1%—20%，用户执行环境约需1.56万—31.25万颗CPU；按每颗5000美元演示，部署金额约0.78亿—15.63亿美元。市场实际增量取决于新增采购与交付年份。[S02][EA125_STARK]",
+      "analysis": [
+        {
+          "heading": "增量来自哪里",
+          "paragraphs": [
+            "Meta的云端执行环境运行代码、浏览器配套服务、子代理和定时任务，形成用户VM与共享后台两类CPU工作量；模型推理系统也有配套主机CPU。用户活动提高这些负载后，只有超出现有容量、形成额外采购的部分才进入CPU市场增量。[S02]"
+          ]
+        },
+        {
+          "heading": "情景量级",
+          "paragraphs": [
+            "将日活率、任务时长、并发和资源共享合并为实际物理容量系数f：CPU颗数＝账户数×每账户名义vCPU×f÷每颗物理核心数。按1亿账户、2 vCPU、128核和f为1%—20%得到1.56万—31.25万颗；每颗5000美元为金额演示输入。表中列出其它f值的敏感性。"
+          ],
+          "tables": [
+            {
+              "caption": "可复算的规模：关键在每账户实际占用多少物理容量",
+              "headers": [
+                "用户虚拟机容量情景",
+                "f",
+                "每账户折算物理核心",
+                "所需 CPU 数量",
+                "CPU 部署金额"
+              ],
+              "rows": [
+                [
+                  "较低容量占用",
+                  "1%",
+                  "0.02 核",
+                  "约 1.56 万颗",
+                  "约 0.78 亿美元"
+                ],
+                [
+                  "中间敏感性情景",
+                  "5%",
+                  "0.10 核",
+                  "约 7.81 万颗",
+                  "约 3.91 亿美元"
+                ],
+                [
+                  "较高容量占用",
+                  "20%",
+                  "0.40 核",
+                  "约 31.25 万颗",
+                  "约 15.63 亿美元"
+                ],
+                [
+                  "两个物理核心全额预留",
+                  "100%",
+                  "2.00 核",
+                  "约 156.25 万颗",
+                  "约 78.13 亿美元"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "市场对照",
+          "paragraphs": [
+            "AMD在Muse发布前已披露服务器CPU业务增长，并预测2030年市场约2200亿美元；智能体沙箱当时还是其所列三类需求中最小的一类。这说明Muse进入一个已经增长的市场。情景金额要按实际交付年度、净新增颗数与同年度市场收入比较，当前尚缺这些观测值。[E321_Q2]"
+          ],
+          "tables": [
+            {
+              "caption": "相对于整个服务器 CPU 市场，能确认到什么程度",
+              "headers": [
+                "披露日期",
+                "原始来源中的基线或预测",
+                "与 Muse 增量的关系"
+              ],
+              "rows": [
+                [
+                  "2026-05-07",
+                  "AMD 将 2030 年服务器 CPU 可服务市场预测提高至 超过 1,200 亿美元，预计年增长超过 35% [E321_MAY]",
+                  "是全行业预测，早于 Muse 产品发布"
+                ],
+                [
+                  "2026-08-04",
+                  "AMD 披露第二季度服务器 CPU 收入再创新高，云与企业销售均同比增长超过 70% [E321_Q2]",
+                  "是 AMD 已实现业务增长，不能归因于 9 月发布"
+                ],
+                [
+                  "2026-08-04",
+                  "AMD 重申 2030 年服务器 CPU 市场预测约 2,200 亿美元，预计年增长超过 50%；预计智能体沙箱届时成为最大类别 [E321_Q2]",
+                  "覆盖全部客户及应用，不是 Muse 专属市场"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "source": "S01",
+          "fact": "Muse 个人智能体已发布，并能在用户关闭应用后继续处理任务。",
+          "locator": "标题日期 L241；How It Works L255–259",
+          "boundary": "9月8日发布、9月30日更新；功能存在不是市场净新增硬件的计量。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T092333_321fabff_D2_01",
+          "extraction_id": "edit_20261009T092333_321fabff_D2_ext_1",
+          "review_id": "edit_20261009T092333_321fabff_D2_review_1_verified",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S02",
+          "fact": "Muse 的隔离执行 VM 使用 CPU、内存和存储，运行代码及定时任务，并经代理访问外部推理基础设施。",
+          "locator": "An agent in your own cloud computer L28–31；服务列表 L44–50",
+          "boundary": "执行负载、共享服务、推理配套CPU需分别核算，官方未单列采购归因。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T092333_321fabff_D2_01",
+          "extraction_id": "edit_20261009T092333_321fabff_D2_ext_2",
+          "review_id": "edit_20261009T092333_321fabff_D2_review_2_verified",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "EA125_STARK",
+          "fact": "单账户报告显示 2 vCPU 及 EPYC 9D25 的126核/252线程标识；作者明确称不是官方规格保证。",
+          "locator": "First, the box L23–33",
+          "boundary": "不能把2 vCPU外推为每账户两独占物理核心；样本不是机群盘点。",
+          "effect": "boundary",
+          "search_run_id": "edit_20261009T092333_321fabff_D2_01",
+          "extraction_id": "edit_20261009T092333_321fabff_D2_ext_3",
+          "review_id": "edit_20261009T092333_321fabff_D2_review_3_verified",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E321_SCENARIO",
+          "fact": "9 月 24 日估算以每 vCPU 对应一物理核、持续运行且不超配为假设，计算一亿 Muse VM 约需156万颗CPU。",
+          "locator": "开头 L16–18；Start with the Assumptions L21–25",
+          "boundary": "原作者明确是资源估算，非部署观察；其账户增长和用量也不是Meta遥测。",
+          "effect": "boundary",
+          "search_run_id": "edit_20261009T092333_321fabff_D2_01",
+          "extraction_id": "edit_20261009T092333_321fabff_D2_ext_4",
+          "review_id": "edit_20261009T092333_321fabff_D2_review_4_verified",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E321_MAY",
+          "fact": "AMD 5 月 7 日预计服务器 CPU 市场到 2030 年超过1200亿美元，年增长超过35%。",
+          "locator": "标题日期 L452；市场预测 L461",
+          "boundary": "供应商预测；早于Muse发布，不能作为2026已实现市场基线。",
+          "effect": "boundary",
+          "search_run_id": "edit_20261009T092333_321fabff_D2_01",
+          "extraction_id": "edit_20261009T092333_321fabff_D2_ext_5",
+          "review_id": "edit_20261009T092333_321fabff_D2_review_5_verified",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E321_Q2",
+          "fact": "AMD 8 月 4 日电话会披露第二季度云和企业服务器CPU销售各同比增长超过70%；同时预计2030年服务器CPU市场约2200亿美元、年增长超过50%。",
+          "locator": "PDF p2 L104–110、p4 L201–206、p11 L582–584（页码为1起算）",
+          "boundary": "70%是AMD实际增长；2200亿是行业未来预测，非Muse收入、非2026市场实绩。",
+          "effect": "boundary",
+          "search_run_id": "edit_20261009T092333_321fabff_D2_01",
+          "extraction_id": "edit_20261009T092333_321fabff_D2_ext_6",
+          "review_id": "edit_20261009T092333_321fabff_D2_review_6_verified",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E321_Q2",
+          "fact": "AMD 在8月电话会称智能体沙箱当前是三类服务器CPU需求中最小一类，预计2030年成为最大一类；并称供应链在2026年上半年已经紧张。",
+          "locator": "PDF p12 L640–655；p15 L804–807",
+          "boundary": "管理层判断和预测；发布前的供需紧张不能归因于9月Muse事件。",
+          "effect": "boundary",
+          "search_run_id": "edit_20261009T092333_321fabff_D2_01",
+          "extraction_id": "edit_20261009T092333_321fabff_D2_ext_7",
+          "review_id": "edit_20261009T092333_321fabff_D2_review_7_verified",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E321_AAI",
+          "fact": "AMD 7月公告的智能体承载量按CPU线程资源代理推算，实际容量和吞吐会随工作负载、模型、内存、软件与配置变化。",
+          "locator": "脚注4–6 L110–114",
+          "boundary": "理论线程密度不是Muse的实测并发、利用率或市场订单。",
+          "effect": "boundary",
+          "search_run_id": "edit_20261009T092333_321fabff_D2_01",
+          "extraction_id": "edit_20261009T092333_321fabff_D2_ext_8",
+          "review_id": "edit_20261009T092333_321fabff_D2_review_8_verified",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E321_SCENARIO",
+          "fact": "9月24日第三方情景文章假设1亿个持续运行的Muse云电脑、每台2 vCPU、每vCPU独占一个物理核心、不超配；双路服务器每颗128物理核，计算约156万颗CPU。按其输入精算为1亿×2÷128＝156.25万颗。",
+          "locator": "文章日期 L7；情景与非机群观察 L15–18；假设 L21–24；双路128核与约156万颗 L37–42",
+          "boundary": "这是作者设定的容量情景和本文复算的精确值，不是Meta实测容量、采购预测或订单。",
+          "effect": "boundary",
+          "search_run_id": "root_review_20261012_158_source_correction_D2_search",
+          "extraction_id": "root_review_20261012_158_source_correction_D2_ext_1",
+          "review_id": "root_review_20261012_158_source_correction_D2_review_1"
+        },
+        {
+          "source": "EA125_STARK",
+          "fact": "9月22日单账户使用记录在9月20日看到2 vCPU及标识为126核/252线程的AMD EPYC 9D25主机信息；作者明确称只观察到一台虚拟机，Meta未承诺统一规格。",
+          "locator": "作者与日期 L7–11；First, the box L20–33",
+          "boundary": "126核只是单账户所见的主机标识，不能证明全站都用126核，也不能证明每个vCPU独占物理核；原文没有给出158万颗预测。",
+          "effect": "boundary",
+          "search_run_id": "root_review_20261012_158_source_correction_D2_search",
+          "extraction_id": "root_review_20261012_158_source_correction_D2_ext_2",
+          "review_id": "root_review_20261012_158_source_correction_D2_review_2"
+        }
+      ],
+      "passed": false,
+      "gaps": [
+        "未取得 Muse 专属CPU核时、存量吸收率、被替代负载、实际采购颗数、净成交价与交付年份，不能给出市场净增收入。",
+        "未取得与Muse采购期间一致的2026年服务器CPU市场绝对实绩分母，2030年2200亿美元预测不能替代当前市场占比。"
+      ],
+      "next_actions": [
+        "取得Muse执行池扩容与采购归因、同期服务器CPU实际市场规模；用真实用量替换情景参数并按交付年度比较。"
+      ],
+      "refutation": "发布前CPU业务已强劲增长且供给已紧张；共享和存量容量可吸收负载，行业预测不是Muse已实现贡献。",
+      "data_required": [
+        "Muse专属采购量、ASP、交付期间及净新增归因",
+        "发布前服务器CPU收入与当年市场基线、2030预测分别核对",
+        "128核CPU容量金额情景、分年部署与市场占比的可比性"
+      ],
+      "acceptance_rule": "核心事实可追溯、口径可比、反证已处理，重大缺口不得改变所声明的本题答案。",
+      "reasons": [
+        "已逐项回答已知事实、机制和条件情景；所列缺口仍影响原题完整答案，未宣称研究充分。"
+      ],
+      "mode": "leaf",
+      "tables": [],
+      "answer_review": {
+        "question": "Muse 对服务器 CPU 市场的增量有多大？",
+        "direct_answer_excerpt": "Muse为服务器CPU市场增加了执行层工作负载，但截至2026年10月9日，没有可验证的Muse专属净增采购颗数或金额。条件情景下，若未来有1亿账户、每账户2 vCPU、每颗128核，实际物理容量占名义配额的1%—20%，用户执行环境约需1.56万—31.25万颗CPU；按每颗5000美元演示，部署金额约0.78亿—15.63亿美元。市场实际增量取决于新增采购与交付年份。[S02][EA125_STARK]",
+        "coverage": [
+          {
+            "requirement": "回答Muse 对服务器 CPU 市场的增量有多大？的核心结论",
+            "status": "answered",
+            "answer_excerpt": "Muse为服务器CPU市场增加了执行层工作负载，但截至2026年10月9日，没有可验证的Muse专属净增采购颗数或金额。条件情景下，若未来有1亿账户、每账户2 vCPU、每颗128核，实际物理容量占名义配额的1%—20%，用户执行环境约需1.56万—31.25万颗CPU；按每颗5000美元演示，部署金额约0.78亿—15.63亿美元。市场实际增量取决于新增采购与交付年份。[S02][EA125_STARK]"
+          },
+          {
+            "requirement": "增量来自哪里",
+            "status": "answered",
+            "answer_excerpt": "Meta的云端执行环境运行代码、浏览器配套服务、子代理和定时任务，形成用户VM与共享后台两类CPU工作量；模型推理系统也有配套主机CPU。用户活动提高这些负载后，只有超出现有容量、形成额外采购的部分才进入CPU市场增量。[S02]"
+          },
+          {
+            "requirement": "情景量级",
+            "status": "answered",
+            "answer_excerpt": "将日活率、任务时长、并发和资源共享合并为实际物理容量系数f：CPU颗数＝账户数×每账户名义vCPU×f÷每颗物理核心数。按1亿账户、2 vCPU、128核和f为1%—20%得到1.56万—31.25万颗；每颗5000美元为金额演示输入。表中列出其它f值的敏感性。"
+          },
+          {
+            "requirement": "市场对照",
+            "status": "answered",
+            "answer_excerpt": "AMD在Muse发布前已披露服务器CPU业务增长，并预测2030年市场约2200亿美元；智能体沙箱当时还是其所列三类需求中最小的一类。这说明Muse进入一个已经增长的市场。情景金额要按实际交付年度、净新增颗数与同年度市场收入比较，当前尚缺这些观测值。[E321_Q2]"
+          },
+          {
+            "requirement": "未取得 Muse 专属CPU核时、存量吸收率、被替代负载、实际采购颗数、净成交价与交付年份，不能给出市场净增收入。",
+            "status": "unresolved",
+            "gap": "未取得 Muse 专属CPU核时、存量吸收率、被替代负载、实际采购颗数、净成交价与交付年份，不能给出市场净增收入。"
+          },
+          {
+            "requirement": "未取得与Muse采购期间一致的2026年服务器CPU市场绝对实绩分母，2030年2200亿美元预测不能替代当前市场占比。",
+            "status": "unresolved",
+            "gap": "未取得与Muse采购期间一致的2026年服务器CPU市场绝对实绩分母，2030年2200亿美元预测不能替代当前市场占比。"
+          }
+        ],
+        "draft_comparison": {
+          "retained": [
+            "保留用户VM、共享服务、推理配套CPU边界；完整保留128核、5000美元、四档f敏感性、金额/年收入区别与2030比较限制。",
+            "保留首发事件、单用户样本、156.25/158.73万颗强假设、五月1200亿及八月2200亿预测与已实现70%增长。"
+          ],
+          "corrected": [
+            "八月2200亿美元表述改为重申，避免错认首次上调时间；补入八月官方电话会关于当期沙箱最小及上半年供给已紧张的反证。",
+            "未披露实际活跃数改为未有Meta统一遥测，承认D1已有用户报道基线；不能将预测分母写为当期实绩。",
+            "补明原始128核情景为156.25万颗；126核单账户变体为本报告派生的158.73万颗，约数应是159万颗，并给出各自来源和非预测边界。",
+            "公共正文压缩为当前结论、关键事实及必要边界；修订过程保留在研究版本记录。",
+            "将正文收束为直接答案、事实与因果；细节口径留在数据列表和内部审计。"
+          ],
+          "omitted": [
+            "无已核实核心信息因结构整理而省略；不补造Muse销量、ASP或2026行业绝对实绩。"
+          ]
+        },
+        "reviewer": "GPT primary agent",
+        "revision_id": "edit_20261009T092333_321fabff",
+        "manual_review_id": "root_review_20261013_all_questions_direct_answer"
+      }
+    },
+    {
+      "id": "T1",
+      "parent_id": "I",
+      "level": 3,
+      "question": "哪些 CPU 路线和终端会受益或被替代？",
+      "short": "哪些 CPU 路线和终端会受益或被替代？",
+      "why_it_matters": "确定受影响的具体市场与技术边界。",
+      "what": "哪些 CPU 路线和终端会受益或被替代？",
+      "conclusion": "云端Muse最直接增加服务器CPU的用途，x86 EPYC、Arm Grace及Arm AGI CPU等路线都有竞争机会。普通手机和PC负责输入、显示与授权，云端任务本身不要求终端CPU升级；高内存PC则可运行本地Glimmer。潜在替代发生在具体工作负载和旧服务器配置之间，现有证据尚无法量化哪种架构或终端的净销量变化。[S02][S01][S18]",
+      "analysis": [
+        {
+          "heading": "服务器路线",
+          "paragraphs": [
+            "Muse的Linux执行环境运行代码、工具和定时任务，偏好多并发、足够内存、低单位任务成本的服务器。Meta已有AMD EPYC合作、NVIDIA Grace部署合作，并与Arm共同开发AGI CPU；这些路线竞争的是同类执行工作和配套服务的成本与性能。[S02][E321_AMDMETA][S07][S10]"
+          ],
+          "tables": [
+            {
+              "caption": "一、服务器 CPU：x86 和 Arm 都有机会，竞争转向执行任务的效率",
+              "headers": [
+                "CPU 路线",
+                "受益机制及具体证据",
+                "截止日能确认的边界"
+              ],
+              "rows": [
+                [
+                  "AMD EPYC：x86 多核服务器路线",
+                  "适合承载大量 Linux 执行环境。AMD 与 Meta 在 2 月 24 日公布的合作包含 EPYC Venice、Verano；7 月 23 日 AMD 已发布第六代 EPYC，并称 Meta 正在实验室验证相关平台及 Helios 工作负载。[E321_AMDMETA]、[E321_AAI]",
+                  "是已有客户基础和产品验证证据，不能把整个合作额归因于 Muse。6GW 指 GPU 部署协议规模，不是 CPU 采购量。"
+                ],
+                [
+                  "NVIDIA Grace／Vera：Arm 服务器路线",
+                  "已进入独立 CPU 服务器，而不只是 GPU 的配套主机。2 月 17 日官方确认 Meta 推进用于生产应用的大规模 Grace-only 部署。[S07]",
+                  "Grace 有实际部署合作；该公告把 Vera 在 Meta 的大规模部署表述为 2027 年的可能安排。没有披露 Muse 占用其中多少容量。"
+                ],
+                [
+                  "Arm AGI CPU：面向云端编排和任务执行的路线",
+                  "3 月 24 日发布，Meta 是主要合作方和共同开发者；最高 136 个 Neoverse V3 核心、300W TDP，目标包括任务托管、控制和加速器管理。[S10]",
+                  "是明确的产品和合作方向，但不能据此宣称 Muse 已整体迁到 Arm，或已替换多少 EPYC／Xeon。"
+                ],
+                [
+                  "Intel Xeon：x86 通用计算及本地部署路线",
+                  "可以承接同类执行任务；Intel 已公布 Glimmer 对 Xeon、Core Ultra、Arc 平台的支持。[E321_INTELLOCAL]",
+                  "软件支持不等于 Meta 的云端 Muse 采购订单。现有材料不足以把 Xeon 列为 Muse 已确认的大规模新增供应商。 该Intel动态支持页未显示精确发布日期；平台细节保留为日期未核实背景。"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "终端路线",
+          "paragraphs": [
+            "iOS、Android和网页终端可直接使用云端Muse，手机与电脑主要承担交互。Meta另发布可本地运行的300亿参数Glimmer：量化语言模型权重不足20GB，完整运行目标约24GB或32GB内存；Meta公布了高端Mac与RTX 5090测试，AMD也展示了128GB内存的Ryzen AI Max+方案。此路线增加高内存、GPU与内存带宽的价值。[S01][S18][E321_AMDLOCAL]"
+          ]
+        },
+        {
+          "heading": "替代发生在哪些环节",
+          "paragraphs": [
+            "云端代理可以接手部分原本需要个人电脑持续开机的后台任务；新服务器也可能替换单位任务成本更高的旧配置。AI眼镜和Charm被宣布为后续入口，但截至截止日仍属计划；终端替换量与服务器架构份额需等待实际部署和同任务测试。[E8089_CONNECT]"
+          ],
+          "tables": [
+            {
+              "caption": "三、哪些替代可以成立，哪些仍不能成立？",
+              "headers": [
+                "替代关系",
+                "判断与适用条件"
+              ],
+              "rows": [
+                [
+                  "云端 VM 替代专门常开的个人电脑／迷你机",
+                  "对主要运行联网浏览器、脚本、定时任务的用途，存在替代可能；这是从 Muse 云端执行架构得出的推断。需要本地设备访问、离线运行或本地数据处理时，替代范围受限。"
+                ],
+                [
+                  "Glimmer 本地电脑替代部分云端模型调用",
+                  "已有本地运行能力支撑。适用于模型能力足够、硬件容量合适的任务；不等于能够完整复制 Muse 服务的连接器、托管和安全体系。[S18]"
+                ],
+                [
+                  "Arm 服务器替代部分 x86 服务器",
+                  "Meta 已存在多条 Arm 合作路线，具备竞争现实基础；但 Muse 专属迁移数量及供应商份额未知。[S07]、[S10]"
+                ],
+                [
+                  "GPU／NPU 替代整个 CPU",
+                  "现有证据不支持。模型推理可由专用计算单元承担，操作系统、浏览器、工具和任务执行仍有 CPU 工作。"
+                ],
+                [
+                  "Muse 使手机、PC 整机或 RISC-V 路线退出市场",
+                  "没有足够证据。尚不能确认整机替代规模，也没有原始资料支持 Muse 已选定 RISC-V 为主要部署路线。"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "source": "S02",
+          "fact": "Muse 的云端 Linux VM 执行代码和工具；Confidential VM 在9月8日处于少量可信用户测试，计划年内提供。",
+          "locator": "An agent in your own cloud computer L28；Coming Soon L129–134",
+          "boundary": "架构支持服务器执行层需求；保密能力计划不证明已普及或已选定CPU供应商。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T092333_321fabff_T1_01",
+          "extraction_id": "edit_20261009T092333_321fabff_T1_ext_1",
+          "review_id": "edit_20261009T092333_321fabff_T1_review_1_verified",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S01",
+          "fact": "Muse 首发提供 iOS、Android 与网页入口，长任务可在关闭应用后继续。",
+          "locator": "How It Works L259；Looking Ahead L287",
+          "boundary": "终端入口不证明需升级CPU/NPU；首发地区和后续开放范围由O1研究。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T092333_321fabff_T1_01",
+          "extraction_id": "edit_20261009T092333_321fabff_T1_ext_2",
+          "review_id": "edit_20261009T092333_321fabff_T1_review_2_verified",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E321_AMDMETA",
+          "fact": "AMD与Meta在2月24日公布EPYC Venice、Verano合作；同一公告中的最多6GW部署指Instinct GPU。",
+          "locator": "新闻要点 L56；CPU合作 L67–69",
+          "boundary": "早于Muse发布；CPU客户关系不是Muse独立订单，6GW不可当作CPU采购量。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T092333_321fabff_T1_01",
+          "extraction_id": "edit_20261009T092333_321fabff_T1_ext_3",
+          "review_id": "edit_20261009T092333_321fabff_T1_review_3_verified",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E321_AAI",
+          "fact": "7月23日AMD发布第六代EPYC；Meta当时在实验室验证CPU平台和Helios工作负载；智能体密度比较含线程数理论代理。",
+          "locator": "发布要点 L40–44；Meta L55；脚注 L110–114",
+          "boundary": "上市、客户验证与客户大规模交付是不同阶段；不构成Muse实际并发测试。",
+          "effect": "boundary",
+          "search_run_id": "edit_20261009T092333_321fabff_T1_01",
+          "extraction_id": "edit_20261009T092333_321fabff_T1_ext_4",
+          "review_id": "edit_20261009T092333_321fabff_T1_review_4_verified",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S07",
+          "fact": "NVIDIA 2月17日确认Meta推进Grace-only生产应用部署合作；Vera的大规模部署表述为2027年的可能安排。",
+          "locator": "Expanded NVIDIA CPU Deployment L60–64",
+          "boundary": "Arm路线已有客户基础，公告未披露Muse占用容量；2027潜在部署不是2026交付。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T092333_321fabff_T1_01",
+          "extraction_id": "edit_20261009T092333_321fabff_T1_ext_5",
+          "review_id": "edit_20261009T092333_321fabff_T1_review_5_verified",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S10",
+          "fact": "Arm 3月24日推出AGI CPU，最高136个Neoverse V3核心、300W TDP，Meta为主要合作方与共同开发者。",
+          "locator": "日期 L0；产品规格 L24–27；合作 L31",
+          "boundary": "规格与合作证据，不证明Muse已从x86整体迁往Arm；厂商性能比较非本题同任务实测。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T092333_321fabff_T1_01",
+          "extraction_id": "edit_20261009T092333_321fabff_T1_ext_6",
+          "review_id": "edit_20261009T092333_321fabff_T1_review_6_verified",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S18",
+          "fact": "Meta 8月10日发布300亿参数Glimmer开放权重；量化语言模型不足20GB，目标24/32GB运行空间，公布M4 Max、M5 Max与RTX 5090测试。",
+          "locator": "标题 L8；导言 L10–14；Fitting the Model L47–48；The Result L60",
+          "boundary": "Glimmer本地模型与Muse托管服务不同；平台能力不等于纯CPU推理或整机销量。",
+          "effect": "boundary",
+          "search_run_id": "edit_20261009T092333_321fabff_T1_01",
+          "extraction_id": "edit_20261009T092333_321fabff_T1_ext_7",
+          "review_id": "edit_20261009T092333_321fabff_T1_review_7_verified",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E321_AMDLOCAL",
+          "fact": "AMD 8月10日页面展示Glimmer本地路线；8月测试使用Ryzen AI Max+395、128GB系统内存且VGM设64GB，另有Radeon AI PRO R9700方案。",
+          "locator": "日期 L440；方案 L475；附注SHO-77 L478–479、RPW-537 L480–481",
+          "boundary": "依赖GPU/统一内存和软件后端；不是仅靠CPU核心完成推理。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T092333_321fabff_T1_01",
+          "extraction_id": "edit_20261009T092333_321fabff_T1_ext_8",
+          "review_id": "edit_20261009T092333_321fabff_T1_review_8_verified",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E8089_CONNECT",
+          "fact": "9月24日Connect公告称未来数月把Muse带到AI眼镜；Muse Charm已展示，年内再披露更多信息。",
+          "locator": "标题日期 L241；Bringing Muse to AI Glasses L253–256；Muse Charm L262–264",
+          "boundary": "不证明Muse眼镜功能全面交付或Charm上市；未披露CPU型号和本地推理比例。",
+          "effect": "boundary",
+          "search_run_id": "edit_20261009T092333_321fabff_T1_01",
+          "extraction_id": "edit_20261009T092333_321fabff_T1_ext_10",
+          "review_id": "edit_20261009T092333_321fabff_T1_review_10_verified",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        }
+      ],
+      "passed": false,
+      "gaps": [
+        "Intel Glimmer支持页没有可核实的精确发布日期；8月14日仅为测试日，其具体配置和截止日可用性未通过日期门禁。",
+        "未取得 Muse 专属CPU供应商份额、同任务跨架构成本/能效实测及终端替换量，不能判定哪条路线已实现净销量受益或替代规模。"
+      ],
+      "next_actions": [
+        "取得Intel页面带日历发布日期的版本；补充Muse按工作负载的CPU部署份额与同任务测试，核对眼镜/Charm交付及终端使用替代数据。"
+      ],
+      "refutation": "本地Glimmer构成全云端替代论的反例；Arm/x86多路线并存，设备入口与模型本地运行不可混同。",
+      "data_required": [
+        "EPYC、Xeon、Grace/Vera、Arm AGI的官方部署或合作阶段",
+        "云端Muse与本地Glimmer的平台、内存、加速器要求",
+        "手机PC眼镜Charm的入口交付和替代边界"
+      ],
+      "acceptance_rule": "核心事实可追溯、口径可比、反证已处理，重大缺口不得改变所声明的本题答案。",
+      "reasons": [
+        "已逐项回答已知事实、机制和条件情景；所列缺口仍影响原题完整答案，未宣称研究充分。"
+      ],
+      "mode": "leaf",
+      "tables": [],
+      "answer_review": {
+        "question": "哪些 CPU 路线和终端会受益或被替代？",
+        "direct_answer_excerpt": "云端Muse最直接增加服务器CPU的用途，x86 EPYC、Arm Grace及Arm AGI CPU等路线都有竞争机会。普通手机和PC负责输入、显示与授权，云端任务本身不要求终端CPU升级；高内存PC则可运行本地Glimmer。潜在替代发生在具体工作负载和旧服务器配置之间，现有证据尚无法量化哪种架构或终端的净销量变化。[S02][S01][S18]",
+        "coverage": [
+          {
+            "requirement": "回答哪些 CPU 路线和终端会受益或被替代？的核心结论",
+            "status": "answered",
+            "answer_excerpt": "云端Muse最直接增加服务器CPU的用途，x86 EPYC、Arm Grace及Arm AGI CPU等路线都有竞争机会。普通手机和PC负责输入、显示与授权，云端任务本身不要求终端CPU升级；高内存PC则可运行本地Glimmer。潜在替代发生在具体工作负载和旧服务器配置之间，现有证据尚无法量化哪种架构或终端的净销量变化。[S02][S01][S18]"
+          },
+          {
+            "requirement": "服务器路线",
+            "status": "answered",
+            "answer_excerpt": "Muse的Linux执行环境运行代码、工具和定时任务，偏好多并发、足够内存、低单位任务成本的服务器。Meta已有AMD EPYC合作、NVIDIA Grace部署合作，并与Arm共同开发AGI CPU；这些路线竞争的是同类执行工作和配套服务的成本与性能。[S02][E321_AMDMETA][S07][S10]"
+          },
+          {
+            "requirement": "终端路线",
+            "status": "answered",
+            "answer_excerpt": "iOS、Android和网页终端可直接使用云端Muse，手机与电脑主要承担交互。Meta另发布可本地运行的300亿参数Glimmer：量化语言模型权重不足20GB，完整运行目标约24GB或32GB内存；Meta公布了高端Mac与RTX 5090测试，AMD也展示了128GB内存的Ryzen AI Max+方案。此路线增加高内存、GPU与内存带宽的价值。[S01][S18][E321_AMDLOCAL]"
+          },
+          {
+            "requirement": "替代发生在哪些环节",
+            "status": "answered",
+            "answer_excerpt": "云端代理可以接手部分原本需要个人电脑持续开机的后台任务；新服务器也可能替换单位任务成本更高的旧配置。AI眼镜和Charm被宣布为后续入口，但截至截止日仍属计划；终端替换量与服务器架构份额需等待实际部署和同任务测试。[E8089_CONNECT]"
+          },
+          {
+            "requirement": "Intel Glimmer支持页没有可核实的精确发布日期；8月14日仅为测试日，其具体配置和截止日可用性未通过日期门禁。",
+            "status": "unresolved",
+            "gap": "Intel Glimmer支持页没有可核实的精确发布日期；8月14日仅为测试日，其具体配置和截止日可用性未通过日期门禁。"
+          },
+          {
+            "requirement": "未取得 Muse 专属CPU供应商份额、同任务跨架构成本/能效实测及终端替换量，不能判定哪条路线已实现净销量受益或替代规模。",
+            "status": "unresolved",
+            "gap": "未取得 Muse 专属CPU供应商份额、同任务跨架构成本/能效实测及终端替换量，不能判定哪条路线已实现净销量受益或替代规模。"
+          }
+        ],
+        "draft_comparison": {
+          "retained": [
+            "保留EPYC、Grace/Vera、Arm AGI、Xeon路线及客户合作边界；保留普通手机PC、高内存Mac/AMD/Intel电脑、RTX、眼镜及Charm。",
+            "保留300亿参数量化算例、24/32GB容量条件与全部五类替代关系。"
+          ],
+          "corrected": [
+            "把已受益措辞改为工作负载上的潜在受益；区分实验室验证、生产部署合作与2027可能部署。",
+            "Intel测试日期不当作发表日期，具体配置作为日期未核实背景；6GW明确属于GPU；Glimmer不作为Muse云服务迁移的证据。",
+            "公共正文压缩为当前结论、关键事实及必要边界；修订过程保留在研究版本记录。",
+            "将正文收束为直接答案、事实与因果；细节口径留在数据列表和内部审计。"
+          ],
+          "omitted": [
+            "无已核实的实质比较被省略；Intel无发布日期页面不进入完成证据，未宣称已有终端销量替代。"
+          ]
+        },
+        "reviewer": "GPT primary agent",
+        "revision_id": "edit_20261009T092333_321fabff",
+        "manual_review_id": "root_review_20261013_all_questions_direct_answer"
+      }
+    },
+    {
+      "id": "C",
+      "parent_id": "MUSE",
+      "level": 2,
+      "question": "具体影响哪些公司？",
+      "short": "具体影响哪些公司？",
+      "why_it_matters": "按业务事实分配潜在收益和风险。",
+      "what": "具体影响哪些公司？",
+      "conclusion": "与Muse所需CPU最相关的公司是已有Meta服务器合作的AMD、NVIDIA和Arm，以及提供Graviton云算力的AWS；Intel有Xeon产品和Meta历史合作，但新增份额面临竞争。可验证的是业务入口与产品能力，Muse专属净新增订单及利润分配尚未披露。",
+      "analysis": [
+        {
+          "heading": "谁提供执行CPU",
+          "paragraphs": [
+            "[C0](#C0)梳理直接CPU供应、外购云算力、制造和相邻加速器。[AMD](#AMD)有Meta EPYC存量及Muse单实例观察；[NVDA](#NVDA)有Grace客户合作；[ARM](#ARM)通过IP授权、版税及自有AGI CPU参与；[INTC](#INTC)有Xeon产品，但面对上述路线竞争。"
+          ]
+        },
+        {
+          "heading": "收入怎样形成",
+          "paragraphs": [
+            "每家公司需要从Muse工作量经过新增部署、供应商份额、成交价格和收入确认，才能得到可归因的财务增量。当前的客户合作证明承接能力，未公布的Muse订单仍是影响公司排序的关键变量。"
+          ]
+        }
+      ],
+      "evidence": [],
+      "passed": false,
+      "gaps": [
+        "C0：Meta未公开Muse全机群CPU供应商、数量与份额，现有公司筛选不能认定完整Muse供应商清单；AMD实例与Meta级采购必须分开。",
+        "AMD：未取得Muse专属EPYC净新增订单、可复用存量、成交价及收入确认额，不能量化Muse使AMD CPU收入增长多少。",
+        "INTC：未取得Muse的Xeon订单、全机群CPU供应商分配及被替代Xeon数量，不能量化Intel净增收入或份额损失。",
+        "ARM：未取得AGI CPU截至截止日实际销售收入、Meta验收数量及合同价格，无法量化自有CPU和Muse增量收入；全公司收入不等于CPU收入。",
+        "ARM：Flexible Access每年8.5万美元示例来自无精确发布日期的动态页，截止日适用价格未通过日期证据门禁。",
+        "NVDA：未取得Muse在Grace/Vera上的工作负载分配、净新增采购、成交价及同任务成本测试，不能量化NVIDIA的Muse CPU收益或判定已实际受益。"
+      ],
+      "next_actions": [
+        "先取得Meta按Muse工作负载的供应商分配和增量采购；对应回到已有C0及各公司题补证，不自动扩树。"
+      ],
+      "refutation": "业务敞口与Muse净增收入不同；CPU销量、GPU容量、IP版税与云服务收入不可混算。",
+      "data_required": [
+        "问题计划中的官方事实、量化口径与反向材料"
+      ],
+      "acceptance_rule": "核心事实可追溯、口径可比、反证已处理，重大缺口不得改变所声明的本题答案。",
+      "reasons": [
+        "五个直接子问题尚有供应商覆盖、收入归因或日期缺口。"
+      ],
+      "mode": "rollup",
+      "tables": []
+    },
+    {
+      "id": "C0",
+      "parent_id": "C",
+      "level": 3,
+      "question": "哪些公司有可验证的业务敞口？",
+      "short": "哪些公司有可验证的业务敞口？",
+      "why_it_matters": "从 CPU 业务关系筛选真实研究对象。",
+      "what": "哪些公司有可验证的业务敞口？",
+      "conclusion": "截至2026年10月9日，AMD与Meta有EPYC合作，NVIDIA有Grace CPU部署合作，Arm是Meta AGI CPU共同开发方，AWS提供Graviton云算力；这四条是最清晰的CPU相关业务联系。Intel有Meta历史服务器合作；台积电提供Arm AGI CPU制造，博通与Meta开发MTIA加速器，分别属于制造和相邻算力环节。[E321_AMDMETA][S07][S10][F981_AWS][F981_INTHIST][F981_ARMMAR][F981_AVGO]",
+      "analysis": [
+        {
+          "heading": "直接CPU与云算力敞口",
+          "paragraphs": [
+            "AMD已披露Meta跨代部署数百万颗EPYC；NVIDIA与Meta推进Grace-only生产应用部署；Arm与Meta共同开发AGI CPU；Meta计划引入数千万个AWS Graviton核心。这些是合作或部署基线，具体Muse工作量分配尚未公开。[E321_AMDMETA][S07][S10][F981_AWS]",
+            "一位用户9月20日记录的Muse环境显示EPYC 9D25和2 vCPU，为AMD提供产品级线索；样本数量为一个账户。[EA125_STARK]"
+          ],
+          "tables": [
+            {
+              "caption": "直接涉及 CPU 的四家公司",
+              "headers": [
+                "公司",
+                "可验证的业务及规模",
+                "已发生、计划与 Muse 归因边界"
+              ],
+              "rows": [
+                [
+                  "AMD",
+                  "CPU：EPYC。2 月 24 日官方公告确认，Meta 已在全球基础设施部署数百万颗 EPYC CPU，并将成为第六代 Venice 和后续 Verano 的主要客户。7 月 23 日公告进一步确认 Meta 正在实验室验证第六代 EPYC 平台，并测试 Helios 工作负载。[S05]、[E321_AAI]",
+                  "既有 EPYC 部署是已实现业务；新平台验证不能等同于全面部署。AMD 是有 Muse 具体实例线索的供应商，但其数百万颗存量覆盖 Meta 整体业务，不能全部算作 Muse。"
+                ],
+                [
+                  "NVIDIA",
+                  "CPU：Grace、Vera；另有 GPU 和网络产品。2 月 17 日公告确认，双方正为 Meta 生产应用部署 Grace，并称这是首次大规模 Grace-only 部署；Vera 的大规模部署则是 2027 年的潜在安排。[S07]",
+                  "Grace-only 表明 NVIDIA 的业务并不限于“GPU 搭配一颗主机 CPU”。但公告没有披露 Grace 数量、Muse 占比，也没有确认 Muse 虚拟机运行于 Grace。Vera 不能计作截止日已经实现的部署。"
+                ],
+                [
+                  "Arm",
+                  "CPU 成品：Arm AGI CPU；另有架构/IP 业务。3 月 24 日，Meta 与 Arm 确认共同开发 AGI CPU，Meta 是主要合作伙伴和共同开发者，产品面向通用计算、AI 编排，并与 MTIA 配合。Arm 公布最高 136 核、300W TDP，早期系统当时已可提供，更广泛供货原定下半年。[F981_METARM]、[S10]",
+                  "这是具体产品和客户关系，不能只把 Arm 视作抽象的架构受益者。但未披露 Meta 已验收数量或 Muse 部署份额。9 月 8 日更新仍将 Meta 列为围绕 AGI CPU 开发解决方案的伙伴，不能从产品可供货推导 Meta 已完成大规模部署。[F981_ARMSEP]"
+                ],
+                [
+                  "亚马逊 AWS",
+                  "云端 CPU 服务：Graviton。4 月 24 日，Meta 公告将把数千万个 Graviton 核心纳入算力组合，首批部署即以数千万核心为目标，明确用于智能体 AI 的 CPU 密集型工作负载，并点名 Graviton5。[F981_AWS]、[F981_AWS2]",
+                  "这是有明确数量级的协议，AWS 的业务形式是提供云计算能力。数千万核心不是数千万颗 CPU；公告没有提供截止日实际启用核心数，也没有说明其中多少用于 Muse。"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "上下游与相邻业务",
+          "paragraphs": [
+            "台积电负责制造Arm AGI CPU；博通参与Meta MTIA定制加速器；Intel曾与Meta合作Xeon-D前端服务器。它们分别说明制造、模型加速和历史CPU客户关系，需按各自业务环节评估。[F981_ARMMAR][F981_AVGO][F981_INTHIST]"
+          ],
+          "tables": [
+            {
+              "caption": "上游、相邻业务和历史供应商",
+              "headers": [
+                "公司或公司群",
+                "能确认的敞口",
+                "不能据此确认什么"
+              ],
+              "rows": [
+                [
+                  "台积电",
+                  "Arm 于 3 月 24 日提交的 6-K 收录台积电声明，明确其为 Arm AGI CPU 制造商，采用 3nm 工艺。这构成“Meta—Arm CPU—台积电制造”的具体上游链条。[F981_ARMMAR]",
+                  "未披露用于 Meta 的晶圆数量、收入及 Muse 占比。只能确认制造关系，不能把台积电全部 AI 业务增长归因于 Muse。"
+                ],
+                [
+                  "博通 Broadcom",
+                  "Meta 于 4 月 14 日确认扩大合作，共同开发多代 MTIA 定制 AI 加速器，服务推理、推荐及后续生成式 AI 工作负载。[F981_AVGO]",
+                  "MTIA 是加速器，不是通用 CPU，也不应直接称作 GPU。该合作证明 Meta AI 芯片敞口，但没有证明博通供应 Muse 的 VM CPU，或已获得 Muse 专属加速器收入。"
+                ],
+                [
+                  "Intel",
+                  "Meta 的前身 Facebook 于 2016 年 3 月 9 日披露与 Intel 联合设计 Xeon-D/Broadwell-D，用于其前端服务器；历史 CPU 客户关系有原始资料支持。[F981_INTHIST]",
+                  "历史关系不能证明 2026 年 Muse 采购。截止日可核验资料不足以确认 Muse 使用 Xeon、相关新增订单，或 Intel 因 Muse 丢失多少份额。"
+                ],
+                [
+                  "广达、联想、Supermicro、ASRock Rack",
+                  "Arm 在 3 月 24 日公告中将它们列为 AGI CPU 的主要 OEM/ODM 合作伙伴，存在具体平台业务联系。[S10]",
+                  "平台合作名单不是 Meta 采购清单，不能据此认定这些公司承接了 Muse 服务器订单。"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "source": "S01",
+          "fact": "Meta 于 2026 年 9 月 8 日发布由 Muse Spark 驱动的个人智能体 Muse，长任务可在用户关闭应用后继续。",
+          "locator": "标题日期；How It Works，L241、254–259",
+          "boundary": "发布页更新于9月30日；不是Muse Spark模型首次发布。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_C0_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_C0_ext_1",
+          "review_id": "edit_20261009T095113_fd9815e7_C0_review_1",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S02",
+          "fact": "Muse Secure VM 是有 CPU、内存、存储和浏览器能力的隔离 Linux 环境，可运行代码、子智能体与定时任务；推理通过代理访问外部基础设施。",
+          "locator": "An agent in your own cloud computer；Muse Secure VM，L28、41–50",
+          "boundary": "产品执行CPU与外部推理硬件须分开；文档未给CPU品牌或统一配额。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_C0_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_C0_ext_2",
+          "review_id": "edit_20261009T095113_fd9815e7_C0_review_2",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E321_AMDMETA",
+          "fact": "AMD 2月24日披露 Meta 跨代部署数百万颗 EPYC，并将成为 Venice、Verano 的主要客户；最高6GW协议指 Instinct GPU。",
+          "locator": "EX-99.1，L56–68",
+          "boundary": "数百万是全基础设施存量，6GW不是CPU数量，也不是Muse净新增采购。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_C0_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_C0_ext_3",
+          "review_id": "edit_20261009T095113_fd9815e7_C0_review_3",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E321_AAI",
+          "fact": "AMD 7月23日称 Meta 正在实验室验证第六代 EPYC 平台并测试 Helios 工作负载，准备规模部署。",
+          "locator": "合作伙伴进展，L55",
+          "boundary": "实验室验证不是全量部署完成；没有Muse单列。",
+          "effect": "boundary",
+          "search_run_id": "edit_20261009T095113_fd9815e7_C0_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_C0_ext_4",
+          "review_id": "edit_20261009T095113_fd9815e7_C0_review_4",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S07",
+          "fact": "NVIDIA 2月17日称与 Meta 推进用于生产应用的 Grace-only 大规模部署，Vera 大规模部署为2027年的潜在安排。",
+          "locator": "Expanded NVIDIA CPU Deployment，L60–64",
+          "boundary": "未披露CPU颗数或Muse用途；另述数百万是Blackwell/Rubin GPU。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_C0_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_C0_ext_5",
+          "review_id": "edit_20261009T095113_fd9815e7_C0_review_5",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S10",
+          "fact": "Arm 3月24日发布最高136核、300W TDP的 AGI CPU；Meta 是主要合作方与共同开发者，早期系统已可用，更广供货当时预计下半年。",
+          "locator": "产品规格及 Broad ecosystem support，L25–34",
+          "boundary": "产品发布、早期系统与Meta实际验收数量不同。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_C0_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_C0_ext_6",
+          "review_id": "edit_20261009T095113_fd9815e7_C0_review_6",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "F981_ARMSEP",
+          "fact": "Arm 9月8日仍将 Meta 列为围绕 AGI CPU 开发方案的伙伴；公告另称火山引擎把首批基于 AGI CPU 的智能体沙箱推向市场。",
+          "locator": "Arm CPUs powering agentic AI at scale，L25–29",
+          "boundary": "火山引擎进展不是Meta或Muse已经规模采用的证明。",
+          "effect": "boundary",
+          "search_run_id": "edit_20261009T095113_fd9815e7_C0_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_C0_ext_7",
+          "review_id": "edit_20261009T095113_fd9815e7_C0_review_7",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "F981_AWS",
+          "fact": "Meta 4月24日宣布把数千万个 AWS Graviton 核心纳入算力组合，首批部署即计划数千万核心，用于智能体AI的CPU密集型工作。",
+          "locator": "Takeaways；Our Portfolio Approach，L250–266",
+          "boundary": "这是协议与首批部署安排；核心不是芯片颗数，实际启用和Muse占比未披露。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_C0_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_C0_ext_8",
+          "review_id": "edit_20261009T095113_fd9815e7_C0_review_8",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "F981_ARMMAR",
+          "fact": "Arm 3月24日6-K收录台积电声明：台积电是 Arm AGI CPU 制造商，采用其3nm工艺。",
+          "locator": "PDF第7页（零基P6）TSMC声明，L147–153",
+          "boundary": "制造关系明确；Meta晶圆量和Muse收入未知。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_C0_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_C0_ext_9",
+          "review_id": "edit_20261009T095113_fd9815e7_C0_review_9",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "F981_AVGO",
+          "fact": "Meta 4月14日宣布与博通共同开发多代 MTIA 定制AI加速器，用于推理、推荐及后续生成式AI工作负载。",
+          "locator": "正文 MTIA定义及合作，L252–258",
+          "boundary": "MTIA不是通用CPU；没有Muse执行VM CPU订单。",
+          "effect": "boundary",
+          "search_run_id": "edit_20261009T095113_fd9815e7_C0_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_C0_ext_10",
+          "review_id": "edit_20261009T095113_fd9815e7_C0_review_10",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "F981_INTHIST",
+          "fact": "Facebook 2016年3月9日说明与 Intel 联合设计 Xeon-D／Broadwell-D 并用于前端服务器。",
+          "locator": "正文处理器协作及 Mono Lake，L28–36",
+          "boundary": "历史客户关系不能证明2026年Muse新增订单。",
+          "effect": "boundary",
+          "search_run_id": "edit_20261009T095113_fd9815e7_C0_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_C0_ext_11",
+          "review_id": "edit_20261009T095113_fd9815e7_C0_review_11",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S10",
+          "fact": "Arm 将 ASRock Rack、Lenovo、Quanta Computer、Supermicro 列为 AGI CPU 的主要OEM/ODM伙伴，并列出美光、三星、SK海力士等生态支持者。",
+          "locator": "Broad ecosystem support，L34–35",
+          "boundary": "平台合作名单不是Meta采购名单，更不是Muse BOM。",
+          "effect": "boundary",
+          "search_run_id": "edit_20261009T095113_fd9815e7_C0_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_C0_ext_12",
+          "review_id": "edit_20261009T095113_fd9815e7_C0_review_12",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "EA125_STARK",
+          "fact": "Clinton Stark 9月22日文章记载9月20日一个Muse环境报告 AMD EPYC 9D25、2 vCPU、7.7GB内存；作者强调只是一名智能体的自身测量。",
+          "locator": "Musey's spec sheet；限制，L23–33",
+          "boundary": "单账户、经智能体返回的观察，不是Meta规格或AMD独供证明。",
+          "effect": "boundary",
+          "search_run_id": "edit_20261009T095113_fd9815e7_C0_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_C0_ext_13",
+          "review_id": "edit_20261009T095113_fd9815e7_C0_review_13",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        }
+      ],
+      "passed": false,
+      "gaps": [
+        "Meta未公开Muse全机群CPU供应商、数量与份额，现有公司筛选不能认定完整Muse供应商清单；AMD实例与Meta级采购必须分开。"
+      ],
+      "next_actions": [
+        "取得Meta按工作负载的供应商部署说明；核对AWS启用核心和Arm验收量，未披露前保留筛选边界，不新增问题。"
+      ],
+      "refutation": "反向检索发现AMD独占及大规模订单说法；官方多路线合作反驳独占，单账户EPYC不代表机群。10月1日DIGITIMES排单消息正文无法读取，未用为已确认Muse订单。",
+      "data_required": [
+        "Meta CPU供应商、云服务商、上游制造商及历史关系",
+        "芯片颗数/核心/加速器GW各自口径",
+        "Muse直接实例与全公司合作归因边界"
+      ],
+      "acceptance_rule": "核心事实可追溯、口径可比、反证已处理，重大缺口不得改变所声明的本题答案。",
+      "reasons": [
+        "已完整保留可核实业务、机制、基线及条件解释；所列实际归因或日期缺口仍未解决，不以形式校验替代充分性。"
+      ],
+      "mode": "leaf",
+      "tables": [],
+      "answer_review": {
+        "protocol": "direct-answer-v1",
+        "question": "哪些公司有可验证的业务敞口？",
+        "direct_answer_excerpt": "截至2026年10月9日，AMD与Meta有EPYC合作，NVIDIA有Grace CPU部署合作，Arm是Meta AGI CPU共同开发方，AWS提供Graviton云算力；这四条是最清晰的CPU相关业务联系。Intel有Meta历史服务器合作；台积电提供Arm AGI CPU制造，博通与Meta开发MTIA加速器，分别属于制造和相邻算力环节。[E321_AMDMETA][S07][S10][F981_AWS][F981_INTHIST][F981_ARMMAR][F981_AVGO]",
+        "coverage": [
+          {
+            "requirement": "回答哪些公司有可验证的业务敞口？的核心结论",
+            "status": "answered",
+            "answer_excerpt": "截至2026年10月9日，AMD与Meta有EPYC合作，NVIDIA有Grace CPU部署合作，Arm是Meta AGI CPU共同开发方，AWS提供Graviton云算力；这四条是最清晰的CPU相关业务联系。Intel有Meta历史服务器合作；台积电提供Arm AGI CPU制造，博通与Meta开发MTIA加速器，分别属于制造和相邻算力环节。[E321_AMDMETA][S07][S10][F981_AWS][F981_INTHIST][F981_ARMMAR][F981_AVGO]"
+          },
+          {
+            "requirement": "直接CPU与云算力敞口",
+            "status": "answered",
+            "answer_excerpt": "AMD已披露Meta跨代部署数百万颗EPYC；NVIDIA与Meta推进Grace-only生产应用部署；Arm与Meta共同开发AGI CPU；Meta计划引入数千万个AWS Graviton核心。这些是合作或部署基线，具体Muse工作量分配尚未公开。[E321_AMDMETA][S07][S10][F981_AWS]"
+          },
+          {
+            "requirement": "上下游与相邻业务",
+            "status": "answered",
+            "answer_excerpt": "台积电负责制造Arm AGI CPU；博通参与Meta MTIA定制加速器；Intel曾与Meta合作Xeon-D前端服务器。它们分别说明制造、模型加速和历史CPU客户关系，需按各自业务环节评估。[F981_ARMMAR][F981_AVGO][F981_INTHIST]"
+          },
+          {
+            "requirement": "Meta未公开Muse全机群CPU供应商、数量与份额，现有公司筛选不能认定完整Muse供应商清单；AMD实例与Meta级采购必须分开。",
+            "status": "unresolved",
+            "gap": "Meta未公开Muse全机群CPU供应商、数量与份额，现有公司筛选不能认定完整Muse供应商清单；AMD实例与Meta级采购必须分开。"
+          }
+        ],
+        "draft_comparison": {
+          "retained": [
+            "保留四条直接CPU/云服务路线，台积电制造、博通加速器、Intel历史供货和OEM/存储生态边界。",
+            "保留数百万EPYC、数千万核心、6GW GPU等不同口径及vCPU算例。"
+          ],
+          "corrected": [
+            "以可打开的Stark原始记录补充转述社交帖子，明确单账户、非独占。",
+            "台积电声明定位修正为PDF第7页（零基P6）。",
+            "公共正文压缩为当前结论、关键事实及必要边界；修订过程保留在研究版本记录。",
+            "将正文收束为直接答案、事实与因果；细节口径留在数据列表和内部审计。"
+          ],
+          "omitted": [
+            "不采用未能读取原帖中的细节为完成证据；公司名单与官方已证实业务关系完整保留。"
+          ]
+        },
+        "revision_id": "edit_20261009T095113_fd9815e7",
+        "reviewer": "GPT primary agent",
+        "manual_review_id": "root_review_20261013_all_questions_direct_answer"
+      }
+    },
+    {
+      "id": "AMD",
+      "parent_id": "C",
+      "level": 3,
+      "question": "AMD 的 CPU 收入能否因 Muse 增长？",
+      "short": "AMD 的 CPU 收入能否因 Muse 增长？",
+      "why_it_matters": "检验 EPYC 执行需求能否转成净新增收入。",
+      "what": "AMD 的 CPU 收入能否因 Muse 增长？",
+      "conclusion": "AMD的CPU收入有Muse带来的增长路径：Muse执行环境产生新增服务器负载，若Meta为此采购更多EPYC，AMD便获得芯片销售。Meta已跨代部署数百万颗EPYC，单个Muse实例也观察到EPYC 9D25；这些事实证明客户与产品联系。截至10月9日，Muse新增EPYC订单及可归因收入尚未披露。[S02][E321_AMDMETA][S21]",
+      "analysis": [
+        {
+          "heading": "收入路径",
+          "paragraphs": [
+            "Muse的代码执行、浏览器相关服务和后台任务需要CPU。Meta可以在现有EPYC机群承接，也可以在负载增长后新增服务器；AMD的增量收入由新增EPYC颗数、成交价和交付时间决定。模型基础设施扩容还可能带动主机CPU，需按实际配套数量计算。[S02]"
+          ]
+        },
+        {
+          "heading": "已有客户基础",
+          "paragraphs": [
+            "Meta已部署数百万颗EPYC，并计划使用后续Venice、Verano；9月30日的一手Muse测试报告单个环境使用EPYC 9D25。AMD第二季度数据中心收入67亿美元、同比增长107%，包括EPYC和Instinct，属于事件发布前的公司基线。[E321_AMDMETA][S21][S06]"
+          ],
+          "tables": [
+            {
+              "caption": "AMD 已有的业务基础，和不能归给 Muse 的部分",
+              "headers": [
+                "已知事实",
+                "对 AMD CPU 收入的意义",
+                "归因边界"
+              ],
+              "rows": [
+                [
+                  "AMD 在 2026 年 2 月披露，Meta 已部署数百万颗 EPYC CPU",
+                  "AMD 已进入 Meta 的大规模生产基础设施，有现成供货关系",
+                  "是跨代、全基础设施的部署量，不是 Muse 专用数量，更不是 2026 年新增销量"
+                ],
+                [
+                  "Meta 将成为第六代 EPYC Venice 及下一代 Verano 的主要早期客户",
+                  "CPU 合作明确延续，未来扩容有承接基础",
+                  "公告没有给出 Muse 对应的 CPU 订单、单价或收入"
+                ],
+                [
+                  "双方签署最高 6GW 的 Instinct GPU 合作，首个 1GW 项目原计划于 2026 年下半年开始供货，系统包含 Venice CPU",
+                  "GPU 系统也可能带来配套 CPU 销售",
+                  "6GW 是 GPU 合作规模；供货计划不等于全部交付，更不能把整个合作视为 Muse 增量"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "增长幅度由什么决定",
+          "paragraphs": [
+            "报告中的用户与单机配置表可作容量敏感性演示。决定AMD新增收入的是Muse实际核时、现有EPYC余量、Meta在AMD与其它CPU路线之间的分配，以及订单净价。NVIDIA Grace等竞争路线已经进入Meta合作体系，会影响AMD的可得份额。[S07]"
+          ],
+          "tables": [
+            {
+              "caption": "收入能增加多少：已知基线与可复算的条件",
+              "headers": [
+                "假设的同时运行比例",
+                "同时运行实例",
+                "CPU 数量，向上取整",
+                "对应 CPU 销售额"
+              ],
+              "rows": [
+                [
+                  "1%",
+                  "10,000",
+                  "10,000 × 2 ÷ 128 → 157 颗",
+                  "78.5 万美元"
+                ],
+                [
+                  "10%",
+                  "100,000",
+                  "100,000 × 2 ÷ 128 → 1,563 颗",
+                  "781.5 万美元"
+                ],
+                [
+                  "100%",
+                  "1,000,000",
+                  "1,000,000 × 2 ÷ 128 → 15,625 颗",
+                  "7,812.5 万美元"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "source": "S01",
+          "fact": "Muse 是9月8日发布的个人智能体，可在用户关闭应用后继续长任务。",
+          "locator": "标题；How It Works，L241、254–259",
+          "boundary": "产品功能说明，不是已实现硬件订单。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_AMD_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_AMD_ext_1",
+          "review_id": "edit_20261009T095113_fd9815e7_AMD_review_1",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S02",
+          "fact": "Muse 的隔离 Linux VM 提供CPU执行代码、工具、子智能体和定时任务，外部推理由代理通路连接。",
+          "locator": "An agent in your own cloud computer；Muse Secure VM，L28、42–50",
+          "boundary": "环境隔离不等于永久独占物理核；未披露并发率、物理核用量。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_AMD_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_AMD_ext_2",
+          "review_id": "edit_20261009T095113_fd9815e7_AMD_review_2",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E321_AMDMETA",
+          "fact": "Meta 已跨代部署数百万颗 AMD EPYC，且将成为 Venice、Verano 的主要客户。",
+          "locator": "AMD EX-99.1，L67–68",
+          "boundary": "存量覆盖Meta基础设施，不能全归给Muse。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_AMD_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_AMD_ext_3",
+          "review_id": "edit_20261009T095113_fd9815e7_AMD_review_3",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E321_AMDMETA",
+          "fact": "AMD与Meta最高6GW合作为 Instinct GPU；首个1GW计划于2026年下半年开始出货，配套 Venice CPU 和 Helios。",
+          "locator": "AMD EX-99.1，L56–64",
+          "boundary": "计划不等于全量交付；GPU瓦数无法直接换算CPU颗数。",
+          "effect": "boundary",
+          "search_run_id": "edit_20261009T095113_fd9815e7_AMD_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_AMD_ext_4",
+          "review_id": "edit_20261009T095113_fd9815e7_AMD_review_4",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S06",
+          "fact": "AMD 8月4日披露2026年第二季度数据中心收入67亿美元，同比增长107%，由 EPYC CPU 与 Instinct GPU 共同推动。",
+          "locator": "Financial Segment Summary，L64",
+          "boundary": "混合分部收入；期间早于Muse发布，非Muse增量或EPYC单独收入。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_AMD_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_AMD_ext_5",
+          "review_id": "edit_20261009T095113_fd9815e7_AMD_review_5",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S21",
+          "fact": "Tom’s Hardware 9月30日文章称 Muse 跑分环境报告 EPYC 9D25、约两个核心与7.75GB内存；作者自行跑分为单核1000、多核1433。",
+          "locator": "Muse比较及作者独立测试，L541–549",
+          "boundary": "一手测试样本，不代表全机群或专属物理核心；分数不是实际任务CPU核时。",
+          "effect": "boundary",
+          "search_run_id": "edit_20261009T095113_fd9815e7_AMD_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_AMD_ext_6",
+          "review_id": "edit_20261009T095113_fd9815e7_AMD_review_6",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S07",
+          "fact": "Meta 与 NVIDIA 已推进 Grace-only 生产应用部署合作，Vera 2027年规模部署仅为潜在安排。",
+          "locator": "Expanded NVIDIA CPU Deployment，L60–64",
+          "boundary": "竞争路线限制AMD独占假设，不证明Muse已用Grace。",
+          "effect": "refute",
+          "search_run_id": "edit_20261009T095113_fd9815e7_AMD_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_AMD_ext_7",
+          "review_id": "edit_20261009T095113_fd9815e7_AMD_review_7",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E321_AAI",
+          "fact": "7月23日 AMD 公布 Helios 标准机架包含72颗MI455X GPU和18颗Venice CPU，Meta仍在验证平台及工作负载。",
+          "locator": "Helios架构及Meta段，L48、55",
+          "boundary": "标准机架4:1的GPU/CPU颗数比不是6GW固定转换率，也不是Muse执行VM配置。",
+          "effect": "boundary",
+          "search_run_id": "edit_20261009T095113_fd9815e7_AMD_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_AMD_ext_8",
+          "review_id": "edit_20261009T095113_fd9815e7_AMD_review_8",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        }
+      ],
+      "passed": false,
+      "gaps": [
+        "未取得Muse专属EPYC净新增订单、可复用存量、成交价及收入确认额，不能量化Muse使AMD CPU收入增长多少。"
+      ],
+      "next_actions": [
+        "取得Muse专属EPYC部署、存量吸收与净新增订单数据，并核对交付和收入确认；不得把GPU协议计作CPU收入。"
+      ],
+      "refutation": "反向查询找到未披露Muse核时及订单的评论，也找到DIGITIMES排单主张（正文打开失败）。以官方Grace竞争路线、发布前AMD财务和GPU协议口径为可复核反证，未把未知收入记为零。",
+      "data_required": [
+        "EPYC已部署数量及Venice/Verano合作状态",
+        "Q2数据中心收入与CPU/GPU拆分限制",
+        "Muse实例、净新增订单、净价及非AMD路线"
+      ],
+      "acceptance_rule": "核心事实可追溯、口径可比、反证已处理，重大缺口不得改变所声明的本题答案。",
+      "reasons": [
+        "已完整保留可核实业务、机制、基线及条件解释；所列实际归因或日期缺口仍未解决，不以形式校验替代充分性。"
+      ],
+      "mode": "leaf",
+      "tables": [],
+      "answer_review": {
+        "protocol": "direct-answer-v1",
+        "question": "AMD 的 CPU 收入能否因 Muse 增长？",
+        "direct_answer_excerpt": "AMD的CPU收入有Muse带来的增长路径：Muse执行环境产生新增服务器负载，若Meta为此采购更多EPYC，AMD便获得芯片销售。Meta已跨代部署数百万颗EPYC，单个Muse实例也观察到EPYC 9D25；这些事实证明客户与产品联系。截至10月9日，Muse新增EPYC订单及可归因收入尚未披露。[S02][E321_AMDMETA][S21]",
+        "coverage": [
+          {
+            "requirement": "回答AMD 的 CPU 收入能否因 Muse 增长？的核心结论",
+            "status": "answered",
+            "answer_excerpt": "AMD的CPU收入有Muse带来的增长路径：Muse执行环境产生新增服务器负载，若Meta为此采购更多EPYC，AMD便获得芯片销售。Meta已跨代部署数百万颗EPYC，单个Muse实例也观察到EPYC 9D25；这些事实证明客户与产品联系。截至10月9日，Muse新增EPYC订单及可归因收入尚未披露。[S02][E321_AMDMETA][S21]"
+          },
+          {
+            "requirement": "收入路径",
+            "status": "answered",
+            "answer_excerpt": "Muse的代码执行、浏览器相关服务和后台任务需要CPU。Meta可以在现有EPYC机群承接，也可以在负载增长后新增服务器；AMD的增量收入由新增EPYC颗数、成交价和交付时间决定。模型基础设施扩容还可能带动主机CPU，需按实际配套数量计算。[S02]"
+          },
+          {
+            "requirement": "已有客户基础",
+            "status": "answered",
+            "answer_excerpt": "Meta已部署数百万颗EPYC，并计划使用后续Venice、Verano；9月30日的一手Muse测试报告单个环境使用EPYC 9D25。AMD第二季度数据中心收入67亿美元、同比增长107%，包括EPYC和Instinct，属于事件发布前的公司基线。[E321_AMDMETA][S21][S06]"
+          },
+          {
+            "requirement": "增长幅度由什么决定",
+            "status": "answered",
+            "answer_excerpt": "报告中的用户与单机配置表可作容量敏感性演示。决定AMD新增收入的是Muse实际核时、现有EPYC余量、Meta在AMD与其它CPU路线之间的分配，以及订单净价。NVIDIA Grace等竞争路线已经进入Meta合作体系，会影响AMD的可得份额。[S07]"
+          },
+          {
+            "requirement": "未取得Muse专属EPYC净新增订单、可复用存量、成交价及收入确认额，不能量化Muse使AMD CPU收入增长多少。",
+            "status": "unresolved",
+            "gap": "未取得Muse专属EPYC净新增订单、可复用存量、成交价及收入确认额，不能量化Muse使AMD CPU收入增长多少。"
+          }
+        ],
+        "draft_comparison": {
+          "retained": [
+            "保留执行CPU及推理主机两条路径、EPYC存量、Venice/Verano、Q2混合收入和竞品反证。",
+            "保留1%、10%、100%并发条件算例与全部假设及非年度自动重复收入解释。"
+          ],
+          "corrected": [
+            "补充7月Helios72 GPU/18 CPU已公开配比，同时明确它不能将6GW直接换为Muse订单。",
+            "主代理按原题逐项复核，引用实际回答正文或表格单元格；清除转换占位文字。",
+            "公共正文压缩为当前结论、关键事实及必要边界；修订过程保留在研究版本记录。",
+            "将正文收束为直接答案、事实与因果；细节口径留在数据列表和内部审计。"
+          ],
+          "omitted": [
+            "无已核实实质内容被省略；未采信无法打开的排单消息。"
+          ]
+        },
+        "revision_id": "edit_20261009T095113_fd9815e7",
+        "reviewer": "GPT primary agent; final semantic review",
+        "manual_review_id": "root_review_20261013_all_questions_direct_answer"
+      }
+    },
+    {
+      "id": "INTC",
+      "parent_id": "C",
+      "level": 3,
+      "question": "Intel 会受益于增量需求还是承受份额压力？",
+      "short": "Intel 会受益于增量需求还是承受份额压力？",
+      "why_it_matters": "区分总市场扩张与本公司份额变化。",
+      "what": "Intel 会受益于增量需求还是承受份额压力？",
+      "conclusion": "Intel既可能分享Muse带来的服务器CPU总需求增长，也面临Meta将新增执行负载分配给AMD、NVIDIA Grace、Arm AGI CPU或AWS Graviton的份额压力。Xeon 6+具备高并发产品基础，Intel服务器业务在Muse发布前已增长；截至10月9日，没有Muse专属Xeon订单或份额数据，较明确的是竞争加剧而非已实现的Intel收入损失。[F981_INTJP][S13][E321_AMDMETA][S07][F981_AWS]",
+      "analysis": [
+        {
+          "heading": "需求增长的承接能力",
+          "paragraphs": [
+            "Muse的云端工具、脚本和后台任务需要服务器CPU。Intel发布的Xeon 6+最高288个能效核、12通道DDR5，面向高并发及云原生工作负载；第二季度服务器产品销量同比增长9%、均价增长48%，说明发布前已有服务器业务增长，同时公司披露需求超过内部供给。[S02][F981_INTJP][S13]"
+          ]
+        },
+        {
+          "heading": "Meta新增份额的竞争",
+          "paragraphs": [
+            "Meta已有AMD EPYC存量与后续合作、NVIDIA Grace部署合作、Arm AGI CPU共同开发计划，并计划引入AWS Graviton。单个Muse实例观察到EPYC。这些路线都可能承接执行层或相关基础设施，新增市场即使扩大，Intel收入份额也可能下降。[E321_AMDMETA][S07][F981_METARM][F981_AWS][EA125_STARK]"
+          ],
+          "tables": [
+            {
+              "caption": "为什么份额压力更具体",
+              "headers": [
+                "CPU 路线",
+                "截止日前已公开的事实与状态",
+                "对 Intel 的含义"
+              ],
+              "rows": [
+                [
+                  "AMD EPYC",
+                  "2 月 24 日公告称，Meta 已部署数百万颗 EPYC，并将成为 Venice、Verano 的领先客户；7 月 23 日更新称，Meta 正在验证第六代 EPYC 平台和 Helios 工作负载。[S05]、[E321_AAI]",
+                  "AMD 已有实际客户基础，并进入下一代平台验证阶段；但不能把验证当成全部部署完成。"
+                ],
+                [
+                  "NVIDIA Grace／Vera",
+                  "2 月 17 日公告确认双方推进用于 Meta 生产应用的 Grace CPU 部署，包括大规模纯 Grace 系统；Vera 的大规模部署表述为 2027 年的可能安排。[S07]",
+                  "NVIDIA 直接竞争通用 CPU 预算，其影响不限于销售 GPU。"
+                ],
+                [
+                  "AWS Graviton",
+                  "Meta 4 月 24 日宣布协议，将数千万个 Graviton 核心纳入算力组合，明确用于代理 AI 的 CPU 密集型工作；这是协议及部署安排，不等于截止日全部交付。[F981_AWS]",
+                  "Meta 外购云算力也可能绕过 Xeon；“数千万核心”不能误写为数千万颗 CPU。"
+                ],
+                [
+                  "Arm AGI CPU",
+                  "Meta 3 月 24 日宣布作为领先合作伙伴与共同开发者，联合开发多代 CPU，并与自研 MTIA 加速器配合；9 月 8 日 Arm 仍将 Meta 列为围绕该 CPU 开发方案的公司。[F981_METARM]、[F981_ARMSEP]",
+                  "对 Intel 构成长期架构替代压力，但公告没有给出 Muse 专属装机量。"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "增长与份额的关系",
+          "paragraphs": [
+            "Intel服务器CPU收入＝市场收入×Intel收入份额。例如市场由100增至130、份额由60%降至50%，Intel收入仍由60增至65。实际Muse影响需要同口径的供应商订单与收入拆分，目前尚未公开。"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "source": "S01",
+          "fact": "Muse 9月8日发布为持续执行任务的个人智能体，Muse Spark 是其驱动模型。",
+          "locator": "日期与产品定义，L241、254–259",
+          "boundary": "模型推理与产品执行环境不可混为一谈。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_INTC_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_INTC_ext_1",
+          "review_id": "edit_20261009T095113_fd9815e7_INTC_review_1",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S02",
+          "fact": "Muse 使用隔离Linux执行环境运行工具、代码与后台子任务，并通过外部推理代理调用模型。",
+          "locator": "The Lay of the Land；Muse Secure VM，L28、42–50",
+          "boundary": "未给按账户永久物理核配额；工作量不自动等于新增CPU采购。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_INTC_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_INTC_ext_2",
+          "review_id": "edit_20261009T095113_fd9815e7_INTC_review_2",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "F981_INTJP",
+          "fact": "Intel 官方日文产品页说明 Xeon 6+ 采用 Intel 18A，最高288个能效核、12通道DDR5，面向云原生、高并发及智能体工作负载。",
+          "locator": "页面日期L21；产品说明L38、47–48",
+          "boundary": "重定向后的页标May 31,2026，搜索索引为June 1；不把规格或厂商比较当Muse采用实绩。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_INTC_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_INTC_ext_3",
+          "review_id": "edit_20261009T095113_fd9815e7_INTC_review_3",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S13",
+          "fact": "Intel 2026年第二季度服务器销量同比增9%、平均售价增48%；售价增长主要来自高端产品组合，提价贡献较小。",
+          "locator": "Q2 10-Q MD&A第30页，L1479–1480",
+          "boundary": "服务器产品口径，不是整个DCAI；披露百分比已四舍五入且早于Muse发布。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_INTC_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_INTC_ext_4",
+          "review_id": "edit_20261009T095113_fd9815e7_INTC_review_4",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S13",
+          "fact": "Intel 披露第二季度服务器需求超过内部供给，并预计行业供给限制持续至下一年；其它DCAI收入包含ASIC业务。",
+          "locator": "Q2 10-Q MD&A第30、34页，L1480–1481、1618–1619",
+          "boundary": "供给约束限制兑现；不能据整体DCAI收入反推CPU颗数。",
+          "effect": "boundary",
+          "search_run_id": "edit_20261009T095113_fd9815e7_INTC_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_INTC_ext_5",
+          "review_id": "edit_20261009T095113_fd9815e7_INTC_review_5",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E321_AMDMETA",
+          "fact": "AMD与Meta2月24日已确认数百万颗存量EPYC及Venice、Verano后续合作；6GW为GPU协议。",
+          "locator": "EX-99.1，L56–68",
+          "boundary": "确证竞争者客户基础，不能证明已撤换相同数量Xeon。",
+          "effect": "refute",
+          "search_run_id": "edit_20261009T095113_fd9815e7_INTC_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_INTC_ext_6",
+          "review_id": "edit_20261009T095113_fd9815e7_INTC_review_6",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E321_AAI",
+          "fact": "Meta 7月在实验室验证第六代EPYC和Helios工作负载。",
+          "locator": "7月23日发布稿，L55",
+          "boundary": "验证阶段不能写成全量交付。",
+          "effect": "boundary",
+          "search_run_id": "edit_20261009T095113_fd9815e7_INTC_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_INTC_ext_7",
+          "review_id": "edit_20261009T095113_fd9815e7_INTC_review_7",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S07",
+          "fact": "Meta 与 NVIDIA 推进 Grace-only 生产应用部署，Vera可能于2027年规模部署。",
+          "locator": "Expanded NVIDIA CPU Deployment，L60–64",
+          "boundary": "新增CPU预算竞争，不是Intel已损失的Muse份额。",
+          "effect": "refute",
+          "search_run_id": "edit_20261009T095113_fd9815e7_INTC_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_INTC_ext_8",
+          "review_id": "edit_20261009T095113_fd9815e7_INTC_review_8",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "F981_AWS",
+          "fact": "Meta 4月24日协议计划引入数千万Graviton核心，明确面向智能体AI的CPU密集型工作。",
+          "locator": "Takeaways及首批安排，L250–266",
+          "boundary": "外购云算力可分流CPU需求；实际启用数和Muse占比未知。",
+          "effect": "refute",
+          "search_run_id": "edit_20261009T095113_fd9815e7_INTC_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_INTC_ext_9",
+          "review_id": "edit_20261009T095113_fd9815e7_INTC_review_9",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "F981_METARM",
+          "fact": "Meta 3月24日宣布与Arm共同开发多代CPU，首个AGI CPU将与MTIA配合。",
+          "locator": "Takeaways及首款产品，L250–258",
+          "boundary": "合作与未来安排，不是已实现Muse装机。",
+          "effect": "refute",
+          "search_run_id": "edit_20261009T095113_fd9815e7_INTC_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_INTC_ext_10",
+          "review_id": "edit_20261009T095113_fd9815e7_INTC_review_10",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "F981_ARMSEP",
+          "fact": "Arm 9月8日列出Meta正在围绕AGI CPU开发方案。",
+          "locator": "Arm CPUs powering agentic AI at scale，L27",
+          "boundary": "未单列Muse或Meta已验收CPU数量。",
+          "effect": "boundary",
+          "search_run_id": "edit_20261009T095113_fd9815e7_INTC_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_INTC_ext_11",
+          "review_id": "edit_20261009T095113_fd9815e7_INTC_review_11",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "EA125_STARK",
+          "fact": "9月22日原始用户记录展示单个Muse代理9月20日报告2 vCPU、EPYC 9D25及约7.7GB内存，并明确其它账户可能不同。",
+          "locator": "Musey's spec sheet及限制，L23–33",
+          "boundary": "样本偏向AMD，不证明Intel份额为零。",
+          "effect": "boundary",
+          "search_run_id": "edit_20261009T095113_fd9815e7_INTC_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_INTC_ext_12",
+          "review_id": "edit_20261009T095113_fd9815e7_INTC_review_12",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        }
+      ],
+      "passed": false,
+      "gaps": [
+        "未取得Muse的Xeon订单、全机群CPU供应商分配及被替代Xeon数量，不能量化Intel净增收入或份额损失。"
+      ],
+      "next_actions": [
+        "取得Muse供应商分配与Xeon采购/退役记录，分别计算市场增长、产品组合、份额和供给约束的影响。"
+      ],
+      "refutation": "反向搜索核到Q2服务器销量/ASP增长，说明行业增长并非只有竞争者受益；官方Graviton、Grace和EPYC合作又限制Xeon新增份额假设。没有找到可复核Muse Xeon专属订单。",
+      "data_required": [
+        "Xeon产品及Q2服务器销量、ASP与供给约束",
+        "Meta采用EPYC、Grace、Graviton、Arm的状态",
+        "Muse Xeon订单与份额未知、增长和份额关系"
+      ],
+      "acceptance_rule": "核心事实可追溯、口径可比、反证已处理，重大缺口不得改变所声明的本题答案。",
+      "reasons": [
+        "已完整保留可核实业务、机制、基线及条件解释；所列实际归因或日期缺口仍未解决，不以形式校验替代充分性。"
+      ],
+      "mode": "leaf",
+      "tables": [],
+      "answer_review": {
+        "protocol": "direct-answer-v1",
+        "question": "Intel 会受益于增量需求还是承受份额压力？",
+        "direct_answer_excerpt": "Intel既可能分享Muse带来的服务器CPU总需求增长，也面临Meta将新增执行负载分配给AMD、NVIDIA Grace、Arm AGI CPU或AWS Graviton的份额压力。Xeon 6+具备高并发产品基础，Intel服务器业务在Muse发布前已增长；截至10月9日，没有Muse专属Xeon订单或份额数据，较明确的是竞争加剧而非已实现的Intel收入损失。[F981_INTJP][S13][E321_AMDMETA][S07][F981_AWS]",
+        "coverage": [
+          {
+            "requirement": "回答Intel 会受益于增量需求还是承受份额压力？的核心结论",
+            "status": "answered",
+            "answer_excerpt": "Intel既可能分享Muse带来的服务器CPU总需求增长，也面临Meta将新增执行负载分配给AMD、NVIDIA Grace、Arm AGI CPU或AWS Graviton的份额压力。Xeon 6+具备高并发产品基础，Intel服务器业务在Muse发布前已增长；截至10月9日，没有Muse专属Xeon订单或份额数据，较明确的是竞争加剧而非已实现的Intel收入损失。[F981_INTJP][S13][E321_AMDMETA][S07][F981_AWS]"
+          },
+          {
+            "requirement": "需求增长的承接能力",
+            "status": "answered",
+            "answer_excerpt": "Muse的云端工具、脚本和后台任务需要服务器CPU。Intel发布的Xeon 6+最高288个能效核、12通道DDR5，面向高并发及云原生工作负载；第二季度服务器产品销量同比增长9%、均价增长48%，说明发布前已有服务器业务增长，同时公司披露需求超过内部供给。[S02][F981_INTJP][S13]"
+          },
+          {
+            "requirement": "Meta新增份额的竞争",
+            "status": "answered",
+            "answer_excerpt": "Meta已有AMD EPYC存量与后续合作、NVIDIA Grace部署合作、Arm AGI CPU共同开发计划，并计划引入AWS Graviton。单个Muse实例观察到EPYC。这些路线都可能承接执行层或相关基础设施，新增市场即使扩大，Intel收入份额也可能下降。[E321_AMDMETA][S07][F981_METARM][F981_AWS][EA125_STARK]"
+          },
+          {
+            "requirement": "增长与份额的关系",
+            "status": "answered",
+            "answer_excerpt": "Intel服务器CPU收入＝市场收入×Intel收入份额。例如市场由100增至130、份额由60%降至50%，Intel收入仍由60增至65。实际Muse影响需要同口径的供应商订单与收入拆分，目前尚未公开。"
+          },
+          {
+            "requirement": "未取得Muse的Xeon订单、全机群CPU供应商分配及被替代Xeon数量，不能量化Intel净增收入或份额损失。",
+            "status": "unresolved",
+            "gap": "未取得Muse的Xeon订单、全机群CPU供应商分配及被替代Xeon数量，不能量化Intel净增收入或份额损失。"
+          }
+        ],
+        "draft_comparison": {
+          "retained": [
+            "保留9%销量与48%ASP、61.3%复算、产品规格、供给约束及四条竞争路线。",
+            "保留收入增8.3%但份额降10个百分点的假设算例。"
+          ],
+          "corrected": [
+            "将确定会受益改为有机会受益，防止把行业增量当Muse订单。",
+            "英文产品页打不开，改用官方日文页面；明示5月31日页面与6月1日索引日期差异。",
+            "主代理按原题逐项复核，引用实际回答正文或表格单元格；清除转换占位文字。",
+            "公共正文压缩为当前结论、关键事实及必要边界；修订过程保留在研究版本记录。",
+            "将正文收束为直接答案、事实与因果；细节口径留在数据列表和内部审计。"
+          ],
+          "omitted": [
+            "未省略增长和份额压力任一侧；不以单个AMD样本证明Intel份额为零。"
+          ]
+        },
+        "revision_id": "edit_20261009T095113_fd9815e7",
+        "reviewer": "GPT primary agent; final semantic review",
+        "manual_review_id": "root_review_20261013_all_questions_direct_answer"
+      }
+    },
+    {
+      "id": "ARM",
+      "parent_id": "C",
+      "level": 3,
+      "question": "Arm 如何通过 CPU 与授权获得收入？",
+      "short": "Arm 如何通过 CPU 与授权获得收入？",
+      "why_it_matters": "分别核算 IP 和自有 CPU 两种收入路径。",
+      "what": "Arm 如何通过 CPU 与授权获得收入？",
+      "conclusion": "Arm通过两条主要路径获得CPU相关收入：客户取得CPU设计或架构使用权时支付授权费，客户芯片出货后按合同支付版税。2026年发布自有AGI CPU后，Arm还可直接销售成品芯片；Meta是该产品的主要合作与共同开发方。已披露的全公司收入仍以授权及版税为主，Muse专属授权、版税或芯片销售额未单列。[F981_ARM20F][F981_ARMFY][S10]",
+      "analysis": [
+        {
+          "heading": "授权什么",
+          "paragraphs": [
+            "客户可以取得Arm现成CPU设计的技术授权，也可以取得架构授权，自行设计兼容Arm指令集的CPU。Total Access和Flexible Access是取得技术组合的商业安排；CSS N4则提供预集成的计算子系统，降低客户整合工作。[F981_ARM20F][F981_ARMSEP]"
+          ],
+          "tables": [
+            {
+              "caption": "客户向 Arm 买什么？",
+              "headers": [
+                "授权对象或方式",
+                "客户获得什么",
+                "Arm 如何收费"
+              ],
+              "rows": [
+                [
+                  "CPU 核等技术授权（TLA）",
+                  "使用 Arm 已设计好的 CPU 核或其他技术，整合进自己的芯片",
+                  "固定授权费；芯片出货后通常另付版税"
+                ],
+                [
+                  "架构授权（ALA）",
+                  "自行设计符合 Arm 指令集架构的 CPU 核",
+                  "固定架构授权费，并依合同承担版税等义务；自研 CPU 不等于免费使用 Arm 架构"
+                ],
+                [
+                  "Total Access",
+                  "在合同范围内使用一组 CPU、其他 IP、工具和支持服务",
+                  "年度订阅费，包含相应制造权；出货版税仍依合同计算"
+                ],
+                [
+                  "Flexible Access",
+                  "先获得一组 IP 进行试验、选型和设计",
+                  "接入费；在设计交付制造，即“流片”时，为最终使用且需要付费的 IP 支付授权费；出货后付版税"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "版税与收入规模",
+          "paragraphs": [
+            "授权收入按技术交付或持续访问合同确认；版税通常随客户Arm芯片出货，按每颗固定金额或芯片平均售价的一定比例计提。2026财年Arm总收入49.20亿美元，其中版税26.13亿美元、授权及其他23.07亿美元；这是全公司口径。[F981_ARMQ][F981_ARM20F][F981_ARMFY]"
+          ],
+          "tables": [
+            {
+              "caption": "已实现收入有多大？",
+              "headers": [
+                "收入口径",
+                "2026 财年：截至 2026-03-31 的一年",
+                "2027 财年第一季度：截至 2026-06-30 的三个月"
+              ],
+              "rows": [
+                [
+                  "版税收入",
+                  "2,613",
+                  "715"
+                ],
+                [
+                  "授权及其他收入",
+                  "2,307",
+                  "574"
+                ],
+                [
+                  "总收入",
+                  "4,920",
+                  "1,289"
+                ],
+                [
+                  "版税占总收入，自行计算",
+                  "2,613 ÷ 4,920＝53.1%",
+                  "715 ÷ 1,289＝55.5%"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "自有CPU新增销售路径",
+          "paragraphs": [
+            "Arm于3月发布AGI CPU，Meta参与共同开发，7月披露初始产品已交付多家客户，同日季度报告仍预计2026年底前投产。成品芯片收入将随实际交付颗数和价格产生；截至10月9日，Meta验收数量和Muse使用规模没有披露。[S10][S11][F981_ARMQ]"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "source": "F981_ARM20F",
+          "fact": "TLA授权现成CPU或其它技术设计，ALA允许自研兼容Arm指令集的CPU；两者收固定授权费，出货后一般另产生芯片版税。",
+          "locator": "Business Model，L1718–1736",
+          "boundary": "合同条款个别议定；架构授权不是免费使用ISA。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_ARM_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_ARM_ext_1",
+          "review_id": "edit_20261009T095113_fd9815e7_ARM_review_1",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "F981_ARM20F",
+          "fact": "Total Access按年取得技术组合且含制造权；Flexible Access收年度访问费，最终设计流片时再为采用的IP支付相应授权费。",
+          "locator": "Business Model及License revenue，L1721–1727、1747–1754",
+          "boundary": "两者是授权组合/支付方式，不是互斥CPU类型；版税另依合同。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_ARM_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_ARM_ext_2",
+          "review_id": "edit_20261009T095113_fd9815e7_ARM_review_2",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "F981_ARM20F",
+          "fact": "Arm版税通常为每颗芯片固定费用，或客户Arm芯片平均售价的一定比例；授权及其它收入还包括工具、设计、培训和支持。",
+          "locator": "License and Other Revenue；Royalty Revenue，L1741、1756–1758",
+          "boundary": "不能以服务器整机售价、云服务收入或运行小时替代芯片出货计费。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_ARM_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_ARM_ext_3",
+          "review_id": "edit_20261009T095113_fd9815e7_ARM_review_3",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "F981_ARMQ",
+          "fact": "IP收入一般在交付与许可期开始两者较晚时确认，持续技术库访问义务按期确认；版税在客户出货季度计提，收到实际申报后调整。",
+          "locator": "PDF第13–15页（P12–P14），收入确认政策",
+          "boundary": "签约额、现金与收入不同；具体合同仍有不同履约义务。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_ARM_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_ARM_ext_4",
+          "review_id": "edit_20261009T095113_fd9815e7_ARM_review_4",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "F981_ARMFY",
+          "fact": "Arm 2026财年总收入4920百万美元，其中版税2613百万、授权及其它2307百万；分别同比增长23%、21%、25%。",
+          "locator": "年度结果，L187–189",
+          "boundary": "截至3月31日全公司全年，不是CPU或AI独立收入。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_ARM_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_ARM_ext_5",
+          "review_id": "edit_20261009T095113_fd9815e7_ARM_review_5",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "F981_ARMQ",
+          "fact": "Arm 截至2026年6月30日季度收入1289百万美元，版税715百万、授权及其它574百万。",
+          "locator": "PDF第15页（P14）Revenue分类表，L493–500",
+          "boundary": "FY2027Q1全公司收入；不可与全年直接做增速比较。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_ARM_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_ARM_ext_6",
+          "review_id": "edit_20261009T095113_fd9815e7_ARM_review_6",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S10",
+          "fact": "Arm 3月24日发布自有成品AGI CPU，Meta为主要合作方与共同开发者；公告称早期系统已可用、更广供货预计下半年。",
+          "locator": "发布定义及Broad ecosystem support，L11–14、31–34",
+          "boundary": "产品商业化路径已扩展，不等于已经获得重大芯片销售收入。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_ARM_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_ARM_ext_7",
+          "review_id": "edit_20261009T095113_fd9815e7_ARM_review_7",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "F981_ARM20F",
+          "fact": "Arm 年报说明AGI CPU业务对截至2026年3月31日财年收入没有重大影响。",
+          "locator": "Revenue说明，L1863",
+          "boundary": "不能推断全年收入绝对为零或9月之后仍为零。",
+          "effect": "boundary",
+          "search_run_id": "edit_20261009T095113_fd9815e7_ARM_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_ARM_ext_8",
+          "review_id": "edit_20261009T095113_fd9815e7_ARM_review_8",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "F981_ARMQ",
+          "fact": "Arm 7月29日季度报告仍预计AGI CPU于2026年底前投产，并说明成品硅业务可能有不同的毛利、收入确认和销售周期。",
+          "locator": "PDF第31–32页（P30–P31），L1158–1161、1204",
+          "boundary": "最新财务口径的计划，不否认早期系统，也不证明Meta已大规模验收。",
+          "effect": "boundary",
+          "search_run_id": "edit_20261009T095113_fd9815e7_ARM_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_ARM_ext_9",
+          "review_id": "edit_20261009T095113_fd9815e7_ARM_review_9",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "F981_ARMSEP",
+          "fact": "Arm 9月8日公布Neoverse CSS N4作为客户构建自有芯片的集成技术基础，同时列Meta等围绕AGI CPU开发方案。",
+          "locator": "CSS N4及AGI CPU，L16–27",
+          "boundary": "CSS技术授权与出售自有成品芯片是不同变现路径。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_ARM_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_ARM_ext_10",
+          "review_id": "edit_20261009T095113_fd9815e7_ARM_review_10",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "F981_METARM",
+          "fact": "Meta 3月24日确认是AGI CPU主要伙伴与共同开发者，并将与其MTIA配合、共同开发多代CPU。",
+          "locator": "首款产品及多代计划，L250–258",
+          "boundary": "未给Muse订单、采购单价和已确认收入。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_ARM_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_ARM_ext_11",
+          "review_id": "edit_20261009T095113_fd9815e7_ARM_review_11",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "F981_ARM20F",
+          "fact": "Arm 年报提示自有成品芯片可能与传统授权客户形成实际或被感知的竞争冲突，客户也可能继续选择自建而非集成产品。",
+          "locator": "Risk Factors，L445–446",
+          "boundary": "新增收入路径也新增客户竞争和制造交付风险，非必然净收益。",
+          "effect": "refute",
+          "search_run_id": "edit_20261009T095113_fd9815e7_ARM_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_ARM_ext_12",
+          "review_id": "edit_20261009T095113_fd9815e7_ARM_review_12",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S11",
+          "fact": "Arm 2026年7月29日股东信披露，AGI CPU初始产品已经交付给多家客户。",
+          "locator": "股东信 Arm AGI CPU Is Exceeding Initial Expectations，L106–109；发布日期见L99。",
+          "boundary": "初始产品交付、投产计划与确认销售收入是不同口径。两份同日披露没有解释初始交付的全部范围，不能自行将其限定为样品，也不能据此推定规模投产、Meta验收数量或Muse收入。",
+          "effect": "boundary",
+          "search_run_id": "root_review_20261009_remaining_answers_ARM_search",
+          "extraction_id": "root_review_20261009_remaining_answers_ARM_ext_1",
+          "review_id": "root_review_20261009_remaining_answers_ARM_review_1"
+        },
+        {
+          "source": "F981_ARMQ",
+          "fact": "Arm 同日提交的季度报告仍将AGI CPU投产列为预计于2026日历年底前实现。",
+          "locator": "季度报告 Business Model，PDF第31页（零基P30），L1155–1162。",
+          "boundary": "初始产品交付、投产计划与确认销售收入是不同口径。两份同日披露没有解释初始交付的全部范围，不能自行将其限定为样品，也不能据此推定规模投产、Meta验收数量或Muse收入。",
+          "effect": "boundary",
+          "search_run_id": "root_review_20261009_remaining_answers_ARM_search",
+          "extraction_id": "root_review_20261009_remaining_answers_ARM_ext_2",
+          "review_id": "root_review_20261009_remaining_answers_ARM_review_2"
+        }
+      ],
+      "passed": false,
+      "gaps": [
+        "未取得AGI CPU截至截止日实际销售收入、Meta验收数量及合同价格，无法量化自有CPU和Muse增量收入；全公司收入不等于CPU收入。",
+        "Flexible Access每年8.5万美元示例来自无精确发布日期的动态页，截止日适用价格未通过日期证据门禁。"
+      ],
+      "next_actions": [
+        "取得AGI CPU销售及Meta验收的正式分拆，补齐Flexible Access价格带日期版本；授权与芯片销售分别核算。"
+      ],
+      "refutation": "反向检索核到年报成品芯片与授权客户竞争风险，以及Q1仍预计年底前投产；因此纠正把发布或生态合作当芯片收入的解读。动态访问费缺精确发布日期。",
+      "data_required": [
+        "TLA/ALA、Total/Flexible Access收费与收入确认",
+        "FY2026与FY2027Q1版税及授权其他收入",
+        "AGI CPU供货、Meta合作、自有芯片收入与IP模式区别"
+      ],
+      "acceptance_rule": "核心事实可追溯、口径可比、反证已处理，重大缺口不得改变所声明的本题答案。",
+      "reasons": [
+        "已完整保留可核实业务、机制、基线及条件解释；所列实际归因或日期缺口仍未解决，不以形式校验替代充分性。"
+      ],
+      "mode": "leaf",
+      "tables": [],
+      "answer_review": {
+        "protocol": "direct-answer-v1",
+        "question": "Arm 如何通过 CPU 与授权获得收入？",
+        "direct_answer_excerpt": "Arm通过两条主要路径获得CPU相关收入：客户取得CPU设计或架构使用权时支付授权费，客户芯片出货后按合同支付版税。2026年发布自有AGI CPU后，Arm还可直接销售成品芯片；Meta是该产品的主要合作与共同开发方。已披露的全公司收入仍以授权及版税为主，Muse专属授权、版税或芯片销售额未单列。[F981_ARM20F][F981_ARMFY][S10]",
+        "coverage": [
+          {
+            "requirement": "回答Arm 如何通过 CPU 与授权获得收入？的核心结论",
+            "status": "answered",
+            "answer_excerpt": "Arm通过两条主要路径获得CPU相关收入：客户取得CPU设计或架构使用权时支付授权费，客户芯片出货后按合同支付版税。2026年发布自有AGI CPU后，Arm还可直接销售成品芯片；Meta是该产品的主要合作与共同开发方。已披露的全公司收入仍以授权及版税为主，Muse专属授权、版税或芯片销售额未单列。[F981_ARM20F][F981_ARMFY][S10]"
+          },
+          {
+            "requirement": "授权什么",
+            "status": "answered",
+            "answer_excerpt": "客户可以取得Arm现成CPU设计的技术授权，也可以取得架构授权，自行设计兼容Arm指令集的CPU。Total Access和Flexible Access是取得技术组合的商业安排；CSS N4则提供预集成的计算子系统，降低客户整合工作。[F981_ARM20F][F981_ARMSEP]"
+          },
+          {
+            "requirement": "版税与收入规模",
+            "status": "answered",
+            "answer_excerpt": "授权收入按技术交付或持续访问合同确认；版税通常随客户Arm芯片出货，按每颗固定金额或芯片平均售价的一定比例计提。2026财年Arm总收入49.20亿美元，其中版税26.13亿美元、授权及其他23.07亿美元；这是全公司口径。[F981_ARMQ][F981_ARM20F][F981_ARMFY]"
+          },
+          {
+            "requirement": "自有CPU新增销售路径",
+            "status": "answered",
+            "answer_excerpt": "Arm于3月发布AGI CPU，Meta参与共同开发，7月披露初始产品已交付多家客户，同日季度报告仍预计2026年底前投产。成品芯片收入将随实际交付颗数和价格产生；截至10月9日，Meta验收数量和Muse使用规模没有披露。[S10][S11][F981_ARMQ]"
+          },
+          {
+            "requirement": "未取得AGI CPU截至截止日实际销售收入、Meta验收数量及合同价格，无法量化自有CPU和Muse增量收入；全公司收入不等于CPU收入。",
+            "status": "unresolved",
+            "gap": "未取得AGI CPU截至截止日实际销售收入、Meta验收数量及合同价格，无法量化自有CPU和Muse增量收入；全公司收入不等于CPU收入。"
+          },
+          {
+            "requirement": "Flexible Access每年8.5万美元示例来自无精确发布日期的动态页，截止日适用价格未通过日期证据门禁。",
+            "status": "unresolved",
+            "gap": "Flexible Access每年8.5万美元示例来自无精确发布日期的动态页，截止日适用价格未通过日期证据门禁。"
+          }
+        ],
+        "draft_comparison": {
+          "retained": [
+            "保留四类授权方式、费用/版税/收入确认定义、两个财务期间及版税算例。",
+            "保留8.5万美元动态页示例，但明确日期缺口，不进入完成证据。"
+          ],
+          "corrected": [
+            "补充7月报告仍预计年底前投产，区分早期系统、9月生态进展、Meta验收和实际收入。",
+            "补充成品CPU销售与IP模式的计费差异及客户竞争风险，避免重复计数。",
+            "主代理按原题逐项复核，引用实际回答正文或表格单元格；清除转换占位文字。",
+            "主代理补入7月29日股东信的初始产品交付进展，与同日季度报告投产计划并列，避免将收入尚未披露误写为尚未交付。",
+            "公共正文压缩为当前结论、关键事实及必要边界；修订过程保留在研究版本记录。",
+            "将正文收束为直接答案、事实与因果；细节口径留在数据列表和内部审计。"
+          ],
+          "omitted": [
+            "无已核实的重要模式、基线或例子被省略；未公开价格和收入继续列为未知。"
+          ]
+        },
+        "revision_id": "edit_20261009T095113_fd9815e7",
+        "reviewer": "GPT primary agent; final semantic review",
+        "manual_review_id": "root_review_20261013_all_questions_direct_answer"
+      }
+    },
+    {
+      "id": "NVDA",
+      "parent_id": "C",
+      "level": 3,
+      "question": "NVIDIA 能否从 Muse 的 CPU 需求中受益？",
+      "short": "NVIDIA 能否从 Muse 的 CPU 需求中受益？",
+      "why_it_matters": "核验其独立 CPU 业务，而非仅看 GPU。",
+      "what": "NVIDIA 能否从 Muse 的 CPU 需求中受益？",
+      "conclusion": "NVIDIA有机会从Muse的CPU需求中受益：Grace和Vera可承接代码执行、沙箱和编排，Meta已宣布Grace-only生产应用部署合作。Muse实际给NVIDIA带来多少CPU订单尚未披露；目前公开的单账户Muse环境使用AMD EPYC，因而产品适配与Meta合作仍需通过具体工作负载分配转成销售。[S07][F981_VERAMAY][EA125_STARK]",
+      "analysis": [
+        {
+          "heading": "为什么有CPU机会",
+          "paragraphs": [
+            "Muse的云端执行环境运行工具、代码、子代理和定时任务。NVIDIA的Vera可作为独立CPU服务器或推理平台主机，其定位包含Python运行、沙箱代码和编排，能够竞争这类执行工作；模型推理使用GPU，是另一条收入路径。[S02][F981_VERAMAY]"
+          ],
+          "tables": [
+            {
+              "caption": "Muse 为什么会给 NVIDIA 带来 CPU 机会？",
+              "headers": [
+                "计算环节",
+                "CPU 需求与 NVIDIA 的关系"
+              ],
+              "rows": [
+                [
+                  "用户虚拟机、工具执行、代码编译、任务调度等",
+                  "能形成独立 CPU 服务器需求。NVIDIA 可以用 Grace、Vera 竞争这些工作负载，无须每个用户沙箱都配一块 GPU。"
+                ],
+                [
+                  "模型推理及其配套服务器",
+                  "如果采用 NVIDIA 的 CPU–GPU 平台，可能同时带来主机 CPU 和 GPU 销售；但这是推理基础设施采购，不能与用户沙箱的 CPU 数量混算。"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "客户关系与业务基线",
+          "paragraphs": [
+            "NVIDIA与Meta已宣布Grace-only生产应用部署合作；Vera的大规模Meta部署是2027年的潜在安排。NVIDIA披露Grace累计出货接近250万颗、过去12个月收入超过50亿美元，均为全客户或全业务口径。[S07][F981_VERAMAY][F981_NVQ]"
+          ],
+          "tables": [
+            {
+              "caption": "NVIDIA 的受益基础已经到哪一步？",
+              "headers": [
+                "截止日前的事实",
+                "可以得出的结论",
+                "不能据此推出的结论"
+              ],
+              "rows": [
+                [
+                  "2 月 17 日，NVIDIA 公布与 Meta 的多年合作：双方正在为 Meta 数据中心生产应用部署 Arm 架构 Grace CPU，并称之为首个大规模 Grace-only 部署。",
+                  "NVIDIA 已进入 Meta 的独立 CPU 部署合作，具有实际客户基础；公告未给全部部署完成量。",
+                  "公告没有披露 Muse 专属用途、CPU 数量、合同金额或部署完成比例。"
+                ],
+                [
+                  "同一公告称，双方合作部署 Vera，有可能在 2027 年大规模部署。",
+                  "Vera 有机会承接 Meta 后续 CPU 扩容。",
+                  "这是未来部署表述，不能当成截至截止日已经完成的 Muse 装机。"
+                ],
+                [
+                  "5 月 31 日，NVIDIA 宣布 Vera 已全面投产，系统厂商和云伙伴的系统计划从当年秋季开始供应。",
+                  "Vera 已超出概念和路线图阶段。",
+                  "芯片投产不等于 Meta 或 Muse 已完成规模部署。"
+                ],
+                [
+                  "8 月 26 日，NVIDIA 财报电话会称，Grace 过去 12 个月收入超过 50 亿美元，Vera 已向领先伙伴开始出货。",
+                  "NVIDIA 的服务器 CPU 业务已有收入基础。",
+                  "这 50 亿美元没有被披露为独立 CPU 服务器收入，更没有被披露为 Muse 收入。"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Muse订单的关键环节",
+          "paragraphs": [
+            "9月20日的单账户Muse记录显示EPYC 9D25及x86_64环境。NVIDIA要承接更多Muse执行负载，需要取得实际部署份额，并完成相应软件镜像与工具适配，在单位任务成本、内存和功耗上满足Meta要求。客户分配、净新增CPU颗数及成交价仍未披露。[EA125_STARK][S07]"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "source": "S01",
+          "fact": "Meta 9月8日发布的Muse个人智能体由Muse Spark驱动，可在用户关闭应用后继续任务。",
+          "locator": "标题及How It Works，L241、254–259",
+          "boundary": "产品发布与GPU模型需求不同。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_NVDA_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_NVDA_ext_1",
+          "review_id": "edit_20261009T095113_fd9815e7_NVDA_review_1",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S02",
+          "fact": "Muse执行环境有CPU、内存和存储，可编译代码、运行工具、子智能体和定时任务；模型推理经代理访问外部基础设施。",
+          "locator": "The Lay of the Land；Muse Secure VM，L28、42–50",
+          "boundary": "说明CPU机会，未公开Muse CPU厂商配置。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_NVDA_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_NVDA_ext_2",
+          "review_id": "edit_20261009T095113_fd9815e7_NVDA_review_2",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S07",
+          "fact": "NVIDIA 2月17日与Meta宣布Grace-only生产应用大规模部署合作；Vera的大规模部署是2027年的潜在安排。",
+          "locator": "Expanded NVIDIA CPU Deployment，L60–64",
+          "boundary": "已进入CPU合作体系，不是Muse专项采购或全量部署完成证明。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_NVDA_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_NVDA_ext_3",
+          "review_id": "edit_20261009T095113_fd9815e7_NVDA_review_3",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "F981_VERAMAY",
+          "fact": "NVIDIA 5月31日称Vera已全面投产，可用于独立CPU服务器或Vera Rubin主机，面向Python运行、沙箱代码与编排；合作伙伴系统预计秋季供应。",
+          "locator": "News Summary；CPU for Agents；Availability，L108、113、128–140",
+          "boundary": "产品适配方向与投产不等于Muse验收；厂商任务性能不是Muse实测。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_NVDA_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_NVDA_ext_4",
+          "review_id": "edit_20261009T095113_fd9815e7_NVDA_review_4",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "F981_VERAMAY",
+          "fact": "NVIDIA 5月31日披露Grace累计出货接近250万颗。",
+          "locator": "正文，L114",
+          "boundary": "全客户、累计CPU出货，不是Meta订单或Muse数量。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_NVDA_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_NVDA_ext_5",
+          "review_id": "edit_20261009T095113_fd9815e7_NVDA_review_5",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "F981_NVQ",
+          "fact": "NVIDIA 8月26日电话会称Grace过去12个月收入超过50亿美元，Vera已向领先伙伴开始出货。",
+          "locator": "PDF第4页（P3），L126–132",
+          "boundary": "Grace全业务口径，未拆独立CPU服务器或Muse；点名伙伴为OCI、SpaceXAI及当季AWS。",
+          "effect": "support",
+          "search_run_id": "edit_20261009T095113_fd9815e7_NVDA_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_NVDA_ext_6",
+          "review_id": "edit_20261009T095113_fd9815e7_NVDA_review_6",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "EA125_STARK",
+          "fact": "9月22日原始用户记录展示9月20日单个Muse环境为EPYC 9D25、2 vCPU、7.7GB内存、x86_64且未发现本地GPU；作者明确这是单账户自身测量。",
+          "locator": "Musey's spec sheet与限制，L23–33",
+          "boundary": "反对默认Muse全用NVIDIA；不证明NVIDIA全机群份额为零。",
+          "effect": "refute",
+          "search_run_id": "edit_20261009T095113_fd9815e7_NVDA_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_NVDA_ext_7",
+          "review_id": "edit_20261009T095113_fd9815e7_NVDA_review_7",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S08",
+          "fact": "NVIDIA 3月16日称Vera机架整合256颗CPU、支持超过22500个并发CPU环境。",
+          "locator": "Configurable for Every Data Center，L62",
+          "boundary": "厂商环境定义不等于Muse用户VM；不能据此计算每架Muse用户数。",
+          "effect": "boundary",
+          "search_run_id": "edit_20261009T095113_fd9815e7_NVDA_01",
+          "extraction_id": "edit_20261009T095113_fd9815e7_NVDA_ext_8",
+          "review_id": "edit_20261009T095113_fd9815e7_NVDA_review_8",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        }
+      ],
+      "passed": false,
+      "gaps": [
+        "未取得Muse在Grace/Vera上的工作负载分配、净新增采购、成交价及同任务成本测试，不能量化NVIDIA的Muse CPU收益或判定已实际受益。"
+      ],
+      "next_actions": [
+        "取得Muse Grace/Vera部署及同任务测试，核对新采购、实际交付和CPU成交价格；保留Grace整体收入与Muse归因区别。"
+      ],
+      "refutation": "反向检索及原始用户观察指向AMD EPYC单账户，限制Muse默认用NVIDIA假设；官方Grace收入和Vera部署均不能拆出Muse份额。未找到Muse跨CPU同任务对照。",
+      "data_required": [
+        "Meta Grace-only及Vera合作实际/计划边界",
+        "Grace过去12个月收入、Vera投产及机架环境口径",
+        "Muse实例CPU与NVIDIA实际承接订单、竞争适配条件"
+      ],
+      "acceptance_rule": "核心事实可追溯、口径可比、反证已处理，重大缺口不得改变所声明的本题答案。",
+      "reasons": [
+        "已完整保留可核实业务、机制、基线及条件解释；所列实际归因或日期缺口仍未解决，不以形式校验替代充分性。"
+      ],
+      "mode": "leaf",
+      "tables": [],
+      "answer_review": {
+        "protocol": "direct-answer-v1",
+        "question": "NVIDIA 能否从 Muse 的 CPU 需求中受益？",
+        "direct_answer_excerpt": "NVIDIA有机会从Muse的CPU需求中受益：Grace和Vera可承接代码执行、沙箱和编排，Meta已宣布Grace-only生产应用部署合作。Muse实际给NVIDIA带来多少CPU订单尚未披露；目前公开的单账户Muse环境使用AMD EPYC，因而产品适配与Meta合作仍需通过具体工作负载分配转成销售。[S07][F981_VERAMAY][EA125_STARK]",
+        "coverage": [
+          {
+            "requirement": "回答NVIDIA 能否从 Muse 的 CPU 需求中受益？的核心结论",
+            "status": "answered",
+            "answer_excerpt": "NVIDIA有机会从Muse的CPU需求中受益：Grace和Vera可承接代码执行、沙箱和编排，Meta已宣布Grace-only生产应用部署合作。Muse实际给NVIDIA带来多少CPU订单尚未披露；目前公开的单账户Muse环境使用AMD EPYC，因而产品适配与Meta合作仍需通过具体工作负载分配转成销售。[S07][F981_VERAMAY][EA125_STARK]"
+          },
+          {
+            "requirement": "为什么有CPU机会",
+            "status": "answered",
+            "answer_excerpt": "Muse的云端执行环境运行工具、代码、子代理和定时任务。NVIDIA的Vera可作为独立CPU服务器或推理平台主机，其定位包含Python运行、沙箱代码和编排，能够竞争这类执行工作；模型推理使用GPU，是另一条收入路径。[S02][F981_VERAMAY]"
+          },
+          {
+            "requirement": "客户关系与业务基线",
+            "status": "answered",
+            "answer_excerpt": "NVIDIA与Meta已宣布Grace-only生产应用部署合作；Vera的大规模Meta部署是2027年的潜在安排。NVIDIA披露Grace累计出货接近250万颗、过去12个月收入超过50亿美元，均为全客户或全业务口径。[S07][F981_VERAMAY][F981_NVQ]"
+          },
+          {
+            "requirement": "Muse订单的关键环节",
+            "status": "answered",
+            "answer_excerpt": "9月20日的单账户Muse记录显示EPYC 9D25及x86_64环境。NVIDIA要承接更多Muse执行负载，需要取得实际部署份额，并完成相应软件镜像与工具适配，在单位任务成本、内存和功耗上满足Meta要求。客户分配、净新增CPU颗数及成交价仍未披露。[EA125_STARK][S07]"
+          },
+          {
+            "requirement": "未取得Muse在Grace/Vera上的工作负载分配、净新增采购、成交价及同任务成本测试，不能量化NVIDIA的Muse CPU收益或判定已实际受益。",
+            "status": "unresolved",
+            "gap": "未取得Muse在Grace/Vera上的工作负载分配、净新增采购、成交价及同任务成本测试，不能量化NVIDIA的Muse CPU收益或判定已实际受益。"
+          }
+        ],
+        "draft_comparison": {
+          "retained": [
+            "保留独立Grace/Vera与推理GPU两条路径、2027潜在部署、50亿美元TTM、EPYC样本和适配条件。",
+            "保留200万配置vCPU算例与256CPU/22500环境的边界。"
+          ],
+          "corrected": [
+            "补入5月公告的Grace累计近250万颗，作为非Muse全客户基线。",
+            "明确Grace合作不代表全量部署已完成。",
+            "主代理按原题逐项复核，引用实际回答正文或表格单元格；清除转换占位文字。",
+            "公共正文压缩为当前结论、关键事实及必要边界；修订过程保留在研究版本记录。",
+            "将正文收束为直接答案、事实与因果；细节口径留在数据列表和内部审计。"
+          ],
+          "omitted": [
+            "未删除已核实内容；未经Meta公开的Muse份额和收入不填零。"
+          ]
+        },
+        "revision_id": "edit_20261009T095113_fd9815e7",
+        "reviewer": "GPT primary agent; final semantic review",
+        "manual_review_id": "root_review_20261013_all_questions_direct_answer"
+      }
+    },
+    {
+      "id": "O.u1",
+      "parent_id": "O",
+      "level": 3,
+      "question": "muse的日活发展曲线",
+      "short": "muse的日活发展曲线",
+      "why_it_matters": "用户指定的补充研究角度。",
+      "what": "muse的日活发展曲线",
+      "conclusion": "Muse发布首月的日活报道从数十万进入百万级：9月21日美国移动端估算64.2万；9月30日报道每日发提示用户超过100万；10月5日全球iOS与Android日活估算218.2万；10月6日报道花旗估算180万。它们的地区、行为与观测日不同，展示早期起量，但尚不足以还原9月8日至10月9日的同口径逐日曲线或判定平台期。[E472_TC][S20][E472_SW][E472_CITI]",
+      "analysis": [
+        {
+          "heading": "首月观察点",
+          "paragraphs": [
+            "下表按日期列出可核的报道与估算。9月下旬先见美国移动端数十万，随后每日发提示用户超过100万，10月初全球移动端估算超过200万；不同指标各自说明所覆盖人群的活跃规模。[E472_TC][S20][E472_SW]"
+          ],
+          "tables": [
+            {
+              "caption": "Muse日活发展节点；单位：万人；各行口径独立",
+              "headers": [
+                "数据观察期",
+                "日活（万人）",
+                "范围与定义",
+                "发表时间与证据限制"
+              ],
+              "rows": [
+                [
+                  "上线约一周（约9月中旬）",
+                  ">25",
+                  "内部数据报道；完整定义未获原始表确认",
+                  "9月22日The Information公开索引；原页有订阅限制，非Meta正式公布。[E321_EARLY]"
+                ],
+                [
+                  "上线前12天观察窗口",
+                  "64.2",
+                  "Apptopia估算，美国移动端",
+                  "9月21日TechCrunch引述；不是美国和加拿大下载量。[E472_TC]"
+                ],
+                [
+                  "9月24—25日前后",
+                  "约70",
+                  "Similarweb转述；未完整说明地区和平台",
+                  "9月25日Windows Report报道并嵌入9月24日帖，精确观测日不详。[E472_WR]"
+                ],
+                [
+                  "9月30日报道时",
+                  ">100",
+                  "每日向Muse至少发送一次提示词",
+                  "The Information内部数据报道的公开索引；不是所有打开App者。[S20]"
+                ],
+                [
+                  "10月5日",
+                  "218.2",
+                  "Similarweb全球iOS及Android移动端估算",
+                  "10月8日13:34 UTC同期报道；原帖打开失败、逐日原表未取得。[E472_SW]"
+                ],
+                [
+                  "10月6日报道时；确切观察日未列",
+                  "180",
+                  "花旗估算；地区、设备与去重方法未列",
+                  "路透社10月6日稿，AOL原文转载可读。[E472_CITI]"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "增长形态",
+          "paragraphs": [
+            "Similarweb移动日活统计打开应用的人，发提示人数统计另一类行为；后台任务还可能在用户当天未打开App时运行。花旗180万与Similarweb 218.2万没有统一的观测范围，不能据两值相减判断回落。[E472_DAUDEF][S01][E472_CITI][E472_SW]",
+            "关于9月末至10月初平台期的转述缺底层逐日表。要判断增速减缓、横盘或下降，需要相同地区、平台和活跃定义的连续数据；截至10月9日，该序列及留存数据尚未取得。[E472_PLATEAU]"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "source": "S01",
+          "fact": "本题日活对象为Meta于9月8日发布的个人智能体Muse，而非Muse Spark模型或整个Meta AI产品。",
+          "locator": "标题日期；首段与How It Works，L241、254–259",
+          "boundary": "定义研究对象，不把Meta全家族用户作为Muse用户。",
+          "effect": "support",
+          "extraction_id": "edit_20261010T032723_472c2f8f_O.u1_ext_1",
+          "review_id": "edit_20261010T032723_472c2f8f_O.u1_review_1",
+          "search_run_id": "edit_20261010T032723_472c2f8f_O.u1_01",
+          "revision_id": "edit_20261010T032723_472c2f8f",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E321_EARLY",
+          "fact": "9月22日The Information报道：Muse上线约一周的日活超过25万。",
+          "locator": "原站公开检索摘要：Sep 22, 2026及daily active users；原页L164标题",
+          "boundary": "本轮打开原页仅见订阅入口；数字来自公开索引，原始遥测未获得；不指定精确观察日。",
+          "effect": "boundary",
+          "extraction_id": "edit_20261010T032723_472c2f8f_O.u1_ext_2",
+          "review_id": "edit_20261010T032723_472c2f8f_O.u1_review_2",
+          "search_run_id": "edit_20261010T032723_472c2f8f_O.u1_01",
+          "revision_id": "edit_20261010T032723_472c2f8f",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E472_TC",
+          "fact": "9月21日TechCrunch引述Apptopia：Muse美国移动端日活64.2万。",
+          "locator": "正文L119–121；标题日期L108",
+          "boundary": "上线前12天窗口；第三方估算，非Meta遥测，不是美加下载量。",
+          "effect": "support",
+          "extraction_id": "edit_20261010T032723_472c2f8f_O.u1_ext_3",
+          "review_id": "edit_20261010T032723_472c2f8f_O.u1_review_3",
+          "search_run_id": "edit_20261010T032723_472c2f8f_O.u1_01",
+          "revision_id": "edit_20261010T032723_472c2f8f",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E472_WR",
+          "fact": "9月25日Windows Report引述Similarweb称Muse约70万日活、约为11天前十倍。",
+          "locator": "正文L36、42–43；内嵌9月24日帖L50–52",
+          "boundary": "未给出完整地区、平台及精确观测日；不用于跨来源增速计算。",
+          "effect": "boundary",
+          "extraction_id": "edit_20261010T032723_472c2f8f_O.u1_ext_4",
+          "review_id": "edit_20261010T032723_472c2f8f_O.u1_review_4",
+          "search_run_id": "edit_20261010T032723_472c2f8f_O.u1_01",
+          "revision_id": "edit_20261010T032723_472c2f8f",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "S20",
+          "fact": "9月30日The Information报道：每日向Muse发送至少一次提示词的用户超过100万。",
+          "locator": "原站公开检索摘要：Sep 30, 2026及daily prompt users；原页L164标题",
+          "boundary": "打开原页有订阅限制；不是只打开App人数，也不是全部后台任务用户。",
+          "effect": "boundary",
+          "extraction_id": "edit_20261010T032723_472c2f8f_O.u1_ext_5",
+          "review_id": "edit_20261010T032723_472c2f8f_O.u1_review_5",
+          "search_run_id": "edit_20261010T032723_472c2f8f_O.u1_01",
+          "revision_id": "edit_20261010T032723_472c2f8f",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E472_SW",
+          "fact": "10月8日13:34 UTC的报道引述Similarweb：10月5日Muse全球iOS与Android日活估算为218.2万。",
+          "locator": "L14发布日期；L15–19数值、平台与统计范围",
+          "boundary": "同期二手报道；Similarweb原帖打开失败，未取得原始逐日表；全球测量不表示全球开放。",
+          "effect": "support",
+          "extraction_id": "edit_20261010T032723_472c2f8f_O.u1_ext_6",
+          "review_id": "edit_20261010T032723_472c2f8f_O.u1_review_6",
+          "search_run_id": "edit_20261010T032723_472c2f8f_O.u1_01",
+          "revision_id": "edit_20261010T032723_472c2f8f",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E472_CITI",
+          "fact": "10月6日路透社报道（AOL转载）引述花旗称Muse日活达180万。",
+          "locator": "标题日期L19；L29",
+          "boundary": "未披露精确观察日、地域、平台及去重方法；不能视为10月6日的同源数据点。",
+          "effect": "boundary",
+          "extraction_id": "edit_20261010T032723_472c2f8f_O.u1_ext_7",
+          "review_id": "edit_20261010T032723_472c2f8f_O.u1_review_7",
+          "search_run_id": "edit_20261010T032723_472c2f8f_O.u1_01",
+          "revision_id": "edit_20261010T032723_472c2f8f",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        },
+        {
+          "source": "E472_PLATEAU",
+          "fact": "10月6日ExplainX称9月下旬至10月1日日活在250万至300万之间，并承认报道没有注明底层跟踪数据商。",
+          "locator": "L80发布日期；What is reported L115–119",
+          "boundary": "仅证实有平台期说法；原券商报告与逐日数据未取得，不能确认实际横盘。",
+          "effect": "refute",
+          "extraction_id": "edit_20261010T032723_472c2f8f_O.u1_ext_8",
+          "review_id": "edit_20261010T032723_472c2f8f_O.u1_review_8",
+          "search_run_id": "edit_20261010T032723_472c2f8f_O.u1_01",
+          "revision_id": "edit_20261010T032723_472c2f8f",
+          "effective_period": "截至2026-10-09",
+          "target_period": ""
+        }
+      ],
+      "passed": false,
+      "gaps": [
+        "未取得从9月8日发布至10月9日、地域/平台/活跃定义一致的完整逐日原始数据，不能给出精确日活曲线或10月9日当天数值。",
+        "平台期报道缺原券商报告、底层数据商与去重方法；亦缺同口径队列留存，不能确认平台期及增长持续性。"
+      ],
+      "next_actions": [
+        "下一轮优先取得Similarweb或Apptopia带定义的逐日历史导出及原券商图表，再补7日/28日队列留存；保留本轮截面，不自动扩展问题。"
+      ],
+      "refutation": "已查到250万—300万平台期说法，但原始序列与供应商不清；Hunterbrook减速报道在北京时间10月10日才公开，排除。180万与218.2万属于不同来源，不能算下降。",
+      "data_required": [
+        "从发布至2026-10-09的日活观察日期、数值、地域、平台、活跃定义及原始出处",
+        "同一机构的逐日序列、增长或平台期反证；报道日期与时区边界"
+      ],
+      "acceptance_rule": "核心事实可追溯、口径可比、反证已处理，重大缺口不得改变所声明的本题答案。",
+      "reasons": [
+        "已回答可确认的数量节点、统计差异、趋势和反向说法；原题要求的发展曲线仍缺完整同源逐日数据，不以节点表替代完整曲线后宣布充分。"
+      ],
+      "mode": "leaf",
+      "tables": [],
+      "revision_id": "edit_20261010T032723_472c2f8f",
+      "answer_review": {
+        "question": "muse的日活发展曲线",
+        "direct_answer_excerpt": "Muse发布首月的日活报道从数十万进入百万级：9月21日美国移动端估算64.2万；9月30日报道每日发提示用户超过100万；10月5日全球iOS与Android日活估算218.2万；10月6日报道花旗估算180万。它们的地区、行为与观测日不同，展示早期起量，但尚不足以还原9月8日至10月9日的同口径逐日曲线或判定平台期。[E472_TC][S20][E472_SW][E472_CITI]",
+        "coverage": [
+          {
+            "requirement": "回答muse的日活发展曲线的核心结论",
+            "status": "answered",
+            "answer_excerpt": "Muse发布首月的日活报道从数十万进入百万级：9月21日美国移动端估算64.2万；9月30日报道每日发提示用户超过100万；10月5日全球iOS与Android日活估算218.2万；10月6日报道花旗估算180万。它们的地区、行为与观测日不同，展示早期起量，但尚不足以还原9月8日至10月9日的同口径逐日曲线或判定平台期。[E472_TC][S20][E472_SW][E472_CITI]"
+          },
+          {
+            "requirement": "首月观察点",
+            "status": "answered",
+            "answer_excerpt": "下表按日期列出可核的报道与估算。9月下旬先见美国移动端数十万，随后每日发提示用户超过100万，10月初全球移动端估算超过200万；不同指标各自说明所覆盖人群的活跃规模。[E472_TC][S20][E472_SW]"
+          },
+          {
+            "requirement": "增长形态",
+            "status": "answered",
+            "answer_excerpt": "Similarweb移动日活统计打开应用的人，发提示人数统计另一类行为；后台任务还可能在用户当天未打开App时运行。花旗180万与Similarweb 218.2万没有统一的观测范围，不能据两值相减判断回落。[E472_DAUDEF][S01][E472_CITI][E472_SW]"
+          },
+          {
+            "requirement": "未取得从9月8日发布至10月9日、地域/平台/活跃定义一致的完整逐日原始数据，不能给出精确日活曲线或10月9日当天数值。",
+            "status": "unresolved",
+            "gap": "未取得从9月8日发布至10月9日、地域/平台/活跃定义一致的完整逐日原始数据，不能给出精确日活曲线或10月9日当天数值。"
+          },
+          {
+            "requirement": "平台期报道缺原券商报告、底层数据商与去重方法；亦缺同口径队列留存，不能确认平台期及增长持续性。",
+            "status": "unresolved",
+            "gap": "平台期报道缺原券商报告、底层数据商与去重方法；亦缺同口径队列留存，不能确认平台期及增长持续性。"
+          }
+        ],
+        "draft_comparison": {
+          "retained": [
+            "保留六个日活节点、内部提示口径与第三方App口径之别、百万级起量、跨机构不可拼接以及留存未知。",
+            "保留ExplainX平台期报道及其原始数据商不明的限制。"
+          ],
+          "corrected": [
+            "180万—220万改为不同机构的观察值而非真实日活范围；首周仅约9月中旬，不伪定9月15日精确值。",
+            "采用北京时间10月9日结束这一保守截面，明确公开时间和观察时间不同。",
+            "公共正文压缩为当前结论、关键事实及必要边界；修订过程保留在研究版本记录。",
+            "将正文收束为直接答案、事实与因果；细节口径留在数据列表和内部审计。"
+          ],
+          "omitted": [
+            "Hunterbrook/TickerTrends的273.1万及19.8万/8.7万/7.4万日增序列不进入截面正文证据：首发时间已是北京时间10月10日，原文路径本轮仍打不开；本轮保存排除记录，未用旧草稿替代核读。",
+            "Similarweb原帖仍未取得；218.2万仅按可读同期报道保留为二手估算，不升级原始数据。"
+          ]
+        },
+        "reviewer": "GPT primary agent",
+        "revision_id": "edit_20261010T032723_472c2f8f",
+        "manual_review_id": "root_review_20261013_all_questions_direct_answer"
+      }
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "S01",
+      "title": "Introducing Muse: Personal AI Agent",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "published_at": "2026-09-08",
+      "publisher": "Meta",
+      "material_class": "official_company",
+      "effective_period": "",
+      "note": "网页更新至 2026-09-30；不把更新内容追溯为发布日已知事实。",
+      "publication_date_status": "verified",
+      "publication_date_source": "原网页标题/日期或原始文件；无日期文档不编造发布日期",
+      "retrieved_at": "2026-10-09",
+      "ingestion_channel": "question_search"
+    },
+    {
+      "source_id": "S02",
+      "title": "How We Built Safety Into Muse",
+      "url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse",
+      "published_at": "2026-09-08",
+      "publisher": "Meta Research",
+      "material_class": "official_company",
+      "effective_period": "",
+      "note": "官方发布架构；未披露 CPU 供应商份额、物理核绑定和休眠策略。",
+      "publication_date_status": "verified",
+      "publication_date_source": "原网页标题/日期或原始文件；无日期文档不编造发布日期",
+      "retrieved_at": "2026-10-09",
+      "ingestion_channel": "question_search"
+    },
+    {
+      "source_id": "S03",
+      "title": "The Future Is for Everyone: Muse for Small Business",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-small-business/",
+      "published_at": "2026-09-29",
+      "publisher": "Meta",
+      "material_class": "official_company",
+      "effective_period": "",
+      "note": "网页更新至 2026-10-08；美国、加拿大与商家工具可用范围以该更新网页为准。",
+      "publication_date_status": "verified",
+      "publication_date_source": "原网页标题/日期或原始文件；无日期文档不编造发布日期",
+      "retrieved_at": "2026-10-09",
+      "ingestion_channel": "question_search"
+    },
+    {
+      "source_id": "S04",
+      "title": "Meta Q2 2026 Results",
+      "url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx",
+      "published_at": "2026-07-29",
+      "publisher": "Meta IR",
+      "material_class": "official_filing",
+      "effective_period": "2026Q2；2026 全年指引",
+      "note": "",
+      "publication_date_status": "verified",
+      "publication_date_source": "原网页标题/日期或原始文件；无日期文档不编造发布日期",
+      "retrieved_at": "2026-10-09",
+      "ingestion_channel": "question_search"
+    },
+    {
+      "source_id": "S05",
+      "title": "AMD and Meta Expanded Strategic Partnership",
+      "url": "https://newsroom.amd.com/news/amd-and-meta-announce-expanded-strategic-partnersh/",
+      "published_at": "2026-02-24",
+      "publisher": "AMD",
+      "material_class": "official_company",
+      "effective_period": "",
+      "note": "6GW 是 GPU 合作规模，不是 CPU 数量或 Muse 订单。",
+      "publication_date_status": "verified",
+      "publication_date_source": "原网页标题/日期或原始文件；无日期文档不编造发布日期",
+      "retrieved_at": "2026-10-09",
+      "ingestion_channel": "question_search"
+    },
+    {
+      "source_id": "S06",
+      "title": "AMD Q2 2026 Financial Results",
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results",
+      "published_at": "2026-08-04",
+      "publisher": "AMD IR",
+      "material_class": "official_filing",
+      "effective_period": "2026Q2",
+      "note": "",
+      "publication_date_status": "verified",
+      "publication_date_source": "原网页标题/日期或原始文件；无日期文档不编造发布日期",
+      "retrieved_at": "2026-10-09",
+      "ingestion_channel": "question_search"
+    },
+    {
+      "source_id": "S07",
+      "title": "Meta Builds AI Infrastructure With NVIDIA",
+      "url": "https://nvidianews.nvidia.com/news/meta-builds-ai-infrastructure-with-nvidia",
+      "published_at": "2026-02-17",
+      "publisher": "NVIDIA",
+      "material_class": "official_company",
+      "effective_period": "",
+      "note": "既有 Grace 独立部署；2027 年大规模 Vera 是可能计划。",
+      "publication_date_status": "verified",
+      "publication_date_source": "原网页标题/日期或原始文件；无日期文档不编造发布日期",
+      "retrieved_at": "2026-10-09",
+      "ingestion_channel": "question_search"
+    },
+    {
+      "source_id": "S08",
+      "title": "NVIDIA Launches Vera CPU, Purpose-Built for Agentic AI",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-launches-vera-cpu-purpose-built-for-agentic-ai",
+      "published_at": "2026-03-16",
+      "publisher": "NVIDIA",
+      "material_class": "official_company",
+      "effective_period": "",
+      "note": "规格和性能描述为厂商声明，不是 Muse 同条件比较。",
+      "publication_date_status": "verified",
+      "publication_date_source": "原网页标题/日期或原始文件；无日期文档不编造发布日期",
+      "retrieved_at": "2026-10-09",
+      "ingestion_channel": "question_search"
+    },
+    {
+      "source_id": "S09",
+      "title": "NVIDIA Q2 FY2027 Financial Results",
+      "url": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/",
+      "published_at": "2026-08-26",
+      "publisher": "NVIDIA IR",
+      "material_class": "official_filing",
+      "effective_period": "截至 2026-07-26 的财季",
+      "note": "",
+      "publication_date_status": "verified",
+      "publication_date_source": "原网页标题/日期或原始文件；无日期文档不编造发布日期",
+      "retrieved_at": "2026-10-09",
+      "ingestion_channel": "question_search"
+    },
+    {
+      "source_id": "S10",
+      "title": "Arm expands compute platform to silicon products",
+      "url": "https://newsroom.arm.com/news/arm-agi-cpu-launch",
+      "published_at": "2026-03-24",
+      "publisher": "Arm",
+      "material_class": "official_company",
+      "effective_period": "",
+      "note": "Meta 为主合作方和共同开发方；不等于 Muse 指定供货。",
+      "publication_date_status": "verified",
+      "publication_date_source": "原网页标题/日期或原始文件；无日期文档不编造发布日期",
+      "retrieved_at": "2026-10-09",
+      "ingestion_channel": "question_search"
+    },
+    {
+      "source_id": "S11",
+      "title": "Arm Q1 FYE2027 Shareholder Letter / Form 6-K",
+      "url": "https://investors.arm.com/node/8356/html",
+      "published_at": "2026-07-29",
+      "publisher": "Arm IR",
+      "material_class": "official_filing",
+      "effective_period": "截至 2026-06-30 的财季",
+      "note": "",
+      "publication_date_status": "verified",
+      "publication_date_source": "原网页标题/日期或原始文件；无日期文档不编造发布日期",
+      "retrieved_at": "2026-10-09",
+      "ingestion_channel": "question_search"
+    },
+    {
+      "source_id": "S12",
+      "title": "Intel Q2 2026 Financial Results",
+      "url": "https://www.intc.com/news-events/press-releases/detail/1776/intel-reports-second-quarter-2026-financial-results",
+      "published_at": "2026-07-23",
+      "publisher": "Intel IR",
+      "material_class": "official_filing",
+      "effective_period": "截至 2026-06-27 的财季",
+      "note": "",
+      "publication_date_status": "verified",
+      "publication_date_source": "原网页标题/日期或原始文件；无日期文档不编造发布日期",
+      "retrieved_at": "2026-10-09",
+      "ingestion_channel": "question_search"
+    },
+    {
+      "source_id": "S13",
+      "title": "Intel Q2 2026 Form 10-Q",
+      "url": "https://www.intc.com/filings-reports/all-sec-filings/content/0000050863-26-000157/intc-20260627.htm",
+      "published_at": "2026-07-24",
+      "publisher": "Intel IR",
+      "material_class": "official_filing",
+      "effective_period": "2026Q2；同比 2025Q2",
+      "note": "",
+      "publication_date_status": "verified",
+      "publication_date_source": "原网页标题/日期或原始文件；无日期文档不编造发布日期",
+      "retrieved_at": "2026-10-09",
+      "ingestion_channel": "question_search"
+    },
+    {
+      "source_id": "S14",
+      "title": "Extended Component Lead Times Weigh on General Server Growth",
+      "url": "https://www.trendforce.com/presscenter/news/20260415-13013.html",
+      "published_at": "2026-04-15",
+      "publisher": "TrendForce",
+      "material_class": "authoritative_third_party",
+      "effective_period": "2026 全年预测",
+      "note": "研究机构自身公开预测；4 月预测仅作为发布前基线，不冒充 10 月最新预测。",
+      "publication_date_status": "verified",
+      "publication_date_source": "原网页标题/日期或原始文件；无日期文档不编造发布日期",
+      "retrieved_at": "2026-10-09",
+      "ingestion_channel": "question_search"
+    },
+    {
+      "source_id": "S15",
+      "title": "CPU options for Amazon EC2 instances",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html",
+      "published_at": "",
+      "publisher": "AWS",
+      "material_class": "official_company",
+      "effective_period": "",
+      "note": "截至抓取日的动态技术文档；解释 vCPU 概念，不证明 Meta 使用 AWS。",
+      "publication_date_status": "undated_live_documentation",
+      "publication_date_source": "原网页标题/日期或原始文件；无日期文档不编造发布日期",
+      "retrieved_at": "2026-10-09",
+      "ingestion_channel": "question_search"
+    },
+    {
+      "source_id": "S16",
+      "title": "Amazon EC2 M7a Instances",
+      "url": "https://aws.amazon.com/ec2/instance-types/m7a/",
+      "published_at": "",
+      "publisher": "AWS",
+      "material_class": "official_company",
+      "effective_period": "",
+      "note": "动态规格；用于证明 vCPU 映射因实例类型而异，不作为 Meta 部署事实。",
+      "publication_date_status": "undated_live_documentation",
+      "publication_date_source": "原网页标题/日期或原始文件；无日期文档不编造发布日期",
+      "retrieved_at": "2026-10-09",
+      "ingestion_channel": "question_search"
+    },
+    {
+      "source_id": "S17",
+      "title": "Firecracker: Lightweight Virtualization for Serverless Applications",
+      "url": "https://www.usenix.org/system/files/nsdi20-paper-agache.pdf",
+      "published_at": "2020-02",
+      "publisher": "USENIX / AWS authors",
+      "material_class": "authoritative_third_party",
+      "effective_period": "NSDI 2020",
+      "note": "原始系统论文；说明隔离可与复用并存，不能据此给 Muse 指定超售比例。",
+      "publication_date_status": "verified",
+      "publication_date_source": "原网页标题/日期或原始文件；无日期文档不编造发布日期",
+      "retrieved_at": "2026-10-09",
+      "ingestion_channel": "question_search"
+    },
+    {
+      "source_id": "S18",
+      "title": "Introducing Muse Glimmer: An Open Agentic Model That Runs on Your Device",
+      "url": "https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model",
+      "published_at": "2026-08-10",
+      "publisher": "Meta Research",
+      "material_class": "official_company",
+      "effective_period": "",
+      "note": "本地模型是替代技术路径，不是 9 月 Muse 云服务全面本地化。",
+      "publication_date_status": "verified",
+      "publication_date_source": "原网页标题/日期或原始文件；无日期文档不编造发布日期",
+      "retrieved_at": "2026-10-09",
+      "ingestion_channel": "question_search"
+    },
+    {
+      "source_id": "S19",
+      "title": "AMD EPYC 9965 specifications",
+      "url": "https://www.amd.com/en/products/processors/server/epyc/9005-series/amd-epyc-9965.html",
+      "published_at": "",
+      "publisher": "AMD",
+      "material_class": "official_company",
+      "effective_period": "",
+      "note": "动态规格页；产品于 2024-10-10 发布，但本页当前规格/售价的更新日未知；不采用标价作 Meta 成交价。",
+      "publication_date_status": "undated_live_documentation",
+      "publication_date_source": "原网页标题/日期或原始文件；无日期文档不编造发布日期",
+      "retrieved_at": "2026-10-09",
+      "ingestion_channel": "question_search"
+    },
+    {
+      "source_id": "S20",
+      "title": "Meta’s Muse Tops 3 Million Weekly Users",
+      "url": "https://www.theinformation.com/briefings/exclusive-metas-muse-tops-3-million-weekly-users",
+      "published_at": "2026-09-30",
+      "publisher": "The Information",
+      "material_class": "market_news",
+      "effective_period": "",
+      "note": "独家报道的内部数据；未获公司正式确认。只使用极短的规模线索，不作为 CPU 测算输入。",
+      "publication_date_status": "verified",
+      "publication_date_source": "原网页标题/日期或原始文件；无日期文档不编造发布日期",
+      "retrieved_at": "2026-10-09",
+      "ingestion_channel": "question_search"
+    },
+    {
+      "source_id": "S21",
+      "title": "Geekbench 7 results and independent Muse run",
+      "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/geekbench-7-results-suggest-openais-dots-agent-runs-on-nine-core-amd-epyc-vms-with-nearly-10gb-of-memory-newest-runs-score-about-six-times-meta-muse-in-multi-core",
+      "published_at": "2026-09-30",
+      "publisher": "Tom's Hardware",
+      "material_class": "authoritative_third_party",
+      "effective_period": "",
+      "note": "仅采用作者亲自跑分这一原始观察及其局限；不采用文章其他人的使用量和 fleet 外推。",
+      "publication_date_status": "verified",
+      "publication_date_source": "原网页标题/日期或原始文件；无日期文档不编造发布日期",
+      "retrieved_at": "2026-10-09",
+      "ingestion_channel": "question_search"
+    },
+    {
+      "source_id": "S22",
+      "title": "Arm Q1 FYE2027 Financial Statements and Business Model",
+      "url": "https://investors.arm.com/node/8361/html",
+      "published_at": "2026-07-29",
+      "publisher": "Arm IR",
+      "material_class": "official_filing",
+      "effective_period": "截至 2026-06-30；2026 年底产量预期",
+      "note": "",
+      "publication_date_status": "verified",
+      "publication_date_source": "原网页标题/日期或原始文件；无日期文档不编造发布日期",
+      "retrieved_at": "2026-10-09",
+      "ingestion_channel": "question_search"
+    },
+    {
+      "source_id": "E8089_AVATAR",
+      "url": "https://research.meta.ai/blog/bringing-your-muse-to-life",
+      "title": "Bringing Your Muse to Life",
+      "published_at": "2026-09-23",
+      "publisher": "Meta AI Research",
+      "material_class": "official_company",
+      "retrieved_at": "2026-10-09",
+      "ingestion_channel": "question_search",
+      "publication_date_status": "verified",
+      "publication_date_source": "本轮打开原文的日期标签；无精确日期保留空值",
+      "note": "原文日期，末段 18+ 与演示范围"
+    },
+    {
+      "source_id": "E8089_CONNECT",
+      "url": "https://about.fb.com/news/2026/09/the-biggest-news-from-connect-2026/",
+      "title": "The Biggest News From Connect 2026",
+      "published_at": "2026-09-24",
+      "publisher": "Meta",
+      "material_class": "official_company",
+      "retrieved_at": "2026-10-09",
+      "ingestion_channel": "question_search",
+      "publication_date_status": "verified",
+      "publication_date_source": "本轮打开原文的日期标签；无精确日期保留空值",
+      "note": "公告未来时态不是上线证明"
+    },
+    {
+      "source_id": "E8089_SUB",
+      "url": "https://www.meta.com/en-gb/help/subscriptions/1021145227643680/",
+      "title": "About Muse subscriptions",
+      "published_at": "",
+      "publisher": "Meta Help Centre",
+      "material_class": "official_company",
+      "retrieved_at": "2026-10-09",
+      "ingestion_channel": "question_search",
+      "publication_date_status": "undated_live_documentation",
+      "publication_date_source": "本轮打开原文的日期标签；无精确日期保留空值",
+      "note": "动态文档；本轮 2026-10-09 读取，页面仅标 Updated:4 weeks ago，不推算精确发布日期"
+    },
+    {
+      "source_id": "E8089_MAC",
+      "url": "https://www.meta.com/help/artificial-intelligence/1126304576638594/",
+      "title": "How Muse works with files and apps in your Mac",
+      "published_at": "",
+      "publisher": "Meta Help Center",
+      "material_class": "official_company",
+      "retrieved_at": "2026-10-09",
+      "ingestion_channel": "question_search",
+      "publication_date_status": "undated_live_documentation",
+      "publication_date_source": "本轮打开原文的日期标签；无精确日期保留空值",
+      "note": "动态文档；本轮读取标 Updated:11 hours ago，不推算首次发布日期"
+    },
+    {
+      "source_id": "E8089_START",
+      "url": "https://www.meta.com/en-gb/help/artificial-intelligence/1331373868832401/",
+      "title": "How to get started with Muse",
+      "published_at": "",
+      "publisher": "Meta Help Centre",
+      "material_class": "official_company",
+      "retrieved_at": "2026-10-09",
+      "ingestion_channel": "question_search",
+      "publication_date_status": "undated_live_documentation",
+      "publication_date_source": "本轮打开原文的日期标签；无精确日期保留空值",
+      "note": "动态文档；Updated:3 weeks ago，首次日期不明"
+    },
+    {
+      "source_id": "E8089_HELP",
+      "url": "https://www.meta.com/en-gb/help/artificial-intelligence/1303670544995562/",
+      "title": "Muse Help Centre",
+      "published_at": "",
+      "publisher": "Meta Help Centre",
+      "material_class": "official_company",
+      "retrieved_at": "2026-10-09",
+      "ingestion_channel": "question_search",
+      "publication_date_status": "undated_live_documentation",
+      "publication_date_source": "本轮打开原文的日期标签；无精确日期保留空值",
+      "note": "动态文档；以截止日读取内容为限"
+    },
+    {
+      "source_id": "E8089_AXIOS",
+      "url": "https://www.axios.com/2026/09/29/meta-muse-ai-small-business",
+      "title": "Meta courts small business with new Muse agent",
+      "published_at": "2026-09-29",
+      "publisher": "Axios",
+      "material_class": "market_news",
+      "retrieved_at": "2026-10-09",
+      "ingestion_channel": "question_search",
+      "publication_date_status": "verified",
+      "publication_date_source": "本轮打开原文的日期标签；无精确日期保留空值",
+      "note": "仅复核原草稿两档价格；正式报价改用官方订阅页"
+    },
+    {
+      "source_id": "E8089_CONNECT_FR",
+      "url": "https://about.fb.com/fr/news/2026/09/meta-connect-2026-meta-annonce-de-nouvelles-lunettes-ia-des-nouveautes-pour-muse-et-les-meta-vr-glasses/?noamp=mobile",
+      "title": "Meta Connect 2026 — 法国版官方公告",
+      "publisher": "Meta",
+      "published_at": "2026-09-24",
+      "material_class": "official_company",
+      "source_bucket": "evidence",
+      "ingestion_channel": "question_search",
+      "retrieved_at": "2026-10-09T08:16:01.381516+00:00",
+      "publication_date_status": "verified",
+      "publication_date_source": "桌面版原文标题下明确显示 24 septembre 2026；不使用 AMP 页的相对日期。",
+      "note": "地区边界复核：法文公告列出墨西哥；英文小企业公告仅列美加，未明确排除墨西哥。"
+    },
+    {
+      "source_id": "EA125_DESIGN",
+      "url": "https://introducing.muse.ai/",
+      "title": "How We Designed Muse",
+      "published_at": "2026-09",
+      "publisher": "Meta / Mona Sarantakos with Christine Awad",
+      "material_class": "official_company",
+      "publication_date_status": "verified_month",
+      "publication_date_source": "原文标题下 September 2026；整月早于截止日，不编造具体日",
+      "retrieved_at": "2026-10-09T09:15:40.316243+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence"
+    },
+    {
+      "source_id": "EA125_STARK",
+      "url": "https://www.starkinsider.com/2026/09/meta-muse-specs-what-it-runs-on.html",
+      "title": "Meta Muse: The $0 AI Agent Running on a $40 Server",
+      "published_at": "2026-09-22",
+      "publisher": "Stark Insider / Clinton Stark",
+      "material_class": "market_news",
+      "publication_date_status": "verified",
+      "publication_date_source": "作者署名日期 09.22.2026；样本测量日另为 09.20.2026",
+      "retrieved_at": "2026-10-09T09:15:40.316243+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence"
+    },
+    {
+      "source_id": "EA125_REDHAT",
+      "url": "https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/virtualization_deployment_and_administration_guide/sect-overcommitting_with_kvm-overcommitting_virtualized_cpus",
+      "title": "7.3. Overcommitting Virtualized CPUs",
+      "published_at": "",
+      "publisher": "Red Hat",
+      "material_class": "official_company",
+      "publication_date_status": "undated_live_documentation",
+      "publication_date_source": "打开单页未见明确日历发布日期；不进入截止日完成证据",
+      "retrieved_at": "2026-10-09T09:15:40.316243+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence"
+    },
+    {
+      "source_id": "E321_EARLY",
+      "url": "https://www.theinformation.com/briefings/exclusive-metas-muse-surpassed-500-000-users-first-week",
+      "title": "Muse Surpassed 500,000 Users After First Week",
+      "published_at": "2026-09-22",
+      "publisher": "The Information",
+      "material_class": "market_news",
+      "publication_date_status": "verified",
+      "publication_date_source": "原站搜索索引署名与日历日期；打开正文受付费限制",
+      "retrieved_at": "2026-10-09T09:38:37.743327+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence"
+    },
+    {
+      "source_id": "E321_YAHOO",
+      "url": "https://ca.finance.yahoo.com/news/meta-bulls-have-a-new-muse-stat-to-love-amazon-could-spoil-it-165920814.html",
+      "title": "Meta bulls have a new Muse stat to love. Amazon could spoil it.",
+      "published_at": "2026-10-08",
+      "publisher": "Yahoo Finance",
+      "material_class": "market_news",
+      "publication_date_status": "verified",
+      "publication_date_source": "搜索索引日期；原页打开失败，不进入完成证据",
+      "retrieved_at": "2026-10-09T09:38:37.743327+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence"
+    },
+    {
+      "source_id": "E321_VMTEST",
+      "url": "https://unexcitedneurons.substack.com/p/meta-muse-gives-you-a-pretty-nice",
+      "title": "Meta Muse gives you a pretty nice VM for free",
+      "published_at": "2026-09-30",
+      "publisher": "unexcitedneurons",
+      "material_class": "expert_opinion",
+      "publication_date_status": "verified",
+      "publication_date_source": "原文标题下日期",
+      "retrieved_at": "2026-10-09T09:38:37.743327+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence"
+    },
+    {
+      "source_id": "E321_9965",
+      "url": "https://www.amd.com/en/newsroom/press-releases/2024-10-10-amd-launches-5th-gen-amd-epyc-cpus-maintaining-le.html",
+      "title": "AMD Launches 5th Gen AMD EPYC CPUs",
+      "published_at": "2024-10-10",
+      "publisher": "AMD",
+      "material_class": "official_company",
+      "publication_date_status": "verified",
+      "publication_date_source": "原文发布行；用带日期发布稿核实192核，不使用动态报价",
+      "retrieved_at": "2026-10-09T09:38:37.743327+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence"
+    },
+    {
+      "source_id": "E321_SCENARIO",
+      "url": "https://nextsignalprediction.substack.com/p/what-it-takes-to-give-every-personal",
+      "title": "What It Takes to Give Every Personal Agent a Computer",
+      "published_at": "2026-09-24",
+      "publisher": "Next Signal Prediction",
+      "material_class": "expert_opinion",
+      "publication_date_status": "verified",
+      "publication_date_source": "原文标题下日期",
+      "retrieved_at": "2026-10-09T09:38:37.743327+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence"
+    },
+    {
+      "source_id": "E321_MAY",
+      "url": "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html",
+      "title": "Agentic AI Changes the CPU/GPU Equation",
+      "published_at": "2026-05-07",
+      "publisher": "AMD",
+      "material_class": "official_company",
+      "publication_date_status": "verified",
+      "publication_date_source": "原文标题下May 07, 2026",
+      "retrieved_at": "2026-10-09T09:38:37.743327+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence"
+    },
+    {
+      "source_id": "E321_Q2",
+      "url": "https://d1io3yog0oux5.cloudfront.net/_e6fb18640ea7bfff80a48dc92268a25f/amd/db/841/9237/webcast_transcript/AMD2Q26EarningsCallTranscript.pdf",
+      "title": "AMD 2Q26 Earnings Call Transcript",
+      "published_at": "2026-08-04",
+      "publisher": "AMD",
+      "material_class": "official_filing",
+      "publication_date_status": "verified",
+      "publication_date_source": "AMD官方20260804业绩日历指向原PDF；原PDF正文",
+      "retrieved_at": "2026-10-09T09:38:37.743327+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence"
+    },
+    {
+      "source_id": "E321_AAI",
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era",
+      "title": "AAI 2026: AMD Delivers Full-Stack Compute for the Agentic AI Era",
+      "published_at": "2026-07-23",
+      "publisher": "AMD",
+      "material_class": "official_company",
+      "publication_date_status": "verified",
+      "publication_date_source": "原文发布行July 23, 2026",
+      "retrieved_at": "2026-10-09T09:38:37.743327+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence"
+    },
+    {
+      "source_id": "E321_AMDMETA",
+      "url": "https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000045/pressreleasedatedfebruary2.htm",
+      "title": "AMD and Meta expanded strategic partnership, EX-99.1",
+      "published_at": "2026-02-24",
+      "publisher": "AMD",
+      "material_class": "official_filing",
+      "publication_date_status": "verified",
+      "publication_date_source": "8-K附件标题与发布日",
+      "retrieved_at": "2026-10-09T09:38:37.743327+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence"
+    },
+    {
+      "source_id": "E321_AMDLOCAL",
+      "url": "https://www.amd.com/zh-cn/blogs/2026/run-meta-muse-glimmer-30b-on-amd-ryzen-ai-max-and-radeon-gpus.html",
+      "title": "在 AMD 锐龙 AI Max+ Agentic PC 和 Radeon GPU 上运行 Meta Muse Glimmer 30B",
+      "published_at": "2026-08-10",
+      "publisher": "AMD",
+      "material_class": "official_company",
+      "publication_date_status": "verified",
+      "publication_date_source": "原文标题下Aug 10, 2026；测试只到8月",
+      "retrieved_at": "2026-10-09T09:38:37.743327+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence"
+    },
+    {
+      "source_id": "E321_INTELLOCAL",
+      "url": "https://www.intel.com/content/www/us/en/developer/articles/community/day-0-local-agentic-ai-with-metas-muse-glimmer.html",
+      "title": "Day 0 Local Agentic AI Support on Intel Platforms with Meta’s Muse Glimmer",
+      "published_at": "",
+      "publisher": "Intel",
+      "material_class": "official_company",
+      "publication_date_status": "unknown",
+      "publication_date_source": "无发布日期；August 14, 2026仅为测试日期，不冒充公开日期",
+      "retrieved_at": "2026-10-09T09:38:37.743327+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence"
+    },
+    {
+      "source_id": "F981_AWS",
+      "url": "https://about.fb.com/news/2026/04/meta-partners-with-aws-on-graviton-chips-to-power-agentic-ai/",
+      "title": "Meta Partners With AWS on Graviton Chips to Power Agentic AI",
+      "published_at": "2026-04-24",
+      "publisher": "Meta",
+      "material_class": "official_company",
+      "retrieved_at": "2026-10-09T10:14:55.893017+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence",
+      "publication_date_status": "verified",
+      "publication_date_source": "本轮打开原文标题日期或官方申报日期；无日期不推算"
+    },
+    {
+      "source_id": "F981_AWS2",
+      "url": "https://www.aboutamazon.com/news/aws/meta-aws-graviton-ai-partnership",
+      "title": "Meta expands Amazon partnership with AWS Graviton chips for AI",
+      "published_at": "2026-04-24",
+      "publisher": "Amazon",
+      "material_class": "official_company",
+      "retrieved_at": "2026-10-09T10:14:55.893017+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence",
+      "publication_date_status": "verified",
+      "publication_date_source": "本轮打开原文标题日期或官方申报日期；无日期不推算"
+    },
+    {
+      "source_id": "F981_METARM",
+      "url": "https://about.fb.com/news/2026/03/meta-partners-with-arm-to-develop-new-class-of-data-center-silicon/",
+      "title": "Meta Partners With Arm to Develop New Class of Data Center Silicon",
+      "published_at": "2026-03-24",
+      "publisher": "Meta",
+      "material_class": "official_company",
+      "retrieved_at": "2026-10-09T10:14:55.893017+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence",
+      "publication_date_status": "verified",
+      "publication_date_source": "本轮打开原文标题日期或官方申报日期；无日期不推算"
+    },
+    {
+      "source_id": "F981_ARMSEP",
+      "url": "https://newsroom.arm.com/news/arm-agi-cpu-neoverse-css-n4-agentic-ai",
+      "title": "Arm expands AI infrastructure with AGI CPU and Neoverse CSS N4",
+      "published_at": "2026-09-08",
+      "publisher": "Arm",
+      "material_class": "official_company",
+      "retrieved_at": "2026-10-09T10:14:55.893017+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence",
+      "publication_date_status": "verified",
+      "publication_date_source": "本轮打开原文标题日期或官方申报日期；无日期不推算"
+    },
+    {
+      "source_id": "F981_ARMMAR",
+      "url": "https://investors.arm.com/static-files/073df49d-58d8-451e-a196-a725319a9b7e",
+      "title": "Arm Form 6-K filed March 24, 2026",
+      "published_at": "2026-03-24",
+      "publisher": "Arm",
+      "material_class": "official_filing",
+      "retrieved_at": "2026-10-09T10:14:55.893017+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence",
+      "publication_date_status": "verified",
+      "publication_date_source": "本轮打开原文标题日期或官方申报日期；无日期不推算"
+    },
+    {
+      "source_id": "F981_AVGO",
+      "url": "https://about.fb.com/news/2026/04/meta-partners-with-broadcom-to-co-develop-custom-ai-silicon/",
+      "title": "Meta Partners With Broadcom to Co-Develop Custom AI Silicon",
+      "published_at": "2026-04-14",
+      "publisher": "Meta",
+      "material_class": "official_company",
+      "retrieved_at": "2026-10-09T10:14:55.893017+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence",
+      "publication_date_status": "verified",
+      "publication_date_source": "本轮打开原文标题日期或官方申报日期；无日期不推算"
+    },
+    {
+      "source_id": "F981_INTHIST",
+      "url": "https://engineering.fb.com/2016/03/09/data-center-engineering/facebook-s-new-front-end-server-design-delivers-on-performance-without-sucking-up-power/",
+      "title": "Facebook's new front-end server design",
+      "published_at": "2016-03-09",
+      "publisher": "Meta Engineering",
+      "material_class": "official_company",
+      "retrieved_at": "2026-10-09T10:14:55.893017+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence",
+      "publication_date_status": "verified",
+      "publication_date_source": "本轮打开原文标题日期或官方申报日期；无日期不推算"
+    },
+    {
+      "source_id": "F981_INTJP",
+      "url": "https://www.intel.co.jp/content/www/jp/ja/newsroom/news/data-center/intel-puts-agentic-ai-to-work-with-xeon-6-networking-and-ai-systems.html",
+      "title": "Intel Xeon 6+、ネットワーキング、AIシステム（官方日文版）",
+      "published_at": "2026-05-31",
+      "publisher": "Intel",
+      "material_class": "official_company",
+      "retrieved_at": "2026-10-09T10:14:55.893017+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence",
+      "publication_date_status": "verified",
+      "publication_date_source": "原始日文页面重定向后L21标May 31,2026；搜索索引标June 1，分别保留，不采用访问日"
+    },
+    {
+      "source_id": "F981_ARM20F",
+      "url": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/arm-20260331.htm",
+      "title": "Arm FY2026 Form 20-F",
+      "published_at": "2026-05-26",
+      "publisher": "Arm / SEC",
+      "material_class": "official_filing",
+      "retrieved_at": "2026-10-09T10:14:55.893017+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence",
+      "publication_date_status": "verified",
+      "publication_date_source": "7月29日官方6-K首页说明20-F filed May 26,2026"
+    },
+    {
+      "source_id": "F981_ARMFY",
+      "url": "https://investors.arm.com/node/8141/html",
+      "title": "Arm FY2026 annual results and shareholder letter",
+      "published_at": "2026-05-06",
+      "publisher": "Arm",
+      "material_class": "official_filing",
+      "retrieved_at": "2026-10-09T10:14:55.893017+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence",
+      "publication_date_status": "verified",
+      "publication_date_source": "本轮打开原文标题日期或官方申报日期；无日期不推算"
+    },
+    {
+      "source_id": "F981_ARMQ",
+      "url": "https://investors.arm.com/static-files/69c13c55-810b-4de8-93b6-7cea395659ea",
+      "title": "Arm Form 6-K quarterly report June 30, 2026",
+      "published_at": "2026-07-29",
+      "publisher": "Arm",
+      "material_class": "official_filing",
+      "retrieved_at": "2026-10-09T10:14:55.893017+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence",
+      "publication_date_status": "verified",
+      "publication_date_source": "本轮打开原文标题日期或官方申报日期；无日期不推算"
+    },
+    {
+      "source_id": "F981_TOTAL",
+      "url": "https://www.arm.com/products/licensing/arm-total-access",
+      "title": "Arm Total Access",
+      "published_at": "",
+      "publisher": "Arm",
+      "material_class": "official_company",
+      "retrieved_at": "2026-10-09T10:14:55.893017+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence",
+      "publication_date_status": "undated_live_documentation",
+      "publication_date_source": "本轮打开原文标题日期或官方申报日期；无日期不推算"
+    },
+    {
+      "source_id": "F981_FLEX",
+      "url": "https://www.arm.com/products/flexible-access",
+      "title": "Arm Flexible Access",
+      "published_at": "",
+      "publisher": "Arm",
+      "material_class": "official_company",
+      "retrieved_at": "2026-10-09T10:14:55.893017+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence",
+      "publication_date_status": "undated_live_documentation",
+      "publication_date_source": "本轮打开原文标题日期或官方申报日期；无日期不推算"
+    },
+    {
+      "source_id": "F981_VERAMAY",
+      "url": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Unveils-Vera-the-CPU-for-Agents/default.aspx",
+      "title": "NVIDIA Unveils Vera, the CPU for Agents",
+      "published_at": "2026-05-31",
+      "publisher": "NVIDIA",
+      "material_class": "official_company",
+      "retrieved_at": "2026-10-09T10:14:55.893017+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence",
+      "publication_date_status": "verified",
+      "publication_date_source": "本轮打开原文标题日期或官方申报日期；无日期不推算"
+    },
+    {
+      "source_id": "F981_NVQ",
+      "url": "https://investor.nvidia.com/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf",
+      "title": "NVIDIA Q2 FY2027 earnings call transcript",
+      "published_at": "2026-08-26",
+      "publisher": "NVIDIA / FactSet",
+      "material_class": "official_filing",
+      "retrieved_at": "2026-10-09T10:14:55.893017+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence",
+      "publication_date_status": "verified",
+      "publication_date_source": "本轮打开原文标题日期或官方申报日期；无日期不推算"
+    },
+    {
+      "source_id": "F981_TH25",
+      "url": "https://www.tomshardware.com/pc-components/cpus/meta-muse-runs-agents-on-amd-epyc-turin-hosts-with-two-cores-and-8gb-of-memory-ai-agent-can-pass-terminal-commands-to-ubuntu-host-system",
+      "title": "Meta Muse runs agents on AMD EPYC Turin hosts",
+      "published_at": "2026-09-25",
+      "publisher": "Tom's Hardware",
+      "material_class": "market_news",
+      "retrieved_at": "2026-10-09T10:14:55.893017+00:00",
+      "ingestion_channel": "question_search",
+      "source_bucket": "evidence",
+      "publication_date_status": "verified",
+      "publication_date_source": "本轮打开原文标题日期或官方申报日期；无日期不推算"
+    },
+    {
+      "source_id": "E472_FR",
+      "url": "https://about.fb.com/fr/news/2026/09/meta-connect-2026-meta-annonce-de-nouvelles-lunettes-ia-des-nouveautes-pour-muse-et-les-meta-vr-glasses/",
+      "title": "Meta Connect 2026 — France",
+      "published_at": "2026-09-24",
+      "publisher": "Meta",
+      "material_class": "official_company",
+      "ingestion_channel": "question_search",
+      "retrieved_at": "2026-10-10T03:43:39.452759+00:00",
+      "publication_date_status": "verified",
+      "publication_date_source": "Original page date; missing dates retained as empty"
+    },
+    {
+      "source_id": "E472_AP",
+      "url": "https://apnews.com/article/meta-muse-ai-agent-3a4572eb4cf4e95d8a0dfdad6e6ca065",
+      "title": "Meta launches personal AI agent, Muse",
+      "published_at": "2026-09-08",
+      "publisher": "Associated Press",
+      "material_class": "market_news",
+      "ingestion_channel": "question_search",
+      "retrieved_at": "2026-10-10T03:43:39.452759+00:00",
+      "publication_date_status": "verified",
+      "publication_date_source": "Original page date; missing dates retained as empty"
+    },
+    {
+      "source_id": "E472_MAC",
+      "url": "https://9to5mac.com/2026/09/17/meta-ai-launches-muse-personal-agent-including-a-new-mobile-app-for-iphone/",
+      "title": "Meta AI launches Muse personal agent, including apps for iPhone and Mac",
+      "published_at": "2026-09-17",
+      "publisher": "9to5Mac",
+      "material_class": "market_news",
+      "ingestion_channel": "question_search",
+      "retrieved_at": "2026-10-10T03:43:39.452759+00:00",
+      "publication_date_status": "verified",
+      "publication_date_source": "Original page date; missing dates retained as empty"
+    },
+    {
+      "source_id": "E472_COMPUTE",
+      "url": "https://about.fb.com/news/2026/06/what-is-compute-power-meta-ai-infrastructure/",
+      "title": "Infrastructure Explained: Compute Power",
+      "published_at": "2026-06-10",
+      "publisher": "Meta",
+      "material_class": "official_company",
+      "ingestion_channel": "question_search",
+      "retrieved_at": "2026-10-10T03:43:39.452759+00:00",
+      "publication_date_status": "verified",
+      "publication_date_source": "Original page date; missing dates retained as empty",
+      "updated_at": "2026-06-16"
+    },
+    {
+      "source_id": "E472_TC",
+      "url": "https://techcrunch.com/2026/09/21/metas-muse-is-outpacing-chatgpts-early-mobile-launch/",
+      "title": "Meta’s Muse is outpacing ChatGPT’s early mobile launch",
+      "published_at": "2026-09-21",
+      "publisher": "TechCrunch / Apptopia estimates",
+      "material_class": "market_news",
+      "ingestion_channel": "question_search",
+      "retrieved_at": "2026-10-10T03:43:39.452759+00:00",
+      "publication_date_status": "verified",
+      "publication_date_source": "Original page date; missing dates retained as empty"
+    },
+    {
+      "source_id": "E472_WR",
+      "url": "https://windowsreport.com/meta-muse-hits-700000-daily-users-as-service-issues-appear/",
+      "title": "Meta Muse Hits 700,000 Daily Users as Service Issues Appear",
+      "published_at": "2026-09-25",
+      "publisher": "Windows Report",
+      "material_class": "market_news",
+      "ingestion_channel": "question_search",
+      "retrieved_at": "2026-10-10T03:43:39.452759+00:00",
+      "publication_date_status": "verified",
+      "publication_date_source": "Original page date; missing dates retained as empty"
+    },
+    {
+      "source_id": "E472_SW",
+      "url": "https://aiindustrytoday.com/news/metas-muse-tops-2-18-million-daily-mobile-users-four-weeks-after-launch-similarweb-estimates/",
+      "title": "Muse Tops 2.18 Million Daily Mobile Users, Similarweb Estimates",
+      "published_at": "2026-10-08",
+      "publisher": "AI Industry Today",
+      "material_class": "market_news",
+      "ingestion_channel": "question_search",
+      "retrieved_at": "2026-10-10T03:43:39.452759+00:00",
+      "publication_date_status": "verified",
+      "publication_date_source": "Original page date; missing dates retained as empty",
+      "published_at_utc": "2026-10-08T13:34:00+00:00"
+    },
+    {
+      "source_id": "E472_CITI",
+      "url": "https://www.aol.com/articles/citigroup-bets-metas-muse-ais-134712000.html",
+      "title": "Citigroup bets on Meta’s Muse as AI’s front door to the internet",
+      "published_at": "2026-10-06",
+      "publisher": "Reuters via AOL",
+      "material_class": "market_news",
+      "ingestion_channel": "question_search",
+      "retrieved_at": "2026-10-10T03:43:39.452759+00:00",
+      "publication_date_status": "verified",
+      "publication_date_source": "Original page date; missing dates retained as empty"
+    },
+    {
+      "source_id": "E472_PLATEAU",
+      "url": "https://explainx.ai/blog/meta-muse-daily-users-plateau-2-5-3-million-what-it-means-2026",
+      "title": "Meta Muse Daily Users Reportedly Plateau at 2.5 to 3 Million",
+      "published_at": "2026-10-06",
+      "publisher": "ExplainX",
+      "material_class": "market_news",
+      "ingestion_channel": "question_search",
+      "retrieved_at": "2026-10-10T03:43:39.452759+00:00",
+      "publication_date_status": "verified",
+      "publication_date_source": "Original page date; missing dates retained as empty"
+    },
+    {
+      "source_id": "E472_SUB",
+      "url": "https://www.meta.com/help/subscriptions/1021145227643680/",
+      "title": "About Muse subscriptions — 2026-10-10 retrieval",
+      "published_at": "",
+      "publisher": "Meta Help Center",
+      "material_class": "official_company",
+      "ingestion_channel": "question_search",
+      "retrieved_at": "2026-10-10T03:43:39.452759+00:00",
+      "publication_date_status": "undated_live_documentation",
+      "publication_date_source": "Original page date; missing dates retained as empty"
+    },
+    {
+      "source_id": "E472_DAUDEF",
+      "url": "https://support.similarweb.com/hc/en-us/articles/213493945-Daily-Active-Users-App",
+      "title": "Daily Active Users (App)",
+      "published_at": "",
+      "publisher": "Similarweb",
+      "material_class": "authoritative_third_party",
+      "ingestion_channel": "question_search",
+      "retrieved_at": "2026-10-10T03:43:39.452759+00:00",
+      "publication_date_status": "undated_live_documentation",
+      "publication_date_source": "Original page date; missing dates retained as empty"
+    }
+  ],
+  "source_note": "来源在每个叶子独立抽取和 GPT 复核。官方披露与预测、记者原始观察、媒体线索分开处理。动态文档保留真实日期空值；无 IMA 镜像可用，未声称完成 IMA 扫描。",
+  "attachments": [
+    {
+      "label": "交互编辑研究问题（需本地服务）",
+      "href": "http://127.0.0.1:8765/#MUSE"
+    },
+    {
+      "label": "研究计划",
+      "href": "research_plan.md"
+    },
+    {
+      "label": "Markdown 审计副本",
+      "href": "professional_report.md"
+    }
+  ],
+  "revision_id": "edit_20261010T032723_472c2f8f"
+}

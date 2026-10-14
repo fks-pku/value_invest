@@ -1,0 +1,31 @@
+{
+  "revision_id": "edit_20261013T082701_4c49cd59",
+  "edit": {
+    "node_id": "I",
+    "operation": "add",
+    "question": "假设1亿的dau，对应的cpu增量有多少，对比amd的cpu业务，量级多大？",
+    "reason": ""
+  },
+  "affected_ids": [
+    "D1",
+    "D2",
+    "I",
+    "I.u1",
+    "MUSE",
+    "T1"
+  ],
+  "research_ids": [
+    "D1",
+    "D2",
+    "T1",
+    "I.u1"
+  ],
+  "rollup_ids": [
+    "I",
+    "MUSE"
+  ],
+  "removed_ids": [],
+  "created_at": "2026-10-13T08:27:02.720128+00:00",
+  "as_of_date": "2026-10-09",
+  "prior_tree_sha256": "905a6bf152e0401f8fb37f5875d69bd190c3df01cdb986c5e1cff007d830fbc0"
+}

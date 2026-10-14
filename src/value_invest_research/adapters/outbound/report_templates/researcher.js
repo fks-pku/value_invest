@@ -3,6 +3,7 @@
   const $ = id => document.getElementById(id);
   const activeStates = new Set(['queued', 'running', 'validating', 'publishing']);
   let state, selected, operation, editNode, editVersion, previewSequence = 0, previewTimer, shownReport = '';
+  let passageSelection, commentPreviewSequence = 0, commentPreviewTimer;
   let processState, processKey = '', refreshing = false;
   const token = document.querySelector('meta[name="research-token"]').content;
   function element(tag, text, className) {
@@ -29,11 +30,12 @@
       else button.removeAttribute('aria-current');
     }
     const node = nodeById(selected), busy = state.job && activeStates.has(state.job.status);
+    if (passageSelection?.node_id !== selected) $('passage-selection').hidden = true;
     $('selected-label').textContent = `${selected} · L${node.level}`;
     for (const id of ['edit', 'add', 'remove', 'rerun']) $(id).disabled = Boolean(busy);
     $('add').disabled ||= node.level >= 5 || node.level === 1;
     $('remove').disabled ||= !node.parent_id;
-    const stale = busy && state.job.proposal.affected_ids.includes(selected);
+    const stale = busy && state.job.proposal.kind !== 'passage_comment' && state.job.proposal.affected_ids.includes(selected);
     $('pending').hidden = !stale; $('article').hidden = stale;
     $('pending-title').textContent = node.question;
     $('view-old').disabled = !state.tree.nodes.some(n => n.id === selected);
@@ -69,11 +71,12 @@
       $('title').textContent = state.tree.title;
       $('cutoff').textContent = `AS OF ${state.tree.as_of_date} · 截面锁定`;
       const job = state.job, busy = job && activeStates.has(job.status);
-      $('run-title').textContent = job ? ({queued:'已进入研究队列',running:'正在研究',validating:'正在验证',publishing:'正在发布',updated:'新报告已发布',failed:'未发布新版本',cancelled:'研究已取消'}[job.status] || job.status) : '可编辑 · 本地研究器';
+      $('run-title').textContent = job ? ({queued:'已进入研究队列',running:'正在研究',validating:'正在验证',publishing:'正在发布',updated:'新报告已发布',unchanged:'原段保持不变',failed:'未发布新版本',cancelled:'研究已取消'}[job.status] || job.status) : '可编辑 · 本地研究器';
       $('run-message').textContent = job?.message || '编辑问题后确认影响范围，研究完成后自动更新。';
       document.body.classList.toggle('running', Boolean(busy));
       document.body.classList.toggle('failed', job?.status === 'failed');
-      $('cancel-run').hidden = !busy; $('retry').hidden = !job || !['failed','cancelled'].includes(job.status);
+      $('cancel-run').hidden = !busy; $('retry').hidden = !job || !['failed','cancelled','unchanged'].includes(job.status);
+      if (prior && prior.version !== state.version) { passageSelection = null; $('passage-selection').hidden = true; }
       if (!prior || prior.version !== state.version || prior.job?.id !== job?.id || prior.job?.status !== job?.status) {
         renderTree(); select(selected || decodeURIComponent(location.hash.slice(1)));
       }
@@ -188,10 +191,71 @@
   $('cancel-run').addEventListener('click', async () => {
     try { await api('/api/cancel', {}); await refresh(); } catch (error) { $('error').textContent = error.message; $('error').hidden = false; }
   });
-  $('retry').addEventListener('click', () => openEditor(state.job.proposal.edit.operation, state.job.proposal.edit));
+  $('retry').addEventListener('click', () => {
+    if (state.job.proposal.kind === 'passage_comment') {
+      const target = state.job.proposal.target;
+      passageSelection = {node_id:target.node_id, section:target.section, paragraph:target.paragraph,
+                          quote:target.quote, version:state.version};
+      openComment(target.comment);
+    } else openEditor(state.job.proposal.edit.operation, state.job.proposal.edit);
+  });
   $('view-old').addEventListener('click', () => { $('article').hidden = false; $('pending').hidden = true; $('run-message').textContent = '正在阅读上次已发布版本，不是编辑后问题的答案。'; });
+  function commentRequest() {
+    return {...passageSelection, comment:$('comment-question').value};
+  }
+  async function previewComment() {
+    const sequence = ++commentPreviewSequence;
+    $('submit-comment').disabled = true; $('comment-error').textContent = '';
+    if (!$('comment-question').value.trim()) { $('comment-preview').textContent = ''; return; }
+    try {
+      const impact = await api('/api/comment/preview', commentRequest());
+      if (sequence !== commentPreviewSequence) return;
+      $('comment-scope').textContent = impact.scope;
+      $('comment-preview').textContent = impact.original.slice(0, 320) + (impact.original.length > 320 ? '…' : '');
+      $('submit-comment').disabled = false;
+    } catch (error) {
+      if (sequence !== commentPreviewSequence) return;
+      $('comment-error').textContent = error.message;
+    }
+  }
+  function openComment(previous = '') {
+    if (!passageSelection || !state || state.job && activeStates.has(state.job.status)) return;
+    const node = nodeById(passageSelection.node_id);
+    if (!node) return;
+    $('comment-location').textContent = `${node.id} · ${node.question}`;
+    $('comment-quote').textContent = passageSelection.quote;
+    $('comment-question').value = previous;
+    $('comment-preview').textContent = '';
+    $('comment-editor').showModal();
+    previewComment(); $('comment-question').focus();
+  }
+  $('ask-selection').addEventListener('click', () => openComment());
+  $('clear-selection').addEventListener('click', () => { passageSelection = null; $('passage-selection').hidden = true; });
+  for (const id of ['close-comment','discard-comment']) $(id).addEventListener('click', () => { ++commentPreviewSequence; $('comment-editor').close(); });
+  $('comment-question').addEventListener('input', () => {
+    ++commentPreviewSequence; $('submit-comment').disabled = true;
+    clearTimeout(commentPreviewTimer); commentPreviewTimer = setTimeout(previewComment, 250);
+  });
+  $('comment-form').addEventListener('submit', async event => {
+    event.preventDefault(); $('submit-comment').disabled = true;
+    try {
+      await api('/api/comment', commentRequest());
+      $('comment-editor').close(); $('passage-selection').hidden = true;
+      await refresh();
+    } catch (error) { $('comment-error').textContent = error.message; }
+  });
   addEventListener('message', event => {
-    if (event.source === $('article').contentWindow && event.data?.type === 'research-node' && state && nodeById(event.data.node)) select(event.data.node);
+    if (event.source !== $('article').contentWindow || !state) return;
+    if (event.data?.type === 'research-node' && nodeById(event.data.node)) select(event.data.node);
+    if (event.data?.type === 'research-passage-selection' &&
+        (!state.job || !activeStates.has(state.job.status))) {
+      const data = event.data;
+      if (data.node !== selected || !nodeById(data.node)) return;
+      passageSelection = {node_id:data.node, section:data.section, paragraph:data.paragraph,
+                          quote:data.quote, version:state.version};
+      $('selection-quote').textContent = data.quote.slice(0, 260) + (data.quote.length > 260 ? '…' : '');
+      $('passage-selection').hidden = false;
+    }
   });
   addEventListener('hashchange', () => { if (state) select(decodeURIComponent(location.hash.slice(1))); });
   refresh(); setInterval(refresh, 2500);

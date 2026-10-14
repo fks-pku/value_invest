@@ -2,82 +2,52 @@
   "ok": true,
   "issues": [],
   "summary": {
-    "plan_id": "rp_edit_20261010T032723_472c2f8f",
+    "plan_id": "rp_edit_20261013T082701_4c49cd59",
     "status": "blocked",
-    "steps": 11,
+    "steps": 12,
     "pending": 8,
     "in_progress": 0,
-    "review_pending": 1,
-    "blocked": 2,
+    "review_pending": 0,
+    "blocked": 4,
     "completed": 0,
-    "events": 5,
-    "historical_plan_events": 26,
+    "events": 4,
+    "historical_plan_events": 31,
     "nested": {
-      "parent_plan_id": "rp_edit_20261010T032723_472c2f8f",
+      "parent_plan_id": "rp_edit_20261013T082701_4c49cd59",
       "status": "blocked",
-      "l3_plans": 11,
+      "l3_plans": 12,
       "completed_l3_plans": 1,
-      "leaf_steps": 11,
+      "leaf_steps": 12,
       "completed_leaf_steps": 1,
-      "blocked_leaf_steps": 10,
+      "blocked_leaf_steps": 11,
       "max_depth": 3
     }
   },
   "step_states": [
     {
       "step_id": "rollup:O1",
-      "status": "blocked",
-      "answer": "Meta 于2026年9月8日发布 Muse，一款由 Muse Spark 驱动、能代用户执行任务并在关闭应用后继续工作的个人AI智能体。截至10月9日，美国和加拿大的开放已获英文官方公告确认；法文官方公告另列墨西哥，不能断言仅美加可用。它面向18岁及以上用户，已有手机、网页、WhatsApp及Mac入口，9月29日又增加小企业技能。免费使用有额度限制，两档月费20/100美元有同期报道；眼镜接入、Charm和Confidential VM等预告不能当作全面交付。[S01][S03][E472_FR][E472_AP][E472_MAC][E8089_AXIOS][E8089_CONNECT][S02]",
+      "status": "pending",
+      "answer": "",
       "search_run_id": "",
       "source_ids": [],
       "source_extraction_ids": [],
       "source_review_ids": [],
       "supporting_findings": [],
       "refuting_findings": [],
-      "gaps": [
-        "未取得截至2026-10-09带精确日期的官方账户开通/邀请规则、免费精确额度及付费token权益版本，不能完整复原截止日使用资格和额度。",
-        "加拿大、墨西哥的当地结算币种、税费与逐账户最终可订阅状态未得到截止日原始价目确认。"
-      ],
-      "next_actions": [
-        "补充截止日前官方帮助页存档、当地价目及账户资格说明；不新增问题节点。"
-      ],
+      "gaps": [],
+      "next_actions": [],
       "evidence_gate": {
         "passed": false,
         "reasons": []
       },
-      "latest_event_id": "edit_20261010T032723_472c2f8f_O1_parent_blocked",
-      "latest_recorded_at": "2026-10-10T03:48:10.304788+00:00",
-      "event_count": 2
-    },
-    {
-      "step_id": "rollup:O.u1",
-      "status": "blocked",
-      "answer": "Muse发布首月的日活轨迹是从早期数十万快速进入百万级：9月21日报道的美国移动端估算为64.2万；9月30日报道的每日发提示用户超过100万；10月5日全球iOS与Android日活的Similarweb估算为218.2万，10月6日报道的花旗估算为180万。它们是不同口径的观察点，足以说明起量，不能连成一条精确逐日曲线，也不能据218.2万与180万的差值断言日活下降。截至2026年10月9日（北京时间），完整同口径逐日数据与留存尚未取得，“已进入平台期”仍缺可靠确认。[E472_TC][S20][E472_SW][E472_CITI]",
-      "search_run_id": "",
-      "source_ids": [],
-      "source_extraction_ids": [],
-      "source_review_ids": [],
-      "supporting_findings": [],
-      "refuting_findings": [],
-      "gaps": [
-        "未取得从9月8日发布至10月9日、地域/平台/活跃定义一致的完整逐日原始数据，不能给出精确日活曲线或10月9日当天数值。",
-        "平台期报道缺原券商报告、底层数据商与去重方法；亦缺同口径队列留存，不能确认平台期及增长持续性。"
-      ],
-      "next_actions": [
-        "下一轮优先取得Similarweb或Apptopia带定义的逐日历史导出及原券商图表，再补7日/28日队列留存；保留本轮截面，不自动扩展问题。"
-      ],
-      "evidence_gate": {
-        "passed": false,
-        "reasons": []
-      },
-      "latest_event_id": "edit_20261010T032723_472c2f8f_O.u1_parent_blocked",
-      "latest_recorded_at": "2026-10-10T03:48:10.334335+00:00",
-      "event_count": 2
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
     },
     {
       "step_id": "rollup:O2",
-      "status": "review_pending",
-      "answer": "Muse需要云端CPU，是因为模型决定下一步之后，还要有计算机执行代码、处理文件、调用工具、协调任务并保存进度；它还要在用户关闭App后继续工作。Meta为此给用户提供隔离的Linux虚拟机，并将推理代理连接到外部基础设施。CPU执行环境与模型推理是互补环节；云端是Muse为持续代办选择的架构，不是所有智能体都必须走的路线，也不表示每用户独占一颗或固定两个物理核心。[S01][S02][E472_COMPUTE][S18]",
+      "status": "pending",
+      "answer": "",
       "search_run_id": "",
       "source_ids": [],
       "source_extraction_ids": [],
@@ -85,76 +55,88 @@
       "supporting_findings": [],
       "refuting_findings": [],
       "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "rollup:D1",
+      "status": "blocked",
+      "answer": "**截至2026年10月9日，无法把 Muse 的用户增长确定地换算成 Meta 实际新增采购的 CPU 数量；可以量化的是条件化的容量需求。**以每用户 **2 vCPU** 的单账户样本配置计算，每新增100万用户，对应200万 vCPU 的名义配额。若假设每个用户全天独占一个物理核心、每颗 CPU 有128核，约需 **7,813颗 CPU**；若资源共享后，每用户平均只消耗该核心容量的5%，并按50%的平均利用率配置容量，则约需 **782颗 CPU**。这两个数字都是情景测算，不是 Meta 披露的部署量，关键差别在于实际计算时间和共享程度。",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [
+        "缺少Muse同口径活跃与后台账户原始遥测、每用户物理核时、峰值并发和全站共享策略，不能确定用户增长对应的实际CPU容量。",
+        "缺少内存回收、现有空闲容量、故障冗余及采购记录，不能把情景容量换成真实新增CPU订单。"
+      ],
       "next_actions": [
-        "本题机制已回答；实际CPU核时、资源复用及采购转换继续由既有D1、D2问题承接，不另建下钻节点。"
+        "取得同口径账户/任务遥测、核时与峰值、物理映射及内存驻留记录，复核存量容量后更新换算；不新增问题。"
       ],
       "evidence_gate": {
         "passed": false,
         "reasons": []
       },
-      "latest_event_id": "edit_20261010T032723_472c2f8f_O2_parent_answer",
-      "latest_recorded_at": "2026-10-10T03:48:10.315017+00:00",
+      "latest_event_id": "edit_20261013T082701_4c49cd59_parent_D1",
+      "latest_recorded_at": "2026-10-13T08:58:25.300579+00:00",
       "event_count": 1
     },
     {
-      "step_id": "rollup:D1",
-      "status": "pending",
-      "answer": "",
-      "search_run_id": "",
-      "source_ids": [],
-      "source_extraction_ids": [],
-      "source_review_ids": [],
-      "supporting_findings": [],
-      "refuting_findings": [],
-      "gaps": [],
-      "next_actions": [],
-      "evidence_gate": {
-        "passed": false,
-        "reasons": []
-      },
-      "latest_event_id": "",
-      "latest_recorded_at": "",
-      "event_count": 0
-    },
-    {
       "step_id": "rollup:D2",
-      "status": "pending",
-      "answer": "",
+      "status": "blocked",
+      "answer": "**截至 2026 年 10 月 9 日，Muse 带来的服务器 CPU 实际新增采购量、收入和全球市场增幅，尚无可核实的单独披露。能给出的量级是：在“一亿日活用户”的假设下，考虑并发和资源共享，一种公开测算对应约 1,250 万个物理核心；按每颗 128 核换算，约为 9.8 万颗 CPU 的部署容量。市场流传的“158 万颗 CPU”则采用了几乎不共享资源的假设，不能当作已发生的订单。**这两组数字的用户口径和资源利用假设不同，并非可信预测区间的上下限。[9 月 28 日并发测算](https://wccftech.com/the-run-on-cpus-begins-with-lead-times-exploding-to-25-30-weeks-even-as-analysts-debate-the-quantum-of-demand-that-meta-muse-will-generate/)、[9 月 21 日静态测算](https://wccftech.com/if-metas-muse-personal-agent-scales-to-just-100-million-users-it-would-require-1-58-million-amd-ryzen-cpus-800-petabyte-of-ram-and-10000-petabyte-of-ssd-under-ideal-conditions/)",
       "search_run_id": "",
       "source_ids": [],
       "source_extraction_ids": [],
       "source_review_ids": [],
       "supporting_findings": [],
       "refuting_findings": [],
-      "gaps": [],
-      "next_actions": [],
+      "gaps": [
+        "缺少Muse专属净新增采购颗数、成交价、被替代工作负载与交付年份，无法给出服务器CPU市场实际增量。",
+        "缺少与Muse交付年份一致的服务器CPU市场实际金额分母，无法给出全球市场净增百分点。"
+      ],
+      "next_actions": [
+        "取得Muse订单归因和同期CPU市场收入原表；补读AMD电话会及TrendForce原始交期图，未取到前不使用草稿具体数字。"
+      ],
       "evidence_gate": {
         "passed": false,
         "reasons": []
       },
-      "latest_event_id": "",
-      "latest_recorded_at": "",
-      "event_count": 0
+      "latest_event_id": "edit_20261013T082701_4c49cd59_parent_D2",
+      "latest_recorded_at": "2026-10-13T08:58:25.308906+00:00",
+      "event_count": 1
     },
     {
       "step_id": "rollup:T1",
-      "status": "pending",
-      "answer": "",
+      "status": "blocked",
+      "answer": "**最直接受益的是云端服务器 CPU，尤其是能以较低功耗承载大量独立虚拟机、浏览器和工具进程的多核处理器；AMD EPYC 与 Arm 服务器路线都有依据。终端侧，手机、浏览器设备和 AI眼镜有望因接入云端智能体受益，但未必需要更强的本地 CPU。可能被替代的首先是部分本地计算任务、手工操作和低效率服务器，而不是整个 PC、手机或 x86 架构。**",
       "search_run_id": "",
       "source_ids": [],
       "source_extraction_ids": [],
       "source_review_ids": [],
       "supporting_findings": [],
       "refuting_findings": [],
-      "gaps": [],
-      "next_actions": [],
+      "gaps": [
+        "缺少Muse全机群供应商分配、同任务跨架构成本能效及终端实际替换数据，不能判定各路线已实现的净销量受益与替代规模。"
+      ],
+      "next_actions": [
+        "取得Muse按CPU架构的部署与同任务测试，核验眼镜功能上线和终端替换量；保留已证实的Glimmer本地方案。"
+      ],
       "evidence_gate": {
         "passed": false,
         "reasons": []
       },
-      "latest_event_id": "",
-      "latest_recorded_at": "",
-      "event_count": 0
+      "latest_event_id": "edit_20261013T082701_4c49cd59_parent_T1",
+      "latest_recorded_at": "2026-10-13T08:58:25.317717+00:00",
+      "event_count": 1
     },
     {
       "step_id": "rollup:C0",
@@ -255,12 +237,57 @@
       "latest_event_id": "",
       "latest_recorded_at": "",
       "event_count": 0
+    },
+    {
+      "step_id": "rollup:O.u1",
+      "status": "pending",
+      "answer": "",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [],
+      "next_actions": [],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "",
+      "latest_recorded_at": "",
+      "event_count": 0
+    },
+    {
+      "step_id": "rollup:I.u1",
+      "status": "blocked",
+      "answer": "**假设Muse达到1亿DAU，以128物理核CPU为统一尺度：若为10%用户同时预留CPU，每人预留1个物理核需约7.81万颗，每人2个物理核需约15.63万颗；按每颗5000—10000美元的假设成交价，对应3.91亿—15.63亿美元的CPU容量采购池。**若为全体全天预留，则分别为78.13万—156.25万颗、39.06亿—156.25亿美元。这两种核分配标准不是同等性能承诺；数字是条件测算，不是Meta订单。 若全部新购、由AMD供货并在一年交付，10%情景采购额相当于其2025年整个数据中心收入的约2.4%—9.4%；该分部含GPU，EPYC单独收入未披露，不能给出精确服务器CPU业务占比。",
+      "search_run_id": "",
+      "source_ids": [],
+      "source_extraction_ids": [],
+      "source_review_ids": [],
+      "supporting_findings": [],
+      "refuting_findings": [],
+      "gaps": [
+        "未披露一亿DAU情景对应的实际物理核时、并发、资源预留、存量复用和成交价，无法选定最接近实际的新增CPU数量。",
+        "AMD未单列可核验的EPYC收入，且Muse专属AMD份额与交付年限未知，无法给出精确CPU业务占比及年度增量收入。"
+      ],
+      "next_actions": [
+        "取得Muse用量与AMD订单分配、合同价格和交付节奏；寻找公开可复核的EPYC收入拆分，保留一亿DAU条件表。"
+      ],
+      "evidence_gate": {
+        "passed": false,
+        "reasons": []
+      },
+      "latest_event_id": "edit_20261013T082701_4c49cd59_parent_I.u1",
+      "latest_recorded_at": "2026-10-13T08:58:25.326267+00:00",
+      "event_count": 1
     }
   ],
   "l3_plans": [
     {
       "l3_node_id": "D1",
-      "plan_id": "l3rp_d1_edit_20261009T092333_321fabff",
+      "plan_id": "l3rp_d1_edit_20261013T082701_4c49cd59",
       "max_depth": 3,
       "status": "blocked",
       "steps": 1,
@@ -269,12 +296,12 @@
       "review_pending": 0,
       "blocked": 1,
       "completed": 0,
-      "events": 14,
-      "historical_plan_events": 5
+      "events": 5,
+      "historical_plan_events": 23
     },
     {
       "l3_node_id": "D2",
-      "plan_id": "l3rp_d2_edit_20261009T092333_321fabff",
+      "plan_id": "l3rp_d2_edit_20261013T082701_4c49cd59",
       "max_depth": 3,
       "status": "blocked",
       "steps": 1,
@@ -283,12 +310,12 @@
       "review_pending": 0,
       "blocked": 1,
       "completed": 0,
-      "events": 14,
-      "historical_plan_events": 5
+      "events": 5,
+      "historical_plan_events": 21
     },
     {
       "l3_node_id": "T1",
-      "plan_id": "l3rp_t1_edit_20261009T092333_321fabff",
+      "plan_id": "l3rp_t1_edit_20261013T082701_4c49cd59",
       "max_depth": 3,
       "status": "blocked",
       "steps": 1,
@@ -297,8 +324,8 @@
       "review_pending": 0,
       "blocked": 1,
       "completed": 0,
-      "events": 8,
-      "historical_plan_events": 4
+      "events": 5,
+      "historical_plan_events": 14
     },
     {
       "l3_node_id": "C0",
@@ -311,7 +338,7 @@
       "review_pending": 0,
       "blocked": 1,
       "completed": 0,
-      "events": 5,
+      "events": 7,
       "historical_plan_events": 4
     },
     {
@@ -325,7 +352,7 @@
       "review_pending": 0,
       "blocked": 1,
       "completed": 0,
-      "events": 5,
+      "events": 9,
       "historical_plan_events": 5
     },
     {
@@ -339,7 +366,7 @@
       "review_pending": 0,
       "blocked": 1,
       "completed": 0,
-      "events": 5,
+      "events": 7,
       "historical_plan_events": 5
     },
     {
@@ -353,7 +380,7 @@
       "review_pending": 0,
       "blocked": 1,
       "completed": 0,
-      "events": 8,
+      "events": 10,
       "historical_plan_events": 5
     },
     {
@@ -367,7 +394,7 @@
       "review_pending": 0,
       "blocked": 1,
       "completed": 0,
-      "events": 5,
+      "events": 7,
       "historical_plan_events": 5
     },
     {
@@ -381,7 +408,7 @@
       "review_pending": 0,
       "blocked": 1,
       "completed": 0,
-      "events": 4,
+      "events": 8,
       "historical_plan_events": 17
     },
     {
@@ -395,7 +422,7 @@
       "review_pending": 0,
       "blocked": 0,
       "completed": 1,
-      "events": 4,
+      "events": 6,
       "historical_plan_events": 9
     },
     {
@@ -409,7 +436,21 @@
       "review_pending": 0,
       "blocked": 1,
       "completed": 0,
-      "events": 4,
+      "events": 8,
+      "historical_plan_events": 0
+    },
+    {
+      "l3_node_id": "I.u1",
+      "plan_id": "l3rp_i.u1_edit_20261013T082701_4c49cd59",
+      "max_depth": 3,
+      "status": "blocked",
+      "steps": 1,
+      "pending": 0,
+      "in_progress": 0,
+      "review_pending": 0,
+      "blocked": 1,
+      "completed": 0,
+      "events": 5,
       "historical_plan_events": 0
     }
   ]

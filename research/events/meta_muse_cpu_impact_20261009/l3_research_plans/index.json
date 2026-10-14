@@ -9,14 +9,14 @@
     "planning_unit": "one_independent_plan_per_l3",
     "question_tree": "adaptive_depth_max_5"
   },
-  "parent_research_plan_id": "rp_edit_20261010T032723_472c2f8f",
+  "parent_research_plan_id": "rp_edit_20261013T082701_4c49cd59",
   "plan_type": "l3_deep_research_index",
   "plans": [
     {
       "active_steps": 1,
       "event_path": "l3_research_plans/D1/research_step_events.jsonl",
       "l3_node_id": "D1",
-      "l3_plan_id": "l3rp_d1_edit_20261009T092333_321fabff",
+      "l3_plan_id": "l3rp_d1_edit_20261013T082701_4c49cd59",
       "leaf_steps": 1,
       "max_depth": 3,
       "path": "l3_research_plans/D1/research_plan.json"
@@ -25,7 +25,7 @@
       "active_steps": 1,
       "event_path": "l3_research_plans/D2/research_step_events.jsonl",
       "l3_node_id": "D2",
-      "l3_plan_id": "l3rp_d2_edit_20261009T092333_321fabff",
+      "l3_plan_id": "l3rp_d2_edit_20261013T082701_4c49cd59",
       "leaf_steps": 1,
       "max_depth": 3,
       "path": "l3_research_plans/D2/research_plan.json"
@@ -34,7 +34,7 @@
       "active_steps": 1,
       "event_path": "l3_research_plans/T1/research_step_events.jsonl",
       "l3_node_id": "T1",
-      "l3_plan_id": "l3rp_t1_edit_20261009T092333_321fabff",
+      "l3_plan_id": "l3rp_t1_edit_20261013T082701_4c49cd59",
       "leaf_steps": 1,
       "max_depth": 3,
       "path": "l3_research_plans/T1/research_plan.json"
@@ -110,8 +110,17 @@
       "leaf_steps": 1,
       "max_depth": 3,
       "path": "l3_research_plans/O.u1/research_plan.json"
+    },
+    {
+      "active_steps": 1,
+      "event_path": "l3_research_plans/I.u1/research_step_events.jsonl",
+      "l3_node_id": "I.u1",
+      "l3_plan_id": "l3rp_i.u1_edit_20261013T082701_4c49cd59",
+      "leaf_steps": 1,
+      "max_depth": 3,
+      "path": "l3_research_plans/I.u1/research_plan.json"
     }
   ],
-  "revision_id": "edit_20261010T032723_472c2f8f",
+  "revision_id": "edit_20261013T082701_4c49cd59",
   "schema_version": "4.0"
 }

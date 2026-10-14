@@ -76,6 +76,7 @@ def propose_edit(tree: dict, edit: dict) -> dict:
         node["mode"] = "rollup" if children else "leaf"
         if node["id"] in affected:
             node.pop("answer_review", None)
+            node.pop("core_points", None)
             node.update(passed=False, evidence=[], tables=[], refutation="",
                         conclusion="问题范围已变化，等待本轮研究；旧结论不作为当前答案。",
                         analysis=[{"heading": "等待重新验证", "paragraphs": ["按新问题重新取证、分析并检查充分性，之后逐层汇总。"]}],
@@ -101,6 +102,7 @@ def validate_researched_tree(before: dict, proposal: dict, after: dict) -> None:
     if before.get("as_of_date") != after.get("as_of_date"):
         raise ValueError("研究截面不可随编辑改变。")
     prior = {n["id"]: n for n in before["nodes"]}
+    uses_core_points = any(n.get("core_points") for n in prior.values())
     for nid, node in actual.items():
         if any(node.get(k) != expected[nid].get(k) for k in ("question", "parent_id", "level")):
             raise ValueError(f"{nid} 不符合已确认的问题范围。")
@@ -108,6 +110,8 @@ def validate_researched_tree(before: dict, proposal: dict, after: dict) -> None:
             raise ValueError(f"无关问题 {nid} 被修改。")
         if nid in proposal["affected_ids"] and node["conclusion"] == expected[nid]["conclusion"]:
             raise ValueError(f"{nid} 尚未产生本轮分析。")
+        if nid in proposal["research_ids"] and uses_core_points and not node.get("core_points"):
+            raise ValueError(f"{nid} 缺少本轮重新撰写的核心观点要点。")
 
 
 def validate_qa_tree(qa: dict, tree: dict) -> None:

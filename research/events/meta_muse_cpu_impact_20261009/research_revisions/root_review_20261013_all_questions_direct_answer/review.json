@@ -1,0 +1,32 @@
+{
+  "review_id": "root_review_20261013_all_questions_direct_answer",
+  "parent_revision": "edit_20261010T032723_472c2f8f",
+  "recorded_at": "2026-10-13T03:44:07.725367+00:00",
+  "reason": "整棵问题树按题目直接回答；细节边界放入证据行与审计，仅保留影响结论的关键不确定性。",
+  "changed_nodes": [
+    "MUSE",
+    "O",
+    "O1",
+    "I",
+    "D1",
+    "D2",
+    "T1",
+    "C",
+    "C0",
+    "AMD",
+    "INTC",
+    "ARM",
+    "NVDA",
+    "O.u1"
+  ],
+  "unchanged_nodes": [
+    "O2"
+  ],
+  "gate": "原有证据充分性、截止日、来源和数据表不变；未新增事实或来源。",
+  "checks": [
+    "回答要点摘录",
+    "QA与状态一致性",
+    "嵌套研究计划",
+    "共享HTML与Markdown契约"
+  ]
+}

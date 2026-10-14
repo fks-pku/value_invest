@@ -44,20 +44,28 @@ class QuestionTreeMarkdownRenderer:
                     p(f"- [{child['question']}](#{child['id']})")
                     p(child["why_it_matters"])
             else:
-                p(node["conclusion"])
+                for point in node.get("core_points") or [{"text": node["conclusion"]}]:
+                    lines.append("- " + text(point["text"]))
+                lines.append("")
             p("#### 2. " + titles[1])
             if children:
                 for child in children:
                     p(f"- [{child['question']}](#{child['id']})：{child['conclusion']}")
-                    p(("通过 · 限本题" if child["passed"] else "未充分") + "；" + "；".join(child["gaps"]))
+                    p("通过 · 限本题" if child["passed"] else "未充分")
                 p("综合判断：" + node["conclusion"])
             if node["what"] != node["question"]:
                 p(node["what"])
             for supplementary in (False, True):
-                parts = [a for a in node["analysis"] if a.get("supplementary", False) == supplementary]
+                parts = [(i, a) for i, a in enumerate(node["analysis"])
+                         if a.get("supplementary", False) == supplementary]
                 if supplementary and parts:
                     p("##### 补充测算与方法说明")
-                for part in parts:
+                point_by_section = {section: index for index, point in enumerate(node.get("core_points", []), 1)
+                                    for section in point["analysis_sections"]} if not children else {}
+                for section_index, part in parts:
+                    point_index = point_by_section.get(section_index)
+                    if point_index and section_index == node["core_points"][point_index - 1]["analysis_sections"][0]:
+                        p(f"展开观点 {point_index}")
                     p("##### " + part["heading"])
                     for paragraph in part["paragraphs"]:
                         p(paragraph)
@@ -71,15 +79,18 @@ class QuestionTreeMarkdownRenderer:
             if children:
                 p("#### 3. " + titles[2])
                 p(("充分性：通过（限本题）。" if node["passed"] else "充分性：未通过。") + "；".join(node["reasons"]))
-                p("缺口：" + ("；".join(node["gaps"]) or "本题边界内暂无已记录的重大缺口。"))
+                child_gaps = [gap for child in children for gap in child.get("gaps", [])]
+                unique_gaps = [gap for gap in node.get("gaps", []) if not any(gap.endswith(child_gap) for child_gap in child_gaps)]
+                if unique_gaps:
+                    p("缺口：" + "；".join(unique_gaps))
+                elif not any(not child["passed"] for child in children):
+                    p("本题边界内暂无已记录的重大缺口。")
                 for child in children:
                     if not child["passed"]:
                         p(f"- [{child['question']}](#{child['id']})：" + "；".join(child["gaps"] + child["next_actions"]))
                 if node.get("refutation"):
                     p("反向证据与边界：" + node["refutation"])
                 p("下一步：" + "；".join(node["next_actions"]))
-            elif node.get("gaps"):
-                p("；".join(str(g).rstrip("。； ") for g in node["gaps"]) + "。")
             if not children:
                 p("#### 3. " + titles[2])
                 table(["材料、日期与原文定位", "关键数据与事实", "作用", "口径限制与反向解释"],

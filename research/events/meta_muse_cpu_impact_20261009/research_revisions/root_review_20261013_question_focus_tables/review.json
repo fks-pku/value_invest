@@ -1,0 +1,16 @@
+{
+  "review_id": "root_review_20261013_question_focus_tables",
+  "parent_revision": "edit_20261010T032723_472c2f8f",
+  "recorded_at": "2026-10-13T03:48:47.665544+00:00",
+  "reason": "关键论证仅保留直接回答问题的数字、时间线和收入结构表；重复的边界矩阵移入数据列表和审计。",
+  "changed_nodes": [
+    "O1",
+    "D2",
+    "T1",
+    "C0",
+    "AMD",
+    "INTC",
+    "NVDA"
+  ],
+  "gate": "原来源、数据列表、证据充分性与截止日不变。"
+}

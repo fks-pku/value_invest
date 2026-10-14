@@ -1,7 +1,7 @@
 """Shared AI-factory-style template. This adapter renders; it never researches or scores."""
 from __future__ import annotations
 
-from html import escape
+from html import escape, unescape
 from pathlib import Path
 import re
 from string import Template
@@ -36,10 +36,23 @@ class QuestionTreeHtmlRenderer:
 
         def text(value):
             escaped = escape(str(value))
+            escaped = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", escaped)
+            def authored_link(match):
+                label, url = match.groups()
+                if url.startswith("#"):
+                    return f'<a href="{escape(url, quote=True)}">{label}</a>' if url[1:] in nodes else match[0]
+                safe = escape(unescape(url), quote=True)
+                return f'<a href="{safe}" target="_blank" rel="noopener noreferrer">{label}</a>'
+            escaped = re.sub(r"\[([^\]\n]+)\]\((https?://[^)\s]+|#[A-Za-z0-9_.-]+)\)", authored_link, escaped)
             return re.sub(r"\[([A-Za-z0-9_.-]+)\]", lambda m: f'<cite class="inline-cite">{link(m[1])}</cite>' if m[1] in sources else m[0], escaped)
 
-        def paragraphs(items):
-            return ''.join(f'<p>{text(p)}</p>' for p in items)
+        def paragraphs(items, *, comment_node=None, section_index=None):
+            def attrs(index):
+                if comment_node is None:
+                    return ''
+                return (f' data-comment-node="{escape(comment_node, quote=True)}"'
+                        f' data-comment-section="{section_index}" data-comment-paragraph="{index}"')
+            return ''.join(f'<p{attrs(index)}>{text(p)}</p>' for index, p in enumerate(items))
 
         def status(node):
             return "通过 · 限本题" if node["passed"] else "未充分"
@@ -58,8 +71,7 @@ class QuestionTreeHtmlRenderer:
             if node["mode"] == "rollup":
                 rows = []
                 for child in children(node):
-                    gap = f'<span class="child-gap">未作为已验证结论：{text("；".join(child["gaps"]))}</span>' if not child["passed"] else ''
-                    rows.append(f'<div data-child-summary="{child["id"]}"><dt><a href="#{child["id"]}">{text(child["question"])}</a><small>{status(child)}</small></dt><dd>{text(child["conclusion"])}{gap}</dd></div>')
+                    rows.append(f'<div data-child-summary="{child["id"]}"><dt><a href="#{child["id"]}">{text(child["question"])}</a><small>{status(child)}</small></dt><dd>{text(child["conclusion"])}</dd></div>')
                 return '<dl class="child-findings">' + ''.join(rows) + '</dl>'
             rows = []
             for item in node.get("evidence", []):
@@ -81,14 +93,25 @@ class QuestionTreeHtmlRenderer:
             crumb = '<p class="breadcrumb">' + ''.join(f'<a href="#{n["id"]}">L{n["level"]} · {text(n.get("short") or n["question"])}</a>' for n in path) + '</p>'
             child_links = '<ol class="research-questions">' + ''.join(
                 f'<li data-child-id="{n["id"]}"><a href="#{n["id"]}">{text(n["question"])}</a><p data-child-purpose="{n["id"]}">{text(n["why_it_matters"])}</p></li>' for n in child_nodes) + '</ol>'
-            viewpoint = f'<div class="article-copy"><p class="answer">{text(node["conclusion"])}</p></div>'
+            points = node.get("core_points") or [{"text": node["conclusion"], "analysis_sections": []}]
+            viewpoint = ('<div class="article-copy"><ul class="core-points">'
+                         + ''.join(f'<li data-core-point="{index}">{text(point["text"])}</li>'
+                                   for index, point in enumerate(points, 1)) + '</ul></div>')
+            point_by_section = {section: index for index, point in enumerate(points, 1)
+                                for section in point["analysis_sections"]}
             analysis = '<div class="article-copy">'
             if child_nodes:
                 analysis += evidence(node) + '<h4>综合判断</h4>' + f'<p class="answer">{text(node["conclusion"])}</p>'
             analysis += paragraphs([node["what"]]) if node["what"] != node["question"] else ''
             supplements = []
-            for section in node["analysis"]:
-                content = f'<h4>{text(section["heading"])}</h4>' + paragraphs(section["paragraphs"])
+            for section_index, section in enumerate(node["analysis"]):
+                point_index = point_by_section.get(section_index)
+                point_label = (f'<span class="argument-point-label">展开观点 {point_index}</span>'
+                               if point_index and section_index == points[point_index - 1]["analysis_sections"][0]
+                               else '')
+                content = point_label + f'<h4>{text(section["heading"])}</h4>' + paragraphs(
+                    section["paragraphs"], comment_node=nid if not child_nodes else None,
+                    section_index=section_index)
                 for t in section.get("tables", []):
                     rows = ['<tr>' + ''.join(f'<td>{text(c)}</td>' for c in row) + '</tr>' for row in t["rows"]]
                     content += table(t["headers"], rows, "analysis-table", t.get("caption", ""))
@@ -105,10 +128,12 @@ class QuestionTreeHtmlRenderer:
                 analysis += '<details class="supplementary-analysis"><summary>补充测算与方法说明</summary>' + ''.join(supplements) + '</details>'
             if child_nodes:
                 conclusion = '<div class="node-assessment">' + paragraphs([("充分性：通过（限本题边界）。" if node["passed"] else "充分性：未通过。") + "；".join(node["reasons"])])
-                if node.get("gaps"):
-                    conclusion += '<p class="gap-note">缺口：' + text("；".join(node["gaps"])) + '</p>'
+                child_gaps = [gap for child in child_nodes for gap in child.get("gaps", [])]
+                unique_gaps = [gap for gap in node.get("gaps", []) if not any(gap.endswith(child_gap) for child_gap in child_gaps)]
+                if unique_gaps:
+                    conclusion += '<p class="gap-note">缺口：' + text("；".join(unique_gaps)) + '</p>'
                 missing_children = [c for c in child_nodes if not c["passed"]]
-                if not node.get("gaps") and not missing_children:
+                if not unique_gaps and not missing_children:
                     conclusion += paragraphs(["本题边界内暂无已记录的重大缺口。"])
                 for child in missing_children:
                     conclusion += f'<div class="child-gap" data-child-gap="{child["id"]}"><a href="#{child["id"]}">{text(child["question"])}</a>'
@@ -117,10 +142,8 @@ class QuestionTreeHtmlRenderer:
                     conclusion += '<p class="boundary-note">反向证据与边界：' + text(node["refutation"]) + '</p>'
                 conclusion += paragraphs(["下一步：" + "；".join(node["next_actions"])]) + '</div>'
             else:
-                # The badge already shows answerability. Keep only unresolved facts in reader prose.
-                gap_sentence = "；".join(str(g).rstrip("。； ") for g in node.get("gaps", []))
-                conclusion = ('<div class="node-assessment"><p class="gap-note">'
-                              + text(gap_sentence + '。') + '</p></div>') if gap_sentence else ''
+                # Leaf uncertainty is authored in the answer; raw gate gaps stay in the audit record.
+                conclusion = ''
             if child_nodes:
                 sections = [child_links, analysis + '</div>', '<div class="article-copy">' + conclusion + '</div>']
             else:

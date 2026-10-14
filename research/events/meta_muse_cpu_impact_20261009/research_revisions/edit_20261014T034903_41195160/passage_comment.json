@@ -1,0 +1,20 @@
+{
+  "revision_id": "edit_20261014T034903_41195160",
+  "recorded_at": "2026-10-14T03:50:25.551681+00:00",
+  "target": {
+    "node_id": "AMD",
+    "section": 1,
+    "paragraph": 0,
+    "original": "Meta已部署数百万颗EPYC，并计划使用后续Venice、Verano；9月30日的一手Muse测试报告单个环境使用EPYC 9D25。AMD第二季度数据中心收入67亿美元、同比增长107%，包括EPYC和Instinct，属于事件发布前的公司基线。[E321_AMDMETA][S21][S06]",
+    "quote": "并计划使用后续Venice、Verano",
+    "comment": "介绍一下这是什么？"
+  },
+  "replacement": "Venice 和 Verano 是 AMD 面向数据中心的 EPYC（霄龙）服务器 CPU 产品代号，均属于第六代 EPYC 产品布局：Venice 已在2026年7月发布，可用于服务器计算，也在 Helios AI 机架中与 Instinct GPU 配合运行；Verano 则计划于2027年推出，重点是作为后续 Instinct GPU 的主机处理器，采用低功耗 LPDDR5X 内存及 SOCAMM2 模块，以改善内存带宽和整机能效。[E321_AAI](https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era)[PC41195160_2](https://www.amd.com/en/blogs/2026/a-look-ahead--extending-server-energy-efficiency-with-lpddr5x-me.html)“Meta 计划使用”指双方已公布的产品采用合作：2026年2月24日公告称，Meta 已在全球基础设施部署数百万颗历代 EPYC，并将成为 Venice 和 Verano 的先期主要客户；其中搭载 Venice 的首批合作系统当时计划于2026年下半年开始出货。[PC41195160_3](https://ir.amd.com/news-events/press-releases/detail/1279/amd-and-meta-announce-expanded-strategic-partnership-to-deploy-6-gigawatts-of-amd-gpus)7月23日的进展说明，Meta 正在实验室验证 Venice 平台、准备规模部署，并继续与 AMD 合作推进 Verano；这些 CPU 可承担智能体调度、工具调用、代码执行和数据管理等任务。[PC41195160_4](https://newsroom.amd.com/news/meta-ai-infrastructure-update/)这说明 AMD 已有向 Meta 提供后续 CPU 的合作基础，但上述公告没有披露 Muse 专属采购量或收入，因此尚不能据此量化 Muse 带来的 CPU 收入增量。",
+  "source_ids": [
+    "E321_AAI",
+    "PC41195160_2",
+    "PC41195160_3",
+    "PC41195160_4"
+  ],
+  "change_note": "解释两个产品代号、功能差异与时间安排，并区分 Meta 的采用计划、验证进展和 Muse 收入归因。"
+}

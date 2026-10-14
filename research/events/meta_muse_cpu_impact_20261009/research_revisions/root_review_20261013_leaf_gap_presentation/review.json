@@ -1,0 +1,21 @@
+{
+  "review_id": "root_review_20261013_leaf_gap_presentation",
+  "recorded_at": "2026-10-13T03:50:01.788725+00:00",
+  "reason": "叶子章节直接陈述关键未知；内部缺口清单不在关键论证末尾重复输出。",
+  "changed_nodes": [
+    "O1",
+    "O2",
+    "D1",
+    "D2",
+    "T1",
+    "C0",
+    "AMD",
+    "INTC",
+    "ARM",
+    "NVDA",
+    "O.u1"
+  ],
+  "research_gate": "原结论、证据、缺口与充分性状态未改变。",
+  "before_html_sha256": "11539de2c7cf2739e1f38694892cd1ced8d5c5a6067afa044030d69b1782244f",
+  "after_html_sha256": "a14d6da05e63904f31009843b8425d9aca1ff05ccd5ee646526d3dfa5d180d1f"
+}

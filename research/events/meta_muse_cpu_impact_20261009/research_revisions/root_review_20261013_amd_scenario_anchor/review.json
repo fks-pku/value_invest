@@ -1,0 +1,10 @@
+{
+  "review_id": "root_review_20261013_amd_scenario_anchor",
+  "parent_revision": "edit_20261010T032723_472c2f8f",
+  "recorded_at": "2026-10-13T03:47:23.850446+00:00",
+  "reason": "AMD数量敏感性表在正文列出关键假设，使表格可独立复算。",
+  "changed_nodes": [
+    "AMD"
+  ],
+  "gate": "证据充分性与截止日不变。"
+}

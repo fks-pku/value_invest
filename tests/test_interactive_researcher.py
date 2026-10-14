@@ -104,6 +104,23 @@ def test_research_result_cannot_change_siblings_or_cutoff(tree):
         validate_researched_tree(tree, proposal, candidate)
 
 
+def test_research_rewrites_core_points_after_question_edit(tree):
+    leaf = next(n for n in tree["nodes"] if n["id"] == "F1.1.3")
+    leaf["core_points"] = [{"text": "旧问题的观点。", "analysis_sections": list(range(len(leaf["analysis"]))) }]
+    proposal = propose_edit(tree, change(tree))
+    rewritten = next(n for n in proposal["tree"]["nodes"] if n["id"] == "F1.1.3")
+    assert "core_points" not in rewritten
+    candidate = deepcopy(proposal["tree"])
+    for node in candidate["nodes"]:
+        if node["id"] in proposal["affected_ids"]:
+            node["conclusion"] = "本轮重新研究后的回答。"
+    with pytest.raises(ValueError, match="核心观点要点"):
+        validate_researched_tree(tree, proposal, candidate)
+    next(n for n in candidate["nodes"] if n["id"] == "F1.1.3")["core_points"] = [
+        {"text": "新问题的观点。", "analysis_sections": [0]}]
+    validate_researched_tree(tree, proposal, candidate)
+
+
 class MemoryRepository:
     def __init__(self, tree):
         self.data, self.job, self.published = tree, None, False
@@ -251,13 +268,19 @@ def test_http_origin_token_traversal_and_preview(tree, tmp_path):
         assert call("/professional_report.html") == home
         assert call("/professional_report.html?view=default") == home
         assert b'id="edit"' in home and b'id="add"' in home
+        assert b'id="passage-selection"' in home and b'id="comment-editor"' in home
         assert b'href="/professional_report.offline.html" download=' in home
         assert call("/professional_report.offline.html").decode() == snapshot
         embedded = call("/report").decode()
-        assert "OFFLINE SNAPSHOT" in embedded and "research-node" in embedded
+        assert "OFFLINE SNAPSHOT" in embedded and "research-passage-selection" in embedded
         assert "RESEARCH / WORKSPACE" not in embedded  # No recursive editor iframe.
         assert json.loads(call("/api/process")) == {"job_id": None, "updates": [], "nodes": []}
         assert json.loads(call("/api/preview", change(tree)))["research_ids"] == ["F1.1.3"]
+        passage = next(n for n in tree["nodes"] if n["id"] == "F1.1.3")["analysis"][0]["paragraphs"][0]
+        comment = {"version": tree_version(tree), "node_id": "F1.1.3", "section": 0,
+                   "paragraph": 0, "quote": passage[:18], "comment": "这句话的原始依据是什么？"}
+        assert json.loads(call("/api/comment/preview", comment))["original"] == passage
+        assert b"research-passage-selection" in call("/assets/researcher_bridge.js")
         assert repo.current_job() is None  # Preview never consumes model quota.
         for headers in ({"Origin":"https://evil.example"}, {"X-Research-Token":"wrong"}, {"Host":"evil.example"}):
             with pytest.raises(HTTPError) as error:
@@ -443,6 +466,27 @@ def test_unrecognized_output_still_rejected(candidate):
     assert hashes(repository.project) == baseline
 
 
+def test_worker_validation_diagnostics_are_audited_not_published(candidate):
+    repository, job, stage = candidate
+    names = ["parent_execution_validation.json",
+             "l3_research_plans/F1.1.3/execution_validation.json",
+             f"revision_audits/{job['id']}/scratch.json"]
+    before = Path(job["audit_dir"]) / "before"
+    for name in names:
+        write(stage / name, {"worker_only": name})
+    repository.validate_and_publish(job)
+    for name in names:
+        assert read(Path(job["audit_dir"]) / "worker_diagnostics" / name) == {"worker_only": name}
+        original = before / name
+        published = repository.project / name
+        if original.exists():
+            assert published.read_bytes() == original.read_bytes()
+        else:
+            assert not published.exists()
+    receipt = read(Path(job["audit_dir"]) / "publication.json")
+    assert not set(names) & set(receipt["files"])
+
+
 def test_worker_prompt_specifies_source_and_claim_contract(tree):
     prompt = CodexResearchRunner(ROOT).prompt({"id": "test-contract"})
     assert "report_view_model.json.sources" in prompt
@@ -450,6 +494,8 @@ def test_worker_prompt_specifies_source_and_claim_contract(tree):
     assert "review_id,claim" in prompt
     assert "sufficiency.passed/gaps" in prompt
     assert "direct_answers/<id>.md" in prompt and "answer_review" in prompt
+    assert "verified_with_stated_boundary" in prompt and "accepted 不是发布器认可" in prompt
+    assert "parent_execution_validation.json" in prompt and "diagnostics/" in prompt
 
 
 def test_independent_question_prompt_excludes_old_answer_and_report_schema(tree):

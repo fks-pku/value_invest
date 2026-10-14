@@ -5,9 +5,9 @@
     "summary": {
       "mode": "historical_backtest",
       "presentation_profile": "question-tree-v1",
-      "nodes": 15,
+      "nodes": 16,
       "parents": 4,
-      "leaves": 11
+      "leaves": 12
     }
   },
   "markdown": {

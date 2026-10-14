@@ -5,6 +5,7 @@ import tempfile
 import unittest
 
 from value_invest_research.adapters.outbound.canonical_html_report_renderer import CanonicalHtmlReportRenderer
+from value_invest_research.adapters.outbound.question_tree_markdown_renderer import QuestionTreeMarkdownRenderer
 from value_invest_research.domain.question_tree_report import validate_question_tree_report, _TemplateParser
 from value_invest_research.domain.report_view_model import ReportViewModel
 from value_invest_research.framework_contracts import validate_report_contract_html
@@ -72,7 +73,7 @@ class QuestionTreeTemplateTests(unittest.TestCase):
         self.assertEqual(parent["rollups"], [child["id"]])
         self.assertEqual(middle["rollups"], [grandchild["id"]])
         self.assertEqual(leaf["rollups"], [])
-        self.assertIn("未作为已验证结论", html)
+        self.assertNotIn("未作为已验证结论", html)
         omitted = html.replace('data-child-summary="OTHER.child"', '', 1)
         self.assertFalse(validate_report_contract_html(omitted)["ok"])
         duplicate = html.replace('data-child-id="OTHER.child"', 'data-child-id="OTHER.child.leaf"', 1)
@@ -90,6 +91,30 @@ class QuestionTreeTemplateTests(unittest.TestCase):
         self.assertIn("比较了当前观察与反向解释。", html)
         self.assertNotIn("private-extraction-id", html)
         self.assertTrue(validate_report_contract_html(html)["ok"])
+
+    def test_authored_analysis_paragraph_has_comment_anchor(self):
+        html = CanonicalHtmlReportRenderer().render(vm(sample()))
+        self.assertIn('data-comment-node="OTHER.child" data-comment-section="0" data-comment-paragraph="0"', html)
+        self.assertNotIn('data-comment-node="OTHER"', html.split('id="OTHER.child"')[0])
+
+    def test_core_points_are_bullets_with_ordered_argument_expansion(self):
+        data = sample()
+        leaf = data["nodes"][1]
+        leaf["analysis"].append({"heading": "第二个论证", "paragraphs": ["解释第二条观点。"]})
+        leaf["core_points"] = [
+            {"text": "第一条关键判断。[REF-1]", "analysis_sections": [0]},
+            {"text": "第二条关键判断。", "analysis_sections": [1]},
+        ]
+        self.assertEqual(validate_question_tree_report(data), [])
+        html = CanonicalHtmlReportRenderer().render(vm(data))
+        self.assertIn('<ul class="core-points"><li data-core-point="1">', html)
+        self.assertIn('<li data-core-point="2">第二条关键判断。</li>', html)
+        self.assertLess(html.index("展开观点 1"), html.index("展开观点 2"))
+        md = QuestionTreeMarkdownRenderer().render(vm(data))
+        self.assertIn("- 第一条关键判断。", md)
+        self.assertLess(md.index("展开观点 1"), md.index("展开观点 2"))
+        leaf["core_points"][1]["analysis_sections"] = [0]
+        self.assertTrue(any("in order" in error for error in validate_question_tree_report(data)))
 
     def test_parent_cannot_pass_unanswered_child(self):
         data = sample()

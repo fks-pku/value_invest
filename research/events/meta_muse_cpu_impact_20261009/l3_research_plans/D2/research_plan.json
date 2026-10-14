@@ -13,12 +13,12 @@
     "company_bridge_fields": [],
     "downstream_node_ids": [],
     "indicators": [
-      "Muse专属采购量、ASP、交付期间及净新增归因",
-      "发布前服务器CPU收入与当年市场基线、2030预测分别核对",
-      "128核CPU容量金额情景、分年部署与市场占比的可比性"
+      "Muse执行层需求与可归因CPU新增采购",
+      "静态配额及并发共享测算原文、公式与单位",
+      "发布前云采购、2030预测与当期市场分母区别"
     ],
-    "refute_rule": "存在相反部署、成本或需求证据，或关键量化变量尚未披露",
-    "support_rule": "当前问题的原始材料直接支持限定结论",
+    "refute_rule": "共享、存量复用、未交付、收入分部混合或缺少实际用量可改变数量与受益判断",
+    "support_rule": "原始材料与可复算的情景直接回答原题各项要求",
     "update_cadence": "event_driven"
   },
   "material_collection_policy": {
@@ -35,13 +35,13 @@
     ],
     "source_reuse_rule": "The same source may serve another active question only through a separate attachment, extraction, and GPT review for that question."
   },
-  "parent_research_plan_id": "rp_edit_20261009T092333_321fabff",
-  "plan_id": "l3rp_d2_edit_20261009T092333_321fabff",
+  "parent_research_plan_id": "rp_edit_20261013T082701_4c49cd59",
+  "plan_id": "l3rp_d2_edit_20261013T082701_4c49cd59",
   "plan_type": "l3_deep_research",
   "question_tree": {
     "analysis_plan": [
-      "剥离GPU、存量替换及发布前增长",
-      "复算情景金额；不得以2030预测充当2026实绩"
+      "复算不同公开情景，识别将线程当核的错误",
+      "分离事件增量与既有行业增长、累计采购与年度收入"
     ],
     "children": [],
     "depends_on_question_ids": [],
@@ -49,9 +49,9 @@
     "question": "Muse 对服务器 CPU 市场的增量有多大？",
     "question_id": "D2",
     "required_data": [
-      "Muse专属采购量、ASP、交付期间及净新增归因",
-      "发布前服务器CPU收入与当年市场基线、2030预测分别核对",
-      "128核CPU容量金额情景、分年部署与市场占比的可比性"
+      "Muse执行层需求与可归因CPU新增采购",
+      "静态配额及并发共享测算原文、公式与单位",
+      "发布前云采购、2030预测与当期市场分母区别"
     ],
     "requires_refutation_search": true,
     "research_dimension": "l3_initial",
@@ -77,15 +77,17 @@
     "run_mode": "live",
     "scope": "全球服务器 CPU 为主；端侧仅检验替代边界。事件研究，不扩展完整行业链或 standalone-BOM 项目。"
   },
-  "revision_id": "edit_20261009T092333_321fabff",
+  "revision_id": "edit_20261013T082701_4c49cd59",
   "schema_version": "4.0",
   "steps": [
     {
       "analysis_plan": [
-        "剥离GPU、存量替换及发布前增长",
-        "复算情景金额；不得以2030预测充当2026实绩"
+        "复算不同公开情景，识别将线程当核的错误",
+        "分离事件增量与既有行业增长、累计采购与年度收入"
       ],
       "answer_contract": {
+        "preserve_full_question_scope": true,
+        "protocol": "direct-answer-v1",
         "required_fields": [
           "answer",
           "supporting_findings",
@@ -93,7 +95,9 @@
           "gaps",
           "next_actions"
         ],
-        "rule": "Answer only the current question; separate facts, inference, judgment, refutation, and gaps."
+        "review_required": true,
+        "rule": "先把当前问题当成用户单独提出的问题来回答。\n开头给实质答案：是什么就解释对象，谁就列清人群，如何就说明过程，多少就给口径和数值，\n比较就给同维度差异，是否/为什么就给判断及原因。按问题选择展开方式，不套统一投资段落。\n覆盖题目中每一个实质提问；提供理解答案所需的定义、具体事实、例子、日期和适用条件。\n依据紧跟事实，区分已实现、计划、预测和未知；关键限制随对应答案出现。\n查不到时明确哪一部分无法回答、已知什么及原因，不能用方法论或“需进一步验证”替代已知答案。\n先完成本题，再简短说明对父问题的意义；父题背景只能消歧，不能把本题偷换成投资价值或采购判断。\n自然段、小标题、清单、对比表按信息需要使用，不固定段数、字数或材料数。\n正文是给读者的回答，不叙述搜索步骤、验收过程或“本题到此停止”；研究状态留在内部记录。\n公共正文只呈现当前最准确的答案：关键事实或数字、必要的计算或因果、会改变判断的限制。\n这适用于整棵问题树的父节点、叶节点和每个小标题。每段应直接回答当前问题的一部分；\n父节点综合回答父问题，不逐条复述子题限制。证据适用范围的细节留在对应数据行或审计，\n只有改变判断的缺口、反证和决定性假设在对应答案旁简短出现一次。\n按信息价值压缩段落；同一事实和限制只在最相关的位置解释一次，不为了显示研究过程而重复。\n默认先提供读者要的信息。回答“为什么”时，围绕实际任务、机制和因果展开；\n不要用一串“不能据此”“不等于”代替正面解释。只有某个限制会实质改变本题答案，\n才在对应事实旁简短说明；其它限制留在证据审计或更相关的数量、替代与风险问题中。\n修订前写过什么、这次补了什么、原稿漏了什么留在版本和复核记录，不写进标题、核心观点或论证。\n不要用“本报告此前”“本轮检索”“本题的准确答案”“对父问题的意义”等编辑或工作流措辞；\n必要的来源归属直接写来源及其主张，推算值直接标明输入、公式和情景性质。\n充分性按原题完整范围判断；不能自行缩窄为容易确认的小结论后宣布通过。",
+        "standalone_answer_first": true
       },
       "collection_contract": {
         "bulk_pool_mapping_forbidden": true,
@@ -113,7 +117,7 @@
       "freshness_requirement": "Use the latest available source as of 2026-10-09. Refresh cadence: event_driven.",
       "initial_status": "pending",
       "l3_node_id": "D2",
-      "l3_plan_id": "l3rp_d2_edit_20261009T092333_321fabff",
+      "l3_plan_id": "l3rp_d2_edit_20261013T082701_4c49cd59",
       "l4_question_id": "",
       "leaf_question_id": "D2",
       "leaf_step_id": "question:D2",
@@ -142,17 +146,17 @@
         }
       ],
       "refuting_source_plan": [
-        "核实事件前提；寻找资源共享、发布前增长、竞争路线与未交付证据"
+        "Muse 对服务器 CPU 市场的增量有多大？ Meta Muse sharing CPU utilization existing capacity not disclosed before:2026-10-10"
       ],
       "required_data": [
-        "Muse专属采购量、ASP、交付期间及净新增归因",
-        "发布前服务器CPU收入与当年市场基线、2030预测分别核对",
-        "128核CPU容量金额情景、分年部署与市场占比的可比性"
+        "Muse执行层需求与可归因CPU新增采购",
+        "静态配额及并发共享测算原文、公式与单位",
+        "发布前云采购、2030预测与当期市场分母区别"
       ],
       "required_materials": [
-        "Muse专属采购量、ASP、交付期间及净新增归因",
-        "发布前服务器CPU收入与当年市场基线、2030预测分别核对",
-        "128核CPU容量金额情景、分年部署与市场占比的可比性"
+        "Muse执行层需求与可归因CPU新增采购",
+        "静态配额及并发共享测算原文、公式与单位",
+        "发布前云采购、2030预测与当期市场分母区别"
       ],
       "research_dimension": "l3_initial",
       "research_step_id": "question:D2",
@@ -161,9 +165,7 @@
         {
           "deepseek_allowed": false,
           "examples_or_search_queries": [
-            "Muse 对服务器 CPU 市场的增量有多大？ Muse专属采购量、ASP、交付期间及净新增归因",
-            "Muse 对服务器 CPU 市场的增量有多大？ 发布前服务器CPU收入与当年市场基线、2030预测分别核对",
-            "Muse 对服务器 CPU 市场的增量有多大？ 128核CPU容量金额情景、分年部署与市场占比的可比性"
+            "Muse 对服务器 CPU 市场的增量有多大？ Muse执行层需求与可归因CPU新增采购 / 静态配额及并发共享测算原文、公式与单位 / 发布前云采购、2030预测与当期市场分母区别"
           ],
           "expected_fields": [
             "published_at",
@@ -179,11 +181,9 @@
           "why_needed": "Anchors the leaf answer in direct evidence."
         },
         {
-          "deepseek_allowed": false,
+          "deepseek_allowed": true,
           "examples_or_search_queries": [
-            "Muse 对服务器 CPU 市场的增量有多大？ Muse专属采购量、ASP、交付期间及净新增归因",
-            "Muse 对服务器 CPU 市场的增量有多大？ 发布前服务器CPU收入与当年市场基线、2030预测分别核对",
-            "Muse 对服务器 CPU 市场的增量有多大？ 128核CPU容量金额情景、分年部署与市场占比的可比性"
+            "Muse 对服务器 CPU 市场的增量有多大？ Muse执行层需求与可归因CPU新增采购 / 静态配额及并发共享测算原文、公式与单位 / 发布前云采购、2030预测与当期市场分母区别"
           ],
           "expected_fields": [
             "methodology",
@@ -199,17 +199,8 @@
         }
       ],
       "source_universe_plan": {
-        "domain_id": "ai_factory",
-        "priority_source_ids": [
-          "semianalysis",
-          "trendforce",
-          "techinsights",
-          "omdia",
-          "delloro",
-          "lightcounting",
-          "the_information",
-          "serve_the_home"
-        ],
+        "domain_id": "",
+        "priority_source_ids": [],
         "registry": "config/source_universes.json"
       },
       "stage_id": "D2",
